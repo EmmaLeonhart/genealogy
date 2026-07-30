@@ -25,3 +25,9 @@ Thumbs.db
 # Environment
 .env
 .env.local
+
+# Source archives — we keep the extracted GEDCOMs in git, not the zips
+*.zip
+
+# Generated artifacts. Committed prose lives in reports/, not here.
+out/
