@@ -16,9 +16,6 @@ dependencies = []
 [project.optional-dependencies]
 dev = ["pytest>=7"]
 
-[project.scripts]
-genimerge = "genimerge.cli:main"
-
 [tool.setuptools.packages.find]
 where = ["src"]
 

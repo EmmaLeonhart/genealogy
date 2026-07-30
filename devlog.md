@@ -74,3 +74,43 @@ them), and `.gitattributes` normalising line endings to LF while marking
 The package is **stdlib-only on purpose**. `urllib` is enough for the
 Wikidata SPARQL endpoint, and a zero-dependency package keeps CI and cold
 clones trivial. `pytest`: 1 passed.
+
+## 2026-07-30 — GEDCOM reader/writer
+
+`genimerge/gedcom.py`: a streaming GEDCOM 5.5.1 parser that folds `CONC`
+and `CONT` away on read and re-creates them on write, so callers deal in
+whole values and never in line wrapping. Malformed lines land on
+`Gedcom.warnings` instead of raising, and a level that jumps past its
+parent is clamped rather than dropped — a real export is not a
+conformance test, and refusing to read a 16 MB file over one odd line
+would be useless.
+
+All three exports parse with **zero warnings**, which was not a given.
+Record counts:
+
+| file | INDI | FAM | NOTE | SUBM |
+| --- | ---: | ---: | ---: | ---: |
+| `export-Ancestors.ged` | 3836 | 2281 | 1026 | 578 |
+| `export-Forest.ged` | 3836 | 2020 | 8 | 395 |
+| `export-BloodTree.ged` | 3836 | 1054 | 6 | 398 |
+
+**One real bug, found by the round trip and not by the unit tests.**
+Round-tripping Ancestors was not a fixpoint: one `INDI` note came back
+different. The cause was `parse()` splitting input with
+`str.splitlines()`, which breaks on `\v`, `\f`, `\x1c`–`\x1e`, `\x85`,
+`U+2028` and `U+2029` in addition to `\n` — while `parse_file()`, reading
+with `newline=""`, breaks only on `\n`. The Ancestors export carries a
+literal **U+2028 inside five note values**, so the two entry points
+disagreed on exactly those records and the round trip silently rewrote
+them. `parse()` now splits on `\n` alone. The regression test spells the
+character as an escape rather than embedding it, because a bare U+2028 in
+source is exactly the kind of thing an editor quietly normalises away.
+
+`tests/test_gedcom.py` covers the parser on hand-written fixtures;
+`tests/test_gedcom_real_exports.py` runs against the actual exports and
+asserts the load-bearing invariant — every `INDI` xref is `@I<digits>@`
+and `RFN` repeats the same ID — so if Geni ever changes that, the merge
+fails loudly instead of quietly mis-keying. `pytest`: 35 passed.
+
+Dropped the `[project.scripts]` entry point from `pyproject.toml`; it
+pointed at a `genimerge.cli` that does not exist yet.

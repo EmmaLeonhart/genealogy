@@ -17,9 +17,7 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 Derived from `todo.md` items 1 (canonical merge), 2 (Wikidata reconciliation),
 and a first slice of 3 (expansion frontier). Work top to bottom.
 
-1. **Write the GEDCOM reader/writer (`genimerge/gedcom.py`) + tests.** Streaming line parser for GEDCOM 5.5.1 as emitted by Geni: `LEVEL [@XREF@] TAG [value]`, with `CONC`/`CONT` folding, UTF-8 with BOM tolerance, and tolerance for the malformed level-0 `NOTE` records these exports contain. Round-trip guarantee: parse → serialize must reproduce a semantically equivalent file. Unit tests over hand-written fixtures, not the 16 MB export.
-
-2. **Profile the three exports → `reports/inventory.md`.** Per file: record counts by type, the full tag vocabulary with occurrence counts, and the Geni-ID overlap between the three files (all three report 3836 `INDI` — confirm whether the ID sets are actually identical or merely the same size). This is the evidence base for the merge rules, so it gets committed as a report.
+1. **Profile the three exports → `reports/inventory.md`.** Per file: record counts by type, the full tag vocabulary with occurrence counts, and the Geni-ID overlap between the three files (all three report 3836 `INDI` — confirm whether the ID sets are actually identical or merely the same size). This is the evidence base for the merge rules, so it gets committed as a report.
 
 3. **Write the merge (`genimerge/merge.py`) + tests.** Identity is the Geni profile ID, taken from the xref `@I<id>@` and cross-checked against `RFN geni:<id>`. Union of individuals; union of families keyed on their own Geni ID; per-field conflict resolution with every conflict recorded rather than silently dropped. Must be idempotent: merging a file with itself changes nothing.
 
