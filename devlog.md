@@ -56,3 +56,10 @@ Wrote `todo.md` (seven long-horizon items, from the canonical merge through
 Wikidata authoring and name-item creation) and replaced the cleanvibe
 bootstrap queue in `queue.md` with the real thirteen-item work queue,
 mirrored into the task tool.
+
+## 2026-07-30 — three-cron playbook running
+
+Started the three session-local crons: work-loop `a58ec58b` at :03,
+auto-flush `680ee058` at :15, status-report `9f6681e1` at :42. They are
+`durable: false`, so they die with this session and are recreated at the
+start of the next one; they also auto-expire after 7 days.
