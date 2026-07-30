@@ -1,0 +1,5 @@
+# Keep line endings stable across the Windows working copy and CI.
+* text=auto eol=lf
+
+# GEDCOM exports are data we received, not source. Never rewrite their bytes.
+*.ged -text

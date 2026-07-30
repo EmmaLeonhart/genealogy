@@ -63,3 +63,14 @@ Started the three session-local crons: work-loop `a58ec58b` at :03,
 auto-flush `680ee058` at :15, status-report `9f6681e1` at :42. They are
 `durable: false`, so they die with this session and are recreated at the
 start of the next one; they also auto-expire after 7 days.
+
+## 2026-07-30 — `genimerge` package skeleton
+
+`src/genimerge/` behind a src-layout `pyproject.toml`, `tests/` on
+`pytest` (`pythonpath = ["src"]`, so no install step is needed to run
+them), and `.gitattributes` normalising line endings to LF while marking
+`*.ged` binary so the exports we were given are never rewritten.
+
+The package is **stdlib-only on purpose**. `urllib` is enough for the
+Wikidata SPARQL endpoint, and a zero-dependency package keeps CI and cold
+clones trivial. `pytest`: 1 passed.

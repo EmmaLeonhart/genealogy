@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "genimerge"
+version = "0.1.0"
+description = "Merge Geni.com GEDCOM exports on the Geni profile ID and reconcile the result against Wikidata"
+readme = "README.md"
+requires-python = ">=3.10"
+# Deliberately stdlib-only: urllib covers the Wikidata SPARQL endpoint, and a
+# zero-dependency package keeps CI and cold clones trivial. Add a dependency
+# only when the stdlib genuinely cannot do the job.
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+
+[project.scripts]
+genimerge = "genimerge.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
