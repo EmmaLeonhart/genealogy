@@ -9,6 +9,11 @@ See `CLAUDE.md` § "Queue and longer-horizon work".
 
 ---
 
+**Progress note (2026-07-30).** Items 1 and 2 are built and running; item 3 has
+its analysis half (`reports/frontier.md`) but not its ingest half; item 6 has
+its first slice (the P2600 backfill batch). Items 4, 5 and the rest of 3 and 7
+are untouched. What is done in detail lives in `devlog.md`.
+
 ## 1. One canonical genealogy, not N exports
 
 Collapse the Geni GEDCOM exports (`Forest`, `Ancestors`, `BloodTree`, and any
@@ -35,6 +40,13 @@ high-connectivity hubs that would pull in the most new material per export. Use
 this to decide what to export next from Geni, and what to pull from Jenny.
 Ingesting Jenny exports means supporting whatever format Jenny emits alongside
 GEDCOM.
+
+### 3a. What the frontier analysis found
+
+The tree is one connected component; 2350 people (26.8%) have no parents
+recorded, and those are the branch points. `reports/frontier.md` ranks them by
+descendant count. Still open: **ingesting Jenny's format**, and deciding how many
+exports it is worth taking.
 
 ## 4. Wikidata authoring pipeline — queue up the missing people
 
@@ -65,6 +77,12 @@ For people who *do* already have Wikidata items, generate edits that add what
 the genealogy knows and Wikidata is missing: the P2600 Geni ID, P735/P734 name
 links, and any missing parent/spouse links. These are edits to existing items,
 so they need a higher review bar than new-item creation.
+
+The **P2600 backfill** slice of this is built: `genimerge quickstatements`
+writes a reviewable batch. Still open here: **P735/P734 name links** (which
+depends on item 5), and **missing parent/spouse links** on items that already
+exist. Also worth doing: re-running reconciliation *after* a batch is accepted,
+since each new P2600 makes the exact join reach further.
 
 ## 7. Ingest beyond Geni
 

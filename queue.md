@@ -12,10 +12,17 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ---
 
-## Active — merge the exports, then reconcile against Wikidata
+## Active
 
-Derived from `todo.md` items 1 (canonical merge), 2 (Wikidata reconciliation),
-and a first slice of 3 (expansion frontier). Work top to bottom.
+**Empty.** The merge-and-reconcile queue drained on 2026-07-30 — see
+`devlog.md` for what was finished, and `todo.md` for what is left.
+
+The next queue would be pulled from `todo.md` item 5 (create Wikidata items for
+the given names and surnames that have none, so people can be linked to them
+with P735/P734) or item 4 (the authoring pipeline for people with no item at
+all). Both need a decision from the user first, since both end in edits to
+Wikidata rather than files in this repo — so they are **NEEDS-DECISION**, not
+work that can simply be started.
 
 ---
 
