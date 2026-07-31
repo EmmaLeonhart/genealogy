@@ -710,3 +710,21 @@ up would not have been.
 previous commit, and gitignored it.
 
 `pytest`: 369 passed. Merge totals unchanged.
+
+**CI did not run for this commit, and it is not the code.** Both matrix
+jobs refused to start in under 4 seconds with:
+
+> The job was not started because recent account payments have failed or
+> your spending limit needs to be increased.
+
+That is a GitHub Actions billing state on the account. The previous
+commit's run passed 47 seconds earlier, and nothing in this change
+touches the workflow. **BLOCKED-ON-USER-ACTION** — the action is sorting
+out billing or the spending limit in GitHub settings; the unblock signal
+is a run that starts.
+
+Until then the only verification available is local, so it is stated
+exactly: `pytest` 369 passed on Python 3.13 only (CI is what covers 3.10),
+and the real-data regression check — regenerate the committed reports,
+`git diff reports/` empty, merge totals unchanged at 8766 individuals and
+4056 families. **Not** a claim that CI is green.
