@@ -70,6 +70,7 @@ python -m genimerge frontier         # what to export next  -> reports/frontier.
 python -m genimerge names            # name-item coverage   -> reports/names.md
 python -m genimerge quickstatements  # edits to review      -> out/wikidata/add-p2600.qs
 python -m genimerge name-links       # name links to review -> out/wikidata/add-names.qs
+python -m genimerge crosscheck       # us vs Wikidata       -> reports/wikidata-crosscheck.md
 ```
 
 Every command is re-runnable and reads the previous stage's output. Wikidata
@@ -85,6 +86,7 @@ Generated, and worth reading in this order:
 - `reports/wikidata-coverage.md` — how much of the tree reaches Wikidata
 - `reports/frontier.md` — where the tree stops, and which profiles to export from next
 - `reports/names.md` — which surnames and given names already have Wikidata items
+- `reports/wikidata-crosscheck.md` — where we and Wikidata disagree about parents, spouses and dates
 
 ## Editing Wikidata
 

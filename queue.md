@@ -14,19 +14,16 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
-## Active — cross-check our claims against Wikidata's
+**Empty.** The claims cross-check drained on 2026-07-30, and with it the last
+unblocked piece of `todo.md` item 6.
 
-The last unblocked piece of `todo.md` item 6. For the 245 people already linked
-to a Wikidata item, both sides state parents, spouses and dates. Comparing them
-needs nothing created and no decision: it is read-only, and the *disagreements*
-are the point. The three P2600 contradictions found the same way turned out to
-be duplicate Geni profiles — the most useful thing that run produced.
+What remains all needs something this repo does not have:
 
-1. **Write the cross-check (`genimerge/crosscheck.py`) + tests.** For every linked person, fetch their Wikidata P22 father, P25 mother, P26 spouse, P569 birth date and P570 death date, and compare against ours. Classify each claim into exactly one of: **agrees**, **gap** (we know, Wikidata does not), **conflict** (both know, they differ), or **not comparable** (neither knows, or the other endpoint of a relationship is not itself linked). Dates compare on year with the same tolerance the reconciler uses, and a date our export marked approximate is never called a conflict.
-
-2. **Write `reports/wikidata-crosscheck.md`.** Counts per property, then every conflict listed individually with both values and links to both sides. Conflicts are the deliverable here, not the gaps — each one is either our match being wrong or a real error on one of the two sites.
-
-3. **Emit `out/wikidata/add-claims.qs` for the gaps only.** Strict eligibility, enforced not assumed: a relationship is proposed only when **both** endpoints are linked **by P2600** — never by expansion, since an inferred match on either end would put a wrong parent on a real item. A date is proposed only when our date is **exact** (no `ABT`/`BEF`/`AFT`/`BET`) and the item states nothing for that property. Everything else goes in the report for a human. Companion `.md` as with the other batches. Nothing is written to Wikidata.
+- **NEEDS-DECISION** — `todo.md` items 4 and 5: creating Wikidata items, for
+  people who have none and for the 1117 surnames and 1473 given names that have
+  none. Sized in `reports/names.md`. The decision is the user's.
+- **BLOCKED-ON-USER-ACTION** — `todo.md` items 3b and 7: ingesting Jenny
+  exports. Unblock signal is a Jenny export appearing in `data_lake/`.
 
 ---
 

@@ -534,3 +534,51 @@ size. It is now two plain index lookups per batch, which is why the
 request count per batch doubled.
 
 `pytest`: 252 passed.
+
+## 2026-07-30 — cross-check: 625 agreements, 40 conflicts
+
+`genimerge/crosscheck.py` and `python -m genimerge crosscheck` compare
+what this tree says about the 245 linked people against what Wikidata
+says, writing `reports/wikidata-crosscheck.md` and a batch for the
+eligible gaps.
+
+| property | agrees | gap | conflict | not comparable |
+| --- | ---: | ---: | ---: | ---: |
+| P22 father | 139 | 1 | 2 | 103 |
+| P25 mother | 81 | 7 | 4 | 153 |
+| P26 spouse | 135 | 24 | 3 | 83 |
+| P569 date of birth | 127 | 70 | 20 | 28 |
+| P570 date of death | 143 | 63 | 11 | 28 |
+
+**625 agreements against 40 conflicts is independent evidence the matches
+are right.** Nothing in the reconciliation used parents, spouses or dates
+as a *primary* key — P2600 is an exact identifier and the structural pass
+only walked relationships — so this is a genuinely separate check, and it
+mostly agrees.
+
+**Nine of the conflicts are structural** and those are the ones worth a
+look: a different father for Canute I Erikska (we say Eric IX Q310152,
+Wikidata says Q41864), a different mother for the same man, a different
+spouse for Harald IV "Gille", a different father for NN Filipsdotter.
+Each is either our match being wrong or a real error on one of the two
+sites.
+
+**The date threshold is deliberately not widened.** A date counts as
+conflicting when the years differ by more than 3, which for medieval
+people makes ordinary source disagreement (1145 against 1150) look like a
+conflict. Widening it to 5 or 10 would have shortened the table by making
+the classification vaguer. Instead conflicts are **ranked** — structural
+first, then by how many years apart — so the serious ones surface and the
+small ones sink, and the report states the threshold so a reader can
+calibrate. A date our export marked approximate is never called a
+conflict at all.
+
+The batch, `out/wikidata/add-claims.qs`: **65 statements, 100 gaps
+withheld.** 85 were withheld because our date is approximate and there is
+no exact value to state; 15 because one end of a relationship is linked
+by inference rather than by its Geni ID. That last rule is the important
+one — putting an inferred parent onto a real Wikidata item is the error
+that would be hardest for anyone to notice afterwards. Conflicts are
+never proposed.
+
+`pytest`: 281 passed.

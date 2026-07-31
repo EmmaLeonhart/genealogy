@@ -12,6 +12,7 @@ from datetime import date
 
 from . import (
     coverage,
+    crosscheck,
     frontier,
     gedcom,
     inventory,
@@ -320,6 +321,48 @@ def _read_all_matches() -> dict[str, str]:
         return {row["geni_id"]: row["qid"] for row in csv.DictReader(handle)}
 
 
+def _cmd_crosscheck(args: argparse.Namespace) -> int:
+    tree = _load_tree(args.source)
+    linked = _read_all_matches()
+    if not linked:
+        print("no linked people found; run `genimerge reconcile` and `expand` first",
+              file=sys.stderr)
+        return 1
+    exact = set(_read_seed_matches())
+
+    client = wikidata.WikidataClient(cache_dir=OUT / "wikidata" / "cache", delay=args.delay)
+    claims = crosscheck.fetch_claims(client, linked.values())
+    result = crosscheck.cross_check(tree, linked, claims)
+
+    REPORTS.mkdir(parents=True, exist_ok=True)
+    args.output.write_text(
+        crosscheck.render_markdown(result), encoding="utf-8", newline="\n"
+    )
+
+    batch = crosscheck.build_claim_batch(result, tree, exact, retrieved=args.retrieved)
+    out_dir = OUT / "wikidata"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    (out_dir / "add-claims.qs").write_text(
+        quickstatements.render_statements(batch.statements), encoding="utf-8", newline="\n"
+    )
+    (out_dir / "add-claims.md").write_text(
+        crosscheck.render_claim_markdown(batch), encoding="utf-8", newline="\n"
+    )
+
+    counts = result.counts()
+    conflicts = sum(c[crosscheck.CONFLICT] for c in counts.values())
+    agrees = sum(c[crosscheck.AGREES] for c in counts.values())
+    gaps = sum(c[crosscheck.GAP] for c in counts.values())
+    print(f"wrote {args.output}")
+    print(f"{result.people_checked} people: {agrees} agree, {gaps} gaps, {conflicts} conflicts")
+    print(
+        f"wrote {out_dir / 'add-claims.qs'}: {len(batch.statements)} statements, "
+        f"{len(batch.withheld)} gaps withheld"
+    )
+    print("Nothing has been sent to Wikidata.")
+    return 0
+
+
 def _cmd_name_links(args: argparse.Namespace) -> int:
     tree = _load_tree(args.source)
     linked = _read_all_matches()
@@ -549,6 +592,30 @@ def build_parser() -> argparse.ArgumentParser:
         help="date for the reference qualifier, YYYY-MM-DD (default: today)",
     )
     p_links.set_defaults(func=_cmd_name_links)
+
+    p_cross = sub.add_parser(
+        "crosscheck",
+        help="compare our parents, spouses and dates against Wikidata's",
+        description=(
+            "Reports agreements, gaps and conflicts, and writes a reviewable "
+            "batch for the eligible gaps only. Nothing is sent to Wikidata."
+        ),
+    )
+    p_cross.add_argument("--source", type=Path, default=None, help="a GEDCOM to read instead of merging")
+    p_cross.add_argument("--delay", type=float, default=1.0, help="seconds between requests")
+    p_cross.add_argument(
+        "--retrieved",
+        default=date.today().isoformat(),
+        help="date for the reference qualifier, YYYY-MM-DD (default: today)",
+    )
+    p_cross.add_argument(
+        "-o",
+        "--output",
+        type=Path,
+        default=REPORTS / "wikidata-crosscheck.md",
+        help="where to write the report",
+    )
+    p_cross.set_defaults(func=_cmd_crosscheck)
 
     return parser
 
