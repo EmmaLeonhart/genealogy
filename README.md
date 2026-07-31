@@ -77,6 +77,13 @@ Every command is re-runnable and reads the previous stage's output. Wikidata
 responses are cached under `out/wikidata/cache/`, so re-running a report costs
 nothing; delete that directory to force a refresh.
 
+Every command also takes `--data-lake`, `--out` and `--reports`, so a second
+dataset can be processed without touching the first:
+
+```bash
+python -m genimerge merge --data-lake ~/other-tree --out /tmp/o --reports /tmp/r
+```
+
 ## Reports
 
 Generated, and worth reading in this order:

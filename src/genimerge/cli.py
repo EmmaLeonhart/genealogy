@@ -8,6 +8,7 @@ from pathlib import Path
 
 import csv
 import json
+from dataclasses import dataclass
 from datetime import date
 
 from . import (
@@ -31,58 +32,94 @@ REPORTS = REPO_ROOT / "reports"
 OUT = REPO_ROOT / "out"
 
 
-def _default_exports() -> list[Path]:
-    return sorted(DATA_LAKE.glob("*.ged"))
+@dataclass(frozen=True)
+class Workspace:
+    """Where a run reads its inputs and writes its outputs.
+
+    These were module constants pinned to the repo, which meant the pipeline
+    could only ever be run against one dataset — a second run would overwrite
+    the first, and a test could not run it at all without writing into the
+    working tree. Every command now resolves them from its arguments.
+    """
+
+    data_lake: Path = DATA_LAKE
+    out: Path = OUT
+    reports: Path = REPORTS
+
+    @classmethod
+    def from_args(cls, args: argparse.Namespace) -> "Workspace":
+        return cls(
+            data_lake=Path(getattr(args, "data_lake", None) or DATA_LAKE),
+            out=Path(getattr(args, "out", None) or OUT),
+            reports=Path(getattr(args, "reports", None) or REPORTS),
+        )
+
+    def exports(self) -> list[Path]:
+        return sorted(self.data_lake.glob("*.ged"))
+
+    @property
+    def wikidata(self) -> Path:
+        return self.out / "wikidata"
+
+    @property
+    def cache(self) -> Path:
+        return self.wikidata / "cache"
+
+    @property
+    def merged(self) -> Path:
+        return self.out / "merged.ged"
+
+
+def _write(path: Path, text: str) -> Path:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(text, encoding="utf-8", newline="\n")
+    return path
 
 
 def _cmd_inventory(args: argparse.Namespace) -> int:
-    paths = [Path(p) for p in args.exports] or _default_exports()
+    ws = Workspace.from_args(args)
+    paths = [Path(p) for p in args.exports] or ws.exports()
     if not paths:
-        print(f"no .ged files given and none found in {DATA_LAKE}", file=sys.stderr)
+        print(f"no .ged files given and none found in {ws.data_lake}", file=sys.stderr)
         return 1
 
     inv = inventory.build_inventory(paths)
-    text = inventory.render_markdown(inv)
-
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(text, encoding="utf-8", newline="\n")
-    print(f"wrote {args.output} ({len(inv.files)} exports)")
+    output = args.output or ws.reports / "inventory.md"
+    _write(output, inventory.render_markdown(inv))
+    print(f"wrote {output} ({len(inv.files)} exports)")
     return 0
 
 
 def _cmd_merge(args: argparse.Namespace) -> int:
-    paths = [Path(p) for p in args.exports] or _default_exports()
+    ws = Workspace.from_args(args)
+    paths = [Path(p) for p in args.exports] or ws.exports()
     if not paths:
-        print(f"no .ged files given and none found in {DATA_LAKE}", file=sys.stderr)
+        print(f"no .ged files given and none found in {ws.data_lake}", file=sys.stderr)
         return 1
 
     doc, report = merge_mod.merge_files(paths)
 
-    OUT.mkdir(parents=True, exist_ok=True)
-    REPORTS.mkdir(parents=True, exist_ok=True)
-
-    gedcom.write_file(doc, args.output)
-    (OUT / "merge-report.md").write_text(
-        merge_mod.render_report(report, detail=True, doc=doc), encoding="utf-8", newline="\n"
+    output = args.output or ws.merged
+    output.parent.mkdir(parents=True, exist_ok=True)
+    gedcom.write_file(doc, output)
+    detail = _write(
+        ws.out / "merge-report.md", merge_mod.render_report(report, detail=True, doc=doc)
     )
-    (REPORTS / "merge.md").write_text(
-        merge_mod.render_report(report, detail=False, doc=doc), encoding="utf-8", newline="\n"
-    )
+    _write(ws.reports / "merge.md", merge_mod.render_report(report, detail=False, doc=doc))
 
     totals = ", ".join(f"{n} {tag}" for tag, n in sorted(report.totals.items()))
-    print(f"wrote {args.output}: {totals}")
-    print(f"{len(report.conflicts)} conflicts -> out/merge-report.md")
+    print(f"wrote {output}: {totals}")
+    print(f"{len(report.conflicts)} conflicts -> {detail}")
     return 0
 
 
-def _load_tree(source: Path | None) -> model.Tree:
+def _load_tree(source: Path | None, ws: Workspace) -> model.Tree:
     """The canonical tree, from a given GEDCOM or by merging the data lake."""
     if source is not None:
         return model.build_tree(gedcom.stream_file(source))
-    merged = OUT / "merged.ged"
-    if merged.exists():
-        return model.build_tree(gedcom.stream_file(merged))
-    doc, _ = merge_mod.merge_files(_default_exports())
+    if ws.merged.exists():
+        return model.build_tree(gedcom.stream_file(ws.merged))
+    doc, _ = merge_mod.merge_files(ws.exports())
     return model.build_tree(doc.records)
 
 
@@ -97,23 +134,26 @@ def _write_jsonl(path: Path, rows) -> int:
 
 
 def _cmd_export(args: argparse.Namespace) -> int:
-    tree = _load_tree(args.source)
+    ws = Workspace.from_args(args)
+    tree = _load_tree(args.source, ws)
+    out_dir = args.output or ws.out
 
+    people_path = out_dir / "people.jsonl"
+    families_path = out_dir / "families.jsonl"
     people = _write_jsonl(
-        OUT / "people.jsonl",
-        (tree.people[k].to_json() for k in sorted(tree.people, key=int)),
+        people_path, (tree.people[k].to_json() for k in sorted(tree.people, key=int))
     )
     families = _write_jsonl(
-        OUT / "families.jsonl",
-        (tree.families[k].to_json() for k in sorted(tree.families, key=int)),
+        families_path, (tree.families[k].to_json() for k in sorted(tree.families, key=int))
     )
-    print(f"wrote out/people.jsonl ({people}) and out/families.jsonl ({families})")
+    print(f"wrote {people_path} ({people}) and {families_path} ({families})")
     return 0
 
 
 def _cmd_reconcile(args: argparse.Namespace) -> int:
-    tree = _load_tree(args.source)
-    client = wikidata.WikidataClient(cache_dir=OUT / "wikidata" / "cache", delay=args.delay)
+    ws = Workspace.from_args(args)
+    tree = _load_tree(args.source, ws)
+    client = wikidata.WikidataClient(cache_dir=ws.cache, delay=args.delay)
 
     def progress(done: int, total: int) -> None:
         print(f"  batch {done}/{total}", end="\r", flush=True)
@@ -122,7 +162,7 @@ def _cmd_reconcile(args: argparse.Namespace) -> int:
     print(" " * 30, end="\r")
     matches = wikidata.add_labels(client, matches)
 
-    out_path = OUT / "wikidata" / "matched_p2600.csv"
+    out_path = ws.wikidata / "matched_p2600.csv"
     out_path.parent.mkdir(parents=True, exist_ok=True)
     with open(out_path, "w", encoding="utf-8", newline="") as handle:
         writer = csv.writer(handle)
@@ -153,9 +193,9 @@ def _cmd_reconcile(args: argparse.Namespace) -> int:
     return 0
 
 
-def _read_seed_matches() -> dict[str, str]:
+def _read_seed_matches(ws: Workspace) -> dict[str, str]:
     """The confirmed P2600 matches written by `reconcile`."""
-    path = OUT / "wikidata" / "matched_p2600.csv"
+    path = ws.wikidata / "matched_p2600.csv"
     if not path.exists():
         return {}
     with open(path, encoding="utf-8", newline="") as handle:
@@ -163,13 +203,14 @@ def _read_seed_matches() -> dict[str, str]:
 
 
 def _cmd_expand(args: argparse.Namespace) -> int:
-    tree = _load_tree(args.source)
-    seeds = _read_seed_matches()
+    ws = Workspace.from_args(args)
+    tree = _load_tree(args.source, ws)
+    seeds = _read_seed_matches(ws)
     if not seeds:
         print("no P2600 matches found; run `genimerge reconcile` first", file=sys.stderr)
         return 1
 
-    client = wikidata.WikidataClient(cache_dir=OUT / "wikidata" / "cache", delay=args.delay)
+    client = wikidata.WikidataClient(cache_dir=ws.cache, delay=args.delay)
     result = reconcile.expand_from_matches(
         client,
         tree,
@@ -178,7 +219,7 @@ def _cmd_expand(args: argparse.Namespace) -> int:
         progress=lambda ring, added: print(f"  ring {ring}: +{added} matched", flush=True),
     )
 
-    out_dir = OUT / "wikidata"
+    out_dir = ws.wikidata
     out_dir.mkdir(parents=True, exist_ok=True)
 
     candidates = list(result.candidates)
@@ -234,10 +275,11 @@ def _cmd_expand(args: argparse.Namespace) -> int:
 
 
 def _cmd_coverage(args: argparse.Namespace) -> int:
-    tree = _load_tree(args.source)
-    seeds = _read_seed_matches()
+    ws = Workspace.from_args(args)
+    tree = _load_tree(args.source, ws)
+    seeds = _read_seed_matches(ws)
 
-    all_path = OUT / "wikidata" / "matched_all.csv"
+    all_path = ws.wikidata / "matched_all.csv"
     expansion: dict[str, str] = {}
     if all_path.exists():
         with open(all_path, encoding="utf-8", newline="") as handle:
@@ -246,7 +288,7 @@ def _cmd_coverage(args: argparse.Namespace) -> int:
                     expansion[row["geni_id"]] = row["qid"]
 
     proposals: list[tuple[str, str, str, str]] = []
-    candidates_path = OUT / "wikidata" / "candidates.csv"
+    candidates_path = ws.wikidata / "candidates.csv"
     if candidates_path.exists():
         with open(candidates_path, encoding="utf-8", newline="") as handle:
             for row in csv.DictReader(handle):
@@ -266,16 +308,17 @@ def _cmd_coverage(args: argparse.Namespace) -> int:
         ),
         top_gaps=args.top,
     )
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(text, encoding="utf-8", newline="\n")
-    print(f"wrote {args.output}")
+    output = args.output or ws.reports / "wikidata-coverage.md"
+    _write(output, text)
+    print(f"wrote {output}")
     return 0
 
 
 def _cmd_quickstatements(args: argparse.Namespace) -> int:
-    tree = _load_tree(args.source)
+    ws = Workspace.from_args(args)
+    tree = _load_tree(args.source, ws)
 
-    all_path = OUT / "wikidata" / "matched_all.csv"
+    all_path = ws.wikidata / "matched_all.csv"
     if not all_path.exists():
         print("run `genimerge expand` first", file=sys.stderr)
         return 1
@@ -292,17 +335,12 @@ def _cmd_quickstatements(args: argparse.Namespace) -> int:
         print("no expansion-confirmed links to propose", file=sys.stderr)
         return 1
 
-    client = wikidata.WikidataClient(cache_dir=OUT / "wikidata" / "cache", delay=args.delay)
+    client = wikidata.WikidataClient(cache_dir=ws.cache, delay=args.delay)
     batch = quickstatements.build_batch(client, tree, links, retrieved=args.retrieved)
 
-    out_dir = OUT / "wikidata"
-    out_dir.mkdir(parents=True, exist_ok=True)
-    (out_dir / "add-p2600.qs").write_text(
-        quickstatements.render_quickstatements(batch), encoding="utf-8", newline="\n"
-    )
-    (out_dir / "add-p2600.md").write_text(
-        quickstatements.render_markdown(batch), encoding="utf-8", newline="\n"
-    )
+    out_dir = ws.wikidata
+    _write(out_dir / "add-p2600.qs", quickstatements.render_quickstatements(batch))
+    _write(out_dir / "add-p2600.md", quickstatements.render_markdown(batch))
 
     print(f"wrote {out_dir / 'add-p2600.qs'}: {len(batch.edits)} statements")
     print(
@@ -313,8 +351,8 @@ def _cmd_quickstatements(args: argparse.Namespace) -> int:
     return 0
 
 
-def _read_all_matches() -> dict[str, str]:
-    path = OUT / "wikidata" / "matched_all.csv"
+def _read_all_matches(ws: Workspace) -> dict[str, str]:
+    path = ws.wikidata / "matched_all.csv"
     if not path.exists():
         return {}
     with open(path, encoding="utf-8", newline="") as handle:
@@ -322,38 +360,32 @@ def _read_all_matches() -> dict[str, str]:
 
 
 def _cmd_crosscheck(args: argparse.Namespace) -> int:
-    tree = _load_tree(args.source)
-    linked = _read_all_matches()
+    ws = Workspace.from_args(args)
+    tree = _load_tree(args.source, ws)
+    linked = _read_all_matches(ws)
     if not linked:
         print("no linked people found; run `genimerge reconcile` and `expand` first",
               file=sys.stderr)
         return 1
-    exact = set(_read_seed_matches())
+    exact = set(_read_seed_matches(ws))
 
-    client = wikidata.WikidataClient(cache_dir=OUT / "wikidata" / "cache", delay=args.delay)
+    client = wikidata.WikidataClient(cache_dir=ws.cache, delay=args.delay)
     claims = crosscheck.fetch_claims(client, linked.values())
     result = crosscheck.cross_check(tree, linked, claims)
 
-    REPORTS.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(
-        crosscheck.render_markdown(result), encoding="utf-8", newline="\n"
-    )
+    output = args.output or ws.reports / "wikidata-crosscheck.md"
+    _write(output, crosscheck.render_markdown(result))
 
     batch = crosscheck.build_claim_batch(result, tree, exact, retrieved=args.retrieved)
-    out_dir = OUT / "wikidata"
-    out_dir.mkdir(parents=True, exist_ok=True)
-    (out_dir / "add-claims.qs").write_text(
-        quickstatements.render_statements(batch.statements), encoding="utf-8", newline="\n"
-    )
-    (out_dir / "add-claims.md").write_text(
-        crosscheck.render_claim_markdown(batch), encoding="utf-8", newline="\n"
-    )
+    out_dir = ws.wikidata
+    _write(out_dir / "add-claims.qs", quickstatements.render_statements(batch.statements))
+    _write(out_dir / "add-claims.md", crosscheck.render_claim_markdown(batch))
 
     counts = result.counts()
     conflicts = sum(c[crosscheck.CONFLICT] for c in counts.values())
     agrees = sum(c[crosscheck.AGREES] for c in counts.values())
     gaps = sum(c[crosscheck.GAP] for c in counts.values())
-    print(f"wrote {args.output}")
+    print(f"wrote {output}")
     print(f"{result.people_checked} people: {agrees} agree, {gaps} gaps, {conflicts} conflicts")
     print(
         f"wrote {out_dir / 'add-claims.qs'}: {len(batch.statements)} statements, "
@@ -364,14 +396,15 @@ def _cmd_crosscheck(args: argparse.Namespace) -> int:
 
 
 def _cmd_name_links(args: argparse.Namespace) -> int:
-    tree = _load_tree(args.source)
-    linked = _read_all_matches()
+    ws = Workspace.from_args(args)
+    tree = _load_tree(args.source, ws)
+    linked = _read_all_matches(ws)
     if not linked:
         print("no linked people found; run `genimerge reconcile` and `expand` first",
               file=sys.stderr)
         return 1
 
-    client = wikidata.WikidataClient(cache_dir=OUT / "wikidata" / "cache", delay=args.delay)
+    client = wikidata.WikidataClient(cache_dir=ws.cache, delay=args.delay)
 
     # Only the names of people we have actually linked need looking up.
     vocabulary = names_mod.build_vocabulary(tree, people=linked)
@@ -386,14 +419,9 @@ def _cmd_name_links(args: argparse.Namespace) -> int:
         client, tree, linked, items, retrieved=args.retrieved
     )
 
-    out_dir = OUT / "wikidata"
-    out_dir.mkdir(parents=True, exist_ok=True)
-    (out_dir / "add-names.qs").write_text(
-        namelinks.render_quickstatements(batch), encoding="utf-8", newline="\n"
-    )
-    (out_dir / "add-names.md").write_text(
-        namelinks.render_markdown(batch), encoding="utf-8", newline="\n"
-    )
+    out_dir = ws.wikidata
+    _write(out_dir / "add-names.qs", namelinks.render_quickstatements(batch))
+    _write(out_dir / "add-names.md", namelinks.render_markdown(batch))
 
     print(
         f"wrote {out_dir / 'add-names.qs'}: {len(batch.links)} statements "
@@ -405,12 +433,13 @@ def _cmd_name_links(args: argparse.Namespace) -> int:
 
 
 def _cmd_names(args: argparse.Namespace) -> int:
-    tree = _load_tree(args.source)
+    ws = Workspace.from_args(args)
+    tree = _load_tree(args.source, ws)
     vocabulary = names_mod.build_vocabulary(tree)
     strings = vocabulary.all_strings()
     print(f"{len(strings)} distinct name strings; checking Wikidata")
 
-    client = wikidata.WikidataClient(cache_dir=OUT / "wikidata" / "cache", delay=args.delay)
+    client = wikidata.WikidataClient(cache_dir=ws.cache, delay=args.delay)
     items = names_mod.find_name_items(
         client,
         strings,
@@ -418,26 +447,44 @@ def _cmd_names(args: argparse.Namespace) -> int:
     )
     print()
 
-    text = names_mod.render_markdown(vocabulary, items, top=args.top)
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(text, encoding="utf-8", newline="\n")
+    output = args.output or ws.reports / "names.md"
+    _write(output, names_mod.render_markdown(vocabulary, items, top=args.top))
 
     summary = names_mod.summarise(vocabulary)
     for which in ("surnames", "given_tokens"):
         store = getattr(vocabulary, which)
         have = sum(1 for name in store if items.get(name))
         print(f"{which}: {have} of {summary[which]['distinct']} have a Wikidata name item")
-    print(f"wrote {args.output}")
+    print(f"wrote {output}")
     return 0
 
 
 def _cmd_frontier(args: argparse.Namespace) -> int:
-    tree = _load_tree(args.source)
-    text = frontier.render_markdown(tree, limit=args.top)
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    args.output.write_text(text, encoding="utf-8", newline="\n")
-    print(f"wrote {args.output}")
+    ws = Workspace.from_args(args)
+    tree = _load_tree(args.source, ws)
+    output = args.output or ws.reports / "frontier.md"
+    _write(output, frontier.render_markdown(tree, limit=args.top))
+    print(f"wrote {output}")
     return 0
+
+
+def _add_workspace_options(sub: argparse._SubParsersAction) -> None:
+    """Give every subcommand the workspace options.
+
+    Added in a loop rather than threaded through each ``add_parser`` call, so a
+    new command cannot be added without them by forgetting a ``parents=``.
+    """
+    for parser in sub.choices.values():
+        group = parser.add_argument_group("workspace")
+        group.add_argument(
+            "--data-lake", type=Path, default=None, help=f"inputs (default: {DATA_LAKE})"
+        )
+        group.add_argument(
+            "--out", type=Path, default=None, help=f"generated data (default: {OUT})"
+        )
+        group.add_argument(
+            "--reports", type=Path, default=None, help=f"generated reports (default: {REPORTS})"
+        )
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -450,8 +497,8 @@ def build_parser() -> argparse.ArgumentParser:
         "-o",
         "--output",
         type=Path,
-        default=REPORTS / "inventory.md",
-        help="where to write the report (default: reports/inventory.md)",
+        default=None,
+        help="where to write the report (default: <reports>/inventory.md)",
     )
     p_inv.set_defaults(func=_cmd_inventory)
 
@@ -465,8 +512,8 @@ def build_parser() -> argparse.ArgumentParser:
         "-o",
         "--output",
         type=Path,
-        default=OUT / "merged.ged",
-        help="where to write the merged GEDCOM (default: out/merged.ged)",
+        default=None,
+        help="where to write the merged GEDCOM (default: <out>/merged.ged)",
     )
     p_merge.set_defaults(func=_cmd_merge)
 
@@ -477,6 +524,10 @@ def build_parser() -> argparse.ArgumentParser:
     )
     p_export.add_argument(
         "--source", type=Path, default=None, help="a GEDCOM to read instead of merging"
+    )
+    p_export.add_argument(
+        "-o", "--output", type=Path, default=None,
+        help="directory for the JSONL files (default: <out>)"
     )
     p_export.set_defaults(func=_cmd_export)
 
@@ -523,7 +574,8 @@ def build_parser() -> argparse.ArgumentParser:
     p_front.add_argument("--source", type=Path, default=None, help="a GEDCOM to read instead of merging")
     p_front.add_argument("--top", type=int, default=40, help="how many branch points to list")
     p_front.add_argument(
-        "-o", "--output", type=Path, default=REPORTS / "frontier.md", help="where to write"
+        "-o", "--output", type=Path, default=None,
+        help="where to write (default: <reports>/frontier.md)"
     )
     p_front.set_defaults(func=_cmd_frontier)
 
@@ -537,8 +589,8 @@ def build_parser() -> argparse.ArgumentParser:
         "-o",
         "--output",
         type=Path,
-        default=REPORTS / "wikidata-coverage.md",
-        help="where to write",
+        default=None,
+        help="where to write (default: <reports>/wikidata-coverage.md)",
     )
     p_cov.set_defaults(func=_cmd_coverage)
 
@@ -572,7 +624,8 @@ def build_parser() -> argparse.ArgumentParser:
     p_names.add_argument("--delay", type=float, default=1.0, help="seconds between requests")
     p_names.add_argument("--top", type=int, default=40, help="rows per table")
     p_names.add_argument(
-        "-o", "--output", type=Path, default=REPORTS / "names.md", help="where to write"
+        "-o", "--output", type=Path, default=None,
+        help="where to write (default: <reports>/names.md)"
     )
     p_names.set_defaults(func=_cmd_names)
 
@@ -612,11 +665,12 @@ def build_parser() -> argparse.ArgumentParser:
         "-o",
         "--output",
         type=Path,
-        default=REPORTS / "wikidata-crosscheck.md",
-        help="where to write the report",
+        default=None,
+        help="where to write the report (default: <reports>/wikidata-crosscheck.md)",
     )
     p_cross.set_defaults(func=_cmd_crosscheck)
 
+    _add_workspace_options(sub)
     return parser
 
 

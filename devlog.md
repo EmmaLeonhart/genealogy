@@ -582,3 +582,43 @@ that would be hardest for anyone to notice afterwards. Conflicts are
 never proposed.
 
 `pytest`: 281 passed.
+
+## 2026-07-30 — the CLI had no tests at all
+
+Not promoted from `todo.md`. Found by actually looking, rather than
+repeating the claim that the queue was blocked: **no test imported
+`genimerge/cli.py`.** Eleven subcommands' worth of argument wiring, output
+paths and error handling were exercised only by me typing them, so a
+broken command would have shipped with CI green. Every one of the bugs
+this project has caught came from a test; this was the layer with none.
+
+`tests/test_cli.py` — **52 tests**, all offline. Every command is
+registered, dispatches to a callable, has working `--help`, and accepts
+the workspace options. Then the documented pipeline runs end to end in a
+`tmp_path` workspace over two small hand-written exports:
+`inventory → merge → export → frontier`, asserting each file exists,
+that the merged GEDCOM re-parses with no warnings, and that the merge
+really merged (Ada's birth comes from one export and her death from the
+other, on one record). Five tests cover the "run the earlier step first"
+refusals.
+
+**The fix underneath was a real limitation, not a testing convenience.**
+`DATA_LAKE`, `OUT` and `REPORTS` were module constants pinned to the
+repo, so the pipeline could only ever process one dataset — a second run
+would overwrite the first, and a test could not run it without writing
+into the working tree. There is now a `Workspace` resolved per command,
+with `--data-lake` / `--out` / `--reports` on every subcommand. They are
+added in a **loop over `sub.choices`** rather than threaded through each
+`add_parser` call, so a new command cannot be added without them by
+forgetting a `parents=`. `export` gained the output option it never had;
+`merge` stopped writing two of its three files to fixed paths.
+
+One test earns its place specially: `test_nothing_is_written_outside_the
+_workspace` walks `tmp_path` afterwards and asserts every file written
+landed inside it. That is the property that was false before this change.
+
+Regression check beyond the suite: regenerated the three committed
+reports with the refactored CLI and `git diff reports/` came back
+**empty** — byte-identical output.
+
+`pytest`: 333 passed.

@@ -12,24 +12,15 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ---
 
-## Active
+**Empty.** The CLI now has 52 tests and an overridable workspace.
 
-## Active — the CLI is nine commands with no tests
+What remains all needs something this repo does not have:
 
-Not from `todo.md`; found by looking rather than by assuming the queue was
-blocked. **No test touches `genimerge/cli.py`.** Nine subcommands' worth of
-argument wiring, file paths and error handling are exercised only by me typing
-them, so a broken command would ship green. Two of the three bugs this project
-has found came from tests over real data; this is the layer with none.
-
-The second half is a real limitation, not just a testing convenience: `DATA_LAKE`,
-`OUT` and `REPORTS` are module constants pinned to the repo, so the pipeline
-cannot be run against a second dataset without overwriting the first — and a
-test cannot run it at all without writing into the working tree.
-
-1. **Make the workspace overridable.** A global `--data-lake` / `--out` / `--reports` (defaulting to today's repo paths) threaded through every command, so `genimerge` can be pointed at another dataset. `export` currently has no output option at all; `merge` writes two of its three files to fixed paths. Fix both while making the change.
-
-2. **Test the CLI (`tests/test_cli.py`).** Every subcommand is registered and dispatches; `--help` works for each. Then an **offline end-to-end run** in a `tmp_path` workspace over a small hand-written GEDCOM: `inventory` → `merge` → `export` → `frontier`, asserting each output file exists and holds what it should, and that the merge output re-parses. No network: the Wikidata commands are covered for argument wiring and for their "run the earlier step first" error paths, not by calling out.
+- **NEEDS-DECISION** — `todo.md` items 4 and 5: creating Wikidata items, for
+  people who have none and for the 1117 surnames and 1473 given names that have
+  none. Sized in `reports/names.md`. The decision is the user's.
+- **BLOCKED-ON-USER-ACTION** — `todo.md` items 3b and 7: ingesting Jenny
+  exports. Unblock signal is a Jenny export appearing in `data_lake/`.
 
 ---
 
