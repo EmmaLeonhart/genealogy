@@ -8,6 +8,7 @@ from pathlib import Path
 
 import csv
 import json
+from datetime import date
 
 from . import (
     coverage,
@@ -16,6 +17,7 @@ from . import (
     inventory,
     merge as merge_mod,
     model,
+    quickstatements,
     reconcile,
     wikidata,
 )
@@ -267,6 +269,47 @@ def _cmd_coverage(args: argparse.Namespace) -> int:
     return 0
 
 
+def _cmd_quickstatements(args: argparse.Namespace) -> int:
+    tree = _load_tree(args.source)
+
+    all_path = OUT / "wikidata" / "matched_all.csv"
+    if not all_path.exists():
+        print("run `genimerge expand` first", file=sys.stderr)
+        return 1
+
+    # Structure-confirmed links only. Name-search proposals live in
+    # candidates.csv and deliberately never reach a batch file.
+    links: dict[str, str] = {}
+    with open(all_path, encoding="utf-8", newline="") as handle:
+        for row in csv.DictReader(handle):
+            if row["source"] == "expansion":
+                links[row["geni_id"]] = row["qid"]
+
+    if not links:
+        print("no expansion-confirmed links to propose", file=sys.stderr)
+        return 1
+
+    client = wikidata.WikidataClient(cache_dir=OUT / "wikidata" / "cache", delay=args.delay)
+    batch = quickstatements.build_batch(client, tree, links, retrieved=args.retrieved)
+
+    out_dir = OUT / "wikidata"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    (out_dir / "add-p2600.qs").write_text(
+        quickstatements.render_quickstatements(batch), encoding="utf-8", newline="\n"
+    )
+    (out_dir / "add-p2600.md").write_text(
+        quickstatements.render_markdown(batch), encoding="utf-8", newline="\n"
+    )
+
+    print(f"wrote {out_dir / 'add-p2600.qs'}: {len(batch.edits)} statements")
+    print(
+        f"{len(batch.already_present)} already correct, "
+        f"{len(batch.conflicting)} contradict an existing ID (excluded, listed in the .md)"
+    )
+    print("Nothing has been sent to Wikidata. Review the .md before running the batch.")
+    return 0
+
+
 def _cmd_frontier(args: argparse.Namespace) -> int:
     tree = _load_tree(args.source)
     text = frontier.render_markdown(tree, limit=args.top)
@@ -377,6 +420,24 @@ def build_parser() -> argparse.ArgumentParser:
         help="where to write",
     )
     p_cov.set_defaults(func=_cmd_coverage)
+
+    p_qs = sub.add_parser(
+        "quickstatements",
+        help="write a reviewable QuickStatements batch adding P2600 to matched items",
+        description=(
+            "Writes a file for you to review and run yourself. Nothing is sent to "
+            "Wikidata. Structure-confirmed links only; name-search proposals are "
+            "excluded."
+        ),
+    )
+    p_qs.add_argument("--source", type=Path, default=None, help="a GEDCOM to read instead of merging")
+    p_qs.add_argument("--delay", type=float, default=1.0, help="seconds between requests")
+    p_qs.add_argument(
+        "--retrieved",
+        default=date.today().isoformat(),
+        help="date for the reference qualifier, YYYY-MM-DD (default: today)",
+    )
+    p_qs.set_defaults(func=_cmd_quickstatements)
 
     return parser
 

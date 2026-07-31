@@ -422,3 +422,32 @@ and a few modern Norwegians. Nothing from this pass is ever
 auto-accepted; it is a reviewable list, not an answer.
 
 `pytest`: 190 passed.
+
+## 2026-07-30 — a reviewable batch of Wikidata edits, and three duplicate profiles
+
+`genimerge/quickstatements.py` and `python -m genimerge quickstatements`
+write `out/wikidata/add-p2600.qs` — **33 statements** adding the Geni
+profile ID to Wikidata items that describe someone with a Geni profile
+and do not say so — plus `add-p2600.md` listing every edit with links to
+both sides.
+
+**Nothing is sent to Wikidata.** The batch is a file to read and, if the
+user agrees with it, run themselves. Two rules are enforced rather than
+assumed: only *structure-confirmed* links are eligible, so no
+name-search proposal reaches a batch file however good its score looked;
+and the current P2600 of every target item is fetched first.
+
+That second check earned its keep immediately. **Three items already
+carry a different Geni ID than the one we matched** — Q101248596 (Haakon
+Jonsson Roos), Q3736064 (Sune), Q4988633 (Hafrid Sigtryggsdotter
+Boberg). Each means either our match is wrong or **two Geni profiles
+exist for one person** and Wikidata points at the other one. Neither is
+safe to overwrite, so all three are excluded from the batch and listed
+for a human, and they are arguably the most useful thing this run
+produced: they are duplicate profiles to merge on Geni.
+
+Adding these IDs pays forward. Once an item carries a P2600, the exact
+join finds that person on every future run, so each edit makes the next
+reconciliation cheaper than the last.
+
+`pytest`: 199 passed.

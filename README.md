@@ -67,6 +67,7 @@ python -m genimerge reconcile        # match by P2600       -> out/wikidata/
 python -m genimerge expand --search  # propose more links   -> out/wikidata/candidates.csv
 python -m genimerge coverage         # what is linked       -> reports/wikidata-coverage.md
 python -m genimerge frontier         # what to export next  -> reports/frontier.md
+python -m genimerge quickstatements  # edits to review      -> out/wikidata/add-p2600.qs
 ```
 
 Every command is re-runnable and reads the previous stage's output. Wikidata
@@ -81,3 +82,15 @@ Generated, and worth reading in this order:
 - `reports/merge.md` — what merged, what conflicted, what did not resolve
 - `reports/wikidata-coverage.md` — how much of the tree reaches Wikidata
 - `reports/frontier.md` — where the tree stops, and which profiles to export from next
+
+## Editing Wikidata
+
+This project **never writes to Wikidata**. `genimerge quickstatements` produces
+`out/wikidata/add-p2600.qs` — a batch adding the Geni profile ID to items that
+should carry one — plus a readable `add-p2600.md` listing every edit with links
+to both sides. Review it, then run it yourself at
+[QuickStatements](https://quickstatements.toolforge.org/) if you agree with it.
+
+Only structure-confirmed links get into the batch. Name-search proposals stay in
+`out/wikidata/candidates.csv` no matter how good their score looked, because a
+matching string is not evidence that two records describe the same person.

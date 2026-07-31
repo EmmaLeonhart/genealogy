@@ -17,8 +17,6 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 Derived from `todo.md` items 1 (canonical merge), 2 (Wikidata reconciliation),
 and a first slice of 3 (expansion frontier). Work top to bottom.
 
-1. **Emit a QuickStatements batch adding P2600 to items we matched without it.** Decomposed from `todo.md` item 6 (backfill existing items). Every link found by structural expansion is a Wikidata item that *should* carry the Geni profile ID and does not. `genimerge/quickstatements.py` writes `out/wikidata/add-p2600.qs` in QuickStatements v1 format, one `Qxxx\tP2600\t"<geni id>"` line per link, with a reference. **Only expansion-confirmed links, never search proposals**, and the file is for the user to review and run — this project does not write to Wikidata. Include a companion `.md` listing each edit in readable form.
-
 ---
 
 ## Always last — restart the three crons and summarize
