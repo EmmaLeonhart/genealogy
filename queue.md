@@ -12,24 +12,12 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ---
 
-## Active — the identity guard has never been proven to fire
+## Active
 
-Found the same way as the CLI gap: by looking. `genimerge/identity.py` is the
-one module the entire merge rests on, and it has **no test file**. Worse,
-`IdentityMismatch` — the exception that stops a record whose xref and `RFN`
-disagree from being treated as one person — is **never raised anywhere in the
-suite**. Its only mention is a comment in
-`test_merge_real_exports.py` saying it *would* raise, on data where it never
-does. A guard that has never fired is a guard nobody has checked.
+**Empty.** `genimerge/identity.py` now has 22 tests, and writing them found a
+real defect in the ID pattern (see `devlog.md`).
 
-1. **Write `tests/test_identity.py`.** Cover `geni_id_from_xref` (valid, malformed, absent, non-numeric), `geni_id_of` (agreeing, **disagreeing so the exception actually fires**, `RFN` absent, xref absent so `RFN` is the fallback, and `strict=False`), `geni_id_from_pointer`, `xref_for`, and `profile_url`.
-
-2. **Pin down what the merge actually keys on, in a test.** `Merger.add_source` keys on `record.xref` directly and never calls `geni_id_of`, so a record whose `RFN` contradicted its xref would merge on the xref without complaint. That is a defensible choice — the xref is the identifier and `RFN` is corroboration checked elsewhere — but right now it is implicit. Make it an asserted, documented decision rather than an accident, and say in `identity.py` where the cross-check does and does not run.
-
----
-
-**When those are done the queue is empty again.** What remains needs something
-this repo does not have:
+What remains needs something this repo does not have:
 
 - **NEEDS-DECISION** — `todo.md` items 4 and 5: creating Wikidata items, for
   people who have none and for the 1117 surnames and 1473 given names that have

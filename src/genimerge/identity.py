@@ -28,7 +28,18 @@ __all__ = [
     "IdentityMismatch",
 ]
 
-GENI_ID_RE = re.compile(r"^@(?P<kind>[A-Za-z_]+)(?P<geni_id>\d+)@$")
+#: The record-type letters Geni uses, each bound to exactly one record type.
+#: Measured, not assumed: across all 19,274 xrefs in the three exports there are
+#: exactly four — ``I`` on every ``INDI``, ``F`` on every ``FAM``, ``N`` on every
+#: ``NOTE``, ``S`` on every ``SUBM``.
+GENI_XREF_KINDS = "IFNS"
+
+#: Deliberately narrow. An earlier version accepted any run of letters, which
+#: meant a foreign xref like ``@NI04461@`` parsed as Geni ID ``04461`` — a
+#: fabricated ID pointing at somebody else's profile page. The exports contain
+#: exactly one such pointer, and it is dangling, so nothing real is lost by
+#: refusing to read it.
+GENI_ID_RE = re.compile(rf"^@(?P<kind>[{GENI_XREF_KINDS}])(?P<geni_id>\d+)@$")
 RFN_PREFIX = "geni:"
 
 

@@ -622,3 +622,46 @@ reports with the refactored CLI and `git diff reports/` came back
 **empty** — byte-identical output.
 
 `pytest`: 333 passed.
+
+## 2026-07-30 — the identity guard had never fired, and the pattern was wrong
+
+Found by looking again rather than declaring the queue blocked.
+`genimerge/identity.py` — the module the entire merge rests on — had **no
+test file**, and `IdentityMismatch`, the exception that stops a record
+whose xref and `RFN` disagree from being treated as one person, was
+**never raised anywhere in the suite**. Its only mention was a comment
+claiming it would, on data where it never does. A guard nobody has seen
+fire is a guard nobody has checked.
+
+`tests/test_identity.py`, 22 tests. Three of them failed on the first
+run, and they were right to.
+
+**The defect.** `GENI_ID_RE` accepted any run of letters as the record-type
+prefix, so the xref `@NI04461@` parsed as Geni ID **`04461`** — a
+fabricated ID, and `profile_url` would have produced a link to a
+stranger's Geni profile. Measured what the data actually uses before
+changing anything: across all 19,274 xrefs in the three exports there are
+exactly four prefixes, each bound to one record type — `I` on every
+`INDI`, `F` on every `FAM`, `N` on every `NOTE`, `S` on every `SUBM`. The
+pattern now accepts only those. And `@NI04461@` is real: it is the single
+`NOTE`→`NOTE` dangling pointer the merge report has been counting all
+along, so refusing to read it loses nothing.
+
+That is a defect the tests found in code that had shipped six commits
+earlier, and it existed precisely because the module had no tests.
+
+**What the merge keys on is now an asserted decision, not an accident.**
+`Merger.add_source` keys on `record.xref` and never calls `geni_id_of`, so
+a record whose `RFN` contradicted its xref merges on the xref without
+complaint. That is the right call — a merge that refused to run over one
+odd record would be useless — but it means the cross-check is *not* a
+merge-time guard. It runs in `inventory`, in `model`, and over the merged
+output in `test_merge_real_exports.py`. A test now states this and proves
+both halves: the merge does not raise, and `geni_id_of` on the same record
+does.
+
+Regression check beyond the suite: regenerated the committed reports and
+`git diff reports/` came back empty; merge totals unchanged at 8766
+individuals and 4056 families.
+
+`pytest`: 355 passed.

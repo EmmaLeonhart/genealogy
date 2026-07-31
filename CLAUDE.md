@@ -39,6 +39,17 @@ fuzzy name matching. `genimerge.identity` is the single place that knows this;
 `tests/test_gedcom_real_exports.py` asserts it against the real files so a
 change in Geni's format fails loudly.
 
+Exactly **four xref prefixes** occur, each bound to one record type: `I` on
+`INDI`, `F` on `FAM`, `N` on `NOTE`, `S` on `SUBM` — measured over all 19,274
+xrefs. `GENI_ID_RE` accepts only those on purpose: when it accepted any letters,
+the foreign xref `@NI04461@` parsed as Geni ID `04461` and would have produced a
+URL to a stranger's profile.
+
+**The xref is the merge key; `RFN` is corroboration checked elsewhere.**
+`Merger.add_source` deliberately does not call `geni_id_of`, so a contradictory
+`RFN` does not stop a merge. The cross-check runs in `inventory`, in `model`,
+and over the merged output in `tests/test_merge_real_exports.py`.
+
 **Exports are capped at 3836 individuals.** All three exports hit that number
 exactly while sharing only 354 people, so they are overlapping slices, not
 copies. Expect to merge many exports over time, and expect the merge to be
