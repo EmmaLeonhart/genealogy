@@ -255,3 +255,24 @@ Coverage of the merged 8766: **6386** have a father, **5843** a mother,
 4093 F).
 
 `pytest`: 104 passed.
+
+## 2026-07-30 — Wikidata property set confirmed
+
+Every property and item ID the project will use, checked against live
+Wikidata with `wbgetentities` rather than recalled, and written into
+`CLAUDE.md` so no later step guesses. Worth the trip: **P1288**, which
+looks like it could be a genealogy identifier, is the *Kritisches Lexikon
+der Gegenwartsliteratur* ID.
+
+Confirmed: P2600 Geni.com profile ID · P31/Q5 · P21 with Q6581097 male
+and Q6581072 female · P22/P25 parents · P26 spouse (P2842 place of
+marriage as its qualifier) · P40 child · P3373 sibling · P569/P570 dates
+· P19/P20/P119 places · P106 occupation · P97 noble title · P535 Find a
+Grave · P735/P734 given and family name, whose values are items of type
+Q202444 / Q12308941 / Q11879590 / Q3409032 and Q101352 · P1477 birth name
+and P1559 name in native language, both monolingual text.
+
+The GEDCOM date modifiers map cleanly onto qualifiers, which is why the
+model kept them: `ABT` becomes P1480 sourcing circumstances = Q5727902
+circa, `BEF` becomes P1326 latest date, `AFT` becomes P1319 earliest
+date, and `BET x AND y` becomes both bounds.

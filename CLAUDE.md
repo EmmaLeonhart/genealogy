@@ -51,13 +51,58 @@ only when the stdlib genuinely cannot do the job.
 `src/genimerge/` the package · `reports/` generated reports worth keeping in git
 · `out/` generated data, gitignored · `tests/` pytest.
 
-### Wikidata properties
+### Wikidata properties and items
 
-Confirmed against live Wikidata; do not guess these.
+All confirmed against live Wikidata via `wbgetentities` on 2026-07-30. **Do not
+guess these** — several plausible-looking IDs are something else entirely
+(P1288, for instance, is a German literature encyclopedia, not a genealogy
+identifier).
 
-| property | meaning |
+**Identity and structure**
+
+| ID | label | datatype |
+| --- | --- | --- |
+| P2600 | Geni.com profile ID | external-id |
+| P31 | instance of | item — value `Q5` human |
+| P21 | sex or gender | item — `Q6581097` male, `Q6581072` female |
+| P22 / P25 | father / mother | item |
+| P26 | spouse | item |
+| P40 | child | item |
+| P3373 | sibling | item |
+
+**Life events**
+
+| ID | label | datatype |
+| --- | --- | --- |
+| P569 / P570 | date of birth / date of death | time |
+| P19 / P20 | place of birth / place of death | item |
+| P119 | place of burial | item |
+| P2842 | place of marriage | item (qualifier on P26) |
+| P106 | occupation | item |
+| P97 | noble title | item |
+| P535 | Find a Grave memorial ID | external-id |
+
+**Names** — the part of `todo.md` that needs new items created
+
+| ID | label | datatype |
+| --- | --- | --- |
+| P735 | given name | item — name items are `Q202444` given name, or `Q12308941` male / `Q11879590` female / `Q3409032` unisex given name |
+| P734 | family name | item — name items are `Q101352` family name |
+| P1950 | second family name in Spanish name | item (not applicable here) |
+| P1477 | birth name | monolingual text |
+| P1559 | name in native language | monolingual text |
+
+**Date qualifiers** — the GEDCOM modifiers map onto these
+
+| GEDCOM | Wikidata |
 | --- | --- |
-| P2600 | Geni.com profile ID |
+| `ABT` / `EST` / `CAL` | P1480 sourcing circumstances = `Q5727902` circa |
+| `BEF` | P1326 latest date |
+| `AFT` | P1319 earliest date |
+| `BET x AND y` | P1319 earliest date + P1326 latest date |
+
+**References** — P248 stated in, P854 reference URL, P813 retrieved,
+P143 imported from Wikimedia project.
 
 ### Working on Windows here
 
