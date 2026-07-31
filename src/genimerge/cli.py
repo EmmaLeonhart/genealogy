@@ -76,6 +76,18 @@ def _write(path: Path, text: str) -> Path:
     return path
 
 
+def make_client(ws: Workspace, args: argparse.Namespace) -> wikidata.WikidataClient:
+    """The Wikidata client every network command uses.
+
+    One function rather than six identical constructions, and — more to the
+    point — a seam. `WikidataClient` was given an injectable ``fetch`` so it
+    could be tested offline, but the commands built their own inline, so nothing
+    could reach it and every one of their bodies went untested. Substitute this
+    to run them without a network.
+    """
+    return wikidata.WikidataClient(cache_dir=ws.cache, delay=args.delay)
+
+
 def _cmd_inventory(args: argparse.Namespace) -> int:
     ws = Workspace.from_args(args)
     paths = [Path(p) for p in args.exports] or ws.exports()
@@ -153,7 +165,7 @@ def _cmd_export(args: argparse.Namespace) -> int:
 def _cmd_reconcile(args: argparse.Namespace) -> int:
     ws = Workspace.from_args(args)
     tree = _load_tree(args.source, ws)
-    client = wikidata.WikidataClient(cache_dir=ws.cache, delay=args.delay)
+    client = make_client(ws, args)
 
     def progress(done: int, total: int) -> None:
         print(f"  batch {done}/{total}", end="\r", flush=True)
@@ -210,7 +222,7 @@ def _cmd_expand(args: argparse.Namespace) -> int:
         print("no P2600 matches found; run `genimerge reconcile` first", file=sys.stderr)
         return 1
 
-    client = wikidata.WikidataClient(cache_dir=ws.cache, delay=args.delay)
+    client = make_client(ws, args)
     result = reconcile.expand_from_matches(
         client,
         tree,
@@ -335,7 +347,7 @@ def _cmd_quickstatements(args: argparse.Namespace) -> int:
         print("no expansion-confirmed links to propose", file=sys.stderr)
         return 1
 
-    client = wikidata.WikidataClient(cache_dir=ws.cache, delay=args.delay)
+    client = make_client(ws, args)
     batch = quickstatements.build_batch(client, tree, links, retrieved=args.retrieved)
 
     out_dir = ws.wikidata
@@ -369,7 +381,7 @@ def _cmd_crosscheck(args: argparse.Namespace) -> int:
         return 1
     exact = set(_read_seed_matches(ws))
 
-    client = wikidata.WikidataClient(cache_dir=ws.cache, delay=args.delay)
+    client = make_client(ws, args)
     claims = crosscheck.fetch_claims(client, linked.values())
     result = crosscheck.cross_check(tree, linked, claims)
 
@@ -404,7 +416,7 @@ def _cmd_name_links(args: argparse.Namespace) -> int:
               file=sys.stderr)
         return 1
 
-    client = wikidata.WikidataClient(cache_dir=ws.cache, delay=args.delay)
+    client = make_client(ws, args)
 
     # Only the names of people we have actually linked need looking up.
     vocabulary = names_mod.build_vocabulary(tree, people=linked)
@@ -439,7 +451,7 @@ def _cmd_names(args: argparse.Namespace) -> int:
     strings = vocabulary.all_strings()
     print(f"{len(strings)} distinct name strings; checking Wikidata")
 
-    client = wikidata.WikidataClient(cache_dir=ws.cache, delay=args.delay)
+    client = make_client(ws, args)
     items = names_mod.find_name_items(
         client,
         strings,

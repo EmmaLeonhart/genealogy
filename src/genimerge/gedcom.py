@@ -24,7 +24,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import IO, Iterable, Iterator
+from typing import Iterable, Iterator
 
 __all__ = [
     "Node",
@@ -317,16 +317,3 @@ def stream_file(path: str | Path, encoding: str = "utf-8-sig") -> Iterator[Node]
     """
     with open(path, "r", encoding=encoding, errors="replace", newline="") as handle:
         yield from iter_records(handle)
-
-
-def write_records(header: Node | None, records: Iterable[Node], handle: IO[str]) -> None:
-    """Stream records straight to an open handle, for outputs too big to buffer."""
-    out: list[str] = []
-    if header is not None:
-        _emit(header, 0, out)
-        handle.write("\n".join(out) + "\n")
-    for record in records:
-        out = []
-        _emit(record, 0, out)
-        handle.write("\n".join(out) + "\n")
-    handle.write("0 TRLR\n")

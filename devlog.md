@@ -665,3 +665,48 @@ Regression check beyond the suite: regenerated the committed reports and
 individuals and 4056 families.
 
 `pytest`: 355 passed.
+
+## 2026-07-30 — the commands that write the deliverables had never run under test
+
+Found by **measuring** rather than guessing where to look next. Branch
+coverage put the package at 89% with one outlier: **`cli.py` at 57%**,
+138 statements unexecuted. The gaps were exactly the bodies of
+`reconcile`, `expand`, `coverage`, `quickstatements`, `crosscheck`,
+`name-links` and `names` — the code that writes the CSV and
+QuickStatements files a human then reviews and acts on. The 52 CLI tests
+from the previous tick covered those commands' *refusal* paths and
+nothing else.
+
+They were untestable **by construction**: each of the six built its own
+`WikidataClient` inline, so the injectable `fetch` the client had been
+given for precisely this purpose could not be reached. `cli.make_client`
+is now the single seam, replacing six identical constructions.
+
+`tests/test_cli_wikidata.py`, 14 tests, all offline. Each asserts the
+*contents* of what a command produces, not that a file appeared: that
+`reconcile` writes both sides of a match, that `expand` walks to an
+unlinked child and records the evidence, that `crosscheck` proposes the
+death year Wikidata lacks **and does not re-propose the birth year both
+sides already agree on**, that `name-links` links to existing name items
+and sets aside names with none.
+
+**One of these tests was nearly worthless and got fixed before it
+shipped.** `test_no_command_reached_the_network` asserted only that the
+fake had seen some queries — which a command reaching the real Wikidata
+would not have contradicted. The guard now patches
+`urllib.request.urlopen` to raise, and a companion test *proves the guard
+fires* by building a client the ordinary way and asserting it explodes.
+Patching `wikidata._http_fetch` would not have worked: `fetch` defaults to
+the function object captured when the dataclass was defined, so rebinding
+the module name leaves a default-built client using the original.
+
+**Deleted `gedcom.write_records`** — defined, called nowhere, tested
+nowhere. Speculative streaming for "outputs too big to buffer" that
+nothing ever needed. Deleting it is honest where adding a test to prop it
+up would not have been.
+
+`cli.py` 57% → **94%**; the package 89% → **95%**. Also untracked
+`.coverage`, a 192 KB binary my own `git add -A` had swept into the
+previous commit, and gitignored it.
+
+`pytest`: 369 passed. Merge totals unchanged.

@@ -12,30 +12,11 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ---
 
-## Active — the commands that write the deliverables are untested
+## Active
 
-Found by measuring rather than guessing: `python -m coverage run --branch` puts
-the package at **89%**, with one outlier — **`cli.py` at 57%**, 138 statements
-unexecuted. The missing ranges are exactly the bodies of `reconcile`, `expand`,
-`coverage`, `quickstatements`, `crosscheck`, `name-links` and `names`. The 52
-CLI tests cover those commands' *refusal* paths and nothing else, so the code
-that actually writes the CSV and QuickStatements files a human then reviews has
-never run under test.
+**Empty.** `cli.py` went from 57% to 94% branch coverage; the package is at 95%.
 
-They are untestable by construction, not by oversight: each of the six builds
-its own `WikidataClient` inline, so there is no seam for a fake — even though
-the client was deliberately given an injectable `fetch` for exactly this reason.
-
-1. **Give the CLI one client seam.** Replace the six identical `wikidata.WikidataClient(cache_dir=ws.cache, delay=args.delay)` lines with a single module-level helper a test can substitute. Duplicated six times is also just duplication.
-
-2. **Test each network command's happy path offline.** With a fake client: `reconcile` writes `matched_p2600.csv`; `expand` writes `candidates.csv` and `matched_all.csv`; `coverage`, `crosscheck`, `names` write their reports; `quickstatements` and `name-links` write their `.qs` and `.md`. Assert the *contents*, not just that a file appeared — these files are the deliverable.
-
-3. **Delete `gedcom.write_records`.** Defined, called nowhere, tested nowhere: speculative streaming that was never needed. Dead code that has never run is a liability, and deleting it is honest where adding a test to prop it up would not be.
-
----
-
-**When those are done the queue is empty again.** What remains needs something
-this repo does not have:
+What remains needs something this repo does not have:
 
 - **NEEDS-DECISION** — `todo.md` items 4 and 5: creating Wikidata items, for
   people who have none and for the 1117 surnames and 1473 given names that have
