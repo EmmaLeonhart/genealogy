@@ -178,20 +178,23 @@ def _cmd_expand(args: argparse.Namespace) -> int:
 
     candidates = list(result.candidates)
 
-    if args.search:
+    if args.search or args.api_search:
         targets = reconcile.search_targets(tree, result.confirmed)
-        print(f"searching Wikidata by name for {len(targets)} unmatched people")
-        candidates += reconcile.search_candidates(
-            client,
-            tree,
-            targets,
-            result.confirmed,
-            progress=lambda done, total: (
-                print(f"  searched {done}/{total}", end="\r", flush=True)
-                if done % 25 == 0 or done == total
-                else None
-            ),
-        )
+        print(f"looking up {len(targets)} unmatched people by name")
+
+        def note(done: int, total: int) -> None:
+            print(f"  batch {done}/{total}", end="\r", flush=True)
+
+        if args.api_search:
+            # The search API is rate-limited to roughly one request every 20
+            # seconds for this corpus, so it is opt-in only.
+            candidates += reconcile.search_candidates(
+                client, tree, targets, result.confirmed, progress=note
+            )
+        else:
+            candidates += reconcile.label_candidates(
+                client, tree, targets, result.confirmed, progress=note
+            )
         print()
 
     with open(out_dir / "candidates.csv", "w", encoding="utf-8", newline="") as handle:
@@ -338,7 +341,13 @@ def build_parser() -> argparse.ArgumentParser:
     p_exp.add_argument(
         "--search",
         action="store_true",
-        help="also search Wikidata by name for plausibly-notable unmatched people",
+        help="also look unmatched people up by name in Wikidata's label index",
+    )
+    p_exp.add_argument(
+        "--api-search",
+        action="store_true",
+        help="use the full-text search API instead: better recall, but the "
+        "endpoint throttles it to roughly one name every 20 seconds",
     )
     p_exp.set_defaults(func=_cmd_expand)
 

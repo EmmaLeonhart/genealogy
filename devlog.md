@@ -368,3 +368,57 @@ no commits we did not have — so the push was a plain fast-forward with
 nothing to clobber. `74083e6..34db20a`. First CI run: **success**, 47s.
 
 <https://github.com/EmmaLeonhart/geni> (private).
+
+## 2026-07-30 — second-pass reconciliation, and the answer to "as much as possible"
+
+`genimerge/reconcile.py` and `genimerge/coverage.py`, behind
+`python -m genimerge expand --search` and `coverage`. The answer, in
+`reports/wikidata-coverage.md`:
+
+| | people | share |
+| --- | ---: | ---: |
+| linked by P2600 (exact) | 209 | 2.4% |
+| linked by expansion (structure + name + dates) | 36 | 0.4% |
+| **linked, total** | **245** | **2.8%** |
+| proposed, awaiting review | 87 | 1.0% |
+| neither | 8434 | 96.2% |
+
+The century breakdown is the real answer, and it says the reconciliation
+is working rather than failing: **47.7% of people born in the 1000s and
+42.7% of those born in the 1100s are linked**, falling to 3% by the
+1400s and 0% through the 1600s–1700s. Wikidata's coverage of a family
+tree is coverage of its notable members, and this tree's notable members
+are medieval. 2.8% overall is not a shortfall — it is what a tree of
+mostly Norwegian farmers should score.
+
+**Structural expansion beats name search**, which is why it runs first.
+Walking outward from a confirmed match along P22/P25/P26/P40 and
+requiring name and date agreement added 36 links over three rings before
+going dry. It stops early because most Wikidata relatives of a matched
+person *already* carry a P2600 and were matched in pass one.
+
+**The name-search pass was rewritten mid-flight.** The first version
+asked the Wikidata search API once per person; the endpoint throttled it
+to roughly one request every twenty seconds, so 1127 people would have
+taken about five hours. It now matches exact labels and aliases through
+the label index instead, hundreds of names per query: **29 requests,
+about a minute**. The trade is real and worth stating — exact matching
+only finds names written the same way on both sides, where full-text
+search tolerated variation. The API path is still there behind
+`--api-search` for anyone willing to wait.
+
+**And the confidence scoring was wrong, in a way that mattered.** The
+first run produced 92 "high confidence" name matches — including four
+separate Wikidata items all offered as *the* match for "Peder Christensen
+Trane". This tree is full of Scandinavian patronymics, and "Peder
+Christensen" is several different people. Two changes: a name with no
+relationship behind it now needs an agreeing date to reach high
+confidence, and when one name matches several items that is treated as
+evidence the name is not identifying, so all of them are downgraded and
+labelled "N Wikidata people share this name". High name-matches fell from
+92 to **12** — and those twelve are Faroese chieftains (Øssur
+Havgrímsson, Leivur Øssurson), the archbishop Pål Bårdsson, Jon Smør,
+and a few modern Norwegians. Nothing from this pass is ever
+auto-accepted; it is a reviewable list, not an answer.
+
+`pytest`: 190 passed.

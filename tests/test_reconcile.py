@@ -1,7 +1,8 @@
 import json
+import urllib.parse
 
 from genimerge import gedcom, reconcile
-from genimerge.model import build_tree
+from genimerge.model import Name, build_tree
 from genimerge.reconcile import Relative, name_score, normalise_name, score_pair
 from genimerge.wikidata import WikidataClient
 
@@ -82,14 +83,17 @@ def _rows(triples):
 
 def _client(tmp_path, responses):
     responses = list(responses)
-    calls = []
+    calls: list[str] = []
+    bodies: list[str] = []
 
     def fetch(url, data=None, headers=None):
         calls.append(url)
+        bodies.append(data.decode("utf-8") if data else "")
         return responses.pop(0) if responses else _rows([])
 
-    client = WikidataClient(cache_dir=tmp_path / "c", fetch=fetch, delay=0)
+    client = WikidataClient(cache_dir=tmp_path / "c", fetch=fetch, delay=0, max_backoff=0)
     client.urls_requested = calls
+    client.bodies_sent = bodies
     return client
 
 
@@ -414,6 +418,202 @@ def test_weak_search_hits_are_dropped_rather_than_listed(tmp_path):
     t = tree()
 
     assert reconcile.search_candidates(client, t, [t.people["4"]], {}) == []
+
+
+def test_name_variants_offer_several_shots_at_one_person():
+    t = tree()
+    variants = reconcile.name_variants(t.people["1"])
+
+    assert "Sverker the Elder" in variants
+    assert all(len(v.split()) >= 2 for v in variants)
+
+
+def test_a_mononym_yields_no_variants():
+    # "Olof" alone would match hundreds of unrelated people and nothing
+    # downstream could tell them apart, so it is not looked up at all.
+    t = tree()
+    t.people["1"].names = [Name(full="Olof", given="Olof")]
+
+    assert reconcile.name_variants(t.people["1"]) == []
+
+
+def test_a_name_alone_never_reaches_high_confidence():
+    # This tree is full of patronymics. Without a relationship behind it, a
+    # matching string is not enough on its own.
+    person = tree().people["5"]
+    relative = Relative(qid="Q1", role="name-match", label="Helena of Sweden")
+
+    assert score_pair(person, relative, structural=True)[0] == "high"
+    assert score_pair(person, relative, structural=False)[0] == "medium"
+
+
+def test_a_name_plus_an_agreeing_date_is_high_even_without_a_relationship():
+    person = tree().people["4"]
+    relative = Relative(qid="Q1", role="name-match", label="Karl Sverkersson",
+                        birth_year=1130)
+
+    assert score_pair(person, relative, structural=False)[0] == "high"
+
+
+def test_scoring_can_use_the_variant_that_actually_matched():
+    person = tree().people["1"]  # display name "Sverker the Elder"
+    relative = Relative(qid="Q1", role="name-match", label="Sverker I of Sweden")
+
+    plain = score_pair(person, relative, structural=False)[1]
+    via_variant = score_pair(
+        person, relative, person_name="Sverker I of Sweden", structural=False
+    )[1]
+
+    assert via_variant > plain
+
+
+def test_several_people_sharing_one_name_are_all_downgraded(tmp_path):
+    response = json.dumps(
+        {
+            "results": {
+                "bindings": [
+                    {
+                        "item": {"value": f"http://www.wikidata.org/entity/Q{n}"},
+                        "label": {"value": "Karl Sverkersson"},
+                        "birth": {"value": "+1130-01-01T00:00:00Z"},
+                    }
+                    for n in (77, 78, 79)
+                ]
+            }
+        }
+    ).encode("utf-8")
+    client = _client(tmp_path, [response])
+    t = tree()
+
+    candidates = reconcile.label_candidates(client, t, [t.people["4"]], {})
+
+    assert len(candidates) == 3
+    assert {c.confidence for c in candidates} == {"medium"}
+    assert all("3 Wikidata people share this name" in c.year_evidence for c in candidates)
+
+
+def test_a_single_unambiguous_hit_keeps_its_confidence(tmp_path):
+    response = json.dumps(
+        {
+            "results": {
+                "bindings": [
+                    {
+                        "item": {"value": "http://www.wikidata.org/entity/Q77"},
+                        "label": {"value": "Karl Sverkersson"},
+                        "birth": {"value": "+1130-01-01T00:00:00Z"},
+                    }
+                ]
+            }
+        }
+    ).encode("utf-8")
+    client = _client(tmp_path, [response])
+    t = tree()
+
+    candidates = reconcile.label_candidates(client, t, [t.people["4"]], {})
+
+    assert [c.confidence for c in candidates] == ["high"]
+    assert "share this name" not in candidates[0].year_evidence
+
+
+def test_label_lookup_proposes_matches_without_accepting_them(tmp_path):
+    response = json.dumps(
+        {
+            "results": {
+                "bindings": [
+                    {
+                        "item": {"value": "http://www.wikidata.org/entity/Q77"},
+                        "label": {"value": "Karl Sverkersson"},
+                        "birth": {"value": "+1130-01-01T00:00:00Z"},
+                    }
+                ]
+            }
+        }
+    ).encode("utf-8")
+    client = _client(tmp_path, [response])
+    t = tree()
+
+    candidates = reconcile.label_candidates(client, t, [t.people["4"]], {})
+
+    assert [(c.qid, c.confidence, c.accepted, c.role) for c in candidates] == [
+        ("Q77", "high", False, "name-match")
+    ]
+
+
+def test_label_lookup_batches_many_names_into_few_queries(tmp_path):
+    t = tree()
+    people = list(t.people.values())
+    client = _client(tmp_path, [_rows([]) for _ in range(5)])
+
+    reconcile.label_candidates(
+        client, t, people, {}, languages=["en", "sv"], literals_per_query=4
+    )
+
+    # Far fewer requests than people: that is the whole point of this pass.
+    assert client.requests_made <= 3
+
+
+def test_a_label_hit_already_claimed_is_skipped(tmp_path):
+    response = json.dumps(
+        {
+            "results": {
+                "bindings": [
+                    {
+                        "item": {"value": "http://www.wikidata.org/entity/Q1"},
+                        "label": {"value": "Karl Sverkersson"},
+                        "birth": {"value": "+1130-01-01T00:00:00Z"},
+                    }
+                ]
+            }
+        }
+    ).encode("utf-8")
+    client = _client(tmp_path, [response])
+    t = tree()
+
+    assert reconcile.label_candidates(client, t, [t.people["4"]], {"1": "Q1"}) == []
+
+
+def test_the_same_item_is_not_proposed_twice_for_one_person(tmp_path):
+    # Two name variants can both match the same item.
+    response = json.dumps(
+        {
+            "results": {
+                "bindings": [
+                    {
+                        "item": {"value": "http://www.wikidata.org/entity/Q77"},
+                        "label": {"value": "Karl Sverkersson"},
+                        "birth": {"value": "+1130-01-01T00:00:00Z"},
+                    },
+                    {
+                        "item": {"value": "http://www.wikidata.org/entity/Q77"},
+                        "label": {"value": "Karl /Sverkersson/"},
+                        "birth": {"value": "+1130-01-01T00:00:00Z"},
+                    },
+                ]
+            }
+        }
+    ).encode("utf-8")
+    client = _client(tmp_path, [response])
+    t = tree()
+
+    assert len(reconcile.label_candidates(client, t, [t.people["4"]], {})) == 1
+
+
+def test_a_quote_in_a_name_is_escaped_rather_than_ending_the_literal(tmp_path):
+    # 'Knud IV "the Holy" Estridson' is a real name in this tree. Unescaped, it
+    # closes the SPARQL string early and the whole batch fails to parse.
+    t = tree()
+    t.people["4"].names = [
+        Name(full='Knud IV "the Holy" Estridson', given="Knud", surname="Estridson")
+    ]
+    client = _client(tmp_path, [_rows([])])
+
+    reconcile.label_candidates(client, t, [t.people["4"]], {}, languages=["en"])
+    query = urllib.parse.parse_qs(client.bodies_sent[0])["query"][0]
+
+    assert r'\"the Holy\"' in query
+    # Every literal opens and closes, so discounting the escaped quotes must
+    # leave exactly two per literal.
+    assert query.count('"') - query.count(r'\"') == 2 * query.count("@en")
 
 
 def test_search_restricts_results_to_humans(tmp_path):

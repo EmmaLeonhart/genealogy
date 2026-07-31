@@ -39,7 +39,15 @@ __all__ = [
     "distance_from_matched",
     "search_targets",
     "search_candidates",
+    "label_candidates",
+    "name_variants",
+    "LABEL_LANGUAGES",
 ]
+
+#: Languages whose labels and aliases are worth checking. This tree is
+#: Norwegian, Swedish and Danish with a medieval European fringe, and Wikidata
+#: labels those people in whichever language wrote about them.
+LABEL_LANGUAGES = ("en", "no", "nb", "nn", "sv", "da", "de", "is")
 
 #: Relationship properties, and what each means when read from the item.
 ROLE_BY_PROPERTY = {
@@ -207,9 +215,24 @@ def _is_approximate(person: Person, kind: str) -> bool:
     return bool(event and event.date and event.date.modifier)
 
 
-def score_pair(person: Person, relative: Relative) -> tuple[str | None, float, str]:
-    """Judge one proposed link. Returns (confidence or None, name score, evidence)."""
-    score = name_score(person.display_name, relative.label)
+def score_pair(
+    person: Person,
+    relative: Relative,
+    *,
+    person_name: str | None = None,
+    structural: bool = True,
+) -> tuple[str | None, float, str]:
+    """Judge one proposed link. Returns (confidence or None, name score, evidence).
+
+    ``structural`` says whether a relationship stands behind the proposal. It
+    matters a great deal. When we already know this is the father of a matched
+    person, a good name is strong corroboration. When all we have is a matching
+    string, it is much weaker — this tree is full of Scandinavian patronymics,
+    and "Peder Christensen" is four different people on Wikidata. So without a
+    relationship, a name alone never reaches high confidence; a date has to
+    agree too.
+    """
+    score = name_score(person_name or person.display_name, relative.label)
 
     birth_vote, birth_note = _compare_years(
         person.birth_year, relative.birth_year, _is_approximate(person, "birth"), "birth"
@@ -225,6 +248,15 @@ def score_pair(person: Person, relative: Relative) -> tuple[str | None, float, s
         return None, score, evidence or "dates contradict"
 
     agreeing = max(birth_vote, 0) + max(death_vote, 0)
+
+    if not structural:
+        # No relationship behind this — only a string matched.
+        if agreeing and score >= 0.6:
+            return HIGH, score, evidence
+        if agreeing or score >= 0.6:
+            return MEDIUM, score, evidence or "name matches, no dates to check"
+        return LOW, score, evidence
+
     if agreeing and score >= 0.34:
         return HIGH, score, evidence
     if score >= 0.6:
@@ -389,6 +421,159 @@ def search_candidates(
                     accepted=False,
                 )
             )
+    return candidates
+
+
+def name_variants(person: Person) -> list[str]:
+    """The name strings worth looking up for one person.
+
+    Geni names carry patronymics, titles and place phrases that a Wikidata label
+    will not have, so the exact-label lookup gets several shots: every ``NAME``
+    record the person has, and a plain "first given name + surname" form.
+
+    Single-token variants are dropped. A lookup for "Olof" would match hundreds
+    of unrelated people, and nothing downstream could tell them apart — so
+    mononyms are simply not reachable this way, which is a real limit of this
+    pass rather than something hidden.
+    """
+    seen: list[str] = []
+
+    def add(text: str) -> None:
+        text = " ".join(text.replace("/", " ").split())
+        if len(text.split()) >= 2 and text not in seen:
+            seen.append(text)
+
+    for name in person.names:
+        add(name.display)
+        add(name.full)
+        if name.given and name.surname:
+            add(f"{name.given.split()[0]} {name.surname}")
+
+    return seen
+
+
+def _escape(text: str) -> str:
+    return text.replace("\\", "\\\\").replace('"', '\\"')
+
+
+def label_candidates(
+    client: WikidataClient,
+    tree: Tree,
+    targets: Iterable[Person],
+    matched: dict[str, str],
+    *,
+    languages: Iterable[str] = LABEL_LANGUAGES,
+    literals_per_query: int = 600,
+    progress: Callable[[int, int], None] | None = None,
+) -> list[Candidate]:
+    """Propose links by looking each target's name up in Wikidata's label index.
+
+    This replaced a per-name call to the search API, which the endpoint
+    rate-limited to roughly one request every twenty seconds — hours for this
+    corpus. Exact label and alias matching goes through an index instead, so
+    hundreds of names fit in one query and the whole pass takes minutes.
+
+    The trade is recall: exact matching only finds names written the same way on
+    both sides, where full-text search tolerated variation. Structural expansion
+    is the pass that is meant to catch the rest.
+
+    Proposals only. Nothing here is ever marked accepted — there is no
+    relationship behind these, just a string that matched.
+    """
+    targets = list(targets)
+    languages = list(languages)
+
+    wanted: dict[str, list[str]] = {}
+    for person in targets:
+        variants = name_variants(person)
+        if variants:
+            wanted[person.geni_id] = variants
+
+    literals = sorted({v for variants in wanted.values() for v in variants})
+    found: dict[str, list[Relative]] = defaultdict(list)
+
+    per_batch = max(1, literals_per_query // max(len(languages), 1))
+    batches = [literals[i : i + per_batch] for i in range(0, len(literals), per_batch)]
+
+    for index, batch in enumerate(batches, start=1):
+        values = " ".join(
+            f'"{_escape(name)}"@{lang}' for name in batch for lang in languages
+        )
+        query = (
+            "SELECT ?item ?label ?birth ?death WHERE {\n"
+            f"  VALUES ?label {{ {values} }}\n"
+            "  ?item rdfs:label|skos:altLabel ?label.\n"
+            "  ?item wdt:P31 wd:Q5.\n"
+            "  OPTIONAL { ?item wdt:P569 ?birth }\n"
+            "  OPTIONAL { ?item wdt:P570 ?death }\n"
+            "}"
+        )
+        merged: dict[tuple[str, str], Relative] = {}
+        for row in client.sparql(query):
+            qid = row["item"].rsplit("/", 1)[-1]
+            label = row["label"]
+            key = (label, qid)
+            existing = merged.get(key)
+            merged[key] = Relative(
+                qid=qid,
+                role="name-match",
+                label=label,
+                birth_year=_year_of(row.get("birth"))
+                or (existing.birth_year if existing else None),
+                death_year=_year_of(row.get("death"))
+                or (existing.death_year if existing else None),
+            )
+        for (label, _qid), relative in merged.items():
+            found[label].append(relative)
+        if progress is not None:
+            progress(index, len(batches))
+
+    taken = set(matched.values())
+    candidates: list[Candidate] = []
+
+    for person in targets:
+        proposed: set[str] = set()
+        mine: list[Candidate] = []
+        for variant in wanted.get(person.geni_id, ()):
+            for relative in found.get(variant, ()):
+                if relative.qid in taken or relative.qid in proposed:
+                    continue
+                confidence, score, evidence = score_pair(
+                    person, relative, person_name=variant, structural=False
+                )
+                if confidence is None or confidence == LOW:
+                    continue
+                proposed.add(relative.qid)
+                mine.append(
+                    Candidate(
+                        geni_id=person.geni_id,
+                        qid=relative.qid,
+                        confidence=confidence,
+                        role="name-match",
+                        via_geni_id="",
+                        via_qid="",
+                        geni_name=person.display_name,
+                        wikidata_label=relative.label,
+                        name_score=score,
+                        year_evidence=evidence,
+                        accepted=False,
+                    )
+                )
+
+        # Several Wikidata people answering to one name is itself evidence: the
+        # name is not identifying. "Peder Christensen" matches four items, and
+        # calling all four high-confidence would be worse than useless to
+        # whoever has to review them.
+        if len(mine) > 1:
+            for candidate in mine:
+                if candidate.confidence == HIGH:
+                    candidate.confidence = MEDIUM
+                candidate.year_evidence = (
+                    f"{len(mine)} Wikidata people share this name"
+                    + (f"; {candidate.year_evidence}" if candidate.year_evidence else "")
+                )
+        candidates += mine
+
     return candidates
 
 

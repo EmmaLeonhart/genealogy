@@ -57,9 +57,27 @@ Nothing to install; the package is stdlib-only and `pytest` is wired to find it
 via `pythonpath`.
 
 ```bash
-python -m pytest                                # run the tests
-PYTHONPATH=src python -m genimerge inventory    # re-measure the exports
-PYTHONPATH=src python -m genimerge merge        # build out/merged.ged
+python -m pytest                     # run the tests
+
+export PYTHONPATH=src                # on PowerShell: $env:PYTHONPATH="src"
+python -m genimerge inventory        # measure the exports  -> reports/inventory.md
+python -m genimerge merge            # merge them           -> out/merged.ged
+python -m genimerge export           # canonical dataset    -> out/people.jsonl
+python -m genimerge reconcile        # match by P2600       -> out/wikidata/
+python -m genimerge expand --search  # propose more links   -> out/wikidata/candidates.csv
+python -m genimerge coverage         # what is linked       -> reports/wikidata-coverage.md
+python -m genimerge frontier         # what to export next  -> reports/frontier.md
 ```
 
-On Windows PowerShell, `$env:PYTHONPATH="src"` instead of the inline prefix.
+Every command is re-runnable and reads the previous stage's output. Wikidata
+responses are cached under `out/wikidata/cache/`, so re-running a report costs
+nothing; delete that directory to force a refresh.
+
+## Reports
+
+Generated, and worth reading in this order:
+
+- `reports/inventory.md` — what is in each export, and how little they overlap
+- `reports/merge.md` — what merged, what conflicted, what did not resolve
+- `reports/wikidata-coverage.md` — how much of the tree reaches Wikidata
+- `reports/frontier.md` — where the tree stops, and which profiles to export from next
