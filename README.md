@@ -56,6 +56,11 @@ tests/         pytest
 Nothing to install; the package is stdlib-only and `pytest` is wired to find it
 via `pythonpath`.
 
+Tests run **locally**, not on push. This is a private repo, where GitHub Actions
+minutes are billable rather than free, so `.github/workflows/ci.yml` is
+manual-only (`workflow_dispatch`) and disabled at the GitHub end. Run the suite
+before pushing:
+
 ```bash
 python -m pytest                     # run the tests
 

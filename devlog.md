@@ -765,3 +765,44 @@ floor it checks.
 
 The sources pass: every file parses at 3.10, none reaches for a newer
 name. `pytest`: **427 passed**, Python 3.13 only. Still not CI-verified.
+
+## 2026-07-31 — CI turned off: billable minutes on a private repo
+
+The user asked why Actions was running on a private repo at all, given it
+costs money. Fair, and my fault: I wired push-triggered CI during
+bootstrap without flagging that Actions minutes are free on *public*
+repos but billable on private ones once the monthly allowance is used.
+Enabling a metered service on someone's account is not a detail to slip
+into a commit.
+
+**What it actually cost, as far as I can see: nothing.** GitHub's own
+timing API reports **0 billable milliseconds across all 14 runs** — the
+seven that ran used roughly 10 minutes of wall-clock, against the 2,000
+minutes a month included with private repos on Free. The account-level
+figure needs a `user` OAuth scope this token does not have, so that is
+GitHub's accounting rather than the final invoice, and the user should
+confirm in Billing & plans.
+
+Which also reframes the earlier block. *"Recent account payments have
+failed or your spending limit needs to be increased"* appeared while
+usage was inside the free allowance, so it is an **account-level payment
+problem, not a bill from this repo** — something else on the account
+switched Actions off everywhere. Recording that because the previous
+entry tagged it BLOCKED-ON-USER-ACTION on the assumption it was ours to
+unblock.
+
+Turned off structurally, not just switched off:
+
+- the workflow is **disabled** at the GitHub end (`gh workflow disable`);
+- `ci.yml` lost its `push:` and `pull_request:` triggers and is now
+  `workflow_dispatch:` only, so re-enabling it does not silently resume
+  per-push billing;
+- `CLAUDE.md` says never to re-add a push trigger here, and why;
+- `README.md` and `queue.md` now describe local `pytest` as the
+  verification step.
+
+**The cost of the decision is stated rather than hidden:** the Python
+version matrix no longer runs, so 3.10 is covered only by the static
+check in `tests/test_python_floor.py`, and nothing should be called
+CI-verified. That is a real reduction in assurance, and the right trade
+against an unexpected bill — but it is a trade, not a free win.

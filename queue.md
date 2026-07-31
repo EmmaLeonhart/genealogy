@@ -19,14 +19,14 @@ the CI matrix, and labelled as one.
 
 What remains needs something this repo does not have:
 
-- **BLOCKED-ON-USER-ACTION — CI is not running.** Since 2026-07-30 06:29 UTC
-  both matrix jobs refuse to start: *"The job was not started because recent
-  account payments have failed or your spending limit needs to be increased."*
-  A GitHub billing state, not a repo problem — the run 47 seconds earlier
-  passed. The action is fixing billing or the spending limit in GitHub
-  settings; the unblock signal is a run that starts. **Until then no commit can
-  honestly be called CI-verified, and Python 3.10 is untested** — local runs are
-  3.13 only.
+- **CI is off on purpose, and stays off.** Not a blocker — a decision. This is a
+  private repo, where Actions minutes are billable rather than free, and
+  push-triggered CI was never worth that risk. `ci.yml` is now
+  `workflow_dispatch:` only and the workflow is disabled at the GitHub end.
+  Verification is `python -m pytest` before pushing. The cost of that choice is
+  named rather than hidden: **the Python version matrix does not run**, so 3.10
+  is exercised only by the static check in `tests/test_python_floor.py`, and no
+  commit should be described as CI-verified.
 - **NEEDS-DECISION** — `todo.md` items 4 and 5: creating Wikidata items, for
   people who have none and for the 1117 surnames and 1473 given names that have
   none. Sized in `reports/names.md`. The decision is the user's.

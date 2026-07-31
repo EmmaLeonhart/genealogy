@@ -115,6 +115,19 @@ identifier).
 **References** — P248 stated in, P854 reference URL, P813 retrieved,
 P143 imported from Wikimedia project.
 
+### Cost: this repo is private, so CI is manual-only
+
+**Never add a `push:` or `pull_request:` trigger to `.github/workflows/`.**
+Actions minutes are free on public repos but billable on private ones once the
+monthly allowance is used, and a surprise bill is not worth a green tick.
+`ci.yml` is `workflow_dispatch:` only, and the workflow is disabled at the
+GitHub end as well.
+
+Verification therefore happens **locally, before pushing**: `python -m pytest`.
+The suite is fast, needs only pytest, and covers the real 24 MB exports. The one
+thing local runs cannot do is the Python version matrix — `tests/test_python_floor.py`
+is a partial stand-in for that, and says so.
+
 ### Working on Windows here
 
 - Commit with `git commit -F <msgfile>`, not `-m` with a here-string: PowerShell

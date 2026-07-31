@@ -1,8 +1,25 @@
 name: CI
 
+# MANUAL ONLY, ON PURPOSE.
+#
+# This is a private repo, and Actions minutes on private repos are billable
+# once the monthly free allowance runs out — unlike public repos, where they
+# are free. Nothing here is worth a surprise bill, so there is no `push` or
+# `pull_request` trigger: this workflow runs only when somebody asks for it.
+#
+# The tests are fast and have no dependencies beyond pytest, so the normal way
+# to run them is locally:
+#
+#     python -m pytest
+#
+# To run this on GitHub anyway (Actions > CI > Run workflow, or):
+#
+#     gh workflow run CI --repo <owner>/geni
+#
+# Re-adding a `push:` trigger means opting back into per-push billing. Don't do
+# it without deciding that on purpose.
 on:
-  push:
-  pull_request:
+  workflow_dispatch:
 
 jobs:
   test:
