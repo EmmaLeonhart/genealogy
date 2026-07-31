@@ -12,21 +12,12 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ---
 
-## Active — nothing checks the Python floor we advertise
+## Active
 
-`pyproject.toml` claims `requires-python = ">=3.10"`. CI was the only thing
-testing that, and CI has stopped running; the only interpreter on this machine
-is 3.13. So the floor is currently an unverified claim, and a 3.11-only
-construct could land without anything noticing.
+**Empty.** The Python floor now has a static check — a partial substitute for
+the CI matrix, and labelled as one.
 
-1. **Add `tests/test_python_floor.py`.** Read the floor out of `pyproject.toml` rather than hardcoding it, so raising the floor updates the check automatically. Then `ast.parse(..., feature_version=(3, N))` every file under `src/` — that rejects syntax the floor cannot parse — and grep the sources for a short denylist of stdlib names newer than the floor (`tomllib`, `datetime.UTC`, `typing.Self`, `assert_never`, `ExceptionGroup`, `enum.StrEnum`, `itertools.batched`, `hashlib.file_digest`, `pathlib.Path.walk`, `asyncio.TaskGroup`).
-
-   **State plainly in the test and the devlog what this does not do.** It is a syntax and known-name check, not an execution of the suite on 3.10. Only CI does that, and only once billing is fixed. The point is to catch the cheap class of breakage while the expensive check is unavailable — not to let "3.10 supported" quietly become an assumption again.
-
----
-
-**When that is done the queue is empty again.** What remains needs something
-this repo does not have:
+What remains needs something this repo does not have:
 
 - **BLOCKED-ON-USER-ACTION — CI is not running.** Since 2026-07-30 06:29 UTC
   both matrix jobs refuse to start: *"The job was not started because recent

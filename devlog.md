@@ -728,3 +728,40 @@ exactly: `pytest` 369 passed on Python 3.13 only (CI is what covers 3.10),
 and the real-data regression check — regenerate the committed reports,
 `git diff reports/` empty, merge totals unchanged at 8766 individuals and
 4056 families. **Not** a claim that CI is green.
+
+## 2026-07-31 — a partial substitute for the CI matrix, labelled as partial
+
+With CI still refusing to start and only Python 3.13 on this machine,
+`requires-python = ">=3.10"` in `pyproject.toml` was a claim nothing
+checked. A 3.11-only construct could have landed and nothing would have
+noticed until somebody on 3.10 tried to install the package.
+
+`tests/test_python_floor.py`, 20 tests. It reads the floor **out of
+`pyproject.toml`** rather than hardcoding it, so raising the floor updates
+the check; parses every file under `src/` *and* `tests/` with
+`ast.parse(..., feature_version=floor)`, which rejects syntax the floor
+cannot handle; and greps the sources for a short list of stdlib names
+newer than the floor (`tomllib`, `datetime.UTC`, `typing.Self`,
+`ExceptionGroup`, `itertools.batched`, and so on).
+
+Three details that matter more than the check itself:
+
+**It says what it is not.** This is a syntax and known-name check, not the
+test suite running on 3.10. Behavioural differences between versions are
+exactly what it misses. Only CI catches those, and only once billing is
+fixed. The file and this entry both say so, because the failure mode here
+is letting "3.10 supported" quietly become an assumption again — which is
+how the CI block became worth recording in the first place.
+
+**It proves it bites.** Two tests assert the checks would actually reject
+something: a `match` statement parses at 3.10 and raises `SyntaxError` at
+3.9, and the denylist does flag `import tomllib`. A check that has never
+rejected anything is the same category of thing as the identity guard that
+had never fired.
+
+**The floor is parsed with a regex, not `tomllib`** — because `tomllib` is
+itself 3.11+, and importing it would stop this test running on the very
+floor it checks.
+
+The sources pass: every file parses at 3.10, none reaches for a newer
+name. `pytest`: **427 passed**, Python 3.13 only. Still not CI-verified.
