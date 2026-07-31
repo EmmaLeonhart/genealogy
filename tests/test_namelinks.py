@@ -1,0 +1,197 @@
+import json
+
+from genimerge import gedcom, namelinks
+from genimerge.model import build_tree
+from genimerge.wikidata import WikidataClient
+
+TREE = """0 HEAD
+0 @I1@ INDI
+1 NAME Eric Wade /Borsheim/
+2 GIVN Eric Wade
+2 SURN Borsheim
+1 NAME Eric /Other/
+2 GIVN Eric
+2 SURN Other
+1 RFN geni:1
+0 @I2@ INDI
+1 NAME Ragnhild Rasmusdatter /Eikeland/
+2 GIVN Ragnhild Rasmusdatter
+2 SURN Eikeland
+1 RFN geni:2
+0 @I3@ INDI
+1 NAME Anders /Nyland/
+2 GIVN Anders
+2 SURN Nyland
+1 RFN geni:3
+0 TRLR
+"""
+
+ITEMS = {
+    "Borsheim": [("Q100", "Q101352", "label")],
+    "Eric": [("Q200", "Q12308941", "label")],
+    "Wade": [("Q201", "Q202444", "label")],
+    "Eikeland": [("Q102", "Q101352", "label")],
+    "Ragnhild": [("Q202", "Q11879590", "label")],
+    "Nyland": [("Q103", "Q101352", "label")],
+    # Deliberately ambiguous.
+    "Anders": [("Q300", "Q12308941", "label"), ("Q301", "Q202444", "label")],
+}
+
+
+def tree():
+    return build_tree(gedcom.parse(TREE).records)
+
+
+def _client(tmp_path, existing_claims=()):
+    """`existing_claims` is an iterable of (qid, property)."""
+    response = json.dumps(
+        {
+            "results": {
+                "bindings": [
+                    {
+                        "item": {"value": f"http://www.wikidata.org/entity/{qid}"},
+                        "prop": {"value": f"http://www.wikidata.org/prop/direct/{prop}"},
+                    }
+                    for qid, prop in existing_claims
+                ]
+            }
+        }
+    ).encode("utf-8")
+    return WikidataClient(
+        cache_dir=tmp_path / "c", fetch=lambda *a, **k: response, delay=0, max_backoff=0
+    )
+
+
+def build(tmp_path, linked, existing_claims=(), items=None):
+    return namelinks.build_name_links(
+        _client(tmp_path, existing_claims),
+        tree(),
+        linked,
+        ITEMS if items is None else items,
+        retrieved="2026-07-30",
+    )
+
+
+def test_a_surname_with_one_item_becomes_a_family_name_link(tmp_path):
+    batch = build(tmp_path, {"1": "Q1"})
+    family = [l for l in batch.links if l.prop == "P734"]
+
+    assert [(l.qid, l.name_item, l.text) for l in family] == [("Q1", "Q100", "Borsheim")]
+
+
+def test_given_names_become_ordered_given_name_links(tmp_path):
+    batch = build(tmp_path, {"1": "Q1"})
+    given = [l for l in batch.links if l.prop == "P735"]
+
+    assert [(l.name_item, l.ordinal) for l in given] == [("Q200", 1), ("Q201", 2)]
+
+
+def test_a_match_on_an_alias_only_is_not_acted_on(tmp_path):
+    # An alias is a weaker assertion than a label, and this batch proposes
+    # edits, so alias-only matches are reported for review instead.
+    aliased = {**ITEMS, "Nyland": [("Q999", "Q101352", "alias")]}
+    batch = build(tmp_path, {"3": "Q3"}, items=aliased)
+
+    assert [l.text for l in batch.links] == []
+    assert any("only as an alias" in s.reason for s in batch.skipped)
+
+
+def test_a_label_match_wins_over_an_alias_match_on_the_same_text(tmp_path):
+    both = {**ITEMS, "Nyland": [("Q999", "Q101352", "alias"), ("Q103", "Q101352", "label")]}
+    batch = build(tmp_path, {"3": "Q3"}, items=both)
+
+    assert [(l.text, l.name_item) for l in batch.links] == [("Nyland", "Q103")]
+
+
+def test_a_single_given_name_gets_no_series_ordinal(tmp_path):
+    # An ordinal on a lone value says "first of several" when there is only one.
+    batch = build(
+        tmp_path, {"3": "Q3"}, items={**ITEMS, "Anders": [("Q300", "Q202444", "label")]}
+    )
+    given = [l for l in batch.links if l.prop == "P735"]
+
+    assert [(l.name_item, l.ordinal) for l in given] == [("Q300", None)]
+
+
+def test_only_the_primary_name_record_is_used(tmp_path):
+    # Eric's second NAME record says surname "Other"; order across records is
+    # not meaningful, so it is not proposed.
+    batch = build(tmp_path, {"1": "Q1"})
+
+    assert "Other" not in [l.text for l in batch.links]
+
+
+def test_an_ambiguous_name_is_set_aside_not_picked_between(tmp_path):
+    batch = build(tmp_path, {"3": "Q3"})
+
+    assert [l.text for l in batch.links] == ["Nyland"]
+    assert any("2 name items share this text" in s.reason for s in batch.skipped)
+
+
+def test_a_patronymic_in_the_given_field_is_never_proposed(tmp_path):
+    batch = build(tmp_path, {"2": "Q2"})
+
+    assert any(s.reason == "patronymic in the given-name field" for s in batch.skipped)
+    assert "Rasmusdatter" not in [l.text for l in batch.links]
+
+
+def test_a_partly_resolvable_given_string_is_held_back_entirely(tmp_path):
+    # Ragnhild resolves; Rasmusdatter does not. Proposing only Ragnhild would
+    # put a wrong series ordinal on the item.
+    batch = build(tmp_path, {"2": "Q2"})
+
+    assert [l.prop for l in batch.links] == ["P734"]  # surname only
+    assert any("held back" in s.reason for s in batch.skipped)
+
+
+def test_an_item_that_already_states_a_family_name_is_left_alone(tmp_path):
+    batch = build(tmp_path, {"1": "Q1"}, existing_claims=[("Q1", "P734")])
+
+    assert [l.prop for l in batch.links] == ["P735", "P735"]
+    assert any("already states a family name" in s.reason for s in batch.skipped)
+
+
+def test_an_item_that_already_states_a_given_name_is_left_alone(tmp_path):
+    batch = build(tmp_path, {"1": "Q1"}, existing_claims=[("Q1", "P735")])
+
+    assert [l.prop for l in batch.links] == ["P734"]
+    assert any("already states a given name" in s.reason for s in batch.skipped)
+
+
+def test_a_name_with_no_item_at_all_is_reported_not_invented(tmp_path):
+    batch = build(tmp_path, {"1": "Q1"}, items={})
+
+    assert batch.links == []
+    assert any("no Wikidata name item exists" in s.reason for s in batch.skipped)
+
+
+def test_the_quickstatements_lines_are_well_formed(tmp_path):
+    batch = build(tmp_path, {"1": "Q1"})
+    lines = namelinks.render_quickstatements(batch).strip().split("\n")
+    family = [l for l in lines if "\tP734\t" in l][0]
+    given = [l for l in lines if "\tP735\t" in l][0]
+
+    assert family.split("\t")[:3] == ["Q1", "P734", "Q100"]
+    assert "P1545" in given and '"1"' in given
+    # Every statement carries its source.
+    assert all("S854" in line and "S813" in line for line in lines)
+    assert all("+2026-07-30T00:00:00Z/11" in line for line in lines)
+
+
+def test_an_empty_batch_renders_no_stray_newline():
+    assert namelinks.render_quickstatements(namelinks.NameBatch()) == ""
+
+
+def test_the_report_states_the_rules_and_counts(tmp_path):
+    text = namelinks.render_markdown(build(tmp_path, {"1": "Q1", "2": "Q2", "3": "Q3"}))
+
+    assert "Nothing here has been sent to Wikidata" in text
+    assert "Ambiguous names" in text
+    assert "already exists" in text
+
+
+def test_people_touched_counts_people_not_statements(tmp_path):
+    batch = build(tmp_path, {"1": "Q1"})
+
+    assert len(batch.links) == 3  # one surname, two given names
+    assert batch.people_touched == 1

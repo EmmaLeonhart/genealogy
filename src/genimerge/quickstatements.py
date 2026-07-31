@@ -29,9 +29,57 @@ from .identity import profile_url
 from .model import Tree
 from .wikidata import WikidataClient
 
-__all__ = ["Edit", "Batch", "build_batch", "render_quickstatements", "render_markdown"]
+__all__ = [
+    "Statement",
+    "render_statements",
+    "Edit",
+    "Batch",
+    "build_batch",
+    "render_quickstatements",
+    "render_markdown",
+]
 
 PROPERTY = "P2600"
+
+
+@dataclass(frozen=True)
+class Statement:
+    """One QuickStatements v1 line.
+
+    ``value`` is already in QS form — a bare ``Q123`` for an item, a quoted
+    string for anything else — because the caller knows the datatype and this
+    does not.
+    """
+
+    qid: str
+    prop: str
+    value: str
+    #: (property, value) pairs written after the claim
+    qualifiers: tuple[tuple[str, str], ...] = ()
+    #: (S-property, value) pairs; QS marks reference parts with an S prefix
+    references: tuple[tuple[str, str], ...] = ()
+
+    def to_line(self) -> str:
+        fields = [self.qid, self.prop, self.value]
+        for prop, value in self.qualifiers:
+            fields += [prop, value]
+        for prop, value in self.references:
+            fields += [prop, value]
+        return "\t".join(fields)
+
+
+def render_statements(statements: list[Statement]) -> str:
+    """Render lines, tab-separated, with a trailing newline only if non-empty."""
+    lines = [s.to_line() for s in statements]
+    return "\n".join(lines) + ("\n" if lines else "")
+
+
+def geni_reference(geni_id: str, retrieved: str) -> tuple[tuple[str, str], ...]:
+    """The reference every statement here carries: where it came from, and when."""
+    return (
+        ("S854", f'"{profile_url(geni_id)}"'),
+        ("S813", f"+{retrieved}T00:00:00Z/11"),
+    )
 
 
 @dataclass(frozen=True)
@@ -108,23 +156,17 @@ def render_quickstatements(batch: Batch) -> str:
     date retrieved — so the edit can be checked against its source rather than
     landing unattributed.
     """
-    stamp = f"+{batch.retrieved}T00:00:00Z/11"
-    lines = []
-    for edit in batch.edits:
-        lines.append(
-            "\t".join(
-                [
-                    edit.qid,
-                    PROPERTY,
-                    f'"{edit.geni_id}"',
-                    "S854",
-                    f'"{edit.url}"',
-                    "S813",
-                    stamp,
-                ]
+    return render_statements(
+        [
+            Statement(
+                qid=edit.qid,
+                prop=PROPERTY,
+                value=f'"{edit.geni_id}"',
+                references=geni_reference(edit.geni_id, batch.retrieved),
             )
-        )
-    return "\n".join(lines) + ("\n" if lines else "")
+            for edit in batch.edits
+        ]
+    )
 
 
 def render_markdown(batch: Batch) -> str:

@@ -17,6 +17,7 @@ from . import (
     inventory,
     merge as merge_mod,
     model,
+    namelinks,
     names as names_mod,
     quickstatements,
     reconcile,
@@ -311,6 +312,55 @@ def _cmd_quickstatements(args: argparse.Namespace) -> int:
     return 0
 
 
+def _read_all_matches() -> dict[str, str]:
+    path = OUT / "wikidata" / "matched_all.csv"
+    if not path.exists():
+        return {}
+    with open(path, encoding="utf-8", newline="") as handle:
+        return {row["geni_id"]: row["qid"] for row in csv.DictReader(handle)}
+
+
+def _cmd_name_links(args: argparse.Namespace) -> int:
+    tree = _load_tree(args.source)
+    linked = _read_all_matches()
+    if not linked:
+        print("no linked people found; run `genimerge reconcile` and `expand` first",
+              file=sys.stderr)
+        return 1
+
+    client = wikidata.WikidataClient(cache_dir=OUT / "wikidata" / "cache", delay=args.delay)
+
+    # Only the names of people we have actually linked need looking up.
+    vocabulary = names_mod.build_vocabulary(tree, people=linked)
+    items = names_mod.find_name_items(
+        client,
+        vocabulary.all_strings(),
+        progress=lambda done, total: print(f"  names {done}/{total}", end="\r", flush=True),
+    )
+    print()
+
+    batch = namelinks.build_name_links(
+        client, tree, linked, items, retrieved=args.retrieved
+    )
+
+    out_dir = OUT / "wikidata"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    (out_dir / "add-names.qs").write_text(
+        namelinks.render_quickstatements(batch), encoding="utf-8", newline="\n"
+    )
+    (out_dir / "add-names.md").write_text(
+        namelinks.render_markdown(batch), encoding="utf-8", newline="\n"
+    )
+
+    print(
+        f"wrote {out_dir / 'add-names.qs'}: {len(batch.links)} statements "
+        f"covering {batch.people_touched} of {batch.considered} people"
+    )
+    print(f"{len(batch.skipped)} names set aside; see add-names.md for why")
+    print("Nothing has been sent to Wikidata. Review the .md before running the batch.")
+    return 0
+
+
 def _cmd_names(args: argparse.Namespace) -> int:
     tree = _load_tree(args.source)
     vocabulary = names_mod.build_vocabulary(tree)
@@ -482,6 +532,23 @@ def build_parser() -> argparse.ArgumentParser:
         "-o", "--output", type=Path, default=REPORTS / "names.md", help="where to write"
     )
     p_names.set_defaults(func=_cmd_names)
+
+    p_links = sub.add_parser(
+        "name-links",
+        help="propose P735/P734 links to name items that already exist",
+        description=(
+            "Writes a reviewable batch. Creates no name items, resolves no "
+            "ambiguous name, and touches no item that already states a name."
+        ),
+    )
+    p_links.add_argument("--source", type=Path, default=None, help="a GEDCOM to read instead of merging")
+    p_links.add_argument("--delay", type=float, default=1.0, help="seconds between requests")
+    p_links.add_argument(
+        "--retrieved",
+        default=date.today().isoformat(),
+        help="date for the reference qualifier, YYYY-MM-DD (default: today)",
+    )
+    p_links.set_defaults(func=_cmd_name_links)
 
     return parser
 

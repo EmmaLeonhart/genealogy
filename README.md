@@ -69,6 +69,7 @@ python -m genimerge coverage         # what is linked       -> reports/wikidata-
 python -m genimerge frontier         # what to export next  -> reports/frontier.md
 python -m genimerge names            # name-item coverage   -> reports/names.md
 python -m genimerge quickstatements  # edits to review      -> out/wikidata/add-p2600.qs
+python -m genimerge name-links       # name links to review -> out/wikidata/add-names.qs
 ```
 
 Every command is re-runnable and reads the previous stage's output. Wikidata

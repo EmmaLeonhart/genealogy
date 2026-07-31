@@ -185,7 +185,7 @@ def test_existing_name_items_are_found_and_keyed_by_the_name(tmp_path):
 
     found = names.find_name_items(client, ["Borsheim", "Eikeland"])
 
-    assert found == {"Borsheim": [("Q1", "Q101352")]}
+    assert found == {"Borsheim": [("Q1", "Q101352", "label")]}
 
 
 def test_the_lookup_is_restricted_to_name_items(tmp_path):
@@ -214,7 +214,7 @@ def test_duplicate_rows_for_one_item_are_collapsed(tmp_path):
         [_name_response([("Anders", "Q1", "Q202444"), ("Anders", "Q1", "Q202444")])],
     )
 
-    assert names.find_name_items(client, ["Anders"]) == {"Anders": [("Q1", "Q202444")]}
+    assert names.find_name_items(client, ["Anders"]) == {"Anders": [("Q1", "Q202444", "label")]}
 
 
 def test_names_are_looked_up_in_batches_not_one_at_a_time(tmp_path):
@@ -224,7 +224,35 @@ def test_names_are_looked_up_in_batches_not_one_at_a_time(tmp_path):
         client, [f"Name{n}" for n in range(20)], languages=["en"], literals_per_query=10
     )
 
-    assert client.requests_made == 2
+    # 20 names at 10 literals per query is 2 batches, each asking twice (labels
+    # then aliases). Far fewer requests than names: that is the point.
+    assert client.requests_made == 4
+
+
+def test_label_and_alias_matches_are_told_apart(tmp_path):
+    # The two are not equally strong, and callers that propose edits use labels
+    # only. The label query returns nothing; the alias query returns the item.
+    empty = json.dumps({"results": {"bindings": []}}).encode("utf-8")
+    client = _client(tmp_path, [empty, _name_response([("Galte", "Q1", "Q101352")])])
+
+    assert names.find_name_items(client, ["Galte"]) == {
+        "Galte": [("Q1", "Q101352", "alias")]
+    }
+
+
+def test_labels_and_aliases_are_two_queries_not_one_union(tmp_path):
+    # A single UNION query times the public endpoint out at this batch size;
+    # two plain index lookups do not.
+    client = _client(tmp_path, [])
+    names.find_name_items(client, ["Galte"], languages=["en"])
+    queries = [
+        urllib.parse.parse_qs(body)["query"][0] for body in client.bodies_sent
+    ]
+
+    assert len(queries) == 2
+    assert "UNION" not in " ".join(queries)
+    assert any("rdfs:label ?label" in q for q in queries)
+    assert any("skos:altLabel ?label" in q for q in queries)
 
 
 def test_a_quote_in_a_name_is_escaped(tmp_path):
@@ -241,7 +269,7 @@ def test_a_quote_in_a_name_is_escaped(tmp_path):
 
 def test_the_report_separates_names_with_and_without_items():
     v = vocab()
-    text = names.render_markdown(v, {"Borsheim": [("Q1", "Q101352")]})
+    text = names.render_markdown(v, {"Borsheim": [("Q1", "Q101352", "label")]})
 
     assert "# Name vocabulary" in text
     assert "already have items" in text

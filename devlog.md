@@ -490,3 +490,47 @@ the report to be **grouping only**. It will call some frozen hereditary
 surnames patronymic, because nothing in the text distinguishes the two.
 
 104 batched queries, all cached. `pytest`: 234 passed.
+
+## 2026-07-30 — name links, and a misdiagnosis I have to own
+
+`genimerge/namelinks.py` and `python -m genimerge name-links` write
+`out/wikidata/add-names.qs`: **29 statements covering 28 of the 245
+linked people**, linking them to P735/P734 name items that already exist.
+Creates nothing, so it needed no decision. `quickstatements.py` grew a
+generic `Statement` type; the P2600 path is unchanged and its tests still
+pass untouched.
+
+413 names were set aside, and the breakdown is the interesting part: 184
+items **already state a given name** and 36 already state a family name —
+the people we have linked are mostly well-curated royalty items that
+already carry their names. 124 names have no item at all, 30 are
+patronymics sitting in Geni's given-name field, and 27 are ambiguous
+between several items.
+
+Conservatism, all enforced: only names resolving to exactly one item;
+only the primary `NAME` record, since order across records is not
+meaningful; only items stating no P735/P734 at all; patronymics in the
+given-name field never proposed as given names; and a given string is
+**all-or-nothing** — if one token cannot be resolved the whole name is
+held back, because proposing the second given name without the first puts
+a wrong `P1545` series ordinal on the item.
+
+**The misdiagnosis.** Spot-checking the first batch, I saw
+`Q103781693 "Eirik 'Galte'" → family name Galtung` and called it a false
+positive from alias matching. It was not. I had read Wikidata's label for
+the *person* as though it were our source text; our surname for him is
+"Galtung", and the link is right. I had already rewritten
+`find_name_items` to distinguish `rdfs:label` from `skos:altLabel` on the
+strength of that wrong reading.
+
+Kept the change, because an alias is a weaker assertion than a label and
+this file proposes edits — but rewrote every comment, docstring and report
+line that justified it with the invented Galtung example. A fabricated
+rationale left in the repo would be worse than the original mistake.
+
+One real defect did come out of it: the `UNION` form of the label/alias
+query **times the public SPARQL endpoint out with a 504** at this batch
+size. It is now two plain index lookups per batch, which is why the
+request count per batch doubled.
+
+`pytest`: 252 passed.

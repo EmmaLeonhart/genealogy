@@ -14,14 +14,16 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
-Corrected on 2026-07-30: this section briefly said nothing was startable without
-a user decision. Measuring the name vocabulary showed that is not true — **874
-surnames and 1950 given names already have Wikidata items**, so linking people
-to *existing* items needs nothing created and no decision made. That is the same
-category as the P2600 backfill already shipped: a reviewable batch annotating
-items that exist.
+**Empty.** The P735/P734 linking against existing name items drained on
+2026-07-30 — `out/wikidata/add-names.qs`.
 
-1. **Propose P735/P734 links against name items that already exist.** Decomposed from `todo.md` item 6. For the people already linked to a Wikidata item, emit QuickStatements adding **P735 given name** and **P734 family name** pointing at existing name items. Hard constraint: **only names whose lookup returned exactly one item**. A name matching two or more is a choice between them, and choosing would be guessing — those go in a separate "ambiguous, needs a human" list, never into the batch. Reuse `genimerge/quickstatements.py`; check the item's current P735/P734 first and skip anything already stated, exactly as the P2600 batch checks before proposing. Output `out/wikidata/add-names.qs` and a readable `.md`.
+What is left in `todo.md` all needs something this repo does not have:
+
+- **NEEDS-DECISION** — items 4 and 5: creating Wikidata items, for people with
+  none and for the 1117 surnames and 1473 given names with none. Sized in
+  `reports/names.md`; the decision is the user's.
+- **BLOCKED-ON-USER-ACTION** — items 3b and 7: ingesting Jenny exports. Unblock
+  signal is a Jenny export appearing in `data_lake/`.
 
 ---
 

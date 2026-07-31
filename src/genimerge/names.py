@@ -195,17 +195,26 @@ def find_name_items(
     types: Iterable[str] = NAME_ITEM_TYPES,
     literals_per_query: int = 700,
     progress=None,
-) -> dict[str, list[tuple[str, str]]]:
+) -> dict[str, list[tuple[str, str, str]]]:
     """Which of these name strings already have a Wikidata *name item*.
 
-    Returns ``name -> [(qid, type qid), ...]``. Restricting to the five name
-    types matters: without it, "Eikeland" matches a village and "Ragnhild"
-    matches a queen, and neither is something P734 or P735 could point at.
+    Returns ``name -> [(qid, type qid, "label" | "alias"), ...]``.
+
+    Restricting to the five name types matters: without it, "Eikeland" matches a
+    village and "Ragnhild" matches a queen, and neither is something P734 or
+    P735 could point at.
+
+    Whether the match was on the item's **label** or on one of its **aliases**
+    is reported rather than flattened, because the two are not equally strong.
+    An alias is usually a spelling variant of the same name, but it is a weaker
+    assertion than a label, so callers that go on to *propose edits* use label
+    matches only and set the rest aside for review. Callers that are only
+    measuring coverage can use both.
     """
     ordered = sorted({s for s in strings if s.strip()})
     languages = list(languages)
     type_values = " ".join(f"wd:{t}" for t in types)
-    found: dict[str, list[tuple[str, str]]] = defaultdict(list)
+    found: dict[str, list[tuple[str, str, str]]] = defaultdict(list)
 
     per_batch = max(1, literals_per_query // max(len(languages), 1))
     batches = [ordered[i : i + per_batch] for i in range(0, len(ordered), per_batch)]
@@ -216,20 +225,24 @@ def find_name_items(
             for name in batch
             for lang in languages
         )
-        query = (
-            "SELECT DISTINCT ?item ?type ?label WHERE {\n"
-            f"  VALUES ?label {{ {values} }}\n"
-            f"  VALUES ?type {{ {type_values} }}\n"
-            "  ?item rdfs:label|skos:altLabel ?label.\n"
-            "  ?item wdt:P31 ?type.\n"
-            "}"
-        )
-        for row in client.sparql(query):
-            qid = row["item"].rsplit("/", 1)[-1]
-            type_qid = row["type"].rsplit("/", 1)[-1]
-            pair = (qid, type_qid)
-            if pair not in found[row["label"]]:
-                found[row["label"]].append(pair)
+        # Two plain queries rather than one with a UNION. The UNION form times
+        # the public endpoint out (504) on batches this size, while each of
+        # these is a straight index lookup.
+        for predicate, kind in (("rdfs:label", "label"), ("skos:altLabel", "alias")):
+            query = (
+                "SELECT DISTINCT ?item ?type ?label WHERE {\n"
+                f"  VALUES ?label {{ {values} }}\n"
+                f"  VALUES ?type {{ {type_values} }}\n"
+                f"  ?item {predicate} ?label.\n"
+                "  ?item wdt:P31 ?type.\n"
+                "}"
+            )
+            for row in client.sparql(query):
+                qid = row["item"].rsplit("/", 1)[-1]
+                type_qid = row["type"].rsplit("/", 1)[-1]
+                entry = (qid, type_qid, kind)
+                if entry not in found[row["label"]]:
+                    found[row["label"]].append(entry)
         if progress is not None:
             progress(index, len(batches))
 
@@ -354,7 +367,8 @@ def render_markdown(
                         str(use.count),
                         ", ".join(
                             f"[{qid}](https://www.wikidata.org/wiki/{qid})"
-                            for qid, _type in found[:3]
+                            + ("" if kind == "label" else " *(alias)*")
+                            for qid, _type, kind in found[:3]
                         )
                         + (" …" if len(found) > 3 else ""),
                     ]
