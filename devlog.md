@@ -114,3 +114,41 @@ fails loudly instead of quietly mis-keying. `pytest`: 35 passed.
 
 Dropped the `[project.scripts]` entry point from `pyproject.toml`; it
 pointed at a `genimerge.cli` that does not exist yet.
+
+## 2026-07-30 — export inventory, and the finding that reframes the project
+
+`genimerge/inventory.py` plus `python -m genimerge inventory` measure the
+exports and write `reports/inventory.md`. Also added
+`genimerge/identity.py`, the one place that knows a Geni profile ID comes
+from the xref and is cross-checked against `RFN` — it raises
+`IdentityMismatch` rather than picking a winner, because guessing there
+would silently merge the wrong people.
+
+**The exports are capped, and they barely overlap.** All three contain
+exactly 3836 individuals, which is not a coincidence — it is Geni
+truncating each export. What they contain is mostly *different* people:
+
+| | individuals | families |
+| --- | ---: | ---: |
+| union of all three | **8766** | **4056** |
+| largest single export | 3836 | 2281 |
+| present in all three | 354 (4.0%) | 245 (6.0%) |
+
+Pairwise, BloodTree∩Forest is 2300 individuals, Ancestors∩BloodTree is
+442, and Ancestors∩Forest is 354. Every family in BloodTree is also in
+Forest (1054 of 1054), so BloodTree's families add nothing that Forest
+does not already have — its value is in its individuals.
+
+This changes the shape of the work: merging is worth **4930 individuals**
+over the best single export, and reaching the whole tree means many more
+exports rather than a few. It makes the frontier analysis load-bearing
+rather than a nicety. Recorded in `README.md` and `CLAUDE.md`.
+
+The tag vocabulary in the report is the field list the canonical model
+will be built from. Worth noting from it: `INDI.NAME` occurs 5498 times
+across 3836 people in Ancestors, so **people carry multiple name
+records** — directly useful for the multilingual labels the Wikidata work
+wants. `_MARNM` (married name) is populated on roughly 80% of people,
+`NICK` on 1837, and `OBJE` (photos) on 3520.
+
+`pytest`: 42 passed.

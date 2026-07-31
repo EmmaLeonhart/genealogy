@@ -17,25 +17,23 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 Derived from `todo.md` items 1 (canonical merge), 2 (Wikidata reconciliation),
 and a first slice of 3 (expansion frontier). Work top to bottom.
 
-1. **Profile the three exports → `reports/inventory.md`.** Per file: record counts by type, the full tag vocabulary with occurrence counts, and the Geni-ID overlap between the three files (all three report 3836 `INDI` — confirm whether the ID sets are actually identical or merely the same size). This is the evidence base for the merge rules, so it gets committed as a report.
+1. **Write the merge (`genimerge/merge.py`) + tests.** Identity is the Geni profile ID, taken from the xref `@I<id>@` and cross-checked against `RFN geni:<id>`. Union of individuals; union of families keyed on their own Geni ID; per-field conflict resolution with every conflict recorded rather than silently dropped. Must be idempotent: merging a file with itself changes nothing.
 
-3. **Write the merge (`genimerge/merge.py`) + tests.** Identity is the Geni profile ID, taken from the xref `@I<id>@` and cross-checked against `RFN geni:<id>`. Union of individuals; union of families keyed on their own Geni ID; per-field conflict resolution with every conflict recorded rather than silently dropped. Must be idempotent: merging a file with itself changes nothing.
+2. **Produce the merged outputs.** `out/merged.ged` (valid GEDCOM, re-importable) plus `out/conflicts.md`. Commit a summary of what merged and what conflicted into `reports/`.
 
-4. **Produce the merged outputs.** `out/merged.ged` (valid GEDCOM, re-importable) plus `out/conflicts.md`. Commit a summary of what merged and what conflicted into `reports/`.
+3. **Emit the canonical structured dataset.** `out/people.jsonl` and `out/families.jsonl`: one record per person keyed on Geni ID with parsed given/surname, sex, birth/death dates and places, parent/spouse/child Geni IDs. This is what every downstream Wikidata step reads — the GEDCOM stops being the working format here.
 
-5. **Emit the canonical structured dataset.** `out/people.jsonl` and `out/families.jsonl`: one record per person keyed on Geni ID with parsed given/surname, sex, birth/death dates and places, parent/spouse/child Geni IDs. This is what every downstream Wikidata step reads — the GEDCOM stops being the working format here.
+4. **Confirm the Wikidata property set.** P2600 (Geni.com profile ID) is confirmed. Verify and record the rest against live Wikidata before any query depends on them: P21 sex/gender, P22 father, P25 mother, P26 spouse, P40 child, P569/P570 dates, P19/P20 places, P734 family name, P735 given name, P1477 birth name. Write them into `CLAUDE.md` so no later step guesses.
 
-6. **Confirm the Wikidata property set.** P2600 (Geni.com profile ID) is confirmed. Verify and record the rest against live Wikidata before any query depends on them: P21 sex/gender, P22 father, P25 mother, P26 spouse, P40 child, P569/P570 dates, P19/P20 places, P734 family name, P735 given name, P1477 birth name. Write them into `CLAUDE.md` so no later step guesses.
+5. **Reconcile by P2600 (`genimerge/wikidata.py`).** Query the Wikidata SPARQL endpoint for every `wdt:P2600` value in existence, intersect with our Geni IDs, and write `out/wikidata/matched_p2600.csv` (geni_id, qid, label). Batch politely, cache the response to disk so re-runs are free.
 
-7. **Reconcile by P2600 (`genimerge/wikidata.py`).** Query the Wikidata SPARQL endpoint for every `wdt:P2600` value in existence, intersect with our Geni IDs, and write `out/wikidata/matched_p2600.csv` (geni_id, qid, label). Batch politely, cache the response to disk so re-runs are free.
+6. **Second-pass reconciliation on names and dates.** For people P2600 did not match, generate *candidate* QIDs from name + birth/death year, plus a structural signal (does the candidate's P22/P25 point at an already-matched item?). Output `out/wikidata/candidates.csv` with an explicit confidence column and NO automatic acceptance — this file is for human review.
 
-8. **Second-pass reconciliation on names and dates.** For people P2600 did not match, generate *candidate* QIDs from name + birth/death year, plus a structural signal (does the candidate's P22/P25 point at an already-matched item?). Output `out/wikidata/candidates.csv` with an explicit confidence column and NO automatic acceptance — this file is for human review.
+7. **Write `reports/wikidata-coverage.md`.** How many of the 8766 merged individuals are matched by P2600, how many have review-grade candidates, how many are unmatched, broken down by era and by subtree. This is the answer to "configure out the Wikidata connections as much as possible".
 
-9. **Write `reports/wikidata-coverage.md`.** How many of the 3836 are matched by P2600, how many have review-grade candidates, how many are unmatched, broken down by era and by subtree. This is the answer to "configure out the Wikidata connections as much as possible".
+8. **Frontier analysis → `reports/frontier.md`.** Individuals with missing parents, sparse subtrees, and high-connectivity hubs — ranked as candidate branch points for the next Geni/Jenny export. First slice of `todo.md` item 3.
 
-10. **Frontier analysis → `reports/frontier.md`.** Individuals with missing parents, sparse subtrees, and high-connectivity hubs — ranked as candidate branch points for the next Geni/Jenny export. First slice of `todo.md` item 3.
-
-11. **Create the private GitHub repo and wire CI.** `gh repo create --private --source=. --push`, plus `.github/workflows/ci.yml` running `pytest` on push and PR.
+9. **Create the private GitHub repo and wire CI.** `gh repo create --private --source=. --push`, plus `.github/workflows/ci.yml` running `pytest` on push and PR.
 
 ---
 

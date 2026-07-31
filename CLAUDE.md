@@ -11,10 +11,61 @@ current by the `cleanvibe-update-check` skill.
 - **Updates source:** <https://cleanvibe.emmaleonhart.com/updates.md>
 
 ## Project Description
-_TODO: Describe what this project is about._
+
+Merge Geni.com GEDCOM exports into one canonical genealogy, then reconcile that
+genealogy against Wikidata — and eventually generate the edits that would create
+the missing people on Wikidata.
+
+The user's stated direction, in their own framing:
+
+1. Merge the exports into a single tree.
+2. Work out the Wikidata connections as far as the data allows, using the Geni
+   ID that every record preserves.
+3. Later, expand the tree with more exports (from Geni, and from Jenny) — which
+   means finding good **branch points** in the genealogy to export from next.
+4. Much later, queue up creation of the absent people *on* Wikidata, connected
+   to their parents, carrying whatever the genealogy supports: multilingual
+   label, English label, Geni ID, sex, and the relationship links. Harder
+   pieces they named explicitly: the name/surname *properties*, creating
+   Wikidata items for surnames that have none so people can be linked to them,
+   and queued edits adding name links to people who already have items.
 
 ## Architecture and Conventions
-_TODO: Document key decisions, file structure, and patterns as they emerge._
+
+**The Geni profile ID is the primary key for everything.** Geni's export writes
+it as the GEDCOM xref (`0 @I6000000087535357291@ INDI`) and repeats it as
+`1 RFN geni:6000000087535357291`. Merging is therefore an exact join, never
+fuzzy name matching. `genimerge.identity` is the single place that knows this;
+`tests/test_gedcom_real_exports.py` asserts it against the real files so a
+change in Geni's format fails loudly.
+
+**Exports are capped at 3836 individuals.** All three exports hit that number
+exactly while sharing only 354 people, so they are overlapping slices, not
+copies. Expect to merge many exports over time, and expect the merge to be
+re-run rather than hand-edited. See `reports/inventory.md`.
+
+**Stdlib only.** `urllib` covers the Wikidata SPARQL endpoint. Add a dependency
+only when the stdlib genuinely cannot do the job.
+
+**Layout.** `data_lake/` raw inputs (`*.zip` gitignored, `*.ged` tracked) ·
+`src/genimerge/` the package · `reports/` generated reports worth keeping in git
+· `out/` generated data, gitignored · `tests/` pytest.
+
+### Wikidata properties
+
+Confirmed against live Wikidata; do not guess these.
+
+| property | meaning |
+| --- | --- |
+| P2600 | Geni.com profile ID |
+
+### Working on Windows here
+
+- Commit with `git commit -F <msgfile>`, not `-m` with a here-string: PowerShell
+  5.1 mangles `<` and `>` in native-command arguments even inside quotes.
+- Never edit UTF-8 text files with `Get-Content -Raw` + `Set-Content` — it
+  double-encodes non-ASCII. Use the editing tools, or Python with an explicit
+  `encoding="utf-8"`.
 
 ## Long command series run in strict order
 When the user gives a long series of commands, treat it as a long series of commands to be
