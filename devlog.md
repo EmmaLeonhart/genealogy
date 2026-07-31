@@ -219,3 +219,39 @@ frontier analysis will have to work from people with no parent family
 instead — the merge report says so rather than implying otherwise.
 
 `pytest`: 70 passed.
+
+## 2026-07-30 — the canonical dataset: the GEDCOM stops being the working format
+
+`genimerge/model.py` and `genimerge/dates.py`, behind
+`python -m genimerge export`, turn the merged tree into
+`out/people.jsonl` (8766) and `out/families.jsonl` (4056). Everything
+downstream reads these, not GEDCOM.
+
+Two decisions worth recording:
+
+**Relationships are resolved both ways.** GEDCOM routes every
+relationship through a family record — a person points at a family, the
+family points at the parents — while Wikidata wants P22/P25/P26/P40
+directly between people. `Tree.resolve_relationships` derives the direct
+links and keeps the family view too, because the family record is where
+a marriage date lives.
+
+**Parsed dates never replace the raw text.** `date_raw` sits next to
+`year`/`month`/`day`/`modifier` in every event, so a future statement can
+be traced back to what the export actually said. A date the parser cannot
+read reports *nothing* structured rather than a guess.
+
+The date parser is small because the corpus is: across 38,605 `DATE`
+lines there are only **fifteen** distinct shapes, all standard GEDCOM —
+`23 APR 2021`, a bare year, `SEP 1930`, the same three behind
+`ABT`/`BEF`/`AFT`, and `BET x AND y`. Modifiers are kept rather than
+flattened, since "about 1275" and "1275" are different claims and
+Wikidata can express the difference. Two lines read `7  2011` — a day
+with no month — and the day is dropped rather than attached to a guessed
+month.
+
+Coverage of the merged 8766: **6386** have a father, **5843** a mother,
+**6920** a birth year, and all but 10 have a recorded sex (4663 M,
+4093 F).
+
+`pytest`: 104 passed.

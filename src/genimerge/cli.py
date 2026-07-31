@@ -6,7 +6,9 @@ import argparse
 import sys
 from pathlib import Path
 
-from . import gedcom, inventory, merge as merge_mod
+import json
+
+from . import gedcom, inventory, merge as merge_mod, model
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 DATA_LAKE = REPO_ROOT / "data_lake"
@@ -58,6 +60,42 @@ def _cmd_merge(args: argparse.Namespace) -> int:
     return 0
 
 
+def _load_tree(source: Path | None) -> model.Tree:
+    """The canonical tree, from a given GEDCOM or by merging the data lake."""
+    if source is not None:
+        return model.build_tree(gedcom.stream_file(source))
+    merged = OUT / "merged.ged"
+    if merged.exists():
+        return model.build_tree(gedcom.stream_file(merged))
+    doc, _ = merge_mod.merge_files(_default_exports())
+    return model.build_tree(doc.records)
+
+
+def _write_jsonl(path: Path, rows) -> int:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    count = 0
+    with open(path, "w", encoding="utf-8", newline="\n") as handle:
+        for row in rows:
+            handle.write(json.dumps(row, ensure_ascii=False, sort_keys=True) + "\n")
+            count += 1
+    return count
+
+
+def _cmd_export(args: argparse.Namespace) -> int:
+    tree = _load_tree(args.source)
+
+    people = _write_jsonl(
+        OUT / "people.jsonl",
+        (tree.people[k].to_json() for k in sorted(tree.people, key=int)),
+    )
+    families = _write_jsonl(
+        OUT / "families.jsonl",
+        (tree.families[k].to_json() for k in sorted(tree.families, key=int)),
+    )
+    print(f"wrote out/people.jsonl ({people}) and out/families.jsonl ({families})")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="genimerge", description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
@@ -87,6 +125,16 @@ def build_parser() -> argparse.ArgumentParser:
         help="where to write the merged GEDCOM (default: out/merged.ged)",
     )
     p_merge.set_defaults(func=_cmd_merge)
+
+    p_export = sub.add_parser(
+        "export",
+        help="write the canonical people/families JSONL dataset",
+        description="Reads out/merged.ged if it exists, otherwise merges the data lake.",
+    )
+    p_export.add_argument(
+        "--source", type=Path, default=None, help="a GEDCOM to read instead of merging"
+    )
+    p_export.set_defaults(func=_cmd_export)
 
     return parser
 
