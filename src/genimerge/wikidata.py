@@ -83,9 +83,12 @@ class WikidataClient:
     fetch: Callable[..., bytes] = _http_fetch
     delay: float = 1.0
     #: number of retries on a throttled or failing request
-    retries: int = 3
+    retries: int = 6
+    #: ceiling on a single backoff wait, in seconds
+    max_backoff: float = 90.0
     requests_made: int = field(default=0, init=False)
     cache_hits: int = field(default=0, init=False)
+    throttled: int = field(default=0, init=False)
 
     def __post_init__(self) -> None:
         self.cache_dir = Path(self.cache_dir)
@@ -117,6 +120,24 @@ class WikidataClient:
             time.sleep(self.delay - elapsed)
         self._last_request = time.monotonic()
 
+    def _backoff(self, attempt: int, error: Exception | None = None) -> float:
+        """How long to wait before retrying.
+
+        Wikimedia rate-limits anonymous callers hard and says how long to wait
+        in ``Retry-After``; ignoring that header just gets the next attempt
+        rejected too. Failing that, exponential from a floor of two seconds —
+        the original backoff was a multiple of the inter-request delay, which
+        meant a fast run backed off fastest, exactly backwards.
+        """
+        if isinstance(error, urllib.error.HTTPError):
+            retry_after = error.headers.get("Retry-After") if error.headers else None
+            if retry_after:
+                try:
+                    return min(float(retry_after), self.max_backoff)
+                except ValueError:
+                    pass
+        return min(max(self.delay, 2.0) * (2**attempt), self.max_backoff)
+
     def _request(self, url: str, data: bytes | None = None, headers: dict | None = None) -> bytes:
         last_error: Exception | None = None
         for attempt in range(self.retries):
@@ -126,15 +147,19 @@ class WikidataClient:
                 return self.fetch(url, data, headers)
             except urllib.error.HTTPError as error:
                 last_error = error
-                # 429 too many requests, 500/503 endpoint under load: back off
-                # and try again. Anything else is our fault, so stop.
+                # 429 too many requests, 5xx endpoint under load: back off and
+                # try again. Anything else is our fault, so stop.
                 if error.code not in (429, 500, 502, 503, 504):
                     raise
-                time.sleep(self.delay * (2 ** (attempt + 1)))
+                self.throttled += 1
+                time.sleep(self._backoff(attempt, error))
             except urllib.error.URLError as error:
                 last_error = error
-                time.sleep(self.delay * (2 ** (attempt + 1)))
-        raise RuntimeError(f"giving up on {url[:120]} after {self.retries} attempts") from last_error
+                time.sleep(self._backoff(attempt, error))
+        raise RuntimeError(
+            f"giving up on {url[:160]} after {self.retries} attempts: "
+            f"{type(last_error).__name__}: {last_error}"
+        ) from last_error
 
     # -- endpoints -----------------------------------------------------
 
@@ -158,6 +183,35 @@ class WikidataClient:
         rows = [{k: v["value"] for k, v in row.items()} for row in bindings]
         self._store("sparql", query, rows)
         return rows
+
+    def search_people(self, text: str, limit: int = 7) -> list[str]:
+        """Full-text search Wikidata for humans matching ``text``.
+
+        Uses CirrusSearch (``list=search``) rather than ``wbsearchentities``
+        because it matches labels and aliases in *every* language at once, which
+        matters when the tree says "Blot-Sweyn" and Wikidata says
+        "Blot-Sven". ``haswbstatement:P31=Q5`` keeps the results to people.
+        """
+        key = f"search|{text}|{limit}"
+        cached = self._cached("search", key)
+        if cached is not None:
+            return cached
+
+        url = API_ENDPOINT + "?" + urllib.parse.urlencode(
+            {
+                "action": "query",
+                "list": "search",
+                "srsearch": f"{text} haswbstatement:P31=Q5",
+                "srlimit": limit,
+                "srnamespace": 0,
+                "format": "json",
+            }
+        )
+        raw = self._request(url)
+        hits = json.loads(raw).get("query", {}).get("search", [])
+        qids = [h["title"] for h in hits if h.get("title", "").startswith("Q")]
+        self._store("search", key, qids)
+        return qids
 
     def entities(self, ids: Sequence[str], languages: str = "en") -> dict:
         """Fetch labels and descriptions for up to 50 entity IDs."""

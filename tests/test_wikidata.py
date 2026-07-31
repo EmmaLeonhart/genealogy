@@ -43,6 +43,8 @@ class Recorder:
 
 
 def _client(tmp_path, responses, **kwargs):
+    # max_backoff=0 so a retry test does not actually sleep.
+    kwargs.setdefault("max_backoff", 0)
     return WikidataClient(
         cache_dir=tmp_path / "cache", fetch=Recorder(responses), delay=0, **kwargs
     )
@@ -167,7 +169,7 @@ def test_a_throttled_request_is_retried(tmp_path):
                 raise urllib.error.HTTPError(url, 429, "Too Many Requests", {}, None)
             return _sparql_response([("1", "Q1")])
 
-    client = WikidataClient(cache_dir=tmp_path / "c", fetch=Flaky(), delay=0)
+    client = WikidataClient(cache_dir=tmp_path / "c", fetch=Flaky(), delay=0, max_backoff=0)
 
     assert client.sparql("SELECT ...")[0]["geni"] == "1"
     assert client.fetch.attempts == 2
@@ -184,11 +186,54 @@ def test_a_client_error_is_raised_immediately_rather_than_retried(tmp_path):
     assert client.requests_made == 1
 
 
+def test_a_retry_after_header_is_obeyed(tmp_path):
+    # Wikimedia says how long to wait; ignoring it just gets the retry rejected.
+    error = urllib.error.HTTPError(
+        "u", 429, "Too Many Requests", {"Retry-After": "7"}, None
+    )
+    client = WikidataClient(cache_dir=tmp_path / "c", fetch=lambda *a: b"", delay=0.5)
+
+    assert client._backoff(0, error) == 7.0
+
+
+def test_backoff_without_a_header_grows_from_a_floor_not_from_the_delay(tmp_path):
+    # A fast run must not back off faster than a slow one.
+    quick = WikidataClient(cache_dir=tmp_path / "a", fetch=lambda *a: b"", delay=0.1)
+    slow = WikidataClient(cache_dir=tmp_path / "b", fetch=lambda *a: b"", delay=5.0)
+
+    assert quick._backoff(0) == 2.0
+    assert quick._backoff(2) == 8.0
+    assert slow._backoff(0) == 5.0
+
+
+def test_backoff_is_capped(tmp_path):
+    client = WikidataClient(cache_dir=tmp_path / "c", fetch=lambda *a: b"", delay=1, max_backoff=10)
+
+    assert client._backoff(20) == 10
+
+
+def test_throttling_is_counted_so_a_slow_run_is_explainable(tmp_path):
+    class Once:
+        def __init__(self):
+            self.n = 0
+
+        def __call__(self, url, data=None, headers=None):
+            self.n += 1
+            if self.n == 1:
+                raise urllib.error.HTTPError(url, 429, "slow down", {}, None)
+            return _sparql_response([])
+
+    client = WikidataClient(cache_dir=tmp_path / "c", fetch=Once(), delay=0, max_backoff=0)
+    client.sparql("SELECT ...")
+
+    assert client.throttled == 1
+
+
 def test_persistent_failure_gives_up_with_a_clear_error(tmp_path):
     def always_down(url, data=None, headers=None):
         raise urllib.error.HTTPError(url, 503, "Service Unavailable", {}, None)
 
-    client = WikidataClient(cache_dir=tmp_path / "c", fetch=always_down, delay=0, retries=2)
+    client = WikidataClient(cache_dir=tmp_path / "c", fetch=always_down, delay=0, retries=2, max_backoff=0)
 
     with pytest.raises(RuntimeError, match="giving up"):
         client.sparql("SELECT ...")

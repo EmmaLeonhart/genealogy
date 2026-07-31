@@ -307,3 +307,48 @@ a *list* of matches rather than a dict so that one Geni ID claimed by two
 items stays visible instead of being silently collapsed.
 
 `pytest`: 121 passed.
+
+## 2026-07-30 — the expansion frontier, and two bugs under it
+
+`genimerge/frontier.py` and `python -m genimerge frontier` write
+`reports/frontier.md`. Taken out of queue order deliberately: the
+name-search reconciliation pass is a ~25-minute network run, and this
+needs no network.
+
+The tree is **one connected component of 8766**, and **2350 people
+(26.8%) have no parents recorded**. That is the real edge — not dangling
+pointers, since the merged file has none. Generational depth runs to 40,
+with a pronounced bulge at 31–37 generations (the medieval royal lines)
+and 2351 people at depth 0. The report ranks the parentless by how many
+people descend from them, which is the answer to "where should the next
+export be taken from": exporting a lone leaf adds a lone leaf.
+
+**Bug one — a phantom component, twice over.** The report first claimed
+two components while also claiming nobody was isolated, which cannot both
+be true. `Tree.resolve_relationships` kept only the *first* parent family
+of a child who is a child in more than one, so the second father listed
+the child while the child did not list the father: an asymmetric edge, and
+a one-person "component" containing a man named Olof who plainly had a
+son. The model now carries `parent_ids` (every parent, for graph work)
+alongside `father_id`/`mother_id` (the primary pair, for P22/P25). The
+first fix was still wrong — building neighbours from each person's own
+`FAMC`/`FAMS` pointers misses a family that lists a person without the
+person listing it back — so `family_graph` now walks the *family* records,
+which is symmetric by construction. A test covers each of the two ways it
+was broken.
+
+**Bug two — 10+ minutes to compute descendants.** Counting descendants by
+walking each person's subtree is O(n·m), and descendant sets overlap far
+too much to sum from children without double-counting. Each set is now a
+bitmask in a Python int, unioned up a cycle-tolerant post-order: exact, no
+double-counting, about a kilobyte per person. **2.4 seconds** instead of
+never finishing.
+
+Which turned up a genuine defect in the source data: **Halldor Arnesson
+is recorded as his own grandfather** — he is Arne's parent and Arne is
+his. One person existing under two Geni profiles that were then linked as
+parent and child. It is in the report under "People recorded as their own
+ancestor" rather than being quietly absorbed, because it is worth fixing
+on Geni and it distorts every generational measure.
+
+`pytest`: 167 passed.

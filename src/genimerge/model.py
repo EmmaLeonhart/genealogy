@@ -121,8 +121,14 @@ class Person:
     about: str = ""
 
     # -- resolved by Tree ---------------------------------------------
+    #: the primary father and mother — what a P22/P25 statement would use
     father_id: str | None = None
     mother_id: str | None = None
+    #: *every* parent across every parent family. A person can be a child in
+    #: more than one family (adoption, or the same person entered twice), and
+    #: keeping only the first would make the family graph asymmetric: the parent
+    #: would list the child, the child would not list the parent.
+    parent_ids: list[str] = field(default_factory=list)
     spouse_ids: list[str] = field(default_factory=list)
     child_ids: list[str] = field(default_factory=list)
 
@@ -156,7 +162,7 @@ class Person:
 
     @property
     def has_known_parents(self) -> bool:
-        return self.father_id is not None or self.mother_id is not None
+        return bool(self.parent_ids)
 
     def to_json(self) -> dict:
         """A flat, stable dict — this is what lands in `out/people.jsonl`."""
@@ -191,6 +197,7 @@ class Person:
             "titles": self.titles,
             "father_id": self.father_id,
             "mother_id": self.mother_id,
+            "parent_ids": self.parent_ids,
             "spouse_ids": self.spouse_ids,
             "child_ids": self.child_ids,
             "child_of_families": self.child_of,
@@ -297,6 +304,7 @@ class Tree:
         for person in self.people.values():
             person.father_id = None
             person.mother_id = None
+            person.parent_ids = []
             person.spouse_ids = []
             person.child_ids = []
 
@@ -309,6 +317,9 @@ class Tree:
                     child.father_id = family.husband_id
                 if family.wife_id and child.mother_id is None:
                     child.mother_id = family.wife_id
+                for parent_id in family.parent_ids:
+                    if parent_id not in child.parent_ids:
+                        child.parent_ids.append(parent_id)
 
             for parent_id in family.parent_ids:
                 parent = self.people.get(parent_id)

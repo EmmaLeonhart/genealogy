@@ -9,7 +9,7 @@ from pathlib import Path
 import csv
 import json
 
-from . import gedcom, inventory, merge as merge_mod, model, wikidata
+from . import frontier, gedcom, inventory, merge as merge_mod, model, reconcile, wikidata
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 DATA_LAKE = REPO_ROOT / "data_lake"
@@ -139,6 +139,92 @@ def _cmd_reconcile(args: argparse.Namespace) -> int:
     return 0
 
 
+def _read_seed_matches() -> dict[str, str]:
+    """The confirmed P2600 matches written by `reconcile`."""
+    path = OUT / "wikidata" / "matched_p2600.csv"
+    if not path.exists():
+        return {}
+    with open(path, encoding="utf-8", newline="") as handle:
+        return {row["geni_id"]: row["qid"] for row in csv.DictReader(handle)}
+
+
+def _cmd_expand(args: argparse.Namespace) -> int:
+    tree = _load_tree(args.source)
+    seeds = _read_seed_matches()
+    if not seeds:
+        print("no P2600 matches found; run `genimerge reconcile` first", file=sys.stderr)
+        return 1
+
+    client = wikidata.WikidataClient(cache_dir=OUT / "wikidata" / "cache", delay=args.delay)
+    result = reconcile.expand_from_matches(
+        client,
+        tree,
+        seeds,
+        max_rings=args.max_rings,
+        progress=lambda ring, added: print(f"  ring {ring}: +{added} matched", flush=True),
+    )
+
+    out_dir = OUT / "wikidata"
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    candidates = list(result.candidates)
+
+    if args.search:
+        targets = reconcile.search_targets(tree, result.confirmed)
+        print(f"searching Wikidata by name for {len(targets)} unmatched people")
+        candidates += reconcile.search_candidates(
+            client,
+            tree,
+            targets,
+            result.confirmed,
+            progress=lambda done, total: (
+                print(f"  searched {done}/{total}", end="\r", flush=True)
+                if done % 25 == 0 or done == total
+                else None
+            ),
+        )
+        print()
+
+    with open(out_dir / "candidates.csv", "w", encoding="utf-8", newline="") as handle:
+        writer = csv.writer(handle)
+        writer.writerow(reconcile.CANDIDATE_COLUMNS)
+        for candidate in sorted(candidates, key=lambda c: (-c.name_score, c.geni_id)):
+            writer.writerow(candidate.to_row())
+
+    with open(out_dir / "matched_all.csv", "w", encoding="utf-8", newline="") as handle:
+        writer = csv.writer(handle)
+        writer.writerow(["geni_id", "qid", "source", "geni_name"])
+        for geni_id, qid in sorted(result.confirmed.items()):
+            person = tree.people.get(geni_id)
+            writer.writerow(
+                [
+                    geni_id,
+                    qid,
+                    "P2600" if geni_id in seeds else "expansion",
+                    person.display_name if person else "",
+                ]
+            )
+
+    gained = len(result.confirmed) - len(seeds)
+    print(f"wrote {out_dir / 'candidates.csv'} ({len(candidates)} proposals)")
+    print(
+        f"{len(result.confirmed)} of {len(tree.people)} people now linked "
+        f"({100.0 * len(result.confirmed) / len(tree.people):.1f}%): "
+        f"{len(seeds)} by P2600 + {gained} by expansion over {result.rings} rings"
+    )
+    print(f"{client.requests_made} requests, {client.cache_hits} cache hits")
+    return 0
+
+
+def _cmd_frontier(args: argparse.Namespace) -> int:
+    tree = _load_tree(args.source)
+    text = frontier.render_markdown(tree, limit=args.top)
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    args.output.write_text(text, encoding="utf-8", newline="\n")
+    print(f"wrote {args.output}")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="genimerge", description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
@@ -189,6 +275,36 @@ def build_parser() -> argparse.ArgumentParser:
         "--delay", type=float, default=1.0, help="seconds between requests (default: 1.0)"
     )
     p_rec.set_defaults(func=_cmd_reconcile)
+
+    p_exp = sub.add_parser(
+        "expand",
+        help="walk outward from the P2600 matches along family links",
+        description=(
+            "Proposes further Geni-to-Wikidata links from relationship structure. "
+            "Nothing is written to Wikidata; candidates.csv is for human review."
+        ),
+    )
+    p_exp.add_argument("--source", type=Path, default=None, help="a GEDCOM to read instead of merging")
+    p_exp.add_argument("--delay", type=float, default=1.0, help="seconds between requests")
+    p_exp.add_argument("--max-rings", type=int, default=12, help="how far to walk (default: 12)")
+    p_exp.add_argument(
+        "--search",
+        action="store_true",
+        help="also search Wikidata by name for plausibly-notable unmatched people",
+    )
+    p_exp.set_defaults(func=_cmd_expand)
+
+    p_front = sub.add_parser(
+        "frontier",
+        help="rank profiles worth exporting from next",
+        description="Where the tree stops, and which Geni profiles would extend it most.",
+    )
+    p_front.add_argument("--source", type=Path, default=None, help="a GEDCOM to read instead of merging")
+    p_front.add_argument("--top", type=int, default=40, help="how many branch points to list")
+    p_front.add_argument(
+        "-o", "--output", type=Path, default=REPORTS / "frontier.md", help="where to write"
+    )
+    p_front.set_defaults(func=_cmd_frontier)
 
     return parser
 
