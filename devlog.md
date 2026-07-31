@@ -152,3 +152,70 @@ wants. `_MARNM` (married name) is populated on roughly 80% of people,
 `NICK` on 1837, and `OBJE` (photos) on 3520.
 
 `pytest`: 42 passed.
+
+## 2026-07-30 — the merge, and two bugs that only the real data found
+
+`genimerge/merge.py` plus `python -m genimerge merge`. **8766 individuals,
+4056 families, 1035 notes, 940 submitters** in `out/merged.ged`, with
+**zero conflicts and zero lost lines**.
+
+Identity is exact — same xref, same record — so there is no fuzzy matching
+anywhere. The interesting question is when two *child lines* are the same
+line, decided per structure path:
+
+- **single-valued paths** (`INDI.BIRT.DATE`, `INDI.SEX`) collapse to one
+  node; a disagreement is a recorded `Conflict`, never a silent drop;
+- **repeatable paths with a value** (`INDI.NAME`, `FAM.CHIL`) match on
+  that value;
+- **repeatable paths without one** (`INDI.SOUR`, `INDI.OBJE`), whose
+  content is entirely in their children, match on the whole subtree.
+
+Which paths are single-valued is **measured from the inputs** rather than
+hardcoded, so an unfamiliar structure is treated as repeatable — the
+failure mode that keeps data. Measurement alone is not enough though:
+`ALWAYS_REPEATABLE` overrides it for `CHIL`, `FAMS`, `FAMC`, `NAME`,
+`NOTE`, `SOUR`, `OBJE`, `ALIA`, `ASSO`, because if some future export
+happened to give every family one child, measurement would call `CHIL`
+single-valued and start reporting siblings as conflicts.
+
+What each source brought:
+
+| source | new INDI | new FAM | records merged | lines added |
+| --- | ---: | ---: | ---: | ---: |
+| `export-Ancestors.ged` | 3836 | 2281 | 0 | 0 |
+| `export-BloodTree.ged` | 3394 | 809 | 827 | 632 |
+| `export-Forest.ged` | 1536 | 966 | 3650 | 333 |
+
+**Bug one — spurious conflicts from collapsing twins.** The first run
+reported 8 conflicts. They were not conflicts. Some people carry *two*
+`NAME` lines with identical text and different `_MARNM` (married name) —
+`@I4366030@` is "Ragnhild Rasmusdatter /Eikeland/" twice, married
+Giljabrekken Rage and married Løland. Matching repeatable lines on their
+value alone collapsed the pair into one slot, so the second line looked
+like a contradiction of the first. Matching now keeps a *list* of
+candidates per key and merges into the first compatible one, where
+"compatible" means no single-valued descendant contradicts. All 8
+conflicts disappeared, because none of them was ever real.
+
+**Bug two — the fix broke idempotency.** First-compatible matching is
+greedy, and greedy is unstable: given siblings `NAME{GIVN,_MARNM}` and
+`NAME{GIVN,SURN}`, re-merging let the second one's `SURN` be absorbed by
+the first, so merging the merged file again changed it.
+`@I309752110320008250@` caught it. An identical twin now wins over a
+merely compatible one, which makes self-merge a strict no-op: every
+incoming child has an exact match in the base, so nothing moves.
+
+Neither bug was reachable from hand-written fixtures. Both came out of
+`tests/test_merge_real_exports.py`, which asserts the property that
+actually matters — **every (path, value) line of every source survives in
+the merged tree** — plus idempotency, referential integrity, and that the
+merged file re-parses.
+
+`out/merged.ged` is 20.9 MB and re-parses with zero warnings. The exports
+turn out to be referentially closed on family structure: of 14 unresolved
+pointers, **0** are `CHIL`/`HUSB`/`WIFE`/`FAMC`/`FAMS` (13 are `INDI.SUBM`,
+1 is a note). So dangling pointers are *not* the tree's edge, and the
+frontier analysis will have to work from people with no parent family
+instead — the merge report says so rather than implying otherwise.
+
+`pytest`: 70 passed.

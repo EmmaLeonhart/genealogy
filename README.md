@@ -34,6 +34,9 @@ itself:
 so every record carries a stable primary key across exports, and the same ID is
 the join key to Wikidata via **P2600 (Geni.com profile ID)**.
 
+The merge of all three currently produces 8766 individuals and 4056 families
+with **zero conflicts and no lost lines** — see `reports/merge.md`.
+
 ## Layout
 
 ```
@@ -54,8 +57,9 @@ Nothing to install; the package is stdlib-only and `pytest` is wired to find it
 via `pythonpath`.
 
 ```bash
-python -m pytest                       # run the tests
-PYTHONPATH=src python -m genimerge inventory   # re-measure the exports
+python -m pytest                                # run the tests
+PYTHONPATH=src python -m genimerge inventory    # re-measure the exports
+PYTHONPATH=src python -m genimerge merge        # build out/merged.ged
 ```
 
 On Windows PowerShell, `$env:PYTHONPATH="src"` instead of the inline prefix.
