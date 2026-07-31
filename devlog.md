@@ -276,3 +276,34 @@ The GEDCOM date modifiers map cleanly onto qualifiers, which is why the
 model kept them: `ABT` becomes P1480 sourcing circumstances = Q5727902
 circa, `BEF` becomes P1326 latest date, `AFT` becomes P1319 earliest
 date, and `BET x AND y` becomes both bounds.
+
+## 2026-07-30 — reconciled by Geni ID: 209 of 8766
+
+`genimerge/wikidata.py` and `python -m genimerge reconcile` produce
+`out/wikidata/matched_p2600.csv`.
+
+**514,567 Wikidata items carry a P2600**, so the join is worth doing —
+but pulling all half a million would be rude and slow. The reconciler
+instead asks about only the IDs we have, 400 at a time in a `VALUES`
+clause: 8766 people became **22 queries**. Every response is cached on
+disk keyed by a hash of the query, so re-running a report costs nothing;
+deleting `out/wikidata/cache/` is how you force a refresh.
+
+**209 people matched (2.4%)**, all one-to-one — no Geni ID is claimed by
+two Wikidata items. The matches are exactly who you would expect: Sverker
+I of Sweden, Eric IX, Valdemar I of Denmark, Magnus Barefoot, Bolesław
+III Wrymouth, Judith of Flanders. The medieval Scandinavian royalty in
+this tree is on Wikidata; the Norwegian farmers are not.
+
+2.4% is the ceiling for *exact-identifier* matching, not for matching.
+Plenty of people here plainly have Wikidata items that simply carry no
+Geni ID — which is what the name-and-date second pass is for, and what
+the "add P2600 to existing items" backlog item exists to fix.
+
+The client takes its `fetch` as a parameter, so all 17 of its tests run
+offline: batching, disk caching, cache survival across processes, retry
+on 429/503, immediate failure on 4xx, and the deliberate choice to return
+a *list* of matches rather than a dict so that one Geni ID claimed by two
+items stays visible instead of being silently collapsed.
+
+`pytest`: 121 passed.

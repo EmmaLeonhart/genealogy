@@ -17,15 +17,13 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 Derived from `todo.md` items 1 (canonical merge), 2 (Wikidata reconciliation),
 and a first slice of 3 (expansion frontier). Work top to bottom.
 
-1. **Reconcile by P2600 (`genimerge/wikidata.py`).** Query the Wikidata SPARQL endpoint for every `wdt:P2600` value in existence, intersect with our Geni IDs, and write `out/wikidata/matched_p2600.csv` (geni_id, qid, label). Batch politely, cache the response to disk so re-runs are free.
+1. **Second-pass reconciliation on names and dates.** For people P2600 did not match, generate *candidate* QIDs from name + birth/death year, plus a structural signal (does the candidate's P22/P25 point at an already-matched item?). Output `out/wikidata/candidates.csv` with an explicit confidence column and NO automatic acceptance — this file is for human review.
 
-2. **Second-pass reconciliation on names and dates.** For people P2600 did not match, generate *candidate* QIDs from name + birth/death year, plus a structural signal (does the candidate's P22/P25 point at an already-matched item?). Output `out/wikidata/candidates.csv` with an explicit confidence column and NO automatic acceptance — this file is for human review.
+2. **Write `reports/wikidata-coverage.md`.** How many of the 8766 merged individuals are matched by P2600, how many have review-grade candidates, how many are unmatched, broken down by era and by subtree. This is the answer to "configure out the Wikidata connections as much as possible".
 
-3. **Write `reports/wikidata-coverage.md`.** How many of the 8766 merged individuals are matched by P2600, how many have review-grade candidates, how many are unmatched, broken down by era and by subtree. This is the answer to "configure out the Wikidata connections as much as possible".
+3. **Frontier analysis → `reports/frontier.md`.** Individuals with missing parents, sparse subtrees, and high-connectivity hubs — ranked as candidate branch points for the next Geni/Jenny export. First slice of `todo.md` item 3.
 
-4. **Frontier analysis → `reports/frontier.md`.** Individuals with missing parents, sparse subtrees, and high-connectivity hubs — ranked as candidate branch points for the next Geni/Jenny export. First slice of `todo.md` item 3.
-
-5. **Create the private GitHub repo and wire CI.** `gh repo create --private --source=. --push`, plus `.github/workflows/ci.yml` running `pytest` on push and PR.
+4. **Create the private GitHub repo and wire CI.** `gh repo create --private --source=. --push`, plus `.github/workflows/ci.yml` running `pytest` on push and PR.
 
 ---
 

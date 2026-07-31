@@ -6,9 +6,10 @@ import argparse
 import sys
 from pathlib import Path
 
+import csv
 import json
 
-from . import gedcom, inventory, merge as merge_mod, model
+from . import gedcom, inventory, merge as merge_mod, model, wikidata
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 DATA_LAKE = REPO_ROOT / "data_lake"
@@ -96,6 +97,48 @@ def _cmd_export(args: argparse.Namespace) -> int:
     return 0
 
 
+def _cmd_reconcile(args: argparse.Namespace) -> int:
+    tree = _load_tree(args.source)
+    client = wikidata.WikidataClient(cache_dir=OUT / "wikidata" / "cache", delay=args.delay)
+
+    def progress(done: int, total: int) -> None:
+        print(f"  batch {done}/{total}", end="\r", flush=True)
+
+    matches = wikidata.match_by_geni_id(client, tree.people, progress=progress)
+    print(" " * 30, end="\r")
+    matches = wikidata.add_labels(client, matches)
+
+    out_path = OUT / "wikidata" / "matched_p2600.csv"
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(out_path, "w", encoding="utf-8", newline="") as handle:
+        writer = csv.writer(handle)
+        writer.writerow(["geni_id", "qid", "wikidata_label", "wikidata_description",
+                         "geni_name", "birth_year", "death_year"])
+        for match in sorted(matches, key=lambda m: (m.geni_id, m.qid)):
+            person = tree.people.get(match.geni_id)
+            writer.writerow(
+                [
+                    match.geni_id,
+                    match.qid,
+                    match.label,
+                    match.description,
+                    person.display_name if person else "",
+                    person.birth_year if person else "",
+                    person.death_year if person else "",
+                ]
+            )
+
+    people_matched = len({m.geni_id for m in matches})
+    print(f"wrote {out_path}")
+    print(
+        f"{people_matched} of {len(tree.people)} people matched by P2600 "
+        f"({100.0 * people_matched / len(tree.people):.1f}%); "
+        f"{len(matches)} item links; "
+        f"{client.requests_made} requests, {client.cache_hits} cache hits"
+    )
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(prog="genimerge", description=__doc__)
     sub = parser.add_subparsers(dest="command", required=True)
@@ -135,6 +178,17 @@ def build_parser() -> argparse.ArgumentParser:
         "--source", type=Path, default=None, help="a GEDCOM to read instead of merging"
     )
     p_export.set_defaults(func=_cmd_export)
+
+    p_rec = sub.add_parser(
+        "reconcile",
+        help="match people to Wikidata items by P2600 (Geni.com profile ID)",
+        description="Responses are cached under out/wikidata/cache; delete it to refresh.",
+    )
+    p_rec.add_argument("--source", type=Path, default=None, help="a GEDCOM to read instead of merging")
+    p_rec.add_argument(
+        "--delay", type=float, default=1.0, help="seconds between requests (default: 1.0)"
+    )
+    p_rec.set_defaults(func=_cmd_reconcile)
 
     return parser
 
