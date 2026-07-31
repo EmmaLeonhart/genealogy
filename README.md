@@ -67,6 +67,7 @@ python -m genimerge reconcile        # match by P2600       -> out/wikidata/
 python -m genimerge expand --search  # propose more links   -> out/wikidata/candidates.csv
 python -m genimerge coverage         # what is linked       -> reports/wikidata-coverage.md
 python -m genimerge frontier         # what to export next  -> reports/frontier.md
+python -m genimerge names            # name-item coverage   -> reports/names.md
 python -m genimerge quickstatements  # edits to review      -> out/wikidata/add-p2600.qs
 ```
 
@@ -82,6 +83,7 @@ Generated, and worth reading in this order:
 - `reports/merge.md` — what merged, what conflicted, what did not resolve
 - `reports/wikidata-coverage.md` — how much of the tree reaches Wikidata
 - `reports/frontier.md` — where the tree stops, and which profiles to export from next
+- `reports/names.md` — which surnames and given names already have Wikidata items
 
 ## Editing Wikidata
 

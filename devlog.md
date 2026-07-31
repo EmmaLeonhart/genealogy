@@ -451,3 +451,42 @@ join finds that person on every future run, so each edit makes the next
 reconciliation cheaper than the last.
 
 `pytest`: 199 passed.
+
+## 2026-07-30 — the name vocabulary, measured
+
+`genimerge/names.py` and `python -m genimerge names` write
+`reports/names.md`. Promoted from `todo.md` item 5, but only its
+**read-only half**: creating name items is a decision for the user, and
+this is the measurement that makes that decision informed rather than
+blind. Nothing is proposed and nothing is created.
+
+| | distinct | already have a Wikidata name item | share |
+| --- | ---: | ---: | ---: |
+| surnames (P734) | 1991 | 874 | 43.9% |
+| given-name tokens (P735) | 3423 | 1950 | 57.0% |
+| whole `GIVN` strings | 6420 | 882 | 13.7% |
+
+So the job, if it is worth doing, is **1117 surnames and 1473 given
+names**. The report ranks the missing ones by how many people would gain
+a link: `Borsheim` (80 people), `Eriksson` (45), `Orre` (44),
+`Sør-Kolnes` (35). 340 people carry no usable name at all.
+
+Two things the data forced:
+
+**Geni's `GIVN` holds a whole given string** — "Ragnhild Rasmusdatter",
+not "Ragnhild" — while P735 takes one item per given name. Both are
+recorded: the full string, and its tokens. The 13.7% row for full strings
+against 57.0% for tokens is exactly that mismatch, and it is why the
+token row is the one that matters for P735.
+
+**The lookup has to be restricted to name items.** Matching a bare label
+makes "Eikeland" a village and "Ragnhild" a queen, neither of which P734
+or P735 could point at. The query filters `P31` to the five name types
+(Q101352, Q202444, Q12308941, Q11879590, Q3409032).
+
+Patronymics are counted separately — 565 of the surnames and 1081 of the
+given tokens look patronymic — by a suffix heuristic that is stated in
+the report to be **grouping only**. It will call some frozen hereditary
+surnames patronymic, because nothing in the text distinguishes the two.
+
+104 batched queries, all cached. `pytest`: 234 passed.

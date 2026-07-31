@@ -17,6 +17,7 @@ from . import (
     inventory,
     merge as merge_mod,
     model,
+    names as names_mod,
     quickstatements,
     reconcile,
     wikidata,
@@ -310,6 +311,33 @@ def _cmd_quickstatements(args: argparse.Namespace) -> int:
     return 0
 
 
+def _cmd_names(args: argparse.Namespace) -> int:
+    tree = _load_tree(args.source)
+    vocabulary = names_mod.build_vocabulary(tree)
+    strings = vocabulary.all_strings()
+    print(f"{len(strings)} distinct name strings; checking Wikidata")
+
+    client = wikidata.WikidataClient(cache_dir=OUT / "wikidata" / "cache", delay=args.delay)
+    items = names_mod.find_name_items(
+        client,
+        strings,
+        progress=lambda done, total: print(f"  batch {done}/{total}", end="\r", flush=True),
+    )
+    print()
+
+    text = names_mod.render_markdown(vocabulary, items, top=args.top)
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    args.output.write_text(text, encoding="utf-8", newline="\n")
+
+    summary = names_mod.summarise(vocabulary)
+    for which in ("surnames", "given_tokens"):
+        store = getattr(vocabulary, which)
+        have = sum(1 for name in store if items.get(name))
+        print(f"{which}: {have} of {summary[which]['distinct']} have a Wikidata name item")
+    print(f"wrote {args.output}")
+    return 0
+
+
 def _cmd_frontier(args: argparse.Namespace) -> int:
     tree = _load_tree(args.source)
     text = frontier.render_markdown(tree, limit=args.top)
@@ -438,6 +466,22 @@ def build_parser() -> argparse.ArgumentParser:
         help="date for the reference qualifier, YYYY-MM-DD (default: today)",
     )
     p_qs.set_defaults(func=_cmd_quickstatements)
+
+    p_names = sub.add_parser(
+        "names",
+        help="measure the tree's name vocabulary against Wikidata's name items",
+        description=(
+            "Which surnames and given names already have a Wikidata item, and "
+            "which do not. Read-only; proposes nothing."
+        ),
+    )
+    p_names.add_argument("--source", type=Path, default=None, help="a GEDCOM to read instead of merging")
+    p_names.add_argument("--delay", type=float, default=1.0, help="seconds between requests")
+    p_names.add_argument("--top", type=int, default=40, help="rows per table")
+    p_names.add_argument(
+        "-o", "--output", type=Path, default=REPORTS / "names.md", help="where to write"
+    )
+    p_names.set_defaults(func=_cmd_names)
 
     return parser
 
