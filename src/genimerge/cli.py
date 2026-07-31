@@ -9,7 +9,16 @@ from pathlib import Path
 import csv
 import json
 
-from . import frontier, gedcom, inventory, merge as merge_mod, model, reconcile, wikidata
+from . import (
+    coverage,
+    frontier,
+    gedcom,
+    inventory,
+    merge as merge_mod,
+    model,
+    reconcile,
+    wikidata,
+)
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 DATA_LAKE = REPO_ROOT / "data_lake"
@@ -216,6 +225,45 @@ def _cmd_expand(args: argparse.Namespace) -> int:
     return 0
 
 
+def _cmd_coverage(args: argparse.Namespace) -> int:
+    tree = _load_tree(args.source)
+    seeds = _read_seed_matches()
+
+    all_path = OUT / "wikidata" / "matched_all.csv"
+    expansion: dict[str, str] = {}
+    if all_path.exists():
+        with open(all_path, encoding="utf-8", newline="") as handle:
+            for row in csv.DictReader(handle):
+                if row["source"] != "P2600":
+                    expansion[row["geni_id"]] = row["qid"]
+
+    proposals: list[tuple[str, str, str, str]] = []
+    candidates_path = OUT / "wikidata" / "candidates.csv"
+    if candidates_path.exists():
+        with open(candidates_path, encoding="utf-8", newline="") as handle:
+            for row in csv.DictReader(handle):
+                if row["used_to_expand"] == "yes":
+                    continue
+                proposals.append(
+                    (row["geni_id"], row["qid"], row["confidence"], row["role"])
+                )
+
+    if not seeds and not expansion:
+        print("no matches found; run `genimerge reconcile` first", file=sys.stderr)
+        return 1
+
+    text = coverage.render_markdown(
+        coverage.CoverageInput(
+            tree=tree, by_p2600=seeds, by_expansion=expansion, proposals=proposals
+        ),
+        top_gaps=args.top,
+    )
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    args.output.write_text(text, encoding="utf-8", newline="\n")
+    print(f"wrote {args.output}")
+    return 0
+
+
 def _cmd_frontier(args: argparse.Namespace) -> int:
     tree = _load_tree(args.source)
     text = frontier.render_markdown(tree, limit=args.top)
@@ -305,6 +353,21 @@ def build_parser() -> argparse.ArgumentParser:
         "-o", "--output", type=Path, default=REPORTS / "frontier.md", help="where to write"
     )
     p_front.set_defaults(func=_cmd_frontier)
+
+    p_cov = sub.add_parser(
+        "coverage",
+        help="report how much of the tree is connected to Wikidata",
+    )
+    p_cov.add_argument("--source", type=Path, default=None, help="a GEDCOM to read instead of merging")
+    p_cov.add_argument("--top", type=int, default=25, help="how many unlinked gaps to list")
+    p_cov.add_argument(
+        "-o",
+        "--output",
+        type=Path,
+        default=REPORTS / "wikidata-coverage.md",
+        help="where to write",
+    )
+    p_cov.set_defaults(func=_cmd_coverage)
 
     return parser
 

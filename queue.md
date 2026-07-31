@@ -21,8 +21,6 @@ and a first slice of 3 (expansion frontier). Work top to bottom.
 
 2. **Write `reports/wikidata-coverage.md`.** How many of the 8766 merged individuals are matched by P2600, how many have review-grade candidates, how many are unmatched, broken down by era and by subtree. This is the answer to "configure out the Wikidata connections as much as possible".
 
-3. **Create the private GitHub repo and wire CI.** `gh repo create --private --source=. --push`, plus `.github/workflows/ci.yml` running `pytest` on push and PR.
-
 ---
 
 ## Always last — restart the three crons and summarize

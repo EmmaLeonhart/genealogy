@@ -352,3 +352,19 @@ ancestor" rather than being quietly absorbed, because it is worth fixing
 on Geni and it distorts every generational measure.
 
 `pytest`: 167 passed.
+
+## 2026-07-30 — private repo online, CI green
+
+`.github/workflows/ci.yml` runs `pytest` on push and pull request against
+Python 3.10 and 3.13. `data_lake/*.ged` is committed, so the integration
+tests that read the real exports run in CI rather than skipping — which is
+the point, since both merge bugs were found by exactly those tests.
+
+`gh repo create` failed with "Name already exists": the repo had already
+been created earlier in this session, at commit `74083e6`, before
+`reports/` existed. Rather than assume it was ours, checked it —
+**private**, and `origin/main` was a strict ancestor of local `main` with
+no commits we did not have — so the push was a plain fast-forward with
+nothing to clobber. `74083e6..34db20a`. First CI run: **success**, 47s.
+
+<https://github.com/EmmaLeonhart/geni> (private).
