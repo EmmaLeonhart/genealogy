@@ -9,10 +9,16 @@ See `CLAUDE.md` § "Queue and longer-horizon work".
 
 ---
 
-**Progress note (2026-07-30).** Items 1 and 2 are built and running; item 3 has
+**Progress note (2026-07-31).** Items 1 and 2 are built and running; item 3 has
 its analysis half (`reports/frontier.md`) but not its ingest half; item 6 has
-its first slice (the P2600 backfill batch). Items 4, 5 and the rest of 3 and 7
-are untouched. What is done in detail lives in `devlog.md`.
+all three of its edit-generating slices — P2600, name links, and the
+parent/spouse/date gaps — leaving only the post-acceptance re-run. Items 4, 5
+and the rest of 3 and 7 are untouched. What is done in detail lives in
+`devlog.md`.
+
+Every batch under items 4, 5 and 6 stops at a file in `out/wikidata/`.
+**Nothing in this repo writes to Wikidata**, and nothing should start doing so
+without the user saying it may.
 
 ## 1. One canonical genealogy, not N exports
 
@@ -78,11 +84,22 @@ the genealogy knows and Wikidata is missing: the P2600 Geni ID, P735/P734 name
 links, and any missing parent/spouse links. These are edits to existing items,
 so they need a higher review bar than new-item creation.
 
-The **P2600 backfill** slice of this is built: `genimerge quickstatements`
-writes a reviewable batch. Still open here: **P735/P734 name links** (which
-depends on item 5), and **missing parent/spouse links** on items that already
-exist. Also worth doing: re-running reconciliation *after* a batch is accepted,
-since each new P2600 makes the exact join reach further.
+Three slices of this are built, each writing a reviewable batch to
+`out/wikidata/` that nothing has sent anywhere:
+
+- **P2600 backfill** — `genimerge quickstatements` → `add-p2600.qs`.
+- **P735/P734 name links to name items that already exist** —
+  `genimerge name-links` → `add-names.qs`. Only the *missing* name items
+  depend on item 5; linking to extant ones never did.
+- **Missing parent/spouse links, and dates** — `genimerge crosscheck` →
+  `add-claims.qs`, 65 statements today (P22 x1, P25 x4, P26 x18, P569 x18,
+  P570 x24). Only gaps are proposed, never conflicts, and a relationship needs
+  both people linked by P2600 rather than by inference.
+
+What is left under item 6 is **re-running reconciliation after a batch is
+accepted**, since each new P2600 makes the exact join reach further. That is
+**BLOCKED-ON-USER-ACTION**: no batch has been accepted, and running one at
+QuickStatements is the user's call, not this repo's.
 
 ## 7. Ingest beyond Geni
 

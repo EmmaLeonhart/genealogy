@@ -847,3 +847,28 @@ compared equal and `git diff` showed nothing, but the file on disk had gone
 CRLF throughout. Restored with `git checkout`. Same shape as the
 `Get-Content -Raw` warning already in `CLAUDE.md`: on Windows, a round-trip
 through a text-mode write is not a no-op.
+
+## 2026-07-31 - todo.md item 6 was describing built work as open
+
+Item 6 listed "P735/P734 name links" and "missing parent/spouse links on items
+that already exist" as still to do. Both had shipped: `genimerge name-links`
+writes `add-names.qs` (commit 51f1eec), and `genimerge crosscheck` writes
+`add-claims.qs` (commit 21dd123), which carries P22 x1, P25 x4, P26 x18
+alongside 42 dates. The text was written before those landed and never
+revisited.
+
+That stale paragraph is not cosmetic: a work-loop tick read it, took it at face
+value, and went looking for work that was already done. Backlog text that lags
+the code sends effort at solved problems.
+
+Item 6 now lists the three built slices with the command and output file for
+each, and states what is genuinely left - re-running reconciliation once a
+batch has been accepted, tagged BLOCKED-ON-USER-ACTION, because accepting a
+batch at QuickStatements is the user's action and nothing here should do it for
+them. The progress note at the top of the file is redated and says the same.
+
+Added a line the file did not have anywhere: every batch under items 4, 5 and 6
+stops at a file in `out/wikidata/`, nothing in this repo writes to Wikidata,
+and nothing should start without the user saying it may.
+
+`pytest`: 435 passed, unchanged - this commit touches no code.

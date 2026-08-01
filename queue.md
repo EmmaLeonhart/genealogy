@@ -14,16 +14,10 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
-1. **Correct `todo.md` item 6, which describes built work as open.** It lists
-   "P735/P734 name links" and "missing parent/spouse links on items that
-   already exist" as still open; both shipped (`namelinks.py` → `add-names.qs`,
-   commit `51f1eec`; `crosscheck.py` → `add-claims.qs`, commit `21dd123`,
-   carrying P22x1, P25x4, P26x18). Restate what actually remains under item 6:
-   re-running reconciliation after a batch is accepted, which is
-   BLOCKED-ON-USER-ACTION on the user accepting one. Also refresh the
-   2026-07-30 progress note at the top of the file.
+**Empty.** `merge.render_report`'s conflict and dangling-pointer branches are
+tested, and `todo.md` item 6 now says what is actually left under it.
 
-What remains after those needs something this repo does not have:
+What remains needs something this repo does not have:
 
 - **CI is off on purpose, and stays off.** Not a blocker — a decision. This is a
   private repo, where Actions minutes are billable rather than free, and
