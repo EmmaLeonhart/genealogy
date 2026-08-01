@@ -21,8 +21,8 @@ The user's stated direction, in their own framing:
 1. Merge the exports into a single tree.
 2. Work out the Wikidata connections as far as the data allows, using the Geni
    ID that every record preserves.
-3. Later, expand the tree with more exports (from Geni, and from Jenny) — which
-   means finding good **branch points** in the genealogy to export from next.
+3. Later, expand the tree with more exports from Geni — which means finding
+   good **branch points** in the genealogy to export from next.
 4. Much later, queue up creation of the absent people *on* Wikidata, connected
    to their parents, carrying whatever the genealogy supports: multilingual
    label, English label, Geni ID, sex, and the relationship links. Harder

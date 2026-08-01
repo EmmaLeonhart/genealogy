@@ -30,8 +30,9 @@ What remains needs something this repo does not have:
 - **NEEDS-DECISION** — `todo.md` items 4 and 5: creating Wikidata items, for
   people who have none and for the 1117 surnames and 1473 given names that have
   none. Sized in `reports/names.md`. The decision is the user's.
-- **BLOCKED-ON-USER-ACTION** — `todo.md` items 3b and 7: ingesting Jenny
-  exports. Unblock signal is a Jenny export appearing in `data_lake/`.
+- **BLOCKED-ON-USER-ACTION** — `todo.md` item 3b: taking the next Geni export,
+  from the branch points ranked in `reports/frontier.md`. Only the user can run
+  an export. Unblock signal is a new `.ged` in `data_lake/`.
 
 ---
 

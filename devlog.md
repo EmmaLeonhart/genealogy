@@ -872,3 +872,36 @@ stops at a file in `out/wikidata/`, nothing in this repo writes to Wikidata,
 and nothing should start without the user saying it may.
 
 `pytest`: 435 passed, unchanged - this commit touches no code.
+
+## 2026-07-31 - "Jenny" was never a data source
+
+The user's stated direction, as recorded in CLAUDE.md, said the tree would
+later be expanded "with more exports (from Geni, and from Jenny)". Jenny was
+transcription noise - a speech-to-text mishearing of Geni, confirmed by the
+user. There is no second genealogy site, no second export format, and nothing
+to wait for.
+
+Struck from `CLAUDE.md`, `todo.md` items 3, 3a and 7, and `queue.md`.
+
+What that changes, which is more than wording:
+
+- **A blocker dissolved.** Items 3b and 7 were tagged BLOCKED-ON-USER-ACTION
+  with "a Jenny export appearing in `data_lake/`" as the unblock signal. That
+  signal was never going to arrive. Item 3b is still the user's action, but the
+  real one: take the next Geni export from the branch points ranked in
+  `reports/frontier.md`.
+- **Item 7 shrank to almost nothing.** It was "support additional sources ...
+  without the merge logic having to care which source a record came from".
+  `Merger.add_source` keys on the xref and never asks which file a record came
+  from, and `genimerge merge` globs `data_lake/*.ged` by default, so a further
+  Geni export is a file drop and a re-run. What remains is a non-GEDCOM input
+  path, with no second format in hand to build one against. Recorded as
+  abstract rather than left looking like pending work.
+
+Worth noting for the next session that reads an old devlog entry: Jenny is also
+a real given name in this genealogy - `Jenny Martinsdatter Stangaland`,
+`Jenny Pedersdatter Ølberg`, `Jenny Joakimsdatter Lea` all appear in
+`export-BloodTree.ged`. Those are people in the tree, unrelated to the
+mistranscription.
+
+No code touched; 435 passed locally on 3.13.

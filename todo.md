@@ -43,16 +43,16 @@ a confidence level per row, never a silent guess.
 The current exports are bounded slices of Geni. Identify the **frontier** of the
 merged tree: individuals with missing parents, sparse subtrees, and
 high-connectivity hubs that would pull in the most new material per export. Use
-this to decide what to export next from Geni, and what to pull from Jenny.
-Ingesting Jenny exports means supporting whatever format Jenny emits alongside
-GEDCOM.
+this to decide what to export next from Geni.
 
 ### 3a. What the frontier analysis found
 
 The tree is one connected component; 2350 people (26.8%) have no parents
 recorded, and those are the branch points. `reports/frontier.md` ranks them by
-descendant count. Still open: **ingesting Jenny's format**, and deciding how many
-exports it is worth taking.
+descendant count. Still open: **taking the next export**, from the top of that
+ranking, and deciding how many exports it is worth taking. Only the user can do
+the export itself — **BLOCKED-ON-USER-ACTION**, unblock signal is a new `.ged`
+in `data_lake/`, after which `genimerge merge` absorbs it without changes.
 
 ## 4. Wikidata authoring pipeline — queue up the missing people
 
@@ -101,8 +101,15 @@ accepted**, since each new P2600 makes the exact join reach further. That is
 **BLOCKED-ON-USER-ACTION**: no batch has been accepted, and running one at
 QuickStatements is the user's call, not this repo's.
 
-## 7. Ingest beyond Geni
+## 7. Ingest more sources
 
-Support additional sources (Jenny exports, future Geni exports, possibly direct
-Geni API) into the same canonical store without the merge logic having to care
-which source a record came from.
+Absorb further exports — more Geni GEDCOMs, and possibly the Geni API direct —
+into the same canonical store without the merge logic having to care which
+source a record came from.
+
+**Mostly already true for GEDCOM.** `Merger.add_source` keys on the xref and
+knows nothing about which file it came from, and `genimerge merge` defaults to
+globbing `data_lake/*.ged` — so another Geni export is a file drop and a re-run,
+not a code change. What is genuinely unbuilt is a
+non-GEDCOM input path, and there is no second format in hand to build one
+against — so this stays abstract until a source that is not a GEDCOM turns up.
