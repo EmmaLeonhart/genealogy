@@ -243,6 +243,90 @@ def test_valueless_repeatable_nodes_are_matched_on_their_whole_subtree(tmp_path)
     assert texts == ["alpha", "beta", "gamma"]
 
 
+def test_the_report_counts_every_record_it_merged():
+    _, report = _merge(A, B)
+
+    assert report.total_records == sum(report.totals.values()) == 3
+
+
+# The report branches below only run when an export contradicts one already
+# merged, or points at a record nobody supplied. Neither has happened yet --
+# all three current exports agree -- so these paths have never executed on real
+# data, and the first export that disagrees would be running them for the first
+# time in the report a human is reading to decide whether to trust the merge.
+
+
+def test_only_family_structure_pointers_are_reported_as_a_broken_tree():
+    doc, report = _merge(A, B)
+    # A missing spouse breaks the tree. A missing submitter record is an
+    # incidental reference the exports simply did not include.
+    doc.by_xref()["@F900@"].add("HUSB", "@I999@")
+    doc.by_xref()["@I100@"].add("SUBM", "@S1@")
+    text = merge.render_report(report, doc=doc)
+
+    assert "**2** pointers name a record that is not in the merged file" in text
+    assert "of which **1** are family-structure pointers" in text
+    assert "| `FAM.HUSB` | 1 |" in text
+    assert "| `INDI.SUBM` | 1 |" in text
+
+
+def test_a_report_whose_pointers_all_resolve_says_so():
+    doc, report = _merge(A, B)
+
+    assert "None: every pointer in the merged file resolves." in merge.render_report(report, doc=doc)
+
+
+def test_the_detailed_report_lists_every_conflict_and_where_each_value_came_from():
+    _, report = _merge(A, A.replace("2 DATE 1900", "2 DATE 1901"))
+    text = merge.render_report(report, detail=True)
+
+    assert "**1** value disagreements on single-valued paths." in text
+    assert "| `INDI.BIRT.DATE` | 1 |" in text  # the by-path summary
+    assert (
+        "| `@I100@` | `INDI.BIRT.DATE` | 1900 | source0.ged | 1901 | source1.ged |" in text
+    )
+
+
+def test_the_summary_report_points_at_the_detailed_one_instead_of_repeating_it():
+    _, report = _merge(A, A.replace("2 DATE 1900", "2 DATE 1901"))
+    text = merge.render_report(report, detail=False)
+
+    assert "`out/merge-report.md`" in text
+    assert "### Every conflict" not in text
+    assert "source0.ged | 1901" not in text
+
+
+def test_conflicts_on_the_same_path_are_summarised_together():
+    other = A.replace("2 DATE 1900", "2 DATE 1901").replace("1 SEX F", "1 SEX M")
+    _, report = _merge(A, other)
+    text = merge.render_report(report, detail=False)
+
+    assert "**2** value disagreements" in text
+    assert "| `INDI.BIRT.DATE` | 1 |" in text
+    assert "| `INDI.SEX` | 1 |" in text
+
+
+def test_a_pipe_in_a_disputed_value_is_escaped_rather_than_splitting_the_table():
+    # GEDCOM does not reserve `|`, Markdown does. An unescaped one would shift
+    # every later column of that row silently.
+    left = A.replace("2 DATE 1900", "2 DATE 1900\n2 PLAC Bergen | Oslo")
+    right = A.replace("2 DATE 1900", "2 DATE 1900\n2 PLAC Trondheim")
+    _, report = _merge(left, right)
+    row = [ln for ln in merge.render_report(report, detail=True).splitlines() if "Bergen" in ln]
+
+    assert len(row) == 1
+    assert r"Bergen \| Oslo" in row[0]
+    assert row[0].count("|") - row[0].count(r"\|") == 7  # 6 columns, 7 delimiters
+
+
+def test_a_long_value_is_truncated_and_an_empty_one_is_visible():
+    assert merge._cell("x" * 100) == "x" * 79 + "…"
+    assert len(merge._cell("x" * 100)) == 80
+    assert merge._cell("x" * 80) == "x" * 80  # exactly at the limit, left alone
+    assert merge._cell("") == "*(empty)*"
+    assert merge._cell("two\nlines") == "two lines"
+
+
 def test_single_valued_paths_are_measured_from_the_files(tmp_path):
     path = tmp_path / "x.ged"
     path.write_text(

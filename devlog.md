@@ -806,3 +806,44 @@ version matrix no longer runs, so 3.10 is covered only by the static
 check in `tests/test_python_floor.py`, and nothing should be called
 CI-verified. That is a real reduction in assurance, and the right trade
 against an unexpected bill — but it is a trade, not a free win.
+
+## 2026-07-31 — the merge report's failure branches, tested at last
+
+`merge.render_report` has two halves that have never run. All three exports
+agree with each other, so `report.conflicts` is empty every time, and the
+dangling-pointer paragraph only fires through the CLI. `merge.py` was at 92%
+coverage for that reason — not because the branches are trivial, but because
+the data has never reached them. The first export that contradicts one already
+merged would execute them for the first time inside the report a human is
+reading to decide whether to trust the merge.
+
+Eight tests, `merge.py` **92% -> 99%** (the one line left is a loop `continue`).
+What they pin down:
+
+- **Only structural pointers mean a broken tree.** A missing `HUSB` does; a
+  missing `SUBM` does not, and the paragraph has to say so — 14 of the real
+  merge's dangling pointers are the incidental kind, and calling them breakage
+  would misreport a healthy tree.
+- **`detail=True` lists every conflict; `detail=False` points at
+  `out/merge-report.md`** rather than duplicating it into `reports/merge.md`.
+- **A `|` in a disputed value is escaped.** GEDCOM does not reserve the pipe,
+  Markdown does. An unescaped one shifts every later column of that row and
+  nothing announces it — the assertion counts delimiters, not just the escape.
+- **A long value truncates to 80 chars with an ellipsis, and an empty one
+  renders `*(empty)*`** instead of an invisible cell.
+
+Each of the four assertions was checked against a deliberately broken copy of
+`merge.py` — pipe escaping removed, `HUSB` dropped from the structural set,
+the ellipsis dropped, every pointer counted as structural. All four mutations
+failed the suite, so the tests bite rather than merely pass.
+
+`pytest`: **435 passed**, Python 3.13 only. Not CI-verified; CI does not run
+on this repo.
+
+One thing to avoid repeating: the mutation script wrote `merge.py` back with
+`Path.write_text`, which on Windows translates every line feed into a
+carriage-return/line-feed pair unless `newline=""` says otherwise. The content
+compared equal and `git diff` showed nothing, but the file on disk had gone
+CRLF throughout. Restored with `git checkout`. Same shape as the
+`Get-Content -Raw` warning already in `CLAUDE.md`: on Windows, a round-trip
+through a text-mode write is not a no-op.
