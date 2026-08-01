@@ -14,10 +14,49 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
-**Empty.** The cleanvibe check has now run once (2026-07-31); next one is due
-after 2026-08-07.
+**Export seed discovery** — model a Geni export as what it actually is, a
+breadth-first ball from one profile capped at 3836, and rank candidate seeds by
+the *new* material that ball would reach rather than by the known tree hanging
+off them. The user's constraint: never pick a seed sitting in the middle of a
+region already recorded several layers deep, and do not require the seed itself
+to be well documented — interconnectedness carries the export.
 
-What remains needs something this repo does not have:
+1. **`src/genimerge/seeds.py` — the ball.** `export_ball(graph, seed, *, style,
+   cap=3836, radius=None)`, BFS in hop order, cap applied at Geni's export
+   limit. Styles matching how Geni exports: `blood` / `all` (undirected family
+   graph), `ancestors` (parent edges only), `descendants` (child edges only).
+   Return the reached set plus the hop at which the cap bit, because a ball that
+   fills before it reaches the boundary is exactly the wasted export.
+
+2. **Openness, and the saturation rejection.** For a seed's ball: `open` =
+   how many people in it have no parents recorded (each is a doorway Geni can
+   walk through and we cannot), `openness` = `open / ball`. A ball whose
+   openness is below a threshold is **saturated** — everything around it is
+   already recorded to several layers — and is rejected outright rather than
+   ranked low. Screen on a cheap radius-limited ball (default 3 hops); pay for
+   the full capped ball only on the finalists.
+
+3. **Greedy non-overlapping selection.** Two seeds three hops apart have nearly
+   the same ball, so ranking alone would hand back forty candidates from one
+   neighbourhood. `choose_export_set(profiles, k)` picks the best seed, marks
+   the frontier people its ball covers, then repeatedly picks whichever
+   remaining seed adds the most *uncovered* frontier people. That answers "what
+   are my next k exports" instead of "here are k names near each other".
+
+4. **`genimerge seeds` CLI** → `reports/seeds.md` and `out/seeds.csv`, carrying
+   per seed: ball size, open count, openness, hops used, whether the cap bit,
+   and what each successive pick adds over the ones before it.
+
+5. **Tests.** Ball shape and hop order per style; the cap actually biting;
+   saturated balls rejected rather than ranked; greedy selection preferring a
+   smaller distant ball over a large overlapping one; determinism on ties.
+
+**Named honestly: the yield of an export cannot be measured, only proxied.** We
+do not know what is above a parentless person — that is the whole reason to
+export from them. Openness counts doorways, not what is behind them. The report
+must say that rather than present a score as a prediction of new people.
+
+What remains after that needs something this repo does not have:
 
 - **CI is off on purpose, and stays off.** Not a blocker — a decision. This is a
   private repo, where Actions minutes are billable rather than free, and
