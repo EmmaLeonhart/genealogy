@@ -7,7 +7,11 @@ Workflow behaviors live as skills in `.claude/skills/` (auto-discovered by Claud
 `writing-style`, `cleanvibe-update-check`. They are vendored into this repo and kept
 current by the `cleanvibe-update-check` skill.
 
-- **Last cleanvibe update check:** `never`
+- **Last cleanvibe update check:** `2026-07-31` — all six skills present, none
+  superseded, nothing refreshed. Note the page's newest entry is **v1.15.0**
+  while this repo was scaffolded from **v1.17.0**, so the check can only show
+  that nothing *listed* is newer than what is vendored here; whether v1.16 or
+  v1.17 changed a skill is not something the page currently answers.
 - **Updates source:** <https://cleanvibe.emmaleonhart.com/updates.md>
 
 ## Project Description

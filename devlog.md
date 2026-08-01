@@ -905,3 +905,36 @@ a real given name in this genealogy - `Jenny Martinsdatter Stangaland`,
 mistranscription.
 
 No code touched; 435 passed locally on 3.13.
+
+## 2026-07-31 - cleanvibe update check, run for the first time
+
+CLAUDE.md had recorded the last check as `never` since the repo was cloned, so
+the six vendored skills had been frozen at clone-time wording without anyone
+confirming that was current - including the skills that govern how these
+sessions run.
+
+Fetched <https://cleanvibe.emmaleonhart.com/updates.md>. It lists exactly six
+skills, all introduced at **v1.14.0 (2026-05-30)**: emergency-stop,
+cron-is-local, autonomous-loop, queue-driven-workflow, writing-style,
+cleanvibe-update-check. All six are present here and none is superseded. No
+skill file was changed, and the page lists none this repo lacks.
+
+**What this check cannot tell us.** The page's newest entry is **v1.15.0
+(2026-06-05)**, but this repo was scaffolded from **v1.17.0** - the devlog's
+first entry says so. So the page is two minor versions behind the release that
+produced this clone. "Nothing listed is newer than what we have" is true;
+"nothing has shipped since" does not follow, because v1.16.0 and v1.17.0 are
+not described there at all. Recorded in CLAUDE.md next to the date so the next
+check does not read a bare date as an all-clear.
+
+Also replaced the work-loop cron's prompt this tick. The old one asserted that
+item 6's parent/spouse-link slice was unblocked work and named a Jenny export
+as an unblock signal - both wrong since e59ac1a and 3ee6555, and the first of
+them had already sent one tick chasing shipped work. The new prompt tells the
+tick to read `todo.md` and `queue.md` for status rather than trust the snapshot
+written into it, states that reporting `nothing actionable` is a correct
+outcome, and carries the warning about writing repo files from Python needing
+an explicit newline argument as well as an explicit encoding. Crons are
+session-local, so this is not a repo change: work-loop is now job 41b7519c.
+
+`pytest`: 435 passed, unchanged - no code touched.
