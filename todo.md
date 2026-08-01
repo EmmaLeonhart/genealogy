@@ -49,10 +49,23 @@ this to decide what to export next from Geni.
 
 The tree is one connected component; 2350 people (26.8%) have no parents
 recorded, and those are the branch points. `reports/frontier.md` ranks them by
-descendant count. Still open: **taking the next export**, from the top of that
-ranking, and deciding how many exports it is worth taking. Only the user can do
-the export itself — **BLOCKED-ON-USER-ACTION**, unblock signal is a new `.ged`
-in `data_lake/`, after which `genimerge merge` absorbs it without changes.
+descendant count.
+
+### 3b. Export seeds, modelled on how Geni exports
+
+Ranking by descendant count measures the tree we already hold. `genimerge
+seeds` (`reports/seeds.md`) instead models an export as what it is — a
+breadth-first ball from one profile, capped at 3836, in one of four styles —
+and scores a candidate by the **doorways** in its ball: people with no parents
+recorded, where Geni can walk further than we can. Seeds inside a region
+recorded several layers deep are rejected as saturated. The picks are chosen
+greedily on newly-covered doorways, so ten picks are ten *different*
+neighbourhoods rather than ten names off one branch.
+
+Still open: **taking the next export**, from the sequence in `reports/seeds.md`.
+Only the user can do the export itself — **BLOCKED-ON-USER-ACTION**, unblock
+signal is a new `.ged` in `data_lake/`, after which `genimerge merge` absorbs it
+without changes and the seed ranking can be re-run against the larger tree.
 
 ## 4. Wikidata authoring pipeline — queue up the missing people
 

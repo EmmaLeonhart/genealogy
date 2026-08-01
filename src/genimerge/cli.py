@@ -23,6 +23,7 @@ from . import (
     names as names_mod,
     quickstatements,
     reconcile,
+    seeds,
     wikidata,
 )
 
@@ -480,6 +481,46 @@ def _cmd_frontier(args: argparse.Namespace) -> int:
     return 0
 
 
+def _cmd_seeds(args: argparse.Namespace) -> int:
+    ws = Workspace.from_args(args)
+    tree = _load_tree(args.source, ws)
+    output = args.output or ws.reports / "seeds.md"
+    _write(
+        output,
+        seeds.render_markdown(
+            tree, style=args.style, radius=args.radius, exports=args.exports, top=args.top
+        ),
+    )
+
+    kept, rejected = seeds.rank_seeds(tree, style=args.style, radius=args.radius)
+    picks = seeds.choose_export_set(kept, args.exports)
+    csv_path = ws.out / "seeds.csv"
+    csv_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(csv_path, "w", encoding="utf-8", newline="") as handle:
+        writer = csv.writer(handle)
+        writer.writerow(["order", "geni_id", "name", "url", "ball", "doorways", "openness", "adds"])
+        for order, pick in enumerate(picks, 1):
+            person = tree.people[pick.profile.seed]
+            writer.writerow(
+                [
+                    order,
+                    pick.profile.seed,
+                    person.display_name,
+                    person.url,
+                    pick.profile.size,
+                    pick.profile.open_count,
+                    f"{pick.profile.openness:.4f}",
+                    pick.fresh_count,
+                ]
+            )
+
+    print(f"{len(kept)} candidates kept, {len(rejected)} rejected as saturated")
+    print(f"{len(picks)} exports planned, reaching {sum(p.fresh_count for p in picks)} doorways")
+    print(f"wrote {output}")
+    print(f"wrote {csv_path}")
+    return 0
+
+
 def _add_workspace_options(sub: argparse._SubParsersAction) -> None:
     """Give every subcommand the workspace options.
 
@@ -590,6 +631,33 @@ def build_parser() -> argparse.ArgumentParser:
         help="where to write (default: <reports>/frontier.md)"
     )
     p_front.set_defaults(func=_cmd_frontier)
+
+    p_seeds = sub.add_parser(
+        "seeds",
+        help="plan the next exports: seeds whose breadth-first ball reaches the most new material",
+        description=(
+            "A Geni export is a breadth-first ball from one profile, capped at "
+            f"{seeds.GENI_EXPORT_CAP}. This ranks candidate seeds by the people in "
+            "their ball with no parents recorded, and picks a sequence whose balls "
+            "overlap as little as possible."
+        ),
+    )
+    p_seeds.add_argument("--source", type=Path, default=None, help="a GEDCOM to read instead of merging")
+    p_seeds.add_argument(
+        "--style", choices=seeds.STYLES, default="blood",
+        help="which links the export walks (default: blood)",
+    )
+    p_seeds.add_argument(
+        "--radius", type=int, default=seeds.SCREEN_RADIUS,
+        help=f"hops in the screening ball (default: {seeds.SCREEN_RADIUS})",
+    )
+    p_seeds.add_argument("--exports", type=int, default=10, help="how many exports to plan")
+    p_seeds.add_argument("--top", type=int, default=40, help="how many ranked candidates to list")
+    p_seeds.add_argument(
+        "-o", "--output", type=Path, default=None,
+        help="where to write (default: <reports>/seeds.md)"
+    )
+    p_seeds.set_defaults(func=_cmd_seeds)
 
     p_cov = sub.add_parser(
         "coverage",

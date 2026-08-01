@@ -96,6 +96,7 @@ COMMANDS = [
     "reconcile",
     "expand",
     "frontier",
+    "seeds",
     "coverage",
     "quickstatements",
     "names",
@@ -214,6 +215,31 @@ def test_frontier_writes_its_report(workspace):
 
     text = (workspace["reports"] / "frontier.md").read_text(encoding="utf-8")
     assert "# Expansion frontier" in text
+
+
+def test_seeds_writes_a_report_and_a_csv(workspace):
+    run(workspace, "merge")
+    assert run(workspace, "seeds") == 0
+
+    text = (workspace["reports"] / "seeds.md").read_text(encoding="utf-8")
+    assert "# Export seeds" in text
+    assert "What this cannot tell you" in text  # the limits stay in the report
+
+    rows = (workspace["out"] / "seeds.csv").read_text(encoding="utf-8").splitlines()
+    assert rows[0].startswith("order,geni_id,name,url")
+    assert len(rows) > 1
+
+
+def test_seeds_accepts_each_export_style(workspace):
+    run(workspace, "merge")
+    for style in ("blood", "all", "ancestors", "descendants"):
+        assert run(workspace, "seeds", "--style", style) == 0
+
+
+def test_seeds_refuses_a_style_geni_does_not_offer(workspace):
+    run(workspace, "merge")
+    with pytest.raises(SystemExit):
+        run(workspace, "seeds", "--style", "cousins")
 
 
 def test_the_documented_pipeline_runs_end_to_end(workspace):

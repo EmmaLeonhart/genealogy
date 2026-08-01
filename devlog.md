@@ -938,3 +938,57 @@ an explicit newline argument as well as an explicit encoding. Crons are
 session-local, so this is not a repo change: work-loop is now job 41b7519c.
 
 `pytest`: 435 passed, unchanged - no code touched.
+
+## 2026-08-01 - export seeds: model the ball, not the subtree
+
+The user pointed out what a Geni export actually is: a breadth-first walk from
+one profile - ancestors, descendants, blood relatives, or everything - until it
+hits the 3836 cap. What matters in a seed is therefore landing somewhere the
+walk will cross into material we lack, and not landing in the middle of a
+region already recorded several layers out. The seed itself does not need to be
+well documented; the interconnectedness carries the export.
+
+`frontier.py` answers a different question, and had been standing in for this
+one. It ranks parentless people by descendant count - a measure of the tree we
+already hold - and has no notion of two candidates sharing a neighbourhood, so
+its top forty can all hang off one branch.
+
+`genimerge/seeds.py`, and `genimerge seeds` writing `reports/seeds.md` and
+`out/seeds.csv`:
+
+- **Doorways** are people in a ball with no parents recorded. Parentless, not
+  childless: a missing parent is evidence of missing data because everyone had
+  two, while most people who look like leaves really were leaves. Counting
+  childlessness would make every leaf an opportunity.
+- **Openness** is the doorway share of a ball. Below 5% the ball is saturated
+  and the seed is rejected outright.
+- **Selection is greedy on newly-covered doorways**, not by rank, because
+  neighbours share a ball.
+
+Measured on the real 8766-person tree: 2336 candidates kept, **14 rejected as
+saturated**, best openness 0.25. Ten greedy picks reach **173** distinct
+doorways against **144** for the ten highest-ranked seeds - about 20% more for
+the same ten exports.
+
+Two things the numbers say that are worth not smoothing over:
+
+**The saturation rejection barely fires.** Fourteen candidates out of 2350. The
+threshold is a floor under the list, not the mechanism - ranking by doorway
+count already keeps interior seeds away from the top. Left as measured rather
+than tuned upward to look like it is doing more work than it is.
+
+**A full export from the best seed reaches 3836 people we already have,
+hitting the cap at hop 11.** That is not a prediction of a wasted export: Geni's
+graph holds our people and the missing ones together, and its walk reaches both
+at every hop. But it does mean the cap binds long before the walk runs out of
+known territory, and the report says so instead of implying the ball is all new
+material.
+
+The report ends on what none of this can tell you. Doorways count what an
+export can reach, never what is behind them - nobody knows how many people sit
+above a parentless person, which is the whole reason to export from there. A
+seed with 25 doorways is a better bet than one with 3; it is not a promise of
+eight times the material.
+
+18 module tests plus 3 CLI tests. `seeds.py` at 100% coverage. `pytest`: **462
+passed**, Python 3.13 only. Not CI-verified; CI does not run here.

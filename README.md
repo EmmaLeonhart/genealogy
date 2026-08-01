@@ -71,7 +71,8 @@ python -m genimerge export           # canonical dataset    -> out/people.jsonl
 python -m genimerge reconcile        # match by P2600       -> out/wikidata/
 python -m genimerge expand --search  # propose more links   -> out/wikidata/candidates.csv
 python -m genimerge coverage         # what is linked       -> reports/wikidata-coverage.md
-python -m genimerge frontier         # what to export next  -> reports/frontier.md
+python -m genimerge frontier         # where the tree stops -> reports/frontier.md
+python -m genimerge seeds            # what to export next  -> reports/seeds.md
 python -m genimerge names            # name-item coverage   -> reports/names.md
 python -m genimerge quickstatements  # edits to review      -> out/wikidata/add-p2600.qs
 python -m genimerge name-links       # name links to review -> out/wikidata/add-names.qs
@@ -96,7 +97,8 @@ Generated, and worth reading in this order:
 - `reports/inventory.md` — what is in each export, and how little they overlap
 - `reports/merge.md` — what merged, what conflicted, what did not resolve
 - `reports/wikidata-coverage.md` — how much of the tree reaches Wikidata
-- `reports/frontier.md` — where the tree stops, and which profiles to export from next
+- `reports/frontier.md` — where the tree stops: parentless people, components, generational depth
+- `reports/seeds.md` — the next exports to take, as a sequence whose breadth-first balls barely overlap
 - `reports/names.md` — which surnames and given names already have Wikidata items
 - `reports/wikidata-crosscheck.md` — where we and Wikidata disagree about parents, spouses and dates
 
