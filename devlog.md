@@ -992,3 +992,78 @@ eight times the material.
 
 18 module tests plus 3 CLI tests. `seeds.py` at 100% coverage. `pytest`: **462
 passed**, Python 3.13 only. Not CI-verified; CI does not run here.
+
+---
+
+## 2026-08-01 — a fourth export lands, and it is not a fourth style
+
+Commit `9046f73` dropped `export-geni/export-Forest.ged` into the repo root — a
+Geni export dated 01 AUG 2026, 3840 individuals, 1806 families, 3840 `RFN`
+lines. This is the unblock signal `todo.md` item 3b was waiting for.
+
+Two things about it changed the conventions rather than just adding data.
+
+**`Forest` is a style, not a person.** The three exports already in
+`data_lake/` — `Forest`, `Ancestors`, `BloodTree` — are all rooted at the *same*
+first `INDI` record, Eric Borsheim `6000000087535357291`, which is also their
+`SUBM` xref. They are three shapes of one seed. So Geni's filename is
+`export-<style>.ged` and carries nothing about who the export is *of*, and the
+fourth export — rooted at Iver Mellegård `6000000226977233850`, who appears in
+none of the three — arrived with a filename already taken. That collision is
+structural and will happen again, so the fix is a scheme and not a rename:
+`data_lake/export-Forest-6000000226977233850.ged`, style plus seed profile ID,
+consistent with the profile ID being this repo's primary key. `git mv` kept the
+history. Recorded in `CLAUDE.md`, not in `reports/inventory.md`, which is
+generated and says not to hand-edit it.
+
+Worth noting that `reports/seeds.md` could not have proposed this seed. That
+report ranks parentless people *already in our tree*; Iver Mellegård is not one,
+so this export came from somewhere the ranking cannot see. It is a good export
+regardless — see below — but the ranking did not earn the credit.
+
+**3836 is not the cap.** `CLAUDE.md` asserted exports are capped at 3836
+individuals, on the evidence of three exports hitting it exactly.
+The fourth has 3840. The claim was wrong, and it is not
+inert prose: `genimerge/seeds.py` models an export ball as capped at 3836 and
+`reports/seeds.md` reports the top seed "hitting the cap at hop 11", so the
+number is wired into the ranking that decides what to export next. `CLAUDE.md`
+now records 3836 as a lower bound observed three times rather than a constant.
+It does **not** record 3840 as the new cap — that would be the same mistake
+with a different number, from one observation and a four-person difference.
+Establishing the real bound is queued as NEEDS-INVESTIGATION.
+
+**What the export is worth**, measured before merging rather than predicted:
+
+| | |
+| --- | ---: |
+| new export | 3840 |
+| shared with `export-Ancestors` | 57 |
+| shared with `export-BloodTree` | 140 |
+| shared with `export-Forest` | 44 |
+| shared with all three combined | 184 |
+| **people it adds** | **3656** |
+| merged tree 8766 → | **12422** |
+
+95% new material, and a 42% larger tree.
+
+**None of that has been merged, and no test was run.** There is no Python on
+this machine. `python` and `python3` on PATH are the Microsoft Store stub
+aliases — running one exits 49 with "Python was not found" — and there is no
+real install anywhere: nothing under `%LOCALAPPDATA%\Programs` or
+`C:\Program Files`, no `PythonCore` registry key under `HKCU` or `HKLM`, no
+Store package. WSL is not a way around it; `wsl -l -v` fails with
+`Wsl/CallMsi/Install/REGDB_E_CLASSNOTREG`. Python 3.13 did run here as recently
+as 2026-08-01 02:23, going by the `cpython-313.pyc` timestamps in
+`src/genimerge/__pycache__/`, so it was removed after that.
+
+The counts in the table above were therefore computed in PowerShell by reading
+`0 @…@ INDI` lines directly, not by `genimerge`. They stand as the numbers the
+merge should be *checked against* when it can run — not as merge output. The
+suite has not been run this session and nothing here is test-verified or
+CI-verified.
+
+Everything downstream — the merge itself, and the re-runs of `inventory`,
+`frontier`, `seeds`, `reconcile`, `coverage`, `crosscheck`, `names`,
+`namelinks` and `quickstatements` that a 42% larger tree forces — is
+BLOCKED-ON-USER-ACTION behind a Python install. Unblock signal is a working
+`python -VV` on PATH at 3.10 or newer.

@@ -54,10 +54,27 @@ URL to a stranger's profile.
 `RFN` does not stop a merge. The cross-check runs in `inventory`, in `model`,
 and over the merged output in `tests/test_merge_real_exports.py`.
 
-**Exports are capped at 3836 individuals.** All three exports hit that number
-exactly while sharing only 354 people, so they are overlapping slices, not
-copies. Expect to merge many exports over time, and expect the merge to be
-re-run rather than hand-edited. See `reports/inventory.md`.
+**Exports are capped, but 3836 is not the cap.** The first three exports each
+hit 3836 individuals exactly while sharing only 354 people, so they are
+overlapping slices rather than copies — and that identical count read as a cap.
+The fourth export (2026-08-01) has **3840**, which falsifies it. Something
+bounds an export near 3840, but one observation above 3836 does not establish
+what, and the difference is only four people. Treat 3836 as a *lower bound
+observed three times*, not a constant, and do not infer a new cap from 3840
+either. `genimerge/seeds.py` still models the ball cap as 3836 and
+`reports/seeds.md` still reports hitting it at hop 11 — both are wrong in the
+same way and are tracked in `queue.md`. Expect to merge many exports over time,
+and expect the merge to be re-run rather than hand-edited. See
+`reports/inventory.md`.
+
+**An export is named for its style, not its seed — so filenames collide.** Geni
+writes `export-<style>.ged`, and `Forest`, `Ancestors` and `BloodTree` are the
+styles. The first three exports are all three styles of the *same* seed, Eric
+Borsheim `6000000087535357291`, which is also their `SUBM` xref. A second
+`Forest` export from a different seed therefore arrives with a filename already
+taken. Disambiguate in `data_lake/` by appending the seed's Geni profile ID —
+`export-Forest-6000000226977233850.ged` — since the profile ID is this repo's
+primary key. The seed is the file's first `INDI` record.
 
 **Stdlib only.** `urllib` covers the Wikidata SPARQL endpoint. Add a dependency
 only when the stdlib genuinely cannot do the job.

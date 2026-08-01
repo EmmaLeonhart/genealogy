@@ -14,11 +14,61 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
-**Empty.** Export seed discovery is built: `genimerge seeds` writes
-`reports/seeds.md` and `out/seeds.csv`. Taking the next export is the user's
-action.
+### 0. BLOCKED-ON-USER-ACTION — there is no Python on this machine
 
-What remains needs something this repo does not have:
+Everything below needs it, and nothing below can be verified without it.
+
+`python` and `python3` on PATH are the **Microsoft Store stubs** (zero-byte app
+execution aliases in `WindowsApps\`), not an interpreter — running one exits 49
+with "Python was not found". No real install exists: nothing under
+`%LOCALAPPDATA%\Programs`, nothing in `C:\Program Files`, no
+`HKCU`/`HKLM` `PythonCore` registry key, no Store Python package. WSL is not a
+fallback either — `wsl -l -v` fails with
+`Wsl/CallMsi/Install/REGDB_E_CLASSNOTREG`.
+
+Python **3.13 did run here**: `src/genimerge/__pycache__/` holds
+`cpython-313.pyc` files, the newest stamped 2026-08-01 02:23. So the interpreter
+was removed some time after that.
+
+**Unblock signal:** a working `python -VV` on PATH (3.10+, per
+`tests/test_python_floor.py`; 3.13 is what the caches were built with).
+Installing it is the user's call — it is a change to their machine, not
+this repo's to make.
+
+### 1. Re-run the merge over four exports and refresh what it feeds
+
+Measured already, in PowerShell, without the merge (so this is the number to
+check the merge against, not a guess):
+
+| | |
+| --- | ---: |
+| new export | 3840 |
+| shared with `export-Ancestors` | 57 |
+| shared with `export-BloodTree` | 140 |
+| shared with `export-Forest` | 44 |
+| shared with all three combined | 184 |
+| **people it adds** | **3656** |
+| merged tree 8766 → | **12422** |
+
+95% of it is new. Then re-run what the merge feeds, since a 42% larger tree
+moves every one of them: `genimerge inventory`, `merge`, `frontier`, `seeds`,
+`reconcile`, `coverage`, `crosscheck`, `names`, `namelinks`, `quickstatements`.
+
+### 2. Fix the "capped at 3836" claim, which the fourth export falsifies
+
+`CLAUDE.md` is corrected already — it now records 3836 as a lower bound observed
+three times rather than a constant. What is **not** fixed is the code: `genimerge
+seeds` models an export as a ball capped at 3836 and `reports/seeds.md` reports
+hitting that cap at hop 11, so the stale number is still wired into the ranking
+that decides what to export next. Find where it is hard-coded in `seeds.py`,
+correct it, and re-run `seeds`.
+
+**NEEDS-INVESTIGATION** — 3840 vs 3836 is a 4-person difference and the cause is
+not yet known. Do not guess a new cap from one observation; establish what the
+number actually is (a floor of "at least 3840", a style-dependent cap, or a cap
+on something other than individuals) before changing the model.
+
+### Standing context
 
 - **CI is off on purpose, and stays off.** Not a blocker — a decision. This is a
   private repo, where Actions minutes are billable rather than free, and
@@ -31,9 +81,6 @@ What remains needs something this repo does not have:
 - **NEEDS-DECISION** — `todo.md` items 4 and 5: creating Wikidata items, for
   people who have none and for the 1117 surnames and 1473 given names that have
   none. Sized in `reports/names.md`. The decision is the user's.
-- **BLOCKED-ON-USER-ACTION** — `todo.md` item 3b: taking the next Geni export,
-  from the branch points ranked in `reports/frontier.md`. Only the user can run
-  an export. Unblock signal is a new `.ged` in `data_lake/`.
 
 ---
 
