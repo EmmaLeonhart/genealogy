@@ -14,10 +14,18 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
-**Empty.** `merge.render_report`'s conflict and dangling-pointer branches are
-tested, and `todo.md` item 6 now says what is actually left under it.
+1. **Run the cleanvibe update check, which has never run.** `CLAUDE.md`'s
+   `## Skills` section records the last check as `never`, and the
+   `cleanvibe-update-check` skill says to run it when that is more than 7 days
+   old. Fetch <https://cleanvibe.emmaleonhart.com/updates.md>, compare it
+   against the six skills vendored in `.claude/skills/`, and refresh any that
+   have shipped a newer version — matching `updates.md`'s wording rather than
+   paraphrasing it. Record the date either way. If the page lists a skill this
+   repo does not have, that is a judgement call about whether this project
+   wants it: queue it, do not vendor it silently. If the fetch fails, leave the
+   date at `never` and say so — the skill calls the check opportunistic.
 
-What remains needs something this repo does not have:
+What remains after that needs something this repo does not have:
 
 - **CI is off on purpose, and stays off.** Not a blocker — a decision. This is a
   private repo, where Actions minutes are billable rather than free, and
