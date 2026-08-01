@@ -14,10 +14,29 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
-**Empty.** The Python floor now has a static check — a partial substitute for
-the CI matrix, and labelled as one.
+1. **Test `merge.render_report`'s conflict and dangling-pointer branches.**
+   Every export merged so far agrees with every other, so `report.conflicts`
+   is empty and those branches have never executed — `merge.py` lines 375-385,
+   394-428 and `_cell` are uncovered for that reason, not because they are
+   trivial. The first export that contradicts an existing one runs them for the
+   first time in the report a human reads. Cover: the structural-vs-incidental
+   split in the dangling-pointer paragraph (only `CHIL`/`HUSB`/`WIFE`/`FAMC`/
+   `FAMS` count as broken tree), `detail=True` listing every conflict against
+   `detail=False` pointing at `out/merge-report.md`, and `_cell` escaping a
+   literal `|`, truncating past 80 chars, and rendering an empty value as
+   `*(empty)*` — a `|` in a GEDCOM value would otherwise silently break the
+   table.
 
-What remains needs something this repo does not have:
+2. **Correct `todo.md` item 6, which describes built work as open.** It lists
+   "P735/P734 name links" and "missing parent/spouse links on items that
+   already exist" as still open; both shipped (`namelinks.py` → `add-names.qs`,
+   commit `51f1eec`; `crosscheck.py` → `add-claims.qs`, commit `21dd123`,
+   carrying P22x1, P25x4, P26x18). Restate what actually remains under item 6:
+   re-running reconciliation after a batch is accepted, which is
+   BLOCKED-ON-USER-ACTION on the user accepting one. Also refresh the
+   2026-07-30 progress note at the top of the file.
+
+What remains after those needs something this repo does not have:
 
 - **CI is off on purpose, and stays off.** Not a blocker — a decision. This is a
   private repo, where Actions minutes are billable rather than free, and
