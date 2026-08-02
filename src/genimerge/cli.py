@@ -391,7 +391,7 @@ def _cmd_crosscheck(args: argparse.Namespace) -> int:
     result = crosscheck.cross_check(tree, linked, claims)
 
     output = args.output or ws.reports / "wikidata-crosscheck.md"
-    _write(output, crosscheck.render_markdown(result))
+    _write(output, crosscheck.render_markdown(result, exact_links=exact))
 
     batch = crosscheck.build_claim_batch(result, tree, exact, retrieved=args.retrieved)
     out_dir = ws.wikidata

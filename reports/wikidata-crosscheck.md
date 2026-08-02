@@ -78,6 +78,19 @@ bottom. The threshold is not widened to make this table shorter.
 | Judith of Flanders | [Q273181](https://www.wikidata.org/wiki/Q273181) | date of birth | 1028 | 1033 | 5 yr |
 | Odon | [Q775563](https://www.wikidata.org/wiki/Q775563) | date of birth | 1149 | 1145 | 4 yr |
 
+## Links worth re-checking (2)
+
+The table above lists conflicts one property at a time, which makes them read as independent errors. Sometimes they are not. Where a person's father, mother, birth *and* death all disagree, that is one observation rather than four, and what it is evidence about is the **link** — not any of the four facts.
+
+Listed here: people who conflict on more properties than they agree on, with at least two conflicts. A single conflict is ordinary, and someone who agrees on more than they conflict on is a sound link with a data disagreement inside it.
+
+| person | item | agrees | conflicts | link |
+| --- | ---: | ---: | ---: | ---: |
+| Canute I Erikska | [Q442876](https://www.wikidata.org/wiki/Q442876) | 0 | 4 | exact P2600 |
+| Bengt Folkesson | [Q1621801](https://www.wikidata.org/wiki/Q1621801) | 1 | 2 | exact P2600 |
+
+**This does not say the links are wrong.** Two readings fit every row and nothing here separates them: the link is mistaken, or it is correct and one side's data is badly wrong. For early-medieval people the second is entirely ordinary — a birth year three centuries out is a copied error, not proof of mistaken identity. The `link` column is the one thing that shifts the odds: an inferred link failing this test is weak evidence twice over, while an exact P2600 link failing it means the Geni ID on the item is under as much suspicion as the match.
+
 ## Gaps (165)
 
 Statements we hold that the Wikidata item does not. The eligible ones

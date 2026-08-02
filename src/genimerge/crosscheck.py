@@ -44,6 +44,9 @@ __all__ = [
     "NOT_COMPARABLE",
     "Finding",
     "CrossCheck",
+    "LinkBalance",
+    "link_balances",
+    "suspect_links",
     "PROPERTIES",
     "fetch_claims",
     "cross_check",
@@ -100,6 +103,72 @@ class CrossCheck:
         for finding in self.findings:
             out[finding.prop][finding.verdict] += 1
         return out
+
+
+@dataclass(frozen=True)
+class LinkBalance:
+    """One linked person, and how their comparable properties came out.
+
+    Only ``agrees`` and ``conflicts`` count. A gap is Wikidata not stating
+    something, which is evidence about coverage rather than about the link, and
+    *not comparable* is not evidence at all.
+    """
+
+    geni_id: str
+    qid: str
+    person: str
+    agrees: int
+    conflicts: int
+
+    @property
+    def comparable(self) -> int:
+        return self.agrees + self.conflicts
+
+    @property
+    def margin(self) -> int:
+        """How far conflicts outweigh agreements. Higher is more suspect."""
+        return self.conflicts - self.agrees
+
+
+def link_balances(check: CrossCheck) -> list[LinkBalance]:
+    """Per-person agree/conflict tallies, most suspect first."""
+    tally: dict[tuple[str, str], list] = {}
+    for finding in check.findings:
+        key = (finding.geni_id, finding.qid)
+        entry = tally.setdefault(key, [finding.person, 0, 0])
+        if finding.verdict == AGREES:
+            entry[1] += 1
+        elif finding.verdict == CONFLICT:
+            entry[2] += 1
+
+    balances = [
+        LinkBalance(geni_id=geni_id, qid=qid, person=person, agrees=agrees, conflicts=conflicts)
+        for (geni_id, qid), (person, agrees, conflicts) in tally.items()
+    ]
+    return sorted(balances, key=lambda b: (-b.margin, -b.conflicts, b.qid))
+
+
+def suspect_links(check: CrossCheck, *, min_conflicts: int = 2) -> list[LinkBalance]:
+    """Links where the disagreement is concentrated enough to be about the link.
+
+    The report lists conflicts one property at a time, which reads as a set of
+    independent errors. It is not always: a person whose father, mother, birth
+    and death all disagree is one observation, not four, and what it is evidence
+    about is the *link* rather than any of the four facts.
+
+    The test is ``conflicts > agrees`` with at least ``min_conflicts`` of them.
+    A single conflict is ordinary — two sources differing on one medieval date
+    says nothing — and a person who agrees on more than they conflict on is a
+    good link with a data disagreement inside it.
+
+    This deliberately does **not** decide that a suspect link is wrong. See
+    :func:`render_markdown` for the two readings it cannot separate.
+    """
+    return [
+        balance
+        for balance in link_balances(check)
+        if balance.conflicts >= min_conflicts and balance.conflicts > balance.agrees
+    ]
 
 
 def fetch_claims(
@@ -416,7 +485,9 @@ def _gap_text(finding: Finding) -> str:
     return "structural" if gap is None else f"{gap} yr"
 
 
-def render_markdown(check: CrossCheck, *, top: int = 100) -> str:
+def render_markdown(
+    check: CrossCheck, *, top: int = 100, exact_links: set[str] | None = None
+) -> str:
     counts = check.counts()
     lines = [
         "# Cross-check: this tree against Wikidata",
@@ -482,6 +553,56 @@ def render_markdown(check: CrossCheck, *, top: int = 100) -> str:
                 for f in conflicts[:top]
             ],
         )
+
+    suspect = suspect_links(check)
+    lines += ["", f"## Links worth re-checking ({len(suspect)})", ""]
+    if not suspect:
+        lines += [
+            "None. Every linked person agrees with their item on at least as "
+            "many properties as they conflict on, so each conflict above stands "
+            "alone as a disagreement about a fact.",
+        ]
+    else:
+        lines += [
+            "The table above lists conflicts one property at a time, which makes "
+            "them read as independent errors. Sometimes they are not. Where a "
+            "person's father, mother, birth *and* death all disagree, that is one "
+            "observation rather than four, and what it is evidence about is the "
+            "**link** — not any of the four facts.",
+            "",
+            "Listed here: people who conflict on more properties than they agree "
+            "on, with at least two conflicts. A single conflict is ordinary, and "
+            "someone who agrees on more than they conflict on is a sound link "
+            "with a data disagreement inside it.",
+            "",
+        ]
+        lines += _table(
+            ["person", "item", "agrees", "conflicts", "link"],
+            [
+                [
+                    b.person or b.geni_id,
+                    _wd(b.qid),
+                    str(b.agrees),
+                    str(b.conflicts),
+                    ("exact P2600" if exact_links and b.geni_id in exact_links else "inferred")
+                    if exact_links is not None
+                    else "—",
+                ]
+                for b in suspect
+            ],
+        )
+        lines += [
+            "",
+            "**This does not say the links are wrong.** Two readings fit every "
+            "row and nothing here separates them: the link is mistaken, or it is "
+            "correct and one side's data is badly wrong. For early-medieval "
+            "people the second is entirely ordinary — a birth year three "
+            "centuries out is a copied error, not proof of mistaken identity. "
+            "The `link` column is the one thing that shifts the odds: an "
+            "inferred link failing this test is weak evidence twice over, while "
+            "an exact P2600 link failing it means the Geni ID on the item is "
+            "under as much suspicion as the match.",
+        ]
 
     gaps = check.by_verdict(GAP)
     lines += [

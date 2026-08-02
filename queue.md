@@ -15,10 +15,20 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 ## Active
 
 **Empty.** The fourth export is merged, every downstream command has been re-run
-against the 12422-person tree, and `merge` now says whether the result is still
-one tree.
+against the 12422-person tree, `merge` reports whether the result is still one
+tree, and `wikidata-crosscheck.md` now groups conflicts per person.
 
 ### Standing context
+
+- **UNSAFE-TO-GUESS — two links flagged as worth re-checking, both exact P2600.**
+  `reports/wikidata-crosscheck.md` § "Links worth re-checking" names Canute I
+  Erikska `Q442876` (0 agreements, 4 conflicts, birth 1145 against 857) and
+  Bengt Folkesson `Q1621801` (1 agreement, 2 conflicts). Both are matched by the
+  Geni ID on the item, not by inference, so the ID itself is under as much
+  suspicion as the match. Two readings fit and nothing in this repo separates
+  them: the link is wrong, or it is right and one side's data is badly wrong.
+  Resolving one means a human comparing the Geni profile against the Wikidata
+  item. Nothing should edit either side on a guess.
 
 - **NEEDS-DECISION — how out-of-tree export seeds are found.** `reports/seeds.md`
   can only rank people already in the merged tree. Iver Mellegård, who seeded

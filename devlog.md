@@ -1298,3 +1298,51 @@ Also recorded in `queue.md` as a standing NEEDS-DECISION: `seeds.md` can only
 rank people already in the tree, and the seed that produced the best export so
 far was not one of them. How that seed was found is a channel this repo cannot
 see, and the answer decides what to build next.
+
+---
+
+## 2026-08-01 — a conflict that is about the link, not the fact
+
+`wikidata-crosscheck.md` listed 40 conflicts as 40 rows, ranked by how far apart
+the two sides were, above a per-property summary. One property per row reads as
+40 independent errors. Four of them were one person.
+
+Canute I Erikska, `Q442876`: father disagrees, mother disagrees, birth 1145
+against 857, death 1196 against 934. Nothing agrees — **0 agreements against 4
+conflicts**. As four rows that is two bad parents and two bad dates; together it
+is one observation, and what it is evidence about is the link.
+
+The provenance sharpens it rather than explaining it away. `Q442876` is an
+**exact P2600 match** — the Geni ID is on the Wikidata item — so this is not the
+expansion-inference weakness already written up in `add-p2600.md`. The Geni ID
+on that item is under the same suspicion as the match itself.
+
+`link_balances` and `suspect_links` now tally agreements and conflicts per
+`(geni_id, qid)`, and the report gained a "Links worth re-checking" section.
+Gaps and *not comparable* are excluded from the tally on purpose: a gap is
+Wikidata not stating something, which is evidence about coverage, and *not
+comparable* is not evidence at all. The test is `conflicts > agrees` with at
+least two conflicts — one conflict alone is ordinary, since two medieval sources
+differing on a single date says nothing, and a person agreeing on more than they
+conflict on is a sound link with a data disagreement inside it.
+
+On the real data it finds **2**: Canute I Erikska (0/4) and Bengt Folkesson
+(1/2), both exact P2600. Nine tests, including one asserting that four people
+with one conflict each are *not* pooled into a false signal.
+
+**The section does not say the links are wrong, and a test holds it to that.**
+Conflicting on everything is equally what a correct link to bad data looks like;
+for early-medieval people a birth year three centuries out is a copied error,
+not proof of mistaken identity. What the report does instead is name the two
+readings and print the one column that shifts the odds between them — whether
+the link is exact or inferred. An inferred link failing this test is weak
+evidence twice over; an exact one failing it implicates the ID.
+
+This is the same shape as the `add-p2600.md` denominator two ticks ago: nothing
+newly measured, something already computed that nothing said out loud. The
+per-property summary and the per-conflict list were both there; the per-person
+view was the one nobody had taken.
+
+**490 passed** (was 481), Python 3.13.14. Report regenerated against live
+Wikidata. Not CI-verified — CI is `workflow_dispatch:` only here on purpose.
+Nothing has been sent to Wikidata.

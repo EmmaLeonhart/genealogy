@@ -322,3 +322,132 @@ def test_the_summary_counts_every_property():
 
     assert counts["P22"][AGREES] == 1
     assert set(counts) == set(crosscheck.PROPERTIES)
+
+
+# --- suspect links ---------------------------------------------------------
+#
+# The conflicts table lists one property per row, which reads as independent
+# errors. Where they concentrate on one person they are not independent: the
+# thing under suspicion is the link, not the four facts.
+
+
+def _finding(geni_id, qid, prop, verdict, person="Someone"):
+    return crosscheck.Finding(
+        geni_id=geni_id, qid=qid, prop=prop, verdict=verdict, person=person
+    )
+
+
+def _check(*findings):
+    return crosscheck.CrossCheck(findings=list(findings), people_checked=1)
+
+
+def test_balance_counts_only_agreements_and_conflicts():
+    """Gaps and not-comparable are evidence about coverage, not about the link."""
+    check = _check(
+        _finding("1", "Q1", "P22", AGREES),
+        _finding("1", "Q1", "P25", CONFLICT),
+        _finding("1", "Q1", "P26", GAP),
+        _finding("1", "Q1", "P569", NOT_COMPARABLE),
+    )
+
+    balance = crosscheck.link_balances(check)[0]
+
+    assert (balance.agrees, balance.conflicts) == (1, 1)
+    assert balance.comparable == 2
+    assert balance.margin == 0
+
+
+def test_a_person_conflicting_on_everything_is_flagged():
+    check = _check(
+        _finding("1", "Q1", "P22", CONFLICT, person="Canute"),
+        _finding("1", "Q1", "P25", CONFLICT, person="Canute"),
+        _finding("1", "Q1", "P569", CONFLICT, person="Canute"),
+        _finding("1", "Q1", "P570", CONFLICT, person="Canute"),
+    )
+
+    suspect = crosscheck.suspect_links(check)
+
+    assert [b.person for b in suspect] == ["Canute"]
+    assert suspect[0].margin == 4
+
+
+def test_one_conflict_alone_is_not_suspicious():
+    """Two medieval sources differing on a single date is ordinary."""
+    check = _check(_finding("1", "Q1", "P569", CONFLICT))
+
+    assert crosscheck.suspect_links(check) == []
+
+
+def test_a_link_that_agrees_more_than_it_conflicts_is_not_flagged():
+    check = _check(
+        _finding("1", "Q1", "P22", CONFLICT),
+        _finding("1", "Q1", "P25", CONFLICT),
+        _finding("1", "Q1", "P26", AGREES),
+        _finding("1", "Q1", "P569", AGREES),
+        _finding("1", "Q1", "P570", AGREES),
+    )
+
+    assert crosscheck.suspect_links(check) == []
+
+
+def test_two_people_are_tallied_separately_not_pooled():
+    """One person with four conflicts is the signal; four people with one each is not."""
+    check = _check(
+        _finding("1", "Q1", "P22", CONFLICT, person="A"),
+        _finding("1", "Q1", "P25", CONFLICT, person="A"),
+        _finding("2", "Q2", "P569", CONFLICT, person="B"),
+    )
+
+    suspect = crosscheck.suspect_links(check)
+
+    assert [b.person for b in suspect] == ["A"]
+
+
+def test_the_most_suspect_link_is_listed_first():
+    check = _check(
+        _finding("1", "Q1", "P22", CONFLICT, person="Two"),
+        _finding("1", "Q1", "P25", CONFLICT, person="Two"),
+        _finding("2", "Q2", "P22", CONFLICT, person="Four"),
+        _finding("2", "Q2", "P25", CONFLICT, person="Four"),
+        _finding("2", "Q2", "P569", CONFLICT, person="Four"),
+        _finding("2", "Q2", "P570", CONFLICT, person="Four"),
+    )
+
+    assert [b.person for b in crosscheck.suspect_links(check)] == ["Four", "Two"]
+
+
+def test_the_report_names_the_link_kind_because_it_shifts_the_odds():
+    check = _check(
+        _finding("1", "Q1", "P22", CONFLICT, person="Exact One"),
+        _finding("1", "Q1", "P25", CONFLICT, person="Exact One"),
+        _finding("9", "Q9", "P22", CONFLICT, person="Inferred One"),
+        _finding("9", "Q9", "P25", CONFLICT, person="Inferred One"),
+    )
+
+    markdown = crosscheck.render_markdown(check, exact_links={"1"})
+
+    assert "## Links worth re-checking (2)" in markdown
+    assert "| Exact One | [Q1](https://www.wikidata.org/wiki/Q1) | 0 | 2 | exact P2600 |" in markdown
+    assert "| Inferred One | [Q9](https://www.wikidata.org/wiki/Q9) | 0 | 2 | inferred |" in markdown
+
+
+def test_the_report_refuses_to_call_a_suspect_link_wrong():
+    """Conflicting on everything is also what a correct link to bad data looks like."""
+    check = _check(
+        _finding("1", "Q1", "P22", CONFLICT),
+        _finding("1", "Q1", "P25", CONFLICT),
+    )
+
+    markdown = crosscheck.render_markdown(check, exact_links={"1"})
+
+    assert "**This does not say the links are wrong.**" in markdown
+    assert "one side's data is badly wrong" in markdown
+
+
+def test_no_suspect_links_says_so_rather_than_omitting_the_section():
+    check = _check(_finding("1", "Q1", "P22", AGREES))
+
+    markdown = crosscheck.render_markdown(check)
+
+    assert "## Links worth re-checking (0)" in markdown
+    assert "each conflict above stands alone" in markdown
