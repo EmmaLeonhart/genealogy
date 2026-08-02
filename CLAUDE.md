@@ -49,8 +49,10 @@ xrefs in the four exports, and re-checked against the fourth on 2026-08-02
 rather than carried forward from the original three. `GENI_ID_RE` accepts only
 those on purpose: when it accepted any letters, the foreign xref `@NI04461@`
 parsed as Geni ID `04461` and would have produced a URL to a stranger's profile.
-**Re-measure this when an export lands.** It is the assumption `GENI_ID_RE`
-rests on, and a fifth prefix would break it silently rather than loudly.
+**`tests/test_gedcom_real_exports.py` asserts this on every run**, per export,
+naming the offending prefix and record type if Geni ever adds a fifth — so it
+needs no remembering, and a change breaks the suite instead of quietly changing
+which profile an ID points at.
 
 **The xref is the merge key; `RFN` is corroboration checked elsewhere.**
 `Merger.add_source` deliberately does not call `geni_id_of`, so a contradictory

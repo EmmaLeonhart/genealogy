@@ -14,9 +14,8 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
-**Empty.** `CLAUDE.md` no longer describes a fixed bug as outstanding, and its
-xref claim has been re-verified against the fourth export rather than carried
-forward.
+**Empty.** The four-prefix premise `GENI_ID_RE` rests on is asserted by the
+suite on every run, per export, instead of by a note asking someone to remember.
 
 ### Standing context
 

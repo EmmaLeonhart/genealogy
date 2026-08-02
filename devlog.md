@@ -1736,3 +1736,57 @@ only defence is going and looking.
 
 **516 passed**, unchanged, Python 3.13.14. Prose only — stated for completeness,
 not as evidence. Not CI-verified.
+
+---
+
+## 2026-08-02 — the prefix claim stops depending on somebody remembering
+
+`e2b3f05` put this in `CLAUDE.md`: "**Re-measure this when an export lands.** It
+is the assumption `GENI_ID_RE` rests on, and a fifth prefix would break it
+silently rather than loudly." Correct, and the weakest available form of it — a
+note asking a person to remember something on an occasion that happens every few
+days at most.
+
+The repo already prefers the other answer twice over: `test_seeds.py` fails when
+an export exceeds `GENI_EXPORT_CAP`, and `test_gedcom_real_exports.py` exists in
+the first place because "the fixtures are what we *think* Geni emits, and these
+files are what it *actually* emitted".
+
+**Nothing asserted the premise against the real files.** `test_identity.py`
+covers `GENI_ID_RE` well, including the `@NI04461@` case that motivated it, but
+only on hand-written fixtures. That every xref prefix in an actual export is one
+of `I`/`F`/`N`/`S`, each bound to a single record type, was measured by hand —
+most recently an hour before this commit, by me.
+
+Now asserted per export, every run: the prefix set is a subset of the four
+known, and no prefix appears on two record types. The failure message names the
+offending prefix and tag, because the reader of that failure needs to know what
+Geni changed, not merely that something did.
+
+**The guard is proved non-vacuous rather than assumed to work.** Every export in
+`data_lake/` passes, so a broken check would look identical to a working one.
+Two tests run the real logic over hand-built documents that must fail it — one
+carrying `@NI04461@`, one putting `I` on both an `INDI` and a `FAM`. A third
+pins the detail the whole thing turns on: `_prefix("@NI04461@")` is `"NI"`, not
+`"N"`. Had it stopped at one letter, the foreign xref would have read as a
+`NOTE`, landed inside the known set, and the suite would have stayed green while
+`GENI_ID_RE` went on parsing `04461` out of it — the exact bug these tests exist
+to catch.
+
+One test written on the way was discarded rather than kept: it built a dict
+inline and asserted the dict was what had just been written, testing nothing.
+Replaced with the two that exercise the real helper. A test that cannot fail is
+worse than no test, because it reads as coverage.
+
+**The count is deliberately not asserted.** 25,138 is a fact about how many
+exports happen to sit in `data_lake/` and *should* change; pinning it would
+produce failures that mean nothing and teach whoever hits them to edit numbers
+until the suite passes. Only the structural claim is worth a test.
+
+`CLAUDE.md` now points at the test instead of instructing a re-measure. An
+instruction and a test saying the same thing will drift, and the instruction is
+the half that drifts — which is how the paragraph corrected in `e2b3f05` came to
+describe a bug that had been fixed twelve commits earlier.
+
+**531 passed** (was 516), Python 3.13.14. Not CI-verified — CI is
+`workflow_dispatch:` only here on purpose.
