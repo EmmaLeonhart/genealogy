@@ -32,6 +32,16 @@ DATA_LAKE = REPO_ROOT / "data_lake"
 REPORTS = REPO_ROOT / "reports"
 OUT = REPO_ROOT / "out"
 
+#: Values of the ``source`` column in ``out/wikidata/matched_all.csv``, which
+#: `expand` writes and `coverage`, `crosscheck`, `name-links` and
+#: `quickstatements` all read back. Named because a writer and a reader in
+#: different functions should not agree by coincidence of spelling.
+#:
+#: ``SOURCE_EXACT`` is spelled like the property it refers to, but it is a token
+#: in a CSV rather than a property ID and never reaches a Wikidata edit.
+SOURCE_EXACT = "P2600"
+SOURCE_EXPANSION = "expansion"
+
 
 @dataclass(frozen=True)
 class Workspace:
@@ -275,7 +285,7 @@ def _cmd_expand(args: argparse.Namespace) -> int:
                 [
                     geni_id,
                     qid,
-                    "P2600" if geni_id in seeds else "expansion",
+                    SOURCE_EXACT if geni_id in seeds else SOURCE_EXPANSION,
                     person.display_name if person else "",
                 ]
             )
@@ -301,7 +311,7 @@ def _cmd_coverage(args: argparse.Namespace) -> int:
     if all_path.exists():
         with open(all_path, encoding="utf-8", newline="") as handle:
             for row in csv.DictReader(handle):
-                if row["source"] != "P2600":
+                if row["source"] != SOURCE_EXACT:
                     expansion[row["geni_id"]] = row["qid"]
 
     proposals: list[tuple[str, str, str, str]] = []
@@ -345,7 +355,7 @@ def _cmd_quickstatements(args: argparse.Namespace) -> int:
     links: dict[str, str] = {}
     with open(all_path, encoding="utf-8", newline="") as handle:
         for row in csv.DictReader(handle):
-            if row["source"] == "expansion":
+            if row["source"] == SOURCE_EXPANSION:
                 links[row["geni_id"]] = row["qid"]
 
     if not links:

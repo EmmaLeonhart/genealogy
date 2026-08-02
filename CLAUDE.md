@@ -91,10 +91,17 @@ only when the stdlib genuinely cannot do the job.
 
 ### Wikidata properties and items
 
-All confirmed against live Wikidata via `wbgetentities` on 2026-07-30. **Do not
-guess these** — several plausible-looking IDs are something else entirely
-(P1288, for instance, is a German literature encyclopedia, not a genealogy
-identifier).
+All confirmed against live Wikidata via `wbgetentities` on 2026-07-30, with
+P1545 added and P2600 / P734 / P735 re-confirmed the same way on 2026-08-02.
+**Do not guess these** — several plausible-looking IDs are something else
+entirely (P1288, for instance, is a German literature encyclopedia, not a
+genealogy identifier).
+
+**Anything the code can emit belongs in this table.** P1545 was missing for a
+while despite `genimerge.namelinks` emitting it, which was harmless only because
+it happened to be right. A property outside this table is unguarded whether or
+not it is correct, so when you add one to the code, confirm it and add it here
+in the same change.
 
 **Identity and structure**
 
@@ -129,6 +136,15 @@ identifier).
 | P1950 | second family name in Spanish name | item (not applicable here) |
 | P1477 | birth name | monolingual text |
 | P1559 | name in native language | monolingual text |
+| P1545 | series ordinal | string — **qualifier**, not a claim |
+
+`P1545` is how a person with several given names keeps them in order: each P735
+statement carries the ordinal of that name within the full given-name string.
+`genimerge.namelinks` emits it (`SERIES_ORDINAL`), and it has not yet appeared
+in a generated batch, because no matched person so far has more than one
+given-name token. So it is correct-by-confirmation rather than
+correct-by-observation — the first batch that includes one is worth reading
+closely.
 
 **Date qualifiers** — the GEDCOM modifiers map onto these
 

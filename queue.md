@@ -14,10 +14,19 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
-**Empty.** The four-prefix premise `GENI_ID_RE` rests on is asserted by the
-suite on every run, per export, instead of by a note asking someone to remember.
+**Empty.** Every Wikidata property the code can emit is in `CLAUDE.md`'s table,
+and the `matched_all.csv` source tokens are named rather than repeated.
 
 ### Standing context
+
+- **Not doing: centralising the per-module property constants.**
+  `crosscheck`, `reconcile`, `namelinks`, `names` and `quickstatements` each
+  declare the property IDs they use at the top of the file. That is local and
+  readable, and a shared registry would move them away from the code explaining
+  why they are there; `CLAUDE.md` already serves as the cross-module reference.
+  Recorded so a later sweep does not re-open it as though it were an oversight.
+
+
 
 - **NEEDS-INVESTIGATION — smallest-ball is the only ordering that surfaces the
   known-good seed, and it rests on one observation.** Hågen Iversen placed 38 of

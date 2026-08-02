@@ -1790,3 +1790,54 @@ describe a bug that had been fixed twelve commits earlier.
 
 **531 passed** (was 516), Python 3.13.14. Not CI-verified — CI is
 `workflow_dispatch:` only here on purpose.
+
+---
+
+## 2026-08-02 — a property outside the table that guards against guessing
+
+`CLAUDE.md` § "Wikidata properties and items" exists for one stated reason: "**Do
+not guess these** — several plausible-looking IDs are something else entirely
+(P1288, for instance, is a German literature encyclopedia, not a genealogy
+identifier)."
+
+**`P1545` was not in it, and `genimerge.namelinks` emits it.**
+`SERIES_ORDINAL = "P1545"` at line 47, used at line 226 as a qualifier on a P735
+statement whenever a person has more than one given name — live code on the path
+to `add-names.qs`, a file that gets run against Wikidata.
+
+Confirmed against live Wikidata by `wbgetentities`, the same method the table's
+header claims for the rest: **P1545 is *series ordinal*, datatype `string`**. So
+the code was right and this is a documentation gap rather than a defect. P2600,
+P734 and P735 were re-confirmed in the same call and are unchanged.
+
+Being right is not the same as being guarded. The table is the control against
+guessing, and a property outside it is unchecked whether or not it happens to be
+correct — so `CLAUDE.md` now also says that anything the code can emit belongs
+in the table, and to confirm and add it in the same change.
+
+It has **never appeared in a generated batch**: zero `P1545` lines in the
+current `add-names.qs`, because no matched person so far has more than one
+given-name token. Correct-by-confirmation, not correct-by-observation, and the
+table says so — the first batch that includes one is worth reading closely.
+
+Also, found in the same sweep and much smaller: `cli.py` wrote `"P2600"` into
+the `source` column of `matched_all.csv` in one function and tested for it as a
+bare literal in two others. Now `SOURCE_EXACT` and `SOURCE_EXPANSION`. Named
+because a writer and a reader in different functions should not agree by
+coincidence of spelling — **not** because it was a Wikidata-safety problem. It
+is a CSV token that happens to share a spelling with the property and never
+reaches an edit, and the constant's docstring says exactly that so nobody
+"fixes" it into the real property later.
+
+**One thing deliberately not done**, recorded in `queue.md` so a later sweep
+does not re-open it as an oversight: the property constants each module declares
+for itself were left where they are. They sit next to the code that explains why
+they are there, and a shared registry would trade that for uniformity while
+`CLAUDE.md` already provides the cross-module view.
+
+Verified behaviour-preserving rather than assumed: `expand --search`, `coverage`
+and `quickstatements` re-run, identical output — 245 linked, 209 by P2600 plus
+36 by expansion, 3 contradictions — and `git diff reports/` empty.
+
+**531 passed**, unchanged, Python 3.13.14. Not CI-verified — CI is
+`workflow_dispatch:` only here on purpose.
