@@ -455,3 +455,47 @@ def test_the_unvalidated_note_no_longer_asserts_the_mechanism_as_fact():
     """That sentence moved out and got measured; it must not linger unmeasured."""
     assert "favours large balls" not in seeds.RANKING_IS_UNVALIDATED
     assert "2255 of 2336" in seeds.RANKING_IS_UNVALIDATED
+
+
+# --- the ordering against the one result we have ----------------------------
+#
+# The single export with measured results was taken through a doorway this
+# report ranks 2261 of 2336. That is the most decision-relevant fact in the
+# file, so it has to survive in the output rather than only in the devlog.
+
+
+def test_the_report_states_where_the_known_good_seed_ranked():
+    markdown = seeds.render_markdown(tree(CLUSTER, FAR))
+
+    assert seeds.THE_ONE_RESULT in markdown
+
+
+def test_the_one_result_keeps_every_ordering_it_compared():
+    """Identity alone passes on an emptied constant, so pin the substance.
+
+    All four ranks are load bearing together. Quoting only the bottom-3% figure
+    reads as "the ranking is broken, use openness"; quoting only the
+    smallest-ball figure reads as a rule discovered. The point is that the
+    obvious repair fails and the one that works rests on a single observation.
+    """
+    note = seeds.THE_ONE_RESULT
+
+    assert "2261 of 2336" in note      # what the report sorts on
+    assert "1303 of 2336" in note      # openness, the obvious repair
+    assert "38 of 2336" in note        # smallest ball, the only one that finds him
+    assert "is **not** adopted here" in note
+    assert "One observation cannot establish a ranking rule" in note
+
+
+def test_the_small_ball_shortlist_is_counted_in_the_report():
+    markdown = seeds.render_markdown(tree(CLUSTER, FAR))
+
+    assert seeds.SMALL_BALL_IS_TESTABLE in markdown
+    assert f"ball of {seeds.SMALL_BALL} or fewer" in markdown
+
+
+def test_the_report_proposes_the_experiment_rather_than_the_conclusion():
+    markdown = seeds.render_markdown(tree(CLUSTER, FAR))
+
+    assert "worth *testing*, not worth adopting" in markdown
+    assert "two observations instead of one" in markdown

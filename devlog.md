@@ -1547,3 +1547,52 @@ plain lists, which is what it was ever testing.
 
 **506 passed** (was 498), Python 3.13.14. `reports/seeds.md` regenerated. Not
 CI-verified — CI is `workflow_dispatch:` only here on purpose.
+
+---
+
+## 2026-08-02 — the ordering, checked against the only export that ever worked
+
+`7b68c0e` established that the ranking prefers large, proportionally less open
+neighbourhoods and that the pool's most open candidate ranks 1198 of 2932. The
+natural next commit was to offer openness as an alternative view. It was checked
+first, and it is a good thing it was.
+
+Hågen Iversen — the doorway the 2026-08-01 export was taken through — had a ball
+of 5 and one doorway, which is **20% openness against a pool median of 20%**.
+Middling on the very metric about to be promoted as the repair. So the question
+was not "is openness better" but **would any ordering available to us have
+surfaced him**, and against the 2336 pre-merge candidates:
+
+| ordering | his rank |
+| --- | ---: |
+| doorway count — what the report sorts on | 2261 of 2336 |
+| openness | 1303 of 2336 |
+| ball size | 2293 of 2336 |
+| *smallest* ball first | 38 of 2336 |
+
+The shipped ordering puts the one seed known to have worked in the bottom 3%.
+Openness does not rescue it. The only ordering that surfaces it is the inverse
+of ball size.
+
+**And that is not being adopted.** One observation cannot establish a ranking
+rule; the 3836 cap had three and was still wrong. It is in the report as a
+hypothesis with its mechanism stated — a tiny neighbourhood is one we know
+almost nothing about, so almost everything behind its doorway is new — and an
+explicit refusal to sort on it.
+
+**One objection of mine turned out to be wrong, which is worth recording because
+it nearly killed the finding.** Smallest-ball sounds degenerate: rank by fewest
+recorded relatives and surely you get isolated fragments and broken records
+first. Measured, that is false. A doorway is *in* our tree, so it always has
+some recorded relative — the shortlist is **66 candidates of 2932, none with a
+ball of 2 or fewer**. Having assumed the objection, stating it as fact would
+have buried a testable idea under a plausible-sounding dismissal. That is the
+same failure as asserting a mechanism without measuring it, pointed the other
+way.
+
+So the report now proposes the experiment rather than a conclusion: one export
+from a top-ranked pick, one from the small-ball shortlist, compared on new
+people returned. Two observations instead of one.
+
+**510 passed** (was 506), Python 3.13.14. `reports/seeds.md` regenerated. Not
+CI-verified — CI is `workflow_dispatch:` only here on purpose.

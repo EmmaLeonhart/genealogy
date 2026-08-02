@@ -14,10 +14,20 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
-**Empty.** `reports/seeds.md` measures its own size bias instead of asserting
-it, and separates what that settles from what only a fifth export can.
+**Empty.** `reports/seeds.md` now states where the one seed known to have worked
+placed under every ordering available, including its own.
 
 ### Standing context
+
+- **NEEDS-INVESTIGATION — smallest-ball is the only ordering that surfaces the
+  known-good seed, and it rests on one observation.** Hågen Iversen placed 38 of
+  2336 by smallest ball, against 2261 by the shipped doorway count and 1303 by
+  openness. The mechanism is plausible — a tiny neighbourhood is one we know
+  almost nothing about — and the obvious objection turned out to be wrong, since
+  the shortlist is 66 candidates with none isolated. It is **not** adopted and
+  must not be until there is more than one data point. Resolves by taking one
+  export from a top-ranked pick and one from the small-ball shortlist and
+  comparing new-people counts. Not blocking anything.
 
 - **NEEDS-INVESTIGATION — the seed ranking has never been tested.** No export
   has been taken from a seed `reports/seeds.md` chose. The one export with

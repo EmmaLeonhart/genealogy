@@ -50,6 +50,9 @@ __all__ = [
     "RANKING_IS_UNVALIDATED",
     "SIZE_BIAS_IS_MEASURED",
     "SIZE_BIAS_LIMIT",
+    "THE_ONE_RESULT",
+    "SMALL_BALL_IS_TESTABLE",
+    "SMALL_BALL",
     "SizeBias",
     "size_bias",
     "LARGE_BALL",
@@ -154,6 +157,49 @@ SIZE_BIAS_LIMIT = (
     "with openness mattering and is a single observation. Taking the next "
     "export from a top-ranked pick, where this file has already committed its "
     "prediction, is what would settle it."
+)
+
+#: Ball size at or below which a candidate sits in a neighbourhood we barely
+#: know. Reporting only — see :data:`THE_ONE_RESULT` for why this band is worth
+#: counting and why nothing sorts on it.
+SMALL_BALL = 5
+
+#: What the single export with measured results says about every ordering we
+#: could have used. Recorded rather than recomputed: the numbers are about the
+#: pre-merge tree, reconstructed from the three original exports on 2026-08-02,
+#: and that tree no longer exists in the workspace.
+#:
+#: This is the least flattering thing in the report and the most useful, so it
+#: is stated before the table rather than after it.
+THE_ONE_RESULT = (
+    "**The one seed known to have worked ranks near the bottom of the ordering "
+    "below.** The 2026-08-01 export was taken through Hågen Iversen "
+    "`6000000019312592888` — ball of 5, one doorway, openness 20% — and "
+    "returned 3656 new people. Against the 2336 candidates in the pre-merge "
+    "tree he placed:\n"
+    "\n"
+    "| ordering | his rank |\n"
+    "| --- | ---: |\n"
+    "| doorway count — what this report sorts on | 2261 of 2336 |\n"
+    "| openness | 1303 of 2336 |\n"
+    "| ball size | 2293 of 2336 |\n"
+    "| *smallest* ball first | 38 of 2336 |\n"
+    "\n"
+    "Openness is the obvious repair for the size bias described above, and it "
+    "does not rescue him: 20% openness is exactly the pool median. The only "
+    "ordering that surfaces him is the inverse of ball size, which has a "
+    "plausible mechanism behind it — a tiny neighbourhood is one we know almost "
+    "nothing about, so almost everything behind its doorway is new — and which "
+    "is **not** adopted here. One observation cannot establish a ranking rule. "
+    "The 3836 cap had three and was still wrong."
+)
+
+#: Why the smallest-ball idea is worth stating rather than dismissing.
+SMALL_BALL_IS_TESTABLE = (
+    "That idea is cheap to test and the objection to it turned out to be "
+    "wrong. A ranking on smallest ball sounds degenerate — as though it would "
+    "return isolated fragments and broken records — but a doorway is in our "
+    "tree, so it always has some recorded relative:"
 )
 
 #: Ball size above which a candidate counts as sitting in a large neighbourhood.
@@ -608,6 +654,22 @@ def render_markdown(
         f"**{bias.most_open_rank} of {bias.candidates}**.",
         "",
         SIZE_BIAS_LIMIT,
+    ]
+
+    small = [p for p in kept if p.size <= SMALL_BALL]
+    tiny = [p for p in kept if p.size <= 2]
+    lines += ["", THE_ONE_RESULT, "", SMALL_BALL_IS_TESTABLE, ""]
+    lines += [
+        f"- candidates with a ball of {SMALL_BALL} or fewer: "
+        f"**{len(small)}** of {len(kept)} ({len(small) / len(kept):.0%} — a "
+        f"shortlist, not a crowd)" if kept else "- no candidates",
+        f"- of those, with a ball of 2 or fewer: **{len(tiny)}**",
+        "",
+        "So the shortlist is workable and holds no isolated records. That makes "
+        "it worth *testing*, not worth adopting. The way to settle it is one "
+        "export from a top-ranked pick and one from this shortlist, compared on "
+        "how many new people each returns — at which point there are two "
+        "observations instead of one.",
     ]
 
     lines += [

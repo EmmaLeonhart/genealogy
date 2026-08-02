@@ -67,6 +67,24 @@ The selection effect is sharper than the correlation. Candidates with a ball ove
 
 **What this does not show is that the ranking is wrong.** It establishes how the sort behaves — it prefers large, proportionally less open neighbourhoods — and nothing more. Whether an open neighbourhood actually yields a richer export is a claim about Geni's data, not about ours, and no measurement here can reach it: we cannot see what sits behind a doorway without exporting through it. The one export taken so far is consistent with openness mattering and is a single observation. Taking the next export from a top-ranked pick, where this file has already committed its prediction, is what would settle it.
 
+**The one seed known to have worked ranks near the bottom of the ordering below.** The 2026-08-01 export was taken through Hågen Iversen `6000000019312592888` — ball of 5, one doorway, openness 20% — and returned 3656 new people. Against the 2336 candidates in the pre-merge tree he placed:
+
+| ordering | his rank |
+| --- | ---: |
+| doorway count — what this report sorts on | 2261 of 2336 |
+| openness | 1303 of 2336 |
+| ball size | 2293 of 2336 |
+| *smallest* ball first | 38 of 2336 |
+
+Openness is the obvious repair for the size bias described above, and it does not rescue him: 20% openness is exactly the pool median. The only ordering that surfaces him is the inverse of ball size, which has a plausible mechanism behind it — a tiny neighbourhood is one we know almost nothing about, so almost everything behind its doorway is new — and which is **not** adopted here. One observation cannot establish a ranking rule. The 3836 cap had three and was still wrong.
+
+That idea is cheap to test and the objection to it turned out to be wrong. A ranking on smallest ball sounds degenerate — as though it would return isolated fragments and broken records — but a doorway is in our tree, so it always has some recorded relative:
+
+- candidates with a ball of 5 or fewer: **66** of 2932 (2% — a shortlist, not a crowd)
+- of those, with a ball of 2 or fewer: **0**
+
+So the shortlist is workable and holds no isolated records. That makes it worth *testing*, not worth adopting. The way to settle it is one export from a top-ranked pick and one from this shortlist, compared on how many new people each returns — at which point there are two observations instead of one.
+
 ## Ranked candidates (top 40)
 
 By doorways in the screening ball. Useful for picking a seed by hand; the sequence above is what to actually export, because these overlap.
