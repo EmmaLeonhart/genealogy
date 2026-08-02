@@ -329,3 +329,54 @@ def test_export_cap_bounds_the_modelled_ball():
 
     assert ball.size <= 2
     assert ball.capped
+
+
+# --- what the report tells you to actually do -------------------------------
+#
+# The listed people are doorways: in our data, parents not. Exporting from one
+# centres Geni's walk on somebody we already hold. The 2026-08-01 export went
+# one step further out, to the parent, and came back 95% new. The report has to
+# say so, because "here is a profile link" reads as "export from this profile".
+
+
+def test_the_report_tells_you_to_export_from_the_parent():
+    """Asserted by identity, so rewording does not break this."""
+    markdown = seeds.render_markdown(tree(CLUSTER, FAR))
+
+    assert seeds.EXPORT_FROM_THE_PARENT in markdown
+
+
+def test_the_parent_instruction_still_says_which_way_to_go():
+    """Identity alone passes on an emptied constant, so pin the substance.
+
+    "Up" is the whole instruction. Without it the sentence could survive a
+    rewrite that left the reader exporting from the doorway again.
+    """
+    assert "go **up** to the parent" in seeds.EXPORT_FROM_THE_PARENT
+    assert "not from the person listed" in seeds.EXPORT_FROM_THE_PARENT
+
+
+def test_the_report_admits_the_ranking_is_unvalidated():
+    markdown = seeds.render_markdown(tree(CLUSTER, FAR))
+
+    assert seeds.RANKING_IS_UNVALIDATED in markdown
+
+
+def test_the_unvalidated_note_keeps_both_the_evidence_and_its_limit():
+    """One export from a seed ranked 2255/2336 is a doubt, not a verdict.
+
+    Both halves are load bearing. Drop the first and the ranking reads as
+    tested; drop the second and a single data point reads as grounds to rebuild
+    the model, which is the mistake already made once with the 3836 cap.
+    """
+    note = seeds.RANKING_IS_UNVALIDATED
+
+    assert "2255 of 2336" in note
+    assert "One data point is not enough to re-rank on" in note
+
+
+def test_the_ranking_note_appears_even_when_there_is_nothing_to_rank():
+    """An empty tree must not silently drop the caveat with the table."""
+    markdown = seeds.render_markdown(tree())
+
+    assert seeds.RANKING_IS_UNVALIDATED in markdown

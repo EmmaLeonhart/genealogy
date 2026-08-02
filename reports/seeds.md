@@ -23,6 +23,8 @@ Saturation rejects the seeds sitting inside a region already recorded several la
 
 Chosen greedily on **newly covered** doorways, not by rank. Neighbours share a ball, so a ranked list hands back one neighbourhood repeatedly; what matters across a sequence of exports is what each one adds to the ones before it. `adds` counts doorways no earlier pick had.
 
+**Export from the parent, not from the person listed.** Every profile below is a *doorway*: we hold them, and we do not hold their parents. Open the profile on Geni, go **up** to the parent Geni knows and we do not, and export from there. Exporting from the doorway itself centres the walk on somebody already in our data, so much of the ball returns as material we hold; centring one step beyond the frontier is what made the 2026-08-01 export 95% new. The listed person is the signpost, not the destination.
+
 | # | profile | geni id | ball | doorways | openness | adds | running |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | 1 | [Ane Danielsdatter Frafjord Nedrabø](https://www.geni.com/people/x/6000000185158282824) | `6000000185158282824` | 102 | 25 | 25% | 25 | 25 |
@@ -45,6 +47,10 @@ Walking the top seed as far as Geni would take it reaches **3840** people alread
 That number is not a prediction of waste. Geni's graph holds our people *and* the ones we are missing, and its walk reaches both at each hop — so a full export is a mix, and the doorway density near the seed is the best available proxy for how rich that mix is.
 
 The 3840 used above is **the largest export we have seen, not a limit we know Geni enforces**. Three exports held exactly 3836, which read as a hard cap until a fourth held 3840. What actually bounds an export is unestablished — a raised limit, a per-account limit, a limit on something other than head count, or a walk that overshoots a floor all fit the four exports we have. Being off by a few people out of ~3840 does not move this ranking, so the uncertainty is recorded rather than resolved by guessing.
+
+## How well this ranking has actually done
+
+**No export has yet been taken from a seed this ranking chose, so none of it is validated.** The one export with measured results — 2026-08-01, 3656 new people — was seeded on the parent of Hågen Iversen `6000000019312592888`, who placed **2255 of 2336** here, on a ball of 5 with a single doorway. That is a reason for doubt rather than a verdict: the ranking never scored the actual seed, because he was not in our data to score, and no rival seed was tried against him. But the mechanism is worth stating, because ranking by *absolute* doorway count favours large balls, and a large ball is a densely recorded neighbourhood — which is the opposite of where Geni has most to add. A sparse corner scores near zero precisely because we know little there. One data point is not enough to re-rank on, and it is not being re-ranked on; it is enough to say the list below is a hypothesis.
 
 ## Ranked candidates (top 40)
 

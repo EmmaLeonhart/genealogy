@@ -1445,3 +1445,55 @@ repo cannot see.
 **493 passed**, unchanged, Python 3.13.14. Stated for completeness rather than
 as evidence: this commit is prose only, so a green suite says nothing about it
 beyond that nothing was broken in passing.
+
+---
+
+## 2026-08-01 — the report was naming the signpost, not the destination
+
+Asked how the fourth export was seeded, the user said they took a recommended
+person and "went one person off" — to that person's parent on Geni. Checked
+against the data, and it holds exactly:
+
+- the export was seeded on **Iver Mellegård** `6000000226977233850`;
+- his only child in the tree is **Hågen Iversen** `6000000019312592888`, present
+  in `export-Ancestors.ged` and therefore in the pre-merge 8766-person tree;
+- Hågen had no parents recorded before the merge — a *doorway*, by this repo's
+  own definition.
+
+So the seed was never a listed candidate. It was the person **behind** one: the
+unknown parent whose absence is what made the child a doorway. That export came
+back 95% new.
+
+`reports/seeds.md` had never said to do this. It lists doorways with Geni
+profile links under "The next 10 exports", which reads as *export from this
+person* — and exporting from the doorway centres Geni's walk on somebody we
+already hold, so a large part of the ball returns as material we have. Centring
+one step beyond the frontier is the whole trick. `EXPORT_FROM_THE_PARENT` now
+says so at the top of that section: open the profile, go **up**, export from
+there. The listed person is the signpost, not the destination.
+
+**The ranking comes out of this badly, and the report now says so rather than
+quietly not mentioning it.** Reconstructing the pre-merge tree from the three
+original exports and re-running `rank_seeds` puts Hågen at **2255 of 2336** —
+ball of 5, one doorway. The only export with measured results came from the
+bottom of the list. There is a plausible mechanism: ranking by *absolute*
+doorway count favours large balls, and a large ball is a densely recorded
+neighbourhood, which is the opposite of where Geni has most to add. A sparse
+corner scores near zero precisely because we know little there.
+
+**It was not re-ranked on.** n=1; the ranking never scored Iver at all, because
+he was not in our data to score; and no rival seed was tried against him. That
+is a hypothesis, not a result, and rebuilding a model on one observation is the
+mistake this repo already made once with the 3836 cap. `RANKING_IS_UNVALIDATED`
+states the evidence and its limit together, and a test asserts both halves
+survive — drop the first and the list reads as tested, drop the second and one
+data point reads as grounds to rebuild.
+
+The archaeology did not fully resolve. Neither Hågen nor Iver has ever appeared
+in a committed report — `git log -S` over `reports/` finds nothing before the
+merge — so whatever was recommended came from somewhere outside these files.
+Said plainly rather than smoothed over: the useful finding came out of chasing
+it, but the original question is still open.
+
+**498 passed** (was 493), Python 3.13.14. `reports/seeds.md` regenerated. Not
+CI-verified — CI is `workflow_dispatch:` only here on purpose.

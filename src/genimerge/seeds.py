@@ -45,6 +45,8 @@ from .frontier import _child_map, _parent_map, family_graph
 from .model import Tree
 
 __all__ = [
+    "EXPORT_FROM_THE_PARENT",
+    "RANKING_IS_UNVALIDATED",
     "GENI_EXPORT_CAP",
     "STYLES",
     "Ball",
@@ -81,6 +83,49 @@ __all__ = [
 #: ``data_lake/``, so the next export to exceed it fails loudly instead of
 #: silently modelling a ball that is too small.
 GENI_EXPORT_CAP = 3840
+
+#: The step between reading this report and running an export.
+#:
+#: Load-bearing, and learned the hard way. The people listed below are
+#: *doorways* — they are in our data and their parents are not. Exporting from a
+#: doorway centres Geni's walk on somebody we already hold, so a large part of
+#: the ball comes back as material we have. Centring it one step further out, on
+#: the parent we do not hold, is what the one export with measured results
+#: actually did, and it returned 95% new people.
+#:
+#: A constant for the same reason as
+#: :data:`genimerge.quickstatements.NOT_AN_ERROR_RATE`: a test asserts it
+#: reaches the report, and a copy of the sentence in the test would break on any
+#: rewording.
+EXPORT_FROM_THE_PARENT = (
+    "**Export from the parent, not from the person listed.** Every profile "
+    "below is a *doorway*: we hold them, and we do not hold their parents. "
+    "Open the profile on Geni, go **up** to the parent Geni knows and we do "
+    "not, and export from there. Exporting from the doorway itself centres the "
+    "walk on somebody already in our data, so much of the ball returns as "
+    "material we hold; centring one step beyond the frontier is what made the "
+    "2026-08-01 export 95% new. The listed person is the signpost, not the "
+    "destination."
+)
+
+#: What the one measured export says about this ranking, which is not much and
+#: not flattering. Kept in the report so the numbers above are not read as more
+#: validated than they are.
+RANKING_IS_UNVALIDATED = (
+    "**No export has yet been taken from a seed this ranking chose, so none of "
+    "it is validated.** The one export with measured results — 2026-08-01, 3656 "
+    "new people — was seeded on the parent of Hågen Iversen "
+    "`6000000019312592888`, who placed **2255 of 2336** here, on a ball of 5 "
+    "with a single doorway. That is a reason for doubt rather than a verdict: "
+    "the ranking never scored the actual seed, because he was not in our data "
+    "to score, and no rival seed was tried against him. But the mechanism is "
+    "worth stating, because ranking by *absolute* doorway count favours large "
+    "balls, and a large ball is a densely recorded neighbourhood — which is the "
+    "opposite of where Geni has most to add. A sparse corner scores near zero "
+    "precisely because we know little there. One data point is not enough to "
+    "re-rank on, and it is not being re-ranked on; it is enough to say the list "
+    "below is a hypothesis."
+)
 
 #: Export shapes Geni offers, as edge sets over our data.
 STYLES = ("blood", "all", "ancestors", "descendants")
@@ -361,6 +406,8 @@ def render_markdown(
         "what matters across a sequence of exports is what each one adds to the "
         "ones before it. `adds` counts doorways no earlier pick had.",
         "",
+        EXPORT_FROM_THE_PARENT,
+        "",
     ]
     running = 0
     rows = []
@@ -423,6 +470,8 @@ def render_markdown(
             "ranking, so the uncertainty is recorded rather than resolved by "
             "guessing.",
         ]
+
+    lines += ["", "## How well this ranking has actually done", "", RANKING_IS_UNVALIDATED]
 
     lines += [
         "",

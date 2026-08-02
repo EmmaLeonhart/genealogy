@@ -14,13 +14,21 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
-**Empty.** The fourth export is merged, every downstream command has been re-run
-against the 12422-person tree, `merge` reports whether the result is still one
-tree, `wikidata-crosscheck.md` groups conflicts per person, report caveats are
-pinned by constant, and `todo.md` describes the four-export world it is actually
-in.
+**Empty.** `reports/seeds.md` now says to export from the *parent* of a listed
+doorway, and records that its own ranking is unvalidated.
 
 ### Standing context
+
+- **NEEDS-INVESTIGATION — the seed ranking has never been tested.** No export
+  has been taken from a seed `reports/seeds.md` chose. The one export with
+  measured results was seeded on the parent of Hågen Iversen, who placed 2255 of
+  2336 (ball 5, one doorway), and returned 3656 new people. That is a reason to
+  doubt ranking by absolute doorway count — a large ball is a densely recorded
+  neighbourhood, which is the opposite of where Geni has most to add — but it is
+  n=1 and the ranking never scored the actual seed, who was not in our data. It
+  resolves by taking the next export from a top-ranked pick and comparing. The
+  prediction is already committed in `reports/seeds.md`, so `git show` will
+  supply it when the fifth export lands. Not blocking anything.
 
 - **UNSAFE-TO-GUESS — two links flagged as worth re-checking, both exact P2600.**
   `reports/wikidata-crosscheck.md` § "Links worth re-checking" names Canute I
