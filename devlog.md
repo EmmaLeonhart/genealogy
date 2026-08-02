@@ -1686,3 +1686,53 @@ the unresolved things went.
 **516 passed**, unchanged, Python 3.13.14. Prose only — stated for completeness,
 not as evidence, since a green suite says nothing about a README. Not
 CI-verified.
+
+---
+
+## 2026-08-02 — the instructions file said a fixed bug was still open
+
+`CLAUDE.md` is what a future session reads as current fact, which makes a stale
+claim there worse than the same claim anywhere else. Two were stale.
+
+**It said the 3836 fix was never finished.** Verbatim: "`genimerge/seeds.py`
+still models the ball cap as 3836 and `reports/seeds.md` still reports hitting
+it at hop 11 — both are wrong in the same way and are tracked in `queue.md`."
+Checked, all three parts false: `GENI_EXPORT_CAP` is **3840** and documented as
+largest-observed rather than a cap, `seeds.md` contains **zero** occurrences of
+"hitting the cap", and `queue.md` tracks nothing of the sort because it was done
+in `601f840` — twelve commits before this one. A session trusting that would go
+hunting a bug that is not there, or "fix" what is already right. Written when it
+was true, left behind by the commit that made it false.
+
+**And the xref total was a three-export figure.** 19,274 then; **25,138** across
+four.
+
+The count was the smaller problem. The claim it supports is load-bearing —
+*exactly four xref prefixes, `I`/`F`/`N`/`S`, each bound to one record type* —
+and `GENI_ID_RE` accepts only those because when it accepted any letters the
+foreign xref `@NI04461@` parsed as Geni ID `04461` and pointed at a stranger's
+profile. So the claim was re-measured rather than the number patched, since a
+fourth export had landed since anyone last looked and a fifth prefix would break
+that regex silently:
+
+| prefix | record | count |
+| --- | --- | ---: |
+| `I` | INDI | 15348 |
+| `F` | FAM | 7161 |
+| `S` | SUBM | 1589 |
+| `N` | NOTE | 1040 |
+
+Four prefixes, none bound to more than one record type. The claim survives the
+fourth export, and `CLAUDE.md` now says it was re-checked on 2026-08-02 rather
+than implying the original measurement still covers the current data. It also
+now says to re-measure when an export lands, because that is the assumption
+`GENI_ID_RE` rests on and the failure mode is silence.
+
+This is the third documentation file this session found asserting something the
+code had moved past — after `todo.md` and `README.md`. The pattern is the same
+each time: a sentence that was true when written, invalidated by a later commit
+that had no reason to look at it. Nothing tests prose against reality, and the
+only defence is going and looking.
+
+**516 passed**, unchanged, Python 3.13.14. Prose only — stated for completeness,
+not as evidence. Not CI-verified.

@@ -44,10 +44,13 @@ fuzzy name matching. `genimerge.identity` is the single place that knows this;
 change in Geni's format fails loudly.
 
 Exactly **four xref prefixes** occur, each bound to one record type: `I` on
-`INDI`, `F` on `FAM`, `N` on `NOTE`, `S` on `SUBM` — measured over all 19,274
-xrefs. `GENI_ID_RE` accepts only those on purpose: when it accepted any letters,
-the foreign xref `@NI04461@` parsed as Geni ID `04461` and would have produced a
-URL to a stranger's profile.
+`INDI`, `F` on `FAM`, `N` on `NOTE`, `S` on `SUBM` — measured over all **25,138**
+xrefs in the four exports, and re-checked against the fourth on 2026-08-02
+rather than carried forward from the original three. `GENI_ID_RE` accepts only
+those on purpose: when it accepted any letters, the foreign xref `@NI04461@`
+parsed as Geni ID `04461` and would have produced a URL to a stranger's profile.
+**Re-measure this when an export lands.** It is the assumption `GENI_ID_RE`
+rests on, and a fifth prefix would break it silently rather than loudly.
 
 **The xref is the merge key; `RFN` is corroboration checked elsewhere.**
 `Merger.add_source` deliberately does not call `geni_id_of`, so a contradictory
@@ -61,11 +64,12 @@ The fourth export (2026-08-01) has **3840**, which falsifies it. Something
 bounds an export near 3840, but one observation above 3836 does not establish
 what, and the difference is only four people. Treat 3836 as a *lower bound
 observed three times*, not a constant, and do not infer a new cap from 3840
-either. `genimerge/seeds.py` still models the ball cap as 3836 and
-`reports/seeds.md` still reports hitting it at hop 11 — both are wrong in the
-same way and are tracked in `queue.md`. Expect to merge many exports over time,
-and expect the merge to be re-run rather than hand-edited. See
-`reports/inventory.md`.
+either. `genimerge.seeds.GENI_EXPORT_CAP` is **3840** and its docstring is the
+long form of this: it names the four explanations that fit the evidence and
+commits to none, and `tests/test_seeds.py` fails if a future export exceeds it,
+so the next one to do so is loud rather than silent. Expect to merge many
+exports over time, and expect the merge to be re-run rather than hand-edited.
+See `reports/inventory.md`.
 
 **An export is named for its style, not its seed — so filenames collide.** Geni
 writes `export-<style>.ged`, and `Forest`, `Ancestors` and `BloodTree` are the

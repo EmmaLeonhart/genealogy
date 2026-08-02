@@ -14,8 +14,9 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
-**Empty.** The README documents all three Wikidata batches, in ascending order
-of consequence, with the rule each enforces.
+**Empty.** `CLAUDE.md` no longer describes a fixed bug as outstanding, and its
+xref claim has been re-verified against the fourth export rather than carried
+forward.
 
 ### Standing context
 
