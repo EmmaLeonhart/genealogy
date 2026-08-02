@@ -42,6 +42,8 @@ __all__ = [
     "GAP",
     "CONFLICT",
     "NOT_COMPARABLE",
+    "SUSPECT_IS_NOT_WRONG",
+    "NO_SUSPECT_LINKS",
     "Finding",
     "CrossCheck",
     "LinkBalance",
@@ -103,6 +105,33 @@ class CrossCheck:
         for finding in self.findings:
             out[finding.prop][finding.verdict] += 1
         return out
+
+
+#: Why a concentration of conflicts is not a verdict that the link is wrong.
+#:
+#: A constant for the same reason as
+#: :data:`genimerge.quickstatements.NOT_AN_ERROR_RATE` — a test asserts it
+#: reaches the report, and pinning that with a copy of the sentence would break
+#: on any rewording and invite loosening the assertion.
+SUSPECT_IS_NOT_WRONG = (
+    "**This does not say the links are wrong.** Two readings fit every "
+    "row and nothing here separates them: the link is mistaken, or it is "
+    "correct and one side's data is badly wrong. For early-medieval "
+    "people the second is entirely ordinary — a birth year three "
+    "centuries out is a copied error, not proof of mistaken identity. "
+    "The `link` column is the one thing that shifts the odds: an "
+    "inferred link failing this test is weak evidence twice over, while "
+    "an exact P2600 link failing it means the Geni ID on the item is "
+    "under as much suspicion as the match."
+)
+
+#: What an empty "links worth re-checking" section says. Present so that finding
+#: nothing is a reported result rather than a missing section.
+NO_SUSPECT_LINKS = (
+    "None. Every linked person agrees with their item on at least as "
+    "many properties as they conflict on, so each conflict above stands "
+    "alone as a disagreement about a fact."
+)
 
 
 @dataclass(frozen=True)
@@ -557,11 +586,7 @@ def render_markdown(
     suspect = suspect_links(check)
     lines += ["", f"## Links worth re-checking ({len(suspect)})", ""]
     if not suspect:
-        lines += [
-            "None. Every linked person agrees with their item on at least as "
-            "many properties as they conflict on, so each conflict above stands "
-            "alone as a disagreement about a fact.",
-        ]
+        lines += [NO_SUSPECT_LINKS]
     else:
         lines += [
             "The table above lists conflicts one property at a time, which makes "
@@ -591,18 +616,7 @@ def render_markdown(
                 for b in suspect
             ],
         )
-        lines += [
-            "",
-            "**This does not say the links are wrong.** Two readings fit every "
-            "row and nothing here separates them: the link is mistaken, or it is "
-            "correct and one side's data is badly wrong. For early-medieval "
-            "people the second is entirely ordinary — a birth year three "
-            "centuries out is a copied error, not proof of mistaken identity. "
-            "The `link` column is the one thing that shifts the odds: an "
-            "inferred link failing this test is weak evidence twice over, while "
-            "an exact P2600 link failing it means the Geni ID on the item is "
-            "under as much suspicion as the match.",
-        ]
+        lines += ["", SUSPECT_IS_NOT_WRONG]
 
     gaps = check.by_verdict(GAP)
     lines += [

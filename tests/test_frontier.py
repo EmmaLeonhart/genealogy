@@ -257,7 +257,6 @@ def test_a_disconnected_export_is_named_with_its_sizes():
 
     assert len(comps) == 2
     assert "2 separate trees, not one: 2, 2 people" in line
-    assert "needs its own export seed" in line
 
 
 def test_a_split_tree_is_reported_without_being_called_an_error():
@@ -266,14 +265,23 @@ def test_a_split_tree_is_reported_without_being_called_an_error():
     `frontier` exists partly to say that a component nobody outside it is
     related to needs its own seed. Wording this as a failure would push someone
     to silence it later.
+
+    The blame-word check needs no constant and gets none: it never depended on
+    the wording, which makes it the stronger of the two assertions here.
     """
     line = frontier.describe_connectivity(
         frontier.components(build_tree(gedcom.parse(TWO_TREES).records))
     )
 
-    assert "Nothing is wrong with the merge" in line
+    assert frontier.SPLIT_IS_NOT_AN_ERROR in line
     for blame in ("error", "invalid", "failed", "corrupt"):
         assert blame not in line.lower()
+
+
+def test_the_split_caveat_still_says_a_split_needs_its_own_seed():
+    """Identity alone would pass on an emptied constant, so pin its substance."""
+    assert "needs its own export seed" in frontier.SPLIT_IS_NOT_AN_ERROR
+    assert "components do not conflict" in frontier.SPLIT_IS_NOT_AN_ERROR
 
 
 def test_many_components_are_summarised_rather_than_all_listed():

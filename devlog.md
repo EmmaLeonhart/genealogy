@@ -1346,3 +1346,51 @@ view was the one nobody had taken.
 **490 passed** (was 481), Python 3.13.14. Report regenerated against live
 Wikidata. Not CI-verified — CI is `workflow_dispatch:` only here on purpose.
 Nothing has been sent to Wikidata.
+
+---
+
+## 2026-08-01 — paying a debt named three times and deferred three times
+
+Three reports carry a caveat that is the finding rather than decoration — that
+3-of-36 is not an error rate, that a split tree is not an error, that a suspect
+link is not a wrong link — and each had a test asserting the caveat survives.
+The reasoning was right: a number stripped of its caveat actively misleads. The
+mechanism was not. Each test held a copy of the sentence, so rewording a caveat
+broke a test while nothing behavioural changed, and the repair anyone reaches
+for under time pressure is to loosen the assertion. That is the one repair this
+repo does not make.
+
+**The interesting part is why it took three ticks.** Every status report since
+`acb25d2` named this, and every one deferred it on a threshold I had invented —
+"if a fourth case arises, build a shared mechanism". Three is not four, so
+nothing happened, three times. But "wait for a fourth" is not one of the six
+not-done categories, and under the load-bearing default an item with no named
+blocker is not deferred, it is due. The rule caught something a plausible-
+sounding personal heuristic had been quietly overriding.
+
+Each caveat is now a module-level constant — `NOT_AN_ERROR_RATE`,
+`SPLIT_IS_NOT_AN_ERROR`, `SUSPECT_IS_NOT_WRONG`, `NO_SUSPECT_LINKS` — emitted by
+the renderer and asserted by *identity* in the test. Rewording is now a one-line
+edit that keeps the tests green, because the test references the same object.
+
+Identity alone would have been weaker than what it replaced, and the reason is
+worth stating because it is not obvious: **an emptied constant is a substring of
+every string**, so `"" in markdown` passes and a caveat deleted to nothing would
+sail through. Checked rather than assumed — `'' in '# some report'` is `True`.
+So each caveat also gets a companion test pinning the ideas inside it, and that
+is the assertion that fails on an emptied constant. Brittleness is not removed;
+it is moved to one place per caveat and made deliberate.
+
+Two things stayed as literals on purpose. Assertions about *data* — `|
+expansion-inferred links examined | 3 |`, `all 6 people` — are about output, not
+wording. And `test_frontier.py`'s check that the connectivity line contains none
+of "error", "invalid", "failed" or "corrupt" never depended on the wording at
+all, which makes it the strongest of the three caveat tests and the model for
+what to write when a property can be stated negatively.
+
+Verified behaviour-preserving rather than assumed: `crosscheck`,
+`quickstatements` and `merge` re-run against the real data, `git diff reports/`
+empty, and `merge` still printing `one connected tree, all 12422 people`.
+
+**493 passed** (was 490), Python 3.13.14. Not CI-verified — CI is
+`workflow_dispatch:` only here on purpose.

@@ -431,8 +431,8 @@ def test_the_report_names_the_link_kind_because_it_shifts_the_odds():
     assert "| Inferred One | [Q9](https://www.wikidata.org/wiki/Q9) | 0 | 2 | inferred |" in markdown
 
 
-def test_the_report_refuses_to_call_a_suspect_link_wrong():
-    """Conflicting on everything is also what a correct link to bad data looks like."""
+def test_the_report_carries_the_not_wrong_caveat():
+    """Asserted by identity, so rewording the caveat does not break this."""
     check = _check(
         _finding("1", "Q1", "P22", CONFLICT),
         _finding("1", "Q1", "P25", CONFLICT),
@@ -440,8 +440,17 @@ def test_the_report_refuses_to_call_a_suspect_link_wrong():
 
     markdown = crosscheck.render_markdown(check, exact_links={"1"})
 
-    assert "**This does not say the links are wrong.**" in markdown
-    assert "one side's data is badly wrong" in markdown
+    assert crosscheck.SUSPECT_IS_NOT_WRONG in markdown
+
+
+def test_the_not_wrong_caveat_still_offers_the_second_reading():
+    """Identity alone would pass on an emptied constant, so pin its substance.
+
+    Conflicting on everything is equally what a correct link to bad data looks
+    like. Drop that sentence and the section becomes a verdict it cannot support.
+    """
+    assert "one side's data is badly wrong" in crosscheck.SUSPECT_IS_NOT_WRONG
+    assert "does not say the links are wrong" in crosscheck.SUSPECT_IS_NOT_WRONG
 
 
 def test_no_suspect_links_says_so_rather_than_omitting_the_section():
@@ -450,4 +459,4 @@ def test_no_suspect_links_says_so_rather_than_omitting_the_section():
     markdown = crosscheck.render_markdown(check)
 
     assert "## Links worth re-checking (0)" in markdown
-    assert "each conflict above stands alone" in markdown
+    assert crosscheck.NO_SUSPECT_LINKS in markdown

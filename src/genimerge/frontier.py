@@ -26,6 +26,7 @@ from dataclasses import dataclass, field
 from .model import Person, Tree
 
 __all__ = [
+    "SPLIT_IS_NOT_AN_ERROR",
     "Component",
     "BranchPoint",
     "components",
@@ -94,6 +95,20 @@ def _neighbours(person: Person, tree: Tree) -> list[str]:
     return family_graph(tree).get(person.geni_id, [])
 
 
+#: Why more than one component is a state to report, not a fault to fix.
+#:
+#: A constant for the same reason as
+#: :data:`genimerge.quickstatements.NOT_AN_ERROR_RATE`: a test asserts it
+#: reaches the output, and pinning that with a copy of the sentence would break
+#: on rewording and invite loosening the assertion. The separate test that this
+#: line contains none of "error", "invalid", "failed" or "corrupt" is unaffected
+#: — it never depended on wording and is the stronger check of the two.
+SPLIT_IS_NOT_AN_ERROR = (
+    "Nothing is wrong with the merge — components do not conflict, they just "
+    "never meet. Each one needs its own export seed to grow."
+)
+
+
 def describe_connectivity(comps: list[Component], *, show: int = 5) -> str:
     """One line on whether the merged tree is still one tree.
 
@@ -117,11 +132,7 @@ def describe_connectivity(comps: list[Component], *, show: int = 5) -> str:
     shown = ", ".join(str(size) for size in sizes[:show])
     if len(sizes) > show:
         shown += f", and {len(sizes) - show} more"
-    return (
-        f"{len(comps)} separate trees, not one: {shown} people. "
-        "Nothing is wrong with the merge — components do not conflict, they just "
-        "never meet. Each one needs its own export seed to grow."
-    )
+    return f"{len(comps)} separate trees, not one: {shown} people. {SPLIT_IS_NOT_AN_ERROR}"
 
 
 def components(tree: Tree, graph: dict[str, list[str]] | None = None) -> list[Component]:

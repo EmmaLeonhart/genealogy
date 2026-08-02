@@ -30,6 +30,7 @@ from .model import Tree
 from .wikidata import WikidataClient
 
 __all__ = [
+    "NOT_AN_ERROR_RATE",
     "Statement",
     "render_statements",
     "Edit",
@@ -40,6 +41,26 @@ __all__ = [
 ]
 
 PROPERTY = "P2600"
+
+#: Why the contradiction count is not an accuracy figure.
+#:
+#: A constant rather than a literal inside :func:`render_markdown` because a
+#: test asserts it reaches the report, and pinning that with a copy of the
+#: sentence would break on any rewording — which invites loosening the
+#: assertion, the one repair this repo does not make. Referencing the constant
+#: lets the wording change freely; a companion test pins the ideas inside it, so
+#: emptying it still fails.
+NOT_AN_ERROR_RATE = (
+    "Two reasons not to read that as an error rate. It is not a count of "
+    "wrong inferences: each row is *either* a bad match *or* a pair of "
+    "duplicate Geni profiles for one person, and where the ID on the item is "
+    "absent from our tree — as it is for all of these — nothing in our data "
+    "decides which. And a wrong inference can only be caught here when the "
+    "item it landed on already carries a P2600, which almost none do; that "
+    "absence is the problem this project exists to address. The check is "
+    "therefore weak in a known direction: it sees a little, and what it "
+    "cannot see is the larger part."
+)
 
 
 @dataclass(frozen=True)
@@ -223,15 +244,7 @@ def render_markdown(batch: Batch) -> str:
             "so this is the one place where inference is checked against something "
             "that can disagree with it.",
             "",
-            "Two reasons not to read that as an error rate. It is not a count of "
-            "wrong inferences: each row is *either* a bad match *or* a pair of "
-            "duplicate Geni profiles for one person, and where the ID on the item is "
-            "absent from our tree — as it is for all of these — nothing in our data "
-            "decides which. And a wrong inference can only be caught here when the "
-            "item it landed on already carries a P2600, which almost none do; that "
-            "absence is the problem this project exists to address. The check is "
-            "therefore weak in a known direction: it sees a little, and what it "
-            "cannot see is the larger part.",
+            NOT_AN_ERROR_RATE,
             "",
             "| item | our match | already on Wikidata | person |",
             "| --- | --- | --- | --- |",

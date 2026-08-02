@@ -171,14 +171,8 @@ def test_report_states_the_contradiction_count_against_its_denominator(tmp_path)
     assert "**1 of the 3 inferred links examined here are contradicted" in markdown
 
 
-def test_report_refuses_to_call_the_contradiction_count_an_error_rate(tmp_path):
-    """The denominator is not what a rate implies, and the report must say so.
-
-    A contradiction is either a wrong inference or two Geni profiles for one
-    person, and it is only detectable when the target item already carries a
-    P2600 — which is exactly what is usually missing. Both caveats are load
-    bearing: without them the number reads as a measured accuracy figure.
-    """
+def test_report_carries_the_not_an_error_rate_caveat(tmp_path):
+    """Asserted by identity, so rewording the caveat does not break this."""
     client = _client(tmp_path, {"Q3": "999"})
     batch = quickstatements.build_batch(
         client, tree(), {"3": "Q3"}, retrieved="2026-08-01"
@@ -186,9 +180,20 @@ def test_report_refuses_to_call_the_contradiction_count_an_error_rate(tmp_path):
 
     markdown = quickstatements.render_markdown(batch)
 
-    assert "not to read that as an error rate" in markdown
-    assert "duplicate Geni profiles for one person" in markdown
-    assert "already carries a P2600, which almost none do" in markdown
+    assert quickstatements.NOT_AN_ERROR_RATE in markdown
+
+
+def test_the_not_an_error_rate_caveat_still_says_the_two_things_that_matter():
+    """Identity alone would pass on an emptied constant, so pin its substance.
+
+    Both ideas are load bearing. Without the first, a contradiction reads as a
+    proven bad match; without the second, 3-of-36 reads as a measured accuracy
+    figure rather than as what little the check can see.
+    """
+    caveat = quickstatements.NOT_AN_ERROR_RATE
+
+    assert "duplicate Geni profiles for one person" in caveat
+    assert "already carries a P2600, which almost none do" in caveat
 
 
 def test_no_contradiction_section_when_nothing_contradicts(tmp_path):
