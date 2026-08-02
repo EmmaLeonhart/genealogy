@@ -1,10 +1,23 @@
 """Check the sources against the Python floor `pyproject.toml` advertises.
 
 **What this is not:** running the test suite on that floor. Only CI does that,
-and CI has stopped running (a GitHub billing block — see `queue.md`). The only
-interpreter on the development machine is 3.13, so without something like this
-a 3.11-only construct could land and nothing would notice until somebody on the
-floor version tried to install the package.
+and **CI is manual-only by decision, not because anything is blocking it.**
+`ci.yml` declares a `["3.10", "3.13"]` matrix and `workflow_dispatch` as its
+sole trigger, because this is a private repository where Actions minutes are
+billable once the free allowance is gone — see `CLAUDE.md` § "Cost: this repo is
+private, so CI is manual-only". `tests/test_repo_invariants.py` enforces that no
+workflow gains an automatic trigger, so restoring push-triggered CI would fail
+the suite, on purpose.
+
+That wording matters here more than most places, because this is the file
+somebody reads while wondering whether CI ought to come back. It is a standing
+choice to keep, not an obstacle waiting to lift. Running the matrix by hand
+(`gh workflow run CI`) is the way to get real 3.10 coverage, and it costs
+minutes.
+
+So the only interpreter on the development machine is 3.13, and without
+something like this a 3.11-only construct could land and nothing would notice
+until somebody on the floor version tried to install the package.
 
 So this catches the cheap class of breakage — syntax the floor cannot parse, and
 stdlib names that did not exist yet — and deliberately does not pretend to catch

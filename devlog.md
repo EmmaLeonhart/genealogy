@@ -2106,3 +2106,49 @@ setting, nor dependencies introduced at runtime rather than by import.
 **553 passed** (was 545), Python 3.13.14. Not CI-verified — CI is
 `workflow_dispatch:` only here on purpose, which is now a tested statement
 rather than a described one.
+
+---
+
+## 2026-08-03 — a docstring calling a decision a blockage
+
+Went looking at `tests/test_python_floor.py` for a different reason — it is the
+stand-in for the 3.10 coverage this session reports as missing every tick, and I
+wanted to know whether it could be strengthened. It cannot, much: it already
+parses every file with `ast.parse(..., feature_version=floor())`, which is
+exactly the right check, keeps a denylist of post-3.10 stdlib names, reads the
+floor out of `pyproject.toml` rather than hardcoding it, and carries two
+non-vacuity proofs. Sound.
+
+Its docstring was not. "Only CI does that, and CI has stopped running (a GitHub
+billing block — see `queue.md`)."
+
+Both halves false. `queue.md` contains no mention of a billing block — zero hits
+— and both it and `CLAUDE.md` frame CI as off **by decision**: "CI is off on
+purpose, and stays off. Not a blocker — a decision." The phrase survived nowhere
+else in the working tree and traces to `3c82da8`, the commit that created the
+file.
+
+**The distinction is the whole point, and this was the worst file to get it
+wrong in.** A *block* is imposed from outside and might lift; a *decision* is a
+standing choice to keep. This is precisely the file somebody opens while
+wondering whether CI ought to come back, because it exists to explain what goes
+unchecked while CI does not run — so a reader arriving with that question found
+an answer implying the obstacle was temporary and external.
+
+Restoring push-triggered CI is the one thing `CLAUDE.md` forbids outright, and
+`3474ba7` added a test enforcing it two commits ago. The docstring had come to
+contradict a guard in its own suite.
+
+Now it says manual-only by decision, names the reason, points at `CLAUDE.md`
+§ "Cost: this repo is private, so CI is manual-only" — heading checked, not
+recalled — and notes that `test_repo_invariants.py` makes restoring an automatic
+trigger fail the suite on purpose. It also records the thing the old wording
+obscured: real 3.10 coverage is available any time via `gh workflow run CI`, and
+costs minutes. That is a choice with a price, not an impossibility.
+
+Everything else in the file was left alone. The checks are good and were
+reviewed this tick.
+
+**553 passed**, unchanged, Python 3.13.14. Prose only — stated for completeness,
+not as evidence. Not CI-verified, which is now a described-and-tested state
+rather than a described one.

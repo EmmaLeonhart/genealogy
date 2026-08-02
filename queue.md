@@ -14,8 +14,7 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
-**Empty.** The billing invariant (no automatic workflow triggers) and the
-stdlib-only invariant are both asserted by the suite.
+**Empty.** No file now describes CI as blocked rather than chosen.
 
 ### Standing context
 
