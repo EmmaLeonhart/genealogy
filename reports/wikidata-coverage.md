@@ -7,12 +7,12 @@ because lumping them together would overstate what is actually known.
 
 |  | people | share of tree |
 | --- | ---: | ---: |
-| **linked by P2600** (exact Geni ID on the Wikidata item) | 209 | 2.4% |
-| **linked by expansion** (family structure + name + dates) | 36 | 0.4% |
-| **linked, total** | 245 | 2.8% |
-| proposed, awaiting review | 87 | 1.0% |
-| no link and no proposal | 8434 | 96.2% |
-| **tree total** | 8766 | 100% |
+| **linked by P2600** (exact Geni ID on the Wikidata item) | 209 | 1.7% |
+| **linked by expansion** (family structure + name + dates) | 36 | 0.3% |
+| **linked, total** | 245 | 2.0% |
+| proposed, awaiting review | 87 | 0.7% |
+| no link and no proposal | 12090 | 97.3% |
+| **tree total** | 12422 | 100% |
 
 ## Proposals awaiting review
 
@@ -50,13 +50,13 @@ not, the reconciliation is missing something.
 | 1200s | 194 | 36 | 18.6% |
 | 1300s | 201 | 10 | 5.0% |
 | 1400s | 303 | 9 | 3.0% |
-| 1500s | 687 | 3 | 0.4% |
-| 1600s | 649 | 0 | 0.0% |
-| 1700s | 1187 | 0 | 0.0% |
-| 1800s | 2374 | 3 | 0.1% |
+| 1500s | 741 | 3 | 0.4% |
+| 1600s | 975 | 0 | 0.0% |
+| 1700s | 2892 | 0 | 0.0% |
+| 1800s | 3519 | 3 | 0.1% |
 | 1900s | 913 | 1 | 0.1% |
 | 2000s | 10 | 0 | 0.0% |
-| unknown | 1846 | 11 | 0.6% |
+| unknown | 2272 | 11 | 0.5% |
 
 ## How far the unmatched sit from a match
 
@@ -75,7 +75,7 @@ and no amount of searching will change that.
 | 7 | 648 |
 | 8 | 631 |
 | 9 | 881 |
-| 10 or more | 4841 |
+| 10 or more | 8497 |
 
 ## The 25 biggest unlinked people
 

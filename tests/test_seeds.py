@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import pytest
 
 from genimerge import gedcom, seeds
@@ -289,3 +291,41 @@ def test_selection_is_deterministic_when_candidates_tie():
     twice = [p.profile.seed for p in seeds.choose_export_set(list(reversed(kept)), 2)]
 
     assert once == twice
+
+
+# --- GENI_EXPORT_CAP against the real exports -------------------------------
+#
+# The constant was 3836 because the first three exports each held exactly that,
+# which read as a hard cap. The fourth held 3840. These tests exist so the next
+# export to exceed the constant fails here rather than silently modelling a ball
+# smaller than a real export.
+
+_DATA_LAKE = Path(__file__).resolve().parents[1] / "data_lake"
+_EXPORTS = sorted(_DATA_LAKE.glob("*.ged"))
+
+
+@pytest.mark.skipif(not _EXPORTS, reason="no GEDCOM exports in data_lake/")
+def test_export_cap_is_at_least_the_largest_real_export():
+    largest = max(
+        sum(1 for r in gedcom.parse_file(p).records if r.tag == "INDI")
+        for p in _EXPORTS
+    )
+
+    assert seeds.GENI_EXPORT_CAP >= largest, (
+        f"an export in data_lake/ holds {largest} individuals, more than "
+        f"GENI_EXPORT_CAP={seeds.GENI_EXPORT_CAP}. Raise the constant to the new "
+        "largest observed — and do not describe it as a cap Geni enforces, "
+        "which is the mistake 3836 encoded."
+    )
+
+
+def test_export_cap_bounds_the_modelled_ball():
+    """The constant must actually bound `export_ball`, not just be documentation."""
+    t = tree(CLUSTER, FAR)
+    edges = seeds.edges_for_style(t, "blood")
+    seed = next(iter(t.people))
+
+    ball = seeds.export_ball(edges, seed, cap=2)
+
+    assert ball.size <= 2
+    assert ball.capped

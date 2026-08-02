@@ -636,8 +636,9 @@ def build_parser() -> argparse.ArgumentParser:
         "seeds",
         help="plan the next exports: seeds whose breadth-first ball reaches the most new material",
         description=(
-            "A Geni export is a breadth-first ball from one profile, capped at "
-            f"{seeds.GENI_EXPORT_CAP}. This ranks candidate seeds by the people in "
+            "A Geni export is a breadth-first ball from one profile, modelled as "
+            f"holding {seeds.GENI_EXPORT_CAP} people — the largest seen, not a known "
+            "cap. This ranks candidate seeds by the people in "
             "their ball with no parents recorded, and picks a sequence whose balls "
             "overlap as little as possible."
         ),

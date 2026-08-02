@@ -126,9 +126,12 @@ def _headline(inv: Inventory) -> list[str]:
 
     if len(set(counts)) == 1 and len(inv.files) > 1 and counts[0] > 0:
         lines.append(
-            f"**Every export contains exactly {counts[0]} individuals.** An identical "
-            "count across differently-scoped exports is a per-export cap, not a "
-            "coincidence — Geni is truncating each export to that size."
+            f"**Every export here contains exactly {counts[0]} individuals.** An "
+            "identical count across differently-scoped exports suggests Geni is "
+            "truncating each to that size rather than it being coincidence — but "
+            "read it as a lower bound, not a cap. The first three exports agreed "
+            "on 3836 exactly and a fourth then held 3840, so agreement across the "
+            "exports in hand has already failed once to mean a limit."
         )
         lines.append("")
 

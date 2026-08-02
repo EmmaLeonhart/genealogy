@@ -1067,3 +1067,77 @@ Everything downstream — the merge itself, and the re-runs of `inventory`,
 `namelinks` and `quickstatements` that a 42% larger tree forces — is
 BLOCKED-ON-USER-ACTION behind a Python install. Unblock signal is a working
 `python -VV` on PATH at 3.10 or newer.
+
+---
+
+## 2026-08-01 — the fourth export merged, and the cap claim retired
+
+Python came back (3.13.14, `C:\Program Files\Python313\`), which unblocked
+everything the previous entry left standing.
+
+**The suite passed before anything was touched: 467, up from the 462 recorded at
+`47d7a04`.** The five new cases are the per-file tests parametrised over
+`data_lake/*.ged` picking up the fourth export. So the new file was already
+exercised by `test_gedcom_real_exports.py` and passed without changes — the open
+question from the last status report, answered.
+
+**The merge.** 12422 individuals, 5794 families, **0 conflicts**. Then
+`inventory`, `frontier`, `seeds`, `reconcile`, `coverage`, `crosscheck`,
+`names`, `name-links` and `quickstatements` re-run against the larger tree.
+Reconciliation now matches **209 of 12422 by P2600 (1.7%)**, crosscheck sees
+245 people — 625 agreements, 165 gaps, 40 conflicts — and writes 65 statements
+with 100 gaps withheld. Names: 1008 of 2351 surnames and 2076 of 3702 given-name
+tokens have a Wikidata item. Nothing has been sent to Wikidata.
+
+**The PowerShell numbers held exactly.** The previous entry recorded 3840 / 184
+shared / 3656 added / 8766 → 12422, measured by reading raw `INDI` lines because
+there was no interpreter to run the real parser. `genimerge inventory` agrees on
+every one: 3840 individuals, 1806 families, 3656 unique to the new export, union
+12422. That was the one thing flagged as unverified — an ad-hoc reimplementation
+of something `genimerge.gedcom` does properly, with nothing checking it. It
+checks out.
+
+One thing the regenerated inventory shows that the estimate did not: people
+present in *every* export fell from 354 to **9**. The fourth export overlaps the
+other three so little that the four-way intersection nearly vanishes.
+
+**3836 is no longer described as a cap anywhere.** `GENI_EXPORT_CAP` is now
+3840, and — the actual point — it is documented as *the largest export observed*
+rather than a limit Geni enforces. The old comment said "Measured, not guessed:
+all three exports contain exactly this many", which was true and still produced
+a false conclusion; three different-style walks sharing only 354 people all
+stopping on 3836 looked like proof of a hard cap.
+
+What actually bounds an export is **not established, and is not guessed at**. A
+raised limit between 2026-07-30 and 2026-08-01, a per-account limit, a limit on
+something other than head count, and a walk that overshoots a floor by however
+much finishes the current generation all fit four exports equally well. The
+constant's docstring lists them and encodes none. The stale prose in
+`frontier.py`, `cli.py` and the seeds report is corrected the same way, and
+`inventory.py` no longer converts equal counts into "a per-export cap, not a
+coincidence" — that inference has now failed once, and the report says so.
+
+The load-bearing part is a test, not a number. `test_seeds.py` asserts
+`GENI_EXPORT_CAP >= max(INDI)` over `data_lake/`, so the next export to exceed
+it fails loudly rather than silently modelling a ball smaller than a real
+export. Verified non-vacuous rather than assumed: the guard currently sits
+exactly on the boundary (largest observed 3840, constant 3840) and evaluates
+false at the old 3836. A second test pins that the constant actually bounds
+`export_ball` rather than only appearing in documentation.
+
+Re-running `seeds` on the larger tree moved the plan: 2932 candidates kept, 38
+rejected as saturated, and the ten picks now reach **193** doorways against 172
+for the ten highest-ranked taken without regard to overlap. Pick 1 is unchanged;
+pick 2 is new.
+
+**469 passed**, Python 3.13.14, run before and after the changes. Not
+CI-verified — CI is `workflow_dispatch:` only here on purpose, so no run
+happened and none was implied.
+
+One environment wrinkle worth recording rather than fixing silently: `python`
+and `python3` on PATH still resolve to the Microsoft Store stub aliases ahead of
+the real install, so the bare `python -m pytest` that `CLAUDE.md` prescribes
+exits 9009. `py -m pytest` and the full path work. The package is not
+pip-installed, so the CLI needs `PYTHONPATH=src`; pytest does not, because
+`pyproject.toml` sets `pythonpath = ["src"]`. Left alone — changing a user's
+PATH is not this repo's business — and noted in `queue.md`.
