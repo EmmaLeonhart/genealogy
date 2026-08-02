@@ -2209,3 +2209,62 @@ soften the comparison.
 **578 passed** (was 553; 19 new consistency tests, 6 from the new command
 flowing through existing parametrised CLI tests), Python 3.13.14. Not
 CI-verified — CI is `workflow_dispatch:` only here on purpose.
+
+---
+
+## 2026-08-03 — one record per profile is not one record per person
+
+`todo.md` item 1 is "One canonical genealogy, not N exports". The merge
+guarantees one record per Geni **profile**, which is a different promise: two
+profiles for one human merge to two records and always will, because the profile
+ID is the join key.
+
+`reports/frontier.md` already reported the symptom — its single ancestry cycle,
+explained there as "a sign the same person exists under two Geni profiles that
+were then linked as parent and child". Nothing looked for the condition.
+
+`genimerge consistency` now does, in two tiers:
+
+| | groups |
+| --- | ---: |
+| **likely** — same name, same parents, same birth year | 9 |
+| **possible** — same name and year, parents differ or unknown | 42 |
+| excluded as reused names | 138 |
+
+**The exclusion is the work.** Matching on name and parents alone returns 202
+groups. In these families a dead child's name went to the next child, so 138 of
+those are two real siblings — reporting them as duplicates would be wrong nearly
+every time and would earn the report a reputation for crying wolf. The report
+states the exclusion and why, because a reader who is not told will assume they
+were missed. Same shape as the previous tick's father/mother asymmetry: the
+naive number is an order of magnitude too large and the judgement is in what to
+throw away.
+
+**A test I wrote caught a real defect in the code I had just written.** The
+name normaliser stripped anything non-ASCII after NFKD decomposition — fine for
+`é`, which decomposes, and destructive for `ø`, `æ`, `ð` and `þ`, which are
+single codepoints with no ASCII base. Counted over the merged tree: **1302 `ø`,
+210 `Ø`, 118 `æ`, 23 `ð`**. `Sørbø` was becoming `s rb`. That both hides real
+matches and manufactures false ones between unrelated names reduced to the same
+rubble — and one of the groups had been printing as `mathis s rensen`, which is
+*Mathis Sørensen* with the ø knocked out.
+
+Fixed by transliterating the Nordic letters and, more importantly, by never
+removing letters at all — only punctuation — so the Cyrillic names in this tree
+compare against each other rather than collapsing to nothing. Four tests pin it,
+including one asserting `Øye` and `Åe` do not collide.
+
+**The counts did not change**: still 9, 42 and 138 after the fix. Worth saying
+plainly rather than claiming the fix rescued the numbers — on this data it did
+not, and the defect was real regardless. It would have mattered on different
+data, and it was already making the grouping key wrong even where the grouping
+happened to be right.
+
+Nothing is merged and nothing should be. Merging two profiles is an edit on
+Geni made by somebody who has opened both; names are evidence for a human and
+never a join, which is the rule that exists because looser matching once
+produced a link to a stranger's profile. Two tests assert the report keeps
+saying so.
+
+**591 passed** (was 578), Python 3.13.14. Not CI-verified — CI is
+`workflow_dispatch:` only here on purpose.

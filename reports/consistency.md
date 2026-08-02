@@ -217,3 +217,82 @@ A parent under 12, or a lifespan over 120 years. Some of these will be correct; 
 | [þuríður Þorleifsdóttir](https://www.geni.com/people/x/6000000013660001404) | born 945, when their mother Groa Þórólfurdottir was 5 | [Groa Þórólfurdottir](https://www.geni.com/people/x/6000000029847553961) |
 | [Sigmundur](https://www.geni.com/people/x/6000000010452584582) | born 966, when their father Brestur Sigmundarson was 5 | [Brestur Sigmundarson](https://www.geni.com/people/x/6000000010452792372) |
 | [Turid Torkilsdóttur](https://www.geni.com/people/x/6000000010452653497) | born 966, when their father Torkil (Turrafrost) was 5 | [Torkil (Turrafrost)](https://www.geni.com/people/x/6000000002791716644) |
+
+## The same person, twice
+
+The merge guarantees one record per Geni **profile**, which is not one record per **person**: two profiles for the same human merge to two records and always will, because the profile ID is the join key. `reports/frontier.md` already reports one ancestry cycle as evidence of exactly this — that is the symptom; these are candidates for the cause.
+
+| | groups |
+| --- | ---: |
+| **likely** — same name, same parents, same birth year | **9** |
+| **possible** — same name and year, parents differ or unknown | **42** |
+| excluded as reused names — see below | 138 |
+
+**138 groups share a name and both parents but were born in different years, and are deliberately not listed.** In these families a dead child's name was routinely given to the next child, so those are two real siblings. Matching on name and parents alone would return them all as duplicates and be wrong about nearly every one — the exclusion is most of the work here, not an oversight.
+
+**Nothing is merged, and nothing here should be.** Names are evidence for a human, never a join: this project keys on the Geni profile ID precisely because looser matching once produced a link to a stranger's profile. Merging two profiles is an edit on Geni, made by somebody who has opened both.
+
+### Likely (9)
+
+Same name, same parents, same birth year. Short of siblings born in one year and given one name, these are one person recorded twice.
+
+| born | people |
+| ---: | --- |
+| 1784 | [Anders Andersen](https://www.geni.com/people/x/6000000043206089118) · [Anders Andersen](https://www.geni.com/people/x/6000000216557161033) |
+| 1966 | [Brit Synnøve Øgård](https://www.geni.com/people/x/5708751767600042629) · [Brit Synnøve Øgård](https://www.geni.com/people/x/6000000012972857063) |
+| 1811 | [Christen Sørensen](https://www.geni.com/people/x/6000000185391126960) · [Christen Sørensen](https://www.geni.com/people/x/6000000191509575843) |
+| 1783 | [Hans Halvorsen](https://www.geni.com/people/x/6000000010826957358) · [Hans Halvorsen](https://www.geni.com/people/x/6000000017762820499) |
+| 1803 | [Hans Sørensen](https://www.geni.com/people/x/6000000185392321968) · [Hans Sørensen](https://www.geni.com/people/x/6000000209227678851) |
+| 1815 | [Marte Maria Hansdatter](https://www.geni.com/people/x/6000000007616030680) · [Marte Maria Hansdatter](https://www.geni.com/people/x/6000000209230667868) |
+| 1800 | [Mathis Sørensen](https://www.geni.com/people/x/6000000015446339535) · [Mathis Sørensen](https://www.geni.com/people/x/6000000185388470917) |
+| 1631 | [Ola Nilsen Skei](https://www.geni.com/people/x/6000000005607007945) · [Ola Nilsen Skei](https://www.geni.com/people/x/6000000225386545407) |
+| 1730 | [Olaug Henriksdatter](https://www.geni.com/people/x/6000000001499101871) · [Olaug Henriksdatter](https://www.geni.com/people/x/6000000186680243828) |
+
+### Possible (42)
+
+Same name and birth year, but the parents differ or are not recorded. Could as easily be cousins named for the same grandparent — worth opening, not worth assuming.
+
+| born | people |
+| ---: | --- |
+| 1550 | [NN](https://www.geni.com/people/x/6000000008188593947) · [NN](https://www.geni.com/people/x/6000000176653557926) · [NN](https://www.geni.com/people/x/6000000213749323826) |
+| 1820 | [Anders Hansen](https://www.geni.com/people/x/6000000177117768824) · [Anders Hansen](https://www.geni.com/people/x/6000000209230831823) |
+| 1841 | [Anders Olsen](https://www.geni.com/people/x/6000000109333975244) · [Anders Olsen](https://www.geni.com/people/x/6000000117191555893) |
+| 1811 | [Anders Olsen](https://www.geni.com/people/x/6000000178654571825) · [Anders Olsen](https://www.geni.com/people/x/6000000218304451862) |
+| 1836 | [Andreas](https://www.geni.com/people/x/6000000092273603870) · [Andreas](https://www.geni.com/people/x/6000000111471463841) |
+| 1707 | [Anna](https://www.geni.com/people/x/6000000074804326068) · [Anna](https://www.geni.com/people/x/6000000178278275935) |
+| 1758 | [Anna Andersdotter](https://www.geni.com/people/x/6000000177921516839) · [Anna Andersdotter](https://www.geni.com/people/x/6000000187717607962) |
+| 1761 | [Anne Ingemundsdatter](https://www.geni.com/people/x/6000000021275171071) · [Anne Ingemundsdatter](https://www.geni.com/people/x/6000000111920822081) |
+| 1770 | [Anne Olsdatter](https://www.geni.com/people/x/6000000005738203499) · [Anne Olsdatter](https://www.geni.com/people/x/6000000178379260848) |
+| 1751 | [Anne Pedersdatter](https://www.geni.com/people/x/6000000022823714504) · [Anne Pedersdatter](https://www.geni.com/people/x/6000000192770150821) |
+| 1906 | [Berner Borsheim](https://www.geni.com/people/x/6000000002091116790) · [Berner Borsheim](https://www.geni.com/people/x/6000000032068298553) |
+| 1650 | [Birgitte Eriksdatter](https://www.geni.com/people/x/6000000059763681849) · [Birgitte Eriksdatter](https://www.geni.com/people/x/6000000217798532838) |
+| 1200 | [Brynjulf](https://www.geni.com/people/x/6000000109043725549) · [Brynjulf](https://www.geni.com/people/x/6000000181845121858) |
+| 1821 | [Elen Andersdatter](https://www.geni.com/people/x/6000000026366014273) · [Elen Andersdatter](https://www.geni.com/people/x/6000000080940445142) |
+| 1795 | [Erik Olsen](https://www.geni.com/people/x/6000000033459101163) · [Erik Olsen](https://www.geni.com/people/x/6000000086433215905) |
+| 1851 | [Hans](https://www.geni.com/people/x/6000000013214745368) · [Hans](https://www.geni.com/people/x/6000000094818397978) |
+| 1789 | [Hans](https://www.geni.com/people/x/6000000088792968045) · [Hans](https://www.geni.com/people/x/6000000111423360274) |
+| 1836 | [Hans](https://www.geni.com/people/x/6000000109051449995) · [Hans](https://www.geni.com/people/x/6000000109970302821) |
+| 1794 | [Hans Christensen](https://www.geni.com/people/x/6000000111779412225) · [Hans Christensen](https://www.geni.com/people/x/6000000178578880830) |
+| 1752 | [Hans Hansen](https://www.geni.com/people/x/6000000019119212674) · [Hans Hansen](https://www.geni.com/people/x/6000000034381623289) |
+| 1843 | [Hans Olsen](https://www.geni.com/people/x/6000000109051336014) · [Hans Olsen](https://www.geni.com/people/x/6000000196249215863) |
+| 1103 | [Harald IV "Gille"](https://www.geni.com/people/x/6000000018329271956) · [Harald IV Gille](https://www.geni.com/people/x/6000000223524555848) |
+| 1721 | [Johanne Larsdatter](https://www.geni.com/people/x/6000000014361451409) · [Johanne Larsdatter](https://www.geni.com/people/x/6000000186677808866) |
+| 1802 | [Johannes Hansen](https://www.geni.com/people/x/6000000023264006971) · [Johannes Hansen](https://www.geni.com/people/x/6000000211352156833) |
+| 1770 | [Jøran Olsdatter](https://www.geni.com/people/x/6000000000159704842) · [Jøran Olsdatter](https://www.geni.com/people/x/6000000195446201841) |
+| 1797 | [Jøran Sørensdatter](https://www.geni.com/people/x/6000000015446392260) · [Jøran Sørensdatter](https://www.geni.com/people/x/6000000086324525950) |
+| 1770 | [Lars](https://www.geni.com/people/x/6000000021132051889) · [Lars](https://www.geni.com/people/x/6000000223575905915) |
+| 1855 | [Martin](https://www.geni.com/people/x/6000000109335140030) · [Martin](https://www.geni.com/people/x/6000000111814236096) |
+| 1830 | [Mathis Olsen](https://www.geni.com/people/x/6000000000842229476) · [Mathis Olsen](https://www.geni.com/people/x/6000000099271248119) |
+| 1754 | [Nils Johannessen](https://www.geni.com/people/x/6000000022551845138) · [Nils Johannessen](https://www.geni.com/people/x/6000000183493951837) |
+| 1620 | [NN](https://www.geni.com/people/x/6000000008708647525) · [NN](https://www.geni.com/people/x/6000000041091296768) |
+| 1600 | [NN](https://www.geni.com/people/x/6000000011812526318) · [NN](https://www.geni.com/people/x/6000000017535915136) |
+| 1832 | [Ole](https://www.geni.com/people/x/6000000035927490184) · [Ole](https://www.geni.com/people/x/6000000111470175903) |
+| 1791 | [Ole Hansen](https://www.geni.com/people/x/6000000023234434918) · [Ole Hansen](https://www.geni.com/people/x/6000000221254508849) |
+| 1834 | [Ole Olsen](https://www.geni.com/people/x/6000000013214441179) · [Ole Olsen](https://www.geni.com/people/x/6000000109289905140) |
+| 1480 | [Peder](https://www.geni.com/people/x/6000000001507025206) · [Peder](https://www.geni.com/people/x/6000000024196277800) |
+| 1798 | [Peder Andersen](https://www.geni.com/people/x/6000000193163678821) · [Peder Andersen](https://www.geni.com/people/x/6000000194612759840) |
+| 1790 | [Per Eriksson](https://www.geni.com/people/x/6000000177921516822) · [Per Eriksson](https://www.geni.com/people/x/6000000185092590185) |
+| 1766 | [Randi Syversdatter](https://www.geni.com/people/x/6000000095236458921) · [Randi Syversdatter](https://www.geni.com/people/x/6000000220888241846) |
+| 1790 | [Rasmus Rasmusson](https://www.geni.com/people/x/6000000003095080287) · [Rasmus Rasmusson](https://www.geni.com/people/x/6000000169821778864) |
+| 1715 | [Torer Kristoffersen](https://www.geni.com/people/x/6000000001498965389) · [Torer Kristoffersen](https://www.geni.com/people/x/6000000206325856927) |
+| 1798 | [Tosten](https://www.geni.com/people/x/6000000020515974452) · [Tosten](https://www.geni.com/people/x/6000000082517190997) |

@@ -14,7 +14,8 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
-**Empty.** `genimerge consistency` reports the tree's own contradictions.
+**Empty.** `reports/consistency.md` now also lists profiles that look like one
+person recorded twice.
 
 ### Standing context
 

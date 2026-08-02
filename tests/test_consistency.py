@@ -215,3 +215,143 @@ def test_people_with_no_dates_at_all_are_not_findings():
     assert report.findings == []
     assert report.people_with_a_year == 0
     assert report.people_checked == 1
+
+
+# --- the same person under two profiles -------------------------------------
+#
+# The merge gives one record per Geni *profile*, never per person. The hard part
+# is not finding matches — it is refusing the 138 groups in the real tree that
+# share a name and both parents but were born in different years. Those are
+# siblings: in these families a dead child's name went to the next child.
+# Matching on name and parents alone returns 202 groups and is wrong about
+# nearly all of them.
+
+
+def twins(name, birth, xrefs, parents=True):
+    """Two people with the same name, optionally the same parents."""
+    lines = ["0 HEAD"]
+    for xref, year in zip(xrefs, birth):
+        lines += [f"0 @{xref}@ INDI", f"1 NAME {name} /Test/"]
+        if year is not None:
+            lines += ["1 BIRT", f"2 DATE {year}"]
+        if parents:
+            lines += ["1 FAMC @F9@"]
+    if parents:
+        lines += ["0 @I90@ INDI", "1 NAME Far /Test/", "1 FAMS @F9@"]
+        lines += ["0 @F9@ FAM", "1 HUSB @I90@"] + [f"1 CHIL @{x}@" for x in xrefs]
+    lines += ["0 TRLR", ""]
+    return "\n".join(lines)
+
+
+def test_same_name_same_parents_same_year_is_a_likely_duplicate():
+    found, reused = consistency.duplicate_candidates(
+        tree(twins("Ola", [1800, 1800], ["I1", "I2"]))
+    )
+
+    assert [d.tier for d in found] == [consistency.LIKELY]
+    assert found[0].geni_ids == ("1", "2")
+    assert reused == 0
+
+
+def test_same_name_and_year_without_shared_parents_is_only_possible():
+    found, _ = consistency.duplicate_candidates(
+        tree(twins("Ola", [1800, 1800], ["I1", "I2"], parents=False))
+    )
+
+    assert [d.tier for d in found] == [consistency.POSSIBLE]
+
+
+def test_siblings_sharing_a_name_but_not_a_year_are_not_duplicates():
+    """The 138-group trap. A dead child's name given to the next child."""
+    found, reused = consistency.duplicate_candidates(
+        tree(twins("Ola", [1800, 1806], ["I1", "I2"]))
+    )
+
+    assert found == []
+    assert reused == 1
+
+
+def test_the_reused_name_count_is_reported_not_silently_dropped():
+    t = tree(twins("Ola", [1800, 1806], ["I1", "I2"]))
+
+    markdown = consistency.render_markdown(t, consistency.check(t))
+
+    assert "| excluded as reused names — see below | 1 |" in markdown
+    assert "deliberately not listed" in markdown
+    assert "the exclusion is most of the work here, not an oversight" in markdown
+
+
+def test_different_names_are_never_grouped():
+    found, _ = consistency.duplicate_candidates(
+        tree(twins("Ola", [1800], ["I1"]) , twins("Kari", [1800], ["I2"]))
+    )
+
+    assert found == []
+
+
+def test_spelling_noise_does_not_hide_a_match():
+    """Accents and case are flattened; this is review evidence, not a join."""
+    assert consistency._normalised("Håkon Å. ÆRØ") == consistency._normalised("hakon a aero")
+
+
+def test_nordic_letters_are_transliterated_rather_than_deleted():
+    """The first version stripped them, turning `Sørbø` into `s rb`.
+
+    NFKD does nothing for ø, æ, ð or þ — they are single codepoints with no
+    ASCII base. There are 1302 `ø` alone in the merged tree, so deleting them
+    both hides real matches and invents false ones between unrelated names
+    reduced to the same rubble.
+    """
+    assert consistency._normalised("Sørbø") == "sorbo"
+    assert consistency._normalised("Ærø") == "aero"
+    assert consistency._normalised("Þorsteinn") == "thorsteinn"
+    assert consistency._normalised("Hákonardóttir") == "hakonardottir"
+
+
+def test_letters_outside_the_table_survive_instead_of_vanishing():
+    """Cyrillic names must compare against each other, not against nothing."""
+    assert consistency._normalised("Всеволодович") == "всеволодович"
+    assert consistency._normalised("Volodar, Всеволодович") == "volodar всеволодович"
+
+
+def test_two_spellings_of_one_farm_name_do_not_collide_into_rubble():
+    """The failure the old version risked: different names, same debris."""
+    assert consistency._normalised("Øye") != consistency._normalised("Åe")
+
+
+def test_people_with_no_birth_year_are_not_grouped():
+    """Without a year the evidence is a shared name, which is not evidence."""
+    found, _ = consistency.duplicate_candidates(
+        tree(twins("Ola", [None, None], ["I1", "I2"]))
+    )
+
+    assert found == []
+
+
+def test_likely_duplicates_are_listed_before_possible_ones():
+    t = tree(
+        twins("Ola", [1800, 1800], ["I1", "I2"]),
+        twins("Kari", [1700, 1700], ["I3", "I4"], parents=False),
+    )
+
+    found, _ = consistency.duplicate_candidates(t)
+
+    assert [d.tier for d in found] == [consistency.LIKELY, consistency.POSSIBLE]
+
+
+def test_the_report_refuses_to_merge_and_says_why():
+    t = tree(twins("Ola", [1800, 1800], ["I1", "I2"]))
+
+    markdown = consistency.render_markdown(t, consistency.check(t))
+
+    assert "Nothing is merged, and nothing here should be." in markdown
+    assert "a link to a stranger's profile" in markdown
+
+
+def test_a_tree_with_no_duplicates_says_none_rather_than_omitting_the_section():
+    t = tree(family(child_birth=1830, father=(1800, 1880)))
+
+    markdown = consistency.render_markdown(t, consistency.check(t))
+
+    assert "## The same person, twice" in markdown
+    assert "### Likely (0)" in markdown

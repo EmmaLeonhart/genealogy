@@ -30,6 +30,9 @@ Findings are split into two kinds, because they warrant different responses:
 
 from __future__ import annotations
 
+import re
+import unicodedata
+from collections import defaultdict
 from dataclasses import dataclass, field
 
 from .identity import profile_url
@@ -38,12 +41,16 @@ from .model import Person, Tree
 __all__ = [
     "IMPOSSIBLE",
     "IMPLAUSIBLE",
+    "LIKELY",
+    "POSSIBLE",
     "MAX_LIFESPAN",
     "MIN_PARENT_AGE",
     "POSTHUMOUS_MONTHS_GRACE",
     "Finding",
+    "Duplicate",
     "Report",
     "check",
+    "duplicate_candidates",
     "render_markdown",
 ]
 
@@ -80,18 +87,137 @@ class Finding:
         return self.kind == IMPOSSIBLE
 
 
+LIKELY = "likely"
+POSSIBLE = "possible"
+
+
+@dataclass(frozen=True)
+class Duplicate:
+    """People who look like one person recorded under several Geni profiles."""
+
+    tier: str
+    name: str
+    geni_ids: tuple[str, ...]
+    birth_year: int | None
+    shares_parents: bool
+
+    @property
+    def size(self) -> int:
+        return len(self.geni_ids)
+
+
 @dataclass
 class Report:
     findings: list[Finding] = field(default_factory=list)
+    duplicates: list[Duplicate] = field(default_factory=list)
     people_checked: int = 0
     people_with_a_year: int = 0
+    #: same name and parents but different birth years — reused names, excluded
+    reused_names: int = 0
 
     def of_kind(self, kind: str) -> list[Finding]:
         return [f for f in self.findings if f.kind == kind]
 
+    def of_tier(self, tier: str) -> list[Duplicate]:
+        return [d for d in self.duplicates if d.tier == tier]
+
 
 def _named(person: Person) -> str:
     return person.display_name or person.geni_id
+
+
+#: Letters Unicode decomposition cannot help with, transliterated by hand.
+#:
+#: NFKD splits `é` into `e` plus a combining accent, so dropping combining marks
+#: handles it. It does nothing for `ø`, `æ`, `ð` or `þ`, which are single
+#: codepoints with no ASCII base — and stripping them instead is not a small
+#: loss in this tree. Counted over the merged data: **1302 `ø`, 210 `Ø`, 118
+#: `æ`, 23 `ð`**. Dropping them turns `Sørbø` into `s rb`, which both hides real
+#: matches and invents false ones between unrelated names reduced to the same
+#: rubble.
+NORDIC = str.maketrans({"ø": "o", "æ": "ae", "å": "a", "ð": "d", "þ": "th", "ł": "l"})
+
+
+def _normalised(name: str | None) -> str:
+    """A name flattened enough that spelling noise does not hide a match.
+
+    Case folded, Nordic letters transliterated, accents dropped, punctuation
+    removed. **Letters are never removed** — only punctuation — so the Cyrillic
+    names in this tree compare against each other instead of collapsing to
+    nothing.
+
+    This is comparison for *human review*, never for merging. The merge joins on
+    the Geni profile ID and nothing else, because the one time a looser rule was
+    allowed here it turned the foreign xref `@NI04461@` into a link to a
+    stranger's profile.
+    """
+    text = (name or "").casefold().translate(NORDIC)
+    text = unicodedata.normalize("NFKD", text)
+    text = "".join(c for c in text if not unicodedata.combining(c))
+    return " ".join(re.sub(r"[^\w\s]|_", " ", text).split())
+
+
+def duplicate_candidates(tree: Tree) -> tuple[list[Duplicate], int]:
+    """People who may be one person under several Geni profiles.
+
+    Returns the candidates and the number of groups **excluded** as reused
+    names, because that exclusion is most of the work and a report that hides it
+    reads as though nothing was missed.
+
+    Two tiers, kept apart because they are not equally strong:
+
+    ``LIKELY``
+        Same name, same parents, same birth year. Two records for one person,
+        barring a coincidence that would need siblings born the same year and
+        given the same name.
+
+    ``POSSIBLE``
+        Same name and birth year, with parents differing or unrecorded. Could
+        as easily be cousins named for the same grandparent.
+
+    **What is deliberately not reported:** people sharing a name and parents but
+    born in different years. There are 138 such groups in this tree, and they
+    are the largest single pattern — in these families a dead child's name was
+    routinely given to the next one, so those are two real siblings. Reporting
+    on name-and-parents alone would return 202 groups and be wrong about most of
+    them, which is the fastest way to make a report like this ignored.
+    """
+    by_name_year: dict[tuple[str, int], list[Person]] = defaultdict(list)
+    by_name_parents: dict[tuple[str, str | None, str | None], list[Person]] = defaultdict(list)
+
+    for person in tree.people.values():
+        name = _normalised(person.display_name)
+        if not name:
+            continue
+        if person.birth_year:
+            by_name_year[(name, person.birth_year)].append(person)
+        if person.father_id or person.mother_id:
+            by_name_parents[(name, person.father_id, person.mother_id)].append(person)
+
+    reused = sum(
+        1
+        for group in by_name_parents.values()
+        if len(group) > 1 and len({p.birth_year for p in group if p.birth_year}) > 1
+    )
+
+    found: list[Duplicate] = []
+    for (name, year), group in by_name_year.items():
+        if len(group) < 2:
+            continue
+        parents = {(p.father_id, p.mother_id) for p in group}
+        shares = len(parents) == 1 and any(parents.pop())
+        found.append(
+            Duplicate(
+                tier=LIKELY if shares else POSSIBLE,
+                name=name,
+                geni_ids=tuple(sorted(p.geni_id for p in group)),
+                birth_year=year,
+                shares_parents=shares,
+            )
+        )
+
+    found.sort(key=lambda d: (d.tier != LIKELY, -d.size, d.name))
+    return found, reused
 
 
 def check(tree: Tree) -> Report:
@@ -133,6 +259,7 @@ def check(tree: Tree) -> Report:
             report.findings.extend(_against_parent(person, birth, parent, role))
 
     report.findings.sort(key=lambda f: (f.kind != IMPOSSIBLE, f.detail, f.person))
+    report.duplicates, report.reused_names = duplicate_candidates(tree)
     return report
 
 
@@ -258,4 +385,69 @@ def render_markdown(tree: Tree, report: Report, *, top: int = 100) -> str:
                 f"| {_link(tree, finding.other)} |"
             )
 
+    lines += _duplicate_section(tree, report, top=top)
     return "\n".join(lines) + "\n"
+
+
+def _duplicate_section(tree: Tree, report: Report, *, top: int) -> list[str]:
+    likely = report.of_tier(LIKELY)
+    possible = report.of_tier(POSSIBLE)
+
+    lines = [
+        "",
+        "## The same person, twice",
+        "",
+        "The merge guarantees one record per Geni **profile**, which is not one "
+        "record per **person**: two profiles for the same human merge to two "
+        "records and always will, because the profile ID is the join key. "
+        "`reports/frontier.md` already reports one ancestry cycle as evidence of "
+        "exactly this — that is the symptom; these are candidates for the cause.",
+        "",
+        f"| | groups |",
+        "| --- | ---: |",
+        f"| **likely** — same name, same parents, same birth year | **{len(likely)}** |",
+        f"| **possible** — same name and year, parents differ or unknown | **{len(possible)}** |",
+        f"| excluded as reused names — see below | {report.reused_names} |",
+        "",
+        f"**{report.reused_names} groups share a name and both parents but were born in "
+        "different years, and are deliberately not listed.** In these families a "
+        "dead child's name was routinely given to the next child, so those are "
+        "two real siblings. Matching on name and parents alone would return them "
+        "all as duplicates and be wrong about nearly every one — the exclusion is "
+        "most of the work here, not an oversight.",
+        "",
+        "**Nothing is merged, and nothing here should be.** Names are evidence "
+        "for a human, never a join: this project keys on the Geni profile ID "
+        "precisely because looser matching once produced a link to a stranger's "
+        "profile. Merging two profiles is an edit on Geni, made by somebody who "
+        "has opened both.",
+    ]
+
+    for title, group, blurb in (
+        (
+            "Likely",
+            likely,
+            "Same name, same parents, same birth year. Short of siblings born in "
+            "one year and given one name, these are one person recorded twice.",
+        ),
+        (
+            "Possible",
+            possible,
+            "Same name and birth year, but the parents differ or are not "
+            "recorded. Could as easily be cousins named for the same "
+            "grandparent — worth opening, not worth assuming.",
+        ),
+    ):
+        lines += ["", f"### {title} ({len(group)})", ""]
+        if not group:
+            lines.append("None.")
+            continue
+        lines += [blurb, ""]
+        if len(group) > top:
+            lines += [f"Showing the first {top}.", ""]
+        lines += ["| born | people |", "| ---: | --- |"]
+        for duplicate in group[:top]:
+            links = " · ".join(_link(tree, geni_id) for geni_id in duplicate.geni_ids)
+            lines.append(f"| {duplicate.birth_year or '—'} | {links} |")
+
+    return lines

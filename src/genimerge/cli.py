@@ -515,10 +515,16 @@ def _cmd_consistency(args: argparse.Namespace) -> int:
 
     impossible = len(report.of_kind(consistency.IMPOSSIBLE))
     implausible = len(report.of_kind(consistency.IMPLAUSIBLE))
+    likely = len(report.of_tier(consistency.LIKELY))
+    possible = len(report.of_tier(consistency.POSSIBLE))
     print(f"wrote {output}")
     print(
         f"{report.people_checked} people, {report.people_with_a_year} with a year: "
         f"{impossible} impossible, {implausible} implausible"
+    )
+    print(
+        f"duplicate profiles: {likely} likely, {possible} possible "
+        f"({report.reused_names} groups excluded as reused sibling names)"
     )
     print("These are errors in Geni's data. Nothing here has been changed.")
     return 0
