@@ -1841,3 +1841,55 @@ and `quickstatements` re-run, identical output — 245 linked, 209 by P2600 plus
 
 **531 passed**, unchanged, Python 3.13.14. Not CI-verified — CI is
 `workflow_dispatch:` only here on purpose.
+
+---
+
+## 2026-08-02 — the table's rule stops depending on people remembering it
+
+`1f14279` added "**Anything the code can emit belongs in this table** … confirm
+it and add it here in the same change" to `CLAUDE.md`. The same weak form
+replaced two ticks earlier for the four-prefix claim, and weak here for a reason
+already demonstrated in the commit that wrote it: **P1545 sat outside the table
+for its entire existence**, and turned up in a grep rather than in anyone's
+memory.
+
+`tests/test_wikidata_ids_documented.py` now enforces it. Every `P…`/`Q…` string
+literal in `src/genimerge/` must appear somewhere in `CLAUDE.md`, and the
+failure names the ID and the line it came from. Offline, no new dependency, and
+it would have failed on P1545 the day it was written.
+
+Everything passes today, so this locks in a true state rather than fixing a
+break. The sweep behind it: **15 distinct IDs** across the package — ten
+properties over six modules, five items all in `names.py` — every one
+documented.
+
+**And the item IDs were confirmed, not just counted.** All nine the table names
+were checked against live Wikidata by `wbgetentities`: `Q101352` family name,
+`Q202444` given name, `Q12308941` / `Q11879590` / `Q3409032` male / female /
+unisex given name, `Q5` human, `Q6581097` / `Q6581072` male / female, `Q5727902`
+circa. Every label matches. That is worth more than it sounds — `names.py` uses
+five of them to decide what counts as a name item, which is what produces "1008
+of 2351 surnames have one", the figure sizing a decision currently with the
+user. It is right.
+
+**The test is honest about its limit, in the file and in `CLAUDE.md`.** It
+checks an ID is *documented*, never that it is *correct*. Confirming one means
+asking Wikidata, which is network and stays out of an offline suite, so a typo
+added to code and table in the same change passes. `wbgetentities` is still the
+only thing that catches that, and the table now carries both dates saying when
+it last ran.
+
+Four supporting tests rather than one: the scanner finds real IDs (a broken
+regex would make everything else vacuous), the pattern matches quoted values and
+not prose mentions (`P1288` appears in `CLAUDE.md` as a counter-example and must
+never be read as a value), and the comparison reports an undocumented ID with
+its location.
+
+**The same mistake as last time, caught before committing this time.** The
+non-vacuity test was first written re-implementing the comparison inline, which
+tests nothing — exactly the test discarded from `757da7c`. Extracted
+`_undocumented` and pointed both the real check and the proof at it, so the
+proof exercises the code that runs.
+
+**537 passed** (was 531), Python 3.13.14. Not CI-verified — CI is
+`workflow_dispatch:` only here on purpose.

@@ -91,17 +91,27 @@ only when the stdlib genuinely cannot do the job.
 
 ### Wikidata properties and items
 
-All confirmed against live Wikidata via `wbgetentities` on 2026-07-30, with
-P1545 added and P2600 / P734 / P735 re-confirmed the same way on 2026-08-02.
-**Do not guess these** — several plausible-looking IDs are something else
-entirely (P1288, for instance, is a German literature encyclopedia, not a
+All confirmed against live Wikidata via `wbgetentities` on 2026-07-30. On
+2026-08-02, P1545 was added and P2600 / P734 / P735 plus **every item ID named
+below** — `Q5`, `Q6581097`, `Q6581072`, `Q202444`, `Q12308941`, `Q11879590`,
+`Q3409032`, `Q101352`, `Q5727902` — were re-confirmed the same way. Every label
+matched. **Do not guess these** — several plausible-looking IDs are something
+else entirely (P1288, for instance, is a German literature encyclopedia, not a
 genealogy identifier).
 
-**Anything the code can emit belongs in this table.** P1545 was missing for a
-while despite `genimerge.namelinks` emitting it, which was harmless only because
-it happened to be right. A property outside this table is unguarded whether or
-not it is correct, so when you add one to the code, confirm it and add it here
-in the same change.
+**Anything the code can emit belongs in this table, and
+`tests/test_wikidata_ids_documented.py` enforces it**: every `P…`/`Q…` string
+literal in `src/genimerge/` must appear somewhere in this file, or the suite
+fails naming the ID and the line it came from. P1545 was missing for a while
+despite `genimerge.namelinks` emitting it, which was harmless only because it
+happened to be right — a property outside this table is unguarded whether or not
+it is correct.
+
+That test checks an ID is **documented, never that it is correct**. Confirming
+one means asking Wikidata, which is network and stays out of the suite, so a
+typo added to code and table in the same change still passes. `wbgetentities`
+remains the only thing that catches that, and the dates above say when it last
+ran.
 
 **Identity and structure**
 
