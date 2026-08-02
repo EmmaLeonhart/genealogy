@@ -1197,3 +1197,52 @@ several names into one field.
 unchanged from `601f840`; it was run to confirm that, not to claim it. Not
 CI-verified — CI is `workflow_dispatch:` only here on purpose. Nothing has been
 sent to Wikidata.
+
+---
+
+## 2026-08-01 — the contradiction count gets a denominator, and a health warning
+
+`add-p2600.md` reported "3 contradicting an existing ID — for you to resolve"
+and had done since the batch existed. Three against nothing. This tick worked
+out what the three are three *of*.
+
+**What they are.** All three are expansion-inferred matches — each appears in
+`matched_all.csv` and not in `matched_p2600.csv` — and in all three the Geni ID
+Wikidata already carries is absent from our tree entirely, so no local check can
+adjudicate them.
+
+Reading `_cmd_quickstatements` settled the denominator exactly rather than
+approximately: it filters `source == "expansion"`, so the batch is built *only*
+from inferred links. A person already matched by P2600 needs no edit and never
+reaches the file. That makes 33 edits + 0 already-correct + 3 contradicting =
+**36**, which is every expansion match in the tree. The two numbers were both
+already in the module; nothing said what they meant together.
+
+So `Batch.considered` now exists and the report prints "expansion-inferred links
+examined | 36" above the contradiction row, making "3" a fraction of something.
+
+**A claim corrected mid-task.** The queue item written at the start of this tick
+called the three "measured false positives", on the reasoning that an explicit
+P2600 beats an inference. That is wrong, and the report says so instead: a
+contradiction is *either* a bad match *or* two Geni profiles for one person, and
+with the other ID outside our tree nothing here decides which. Writing the plan
+before doing the work is what exposed it — the sentence had to be defended
+before it could be published.
+
+**Why the number is weak, stated in the report rather than left to the reader.**
+A wrong inference is only detectable when the item it landed on already carries
+a P2600, and almost none do — that absence is the problem this project exists to
+address. So the check sees a little and cannot see the larger part, and 3-of-36
+is not an accuracy figure. Two tests pin that framing to the output: one asserts
+the count appears against its denominator, and one asserts the report keeps both
+caveats — that a contradiction may be a duplicate profile, and that the check
+only fires where a P2600 already exists. Prose tests are unusual, but this prose
+is the finding; without those two sentences the number reads as a measured error
+rate, which is what the previous version of the queue item took it for.
+
+The denominator is printed even when nothing contradicts, since 0-of-N is a
+result and a silently absent section is not.
+
+**474 passed** (was 469; 5 added), Python 3.13.14. `add-p2600.md` regenerated
+and confirmed showing 36. Not CI-verified — CI is `workflow_dispatch:` only here
+on purpose. Nothing has been sent to Wikidata.

@@ -135,3 +135,69 @@ def test_the_readable_companion_names_the_person_and_links_both_sides(tmp_path):
 
 def test_an_empty_batch_produces_an_empty_file_not_a_stray_newline(tmp_path):
     assert quickstatements.render_quickstatements(quickstatements.Batch()) == ""
+
+
+# --- the contradiction count and its denominator ---------------------------
+#
+# `considered` exists so the contradiction count in the report is reported
+# against something. Every link the CLI passes is expansion-inferred, so it is
+# also the only direct check this project has on inference quality.
+
+
+def test_considered_counts_every_link_exactly_once(tmp_path):
+    client = _client(tmp_path, {"Q2": "2", "Q3": "999"})
+    batch = quickstatements.build_batch(
+        client, tree(), {"1": "Q1", "2": "Q2", "3": "Q3"}, retrieved="2026-08-01"
+    )
+
+    # one with no ID, one already correct, one contradicting
+    assert (len(batch.edits), len(batch.already_present), len(batch.conflicting)) == (1, 1, 1)
+    assert batch.considered == 3
+
+
+def test_considered_is_zero_for_an_empty_batch():
+    assert quickstatements.Batch().considered == 0
+
+
+def test_report_states_the_contradiction_count_against_its_denominator(tmp_path):
+    client = _client(tmp_path, {"Q3": "999"})
+    batch = quickstatements.build_batch(
+        client, tree(), {"1": "Q1", "2": "Q2", "3": "Q3"}, retrieved="2026-08-01"
+    )
+
+    markdown = quickstatements.render_markdown(batch)
+
+    assert "| expansion-inferred links examined | 3 |" in markdown
+    assert "**1 of the 3 inferred links examined here are contradicted" in markdown
+
+
+def test_report_refuses_to_call_the_contradiction_count_an_error_rate(tmp_path):
+    """The denominator is not what a rate implies, and the report must say so.
+
+    A contradiction is either a wrong inference or two Geni profiles for one
+    person, and it is only detectable when the target item already carries a
+    P2600 — which is exactly what is usually missing. Both caveats are load
+    bearing: without them the number reads as a measured accuracy figure.
+    """
+    client = _client(tmp_path, {"Q3": "999"})
+    batch = quickstatements.build_batch(
+        client, tree(), {"3": "Q3"}, retrieved="2026-08-01"
+    )
+
+    markdown = quickstatements.render_markdown(batch)
+
+    assert "not to read that as an error rate" in markdown
+    assert "duplicate Geni profiles for one person" in markdown
+    assert "already carries a P2600, which almost none do" in markdown
+
+
+def test_no_contradiction_section_when_nothing_contradicts(tmp_path):
+    client = _client(tmp_path, {})
+    batch = quickstatements.build_batch(client, tree(), {"1": "Q1"}, retrieved="2026-08-01")
+
+    markdown = quickstatements.render_markdown(batch)
+
+    assert "## Contradictions" not in markdown
+    assert "error rate" not in markdown
+    # the denominator is still reported, because 0-of-N is a result too
+    assert "| expansion-inferred links examined | 1 |" in markdown

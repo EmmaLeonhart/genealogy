@@ -14,8 +14,9 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
-**Empty.** The fourth export is merged and every downstream command has now been
-re-run against the 12422-person tree, `expand` included.
+**Empty.** The fourth export is merged, every downstream command has been re-run
+against the 12422-person tree, and the contradiction count in `add-p2600.md` now
+carries its denominator.
 
 ### Standing context
 

@@ -102,6 +102,19 @@ class Batch:
     conflicting: list[tuple[Edit, str]] = field(default_factory=list)
     retrieved: str = ""
 
+    @property
+    def considered(self) -> int:
+        """Links examined — every one lands in exactly one of the three lists.
+
+        This is the denominator for :attr:`conflicting`, and it is worth having
+        because the caller only ever passes expansion-inferred links: a person
+        already matched by P2600 needs no edit, so they are never here. That
+        makes the contradiction count the one direct check this project has on
+        how good structural inference is. See :func:`render_markdown` for why it
+        is a weak check as well as the only one.
+        """
+        return len(self.edits) + len(self.already_present) + len(self.conflicting)
+
 
 def _existing_p2600(client: WikidataClient, qids: list[str], batch_size: int = 200) -> dict[str, str]:
     found: dict[str, str] = {}
@@ -187,6 +200,7 @@ def render_markdown(batch: Batch) -> str:
         "",
         f"| | count |",
         "| --- | ---: |",
+        f"| expansion-inferred links examined | {batch.considered} |",
         f"| statements to add | {len(batch.edits)} |",
         f"| already correct, skipped | {len(batch.already_present)} |",
         f"| **contradicting an existing ID — for you to resolve** | {len(batch.conflicting)} |",
@@ -201,6 +215,23 @@ def render_markdown(batch: Batch) -> str:
             "the one we matched. That means either our match is wrong or the item",
             "already points at a duplicate Geni profile. Neither is safe to",
             "overwrite, so none of these are in the batch file.",
+            "",
+            f"**{len(batch.conflicting)} of the {batch.considered} inferred links "
+            "examined here are contradicted this way.** Every link in this file was "
+            "found by structural expansion rather than by an exact Geni ID match — a "
+            "person already matched by P2600 needs no edit and never reaches here — "
+            "so this is the one place where inference is checked against something "
+            "that can disagree with it.",
+            "",
+            "Two reasons not to read that as an error rate. It is not a count of "
+            "wrong inferences: each row is *either* a bad match *or* a pair of "
+            "duplicate Geni profiles for one person, and where the ID on the item is "
+            "absent from our tree — as it is for all of these — nothing in our data "
+            "decides which. And a wrong inference can only be caught here when the "
+            "item it landed on already carries a P2600, which almost none do; that "
+            "absence is the problem this project exists to address. The check is "
+            "therefore weak in a known direction: it sees a little, and what it "
+            "cannot see is the larger part.",
             "",
             "| item | our match | already on Wikidata | person |",
             "| --- | --- | --- | --- |",
