@@ -9,12 +9,24 @@ See `CLAUDE.md` § "Queue and longer-horizon work".
 
 ---
 
-**Progress note (2026-07-31).** Items 1 and 2 are built and running; item 3 has
-its analysis half (`reports/frontier.md`) but not its ingest half; item 6 has
+**Progress note (2026-08-01).** Items 1 and 2 are built and running. Item 3 now
+has **both** halves: the analysis in `reports/frontier.md` and `reports/seeds.md`,
+and the ingest, exercised for real by a fourth export on 2026-08-01. Item 6 has
 all three of its edit-generating slices — P2600, name links, and the
 parent/spouse/date gaps — leaving only the post-acceptance re-run. Items 4, 5
-and the rest of 3 and 7 are untouched. What is done in detail lives in
+and the non-GEDCOM half of 7 are untouched. What is done in detail lives in
 `devlog.md`.
+
+**Two claims below stopped being predictions on 2026-08-01.** The fourth export
+tested them and both held; they are marked *Confirmed* where they appear. This
+file is a list of intentions, so it is worth being explicit about which of them
+have since been measured — item 3b's "the merge absorbs it without changes", and
+item 7's "a file drop and a re-run, not a code change".
+
+The tree is now **12422 people in one connected component**, up from 8766. That
+last part is not incidental: an export seeded outside what we hold can merge
+without a single conflict and still leave two trees, so `genimerge merge` now
+reports connectivity on every run.
 
 Every batch under items 4, 5 and 6 stops at a file in `out/wikidata/`.
 **Nothing in this repo writes to Wikidata**, and nothing should start doing so
@@ -22,12 +34,17 @@ without the user saying it may.
 
 ## 1. One canonical genealogy, not N exports
 
-Collapse the Geni GEDCOM exports (`Forest`, `Ancestors`, `BloodTree`, and any
-future export) into a single canonical dataset keyed on the **Geni profile ID**,
-which every export preserves both as the GEDCOM xref (`@I6000000087535357291@`)
-and as `RFN geni:6000000087535357291`. The merged form must be re-exportable as
-a valid GEDCOM *and* queryable as structured data. Merging must be idempotent
-and re-runnable as new exports land, never a one-off hand-edit.
+Collapse the Geni GEDCOM exports into a single canonical dataset keyed on the
+**Geni profile ID**, which every export preserves both as the GEDCOM xref
+(`@I6000000087535357291@`) and as `RFN geni:6000000087535357291`. The merged
+form must be re-exportable as a valid GEDCOM *and* queryable as structured data.
+Merging must be idempotent and re-runnable as new exports land, never a one-off
+hand-edit.
+
+`Forest`, `Ancestors` and `BloodTree` are export **styles**, not exports — the
+first three files are those three styles of one seed, and a second `Forest` from
+a different seed arrives with the filename already taken. `CLAUDE.md` carries
+the naming scheme.
 
 ## 2. Wikidata reconciliation
 
@@ -55,17 +72,33 @@ descendant count.
 
 Ranking by descendant count measures the tree we already hold. `genimerge
 seeds` (`reports/seeds.md`) instead models an export as what it is — a
-breadth-first ball from one profile, capped at 3836, in one of four styles —
-and scores a candidate by the **doorways** in its ball: people with no parents
-recorded, where Geni can walk further than we can. Seeds inside a region
+breadth-first ball from one profile, of a few thousand people, in one of four
+styles — and scores a candidate by the **doorways** in its ball: people with no
+parents recorded, where Geni can walk further than we can. Seeds inside a region
 recorded several layers deep are rejected as saturated. The picks are chosen
 greedily on newly-covered doorways, so ten picks are ten *different*
 neighbourhoods rather than ten names off one branch.
 
+The ball size is deliberately vague here. Three exports held exactly 3836, which
+read as a hard cap until a fourth held 3840; what actually bounds an export is
+not established. `genimerge.seeds.GENI_EXPORT_CAP` carries the detail and the
+four competing explanations.
+
 Still open: **taking the next export**, from the sequence in `reports/seeds.md`.
 Only the user can do the export itself — **BLOCKED-ON-USER-ACTION**, unblock
-signal is a new `.ged` in `data_lake/`, after which `genimerge merge` absorbs it
-without changes and the seed ranking can be re-run against the larger tree.
+signal is a new `.ged` in `data_lake/`.
+
+**Confirmed 2026-08-01.** The rest of that sentence used to predict that
+`genimerge merge` would absorb a new export without changes and that the seed
+ranking could then be re-run. A fourth export tested it. The merge took it with
+**zero code changes**, and `seeds` re-ran to a materially different plan — ten
+picks reaching 193 doorways against 173 before, with picks 2, 3, 8 and 9 new.
+
+**What the ranking could not do** is find that seed. `reports/seeds.md` ranks
+only people already in the merged tree, and the fourth export was seeded on Iver
+Mellegård, who appeared in none of the first three. So the best export so far
+came from a route this repo cannot see or reproduce — an open question, recorded
+in `queue.md`, and the thing most likely to change what is worth building next.
 
 ## 4. Wikidata authoring pipeline — queue up the missing people
 
@@ -120,9 +153,19 @@ Absorb further exports — more Geni GEDCOMs, and possibly the Geni API direct �
 into the same canonical store without the merge logic having to care which
 source a record came from.
 
-**Mostly already true for GEDCOM.** `Merger.add_source` keys on the xref and
+**Confirmed for GEDCOM on 2026-08-01.** `Merger.add_source` keys on the xref and
 knows nothing about which file it came from, and `genimerge merge` defaults to
-globbing `data_lake/*.ged` — so another Geni export is a file drop and a re-run,
-not a code change. What is genuinely unbuilt is a
-non-GEDCOM input path, and there is no second format in hand to build one
-against — so this stays abstract until a source that is not a GEDCOM turns up.
+globbing `data_lake/*.ged` — so another Geni export should be a file drop and a
+re-run, not a code change. That was the claim; the fourth export tested it and
+it held. Absorbing 3840 more people took **no change to the merge logic at all**.
+
+The one thing it did require was a **rename**, because Geni names the file
+`export-<style>.ged` and a second `Forest` export collided with the first. That
+is not the merge caring where a record came from — it is two files wanting one
+name — but it is the kind of detail a claim like "just a file drop" hides, so it
+is worth recording that the claim survived with an asterisk rather than
+untouched.
+
+What is genuinely unbuilt is a non-GEDCOM input path, and there is no second
+format in hand to build one against — so this stays abstract until a source that
+is not a GEDCOM turns up.

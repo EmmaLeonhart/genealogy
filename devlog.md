@@ -1394,3 +1394,54 @@ empty, and `merge` still printing `one connected tree, all 12422 people`.
 
 **493 passed** (was 490), Python 3.13.14. Not CI-verified — CI is
 `workflow_dispatch:` only here on purpose.
+
+---
+
+## 2026-08-01 — `todo.md` catches up, and two predictions become measurements
+
+`todo.md` is where this project keeps its intentions, and `CLAUDE.md` makes it
+the file every queue item is decomposed from. It still described a three-export
+world: a progress note dated 2026-07-31 saying item 3 had "its analysis half but
+not its ingest half", when the fourth export had supplied that ingest half a day
+earlier.
+
+The stale summary was the small part. The part worth the tick is that this file
+states expectations, and **two of them stopped being expectations**:
+
+- **Item 3b** predicted that a new `.ged` would be absorbed by `genimerge merge`
+  "without changes" and that the seed ranking could then be re-run. Tested. The
+  merge took 3840 more people with **zero code changes**, and `seeds` re-ran to
+  a materially different plan — ten picks reaching 193 doorways against 173,
+  with picks 2, 3, 8 and 9 new.
+- **Item 7** predicted that another Geni export would be "a file drop and a
+  re-run, not a code change". Also held — but recorded with its asterisk rather
+  than as a clean win. The export did require one change: a **rename**, because
+  Geni names files `export-<style>.ged` and a second `Forest` collided with the
+  first. That is two files wanting one name rather than the merge caring where a
+  record came from, so the claim survives; but "just a file drop" is exactly the
+  kind of phrase that hides a detail like that, and a backlog is more useful when
+  it says which of its promises have been kept and how exactly.
+
+Both are now marked *Confirmed 2026-08-01* where they appear. A list of
+intentions that never distinguishes the predicted from the measured slowly
+becomes a list of beliefs.
+
+Also corrected, both of them things this repo had already fixed everywhere else:
+
+- Item 3b still described an export ball as "capped at 3836". `CLAUDE.md`,
+  `seeds.py` and `reports/seeds.md` all stopped saying that two commits ago;
+  `todo.md` was the last place carrying it. It now points at
+  `GENI_EXPORT_CAP` for the four competing explanations instead of asserting a
+  number.
+- Item 1 listed `Forest`, `Ancestors` and `BloodTree` as though they were
+  exports. They are *styles* — the first three files are three styles of one
+  seed — which is why the fourth needed renaming.
+
+And item 3b gained the thing the ranking cannot do: it ranks only people already
+in the merged tree, so it could not have proposed Iver Mellegård, who was in
+none of the first three exports. The best export so far came from a route this
+repo cannot see.
+
+**493 passed**, unchanged, Python 3.13.14. Stated for completeness rather than
+as evidence: this commit is prose only, so a green suite says nothing about it
+beyond that nothing was broken in passing.

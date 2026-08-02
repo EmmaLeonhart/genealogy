@@ -16,8 +16,9 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 **Empty.** The fourth export is merged, every downstream command has been re-run
 against the 12422-person tree, `merge` reports whether the result is still one
-tree, `wikidata-crosscheck.md` groups conflicts per person, and report caveats
-are pinned by constant rather than by copied sentences.
+tree, `wikidata-crosscheck.md` groups conflicts per person, report caveats are
+pinned by constant, and `todo.md` describes the four-export world it is actually
+in.
 
 ### Standing context
 
