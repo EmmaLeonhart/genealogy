@@ -14,8 +14,8 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
-**Empty.** `reports/seeds.md` proposes an experiment and now names both arms of
-it.
+**Empty.** The README documents all three Wikidata batches, in ascending order
+of consequence, with the rule each enforces.
 
 ### Standing context
 

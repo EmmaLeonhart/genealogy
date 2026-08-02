@@ -1636,3 +1636,53 @@ thing the fourth export actually taught us.
 
 **516 passed** (was 510), Python 3.13.14. `reports/seeds.md` regenerated. Not
 CI-verified — CI is `workflow_dispatch:` only here on purpose.
+
+---
+
+## 2026-08-02 — the README documented the safest batch and not the riskiest
+
+`README.md` § "Editing Wikidata" is where this project explains what it produces
+for review and what the reviewer is taking responsibility for. It described
+`add-p2600.qs` and stopped. Counted across the whole file: `add-p2600` three
+times, `add-names` once — in a command listing, not the review section — and
+**`add-claims` not at all.**
+
+All three batches exist, all three are approved to run, and the undocumented one
+is the largest and by a distance the most consequential:
+
+| batch | statements | changes |
+| --- | ---: | --- |
+| `add-p2600.qs` | 33 | one external ID per item |
+| `add-names.qs` | 29 | P735/P734 links to existing name items |
+| `add-claims.qs` | 65 | parents, spouses and dates |
+
+Adding a Geni ID is a fact about a record. Asserting someone's mother is a claim
+about a person, on a public site, that other projects copy. Documenting the
+first and not the third is exactly backwards, and it mattered this week rather
+than in principle: the batches were approved two days ago and the file explaining
+what they do covers a third of them.
+
+The section now lists all three **in ascending order of consequence**, with the
+rule each one enforces to stay out of trouble — every one of which is a refusal
+rather than a guess:
+
+- `add-p2600` takes only structure-confirmed links, and reports an item already
+  carrying a different Geni ID as a contradiction instead of overwriting it;
+- `add-names` sets an ambiguous name aside rather than choosing — 413 of them —
+  and only links to name items that already exist, never creating one;
+- `add-claims` proposes only gaps, never conflicts, needs *both* people linked
+  by Geni ID rather than by inference, and will not state an approximate date.
+  On the current tree it withholds 100 gaps to propose 65 statements.
+
+Every number quoted was read back out of the generated files rather than
+remembered: 413 set aside in `add-names.md`, 65 proposed and 100 withheld in
+`add-claims.md`.
+
+Also added: a pointer to the "links worth re-checking" section of
+`reports/wikidata-crosscheck.md`, and the fact that nothing in it reaches a
+batch. A reader who knows the batches are conservative should also know where
+the unresolved things went.
+
+**516 passed**, unchanged, Python 3.13.14. Prose only — stated for completeness,
+not as evidence, since a green suite says nothing about a README. Not
+CI-verified.

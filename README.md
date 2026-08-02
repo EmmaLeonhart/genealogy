@@ -104,12 +104,42 @@ Generated, and worth reading in this order:
 
 ## Editing Wikidata
 
-This project **never writes to Wikidata**. `genimerge quickstatements` produces
-`out/wikidata/add-p2600.qs` — a batch adding the Geni profile ID to items that
-should carry one — plus a readable `add-p2600.md` listing every edit with links
-to both sides. Review it, then run it yourself at
+This project **never writes to Wikidata**. Three commands each produce a
+QuickStatements batch and a readable `.md` beside it listing every edit with
+links to both sides. Review the `.md`, then run the `.qs` yourself at
 [QuickStatements](https://quickstatements.toolforge.org/) if you agree with it.
+Nothing is sent from here, ever.
 
-Only structure-confirmed links get into the batch. Name-search proposals stay in
-`out/wikidata/candidates.csv` no matter how good their score looked, because a
-matching string is not evidence that two records describe the same person.
+| command | batch | changes | risk if wrong |
+| --- | --- | --- | --- |
+| `quickstatements` | `add-p2600.qs` | the Geni profile ID on items that should carry one | an external ID pointing at the wrong profile |
+| `name-links` | `add-names.qs` | P735/P734 links to name items that already exist | a person linked to the wrong name item |
+| `crosscheck` | `add-claims.qs` | **parents, spouses and dates** | a false statement about a person's family |
+
+They are listed in ascending order of consequence, and that ordering is worth
+respecting when deciding what to run first. Adding a Geni ID is a fact about a
+record. Asserting someone's mother is a claim about a person, on a public site,
+that other projects will copy.
+
+Each batch enforces its own rule for staying out of trouble, and each refuses
+rather than guesses:
+
+- **`add-p2600`** — only links confirmed by family *structure* get in.
+  Name-search proposals stay in `out/wikidata/candidates.csv` however good their
+  score looked, because a matching string is not evidence that two records
+  describe the same person. An item already carrying a *different* Geni ID is
+  reported as a contradiction and left alone, never overwritten.
+- **`add-names`** — an ambiguous name is set aside rather than picked between.
+  On the current tree that is 413 names, listed with reasons in `add-names.md`.
+  This batch only *links to* name items that already exist; it never creates
+  one.
+- **`add-claims`** — only gaps are proposed, never conflicts. A relationship
+  needs **both** people linked by their Geni ID, not by inference. A date must
+  be exact in our export — anything marked `ABT`, `BEF` or `AFT` is not eligible.
+  A claim with more than one possible value is withheld. On the current tree
+  that withholds 100 gaps to propose 65 statements.
+
+`reports/wikidata-crosscheck.md` also lists **links worth re-checking**: people
+who conflict with their Wikidata item on more properties than they agree on.
+That is a signal about the *link*, not about any one fact, and it is for a human
+to resolve — nothing there reaches a batch.
