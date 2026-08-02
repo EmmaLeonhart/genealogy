@@ -2054,3 +2054,55 @@ they are the ones that also write cache files. Uncovered, and said so.
 
 **545 passed** (was 543), Python 3.13.14. Not CI-verified — CI is
 `workflow_dispatch:` only here on purpose.
+
+---
+
+## 2026-08-02 — the billing invariant gets a test, and the test catches itself
+
+Swept the remaining checkable assertions in `CLAUDE.md`. All hold:
+`Merger.add_source` does not call `geni_id_of`; the RFN cross-check is present
+in `inventory`, `model` and `test_merge_real_exports`; `ci.yml` declares only
+`workflow_dispatch`; every import in the package is standard library. Nothing to
+fix — which is why the interesting part is what got guarded and what happened on
+the way.
+
+Two of those claims are worth a test not for symmetry but for consequence.
+
+**The CI trigger is a money claim.** `CLAUDE.md` forbids `push:` and
+`pull_request:` because Actions minutes are billable on a private repository,
+and it was enforced by a sentence asking someone to remember. Its failure mode
+is the nasty kind: adding `on: push` makes the repository start producing green
+ticks, so the thing going wrong looks exactly like the thing going right, and
+the first real signal is an invoice. Now asserted, and proved by adding a `push:`
+trigger to a copy of the real file and watching the guard fire.
+
+**Stdlib-only is a cold-clone claim.** `pyproject.toml` declares
+`dependencies = []`; a stray third-party import keeps working for whoever
+already installed it and fails for everyone else.
+
+**Then the stdlib test failed, and it was right to.** It reported
+`seeds.py:5` importing a module called `that`. The line is inside a docstring —
+"…from that profile until the export is full" — and the reader was a regex
+matching `^(import|from)\s+(\w+)`. Prose that looks like code, which is exactly
+the trap the trigger reader strips comments for: `ci.yml` explains *why* it has
+no `push:` trigger, and a naive search finds the explanation.
+
+Fixed by making the reader correct rather than the assertion loose — `ast`,
+which is standard library, so checking the no-dependencies rule adds no
+dependency. Relative imports fall out for free: `node.level > 0` is `.model`,
+not something to install.
+
+That false positive is now a test of its own, with the actual docstring text
+that produced it. It is the second time this session a guard has been caught
+reading prose as code; the first was the `P1288` mention in `CLAUDE.md`, which is
+why the ID scanner matches only *quoted* identifiers. Worth naming as a pattern:
+a repository whose prose discusses its own configuration will fool any checker
+that reads text instead of structure.
+
+Both limits stated in the test rather than left to be discovered — it cannot see
+whether the workflow is *also* disabled at the GitHub end, which is a remote
+setting, nor dependencies introduced at runtime rather than by import.
+
+**553 passed** (was 545), Python 3.13.14. Not CI-verified — CI is
+`workflow_dispatch:` only here on purpose, which is now a tested statement
+rather than a described one.

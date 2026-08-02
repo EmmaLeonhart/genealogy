@@ -14,8 +14,8 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
-**Empty.** The README's workspace-isolation promise is asserted by the suite for
-the five offline commands.
+**Empty.** The billing invariant (no automatic workflow triggers) and the
+stdlib-only invariant are both asserted by the suite.
 
 ### Standing context
 
