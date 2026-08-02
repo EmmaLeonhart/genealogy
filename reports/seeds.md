@@ -85,6 +85,25 @@ That idea is cheap to test and the objection to it turned out to be wrong. A ran
 
 So the shortlist is workable and holds no isolated records. That makes it worth *testing*, not worth adopting. The way to settle it is one export from a top-ranked pick and one from this shortlist, compared on how many new people each returns — at which point there are two observations instead of one.
 
+### The small-ball shortlist (10 of 66)
+
+**This is the experiment's other arm, not a recommendation.** The sequence at the top of this report is still what the model proposes. These are here because the ordering that surfaces them is the only one that would have found the seed which worked, and a count on its own — *66 candidates* — is not something anyone can export from. Nothing about a short list of names makes the hypothesis behind it any better supported than it was: one observation. Take one export from the sequence above and one from here, and the comparison is worth more than either list.
+
+**Export from the parent, not from the person listed.** Every profile below is a *doorway*: we hold them, and we do not hold their parents. Open the profile on Geni, go **up** to the parent Geni knows and we do not, and export from there. Exporting from the doorway itself centres the walk on somebody already in our data, so much of the ball returns as material we hold; centring one step beyond the frontier is what made the 2026-08-01 export 95% new. The listed person is the signpost, not the destination.
+
+| profile | geni id | ball | doorways | openness |
+| --- | ---: | ---: | ---: | ---: |
+| [Hallvard Gunnarson Hvit](https://www.geni.com/people/x/6000000003889008011) | `6000000003889008011` | 4 | 1 | 25% |
+| [Anstein](https://www.geni.com/people/x/6000000007980729106) | `6000000007980729106` | 4 | 1 | 25% |
+| [Snære ??](https://www.geni.com/people/x/6000000015912924583) | `6000000015912924583` | 4 | 1 | 25% |
+| [Mårten](https://www.geni.com/people/x/6000000016421401219) | `6000000016421401219` | 4 | 1 | 25% |
+| [Orm*](https://www.geni.com/people/x/6000000033701865628) | `6000000033701865628` | 4 | 1 | 25% |
+| [Tore Torgildsen](https://www.geni.com/people/x/6000000063296154854) | `6000000063296154854` | 4 | 1 | 25% |
+| [NN N.](https://www.geni.com/people/x/6000000066002183853) | `6000000066002183853` | 4 | 1 | 25% |
+| [Gunnar?](https://www.geni.com/people/x/6000000090973771042) | `6000000090973771042` | 4 | 1 | 25% |
+| [Torgrim](https://www.geni.com/people/x/6000000141981648952) | `6000000141981648952` | 4 | 1 | 25% |
+| [Jakub [? Kaszuba] von Güntersberg](https://www.geni.com/people/x/6000000171798044111) | `6000000171798044111` | 4 | 1 | 25% |
+
 ## Ranked candidates (top 40)
 
 By doorways in the screening ball. Useful for picking a seed by hand; the sequence above is what to actually export, because these overlap.

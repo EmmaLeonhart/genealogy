@@ -52,6 +52,7 @@ __all__ = [
     "SIZE_BIAS_LIMIT",
     "THE_ONE_RESULT",
     "SMALL_BALL_IS_TESTABLE",
+    "SMALL_BALL_IS_THE_OTHER_ARM",
     "SMALL_BALL",
     "SizeBias",
     "size_bias",
@@ -192,6 +193,20 @@ THE_ONE_RESULT = (
     "nothing about, so almost everything behind its doorway is new — and which "
     "is **not** adopted here. One observation cannot establish a ranking rule. "
     "The 3836 cap had three and was still wrong."
+)
+
+#: Heading note for the small-ball table. It exists so the experiment proposed
+#: above can actually be run, and it is deliberately not a recommendation — the
+#: sequence at the top of the report is still what the model says to do.
+SMALL_BALL_IS_THE_OTHER_ARM = (
+    "**This is the experiment's other arm, not a recommendation.** The sequence "
+    "at the top of this report is still what the model proposes. These are here "
+    "because the ordering that surfaces them is the only one that would have "
+    "found the seed which worked, and a count on its own — *66 candidates* — is "
+    "not something anyone can export from. Nothing about a short list of names "
+    "makes the hypothesis behind it any better supported than it was: one "
+    "observation. Take one export from the sequence above and one from here, "
+    "and the comparison is worth more than either list."
 )
 
 #: Why the smallest-ball idea is worth stating rather than dismissing.
@@ -497,6 +512,7 @@ def render_markdown(
     radius: int = SCREEN_RADIUS,
     exports: int = 10,
     top: int = 40,
+    small_top: int = 10,
 ) -> str:
     """The report: what to export next, in what order, and what it cannot tell you."""
     kept, rejected = rank_seeds(tree, style=style, radius=radius)
@@ -671,6 +687,31 @@ def render_markdown(
         "how many new people each returns — at which point there are two "
         "observations instead of one.",
     ]
+
+    if small:
+        shown = sorted(small, key=lambda p: (p.size, -p.open_count, _ordinal(p.seed)))[:small_top]
+        lines += [
+            "",
+            f"### The small-ball shortlist ({len(shown)} of {len(small)})",
+            "",
+            SMALL_BALL_IS_THE_OTHER_ARM,
+            "",
+            EXPORT_FROM_THE_PARENT,
+            "",
+        ]
+        lines += _table(
+            ["profile", "geni id", "ball", "doorways", "openness"],
+            [
+                [
+                    f"[{tree.people[p.seed].display_name}]({tree.people[p.seed].url})",
+                    f"`{p.seed}`",
+                    str(p.size),
+                    str(p.open_count),
+                    f"{p.openness:.0%}",
+                ]
+                for p in shown
+            ],
+        )
 
     lines += [
         "",

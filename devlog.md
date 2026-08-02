@@ -1596,3 +1596,43 @@ people returned. Two observations instead of one.
 
 **510 passed** (was 506), Python 3.13.14. `reports/seeds.md` regenerated. Not
 CI-verified — CI is `workflow_dispatch:` only here on purpose.
+
+---
+
+## 2026-08-02 — an experiment with only one arm is not an experiment
+
+`d59191f` closed by proposing the only thing that would produce a second data
+point: take one export from a top-ranked pick, one from the small-ball
+shortlist, compare how many new people each returns.
+
+It named the first arm — profile, link, rank — and gave the second as a number.
+"66 of 2932", and nothing else. Every table in that file is ordered by doorway
+count, which by construction puts large balls first, so the smallest ball
+appearing anywhere in the report was **13** while the shortlist is everyone at 5
+or fewer. Not one of those 66 people was identifiable from the document that
+asked you to export from one of them.
+
+That is a defect in the deliverable, not a refinement of the model, and it is
+the kind that is easy to miss from the inside: the reasoning was complete, so
+the output felt complete. It was not runnable.
+
+The report now carries a "small-ball shortlist" section — ten of the 66,
+smallest ball first — with profile links and IDs. The current tree puts ten
+candidates at ball 4 with a single doorway each, so the cut is arbitrary among
+equals and the heading says ten *of* 66 rather than implying a top ten.
+
+**Named people look endorsed, so the section says twice that they are not.**
+`SMALL_BALL_IS_THE_OTHER_ARM` states that the sequence at the top is still what
+the model proposes, and that a list of names adds exactly nothing to the
+evidence behind it — still one observation. A test pins both halves, because the
+risk here is specific: putting ten linked profiles under a heading is the most
+recommendation-shaped thing a report can do, and the hypothesis has not earned
+it.
+
+`EXPORT_FROM_THE_PARENT` is repeated inside the section rather than left to the
+top of the file, and a test asserts it appears twice. A reader who scrolls
+straight to a shortlist and exports from the person named would undo the one
+thing the fourth export actually taught us.
+
+**516 passed** (was 510), Python 3.13.14. `reports/seeds.md` regenerated. Not
+CI-verified — CI is `workflow_dispatch:` only here on purpose.

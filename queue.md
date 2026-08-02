@@ -14,8 +14,8 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
-**Empty.** `reports/seeds.md` now states where the one seed known to have worked
-placed under every ordering available, including its own.
+**Empty.** `reports/seeds.md` proposes an experiment and now names both arms of
+it.
 
 ### Standing context
 

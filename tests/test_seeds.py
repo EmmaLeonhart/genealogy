@@ -499,3 +499,69 @@ def test_the_report_proposes_the_experiment_rather_than_the_conclusion():
 
     assert "worth *testing*, not worth adopting" in markdown
     assert "two observations instead of one" in markdown
+
+
+# --- the small-ball shortlist, named ----------------------------------------
+#
+# The report proposes comparing an export from the main sequence against one
+# from the small-ball shortlist. It used to give the first arm as names and the
+# second as a count, which is not an experiment anyone can run.
+
+
+def test_the_shortlist_names_people_not_just_a_count():
+    """Every table is sorted by doorway count, which buries small balls."""
+    t = tree(CLUSTER, FAR)
+    markdown = seeds.render_markdown(t)
+
+    kept, _ = seeds.rank_seeds(t)
+    small = [p for p in kept if p.size <= seeds.SMALL_BALL]
+    assert small, "fixture must contain at least one small-ball candidate"
+    for profile in small:
+        assert f"`{profile.seed}`" in markdown
+
+
+def test_the_shortlist_is_labelled_as_the_experiment_not_a_recommendation():
+    markdown = seeds.render_markdown(tree(CLUSTER, FAR))
+
+    assert seeds.SMALL_BALL_IS_THE_OTHER_ARM in markdown
+
+
+def test_the_other_arm_note_refuses_to_recommend_and_says_why():
+    """Identity alone passes on an emptied constant, so pin the substance.
+
+    Naming people makes a hypothesis look endorsed. The note has to say that a
+    list of names adds no evidence, or the shortlist reads as a second
+    recommendation with the authority of the first.
+    """
+    note = seeds.SMALL_BALL_IS_THE_OTHER_ARM
+
+    assert "not a recommendation" in note
+    assert "one observation" in note
+
+
+def test_the_shortlist_repeats_the_export_from_the_parent_instruction():
+    """It is a separate section; a reader arriving here must not miss the step."""
+    markdown = seeds.render_markdown(tree(CLUSTER, FAR))
+
+    assert markdown.count(seeds.EXPORT_FROM_THE_PARENT) == 2
+
+
+def test_the_shortlist_is_bounded_so_it_stays_a_shortlist():
+    t = tree(CLUSTER, FAR)
+
+    markdown = seeds.render_markdown(t, small_top=1)
+
+    kept, _ = seeds.rank_seeds(t)
+    small = sorted(
+        [p for p in kept if p.size <= seeds.SMALL_BALL],
+        key=lambda p: (p.size, -p.open_count, seeds._ordinal(p.seed)),
+    )
+    assert len(small) > 1, "fixture must have more candidates than the cap"
+    assert f"`{small[0].seed}`" in markdown
+    assert "### The small-ball shortlist (1 of" in markdown
+
+
+def test_no_shortlist_section_when_no_candidate_is_small_enough():
+    markdown = seeds.render_markdown(tree(_dense(children=60)))
+
+    assert "The small-ball shortlist" not in markdown
