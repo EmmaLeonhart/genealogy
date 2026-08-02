@@ -1893,3 +1893,63 @@ proof exercises the code that runs.
 
 **537 passed** (was 531), Python 3.13.14. Not CI-verified — CI is
 `workflow_dispatch:` only here on purpose.
+
+---
+
+## 2026-08-02 — a wrong report sat in git for twelve commits, and I put it there
+
+Ran the full README pipeline end to end for the first time — twelve commands in
+the documented order, all exit 0, everything served from cache. Then checked the
+thing worth checking: whether re-running it on unchanged inputs is a no-op.
+
+It was not. `reports/merge.md` changed, and the cause was not non-idempotence.
+**The committed file was wrong.** It described an 8766-person, three-export
+merge while `out/merged.ged` held 12422 across four. `601f840` wrote it
+correctly; `e5a41b8` regressed it; this run restored it.
+
+The regression is mine, and the mechanism is a genuine defect. In `e5a41b8` I
+rebuilt the pre-merge tree to find where Hågen Iversen had ranked, with
+`merge <three files> -o <scratch>/merged3.ged`. In `_cmd_merge`, `--output`
+redirected the GEDCOM and nothing else:
+
+```
+output = args.output or ws.merged        # redirected
+_write(ws.out / "merge-report.md", …)    # not redirected
+_write(ws.reports / "merge.md", …)       # not redirected
+```
+
+So a throwaway experiment wrote its GEDCOM to a temp directory and its reports
+over the repository's. I staged `M reports/merge.md` in that commit — a commit
+about the seeds report — and did not ask why it was there.
+
+**`merge` was also alone in what `--output` meant.** Every other command uses
+`args.output or ws.reports / "<name>.md"`, where `-o` names the report. Only
+`merge` used it for the data file while pinning the reports to the workspace,
+which made the single command whose reports are tracked in git the one where
+`-o` did not cover them.
+
+Now the reports follow the file they describe: given `--output`, they are
+written beside it; without it, nothing changes. Four tests, one asserting the
+property that actually failed — a redirected merge leaves the workspace report
+untouched — and one asserting the redirected report describes the *redirected*
+merge, since placement alone was never the point.
+
+**Proved non-vacuous rather than assumed.** Both reports had to genuinely differ
+or the test would pass either way: the workspace report lists two sources, the
+side report one, and the workspace file is byte-identical before and after the
+side run.
+
+A warning would have been the cheaper fix and the wrong one. A command that
+silently corrupts a tracked file when used the way its own `--help` invites is
+not improved by mentioning it.
+
+**What this says about the process is worth more than the fix.** Seventeen
+commits, a status report every two hours claiming clean state, and a wrong
+report sat in `reports/` the whole time. Nothing caught it — not the suite, not
+the sweeps of `todo.md`, `README.md` and `CLAUDE.md`, not `git status`, which
+was clean because the wrong file was committed. It took running the documented
+pipeline and asking whether the result changed. Idempotence is a property worth
+checking directly, and it had never been checked.
+
+**541 passed** (was 537), Python 3.13.14. Not CI-verified — CI is
+`workflow_dispatch:` only here on purpose.

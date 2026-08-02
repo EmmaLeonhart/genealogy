@@ -349,3 +349,57 @@ def test_merge_reports_one_tree_when_everything_connects(workspace, capsys):
     assert run(workspace, "merge") == 0
 
     assert "one connected tree, all 3 people" in capsys.readouterr().out
+
+
+# -- merge --output keeps its reports with its output ------------------------
+#
+# `reports/merge.md` is tracked in git. A merge written somewhere else must not
+# overwrite the workspace's description of a different merge — that is exactly
+# what happened when a three-export tree was rebuilt into a scratch directory
+# and the repository's merge.md came back saying 8766 people while
+# out/merged.ged held 12422.
+
+
+def test_merge_output_elsewhere_does_not_touch_the_workspace_reports(workspace, tmp_path):
+    run(workspace, "merge")
+    summary = workspace["reports"] / "merge.md"
+    before = summary.read_text(encoding="utf-8")
+
+    # A different merge — one export, not two — sent somewhere else entirely.
+    elsewhere = tmp_path / "side" / "other.ged"
+    assert run(workspace, "merge", str(workspace["lake"] / "one.ged"), "-o", str(elsewhere)) == 0
+
+    assert summary.read_text(encoding="utf-8") == before
+
+
+def test_merge_output_elsewhere_writes_its_reports_beside_itself(workspace, tmp_path):
+    elsewhere = tmp_path / "side" / "other.ged"
+
+    assert run(workspace, "merge", "-o", str(elsewhere)) == 0
+
+    assert elsewhere.exists()
+    assert (elsewhere.parent / "merge.md").exists()
+    assert (elsewhere.parent / "merge-report.md").exists()
+
+
+def test_merge_without_output_still_writes_into_the_workspace(workspace):
+    assert run(workspace, "merge") == 0
+
+    assert (workspace["out"] / "merged.ged").exists()
+    assert (workspace["out"] / "merge-report.md").exists()
+    assert (workspace["reports"] / "merge.md").exists()
+
+
+def test_the_redirected_report_describes_the_redirected_merge(workspace, tmp_path):
+    """Not just placed correctly — about the right merge.
+
+    The bug was a report describing a different set of sources from the GEDCOM
+    beside it, so placement alone is not the property worth asserting.
+    """
+    elsewhere = tmp_path / "side" / "other.ged"
+
+    run(workspace, "merge", str(workspace["lake"] / "one.ged"), "-o", str(elsewhere))
+
+    side = (elsewhere.parent / "merge.md").read_text(encoding="utf-8")
+    assert "one.ged" in side
+    assert "two.ged" not in side

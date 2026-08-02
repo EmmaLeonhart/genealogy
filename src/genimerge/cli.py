@@ -125,10 +125,19 @@ def _cmd_merge(args: argparse.Namespace) -> int:
     output = args.output or ws.merged
     output.parent.mkdir(parents=True, exist_ok=True)
     gedcom.write_file(doc, output)
-    detail = _write(
-        ws.out / "merge-report.md", merge_mod.render_report(report, detail=True, doc=doc)
+
+    # The reports describe *this* merge, so they follow the file they describe.
+    # Sending the GEDCOM elsewhere and leaving the reports in the workspace
+    # overwrites the workspace's description of a different merge, which is
+    # tracked in git — that is how `reports/merge.md` spent twelve commits
+    # claiming 8766 people while `out/merged.ged` held 12422.
+    detail_dir, summary_dir = (
+        (output.parent, output.parent) if args.output else (ws.out, ws.reports)
     )
-    _write(ws.reports / "merge.md", merge_mod.render_report(report, detail=False, doc=doc))
+    detail = _write(
+        detail_dir / "merge-report.md", merge_mod.render_report(report, detail=True, doc=doc)
+    )
+    _write(summary_dir / "merge.md", merge_mod.render_report(report, detail=False, doc=doc))
 
     totals = ", ".join(f"{n} {tag}" for tag, n in sorted(report.totals.items()))
     print(f"wrote {output}: {totals}")

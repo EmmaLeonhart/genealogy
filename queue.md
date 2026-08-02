@@ -14,9 +14,8 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
-**Empty.** Every Wikidata ID literal in the package is checked against
-`CLAUDE.md`'s table on every run, and all nine item IDs are re-confirmed against
-live Wikidata.
+**Empty.** The full documented pipeline runs clean end to end, and a merge
+directed elsewhere no longer overwrites the workspace's reports.
 
 ### Standing context
 
