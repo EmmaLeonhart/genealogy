@@ -12,6 +12,7 @@ from dataclasses import dataclass
 from datetime import date
 
 from . import (
+    consistency,
     coverage,
     crosscheck,
     frontier,
@@ -504,6 +505,25 @@ def _cmd_frontier(args: argparse.Namespace) -> int:
     return 0
 
 
+def _cmd_consistency(args: argparse.Namespace) -> int:
+    ws = Workspace.from_args(args)
+    tree = _load_tree(args.source, ws)
+    report = consistency.check(tree)
+
+    output = args.output or ws.reports / "consistency.md"
+    _write(output, consistency.render_markdown(tree, report, top=args.top))
+
+    impossible = len(report.of_kind(consistency.IMPOSSIBLE))
+    implausible = len(report.of_kind(consistency.IMPLAUSIBLE))
+    print(f"wrote {output}")
+    print(
+        f"{report.people_checked} people, {report.people_with_a_year} with a year: "
+        f"{impossible} impossible, {implausible} implausible"
+    )
+    print("These are errors in Geni's data. Nothing here has been changed.")
+    return 0
+
+
 def _cmd_seeds(args: argparse.Namespace) -> int:
     ws = Workspace.from_args(args)
     tree = _load_tree(args.source, ws)
@@ -654,6 +674,24 @@ def build_parser() -> argparse.ArgumentParser:
         help="where to write (default: <reports>/frontier.md)"
     )
     p_front.set_defaults(func=_cmd_frontier)
+
+    p_cons = sub.add_parser(
+        "consistency",
+        help="find dates in the tree that contradict each other",
+        description=(
+            "Whether this tree's own dates can all be true at once — someone born "
+            "before a parent, or after their mother died. These are errors in "
+            "Geni's data, not in the merge, and nothing is changed: the report is "
+            "a list to work from, with links to both people."
+        ),
+    )
+    p_cons.add_argument("--source", type=Path, default=None, help="a GEDCOM to read instead of merging")
+    p_cons.add_argument("--top", type=int, default=100, help="how many findings to list per kind")
+    p_cons.add_argument(
+        "-o", "--output", type=Path, default=None,
+        help="where to write (default: <reports>/consistency.md)"
+    )
+    p_cons.set_defaults(func=_cmd_consistency)
 
     p_seeds = sub.add_parser(
         "seeds",

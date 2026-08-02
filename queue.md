@@ -14,9 +14,22 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
-**Empty.** No file now describes CI as blocked rather than chosen.
+**Empty.** `genimerge consistency` reports the tree's own contradictions.
 
 ### Standing context
+
+- **BLOCKED-ON-USER-ACTION — 95 impossible dates in the tree, listed in
+  `reports/consistency.md`.** Someone born before a parent, or after their
+  mother died. Every one is an error in Geni's data rather than in the merge, so
+  fixing them means editing profiles on Geni; this repo will not change them.
+  A further 88 are implausible rather than impossible — a parent under 12, a
+  lifespan over 120 — and some of those will turn out to be correct.
+
+  Worth doing before the QuickStatements batches rather than after:
+  `add-claims.qs` carries 18 P569 and 24 P570 statements built from these same
+  dates, so an uncorrected year here becomes a wrong year on Wikidata.
+
+
 
 - **A third export candidate, and the only one with a *known* payoff.** Asked
   which people in a Geni relationship chain to Emperor Jimmu were in our tree,

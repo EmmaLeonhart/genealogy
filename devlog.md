@@ -2152,3 +2152,60 @@ reviewed this tick.
 **553 passed**, unchanged, Python 3.13.14. Prose only — stated for completeness,
 not as evidence. Not CI-verified, which is now a described-and-tested state
 rather than a described one.
+
+---
+
+## 2026-08-03 — asking whether the genealogy contradicts itself
+
+Everything built so far checks the *merge* — nothing lost, one component,
+reports matching inputs — or checks us against *Wikidata*. Nothing asked whether
+the tree is internally coherent.
+
+`frontier.md` already did it for one case, and its framing was the right one for
+all of them: one person recorded as their own ancestor, "impossible in life,
+ordinary in a genealogy database … a real defect in the source data". That
+covered cycles and nothing else.
+
+`genimerge consistency` now covers dates. Over 12422 people, of whom 10444 carry
+a year:
+
+| | count | |
+| --- | ---: | --- |
+| born after their own death | 1 | impossible |
+| born before a parent was born | 22 | impossible |
+| born after their **mother** died | 26 | impossible |
+| born more than a year after their **father** died | 46 | impossible |
+| parent under 12 at the birth | 85 | implausible |
+| lifespan over 120 years | 3 | implausible |
+
+**95 impossible, 88 implausible**, split because they deserve different
+responses: the first are errors somewhere, the second want a human eye and some
+will be fine.
+
+**The father/mother asymmetry is the design decision, and it is why the number
+is 95 and not 111.** A child born shortly after its father dies is ordinary —
+sixteen such births are in this tree — and the same thing on the mother's side
+is not possible at all. Treating them together would report sixteen defects that
+do not exist. Four tests pin it, including one asserting directly that the year
+forgiven for a father is *not* forgiven for a mother, and the report explains the
+allowance so a reader does not conclude posthumous births were simply missed.
+
+**This is not tidiness.** `crosscheck` builds P569 and P570 statements from these
+same dates, and `add-claims.qs` currently holds 18 and 24 of them. A wrong year
+here becomes a wrong year on a public database, so the report says so and
+`queue.md` records that this is worth doing *before* the batches rather than
+after.
+
+Nothing is fixed and nothing should be: these are Geni's errors, and each row
+links both people so it can be opened at the source. Two tests assert the report
+keeps saying that.
+
+**One guard caught me on the way.** Adding a subcommand failed
+`test_every_command_is_registered`, which compares the registered parsers
+against a list in `test_cli.py`. That test was written long before this session
+and did exactly its job — the fix was to add `consistency` to the list, not to
+soften the comparison.
+
+**578 passed** (was 553; 19 new consistency tests, 6 from the new command
+flowing through existing parametrised CLI tests), Python 3.13.14. Not
+CI-verified — CI is `workflow_dispatch:` only here on purpose.

@@ -98,6 +98,7 @@ COMMANDS = [
     "reconcile",
     "expand",
     "frontier",
+    "consistency",
     "seeds",
     "coverage",
     "quickstatements",
