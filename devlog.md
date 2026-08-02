@@ -1246,3 +1246,55 @@ result and a silently absent section is not.
 **474 passed** (was 469; 5 added), Python 3.13.14. `add-p2600.md` regenerated
 and confirmed showing 36. Not CI-verified — CI is `workflow_dispatch:` only here
 on purpose. Nothing has been sent to Wikidata.
+
+---
+
+## 2026-08-01 — `merge` now says whether the result is still one tree
+
+The user stated the project's purpose plainly this tick: one growing **synoptic**
+tree. What makes it synoptic is that the graph is connected, and the merge step
+had nothing to say about that. `genimerge merge` printed record counts and a
+conflict count and stopped. The component count lived only in
+`reports/frontier.md` — a different command, run later, that nobody is obliged
+to run.
+
+The gap is not theoretical, and the fourth export is the reason to close it. It
+shares **184 people** with the union of the other three, 4.8% of itself, and
+those 184 are the whole reason its 3656 new people joined the tree rather than
+sitting beside it. Seeded a little further out it would have landed as an
+island — and `merge` would have printed `0 conflicts` exactly as it did. That is
+the trap: components do not conflict. Nothing contradicts anything; the two
+halves simply never meet, so every counter the merge already had would have
+looked perfect.
+
+`frontier.describe_connectivity` now renders one line and `_cmd_merge` prints
+it. On the real data: `one connected tree, all 12422 people`. When it splits it
+names the sizes rather than just the count, because a 3656-person island and a
+2-person island are not the same event.
+
+**It warns; it does not fail.** More than one component is a legitimate state —
+`frontier` exists partly to say that a component nobody outside it is related to
+needs its own export seed. Making the merge fail would have been a wrong
+assertion in the opposite direction from the usual one: not too weak, but too
+strong, and the kind that gets silenced later rather than fixed. A test pins the
+wording against the words "error", "invalid", "failed" and "corrupt" so it
+cannot drift into blaming a state that is allowed.
+
+Reused `frontier.components` rather than writing a second graph walk; it already
+returned components largest first.
+
+Seven tests. Two of them are at CLI level rather than on the helper, because the
+helper being right proves nothing about it being called — and the existing
+`workspace` fixture turned out to be exactly the case worth catching: `two.ged`
+adds Di Delta with no family links, so that merge already succeeded with zero
+conflicts and two trees. The test asserts both facts on the same run.
+
+**481 passed** (was 474), Python 3.13.14. `reports/frontier.md` regenerated and
+unchanged, as expected — the new function is additive and the report's renderer
+was not touched. Not CI-verified; CI is `workflow_dispatch:` only here on
+purpose.
+
+Also recorded in `queue.md` as a standing NEEDS-DECISION: `seeds.md` can only
+rank people already in the tree, and the seed that produced the best export so
+far was not one of them. How that seed was found is a channel this repo cannot
+see, and the answer decides what to build next.

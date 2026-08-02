@@ -210,3 +210,79 @@ def test_the_report_survives_an_empty_tree():
     from genimerge.model import Tree
 
     assert "# Expansion frontier" in frontier.render_markdown(Tree())
+
+
+# --- describe_connectivity -------------------------------------------------
+#
+# `genimerge merge` prints this. Conflicts tell you whether the exports
+# disagree; this tells you whether they joined up. An export seeded outside
+# everything we already hold merges with zero conflicts and still leaves two
+# trees, so the merge's own counters cannot surface it.
+
+TWO_TREES = """0 HEAD
+0 @I1@ INDI
+1 NAME A /Root/
+1 FAMS @F1@
+0 @I2@ INDI
+1 NAME B /Root/
+1 FAMS @F1@
+0 @I7@ INDI
+1 NAME G /Island/
+1 FAMS @F9@
+0 @I8@ INDI
+1 NAME H /Island/
+1 FAMS @F9@
+0 @F1@ FAM
+1 HUSB @I1@
+1 WIFE @I2@
+0 @F9@ FAM
+1 HUSB @I7@
+1 WIFE @I8@
+0 TRLR
+"""
+
+
+def test_one_component_reads_as_one_tree():
+    comps = frontier.components(build_tree(gedcom.parse(LINE).records))
+
+    assert len(comps) == 1
+    assert frontier.describe_connectivity(comps) == "one connected tree, all 6 people"
+
+
+def test_a_disconnected_export_is_named_with_its_sizes():
+    """The sizes matter: a 3656-person island is not a 2-person one."""
+    comps = frontier.components(build_tree(gedcom.parse(TWO_TREES).records))
+
+    line = frontier.describe_connectivity(comps)
+
+    assert len(comps) == 2
+    assert "2 separate trees, not one: 2, 2 people" in line
+    assert "needs its own export seed" in line
+
+
+def test_a_split_tree_is_reported_without_being_called_an_error():
+    """More than one component is legitimate, so the wording must not blame it.
+
+    `frontier` exists partly to say that a component nobody outside it is
+    related to needs its own seed. Wording this as a failure would push someone
+    to silence it later.
+    """
+    line = frontier.describe_connectivity(
+        frontier.components(build_tree(gedcom.parse(TWO_TREES).records))
+    )
+
+    assert "Nothing is wrong with the merge" in line
+    for blame in ("error", "invalid", "failed", "corrupt"):
+        assert blame not in line.lower()
+
+
+def test_many_components_are_summarised_rather_than_all_listed():
+    comps = [frontier.Component(members=[str(i)]) for i in range(9)]
+
+    line = frontier.describe_connectivity(comps, show=3)
+
+    assert "1, 1, 1, and 6 more people" in line
+
+
+def test_an_empty_tree_says_so_instead_of_claiming_one_tree():
+    assert frontier.describe_connectivity([]) == "no people, so nothing to connect"

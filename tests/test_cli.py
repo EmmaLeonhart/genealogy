@@ -322,3 +322,30 @@ def test_name_links_refuses_to_run_before_there_are_matches(workspace, capsys):
 def test_coverage_refuses_to_run_before_there_are_matches(workspace, capsys):
     assert run(workspace, "coverage") == 1
     assert "reconcile" in capsys.readouterr().err
+
+
+# -- merge reports connectivity ----------------------------------------
+
+
+def test_merge_says_whether_the_result_is_still_one_tree(workspace, capsys):
+    """The conflict count cannot answer this, so `merge` prints it separately.
+
+    The workspace fixture happens to be exactly the case worth catching: `two.ged`
+    adds Di Delta with no family links, so the merge succeeds with zero conflicts
+    and still produces two trees. That is what an export seeded outside the tree
+    looks like from the merge's point of view — nothing contradicts anything, the
+    halves simply never meet.
+    """
+    assert run(workspace, "merge") == 0
+
+    out = capsys.readouterr().out
+    assert "0 conflicts" in out
+    assert "2 separate trees, not one: 3, 1 people" in out
+
+
+def test_merge_reports_one_tree_when_everything_connects(workspace, capsys):
+    (workspace["lake"] / "two.ged").unlink()
+
+    assert run(workspace, "merge") == 0
+
+    assert "one connected tree, all 3 people" in capsys.readouterr().out

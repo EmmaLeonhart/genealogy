@@ -29,6 +29,7 @@ __all__ = [
     "Component",
     "BranchPoint",
     "components",
+    "describe_connectivity",
     "family_graph",
     "descendant_counts",
     "ancestor_depth",
@@ -91,6 +92,36 @@ def family_graph(tree: Tree) -> dict[str, list[str]]:
 def _neighbours(person: Person, tree: Tree) -> list[str]:
     """One person's neighbours. Prefer :func:`family_graph` when doing many."""
     return family_graph(tree).get(person.geni_id, [])
+
+
+def describe_connectivity(comps: list[Component], *, show: int = 5) -> str:
+    """One line on whether the merged tree is still one tree.
+
+    `genimerge merge` prints this. The point of the project is a single growing
+    synoptic tree, and what makes it synoptic is that the graph is connected —
+    but a merge cannot tell you that from its record counts. An export seeded
+    outside everything we hold produces a second component, and the merge itself
+    reports `0 conflicts` either way, because nothing contradicts anything: the
+    two halves simply never meet.
+
+    Deliberately worded as a fact rather than an error. More than one component
+    is a legitimate state — see this module's docstring on why such a component
+    needs its own export seed — so this reports and the reader decides.
+    """
+    if not comps:
+        return "no people, so nothing to connect"
+    if len(comps) == 1:
+        return f"one connected tree, all {comps[0].size} people"
+
+    sizes = [c.size for c in comps]
+    shown = ", ".join(str(size) for size in sizes[:show])
+    if len(sizes) > show:
+        shown += f", and {len(sizes) - show} more"
+    return (
+        f"{len(comps)} separate trees, not one: {shown} people. "
+        "Nothing is wrong with the merge — components do not conflict, they just "
+        "never meet. Each one needs its own export seed to grow."
+    )
 
 
 def components(tree: Tree, graph: dict[str, list[str]] | None = None) -> list[Component]:

@@ -123,6 +123,10 @@ def _cmd_merge(args: argparse.Namespace) -> int:
     totals = ", ".join(f"{n} {tag}" for tag, n in sorted(report.totals.items()))
     print(f"wrote {output}: {totals}")
     print(f"{len(report.conflicts)} conflicts -> {detail}")
+    # Conflicts say whether the exports disagree; this says whether they joined
+    # up. An export seeded outside everything we hold merges without a single
+    # conflict and still leaves two trees.
+    print(frontier.describe_connectivity(frontier.components(model.build_tree(doc.records))))
     return 0
 
 

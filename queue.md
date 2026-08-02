@@ -15,10 +15,18 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 ## Active
 
 **Empty.** The fourth export is merged, every downstream command has been re-run
-against the 12422-person tree, and the contradiction count in `add-p2600.md` now
-carries its denominator.
+against the 12422-person tree, and `merge` now says whether the result is still
+one tree.
 
 ### Standing context
+
+- **NEEDS-DECISION — how out-of-tree export seeds are found.** `reports/seeds.md`
+  can only rank people already in the merged tree. Iver Mellegård, who seeded
+  the best export so far, was in none of the three earlier exports, so the
+  ranking could not have proposed him. Whatever route found him is one this repo
+  cannot see or reproduce. The question is with the user; the answer decides
+  whether to build out-of-tree candidate ranking or something else. Not blocking
+  anything currently queued.
 
 - **Take the pipeline order from `README.md`, not from a list written by hand.**
   The README's "before pushing" block already gives every command in dependency
