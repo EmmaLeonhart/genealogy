@@ -2008,3 +2008,49 @@ certainly not Japan.
 
 **543 passed** (was 541), Python 3.13.14. Not CI-verified — CI is
 `workflow_dispatch:` only here on purpose.
+
+---
+
+## 2026-08-02 — the README's isolation promise, asserted
+
+`README.md` promises that every command takes `--data-lake`, `--out` and
+`--reports`, "so a second dataset can be processed without touching the first".
+Nothing checked it, and a promise of that shape had already been broken once
+this session.
+
+Checked by hand first, against the real repository: `inventory`, `merge`,
+`export`, `frontier` and `seeds` run against a temp workspace, then every file
+under the repo's `reports/` and `out/` compared before and after. **372 files,
+none changed, none added.** The promise holds, so this locks in a true state
+rather than repairing one.
+
+Guarded as a family rather than per command, because the failure mode is a *new
+or edited* command writing to a workspace-independent path — a per-command test
+only ever covers the commands someone remembered to write one for.
+
+Snapshot by size and mtime rather than content hash. Any write updates mtime,
+and hashing the tens of megabytes in `merged.ged` and `people.jsonl` on every
+run buys nothing; the test says so instead of leaving it as an unexplained
+choice. It costs 0.05 s.
+
+**The correction worth recording: this test would not have caught the bug that
+prompted it.** `reports/merge.md` went stale because `merge -o elsewhere` ran
+*without* `--reports`, so the reports fell back to the repository default while
+the GEDCOM went to the target. Every run in the new test passes all three
+directories — which was always the safe case. The first version of the comment
+claimed the credit anyway, and it was wrong; the shipped version says which test
+actually covers that shape
+(`test_merge_output_elsewhere_does_not_touch_the_workspace_reports`) and that
+this one guards an adjacent property, not the same one.
+
+That distinction is the whole value of the entry. A guard described as covering
+a bug it does not cover is worse than no guard, because the next person reads
+the failure mode as handled.
+
+Also honest about reach: five of eleven commands. `reconcile`, `expand`,
+`coverage`, `crosscheck`, `names` and `name-links` need Wikidata and this suite
+is offline on purpose — and they are the likelier place for a stray path, since
+they are the ones that also write cache files. Uncovered, and said so.
+
+**545 passed** (was 543), Python 3.13.14. Not CI-verified — CI is
+`workflow_dispatch:` only here on purpose.

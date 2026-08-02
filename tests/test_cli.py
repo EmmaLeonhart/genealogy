@@ -8,6 +8,8 @@ Wikidata are covered for their wiring and for their "run the earlier step first"
 error paths; whether Wikidata is up is not what these are testing.
 """
 
+from pathlib import Path
+
 import pytest
 
 from genimerge import cli, gedcom
@@ -403,3 +405,74 @@ def test_the_redirected_report_describes_the_redirected_merge(workspace, tmp_pat
     side = (elsewhere.parent / "merge.md").read_text(encoding="utf-8")
     assert "one.ged" in side
     assert "two.ged" not in side
+
+
+# -- a redirected run must not touch the repository --------------------------
+#
+# README promises: "Every command also takes --data-lake, --out and --reports,
+# so a second dataset can be processed without touching the first."
+#
+# This asserts that promise for the family, so a new or edited command writing
+# to a workspace-independent path fails here rather than silently overwriting
+# tracked files.
+#
+# **It would not have caught the bug that prompted it**, and the distinction
+# matters. `reports/merge.md` went stale because `merge -o elsewhere` was run
+# *without* `--reports`, so the reports fell back to the repository default
+# while the GEDCOM went to the target. Every run here passes all three
+# directories, which was always the safe case. That specific shape is covered by
+# `test_merge_output_elsewhere_does_not_touch_the_workspace_reports` above.
+# What this adds is the README's stated guarantee, which is adjacent to that bug
+# rather than the same thing.
+#
+# Five of the eleven commands. `reconcile`, `expand`, `coverage`, `crosscheck`,
+# `names` and `name-links` need Wikidata and this suite is offline on purpose —
+# they are also the ones that write cache files, so they are the likelier place
+# for a stray path. Uncovered, and said so rather than implied.
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+OFFLINE_COMMANDS = ["inventory", "merge", "export", "frontier", "seeds"]
+
+
+def _stamp(*directories):
+    """Size and mtime of every file under `directories`.
+
+    Not a content hash: any write updates mtime, and hashing the tens of
+    megabytes in merged.ged and people.jsonl on every run buys nothing.
+    """
+    seen = {}
+    for directory in directories:
+        if not directory.exists():
+            continue
+        for path in sorted(directory.rglob("*")):
+            if path.is_file():
+                info = path.stat()
+                seen[str(path)] = (info.st_size, info.st_mtime_ns)
+    return seen
+
+
+def test_a_redirected_run_leaves_the_repository_untouched(workspace):
+    repo_dirs = (REPO_ROOT / "reports", REPO_ROOT / "out")
+    before = _stamp(*repo_dirs)
+
+    for command in OFFLINE_COMMANDS:
+        assert run(workspace, command) == 0, f"{command} failed in a redirected workspace"
+
+    after = _stamp(*repo_dirs)
+
+    changed = sorted(k for k in before if before[k] != after.get(k))
+    appeared = sorted(k for k in after if k not in before)
+    assert not changed, f"a redirected run rewrote tracked files: {changed}"
+    assert not appeared, f"a redirected run created files in the repository: {appeared}"
+
+
+def test_the_redirected_run_did_write_its_own_workspace(workspace):
+    """Guards the guard: if the commands wrote nothing, the check above is vacuous."""
+    for command in OFFLINE_COMMANDS:
+        run(workspace, command)
+
+    written = _stamp(workspace["out"], workspace["reports"])
+
+    assert len(written) >= len(OFFLINE_COMMANDS)
+    assert any(k.endswith("merged.ged") for k in written)
+    assert any(k.endswith("seeds.md") for k in written)

@@ -14,8 +14,8 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
-**Empty.** `reports/merge.md` is checked against `data_lake/` on every run, and
-the Emperor Jimmu chain finding is recorded below.
+**Empty.** The README's workspace-isolation promise is asserted by the suite for
+the five offline commands.
 
 ### Standing context
 
