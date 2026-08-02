@@ -14,10 +14,22 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
-**Empty.** The fourth export is merged and everything downstream is re-run
-against the 12422-person tree. Taking the next export is the user's action.
+**Empty.** The fourth export is merged and every downstream command has now been
+re-run against the 12422-person tree, `expand` included.
 
 ### Standing context
+
+- **Take the pipeline order from `README.md`, not from a list written by hand.**
+  The README's "before pushing" block already gives every command in dependency
+  order, and it says `expand --search`, not bare `expand`. Both details matter.
+  `expand` writes `matched_all.csv` and `candidates.csv`, which `coverage`,
+  `crosscheck`, `name-links` and `quickstatements` all read, so omitting it
+  leaves four reports generated from a previous tree. And bare `expand` skips
+  the label-index lookup that produces the `name-match` proposals — running it
+  without `--search` silently drops 100 of them and rewrites
+  `reports/wikidata-coverage.md` with 30 proposals instead of 87. That is not
+  hypothetical: it happened on 2026-08-01 and was caught only by diffing the
+  regenerated report.
 
 - **`python` on PATH is not the interpreter.** Python 3.13.14 is installed at
   `C:\Program Files\Python313\python.exe`, but the Microsoft Store stub aliases
@@ -47,8 +59,12 @@ against the 12422-person tree. Taking the next export is the user's action.
   is exercised only by the static check in `tests/test_python_floor.py`, and no
   commit should be described as CI-verified.
 - **NEEDS-DECISION** — `todo.md` items 4 and 5: creating Wikidata items, for
-  people who have none and for the 1117 surnames and 1473 given names that have
-  none. Sized in `reports/names.md`. The decision is the user's.
+  people who have none and for the **1343 surnames and 1626 given names** that
+  have none. Sized in `reports/names.md`: 1008 of 2351 distinct surnames (42.9%)
+  and 2076 of 3702 distinct given-name tokens (56.1%) have an item, so the rest
+  do not. Whole given-name strings as Geni stores them are far worse — 929 of
+  8168 (11.4%) — because Geni packs multiple names into one field. The decision
+  is the user's.
 
 ---
 

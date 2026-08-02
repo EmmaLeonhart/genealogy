@@ -1141,3 +1141,59 @@ exits 9009. `py -m pytest` and the full path work. The package is not
 pip-installed, so the CLI needs `PYTHONPATH=src`; pytest does not, because
 `pyproject.toml` sets `pythonpath = ["src"]`. Left alone — changing a user's
 PATH is not this repo's business — and noted in `queue.md`.
+
+---
+
+## 2026-08-01 — `expand` re-run: the fourth export reaches no new Wikidata items
+
+`out/wikidata/candidates.csv` and `matched_all.csv` were stamped 2026-07-30
+18:06 while every other artefact in that directory was from 2026-08-01. The
+merge tick's re-run list named nine commands and omitted `expand`, so the
+fallback-matching half of `todo.md` item 2 had not been run against the larger
+tree — and `coverage`, `crosscheck`, `name-links` and `quickstatements` all read
+what `expand` writes.
+
+**Re-running it changed nothing at all.** `candidates.csv` came back at 24484
+bytes and `matched_all.csv` at 14585 — byte-for-byte the sizes of the 07-30
+files — and `reports/wikidata-coverage.md` regenerated identical to the
+committed version, git reporting no diff. Still 245 of 12422 linked (209 by
+P2600, 36 by expansion over 3 rings), still 171 proposals, still 87 people
+awaiting review.
+
+So the 3656 people the fourth export added reach **zero** new Wikidata items,
+either by exact P2600 join or by walking three rings of family structure out
+from the existing matches. That is a result rather than a non-event: it says the
+new export lands in a part of the tree Wikidata does not cover. Consistent with
+what it is — Norwegian farm families, where the P2600 matches sit in the royalty
+and nobility branches the first three exports were rooted in. Coverage fell from
+2.8% of 8766 to 2.0% of 12422 purely by growing the denominator.
+
+**A wrong claim made and withdrawn in the same tick, recorded because the
+sequence is the useful part.** Re-running bare `expand` produced a coverage
+report with 30 proposals against the committed 87, which read as proof that the
+merge tick had committed a report built on stale data. It was not. Bare `expand`
+skips the label-index lookup, and the 100 `name-match` proposals come only from
+`--search`. The regression was in the re-run, not in the commit; `expand
+--search` restored byte-identical output. The diff was real and the diagnosis
+was wrong, which is worth more than either alone: a changed report is evidence
+that *something* differs, never on its own evidence of which side is stale.
+
+The durable fix is not new documentation, because the documentation was already
+correct. `README.md`'s "before pushing" block lists every command in dependency
+order and already says `expand --search`. The failure was following a re-run
+list written by hand in a cron prompt instead of the file that exists for this.
+`queue.md` now says to take the order from the README, and says what omitting
+`expand` and what dropping `--search` each cost.
+
+Also corrected: the NEEDS-DECISION entry in `queue.md` still sized `todo.md`
+items 4 and 5 with pre-merge figures, 1117 surnames and 1473 given names lacking
+Wikidata items. Against the regenerated `reports/names.md` the real gaps are
+**1343 surnames and 1626 given names** — 1008 of 2351 distinct surnames (42.9%)
+and 2076 of 3702 given-name tokens (56.1%) have items. Whole given-name strings
+as Geni stores them are far worse at 929 of 8168 (11.4%), because Geni packs
+several names into one field.
+
+**469 passed**, Python 3.13.14. No code changed this tick, so the suite is
+unchanged from `601f840`; it was run to confirm that, not to claim it. Not
+CI-verified — CI is `workflow_dispatch:` only here on purpose. Nothing has been
+sent to Wikidata.
