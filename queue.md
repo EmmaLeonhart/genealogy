@@ -14,10 +14,36 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
-**Empty.** The full documented pipeline runs clean end to end, and a merge
-directed elsewhere no longer overwrites the workspace's reports.
+**Empty.** `reports/merge.md` is checked against `data_lake/` on every run, and
+the Emperor Jimmu chain finding is recorded below.
 
 ### Standing context
+
+- **A third export candidate, and the only one with a *known* payoff.** Asked
+  which people in a Geni relationship chain to Emperor Jimmu were in our tree,
+  the answer was: it stops at **Elisabeth Árpád dynasty
+  `6000000003243185408`**. The 51 people after her are all absent — Jelena
+  Urošević, the Nemanjić rulers, Constantine IX Monomachos, Alp Arslan, the
+  Ashina khagans, the Tang and Kudara royal lines, the Fujiwara and Mononobe
+  clans, and every legendary emperor down to Jimmu.
+
+  She has no parents recorded, so she is a doorway, and a strong one: ranked
+  **198 of 2932**, ball 22, 9 doorways, **41% openness** against a pool median
+  of 20%. The seed to export from is her absent mother, **Jelena Urošević**, per
+  the export-from-the-parent rule.
+
+  What no report here can express is why she is the best of the three
+  candidates: the payoff is *observed*, not inferred. Every seed in
+  `reports/seeds.md` is a bet on unseen material behind a door; Geni has already
+  shown what is behind this one. That evidence comes from outside our data,
+  which is the same blind spot that hid Iver Mellegård.
+
+  **The honest limit:** an export fills at ~3840 people and Jimmu is ~51 further
+  steps down the chain, so one export very likely reaches the Serbian and
+  Byzantine material and **not** Japan. Getting to Jimmu is a sequence of
+  exports walking down the chain, not a single one.
+
+
 
 - **Not doing: centralising the per-module property constants.**
   `crosscheck`, `reconcile`, `namelinks`, `names` and `quickstatements` each

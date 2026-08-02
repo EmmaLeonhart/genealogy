@@ -107,3 +107,57 @@ def test_the_merge_is_worth_doing(merged):
     )
 
     assert report.totals["INDI"] > biggest
+
+
+# --- the committed report, against the exports it claims to describe ---------
+#
+# `reports/merge.md` is generated and tracked in git, and nothing checked that
+# it still matched `data_lake/`. It spent twelve commits describing an
+# 8766-person, three-export merge while `out/merged.ged` held 12422 across four.
+# The suite passed throughout and `git status` was clean, because the wrong file
+# had been committed. What found it was running the pipeline and asking whether
+# the output changed — which no test did.
+#
+# `test_the_merge_is_idempotent` above covers the merge *function*. This covers
+# the *artifact*, and it is nearly free: the module fixture has already done the
+# merge for the other tests here.
+#
+# Only merge.md. `inventory.md`, `frontier.md` and `seeds.md` are also pure
+# functions of `data_lake/` and could be checked the same way, but each needs
+# its own regeneration and `seeds` alone takes about a minute — several-folding
+# the suite for reports that have not gone wrong yet. `names.md`,
+# `wikidata-coverage.md` and `wikidata-crosscheck.md` cannot be checked offline
+# at all: they depend on live Wikidata. The omissions are deliberate, not
+# oversights.
+
+COMMITTED_MERGE_REPORT = DATA_LAKE.parent / "reports" / "merge.md"
+
+
+@pytest.mark.skipif(
+    not COMMITTED_MERGE_REPORT.exists(), reason="reports/merge.md absent from this checkout"
+)
+def test_the_committed_merge_report_still_describes_these_exports(merged):
+    doc, report, _ = merged
+
+    expected = merge.render_report(report, detail=False, doc=doc)
+    actual = COMMITTED_MERGE_REPORT.read_text(encoding="utf-8")
+
+    assert actual == expected, (
+        "reports/merge.md no longer matches what merging data_lake/ produces. "
+        "Re-run `python -m genimerge merge` and commit the result. If you did not "
+        "change data_lake/, check what did write this file — a merge sent "
+        "elsewhere with --output used to overwrite it with a different merge."
+    )
+
+
+def test_the_report_names_every_export_in_the_data_lake(merged):
+    """The failure that happened, asserted directly as well as by equality.
+
+    Byte equality covers this, but it fails as an opaque diff. A missing source
+    file is the specific thing that went wrong, and it is worth its own message.
+    """
+    _, report, _ = merged
+    text = merge.render_report(report, detail=False, doc=merged[0])
+
+    for export in EXPORTS:
+        assert export.name in text, f"{export.name} is in data_lake/ but not in the report"

@@ -1953,3 +1953,58 @@ checking directly, and it had never been checked.
 
 **541 passed** (was 537), Python 3.13.14. Not CI-verified — CI is
 `workflow_dispatch:` only here on purpose.
+
+---
+
+## 2026-08-02 — a guard for the bug that hid for twelve commits, and a seed with a known payoff
+
+Two things, both following from the previous tick.
+
+**`reports/merge.md` is now checked against `data_lake/` on every run.**
+`e9f4cde` fixed the *cause* of that file going stale and added nothing that
+would notice the next one. The file was wrong in git for twelve commits with a
+passing suite, a clean `git status` — clean because the wrong file was
+committed — and a status report every two hours calling the tree healthy.
+
+`test_merge_real_exports.py` already merged the real exports in a module fixture
+and already had `test_the_merge_is_idempotent`, so the merge *function* was
+covered and the committed *artifact* was not. The new assertion compares the
+file against `render_report(report, detail=False, doc=doc)` and costs nothing
+measurable — it does not appear in the slowest three durations.
+
+**Proved against the actual historical failure rather than a synthetic one.**
+The guard passes on the current file and fails on `e5a41b8:reports/merge.md`,
+the exact stale version, and the companion test names what was missing:
+`export-Forest-6000000226977233850.ged`, absent from a report that claimed to
+describe the data lake containing it.
+
+Deliberately only `merge.md`, said in the test so the omission does not read as
+an oversight. `inventory.md`, `frontier.md` and `seeds.md` are equally pure
+functions of `data_lake/` but each needs its own regeneration and `seeds` alone
+takes about a minute, which would several-fold a 30-second suite to guard
+reports that have not gone wrong. `names.md`, `wikidata-coverage.md` and
+`wikidata-crosscheck.md` cannot be checked offline at all.
+
+**And the Emperor Jimmu finding is recorded rather than left in chat.** Asked
+which people in a Geni relationship chain were in our tree, the answer was that
+it stops at **Elisabeth Árpád dynasty `6000000003243185408`** — the following 51
+are absent, from Jelena Urošević through the Nemanjić rulers, Constantine IX,
+Alp Arslan, the Ashina khagans, the Tang and Kudara lines, the Fujiwara and
+Mononobe clans, to Jimmu.
+
+She has no parents recorded, so she is a doorway: ranked 198 of 2932, ball 22, 9
+doorways, **41% openness** against a 20% median. The seed is her absent mother,
+per the export-from-the-parent rule.
+
+The reason she belongs in `queue.md` and not merely in the ranking is that **her
+payoff is observed rather than inferred**. Every seed in `reports/seeds.md` is a
+bet on unseen material; Geni has already shown what is behind this door. That
+evidence comes from outside our data — the same blind spot that hid Iver
+Mellegård, and one no metric here can represent.
+
+Recorded with its limit: an export fills at ~3840 people and Jimmu is ~51 steps
+further, so one export reaches the Serbian and Byzantine material and almost
+certainly not Japan.
+
+**543 passed** (was 541), Python 3.13.14. Not CI-verified — CI is
+`workflow_dispatch:` only here on purpose.
