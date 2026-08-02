@@ -380,3 +380,78 @@ def test_the_ranking_note_appears_even_when_there_is_nothing_to_rank():
     markdown = seeds.render_markdown(tree())
 
     assert seeds.RANKING_IS_UNVALIDATED in markdown
+
+
+# --- the size bias, measured -----------------------------------------------
+#
+# The ranking sorts on absolute doorway count, and doorways live inside the
+# ball, so a bigger ball has more chances to hold one. Whether that makes the
+# sort a proxy for neighbourhood size is a fact about the data, so it is
+# measured rather than asserted.
+
+
+def test_correlation_is_one_when_doorways_track_ball_size_exactly():
+    """The degenerate case the real question is measured against."""
+    balls = [10.0, 20.0, 30.0, 40.0]
+    doorways = [1.0, 2.0, 3.0, 4.0]
+
+    assert seeds._pearson(balls, doorways) == pytest.approx(1.0)
+
+
+def test_correlation_is_negative_when_doorways_fall_as_the_ball_grows():
+    assert seeds._pearson([10.0, 20.0, 30.0], [3.0, 2.0, 1.0]) == pytest.approx(-1.0)
+
+
+def test_correlation_is_zero_rather_than_undefined_when_a_side_is_constant():
+    """A flat column has no variance; returning 0.0 beats dividing by it."""
+    assert seeds._pearson([1.0, 1.0, 1.0], [1.0, 2.0, 3.0]) == 0.0
+    assert seeds._pearson([5.0], [5.0]) == 0.0
+
+
+def test_size_bias_counts_large_balls_in_the_pool_and_in_the_picks():
+    t = tree(CLUSTER, FAR, _dense(children=60))
+    kept, _ = seeds.rank_seeds(t)
+    picks = seeds.choose_export_set(kept, 3)
+
+    bias = seeds.size_bias(kept, picks)
+
+    assert bias.candidates == len(kept)
+    assert bias.picked == len(picks)
+    # these fixtures are all small balls, so nothing crosses the threshold
+    assert bias.large == 0
+    assert bias.large_share == 0.0
+    assert bias.picked_large_share == 0.0
+
+
+def test_size_bias_survives_an_empty_pool_without_dividing_by_zero():
+    bias = seeds.size_bias([], [])
+
+    assert bias.candidates == 0
+    assert bias.large_share == 0.0
+    assert bias.picked_large_share == 0.0
+    assert bias.most_open_rank == 0
+
+
+def test_the_report_shows_the_measurement_and_its_limit():
+    markdown = seeds.render_markdown(tree(CLUSTER, FAR))
+
+    assert seeds.SIZE_BIAS_IS_MEASURED in markdown
+    assert seeds.SIZE_BIAS_LIMIT in markdown
+
+
+def test_the_limit_note_keeps_the_claim_it_refuses_to_make():
+    """Identity alone passes on an emptied constant, so pin the substance.
+
+    The measurement says how the sort behaves. It cannot say whether openness
+    predicts a richer export, because that is a fact about Geni's data and we
+    cannot see behind a doorway without exporting through it. Losing that
+    sentence turns a description into a verdict.
+    """
+    assert "does not show is that the ranking is wrong" in seeds.SIZE_BIAS_LIMIT
+    assert "a claim about Geni's data, not about ours" in seeds.SIZE_BIAS_LIMIT
+
+
+def test_the_unvalidated_note_no_longer_asserts_the_mechanism_as_fact():
+    """That sentence moved out and got measured; it must not linger unmeasured."""
+    assert "favours large balls" not in seeds.RANKING_IS_UNVALIDATED
+    assert "2255 of 2336" in seeds.RANKING_IS_UNVALIDATED

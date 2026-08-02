@@ -50,7 +50,22 @@ The 3840 used above is **the largest export we have seen, not a limit we know Ge
 
 ## How well this ranking has actually done
 
-**No export has yet been taken from a seed this ranking chose, so none of it is validated.** The one export with measured results — 2026-08-01, 3656 new people — was seeded on the parent of Hågen Iversen `6000000019312592888`, who placed **2255 of 2336** here, on a ball of 5 with a single doorway. That is a reason for doubt rather than a verdict: the ranking never scored the actual seed, because he was not in our data to score, and no rival seed was tried against him. But the mechanism is worth stating, because ranking by *absolute* doorway count favours large balls, and a large ball is a densely recorded neighbourhood — which is the opposite of where Geni has most to add. A sparse corner scores near zero precisely because we know little there. One data point is not enough to re-rank on, and it is not being re-ranked on; it is enough to say the list below is a hypothesis.
+**No export has yet been taken from a seed this ranking chose, so none of it is validated.** The one export with measured results — 2026-08-01, 3656 new people — was seeded on the parent of Hågen Iversen `6000000019312592888`, who placed **2255 of 2336** here, on a ball of 5 with a single doorway. That is a reason for doubt rather than a verdict: the ranking never scored the actual seed, because he was not in our data to score, and no rival seed was tried against him. One data point is not enough to re-rank on, and it is not being re-ranked on; it is enough to say the list below is a hypothesis.
+
+The ranking sorts on **absolute** doorway count, and doorways are counted inside the ball, so a larger ball has more chances to hold one. That predicts a sort order tracking neighbourhood size rather than openness. Measured rather than assumed, on the candidates below:
+
+|  | the pool | the picks |
+| --- | ---: | ---: |
+| candidates | 2932 | 10 |
+| ball over 100 | 45 (1.5%) | 8 (80%) |
+| median ball | 20 | 114 |
+| median openness | 20% | 17% |
+
+Ball size and doorway count correlate at **r = 0.77** (r² = 0.59), so neighbourhood size accounts for most of the ordering but not all of it — at any given ball size the doorway counts still spread. The sort is not simply ball size under another name.
+
+The selection effect is sharper than the correlation. Candidates with a ball over 100 are **1.5%** of the pool and **80%** of the picks, and the picks are *less* open than a typical candidate (17% against 20%). The most open candidate in the whole pool — 57% — ranks **1198 of 2932**.
+
+**What this does not show is that the ranking is wrong.** It establishes how the sort behaves — it prefers large, proportionally less open neighbourhoods — and nothing more. Whether an open neighbourhood actually yields a richer export is a claim about Geni's data, not about ours, and no measurement here can reach it: we cannot see what sits behind a doorway without exporting through it. The one export taken so far is consistent with openness mattering and is a single observation. Taking the next export from a top-ranked pick, where this file has already committed its prediction, is what would settle it.
 
 ## Ranked candidates (top 40)
 

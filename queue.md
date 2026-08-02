@@ -14,8 +14,8 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
-**Empty.** `reports/seeds.md` now says to export from the *parent* of a listed
-doorway, and records that its own ranking is unvalidated.
+**Empty.** `reports/seeds.md` measures its own size bias instead of asserting
+it, and separates what that settles from what only a fifth export can.
 
 ### Standing context
 

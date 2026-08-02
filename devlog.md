@@ -1497,3 +1497,53 @@ it, but the original question is still open.
 
 **498 passed** (was 493), Python 3.13.14. `reports/seeds.md` regenerated. Not
 CI-verified — CI is `workflow_dispatch:` only here on purpose.
+
+---
+
+## 2026-08-02 — measuring a claim I had put in a report on reasoning alone
+
+`e5a41b8` shipped `RANKING_IS_UNVALIDATED`, which told anyone choosing an export
+seed that "ranking by absolute doorway count favours large balls, and a large
+ball is a densely recorded neighbourhood — which is the opposite of where Geni
+has most to add." Plausible, and reasoned rather than measured — which is
+exactly what the 3836 cap was before a fourth export falsified it. It sat in the
+report people pick seeds from, and it was checkable against 2932 candidates
+without waiting for anything.
+
+So it was checked. Three of its four parts held, one did not belong to this data
+at all, and the sentence has been split accordingly.
+
+**Held, and more sharply than the original wording managed.** Candidates with a
+ball over 100 are **1.5% of the pool and 80% of the picks**. Median ball among
+the picks is 114 against 20 for the pool. Median openness among the picks is
+**17% against 20%** — the recommended seeds are *less* open than a typical
+candidate, which is the opposite of what a report about openness implies it is
+doing. The most open candidate in the entire pool, at 57%, ranks **1198 of
+2932**.
+
+**Too strong in one place.** Ball size and doorway count correlate at r = 0.77,
+r² = 0.59 — most of the ordering, not all of it. At a given ball size the
+doorway counts still spread, so the sort is not ball size wearing another name,
+and the report now says that rather than implying the stronger version.
+
+**Did not belong here at all.** "The opposite of where Geni has most to add" is
+a claim about Geni's data, not ours, and nothing measurable on this side can
+reach it — we cannot see what is behind a doorway without exporting through it.
+That is now stated as the limit of the measurement instead of riding along with
+it. `SIZE_BIAS_LIMIT` carries it, with a test on the sentence that refuses the
+verdict, because without it a description of the sort reads as a judgement on it.
+
+The measurement is in `reports/seeds.md` beside the claim it tests, not only in
+this file. A correction that lives where nobody choosing a seed will see it is
+not a correction.
+
+Two test failures on the way, both mine and both in the tests: a `Ball`
+constructed without its required `seed` and `depth`, and an assertion on a
+substring that the sentence does not contain — `"does not show that the ranking
+is wrong"` against the actual `"does not show is that the ranking is wrong"`.
+Fixed by correcting the tests, not by loosening them; the `_pearson` test
+dropped its `SeedProfile` scaffolding entirely and now checks the coefficient on
+plain lists, which is what it was ever testing.
+
+**506 passed** (was 498), Python 3.13.14. `reports/seeds.md` regenerated. Not
+CI-verified — CI is `workflow_dispatch:` only here on purpose.

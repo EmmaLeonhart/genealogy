@@ -40,6 +40,7 @@ from __future__ import annotations
 
 from collections import deque
 from dataclasses import dataclass, field
+from statistics import fmean, median
 
 from .frontier import _child_map, _parent_map, family_graph
 from .model import Tree
@@ -47,6 +48,11 @@ from .model import Tree
 __all__ = [
     "EXPORT_FROM_THE_PARENT",
     "RANKING_IS_UNVALIDATED",
+    "SIZE_BIAS_IS_MEASURED",
+    "SIZE_BIAS_LIMIT",
+    "SizeBias",
+    "size_bias",
+    "LARGE_BALL",
     "GENI_EXPORT_CAP",
     "STYLES",
     "Ball",
@@ -118,14 +124,42 @@ RANKING_IS_UNVALIDATED = (
     "`6000000019312592888`, who placed **2255 of 2336** here, on a ball of 5 "
     "with a single doorway. That is a reason for doubt rather than a verdict: "
     "the ranking never scored the actual seed, because he was not in our data "
-    "to score, and no rival seed was tried against him. But the mechanism is "
-    "worth stating, because ranking by *absolute* doorway count favours large "
-    "balls, and a large ball is a densely recorded neighbourhood — which is the "
-    "opposite of where Geni has most to add. A sparse corner scores near zero "
-    "precisely because we know little there. One data point is not enough to "
-    "re-rank on, and it is not being re-ranked on; it is enough to say the list "
-    "below is a hypothesis."
+    "to score, and no rival seed was tried against him. One data point is not "
+    "enough to re-rank on, and it is not being re-ranked on; it is enough to "
+    "say the list below is a hypothesis."
 )
+
+#: The part of the doubt that *is* measurable without another export, and the
+#: part that is not.
+#:
+#: An earlier version of :data:`RANKING_IS_UNVALIDATED` asserted the mechanism
+#: below as fact, on reasoning alone. It is now measured, and the numbers are
+#: rendered beside it — three of its four claims held, and the fourth turned out
+#: to be about Geni rather than about this data, which nothing here can check.
+SIZE_BIAS_IS_MEASURED = (
+    "The ranking sorts on **absolute** doorway count, and doorways are counted "
+    "inside the ball, so a larger ball has more chances to hold one. That "
+    "predicts a sort order tracking neighbourhood size rather than openness. "
+    "Measured rather than assumed, on the candidates below:"
+)
+
+#: What the measurement does and does not settle.
+SIZE_BIAS_LIMIT = (
+    "**What this does not show is that the ranking is wrong.** It establishes "
+    "how the sort behaves — it prefers large, proportionally less open "
+    "neighbourhoods — and nothing more. Whether an open neighbourhood actually "
+    "yields a richer export is a claim about Geni's data, not about ours, and "
+    "no measurement here can reach it: we cannot see what sits behind a doorway "
+    "without exporting through it. The one export taken so far is consistent "
+    "with openness mattering and is a single observation. Taking the next "
+    "export from a top-ranked pick, where this file has already committed its "
+    "prediction, is what would settle it."
+)
+
+#: Ball size above which a candidate counts as sitting in a large neighbourhood.
+#: Arbitrary, and only used for reporting — it is a place to cut the pool so the
+#: bias in the sort order can be quoted, not a threshold anything decides on.
+LARGE_BALL = 100
 
 #: Export shapes Geni offers, as edge sets over our data.
 STYLES = ("blood", "all", "ancestors", "descendants")
@@ -346,6 +380,70 @@ def _ordinal(geni_id: str) -> int:
     return int(geni_id) if geni_id.isdigit() else 0
 
 
+def _pearson(xs: list[float], ys: list[float]) -> float:
+    """Correlation coefficient, stdlib only. 0.0 when either side is constant."""
+    if len(xs) < 2:
+        return 0.0
+    mx, my = fmean(xs), fmean(ys)
+    cov = sum((a - mx) * (b - my) for a, b in zip(xs, ys))
+    vx = sum((a - mx) ** 2 for a in xs)
+    vy = sum((b - my) ** 2 for b in ys)
+    if vx == 0 or vy == 0:
+        return 0.0
+    return cov / (vx * vy) ** 0.5
+
+
+@dataclass(frozen=True)
+class SizeBias:
+    """How far the sort order prefers candidates in large neighbourhoods.
+
+    The ranking sorts on *absolute* doorway count, and doorways are counted
+    inside the ball, so a bigger ball has more chances to hold one. Whether that
+    makes the ranking a proxy for ball size is a question about this data rather
+    than a matter of opinion, so it is measured and reported instead of argued.
+    """
+
+    candidates: int
+    large: int
+    picked: int
+    picked_large: int
+    correlation: float
+    median_ball_pool: float
+    median_ball_picked: float
+    median_openness_pool: float
+    median_openness_picked: float
+    #: 1-based rank of the most open candidate in the pool
+    most_open_rank: int
+    most_open_openness: float
+
+    @property
+    def large_share(self) -> float:
+        return self.large / self.candidates if self.candidates else 0.0
+
+    @property
+    def picked_large_share(self) -> float:
+        return self.picked_large / self.picked if self.picked else 0.0
+
+
+def size_bias(kept: list[SeedProfile], picks: list[Pick]) -> SizeBias:
+    """Measure how much the sort order tracks ball size rather than openness."""
+    chosen = [p.profile for p in picks]
+    most_open = max(range(len(kept)), key=lambda i: kept[i].openness) if kept else -1
+    return SizeBias(
+        candidates=len(kept),
+        large=sum(1 for p in kept if p.size > LARGE_BALL),
+        picked=len(chosen),
+        picked_large=sum(1 for p in chosen if p.size > LARGE_BALL),
+        correlation=_pearson([p.size for p in kept], [p.open_count for p in kept]),
+        median_ball_pool=median([p.size for p in kept]) if kept else 0.0,
+        median_ball_picked=median([p.size for p in chosen]) if chosen else 0.0,
+        median_openness_pool=median([p.openness for p in kept]) if kept else 0.0,
+        median_openness_picked=median([p.openness for p in chosen]) if chosen else 0.0,
+        most_open_rank=most_open + 1,
+        most_open_openness=kept[most_open].openness if kept else 0.0,
+    )
+
+
 def render_markdown(
     tree: Tree,
     *,
@@ -472,6 +570,45 @@ def render_markdown(
         ]
 
     lines += ["", "## How well this ranking has actually done", "", RANKING_IS_UNVALIDATED]
+
+    bias = size_bias(kept, picks)
+    lines += ["", SIZE_BIAS_IS_MEASURED, ""]
+    lines += _table(
+        ["", "the pool", "the picks"],
+        [
+            ["candidates", str(bias.candidates), str(bias.picked)],
+            [
+                f"ball over {LARGE_BALL}",
+                f"{bias.large} ({bias.large_share:.1%})",
+                f"{bias.picked_large} ({bias.picked_large_share:.0%})",
+            ],
+            ["median ball", f"{bias.median_ball_pool:.0f}", f"{bias.median_ball_picked:.0f}"],
+            [
+                "median openness",
+                f"{bias.median_openness_pool:.0%}",
+                f"{bias.median_openness_picked:.0%}",
+            ],
+        ],
+    )
+    lines += [
+        "",
+        f"Ball size and doorway count correlate at **r = {bias.correlation:.2f}** "
+        f"(r² = {bias.correlation ** 2:.2f}), so neighbourhood size accounts for "
+        f"most of the ordering but not all of it — at any given ball size the "
+        f"doorway counts still spread. The sort is not simply ball size under "
+        f"another name.",
+        "",
+        f"The selection effect is sharper than the correlation. Candidates with a "
+        f"ball over {LARGE_BALL} are **{bias.large_share:.1%}** of the pool and "
+        f"**{bias.picked_large_share:.0%}** of the picks, and the picks are "
+        f"*less* open than a typical candidate "
+        f"({bias.median_openness_picked:.0%} against "
+        f"{bias.median_openness_pool:.0%}). The most open candidate in the whole "
+        f"pool — {bias.most_open_openness:.0%} — ranks "
+        f"**{bias.most_open_rank} of {bias.candidates}**.",
+        "",
+        SIZE_BIAS_LIMIT,
+    ]
 
     lines += [
         "",
