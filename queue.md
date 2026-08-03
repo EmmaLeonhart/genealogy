@@ -1,5 +1,21 @@
 # geni — Work Queue
 
+
+## ⛔ STOP FOR THE DAY — Emma, 2026-08-02: finish what is in flight, then stand down
+
+Her instruction, direct: **complete your immediate task, then STOP your work loop for the rest of
+2026-08-02.**
+
+- **Finish the task you are already on** — this is not an abort. Close it out, commit and push so
+  nothing is stranded, then stop.
+- **Then stop the work loop.** Clear your loop crons for the day. No further ticks, no starting the
+  next queue item, no self-invented work.
+- **⚠ STOP LOOPING, DO NOT STOP THE SESSION.** Emma's standing non-negotiable: *never kill, close or
+  stop any Claude session, console, browser or browser task.* She needs the consoles open. Stand the
+  loop down; leave the window alive and idle.
+- **Scope: 2026-08-02 ONLY.** It expires at midnight. Whoever reads it after that **DELETES this
+  item** — it does not carry into 08-03, and its expiry is not licence to push work at her.
+
 **This file is a queue of *concrete, executable steps*, not a state snapshot.** It lists what is being worked on right now. Finished work lives in `devlog.md` (a dated entry) and `git log`; longer-horizon, *abstract* work lives in `todo.md` and gets decomposed into items here when it's ready to execute. **When an item is done, delete it from this file AND append a dated entry to `devlog.md` in the same commit, then push.** Do not add checkmarks, "done" markers, or status indicators in place. If an item is still here, it is not done.
 
 **Why this file exists:** when a planning step (formal planning mode or just "think before doing") produces a plan, that plan is written here BEFORE execution starts. That way an interrupted session can pick up from the queue rather than from chat context that may be gone.
