@@ -44,9 +44,11 @@ fuzzy name matching. `genimerge.identity` is the single place that knows this;
 change in Geni's format fails loudly.
 
 Exactly **four xref prefixes** occur, each bound to one record type: `I` on
-`INDI`, `F` on `FAM`, `N` on `NOTE`, `S` on `SUBM` — measured over all **25,138**
-xrefs in the four exports, and re-checked against the fourth on 2026-08-02
-rather than carried forward from the original three. `GENI_ID_RE` accepts only
+`INDI`, `F` on `FAM`, `N` on `NOTE`, `S` on `SUBM` — measured over all **31,477**
+xrefs in the five exports, and re-checked against the fifth on 2026-08-02
+rather than carried forward. Two of the five carry no `NOTE` records at all, so
+an export need not use every letter; the claim is that no *other* letter appears
+and no letter spans two record types. `GENI_ID_RE` accepts only
 those on purpose: when it accepted any letters, the foreign xref `@NI04461@`
 parsed as Geni ID `04461` and would have produced a URL to a stranger's profile.
 **`tests/test_gedcom_real_exports.py` asserts this on every run**, per export,
@@ -59,19 +61,29 @@ which profile an ID points at.
 `RFN` does not stop a merge. The cross-check runs in `inventory`, in `model`,
 and over the merged output in `tests/test_merge_real_exports.py`.
 
-**Exports are capped, but 3836 is not the cap.** The first three exports each
-hit 3836 individuals exactly while sharing only 354 people, so they are
-overlapping slices rather than copies — and that identical count read as a cap.
-The fourth export (2026-08-01) has **3840**, which falsifies it. Something
-bounds an export near 3840, but one observation above 3836 does not establish
-what, and the difference is only four people. Treat 3836 as a *lower bound
-observed three times*, not a constant, and do not infer a new cap from 3840
-either. `genimerge.seeds.GENI_EXPORT_CAP` is **3840** and its docstring is the
-long form of this: it names the four explanations that fit the evidence and
-commits to none, and `tests/test_seeds.py` fails if a future export exceeds it,
-so the next one to do so is loud rather than silent. Expect to merge many
-exports over time, and expect the merge to be re-run rather than hand-edited.
-See `reports/inventory.md`.
+**Exports are bounded, but no number here is the bound.** The first three
+exports each hit 3836 individuals exactly while sharing only 354 people, so they
+are overlapping slices rather than copies — and that identical count read as a
+cap. The fourth (2026-08-01) has **3840** and the fifth (2026-08-02) **3844**,
+which falsifies it twice over. **3836, 3840, 3844 are evenly spaced and that is
+not a step of four** — three observations from three days and three seeds do not
+rule out the next export landing anywhere. Do not encode the arithmetic, and do
+not describe any of these as a cap Geni enforces.
+`genimerge.seeds.GENI_EXPORT_CAP` is **3844**, meaning *largest yet seen*; its
+docstring is the long form of this, naming the four explanations that fit the
+evidence and committing to none. `tests/test_seeds.py` fails if a future export
+exceeds it, so the next one to do so is loud rather than silent — that is how
+3840 and 3844 were each caught. Expect to merge many exports over time, and
+expect the merge to be re-run rather than hand-edited. See
+`reports/inventory.md`.
+
+**The merged tree is two disconnected trees.** The fifth export shares *zero*
+people and *zero* families with the other four: it is the Japanese mythological
+line, 3844 people rooted at Kunino-tokotachi-no-mikoto, against 12422 in the
+Norwegian component. The merge is still correct — disjoint components do not
+conflict — but any statement about "the tree" should say which one, and
+reaching one from the other needs an export that bridges them, which no export
+in hand does. `reports/frontier.md` § Components is the live count.
 
 **An export is named for its style, not its seed — so filenames collide.** Geni
 writes `export-<style>.ged`, and `Forest`, `Ancestors` and `BloodTree` are the
@@ -80,7 +92,9 @@ Borsheim `6000000087535357291`, which is also their `SUBM` xref. A second
 `Forest` export from a different seed therefore arrives with a filename already
 taken. Disambiguate in `data_lake/` by appending the seed's Geni profile ID —
 `export-Forest-6000000226977233850.ged` — since the profile ID is this repo's
-primary key. The seed is the file's first `INDI` record.
+primary key. The seed is the file's first `INDI` record. This has now happened
+twice; `export-Forest-6000000226989731860.ged` is the 2026-08-02 one. Note the
+`SUBM` xref is the *account owner*, not the seed, so it cannot be used for this.
 
 **Stdlib only.** `urllib` covers the Wikidata SPARQL endpoint. Add a dependency
 only when the stdlib genuinely cannot do the job.

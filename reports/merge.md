@@ -7,16 +7,17 @@ Sources in merge order (earlier sources win value conflicts):
 1. `export-Ancestors.ged`
 2. `export-BloodTree.ged`
 3. `export-Forest-6000000226977233850.ged`
-4. `export-Forest.ged`
+4. `export-Forest-6000000226989731860.ged`
+5. `export-Forest.ged`
 
 ## Merged totals
 
 | record | count |
 | --- | ---: |
-| FAM | 5794 |
-| INDI | 12422 |
+| FAM | 8268 |
+| INDI | 16266 |
 | NOTE | 1035 |
-| SUBM | 1095 |
+| SUBM | 1114 |
 
 ## What each source contributed
 
@@ -25,6 +26,7 @@ Sources in merge order (earlier sources win value conflicts):
 | `export-Ancestors.ged` | 2281 | 3836 | 1026 | 578 | 0 | 0 |
 | `export-BloodTree.ged` | 809 | 3394 | 5 | 259 | 827 | 626 |
 | `export-Forest-6000000226977233850.ged` | 1742 | 3657 | 0 | 161 | 304 | 198 |
+| `export-Forest-6000000226989731860.ged` | 2474 | 3844 | 0 | 19 | 2 | 0 |
 | `export-Forest.ged` | 962 | 1535 | 4 | 97 | 3661 | 272 |
 
 ## Pointers to records we do not have

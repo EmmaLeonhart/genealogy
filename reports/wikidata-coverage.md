@@ -7,12 +7,12 @@ because lumping them together would overstate what is actually known.
 
 |  | people | share of tree |
 | --- | ---: | ---: |
-| **linked by P2600** (exact Geni ID on the Wikidata item) | 209 | 1.7% |
-| **linked by expansion** (family structure + name + dates) | 36 | 0.3% |
-| **linked, total** | 245 | 2.0% |
-| proposed, awaiting review | 87 | 0.7% |
-| no link and no proposal | 12090 | 97.3% |
-| **tree total** | 12422 | 100% |
+| **linked by P2600** (exact Geni ID on the Wikidata item) | 236 | 1.5% |
+| **linked by expansion** (family structure + name + dates) | 213 | 1.3% |
+| **linked, total** | 449 | 2.8% |
+| proposed, awaiting review | 181 | 1.1% |
+| no link and no proposal | 15636 | 96.1% |
+| **tree total** | 16266 | 100% |
 
 ## Proposals awaiting review
 
@@ -22,19 +22,19 @@ overlap, and whether the dates agree.
 
 | confidence | proposals |
 | --- | ---: |
-| medium | 120 |
-| high | 12 |
-| low | 3 |
+| medium | 221 |
+| high | 25 |
+| low | 6 |
 
 By how they were found:
 
 | found via | proposals |
 | --- | ---: |
-| name-match | 100 |
-| child | 19 |
-| mother | 6 |
-| father | 5 |
-| spouse | 5 |
+| name-match | 136 |
+| child | 76 |
+| spouse | 20 |
+| mother | 11 |
+| father | 9 |
 
 ## By century of birth
 
@@ -44,19 +44,19 @@ not, the reconciliation is missing something.
 
 | born | people | linked | share |
 | --- | ---: | ---: | ---: |
-| before 1000 | 41 | 10 | 24.4% |
-| 1000s | 155 | 74 | 47.7% |
+| before 1000 | 352 | 77 | 21.9% |
+| 1000s | 202 | 81 | 40.1% |
 | 1100s | 206 | 88 | 42.7% |
 | 1200s | 194 | 36 | 18.6% |
 | 1300s | 201 | 10 | 5.0% |
 | 1400s | 303 | 9 | 3.0% |
 | 1500s | 741 | 3 | 0.4% |
-| 1600s | 975 | 0 | 0.0% |
+| 1600s | 976 | 0 | 0.0% |
 | 1700s | 2892 | 0 | 0.0% |
 | 1800s | 3519 | 3 | 0.1% |
 | 1900s | 913 | 1 | 0.1% |
 | 2000s | 10 | 0 | 0.0% |
-| unknown | 2272 | 11 | 0.5% |
+| unknown | 5757 | 141 | 2.4% |
 
 ## How far the unmatched sit from a match
 
@@ -66,16 +66,17 @@ and no amount of searching will change that.
 
 | steps from a linked person | people |
 | --- | ---: |
-| 1 | 201 |
-| 2 | 190 |
-| 3 | 186 |
-| 4 | 230 |
-| 5 | 241 |
-| 6 | 472 |
-| 7 | 648 |
-| 8 | 631 |
-| 9 | 881 |
-| 10 or more | 8497 |
+| 1 | 614 |
+| 2 | 815 |
+| 3 | 807 |
+| 4 | 682 |
+| 5 | 531 |
+| 6 | 671 |
+| 7 | 774 |
+| 8 | 748 |
+| 9 | 967 |
+| 10 or more | 9124 |
+| unreachable | 84 |
 
 ## The 25 biggest unlinked people
 
@@ -85,28 +86,28 @@ the structural expansion somewhere new to walk from.
 
 | # | name | born | died | descendants | steps from a link | Geni profile |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1 | Unknown Torleifsdotter | 870 |  | 2343 | 3 | [6000000003243483251](https://www.geni.com/people/x/6000000003243483251) |
-| 2 | Horda-Kåre Aslaksson |  |  | 2343 | 3 | [6000000003243483277](https://www.geni.com/people/x/6000000003243483277) |
-| 3 | Thorleif den Vise Horda-Kåresson | 896 | 970 | 2342 | 2 | [6000000004533872801](https://www.geni.com/people/x/6000000004533872801) |
-| 4 | Nn ektefelle Torleif den Wise |  |  | 2342 | 2 | [6000000003820968965](https://www.geni.com/people/x/6000000003820968965) |
-| 5 | Sæbjörn | 960 |  | 2341 | 1 | [6000000004533872794](https://www.geni.com/people/x/6000000004533872794) |
-| 6 | NN Sæbjørns kone ukjent |  |  | 2341 | 1 | [6000000003820968955](https://www.geni.com/people/x/6000000003820968955) |
-| 7 | Nefsteinn Bårdson | 940 |  | 2261 | 4 | [6000000003820973115](https://www.geni.com/people/x/6000000003820973115) |
-| 8 | Rannveig Thordsdotter På Aurland | 950 | 998 | 2261 | 4 | [6000000003645716928](https://www.geni.com/people/x/6000000003645716928) |
-| 9 | Helge | 980 | 1010 | 2260 | 3 | [6000000006436624848](https://www.geni.com/people/x/6000000006436624848) |
-| 10 | N(?) Torsdatter |  |  | 2260 | 3 | [6000000011034872761](https://www.geni.com/people/x/6000000011034872761) |
-| 11 | Brynjulf | 1005 | 1066 | 2259 | 2 | [6000000002512272940](https://www.geni.com/people/x/6000000002512272940) |
-| 12 | NN | 1005 | 1050 | 2259 | 2 | [6000000005606928456](https://www.geni.com/people/x/6000000005606928456) |
-| 13 | Gjertrud | 1006 | 1060 | 2053 | 1 | [6000000003937334608](https://www.geni.com/people/x/6000000003937334608) |
-| 14 | Torild Totilsson | 1020 | 1070 | 2048 | 2 | [6000000003858604945](https://www.geni.com/people/x/6000000003858604945) |
-| 15 | Cecilia | 1024 | 1065 | 2048 | 2 | [6000000000462713383](https://www.geni.com/people/x/6000000000462713383) |
-| 16 | Maria Anundsdotter Emundsdotter | 1025 | 1066 | 2048 | 1 | [6000000003366838592](https://www.geni.com/people/x/6000000003366838592) |
-| 17 | Helena | 1055 | 1140 | 2044 | 1 | [356601173070003496](https://www.geni.com/people/x/356601173070003496) |
-| 18 | NN Sæbjørnsdatter | 1025 |  | 2015 | 1 | [6000000004533872788](https://www.geni.com/people/x/6000000004533872788) |
-| 19 | Arne | 1035 |  | 2015 | 1 | [6000000004533872782](https://www.geni.com/people/x/6000000004533872782) |
-| 20 | Ogmund Torbergsson Giske | 1020 | 1050 | 2000 | 1 | [6000000004648710083](https://www.geni.com/people/x/6000000004648710083) |
-| 21 | Sigrid Tordsdatter | 1025 | 1040 | 2000 | 1 | [6000000004648710324](https://www.geni.com/people/x/6000000004648710324) |
-| 22 | Gudrun | 1029 | 1095 | 1999 | 1 | [6000000001205369626](https://www.geni.com/people/x/6000000001205369626) |
-| 23 | Arnbjørn Torbergsson Giske | 1040 |  | 1992 | 1 | [6000000077849547072](https://www.geni.com/people/x/6000000077849547072) |
-| 24 | Jon Arnbjørnsson | 1065 |  | 1991 | 2 | [6000000077848202481](https://www.geni.com/people/x/6000000077848202481) |
-| 25 | Arnbjørn Jonsson Ambe | 1095 | 1170 | 1990 | 2 | [6000000077849307078](https://www.geni.com/people/x/6000000077849307078) |
+| 1 | Kunino-tokotachi-no-mikoto |  |  | 2361 | 24 | [6000000012788046985](https://www.geni.com/people/x/6000000012788046985) |
+| 2 | Kunino-sazuchi-no-mikoto |  |  | 2360 | 23 | [6000000012788442459](https://www.geni.com/people/x/6000000012788442459) |
+| 3 | Toyokumunu-no-mikoto |  |  | 2359 | 22 | [6000000012788364479](https://www.geni.com/people/x/6000000012788364479) |
+| 4 | Uijini-no-mikoto |  |  | 2358 | 21 | [6000000012788251792](https://www.geni.com/people/x/6000000012788251792) |
+| 5 | Suijini-no-mikoto |  |  | 2358 | 21 | [6000000012789309257](https://www.geni.com/people/x/6000000012789309257) |
+| 6 | Otonoji-no-mikoto |  |  | 2357 | 20 | [6000000012788373259](https://www.geni.com/people/x/6000000012788373259) |
+| 7 | Otomabe-no-mikoto |  |  | 2357 | 20 | [6000000012789274221](https://www.geni.com/people/x/6000000012789274221) |
+| 8 | Omodaru-no-mikoto |  |  | 2356 | 19 | [6000000012788488242](https://www.geni.com/people/x/6000000012788488242) |
+| 9 | Ayakashikone-no-mikoto |  |  | 2356 | 19 | [6000000012789059947](https://www.geni.com/people/x/6000000012789059947) |
+| 10 | Izanagi |  |  | 2354 | 18 | [6000000001829482628](https://www.geni.com/people/x/6000000001829482628) |
+| 11 | Unknown Torleifsdotter | 870 |  | 2343 | 3 | [6000000003243483251](https://www.geni.com/people/x/6000000003243483251) |
+| 12 | Horda-Kåre Aslaksson |  |  | 2343 | 3 | [6000000003243483277](https://www.geni.com/people/x/6000000003243483277) |
+| 13 | Thorleif den Vise Horda-Kåresson | 896 | 970 | 2342 | 2 | [6000000004533872801](https://www.geni.com/people/x/6000000004533872801) |
+| 14 | Nn ektefelle Torleif den Wise |  |  | 2342 | 2 | [6000000003820968965](https://www.geni.com/people/x/6000000003820968965) |
+| 15 | Sæbjörn | 960 |  | 2341 | 1 | [6000000004533872794](https://www.geni.com/people/x/6000000004533872794) |
+| 16 | NN Sæbjørns kone ukjent |  |  | 2341 | 1 | [6000000003820968955](https://www.geni.com/people/x/6000000003820968955) |
+| 17 | unknown grandfather |  |  | 2326 | 18 | [6000000226989731860](https://www.geni.com/people/x/6000000226989731860) |
+| 18 | Amaterasu-ōmikami |  |  | 2325 | 17 | [6000000001829754397](https://www.geni.com/people/x/6000000001829754397) |
+| 19 | Uknown father of Oshihomimi (Possibly Susanoo) |  |  | 2325 | 17 | [6000000198883523829](https://www.geni.com/people/x/6000000198883523829) |
+| 20 | Mikashikiyahime |  |  | 2279 | 16 | [6000000014665724482](https://www.geni.com/people/x/6000000014665724482) |
+| 21 | Nigihayahi |  |  | 2279 | 16 | [6000000014665769851](https://www.geni.com/people/x/6000000014665769851) |
+| 22 | Umashimaji |  |  | 2278 | 15 | [6000000014665690879](https://www.geni.com/people/x/6000000014665690879) |
+| 23 | Hikoyugi |  |  | 2277 | 14 | [6000000014665687799](https://www.geni.com/people/x/6000000014665687799) |
+| 24 | Odatehime |  |  | 2276 | 13 | [6000000014665663451](https://www.geni.com/people/x/6000000014665663451) |
+| 25 | Izushigokoro |  |  | 2276 | 13 | [6000000014665773244](https://www.geni.com/people/x/6000000014665773244) |

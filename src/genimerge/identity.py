@@ -29,9 +29,11 @@ __all__ = [
 ]
 
 #: The record-type letters Geni uses, each bound to exactly one record type.
-#: Measured, not assumed: across all 19,274 xrefs in the three exports there are
+#: Measured, not assumed: across all 31,477 xrefs in the five exports there are
 #: exactly four — ``I`` on every ``INDI``, ``F`` on every ``FAM``, ``N`` on every
-#: ``NOTE``, ``S`` on every ``SUBM``.
+#: ``NOTE``, ``S`` on every ``SUBM``. Two of the five carry no ``NOTE`` records
+#: at all, so an export is not obliged to use every letter; what is asserted is
+#: that no *other* letter appears and no letter spans two record types.
 GENI_XREF_KINDS = "IFNS"
 
 #: Deliberately narrow. An earlier version accepted any run of letters, which

@@ -2268,3 +2268,73 @@ saying so.
 
 **591 passed** (was 578), Python 3.13.14. Not CI-verified — CI is
 `workflow_dispatch:` only here on purpose.
+
+## 2026-08-02 — the fifth export, and the tree turns out to be two trees
+
+Emma dropped `export-geni.zip` at the repo root: another `export-Forest.ged`,
+so the style collided for the second time and it is filed by seed as
+`data_lake/export-Forest-6000000226989731860.ged`. The seed is that file's first
+`INDI` — "unknown grandfather" — whose child is *"Uknown father of Oshihomimi
+(Possibly Susanoo)"*. This is the **Japanese mythological line**.
+
+**Two tests failed on the new file before anything was changed, which is what
+they are for.** `test_export_cap_is_at_least_the_largest_real_export` caught
+3844 individuals against `GENI_EXPORT_CAP = 3840`, and the committed
+`reports/merge.md` no longer matched what `data_lake/` merges to. Neither needed
+remembering, and neither could have been missed.
+
+`GENI_EXPORT_CAP` is now **3844**, still documented as *largest observed* and
+not a limit Geni enforces. The counts so far read 3836, 3836, 3836, 3840, 3844
+— evenly spaced, and the docstring now says explicitly that this is **not**
+evidence of a step of four: three observations from three days and three seeds
+do not constrain where the next one lands. The arithmetic is not encoded
+anywhere, on purpose.
+
+**The merge is 16266 individuals and 8268 families, 0 conflicts** — up from
+12422 and 5794. Every one of the 3844 new people is genuinely new: this export
+shares **zero** individuals and **zero** families with each of the other four,
+pairwise. The merged file is therefore **2 connected
+components**, 12422 and 3844, and no walk outward from one reaches the other:
+
+| component | people | parentless | largest branch point |
+| --- | ---: | ---: | ---: |
+| 1 | 12422 | 2970 | Tora Torsteinsdatter Galge |
+| 2 | 3844 | 426 | Kunino-tokotachi-no-mikoto |
+
+That is not a merge failure — disjoint components do not conflict, they just
+never meet — but it does mean "the tree" is now shorthand for two, and both
+`README.md` and `CLAUDE.md` say so rather than quoting a single total.
+
+**It also does not close the Jimmu chain.** The standing note in `queue.md`
+tracked that chain stopping at Elisabeth Árpád `6000000003243185408`, with 51
+absent people between her and Jimmu — the Nemanjić rulers, Constantine IX,
+Alp Arslan, the Ashina khagans, the Tang and Kudara lines. This export lands at
+the far *end* of that chain and brings none of the middle, which is precisely
+why it arrives as an island. Reaching it from the Norwegian material still needs
+the bridging exports, and now there is a second shore to work toward as well as
+a first.
+
+**A second out-of-tree seed, and again this repo could not have proposed it.**
+`6000000226989731860` appears in none of the four earlier exports, so
+`reports/seeds.md` — which can only rank people already in the merged tree —
+had no way to reach it. That is the same blind spot Iver Mellegård exposed, now
+seen twice, and it sharpens the open NEEDS-DECISION rather than answering it.
+The seed ranking is *still* unvalidated: no export yet taken came from a seed it
+chose.
+
+Whole pipeline re-run in `README.md` order, `expand --search` not bare `expand`.
+449 of 16266 people now linked to Wikidata (2.8%): 236 by P2600 + 213 by
+expansion over 12 rings. 96 impossible and 89 implausible dates; 11 likely and
+42 possible duplicate profiles. Batches regenerated — `add-p2600.qs` 210
+statements, `add-names.qs` 49, `add-claims.qs` 66. Nothing sent to Wikidata, as
+always. P1545 still has not appeared in a batch, so it remains
+correct-by-confirmation rather than correct-by-observation.
+
+Stale counts fixed along the way: `README.md` still described *three* exports
+and an 8766-person merge, and `identity.py` still cited 19,274 xrefs across
+three files. It is 31,477 across five, still exactly four prefixes each bound to
+one record type — though two of the five exports carry no `NOTE` records at all,
+so "every letter appears" was never the claim and is now stated as such.
+
+**599 passed**, Python 3.13.14. Not CI-verified — CI is `workflow_dispatch:`
+only here on purpose.

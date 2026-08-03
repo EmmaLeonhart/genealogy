@@ -13,11 +13,11 @@ would be.
 
 |  | distinct | with a Wikidata item | share | look patronymic |
 | --- | ---: | ---: | ---: | ---: |
-| Surnames (P734) | 2351 | 1008 | 42.9% | 625 |
-| Given names (single tokens, which is what P735 takes) (P735) | 3702 | 2076 | 56.1% | 1209 |
-| Whole given-name strings, as Geni stores them (—) | 8168 | 929 | 11.4% | 5353 |
+| Surnames (P734) | 2707 | 1167 | 43.1% | 625 |
+| Given names (single tokens, which is what P735 takes) (P735) | 7405 | 2419 | 32.7% | 1209 |
+| Whole given-name strings, as Geni stores them (—) | 11772 | 1186 | 10.1% | 5353 |
 
-347 people in the tree carry no usable name at all.
+349 people in the tree carry no usable name at all.
 
 "Look patronymic" is a suffix heuristic (`-sson`, `-sdatter`, `-sen`,
 …). It will call some genuine inherited surnames patronymic, because
@@ -27,23 +27,31 @@ this report and for nothing else.
 
 ## Surnames — most common with no Wikidata item
 
-1343 of 2351 have no name item. Ranked by how many
+1540 of 2707 have no name item. Ranked by how many
 people would gain a P734 link if one existed.
 
 | name | people | looks patronymic |
 | --- | ---: | ---: |
 | Borsheim | 80 |  |
+| 百済王 | 47 |  |
 | Eriksson | 45 | yes |
 | Orre | 44 |  |
 | Sør-Kolnes | 35 |  |
 | Olsdtr | 32 |  |
+| 忌部 | 30 |  |
+| 蘇我 | 30 |  |
+| 大伴 | 26 |  |
 | Pedersen | 25 | yes |
 | Andersdatter | 23 | yes |
 | Erte | 20 |  |
+| 阿倍 | 20 |  |
 | Mathisdatter | 19 | yes |
+| 大江 | 18 |  |
+| 物部 | 18 |  |
 | Njå | 17 |  |
 | Nor-Kolnes | 17 |  |
 | Skas | 17 |  |
+| 天皇 | 17 |  |
 | Christensdatter | 16 | yes |
 | Pedersdatter | 16 | yes |
 | Rasmusdatter | 16 | yes |
@@ -53,6 +61,7 @@ people would gain a P734 link if one existed.
 | Årsvoll | 15 |  |
 | Raunes | 14 |  |
 | Vatvet | 14 |  |
+| 小月山 | 14 |  |
 | Eriksdtr | 13 |  |
 | Nord-Braut | 13 |  |
 | Pedersdtr | 13 |  |
@@ -61,26 +70,22 @@ people would gain a P734 link if one existed.
 | Fintland | 12 |  |
 | Smedshaug | 12 |  |
 | Væhle | 12 |  |
+| 斎部 | 12 |  |
 | Grøtvet | 11 |  |
-| Hoknes | 11 |  |
-| Lindemark | 11 |  |
-| Olsson Åsbø | 11 |  |
-| Stangaland | 11 |  |
-| Sæve | 11 |  |
-| Dangstorp | 10 |  |
-| Gabestad | 10 |  |
-| Gimra | 10 |  |
-| Harlem | 10 |  |
-| Ilgutu | 10 |  |
 
 ### Surnames that already have items
 
-The 40 most used, of 1008.
+The 40 most used, of 1167.
 
 | name | people | item(s) |
 | --- | ---: | ---: |
+| 藤原 | 742 | [Q26000326](https://www.wikidata.org/wiki/Q26000326) *(alias)*, [Q26000327](https://www.wikidata.org/wiki/Q26000327) *(alias)*, [Q26000634](https://www.wikidata.org/wiki/Q26000634) *(alias)* … |
+| 源 | 251 | [Q105426885](https://www.wikidata.org/wiki/Q105426885) *(alias)*, [Q124650375](https://www.wikidata.org/wiki/Q124650375) *(alias)*, [Q27306303](https://www.wikidata.org/wiki/Q27306303) *(alias)* … |
+| 橘 | 119 | [Q26212877](https://www.wikidata.org/wiki/Q26212877) *(alias)* |
+| 紀 | 115 | [Q15898289](https://www.wikidata.org/wiki/Q15898289) *(alias)*, [Q29571701](https://www.wikidata.org/wiki/Q29571701) *(alias)*, [Q124039562](https://www.wikidata.org/wiki/Q124039562) *(alias)* |
 | Lea | 85 | [Q6508166](https://www.wikidata.org/wiki/Q6508166), [Q18202125](https://www.wikidata.org/wiki/Q18202125) |
 | Espedal | 84 | [Q27892902](https://www.wikidata.org/wiki/Q27892902) |
+| 平 | 77 | [Q11060838](https://www.wikidata.org/wiki/Q11060838) *(alias)*, [Q20065410](https://www.wikidata.org/wiki/Q20065410) *(alias)*, [Q96182212](https://www.wikidata.org/wiki/Q96182212) *(alias)* … |
 | Bore | 65 | [Q16860245](https://www.wikidata.org/wiki/Q16860245) |
 | Stangeland | 57 | [Q21452049](https://www.wikidata.org/wiki/Q21452049) |
 | Olsdatter | 54 | [Q122838009](https://www.wikidata.org/wiki/Q122838009) |
@@ -98,12 +103,12 @@ The 40 most used, of 1008.
 | Karlsson | 40 | [Q16455420](https://www.wikidata.org/wiki/Q16455420) |
 | Lunde | 40 | [Q21488986](https://www.wikidata.org/wiki/Q21488986) |
 | Gjesdal | 39 | [Q27888954](https://www.wikidata.org/wiki/Q27888954) |
-| Tu | 37 | [Q11151574](https://www.wikidata.org/wiki/Q11151574), [Q69507403](https://www.wikidata.org/wiki/Q69507403), [Q21061411](https://www.wikidata.org/wiki/Q21061411) … |
+| Tu | 37 | [Q69507403](https://www.wikidata.org/wiki/Q69507403), [Q96440159](https://www.wikidata.org/wiki/Q96440159), [Q96440226](https://www.wikidata.org/wiki/Q96440226) … |
 | Øksnevad | 37 | [Q30583490](https://www.wikidata.org/wiki/Q30583490) |
 | Løland | 36 | [Q27889353](https://www.wikidata.org/wiki/Q27889353) |
 | Eikeland | 35 | [Q28872484](https://www.wikidata.org/wiki/Q28872484) |
+| NN | 35 | [Q83972870](https://www.wikidata.org/wiki/Q83972870) |
 | Lima | 34 | [Q96650708](https://www.wikidata.org/wiki/Q96650708), [Q111274275](https://www.wikidata.org/wiki/Q111274275), [Q67609267](https://www.wikidata.org/wiki/Q67609267) … |
-| NN | 34 | [Q83972870](https://www.wikidata.org/wiki/Q83972870) |
 | Sømme | 34 | [Q35026422](https://www.wikidata.org/wiki/Q35026422) |
 | Grude | 32 | [Q30229687](https://www.wikidata.org/wiki/Q30229687) |
 | Andersdotter | 31 | [Q42223005](https://www.wikidata.org/wiki/Q42223005) |
@@ -114,19 +119,15 @@ The 40 most used, of 1008.
 | Larsson | 28 | [Q21504742](https://www.wikidata.org/wiki/Q21504742), [Q112079692](https://www.wikidata.org/wiki/Q112079692) |
 | Sele | 28 | [Q21448952](https://www.wikidata.org/wiki/Q21448952) |
 | Oftedal | 27 | [Q27892877](https://www.wikidata.org/wiki/Q27892877) |
-| Hansdatter | 26 | [Q63342131](https://www.wikidata.org/wiki/Q63342131) |
-| Larsen | 26 | [Q13099004](https://www.wikidata.org/wiki/Q13099004), [Q57560093](https://www.wikidata.org/wiki/Q57560093) |
-| Persson | 26 | [Q27876648](https://www.wikidata.org/wiki/Q27876648) |
-| Hodne | 25 | [Q30086981](https://www.wikidata.org/wiki/Q30086981) |
-| Larsdotter | 25 | [Q46398774](https://www.wikidata.org/wiki/Q46398774) |
 
 ## Given names (single tokens, which is what P735 takes) — most common with no Wikidata item
 
-1626 of 3702 have no name item. Ranked by how many
+4986 of 7405 have no name item. Ranked by how many
 people would gain a P735 link if one existed.
 
 | name | people | looks patronymic |
 | --- | ---: | ---: |
+| no | 263 |  |
 | Pedersdatter | 163 | yes |
 | Andersdatter | 117 | yes |
 | Rasmusdatter | 111 | yes |
@@ -144,14 +145,19 @@ people would gain a P735 link if one existed.
 | Svensdatter | 37 | yes |
 | Helgesdatter | 32 | yes |
 | Ukjent | 32 |  |
+| of | 32 |  |
+| mikoto | 30 |  |
 | Tollak | 28 |  |
+| daughter | 28 |  |
 | Toresdatter | 25 | yes |
 | Amundsdatter | 23 | yes |
 | Mikkelsdatter | 23 | yes |
 | Taletta | 22 |  |
 | Tollaksdatter | 22 | yes |
+| Unknown | 22 |  |
 | Toreson | 21 | yes |
 | Torbjørnsdatter | 20 | yes |
+| hime | 20 |  |
 | Eivindsdatter | 19 | yes |
 | Sørensdatter | 19 | yes |
 | Torgersdatter | 19 | yes |
@@ -161,30 +167,24 @@ people would gain a P735 link if one existed.
 | Halvardsdatter | 17 | yes |
 | Jørgensdatter | 17 | yes |
 | Karlsdatter | 17 | yes |
-| Tollaksen | 17 | yes |
-| Bjørnsdatter | 16 | yes |
-| Evensdatter | 16 | yes |
-| Gundersdatter | 16 | yes |
-| Ommundsdatter | 16 | yes |
-| Enoksdatter | 15 | yes |
 
 ### Given names (single tokens, which is what P735 takes) that already have items
 
-The 40 most used, of 2076.
+The 40 most used, of 2419.
 
 | name | people | item(s) |
 | --- | ---: | ---: |
 | Ole | 367 | [Q2097883](https://www.wikidata.org/wiki/Q2097883), [Q47483923](https://www.wikidata.org/wiki/Q47483923) |
 | Olsen | 343 | [Q12042571](https://www.wikidata.org/wiki/Q12042571), [Q107321411](https://www.wikidata.org/wiki/Q107321411) |
 | Anne | 324 | [Q47860848](https://www.wikidata.org/wiki/Q47860848), [Q564684](https://www.wikidata.org/wiki/Q564684), [Q37456956](https://www.wikidata.org/wiki/Q37456956) |
-| Maria | 313 | [Q325872](https://www.wikidata.org/wiki/Q325872), [Q56449214](https://www.wikidata.org/wiki/Q56449214), [Q25413386](https://www.wikidata.org/wiki/Q25413386) … |
-| NN | 302 | [Q83972870](https://www.wikidata.org/wiki/Q83972870) |
+| Maria | 313 | [Q25413386](https://www.wikidata.org/wiki/Q25413386), [Q56449214](https://www.wikidata.org/wiki/Q56449214), [Q325872](https://www.wikidata.org/wiki/Q325872) … |
+| NN | 305 | [Q83972870](https://www.wikidata.org/wiki/Q83972870) |
 | Olsdatter | 297 | [Q122838009](https://www.wikidata.org/wiki/Q122838009) |
 | Anders | 274 | [Q8843357](https://www.wikidata.org/wiki/Q8843357), [Q1441427](https://www.wikidata.org/wiki/Q1441427) |
-| Anna | 269 | [Q60405936](https://www.wikidata.org/wiki/Q60405936), [Q56886804](https://www.wikidata.org/wiki/Q56886804), [Q27157039](https://www.wikidata.org/wiki/Q27157039) … |
+| Anna | 269 | [Q137209695](https://www.wikidata.org/wiki/Q137209695), [Q137303680](https://www.wikidata.org/wiki/Q137303680), [Q666578](https://www.wikidata.org/wiki/Q666578) … |
 | Hans | 247 | [Q632842](https://www.wikidata.org/wiki/Q632842), [Q18130786](https://www.wikidata.org/wiki/Q18130786), [Q1627330](https://www.wikidata.org/wiki/Q1627330) *(alias)* |
 | Lars | 221 | [Q15635262](https://www.wikidata.org/wiki/Q15635262), [Q37471742](https://www.wikidata.org/wiki/Q37471742) |
-| Peder | 172 | [Q121109890](https://www.wikidata.org/wiki/Q121109890), [Q10622039](https://www.wikidata.org/wiki/Q10622039) |
+| Peder | 172 | [Q10622039](https://www.wikidata.org/wiki/Q10622039), [Q121109890](https://www.wikidata.org/wiki/Q121109890) |
 | Ingeborg | 162 | [Q656590](https://www.wikidata.org/wiki/Q656590) |
 | Johannes | 161 | [Q2117521](https://www.wikidata.org/wiki/Q2117521) |
 | Larsdatter | 154 | [Q122837357](https://www.wikidata.org/wiki/Q122837357) |
@@ -193,36 +193,38 @@ The 40 most used, of 2076.
 | Johanne | 132 | [Q1477757](https://www.wikidata.org/wiki/Q1477757) |
 | Marie | 132 | [Q18070774](https://www.wikidata.org/wiki/Q18070774), [Q632104](https://www.wikidata.org/wiki/Q632104), [Q106674406](https://www.wikidata.org/wiki/Q106674406) |
 | Hansen | 126 | [Q2712367](https://www.wikidata.org/wiki/Q2712367), [Q96774689](https://www.wikidata.org/wiki/Q96774689), [Q27238020](https://www.wikidata.org/wiki/Q27238020) |
-| Jon | 121 | [Q13501137](https://www.wikidata.org/wiki/Q13501137), [Q37441830](https://www.wikidata.org/wiki/Q37441830), [Q69509676](https://www.wikidata.org/wiki/Q69509676) … |
+| Jon | 121 | [Q37441830](https://www.wikidata.org/wiki/Q37441830), [Q13501137](https://www.wikidata.org/wiki/Q13501137), [Q69509676](https://www.wikidata.org/wiki/Q69509676) … |
 | Inger | 120 | [Q3358452](https://www.wikidata.org/wiki/Q3358452) |
 | N | 120 | [Q19803511](https://www.wikidata.org/wiki/Q19803511) *(alias)* |
-| Ola | 119 | [Q96675523](https://www.wikidata.org/wiki/Q96675523), [Q37039614](https://www.wikidata.org/wiki/Q37039614), [Q1782345](https://www.wikidata.org/wiki/Q1782345) … |
-| Nils | 118 | [Q83496783](https://www.wikidata.org/wiki/Q83496783), [Q16423038](https://www.wikidata.org/wiki/Q16423038) |
+| Ola | 119 | [Q140765675](https://www.wikidata.org/wiki/Q140765675), [Q37039614](https://www.wikidata.org/wiki/Q37039614), [Q1782345](https://www.wikidata.org/wiki/Q1782345) … |
+| Nils | 118 | [Q16423038](https://www.wikidata.org/wiki/Q16423038), [Q83496783](https://www.wikidata.org/wiki/Q83496783) |
 | Hansdatter | 111 | [Q63342131](https://www.wikidata.org/wiki/Q63342131) |
-| Kari | 111 | [Q19819757](https://www.wikidata.org/wiki/Q19819757), [Q1333594](https://www.wikidata.org/wiki/Q1333594), [Q40103790](https://www.wikidata.org/wiki/Q40103790) … |
+| Kari | 111 | [Q40103790](https://www.wikidata.org/wiki/Q40103790), [Q1333594](https://www.wikidata.org/wiki/Q1333594), [Q19376950](https://www.wikidata.org/wiki/Q19376950) … |
 | Johan | 110 | [Q10989273](https://www.wikidata.org/wiki/Q10989273) |
-| Erik | 105 | [Q34032468](https://www.wikidata.org/wiki/Q34032468), [Q750186](https://www.wikidata.org/wiki/Q750186), [Q135904464](https://www.wikidata.org/wiki/Q135904464) |
-| Mari | 103 | [Q137945070](https://www.wikidata.org/wiki/Q137945070), [Q107631602](https://www.wikidata.org/wiki/Q107631602), [Q131105437](https://www.wikidata.org/wiki/Q131105437) … |
+| Erik | 105 | [Q750186](https://www.wikidata.org/wiki/Q750186), [Q135904464](https://www.wikidata.org/wiki/Q135904464), [Q34032468](https://www.wikidata.org/wiki/Q34032468) |
+| Mari | 103 | [Q140646816](https://www.wikidata.org/wiki/Q140646816), [Q140664170](https://www.wikidata.org/wiki/Q140664170), [Q140668977](https://www.wikidata.org/wiki/Q140668977) … |
 | Larsen | 102 | [Q13099004](https://www.wikidata.org/wiki/Q13099004), [Q57560093](https://www.wikidata.org/wiki/Q57560093) |
-| Karen | 100 | [Q111781671](https://www.wikidata.org/wiki/Q111781671), [Q89579912](https://www.wikidata.org/wiki/Q89579912), [Q37176411](https://www.wikidata.org/wiki/Q37176411) … |
+| Karen | 100 | [Q20199791](https://www.wikidata.org/wiki/Q20199791), [Q16384993](https://www.wikidata.org/wiki/Q16384993), [Q1221747](https://www.wikidata.org/wiki/Q1221747) … |
 | Marte | 97 | [Q16888287](https://www.wikidata.org/wiki/Q16888287), [Q18536473](https://www.wikidata.org/wiki/Q18536473), [Q18536473](https://www.wikidata.org/wiki/Q18536473) |
 | Ragnhild | 93 | [Q1390292](https://www.wikidata.org/wiki/Q1390292) |
 | Knut | 91 | [Q114075068](https://www.wikidata.org/wiki/Q114075068), [Q943881](https://www.wikidata.org/wiki/Q943881) |
 | Berte | 90 | [Q11960827](https://www.wikidata.org/wiki/Q11960827), [Q37468120](https://www.wikidata.org/wiki/Q37468120) |
 | Karl | 82 | [Q136771753](https://www.wikidata.org/wiki/Q136771753), [Q15731830](https://www.wikidata.org/wiki/Q15731830), [Q18413197](https://www.wikidata.org/wiki/Q18413197) |
-| Sven | 79 | [Q2370957](https://www.wikidata.org/wiki/Q2370957), [Q125386376](https://www.wikidata.org/wiki/Q125386376) |
+| Sven | 79 | [Q125386376](https://www.wikidata.org/wiki/Q125386376), [Q2370957](https://www.wikidata.org/wiki/Q2370957) |
 | Kristine | 78 | [Q16859157](https://www.wikidata.org/wiki/Q16859157) |
 | Maren | 76 | [Q1666203](https://www.wikidata.org/wiki/Q1666203), [Q37432426](https://www.wikidata.org/wiki/Q37432426) |
 | Rasmussen | 74 | [Q1634177](https://www.wikidata.org/wiki/Q1634177) |
 
 ## Whole given-name strings, as Geni stores them — most common with no Wikidata item
 
-7239 of 8168 have no name item. Ranked by how many
+10586 of 11772 have no name item. Ranked by how many
 people would gain a — link if one existed.
 
 | name | people | looks patronymic |
 | --- | ---: | ---: |
 | N.N. | 79 |  |
+| Fujiwara no | 52 |  |
+| Minamoto no | 47 |  |
 | nn | 35 |  |
 | Ole Olsen | 25 | yes |
 | Anne Olsdatter | 24 | yes |
@@ -235,6 +237,8 @@ people would gain a — link if one existed.
 | Anne Maria | 16 |  |
 | Anders Hansen | 15 | yes |
 | Marte Olsdatter | 15 | yes |
+| Tachibana no | 15 |  |
+| Abe no | 14 |  |
 | Hans Olsen | 14 | yes |
 | Kristen Olsen | 14 | yes |
 | Ole Larsen | 14 | yes |
@@ -250,45 +254,41 @@ people would gain a — link if one existed.
 | Mathis Olsen | 10 | yes |
 | Rasmus Olsen | 10 | yes |
 | Rasmus Rasmusson | 10 | yes |
+| Unknown Wife | 10 |  |
 | Anders Pedersen | 9 | yes |
 | Anne Hansdatter | 9 | yes |
 | Ingeborg Olsdatter | 9 | yes |
 | Kari Olsdatter | 9 | yes |
 | Rasmus Rasmussen | 9 | yes |
+| Taira no | 9 |  |
 | Anna Olsdatter | 8 | yes |
-| Hans Pedersen | 8 | yes |
-| Hans Torersen | 8 | yes |
-| Inger Olsdatter | 8 | yes |
-| Johanne Olsdatter | 8 | yes |
-| Johannes Andersen | 8 | yes |
-| Lars Larsson | 8 | yes |
 
 ### Whole given-name strings, as Geni stores them that already have items
 
-The 40 most used, of 929.
+The 40 most used, of 1186.
 
 | name | people | item(s) |
 | --- | ---: | ---: |
-| NN | 217 | [Q83972870](https://www.wikidata.org/wiki/Q83972870) |
+| NN | 220 | [Q83972870](https://www.wikidata.org/wiki/Q83972870) |
 | Anders | 106 | [Q8843357](https://www.wikidata.org/wiki/Q8843357), [Q1441427](https://www.wikidata.org/wiki/Q1441427) |
 | Ole | 84 | [Q2097883](https://www.wikidata.org/wiki/Q2097883), [Q47483923](https://www.wikidata.org/wiki/Q47483923) |
 | Hans | 78 | [Q632842](https://www.wikidata.org/wiki/Q632842), [Q18130786](https://www.wikidata.org/wiki/Q18130786), [Q1627330](https://www.wikidata.org/wiki/Q1627330) *(alias)* |
 | Lars | 57 | [Q15635262](https://www.wikidata.org/wiki/Q15635262), [Q37471742](https://www.wikidata.org/wiki/Q37471742) |
-| Anna | 55 | [Q60405936](https://www.wikidata.org/wiki/Q60405936), [Q56886804](https://www.wikidata.org/wiki/Q56886804), [Q27157039](https://www.wikidata.org/wiki/Q27157039) … |
+| Anna | 55 | [Q137209695](https://www.wikidata.org/wiki/Q137209695), [Q137303680](https://www.wikidata.org/wiki/Q137303680), [Q666578](https://www.wikidata.org/wiki/Q666578) … |
 | Johannes | 46 | [Q2117521](https://www.wikidata.org/wiki/Q2117521) |
 | Anne | 45 | [Q47860848](https://www.wikidata.org/wiki/Q47860848), [Q564684](https://www.wikidata.org/wiki/Q564684), [Q37456956](https://www.wikidata.org/wiki/Q37456956) |
 | Per | 42 | [Q13582800](https://www.wikidata.org/wiki/Q13582800), [Q37556804](https://www.wikidata.org/wiki/Q37556804) |
-| Jon | 40 | [Q13501137](https://www.wikidata.org/wiki/Q13501137), [Q37441830](https://www.wikidata.org/wiki/Q37441830), [Q69509676](https://www.wikidata.org/wiki/Q69509676) … |
+| Jon | 40 | [Q37441830](https://www.wikidata.org/wiki/Q37441830), [Q13501137](https://www.wikidata.org/wiki/Q13501137), [Q69509676](https://www.wikidata.org/wiki/Q69509676) … |
 | Ingeborg | 39 | [Q656590](https://www.wikidata.org/wiki/Q656590) |
-| Nils | 39 | [Q83496783](https://www.wikidata.org/wiki/Q83496783), [Q16423038](https://www.wikidata.org/wiki/Q16423038) |
+| Nils | 39 | [Q16423038](https://www.wikidata.org/wiki/Q16423038), [Q83496783](https://www.wikidata.org/wiki/Q83496783) |
 | Olof | 39 | [Q47454289](https://www.wikidata.org/wiki/Q47454289), [Q18089653](https://www.wikidata.org/wiki/Q18089653) |
-| Peder | 36 | [Q121109890](https://www.wikidata.org/wiki/Q121109890), [Q10622039](https://www.wikidata.org/wiki/Q10622039) |
-| Erik | 30 | [Q34032468](https://www.wikidata.org/wiki/Q34032468), [Q750186](https://www.wikidata.org/wiki/Q750186), [Q135904464](https://www.wikidata.org/wiki/Q135904464) |
-| Maria | 29 | [Q325872](https://www.wikidata.org/wiki/Q325872), [Q56449214](https://www.wikidata.org/wiki/Q56449214), [Q25413386](https://www.wikidata.org/wiki/Q25413386) … |
+| Peder | 36 | [Q10622039](https://www.wikidata.org/wiki/Q10622039), [Q121109890](https://www.wikidata.org/wiki/Q121109890) |
+| Erik | 30 | [Q750186](https://www.wikidata.org/wiki/Q750186), [Q135904464](https://www.wikidata.org/wiki/Q135904464), [Q34032468](https://www.wikidata.org/wiki/Q34032468) |
+| Maria | 29 | [Q25413386](https://www.wikidata.org/wiki/Q25413386), [Q56449214](https://www.wikidata.org/wiki/Q56449214), [Q325872](https://www.wikidata.org/wiki/Q325872) … |
 | Johan | 28 | [Q10989273](https://www.wikidata.org/wiki/Q10989273) |
 | Knut | 26 | [Q114075068](https://www.wikidata.org/wiki/Q114075068), [Q943881](https://www.wikidata.org/wiki/Q943881) |
 | Rasmus | 24 | [Q1785744](https://www.wikidata.org/wiki/Q1785744), [Q37302782](https://www.wikidata.org/wiki/Q37302782) |
-| Kari | 23 | [Q19819757](https://www.wikidata.org/wiki/Q19819757), [Q1333594](https://www.wikidata.org/wiki/Q1333594), [Q40103790](https://www.wikidata.org/wiki/Q40103790) … |
+| Kari | 23 | [Q40103790](https://www.wikidata.org/wiki/Q40103790), [Q1333594](https://www.wikidata.org/wiki/Q1333594), [Q19376950](https://www.wikidata.org/wiki/Q19376950) … |
 | Marthe | 23 | [Q27205647](https://www.wikidata.org/wiki/Q27205647), [Q1483687](https://www.wikidata.org/wiki/Q1483687), [Q138795562](https://www.wikidata.org/wiki/Q138795562) |
 | Arne | 22 | [Q30340329](https://www.wikidata.org/wiki/Q30340329), [Q645757](https://www.wikidata.org/wiki/Q645757) |
 | Johanne | 21 | [Q1477757](https://www.wikidata.org/wiki/Q1477757) |
@@ -297,8 +297,8 @@ The 40 most used, of 929.
 | Ingrid | 20 | [Q903741](https://www.wikidata.org/wiki/Q903741) |
 | Sigrid | 19 | [Q634916](https://www.wikidata.org/wiki/Q634916) |
 | Kerstin | 18 | [Q83361934](https://www.wikidata.org/wiki/Q83361934), [Q7618688](https://www.wikidata.org/wiki/Q7618688) |
-| Mari | 18 | [Q137945070](https://www.wikidata.org/wiki/Q137945070), [Q107631602](https://www.wikidata.org/wiki/Q107631602), [Q131105437](https://www.wikidata.org/wiki/Q131105437) … |
-| Sven | 18 | [Q2370957](https://www.wikidata.org/wiki/Q2370957), [Q125386376](https://www.wikidata.org/wiki/Q125386376) |
+| Mari | 18 | [Q140646816](https://www.wikidata.org/wiki/Q140646816), [Q140664170](https://www.wikidata.org/wiki/Q140664170), [Q140668977](https://www.wikidata.org/wiki/Q140668977) … |
+| Sven | 18 | [Q125386376](https://www.wikidata.org/wiki/Q125386376), [Q2370957](https://www.wikidata.org/wiki/Q2370957) |
 | Inger | 17 | [Q3358452](https://www.wikidata.org/wiki/Q3358452) |
 | Iver | 17 | [Q11977747](https://www.wikidata.org/wiki/Q11977747) |
 | Ragnhild | 17 | [Q1390292](https://www.wikidata.org/wiki/Q1390292) |
@@ -306,6 +306,6 @@ The 40 most used, of 929.
 | Eric | 15 | [Q25936409](https://www.wikidata.org/wiki/Q25936409), [Q12788459](https://www.wikidata.org/wiki/Q12788459) |
 | Berthe | 14 | [Q2899262](https://www.wikidata.org/wiki/Q2899262), [Q18180820](https://www.wikidata.org/wiki/Q18180820), [Q11960827](https://www.wikidata.org/wiki/Q11960827) *(alias)* |
 | Brita | 14 | [Q37279766](https://www.wikidata.org/wiki/Q37279766) |
-| Karen | 14 | [Q111781671](https://www.wikidata.org/wiki/Q111781671), [Q89579912](https://www.wikidata.org/wiki/Q89579912), [Q37176411](https://www.wikidata.org/wiki/Q37176411) … |
+| Karen | 14 | [Q20199791](https://www.wikidata.org/wiki/Q20199791), [Q16384993](https://www.wikidata.org/wiki/Q16384993), [Q1221747](https://www.wikidata.org/wiki/Q1221747) … |
 | Christen | 13 | [Q21034625](https://www.wikidata.org/wiki/Q21034625), [Q21507411](https://www.wikidata.org/wiki/Q21507411), [Q104700963](https://www.wikidata.org/wiki/Q104700963) |
 | Elisabeth | 13 | [Q17524931](https://www.wikidata.org/wiki/Q17524931), [Q63611044](https://www.wikidata.org/wiki/Q63611044) |

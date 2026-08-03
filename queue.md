@@ -1,21 +1,6 @@
 # geni — Work Queue
 
 
-## ⛔ STOP FOR THE DAY — Emma, 2026-08-02: finish what is in flight, then stand down
-
-Her instruction, direct: **complete your immediate task, then STOP your work loop for the rest of
-2026-08-02.**
-
-- **Finish the task you are already on** — this is not an abort. Close it out, commit and push so
-  nothing is stranded, then stop.
-- **Then stop the work loop.** Clear your loop crons for the day. No further ticks, no starting the
-  next queue item, no self-invented work.
-- **⚠ STOP LOOPING, DO NOT STOP THE SESSION.** Emma's standing non-negotiable: *never kill, close or
-  stop any Claude session, console, browser or browser task.* She needs the consoles open. Stand the
-  loop down; leave the window alive and idle.
-- **Scope: 2026-08-02 ONLY.** It expires at midnight. Whoever reads it after that **DELETES this
-  item** — it does not carry into 08-03, and its expiry is not licence to push work at her.
-
 **This file is a queue of *concrete, executable steps*, not a state snapshot.** It lists what is being worked on right now. Finished work lives in `devlog.md` (a dated entry) and `git log`; longer-horizon, *abstract* work lives in `todo.md` and gets decomposed into items here when it's ready to execute. **When an item is done, delete it from this file AND append a dated entry to `devlog.md` in the same commit, then push.** Do not add checkmarks, "done" markers, or status indicators in place. If an item is still here, it is not done.
 
 **Why this file exists:** when a planning step (formal planning mode or just "think before doing") produces a plan, that plan is written here BEFORE execution starts. That way an interrupted session can pick up from the queue rather than from chat context that may be gone.
@@ -30,20 +15,20 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
-**Empty.** `reports/consistency.md` now also lists profiles that look like one
-person recorded twice.
+**Empty.** The fifth export is merged; see `devlog.md` 2026-08-02.
 
 ### Standing context
 
-- **BLOCKED-ON-USER-ACTION — 95 impossible dates in the tree, listed in
+- **BLOCKED-ON-USER-ACTION — 96 impossible dates in the tree, listed in
   `reports/consistency.md`.** Someone born before a parent, or after their
   mother died. Every one is an error in Geni's data rather than in the merge, so
   fixing them means editing profiles on Geni; this repo will not change them.
-  A further 88 are implausible rather than impossible — a parent under 12, a
+  A further 89 are implausible rather than impossible — a parent under 12, a
   lifespan over 120 — and some of those will turn out to be correct.
+  (Counts re-measured 2026-08-02 over the five-export merge.)
 
   Worth doing before the QuickStatements batches rather than after:
-  `add-claims.qs` carries 18 P569 and 24 P570 statements built from these same
+  `add-claims.qs` carries 19 P569 and 24 P570 statements built from these same
   dates, so an uncorrected year here becomes a wrong year on Wikidata.
 
 
@@ -67,10 +52,20 @@ person recorded twice.
   shown what is behind this one. That evidence comes from outside our data,
   which is the same blind spot that hid Iver Mellegård.
 
-  **The honest limit:** an export fills at ~3840 people and Jimmu is ~51 further
-  steps down the chain, so one export very likely reaches the Serbian and
-  Byzantine material and **not** Japan. Getting to Jimmu is a sequence of
-  exports walking down the chain, not a single one.
+  **The limit:** an export fills at ~3840 people and Jimmu is ~51 further steps
+  down the chain, so one export very likely reaches the Serbian and Byzantine
+  material and **not** Japan. Getting to Jimmu is a sequence of exports walking
+  down the chain, not a single one.
+
+  **Update 2026-08-02 — the far end arrived first, and it is an island.** The
+  fifth export is the Japanese line itself (seed `6000000226989731860`, rooted
+  at Kunino-tokotachi-no-mikoto): 3844 people sharing **zero** individuals and
+  **zero** families with the other four exports, so the merged file is now two
+  disconnected components. It brings none of the Serbian/Byzantine/Turkic middle
+  of the chain, which is exactly why it does not attach. This does not retire
+  the Jelena Urošević candidate — it makes it a *bridge* between two components
+  we now hold rather than a reach into the unknown, which is a better bet than
+  before, not a worse one. Both ends are anchored; the middle is what is missing.
 
 
 
@@ -118,9 +113,12 @@ person recorded twice.
   can only rank people already in the merged tree. Iver Mellegård, who seeded
   the best export so far, was in none of the three earlier exports, so the
   ranking could not have proposed him. Whatever route found him is one this repo
-  cannot see or reproduce. The question is with the user; the answer decides
-  whether to build out-of-tree candidate ranking or something else. Not blocking
-  anything currently queued.
+  cannot see or reproduce. **Seen twice now:** the 2026-08-02 seed
+  `6000000226989731860` was likewise in none of the four earlier exports, and
+  produced an export that overlaps them by zero people. Two of the five exports
+  came from seeds this repo had no way to name. The question is with the user;
+  the answer decides whether to build out-of-tree candidate ranking or something
+  else. Not blocking anything currently queued.
 
 - **Take the pipeline order from `README.md`, not from a list written by hand.**
   The README's "before pushing" block already gives every command in dependency
@@ -143,15 +141,28 @@ person recorded twice.
   `pyproject.toml`, which is why the suite runs but `python -m genimerge` does
   not). Not worth changing the user's PATH over, but worth not rediscovering.
 - **NEEDS-INVESTIGATION — what actually bounds a Geni export is still unknown.**
-  The code no longer claims to know: `GENI_EXPORT_CAP` is now documented as the
-  largest export observed (3840) rather than a limit Geni enforces, and
-  `tests/test_seeds.py` fails if a future export exceeds it. What is unresolved
-  is the underlying fact. Four exports — 3836, 3836, 3836, 3840 — cannot
+  The code no longer claims to know: `GENI_EXPORT_CAP` is documented as the
+  largest export observed (**3844** as of 2026-08-02) rather than a limit Geni
+  enforces, and `tests/test_seeds.py` fails if a future export exceeds it —
+  which is how both 3840 and 3844 were caught. What is unresolved is the
+  underlying fact. Five exports — 3836, 3836, 3836, 3840, 3844 — still cannot
   separate a raised limit from a per-account limit from a limit on something
-  other than head count from a walk that overshoots a floor. This needs a fifth
-  export to move, so it advances as data arrives rather than by being worked on;
-  it is not blocking anything, because being off by a few people out of ~3840
-  does not move the seed ranking.
+  other than head count from a walk that overshoots a floor. **The even spacing
+  is a trap:** three numbers four apart, from three days and three seeds, are
+  not a step of four, and nothing in the code encodes that arithmetic. This
+  advances as data arrives rather than by being worked on; it is not blocking
+  anything, because being off by a few people out of ~3840 does not move the
+  seed ranking.
+
+- **NEEDS-INVESTIGATION — the merged tree is two components and nothing in hand
+  joins them.** 12422 people (Norwegian, branch point Tora Torsteinsdatter
+  Galge) and 3844 (Japanese mythological, root Kunino-tokotachi-no-mikoto).
+  `reports/frontier.md` § Components is the live count. Every aggregate figure
+  this repo prints — coverage percentages, generational depth, the seed ranking
+  — is now computed across two unrelated trees, which is not wrong but is easy
+  to read as one. Resolves either by an export that bridges them (see the Jimmu
+  chain note above) or by deciding the components are reported separately.
+  Not blocking anything.
 
 - **CI is off on purpose, and stays off.** Not a blocker — a decision. This is a
   private repo, where Actions minutes are billable rather than free, and
@@ -162,12 +173,15 @@ person recorded twice.
   is exercised only by the static check in `tests/test_python_floor.py`, and no
   commit should be described as CI-verified.
 - **NEEDS-DECISION** — `todo.md` items 4 and 5: creating Wikidata items, for
-  people who have none and for the **1343 surnames and 1626 given names** that
-  have none. Sized in `reports/names.md`: 1008 of 2351 distinct surnames (42.9%)
-  and 2076 of 3702 distinct given-name tokens (56.1%) have an item, so the rest
-  do not. Whole given-name strings as Geni stores them are far worse — 929 of
-  8168 (11.4%) — because Geni packs multiple names into one field. The decision
-  is the user's.
+  people who have none and for the **1540 surnames and 4986 given-name tokens**
+  that have none. Sized in `reports/names.md` over the five-export merge: 1167
+  of 2707 distinct surnames (43.1%) and 2419 of 7405 distinct given-name tokens
+  (32.7%) have an item, so the rest do not. Whole given-name strings as Geni
+  stores them are far worse — 1186 of 11772 (10.1%) — because Geni packs
+  multiple names into one field. The fifth export roughly doubled the
+  given-token pool and dropped coverage from 56.1% to 32.7%: the Japanese
+  component's names are much less represented on Wikidata than the Norwegian
+  ones. The decision is the user's.
 
 ---
 

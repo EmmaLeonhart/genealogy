@@ -13,15 +13,15 @@ It is not only tidiness. `genimerge crosscheck` proposes P569 and P570 statement
 
 | | count |
 | --- | ---: |
-| people in the tree | 12422 |
-| of those, carrying any year | 10444 |
-| **impossible** — cannot be true | **95** |
-| **implausible** — could be, probably is not | **88** |
+| people in the tree | 16266 |
+| of those, carrying any year | 10903 |
+| **impossible** — cannot be true | **96** |
+| **implausible** — could be, probably is not | **89** |
 
 A child born within a year of its father's death is ordinary and is **not** reported. There is no such allowance on the mother's side, where a birth after death is not possible at all — counting the two together would invent defects and slander real births.
 
 
-## Impossible (95)
+## Impossible (96)
 
 Every one of these is an error somewhere — in a date, or in a link between two people who are not really parent and child.
 
@@ -70,6 +70,7 @@ Every one of these is an error somewhere — in a date, or in a link between two
 | [Havtor Geirmundsen](https://www.geni.com/people/x/6000000007224161902) | born 1480, after their father Gjermund Ogmundsen Pust died in 1423 | [Gjermund Ogmundsen Pust](https://www.geni.com/people/x/6000000007480923065) |
 | [Tore Gardson Underberge](https://www.geni.com/people/x/6000000004225286685) | born 1481, after their mother Sophia von Brandenburg died in 1470 | [Sophia von Brandenburg](https://www.geni.com/people/x/6000000004666525158) |
 | [Thamme von Flemming](https://www.geni.com/people/x/6000000015841631236) | born 1486, after their father Hans von Flemming died in 1479 | [Hans von Flemming](https://www.geni.com/people/x/6000000015841603070) |
+| [足仲彦](https://www.geni.com/people/x/6000000001829393837) | born 150, after their father 小碓命 died in 113 | [小碓命](https://www.geni.com/people/x/6000000001829648345) |
 | [Sæbjørn Toresson Talgje](https://www.geni.com/people/x/6000000004213963966) | born 1510, after their mother Cecilie Mortensdatter died in 1465 | [Cecilie Mortensdatter](https://www.geni.com/people/x/6000000003701757499) |
 | [N.N. Ims](https://www.geni.com/people/x/6000000003570049107) | born 1512, before their father Rasmus Halvardson Ims was born in 1530 | [Rasmus Halvardson Ims](https://www.geni.com/people/x/6000000039557945572) |
 | [Siri Halvorsdatter Myklebust](https://www.geni.com/people/x/6000000007380924986) | born 1518, before their father Halvor Baardsson Myklebust was born in 1540 | [Halvor Baardsson Myklebust](https://www.geni.com/people/x/6000000003770454437) |
@@ -123,7 +124,7 @@ Every one of these is an error somewhere — in a date, or in a link between two
 | [Ingeborg Malena Velasdatter Erga](https://www.geni.com/people/x/6000000013868925079) | born 1856, after their mother Ingeborg Malena Torgersdatter Erga died in 1854 | [Ingeborg Malena Torgersdatter Erga](https://www.geni.com/people/x/6000000089794078829) |
 | [Vilhelm Velasen Krogen](https://www.geni.com/people/x/6000000013868862870) | born 1859, after their mother Ingeborg Malena Torgersdatter Erga died in 1854 | [Ingeborg Malena Torgersdatter Erga](https://www.geni.com/people/x/6000000089794078829) |
 
-## Implausible (88)
+## Implausible (89)
 
 A parent under 12, or a lifespan over 120 years. Some of these will be correct; they are here for a human to judge, not to be taken as defects.
 
@@ -214,6 +215,7 @@ A parent under 12, or a lifespan over 120 years. Some of these will be correct; 
 | [Larry Dale Yausie](https://www.geni.com/people/x/6000000020346127374) | born 1958, when their mother Darlene Mae Yausie was 3 | [Darlene Mae Yausie](https://www.geni.com/people/x/6000000020345457473) |
 | [Kelly Dean Yausie](https://www.geni.com/people/x/6000000020344591638) | born 1959, when their father Brian Gordon was 9 | [Brian Gordon](https://www.geni.com/people/x/6000000020347764869) |
 | [Kelly Dean Yausie](https://www.geni.com/people/x/6000000020344591638) | born 1959, when their mother Darlene Mae Yausie was 4 | [Darlene Mae Yausie](https://www.geni.com/people/x/6000000020345457473) |
+| [Emperor Nintoku](https://www.geni.com/people/x/6000000001829679311) | born 257, died 399 — a lifespan of 142 years | — |
 | [þuríður Þorleifsdóttir](https://www.geni.com/people/x/6000000013660001404) | born 945, when their mother Groa Þórólfurdottir was 5 | [Groa Þórólfurdottir](https://www.geni.com/people/x/6000000029847553961) |
 | [Sigmundur](https://www.geni.com/people/x/6000000010452584582) | born 966, when their father Brestur Sigmundarson was 5 | [Brestur Sigmundarson](https://www.geni.com/people/x/6000000010452792372) |
 | [Turid Torkilsdóttur](https://www.geni.com/people/x/6000000010452653497) | born 966, when their father Torkil (Turrafrost) was 5 | [Torkil (Turrafrost)](https://www.geni.com/people/x/6000000002791716644) |
@@ -224,7 +226,7 @@ The merge guarantees one record per Geni **profile**, which is not one record pe
 
 | | groups |
 | --- | ---: |
-| **likely** — same name, same parents, same birth year | **9** |
+| **likely** — same name, same parents, same birth year | **11** |
 | **possible** — same name and year, parents differ or unknown | **42** |
 | excluded as reused names — see below | 138 |
 
@@ -232,7 +234,7 @@ The merge guarantees one record per Geni **profile**, which is not one record pe
 
 **Nothing is merged, and nothing here should be.** Names are evidence for a human, never a join: this project keys on the Geni profile ID precisely because looser matching once produced a link to a stranger's profile. Merging two profiles is an edit on Geni, made by somebody who has opened both.
 
-### Likely (9)
+### Likely (11)
 
 Same name, same parents, same birth year. Short of siblings born in one year and given one name, these are one person recorded twice.
 
@@ -247,6 +249,8 @@ Same name, same parents, same birth year. Short of siblings born in one year and
 | 1800 | [Mathis Sørensen](https://www.geni.com/people/x/6000000015446339535) · [Mathis Sørensen](https://www.geni.com/people/x/6000000185388470917) |
 | 1631 | [Ola Nilsen Skei](https://www.geni.com/people/x/6000000005607007945) · [Ola Nilsen Skei](https://www.geni.com/people/x/6000000225386545407) |
 | 1730 | [Olaug Henriksdatter](https://www.geni.com/people/x/6000000001499101871) · [Olaug Henriksdatter](https://www.geni.com/people/x/6000000186680243828) |
+| 890 | [保忠](https://www.geni.com/people/x/6000000010702765665) · [保忠](https://www.geni.com/people/x/6000000012053060814) |
+| 714 | [永手](https://www.geni.com/people/x/6000000010702660493) · [永手](https://www.geni.com/people/x/6000000012053046486) |
 
 ### Possible (42)
 

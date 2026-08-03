@@ -7,21 +7,25 @@ to Wikidata.
 
 ## What this is
 
-Geni.com exports a family tree as GEDCOM, but **each export is capped** — every
-one of the three exports in `data_lake/` contains exactly 3836 individuals, and
-they overlap far less than that suggests:
+Geni.com exports a family tree as GEDCOM, and **each export is bounded at a few
+thousand people** — the five in `data_lake/` hold 3836, 3836, 3836, 3840 and
+3844 individuals. They overlap far less than that suggests:
 
 | | individuals | families |
 | --- | ---: | ---: |
-| largest single export | 3836 | 2281 |
-| all three merged | **8766** | **4056** |
-| present in all three | 354 | 245 |
+| largest single export | 3844 | 2474 |
+| all five merged | **16266** | **8268** |
+| present in every export | 0 | 0 |
 
 So the exports are overlapping slices of one tree rather than copies of it, and
 getting the whole tree means merging many slices. That is the first half of this
 project. The second half is reconciling the merged tree against Wikidata, and
 eventually generating the edits that would put the missing people *into*
 Wikidata.
+
+The three numbers above are close together but they are **not** a cap Geni
+enforces — see `genimerge.seeds.GENI_EXPORT_CAP`, which records what is actually
+known (very little) rather than the pattern they suggest.
 
 Merging is exact, not fuzzy. Geni writes the profile ID as the GEDCOM xref
 itself:
@@ -34,8 +38,15 @@ itself:
 so every record carries a stable primary key across exports, and the same ID is
 the join key to Wikidata via **P2600 (Geni.com profile ID)**.
 
-The merge of all three currently produces 8766 individuals and 4056 families
+The merge of all five currently produces 16266 individuals and 8268 families
 with **zero conflicts and no lost lines** — see `reports/merge.md`.
+
+It is **two trees, not one.** The 2026-08-02 export shares not a single person
+or family with the other four: it is the Japanese mythological line, 3844 people
+rooted at Kunino-tokotachi-no-mikoto, and nothing relates it to the Norwegian
+material. Merging is still correct — disjoint components do not conflict, they
+just never meet — but until an export bridges them, "the tree" is a shorthand
+for two. `reports/frontier.md` tracks the components.
 
 ## Layout
 

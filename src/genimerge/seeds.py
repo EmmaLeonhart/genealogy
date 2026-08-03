@@ -77,22 +77,29 @@ __all__ = [
 #: first three exports each held exactly 3836, and since they are three
 #: different styles of one seed that reach largely different people — they share
 #: only 354 — three separate walks stopping on the same number read as a hard
-#: cap. The fourth export holds **3840**, so it is not one.
+#: cap. The fourth export holds **3840** and the fifth **3844**, so it is not
+#: one.
+#:
+#: Three distinct numbers are not a trend. 3836, 3840, 3844 are evenly spaced,
+#: which invites reading a step of four into them, and that reading is not
+#: supported: the two increments come from a sample of three exports taken on
+#: three different days from three different seeds, and nothing here rules out
+#: the next one landing on 3841 or 3900. Do not encode the arithmetic.
 #:
 #: What actually bounds an export is **not established**. Candidates that fit
-#: the evidence equally well: Geni raised the limit between 2026-07-30 and
-#: 2026-08-01; the limit is per-account and the account changed; the limit is on
-#: something other than individual count (bytes, families, requests) that merely
-#: lands near 3836; or the walk overshoots a floor by however much it takes to
-#: finish the generation it is on. Four exports cannot separate these, so none
-#: is encoded here.
+#: the evidence equally well: Geni raised the limit over 2026-07-30..08-02; the
+#: limit is per-account and the account changed; the limit is on something other
+#: than individual count (bytes, families, requests) that merely lands near
+#: 3840; or the walk overshoots a floor by however much it takes to finish the
+#: generation it is on. Five exports cannot separate these, so none is encoded
+#: here.
 #:
 #: Used only to bound the modelled ball in :func:`export_ball`, where being off
 #: by a few people out of ~3840 does not move a ranking.
 #: ``tests/test_seeds.py`` asserts this stays >= the largest export in
 #: ``data_lake/``, so the next export to exceed it fails loudly instead of
 #: silently modelling a ball that is too small.
-GENI_EXPORT_CAP = 3840
+GENI_EXPORT_CAP = 3844
 
 #: The step between reading this report and running an export.
 #:
@@ -622,13 +629,16 @@ def render_markdown(
             "",
             f"The {GENI_EXPORT_CAP} used above is **the largest export we have "
             "seen, not a limit we know Geni enforces**. Three exports held "
-            "exactly 3836, which read as a hard cap until a fourth held 3840. "
-            "What actually bounds an export is unestablished — a raised limit, "
-            "a per-account limit, a limit on something other than head count, "
-            "or a walk that overshoots a floor all fit the four exports we "
-            "have. Being off by a few people out of ~3840 does not move this "
-            "ranking, so the uncertainty is recorded rather than resolved by "
-            "guessing.",
+            "exactly 3836, which read as a hard cap until a fourth held 3840 "
+            "and a fifth 3844. Those three numbers are evenly spaced and that "
+            "is not evidence of a step of four — three observations from three "
+            "days and three seeds do not rule out the next one landing "
+            "anywhere. What actually bounds an export is unestablished — a "
+            "raised limit, a per-account limit, a limit on something other than "
+            "head count, or a walk that overshoots a floor all fit the five "
+            "exports we have. Being off by a few people out of ~3840 does not "
+            "move this ranking, so the uncertainty is recorded rather than "
+            "resolved by guessing.",
         ]
 
     lines += ["", "## How well this ranking has actually done", "", RANKING_IS_UNVALIDATED]
