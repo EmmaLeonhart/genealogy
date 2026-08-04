@@ -12,8 +12,8 @@ parents recorded**. Those are the places Geni knows more than we do.
 
 |  | count | share |
 | --- | ---: | ---: |
-| people | 16266 | 100% |
-| with no parents recorded | 3396 | 20.9% |
+| people | 27718 | 100% |
+| with no parents recorded | 5057 | 18.2% |
 | with no relatives at all | 0 | 0.0% |
 | connected components | 2 |  |
 
@@ -24,8 +24,8 @@ no walk outward from the main tree will ever reach it.
 
 | component | people | of which parentless | largest branch point |
 | --- | ---: | ---: | ---: |
-| 1 | 12422 | 2970 | Tora Torsteinsdatter Galge |
-| 2 | 3844 | 426 | Kunino-tokotachi-no-mikoto |
+| 1 | 16217 | 3744 | Ezzo |
+| 2 | 11501 | 1313 | NN |
 
 ## People recorded as their own ancestor
 
@@ -43,65 +43,113 @@ descendants are where an export would add the most.
 
 | generations above | people |
 | --- | ---: |
-| 0 | 3397 |
-| 1 | 1596 |
-| 2 | 686 |
-| 3 | 684 |
-| 4 | 520 |
-| 5 | 533 |
-| 6 | 462 |
-| 7 | 437 |
-| 8 | 478 |
-| 9 | 639 |
-| 10 | 762 |
-| 11 | 463 |
-| 12 | 218 |
-| 13 | 167 |
-| 14 | 91 |
-| 15 | 125 |
-| 16 | 83 |
-| 17 | 99 |
-| 18 | 139 |
-| 19 | 53 |
-| 20 | 72 |
-| 21 | 83 |
-| 22 | 94 |
-| 23 | 114 |
-| 24 | 110 |
-| 25 | 106 |
-| 26 | 134 |
-| 27 | 142 |
-| 28 | 100 |
-| 29 | 90 |
-| 30 | 93 |
-| 31 | 195 |
-| 32 | 238 |
-| 33 | 228 |
-| 34 | 339 |
-| 35 | 337 |
-| 36 | 148 |
-| 37 | 190 |
-| 38 | 75 |
-| 39 | 63 |
-| 40 | 36 |
-| 41 | 33 |
-| 42 | 73 |
-| 43 | 78 |
-| 44 | 87 |
-| 45 | 93 |
-| 46 | 104 |
-| 47 | 86 |
-| 48 | 149 |
-| 49 | 127 |
-| 50 | 103 |
-| 51 | 123 |
-| 52 | 149 |
-| 53 | 105 |
-| 54 | 116 |
-| 55 | 104 |
-| 56 | 81 |
-| 57 | 35 |
-| 58 | 1 |
+| 0 | 5058 |
+| 1 | 2224 |
+| 2 | 1104 |
+| 3 | 1192 |
+| 4 | 1002 |
+| 5 | 1151 |
+| 6 | 973 |
+| 7 | 1085 |
+| 8 | 1142 |
+| 9 | 1300 |
+| 10 | 1276 |
+| 11 | 1099 |
+| 12 | 625 |
+| 13 | 502 |
+| 14 | 177 |
+| 15 | 146 |
+| 16 | 128 |
+| 17 | 117 |
+| 18 | 162 |
+| 19 | 74 |
+| 20 | 89 |
+| 21 | 101 |
+| 22 | 120 |
+| 23 | 130 |
+| 24 | 129 |
+| 25 | 127 |
+| 26 | 151 |
+| 27 | 161 |
+| 28 | 116 |
+| 29 | 108 |
+| 30 | 114 |
+| 31 | 215 |
+| 32 | 257 |
+| 33 | 250 |
+| 34 | 361 |
+| 35 | 361 |
+| 36 | 168 |
+| 37 | 213 |
+| 38 | 94 |
+| 39 | 85 |
+| 40 | 49 |
+| 41 | 50 |
+| 42 | 95 |
+| 43 | 103 |
+| 44 | 113 |
+| 45 | 122 |
+| 46 | 123 |
+| 47 | 108 |
+| 48 | 167 |
+| 49 | 145 |
+| 50 | 123 |
+| 51 | 145 |
+| 52 | 175 |
+| 53 | 148 |
+| 54 | 155 |
+| 55 | 135 |
+| 56 | 119 |
+| 57 | 59 |
+| 58 | 30 |
+| 59 | 29 |
+| 60 | 27 |
+| 61 | 39 |
+| 62 | 37 |
+| 63 | 36 |
+| 64 | 39 |
+| 65 | 50 |
+| 66 | 45 |
+| 67 | 48 |
+| 68 | 58 |
+| 69 | 72 |
+| 70 | 64 |
+| 71 | 56 |
+| 72 | 50 |
+| 73 | 45 |
+| 74 | 41 |
+| 75 | 47 |
+| 76 | 39 |
+| 77 | 35 |
+| 78 | 39 |
+| 79 | 38 |
+| 80 | 34 |
+| 81 | 30 |
+| 82 | 33 |
+| 83 | 32 |
+| 84 | 30 |
+| 85 | 40 |
+| 86 | 38 |
+| 87 | 36 |
+| 88 | 43 |
+| 89 | 37 |
+| 90 | 31 |
+| 91 | 33 |
+| 92 | 34 |
+| 93 | 27 |
+| 94 | 19 |
+| 95 | 23 |
+| 96 | 22 |
+| 97 | 20 |
+| 98 | 30 |
+| 99 | 30 |
+| 100 | 39 |
+| 101 | 39 |
+| 102 | 12 |
+| 103 | 7 |
+| 104 | 5 |
+| 105 | 7 |
+| 106 | 2 |
 
 ## Best 40 profiles to export from next
 
@@ -111,43 +159,43 @@ leaf adds a lone leaf.
 
 | # | name | born | descendants | relatives | component | Geni profile |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1 | Tora Torsteinsdatter Galge | 970 | 2447 | 4 | 12422 | [6000000001088848284](https://www.geni.com/people/x/6000000001088848284) |
-| 2 | Arne Arnmodsson | 965 | 2447 | 4 | 12422 | [6000000002527618911](https://www.geni.com/people/x/6000000002527618911) |
-| 3 | Kunino-tokotachi-no-mikoto |  | 2361 | 1 | 3844 | [6000000012788046985](https://www.geni.com/people/x/6000000012788046985) |
-| 4 | Suijini-no-mikoto |  | 2358 | 2 | 3844 | [6000000012789309257](https://www.geni.com/people/x/6000000012789309257) |
-| 5 | Otomabe-no-mikoto |  | 2357 | 2 | 3844 | [6000000012789274221](https://www.geni.com/people/x/6000000012789274221) |
-| 6 | Ayakashikone-no-mikoto |  | 2356 | 3 | 3844 | [6000000012789059947](https://www.geni.com/people/x/6000000012789059947) |
-| 7 | Unknown Torleifsdotter | 870 | 2343 | 2 | 12422 | [6000000003243483251](https://www.geni.com/people/x/6000000003243483251) |
-| 8 | Horda-Kåre Aslaksson |  | 2343 | 2 | 12422 | [6000000003243483277](https://www.geni.com/people/x/6000000003243483277) |
-| 9 | Nn ektefelle Torleif den Wise |  | 2342 | 2 | 12422 | [6000000003820968965](https://www.geni.com/people/x/6000000003820968965) |
-| 10 | NN Sæbjørns kone ukjent |  | 2341 | 3 | 12422 | [6000000003820968955](https://www.geni.com/people/x/6000000003820968955) |
-| 11 | unknown grandfather |  | 2326 | 1 | 3844 | [6000000226989731860](https://www.geni.com/people/x/6000000226989731860) |
-| 12 | Mikashikiyahime |  | 2279 | 3 | 3844 | [6000000014665724482](https://www.geni.com/people/x/6000000014665724482) |
-| 13 | Nigihayahi |  | 2279 | 2 | 3844 | [6000000014665769851](https://www.geni.com/people/x/6000000014665769851) |
-| 14 | Odatehime |  | 2276 | 2 | 3844 | [6000000014665663451](https://www.geni.com/people/x/6000000014665663451) |
-| 15 | Yuratsuhime |  | 2275 | 4 | 3844 | [6000000014665526679](https://www.geni.com/people/x/6000000014665526679) |
-| 16 | Rannveig Thordsdotter På Aurland | 950 | 2261 | 2 | 12422 | [6000000003645716928](https://www.geni.com/people/x/6000000003645716928) |
-| 17 | Nefsteinn Bårdson | 940 | 2261 | 2 | 12422 | [6000000003820973115](https://www.geni.com/people/x/6000000003820973115) |
-| 18 | N(?) Torsdatter |  | 2260 | 2 | 12422 | [6000000011034872761](https://www.geni.com/people/x/6000000011034872761) |
-| 19 | NN | 1005 | 2259 | 3 | 12422 | [6000000005606928456](https://www.geni.com/people/x/6000000005606928456) |
-| 20 | Awarahime |  | 2200 | 3 | 3844 | [6000000014665226736](https://www.geni.com/people/x/6000000014665226736) |
-| 21 | Takuhatachidihime |  | 2195 | 5 | 3844 | [6000000001831504540](https://www.geni.com/people/x/6000000001831504540) |
-| 22 | Astrid Trygvesdatter Tryggvesdatter | 962 | 2133 | 3 | 12422 | [6000000001205324797](https://www.geni.com/people/x/6000000001205324797) |
-| 23 | Erling Skjalgsson | 975 | 2133 | 3 | 12422 | [6000000001209109374](https://www.geni.com/people/x/6000000001209109374) |
-| 24 | Ōyamatsumi |  | 2118 | 2 | 3844 | [6000000187014527853](https://www.geni.com/people/x/6000000187014527853) |
-| 25 | Kushinadahime |  | 2118 | 2 | 3844 | [6000000209934865861](https://www.geni.com/people/x/6000000209934865861) |
-| 26 | Susanoo |  | 2118 | 2 | 3844 | [6000000209934958825](https://www.geni.com/people/x/6000000209934958825) |
-| 27 | Kagutsuchi |  | 2118 | 1 | 3844 | [6000000209934856841](https://www.geni.com/people/x/6000000209934856841) |
-| 28 | Konohanachiru-hime |  | 2117 | 2 | 3844 | [6000000209934887836](https://www.geni.com/people/x/6000000209934887836) |
-| 29 | Ame-no-Tsudoechine |  | 2115 | 2 | 3844 | [6000000209934847823](https://www.geni.com/people/x/6000000209934847823) |
-| 30 | Funozuno |  | 2115 | 1 | 3844 | [6000000209934751849](https://www.geni.com/people/x/6000000209934751849) |
-| 31 | Sashikuni Okami |  | 2114 | 1 | 3844 | [6000000209934740823](https://www.geni.com/people/x/6000000209934740823) |
-| 32 | Izanagi |  | 2110 | 1 | 3844 | [6000000210406507821](https://www.geni.com/people/x/6000000210406507821) |
-| 33 | Futodama |  | 2105 | 1 | 3844 | [6000000209934474825](https://www.geni.com/people/x/6000000209934474825) |
-| 34 | Nunakawahime |  | 2104 | 2 | 3844 | [6000000209934433844](https://www.geni.com/people/x/6000000209934433844) |
-| 35 | Mirahime |  | 2092 | 2 | 3844 | [6000000209934428831](https://www.geni.com/people/x/6000000209934428831) |
-| 36 | Cecilia | 1024 | 2048 | 3 | 12422 | [6000000000462713383](https://www.geni.com/people/x/6000000000462713383) |
-| 37 | Stenkil Ragnvaldsson | 1020 | 2048 | 3 | 12422 | [6000000000812943370](https://www.geni.com/people/x/6000000000812943370) |
-| 38 | Maria Anundsdotter Emundsdotter | 1025 | 2048 | 3 | 12422 | [6000000003366838592](https://www.geni.com/people/x/6000000003366838592) |
-| 39 | Torild Totilsson | 1020 | 2048 | 3 | 12422 | [6000000003858604945](https://www.geni.com/people/x/6000000003858604945) |
-| 40 | Omoku |  | 2039 | 1 | 3844 | [6000000209934290821](https://www.geni.com/people/x/6000000209934290821) |
+| 1 | Ezzo | 955 | 3532 | 11 | 16217 | [6000000000769470073](https://www.geni.com/people/x/6000000000769470073) |
+| 2 | Mathilde | 980 | 3532 | 11 | 16217 | [6000000003645724700](https://www.geni.com/people/x/6000000003645724700) |
+| 3 | Emnilda_Hodica | 970 | 3527 | 6 | 16217 | [6000000000769560303](https://www.geni.com/people/x/6000000000769560303) |
+| 4 | Bolesław I "The Brave" Пяст | 967 | 3527 | 6 | 16217 | [6000000000769654031](https://www.geni.com/people/x/6000000000769654031) |
+| 5 | Vladimir I SviatoslavichV 'the Great' | 956 | 3445 | 9 | 16217 | [6000000001172352035](https://www.geni.com/people/x/6000000001172352035) |
+| 6 | Adelajda von Polen | 950 | 3422 | 2 | 16217 | [6000000000436429187](https://www.geni.com/people/x/6000000000436429187) |
+| 7 | Michael | 955 | 3422 | 2 | 16217 | [6000000002187690247](https://www.geni.com/people/x/6000000002187690247) |
+| 8 | N.N. |  | 3420 | 5 | 16217 | [6000000002176661888](https://www.geni.com/people/x/6000000002176661888) |
+| 9 | Rogneda Anastasia | 962 | 3392 | 7 | 16217 | [6000000001172213829](https://www.geni.com/people/x/6000000001172213829) |
+| 10 | Estrid | 979 | 3387 | 3 | 16217 | [6000000004827276873](https://www.geni.com/people/x/6000000004827276873) |
+| 11 | Olaf Эрикович Eríksson | 975 | 3387 | 3 | 16217 | [6000000005417076176](https://www.geni.com/people/x/6000000005417076176) |
+| 12 | Heinrich I von Schweinfurt | 970 | 3140 | 6 | 16217 | [6000000009726660856](https://www.geni.com/people/x/6000000009726660856) |
+| 13 | Gerberga von Henneberg von Zutpen | 975 | 3140 | 6 | 16217 | [6000000009782507443](https://www.geni.com/people/x/6000000009782507443) |
+| 14 | Beata Krzesinova | 987 | 3136 | 2 | 16217 | [4597282](https://www.geni.com/people/x/4597282) |
+| 15 | Udalrich Przemyslid | 989 | 3136 | 2 | 16217 | [6000000003645765375](https://www.geni.com/people/x/6000000003645765375) |
+| 16 | Anna | 963 | 2985 | 2 | 16217 | [6000000000437327174](https://www.geni.com/people/x/6000000000437327174) |
+| 17 | Berthold "der Bärtige" von Zähringen | 1010 | 2934 | 6 | 16217 | [6000000003827147216](https://www.geni.com/people/x/6000000003827147216) |
+| 18 | Richwara von Schwaben | 1038 | 2934 | 6 | 16217 | [6000000006906578140](https://www.geni.com/people/x/6000000006906578140) |
+| 19 | Dietpold I |  | 2902 | 1 | 16217 | [6000000221340565821](https://www.geni.com/people/x/6000000221340565821) |
+| 20 | Poppo | 1035 | 2891 | 4 | 16217 | [6000000002187828621](https://www.geni.com/people/x/6000000002187828621) |
+| 21 | Sophia of Hungary von Schweinfurt | 1050 | 2891 | 4 | 16217 | [6000000011657190041](https://www.geni.com/people/x/6000000011657190041) |
+| 22 | Monomakhina | 1035 | 2880 | 3 | 16217 | [6000000003858589577](https://www.geni.com/people/x/6000000003858589577) |
+| 23 | Gōdwine Wulfnothsson | 987 | 2786 | 9 | 16217 | [6000000001156548017](https://www.geni.com/people/x/6000000001156548017) |
+| 24 | Gytha Thorkelsdóttir | 997 | 2786 | 9 | 16217 | [6000000001156548028](https://www.geni.com/people/x/6000000001156548028) |
+| 25 | Ealdgȳð "Swann hnesce" | 1025 | 2737 | 7 | 16217 | [6000000001391856400](https://www.geni.com/people/x/6000000001391856400) |
+| 26 | NN |  | 2662 | 1 | 11501 | [6000000209595340830](https://www.geni.com/people/x/6000000209595340830) |
+| 27 | 有蟜 |  | 2660 | 5 | 11501 | [6000000026566135156](https://www.geni.com/people/x/6000000026566135156) |
+| 28 | Cecilia | 1024 | 2561 | 3 | 16217 | [6000000000462713383](https://www.geni.com/people/x/6000000000462713383) |
+| 29 | Stenkil Ragnvaldsson | 1020 | 2561 | 3 | 16217 | [6000000000812943370](https://www.geni.com/people/x/6000000000812943370) |
+| 30 | Maria Anundsdotter Emundsdotter | 1025 | 2561 | 3 | 16217 | [6000000003366838592](https://www.geni.com/people/x/6000000003366838592) |
+| 31 | Torild Totilsson | 1020 | 2561 | 3 | 16217 | [6000000003858604945](https://www.geni.com/people/x/6000000003858604945) |
+| 32 | Tora Torsteinsdatter Galge | 970 | 2451 | 4 | 16217 | [6000000001088848284](https://www.geni.com/people/x/6000000001088848284) |
+| 33 | Arne Arnmodsson | 965 | 2451 | 4 | 16217 | [6000000002527618911](https://www.geni.com/people/x/6000000002527618911) |
+| 34 | (incognita) (anonyma) |  | 2418 | 2 | 11501 | [6000000004868946389](https://www.geni.com/people/x/6000000004868946389) |
+| 35 | Adela van Leuven | 1020 | 2392 | 7 | 16217 | [6000000002245256428](https://www.geni.com/people/x/6000000002245256428) |
+| 36 | Otto I von Weimar-Orlamünde | 1035 | 2390 | 4 | 16217 | [6000000001669658581](https://www.geni.com/people/x/6000000001669658581) |
+| 37 | Kunino-tokotachi-no-mikoto |  | 2361 | 1 | 11501 | [6000000012788046985](https://www.geni.com/people/x/6000000012788046985) |
+| 38 | Suijini-no-mikoto |  | 2358 | 2 | 11501 | [6000000012789309257](https://www.geni.com/people/x/6000000012789309257) |
+| 39 | Otomabe-no-mikoto |  | 2357 | 2 | 11501 | [6000000012789274221](https://www.geni.com/people/x/6000000012789274221) |
+| 40 | Ayakashikone-no-mikoto |  | 2356 | 3 | 11501 | [6000000012789059947](https://www.geni.com/people/x/6000000012789059947) |

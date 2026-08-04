@@ -13,35 +13,108 @@ It is not only tidiness. `genimerge crosscheck` proposes P569 and P570 statement
 
 | | count |
 | --- | ---: |
-| people in the tree | 16266 |
-| of those, carrying any year | 10903 |
-| **impossible** — cannot be true | **96** |
-| **implausible** — could be, probably is not | **89** |
+| people in the tree | 27718 |
+| of those, carrying any year | 16263 |
+| **impossible** — cannot be true | **178** |
+| **implausible** — could be, probably is not | **173** |
 
 A child born within a year of its father's death is ordinary and is **not** reported. There is no such allowance on the mother's side, where a birth after death is not possible at all — counting the two together would invent defects and slander real births.
 
 
-## Impossible (96)
+## Impossible (178)
 
 Every one of these is an error somewhere — in a date, or in a link between two people who are not really parent and child.
 
+Showing the first 100.
+
 | person | what | other |
 | --- | --- | --- |
+| [Dobronega Maria Vladimirovna Рюриковичи](https://www.geni.com/people/x/3696730) | born 1012, after their mother Anna died in 1011 | [Anna](https://www.geni.com/people/x/6000000000437327174) |
+| [Konstantinos Diogenes](https://www.geni.com/people/x/6000000003858690125) | born 1050, before their father Leonidas Diogenes was born in 1072 | [Leonidas Diogenes](https://www.geni.com/people/x/6000000006727878520) |
+| [Konstantinos Diogenes](https://www.geni.com/people/x/6000000003858690125) | born 1050, before their mother Maria Vladimirovna was born in 1087 | [Maria Vladimirovna](https://www.geni.com/people/x/6000000006727873834) |
+| [Davyd Igorevich, Knyaz Wladimirskij-Volhynsk](https://www.geni.com/people/x/6000000006101378991) | born 1058, after their mother Kunigunde Weimar-Orlamunde died in 1056 | [Kunigunde Weimar-Orlamunde](https://www.geni.com/people/x/6000000002187825237) |
 | [NN Brynjulfsdatter](https://www.geni.com/people/x/6000000000722124788) | born 1067, after their mother NN died in 1050 | [NN](https://www.geni.com/people/x/6000000005606928456) |
+| [Mihailo III Mihailović](https://www.geni.com/people/x/6000000015017511774) | born 1067, before their mother Ana Vukanović was born in 1099 | [Ana Vukanović](https://www.geni.com/people/x/6000000002187893027) |
+| [Ulrich von Formbach](https://www.geni.com/people/x/6000000002187825281) | born 1074, after their father Meginhard IV von Formbach died in 1066 | [Meginhard IV von Formbach](https://www.geni.com/people/x/6000000001669640393) |
+| [Judith - Jutta](https://www.geni.com/people/x/6000000003827470372) | born 1085, after their father Hesso von Sülichen died in 1061 | [Hesso von Sülichen](https://www.geni.com/people/x/6000000003827737058) |
+| [Judith - Jutta](https://www.geni.com/people/x/6000000003827470372) | born 1085, after their mother Gisela von Calw died in 1068 | [Gisela von Calw](https://www.geni.com/people/x/6000000002188289620) |
+| [Princess Of Kiev Vladimirovna](https://www.geni.com/people/x/6000000000269783793) | born 1087, before their mother Ljubava Zavidich was born in 1095 | [Ljubava Zavidich](https://www.geni.com/people/x/6000000001745043247) |
+| [Princess Agnieszka of Poland](https://www.geni.com/people/x/6000000002187837497) | born 1091, after their father Iziaslav Dmitri Yaroslavich Rurikids died in 1078 | [Iziaslav Dmitri Yaroslavich Rurikids](https://www.geni.com/people/x/6000000001745033558) |
+| [Sophie von Hohenstaufen](https://www.geni.com/people/x/6000000026462401447) | born 1091, before their father Conrad von Hohenstaufen was born in 1093 | [Conrad von Hohenstaufen](https://www.geni.com/people/x/6000000006906624674) |
+| [Maud](https://www.geni.com/people/x/6000000004378817610) | born 1100, after their father Thimo II the Brave von Wettin died in 1091 | [Thimo II the Brave von Wettin](https://www.geni.com/people/x/6000000004533699347) |
+| [daughter of Koloman Коломана Венгерского Árpad dynasty](https://www.geni.com/people/x/6000000008871331656) | born 1103, after their mother Felicia "Busilla" of Sicily de Hauteville died in 1102 | [Felicia "Busilla" of Sicily de Hauteville](https://www.geni.com/people/x/367972467880002240) |
+| [Albrecht](https://www.geni.com/people/x/6000000003097932542) | born 1107, after their mother Adelheid Perg died in 1105 | [Adelheid Perg](https://www.geni.com/people/x/6000000009534256937) |
+| [Eirene Aineiadissa Rhodocanakis](https://www.geni.com/people/x/6000000013020632588) | born 1113, after their mother Theodora died in 1109 | [Theodora](https://www.geni.com/people/x/6000000007679492851) |
+| [Bartholomew](https://www.geni.com/people/x/6000000004670866345) | born 1115, after their father Josbert died in 1100 | [Josbert](https://www.geni.com/people/x/6000000031949136042) |
+| [Diepold I von Berg-Schelklingen](https://www.geni.com/people/x/6000000002187891144) | born 1128, after their father Heinrich I Berg died in 1116 | [Heinrich I Berg](https://www.geni.com/people/x/6000000002947577496) |
+| [Diepold I von Berg-Schelklingen](https://www.geni.com/people/x/6000000002187891144) | born 1128, after their mother Adelheid von Vohburg died in 1125 | [Adelheid von Vohburg](https://www.geni.com/people/x/6000000001669640454) |
+| [Erzsébet Árpád dynasty](https://www.geni.com/people/x/6000000036190717593) | born 1128, after their mother Predslava Sviatopolkovna Rurikid died in 1116 | [Predslava Sviatopolkovna Rurikid](https://www.geni.com/people/x/6000000002240801938) |
 | [Torbjørg Åsulvsdatter av Rein](https://www.geni.com/people/x/6000000004533762608) | born 1130, before their father Åsulf Guttormsson was born in 1145 | [Åsulf Guttormsson](https://www.geni.com/people/x/6000000004533762620) |
+| [Vasilko Rurikid](https://www.geni.com/people/x/6000000007648295604) | born 1151, after their father Yaropolk Vladimirovich Monomakh died in 1139 | [Yaropolk Vladimirovich Monomakh](https://www.geni.com/people/x/6000000003243447917) |
+| [Heinrich](https://www.geni.com/people/x/6000000003897534060) | born 1151, before their father Günther Il von Käfernburg-Schwarzburg und Hallermund was born in 1160 | [Günther Il von Käfernburg-Schwarzburg und Hallermund](https://www.geni.com/people/x/6000000003827470068) |
+| [Günther III](https://www.geni.com/people/x/6000000008684393074) | born 1155, before their father Günther Il von Käfernburg-Schwarzburg und Hallermund was born in 1160 | [Günther Il von Käfernburg-Schwarzburg und Hallermund](https://www.geni.com/people/x/6000000003827470068) |
+| [Jean I](https://www.geni.com/people/x/6000000007338065452) | born 1160, after their father Gerald died in 1144 | [Gerald](https://www.geni.com/people/x/6000000007338095215) |
+| [Bernhard](https://www.geni.com/people/x/6000000063192007859) | born 1162, before their mother Ludmilla von Böhmen was born in 1169 | [Ludmilla von Böhmen](https://www.geni.com/people/x/6000000004533176176) |
+| [Hendrik](https://www.geni.com/people/x/6000000132392817103) | born 1165, after their father Godfrey II 'der Bucklige' of Lorraine died in 1142 | [Godfrey II 'der Bucklige' of Lorraine](https://www.geni.com/people/x/6000000001745028784) |
+| [Hendrik](https://www.geni.com/people/x/6000000132392817103) | born 1165, after their mother Lutgardis von Sulzbach died in 1162 | [Lutgardis von Sulzbach](https://www.geni.com/people/x/6000000000337439500) |
+| [Ita / Ida von Burghausen](https://www.geni.com/people/x/6000000003827474556) | born 1170, after their father Gebhard I von Burghausen died in 1163 | [Gebhard I von Burghausen](https://www.geni.com/people/x/6000000006727878615) |
+| [Anders Kolsson Brahe](https://www.geni.com/people/x/6000000003645724268) | born 1170, after their father Kol Sverkersson died in 1152 | [Kol Sverkersson](https://www.geni.com/people/x/6000000003645724275) |
+| [Ulrich von Berg-Schelklingen](https://www.geni.com/people/x/6000000002187891128) | born 1171, after their father Diepold I von Berg-Schelklingen died in 1166 | [Diepold I von Berg-Schelklingen](https://www.geni.com/people/x/6000000002187891144) |
+| [Ulrich von Berg-Schelklingen](https://www.geni.com/people/x/6000000002187891128) | born 1171, after their mother Gisela Gräfin von Andechs died in 1155 | [Gisela Gräfin von Andechs](https://www.geni.com/people/x/6000000002187891152) |
+| [Anne de Montmorency](https://www.geni.com/people/x/6000000068540375880) | born 1174, before their mother Emma de Laval was born in 1197 | [Emma de Laval](https://www.geni.com/people/x/6000000003827429541) |
+| [Heinrich Askanier](https://www.geni.com/people/x/6000000002187829610) | born 1175, after their mother Judith died in 1174 | [Judith](https://www.geni.com/people/x/6000000002187829624) |
+| [Gertrud von Ballenstedt](https://www.geni.com/people/x/6000000003897531922) | born 1179, after their father Albert died in 1172 | [Albert](https://www.geni.com/people/x/6000000002187825122) |
+| [Johannes Jakobsen (Hvide)](https://www.geni.com/people/x/6000000039500905905) | born 1180, before their mother Estrid Valdemarsdatter was born in 1182 | [Estrid Valdemarsdatter](https://www.geni.com/people/x/6000000004270866114) |
+| [Sviatoslav Mstislavich Rurikid](https://www.geni.com/people/x/6000000006101381169) | born 1185, after their father Mstislav Rostislavich "Bezoky" "Безокий" died in 1178 | [Mstislav Rostislavich "Bezoky" "Безокий"](https://www.geni.com/people/x/6000000014170493210) |
 | [Theodericus von Eickstedt](https://www.geni.com/people/x/6000000015841626703) | born 1185, after their father Theodericus von Eickstedt died in 1175 | [Theodericus von Eickstedt](https://www.geni.com/people/x/6000000015841664317) |
+| [Sviatoslav Vladimirovich](https://www.geni.com/people/x/6000000014170723323) | born 1189, after their father Vladimir III Mstislavich died in 1171 | [Vladimir III Mstislavich](https://www.geni.com/people/x/6000000010936024516) |
 | [Gaute Mel](https://www.geni.com/people/x/6000000001169297770) | born 1190, after their father Jon Gautsson på Ornes, Ænes died in 1181 | [Jon Gautsson på Ornes, Ænes](https://www.geni.com/people/x/6000000003784435027) |
+| [Adelheid](https://www.geni.com/people/x/6000000009140112137) | born 1191, after their father Goswin von Heinsberg died in 1188 | [Goswin von Heinsberg](https://www.geni.com/people/x/6000000017023321453) |
+| [Elena Maria Romanovna Rurikid](https://www.geni.com/people/x/6000000002187837090) | born 1194, after their mother Predslava Rurikovna of Smolensk died in 1193 | [Predslava Rurikovna of Smolensk](https://www.geni.com/people/x/6000000002187837165) |
+| [Raoul de Coucy](https://www.geni.com/people/x/6000000000437192243) | born 1211, after their mother Richenza died in 1209 | [Richenza](https://www.geni.com/people/x/6000000014829030443) |
+| [Jkr Sigerus Van Baers(Perche-Bars)](https://www.geni.com/people/x/6000000039422057964) | born 1215, after their mother Richenza died in 1209 | [Richenza](https://www.geni.com/people/x/6000000014829030443) |
+| [Mechtild von Blieskastel](https://www.geni.com/people/x/6000000003827497868) | born 1220, before their father Heinrich van Blieskastel was born in 1222 | [Heinrich van Blieskastel](https://www.geni.com/people/x/6000000004533200136) |
+| [Kunigunde von Blieskastel von Schaumburg](https://www.geni.com/people/x/6000000004533233075) | born 1220, before their father Heinrich van Blieskastel was born in 1222 | [Heinrich van Blieskastel](https://www.geni.com/people/x/6000000004533200136) |
+| [Heinrich Albrechtson](https://www.geni.com/people/x/6000000015448269850) | born 1224, after their father Albert III von Everstein died in 1217 | [Albert III von Everstein](https://www.geni.com/people/x/6000000001756061146) |
+| [Heinrich Albrechtson](https://www.geni.com/people/x/6000000015448269850) | born 1224, after their mother Agnes von Wittelsbach died in 1218 | [Agnes von Wittelsbach](https://www.geni.com/people/x/6000000002187801612) |
+| [Hermann von Everstein](https://www.geni.com/people/x/6000000003226679150) | born 1226, after their father Albert III von Everstein died in 1217 | [Albert III von Everstein](https://www.geni.com/people/x/6000000001756061146) |
+| [Albert Provost von Everstein](https://www.geni.com/people/x/6000000010618172590) | born 1226, after their father Albert III von Everstein died in 1217 | [Albert III von Everstein](https://www.geni.com/people/x/6000000001756061146) |
+| [Hermann von Everstein](https://www.geni.com/people/x/6000000003226679150) | born 1226, after their mother Agnes von Wittelsbach died in 1218 | [Agnes von Wittelsbach](https://www.geni.com/people/x/6000000002187801612) |
+| [Albert Provost von Everstein](https://www.geni.com/people/x/6000000010618172590) | born 1226, after their mother Agnes von Wittelsbach died in 1218 | [Agnes von Wittelsbach](https://www.geni.com/people/x/6000000002187801612) |
+| [Friedrich Albrechtson](https://www.geni.com/people/x/6000000015448738643) | born 1230, after their father Albert III von Everstein died in 1217 | [Albert III von Everstein](https://www.geni.com/people/x/6000000001756061146) |
+| [Friedrich Albrechtson](https://www.geni.com/people/x/6000000015448738643) | born 1230, after their mother Agnes von Wittelsbach died in 1218 | [Agnes von Wittelsbach](https://www.geni.com/people/x/6000000002187801612) |
+| [Warcisław Pomerania](https://www.geni.com/people/x/6000000041133307979) | born 1237, after their mother Euphrosyne of Poland died in 1235 | [Euphrosyne of Poland](https://www.geni.com/people/x/6000000003827751497) |
+| [Hildegonde van Limburg Wassenberg](https://www.geni.com/people/x/6000000003827924209) | born 1240, after their father Gerhard van Wassenberg-Horne died in 1225 | [Gerhard van Wassenberg-Horne](https://www.geni.com/people/x/6000000043160458942) |
+| [Jutta von Heimbach](https://www.geni.com/people/x/6000000027385563412) | born 1240, after their father Teutonic Knight, Bruno died in 1236 | [Teutonic Knight, Bruno](https://www.geni.com/people/x/6000000027385790953) |
+| [Judith Wettin](https://www.geni.com/people/x/6000000008478036036) | born 1240, after their mother Eudoxia of Mazovia died in 1238 | [Eudoxia of Mazovia](https://www.geni.com/people/x/6000000009257423968) |
+| [Sophie von Anhalt](https://www.geni.com/people/x/6000000011024212805) | born 1240, before their mother Katerina Birgersdotter Birgersson Sverre was born in 1245 | [Katerina Birgersdotter Birgersson Sverre](https://www.geni.com/people/x/6000000008019682504) |
 | [Guttorm Kalvson Torsnes](https://www.geni.com/people/x/6000000001169297881) | born 1245, after their father Kalv died in 1240 | [Kalv](https://www.geni.com/people/x/6000000007312523885) |
 | [Bolette Johanne Sigurdsdatter Onarheim](https://www.geni.com/people/x/6000000066162188012) | born 1245, after their father Sigurd died in 1217 | [Sigurd](https://www.geni.com/people/x/6000000007225423174) |
 | [Guttorm Kalvson Torsnes](https://www.geni.com/people/x/6000000001169297881) | born 1245, after their mother Inga Vikingsdotter died in 1240 | [Inga Vikingsdotter](https://www.geni.com/people/x/6000000003575290734) |
+| [Jeanne de Vignory](https://www.geni.com/people/x/6000000003827727529) | born 1248, after their mother Alix Berthe de Lorraine died in 1242 | [Alix Berthe de Lorraine](https://www.geni.com/people/x/6000000003827451492) |
 | [N.N. Sigtryggsdotter](https://www.geni.com/people/x/6000000022341639064) | born 1250, after their mother Kristina Magnusdotter Folkungaätten died in 1231 | [Kristina Magnusdotter Folkungaätten](https://www.geni.com/people/x/6000000000139648597) |
+| [Adelheid von Werdenberg](https://www.geni.com/people/x/6000000000269788187) | born 1252, after their father Rudolf von Montfort-Werdenberg died in 1246 | [Rudolf von Montfort-Werdenberg](https://www.geni.com/people/x/6000000002188292404) |
+| [Adelheid von Werdenberg](https://www.geni.com/people/x/6000000000269788187) | born 1252, after their mother Clementia von Kyburg died in 1249 | [Clementia von Kyburg](https://www.geni.com/people/x/6000000003827521718) |
+| [Jean II de Dampierre](https://www.geni.com/people/x/6000000003827792835) | born 1255, after their father John died in 1245 | [John](https://www.geni.com/people/x/6000000037511932723) |
+| [Robert I.](https://www.geni.com/people/x/6000000083463340446) | born 1266, after their father Ferry died in 1249 | [Ferry](https://www.geni.com/people/x/6000000083472012271) |
+| [Simon](https://www.geni.com/people/x/6000000002792855120) | born 1271, after their father Simon II de Commercy died in 1247 | [Simon II de Commercy](https://www.geni.com/people/x/6000000000474104110) |
 | [Tydeke](https://www.geni.com/people/x/6000000035522555028) | born 1275, after their father Tidericus died in 1272 | [Tidericus](https://www.geni.com/people/x/6000000031780184510) |
+| [Thierry D'autigny](https://www.geni.com/people/x/6000000032214768166) | born 1275, after their mother Isabelle died in 1268 | [Isabelle](https://www.geni.com/people/x/6000000003827928520) |
+| [Friedrich](https://www.geni.com/people/x/6000000015720249199) | born 1280, after their mother Lauretta von Blieskastel died in 1269 | [Lauretta von Blieskastel](https://www.geni.com/people/x/6000000003827618235) |
 | [Thamme von Flemming](https://www.geni.com/people/x/6000000031774992462) | born 1281, after their father Nicolaus von Flemming died in 1225 | [Nicolaus von Flemming](https://www.geni.com/people/x/6000000015310896932) |
+| [Siemowit bytomski](https://www.geni.com/people/x/6000000015227398151) | born 1292, after their mother Helena N.N. died in 1291 | [Helena N.N.](https://www.geni.com/people/x/6000000003827474057) |
+| [Luitgard Gans zu Wittenberge](https://www.geni.com/people/x/6000000003827755536) | born 1293, after their mother Mechtild von Schwerin died in 1281 | [Mechtild von Schwerin](https://www.geni.com/people/x/6000000003828083220) |
+| [Piast Mária Maria bytomska](https://www.geni.com/people/x/294505666000006368) | born 1295, after their mother Helena N.N. died in 1291 | [Helena N.N.](https://www.geni.com/people/x/6000000003827474057) |
+| [Jerzy bytomski](https://www.geni.com/people/x/6000000015227393197) | born 1295, after their mother Helena N.N. died in 1291 | [Helena N.N.](https://www.geni.com/people/x/6000000003827474057) |
+| [Mieszko bytomski](https://www.geni.com/people/x/6000000015227459170) | born 1295, after their mother Helena N.N. died in 1291 | [Helena N.N.](https://www.geni.com/people/x/6000000003827474057) |
+| [Agnes von Vinstingen-Schwanenhals](https://www.geni.com/people/x/6000000010916030260) | born 1301, after their mother Katharina von Zweibrücken died in 1261 | [Katharina von Zweibrücken](https://www.geni.com/people/x/6000000010915866404) |
 | [Torgils Trondsson](https://www.geni.com/people/x/6000000004370074150) | born 1305, before their mother NN Onarheim was born in 1310 | [NN Onarheim](https://www.geni.com/people/x/6000000003492877476) |
 | [Jon Hafthorsson Hafthorssen Sorum](https://www.geni.com/people/x/6000000003869622559) | born 1312, after their father Hafthor Jonsson Jonsen died in 1310 | [Hafthor Jonsson Jonsen](https://www.geni.com/people/x/6000000006151784313) |
 | [Holte Gunnarson Seim](https://www.geni.com/people/x/6000000009343941514) | born 1319, before their father Gunnar Geirlaugsson Seim was born in 1394 | [Gunnar Geirlaugsson Seim](https://www.geni.com/people/x/6000000019092784883) |
 | [Geirlaug Tordsson Haug](https://www.geni.com/people/x/6000000007692644821) | born 1334, before their mother N.N. was born in 1347 | [N.N.](https://www.geni.com/people/x/6000000007692917429) |
 | [Ogmund Arnbjørnsson Byre](https://www.geni.com/people/x/2559121) | born 1335, after their mother Magnhild died in 1332 | [Magnhild](https://www.geni.com/people/x/6000000000172095492) |
+| [Meinhard](https://www.geni.com/people/x/6000000000628802390) | born 1344, after their father Meinhard IV II. Goriški died in 1295 | [Meinhard IV II. Goriški](https://www.geni.com/people/x/6000000003897531120) |
+| [Meinhard](https://www.geni.com/people/x/6000000000628802390) | born 1344, after their mother Elisabeth Wittelsbach died in 1273 | [Elisabeth Wittelsbach](https://www.geni.com/people/x/298732052860003667) |
 | [N.N.](https://www.geni.com/people/x/6000000007692917429) | born 1347, after their mother N.N. Haftoresdatter died in 1346 | [N.N. Haftoresdatter](https://www.geni.com/people/x/6000000009757645825) |
 | [Jöns Erlandsson Erlandsson (Liljesparre)](https://www.geni.com/people/x/6000000001317925402) | born 1365, before their mother Ingegerd Knutsdotter was born in 1368 | [Ingegerd Knutsdotter](https://www.geni.com/people/x/6000000031921788092) |
 | [Tord Trondson Trondson](https://www.geni.com/people/x/6000000003821039045) | born 1373, after their father Trond Tordson died in 1371 | [Trond Tordson](https://www.geni.com/people/x/6000000002006298745) |
@@ -56,95 +129,103 @@ Every one of these is an error somewhere — in a date, or in a link between two
 | [Margrete Eivindsdatter](https://www.geni.com/people/x/6000000003095080182) | born 1420, after their father Eivind Ogmundsson died in 1416 | [Eivind Ogmundsson](https://www.geni.com/people/x/6000000004870612250) |
 | [Margrete Eivindsdatter](https://www.geni.com/people/x/6000000003095080182) | born 1420, after their mother Brynhild died in 1417 | [Brynhild](https://www.geni.com/people/x/6000000004870702053) |
 | [Anne Ludvigsdatter Barsebek](https://www.geni.com/people/x/6000000004647605698) | born 1424, after their father Ludvig Gotskalksson Barsebek died in 1413 | [Ludvig Gotskalksson Barsebek](https://www.geni.com/people/x/6000000007773654412) |
-| [Øystein Sevatsson Aal](https://www.geni.com/people/x/6000000002562227538) | born 1425, before their father Sevat Halvorson Aal was born in 1430 | [Sevat Halvorson Aal](https://www.geni.com/people/x/6000000002562148538) |
-| [Brynhild Torleivsdatter](https://www.geni.com/people/x/6000000002006386304) | born 1435, after their father Torleiv Ellingson died in 1432 | [Torleiv Ellingson](https://www.geni.com/people/x/6000000002512252605) |
-| [Omund Bergulfsen Kløgetvedt](https://www.geni.com/people/x/6000000000172045679) | born 1440, after their father Bergulf Ormson died in 1438 | [Bergulf Ormson](https://www.geni.com/people/x/6000000003086967414) |
-| [Berge Torgersen Årstad](https://www.geni.com/people/x/6000000007255394379) | born 1440, before their father Torger Bergulfsen was born in 1460 | [Torger Bergulfsen](https://www.geni.com/people/x/6000000007255394375) |
-| [Torstein Tjodolvsson ytre Ågedal](https://www.geni.com/people/x/6000000004402092813) | born 1450, before their father Tjodolf Bjermodsson was born in 1460 | [Tjodolf Bjermodsson](https://www.geni.com/people/x/6000000004568272315) |
-| [Orm Bergulfsen](https://www.geni.com/people/x/6000000000136688085) | born 1460, after their father Bergulf Ormson died in 1438 | [Bergulf Ormson](https://www.geni.com/people/x/6000000003086967414) |
-| [Torger Bergulfsen](https://www.geni.com/people/x/6000000007255394375) | born 1460, after their father Bergulf Ormson died in 1438 | [Bergulf Ormson](https://www.geni.com/people/x/6000000003086967414) |
-| [Wibke](https://www.geni.com/people/x/6000000015841669087) | born 1460, after their father Hans died in 1406 | [Hans](https://www.geni.com/people/x/6000000015841678165) |
-| [Gunnild](https://www.geni.com/people/x/5512359337980087028) | born 1465, after their father Laurens Johansson Hård, till Kallset died in 1460 | [Laurens Johansson Hård, till Kallset](https://www.geni.com/people/x/6000000006241455727) |
-| [Jostein Halldorson Dall](https://www.geni.com/people/x/6000000007588176685) | born 1470, after their father Halldor Arnesson died in 1340 | [Halldor Arnesson](https://www.geni.com/people/x/6000000004880541686) |
-| [Torgeir Bergesen? Egeland](https://www.geni.com/people/x/4323738259400054910) | born 1470, before their mother Bergitte Bjørnsdotter Tengs was born in 1475 | [Bergitte Bjørnsdotter Tengs](https://www.geni.com/people/x/6000000037602562821) |
-| [Havtor Geirmundsen](https://www.geni.com/people/x/6000000007224161902) | born 1480, after their father Gjermund Ogmundsen Pust died in 1423 | [Gjermund Ogmundsen Pust](https://www.geni.com/people/x/6000000007480923065) |
-| [Tore Gardson Underberge](https://www.geni.com/people/x/6000000004225286685) | born 1481, after their mother Sophia von Brandenburg died in 1470 | [Sophia von Brandenburg](https://www.geni.com/people/x/6000000004666525158) |
-| [Thamme von Flemming](https://www.geni.com/people/x/6000000015841631236) | born 1486, after their father Hans von Flemming died in 1479 | [Hans von Flemming](https://www.geni.com/people/x/6000000015841603070) |
-| [足仲彦](https://www.geni.com/people/x/6000000001829393837) | born 150, after their father 小碓命 died in 113 | [小碓命](https://www.geni.com/people/x/6000000001829648345) |
-| [Sæbjørn Toresson Talgje](https://www.geni.com/people/x/6000000004213963966) | born 1510, after their mother Cecilie Mortensdatter died in 1465 | [Cecilie Mortensdatter](https://www.geni.com/people/x/6000000003701757499) |
-| [N.N. Ims](https://www.geni.com/people/x/6000000003570049107) | born 1512, before their father Rasmus Halvardson Ims was born in 1530 | [Rasmus Halvardson Ims](https://www.geni.com/people/x/6000000039557945572) |
-| [Siri Halvorsdatter Myklebust](https://www.geni.com/people/x/6000000007380924986) | born 1518, before their father Halvor Baardsson Myklebust was born in 1540 | [Halvor Baardsson Myklebust](https://www.geni.com/people/x/6000000003770454437) |
-| [Siri Halvorsdatter Myklebust](https://www.geni.com/people/x/6000000007380924986) | born 1518, before their mother Tora Pedersdatter Høie? was born in 1542 | [Tora Pedersdatter Høie?](https://www.geni.com/people/x/6000000025227650392) |
-| [Salmund Ommundson Utsola](https://www.geni.com/people/x/6000000003491944826) | born 1535, before their father Ommund Utsola was born in 1562 | [Ommund Utsola](https://www.geni.com/people/x/6000000003491944852) |
-| [Olav Ivarson Hognestad](https://www.geni.com/people/x/6000000111439553822) | born 1545, after their father Ivar Hognestad died in 1519 | [Ivar Hognestad](https://www.geni.com/people/x/6000000002748852108) |
-| [Gitle Tørresson Kleppe](https://www.geni.com/people/x/6000000003492049187) | born 1565, before their mother Marit Olsdatter Hauge was born in 1567 | [Marit Olsdatter Hauge](https://www.geni.com/people/x/6000000002963018172) |
-| [Birgitte Smedsdatter](https://www.geni.com/people/x/6000000010433187814) | born 1570, after their mother N.N. Olsdatter died in 1566 | [N.N. Olsdatter](https://www.geni.com/people/x/6000000063110304083) |
-| [Nils Olofsson](https://www.geni.com/people/x/6000000020854914910) | born 1577, before their father Olof Nilsson was born in 1580 | [Olof Nilsson](https://www.geni.com/people/x/6000000006346873253) |
-| [Herborg Olsdatter Åsland](https://www.geni.com/people/x/6000000008897819117) | born 1580, after their mother Marit (Guri) Ingebretsdatter died in 1563 | [Marit (Guri) Ingebretsdatter](https://www.geni.com/people/x/6000000003492074828) |
-| [Jørgen Torjeisen Lunde](https://www.geni.com/people/x/6000000005020683684) | born 1585, before their mother Gjertrud Jørundsdatter Kvåle was born in 1593 | [Gjertrud Jørundsdatter Kvåle](https://www.geni.com/people/x/6000000005020980756) |
-| [Gro Bjugsdotter Berg](https://www.geni.com/people/x/6000000014536354428) | born 1590, after their father Bjug Ulvsson died in 1575 | [Bjug Ulvsson](https://www.geni.com/people/x/6000000014302386480) |
-| [Gjertrud Jørundsdatter Kvåle](https://www.geni.com/people/x/6000000005020980756) | born 1593, after their father Jørund Olavsson Kvåle died in 1582 | [Jørund Olavsson Kvåle](https://www.geni.com/people/x/6000000005021134497) |
-| [Bjørn Alvsen Risa](https://www.geni.com/people/x/6000000000496960006) | born 1607, after their father Alv Dagfinnson Risa died in 1603 | [Alv Dagfinnson Risa](https://www.geni.com/people/x/6000000006935568812) |
-| [Dorthe Salomonsdatter](https://www.geni.com/people/x/6000000007169080261) | born 1610, before their father Salomon was born in 1639 | [Salomon](https://www.geni.com/people/x/6000000204649628822) |
-| [Amund Iversen](https://www.geni.com/people/x/6000000025858766093) | born 1629, after their father Iver Olsen died in 1625 | [Iver Olsen](https://www.geni.com/people/x/6000000063110917827) |
-| [Jørund Tarjeisson Berg](https://www.geni.com/people/x/6000000040702768602) | born 1636, before their mother Sigrid Torleivsdtr Lunde was born in 1657 | [Sigrid Torleivsdtr Lunde](https://www.geni.com/people/x/6000000040704172684) |
-| [Oluf Torersen](https://www.geni.com/people/x/6000000205085725822) | born 1641, after their father Torer Amundsen died in 1638 | [Torer Amundsen](https://www.geni.com/people/x/6000000011400682962) |
-| [Ådne Larson Haukamork](https://www.geni.com/people/x/6000000003025548346) | born 1642, after their mother Gjøa Njellsdatter Madland died in 1640 | [Gjøa Njellsdatter Madland](https://www.geni.com/people/x/6000000002964097237) |
-| [Svenke Olavsson Brokke](https://www.geni.com/people/x/6000000015138570102) | born 1645, after their father Olav Taraldsson Tveiten died in 1640 | [Olav Taraldsson Tveiten](https://www.geni.com/people/x/6000000014291411299) |
-| [Helge](https://www.geni.com/people/x/6000000006094423024) | born 1650, after their father Per died in 1633 | [Per](https://www.geni.com/people/x/6000000006094317342) |
-| [Alf Gulbrandsen](https://www.geni.com/people/x/6000000217567553830) | born 1655, after their father Gulbrand Hallesen died in 1653 | [Gulbrand Hallesen](https://www.geni.com/people/x/6000000011546468183) |
-| [Ragnhild Guldbrandsdatter](https://www.geni.com/people/x/6000000054599854871) | born 1657, after their father Gulbrand Hallesen died in 1653 | [Gulbrand Hallesen](https://www.geni.com/people/x/6000000011546468183) |
-| [Knut](https://www.geni.com/people/x/6000000011025490226) | born 1661, after their father Gulbrand Hallesen died in 1653 | [Gulbrand Hallesen](https://www.geni.com/people/x/6000000011546468183) |
-| [Knut Andersson Dagestad](https://www.geni.com/people/x/6000000007635644393) | born 1663, after their mother Brita Olavsdatter died in 1654 | [Brita Olavsdatter](https://www.geni.com/people/x/6000000007635644387) |
-| [Halvor Johannesson Bolstad](https://www.geni.com/people/x/6000000007160320355) | born 1666, after their mother NN died in 1638 | [NN](https://www.geni.com/people/x/6000000178420660827) |
-| [Ingebjørg Larsdatter Larsdatter Uppheim](https://www.geni.com/people/x/6000000007224180921) | born 1670, after their father Lars Gudleikson Uppheim died in 1661 | [Lars Gudleikson Uppheim](https://www.geni.com/people/x/6000000014596414349) |
-| [Ambjørg Helgesdatter](https://www.geni.com/people/x/6000000002650761540) | born 1692, after their father Helge Torstensen Anonby died in 1688 | [Helge Torstensen Anonby](https://www.geni.com/people/x/6000000002650468838) |
-| [Lars Iversen Søgaard](https://www.geni.com/people/x/6000000017044581390) | born 1694, before their father Kristen Larsen was born in 1713 | [Kristen Larsen](https://www.geni.com/people/x/6000000001499022177) |
-| [Lars Iversen Søgaard](https://www.geni.com/people/x/6000000017044581390) | born 1694, before their mother Maria Kristoffersdatter was born in 1711 | [Maria Kristoffersdatter](https://www.geni.com/people/x/6000000158999726832) |
-| [Mari Pedersdatter](https://www.geni.com/people/x/6000000011057373292) | born 1697, after their mother Anne died in 1669 | [Anne](https://www.geni.com/people/x/6000000178414832822) |
-| [Ingeborg Pedersdatter Eng](https://www.geni.com/people/x/6000000208230207844) | born 1704, after their mother Anne died in 1669 | [Anne](https://www.geni.com/people/x/6000000178414832822) |
-| [Torbjørn Madsson](https://www.geni.com/people/x/6000000003875720930) | born 1712, after their mother Ingebjørg Larsdatter Larsdatter Uppheim died in 1703 | [Ingebjørg Larsdatter Larsdatter Uppheim](https://www.geni.com/people/x/6000000007224180921) |
-| [Sven Svensen](https://www.geni.com/people/x/6000000002387544007) | born 1734, after their father Ola Svensen Rott died in 1732 | [Ola Svensen Rott](https://www.geni.com/people/x/6000000002387058317) |
-| [Åse Helgesdatter Auestad](https://www.geni.com/people/x/6000000003094971050) | born 1737, after their mother Eli Larsdatter Gjesdal died in 1736 | [Eli Larsdatter Gjesdal](https://www.geni.com/people/x/6000000003094967990) |
-| [Anne Helgesdtr. Auestad](https://www.geni.com/people/x/6000000005607146656) | born 1739, after their mother Eli Larsdatter Gjesdal died in 1736 | [Eli Larsdatter Gjesdal](https://www.geni.com/people/x/6000000003094967990) |
-| [Christina Olofsdotter](https://www.geni.com/people/x/6000000177921516869) | born 1772, after their father Olof Olofsson died in 1769 | [Olof Olofsson](https://www.geni.com/people/x/6000000177921516884) |
-| [Arne Olsen](https://www.geni.com/people/x/6000000023167357368) | born 1773, after their father Ole Pedersen Filtvet died in 1770 | [Ole Pedersen Filtvet](https://www.geni.com/people/x/6000000023159197982) |
-| [Pernille Olsdatter Haug](https://www.geni.com/people/x/6000000023167280437) | born 1776, after their father Ole Pedersen Filtvet died in 1770 | [Ole Pedersen Filtvet](https://www.geni.com/people/x/6000000023159197982) |
-| [Anders Andersen](https://www.geni.com/people/x/6000000216557161033) | born 1784, died 1781 — born after their own death | — |
-| [Brita Johansdotter](https://www.geni.com/people/x/6000000177921501869) | born 1786, after their father Jon Persson died in 1767 | [Jon Persson](https://www.geni.com/people/x/6000000007818631316) |
-| [Jacob Haldorsson](https://www.geni.com/people/x/6000000029344717807) | born 1789, after their mother Marita Bergesdatter Brunborg died in 1787 | [Marita Bergesdatter Brunborg](https://www.geni.com/people/x/6000000018014716237) |
-| [Gaute Pedersen](https://www.geni.com/people/x/6000000194629541922) | born 1794, after their father Peder Gautesen died in 1665 | [Peder Gautesen](https://www.geni.com/people/x/6000000181101081825) |
-| [Gaute Pedersen](https://www.geni.com/people/x/6000000194629541922) | born 1794, after their mother Åse Andersdatter died in 1665 | [Åse Andersdatter](https://www.geni.com/people/x/6000000181100951831) |
-| [Gjertrud Haldorsdotter Bjørgo](https://www.geni.com/people/x/6000000012957519194) | born 1797, after their mother Marita Bergesdatter Brunborg died in 1787 | [Marita Bergesdatter Brunborg](https://www.geni.com/people/x/6000000018014716237) |
-| [Maren Torersdatter](https://www.geni.com/people/x/6000000222793877821) | born 1814, after their father Torer Gulbrandsen Greveg died in 1753 | [Torer Gulbrandsen Greveg](https://www.geni.com/people/x/6000000089275370310) |
-| [Maren Torersdatter](https://www.geni.com/people/x/6000000222793877821) | born 1814, after their mother Marte Pedersdatter died in 1723 | [Marte Pedersdatter](https://www.geni.com/people/x/6000000019736511690) |
-| [Ole Andersen](https://www.geni.com/people/x/6000000108875426925) | born 1832, after their father Anders Hansen died in 1829 | [Anders Hansen](https://www.geni.com/people/x/6000000000751289027) |
-| [Anne Kristine Andersdatter](https://www.geni.com/people/x/6000000000751079659) | born 1834, after their father Anders Hansen died in 1829 | [Anders Hansen](https://www.geni.com/people/x/6000000000751289027) |
-| [Johannes Andersen](https://www.geni.com/people/x/6000000108876548822) | born 1838, after their father Anders Hansen died in 1829 | [Anders Hansen](https://www.geni.com/people/x/6000000000751289027) |
-| [Ingeborg Malena Velasdatter Erga](https://www.geni.com/people/x/6000000013868925079) | born 1856, after their mother Ingeborg Malena Torgersdatter Erga died in 1854 | [Ingeborg Malena Torgersdatter Erga](https://www.geni.com/people/x/6000000089794078829) |
-| [Vilhelm Velasen Krogen](https://www.geni.com/people/x/6000000013868862870) | born 1859, after their mother Ingeborg Malena Torgersdatter Erga died in 1854 | [Ingeborg Malena Torgersdatter Erga](https://www.geni.com/people/x/6000000089794078829) |
 
-## Implausible (89)
+## Implausible (173)
 
 A parent under 12, or a lifespan over 120 years. Some of these will be correct; they are here for a human to judge, not to be taken as defects.
+
+Showing the first 100.
 
 | person | what | other |
 | --- | --- | --- |
 | [Sigrid Finnsdatter](https://www.geni.com/people/x/6000000002527704016) | born 1020, when their mother Bergljót Thorbjórg was 10 | [Bergljót Thorbjórg](https://www.geni.com/people/x/6000000003220313927) |
+| [Beatrix](https://www.geni.com/people/x/6000000000232618899) | born 1022, died 1180 — a lifespan of 158 years | — |
 | [NN](https://www.geni.com/people/x/6000000054755271849) | born 1024, died 1145 — a lifespan of 121 years | — |
+| [Hermann I von Zähringen](https://www.geni.com/people/x/6000000002187580992) | born 1045, when their mother Richwara von Schwaben was 7 | [Richwara von Schwaben](https://www.geni.com/people/x/6000000006906578140) |
+| [Ulrich I](https://www.geni.com/people/x/6000000002980211013) | born 1047, when their mother Mathilde von Wels-Lambach was 11 | [Mathilde von Wels-Lambach](https://www.geni.com/people/x/6000000003147191246) |
+| [Adelheid von Zähringen](https://www.geni.com/people/x/6000000000768271011) | born 1060, when their mother Adelaide de Maurienne was 8 | [Adelaide de Maurienne](https://www.geni.com/people/x/6000000001789016114) |
+| [N/a-1](https://www.geni.com/people/x/6000000018359459040) | born 1069, when their mother Synadene was 11 | [Synadene](https://www.geni.com/people/x/6000000013005079391) |
+| [Adelheid de Louvain](https://www.geni.com/people/x/6000000008568510482) | born 1072, when their mother Gertrude was 2 | [Gertrude](https://www.geni.com/people/x/6000000013446125614) |
+| [Gertrude of Louvain](https://www.geni.com/people/x/6000000016126007881) | born 1074, when their mother Gertrude was 4 | [Gertrude](https://www.geni.com/people/x/6000000013446125614) |
 | [Cecilia Svensdotter](https://www.geni.com/people/x/6000000001935440284) | born 1075, when their mother Helena Stenkilsdotter was 10 | [Helena Stenkilsdotter](https://www.geni.com/people/x/6000000008755327481) |
+| [Margarethe Hedwig](https://www.geni.com/people/x/6000000009968590361) | born 1080, when their father Günther l was 6 | [Günther l](https://www.geni.com/people/x/6000000002187805531) |
+| [Sviatoslav Давыдович Рюрикович](https://www.geni.com/people/x/6000000009100650863) | born 1080, when their mother Feodosia, Parentage Undocumented was 10 | [Feodosia, Parentage Undocumented](https://www.geni.com/people/x/6000000036765870945) |
+| [No descendants](https://www.geni.com/people/x/6000000178860910834) | born 1080, when their mother Klaudija Trpimirović was 5 | [Klaudija Trpimirović](https://www.geni.com/people/x/6000000009351982261) |
+| [Margarethe Hedwig](https://www.geni.com/people/x/6000000009968590361) | born 1080, when their mother Mechtilde Yaropolkovna von Wladimir was 4 | [Mechtilde Yaropolkovna von Wladimir](https://www.geni.com/people/x/6000000002188166366) |
+| [Vsevolod Glebovich](https://www.geni.com/people/x/6000000007377273393) | born 1085, when their mother Anastasia Yaropolkovna of Vlodimiro-Volynsk was 11 | [Anastasia Yaropolkovna of Vlodimiro-Volynsk](https://www.geni.com/people/x/6000000000701224748) |
+| [Ростислав Рогволдич](https://www.geni.com/people/x/6000000035681881459) | born 1100, when their father Rogvolod Vasilko Rogvolodovich Rurikid was 0 | [Rogvolod Vasilko Rogvolodovich Rurikid](https://www.geni.com/people/x/6000000011766711029) |
 | [Bjørn Haraldsen](https://www.geni.com/people/x/6000000001935619159) | born 1100, when their mother Ragnhild Magnusdotter was 10 | [Ragnhild Magnusdotter](https://www.geni.com/people/x/6000000021274381997) |
+| [Roman Prince Of Kiev](https://www.geni.com/people/x/6000000006727876068) | born 1104, when their mother Ljubava Zavidich was 9 | [Ljubava Zavidich](https://www.geni.com/people/x/6000000001745043247) |
 | [Ingrid Ragnvaldsdatter Rögnvaldsdóttir](https://www.geni.com/people/x/6000000001669615869) | born 1105, when their father Ragnvald Ingesson was 5 | [Ragnvald Ingesson](https://www.geni.com/people/x/6000000000944947381) |
 | [Sigrid Ulfhild Björnsdotter Bjälboätten](https://www.geni.com/people/x/6000000003349982019) | born 1110, when their father Bjørn Haraldsen was 10 | [Bjørn Haraldsen](https://www.geni.com/people/x/6000000001935619159) |
 | [Sigrid Ulfhild Björnsdotter Bjälboätten](https://www.geni.com/people/x/6000000003349982019) | born 1110, when their mother Katarina Ingesdotter was 3 | [Katarina Ingesdotter](https://www.geni.com/people/x/6000000011749043301) |
+| [Pribislava Iaroslavovna of Volhynia](https://www.geni.com/people/x/6000000006727873223) | born 1115, when their mother Rogneda Mstislavna of Kiev was 9 | [Rogneda Mstislavna of Kiev](https://www.geni.com/people/x/6000000014170256977) |
+| [Elisabeth Árpád dynasty](https://www.geni.com/people/x/6000000003243185408) | born 1117, when their father Béla Slijepi was 9 | [Béla Slijepi](https://www.geni.com/people/x/6000000004397805952) |
+| [Elisabeth Árpád dynasty](https://www.geni.com/people/x/6000000003243185408) | born 1117, when their mother Jelena of Hungary Vukanović was 2 | [Jelena of Hungary Vukanović](https://www.geni.com/people/x/6000000006727871963) |
+| [Maria Angelina](https://www.geni.com/people/x/6000000009229085408) | born 1125, when their father Andronikos Doukas Angelos was 9 | [Andronikos Doukas Angelos](https://www.geni.com/people/x/6000000007237395312) |
+| [Maria Angelina](https://www.geni.com/people/x/6000000009229085408) | born 1125, when their mother Euphrosyne Kastamonitissa was 0 | [Euphrosyne Kastamonitissa](https://www.geni.com/people/x/6000000000437594534) |
+| [Zoja Angelina](https://www.geni.com/people/x/6000000007337816566) | born 1129, when their mother Euphrosyne Kastamonitissa was 4 | [Euphrosyne Kastamonitissa](https://www.geni.com/people/x/6000000000437594534) |
+| [Otto](https://www.geni.com/people/x/6000000022229794425) | born 1130, when their father Heinrich III was 11 | [Heinrich III](https://www.geni.com/people/x/6000000022230102901) |
+| [Inger](https://www.geni.com/people/x/6000000001009241951) | born 1133, when their father Knud V(III) av Danmark Magnusson was 4 | [Knud V(III) av Danmark Magnusson](https://www.geni.com/people/x/6000000000685763088) |
+| [Burkhard von Magdeburg-Querfurt](https://www.geni.com/people/x/6000000003827612113) | born 1136, when their mother Adelheid von Magdeburg was 5 | [Adelheid von Magdeburg](https://www.geni.com/people/x/6000000003827612120) |
+| [Malmfried](https://www.geni.com/people/x/6000000007833070219) | born 1138, when their father Knud V(III) av Danmark Magnusson was 9 | [Knud V(III) av Danmark Magnusson](https://www.geni.com/people/x/6000000000685763088) |
+| [Benedikte](https://www.geni.com/people/x/6000000001756124195) | born 1140, when their mother Benedikta von Roning was 10 | [Benedikta von Roning](https://www.geni.com/people/x/6000000003828261390) |
+| [Heinrich](https://www.geni.com/people/x/6000000002188292453) | born 1140, when their mother Gisela Gräfin von Andechs was 2 | [Gisela Gräfin von Andechs](https://www.geni.com/people/x/6000000002187891152) |
+| [Diepold](https://www.geni.com/people/x/6000000002188292460) | born 1140, when their mother Gisela Gräfin von Andechs was 2 | [Gisela Gräfin von Andechs](https://www.geni.com/people/x/6000000002187891152) |
+| [Otto II](https://www.geni.com/people/x/6000000002188292467) | born 1145, when their mother Gisela Gräfin von Andechs was 7 | [Gisela Gräfin von Andechs](https://www.geni.com/people/x/6000000002187891152) |
+| [Mangold](https://www.geni.com/people/x/6000000002188292474) | born 1145, when their mother Gisela Gräfin von Andechs was 7 | [Gisela Gräfin von Andechs](https://www.geni.com/people/x/6000000002187891152) |
+| [Elena Rostislava von Kiew Smolensk](https://www.geni.com/people/x/6000000039488225719) | born 1146, when their father Roman Rostislavich Rurikid was 4 | [Roman Rostislavich Rurikid](https://www.geni.com/people/x/6000000010935887631) |
+| [Elena Rostislava von Kiew Smolensk](https://www.geni.com/people/x/6000000039488225719) | born 1146, when their mother Maria Sviatoslavna of Chernigov was 9 | [Maria Sviatoslavna of Chernigov](https://www.geni.com/people/x/6000000009178763157) |
+| [Святослав Мстиславович](https://www.geni.com/people/x/6000000020992751246) | born 1148, when their mother Agnieska Болеславовна of Poland was 11 | [Agnieska Болеславовна of Poland](https://www.geni.com/people/x/6000000006727871181) |
 | [Ragnfrid Erlingsdotter](https://www.geni.com/people/x/6000000001827585415) | born 1150, when their mother Ragnild was 10 | [Ragnild](https://www.geni.com/people/x/6000000001198709343) |
+| [Ingvar Yaroslavich Rurikid](https://www.geni.com/people/x/6000000010935947869) | born 1152, when their mother Gertrud of Bohemia was 3 | [Gertrud of Bohemia](https://www.geni.com/people/x/6000000001501073962) |
+| [Berta](https://www.geni.com/people/x/6000000002187828854) | born 1156, when their mother Krystyna (Christina) was 6 | [Krystyna (Christina)](https://www.geni.com/people/x/6000000004533305966) |
+| [Walram van Limburg](https://www.geni.com/people/x/6000000019511741569) | born 1158, when their mother Sophia von Saarbrücken was 10 | [Sophia von Saarbrücken](https://www.geni.com/people/x/6000000003858683664) |
+| [Alexios](https://www.geni.com/people/x/6000000013098241261) | born 1162, when their mother Theodora Batatzaina was 0 | [Theodora Batatzaina](https://www.geni.com/people/x/6000000006727878330) |
+| [Adelheid von Dillingen](https://www.geni.com/people/x/6000000008787043512) | born 1170, when their father Adelbert III was 2 | [Adelbert III](https://www.geni.com/people/x/6000000008030116091) |
+| [Hedwig von Andechs von Andechs](https://www.geni.com/people/x/4774053172420033191) | born 1170, when their father Berthold IV (VI) von Andechs-Meranien was 11 | [Berthold IV (VI) von Andechs-Meranien](https://www.geni.com/people/x/6000000003858731296) |
+| [Otto I.](https://www.geni.com/people/x/6000000004533233412) | born 1170, when their father Berthold IV (VI) von Andechs-Meranien was 11 | [Berthold IV (VI) von Andechs-Meranien](https://www.geni.com/people/x/6000000003858731296) |
+| [Friedrich lll Graf von Beichlingen-Lohra](https://www.geni.com/people/x/6000000003827535052) | born 1170, when their father Friedrich II, Graf von Beichlingen was 5 | [Friedrich II, Graf von Beichlingen](https://www.geni.com/people/x/6000000003827612875) |
+| [Albrecht l](https://www.geni.com/people/x/6000000014961482241) | born 1170, when their father Günther Il von Käfernburg-Schwarzburg und Hallermund was 10 | [Günther Il von Käfernburg-Schwarzburg und Hallermund](https://www.geni.com/people/x/6000000003827470068) |
+| [Friedrich lll Graf von Beichlingen-Lohra](https://www.geni.com/people/x/6000000003827535052) | born 1170, when their mother Christiane von Ballenstedt was 1 | [Christiane von Ballenstedt](https://www.geni.com/people/x/6000000003827612868) |
+| [Lucia von Rügen](https://www.geni.com/people/x/6000000003411662895) | born 1171, when their father Jaromar (Fürst) Prince from Rugen was 8 | [Jaromar (Fürst) Prince from Rugen](https://www.geni.com/people/x/6000000001828950711) |
+| [Irine Angelina](https://www.geni.com/people/x/6000000000125362235) | born 1172, when their mother Eirene was 11 | [Eirene](https://www.geni.com/people/x/6000000034543434809) |
+| [Anne de Montmorency](https://www.geni.com/people/x/6000000068540375880) | born 1174, when their father Mathieu Il 'Le Grand' de Montmorency was 0 | [Mathieu Il 'Le Grand' de Montmorency](https://www.geni.com/people/x/6000000002447118571) |
+| [Goswinus van Wassenberg](https://www.geni.com/people/x/6000000034715812366) | born 1175, when their father Hendrik van Wassenberg was 7 | [Hendrik van Wassenberg](https://www.geni.com/people/x/6000000067511774863) |
+| [Goswinus van Wassenberg](https://www.geni.com/people/x/6000000034715812366) | born 1175, when their mother Sophia van Gelre was 10 | [Sophia van Gelre](https://www.geni.com/people/x/6000000034716047128) |
 | [Heinrich Hinricus](https://www.geni.com/people/x/6000000012964146083) | born 1178, when their father Egehard Gerhard ab Osta was 2 | [Egehard Gerhard ab Osta](https://www.geni.com/people/x/6000000012964586264) |
+| [Eudoxia Lascaris](https://www.geni.com/people/x/6000000006727869414) | born 1180, when their mother Anna Komnena Angelina was 4 | [Anna Komnena Angelina](https://www.geni.com/people/x/6000000000467542216) |
+| [Gebhard I von Arnstein](https://www.geni.com/people/x/6000000003897531035) | born 1180, when their mother Gertrud von Ballenstedt was 1 | [Gertrud von Ballenstedt](https://www.geni.com/people/x/6000000003897531922) |
 | [Inga Vikingsdotter](https://www.geni.com/people/x/6000000003575290734) | born 1180, when their mother N.N. was 10 | [N.N.](https://www.geni.com/people/x/6000000011906260846) |
+| [Huguette de Bourgogne Montagu](https://www.geni.com/people/x/6000000001501065106) | born 1185, when their mother Béatrix de Rion was 10 | [Béatrix de Rion](https://www.geni.com/people/x/6000000003827791823) |
+| [Isabelle De](https://www.geni.com/people/x/6000000005599114357) | born 1189, when their father Guillaume II was 11 | [Guillaume II](https://www.geni.com/people/x/6000000002043246196) |
+| [Salomea Romanovna Galitzki](https://www.geni.com/people/x/6000000030216131445) | born 1191, when their mother Euphrosyne Angelina was 11 | [Euphrosyne Angelina](https://www.geni.com/people/x/6000000013009068580) |
+| [Bernhard](https://www.geni.com/people/x/6000000026434019217) | born 1195, when their father Bernhard was 6 | [Bernhard](https://www.geni.com/people/x/6000000026434487013) |
 | [Ulvhedin Holteson Kamp](https://www.geni.com/people/x/6000000000944947195) | born 1198, when their mother Sigrid was 4 | [Sigrid](https://www.geni.com/people/x/6000000000462674121) |
+| [Günther](https://www.geni.com/people/x/6000000027939842694) | born 1199, when their father Bernhard was 10 | [Bernhard](https://www.geni.com/people/x/6000000026434487013) |
+| [Sibylle de Bar-le-Duc](https://www.geni.com/people/x/6000000002187952611) | born 1200, when their mother Philippa de Dreux was 8 | [Philippa de Dreux](https://www.geni.com/people/x/6000000000437169972) |
+| [Agnes von Saarwerden](https://www.geni.com/people/x/6000000003827618795) | born 1203, when their father Ludwig von Saarwerden was 3 | [Ludwig von Saarwerden](https://www.geni.com/people/x/6000000003827445807) |
+| [Agnes von Saarwerden](https://www.geni.com/people/x/6000000003827618795) | born 1203, when their mother Agnes von Saarbrücken-Zweibrücken was 3 | [Agnes von Saarbrücken-Zweibrücken](https://www.geni.com/people/x/6000000045395223966) |
+| [Roman Александрович Владимиро-Волынский](https://www.geni.com/people/x/6000000064202130881) | born 1205, when their mother N1205 of Smolensk was 0 | [N1205 of Smolensk](https://www.geni.com/people/x/6000000021179661914) |
 | [Judith Albertsdotter Askanier](https://www.geni.com/people/x/5441313740220126371) | born 1216, when their mother Agnes Babensberg was 10 | [Agnes Babensberg](https://www.geni.com/people/x/6000000009465627532) |
+| [Laurette de Commercy](https://www.geni.com/people/x/6000000011285308083) | born 1220, when their father Simon II de Commercy was 0 | [Simon II de Commercy](https://www.geni.com/people/x/6000000000474104110) |
+| [Lauretta von Blieskastel](https://www.geni.com/people/x/6000000003827618235) | born 1224, when their father Heinrich van Blieskastel was 2 | [Heinrich van Blieskastel](https://www.geni.com/people/x/6000000004533200136) |
+| [Adelheid von Blieskastel](https://www.geni.com/people/x/6000000004533205362) | born 1225, when their father Heinrich van Blieskastel was 3 | [Heinrich van Blieskastel](https://www.geni.com/people/x/6000000004533200136) |
+| [Hugo von Werdenberg-Heiligenberg](https://www.geni.com/people/x/6000000003827521759) | born 1225, when their mother Clementia von Kyburg was 5 | [Clementia von Kyburg](https://www.geni.com/people/x/6000000003827521718) |
+| [Helmhold III. von Schwerin](https://www.geni.com/people/x/6000000003827464404) | born 1227, when their father Günzel was 0 | [Günzel](https://www.geni.com/people/x/6000000003827464411) |
+| [Helmhold III. von Schwerin](https://www.geni.com/people/x/6000000003827464404) | born 1227, when their mother Margarethe was 5 | [Margarethe](https://www.geni.com/people/x/6000000008054483608) |
 | [Margareta Petersdotter Näf (Lejon)](https://www.geni.com/people/x/6000000005060755108) | born 1230, when their mother N.N. NN was 1 | [N.N. NN](https://www.geni.com/people/x/6000000072179033092) |
+| [Imagina von Blieskastel](https://www.geni.com/people/x/6000000003827535263) | born 1233, when their father Heinrich van Blieskastel was 11 | [Heinrich van Blieskastel](https://www.geni.com/people/x/6000000004533200136) |
 | [Gustav Petersson Näs](https://www.geni.com/people/x/6000000003414711727) | born 1235, when their mother N.N. NN was 6 | [N.N. NN](https://www.geni.com/people/x/6000000072179033092) |
 | [Knud](https://www.geni.com/people/x/6000000013969796343) | born 1238, when their mother Tove Ingvarsdotter Huitfeldt was 11 | [Tove Ingvarsdotter Huitfeldt](https://www.geni.com/people/x/6000000011238712921) |
+| [Sophie von Anhalt](https://www.geni.com/people/x/6000000011024212805) | born 1240, when their father Siegfried I Duke of Anhalt-Zerbst was 10 | [Siegfried I Duke of Anhalt-Zerbst](https://www.geni.com/people/x/6000000009706010482) |
+| [Claude de Luxembourg](https://www.geni.com/people/x/6000000009327667853) | born 1245, when their mother Alix de Wavrin was 5 | [Alix de Wavrin](https://www.geni.com/people/x/3920013) |
+| [Susanna von Vinstingen](https://www.geni.com/people/x/6000000009520136593) | born 1246, when their mother Kunigunde Lützelstein was 6 | [Kunigunde Lützelstein](https://www.geni.com/people/x/6000000010917087513) |
+| [Heinrich II, Raugraf von Baumberg](https://www.geni.com/people/x/6000000003827611867) | born 1250, when their mother Agnes of Saarbrücken was 5 | [Agnes of Saarbrücken](https://www.geni.com/people/x/6000000002188563975) |
+| [Heinrich 'The Younger' Brabant](https://www.geni.com/people/x/6000000000437159726) | born 1251, when their father Hendrik Hesse; Reginar was 7 | [Hendrik Hesse; Reginar](https://www.geni.com/people/x/6000000000796886787) |
+| [Heinrich 'The Younger' Brabant](https://www.geni.com/people/x/6000000000437159726) | born 1251, when their mother Adelheid von Braunschweig-Lüneburg was 6 | [Adelheid von Braunschweig-Lüneburg](https://www.geni.com/people/x/6000000003897526339) |
+| [Katalin](https://www.geni.com/people/x/2317494) | born 1260, when their father Bökény de Cseklész was 0 | [Bökény de Cseklész](https://www.geni.com/people/x/6000000014864292991) |
+| [Maria von Wittelsbach](https://www.geni.com/people/x/6000000002187825677) | born 1261, when their mother Anna von Schlesien-Glogau Anna głogowska was 11 | [Anna von Schlesien-Glogau Anna głogowska](https://www.geni.com/people/x/6000000006127668543) |
 | [Jartrud Eindridesdatter](https://www.geni.com/people/x/6000000004641103843) | born 1265, when their mother Birgit Bårdsdatter i Grautan was 10 | [Birgit Bårdsdatter i Grautan](https://www.geni.com/people/x/6000000007442944243) |
 | [Holmfrid Erlingsdatter Hildugard](https://www.geni.com/people/x/6000000002893299272) | born 1268, when their mother Margrethe Erlingsdatter Bjarkøy was 8 | [Margrethe Erlingsdatter Bjarkøy](https://www.geni.com/people/x/6000000002893319431) |
 | [Eindride Toraldeson](https://www.geni.com/people/x/6000000007223985675) | born 1270, when their father Toralde Ormson was 10 | [Toralde Ormson](https://www.geni.com/people/x/6000000007345119911) |
@@ -152,73 +233,11 @@ A parent under 12, or a lifespan over 120 years. Some of these will be correct; 
 | [Algot Bryniolfsson](https://www.geni.com/people/x/6000000005795638082) | born 1285, when their father Bryniolf Bengtsson was 9 | [Bryniolf Bengtsson](https://www.geni.com/people/x/6000000011239545575) |
 | [Arnbjørn](https://www.geni.com/people/x/6000000003378081904) | born 1285, when their mother Ragnhild was 10 | [Ragnhild](https://www.geni.com/people/x/6000000141812424821) |
 | [Gotskalk Eriksson Eiríksson](https://www.geni.com/people/x/6000000003220670973) | born 1290, when their father Eiríkur was 0 | [Eiríkur](https://www.geni.com/people/x/6000000176580722853) |
+| [Herman Of Brandenburg](https://www.geni.com/people/x/6000000000628842719) | born 1290, when their father Frederick IV Hohenzollern was 3 | [Frederick IV Hohenzollern](https://www.geni.com/people/x/6000000003858676995) |
+| [Herman Of Brandenburg](https://www.geni.com/people/x/6000000000628842719) | born 1290, when their mother Margaretha von Kärnten-Görz was 0 | [Margaretha von Kärnten-Görz](https://www.geni.com/people/x/6000000003897426330) |
 | [Botulf Mugga](https://www.geni.com/people/x/6000000007442829724) | born 1300, when their father Eystein Isaksson was 10 | [Eystein Isaksson](https://www.geni.com/people/x/6000000004641234135) |
 | [Nikolai Sylfestson](https://www.geni.com/people/x/6000000005607861733) | born 1300, when their father Sylfest Eindrideson was 0 | [Sylfest Eindrideson](https://www.geni.com/people/x/6000000007345045139) |
 | [Helga Haraldsdotter Hverven](https://www.geni.com/people/x/6000000019092804656) | born 1300, when their mother Gjertrud was 0 | [Gjertrud](https://www.geni.com/people/x/6000000022947889123) |
-| [N.N. Kvam](https://www.geni.com/people/x/6000000007384125507) | born 1310, when their father Pål was 10 | [Pål](https://www.geni.com/people/x/6000000007573171415) |
-| [Vebrand](https://www.geni.com/people/x/6000000005609443783) | born 1330, when their mother Ingrid Ølversdatter Rømer was 1 | [Ingrid Ølversdatter Rømer](https://www.geni.com/people/x/6000000225709965832) |
-| [Elin Vilhjalmsdotter Finne](https://www.geni.com/people/x/6000000025890648923) | born 1335, when their mother Ingebjørg was 10 | [Ingebjørg](https://www.geni.com/people/x/6000000025890654976) |
-| [Snefrid](https://www.geni.com/people/x/6000000010222435520) | born 1345, when their mother Margrethe Eilefsdatter Naustdal was 7 | [Margrethe Eilefsdatter Naustdal](https://www.geni.com/people/x/6000000016069351438) |
-| [Ludvig Gotskalksson Barsebek](https://www.geni.com/people/x/6000000007773654412) | born 1350, when their mother NN was 7 | [NN](https://www.geni.com/people/x/6000000002808620436) |
-| [Amund Jonsson](https://www.geni.com/people/x/6000000001169313832) | born 1395, when their mother NN Geirlaugsdatter Seim was 11 | [NN Geirlaugsdatter Seim](https://www.geni.com/people/x/6000000020708827372) |
-| [Bengta Knutsdotter Liongasson](https://www.geni.com/people/x/6000000003897585979) | born 1395, when their mother ukjent was 8 | [ukjent](https://www.geni.com/people/x/6000000018448055702) |
-| [Gunnhild Askjellsdatter Bjørku](https://www.geni.com/people/x/6000000007224161906) | born 1435, died 1580 — a lifespan of 145 years | — |
-| [Svenke Salvesen Søndre Austad](https://www.geni.com/people/x/6000000014282664033) | born 1440, when their father Salve Jonsen Søndre Austad was 10 | [Salve Jonsen Søndre Austad](https://www.geni.com/people/x/6000000014233418373) |
-| [Gunnar d.e. Svensson Kvåle](https://www.geni.com/people/x/6000000041146037126) | born 1450, when their father Svein (Pålsson) was 10 | [Svein (Pålsson)](https://www.geni.com/people/x/6000000005573764992) |
-| [Torstein Tjodolvsson ytre Ågedal](https://www.geni.com/people/x/6000000004402092813) | born 1450, when their mother Torunn was 10 | [Torunn](https://www.geni.com/people/x/6000000007378260165) |
-| [Kristine Andersdatter til Valvatne](https://www.geni.com/people/x/6000000003690471428) | born 1460, when their father Anders was 6 | [Anders](https://www.geni.com/people/x/6000000001169297162) |
-| [Kristine Andersdatter til Valvatne](https://www.geni.com/people/x/6000000003690471428) | born 1460, when their mother Kristine Sigurdsdotter Smør was 6 | [Kristine Sigurdsdotter Smør](https://www.geni.com/people/x/6000000003140444017) |
-| [Liv Olsdatter](https://www.geni.com/people/x/6000000014281916757) | born 1470, died 1592 — a lifespan of 122 years | — |
-| [Bergitte Bjørnsdotter Tengs](https://www.geni.com/people/x/6000000037602562821) | born 1475, when their mother Gunhild Øysteinsdotter Skofteland was 10 | [Gunhild Øysteinsdotter Skofteland](https://www.geni.com/people/x/6000000004569616464) |
-| [Olav Gunnarson Kvåle](https://www.geni.com/people/x/6000000004691053165) | born 1480, when their mother Siri Svenkesdatter Søndre Austad was 10 | [Siri Svenkesdatter Søndre Austad](https://www.geni.com/people/x/6000000014201172303) |
-| [Bothilda Havtorsdtr Gjerdeskvål](https://www.geni.com/people/x/6000000007481535717) | born 1491, when their father Havtor Geirmundsen was 11 | [Havtor Geirmundsen](https://www.geni.com/people/x/6000000007224161902) |
-| [Orm Ivarson Tokheim](https://www.geni.com/people/x/6000000002893633995) | born 1500, when their mother N.N. Ormsdatter was 0 | [N.N. Ormsdatter](https://www.geni.com/people/x/6000000007980445542) |
-| [Jørgen Lydeksen Alstrup](https://www.geni.com/people/x/6000000007265846536) | born 1510, when their father Lydeke Van Der Huus was 0 | [Lydeke Van Der Huus](https://www.geni.com/people/x/6000000037840034429) |
-| [Torkel Tollaksen Grøsfjell](https://www.geni.com/people/x/6000000000172040444) | born 1510, when their father Tollak Assersen Grøsfjell was 10 | [Tollak Assersen Grøsfjell](https://www.geni.com/people/x/6000000003086797714) |
-| [Östen Clementsson](https://www.geni.com/people/x/6000000007062656315) | born 1515, when their father Clement was 5 | [Clement](https://www.geni.com/people/x/6000000007063037171) |
-| [Margrete Jensdatter](https://www.geni.com/people/x/6000000007265870566) | born 1520, when their father Jens Bulgerss was 10 | [Jens Bulgerss](https://www.geni.com/people/x/6000000007265865512) |
-| [Lars Östensson](https://www.geni.com/people/x/6000000007062807597) | born 1520, when their father Östen Clementsson was 5 | [Östen Clementsson](https://www.geni.com/people/x/6000000007062656315) |
-| [Johannes Olavson Skjelnes](https://www.geni.com/people/x/6000000089859872927) | born 1520, when their mother Ingeborg Askjellsdatter Gjerde was 1 | [Ingeborg Askjellsdatter Gjerde](https://www.geni.com/people/x/6000000006450656828) |
-| [Margrete Jensdatter](https://www.geni.com/people/x/6000000007265870566) | born 1520, when their mother Margretha was 0 | [Margretha](https://www.geni.com/people/x/6000000091640896863) |
-| [Torbjørn Ormssønn Tokheim](https://www.geni.com/people/x/6000000090081769053) | born 1521, when their mother Herborg Samsonsdatter Sundal was 1 | [Herborg Samsonsdatter Sundal](https://www.geni.com/people/x/6000000002893714406) |
-| [Rasmus Halvardson Ims](https://www.geni.com/people/x/6000000039557945572) | born 1530, when their father Halvard Toreson was 10 | [Halvard Toreson](https://www.geni.com/people/x/6000000178282470843) |
-| [Endre Helgesen Hovland](https://www.geni.com/people/x/6000000005609325974) | born 1530, when their father Helge (Hovland?) was 11 | [Helge (Hovland?)](https://www.geni.com/people/x/6000000006835094016) |
-| [Katrina Torbjørnsdatter Måge](https://www.geni.com/people/x/6000000003095255594) | born 1530, when their father Torbjørn Ormssønn Tokheim was 9 | [Torbjørn Ormssønn Tokheim](https://www.geni.com/people/x/6000000090081769053) |
-| [Mikkel Eskildsen](https://www.geni.com/people/x/6000000043585729357) | born 1536, when their father Eskild was 11 | [Eskild](https://www.geni.com/people/x/6000000043586159621) |
-| [Helge Endresen Bjordal](https://www.geni.com/people/x/6000000006835051081) | born 1540, when their father Endre Helgesen Hovland was 10 | [Endre Helgesen Hovland](https://www.geni.com/people/x/6000000005609325974) |
-| [Marthe Biørnsdatter](https://www.geni.com/people/x/6000000019369218536) | born 1550, when their father Biørn Salmundsen was 6 | [Biørn Salmundsen](https://www.geni.com/people/x/6000000019369304203) |
-| [Anna Taraldsdotter Ådnøy](https://www.geni.com/people/x/6000000003094919845) | born 1550, when their father Tarald Torgersen Ådnøy was 10 | [Tarald Torgersen Ådnøy](https://www.geni.com/people/x/4819810754900042161) |
-| [Jon Tollaksen Hompland](https://www.geni.com/people/x/6000000005016122161) | born 1550, when their father Tollak Mauritsson Fintland was 10 | [Tollak Mauritsson Fintland](https://www.geni.com/people/x/6000000003095166367) |
-| [Marthe Biørnsdatter](https://www.geni.com/people/x/6000000019369218536) | born 1550, when their mother Guri Pedersdatter was 5 | [Guri Pedersdatter](https://www.geni.com/people/x/6000000019369542250) |
-| [Torstein Tørressen Tørresson](https://www.geni.com/people/x/6000000003094941910) | born 1560, when their father Tørres Gunnarson Gøysa was 4 | [Tørres Gunnarson Gøysa](https://www.geni.com/people/x/6000000003094941944) |
-| [Torstein Tørressen Tørresson](https://www.geni.com/people/x/6000000003094941910) | born 1560, when their mother Karen Halvardsdotter Eiane was 0 | [Karen Halvardsdotter Eiane](https://www.geni.com/people/x/6000000006171302672) |
-| [Orm Jonsen Jonsen](https://www.geni.com/people/x/6000000006868924292) | born 1580, when their mother Maren Eriksdatter Torland was 2 | [Maren Eriksdatter Torland](https://www.geni.com/people/x/6000000204646416821) |
-| [Bård Olson Bygd](https://www.geni.com/people/x/3820773) | born 1600, when their father (10) Ole Olsson Årsrud Olsen Aarsrud was 8 | [(10) Ole Olsson Årsrud Olsen Aarsrud](https://www.geni.com/people/x/6000000219932169493) |
-| [Bård Olson Bygd](https://www.geni.com/people/x/3820773) | born 1600, when their mother (10) Ambjørg Kolbjørnsdtr was 6 | [(10) Ambjørg Kolbjørnsdtr](https://www.geni.com/people/x/6000000219932169503) |
-| [Ragnhild Øybrandsdatter Bjunes](https://www.geni.com/people/x/6000000005026671974) | born 1600, when their mother NN was 0 | [NN](https://www.geni.com/people/x/6000000011812526318) |
-| [Asgjerd Pålsdatter Pålsdtr. Reve](https://www.geni.com/people/x/6000000014563587805) | born 1620, when their father Pål Torkelson was 3 | [Pål Torkelson](https://www.geni.com/people/x/6000000014763831033) |
-| [Anna Ommundsdatter Laland](https://www.geni.com/people/x/6000000005606971487) | born 1630, when their mother Marit Jonsdatter Vashus was 10 | [Marit Jonsdatter Vashus](https://www.geni.com/people/x/6000000005606855392) |
-| [Åse Pedersdatter Låby](https://www.geni.com/people/x/6000000004967049001) | born 1644, when their father Peder Andersen was 10 | [Peder Andersen](https://www.geni.com/people/x/6000000019410183466) |
-| [Marita Larsdotter Bjørgås](https://www.geni.com/people/x/6000000011077090546) | born 1645, when their father Lars Larsson was 6 | [Lars Larsson](https://www.geni.com/people/x/6000000002906259856) |
-| [Marita Larsdotter Bjørgås](https://www.geni.com/people/x/6000000011077090546) | born 1645, when their mother Karen Larsdotter was 5 | [Karen Larsdotter](https://www.geni.com/people/x/6000000002906120518) |
-| [Jorunn Svenkesdotter Brokke](https://www.geni.com/people/x/6000000014302568928) | born 1652, when their father Svenke Olavsson Brokke was 7 | [Svenke Olavsson Brokke](https://www.geni.com/people/x/6000000015138570102) |
-| [Ole Olsen Lund](https://www.geni.com/people/x/6000000025003384946) | born 1654, when their mother Ingrid Engebretsdatter was 9 | [Ingrid Engebretsdatter](https://www.geni.com/people/x/6000000011400171953) |
-| [Sven Persson](https://www.geni.com/people/x/6000000004840106862) | born 1655, when their mother Brita was 10 | [Brita](https://www.geni.com/people/x/6000000017955046217) |
-| [Tora Gunnarsdatter Vølstad](https://www.geni.com/people/x/6000000003025853747) | born 1670, when their mother Gunhild Halvardsdatter Vølstad was 8 | [Gunhild Halvardsdatter Vølstad](https://www.geni.com/people/x/6000000003025813846) |
-| [Peder Alvsen](https://www.geni.com/people/x/6000000033822031019) | born 1675, when their mother Guri Olsdatter was 4 | [Guri Olsdatter](https://www.geni.com/people/x/6000000002041932528) |
-| [Torer Torersen Li](https://www.geni.com/people/x/6000000008061895147) | born 1689, when their mother Berte Torersdatter Søgård was 7 | [Berte Torersdatter Søgård](https://www.geni.com/people/x/6000000008062175274) |
-| [Olof Andersson](https://www.geni.com/people/x/6000000007139980393) | born 1724, when their father Anders Olofsson Olofsson was 10 | [Anders Olofsson Olofsson](https://www.geni.com/people/x/6000000000581187553) |
-| [Olof Andersson](https://www.geni.com/people/x/6000000007139980393) | born 1724, when their mother Karin Nilsdotter was 5 | [Karin Nilsdotter](https://www.geni.com/people/x/6000000000581187590) |
-| [Brita](https://www.geni.com/people/x/6000000007818250927) | born 1734, when their father Jon Persson was 4 | [Jon Persson](https://www.geni.com/people/x/6000000007818631316) |
-| [Marta Lena Jonsdotter](https://www.geni.com/people/x/6000000088192856942) | born 1804, when their mother Greta (Margaretha) Isaksdotter was 8 | [Greta (Margaretha) Isaksdotter](https://www.geni.com/people/x/6000000011078547735) |
-| [Larry Dale Yausie](https://www.geni.com/people/x/6000000020346127374) | born 1958, when their father Brian Gordon was 8 | [Brian Gordon](https://www.geni.com/people/x/6000000020347764869) |
-| [Larry Dale Yausie](https://www.geni.com/people/x/6000000020346127374) | born 1958, when their mother Darlene Mae Yausie was 3 | [Darlene Mae Yausie](https://www.geni.com/people/x/6000000020345457473) |
-| [Kelly Dean Yausie](https://www.geni.com/people/x/6000000020344591638) | born 1959, when their father Brian Gordon was 9 | [Brian Gordon](https://www.geni.com/people/x/6000000020347764869) |
-| [Kelly Dean Yausie](https://www.geni.com/people/x/6000000020344591638) | born 1959, when their mother Darlene Mae Yausie was 4 | [Darlene Mae Yausie](https://www.geni.com/people/x/6000000020345457473) |
-| [Emperor Nintoku](https://www.geni.com/people/x/6000000001829679311) | born 257, died 399 — a lifespan of 142 years | — |
-| [þuríður Þorleifsdóttir](https://www.geni.com/people/x/6000000013660001404) | born 945, when their mother Groa Þórólfurdottir was 5 | [Groa Þórólfurdottir](https://www.geni.com/people/x/6000000029847553961) |
-| [Sigmundur](https://www.geni.com/people/x/6000000010452584582) | born 966, when their father Brestur Sigmundarson was 5 | [Brestur Sigmundarson](https://www.geni.com/people/x/6000000010452792372) |
-| [Turid Torkilsdóttur](https://www.geni.com/people/x/6000000010452653497) | born 966, when their father Torkil (Turrafrost) was 5 | [Torkil (Turrafrost)](https://www.geni.com/people/x/6000000002791716644) |
 
 ## The same person, twice
 
@@ -226,15 +245,15 @@ The merge guarantees one record per Geni **profile**, which is not one record pe
 
 | | groups |
 | --- | ---: |
-| **likely** — same name, same parents, same birth year | **11** |
-| **possible** — same name and year, parents differ or unknown | **42** |
-| excluded as reused names — see below | 138 |
+| **likely** — same name, same parents, same birth year | **12** |
+| **possible** — same name and year, parents differ or unknown | **47** |
+| excluded as reused names — see below | 145 |
 
-**138 groups share a name and both parents but were born in different years, and are deliberately not listed.** In these families a dead child's name was routinely given to the next child, so those are two real siblings. Matching on name and parents alone would return them all as duplicates and be wrong about nearly every one — the exclusion is most of the work here, not an oversight.
+**145 groups share a name and both parents but were born in different years, and are deliberately not listed.** In these families a dead child's name was routinely given to the next child, so those are two real siblings. Matching on name and parents alone would return them all as duplicates and be wrong about nearly every one — the exclusion is most of the work here, not an oversight.
 
 **Nothing is merged, and nothing here should be.** Names are evidence for a human, never a join: this project keys on the Geni profile ID precisely because looser matching once produced a link to a stranger's profile. Merging two profiles is an edit on Geni, made by somebody who has opened both.
 
-### Likely (11)
+### Likely (12)
 
 Same name, same parents, same birth year. Short of siblings born in one year and given one name, these are one person recorded twice.
 
@@ -250,15 +269,17 @@ Same name, same parents, same birth year. Short of siblings born in one year and
 | 1631 | [Ola Nilsen Skei](https://www.geni.com/people/x/6000000005607007945) · [Ola Nilsen Skei](https://www.geni.com/people/x/6000000225386545407) |
 | 1730 | [Olaug Henriksdatter](https://www.geni.com/people/x/6000000001499101871) · [Olaug Henriksdatter](https://www.geni.com/people/x/6000000186680243828) |
 | 890 | [保忠](https://www.geni.com/people/x/6000000010702765665) · [保忠](https://www.geni.com/people/x/6000000012053060814) |
+| 627 | [彭城](https://www.geni.com/people/x/6000000057677182833) · [彭城](https://www.geni.com/people/x/6000000075346122988) |
 | 714 | [永手](https://www.geni.com/people/x/6000000010702660493) · [永手](https://www.geni.com/people/x/6000000012053046486) |
 
-### Possible (42)
+### Possible (47)
 
 Same name and birth year, but the parents differ or are not recorded. Could as easily be cousins named for the same grandparent — worth opening, not worth assuming.
 
 | born | people |
 | ---: | --- |
 | 1550 | [NN](https://www.geni.com/people/x/6000000008188593947) · [NN](https://www.geni.com/people/x/6000000176653557926) · [NN](https://www.geni.com/people/x/6000000213749323826) |
+| 1126 | [Adelheid](https://www.geni.com/people/x/6000000032575187191) · [Adelheid](https://www.geni.com/people/x/6000000044039991695) |
 | 1820 | [Anders Hansen](https://www.geni.com/people/x/6000000177117768824) · [Anders Hansen](https://www.geni.com/people/x/6000000209230831823) |
 | 1841 | [Anders Olsen](https://www.geni.com/people/x/6000000109333975244) · [Anders Olsen](https://www.geni.com/people/x/6000000117191555893) |
 | 1811 | [Anders Olsen](https://www.geni.com/people/x/6000000178654571825) · [Anders Olsen](https://www.geni.com/people/x/6000000218304451862) |
@@ -280,6 +301,7 @@ Same name and birth year, but the parents differ or are not recorded. Could as e
 | 1752 | [Hans Hansen](https://www.geni.com/people/x/6000000019119212674) · [Hans Hansen](https://www.geni.com/people/x/6000000034381623289) |
 | 1843 | [Hans Olsen](https://www.geni.com/people/x/6000000109051336014) · [Hans Olsen](https://www.geni.com/people/x/6000000196249215863) |
 | 1103 | [Harald IV "Gille"](https://www.geni.com/people/x/6000000018329271956) · [Harald IV Gille](https://www.geni.com/people/x/6000000223524555848) |
+| 1133 | [Henry](https://www.geni.com/people/x/5597271884650100378) · [Henry](https://www.geni.com/people/x/6000000002187814242) |
 | 1721 | [Johanne Larsdatter](https://www.geni.com/people/x/6000000014361451409) · [Johanne Larsdatter](https://www.geni.com/people/x/6000000186677808866) |
 | 1802 | [Johannes Hansen](https://www.geni.com/people/x/6000000023264006971) · [Johannes Hansen](https://www.geni.com/people/x/6000000211352156833) |
 | 1770 | [Jøran Olsdatter](https://www.geni.com/people/x/6000000000159704842) · [Jøran Olsdatter](https://www.geni.com/people/x/6000000195446201841) |
@@ -293,10 +315,13 @@ Same name and birth year, but the parents differ or are not recorded. Could as e
 | 1832 | [Ole](https://www.geni.com/people/x/6000000035927490184) · [Ole](https://www.geni.com/people/x/6000000111470175903) |
 | 1791 | [Ole Hansen](https://www.geni.com/people/x/6000000023234434918) · [Ole Hansen](https://www.geni.com/people/x/6000000221254508849) |
 | 1834 | [Ole Olsen](https://www.geni.com/people/x/6000000013214441179) · [Ole Olsen](https://www.geni.com/people/x/6000000109289905140) |
+| 1272 | [Otto](https://www.geni.com/people/x/6000000002187834047) · [Otto](https://www.geni.com/people/x/6000000003827368130) |
 | 1480 | [Peder](https://www.geni.com/people/x/6000000001507025206) · [Peder](https://www.geni.com/people/x/6000000024196277800) |
 | 1798 | [Peder Andersen](https://www.geni.com/people/x/6000000193163678821) · [Peder Andersen](https://www.geni.com/people/x/6000000194612759840) |
 | 1790 | [Per Eriksson](https://www.geni.com/people/x/6000000177921516822) · [Per Eriksson](https://www.geni.com/people/x/6000000185092590185) |
 | 1766 | [Randi Syversdatter](https://www.geni.com/people/x/6000000095236458921) · [Randi Syversdatter](https://www.geni.com/people/x/6000000220888241846) |
 | 1790 | [Rasmus Rasmusson](https://www.geni.com/people/x/6000000003095080287) · [Rasmus Rasmusson](https://www.geni.com/people/x/6000000169821778864) |
+| 595 | [Shahrijar](https://www.geni.com/people/x/6000000011670697392) · [Shahrijar](https://www.geni.com/people/x/6000000172337629229) |
 | 1715 | [Torer Kristoffersen](https://www.geni.com/people/x/6000000001498965389) · [Torer Kristoffersen](https://www.geni.com/people/x/6000000206325856927) |
 | 1798 | [Tosten](https://www.geni.com/people/x/6000000020515974452) · [Tosten](https://www.geni.com/people/x/6000000082517190997) |
+| 1220 | [Walram](https://www.geni.com/people/x/6000000001501069218) · [Walram](https://www.geni.com/people/x/6000000097776586022) |
