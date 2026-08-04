@@ -15,9 +15,43 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
-**Empty.** Next actionable work is an export from one of the two doorways named
-in the standing note below — Emma's call, since it means going to Geni and
-taking one.
+Emma has taken the Jimmu-gap exports and staged them under `exports/`. Scope for
+this session is **only** the two doorways she named — `exports/Li Hong/` (two
+Forest exports) and `exports/n n/` (one) — not the ~16 bulk exports sitting in
+`exports/archive/`, which are still downloading.
+
+Measured before starting, so the payoff is known rather than hoped for: the
+`n n` export holds Jimmu path steps **31–36** and touches the Norwegian
+component in 61 people; `exports/Li Hong/forest/` holds steps **43–51** and
+touches the Japanese component in 41. Neither touches the other. So this
+narrows the 21-step gap to the six steps **37–42** and does **not** join the two
+components — the next doorway is inside that window.
+
+1. **Copy the three exports into `data_lake/`** under the
+   `export-Forest-<seedID>.ged` convention — `…288825` (Li Hong/forest),
+   `…719829` (Li Hong/export-geni), `…742846` (n n). Leave the zips alone;
+   they are gitignored one by one on purpose.
+
+2. **Re-run the pipeline over eight exports** — `inventory`, `merge`, `export`,
+   `frontier`, `seeds`, `consistency`, and `path data_lake/paths/jimmu.tsv`.
+   Confirm the component count and the surviving gap against the prediction
+   above rather than assuming it.
+
+3. **Raise `GENI_EXPORT_CAP`.** It is 3844; the new exports hold 3848, 3852 and
+   3856, and `exports/archive/` holds several at 3860. Rewrite the docstring's
+   evidence paragraph for the larger sample — the step-of-four now has many more
+   observations behind it and still must not be encoded as arithmetic.
+
+4. **Check "the seed is the file's first `INDI`" still holds**, since three of
+   the new files open on a profile created minutes before the export rather than
+   on the person Emma named. Record what is actually true in `CLAUDE.md`.
+
+5. **Record the `exports/` staging layout and the `Descendants` style** —
+   `CLAUDE.md` names three export styles and `exports/archive/export-geni (7)/`
+   is a fourth.
+
+6. **`python -m pytest`, then commit.** Nothing from `exports/` gets staged
+   beyond the three files copied into `data_lake/`.
 
 ### Standing context
 
