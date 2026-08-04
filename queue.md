@@ -15,20 +15,25 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
-**Get the Geni profile IDs for `data_lake/paths/jimmu.tsv`.**
-BLOCKED-ON-USER-ACTION — the IDs are in the `href` of each name on Geni's
-relationship-path panel, and only the link *text* survives a copy-paste. Three
-of the 83 rows have an ID (steps 1, 30, 83) and the rest are matched by name,
-which `reports/path-jimmu.md` states is advisory. Getting them means viewing
-the page source, or the panel's "Share this path" link if that yields IDs.
-Unblocks by pasting them in; `genimerge.paths` already prefers an ID over a
-name, so the report tightens with no code change.
+**UNBLOCKED 2026-08-04 — Emma committed the saved Geni page, `f205f44`.**
+`geni_pages/Geni - Emperor Jimmu no Mikoto (-711--585)- Kashihara.html` is the
+Jimmu profile saved from the browser, and its relationship panel carries every
+`href`. 166 `class="segment"` spans = 83 steps with 83 spacers, each anchor
+holding `data-profile-id`. So the profile IDs never had to be asked for; they
+were in the repo. Her framing, from the commit message: convert the path's HTML
+into a documented dataset giving "all of the individuals in this connection
+thing, their Geni link, their name, whether they're in here or not".
 
-The measured cost of not having them: 11 of the 32 unheld steps are in the
-recent Norwegian generations (steps 3, 5, 8–15, 18), where a missing match is
-as likely to be a spelling difference as a real absence. The 21-step block is
-not in doubt — nothing in the tree comes close to those names — but the near-end
-holes are exactly the kind name matching gets wrong.
+1. Add `genimerge.genipage` — parse the relationship path out of a saved Geni
+   profile page. Scope strictly to anchors inside `span.segment > span.name`,
+   because the page is full of other profile links (immediate family, managers,
+   followers) that are not on the path.
+2. Regenerate `data_lake/paths/jimmu.tsv` from it, with a real `geni:<id>` on
+   every row. Name matching then stops being load-bearing.
+3. Have `genimerge path` emit **JSON** next to the markdown — per step: id, URL,
+   name, relation, whether the merge holds them, how it was matched, component.
+   That is the artifact Emma asked for.
+4. Tests for both, then re-measure and correct any count that moves.
 
 ### Standing context
 
