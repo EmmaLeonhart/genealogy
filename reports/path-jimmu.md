@@ -1,12 +1,12 @@
 # Relationship path: jimmu
 
-**62 of 83 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**77 of 83 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**The unbroken run stops at step 30, Elisabeth, princess of Hungary.** The next step, **Jelena Urošević, Queen consort of Hungary**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 36, Helena Komitopulo.** The next step, **Constantine IX Monomachos, byzantine emperor**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
-**32 steps past the gap are held anyway** — Li Yong 李邕 onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
+**41 steps past the gap are held anyway** — Inal Kut Chor onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
 
-The held steps fall in 2 disconnected components: component 1 (12422 people), component 2 (3844 people). Until an export bridges them, no walk through our own data gets from one end of this path to the other.
+The held steps fall in 2 disconnected components: component 1 (16217 people), component 2 (11501 people). Until an export bridges them, no walk through our own data gets from one end of this path to the other.
 
 ## Steps
 
@@ -42,27 +42,27 @@ The held steps fall in 2 disconnected components: component 1 (12422 people), co
 | 28 | Duke Albrecht I. of Saxony-Wittenberg | her father | [Albrecht I.](https://www.geni.com/people/x/6000000001651629109) | id | 1 |
 | 29 | Judyta Mieszkówna | his mother | [Judyta Mieszkówna](https://www.geni.com/people/x/6000000001643397812) | id | 1 |
 | 30 | Elisabeth, princess of Hungary | her mother | [Elisabeth Árpád dynasty](https://www.geni.com/people/x/6000000003243185408) | id | 1 |
-| 31 | Jelena Urošević, Queen consort of Hungary | her mother | — | absent | — |
-| 32 | Uroš I Marković | her father | — | absent | — |
-| 33 | Marko Petrislavić | his father | — | absent | — |
-| 34 | Petrislav of Rascia Mihailović | his father | — | absent | — |
-| 35 | niece of Constantine IX Monomachos Vojislavljević | his mother | — | absent | — |
-| 36 | Helena Komitopulo | her mother | — | absent | — |
+| 31 | Jelena Urošević, Queen consort of Hungary | her mother | [Jelena of Hungary Vukanović](https://www.geni.com/people/x/6000000006727871963) | id | 1 |
+| 32 | Uroš I Marković | her father | [Uroš I Petrislavić](https://www.geni.com/people/x/6000000003858579100) | id | 1 |
+| 33 | Marko Petrislavić | his father | [Marko Mihailović](https://www.geni.com/people/x/6000000002187893033) | id | 1 |
+| 34 | Petrislav of Rascia Mihailović | his father | [Petrislav of Rascia Vojislavljević](https://www.geni.com/people/x/6000000026015362247) | id | 1 |
+| 35 | niece of Constantine IX Monomachos Vojislavljević | his mother | [niece of Constantine IX Monomachos Komitopulo](https://www.geni.com/people/x/6000000010463343582) | id | 1 |
+| 36 | Helena Komitopulo | her mother | [Helena Manomachus](https://www.geni.com/people/x/6000000002837351971) | id | 1 |
 | 37 | Constantine IX Monomachos, byzantine emperor | her brother | — | absent | — |
 | 38 | Guarandukht Bagrationi, of Georgia | his partner | — | absent | — |
 | 39 | daughter of Smbat of Lori | her daughter | — | absent | — |
 | 40 | Sultan Alp Arslan | her husband | — | absent | — |
 | 41 | Dawud Chaghri Bey, Lord of Khorasan | his father | — | absent | — |
 | 42 | n n | his mother | — | absent | — |
-| 43 | Inal Kut Chor | her father | — | absent | — |
-| 44 | Kut Chor | his mother | — | absent | — |
-| 45 | Turgesh Khagan Kut Chor | her father | — | absent | — |
-| 46 | Princess Jinhe Ashina | his mother | — | absent | — |
-| 47 | Huaidao Ashina | her father | — | absent | — |
-| 48 | Huseluo Ashina | his father | — | absent | — |
-| 49 | Princess Hengyang of Tang China | his mother | — | absent | — |
-| 50 | Li Yuanfeng 李元鳳 | her brother | — | absent | — |
-| 51 | Li Hong 李宏 | his son | — | absent | — |
+| 43 | Inal Kut Chor | her father | [Inal Kut Chor](https://www.geni.com/people/x/6000000035218736073) | id | 2 |
+| 44 | Kut Chor | his mother | [Kut Chor](https://www.geni.com/people/x/6000000115311613394) | id | 2 |
+| 45 | Turgesh Khagan Kut Chor | her father | [Kut Chor](https://www.geni.com/people/x/6000000115311392405) | id | 2 |
+| 46 | Princess Jinhe Ashina | his mother | [Jinhe Ashina](https://www.geni.com/people/x/6000000115313244880) | id | 2 |
+| 47 | Huaidao Ashina | her father | [Huaidao](https://www.geni.com/people/x/6000000115313276887) | id | 2 |
+| 48 | Huseluo Ashina | his father | [Huseluo](https://www.geni.com/people/x/6000000115312653996) | id | 2 |
+| 49 | Princess Hengyang of Tang China | his mother | [Hengyang 隴西狄道](https://www.geni.com/people/x/6000000115311622874) | id | 2 |
+| 50 | Li Yuanfeng 李元鳳 | her brother | [元鳳 隴西狄道](https://www.geni.com/people/x/6000000075060870921) | id | 2 |
+| 51 | Li Hong 李宏 | his son | [宏 隴西狄道](https://www.geni.com/people/x/6000000075061019879) | id | 2 |
 | 52 | Li Yong 李邕 | his son | [邕 李](https://www.geni.com/people/x/6000000075060923880) | id | 2 |
 | 53 | 扶餘 | his wife | [扶餘](https://www.geni.com/people/x/6000000186285688286) | id | 2 |
 | 54 | 德璋 扶餘 | her father | [德璋 扶餘](https://www.geni.com/people/x/6000000186285688253) | id | 2 |
