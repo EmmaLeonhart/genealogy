@@ -2405,3 +2405,12 @@ they tighten the report with no code change.
 
 **622 passed** (was 599), Python 3.13.14. Not CI-verified — CI is
 `workflow_dispatch:` only here on purpose.
+
+**A second doorway, found by measuring rather than by looking for it.** The gap
+has an opening at *both* ends. The known one is step 30, Elisabeth, held and
+parentless, whose absent mother Jelena Urošević is step 31. The other is step
+52, Li Yong 李邕 `6000000075060923880` — held, in component 2, and with no
+parents recorded — whose absent father Li Hong 李宏 is step 51. Two exports
+walking toward each other span ~10 steps each rather than one spanning 21, and
+whichever lands first measures how far a ball actually reaches along this line.
+Recorded in `queue.md`; neither export has been taken.

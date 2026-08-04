@@ -100,6 +100,16 @@ holes are exactly the kind name matching gets wrong.
   we now hold rather than a reach into the unknown, which is a better bet than
   before, not a worse one. Both ends are anchored; the middle is what is missing.
 
+  **Update 2026-08-04 — the gap can be attacked from both ends, and that halves
+  it.** Measuring the path turned up a second doorway nobody had looked for. The
+  known one is at the north end: step 30 Elisabeth is held and parentless, so
+  the seed is step 31 Jelena Urošević. The south end is the same shape — step 52
+  **Li Yong 李邕 `6000000075060923880`** is held, in component 2, and has **no
+  parents recorded**, so the seed there is his absent father, step 51
+  **Li Hong 李宏**. Two exports walking toward each other cover ~10 steps each
+  instead of one export covering 21, and either one landing tells us how far a
+  ball actually reaches along this line. Neither has been taken.
+
 
 
 - **Not doing: centralising the per-module property constants.**
