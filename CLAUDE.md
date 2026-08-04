@@ -56,6 +56,24 @@ naming the offending prefix and record type if Geni ever adds a fifth — so it
 needs no remembering, and a change breaks the suite instead of quietly changing
 which profile an ID points at.
 
+**`genimerge.paths` is the one module that matches by name, and it is not a
+merge.** A Geni relationship path — the chain of people between two profiles,
+which Geni will show for any pair it can connect — is the only evidence in this
+repo that comes from *outside* our own data: it names people whether or not any
+export has reached them. Pasting one preserves the link text and not the
+`href`, so the profile IDs do not survive, and checking a path against the tree
+therefore means matching names. That is a report for a human to read, never an
+input to a merge. `data_lake/paths/*.tsv` holds the paths verbatim, a `note`
+column carries a `geni:<id>` where one is known and is always preferred over the
+name, and `reports/path-*.md` states its own unreliability at the top.
+
+Two guards, both learned from getting it wrong on the first run: a person
+settled by one step is never offered to a later one — a path is a chain of
+distinct people, and without this Jelena Urošević matched Elisabeth of Hungary,
+the step before her, reporting the doorway as already held. And a name shared by
+more than `AMBIGUITY_LIMIT` people is `UNRESOLVED` rather than held, because 73
+profiles are called `n n`.
+
 **The xref is the merge key; `RFN` is corroboration checked elsewhere.**
 `Merger.add_source` deliberately does not call `geni_id_of`, so a contradictory
 `RFN` does not stop a merge. The cross-check runs in `inventory`, in `model`,

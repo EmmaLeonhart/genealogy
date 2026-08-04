@@ -105,7 +105,13 @@ COMMANDS = [
     "names",
     "name-links",
     "crosscheck",
+    "path",
 ]
+
+#: Commands with a required positional argument, and something to satisfy it.
+#: The dispatch test only checks that a command resolves to a function, so the
+#: value is never opened and need not exist.
+REQUIRED_ARGS = {"path": ["some-path-file.tsv"]}
 
 
 def test_every_command_is_registered():
@@ -118,7 +124,7 @@ def test_every_command_is_registered():
 
 @pytest.mark.parametrize("command", COMMANDS)
 def test_every_command_dispatches_to_a_function(command):
-    args = cli.build_parser().parse_args([command])
+    args = cli.build_parser().parse_args([command] + REQUIRED_ARGS.get(command, []))
 
     assert callable(args.func)
 
@@ -136,7 +142,9 @@ def test_every_command_has_help(command, capsys):
 def test_every_command_accepts_the_workspace_options(command):
     # Added in a loop precisely so a new command cannot miss them.
     args = cli.build_parser().parse_args(
-        [command, "--data-lake", "a", "--out", "b", "--reports", "c"]
+        [command]
+        + REQUIRED_ARGS.get(command, [])
+        + ["--data-lake", "a", "--out", "b", "--reports", "c"]
     )
     ws = cli.Workspace.from_args(args)
 

@@ -2338,3 +2338,70 @@ so "every letter appears" was never the claim and is now stated as such.
 
 **599 passed**, Python 3.13.14. Not CI-verified — CI is `workflow_dispatch:`
 only here on purpose.
+
+---
+
+## 2026-08-04 — the Jimmu path, kept as data this time
+
+Asked whether the relationship path connecting Emperor Jimmu to the rest of the
+tree had been worked through, the answer was that **the path itself had not been
+kept**. An earlier session was given it, extracted one finding — "the tree stops
+at Elisabeth Árpád dynasty `6000000003243185408`" — wrote that sentence into
+`queue.md`, and kept nothing else. No link, no screenshot, no list. It had to be
+asked for a second time.
+
+That is the failure this entry records, and the reason it matters is not
+tidiness. A relationship path is the only evidence in this repo that comes from
+outside our own data: Geni names people in it whether or not any export has
+reached them, while `frontier` and `seeds` can only rank what is missing behind
+a door by inference. A prose summary of such a path cannot be re-checked against
+a later merge. The path can.
+
+**`data_lake/paths/jimmu.tsv`** now holds all 83 steps verbatim, with Geni's own
+relation wording per row. **`genimerge.paths`** reads it and reports, step by
+step, whether the merge holds that person and in which component;
+`python -m genimerge path` writes `reports/path-jimmu.md`.
+
+**Matching is by name, which this repo otherwise refuses to do.** The paste
+preserves link text, not `href`, so the profile IDs did not come with it. The
+module says this at the top, the report says it in its first paragraph, and
+every row shows how it was matched. Two guards came out of getting it wrong on
+the first run:
+
+- **A person settled by one step is not offered to a later one.** The first run
+  matched step 31, Jelena Urošević, to Elisabeth of Hungary — step 30 — because
+  Elisabeth carries the alternate name `Queen consort of Hungary` and the tokens
+  are a subset. It reported the doorway as already held, which is the exact
+  opposite of the truth and would have argued against the one export that
+  matters most. A path is a chain of distinct people, so this is a rule and not
+  a heuristic.
+- **A name shared by more than five people is `UNRESOLVED`, not held.** 73
+  profiles are called `n n`. Counting those as "we hold this person" inflates
+  every total with the one row guaranteed to mean nothing.
+
+**The recorded claim was wrong in two ways, and both are corrected in
+`queue.md`.** The absent block after Elisabeth is **21 steps, not 51** — steps
+31–51, Jelena Urošević through Li Hong 李宏. And it does not run to Jimmu: steps
+52–83 are held, in component 2. The old paragraph's conclusion, that reaching
+Japan needs a sequence of exports walking down the chain, no longer follows from
+its own premise — the far end arrived by itself in the fifth export. What one
+export from Jelena Urošević has to do is span 21 steps.
+
+Measured: **51 of 83 steps held**. Gaps at 3, 5, 8–15, 18, then 31–51. So the
+run ending at Elisabeth is steps 19–30, not steps 1–30; the recent Norwegian
+generations have holes too, and those are the ones name matching is most likely
+to be wrong about.
+
+Step 78 was absent only because Geni's panel truncated
+`Koan-tenno (Yamatotarashihikokuni...` mid-name. It was recovered **from the
+tree rather than from outside knowledge**: step 77 is held, the relation column
+says step 78 is his father, and his one recorded father is
+`Koan-tenno (Yamatotarashihikokunioshihito)`. The truncated text is left in the
+file as pasted so the artifact stays visible.
+
+Left open as **BLOCKED-ON-USER-ACTION**: the profile IDs for the other 80 rows,
+which are in the page's `href`s. `paths` already prefers an ID over a name, so
+they tighten the report with no code change.
+
+**622 passed** (was 599), Python 3.13.14. Not CI-verified — CI is
+`workflow_dispatch:` only here on purpose.

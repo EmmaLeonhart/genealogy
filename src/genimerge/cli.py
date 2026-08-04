@@ -22,6 +22,7 @@ from . import (
     model,
     namelinks,
     names as names_mod,
+    paths as paths_mod,
     quickstatements,
     reconcile,
     seeds,
@@ -505,6 +506,30 @@ def _cmd_frontier(args: argparse.Namespace) -> int:
     return 0
 
 
+def _cmd_path(args: argparse.Namespace) -> int:
+    ws = Workspace.from_args(args)
+    tree = _load_tree(args.source, ws)
+    steps = paths_mod.load_path(args.path)
+    report = paths_mod.check(tree, steps)
+
+    name = Path(args.path).stem
+    output = args.output or ws.reports / f"path-{name}.md"
+    title = args.title or f"Relationship path: {name}"
+    _write(output, paths_mod.render_markdown(report, title))
+
+    held = len(report.held)
+    print(f"wrote {output}")
+    print(f"{held} of {len(steps)} steps held")
+    end = report.run_ends_at
+    if end is not None and held < len(steps):
+        print(f"unbroken run stops at step {end.step.step}, {end.step.name}")
+    beyond = report.held_beyond_the_gap
+    if beyond:
+        print(f"{len(beyond)} further steps held past the gap")
+    print(paths_mod.NAME_MATCHING_IS_ADVISORY)
+    return 0
+
+
 def _cmd_consistency(args: argparse.Namespace) -> int:
     ws = Workspace.from_args(args)
     tree = _load_tree(args.source, ws)
@@ -680,6 +705,29 @@ def build_parser() -> argparse.ArgumentParser:
         help="where to write (default: <reports>/frontier.md)"
     )
     p_front.set_defaults(func=_cmd_frontier)
+
+    p_path = sub.add_parser(
+        "path",
+        help="check a Geni relationship path against the merged tree",
+        description=(
+            "Geni will show a chain of relationships between two profiles. That "
+            "chain names people Geni knows about whether or not any export has "
+            "reached them, which makes it the one piece of evidence here that "
+            "comes from outside our own data. This reports, step by step, which "
+            "of them the merge holds — and where the unbroken run stops, which "
+            "is a doorway with a known payoff behind it. Steps are matched by "
+            "NAME unless the path file carries profile IDs, so the result is "
+            "advisory; see the module docstring."
+        ),
+    )
+    p_path.add_argument("path", type=Path, help="a path file, e.g. data_lake/paths/jimmu.tsv")
+    p_path.add_argument("--source", type=Path, default=None, help="a GEDCOM to read instead of merging")
+    p_path.add_argument("--title", default=None, help="heading for the report")
+    p_path.add_argument(
+        "-o", "--output", type=Path, default=None,
+        help="where to write (default: <reports>/path-<name>.md)"
+    )
+    p_path.set_defaults(func=_cmd_path)
 
     p_cons = sub.add_parser(
         "consistency",
