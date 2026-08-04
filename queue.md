@@ -15,10 +15,9 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
-**Empty.** The Jimmu path is extracted, joined on profile IDs and reported; see
-`devlog.md` 2026-08-04. Next actionable work is an export from one of the two
-doorways named in the standing note below — that is Emma's call, not this
-queue's, since it means going to Geni and taking one.
+**Empty.** Next actionable work is an export from one of the two doorways named
+in the standing note below — Emma's call, since it means going to Geni and
+taking one.
 
 ### Standing context
 

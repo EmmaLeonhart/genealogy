@@ -64,6 +64,19 @@ tests/         pytest
 - `todo.md` — the long-horizon backlog
 - `devlog.md` — what has been finished, dated
 
+**On `geni_pages/`.** Pages are saved with the browser's "complete" option,
+which writes the HTML plus a `_files/` tree of JavaScript, CSS and images. Only
+the HTML is ever read — `genimerge.genipage` parses the relationship panel out
+of it and nothing touches the assets. They are kept anyway, and tracked, because
+they are what lets the saved page still open and render offline; a page saved
+HTML-only is a page you cannot look at later to check what the parser saw.
+
+The cost is real and worth knowing before saving the next one: the Jimmu page is
+**4.4 MB, of which 4.2 MB is assets across 55 files**. A handful of these is
+fine; a habit of them is not. If the directory grows past being useful, the
+decision to make is *which pages* to keep whole — not to strip the assets from
+all of them, which would leave HTML that no longer renders.
+
 ## Usage
 
 Nothing to install; the package is stdlib-only and `pytest` is wired to find it

@@ -23,10 +23,16 @@ file is a list of intentions, so it is worth being explicit about which of them
 have since been measured — item 3b's "the merge absorbs it without changes", and
 item 7's "a file drop and a re-run, not a code change".
 
-The tree is now **12422 people in one connected component**, up from 8766. That
-last part is not incidental: an export seeded outside what we hold can merge
-without a single conflict and still leave two trees, so `genimerge merge` now
-reports connectivity on every run.
+The tree is **16266 people in two disconnected components** — 12422 in the
+Norwegian material and 3844 in the Japanese line, sharing no person and no
+family (`reports/frontier.md`, 2026-08-04). This paragraph previously read
+"12422 people in one connected component", written when that was true and left
+alone when the fifth export made it false.
+
+The warning that used to follow it turned out to be a description rather than a
+caution: an export seeded outside what we hold merges without a single conflict
+and still leaves two trees. That is exactly what happened, which is why
+`genimerge merge` reports connectivity on every run.
 
 Every batch under items 4, 5 and 6 stops at a file in `out/wikidata/`.
 **Nothing in this repo writes to Wikidata**, and nothing should start doing so
@@ -64,9 +70,22 @@ this to decide what to export next from Geni.
 
 ### 3a. What the frontier analysis found
 
-The tree is one connected component; 2350 people (26.8%) have no parents
-recorded, and those are the branch points. `reports/frontier.md` ranks them by
-descendant count.
+People with **no parents recorded** are the branch points, and
+**`reports/frontier.md` is the live count** — how many there are, how they split
+across components, and their ranking by descendant count. Re-run
+`python -m genimerge frontier` rather than trusting a number written here.
+
+This paragraph used to restate those numbers: "one connected component; 2350
+people (26.8%)". By 2026-08-04 every part of that was false — two components,
+16266 people, 3396 parentless, 20.9% — and nothing had flagged it, because a
+sentence in a to-do file is not checked by anything. The count being wrong was
+survivable; **the shape being wrong was not**, since a plan that assumes one
+component has no way to describe the export that bridges two.
+
+No test was added for this. The general case — prose in a tracked document
+drifting from generated data — cannot be caught without a brittle assertion that
+the first good reason to reword would delete. The durable fix is the one taken
+here: stop restating generated numbers, and point at the generator.
 
 ### 3b. Export seeds, modelled on how Geni exports
 

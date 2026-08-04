@@ -2466,3 +2466,48 @@ class of failure as the lost path — work that existed only in a session.
 
 **637 passed** (was 622), Python 3.13.14. Not CI-verified — CI is
 `workflow_dispatch:` only here on purpose.
+
+---
+
+## 2026-08-04 — two documents that had quietly stopped being true
+
+Work-loop tick with an empty Active queue, so the next item came from `todo.md`
+— and the item was `todo.md` itself.
+
+**§ 3a said "The tree is one connected component; 2350 people (26.8%) have no
+parents recorded."** Measured the same day: two components, 16266 people, 3396
+parentless, 20.9%. Every number wrong, and the shape wrong with them. The
+count being stale was survivable. The shape was not: a plan that assumes one
+component has no way to describe the export that bridges two, which is the
+single most valuable export available right now.
+
+**A second copy of the same claim sat at the top of the file** — "The tree is
+now 12422 people in one connected component, up from 8766" — written when it was
+true and left alone when the fifth export falsified it. Worth noting that the
+sentence immediately after it warned that an export seeded outside what we hold
+"can merge without a single conflict and still leave two trees". That warning
+came true, in this repo, and the paragraph above it went on describing one tree
+regardless.
+
+Both now point at `reports/frontier.md` instead of restating it, which is the
+only fix that holds: there is nothing left in the prose to go stale.
+
+**No test was added, and that is a decision rather than an omission.** The
+general case — tracked prose drifting from generated data — cannot be asserted
+without brittleness, and a brittle test is deleted the first time it fails for a
+good reason. `tests/test_repo_invariants.py` was checked first: it guards the CI
+trigger and stdlib-only, neither of which extends to this. Regenerating
+`frontier.md` inside the suite was considered and rejected for the reason
+already recorded on 2026-08-02 — each report needs its own regeneration and the
+suite is not the place for it. Stated in `todo.md` § 3a so the absence reads as
+a choice.
+
+**`geni_pages/` documented rather than pruned.** 57 files, 4.4 MB, of which 4.2
+MB is the `_files/` asset tree from the browser's "save complete". Only the HTML
+is read. The assets are kept because they are what lets the page still render
+offline, and deleting a source someone deliberately saved whole is not a
+tidy-up. `README.md` now records the convention and the size, so the next saved
+page is a decision instead of a surprise.
+
+**637 passed**, Python 3.13.14, unchanged — no code was touched this tick. Not
+CI-verified; CI is `workflow_dispatch:` only here on purpose.
