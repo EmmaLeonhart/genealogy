@@ -2,7 +2,7 @@
 
 A Geni GEDCOM export is a **breadth-first ball**: pick a profile, pick a style
 — ancestors, descendants, blood relatives, everything — and Geni walks outward
-from that profile until the export is full, at somewhere around 3840 people.
+from that profile until the export is full, at somewhere around 3860 people.
 See :data:`GENI_EXPORT_CAP` for why that bound is written as "around" and not
 as a number we know. So the question "who do I export from next?" is really
 "whose ball would contain the most material we do not already have?".
@@ -77,29 +77,41 @@ __all__ = [
 #: first three exports each held exactly 3836, and since they are three
 #: different styles of one seed that reach largely different people — they share
 #: only 354 — three separate walks stopping on the same number read as a hard
-#: cap. The fourth export holds **3840** and the fifth **3844**, so it is not
-#: one.
+#: cap. Every export since has held more, so it is not one.
 #:
-#: Three distinct numbers are not a trend. 3836, 3840, 3844 are evenly spaced,
-#: which invites reading a step of four into them, and that reading is not
-#: supported: the two increments come from a sample of three exports taken on
-#: three different days from three different seeds, and nothing here rules out
-#: the next one landing on 3841 or 3900. Do not encode the arithmetic.
+#: **What 28 exports say, ordered by the timestamp in their own `HEAD`:**
+#: 3836 ×3 (30 Jul), 3840 (01 Aug), 3844 (02 Aug), then on 04 Aug 3848 at
+#: 14:41, 3852 at 14:48, 3856 at 14:53 — and **3860 for every one of the
+#: eleven exports from 15:21 to 16:22**. Exports that hold less than the
+#: ceiling (876, 1073, 1192) each exhausted their component first.
 #:
-#: What actually bounds an export is **not established**. Candidates that fit
-#: the evidence equally well: Geni raised the limit over 2026-07-30..08-02; the
-#: limit is per-account and the account changed; the limit is on something other
-#: than individual count (bytes, families, requests) that merely lands near
-#: 3840; or the walk overshoots a floor by however much it takes to finish the
-#: generation it is on. Five exports cannot separate these, so none is encoded
-#: here.
+#: That flat run of eleven is the useful part, and it settles two things the
+#: three-observation version of this note could only list as possibilities:
+#:
+#: - **The bound is not per-seed and not per-style.** Those eleven exports were
+#:   taken from eleven different seeds in three different styles — `Forest`,
+#:   `Descendants`, `BloodTree` — and all landed on 3860 exactly.
+#: - **It is therefore not a walk overshooting a floor** by however much it
+#:   takes to finish the generation it is on. Eleven different walks through
+#:   differently-shaped neighbourhoods would not all overshoot to the same
+#:   number.
+#:
+#: What remains open is why the ceiling *moved*: 3836 to 3860 over five days,
+#: in steps of four, then flat for an hour. A limit Geni raised, a per-account
+#: limit that tracks something about this account, or a limit on something
+#: other than head count that merely lands here all still fit. **Do not encode
+#: the arithmetic** — the run of eleven identical values is evidence the number
+#: sits still, not evidence it steps by four on a schedule, and the three
+#: same-day increments before it have no established cause.
 #:
 #: Used only to bound the modelled ball in :func:`export_ball`, where being off
-#: by a few people out of ~3840 does not move a ranking.
+#: by a few people out of ~3860 does not move a ranking.
 #: ``tests/test_seeds.py`` asserts this stays >= the largest export in
 #: ``data_lake/``, so the next export to exceed it fails loudly instead of
-#: silently modelling a ball that is too small.
-GENI_EXPORT_CAP = 3844
+#: silently modelling a ball that is too small. Note the value below comes from
+#: ``exports/archive/``, which is larger than anything in ``data_lake/`` — the
+#: test is a floor on this constant, not its source.
+GENI_EXPORT_CAP = 3860
 
 #: The step between reading this report and running an export.
 #:
@@ -629,16 +641,16 @@ def render_markdown(
             "",
             f"The {GENI_EXPORT_CAP} used above is **the largest export we have "
             "seen, not a limit we know Geni enforces**. Three exports held "
-            "exactly 3836, which read as a hard cap until a fourth held 3840 "
-            "and a fifth 3844. Those three numbers are evenly spaced and that "
-            "is not evidence of a step of four — three observations from three "
-            "days and three seeds do not rule out the next one landing "
-            "anywhere. What actually bounds an export is unestablished — a "
-            "raised limit, a per-account limit, a limit on something other than "
-            "head count, or a walk that overshoots a floor all fit the five "
-            "exports we have. Being off by a few people out of ~3840 does not "
-            "move this ranking, so the uncertainty is recorded rather than "
-            "resolved by guessing.",
+            "exactly 3836, which read as a hard cap until later ones held "
+            "3840, 3844, 3848, 3852, 3856 and then 3860 — the last of those "
+            "for eleven consecutive exports taken within one hour from eleven "
+            "different seeds in three different styles. That flat run is worth "
+            "more than the rises: it shows the bound is global rather than "
+            "per-seed or per-style, and rules out a walk that simply overshoots "
+            "a floor to finish the generation it is on. Why the ceiling moved "
+            "from 3836 to 3860 over five days is still unestablished, so the "
+            "even spacing is recorded and not encoded. Being off by a few "
+            "people out of ~3860 does not move this ranking.",
         ]
 
     lines += ["", "## How well this ranking has actually done", "", RANKING_IS_UNVALIDATED]
