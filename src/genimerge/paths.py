@@ -31,6 +31,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 from . import frontier
+from .identity import profile_url
 from .model import Person, Tree
 
 __all__ = [
@@ -324,8 +325,14 @@ def _resolve(
         how = AMBIGUOUS if len(people) <= AMBIGUITY_LIMIT else UNRESOLVED
         return StepResult(step=step, how=how, candidates=people)
 
-    if step.geni_id and step.geni_id in tree.people and step.geni_id not in used:
-        return finish(BY_ID, [step.geni_id])
+    if step.geni_id:
+        # An ID settles the row either way. Falling back to the name when the ID
+        # is absent from the tree cannot find the right person — we know their
+        # ID and it is not here — and can only find a wrong one: step 42 is
+        # `n n`, which 73 profiles share.
+        if step.geni_id in tree.people and step.geni_id not in used:
+            return finish(BY_ID, [step.geni_id])
+        return StepResult(step=step, how=ABSENT)
 
     exact = [i for i in by_name.get(normalise(step.name), []) if i not in used]
     if exact:
@@ -371,15 +378,81 @@ def _shares_a_name(tokens: set[str], distinctive: set[str], person: Person) -> b
     return False
 
 
+def to_json(report: PathReport) -> dict:
+    """The machine-readable form: every step, its Geni link, and our verdict.
+
+    This is the artifact to work from when deciding what to export. One row per
+    step in path order, so the gaps are contiguous ranges rather than something
+    to reconstruct.
+    """
+    steps = []
+    for result in report.results:
+        step = result.step
+        person = result.person
+        row = {
+            "step": step.step,
+            "name": step.name,
+            "relation_to_previous": step.relation,
+            "geni_id": step.geni_id or None,
+            "geni_url": profile_url(step.geni_id) if step.geni_id else None,
+            "in_tree": result.held,
+            "matched": result.how,
+            "component": result.component,
+            "matched_geni_id": person.geni_id if person else None,
+            "matched_name": person.display_name if person else None,
+            "candidates": [p.geni_id for p in result.candidates]
+            if len(result.candidates) > 1
+            else [],
+        }
+        steps.append(row)
+
+    end = report.run_ends_at
+    return {
+        "steps_total": len(report.results),
+        "steps_in_tree": len(report.held),
+        "unbroken_run_ends_at": end.step.step if end else None,
+        "components": {
+            str(index): size for index, size in enumerate(report.component_sizes, 1)
+        },
+        "components_touched": report.components_touched,
+        "gaps": [
+            {"from": first, "to": last, "length": last - first + 1}
+            for first, last in _gaps(report)
+        ],
+        "steps": steps,
+    }
+
+
+def _gaps(report: PathReport) -> list[tuple[int, int]]:
+    """Contiguous runs of not-held steps, as (first, last) step numbers."""
+    runs: list[list[int]] = []
+    for result in report.results:
+        if result.held:
+            continue
+        if runs and runs[-1][1] == result.step.step - 1:
+            runs[-1][1] = result.step.step
+        else:
+            runs.append([result.step.step, result.step.step])
+    return [(a, b) for a, b in runs]
+
+
 def render_markdown(report: PathReport, title: str) -> str:
     """The report a person reads to decide which export to take next."""
     results = report.results
     held = report.held
     lines = [f"# {title}", ""]
 
+    without_id = [r for r in results if not r.step.geni_id]
+    if without_id:
+        how = NAME_MATCHING_IS_ADVISORY
+    else:
+        how = (
+            "Every step carries its Geni profile ID, so this is an exact join on "
+            "this repo's primary key — not a name match, and not advisory."
+        )
     lines += [
         f"**{len(held)} of {len(results)} steps** on this path are in the merged "
-        f"tree. {NAME_MATCHING_IS_ADVISORY}",
+        f"tree. {how}",
         "",
     ]
 

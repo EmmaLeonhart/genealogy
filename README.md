@@ -52,7 +52,8 @@ for two. `reports/frontier.md` tracks the components.
 
 ```
 data_lake/     the exports as received (zips gitignored, .ged files tracked)
-data_lake/paths/ Geni relationship paths, kept verbatim — see `path` below
+data_lake/paths/ Geni relationship paths, generated from saved pages
+geni_pages/    Geni profile pages saved from the browser (the source of the above)
 src/genimerge/ the package
 reports/       generated reports that are worth reviewing and keeping
 out/           generated data (gitignored)
@@ -86,8 +87,10 @@ python -m genimerge coverage         # what is linked       -> reports/wikidata-
 python -m genimerge consistency      # dates that contradict -> reports/consistency.md
 python -m genimerge frontier         # where the tree stops -> reports/frontier.md
 python -m genimerge seeds            # what to export next  -> reports/seeds.md
-python -m genimerge path data_lake/paths/jimmu.tsv   # how much of a Geni
-                                     # relationship path we hold -> reports/path-jimmu.md
+# a saved Geni profile page -> a path file carrying every profile ID
+python -m genimerge path-from-html "geni_pages/<saved page>.html" -o data_lake/paths/jimmu.tsv
+# how much of that path the tree holds -> reports/path-jimmu.md and .json
+python -m genimerge path data_lake/paths/jimmu.tsv
 python -m genimerge names            # name-item coverage   -> reports/names.md
 python -m genimerge quickstatements  # edits to review      -> out/wikidata/add-p2600.qs
 python -m genimerge name-links       # name links to review -> out/wikidata/add-names.qs
@@ -115,7 +118,7 @@ Generated, and worth reading in this order:
 - `reports/consistency.md` — dates in the tree that contradict each other, split into impossible and implausible
 - `reports/frontier.md` — where the tree stops: parentless people, components, generational depth
 - `reports/seeds.md` — the next exports to take, as a sequence whose breadth-first balls barely overlap
-- `reports/path-jimmu.md` — how much of a Geni relationship path the tree holds, and where it breaks. Unlike every other report here this one rests on **name matching**, because a pasted path carries names and not profile IDs; it says so at the top and every row shows how it was matched
+- `reports/path-jimmu.md` — how much of a Geni relationship path the tree holds, and where it breaks; `reports/path-jimmu.json` is the same thing per step, with each person's Geni link, whether we hold them, and which component they are in. Joined on the profile ID, because the IDs are extracted from a saved page rather than a pasted one — see `path-from-html`. A path file missing IDs falls back to name matching, and then the report says so at the top
 - `reports/names.md` — which surnames and given names already have Wikidata items
 - `reports/wikidata-crosscheck.md` — where we and Wikidata disagree about parents, spouses and dates
 

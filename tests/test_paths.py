@@ -232,14 +232,26 @@ def test_the_gap_is_one_contiguous_block_from_jelena(jimmu):
 
 
 @pytestmark_real
-def test_elisabeth_is_the_last_of_an_unbroken_run_of_twelve(jimmu):
-    """Steps 19-30 — the claim `queue.md` records, measured.
+def test_the_path_is_unbroken_all_the_way_to_elisabeth(jimmu):
+    """Steps 1-30, every one of them — the original claim, now measured exactly.
 
-    The path is *not* unbroken from step 1: the recent Norwegian generations
-    have holes too, so `run_ends_at` is step 2, not step 30.
+    This is the assertion that vindicates the summary an earlier session wrote
+    from the Geni page and could not re-check. Matching the same path by *name*
+    put eleven holes in this run; every one was a spelling difference rather
+    than an absence, and joining on the profile ID removes all eleven.
     """
-    held = [r.step.step for r in jimmu.results if r.held]
-    run = [s for s in held if 19 <= s <= 30]
-    assert run == list(range(19, 31))
+    assert [r.step.step for r in jimmu.results[:30] if r.held] == list(range(1, 31))
+    assert jimmu.run_ends_at.step.step == 30
     assert jimmu.results[29].person.geni_id == "6000000003243185408"
-    assert jimmu.run_ends_at.step.step == 2
+
+
+@pytestmark_real
+def test_every_step_joins_on_the_profile_id(jimmu):
+    """No row falls back to name matching, so nothing here is advisory.
+
+    `path-from-html` is what guarantees this. If a future path file is built by
+    hand and loses an ID, this fails rather than the report quietly degrading to
+    guesswork.
+    """
+    assert all(r.step.geni_id for r in jimmu.results)
+    assert {r.how for r in jimmu.results} <= {paths.BY_ID, paths.ABSENT}

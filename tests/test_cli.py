@@ -106,12 +106,16 @@ COMMANDS = [
     "name-links",
     "crosscheck",
     "path",
+    "path-from-html",
 ]
 
 #: Commands with a required positional argument, and something to satisfy it.
 #: The dispatch test only checks that a command resolves to a function, so the
 #: value is never opened and need not exist.
-REQUIRED_ARGS = {"path": ["some-path-file.tsv"]}
+REQUIRED_ARGS = {
+    "path": ["some-path-file.tsv"],
+    "path-from-html": ["some-page.html", "-o", "some-path-file.tsv"],
+}
 
 
 def test_every_command_is_registered():

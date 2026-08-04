@@ -56,23 +56,32 @@ naming the offending prefix and record type if Geni ever adds a fifth — so it
 needs no remembering, and a change breaks the suite instead of quietly changing
 which profile an ID points at.
 
-**`genimerge.paths` is the one module that matches by name, and it is not a
-merge.** A Geni relationship path — the chain of people between two profiles,
-which Geni will show for any pair it can connect — is the only evidence in this
-repo that comes from *outside* our own data: it names people whether or not any
-export has reached them. Pasting one preserves the link text and not the
-`href`, so the profile IDs do not survive, and checking a path against the tree
-therefore means matching names. That is a report for a human to read, never an
-input to a merge. `data_lake/paths/*.tsv` holds the paths verbatim, a `note`
-column carries a `geni:<id>` where one is known and is always preferred over the
-name, and `reports/path-*.md` states its own unreliability at the top.
+**Relationship paths: save the page, never the pasted text.** A Geni
+relationship path — the chain of people between two profiles, which Geni shows
+for any pair it can connect — is the only evidence in this repo that comes from
+*outside* our own data: it names people whether or not any export has reached
+them. Copying the panel as text keeps the names and loses the `href`s, and the
+`href`s are where the profile IDs are. **Saving the page keeps them**, so the
+workflow is: save the profile page from the browser into `geni_pages/`, then
+`python -m genimerge path-from-html <page> -o data_lake/paths/<name>.tsv`, then
+`python -m genimerge path <file>` → `reports/path-*.md` and `path-*.json`.
 
-Two guards, both learned from getting it wrong on the first run: a person
-settled by one step is never offered to a later one — a path is a chain of
-distinct people, and without this Jelena Urošević matched Elisabeth of Hungary,
-the step before her, reporting the doorway as already held. And a name shared by
-more than `AMBIGUITY_LIMIT` people is `UNRESOLVED` rather than held, because 73
-profiles are called `n n`.
+`genimerge.genipage` does the extraction, and the difficulty is scoping: a Geni
+profile page carries several hundred `data-profile-id` anchors — immediate
+family, managers, followers — and only those inside `span.segment > span.name`
+are on the path. Matching anchors directly yields a plausible-looking list that
+is not a path.
+
+`genimerge.paths` **falls back to name matching only for rows with no ID**, and
+that fallback is a report for a human, never an input to a merge. Do not let it
+become load-bearing: run against the Jimmu path it invented eleven holes in a
+run of thirty and moved the headline finding from "stops at step 30" to "stops
+at step 2". Its guards exist because of specific failures — a person settled by
+one step is never offered to a later one (Jelena Urošević matched Elisabeth of
+Hungary, the step before her, reporting the doorway as already held); a name
+shared by more than `AMBIGUITY_LIMIT` people is `UNRESOLVED` rather than held,
+because 73 profiles are called `n n`; and a row whose ID is simply absent from
+the tree resolves to absent rather than falling back to its name.
 
 **The xref is the merge key; `RFN` is corroboration checked elsewhere.**
 `Merger.add_source` deliberately does not call `geni_id_of`, so a contradictory

@@ -2414,3 +2414,55 @@ parents recorded — whose absent father Li Hong 李宏 is step 51. Two exports
 walking toward each other span ~10 steps each rather than one spanning 21, and
 whichever lands first measures how far a ball actually reaches along this line.
 Recorded in `queue.md`; neither export has been taken.
+
+---
+
+## 2026-08-04 — the IDs were in the repo, and the names had been lying
+
+Emma committed the saved Geni profile page in `f205f44` — "Added Emperor Jimmu
+geni page thing so that it can demonstrate my ink thing" — and said plainly in
+the commit message what it was for: convert the path's HTML into a dataset
+giving every individual in the chain "their Geni link, their name, whether
+they're in here or not". The earlier session in this thread had been told a link
+was provided, looked in the chat, found none, and reported that nothing had
+arrived. It had arrived, as a commit. Checking the chat and not the log is the
+mistake worth naming here.
+
+**`genimerge.genipage`** now parses the relationship path out of a saved page.
+The difficulty is scoping rather than parsing: a Geni profile page carries
+several hundred `data-profile-id` anchors — immediate family, managers,
+followers, "recently viewed by" — and only those inside
+`span.segment > span.name` are on the path. Taking every anchor produces a
+plausible-looking list of the wrong people. The page has 166 `class="segment"`
+spans: 83 steps and 83 spacers.
+
+`python -m genimerge path-from-html` regenerates `data_lake/paths/jimmu.tsv`
+with a real `geni:<id>` on all 83 rows, and `path` now writes
+`reports/path-jimmu.json` beside the markdown — per step: ID, URL, name,
+relation, in-tree, how matched, component, plus the gaps as ranges.
+
+**The measurement changed, and the direction is worth recording.** Joined on the
+profile ID: **62 of 83 steps held**, steps 1–30 unbroken, one gap of 21 steps
+(31–51), steps 52–83 held in component 2.
+
+The same path checked by *name* said 51 of 83, with eleven holes scattered
+through steps 1–30 and the unbroken run stopping at step 2. Every one of those
+eleven was a spelling difference, not an absence. So the name-matched version did
+not merely add noise around the edges — it moved the headline finding. The
+original summary an earlier session wrote from this page, "it stops at Elisabeth
+Árpád dynasty", was right all along; the name matching had contradicted it, and
+the contradiction was the artifact.
+
+`paths` gained one more rule out of this: a row whose ID is absent from the tree
+resolves to absent rather than falling back to its name. Falling back cannot find
+the right person — we know their ID and it is not here — and can only find a
+wrong one. Step 42 is `n n`, which 73 profiles share.
+
+Also: **`.claude/cron-jobs.md`**, because `CronCreate` jobs are session-local and
+in-memory, so a machine restart takes all three with it silently and the next
+session starts with none. The three prompts are now written down as the source to
+recreate them from. This was Emma's ask ahead of a restart, and it is the same
+class of failure as the lost path — work that existed only in a session.
+
+**637 passed** (was 622), Python 3.13.14. Not CI-verified — CI is
+`workflow_dispatch:` only here on purpose.
