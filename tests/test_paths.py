@@ -217,32 +217,43 @@ def test_both_ends_of_the_path_are_held_but_in_different_components(jimmu):
 
 
 @pytestmark_real
-def test_the_gap_is_one_contiguous_block_from_jelena(jimmu):
-    """Twenty-one consecutive steps, not a scatter.
+def test_the_gap_is_one_contiguous_block_from_constantine(jimmu):
+    """Six consecutive steps, not a scatter.
 
-    A single block is what makes the export plan a walk down one chain. If a
-    later export fills part of it, this fails and the count in `queue.md` needs
-    re-reading rather than the test needing loosening.
+    A single block is what makes the export plan a walk down one chain.
+
+    **This test has now done its job once.** It read `range(31, 52)` — the
+    twenty-one steps from Jelena Urošević to Li Hong 李宏 — and its docstring
+    said that if a later export filled part of the block it should fail and have
+    its count re-read rather than loosened. On 2026-08-04 two exports did
+    exactly that: the `n n` export took steps 31-36 and the `Li Hong` forest
+    export took 43-51, from opposite ends. What is left is 37-42, Constantine IX
+    Monomachos through the `n n` who is Dawud Chaghri Bey's mother.
     """
     absent = [r.step.step for r in jimmu.results if not r.held and r.step.step > 30]
-    assert absent == list(range(31, 52))
-    jelena = jimmu.results[30]
-    assert jelena.step.name.startswith("Jelena Urošević")
-    assert not jelena.held, "the doorway must not report as already held"
+    assert absent == list(range(37, 43))
+    constantine = jimmu.results[36]
+    assert constantine.step.name.startswith("Constantine IX Monomachos")
+    assert not constantine.held, "the doorway must not report as already held"
 
 
 @pytestmark_real
-def test_the_path_is_unbroken_all_the_way_to_elisabeth(jimmu):
-    """Steps 1-30, every one of them — the original claim, now measured exactly.
+def test_the_path_is_unbroken_all_the_way_to_helena(jimmu):
+    """Steps 1-36, every one of them.
 
-    This is the assertion that vindicates the summary an earlier session wrote
-    from the Geni page and could not re-check. Matching the same path by *name*
-    put eleven holes in this run; every one was a spelling difference rather
-    than an absence, and joining on the profile ID removes all eleven.
+    Steps 1-30 are the original claim, measured exactly: this is the assertion
+    that vindicates the summary an earlier session wrote from the Geni page and
+    could not re-check. Matching the same path by *name* put eleven holes in
+    that run; every one was a spelling difference rather than an absence, and
+    joining on the profile ID removes all eleven. Elisabeth is kept below as the
+    checkpoint that used to be the end of the run.
+
+    Steps 31-36 were added by the `n n` export on 2026-08-04.
     """
-    assert [r.step.step for r in jimmu.results[:30] if r.held] == list(range(1, 31))
-    assert jimmu.run_ends_at.step.step == 30
-    assert jimmu.results[29].person.geni_id == "6000000003243185408"
+    assert [r.step.step for r in jimmu.results[:36] if r.held] == list(range(1, 37))
+    assert jimmu.run_ends_at.step.step == 36
+    assert jimmu.results[29].person.geni_id == "6000000003243185408"  # Elisabeth
+    assert jimmu.results[35].person.geni_id == "6000000002837351971"  # Helena
 
 
 @pytestmark_real

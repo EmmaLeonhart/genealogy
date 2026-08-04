@@ -44,9 +44,9 @@ fuzzy name matching. `genimerge.identity` is the single place that knows this;
 change in Geni's format fails loudly.
 
 Exactly **four xref prefixes** occur, each bound to one record type: `I` on
-`INDI`, `F` on `FAM`, `N` on `NOTE`, `S` on `SUBM` — measured over all **31,477**
-xrefs in the five exports, and re-checked against the fifth on 2026-08-02
-rather than carried forward. Two of the five carry no `NOTE` records at all, so
+`INDI`, `F` on `FAM`, `N` on `NOTE`, `S` on `SUBM` — measured over all **52,793**
+xrefs in the eight exports, and re-measured on 2026-08-04 against the three new
+ones rather than carried forward. Some exports carry no `NOTE` records at all, so
 an export need not use every letter; the claim is that no *other* letter appears
 and no letter spans two record types. `GENI_ID_RE` accepts only
 those on purpose: when it accepted any letters, the foreign xref `@NI04461@`
@@ -91,44 +91,90 @@ and over the merged output in `tests/test_merge_real_exports.py`.
 **Exports are bounded, but no number here is the bound.** The first three
 exports each hit 3836 individuals exactly while sharing only 354 people, so they
 are overlapping slices rather than copies — and that identical count read as a
-cap. The fourth (2026-08-01) has **3840** and the fifth (2026-08-02) **3844**,
-which falsifies it twice over. **3836, 3840, 3844 are evenly spaced and that is
-not a step of four** — three observations from three days and three seeds do not
-rule out the next export landing anywhere. Do not encode the arithmetic, and do
-not describe any of these as a cap Geni enforces.
-`genimerge.seeds.GENI_EXPORT_CAP` is **3844**, meaning *largest yet seen*; its
-docstring is the long form of this, naming the four explanations that fit the
-evidence and committing to none. `tests/test_seeds.py` fails if a future export
-exceeds it, so the next one to do so is loud rather than silent — that is how
-3840 and 3844 were each caught. Expect to merge many exports over time, and
-expect the merge to be re-run rather than hand-edited. See
-`reports/inventory.md`.
+cap. Every export since has held more. Ordered by the timestamp in their own
+`HEAD`, 28 exports read: 3836 ×3 (30 Jul), 3840 (01 Aug), 3844 (02 Aug), then on
+04 Aug 3848, 3852, 3856 within twelve minutes — and **3860 for each of the
+eleven exports taken between 15:21 and 16:22**. Exports holding less (876, 1073,
+1192) exhausted their component before filling.
 
-**The merged tree is two disconnected trees.** The fifth export shares *zero*
-people and *zero* families with the other four: it is the Japanese mythological
-line, 3844 people rooted at Kunino-tokotachi-no-mikoto, against 12422 in the
-Norwegian component. The merge is still correct — disjoint components do not
-conflict — but any statement about "the tree" should say which one, and
-reaching one from the other needs an export that bridges them, which no export
-in hand does. `reports/frontier.md` § Components is the live count.
+That flat run of eleven is the part that pays: those eleven came from eleven
+different seeds in three different styles and all landed on 3860 exactly, so the
+bound is **global, not per-seed and not per-style** — which also rules out the
+walk overshooting a floor to finish the generation it is on. Why the ceiling
+*moved* 3836 → 3860 over five days is still unestablished. **Do not encode the
+arithmetic**: a run of eleven identical values is evidence the number sits
+still, not evidence it steps by four on a schedule, and do not describe it as a
+cap Geni enforces.
+
+`genimerge.seeds.GENI_EXPORT_CAP` is **3860**, meaning *largest yet seen*; its
+docstring is the long form of this. It is a modelling number for
+`reports/seeds.md` only — nothing in the merge depends on it.
+`tests/test_seeds.py` fails if an export in `data_lake/` exceeds it, so the next
+one to do so is loud rather than silent — that is how 3840, 3844 and 3856 were
+each caught. Note the constant tracks the largest export *seen*, which currently
+lives in `exports/archive/`, so the test is a floor on it rather than its
+source. Expect to merge many exports over time, and expect the merge to be
+re-run rather than hand-edited. See `reports/inventory.md`.
+
+**The merged tree is two disconnected trees.** As of 2026-08-04 they are
+**16217** people (Norwegian, through the European royal lines) and **11501**
+(the Japanese mythological line rooted at Kunino-tokotachi-no-mikoto, now
+carrying the Tang/Ashina material the Li Hong exports brought). The merge is
+still correct — disjoint components do not conflict — but any statement about
+"the tree" should say which one, and reaching one from the other needs an export
+that bridges them, which no export in hand does. `reports/frontier.md`
+§ Components is the live count.
+
+**The bridge between them is six people wide and its location is known.** See
+`reports/path-jimmu.md`: steps **37–42** of the Geni relationship path,
+Constantine IX Monomachos → Guarandukht Bagrationi → daughter of Smbat of Lori →
+Sultan Alp Arslan → Dawud Chaghri Bey → `n n`. Steps 1–36 are held in component
+1 and 43–83 in component 2. An export seeded anywhere in that window is the one
+that joins the two trees; nothing else will.
 
 **An export is named for its style, not its seed — so filenames collide.** Geni
-writes `export-<style>.ged`, and `Forest`, `Ancestors` and `BloodTree` are the
-styles. The first three exports are all three styles of the *same* seed, Eric
-Borsheim `6000000087535357291`, which is also their `SUBM` xref. A second
-`Forest` export from a different seed therefore arrives with a filename already
-taken. Disambiguate in `data_lake/` by appending the seed's Geni profile ID —
-`export-Forest-6000000226977233850.ged` — since the profile ID is this repo's
-primary key. The seed is the file's first `INDI` record. This has now happened
-twice; `export-Forest-6000000226989731860.ged` is the 2026-08-02 one. Note the
-`SUBM` xref is the *account owner*, not the seed, so it cannot be used for this.
+writes `export-<style>.ged`, and `Forest`, `Ancestors`, `BloodTree` and
+`Descendants` are the styles seen so far. The first three exports are all three
+styles of the *same* seed, Eric Borsheim `6000000087535357291`, which is also
+their `SUBM` xref. A second `Forest` export from a different seed therefore
+arrives with a filename already taken. Disambiguate in `data_lake/` by appending
+the seed's Geni profile ID — `export-Forest-6000000226977233850.ged` — since the
+profile ID is this repo's primary key. Note the `SUBM` xref is the *account
+owner*, not the seed, so it cannot be used for this.
+
+**The seed is the file's first `INDI` record**, and this is checkable rather
+than assumed: of the saved pages in `geni_pages/`, seven are the first `INDI` of
+some export and the rest are pages saved for connections not yet exported from.
+**Do not expect the seed to be the person the export is named after in
+conversation.** All three exports ingested on 2026-08-04 open on a profile
+created a minute or two before the export ran — `export-Forest-6000000227036288825.ged`
+is "the Li Hong export" and its seed is an `NN` wife of Li Yuanfeng created at
+14:40:46 and exported at 14:41:36. Creating a placeholder at the frontier and
+exporting from it is the technique; the filename records the seed, not the
+intent.
 
 **Stdlib only.** `urllib` covers the Wikidata SPARQL endpoint. Add a dependency
 only when the stdlib genuinely cannot do the job.
 
-**Layout.** `data_lake/` raw inputs (`*.zip` gitignored, `*.ged` tracked) ·
+**Layout.** `exports/` the download staging area, one directory per seed as
+Geni's zips arrive (see below) · `data_lake/` raw inputs, the subset actually
+merged (`*.ged` tracked) · `geni_pages/` saved Geni profile pages ·
 `src/genimerge/` the package · `reports/` generated reports worth keeping in git
 · `out/` generated data, gitignored · `tests/` pytest.
+
+**`exports/` is Emma's staging area and `data_lake/` is what the merge reads.**
+Geni's downloads land as `export-geni (N).zip`, extracted beside themselves,
+grouped into a directory named for the person Emma exported from
+(`exports/Li Hong/`, `exports/n n/`) or into `exports/archive/` for bulk takes.
+Ingesting one means **copying** it into `data_lake/` under the
+`export-Forest-<seedID>.ged` name — not moving it, so the staging area stays a
+record of what was downloaded. Not everything in `exports/` is ingested;
+`data_lake/` holding fewer files than `exports/` is the normal state, not drift.
+
+**Never delete a GEDCOM, and never add a zip.** The zips are gitignored **one
+line at a time**, deliberately: Emma wants an unignored zip to show up in
+`git status` so she can see a download has arrived. Do not replace those lines
+with a `*.zip` pattern — it would look tidier and would destroy the signal.
 
 ### Wikidata properties and items
 

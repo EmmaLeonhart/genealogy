@@ -8,13 +8,13 @@ to Wikidata.
 ## What this is
 
 Geni.com exports a family tree as GEDCOM, and **each export is bounded at a few
-thousand people** — the five in `data_lake/` hold 3836, 3836, 3836, 3840 and
-3844 individuals. They overlap far less than that suggests:
+thousand people** — the eight in `data_lake/` hold between 3836 and 3856
+individuals apiece. They overlap far less than that suggests:
 
 | | individuals | families |
 | --- | ---: | ---: |
-| largest single export | 3844 | 2474 |
-| all five merged | **16266** | **8268** |
+| largest single export | 3856 | 2620 |
+| all eight merged | **27718** | **14114** |
 | present in every export | 0 | 0 |
 
 So the exports are overlapping slices of one tree rather than copies of it, and
@@ -23,9 +23,12 @@ project. The second half is reconciling the merged tree against Wikidata, and
 eventually generating the edits that would put the missing people *into*
 Wikidata.
 
-The three numbers above are close together but they are **not** a cap Geni
-enforces — see `genimerge.seeds.GENI_EXPORT_CAP`, which records what is actually
-known (very little) rather than the pattern they suggest.
+Those numbers cluster, but they are **not** a cap Geni enforces — see
+`genimerge.seeds.GENI_EXPORT_CAP`, which records what is actually known rather
+than the pattern they suggest. The most that can be said: across 28 exports the
+ceiling rose from 3836 to 3860 over five days, and eleven consecutive exports
+from eleven different seeds in three different styles then all came back with
+exactly 3860, so whatever the bound is, it is global rather than per-seed.
 
 Merging is exact, not fuzzy. Geni writes the profile ID as the GEDCOM xref
 itself:
@@ -38,20 +41,29 @@ itself:
 so every record carries a stable primary key across exports, and the same ID is
 the join key to Wikidata via **P2600 (Geni.com profile ID)**.
 
-The merge of all five currently produces 16266 individuals and 8268 families
+The merge of all eight currently produces 27718 individuals and 14114 families
 with **zero conflicts and no lost lines** — see `reports/merge.md`.
 
-It is **two trees, not one.** The 2026-08-02 export shares not a single person
-or family with the other four: it is the Japanese mythological line, 3844 people
-rooted at Kunino-tokotachi-no-mikoto, and nothing relates it to the Norwegian
-material. Merging is still correct — disjoint components do not conflict, they
+It is **two trees, not one.** One component holds 16217 people (the Norwegian
+material, out through the European royal lines); the other holds 11501 (the
+Japanese mythological line rooted at Kunino-tokotachi-no-mikoto, plus the
+Tang-dynasty and Ashina material reached from it). They share no person and no
+family. Merging is still correct — disjoint components do not conflict, they
 just never meet — but until an export bridges them, "the tree" is a shorthand
 for two. `reports/frontier.md` tracks the components.
+
+**The bridge is six people wide and we know which six.** `reports/path-jimmu.md`
+checks a Geni relationship path of 83 steps against the merged tree: 77 are
+held, and the 6 that are not — steps 37–42, Constantine IX Monomachos through
+Dawud Chaghri Bey's mother — are exactly what separates the two components. On
+2026-08-04 two exports taken from opposite ends of that gap cut it from 21 steps
+to 6.
 
 ## Layout
 
 ```
-data_lake/     the exports as received (zips gitignored, .ged files tracked)
+exports/       downloads as Geni delivers them, one directory per seed
+data_lake/     the exports actually merged (.ged files tracked)
 data_lake/paths/ Geni relationship paths, generated from saved pages
 geni_pages/    Geni profile pages saved from the browser (the source of the above)
 src/genimerge/ the package
@@ -59,6 +71,18 @@ reports/       generated reports that are worth reviewing and keeping
 out/           generated data (gitignored)
 tests/         pytest
 ```
+
+**`exports/` is the staging area; `data_lake/` is what the merge reads.** Geni's
+downloads arrive as `export-geni (N).zip`, get extracted beside themselves, and
+are grouped under a directory named for whoever they were exported from —
+`exports/Li Hong/`, `exports/n n/`, or `exports/archive/` for bulk takes.
+Ingesting one means **copying** it into `data_lake/` as
+`export-Forest-<seedID>.ged`, never moving it, so `exports/` stays a record of
+what was downloaded. `data_lake/` holding fewer files than `exports/` is normal.
+
+The zips are gitignored **one line at a time on purpose**, not by a `*.zip`
+pattern: an un-ignored zip shows up in `git status`, which is how a finished
+download announces itself.
 
 - `queue.md` — concrete steps currently in scope
 - `todo.md` — the long-horizon backlog

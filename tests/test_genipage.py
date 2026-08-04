@@ -7,7 +7,13 @@ import pytest
 from genimerge import genipage
 
 REPO = Path(__file__).resolve().parents[1]
-SAVED = next((REPO / "geni_pages").glob("*.html"), None) if (REPO / "geni_pages").exists() else None
+
+# The Jimmu page by name, not `next(glob("*.html"))`. That shortcut was correct
+# while Jimmu was the only saved page and silently wrong the moment a second
+# arrived: on 2026-08-04 nine more pages landed in `geni_pages/`, the glob
+# returned one of them, and these tests failed claiming the Jimmu path had 91
+# steps. It had 83; the file was somebody else's path.
+SAVED = next((REPO / "geni_pages").glob("*Jimmu*.html"), None) if (REPO / "geni_pages").exists() else None
 
 
 # Two path steps, plus the two kinds of link that are on every Geni profile page

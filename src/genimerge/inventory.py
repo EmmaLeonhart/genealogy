@@ -130,9 +130,10 @@ def _headline(inv: Inventory) -> list[str]:
             "identical count across differently-scoped exports suggests Geni is "
             "truncating each to that size rather than it being coincidence — but "
             "read it as a lower bound, not a cap. The first three exports agreed "
-            "on 3836 exactly, then a fourth held 3840 and a fifth 3844, so "
-            "agreement across the exports in hand has already failed once to "
-            "mean a limit."
+            "on 3836 exactly and every export since has held more, so agreement "
+            "across the exports in hand has already failed once to mean a limit. "
+            "See `genimerge.seeds.GENI_EXPORT_CAP` for what 28 exports say about "
+            "that bound."
         )
         lines.append("")
 

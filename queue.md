@@ -15,43 +15,60 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
-Emma has taken the Jimmu-gap exports and staged them under `exports/`. Scope for
-this session is **only** the two doorways she named — `exports/Li Hong/` (two
-Forest exports) and `exports/n n/` (one) — not the ~16 bulk exports sitting in
-`exports/archive/`, which are still downloading.
+1. **BLOCKED-ON-USER-ACTION — take one export seeded in the six-person window
+   that is now the whole gap between the two components.** Jimmu path steps
+   **37–42**, with their IDs — note Constantine's is **not** the usual
+   `6000000…` shape, so do not pattern-match it:
 
-Measured before starting, so the payoff is known rather than hoped for: the
-`n n` export holds Jimmu path steps **31–36** and touches the Norwegian
-component in 61 people; `exports/Li Hong/forest/` holds steps **43–51** and
-touches the Japanese component in 41. Neither touches the other. So this
-narrows the 21-step gap to the six steps **37–42** and does **not** join the two
-components — the next doorway is inside that window.
+   | # | person | Geni profile ID |
+   | ---: | --- | --- |
+   | 37 | Constantine IX Monomachos, byzantine emperor | `385935664970005621` |
+   | 38 | Guarandukht Bagrationi, of Georgia | `6000000024168588582` |
+   | 39 | daughter of Smbat of Lori | `6000000032327207506` |
+   | 40 | Sultan Alp Arslan | `6000000031528209013` |
+   | 41 | Dawud Chaghri Bey, Lord of Khorasan | `6000000031528142916` |
+   | 42 | n n | `6000000035218690155` |
 
-1. **Copy the three exports into `data_lake/`** under the
-   `export-Forest-<seedID>.ged` convention — `…288825` (Li Hong/forest),
-   `…719829` (Li Hong/export-geni), `…742846` (n n). Leave the zips alone;
-   they are gitignored one by one on purpose.
+   Step 36 (Helena Komitopulo `6000000002837351971`) is held in component 1 and
+   step 43 (Inal Kut Chor `6000000035218736073`) in component 2, so a ball
+   centred anywhere in the window has a real chance of touching both — this is the
+   export that joins the two trees. Unblocks by Emma taking it on Geni; the
+   check afterwards is `python -m genimerge path data_lake/paths/jimmu.tsv`
+   plus the component count in `reports/frontier.md`.
 
-2. **Re-run the pipeline over eight exports** — `inventory`, `merge`, `export`,
-   `frontier`, `seeds`, `consistency`, and `path data_lake/paths/jimmu.tsv`.
-   Confirm the component count and the surviving gap against the prediction
-   above rather than assuming it.
+2. **Ingest the rest of `exports/archive/` once the downloads finish.** ~17
+   Forest/Ancestors/Descendants/BloodTree exports at 3860 apiece, none yet in
+   `data_lake/`. Deliberately left out of the 2026-08-04 ingest because Emma
+   scoped that session to Li Hong and `n n`; they are still arriving. Ingesting
+   is a copy into `data_lake/` under `export-Forest-<seedID>.ged` and a re-run,
+   with one wrinkle to settle first: several share a seed with a saved page in
+   `geni_pages/`, and two archive exports could share a seed with each other
+   across styles, which the current filename convention does not disambiguate.
 
-3. **Raise `GENI_EXPORT_CAP`.** It is 3844; the new exports hold 3848, 3852 and
-   3856, and `exports/archive/` holds several at 3860. Rewrite the docstring's
-   evidence paragraph for the larger sample — the step-of-four now has many more
-   observations behind it and still must not be encoded as arithmetic.
+3. **Re-measure the standing-context counts below against the eight-export
+   merge.** The impossible/implausible date counts now read 178 and 173 against
+   the 96 and 89 quoted in the note; `reports/consistency.md` is regenerated but
+   the prose here is not.
 
-4. **Check "the seed is the file's first `INDI`" still holds**, since three of
-   the new files open on a profile created minutes before the export rather than
-   on the person Emma named. Record what is actually true in `CLAUDE.md`.
+4. **Turn the nine new saved pages into path reports — after the Jimmu gap, not
+   before.** Emma saved these on 2026-08-04 as candidate connections and asked
+   explicitly that the Japanese emperor line be finished first:
+   `Gervasio of Toledo`, `Madgacen`, `Makeda Queen of Sheba`, `NN Basse`,
+   `NN daughter of Berenice`, `NN of Malwa`, `NN`, `Princess NN`, `Psamtik II`,
+   `daughter of the king of Assyria`, `Lady Palsu of the Jin clan`, `意美 Hata`.
+   Each is `path-from-html` → `data_lake/paths/<name>.tsv` → `path` → a report
+   saying how many steps are already held and where the gap is, which is what
+   turned the Jimmu page from a guess into a six-person target. Cheap, no
+   network, and it ranks the candidates against each other before any export is
+   taken.
 
-5. **Record the `exports/` staging layout and the `Descendants` style** —
-   `CLAUDE.md` names three export styles and `exports/archive/export-geni (7)/`
-   is a fourth.
-
-6. **`python -m pytest`, then commit.** Nothing from `exports/` gets staged
-   beyond the three files copied into `data_lake/`.
+5. **The Wikidata reports are stale and nothing says so on their face.**
+   `reports/wikidata-coverage.md`, `wikidata-crosscheck.md` and `names.md`
+   describe the 16266-person tree; the tree is now 27718. Refreshing them means
+   `reconcile` against the live SPARQL endpoint, which is the only part of this
+   pipeline that needs network, so it is a deliberate run rather than part of
+   the merge. **BLOCKED-ON-EXTERNAL** only in the weak sense that it needs the
+   Wikidata endpoint to be up; unblock signal is simply choosing to run it.
 
 ### Standing context
 
@@ -139,6 +156,37 @@ components — the next doorway is inside that window.
   **Li Hong 李宏**. Two exports walking toward each other cover ~10 steps each
   instead of one export covering 21, and either one landing tells us how far a
   ball actually reaches along this line. Neither has been taken.
+
+  **Update 2026-08-04, later — both were taken, and the pincer worked almost
+  exactly as drawn.** Emma exported from both ends and the three files are now
+  in `data_lake/`. The path went from **62 of 83 steps held to 77 of 83**, and
+  the gap from 21 steps to **6**: steps 37–42, listed with their IDs as item 1
+  of "Active" above.
+
+  - The `n n` export (seed `6000000227036742846`) came in from the north and
+    took steps **31–36**, Jelena Urošević through Helena Komitopulo — so the
+    Nemanjić block that was the whole reason for the Jelena candidate is now
+    held, and Jelena herself is in the tree rather than being a doorway.
+  - The `Li Hong` forest export (seed `6000000227036288825`) came in from the
+    south and took steps **43–51**, Inal Kut Chor through Li Hong 李宏 — the
+    Ashina khagans and the Tang line.
+  - The second `Li Hong` export (seed `6000000227036719829`) is on none of the
+    path. It attaches to component 2 through two people and brings 3850 people
+    anyway, which is the ordinary case: an export's value is not confined to the
+    chain that motivated it.
+
+  **What this measured that the ranking could not.** The open question was how
+  far a ball reaches along *this* line, since bushy branching burns the budget
+  sideways. Answer: **each export covered 6 and 9 steps of chain**, not the ~10
+  hoped for and not 21. So one export does not span a gap of that size, and the
+  remaining 6 steps are a plausible single export precisely because 6 is inside
+  the range now observed rather than hoped for.
+
+  **The two trees still do not touch.** Both new components attached to the side
+  they came from — 61 shared people with component 1 for `n n`, 41 with
+  component 2 for `Li Hong` — and none to each other. Predicted before running
+  the merge and confirmed after; the component count is still 2, now 16217 and
+  11501.
 
 
 

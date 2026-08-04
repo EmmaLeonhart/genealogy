@@ -23,16 +23,24 @@ file is a list of intentions, so it is worth being explicit about which of them
 have since been measured — item 3b's "the merge absorbs it without changes", and
 item 7's "a file drop and a re-run, not a code change".
 
-The tree is **16266 people in two disconnected components** — 12422 in the
-Norwegian material and 3844 in the Japanese line, sharing no person and no
-family (`reports/frontier.md`, 2026-08-04). This paragraph previously read
-"12422 people in one connected component", written when that was true and left
-alone when the fifth export made it false.
+The tree is **27718 people in two disconnected components** — 16217 in the
+Norwegian material and 11501 in the Japanese line, sharing no person and no
+family (`reports/frontier.md`, 2026-08-04, over eight exports). This paragraph
+previously read "12422 people in one connected component", written when that was
+true and left alone when the fifth export made it false; it has since been wrong
+a second time, at 16266/12422/3844, for one afternoon. **Treat the numbers in
+this paragraph as a timestamp, not a fact** — `reports/frontier.md` is the live
+count and this file is not regenerated.
 
 The warning that used to follow it turned out to be a description rather than a
 caution: an export seeded outside what we hold merges without a single conflict
 and still leaves two trees. That is exactly what happened, which is why
 `genimerge merge` reports connectivity on every run.
+
+**The two components are now six people apart**, and which six is known —
+`reports/path-jimmu.md` steps 37–42. Joining them is no longer an open-ended
+search for a bridging export; it is one export from a named six-person window,
+listed with profile IDs in `queue.md`.
 
 Every batch under items 4, 5 and 6 stops at a file in `out/wikidata/`.
 **Nothing in this repo writes to Wikidata**, and nothing should start doing so
@@ -99,9 +107,19 @@ greedily on newly-covered doorways, so ten picks are ten *different*
 neighbourhoods rather than ten names off one branch.
 
 The ball size is deliberately vague here. Three exports held exactly 3836, which
-read as a hard cap until a fourth held 3840; what actually bounds an export is
-not established. `genimerge.seeds.GENI_EXPORT_CAP` carries the detail and the
-four competing explanations.
+read as a hard cap until a fourth held 3840, and the ceiling has since walked up
+to 3860; what actually bounds an export is not established.
+`genimerge.seeds.GENI_EXPORT_CAP` carries the detail, including what 28 exports
+ruled out on 2026-08-04.
+
+**This whole item is worth less than it was, and that is a change in the
+project rather than a defect.** Seed ranking answers "which one profile should I
+export from next?", which mattered while each export was a deliberate choice.
+Emma has since switched to exporting whatever Geni will readily give her — 17
+takes in one afternoon — so the binding constraint is now ingest and download
+time, not seed choice. Ranking still earns its place for the *targeted* exports
+(the Jimmu gap was found and closed this way), but do not spend effort improving
+it on the assumption it is on the critical path.
 
 Still open: **taking the next export**, from the sequence in `reports/seeds.md`.
 Only the user can do the export itself — **BLOCKED-ON-USER-ACTION**, unblock

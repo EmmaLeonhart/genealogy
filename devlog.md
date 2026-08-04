@@ -2511,3 +2511,86 @@ page is a decision instead of a surprise.
 
 **637 passed**, Python 3.13.14, unchanged — no code was touched this tick. Not
 CI-verified; CI is `workflow_dispatch:` only here on purpose.
+
+---
+
+## 2026-08-04 — the Li Hong and n n exports, and the Jimmu gap cut from 21 steps to 6
+
+Emma took the two exports the standing note had been asking for — one from each
+end of the block missing from the Geni relationship path to Emperor Jimmu — plus
+a second Li Hong-adjacent one, and staged all three under a new `exports/`
+directory. Scope was **only** those three; the ~17 bulk exports accumulating in
+`exports/archive/` were left alone and are still downloading.
+
+**Ingested as three files.** Copied into `data_lake/` under the existing
+`export-Forest-<seedID>.ged` convention: `…227036288825` (Li Hong forest),
+`…227036719829` (the second Li Hong take), `…227036742846` (`n n`). Copied, not
+moved, so `exports/` stays a record of what was downloaded.
+
+**The pincer worked.** The path went from **62 of 83 steps held to 77 of 83**
+and the gap from 21 steps to **6** — steps 37–42, Constantine IX Monomachos
+through the `n n` who is Dawud Chaghri Bey's mother. `n n` took steps 31–36 from
+the north, the Li Hong forest export took 43–51 from the south, and the third
+export is on none of the path but brings 3850 people anyway.
+
+**The prediction was made before the merge and held.** Measured from the raw
+files first: `n n` shares 61 people with component 1 and none with component 2;
+`Li Hong` shares 41 with component 2 and none with component 1. So the merge
+would still produce two components. It did — 16217 and 11501, up from 12422 and
+3844 — and the tree is now **27718 people, 0 conflicts**.
+
+**What this measured that `reports/seeds.md` structurally cannot.** The open
+question was how far a ball reaches along one *chain*, since bushy branching
+spends the budget sideways. Answer: 6 and 9 steps, not the ~10 hoped for. That
+is why the remaining 6-step gap is now a plausible single export — the number is
+inside an observed range rather than a hoped-for one.
+
+**`GENI_EXPORT_CAP` 3844 → 3860, and one hypothesis is now dead.** The test
+asserting the cap is at least the largest export in `data_lake/` failed on 3856,
+as designed. Ordering all 28 exports by the timestamp in their own `HEAD` showed
+something the previous three-observation note could not: after rising 3836 →
+3856 over five days, **eleven consecutive exports taken between 15:21 and 16:22
+all held exactly 3860** — eleven different seeds, three different styles
+(`Forest`, `Descendants`, `BloodTree`). So the bound is global rather than
+per-seed or per-style, which kills the "walk overshoots a floor to finish its
+generation" candidate the docstring had been carrying: eleven differently-shaped
+walks would not overshoot to the same number. Why the ceiling *moved* is still
+unestablished, and the step of four is still not encoded — a flat run of eleven
+is evidence the number sits still, not evidence it steps on a schedule.
+
+**Four tests failed and none was loosened.**
+
+- Two in `test_paths.py` asserted the old gap (`range(31, 52)`, run ends at
+  step 30). Its docstring had said in advance that if a later export filled part
+  of the block the fix was to re-read the count, not loosen the test. Updated to
+  `range(37, 43)` and step 36, with the checkpoint at Elisabeth kept.
+- Two in `test_genipage.py` were a real bug this change exposed:
+  `SAVED = next(glob("*.html"))` was correct while Jimmu was the only saved page
+  and silently wrong once Emma added nine more. The glob returned somebody
+  else's path and the test failed claiming the Jimmu path had 91 steps. Now
+  selected by name.
+
+**Report prose was un-hardcoding, not just re-numbering.** `frontier.py` had the
+sentence "the five taken so far held 3836, 3836, 3836, 3840 and 3844" baked into
+its output; it now points at `reports/inventory.md` and the cap docstring
+instead, so it cannot go stale again. `inventory.py` lost its enumeration the
+same way.
+
+**A wrong profile ID was caught before it was committed.** Writing the new queue
+item, Constantine IX Monomachos's Geni ID was filled in from memory as
+`6000000010463343593`. It is `385935664970005621` — not the `6000000…` shape at
+all. Checked against `reports/path-jimmu.json` rather than trusted, which is the
+whole reason the path files carry IDs. All six gap IDs are now tabulated in
+`queue.md`.
+
+**`CLAUDE.md` gained the things that were true but unwritten**: the `exports/`
+staging layout and that `data_lake/` holding fewer files is normal rather than
+drift; that the zips are gitignored one line at a time *on purpose*, so nobody
+replaces them with `*.zip` and destroys Emma's "a download arrived" signal in
+`git status`; `Descendants` as a fourth export style; and that the seed is the
+file's first `INDI` but is usually **not** the person the export is named after
+in conversation — all three new files open on a placeholder profile created a
+minute or two before the export ran.
+
+**661 passed**, Python 3.13.14, up from 637. Not CI-verified; CI is
+`workflow_dispatch:` only here on purpose.
