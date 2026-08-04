@@ -27,7 +27,7 @@ Thumbs.db
 .env.local
 
 # Source archives — we keep the extracted GEDCOMs in git, not the zips
-*.zip
+# No, actually, the zips being all like this. The zips should be ignored individually because it makes it so that, as a human, I'm able to see when the zips are there. 
 
 # Generated artifacts. Committed prose lives in reports/, not here.
 out/
