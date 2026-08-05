@@ -15,6 +15,8 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
+0. Look over entity_resolution.md and apply this stuff in that file. 
+
 1. **Ingest the rest of `exports/archive/` as the downloads finish.** ~20
    Forest/Ancestors/Descendants/BloodTree exports at 3860 apiece; only `(22)`
    and `(23)` have been taken into `data_lake/` so far, and those only because
