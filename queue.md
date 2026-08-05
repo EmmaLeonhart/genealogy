@@ -33,6 +33,21 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
    profiles are in the tree. **BLOCKED-ON-USER-ACTION** — nothing here sends
    anything to Wikidata, and label edits overwrite other editors' work.
 
+2.5 **BLOCKED-ON-USER-ACTION — export from Louis I, The Pious
+   `6000000001266578142`, style `Forest`. This now outranks the density picks
+   below.** Measured 2026-08-05 in `reports/paths.md`: fifteen Geni relationship
+   chains checked against the 186,551-person merge hold 1,095 of 1,227 steps
+   (89.2%), and **50 of the 132 missing steps are the same ten people** — the
+   Alemannian ducal line ascending into the Carolingians, blocking five separate
+   paths that each run unbroken to step 34 and stop there. All ten verified
+   absent by profile ID against `out/merged.ged`.
+
+   It beats the density picks because the payoff is *observed*: Geni has already
+   named who is behind this door. `Forest` because Giséle of Cysoing and Emma of
+   Alemannia enter through marriages and a blood-only style walks past them.
+   Ten people is at the edge of the 6–9 steps a targeted export has actually
+   reached here, so it may take two.
+
 3. **BLOCKED-ON-USER-ACTION — the next four exports, picked 2026-08-05 from
    `reports/density.md`.** Unblock signal is a new `.ged` in `data_lake/`. All
    four seeds were checked against `out/people.jsonl`: every one is in the tree
@@ -82,10 +97,6 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
    1548) and possible duplicates 9.2× (53 → 490). Either the newer material is
    worse or a check scales badly with tree size. Worth settling before these
    dates reach Wikidata, since `add-claims.qs` builds P569/P570 from them.
-
-5. **Turn the saved pages into path reports.** Twelve pages in `geni_pages/`.
-   Each is `path-from-html` → `path`. With 54 exports merged, several may
-   already be complete — the Jimmu one is, at 83 of 83.
 
 6. **The Wikidata reports are stale.** `reports/wikidata-coverage.md`,
    `wikidata-crosscheck.md` and `names.md` describe the 16266-person tree; it is

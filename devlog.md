@@ -2892,3 +2892,73 @@ item 0.1 says this batch may be the last.
 
 No code changed in this entry, so the suite was not re-run; the last recorded
 run is 1059 passed on 2026-08-04.
+
+## 2026-08-05 — 37 exports ingested, and the small-world core measured
+
+**Ingest.** Forty zips in Downloads, 37 distinct GEDCOMs. The tree went from
+105,349 people / 56,455 families to **186,551 / 91,307**, still **one connected
+component**. Full before/after in `reports/ingest-2026-08-05.md`.
+
+Three were byte-identical duplicates of siblings and one (`export-Forest-7`) was
+a strict subset of another export of the same seed taken seven minutes later, so
+the naming scheme had nothing to disambiguate and the larger lost nothing.
+
+**Where the files live, after a wrong turn.** They were first copied into
+`data_lake/`, which was a mistake: that directory is scaffolding from the
+original sort-out of a pile of files, not a store the workflow is built on. The
+copies were removed in `6eddadd` — a forward commit, no history rewrite — and
+the exports now sit in `exports/fleshing-out/`, on disk and out of git, ignored
+one full path per line so no `*.ged` or `*.zip` pattern hides anything else.
+`data_lake/` is back to its previous 54 files. It is still wired into the CLI's
+default input glob and five test modules, which is how a scaffolding folder
+became load-bearing; unpicking that is not yet done.
+
+The synoptic GEDCOM is `out/merged.ged`, 262 MB, gitignored, rebuilt with
+`python -m genimerge merge data_lake/*.ged exports/fleshing-out/export-geni/*.ged`.
+
+**Per-export contribution, which the aggregate hides.** Every one of the 37
+added people nobody had — no wasted exports — but the spread runs from **29 to
+3,985** new people out of ~4,004 downloaded. Batch-internal redundancy is 14.7%:
+the exports collectively hold 95,177 people new to the old tree but only 81,202
+distinct ones. The waste is concentrated in exports taken minutes apart near the
+same seed — `export-Forest-9` brought 3,187 people the old tree lacked but only
+**35** the batch lacked, because `export-Forest-8` two minutes earlier had them.
+
+**The export ceiling moved and then fell.** `tests/test_seeds.py` caught it:
+an export held 4,008 against `GENI_EXPORT_CAP=3864`. Ordered by their own `HEAD`
+stamps the batch reads 3868, 3928, 3944, 3956, 3972, then 4008 for four exports,
+then **4004 for all twenty-six** taken over the following ten hours. So it went
+*down* by four, and the docstring's old description of the movement as "steps of
+four" was wrong while its warning not to encode the arithmetic was right. New
+evidence of a kind not previously available: Geni states the bound in its own UI,
+a `Size` field reading 4004, matching what those twenty-six actually held.
+
+**The small-world core question, and the answer.** The Geni world tree is around
+210 million people, so 186,551 is 0.09% and size settles nothing. What settles
+it is whether the *connective tissue* is held, and a Geni relationship path
+measures exactly that, because Geni computes the chain itself and names people
+no export has reached. All fifteen saved pages in `geni_pages/` were turned into
+path reports against the merged tree — `reports/paths.md`.
+
+**1,095 of 1,227 steps held, 89.2%**, across fifteen independent chains reaching
+Assyria, Sheba, Egypt, Numidia, Mongolia, the Jin clan, Malwa, Samaria, Toledo
+and Japan. **Six are complete end to end**, including a **170-step chain to
+Makeda, Queen of Sheba** and the full chain to Temüjin.
+
+**The gaps are not scattered, and that is the useful part.** 50 of the 132
+missing steps are the *same ten people*, each needed by five different paths:
+the Alemannian ducal line ascending into the Carolingians, headed by **Louis I,
+The Pious `6000000001266578142`**. Five paths run unbroken to step 34 and stop
+at the same person. All ten verified absent by profile ID against the merged
+GEDCOM, not inferred from names.
+
+That we hold Makeda and Temüjin but not Louis the Pious says the coverage is not
+"core versus periphery" in the way one would guess — there is a hole in the most
+densely connected region of European genealogy, which is also the region
+Wikidata models best and where reconciliation would pay most per person. Queued
+as item 2.5, ahead of the density picks, because its payoff is *observed* rather
+than inferred: Geni has already named who is behind that door.
+
+**Tests: 1063 passed** on the restored 54-export state. An earlier report of
+this suite as passing was wrong — the exit code read was `tail`'s, not pytest's,
+and that run was 1 failed / 1350 passed.
