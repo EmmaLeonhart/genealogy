@@ -2846,3 +2846,49 @@ also thin. Fixed the test.
 
 **1059 passed**, Python 3.13.14. Not CI-verified; CI is `workflow_dispatch:`
 only here on purpose.
+
+## 2026-08-05 — the next four exports, picked from density rather than seeds
+
+Started the three-cron playbook for this session (work-loop `3 * * * *`,
+auto-flush `15 * * * *`, status-report `42 * * * *`; session-only, so they die
+with the session and get recreated next time). No new exports had arrived —
+`data_lake/` is still 54 files, newest 2026-08-04 — so queue items 0.1, 1 and 2
+stayed blocked on user action and the first actionable item was the export pick.
+
+**The pick, in order: regions 6, 3, 1, 2, all as `Forest`.** Seeds are Christen
+Pedersen Thrane `5132829956720138378`, William "Bill" Rankin Monk
+`6000000005965721836`, Juan Andrés `6000000014746707044` and Mercy Swetland
+`6000000014643729729`. Each was checked against `out/people.jsonl`: all four are
+in the tree and all four have empty `parent_ids`, so all four are doorways. Juan
+Andrés looked like an exception at first — he has a `child_of_families` entry —
+but the family record holds no parents, which is why `has_known_parents` (which
+reads `parent_ids`, not `child_of`) is correctly false.
+
+**The ordering is not largest-first, and that is the whole content of the pick.**
+An export is a ball of at most ~3860 people, so region size divided by 3860 says
+whether one take can cover a region at all. Region 1 has by far the most
+doorways (1757) but is 1.68× a ball; region 6 has fewer (957) but the highest
+doorway density in the report (37.4%) and fits at 0.66×, so more of the budget
+converts into walking somewhere new instead of re-fetching people already held.
+Region 1 still gets taken third, with the note to re-run `density` before
+choosing its second seed rather than guessing where the first ball landed.
+
+**What was excluded, explicitly.** Regions 35, 38, 40, 42 and 47 have zero
+doorways — nothing opens outward. Region 8 is the large low-density case: 2355
+people, 230 doorways, 9.8%. Region 4 is the weakest of the big four at 17.2% and
+is the one to drop if fewer than four exports get taken.
+
+**This pick is untested and the prediction is recorded so it can be scored.**
+Density has never chosen an export, exactly as `reports/seeds.md` never has. The
+committed prediction is that region 6 yields more new people than region 4 would
+have. It resolves by the new-people count from `genimerge merge` and by region 6
+shrinking or splitting when `density` is re-run.
+
+**Also queued (item 7):** `density._representative` returns one seed per region,
+which cannot cover a region larger than one ball. The fix is
+`ceil(size / GENI_EXPORT_CAP)` seeds chosen far apart rather than greedily by
+degree. Left unbuilt on purpose — it only pays if more exports get taken, and
+item 0.1 says this batch may be the last.
+
+No code changed in this entry, so the suite was not re-run; the last recorded
+run is 1059 passed on 2026-08-04.

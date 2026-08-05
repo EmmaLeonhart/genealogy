@@ -33,13 +33,49 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
    profiles are in the tree. **BLOCKED-ON-USER-ACTION** — nothing here sends
    anything to Wikidata, and label edits overwrite other editors' work.
 
-3. **Pick the next exports from `reports/density.md`, not `reports/seeds.md`.**
-   The density report ranks connected runs of people that only one export ever
-   reached; `seeds.md` ranks by doorway count and has never been validated. The
-   top thin regions are large enough to be real neighbourhoods rather than ball
-   rims — 6475 people / 1757 doorways, 3858 / 854, 3588 / 977. Read the doorway
-   column: a thin region with few doorways may just be a small family that
-   ended.
+3. **BLOCKED-ON-USER-ACTION — the next four exports, picked 2026-08-05 from
+   `reports/density.md`.** Unblock signal is a new `.ged` in `data_lake/`. All
+   four seeds were checked against `out/people.jsonl`: every one is in the tree
+   and every one has empty `parent_ids`, so all four are doorways. **Take them
+   as `Forest`.** These regions are runs of people linked by marriage as well as
+   descent, and a doorway opens *upward*, so `Descendants` walks the wrong way
+   and `Ancestors`/`BloodTree` walk past the spouse links — the same trap that
+   nearly cost the Jimmu bridge.
+
+   | order | region | people | doorways | density | ball fit | seed |
+   | ---: | ---: | ---: | ---: | ---: | ---: | --- |
+   | 1 | 6 | 2561 | 957 | 37.4% | 0.66× | [Christen Pedersen Thrane](https://www.geni.com/people/x/5132829956720138378) `5132829956720138378` |
+   | 2 | 3 | 3588 | 977 | 27.2% | 0.93× | [William "Bill" Rankin Monk](https://www.geni.com/people/x/6000000005965721836) `6000000005965721836` |
+   | 3 | 1 | 6475 | 1757 | 27.1% | 1.68× | [Juan Andrés](https://www.geni.com/people/x/6000000014746707044) `6000000014746707044` |
+   | 4 | 2 | 3858 | 854 | 22.1% | 1.00× | [Mercy Swetland](https://www.geni.com/people/x/6000000014643729729) `6000000014643729729` |
+
+   **Why this order and not simply largest-first.** An export is a ball of at
+   most ~3860 people (`GENI_EXPORT_CAP`, largest yet seen), so a region bigger
+   than that cannot be covered by one take — the "ball fit" column is
+   people ÷ 3860. Region 6 is ranked first because the *whole* region fits
+   inside one ball with room to spare and it has the highest doorway density in
+   the report at 37.4%: the largest share of the budget converts into walking
+   somewhere new rather than re-fetching people we hold. Region 3 is second on
+   raw doorways (977, the most of any region that fits in a single ball).
+   Region 1 has the most doorways of all, 1757, but at 1.68× it needs at least
+   two exports and only one seed exists for it — take one now and **re-run
+   `python -m genimerge density` before choosing the second**, so the second
+   seed is picked knowing where the first ball landed.
+
+   **What to skip, and why it is in the report at all.** Regions 35, 38, 40, 42
+   and 47 have **zero** doorways — nothing there opens outward, so an export
+   buys only people we already have. Region 8 (Fakhita القشيري, 2355 people) is
+   the large low-density case at 9.8%: a whole ball spent to reach few new
+   places. Region 4 (Jøran Svensdatter, 3563/612, 17.2%) is the weakest of the
+   big four and is the one to drop if only three exports get taken.
+
+   **This is the first pick density has ever made, and it is untested** — the
+   same standing objection as `reports/seeds.md`, which has also never been
+   scored against an outcome. It resolves by measuring: after the export lands,
+   `python -m genimerge merge` gives the new-people count and re-running
+   `density` should show region 6 shrink or split. Recording the prediction here
+   so `git show` supplies it later — **region 6 is predicted to yield more new
+   people than region 4 would have**, on the density argument alone.
 
 4. **NEEDS-INVESTIGATION — error counts still growing faster than the tree.**
    10 → 54 exports grew the tree 3.9× while impossible dates grew 5.9× (261 →
@@ -55,6 +91,16 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
    `wikidata-crosscheck.md` and `names.md` describe the 16266-person tree; it is
    now 105349. Refreshing means `reconcile` against the live SPARQL endpoint,
    the only networked step here.
+
+7. **`density` emits one seed per region, which under-serves regions larger
+   than one export ball.** `_representative` in `src/genimerge/density.py`
+   returns a single person; region 1 is 6475 people, 1.68× the ~3860 an export
+   holds, so one seed cannot cover it and the report gives no second. The fix is
+   to emit `ceil(size / GENI_EXPORT_CAP)` seeds per region, chosen far apart in
+   the region rather than greedily by degree — otherwise two seeds land as
+   neighbours and their balls are the same ball. Low priority: it only pays if
+   more exports get taken, and queue item 0.1 says the current batch may be the
+   last. Do not build it on the assumption exports continue.
 
 ### Standing context
 
