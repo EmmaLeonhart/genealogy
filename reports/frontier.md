@@ -14,8 +14,8 @@ parents recorded**. Those are the places Geni knows more than we do.
 
 |  | count | share |
 | --- | ---: | ---: |
-| people | 32393 | 100% |
-| with no parents recorded | 6245 | 19.3% |
+| people | 89474 | 100% |
+| with no parents recorded | 18909 | 21.1% |
 | with no relatives at all | 0 | 0.0% |
 | connected components | 1 |  |
 
@@ -26,15 +26,24 @@ no walk outward from the main tree will ever reach it.
 
 | component | people | of which parentless | largest branch point |
 | --- | ---: | ---: | ---: |
-| 1 | 32393 | 6245 | Skoglar |
+| 1 | 89474 | 18909 | Nārāyaṇa? |
 
 ## People recorded as their own ancestor
 
-**1** — impossible in life, and a sign the same person exists under two Geni profiles that were then linked as parent and child. Each one quietly distorts the generational measures below, and each is worth fixing on Geni.
+**10** — impossible in life, and a sign the same person exists under two Geni profiles that were then linked as parent and child. Each one quietly distorts the generational measures below, and each is worth fixing on Geni.
 
 | cycle |
 | --- |
+| DAKSHA → PRACHETAS (10 sons) → PRACHINBARHI → HAVIRDHANA → Vijitashva → ARCHIS → VENA → SUNĪTA → YAMA Dharma → SANJNA / Saranyu → TVAŚTAR → Aditi → DAKSHA |
+| Shapur → Bahram → Shapur |
+| Wabra Al-Qaysi → Amra Bint → Layla Al-Quda'i → Salma Al-Raba'i → Wabra Al-Qaysi |
+| Lucius Junius → C. Junius Junius Brutus Brutus → C. Junius → Lucius Junius |
+| Mentuhotep . . → Senebhenaf . . → Yauyebi of Egypt → Sebekemsaf . . → Sankhenre Mentuhotep VI → Mentuhotep . . |
+| Sekhemre Sankhtawy Neferhotep III → Mentuhotep . . → Senebhenaf . . → Yauyebi of Egypt → Sebekemsaf . . → Sankhenre Mentuhotep VI → Sekhemre Sankhtawy Neferhotep III |
 | Halldor Arnesson → Arne → Halldor Arnesson |
+| Quintus Cæcilius Metellus → Quintus Caecilius Metellus Nepos Cæcilius Metellus → Quintus Cæcilius Metellus |
+| Venkatacharya → Rangacharya → Venkatacharyar → Rangacharya → Venkatacharya → Srinivasacharyar → Srinivasacharya → Venkatacharya |
+| Esther → Esther → Esther |
 
 ## Generational depth
 
@@ -44,113 +53,189 @@ descendants are where an export would add the most.
 
 | generations above | people |
 | --- | ---: |
-| 0 | 6246 |
-| 1 | 2339 |
-| 2 | 1232 |
-| 3 | 1285 |
-| 4 | 1092 |
-| 5 | 1194 |
-| 6 | 1023 |
-| 7 | 1198 |
-| 8 | 1224 |
-| 9 | 1364 |
-| 10 | 1407 |
-| 11 | 1145 |
-| 12 | 731 |
-| 13 | 671 |
-| 14 | 425 |
-| 15 | 462 |
-| 16 | 548 |
-| 17 | 340 |
-| 18 | 376 |
-| 19 | 133 |
-| 20 | 131 |
-| 21 | 116 |
-| 22 | 146 |
-| 23 | 147 |
-| 24 | 144 |
-| 25 | 138 |
-| 26 | 147 |
-| 27 | 142 |
-| 28 | 108 |
-| 29 | 81 |
-| 30 | 129 |
-| 31 | 105 |
-| 32 | 126 |
-| 33 | 196 |
-| 34 | 267 |
-| 35 | 275 |
-| 36 | 368 |
-| 37 | 336 |
-| 38 | 158 |
-| 39 | 202 |
-| 40 | 124 |
-| 41 | 105 |
-| 42 | 140 |
-| 43 | 122 |
-| 44 | 138 |
-| 45 | 136 |
-| 46 | 133 |
-| 47 | 114 |
-| 48 | 175 |
-| 49 | 152 |
-| 50 | 135 |
-| 51 | 152 |
-| 52 | 188 |
-| 53 | 165 |
-| 54 | 176 |
-| 55 | 153 |
-| 56 | 152 |
-| 57 | 92 |
-| 58 | 62 |
-| 59 | 73 |
-| 60 | 75 |
-| 61 | 61 |
-| 62 | 49 |
-| 63 | 43 |
-| 64 | 49 |
-| 65 | 69 |
-| 66 | 63 |
-| 67 | 64 |
-| 68 | 70 |
-| 69 | 77 |
-| 70 | 66 |
-| 71 | 56 |
-| 72 | 50 |
-| 73 | 45 |
-| 74 | 41 |
-| 75 | 47 |
-| 76 | 39 |
-| 77 | 35 |
-| 78 | 39 |
-| 79 | 38 |
-| 80 | 34 |
-| 81 | 30 |
-| 82 | 33 |
-| 83 | 32 |
-| 84 | 30 |
-| 85 | 40 |
-| 86 | 38 |
-| 87 | 36 |
-| 88 | 43 |
-| 89 | 37 |
-| 90 | 31 |
-| 91 | 33 |
-| 92 | 34 |
-| 93 | 27 |
-| 94 | 19 |
-| 95 | 23 |
-| 96 | 22 |
-| 97 | 20 |
-| 98 | 30 |
-| 99 | 30 |
-| 100 | 39 |
-| 101 | 39 |
-| 102 | 12 |
-| 103 | 7 |
-| 104 | 5 |
-| 105 | 7 |
-| 106 | 2 |
+| 0 | 18913 |
+| 1 | 4334 |
+| 2 | 2505 |
+| 3 | 2641 |
+| 4 | 2333 |
+| 5 | 2602 |
+| 6 | 2124 |
+| 7 | 2327 |
+| 8 | 2105 |
+| 9 | 2148 |
+| 10 | 2095 |
+| 11 | 1788 |
+| 12 | 1354 |
+| 13 | 1234 |
+| 14 | 839 |
+| 15 | 842 |
+| 16 | 987 |
+| 17 | 807 |
+| 18 | 916 |
+| 19 | 704 |
+| 20 | 916 |
+| 21 | 787 |
+| 22 | 659 |
+| 23 | 719 |
+| 24 | 628 |
+| 25 | 590 |
+| 26 | 574 |
+| 27 | 579 |
+| 28 | 621 |
+| 29 | 549 |
+| 30 | 519 |
+| 31 | 434 |
+| 32 | 473 |
+| 33 | 509 |
+| 34 | 642 |
+| 35 | 714 |
+| 36 | 891 |
+| 37 | 953 |
+| 38 | 671 |
+| 39 | 799 |
+| 40 | 923 |
+| 41 | 747 |
+| 42 | 612 |
+| 43 | 518 |
+| 44 | 479 |
+| 45 | 494 |
+| 46 | 377 |
+| 47 | 267 |
+| 48 | 314 |
+| 49 | 304 |
+| 50 | 291 |
+| 51 | 287 |
+| 52 | 273 |
+| 53 | 275 |
+| 54 | 268 |
+| 55 | 253 |
+| 56 | 302 |
+| 57 | 312 |
+| 58 | 228 |
+| 59 | 275 |
+| 60 | 214 |
+| 61 | 275 |
+| 62 | 297 |
+| 63 | 348 |
+| 64 | 397 |
+| 65 | 422 |
+| 66 | 376 |
+| 67 | 193 |
+| 68 | 313 |
+| 69 | 179 |
+| 70 | 160 |
+| 71 | 139 |
+| 72 | 146 |
+| 73 | 135 |
+| 74 | 135 |
+| 75 | 141 |
+| 76 | 132 |
+| 77 | 129 |
+| 78 | 143 |
+| 79 | 143 |
+| 80 | 176 |
+| 81 | 167 |
+| 82 | 225 |
+| 83 | 120 |
+| 84 | 135 |
+| 85 | 152 |
+| 86 | 154 |
+| 87 | 183 |
+| 88 | 248 |
+| 89 | 231 |
+| 90 | 170 |
+| 91 | 71 |
+| 92 | 91 |
+| 93 | 137 |
+| 94 | 190 |
+| 95 | 260 |
+| 96 | 238 |
+| 97 | 256 |
+| 98 | 117 |
+| 99 | 110 |
+| 100 | 130 |
+| 101 | 131 |
+| 102 | 161 |
+| 103 | 214 |
+| 104 | 258 |
+| 105 | 304 |
+| 106 | 184 |
+| 107 | 126 |
+| 108 | 205 |
+| 109 | 257 |
+| 110 | 356 |
+| 111 | 410 |
+| 112 | 292 |
+| 113 | 596 |
+| 114 | 576 |
+| 115 | 638 |
+| 116 | 487 |
+| 117 | 237 |
+| 118 | 227 |
+| 119 | 108 |
+| 120 | 214 |
+| 121 | 118 |
+| 122 | 18 |
+| 123 | 15 |
+| 124 | 17 |
+| 125 | 18 |
+| 126 | 8 |
+| 127 | 5 |
+| 128 | 5 |
+| 129 | 12 |
+| 130 | 10 |
+| 131 | 16 |
+| 132 | 13 |
+| 133 | 15 |
+| 134 | 8 |
+| 135 | 8 |
+| 136 | 17 |
+| 137 | 13 |
+| 138 | 12 |
+| 139 | 9 |
+| 140 | 14 |
+| 141 | 24 |
+| 142 | 18 |
+| 143 | 23 |
+| 144 | 20 |
+| 145 | 25 |
+| 146 | 20 |
+| 147 | 14 |
+| 148 | 10 |
+| 149 | 10 |
+| 150 | 8 |
+| 151 | 6 |
+| 152 | 5 |
+| 153 | 6 |
+| 154 | 12 |
+| 155 | 6 |
+| 156 | 12 |
+| 157 | 18 |
+| 158 | 25 |
+| 159 | 37 |
+| 160 | 42 |
+| 161 | 27 |
+| 162 | 18 |
+| 163 | 5 |
+| 164 | 5 |
+| 165 | 6 |
+| 166 | 7 |
+| 167 | 7 |
+| 168 | 9 |
+| 169 | 10 |
+| 170 | 8 |
+| 171 | 8 |
+| 172 | 7 |
+| 173 | 7 |
+| 174 | 8 |
+| 175 | 8 |
+| 176 | 10 |
+| 177 | 9 |
+| 178 | 9 |
+| 179 | 10 |
+| 180 | 10 |
+| 181 | 9 |
+| 182 | 2 |
 
 ## Best 40 profiles to export from next
 
@@ -160,43 +245,43 @@ leaf adds a lone leaf.
 
 | # | name | born | descendants | relatives | component | Geni profile |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1 | Skoglar | 909 | 4909 | 4 | 32393 | [6000000005577158936](https://www.geni.com/people/x/6000000005577158936) |
-| 2 | Erik NN | 929 | 4897 | 6 | 32393 | [6000000003714580449](https://www.geni.com/people/x/6000000003714580449) |
-| 3 | Igor Рюрикович Rurikov | 877 | 4633 | 2 | 32393 | [6000000000420341047](https://www.geni.com/people/x/6000000000420341047) |
-| 4 | Olga Rurik | 890 | 4633 | 2 | 32393 | [6000000005406862960](https://www.geni.com/people/x/6000000005406862960) |
-| 5 | Unknown | 908 | 4632 | 3 | 32393 | [6000000008482892635](https://www.geni.com/people/x/6000000008482892635) |
-| 6 | Malk of Lyubech | 918 | 4632 | 3 | 32393 | [6000000008482904946](https://www.geni.com/people/x/6000000008482904946) |
-| 7 | Rogvolod of West Gotland | 920 | 4433 | 1 | 32393 | [6000000074783609313](https://www.geni.com/people/x/6000000074783609313) |
-| 8 | Estrid | 979 | 4426 | 3 | 32393 | [6000000004827276873](https://www.geni.com/people/x/6000000004827276873) |
-| 9 | Ezzo | 955 | 4240 | 11 | 32393 | [6000000000769470073](https://www.geni.com/people/x/6000000000769470073) |
-| 10 | Mathilde | 980 | 4240 | 11 | 32393 | [6000000003645724700](https://www.geni.com/people/x/6000000003645724700) |
-| 11 | Emnilda_Hodica | 970 | 4237 | 6 | 32393 | [6000000000769560303](https://www.geni.com/people/x/6000000000769560303) |
-| 12 | Bolesław I "The Brave" Пяст | 967 | 4237 | 6 | 32393 | [6000000000769654031](https://www.geni.com/people/x/6000000000769654031) |
-| 13 | Adelajda von Polen | 950 | 4122 | 2 | 32393 | [6000000000436429187](https://www.geni.com/people/x/6000000000436429187) |
-| 14 | Michael | 955 | 4122 | 2 | 32393 | [6000000002187690247](https://www.geni.com/people/x/6000000002187690247) |
-| 15 | N.N. |  | 4120 | 5 | 32393 | [6000000002176661888](https://www.geni.com/people/x/6000000002176661888) |
-| 16 | Wytgeorn | 940 | 4000 | 2 | 32393 | [6000000083500956501](https://www.geni.com/people/x/6000000083500956501) |
-| 17 | Gunhilder Sveynsdatter | 950 | 4000 | 2 | 32393 | [6000000083501784891](https://www.geni.com/people/x/6000000083501784891) |
-| 18 | Theophylaktos | 840 | 3846 | 1 | 32393 | [6000000003645724209](https://www.geni.com/people/x/6000000003645724209) |
-| 19 | Theodora | 874 | 3844 | 8 | 32393 | [6000000003086734979](https://www.geni.com/people/x/6000000003086734979) |
-| 20 | Monomakhina | 1035 | 3702 | 3 | 32393 | [6000000003858589577](https://www.geni.com/people/x/6000000003858589577) |
-| 21 | Heinrich I von Schweinfurt | 970 | 3680 | 6 | 32393 | [6000000009726660856](https://www.geni.com/people/x/6000000009726660856) |
-| 22 | Gerberga von Henneberg von Zutpen | 975 | 3680 | 6 | 32393 | [6000000009782507443](https://www.geni.com/people/x/6000000009782507443) |
-| 23 | Beata Krzesinova | 987 | 3676 | 2 | 32393 | [4597282](https://www.geni.com/people/x/4597282) |
-| 24 | Udalrich Przemyslid | 989 | 3676 | 2 | 32393 | [6000000003645765375](https://www.geni.com/people/x/6000000003645765375) |
-| 25 | Bjørn |  | 3603 | 1 | 32393 | [6000000051612628827](https://www.geni.com/people/x/6000000051612628827) |
-| 26 | Æthelmaer | 960 | 3599 | 5 | 32393 | [6000000001127302498](https://www.geni.com/people/x/6000000001127302498) |
-| 27 | Æthelthrith of Wessex | 962 | 3599 | 5 | 32393 | [6000000004533630883](https://www.geni.com/people/x/6000000004533630883) |
-| 28 | Constantine | 905 | 3558 | 8 | 32393 | [385953397470012188](https://www.geni.com/people/x/385953397470012188) |
-| 29 | Craterus Argyropoulos | 912 | 3552 | 1 | 32393 | [6000000002188303650](https://www.geni.com/people/x/6000000002188303650) |
-| 30 | Ealdgȳð "Swann hnesce" | 1025 | 3531 | 7 | 32393 | [6000000001391856400](https://www.geni.com/people/x/6000000001391856400) |
-| 31 | Ingeborg | 930 | 3488 | 2 | 32393 | [6000000006606539094](https://www.geni.com/people/x/6000000006606539094) |
-| 32 | Gunhild Halvdansdotter | 945 | 3482 | 2 | 32393 | [6000000001381812517](https://www.geni.com/people/x/6000000001381812517) |
-| 33 | Njaal | 930 | 3482 | 2 | 32393 | [6000000003616762507](https://www.geni.com/people/x/6000000003616762507) |
-| 34 | Thord | 970 | 3471 | 1 | 32393 | [6000000064225861229](https://www.geni.com/people/x/6000000064225861229) |
-| 35 | Sigtorn? Prince Ingvar of Sweden? |  | 3471 | 1 | 32393 | [6000000115227830965](https://www.geni.com/people/x/6000000115227830965) |
-| 36 | Berthold "der Bärtige" von Zähringen | 1010 | 3357 | 6 | 32393 | [6000000003827147216](https://www.geni.com/people/x/6000000003827147216) |
-| 37 | Richwara von Schwaben | 1038 | 3357 | 6 | 32393 | [6000000006906578140](https://www.geni.com/people/x/6000000006906578140) |
-| 38 | Dietpold I |  | 3325 | 1 | 32393 | [6000000221340565821](https://www.geni.com/people/x/6000000221340565821) |
-| 39 | Poppo | 1035 | 3314 | 4 | 32393 | [6000000002187828621](https://www.geni.com/people/x/6000000002187828621) |
-| 40 | Sophia of Hungary von Schweinfurt | 1050 | 3314 | 4 | 32393 | [6000000011657190041](https://www.geni.com/people/x/6000000011657190041) |
+| 1 | Nārāyaṇa? |  | 8769 | 1 | 89474 | [6000000220876233832](https://www.geni.com/people/x/6000000220876233832) |
+| 2 | PURUSH aka NĀRĀYANA |  | 8768 | 3 | 89474 | [6000000001072770295](https://www.geni.com/people/x/6000000001072770295) |
+| 3 | Brahma's mind |  | 8703 | 6 | 89474 | [6000000052367684005](https://www.geni.com/people/x/6000000052367684005) |
+| 4 | SHATARŪPA |  | 8698 | 7 | 89474 | [6000000008023596359](https://www.geni.com/people/x/6000000008023596359) |
+| 5 | DHARMA |  | 8367 | 1 | 89474 | [6000000022833258034](https://www.geni.com/people/x/6000000022833258034) |
+| 6 | Sisumaran |  | 8365 | 1 | 89474 | [6000000012611770840](https://www.geni.com/people/x/6000000012611770840) |
+| 7 | *(unnamed)* |  | 8358 | 7 | 89474 | [6000000012611963385](https://www.geni.com/people/x/6000000012611963385) |
+| 8 | Svarvithi |  | 8353 | 2 | 89474 | [6000000130985726894](https://www.geni.com/people/x/6000000130985726894) |
+| 9 | *(unnamed)* |  | 8349 | 4 | 89474 | [6000000012611580786](https://www.geni.com/people/x/6000000012611580786) |
+| 10 | PUSHKARINI |  | 8346 | 2 | 89474 | [6000000012611454059](https://www.geni.com/people/x/6000000012611454059) |
+| 11 | Dheeran Prajapati |  | 8346 | 1 | 89474 | [6000000022833578151](https://www.geni.com/people/x/6000000022833578151) |
+| 12 | *(unnamed)* |  | 8345 | 1 | 89474 | [6000000022631989526](https://www.geni.com/people/x/6000000022631989526) |
+| 13 | PUSHKARINI |  | 8332 | 7 | 89474 | [6000000012622441997](https://www.geni.com/people/x/6000000012622441997) |
+| 14 | VIRAN Pānchajan |  | 8314 | 2 | 89474 | [6000000019443181249](https://www.geni.com/people/x/6000000019443181249) |
+| 15 | AGNI |  | 8313 | 2 | 89474 | [6000000022631893817](https://www.geni.com/people/x/6000000022631893817) |
+| 16 | Nabhaswati |  | 8312 | 2 | 89474 | [6000000012670311225](https://www.geni.com/people/x/6000000012670311225) |
+| 17 | Paramlocha |  | 8305 | 3 | 89474 | [6000000019403862683](https://www.geni.com/people/x/6000000019403862683) |
+| 18 | SHATADRUTI |  | 8305 | 2 | 89474 | [6000000011801477081](https://www.geni.com/people/x/6000000011801477081) |
+| 19 | Kandu |  | 8305 | 2 | 89474 | [6000000022632139333](https://www.geni.com/people/x/6000000022632139333) |
+| 20 | Skoglar | 909 | 8059 | 4 | 89474 | [6000000005577158936](https://www.geni.com/people/x/6000000005577158936) |
+| 21 | Erik NN | 929 | 8047 | 6 | 89474 | [6000000003714580449](https://www.geni.com/people/x/6000000003714580449) |
+| 22 | Rachana |  | 7975 | 5 | 89474 | [6000000019583616722](https://www.geni.com/people/x/6000000019583616722) |
+| 23 | ATRI |  | 7970 | 10 | 89474 | [6000000220163181835](https://www.geni.com/people/x/6000000220163181835) |
+| 24 | Brahma's thumb |  | 7966 | 2 | 89474 | [6000000052377834898](https://www.geni.com/people/x/6000000052377834898) |
+| 25 | SHRADDHA |  | 7965 | 7 | 89474 | [6000000010067526894](https://www.geni.com/people/x/6000000010067526894) |
+| 26 | Dharma |  | 7876 | 25 | 89474 | [6000000008023822203](https://www.geni.com/people/x/6000000008023822203) |
+| 27 | Tara |  | 7864 | 3 | 89474 | [6000000019341904254](https://www.geni.com/people/x/6000000019341904254) |
+| 28 | VASISHTA |  | 7796 | 10 | 89474 | [6000000085325210142](https://www.geni.com/people/x/6000000085325210142) |
+| 29 | (King of Trigarta, Punjab) |  | 7788 | 4 | 89474 | [6000000010067466574](https://www.geni.com/people/x/6000000010067466574) |
+| 30 | wife of Sage Trigarta |  | 7788 | 4 | 89474 | [6000000050438990060](https://www.geni.com/people/x/6000000050438990060) |
+| 31 | Ezzo | 955 | 7602 | 11 | 89474 | [6000000000769470073](https://www.geni.com/people/x/6000000000769470073) |
+| 32 | Mathilde | 980 | 7602 | 11 | 89474 | [6000000003645724700](https://www.geni.com/people/x/6000000003645724700) |
+| 33 | Emnilda_Hodica | 970 | 7599 | 6 | 89474 | [6000000000769560303](https://www.geni.com/people/x/6000000000769560303) |
+| 34 | Bolesław I "The Brave" Пяст | 967 | 7599 | 6 | 89474 | [6000000000769654031](https://www.geni.com/people/x/6000000000769654031) |
+| 35 | Adelajda von Polen | 950 | 7484 | 2 | 89474 | [6000000000436429187](https://www.geni.com/people/x/6000000000436429187) |
+| 36 | Michael | 955 | 7484 | 2 | 89474 | [6000000002187690247](https://www.geni.com/people/x/6000000002187690247) |
+| 37 | N.N. |  | 7482 | 5 | 89474 | [6000000002176661888](https://www.geni.com/people/x/6000000002176661888) |
+| 38 | Brahma's navel |  | 7434 | 7 | 89474 | [6000000052377408821](https://www.geni.com/people/x/6000000052377408821) |
+| 39 | DHARMA |  | 7270 | 23 | 89474 | [6000000013323484810](https://www.geni.com/people/x/6000000013323484810) |
+| 40 | Barhishads Pitras 6 Gods |  | 7189 | 3 | 89474 | [6000000019396779309](https://www.geni.com/people/x/6000000019396779309) |

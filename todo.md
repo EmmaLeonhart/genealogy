@@ -78,6 +78,48 @@ merged tree: individuals with missing parents, sparse subtrees, and
 high-connectivity hubs that would pull in the most new material per export. Use
 this to decide what to export next from Geni.
 
+### 3z. The three phases, in Emma's framing (recorded 2026-08-04)
+
+This is the ordering the rest of item 3 sits inside. Written down because the
+sub-items below were built during phase 1 and read as though it were the whole
+job.
+
+**Phase 1 — connect (now).** The point of an export right now is to *join*
+things: reach a person, close a gap between components, make a path walkable.
+`Forest` and `Ancestors` do this. The Jimmu bridge is the worked example.
+
+**Phase 2 — bulk (in progress).** Emma is taking every export Geni will readily
+give her, **up to about 50**. These are not aimed at anything; they are cheap
+coverage. `exports/archive/` is where they land. Do not analyse them one by one
+or try to read intent into a seed — but do check them for people a path file is
+waiting on, because `(22)` and `(23)` were bridging exports sitting in the bulk
+pile.
+
+**Phase 3 — synoptic density, then targeted breadth (after phase 2).** With ~50
+exports merged there is enough overlap to ask a question none of the current
+reports answer: **for each person, how many exports contain them?** A person in
+many exports sits in a densely covered region. A person in one or two is on a
+thin edge, and a *region* of such people is where the tree is least
+comprehensive — which is where the next round of exports should aim, and which
+matters because thin regions are exactly the ones that will reconcile badly
+against Wikidata.
+
+**Emma named the descendants of the Indian people as the clearest example of a
+thin region.** That is the first thing to check when the measure exists.
+
+`Descendants` exports belong to phase 3, not phase 1. They are not for
+connecting people — they fan out to pull in everyone below one person, which is
+a *breadth* instrument. Do not propose one to close a path.
+
+**What is missing to do this.** `genimerge.inventory` computes pairwise overlap
+and per-file uniqueness, but has no per-person presence count and no way to
+aggregate it into regions. The measure needs: (a) a count per Geni ID of how
+many exports hold it, (b) a notion of region — connected neighbourhood, surname,
+place, or branch under a common ancestor — and (c) a report ranking regions by
+low mean presence and size. **NEEDS-DECISION** on (b): what counts as a region
+is a judgement, and picking wrong makes the ranking meaningless. Emma decides,
+and the descendants-of-Indian-people case is the test it has to pass.
+
 ### 3a. What the frontier analysis found
 
 People with **no parents recorded** are the branch points, and

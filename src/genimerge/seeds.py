@@ -111,7 +111,7 @@ __all__ = [
 #: silently modelling a ball that is too small. Note the value below comes from
 #: ``exports/archive/``, which is larger than anything in ``data_lake/`` — the
 #: test is a floor on this constant, not its source.
-GENI_EXPORT_CAP = 3860
+GENI_EXPORT_CAP = 3864
 
 #: The step between reading this report and running an export.
 #:

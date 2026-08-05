@@ -57,11 +57,11 @@ Every step is held: this path is walkable inside our own data.
 | 47 | Huaidao Ashina | her father | [Huaidao](https://www.geni.com/people/x/6000000115313276887) | id | 1 |
 | 48 | Huseluo Ashina | his father | [Huseluo](https://www.geni.com/people/x/6000000115312653996) | id | 1 |
 | 49 | Princess Hengyang of Tang China | his mother | [Hengyang 隴西狄道](https://www.geni.com/people/x/6000000115311622874) | id | 1 |
-| 50 | Li Yuanfeng 李元鳳 | her brother | [元鳳 隴西狄道](https://www.geni.com/people/x/6000000075060870921) | id | 1 |
-| 51 | Li Hong 李宏 | his son | [宏 隴西狄道](https://www.geni.com/people/x/6000000075061019879) | id | 1 |
-| 52 | Li Yong 李邕 | his son | [邕 李](https://www.geni.com/people/x/6000000075060923880) | id | 1 |
-| 53 | 扶餘 | his wife | [扶餘](https://www.geni.com/people/x/6000000186285688286) | id | 1 |
-| 54 | 德璋 扶餘 | her father | [德璋 扶餘](https://www.geni.com/people/x/6000000186285688253) | id | 1 |
+| 50 | Li Yuanfeng 李元鳳 | her brother | [Yuanfeng 隴西狄道](https://www.geni.com/people/x/6000000075060870921) | id | 1 |
+| 51 | Li Hong 李宏 | his son | [Li 隴西狄道](https://www.geni.com/people/x/6000000075061019879) | id | 1 |
+| 52 | Li Yong 李邕 | his son | [Yong 京兆長安](https://www.geni.com/people/x/6000000075060923880) | id | 1 |
+| 53 | 扶餘 | his wife | [Taebi Buyeo](https://www.geni.com/people/x/6000000186285688286) | id | 1 |
+| 54 | 德璋 扶餘 | her father | [Deokjang 扶餘](https://www.geni.com/people/x/6000000186285688253) | id | 1 |
 | 55 | Yung Buyeo | his father | [Yung](https://www.geni.com/people/x/6000000012925092093) | id | 1 |
 | 56 | King Yu, of Kudara | his brother | [Yu](https://www.geni.com/people/x/6000000012925020838) | id | 1 |
 | 57 | King Masanari, of Kudara | his son | [Masanari](https://www.geni.com/people/x/6000000012925079527) | id | 1 |
@@ -74,16 +74,16 @@ Every step is held: this path is walkable inside our own data.
 | 64 | Soga no Shoshi | his mother | [Soga no Shoshi](https://www.geni.com/people/x/6000000010702248921) | id | 1 |
 | 65 | Soga no Murajiko | her father | [Soga no Murajiko](https://www.geni.com/people/x/6000000012052214898) | id | 1 |
 | 66 | Soga no Umako | his father | [Soga no Umako](https://www.geni.com/people/x/6000000001902965288) | id | 1 |
-| 67 | 太媛 | his adoptive mother | [太媛](https://www.geni.com/people/x/6000000001902786893) | id | 1 |
+| 67 | 太媛 | his adoptive mother | [Futohime](https://www.geni.com/people/x/6000000001902786893) | id | 1 |
 | 68 | Okoshi Mononobe | her father | [Okoshi](https://www.geni.com/people/x/6000000002039745463) | id | 1 |
 | 69 | Arayama Mononobe | his father | [Arayama](https://www.geni.com/people/x/6000000002039711104) | id | 1 |
 | 70 | Mononobe no Me | his father | [Me](https://www.geni.com/people/x/6000000002039711241) | id | 1 |
-| 71 | 物部伊莒弗 | his father | [Ikofutsu伊莒弗](https://www.geni.com/people/x/6000000002039751362) | id | 1 |
+| 71 | 物部伊莒弗 | his father | [Ikofutsu](https://www.geni.com/people/x/6000000002039751362) | id | 1 |
 | 72 | Mononobe no Ikoto | his father | [Ikoto](https://www.geni.com/people/x/6000000002039880063) | id | 1 |
 | 73 | Goju Kotohime Mononobe | his sister | [Goju Kotohime](https://www.geni.com/people/x/6000000001846197347) | id | 1 |
 | 74 | Keiko-tenno (Otarashihiko'oshirowake) | her partner | [大足彦忍代別](https://www.geni.com/people/x/6000000001829649385) | id | 1 |
-| 75 | 播磨稲日大郎姫 | his wife | [播磨稲日大郎姫](https://www.geni.com/people/x/6000000001844033355) | id | 1 |
-| 76 | 稚武彦命(吉備氏祖) | her father | [稚武彦命](https://www.geni.com/people/x/6000000001835522164) | id | 1 |
+| 75 | 播磨稲日大郎姫 | his wife | [Harima no Inabi no Ōiratsume](https://www.geni.com/people/x/6000000001844033355) | id | 1 |
+| 76 | 稚武彦命(吉備氏祖) | her father | [Wakatakehiko](https://www.geni.com/people/x/6000000001835522164) | id | 1 |
 | 77 | Kourei-tenno (Oyamatonekohikofutoni) | his father | [大日本根子彦太瓊尊](https://www.geni.com/people/x/6000000001829634518) | id | 1 |
 | 78 | Koan-tenno (Yamatotarashihikokuni... | his father | [日本足彦国押人尊](https://www.geni.com/people/x/6000000001829735102) | id | 1 |
 | 79 | Kosho-tenno (Mimatsuhikokaeshine) | his father | [観松彦香殖稲尊](https://www.geni.com/people/x/6000000001829628406) | id | 1 |
