@@ -1,10 +1,10 @@
 # Relationship path: hata
 
-**24 of 55 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**28 of 55 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
 **The unbroken run stops at step 9, Daniel Danielson Nerabø.** The next step, **Enok Danielson (Enoch Daniels) i USA**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
-**15 steps past the gap are held anyway** — 惟宗具範 onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
+**19 steps past the gap are held anyway** — 小笠原忠雄 onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
 
 ## Steps
 
@@ -38,10 +38,10 @@
 | 26 | 松平盈子 | his mother | — | absent | — |
 | 27 | 幸姫 | her mother | — | absent | — |
 | 28 | 小笠原忠基 | her father | — | absent | — |
-| 29 | 小笠原忠雄 | his father | — | absent | — |
-| 30 | 小笠原忠真 | his father | — | absent | — |
-| 31 | 小笠原時長女 | his sister | — | absent | — |
-| 32 | 安達義景 | her husband | — | absent | — |
+| 29 | 小笠原忠雄 | his father | [忠雄](https://www.geni.com/people/x/6000000002232963326) | id | 1 |
+| 30 | 小笠原忠真 | his father | [忠真](https://www.geni.com/people/x/6000000001886024014) | id | 1 |
+| 31 | 小笠原時長女 | his sister | [時長女](https://www.geni.com/people/x/6000000008141648952) | id | 1 |
+| 32 | 安達義景 | her husband | [義景](https://www.geni.com/people/x/6000000008632863863) | id | 1 |
 | 33 | 安達景盛 | his father | — | absent | — |
 | 34 | 丹後内侍 | his mother | — | absent | — |
 | 35 | 惟宗広言 | her husband | — | absent | — |

@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pytest
 
-from genimerge import gedcom, seeds
+from genimerge import gedcom, seeds, sources
 from genimerge.model import build_tree
 
 # A -- B
@@ -300,11 +300,10 @@ def test_selection_is_deterministic_when_candidates_tie():
 # export to exceed the constant fails here rather than silently modelling a ball
 # smaller than a real export.
 
-_DATA_LAKE = Path(__file__).resolve().parents[1] / "data_lake"
-_EXPORTS = sorted(_DATA_LAKE.glob("*.ged"))
+_EXPORTS = sources.find_exports()
 
 
-@pytest.mark.skipif(not _EXPORTS, reason="no GEDCOM exports in data_lake/")
+@pytest.mark.skipif(not _EXPORTS, reason="no GEDCOM exports in exports/")
 def test_export_cap_is_at_least_the_largest_real_export():
     largest = max(
         sum(1 for r in gedcom.parse_file(p).records if r.tag == "INDI")
@@ -312,7 +311,7 @@ def test_export_cap_is_at_least_the_largest_real_export():
     )
 
     assert seeds.GENI_EXPORT_CAP >= largest, (
-        f"an export in data_lake/ holds {largest} individuals, more than "
+        f"an export in exports/ holds {largest} individuals, more than "
         f"GENI_EXPORT_CAP={seeds.GENI_EXPORT_CAP}. Raise the constant to the new "
         "largest observed — and do not describe it as a cap Geni enforces, "
         "which is the mistake 3836 encoded."

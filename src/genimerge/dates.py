@@ -7,6 +7,15 @@ year, and those three again behind ``ABT`` / ``BEF`` / ``AFT``, plus
 anything it does not recognise keeps its raw text and reports no structured
 value — a date we cannot read must not become a date we guessed.
 
+**BC years are written with a minus, not ``B.C.``** — ``-73``, ``ABT -95``,
+``BEF -1310``. That is not GEDCOM 5.5.1, which specifies ``73 B.C.``, but it is
+what Geni emits and it is unambiguous. It went unhandled until 2026-08-05, and
+because an unreadable date is dropped silently by design, the failure was
+invisible: 4,459 events — every date before year 1 in the corpus, including
+Emperor Jimmu and Makeda — parsed to ``year=None``. Nothing was wrong
+downstream; ``iso()`` has always formatted a negative year correctly. The values
+simply never got that far.
+
 Precision follows Wikidata's own scale (9 year, 10 month, 11 day), because that
 is where these values are going.
 """
@@ -47,7 +56,14 @@ _MODIFIERS = {
     "TO": "before",
 }
 
-_TOKEN = re.compile(r"^(?:(\d{1,2})\s+)?(?:([A-Z]{3})\s+)?(\d{3,4})$")
+#: A bare positive year must be 3–4 digits, so a stray ``7`` is not read as the
+#: year 7. **Negative years are allowed 1–4 digits**, because the minus sign is
+#: itself the evidence that the token is a year: Geni writes BC dates as
+#: ``-73``, ``ABT -95``, ``BEF -1310``. Before this, every one of them failed to
+#: parse and the date was silently dropped — 4,459 events across the corpus,
+#: which is the entire pre-Christian era. `iso()` already emitted the correct
+#: ``-0073-00-00T00:00:00Z`` for a negative year; nothing ever reached it.
+_TOKEN = re.compile(r"^(?:(\d{1,2})\s+)?(?:([A-Z]{3})\s+)?(-?\d{3,4}|-\d{1,2})$")
 
 
 @dataclass(frozen=True)

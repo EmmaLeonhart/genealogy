@@ -68,9 +68,8 @@ you and them.
 ## Layout
 
 ```
-exports/       downloads as Geni delivers them, one directory per seed
-data_lake/     the exports actually merged (.ged files tracked)
-data_lake/paths/ Geni relationship paths, generated from saved pages
+exports/       every Geni export, one directory per batch — the corpus
+paths/         Geni relationship paths, generated from saved pages
 geni_pages/    Geni profile pages saved from the browser (the source of the above)
 src/genimerge/ the package
 reports/       generated reports that are worth reviewing and keeping
@@ -78,13 +77,24 @@ out/           generated data (gitignored)
 tests/         pytest
 ```
 
-**`exports/` is the staging area; `data_lake/` is what the merge reads.** Geni's
-downloads arrive as `export-geni (N).zip`, get extracted beside themselves, and
-are grouped under a directory named for whoever they were exported from —
-`exports/Li Hong/`, `exports/n n/`, or `exports/archive/` for bulk takes.
-Ingesting one means **copying** it into `data_lake/` as
-`export-Forest-<seedID>.ged`, never moving it, so `exports/` stays a record of
-what was downloaded. `data_lake/` holding fewer files than `exports/` is normal.
+**`exports/` is the corpus, read recursively.** Geni's downloads arrive as
+`export-geni (N).zip`, get extracted beside themselves, and are grouped under a
+directory named for whoever they were exported from — `exports/Li Hong/`,
+`exports/n n/` — or under `exports/archive/` and `exports/fleshing-out/` for
+bulk takes. The subdirectories are filing and carry no meaning for the merge;
+every `.ged` beneath `exports/` is corpus, and a newly extracted file is picked
+up with no further step.
+
+`genimerge.sources` is the single place that resolves this, and it **drops
+byte-identical repeats**: the same export arrives twice often enough that
+counting one file as two would corrupt `inventory`'s overlap figures and
+`density`'s presence counts, both of which divide by how many exports contain a
+person.
+
+There used to be a `data_lake/` here that the merge read instead, and ingesting
+meant copying a file into it under a second name. That was scaffolding from the
+first session that quietly became load-bearing; it is gone, and its five
+unique files are in `exports/originals/`.
 
 The zips are gitignored **one line at a time on purpose**, not by a `*.zip`
 pattern: an un-ignored zip shows up in `git status`, which is how a finished
@@ -132,9 +142,9 @@ python -m genimerge frontier         # where the tree stops -> reports/frontier.
 python -m genimerge seeds            # what to export next  -> reports/seeds.md
 python -m genimerge density          # where the tree is thin -> reports/density.md
 # a saved Geni profile page -> a path file carrying every profile ID
-python -m genimerge path-from-html "geni_pages/<saved page>.html" -o data_lake/paths/jimmu.tsv
+python -m genimerge path-from-html "geni_pages/<saved page>.html" -o paths/jimmu.tsv
 # how much of that path the tree holds -> reports/path-jimmu.md and .json
-python -m genimerge path data_lake/paths/jimmu.tsv
+python -m genimerge path paths/jimmu.tsv
 python -m genimerge entity-resolution # Emma's hand-made links -> out/wikidata/entity-resolution.qs
 python -m genimerge names            # name-item coverage   -> reports/names.md
 python -m genimerge quickstatements  # edits to review      -> out/wikidata/add-p2600.qs

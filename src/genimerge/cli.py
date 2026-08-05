@@ -16,6 +16,7 @@ from . import (
     coverage,
     crosscheck,
     density,
+    distant,
     entities,
     frontier,
     gedcom,
@@ -29,11 +30,12 @@ from . import (
     quickstatements,
     reconcile,
     seeds,
+    sources,
     wikidata,
 )
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
-DATA_LAKE = REPO_ROOT / "data_lake"
+EXPORTS_DIR = sources.EXPORTS_DIR
 REPORTS = REPO_ROOT / "reports"
 OUT = REPO_ROOT / "out"
 
@@ -58,20 +60,26 @@ class Workspace:
     working tree. Every command now resolves them from its arguments.
     """
 
-    data_lake: Path = DATA_LAKE
+    exports_dir: Path = EXPORTS_DIR
     out: Path = OUT
     reports: Path = REPORTS
 
     @classmethod
     def from_args(cls, args: argparse.Namespace) -> "Workspace":
         return cls(
-            data_lake=Path(getattr(args, "data_lake", None) or DATA_LAKE),
+            exports_dir=Path(getattr(args, "exports_dir", None) or EXPORTS_DIR),
             out=Path(getattr(args, "out", None) or OUT),
             reports=Path(getattr(args, "reports", None) or REPORTS),
         )
 
     def exports(self) -> list[Path]:
-        return sorted(self.data_lake.glob("*.ged"))
+        """Every distinct export under `exports_dir`, recursively.
+
+        Recursive and content-deduped because the exports live in per-batch
+        subdirectories and the same file can arrive twice — see
+        :mod:`genimerge.sources`.
+        """
+        return sources.find_exports(self.exports_dir)
 
     @property
     def wikidata(self) -> Path:
@@ -108,7 +116,7 @@ def _cmd_inventory(args: argparse.Namespace) -> int:
     ws = Workspace.from_args(args)
     paths = [Path(p) for p in args.exports] or ws.exports()
     if not paths:
-        print(f"no .ged files given and none found in {ws.data_lake}", file=sys.stderr)
+        print(f"no .ged files given and none found under {ws.exports_dir}", file=sys.stderr)
         return 1
 
     inv = inventory.build_inventory(paths)
@@ -122,7 +130,7 @@ def _cmd_merge(args: argparse.Namespace) -> int:
     ws = Workspace.from_args(args)
     paths = [Path(p) for p in args.exports] or ws.exports()
     if not paths:
-        print(f"no .ged files given and none found in {ws.data_lake}", file=sys.stderr)
+        print(f"no .ged files given and none found under {ws.exports_dir}", file=sys.stderr)
         return 1
 
     doc, report = merge_mod.merge_files(paths)
@@ -155,7 +163,7 @@ def _cmd_merge(args: argparse.Namespace) -> int:
 
 
 def _load_tree(source: Path | None, ws: Workspace) -> model.Tree:
-    """The canonical tree, from a given GEDCOM or by merging the data lake."""
+    """The canonical tree, from a given GEDCOM or by merging the exports."""
     if source is not None:
         return model.build_tree(gedcom.stream_file(source))
     if ws.merged.exists():
@@ -392,6 +400,29 @@ def _cmd_quickstatements(args: argparse.Namespace) -> int:
     return 0
 
 
+def _cmd_distant(args: argparse.Namespace) -> int:
+    ws = Workspace.from_args(args)
+    tree = _load_tree(args.source, ws)
+    pairs = distant.far_pairs(tree, count=args.count)
+
+    output = args.output or (ws.reports / "distant-pairs.md")
+    _write(output, distant.render_markdown(pairs, len(tree.people)))
+    page = ws.out / "distant-pairs.html"
+    _write(page, distant.render_html(pairs, len(tree.people)))
+
+    print(f"wrote {output}")
+    print(f"wrote {page}")
+    if pairs:
+        widest = pairs[0]
+        print(
+            f"{len(pairs)} pairs; the widest is {widest.distance} hops: "
+            f"{widest.a_name} to {widest.b_name}"
+        )
+    else:
+        print("no usable pairs found")
+    return 0
+
+
 def _cmd_density(args: argparse.Namespace) -> int:
     ws = Workspace.from_args(args)
     exports = [Path(p) for p in args.exports] or ws.exports()
@@ -448,7 +479,7 @@ def _cmd_entity_resolution(args: argparse.Namespace) -> int:
     if parsed.resolutions:
         try:
             known = set(_load_tree(args.source, ws).people)
-        except Exception as exc:  # pragma: no cover - depends on data_lake
+        except Exception as exc:  # pragma: no cover - depends on the exports
             print(f"could not load the tree to corroborate ({exc}); continuing", file=sys.stderr)
 
     out_dir = ws.wikidata
@@ -741,7 +772,8 @@ def _add_workspace_options(sub: argparse._SubParsersAction) -> None:
     for parser in sub.choices.values():
         group = parser.add_argument_group("workspace")
         group.add_argument(
-            "--data-lake", type=Path, default=None, help=f"inputs (default: {DATA_LAKE})"
+            "--exports-dir", type=Path, default=None,
+            help=f"where the exports live, searched recursively (default: {EXPORTS_DIR})",
         )
         group.add_argument(
             "--out", type=Path, default=None, help=f"generated data (default: {OUT})"
@@ -756,7 +788,7 @@ def build_parser() -> argparse.ArgumentParser:
     sub = parser.add_subparsers(dest="command", required=True)
 
     p_inv = sub.add_parser("inventory", help="measure the exports and write a report")
-    p_inv.add_argument("exports", nargs="*", help="GEDCOM files (default: data_lake/*.ged)")
+    p_inv.add_argument("exports", nargs="*", help="GEDCOM files (default: every distinct .ged under exports/)")
     p_inv.add_argument(
         "-o",
         "--output",
@@ -771,7 +803,7 @@ def build_parser() -> argparse.ArgumentParser:
         help="merge exports into one GEDCOM keyed on the Geni profile ID",
         description="Earlier files win value conflicts on single-valued paths.",
     )
-    p_merge.add_argument("exports", nargs="*", help="GEDCOM files (default: data_lake/*.ged)")
+    p_merge.add_argument("exports", nargs="*", help="GEDCOM files (default: every distinct .ged under exports/)")
     p_merge.add_argument(
         "-o",
         "--output",
@@ -784,7 +816,7 @@ def build_parser() -> argparse.ArgumentParser:
     p_export = sub.add_parser(
         "export",
         help="write the canonical people/families JSONL dataset",
-        description="Reads out/merged.ged if it exists, otherwise merges the data lake.",
+        description="Reads out/merged.ged if it exists, otherwise merges the exports.",
     )
     p_export.add_argument(
         "--source", type=Path, default=None, help="a GEDCOM to read instead of merging"
@@ -857,7 +889,7 @@ def build_parser() -> argparse.ArgumentParser:
             "advisory; see the module docstring."
         ),
     )
-    p_path.add_argument("path", type=Path, help="a path file, e.g. data_lake/paths/jimmu.tsv")
+    p_path.add_argument("path", type=Path, help="a path file, e.g. paths/jimmu.tsv")
     p_path.add_argument("--source", type=Path, default=None, help="a GEDCOM to read instead of merging")
     p_path.add_argument("--title", default=None, help="heading for the report")
     p_path.add_argument(
@@ -968,6 +1000,24 @@ def build_parser() -> argparse.ArgumentParser:
     )
     p_qs.set_defaults(func=_cmd_quickstatements)
 
+    p_dist = sub.add_parser(
+        "distant",
+        help="pairs of people far apart in our tree — ask Geni for the path between them",
+        description=(
+            "Finds people our tree connects only by a very long walk. Geni "
+            "probably connects them by a much shorter one, and the people on "
+            "that route are ones we do not hold — so each pair is a prediction "
+            "that a community is missing, and the Geni relationship path "
+            "between them is the test."
+        ),
+    )
+    p_dist.add_argument("--source", type=Path, default=None, help="a GEDCOM to read instead of merging")
+    p_dist.add_argument("--count", type=int, default=10, help="how many pairs (default: 10)")
+    p_dist.add_argument(
+        "-o", "--output", type=Path, default=None, help="default: <reports>/distant-pairs.md"
+    )
+    p_dist.set_defaults(func=_cmd_distant)
+
     p_den = sub.add_parser(
         "density",
         help="find regions of the tree that few exports have reached",
@@ -977,7 +1027,7 @@ def build_parser() -> argparse.ArgumentParser:
             "in the family graph, never geographic."
         ),
     )
-    p_den.add_argument("exports", nargs="*", help="GEDCOM files (default: data_lake/*.ged)")
+    p_den.add_argument("exports", nargs="*", help="GEDCOM files (default: every distinct .ged under exports/)")
     p_den.add_argument("--source", type=Path, default=None, help="a GEDCOM to read instead of merging")
     p_den.add_argument(
         "--threshold", type=int, default=1, help="a person is thin at or below this many exports"

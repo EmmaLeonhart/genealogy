@@ -1,9 +1,10 @@
 {
   "steps_total": 55,
-  "steps_in_tree": 24,
+  "steps_in_tree": 28,
   "unbroken_run_ends_at": 9,
   "components": {
-    "1": 186551
+    "1": 190048,
+    "2": 33
   },
   "components_touched": [
     1
@@ -11,8 +12,13 @@
   "gaps": [
     {
       "from": 10,
+      "to": 28,
+      "length": 19
+    },
+    {
+      "from": 33,
       "to": 40,
-      "length": 31
+      "length": 8
     }
   ],
   "steps": [
@@ -386,11 +392,11 @@
       "relation_to_previous": "his father",
       "geni_id": "6000000002232963326",
       "geni_url": "https://www.geni.com/people/x/6000000002232963326",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "6000000002232963326",
+      "matched_name": "忠雄",
       "candidates": []
     },
     {
@@ -399,11 +405,11 @@
       "relation_to_previous": "his father",
       "geni_id": "6000000001886024014",
       "geni_url": "https://www.geni.com/people/x/6000000001886024014",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "6000000001886024014",
+      "matched_name": "忠真",
       "candidates": []
     },
     {
@@ -412,11 +418,11 @@
       "relation_to_previous": "his sister",
       "geni_id": "6000000008141648952",
       "geni_url": "https://www.geni.com/people/x/6000000008141648952",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "6000000008141648952",
+      "matched_name": "時長女",
       "candidates": []
     },
     {
@@ -425,11 +431,11 @@
       "relation_to_previous": "her husband",
       "geni_id": "6000000008632863863",
       "geni_url": "https://www.geni.com/people/x/6000000008632863863",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "6000000008632863863",
+      "matched_name": "義景",
       "candidates": []
     },
     {

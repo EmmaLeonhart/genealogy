@@ -119,10 +119,10 @@ __all__ = [
 #:
 #: Used only to bound the modelled ball in :func:`export_ball`, where being off
 #: by a few people out of ~4000 does not move a ranking.
-#: ``tests/test_seeds.py`` asserts this stays >= the largest export in
-#: ``data_lake/``, so the next export to exceed it fails loudly instead of
-#: silently modelling a ball that is too small. That is how 3840, 3844, 3856
-#: and now 4008 were each caught.
+#: ``tests/test_seeds.py`` asserts this stays >= the largest export in the
+#: corpus, so the next export to exceed it fails loudly instead of silently
+#: modelling a ball that is too small. That is how 3840, 3844, 3856 and now
+#: 4008 were each caught.
 GENI_EXPORT_CAP = 4008
 
 #: The step between reading this report and running an export.

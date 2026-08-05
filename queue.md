@@ -49,7 +49,7 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
    reached here, so it may take two.
 
 3. **BLOCKED-ON-USER-ACTION — the next four exports, picked 2026-08-05 from
-   `reports/density.md`.** Unblock signal is a new `.ged` in `data_lake/`. All
+   `reports/density.md`.** Unblock signal is a new `.ged` under `exports/`. All
    four seeds were checked against `out/people.jsonl`: every one is in the tree
    and every one has empty `parent_ids`, so all four are doorways. **Take them
    as `Forest`.** These regions are runs of people linked by marriage as well as
@@ -134,7 +134,7 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
   the answer was: it stops at **Elisabeth Árpád dynasty
   `6000000003243185408`**, step 30 of 83.
 
-  **Measured 2026-08-04** — `data_lake/paths/jimmu.tsv`, extracted from the
+  **Measured 2026-08-04** — `paths/jimmu.tsv`, extracted from the
   saved page by `python -m genimerge path-from-html` so every row carries its
   profile ID, then checked by `python -m genimerge path` into
   `reports/path-jimmu.md` and `reports/path-jimmu.json`. **62 of 83 steps
@@ -177,7 +177,7 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
   the Serbian and Byzantine neighbourhood is — bushy branching burns the budget
   sideways before it gets deep. Jelena is not in our data, so `seeds.py` cannot
   model her ball. It resolves by taking the export and re-running
-  `python -m genimerge path data_lake/paths/jimmu.tsv`, which will say exactly
+  `python -m genimerge path paths/jimmu.tsv`, which will say exactly
   how far down the chain it got.
 
   **Update 2026-08-02 — the far end arrived first, and it is an island.** The
@@ -202,7 +202,7 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
   **Update 2026-08-04, later — both were taken, and the pincer worked almost
   exactly as drawn.** Emma exported from both ends and the three files are now
-  in `data_lake/`. The path went from **62 of 83 steps held to 77 of 83**, and
+  in the corpus. The path went from **62 of 83 steps held to 77 of 83**, and
   the gap from 21 steps to **6**: steps 37–42, listed with their IDs as item 1
   of "Active" above.
 

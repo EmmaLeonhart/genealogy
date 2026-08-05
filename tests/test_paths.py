@@ -1,7 +1,7 @@
 """Checking a Geni relationship path against the tree.
 
 The unit tests use a small synthetic tree; the tests at the bottom run the real
-`data_lake/paths/jimmu.tsv` against the real merge, because the two findings
+`paths/jimmu.tsv` against the real merge, because the two findings
 this file exists to protect — where the path breaks, and that both of its ends
 are held — are properties of the actual data.
 """
@@ -10,12 +10,12 @@ from pathlib import Path
 
 import pytest
 
-from genimerge import gedcom, paths
+from genimerge import gedcom, paths, sources
 from genimerge.model import build_tree
 
 REPO = Path(__file__).resolve().parents[1]
-JIMMU = REPO / "data_lake" / "paths" / "jimmu.tsv"
-EXPORTS = sorted((REPO / "data_lake").glob("*.ged"))
+JIMMU = REPO / "paths" / "jimmu.tsv"
+EXPORTS = sources.find_exports()
 
 
 # Elisabeth carries an alternate name that is a subset of Jelena's full style,
@@ -235,7 +235,7 @@ def test_there_is_no_gap_left_in_the_path(jimmu):
       only a style that follows marriages could have bridged it.
 
     A failure here means an absence has reappeared: either an export was
-    dropped from `data_lake/` or the merge stopped keeping something it kept.
+    dropped from `exports/` or the merge stopped keeping something it kept.
     """
     absent = [r.step.step for r in jimmu.results if not r.held]
     assert absent == []

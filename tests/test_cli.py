@@ -154,7 +154,7 @@ def test_every_command_accepts_the_workspace_options(command):
     )
     ws = cli.Workspace.from_args(args)
 
-    assert (ws.data_lake.name, ws.out.name, ws.reports.name) == ("a", "b", "c")
+    assert (ws.exports_dir.name, ws.out.name, ws.reports.name) == ("a", "b", "c")
 
 
 def test_an_unknown_command_is_rejected():
@@ -308,7 +308,7 @@ def test_export_can_be_pointed_at_another_directory(workspace, tmp_path):
 # -- failure paths -----------------------------------------------------
 
 
-def test_an_empty_data_lake_fails_with_a_useful_message(tmp_path, capsys):
+def test_an_empty_exports_dir_fails_with_a_useful_message(tmp_path, capsys):
     empty = {"lake": tmp_path / "empty", "out": tmp_path / "o", "reports": tmp_path / "r"}
     empty["lake"].mkdir()
 

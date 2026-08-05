@@ -99,7 +99,7 @@ def test_the_real_saved_page_yields_the_whole_jimmu_path():
 
 @pytest.mark.skipif(SAVED is None, reason="no saved Geni page in geni_pages/")
 def test_the_committed_path_file_still_matches_the_saved_page():
-    """`data_lake/paths/jimmu.tsv` is generated; this is what says so.
+    """`paths/jimmu.tsv` is generated; this is what says so.
 
     It is committed rather than gitignored because the whole point is that the
     path survives a session, but that makes it a copy that can drift from its
@@ -108,7 +108,7 @@ def test_the_committed_path_file_still_matches_the_saved_page():
     from genimerge import paths
 
     generated = genipage.read_relationship_path(SAVED)
-    committed = paths.load_path(REPO / "data_lake" / "paths" / "jimmu.tsv")
+    committed = paths.load_path(REPO / "paths" / "jimmu.tsv")
 
     assert [(l.geni_id, l.name) for l in generated] == [
         (s.geni_id, s.name) for s in committed

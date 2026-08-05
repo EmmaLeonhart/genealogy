@@ -1,10 +1,10 @@
-"""Integration check against the actual Geni exports in `data_lake/`.
+"""Integration check against the actual Geni exports in `exports/`.
 
 The unit tests in `test_gedcom.py` use hand-written fixtures. This file exists
 because the fixtures are what we *think* Geni emits, and these files are what it
 *actually* emitted — the U+2028 handling in `parse` was found here, not there.
 
-Skips when the exports are absent so a checkout without `data_lake/` still runs.
+Skips when the exports are absent so a checkout without `exports/` still runs.
 """
 
 import re
@@ -12,17 +12,16 @@ from pathlib import Path
 
 import pytest
 
-from genimerge import gedcom
+from genimerge import gedcom, sources
 
-DATA_LAKE = Path(__file__).resolve().parents[1] / "data_lake"
-EXPORTS = sorted(DATA_LAKE.glob("*.ged"))
+EXPORTS = sources.find_exports()
 
-pytestmark = pytest.mark.skipif(not EXPORTS, reason="no GEDCOM exports in data_lake/")
+pytestmark = pytest.mark.skipif(not EXPORTS, reason="no GEDCOM exports in exports/")
 
 
-@pytest.fixture(scope="module", params=[p.name for p in EXPORTS])
+@pytest.fixture(scope="module", params=[str(p) for p in EXPORTS])
 def export(request):
-    return gedcom.parse_file(DATA_LAKE / request.param)
+    return gedcom.parse_file(Path(request.param))
 
 
 def test_the_only_parse_warnings_are_lines_that_never_claimed_to_be_gedcom(export):
@@ -165,7 +164,7 @@ def test_the_prefix_reader_distinguishes_the_xref_that_caused_the_bug():
 def test_the_guard_fires_on_a_document_carrying_a_foreign_xref():
     """Proof it is not vacuous: run the real check over a document that fails it.
 
-    The exports in `data_lake/` all pass, so without this the guard could be
+    The exports in `exports/` all pass, so without this the guard could be
     broken in any number of ways and still look green.
     """
     doc = gedcom.parse(

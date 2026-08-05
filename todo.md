@@ -177,7 +177,7 @@ it on the assumption it is on the critical path.
 
 Still open: **taking the next export**, from the sequence in `reports/seeds.md`.
 Only the user can do the export itself — **BLOCKED-ON-USER-ACTION**, unblock
-signal is a new `.ged` in `data_lake/`.
+signal is a new `.ged` under `exports/`.
 
 **Confirmed 2026-08-01.** The rest of that sentence used to predict that
 `genimerge merge` would absorb a new export without changes and that the seed
@@ -246,7 +246,7 @@ source a record came from.
 
 **Confirmed for GEDCOM on 2026-08-01.** `Merger.add_source` keys on the xref and
 knows nothing about which file it came from, and `genimerge merge` defaults to
-globbing `data_lake/*.ged` — so another Geni export should be a file drop and a
+reading every `.ged` under `exports/` — so another Geni export is a file drop and a
 re-run, not a code change. That was the claim; the fourth export tested it and
 it held. Absorbing 3840 more people took **no change to the merge logic at all**.
 

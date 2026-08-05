@@ -5,7 +5,7 @@ cannot catch that — the collapsing bug that made two `NAME` lines with the sam
 text into one was only visible here. So this asserts the property that actually
 matters: **every line of every source survives in the merged tree.**
 
-Skips when `data_lake/` is empty.
+Skips when `exports/` is empty.
 """
 
 from collections import Counter
@@ -13,13 +13,12 @@ from pathlib import Path
 
 import pytest
 
-from genimerge import gedcom, merge
+from genimerge import gedcom, merge, sources
 from genimerge.identity import geni_id_of
 
-DATA_LAKE = Path(__file__).resolve().parents[1] / "data_lake"
-EXPORTS = sorted(DATA_LAKE.glob("*.ged"))
+EXPORTS = sources.find_exports()
 
-pytestmark = pytest.mark.skipif(not EXPORTS, reason="no GEDCOM exports in data_lake/")
+pytestmark = pytest.mark.skipif(not EXPORTS, reason="no GEDCOM exports in exports/")
 
 
 @pytest.fixture(scope="module")
@@ -138,7 +137,7 @@ def test_the_merge_is_worth_doing(merged):
 # --- the committed report, against the exports it claims to describe ---------
 #
 # `reports/merge.md` is generated and tracked in git, and nothing checked that
-# it still matched `data_lake/`. It spent twelve commits describing an
+# it still matched the corpus. It spent twelve commits describing an
 # 8766-person, three-export merge while `out/merged.ged` held 12422 across four.
 # The suite passed throughout and `git status` was clean, because the wrong file
 # had been committed. What found it was running the pipeline and asking whether
@@ -149,14 +148,14 @@ def test_the_merge_is_worth_doing(merged):
 # merge for the other tests here.
 #
 # Only merge.md. `inventory.md`, `frontier.md` and `seeds.md` are also pure
-# functions of `data_lake/` and could be checked the same way, but each needs
+# functions of the corpus and could be checked the same way, but each needs
 # its own regeneration and `seeds` alone takes about a minute — several-folding
 # the suite for reports that have not gone wrong yet. `names.md`,
 # `wikidata-coverage.md` and `wikidata-crosscheck.md` cannot be checked offline
 # at all: they depend on live Wikidata. The omissions are deliberate, not
 # oversights.
 
-COMMITTED_MERGE_REPORT = DATA_LAKE.parent / "reports" / "merge.md"
+COMMITTED_MERGE_REPORT = Path(__file__).resolve().parents[1] / "reports" / "merge.md"
 
 
 @pytest.mark.skipif(
@@ -169,14 +168,14 @@ def test_the_committed_merge_report_still_describes_these_exports(merged):
     actual = COMMITTED_MERGE_REPORT.read_text(encoding="utf-8")
 
     assert actual == expected, (
-        "reports/merge.md no longer matches what merging data_lake/ produces. "
+        "reports/merge.md no longer matches what merging exports/ produces. "
         "Re-run `python -m genimerge merge` and commit the result. If you did not "
-        "change data_lake/, check what did write this file — a merge sent "
+        "change exports/, check what did write this file — a merge sent "
         "elsewhere with --output used to overwrite it with a different merge."
     )
 
 
-def test_the_report_names_every_export_in_the_data_lake(merged):
+def test_the_report_names_every_export_in_the_corpus(merged):
     """The failure that happened, asserted directly as well as by equality.
 
     Byte equality covers this, but it fails as an opaque diff. A missing source
@@ -186,4 +185,4 @@ def test_the_report_names_every_export_in_the_data_lake(merged):
     text = merge.render_report(report, detail=False, doc=merged[0])
 
     for export in EXPORTS:
-        assert export.name in text, f"{export.name} is in data_lake/ but not in the report"
+        assert export.name in text, f"{export.name} is in exports/ but not in the report"

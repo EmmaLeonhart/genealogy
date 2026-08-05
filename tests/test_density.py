@@ -5,12 +5,11 @@ from pathlib import Path
 
 import pytest
 
-from genimerge import density, gedcom
+from genimerge import density, gedcom, sources
 from genimerge.model import build_tree
 
 REPO = Path(__file__).resolve().parents[1]
-DATA_LAKE = REPO / "data_lake"
-EXPORTS = sorted(DATA_LAKE.glob("*.ged")) if DATA_LAKE.exists() else []
+EXPORTS = sources.find_exports()
 
 
 def _tree(text: str):
@@ -138,7 +137,7 @@ def test_the_report_says_what_the_measure_cannot_tell_you():
     assert "doorway" in text.lower()
 
 
-@pytest.mark.skipif(not EXPORTS, reason="no exports in data_lake/")
+@pytest.mark.skipif(not EXPORTS, reason="no exports in exports/")
 def test_presence_never_exceeds_the_number_of_exports():
     counts = density.presence_counts(EXPORTS)
 
@@ -221,7 +220,7 @@ def test_the_seed_list_is_in_the_shape_of_emmas_handwritten_file():
         assert name.startswith("Geni - ")
 
 
-@pytest.mark.skipif(not EXPORTS, reason="no exports in data_lake/")
+@pytest.mark.skipif(not EXPORTS, reason="no exports in exports/")
 def test_every_listed_region_gets_a_seed_and_it_is_inside_the_region():
     """A seed from outside its own region would send an export to the wrong place."""
     from genimerge import merge as merge_mod

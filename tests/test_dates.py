@@ -92,3 +92,59 @@ def test_an_unknown_month_name_is_not_forced_into_a_number():
 
 def test_lowercase_input_is_accepted():
     assert parse_date("abt 1275").modifier == "about"
+
+
+# --- BC years -------------------------------------------------------------
+#
+# Geni writes them with a minus rather than GEDCOM 5.5.1's "73 B.C.". The
+# parser rejected every one until 2026-08-05, and since an unreadable date is
+# dropped silently by design, 4,459 events -- the whole pre-Christian era,
+# Jimmu and Makeda included -- carried year=None with nothing to show for it.
+
+
+@pytest.mark.parametrize(
+    "text, year",
+    [
+        ("-73", -73),
+        ("-16", -16),
+        ("-1310", -1310),
+        ("-3112", -3112),
+    ],
+)
+def test_a_negative_year_is_read_as_bc(text, year):
+    assert parse_date(text).year == year
+
+
+@pytest.mark.parametrize(
+    "text, year, modifier",
+    [
+        ("ABT -95", -95, "about"),
+        ("BEF -1310", -1310, "before"),
+        ("AFT -500", -500, "after"),
+    ],
+)
+def test_modifiers_apply_to_negative_years_too(text, year, modifier):
+    date = parse_date(text)
+    assert (date.year, date.modifier) == (year, modifier)
+
+
+def test_a_bc_range_keeps_both_ends():
+    date = parse_date("BET -100 AND -50")
+    assert (date.year, date.year_end, date.modifier) == (-100, -50, "between")
+
+
+def test_a_negative_year_formats_as_a_wikidata_time():
+    """`iso()` always handled this; nothing ever reached it."""
+    assert parse_date("-73").iso() == "-0073-00-00T00:00:00Z"
+    assert parse_date("12 JAN -44").iso() == "-0044-01-12T00:00:00Z"
+
+
+def test_a_bare_short_number_is_still_not_a_year():
+    """The minus is what licenses 1-2 digits; a positive year still needs 3.
+
+    Otherwise a stray "7" in a malformed date becomes the year 7, which is the
+    reason the original regex demanded three digits.
+    """
+    assert parse_date("7").year is None
+    assert parse_date("42").year is None
+    assert parse_date("-7").year == -7

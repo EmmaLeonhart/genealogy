@@ -63,7 +63,7 @@ for any pair it can connect — is the only evidence in this repo that comes fro
 them. Copying the panel as text keeps the names and loses the `href`s, and the
 `href`s are where the profile IDs are. **Saving the page keeps them**, so the
 workflow is: save the profile page from the browser into `geni_pages/`, then
-`python -m genimerge path-from-html <page> -o data_lake/paths/<name>.tsv`, then
+`python -m genimerge path-from-html <page> -o paths/<name>.tsv`, then
 `python -m genimerge path <file>` → `reports/path-*.md` and `path-*.json`.
 
 `genimerge.genipage` does the extraction, and the difficulty is scoping: a Geni
@@ -119,7 +119,7 @@ cap Geni enforces.
 `genimerge.seeds.GENI_EXPORT_CAP` is **3860**, meaning *largest yet seen*; its
 docstring is the long form of this. It is a modelling number for
 `reports/seeds.md` only — nothing in the merge depends on it.
-`tests/test_seeds.py` fails if an export in `data_lake/` exceeds it, so the next
+`tests/test_seeds.py` fails if an export in `exports/` exceeds it, so the next
 one to do so is loud rather than silent — that is how 3840, 3844 and 3856 were
 each caught. The constant tracks the largest export *seen*, which is not
 necessarily one that has been ingested, so the test is a floor on it rather than
@@ -150,7 +150,7 @@ writes `export-<style>.ged`, and `Forest`, `Ancestors`, `BloodTree` and
 `Descendants` are the styles seen so far. The first three exports are all three
 styles of the *same* seed, Eric Borsheim `6000000087535357291`, which is also
 their `SUBM` xref. A second `Forest` export from a different seed therefore
-arrives with a filename already taken. Disambiguate in `data_lake/` by appending
+arrives with a filename already taken. Disambiguate by appending
 the seed's Geni profile ID — `export-Forest-6000000226977233850.ged` — since the
 profile ID is this repo's primary key. Note the `SUBM` xref is the *account
 owner*, not the seed, so it cannot be used for this.
@@ -199,20 +199,46 @@ split one of Emma's entries into two unparsable halves.
 **Stdlib only.** `urllib` covers the Wikidata SPARQL endpoint. Add a dependency
 only when the stdlib genuinely cannot do the job.
 
-**Layout.** `exports/` the download staging area, one directory per seed as
-Geni's zips arrive (see below) · `data_lake/` raw inputs, the subset actually
-merged (`*.ged` tracked) · `geni_pages/` saved Geni profile pages ·
-`src/genimerge/` the package · `reports/` generated reports worth keeping in git
-· `out/` generated data, gitignored · `tests/` pytest.
+**Layout.** `exports/` **the corpus** — every Geni export, one directory per
+batch, read recursively · `paths/` relationship paths generated from saved pages
+· `geni_pages/` saved Geni profile pages · `src/genimerge/` the package ·
+`reports/` generated reports worth keeping in git · `out/` generated data,
+gitignored · `tests/` pytest.
 
-**`exports/` is Emma's staging area and `data_lake/` is what the merge reads.**
+**`exports/` is the corpus and is read recursively — there is no ingest step.**
 Geni's downloads land as `export-geni (N).zip`, extracted beside themselves,
 grouped into a directory named for the person Emma exported from
-(`exports/Li Hong/`, `exports/n n/`) or into `exports/archive/` for bulk takes.
-Ingesting one means **copying** it into `data_lake/` under the
-`export-Forest-<seedID>.ged` name — not moving it, so the staging area stays a
-record of what was downloaded. Not everything in `exports/` is ingested;
-`data_lake/` holding fewer files than `exports/` is the normal state, not drift.
+(`exports/Li Hong/`, `exports/n n/`) or into `exports/archive/` and
+`exports/fleshing-out/` for bulk takes. Those subdirectories are filing and mean
+nothing to the merge: every `.ged` beneath `exports/` is corpus the moment it is
+extracted. Inside a bulk directory the zip keeps its download name and the
+GEDCOM goes to `export-geni/export-<style>-<N>.ged`, where `N` is the zip's
+download number — a local label for that batch, not a Geni identifier, and
+meaningless across directories.
+
+**`genimerge.sources` is the only place that answers "which GEDCOMs are the
+corpus?"** It used to have six answers — `cli.Workspace` globbing `data_lake/`
+and five test modules each rebuilding the same glob. It **drops byte-identical
+repeats**, which matters because the same export arrives twice routinely: the
+merge would not care, being keyed on the profile ID and idempotent, but
+`inventory`'s overlap figures and `density`'s presence counts both divide by how
+many exports contain a person. Order is by path, which is deterministic but is
+**not** export order — the same caveat that has always applied to "later sources
+win".
+
+**There was a `data_lake/` and it is gone (2026-08-05).** It was scaffolding
+from the first session for sorting a pile of dropped zips, and it accreted a
+naming scheme, an ingest ritual and a rule that the merge read from it and
+nowhere else — none of it ever decided, all of it meaning a freshly downloaded
+export was invisible until copied to a second place under a third name. Its five
+unique files are in `exports/originals/`; the other 49 were duplicates of files
+already under `exports/`. Do not reintroduce a second store.
+
+**Two exports can share a style *and* a seed, and then the name collides.**
+Seen on 2026-08-05: two `Forest` exports of `6000000227040338177` taken seven
+minutes apart, 3972 people and 4008. Check containment before inventing a
+disambiguator — the 3972 was a strict subset of the 4008, so keeping only the
+larger lost nothing.
 
 **Never delete a GEDCOM, and never add a zip.** The zips are gitignored **one
 line at a time**, deliberately: Emma wants an unignored zip to show up in
