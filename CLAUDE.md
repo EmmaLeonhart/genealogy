@@ -208,11 +208,23 @@ merged (`*.ged` tracked) · `geni_pages/` saved Geni profile pages ·
 **`exports/` is Emma's staging area and `data_lake/` is what the merge reads.**
 Geni's downloads land as `export-geni (N).zip`, extracted beside themselves,
 grouped into a directory named for the person Emma exported from
-(`exports/Li Hong/`, `exports/n n/`) or into `exports/archive/` for bulk takes.
-Ingesting one means **copying** it into `data_lake/` under the
-`export-Forest-<seedID>.ged` name — not moving it, so the staging area stays a
-record of what was downloaded. Not everything in `exports/` is ingested;
-`data_lake/` holding fewer files than `exports/` is the normal state, not drift.
+(`exports/Li Hong/`, `exports/n n/`) or into `exports/archive/` and
+`exports/fleshing-out/` for bulk takes. Inside a bulk directory the zip keeps
+its download name and the GEDCOM it holds is extracted to
+`export-geni/export-<style>-<N>.ged`, where `N` is the zip's download number —
+that number is a local label for the batch, not a Geni identifier, and it means
+nothing across directories. Ingesting one means **copying** it into `data_lake/`
+under the `export-<style>-<seedID>.ged` name — not moving it, so the staging
+area stays a record of what was downloaded. Not everything in `exports/` is
+ingested; `data_lake/` holding fewer files than `exports/` is the normal state,
+not drift.
+
+**Two exports can share a style *and* a seed, and then the name collides.**
+Seen on 2026-08-05: two `Forest` exports of `6000000227040338177` taken seven
+minutes apart, 3972 people and 4008. Check containment before inventing a
+disambiguator — the 3972 was a strict subset of the 4008, so ingesting only the
+larger lost nothing and no new naming rule was needed. Both files stay in
+`exports/`; only the ingested one is copied to `data_lake/`.
 
 **Never delete a GEDCOM, and never add a zip.** The zips are gitignored **one
 line at a time**, deliberately: Emma wants an unignored zip to show up in

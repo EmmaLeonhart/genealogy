@@ -2,7 +2,7 @@
 
 A Geni GEDCOM export is a **breadth-first ball**: pick a profile, pick a style
 — ancestors, descendants, blood relatives, everything — and Geni walks outward
-from that profile until the export is full, at somewhere around 3860 people.
+from that profile until the export is full, at somewhere around 4000 people.
 See :data:`GENI_EXPORT_CAP` for why that bound is written as "around" and not
 as a number we know. So the question "who do I export from next?" is really
 "whose ball would contain the most material we do not already have?".
@@ -79,39 +79,51 @@ __all__ = [
 #: only 354 — three separate walks stopping on the same number read as a hard
 #: cap. Every export since has held more, so it is not one.
 #:
-#: **What 28 exports say, ordered by the timestamp in their own `HEAD`:**
+#: **What 90 exports say, ordered by the timestamp in their own `HEAD`:**
 #: 3836 ×3 (30 Jul), 3840 (01 Aug), 3844 (02 Aug), then on 04 Aug 3848 at
-#: 14:41, 3852 at 14:48, 3856 at 14:53 — and **3860 for every one of the
-#: eleven exports from 15:21 to 16:22**. Exports that hold less than the
-#: ceiling (876, 1073, 1192) each exhausted their component first.
+#: 14:41, 3852 at 14:48, 3856 at 14:53, **3860 for every one of the eleven
+#: exports from 15:21 to 16:22**, and that evening 3868, 3928, 3944, 3956,
+#: 3972 between 19:15 and 19:55. Then **4008** for four exports from 04 Aug
+#: 23:48 to 05 Aug 04:05, and **4004 for all twenty-six exports from 05 Aug
+#: 04:17 to 14:57**. Exports holding less than the ceiling (455, 876, 1073,
+#: 1192, 1619) each exhausted their component first.
 #:
-#: That flat run of eleven is the useful part, and it settles two things the
+#: Two flat runs — eleven at 3860, twenty-six at 4004 — settle what the
 #: three-observation version of this note could only list as possibilities:
 #:
 #: - **The bound is not per-seed and not per-style.** Those eleven exports were
 #:   taken from eleven different seeds in three different styles — `Forest`,
-#:   `Descendants`, `BloodTree` — and all landed on 3860 exactly.
+#:   `Descendants`, `BloodTree` — and all landed on 3860 exactly. The
+#:   twenty-six are twenty-six further seeds all landing on 4004.
 #: - **It is therefore not a walk overshooting a floor** by however much it
-#:   takes to finish the generation it is on. Eleven different walks through
-#:   differently-shaped neighbourhoods would not all overshoot to the same
-#:   number.
+#:   takes to finish the generation it is on. Walks through differently-shaped
+#:   neighbourhoods would not all overshoot to the same number.
+#: - **The ceiling does not only rise, and it never stepped by four.** The
+#:   04 Aug evening run climbed 3868 → 3928 → 3944 → 3956 → 3972 in steps of
+#:   60, 16, 12 and 16; then 4008 held for four exports and the number went
+#:   *down* to 4004, where it stayed for ten and a half hours. An earlier
+#:   version of this note called the movement "steps of four" and warned
+#:   against encoding it. The warning was right and the description was wrong.
 #:
-#: What remains open is why the ceiling *moved*: 3836 to 3860 over five days,
-#: in steps of four, then flat for an hour. A limit Geni raised, a per-account
-#: limit that tracks something about this account, or a limit on something
-#: other than head count that merely lands here all still fit. **Do not encode
-#: the arithmetic** — the run of eleven identical values is evidence the number
-#: sits still, not evidence it steps by four on a schedule, and the three
-#: same-day increments before it have no established cause.
+#: **2026-08-05 — Geni states the number in its own UI, which is new evidence
+#: and the first that does not come from measuring output.** The GEDCOM export
+#: page carries a `Size` field reading "4004 Profiles to export (between 1 and
+#: 4004 profiles)", seen at 15:05 on 05 Aug — the same 4004 that twenty-six
+#: exports taken that day actually held. So the bound is a number Geni computes
+#: per export and displays, not merely something inferable from file sizes.
+#: That does **not** make it fixed: four exports hold 4008, above the 4004 the
+#: page offered later the same day. What the displayed number tracks, and why
+#: it fell by four, are both still unestablished. **Do not encode the
+#: arithmetic** — a flat run is evidence the number sits still, not evidence it
+#: moves on a schedule, and a movement that has now gone backwards is not one.
 #:
 #: Used only to bound the modelled ball in :func:`export_ball`, where being off
-#: by a few people out of ~3860 does not move a ranking.
+#: by a few people out of ~4000 does not move a ranking.
 #: ``tests/test_seeds.py`` asserts this stays >= the largest export in
 #: ``data_lake/``, so the next export to exceed it fails loudly instead of
-#: silently modelling a ball that is too small. Note the value below comes from
-#: ``exports/archive/``, which is larger than anything in ``data_lake/`` — the
-#: test is a floor on this constant, not its source.
-GENI_EXPORT_CAP = 3864
+#: silently modelling a ball that is too small. That is how 3840, 3844, 3856
+#: and now 4008 were each caught.
+GENI_EXPORT_CAP = 4008
 
 #: The step between reading this report and running an export.
 #:
@@ -644,13 +656,18 @@ def render_markdown(
             "exactly 3836, which read as a hard cap until later ones held "
             "3840, 3844, 3848, 3852, 3856 and then 3860 — the last of those "
             "for eleven consecutive exports taken within one hour from eleven "
-            "different seeds in three different styles. That flat run is worth "
-            "more than the rises: it shows the bound is global rather than "
-            "per-seed or per-style, and rules out a walk that simply overshoots "
-            "a floor to finish the generation it is on. Why the ceiling moved "
-            "from 3836 to 3860 over five days is still unestablished, so the "
-            "even spacing is recorded and not encoded. Being off by a few "
-            "people out of ~3860 does not move this ranking.",
+            "different seeds in three different styles. A second flat run "
+            "followed on 05 Aug: twenty-six exports all holding 4004. Those "
+            "runs are worth more than the rises, because they show the bound "
+            "is global rather than per-seed or per-style and rule out a walk "
+            "that simply overshoots a floor to finish the generation it is on. "
+            "The ceiling has since gone *down* — 4008 for four exports, then "
+            "4004 for twenty-six — so it is not a limit that only rises, and "
+            "the spacing is recorded rather than encoded. Geni's own export "
+            "page displays the number (a `Size` field reading 4004 on 05 Aug), "
+            "which is the first evidence about it that is not inferred from "
+            "output. Being off by a few people out of ~4000 does not move this "
+            "ranking.",
         ]
 
     lines += ["", "## How well this ranking has actually done", "", RANKING_IS_UNVALIDATED]

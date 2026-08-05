@@ -132,7 +132,7 @@ def _headline(inv: Inventory) -> list[str]:
             "read it as a lower bound, not a cap. The first three exports agreed "
             "on 3836 exactly and every export since has held more, so agreement "
             "across the exports in hand has already failed once to mean a limit. "
-            "See `genimerge.seeds.GENI_EXPORT_CAP` for what 28 exports say about "
+            "See `genimerge.seeds.GENI_EXPORT_CAP` for what 90 exports say about "
             "that bound."
         )
         lines.append("")
