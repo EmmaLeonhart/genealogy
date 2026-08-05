@@ -2594,3 +2594,58 @@ minute or two before the export ran.
 
 **661 passed**, Python 3.13.14, up from 637. Not CI-verified; CI is
 `workflow_dispatch:` only here on purpose.
+
+---
+
+## 2026-08-04 (later) — 83 of 83: the two trees are one, 32393 people
+
+Asked whether the whole Jimmu path was present or a targeted export was still
+needed, the answer given was "one more, seeded in the six-person window". That
+was wrong in a specific and instructive way: **Emma had already taken it.**
+
+**The scoping error.** She had said the exports to integrate were in
+`exports/Li Hong/` and `exports/n n/`, so those are the directories that got
+checked, and `exports/archive/` was treated as undifferentiated bulk to ingest
+later. `(22)` and `(23)` landed there at 16:35 and 16:40 — after the ingest —
+and each holds **all six** remaining steps. Searching every file on disk for the
+step-42 profile ID `6000000035218690155` found them in seconds. The lesson is
+cheap to state and was expensive here: **when a specific person is wanted, grep
+the whole tree of exports for the ID rather than reasoning about which directory
+ought to contain them.**
+
+**Both bridge, and by a wide margin.** `(22)` shares 1325 people with the
+Norwegian component and 1 with the Japanese; `(23)` shares 880 and 7. Either
+alone would have joined them. Ingested as
+`export-Forest-6000000211780118843.ged` and `export-Forest-6000000211750023833.ged`.
+
+**Result.** 10 exports, **32393 individuals, 16836 families, 0 conflicts, 1
+connected component**, up from 27718 in two components. `path-jimmu.md` now
+opens "Every step is held: this path is walkable inside our own data." The
+progression across the day was 62/83 → 77/83 → **83/83**.
+
+**The style constraint, found while explaining the recommendation and worth
+more than the recommendation was.** Steps 36→43 run `her brother` → `his
+partner` → `her daughter` → `her husband` → `his father` → `his mother`. Two of
+those people are reachable only across a marriage, so `Ancestors` and
+`BloodTree` exports seeded anywhere in that window would have walked straight
+past Guarandukht Bagrationi and Sultan Alp Arslan and never bridged anything.
+Both bridging exports happened to be `Forest`. Now written into `CLAUDE.md` as a
+rule: for a targeted export, read the relation column and pick a style that
+follows those link types.
+
+**Three tests rewritten, none deleted.**
+`test_both_ends_of_the_path_are_held_but_in_different_components` carried a
+docstring saying that if the two ends ever landed in the same component an
+export had bridged the trees and the test should be rewritten rather than
+deleted. It was, and now guards the other direction — a later export must not
+*split* the tree. The gap test lost its `range(37, 43)` for an empty list, and
+the unbroken-run test now asserts all 83 steps with Elisabeth (30) and Helena
+(36) kept as checkpoints, each having been the last held step in its turn.
+
+**Counts that moved and are not yet reflected in prose.** Impossible dates 178 →
+**261**, implausible 173 → **229**, likely duplicates 12 → **13**. Roughly 2×
+the people produced ~2.7× the date errors, which is worth investigating rather
+than assuming proportional. Queued.
+
+**677 passed**, Python 3.13.14, up from 661. Not CI-verified; CI is
+`workflow_dispatch:` only here on purpose.

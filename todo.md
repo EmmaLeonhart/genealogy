@@ -23,24 +23,26 @@ file is a list of intentions, so it is worth being explicit about which of them
 have since been measured — item 3b's "the merge absorbs it without changes", and
 item 7's "a file drop and a re-run, not a code change".
 
-The tree is **27718 people in two disconnected components** — 16217 in the
-Norwegian material and 11501 in the Japanese line, sharing no person and no
-family (`reports/frontier.md`, 2026-08-04, over eight exports). This paragraph
-previously read "12422 people in one connected component", written when that was
-true and left alone when the fifth export made it false; it has since been wrong
-a second time, at 16266/12422/3844, for one afternoon. **Treat the numbers in
-this paragraph as a timestamp, not a fact** — `reports/frontier.md` is the live
-count and this file is not regenerated.
+The tree is **32393 people in one connected component** (`reports/frontier.md`,
+2026-08-04, over ten exports). **Treat the numbers in this paragraph as a
+timestamp, not a fact.** It has been wrong three times: it read "12422 people in
+one connected component" and was left alone when the fifth export made it two;
+then 16266/12422/3844; then 27718/16217/11501, for about two hours.
+`reports/frontier.md` is the live count and this file is not regenerated.
 
 The warning that used to follow it turned out to be a description rather than a
 caution: an export seeded outside what we hold merges without a single conflict
-and still leaves two trees. That is exactly what happened, which is why
-`genimerge merge` reports connectivity on every run.
+and still leaves two trees. That is why `genimerge merge` reports connectivity
+on every run — and it is also why "one component" is not a permanent state. The
+next export to reach somewhere nothing else does will split it again, and that
+is normal.
 
-**The two components are now six people apart**, and which six is known —
-`reports/path-jimmu.md` steps 37–42. Joining them is no longer an open-ended
-search for a bridging export; it is one export from a named six-person window,
-listed with profile IDs in `queue.md`.
+**The Japanese line was joined on 2026-08-04** by two `Forest` exports seeded in
+the six-person gap that `reports/path-jimmu.md` had isolated. The path from the
+account owner to Emperor Jimmu is now 83 of 83 steps held. The method — save a
+Geni page for a target, extract the path, read off exactly who is missing —
+generalises to every other line worth reaching, and is item 4 in `queue.md` for
+the nine pages already saved.
 
 Every batch under items 4, 5 and 6 stops at a file in `out/wikidata/`.
 **Nothing in this repo writes to Wikidata**, and nothing should start doing so

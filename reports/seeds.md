@@ -12,10 +12,10 @@ Screened over a 3-hop ball in the `blood` style.
 
 |  | count |
 | --- | ---: |
-| people in the tree | 27718 |
-| with no parents recorded — the candidates | 5057 |
-| kept | 4935 |
-| rejected as saturated (openness < 5%) | 122 |
+| people in the tree | 32393 |
+| with no parents recorded — the candidates | 6245 |
+| kept | 6103 |
+| rejected as saturated (openness < 5%) | 142 |
 
 Saturation rejects the seeds sitting inside a region already recorded several layers out, where an export would mostly return people we hold. It fires rarely, and that is worth saying rather than tuning: ranking by doorway count already keeps interior candidates away from the top, so the rejection is a floor under the list, not the thing that shapes it.
 
@@ -27,22 +27,22 @@ Chosen greedily on **newly covered** doorways, not by rank. Neighbours share a b
 
 | # | profile | geni id | ball | doorways | openness | adds | running |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1 | [Ermesinde de Namur](https://www.geni.com/people/x/6000000009688464215) | `6000000009688464215` | 221 | 41 | 19% | 41 | 41 |
-| 2 | [???](https://www.geni.com/people/x/6000000002188101073) | `6000000002188101073` | 313 | 29 | 9% | 29 | 70 |
-| 3 | [Monomakhina](https://www.geni.com/people/x/6000000003858589577) | `6000000003858589577` | 146 | 26 | 18% | 26 | 96 |
-| 4 | [Ane Danielsdatter Frafjord Nedrabø](https://www.geni.com/people/x/6000000185158282824) | `6000000185158282824` | 102 | 25 | 25% | 25 | 121 |
-| 5 | [Maria Taronitissa](https://www.geni.com/people/x/6000000008578924985) | `6000000008578924985` | 116 | 24 | 21% | 24 | 145 |
-| 6 | [NN Engebretsdatter Li](https://www.geni.com/people/x/6000000001498783768) | `6000000001498783768` | 142 | 23 | 16% | 23 | 168 |
-| 7 | [趙](https://www.geni.com/people/x/6000000002188144190) | `6000000002188144190` | 85 | 23 | 27% | 23 | 191 |
-| 8 | [大江皇女](https://www.geni.com/people/x/6000000173134905010) | `6000000173134905010` | 112 | 23 | 21% | 23 | 214 |
-| 9 | [Aliénor](https://www.geni.com/people/x/6000000003582502504) | `6000000003582502504` | 94 | 20 | 21% | 20 | 234 |
-| 10 | [喧子](https://www.geni.com/people/x/6000000008642307823) | `6000000008642307823` | 168 | 20 | 12% | 20 | 254 |
+| 1 | [Tancred Guiscard de Hauteville](https://www.geni.com/people/x/6000000000424683032) | `6000000000424683032` | 235 | 58 | 25% | 58 | 58 |
+| 2 | [Ermesinde de Namur](https://www.geni.com/people/x/6000000009688464215) | `6000000009688464215` | 221 | 41 | 19% | 41 | 99 |
+| 3 | [Constantine Angelos](https://www.geni.com/people/x/6000000013003314172) | `6000000013003314172` | 150 | 33 | 22% | 33 | 132 |
+| 4 | [Henry I of France](https://www.geni.com/people/x/6000000003645832264) | `6000000003645832264` | 162 | 31 | 19% | 31 | 163 |
+| 5 | [???](https://www.geni.com/people/x/6000000002188101073) | `6000000002188101073` | 313 | 29 | 9% | 29 | 192 |
+| 6 | [Gaius Sallustius Crispus Passienus Sallustius Passienus Crispus](https://www.geni.com/people/x/6000000041250725939) | `6000000041250725939` | 63 | 29 | 46% | 29 | 221 |
+| 7 | [Charles "the Lame" of Anjou](https://www.geni.com/people/x/6000000000632007001) | `6000000000632007001` | 135 | 28 | 21% | 28 | 249 |
+| 8 | [Niels Rex](https://www.geni.com/people/x/6000000007025559649) | `6000000007025559649` | 156 | 25 | 16% | 25 | 274 |
+| 9 | [Ane Danielsdatter Frafjord Nedrabø](https://www.geni.com/people/x/6000000185158282824) | `6000000185158282824` | 102 | 25 | 25% | 25 | 299 |
+| 10 | [Alfonso VII "the Emperor" de Castilla y León](https://www.geni.com/people/x/6000000001610389741) | `6000000001610389741` | 154 | 26 | 17% | 24 | 323 |
 
-Those 10 picks reach **254** distinct doorways. The 10 highest-ranked seeds, taken without regard to overlap, reach **207** between them.
+Those 10 picks reach **323** distinct doorways. The 10 highest-ranked seeds, taken without regard to overlap, reach **246** between them.
 
 ## What the size limit does
 
-Walking the top seed as far as Geni would take it reaches **3860** people already in our data, filling the export at hop 10.
+Walking the top seed as far as Geni would take it reaches **3860** people already in our data, filling the export at hop 9.
 
 That number is not a prediction of waste. Geni's graph holds our people *and* the ones we are missing, and its walk reaches both at each hop — so a full export is a mix, and the doorway density near the seed is the best available proxy for how rich that mix is.
 
@@ -56,14 +56,14 @@ The ranking sorts on **absolute** doorway count, and doorways are counted inside
 
 |  | the pool | the picks |
 | --- | ---: | ---: |
-| candidates | 4935 | 10 |
-| ball over 100 | 151 (3.1%) | 8 (80%) |
-| median ball | 24 | 129 |
+| candidates | 6103 | 10 |
+| ball over 100 | 187 (3.1%) | 9 (90%) |
+| median ball | 25 | 155 |
 | median openness | 19% | 20% |
 
-Ball size and doorway count correlate at **r = 0.76** (r² = 0.58), so neighbourhood size accounts for most of the ordering but not all of it — at any given ball size the doorway counts still spread. The sort is not simply ball size under another name.
+Ball size and doorway count correlate at **r = 0.75** (r² = 0.56), so neighbourhood size accounts for most of the ordering but not all of it — at any given ball size the doorway counts still spread. The sort is not simply ball size under another name.
 
-The selection effect is sharper than the correlation. Candidates with a ball over 100 are **3.1%** of the pool and **80%** of the picks, and the picks are *less* open than a typical candidate (20% against 19%). The most open candidate in the whole pool — 67% — ranks **228 of 4935**.
+The selection effect is sharper than the correlation. Candidates with a ball over 100 are **3.1%** of the pool and **90%** of the picks, and the picks are *less* open than a typical candidate (20% against 19%). The most open candidate in the whole pool — 67% — ranks **398 of 6103**.
 
 **What this does not show is that the ranking is wrong.** It establishes how the sort behaves — it prefers large, proportionally less open neighbourhoods — and nothing more. Whether an open neighbourhood actually yields a richer export is a claim about Geni's data, not about ours, and no measurement here can reach it: we cannot see what sits behind a doorway without exporting through it. The one export taken so far is consistent with openness mattering and is a single observation. Taking the next export from a top-ranked pick, where this file has already committed its prediction, is what would settle it.
 
@@ -80,12 +80,12 @@ Openness is the obvious repair for the size bias described above, and it does no
 
 That idea is cheap to test and the objection to it turned out to be wrong. A ranking on smallest ball sounds degenerate — as though it would return isolated fragments and broken records — but a doorway is in our tree, so it always has some recorded relative:
 
-- candidates with a ball of 5 or fewer: **122** of 4935 (2% — a shortlist, not a crowd)
+- candidates with a ball of 5 or fewer: **133** of 6103 (2% — a shortlist, not a crowd)
 - of those, with a ball of 2 or fewer: **0**
 
 So the shortlist is workable and holds no isolated records. That makes it worth *testing*, not worth adopting. The way to settle it is one export from a top-ranked pick and one from this shortlist, compared on how many new people each returns — at which point there are two observations instead of one.
 
-### The small-ball shortlist (10 of 122)
+### The small-ball shortlist (10 of 133)
 
 **This is the experiment's other arm, not a recommendation.** The sequence at the top of this report is still what the model proposes. These are here because the ordering that surfaces them is the only one that would have found the seed which worked, and a count on its own — *66 candidates* — is not something anyone can export from. Nothing about a short list of names makes the hypothesis behind it any better supported than it was: one observation. Take one export from the sequence above and one from here, and the comparison is worth more than either list.
 
@@ -99,10 +99,10 @@ So the shortlist is workable and holds no isolated records. That makes it worth 
 | [Anstein](https://www.geni.com/people/x/6000000007980729106) | `6000000007980729106` | 4 | 1 | 25% |
 | [道足](https://www.geni.com/people/x/6000000008502741689) | `6000000008502741689` | 4 | 1 | 25% |
 | [大嶋](https://www.geni.com/people/x/6000000008646291014) | `6000000008646291014` | 4 | 1 | 25% |
+| [Varaztirocs](https://www.geni.com/people/x/6000000009305076825) | `6000000009305076825` | 4 | 1 | 25% |
 | [Kunino-tokotachi-no-mikoto](https://www.geni.com/people/x/6000000012788046985) | `6000000012788046985` | 4 | 1 | 25% |
 | [Houshi-no-kimi法師君](https://www.geni.com/people/x/6000000012925501006) | `6000000012925501006` | 4 | 1 | 25% |
-| [Snære ??](https://www.geni.com/people/x/6000000015912924583) | `6000000015912924583` | 4 | 1 | 25% |
-| [Mårten](https://www.geni.com/people/x/6000000016421401219) | `6000000016421401219` | 4 | 1 | 25% |
+| [Hethun I de Barbaron, Lord of Lampron](https://www.geni.com/people/x/6000000013732848110) | `6000000013732848110` | 4 | 1 | 25% |
 
 ## Ranked candidates (top 40)
 
@@ -110,46 +110,46 @@ By doorways in the screening ball. Useful for picking a seed by hand; the sequen
 
 | profile | geni id | ball | doorways | openness |
 | --- | ---: | ---: | ---: | ---: |
+| [Tancred Guiscard de Hauteville](https://www.geni.com/people/x/6000000000424683032) | `6000000000424683032` | 235 | 58 | 25% |
+| [Fressenda de Normandie](https://www.geni.com/people/x/6000000000424686458) | `6000000000424686458` | 225 | 54 | 24% |
 | [Ermesinde de Namur](https://www.geni.com/people/x/6000000009688464215) | `6000000009688464215` | 221 | 41 | 19% |
+| [Ramon Berenguer II 'Cap d'Estopes'](https://www.geni.com/people/x/6000000000531148722) | `6000000000531148722` | 123 | 33 | 27% |
+| [Constantine Angelos](https://www.geni.com/people/x/6000000013003314172) | `6000000013003314172` | 150 | 33 | 22% |
+| [Henry I of France](https://www.geni.com/people/x/6000000003645832264) | `6000000003645832264` | 162 | 31 | 19% |
+| [Gaius Sallustius Crispus Passienus Sallustius Passienus Crispus](https://www.geni.com/people/x/6000000041250725939) | `6000000041250725939` | 63 | 29 | 46% |
+| [Judith d'Évreux](https://www.geni.com/people/x/6000000003827587039) | `6000000003827587039` | 133 | 29 | 22% |
 | [???](https://www.geni.com/people/x/6000000002188101073) | `6000000002188101073` | 313 | 29 | 9% |
+| [Vipsania Agrippina Major](https://www.geni.com/people/x/6000000000914276572) | `6000000000914276572` | 66 | 28 | 42% |
+| [Adelaide del Vasto](https://www.geni.com/people/x/6000000002188292350) | `6000000002188292350` | 131 | 28 | 21% |
+| [Charles "the Lame" of Anjou](https://www.geni.com/people/x/6000000000632007001) | `6000000000632007001` | 135 | 28 | 21% |
+| [Nero Claudius Drusus Germanicus](https://www.geni.com/people/x/6000000007774655553) | `6000000007774655553` | 80 | 27 | 34% |
+| [Ebles II](https://www.geni.com/people/x/6000000002198387189) | `6000000002198387189` | 111 | 27 | 24% |
+| [Octavia Minor](https://www.geni.com/people/x/6000000001336630486) | `6000000001336630486` | 97 | 26 | 27% |
 | [N.N.](https://www.geni.com/people/x/6000000078289666886) | `6000000078289666886` | 119 | 26 | 22% |
-| [Monomakhina](https://www.geni.com/people/x/6000000003858589577) | `6000000003858589577` | 146 | 26 | 18% |
+| [Alfonso VII "the Emperor" de Castilla y León](https://www.geni.com/people/x/6000000001610389741) | `6000000001610389741` | 154 | 26 | 17% |
 | [Wang-shi](https://www.geni.com/people/x/6000000002188101009) | `6000000002188101009` | 255 | 26 | 10% |
 | [楊](https://www.geni.com/people/x/6000000002188099969) | `6000000002188099969` | 257 | 26 | 10% |
 | [Ane Danielsdatter Frafjord Nedrabø](https://www.geni.com/people/x/6000000185158282824) | `6000000185158282824` | 102 | 25 | 25% |
-| [Maria Taronitissa](https://www.geni.com/people/x/6000000008578924985) | `6000000008578924985` | 116 | 24 | 21% |
+| [Estrid](https://www.geni.com/people/x/6000000004827276873) | `6000000004827276873` | 108 | 25 | 23% |
+| [Diplovatatzina mistress](https://www.geni.com/people/x/375780093810013126) | `375780093810013126` | 113 | 25 | 22% |
+| [Cecilia von Dithmarschen](https://www.geni.com/people/x/6000000009097288101) | `6000000009097288101` | 129 | 25 | 19% |
+| [Niels Rex](https://www.geni.com/people/x/6000000007025559649) | `6000000007025559649` | 156 | 25 | 16% |
 | [趙](https://www.geni.com/people/x/6000000002188144190) | `6000000002188144190` | 85 | 23 | 27% |
 | [大江皇女](https://www.geni.com/people/x/6000000173134905010) | `6000000173134905010` | 112 | 23 | 21% |
+| [Maria Taronitissa](https://www.geni.com/people/x/6000000008578924985) | `6000000008578924985` | 116 | 23 | 20% |
+| [Safariyya Khatun](https://www.geni.com/people/x/6000000046562723934) | `6000000046562723934` | 133 | 23 | 17% |
 | [NN Engebretsdatter Li](https://www.geni.com/people/x/6000000001498783768) | `6000000001498783768` | 142 | 23 | 16% |
+| [Euphemia](https://www.geni.com/people/x/6000000064680550975) | `6000000064680550975` | 180 | 23 | 13% |
+| [Marcus Aemilius](https://www.geni.com/people/x/6000000006101322695) | `6000000006101322695` | 52 | 22 | 42% |
+| [NN Mistress of Vladimir, mother of Premislava](https://www.geni.com/people/x/6000000221021319893) | `6000000221021319893` | 88 | 22 | 25% |
+| [Aimery I](https://www.geni.com/people/x/6000000001412929958) | `6000000001412929958` | 92 | 22 | 24% |
 | [NN](https://www.geni.com/people/x/6000000012621984040) | `6000000012621984040` | 93 | 22 | 24% |
-| [Vladimir I SviatoslavichV 'the Great'](https://www.geni.com/people/x/6000000001172352035) | `6000000001172352035` | 109 | 21 | 19% |
-| [Euphemia](https://www.geni.com/people/x/6000000064680550975) | `6000000064680550975` | 156 | 21 | 13% |
+| [Christine](https://www.geni.com/people/x/6000000003645746870) | `6000000003645746870` | 102 | 22 | 22% |
+| [Bláthóc / Bjaðǫk](https://www.geni.com/people/x/6000000003645671347) | `6000000003645671347` | 105 | 22 | 21% |
+| [Monomakhina](https://www.geni.com/people/x/6000000003858589577) | `6000000003858589577` | 151 | 22 | 15% |
+| [NN](https://www.geni.com/people/x/6000000007601619802) | `6000000007601619802` | 87 | 21 | 24% |
+| [Muriella de Normandie](https://www.geni.com/people/x/4925425003710087812) | `4925425003710087812` | 114 | 21 | 18% |
 | [未知](https://www.geni.com/people/x/6000000124241794319) | `6000000124241794319` | 344 | 21 | 6% |
-| [Wáng Zhòng 右扶風槐里](https://www.geni.com/people/x/6000000002715094693) | `6000000002715094693` | 73 | 20 | 27% |
-| [子夫](https://www.geni.com/people/x/6000000002188144141) | `6000000002188144141` | 80 | 20 | 25% |
-| [Cecilia von Dithmarschen](https://www.geni.com/people/x/6000000009097288101) | `6000000009097288101` | 89 | 20 | 22% |
-| [Aliénor](https://www.geni.com/people/x/6000000003582502504) | `6000000003582502504` | 94 | 20 | 21% |
-| [恆](https://www.geni.com/people/x/6000000002715192907) | `6000000002715192907` | 95 | 20 | 21% |
-| [Jitō](https://www.geni.com/people/x/6000000173133833080) | `6000000173133833080` | 102 | 20 | 20% |
-| [喧子](https://www.geni.com/people/x/6000000008642307823) | `6000000008642307823` | 168 | 20 | 12% |
-| [嘉子](https://www.geni.com/people/x/6000000008642481480) | `6000000008642481480` | 168 | 20 | 12% |
-| [忠子](https://www.geni.com/people/x/6000000008642531521) | `6000000008642531521` | 168 | 20 | 12% |
-| [寛子](https://www.geni.com/people/x/6000000008642654262) | `6000000008642654262` | 168 | 20 | 12% |
-| [兼子](https://www.geni.com/people/x/6000000008642656505) | `6000000008642656505` | 168 | 20 | 12% |
-| [隆子](https://www.geni.com/people/x/6000000008642679376) | `6000000008642679376` | 168 | 20 | 12% |
-| [貞子](https://www.geni.com/people/x/6000000008642685220) | `6000000008642685220` | 168 | 20 | 12% |
-| [Munesada's daughter](https://www.geni.com/people/x/6000000012890804251) | `6000000012890804251` | 184 | 20 | 11% |
-| [張](https://www.geni.com/people/x/6000000145341527079) | `6000000145341527079` | 192 | 20 | 10% |
-| [未知](https://www.geni.com/people/x/6000000021304460668) | `6000000021304460668` | 197 | 20 | 10% |
-| [楊](https://www.geni.com/people/x/6000000021241286898) | `6000000021241286898` | 314 | 20 | 6% |
-| [張](https://www.geni.com/people/x/6000000021241451843) | `6000000021241451843` | 323 | 20 | 6% |
-| [劉](https://www.geni.com/people/x/6000000002188144123) | `6000000002188144123` | 77 | 19 | 25% |
-| [?](https://www.geni.com/people/x/6000000002188144237) | `6000000002188144237` | 77 | 19 | 25% |
-| [李](https://www.geni.com/people/x/6000000002188144209) | `6000000002188144209` | 80 | 19 | 24% |
-| [李](https://www.geni.com/people/x/6000000002188144170) | `6000000002188144170` | 81 | 19 | 23% |
-| [薄](https://www.geni.com/people/x/6000000002188144366) | `6000000002188144366` | 82 | 19 | 23% |
-| [程](https://www.geni.com/people/x/6000000002188144403) | `6000000002188144403` | 82 | 19 | 23% |
-| [栗](https://www.geni.com/people/x/6000000002188144377) | `6000000002188144377` | 83 | 19 | 23% |
 
 ## What this cannot tell you
 

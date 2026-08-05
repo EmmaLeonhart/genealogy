@@ -14,10 +14,10 @@ parents recorded**. Those are the places Geni knows more than we do.
 
 |  | count | share |
 | --- | ---: | ---: |
-| people | 27718 | 100% |
-| with no parents recorded | 5057 | 18.2% |
+| people | 32393 | 100% |
+| with no parents recorded | 6245 | 19.3% |
 | with no relatives at all | 0 | 0.0% |
-| connected components | 2 |  |
+| connected components | 1 |  |
 
 ## Components
 
@@ -26,8 +26,7 @@ no walk outward from the main tree will ever reach it.
 
 | component | people | of which parentless | largest branch point |
 | --- | ---: | ---: | ---: |
-| 1 | 16217 | 3744 | Ezzo |
-| 2 | 11501 | 1313 | NN |
+| 1 | 32393 | 6245 | Skoglar |
 
 ## People recorded as their own ancestor
 
@@ -45,77 +44,77 @@ descendants are where an export would add the most.
 
 | generations above | people |
 | --- | ---: |
-| 0 | 5058 |
-| 1 | 2224 |
-| 2 | 1104 |
-| 3 | 1192 |
-| 4 | 1002 |
-| 5 | 1151 |
-| 6 | 973 |
-| 7 | 1085 |
-| 8 | 1142 |
-| 9 | 1300 |
-| 10 | 1276 |
-| 11 | 1099 |
-| 12 | 625 |
-| 13 | 502 |
-| 14 | 177 |
-| 15 | 146 |
-| 16 | 128 |
-| 17 | 117 |
-| 18 | 162 |
-| 19 | 74 |
-| 20 | 89 |
-| 21 | 101 |
-| 22 | 120 |
-| 23 | 130 |
-| 24 | 129 |
-| 25 | 127 |
-| 26 | 151 |
-| 27 | 161 |
-| 28 | 116 |
-| 29 | 108 |
-| 30 | 114 |
-| 31 | 215 |
-| 32 | 257 |
-| 33 | 250 |
-| 34 | 361 |
-| 35 | 361 |
-| 36 | 168 |
-| 37 | 213 |
-| 38 | 94 |
-| 39 | 85 |
-| 40 | 49 |
-| 41 | 50 |
-| 42 | 95 |
-| 43 | 103 |
-| 44 | 113 |
-| 45 | 122 |
-| 46 | 123 |
-| 47 | 108 |
-| 48 | 167 |
-| 49 | 145 |
-| 50 | 123 |
-| 51 | 145 |
-| 52 | 175 |
-| 53 | 148 |
-| 54 | 155 |
-| 55 | 135 |
-| 56 | 119 |
-| 57 | 59 |
-| 58 | 30 |
-| 59 | 29 |
-| 60 | 27 |
-| 61 | 39 |
-| 62 | 37 |
-| 63 | 36 |
-| 64 | 39 |
-| 65 | 50 |
-| 66 | 45 |
-| 67 | 48 |
-| 68 | 58 |
-| 69 | 72 |
-| 70 | 64 |
+| 0 | 6246 |
+| 1 | 2339 |
+| 2 | 1232 |
+| 3 | 1285 |
+| 4 | 1092 |
+| 5 | 1194 |
+| 6 | 1023 |
+| 7 | 1198 |
+| 8 | 1224 |
+| 9 | 1364 |
+| 10 | 1407 |
+| 11 | 1145 |
+| 12 | 731 |
+| 13 | 671 |
+| 14 | 425 |
+| 15 | 462 |
+| 16 | 548 |
+| 17 | 340 |
+| 18 | 376 |
+| 19 | 133 |
+| 20 | 131 |
+| 21 | 116 |
+| 22 | 146 |
+| 23 | 147 |
+| 24 | 144 |
+| 25 | 138 |
+| 26 | 147 |
+| 27 | 142 |
+| 28 | 108 |
+| 29 | 81 |
+| 30 | 129 |
+| 31 | 105 |
+| 32 | 126 |
+| 33 | 196 |
+| 34 | 267 |
+| 35 | 275 |
+| 36 | 368 |
+| 37 | 336 |
+| 38 | 158 |
+| 39 | 202 |
+| 40 | 124 |
+| 41 | 105 |
+| 42 | 140 |
+| 43 | 122 |
+| 44 | 138 |
+| 45 | 136 |
+| 46 | 133 |
+| 47 | 114 |
+| 48 | 175 |
+| 49 | 152 |
+| 50 | 135 |
+| 51 | 152 |
+| 52 | 188 |
+| 53 | 165 |
+| 54 | 176 |
+| 55 | 153 |
+| 56 | 152 |
+| 57 | 92 |
+| 58 | 62 |
+| 59 | 73 |
+| 60 | 75 |
+| 61 | 61 |
+| 62 | 49 |
+| 63 | 43 |
+| 64 | 49 |
+| 65 | 69 |
+| 66 | 63 |
+| 67 | 64 |
+| 68 | 70 |
+| 69 | 77 |
+| 70 | 66 |
 | 71 | 56 |
 | 72 | 50 |
 | 73 | 45 |
@@ -161,43 +160,43 @@ leaf adds a lone leaf.
 
 | # | name | born | descendants | relatives | component | Geni profile |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1 | Ezzo | 955 | 3532 | 11 | 16217 | [6000000000769470073](https://www.geni.com/people/x/6000000000769470073) |
-| 2 | Mathilde | 980 | 3532 | 11 | 16217 | [6000000003645724700](https://www.geni.com/people/x/6000000003645724700) |
-| 3 | Emnilda_Hodica | 970 | 3527 | 6 | 16217 | [6000000000769560303](https://www.geni.com/people/x/6000000000769560303) |
-| 4 | Bolesław I "The Brave" Пяст | 967 | 3527 | 6 | 16217 | [6000000000769654031](https://www.geni.com/people/x/6000000000769654031) |
-| 5 | Vladimir I SviatoslavichV 'the Great' | 956 | 3445 | 9 | 16217 | [6000000001172352035](https://www.geni.com/people/x/6000000001172352035) |
-| 6 | Adelajda von Polen | 950 | 3422 | 2 | 16217 | [6000000000436429187](https://www.geni.com/people/x/6000000000436429187) |
-| 7 | Michael | 955 | 3422 | 2 | 16217 | [6000000002187690247](https://www.geni.com/people/x/6000000002187690247) |
-| 8 | N.N. |  | 3420 | 5 | 16217 | [6000000002176661888](https://www.geni.com/people/x/6000000002176661888) |
-| 9 | Rogneda Anastasia | 962 | 3392 | 7 | 16217 | [6000000001172213829](https://www.geni.com/people/x/6000000001172213829) |
-| 10 | Estrid | 979 | 3387 | 3 | 16217 | [6000000004827276873](https://www.geni.com/people/x/6000000004827276873) |
-| 11 | Olaf Эрикович Eríksson | 975 | 3387 | 3 | 16217 | [6000000005417076176](https://www.geni.com/people/x/6000000005417076176) |
-| 12 | Heinrich I von Schweinfurt | 970 | 3140 | 6 | 16217 | [6000000009726660856](https://www.geni.com/people/x/6000000009726660856) |
-| 13 | Gerberga von Henneberg von Zutpen | 975 | 3140 | 6 | 16217 | [6000000009782507443](https://www.geni.com/people/x/6000000009782507443) |
-| 14 | Beata Krzesinova | 987 | 3136 | 2 | 16217 | [4597282](https://www.geni.com/people/x/4597282) |
-| 15 | Udalrich Przemyslid | 989 | 3136 | 2 | 16217 | [6000000003645765375](https://www.geni.com/people/x/6000000003645765375) |
-| 16 | Anna | 963 | 2985 | 2 | 16217 | [6000000000437327174](https://www.geni.com/people/x/6000000000437327174) |
-| 17 | Berthold "der Bärtige" von Zähringen | 1010 | 2934 | 6 | 16217 | [6000000003827147216](https://www.geni.com/people/x/6000000003827147216) |
-| 18 | Richwara von Schwaben | 1038 | 2934 | 6 | 16217 | [6000000006906578140](https://www.geni.com/people/x/6000000006906578140) |
-| 19 | Dietpold I |  | 2902 | 1 | 16217 | [6000000221340565821](https://www.geni.com/people/x/6000000221340565821) |
-| 20 | Poppo | 1035 | 2891 | 4 | 16217 | [6000000002187828621](https://www.geni.com/people/x/6000000002187828621) |
-| 21 | Sophia of Hungary von Schweinfurt | 1050 | 2891 | 4 | 16217 | [6000000011657190041](https://www.geni.com/people/x/6000000011657190041) |
-| 22 | Monomakhina | 1035 | 2880 | 3 | 16217 | [6000000003858589577](https://www.geni.com/people/x/6000000003858589577) |
-| 23 | Gōdwine Wulfnothsson | 987 | 2786 | 9 | 16217 | [6000000001156548017](https://www.geni.com/people/x/6000000001156548017) |
-| 24 | Gytha Thorkelsdóttir | 997 | 2786 | 9 | 16217 | [6000000001156548028](https://www.geni.com/people/x/6000000001156548028) |
-| 25 | Ealdgȳð "Swann hnesce" | 1025 | 2737 | 7 | 16217 | [6000000001391856400](https://www.geni.com/people/x/6000000001391856400) |
-| 26 | NN |  | 2662 | 1 | 11501 | [6000000209595340830](https://www.geni.com/people/x/6000000209595340830) |
-| 27 | 有蟜 |  | 2660 | 5 | 11501 | [6000000026566135156](https://www.geni.com/people/x/6000000026566135156) |
-| 28 | Cecilia | 1024 | 2561 | 3 | 16217 | [6000000000462713383](https://www.geni.com/people/x/6000000000462713383) |
-| 29 | Stenkil Ragnvaldsson | 1020 | 2561 | 3 | 16217 | [6000000000812943370](https://www.geni.com/people/x/6000000000812943370) |
-| 30 | Maria Anundsdotter Emundsdotter | 1025 | 2561 | 3 | 16217 | [6000000003366838592](https://www.geni.com/people/x/6000000003366838592) |
-| 31 | Torild Totilsson | 1020 | 2561 | 3 | 16217 | [6000000003858604945](https://www.geni.com/people/x/6000000003858604945) |
-| 32 | Tora Torsteinsdatter Galge | 970 | 2451 | 4 | 16217 | [6000000001088848284](https://www.geni.com/people/x/6000000001088848284) |
-| 33 | Arne Arnmodsson | 965 | 2451 | 4 | 16217 | [6000000002527618911](https://www.geni.com/people/x/6000000002527618911) |
-| 34 | (incognita) (anonyma) |  | 2418 | 2 | 11501 | [6000000004868946389](https://www.geni.com/people/x/6000000004868946389) |
-| 35 | Adela van Leuven | 1020 | 2392 | 7 | 16217 | [6000000002245256428](https://www.geni.com/people/x/6000000002245256428) |
-| 36 | Otto I von Weimar-Orlamünde | 1035 | 2390 | 4 | 16217 | [6000000001669658581](https://www.geni.com/people/x/6000000001669658581) |
-| 37 | Kunino-tokotachi-no-mikoto |  | 2361 | 1 | 11501 | [6000000012788046985](https://www.geni.com/people/x/6000000012788046985) |
-| 38 | Suijini-no-mikoto |  | 2358 | 2 | 11501 | [6000000012789309257](https://www.geni.com/people/x/6000000012789309257) |
-| 39 | Otomabe-no-mikoto |  | 2357 | 2 | 11501 | [6000000012789274221](https://www.geni.com/people/x/6000000012789274221) |
-| 40 | Ayakashikone-no-mikoto |  | 2356 | 3 | 11501 | [6000000012789059947](https://www.geni.com/people/x/6000000012789059947) |
+| 1 | Skoglar | 909 | 4909 | 4 | 32393 | [6000000005577158936](https://www.geni.com/people/x/6000000005577158936) |
+| 2 | Erik NN | 929 | 4897 | 6 | 32393 | [6000000003714580449](https://www.geni.com/people/x/6000000003714580449) |
+| 3 | Igor Рюрикович Rurikov | 877 | 4633 | 2 | 32393 | [6000000000420341047](https://www.geni.com/people/x/6000000000420341047) |
+| 4 | Olga Rurik | 890 | 4633 | 2 | 32393 | [6000000005406862960](https://www.geni.com/people/x/6000000005406862960) |
+| 5 | Unknown | 908 | 4632 | 3 | 32393 | [6000000008482892635](https://www.geni.com/people/x/6000000008482892635) |
+| 6 | Malk of Lyubech | 918 | 4632 | 3 | 32393 | [6000000008482904946](https://www.geni.com/people/x/6000000008482904946) |
+| 7 | Rogvolod of West Gotland | 920 | 4433 | 1 | 32393 | [6000000074783609313](https://www.geni.com/people/x/6000000074783609313) |
+| 8 | Estrid | 979 | 4426 | 3 | 32393 | [6000000004827276873](https://www.geni.com/people/x/6000000004827276873) |
+| 9 | Ezzo | 955 | 4240 | 11 | 32393 | [6000000000769470073](https://www.geni.com/people/x/6000000000769470073) |
+| 10 | Mathilde | 980 | 4240 | 11 | 32393 | [6000000003645724700](https://www.geni.com/people/x/6000000003645724700) |
+| 11 | Emnilda_Hodica | 970 | 4237 | 6 | 32393 | [6000000000769560303](https://www.geni.com/people/x/6000000000769560303) |
+| 12 | Bolesław I "The Brave" Пяст | 967 | 4237 | 6 | 32393 | [6000000000769654031](https://www.geni.com/people/x/6000000000769654031) |
+| 13 | Adelajda von Polen | 950 | 4122 | 2 | 32393 | [6000000000436429187](https://www.geni.com/people/x/6000000000436429187) |
+| 14 | Michael | 955 | 4122 | 2 | 32393 | [6000000002187690247](https://www.geni.com/people/x/6000000002187690247) |
+| 15 | N.N. |  | 4120 | 5 | 32393 | [6000000002176661888](https://www.geni.com/people/x/6000000002176661888) |
+| 16 | Wytgeorn | 940 | 4000 | 2 | 32393 | [6000000083500956501](https://www.geni.com/people/x/6000000083500956501) |
+| 17 | Gunhilder Sveynsdatter | 950 | 4000 | 2 | 32393 | [6000000083501784891](https://www.geni.com/people/x/6000000083501784891) |
+| 18 | Theophylaktos | 840 | 3846 | 1 | 32393 | [6000000003645724209](https://www.geni.com/people/x/6000000003645724209) |
+| 19 | Theodora | 874 | 3844 | 8 | 32393 | [6000000003086734979](https://www.geni.com/people/x/6000000003086734979) |
+| 20 | Monomakhina | 1035 | 3702 | 3 | 32393 | [6000000003858589577](https://www.geni.com/people/x/6000000003858589577) |
+| 21 | Heinrich I von Schweinfurt | 970 | 3680 | 6 | 32393 | [6000000009726660856](https://www.geni.com/people/x/6000000009726660856) |
+| 22 | Gerberga von Henneberg von Zutpen | 975 | 3680 | 6 | 32393 | [6000000009782507443](https://www.geni.com/people/x/6000000009782507443) |
+| 23 | Beata Krzesinova | 987 | 3676 | 2 | 32393 | [4597282](https://www.geni.com/people/x/4597282) |
+| 24 | Udalrich Przemyslid | 989 | 3676 | 2 | 32393 | [6000000003645765375](https://www.geni.com/people/x/6000000003645765375) |
+| 25 | Bjørn |  | 3603 | 1 | 32393 | [6000000051612628827](https://www.geni.com/people/x/6000000051612628827) |
+| 26 | Æthelmaer | 960 | 3599 | 5 | 32393 | [6000000001127302498](https://www.geni.com/people/x/6000000001127302498) |
+| 27 | Æthelthrith of Wessex | 962 | 3599 | 5 | 32393 | [6000000004533630883](https://www.geni.com/people/x/6000000004533630883) |
+| 28 | Constantine | 905 | 3558 | 8 | 32393 | [385953397470012188](https://www.geni.com/people/x/385953397470012188) |
+| 29 | Craterus Argyropoulos | 912 | 3552 | 1 | 32393 | [6000000002188303650](https://www.geni.com/people/x/6000000002188303650) |
+| 30 | Ealdgȳð "Swann hnesce" | 1025 | 3531 | 7 | 32393 | [6000000001391856400](https://www.geni.com/people/x/6000000001391856400) |
+| 31 | Ingeborg | 930 | 3488 | 2 | 32393 | [6000000006606539094](https://www.geni.com/people/x/6000000006606539094) |
+| 32 | Gunhild Halvdansdotter | 945 | 3482 | 2 | 32393 | [6000000001381812517](https://www.geni.com/people/x/6000000001381812517) |
+| 33 | Njaal | 930 | 3482 | 2 | 32393 | [6000000003616762507](https://www.geni.com/people/x/6000000003616762507) |
+| 34 | Thord | 970 | 3471 | 1 | 32393 | [6000000064225861229](https://www.geni.com/people/x/6000000064225861229) |
+| 35 | Sigtorn? Prince Ingvar of Sweden? |  | 3471 | 1 | 32393 | [6000000115227830965](https://www.geni.com/people/x/6000000115227830965) |
+| 36 | Berthold "der Bärtige" von Zähringen | 1010 | 3357 | 6 | 32393 | [6000000003827147216](https://www.geni.com/people/x/6000000003827147216) |
+| 37 | Richwara von Schwaben | 1038 | 3357 | 6 | 32393 | [6000000006906578140](https://www.geni.com/people/x/6000000006906578140) |
+| 38 | Dietpold I |  | 3325 | 1 | 32393 | [6000000221340565821](https://www.geni.com/people/x/6000000221340565821) |
+| 39 | Poppo | 1035 | 3314 | 4 | 32393 | [6000000002187828621](https://www.geni.com/people/x/6000000002187828621) |
+| 40 | Sophia of Hungary von Schweinfurt | 1050 | 3314 | 4 | 32393 | [6000000011657190041](https://www.geni.com/people/x/6000000011657190041) |

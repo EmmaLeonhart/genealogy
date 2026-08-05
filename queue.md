@@ -15,40 +15,26 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
-1. **BLOCKED-ON-USER-ACTION — take one export seeded in the six-person window
-   that is now the whole gap between the two components.** Jimmu path steps
-   **37–42**, with their IDs — note Constantine's is **not** the usual
-   `6000000…` shape, so do not pattern-match it:
+1. **Ingest the rest of `exports/archive/` as the downloads finish.** ~20
+   Forest/Ancestors/Descendants/BloodTree exports at 3860 apiece; only `(22)`
+   and `(23)` have been taken into `data_lake/` so far, and those only because
+   they turned out to hold the Jimmu bridge. Ingesting is a copy into
+   `data_lake/` under `export-Forest-<seedID>.ged` and a re-run, with one
+   wrinkle to settle first: two archive exports could share a seed with each
+   other across styles, which the current filename convention does not
+   disambiguate — `export-<style>-<seedID>.ged` would.
 
-   | # | person | Geni profile ID |
-   | ---: | --- | --- |
-   | 37 | Constantine IX Monomachos, byzantine emperor | `385935664970005621` |
-   | 38 | Guarandukht Bagrationi, of Georgia | `6000000024168588582` |
-   | 39 | daughter of Smbat of Lori | `6000000032327207506` |
-   | 40 | Sultan Alp Arslan | `6000000031528209013` |
-   | 41 | Dawud Chaghri Bey, Lord of Khorasan | `6000000031528142916` |
-   | 42 | n n | `6000000035218690155` |
+   **Check each one against `reports/path-jimmu.md`-style path files before
+   assuming it is bulk.** `(22)` and `(23)` were sitting in `archive/` looking
+   like undifferentiated bulk while holding the six people the whole tree was
+   waiting on.
 
-   Step 36 (Helena Komitopulo `6000000002837351971`) is held in component 1 and
-   step 43 (Inal Kut Chor `6000000035218736073`) in component 2, so a ball
-   centred anywhere in the window has a real chance of touching both — this is the
-   export that joins the two trees. Unblocks by Emma taking it on Geni; the
-   check afterwards is `python -m genimerge path data_lake/paths/jimmu.tsv`
-   plus the component count in `reports/frontier.md`.
-
-2. **Ingest the rest of `exports/archive/` once the downloads finish.** ~17
-   Forest/Ancestors/Descendants/BloodTree exports at 3860 apiece, none yet in
-   `data_lake/`. Deliberately left out of the 2026-08-04 ingest because Emma
-   scoped that session to Li Hong and `n n`; they are still arriving. Ingesting
-   is a copy into `data_lake/` under `export-Forest-<seedID>.ged` and a re-run,
-   with one wrinkle to settle first: several share a seed with a saved page in
-   `geni_pages/`, and two archive exports could share a seed with each other
-   across styles, which the current filename convention does not disambiguate.
-
-3. **Re-measure the standing-context counts below against the eight-export
-   merge.** The impossible/implausible date counts now read 178 and 173 against
-   the 96 and 89 quoted in the note; `reports/consistency.md` is regenerated but
-   the prose here is not.
+2. **Re-measure the standing-context counts below against the ten-export
+   merge.** The impossible/implausible date counts now read **261 and 229**
+   against the 96 and 89 quoted in the note, and duplicates 13 likely / 53
+   possible; `reports/consistency.md` is regenerated but the prose here is not.
+   Growing the tree by 2× grew the error list by ~2.7×, which is worth a look in
+   itself.
 
 4. **Turn the nine new saved pages into path reports — after the Jimmu gap, not
    before.** Emma saved these on 2026-08-04 as candidate connections and asked
@@ -187,6 +173,27 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
   component 2 for `Li Hong` — and none to each other. Predicted before running
   the merge and confirmed after; the component count is still 2, now 16217 and
   11501.
+
+  **Update 2026-08-04, later still — closed. 83 of 83 steps held, one connected
+  tree of 32393 people.** Emma had already taken the bridging export; it was in
+  `exports/archive/` as `(22)` and `(23)`, not in the two folders she had named,
+  so the session's scoping missed it. Both hold all six of steps 37–42, and both
+  touch *both* components (`(22)`: 1325 people shared with the Norwegian side, 1
+  with the Japanese; `(23)`: 880 and 7). Ingested as
+  `export-Forest-6000000211780118843.ged` and `…211750023833.ged`.
+
+  **The style mattered and nearly was not noticed.** Steps 36→43 run
+  `her brother` → `his partner` → `her daughter` → `her husband` → `his father`
+  → `his mother`. Two of those six people are reachable only through a marriage,
+  so `Ancestors` and `BloodTree` exports seeded in that window would have walked
+  past them and never bridged. Both bridging exports happened to be `Forest`.
+  **Read the relation column before choosing a style for a targeted export** —
+  this is now written into `CLAUDE.md`.
+
+  **This whole standing note is history and can be deleted** once someone is
+  confident nothing above is still load-bearing. Kept for now because the
+  numbers record how the tree was actually built: 62/83 → 77/83 → 83/83, and a
+  21-step gap that took four exports rather than the one originally planned.
 
 
 

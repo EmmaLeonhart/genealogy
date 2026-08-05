@@ -44,8 +44,8 @@ fuzzy name matching. `genimerge.identity` is the single place that knows this;
 change in Geni's format fails loudly.
 
 Exactly **four xref prefixes** occur, each bound to one record type: `I` on
-`INDI`, `F` on `FAM`, `N` on `NOTE`, `S` on `SUBM` — measured over all **52,793**
-xrefs in the eight exports, and re-measured on 2026-08-04 against the three new
+`INDI`, `F` on `FAM`, `N` on `NOTE`, `S` on `SUBM` — measured over all **70,408**
+xrefs in the ten exports, re-measured on 2026-08-04 against each batch of new
 ones rather than carried forward. Some exports carry no `NOTE` records at all, so
 an export need not use every letter; the claim is that no *other* letter appears
 and no letter spans two record types. `GENI_ID_RE` accepts only
@@ -111,26 +111,29 @@ docstring is the long form of this. It is a modelling number for
 `reports/seeds.md` only — nothing in the merge depends on it.
 `tests/test_seeds.py` fails if an export in `data_lake/` exceeds it, so the next
 one to do so is loud rather than silent — that is how 3840, 3844 and 3856 were
-each caught. Note the constant tracks the largest export *seen*, which currently
-lives in `exports/archive/`, so the test is a floor on it rather than its
-source. Expect to merge many exports over time, and expect the merge to be
+each caught. The constant tracks the largest export *seen*, which is not
+necessarily one that has been ingested, so the test is a floor on it rather than
+its source. Expect to merge many exports over time, and expect the merge to be
 re-run rather than hand-edited. See `reports/inventory.md`.
 
-**The merged tree is two disconnected trees.** As of 2026-08-04 they are
-**16217** people (Norwegian, through the European royal lines) and **11501**
-(the Japanese mythological line rooted at Kunino-tokotachi-no-mikoto, now
-carrying the Tang/Ashina material the Li Hong exports brought). The merge is
-still correct — disjoint components do not conflict — but any statement about
-"the tree" should say which one, and reaching one from the other needs an export
-that bridges them, which no export in hand does. `reports/frontier.md`
-§ Components is the live count.
+**The merged tree is one connected tree — as of 2026-08-04, and not before.**
+32393 people, 16836 families, 0 conflicts, **1 component**. It was two
+components for most of that day (16217 Norwegian and 11501 Japanese, sharing no
+person and no family) and the whole of 08-02..08-04. `reports/frontier.md`
+§ Components is the live count and the thing to check rather than this
+paragraph: an export that reaches somewhere nothing else does will split it
+again, and that is normal rather than wrong. Disjoint components do not
+conflict — they just never meet.
 
-**The bridge between them is six people wide and its location is known.** See
-`reports/path-jimmu.md`: steps **37–42** of the Geni relationship path,
-Constantine IX Monomachos → Guarandukht Bagrationi → daughter of Smbat of Lori →
-Sultan Alp Arslan → Dawud Chaghri Bey → `n n`. Steps 1–36 are held in component
-1 and 43–83 in component 2. An export seeded anywhere in that window is the one
-that joins the two trees; nothing else will.
+**How it was joined, because the method generalises.** `reports/path-jimmu.md`
+checks an 83-step Geni relationship path against the tree. It went 62/83 held
+(gap of 21 steps) → 77/83 (gap of 6) → **83/83, every step held**. Two `Forest`
+exports seeded inside the six-person window closed it. Note the style mattered:
+that stretch of path crosses `her brother`, `his partner` and `her husband`
+links, so `Ancestors` and `BloodTree` would have walked straight past
+Guarandukht Bagrationi and Sultan Alp Arslan and never bridged. **When an export
+is meant to close a specific path, read the relation column first and pick a
+style that follows those link types.**
 
 **An export is named for its style, not its seed — so filenames collide.** Geni
 writes `export-<style>.ged`, and `Forest`, `Ancestors`, `BloodTree` and

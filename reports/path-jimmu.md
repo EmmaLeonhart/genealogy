@@ -1,12 +1,8 @@
 # Relationship path: jimmu
 
-**77 of 83 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**83 of 83 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**The unbroken run stops at step 36, Helena Komitopulo.** The next step, **Constantine IX Monomachos, byzantine emperor**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
-
-**41 steps past the gap are held anyway** — Inal Kut Chor onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
-
-The held steps fall in 2 disconnected components: component 1 (16217 people), component 2 (11501 people). Until an export bridges them, no walk through our own data gets from one end of this path to the other.
+Every step is held: this path is walkable inside our own data.
 
 ## Steps
 
@@ -48,50 +44,50 @@ The held steps fall in 2 disconnected components: component 1 (16217 people), co
 | 34 | Petrislav of Rascia Mihailović | his father | [Petrislav of Rascia Vojislavljević](https://www.geni.com/people/x/6000000026015362247) | id | 1 |
 | 35 | niece of Constantine IX Monomachos Vojislavljević | his mother | [niece of Constantine IX Monomachos Komitopulo](https://www.geni.com/people/x/6000000010463343582) | id | 1 |
 | 36 | Helena Komitopulo | her mother | [Helena Manomachus](https://www.geni.com/people/x/6000000002837351971) | id | 1 |
-| 37 | Constantine IX Monomachos, byzantine emperor | her brother | — | absent | — |
-| 38 | Guarandukht Bagrationi, of Georgia | his partner | — | absent | — |
-| 39 | daughter of Smbat of Lori | her daughter | — | absent | — |
-| 40 | Sultan Alp Arslan | her husband | — | absent | — |
-| 41 | Dawud Chaghri Bey, Lord of Khorasan | his father | — | absent | — |
-| 42 | n n | his mother | — | absent | — |
-| 43 | Inal Kut Chor | her father | [Inal Kut Chor](https://www.geni.com/people/x/6000000035218736073) | id | 2 |
-| 44 | Kut Chor | his mother | [Kut Chor](https://www.geni.com/people/x/6000000115311613394) | id | 2 |
-| 45 | Turgesh Khagan Kut Chor | her father | [Kut Chor](https://www.geni.com/people/x/6000000115311392405) | id | 2 |
-| 46 | Princess Jinhe Ashina | his mother | [Jinhe Ashina](https://www.geni.com/people/x/6000000115313244880) | id | 2 |
-| 47 | Huaidao Ashina | her father | [Huaidao](https://www.geni.com/people/x/6000000115313276887) | id | 2 |
-| 48 | Huseluo Ashina | his father | [Huseluo](https://www.geni.com/people/x/6000000115312653996) | id | 2 |
-| 49 | Princess Hengyang of Tang China | his mother | [Hengyang 隴西狄道](https://www.geni.com/people/x/6000000115311622874) | id | 2 |
-| 50 | Li Yuanfeng 李元鳳 | her brother | [元鳳 隴西狄道](https://www.geni.com/people/x/6000000075060870921) | id | 2 |
-| 51 | Li Hong 李宏 | his son | [宏 隴西狄道](https://www.geni.com/people/x/6000000075061019879) | id | 2 |
-| 52 | Li Yong 李邕 | his son | [邕 李](https://www.geni.com/people/x/6000000075060923880) | id | 2 |
-| 53 | 扶餘 | his wife | [扶餘](https://www.geni.com/people/x/6000000186285688286) | id | 2 |
-| 54 | 德璋 扶餘 | her father | [德璋 扶餘](https://www.geni.com/people/x/6000000186285688253) | id | 2 |
-| 55 | Yung Buyeo | his father | [Yung](https://www.geni.com/people/x/6000000012925092093) | id | 2 |
-| 56 | King Yu, of Kudara | his brother | [Yu](https://www.geni.com/people/x/6000000012925020838) | id | 2 |
-| 57 | King Masanari, of Kudara | his son | [Masanari](https://www.geni.com/people/x/6000000012925079527) | id | 2 |
-| 58 | King Ryogu, of Kudara | his son | [Ryogu](https://www.geni.com/people/x/6000000012925038128) | id | 2 |
-| 59 | Asukabe no Natomaro | his son | [Asukabe no Natomaro](https://www.geni.com/people/x/6000000002841318150) | id | 2 |
-| 60 | Kudara no Nagatsugu | his daughter | [Kudara no Nagatsugu](https://www.geni.com/people/x/6000000002840610304) | id | 2 |
-| 61 | Fujiwara no Uchimaro | her ex-husband | [Fujiwara no Uchimaro](https://www.geni.com/people/x/6000000001907386360) | id | 2 |
-| 62 | Fujiwara no Matate | his father | [Fujiwara no Matate](https://www.geni.com/people/x/6000000001907386405) | id | 2 |
-| 63 | Fujiwara no Fusasaki | his father | [Fujiwara no Fusasaki](https://www.geni.com/people/x/6000000001906745332) | id | 2 |
-| 64 | Soga no Shoshi | his mother | [Soga no Shoshi](https://www.geni.com/people/x/6000000010702248921) | id | 2 |
-| 65 | Soga no Murajiko | her father | [Soga no Murajiko](https://www.geni.com/people/x/6000000012052214898) | id | 2 |
-| 66 | Soga no Umako | his father | [Soga no Umako](https://www.geni.com/people/x/6000000001902965288) | id | 2 |
-| 67 | 太媛 | his adoptive mother | [太媛](https://www.geni.com/people/x/6000000001902786893) | id | 2 |
-| 68 | Okoshi Mononobe | her father | [Okoshi](https://www.geni.com/people/x/6000000002039745463) | id | 2 |
-| 69 | Arayama Mononobe | his father | [Arayama](https://www.geni.com/people/x/6000000002039711104) | id | 2 |
-| 70 | Mononobe no Me | his father | [Me](https://www.geni.com/people/x/6000000002039711241) | id | 2 |
-| 71 | 物部伊莒弗 | his father | [Ikofutsu伊莒弗](https://www.geni.com/people/x/6000000002039751362) | id | 2 |
-| 72 | Mononobe no Ikoto | his father | [Ikoto](https://www.geni.com/people/x/6000000002039880063) | id | 2 |
-| 73 | Goju Kotohime Mononobe | his sister | [Goju Kotohime](https://www.geni.com/people/x/6000000001846197347) | id | 2 |
-| 74 | Keiko-tenno (Otarashihiko'oshirowake) | her partner | [大足彦忍代別](https://www.geni.com/people/x/6000000001829649385) | id | 2 |
-| 75 | 播磨稲日大郎姫 | his wife | [播磨稲日大郎姫](https://www.geni.com/people/x/6000000001844033355) | id | 2 |
-| 76 | 稚武彦命(吉備氏祖) | her father | [稚武彦命](https://www.geni.com/people/x/6000000001835522164) | id | 2 |
-| 77 | Kourei-tenno (Oyamatonekohikofutoni) | his father | [大日本根子彦太瓊尊](https://www.geni.com/people/x/6000000001829634518) | id | 2 |
-| 78 | Koan-tenno (Yamatotarashihikokuni... | his father | [日本足彦国押人尊](https://www.geni.com/people/x/6000000001829735102) | id | 2 |
-| 79 | Kosho-tenno (Mimatsuhikokaeshine) | his father | [観松彦香殖稲尊](https://www.geni.com/people/x/6000000001829628406) | id | 2 |
-| 80 | Itoku-tenno (Oyamatohikosukitomo) | his father | [大日本彦耜友尊](https://www.geni.com/people/x/6000000001829616346) | id | 2 |
-| 81 | An'nei-tenno (Shikitsuhikotamatemi) | his father | [磯城津彦玉手看尊](https://www.geni.com/people/x/6000000001829763097) | id | 2 |
-| 82 | Suizei-tenno (Kamununakawamimi) | his father | [神渟名川耳尊](https://www.geni.com/people/x/6000000001829632570) | id | 2 |
-| 83 | Emperor Jimmu | his father | [Jimmu](https://www.geni.com/people/x/6000000001829589817) | id | 2 |
+| 37 | Constantine IX Monomachos, byzantine emperor | her brother | [Constantine IX](https://www.geni.com/people/x/385935664970005621) | id | 1 |
+| 38 | Guarandukht Bagrationi, of Georgia | his partner | [Guarandukht Bagrationi](https://www.geni.com/people/x/6000000024168588582) | id | 1 |
+| 39 | daughter of Smbat of Lori | her daughter | [daughter of Smbat of Lori](https://www.geni.com/people/x/6000000032327207506) | id | 1 |
+| 40 | Sultan Alp Arslan | her husband | [Muhammad](https://www.geni.com/people/x/6000000031528209013) | id | 1 |
+| 41 | Dawud Chaghri Bey, Lord of Khorasan | his father | [Dawud Chaghri bin Mikail Seljuq](https://www.geni.com/people/x/6000000031528142916) | id | 1 |
+| 42 | n n | his mother | [n](https://www.geni.com/people/x/6000000035218690155) | id | 1 |
+| 43 | Inal Kut Chor | her father | [Inal Kut Chor](https://www.geni.com/people/x/6000000035218736073) | id | 1 |
+| 44 | Kut Chor | his mother | [Kut Chor](https://www.geni.com/people/x/6000000115311613394) | id | 1 |
+| 45 | Turgesh Khagan Kut Chor | her father | [Kut Chor](https://www.geni.com/people/x/6000000115311392405) | id | 1 |
+| 46 | Princess Jinhe Ashina | his mother | [Jinhe Ashina](https://www.geni.com/people/x/6000000115313244880) | id | 1 |
+| 47 | Huaidao Ashina | her father | [Huaidao](https://www.geni.com/people/x/6000000115313276887) | id | 1 |
+| 48 | Huseluo Ashina | his father | [Huseluo](https://www.geni.com/people/x/6000000115312653996) | id | 1 |
+| 49 | Princess Hengyang of Tang China | his mother | [Hengyang 隴西狄道](https://www.geni.com/people/x/6000000115311622874) | id | 1 |
+| 50 | Li Yuanfeng 李元鳳 | her brother | [元鳳 隴西狄道](https://www.geni.com/people/x/6000000075060870921) | id | 1 |
+| 51 | Li Hong 李宏 | his son | [宏 隴西狄道](https://www.geni.com/people/x/6000000075061019879) | id | 1 |
+| 52 | Li Yong 李邕 | his son | [邕 李](https://www.geni.com/people/x/6000000075060923880) | id | 1 |
+| 53 | 扶餘 | his wife | [扶餘](https://www.geni.com/people/x/6000000186285688286) | id | 1 |
+| 54 | 德璋 扶餘 | her father | [德璋 扶餘](https://www.geni.com/people/x/6000000186285688253) | id | 1 |
+| 55 | Yung Buyeo | his father | [Yung](https://www.geni.com/people/x/6000000012925092093) | id | 1 |
+| 56 | King Yu, of Kudara | his brother | [Yu](https://www.geni.com/people/x/6000000012925020838) | id | 1 |
+| 57 | King Masanari, of Kudara | his son | [Masanari](https://www.geni.com/people/x/6000000012925079527) | id | 1 |
+| 58 | King Ryogu, of Kudara | his son | [Ryogu](https://www.geni.com/people/x/6000000012925038128) | id | 1 |
+| 59 | Asukabe no Natomaro | his son | [Asukabe no Natomaro](https://www.geni.com/people/x/6000000002841318150) | id | 1 |
+| 60 | Kudara no Nagatsugu | his daughter | [Kudara no Nagatsugu](https://www.geni.com/people/x/6000000002840610304) | id | 1 |
+| 61 | Fujiwara no Uchimaro | her ex-husband | [Fujiwara no Uchimaro](https://www.geni.com/people/x/6000000001907386360) | id | 1 |
+| 62 | Fujiwara no Matate | his father | [Fujiwara no Matate](https://www.geni.com/people/x/6000000001907386405) | id | 1 |
+| 63 | Fujiwara no Fusasaki | his father | [Fujiwara no Fusasaki](https://www.geni.com/people/x/6000000001906745332) | id | 1 |
+| 64 | Soga no Shoshi | his mother | [Soga no Shoshi](https://www.geni.com/people/x/6000000010702248921) | id | 1 |
+| 65 | Soga no Murajiko | her father | [Soga no Murajiko](https://www.geni.com/people/x/6000000012052214898) | id | 1 |
+| 66 | Soga no Umako | his father | [Soga no Umako](https://www.geni.com/people/x/6000000001902965288) | id | 1 |
+| 67 | 太媛 | his adoptive mother | [太媛](https://www.geni.com/people/x/6000000001902786893) | id | 1 |
+| 68 | Okoshi Mononobe | her father | [Okoshi](https://www.geni.com/people/x/6000000002039745463) | id | 1 |
+| 69 | Arayama Mononobe | his father | [Arayama](https://www.geni.com/people/x/6000000002039711104) | id | 1 |
+| 70 | Mononobe no Me | his father | [Me](https://www.geni.com/people/x/6000000002039711241) | id | 1 |
+| 71 | 物部伊莒弗 | his father | [Ikofutsu伊莒弗](https://www.geni.com/people/x/6000000002039751362) | id | 1 |
+| 72 | Mononobe no Ikoto | his father | [Ikoto](https://www.geni.com/people/x/6000000002039880063) | id | 1 |
+| 73 | Goju Kotohime Mononobe | his sister | [Goju Kotohime](https://www.geni.com/people/x/6000000001846197347) | id | 1 |
+| 74 | Keiko-tenno (Otarashihiko'oshirowake) | her partner | [大足彦忍代別](https://www.geni.com/people/x/6000000001829649385) | id | 1 |
+| 75 | 播磨稲日大郎姫 | his wife | [播磨稲日大郎姫](https://www.geni.com/people/x/6000000001844033355) | id | 1 |
+| 76 | 稚武彦命(吉備氏祖) | her father | [稚武彦命](https://www.geni.com/people/x/6000000001835522164) | id | 1 |
+| 77 | Kourei-tenno (Oyamatonekohikofutoni) | his father | [大日本根子彦太瓊尊](https://www.geni.com/people/x/6000000001829634518) | id | 1 |
+| 78 | Koan-tenno (Yamatotarashihikokuni... | his father | [日本足彦国押人尊](https://www.geni.com/people/x/6000000001829735102) | id | 1 |
+| 79 | Kosho-tenno (Mimatsuhikokaeshine) | his father | [観松彦香殖稲尊](https://www.geni.com/people/x/6000000001829628406) | id | 1 |
+| 80 | Itoku-tenno (Oyamatohikosukitomo) | his father | [大日本彦耜友尊](https://www.geni.com/people/x/6000000001829616346) | id | 1 |
+| 81 | An'nei-tenno (Shikitsuhikotamatemi) | his father | [磯城津彦玉手看尊](https://www.geni.com/people/x/6000000001829763097) | id | 1 |
+| 82 | Suizei-tenno (Kamununakawamimi) | his father | [神渟名川耳尊](https://www.geni.com/people/x/6000000001829632570) | id | 1 |
+| 83 | Emperor Jimmu | his father | [Jimmu](https://www.geni.com/people/x/6000000001829589817) | id | 1 |

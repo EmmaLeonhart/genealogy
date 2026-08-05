@@ -203,55 +203,59 @@ def test_the_path_file_runs_from_the_account_owner_to_jimmu(jimmu):
 
 
 @pytestmark_real
-def test_both_ends_of_the_path_are_held_but_in_different_components(jimmu):
-    """The fact that decides what to do next.
+def test_both_ends_of_the_path_are_held_in_one_component(jimmu):
+    """The two ends met on 2026-08-04.
 
-    If these two ever land in the same component, an export has bridged the two
-    trees and this assertion is the thing that says so — it should then be
-    rewritten rather than deleted.
+    This assertion used to read `first.component != last.component` and
+    `len(components_touched) == 2`, with a docstring saying that if the two ever
+    landed in the same component an export had bridged the trees and it should
+    be rewritten rather than deleted. That is what happened, so it is rewritten.
+    It now guards the other direction: a future export must not *split* the
+    tree, and a merge that loses the bridging records fails here.
     """
     first, last = jimmu.results[0], jimmu.results[-1]
     assert first.held and last.held
-    assert first.component != last.component
-    assert len(jimmu.components_touched) == 2
+    assert first.component == last.component
+    assert len(jimmu.components_touched) == 1
 
 
 @pytestmark_real
-def test_the_gap_is_one_contiguous_block_from_constantine(jimmu):
-    """Six consecutive steps, not a scatter.
+def test_there_is_no_gap_left_in_the_path(jimmu):
+    """Nothing absent, where a 21-step block used to be.
 
-    A single block is what makes the export plan a walk down one chain.
+    The history this replaces, because the numbers are the record of how the
+    tree was actually built:
 
-    **This test has now done its job once.** It read `range(31, 52)` — the
-    twenty-one steps from Jelena Urošević to Li Hong 李宏 — and its docstring
-    said that if a later export filled part of the block it should fail and have
-    its count re-read rather than loosened. On 2026-08-04 two exports did
-    exactly that: the `n n` export took steps 31-36 and the `Li Hong` forest
-    export took 43-51, from opposite ends. What is left is 37-42, Constantine IX
-    Monomachos through the `n n` who is Dawud Chaghri Bey's mother.
+    - The block was **steps 31-51**, Jelena Urošević through Li Hong 李宏, and
+      this test read `range(31, 52)`.
+    - The `n n` export took 31-36 and the `Li Hong` forest export took 43-51,
+      from opposite ends, leaving `range(37, 43)`.
+    - Two `Forest` exports seeded in that six-person window closed it. The path
+      crosses `her brother`, `his partner` and `her husband` links there, so
+      only a style that follows marriages could have bridged it.
+
+    A failure here means an absence has reappeared: either an export was
+    dropped from `data_lake/` or the merge stopped keeping something it kept.
     """
-    absent = [r.step.step for r in jimmu.results if not r.held and r.step.step > 30]
-    assert absent == list(range(37, 43))
-    constantine = jimmu.results[36]
-    assert constantine.step.name.startswith("Constantine IX Monomachos")
-    assert not constantine.held, "the doorway must not report as already held"
+    absent = [r.step.step for r in jimmu.results if not r.held]
+    assert absent == []
 
 
 @pytestmark_real
-def test_the_path_is_unbroken_all_the_way_to_helena(jimmu):
-    """Steps 1-36, every one of them.
+def test_the_path_is_unbroken_the_whole_way_to_jimmu(jimmu):
+    """All 83 steps, with the checkpoints that were once the end of the run.
 
     Steps 1-30 are the original claim, measured exactly: this is the assertion
     that vindicates the summary an earlier session wrote from the Geni page and
     could not re-check. Matching the same path by *name* put eleven holes in
     that run; every one was a spelling difference rather than an absence, and
-    joining on the profile ID removes all eleven. Elisabeth is kept below as the
-    checkpoint that used to be the end of the run.
+    joining on the profile ID removes all eleven.
 
-    Steps 31-36 were added by the `n n` export on 2026-08-04.
+    Elisabeth (30) and Helena (36) are each kept below because each was, in
+    turn, the last held step on this path.
     """
-    assert [r.step.step for r in jimmu.results[:36] if r.held] == list(range(1, 37))
-    assert jimmu.run_ends_at.step.step == 36
+    assert [r.step.step for r in jimmu.results if r.held] == list(range(1, 84))
+    assert jimmu.run_ends_at.step.step == 83
     assert jimmu.results[29].person.geni_id == "6000000003243185408"  # Elisabeth
     assert jimmu.results[35].person.geni_id == "6000000002837351971"  # Helena
 

@@ -8,13 +8,13 @@ to Wikidata.
 ## What this is
 
 Geni.com exports a family tree as GEDCOM, and **each export is bounded at a few
-thousand people** — the eight in `data_lake/` hold between 3836 and 3856
+thousand people** — the ten in `data_lake/` hold between 3836 and 3860
 individuals apiece. They overlap far less than that suggests:
 
 | | individuals | families |
 | --- | ---: | ---: |
-| largest single export | 3856 | 2620 |
-| all eight merged | **27718** | **14114** |
+| largest single export | 3860 | 2620 |
+| all ten merged | **32393** | **16836** |
 | present in every export | 0 | 0 |
 
 So the exports are overlapping slices of one tree rather than copies of it, and
@@ -41,23 +41,26 @@ itself:
 so every record carries a stable primary key across exports, and the same ID is
 the join key to Wikidata via **P2600 (Geni.com profile ID)**.
 
-The merge of all eight currently produces 27718 individuals and 14114 families
+The merge of all ten currently produces 32393 individuals and 16836 families
 with **zero conflicts and no lost lines** — see `reports/merge.md`.
 
-It is **two trees, not one.** One component holds 16217 people (the Norwegian
-material, out through the European royal lines); the other holds 11501 (the
-Japanese mythological line rooted at Kunino-tokotachi-no-mikoto, plus the
-Tang-dynasty and Ashina material reached from it). They share no person and no
-family. Merging is still correct — disjoint components do not conflict, they
-just never meet — but until an export bridges them, "the tree" is a shorthand
-for two. `reports/frontier.md` tracks the components.
+It is **one connected tree**, as of 2026-08-04. It was two for the days before
+that: the Norwegian material and the Japanese mythological line rooted at
+Kunino-tokotachi-no-mikoto, sharing no person and no family. `reports/frontier.md`
+tracks the components, and a future export reaching somewhere nothing else does
+can split it again — that is normal, not a defect. Disjoint components do not
+conflict; they just never meet.
 
-**The bridge is six people wide and we know which six.** `reports/path-jimmu.md`
-checks a Geni relationship path of 83 steps against the merged tree: 77 are
-held, and the 6 that are not — steps 37–42, Constantine IX Monomachos through
-Dawud Chaghri Bey's mother — are exactly what separates the two components. On
-2026-08-04 two exports taken from opposite ends of that gap cut it from 21 steps
-to 6.
+**How the two halves were joined.** `reports/path-jimmu.md` checks an 83-step
+Geni relationship path — Eric Borsheim to Emperor Jimmu — against the merged
+tree, joining on the profile ID at every step. It went **62/83 held, then 77/83,
+then 83/83**: a 21-step gap attacked from both ends, then closed by two exports
+seeded in the six people that were left. Every step of that path is now walkable
+inside our own data.
+
+That is the method, not a one-off: save the Geni page for someone you want to
+reach, extract the path, and it tells you precisely which people stand between
+you and them.
 
 ## Layout
 
