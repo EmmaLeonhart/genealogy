@@ -41,6 +41,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from .frontier import family_graph
+from .identity import profile_url
 from .model import Tree
 
 __all__ = [
@@ -49,6 +50,7 @@ __all__ = [
     "presence_counts",
     "sparse_regions",
     "render_markdown",
+    "render_seed_list",
 ]
 
 #: Level-0 INDI xrefs. Deliberately the same shape the rest of the repo relies
@@ -76,10 +78,51 @@ class Region:
     sample: tuple[str, ...]
     #: mean presence across the region
     mean_presence: float
+    #: who to export from to cover this region — see :func:`_representative`
+    seed: str = ""
+    seed_name: str = ""
 
     @property
     def size(self) -> int:
         return len(self.members)
+
+
+def _representative(
+    members: list[str], tree: Tree, graph: dict[str, list[str]]
+) -> tuple[str, str]:
+    """One person to export from, to cover this region.
+
+    Ranked on three things, in order:
+
+    1. **No parents recorded.** Everyone in the region is thin, but a person
+       whose parents are missing is a doorway: Geni knows who they were and we
+       do not, so a ball centred there grows upward into material we have none
+       of rather than re-walking what we hold.
+    2. **A usable name.** Geni redacts living people to ``Private``, and a
+       region of them cannot be recognised or checked by a human deciding
+       whether the export is worth taking.
+    3. **Degree inside the region.** An export is a breadth-first ball, so
+       seeding it at a well-connected member covers more of the region per hop
+       than seeding it at a leaf.
+
+    This is a heuristic for *where to start*, not a claim that this person is
+    the most important in the region.
+    """
+    inside = set(members)
+    best: tuple[tuple[int, int, int], str] | None = None
+    for geni_id in members:
+        person = tree.people[geni_id]
+        name = person.display_name or ""
+        rank = (
+            0 if person.has_known_parents else 1,
+            0 if (not name or name.lower().strip("<> ") == "private") else 1,
+            sum(1 for n in graph.get(geni_id, ()) if n in inside),
+        )
+        if best is None or rank > best[0]:
+            best = (rank, geni_id)
+    if best is None:  # pragma: no cover - regions are never empty
+        return "", ""
+    return best[1], tree.people[best[1]].display_name or ""
 
 
 def sparse_regions(
@@ -117,12 +160,15 @@ def sparse_regions(
 
         people = [tree.people[m] for m in members]
         named = [p.display_name for p in people if p.display_name]
+        seed, seed_name = _representative(members, tree, graph)
         regions.append(
             Region(
                 members=tuple(members),
                 parentless=sum(1 for p in people if not p.has_known_parents),
                 sample=tuple(named[:6]),
                 mean_presence=sum(counts.get(m, 0) for m in members) / len(members),
+                seed=seed,
+                seed_name=seed_name,
             )
         )
 
@@ -190,21 +236,32 @@ def render_markdown(
     ]
 
     if regions:
+        lines += [
+            "The **seed** column is one person to export from, per region: a "
+            "doorway where possible, preferring someone with a real name over a "
+            "redacted `Private`, and best-connected within the region. It is a "
+            "heuristic for where to start, not a claim about who matters.",
+            "",
+        ]
         lines += _table(
-            ["#", "people", "doorways", "mean presence", "who is in it"],
+            ["#", "people", "doorways", "seed to export from", "who else is in it"],
             [
                 [
                     str(i),
                     str(r.size),
                     str(r.parentless),
-                    f"{r.mean_presence:.2f}",
-                    ", ".join(r.sample) or "—",
+                    (
+                        f"[{r.seed_name or r.seed}]({profile_url(r.seed)})"
+                        if r.seed
+                        else "—"
+                    ),
+                    ", ".join(r.sample[:4]) or "—",
                 ]
-                for i, r in enumerate(regions[:40], start=1)
+                for i, r in enumerate(regions[:60], start=1)
             ],
         )
-        if len(regions) > 40:
-            lines += ["", f"{len(regions) - 40} smaller regions not shown."]
+        if len(regions) > 60:
+            lines += ["", f"{len(regions) - 60} smaller regions not shown."]
     else:
         lines += ["None: no connected run of thin people reaches the minimum size."]
 
@@ -219,3 +276,18 @@ def render_markdown(
         "",
     ]
     return "\n".join(lines) + "\n"
+
+
+def render_seed_list(regions: list[Region]) -> str:
+    """One line per region, in the shape of `individuals I can easily export.txt`.
+
+    ``<url> | Geni - <name>``, so the output drops straight into the file Emma
+    already keeps by hand and can be pasted back into a browser.
+    """
+    lines = []
+    for region in regions:
+        if not region.seed:
+            continue
+        name = region.seed_name or "NN"
+        lines.append(f"{profile_url(region.seed)} | Geni - {name}")
+    return "\n".join(lines) + ("\n" if lines else "")

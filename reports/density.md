@@ -28,50 +28,72 @@ A *region* is a connected run of those people under parent/child/spouse edges �
 
 **Read the doorway column before exporting.** A thin region full of parentless people is under-sampled and worth an export. A thin region with few is plausibly just a small family that really did end, and exporting there buys little.
 
-| # | people | doorways | mean presence | who is in it |
-| --- | ---: | ---: | ---: | ---: |
-| 1 | 6475 | 1757 | 1.00 | Marie d' Auxy, Marie d'Encre, Arnould de Créquy, Cathérine de Créquy, N.N. de Créquy, Jean d'Auxy |
-| 2 | 3858 | 854 | 1.00 | Zachariah Price, Rachel Blinn, John Price, Rachel Hannah Price, William Blinn, Mary Blinn |
-| 3 | 3588 | 977 | 1.00 | Private, <private> Gaya Pereira, Monica, Private, Mauricio, Private |
-| 4 | 3563 | 612 | 1.00 | Inger Maria Sørensdatter, Mathis Sørensen, Jøran Sørensdatter, Berte Michelsdatter Mikkelsdatter, Søren Mathisen Mathisen, Mathis Sørensen |
-| 5 | 2651 | 550 | 1.00 | R Kresna, R Mochammad Amin, RNgt Siti Chatidjah, R Mulyadi, R Wisnu, Rr Siti Hadiati |
-| 6 | 2561 | 957 | 1.00 | Torberg Iversson, Gyrid Torbergsdatter, Ivar Erlingsson Berge, Gudrun Tordsdatter Ådnenes, Margreta Torbergsdatter Flatebo, Gyrid Bårdsdatter Torsnes |
-| 7 | 2410 | 520 | 1.00 | Sardar, Private, Private, Maqbool, Private, Private |
-| 8 | 2355 | 230 | 1.00 | Jusham, Mu'awiya Al-Qaysi, Sa’sa’a Al-Qaysi, Nadira bint Jusham, Nasr, Bakr Al-Qaysi |
-| 9 | 1656 | 378 | 1.00 | Agnes van Holland, Margaretha van Holland, Mechthilde van Holland, Floris 1169 (Flourent), Boudewijn (Baldwin), Robrecht van Holland |
-| 10 | 1377 | 303 | 1.00 | Elżbieta cieszyńska, Anna Cieszyńska Princess of Silesia-Teschen, Przemysław I Noszak, John Henry, Jolanta Helena cieszyńska, Bolesław cieszyński |
-| 11 | 1081 | 109 | 1.00 | 幹 師幹 扶風平陵, 衍 扶風平陵, 靜 扶風平陵, 師綸 希言 扶風平陵, 抗 道生 扶風平陵, 師武 河南洛陽 |
-| 12 | 883 | 239 | 1.00 | Nn Hugobertide, Hugobert, Chrodelinde, Irmina Von Oeren, Norbert von Echternach, Theoderade von Echternach |
-| 13 | 693 | 152 | 1.00 | Princesse Baekche, 珪, 嗣, Consort Liu of China, 寔, Empress Murong of Northern Wei China |
-| 14 | 569 | 104 | 1.00 | Hilleborg Jørgensdatter Grubbe, Ida Jørgensdatter, Lene, Regitze Jørgensdatter Grubbe, Margrethe Jørgensdatter, Karen Jørgensdatter Grubbe |
-| 15 | 453 | 33 | 1.00 | Gregoria de la Garza, Margarita de la Garza, Catarina de la Garza, Juan Antonio Juan Antonio de la Garza Falcón Sepúlveda, Andrea de la Garza de Rentería, Maria Isabel de la Garza Sepulveda Falcon |
-| 16 | 387 | 112 | 1.00 | Íñigo, Lope, María, Lope, Sancha, Velasquita (Belasquita) |
-| 17 | 377 | 94 | 1.00 | Søren Svendsen Orning, Svend Madsen Orning, Ellen Vilsdatter Galskyt, Vil Sørensen, Vogn Svendsen, Svend |
-| 18 | 363 | 117 | 1.00 | Jacob Petersen, Peder, Ingeborg Tygesdatter Hvide, Peder Jacobsen, Ingeborg Pedersdatter Galen, NN |
-| 19 | 326 | 82 | 1.00 | 元長, 瀬名 築山殿, 宗将, 督 良正院, 範子, 憲仁 |
-| 20 | 289 | 54 | 1.00 | Kristi Olsdatter Olsdatter, Ola Osmundson Osmundson, Mette Persdatter Persdatter, Peder Olson Olson, Søren Olson Sandnes, Osmund Olsen Olsen Nygård |
-| 21 | 272 | 66 | 1.00 | 金虎, 彬 世儒 琅邪臨沂, 翁愛 琅邪臨沂, 隆愛 琅邪臨沂, 仚之 琅邪臨沂, 廙 世將 琅邪臨沂 |
-| 22 | 250 | 60 | 1.00 | Antonio, Jacinta, Pedro de Salazar y Correa, Juana Bautista Inez Salazar, Maria Magdalena Salazar Correa, Juan Bautista de Salazar Montoya |
-| 23 | 239 | 66 | 1.00 | 탄 왕, 노, 노, 은 노, 책 노, 노 |
-| 24 | 235 | 74 | 1.00 | Guy, Mabel Hauteville, Sikelgaita of Salerno, Heria Hauteville, Sybille de Hauteville, Robert |
-| 25 | 213 | 24 | 1.00 | 京兆杜陵, 閑 京兆杜陵, 審言 必簡 京兆杜陵, 并 惟兼 京兆杜陵, 薛, 專 京兆杜陵 |
-| 26 | 199 | 60 | 1.00 | María Gualdron, Hermenegildo, Pedro, Juan de Silva Guadrón, Private, Cristobal de Silva |
-| 27 | 182 | 54 | 1.00 | Juana Cornel, Violante, Gonzalo, María Jiménez Cornel, Ramon Cornel, Tomás Cornel |
-| 28 | 182 | 39 | 1.00 | Johanna, Anna Cajsa Jonsdotter, Maja, Jonas, Adolf Fredrik, Carl Petter |
-| 29 | 179 | 17 | 1.00 | Safay II, Nikosis Kandake V, Satyo III, Ramhay II Arkamen II, Zaware Nebrat II, Feliya II Hurnekhet |
-| 30 | 176 | 46 | 1.00 | Maria Bermudes, Álvaro, Maria Barbosa, Fernão Gonçalves, Mécia, Leonor |
-| 31 | 172 | 40 | 1.00 | Berenguela, Aldonça, Pedro, Teresa Pérez Peres Vilarinho, Pedro, Inês |
-| 32 | 161 | 61 | 1.00 | Sigrid Olofsdotter, Nils Olofsson, Olof, Olof, Elin Nilsdotter, Sigrid |
-| 33 | 155 | 41 | 1.00 | João, Fernão, Beatriz, Gil, Filipa, Violante |
-| 34 | 150 | 33 | 1.00 | Ane Magrete Hansdtr Stangeland, Elen Serina Hansdatter Stangeland, Ole Johannes Hansson, Andreas Kristianson, Elen Maria Hansdtr Stangeland, Hans Torkelson |
-| 35 | 142 | 0 | 1.00 | Juan Garza Garza, Gabriel de la Garza Gutiérrez, Manuel de la Garza, Ysidro de la Garza, Juan Antonio de la Garza Montemayor, Antonia de la Garza Montemayor |
-| 36 | 139 | 22 | 1.00 | Günther XXI Graf, Heinrich X von Schwarzburg-Blankenburg-Arnstadt, Christiane Gräfin von Gleichen-Tonna, Heinrich Vll. Graf von Schwarzburg-Blankenburg, Mechild (Mathilde) von Schwarzburg, Judith von Schwarzburg-Blankenburg |
-| 37 | 127 | 30 | 1.00 | Sugoto Kecik, RT Kartowadana / KRMT Kartowadono / Wiratmojo bupati Soekahardja, Atmodiwati / Rubini putri Bupati Domas Banyusurin RT Wongsonegoro, Sutoyo, Sutanto Miyeng, RM Sahitman Sosroatmojo |
-| 38 | 120 | 0 | 1.00 | Nyi Rd. Padmija, Nyi Raden Sacadinata, Rd. Mangkupradja, Rd. Ardjadinata, Nyi Rd. Kapija, Nyi Rd. Ambara |
-| 39 | 114 | 1 | 1.00 | 玄直 京兆長安, 玄真 京兆長安, 玄寶 京兆長安, 元覃 京兆長安, 玄胤 京兆長安, 玄錫 京兆長安 |
-| 40 | 110 | 0 | 1.00 | 5 R. Hasim, 3 R. Adikoesoemah, NR Lenggangmantri, NR Koesoemamantri, 4 R. Soeriabrata, NR Radjapoetri |
+The **seed** column is one person to export from, per region: a doorway where possible, preferring someone with a real name over a redacted `Private`, and best-connected within the region. It is a heuristic for where to start, not a claim about who matters.
 
-2933 smaller regions not shown.
+| # | people | doorways | seed to export from | who else is in it |
+| --- | ---: | ---: | ---: | ---: |
+| 1 | 6475 | 1757 | [Juan Andrés](https://www.geni.com/people/x/6000000014746707044) | Nicolas Gillier, Catherine Gillier, Jeanne de La Rochefoucauld, Marguerite de Craon |
+| 2 | 3858 | 854 | [Mercy Swetland](https://www.geni.com/people/x/6000000014643729729) | Munit, Private, Yeworkwoha "China", Adera |
+| 3 | 3588 | 977 | [William "Bill" Rankin Monk](https://www.geni.com/people/x/6000000005965721836) | Cleomedes, Maria del Carmen, Manuel David, Carmen |
+| 4 | 3563 | 612 | [Jøran Svensdatter](https://www.geni.com/people/x/6000000185467056877) | Svenung Olsen, Sidsel Olsdatter, Erik, Christen Olsen |
+| 5 | 2651 | 550 | [RADEN AYU SOSROKUSUMO](https://www.geni.com/people/x/6000000019595427680) | R Djoko Pratomo (Tomy) Pratomo Tomy, Rr H Soeyastoeti (Sinta) Soeyastoeti Sinta, Rr V Joelianti Yuli, Rr Th Indra Koesoemawati Koesoemawati |
+| 6 | 2561 | 957 | [Christen Pedersen Thrane](https://www.geni.com/people/x/5132829956720138378) | Arne, Halldor Arnesson, Jostein Halldorson Dall, Bergliot Josteinsdtr. Dall |
+| 7 | 2410 | 520 | [multiple wives and concubines](https://www.geni.com/people/x/6000000009332985559) | Murabekh-Shakh, Khadan-Ubugh, Lahuri, Khadan-Oghul |
+| 8 | 2355 | 230 | [Fakhita القشيري](https://www.geni.com/people/x/6000000225516554833) | Malik, Mazin Al-Qaysi, Al-Harith المازني, Awf |
+| 9 | 1656 | 378 | [Floris graaf](https://www.geni.com/people/x/6000000008630617676) | Albrecht Brandenburg-Salzwedel, Judith Countesson von Henneberg, Kunigunde of Brandenburg-Salzwedel, Hermann Askanier |
+| 10 | 1377 | 303 | [Edward](https://www.geni.com/people/x/6000000000202115160) | Ernest Prince Of Brunswick, Albert II von Braunschweig-Wolfenbüttel, Matilda of Brunswick, Magnus I "der Fromme" Welf |
+| 11 | 1081 | 109 | [吳興烏程](https://www.geni.com/people/x/6000000037090742919) | 隴西狄道, 豫 隴西狄道, 超 范陽, 達 范陽 |
+| 12 | 883 | 239 | [Étiennette (Stéphanette) de Gévaudan](https://www.geni.com/people/x/6000000004533176419) | Girard de Roussillon, Mathilde de Roussillon, Berthaire de Paris, Frenande d'Aquitaine |
+| 13 | 693 | 152 | [NN](https://www.geni.com/people/x/6000000002188195107) | 祐 伯援 河南洛陽, 簡, 濬, 夫人 |
+| 14 | 569 | 104 | [Claus Maltesen Sehested](https://www.geni.com/people/x/6000000006266119249) | Karen Hansdatter Dyre, Niels, Anne Nielsdatter Arenfeldt, Otto Nielsen |
+| 15 | 453 | 33 | [Juana Josefa González Hidalgo Garcia](https://www.geni.com/people/x/6000000011266554892) | Leonor Renteria, María Inés de la Garza y de Rentería Sepúlveda, Miguel de la Garza de la Garza Falcón González, Antonia de la Garza Rentería |
+| 16 | 387 | 112 | [Murjan](https://www.geni.com/people/x/6000000009958478755) | Iñigo, Oneca (Iñiga) Iñiguez de Pamplona, García, Estefanía |
+| 17 | 377 | 94 | [Birgitte Sørensdatter](https://www.geni.com/people/x/6000000008749580968) | Gjertrud Pedersdatter Munk, Peder Sørensen, Bertil Andersen Kjærulf, Mette Jepsdatter Benderup |
+| 18 | 363 | 117 | [Christine](https://www.geni.com/people/x/6000000003645811574) | Bjørn Olufsen Bjørn, Oluf Bjørnsen Bjørn, Bjørn Olufsen Bjørn, Hille Moltke |
+| 19 | 326 | 82 | [長穀](https://www.geni.com/people/x/6000000009103594401) | 継政, 宗政, 和子 心定院, 瀬名 築山殿 |
+| 20 | 289 | 54 | [Gunda Elisabeth Gundersen](https://www.geni.com/people/x/6000000019220353379) | Karl Karlsen Kleppe, Karl Torgersen Gjesdal, Maren Karlsdatter Kleppe, Torger Carlsen Kleppe |
+| 21 | 272 | 66 | [溫 元子 譙國龍亢](https://www.geni.com/people/x/6000000023725013942) | 謙之 琅邪臨沂, 裕之 敬弘 琅邪臨沂, 恢之 琅邪臨沂, 瓚之 琅邪臨沂 |
+| 22 | 250 | 60 | [Francisco Melián de Betancourt y Velasco](https://www.geni.com/people/x/6000000009628600211) | Mateo Burgos Antolinez Rangel, Faustina Justina Cipriana Burgos Antolinez y Rangel, Agustín, Andrea Rangel de Mendoza |
+| 23 | 239 | 66 | [윤](https://www.geni.com/people/x/6000000183040497901) | 홍 홍, 왕 왕, 권 권, 왕 왕 |
+| 24 | 235 | 74 | [Ioannes II "Maledictus"](https://www.geni.com/people/x/6000000000937329305) | Richard, Richard, Beatrice, Henri |
+| 25 | 213 | 24 | [貴華 河南洛陽](https://www.geni.com/people/x/6000000146750587821) | 神念 太原祁縣, 僧辯 君才 太原祁縣, 僧修 太原祁縣, 僧智 太原祁縣 |
+| 26 | 199 | 60 | [Juana](https://www.geni.com/people/x/6000000007323333716) | Fernando, María, Fernando Albino, Catalina |
+| 27 | 182 | 54 | [Ximeno Cornel](https://www.geni.com/people/x/6000000062110108010) | Gonzalo, Violante, Sança Ximénez de Arenós, Timbor de Bellpuig |
+| 28 | 182 | 39 | [Lars Persson](https://www.geni.com/people/x/6000000180575396917) | Johanna Persdotter, Carl Johan Persson, Per Larsson, Lars Frederick Pettersson |
+| 29 | 179 | 17 | [Mara Takla Haymanot](https://www.geni.com/people/x/6000000002188294020) | Bahr Ikela, Asgwomgum, Degna Mikael, Latem |
+| 30 | 176 | 46 | [Leonor](https://www.geni.com/people/x/6000000015332952680) | Maria, Rui, Pedro, Guiomar |
+| 31 | 172 | 40 | [Henrique de Caldas de Caldas e Sousa](https://www.geni.com/people/x/6000000020600204667) | Lopo, Leonor, Gonçalo, Fernão |
+| 32 | 161 | 61 | [NN1](https://www.geni.com/people/x/6000000016189817229) | NN, Olof, Anders Jonsson, NN |
+| 33 | 155 | 41 | [Joana Anes](https://www.geni.com/people/x/6000000000073897494) | Joana Fernandes de Portocarreiro, Martim, Maria Martins de Baguim, Guiomar Fernandes de Portocarreiro |
+| 34 | 150 | 33 | [Oleane Louise Larsdatter Pedersen](https://www.geni.com/people/x/6000000007014125468) | Jens Garmand Holm Laland, Ole Johannes Jensson, (Herikstad) Sikveland, Rakel Serina Olsdatter Laland, Anna Magrethe Gulliksdatter Lea |
+| 35 | 142 | 0 | [Gabriel de la Garza Gutiérrez](https://www.geni.com/people/x/6000000000412569254) | Catharina de la Garza Guerra, Pedro de la Garza Guerra, Juan Francisco Xavier de la Garza Guerra, Sebastián de la Garza Gutiérrez |
+| 36 | 139 | 22 | [Günther Vll Gr av von Käfernburg](https://www.geni.com/people/x/6000000003827477621) | Günther Xll (Xl) von Käfernburg, Sophie von Käfernburg, Irmgard von Schwarzburg-Blankenburg, Günther Vll Gr av von Käfernburg |
+| 37 | 127 | 30 | [Burni Sudarmilah (putri Bupati Purworejo, RAA Cokronagoro I)](https://www.geni.com/people/x/6000000101759213821) | Private, RAy Suyanah Gemblong, Suryadi, Private |
+| 38 | 120 | 0 | [Raden Dalem Cakranagara III / Dalem Tjakranagara III](https://www.geni.com/people/x/6000000040002493522) | Private, Private, Private, Private |
+| 39 | 114 | 1 | [邕 京兆杜陵](https://www.geni.com/people/x/6000000075328753854) | 元泚 京兆長安, 元寂 京兆長安, 玄錫 京兆長安, 元清 京兆長安 |
+| 40 | 110 | 0 | [3 Rd H Moestapa](https://www.geni.com/people/x/6000000000607279454) | Private, 3 Rd H Moestapa, 12 Rd H Muhamad Saleh, Private |
+| 41 | 103 | 2 | [???](https://www.geni.com/people/x/6000000002188101400) | 楷 雄方 趙州平棘, 勁 河南, 叡 趙州贊皇, 機 仲括 趙州平棘 |
+| 42 | 100 | 0 | [1 Sultan Abdul Ma'ali Ahmad Kenari [Versi 1]](https://www.geni.com/people/x/6000000008618052953) | Private, Pangeran Arya Ewaraja /Pangeran Raja [Versi 1], Pangeran Arya Wetan [Versi 1], Ratu Inten [Versi 1] |
+| 43 | 97 | 14 | [Dareca . verch Calpurnius](https://www.geni.com/people/x/6000000004089079453) | Budic, Anowed ferch Teithfallt, Yspwys Yspwch ap Aldroen, Hoël Mawr ap Emyr Llydaw |
+| 44 | 96 | 18 | [왕 왕](https://www.geni.com/people/x/6000000028263706661) | 왕 왕, 왕 왕, 왕 왕, 왕 왕 |
+| 45 | 95 | 31 | [Juana](https://www.geni.com/people/x/6000000016811503157) | Juan, Nuño, Antonio, Elvira |
+| 46 | 91 | 22 | [Anne Ottesdatter Skinkel](https://www.geni.com/people/x/6000000000769722749) | Maren Lauridsdatter Løvenbalk, Jørgen Skram, Anne Eriksdatter, Erik Pedersen Skram |
+| 47 | 90 | 0 | [José María](https://www.geni.com/people/x/6000000001758798398) | Pedro, Manuel Ovalle Gallardo, Margarita, Manuela |
+| 48 | 89 | 25 | [Juan Francisco](https://www.geni.com/people/x/6000000007585750865) | Alonso Sarmiento de Olivera, María Antonia Antonia Sarmiento de Olivera y González de la Nava, Leonor Sarmiento de Olivera y González de la Nava, Juana Sarmiento De Olivera Gonzalez De La Nava |
+| 49 | 87 | 15 | [Anne Karina Mannes](https://www.geni.com/people/x/6000000008952768629) | Ingvald, Michael Jonassen, Anne Karina Mannes, Aslaug Espedal |
+| 50 | 84 | 27 | [Catalina Martínez de Rivera y de Contreras](https://www.geni.com/people/x/6000000023155785073) | Francisco Cano del Alcazar, Michaela, Francisco, Pedro |
+| 51 | 84 | 17 | [Zerubbabel .](https://www.geni.com/people/x/6000000000961704850) | Assia, Theudas, Thiago, Matthias |
+| 52 | 82 | 20 | [Pedro Suárez de Figueroa Lasso de la Vega](https://www.geni.com/people/x/6000000000138696939) | Garcí, Pedro Suárez de Figueroa Lasso de la Vega, Leonor Suarez de Figueroa, Blanca |
+| 53 | 81 | 17 | [Isabel de Miranda](https://www.geni.com/people/x/6000000001818290496) | João, Isabel, Francisca de Barros, Francisco |
+| 54 | 78 | 29 | [Wife of Gento](https://www.geni.com/people/x/6000000008369921377) | Berimud, Wideric, Thorismund, Hunimund |
+| 55 | 78 | 13 | [含始](https://www.geni.com/people/x/6000000002188144713) | ?, 邦, 長, 薄 |
+| 56 | 75 | 26 | [María](https://www.geni.com/people/x/6000000001031015474) | Cristóbal, Catalina, Leonor, Juan |
+| 57 | 75 | 23 | [Teresa Rodríguez Rodríguez Maldonado](https://www.geni.com/people/x/6000000010917960028) | Francisca, Antón, Juana, Lorenzo |
+| 58 | 74 | 24 | [Francisco](https://www.geni.com/people/x/6000000001030556854) | José Manuel de, Antonio Alfonso de Andía, Fernando, Catalina Lorenza |
+| 59 | 73 | 14 | [Ingegärd Pedersdotter Kyrning](https://www.geni.com/people/x/6000000002862081440) | N.N., Tyge Tullesen Sparre, Karl Tullesen Sparre, Tulle Truesen Sparre |
+| 60 | 71 | 21 | [Ane Danielsdatter Frafjord Nedrabø](https://www.geni.com/people/x/6000000185158282824) | Elisabeth Olesdatter Molaug, Ole Knutson Molaug, Berta Helena Olsdtr. Molaug, Aksel Torkelson Frafjord |
+
+2913 smaller regions not shown.
 
 ## What this does not say
 

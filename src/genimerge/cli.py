@@ -412,9 +412,13 @@ def _cmd_density(args: argparse.Namespace) -> int:
             tree, counts, regions, export_count=len(exports), threshold=args.threshold
         ),
     )
+    listed = [r for r in regions if r.size >= args.seed_list_min]
+    seed_list = ws.out / "sparse-cluster-seeds.txt"
+    _write(seed_list, density.render_seed_list(listed))
 
     thin = sum(1 for g in tree.people if counts.get(g, 0) <= args.threshold)
     print(f"wrote {output}")
+    print(f"wrote {seed_list}: {len(listed)} seeds, one per region of {args.seed_list_min}+")
     print(
         f"{thin} of {len(tree.people)} people are in <= {args.threshold} export(s), "
         f"forming {len(regions)} regions of {args.min_size}+"
@@ -980,6 +984,12 @@ def build_parser() -> argparse.ArgumentParser:
     )
     p_den.add_argument(
         "--min-size", type=int, default=2, help="ignore thin runs smaller than this"
+    )
+    p_den.add_argument(
+        "--seed-list-min",
+        type=int,
+        default=100,
+        help="smallest region to put in the seed list (default: 100)",
     )
     p_den.add_argument(
         "-o", "--output", type=Path, default=None, help="default: <reports>/density.md"

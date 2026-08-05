@@ -144,3 +144,98 @@ def test_presence_never_exceeds_the_number_of_exports():
 
     assert counts
     assert max(counts.values()) <= len(EXPORTS)
+
+
+# --- picking one person to export from, per region -------------------------
+
+# A region where the choice is not the obvious one: P is best-connected but has
+# parents; Q is a doorway with a name; R is a doorway whose name is redacted.
+PICK = """\
+0 HEAD
+0 @I10@ INDI
+1 NAME Root /X/
+1 FAMS @F10@
+0 @I11@ INDI
+1 NAME P /X/
+1 FAMC @F10@
+1 FAMS @F11@
+0 @I12@ INDI
+1 NAME Q /X/
+1 FAMS @F11@
+0 @I13@ INDI
+1 NAME Private
+1 FAMS @F12@
+0 @I14@ INDI
+1 NAME Kid /X/
+1 FAMC @F11@
+1 FAMC @F12@
+0 @F10@ FAM
+1 HUSB @I10@
+1 CHIL @I11@
+0 @F11@ FAM
+1 HUSB @I11@
+1 WIFE @I12@
+1 CHIL @I14@
+0 @F12@ FAM
+1 HUSB @I13@
+1 CHIL @I14@
+0 TRLR
+"""
+
+
+def test_the_seed_is_a_doorway_even_when_a_non_doorway_is_better_connected():
+    """P has the most relatives in the region and is not chosen: P has parents.
+
+    The whole point of the seed is to grow *outward* into what Geni knows and we
+    do not, and a person whose parents we already hold cannot do that upward.
+    """
+    tree = _tree(PICK)
+    regions = density.sparse_regions(tree, Counter(), threshold=1, min_size=2)
+    big = max(regions, key=lambda r: r.size)
+
+    assert "11" in big.members  # P is in the region
+    assert big.seed != "11"
+    assert not tree.people[big.seed].has_known_parents
+
+
+def test_a_redacted_name_loses_to_a_real_one_among_doorways():
+    """Both Q and R are doorways; `Private` is useless to a human deciding."""
+    tree = _tree(PICK)
+    regions = density.sparse_regions(tree, Counter(), threshold=1, min_size=2)
+    big = max(regions, key=lambda r: r.size)
+
+    assert big.seed == "12"
+    assert big.seed_name == "Q X"
+
+
+def test_the_seed_list_is_in_the_shape_of_emmas_handwritten_file():
+    """`<url> | Geni - <name>`, so it pastes straight into the file she keeps."""
+    tree = _tree(PICK)
+    regions = density.sparse_regions(tree, Counter(), threshold=1, min_size=2)
+    text = density.render_seed_list(regions)
+
+    assert text.endswith("\n")
+    for line in text.strip().splitlines():
+        url, name = line.split(" | ")
+        assert url.startswith("https://www.geni.com/people/")
+        assert name.startswith("Geni - ")
+
+
+@pytest.mark.skipif(not EXPORTS, reason="no exports in data_lake/")
+def test_every_listed_region_gets_a_seed_and_it_is_inside_the_region():
+    """A seed from outside its own region would send an export to the wrong place."""
+    from genimerge import merge as merge_mod
+    from genimerge.model import build_tree as _build
+
+    doc, _ = merge_mod.merge_files(EXPORTS)
+    tree = _build(doc.records)
+    counts = density.presence_counts(EXPORTS)
+    regions = [r for r in density.sparse_regions(tree, counts) if r.size >= 100]
+
+    assert regions
+    for region in regions:
+        assert region.seed, f"region of {region.size} has no seed"
+        assert region.seed in region.members
+        # The picker must never pass over a doorway when the region has one.
+        if region.parentless:
+            assert not tree.people[region.seed].has_known_parents
