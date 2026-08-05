@@ -2715,3 +2715,54 @@ the family graph, never a geographic classification.
 
 **958 passed**, Python 3.13.14. Not CI-verified; CI is `workflow_dispatch:` only
 here on purpose.
+
+---
+
+## 2026-08-04 — `entity_resolution.md` becomes a batch
+
+Emma added `entity_resolution.md` — hand-made Geni-to-Wikidata identities plus
+label corrections — and queued "look over it and apply this stuff". Applied as
+far as this repo goes: `genimerge.entities` parses it and
+`python -m genimerge entity-resolution` writes
+`out/wikidata/entity-resolution.qs` and `reports/entity-resolution.md`. **Six
+P2600 statements and three English label edits.** Nothing was sent to Wikidata.
+
+**Why a parser rather than transcribing nine lines.** The file says at the top
+"they're a bit unstructured" and is obviously going to grow. Hand-writing the
+batch once would mean hand-writing it again every time she adds an entry. The
+parser reads what is unambiguously machine-readable — Geni URLs, Wikidata URLs,
+label instructions — and **reports what it cannot understand instead of dropping
+it**, which is the only way a free-form source file is safe to automate over.
+
+**The grouping rule is not blank lines, and finding that out is the whole
+story.** Splitting on blank lines is the obvious reading and it silently ate an
+entry: Emma's last one puts the item, the profile and the label instruction in
+three separate blocks, so the item and the profile landed in different blocks
+and were both reported as unparsable halves of nothing. The rule is now "start a
+new entry when the next line would give this one a *second* Geni profile or a
+*second* Wikidata item" — deterministic, blank-line-agnostic, and it still
+cannot mispair, because a second profile ends the entry before it can be paired.
+That took the output from 5 resolutions and 2 labels to **6 and 3, with nothing
+unparsed**.
+
+**One deliberate tolerance.** The source contains "add engligh label". The
+pattern accepts `eng?\w*` so a scratchpad typo does not cost a real edit, and
+stays anchored to `en` so it can never match another language — a label written
+into the wrong language overwrites someone else's work and is not recoverable by
+anyone who cannot read it. A test asserts "french label" is *not* accepted.
+
+**Labels carry no reference.** QuickStatements does not accept one on a label,
+and inventing a claim to hang it off would be a different edit than the one
+requested. The P2600 claims do carry S854/S813 as every other batch here does.
+
+**A resolution for a profile we do not hold is still emitted**, and flagged.
+Emma can recognise someone no export has reached; the assertion is hers and does
+not depend on our coverage. All six happen to be in the tree, all on the Jimmu
+path.
+
+`tests/test_entities.py` asserts the real file parses with **zero** unparsed
+entries, so an entry written in a shape the parser does not know fails the suite
+— and the fix is to teach the parser, never to reformat Emma's file.
+
+**970 passed**, Python 3.13.14. Not CI-verified; CI is `workflow_dispatch:` only
+here on purpose.

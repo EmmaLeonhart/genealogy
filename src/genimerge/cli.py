@@ -15,6 +15,7 @@ from . import (
     consistency,
     coverage,
     crosscheck,
+    entities,
     frontier,
     gedcom,
     genipage,
@@ -386,6 +387,55 @@ def _cmd_quickstatements(args: argparse.Namespace) -> int:
         f"{len(batch.already_present)} already correct, "
         f"{len(batch.conflicting)} contradict an existing ID (excluded, listed in the .md)"
     )
+    print("Nothing has been sent to Wikidata. Review the .md before running the batch.")
+    return 0
+
+
+def _cmd_entity_resolution(args: argparse.Namespace) -> int:
+    ws = Workspace.from_args(args)
+    source = args.file or (REPO_ROOT / "entity_resolution.md")
+    if not source.exists():
+        print(f"no such file: {source}", file=sys.stderr)
+        return 1
+
+    parsed = entities.read_file(source)
+
+    # Corroboration only: a resolution for a profile we do not hold is still
+    # emitted, because the assertion is Emma's and does not depend on our
+    # coverage. Reading the tree is skipped when nothing would use it.
+    known: set[str] = set()
+    if parsed.resolutions:
+        try:
+            known = set(_load_tree(args.source, ws).people)
+        except Exception as exc:  # pragma: no cover - depends on data_lake
+            print(f"could not load the tree to corroborate ({exc}); continuing", file=sys.stderr)
+
+    out_dir = ws.wikidata
+    _write(
+        out_dir / "entity-resolution.qs",
+        entities.render_quickstatements(parsed, retrieved=args.retrieved, known=known),
+    )
+    report = args.output or (ws.reports / "entity-resolution.md")
+    _write(
+        report,
+        entities.render_markdown(
+            parsed, source=source.name, retrieved=args.retrieved, known=known
+        ),
+    )
+
+    missing = [r for r in parsed.resolutions if r.geni_id not in known]
+    print(
+        f"wrote {out_dir / 'entity-resolution.qs'}: "
+        f"{len(parsed.resolutions)} P2600 statements, {len(parsed.labels)} label edits"
+    )
+    if missing:
+        print(f"{len(missing)} name a Geni profile the merged tree does not hold")
+    if parsed.unparsed:
+        print(
+            f"{len(parsed.unparsed)} entries were NOT understood and are in no batch "
+            f"— see {report}",
+            file=sys.stderr,
+        )
     print("Nothing has been sent to Wikidata. Review the .md before running the batch.")
     return 0
 
@@ -876,6 +926,29 @@ def build_parser() -> argparse.ArgumentParser:
         help="date for the reference qualifier, YYYY-MM-DD (default: today)",
     )
     p_qs.set_defaults(func=_cmd_quickstatements)
+
+    p_er = sub.add_parser(
+        "entity-resolution",
+        help="turn the hand-written entity_resolution.md into a reviewable batch",
+        description=(
+            "Reads Emma's free-form Geni-to-Wikidata resolutions and label edits "
+            "and writes a QuickStatements batch. Entries it cannot parse are "
+            "reported, never dropped. Nothing is sent to Wikidata."
+        ),
+    )
+    p_er.add_argument(
+        "file", type=Path, nargs="?", default=None, help="default: entity_resolution.md at the repo root"
+    )
+    p_er.add_argument("--source", type=Path, default=None, help="a GEDCOM to read instead of merging")
+    p_er.add_argument(
+        "-o", "--output", type=Path, default=None, help="report path (default: <reports>/entity-resolution.md)"
+    )
+    p_er.add_argument(
+        "--retrieved",
+        default=date.today().isoformat(),
+        help="date for the reference qualifier, YYYY-MM-DD (default: today)",
+    )
+    p_er.set_defaults(func=_cmd_entity_resolution)
 
     p_names = sub.add_parser(
         "names",

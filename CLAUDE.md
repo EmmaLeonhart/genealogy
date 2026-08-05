@@ -166,6 +166,17 @@ is "the Li Hong export" and its seed is an `NN` wife of Li Yuanfeng created at
 exporting from it is the technique; the filename records the seed, not the
 intent.
 
+**`entity_resolution.md` is Emma's scratchpad and must stay free-form.** It
+holds Geni-to-Wikidata identities she recognised by hand plus label corrections
+she wants — evidence no query in this repo can produce. `genimerge.entities`
+parses it; `python -m genimerge entity-resolution` writes
+`out/wikidata/entity-resolution.qs`. **Do not reformat the file to suit the
+parser.** When an entry is not understood the parser reports it and the fix is
+to teach the parser, which `tests/test_entities.py` pins by asserting the real
+file parses with zero unparsed entries. Entries are grouped by "one Geni profile
+and one Wikidata item, greedily" — *not* by blank lines, which was tried and
+split one of Emma's entries into two unparsable halves.
+
 **Stdlib only.** `urllib` covers the Wikidata SPARQL endpoint. Add a dependency
 only when the stdlib genuinely cannot do the job.
 

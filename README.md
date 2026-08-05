@@ -134,6 +134,7 @@ python -m genimerge seeds            # what to export next  -> reports/seeds.md
 python -m genimerge path-from-html "geni_pages/<saved page>.html" -o data_lake/paths/jimmu.tsv
 # how much of that path the tree holds -> reports/path-jimmu.md and .json
 python -m genimerge path data_lake/paths/jimmu.tsv
+python -m genimerge entity-resolution # Emma's hand-made links -> out/wikidata/entity-resolution.qs
 python -m genimerge names            # name-item coverage   -> reports/names.md
 python -m genimerge quickstatements  # edits to review      -> out/wikidata/add-p2600.qs
 python -m genimerge name-links       # name links to review -> out/wikidata/add-names.qs

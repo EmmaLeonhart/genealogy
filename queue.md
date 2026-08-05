@@ -15,48 +15,41 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
-0. Look over entity_resolution.md and apply this stuff in that file. 
+1. **Review and run `out/wikidata/entity-resolution.qs`.** Six P2600 statements
+   and three English label edits, built from `entity_resolution.md` by
+   `python -m genimerge entity-resolution`. All six Geni profiles are in the
+   merged tree. **BLOCKED-ON-USER-ACTION** — nothing in this repo sends anything
+   to Wikidata, and the label edits overwrite what other editors wrote, so they
+   want reading before they run. Re-run the command after adding entries to the
+   source file; it reports anything it cannot parse instead of dropping it.
 
-1. **Ingest the rest of `exports/archive/` as the downloads finish.** ~20
-   Forest/Ancestors/Descendants/BloodTree exports at 3860 apiece; only `(22)`
-   and `(23)` have been taken into `data_lake/` so far, and those only because
-   they turned out to hold the Jimmu bridge. Ingesting is a copy into
-   `data_lake/` under `export-Forest-<seedID>.ged` and a re-run, with one
-   wrinkle to settle first: two archive exports could share a seed with each
-   other across styles, which the current filename convention does not
-   disambiguate — `export-<style>-<seedID>.ged` would.
+2. **Keep ingesting `exports/archive/` as downloads land.** 45 exports are in
+   `data_lake/` and Emma expects up to ~50. The ingest is: copy to
+   `data_lake/export-<style>-<seedID>.ged` and re-run `merge`, `frontier`,
+   `inventory`, `consistency`, `export`, `seeds`, and `path` for each file in
+   `data_lake/paths/`. `GENI_EXPORT_CAP` will need raising again; the test says
+   so when it does.
 
-   **Check each one against `reports/path-jimmu.md`-style path files before
-   assuming it is bulk.** `(22)` and `(23)` were sitting in `archive/` looking
-   like undifferentiated bulk while holding the six people the whole tree was
-   waiting on.
+3. **Investigate why the error counts grew faster than the tree.** From 10
+   exports to 45 the tree grew 2.75× but impossible dates grew 4.7× (261 →
+   1234) and possible duplicates 6.8× (53 → 362). Either the newer material is
+   worse, or a check scales badly with tree size and is now reporting pairs it
+   should not. **NEEDS-INVESTIGATION** — worth settling before any of these
+   dates reach Wikidata, since `add-claims.qs` builds P569/P570 from them.
 
-2. **Re-measure the standing-context counts below against the ten-export
-   merge.** The impossible/implausible date counts now read **261 and 229**
-   against the 96 and 89 quoted in the note, and duplicates 13 likely / 53
-   possible; `reports/consistency.md` is regenerated but the prose here is not.
-   Growing the tree by 2× grew the error list by ~2.7×, which is worth a look in
-   itself.
+4. **Turn the saved pages into path reports.** `Gervasio of Toledo`, `Madgacen`,
+   `Makeda Queen of Sheba`, `NN Basse`, `NN daughter of Berenice`, `NN of
+   Malwa`, `NN`, `Princess NN`, `Psamtik II`, `daughter of the king of Assyria`,
+   `Lady Palsu of the Jin clan`, `意美 Hata`. Each is `path-from-html` → `path`
+   → a report saying how many steps are held and where the gap is. Cheap, no
+   network. This is what turned the Jimmu page from a guess into a six-person
+   target, and with 45 exports merged many of these may already be complete.
 
-4. **Turn the nine new saved pages into path reports — after the Jimmu gap, not
-   before.** Emma saved these on 2026-08-04 as candidate connections and asked
-   explicitly that the Japanese emperor line be finished first:
-   `Gervasio of Toledo`, `Madgacen`, `Makeda Queen of Sheba`, `NN Basse`,
-   `NN daughter of Berenice`, `NN of Malwa`, `NN`, `Princess NN`, `Psamtik II`,
-   `daughter of the king of Assyria`, `Lady Palsu of the Jin clan`, `意美 Hata`.
-   Each is `path-from-html` → `data_lake/paths/<name>.tsv` → `path` → a report
-   saying how many steps are already held and where the gap is, which is what
-   turned the Jimmu page from a guess into a six-person target. Cheap, no
-   network, and it ranks the candidates against each other before any export is
-   taken.
-
-5. **The Wikidata reports are stale and nothing says so on their face.**
-   `reports/wikidata-coverage.md`, `wikidata-crosscheck.md` and `names.md`
-   describe the 16266-person tree; the tree is now 27718. Refreshing them means
-   `reconcile` against the live SPARQL endpoint, which is the only part of this
-   pipeline that needs network, so it is a deliberate run rather than part of
-   the merge. **BLOCKED-ON-EXTERNAL** only in the weak sense that it needs the
-   Wikidata endpoint to be up; unblock signal is simply choosing to run it.
+5. **The Wikidata reports are stale.** `reports/wikidata-coverage.md`,
+   `wikidata-crosscheck.md` and `names.md` describe the 16266-person tree; it is
+   now 89474. Refreshing means `reconcile` against the live SPARQL endpoint —
+   the only networked part of this pipeline, so a deliberate run rather than
+   part of the merge.
 
 ### Standing context
 
