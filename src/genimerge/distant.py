@@ -45,6 +45,14 @@ __all__ = ["DistantPair", "bfs", "far_pairs", "render_markdown", "render_html"]
 #: person — the profile exists but the page will not show a path.
 _UNUSABLE = {"", "private", "n n", "nn", "?", "unknown"}
 
+#: A pair below this share of the widest one is not evidence of anything: the
+#: greedy search tails off, and two people five hops apart are near relatives.
+MIN_SHARE_OF_WIDEST = 0.4
+
+#: ...and an absolute floor, so a small or shallow tree cannot report a
+#: three-hop pair merely because it is the widest one there.
+MIN_HOPS = 12
+
 
 def _usable(name: str) -> bool:
     return name.strip().lower().strip("<>") not in _UNUSABLE
@@ -165,13 +173,38 @@ def far_pairs(tree: Tree, count: int = 10, graph=None) -> list[DistantPair]:
         # ten sweeps and hundreds: the first real run was killed after 21
         # minutes of CPU without producing a row.
         #
+        # Both ends are retired, not just the seed's. Retiring only the seed
+        # gave twelve pairs with twelve different seeds and *ten* whose far end
+        # was a different member of the same Chinese lineage: that clan is the
+        # graph's deepest branch, so it wins "farthest from here" from almost
+        # anywhere. Distances from the seed cannot say which nodes are near
+        # `other`, but everything in the outermost shell is, near enough.
+        #
         # The radius scales with the pair, so "a different corner" means
         # something proportional to how wide the graph is rather than a
         # constant that would be wrong at either size.
-        radius = max(2, dist[other] // 4)
-        used.update(node for node, d in dist.items() if d <= radius)
+        radius = max(2, dist[other] // 6)
+        far = dist[other] - radius
+        used.update(node for node, d in dist.items() if d <= radius or d >= far)
         used.add(other)
     pairs.sort(key=lambda p: -p.distance)
+
+    # Drop pairs that are not actually distant.
+    #
+    # Greedy retirement shrinks the pool it draws from, so the run tails off:
+    # a first pass gave 311, 173, 120, 76, 49, 33, 18, 10, 8 and 5 hops. A
+    # five-hop pair is two people who are nearly related, and listing it under
+    # "distant pairs" would invite exactly the wrong export. The floor is
+    # relative because the graph's width is not known in advance.
+    if pairs:
+        floor = max(MIN_HOPS, int(pairs[0].distance * MIN_SHARE_OF_WIDEST))
+        kept = [p for p in pairs if p.distance >= floor]
+        dropped = len(pairs) - len(kept)
+        if dropped:
+            # Never a silent cap: the caller reports this.
+            far_pairs.dropped_as_too_close = dropped
+            far_pairs.floor = floor
+        pairs = kept
     return pairs
 
 

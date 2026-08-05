@@ -260,3 +260,48 @@ untouched.
 What is genuinely unbuilt is a non-GEDCOM input path, and there is no second
 format in hand to build one against — so this stays abstract until a source that
 is not a GEDCOM turns up.
+
+## 8. A parallel Wikidata tree, built by SPARQL, and provenance throughout
+
+**Recorded 2026-08-05, in Emma's framing. Long-term — she is still doing a
+comprehensive Geni export, and that comes first.**
+
+The end goal is not only to reconcile our Geni tree against Wikidata one person
+at a time, but to **build a parallel tree out of Wikidata itself** via SPARQL
+and then piece the two together. Items 2 and 6 match individuals; this is the
+larger move of treating Wikidata as a second genealogy with its own shape.
+
+**Wikidata behaves differently, and the difference is the point.** It has
+different notability standards, so its tree is not a subset or a superset of
+Geni's — it is dense exactly where Geni is dense (heavily studied dynasties) and
+absent for the ordinary people who make up most of a Geni export. Expect the two
+trees to agree on structure and disagree on who exists at all.
+
+**Emma's judgement on where exports pay, recorded because it changes the
+ranking.** Hyper-dense regions are **low** return on an export: we can get that
+material from Wikidata instead, and where Geni disagrees with Wikidata there it
+will be over minor details rather than whole people. She also expects those
+regions to be *hard* to export from at all — see the note on Geni entry points
+below. So the small-world but non-dense regions are the ones worth exporting,
+which cuts against ranking purely by doorway count.
+
+**Why dense regions resist export, which no report here could have worked out.**
+Emma gains access to a cluster through *nearby contributions* — that is how
+every export so far was seeded. Once an area is too densely covered by other
+contributors she cannot add an individual to it, and so cannot create the
+foothold an export needs. A larger export size limit would penetrate these
+areas; the current one does not. This is a constraint of Geni's editing model,
+not of our data, and it explains the Carolingian hole in `reports/paths.md`
+better than anything measured here.
+
+**Provenance is a requirement, not a nicety.** Every fact will end up with more
+than one possible origin — a Geni export, a Wikidata statement, or order.life —
+and they will disagree. Each needs to carry where it came from. Nothing in the
+merge records this today: `Merger` keeps the winning value and the conflict
+list, not the source file per field.
+
+**`order.life` is the last thing to touch, and not before everything else is
+settled.** It is a separate repo on this machine holding similar material that
+behaves differently again. **Another agent is editing it right now and it is in
+flux**, so reading it for anything load-bearing would be reading a moving
+target. BLOCKED-ON-EXTERNAL until Emma says it has settled.

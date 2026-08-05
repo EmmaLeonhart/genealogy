@@ -42,13 +42,15 @@ def _graph(tree):
 
 
 def test_the_widest_pair_of_a_chain_is_its_two_ends():
-    tree = tree_from(chain(8))
+    # Long enough to clear MIN_HOPS: a chain of 8 is a legitimate tree but its
+    # widest pair is 7 hops, which the floor correctly refuses to call distant.
+    tree = tree_from(chain(40))
 
     pairs = distant.far_pairs(tree, count=1)
 
     assert len(pairs) == 1
-    assert {pairs[0].a, pairs[0].b} == {"1", "8"}
-    assert pairs[0].distance == 7
+    assert {pairs[0].a, pairs[0].b} == {"1", "40"}
+    assert pairs[0].distance == 39
 
 
 def test_a_spouse_edge_is_one_hop_like_any_other():
@@ -120,7 +122,7 @@ def test_the_report_says_what_a_row_means_and_how_it_was_measured():
     The row is a prediction that Geni holds a *shorter* route through people we
     lack, so the text carrying that has to reach the rendered report.
     """
-    tree = tree_from(chain(6))
+    tree = tree_from(chain(40))
     text = distant.render_markdown(distant.far_pairs(tree, count=1), len(tree.people))
 
     assert "shorter one" in text
@@ -174,3 +176,45 @@ def test_every_person_appears_in_at_most_one_pair():
     seen = [p.a for p in pairs] + [p.b for p in pairs]
 
     assert len(seen) == len(set(seen))
+
+
+def test_both_ends_are_retired_not_only_the_seed():
+    """Retiring one end leaves every pair sharing the graph's deepest branch.
+
+    On the real tree, retiring only the seed produced twelve pairs with twelve
+    different seeds and ten whose far end was a different member of the same
+    Chinese lineage — the deepest branch wins "farthest from here" from almost
+    anywhere, so it appeared over and over.
+
+    On a chain the same failure shows as every pair ending at the same tip.
+    """
+    tree = tree_from(chain(80))
+
+    pairs = distant.far_pairs(tree, count=4)
+
+    ends = sorted(int(p.b) for p in pairs)
+    assert all(b - a > 1 for a, b in zip(ends, ends[1:])), ends
+
+
+def test_pairs_that_are_not_actually_distant_are_dropped():
+    """The greedy search tails off, and the tail is misleading.
+
+    A real run gave 311, 173, 120, 76, 49, 33, 18, 10, 8 and 5 hops. Two people
+    five hops apart are near relatives; listing them as a "distant pair" would
+    invite exactly the wrong export, since the whole premise is that a long
+    in-tree walk predicts a missing community.
+    """
+    tree = tree_from(chain(200))
+
+    pairs = distant.far_pairs(tree, count=20)
+
+    assert pairs, "a 200-person chain should yield at least one distant pair"
+    floor = pairs[0].distance * distant.MIN_SHARE_OF_WIDEST
+    assert all(p.distance >= floor for p in pairs)
+
+
+def test_a_shallow_tree_reports_nothing_rather_than_its_widest_near_pair():
+    """MIN_HOPS is absolute, so a small tree cannot promote a 3-hop pair."""
+    tree = tree_from(chain(6))
+
+    assert distant.far_pairs(tree, count=5) == []
