@@ -15,6 +15,11 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
+
+0.1 I have done a large amount of exports that definitely fleshed out the trees based off of your suggestions, although geni seems to have crapped out a bit, so it's probably gonna be tomorrow. Integrate these things when they arrive. I feel like they're probably going to be the last because I don't know what's going on with geni right now, but it's a bit difficult to get things to run. 
+
+0.2 As another thing, there were some profile merges and edits related to Japanese emperors, particularly Emperor Ojin, and I just want you to keep in mind that this is the case. You probably will be able to see it in the data somewhere. Not 100% sure you probably would, because there were duplicates of Emperor Ojin and some other people. 
+
 1. **BLOCKED-ON-USER-ACTION — export from `NN 高円宮` `6000000209740059823`.**
    The one individual on `individuals I can easily export.txt` that is **not in
    the tree**, and it is not merely unmerged: grepping the whole repo finds that
