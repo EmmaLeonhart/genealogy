@@ -13,15 +13,15 @@ It is not only tidiness. `genimerge crosscheck` proposes P569 and P570 statement
 
 | | count |
 | --- | ---: |
-| people in the tree | 89474 |
-| of those, carrying any year | 40665 |
-| **impossible** — cannot be true | **1234** |
-| **implausible** — could be, probably is not | **765** |
+| people in the tree | 105349 |
+| of those, carrying any year | 48639 |
+| **impossible** — cannot be true | **1548** |
+| **implausible** — could be, probably is not | **916** |
 
 A child born within a year of its father's death is ordinary and is **not** reported. There is no such allowance on the mother's side, where a birth after death is not possible at all — counting the two together would invent defects and slander real births.
 
 
-## Impossible (1234)
+## Impossible (1548)
 
 Every one of these is an error somewhere — in a date, or in a link between two people who are not really parent and child.
 
@@ -130,7 +130,7 @@ Showing the first 100.
 | [Gilia (Guillemette) de Gabarret](https://www.geni.com/people/x/6000000004868825721) | born 1120, after their father Pierre II de Gavarret died in 1108 | [Pierre II de Gavarret](https://www.geni.com/people/x/332838296500005765) |
 | [D. Maria](https://www.geni.com/people/x/6000000000547181787) | born 1120, after their father Soeiro died in 1103 | [Soeiro](https://www.geni.com/people/x/6000000005789438199) |
 
-## Implausible (765)
+## Implausible (916)
 
 A parent under 12, or a lifespan over 120 years. Some of these will be correct; they are here for a human to judge, not to be taken as defects.
 
@@ -245,15 +245,15 @@ The merge guarantees one record per Geni **profile**, which is not one record pe
 
 | | groups |
 | --- | ---: |
-| **likely** — same name, same parents, same birth year | **20** |
-| **possible** — same name and year, parents differ or unknown | **362** |
-| excluded as reused names — see below | 183 |
+| **likely** — same name, same parents, same birth year | **27** |
+| **possible** — same name and year, parents differ or unknown | **490** |
+| excluded as reused names — see below | 205 |
 
-**183 groups share a name and both parents but were born in different years, and are deliberately not listed.** In these families a dead child's name was routinely given to the next child, so those are two real siblings. Matching on name and parents alone would return them all as duplicates and be wrong about nearly every one — the exclusion is most of the work here, not an oversight.
+**205 groups share a name and both parents but were born in different years, and are deliberately not listed.** In these families a dead child's name was routinely given to the next child, so those are two real siblings. Matching on name and parents alone would return them all as duplicates and be wrong about nearly every one — the exclusion is most of the work here, not an oversight.
 
 **Nothing is merged, and nothing here should be.** Names are evidence for a human, never a join: this project keys on the Geni profile ID precisely because looser matching once produced a link to a stranger's profile. Merging two profiles is an edit on Geni, made by somebody who has opened both.
 
-### Likely (20)
+### Likely (27)
 
 Same name, same parents, same birth year. Short of siblings born in one year and given one name, these are one person recorded twice.
 
@@ -261,26 +261,33 @@ Same name, same parents, same birth year. Short of siblings born in one year and
 | ---: | --- |
 | 1827 | [Adams](https://www.geni.com/people/x/6000000175903869823) · [Adams](https://www.geni.com/people/x/6000000175904041822) |
 | 1784 | [Anders Andersen](https://www.geni.com/people/x/6000000043206089118) · [Anders Andersen](https://www.geni.com/people/x/6000000216557161033) |
+| 1736 | [Anselmo](https://www.geni.com/people/x/6000000017056005145) · [Anselmo](https://www.geni.com/people/x/6000000026854626753) |
+| 1671 | [Antonia de la Garza Rentería](https://www.geni.com/people/x/6000000014351192183) · [Antonia de la Garza Renteria](https://www.geni.com/people/x/6000000224696683042) |
 | 1251 | [Armand de Polignac](https://www.geni.com/people/x/6000000003827781240) · [Armand de Polignac](https://www.geni.com/people/x/6000000021354941681) |
 | 375 | [Artemia](https://www.geni.com/people/x/6000000010299987649) · [Artemia](https://www.geni.com/people/x/6000000084412641848) |
 | 1966 | [Brit Synnøve Øgård](https://www.geni.com/people/x/5708751767600042629) · [Brit Synnøve Øgård](https://www.geni.com/people/x/6000000012972857063) |
 | 1811 | [Christen Sørensen](https://www.geni.com/people/x/6000000185391126960) · [Christen Sørensen](https://www.geni.com/people/x/6000000191509575843) |
+| 1668 | [Clara de la Garza Rentería](https://www.geni.com/people/x/6000000031828246287) · [Clara de la Garza Renteria](https://www.geni.com/people/x/6000000224696683004) |
 | 500 | [Grandson Of Aschawir Unknown](https://www.geni.com/people/x/6000000000437045716) · [Grandson Of Aschawir Unknown](https://www.geni.com/people/x/6000000000437388561) |
 | 1816 | [Hannah Jane Webster](https://www.geni.com/people/x/6000000018546757605) · [Hannah Jane Webster](https://www.geni.com/people/x/6000000181289150839) |
 | 1783 | [Hans Halvorsen](https://www.geni.com/people/x/6000000010826957358) · [Hans Halvorsen](https://www.geni.com/people/x/6000000017762820499) |
 | 1803 | [Hans Sørensen](https://www.geni.com/people/x/6000000185392321968) · [Hans Sørensen](https://www.geni.com/people/x/6000000209227678851) |
 | 1795 | [Jared Webster](https://www.geni.com/people/x/6000000018545890583) · [Jared Webster](https://www.geni.com/people/x/6000000181289151139) |
 | 1789 | [Jason Webster](https://www.geni.com/people/x/6000000018546096545) · [Jason Webster](https://www.geni.com/people/x/6000000181289151100) |
+| 1830 | [Jos Mara Tamayo Giraldo](https://www.geni.com/people/x/6000000171354486901) · [Jos Mara Tamayo Giraldo](https://www.geni.com/people/x/6000000171354486908) |
+| 1778 | [Jose Miguel Serna Giraldo](https://www.geni.com/people/x/6000000175709783990) · [José Miguel Serna Giraldo](https://www.geni.com/people/x/6000000183573080006) |
+| 1786 | [Maria Dorotea Serna Giraldo](https://www.geni.com/people/x/6000000175709783945) · [María Dorotea Serna Giraldo](https://www.geni.com/people/x/6000000183573080038) |
 | 1815 | [Marte Maria Hansdatter](https://www.geni.com/people/x/6000000007616030680) · [Marte Maria Hansdatter](https://www.geni.com/people/x/6000000209230667868) |
 | 1800 | [Mathis Sørensen](https://www.geni.com/people/x/6000000015446339535) · [Mathis Sørensen](https://www.geni.com/people/x/6000000185388470917) |
 | 1798 | [Mercy Webster](https://www.geni.com/people/x/6000000018546187362) · [Mercy Webster](https://www.geni.com/people/x/6000000181289151126) |
+| 1695 | [Miguel Tiscareno de Molina y Villalobos de Martin del Campo](https://www.geni.com/people/x/6000000152668557855) · [Miguel Tiscareño De Molina y Villalobos de Martin del Campo](https://www.geni.com/people/x/6000000196831475162) |
 | 1631 | [Ola Nilsen Skei](https://www.geni.com/people/x/6000000005607007945) · [Ola Nilsen Skei](https://www.geni.com/people/x/6000000225386545407) |
 | 1730 | [Olaug Henriksdatter](https://www.geni.com/people/x/6000000001499101871) · [Olaug Henriksdatter](https://www.geni.com/people/x/6000000186680243828) |
 | 890 | [保忠](https://www.geni.com/people/x/6000000010702765665) · [保忠](https://www.geni.com/people/x/6000000012053060814) |
 | 627 | [彭城](https://www.geni.com/people/x/6000000057677182833) · [彭城](https://www.geni.com/people/x/6000000075346122988) |
 | 714 | [永手](https://www.geni.com/people/x/6000000010702660493) · [永手](https://www.geni.com/people/x/6000000012053046486) |
 
-### Possible (362)
+### Possible (490)
 
 Same name and birth year, but the parents differ or are not recorded. Could as easily be cousins named for the same grandparent — worth opening, not worth assuming.
 
@@ -290,43 +297,59 @@ Showing the first 100.
 | ---: | --- |
 | 1230 | [Maria](https://www.geni.com/people/x/6000000003493116583) · [Maria](https://www.geni.com/people/x/6000000005920000922) · [Maria](https://www.geni.com/people/x/6000000013858364821) · [Maria](https://www.geni.com/people/x/6000000013996954752) · [Maria](https://www.geni.com/people/x/6000000015550083256) · [María](https://www.geni.com/people/x/6000000128815744833) |
 | 1270 | [João](https://www.geni.com/people/x/4067519823100021180) · [João](https://www.geni.com/people/x/6000000000138341138) · [João](https://www.geni.com/people/x/6000000001741192047) · [João](https://www.geni.com/people/x/6000000014784233070) · [João](https://www.geni.com/people/x/6000000205521859869) |
+| 1490 | [Pedro](https://www.geni.com/people/x/5073054625340043301) · [Pedro](https://www.geni.com/people/x/6000000014865070942) · [Pedro](https://www.geni.com/people/x/6000000030412441582) · [Pedro](https://www.geni.com/people/x/6000000034422557899) · [Pedro](https://www.geni.com/people/x/6000000051086810821) |
 | 1450 | [Álvaro](https://www.geni.com/people/x/6000000007248371714) · [Álvaro](https://www.geni.com/people/x/6000000015518617274) · [Álvaro](https://www.geni.com/people/x/6000000068826999151) · [Álvaro](https://www.geni.com/people/x/6000000076340756890) |
+| 1475 | [Diego](https://www.geni.com/people/x/6000000008796537021) · [Diego](https://www.geni.com/people/x/6000000080874279055) · [Diego](https://www.geni.com/people/x/6000000081190332933) · [Diego](https://www.geni.com/people/x/6000000081294103445) |
+| 1510 | [Francisco](https://www.geni.com/people/x/5543873214050042343) · [Francisco](https://www.geni.com/people/x/6000000010905910497) · [Francisco](https://www.geni.com/people/x/6000000076399600913) · [Francisco](https://www.geni.com/people/x/6000000076929582346) |
 | 1320 | [Gonçalo](https://www.geni.com/people/x/4067355385190031100) · [Gonçalo](https://www.geni.com/people/x/6000000013300266693) · [Gonçalo](https://www.geni.com/people/x/6000000014465324059) · [Gonçalo](https://www.geni.com/people/x/6000000014902242322) |
 | 1250 | [Gonçalo](https://www.geni.com/people/x/6000000000034814044) · [Gonçalo](https://www.geni.com/people/x/6000000003024521712) · [Gonçalo](https://www.geni.com/people/x/6000000003493107976) · [Gonçalo](https://www.geni.com/people/x/6000000016239541916) |
 | 1290 | [Gonçalo](https://www.geni.com/people/x/6000000006513553001) · [Gonçalo](https://www.geni.com/people/x/6000000008709011505) · [Gonçalo](https://www.geni.com/people/x/6000000014475307234) · [Gonçalo](https://www.geni.com/people/x/6000000222583171849) |
+| 1530 | [Isabel](https://www.geni.com/people/x/6000000018201060887) · [Isabel](https://www.geni.com/people/x/6000000020445546842) · [Isabel](https://www.geni.com/people/x/6000000078405056870) · [Isabel](https://www.geni.com/people/x/6000000081079392841) |
 | 1310 | [João](https://www.geni.com/people/x/6000000000840999162) · [João](https://www.geni.com/people/x/6000000016146372975) · [João](https://www.geni.com/people/x/6000000020854769175) · [João](https://www.geni.com/people/x/6000000063154623845) |
 | 1440 | [João](https://www.geni.com/people/x/6000000017090007532) · [João](https://www.geni.com/people/x/6000000017159523496) · [João](https://www.geni.com/people/x/6000000191839991821) · [João](https://www.geni.com/people/x/6000000203378463849) |
+| 1684 | [Juan](https://www.geni.com/people/x/5435017325300102807) · [Juan](https://www.geni.com/people/x/6000000023785828981) · [Juan](https://www.geni.com/people/x/6000000072063487899) · [Juan](https://www.geni.com/people/x/6000000224880663852) |
+| 1619 | [Juan](https://www.geni.com/people/x/6000000011102791134) · [Juan](https://www.geni.com/people/x/6000000015422356446) · [Juan](https://www.geni.com/people/x/6000000051962842470) · [Juan](https://www.geni.com/people/x/6000000103171809377) |
 | 1200 | [Martim](https://www.geni.com/people/x/6000000001412933204) · [Martim](https://www.geni.com/people/x/6000000006242293627) · [Martim](https://www.geni.com/people/x/6000000036839936639) · [Martim](https://www.geni.com/people/x/6000000075756069919) |
 | 1260 | [Pedro](https://www.geni.com/people/x/6000000001864356544) · [Pedro](https://www.geni.com/people/x/6000000006731703026) · [Pedro](https://www.geni.com/people/x/6000000013026211197) · [Pedro](https://www.geni.com/people/x/6000000183441421822) |
 | 1480 | [Pedro](https://www.geni.com/people/x/6000000008778929625) · [Pedro](https://www.geni.com/people/x/6000000020626305332) · [Pedro](https://www.geni.com/people/x/6000000037604695858) · [Pedro](https://www.geni.com/people/x/6000000076304231851) |
 | 1230 | [Sancha](https://www.geni.com/people/x/6000000006789133513) · [Sancha](https://www.geni.com/people/x/6000000008460531915) · [Sancha](https://www.geni.com/people/x/6000000009777028433) · [Sancha](https://www.geni.com/people/x/6000000013997205437) |
 | 1300 | [Vasco](https://www.geni.com/people/x/6000000004306307487) · [Vasco](https://www.geni.com/people/x/6000000010535129752) · [Vasco](https://www.geni.com/people/x/6000000012748641378) · [Vasco](https://www.geni.com/people/x/6000000013401045205) |
 | 1300 | [Afonso](https://www.geni.com/people/x/6000000008979101855) · [Afonso](https://www.geni.com/people/x/6000000015594655167) · [Afonso](https://www.geni.com/people/x/6000000198524319821) |
+| 1570 | [Alonso](https://www.geni.com/people/x/6000000001415741529) · [Alonso](https://www.geni.com/people/x/6000000009498002218) · [Alonso](https://www.geni.com/people/x/6000000189260328845) |
 | 1500 | [Alonso](https://www.geni.com/people/x/6000000011059484918) · [Alonso](https://www.geni.com/people/x/6000000081067685892) · [Alonso](https://www.geni.com/people/x/6000000083357906047) |
 | 1330 | [Álvaro](https://www.geni.com/people/x/6000000000297347948) · [Álvaro](https://www.geni.com/people/x/6000000006507795337) · [Álvaro](https://www.geni.com/people/x/6000000014091907885) |
+| 1600 | [Andrés](https://www.geni.com/people/x/5495504953190104279) · [ANDRES](https://www.geni.com/people/x/6000000003703833210) · [Andrés](https://www.geni.com/people/x/6000000019452559988) |
 | 1344 | [Anna](https://www.geni.com/people/x/6000000005232224422) · [Anna](https://www.geni.com/people/x/6000000005241587519) · [Anna](https://www.geni.com/people/x/6000000006727832867) |
+| 1700 | [Antonio](https://www.geni.com/people/x/6000000027726668459) · [Antonio](https://www.geni.com/people/x/6000000053095553967) · [Antonio](https://www.geni.com/people/x/6000000203312307821) |
 | 1200 | [concubine,](https://www.geni.com/people/x/6000000031421018065) · [concubine,](https://www.geni.com/people/x/6000000041883613691) · [concubine,](https://www.geni.com/people/x/6000000041887727743) |
-| 1475 | [Diego](https://www.geni.com/people/x/6000000080874279055) · [Diego](https://www.geni.com/people/x/6000000081190332933) · [Diego](https://www.geni.com/people/x/6000000081294103445) |
 | 1400 | [Diogo](https://www.geni.com/people/x/6000000001818306930) · [Diogo](https://www.geni.com/people/x/6000000014487078654) · [Diogo](https://www.geni.com/people/x/6000000016435898573) |
 | 1290 | [Fernão](https://www.geni.com/people/x/6000000011605594794) · [Fernão](https://www.geni.com/people/x/6000000013886615285) · [Fernão](https://www.geni.com/people/x/6000000015424044039) |
-| 1510 | [Francisco](https://www.geni.com/people/x/5543873214050042343) · [Francisco](https://www.geni.com/people/x/6000000076399600913) · [Francisco](https://www.geni.com/people/x/6000000076929582346) |
+| 1500 | [Francisco](https://www.geni.com/people/x/6000000003637365059) · [Francisco](https://www.geni.com/people/x/6000000009836418667) · [Francisco](https://www.geni.com/people/x/6000000014747845872) |
 | 1470 | [Francisco](https://www.geni.com/people/x/6000000009836767411) · [Francisco](https://www.geni.com/people/x/6000000076340368551) · [Francisco](https://www.geni.com/people/x/6000000076393684917) |
 | 1340 | [Gonçalo](https://www.geni.com/people/x/6000000003461736005) · [Gonçalo](https://www.geni.com/people/x/6000000013029769216) · [Gonçalo](https://www.geni.com/people/x/6000000032790008988) |
 | 1350 | [Gonçalo](https://www.geni.com/people/x/6000000008461422504) · [Gonçalo](https://www.geni.com/people/x/6000000013029555808) · [Gonçalo](https://www.geni.com/people/x/6000000013999426334) |
 | 1380 | [Gonçalo](https://www.geni.com/people/x/6000000016975883455) · [Gonçalo](https://www.geni.com/people/x/6000000019923928690) · [Gonçalo](https://www.geni.com/people/x/6000000223110168831) |
-| 1530 | [Isabel](https://www.geni.com/people/x/6000000018201060887) · [Isabel](https://www.geni.com/people/x/6000000078405056870) · [Isabel](https://www.geni.com/people/x/6000000081079392841) |
+| 1480 | [Gonzalo](https://www.geni.com/people/x/6000000008630395334) · [Gonzalo](https://www.geni.com/people/x/6000000010974145925) · [Gonzalo](https://www.geni.com/people/x/6000000077303524071) |
 | 1250 | [João](https://www.geni.com/people/x/6000000001435528101) · [João](https://www.geni.com/people/x/6000000003854179796) · [João](https://www.geni.com/people/x/6000000013996510620) |
 | 1260 | [João](https://www.geni.com/people/x/6000000006789327015) · [João](https://www.geni.com/people/x/6000000013970154603) · [João](https://www.geni.com/people/x/6000000017765963944) |
 | 1300 | [João](https://www.geni.com/people/x/6000000008627708164) · [João](https://www.geni.com/people/x/6000000014465929280) · [João](https://www.geni.com/people/x/6000000015434681752) |
 | 1430 | [João](https://www.geni.com/people/x/6000000012686821803) · [João](https://www.geni.com/people/x/6000000013029700363) · [João](https://www.geni.com/people/x/6000000020209198249) |
 | 1240 | [João](https://www.geni.com/people/x/6000000013026335899) · [João](https://www.geni.com/people/x/6000000014863238817) · [João](https://www.geni.com/people/x/6000000210306959821) |
 | 1400 | [João](https://www.geni.com/people/x/6000000014472448082) · [João](https://www.geni.com/people/x/6000000015030401765) · [João](https://www.geni.com/people/x/6000000015334837812) |
+| 1725 | [José](https://www.geni.com/people/x/6000000013260158291) · [José](https://www.geni.com/people/x/6000000017274208807) · [José](https://www.geni.com/people/x/6000000124318507049) |
+| 1583 | [Juan](https://www.geni.com/people/x/4231700632120122377) · [Juan](https://www.geni.com/people/x/6000000010895650922) · [Juan](https://www.geni.com/people/x/6000000023237193885) |
+| 1560 | [Juan](https://www.geni.com/people/x/6000000000368612755) · [Juan](https://www.geni.com/people/x/6000000193056657847) · [Juan](https://www.geni.com/people/x/6000000193977539853) |
+| 1540 | [Juan](https://www.geni.com/people/x/6000000001500803649) · [Juan](https://www.geni.com/people/x/6000000017641692496) · [Juan](https://www.geni.com/people/x/6000000072983167822) |
+| 1580 | [Juan](https://www.geni.com/people/x/6000000007753994822) · [Juan](https://www.geni.com/people/x/6000000067097337066) · [Juan](https://www.geni.com/people/x/6000000079624136183) |
 | 1500 | [Juan](https://www.geni.com/people/x/6000000017560893252) · [Juan](https://www.geni.com/people/x/6000000076395818013) · [Juan](https://www.geni.com/people/x/6000000081485640630) |
+| 1510 | [Juana](https://www.geni.com/people/x/6000000013384736956) · [Juana](https://www.geni.com/people/x/6000000083183205407) · [Juana](https://www.geni.com/people/x/6000000115181133821) |
 | 1450 | [Laurids](https://www.geni.com/people/x/6000000035334640789) · [Laurids](https://www.geni.com/people/x/6000000040125261099) · [Laurids](https://www.geni.com/people/x/6000000123403369822) |
 | 1250 | [Lourenço](https://www.geni.com/people/x/6000000000160620830) · [Lourenço](https://www.geni.com/people/x/6000000001864340363) · [Lourenço](https://www.geni.com/people/x/6000000008682531254) |
 | 1270 | [Lourenço](https://www.geni.com/people/x/6000000007059092099) · [Lourenço](https://www.geni.com/people/x/6000000016073185284) · [Lourenço](https://www.geni.com/people/x/6000000016409878009) |
+| 1490 | [María](https://www.geni.com/people/x/6000000000640391267) · [María](https://www.geni.com/people/x/6000000000647347942) · [María](https://www.geni.com/people/x/6000000008278469777) |
 | 1180 | [Maria](https://www.geni.com/people/x/6000000002313437334) · [Maria](https://www.geni.com/people/x/6000000008681836720) · [Maria](https://www.geni.com/people/x/6000000009861256956) |
 | 1340 | [Maria](https://www.geni.com/people/x/6000000003570388021) · [Maria](https://www.geni.com/people/x/6000000013136655912) · [Maria](https://www.geni.com/people/x/6000000015842347978) |
+| 1580 | [Maria](https://www.geni.com/people/x/6000000003637381526) · [María](https://www.geni.com/people/x/6000000018521836985) · [María](https://www.geni.com/people/x/6000000181616101828) |
 | 1260 | [Maria](https://www.geni.com/people/x/6000000008752392585) · [Maria](https://www.geni.com/people/x/6000000008889492902) · [Maria](https://www.geni.com/people/x/6000000011845485269) |
 | 1360 | [Maria](https://www.geni.com/people/x/6000000008772882635) · [Maria](https://www.geni.com/people/x/6000000010289110432) · [Maria](https://www.geni.com/people/x/6000000014861884206) |
 | 1270 | [Martim](https://www.geni.com/people/x/5151998673580085082) · [Martim](https://www.geni.com/people/x/6000000000040038492) · [Martim](https://www.geni.com/people/x/6000000008491980181) |
@@ -346,6 +369,7 @@ Showing the first 100.
 | 1170 | [Pedro](https://www.geni.com/people/x/6000000001864353207) · [Pedro](https://www.geni.com/people/x/6000000003827902039) · [Pedro](https://www.geni.com/people/x/6000000015550601512) |
 | 1290 | [Pedro](https://www.geni.com/people/x/6000000006444762182) · [Pedro](https://www.geni.com/people/x/6000000015232975166) · [Pedro](https://www.geni.com/people/x/6000000043801877860) |
 | 1340 | [Pedro](https://www.geni.com/people/x/6000000014470324054) · [Pedro](https://www.geni.com/people/x/6000000034627051928) · [Pedro](https://www.geni.com/people/x/6000000192947427827) |
+| 1550 | [Pedro](https://www.geni.com/people/x/6000000018202294840) · [Pedro](https://www.geni.com/people/x/6000000045492168058) · [Pedro](https://www.geni.com/people/x/6000000204093272832) |
 | 1380 | [Rui](https://www.geni.com/people/x/6000000000073800868) · [Rui](https://www.geni.com/people/x/6000000021676940084) · [Rui](https://www.geni.com/people/x/6000000220810246892) |
 | 1280 | [Rui](https://www.geni.com/people/x/6000000001864356409) · [Rui](https://www.geni.com/people/x/6000000010535098781) · [Rui](https://www.geni.com/people/x/6000000014466945004) |
 | 1410 | [Rui](https://www.geni.com/people/x/6000000011800911344) · [Rui](https://www.geni.com/people/x/6000000015528391047) · [Rui](https://www.geni.com/people/x/6000000202312138905) |
@@ -357,34 +381,17 @@ Showing the first 100.
 | 1280 | [Afonso](https://www.geni.com/people/x/6000000000297342713) · [Afonso](https://www.geni.com/people/x/6000000016937697128) |
 | 1210 | [Afonso](https://www.geni.com/people/x/6000000001412929860) · [Afonso](https://www.geni.com/people/x/6000000012125535539) |
 | 1315 | [Afonso](https://www.geni.com/people/x/6000000017586166304) · [Afonso](https://www.geni.com/people/x/6000000021694806886) |
+| 1620 | [Agustín](https://www.geni.com/people/x/6000000008999378198) · [Agustín](https://www.geni.com/people/x/6000000182807404826) |
 | 1320 | [Aldonça](https://www.geni.com/people/x/6000000000297486462) · [Aldonça](https://www.geni.com/people/x/6000000007151415493) |
+| 1540 | [Alonso](https://www.geni.com/people/x/6000000007875304999) · [Alonso](https://www.geni.com/people/x/6000000076735916260) |
 | 1520 | [Alonso](https://www.geni.com/people/x/6000000009148838085) · [Alonso](https://www.geni.com/people/x/6000000114951755844) |
 | 1475 | [Alonso](https://www.geni.com/people/x/6000000035189923852) · [Alonso](https://www.geni.com/people/x/6000000076393260830) |
 | 1470 | [Alonso](https://www.geni.com/people/x/6000000081067554885) · [Alonso](https://www.geni.com/people/x/6000000203936837837) |
 | 1380 | [Álvaro](https://www.geni.com/people/x/6000000003342035410) · [Alvaro](https://www.geni.com/people/x/6000000013290566364) |
 | 1460 | [Álvaro](https://www.geni.com/people/x/6000000010313518092) · [Álvaro](https://www.geni.com/people/x/6000000024277149490) |
 | 1360 | [Álvaro](https://www.geni.com/people/x/6000000014843343939) · [Álvaro](https://www.geni.com/people/x/6000000192157440824) |
+| 1545 | [Ana](https://www.geni.com/people/x/6000000003493243953) · [Ana](https://www.geni.com/people/x/6000000010180807612) |
 | 1500 | [Ana](https://www.geni.com/people/x/6000000072982800935) · [Ana](https://www.geni.com/people/x/6000000076400043014) |
 | 1620 | [Anders](https://www.geni.com/people/x/6000000004111549546) · [Anders](https://www.geni.com/people/x/6000000016445886839) |
 | 1820 | [Anders Hansen](https://www.geni.com/people/x/6000000177117768824) · [Anders Hansen](https://www.geni.com/people/x/6000000209230831823) |
 | 1841 | [Anders Olsen](https://www.geni.com/people/x/6000000109333975244) · [Anders Olsen](https://www.geni.com/people/x/6000000117191555893) |
-| 1811 | [Anders Olsen](https://www.geni.com/people/x/6000000178654571825) · [Anders Olsen](https://www.geni.com/people/x/6000000218304451862) |
-| 1836 | [Andreas](https://www.geni.com/people/x/6000000092273603870) · [Andreas](https://www.geni.com/people/x/6000000111471463841) |
-| 519 | [Anicius Probus](https://www.geni.com/people/x/6000000003645870912) · [Anicius Probus](https://www.geni.com/people/x/6000000195943862836) |
-| 1707 | [Anna](https://www.geni.com/people/x/6000000074804326068) · [Anna](https://www.geni.com/people/x/6000000178278275935) |
-| 1758 | [Anna Andersdotter](https://www.geni.com/people/x/6000000177921516839) · [Anna Andersdotter](https://www.geni.com/people/x/6000000187717607962) |
-| 1761 | [Anne Ingemundsdatter](https://www.geni.com/people/x/6000000021275171071) · [Anne Ingemundsdatter](https://www.geni.com/people/x/6000000111920822081) |
-| 1770 | [Anne Olsdatter](https://www.geni.com/people/x/6000000005738203499) · [Anne Olsdatter](https://www.geni.com/people/x/6000000178379260848) |
-| 1751 | [Anne Pedersdatter](https://www.geni.com/people/x/6000000022823714504) · [Anne Pedersdatter](https://www.geni.com/people/x/6000000192770150821) |
-| 165 | [Annia Faustina](https://www.geni.com/people/x/6000000003645864789) · [Annia Faustina](https://www.geni.com/people/x/6000000017236991464) |
-| 630 | [Ansbert](https://www.geni.com/people/x/6000000186973602821) · [Ansbert](https://www.geni.com/people/x/6000000213942629825) |
-| 135 | [Aulus Egnatius](https://www.geni.com/people/x/6000000001442596445) · [Aulus Egnatius](https://www.geni.com/people/x/6000000203812288845) |
-| 1360 | [Beatriz](https://www.geni.com/people/x/6000000011797974522) · [Beatriz](https://www.geni.com/people/x/6000000013136524662) |
-| 1460 | [Beatriz](https://www.geni.com/people/x/6000000014781773732) · [Beatriz](https://www.geni.com/people/x/6000000030624455510) |
-| 1535 | [Beatriz](https://www.geni.com/people/x/6000000077072043854) · [Beatriz](https://www.geni.com/people/x/6000000081068314276) |
-| 1906 | [Berner Borsheim](https://www.geni.com/people/x/6000000002091116790) · [Berner Borsheim](https://www.geni.com/people/x/6000000032068298553) |
-| 1650 | [Birgitte Eriksdatter](https://www.geni.com/people/x/6000000059763681849) · [Birgitte Eriksdatter](https://www.geni.com/people/x/6000000217798532838) |
-| 1345 | [Brites](https://www.geni.com/people/x/6000000014859379594) · [Brites](https://www.geni.com/people/x/6000000014902229272) |
-| 1390 | [Brites](https://www.geni.com/people/x/6000000014861924064) · [Brites](https://www.geni.com/people/x/6000000015191788011) |
-| 1410 | [Brites](https://www.geni.com/people/x/6000000015422216763) · [Brites](https://www.geni.com/people/x/6000000015822219008) |
-| 1490 | [Brites Barbosa](https://www.geni.com/people/x/6000000018059521056) · [Brites Barbosa](https://www.geni.com/people/x/6000000020389215593) |

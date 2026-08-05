@@ -45,7 +45,7 @@ change in Geni's format fails loudly.
 
 Exactly **four xref prefixes** occur, each bound to one record type: `I` on
 `INDI`, `F` on `FAM`, `N` on `NOTE`, `S` on `SUBM` — measured over all **291,439**
-xrefs in the 45 exports, re-measured on 2026-08-04 against each batch of new
+xrefs in the exports, re-measured on 2026-08-04 against each batch of new
 ones rather than carried forward. Some exports carry no `NOTE` records at all, so
 an export need not use every letter; the claim is that no *other* letter appears
 and no letter spans two record types. `GENI_ID_RE` accepts only
@@ -127,7 +127,7 @@ its source. Expect to merge many exports over time, and expect the merge to be
 re-run rather than hand-edited. See `reports/inventory.md`.
 
 **The merged tree is one connected tree — as of 2026-08-04, and not before.**
-89474 people, 48254 families, **1 component**. It was two
+105349 people, 56455 families, **1 component**, over 54 exports. It was two
 components for most of that day (16217 Norwegian and 11501 Japanese, sharing no
 person and no family) and the whole of 08-02..08-04. `reports/frontier.md`
 § Components is the live count and the thing to check rather than this
@@ -165,6 +165,25 @@ is "the Li Hong export" and its seed is an `NN` wife of Li Yuanfeng created at
 14:40:46 and exported at 14:41:36. Creating a placeholder at the frontier and
 exporting from it is the technique; the filename records the seed, not the
 intent.
+
+**`reports/density.md` is where to look for the next export, not
+`reports/seeds.md`.** `genimerge.density` counts how many exports contain each
+person — **presence** — and then finds *connected runs* of people almost no
+export reached. One thin person is the rim of a ball and means nothing; a run of
+thousands is a neighbourhood sampled once and never returned to. `seeds.md`
+ranks by doorway count and has never been validated against an outcome; density
+is measured from what the exports actually did.
+
+**Presence measures our sampling, never Geni's content.** A thin region is one
+*we* barely covered. Whether Geni holds more there is precisely the unknown an
+export resolves — reading it as "Geni has little here" is backwards. The doorway
+column is the discriminator: many parentless people means under-sampled, few
+means possibly just a small family that ended.
+
+**"Region" is a neighbourhood in the family graph, never a place.** Emma was
+explicit about this. Do not classify people geographically: birthplace strings
+are mostly absent, and inferring a place from a name is the fuzzy matching this
+repo refuses everywhere else.
 
 **`entity_resolution.md` is Emma's scratchpad and must stay free-form.** It
 holds Geni-to-Wikidata identities she recognised by hand plus label corrections

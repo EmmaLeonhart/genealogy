@@ -2766,3 +2766,83 @@ entries, so an entry written in a shape the parser does not know fails the suite
 
 **970 passed**, Python 3.13.14. Not CI-verified; CI is `workflow_dispatch:` only
 here on purpose.
+
+---
+
+## 2026-08-04 — downloads done at 54 exports; the export-candidate list checked; density measure built
+
+**The tree is 105349 people, 56455 families, one connected component**, over 54
+exports. Nine more arrived and were ingested; Emma says she is done downloading
+for now. The Jimmu path still reads 83 of 83.
+
+### `individuals I can easily export.txt`, checked
+
+Emma added a list of 18 people she can export from and asked whether they are in
+the tree. **17 of 18 are.** The exception:
+
+| | |
+| --- | --- |
+| `NN 高円宮` | `6000000209740059823` |
+
+That ID appears **nowhere in the repo** — grepping every file finds it only in
+the list itself, so it is not merely unmerged, it is not referenced as anybody's
+relative in any of the 54 exports. Every other name on the list is held, most in
+2–4 exports and one in 8. So the list is almost entirely re-sampling of ground
+already touched, and `NN 高円宮` is the single entry certain to bring material we
+have none of. Queued as the next export.
+
+Worth recording how that check got cheap: grepping the ID across the whole repo,
+which Emma pointed out, answers both "is it in the tree" and "which exports hold
+it" at once — a merged-tree lookup answers only the first.
+
+### `genimerge.density` — where the tree is thin
+
+The measure `todo.md` § 3z described is now built, since the bulk downloads it
+was waiting on are finished. **Presence** is how many exports contain a person.
+59.3% of the tree is in exactly one export; the maximum is 11.
+
+Presence alone is not the finding — every breadth-first ball has a rim, and its
+rim is thin by construction. What identifies an under-covered region is a
+**connected run** of low-presence people, so the report ranks connected
+components of the thin subgraph. There are **2973 such regions of 2+ people**,
+and the largest are far too big to be rims:
+
+| people | doorways | who is in it |
+| ---: | ---: | --- |
+| 6475 | 1757 | Marie d'Auxy, de Créquy, d'Auxy — northern French nobility |
+| 3858 | 854 | Zachariah Price, the Blinns |
+| 3588 | 977 | mostly `Private` — living people Geni redacts |
+| 3563 | 612 | Sørensen / Michelsdatter — Norwegian |
+| 2651 | 550 | R Kresna, RNgt Siti Chatidjah — Javanese |
+| 2410 | 520 | Sardar, Maqbool — South Asian |
+| 2355 | 230 | Al-Qaysi |
+
+**The doorway column is the discriminator and the report says so.** A thin
+region with many parentless people is under-sampled; one with few may just be a
+family that really ended, where an export buys little. Region 7 has 2355 people
+but only 230 doorways, which reads very differently from region 1's 1757.
+
+**What the report refuses to say.** Presence measures *our sampling*, not Geni's
+content — a thin region is one we barely covered, and whether Geni holds more
+there is the open question an export answers. A test asserts that caveat reaches
+the rendered report, because a reader who inverts it would conclude the opposite
+of the truth.
+
+**"Region" means a neighbourhood in the family graph.** Emma was explicit that
+people must not be classified geographically. The recognisable clusters above
+fall out of the graph on their own; nothing reads a birthplace, and nothing
+infers origin from a name.
+
+### Merge and tests
+
+18 conflicts, all `INDI.CHAN.DATE` as before. Impossible dates 1548, implausible
+916, likely duplicates 27, possible 490 — still growing faster than the tree
+(3.9× the people, 5.9× the impossible dates), which stays queued as
+NEEDS-INVESTIGATION rather than being explained away.
+
+One test of mine was wrong and the code was right: `test_singletons_are_dropped`
+asserted an empty result while forgetting that the fixture's unrelated pair is
+also thin. Fixed the test.
+
+**1059 passed**, Python 3.13.14. Not CI-verified; CI is `workflow_dispatch:`
+only here on purpose.

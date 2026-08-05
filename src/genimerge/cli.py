@@ -15,6 +15,7 @@ from . import (
     consistency,
     coverage,
     crosscheck,
+    density,
     entities,
     frontier,
     gedcom,
@@ -388,6 +389,42 @@ def _cmd_quickstatements(args: argparse.Namespace) -> int:
         f"{len(batch.conflicting)} contradict an existing ID (excluded, listed in the .md)"
     )
     print("Nothing has been sent to Wikidata. Review the .md before running the batch.")
+    return 0
+
+
+def _cmd_density(args: argparse.Namespace) -> int:
+    ws = Workspace.from_args(args)
+    exports = [Path(p) for p in args.exports] or ws.exports()
+    if not exports:
+        print("no exports found", file=sys.stderr)
+        return 1
+
+    tree = _load_tree(args.source, ws)
+    counts = density.presence_counts(exports)
+    regions = density.sparse_regions(
+        tree, counts, threshold=args.threshold, min_size=args.min_size
+    )
+
+    output = args.output or (ws.reports / "density.md")
+    _write(
+        output,
+        density.render_markdown(
+            tree, counts, regions, export_count=len(exports), threshold=args.threshold
+        ),
+    )
+
+    thin = sum(1 for g in tree.people if counts.get(g, 0) <= args.threshold)
+    print(f"wrote {output}")
+    print(
+        f"{thin} of {len(tree.people)} people are in <= {args.threshold} export(s), "
+        f"forming {len(regions)} regions of {args.min_size}+"
+    )
+    if regions:
+        biggest = regions[0]
+        print(
+            f"largest thin region: {biggest.size} people, {biggest.parentless} doorways"
+            + (f" — {biggest.sample[0]}" if biggest.sample else "")
+        )
     return 0
 
 
@@ -926,6 +963,28 @@ def build_parser() -> argparse.ArgumentParser:
         help="date for the reference qualifier, YYYY-MM-DD (default: today)",
     )
     p_qs.set_defaults(func=_cmd_quickstatements)
+
+    p_den = sub.add_parser(
+        "density",
+        help="find regions of the tree that few exports have reached",
+        description=(
+            "Counts how many exports contain each person, then finds connected "
+            "runs of people almost no export reached. Regions are neighbourhoods "
+            "in the family graph, never geographic."
+        ),
+    )
+    p_den.add_argument("exports", nargs="*", help="GEDCOM files (default: data_lake/*.ged)")
+    p_den.add_argument("--source", type=Path, default=None, help="a GEDCOM to read instead of merging")
+    p_den.add_argument(
+        "--threshold", type=int, default=1, help="a person is thin at or below this many exports"
+    )
+    p_den.add_argument(
+        "--min-size", type=int, default=2, help="ignore thin runs smaller than this"
+    )
+    p_den.add_argument(
+        "-o", "--output", type=Path, default=None, help="default: <reports>/density.md"
+    )
+    p_den.set_defaults(func=_cmd_density)
 
     p_er = sub.add_parser(
         "entity-resolution",

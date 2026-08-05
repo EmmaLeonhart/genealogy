@@ -12,10 +12,10 @@ Screened over a 3-hop ball in the `blood` style.
 
 |  | count |
 | --- | ---: |
-| people in the tree | 89474 |
-| with no parents recorded — the candidates | 18909 |
-| kept | 18584 |
-| rejected as saturated (openness < 5%) | 325 |
+| people in the tree | 105349 |
+| with no parents recorded — the candidates | 22143 |
+| kept | 21790 |
+| rejected as saturated (openness < 5%) | 353 |
 
 Saturation rejects the seeds sitting inside a region already recorded several layers out, where an export would mostly return people we hold. It fires rarely, and that is worth saying rather than tuning: ranking by doorway count already keeps interior candidates away from the top, so the rejection is a floor under the list, not the thing that shapes it.
 
@@ -56,14 +56,14 @@ The ranking sorts on **absolute** doorway count, and doorways are counted inside
 
 |  | the pool | the picks |
 | --- | ---: | ---: |
-| candidates | 18584 | 10 |
-| ball over 100 | 1025 (5.5%) | 10 (100%) |
+| candidates | 21790 | 10 |
+| ball over 100 | 1178 (5.4%) | 10 (100%) |
 | median ball | 26 | 278 |
 | median openness | 21% | 24% |
 
-Ball size and doorway count correlate at **r = 0.86** (r² = 0.74), so neighbourhood size accounts for most of the ordering but not all of it — at any given ball size the doorway counts still spread. The sort is not simply ball size under another name.
+Ball size and doorway count correlate at **r = 0.85** (r² = 0.72), so neighbourhood size accounts for most of the ordering but not all of it — at any given ball size the doorway counts still spread. The sort is not simply ball size under another name.
 
-The selection effect is sharper than the correlation. Candidates with a ball over 100 are **5.5%** of the pool and **100%** of the picks, and the picks are *less* open than a typical candidate (24% against 21%). The most open candidate in the whole pool — 80% — ranks **10718 of 18584**.
+The selection effect is sharper than the correlation. Candidates with a ball over 100 are **5.4%** of the pool and **100%** of the picks, and the picks are *less* open than a typical candidate (24% against 21%). The most open candidate in the whole pool — 80% — ranks **12908 of 21790**.
 
 **What this does not show is that the ranking is wrong.** It establishes how the sort behaves — it prefers large, proportionally less open neighbourhoods — and nothing more. Whether an open neighbourhood actually yields a richer export is a claim about Geni's data, not about ours, and no measurement here can reach it: we cannot see what sits behind a doorway without exporting through it. The one export taken so far is consistent with openness mattering and is a single observation. Taking the next export from a top-ranked pick, where this file has already committed its prediction, is what would settle it.
 
@@ -80,12 +80,12 @@ Openness is the obvious repair for the size bias described above, and it does no
 
 That idea is cheap to test and the objection to it turned out to be wrong. A ranking on smallest ball sounds degenerate — as though it would return isolated fragments and broken records — but a doorway is in our tree, so it always has some recorded relative:
 
-- candidates with a ball of 5 or fewer: **319** of 18584 (2% — a shortlist, not a crowd)
+- candidates with a ball of 5 or fewer: **327** of 21790 (2% — a shortlist, not a crowd)
 - of those, with a ball of 2 or fewer: **0**
 
 So the shortlist is workable and holds no isolated records. That makes it worth *testing*, not worth adopting. The way to settle it is one export from a top-ranked pick and one from this shortlist, compared on how many new people each returns — at which point there are two observations instead of one.
 
-### The small-ball shortlist (10 of 319)
+### The small-ball shortlist (10 of 327)
 
 **This is the experiment's other arm, not a recommendation.** The sequence at the top of this report is still what the model proposes. These are here because the ordering that surfaces them is the only one that would have found the seed which worked, and a count on its own — *66 candidates* — is not something anyone can export from. Nothing about a short list of names makes the hypothesis behind it any better supported than it was: one observation. Take one export from the sequence above and one from here, and the comparison is worth more than either list.
 
@@ -99,10 +99,10 @@ So the shortlist is workable and holds no isolated records. That makes it worth 
 | [Siva Serunuwara](https://www.geni.com/people/x/6000000186313659075) | `6000000186313659075` | 4 | 2 | 50% |
 | [](https://www.geni.com/people/x/6000000214023544821) | `6000000214023544821` | 4 | 2 | 50% |
 | [Papianilla](https://www.geni.com/people/x/6000000000312629461) | `6000000000312629461` | 4 | 1 | 25% |
+| [David](https://www.geni.com/people/x/6000000000825425754) | `6000000000825425754` | 4 | 1 | 25% |
 | [Lucius Cornelius Lentulus](https://www.geni.com/people/x/6000000001254719345) | `6000000001254719345` | 4 | 1 | 25% |
 | [Gaius Julius](https://www.geni.com/people/x/6000000001421666583) | `6000000001421666583` | 4 | 1 | 25% |
 | [Marcus](https://www.geni.com/people/x/6000000001421724633) | `6000000001421724633` | 4 | 1 | 25% |
-| [Titus](https://www.geni.com/people/x/6000000001422222827) | `6000000001422222827` | 4 | 1 | 25% |
 
 ## Ranked candidates (top 40)
 

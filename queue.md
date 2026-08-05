@@ -15,41 +15,41 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
-1. **Review and run `out/wikidata/entity-resolution.qs`.** Six P2600 statements
-   and three English label edits, built from `entity_resolution.md` by
-   `python -m genimerge entity-resolution`. All six Geni profiles are in the
-   merged tree. **BLOCKED-ON-USER-ACTION** — nothing in this repo sends anything
-   to Wikidata, and the label edits overwrite what other editors wrote, so they
-   want reading before they run. Re-run the command after adding entries to the
-   source file; it reports anything it cannot parse instead of dropping it.
+1. **BLOCKED-ON-USER-ACTION — export from `NN 高円宮` `6000000209740059823`.**
+   The one individual on `individuals I can easily export.txt` that is **not in
+   the tree**, and it is not merely unmerged: grepping the whole repo finds that
+   ID in no export, not even as somebody's relative. The other 17 are all held.
+   That makes it the only entry on the list that is certain to bring material we
+   have none of. Everything else there is a re-sample of a neighbourhood we
+   already touched.
 
-2. **Keep ingesting `exports/archive/` as downloads land.** 45 exports are in
-   `data_lake/` and Emma expects up to ~50. The ingest is: copy to
-   `data_lake/export-<style>-<seedID>.ged` and re-run `merge`, `frontier`,
-   `inventory`, `consistency`, `export`, `seeds`, and `path` for each file in
-   `data_lake/paths/`. `GENI_EXPORT_CAP` will need raising again; the test says
-   so when it does.
+2. **Review and run `out/wikidata/entity-resolution.qs`.** Six P2600 statements
+   and three English label edits from `entity_resolution.md`. All six Geni
+   profiles are in the tree. **BLOCKED-ON-USER-ACTION** — nothing here sends
+   anything to Wikidata, and label edits overwrite other editors' work.
 
-3. **Investigate why the error counts grew faster than the tree.** From 10
-   exports to 45 the tree grew 2.75× but impossible dates grew 4.7× (261 →
-   1234) and possible duplicates 6.8× (53 → 362). Either the newer material is
-   worse, or a check scales badly with tree size and is now reporting pairs it
-   should not. **NEEDS-INVESTIGATION** — worth settling before any of these
+3. **Pick the next exports from `reports/density.md`, not `reports/seeds.md`.**
+   The density report ranks connected runs of people that only one export ever
+   reached; `seeds.md` ranks by doorway count and has never been validated. The
+   top thin regions are large enough to be real neighbourhoods rather than ball
+   rims — 6475 people / 1757 doorways, 3858 / 854, 3588 / 977. Read the doorway
+   column: a thin region with few doorways may just be a small family that
+   ended.
+
+4. **NEEDS-INVESTIGATION — error counts still growing faster than the tree.**
+   10 → 54 exports grew the tree 3.9× while impossible dates grew 5.9× (261 →
+   1548) and possible duplicates 9.2× (53 → 490). Either the newer material is
+   worse or a check scales badly with tree size. Worth settling before these
    dates reach Wikidata, since `add-claims.qs` builds P569/P570 from them.
 
-4. **Turn the saved pages into path reports.** `Gervasio of Toledo`, `Madgacen`,
-   `Makeda Queen of Sheba`, `NN Basse`, `NN daughter of Berenice`, `NN of
-   Malwa`, `NN`, `Princess NN`, `Psamtik II`, `daughter of the king of Assyria`,
-   `Lady Palsu of the Jin clan`, `意美 Hata`. Each is `path-from-html` → `path`
-   → a report saying how many steps are held and where the gap is. Cheap, no
-   network. This is what turned the Jimmu page from a guess into a six-person
-   target, and with 45 exports merged many of these may already be complete.
+5. **Turn the saved pages into path reports.** Twelve pages in `geni_pages/`.
+   Each is `path-from-html` → `path`. With 54 exports merged, several may
+   already be complete — the Jimmu one is, at 83 of 83.
 
-5. **The Wikidata reports are stale.** `reports/wikidata-coverage.md`,
+6. **The Wikidata reports are stale.** `reports/wikidata-coverage.md`,
    `wikidata-crosscheck.md` and `names.md` describe the 16266-person tree; it is
-   now 89474. Refreshing means `reconcile` against the live SPARQL endpoint —
-   the only networked part of this pipeline, so a deliberate run rather than
-   part of the merge.
+   now 105349. Refreshing means `reconcile` against the live SPARQL endpoint,
+   the only networked step here.
 
 ### Standing context
 

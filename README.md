@@ -130,6 +130,7 @@ python -m genimerge coverage         # what is linked       -> reports/wikidata-
 python -m genimerge consistency      # dates that contradict -> reports/consistency.md
 python -m genimerge frontier         # where the tree stops -> reports/frontier.md
 python -m genimerge seeds            # what to export next  -> reports/seeds.md
+python -m genimerge density          # where the tree is thin -> reports/density.md
 # a saved Geni profile page -> a path file carrying every profile ID
 python -m genimerge path-from-html "geni_pages/<saved page>.html" -o data_lake/paths/jimmu.tsv
 # how much of that path the tree holds -> reports/path-jimmu.md and .json

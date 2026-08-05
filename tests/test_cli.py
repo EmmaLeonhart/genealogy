@@ -106,6 +106,7 @@ COMMANDS = [
     "name-links",
     "crosscheck",
     "entity-resolution",
+    "density",
     "path",
     "path-from-html",
 ]

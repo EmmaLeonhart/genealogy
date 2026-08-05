@@ -1,0 +1,221 @@
+"""Where the tree is thin: regions reached by few exports.
+
+`genimerge.frontier` finds where the tree *stops* — people with no parents
+recorded. That is a hard edge. This module finds something softer and, once
+enough exports are in hand, more useful: **where the tree is thin rather than
+absent**.
+
+The measure is **presence**: for each person, how many exports contain them.
+Every export is a breadth-first ball around one seed, so a person appearing in
+many exports sits where many balls overlap — a neighbourhood covered from
+several directions and probably recorded to some depth. A person appearing in
+exactly one sits on the rim of a single ball, where the export ran out of budget
+rather than out of relatives.
+
+**One thin person means nothing; a contiguous stretch of them means a lot.** Any
+ball has a rim, and its rim is thin by construction. What identifies an
+under-covered region is a *connected run* of low-presence people — a piece of
+graph that only one export ever brushed, large enough that its interior was
+never reached. So this ranks connected components of the low-presence subgraph
+by size, not individuals by presence.
+
+**"Region" here means a region of the graph, never a place.** It is a
+neighbourhood under parent/child/spouse edges. Nothing is classified
+geographically: birthplace strings are mostly absent and inferring a place from
+a name is the fuzzy matching this repo refuses everywhere else.
+
+**What this cannot tell you.** Presence measures our sampling, not Geni's
+content. A thin region is one *we* have barely covered; whether Geni holds much
+more there is exactly what is unknown, and is why it is worth an export. A
+region can also be thin because it genuinely is small — a family that really did
+end. The doorway count per region is the check: a thin region with many
+parentless people is under-sampled, while a thin region with none may simply be
+finished.
+"""
+
+from __future__ import annotations
+
+import re
+from collections import Counter, deque
+from dataclasses import dataclass
+from pathlib import Path
+
+from .frontier import family_graph
+from .model import Tree
+
+__all__ = [
+    "INDI_RE",
+    "Region",
+    "presence_counts",
+    "sparse_regions",
+    "render_markdown",
+]
+
+#: Level-0 INDI xrefs. Deliberately the same shape the rest of the repo relies
+#: on rather than a full parse: presence only needs to know which profile IDs a
+#: file contains, and parsing 54 exports properly to answer that costs minutes.
+INDI_RE = re.compile(r"^0 @I(\d+)@ INDI", re.M)
+
+
+def presence_counts(paths: list[str | Path]) -> Counter:
+    """How many of these exports contain each Geni profile ID."""
+    counts: Counter = Counter()
+    for path in paths:
+        text = Path(path).read_text(encoding="utf-8-sig")
+        counts.update(set(INDI_RE.findall(text)))
+    return counts
+
+
+@dataclass(frozen=True)
+class Region:
+    """A connected run of people no more than `threshold` exports ever reached."""
+
+    members: tuple[str, ...]
+    parentless: int
+    #: a few names, for recognising what this region *is*
+    sample: tuple[str, ...]
+    #: mean presence across the region
+    mean_presence: float
+
+    @property
+    def size(self) -> int:
+        return len(self.members)
+
+
+def sparse_regions(
+    tree: Tree,
+    counts: Counter,
+    threshold: int = 1,
+    min_size: int = 2,
+    graph: dict[str, list[str]] | None = None,
+) -> list[Region]:
+    """Connected components of the people whose presence is <= `threshold`.
+
+    Ranked largest first. `min_size` drops the singletons, which are the rim of
+    a ball rather than a region and would otherwise be most of the output.
+    """
+    graph = graph if graph is not None else family_graph(tree)
+    thin = {g for g in tree.people if counts.get(g, 0) <= threshold}
+
+    seen: set[str] = set()
+    regions: list[Region] = []
+    for start in thin:
+        if start in seen:
+            continue
+        members: list[str] = []
+        queue = deque([start])
+        seen.add(start)
+        while queue:
+            current = queue.popleft()
+            members.append(current)
+            for neighbour in graph.get(current, ()):
+                if neighbour in thin and neighbour not in seen:
+                    seen.add(neighbour)
+                    queue.append(neighbour)
+        if len(members) < min_size:
+            continue
+
+        people = [tree.people[m] for m in members]
+        named = [p.display_name for p in people if p.display_name]
+        regions.append(
+            Region(
+                members=tuple(members),
+                parentless=sum(1 for p in people if not p.has_known_parents),
+                sample=tuple(named[:6]),
+                mean_presence=sum(counts.get(m, 0) for m in members) / len(members),
+            )
+        )
+
+    regions.sort(key=lambda r: (-r.size, -r.parentless))
+    return regions
+
+
+def _table(header: list[str], rows: list[list[str]]) -> list[str]:
+    align = ["---"] + ["---:"] * (len(header) - 1)
+    return [
+        "| " + " | ".join(header) + " |",
+        "| " + " | ".join(align) + " |",
+        *["| " + " | ".join(r) + " |" for r in rows],
+    ]
+
+
+def render_markdown(
+    tree: Tree,
+    counts: Counter,
+    regions: list[Region],
+    export_count: int,
+    threshold: int,
+) -> str:
+    total = len(tree.people)
+    histogram = Counter(counts.get(g, 0) for g in tree.people)
+    thin_people = sum(v for k, v in histogram.items() if k <= threshold)
+
+    lines = [
+        "# Where the tree is thin",
+        "",
+        "Generated by `genimerge.density` — re-run `python -m genimerge density`.",
+        "",
+        f"**Presence** is how many of the {export_count} exports contain a person. "
+        "Every export is a breadth-first ball around one seed, so presence measures "
+        "how many directions we have covered a neighbourhood from — not how much "
+        "Geni holds there, which is exactly what is unknown.",
+        "",
+        "## Presence across the tree",
+        "",
+    ]
+    lines += _table(
+        ["in this many exports", "people", "share"],
+        [
+            [str(k), str(histogram[k]), f"{histogram[k] / total:.1%}"]
+            for k in sorted(histogram)
+        ],
+    )
+    lines += [
+        "",
+        f"**{thin_people} people ({thin_people / total:.1%}) are in {threshold} export "
+        "or fewer.**",
+        "",
+        "## Thin regions",
+        "",
+        "A *region* is a connected run of those people under parent/child/spouse "
+        "edges — a piece of graph only one export ever brushed. One thin person is "
+        "just the rim of a ball and means nothing; a large connected run of them is "
+        "a neighbourhood we have sampled once and never returned to.",
+        "",
+        "**Read the doorway column before exporting.** A thin region full of "
+        "parentless people is under-sampled and worth an export. A thin region with "
+        "few is plausibly just a small family that really did end, and exporting "
+        "there buys little.",
+        "",
+    ]
+
+    if regions:
+        lines += _table(
+            ["#", "people", "doorways", "mean presence", "who is in it"],
+            [
+                [
+                    str(i),
+                    str(r.size),
+                    str(r.parentless),
+                    f"{r.mean_presence:.2f}",
+                    ", ".join(r.sample) or "—",
+                ]
+                for i, r in enumerate(regions[:40], start=1)
+            ],
+        )
+        if len(regions) > 40:
+            lines += ["", f"{len(regions) - 40} smaller regions not shown."]
+    else:
+        lines += ["None: no connected run of thin people reaches the minimum size."]
+
+    lines += [
+        "",
+        "## What this does not say",
+        "",
+        "Presence measures our sampling, not Geni's content. A thin region is one "
+        "**we** have barely covered; whether Geni knows more there is the open "
+        "question an export answers. Nothing here classifies anyone "
+        "geographically — a region is a neighbourhood in the family graph.",
+        "",
+    ]
+    return "\n".join(lines) + "\n"
