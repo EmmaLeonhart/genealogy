@@ -44,8 +44,27 @@ def test_no_record_is_lost(merged):
         assert missing == set(), f"{path.name} lost {len(missing)} records"
 
 
-def test_no_line_is_lost(merged):
-    _, _, index = merged
+def test_no_line_is_lost_except_where_a_conflict_replaced_it(merged):
+    """Every source line survives, minus exactly the ones a conflict displaced.
+
+    This asserted `dropped == Counter()` outright until 2026-08-04, which held
+    while the real exports produced no conflicts at all. At 45 exports they
+    produce some, and a conflict *is* a dropped line by definition — the merge
+    keeps one of two values for a single-valued path. Asserting zero would now
+    fail for a reason the merge is designed to have.
+
+    So the assertion is not weakened to "some lines may go missing". It is
+    tightened to: a line may only go missing on a **path the conflict report
+    names**, and that path must be single-valued. A line disappearing anywhere
+    else still fails, which is what this test was for.
+
+    The counts deliberately are not compared. One conflict can strand the same
+    superseded value in many sources at once — 45 exports of one profile may all
+    carry the old `CHAN.DATE`, and every one of them counts as a dropped line
+    while only the transitions count as conflicts. Asserting equality of counts
+    was tried first and fails for that reason, not for a real one.
+    """
+    doc, report, index = merged
     dropped: Counter = Counter()
 
     for path in EXPORTS:
@@ -57,7 +76,14 @@ def test_no_line_is_lost(merged):
                 if line not in present:
                     dropped[line[0]] += 1
 
-    assert dropped == Counter(), f"merged file is missing source lines: {dropped.most_common(5)}"
+    unexplained = set(dropped) - {c.path for c in report.conflicts}
+    assert unexplained == set(), (
+        f"merged file is missing source lines on paths no conflict explains: {sorted(unexplained)[:5]}"
+    )
+    assert set(dropped) <= merge.single_valued_paths(EXPORTS), (
+        "a line went missing on a multi-valued path, where nothing should ever be replaced: "
+        f"{sorted(set(dropped) - merge.single_valued_paths(EXPORTS))[:5]}"
+    )
 
 
 def test_the_merge_is_idempotent(merged):

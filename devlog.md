@@ -2649,3 +2649,69 @@ than assuming proportional. Queued.
 
 **677 passed**, Python 3.13.14, up from 661. Not CI-verified; CI is
 `workflow_dispatch:` only here on purpose.
+
+---
+
+## 2026-08-04 (later still) — all 45 exports merged, 89474 people, later-wins conflicts
+
+**Ingested everything on disk, not a chosen subset.** 35 more exports from
+`exports/archive/`, bringing `data_lake/` to 45 files. The tree is **89474
+people, 48254 families, one connected component**, up from 32393. The Jimmu path
+still reads 83 of 83.
+
+**A filename bug caught before it did damage.** The first ingest plan derived
+the style from `export-(\w+)\.ged`, which does not match the newer
+`export-Forest-19.ged` shape, so `Ancestors`, `Descendants` and `BloodTree`
+files were all being labelled `Forest` — collapsing three pairs onto the same
+target name and silently overwriting. Fixed to
+`export-([A-Za-z]+)(?:-\d+)?\.ged` before anything was copied. Style now belongs
+in the target name (`export-<style>-<seedID>.ged`) because one seed can be
+exported in several styles, which `exports/archive/` now demonstrates.
+
+**Conflicts now favour later sources.** Emma's call, and correct: Geni is live,
+so two exports disagreeing on a single-valued path means the profile was edited
+between them and the newer export holds the correction. The first real conflicts
+appeared at this scale — there were none at 10 exports — and every one is
+`INDI.CHAN.DATE`, the profile's own last-edited stamp, where keeping the older
+value is wrong rather than merely arbitrary. 18 conflicts, no genealogical ones.
+Merge order is filename order, not export date; if that distinction ever starts
+to matter, sorting the paths by `HEAD` date before calling `merge_files` gets
+the intended rule with no code change.
+
+**Three tests changed to match, all of them tightened rather than relaxed.**
+
+- `test_no_line_is_lost` asserted no source line ever disappears, which held
+  only while there were no conflicts. A conflict *is* a dropped line. It now
+  asserts the dropped lines fall only on paths the conflict report names, and
+  only on single-valued paths. Comparing *counts* was tried first and is wrong:
+  one conflict strands the same superseded value in every export that carries
+  it, so 18 conflicts produce 35 dropped-line occurrences per path.
+- `test_export_parses_without_warnings` asserted zero parse warnings. One
+  profile has an RTF blob pasted into a note, and RTF contains literal newlines,
+  so its continuation lines reach the parser with no level number. Zero warnings
+  is not achievable against real Geni data. It now asserts the parser only ever
+  skips lines that never claimed to be GEDCOM — a skipped line *with* a level
+  number would mean real structure was lost, and still fails.
+- The merge unit tests asserting earlier-wins were rewritten for later-wins,
+  plus one new case covering three sources disagreeing in sequence.
+
+**`GENI_EXPORT_CAP` 3860 → 3864.** Two exports at 3864 arrived. Same loud
+failure, same fix.
+
+**Counts, for the record and not for planning:** impossible dates 261 → 1234,
+implausible 229 → 765, likely duplicates 13 → 20, possible duplicates 53 → 362.
+The tree grew 2.75× and the impossible-date count grew 4.7×. Worth understanding
+before any of it reaches Wikidata; not investigated here.
+
+**`entity_resolution.md`** — Emma's own file, six manual Geni↔Wikidata matches
+plus label edits she wants. All six Geni IDs verified present in the merged
+tree. Nothing in this repo consumes the file yet.
+
+**Not done, and deliberately:** the density measure described in `todo.md` § 3z.
+Emma is supportive of it and explicit that it is not wanted until the ~50 bulk
+downloads are finished, since density measured now describes the download queue
+rather than the tree. Also corrected there: "region" means a neighbourhood in
+the family graph, never a geographic classification.
+
+**958 passed**, Python 3.13.14. Not CI-verified; CI is `workflow_dispatch:` only
+here on purpose.

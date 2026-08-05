@@ -44,8 +44,8 @@ fuzzy name matching. `genimerge.identity` is the single place that knows this;
 change in Geni's format fails loudly.
 
 Exactly **four xref prefixes** occur, each bound to one record type: `I` on
-`INDI`, `F` on `FAM`, `N` on `NOTE`, `S` on `SUBM` — measured over all **70,408**
-xrefs in the ten exports, re-measured on 2026-08-04 against each batch of new
+`INDI`, `F` on `FAM`, `N` on `NOTE`, `S` on `SUBM` — measured over all **291,439**
+xrefs in the 45 exports, re-measured on 2026-08-04 against each batch of new
 ones rather than carried forward. Some exports carry no `NOTE` records at all, so
 an export need not use every letter; the claim is that no *other* letter appears
 and no letter spans two record types. `GENI_ID_RE` accepts only
@@ -83,6 +83,16 @@ shared by more than `AMBIGUITY_LIMIT` people is `UNRESOLVED` rather than held,
 because 73 profiles are called `n n`; and a row whose ID is simply absent from
 the tree resolves to absent rather than falling back to its name.
 
+**Later sources win value conflicts.** Changed 2026-08-04, having been
+earlier-wins since the start. Geni is a live site, so two exports disagreeing on
+a single-valued path means the profile was edited between them and the newer
+export holds the correction. The first conflicts to appear in real data — at 45
+exports; there were none at 10 — were all `INDI.CHAN.DATE`, the profile's own
+last-edited stamp, where keeping the older value is not arbitrary but wrong.
+Merge order is filename order, not export date: if "later" ever needs to mean
+"more recently exported", sort the paths by their `HEAD` date before calling
+`merge_files` and the rule follows without a code change.
+
 **The xref is the merge key; `RFN` is corroboration checked elsewhere.**
 `Merger.add_source` deliberately does not call `geni_id_of`, so a contradictory
 `RFN` does not stop a merge. The cross-check runs in `inventory`, in `model`,
@@ -117,7 +127,7 @@ its source. Expect to merge many exports over time, and expect the merge to be
 re-run rather than hand-edited. See `reports/inventory.md`.
 
 **The merged tree is one connected tree — as of 2026-08-04, and not before.**
-32393 people, 16836 families, 0 conflicts, **1 component**. It was two
+89474 people, 48254 families, **1 component**. It was two
 components for most of that day (16217 Norwegian and 11501 Japanese, sharing no
 person and no family) and the whole of 08-02..08-04. `reports/frontier.md`
 § Components is the live count and the thing to check rather than this

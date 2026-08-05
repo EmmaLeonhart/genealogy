@@ -13,15 +13,15 @@ It is not only tidiness. `genimerge crosscheck` proposes P569 and P570 statement
 
 | | count |
 | --- | ---: |
-| people in the tree | 32393 |
-| of those, carrying any year | 18671 |
-| **impossible** — cannot be true | **261** |
-| **implausible** — could be, probably is not | **229** |
+| people in the tree | 89474 |
+| of those, carrying any year | 40665 |
+| **impossible** — cannot be true | **1234** |
+| **implausible** — could be, probably is not | **765** |
 
 A child born within a year of its father's death is ordinary and is **not** reported. There is no such allowance on the mother's side, where a birth after death is not possible at all — counting the two together would invent defects and slander real births.
 
 
-## Impossible (261)
+## Impossible (1234)
 
 Every one of these is an error somewhere — in a date, or in a link between two people who are not really parent and child.
 
@@ -29,108 +29,108 @@ Showing the first 100.
 
 | person | what | other |
 | --- | --- | --- |
+| [Julianus Calpernius Piso](https://www.geni.com/people/x/6000000002006056183) | born 100, before their mother Pompeia Plotina Claudia Phoebe was born in 106 | [Pompeia Plotina Claudia Phoebe](https://www.geni.com/people/x/6000000000700869915) |
+| [Frumarico](https://www.geni.com/people/x/6000000006410990497) | born 1000, after their father Aboazar died in 978 | [Aboazar](https://www.geni.com/people/x/4068084227010048440) |
+| [Elvira Rodríguez](https://www.geni.com/people/x/6000000012152573873) | born 1000, after their father Rodrigo died in 950 | [Rodrigo](https://www.geni.com/people/x/6000000040807091205) |
+| [Gonçalo](https://www.geni.com/people/x/5152034876330057981) | born 1002, after their mother Ildôncia Fromariques died in 1000 | [Ildôncia Fromariques](https://www.geni.com/people/x/6000000020732071622) |
+| [Sanç](https://www.geni.com/people/x/6000000002188179590) | born 1005, before their mother Sancha Sánchez de Castilla was born in 1006 | [Sancha Sánchez de Castilla](https://www.geni.com/people/x/6000000011051100655) |
 | [Dobronega Maria Vladimirovna Рюриковичи](https://www.geni.com/people/x/3696730) | born 1012, after their mother Anna died in 1011 | [Anna](https://www.geni.com/people/x/6000000000437327174) |
+| [Gonzalo González](https://www.geni.com/people/x/6000000001412933079) | born 1015, after their father Gonzálo Garcés de Castilla died in 1011 | [Gonzálo Garcés de Castilla](https://www.geni.com/people/x/6000000000035142137) |
+| [Gonzalo González](https://www.geni.com/people/x/6000000001412933079) | born 1015, after their mother Fronilda died in 1009 | [Fronilda](https://www.geni.com/people/x/6000000010048295773) |
+| [Avraham בן יחיאל](https://www.geni.com/people/x/6000000001926350522) | born 1015, before their father Abū Naṣr Yehiel Azariah was born in 1060 | [Abū Naṣr Yehiel Azariah](https://www.geni.com/people/x/6000000022351208415) |
+| [Yosef ben Hizkiya ibn ʿAwkal, Nasi, Nagid of Fustat and Rome](https://www.geni.com/people/x/6000000020533302781) | born 1020, after their father Hizkiya "Zuṭṭa" ben Yehudah died in 1001 | [Hizkiya "Zuṭṭa" ben Yehudah](https://www.geni.com/people/x/6000000009305036318) |
+| [Gonzalo](https://www.geni.com/people/x/6000000008640512646) | born 1020, before their father Salvador was born in 1032 | [Salvador](https://www.geni.com/people/x/5095509947460053783) |
+| [Yehudah "Judah" ben Mevorakh](https://www.geni.com/people/x/6000000019059966004) | born 1020, before their mother Sitt was born in 1022 | [Sitt](https://www.geni.com/people/x/6000000035050769680) |
+| [Abu Yaqub Ishaq](https://www.geni.com/people/x/6000000019160575705) | born 1021, after their father Abu Musa Levi died in 1013 | [Abu Musa Levi](https://www.geni.com/people/x/6000000019160780347) |
+| [Adelaida](https://www.geni.com/people/x/6000000007224471381) | born 1025, after their father Bernat I 'Tallaferro' died in 1020 | [Bernat I 'Tallaferro'](https://www.geni.com/people/x/6000000001475110150) |
+| [Géraud Ier Seigneur de](https://www.geni.com/people/x/6000000007150846578) | born 1025, after their father Gutierre Gausfredo died in 1017 | [Gutierre Gausfredo](https://www.geni.com/people/x/6000000042061168952) |
+| [Ilduara](https://www.geni.com/people/x/6000000001089395047) | born 1025, after their father Mendo died in 1008 | [Mendo](https://www.geni.com/people/x/6000000008615639004) |
+| [Moninho](https://www.geni.com/people/x/6000000013884405797) | born 1030, after their father Egas died in 1022 | [Egas](https://www.geni.com/people/x/6000000000033288277) |
+| [Ali "Eli"](https://www.geni.com/people/x/6000000019214823365) | born 1030, before their father Samuel "Isma'il" was born in 1100 | [Samuel "Isma'il"](https://www.geni.com/people/x/6000000019214496662) |
+| [Egas](https://www.geni.com/people/x/6000000000047619651) | born 1035, before their mother Gontrode Moniz was born in 1060 | [Gontrode Moniz](https://www.geni.com/people/x/6000000000046033345) |
+| [Sancha](https://www.geni.com/people/x/6000000002487912497) | born 1035, before their mother Gontrode Moniz was born in 1060 | [Gontrode Moniz](https://www.geni.com/people/x/6000000000046033345) |
+| [Pedro](https://www.geni.com/people/x/6000000217360849831) | born 1035, before their mother Teresa de Aragón was born in 1037 | [Teresa de Aragón](https://www.geni.com/people/x/6000000002188170931) |
+| [Gontinha Gonçalves da Maia](https://www.geni.com/people/x/6000000000047609875) | born 1040, after their mother Unisco died in 1039 | [Unisco](https://www.geni.com/people/x/5152220480860119679) |
+| [Diego](https://www.geni.com/people/x/6000000012181528015) | born 1040, before their father Sancho Íñiguez was born in 1055 | [Sancho Íñiguez](https://www.geni.com/people/x/6000000013689333615) |
+| [Vela](https://www.geni.com/people/x/6000000019330125186) | born 1041, before their father Sancho Ramírez de Aragón was born in 1042 | [Sancho Ramírez de Aragón](https://www.geni.com/people/x/5233386757510064451) |
+| [Vela](https://www.geni.com/people/x/6000000019330125186) | born 1041, before their mother Felicia de Roucy was born in 1060 | [Felicia de Roucy](https://www.geni.com/people/x/6000000000128842251) |
+| [Lenora Venegas O Gasco](https://www.geni.com/people/x/6000000001655946081) | born 1044, before their father Egas was born in 1250 | [Egas](https://www.geni.com/people/x/6000000006988277433) |
+| [Rubio](https://www.geni.com/people/x/6000000004383043944) | born 1045, after their mother Ximena Alfonso de León died in 1037 | [Ximena Alfonso de León](https://www.geni.com/people/x/6000000000114360346) |
+| [Florence de Gavarret](https://www.geni.com/people/x/6000000003828248211) | born 1046, after their mother Adélaïs de Lomagne died in 1045 | [Adélaïs de Lomagne](https://www.geni.com/people/x/6000000007151587832) |
 | [Konstantinos Diogenes](https://www.geni.com/people/x/6000000003858690125) | born 1050, before their father Leonidas Diogenes was born in 1072 | [Leonidas Diogenes](https://www.geni.com/people/x/6000000006727878520) |
+| [Luba Aurovélido](https://www.geni.com/people/x/6000000015781501377) | born 1050, before their father Núño Mendes was born in 1059 | [Núño Mendes](https://www.geni.com/people/x/6000000168208385899) |
 | [Konstantinos Diogenes](https://www.geni.com/people/x/6000000003858690125) | born 1050, before their mother Maria Vladimirovna was born in 1087 | [Maria Vladimirovna](https://www.geni.com/people/x/6000000006727873834) |
 | [Davyd Igorevich, Knyaz Wladimirskij-Volhynsk](https://www.geni.com/people/x/6000000006101378991) | born 1058, after their mother Kunigunde Weimar-Orlamunde died in 1056 | [Kunigunde Weimar-Orlamunde](https://www.geni.com/people/x/6000000002187825237) |
+| [Núño Mendes](https://www.geni.com/people/x/6000000168208385899) | born 1059, after their father Menendo died in 1050 | [Menendo](https://www.geni.com/people/x/6000000000796403192) |
+| [Bernardo Díaz](https://www.geni.com/people/x/6000000003982973629) | born 1060, after their father Didaco Fredenandez died in 1046 | [Didaco Fredenandez](https://www.geni.com/people/x/6000000014200944005) |
+| [Sancha](https://www.geni.com/people/x/6000000005811199001) | born 1060, before their mother Marinha Gomes Guedeão was born in 1125 | [Marinha Gomes Guedeão](https://www.geni.com/people/x/6000000001435528208) |
+| [Onega Honoriques de Romarigues](https://www.geni.com/people/x/6000000001412921531) | born 1063, after their mother Ausenda died in 1040 | [Ausenda](https://www.geni.com/people/x/6000000008773054333) |
+| [Avraham](https://www.geni.com/people/x/6000000014766362906) | born 1065, after their father Abu Zikri "Yehuda" ibn Daud died in 1059 | [Abu Zikri "Yehuda" ibn Daud](https://www.geni.com/people/x/6000000014766648227) |
+| [Ramiro Froilaz de Trava](https://www.geni.com/people/x/6000000003493301396) | born 1065, before their father Pedro was born in 1075 | [Pedro](https://www.geni.com/people/x/5549772381560104706) |
+| [Raimbaud d'Orange](https://www.geni.com/people/x/6000000004533510295) | born 1066, after their mother Gilberte unk died in 1065 | [Gilberte unk](https://www.geni.com/people/x/6000000027268621440) |
 | [NN Brynjulfsdatter](https://www.geni.com/people/x/6000000000722124788) | born 1067, after their mother NN died in 1050 | [NN](https://www.geni.com/people/x/6000000005606928456) |
 | [Mihailo III Mihailović](https://www.geni.com/people/x/6000000015017511774) | born 1067, before their mother Ana Vukanović was born in 1099 | [Ana Vukanović](https://www.geni.com/people/x/6000000002187893027) |
+| [Trastamiro Hermigio](https://www.geni.com/people/x/6000000067535829821) | born 1070, after their father Gonçalo died in 1039 | [Gonçalo](https://www.geni.com/people/x/5152220457910119673) |
+| [Nuno](https://www.geni.com/people/x/6000000000008083868) | born 1070, after their mother Ledegúndia Tainha died in 1050 | [Ledegúndia Tainha](https://www.geni.com/people/x/6000000000040050657) |
+| [Trastamiro Hermigio](https://www.geni.com/people/x/6000000067535829821) | born 1070, after their mother Unisco died in 1039 | [Unisco](https://www.geni.com/people/x/5152220480860119679) |
+| [Fernán García](https://www.geni.com/people/x/6000000007186471271) | born 1073, after their mother Sancha de Pamplona died in 1065 | [Sancha de Pamplona](https://www.geni.com/people/x/6000000011107211560) |
 | [Ulrich von Formbach](https://www.geni.com/people/x/6000000002187825281) | born 1074, after their father Meginhard IV von Formbach died in 1066 | [Meginhard IV von Formbach](https://www.geni.com/people/x/6000000001669640393) |
+| [Estefanía de Besalú](https://www.geni.com/people/x/6000000007190751289) | born 1075, after their father Guillem II 'Trunus' de Besalú died in 1066 | [Guillem II 'Trunus' de Besalú](https://www.geni.com/people/x/6000000000957298502) |
+| [Urraca Viegas de Marnel](https://www.geni.com/people/x/6000000000040037892) | born 1075, before their father Gonçalo was born in 1082 | [Gonçalo](https://www.geni.com/people/x/6000000000062077268) |
+| [Rodrigo Veloso](https://www.geni.com/people/x/6000000001501032222) | born 1076, before their father Rodrigo "Velloso" de Cabrera was born in 1100 | [Rodrigo "Velloso" de Cabrera](https://www.geni.com/people/x/6000000003828011431) |
+| [Urraca](https://www.geni.com/people/x/6000000012913665137) | born 1077, after their father Pedro Ansúrez died in 1075 | [Pedro Ansúrez](https://www.geni.com/people/x/6000000004045532001) |
+| [Urraca](https://www.geni.com/people/x/6000000011105796199) | born 1077, after their father Ramiro I Sánchez died in 1063 | [Ramiro I Sánchez](https://www.geni.com/people/x/6000000000128732566) |
 | [Sigrid](https://www.geni.com/people/x/6000000010071442420) | born 1077, after their father Torild Totilsson died in 1070 | [Torild Totilsson](https://www.geni.com/people/x/6000000003858604945) |
 | [Sigrid](https://www.geni.com/people/x/6000000010071442420) | born 1077, after their mother Cecilia died in 1065 | [Cecilia](https://www.geni.com/people/x/6000000000462713383) |
+| [Urraca](https://www.geni.com/people/x/6000000011105796199) | born 1077, after their mother Gilberte (Ermisenda) de Foix died in 1049 | [Gilberte (Ermisenda) de Foix](https://www.geni.com/people/x/6000000000437081116) |
+| [Pedro](https://www.geni.com/people/x/6000000039234234108) | born 1079, before their father Payo was born in 1083 | [Payo](https://www.geni.com/people/x/6000000039234278077) |
+| [Ausenda](https://www.geni.com/people/x/6000000011738255288) | born 1080, after their father Teodoredo died in 1070 | [Teodoredo](https://www.geni.com/people/x/6000000001818496744) |
 | [Judith - Jutta](https://www.geni.com/people/x/6000000003827470372) | born 1085, after their father Hesso von Sülichen died in 1061 | [Hesso von Sülichen](https://www.geni.com/people/x/6000000003827737058) |
 | [Judith - Jutta](https://www.geni.com/people/x/6000000003827470372) | born 1085, after their mother Gisela von Calw died in 1068 | [Gisela von Calw](https://www.geni.com/people/x/6000000002188289620) |
 | [Princess Of Kiev Vladimirovna](https://www.geni.com/people/x/6000000000269783793) | born 1087, before their mother Ljubava Zavidich was born in 1095 | [Ljubava Zavidich](https://www.geni.com/people/x/6000000001745043247) |
+| [Mencia Rodrigues Fafes](https://www.geni.com/people/x/6000000071611587101) | born 1090, before their father Rui Fafes was born in 1215 | [Rui Fafes](https://www.geni.com/people/x/6000000015211606226) |
+| [Mencia Rodrigues Fafes](https://www.geni.com/people/x/6000000071611587101) | born 1090, before their mother Tereja Pires Alcoforado was born in 1220 | [Tereja Pires Alcoforado](https://www.geni.com/people/x/6000000015211504825) |
 | [Princess Agnieszka of Poland](https://www.geni.com/people/x/6000000002187837497) | born 1091, after their father Iziaslav Dmitri Yaroslavich Rurikids died in 1078 | [Iziaslav Dmitri Yaroslavich Rurikids](https://www.geni.com/people/x/6000000001745033558) |
 | [Sophie von Hohenstaufen](https://www.geni.com/people/x/6000000026462401447) | born 1091, before their father Conrad von Hohenstaufen was born in 1093 | [Conrad von Hohenstaufen](https://www.geni.com/people/x/6000000006906624674) |
+| [María](https://www.geni.com/people/x/6000000010954215977) | born 1091, before their father Juan Arias de Noboa was born in 1097 | [Juan Arias de Noboa](https://www.geni.com/people/x/6000000017807298152) |
 | [Manassès de Roucy](https://www.geni.com/people/x/6000000021334341404) | born 1095, after their mother Sybille de Hauteville died in 1092 | [Sybille de Hauteville](https://www.geni.com/people/x/6000000001544473926) |
+| [Guigues d'Albon](https://www.geni.com/people/x/6000000009494780671) | born 1099, after their father Guigues Raymond d'Albon died in 1096 | [Guigues Raymond d'Albon](https://www.geni.com/people/x/6000000009494663156) |
+| [Martín Alfonso](https://www.geni.com/people/x/6000000003802788659) | born 1099, before their father Vela Gutiérrez Osorio was born in 1129 | [Vela Gutiérrez Osorio](https://www.geni.com/people/x/6000000001736399824) |
+| [Martín Alfonso](https://www.geni.com/people/x/6000000003802788659) | born 1099, before their mother Sancha Ponce De Cabrera was born in 1145 | [Sancha Ponce De Cabrera](https://www.geni.com/people/x/6000000003593822183) |
+| [Etienne](https://www.geni.com/people/x/6000000013162892670) | born 1100, after their father Heinrich von Thierstein died in 1084 | [Heinrich von Thierstein](https://www.geni.com/people/x/6000000013163043545) |
+| [Rodrigo Muñoz de Guzman](https://www.geni.com/people/x/6000000018138942515) | born 1100, after their father Munio/Nuño/Hugo died in 1075 | [Munio/Nuño/Hugo](https://www.geni.com/people/x/6000000011812551151) |
+| [Rodrigo "Velloso" de Cabrera](https://www.geni.com/people/x/6000000003828011431) | born 1100, after their father Sancho "el Velloso" died in 1050 | [Sancho "el Velloso"](https://www.geni.com/people/x/6000000011128301162) |
 | [Maud](https://www.geni.com/people/x/6000000004378817610) | born 1100, after their father Thimo II the Brave von Wettin died in 1091 | [Thimo II the Brave von Wettin](https://www.geni.com/people/x/6000000004533699347) |
+| [Fernando Rodrigues Velloso](https://www.geni.com/people/x/6000000001501032035) | born 1100, before their father Rodrigo was born in 1152 | [Rodrigo](https://www.geni.com/people/x/6000000004571003130) |
+| [Martim Soares Narizes](https://www.geni.com/people/x/6000000011605575658) | born 1100, before their father Soeiro was born in 1180 | [Soeiro](https://www.geni.com/people/x/6000000008316276220) |
+| [Fernando Rodrigues Velloso](https://www.geni.com/people/x/6000000001501032035) | born 1100, before their mother Elvira was born in 1156 | [Elvira](https://www.geni.com/people/x/6000000004571003137) |
+| [Elvira Riba de Vizela](https://www.geni.com/people/x/6000000001435415581) | born 1102, before their father Martim was born in 1160 | [Martim](https://www.geni.com/people/x/6000000001412921372) |
+| [Elvira Riba de Vizela](https://www.geni.com/people/x/6000000001435415581) | born 1102, before their mother Estevainha Soares da Silva was born in 1180 | [Estevainha Soares da Silva](https://www.geni.com/people/x/6000000001412921381) |
+| [Laugier d'Agoult](https://www.geni.com/people/x/6000000015396182340) | born 1103, after their father Rostaing d'Apt died in 1076 | [Rostaing d'Apt](https://www.geni.com/people/x/6000000003828245276) |
 | [daughter of Koloman Коломана Венгерского Árpad dynasty](https://www.geni.com/people/x/6000000008871331656) | born 1103, after their mother Felicia "Busilla" of Sicily de Hauteville died in 1102 | [Felicia "Busilla" of Sicily de Hauteville](https://www.geni.com/people/x/367972467880002240) |
+| [Laugier d'Agoult](https://www.geni.com/people/x/6000000015396182340) | born 1103, after their mother Gisèle Gilette de Nice died in 1070 | [Gisèle Gilette de Nice](https://www.geni.com/people/x/6000000000641057547) |
+| [Nuño de Piedrola](https://www.geni.com/people/x/301690904720007069) | born 1104, before their father Álvaro Núñez de Lara was born in 1147 | [Álvaro Núñez de Lara](https://www.geni.com/people/x/6000000005931450615) |
 | [Maria de Barcelona](https://www.geni.com/people/x/6000000004036410263) | born 1105, after their mother María Rodriguez died in 1104 | [María Rodriguez](https://www.geni.com/people/x/6000000003827280324) |
+| [Pedro](https://www.geni.com/people/x/6000000000237544690) | born 1105, before their father Aires Nunes was born in 1115 | [Aires Nunes](https://www.geni.com/people/x/6000000001864350670) |
+| [Vela](https://www.geni.com/people/x/6000000007472051048) | born 1106, before their mother Teresa de Mauleon was born in 1122 | [Teresa de Mauleon](https://www.geni.com/people/x/6000000007151943238) |
 | [Albrecht](https://www.geni.com/people/x/6000000003097932542) | born 1107, after their mother Adelheid Perg died in 1105 | [Adelheid Perg](https://www.geni.com/people/x/6000000009534256937) |
+| [Estefanía](https://www.geni.com/people/x/6000000006988416823) | born 1108, after their father Sancho García died in 1074 | [Sancho García](https://www.geni.com/people/x/6000000011254509451) |
+| [Estefanía](https://www.geni.com/people/x/6000000006988416823) | born 1108, after their mother Contanza died in 1060 | [Contanza](https://www.geni.com/people/x/6000000000600070414) |
+| [Henrique Fernandes de Toledo](https://www.geni.com/people/x/6000000000040046759) | born 1110, after their father Fernando Afonso died in 1085 | [Fernando Afonso](https://www.geni.com/people/x/6000000000040037842) |
+| [Mem](https://www.geni.com/people/x/5334412327220023472) | born 1110, after their father Payo died in 1108 | [Payo](https://www.geni.com/people/x/6000000000040048422) |
+| [Urraca Vázquez Vasques de Ambia](https://www.geni.com/people/x/6000000002702579023) | born 1110, before their father Vasco Gadelha was born in 1140 | [Vasco Gadelha](https://www.geni.com/people/x/6000000001412918601) |
+| [Sancha](https://www.geni.com/people/x/6000000011614071093) | born 1112, after their father Diego died in 1108 | [Diego](https://www.geni.com/people/x/6000000012181528015) |
+| [Arnau Mir](https://www.geni.com/people/x/6000000008426513012) | born 1113, after their father Arnau Ramon died in 1111 | [Arnau Ramon](https://www.geni.com/people/x/6000000003828338455) |
 | [Eirene Aineiadissa Rhodocanakis](https://www.geni.com/people/x/6000000013020632588) | born 1113, after their mother Theodora died in 1109 | [Theodora](https://www.geni.com/people/x/6000000007679492851) |
 | [Bartholomew](https://www.geni.com/people/x/6000000004670866345) | born 1115, after their father Josbert died in 1100 | [Josbert](https://www.geni.com/people/x/6000000031949136042) |
-| [Georgios](https://www.geni.com/people/x/6000000000337150126) | born 1125, after their mother Anna Komnene died in 1120 | [Anna Komnene](https://www.geni.com/people/x/6000000000337150166) |
-| [Diepold I von Berg-Schelklingen](https://www.geni.com/people/x/6000000002187891144) | born 1128, after their father Heinrich I Berg died in 1116 | [Heinrich I Berg](https://www.geni.com/people/x/6000000002947577496) |
-| [Diepold I von Berg-Schelklingen](https://www.geni.com/people/x/6000000002187891144) | born 1128, after their mother Adelheid von Vohburg died in 1125 | [Adelheid von Vohburg](https://www.geni.com/people/x/6000000001669640454) |
-| [Erzsébet Árpád dynasty](https://www.geni.com/people/x/6000000036190717593) | born 1128, after their mother Predslava Sviatopolkovna Rurikid died in 1116 | [Predslava Sviatopolkovna Rurikid](https://www.geni.com/people/x/6000000002240801938) |
-| [Miss Palaiologina](https://www.geni.com/people/x/6000000000337150224) | born 1130, after their mother Anna Komnene died in 1120 | [Anna Komnene](https://www.geni.com/people/x/6000000000337150166) |
-| [Torbjørg Åsulvsdatter av Rein](https://www.geni.com/people/x/6000000004533762608) | born 1130, before their father Åsulf Guttormsson was born in 1145 | [Åsulf Guttormsson](https://www.geni.com/people/x/6000000004533762620) |
-| [Pierre II, Vicomte de Dax](https://www.geni.com/people/x/6000000017052282402) | born 1140, after their mother Estefania died in 1131 | [Estefania](https://www.geni.com/people/x/6000000000898069208) |
-| [Vasilko Rurikid](https://www.geni.com/people/x/6000000007648295604) | born 1151, after their father Yaropolk Vladimirovich Monomakh died in 1139 | [Yaropolk Vladimirovich Monomakh](https://www.geni.com/people/x/6000000003243447917) |
-| [Heinrich](https://www.geni.com/people/x/6000000003897534060) | born 1151, before their father Günther Il von Käfernburg-Schwarzburg und Hallermund was born in 1160 | [Günther Il von Käfernburg-Schwarzburg und Hallermund](https://www.geni.com/people/x/6000000003827470068) |
-| [Günther III](https://www.geni.com/people/x/6000000008684393074) | born 1155, before their father Günther Il von Käfernburg-Schwarzburg und Hallermund was born in 1160 | [Günther Il von Käfernburg-Schwarzburg und Hallermund](https://www.geni.com/people/x/6000000003827470068) |
-| [Jean I](https://www.geni.com/people/x/6000000007338065452) | born 1160, after their father Gerald died in 1144 | [Gerald](https://www.geni.com/people/x/6000000007338095215) |
-| [Erik Sweden](https://www.geni.com/people/x/6000000010067496688) | born 1160, after their father Inge Halstensson died in 1130 | [Inge Halstensson](https://www.geni.com/people/x/4293309) |
-| [Davil Ростиславич of Polotsk](https://www.geni.com/people/x/6000000035682017238) | born 1160, after their father Ростислав Рогволдич died in 1129 | [Ростислав Рогволдич](https://www.geni.com/people/x/6000000035681881459) |
-| [Erik Sweden](https://www.geni.com/people/x/6000000010067496688) | born 1160, after their mother Ulvhild Håkansdatter died in 1148 | [Ulvhild Håkansdatter](https://www.geni.com/people/x/6000000004533138274) |
-| [Bernhard](https://www.geni.com/people/x/6000000063192007859) | born 1162, before their mother Ludmilla von Böhmen was born in 1169 | [Ludmilla von Böhmen](https://www.geni.com/people/x/6000000004533176176) |
-| [Jaromar (Fürst) Prince from Rugen](https://www.geni.com/people/x/6000000001828950711) | born 1163, after their father Ratislaus 1. died in 1141 | [Ratislaus 1.](https://www.geni.com/people/x/6000000003062994857) |
-| [Jaromar (Fürst) Prince from Rugen](https://www.geni.com/people/x/6000000001828950711) | born 1163, after their mother NN Warcisławówna died in 1140 | [NN Warcisławówna](https://www.geni.com/people/x/6000000007584617218) |
-| [Folke](https://www.geni.com/people/x/6000000027688669203) | born 1164, before their mother Ulfhild was born in 1170 | [Ulfhild](https://www.geni.com/people/x/6000000006188427792) |
-| [Hendrik](https://www.geni.com/people/x/6000000132392817103) | born 1165, after their father Godfrey II 'der Bucklige' of Lorraine died in 1142 | [Godfrey II 'der Bucklige' of Lorraine](https://www.geni.com/people/x/6000000001745028784) |
-| [Marina](https://www.geni.com/people/x/6000000017480681537) | born 1165, after their father Roger II "the Norman" died in 1154 | [Roger II "the Norman"](https://www.geni.com/people/x/6000000000905031154) |
-| [Hendrik](https://www.geni.com/people/x/6000000132392817103) | born 1165, after their mother Lutgardis von Sulzbach died in 1162 | [Lutgardis von Sulzbach](https://www.geni.com/people/x/6000000000337439500) |
-| [Ita / Ida von Burghausen](https://www.geni.com/people/x/6000000003827474556) | born 1170, after their father Gebhard I von Burghausen died in 1163 | [Gebhard I von Burghausen](https://www.geni.com/people/x/6000000006727878615) |
-| [Anders Kolsson Brahe](https://www.geni.com/people/x/6000000003645724268) | born 1170, after their father Kol Sverkersson died in 1152 | [Kol Sverkersson](https://www.geni.com/people/x/6000000003645724275) |
-| [Ulrich von Berg-Schelklingen](https://www.geni.com/people/x/6000000002187891128) | born 1171, after their father Diepold I von Berg-Schelklingen died in 1166 | [Diepold I von Berg-Schelklingen](https://www.geni.com/people/x/6000000002187891144) |
-| [Ulrich von Berg-Schelklingen](https://www.geni.com/people/x/6000000002187891128) | born 1171, after their mother Gisela Gräfin von Andechs died in 1155 | [Gisela Gräfin von Andechs](https://www.geni.com/people/x/6000000002187891152) |
-| [Anne de Montmorency](https://www.geni.com/people/x/6000000068540375880) | born 1174, before their mother Emma de Laval was born in 1197 | [Emma de Laval](https://www.geni.com/people/x/6000000003827429541) |
-| [Heinrich Askanier](https://www.geni.com/people/x/6000000002187829610) | born 1175, after their mother Judith died in 1174 | [Judith](https://www.geni.com/people/x/6000000002187829624) |
-| [Ramon Berenguer](https://www.geni.com/people/x/6000000010916239598) | born 1177, after their father Ramon Berenguer IV died in 1162 | [Ramon Berenguer IV](https://www.geni.com/people/x/6000000010463529059) |
-| [Gertrud von Ballenstedt](https://www.geni.com/people/x/6000000003897531922) | born 1179, after their father Albert died in 1172 | [Albert](https://www.geni.com/people/x/6000000002187825122) |
-| [Sigurd Magnusson](https://www.geni.com/people/x/6000000001169130610) | born 1180, after their mother Eldrid Bjørnsdatter died in 1176 | [Eldrid Bjørnsdatter](https://www.geni.com/people/x/6000000004533384397) |
-| [Benedikt "Bene" Skinnkniv](https://www.geni.com/people/x/6000000014992932354) | born 1180, after their mother Eldrid Bjørnsdatter died in 1176 | [Eldrid Bjørnsdatter](https://www.geni.com/people/x/6000000004533384397) |
-| [Constantine I "the Thagadir"](https://www.geni.com/people/x/6000000006101354653) | born 1180, after their mother Rita died in 1175 | [Rita](https://www.geni.com/people/x/6000000006101354693) |
-| [Johannes Jakobsen (Hvide)](https://www.geni.com/people/x/6000000039500905905) | born 1180, before their mother Estrid Valdemarsdatter was born in 1182 | [Estrid Valdemarsdatter](https://www.geni.com/people/x/6000000004270866114) |
-| [Sviatoslav Mstislavich Rurikid](https://www.geni.com/people/x/6000000006101381169) | born 1185, after their father Mstislav Rostislavich "Bezoky" "Безокий" died in 1178 | [Mstislav Rostislavich "Bezoky" "Безокий"](https://www.geni.com/people/x/6000000014170493210) |
-| [Theodericus von Eickstedt](https://www.geni.com/people/x/6000000015841626703) | born 1185, after their father Theodericus von Eickstedt died in 1175 | [Theodericus von Eickstedt](https://www.geni.com/people/x/6000000015841664317) |
-| ['Alā ad-Dīn Kayqubād bin Kaykāvūs](https://www.geni.com/people/x/6000000009177680320) | born 1188, before their father Kaykhusraw I was born in 1192 | [Kaykhusraw I](https://www.geni.com/people/x/6000000031544214022) |
-| [Sviatoslav Vladimirovich](https://www.geni.com/people/x/6000000014170723323) | born 1189, after their father Vladimir III Mstislavich died in 1171 | [Vladimir III Mstislavich](https://www.geni.com/people/x/6000000010936024516) |
-| [Gaute Mel](https://www.geni.com/people/x/6000000001169297770) | born 1190, after their father Jon Gautsson på Ornes, Ænes died in 1181 | [Jon Gautsson på Ornes, Ænes](https://www.geni.com/people/x/6000000003784435027) |
-| [Filippus Ormson](https://www.geni.com/people/x/6000000037690308703) | born 1190, after their father Orm Ivarsson died in 1184 | [Orm Ivarsson](https://www.geni.com/people/x/6000000009796535940) |
-| [Filippus Ormson](https://www.geni.com/people/x/6000000037690308703) | born 1190, after their mother Ragna died in 1162 | [Ragna](https://www.geni.com/people/x/6000000003082460872) |
-| [Adelheid](https://www.geni.com/people/x/6000000009140112137) | born 1191, after their father Goswin von Heinsberg died in 1188 | [Goswin von Heinsberg](https://www.geni.com/people/x/6000000017023321453) |
-| [Elena Maria Romanovna Rurikid](https://www.geni.com/people/x/6000000002187837090) | born 1194, after their mother Predslava Rurikovna of Smolensk died in 1193 | [Predslava Rurikovna of Smolensk](https://www.geni.com/people/x/6000000002187837165) |
-| [Erik Laugebeu Longlegs](https://www.geni.com/people/x/6000000076473426886) | born 1200, before their father Erik I Abelsøn Estridsen was born in 1239 | [Erik I Abelsøn Estridsen](https://www.geni.com/people/x/6000000010460821347) |
-| [Helma](https://www.geni.com/people/x/6000000008900286361) | born 1202, after their father Karl Sverkersson (d.y.) died in 1198 | [Karl Sverkersson (d.y.)](https://www.geni.com/people/x/6000000010667248037) |
-| [Theodora](https://www.geni.com/people/x/6000000003827561254) | born 1204, after their father Alexios died in 1201 | [Alexios](https://www.geni.com/people/x/359296347560011021) |
-| [Maria Comninou-Palaiologou](https://www.geni.com/people/x/6000000000129327681) | born 1205, after their father Alexios died in 1201 | [Alexios](https://www.geni.com/people/x/359296347560011021) |
-| [Knut den långe](https://www.geni.com/people/x/6000000011342671838) | born 1205, after their father Holmger Filipsson died in 1200 | [Holmger Filipsson](https://www.geni.com/people/x/6000000005016461656) |
-| [Birger](https://www.geni.com/people/x/6000000010160609967) | born 1210, after their father Magnus Bengtsson died in 1208 | [Magnus Bengtsson](https://www.geni.com/people/x/6000000006283701220) |
-| [Erik](https://www.geni.com/people/x/6000000223144249830) | born 1210, after their father Magnus Bengtsson died in 1208 | [Magnus Bengtsson](https://www.geni.com/people/x/6000000006283701220) |
-| [Elof Magnusson](https://www.geni.com/people/x/6000000002188021019) | born 1211, after their father Magnus Bengtsson died in 1208 | [Magnus Bengtsson](https://www.geni.com/people/x/6000000006283701220) |
-| [Raoul de Coucy](https://www.geni.com/people/x/6000000000437192243) | born 1211, after their mother Richenza died in 1209 | [Richenza](https://www.geni.com/people/x/6000000014829030443) |
-| [Maria Palaiologina](https://www.geni.com/people/x/6000000037510288478) | born 1214, after their father Alexios died in 1201 | [Alexios](https://www.geni.com/people/x/359296347560011021) |
-| [Maria Palaiologina](https://www.geni.com/people/x/6000000037510288478) | born 1214, after their mother Eirene Angelina died in 1208 | [Eirene Angelina](https://www.geni.com/people/x/6000000013003968365) |
-| [Jkr Sigerus Van Baers(Perche-Bars)](https://www.geni.com/people/x/6000000039422057964) | born 1215, after their mother Richenza died in 1209 | [Richenza](https://www.geni.com/people/x/6000000014829030443) |
-| [Irene Palaiologina](https://www.geni.com/people/x/6000000037510649075) | born 1218, after their father Alexios died in 1201 | [Alexios](https://www.geni.com/people/x/359296347560011021) |
-| [Irene Palaiologina](https://www.geni.com/people/x/6000000037510649075) | born 1218, after their mother Eirene Angelina died in 1208 | [Eirene Angelina](https://www.geni.com/people/x/6000000013003968365) |
-| [Mechtild von Blieskastel](https://www.geni.com/people/x/6000000003827497868) | born 1220, before their father Heinrich van Blieskastel was born in 1222 | [Heinrich van Blieskastel](https://www.geni.com/people/x/6000000004533200136) |
-| [Kunigunde von Blieskastel von Schaumburg](https://www.geni.com/people/x/6000000004533233075) | born 1220, before their father Heinrich van Blieskastel was born in 1222 | [Heinrich van Blieskastel](https://www.geni.com/people/x/6000000004533200136) |
-| [Heinrich Albrechtson](https://www.geni.com/people/x/6000000015448269850) | born 1224, after their father Albert III von Everstein died in 1217 | [Albert III von Everstein](https://www.geni.com/people/x/6000000001756061146) |
-| [Heinrich Albrechtson](https://www.geni.com/people/x/6000000015448269850) | born 1224, after their mother Agnes von Wittelsbach died in 1218 | [Agnes von Wittelsbach](https://www.geni.com/people/x/6000000002187801612) |
-| [Boris Yaroslavich](https://www.geni.com/people/x/6000000039488855080) | born 1224, after their mother Elena Rostislava von Kiew Smolensk died in 1205 | [Elena Rostislava von Kiew Smolensk](https://www.geni.com/people/x/6000000039488225719) |
-| [John](https://www.geni.com/people/x/6000000037509817433) | born 1225, after their father Alexios died in 1201 | [Alexios](https://www.geni.com/people/x/359296347560011021) |
-| [John](https://www.geni.com/people/x/6000000037509817433) | born 1225, after their mother Eirene Angelina died in 1208 | [Eirene Angelina](https://www.geni.com/people/x/6000000013003968365) |
-| [Hermann von Everstein](https://www.geni.com/people/x/6000000003226679150) | born 1226, after their father Albert III von Everstein died in 1217 | [Albert III von Everstein](https://www.geni.com/people/x/6000000001756061146) |
-| [Albert Provost von Everstein](https://www.geni.com/people/x/6000000010618172590) | born 1226, after their father Albert III von Everstein died in 1217 | [Albert III von Everstein](https://www.geni.com/people/x/6000000001756061146) |
-| [Hermann von Everstein](https://www.geni.com/people/x/6000000003226679150) | born 1226, after their mother Agnes von Wittelsbach died in 1218 | [Agnes von Wittelsbach](https://www.geni.com/people/x/6000000002187801612) |
-| [Albert Provost von Everstein](https://www.geni.com/people/x/6000000010618172590) | born 1226, after their mother Agnes von Wittelsbach died in 1218 | [Agnes von Wittelsbach](https://www.geni.com/people/x/6000000002187801612) |
-| [Friedrich Albrechtson](https://www.geni.com/people/x/6000000015448738643) | born 1230, after their father Albert III von Everstein died in 1217 | [Albert III von Everstein](https://www.geni.com/people/x/6000000001756061146) |
-| [Friedrich Albrechtson](https://www.geni.com/people/x/6000000015448738643) | born 1230, after their mother Agnes von Wittelsbach died in 1218 | [Agnes von Wittelsbach](https://www.geni.com/people/x/6000000002187801612) |
-| [Niels Gyldenstierne](https://www.geni.com/people/x/6000000017182237557) | born 1235, before their mother Margaret Elisabeeth Vitslav was born in 1247 | [Margaret Elisabeeth Vitslav](https://www.geni.com/people/x/6000000000770043075) |
-| [Warcisław Pomerania](https://www.geni.com/people/x/6000000041133307979) | born 1237, after their mother Euphrosyne of Poland died in 1235 | [Euphrosyne of Poland](https://www.geni.com/people/x/6000000003827751497) |
-| [Hildegonde van Limburg Wassenberg](https://www.geni.com/people/x/6000000003827924209) | born 1240, after their father Gerhard van Wassenberg-Horne died in 1225 | [Gerhard van Wassenberg-Horne](https://www.geni.com/people/x/6000000043160458942) |
-| [Jutta von Heimbach](https://www.geni.com/people/x/6000000027385563412) | born 1240, after their father Teutonic Knight, Bruno died in 1236 | [Teutonic Knight, Bruno](https://www.geni.com/people/x/6000000027385790953) |
-| [Judith Wettin](https://www.geni.com/people/x/6000000008478036036) | born 1240, after their mother Eudoxia of Mazovia died in 1238 | [Eudoxia of Mazovia](https://www.geni.com/people/x/6000000009257423968) |
-| [Margarethe von Gützkow](https://www.geni.com/people/x/6000000008085930346) | born 1240, before their father Jaczo II von Gützkow was born in 1244 | [Jaczo II von Gützkow](https://www.geni.com/people/x/6000000004533725443) |
-| [Margarethe von Gützkow](https://www.geni.com/people/x/6000000008085930346) | born 1240, before their mother Cecislava was born in 1247 | [Cecislava](https://www.geni.com/people/x/6000000004968504408) |
-| [Sophie von Anhalt](https://www.geni.com/people/x/6000000011024212805) | born 1240, before their mother Katerina Birgersdotter Birgersson Sverre was born in 1245 | [Katerina Birgersdotter Birgersson Sverre](https://www.geni.com/people/x/6000000008019682504) |
-| [Guttorm Kalvson Torsnes](https://www.geni.com/people/x/6000000001169297881) | born 1245, after their father Kalv died in 1240 | [Kalv](https://www.geni.com/people/x/6000000007312523885) |
-| [Bolette Johanne Sigurdsdatter Onarheim](https://www.geni.com/people/x/6000000066162188012) | born 1245, after their father Sigurd died in 1217 | [Sigurd](https://www.geni.com/people/x/6000000007225423174) |
+| [Aldonza](https://www.geni.com/people/x/6000000001501029843) | born 1116, after their father Martín Alfonso died in 1099 | [Martín Alfonso](https://www.geni.com/people/x/6000000003802788659) |
+| [Alvaro](https://www.geni.com/people/x/6000000002010076560) | born 1118, before their mother D. Elvira García de Braganza was born in 1175 | [D. Elvira García de Braganza](https://www.geni.com/people/x/6000000003637361339) |
+| [Blasida](https://www.geni.com/people/x/6000000217333958868) | born 1120, after their father Bacalla died in 1115 | [Bacalla](https://www.geni.com/people/x/6000000008425950977) |
+| [Mem Moniz de Gandarei](https://www.geni.com/people/x/6000000013884115187) | born 1120, after their father Moninho Viegas died in 1022 | [Moninho Viegas](https://www.geni.com/people/x/4179946460940064007) |
+| [Gilia (Guillemette) de Gabarret](https://www.geni.com/people/x/6000000004868825721) | born 1120, after their father Pierre II de Gavarret died in 1108 | [Pierre II de Gavarret](https://www.geni.com/people/x/332838296500005765) |
+| [D. Maria](https://www.geni.com/people/x/6000000000547181787) | born 1120, after their father Soeiro died in 1103 | [Soeiro](https://www.geni.com/people/x/6000000005789438199) |
 
-## Implausible (229)
+## Implausible (765)
 
 A parent under 12, or a lifespan over 120 years. Some of these will be correct; they are here for a human to judge, not to be taken as defects.
 
@@ -138,106 +138,106 @@ Showing the first 100.
 
 | person | what | other |
 | --- | --- | --- |
+| [Balekros of Ek Makedoniva](https://www.geni.com/people/x/6000000010563794266) | born 100, when their father Amyntas Ek Makedoniva was 0 | [Amyntas Ek Makedoniva](https://www.geni.com/people/x/6000000003513088330) |
+| [Alketas I King of](https://www.geni.com/people/x/6000000003513256070) | born 100, when their father Balekros of Ek Makedoniva was 0 | [Balekros of Ek Makedoniva](https://www.geni.com/people/x/6000000010563794266) |
 | [Nysa Syria](https://www.geni.com/people/x/6000000003513106871) | born 100, when their father Mithradates V Eurgetes was 0 | [Mithradates V Eurgetes](https://www.geni.com/people/x/6000000003513161161) |
 | [IV Mithradates](https://www.geni.com/people/x/6000000003513114047) | born 100, when their father Mithradates V Eurgetes was 0 | [Mithradates V Eurgetes](https://www.geni.com/people/x/6000000003513161161) |
 | [Mithradates V Eurgetes](https://www.geni.com/people/x/6000000003513161161) | born 100, when their father Parnaces Pontus . was 0 | [Parnaces Pontus .](https://www.geni.com/people/x/6000000003513098385) |
+| [Gaius Julius Asinius Quadratus .](https://www.geni.com/people/x/6000000005747722863) | born 100, when their mother Asinia Marcella . was 0 | [Asinia Marcella .](https://www.geni.com/people/x/6000000011707574408) |
+| [Alketas I King of](https://www.geni.com/people/x/6000000003513256070) | born 100, when their mother Atalante Ek Orestis was 0 | [Atalante Ek Orestis](https://www.geni.com/people/x/6000000003513251485) |
 | [Amyntas Ek Makedoniva](https://www.geni.com/people/x/6000000003513088330) | born 100, when their mother Berenike I was 0 | [Berenike I](https://www.geni.com/people/x/6000000003513187458) |
+| [Balekros of Ek Makedoniva](https://www.geni.com/people/x/6000000010563794266) | born 100, when their mother Gygaea was 0 | [Gygaea](https://www.geni.com/people/x/6000000003513141535) |
 | [Nysa Syria](https://www.geni.com/people/x/6000000003513106871) | born 100, when their mother Laodice I Princess Of Syria was 0 | [Laodice I Princess Of Syria](https://www.geni.com/people/x/6000000003513128249) |
 | [IV Mithradates](https://www.geni.com/people/x/6000000003513114047) | born 100, when their mother Laodice I Princess Of Syria was 0 | [Laodice I Princess Of Syria](https://www.geni.com/people/x/6000000003513128249) |
+| [Adélaïde](https://www.geni.com/people/x/6000000015613590455) | born 1000, when their father Guilhem II V Sancion Sans was 4 | [Guilhem II V Sancion Sans](https://www.geni.com/people/x/6000000001699492817) |
+| [Nuño](https://www.geni.com/people/x/6000000008463025320) | born 1002, when their mother Elvira Rodríguez was 2 | [Elvira Rodríguez](https://www.geni.com/people/x/6000000012152573873) |
+| [Liégearde de Marseille](https://www.geni.com/people/x/6000000028613578089) | born 1003, when their mother Stéphanie Etiennette was 3 | [Stéphanie Etiennette](https://www.geni.com/people/x/6000000002188305555) |
+| [Sanç](https://www.geni.com/people/x/6000000002188179590) | born 1005, when their father Berenguer Ramon I 'el Corbat' de Barcelona was 5 | [Berenguer Ramon I 'el Corbat' de Barcelona](https://www.geni.com/people/x/6000000000011284066) |
+| [Adélaïs de Lomagne](https://www.geni.com/people/x/6000000007151587832) | born 1010, when their mother Adélaïde was 10 | [Adélaïde](https://www.geni.com/people/x/6000000015613590455) |
+| [Enderquina](https://www.geni.com/people/x/6000000012150462823) | born 1010, when their mother Nuña Núñez de Sobrado y Osorio was 5 | [Nuña Núñez de Sobrado y Osorio](https://www.geni.com/people/x/6000000004283028432) |
+| [Ximena Alfonso de León](https://www.geni.com/people/x/6000000000114360346) | born 1010, when their mother Urraca was 10 | [Urraca](https://www.geni.com/people/x/6000000000114257798) |
 | [Håkan Röde Stenkilsson](https://www.geni.com/people/x/6000000002187915037) | born 1015, when their father Emund "Senasis" Olofsson was 10 | [Emund "Senasis" Olofsson](https://www.geni.com/people/x/285601342810004065) |
 | [Ingvar Emundsson](https://www.geni.com/people/x/6000000007085895106) | born 1016, when their father Emund "Senasis" Olofsson was 11 | [Emund "Senasis" Olofsson](https://www.geni.com/people/x/285601342810004065) |
+| [Ximeno Blázquez de Avila](https://www.geni.com/people/x/6000000010841994960) | born 1020, when their father Blasco was 3 | [Blasco](https://www.geni.com/people/x/6000000009905270152) |
 | [Sigrid Finnsdatter](https://www.geni.com/people/x/6000000002527704016) | born 1020, when their mother Bergljót Thorbjórg was 10 | [Bergljót Thorbjórg](https://www.geni.com/people/x/6000000003220313927) |
 | [Beatrix](https://www.geni.com/people/x/6000000000232618899) | born 1022, died 1180 — a lifespan of 158 years | — |
+| [Sitt](https://www.geni.com/people/x/6000000035050769680) | born 1022, when their father Elijah ben Azariah ben Israel Gaon ha-Kohen was 2 | [Elijah ben Azariah ben Israel Gaon ha-Kohen](https://www.geni.com/people/x/6000000017154366430) |
 | [NN](https://www.geni.com/people/x/6000000054755271849) | born 1024, died 1145 — a lifespan of 121 years | — |
+| [Géraud Ier Seigneur de](https://www.geni.com/people/x/6000000007150846578) | born 1025, when their mother Sancha Peláez was 0 | [Sancha Peláez](https://www.geni.com/people/x/6000000007151025470) |
+| [Menendo](https://www.geni.com/people/x/6000000000796403192) | born 1028, when their father Núño Alvites was 11 | [Núño Alvites](https://www.geni.com/people/x/6000000000796210595) |
+| [Menendo](https://www.geni.com/people/x/6000000000796403192) | born 1028, when their mother Ilduara was 3 | [Ilduara](https://www.geni.com/people/x/6000000001089395047) |
+| [Hugo II](https://www.geni.com/people/x/6000000007224439457) | born 1035, when their mother Adelaida was 10 | [Adelaida](https://www.geni.com/people/x/6000000007224471381) |
+| [Muniadona ‘Mayor’ González](https://www.geni.com/people/x/6000000003748804867) | born 1035, when their mother Elvira was 0 | [Elvira](https://www.geni.com/people/x/6000000005015845266) |
+| [Sitt al-Muna](https://www.geni.com/people/x/6000000017161191913) | born 1037, when their father Abu Ishaq Abraham was 1 | [Abu Ishaq Abraham](https://www.geni.com/people/x/6000000017098270457) |
+| [Isabel d'Urgel](https://www.geni.com/people/x/6000000006122861448) | born 1043, when their father Ermengol III 'Armengol' d'Urgell de Besalú was 5 | [Ermengol III 'Armengol' d'Urgell de Besalú](https://www.geni.com/people/x/6000000011059986537) |
+| [Vela](https://www.geni.com/people/x/6000000000436421360) | born 1045, when their mother Juliana was 10 | [Juliana](https://www.geni.com/people/x/5303895849690076612) |
 | [Hermann I von Zähringen](https://www.geni.com/people/x/6000000002187580992) | born 1045, when their mother Richwara von Schwaben was 7 | [Richwara von Schwaben](https://www.geni.com/people/x/6000000006906578140) |
 | [Ulrich I](https://www.geni.com/people/x/6000000002980211013) | born 1047, when their mother Mathilde von Wels-Lambach was 11 | [Mathilde von Wels-Lambach](https://www.geni.com/people/x/6000000003147191246) |
+| [Abū Harūn Moses HaNasi](https://www.geni.com/people/x/6000000019241571834) | born 1049, when their mother unknown daughter was 9 | [unknown daughter](https://www.geni.com/people/x/6000000017215228218) |
+| [Gómez](https://www.geni.com/people/x/6000000000296246864) | born 1050, when their mother Sancha was 10 | [Sancha](https://www.geni.com/people/x/5095495599080081838) |
+| [Yehudah Hayy "Yahya" ben Hiyya](https://www.geni.com/people/x/6000000014632055801) | born 1050, when their mother unknown daughter was 10 | [unknown daughter](https://www.geni.com/people/x/6000000017215228218) |
 | [Olof Gudrodsson Bitlin](https://www.geni.com/people/x/6000000010090020488) | born 1053, when their mother Maria Haraldsdotter was 7 | [Maria Haraldsdotter](https://www.geni.com/people/x/6000000016832130277) |
 | [Adelheid von Zähringen](https://www.geni.com/people/x/6000000000768271011) | born 1060, when their mother Adelaide de Maurienne was 8 | [Adelaide de Maurienne](https://www.geni.com/people/x/6000000001789016114) |
+| [Murio Ordoño Sisnández](https://www.geni.com/people/x/6000000018967588301) | born 1060, when their mother Luba Aurovélido was 10 | [Luba Aurovélido](https://www.geni.com/people/x/6000000015781501377) |
 | [Jaroslaw of Wladimir](https://www.geni.com/people/x/6000000002187837557) | born 1068, when their father Davyd Igorevich, Knyaz Wladimirskij-Volhynsk was 10 | [Davyd Igorevich, Knyaz Wladimirskij-Volhynsk](https://www.geni.com/people/x/6000000006101378991) |
 | [N/a-1](https://www.geni.com/people/x/6000000018359459040) | born 1069, when their mother Synadene was 11 | [Synadene](https://www.geni.com/people/x/6000000013005079391) |
+| [Gonçalo Evreux](https://www.geni.com/people/x/6000000042487570044) | born 1070, died 1230 — a lifespan of 160 years | — |
 | [Erik](https://www.geni.com/people/x/358241599470012764) | born 1070, when their mother Helena Stenkilsdotter was 5 | [Helena Stenkilsdotter](https://www.geni.com/people/x/6000000008755327481) |
 | [Adelheid de Louvain](https://www.geni.com/people/x/6000000008568510482) | born 1072, when their mother Gertrude was 2 | [Gertrude](https://www.geni.com/people/x/6000000013446125614) |
 | [Gertrude of Louvain](https://www.geni.com/people/x/6000000016126007881) | born 1074, when their mother Gertrude was 4 | [Gertrude](https://www.geni.com/people/x/6000000013446125614) |
 | [Cecilia Svensdotter](https://www.geni.com/people/x/6000000001935440284) | born 1075, when their mother Helena Stenkilsdotter was 10 | [Helena Stenkilsdotter](https://www.geni.com/people/x/6000000008755327481) |
+| [Raymond Raimbaud des Baux](https://www.geni.com/people/x/6000000003122422021) | born 1075, when their mother Vierna de Pasquière was 10 | [Vierna de Pasquière](https://www.geni.com/people/x/6000000004868879716) |
 | [Margarethe Hedwig](https://www.geni.com/people/x/6000000009968590361) | born 1080, when their father Günther l was 6 | [Günther l](https://www.geni.com/people/x/6000000002187805531) |
+| [Fernando](https://www.geni.com/people/x/6000000012656404622) | born 1080, when their father Pedro was 5 | [Pedro](https://www.geni.com/people/x/5549772381560104706) |
+| [Egilona](https://www.geni.com/people/x/6000000007078767466) | born 1080, when their father Suero was 10 | [Suero](https://www.geni.com/people/x/6000000000485813576) |
 | [Sviatoslav Давыдович Рюрикович](https://www.geni.com/people/x/6000000009100650863) | born 1080, when their mother Feodosia, Parentage Undocumented was 10 | [Feodosia, Parentage Undocumented](https://www.geni.com/people/x/6000000036765870945) |
+| [Mór](https://www.geni.com/people/x/6000000001435528222) | born 1080, when their mother Goda Soares Soares was 0 | [Goda Soares Soares](https://www.geni.com/people/x/6000000005789365172) |
+| [Soeiro](https://www.geni.com/people/x/6000000003637377332) | born 1080, when their mother Goda Soares Soares was 0 | [Goda Soares Soares](https://www.geni.com/people/x/6000000005789365172) |
 | [No descendants](https://www.geni.com/people/x/6000000178860910834) | born 1080, when their mother Klaudija Trpimirović was 5 | [Klaudija Trpimirović](https://www.geni.com/people/x/6000000009351982261) |
 | [Margarethe Hedwig](https://www.geni.com/people/x/6000000009968590361) | born 1080, when their mother Mechtilde Yaropolkovna von Wladimir was 4 | [Mechtilde Yaropolkovna von Wladimir](https://www.geni.com/people/x/6000000002188166366) |
+| [Valpurge d'Agoult](https://www.geni.com/people/x/6000000000641013228) | born 1080, when their mother Sancie de Simiane was 5 | [Sancie de Simiane](https://www.geni.com/people/x/6000000004533250817) |
+| [昌義](https://www.geni.com/people/x/6000000012668850465) | born 1081, when their father 義業 was 4 | [義業](https://www.geni.com/people/x/6000000012668717655) |
 | [Vsevolod Glebovich](https://www.geni.com/people/x/6000000007377273393) | born 1085, when their mother Anastasia Yaropolkovna of Vlodimiro-Volynsk was 11 | [Anastasia Yaropolkovna of Vlodimiro-Volynsk](https://www.geni.com/people/x/6000000000701224748) |
+| [Hayy "Hiyya" ibn Ya'ish ibn Ya'ish ben David al-Daudi](https://www.geni.com/people/x/6000000014632022110) | born 1085, when their mother unknown ben Yitzhak Ibn Albalia was 7 | [unknown ben Yitzhak Ibn Albalia](https://www.geni.com/people/x/6000000034987244019) |
+| [Pala](https://www.geni.com/people/x/6000000076890017026) | born 1087, when their mother Ausenda was 7 | [Ausenda](https://www.geni.com/people/x/6000000011738255288) |
 | [Eystein Magnusson](https://www.geni.com/people/x/4075666) | born 1088, when their mother Margrethe Ingesdotter Fredkulla was 8 | [Margrethe Ingesdotter Fredkulla](https://www.geni.com/people/x/5234818062140033220) |
 | [Rukn al-Dīn Mas'ūd](https://www.geni.com/people/x/6000000013744046052) | born 1090, when their father Dawud Kilich Arslan was 11 | [Dawud Kilich Arslan](https://www.geni.com/people/x/6000000031527770126) |
+| [Soeiro Nunes Soares](https://www.geni.com/people/x/6000000000008140311) | born 1090, when their mother Ausenda was 10 | [Ausenda](https://www.geni.com/people/x/6000000011738255288) |
+| [Ermesenda](https://www.geni.com/people/x/6000000010982058650) | born 1090, when their mother Mendola Gonçalves was 6 | [Mendola Gonçalves](https://www.geni.com/people/x/6000000035573175384) |
+| [Unknown Wife of Yitzchak Ha'Levi Hayizhari Bat Perfet](https://www.geni.com/people/x/6000000014682708855) | born 1097, when their father Sheshet (ben Todros Makhir Katzin) was 1 | [Sheshet (ben Todros Makhir Katzin)](https://www.geni.com/people/x/6000000014683655364) |
+| [Teresa Afonso](https://www.geni.com/people/x/6000000000033100078) | born 1100, when their father Afonso was 10 | [Afonso](https://www.geni.com/people/x/6000000001412909311) |
 | [Ростислав Рогволдич](https://www.geni.com/people/x/6000000035681881459) | born 1100, when their father Rogvolod Vasilko Rogvolodovich Rurikid was 0 | [Rogvolod Vasilko Rogvolodovich Rurikid](https://www.geni.com/people/x/6000000011766711029) |
+| [Nuno](https://www.geni.com/people/x/6000000006719774273) | born 1100, when their father Soeiro Nunes Soares was 10 | [Soeiro Nunes Soares](https://www.geni.com/people/x/6000000000008140311) |
+| [Yehudah "Ya'ish" ben Yahuda ibn ben Yahudah](https://www.geni.com/people/x/6000000105393180836) | born 1100, when their father Yahya ibn Da'ud, Almoxarife of Monzon and Abraham was 0 | [Yahya ibn Da'ud, Almoxarife of Monzon and Abraham](https://www.geni.com/people/x/6000000105392834826) |
+| [Egas](https://www.geni.com/people/x/6000000001412900128) | born 1100, when their mother Dórdia Viegas was 10 | [Dórdia Viegas](https://www.geni.com/people/x/6000000001412921067) |
+| [Teresa Afonso](https://www.geni.com/people/x/6000000000033100078) | born 1100, when their mother Maria Fernandes was 0 | [Maria Fernandes](https://www.geni.com/people/x/6000000003163967565) |
+| [Gomes](https://www.geni.com/people/x/6000000004848146833) | born 1100, when their mother Mencia Rodrigues Fafes was 10 | [Mencia Rodrigues Fafes](https://www.geni.com/people/x/6000000071611587101) |
+| [Lourenço](https://www.geni.com/people/x/6000000101879408855) | born 1100, when their mother Mencia Rodrigues Fafes was 10 | [Mencia Rodrigues Fafes](https://www.geni.com/people/x/6000000071611587101) |
+| [Paio Fernandes](https://www.geni.com/people/x/6000000000166922687) | born 1100, when their mother Mór  Soares was 0 | [Mór  Soares](https://www.geni.com/people/x/6000000005790860775) |
 | [Bjørn Haraldsen](https://www.geni.com/people/x/6000000001935619159) | born 1100, when their mother Ragnhild Magnusdotter was 10 | [Ragnhild Magnusdotter](https://www.geni.com/people/x/6000000021274381997) |
 | [Tutush II](https://www.geni.com/people/x/6000000218033421878) | born 1103, when their father Shams al-Mulk Duqaq was 3 | [Shams al-Mulk Duqaq](https://www.geni.com/people/x/6000000218033529825) |
+| [wife, Zerachya II de Girona](https://www.geni.com/people/x/302187122240008197) | born 1103, when their father Sheshet (ben Todros Makhir Katzin) was 7 | [Sheshet (ben Todros Makhir Katzin)](https://www.geni.com/people/x/6000000014683655364) |
 | [Roman Prince Of Kiev](https://www.geni.com/people/x/6000000006727876068) | born 1104, when their mother Ljubava Zavidich was 9 | [Ljubava Zavidich](https://www.geni.com/people/x/6000000001745043247) |
 | [Ingrid Ragnvaldsdatter Rögnvaldsdóttir](https://www.geni.com/people/x/6000000001669615869) | born 1105, when their father Ragnvald Ingesson was 5 | [Ragnvald Ingesson](https://www.geni.com/people/x/6000000000944947381) |
+| [Vela](https://www.geni.com/people/x/6000000007472051048) | born 1106, when their father Ladrón was 6 | [Ladrón](https://www.geni.com/people/x/6000000007159091990) |
+| [Ramiro](https://www.geni.com/people/x/6000000004570936489) | born 1108, when their mother Estefanía was 0 | [Estefanía](https://www.geni.com/people/x/6000000006988416823) |
 | [Sigrid Ulfhild Björnsdotter Bjälboätten](https://www.geni.com/people/x/6000000003349982019) | born 1110, when their father Bjørn Haraldsen was 10 | [Bjørn Haraldsen](https://www.geni.com/people/x/6000000001935619159) |
 | [Sigrid Ulfhild Björnsdotter Bjälboätten](https://www.geni.com/people/x/6000000003349982019) | born 1110, when their mother Katarina Ingesdotter was 3 | [Katarina Ingesdotter](https://www.geni.com/people/x/6000000011749043301) |
+| [Rostaing de Caillan](https://www.geni.com/people/x/6000000030272333710) | born 1110, when their mother Poncie dite de Gordes de Mison was 5 | [Poncie dite de Gordes de Mison](https://www.geni.com/people/x/6000000003828239790) |
 | [Pribislava Iaroslavovna of Volhynia](https://www.geni.com/people/x/6000000006727873223) | born 1115, when their mother Rogneda Mstislavna of Kiev was 9 | [Rogneda Mstislavna of Kiev](https://www.geni.com/people/x/6000000014170256977) |
+| [Íñigo](https://www.geni.com/people/x/6000000010095386648) | born 1115, when their mother Sancha was 3 | [Sancha](https://www.geni.com/people/x/6000000011614071093) |
 | [Elisabeth Árpád dynasty](https://www.geni.com/people/x/6000000003243185408) | born 1117, when their father Béla Slijepi was 9 | [Béla Slijepi](https://www.geni.com/people/x/6000000004397805952) |
 | [Elisabeth Árpád dynasty](https://www.geni.com/people/x/6000000003243185408) | born 1117, when their mother Jelena of Hungary Vukanović was 2 | [Jelena of Hungary Vukanović](https://www.geni.com/people/x/6000000006727871963) |
 | [Guy](https://www.geni.com/people/x/6000000009304951361) | born 1120, when their father Gaucher de Châtillon was 7 | [Gaucher de Châtillon](https://www.geni.com/people/x/6000000002187857902) |
+| [Urraca](https://www.geni.com/people/x/6000000001412937275) | born 1120, when their father Henrique Fernandes de Toledo was 10 | [Henrique Fernandes de Toledo](https://www.geni.com/people/x/6000000000040046759) |
 | [Guy](https://www.geni.com/people/x/6000000009304951361) | born 1120, when their mother Ade de Roucy was 3 | [Ade de Roucy](https://www.geni.com/people/x/6000000030727308672) |
+| [Pedro](https://www.geni.com/people/x/6000000013165150689) | born 1120, when their mother Elvira Pérez de Lara was 9 | [Elvira Pérez de Lara](https://www.geni.com/people/x/6000000000034930234) |
+| [wife, Abraham ben David "Rabad" or "Rabad III" bat Abraham ben Isaac of Narbonne](https://www.geni.com/people/x/6000000017177684917) | born 1125, when their father Abraham בן יצחק הלוי was 7 | [Abraham בן יצחק הלוי](https://www.geni.com/people/x/6000000017177786351) |
 | [Maria Angelina](https://www.geni.com/people/x/6000000009229085408) | born 1125, when their father Andronikos Doukas Angelos was 9 | [Andronikos Doukas Angelos](https://www.geni.com/people/x/6000000007237395312) |
 | [Maria Angelina](https://www.geni.com/people/x/6000000009229085408) | born 1125, when their mother Euphrosyne Kastamonitissa was 0 | [Euphrosyne Kastamonitissa](https://www.geni.com/people/x/6000000000437594534) |
 | [Zoja Angelina](https://www.geni.com/people/x/6000000007337816566) | born 1129, when their mother Euphrosyne Kastamonitissa was 4 | [Euphrosyne Kastamonitissa](https://www.geni.com/people/x/6000000000437594534) |
 | [Otto](https://www.geni.com/people/x/6000000022229794425) | born 1130, when their father Heinrich III was 11 | [Heinrich III](https://www.geni.com/people/x/6000000022230102901) |
 | [Inger](https://www.geni.com/people/x/6000000001009241951) | born 1133, when their father Knud V(III) av Danmark Magnusson was 4 | [Knud V(III) av Danmark Magnusson](https://www.geni.com/people/x/6000000000685763088) |
-| [Burkhard von Magdeburg-Querfurt](https://www.geni.com/people/x/6000000003827612113) | born 1136, when their mother Adelheid von Magdeburg was 5 | [Adelheid von Magdeburg](https://www.geni.com/people/x/6000000003827612120) |
-| [Malmfried](https://www.geni.com/people/x/6000000007833070219) | born 1138, when their father Knud V(III) av Danmark Magnusson was 9 | [Knud V(III) av Danmark Magnusson](https://www.geni.com/people/x/6000000000685763088) |
-| [Benedikte](https://www.geni.com/people/x/6000000001756124195) | born 1140, when their mother Benedikta von Roning was 10 | [Benedikta von Roning](https://www.geni.com/people/x/6000000003828261390) |
-| [Heinrich](https://www.geni.com/people/x/6000000002188292453) | born 1140, when their mother Gisela Gräfin von Andechs was 2 | [Gisela Gräfin von Andechs](https://www.geni.com/people/x/6000000002187891152) |
-| [Diepold](https://www.geni.com/people/x/6000000002188292460) | born 1140, when their mother Gisela Gräfin von Andechs was 2 | [Gisela Gräfin von Andechs](https://www.geni.com/people/x/6000000002187891152) |
-| [Torleiv Breidskjegg Øysteinson](https://www.geni.com/people/x/6000000008102551063) | born 1141, when their mother Ragna was 11 | [Ragna](https://www.geni.com/people/x/6000000003082460872) |
-| [Otto II](https://www.geni.com/people/x/6000000002188292467) | born 1145, when their mother Gisela Gräfin von Andechs was 7 | [Gisela Gräfin von Andechs](https://www.geni.com/people/x/6000000002187891152) |
-| [Mangold](https://www.geni.com/people/x/6000000002188292474) | born 1145, when their mother Gisela Gräfin von Andechs was 7 | [Gisela Gräfin von Andechs](https://www.geni.com/people/x/6000000002187891152) |
-| [Elena Rostislava von Kiew Smolensk](https://www.geni.com/people/x/6000000039488225719) | born 1146, when their father Roman Rostislavich Rurikid was 4 | [Roman Rostislavich Rurikid](https://www.geni.com/people/x/6000000010935887631) |
-| [Elena Rostislava von Kiew Smolensk](https://www.geni.com/people/x/6000000039488225719) | born 1146, when their mother Maria Sviatoslavna of Chernigov was 9 | [Maria Sviatoslavna of Chernigov](https://www.geni.com/people/x/6000000009178763157) |
-| [Святослав Мстиславович](https://www.geni.com/people/x/6000000020992751246) | born 1148, when their mother Agnieska Болеславовна of Poland was 11 | [Agnieska Болеславовна of Poland](https://www.geni.com/people/x/6000000006727871181) |
-| [Ragnfrid Erlingsdotter](https://www.geni.com/people/x/6000000001827585415) | born 1150, when their mother Ragnild was 10 | [Ragnild](https://www.geni.com/people/x/6000000001198709343) |
-| [Ingvar Yaroslavich Rurikid](https://www.geni.com/people/x/6000000010935947869) | born 1152, when their mother Gertrud of Bohemia was 3 | [Gertrud of Bohemia](https://www.geni.com/people/x/6000000001501073962) |
-| [Berta](https://www.geni.com/people/x/6000000002187828854) | born 1156, when their mother Krystyna (Christina) was 6 | [Krystyna (Christina)](https://www.geni.com/people/x/6000000004533305966) |
-| [Walram van Limburg](https://www.geni.com/people/x/6000000019511741569) | born 1158, when their mother Sophia von Saarbrücken was 10 | [Sophia von Saarbrücken](https://www.geni.com/people/x/6000000003858683664) |
-| [Alexios](https://www.geni.com/people/x/6000000013098241261) | born 1162, when their mother Theodora Batatzaina was 0 | [Theodora Batatzaina](https://www.geni.com/people/x/6000000006727878330) |
-| [Folke](https://www.geni.com/people/x/6000000027688669203) | born 1164, when their father Folke Birgersson was 0 | [Folke Birgersson](https://www.geni.com/people/x/6000000009646279201) |
-| [Adelheid von Dillingen](https://www.geni.com/people/x/6000000008787043512) | born 1170, when their father Adelbert III was 2 | [Adelbert III](https://www.geni.com/people/x/6000000008030116091) |
-| [Hedwig von Andechs von Andechs](https://www.geni.com/people/x/4774053172420033191) | born 1170, when their father Berthold IV (VI) von Andechs-Meranien was 11 | [Berthold IV (VI) von Andechs-Meranien](https://www.geni.com/people/x/6000000003858731296) |
-| [Otto I.](https://www.geni.com/people/x/6000000004533233412) | born 1170, when their father Berthold IV (VI) von Andechs-Meranien was 11 | [Berthold IV (VI) von Andechs-Meranien](https://www.geni.com/people/x/6000000003858731296) |
-| [Friedrich lll Graf von Beichlingen-Lohra](https://www.geni.com/people/x/6000000003827535052) | born 1170, when their father Friedrich II, Graf von Beichlingen was 5 | [Friedrich II, Graf von Beichlingen](https://www.geni.com/people/x/6000000003827612875) |
-| [Albrecht l](https://www.geni.com/people/x/6000000014961482241) | born 1170, when their father Günther Il von Käfernburg-Schwarzburg und Hallermund was 10 | [Günther Il von Käfernburg-Schwarzburg und Hallermund](https://www.geni.com/people/x/6000000003827470068) |
-| [Friedrich lll Graf von Beichlingen-Lohra](https://www.geni.com/people/x/6000000003827535052) | born 1170, when their mother Christiane von Ballenstedt was 1 | [Christiane von Ballenstedt](https://www.geni.com/people/x/6000000003827612868) |
-| [Lucia von Rügen](https://www.geni.com/people/x/6000000003411662895) | born 1171, when their father Jaromar (Fürst) Prince from Rugen was 8 | [Jaromar (Fürst) Prince from Rugen](https://www.geni.com/people/x/6000000001828950711) |
-| [Irine Angelina](https://www.geni.com/people/x/6000000000125362235) | born 1172, when their mother Eirene was 11 | [Eirene](https://www.geni.com/people/x/6000000034543434809) |
-| [Anne de Montmorency](https://www.geni.com/people/x/6000000068540375880) | born 1174, when their father Mathieu Il 'Le Grand' de Montmorency was 0 | [Mathieu Il 'Le Grand' de Montmorency](https://www.geni.com/people/x/6000000002447118571) |
-| [Goswinus van Wassenberg](https://www.geni.com/people/x/6000000034715812366) | born 1175, when their father Hendrik van Wassenberg was 7 | [Hendrik van Wassenberg](https://www.geni.com/people/x/6000000067511774863) |
-| [Goswinus van Wassenberg](https://www.geni.com/people/x/6000000034715812366) | born 1175, when their mother Sophia van Gelre was 10 | [Sophia van Gelre](https://www.geni.com/people/x/6000000034716047128) |
-| [Heinrich Hinricus](https://www.geni.com/people/x/6000000012964146083) | born 1178, when their father Egehard Gerhard ab Osta was 2 | [Egehard Gerhard ab Osta](https://www.geni.com/people/x/6000000012964586264) |
-| [Eudoxia Lascaris](https://www.geni.com/people/x/6000000006727869414) | born 1180, when their father Theodoros Laskaris was 5 | [Theodoros Laskaris](https://www.geni.com/people/x/6000000001501010534) |
-| [Eudoxia Lascaris](https://www.geni.com/people/x/6000000006727869414) | born 1180, when their mother Anna Komnena Angelina was 4 | [Anna Komnena Angelina](https://www.geni.com/people/x/6000000000467542216) |
-| [Gebhard I von Arnstein](https://www.geni.com/people/x/6000000003897531035) | born 1180, when their mother Gertrud von Ballenstedt was 1 | [Gertrud von Ballenstedt](https://www.geni.com/people/x/6000000003897531922) |
-| [Inga Vikingsdotter](https://www.geni.com/people/x/6000000003575290734) | born 1180, when their mother N.N. was 10 | [N.N.](https://www.geni.com/people/x/6000000011906260846) |
-| [Elisabeth von Schwarzburg](https://www.geni.com/people/x/6000000002188554968) | born 1183, when their mother Irmgard von Weimar-Orlamünde was 1 | [Irmgard von Weimar-Orlamünde](https://www.geni.com/people/x/6000000006880491517) |
-| [Huguette de Bourgogne Montagu](https://www.geni.com/people/x/6000000001501065106) | born 1185, when their mother Béatrix de Rion was 10 | [Béatrix de Rion](https://www.geni.com/people/x/6000000003827791823) |
-| [Albert ll von Schwarzburg](https://www.geni.com/people/x/6000000015905625975) | born 1185, when their mother Irmgard von Weimar-Orlamünde was 3 | [Irmgard von Weimar-Orlamünde](https://www.geni.com/people/x/6000000006880491517) |
-| [Anna Agafya Mstislavna](https://www.geni.com/people/x/6000000003897549177) | born 1187, when their father Mstislav Romanovich was 9 | [Mstislav Romanovich](https://www.geni.com/people/x/6000000010936614385) |
-| [Heinrich III "Der Jüngere" von Schwarzburg](https://www.geni.com/people/x/6000000002188554982) | born 1187, when their mother Irmgard von Weimar-Orlamünde was 5 | [Irmgard von Weimar-Orlamünde](https://www.geni.com/people/x/6000000006880491517) |
-| [Isabelle De](https://www.geni.com/people/x/6000000005599114357) | born 1189, when their father Guillaume II was 11 | [Guillaume II](https://www.geni.com/people/x/6000000002043246196) |
-| [Lyubava Vasilkovna of Vitebsk](https://www.geni.com/people/x/6000000008785883861) | born 1190, when their father Vasilko II Bryachislavich was 10 | [Vasilko II Bryachislavich](https://www.geni.com/people/x/6000000013766131859) |
-| [Lyubava Vasilkovna of Vitebsk](https://www.geni.com/people/x/6000000008785883861) | born 1190, when their mother Davydovna of Smolensk was 10 | [Davydovna of Smolensk](https://www.geni.com/people/x/6000000000701212421) |
-| [Ermengard](https://www.geni.com/people/x/6000000002188554989) | born 1190, when their mother Irmgard von Weimar-Orlamünde was 8 | [Irmgard von Weimar-Orlamünde](https://www.geni.com/people/x/6000000006880491517) |
-| [Salomea Romanovna Galitzki](https://www.geni.com/people/x/6000000030216131445) | born 1191, when their mother Euphrosyne Angelina was 11 | [Euphrosyne Angelina](https://www.geni.com/people/x/6000000013009068580) |
-| [Mechtild von Schwarzburg](https://www.geni.com/people/x/6000000002188554996) | born 1192, when their mother Irmgard von Weimar-Orlamünde was 10 | [Irmgard von Weimar-Orlamünde](https://www.geni.com/people/x/6000000006880491517) |
-| [Sophie von Schwarzburg](https://www.geni.com/people/x/6000000002188556003) | born 1193, when their mother Irmgard von Weimar-Orlamünde was 11 | [Irmgard von Weimar-Orlamünde](https://www.geni.com/people/x/6000000006880491517) |
-| [Bernhard](https://www.geni.com/people/x/6000000026434019217) | born 1195, when their father Bernhard was 6 | [Bernhard](https://www.geni.com/people/x/6000000026434487013) |
-| [Ulvhedin Holteson Kamp](https://www.geni.com/people/x/6000000000944947195) | born 1198, when their mother Sigrid was 4 | [Sigrid](https://www.geni.com/people/x/6000000000462674121) |
-| [Günther](https://www.geni.com/people/x/6000000027939842694) | born 1199, when their father Bernhard was 10 | [Bernhard](https://www.geni.com/people/x/6000000026434487013) |
-| [Tiberius Claudius Bassus Capitolinus](https://www.geni.com/people/x/6000000011092591917) | born 120, died 245 — a lifespan of 125 years | — |
-| [Sibylle de Bar-le-Duc](https://www.geni.com/people/x/6000000002187952611) | born 1200, when their mother Philippa de Dreux was 8 | [Philippa de Dreux](https://www.geni.com/people/x/6000000000437169972) |
-| [Helma](https://www.geni.com/people/x/6000000008900286361) | born 1202, when their father Karl Sverkersson (d.y.) was 7 | [Karl Sverkersson (d.y.)](https://www.geni.com/people/x/6000000010667248037) |
-| [Agnes von Saarwerden](https://www.geni.com/people/x/6000000003827618795) | born 1203, when their father Ludwig von Saarwerden was 3 | [Ludwig von Saarwerden](https://www.geni.com/people/x/6000000003827445807) |
-| [Agnes von Saarwerden](https://www.geni.com/people/x/6000000003827618795) | born 1203, when their mother Agnes von Saarbrücken-Zweibrücken was 3 | [Agnes von Saarbrücken-Zweibrücken](https://www.geni.com/people/x/6000000045395223966) |
-| [Roman Александрович Владимиро-Волынский](https://www.geni.com/people/x/6000000064202130881) | born 1205, when their mother N1205 of Smolensk was 0 | [N1205 of Smolensk](https://www.geni.com/people/x/6000000021179661914) |
-| [Judith Albertsdotter Askanier](https://www.geni.com/people/x/5441313740220126371) | born 1216, when their mother Agnes Babensberg was 10 | [Agnes Babensberg](https://www.geni.com/people/x/6000000009465627532) |
 
 ## The same person, twice
 
@@ -245,90 +245,146 @@ The merge guarantees one record per Geni **profile**, which is not one record pe
 
 | | groups |
 | --- | ---: |
-| **likely** — same name, same parents, same birth year | **13** |
-| **possible** — same name and year, parents differ or unknown | **53** |
-| excluded as reused names — see below | 147 |
+| **likely** — same name, same parents, same birth year | **20** |
+| **possible** — same name and year, parents differ or unknown | **362** |
+| excluded as reused names — see below | 183 |
 
-**147 groups share a name and both parents but were born in different years, and are deliberately not listed.** In these families a dead child's name was routinely given to the next child, so those are two real siblings. Matching on name and parents alone would return them all as duplicates and be wrong about nearly every one — the exclusion is most of the work here, not an oversight.
+**183 groups share a name and both parents but were born in different years, and are deliberately not listed.** In these families a dead child's name was routinely given to the next child, so those are two real siblings. Matching on name and parents alone would return them all as duplicates and be wrong about nearly every one — the exclusion is most of the work here, not an oversight.
 
 **Nothing is merged, and nothing here should be.** Names are evidence for a human, never a join: this project keys on the Geni profile ID precisely because looser matching once produced a link to a stranger's profile. Merging two profiles is an edit on Geni, made by somebody who has opened both.
 
-### Likely (13)
+### Likely (20)
 
 Same name, same parents, same birth year. Short of siblings born in one year and given one name, these are one person recorded twice.
 
 | born | people |
 | ---: | --- |
+| 1827 | [Adams](https://www.geni.com/people/x/6000000175903869823) · [Adams](https://www.geni.com/people/x/6000000175904041822) |
 | 1784 | [Anders Andersen](https://www.geni.com/people/x/6000000043206089118) · [Anders Andersen](https://www.geni.com/people/x/6000000216557161033) |
+| 1251 | [Armand de Polignac](https://www.geni.com/people/x/6000000003827781240) · [Armand de Polignac](https://www.geni.com/people/x/6000000021354941681) |
+| 375 | [Artemia](https://www.geni.com/people/x/6000000010299987649) · [Artemia](https://www.geni.com/people/x/6000000084412641848) |
 | 1966 | [Brit Synnøve Øgård](https://www.geni.com/people/x/5708751767600042629) · [Brit Synnøve Øgård](https://www.geni.com/people/x/6000000012972857063) |
 | 1811 | [Christen Sørensen](https://www.geni.com/people/x/6000000185391126960) · [Christen Sørensen](https://www.geni.com/people/x/6000000191509575843) |
 | 500 | [Grandson Of Aschawir Unknown](https://www.geni.com/people/x/6000000000437045716) · [Grandson Of Aschawir Unknown](https://www.geni.com/people/x/6000000000437388561) |
+| 1816 | [Hannah Jane Webster](https://www.geni.com/people/x/6000000018546757605) · [Hannah Jane Webster](https://www.geni.com/people/x/6000000181289150839) |
 | 1783 | [Hans Halvorsen](https://www.geni.com/people/x/6000000010826957358) · [Hans Halvorsen](https://www.geni.com/people/x/6000000017762820499) |
 | 1803 | [Hans Sørensen](https://www.geni.com/people/x/6000000185392321968) · [Hans Sørensen](https://www.geni.com/people/x/6000000209227678851) |
+| 1795 | [Jared Webster](https://www.geni.com/people/x/6000000018545890583) · [Jared Webster](https://www.geni.com/people/x/6000000181289151139) |
+| 1789 | [Jason Webster](https://www.geni.com/people/x/6000000018546096545) · [Jason Webster](https://www.geni.com/people/x/6000000181289151100) |
 | 1815 | [Marte Maria Hansdatter](https://www.geni.com/people/x/6000000007616030680) · [Marte Maria Hansdatter](https://www.geni.com/people/x/6000000209230667868) |
 | 1800 | [Mathis Sørensen](https://www.geni.com/people/x/6000000015446339535) · [Mathis Sørensen](https://www.geni.com/people/x/6000000185388470917) |
+| 1798 | [Mercy Webster](https://www.geni.com/people/x/6000000018546187362) · [Mercy Webster](https://www.geni.com/people/x/6000000181289151126) |
 | 1631 | [Ola Nilsen Skei](https://www.geni.com/people/x/6000000005607007945) · [Ola Nilsen Skei](https://www.geni.com/people/x/6000000225386545407) |
 | 1730 | [Olaug Henriksdatter](https://www.geni.com/people/x/6000000001499101871) · [Olaug Henriksdatter](https://www.geni.com/people/x/6000000186680243828) |
 | 890 | [保忠](https://www.geni.com/people/x/6000000010702765665) · [保忠](https://www.geni.com/people/x/6000000012053060814) |
 | 627 | [彭城](https://www.geni.com/people/x/6000000057677182833) · [彭城](https://www.geni.com/people/x/6000000075346122988) |
 | 714 | [永手](https://www.geni.com/people/x/6000000010702660493) · [永手](https://www.geni.com/people/x/6000000012053046486) |
 
-### Possible (53)
+### Possible (362)
 
 Same name and birth year, but the parents differ or are not recorded. Could as easily be cousins named for the same grandparent — worth opening, not worth assuming.
 
+Showing the first 100.
+
 | born | people |
 | ---: | --- |
+| 1230 | [Maria](https://www.geni.com/people/x/6000000003493116583) · [Maria](https://www.geni.com/people/x/6000000005920000922) · [Maria](https://www.geni.com/people/x/6000000013858364821) · [Maria](https://www.geni.com/people/x/6000000013996954752) · [Maria](https://www.geni.com/people/x/6000000015550083256) · [María](https://www.geni.com/people/x/6000000128815744833) |
+| 1270 | [João](https://www.geni.com/people/x/4067519823100021180) · [João](https://www.geni.com/people/x/6000000000138341138) · [João](https://www.geni.com/people/x/6000000001741192047) · [João](https://www.geni.com/people/x/6000000014784233070) · [João](https://www.geni.com/people/x/6000000205521859869) |
+| 1450 | [Álvaro](https://www.geni.com/people/x/6000000007248371714) · [Álvaro](https://www.geni.com/people/x/6000000015518617274) · [Álvaro](https://www.geni.com/people/x/6000000068826999151) · [Álvaro](https://www.geni.com/people/x/6000000076340756890) |
+| 1320 | [Gonçalo](https://www.geni.com/people/x/4067355385190031100) · [Gonçalo](https://www.geni.com/people/x/6000000013300266693) · [Gonçalo](https://www.geni.com/people/x/6000000014465324059) · [Gonçalo](https://www.geni.com/people/x/6000000014902242322) |
+| 1250 | [Gonçalo](https://www.geni.com/people/x/6000000000034814044) · [Gonçalo](https://www.geni.com/people/x/6000000003024521712) · [Gonçalo](https://www.geni.com/people/x/6000000003493107976) · [Gonçalo](https://www.geni.com/people/x/6000000016239541916) |
+| 1290 | [Gonçalo](https://www.geni.com/people/x/6000000006513553001) · [Gonçalo](https://www.geni.com/people/x/6000000008709011505) · [Gonçalo](https://www.geni.com/people/x/6000000014475307234) · [Gonçalo](https://www.geni.com/people/x/6000000222583171849) |
+| 1310 | [João](https://www.geni.com/people/x/6000000000840999162) · [João](https://www.geni.com/people/x/6000000016146372975) · [João](https://www.geni.com/people/x/6000000020854769175) · [João](https://www.geni.com/people/x/6000000063154623845) |
+| 1440 | [João](https://www.geni.com/people/x/6000000017090007532) · [João](https://www.geni.com/people/x/6000000017159523496) · [João](https://www.geni.com/people/x/6000000191839991821) · [João](https://www.geni.com/people/x/6000000203378463849) |
+| 1200 | [Martim](https://www.geni.com/people/x/6000000001412933204) · [Martim](https://www.geni.com/people/x/6000000006242293627) · [Martim](https://www.geni.com/people/x/6000000036839936639) · [Martim](https://www.geni.com/people/x/6000000075756069919) |
+| 1260 | [Pedro](https://www.geni.com/people/x/6000000001864356544) · [Pedro](https://www.geni.com/people/x/6000000006731703026) · [Pedro](https://www.geni.com/people/x/6000000013026211197) · [Pedro](https://www.geni.com/people/x/6000000183441421822) |
+| 1480 | [Pedro](https://www.geni.com/people/x/6000000008778929625) · [Pedro](https://www.geni.com/people/x/6000000020626305332) · [Pedro](https://www.geni.com/people/x/6000000037604695858) · [Pedro](https://www.geni.com/people/x/6000000076304231851) |
+| 1230 | [Sancha](https://www.geni.com/people/x/6000000006789133513) · [Sancha](https://www.geni.com/people/x/6000000008460531915) · [Sancha](https://www.geni.com/people/x/6000000009777028433) · [Sancha](https://www.geni.com/people/x/6000000013997205437) |
+| 1300 | [Vasco](https://www.geni.com/people/x/6000000004306307487) · [Vasco](https://www.geni.com/people/x/6000000010535129752) · [Vasco](https://www.geni.com/people/x/6000000012748641378) · [Vasco](https://www.geni.com/people/x/6000000013401045205) |
+| 1300 | [Afonso](https://www.geni.com/people/x/6000000008979101855) · [Afonso](https://www.geni.com/people/x/6000000015594655167) · [Afonso](https://www.geni.com/people/x/6000000198524319821) |
+| 1500 | [Alonso](https://www.geni.com/people/x/6000000011059484918) · [Alonso](https://www.geni.com/people/x/6000000081067685892) · [Alonso](https://www.geni.com/people/x/6000000083357906047) |
+| 1330 | [Álvaro](https://www.geni.com/people/x/6000000000297347948) · [Álvaro](https://www.geni.com/people/x/6000000006507795337) · [Álvaro](https://www.geni.com/people/x/6000000014091907885) |
+| 1344 | [Anna](https://www.geni.com/people/x/6000000005232224422) · [Anna](https://www.geni.com/people/x/6000000005241587519) · [Anna](https://www.geni.com/people/x/6000000006727832867) |
+| 1200 | [concubine,](https://www.geni.com/people/x/6000000031421018065) · [concubine,](https://www.geni.com/people/x/6000000041883613691) · [concubine,](https://www.geni.com/people/x/6000000041887727743) |
+| 1475 | [Diego](https://www.geni.com/people/x/6000000080874279055) · [Diego](https://www.geni.com/people/x/6000000081190332933) · [Diego](https://www.geni.com/people/x/6000000081294103445) |
+| 1400 | [Diogo](https://www.geni.com/people/x/6000000001818306930) · [Diogo](https://www.geni.com/people/x/6000000014487078654) · [Diogo](https://www.geni.com/people/x/6000000016435898573) |
+| 1290 | [Fernão](https://www.geni.com/people/x/6000000011605594794) · [Fernão](https://www.geni.com/people/x/6000000013886615285) · [Fernão](https://www.geni.com/people/x/6000000015424044039) |
+| 1510 | [Francisco](https://www.geni.com/people/x/5543873214050042343) · [Francisco](https://www.geni.com/people/x/6000000076399600913) · [Francisco](https://www.geni.com/people/x/6000000076929582346) |
+| 1470 | [Francisco](https://www.geni.com/people/x/6000000009836767411) · [Francisco](https://www.geni.com/people/x/6000000076340368551) · [Francisco](https://www.geni.com/people/x/6000000076393684917) |
+| 1340 | [Gonçalo](https://www.geni.com/people/x/6000000003461736005) · [Gonçalo](https://www.geni.com/people/x/6000000013029769216) · [Gonçalo](https://www.geni.com/people/x/6000000032790008988) |
+| 1350 | [Gonçalo](https://www.geni.com/people/x/6000000008461422504) · [Gonçalo](https://www.geni.com/people/x/6000000013029555808) · [Gonçalo](https://www.geni.com/people/x/6000000013999426334) |
+| 1380 | [Gonçalo](https://www.geni.com/people/x/6000000016975883455) · [Gonçalo](https://www.geni.com/people/x/6000000019923928690) · [Gonçalo](https://www.geni.com/people/x/6000000223110168831) |
+| 1530 | [Isabel](https://www.geni.com/people/x/6000000018201060887) · [Isabel](https://www.geni.com/people/x/6000000078405056870) · [Isabel](https://www.geni.com/people/x/6000000081079392841) |
+| 1250 | [João](https://www.geni.com/people/x/6000000001435528101) · [João](https://www.geni.com/people/x/6000000003854179796) · [João](https://www.geni.com/people/x/6000000013996510620) |
+| 1260 | [João](https://www.geni.com/people/x/6000000006789327015) · [João](https://www.geni.com/people/x/6000000013970154603) · [João](https://www.geni.com/people/x/6000000017765963944) |
+| 1300 | [João](https://www.geni.com/people/x/6000000008627708164) · [João](https://www.geni.com/people/x/6000000014465929280) · [João](https://www.geni.com/people/x/6000000015434681752) |
+| 1430 | [João](https://www.geni.com/people/x/6000000012686821803) · [João](https://www.geni.com/people/x/6000000013029700363) · [João](https://www.geni.com/people/x/6000000020209198249) |
+| 1240 | [João](https://www.geni.com/people/x/6000000013026335899) · [João](https://www.geni.com/people/x/6000000014863238817) · [João](https://www.geni.com/people/x/6000000210306959821) |
+| 1400 | [João](https://www.geni.com/people/x/6000000014472448082) · [João](https://www.geni.com/people/x/6000000015030401765) · [João](https://www.geni.com/people/x/6000000015334837812) |
+| 1500 | [Juan](https://www.geni.com/people/x/6000000017560893252) · [Juan](https://www.geni.com/people/x/6000000076395818013) · [Juan](https://www.geni.com/people/x/6000000081485640630) |
+| 1450 | [Laurids](https://www.geni.com/people/x/6000000035334640789) · [Laurids](https://www.geni.com/people/x/6000000040125261099) · [Laurids](https://www.geni.com/people/x/6000000123403369822) |
+| 1250 | [Lourenço](https://www.geni.com/people/x/6000000000160620830) · [Lourenço](https://www.geni.com/people/x/6000000001864340363) · [Lourenço](https://www.geni.com/people/x/6000000008682531254) |
+| 1270 | [Lourenço](https://www.geni.com/people/x/6000000007059092099) · [Lourenço](https://www.geni.com/people/x/6000000016073185284) · [Lourenço](https://www.geni.com/people/x/6000000016409878009) |
+| 1180 | [Maria](https://www.geni.com/people/x/6000000002313437334) · [Maria](https://www.geni.com/people/x/6000000008681836720) · [Maria](https://www.geni.com/people/x/6000000009861256956) |
+| 1340 | [Maria](https://www.geni.com/people/x/6000000003570388021) · [Maria](https://www.geni.com/people/x/6000000013136655912) · [Maria](https://www.geni.com/people/x/6000000015842347978) |
+| 1260 | [Maria](https://www.geni.com/people/x/6000000008752392585) · [Maria](https://www.geni.com/people/x/6000000008889492902) · [Maria](https://www.geni.com/people/x/6000000011845485269) |
+| 1360 | [Maria](https://www.geni.com/people/x/6000000008772882635) · [Maria](https://www.geni.com/people/x/6000000010289110432) · [Maria](https://www.geni.com/people/x/6000000014861884206) |
+| 1270 | [Martim](https://www.geni.com/people/x/5151998673580085082) · [Martim](https://www.geni.com/people/x/6000000000040038492) · [Martim](https://www.geni.com/people/x/6000000008491980181) |
+| 1320 | [Martim](https://www.geni.com/people/x/6000000000021974141) · [Martim](https://www.geni.com/people/x/6000000007438565259) · [Martim](https://www.geni.com/people/x/6000000010089805098) |
+| 1400 | [Martim](https://www.geni.com/people/x/6000000007439063256) · [Martim](https://www.geni.com/people/x/6000000013728273304) · [Martim](https://www.geni.com/people/x/6000000014472412035) |
+| 1220 | [Martim](https://www.geni.com/people/x/6000000014441798368) · [Martim](https://www.geni.com/people/x/6000000015626488226) · [Martim](https://www.geni.com/people/x/6000000018050631013) |
+| 1250 | [Martim](https://www.geni.com/people/x/6000000015335934171) · [Martim](https://www.geni.com/people/x/6000000015626792851) · [Martim](https://www.geni.com/people/x/6000000016292290526) |
+| 1430 | [Niels](https://www.geni.com/people/x/6000000007741743330) · [Niels](https://www.geni.com/people/x/6000000009215279613) · [Niels](https://www.geni.com/people/x/6000000010374120779) |
 | 1550 | [NN](https://www.geni.com/people/x/6000000008188593947) · [NN](https://www.geni.com/people/x/6000000176653557926) · [NN](https://www.geni.com/people/x/6000000213749323826) |
+| 1200 | [NN](https://www.geni.com/people/x/6000000011027591196) · [NN](https://www.geni.com/people/x/6000000046603241821) · [NN](https://www.geni.com/people/x/6000000192488123823) |
+| 1300 | [Peder](https://www.geni.com/people/x/6000000004533686084) · [Peder](https://www.geni.com/people/x/6000000007980922733) · [Peder](https://www.geni.com/people/x/6000000010858805273) |
+| 1260 | [Peder](https://www.geni.com/people/x/6000000035389148676) · [Peder](https://www.geni.com/people/x/6000000039287025307) · [Peder](https://www.geni.com/people/x/6000000080233524821) |
+| 1230 | [Pedro](https://www.geni.com/people/x/6000000000032853822) · [Pedro](https://www.geni.com/people/x/6000000020840604581) · [Pedro](https://www.geni.com/people/x/6000000220024308868) |
+| 1420 | [Pedro](https://www.geni.com/people/x/6000000000297212824) · [Pedro](https://www.geni.com/people/x/6000000017159497821) · [Pedro](https://www.geni.com/people/x/6000000018023772219) |
+| 1200 | [Pedro](https://www.geni.com/people/x/6000000001412929833) · [Pedro](https://www.geni.com/people/x/6000000012139151943) · [Pedro](https://www.geni.com/people/x/6000000149597240822) |
+| 1150 | [Pedro](https://www.geni.com/people/x/6000000001435415570) · [Pedro](https://www.geni.com/people/x/6000000008764406164) · [Pedro](https://www.geni.com/people/x/6000000013145048860) |
+| 1170 | [Pedro](https://www.geni.com/people/x/6000000001864353207) · [Pedro](https://www.geni.com/people/x/6000000003827902039) · [Pedro](https://www.geni.com/people/x/6000000015550601512) |
+| 1290 | [Pedro](https://www.geni.com/people/x/6000000006444762182) · [Pedro](https://www.geni.com/people/x/6000000015232975166) · [Pedro](https://www.geni.com/people/x/6000000043801877860) |
+| 1340 | [Pedro](https://www.geni.com/people/x/6000000014470324054) · [Pedro](https://www.geni.com/people/x/6000000034627051928) · [Pedro](https://www.geni.com/people/x/6000000192947427827) |
+| 1380 | [Rui](https://www.geni.com/people/x/6000000000073800868) · [Rui](https://www.geni.com/people/x/6000000021676940084) · [Rui](https://www.geni.com/people/x/6000000220810246892) |
+| 1280 | [Rui](https://www.geni.com/people/x/6000000001864356409) · [Rui](https://www.geni.com/people/x/6000000010535098781) · [Rui](https://www.geni.com/people/x/6000000014466945004) |
+| 1410 | [Rui](https://www.geni.com/people/x/6000000011800911344) · [Rui](https://www.geni.com/people/x/6000000015528391047) · [Rui](https://www.geni.com/people/x/6000000202312138905) |
+| 1320 | [Vasco](https://www.geni.com/people/x/6000000000030826539) · [Vasco](https://www.geni.com/people/x/6000000000040034365) · [Vasco](https://www.geni.com/people/x/6000000007438171730) |
+| 1325 | [노](https://www.geni.com/people/x/6000000183070490862) · [노](https://www.geni.com/people/x/6000000183686041976) · [노](https://www.geni.com/people/x/6000000192193958629) |
+| 1809 | [Abel Webster](https://www.geni.com/people/x/6000000003108854118) · [Abel Webster](https://www.geni.com/people/x/6000000018546067487) |
+| 580 | [Adèle de Meaux](https://www.geni.com/people/x/6000000032656907873) · [Adele De Meaux](https://www.geni.com/people/x/6000000034608518005) |
 | 1126 | [Adelheid](https://www.geni.com/people/x/6000000032575187191) · [Adelheid](https://www.geni.com/people/x/6000000044039991695) |
+| 1280 | [Afonso](https://www.geni.com/people/x/6000000000297342713) · [Afonso](https://www.geni.com/people/x/6000000016937697128) |
+| 1210 | [Afonso](https://www.geni.com/people/x/6000000001412929860) · [Afonso](https://www.geni.com/people/x/6000000012125535539) |
+| 1315 | [Afonso](https://www.geni.com/people/x/6000000017586166304) · [Afonso](https://www.geni.com/people/x/6000000021694806886) |
+| 1320 | [Aldonça](https://www.geni.com/people/x/6000000000297486462) · [Aldonça](https://www.geni.com/people/x/6000000007151415493) |
+| 1520 | [Alonso](https://www.geni.com/people/x/6000000009148838085) · [Alonso](https://www.geni.com/people/x/6000000114951755844) |
+| 1475 | [Alonso](https://www.geni.com/people/x/6000000035189923852) · [Alonso](https://www.geni.com/people/x/6000000076393260830) |
+| 1470 | [Alonso](https://www.geni.com/people/x/6000000081067554885) · [Alonso](https://www.geni.com/people/x/6000000203936837837) |
+| 1380 | [Álvaro](https://www.geni.com/people/x/6000000003342035410) · [Alvaro](https://www.geni.com/people/x/6000000013290566364) |
+| 1460 | [Álvaro](https://www.geni.com/people/x/6000000010313518092) · [Álvaro](https://www.geni.com/people/x/6000000024277149490) |
+| 1360 | [Álvaro](https://www.geni.com/people/x/6000000014843343939) · [Álvaro](https://www.geni.com/people/x/6000000192157440824) |
+| 1500 | [Ana](https://www.geni.com/people/x/6000000072982800935) · [Ana](https://www.geni.com/people/x/6000000076400043014) |
+| 1620 | [Anders](https://www.geni.com/people/x/6000000004111549546) · [Anders](https://www.geni.com/people/x/6000000016445886839) |
 | 1820 | [Anders Hansen](https://www.geni.com/people/x/6000000177117768824) · [Anders Hansen](https://www.geni.com/people/x/6000000209230831823) |
 | 1841 | [Anders Olsen](https://www.geni.com/people/x/6000000109333975244) · [Anders Olsen](https://www.geni.com/people/x/6000000117191555893) |
 | 1811 | [Anders Olsen](https://www.geni.com/people/x/6000000178654571825) · [Anders Olsen](https://www.geni.com/people/x/6000000218304451862) |
 | 1836 | [Andreas](https://www.geni.com/people/x/6000000092273603870) · [Andreas](https://www.geni.com/people/x/6000000111471463841) |
+| 519 | [Anicius Probus](https://www.geni.com/people/x/6000000003645870912) · [Anicius Probus](https://www.geni.com/people/x/6000000195943862836) |
 | 1707 | [Anna](https://www.geni.com/people/x/6000000074804326068) · [Anna](https://www.geni.com/people/x/6000000178278275935) |
 | 1758 | [Anna Andersdotter](https://www.geni.com/people/x/6000000177921516839) · [Anna Andersdotter](https://www.geni.com/people/x/6000000187717607962) |
 | 1761 | [Anne Ingemundsdatter](https://www.geni.com/people/x/6000000021275171071) · [Anne Ingemundsdatter](https://www.geni.com/people/x/6000000111920822081) |
 | 1770 | [Anne Olsdatter](https://www.geni.com/people/x/6000000005738203499) · [Anne Olsdatter](https://www.geni.com/people/x/6000000178379260848) |
 | 1751 | [Anne Pedersdatter](https://www.geni.com/people/x/6000000022823714504) · [Anne Pedersdatter](https://www.geni.com/people/x/6000000192770150821) |
+| 165 | [Annia Faustina](https://www.geni.com/people/x/6000000003645864789) · [Annia Faustina](https://www.geni.com/people/x/6000000017236991464) |
+| 630 | [Ansbert](https://www.geni.com/people/x/6000000186973602821) · [Ansbert](https://www.geni.com/people/x/6000000213942629825) |
+| 135 | [Aulus Egnatius](https://www.geni.com/people/x/6000000001442596445) · [Aulus Egnatius](https://www.geni.com/people/x/6000000203812288845) |
+| 1360 | [Beatriz](https://www.geni.com/people/x/6000000011797974522) · [Beatriz](https://www.geni.com/people/x/6000000013136524662) |
+| 1460 | [Beatriz](https://www.geni.com/people/x/6000000014781773732) · [Beatriz](https://www.geni.com/people/x/6000000030624455510) |
+| 1535 | [Beatriz](https://www.geni.com/people/x/6000000077072043854) · [Beatriz](https://www.geni.com/people/x/6000000081068314276) |
 | 1906 | [Berner Borsheim](https://www.geni.com/people/x/6000000002091116790) · [Berner Borsheim](https://www.geni.com/people/x/6000000032068298553) |
 | 1650 | [Birgitte Eriksdatter](https://www.geni.com/people/x/6000000059763681849) · [Birgitte Eriksdatter](https://www.geni.com/people/x/6000000217798532838) |
-| 1200 | [Brynjulf](https://www.geni.com/people/x/6000000109043725549) · [Brynjulf](https://www.geni.com/people/x/6000000181845121858) |
-| 1821 | [Elen Andersdatter](https://www.geni.com/people/x/6000000026366014273) · [Elen Andersdatter](https://www.geni.com/people/x/6000000080940445142) |
-| 1795 | [Erik Olsen](https://www.geni.com/people/x/6000000033459101163) · [Erik Olsen](https://www.geni.com/people/x/6000000086433215905) |
-| 560 | [Gggrandson Of Aschawir Unknown](https://www.geni.com/people/x/6000000000437045690) · [Gggrandson Of Aschawir Unknown](https://www.geni.com/people/x/6000000000437388535) |
-| 530 | [Great Grandson Of Aschawir Unknown](https://www.geni.com/people/x/6000000000437045703) · [Great Grandson Of Aschawir Unknown](https://www.geni.com/people/x/6000000000437388548) |
-| 1851 | [Hans](https://www.geni.com/people/x/6000000013214745368) · [Hans](https://www.geni.com/people/x/6000000094818397978) |
-| 1789 | [Hans](https://www.geni.com/people/x/6000000088792968045) · [Hans](https://www.geni.com/people/x/6000000111423360274) |
-| 1836 | [Hans](https://www.geni.com/people/x/6000000109051449995) · [Hans](https://www.geni.com/people/x/6000000109970302821) |
-| 1794 | [Hans Christensen](https://www.geni.com/people/x/6000000111779412225) · [Hans Christensen](https://www.geni.com/people/x/6000000178578880830) |
-| 1752 | [Hans Hansen](https://www.geni.com/people/x/6000000019119212674) · [Hans Hansen](https://www.geni.com/people/x/6000000034381623289) |
-| 1843 | [Hans Olsen](https://www.geni.com/people/x/6000000109051336014) · [Hans Olsen](https://www.geni.com/people/x/6000000196249215863) |
-| 1103 | [Harald IV "Gille"](https://www.geni.com/people/x/6000000018329271956) · [Harald IV Gille](https://www.geni.com/people/x/6000000223524555848) |
-| 1133 | [Henry](https://www.geni.com/people/x/5597271884650100378) · [Henry](https://www.geni.com/people/x/6000000002187814242) |
-| 1721 | [Johanne Larsdatter](https://www.geni.com/people/x/6000000014361451409) · [Johanne Larsdatter](https://www.geni.com/people/x/6000000186677808866) |
-| 1802 | [Johannes Hansen](https://www.geni.com/people/x/6000000023264006971) · [Johannes Hansen](https://www.geni.com/people/x/6000000211352156833) |
-| 1225 | [John](https://www.geni.com/people/x/6000000037509817433) · [John](https://www.geni.com/people/x/6000000037511932723) |
-| 1770 | [Jøran Olsdatter](https://www.geni.com/people/x/6000000000159704842) · [Jøran Olsdatter](https://www.geni.com/people/x/6000000195446201841) |
-| 1797 | [Jøran Sørensdatter](https://www.geni.com/people/x/6000000015446392260) · [Jøran Sørensdatter](https://www.geni.com/people/x/6000000086324525950) |
-| 1770 | [Lars](https://www.geni.com/people/x/6000000021132051889) · [Lars](https://www.geni.com/people/x/6000000223575905915) |
-| 1192 | [Manuel](https://www.geni.com/people/x/6000000002187834360) · [Manuel](https://www.geni.com/people/x/6000000080389103056) |
-| 1855 | [Martin](https://www.geni.com/people/x/6000000109335140030) · [Martin](https://www.geni.com/people/x/6000000111814236096) |
-| 1830 | [Mathis Olsen](https://www.geni.com/people/x/6000000000842229476) · [Mathis Olsen](https://www.geni.com/people/x/6000000099271248119) |
-| 1754 | [Nils Johannessen](https://www.geni.com/people/x/6000000022551845138) · [Nils Johannessen](https://www.geni.com/people/x/6000000183493951837) |
-| 1620 | [NN](https://www.geni.com/people/x/6000000008708647525) · [NN](https://www.geni.com/people/x/6000000041091296768) |
-| 1600 | [NN](https://www.geni.com/people/x/6000000011812526318) · [NN](https://www.geni.com/people/x/6000000017535915136) |
-| 1832 | [Ole](https://www.geni.com/people/x/6000000035927490184) · [Ole](https://www.geni.com/people/x/6000000111470175903) |
-| 1791 | [Ole Hansen](https://www.geni.com/people/x/6000000023234434918) · [Ole Hansen](https://www.geni.com/people/x/6000000221254508849) |
-| 1834 | [Ole Olsen](https://www.geni.com/people/x/6000000013214441179) · [Ole Olsen](https://www.geni.com/people/x/6000000109289905140) |
-| 1272 | [Otto](https://www.geni.com/people/x/6000000002187834047) · [Otto](https://www.geni.com/people/x/6000000003827368130) |
-| 1480 | [Peder](https://www.geni.com/people/x/6000000001507025206) · [Peder](https://www.geni.com/people/x/6000000024196277800) |
-| 1798 | [Peder Andersen](https://www.geni.com/people/x/6000000193163678821) · [Peder Andersen](https://www.geni.com/people/x/6000000194612759840) |
-| 1790 | [Per Eriksson](https://www.geni.com/people/x/6000000177921516822) · [Per Eriksson](https://www.geni.com/people/x/6000000185092590185) |
-| 1766 | [Randi Syversdatter](https://www.geni.com/people/x/6000000095236458921) · [Randi Syversdatter](https://www.geni.com/people/x/6000000220888241846) |
-| 1790 | [Rasmus Rasmusson](https://www.geni.com/people/x/6000000003095080287) · [Rasmus Rasmusson](https://www.geni.com/people/x/6000000169821778864) |
-| 1046 | [Robert](https://www.geni.com/people/x/6000000006026602016) · [Robert](https://www.geni.com/people/x/6000000008248188599) |
-| 595 | [Shahrijar](https://www.geni.com/people/x/6000000011670697392) · [Shahrijar](https://www.geni.com/people/x/6000000172337629229) |
-| 715 | [Smbat](https://www.geni.com/people/x/6000000003897590336) · [Smbat](https://www.geni.com/people/x/6000000177169867840) |
-| 1715 | [Torer Kristoffersen](https://www.geni.com/people/x/6000000001498965389) · [Torer Kristoffersen](https://www.geni.com/people/x/6000000206325856927) |
-| 1798 | [Tosten](https://www.geni.com/people/x/6000000020515974452) · [Tosten](https://www.geni.com/people/x/6000000082517190997) |
-| 1220 | [Walram](https://www.geni.com/people/x/6000000001501069218) · [Walram](https://www.geni.com/people/x/6000000097776586022) |
+| 1345 | [Brites](https://www.geni.com/people/x/6000000014859379594) · [Brites](https://www.geni.com/people/x/6000000014902229272) |
+| 1390 | [Brites](https://www.geni.com/people/x/6000000014861924064) · [Brites](https://www.geni.com/people/x/6000000015191788011) |
+| 1410 | [Brites](https://www.geni.com/people/x/6000000015422216763) · [Brites](https://www.geni.com/people/x/6000000015822219008) |
+| 1490 | [Brites Barbosa](https://www.geni.com/people/x/6000000018059521056) · [Brites Barbosa](https://www.geni.com/people/x/6000000020389215593) |

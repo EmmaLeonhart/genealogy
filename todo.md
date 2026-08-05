@@ -23,11 +23,12 @@ file is a list of intentions, so it is worth being explicit about which of them
 have since been measured — item 3b's "the merge absorbs it without changes", and
 item 7's "a file drop and a re-run, not a code change".
 
-The tree is **32393 people in one connected component** (`reports/frontier.md`,
-2026-08-04, over ten exports). **Treat the numbers in this paragraph as a
-timestamp, not a fact.** It has been wrong three times: it read "12422 people in
-one connected component" and was left alone when the fifth export made it two;
-then 16266/12422/3844; then 27718/16217/11501, for about two hours.
+The tree is **89474 people in one connected component** (`reports/frontier.md`,
+2026-08-04, over 45 exports). **Treat the numbers in this paragraph as a
+timestamp, not a fact.** It has been wrong four times in five days: it read
+"12422 people in one connected component" and was left alone when the fifth
+export made it two; then 16266/12422/3844; then 27718/16217/11501; then 32393,
+each for a matter of hours.
 `reports/frontier.md` is the live count and this file is not regenerated.
 
 The warning that used to follow it turned out to be a description rather than a
@@ -57,10 +58,11 @@ form must be re-exportable as a valid GEDCOM *and* queryable as structured data.
 Merging must be idempotent and re-runnable as new exports land, never a one-off
 hand-edit.
 
-`Forest`, `Ancestors` and `BloodTree` are export **styles**, not exports — the
-first three files are those three styles of one seed, and a second `Forest` from
-a different seed arrives with the filename already taken. `CLAUDE.md` carries
-the naming scheme.
+`Forest`, `Ancestors`, `BloodTree` and `Descendants` are export **styles**, not
+exports — the first three files are three styles of one seed, and a second
+`Forest` from a different seed arrives with the filename already taken.
+`CLAUDE.md` carries the naming scheme, which is `export-<style>-<seedID>.ged`:
+the style has to be in the name because one seed can be exported in several.
 
 ## 2. Wikidata reconciliation
 
@@ -111,14 +113,22 @@ thin region.** That is the first thing to check when the measure exists.
 connecting people — they fan out to pull in everyone below one person, which is
 a *breadth* instrument. Do not propose one to close a path.
 
+**"Region" means a region of the graph, not a place.** Emma was explicit:
+do not classify people geographically. Birthplace strings are dirty, most people
+do not have one, and inferring a place from a name is exactly the fuzzy matching
+this repo refuses everywhere else. A region here is a **neighbourhood in the
+family graph** — people close to each other by parent/child/spouse edges,
+regardless of where they lived.
+
 **What is missing to do this.** `genimerge.inventory` computes pairwise overlap
 and per-file uniqueness, but has no per-person presence count and no way to
-aggregate it into regions. The measure needs: (a) a count per Geni ID of how
-many exports hold it, (b) a notion of region — connected neighbourhood, surname,
-place, or branch under a common ancestor — and (c) a report ranking regions by
-low mean presence and size. **NEEDS-DECISION** on (b): what counts as a region
-is a judgement, and picking wrong makes the ranking meaningless. Emma decides,
-and the descendants-of-Indian-people case is the test it has to pass.
+aggregate it over the graph. The measure needs: (a) a count per Geni ID of how
+many exports hold it, and (b) a way to find *contiguous stretches of graph*
+where that count is low and the stretch is large. Neither exists.
+
+**Not before the bulk downloads are done.** Emma is supportive of building this
+and equally clear it is not wanted yet — with ~50 exports still arriving, any
+density measured now describes the download queue rather than the tree.
 
 ### 3a. What the frontier analysis found
 

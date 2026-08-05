@@ -109,18 +109,26 @@ def test_a_tag_that_must_stay_repeatable_is_never_collapsed_by_measurement():
     assert merge.collapse_single_valued(worst) == {"INDI.BIRT.DATE"}
 
 
-def test_conflicting_single_valued_leaf_keeps_the_first_source_and_records_it():
+def test_conflicting_single_valued_leaf_keeps_the_last_source_and_records_it():
+    """Later wins. This asserted the opposite until 2026-08-04.
+
+    Geni is a live site, so two exports disagreeing on a single-valued field
+    means the profile was edited in between: the newer export holds the
+    correction. Every conflict in the first 45 real exports was
+    `INDI.CHAN.DATE`, the profile's own last-edited stamp, where keeping the
+    older value is not arbitrary but plainly wrong.
+    """
     other = A.replace("2 DATE 1900", "2 DATE 1901")
     doc, report = _merge(A, other)
     ada = doc.by_xref()["@I100@"]
 
-    assert ada.path_value("BIRT", "DATE") == "1900"
+    assert ada.path_value("BIRT", "DATE") == "1901"
     assert len(report.conflicts) == 1
     conflict = report.conflicts[0]
     assert conflict.xref == "@I100@"
     assert conflict.path == "INDI.BIRT.DATE"
-    assert (conflict.kept, conflict.kept_from) == ("1900", "source0.ged")
-    assert (conflict.dropped, conflict.dropped_from) == ("1901", "source1.ged")
+    assert (conflict.kept, conflict.kept_from) == ("1901", "source1.ged")
+    assert (conflict.dropped, conflict.dropped_from) == ("1900", "source0.ged")
 
 
 def test_merge_order_decides_which_conflicting_value_survives():
@@ -128,19 +136,41 @@ def test_merge_order_decides_which_conflicting_value_survives():
     first, _ = _merge(A, other)
     second, _ = _merge(other, A)
 
-    assert first.by_xref()["@I100@"].path_value("BIRT", "DATE") == "1900"
-    assert second.by_xref()["@I100@"].path_value("BIRT", "DATE") == "1901"
+    assert first.by_xref()["@I100@"].path_value("BIRT", "DATE") == "1901"
+    assert second.by_xref()["@I100@"].path_value("BIRT", "DATE") == "1900"
 
 
-def test_conflict_credits_the_source_that_actually_grafted_the_value():
-    # A has no death; B adds one; C disagrees with B. The kept value came from
-    # B even though the record itself originated in A.
+def test_a_third_source_overrides_the_second_not_just_the_first():
+    """Last writer wins across a chain, not merely against the original.
+
+    A has no death; B adds one; C disagrees with B. C's value must survive, and
+    the dropped value must be credited to B — the source that actually held it —
+    rather than to A, where the record originated.
+    """
     b = A.replace("1 RFN geni:100", "1 DEAT\n2 DATE 1980\n1 RFN geni:100")
     c = A.replace("1 RFN geni:100", "1 DEAT\n2 DATE 1981\n1 RFN geni:100")
-    _, report = _merge(A, b, c)
+    doc, report = _merge(A, b, c)
 
-    assert [(x.path, x.kept, x.kept_from, x.dropped) for x in report.conflicts] == [
-        ("INDI.DEAT.DATE", "1980", "source1.ged", "1981")
+    assert doc.by_xref()["@I100@"].path_value("DEAT", "DATE") == "1981"
+    assert [(x.path, x.kept, x.kept_from, x.dropped, x.dropped_from) for x in report.conflicts] == [
+        ("INDI.DEAT.DATE", "1981", "source2.ged", "1980", "source1.ged")
+    ]
+
+
+def test_the_last_of_three_conflicting_values_wins_and_each_step_is_recorded():
+    """Three sources disagreeing leaves two conflicts and the final value.
+
+    The middle source must not be silently skipped: it both loses to the last
+    and is credited as the holder of what the last displaced.
+    """
+    b = A.replace("2 DATE 1900", "2 DATE 1901")
+    c = A.replace("2 DATE 1900", "2 DATE 1902")
+    doc, report = _merge(A, b, c)
+
+    assert doc.by_xref()["@I100@"].path_value("BIRT", "DATE") == "1902"
+    assert [(x.kept, x.kept_from, x.dropped, x.dropped_from) for x in report.conflicts] == [
+        ("1901", "source1.ged", "1900", "source0.ged"),
+        ("1902", "source2.ged", "1901", "source1.ged"),
     ]
 
 
@@ -283,7 +313,7 @@ def test_the_detailed_report_lists_every_conflict_and_where_each_value_came_from
     assert "**1** value disagreements on single-valued paths." in text
     assert "| `INDI.BIRT.DATE` | 1 |" in text  # the by-path summary
     assert (
-        "| `@I100@` | `INDI.BIRT.DATE` | 1900 | source0.ged | 1901 | source1.ged |" in text
+        "| `@I100@` | `INDI.BIRT.DATE` | 1901 | source1.ged | 1900 | source0.ged |" in text
     )
 
 

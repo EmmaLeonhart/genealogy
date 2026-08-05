@@ -7,6 +7,7 @@ because the fixtures are what we *think* Geni emits, and these files are what it
 Skips when the exports are absent so a checkout without `data_lake/` still runs.
 """
 
+import re
 from pathlib import Path
 
 import pytest
@@ -24,8 +25,27 @@ def export(request):
     return gedcom.parse_file(DATA_LAKE / request.param)
 
 
-def test_export_parses_without_warnings(export):
-    assert export.warnings == []
+def test_the_only_parse_warnings_are_lines_that_never_claimed_to_be_gedcom(export):
+    """Nothing structural is ever skipped.
+
+    This read `warnings == []` until 2026-08-04, which held for the first ten
+    exports and stopped holding at 45: one profile has an RTF blob pasted into a
+    note, and RTF carries literal newlines, so the blob's continuation lines
+    arrive as GEDCOM lines with no level number in front of them.
+
+    Zero warnings is therefore not achievable and not the property worth
+    asserting — Geni's data contains what its users pasted into it. The property
+    that matters is that the parser only ever skips lines that were *not*
+    GEDCOM: every warning must be an "unparseable" one whose text does not begin
+    with a level number. A skipped line that did start with a level number would
+    mean real structure was dropped, and that still fails here.
+    """
+    structural = [
+        w
+        for w in export.warnings
+        if "unparseable" not in w or re.search(r": '(\d+) ", w)
+    ]
+    assert structural == [], f"parser skipped or mangled real GEDCOM structure: {structural[:3]}"
 
 
 def test_export_has_a_geni_header(export):

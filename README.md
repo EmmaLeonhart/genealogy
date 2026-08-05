@@ -8,13 +8,13 @@ to Wikidata.
 ## What this is
 
 Geni.com exports a family tree as GEDCOM, and **each export is bounded at a few
-thousand people** — the ten in `data_lake/` hold between 3836 and 3860
-individuals apiece. They overlap far less than that suggests:
+thousand people** — the 45 merged so far hold between 876 and 3864 individuals
+apiece, most of them at the ceiling. They overlap far less than that suggests:
 
 | | individuals | families |
 | --- | ---: | ---: |
-| largest single export | 3860 | 2620 |
-| all ten merged | **32393** | **16836** |
+| largest single export | 3864 | 2620 |
+| all 45 merged | **89474** | **48254** |
 | present in every export | 0 | 0 |
 
 So the exports are overlapping slices of one tree rather than copies of it, and
@@ -25,10 +25,11 @@ Wikidata.
 
 Those numbers cluster, but they are **not** a cap Geni enforces — see
 `genimerge.seeds.GENI_EXPORT_CAP`, which records what is actually known rather
-than the pattern they suggest. The most that can be said: across 28 exports the
-ceiling rose from 3836 to 3860 over five days, and eleven consecutive exports
-from eleven different seeds in three different styles then all came back with
-exactly 3860, so whatever the bound is, it is global rather than per-seed.
+than the pattern they suggest. The most that can be said: the ceiling rose from
+3836 to 3864 over five days, and long runs of consecutive exports from different
+seeds in different styles come back with the identical count, so whatever the
+bound is, it is global rather than per-seed or per-style. Exports well under it
+(876, 1073, 1192) exhausted their branch before filling.
 
 Merging is exact, not fuzzy. Geni writes the profile ID as the GEDCOM xref
 itself:
@@ -41,8 +42,10 @@ itself:
 so every record carries a stable primary key across exports, and the same ID is
 the join key to Wikidata via **P2600 (Geni.com profile ID)**.
 
-The merge of all ten currently produces 32393 individuals and 16836 families
-with **zero conflicts and no lost lines** — see `reports/merge.md`.
+The merge of all 45 currently produces 89474 individuals and 48254 families —
+see `reports/merge.md`. Conflicts are rare and so far entirely `INDI.CHAN.DATE`,
+the profile's own last-edited stamp, disagreeing because the profile was edited
+between two exports. **Later sources win**, so the newer stamp is the one kept.
 
 It is **one connected tree**, as of 2026-08-04. It was two for the days before
 that: the Norwegian material and the Japanese mythological line rooted at
