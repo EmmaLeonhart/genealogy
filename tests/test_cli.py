@@ -102,6 +102,7 @@ COMMANDS = [
     "entity-resolution",
     "density",
     "distant",
+    "remote",
     "path",
     "path-from-html",
 ]
