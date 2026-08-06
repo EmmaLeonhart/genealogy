@@ -135,6 +135,7 @@ python -m genimerge inventory        # measure the exports  -> reports/inventory
 python -m genimerge merge            # merge them           -> out/merged.ged
 python -m genimerge export           # canonical dataset    -> out/people.jsonl
 python -m genimerge reconcile        # match by P2600       -> out/wikidata/
+python -m genimerge overlap          # us vs all of P2600   -> reports/wikidata-overlap.md
 python -m genimerge expand --search  # propose more links   -> out/wikidata/candidates.csv
 python -m genimerge coverage         # what is linked       -> reports/wikidata-coverage.md
 python -m genimerge consistency      # dates that contradict -> reports/consistency.md
@@ -170,6 +171,7 @@ Generated, and worth reading in this order:
 - `reports/inventory.md` — what is in each export, and how little they overlap
 - `reports/merge.md` — what merged, what conflicted, what did not resolve
 - `reports/wikidata-coverage.md` — how much of the tree reaches Wikidata
+- `reports/wikidata-overlap.md` — the same join counted from *both* sides: how much of our tree Wikidata knows, and how much of Wikidata's Geni-linked population we hold. `coverage` and `reconcile` ask about the IDs we already have and so can only answer the first; `overlap` fetches every P2600 statement, which is the only way to see an item whose Geni profile no export has reached
 - `reports/consistency.md` — dates in the tree that contradict each other, split into impossible and implausible
 - `reports/frontier.md` — where the tree stops: parentless people, components, generational depth
 - `reports/seeds.md` — the next exports to take, as a sequence whose breadth-first balls barely overlap

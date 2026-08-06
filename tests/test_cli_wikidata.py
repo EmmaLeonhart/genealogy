@@ -10,6 +10,7 @@ Every test here substitutes a canned responder. No network.
 """
 
 import csv
+import hashlib
 import json
 import urllib.request
 
@@ -93,6 +94,25 @@ class FakeWikidata:
         query = urllib.parse.parse_qs(data.decode("utf-8"))["query"][0]
         self.queries.append(query)
 
+        if "COUNT(" in query and "wdt:P2600" in query:
+            # overlap: the endpoint's own totals, asked for separately.
+            counts = {"?item)": 4, "?g)": 5, "*)": 6}
+            n = 4 if "wd:Q5" in query else next(
+                (v for k, v in counts.items() if f"COUNT(DISTINCT {k}" in query
+                 or f"COUNT({k}" in query),
+                4,
+            )
+            return _bindings([{"n": {"value": str(n)}}])
+        if "MD5(STR(?item))" in query:
+            # overlap: all of P2600, sixteen partitions. Ada and Bo are in our
+            # tree; Q9 carries a Geni ID no export here has reached.
+            prefix = query.split('MD5(STR(?item)), "')[1][0]
+            rows = []
+            for qid, geni_id in (("Q1", "1"), ("Q2", "2"), ("Q9", "77")):
+                uri = _entity(qid)
+                if hashlib.md5(uri.encode()).hexdigest().startswith(prefix):
+                    rows.append({"item": {"value": uri}, "g": {"value": geni_id}})
+            return _bindings(rows)
         if "wdt:P2600 ?geni" in query and "VALUES ?geni" in query:
             # reconcile: which of our IDs does Wikidata know?
             return _bindings(
@@ -215,6 +235,46 @@ def test_reconcile_reports_what_it_did(ws, capsys):
     run(ws, "reconcile")
 
     assert "2 of 3 people matched by P2600" in capsys.readouterr().out
+
+
+# -- overlap -----------------------------------------------------------
+
+
+def test_overlap_counts_both_directions(ws, capsys):
+    assert run(ws, "overlap") == 0
+
+    printed = capsys.readouterr().out
+    # Ada and Bo are on both sides; Cy is ours alone; Q9's "77" is theirs alone.
+    assert "2 in both; 1 ours only; 1 Wikidata only" in printed
+
+
+def test_overlap_writes_the_report_and_the_fetched_pairs(ws):
+    run(ws, "overlap")
+
+    report = (ws["reports"] / "wikidata-overlap.md").read_text(encoding="utf-8")
+    assert "of Wikidata's Geni IDs" in report
+
+    pairs = (ws["out"] / "wikidata" / "p2600-all.tsv").read_text(encoding="utf-8")
+    assert sorted(pairs.split()) == sorted(["Q1", "1", "Q2", "2", "Q9", "77"])
+
+
+def test_overlap_fetches_every_partition(ws):
+    run(ws, "overlap")
+
+    partitions = [q for q in ws["fake"].queries if "MD5(STR(?item))" in q]
+    assert len(partitions) == len(cli.overlap_mod.PARTITIONS)
+
+
+def test_overlap_says_so_when_the_fetched_rows_miss_the_reported_total(ws, capsys):
+    """The fake reports 6 statements and returns 3, which is the alarm.
+
+    Wikidata is live, so some drift between the count query and the fetch is
+    ordinary; a partition failing silently is not, and the two look identical
+    without this.
+    """
+    run(ws, "overlap")
+
+    assert "warning: fetched 3 statements" in capsys.readouterr().err
 
 
 # -- expand ------------------------------------------------------------

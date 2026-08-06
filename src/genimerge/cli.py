@@ -26,6 +26,7 @@ from . import (
     model,
     namelinks,
     names as names_mod,
+    overlap as overlap_mod,
     paths as paths_mod,
     quickstatements,
     reconcile,
@@ -197,6 +198,52 @@ def _cmd_export(args: argparse.Namespace) -> int:
         families_path, (tree.families[k].to_json() for k in sorted(tree.families, key=int))
     )
     print(f"wrote {people_path} ({people}) and {families_path} ({families})")
+    return 0
+
+
+def _cmd_overlap(args: argparse.Namespace) -> int:
+    ws = Workspace.from_args(args)
+    tree = _load_tree(args.source, ws)
+    client = make_client(ws, args)
+
+    reported = {}
+    for name, query in overlap_mod.COUNT_QUERIES.items():
+        reported[name] = int(client.sparql(query)[0]["n"])
+        print(f"  wikidata {name}: {reported[name]:,}")
+
+    def progress(done: int, total: int) -> None:
+        print(f"  partition {done}/{total}", end="\r", flush=True)
+
+    pairs = overlap_mod.fetch_all_p2600(client, progress=progress)
+    print(" " * 30, end="\r")
+
+    # Fetched rows against what the endpoint says it holds. A partition that
+    # came back short would otherwise read as a smaller Wikidata.
+    if len(pairs) != reported["statements"]:
+        print(
+            f"warning: fetched {len(pairs):,} statements but the endpoint reports "
+            f"{reported['statements']:,}. Wikidata is live, so a small drift is "
+            "ordinary; a large one means a partition failed.",
+            file=sys.stderr,
+        )
+
+    result = overlap_mod.measure(pairs, tree.people, reported=reported)
+
+    pairs_path = _write(
+        ws.wikidata / "p2600-all.tsv",
+        "\n".join(f"{qid}\t{gid}" for qid, gid in sorted(pairs)) + "\n",
+    )
+    report = _write(
+        args.output or ws.reports / "wikidata-overlap.md",
+        overlap_mod.render_markdown(
+            result, people=len(tree.people), exports=len(ws.exports())
+        ),
+    )
+    print(f"wrote {pairs_path} and {report}")
+    print(
+        f"{len(result.both):,} in both; {len(result.ours_only):,} ours only; "
+        f"{len(result.theirs_only):,} Wikidata only"
+    )
     return 0
 
 
@@ -852,6 +899,25 @@ def build_parser() -> argparse.ArgumentParser:
         help="directory for the JSONL files (default: <out>)"
     )
     p_export.set_defaults(func=_cmd_export)
+
+    p_over = sub.add_parser(
+        "overlap",
+        help="our tree against every Wikidata item carrying a Geni ID",
+        description=(
+            "Fetches all ~517,000 P2600 statements in sixteen MD5 partitions and "
+            "intersects them with the tree, so the overlap is counted from both "
+            "sides. Responses are cached under out/wikidata/cache."
+        ),
+    )
+    p_over.add_argument("--source", type=Path, default=None, help="a GEDCOM to read instead of merging")
+    p_over.add_argument(
+        "--delay", type=float, default=1.0, help="seconds between requests (default: 1.0)"
+    )
+    p_over.add_argument(
+        "-o", "--output", type=Path, default=None,
+        help="where to write (default: <reports>/wikidata-overlap.md)"
+    )
+    p_over.set_defaults(func=_cmd_overlap)
 
     p_rec = sub.add_parser(
         "reconcile",
