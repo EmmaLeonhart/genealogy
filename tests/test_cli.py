@@ -79,7 +79,7 @@ def run(ws, *argv):
     return cli.main(
         [
             *argv,
-            "--data-lake",
+            "--exports-dir",
             str(ws["lake"]),
             "--out",
             str(ws["out"]),
@@ -107,6 +107,7 @@ COMMANDS = [
     "crosscheck",
     "entity-resolution",
     "density",
+    "distant",
     "path",
     "path-from-html",
 ]
@@ -150,7 +151,7 @@ def test_every_command_accepts_the_workspace_options(command):
     args = cli.build_parser().parse_args(
         [command]
         + REQUIRED_ARGS.get(command, [])
-        + ["--data-lake", "a", "--out", "b", "--reports", "c"]
+        + ["--exports-dir", "a", "--out", "b", "--reports", "c"]
     )
     ws = cli.Workspace.from_args(args)
 
@@ -424,7 +425,7 @@ def test_the_redirected_report_describes_the_redirected_merge(workspace, tmp_pat
 
 # -- a redirected run must not touch the repository --------------------------
 #
-# README promises: "Every command also takes --data-lake, --out and --reports,
+# README promises: "Every command also takes --exports-dir, --out and --reports,
 # so a second dataset can be processed without touching the first."
 #
 # This asserts that promise for the family, so a new or edited command writing
