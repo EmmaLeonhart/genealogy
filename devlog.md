@@ -3010,3 +3010,71 @@ Written into `consistency.py`'s module docstring rather than only here, since
 the failure mode is a reader normalising by the wrong number. The BC-date fix
 earlier today moved the impossible count 2,756 → 3,003; the rates above are all
 post-fix and internally consistent.
+
+
+## 2026-08-06 — the corpus goes back into git; remoteness ranked instead of guessed
+
+**41 GEDCOMs were gitignored, and are not any more.** A cloud session counted 57
+exports against reports describing 94 and could not tell whether files had been
+lost. They had not: `6eddadd` moved 37 of them out of git on a size argument
+(~200 MB), one `.gitignore` line per file, and the stragglers batch added four
+the same way. All 98 were on disk throughout. The damage was that a clean
+checkout silently measured a smaller corpus than every committed report
+describes, while every local run kept working — the failure looked exactly like
+nothing being wrong.
+
+Emma's ruling was immediate and total: tracking the exports is what this repo is
+for. `91cf363` removes the 41 lines and commits the files; `git ls-files
+'exports/**/*.ged'` and `find exports -name '*.ged'` both give 98. The zip lines
+stay, one per file, for the reason they always had.
+
+Her rule, now in `CLAUDE.md`: **never write a `*.ged` or `*.zip` pattern into
+`.gitignore`, ever.** The two are ignored in opposite ways and a pattern gets
+both wrong — `.ged` is never ignored at all, `.zip` is ignored one explicit path
+at a time so an *unlisted* zip shows up in `git status` and announces a
+download. Manual gitignores help humans. `tests/test_repo_invariants.py` asserts
+all four halves of that, including against paths that do not exist yet, so a
+pattern broad enough to swallow the *next* batch fails now rather than after it
+arrives. Working in `reports/audit-corpus-sync.md`.
+
+**`distant` was read as arbitrary, and that reading was right.** It runs a
+double sweep, emits a pair, retires that neighbourhood and repeats — so pair 2
+is whatever survived pair 1, and nothing in the output says these are the most
+remote people. `genimerge.remote` asks about people instead: for everyone, how
+far is the person they are furthest from. Row 1 is then the most remote person
+the measurement can find.
+
+Exact eccentricity is a BFS per person, 200k sweeps, so it is approximated with
+12 landmarks placed by farthest-point sampling. A landmark is a real person, so
+the figure is **never an overestimate** — it can only understate someone whose
+antipode lies where no landmark looks.
+
+The separation filter is the part worth keeping. `|d(u,L) − d(v,L)| ≤ d(u,v)`
+for any landmark `L`, so a gap of *k* between two landmark vectors **proves**
+the two people are at least *k* hops apart. Every row is provably in a different
+part of the graph from every other row — what `distant`'s retirement radius was
+reaching for and could only approximate.
+
+Two things the first real run got wrong, both from reading the output rather
+than from a test:
+
+- Rows 1 and 2 were the same pair backwards. A's furthest person is B, so B's
+  is A. Both ends of a row are retired now.
+- The separation share was 0.12, which on a 311-hop graph is 37 hops. A valid
+  proof and a useless report: rows 3–22 were one Chinese lineage, each
+  legitimately 37 hops from the last, all pointing at Makeda. Raised to 0.25.
+  Against the 202,433-person merge that gives **18 rows, 77 hops apart**.
+
+**The instrument's own prediction failed twice out of three.** Emma saved three
+path pages before the session crashed. Makeda→Enlil-nirari held **225 of 225**
+and Makeda→Matthew **219 of 219** — Geni's chain between two people 164 hops
+apart in our tree ran entirely through people we already hold. A long in-tree
+distance is therefore not on its own evidence of a missing community. Only
+Makeda→Marguerite paid: **148 of 155**, stopping at step 146, Mahaut de Poissy
+dame de Châteaufort, with six absent people behind her before the far end picks
+up again. That is a bridge to build, and it is one doorway rather than a
+neighbourhood.
+
+Recorded as a standing caution in `queue.md`: if several more of the 18 come
+back complete, the honest conclusion is that this measures our tree's shape
+rather than Geni's gaps, and the effort belongs on `reports/density.md`.
