@@ -97,6 +97,13 @@ def fetch_all_p2600(
 #: on Wikidata's side -- a URL, a vanity slug -- and cannot join to our xrefs.
 NUMERIC = re.compile(r"^[0-9]+$")
 
+#: A profile ID sitting inside a malformed value. Ten digits or more, because a
+#: Geni profile ID is 13 to 19 and a shorter run is a year or a house number.
+#: Used only to *report* that a value could be recovered -- recovering it is a
+#: separate decision, and a URL with `?through=` carries two IDs, of which the
+#: one after the `?` is a different person entirely.
+EMBEDDED_ID = re.compile(r"[0-9]{10,}")
+
 
 @dataclass
 class Overlap:
@@ -126,6 +133,22 @@ class Overlap:
     @property
     def theirs_only(self) -> set[str]:
         return self.theirs - self.ours
+
+    @property
+    def pairs_in_our_tree(self) -> dict[str, list[str]]:
+        """Items carrying two or more Geni IDs that are **both ours**.
+
+        The interesting subset of :attr:`item_with_several_ids`: an outside
+        source asserting that two people we hold separately are one person.
+        Deliberately not called "duplicates" — see :func:`render_markdown`,
+        which spells out the second reading.
+        """
+        out = {}
+        for qid, ids in self.item_with_several_ids.items():
+            mine = [i for i in ids if i in self.ours]
+            if len(mine) > 1:
+                out[qid] = mine
+        return out
 
 
 def measure(pairs: Iterable[tuple[str, str]], our_ids: Iterable[str],
@@ -157,7 +180,9 @@ def _pct(part: int, whole: int) -> str:
     return f"{100 * part / whole:.2f}%" if whole else "—"
 
 
-def render_markdown(o: Overlap, *, people: int, exports: int) -> str:
+def render_markdown(
+    o: Overlap, *, people: int, exports: int, names: dict[str, str] | None = None
+) -> str:
     both, ours_only, theirs_only = len(o.both), len(o.ours_only), len(o.theirs_only)
     lines = [
         "# Our tree against every Wikidata item with a Geni ID",
@@ -201,13 +226,47 @@ def render_markdown(o: Overlap, *, people: int, exports: int) -> str:
         "",
     ]
 
+    if o.pairs_in_our_tree:
+        names = names or {}
+        lines += [
+            "## Two of our people, one Wikidata item",
+            "",
+            f"**{len(o.pairs_in_our_tree)}** items carry two or more Geni IDs that are "
+            "**both in our tree**. This is the most useful thing in the report and "
+            "the most easily over-read, so: **it is a claim from outside our data, "
+            "and it has two readings.**",
+            "",
+            "1. **Geni holds the same person twice** and has not merged the two "
+            "profiles. Our merge keys on the profile ID, so it cannot see this — two "
+            "IDs are two people to us, by construction. Wikidata noticing is the only "
+            "evidence available.",
+            "2. **The P2600 on that item is wrong.** An editor attached a second Geni "
+            "ID to the wrong person.",
+            "",
+            "Reading the list makes clear that both happen. `Брячислав Васильевич` "
+            "against `Bracheslav Vasylkovich Polozki` is one person recorded twice in "
+            "two languages. `Scribonia` against `Clodia Pulchra` is not — they are "
+            "two of Octavian's wives, and one of those two statements is simply "
+            "wrong. **Nothing here separates them and nothing here should**; this is "
+            "a review queue for a human, exactly like the flags in "
+            "`reports/wikidata-crosscheck.md`.",
+            "",
+            "| item | our people |",
+            "| --- | --- |",
+        ]
+        for qid, ids in sorted(o.pairs_in_our_tree.items()):
+            who = " == ".join(f"{names.get(i, '?')} `{i}`" for i in ids)
+            lines.append(f"| [{qid}](https://www.wikidata.org/wiki/{qid}) | {who} |")
+        lines.append("")
+
     if o.id_on_several_items:
+        ours = sum(1 for k in o.id_on_several_items if k in o.ours)
         lines += [
             "## Geni IDs on more than one Wikidata item",
             "",
-            f"**{len(o.id_on_several_items)}** of them. Each is either a duplicate",
-            "pair of items that should be merged, or a wrong P2600 — and nothing",
-            "here can tell which, so nothing here guesses.",
+            f"**{len(o.id_on_several_items)}** of them, **{ours}** in our tree. Each is "
+            "either a duplicate pair of items that should be merged, or a wrong "
+            "P2600 — and nothing here can tell which, so nothing here guesses.",
             "",
             "| Geni ID | items |",
             "| --- | --- |",
@@ -220,11 +279,16 @@ def render_markdown(o: Overlap, *, people: int, exports: int) -> str:
         lines.append("")
 
     if o.item_with_several_ids:
+        touching = sum(
+            1 for ids in o.item_with_several_ids.values() if any(i in o.ours for i in ids)
+        )
         lines += [
             "## Wikidata items carrying more than one Geni ID",
             "",
-            f"**{len(o.item_with_several_ids)}** of them. Usually a person with two",
-            "Geni profiles that Geni itself has not merged.",
+            f"**{len(o.item_with_several_ids)}** of them, **{touching}** touching our "
+            "tree. Usually one person with two Geni profiles that Geni itself has "
+            "not merged — so an item here is a *pair of our people* who are the "
+            "same person, if both IDs are ours.",
             "",
             "| item | Geni IDs |",
             "| --- | --- |",
@@ -237,17 +301,28 @@ def render_markdown(o: Overlap, *, people: int, exports: int) -> str:
         lines += ["", "`*` marks an ID that is in our tree.", ""]
 
     if o.non_numeric:
+        recoverable = [v for _, v in o.non_numeric if EMBEDDED_ID.search(v)]
         lines += [
             "## P2600 values that are not a profile ID",
             "",
-            f"**{len(o.non_numeric)}** values are not all digits, so they cannot join",
+            f"**{len(o.non_numeric)}** values are not all digits, so they cannot join "
             "to a GEDCOM xref at all. They are excluded from every count above.",
+            "",
+            f"**{len(recoverable)}** of them have a profile ID inside — mostly a "
+            "pasted `geni.com/people/…` URL, and a few with a stray `/` or `?`. "
+            "Pulling the digits out would be parsing rather than guessing, but it "
+            "is **not** done here and should not be done casually: a URL carrying "
+            "`?through=` holds **two** IDs, and the one after the `?` is a "
+            "different person — the profile the link was navigated *via*. Taking "
+            "the last digit-run would silently link the wrong human.",
             "",
             "| item | value |",
             "| --- | --- |",
             *[f"| {q} | `{v}` |" for q, v in o.non_numeric[:25]],
             "",
         ]
+        if len(o.non_numeric) > 25:
+            lines += [f"…and {len(o.non_numeric) - 25} more.", ""]
 
     lines += [
         "## What this does not say",

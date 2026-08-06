@@ -171,6 +171,70 @@ def test_the_report_marks_which_conflicted_ids_are_ours(report):
     assert "in our tree" in report
 
 
+def test_the_report_warns_that_a_through_url_carries_two_people(report):
+    """The `?through=` trap: the ID after the `?` is a different person.
+
+    Recovering an ID from a pasted URL looks like safe parsing right up to that
+    case, which is exactly why the warning is generated rather than remembered.
+    """
+    assert "?through=" in report
+    assert "different person" in report
+
+
+def test_a_recoverable_id_inside_a_bad_value_is_counted():
+    result = overlap.measure(
+        [("Q1", "https://www.geni.com/people/X/6000000012345678901"),
+         ("Q2", "18 декабря 1918")],
+        our_ids=set(),
+    )
+
+    rendered = overlap.render_markdown(result, people=0, exports=1)
+
+    assert "**2** values are not all digits" in rendered
+    assert "**1** of them have a profile ID inside" in rendered
+
+
+def test_two_of_our_people_on_one_item_are_singled_out():
+    """The subset that is evidence about *our* data, not about Wikidata's."""
+    result = overlap.measure(
+        [("Q1", "1001"), ("Q1", "1002"),      # both ours -- the interesting case
+         ("Q2", "1003"), ("Q2", "4004")],     # only one ours -- not
+        our_ids={"1001", "1002", "1003"},
+    )
+
+    assert result.pairs_in_our_tree == {"Q1": ["1001", "1002"]}
+
+
+def test_the_pairs_section_gives_both_readings_and_picks_neither():
+    """Geni holding a duplicate and Wikidata holding a wrong P2600 look the same."""
+    result = overlap.measure(
+        [("Q1", "1001"), ("Q1", "1002")], our_ids={"1001", "1002"}
+    )
+
+    rendered = overlap.render_markdown(
+        result, people=2, exports=1, names={"1001": "Ada Alpha", "1002": "Ada A."}
+    )
+
+    assert "## Two of our people, one Wikidata item" in rendered
+    assert "Geni holds the same person twice" in rendered
+    assert "The P2600 on that item is wrong" in rendered
+    assert "Ada Alpha `1001` == Ada A. `1002`" in rendered
+
+
+def test_the_pairs_section_is_absent_when_no_item_holds_two_of_ours():
+    result = overlap.measure([("Q1", "1001"), ("Q1", "1002")], our_ids={"1001"})
+
+    assert "## Two of our people" not in overlap.render_markdown(
+        result, people=1, exports=1
+    )
+
+
+def test_a_short_digit_run_is_not_mistaken_for_a_profile_id():
+    """A year is digits too. A Geni profile ID is 13-19 of them."""
+    assert not overlap.EMBEDDED_ID.search("born 1918")
+    assert overlap.EMBEDDED_ID.search("people/X/6000000012345678901")
+
+
 def test_a_clean_dataset_gets_no_review_sections():
     result = overlap.measure([("Q1", "1001")], our_ids={"1001"})
 

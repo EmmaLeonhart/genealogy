@@ -236,7 +236,10 @@ def _cmd_overlap(args: argparse.Namespace) -> int:
     report = _write(
         args.output or ws.reports / "wikidata-overlap.md",
         overlap_mod.render_markdown(
-            result, people=len(tree.people), exports=len(ws.exports())
+            result,
+            people=len(tree.people),
+            exports=len(ws.exports()),
+            names={gid: p.display_name for gid, p in tree.people.items()},
         ),
     )
     print(f"wrote {pairs_path} and {report}")

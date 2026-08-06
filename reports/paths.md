@@ -5,24 +5,18 @@ Generated from the saved Geni pages in `geni_pages/` — re-run with
 `python -m genimerge path paths/<name>.tsv --source out/merged.ged`.
 
 **Why this is the right instrument.** Raw size cannot answer the question: the
-Geni world tree is around 210 million people and this merge holds 202,433, which
+Geni world tree is around 210 million people and this merge holds 203,323, which
 is 0.1% of it. But a relationship path is a chain Geni computes *itself*, naming
 people whether or not any export has reached them. It is the one piece of
 evidence here that comes from outside our own data. If arbitrary chains to
 far-flung people are held end to end, we hold the connective tissue — which is
 what "small-world core" means operationally.
 
-Measured 2026-08-06 over the **202,433-person merge (98 exports)**.
-
-**A 99th export landed the same afternoon and this table does not yet include
-it.** One row has already been re-measured against it: `意美 Hata` went
-**29/55 → 39/55**, the Koremune block closing. A full re-run of the other
-seventeen is in flight; until it lands, treat every figure below as the
-98-export number it says it is.
+Measured 2026-08-06 over the **203,323-person merge (99 exports)**.
 
 ## Result
 
-**1,692 of 1,826 steps held — 92.7%**, across **18 distinct chains** reaching
+**1,702 of 1,826 steps held — 93.2%**, across **18 distinct chains** reaching
 Assyria, Sheba, Egypt, Numidia, Mongolia, the Jin clan, Malwa, Samaria, Toledo,
 Japan and Mesopotamia.
 
@@ -50,7 +44,7 @@ disk — deleting one would only invite it to be saved a third time.
 | Psamtik II, Pharaoh of Egypt | 97/117 | 83% | 42 | 2 |
 | NN Basse | 47/57 | 82% | 35 | 2 |
 | Madgacen | 67/88 | 76% | 32 | 2 |
-| 意美 Hata | 29/55 | 53% | 9 | 2 |
+| 意美 Hata | 39/55 | 71% | 9 | 2 |
 
 **Eight of the eighteen are complete end to end**, including a **225-step chain
 to Enlil-nirari** and the full chain to Temüjin. A 225-step path holding every
@@ -62,21 +56,25 @@ So the answer is **largely yes** — with one specific, nameable hole.
 
 The previous version of this report read *1,095 of 1,227 (89.2%) over 15
 chains*, measured over the 186,551-person merge (90 exports). Comparing that to
-92.7% would credit eight exports with an improvement they did not make: the
+93.2% would credit nine exports with an improvement they did not make: the
 three Makeda chains are new to this table and two of them are complete, so
 adding them raises the percentage on their own.
 
-**On the same fifteen chains, the eight new exports moved the figure from
-1,095/1,227 (89.2%) to 1,100/1,227 (89.7%).** Five steps. Every one of them is
-`意美 Hata`, which went 24/55 → 29/55. Nothing else changed at all.
+**On the same fifteen chains, the nine new exports moved the figure from
+1,095/1,227 (89.2%) to 1,110/1,227 (90.5%).** Fifteen steps. Every one of them
+is `意美 Hata`, which went 24/55 → 29/55 → 39/55. Nothing else changed at all.
 
 That is the number to keep. A chain already held end to end cannot improve, and
-the eight exports since 2026-08-05 landed somewhere none of these chains run.
+the nine exports since 2026-08-05 landed somewhere none of the other chains run.
+The Hata gain came in two parts: five steps from the eight bulk exports, and ten
+more from the single `Forest` export seeded on a Hata person — which closed the
+whole eight-person Koremune block at steps 33–40 plus 秋月種任 and 松平盈子.
+`reports/hata.md` has that one in full.
 
 ## The gaps are not scattered. One block of ten people blocks five paths.
 
-134 steps are missing, spread over 94 distinct people. But **50 of those 134 —
-37% — are the same ten people**, each needed by five different paths:
+124 steps are missing, spread over 84 distinct people. But **50 of those 124 —
+40% — are the same ten people**, each needed by five different paths:
 
 | Geni ID | who |
 | --- | --- |
@@ -92,7 +90,8 @@ the eight exports since 2026-08-05 landed somewhere none of these chains run.
 | `6000000003828107379` | Uncilien, duke of the Alemannians |
 
 Verified absent by profile ID against `out/merged.ged`, not inferred from names.
-**Unchanged since 2026-08-05** — the same ten, blocking the same five paths.
+**Unchanged since 2026-08-05** — the same ten, blocking the same five paths,
+through nine further exports.
 
 This is a contiguous run: the Alemannian ducal line ascending into the
 Carolingians. Five paths all run unbroken to **step 34** and stop at the same
@@ -127,11 +126,10 @@ model, not of our sampling.
   through marriages; a blood-only style walks past them. This is the same trap
   that nearly cost the Jimmu bridge.
 
-The remaining 84 missing people are singletons on one path each — the Merrell
-and Daniels American lines, the Hitotsuyanagi chain and the eight-person 惟宗
-stretch that together make 意美 Hata the worst-covered path at 29/55
-(`reports/hata.md` has that one in full), and the six behind Mahaut de Poissy on
-Makeda → Marguerite. Those are ordinary frontier, not core.
+The remaining 74 missing people are singletons on one path each — the Merrell
+and Daniels American lines that still make 意美 Hata the worst-covered path at
+39/55, and the six behind Mahaut de Poissy on Makeda → Marguerite. Those are
+ordinary frontier, not core.
 
 ## What this does not say
 
@@ -139,9 +137,11 @@ A path is evidence about **connectivity**, not completeness. Holding every step
 of the chain to Enlil-nirari says we have the people who link us to him; it says
 nothing about how much of his surrounding family Geni knows and we do not. The
 Hata clan is the worked example of exactly that gap: `reports/path-hata.md` says
-29 of 55 steps of the *chain* are held, while `reports/hata.md` says the clan
-those steps run through is 27 people with no wives and one branch point. A path
-held end to end and a family recorded thinly are entirely compatible.
+39 of 55 steps of the *chain* are held, while `reports/hata.md` says the clan
+those steps run through is 37 people with no wives and one branch point — and
+that a `Forest` export seeded inside it moved the second number by ten without
+moving either of the other two. A path held end to end and a family recorded
+thinly are entirely compatible.
 
 And `genimerge.paths` falls back to name matching only for rows carrying no
 profile ID — every figure above is an exact join on the Geni ID, which is why

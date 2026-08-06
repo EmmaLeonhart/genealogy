@@ -3208,3 +3208,63 @@ export has been observed to span, so it is two exports at least.
 The generalisation worth keeping: **a clan name is not a clan.** Counting
 Hata-named people implied a population Geni does not record. The measurement
 that actually answered the question used no names at all.
+
+## 2026-08-06 — the P2600 overlap, both ways: 4.44% and 1.75%
+
+Emma's ask: "do a SPARQL on wikidata to find the overlap of our tree with the
+total number of wikidata items with geni id property". `genimerge overlap` and
+`reports/wikidata-overlap.md`.
+
+| | count | of our tree | of Wikidata's Geni IDs |
+| --- | ---: | ---: | ---: |
+| in both | 9,026 | 4.44% | 1.75% |
+| ours only | 194,297 | 95.56% | — |
+| Wikidata only | 507,859 | — | 98.25% |
+
+Wikidata holds **514,822** items with a Geni ID, 514,692 of them human, carrying
+**516,913** distinct ID values over **516,983** statements — three different
+numbers, because an item can carry several Geni IDs and a Geni ID can sit on
+several items.
+
+**Why this needed a new command rather than `reconcile`.** `reconcile` and
+`coverage` put our own IDs in a `VALUES` clause. That answers "which of our
+people does Wikidata know?" and can never see an item whose Geni profile no
+export here has reached — which is the half that matters for a world tree. So
+`overlap` fetches all of P2600 instead: ~517,000 rows split sixteen ways on MD5
+of the item URI. Hashing rather than a prefix split, because Geni IDs nearly all
+begin `6000000` and a prefix split would put almost everything in one bucket.
+~32k rows and ~25s per partition, inside the endpoint's budget, all cached.
+
+**44 Wikidata items carry two Geni IDs that are both people in our tree.** That
+is an outside source saying two of our people are one person, which our merge
+cannot see by construction — it keys on the profile ID, so two IDs are two
+people. It is the most useful thing in the report and the most easily over-read,
+so the report states both readings and picks neither: `Брячислав Васильевич`
+against `Bracheslav Vasylkovich Polozki` is plainly one person in two languages,
+while `Scribonia` against `Clodia Pulchra` is plainly two of Octavian's wives and
+one of those P2600 statements is simply wrong. A review queue for a human, like
+the flags in `reports/wikidata-crosscheck.md`. None of the 44 are Japanese
+emperors, so this did not catch the Ojin duplicates Emma mentioned.
+
+Also surfaced: 67 Geni IDs sitting on two items (5 of them ours), 2,066 items
+with more than one Geni ID, and 28 P2600 values that are not a profile ID at all
+— mostly pasted `geni.com/people/…` URLs. 24 of those have an ID inside, and the
+report says explicitly why pulling it out is not safe to automate: a URL with
+`?through=` carries **two** IDs and the one after the `?` is a different person,
+so taking the last digit-run would link the wrong human.
+
+39 tests, none of them touching the network. The CLI test's canned responder
+partitions by real MD5, so "sixteen partitions reassemble into the whole set"
+tests the split rather than a stub that returns everything every time.
+
+## 2026-08-06 — paths re-measured on 99 exports
+
+All 18 distinct chains re-run after the Hata export merged. **1,702 of 1,826
+steps, 93.2%.** Like-for-like on the fifteen chains the 2026-08-05 report
+covered: 1,095/1,227 (89.2%) → 1,110/1,227 (90.5%). Every one of those fifteen
+steps is `意美 Hata`, 24/55 → 29/55 → 39/55. Seventeen chains did not move at
+all.
+
+The Carolingian block has now survived nine further exports unchanged — the same
+ten people, blocking the same five paths, still 50 of the 124 missing steps and
+now 40% of them.

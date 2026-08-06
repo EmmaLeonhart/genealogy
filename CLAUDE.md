@@ -116,8 +116,13 @@ arithmetic**: a run of eleven identical values is evidence the number sits
 still, not evidence it steps by four on a schedule, and do not describe it as a
 cap Geni enforces.
 
-`genimerge.seeds.GENI_EXPORT_CAP` is **3860**, meaning *largest yet seen*; its
-docstring is the long form of this. It is a modelling number for
+`genimerge.seeds.GENI_EXPORT_CAP` is **4008** as of 2026-08-05, meaning *largest
+yet seen*; its docstring is the long form of this. It was 3860 when the
+paragraph above was written, and the sentence about the number sitting still
+survived the move rather than being falsified by it — 4008 came from a pair of
+exports taken seven minutes apart that held 3972 and 4008, which is a ceiling
+that moved, not a step of four. The 99th export (2026-08-06) held 4004 and
+changed nothing. It is a modelling number for
 `reports/seeds.md` only — nothing in the merge depends on it.
 `tests/test_seeds.py` fails if an export in `exports/` exceeds it, so the next
 one to do so is loud rather than silent — that is how 3840, 3844 and 3856 were
@@ -184,6 +189,23 @@ means possibly just a small family that ended.
 explicit about this. Do not classify people geographically: birthplace strings
 are mostly absent, and inferring a place from a name is the fuzzy matching this
 repo refuses everywhere else.
+
+**A clan name is not a clan — measure the neighbourhood, not the surname.**
+`reports/hata.md` is the worked example, 2026-08-06. "Do we have the Hata clan?"
+was asked by counting people whose name carries 秦 or `Hata`, which over-counted
+by 31 (秦州成紀 and 秦州清水 are a *Chinese place* in the surname field) and
+implied a population Geni does not record. What answered it was walking one hop
+out from those people along every parent, child and spouse edge **ignoring names
+entirely**: the whole structure is 41 people, a father-to-son thread with two
+clan exits and a single marriage. Reach for the neighbourhood walk first; the
+name screen is at best a way to pick seeds for it.
+
+**Zero recorded marriages after a `Forest` export is evidence, not a gap.**
+`Forest` follows spouse links — that is why the style gets specified for
+targeted exports — so a `Forest` ball that returns no marriages has found none
+to follow. An `Ancestors` or `BloodTree` export can hide wives; a `Forest` one
+cannot, and that asymmetry is what let the Hata question be settled rather than
+left open.
 
 **`entity_resolution.md` is Emma's scratchpad and must stay free-form.** It
 holds Geni-to-Wikidata identities she recognised by hand plus label corrections

@@ -1,9 +1,14 @@
 """Talk to Wikidata: SPARQL for reconciliation, the API for labels.
 
-514,567 Wikidata items carry a Geni.com profile ID (P2600), so the join is
-genuinely worth doing — but pulling all half-million of them would be rude and
-slow. Instead the reconciler asks only about the IDs we actually have, a few
-hundred at a time, using a ``VALUES`` clause.
+514,822 Wikidata items carry a Geni.com profile ID (P2600) as of 2026-08-06, so
+the join is genuinely worth doing — but pulling all half-million of them for
+every report would be rude and slow. Instead the reconciler asks only about the
+IDs we actually have, a few hundred at a time, using a ``VALUES`` clause.
+
+The other direction — Wikidata items whose Geni profile no export here has
+reached — is invisible to a ``VALUES`` query over our own IDs, and that is what
+:mod:`genimerge.overlap` is for. It *does* pull all of P2600, in sixteen MD5
+partitions, and it is the one command that should.
 
 Every response is cached on disk under ``out/wikidata/cache/`` keyed by a hash
 of the query, so re-running a report costs nothing and iterating on the analysis

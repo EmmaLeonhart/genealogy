@@ -54,36 +54,39 @@ Big priorities:
    not a clan.** Counting Hata-named people implied a population Geni does not
    record; the measurement that answered it used no names at all.
 
-0.05 **The P2600 overlap measurement — Emma's ask, 2026-08-06, verbatim: "do a
-   SPARQL on wikidata to find the overlap of our tree with the total number of
-   wikidata items with geni id property".** She said *after these specific
-   exports*, so it waits on the current batch landing; nothing else blocks it.
-   This is priority 3's first concrete measurement, and it is cheap in a way
-   full `reconcile` is not — it answers "how much of Wikidata's Geni-linked
-   population do we hold, and how much of ours does Wikidata know?" without
-   pulling a single label.
+0.05 **The P2600 overlap is measured — `reports/wikidata-overlap.md`,
+   2026-08-06.** Emma's ask, answered: **9,026 in both — 4.44% of our tree,
+   1.75% of Wikidata's 516,913 Geni-linked IDs.** 507,859 people have a Geni
+   profile Wikidata names and no export here has reached. `genimerge overlap`
+   pulls all of P2600 in sixteen MD5 partitions rather than asking about our own
+   IDs, which is the only way to see that second number at all.
 
-   Three parts, and both denominators matter — the overlap is interesting from
-   each side and they will not be the same number:
+   **What came out of it that is work rather than a number: 44 Wikidata items
+   carry two Geni IDs that are *both* people in our tree.** Our merge keys on
+   the profile ID, so it cannot see this — two IDs are two people to it, by
+   construction. Reviewing those 44 is a human job and is genuinely open:
 
-   1. **Wikidata's side, one query.**
-      `SELECT (COUNT(DISTINCT ?item) AS ?n) WHERE { ?item wdt:P2600 ?geni }` —
-      and the distinct *value* count too, since one item can carry several Geni
-      IDs and one Geni ID can be on several items. `genimerge.wikidata`'s
-      docstring says 514,567, dated and unverified; this re-measures it.
-   2. **Our side**, via the existing `wikidata.match_by_geni_id` — 202,433 IDs
-      at `BATCH_SIZE` 400 is ~510 cached SPARQL queries. Run it in the
-      background; the on-disk cache under `out/wikidata/cache/` means an
-      interrupted run resumes for free.
-   3. **Write `reports/wikidata-overlap.md`**: |ours ∩ theirs| against both
-      totals, plus the non-one-to-one rows (a Geni ID on two items, an item with
-      two Geni IDs), which are the ones a human has to look at and which
-      `match_by_geni_id` deliberately does not collapse.
+   - It is **not** a duplicate list. `Брячислав Васильевич` against
+     `Bracheslav Vasylkovich Polozki` is one person in two languages;
+     `Scribonia` against `Clodia Pulchra` is two of Octavian's wives and one of
+     those P2600 statements is just wrong. Both readings occur and nothing in
+     this repo separates them.
+   - **NEEDS-DECISION — what should happen to a confirmed pair.** Options are:
+     record it in `entity_resolution.md` (Emma's scratchpad, which already holds
+     hand-made identities); teach the merge an alias table keyed on profile ID;
+     or leave it as a report and merge the profiles on Geni instead. The third
+     fixes it at the source and the other two paper over it. Emma decides.
+   - None of the 44 are Japanese emperors, so this instrument did **not** catch
+     the Emperor Ojin duplicates in item 0.2 below. Worth knowing why: it can
+     only see a duplicate that Wikidata has already noticed and linked twice.
 
-   Read it against `reports/paths.md` when it lands: the Carolingian block is
-   the region Wikidata models best and we hold worst, so the overlap should be
-   *low* exactly where the paths say we are thin. If it is not, one of the two
-   instruments is measuring something other than what it claims.
+   Smaller, and both are read-only findings rather than tasks: 67 Geni IDs sit
+   on two Wikidata items (5 of them ours), and 28 P2600 values are not profile
+   IDs at all — mostly pasted `geni.com/people/…` URLs. 24 have an ID inside,
+   and recovering it is **UNSAFE-TO-GUESS** in one specific way the report
+   names: a URL with `?through=` carries two IDs and the one after the `?` is a
+   different person, so the obvious "take the last digit-run" links the wrong
+   human.
 
 0.1 I have done a large amount of exports that definitely fleshed out the trees based off of your suggestions, although geni seems to have crapped out a bit, so it's probably gonna be tomorrow. Integrate these things when they arrive. I feel like they're probably going to be the last because I don't know what's going on with geni right now, but it's a bit difficult to get things to run. 
 
