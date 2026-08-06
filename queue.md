@@ -18,10 +18,12 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 0.00 **FIRST ITEM AFTER RESTART — re-check every saved path against the current
    merge and refresh `reports/paths.md`.** Started on 2026-08-06 and killed at
-   Emma's word after 6 of 19 files, because it is ~2 minutes per file and there
-   was no reason to hold a session open for it. Nothing is half-written: each
-   file writes its own `reports/path-<name>.md` and `.json` and the six that
-   finished are committed. Run it in the background and get on with something
+   Emma's word after **8 of 19** files, because it is ~2 minutes per file and
+   there was no reason to hold a session open for it. Nothing is half-written —
+   each file writes its own `reports/path-<name>.md` and `.json`, all eight
+   parse, and all eight are committed. (The console showed only six: the loop
+   piped each run through `tail`, which buffers, so the last two finished
+   without ever printing.) Run it in the background and get on with something
    else:
 
    ```
@@ -45,6 +47,13 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
    | gervasio-of-toledo | 42/42 | 42/42 |
    | hata | **29/55** | 24/55 |
    | jimmu | 83/83 | 83/83 |
+   | lady-palsu-of-the-jin-clan | 60/60 | 60/60 |
+   | madgacen | 67/88 | 67/88 |
+
+   Seven of the eight are unchanged, which is worth expecting rather than being
+   surprised by: a chain already held end to end cannot improve, and the eight
+   exports added since 2026-08-05 landed elsewhere. `hata` is the only gain.
+   The eleven still to run are where any further movement would be.
 
    Add the three chains saved on 2026-08-06 to the table there as well —
    `makeda-to-enlil-nirari` 225/225, `makeda-to-matthew` 219/219,
