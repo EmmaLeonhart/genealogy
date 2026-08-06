@@ -216,6 +216,21 @@ GEDCOM goes to `export-geni/export-<style>-<N>.ged`, where `N` is the zip's
 download number — a local label for that batch, not a Geni identifier, and
 meaningless across directories.
 
+**Every GEDCOM is committed. Never gitignore a `.ged`.** Tracking the exports is
+what this repo is *for*, and disk size is not a reason to lose that. This is
+written down because it was got wrong: `6eddadd` moved 37 exports out of git on
+a size argument (~200 MB), one `.gitignore` line per file, and the stragglers
+batch added four more the same way. Nothing was deleted — all 98 stayed on disk
+— but a clean checkout then received **57** and silently measured a smaller
+corpus than every report in `reports/` describes, which is how a cloud session
+came to report 57 against reports claiming 94. `91cf363` removed those 41 lines
+and committed the files; `git ls-files 'exports/**/*.ged'` and
+`find exports -name '*.ged'` now both give 98, and
+`tests/test_repo_invariants.py` fails if they ever diverge again. The **zip**
+lines stay, one per line, for the reason they always had — an unignored zip in
+`git status` is the signal that a download has arrived. Working in
+`reports/audit-corpus-sync.md`.
+
 **`genimerge.sources` is the only place that answers "which GEDCOMs are the
 corpus?"** It used to have six answers — `cli.Workspace` globbing `data_lake/`
 and five test modules each rebuilding the same glob. It **drops byte-identical
@@ -244,6 +259,23 @@ larger lost nothing.
 line at a time**, deliberately: Emma wants an unignored zip to show up in
 `git status` so she can see a download has arrived. Do not replace those lines
 with a `*.zip` pattern — it would look tidier and would destroy the signal.
+
+**Never write a `*.ged` or `*.zip` pattern into `.gitignore`. Ever.** Emma's
+rule, stated 2026-08-06 after both halves of it had already been broken. The two
+file types are ignored in opposite ways and a pattern gets both wrong:
+
+- **`.ged` is never ignored at all.** Every GEDCOM under `exports/` is committed.
+- **`.zip` is ignored one explicit full path per line**, and every zip currently
+  on disk must have such a line. **Manual gitignores help humans**: a line per
+  file means an *unlisted* zip appears in `git status`, which is how a new
+  download announces itself. A pattern makes every download silent.
+
+Checked as of 2026-08-06: **46 zips on disk, all 46 listed** (plus 48 lines for
+zips since removed — stale, harmless, and left alone rather than pruned, since a
+re-download to one of those names is a re-download of something already ingested).
+`tests/test_repo_invariants.py` asserts both halves, including against paths that
+do not exist yet, so a pattern broad enough to swallow the *next* batch fails now
+rather than after it arrives.
 
 ### Wikidata properties and items
 

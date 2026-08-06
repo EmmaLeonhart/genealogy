@@ -1,8 +1,17 @@
-"""Two invariants `CLAUDE.md` states, whose failure costs money or a cold clone.
+"""Three invariants `CLAUDE.md` states, whose failure costs money, a cold clone,
+or the corpus itself.
 
-Both were enforced only by a sentence asking someone to remember, which is the
-form already replaced elsewhere in this suite for the xref prefixes and the
+All three were enforced only by a sentence asking someone to remember, which is
+the form already replaced elsewhere in this suite for the xref prefixes and the
 Wikidata property table.
+
+**Every GEDCOM committed is the corpus invariant.** `CLAUDE.md`: "Every GEDCOM
+is committed. Never gitignore a `.ged`." It failed once, in `6eddadd`, which
+moved 37 exports out of git on a size argument. Its failure mode is silent in
+the worst way: the files stay on disk, every local run keeps working, and the
+loss only shows up somewhere else — a clean checkout measuring 57 exports
+against reports that describe 98, which is exactly what happened in a cloud
+session on 2026-08-06.
 
 **The CI trigger is a billing invariant.** `CLAUDE.md`: "Never add a `push:` or
 `pull_request:` trigger to `.github/workflows/`. Actions minutes are free on
@@ -135,6 +144,155 @@ def test_the_trigger_reader_catches_every_form_a_trigger_can_take():
     assert _triggers('"on":\n  schedule:\n    - cron: "0 0 * * *"\n') == {"schedule"}
     # nested keys are not triggers
     assert "branches" not in _triggers("on:\n  push:\n    branches: [main]\n")
+
+
+# --- every GEDCOM is committed ----------------------------------------------
+
+
+def _git(*args: str) -> str:
+    """A git command in the repo, or "" if git cannot answer.
+
+    Returns empty rather than raising so a checkout without git — a zip
+    download, a sandbox — skips instead of failing on something that is not
+    about the corpus at all.
+    """
+    import subprocess
+
+    try:
+        done = subprocess.run(
+            ["git", "-C", str(REPO_ROOT), *args],
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            timeout=120,
+        )
+    except (OSError, subprocess.SubprocessError):
+        return ""
+    return done.stdout if done.returncode == 0 else ""
+
+
+def test_every_gedcom_on_disk_is_tracked_by_git():
+    """The corpus on disk and the corpus in git must be the same set.
+
+    Checked as a set difference rather than two counts, so the failure message
+    names the files instead of a number that has to be chased down. Reported
+    both ways: a `.ged` on disk and not in git is the `6eddadd` failure, and a
+    `.ged` in git and not on disk means a file was deleted from the working
+    tree.
+    """
+    listed = _git("ls-files", "exports")
+    if not listed:
+        pytest.skip("git cannot list files here")
+
+    tracked = {line for line in listed.splitlines() if line.endswith(".ged")}
+    on_disk = {
+        path.relative_to(REPO_ROOT).as_posix()
+        for path in (REPO_ROOT / "exports").rglob("*.ged")
+    }
+    if not on_disk and not tracked:
+        pytest.skip("no exports in this checkout")
+
+    untracked = sorted(on_disk - tracked)
+    missing = sorted(tracked - on_disk)
+
+    assert not untracked, (
+        f"{len(untracked)} GEDCOMs are on disk but not in git, starting with "
+        f"{untracked[:5]}. Tracking the exports is what this repo is for, and "
+        "an untracked one is invisible to every other checkout while every "
+        "local run keeps working — the reports then describe a corpus nobody "
+        "else can read. Commit them; do not gitignore a .ged."
+    )
+    assert not missing, (
+        f"{len(missing)} GEDCOMs are in git but gone from disk, starting with "
+        f"{missing[:5]}. CLAUDE.md: never delete a GEDCOM. Restore them with "
+        "`git checkout -- exports/` before anything else."
+    )
+
+
+def test_no_gitignore_rule_hides_a_gedcom():
+    """The other half: nothing on disk is ignored *and* nothing new would be.
+
+    The test above passes the moment a file is committed, even if the rule that
+    hid it is still there — and a rule left in place silently swallows the next
+    export to land in that directory. `git check-ignore --no-index` asks the
+    rules directly rather than asking about the files that happen to exist now.
+    """
+    if not _git("rev-parse", "--git-dir"):
+        pytest.skip("git cannot answer here")
+
+    probes = [
+        "exports/fleshing-out/export-geni/export-Forest-0.ged",
+        "exports/stragglers/export-geni/export-Forest-40.ged",
+        "exports/a-new-batch/export-geni/export-Forest-99.ged",
+    ]
+    hidden = [
+        probe for probe in probes if _git("check-ignore", "--no-index", probe).strip()
+    ]
+
+    assert not hidden, (
+        f".gitignore still hides GEDCOMs: {hidden}. Two of these are real files "
+        "that 6eddadd hid on a size argument; the third is a path that does not "
+        "exist yet, and it is there because a rule broad enough to hide it will "
+        "swallow the next batch to arrive. Remove the rule. The zip lines are a "
+        "separate, deliberate thing and stay."
+    )
+
+
+def test_no_gitignore_pattern_hides_a_zip_that_has_not_arrived_yet():
+    """Zips are ignored one full path per line, and that is the whole point.
+
+    An unlisted zip showing up in `git status` is how Emma sees a download has
+    landed. A `*.zip` pattern would be tidier and would make every future
+    download silent — the same class of loss as the `.ged` rule above, in the
+    opposite direction. So the probe is a path that does not exist: any rule
+    that matches it is a pattern, not a listing.
+    """
+    if not _git("rev-parse", "--git-dir"):
+        pytest.skip("git cannot answer here")
+
+    unarrived = "exports/a-new-batch/export-geni (999).zip"
+
+    assert not _git("check-ignore", "--no-index", unarrived).strip(), (
+        f".gitignore matches {unarrived}, a zip that does not exist, so it holds "
+        "a pattern rather than a list. Zips are ignored one full path per line "
+        "on purpose: an unlisted one appears in `git status`, which is the "
+        "signal that a download has arrived. A pattern destroys that signal."
+    )
+
+
+def test_every_zip_on_disk_is_listed_in_gitignore():
+    """The other half of the zip rule: listed, and listed individually.
+
+    Read from `.gitignore` as text rather than via `check-ignore`, because
+    `check-ignore` cannot tell "matched by its own line" from "matched by a
+    pattern" and this test is about the first.
+    """
+    gitignore = REPO_ROOT / ".gitignore"
+    if not gitignore.exists():
+        pytest.skip("no .gitignore in this checkout")
+
+    listed = {
+        line.strip()
+        for line in gitignore.read_text(encoding="utf-8").splitlines()
+        if line.strip().endswith(".zip") and not line.lstrip().startswith("#")
+    }
+    on_disk = {
+        path.relative_to(REPO_ROOT).as_posix()
+        for path in REPO_ROOT.rglob("*.zip")
+        if ".git" not in path.parts
+    }
+    if not on_disk:
+        pytest.skip("no zips in this checkout")
+
+    unlisted = sorted(on_disk - listed)
+
+    assert not unlisted, (
+        f"{len(unlisted)} zips are on disk without a line of their own: "
+        f"{unlisted[:5]}. That is the signal working — a new download is "
+        "supposed to show up here. Add one line per file to .gitignore (never a "
+        "pattern), extract the GEDCOM beside it, and commit the .ged."
+    )
 
 
 # --- stdlib only ------------------------------------------------------------

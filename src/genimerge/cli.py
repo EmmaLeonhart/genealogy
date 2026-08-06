@@ -29,6 +29,7 @@ from . import (
     paths as paths_mod,
     quickstatements,
     reconcile,
+    remote,
     seeds,
     sources,
     wikidata,
@@ -420,6 +421,31 @@ def _cmd_distant(args: argparse.Namespace) -> int:
         )
     else:
         print("no usable pairs found")
+    return 0
+
+
+def _cmd_remote(args: argparse.Namespace) -> int:
+    ws = Workspace.from_args(args)
+    tree = _load_tree(args.source, ws)
+    people = remote.most_remote(tree, count=args.count, landmark_count=args.landmarks)
+
+    output = args.output or (ws.reports / "remote-people.md")
+    _write(output, remote.render_markdown(people, len(tree.people)))
+    page = ws.out / "remote-people.html"
+    _write(page, remote.render_html(people, len(tree.people)))
+
+    print(f"wrote {output}")
+    print(f"wrote {page}")
+    if people:
+        first = people[0]
+        print(
+            f"{len(people)} people, separated by at least "
+            f"{getattr(remote.most_remote, 'separation', '?')} hops; the most "
+            f"remote is {first.name} at {first.remoteness} hops from "
+            f"{first.partner_name}"
+        )
+    else:
+        print("no one to report")
     return 0
 
 
@@ -1017,6 +1043,32 @@ def build_parser() -> argparse.ArgumentParser:
         "-o", "--output", type=Path, default=None, help="default: <reports>/distant-pairs.md"
     )
     p_dist.set_defaults(func=_cmd_distant)
+
+    p_rem = sub.add_parser(
+        "remote",
+        help="the most remote people, ranked — each one a pair to ask Geni about",
+        description=(
+            "Ranks people by how far they are from the person they are "
+            "furthest from, rather than emitting pairs in the order a greedy "
+            "search happened to find them. Row 1 is the most remote person the "
+            "measurement can find, and any two rows are provably far apart. "
+            "Each row is a pair to open on Geni: our tree says this many hops, "
+            "Geni will very likely show far fewer, and the people on that "
+            "shorter chain are ones we do not hold."
+        ),
+    )
+    p_rem.add_argument("--source", type=Path, default=None, help="a GEDCOM to read instead of merging")
+    p_rem.add_argument("--count", type=int, default=20, help="how many people (default: 20)")
+    p_rem.add_argument(
+        "--landmarks",
+        type=int,
+        default=remote.LANDMARKS,
+        help=f"landmarks to place; each costs one sweep (default: {remote.LANDMARKS})",
+    )
+    p_rem.add_argument(
+        "-o", "--output", type=Path, default=None, help="default: <reports>/remote-people.md"
+    )
+    p_rem.set_defaults(func=_cmd_remote)
 
     p_den = sub.add_parser(
         "density",
