@@ -16,6 +16,41 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 ## Active
 
 
+0.00 **FIRST ITEM AFTER RESTART — re-check every saved path against the current
+   merge and refresh `reports/paths.md`.** Started on 2026-08-06 and killed at
+   Emma's word after 6 of 19 files, because it is ~2 minutes per file and there
+   was no reason to hold a session open for it. Nothing is half-written: each
+   file writes its own `reports/path-<name>.md` and `.json` and the six that
+   finished are committed. Run it in the background and get on with something
+   else:
+
+   ```
+   for f in paths/*.tsv; do python -m genimerge path "$f" --source out/merged.ged; done
+   ```
+
+   `out/merged.ged` must be current first — `python -m genimerge merge`, which
+   as of 2026-08-06 gives 202,433 people over 98 exports.
+
+   **Then rewrite the headline of `reports/paths.md`**, which still says
+   *1,095 of 1,227 steps (89.2%), measured 2026-08-05 over the 186,551-person
+   merge (90 exports)*. That is the stale number; the new one is the point of
+   the re-run. Results so far, against the six that completed, with the 90-export
+   figures beside them:
+
+   | chain | now | before |
+   | --- | ---: | ---: |
+   | daughter-of-the-king-of-assyria | 81/91 | 81/91 |
+   | eleazar-ii-samaritan-high-priest | 87/97 | 87/97 |
+   | emperor-jimmu-no-mikoto | 83/83 | 83/83 |
+   | gervasio-of-toledo | 42/42 | 42/42 |
+   | hata | **29/55** | 24/55 |
+   | jimmu | 83/83 | 83/83 |
+
+   Add the three chains saved on 2026-08-06 to the table there as well —
+   `makeda-to-enlil-nirari` 225/225, `makeda-to-matthew` 219/219,
+   `makeda-to-marguerite` 148/155 — since `paths.md` lists fifteen and there are
+   now eighteen.
+
 0.0 **BLOCKED-ON-USER-ACTION — save the path pages for the 18 people in
    `reports/remote-people.md`.** The list is ranked by eccentricity, each row is
    provably 77+ hops from every other row, and each carries a one-click Geni
