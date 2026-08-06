@@ -1,10 +1,10 @@
 # Relationship path: hata
 
-**29 of 55 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**39 of 55 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
 **The unbroken run stops at step 9, Daniel Danielson Nerabø.** The next step, **Enok Danielson (Enoch Daniels) i USA**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
-**20 steps past the gap are held anyway** — 小笠原忠基 onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
+**30 steps past the gap are held anyway** — 秋月種任 onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
 
 ## Steps
 
@@ -34,22 +34,22 @@
 | 22 | Makiko Hitotsuyanagi | his wife | — | absent | — |
 | 23 | Hitotsuyanagi EIko | her mother | — | absent | — |
 | 24 | Mashiko Akizuki | her mother | — | absent | — |
-| 25 | 秋月種任 | her father | — | absent | — |
-| 26 | 松平盈子 | his mother | — | absent | — |
+| 25 | 秋月種任 | her father | [種任](https://www.geni.com/people/x/6000000032170128401) | id | 1 |
+| 26 | 松平盈子 | his mother | [盈子](https://www.geni.com/people/x/6000000006840005152) | id | 1 |
 | 27 | 幸姫 | her mother | — | absent | — |
 | 28 | 小笠原忠基 | her father | [忠基](https://www.geni.com/people/x/6000000002494069423) | id | 1 |
 | 29 | 小笠原忠雄 | his father | [忠雄](https://www.geni.com/people/x/6000000002232963326) | id | 1 |
 | 30 | 小笠原忠真 | his father | [忠真](https://www.geni.com/people/x/6000000001886024014) | id | 1 |
 | 31 | 小笠原時長女 | his sister | [時長女](https://www.geni.com/people/x/6000000008141648952) | id | 1 |
 | 32 | 安達義景 | her husband | [義景](https://www.geni.com/people/x/6000000008632863863) | id | 1 |
-| 33 | 安達景盛 | his father | — | absent | — |
-| 34 | 丹後内侍 | his mother | — | absent | — |
-| 35 | 惟宗広言 | her husband | — | absent | — |
-| 36 | 惟宗基言 | his father | — | absent | — |
-| 37 | 惟宗孝言 | his father | — | absent | — |
-| 38 | 惟宗孝近 | his father | — | absent | — |
-| 39 | 惟宗貴重 | his father | — | absent | — |
-| 40 | 惟宗広孝 | his father | — | absent | — |
+| 33 | 安達景盛 | his father | [景盛](https://www.geni.com/people/x/6000000008141407248) | id | 1 |
+| 34 | 丹後内侍 | his mother | [丹後内侍](https://www.geni.com/people/x/6000000002933557025) | id | 1 |
+| 35 | 惟宗広言 | her husband | [広言](https://www.geni.com/people/x/6000000002934660014) | id | 1 |
+| 36 | 惟宗基言 | his father | [基言](https://www.geni.com/people/x/6000000004668892191) | id | 1 |
+| 37 | 惟宗孝言 | his father | [孝言](https://www.geni.com/people/x/6000000004668782525) | id | 1 |
+| 38 | 惟宗孝近 | his father | [孝近](https://www.geni.com/people/x/6000000004668811321) | id | 1 |
+| 39 | 惟宗貴重 | his father | [貴重](https://www.geni.com/people/x/6000000004668647969) | id | 1 |
+| 40 | 惟宗広孝 | his father | [広孝](https://www.geni.com/people/x/6000000004668691541) | id | 1 |
 | 41 | 惟宗具範 | his father | [具範](https://www.geni.com/people/x/6000000004668971031) | id | 1 |
 | 42 | 惟宗永厚 | his father | [永厚](https://www.geni.com/people/x/6000000004668991008) | id | 1 |
 | 43 | 秦氏継 | his father | [氏継](https://www.geni.com/people/x/6000000004668814536) | id | 1 |

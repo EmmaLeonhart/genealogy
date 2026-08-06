@@ -3167,3 +3167,44 @@ Neither of the two seeds `reports/hata.md` named, but a Hata person and the
 right style. It goes into the merge as the 99th export, and the measurement it
 settles is queued: **`reports/hata.md` predicts breadth appears; Emma predicts
 "it is just a line".** Both are on the record before the answer is.
+
+## 2026-08-06 — the Hata prediction is settled, against the prediction
+
+The 99th export merged: 203,323 people, 101,405 families over 99 exports. The
+Hata export contributed 988 new people.
+
+**Emma was right and `reports/hata.md` was wrong.** It predicted that a `Forest`
+export seeded in the line would bring the breadth a blood-only walk had
+discarded. Her call, made before the export ran, was "likely definitively
+showing it is just a line".
+
+The clan went 27 → 37 people. **All ten new people are a single unbroken
+descent** from 行永 down through 永利, 恒遠, 恒任, 義遠, 春俊, 邦利, 重信, 重昌,
+明友 to Yoshitoshi /Hata/. Siblings across the whole clan: 9 before, 9 after.
+Marriages: none before, none after. Branch points: one before, one after.
+
+**Zero marriages after a `Forest` export is what settles it.** `Forest` follows
+spouse links — that is the whole reason the style was specified — and seeded on
+酒君/酒公 it found none to follow. A blood-only walk can hide wives; a `Forest`
+walk that returns none says there are none on Geni.
+
+The name-screen objection was tested rather than argued away. Ignoring names
+entirely and walking one hop out from all 37 along every parent, child and
+spouse edge turns up **four people**: Fusu /嬴姓/ above, 永厚 /惟宗/ and
+Toshimune /Chōsokabe/ below, and 小黒麻呂 /藤原/ married to 嶋麻呂女 /太秦/. The
+whole structure is 41 people.
+
+**The export paid on the other target anyway**, from a seed neither of the two
+this repo named — the ordinary case. 惟宗 went 2 → 8, 島津 51 → 92, and
+`reports/path-hata.md` went **29 of 55 → 39 of 55**, closing every one of steps
+33–40, the eight-person Koremune gap named that morning, plus 秋月種任 and
+松平盈子 at 25–26.
+
+What is left of that path is sixteen steps, fifteen consecutive, and none of it
+is Japanese: the Daniels, Searle, Merrell and Vories families in America, ending
+at the Hitotsuyanagi marriage. Fifteen consecutive is past the 6–9 a targeted
+export has been observed to span, so it is two exports at least.
+
+The generalisation worth keeping: **a clan name is not a clan.** Counting
+Hata-named people implied a population Geni does not record. The measurement
+that actually answered the question used no names at all.

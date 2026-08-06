@@ -25,61 +25,34 @@ Big priorities:
 2. Import the Hata clan. Surprised it is not all there already.
 3. Ideally we want to connect all wikidata items with geni into this for our world tree
 
-   **Priority 2 is measured — `reports/hata.md`, 2026-08-06.** The tree holds
-   **27** Hata people
-   and **26 of them have no spouse recorded at all**; 18 have no sibling, 20 have
-   one child or none, and 秦河勝 Kawakatsu is the single branch point in the whole
-   clan. It is one father-to-son thread, which is what a blood-only walk leaves
-   behind. Both exports must be **`Forest`**:
+   **Priority 2 is answered, and the answer is no — `reports/hata.md`,
+   2026-08-06.** Emma took a `Forest` export seeded on a Hata person the same
+   afternoon (`exports/Hata/export-Forest-6000000210475738822.ged`, 4004 people,
+   seed 酒君/酒公 /Hata/) and it settled the question against this repo's own
+   prediction. The clan went 27 → 37 people and **all ten new people are one
+   unbroken descent**; siblings across the whole clan stayed at 9, marriages
+   stayed at 0, branch points stayed at 1. A `Forest` export follows spouse
+   links and found none to follow. The one-hop neighbourhood ignoring names
+   entirely is **four people**. There is no more clan to import: Geni records
+   秦氏 as a line. Emma's call — *"likely definitively showing it is just a
+   line"* — was right.
 
-   - **秦河勝 Hata no Kawakatsu `6000000001952260956`** — for the width, not the
-     depth. The depth is already held.
-   - **惟宗広言 `6000000002934660014`** — closes an eight-person gap (steps 33–40
-     of `reports/path-hata.md`, IDs listed in `reports/hata.md`) between the 安達
-     line and the two 惟宗 people we hold. `Forest` is required rather than
-     preferred: step 34→35 is *her husband*, and a blood-only style walks past
-     him. The tree also holds 51 島津, who descend from Koremune — both ends held
-     and this is the join.
+   The export paid on the other target anyway: 惟宗 2 → 8, 島津 51 → 92, and
+   `reports/path-hata.md` **29/55 → 39/55**, closing all eight of steps 33–40.
 
-   **An export arrived before either of those was taken.** Emma downloaded two
-   on 2026-08-06 15:12–15:18. One was a byte-identical re-download of
-   `exports/originals/export-Forest-6000000226989731860.ged` (the 02 Aug Japanese
-   seed) and was not filed again — `genimerge.sources` drops byte-identical
-   repeats anyway, and a second copy would only collide on a filename. The other
-   is new and is filed as
-   `exports/Hata/export-Forest-6000000210475738822.ged`: **`Forest`, 4004
-   people, seed 酒君/酒公 /Hata/** — a Hata person, though neither of the two
-   named above. Her expectation, in her words: *"likely definitively showing it
-   is just a line"*.
+   **What is left of that path is not Japanese and is not clan work** — sixteen
+   steps, fifteen consecutive, being the Daniels / Searle / Merrell / Vories
+   families in America up to the Hitotsuyanagi marriage, IDs in
+   `reports/hata.md`. Step 9 is held and step 10 is his *brother*, so the
+   doorway is a sibling link. Fifteen consecutive is past the 6–9 steps a
+   targeted export has been observed to span, so it is two exports at least.
+   **BLOCKED-ON-USER-ACTION**, unblock signal is a new `.ged` under `exports/`;
+   seed **Enok Danielson `6000000004104838733`**, style `Forest` (steps 11, 13
+   and 22 are marriages).
 
-   **Remaining work on this item is to answer that**, and it is not blocked:
-   re-run the merge, re-run the Hata measurement, and record whether the count
-   moved past 27 and whether any wives arrived. The prediction already committed
-   in `reports/hata.md` is that breadth appears; Emma's is that it does not. One
-   of them is about to be wrong, and the point of writing both down first is that
-   it will be legible which.
-
-
-0.0 **BLOCKED-ON-USER-ACTION — save the path pages for the 18 people in
-   `reports/remote-people.md`.** The list is ranked by eccentricity, each row is
-   provably 77+ hops from every other row, and each carries a one-click Geni
-   path URL in blood and in-law form. `out/remote-people.html` is the page to
-   work through; re-open it with
-   `powershell Start-Process out\remote-people.html`. Unblock signal is a new
-   `.html` under `geni_pages/`, then for each one:
-
-   ```
-   python -m genimerge path-from-html "geni_pages/<saved>.html" -o paths/<name>.tsv
-   python -m genimerge path paths/<name>.tsv --source out/merged.ged
-   ```
-
-   **Read the first three results before saving many.** Of the chains saved on
-   2026-08-06, Makeda→Enlil-nirari held 225 of 225 and Makeda→Matthew 219 of
-   219 — the prediction that a long in-tree distance means a missing community
-   was wrong for both. Only Makeda→Marguerite paid, stopping at Mahaut de
-   Poissy with six absent people behind her. If several more come back complete,
-   the honest conclusion is that this instrument measures our tree's shape and
-   not Geni's gaps, and the effort belongs on `reports/density.md` instead.
+   Also worth recording as a method note rather than a task: **a clan name is
+   not a clan.** Counting Hata-named people implied a population Geni does not
+   record; the measurement that answered it used no names at all.
 
 0.05 **The P2600 overlap measurement — Emma's ask, 2026-08-06, verbatim: "do a
    SPARQL on wikidata to find the overlap of our tree with the total number of

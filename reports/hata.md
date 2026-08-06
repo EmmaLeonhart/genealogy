@@ -1,84 +1,126 @@
 # The Hata clan in the merged tree
 
-Measured 2026-08-06 against `out/merged.ged` (98 exports, 202,433 people).
-Written to answer Emma's "import the Hata clan — surprised it is not all there
-already". It is not all there, and the shape of what *is* there says why.
+Measured 2026-08-06, first against the 98-export merge and then again after a
+`Forest` export seeded on a Hata person landed the same afternoon. Written to
+answer Emma's "import the Hata clan — surprised it is not all there already".
 
-## What we hold: 27 people, in a thread
+**The answer is that there is no more clan to import. It is a line, and that is
+Geni's record rather than our sampling.** The first version of this report
+predicted the opposite; the export settled it against that prediction. What is
+kept below is both numbers, because the point of writing a prediction down is
+that it stays legible when it fails.
 
-| | |
-| --- | ---: |
-| people carrying a Hata clan name | **27** |
-| of those, with **no spouse recorded** | **26** |
-| with no recorded sibling | 18 |
-| with 0 or 1 recorded child | 20 |
-| branch points (more than one child) | **1** — Hata no Kawakatsu |
+## The measurement, before and after
 
-That is not a clan. It is a single father-to-son thread running from Fusu 嬴姓
-down through 孝武王 → Yuzuki no Kimi 弓月君 → 普洞王 → 酒君/酒公 → 意美 → 宇志 →
-Tanshō → Kawa → Kunikatsu → **秦河勝 Hata no Kawakatsu**, where it forks once
-into 広国 and 石勝, and each fork continues as another single thread.
+| | 98 exports | 99 exports |
+| --- | ---: | ---: |
+| people carrying a Hata clan name | 27 | **37** |
+| of those, with **no spouse recorded** | 26 | **36** |
+| siblings recorded across the whole clan | 9 | **9** |
+| people with 0 or 1 recorded child | 20 | 30 |
+| branch points (more than one child) | 1 | **1** |
 
-**Every one of the 26 is in a marriage family with no other spouse in it.** Not
-"the wives are unnamed" — the wives are not in our data at all. A clan of 27
-people with zero recorded marriages is the fingerprint of a blood-only walk:
-`Ancestors` and `BloodTree` follow parent links and step over every spouse. That
-is the same trap that nearly cost the Jimmu bridge, recorded in `CLAUDE.md`, and
-here it cost the entire lateral structure of the clan.
+The export added ten people. **All ten are a single unbroken descent** from
+行永, who was previously the bottom of the line, down through 永利 → 恒遠 →
+恒任 → 義遠 → 春俊 → 邦利 → 重信 → 重昌 → 明友 → Yoshitoshi /Hata/. Not one
+sibling. Not one wife. The one branch point in the clan is still 秦河勝 Hata no
+Kawakatsu and his two sons, exactly as before.
+
+**Zero recorded marriages, after a `Forest` export seeded inside the line.** That
+is the part that settles it. `Forest` follows spouse links — it is the style
+chosen precisely because `Ancestors` and `BloodTree` walk past them — and seeded
+on 酒君/酒公 it found no marriages to follow. A blood-only walk can hide wives;
+a `Forest` walk that returns none is evidence there are none on Geni.
+
+## The name screen was not the problem either
+
+The obvious objection is that a wife keeps her own clan name and so falls
+outside a screen matching 秦 / Hata. Tested by ignoring names entirely: take the
+37 as seeds and walk one step along every parent, child and spouse edge.
+
+**The whole 1-hop neighbourhood outside the name screen is four people.**
+
+| relation | who | Geni ID |
+| --- | --- | --- |
+| parent, at the top | Fusu /嬴姓/ | `6000000012696507126` |
+| child, at the bottom | 永厚 /惟宗/ | `6000000004668991008` |
+| child, at the bottom | Toshimune /Chōsokabe/ | `6000000001952315196` |
+| spouse | 小黒麻呂 /藤原/ | `6000000002848545023` |
+
+So the entire structure is **41 people**: a thread with one ancestor above it,
+two clan exits below it (Koremune and Chōsokabe, both of which claim Hata
+descent), and a single marriage — 嶋麻呂女 /太秦/ to Fujiwara no Oguromaro —
+which is not on the line at all.
 
 ## What the kanji screen gets wrong, and why it is called out
 
-Matching 秦 anywhere in a name returns **58** people. **31 of them are not
-Hata**: they carry 秦州成紀 or 秦州清水 — Chengji and Qingshui *in Qinzhou*, a
-Chinese place used as a surname field. They are excluded above. This is the
-usual failure of name matching and it is why the count is stated with its screen
-attached rather than as a bare number.
+Matching 秦 anywhere in a name returns 68 people. **31 of them are not Hata**:
+they carry 秦州成紀 or 秦州清水 — Chengji and Qingshui *in Qinzhou*, a Chinese
+place used as a surname field. They are excluded throughout. This is the usual
+failure of name matching and it is why every count here is stated with its
+screen attached.
 
-## The Koremune gap — eight people, and they are the clan's own branch
+## The export paid anyway, on the other target
 
-惟宗 (Koremune) is the Hata clan's later name. The tree holds **exactly two**
-Koremune people, 具範 and 永厚, and they are precisely the two that
-`reports/path-hata.md` reports as held at steps 41–42. The eight people between
-them and the 安達 line are all absent:
+The same export closed the Koremune gap this report had named as its second
+export target — from a different seed than the one suggested, which is the
+ordinary case: an export's value is not confined to the reason it was taken.
 
-| step | name | relation to previous | Geni ID |
-| ---: | --- | --- | --- |
-| 33 | 安達景盛 | his father | [6000000008141407248](https://www.geni.com/people/x/6000000008141407248) |
-| 34 | 丹後内侍 | his mother | [6000000002933557025](https://www.geni.com/people/x/6000000002933557025) |
-| 35 | 惟宗広言 | **her husband** | [6000000002934660014](https://www.geni.com/people/x/6000000002934660014) |
-| 36 | 惟宗基言 | his father | [6000000004668892191](https://www.geni.com/people/x/6000000004668892191) |
-| 37 | 惟宗孝言 | his father | [6000000004668782525](https://www.geni.com/people/x/6000000004668782525) |
-| 38 | 惟宗孝近 | his father | [6000000004668811321](https://www.geni.com/people/x/6000000004668811321) |
-| 39 | 惟宗貴重 | his father | [6000000004668647969](https://www.geni.com/people/x/6000000004668647969) |
-| 40 | 惟宗広孝 | his father | [6000000004668691541](https://www.geni.com/people/x/6000000004668691541) |
+- **惟宗 (Koremune) went 2 → 8 people**, 島津 (Shimazu) **51 → 92**.
+- `reports/path-hata.md` went **29 of 55 steps → 39 of 55**. All eight steps
+  33–40 — 安達景盛, 丹後内侍, and the six 惟宗 between them and 具範 — are now
+  held, along with 秋月種任 and 松平盈子 at steps 25–26.
+- Overall the export brought **988 new people** to the tree, of which ten carry
+  a Hata name. The other 978 went into this Koremune/Shimazu neighbourhood and
+  its surroundings.
 
-Both ends are anchored — step 32 安達義景 is held, steps 41–42 are held — so this
-is a bridge of eight, inside the 6–9 steps a single targeted export has actually
-been observed to span.
+## What is still missing on the path, and it is not Japanese
 
-Worth noting alongside it: the tree holds **51 島津 (Shimazu)** people, and
-Shimazu descends from Koremune. We hold the Shimazu and we hold the Hata, and
-the eight-person Koremune stretch that would join them to each other is the
-piece missing.
+The remaining gap is **sixteen steps, fifteen of them consecutive**, and it is
+the American stretch: Enok Danielson and the Daniels, Searle, Merrell and Vories
+families, ending at the Hitotsuyanagi marriage that carries the chain into
+Japan. Plus one straggler, step 27 幸姫.
 
-## Two exports, and both must be `Forest`
+| step | name | Geni ID |
+| ---: | --- | --- |
+| 10 | Enok Danielson (Enoch Daniels) i USA | `6000000004104838733` |
+| 11 | Rebecca Jane Daniels | `6000000137763536821` |
+| 12 | Leonard Breed Searle | `6000000025819589873` |
+| 13 | Rebecca Ann Searle | `6000000025819541317` |
+| 14 | Mary Amy Merrell | `6000000041104512805` |
+| 15 | Hosea Merrell | `6000000041104512798` |
+| 16 | Simeon Merrill | `6000000008427171641` |
+| 17 | Stephen Merrill | `6000000008427052635` |
+| 18 | Erastus Merrell | `6000000031810467100` |
+| 19 | William H Merrell | `6000000006606130419` |
+| 20 | Julia Eugenia Vories | `6000000031810165248` |
+| 21 | Merrell Vories Hitotsuyanagi | `6000000031810377852` |
+| 22 | Makiko Hitotsuyanagi | `6000000031810347895` |
+| 23 | Hitotsuyanagi EIko | `6000000031937667550` |
+| 24 | Mashiko Akizuki | `6000000032170308111` |
+| 27 | 幸姫 | `6000000002510973487` |
 
-1. **秦河勝 Hata no Kawakatsu `6000000001952260956`** — the clan's
-   best-documented figure and our only branch point. The target here is not
-   depth, which we already have; it is the **width** the blood walks discarded:
-   wives, brothers, and the collateral houses. A `Descendants` export would also
-   fan out, but it would fan out from a man with no recorded wife and so would
-   propagate the same defect; `Forest` picks up the marriages.
-2. **惟宗広言 `6000000002934660014`** — closes the eight-step gap above.
-   `Forest` is not a preference here, it is required: step 34 → 35 is
-   **"her husband"**, a marriage link. `Ancestors` and `BloodTree` seeded
-   anywhere in this window walk straight past 惟宗広言 and never bridge.
+Step 9, Daniel Danielson Nerabø `6000000004105285975`, is held and step 10 is
+his **brother**, so the doorway is a sibling link rather than a parent one.
+Fifteen consecutive steps is well past the 6–9 a single targeted export has been
+observed to span, so this is two exports at least — and it is ordinary American
+frontier rather than anything to do with the Hata clan.
 
-## What this predicts
+## What was predicted, and what happened
 
-The first export should raise the Hata count well past 27 while adding few or no
-generations — the depth is already there and it is the breadth that is missing.
-If a `Forest` export from Kawakatsu comes back with the count barely moved, the
-explanation is not our sampling: it means Geni's 秦氏 is itself recorded as a
-patriline, and "import the Hata clan" has no more clan to import. Recording the
-prediction here so `git show` supplies it when the export lands.
+The first version of this report predicted: *"the first export should raise the
+Hata count well past 27 while adding few or no generations — the depth is
+already there and it is the breadth that is missing."* It also named the escape
+clause: *"if it comes back barely moved, it means Geni's 秦氏 is itself recorded
+as a patriline."*
+
+The count rose by ten and **every one of the ten was a generation**. Breadth did
+not move at all — same nine siblings, same zero marriages, same single branch
+point. The prediction was wrong in the direction the escape clause described,
+and Emma's call before the export ran — *"likely definitively showing it is just
+a line"* — was right.
+
+The generalisation worth keeping: **a clan name is not a clan.** Asking "do we
+have the Hata clan?" by counting Hata-named people implied a population that
+Geni does not record. The measurement that actually answered it was the
+one-hop neighbourhood walk, which needed no names at all.

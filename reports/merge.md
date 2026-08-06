@@ -90,25 +90,26 @@ Sources in merge order (later sources win value conflicts):
 84. `export-Forest-7.ged`
 85. `export-Forest-8.ged`
 86. `export-Forest-9.ged`
-87. `export-Forest.ged`
+87. `export-Forest-6000000210475738822.ged`
 88. `export-Forest.ged`
 89. `export-Forest.ged`
-90. `export-Ancestors.ged`
-91. `export-BloodTree.ged`
-92. `export-Forest-6000000226977233850.ged`
-93. `export-Forest-6000000226989731860.ged`
-94. `export-Forest.ged`
-95. `export-Forest-40.ged`
-96. `export-Forest-41.ged`
-97. `export-Forest-42.ged`
-98. `export-Forest-43.ged`
+90. `export-Forest.ged`
+91. `export-Ancestors.ged`
+92. `export-BloodTree.ged`
+93. `export-Forest-6000000226977233850.ged`
+94. `export-Forest-6000000226989731860.ged`
+95. `export-Forest.ged`
+96. `export-Forest-40.ged`
+97. `export-Forest-41.ged`
+98. `export-Forest-42.ged`
+99. `export-Forest-43.ged`
 
 ## Merged totals
 
 | record | count |
 | --- | ---: |
-| FAM | 100841 |
-| INDI | 202433 |
+| FAM | 101405 |
+| INDI | 203323 |
 | NOTE | 15812 |
 | SUBM | 8103 |
 
@@ -153,7 +154,7 @@ Sources in merge order (later sources win value conflicts):
 | `export-Forest-39.ged` | 1168 | 4004 | 1 | 232 | 51 | 0 |
 | `export-Forest-40.ged` | 2833 | 3725 | 155 | 296 | 919 | 1731 |
 | `export-Forest-41.ged` | 865 | 2638 | 9 | 114 | 2393 | 2451 |
-| `export-Forest-42.ged` | 1347 | 2074 | 0 | 1 | 3286 | 1636 |
+| `export-Forest-42.ged` | 1262 | 1978 | 0 | 0 | 3468 | 1774 |
 | `export-Forest-43.ged` | 2319 | 3915 | 104 | 364 | 284 | 193 |
 | `export-Forest-44.ged` | 2628 | 3864 | 14 | 16 | 29 | 1 |
 | `export-Forest-46.ged` | 0 | 0 | 0 | 0 | 2077 | 0 |
@@ -202,6 +203,7 @@ Sources in merge order (later sources win value conflicts):
 | `export-Forest-7.ged` | 671 | 1277 | 0 | 37 | 4214 | 3485 |
 | `export-Forest-8.ged` | 1081 | 1510 | 0 | 22 | 4214 | 338 |
 | `export-Forest-9.ged` | 0 | 25 | 0 | 1 | 6210 | 1289 |
+| `export-Forest-6000000210475738822.ged` | 651 | 988 | 0 | 1 | 5194 | 3206 |
 | `export-Forest.ged` | 727 | 1084 | 3 | 59 | 4386 | 908 |
 | `export-Forest.ged` | 727 | 1084 | 3 | 59 | 4386 | 908 |
 | `export-Forest.ged` | 727 | 1084 | 3 | 59 | 4386 | 908 |
@@ -212,7 +214,7 @@ Sources in merge order (later sources win value conflicts):
 | `export-Forest.ged` | 727 | 1084 | 3 | 59 | 4386 | 908 |
 | `export-Forest-40.ged` | 2833 | 3725 | 155 | 296 | 919 | 1731 |
 | `export-Forest-41.ged` | 865 | 2638 | 9 | 114 | 2393 | 2451 |
-| `export-Forest-42.ged` | 1347 | 2074 | 0 | 1 | 3286 | 1636 |
+| `export-Forest-42.ged` | 1262 | 1978 | 0 | 0 | 3468 | 1774 |
 | `export-Forest-43.ged` | 2319 | 3915 | 104 | 364 | 284 | 193 |
 
 ## Pointers to records we do not have

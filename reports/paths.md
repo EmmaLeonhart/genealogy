@@ -12,8 +12,13 @@ evidence here that comes from outside our own data. If arbitrary chains to
 far-flung people are held end to end, we hold the connective tissue — which is
 what "small-world core" means operationally.
 
-Measured 2026-08-06 over the **202,433-person merge (98 exports)**. A 99th
-export landed after this run and is not in it.
+Measured 2026-08-06 over the **202,433-person merge (98 exports)**.
+
+**A 99th export landed the same afternoon and this table does not yet include
+it.** One row has already been re-measured against it: `意美 Hata` went
+**29/55 → 39/55**, the Koremune block closing. A full re-run of the other
+seventeen is in flight; until it lands, treat every figure below as the
+98-export number it says it is.
 
 ## Result
 
