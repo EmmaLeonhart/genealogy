@@ -2962,3 +2962,51 @@ than inferred: Geni has already named who is behind that door.
 **Tests: 1063 passed** on the restored 54-export state. An earlier report of
 this suite as passing was wrong — the exit code read was `tail`'s, not pytest's,
 and that run was 1 failed / 1350 passed.
+
+## 2026-08-05 — error counts were a denominator bug, not a data problem
+
+`queue.md` item 4 had sat as NEEDS-INVESTIGATION since the tree was ten exports:
+going 10 → 54 grew the tree 3.9× while impossible dates grew 5.9× and possible
+duplicates 9.2×. The stated options were "the newer material is worse" or "a
+check scales badly with tree size". Neither is what was happening, and a third
+possibility nobody had listed turned out to matter enough to test.
+
+**Measured over all 94 exports, each checked on its own.** The rate has to be
+per *dated* person, because an impossible date requires a date and the share of
+people carrying one is not constant: the older 54 exports have dates for 44.6%
+of their people, the newer 40 for 55.9%. Counting per person therefore charges
+to "more errors" what is really more dates.
+
+| | exports | people | dated | impossible | per dated |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| old | 54 | 197,233 | 88,053 | 3,748 | **4.26%** |
+| new | 40 | 149,639 | 83,668 | 2,544 | **3.04%** |
+| merged tree | 94 | 190,081 | 98,868 | 3,003 | **2.65%** |
+
+So the newer material is **better**, not worse. That disposes of the first
+option, and the second: an impossible-date check runs per parent–child edge, so
+it is linear in the tree, and the measured rate falls rather than rises.
+
+**The third possibility, added because it was more likely than either listed
+one.** An impossible date needs two values, and after a merge those two values
+can come from exports taken days apart — so the merge could be manufacturing
+contradictions that exist in no single export. It is not: of 2,618 people
+flagged in the merged tree, **3** are flagged only after merging. Eleven go the
+other way, flagged inside an export but not in the merge, because later-wins
+conflict resolution replaced the bad value with a corrected one.
+
+The merged rate being lower than either per-export rate is not a paradox.
+Someone present in five exports is counted five times across five runs and once
+in the merge, and people in many exports are the well-covered ones with better
+dates.
+
+**Duplicates are the one measure that genuinely does scale superlinearly**, and
+should stop being read as a data-quality signal. They grew 3.0× (possible) and
+3.8× (likely) against 1.8× more people. `duplicate_candidates` groups by
+normalised name and same-name pairs grow with the square of the population, so
+1.8× more people predicts about 3.2×. That is the shape of the measure.
+
+Written into `consistency.py`'s module docstring rather than only here, since
+the failure mode is a reader normalising by the wrong number. The BC-date fix
+earlier today moved the impossible count 2,756 → 3,003; the rates above are all
+post-fix and internally consistent.

@@ -26,6 +26,38 @@ Findings are split into two kinds, because they warrant different responses:
 ``IMPLAUSIBLE``
     Could be true and probably is not — a parent of eleven, a lifespan of 130.
     Worth a human eye; some will turn out to be fine.
+
+**Normalise by `people_with_a_year`, never by `people_checked`.** This is the
+one number here that has actually misled, and it stayed on the queue for days as
+"errors are growing faster than the tree". Going 10 → 54 exports grew the tree
+3.9× and the impossible-date count 5.9×, which reads as the data getting worse.
+It was the denominator: an impossible date requires a date, and the share of
+people who have one is not constant across exports. Measured over 94 exports on
+2026-08-05, the older 54 carry dates for 44.6% of their people and the newer 40
+for 55.9%. Counting per *person* therefore attributes to error growth what is
+really date-coverage growth.
+
+Per dated person the rate is flat and falling: **4.26% in the old exports, 3.04%
+in the new, 2.65% in the merged tree**. Newer material is better, not worse.
+
+**The merge creates almost none of them, which was worth checking rather than
+assuming.** An impossible date needs two values and after a merge those can come
+from two exports taken days apart, so "merging manufactures contradictions" is a
+plausible story. It is not what happens: of 2,618 people flagged in the merged
+tree, **3** are flagged only after merging. Eleven go the other way — flagged
+inside an export, not in the merge — because later-wins conflict resolution
+replaced the offending value with a corrected one.
+
+The merged rate being *lower* than either per-export rate is not a paradox:
+someone in five exports is counted five times across five runs and once in the
+merge, and people in many exports are the well-covered ones with better dates.
+
+**Duplicate counts are a different story and do scale superlinearly.** They grew
+3.0× (possible) and 3.8× (likely) against 1.8× more people from 54 to 94
+exports. `duplicate_candidates` groups by normalised name, and the number of
+same-name pairs grows with the square of the population, so ~3.2× is what 1.8×
+more people predicts. That is the shape of the measure, not a change in the
+data — do not read it as the tree getting dirtier.
 """
 
 from __future__ import annotations

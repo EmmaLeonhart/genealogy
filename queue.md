@@ -92,12 +92,6 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
    so `git show` supplies it later — **region 6 is predicted to yield more new
    people than region 4 would have**, on the density argument alone.
 
-4. **NEEDS-INVESTIGATION — error counts still growing faster than the tree.**
-   10 → 54 exports grew the tree 3.9× while impossible dates grew 5.9× (261 →
-   1548) and possible duplicates 9.2× (53 → 490). Either the newer material is
-   worse or a check scales badly with tree size. Worth settling before these
-   dates reach Wikidata, since `add-claims.qs` builds P569/P570 from them.
-
 6. **The Wikidata reports are stale.** `reports/wikidata-coverage.md`,
    `wikidata-crosscheck.md` and `names.md` describe the 16266-person tree; it is
    now 105349. Refreshing means `reconcile` against the live SPARQL endpoint,
