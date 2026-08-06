@@ -181,144 +181,34 @@ Big priorities:
 
 ### Standing context
 
-- **BLOCKED-ON-USER-ACTION — 96 impossible dates in the tree, listed in
+- **BLOCKED-ON-USER-ACTION — impossible dates in the tree, listed in
   `reports/consistency.md`.** Someone born before a parent, or after their
   mother died. Every one is an error in Geni's data rather than in the merge, so
   fixing them means editing profiles on Geni; this repo will not change them.
-  A further 89 are implausible rather than impossible — a parent under 12, a
+  A further set are implausible rather than impossible — a parent under 12, a
   lifespan over 120 — and some of those will turn out to be correct.
-  (Counts re-measured 2026-08-02 over the five-export merge.)
+
+  **This entry said 96 impossible and 89 implausible, "re-measured 2026-08-02
+  over the five-export merge", until 2026-08-06.** The report says **3,189** and
+  **1,966** over 202,433 people. The number was not wrong when written; it was
+  left behind by 94 exports, which is what a count copied into prose does. It is
+  not restated here now — **read `reports/consistency.md`**, the same rule
+  `todo.md` § 3a already applies to `reports/frontier.md`.
 
   Worth doing before the QuickStatements batches rather than after:
-  `add-claims.qs` carries 19 P569 and 24 P570 statements built from these same
-  dates, so an uncorrected year here becomes a wrong year on Wikidata.
+  `add-claims.qs` carries P569 and P570 statements built from these same dates,
+  so an uncorrected year here becomes a wrong year on Wikidata.
 
 
 
-- **A third export candidate, and the only one with a *known* payoff.** Asked
-  which people in a Geni relationship chain to Emperor Jimmu were in our tree,
-  the answer was: it stops at **Elisabeth Árpád dynasty
-  `6000000003243185408`**, step 30 of 83.
-
-  **Measured 2026-08-04** — `paths/jimmu.tsv`, extracted from the
-  saved page by `python -m genimerge path-from-html` so every row carries its
-  profile ID, then checked by `python -m genimerge path` into
-  `reports/path-jimmu.md` and `reports/path-jimmu.json`. **62 of 83 steps
-  held**, joined on the primary key, nothing advisory.
-
-  **"It stops at Elisabeth" was exactly right.** Steps 1–30 are held without a
-  single hole and step 31 is the first absence. What was wrong is the *size* of
-  what follows: the absent block is **21 steps, not 51** — steps 31–51, Jelena
-  Urošević through Li Hong 李宏, covering the Nemanjić rulers, Constantine IX
-  Monomachos, Alp Arslan, the Ashina khagans and the Tang line. It does **not**
-  run to Jimmu; steps 52–83 are held, in component 2.
-
-  Worth keeping as a caution: checking this same path by *name*, before the IDs
-  were extracted, put eleven false holes in steps 1–30 and reported the run as
-  stopping at step 2. Every one was a spelling difference. Name matching did not
-  merely add noise — it moved the headline finding.
-
-  She has no parents recorded, so she is a doorway, and a strong one: ranked
-  **198 of 2932**, ball 22, 9 doorways, **41% openness** against a pool median
-  of 20%. The seed to export from is her absent mother, **Jelena Urošević**, per
-  the export-from-the-parent rule.
-
-  What no report here can express is why she is the best of the three
-  candidates: the payoff is *observed*, not inferred. Every seed in
-  `reports/seeds.md` is a bet on unseen material behind a door; Geni has already
-  shown what is behind this one. That evidence comes from outside our data,
-  which is the same blind spot that hid Iver Mellegård.
-
-  **The limit, restated 2026-08-04 now that the path is measured.** The old
-  version of this paragraph said Jimmu was ~51 steps further down the chain and
-  concluded that reaching him needs a sequence of exports rather than one. The
-  count was wrong and the conclusion no longer follows: the missing block is
-  **21 steps**, and Jimmu is not at the end of it — steps 52–83 are already
-  held. What one export from Jelena Urošević has to do is span 21 steps, not
-  reach Japan.
-
-  Whether one can is **NEEDS-INVESTIGATION** and not answerable from here. An
-  export is a breadth-first ball of ~3844 people, so what matters is the radius
-  that ball reaches along *this* line, and that depends on how densely recorded
-  the Serbian and Byzantine neighbourhood is — bushy branching burns the budget
-  sideways before it gets deep. Jelena is not in our data, so `seeds.py` cannot
-  model her ball. It resolves by taking the export and re-running
-  `python -m genimerge path paths/jimmu.tsv`, which will say exactly
-  how far down the chain it got.
-
-  **Update 2026-08-02 — the far end arrived first, and it is an island.** The
-  fifth export is the Japanese line itself (seed `6000000226989731860`, rooted
-  at Kunino-tokotachi-no-mikoto): 3844 people sharing **zero** individuals and
-  **zero** families with the other four exports, so the merged file is now two
-  disconnected components. It brings none of the Serbian/Byzantine/Turkic middle
-  of the chain, which is exactly why it does not attach. This does not retire
-  the Jelena Urošević candidate — it makes it a *bridge* between two components
-  we now hold rather than a reach into the unknown, which is a better bet than
-  before, not a worse one. Both ends are anchored; the middle is what is missing.
-
-  **Update 2026-08-04 — the gap can be attacked from both ends, and that halves
-  it.** Measuring the path turned up a second doorway nobody had looked for. The
-  known one is at the north end: step 30 Elisabeth is held and parentless, so
-  the seed is step 31 Jelena Urošević. The south end is the same shape — step 52
-  **Li Yong 李邕 `6000000075060923880`** is held, in component 2, and has **no
-  parents recorded**, so the seed there is his absent father, step 51
-  **Li Hong 李宏**. Two exports walking toward each other cover ~10 steps each
-  instead of one export covering 21, and either one landing tells us how far a
-  ball actually reaches along this line. Neither has been taken.
-
-  **Update 2026-08-04, later — both were taken, and the pincer worked almost
-  exactly as drawn.** Emma exported from both ends and the three files are now
-  in the corpus. The path went from **62 of 83 steps held to 77 of 83**, and
-  the gap from 21 steps to **6**: steps 37–42, listed with their IDs as item 1
-  of "Active" above.
-
-  - The `n n` export (seed `6000000227036742846`) came in from the north and
-    took steps **31–36**, Jelena Urošević through Helena Komitopulo — so the
-    Nemanjić block that was the whole reason for the Jelena candidate is now
-    held, and Jelena herself is in the tree rather than being a doorway.
-  - The `Li Hong` forest export (seed `6000000227036288825`) came in from the
-    south and took steps **43–51**, Inal Kut Chor through Li Hong 李宏 — the
-    Ashina khagans and the Tang line.
-  - The second `Li Hong` export (seed `6000000227036719829`) is on none of the
-    path. It attaches to component 2 through two people and brings 3850 people
-    anyway, which is the ordinary case: an export's value is not confined to the
-    chain that motivated it.
-
-  **What this measured that the ranking could not.** The open question was how
-  far a ball reaches along *this* line, since bushy branching burns the budget
-  sideways. Answer: **each export covered 6 and 9 steps of chain**, not the ~10
-  hoped for and not 21. So one export does not span a gap of that size, and the
-  remaining 6 steps are a plausible single export precisely because 6 is inside
-  the range now observed rather than hoped for.
-
-  **The two trees still do not touch.** Both new components attached to the side
-  they came from — 61 shared people with component 1 for `n n`, 41 with
-  component 2 for `Li Hong` — and none to each other. Predicted before running
-  the merge and confirmed after; the component count is still 2, now 16217 and
-  11501.
-
-  **Update 2026-08-04, later still — closed. 83 of 83 steps held, one connected
-  tree of 32393 people.** Emma had already taken the bridging export; it was in
-  `exports/archive/` as `(22)` and `(23)`, not in the two folders she had named,
-  so the session's scoping missed it. Both hold all six of steps 37–42, and both
-  touch *both* components (`(22)`: 1325 people shared with the Norwegian side, 1
-  with the Japanese; `(23)`: 880 and 7). Ingested as
-  `export-Forest-6000000211780118843.ged` and `…211750023833.ged`.
-
-  **The style mattered and nearly was not noticed.** Steps 36→43 run
-  `her brother` → `his partner` → `her daughter` → `her husband` → `his father`
-  → `his mother`. Two of those six people are reachable only through a marriage,
-  so `Ancestors` and `BloodTree` exports seeded in that window would have walked
-  past them and never bridged. Both bridging exports happened to be `Forest`.
-  **Read the relation column before choosing a style for a targeted export** —
-  this is now written into `CLAUDE.md`.
-
-  **This whole standing note is history and can be deleted** once someone is
-  confident nothing above is still load-bearing. Kept for now because the
-  numbers record how the tree was actually built: 62/83 → 77/83 → 83/83, and a
-  21-step gap that took four exports rather than the one originally planned.
-
-
+- **The Jimmu chain, 62/83 → 77/83 → 83/83, is finished and its long note is
+  deleted (2026-08-06).** The note ended by saying it could go once nobody
+  thought it load-bearing; the 99-export re-run holds both jimmu path files at
+  **83 of 83**, so the arc is closed. What it taught survives in `CLAUDE.md` —
+  read the relation column before choosing an export style, because two of the
+  six bridging steps are reachable only through a marriage — and the numbers are
+  in `devlog.md` and `git log`. A 21-step gap took four exports, not the one
+  originally planned; that is the part worth remembering.
 
 - **Not doing: centralising the per-module property constants.**
   `crosscheck`, `reconcile`, `namelinks`, `names` and `quickstatements` each
@@ -392,28 +282,18 @@ Big priorities:
   `pyproject.toml`, which is why the suite runs but `python -m genimerge` does
   not). Not worth changing the user's PATH over, but worth not rediscovering.
 - **NEEDS-INVESTIGATION — what actually bounds a Geni export is still unknown.**
-  The code no longer claims to know: `GENI_EXPORT_CAP` is documented as the
-  largest export observed (**3844** as of 2026-08-02) rather than a limit Geni
-  enforces, and `tests/test_seeds.py` fails if a future export exceeds it —
-  which is how both 3840 and 3844 were caught. What is unresolved is the
-  underlying fact. Five exports — 3836, 3836, 3836, 3840, 3844 — still cannot
-  separate a raised limit from a per-account limit from a limit on something
-  other than head count from a walk that overshoots a floor. **The even spacing
-  is a trap:** three numbers four apart, from three days and three seeds, are
-  not a step of four, and nothing in the code encodes that arithmetic. This
-  advances as data arrives rather than by being worked on; it is not blocking
-  anything, because being off by a few people out of ~3840 does not move the
-  seed ranking.
-
-- **NEEDS-INVESTIGATION — the merged tree is two components and nothing in hand
-  joins them.** 12422 people (Norwegian, branch point Tora Torsteinsdatter
-  Galge) and 3844 (Japanese mythological, root Kunino-tokotachi-no-mikoto).
-  `reports/frontier.md` § Components is the live count. Every aggregate figure
-  this repo prints — coverage percentages, generational depth, the seed ranking
-  — is now computed across two unrelated trees, which is not wrong but is easy
-  to read as one. Resolves either by an export that bridges them (see the Jimmu
-  chain note above) or by deciding the components are reported separately.
-  Not blocking anything.
+  The code does not claim to know: `GENI_EXPORT_CAP` is documented as the largest
+  export *observed* — **4008** since 2026-08-05 — rather than a limit Geni
+  enforces, and `tests/test_seeds.py` fails if one exceeds it, which is how 3840,
+  3844, 3856 and the 4008 were each caught. What is unresolved is the underlying
+  fact. Ninety-nine exports still cannot separate a raised limit from a
+  per-account limit from a limit on something other than head count from a walk
+  that overshoots a floor. **The even spacing was a trap and the data has since
+  said so**: three numbers four apart looked like a step of four, then eleven
+  exports in a row held 3860 exactly, then a pair taken seven minutes apart held
+  3972 and 4008. Nothing in the code encodes any arithmetic. This advances as
+  data arrives rather than by being worked on, and is not blocking anything —
+  being off by a few people out of ~4000 does not move the seed ranking.
 
 - **CI is off on purpose, and stays off.** Not a blocker — a decision. This is a
   private repo, where Actions minutes are billable rather than free, and

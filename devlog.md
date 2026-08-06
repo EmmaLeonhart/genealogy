@@ -3268,3 +3268,31 @@ all.
 The Carolingian block has now survived nine further exports unchanged — the same
 ten people, blocking the same five paths, still 50 of the 124 missing steps and
 now 40% of them.
+
+## 2026-08-06 — queue hygiene: three notes the measurements had overtaken
+
+`queue.md` went from 458 lines to 331. Nothing was dropped that is still true.
+
+- **The Jimmu standing note is deleted.** It ended by saying it could go once
+  nobody thought it load-bearing, and the 99-export re-run holds both jimmu path
+  files at 83 of 83. A four-line summary replaces ~120: what it taught is in
+  `CLAUDE.md` (read the relation column before choosing a style — two of the six
+  bridging steps are reachable only through a marriage), and the arc 62/83 →
+  77/83 → 83/83 is in `devlog.md` and `git log`.
+- **"The merged tree is two components" is deleted.** It described 12,422 and
+  3,844 people and has been false since 2026-08-04.
+- **The export-bound note is rewritten.** It still said 3844 and "five exports".
+  `GENI_EXPORT_CAP` has been 4008 since 2026-08-05. The rewrite keeps the open
+  question — nothing separates a raised limit from a per-account one from a walk
+  that overshoots a floor — and records that the even-spacing trap it warned
+  about was then sprung on by the data: three numbers four apart, then eleven
+  exports holding 3860 exactly, then a pair seven minutes apart holding 3972 and
+  4008.
+
+**And one correction rather than a deletion.** The consistency entry said "96
+impossible dates … re-measured 2026-08-02 over the five-export merge".
+`reports/consistency.md` says **3,189** impossible and **1,966** implausible over
+202,433 people. The number was right when written and was left behind by 94
+exports. It is now not restated at all — the entry points at the report, which
+is the rule `todo.md` § 3a already adopted for `reports/frontier.md` after the
+same thing happened there. A count copied into prose is checked by nothing.
