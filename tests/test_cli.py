@@ -12,6 +12,8 @@ from pathlib import Path
 
 import pytest
 
+from conftest import run_cli
+
 from genimerge import cli, gedcom
 
 SMALL = """0 HEAD
@@ -74,19 +76,11 @@ def workspace(tmp_path):
     }
 
 
-def run(ws, *argv):
-    """Run the CLI against the workspace, returning its exit code."""
-    return cli.main(
-        [
-            *argv,
-            "--exports-dir",
-            str(ws["lake"]),
-            "--out",
-            str(ws["out"]),
-            "--reports",
-            str(ws["reports"]),
-        ]
-    )
+#: Every CLI invocation in these tests goes through the shared helper, so the
+#: workspace flag names live in exactly one place. They were written out here
+#: and again in test_cli_wikidata.py until 2026-08-05, when renaming
+#: --data-lake broke the copy nobody remembered.
+run = run_cli
 
 
 # -- the parser --------------------------------------------------------

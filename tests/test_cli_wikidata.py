@@ -15,6 +15,8 @@ import urllib.request
 
 import pytest
 
+from conftest import run_cli
+
 from genimerge import cli, wikidata
 
 # Ada and Bo are on Wikidata (Q1, Q2); Cy and Di are not.
@@ -180,11 +182,8 @@ def ws(tmp_path, monkeypatch):
     }
 
 
-def run(ws, *argv):
-    return cli.main(
-        [*argv, "--data-lake", str(ws["lake"]), "--out", str(ws["out"]),
-         "--reports", str(ws["reports"])]
-    )
+#: Shared with test_cli.py -- see tests/conftest.py for why.
+run = run_cli
 
 
 def rows(path):
