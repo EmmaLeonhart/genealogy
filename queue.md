@@ -16,6 +16,57 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 ## Active
 
 
+0.0 **NEEDS-INVESTIGATION — audit the corpus-count discrepancy first seen in the
+   Claude Code *cloud (web) environment* on 2026-08-06.** In that cloud checkout
+   the committed GEDCOMs and the committed reports disagree about how big the
+   corpus is, and this item is the procedure to decide which of three things it
+   is: **REAL** (the cloud is a partial mirror by design and the PC holds the
+   full corpus), a **DOC FLAW** (the docs/reports claim `exports/` is the
+   committed corpus while dozens of GEDCOMs are not in git), or **SOMETHING
+   ELSE** (files renamed, lost, or a merge that read from a path outside
+   `exports/`). Do not "fix" anything until the verdict is chosen.
+
+   **What was observed in the cloud, so the next run does not re-derive it:**
+   - `git ls-files 'exports/**/*.ged' | wc -l` → **57** committed; `find exports
+     -name '*.ged' | wc -l` → **57** on disk; `python -m genimerge inventory`
+     header → **"(57 exports)"**. All three agree: the cloud sees 57.
+   - The committed reports claim more: `reports/frontier.md` **190081 people, 2
+     components, 94 exports**; `reports/density.md` **94 exports**;
+     `reports/paths.md` **90 exports, 186551 people**; `reports/merge.md`'s
+     numbered "Sources in merge order" list has **94 entries** (~64 distinct
+     basenames after cross-directory duplicates).
+   - **10 basenames named in `merge.md` are absent from the cloud disk:**
+     `export-Forest-0/1/3/4/7/8/20/33/38.ged` and `export-BloodTree-16.ged`.
+   - Prime suspect for cause: commit `6eddadd` *"Undo cf45547's file additions:
+     keep the exports on disk, out of git"* — i.e. exports may be deliberately
+     uncommitted, so the cloud only ever receives the committed subset.
+
+   **Audit procedure (run the cloud half here, hand the PC half to Emma's PC):**
+   1. *Cloud ground truth* — re-run the three counts above and the set-difference
+      (basenames in `merge.md` source list minus basenames under `exports/`).
+      Write raw output, not prose.
+   2. *Cause in git* — `git log --oneline` around `cf45547`/`6eddadd`, and
+      `git log --all --oneline -- 'exports/**/export-Forest-0.ged'` (and one or
+      two other missing names) to see whether those files were ever committed and
+      then removed, never committed, or committed under a different path.
+   3. *Doc consistency* — grep `CLAUDE.md` and the report preambles for the
+      claim that `exports/` is *the* corpus / is committed, and note whether that
+      is contradicted by step 1. If it is, the DOC-FLAW verdict means correcting
+      that wording (and the "corpus is 98" claim in `1de6d0c`'s message), not
+      changing data.
+   4. *Verdict + write-up* — record REAL / DOC-FLAW / OTHER with the evidence in
+      `reports/audit-corpus-sync.md`, stating plainly that the numbers in steps
+      1–3 came from the **cloud environment**, and commit+push it so the PC can
+      read it.
+   5. *PC cross-check (Emma's machine — the half only the PC can do)* — run the
+      same three counts there. The unblock signal is the PC's numbers written
+      back into `reports/audit-corpus-sync.md`: if the PC shows ~94 GEDCOMs on
+      disk while `git ls-files` shows 57 committed, that confirms REAL/partial-
+      mirror and the remaining question becomes whether the extra ~37 *should* be
+      committed (so the cloud can reproduce the reports) or are intentionally
+      PC-only. If the PC also shows 57, the reports are stale/ahead of any real
+      corpus and the verdict shifts toward DOC-FLAW or OTHER.
+
 0.1 I have done a large amount of exports that definitely fleshed out the trees based off of your suggestions, although geni seems to have crapped out a bit, so it's probably gonna be tomorrow. Integrate these things when they arrive. I feel like they're probably going to be the last because I don't know what's going on with geni right now, but it's a bit difficult to get things to run. 
 
 0.2 As another thing, there were some profile merges and edits related to Japanese emperors, particularly Emperor Ojin, and I just want you to keep in mind that this is the case. You probably will be able to see it in the data somewhere. Not 100% sure you probably would, because there were duplicates of Emperor Ojin and some other people. 
