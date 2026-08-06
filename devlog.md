@@ -3078,3 +3078,92 @@ neighbourhood.
 Recorded as a standing caution in `queue.md`: if several more of the 18 come
 back complete, the honest conclusion is that this measures our tree's shape
 rather than Geni's gaps, and the effort belongs on `reports/density.md`.
+
+## 2026-08-06 — the Hata clan is a thread, not a clan
+
+Emma's second priority, in her words: "Import the Hata clan. Surprised it is not
+all there already." `reports/hata.md` measures what the tree actually holds.
+
+**27 people, and 26 of them are in a marriage family with no other spouse in
+it.** Not unnamed wives — no wives at all. 18 have no recorded sibling, 20 have
+one child or none, and there is a single branch point in the whole clan, 秦河勝
+Hata no Kawakatsu, who has two sons. What we hold is one father-to-son thread
+from Fusu 嬴姓 down to 行永, forking once.
+
+A clan of 27 with zero recorded marriages is the fingerprint of a blood-only
+walk. `Ancestors` and `BloodTree` follow parent links and step over every
+spouse; the depth survived and the entire lateral structure did not. This is the
+`CLAUDE.md` rule about reading the relation column before choosing a style,
+showing up as a hole rather than as advice.
+
+Two things the measurement had to be careful about:
+
+- **The kanji screen over-captures by 31.** Matching 秦 anywhere returns 58
+  people, of whom 31 carry 秦州成紀 or 秦州清水 — Chengji and Qingshui in
+  *Qinzhou*, a Chinese place in the surname field, nothing to do with 秦氏. The
+  count is stated with its screen attached rather than as a bare number.
+- **惟宗 (Koremune), the clan's own later name, is exactly two people in the
+  tree** — 具範 and 永厚, which are precisely the two `reports/path-hata.md`
+  already reported as held at steps 41–42. The eight between them and the 安達
+  line are all absent, and their Geni IDs are now listed. Meanwhile the tree
+  holds **51 島津 (Shimazu)**, who descend from Koremune. Both ends held, the
+  eight-person join missing.
+
+Two exports named, both **BLOCKED-ON-USER-ACTION**, both required to be
+`Forest`: Kawakatsu `6000000001952260956` for the width the blood walks
+discarded, and 惟宗広言 `6000000002934660014` to close the eight-step gap — where
+`Forest` is not a preference, since step 34→35 is "her husband" and a blood-only
+style walks past him.
+
+The prediction is committed with it: the first export should raise the count well
+past 27 while adding few generations. If it comes back barely moved, the
+explanation is not our sampling — it means Geni's 秦氏 is itself recorded as a
+patriline and there is no more clan to import.
+
+## 2026-08-06 — all 19 paths re-checked, and the headline moved for the wrong reason
+
+Finishes the item that was killed after 8 of 19 files. The remaining 8 ran in
+the background against the 98-export merge; `reports/paths.md` is rewritten from
+all of them.
+
+**1,692 of 1,826 steps held — 92.7% over 18 distinct chains.** Eighteen, not
+nineteen: `paths/jimmu.tsv` and
+`paths/emperor-jimmu-no-mikoto-711-585-kashihar.tsv` are byte-identical, the
+same chain saved twice under two names. Both stay on disk; deleting one would
+only invite it to be saved a third time.
+
+**The comparison that matters is not 89.2% → 92.7%.** That would credit eight
+exports with an improvement they did not make — the three Makeda chains are new
+to the table and two of them are complete, so adding them raises the percentage
+by themselves. On the same fifteen chains the old figure covered, the eight new
+exports moved it **1,095/1,227 → 1,100/1,227**. Five steps, all of them `意美
+Hata` going 24/55 → 29/55. Nothing else changed.
+
+The three chains saved before the crash are now in the table: Makeda →
+Enlil-nirari 225/225, Makeda → Matthew 219/219, Makeda → Marguerite 148/155.
+
+**The Carolingian block is unchanged** — the same ten people (Louis I the Pious
+down through the Alemannian dukes) still block the same five paths, still 50 of
+the 134 missing steps. `todo.md` § 8 carries Emma's explanation, which no
+measurement here could have produced: she reaches a Geni cluster through nearby
+contributions, and a region already densely covered by other contributors is one
+she cannot add a profile to, so she cannot make the foothold an export needs.
+
+## 2026-08-06 — two exports arrived; one was already held, one is the Hata clan
+
+Emma downloaded two. `export-geni.zip` is **byte-identical** to
+`exports/originals/export-Forest-6000000226989731860.ged`, the 02 Aug Japanese
+seed — not filed again. `genimerge.sources` drops byte-identical repeats in any
+case, so a second copy would buy nothing and would collide on a filename.
+
+The other is new and is filed as
+`exports/Hata/export-Forest-6000000210475738822.ged`: `Forest`, **4004 people**,
+seed 酒君/酒公 /Hata/, taken 15:13. Under `GENI_EXPORT_CAP` (4008), so
+`tests/test_seeds.py` has nothing to say about it. Its zip has its own explicit
+line in `.gitignore`, per the rule that a pattern would destroy the
+new-download signal.
+
+Neither of the two seeds `reports/hata.md` named, but a Hata person and the
+right style. It goes into the merge as the 99th export, and the measurement it
+settles is queued: **`reports/hata.md` predicts breadth appears; Emma predicts
+"it is just a line".** Both are on the record before the answer is.

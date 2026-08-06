@@ -15,7 +15,9 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
-0.000 I think the "FIRST ITEM" is finished but not sure. But I have a bit of an update to the agenda of this project. 
+0.000 The "FIRST ITEM" is finished — all 19 path files re-checked against the
+98-export merge, `reports/paths.md` rewritten, devlog entry dated 2026-08-06.
+Emma's update to the agenda of this project:
 
 Big priorities:
 
@@ -23,50 +25,40 @@ Big priorities:
 2. Import the Hata clan. Surprised it is not all there already.
 3. Ideally we want to connect all wikidata items with geni into this for our world tree
 
+   **Priority 2 is measured — `reports/hata.md`, 2026-08-06.** The tree holds
+   **27** Hata people
+   and **26 of them have no spouse recorded at all**; 18 have no sibling, 20 have
+   one child or none, and 秦河勝 Kawakatsu is the single branch point in the whole
+   clan. It is one father-to-son thread, which is what a blood-only walk leaves
+   behind. Both exports must be **`Forest`**:
 
-0.00 **FIRST ITEM AFTER RESTART — re-check every saved path against the current
-   merge and refresh `reports/paths.md`.** Started on 2026-08-06 and killed at
-   Emma's word after **8 of 19** files, because it is ~2 minutes per file and
-   there was no reason to hold a session open for it. Nothing is half-written —
-   each file writes its own `reports/path-<name>.md` and `.json`, all eight
-   parse, and all eight are committed. (The console showed only six: the loop
-   piped each run through `tail`, which buffers, so the last two finished
-   without ever printing.) Run it in the background and get on with something
-   else:
+   - **秦河勝 Hata no Kawakatsu `6000000001952260956`** — for the width, not the
+     depth. The depth is already held.
+   - **惟宗広言 `6000000002934660014`** — closes an eight-person gap (steps 33–40
+     of `reports/path-hata.md`, IDs listed in `reports/hata.md`) between the 安達
+     line and the two 惟宗 people we hold. `Forest` is required rather than
+     preferred: step 34→35 is *her husband*, and a blood-only style walks past
+     him. The tree also holds 51 島津, who descend from Koremune — both ends held
+     and this is the join.
 
-   ```
-   for f in paths/*.tsv; do python -m genimerge path "$f" --source out/merged.ged; done
-   ```
+   **An export arrived before either of those was taken.** Emma downloaded two
+   on 2026-08-06 15:12–15:18. One was a byte-identical re-download of
+   `exports/originals/export-Forest-6000000226989731860.ged` (the 02 Aug Japanese
+   seed) and was not filed again — `genimerge.sources` drops byte-identical
+   repeats anyway, and a second copy would only collide on a filename. The other
+   is new and is filed as
+   `exports/Hata/export-Forest-6000000210475738822.ged`: **`Forest`, 4004
+   people, seed 酒君/酒公 /Hata/** — a Hata person, though neither of the two
+   named above. Her expectation, in her words: *"likely definitively showing it
+   is just a line"*.
 
-   `out/merged.ged` must be current first — `python -m genimerge merge`, which
-   as of 2026-08-06 gives 202,433 people over 98 exports.
+   **Remaining work on this item is to answer that**, and it is not blocked:
+   re-run the merge, re-run the Hata measurement, and record whether the count
+   moved past 27 and whether any wives arrived. The prediction already committed
+   in `reports/hata.md` is that breadth appears; Emma's is that it does not. One
+   of them is about to be wrong, and the point of writing both down first is that
+   it will be legible which.
 
-   **Then rewrite the headline of `reports/paths.md`**, which still says
-   *1,095 of 1,227 steps (89.2%), measured 2026-08-05 over the 186,551-person
-   merge (90 exports)*. That is the stale number; the new one is the point of
-   the re-run. Results so far, against the six that completed, with the 90-export
-   figures beside them:
-
-   | chain | now | before |
-   | --- | ---: | ---: |
-   | daughter-of-the-king-of-assyria | 81/91 | 81/91 |
-   | eleazar-ii-samaritan-high-priest | 87/97 | 87/97 |
-   | emperor-jimmu-no-mikoto | 83/83 | 83/83 |
-   | gervasio-of-toledo | 42/42 | 42/42 |
-   | hata | **29/55** | 24/55 |
-   | jimmu | 83/83 | 83/83 |
-   | lady-palsu-of-the-jin-clan | 60/60 | 60/60 |
-   | madgacen | 67/88 | 67/88 |
-
-   Seven of the eight are unchanged, which is worth expecting rather than being
-   surprised by: a chain already held end to end cannot improve, and the eight
-   exports added since 2026-08-05 landed elsewhere. `hata` is the only gain.
-   The eleven still to run are where any further movement would be.
-
-   Add the three chains saved on 2026-08-06 to the table there as well —
-   `makeda-to-enlil-nirari` 225/225, `makeda-to-matthew` 219/219,
-   `makeda-to-marguerite` 148/155 — since `paths.md` lists fifteen and there are
-   now eighteen.
 
 0.0 **BLOCKED-ON-USER-ACTION — save the path pages for the 18 people in
    `reports/remote-people.md`.** The list is ranked by eccentricity, each row is
@@ -88,6 +80,37 @@ Big priorities:
    Poissy with six absent people behind her. If several more come back complete,
    the honest conclusion is that this instrument measures our tree's shape and
    not Geni's gaps, and the effort belongs on `reports/density.md` instead.
+
+0.05 **The P2600 overlap measurement — Emma's ask, 2026-08-06, verbatim: "do a
+   SPARQL on wikidata to find the overlap of our tree with the total number of
+   wikidata items with geni id property".** She said *after these specific
+   exports*, so it waits on the current batch landing; nothing else blocks it.
+   This is priority 3's first concrete measurement, and it is cheap in a way
+   full `reconcile` is not — it answers "how much of Wikidata's Geni-linked
+   population do we hold, and how much of ours does Wikidata know?" without
+   pulling a single label.
+
+   Three parts, and both denominators matter — the overlap is interesting from
+   each side and they will not be the same number:
+
+   1. **Wikidata's side, one query.**
+      `SELECT (COUNT(DISTINCT ?item) AS ?n) WHERE { ?item wdt:P2600 ?geni }` —
+      and the distinct *value* count too, since one item can carry several Geni
+      IDs and one Geni ID can be on several items. `genimerge.wikidata`'s
+      docstring says 514,567, dated and unverified; this re-measures it.
+   2. **Our side**, via the existing `wikidata.match_by_geni_id` — 202,433 IDs
+      at `BATCH_SIZE` 400 is ~510 cached SPARQL queries. Run it in the
+      background; the on-disk cache under `out/wikidata/cache/` means an
+      interrupted run resumes for free.
+   3. **Write `reports/wikidata-overlap.md`**: |ours ∩ theirs| against both
+      totals, plus the non-one-to-one rows (a Geni ID on two items, an item with
+      two Geni IDs), which are the ones a human has to look at and which
+      `match_by_geni_id` deliberately does not collapse.
+
+   Read it against `reports/paths.md` when it lands: the Carolingian block is
+   the region Wikidata models best and we hold worst, so the overlap should be
+   *low* exactly where the paths say we are thin. If it is not, one of the two
+   instruments is measuring something other than what it claims.
 
 0.1 I have done a large amount of exports that definitely fleshed out the trees based off of your suggestions, although geni seems to have crapped out a bit, so it's probably gonna be tomorrow. Integrate these things when they arrive. I feel like they're probably going to be the last because I don't know what's going on with geni right now, but it's a bit difficult to get things to run. 
 
