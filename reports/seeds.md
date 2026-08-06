@@ -12,10 +12,10 @@ Screened over a 3-hop ball in the `blood` style.
 
 |  | count |
 | --- | ---: |
-| people in the tree | 190081 |
-| with no parents recorded — the candidates | 39348 |
-| kept | 38354 |
-| rejected as saturated (openness < 5%) | 994 |
+| people in the tree | 202433 |
+| with no parents recorded — the candidates | 41903 |
+| kept | 40859 |
+| rejected as saturated (openness < 5%) | 1044 |
 
 Saturation rejects the seeds sitting inside a region already recorded several layers out, where an export would mostly return people we hold. It fires rarely, and that is worth saying rather than tuning: ranking by doorway count already keeps interior candidates away from the top, so the rejection is a floor under the list, not the thing that shapes it.
 
@@ -27,22 +27,22 @@ Chosen greedily on **newly covered** doorways, not by rank. Neighbours share a b
 
 | # | profile | geni id | ball | doorways | openness | adds | running |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1 | [長穀](https://www.geni.com/people/x/6000000009103594401) | `6000000009103594401` | 868 | 241 | 28% | 241 | 241 |
-| 2 | [Nyi Emas Ganda](https://www.geni.com/people/x/6000000006333362845) | `6000000006333362845` | 1338 | 202 | 15% | 202 | 443 |
-| 3 | [尊次](https://www.geni.com/people/x/6000000002213765130) | `6000000002213765130` | 572 | 144 | 25% | 138 | 581 |
-| 4 | [Mas Ayu Tejawati](https://www.geni.com/people/x/6000000019575627035) | `6000000019575627035` | 465 | 128 | 28% | 128 | 709 |
-| 5 | [조](https://www.geni.com/people/x/6000000192198432806) | `6000000192198432806` | 306 | 71 | 23% | 71 | 780 |
-| 6 | [BRA Wandaningsih](https://www.geni.com/people/x/6000000019752736370) | `6000000019752736370` | 286 | 69 | 24% | 69 | 849 |
-| 7 | [Mengli Agha](https://www.geni.com/people/x/6000000070262119979) | `6000000070262119979` | 151 | 68 | 45% | 68 | 917 |
-| 8 | [Gusti Kangjeng Ratu Kencono](https://www.geni.com/people/x/6000000027135679391) | `6000000027135679391` | 236 | 67 | 28% | 65 | 982 |
-| 9 | [Sally Willis](https://www.geni.com/people/x/6000000013603000030) | `6000000013603000030` | 328 | 62 | 19% | 62 | 1044 |
-| 10 | [R. Tanuwangsa Danoeningrat / Wiradadaha-9 Adp Soekapoera-4 (1837-1844)](https://www.geni.com/people/x/6000000030210063877) | `6000000030210063877` | 283 | 59 | 21% | 58 | 1102 |
+| 1 | [Nyi Emas Ganda](https://www.geni.com/people/x/6000000006333362845) | `6000000006333362845` | 1338 | 202 | 15% | 202 | 202 |
+| 2 | [Mas Ayu Tejawati](https://www.geni.com/people/x/6000000019575627035) | `6000000019575627035` | 465 | 128 | 28% | 128 | 330 |
+| 3 | [조](https://www.geni.com/people/x/6000000192198432806) | `6000000192198432806` | 306 | 71 | 23% | 71 | 401 |
+| 4 | [BRA Wandaningsih](https://www.geni.com/people/x/6000000019752736370) | `6000000019752736370` | 286 | 69 | 24% | 69 | 470 |
+| 5 | [Mengli Agha](https://www.geni.com/people/x/6000000070262119979) | `6000000070262119979` | 151 | 68 | 45% | 68 | 538 |
+| 6 | [Gusti Kangjeng Ratu Kencono](https://www.geni.com/people/x/6000000027135679391) | `6000000027135679391` | 236 | 67 | 28% | 65 | 603 |
+| 7 | [Sally Willis](https://www.geni.com/people/x/6000000013603000030) | `6000000013603000030` | 328 | 62 | 19% | 62 | 665 |
+| 8 | [R. Tanuwangsa Danoeningrat / Wiradadaha-9 Adp Soekapoera-4 (1837-1844)](https://www.geni.com/people/x/6000000030210063877) | `6000000030210063877` | 283 | 59 | 21% | 58 | 723 |
+| 9 | [Juan Gaspar González de Hermosillo](https://www.geni.com/people/x/6000000005768369599) | `6000000005768369599` | 385 | 57 | 15% | 57 | 780 |
+| 10 | [Shah Sultan Begum](https://www.geni.com/people/x/6000000070264828987) | `6000000070264828987` | 163 | 56 | 34% | 55 | 835 |
 
-Those 10 picks reach **1102** distinct doorways. The 10 highest-ranked seeds, taken without regard to overlap, reach **536** between them.
+Those 10 picks reach **835** distinct doorways. The 10 highest-ranked seeds, taken without regard to overlap, reach **297** between them.
 
 ## What the size limit does
 
-Walking the top seed as far as Geni would take it reaches **4008** people already in our data, filling the export at hop 8.
+Walking the top seed as far as Geni would take it reaches **4008** people already in our data, filling the export at hop 5.
 
 That number is not a prediction of waste. Geni's graph holds our people *and* the ones we are missing, and its walk reaches both at each hop — so a full export is a mix, and the doorway density near the seed is the best available proxy for how rich that mix is.
 
@@ -56,14 +56,14 @@ The ranking sorts on **absolute** doorway count, and doorways are counted inside
 
 |  | the pool | the picks |
 | --- | ---: | ---: |
-| candidates | 38354 | 10 |
-| ball over 100 | 2878 (7.5%) | 10 (100%) |
-| median ball | 31 | 317 |
-| median openness | 19% | 25% |
+| candidates | 40859 | 10 |
+| ball over 100 | 2786 (6.8%) | 10 (100%) |
+| median ball | 31 | 296 |
+| median openness | 19% | 24% |
 
-Ball size and doorway count correlate at **r = 0.86** (r² = 0.73), so neighbourhood size accounts for most of the ordering but not all of it — at any given ball size the doorway counts still spread. The sort is not simply ball size under another name.
+Ball size and doorway count correlate at **r = 0.84** (r² = 0.71), so neighbourhood size accounts for most of the ordering but not all of it — at any given ball size the doorway counts still spread. The sort is not simply ball size under another name.
 
-The selection effect is sharper than the correlation. Candidates with a ball over 100 are **7.5%** of the pool and **100%** of the picks, and the picks are *less* open than a typical candidate (25% against 19%). The most open candidate in the whole pool — 80% — ranks **24532 of 38354**.
+The selection effect is sharper than the correlation. Candidates with a ball over 100 are **6.8%** of the pool and **100%** of the picks, and the picks are *less* open than a typical candidate (24% against 19%). The most open candidate in the whole pool — 80% — ranks **26128 of 40859**.
 
 **What this does not show is that the ranking is wrong.** It establishes how the sort behaves — it prefers large, proportionally less open neighbourhoods — and nothing more. Whether an open neighbourhood actually yields a richer export is a claim about Geni's data, not about ours, and no measurement here can reach it: we cannot see what sits behind a doorway without exporting through it. The one export taken so far is consistent with openness mattering and is a single observation. Taking the next export from a top-ranked pick, where this file has already committed its prediction, is what would settle it.
 
@@ -80,12 +80,12 @@ Openness is the obvious repair for the size bias described above, and it does no
 
 That idea is cheap to test and the objection to it turned out to be wrong. A ranking on smallest ball sounds degenerate — as though it would return isolated fragments and broken records — but a doorway is in our tree, so it always has some recorded relative:
 
-- candidates with a ball of 5 or fewer: **391** of 38354 (1% — a shortlist, not a crowd)
+- candidates with a ball of 5 or fewer: **402** of 40859 (1% — a shortlist, not a crowd)
 - of those, with a ball of 2 or fewer: **0**
 
 So the shortlist is workable and holds no isolated records. That makes it worth *testing*, not worth adopting. The way to settle it is one export from a top-ranked pick and one from this shortlist, compared on how many new people each returns — at which point there are two observations instead of one.
 
-### The small-ball shortlist (10 of 391)
+### The small-ball shortlist (10 of 402)
 
 **This is the experiment's other arm, not a recommendation.** The sequence at the top of this report is still what the model proposes. These are here because the ordering that surfaces them is the only one that would have found the seed which worked, and a count on its own — *66 candidates* — is not something anyone can export from. Nothing about a short list of names makes the hypothesis behind it any better supported than it was: one observation. Take one export from the sequence above and one from here, and the comparison is worth more than either list.
 
@@ -110,7 +110,6 @@ By doorways in the screening ball. Useful for picking a seed by hand; the sequen
 
 | profile | geni id | ball | doorways | openness |
 | --- | ---: | ---: | ---: | ---: |
-| [長穀](https://www.geni.com/people/x/6000000009103594401) | `6000000009103594401` | 868 | 241 | 28% |
 | [Nyi Emas Ganda](https://www.geni.com/people/x/6000000006333362845) | `6000000006333362845` | 1338 | 202 | 15% |
 | [Nyi Emas Asmajawati](https://www.geni.com/people/x/6000000000342969283) | `6000000000342969283` | 1306 | 194 | 15% |
 | [Nyi Emas Lantri](https://www.geni.com/people/x/5649470244890023116) | `5649470244890023116` | 1224 | 186 | 15% |
@@ -133,10 +132,7 @@ By doorways in the screening ball. Useful for picking a seed by hand; the sequen
 | [#31 Nyi Enoer](https://www.geni.com/people/x/6000000012537019631) | `6000000012537019631` | 1140 | 165 | 14% |
 | [NM Ikoek](https://www.geni.com/people/x/6000000012537022050) | `6000000012537022050` | 1140 | 165 | 14% |
 | [NM Naga](https://www.geni.com/people/x/6000000000460902434) | `6000000000460902434` | 1152 | 165 | 14% |
-| [尊次](https://www.geni.com/people/x/6000000002213765130) | `6000000002213765130` | 572 | 144 | 25% |
 | [Mas Ayu Tejawati](https://www.geni.com/people/x/6000000019575627035) | `6000000019575627035` | 465 | 128 | 28% |
-| [伊忠](https://www.geni.com/people/x/6000000001867724054) | `6000000001867724054` | 581 | 124 | 21% |
-| [長穀室](https://www.geni.com/people/x/6000000009103294033) | `6000000009103294033` | 493 | 123 | 25% |
 | [RAy Alimah](https://www.geni.com/people/x/6000000021861362426) | `6000000021861362426` | 360 | 103 | 29% |
 | [Bendoro Mas Ayu Sari](https://www.geni.com/people/x/6000000038485964915) | `6000000038485964915` | 326 | 99 | 30% |
 | [Bendoro Mas Ayu Gandasari](https://www.geni.com/people/x/6000000038485282251) | `6000000038485282251` | 331 | 99 | 30% |
@@ -150,6 +146,10 @@ By doorways in the screening ball. Useful for picking a seed by hand; the sequen
 | [Bendoro Mas Ayu Sawerdi](https://www.geni.com/people/x/6000000038483792131) | `6000000038483792131` | 316 | 98 | 31% |
 | [Bendoro Mas Ayu Wilopo](https://www.geni.com/people/x/6000000038484305979) | `6000000038484305979` | 316 | 98 | 31% |
 | [Bendoro Mas Ayu Asmorowati](https://www.geni.com/people/x/6000000038484393846) | `6000000038484393846` | 316 | 98 | 31% |
+| [Bendoro Mas Ayu Tisnawati](https://www.geni.com/people/x/6000000038485051412) | `6000000038485051412` | 316 | 98 | 31% |
+| [Bandara Mas Ayu Ratna Puryawati](https://www.geni.com/people/x/6000000038485221222) | `6000000038485221222` | 316 | 98 | 31% |
+| [Bendoro Mas Ayu Pakuwati](https://www.geni.com/people/x/6000000038485439549) | `6000000038485439549` | 316 | 98 | 31% |
+| [Bendoro Mas Ayu Karnokowati](https://www.geni.com/people/x/6000000038485580092) | `6000000038485580092` | 316 | 98 | 31% |
 
 ## What this cannot tell you
 

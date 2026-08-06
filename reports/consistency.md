@@ -13,15 +13,15 @@ It is not only tidiness. `genimerge crosscheck` proposes P569 and P570 statement
 
 | | count |
 | --- | ---: |
-| people in the tree | 190081 |
-| of those, carrying any year | 98868 |
-| **impossible** — cannot be true | **3003** |
-| **implausible** — could be, probably is not | **1861** |
+| people in the tree | 202433 |
+| of those, carrying any year | 107339 |
+| **impossible** — cannot be true | **3189** |
+| **implausible** — could be, probably is not | **1966** |
 
 A child born within a year of its father's death is ordinary and is **not** reported. There is no such allowance on the mother's side, where a birth after death is not possible at all — counting the two together would invent defects and slander real births.
 
 
-## Impossible (3003)
+## Impossible (3189)
 
 Every one of these is an error somewhere — in a date, or in a link between two people who are not really parent and child.
 
@@ -130,7 +130,7 @@ Showing the first 100.
 | [Menkaure Khet](https://www.geni.com/people/x/6000000004869097034) | born -2620, before their father Khafre was born in -2560 | [Khafre](https://www.geni.com/people/x/6000000003645877925) |
 | [Olympias](https://www.geni.com/people/x/6000000011470741649) | born -268, after their father Pyrrhus died in -272 | [Pyrrhus](https://www.geni.com/people/x/6000000002187720008) |
 
-## Implausible (1861)
+## Implausible (1966)
 
 A parent under 12, or a lifespan over 120 years. Some of these will be correct; they are here for a human to judge, not to be taken as defects.
 
@@ -245,15 +245,15 @@ The merge guarantees one record per Geni **profile**, which is not one record pe
 
 | | groups |
 | --- | ---: |
-| **likely** — same name, same parents, same birth year | **102** |
-| **possible** — same name and year, parents differ or unknown | **1495** |
-| excluded as reused names — see below | 572 |
+| **likely** — same name, same parents, same birth year | **104** |
+| **possible** — same name and year, parents differ or unknown | **1607** |
+| excluded as reused names — see below | 613 |
 
-**572 groups share a name and both parents but were born in different years, and are deliberately not listed.** In these families a dead child's name was routinely given to the next child, so those are two real siblings. Matching on name and parents alone would return them all as duplicates and be wrong about nearly every one — the exclusion is most of the work here, not an oversight.
+**613 groups share a name and both parents but were born in different years, and are deliberately not listed.** In these families a dead child's name was routinely given to the next child, so those are two real siblings. Matching on name and parents alone would return them all as duplicates and be wrong about nearly every one — the exclusion is most of the work here, not an oversight.
 
 **Nothing is merged, and nothing here should be.** Names are evidence for a human, never a join: this project keys on the Geni profile ID precisely because looser matching once produced a link to a stranger's profile. Merging two profiles is an edit on Geni, made by somebody who has opened both.
 
-### Likely (102)
+### Likely (104)
 
 Same name, same parents, same birth year. Short of siblings born in one year and given one name, these are one person recorded twice.
 
@@ -337,6 +337,8 @@ Showing the first 100.
 | 1600 | [Ruth Weeden](https://www.geni.com/people/x/6000000006728030767) · [Ruth Weeden](https://www.geni.com/people/x/6000000016781491930) |
 | 1797 | [Sarah Sweetland](https://www.geni.com/people/x/6000000197223694860) · [Sarah Sweetland](https://www.geni.com/people/x/6000000197223765832) |
 | 1734 | [Silvanus Whitmarsh](https://www.geni.com/people/x/6000000172654473991) · [Silvanus Whitmarsh](https://www.geni.com/people/x/6000000172654474052) |
+| 1755 | [Tachibana](https://www.geni.com/people/x/6000000193223934827) · [Tachibana](https://www.geni.com/people/x/6000000193224069830) |
+| 1720 | [? Tachibana](https://www.geni.com/people/x/6000000193224200841) · [Tachibana](https://www.geni.com/people/x/6000000193224248842) |
 | 1728 | [Thomas Tiffany](https://www.geni.com/people/x/6000000150832594321) · [Thomas Tiffany](https://www.geni.com/people/x/6000000176035941917) |
 | 1859 | [William Henry](https://www.geni.com/people/x/6000000182729034862) · [William Henry](https://www.geni.com/people/x/6000000192842281846) |
 | 1417 | [간 김](https://www.geni.com/people/x/6000000183073326905) · [간 김](https://www.geni.com/people/x/6000000183688179842) |
@@ -359,10 +361,8 @@ Showing the first 100.
 | 1391 | [자신 윤](https://www.geni.com/people/x/6000000183041815958) · [자신 윤](https://www.geni.com/people/x/6000000183110176958) |
 | 1439 | [홍](https://www.geni.com/people/x/6000000183074788838) · [홍](https://www.geni.com/people/x/6000000183088933844) |
 | 1390 | [환 남](https://www.geni.com/people/x/6000000183041763882) · [환 남](https://www.geni.com/people/x/6000000183688584832) |
-| 890 | [保忠](https://www.geni.com/people/x/6000000010702765665) · [保忠](https://www.geni.com/people/x/6000000012053060814) |
-| 627 | [彭城](https://www.geni.com/people/x/6000000057677182833) · [彭城](https://www.geni.com/people/x/6000000075346122988) |
 
-### Possible (1495)
+### Possible (1607)
 
 Same name and birth year, but the parents differ or are not recorded. Could as easily be cousins named for the same grandparent — worth opening, not worth assuming.
 
@@ -416,6 +416,7 @@ Showing the first 100.
 | 1400 | [Vasco](https://www.geni.com/people/x/6000000001818405533) · [Vasco](https://www.geni.com/people/x/6000000010168529552) · [Vasco](https://www.geni.com/people/x/6000000015595174054) · [Vasco](https://www.geni.com/people/x/6000000015822190114) · [Vasco](https://www.geni.com/people/x/6000000017632165068) · [Vasco](https://www.geni.com/people/x/6000000226469278832) |
 | 1380 | [이](https://www.geni.com/people/x/6000000183042035241) · [이](https://www.geni.com/people/x/6000000183111329009) · [이](https://www.geni.com/people/x/6000000183165992186) · [이](https://www.geni.com/people/x/6000000183710057881) · [이](https://www.geni.com/people/x/6000000192198118710) · [이](https://www.geni.com/people/x/6000000194691025555) |
 | 1500 | [Ana](https://www.geni.com/people/x/6000000014864524590) · [Ana](https://www.geni.com/people/x/6000000018202677722) · [Ana](https://www.geni.com/people/x/6000000042539975131) · [Ana](https://www.geni.com/people/x/6000000072982800935) · [Ana](https://www.geni.com/people/x/6000000076400043014) |
+| 1620 | [Anders](https://www.geni.com/people/x/6000000003561503312) · [Anders](https://www.geni.com/people/x/6000000004111549546) · [Anders](https://www.geni.com/people/x/6000000004129851193) · [Anders](https://www.geni.com/people/x/6000000016445886839) · [Anders](https://www.geni.com/people/x/6000000018445496014) |
 | 1530 | [António](https://www.geni.com/people/x/6000000016265100526) · [Antonio](https://www.geni.com/people/x/6000000021089298218) · [António](https://www.geni.com/people/x/6000000022279713575) · [António](https://www.geni.com/people/x/6000000024599460307) · [António](https://www.geni.com/people/x/6000000209623829887) |
 | 1475 | [Diego](https://www.geni.com/people/x/6000000008796537021) · [Diego](https://www.geni.com/people/x/6000000021342373587) · [Diego](https://www.geni.com/people/x/6000000080874279055) · [Diego](https://www.geni.com/people/x/6000000081190332933) · [Diego](https://www.geni.com/people/x/6000000081294103445) |
 | 1400 | [Diogo](https://www.geni.com/people/x/6000000001818306930) · [Diogo](https://www.geni.com/people/x/6000000005067396783) · [Diogo](https://www.geni.com/people/x/6000000014487078654) · [Diogo](https://www.geni.com/people/x/6000000016266748007) · [Diogo](https://www.geni.com/people/x/6000000016435898573) |
@@ -440,6 +441,7 @@ Showing the first 100.
 | 1420 | [Maria](https://www.geni.com/people/x/5654692843460057188) · [Maria](https://www.geni.com/people/x/6000000003299965369) · [María](https://www.geni.com/people/x/6000000006240097504) · [Maria](https://www.geni.com/people/x/6000000020404873013) · [Maria](https://www.geni.com/people/x/6000000041453143334) |
 | 1560 | [Maria](https://www.geni.com/people/x/6000000001500799844) · [María](https://www.geni.com/people/x/6000000007305676249) · [Maria](https://www.geni.com/people/x/6000000020542855170) · [Maria](https://www.geni.com/people/x/6000000022499336141) · [Maria](https://www.geni.com/people/x/6000000204534726764) |
 | 1540 | [María](https://www.geni.com/people/x/6000000014971213574) · [Maria](https://www.geni.com/people/x/6000000015325644573) · [Maria](https://www.geni.com/people/x/6000000023996806956) · [María](https://www.geni.com/people/x/6000000049537603972) · [Maria](https://www.geni.com/people/x/6000000194088343824) |
+| 1600 | [NN](https://www.geni.com/people/x/6000000003232718460) · [NN](https://www.geni.com/people/x/6000000011812526318) · [NN](https://www.geni.com/people/x/6000000017535915136) · [NN](https://www.geni.com/people/x/6000000039736077482) · [NN](https://www.geni.com/people/x/6000000207876557821) |
 | 1390 | [Pedro](https://www.geni.com/people/x/6000000000604555164) · [Pedro](https://www.geni.com/people/x/6000000009669016249) · [Pedro](https://www.geni.com/people/x/6000000014795356762) · [Pedro](https://www.geni.com/people/x/6000000015850071485) · [Pedro](https://www.geni.com/people/x/6000000017817942896) |
 | 1440 | [Pedro](https://www.geni.com/people/x/6000000001435397270) · [Pedro](https://www.geni.com/people/x/6000000006204327035) · [Pedro](https://www.geni.com/people/x/6000000012996751262) · [Pedro](https://www.geni.com/people/x/6000000015191640192) · [Pedro](https://www.geni.com/people/x/6000000016168761612) |
 | 1425 | [Pedro](https://www.geni.com/people/x/6000000003056498274) · [Pedro](https://www.geni.com/people/x/6000000010182150159) · [Pedro](https://www.geni.com/people/x/6000000016060355476) · [Pedro](https://www.geni.com/people/x/6000000016433462790) · [Pedro](https://www.geni.com/people/x/6000000080092977870) |
@@ -468,5 +470,3 @@ Showing the first 100.
 | 1460 | [Diogo](https://www.geni.com/people/x/6000000012733541523) · [Diogo](https://www.geni.com/people/x/6000000014464901197) · [Diogo](https://www.geni.com/people/x/6000000016060580662) · [Diogo](https://www.geni.com/people/x/6000000020389753953) |
 | 1470 | [Diogo](https://www.geni.com/people/x/6000000014776940259) · [Diogo](https://www.geni.com/people/x/6000000014994805957) · [Diogo](https://www.geni.com/people/x/6000000016408077090) · [Diogo](https://www.geni.com/people/x/6000000135822907943) |
 | 1430 | [Diogo](https://www.geni.com/people/x/6000000014842170470) · [Diogo](https://www.geni.com/people/x/6000000015551772722) · [Diogo](https://www.geni.com/people/x/6000000022083460768) · [Diogo](https://www.geni.com/people/x/6000000051090497083) |
-| 1500 | [Diogo](https://www.geni.com/people/x/6000000014875611324) · [Diogo](https://www.geni.com/people/x/6000000016151551602) · [Diogo](https://www.geni.com/people/x/6000000220095538840) · [Diogo](https://www.geni.com/people/x/6000000224072375937) |
-| 1455 | [Diogo](https://www.geni.com/people/x/6000000016070698658) · [Diogo](https://www.geni.com/people/x/6000000040910344942) · [Diogo](https://www.geni.com/people/x/6000000073846152495) · [Diogo](https://www.geni.com/people/x/6000000182651062821) |
