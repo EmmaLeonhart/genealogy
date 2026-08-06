@@ -15,6 +15,14 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
+0.000 I think the "FIRST ITEM" is finished but not sure. But I have a bit of an update to the agenda of this project. 
+
+Big priorities:
+
+1. Algorithmically finding the most remote individuals and then connecting all of them. Earlier one was random individuals which is not helpful, but that did not disprove our hypothesis on shortest path discovering new communities, we just chose things that were pretty central
+2. Import the Hata clan. Surprised it is not all there already.
+3. Ideally we want to connect all wikidata items with geni into this for our world tree
+
 
 0.00 **FIRST ITEM AFTER RESTART — re-check every saved path against the current
    merge and refresh `reports/paths.md`.** Started on 2026-08-06 and killed at
