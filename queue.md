@@ -54,6 +54,27 @@ Big priorities:
    not a clan.** Counting Hata-named people implied a population Geni does not
    record; the measurement that answered it used no names at all.
 
+0.0 **BLOCKED-ON-USER-ACTION — save the path pages for the 18 people in
+   `reports/remote-people.md`.** The list is ranked by eccentricity, each row is
+   provably 77+ hops from every other row, and each carries a one-click Geni
+   path URL in blood and in-law form. `out/remote-people.html` is the page to
+   work through; re-open it with
+   `powershell Start-Process out\remote-people.html`. Unblock signal is a new
+   `.html` under `geni_pages/`, then for each one:
+
+   ```
+   python -m genimerge path-from-html "geni_pages/<saved>.html" -o paths/<name>.tsv
+   python -m genimerge path paths/<name>.tsv --source out/merged.ged
+   ```
+
+   **Read the first three results before saving many.** Of the chains saved on
+   2026-08-06, Makeda→Enlil-nirari held 225 of 225 and Makeda→Matthew 219 of
+   219 — the prediction that a long in-tree distance means a missing community
+   was wrong for both. Only Makeda→Marguerite paid, stopping at Mahaut de
+   Poissy with six absent people behind her. If several more come back complete,
+   the honest conclusion is that this instrument measures our tree's shape and
+   not Geni's gaps, and the effort belongs on `reports/density.md` instead.
+
 0.05 **The P2600 overlap is measured — `reports/wikidata-overlap.md`,
    2026-08-06.** Emma's ask, answered: **9,026 in both — 4.44% of our tree,
    1.75% of Wikidata's 516,913 Geni-linked IDs.** 507,859 people have a Geni

@@ -3296,3 +3296,28 @@ impossible dates … re-measured 2026-08-02 over the five-export merge".
 exports. It is now not restated at all — the entry points at the report, which
 is the rule `todo.md` § 3a already adopted for `reports/frontier.md` after the
 same thing happened there. A count copied into prose is checked by nothing.
+
+## 2026-08-06 — a queue item was deleted by accident and restored
+
+Recorded because it is a process failure, not a typo. Rewriting the priority-2
+block in `queue.md` was done with a Python index-to-index string replacement,
+`s[:s.index(start)] + new + s[s.index(end):]`. The `end` anchor was chosen as
+the *next* item I could name — and item **0.0**, "save the path pages for the 18
+people in `reports/remote-people.md`", sat between the two. It went into the
+replaced span and vanished, silently, in commit `3304434`.
+
+Caught by the status-report tick listing the queue's items and noticing 0.0 was
+absent from a file `origin/main` still had it in. Restored verbatim from
+`git show 3304434^:queue.md`, with an assertion that it was not already present
+so a re-run could not duplicate it.
+
+**What made it silent is the method, not the mistake.** An index-to-index splice
+deletes everything between two anchors whether or not the author knows what is
+there. The editing tools fail loudly on a non-unique or non-matching string;
+this does not. Two of the three surgeries on `queue.md` today used the splice
+because the replaced block was long — the reason it looked attractive is exactly
+the reason it was dangerous.
+
+Nothing else was lost: items 1, 2, 3, 6 and 7 were checked individually against
+`origin/main`, and the two deletions in `cad4936` were intended and are
+described in their own entry.
