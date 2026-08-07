@@ -4075,5 +4075,5 @@ have no recorded descendant, and 52,196 people are candidates. The report covers
 generations-above view exists at all — and it is not a second clock, since depth
 measures how far *we* have traced upward.
 
-29 tests in `tests/test_descendants.py`, plus registration and an end-to-end
+30 tests in `tests/test_descendants.py`, plus registration and an end-to-end
 check in `tests/test_cli.py`.
