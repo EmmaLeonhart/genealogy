@@ -89,6 +89,7 @@ COMMANDS = [
     "inventory",
     "merge",
     "export",
+    "overlap",
     "reconcile",
     "expand",
     "frontier",
@@ -103,6 +104,7 @@ COMMANDS = [
     "density",
     "distant",
     "remote",
+    "connectors",
     "path",
     "path-from-html",
 ]

@@ -12,6 +12,7 @@ from dataclasses import dataclass
 from datetime import date
 
 from . import (
+    connectors,
     consistency,
     coverage,
     crosscheck,
@@ -471,6 +472,67 @@ def _cmd_distant(args: argparse.Namespace) -> int:
         )
     else:
         print("no usable pairs found")
+    return 0
+
+
+#: Where the generated relationship paths live. A sibling of `reports/` rather
+#: than inside it, because a path file is an *input* — it comes out of a saved
+#: Geni page and is the only evidence here originating outside our own exports.
+PATHS_DIR = REPO_ROOT / "paths"
+
+
+def _cmd_connectors(args: argparse.Namespace) -> int:
+    ws = Workspace.from_args(args)
+    directory = args.paths_dir or PATHS_DIR
+    files = [Path(p) for p in args.paths] or sorted(Path(directory).glob("*.tsv"))
+    if not files:
+        print(f"no path files given and none found under {directory}", file=sys.stderr)
+        return 1
+
+    tree = _load_tree(args.source, ws)
+    clusters, reports = connectors.collect(tree, files)
+
+    output = args.output or (ws.reports / "connectors.md")
+    _write(output, connectors.render_markdown(clusters, reports, len(tree.people)))
+    page = ws.out / "connectors.html"
+    _write(page, connectors.render_html(clusters, reports, len(tree.people)))
+    print(f"wrote {output}")
+    print(f"wrote {page}")
+
+    # The per-path reports come free: `collect` has already checked every path
+    # against this tree, and a second `genimerge path` run would pay the whole
+    # cost of loading the merge again for each one.
+    if args.write_paths:
+        for name, report in reports.items():
+            md = _write(
+                ws.reports / f"path-{name}.md",
+                paths_mod.render_markdown(report, f"Relationship path: {name}"),
+            )
+            _write(
+                ws.reports / f"path-{name}.json",
+                json.dumps(paths_mod.to_json(report), ensure_ascii=False, indent=2) + "\n",
+            )
+            print(f"wrote {md} and its .json")
+
+    steps = sum(len(r.results) for r in reports.values())
+    held = sum(len(r.held) for r in reports.values())
+    complete = sum(1 for r in reports.values() if not r.absent)
+    print(
+        f"{len(reports)} paths, {held} of {steps} steps held "
+        f"({held / steps:.1%}); {complete} complete end to end"
+        if steps
+        else f"{len(reports)} paths, no steps"
+    )
+    print(
+        f"{sum(len(c.bridges) for c in clusters)} bridges in {len(clusters)} clusters"
+    )
+    for i, c in enumerate(clusters[:5], 1):
+        door = c.doorways[0] if c.doorways else None
+        where = f"{door.step.name} {door.step.geni_id}" if door else "(path starts absent)"
+        print(
+            f"  {i}. {c.slots} slots, {len(c.people)} people, "
+            f"{len(c.path_names)} path(s) — seed on {where} [{c.style}]"
+        )
     return 0
 
 
@@ -1139,6 +1201,33 @@ def build_parser() -> argparse.ArgumentParser:
     )
     p_rem.set_defaults(func=_cmd_remote)
 
+    p_con = sub.add_parser(
+        "connectors",
+        help="the missing people that block our relationship paths, ranked by payoff",
+        description=(
+            "Checks every path file at once and groups the missing people into "
+            "bridges — runs of consecutive absent steps, each with the doorway "
+            "to seed an export on. Bridges sharing a person are one cluster, so "
+            "a ten-person gap that blocks five paths outranks a fifty-person "
+            "gap private to one. Writes reports/connectors.md and "
+            "out/connectors.html."
+        ),
+    )
+    p_con.add_argument("paths", nargs="*", help="path .tsv files (default: every one under paths/)")
+    p_con.add_argument("--source", type=Path, default=None, help="a GEDCOM to read instead of merging")
+    p_con.add_argument(
+        "--paths-dir", type=Path, default=None, help=f"where to look for path files (default: {PATHS_DIR})"
+    )
+    p_con.add_argument(
+        "--write-paths",
+        action="store_true",
+        help="also refresh reports/path-<name>.md and .json, which this run computes anyway",
+    )
+    p_con.add_argument(
+        "-o", "--output", type=Path, default=None, help="default: <reports>/connectors.md"
+    )
+    p_con.set_defaults(func=_cmd_connectors)
+
     p_den = sub.add_parser(
         "density",
         help="find regions of the tree that few exports have reached",
@@ -1252,7 +1341,32 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
+def _survive_a_cp1252_console() -> None:
+    """Stop a non-ASCII name in a progress line from killing the command.
+
+    Every report this package writes is opened with an explicit UTF-8 encoding,
+    so the files are never at risk. The console is another matter: on Windows
+    `sys.stdout` defaults to the system codepage, and printing a summary line
+    naming 蘇瑗 or 'A'idhullah al-'Ashiri raises `UnicodeEncodeError` *after*
+    the work is done and the files are written — a command that succeeded
+    exiting non-zero over a progress message.
+
+    Seen for real on 2026-08-06, from `connectors`. Replacing unencodable
+    characters is right here because this is chatter, not data: the same names
+    are exact in `reports/` and in the HTML.
+    """
+    for stream in (sys.stdout, sys.stderr):
+        reconfigure = getattr(stream, "reconfigure", None)
+        if reconfigure is None:
+            continue
+        try:
+            reconfigure(errors="replace")
+        except (ValueError, OSError):  # a stream that cannot be reconfigured
+            pass
+
+
 def main(argv: list[str] | None = None) -> int:
+    _survive_a_cp1252_console()
     args = build_parser().parse_args(argv)
     return args.func(args)
 
