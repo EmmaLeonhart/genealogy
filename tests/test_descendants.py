@@ -434,6 +434,66 @@ def test_the_default_ceiling_leaves_real_counts_untouched():
 # ---------------------------------------------------------------- robustness
 
 
+def test_someone_with_a_child_in_a_cycle_is_never_reported_as_a_leaf():
+    """The bug that put a data artefact at the top of the largest band.
+
+    `_post_order` drops the edge back into a node still being expanded, so a
+    child inside a cycle is missing from `depth` when the parent is measured.
+    Falling through to 0 made a person with descent paths look childless — and
+    depth is ranked **ascending**, so they sorted above every real candidate.
+    """
+    # W -> X, and X <-> Y are each other's parent and child. X's depth is
+    # truncated by the cycle; it must not come out as zero, and neither may W's.
+    cyclic = """0 HEAD
+0 @I30@ INDI
+1 NAME W /Top/
+1 FAMS @F30@
+0 @I31@ INDI
+1 NAME X /Loop/
+1 FAMC @F30@
+1 FAMS @F31@
+1 FAMC @F32@
+0 @I32@ INDI
+1 NAME Y /Loop/
+1 FAMC @F31@
+1 FAMS @F32@
+0 @F30@ FAM
+1 HUSB @I30@
+1 CHIL @I31@
+0 @F31@ FAM
+1 HUSB @I31@
+1 CHIL @I32@
+0 @F32@ FAM
+1 HUSB @I32@
+1 CHIL @I31@
+0 TRLR
+"""
+    tree = _tree(cyclic)
+    depth = descendants.descendant_depth(tree)
+    paths, _ = descendants.descent_paths(tree)
+
+    # The invariant, stated once and checked for everyone: recorded children
+    # and zero depth cannot both be true.
+    for geni_id in tree.people:
+        assert (paths[geni_id] > 0) == (depth[geni_id] > 0), geni_id
+    assert depth["30"] >= 1
+
+
+def test_ancestor_depth_has_the_same_invariant():
+    """One line apart from the above, written the same day, same fall-through.
+
+    Compared against the *filtered* parent map, not ``Person.parent_ids``: a
+    pointer to a profile no export has reached is not an ancestor we can walk,
+    and treating it as one would make this assertion fail for a reason that has
+    nothing to do with the bug it pins.
+    """
+    tree = _tree(STALLED)
+    depth = frontier.ancestor_depth(tree)
+    parents = descendants.parent_map(tree)
+    for geni_id in tree.people:
+        assert bool(parents[geni_id]) == (depth[geni_id] > 0), geni_id
+
+
 def test_a_cycle_does_not_hang_the_walks():
     """Somebody entered twice and linked to themselves is ordinary here."""
     cyclic = """0 HEAD

@@ -39,17 +39,17 @@ for callers that want that.
 
 The change also made this module cheap. Distinct counting needs a set union per
 person, which does not scale at 257219 people — it wanted a bitmask per person
-(32 KB each, tens of gigabytes) or a walk abandoned above a cap, and this module
-carried the capped walk and its ``descendants_exact`` flag for exactly that
-reason. Emma's recursion is a plain post-order sum, O(V+E), exact at every size,
-with no cap and nothing to explain away.
+(32 KB each, tens of gigabytes) or a walk abandoned above a cap. This module
+carried that capped walk, a ``CAP`` constant, a ``--cap`` flag and a
+``descendants_exact`` flag purely to work around it; Emma's recursion is a plain
+post-order sum, O(V+E), exact at every size, and deleted all of them.
 
 **`stall` is the measure that serves the campaign.** For each person it is the
 number of years between the latest birth recorded anywhere at or below them and
 the present. A person born in 1400 whose line reaches 1430 and stops has been
 walked one generation; a person born in 1400 whose line reaches 1890 has been
-followed for fifteen. Both look identical to a descendant *count* if the second
-one's line is narrow. Stall separates them, and it is what makes a ranking
+followed for fifteen. Both look identical to a *count* if the second one's line
+is narrow. Stall separates them, and it is what makes a ranking
 inside a birth-year band mean "least followed" rather than "oldest".
 
 **Two axes, because neither covers everyone.** People are bucketed by recorded
@@ -207,13 +207,30 @@ def descendant_depth(tree: Tree) -> dict[str, int]:
     The mirror of :func:`genimerge.frontier.ancestor_depth`, and cycle-tolerant
     for the same reason: a person entered twice and linked to themselves is
     ordinary in a genealogy database, and a naive walk would not terminate.
+
+    **Anyone with a recorded child has depth at least 1, and getting that wrong
+    put a data artefact at the top of the report.** :func:`_post_order` drops an
+    edge back into a node still being expanded, which is the right call — a
+    person is not their own descendant — but it means a child inside a cycle is
+    simply missing from ``depth`` when the parent is processed. Reading that as
+    "no known depth" and falling through to ``0`` made a person with twelve
+    descent paths indistinguishable from a childless leaf, and since depth is
+    this module's primary ranking key **ascending**, every such person sorted
+    above every genuine candidate: the top pick of the `undated` band, 136953
+    people, was one of them.
+
+    So an unresolved child contributes ``0`` rather than nothing, and the ``1 +``
+    is applied whenever there is a child at all. A cycle now makes depth *low*,
+    which is a truncated measurement, rather than *zero*, which is a false one.
+    :func:`genimerge.frontier.ancestry_cycles` is what actually reports these
+    people as the defects they are.
     """
     children = _child_map(tree)
     depth: dict[str, int] = {}
 
     for node in _post_order(list(tree.people), children):
-        known = [depth[c] for c in children[node] if c in depth]
-        depth[node] = 1 + max(known) if known else 0
+        kids = children[node]
+        depth[node] = 1 + max((depth.get(c, 0) for c in kids), default=0) if kids else 0
 
     return depth
 
@@ -451,8 +468,9 @@ def candidates(
     covers the whole subtree including branches we never saw, so the ancestor is
     strictly the better seed. Checking parents alone is enough to keep only the
     topmost of a chain: a person's line strictly contains each child's, so
-    descendant counts rise monotonically upward and an ancestor above a
-    non-candidate parent cannot itself be small.
+    path counts rise strictly upward — a parent's is at least ``1 +`` their
+    child's — and an ancestor above a non-candidate parent cannot itself be
+    small.
 
     ``parents`` is accepted so a caller banding the same tree many times pays
     for the parent map once.
@@ -494,7 +512,7 @@ class Band:
     #: sorts bands into reading order; undated sorts last
     order: tuple[int, int]
     people: int
-    #: every line in the band with a nonzero descendant count
+    #: every line in the band with at least one descent path below it
     with_descendants: int
     #: candidates, best first, already trimmed to the report's per-band limit
     picks: tuple[Line, ...]
@@ -739,12 +757,13 @@ def render_markdown(
         "because the `Descendants` campaign is about time — the tree is biased "
         "towards ancient and medieval people and the goal is to reach the present.",
         "",
-        "**The signal is a descendant count that is small but not zero.** Nonzero "
-        "means the line demonstrably continues, so there is something below to "
-        "follow. Small means we have barely followed it: a person with three "
-        "recorded descendants either had three, or had three hundred and we walked "
-        "one step. People with *zero* recorded descendants are left out on purpose "
-        "— nothing in our data separates a childless person from an unexplored one.",
+        "**The signal is a descent-path count that is small but not zero.** "
+        "Nonzero means the line demonstrably continues, so there is something "
+        "below to follow. Small means we have barely followed it: a person with "
+        "three recorded paths either had three, or had three hundred and we "
+        "walked one step. People with *zero* recorded descendants are left out on "
+        "purpose — nothing in our data separates a childless person from an "
+        "unexplored one.",
         "",
         "**Ranking inside a band is by `generations followed`** — how far down "
         "the line we have actually walked. `1` means we know a person's children "
@@ -848,7 +867,17 @@ def render_markdown(
         "",
         "## What this does not say",
         "",
-        "The descendant counts measure **our** sampling, not Geni's content. A "
+        "**A person who is their own ancestor truncates every measure here.** "
+        "That is impossible in life and ordinary in a genealogy database — it "
+        "means one person exists under two profiles and the two got linked as "
+        "parent and child. The walks drop the edge back into a cycle, so such a "
+        "person's `generations followed` is a floor rather than a count. It used "
+        "to be reported as **zero**, which put these people at the top of every "
+        "band, the ranking being on fewest generations; they now truncate rather "
+        "than falsify. `reports/frontier.md` § cycles lists them as the defects "
+        "they are.",
+        "",
+        "The path counts measure **our** sampling, not Geni's content. A "
         "stalled line is one *we* stopped following; whether Geni holds a large "
         "descent below it is exactly the unknown an export resolves, and a line "
         "can also stop because it really did stop. Nothing here is inferred from "
