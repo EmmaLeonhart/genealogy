@@ -128,13 +128,45 @@ __all__ = [
 #: Do not read 4016 → 4020 as a step of four; that reading has been made twice
 #: here and falsified twice.
 #:
+#: **2026-08-06, 20:22-21:23 — twelve exports in one hour, and the number moves
+#: both ways inside it.** Ordered by the timestamp in their own `HEAD`:
+#: 4020 (`Ancestors`), 4024, 4028, 4032, 4032 (`BloodTree`), **4052**, 4040,
+#: **4056**, 4048, 4048, 4052, 4056 (`Descendants`).
+#:
+#: This is the first batch dense enough in time to see the shape, and it
+#: retires the reading that survived every earlier one. Up to here every
+#: movement could be told as *a ceiling that changes now and then and holds
+#: flat in between* — eleven exports at 3860, twenty-six at 4004, three at
+#: 4020. Within this hour it went 4052 → 4040 → 4056 → 4048, so it is **not a
+#: ceiling that holds between changes**. Consecutive exports minutes apart
+#: differ, and differ downwards as often as upwards.
+#:
+#: What that rules out, and what it does not:
+#:
+#: - **Not a per-account or per-day quota being raised.** Those would not fall
+#:   back within the hour.
+#: - **Still not per-style.** The `Ancestors` take is the lowest of the twelve
+#:   and the `Descendants` take ties the highest, with ten `Forest` exports
+#:   spanning the whole range in between.
+#: - **Not settled: what it actually tracks.** A per-export computed number
+#:   varying with the neighbourhood is the obvious candidate — Geni's own UI
+#:   displays a `Size` per export, which is how 4004 was seen directly — but
+#:   twelve values in one hour cannot separate "depends on the seed's
+#:   surroundings" from "depends on load" from "depends on something not
+#:   visible here at all". Recorded rather than concluded.
+#:
+#: **Do not encode the arithmetic.** Read as steps of four this batch looks
+#: tidy — every value is a multiple of four — and that reading has now been
+#: made and falsified three separate times in this docstring. Multiples of four
+#: with no consistent direction is a pattern in the *units*, not in the motion.
+#:
 #: Used only to bound the modelled ball in :func:`export_ball`, where being off
 #: by a few people out of ~4000 does not move a ranking.
 #: ``tests/test_seeds.py`` asserts this stays >= the largest export in the
 #: corpus, so the next export to exceed it fails loudly instead of silently
-#: modelling a ball that is too small. That is how 3840, 3844, 3856, 4008 and
-#: now 4020 were each caught.
-GENI_EXPORT_CAP = 4020
+#: modelling a ball that is too small. That is how 3840, 3844, 3856, 4008, 4020
+#: and now 4056 were each caught.
+GENI_EXPORT_CAP = 4056
 
 #: The step between reading this report and running an export.
 #:
