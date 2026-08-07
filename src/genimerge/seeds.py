@@ -190,7 +190,7 @@ __all__ = [
 #: landing on the same 4056 within twenty minutes, then three consecutive
 #: `Forest` takes each four higher than the last. Neither "it sits still" nor
 #: "it steps by four" survives both halves.
-GENI_EXPORT_CAP = 4072
+GENI_EXPORT_CAP = 4076
 
 #: The step between reading this report and running an export.
 #:

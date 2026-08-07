@@ -1,10 +1,8 @@
 # Relationship path: hata
 
-**51 of 55 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**55 of 55 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**The unbroken run stops at step 16, Simeon Merrill.** The next step, **Stephen Merrill**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
-
-**35 steps past the gap are held anyway** — Merrell Vories Hitotsuyanagi onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
+Every step is held: this path is walkable inside our own data.
 
 ## Steps
 
@@ -26,10 +24,10 @@
 | 14 | Mary Amy Merrell | her sister | [Mary Amy Saxton](https://www.geni.com/people/x/6000000041104512805) | id | 1 |
 | 15 | Hosea Merrell | her husband | [Hosea Merrell](https://www.geni.com/people/x/6000000041104512798) | id | 1 |
 | 16 | Simeon Merrill | his father | [Simeon](https://www.geni.com/people/x/6000000008427171641) | id | 1 |
-| 17 | Stephen Merrill | his brother | — | absent | — |
-| 18 | Erastus Merrell | his son | — | absent | — |
-| 19 | William H Merrell | his son | — | absent | — |
-| 20 | Julia Eugenia Vories | his daughter | — | absent | — |
+| 17 | Stephen Merrill | his brother | [Stephen Merrill](https://www.geni.com/people/x/6000000008427052635) | id | 1 |
+| 18 | Erastus Merrell | his son | [Erastus](https://www.geni.com/people/x/6000000031810467100) | id | 1 |
+| 19 | William H Merrell | his son | [William H Merrell](https://www.geni.com/people/x/6000000006606130419) | id | 1 |
+| 20 | Julia Eugenia Vories | his daughter | [Julia Eugenia Merrell](https://www.geni.com/people/x/6000000031810165248) | id | 1 |
 | 21 | Merrell Vories Hitotsuyanagi | her son | [William Merrell](https://www.geni.com/people/x/6000000031810377852) | id | 1 |
 | 22 | Makiko Hitotsuyanagi | his wife | [Makiko](https://www.geni.com/people/x/6000000031810347895) | id | 1 |
 | 23 | Hitotsuyanagi EIko | her mother | [Eiko](https://www.geni.com/people/x/6000000031937667550) | id | 1 |

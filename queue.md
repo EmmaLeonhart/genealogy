@@ -40,22 +40,23 @@ Big priorities:
    The export paid on the other target anyway: 惟宗 2 → 8, 島津 51 → 92, and
    `reports/path-hata.md` **29/55 → 39/55**, closing all eight of steps 33–40.
 
-   **What is left of that path is not Japanese and is not clan work** — the
-   Merrill / Merrell / Vories families in America. **Down to 4 steps, 17–20,
-   re-measured over the 127-export merge**; it was sixteen, then eleven, then
-   five. **BLOCKED-ON-USER-ACTION**, unblock signal is a new `.ged` under
-   `exports/`; seed **Simeon Merrill `6000000008427171641`**, style `Forest`
-   because step 17 is his *brother* and a blood-only walk stops there.
+   **That path is now 55 of 55, closed 2026-08-06 night.** The last four --
+   Stephen Merrill and three descendants, steps 17-20 -- came in on a
+   `Descendants` export seeded on `6000000227087382828`. **The whole path corpus
+   is 3 464 of 3 464 steps, 26 of 26 paths complete, zero bridges.**
 
-   **This is the only gap left in the entire path corpus** — 3 460 of 3 464
-   steps held, 25 of 26 paths complete, one bridge.
+   Emma's reading before that export was that the area was "an extremely dense
+   modern group even more impenetrable than the ancient ones", and she was one
+   export from giving up on it. It went through. Worth keeping as a caution in
+   both directions: density is a real obstacle to *seeding* -- `todo.md` item 8
+   explains why, she cannot add a profile where other contributors are thick on
+   the ground -- but it did not stop this one, and neither of us predicted that.
 
    **Never call this "the Hata gap".** The path is named `hata` for its
-   *endpoint*; all 13 steps on it named Hata are held, and so are all 35 steps
-   from 21 to 55, the whole Japanese side. Reporting it by path name led Emma to
+   *endpoint*; every step on it named Hata was held throughout, as was the whole
+   Japanese side from step 21 to 55. Reporting the gap by path name led Emma to
    believe her Hata export had failed when it had not. Name the people who are
-   missing, never the path they sit on. `out/hata-missing.html` shows all 55
-   steps marked held or absent.
+   missing, never the path they sit on.
 
    Also worth recording as a method note rather than a task: **a clan name is
    not a clan.** Counting Hata-named people implied a population Geni does not

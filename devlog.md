@@ -3730,3 +3730,32 @@ The lesson is the same one twice in one entry: **use the parser this repo
 already has.** `genimerge.dates` exists precisely because Geni's date grammar
 has traps, and the BC-minus-sign trap is documented in its own docstring as
 having gone unnoticed once before.
+
+## 2026-08-06 (night) — 3 464 of 3 464. Every relationship path is complete.
+
+Two more `Descendants` exports (130 GEDCOMs), merge **250 137 people**, 125 745
+families, 125 conflicts, 2 components. `GENI_EXPORT_CAP` 4072 → 4076.
+
+**The path corpus is closed: 26 of 26 paths, 3 464 of 3 464 steps, zero
+bridges.** Twelve hours ago it was 3 199 of 3 464 with 11 paths complete and
+gaps on fifteen of them.
+
+The last four were Stephen Merrill, Erastus Merrell, William H Merrell and Julia
+Eugenia Vories, steps 17-20 of `hata`, and they came in on a `Descendants`
+export seeded on `6000000227087382828`. Confirmed two ways: the path checker
+reads `hata` at 55 of 55, and each of the four profile IDs greps to a real
+`INDI` record in `out/merged.ged`.
+
+**Emma was one export from abandoning that stretch**, on the reading that it was
+"an extremely dense modern group even more impenetrable than the ancient ones".
+It went through. Both halves are worth keeping: density genuinely does obstruct
+*seeding* — `todo.md` item 8 records why, she cannot add a profile where other
+contributors are already thick on the ground — and it did not stop this one.
+Neither of us predicted the outcome, in either direction.
+
+**Tonight's arc, since the numbers moved a long way.** Corpus 103 → 130 GEDCOMs.
+Tree 203 323 → 250 137 people. Paths 92.1% → **100%**. Bridges 15 → 0. Along the
+way: a defect that reported people we hold as missing, including the account
+owner; a fifth export style; the export size bound explained by Emma as 4×
+profiles added; and the `connectors` report itself, which did not exist this
+morning.
