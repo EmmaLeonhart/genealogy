@@ -104,6 +104,7 @@ COMMANDS = [
     "crosscheck",
     "entity-resolution",
     "density",
+    "descendants",
     "distant",
     "remote",
     "doubles",
@@ -233,6 +234,18 @@ def test_frontier_writes_its_report(workspace):
 
     text = (workspace["reports"] / "frontier.md").read_text(encoding="utf-8")
     assert "# Expansion frontier" in text
+
+
+def test_descendants_writes_its_report_and_a_seed_list(workspace):
+    run(workspace, "merge")
+    assert run(workspace, "descendants", "--present", "2026") == 0
+
+    text = (workspace["reports"] / "descendants.md").read_text(encoding="utf-8")
+    assert "# Lines that stop early" in text
+    assert "## By period" in text
+    # `--present` is honoured, so the report is reproducible year to year.
+    assert "2026" in text
+    assert (workspace["out"] / "stalled-line-seeds.txt").exists()
 
 
 def test_seeds_writes_a_report_and_a_csv(workspace):

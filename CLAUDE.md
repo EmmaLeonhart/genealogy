@@ -222,6 +222,45 @@ serving this goal, and do not describe her `Descendants` takes as thin-region
 work. `Descendants` fans out downward, which is what makes it the instrument for
 reaching later generations.
 
+**`reports/descendants.md` is the report built for that campaign** — added
+2026-08-07 on the `geni-descendants` branch. `genimerge.descendants` ranks the
+**downward** edge the way `frontier` ranks the upward one, and buckets it by
+period so the ranking can be read one century at a time.
+
+- **The signal is a descendant count that is small but nonzero**, and both
+  halves carry weight. *Nonzero* means Geni recorded at least one child, so the
+  line demonstrably continues and there is something below to follow. *Small*
+  means we have barely followed it. A person with **zero** recorded descendants
+  is deliberately excluded: nothing in our data separates childless from
+  unexplored, which is the same discriminator `density` applies upward with its
+  doorway column.
+- **Rank on `generations followed` (`depth`), never on `stall`.** Stall — years
+  between the line's last recorded birth and now — was the first ranking and is
+  a trap: a person's own birth year is a floor on how far their line reaches, so
+  sorting a 100-year band by stall sorts it by birth year, and **every band's
+  top pick came out born in the band's first year**. That is where the band edge
+  fell, not a finding. Depth is available for dated and undated people alike and
+  does not move with the band. Stall stays as a column worth reading.
+- **Counting stops at `CAP` (200) and that is not an optimisation to remove.**
+  `frontier.descendant_counts` is exact for everyone by carrying each descendant
+  set as a bitmask — one bit per person per person, which was a kilobyte each at
+  8766 people and is 32 KB each at 257219. This module's whole question is
+  *small*, so it walks each line with a visited set, abandons it above the cap,
+  and prunes with the exact fact that **a person with an over-cap child is
+  over-cap too**. A line we gave up on carries `descendants_exact = False` and is
+  never a candidate — reading an abandoned count as zero would invent leaves.
+- **A candidate whose parent is also a candidate is dropped, per band.** An
+  export seeded on the ancestor covers the descendant's line plus branches off
+  it we never saw, so the ancestor is strictly the better seed and a six-person
+  line would otherwise be reported six times. Checking parents alone suffices,
+  because descendant counts rise strictly upward. Per band rather than
+  report-wide, so a band keeps its own best pick.
+- **Both axes are reported because neither covers everyone.** 53% of the tree
+  carries no birth year, and those people are invisible to the period view.
+  Generations-above ranks them — but it is **not a second clock**: it measures
+  how far *we* have traced upward, so an untraced person looks shallow whenever
+  they lived. No date is ever inferred.
+
 **Presence measures our sampling, never Geni's content.** A thin region is one
 *we* barely covered. Whether Geni holds more there is precisely the unknown an
 export resolves — reading it as "Geni has little here" is backwards. The doorway

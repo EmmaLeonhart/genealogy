@@ -4024,3 +4024,56 @@ to stop rather than to let it finish.
 User-Agent now carries contact@emmaleonhart.com, with Emma's say-so — Wikimedia
 asks for a contact and throttles harder without one, and 10,305 requests is the
 case that policy is written for.
+
+
+## 2026-08-07 (branch `geni-descendants`) — ranking lines that stop early
+
+New module `genimerge.descendants`, command `python -m genimerge descendants`,
+report `reports/descendants.md`, seed file `out/stalled-line-seeds.txt`.
+
+The downward counterpart to `frontier`. `frontier` ranks parentless people —
+where Geni knows an ancestor we do not. `density` ranks neighbourhoods few
+exports touched and knows nothing about dates. Neither serves the `Descendants`
+campaign, which is Emma's and is about **time**: the tree skews ancient and
+medieval, and the goal is the present.
+
+**The measure is a descendant count that is small but nonzero**, bucketed by
+birth-year band so it can be read one century at a time. Nonzero means the line
+demonstrably continues; small means we barely followed it. Zero is excluded on
+purpose — childless and unexplored look identical in our data.
+
+Three things went wrong on the way and are worth keeping:
+
+**Stall was the ranking and had to be demoted.** Stall is `present - reach`, and
+a person's own birth year is a floor on how far their line reaches, so ranking a
+100-year band by it sorted the band by birth year. Every band's top pick came
+out **born in the band's first year** — 1500, 1600, 1700, 1800, 1900 — which is
+where the band edge fell, not a finding. The primary key is now
+`generations followed`, which every person has and which does not move with the
+band. Stall stays as a column.
+
+**The exact descendant count does not scale to this tree.**
+`frontier.descendant_counts` carries each descendant set as a bitmask, one bit
+per person per person: a kilobyte each at the 8766 people its docstring was
+written for, 32 KB each at today's **257,219**, tens of gigabytes in total. This
+module walks each line with a visited set instead and abandons it above
+`CAP = 200`, pruning on the exact fact that a person with an over-cap child is
+over-cap too. An abandoned count is carried as `descendants_exact = False`, never
+as zero — reading it as zero would have invented leaves.
+
+**Nested candidates had to be collapsed.** A six-person stalled line was
+reported six times, once per member, with the bottom of the line ranked above
+its own ancestor. An export seeded on the ancestor covers the whole subtree plus
+branches we never saw, so the ancestor is strictly the better seed. Checking
+parents alone is enough — descendant counts rise strictly upward — and the
+collapse is per band, so a band keeps its own best pick rather than losing it to
+someone a century earlier.
+
+Against 134 exports merged to 257,219 people: 46.8% carry a birth year, 52.1%
+have no recorded descendant, and 52,196 people are candidates. The report covers
+50 periods plus an `undated` band of 136,953 people, which is why the
+generations-above view exists at all — and it is not a second clock, since depth
+measures how far *we* have traced upward.
+
+29 tests in `tests/test_descendants.py`, plus registration and an end-to-end
+check in `tests/test_cli.py`.

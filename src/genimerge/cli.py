@@ -18,6 +18,7 @@ from . import (
     coverage,
     crosscheck,
     density,
+    descendants as descendants_mod,
     distant,
     entities,
     frontier,
@@ -687,6 +688,63 @@ def _cmd_density(args: argparse.Namespace) -> int:
         print(
             f"largest thin region: {biggest.size} people, {biggest.parentless} doorways"
             + (f" — {biggest.sample[0]}" if biggest.sample else "")
+        )
+    return 0
+
+
+def _cmd_descendants(args: argparse.Namespace) -> int:
+    ws = Workspace.from_args(args)
+    tree = _load_tree(args.source, ws)
+    present = args.present or descendants_mod.present_year()
+
+    lines = descendants_mod.build_lines(tree, cap=args.cap)
+    parents = descendants_mod.parent_map(tree)
+    by_birth, by_generation = descendants_mod.bands(
+        lines,
+        present=present,
+        small=args.small,
+        width=args.band,
+        per_band=args.per_band,
+        min_stall=args.min_stall,
+        parents=parents,
+    )
+
+    output = args.output or (ws.reports / "descendants.md")
+    _write(
+        output,
+        descendants_mod.render_markdown(
+            tree, lines, by_birth, by_generation,
+            present=present, small=args.small, width=args.band,
+            min_stall=args.min_stall, per_band=args.per_band, cap=args.cap,
+        ),
+    )
+    seed_list = ws.out / "stalled-line-seeds.txt"
+    _write(seed_list, descendants_mod.render_seed_list(by_birth))
+
+    total = sum(band.total_candidates for band in by_birth)
+    print(f"wrote {output}")
+    print(
+        f"wrote {seed_list}: "
+        f"{sum(len(band.picks) for band in by_birth)} picks across "
+        f"{sum(1 for band in by_birth if band.picks)} periods"
+    )
+    print(
+        f"{total} of {len(tree.people)} people have 1-{args.small} recorded "
+        f"descendants and nobody above them in the same period who does"
+    )
+    # The most recent band with a pick, because that is what the campaign is
+    # aiming at — not the worst-ranked line anywhere, which is always ancient.
+    newest = max(
+        (b for b in by_birth if b.picks and not b.is_undated),
+        key=lambda b: b.order,
+        default=None,
+    )
+    if newest is not None:
+        pick = newest.picks[0]
+        print(
+            f"nearest the present: {pick.name or pick.geni_id} ({newest.label}), "
+            f"{pick.descendants} descendants over {pick.depth} generation(s), "
+            f"{pick.open_tips} open tip(s)"
         )
     return 0
 
@@ -1508,6 +1566,52 @@ def build_parser() -> argparse.ArgumentParser:
         "-o", "--output", type=Path, default=None, help="default: <reports>/density.md"
     )
     p_den.set_defaults(func=_cmd_density)
+
+    p_desc = sub.add_parser(
+        "descendants",
+        help="rank lines that stop early, by period, to reach modern times",
+        description=(
+            "Ranks people whose recorded descendant line is small but not zero — "
+            "the line demonstrably continues and we have barely followed it — "
+            "bucketed by birth-year period and by generations of recorded "
+            "ancestry. The downward counterpart to `frontier`."
+        ),
+    )
+    p_desc.add_argument("--source", type=Path, default=None, help="a GEDCOM to read instead of merging")
+    p_desc.add_argument(
+        "--small",
+        type=int,
+        default=descendants_mod.SMALL,
+        help=f"most descendants a line may hold and still count as barely followed (default: {descendants_mod.SMALL})",
+    )
+    p_desc.add_argument(
+        "--band", type=int, default=descendants_mod.BAND_YEARS, help="width of a birth-year band in years"
+    )
+    p_desc.add_argument(
+        "--per-band", type=int, default=5, help="how many candidates to show per band"
+    )
+    p_desc.add_argument(
+        "--min-stall",
+        type=int,
+        default=0,
+        help="drop lines already followed to within this many years of now (default: 0, off)",
+    )
+    p_desc.add_argument(
+        "--cap",
+        type=int,
+        default=descendants_mod.CAP,
+        help=f"stop counting a line above this size (default: {descendants_mod.CAP})",
+    )
+    p_desc.add_argument(
+        "--present",
+        type=int,
+        default=None,
+        help="the year to measure stall against (default: this year)",
+    )
+    p_desc.add_argument(
+        "-o", "--output", type=Path, default=None, help="default: <reports>/descendants.md"
+    )
+    p_desc.set_defaults(func=_cmd_descendants)
 
     p_er = sub.add_parser(
         "entity-resolution",

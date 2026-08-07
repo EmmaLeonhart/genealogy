@@ -15,6 +15,27 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
+0.00A **Validate `reports/descendants.md` against an outcome.** The report is
+built and running (branch `geni-descendants`, devlog 2026-08-07), but like
+`seeds.md` before it, **it has never been checked against what an export
+actually did**. `density.md` earned its place in `CLAUDE.md` by being measured
+from real exports; this one is so far only reasoned.
+
+The check: take a `Descendants` export seeded on a top pick from a **modern**
+band — the 1800–1899 and 1900–1999 rows are the campaign target — and measure
+what it added. The prediction the report is making is specific and falsifiable:
+a person with N recorded children and no recorded grandchildren has a real
+descent below them, so the export should return a ball reaching materially later
+than the seed's own `line reaches` value. If it comes back with the same people
+plus nothing, the "small but nonzero" premise is wrong for modern profiles and
+the module needs to say so.
+
+**BLOCKED-ON-USER-ACTION** — taking a Geni export is Emma's to do; nothing in
+this repo can run one. Unblock signal: a new `export-Descendants-*.ged` landing
+under `exports/` seeded on one of the report's picks. Re-run
+`python -m genimerge merge` then `python -m genimerge descendants` and compare
+the seed's row before and after.
+
 0.000 The "FIRST ITEM" is finished — all 19 path files re-checked against the
 98-export merge, `reports/paths.md` rewritten, devlog entry dated 2026-08-06.
 Emma's update to the agenda of this project:
