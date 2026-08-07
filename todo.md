@@ -206,6 +206,37 @@ v1 to start) that creates them with everything the genealogy actually supports:
 Creation must be **ordered by dependency** so parents exist before children are
 linked to them, and must be re-runnable without creating duplicates.
 
+**What the profiles can actually feed this — `reports/profile-names.md`,
+2026-08-07.** `genimerge profile-names` measures, per person over the whole
+merge, how often each field a statement could carry is present. The pipeline's
+shape follows from it: **sex (P21, 99.9%) and a given name (P735, 92.1%) are the
+workhorses**, surname (P734) and dates land on ~half, and occupation (10.8%),
+burial (7.9%) and title (2.9%) are a small minority — real where present, not
+something to scope a batch around. Two consequences that are traps rather than
+numbers:
+
+- **Do not split `GIVN` on spaces to make P1545 statements.** 36.9% of people
+  have a multi-token given string, but most are romanised CJK/steppe names where
+  the extra tokens are honorifics, particles and titles ("Lady", "no",
+  "Chanyu"), not given names. The genuine P1545 case (European "Jean Paul" → two
+  ordered given-name items) is the Latin-script subset. Splitting needs a step
+  that can tell a name from an honorific; the naive split emits wrong P735s. This
+  is the concrete failure mode behind `CLAUDE.md`'s "first multi-token batch
+  needs reading closely".
+- **A NAME is Geni's display *label*, not always a name.** Some values
+  ("Unknown Wife", "NN", "daughter of …") are descriptions; on Wikidata they are
+  a label or an alias, never a P735/P734 link. Emma's framing 2026-08-07: "the
+  names aren't exactly the display names, and they aren't exactly the most
+  natural" — the pipeline has to decide per string whether it is a name at all.
+
+**The CJK names are present in native script, which was the open worry.** 16.6%
+of the tree carries a CJK form; 56.3% of those are native-script only and 43.7%
+also carry a romanisation (often in the `_MARNM` slot). So the hard-to-recover
+native label is the *well*-covered one and matches Wikidata's native labels
+directly; the gap is the *English* label, which Wikidata often supplies. Emma's
+plan for the CJK cases (2026-08-07): translate to English where a romanisation
+is missing, the harder part being to distinguish Japanese from Chinese first.
+
 ## 5. Name and surname items
 
 Wikidata models names as items: P735 (given name) and P734 (family name) point
@@ -305,3 +336,30 @@ settled.** It is a separate repo on this machine holding similar material that
 behaves differently again. **Another agent is editing it right now and it is in
 flux**, so reading it for anything load-bearing would be reading a moving
 target. BLOCKED-ON-EXTERNAL until Emma says it has settled.
+
+**Emma's 2026-08-07 framing of order.life and the phase ordering.** order.life
+is **a third source**, alongside Geni and Wikidata, feeding the Phase-4 queue of
+things to add to Geni. It is **on Emma's PC** — local, not in this session's
+reach — and she is **deferring it deliberately** ("we'll do it later"), until
+the Wikidata side is built offline. Because it is not Geni-native it needs a
+**different citation** from the Geni-ID-as-source used for the Geni-derived
+claims. This does not change its BLOCKED status; it names why the block is
+Emma's choice, not just the other agent's edits.
+
+The ordering she stated, end to end: (1) descendant-distribution search to pick
+where to export next — tomorrow's work, item 3/3z; (2) a very large export
+campaign off those picks; (3) the Geni-side enrichment pipeline (items 4/6);
+(4) build the Wikidata tree offline and superimpose it (this item); (5)
+integrate, which is "for the most part a very large amount of merges". The whole
+of 4–5 is done **offline** on purpose — it is how the entity resolution and the
+merge decisions get made without hammering Geni with live operations, and only
+the *final* confirmed merges go online where parents can be compared.
+
+**A postponed Geni-side merge queue — recorded, not started.** Emma, 2026-08-07:
+**most of the cases where two Geni IDs sit on one Wikidata item are Geni
+duplicates that should be merged, but cannot be merged on Geni yet** ("because
+Geni's Geni"). `reports/wikidata-doubles.md` already surfaces these pairs side by
+side; the eventual Phase-4 output is a *queue of Geni merges* to perform online,
+one that only exists once the offline Wikidata tree and its entity resolution
+are in place. She is explicitly **postponing this until the Wikidata side is
+offline as well** — it is the last thing, not a current task.
