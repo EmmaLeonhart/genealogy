@@ -31,12 +31,11 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
       argument and not a run.
    2. `python -m genimerge merge` — gives the new-people count for the four, and
       refreshes `out/merged.ged`, which still describes the 99-export tree.
-   3. `python -m genimerge path` over the seven new chains in `paths/`
-      (`gong-liu`, `scorpion-i`, `tadlaf-al-qaydari`, `hou-zhang`, `zeng-yuan`,
-      `hao-huang`, `pasuti`) — this is the checking half of item 0.0, and it
-      needs the merged tree, which is why it did not happen with the conversion.
-   4. `python -m genimerge density` — scores the prediction recorded in item 3
+   3. `python -m genimerge density` — scores the prediction recorded in item 3
       below, that region 6 yields more new people than region 4 would have.
+   4. Re-run the path/gap check in `reports/path-gaps-2026-08-06.md` against the
+      new merge, to score the prediction that report records about which gaps
+      the four new exports close.
 
 0.000 The "FIRST ITEM" is finished — all 19 path files re-checked against the
 98-export merge, `reports/paths.md` rewritten, devlog entry dated 2026-08-06.
@@ -90,13 +89,22 @@ Big priorities:
    python -m genimerge path paths/<name>.tsv --source out/merged.ged
    ```
 
-   **Read the first three results before saving many.** Of the chains saved on
-   2026-08-06, Makeda→Enlil-nirari held 225 of 225 and Makeda→Matthew 219 of
-   219 — the prediction that a long in-tree distance means a missing community
-   was wrong for both. Only Makeda→Marguerite paid, stopping at Mahaut de
-   Poissy with six absent people behind her. If several more come back complete,
-   the honest conclusion is that this instrument measures our tree's shape and
-   not Geni's gaps, and the effort belongs on `reports/density.md` instead.
+   **"Read the first three before saving many" has now been answered, and the
+   answer is stop.** Nine more pages were saved on 2026-08-06 evening and
+   checked in `reports/path-gaps-2026-08-06.md`: across all 26 paths, **3 199 of
+   3 464 steps held (92.3%) and 11 paths are complete end to end**, `gong-liu`
+   at 249/249 among them. No path ends in a gap — every break is an interior
+   bridge and the remote endpoint is already held. The stated fallback applies:
+   **this instrument measures our tree's shape, not Geni's gaps**, and the
+   effort belongs on `reports/density.md`.
+
+   Emma's reading of *why* is supported by the concentration: 265 absent
+   step-slots sit on 196 people, but 29 people carry 98 of them, and five
+   separate paths break at the *same ten* Alemannians. Sparse ancient graph,
+   connectivity through few individuals. **Saving more path pages is not the
+   work; closing the two shared bridges is** — see item 2.5, now measured at
+   five paths rather than the five it predicted, and the
+   'A'idhullah al-'Ashiri `6000000226741965864` bridge, which is new.
 
 0.05 **The P2600 overlap is measured — `reports/wikidata-overlap.md`,
    2026-08-06.** Emma's ask, answered: **9,026 in both — 4.44% of our tree,
@@ -165,6 +173,15 @@ Big priorities:
    Alemannian ducal line ascending into the Carolingians, blocking five separate
    paths that each run unbroken to step 34 and stop there. All ten verified
    absent by profile ID against `out/merged.ged`.
+
+   **Re-measured 2026-08-06 over 26 paths and it holds up exactly** —
+   `reports/path-gaps-2026-08-06.md`. The same ten people block five paths at
+   the *identical* steps 35–44, doorway **Gisela of Friuli
+   `6000000008592343633`**, first absent Berengar I (her father), resuming at
+   Leutharis II. 50 step-slots for one export. **A second bridge of the same
+   kind is now known and is not yet queued elsewhere: 'A'idhullah al-'Ashiri
+   `6000000226741965864`**, 19 Jurhumid/Qahtani people, ~48 slots across
+   `scorpion-i`, `pasuti` and `psamtik-ii`. Take it `Forest` for the same reason.
 
    It beats the density picks because the payoff is *observed*: Geni has already
    named who is behind this door. `Forest` because Giséle of Cysoing and Emma of

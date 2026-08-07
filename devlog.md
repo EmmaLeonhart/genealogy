@@ -3374,3 +3374,50 @@ matching on the wrong thing.
 `genimerge merge`, `genimerge density`. All three re-parse ~200 MB. The one
 assertion at risk is satisfied by construction — largest new export 4020, cap
 4020 — but that is an argument, not a run. No Wikidata query was made.
+
+## 2026-08-06 — all 26 paths checked present/absent: 92.3% held, and the gaps are two shared bridges
+
+Emma asked whether the newly converted chains had been checked for present and
+absent profiles, and pointed out this is CPU-light: grep the IDs against the
+tree. Correct, and it is lighter still done as one streaming pass over
+`out/merged.ged` collecting `INDI` xrefs into a set, then an in-memory join per
+chain row — 3 464 lookups against one pass, rather than `genimerge path` seven
+times over a 293 MB file. `reports/path-gaps-2026-08-06.md` is the result.
+
+**3 199 of 3 464 steps held (92.3%) across 26 paths; 11 paths complete.** Every
+step in every path carries a profile ID, so the name-matching fallback is unused
+throughout. **No path ends in a gap** — all 21 absent runs have a resume point
+and every remote endpoint is already held. These are interior bridges, not
+frontiers. (An intermediate read of the summary table treated the runs as tails,
+on the grounds that gap-length equalled longest-run; that was wrong, and the
+doorway pass is what showed it. Equal lengths mean *one* run, not a run at the
+end.)
+
+**Emma's structural reading is supported.** She proposed that these chains cross
+sparse ancient networks whose links pass through a few critical individuals,
+unlike small-worlded modern data, and predicted strong diminishing returns for
+ancient figures. The concentration is there: 265 absent step-slots sit on 196
+distinct people, but 29 people carry 98 of them. Five paths with five different
+endpoints break at the **identical** steps 35–44 — same doorway (Gisela of
+Friuli), same ten Alemannians, same resume. It recurs independently in the
+Arabian material: `scorpion-i` and `pasuti` break at the same 19 Jurhumid people
+behind the same doorway, and `psamtik-ii` resumes at one of them. Two bridges
+are ~37% of every gap in the corpus.
+
+**The diminishing returns are now observed rather than suspected**, which
+settles the standing question in queue item 0.0. `gong-liu` holds 249 of 249 —
+a 249-step chain into ancient China with nothing missing — joining
+Enlil-nirari (225/225) and Matthew (219/219) from the morning. The fallback
+that item wrote for itself applies: this instrument measures our tree's shape,
+not Geni's gaps. Saving more path pages is not the work.
+
+What is *not* established, and the report says so: nothing here measured a
+modern chain, so ancient-sparse versus modern-small-world remains an
+interpretation. The report names two tests for it that need no new export, both
+wanting a pass over the merge with family edges parsed — not run tonight under
+the low-CPU instruction.
+
+A prediction is recorded before the next merge, so `git show` supplies it: two
+of this evening's four seeds are `NN /譚/` and `NN /Ubay/`, and if seeding a
+placeholder near a known gap works, re-merging should close part of the Jurhumid
+or Chinese runs while leaving the Alemannian ten untouched.
