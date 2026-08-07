@@ -241,6 +241,31 @@ class WikidataClient:
         return entities
 
 
+    def full_entities(self, ids: Sequence[str]) -> dict:
+        """Fetch up to 50 entities *complete* — every claim, label and sitelink.
+
+        Deliberately **not cached** the way :meth:`entities` is. That cache
+        exists so a report can be re-rendered without re-querying, and it is
+        keyed on the exact batch, so it would store a second full copy of every
+        item under a key no resumed run could reconstruct. The full download has
+        its own store (:mod:`genimerge.wikidownload`) which is the durable copy;
+        the caller records what it holds and never asks twice.
+
+        ``props`` is omitted rather than enumerated: the point of this pass is
+        that a later phase does not have to come back for a field nobody thought
+        to ask for.
+        """
+        url = API_ENDPOINT + "?" + urllib.parse.urlencode(
+            {
+                "action": "wbgetentities",
+                "ids": "|".join(ids),
+                "format": "json",
+                "formatversion": "2",
+            }
+        )
+        return json.loads(self._request(url)).get("entities", {})
+
+
 def _qid(uri: str) -> str:
     """``http://www.wikidata.org/entity/Q42`` -> ``Q42``."""
     return uri.rsplit("/", 1)[-1]

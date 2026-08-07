@@ -99,6 +99,7 @@ COMMANDS = [
     "quickstatements",
     "names",
     "profile-names",
+    "wikidata-download",
     "name-links",
     "crosscheck",
     "entity-resolution",

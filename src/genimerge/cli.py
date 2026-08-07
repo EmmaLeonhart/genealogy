@@ -37,12 +37,18 @@ from . import (
     seeds,
     sources,
     wikidata,
+    wikidownload,
 )
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 EXPORTS_DIR = sources.EXPORTS_DIR
 REPORTS = REPO_ROOT / "reports"
 OUT = REPO_ROOT / "out"
+
+#: Where downloaded Wikidata items live. Not under `out/` on purpose — `out/` is
+#: gitignored generated data, and these are collected source material, kept the
+#: way `exports/` keeps the GEDCOMs.
+WIKIDATA_STORE = REPO_ROOT / "wikidata" / "items"
 
 #: Values of the ``source`` column in ``out/wikidata/matched_all.csv``, which
 #: `expand` writes and `coverage`, `crosscheck`, `name-links` and
@@ -842,6 +848,103 @@ def _cmd_names(args: argparse.Namespace) -> int:
     return 0
 
 
+def _cmd_wikidata_download(args: argparse.Namespace) -> int:
+    """Download whole Wikidata items into the shard store.
+
+    Prints the four numbers `queue.md` item 4 exists to get — rate, batch
+    behaviour, bytes per item, and what those project to over the whole seed
+    set — because a pilot that stores items and reports nothing has measured
+    nothing.
+    """
+    ws = Workspace.from_args(args)
+    seed_file = args.seeds or (ws.wikidata / "p2600-all.tsv")
+    if not seed_file.exists():
+        print(
+            f"{seed_file} not found. Run `python -m genimerge overlap` once to fetch "
+            "the P2600 map, or pass --seeds.",
+            file=sys.stderr,
+        )
+        return 1
+
+    # The shards go to a *tracked* directory and the index to `out/`, which is
+    # gitignored. That is the § 8a-revised split made concrete: the items are
+    # the thing being collected and are committed; the index is derived from
+    # them and is rebuilt rather than stored. Defaulting the shards under `out/`
+    # would have quietly produced a download nobody kept.
+    store = wikidownload.ItemStore(args.store or WIKIDATA_STORE)
+    index = wikidownload.StateIndex(args.index or (ws.wikidata / "download-state.sqlite3"))
+
+    if args.rebuild_index:
+        found = index.rebuild(store)
+        print(f"index rebuilt from {len(store.shards())} shards: {found:,} items")
+
+    # Seeding is idempotent: a QID already known keeps its status, so re-running
+    # after the map is refreshed adds only what is genuinely new.
+    seeded = index.enqueue(wikidownload.seed_qids(seed_file))
+    index.commit()
+    counts = index.counts()
+    print(
+        f"seed file {seed_file.name}: {seeded:,} QIDs added to the fetch queue; "
+        f"queue now {counts.get('queued', 0):,}, held {counts.get('done', 0):,}, "
+        f"missing {counts.get('missing', 0):,}, errored {counts.get('error', 0):,}"
+    )
+
+    if args.dry_run:
+        queued = counts.get("queued", 0)
+        print(
+            f"dry run: would request {queued:,} items in "
+            f"{-(-queued // wikidownload.FETCH_BATCH):,} batches of "
+            f"{wikidownload.FETCH_BATCH}, and would grow the queue as it scans"
+        )
+        index.close()
+        return 0
+
+    client = make_client(ws, args)
+
+    def progress(stats: wikidownload.WalkStats) -> None:
+        if stats.batches % args.report_every == 0:
+            print(
+                f"  {stats.stored:,} stored, {stats.scanned:,} scanned, "
+                f"{stats.discovered:,} discovered, queue {index.queue_length():,}, "
+                f"{stats.items_per_second:.1f}/s",
+                flush=True,
+            )
+
+    stats = wikidownload.walk(
+        client,
+        store,
+        index,
+        limit=args.limit,
+        scan_per_round=args.scan_per_round,
+        progress=progress,
+    )
+    total_known = len(index.known())
+    index.close()
+
+    print(
+        f"\n{stats.stored:,} stored, {stats.missing:,} missing, {stats.errors:,} errored "
+        f"in {stats.batches:,} requests over {stats.seconds:,.0f}s"
+    )
+    print(
+        f"scanned {stats.scanned:,} stored items for relatives and discovered "
+        f"{stats.discovered:,} QIDs not already known"
+    )
+    print(f"throttled {client.throttled} times; {stats.items_per_second:.1f} items/s")
+    if stats.stored:
+        print(f"{stats.bytes_per_item:,.0f} bytes of JSON per item (uncompressed)")
+        shards = store.shards()
+        on_disk = sum(p.stat().st_size for p in shards)
+        print(f"{len(shards)} shard(s), {on_disk / 1e6:,.1f} MB gzipped on disk")
+        full = stats.projection(total_known)
+        print(
+            f"projected over {full['items']:,.0f} known QIDs: "
+            f"{full['requests']:,.0f} requests, {full['hours']:,.1f} hours, "
+            f"{full['gigabytes_json']:,.1f} GB of JSON"
+        )
+        print("  — a floor, not an estimate: a short run has not met a long run's throttling.")
+    return 0
+
+
 def _cmd_profile_names(args: argparse.Namespace) -> int:
     ws = Workspace.from_args(args)
     tree = _load_tree(args.source, ws)
@@ -1421,6 +1524,61 @@ def build_parser() -> argparse.ArgumentParser:
         help="where to write (default: <reports>/names.md)"
     )
     p_names.set_defaults(func=_cmd_names)
+
+    p_dl = sub.add_parser(
+        "wikidata-download",
+        help="download whole Wikidata items for the P2600 seed set, resumably",
+        description=(
+            "Two queues. The fetch queue starts as the whole P2600 seed set and "
+            "is drained 50 items at a time into gzipped JSONL shards; the scan "
+            "reads stored items for the relatives they name (P22/P25/P26/P40/"
+            "P3373) and queues any not already known, so the set grows outward "
+            "to people Wikidata has and Geni does not. Networked, resumable, and "
+            "never asks for the same item twice. Start with --limit 1000 and "
+            "read the numbers before running it long (todo.md 8a-revised). This "
+            "is the ONLY command permitted to query Wikidata."
+        ),
+    )
+    p_dl.add_argument(
+        "--limit", type=int, default=None,
+        help="stop after this many NEW items (the pilot; default: no limit)"
+    )
+    p_dl.add_argument(
+        "--dry-run", action="store_true",
+        help="say how many items and requests remain, and make none of them"
+    )
+    p_dl.add_argument(
+        "--seeds", type=Path, default=None,
+        help="QID list, one per line or TSV with the QID first (default: <out>/wikidata/p2600-all.tsv)"
+    )
+    p_dl.add_argument(
+        "--store", type=Path, default=None,
+        help="shard directory (default: wikidata/items — tracked, not under out/)"
+    )
+    p_dl.add_argument(
+        "--index", type=Path, default=None,
+        help="state index (default: <out>/wikidata/download-state.sqlite3)"
+    )
+    p_dl.add_argument(
+        "--rebuild-index", action="store_true",
+        help="re-derive the index from the shards first; the shards are the truth"
+    )
+    p_dl.add_argument(
+        "--delay", type=float, default=1.0,
+        help="seconds between requests (default: 1.0 — start slow, measure, only then consider faster)"
+    )
+    p_dl.add_argument(
+        "--scan-per-round", type=int, default=500,
+        help=(
+            "stored items to read for relatives between fetches (default: 500). "
+            "Higher than the fetch batch on purpose — reading local JSON is free "
+            "and the job of the scan is to keep the fetch queue supplied."
+        ),
+    )
+    p_dl.add_argument(
+        "--report-every", type=int, default=10, help="print progress every N batches"
+    )
+    p_dl.set_defaults(func=_cmd_wikidata_download)
 
     p_profile = sub.add_parser(
         "profile-names",

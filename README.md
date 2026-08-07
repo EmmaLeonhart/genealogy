@@ -158,6 +158,27 @@ Every command is re-runnable and reads the previous stage's output. Wikidata
 responses are cached under `out/wikidata/cache/`, so re-running a report costs
 nothing; delete that directory to force a refresh.
 
+### Downloading Wikidata items
+
+`wikidata-download` is deliberately **not** in the block above. It is a
+long-running background job rather than a report, it writes source material into
+a tracked directory instead of `out/`, and it is the one command that runs for
+hours. `todo.md` § 8a-revised is the design; `queue.md` item 4 is the pilot that
+has to come first.
+
+```bash
+python -m genimerge wikidata-download --dry-run       # how many items remain
+python -m genimerge wikidata-download --limit 1000    # the pilot: measure, then decide
+python -m genimerge wikidata-download                 # the long run
+```
+
+It reads its seed list from `out/wikidata/p2600-all.tsv` — already on disk from
+`overlap`, so the seed phase needs no SPARQL — and writes whole items, 50 per
+request, into gzipped JSONL shards under `wikidata/items/`. Those shards are
+committed; the resume index beside them in `out/` is derived and disposable
+(`--rebuild-index` regenerates it). Nothing is ever requested twice, a killed
+run resumes, and `--limit` caps how many *new* items a run attempts.
+
 Every command also takes `--exports-dir`, `--out` and `--reports`, so a second
 dataset can be processed without touching the first:
 

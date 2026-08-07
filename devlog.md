@@ -3956,3 +3956,43 @@ argument the chat had just made; and nobody knows what 500k full items weigh or
 whether a git repo can hold them. Both resolve in a **1000-item pilot**, now
 `queue.md` item 4, which is also the last point at which the design is still
 cheap to change. Nothing has been queried yet.
+
+
+## 2026-08-07 (later) — the Wikidata downloader, built to Emma's two-queue design
+
+`genimerge wikidata-download` and `src/genimerge/wikidownload.py`, with 32 tests
+that never touch the network. Not yet run against Wikidata: the pilot is
+BLOCKED-ON-USER-ACTION in `queue.md` item 4.
+
+- **Two queues, Emma's design.** A fetch queue seeded with all 514,822 P2600
+  QIDs, and an iteration queue of held items read for the relatives they name
+  (P22/P25/P26/P40/P3373). Anything named and not already known joins the fetch
+  queue; anything fetched joins the end of the iteration queue. BFS outward, and
+  the people it reaches with no Geni ID are the objective rather than a side
+  effect.
+- **The iteration queue is the shard sequence plus a cursor**, not a second
+  list. Items append in fetch order, so the end of the store *is* the end of the
+  queue, and scanning is a forward read of files already on disk.
+- **Storage is many ordinary committed files.** Gzipped JSONL shards of 1000
+  items under `wikidata/items/`, one gzip member per batch so compression works.
+  No LFS, no single large file, and the resume index is SQLite in `out/` —
+  derived from the shards and rebuildable, never committed.
+- **Live API for the whole seed set; the dump is the fallback.** 50 QIDs per
+  `wbgetentities` request is ~10,300 requests rather than 500,000, which is what
+  made the ~100 GB dump download unnecessary.
+- **No ad-hoc Wikidata queries, at all.** Now a standing rule in `CLAUDE.md`,
+  in Emma's words. Questions about Wikidata's contents go to `todo.md` § 8b and
+  wait for the store — including her prediction, recorded before the data
+  exists, that the Geni-linked items skew to the 20th and 21st centuries the way
+  the Geni profiles do.
+
+Two defects of my own, both found by running the thing rather than by reading
+it, and both fatal only at scale: the fetch queue inserted one row per statement
+with a `SELECT MAX(seq)` each time, which took over five minutes to seed 514,822
+and now takes 1.6 seconds; and the scan rebuilt a half-million-QID set from
+SQLite every round instead of keeping one. The ten-item tests were happy with
+both.
+
+Also filed: `chats/` and `todo.md` § 8a-decided, and `out/merged.ged` (409 MB,
+generated) noted as ignored by necessity — covered by the existing `out/` line,
+with no `.ged` pattern added.

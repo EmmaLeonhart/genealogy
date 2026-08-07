@@ -238,27 +238,26 @@ Big priorities:
    `reports/density.md` for current seeds before acting: region numbering is
    positional and has already shifted twice under it.
 
-4. **The 1000-item Wikidata pilot — the next thing to build, and the only way
-   the 500k plan stops resting on guesses.** `todo.md` § 8a-revised (written
-   2026-08-07 from `chats/wikidata-querying-2026-08-07.md`) is the spec. The
-   pilot is deliberately small and answers four numbers at once:
+4. **BLOCKED-ON-USER-ACTION — run the 1000-item Wikidata pilot.** The unblock
+   signal is Emma saying go; the command exists and is offline-tested:
 
-   - the sustainable request rate against `wbgetentities`, found by starting
-     slow and watching for the first 429 — not assumed;
-   - whether the 50-QIDs-per-request batch behaves as documented, since 500k
-     items is ~10,000 requests at 50 apiece and that is what makes the live path
-     competitive with the dump at all;
-   - the mean full-item JSON size, so "500k items on disk, committed" becomes a
-     figure rather than a hope;
-   - the shard layout that follows from it (gzipped JSONL, fixed items per
-     shard) and whether a repo can carry it.
+   ```
+   python -m genimerge wikidata-download --limit 1000
+   ```
 
-   **Ask Emma before the first live request.** Everything up to that point —
-   the fetcher, the state store, the shard writer, tests against recorded
-   fixtures — is offline work and needs no permission.
+   It prints the four numbers the 500k run should not be designed without: the
+   sustained rate, whether 50-per-request behaves as documented, the mean
+   full-item JSON size, and what those project to over the whole seed set. Read
+   them before starting the long run. `todo.md` §§ 8a-revised and 8a-decided are
+   the design; `chats/wikidata-querying-2026-08-07.md` is where it came from.
 
-   Then, and only with the pilot's numbers in hand, the dump-vs-live decision
-   for the seed phase. Do not start the 500k run on either path first.
+   **Nothing else may query Wikidata — not a spot check, not one QID.** Emma's
+   rule, 2026-08-07: a stray request is how the run collects a 429. Questions
+   about Wikidata's contents go to `todo.md` § 8b and wait for the store.
+
+   After the pilot, the long run is the same command without `--limit`, and it
+   is a multi-day background job. Commit and push the shards as it goes —
+   every 500-1000 items, never per item.
 
 6. **The Wikidata reports are stale.** `reports/wikidata-coverage.md`,
    `wikidata-crosscheck.md` and `names.md` describe the 16266-person tree; it is

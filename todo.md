@@ -504,3 +504,78 @@ rate, the batch behaviour, the per-item byte size and the shard layout at once,
 and every one of those is currently a guess. Nothing about the 500k run should be
 designed on numbers nobody has measured — that is the failure § 8a was written
 to prevent, repeated one level up.
+
+### 8a-decided. Emma's calls, 2026-08-07 evening — this is the built design
+
+Made after reading § 8a-revised, and they close most of what it left open.
+`genimerge wikidata-download` implements them; `src/genimerge/wikidownload.py`
+is the long form.
+
+**Live API for the whole seed set. The dump is not needed.** Her reasoning:
+*"because of how easy it is to get the 500,000, we can get the 500,000 with all
+their data"* — 50 QIDs per `wbgetentities` request makes it ~10,300 requests, not
+500,000, and the dump's cost was always the ~100 GB download the seed phase would
+have to pay before filtering. The dump stays on the shelf as the fallback if the
+live path turns out to throttle harder than it looks.
+
+**Storage: many ordinary files, committed and pushed as the run proceeds.**
+Emma, explicitly: *"I do not want the Wikidata to be all in one file that would
+need LFS. I want the Wikidata to be kept in a common way so they can be committed
+and pushed and actively done, building up the tree."* Gzipped JSONL shards of
+1000 items under `wikidata/items/`, each a few megabytes — small enough that a
+push is incremental and no single file approaches a limit. **No LFS.** The
+resume index sits in `out/` and is derived, not committed.
+
+**Two queues, and the walk between them is the point.** Her design, in her
+terms:
+
+1. **The take-from-Wikidata queue** — QIDs known to exist and not yet held. It
+   starts as the whole P2600 seed set.
+2. **The iteration queue** — held items waiting to be read for the relatives
+   they name. Anything named and not already known joins queue 1; anything
+   fetched joins **the end of** queue 2. *"Sort of a BFS thing."*
+
+Implementation note that is not a detail: **the iteration queue is the shard
+sequence plus a cursor**, not a second list. Items are appended in fetch order,
+so "the end of the iteration queue" is "the end of the last shard" for free.
+
+**Reaching people with no Geni ID is the objective, not a side effect.** *"We'd
+be finding the individuals and adding them in… eventually we have a big, honking
+family tree, including many of the individuals that do not have GEDCOM IDs.
+These individuals without GEDCOM IDs are going to be the ones that we'd be doing
+this for."* The two trees are then parallel and unequal by construction — the
+Wikidata one accreted a person at a time, the Geni one arriving in bulk exports —
+and each holds people the other does not.
+
+**No ad-hoc queries. None.** *"Do not, whatever the fuck you do, check it, except
+with our Wikidata export, because checking it is the way that you get a 429."*
+The downloader is the only thing that talks to Wikidata. Every question about
+Wikidata's contents waits for the local store. This is in `CLAUDE.md` as a
+standing rule because it binds future sessions, not just this one.
+
+**`out/merged.ged` is ignored by necessity** — 409 MB, generated, over GitHub's
+file limit, and already covered by the existing `out/` line. No `.ged` pattern
+was added and none should be; the corpus rule under `exports/` is untouched.
+
+### 8b. Checks that wait for the store — offline, after the 500,000
+
+**Nothing here may be answered by querying Wikidata.** Each is a computation over
+`wikidata/items/` once the download has finished, and each is written down now
+precisely so it does not get "just quickly checked" against the live endpoint.
+
+**The century distribution, Wikidata against Geni.** Emma's guess, 2026-08-07:
+the Geni-linked items on Wikidata skew heavily to the 20th and 21st centuries
+much as the Geni profiles do, with the 19th ambiguous — *"I'm not really sure,
+but that dynamic is something I could imagine would be happening"*. Recorded as a
+prediction before the data exists so it can be scored rather than confirmed after
+the fact. `reports/profile-names.md` already has the Geni side's date coverage;
+the Wikidata side is P569/P570 over the stored items.
+
+**Ancient and medieval people with many descendants — the export-picking use.**
+The Geni-side version is the descendant-distribution search (item 3/3z): rank by
+realized documented descendants to choose where the next `Descendants` exports
+run, since the campaign is about **reaching modern times**, not thinness. The
+Wikidata store makes the same measurement possible on the other tree, and then a
+third thing that neither side can do alone: **where Wikidata holds ancestors of a
+Geni person that our Geni tree lacks**, which is both a Geni-side target to
+export toward and the input to entity resolution between the two trees.

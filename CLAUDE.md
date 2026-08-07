@@ -427,6 +427,35 @@ closely.
 **References** — P248 stated in, P854 reference URL, P813 retrieved,
 P143 imported from Wikimedia project.
 
+### Never query Wikidata to check something. Ever.
+
+**Emma's rule, 2026-08-07, stated as flatly as it reads:** *"do not, whatever the
+fuck you do, check it, except with our Wikidata export, because checking it is
+the way that you get a 429."* One bulk job — `genimerge wikidata-download` — is
+the only thing in this repo permitted to talk to Wikidata, and even it is
+confirmed before a live run. There is no such thing as a harmless one-off lookup:
+the download needs the whole rate-limit budget, and a side-query that trips
+throttling costs hours of a run that was going fine.
+
+**Every question about Wikidata's contents is answered offline, against the local
+store**, after the download. That includes the ones that feel too small to
+matter — does this item really carry P22, is this QID a redirect, what does this
+label say. Write the question down as a check to run over `wikidata/items/`
+rather than answering it live.
+
+**A worked example of the shape, deferred on purpose:** Emma's guess is that the
+Geni-linked items on Wikidata skew to the 20th and 21st centuries much as the
+Geni profiles do, with the 19th ambiguous. That is checkable — and is **not to be
+checked until the 500,000 are downloaded**, at which point it is a local
+computation over stored items and costs nothing. Recorded in `todo.md` § 8b.
+
+**The merged GEDCOM is the one `.ged` not in git**, and it is worth saying why
+here because "never gitignore a `.ged`" is a rule two sections up. `out/merged.ged`
+is 409 MB — generated, regenerable by `genimerge merge`, and over GitHub's file
+limit. It is covered by the existing `out/` line, so **no `.ged` pattern exists
+and none should be added**; the rule about the corpus under `exports/` is
+untouched. Emma's call, 2026-08-07: ignore it by necessity.
+
 ### Cost: this repo is private, so CI is manual-only
 
 **Never add a `push:` or `pull_request:` trigger to `.github/workflows/`.**
