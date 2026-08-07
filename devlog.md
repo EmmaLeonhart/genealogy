@@ -3812,3 +3812,37 @@ first from a hand-rolled regex reading BC as AD, then from this):
 C1 alone is 692 people who were invisible an hour ago. The shape of the finding
 did not change; the early-modern peak still dominates and the C20 cliff is still
 there.
+
+## 2026-08-06 (end of night) — 133 exports, and which styles actually pay
+
+Final export of the night. Corpus **133 GEDCOMs**, merge **255 465 people**,
+128 325 families, 141 conflicts, 2 components (255 432 and 33). Paths stay at
+**26 of 26, 3 464 of 3 464**.
+
+**Which export style returns new material, measured.** Emma asked whether
+`Descendants` is adding more than the `Ancestors` exports she was taking
+earlier. Counted as people held by *exactly one* export — order-independent, so
+it is not an artefact of merge sequence:
+
+| style | n | mean size | mean unique | unique share |
+| --- | ---: | ---: | ---: | ---: |
+| Descendants | 15 | 3 524 | 1 195 | **33.9%** |
+| Forest | 106 | 3 804 | 1 250 | 32.9% |
+| BloodTree | 6 | 3 350 | 350 | 10.5% |
+| Bio | 1 | 4 056 | 128 | 3.2% |
+| Ancestors | 5 | 2 133 | **20** | **0.9%** |
+
+An `Ancestors` export was returning about **twenty** people nothing else
+reached. `Descendants` returns ~1 195 — sixty times more. Her switch was right,
+and the reason is legible: ancestry is shared, so a second walk upward
+re-traverses ground the first already covered, while descent fans into families
+no other seed touches.
+
+The caveat, since the number will be quoted: *unique* means present in exactly
+one export, so two exports covering the same new family both score zero for
+those people. It is a floor on novelty rather than a new-people count.
+
+**Wikidata overlap on the final tree**, computed offline from the cached P2600
+map: **11 494 of Wikidata's 516 885 Geni-linked people are in our tree —
+2.22%**, against 1.75% at 203k people this afternoon. Our tree is 4.50%
+Wikidata-known. **505 391 Geni-linked people on Wikidata we still do not hold.**
