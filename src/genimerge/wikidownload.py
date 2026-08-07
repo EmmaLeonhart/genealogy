@@ -81,6 +81,11 @@ SHARD_ITEMS = 1000
 #: the run faster, it makes the API reject the request.
 FETCH_BATCH = 50
 
+#: How long a heartbeat stays valid. Longer than any single round takes and
+#: short enough that a killed run's lock is stale before a supervisor's next
+#: tick — five minutes against a run that beats every couple of seconds.
+LOCK_STALE_SECONDS = 300
+
 #: The family links the walk follows: father, mother, spouse, child, sibling.
 #: § 8a names the first four; P3373 is included because a sibling edge can be the
 #: only thing joining two branches on an item whose parents are unrecorded, and
@@ -410,6 +415,50 @@ class StateIndex:
     def commit(self) -> None:
         self._conn.commit()
 
+    # -- the single-run lock -------------------------------------------
+
+    def claim(self, *, stale_after: float = LOCK_STALE_SECONDS, now: Callable[[], float] = time.time) -> bool:
+        """Take the run lock, or return False because someone else holds it.
+
+        **This exists because the run is meant to be restarted automatically.**
+        Emma's machine interrupts the download constantly, so something has to
+        notice and start it again — and the moment that is automatic, the way it
+        fails is two copies running at once, both appending to the same shard.
+        That corrupts the store rather than merely wasting requests.
+
+        The lock is a heartbeat rather than a PID file: a run refreshes it every
+        round, and a run that died leaves one that goes stale on its own. No
+        cleanup step to forget, and nothing to check against a process table.
+
+        The check and the write are not one atomic statement, so two processes
+        starting in the same microsecond could both claim. Against a supervisor
+        that ticks every few minutes that window is not worth a lock table.
+        """
+        row = self._conn.execute("SELECT v FROM meta WHERE k = 'heartbeat'").fetchone()
+        if row:
+            try:
+                last = float(row[0])
+            except (TypeError, ValueError):
+                last = 0.0
+            if now() - last < stale_after:
+                return False
+        self.beat(now=now)
+        return True
+
+    def beat(self, *, now: Callable[[], float] = time.time) -> None:
+        """Refresh the run lock. Called every round, so a crash goes stale."""
+        self._conn.execute(
+            "INSERT INTO meta (k, v) VALUES ('heartbeat', ?)"
+            " ON CONFLICT(k) DO UPDATE SET v = excluded.v",
+            (repr(now()),),
+        )
+        self._conn.commit()
+
+    def release(self) -> None:
+        """Drop the lock on a clean exit, so the next run starts immediately."""
+        self._conn.execute("DELETE FROM meta WHERE k = 'heartbeat'")
+        self._conn.commit()
+
     # -- the walk cursor -----------------------------------------------
 
     def cursor(self) -> tuple[str, int] | None:
@@ -652,6 +701,7 @@ def walk(
         room = batch_size if limit is None else min(batch_size, limit - stats.requested)
         failures_before = stats.errors
         attempted = fetch_step(client, store, index, stats, batch_size=room)
+        index.beat()
         consecutive_failures = consecutive_failures + 1 if stats.errors > failures_before else 0
         stats.seconds = clock() - started
         if progress is not None:

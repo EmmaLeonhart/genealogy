@@ -630,3 +630,57 @@ def test_the_breaker_resets_on_a_batch_that_works(tmp_path):
 
     assert not stats.stopped_early
     assert stats.stored == 8 and stats.errors == 2
+
+
+# -- the single-run lock -----------------------------------------------
+
+
+def test_a_second_run_cannot_claim_a_live_lock(tmp_path):
+    # The supervisor restarts this command automatically, so the failure mode is
+    # two copies appending to one shard. That corrupts the store; wasted
+    # requests would merely be annoying.
+    first = wikidownload.StateIndex(tmp_path / "state.sqlite3")
+    assert first.claim(now=lambda: 1000.0)
+
+    second = wikidownload.StateIndex(tmp_path / "state.sqlite3")
+    assert not second.claim(now=lambda: 1100.0), "100s later the heartbeat is still fresh"
+
+
+def test_a_dead_run_leaves_a_lock_that_goes_stale(tmp_path):
+    # No PID file and no cleanup step to forget: a run that was killed stops
+    # beating, and the next one takes over once the heartbeat ages out.
+    index = wikidownload.StateIndex(tmp_path / "state.sqlite3")
+    index.claim(now=lambda: 1000.0)
+
+    later = wikidownload.StateIndex(tmp_path / "state.sqlite3")
+    assert later.claim(now=lambda: 1000.0 + wikidownload.LOCK_STALE_SECONDS + 1)
+
+
+def test_releasing_lets_the_next_run_start_at_once(tmp_path):
+    index = wikidownload.StateIndex(tmp_path / "state.sqlite3")
+    index.claim(now=lambda: 1000.0)
+    index.release()
+
+    assert wikidownload.StateIndex(tmp_path / "state.sqlite3").claim(now=lambda: 1001.0)
+
+
+def test_a_garbled_heartbeat_does_not_wedge_the_lock_forever(tmp_path):
+    # A half-written meta row must not mean the download can never run again.
+    index = wikidownload.StateIndex(tmp_path / "state.sqlite3")
+    index._conn.execute("INSERT INTO meta (k, v) VALUES ('heartbeat', 'not a number')")
+    index._conn.commit()
+
+    assert index.claim(now=lambda: 1000.0)
+
+
+def test_the_walk_keeps_the_heartbeat_fresh(tmp_path):
+    qids = [f"Q{n}" for n in range(1, 21)]
+    client = make_client(tmp_path, {q: person(q) for q in qids})
+    store, index = store_and_index(tmp_path)
+    index.enqueue(qids)
+    index.claim(now=lambda: 0.0)
+
+    wikidownload.walk(client, store, index, batch_size=5)
+
+    beat = index._conn.execute("SELECT v FROM meta WHERE k = 'heartbeat'").fetchone()
+    assert float(beat[0]) > 0.0, "a long run must not let its own lock go stale"

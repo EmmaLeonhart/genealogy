@@ -878,6 +878,14 @@ def _cmd_wikidata_download(args: argparse.Namespace) -> int:
         found = index.rebuild(store)
         print(f"index rebuilt from {len(store.shards())} shards: {found:,} items")
 
+    # Single run at a time. The whole point of the supervisor is that this
+    # command gets started again automatically, and two copies appending to the
+    # same shard corrupts the store rather than merely wasting requests.
+    if not args.dry_run and not index.claim():
+        print("another wikidata-download holds the lock (its heartbeat is fresh) — nothing to do")
+        index.close()
+        return 0
+
     # Seeding is idempotent: a QID already known keeps its status, so re-running
     # after the map is refreshed adds only what is genuinely new.
     seeded = index.enqueue(wikidownload.seed_qids(seed_file))
@@ -916,14 +924,20 @@ def _cmd_wikidata_download(args: argparse.Namespace) -> int:
                 flush=True,
             )
 
-    stats = wikidownload.walk(
-        client,
-        store,
-        index,
-        limit=args.limit,
-        scan_per_round=args.scan_per_round,
-        progress=progress,
-    )
+    try:
+        stats = wikidownload.walk(
+            client,
+            store,
+            index,
+            limit=args.limit,
+            scan_per_round=args.scan_per_round,
+            progress=progress,
+        )
+    finally:
+        # A clean exit — including Ctrl-C — drops the lock so the supervisor's
+        # next tick starts at once instead of waiting for the heartbeat to go
+        # stale. A kill -9 skips this, which is what the staleness is for.
+        index.release()
     total_known = len(index.known())
     remaining = index.queue_length()
     index.close()
