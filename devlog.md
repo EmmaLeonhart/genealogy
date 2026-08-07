@@ -3916,3 +3916,43 @@ campaign → Geni enrichment → offline Wikidata tree + superimposition →
 integrate; and the two-Geni-IDs-on-one-item pairs are mostly Geni duplicates
 that should be merged on Geni but cannot be yet — a postponed Geni-side merge
 queue, not a current task.
+
+
+## 2026-08-07 — `chats/`, and § 8a corrected before any of it was built
+
+Emma saved a claude.ai conversation into the repo — a second model reviewing the
+Wikidata-download plan that `todo.md` § 8a had been written down that same day.
+It found three things wrong with it, so § 8a is now followed by **§ 8a-revised**
+and one sentence inside § 8a is marked wrong in place.
+
+- **New `chats/`** — saved conversations that decided something, kept the way
+  `geni_pages/` keeps saved Geni pages: the browser's `.html` plus its `_files`
+  directory, committed whole, with the extracted text beside it as `.md` because
+  the HTML is a rendered app dump. `chats/README.md` says what belongs there.
+  The saved page does not preserve the transcript Emma pasted into that chat, so
+  the reviewing model was reading something this repo does not have; the extract
+  says so rather than papering over it.
+- **The per-item commit is out.** 500k items would have been 500k commits. Write
+  JSON to disk on fetch, commit in batches of 500-1000. Resumability moves to an
+  explicit QID state store — git history and 500k-file directory scans are both
+  the wrong instrument for "have I already fetched this".
+- **"Wikidata has no bulk export" was wrong**, and it was the expensive error:
+  there is a weekly full JSON dump, and Wikimedia points bulk consumers at it to
+  stop them doing exactly what § 8a described. Seed phase becomes dump-first,
+  live API as fallback for items newer than the snapshot; the expansion frontier
+  stays live because it cannot be known in advance.
+- **SPARQL has its own limits** — 60-second query timeout and its own
+  throttling, separate from the action API. "Cheap" was true per query and false
+  per campaign.
+- **Emma's prediction, recorded to be scored:** the expansion frontier is small
+  and patchy, because most family edges out of a Geni-linked item land on
+  another Geni-linked item. A large frontier is therefore a symptom to
+  investigate, not a success.
+
+Two things neither chat costed, added to § 8a-revised as measurements rather
+than arguments: `wbgetentities` takes **50 QIDs per request**, which makes the
+live seed path ~10,000 requests rather than 500,000 and undercuts the dump
+argument the chat had just made; and nobody knows what 500k full items weigh or
+whether a git repo can hold them. Both resolve in a **1000-item pilot**, now
+`queue.md` item 4, which is also the last point at which the design is still
+cheap to change. Nothing has been queried yet.

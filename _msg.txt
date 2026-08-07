@@ -1,0 +1,22 @@
+chats/: file the Wikidata-querying chat, and correct todo.md 8a from it
+
+Emma saved a claude.ai conversation into the repo -- a second model reviewing
+the Wikidata-download plan written into todo.md 8a earlier the same day. Three
+of its corrections stand, so 8a is followed by 8a-revised and one sentence
+inside 8a is marked wrong in place.
+
+New chats/ directory, on the geni_pages/ pattern: the saved .html plus its
+_files directory committed whole, with the extracted text beside it as .md.
+
+- Per-item commit is out: write on fetch, commit every 500-1000, and resume
+  from an explicit QID state store rather than from git or a directory scan.
+- "Wikidata has no bulk export" was wrong. There is a weekly full JSON dump.
+  Seed phase becomes dump-first; the expansion frontier stays live.
+- SPARQL has its own 60s timeout and throttling, separate from the action API.
+- Emma's prediction recorded for scoring: the expansion frontier is small,
+  because most family edges leave one Geni-linked item and arrive at another.
+
+Added, because neither chat costed them: wbgetentities takes 50 QIDs per
+request, which makes the live seed path ~10,000 calls and weakens the dump
+argument; and nobody knows what 500k full items weigh on disk. Both resolve in
+a 1000-item pilot, queue.md item 4. Nothing has been queried yet.

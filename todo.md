@@ -408,14 +408,99 @@ item is looked at, store the **whole item** on disk (the complete JSON), then
 **commit and push** as the run proceeds. The operation is idempotent and
 resumable: a killed run picks up from what is already stored rather than
 re-fetching, and progress survives because it is committed. No individual item is
-queried twice.
+queried twice. — **Corrected in § 8a-revised below: the commit cadence is
+batched, and resumability comes from a state store rather than from git.**
 
 **Why this differs from the Geni side, stated so the two are not modelled alike.**
 Geni is **bulk-export-only**, seeded from specific spots — a whole ball arrives at
-once and the cost is getting the export at all. Wikidata has **no bulk export**
-but is cheap to probe for small things one at a time. Different acquisition
-shapes, different time-to-get; a downloader written as though Wikidata were a
-bulk source, or as though Geni were probeable per-person, gets both wrong.
+once and the cost is getting the export at all. ~~Wikidata has **no bulk export**
+but is cheap to probe for small things one at a time.~~ **This half is wrong and
+was the expensive error** — see § 8a-revised: Wikidata publishes a **weekly
+full JSON dump of every item**, and Wikimedia points bulk consumers at it
+precisely so they stop doing what the plan above described. What is true is the
+*asymmetry*: Wikidata is also cheap to probe one item at a time, which Geni is
+not. Different acquisition shapes, different time-to-get; a downloader written as
+though Geni were probeable per-person still gets that side wrong.
 
 **Stdlib only still holds** — `urllib` covers both the SPARQL endpoint and the
 JSON entity API; no dependency is needed for this.
+
+### 8a-revised. Dump-first, batched writes — 2026-08-07, same day, before any code
+
+**Source: `chats/wikidata-querying-2026-08-07.md`.** Emma took § 8a above to a
+second model and it found three things wrong with it. This section supersedes
+§ 8a where they disagree; § 8a is kept because most of it stands and because the
+corrections only read as corrections next to what they replace.
+
+**Storage and commit cadence — the per-item commit is out.**
+
+- Write each item's full JSON to disk **the moment it is fetched**, and never
+  fetch it again once present. That is the property § 8a actually wanted.
+- **Commit and push in batches** — every 500–1000 items, or every few minutes,
+  whichever comes first. Emma's own number: "every hundred or every thousand
+  individuals would be fine; per individual would be a big problem". Half a
+  million commits is not a slow version of this plan, it is a repo that stops
+  working somewhere in the low hundreds of thousands.
+- **Resumability comes from an explicit state store, not from git and not from
+  the filesystem.** A SQLite table or flat manifest of QID → done/pending/errored
+  (plus retry count and last error) is an instant lookup; `ls`-ing 500k files or
+  reading `git log` on every resume is not. § 8a's "picks up from what is already
+  stored" is right about the *guarantee* and wrong about the *mechanism*.
+- **Still hard-committed to the repo** — that part is Emma's decision and does
+  not change. The cadence is the only thing being changed.
+
+**Two-phase sourcing, because the seed set and the frontier are different jobs.**
+
+*Seed phase (~500k items carrying P2600).* Use the **Wikidata JSON dump** as the
+primary source, not 500k live fetches. Get the QID list from SPARQL (paginated),
+then stream-filter the dump against it locally: no rate-limit exposure for the
+bulk of the volume. The live entity API becomes the **fallback** for items
+missing from the dump snapshot — created or edited since it was cut.
+
+*Expansion phase (walking P22/P25/P26/P40 out to items with no Geni ID).* This is
+frontier-driven and cannot be known in advance, so it stays on the live API with
+the § 8a backoff discipline in full: descriptive User-Agent with contact,
+exponential backoff, honour `Retry-After`, find the sustainable rate by
+experiment, back off the instant throttling appears.
+
+**SPARQL is not free.** `query.wikidata.org` has **its own limits, separate from
+the action API** — a 60-second query timeout and its own throttling. "SPARQL is
+cheap" in § 8a is true per query and false per campaign; the P2600 list needs
+pagination and pacing like anything else.
+
+**Expansion scope — Emma's prediction, recorded so it can be scored.** Expect
+**heavy interconnection inside the seed set itself**: most P22/P25/P26/P40 edges
+from a Geni-linked item will land on another Geni-linked item already in the set,
+not on a new one. The frontier — items reached that lack a Geni ID — is therefore
+expected to be **small and patchy relative to the 500k**, "specific holes and
+specific lines that are only on Wikidata". Practical consequence: do not
+over-provision for expansion, and **treat a much-larger-than-expected frontier as
+a symptom** — most likely an edge type fanning out further than intended — rather
+than as the expected case.
+
+**Two things neither chat costed, to settle before choosing dump-vs-live.** Both
+are measurements, not arguments, and each could flip the decision:
+
+1. **`wbgetentities` takes up to 50 QIDs in one request.** That is the batching
+   the first answer named in the abstract and neither answer applied to this job.
+   500k items is then ~10,000 requests rather than 500,000 — at a deliberately
+   slow one request per second, a few hours. Against that, the full JSON dump is
+   a very large download (order of 100 GB compressed; **check the current figure,
+   do not take this number on trust**) before a byte is filtered. The dump wins
+   on politeness and loses on local cost, and which matters more here is not
+   obvious. **Measure both**: time a 50-QID `wbgetentities` batch, and read the
+   actual dump size off the Wikimedia downloads page.
+2. **What 500k full items weigh on disk, and what that does to a repo that must
+   hold them.** Unknown until sampled — take 1000 real items and multiply.
+   Whatever the answer, it lands in a git repo that GitHub starts warning about
+   in the low single-digit GB, so **sharded and compressed** (gzipped JSONL,
+   fixed items per shard) is the shape to assume, and the pilot exists to say
+   whether even that is viable. If it is not, the plan needs Emma's decision
+   about what "hard committed as part of the repo" means at this scale — not a
+   quiet switch to storing it somewhere else.
+
+**Do a 1000-item pilot before building the real thing.** It answers the sustained
+rate, the batch behaviour, the per-item byte size and the shard layout at once,
+and every one of those is currently a guess. Nothing about the 500k run should be
+designed on numbers nobody has measured — that is the failure § 8a was written
+to prevent, repeated one level up.
