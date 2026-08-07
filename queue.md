@@ -244,16 +244,6 @@ Big priorities:
    now 105349. Refreshing means `reconcile` against the live SPARQL endpoint,
    the only networked step here.
 
-7. **`density` emits one seed per region, which under-serves regions larger
-   than one export ball.** `_representative` in `src/genimerge/density.py`
-   returns a single person; region 1 is 6475 people, 1.68× the ~3860 an export
-   holds, so one seed cannot cover it and the report gives no second. The fix is
-   to emit `ceil(size / GENI_EXPORT_CAP)` seeds per region, chosen far apart in
-   the region rather than greedily by degree — otherwise two seeds land as
-   neighbours and their balls are the same ball. Low priority: it only pays if
-   more exports get taken, and queue item 0.1 says the current batch may be the
-   last. Do not build it on the assumption exports continue.
-
 ### Standing context
 
 - **BLOCKED-ON-USER-ACTION — impossible dates in the tree, listed in

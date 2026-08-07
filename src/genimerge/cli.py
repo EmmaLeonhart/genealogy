@@ -587,7 +587,14 @@ def _cmd_density(args: argparse.Namespace) -> int:
 
     thin = sum(1 for g in tree.people if counts.get(g, 0) <= args.threshold)
     print(f"wrote {output}")
-    print(f"wrote {seed_list}: {len(listed)} seeds, one per region of {args.seed_list_min}+")
+    # Seeds, not regions: a region larger than one export ball gets one seed per
+    # export it needs, so the two counts stopped being the same number.
+    seed_total = sum(len(r.seeds) for r in listed)
+    multi = sum(1 for r in listed if r.exports_needed > 1)
+    print(
+        f"wrote {seed_list}: {seed_total} seeds across {len(listed)} regions of "
+        f"{args.seed_list_min}+, {multi} of which need more than one export"
+    )
     print(
         f"{thin} of {len(tree.people)} people are in <= {args.threshold} export(s), "
         f"forming {len(regions)} regions of {args.min_size}+"

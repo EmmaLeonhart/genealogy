@@ -29,70 +29,74 @@ A *region* is a connected run of those people under parent/child/spouse edges �
 
 **Read the doorway column before exporting.** A thin region full of parentless people is under-sampled and worth an export. A thin region with few is plausibly just a small family that really did end, and exporting there buys little.
 
-The **seed** column is one person to export from, per region: a doorway where possible, preferring someone with a real name over a redacted `Private`, and best-connected within the region. It is a heuristic for where to start, not a claim about who matters.
+The **seeds** column is who to export from: a doorway where possible, preferring someone with a real name over a redacted `Private`, and best-connected within the region. A heuristic for where to start, not a claim about who matters.
 
-| # | people | doorways | seed to export from | who else is in it |
-| --- | ---: | ---: | ---: | ---: |
-| 1 | 10051 | 2689 | [Juan](https://www.geni.com/people/x/6000000010895650922) | Sebastián Sandoval Ocampo, Isabel o Inés, Inés de Sandoval Ocampo Golfín, José Sebastián |
-| 2 | 7566 | 1539 | [Esther Robbins](https://www.geni.com/people/x/6000000002766698694) | <private> Berhane, Amanuel, <private> Berhane, <private> Hagos |
-| 3 | 6133 | 1655 | [Søren Pederson Godsen](https://www.geni.com/people/x/6000000008187757114) | Køneka Eriksen, Ukjent Kønekadatter, Gotskald, Ragnvald Keniksson |
-| 4 | 4989 | 1018 | [Christopher Hartvigsen von Schack](https://www.geni.com/people/x/6000000004837108374) | Anne, Søren, Peder Selgensen Sørensen Kjærulf, Inger Hansdatter Mørk |
-| 5 | 3699 | 704 | [Olea Larsdatter Linto](https://www.geni.com/people/x/6000000126110513929) | Anders Bentsen, Berte  Andersdatter, Ragnhild Andersdatter, Jens Mathissen |
-| 6 | 3668 | 868 | [Agatha Johansdotter Læstadia](https://www.geni.com/people/x/6000000000245144721) | Erik, Olof, Göllj, Brita Olofsdotter |
-| 7 | 3633 | 995 | [채](https://www.geni.com/people/x/6000000183109307114) | 이, 원 이, 혁손 이, 윤 |
-| 8 | 3569 | 840 | [Anders](https://www.geni.com/people/x/6000000011514832897) | Karl Johan Karlsson, Carl Johan Ericsson, Klas Robert Karlsson, Johanna Charlotta Eriksson |
-| 9 | 3370 | 788 | [João Fernandes](https://www.geni.com/people/x/6000000000359901281) | Nuno, Catarina Pessanha, Lopo, Gonçalo |
-| 10 | 2835 | 500 | [María de Luna y Tejada de los Monteros](https://www.geni.com/people/x/6000000016023204287) | María de Guadalupe Romo de Vivar y Martín del Campo, Julián Romo de Vivar y Muñoz de la Barba, Josefa Joaquina, Pedro Alcántara Alcantara Romo de Vibar Martin del Campo |
-| 11 | 2834 | 808 | [Maria](https://www.geni.com/people/x/6000000019493973121) | Private, <private> Alborta Perez, Private, Jose Francisco Alborta Olvea |
-| 12 | 1976 | 413 | [Margaret Outlaw Outlaw](https://www.geni.com/people/x/6000000019386810114) | Sarah Spivey, Matthew Spivey, Matthew Spivey, Judith Bowers |
-| 13 | 1719 | 487 | [Maria de Góis de Siqueira](https://www.geni.com/people/x/6000000059668788371) | Luísa Pires, Duarte, Lourenço, Simão |
-| 14 | 1650 | 379 | [Sarah Jane](https://www.geni.com/people/x/6000000134615839311) | Linda Tom's Grandfather Jung, Linda Tom's Mother, Linda Tom's Grandmother Kwan, 兆鈞 (Zhào Jūn) 譚 |
-| 15 | 1632 | 204 | [Nyimas Gede' Ratu Ayu / Ratu Sumirat [Versi 1] [Djody]](https://www.geni.com/people/x/6000000042792841537) | La Sadapotto Addatuang Sidenreng (Adt. Sidenreng XII periode 1904-1906), I Baeda Arung Rappeng Addatuang Sawitto (Adt. Sawitto periode 1922-1940), Andi Cibu' Addatuang Sidenreng (Adt. Sidenreng XIII, periode 1906-1949), Besse Bulo |
-| 16 | 1594 | 257 | [Isabel Beatriz Beltrán del Castillo y Ordáz](https://www.geni.com/people/x/6000000007305661455) | Maria Antonia, JOSE ANTONIO, MARIA Anastasia Pelaez Echeverri, Juan De los Santos |
-| 17 | 1591 | 347 | [秀吉](https://www.geni.com/people/x/6000000001748966144) | 明信, 嘉明, 星覚院, 重直正室 |
-| 18 | 1289 | 288 | [Jørgen Samuelsson Botn](https://www.geni.com/people/x/6000000064382596924) | Helmik Sakæus, Anna Gabrielle Assersdtr. Hana, Asser Halvardson, Dorthea Assersdtr. Hana |
-| 19 | 1213 | 336 | [道香](https://www.geni.com/people/x/6000000002239152670) | Toshitatsu Maeda, Toshinari Maeda, Namiko Maeda, Private |
-| 20 | 978 | 243 | [Ermesinde de Namur](https://www.geni.com/people/x/6000000009688464215) | Ida, Liudolf, Ezzo, Hermann |
-| 21 | 822 | 209 | [Josefa](https://www.geni.com/people/x/6000000002933778035) | Matheo, Gaspar, Polonia de Izarra y Astor, Pedro |
-| 22 | 817 | 212 | [Enrique](https://www.geni.com/people/x/6000000020628314697) | Catalina, Juana, Joaquín Forero Sotomayor, Ignacio |
-| 23 | 797 | 201 | [Eli Jonsdtr. Tjul](https://www.geni.com/people/x/6000000054472734459) | Guro Hind, Reidar Kristian Johannes, Tore, Helga Ansteensen |
-| 24 | 777 | 169 | [Thomas Wilson](https://www.geni.com/people/x/6000000003263299949) | Alabama C. Hammack, Lucinda Ursela Hammack, Marion W. Hammack, William M. Hammack |
-| 25 | 659 | 101 | [[64] Nyi Punyai Ageung bint](https://www.geni.com/people/x/6000000041002099043) | [62] Raden Abdullah "Pangeran Arya Jepara", Pangeran Padanaran I, Raden Abdul Qadir / Pati Unus / Adipati Unus / 逸孫 / Yat Sun / Pangeran Sabrang Lor bin, [63] Raden Aryawangsa Bin |
-| 26 | 591 | 75 | [Juana Maria del Carmen de Hoyos y Villegas](https://www.geni.com/people/x/6000000026393632178) | María de la Concepción Gómez Hoyos, Francisco Miguel Miguel Jerónimo Gomez De Castro Y Jimenez, Manuela del Carmen Manuela del Carmen Hoyos Zuluaga, José Joaquín de los Reyes Gómez Hoyos |
-| 27 | 577 | 166 | [Maren Marie Simonsdatter Kildal](https://www.geni.com/people/x/6000000001187770851) | Fredrik Wilhelm (Fritz) Rønning, Arne Johan Rønning, Lorentz Johannes Rønning, Ellen Henriette Rønning |
-| 28 | 571 | 117 | [Francis Courtenay](https://www.geni.com/people/x/6000000007023731573) | Lucy Berkeley, Nelson Berkeley, Edmund Berkeley, Edmund Berkeley |
-| 29 | 561 | 87 | [氏憲 禅秀](https://www.geni.com/people/x/6000000002621104336) | 忠朝, 忠廉, 忠広, 島津忠朝室 |
-| 30 | 509 | 141 | [Radelchis](https://www.geni.com/people/x/6000000003949801025) | Autbald, Auda de Roussillon, Regnier, Drogon alias Dreux de Mayence |
-| 31 | 464 | 52 | [Lady Li](https://www.geni.com/people/x/6000000077158722923) | 孚 京兆杜陵, 恆 京兆杜陵, 濟 字濟 京兆杜陵, 嗣立 延構 京兆杜陵 |
-| 32 | 427 | 36 | [1 NRA. Sepoeh [10]](https://www.geni.com/people/x/6000000189781865876) | 9 Syekh Abdul Mutholib (Syekh Bangkir) 1630-1655, 7 R. Singamanggala (Singawadana) maq Paseh - Smd, Private, Private |
-| 33 | 420 | 80 | [Emma Jensdotter Rosland](https://www.geni.com/people/x/6000000039968895282) | Johan Godtfred, Johan Oldrik Iverson Enersen, Johanne Gurine Pedersen, Marthe Ingeborg |
-| 34 | 415 | 87 | [Maren Gurine Larsdatter Øksnevad](https://www.geni.com/people/x/6000000013405580553) | Ingeborg Gurine Gulliksen, Ingeborg Andreasen, Kristine Malene Gulliksen, Govert |
-| 35 | 412 | 100 | [Svein Garman Gabrielsen](https://www.geni.com/people/x/6000000044094347970) | Private, Private, Private, Private |
-| 36 | 411 | 124 | [Mas Ayu SITI DJAETOEN](https://www.geni.com/people/x/6000000002066327990) | EYANG PUTRI, EYANG, EYANG, EYANG KARTODIMEDJO |
-| 37 | 408 | 103 | [Karen Mathea Simensdatter](https://www.geni.com/people/x/6000000022495432843) | Emma Eilertsen, Karen Mathea Simensdatter, Margit Eilertsen, Anette Eilertsen |
-| 38 | 381 | 46 | [ti 5 Istri](https://www.geni.com/people/x/6000000207031423825) | 9 Raden Arya Wiradipa (Maparah Panjalu), 1 Raden Ardiwidjaya, Nyi Mas Siti Zulaikha binti Tandamui Cirebon, 3 R. Kartawijaya |
-| 39 | 347 | 79 | [Henry Samuel Dabney](https://www.geni.com/people/x/3335882) | Sarah Catherine Bowers, John Lawver Bowers, Israel Archibald Bowers, David Thomas Bowers |
-| 40 | 322 | 6 | [Bajila](https://www.geni.com/people/x/6000000224971371911) | Zayd Al-Madhiji, Malik Al-Qahtani, Yam Al-Ansi, Jald Al-Madhiji |
-| 41 | 306 | 98 | [Karen Gurine Pedersdatter Lea](https://www.geni.com/people/x/6000000005606889479) | Johan Sviland, Ingrid Jacobsen, Ingebret Sørenson Sviland, Ellen Sviland |
-| 42 | 297 | 27 | [Nicolasa Xaviera Urrutia Fernandez](https://www.geni.com/people/x/6000000182965021185) | JUANA-MANUELA-JOSEFA, Manuel Gonzalez Paredes Villarreal, Mariano, Juana María Maria González Villarreal |
-| 43 | 292 | 33 | [Неизвестна](https://www.geni.com/people/x/6000000225696041851) | Афанасий Петрович, Пётр Григориевич, Яков Афанасиевич, Василий Петрович |
-| 44 | 284 | 62 | [Ma Chong TAY](https://www.geni.com/people/x/6000000188003919837) | 汝富, 潤宇, 德軒, 衍白 |
-| 45 | 273 | 77 | [Siti Rabiah](https://www.geni.com/people/x/6000000003113338107) | <private> ., <private> ., <private> ., <private> . |
-| 46 | 254 | 60 | [GKR Hemas / GKR Mas](https://www.geni.com/people/x/6000000032837236410) | Private, BRAy Ratna Mandaya, Hamengkubuwana VII Raden Mas Murtejo (22.12.1877-29.1.1921), Private |
-| 47 | 214 | 80 | [Sarah Ada Cooper](https://www.geni.com/people/x/6000000005965445611) | Private, Private, Private, Alyce Rae Nadolski |
-| 48 | 211 | 59 | [Takeko Kawasaki](https://www.geni.com/people/x/6000000192891245900) | Tsuyako Asō, Takakichi Asō, Norita Asō, Tarō Asō |
-| 49 | 199 | 56 | [Ahmad](https://www.geni.com/people/x/5250241720260071500) | Private, Private, Private, Private |
-| 50 | 197 | 46 | [Anna Sofia Johansson](https://www.geni.com/people/x/6000000001710498172) | Einar Vilhelm, Georg, Nils, Margit Maria Björklund |
-| 51 | 182 | 48 | [未知](https://www.geni.com/people/x/6000000054110710913) | 淳之 東海郯縣, 興弟 彭城, 湛之 孝源 東海郯縣, 逵之 東海郯縣 |
-| 52 | 175 | 43 | [Henti](https://www.geni.com/people/x/6000000058828965003) | Salitis / Shalik Ben, Yakubher, Khyan Ben, Sakir-Har |
-| 53 | 166 | 18 | [María Gertrudis Chapa Guajardo](https://www.geni.com/people/x/6000000001422278852) | Maria Justa Justa de la Garza Garza, Juan Elias García de Treviño Moreno, Ana Josefa Treviño de la Garza, José Antonio Treviño de la Garza |
-| 54 | 163 | 40 | [Rapeah](https://www.geni.com/people/x/6000000020960119247) | Mas Kerto Redjo (M. Oesoep), Mas Ajeng Marijam, Abd Munat, Naisah |
-| 55 | 161 | 42 | [Marit Larsd](https://www.geni.com/people/x/6000000005606855465) | Aslak Tøresson Skiene, Bertha Olsd, Tørres Aslaksen Skeiane, Tørres Tørresen Skiene |
-| 56 | 156 | 49 | [Lucas](https://www.geni.com/people/x/6000000007576603808) | Joseph Tomás Luque Laverde, Juan Crisóstomo Crisóstomo De Luque Osorio, Josefa De Laverde y Silva, Nicolas Luque |
-| 57 | 153 | 37 | [Teodor Toresen Håland](https://www.geni.com/people/x/4496545) | <private> Pritchard-Davies, Frank, Jan, Marlene |
-| 58 | 150 | 35 | [Helene Pedersdatter Ueland](https://www.geni.com/people/x/6000000005606851655) | Halvor Pedersen, Astri Waaland, Leif Pedersen, Randi Pedersen |
-| 59 | 149 | 50 | [智淵](https://www.geni.com/people/x/6000000010700667909) | 恵美子 正田, Michiko Shōda, Hidesaburo Shoda, Fumiko Soejima |
-| 60 | 148 | 43 | [Christen Jensen Munchegaard](https://www.geni.com/people/x/6000000008015992394) | Hans Mandrupssøn Schønnebøl, Maria Hansdatter, Josina Marie Macody, Maren Jørgensdatter (Staur) |
+**A region larger than ~4,020 people needs more than one export**, because that is the largest ball Geni has yet returned — so those regions get one seed per export they need, and the extra seeds are placed as far apart *inside the region* as the graph allows. Ranking would have put them next to each other: a well-connected doorway's neighbours are usually also well-connected doorways, and the second ball would land on the first. **Take them one at a time and re-run `density` in between** — the later seeds are computed against the region as it is now, and the first export changes it.
+
+4 of the regions shown need more than one export; the largest needs 3.
+
+| # | people | doorways | exports | seeds to export from | who else is in it |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 1 | 10051 | 2689 | 3 | [Juan](https://www.geni.com/people/x/6000000010895650922)<br>[Ermengarde](https://www.geni.com/people/x/6000000010445761365)<br>[Mascarosse d'Armagnac](https://www.geni.com/people/x/6000000003827657666) | Roscille d'Anjou, Gilbert, Ingelger d'Anjou, Roscille de Loches |
+| 2 | 7566 | 1539 | 2 | [Esther Robbins](https://www.geni.com/people/x/6000000002766698694)<br>[Yeshuwalul](https://www.geni.com/people/x/6000000008935294184) | Selanor Squires, Joshua Webster, Jonathan Webster, Mabel Risley |
+| 3 | 6133 | 1655 | 2 | [Søren Pederson Godsen](https://www.geni.com/people/x/6000000008187757114)<br>[Ingebreth Rønneberg](https://www.geni.com/people/x/6000000005606841153) | Brita Monsdtr Kolltveit, Mons Olson Øye/Kolltveit, Brita Andersdtr. Ljones, Mikkel Olson Øye |
+| 4 | 4989 | 1018 | 2 | [Christopher Hartvigsen von Schack](https://www.geni.com/people/x/6000000004837108374)<br>[Anne Ottesdatter Rosenkrantz](https://www.geni.com/people/x/6000000001779880786) | Kirsten Pallesdatter Griis, Palle Baggesen, Birgitte Pallesdatter Griis, Else Pallesdatter Griis |
+| 5 | 3699 | 704 | 1 | [Olea Larsdatter Linto](https://www.geni.com/people/x/6000000126110513929) | Inger Røsæg, Hans Johannesen, Anne Kristine Andersdatter, Anders Johannesen |
+| 6 | 3668 | 868 | 1 | [Agatha Johansdotter Læstadia](https://www.geni.com/people/x/6000000000245144721) | Anders Andersson, Anna, Brita Andersdotter Gerzonia, Anders |
+| 7 | 3633 | 995 | 1 | [한공 권](https://www.geni.com/people/x/6000000183109315971) | 씨 이, 사유 민, 석효 민, 설 민 |
+| 8 | 3569 | 840 | 1 | [Anders](https://www.geni.com/people/x/6000000011514832897) | Johan Albert Karlsson, Tekla Josefina Larsson, Hedvig Sophia Larsdotter, Karl Fredrik |
+| 9 | 3370 | 788 | 1 | [Beatriz Gomes Gomes de Abreu](https://www.geni.com/people/x/6000000006202656582) | Inês (ou Guiomar), Lopo, Leonor de Noronha, Rui |
+| 10 | 2835 | 500 | 1 | [María de Luna y Tejada de los Monteros](https://www.geni.com/people/x/6000000016023204287) | Beatriz Macias Valadez Y De Tavera Godinez, Clemente de la Torre Ledesma y Rubalcava, Jose de la Torre Ledezma y Macias Aceves, Ana Tavera o de la Torre |
+| 11 | 2834 | 808 | 1 | [Maria](https://www.geni.com/people/x/6000000019493973121) | <private> Terrazas Alborta, Tula Rosa Alborta Ballivian, José Ricardo Terrazas Urquidi, <private> Terrazas Alborta |
+| 12 | 1976 | 413 | 1 | [Margaret Outlaw Outlaw](https://www.geni.com/people/x/6000000019386810114) | Brinkley, John Carroll Hows, Susan Penelope "Penny" King, Horatio Rasa Jerome |
+| 13 | 1719 | 487 | 1 | [Maria de Góis de Siqueira](https://www.geni.com/people/x/6000000059668788371) | Ana, Francisco, Leonor, Maria de Araújo |
+| 14 | 1650 | 379 | 1 | [Sarah Jane](https://www.geni.com/people/x/6000000134615839311) | Private, Private, Private, Private |
+| 15 | 1632 | 204 | 1 | [Nyimas Gede' Ratu Ayu / Ratu Sumirat [Versi 1] [Djody]](https://www.geni.com/people/x/6000000042792841537) | 9. Nji Rd. Neneng Bentang, 4 R. Dmg. Mangunkusumah (Demang Tjibarusah), NR. Siti Munarah, NR. Odja Sarodja |
+| 16 | 1594 | 257 | 1 | [Isabel Beatriz Beltrán del Castillo y Ordáz](https://www.geni.com/people/x/6000000007305661455) | N, Marcos, Sebastiana Franco, Luisa Franco Velasquez |
+| 17 | 1591 | 347 | 1 | [秀吉](https://www.geni.com/people/x/6000000001748966144) | 長知, 雄久, 信治, 信治室 |
+| 18 | 1289 | 288 | 1 | [Jørgen Samuelsson Botn](https://www.geni.com/people/x/6000000064382596924) | Marte Mikalsdotter Tømmerstøl, Mikkel Andreas Pedersen, Rasmine Andrea Mikkelsdatter Tømmerstøl, Anne Kristine Mikkelsdatter Lien |
+| 19 | 1213 | 336 | 1 | [道香](https://www.geni.com/people/x/6000000002239152670) | 鑑備, 加代子, 正昭, 義和正室 |
+| 20 | 978 | 243 | 1 | [Ermesinde de Namur](https://www.geni.com/people/x/6000000009688464215) | Milon de Durnes, Gérard II de Durnes, Guillemette de Pesmes, Jean de Durnay |
+| 21 | 822 | 209 | 1 | [Josefa](https://www.geni.com/people/x/6000000002933778035) | Manuel, Mateo, Teresa Gayoso Gomez Recio, Elena |
+| 22 | 817 | 212 | 1 | [Luisa](https://www.geni.com/people/x/6000000025645718358) | Francisco Antonio Mauricio, Ramón, Juana María, Francisco Xavier Xavier |
+| 23 | 797 | 201 | 1 | [Eli Jonsdtr. Tjul](https://www.geni.com/people/x/6000000054472734459) | Eli, Tormod Andreas Tormodsson, Ole A. Martin Nessa, Tormod Thormodsen Nessa |
+| 24 | 777 | 169 | 1 | [Elizabeth Dinwiddie](https://www.geni.com/people/x/6000000003263376406) | Frances E Williamson, Elizabeth “Eliza” Ann Yancey Overby, Thomas W. Williamson, Erasmus K Williamson |
+| 25 | 659 | 101 | 1 | [[64] Nyi Punyai Ageung bint](https://www.geni.com/people/x/6000000041002099043) | Dato Sulaiman (Qadhi & Mufti Kesultanan Wajo Pertama), Sayyid Husain Jumadil Kubra Al-Asghar, Putri Arung Matowa Wajo, Husen Jamaludin Akbar / Jumadil Kubro Azmatkhan Al-Hussein |
+| 26 | 591 | 75 | 1 | [Juana Maria del Carmen de Hoyos y Villegas](https://www.geni.com/people/x/6000000026393632178) | Nicolas Leon Garces Rendon, Catarina Ignacia Rendon Gil, Magdalena Garcés Rendon, Juan Basilio Garces Rendon |
+| 27 | 577 | 166 | 1 | [Jakob Parelius Sørensen Normann](https://www.geni.com/people/x/6000000007980321300) | Georg Lüddeckens Alexander Richter, Aud Egede-Nissen Egede-Nissen, Private, Werner Louis Georg Lüdeckens |
+| 28 | 571 | 117 | 1 | [Elizabeth Seymour](https://www.geni.com/people/x/6000000007525116037) | James George Wilson, Elizabeth "Betsy" Youel, William Youel, William Nelson Youel |
+| 29 | 561 | 87 | 1 | [久保姫 栽松院](https://www.geni.com/people/x/6000000002657010417) | 基言, 広言, 孝言, 忠久 |
+| 30 | 509 | 141 | 1 | [Garetruda](https://www.geni.com/people/x/6000000004868879855) | Adeltrude, Adelchis, Aiulf II, Ageltruda di Benevento |
+| 31 | 464 | 52 | 1 | [Lady Li](https://www.geni.com/people/x/6000000077158722923) | 音, 遵 伯業 琅邪臨沂, 時, 安 |
+| 32 | 427 | 36 | 1 | [1 NRA. Sepoeh [10]](https://www.geni.com/people/x/6000000189781865876) | 19 NM Djagasatroe, 13 Kiyai Anggatanoe, 7 R. Singamanggala (Singawadana) maq Paseh - Smd, 4 Dalem Wangsasoebaja |
+| 33 | 420 | 80 | 1 | [Emma Jensdotter Rosland](https://www.geni.com/people/x/6000000039968895282) | Malene Torkelsdatter Mauland, Inger Torkelsdatter Mauland, Kirsten Torkelsdatter Mauland, Reier Torkelsen Mauland |
+| 34 | 415 | 87 | 1 | [Maren Gurine Larsdatter Øksnevad](https://www.geni.com/people/x/6000000013405580553) | Jorina Isaksdatter Grødeland, Sven Jonsen Tjåland, Malena Isaksdatter Grødaland, Anna Malena Svensdatter Salte |
+| 35 | 412 | 100 | 1 | [Karen Marie Olasdatter Åreskjold](https://www.geni.com/people/x/6000000044094446833) | Ørge Ørgesen Helset, Ola Ørjesen Helset, Marte Ørjesdatter Helset, Agnete Ottesdatter Lid |
+| 36 | 411 | 124 | 1 | [Mas Ayu SITI DJAETOEN](https://www.geni.com/people/x/6000000002066327990) | Mas SOETAMAN, R. Ayu Oemi Oentari Kartoredjo, Mas SOETARDJO, Mas Ajeng ADJENG |
+| 37 | 408 | 103 | 1 | [Karen Mathea Simensdatter](https://www.geni.com/people/x/6000000022495432843) | Andrine Olsdatter Skaar, Augusta Skaar, Inger Marie Johannesdatter Snekkerhytta, Ole Pedersen Skår |
+| 38 | 381 | 46 | 1 | [ti 5 Istri](https://www.geni.com/people/x/6000000207031423825) | 6 Rd. Agus Mukasim, 5 Rd. Mertadirana, 3 Rd. Ayu Perbasari, 2 Rd. Widjaya |
+| 39 | 347 | 79 | 1 | [Henry Samuel Dabney](https://www.geni.com/people/x/3335882) | Jacob M Gardner, John S Gardner, Rachel Gardner, David Gardner |
+| 40 | 322 | 6 | 1 | [Bajila](https://www.geni.com/people/x/6000000224971371911) | Qarn al-Muradi, Radman al-Muradi, Najiyah al-Muradi, Atif al-Muradi |
+| 41 | 306 | 98 | 1 | [Martin Svensen](https://www.geni.com/people/x/6000000016976405367) | Private, Emanuel Simonsen, Ellen Sviland, Private |
+| 42 | 297 | 27 | 1 | [Nicolasa Xaviera Urrutia Fernandez](https://www.geni.com/people/x/6000000182965021185) | Rosa Villarreal González, Juan de Dios De Villarreal González, Maria Segunda Gregoria Gregoria Gonzalez de Paredes Villarreal, Francisco Javier Xavier de Villarreal Cantú |
+| 43 | 292 | 33 | 1 | [Неизвестна](https://www.geni.com/people/x/6000000225696041851) | Василий Большой Григориевич, Григорий Григориевич, Пётр Григориевич, Григорий Иванович |
+| 44 | 284 | 62 | 1 | [Ma Chong TAY](https://www.geni.com/people/x/6000000188003919837) | Private, Private, Kok Tong, Francis LEE, Sek See, Germaine LEE |
+| 45 | 273 | 77 | 1 | [Noerdjana](https://www.geni.com/people/x/6000000080875848833) | Djaafar Radjo Moedo, Abdoel Rahman Dt. Dinagari Orang Kaja Besar, Sjeikh Abdoellah, Abdoel Gani Radjo Mangkoeto |
+| 46 | 254 | 60 | 1 | [GKR Hemas / GKR Mas](https://www.geni.com/people/x/6000000032837236410) | Private, Kapten BRM Sungangusamsi / GBPH Purbaya, Private, BRA Srengkara Aningdiya |
+| 47 | 214 | 80 | 1 | [Sarah Ada Cooper](https://www.geni.com/people/x/6000000005965445611) | Private, Private, Private, Private |
+| 48 | 211 | 59 | 1 | [Takeko Kawasaki](https://www.geni.com/people/x/6000000192891245900) | Matsu Ōkubo, Toshiyo Ōkubo, Fude ?, Masateru Tsuchimochi |
+| 49 | 199 | 56 | 1 | [Ahmad](https://www.geni.com/people/x/5250241720260071500) | Reynita, Leilany, Private, Private |
+| 50 | 197 | 46 | 1 | [Anna Sofia Johansson](https://www.geni.com/people/x/6000000001710498172) | Eric Jansson, Lena Jansdotter, Stina Jansdotter, Jan Jansson ( twin) |
+| 51 | 182 | 48 | 1 | [未知](https://www.geni.com/people/x/6000000054110710913) | 潘, 義隆 彭城, 濬 休明 彭城, 彭城 |
+| 52 | 175 | 43 | 1 | [Henti](https://www.geni.com/people/x/6000000058828965003) | ? Ulmi-Teshub / Teszub (Niewolnica Teszuba), Muwatalli II, Urhi-Teshup, Ulmi-Teshup - Mursili III |
+| 53 | 166 | 18 | 1 | [María Gertrudis Chapa Guajardo](https://www.geni.com/people/x/6000000001422278852) | María Justa Leonarda González Lozano, María de la Encarnación González Lozano, José Miguel González Caballero, José González Caballero |
+| 54 | 163 | 40 | 1 | [Rapeah](https://www.geni.com/people/x/6000000020960119247) | Mas Ajeng Sakinam, Dinam (Sadinam), Kijam, MAS Wahidin Wongso Dimejo Wongso Dimejo |
+| 55 | 161 | 42 | 1 | [Tørres Endresen](https://www.geni.com/people/x/6000000005608873735) | Ola Breivik, Rasmus Olsen, Joren Halvardsdotter St. Auglend, Rasmus Rasmusson Bersagel |
+| 56 | 156 | 49 | 1 | [Lucas](https://www.geni.com/people/x/6000000007576603808) | Alonso, Marquesa, Bárbara, Agustina |
+| 57 | 153 | 37 | 1 | [Dina Maria Danielsdatter Eskeland](https://www.geni.com/people/x/6000000003095220711) | Dagfrid, Dagfred, Teodor Toresen Håland, Tore |
+| 58 | 150 | 35 | 1 | [Helene Pedersdatter Ueland](https://www.geni.com/people/x/6000000005606851655) | Anna Dahle Dahle, Helene Waaland, Mikal Dahle, Per Dahle |
+| 59 | 149 | 50 | 1 | [作子](https://www.geni.com/people/x/6000000010701057400) | Hisashi Owada, 統, <private> 小和田, Masako Owada |
+| 60 | 148 | 43 | 1 | [Christen Jensen Munchegaard](https://www.geni.com/people/x/6000000008015992394) | Maren Bernhoft, Mette Eriksdatter, Erik Eriksen Eriksson, Christopher Bernhoft |
 
 5754 smaller regions not shown.
 

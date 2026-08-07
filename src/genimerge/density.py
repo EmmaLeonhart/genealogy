@@ -38,11 +38,13 @@ from __future__ import annotations
 import re
 from collections import Counter, deque
 from dataclasses import dataclass
+from math import ceil
 from pathlib import Path
 
 from .frontier import family_graph
 from .identity import profile_url
 from .model import Tree
+from .seeds import GENI_EXPORT_CAP
 
 __all__ = [
     "INDI_RE",
@@ -78,21 +80,41 @@ class Region:
     sample: tuple[str, ...]
     #: mean presence across the region
     mean_presence: float
-    #: who to export from to cover this region — see :func:`_representative`
-    seed: str = ""
-    seed_name: str = ""
+    #: who to export from to cover this region, spread across it — see
+    #: :func:`_representatives`. One entry for every export the region needs,
+    #: best first, as ``(geni_id, display_name)``.
+    seeds: tuple[tuple[str, str], ...] = ()
 
     @property
     def size(self) -> int:
         return len(self.members)
 
+    @property
+    def seed(self) -> str:
+        """The first seed. Kept because a region needing one export is still
+        the common case by a wide margin, and every caller wanting *the* seed
+        would otherwise index into a tuple."""
+        return self.seeds[0][0] if self.seeds else ""
 
-def _representative(
-    members: list[str], tree: Tree, graph: dict[str, list[str]]
-) -> tuple[str, str]:
-    """One person to export from, to cover this region.
+    @property
+    def seed_name(self) -> str:
+        return self.seeds[0][1] if self.seeds else ""
 
-    Ranked on three things, in order:
+    @property
+    def exports_needed(self) -> int:
+        """How many exports it would take to cover this region.
+
+        An export is a ball of at most `GENI_EXPORT_CAP` people, so a region
+        larger than that cannot be covered by one however well it is seeded.
+        This is the count of seeds the region is given.
+        """
+        return max(1, ceil(self.size / GENI_EXPORT_CAP))
+
+
+def _doorway_rank(
+    geni_id: str, tree: Tree, graph: dict[str, list[str]], inside: set[str]
+) -> tuple[int, int, int]:
+    """How good a seed one person is, ranked on three things in order:
 
     1. **No parents recorded.** Everyone in the region is thin, but a person
        whose parents are missing is a doorway: Geni knows who they were and we
@@ -105,24 +127,87 @@ def _representative(
        seeding it at a well-connected member covers more of the region per hop
        than seeding it at a leaf.
 
-    This is a heuristic for *where to start*, not a claim that this person is
-    the most important in the region.
+    A heuristic for *where to start*, not a claim about who matters.
     """
+    person = tree.people[geni_id]
+    name = person.display_name or ""
+    return (
+        0 if person.has_known_parents else 1,
+        0 if (not name or name.lower().strip("<> ") == "private") else 1,
+        sum(1 for n in graph.get(geni_id, ()) if n in inside),
+    )
+
+
+def _hops_within(
+    start: str, inside: set[str], graph: dict[str, list[str]]
+) -> dict[str, int]:
+    """Breadth-first distances from `start`, never leaving the region.
+
+    Staying inside matters: two seeds should be far apart *in the region being
+    covered*, and a shortcut through well-covered graph outside it would report
+    them as close when the export balls would not overlap at all.
+    """
+    seen = {start: 0}
+    queue = deque([start])
+    while queue:
+        current = queue.popleft()
+        for neighbour in graph.get(current, ()):
+            if neighbour in inside and neighbour not in seen:
+                seen[neighbour] = seen[current] + 1
+                queue.append(neighbour)
+    return seen
+
+
+def _representatives(
+    members: list[str], tree: Tree, graph: dict[str, list[str]], want: int
+) -> tuple[tuple[str, str], ...]:
+    """`want` people to export from, spread across the region.
+
+    A region larger than one export ball cannot be covered by one seed, and the
+    report used to emit exactly one however large the region was — region 1 was
+    10 051 people against a ~4 020 ball, so two thirds of it had no proposal at
+    all and the reader had no way to ask for a second.
+
+    **Seeds after the first are placed by distance, not by rank.** Taking the
+    top `want` by :func:`_doorway_rank` would pick neighbours: a well-connected
+    doorway's neighbours are usually also well-connected doorways, so the balls
+    would land on top of each other and the second export would re-fetch the
+    first. Each further seed is therefore the member *furthest from every seed
+    already chosen* — farthest-point sampling — with the doorway rank used only
+    to break ties between equally distant candidates.
+
+    The first seed is still the best-ranked person in the region, so a
+    one-export region behaves exactly as it did before this existed.
+    """
+    if not members:  # pragma: no cover - regions are never empty
+        return ()
     inside = set(members)
-    best: tuple[tuple[int, int, int], str] | None = None
-    for geni_id in members:
-        person = tree.people[geni_id]
-        name = person.display_name or ""
-        rank = (
-            0 if person.has_known_parents else 1,
-            0 if (not name or name.lower().strip("<> ") == "private") else 1,
-            sum(1 for n in graph.get(geni_id, ()) if n in inside),
-        )
-        if best is None or rank > best[0]:
-            best = (rank, geni_id)
-    if best is None:  # pragma: no cover - regions are never empty
-        return "", ""
-    return best[1], tree.people[best[1]].display_name or ""
+    rank = {g: _doorway_rank(g, tree, graph, inside) for g in members}
+
+    first = max(members, key=lambda g: (rank[g], g))
+    chosen = [first]
+    if want <= 1:
+        return ((first, tree.people[first].display_name or ""),)
+
+    # Distance from each member to the nearest seed chosen so far. A member the
+    # walk cannot reach cannot happen — regions are connected by construction —
+    # so a missing entry would be a bug; it is filled with a value larger than
+    # any real distance rather than silently read as zero.
+    ceiling = len(members)
+    nearest = dict(_hops_within(first, inside, graph))
+    while len(chosen) < want:
+        remaining = [g for g in members if g not in chosen]
+        if not remaining:
+            break
+        best = max(remaining, key=lambda g: (nearest.get(g, ceiling), rank[g], g))
+        if nearest.get(best, ceiling) == 0:
+            break  # every member is already a seed
+        chosen.append(best)
+        for node, distance in _hops_within(best, inside, graph).items():
+            if distance < nearest.get(node, distance + 1):
+                nearest[node] = distance
+
+    return tuple((g, tree.people[g].display_name or "") for g in chosen)
 
 
 def sparse_regions(
@@ -160,15 +245,14 @@ def sparse_regions(
 
         people = [tree.people[m] for m in members]
         named = [p.display_name for p in people if p.display_name]
-        seed, seed_name = _representative(members, tree, graph)
+        want = max(1, ceil(len(members) / GENI_EXPORT_CAP))
         regions.append(
             Region(
                 members=tuple(members),
                 parentless=sum(1 for p in people if not p.has_known_parents),
                 sample=tuple(named[:6]),
                 mean_presence=sum(counts.get(m, 0) for m in members) / len(members),
-                seed=seed,
-                seed_name=seed_name,
+                seeds=_representatives(members, tree, graph, want),
             )
         )
 
@@ -236,24 +320,45 @@ def render_markdown(
     ]
 
     if regions:
+        many = [r for r in regions[:60] if r.exports_needed > 1]
         lines += [
-            "The **seed** column is one person to export from, per region: a "
-            "doorway where possible, preferring someone with a real name over a "
-            "redacted `Private`, and best-connected within the region. It is a "
-            "heuristic for where to start, not a claim about who matters.",
+            "The **seeds** column is who to export from: a doorway where "
+            "possible, preferring someone with a real name over a redacted "
+            "`Private`, and best-connected within the region. A heuristic for "
+            "where to start, not a claim about who matters.",
+            "",
+            f"**A region larger than ~{GENI_EXPORT_CAP:,} people needs more than "
+            "one export**, because that is the largest ball Geni has yet "
+            "returned — so those regions get one seed per export they need, and "
+            "the extra seeds are placed as far apart *inside the region* as the "
+            "graph allows. Ranking would have put them next to each other: a "
+            "well-connected doorway's neighbours are usually also "
+            "well-connected doorways, and the second ball would land on the "
+            "first. **Take them one at a time and re-run `density` in "
+            "between** — the later seeds are computed against the region as it "
+            "is now, and the first export changes it.",
             "",
         ]
+        if many:
+            lines += [
+                f"{len(many)} of the regions shown need more than one export; "
+                f"the largest needs {max(r.exports_needed for r in many)}.",
+                "",
+            ]
         lines += _table(
-            ["#", "people", "doorways", "seed to export from", "who else is in it"],
+            ["#", "people", "doorways", "exports", "seeds to export from", "who else is in it"],
             [
                 [
                     str(i),
                     str(r.size),
                     str(r.parentless),
+                    str(r.exports_needed),
                     (
-                        f"[{r.seed_name or r.seed}]({profile_url(r.seed)})"
-                        if r.seed
-                        else "—"
+                        "<br>".join(
+                            f"[{name or geni_id}]({profile_url(geni_id)})"
+                            for geni_id, name in r.seeds
+                        )
+                        or "—"
                     ),
                     ", ".join(r.sample[:4]) or "—",
                 ]
@@ -286,8 +391,6 @@ def render_seed_list(regions: list[Region]) -> str:
     """
     lines = []
     for region in regions:
-        if not region.seed:
-            continue
-        name = region.seed_name or "NN"
-        lines.append(f"{profile_url(region.seed)} | Geni - {name}")
+        for geni_id, seed_name in region.seeds:
+            lines.append(f"{profile_url(geni_id)} | Geni - {seed_name or 'NN'}")
     return "\n".join(lines) + ("\n" if lines else "")

@@ -207,6 +207,104 @@ def test_a_redacted_name_loses_to_a_real_one_among_doorways():
     assert big.seed_name == "Q X"
 
 
+def _chain(length: int) -> str:
+    """A line of `length` people, each the child of the one before.
+
+    A path graph is the sharpest shape for testing seed *placement*: the
+    distance between any two members is unambiguous, so "spread out" has one
+    right answer rather than several defensible ones.
+    """
+    parts = ["0 HEAD"]
+    for n in range(1, length + 1):
+        parts.append(f"0 @I{n}@ INDI")
+        parts.append(f"1 NAME P{n} /X/")
+        if n > 1:
+            parts.append(f"1 FAMC @F{n - 1}@")
+        if n < length:
+            parts.append(f"1 FAMS @F{n}@")
+    for n in range(1, length):
+        parts += [f"0 @F{n}@ FAM", f"1 HUSB @I{n}@", f"1 CHIL @I{n + 1}@"]
+    return "\n".join(parts + ["0 TRLR", ""])
+
+
+def _graph_of(tree):
+    from genimerge.frontier import family_graph
+
+    return family_graph(tree)
+
+
+def test_one_seed_is_asked_for_and_one_comes_back():
+    """The common case, unchanged: a region inside one export ball gets the
+    single best-ranked doorway, exactly as before multi-seeding existed."""
+    tree = _tree(_chain(9))
+    members = list(tree.people)
+
+    seeds = density._representatives(members, tree, _graph_of(tree), want=1)
+
+    assert len(seeds) == 1
+    assert seeds[0][0] == "1"  # the only person with no parents recorded
+
+
+def test_extra_seeds_are_placed_far_apart_not_ranked():
+    """The defect this fixes. Taking the top `want` by rank picks neighbours —
+    a well-connected doorway's neighbours are also well-connected doorways —
+    and the second export ball lands on the first."""
+    tree = _tree(_chain(9))
+    members = list(tree.people)
+
+    seeds = density._representatives(members, tree, _graph_of(tree), want=3)
+
+    assert [g for g, _ in seeds] == ["1", "9", "5"]
+
+
+def test_seeds_are_never_adjacent_while_the_region_has_room():
+    tree = _tree(_chain(9))
+    graph = _graph_of(tree)
+
+    picked = [g for g, _ in density._representatives(list(tree.people), tree, graph, 3)]
+
+    for geni_id in picked:
+        assert not set(graph[geni_id]) & set(picked), f"{geni_id} borders another seed"
+
+
+def test_asking_for_more_seeds_than_the_region_holds_stops_cleanly():
+    """`want` comes from a size estimate, so it must never outrun the members."""
+    tree = _tree(_chain(4))
+    members = list(tree.people)
+
+    seeds = density._representatives(members, tree, _graph_of(tree), want=99)
+
+    assert len(seeds) <= len(members)
+    assert len({g for g, _ in seeds}) == len(seeds)  # no repeats
+
+
+def test_a_small_region_needs_one_export():
+    tree = _tree(PICK)
+    regions = density.sparse_regions(tree, Counter(), threshold=1, min_size=2)
+
+    assert all(r.exports_needed == 1 for r in regions)
+    assert all(len(r.seeds) == 1 for r in regions)
+
+
+def test_the_seed_list_emits_every_seed_not_just_the_first():
+    """It is the file Emma pastes into a browser; a region needing three
+    exports that contributes one line is the bug this whole change is about."""
+    tree = _tree(_chain(9))
+    graph = _graph_of(tree)
+    members = list(tree.people)
+    region = density.Region(
+        members=tuple(members),
+        parentless=1,
+        sample=(),
+        mean_presence=1.0,
+        seeds=density._representatives(members, tree, graph, want=3),
+    )
+
+    text = density.render_seed_list([region])
+
+    assert len(text.strip().splitlines()) == 3
+
+
 def test_the_seed_list_is_in_the_shape_of_emmas_handwritten_file():
     """`<url> | Geni - <name>`, so it pastes straight into the file she keeps."""
     tree = _tree(PICK)

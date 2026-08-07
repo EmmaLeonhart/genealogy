@@ -3507,3 +3507,46 @@ a summary line naming 蘇瑗 raised `UnicodeEncodeError` on a cp1252 console *af
 the files were written — a command that had done its whole job exiting non-zero
 over a progress message. The reports were never at risk; they are opened with an
 explicit UTF-8 encoding.
+
+## 2026-08-06 (later) — density gives a region as many seeds as it needs exports
+
+Queue item 7, done, and its "low priority, may not pay" caveat is spent: Emma is
+mid-batch on more exports and asked for areas to `Forest` from while this was in
+flight.
+
+A region larger than one export ball cannot be covered by one seed, and the
+report emitted exactly one however large the region was. Region 1 is 10 051
+people against a ~4 020 ball, so two thirds of it had no proposal and the reader
+had no way to ask for a second. Regions now get
+`ceil(size / GENI_EXPORT_CAP)` seeds: **84 across 72 regions of 100+, four of
+which need more than one export.**
+
+**Seeds after the first are placed by distance, not rank.** Taking the top *n*
+by doorway rank picks neighbours — a well-connected doorway's neighbours are
+usually also well-connected doorways — so the balls land on top of each other and
+the second export re-fetches the first. Each further seed is the member furthest
+from every seed already chosen, with rank breaking ties. The walk stays inside
+the region: a shortcut through well-covered graph outside it would report two
+seeds as close when their balls would not overlap at all.
+
+The report now says plainly that seeds *within one region* should be taken one
+at a time with `density` re-run between them, because the later seeds are
+computed against the region as it stands and the first export changes it. Across
+regions there is no such constraint.
+
+**Seed choice was nondeterministic and nobody had noticed.** `_representative`
+walked `members` keeping the first strictly-better candidate, and `members` comes
+from a BFS over a `set`, whose iteration order varies per process. Two runs over
+identical data could name different seeds — which is why region 1's neighbourhood
+is described by a different name than in the run an hour earlier. Ties now break
+on the profile ID. Worth recording as a class of bug rather than an incident: a
+report whose output is a *choice* rather than a count can be unstable without any
+number looking wrong.
+
+Also `genimerge density` printed "<n> seeds, one per region", counting regions.
+Now that those are different numbers it counts seeds and names how many regions
+need more than one export.
+
+12 existing density tests pass unchanged; 6 new ones cover placement, using a
+path graph, where "spread out" has one right answer rather than several
+defensible ones.
