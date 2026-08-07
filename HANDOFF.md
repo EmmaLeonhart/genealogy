@@ -15,11 +15,15 @@ opened a PR.
   `claude/wiki-qid-export-coverage-frykhv`. New `genimerge profile-names`
   command + `src/genimerge/profilenames.py` → `reports/profile-names.md`;
   `tests/test_profilenames.py` (11 tests). Additive only.
-- At handoff the full `python -m pytest` was **still running (~14 min, real
-  merges, at 99% CPU — slow, not hung)**. Every directly-affected test passed
-  (`test_profilenames`, `test_cli` registration, `test_wikidata_ids_documented`,
-  `test_package`). **On the PC: re-run `python -m pytest` to confirm the whole
-  suite is green** before merging — the cloud run wasn't watched to completion.
+- Full `python -m pytest` finished: **1876 passed, 2 skipped, 1 failed** in
+  ~22 min. The one failure is **pre-existing and unrelated** to this PR:
+  `test_merge_real_exports.py::test_the_committed_merge_report_still_describes_these_exports`
+  — the committed `reports/merge.md` no longer byte-matches a fresh merge of
+  `exports/` (stale generated content, likely since the date-parser fix in
+  `b7dc494` changed merged dates). This branch never touches `reports/merge.md`;
+  it is red on `main` too. **Fix when convenient, separate from this PR:**
+  `python -m genimerge merge` then commit the regenerated `reports/merge.md`.
+  Everything the profile-names PR touches is green.
 
 ## The findings (over the 257,219-person merge)
 
