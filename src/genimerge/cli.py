@@ -882,6 +882,12 @@ def _cmd_wikidata_download(args: argparse.Namespace) -> int:
     # after the map is refreshed adds only what is genuinely new.
     seeded = index.enqueue(wikidownload.seed_qids(seed_file))
     index.commit()
+    # Anything a previous run's outage marked failed goes back on the queue.
+    # Without this a dropped connection leaves QIDs neither held nor queued and
+    # the next run reports "complete" with holes in it.
+    retried = index.requeue_errors()
+    if retried:
+        print(f"re-queued {retried:,} QIDs that failed on an earlier run")
     counts = index.counts()
     print(
         f"seed file {seed_file.name}: {seeded:,} QIDs added to the fetch queue; "
@@ -919,8 +925,11 @@ def _cmd_wikidata_download(args: argparse.Namespace) -> int:
         progress=progress,
     )
     total_known = len(index.known())
+    remaining = index.queue_length()
     index.close()
 
+    if stats.stopped_early:
+        print(f"\nSTOPPED: {stats.stopped_early}", file=sys.stderr)
     print(
         f"\n{stats.stored:,} stored, {stats.missing:,} missing, {stats.errors:,} errored "
         f"in {stats.batches:,} requests over {stats.seconds:,.0f}s"
@@ -942,7 +951,8 @@ def _cmd_wikidata_download(args: argparse.Namespace) -> int:
             f"{full['gigabytes_json']:,.1f} GB of JSON"
         )
         print("  — a floor, not an estimate: a short run has not met a long run's throttling.")
-    return 0
+    print(f"{remaining:,} QIDs still queued — re-run the same command to continue")
+    return 1 if stats.stopped_early else 0
 
 
 def _cmd_profile_names(args: argparse.Namespace) -> int:

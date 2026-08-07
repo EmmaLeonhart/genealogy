@@ -495,3 +495,138 @@ def test_full_entities_does_not_use_the_report_cache(tmp_path):
 
     assert len(calls) == 2
     assert not (tmp_path / "cache").exists()
+
+
+# -- surviving a kill --------------------------------------------------
+
+
+def truncate_last_member(shard, keep_fraction: float = 0.5) -> None:
+    """Chop the tail off a shard, as losing power mid-write would."""
+    raw = shard.read_bytes()
+    shard.write_bytes(raw[: int(len(raw) * keep_fraction)])
+
+
+def test_a_truncated_shard_keeps_the_batches_written_before_the_break(tmp_path):
+    # Power loss partway through writing a batch ends that gzip member
+    # mid-stream. Reading it then raises, and appending after the break would
+    # make the new items unreachable too. A shard holds twenty batches, so the
+    # earlier members are what there is to save — and they do survive.
+    store = wikidownload.ItemStore(tmp_path / "items")
+    for start in range(1, 51, 10):
+        store.write([person(f"Q{n}", "a name long enough to compress") for n in range(start, start + 10)])
+    shard = store.shards()[0]
+    truncate_last_member(shard, keep_fraction=0.7)
+
+    with pytest.raises((EOFError, OSError, UnicodeDecodeError)):
+        list(wikidownload._read_lines(shard))
+
+    reopened = wikidownload.ItemStore(tmp_path / "items")
+    survivors = [item["id"] for item in reopened.items()]
+
+    assert 0 < len(survivors) < 50, "the batches before the break must still read"
+
+
+def test_an_interrupted_batch_is_lost_whole_and_fetched_again(tmp_path):
+    # One batch is one gzip member, so a write cut in half yields nothing from
+    # that batch rather than half of it. That is the right outcome: the index is
+    # committed after the shard, so none of those items were ever recorded as
+    # held and the walk simply asks for them again.
+    store, index = store_and_index(tmp_path)
+    store.write([person(f"Q{n}", "a name long enough to compress") for n in range(1, 51)])
+    truncate_last_member(store.shards()[0])
+
+    reopened = wikidownload.ItemStore(tmp_path / "items")
+
+    assert list(reopened.items()) == []
+    assert index.held() == set(), "nothing was committed, so nothing is believed held"
+
+
+def test_a_repaired_shard_can_be_appended_to_and_read_back(tmp_path):
+    store = wikidownload.ItemStore(tmp_path / "items")
+    store.write([person(f"Q{n}", "a name long enough to compress") for n in range(1, 51)])
+    truncate_last_member(store.shards()[0])
+
+    reopened = wikidownload.ItemStore(tmp_path / "items")
+    before = len(list(reopened.items()))
+    reopened.write([person("Q999")])
+
+    ids = [item["id"] for item in wikidownload.ItemStore(tmp_path / "items").items()]
+    assert len(ids) == before + 1
+    assert ids[-1] == "Q999", "an append after a repair must be reachable"
+
+
+def test_items_lost_to_a_truncated_tail_are_fetched_again(tmp_path):
+    # The index is committed after the shard is written, so items lost with a
+    # broken tail were never recorded as held. Rebuilding from the shards is
+    # what re-opens them for fetching.
+    store, index = store_and_index(tmp_path)
+    store.write([person(f"Q{n}", "a name long enough to compress") for n in range(1, 51)])
+    for n in range(1, 51):
+        index.record(f"Q{n}", "done")
+    index.commit()
+    truncate_last_member(store.shards()[0])
+
+    reopened = wikidownload.ItemStore(tmp_path / "items")
+    kept = {item["id"] for item in reopened.items()}
+    index.rebuild(reopened)
+
+    assert index.held() == kept
+    assert len(kept) < 50
+
+
+# -- surviving an outage -----------------------------------------------
+
+
+def test_failed_qids_go_back_on_the_queue_on_the_next_run(tmp_path):
+    # Without this an outage loses items silently: `error` takes a QID off the
+    # queue and nothing ever put it back, so a run after a drop would report
+    # itself complete with holes in it.
+    index = wikidownload.StateIndex(tmp_path / "state.sqlite3")
+    index.record("Q1", "error", error="URLError: unreachable")
+    index.record("Q2", "done")
+    index.commit()
+
+    assert index.requeue_errors() == 1
+    assert index.take(10) == ["Q1"]
+    assert index.status("Q2") == "done"
+
+
+def test_a_qid_that_keeps_failing_is_eventually_left_alone(tmp_path):
+    index = wikidownload.StateIndex(tmp_path / "state.sqlite3")
+    for _ in range(5):
+        index.record("Q1", "error", error="boom")
+    index.commit()
+
+    assert index.requeue_errors(max_attempts=5) == 0, "a bad QID must not retry forever"
+
+
+def test_an_outage_trips_the_breaker_instead_of_burning_the_queue(tmp_path):
+    qids = [f"Q{n}" for n in range(1, 101)]
+    # `fail_on` everything: the internet is gone, every batch fails.
+    client = make_client(tmp_path, {q: person(q) for q in qids}, fail_on=set(qids))
+    store, index = store_and_index(tmp_path)
+    index.enqueue(qids)
+
+    stats = wikidownload.walk(
+        client, store, index, batch_size=2, max_consecutive_failures=3
+    )
+
+    assert stats.stopped_early, "a walk that gives up must say so"
+    assert stats.batches == 3, "it must not sprint through the whole queue"
+    assert index.queue_length() == 94, "the untouched queue survives the outage"
+
+
+def test_the_breaker_resets_on_a_batch_that_works(tmp_path):
+    # One bad batch in the middle of a good run is not an outage.
+    qids = [f"Q{n}" for n in range(1, 11)]
+    entities = {q: person(q) for q in qids}
+    client = make_client(tmp_path, entities, fail_on={"Q3"})
+    store, index = store_and_index(tmp_path)
+    index.enqueue(qids)
+
+    stats = wikidownload.walk(
+        client, store, index, batch_size=2, max_consecutive_failures=2
+    )
+
+    assert not stats.stopped_early
+    assert stats.stored == 8 and stats.errors == 2

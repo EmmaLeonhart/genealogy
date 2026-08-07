@@ -48,6 +48,7 @@ import gzip
 import json
 import sqlite3
 import time
+import zlib
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Callable, Iterable, Iterator, Sequence
@@ -145,13 +146,38 @@ class ItemStore:
         for one shard and is the only way to land on a partly-filled one after a
         kill. Starting a fresh shard every run would leave a directory of stubs
         after a flaky day.
+
+        It is also where a **truncated shard** is repaired. A batch is written
+        as one gzip member; lose power partway through that write and the member
+        ends mid-stream. Reading it then raises, and — worse — appending a fresh
+        member after the break makes the new items unreachable too, because
+        decompression never gets past it. So a shard that will not read is
+        rewritten from the lines that do, before anything is appended. The items
+        lost with the broken tail were never committed to the index as held, so
+        the walk simply fetches them again.
         """
         existing = self.shards()
         if not existing:
             return 0, 0
         last = existing[-1]
         index = int(last.stem.split("-")[1].split(".")[0])
-        return index, sum(1 for _ in _read_lines(last))
+        try:
+            return index, sum(1 for _ in _read_lines(last))
+        except (EOFError, gzip.BadGzipFile, zlib.error, UnicodeDecodeError):
+            return index, self.repair(last)
+
+    def repair(self, shard: Path) -> int:
+        """Rewrite a shard from the lines that still decompress. Returns how many.
+
+        Writes beside the shard and renames, so an interrupted repair leaves the
+        original in place rather than replacing it with a half-written file.
+        """
+        kept = list(_read_lines(shard, tolerant=True))
+        temporary = shard.with_name(shard.name + ".repair")
+        with gzip.open(temporary, "wt", encoding="utf-8", newline="\n") as handle:
+            handle.writelines(kept)
+        temporary.replace(shard)
+        return len(kept)
 
     @property
     def current_shard(self) -> Path:
@@ -211,9 +237,26 @@ class ItemStore:
             yield item
 
 
-def _read_lines(path: Path) -> Iterator[str]:
+def _read_lines(path: Path, *, tolerant: bool = False) -> Iterator[str]:
+    """Lines of a gzipped shard. ``tolerant`` stops at a truncated tail.
+
+    Tolerance is off by default on purpose: a shard that will not read is
+    something the caller should find out about, and silently returning a short
+    file is how a store quietly loses items. :meth:`ItemStore.repair` is the one
+    place that wants the salvage behaviour.
+    """
     with gzip.open(path, "rt", encoding="utf-8") as handle:
-        yield from handle
+        iterator = iter(handle)
+        while True:
+            try:
+                line = next(iterator)
+            except StopIteration:
+                return
+            except (EOFError, gzip.BadGzipFile, zlib.error, UnicodeDecodeError):
+                if tolerant:
+                    return
+                raise
+            yield line
 
 
 @dataclass
@@ -332,6 +375,26 @@ class StateIndex:
 
     # -- outcomes ------------------------------------------------------
 
+    def requeue_errors(self, max_attempts: int = 5) -> int:
+        """Put failed QIDs back on the queue. Returns how many moved.
+
+        **Without this an outage loses items silently.** A batch that fails is
+        marked ``error``, which takes it off the queue — and nothing ever put it
+        back, so an internet drop partway through a four-hour run would leave
+        those QIDs neither held nor queued and the run would finish "complete"
+        with holes in it. Called at the start of every run, so resuming after a
+        drop retries what the drop cost.
+
+        ``max_attempts`` stops a QID that fails for its own reasons from being
+        retried forever; the attempts already recorded are what it counts.
+        """
+        cursor = self._conn.execute(
+            "UPDATE items SET status = 'queued' WHERE status = 'error' AND attempts < ?",
+            (max_attempts,),
+        )
+        self._conn.commit()
+        return cursor.rowcount
+
     def record(self, qid: str, status: str, *, shard: str = "", error: str = "") -> None:
         self._conn.execute(
             "INSERT INTO items (qid, status, shard, seq, attempts, error)"
@@ -398,6 +461,9 @@ class WalkStats:
     discovered: int = 0
     bytes_json: int = 0
     seconds: float = 0.0
+    #: Set when the circuit breaker tripped, and the reason. Empty on a normal
+    #: finish, so a caller can tell "the queue is empty" from "I gave up".
+    stopped_early: str = ""
 
     @property
     def bytes_per_item(self) -> float:
@@ -552,6 +618,7 @@ def walk(
     batch_size: int = FETCH_BATCH,
     scan_per_round: int = 500,
     limit: int | None = None,
+    max_consecutive_failures: int = 5,
     progress: Callable[[WalkStats], None] | None = None,
     clock: Callable[[], float] = time.monotonic,
 ) -> WalkStats:
@@ -565,21 +632,36 @@ def walk(
     ``limit`` caps how many QIDs are *requested*, which is what makes a pilot a
     pilot. It bounds the network, not the scan — stopping the scan early would
     leave the queue short and understate the frontier the pilot is measuring.
+
+    ``max_consecutive_failures`` is the circuit breaker. The internet going away
+    makes every batch fail, and without a breaker the walk would sprint through
+    the whole queue marking 10,000 batches ``error`` in the time the outage
+    lasts. Stopping instead leaves the queue intact, and ``requeue_errors`` on
+    the next run returns the few that did fail.
     """
     stats = WalkStats()
     started = clock()
     # Loaded once and maintained by the scan. See scan_step on why.
     known = index.known()
+    consecutive_failures = 0
 
     while True:
         scan_step(store, index, stats, items=scan_per_round, known=known)
         if limit is not None and stats.requested >= limit:
             break
         room = batch_size if limit is None else min(batch_size, limit - stats.requested)
+        failures_before = stats.errors
         attempted = fetch_step(client, store, index, stats, batch_size=room)
+        consecutive_failures = consecutive_failures + 1 if stats.errors > failures_before else 0
         stats.seconds = clock() - started
         if progress is not None:
             progress(stats)
+        if consecutive_failures >= max_consecutive_failures:
+            stats.stopped_early = (
+                f"{consecutive_failures} batches failed in a row — stopping rather than "
+                "burning the queue. Check the connection and re-run; nothing is lost."
+            )
+            break
         if attempted == 0:
             # Nothing left to fetch. One more scan settles whether the last
             # batch stored anything that names someone new; if it did not, the
