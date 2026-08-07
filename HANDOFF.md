@@ -62,6 +62,28 @@ are done **offline on purpose**, only final confirmed merges go online.
   pairs are Geni duplicates that should be merged on Geni but can't be yet.
   `reports/wikidata-doubles.md` already lists them. Last thing, not now.
 
+## Building the Wikidata tree — read `todo.md` § 8a before coding the downloader
+
+Emma's design constraints, added 2026-08-07 (`todo.md` item 8a has the full
+text). The short version, because it has been got wrong before by ignoring how
+Wikidata behaves:
+
+- **A multi-day background job, not a rush.** ~500k Geni-linked Wikidata items
+  downloaded in full, then the set grown by walking P22/P25/P26/P40 to items with
+  no Geni ID. Running in the background is what makes it easy; wall-clock is fine.
+- **Wikidata is hostile — design for 429s from line one.** Descriptive
+  User-Agent, exponential backoff, respect `Retry-After`, start slow and back off
+  the instant throttling appears. Don't run flat out and then be surprised by
+  429s. Find the sustainable rate by experiment first.
+- **Two APIs, opposite costs.** SPARQL = cheap for *structure* in bulk (who has
+  P2600; the parent/child/spouse QIDs of a batch) — use it to decide who to fetch
+  and to expand the set. Per-entity detail over SPARQL is expensive; the **JSON
+  entity API** (`Special:EntityData/Q….json` / `wbgetentities`) is less hostile
+  and is how to pull each *full* item.
+- **Store everything, incrementally, resumably.** Save the whole item JSON, commit
+  and push as you go; a killed run resumes from disk. No item queried twice.
+- **Stdlib only** (`urllib`) covers both endpoints.
+
 ## Next concrete task (tomorrow)
 
 **Descendant-distribution search** — a new, unbuilt capability: rank tree members

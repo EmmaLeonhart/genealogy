@@ -363,3 +363,59 @@ side; the eventual Phase-4 output is a *queue of Geni merges* to perform online,
 one that only exists once the offline Wikidata tree and its entity resolution
 are in place. She is explicitly **postponing this until the Wikidata side is
 offline as well** — it is the last thing, not a current task.
+
+### 8a. How the Wikidata download must be built — Emma's design constraints, 2026-08-07
+
+**This is the part that has been got wrong before by ignoring how Wikidata
+behaves. Read it before writing a line of the downloader.** The shape of the job:
+take the **~500,000 Wikidata profiles that carry a Geni ID** (the P2600 side of
+`reports/wikidata-overlap.md`, 516,885 IDs), download each item *completely*, and
+then **grow the set by walking family relationships** — parent, child, spouse
+(P22/P25/P26/P40) — to items that have no Geni ID, iterating outward. That is the
+whole tree of Wikidata reachable from the Geni-linked seed.
+
+**Treat it as a multi-day background operation, not a rush.** Emma's words: it
+"should be treated as a couple-day-long operation that is run in the background",
+**not** a "do it as fast as possible and don't even bother with rate-limit stuff"
+job. Running in the background is what *makes it easy* — wall-clock length is not
+a problem, so there is no reason to run hot. The number of items per hour is
+unknown and is to be **found by serious experimentation up front**, not assumed.
+
+**Wikidata is hostile and rate-limits readily — design for that from the first
+line.** Expect HTTP 429s (Emma: "we're going to get fortune nines"). The rule is
+to **back off the moment one arrives**, not to run flat out and then treat 429s
+as a surprise to complain about. Non-negotiables:
+
+- A real, descriptive **User-Agent** identifying the tool and a contact — the
+  bare default is itself a reason Wikidata throttles.
+- **Exponential backoff on 429/503**, and respect `Retry-After` when present.
+- **Politeness by default:** a conservative request rate, tuned down further the
+  instant throttling appears. Start slow, measure, only then consider faster.
+
+**Two APIs with opposite cost profiles — this is the distinction that was being
+ignored.** A **SPARQL** query gets *massive amounts of structural information for
+cheap* in one round trip (all items with P2600; the P22/P25/P26/P40 QIDs of a
+batch of items — i.e. the graph and the set-expansion). But asking SPARQL for
+*large amounts of per-individual detail* is **expensive** and is where it fights
+back. The **JSON entity-download API** (`Special:EntityData/Q….json`, or
+`wbgetentities`) is a **different, somewhat less hostile** path and is how to pull
+the *complete* item. So the division of labour is: **SPARQL for structure and for
+deciding who to fetch next; the JSON download for the full content of each item.**
+Both paced.
+
+**Store everything locally, incrementally, resumably — no re-querying.** When an
+item is looked at, store the **whole item** on disk (the complete JSON), then
+**commit and push** as the run proceeds. The operation is idempotent and
+resumable: a killed run picks up from what is already stored rather than
+re-fetching, and progress survives because it is committed. No individual item is
+queried twice.
+
+**Why this differs from the Geni side, stated so the two are not modelled alike.**
+Geni is **bulk-export-only**, seeded from specific spots — a whole ball arrives at
+once and the cost is getting the export at all. Wikidata has **no bulk export**
+but is cheap to probe for small things one at a time. Different acquisition
+shapes, different time-to-get; a downloader written as though Wikidata were a
+bulk source, or as though Geni were probeable per-person, gets both wrong.
+
+**Stdlib only still holds** — `urllib` covers both the SPARQL endpoint and the
+JSON entity API; no dependency is needed for this.
