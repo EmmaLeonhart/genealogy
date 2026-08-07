@@ -212,6 +212,16 @@ thousands is a neighbourhood sampled once and never returned to. `seeds.md`
 ranks by doorway count and has never been validated against an outcome; density
 is measured from what the exports actually did.
 
+**The `Descendants` campaign is about time, not thinness — Emma's own framing,
+2026-08-06.** She is running `Descendants` exports because **the tree is biased
+towards ancient and medieval individuals and she is trying to reach modern
+times**. That is a different target from `reports/density.md`, which ranks by
+how few exports touched a neighbourhood and knows nothing about dates. The two
+can point the same way and often will, but do not present density picks as
+serving this goal, and do not describe her `Descendants` takes as thin-region
+work. `Descendants` fans out downward, which is what makes it the instrument for
+reaching later generations.
+
 **Presence measures our sampling, never Geni's content.** A thin region is one
 *we* barely covered. Whether Geni holds more there is precisely the unknown an
 export resolves — reading it as "Geni has little here" is backwards. The doorway
