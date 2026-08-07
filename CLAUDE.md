@@ -116,13 +116,16 @@ arithmetic**: a run of eleven identical values is evidence the number sits
 still, not evidence it steps by four on a schedule, and do not describe it as a
 cap Geni enforces.
 
-`genimerge.seeds.GENI_EXPORT_CAP` is **4008** as of 2026-08-05, meaning *largest
+`genimerge.seeds.GENI_EXPORT_CAP` is **4020** as of 2026-08-06, meaning *largest
 yet seen*; its docstring is the long form of this. It was 3860 when the
 paragraph above was written, and the sentence about the number sitting still
 survived the move rather than being falsified by it — 4008 came from a pair of
 exports taken seven minutes apart that held 3972 and 4008, which is a ceiling
 that moved, not a step of four. The 99th export (2026-08-06) held 4004 and
-changed nothing. It is a modelling number for
+changed nothing. The four exports of that evening went 4016, 4020, 4020, 4020
+between 18:10 and 18:19, so the ceiling **rose inside a single nine-minute
+sitting** and then held for three takes — see
+`reports/audit-downloads-2026-08-06.md`. It is a modelling number for
 `reports/seeds.md` only — nothing in the merge depends on it.
 `tests/test_seeds.py` fails if an export in `exports/` exceeds it, so the next
 one to do so is loud rather than silent — that is how 3840, 3844 and 3856 were
@@ -230,8 +233,11 @@ gitignored · `tests/` pytest.
 **`exports/` is the corpus and is read recursively — there is no ingest step.**
 Geni's downloads land as `export-geni (N).zip`, extracted beside themselves,
 grouped into a directory named for the person Emma exported from
-(`exports/Li Hong/`, `exports/n n/`) or into `exports/archive/` and
-`exports/fleshing-out/` for bulk takes. Those subdirectories are filing and mean
+(`exports/Li Hong/`, `exports/n n/`) or into `exports/archive/`,
+`exports/fleshing-out/` and `exports/edges/` for bulk takes. **103 GEDCOMs as of
+2026-08-06 evening.** In a bulk directory holding one style from several seeds,
+name by seed ID rather than by download number — `exports/edges/` does this,
+because `N` is a per-directory label and the seed ID is the repo's primary key. Those subdirectories are filing and mean
 nothing to the merge: every `.ged` beneath `exports/` is corpus the moment it is
 extracted. Inside a bulk directory the zip keeps its download name and the
 GEDCOM goes to `export-geni/export-<style>-<N>.ged`, where `N` is the zip's
@@ -292,9 +298,12 @@ file types are ignored in opposite ways and a pattern gets both wrong:
   file means an *unlisted* zip appears in `git status`, which is how a new
   download announces itself. A pattern makes every download silent.
 
-Checked as of 2026-08-06: **46 zips on disk, all 46 listed** (plus 48 lines for
-zips since removed — stale, harmless, and left alone rather than pruned, since a
-re-download to one of those names is a re-download of something already ingested).
+Re-checked 2026-08-06 evening after the edge-people batch: **51 zips on disk,
+all 51 resolving under `git check-ignore`**, against 99 zip lines — the surplus
+being stale entries for zips since removed, left alone rather than pruned, since
+a re-download to one of those names is a re-download of something already
+ingested. The invariant is *every zip on disk has a line*, never equality of the
+two counts.
 `tests/test_repo_invariants.py` asserts both halves, including against paths that
 do not exist yet, so a pattern broad enough to swallow the *next* batch fails now
 rather than after it arrives.

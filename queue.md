@@ -15,6 +15,29 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
+0.001 **BLOCKED-ON-USER-ACTION — the deferred compute from the 2026-08-06
+   evening ingest. Unblock signal: Emma says the machine is somewhere it can
+   spin up** (the batch was handled on a hot laptop with the fan audible in
+   public, under an explicit instruction to document rather than compute).
+
+   Ingest itself is done — four new exports in `exports/edges/`, two repeats
+   identified and left in `~/Downloads`, cap raised to 4020, nine path pages
+   converted; see `reports/audit-downloads-2026-08-06.md` and the devlog entry.
+   What is owed, in this order:
+
+   1. `py -m pytest` — the corpus is 103 GEDCOMs now. The one assertion at risk,
+      `test_export_cap_is_at_least_the_largest_real_export`, is satisfied by
+      construction (largest new export 4020, constant 4020), but that is an
+      argument and not a run.
+   2. `python -m genimerge merge` — gives the new-people count for the four, and
+      refreshes `out/merged.ged`, which still describes the 99-export tree.
+   3. `python -m genimerge path` over the seven new chains in `paths/`
+      (`gong-liu`, `scorpion-i`, `tadlaf-al-qaydari`, `hou-zhang`, `zeng-yuan`,
+      `hao-huang`, `pasuti`) — this is the checking half of item 0.0, and it
+      needs the merged tree, which is why it did not happen with the conversion.
+   4. `python -m genimerge density` — scores the prediction recorded in item 3
+      below, that region 6 yields more new people than region 4 would have.
+
 0.000 The "FIRST ITEM" is finished — all 19 path files re-checked against the
 98-export merge, `reports/paths.md` rewritten, devlog entry dated 2026-08-06.
 Emma's update to the agenda of this project:
@@ -110,6 +133,14 @@ Big priorities:
    human.
 
 0.1 I have done a large amount of exports that definitely fleshed out the trees based off of your suggestions, although geni seems to have crapped out a bit, so it's probably gonna be tomorrow. Integrate these things when they arrive. I feel like they're probably going to be the last because I don't know what's going on with geni right now, but it's a bit difficult to get things to run. 
+
+   **Four of them arrived and are in, 2026-08-06 evening** — `exports/edges/`,
+   seeds `…085797849`, `…085766947`, `…085871850`, `…085828865`, none of them in
+   any earlier export. Two further zips in the same batch were byte-identical
+   repeats of committed files. The *measuring* of what they added is item 0.001,
+   which is waiting on a machine that can spin up. This item stays open because
+   Emma's "probably the last" is a prediction about Geni, not a statement that
+   the batch is closed.
 
 0.2 As another thing, there were some profile merges and edits related to Japanese emperors, particularly Emperor Ojin, and I just want you to keep in mind that this is the case. You probably will be able to see it in the data somewhere. Not 100% sure you probably would, because there were duplicates of Emperor Ojin and some other people. 
 

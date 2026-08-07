@@ -3321,3 +3321,56 @@ the reason it was dangerous.
 Nothing else was lost: items 1, 2, 3, 6 and 7 were checked individually against
 `origin/main`, and the two deletions in `cad4936` were intended and are
 described in their own entry.
+
+## 2026-08-06 — the edge-people batch: four exports ingested, two repeats identified, cap 4008 → 4020
+
+Emma asked for a preservation check on six zips in `~/Downloads` — "all new
+except maybe one" — under a standing instruction to keep CPU down and prefer
+documenting to computing. `reports/audit-downloads-2026-08-06.md` is the long
+form; this is what changed.
+
+**Nothing was lost, and the count was two rather than one.** Two of the six were
+SHA-256 identical to GEDCOMs already committed: `export-geni.zip` to
+`exports/originals/export-Forest-6000000226989731860.ged` and `export-geni (1).zip`
+to `exports/Hata/export-Forest-6000000210475738822.ged`, the Hata export from
+earlier the same day. They were left in `~/Downloads` rather than moved in —
+`genimerge.sources` would drop them anyway, and adding them would have inflated
+the apparent corpus size, which is the exact confusion `audit-corpus-sync.md`
+exists about.
+
+The other four are new, all `Forest`, taken 18:10–18:19 from four profiles that
+appear in **none of the 99 prior exports** — placeholders created at the frontier
+and exported from, which is what "edge people" means here. They are in
+`exports/edges/`, named by seed profile ID rather than by download number,
+because `(2)`–`(5)` were already taken in `exports/fleshing-out/` and that `N`
+means nothing across directories. 103 GEDCOMs now; 51 zips on disk, every one
+resolving under `git check-ignore`, four new lines added one at a time.
+
+**The export ceiling rose inside a single sitting: 4016 at 18:10, then 4020 at
+18:13, 18:17 and 18:19.** `GENI_EXPORT_CAP` is 4020, and without the raise
+`test_seeds.py` fails on the next run — the test doing its job. The day before,
+Geni's own UI displayed 4004 as the maximum. So the number has now been seen to
+rise, to fall (4008 → 4004), and to move mid-session. The docstring says again
+not to read 4016 → 4020 as a step of four; that inference has been made twice
+here and falsified twice.
+
+**Nine saved path pages converted, seven of them new chains.** They had been
+sitting in `geni_pages/` unconverted. Every step of all nine carries a profile
+ID, so the name-matching fallback is not used at all. Two were the same chain
+saved twice — `公劉 (Gōng Liú)s` and `Matthew, 8th Apostle to Makeda` each differ
+from an existing file in exactly one line, the `# Source:` comment. Found by
+diffing rather than inferred from the titles. The redundant TSVs were deleted;
+both HTML pages were kept, since a saved page is external evidence.
+
+**A method error worth recording because it nearly became a finding.** The first
+metadata scan read the first `2 DATE` line as the export date. `HEAD.DATE` is at
+level 1, so that picked up some later record's date and reported one file as
+*31 OCT 2024* — a striking number that would have gone into the report as
+evidence about Geni's export dating. Re-reading the raw `HEAD` blocks gave
+06 AUG 2026. Level numbers are the grammar of GEDCOM; matching on tag alone is
+matching on the wrong thing.
+
+**Not run, and it is a real gap rather than a formality:** `py -m pytest`,
+`genimerge merge`, `genimerge density`. All three re-parse ~200 MB. The one
+assertion at risk is satisfied by construction — largest new export 4020, cap
+4020 — but that is an argument, not a run. No Wikidata query was made.

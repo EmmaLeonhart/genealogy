@@ -117,13 +117,24 @@ __all__ = [
 #: arithmetic** — a flat run is evidence the number sits still, not evidence it
 #: moves on a schedule, and a movement that has now gone backwards is not one.
 #:
+#: **2026-08-06 evening — 4020, and the four exports that raised it were taken
+#: over nine minutes.** Four `Forest` exports: 4016 at 18:10:37, then 4020 at
+#: 18:13:25, 18:17:26 and 18:19:40. So the number rose by four *within a single
+#: sitting* and then held for three consecutive exports, having last been
+#: measured at 4004 and displayed by Geni's own UI as 4004 the day before.
+#: Read against the note above this is one more movement of a ceiling that
+#: moves — up this time, having previously gone down — and the flat run of
+#: three is again evidence only that it sits still while it sits still.
+#: Do not read 4016 → 4020 as a step of four; that reading has been made twice
+#: here and falsified twice.
+#:
 #: Used only to bound the modelled ball in :func:`export_ball`, where being off
 #: by a few people out of ~4000 does not move a ranking.
 #: ``tests/test_seeds.py`` asserts this stays >= the largest export in the
 #: corpus, so the next export to exceed it fails loudly instead of silently
-#: modelling a ball that is too small. That is how 3840, 3844, 3856 and now
-#: 4008 were each caught.
-GENI_EXPORT_CAP = 4008
+#: modelling a ball that is too small. That is how 3840, 3844, 3856, 4008 and
+#: now 4020 were each caught.
+GENI_EXPORT_CAP = 4020
 
 #: The step between reading this report and running an export.
 #:
