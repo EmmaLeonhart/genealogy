@@ -28,6 +28,7 @@ from . import (
     model,
     namelinks,
     names as names_mod,
+    profilenames,
     overlap as overlap_mod,
     paths as paths_mod,
     quickstatements,
@@ -841,6 +842,18 @@ def _cmd_names(args: argparse.Namespace) -> int:
     return 0
 
 
+def _cmd_profile_names(args: argparse.Namespace) -> int:
+    ws = Workspace.from_args(args)
+    tree = _load_tree(args.source, ws)
+    cov = profilenames.measure(tree)
+    output = args.output or ws.reports / "profile-names.md"
+    _write(output, profilenames.render_markdown(cov))
+    cjk = cov.cjk_only + cov.cjk_and_latin
+    print(f"{cov.people:,} people; {cjk:,} carry a CJK name ({cov.cjk_only:,} native-only)")
+    print(f"wrote {output}")
+    return 0
+
+
 def _cmd_frontier(args: argparse.Namespace) -> int:
     ws = Workspace.from_args(args)
     tree = _load_tree(args.source, ws)
@@ -1408,6 +1421,22 @@ def build_parser() -> argparse.ArgumentParser:
         help="where to write (default: <reports>/names.md)"
     )
     p_names.set_defaults(func=_cmd_names)
+
+    p_profile = sub.add_parser(
+        "profile-names",
+        help="measure what the profiles actually contain: field fill rates and name scripts",
+        description=(
+            "Per-person fill rate of every enrichment field against its Wikidata "
+            "property, and which scripts the names use — including how many CJK "
+            "people carry no romanised form. Offline; proposes nothing."
+        ),
+    )
+    p_profile.add_argument("--source", type=Path, default=None, help="a GEDCOM to read instead of merging")
+    p_profile.add_argument(
+        "-o", "--output", type=Path, default=None,
+        help="where to write (default: <reports>/profile-names.md)"
+    )
+    p_profile.set_defaults(func=_cmd_profile_names)
 
     p_links = sub.add_parser(
         "name-links",

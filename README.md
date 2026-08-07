@@ -148,6 +148,7 @@ python -m genimerge path-from-html "geni_pages/<saved page>.html" -o paths/jimmu
 python -m genimerge path paths/jimmu.tsv
 python -m genimerge entity-resolution # Emma's hand-made links -> out/wikidata/entity-resolution.qs
 python -m genimerge names            # name-item coverage   -> reports/names.md
+python -m genimerge profile-names    # what the profiles hold -> reports/profile-names.md
 python -m genimerge quickstatements  # edits to review      -> out/wikidata/add-p2600.qs
 python -m genimerge name-links       # name links to review -> out/wikidata/add-names.qs
 python -m genimerge crosscheck       # us vs Wikidata       -> reports/wikidata-crosscheck.md

@@ -3873,3 +3873,46 @@ opposite of true. Two tests pin both directions.
 in our tree — 2.23%**, and 4.48% of our tree is on Wikidata. It was 1.75% at 103
 exports this afternoon, on 9 026 people. So the night moved it by roughly half a
 percentage point, which is 2 496 people Wikidata already knew about.
+
+## 2026-08-07 — what is in the profiles: `genimerge profile-names`
+
+Emma is planning the next phases and asked to write down what the Geni profiles
+actually contain, since it bounds what the Wikidata enrichment pipeline (todo
+items 4/6) can emit. New module `genimerge.profilenames` + `profile-names`
+command generate `reports/profile-names.md`: per-person field fill rates mapped
+to Wikidata properties, and name-script coverage. Offline, measures nothing to
+Wikidata, proposes nothing. `tests/test_profilenames.py` pins the logic on a
+hand-written multi-script tree plus a smoke test over one real export.
+
+**Field fill over the 257,219-person merge.** Sex (P21) 99.9% and given name
+(P735) 92.1% are the workhorses; surname (P734) 58.1%, birth date 46.8%, death
+date 37.3%, birth place 35.6%, death place 24.4%. Occupation 10.8%, burial 7.9%,
+title 2.9% — a small minority, real where present, not something to scope a
+batch around. Parents recorded 82.6%, marriage 63.9% — the relationship backbone
+the offline superimposition (item 8) and any Geni-side merge depend on.
+
+**The CJK worry was inverted, and one earlier figure was wrong.** A first
+hand pass over the raw exports classified script from NAME/GIVN/SURN only and
+reported 91% of CJK people as native-only. That missed the romanisation Geni
+parks in the `_MARNM` slot (where "Hata" sat next to 秦). Reading the canonical
+model, which keeps `_MARNM`, the split is **56.3% native-only / 43.7% also
+romanised** over 42,668 CJK people. Either way the native name — the hard thing
+to recover — is well covered and matches Wikidata's native labels; the gap is
+the *English* label. Birth/death place also rose against the raw pass because
+the model falls back to structured city/state/country, not just `PLAC`.
+
+**Two traps recorded in todo item 4, because the pipeline must handle them, not
+this report.** (1) `multi-token given name` is 36.9% but is **not** a count of
+P1545 statements — most multi-token strings are romanised CJK/steppe names whose
+extra tokens are honorifics/particles/titles ("Lady", "no", "Chanyu"), not given
+names; splitting `GIVN` on spaces emits wrong P735s. The real P1545 case is the
+Latin-script subset. (2) Geni's NAME is a display *label*; "Unknown Wife"/"NN"
+is a description that belongs in a label or alias, never a P735/P734 link.
+
+**todo.md items 4 and 8 refined with Emma's 2026-08-07 framing.** order.life is
+a third source (on her PC, deliberately deferred, needs a different citation
+from the Geni-ID source); the phase order is descendant-search → large export
+campaign → Geni enrichment → offline Wikidata tree + superimposition →
+integrate; and the two-Geni-IDs-on-one-item pairs are mostly Geni duplicates
+that should be merged on Geni but cannot be yet — a postponed Geni-side merge
+queue, not a current task.

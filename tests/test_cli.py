@@ -98,6 +98,7 @@ COMMANDS = [
     "coverage",
     "quickstatements",
     "names",
+    "profile-names",
     "name-links",
     "crosscheck",
     "entity-resolution",
