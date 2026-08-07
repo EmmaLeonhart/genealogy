@@ -267,6 +267,30 @@ period so the ranking can be read one century at a time.
   because path counts rise strictly upward — a parent's count is at least
   `1 + child's`. Per band rather than report-wide, so a band keeps its own best
   pick.
+- **A depth of 0 must mean "no children", never "the child is in a cycle".**
+  `_post_order` drops an edge back into a node still being expanded — right, a
+  person is not their own descendant — and both depth functions then guarded
+  with `if c in depth` and fell through to `0`, which reads as *childless*.
+  Depth is `descendants`' primary ranking key **ascending**, so those people
+  sorted above every genuine candidate: `Arne` (`6000000007351784249`), one
+  descent path and no open ends, held the top of the `undated` band of 136953.
+  **8** people of the 123256 with a recorded child were affected — a tiny
+  population with an outsized effect, because being ranked first is a position
+  of exactly one per band. `frontier.ancestor_depth` is the same eight lines
+  with `parents` for `children` and had it identically (**5** of 208863),
+  invisible only because nothing ranks on it. Both now contribute `0` for an
+  unresolved neighbour rather than nothing, so a cycle *truncates* the measure
+  instead of falsifying it. This is the same shape as the date parser's
+  silently-dropped years: **a guard against a malformed case, paid for with real
+  values that then vanish without trace.** The tree holds 15 ancestry cycles
+  across 55 people — `frontier.ancestry_cycles` reports them.
+- **The metric change moved the implementation, not the answer.** Candidates
+  went 52196 → 52171 and the per-band picks barely shifted: path counts and
+  distinct counts coincide almost exactly at the small end, because a line of
+  twenty people rarely re-converges. They diverge in the tail, where this report
+  does not look. Descent paths are right because they are the right *question*,
+  not because they reranked anything — do not cite a numbers change as their
+  justification.
 - **Both axes are reported because neither covers everyone.** 53% of the tree
   carries no birth year, and those people are invisible to the period view.
   Generations-above ranks them — but it is **not a second clock**: it measures
