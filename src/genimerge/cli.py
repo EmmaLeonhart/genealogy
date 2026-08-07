@@ -14,6 +14,7 @@ from datetime import date
 from . import (
     connectors,
     consistency,
+    doubles as doubles_mod,
     coverage,
     crosscheck,
     density,
@@ -533,6 +534,40 @@ def _cmd_connectors(args: argparse.Namespace) -> int:
             f"  {i}. {c.slots} slots, {len(c.people)} people, "
             f"{len(c.path_names)} path(s) — seed on {where} [{c.style}]"
         )
+    return 0
+
+
+def _cmd_doubles(args: argparse.Namespace) -> int:
+    ws = Workspace.from_args(args)
+    pairs_file = args.pairs or (ws.wikidata / "p2600-all.tsv")
+    if not Path(pairs_file).exists():
+        print(
+            f"{pairs_file} not found. Run `python -m genimerge overlap` first — "
+            "that is the command that fetches P2600 from Wikidata. This one is "
+            "offline and reads what it wrote.",
+            file=sys.stderr,
+        )
+        return 1
+
+    tree = _load_tree(args.source, ws)
+    found = doubles_mod.find_doubles(doubles_mod.load_pairs(Path(pairs_file)), tree)
+
+    output = args.output or (ws.reports / "wikidata-doubles.md")
+    _write(output, doubles_mod.render_markdown(found, tree, len(tree.people)))
+    page = ws.out / "wikidata-doubles.html"
+    _write(page, doubles_mod.render_html(found, tree, len(tree.people)))
+
+    print(f"wrote {output}")
+    print(f"wrote {page}")
+    kin = sum(1 for d in found if d.shares_a_relative)
+    named = sum(1 for d in found if d.same_name)
+    clash = sum(1 for d in found if d.years_conflict)
+    print(
+        f"{len(found)} items claim two or more people we hold; "
+        f"{kin} share a relative, {named} share a name, "
+        f"{clash} have births over 120 years apart"
+    )
+    print("Nothing was decided and nothing was edited. This is a page to read.")
     return 0
 
 
@@ -1207,6 +1242,27 @@ def build_parser() -> argparse.ArgumentParser:
         "-o", "--output", type=Path, default=None, help="default: <reports>/remote-people.md"
     )
     p_rem.set_defaults(func=_cmd_remote)
+
+    p_dbl = sub.add_parser(
+        "doubles",
+        help="Wikidata items claiming two of our people are the same person",
+        description=(
+            "Lists every Wikidata item whose P2600 statements name two or more "
+            "Geni profiles that are both in our tree. Our merge keys on the "
+            "profile ID so it cannot see these. Not a duplicate list: a row is "
+            "either one person with two Geni profiles, or two people one of "
+            "whose statements is wrong. Offline — reads the map that "
+            "`overlap` wrote rather than re-fetching it."
+        ),
+    )
+    p_dbl.add_argument("--source", type=Path, default=None, help="a GEDCOM to read instead of merging")
+    p_dbl.add_argument(
+        "--pairs", type=Path, default=None, help="default: <out>/wikidata/p2600-all.tsv"
+    )
+    p_dbl.add_argument(
+        "-o", "--output", type=Path, default=None, help="default: <reports>/wikidata-doubles.md"
+    )
+    p_dbl.set_defaults(func=_cmd_doubles)
 
     p_con = sub.add_parser(
         "connectors",

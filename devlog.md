@@ -3759,3 +3759,56 @@ way: a defect that reported people we hold as missing, including the account
 owner; a fifth export style; the export size bound explained by Emma as 4×
 profiles added; and the `connectors` report itself, which did not exist this
 morning.
+
+## 2026-08-06 (night) — the doubles page, and a date parser that was dropping the first century
+
+Two more `Descendants` exports (132 GEDCOMs), merge **253 788 people**, 127 581
+families. Paths stay at 26 of 26.
+
+**`genimerge doubles`, built because Emma asked to see the list.** It reports the
+Wikidata items whose P2600 statements name two or more Geni profiles that are
+*both* in our tree — something the merge cannot see, since it keys on the
+profile ID and two IDs are two people to it. Over this merge: **44 items, of
+which 21 share a relative, 4 share a name, 0 have births more than 120 years
+apart.** It puts the two profiles side by side with dates, sex, parents, spouses
+and children, and decides nothing. Offline: it reads the map `overlap` already
+fetched rather than re-running sixteen partitions against a live endpoint.
+
+The ordering is by how fast a human can settle a row — shared relative first,
+because two profiles for one person usually keep some of the same family and two
+different people generally do not.
+
+**A defect in `genimerge.dates`, found by a unit test doing its job.** A test for
+`doubles` asserted that people born in years 70 and 1500 cannot be the same
+person. It failed. Year 70 had parsed to `None`: `_TOKEN` required a positive
+year to be 3–4 digits, so that "a stray `7` is not read as the year 7".
+
+No stray ever appeared in 132 exports. What did appear was **6,274 lines
+carrying a 1–2 digit AD year across 219 distinct values** — `33`, `70`,
+`ABT 30`, `AFT 9`, `BEF 4` — the entire first century, dropped in silence.
+Unreadable birth dates across the merge went **661 → 25** on the fix.
+
+**This is the second time the same shape of bug has hit this module**, and its
+docstring now says so: the first was BC years, written by Geni as `-73`, costing
+4,459 events. Both were a guard against hypothetical malformed input, paid for
+with measured real dates. `parse_date` drops what it cannot read — correct for
+untrusted data, and it means a parsing gap leaves no trace anywhere.
+
+`tests/test_dates.py` had a test asserting the *old* behaviour. It is replaced
+rather than relaxed, and says so in its own docstring: the premise was a guess
+about malformed input and the corpus went the other way.
+
+**The birth-year distribution, corrected again** (it has now been wrong twice —
+first from a hand-rolled regex reading BC as AD, then from this):
+
+| period | share of dated |
+| --- | ---: |
+| BC | 1.9% |
+| AD C1–C5 | 3.0% |
+| medieval C6–C15 | 33.9% |
+| early modern C16–C19 | **57.0%** |
+| C20–C21 | 4.3% |
+
+C1 alone is 692 people who were invisible an hour ago. The shape of the finding
+did not change; the early-modern peak still dominates and the C20 cliff is still
+there.

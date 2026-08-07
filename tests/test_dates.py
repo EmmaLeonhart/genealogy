@@ -139,12 +139,27 @@ def test_a_negative_year_formats_as_a_wikidata_time():
     assert parse_date("12 JAN -44").iso() == "-0044-01-12T00:00:00Z"
 
 
-def test_a_bare_short_number_is_still_not_a_year():
-    """The minus is what licenses 1-2 digits; a positive year still needs 3.
+def test_a_one_or_two_digit_year_is_a_year():
+    """**This test asserted the opposite until 2026-08-06**, on the reasoning
+    that a positive year needed three digits so a stray "7" in a malformed date
+    could not become the year 7.
 
-    Otherwise a stray "7" in a malformed date becomes the year 7, which is the
-    reason the original regex demanded three digits.
+    The corpus settled it against that reasoning. No stray ever appeared. What
+    did appear was **6,274 lines carrying a 1-2 digit AD year across 219
+    distinct values** — `33`, `70`, `ABT 30`, `AFT 9`, `BEF 4` — the entire
+    first century, every one of them parsing to `None` and being dropped in
+    silence, which is what `parse_date` does with anything it cannot read.
+
+    The old assertion is not being relaxed to make new code pass; its premise
+    was a guess about malformed input, and the measurement went the other way.
     """
-    assert parse_date("7").year is None
-    assert parse_date("42").year is None
+    assert parse_date("7").year == 7
+    assert parse_date("42").year == 42
+    assert parse_date("33").year == 33
+    assert parse_date("ABT 30").year == 30
     assert parse_date("-7").year == -7
+
+
+def test_a_five_digit_number_is_still_not_a_year():
+    """The bound that remains, and it is the one that never cost anything."""
+    assert parse_date("12345").year is None

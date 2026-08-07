@@ -141,11 +141,14 @@ Big priorities:
      `Scribonia` against `Clodia Pulchra` is two of Octavian's wives and one of
      those P2600 statements is just wrong. Both readings occur and nothing in
      this repo separates them.
-   - **NEEDS-DECISION — what should happen to a confirmed pair.** Options are:
-     record it in `entity_resolution.md` (Emma's scratchpad, which already holds
-     hand-made identities); teach the merge an alias table keyed on profile ID;
-     or leave it as a report and merge the profiles on Geni instead. The third
-     fixes it at the source and the other two paper over it. Emma decides.
+   - **Answered 2026-08-06: Emma wants the list, and it exists.**
+     `python -m genimerge doubles` writes `reports/wikidata-doubles.md` and
+     `out/wikidata-doubles.html`, putting the two profiles side by side with
+     dates, sex, parents, spouses and children so a human can judge. Offline:
+     it reads the map `overlap` already fetched. Over the 253,788-person merge
+     the 44 hold: **21 share a relative, 4 share a name, 0 have births more
+     than 120 years apart.** What happens to a pair Emma confirms is still
+     hers to decide, and nothing here edits Geni or Wikidata.
    - None of the 44 are Japanese emperors, so this instrument did **not** catch
      the Emperor Ojin duplicates in item 0.2 below. Worth knowing why: it can
      only see a duplicate that Wikidata has already noticed and linked twice.

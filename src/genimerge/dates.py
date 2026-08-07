@@ -56,14 +56,31 @@ _MODIFIERS = {
     "TO": "before",
 }
 
-#: A bare positive year must be 3–4 digits, so a stray ``7`` is not read as the
-#: year 7. **Negative years are allowed 1–4 digits**, because the minus sign is
-#: itself the evidence that the token is a year: Geni writes BC dates as
-#: ``-73``, ``ABT -95``, ``BEF -1310``. Before this, every one of them failed to
-#: parse and the date was silently dropped — 4,459 events across the corpus,
-#: which is the entire pre-Christian era. `iso()` already emitted the correct
-#: ``-0073-00-00T00:00:00Z`` for a negative year; nothing ever reached it.
-_TOKEN = re.compile(r"^(?:(\d{1,2})\s+)?(?:([A-Z]{3})\s+)?(-?\d{3,4}|-\d{1,2})$")
+#: A year is 1–4 digits, positive or negative.
+#:
+#: **This has now been wrong in both directions, for the same reason each time:
+#: a guard against a hypothetical malformed token, paid for with real dates that
+#: were then dropped in silence.**
+#:
+#: First, negative years failed to parse at all. Geni writes BC dates as
+#: ``-73``, ``ABT -95``, ``BEF -1310`` — not GEDCOM 5.5.1, which says
+#: ``73 B.C.``, but unambiguous. That cost **4,459 events**, the entire
+#: pre-Christian era, and `iso()` had always formatted a negative year
+#: correctly; nothing ever reached it.
+#:
+#: Then positive years were required to be 3–4 digits, "so a stray ``7`` is not
+#: read as the year 7". Nothing in the corpus ever produced such a stray. What
+#: it did produce was **6,274 lines carrying a 1–2 digit AD year across 219
+#: distinct values** — ``33``, ``70``, ``ABT 30``, ``AFT 9``, ``BEF 4`` — the
+#: whole first century, dropped. Found 2026-08-06 by a unit test that asserted
+#: two people born in years 70 and 1500 could not be the same person, and got
+#: back "no conflict" because one of the years had parsed to ``None``.
+#:
+#: The lesson both times: **an unreadable date is dropped silently by design**,
+#: which is right for data we cannot trust and means a parsing gap leaves no
+#: trace anywhere. Widen only against measured input, and count what a
+#: restriction costs before adding one.
+_TOKEN = re.compile(r"^(?:(\d{1,2})\s+)?(?:([A-Z]{3})\s+)?(-?\d{1,4})$")
 
 
 @dataclass(frozen=True)

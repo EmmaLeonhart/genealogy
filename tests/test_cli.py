@@ -104,6 +104,7 @@ COMMANDS = [
     "density",
     "distant",
     "remote",
+    "doubles",
     "connectors",
     "path",
     "path-from-html",
