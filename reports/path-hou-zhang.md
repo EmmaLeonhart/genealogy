@@ -1,10 +1,8 @@
 # Relationship path: hou-zhang
 
-**183 of 193 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**193 of 193 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**The unbroken run stops at step 182, Zhang Buni 張不疑.** The next step, **Zhang Liang 張良**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
-
-**1 steps past the gap are held anyway** — Zhang Hou 張侯 71,70世 onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
+Every step is held: this path is walkable inside our own data.
 
 ## Steps
 
@@ -192,14 +190,14 @@
 | 180 | Zhang Tang 張湯 | his father | [湯 京兆長安](https://www.geni.com/people/x/6000000074732993944) | id | 1 |
 | 181 | Zhang Dian 張典 | his father | [Diǎn 典 潁川城父](https://www.geni.com/people/x/6000000074733170838) | id | 1 |
 | 182 | Zhang Buni 張不疑 | his father | [Bù Yí 不疑 潁川城父](https://www.geni.com/people/x/6000000074733016897) | id | 1 |
-| 183 | Zhang Liang 張良 | his father | — | absent | — |
-| 184 | Zhang Ping 張平 80,79世 | his father | — | absent | — |
-| 185 | Zhang Kai Di 張開地 79,78世 | his father | — | absent | — |
-| 186 | Zhang Liu Shuo 張柳朔 78,77世 | his father | — | absent | — |
-| 187 | Zhang Meng Tan 張孟談 77,76世 | his father | — | absent | — |
-| 188 | Zhang Jin Ming 張進明 76,75世 | his father | — | absent | — |
-| 189 | Zhang Ge 張骼 75,74世 | his father | — | absent | — |
-| 190 | Zhang Ti  張趯 74,73世 | his father | — | absent | — |
-| 191 | Zhang Jun Chen 張君臣 73,72世 | his father | — | absent | — |
-| 192 | Zhang Lao 張老 72,71世 | his father | — | absent | — |
+| 183 | Zhang Liang 張良 | his father | [Zhāng Liáng 良 潁川城父](https://www.geni.com/people/x/6000000130310253012) | id | 1 |
+| 184 | Zhang Ping 張平 80,79世 | his father | [Píng 平](https://www.geni.com/people/x/6000000010449471840) | id | 1 |
+| 185 | Zhang Kai Di 張開地 79,78世 | his father | [Kāi Dì 開地](https://www.geni.com/people/x/6000000010449130802) | id | 1 |
+| 186 | Zhang Liu Shuo 張柳朔 78,77世 | his father | [Liǔ Shuò 柳朔](https://www.geni.com/people/x/6000000010449484284) | id | 1 |
+| 187 | Zhang Meng Tan 張孟談 77,76世 | his father | [Mèng Tán 孟談](https://www.geni.com/people/x/6000000010449049121) | id | 1 |
+| 188 | Zhang Jin Ming 張進明 76,75世 | his father | [Jìn Míng 進明](https://www.geni.com/people/x/6000000010449527338) | id | 1 |
+| 189 | Zhang Ge 張骼 75,74世 | his father | [Gé 骼](https://www.geni.com/people/x/6000000010449098090) | id | 1 |
+| 190 | Zhang Ti  張趯 74,73世 | his father | [Tì 趯](https://www.geni.com/people/x/6000000010449334766) | id | 1 |
+| 191 | Zhang Jun Chen 張君臣 73,72世 | his father | [Jūn Chén 君臣](https://www.geni.com/people/x/6000000010449227572) | id | 1 |
+| 192 | Zhang Lao 張老 72,71世 | his father | [Lǎo 老](https://www.geni.com/people/x/6000000010449496235) | id | 1 |
 | 193 | Zhang Hou 張侯 71,70世 | his father | [Hóu 侯](https://www.geni.com/people/x/6000000010449349615) | id | 1 |

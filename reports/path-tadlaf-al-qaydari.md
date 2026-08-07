@@ -1,10 +1,8 @@
 # Relationship path: tadlaf-al-qaydari
 
-**186 of 192 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**192 of 192 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**The unbroken run stops at step 150, Caliph Abdullah al-Qa'im.** The next step, **Caliph Ahmad al-Qadir**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
-
-**36 steps past the gap are held anyway** — Caliph Muhammad al-Mu'tasim onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
+Every step is held: this path is walkable inside our own data.
 
 ## Steps
 
@@ -160,12 +158,12 @@
 | 148 | Sultan Alp Arslan | her husband | [Muhammad](https://www.geni.com/people/x/6000000031528209013) | id | 1 |
 | 149 | Khadija Arslan | his sister | [Khadija Arlan](https://www.geni.com/people/x/6000000031528501956) | id | 1 |
 | 150 | Caliph Abdullah al-Qa'im | her husband | [Abdullah al-Qa'im Al-Abbasi](https://www.geni.com/people/x/6000000078685271821) | id | 1 |
-| 151 | Caliph Ahmad al-Qadir | his father | — | absent | — |
-| 152 | Prince Is'haq Al-Abbasi | his father | — | absent | — |
-| 153 | Caliph Ja'far al-Muqtadir | his father | — | absent | — |
-| 154 | Caliph Ahmad al-Mu'tadid | his father | — | absent | — |
-| 155 | Prince Talha al-Muwaffaq | his father | — | absent | — |
-| 156 | Caliph Ja'far al-Mutawakkil | his father | — | absent | — |
+| 151 | Caliph Ahmad al-Qadir | his father | [Ahmad al-Qadir Al-Abbasi](https://www.geni.com/people/x/6000000078683510114) | id | 1 |
+| 152 | Prince Is'haq Al-Abbasi | his father | [Ishaq Al-Abbasi](https://www.geni.com/people/x/6000000022433984913) | id | 1 |
+| 153 | Caliph Ja'far al-Muqtadir | his father | [Ja'far al-Muqtadir Al-Abbasi](https://www.geni.com/people/x/6000000078644592066) | id | 1 |
+| 154 | Caliph Ahmad al-Mu'tadid | his father | [Ahmad al-Mu'tadid Al-Abbasi](https://www.geni.com/people/x/6000000078636469883) | id | 1 |
+| 155 | Prince Talha al-Muwaffaq | his father | [Talha al-Muwaffaq Al-Abbasi](https://www.geni.com/people/x/6000000078636667821) | id | 1 |
+| 156 | Caliph Ja'far al-Mutawakkil | his father | [Ja'far al-Mutawakkil Al-Abbasi](https://www.geni.com/people/x/4620733819120079572) | id | 1 |
 | 157 | Caliph Muhammad al-Mu'tasim | his father | [Muhammad al-Mu'tasim Al-Abbasi](https://www.geni.com/people/x/6000000014610224437) | id | 1 |
 | 158 | Caliph Harun al-Rashid | his father | [Harun al-Rashid Al-Abbasi](https://www.geni.com/people/x/6000000010760854680) | id | 1 |
 | 159 | Caliph Muhammad al-Mahdi | his father | [Muhammad al-Mahdi Al-Abbasi](https://www.geni.com/people/x/6000000010761182277) | id | 1 |

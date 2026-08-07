@@ -3550,3 +3550,55 @@ need more than one export.
 12 existing density tests pass unchanged; 6 new ones cover placement, using a
 path graph, where "spread out" has one right answer rather than several
 defensible ones.
+
+## 2026-08-06 (night) — twelve gap-aimed exports, and the paths close
+
+Emma took twelve exports aimed at the gaps and said to incorporate them. Corpus
+103 → **115 GEDCOMs**; merge **208 089 → 228 673 people (+20 584)**, 114 600
+families, 61 conflicts, still 2 components (228 640 and 33).
+
+**The paths are essentially closed.**
+
+| | before | after |
+| --- | ---: | ---: |
+| steps held | 3 274 / 3 464 (94.5%) | **3 447 / 3 464 (99.5%)** |
+| paths complete | 13 of 26 | **23 of 26** |
+| bridges | 12 | **3** |
+| people missing | 190 | **17** |
+
+**Every bridge this repo has ever named by profile ID is now held.** The
+Alemannian/Carolingian ten — the one that blocked five separate paths and had
+been queued since 2026-08-05 as the top buy — gone. All three Chinese runs gone
+with it: `zeng-yuan` 52 people, `hao-huang` 25, `hou-zhang` 10. The 52-person run
+was flagged by `connectors` as wider than one export could close, and it closed
+anyway, which is worth remembering the next time that flag argues against
+trying: it bounds what *one targeted export* has been observed to span, and
+twelve exports are not one.
+
+What remains is three private gaps, no person shared between paths: 11 on `hata`
+(the American Daniels/Searle/Merrell/Vories stretch, seed Enok Danielson
+`6000000004104838733`), 3 on `makeda-to-marguerite` (Pierre Louis de l'Estandart
+`6000000196474936821`), 3 on `psamtik-ii` (Musa bin Musa Al-Qasi
+`6000000012229586298` and his wife and her father).
+
+**A finding that did not survive, named rather than left to rot.** The
+concentration result — "265 absent slots on 196 people, 29 of whom carry 98;
+connectivity through a few critical individuals" — described a tree missing 190
+people. At 17 there is no concentration left to measure. It was a true
+description of a state, not a property of the graph, and queue item 0.0 now says
+so instead of leaving it to read as standing fact.
+
+Queue item 2.5 deleted: the export it asked for is no longer needed because the
+people it wanted arrived by other means. Second time that has happened in one
+evening.
+
+**The export size bound moves both ways within an hour.** The twelve exports, by
+their own `HEAD` timestamps: 4020, 4024, 4028, 4032, 4032, 4052, 4040, 4056,
+4048, 4048, 4052, 4056. Every earlier batch was consistent with a ceiling that
+changes occasionally and holds flat between changes — eleven at 3860, twenty-six
+at 4004, three at 4020. Inside this hour it went 4052 → 4040 → 4056 → 4048, so
+that reading is dead. It also rules out a per-account or per-day quota being
+raised, which would not fall back. `GENI_EXPORT_CAP` 4020 → 4056, caught by
+`tests/test_seeds.py` as designed. Every value is a multiple of four and that
+still means nothing: "steps of four" has now been proposed and falsified three
+times in that docstring.

@@ -1,10 +1,8 @@
 # Relationship path: nn
 
-**80 of 90 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**90 of 90 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**The unbroken run stops at step 34, Gisela of Friuli.** The next step, **Berengar I, emperor of the Romans**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
-
-**46 steps past the gap are held anyway** — Leutharis II, duke of the Alemannians onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
+Every step is held: this path is walkable inside our own data.
 
 ## Steps
 
@@ -44,16 +42,16 @@
 | 32 | Rozala of Italy | his mother | [Rozala d'Ivrea](https://www.geni.com/people/x/4258970970100070152) | id | 1 |
 | 33 | Berengar II of Ivrea, king of Italy | her father | [Berengar II](https://www.geni.com/people/x/6000000005936551695) | id | 1 |
 | 34 | Gisela of Friuli | his mother | [Gisela of Friuli](https://www.geni.com/people/x/6000000008592343633) | id | 1 |
-| 35 | Berengar I, emperor of the Romans | her father | — | absent | — |
-| 36 | Giséle of Cysoing | his mother | — | absent | — |
-| 37 | Louis I, The Pious | her father | — | absent | — |
-| 38 | Hildegard | his mother | — | absent | — |
-| 39 | Emma of Alemannia, duchess of Swabia | her mother | — | absent | — |
-| 40 | Hnabi - Nebi, Duke of Alamannia | her father | — | absent | — |
-| 41 | Huoching of the Alemannians | his father | — | absent | — |
-| 42 | Gotfrid, duke of the Alemannians | his father | — | absent | — |
-| 43 | Leutharis III, duke of the Alemannians | his father | — | absent | — |
-| 44 | Uncilien, duke of the Alemannians | his father | — | absent | — |
+| 35 | Berengar I, emperor of the Romans | her father | [Berengar I](https://www.geni.com/people/x/6000000001669654269) | id | 1 |
+| 36 | Giséle of Cysoing | his mother | [Giséle](https://www.geni.com/people/x/6000000000424624719) | id | 1 |
+| 37 | Louis I, The Pious | her father | [Louis](https://www.geni.com/people/x/6000000001266578142) | id | 1 |
+| 38 | Hildegard | his mother | [Hildegard](https://www.geni.com/people/x/6000000003715297906) | id | 1 |
+| 39 | Emma of Alemannia, duchess of Swabia | her mother | [Imma Gravin van Zwaben van Allemanië](https://www.geni.com/people/x/6000000009025970491) | id | 1 |
+| 40 | Hnabi - Nebi, Duke of Alamannia | her father | [Hnabi - Nebi](https://www.geni.com/people/x/6000000005588774140) | id | 1 |
+| 41 | Huoching of the Alemannians | his father | [Huoching der Alemannen](https://www.geni.com/people/x/6000000005588538629) | id | 1 |
+| 42 | Gotfrid, duke of the Alemannians | his father | [Gotfrid](https://www.geni.com/people/x/6000000006128411604) | id | 1 |
+| 43 | Leutharis III, duke of the Alemannians | his father | [Leutharis der Alemannen](https://www.geni.com/people/x/6000000010011384542) | id | 1 |
+| 44 | Uncilien, duke of the Alemannians | his father | [Uncilien](https://www.geni.com/people/x/6000000003828107379) | id | 1 |
 | 45 | Leutharis II, duke of the Alemannians | his brother | [Leutharis](https://www.geni.com/people/x/6000000007336931977) | id | 1 |
 | 46 | Gerberge of Burgundy & Franconia | his wife | [Gerberge de Bourgogne et de Franconia](https://www.geni.com/people/x/6000000000437969821) | id | 1 |
 | 47 | Haldetrude / Adaltrudis | her sister | [Haldetrude / Adaltrudis](https://www.geni.com/people/x/6000000005913162130) | id | 1 |

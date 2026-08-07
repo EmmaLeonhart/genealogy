@@ -1,10 +1,10 @@
 # Relationship path: hata
 
-**39 of 55 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**44 of 55 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
 **The unbroken run stops at step 9, Daniel Danielson Nerabø.** The next step, **Enok Danielson (Enoch Daniels) i USA**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
-**30 steps past the gap are held anyway** — 秋月種任 onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
+**35 steps past the gap are held anyway** — Merrell Vories Hitotsuyanagi onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
 
 ## Steps
 
@@ -30,13 +30,13 @@
 | 18 | Erastus Merrell | his son | — | absent | — |
 | 19 | William H Merrell | his son | — | absent | — |
 | 20 | Julia Eugenia Vories | his daughter | — | absent | — |
-| 21 | Merrell Vories Hitotsuyanagi | her son | — | absent | — |
-| 22 | Makiko Hitotsuyanagi | his wife | — | absent | — |
-| 23 | Hitotsuyanagi EIko | her mother | — | absent | — |
-| 24 | Mashiko Akizuki | her mother | — | absent | — |
+| 21 | Merrell Vories Hitotsuyanagi | her son | [William Merrell](https://www.geni.com/people/x/6000000031810377852) | id | 1 |
+| 22 | Makiko Hitotsuyanagi | his wife | [Makiko](https://www.geni.com/people/x/6000000031810347895) | id | 1 |
+| 23 | Hitotsuyanagi EIko | her mother | [Eiko](https://www.geni.com/people/x/6000000031937667550) | id | 1 |
+| 24 | Mashiko Akizuki | her mother | [益子](https://www.geni.com/people/x/6000000032170308111) | id | 1 |
 | 25 | 秋月種任 | her father | [種任](https://www.geni.com/people/x/6000000032170128401) | id | 1 |
 | 26 | 松平盈子 | his mother | [盈子](https://www.geni.com/people/x/6000000006840005152) | id | 1 |
-| 27 | 幸姫 | her mother | — | absent | — |
+| 27 | 幸姫 | her mother | [幸](https://www.geni.com/people/x/6000000002510973487) | id | 1 |
 | 28 | 小笠原忠基 | her father | [忠基](https://www.geni.com/people/x/6000000002494069423) | id | 1 |
 | 29 | 小笠原忠雄 | his father | [忠雄](https://www.geni.com/people/x/6000000002232963326) | id | 1 |
 | 30 | 小笠原忠真 | his father | [忠真](https://www.geni.com/people/x/6000000001886024014) | id | 1 |

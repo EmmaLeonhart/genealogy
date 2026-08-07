@@ -1,10 +1,8 @@
 # Relationship path: hao-huang
 
-**168 of 193 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**193 of 193 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**The unbroken run stops at step 167, HUANG Ruo, 黄若 97A.** The next step, **HUANG Duan Yi, 黄端仪 96A**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
-
-**1 steps past the gap are held anyway** — HUANG Hao, 黄浩 71A onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
+Every step is held: this path is walkable inside our own data.
 
 ## Steps
 
@@ -177,29 +175,29 @@
 | 165 | Chén Bàxiān 陳霸先, Emperor Wu of Chen 陳武帝, 106, 98, 65, 18, 2世 | his brother | [陳霸先 興國 吳興長城](https://www.geni.com/people/x/6000000003175651265) | id | 1 |
 | 166 | Mdm CHEN, 陈氏 陳 | his daughter | [CHEN, 陈氏 陳](https://www.geni.com/people/x/6000000082906645120) | id | 1 |
 | 167 | HUANG Ruo, 黄若 97A | her husband | [Ruò](https://www.geni.com/people/x/6000000007357108232) | id | 1 |
-| 168 | HUANG Duan Yi, 黄端仪 96A | his father | — | absent | — |
-| 169 | HUANG Gui Lin, 黄贵林 95A | his father | — | absent | — |
-| 170 | HUANG Qi, 黄齐 94A | his father | — | absent | — |
-| 171 | HUANG Ru Yi, 黄如意 93A | his father | — | absent | — |
-| 172 | HUANG Yong Jiu, 黄雍旧 92A | his father | — | absent | — |
-| 173 | HUANG Zhong, 黄仲 91A | his father | — | absent | — |
-| 174 | HUANG Yuan Fang, 黄元芳 90A | his father | — | absent | — |
-| 175 | HUANG Zhi Yun, 黄知运 89A | his father | — | absent | — |
-| 176 | HUANG Teng, 黄腾 88A | his father | — | absent | — |
-| 177 | HUANG Gong Heng, 黄公衡 87A | his father | — | absent | — |
-| 178 | HUANG Zhong, 黄忠 86A | his father | — | absent | — |
-| 179 | HUANG Zhou, 周 85A | his father | — | absent | — |
-| 180 | HUANG Wan, 黄琬 84A | his father | — | absent | — |
-| 181 | HUANG En Rong, 黄恩荣 83A | his father | — | absent | — |
-| 182 | HUANG Qiong, 黄琼 82A | his father | — | absent | — |
-| 183 | HUANG Xiang, 黄香 81A | his father | — | absent | — |
-| 184 | HUANG Lu, 黄禄 80A | his father | — | absent | — |
-| 185 | HUANG Ji Zong, 黄季宗 79A | his father | — | absent | — |
-| 186 | HUANG Ba, 黄霸 78A | his father | — | absent | — |
-| 187 | HUANG Shi Fu, 黄士夫 77A | his father | — | absent | — |
-| 188 | HUANG Gong Qing, 黄公卿 76A | his father | — | absent | — |
-| 189 | HUANG Da Gang, 黄大纲 75A | his father | — | absent | — |
-| 190 | HUANG You Chong, 黄幼冲 74A | his father | — | absent | — |
-| 191 | HUANG Xie, 黄歇 73A | his father | — | absent | — |
-| 192 | HUANG Zong Bo, 宗伯 72A | his father | — | absent | — |
+| 168 | HUANG Duan Yi, 黄端仪 96A | his father | [Duān Yí](https://www.geni.com/people/x/6000000007356929305) | id | 1 |
+| 169 | HUANG Gui Lin, 黄贵林 95A | his father | [Guì Lín](https://www.geni.com/people/x/6000000007357115240) | id | 1 |
+| 170 | HUANG Qi, 黄齐 94A | his father | [Qí](https://www.geni.com/people/x/6000000007357059228) | id | 1 |
+| 171 | HUANG Ru Yi, 黄如意 93A | his father | [Rú Yì](https://www.geni.com/people/x/6000000007356934380) | id | 1 |
+| 172 | HUANG Yong Jiu, 黄雍旧 92A | his father | [Yōng Jiù](https://www.geni.com/people/x/6000000007357123247) | id | 1 |
+| 173 | HUANG Zhong, 黄仲 91A | his father | [Zhòng](https://www.geni.com/people/x/6000000007357074287) | id | 1 |
+| 174 | HUANG Yuan Fang, 黄元芳 90A | his father | [Yuán Fāng](https://www.geni.com/people/x/6000000007357091321) | id | 1 |
+| 175 | HUANG Zhi Yun, 黄知运 89A | his father | [Zhī Yùn](https://www.geni.com/people/x/6000000007357123285) | id | 1 |
+| 176 | HUANG Teng, 黄腾 88A | his father | [Téng](https://www.geni.com/people/x/6000000007356966361) | id | 1 |
+| 177 | HUANG Gong Heng, 黄公衡 87A | his father | [Gōng Héng](https://www.geni.com/people/x/6000000007357138272) | id | 1 |
+| 178 | HUANG Zhong, 黄忠 86A | his father | [Zhōng](https://www.geni.com/people/x/6000000007357041348) | id | 1 |
+| 179 | HUANG Zhou, 周 85A | his father | [Zhou](https://www.geni.com/people/x/6000000007356958333) | id | 1 |
+| 180 | HUANG Wan, 黄琬 84A | his father | [Wǎn](https://www.geni.com/people/x/6000000007356973409) | id | 1 |
+| 181 | HUANG En Rong, 黄恩荣 83A | his father | [En Róng](https://www.geni.com/people/x/6000000007357059260) | id | 1 |
+| 182 | HUANG Qiong, 黄琼 82A | his father | [Qióng](https://www.geni.com/people/x/6000000007357048335) | id | 1 |
+| 183 | HUANG Xiang, 黄香 81A | his father | [Xiāng](https://www.geni.com/people/x/6000000007356966419) | id | 1 |
+| 184 | HUANG Lu, 黄禄 80A | his father | [Lù](https://www.geni.com/people/x/6000000007356532842) | id | 1 |
+| 185 | HUANG Ji Zong, 黄季宗 79A | his father | [Ji Zōng](https://www.geni.com/people/x/6000000007356635800) | id | 1 |
+| 186 | HUANG Ba, 黄霸 78A | his father | [Bà](https://www.geni.com/people/x/6000000007357131305) | id | 1 |
+| 187 | HUANG Shi Fu, 黄士夫 77A | his father | [Shì Fū](https://www.geni.com/people/x/6000000007357050549) | id | 1 |
+| 188 | HUANG Gong Qing, 黄公卿 76A | his father | [Gōng Qīng](https://www.geni.com/people/x/6000000007357142320) | id | 1 |
+| 189 | HUANG Da Gang, 黄大纲 75A | his father | [Dà Gāng](https://www.geni.com/people/x/6000000007356856592) | id | 1 |
+| 190 | HUANG You Chong, 黄幼冲 74A | his father | [Yòu Chōng](https://www.geni.com/people/x/6000000007357127485) | id | 1 |
+| 191 | HUANG Xie, 黄歇 73A | his father | [Xiē](https://www.geni.com/people/x/6000000007357189414) | id | 1 |
+| 192 | HUANG Zong Bo, 宗伯 72A | his father | [Zong Bo](https://www.geni.com/people/x/6000000007356854590) | id | 1 |
 | 193 | HUANG Hao, 黄浩 71A | his father | [Hào](https://www.geni.com/people/x/6000000007356944447) | id | 1 |

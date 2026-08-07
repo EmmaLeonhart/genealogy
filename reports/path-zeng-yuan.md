@@ -1,10 +1,8 @@
 # Relationship path: zeng-yuan
 
-**166 of 218 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**218 of 218 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**The unbroken run stops at step 165, 蘇瑗.** The next step, **蘇詵**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
-
-**1 steps past the gap are held anyway** — Zēng Yuán 曾元, 字:子元, 71, 59, 6, 2世 onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
+Every step is held: this path is walkable inside our own data.
 
 ## Steps
 
@@ -175,56 +173,56 @@
 | 163 | 裴氏 | her daughter | [河東聞喜](https://www.geni.com/people/x/6000000057265137860) | id | 1 |
 | 164 | Su Fen 蘇份 | her son | [份 趙州欒城](https://www.geni.com/people/x/6000000057265163927) | id | 1 |
 | 165 | 蘇瑗 | his son | [瑗 眉州通義](https://www.geni.com/people/x/6000000129573950864) | id | 1 |
-| 166 | 蘇詵 | his son | — | absent | — |
-| 167 | 蘇汝集 | his son | — | absent | — |
-| 168 | 蘇涇 | his son | — | absent | — |
-| 169 | Su Jin 蘇釿 | his son | — | absent | — |
-| 170 | Su Hu 蘇祜 | his son | — | absent | — |
-| 171 | Su Gao 蘇杲 | his son | — | absent | — |
-| 172 | Su Xu 蘇序 | his son | — | absent | — |
-| 173 | Su Xun 蘇洵 | his son | — | absent | — |
-| 174 | Su Zhe 蘇轍 | his son | — | absent | — |
-| 175 | Su Shi of Su Zhe ) 蘇氏(蘇轍女) | his daughter | — | absent | — |
-| 176 | Zeng Zong 曾縱 | her husband | — | absent | — |
-| 177 | Zeng Zhao 曾肇 | his father | — | absent | — |
-| 178 | Zeng Yizhan 曾易占 | his father | — | absent | — |
-| 179 | Zeng Zhiyao 曾致堯 | his father | — | absent | — |
-| 180 | Zeng Renwang 曾仁旺 | his father | — | absent | — |
-| 181 | Zēng Yán Duó, 曾延鐸, 108, 96, 43, 39世 | his father | — | absent | — |
-| 182 | Zēng Hóng Lì, 曾洪立, 107, 95, 42, 38世 | his father | — | absent | — |
-| 183 | Zēng Yún, 曾筠, 106, 94, 41, 37世 | his father | — | absent | — |
-| 184 | Zēng Yǒng, 曾詠, 105, 93, 40, 36世 | his father | — | absent | — |
-| 185 | 曾煬 | his father | — | absent | — |
-| 186 | Zēng Lüè, 曾略, 103, 91, 38, 34世 | his father | — | absent | — |
-| 187 | Zēng Chéng 曾丞, 102, 90, 37, 33世 | his father | — | absent | — |
-| 188 | Zēng Móu 曾謀, 101, 89, 36, 32世 | his father | — | absent | — |
-| 189 | Zēng Jūn 曾鈞, 100, 88, 35, 31世 | his father | — | absent | — |
-| 190 | Zēng Lóng 曾隆, 99, 87, 34, 30世 | his father | — | absent | — |
-| 191 | Zēng Xīng 曾興, 字:兆發, 98, 86, 33, 29世 | his father | — | absent | — |
-| 192 | Zēng Huáng 曾璜, 97, 85, 32, 28世 | his father | — | absent | — |
-| 193 | Zēng Hǎi 曾海, 96, 84, 31, 27世 | his father | — | absent | — |
-| 194 | Zēng Xuàn 曾鉉, 字:道遠, 95, 83, 30, 26世 | his father | — | absent | — |
-| 195 | Zēng Duān Rén, 曾端仁, 字:正翼, 94, 82, 29, 25世 | his father | — | absent | — |
-| 196 | Zēng Xié 曾勰, 93, 81, 28, 24世 | his father | — | absent | — |
-| 197 | Zēng Zǐ 曾梓, 字:伯琦, 92, 80, 27, 23世 | his father | — | absent | — |
-| 198 | Zēng Huàn 曾渙, 91, 79, 26, 22世 | his father | — | absent | — |
-| 199 | Zēng Xún 曾珣, 90, 78, 25, 21世 | his father | — | absent | — |
-| 200 | Zēng Dé 曾德, 89, 77, 24, 20世 | his father | — | absent | — |
-| 201 | Zēng Péi 曾培, 88, 76, 23, 19世 | his father | — | absent | — |
-| 202 | Zēng Yào 曾燿, 87, 75, 22, 18世 | his father | — | absent | — |
-| 203 | Zēng Zhí 曾植, 86, 74, 21, 17世 | his father | — | absent | — |
-| 204 | Zēng Chǎn 曾闡, 85, 73, 20, 16世 | his father | — | absent | — |
-| 205 | Zēng Jù 曾據, 字:恆仁, 84, 72, 19, 15世 | his father | — | absent | — |
-| 206 | Zēng Tàn 曾埮, 83, 71, 1, 14世 | his father | — | absent | — |
-| 207 | Zēng Bǎo 曾寶, 字:惟善, 82, 70, 17, 13世 | his father | — | absent | — |
-| 208 | Zēng Jiā 曾嘉, 81, 69, 16, 12世 | his father | — | absent | — |
-| 209 | Zēng Zhān 曾旃, 字:仲勸, 80, 68, 15, 11世 | his father | — | absent | — |
-| 210 | Zēng Měi 曾浼, 79, 67, 14, 10世 | his father | — | absent | — |
-| 211 | Zēng Lè 曾樂, 78, 66, 13, 9世 | his father | — | absent | — |
-| 212 | Zēng Yíng, 曾盈, 77, 65, 12, 8世 | his father | — | absent | — |
-| 213 | Zēng Xiá, 曾遐, 字:子盛, 76, 64, 11, 7世 | his father | — | absent | — |
-| 214 | Zēng Xiàn 曾羨, 75, 63, 10, 6世 | his father | — | absent | — |
-| 215 | Zēng Dé 曾㝵, 74, 62, 9, 5世 | his father | — | absent | — |
-| 216 | Zēng Qīn 曾欽, 字:子敬, 73, 61, 8, 4世 | his father | — | absent | — |
-| 217 | Zēng Xī 曾西, 字:子照, 72, 60, 7, 3世 | his father | — | absent | — |
+| 166 | 蘇詵 | his son | [詵 眉州通義](https://www.geni.com/people/x/6000000129573305922) | id | 1 |
+| 167 | 蘇汝集 | his son | [汝集 眉州通義](https://www.geni.com/people/x/6000000129573756904) | id | 1 |
+| 168 | 蘇涇 | his son | [涇 眉州通義](https://www.geni.com/people/x/6000000129574161822) | id | 1 |
+| 169 | Su Jin 蘇釿 | his son | [釿 眉州通義](https://www.geni.com/people/x/6000000074703668938) | id | 1 |
+| 170 | Su Hu 蘇祜 | his son | [祜 眉州通義](https://www.geni.com/people/x/6000000074703627034) | id | 1 |
+| 171 | Su Gao 蘇杲 | his son | [杲 眉州眉山](https://www.geni.com/people/x/6000000074702876632) | id | 1 |
+| 172 | Su Xu 蘇序 | his son | [序 仲先 眉州眉山](https://www.geni.com/people/x/6000000038068824837) | id | 1 |
+| 173 | Su Xun 蘇洵 | his son | [洵 明允 眉州眉山](https://www.geni.com/people/x/6000000037591899292) | id | 1 |
+| 174 | Su Zhe 蘇轍 | his son | [轍 子由 眉州眉山](https://www.geni.com/people/x/6000000037591433434) | id | 1 |
+| 175 | Su Shi of Su Zhe ) 蘇氏(蘇轍女) | his daughter | [眉州眉山](https://www.geni.com/people/x/6000000074703871909) | id | 1 |
+| 176 | Zeng Zong 曾縱 | her husband | [縱 鎮江丹徒](https://www.geni.com/people/x/6000000074704064296) | id | 1 |
+| 177 | Zeng Zhao 曾肇 | his father | [肇 子開 建昌南豐](https://www.geni.com/people/x/6000000037890140333) | id | 1 |
+| 178 | Zeng Yizhan 曾易占 | his father | [易佔 不疑 Zēng 曾](https://www.geni.com/people/x/6000000037890432957) | id | 1 |
+| 179 | Zeng Zhiyao 曾致堯 | his father | [致堯 正臣 Zēng 曾](https://www.geni.com/people/x/6000000037890358015) | id | 1 |
+| 180 | Zeng Renwang 曾仁旺 | his father | [仁旺 Zēng 曾](https://www.geni.com/people/x/6000000037890215169) | id | 1 |
+| 181 | Zēng Yán Duó, 曾延鐸, 108, 96, 43, 39世 | his father | [延鐸 Zēng 曾](https://www.geni.com/people/x/6000000045047249641) | id | 1 |
+| 182 | Zēng Hóng Lì, 曾洪立, 107, 95, 42, 38世 | his father | [洪立](https://www.geni.com/people/x/6000000045017381857) | id | 1 |
+| 183 | Zēng Yún, 曾筠, 106, 94, 41, 37世 | his father | [筠](https://www.geni.com/people/x/6000000045017272839) | id | 1 |
+| 184 | Zēng Yǒng, 曾詠, 105, 93, 40, 36世 | his father | [詠 Zēng 曾](https://www.geni.com/people/x/6000000045850563835) | id | 1 |
+| 185 | 曾煬 | his father | [煬 Zēng 曾](https://www.geni.com/people/x/6000000013860573802) | id | 1 |
+| 186 | Zēng Lüè, 曾略, 103, 91, 38, 34世 | his father | [略 曾](https://www.geni.com/people/x/6000000013860591279) | id | 1 |
+| 187 | Zēng Chéng 曾丞, 102, 90, 37, 33世 | his father | [丞 曾](https://www.geni.com/people/x/6000000013860461844) | id | 1 |
+| 188 | Zēng Móu 曾謀, 101, 89, 36, 32世 | his father | [謀 以忠 曾](https://www.geni.com/people/x/6000000013860505886) | id | 1 |
+| 189 | Zēng Jūn 曾鈞, 100, 88, 35, 31世 | his father | [鈞 洪舉 曾](https://www.geni.com/people/x/6000000013860552330) | id | 1 |
+| 190 | Zēng Lóng 曾隆, 99, 87, 34, 30世 | his father | [隆 迪蕙 曾](https://www.geni.com/people/x/6000000013860534228) | id | 1 |
+| 191 | Zēng Xīng 曾興, 字:兆發, 98, 86, 33, 29世 | his father | [興 兆發 曾](https://www.geni.com/people/x/6000000013860580045) | id | 1 |
+| 192 | Zēng Huáng 曾璜, 97, 85, 32, 28世 | his father | [墴 曾](https://www.geni.com/people/x/6000000013860504772) | id | 1 |
+| 193 | Zēng Hǎi 曾海, 96, 84, 31, 27世 | his father | [海 曾](https://www.geni.com/people/x/6000000013860484260) | id | 1 |
+| 194 | Zēng Xuàn 曾鉉, 字:道遠, 95, 83, 30, 26世 | his father | [鉉 道遠 曾](https://www.geni.com/people/x/6000000013860563205) | id | 1 |
+| 195 | Zēng Duān Rén, 曾端仁, 字:正翼, 94, 82, 29, 25世 | his father | [端仁 正翼 曾](https://www.geni.com/people/x/6000000013860404554) | id | 1 |
+| 196 | Zēng Xié 曾勰, 93, 81, 28, 24世 | his father | [勰 曾](https://www.geni.com/people/x/6000000013860354464) | id | 1 |
+| 197 | Zēng Zǐ 曾梓, 字:伯琦, 92, 80, 27, 23世 | his father | [梓 伯琦 曾](https://www.geni.com/people/x/6000000013860341911) | id | 1 |
+| 198 | Zēng Huàn 曾渙, 91, 79, 26, 22世 | his father | [渙 曾](https://www.geni.com/people/x/6000000013860407116) | id | 1 |
+| 199 | Zēng Xún 曾珣, 90, 78, 25, 21世 | his father | [珣 貴文 曾](https://www.geni.com/people/x/6000000013860416278) | id | 1 |
+| 200 | Zēng Dé 曾德, 89, 77, 24, 20世 | his father | [德 曾](https://www.geni.com/people/x/6000000013860177082) | id | 1 |
+| 201 | Zēng Péi 曾培, 88, 76, 23, 19世 | his father | [培 本固 曾](https://www.geni.com/people/x/6000000013859923471) | id | 1 |
+| 202 | Zēng Yào 曾燿, 87, 75, 22, 18世 | his father | [燿 曾](https://www.geni.com/people/x/6000000013859908715) | id | 1 |
+| 203 | Zēng Zhí 曾植, 86, 74, 21, 17世 | his father | [植 曾](https://www.geni.com/people/x/6000000013860014338) | id | 1 |
+| 204 | Zēng Chǎn 曾闡, 85, 73, 20, 16世 | his father | [闡 曾](https://www.geni.com/people/x/6000000013860041702) | id | 1 |
+| 205 | Zēng Jù 曾據, 字:恆仁, 84, 72, 19, 15世 | his father | [據 恆仁 曾](https://www.geni.com/people/x/6000000013859864888) | id | 1 |
+| 206 | Zēng Tàn 曾埮, 83, 71, 1, 14世 | his father | [埮 曾](https://www.geni.com/people/x/6000000013860063032) | id | 1 |
+| 207 | Zēng Bǎo 曾寶, 字:惟善, 82, 70, 17, 13世 | his father | [寶 惟善 曾](https://www.geni.com/people/x/6000000013860001195) | id | 1 |
+| 208 | Zēng Jiā 曾嘉, 81, 69, 16, 12世 | his father | [嘉](https://www.geni.com/people/x/6000000013859933406) | id | 1 |
+| 209 | Zēng Zhān 曾旃, 字:仲勸, 80, 68, 15, 11世 | his father | [旃 仲勸](https://www.geni.com/people/x/6000000013859996157) | id | 1 |
+| 210 | Zēng Měi 曾浼, 79, 67, 14, 10世 | his father | [浼](https://www.geni.com/people/x/6000000013859905068) | id | 1 |
+| 211 | Zēng Lè 曾樂, 78, 66, 13, 9世 | his father | [樂 訓韶](https://www.geni.com/people/x/6000000013859805417) | id | 1 |
+| 212 | Zēng Yíng, 曾盈, 77, 65, 12, 8世 | his father | [盈 子美](https://www.geni.com/people/x/6000000013859817938) | id | 1 |
+| 213 | Zēng Xiá, 曾遐, 字:子盛, 76, 64, 11, 7世 | his father | [遐 子盛](https://www.geni.com/people/x/6000000013859786800) | id | 1 |
+| 214 | Zēng Xiàn 曾羨, 75, 63, 10, 6世 | his father | [羨 學餘](https://www.geni.com/people/x/6000000013859487695) | id | 1 |
+| 215 | Zēng Dé 曾㝵, 74, 62, 9, 5世 | his father | [㝵 若得](https://www.geni.com/people/x/6000000013859203857) | id | 1 |
+| 216 | Zēng Qīn 曾欽, 字:子敬, 73, 61, 8, 4世 | his father | [欽 子敬](https://www.geni.com/people/x/6000000013859239606) | id | 1 |
+| 217 | Zēng Xī 曾西, 字:子照, 72, 60, 7, 3世 | his father | [西 子照](https://www.geni.com/people/x/6000000013859255876) | id | 1 |
 | 218 | Zēng Yuán 曾元, 字:子元, 71, 59, 6, 2世 | his father | [元 子元](https://www.geni.com/people/x/6000000013859263377) | id | 1 |

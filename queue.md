@@ -40,15 +40,18 @@ Big priorities:
    The export paid on the other target anyway: 惟宗 2 → 8, 島津 51 → 92, and
    `reports/path-hata.md` **29/55 → 39/55**, closing all eight of steps 33–40.
 
-   **What is left of that path is not Japanese and is not clan work** — sixteen
-   steps, fifteen consecutive, being the Daniels / Searle / Merrell / Vories
-   families in America up to the Hitotsuyanagi marriage, IDs in
-   `reports/hata.md`. Step 9 is held and step 10 is his *brother*, so the
-   doorway is a sibling link. Fifteen consecutive is past the 6–9 steps a
-   targeted export has been observed to span, so it is two exports at least.
+   **What is left of that path is not Japanese and is not clan work** — the
+   Daniels / Searle / Merrell / Vories families in America up to the
+   Hitotsuyanagi marriage. **Now 11 consecutive steps, 10–20, re-measured
+   2026-08-06 night over the 115-export merge**; it was sixteen. Step 9 is held
+   and step 10 is his *brother*, so the doorway is a sibling link, and steps 11,
+   13 and 15 are marriages — `Forest`, or a blood-only walk stops at step 10.
    **BLOCKED-ON-USER-ACTION**, unblock signal is a new `.ged` under `exports/`;
-   seed **Enok Danielson `6000000004104838733`**, style `Forest` (steps 11, 13
-   and 22 are marriages).
+   seed **Enok Danielson `6000000004104838733`**.
+
+   This is now **the largest remaining gap in the whole path corpus** — the
+   other two are three people each. Eleven consecutive is just past the nine a
+   targeted export has been observed to span, so it may take two.
 
    Also worth recording as a method note rather than a task: **a clan name is
    not a clan.** Counting Hata-named people implied a population Geni does not
@@ -82,8 +85,31 @@ Big priorities:
    connectivity through few individuals. **Saving more path pages is not the
    work; closing the shared bridges is.**
 
+   **Superseded again, 2026-08-06 night, over the 115-export merge: the paths
+   are essentially closed.** `reports/connectors.md` is the live answer.
+   **3 447 of 3 464 steps held (99.5%), 23 of 26 paths complete, 3 bridges
+   holding 17 people, none shared between paths.** Emma's twelve gap-aimed
+   exports closed the Alemannian ten *and* all three Chinese runs
+   (`zeng-yuan` 52, `hao-huang` 25, `hou-zhang` 10) in one batch. Every bridge
+   this queue has ever named by profile ID is now held.
+
+   What is left is three private gaps, and each is its own item rather than a
+   shared bridge: 11 people on `hata` (item 0.000 below, seed Enok Danielson
+   `6000000004104838733`), 3 on `makeda-to-marguerite` (seed Pierre Louis de
+   l'Estandart `6000000196474936821`), 3 on `psamtik-ii` (seed Musa bin Musa
+   Al-Qasi `6000000012263275369`). All three `Forest` — the first crosses a
+   brother and two wives, the second a husband.
+
+   **The concentration finding did not survive.** "29 people carry 98 slots,
+   connectivity through a few critical individuals" described a tree missing
+   190 people; at 17 there is no concentration left to measure. It was a true
+   description of a state, not a property of the graph, and it is worth being
+   explicit that it is spent rather than leaving it to read as a standing fact.
+
+   **Older text below, kept because the predictions in it were scored.**
+
    **Re-measured 2026-08-06 late, over the 103-export merge, by
-   `python -m genimerge connectors` — and the numbers above are superseded.**
+   `python -m genimerge connectors`:**
    `reports/connectors.md` and `out/connectors.html` are now the live answer;
    do not read the counts in this item as current. **3 274 of 3 464 steps held
    (94.5%), 13 of 26 paths complete, 16 bridges in 12 clusters.** Two things
@@ -151,41 +177,6 @@ Big priorities:
    and three English label edits from `entity_resolution.md`. All six Geni
    profiles are in the tree. **BLOCKED-ON-USER-ACTION** — nothing here sends
    anything to Wikidata, and label edits overwrite other editors' work.
-
-2.5 **BLOCKED-ON-USER-ACTION — export from Louis I, The Pious
-   `6000000001266578142`, style `Forest`. This now outranks the density picks
-   below.** Measured 2026-08-05 in `reports/paths.md`: fifteen Geni relationship
-   chains checked against the 186,551-person merge hold 1,095 of 1,227 steps
-   (89.2%), and **50 of the 132 missing steps are the same ten people** — the
-   Alemannian ducal line ascending into the Carolingians, blocking five separate
-   paths that each run unbroken to step 34 and stop there. All ten verified
-   absent by profile ID against `out/merged.ged`.
-
-   **Re-measured 2026-08-06 late over the 103-export merge and it is now the
-   top buy outright** — `reports/connectors.md`, rank 2 by slots and the
-   highest-ranked cluster that more than one path needs. The same ten people
-   block five paths at the *identical* steps 35–44, doorway **Gisela of Friuli
-   `6000000008592343633`**, first absent Berengar I (her father), resuming at
-   Leutharis II. **50 step-slots across 5 paths for one export**, and no other
-   cluster in the report touches more than one path.
-
-   **The second bridge of this kind is closed and needs no export.**
-   'A'idhullah al-'Ashiri `6000000226741965864`, 19 Jurhumid/Qahtani people
-   across `scorpion-i`, `pasuti` and `psamtik-ii`, was the rank-1 cluster at 55
-   slots before the four `exports/edges/` takes were merged; it is gone from
-   the report entirely. That is the first time a bridge named here has been
-   closed by exports taken for other reasons.
-
-   **Caveat carried by the report itself: ten people is one past the nine that
-   is the widest gap a targeted export has closed here**, so `connectors` flags
-   this cluster "one export? no". It may take two, exactly as this item has
-   said since it was written.
-
-   It beats the density picks because the payoff is *observed*: Geni has already
-   named who is behind this door. `Forest` because Giséle of Cysoing and Emma of
-   Alemannia enter through marriages and a blood-only style walks past them.
-   Ten people is at the edge of the 6–9 steps a targeted export has actually
-   reached here, so it may take two.
 
 3. **BLOCKED-ON-USER-ACTION — the next four exports, picked 2026-08-05 from
    `reports/density.md`.** Unblock signal is a new `.ged` under `exports/`. All

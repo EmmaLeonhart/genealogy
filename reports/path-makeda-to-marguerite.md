@@ -1,10 +1,10 @@
 # Relationship path: makeda-to-marguerite
 
-**148 of 155 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**152 of 155 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**The unbroken run stops at step 145, Constance de Courtenay.** The next step, **Mahaut de Poissy, dame de Châteaufort**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 151, Pierre Louis de l'Estandart, seigneur de Hanche et Sévines, Baron d'Ouillé-la-Ribaud.** The next step, **Marguerite de l'Estandart**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
-**3 steps past the gap are held anyway** — Mabille de Montmorency-Marly onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
+**1 steps past the gap are held anyway** — Marguerite Baudry onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
 
 ## Steps
 
@@ -155,12 +155,12 @@
 | 143 | Marie de Courtenay | his wife | [Marie de Courtenay](https://www.geni.com/people/x/6000000006727871670) | id | 1 |
 | 144 | Pierre II de Courtenay, Emperor of Constantinople | her father | [Pierre II de Courtenay](https://www.geni.com/people/x/6000000000157044029) | id | 1 |
 | 145 | Constance de Courtenay | his sister | [Constance](https://www.geni.com/people/x/6000000006727873475) | id | 1 |
-| 146 | Mahaut de Poissy, dame de Châteaufort | her daughter | — | absent | — |
+| 146 | Mahaut de Poissy, dame de Châteaufort | her daughter | [Mahaut de Poissy](https://www.geni.com/people/x/6000000003827429691) | id | 1 |
 | 147 | Mabille de Montmorency-Marly | her daughter | [Mabille](https://www.geni.com/people/x/6000000003827424837) | id | 1 |
 | 148 | Robert de Beynes | her son | [Robert de Montfort](https://www.geni.com/people/x/6000000004869064901) | id | 1 |
-| 149 | Siméon Robert de Beynes | his son | — | absent | — |
-| 150 | Louis de L'Estendart, Dit Louvel | his son | — | absent | — |
-| 151 | Pierre Louis de l'Estandart, seigneur de Hanche et Sévines, Baron d'Ouillé-la-Ribaud | his son | — | absent | — |
+| 149 | Siméon Robert de Beynes | his son | [Siméon Robert de Beynes](https://www.geni.com/people/x/6000000004869064889) | id | 1 |
+| 150 | Louis de L'Estendart, Dit Louvel | his son | [Louis de L'ESTENDART](https://www.geni.com/people/x/6000000044367617884) | id | 1 |
+| 151 | Pierre Louis de l'Estandart, seigneur de Hanche et Sévines, Baron d'Ouillé-la-Ribaud | his son | [Pierre Louis](https://www.geni.com/people/x/6000000196474936821) | id | 1 |
 | 152 | Marguerite de l'Estandart | his daughter | — | absent | — |
 | 153 | Marguerite de Saint Ouen | her daughter | — | absent | — |
 | 154 | Macé Pierre Baudry, Seigneur de Pierrecourt | her husband | — | absent | — |

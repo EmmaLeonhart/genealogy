@@ -94,28 +94,40 @@ Sources in merge order (later sources win value conflicts):
 88. `export-Forest-7.ged`
 89. `export-Forest-8.ged`
 90. `export-Forest-9.ged`
-91. `export-Forest-6000000210475738822.ged`
-92. `export-Forest.ged`
-93. `export-Forest.ged`
-94. `export-Forest.ged`
-95. `export-Ancestors.ged`
-96. `export-BloodTree.ged`
-97. `export-Forest-6000000226977233850.ged`
-98. `export-Forest-6000000226989731860.ged`
-99. `export-Forest.ged`
-100. `export-Forest-40.ged`
-101. `export-Forest-41.ged`
-102. `export-Forest-42.ged`
-103. `export-Forest-43.ged`
+91. `export-Ancestors-6000000087535357291.ged`
+92. `export-BloodTree-6000000087535357291.ged`
+93. `export-Descendants-6000000209595340830.ged`
+94. `export-Forest-6000000227086244080.ged`
+95. `export-Forest-6000000227086380915.ged`
+96. `export-Forest-6000000227086432913.ged`
+97. `export-Forest-6000000227086452843.ged`
+98. `export-Forest-6000000227086455824.ged`
+99. `export-Forest-6000000227086465839.ged`
+100. `export-Forest-6000000227086500885.ged`
+101. `export-Forest-6000000227086506866.ged`
+102. `export-Forest-6000000227086510841.ged`
+103. `export-Forest-6000000210475738822.ged`
+104. `export-Forest.ged`
+105. `export-Forest.ged`
+106. `export-Forest.ged`
+107. `export-Ancestors.ged`
+108. `export-BloodTree.ged`
+109. `export-Forest-6000000226977233850.ged`
+110. `export-Forest-6000000226989731860.ged`
+111. `export-Forest.ged`
+112. `export-Forest-40.ged`
+113. `export-Forest-41.ged`
+114. `export-Forest-42.ged`
+115. `export-Forest-43.ged`
 
 ## Merged totals
 
 | record | count |
 | --- | ---: |
-| FAM | 104105 |
-| INDI | 208089 |
-| NOTE | 15812 |
-| SUBM | 8116 |
+| FAM | 114600 |
+| INDI | 228673 |
+| NOTE | 28090 |
+| SUBM | 8549 |
 
 ## What each source contributed
 
@@ -156,9 +168,9 @@ Sources in merge order (later sources win value conflicts):
 | `export-Forest-36.ged` | 1023 | 2869 | 42 | 27 | 1847 | 3363 |
 | `export-Forest-37.ged` | 1571 | 2282 | 3 | 25 | 2831 | 2457 |
 | `export-Forest-39.ged` | 1168 | 4004 | 1 | 232 | 51 | 0 |
-| `export-Forest-40.ged` | 2833 | 3725 | 155 | 296 | 919 | 1731 |
-| `export-Forest-41.ged` | 865 | 2638 | 9 | 114 | 2393 | 2451 |
-| `export-Forest-42.ged` | 805 | 1317 | 0 | 0 | 4586 | 1840 |
+| `export-Forest-40.ged` | 2832 | 3724 | 155 | 291 | 926 | 1730 |
+| `export-Forest-41.ged` | 865 | 2638 | 9 | 112 | 2395 | 2451 |
+| `export-Forest-42.ged` | 553 | 840 | 0 | 0 | 5315 | 1657 |
 | `export-Forest-43.ged` | 2319 | 3915 | 104 | 364 | 284 | 193 |
 | `export-Forest-44.ged` | 2628 | 3864 | 14 | 16 | 29 | 1 |
 | `export-Forest-46.ged` | 0 | 0 | 0 | 0 | 2077 | 0 |
@@ -211,40 +223,55 @@ Sources in merge order (later sources win value conflicts):
 | `export-Forest-7.ged` | 671 | 1277 | 0 | 37 | 4214 | 3485 |
 | `export-Forest-8.ged` | 682 | 922 | 0 | 17 | 5206 | 423 |
 | `export-Forest-9.ged` | 0 | 25 | 0 | 1 | 6210 | 1289 |
-| `export-Forest-6000000210475738822.ged` | 533 | 832 | 0 | 0 | 5469 | 1020 |
-| `export-Forest.ged` | 727 | 1084 | 3 | 59 | 4386 | 908 |
-| `export-Forest.ged` | 727 | 1084 | 3 | 59 | 4386 | 908 |
-| `export-Forest.ged` | 727 | 1084 | 3 | 59 | 4386 | 908 |
-| `export-Ancestors.ged` | 2111 | 3568 | 557 | 287 | 1198 | 6406 |
-| `export-BloodTree.ged` | 717 | 3078 | 5 | 174 | 1320 | 1015 |
-| `export-Forest-6000000226977233850.ged` | 1454 | 2700 | 0 | 89 | 1621 | 1048 |
+| `export-Ancestors-6000000087535357291.ged` | 2188 | 3696 | 766 | 297 | 1764 | 12657 |
+| `export-BloodTree-6000000087535357291.ged` | 732 | 3269 | 7 | 185 | 1327 | 1022 |
+| `export-Descendants-6000000209595340830.ged` | 275 | 379 | 0 | 0 | 6504 | 870 |
+| `export-Forest-6000000227086244080.ged` | 2030 | 3552 | 7902 | 203 | 3745 | 12959 |
+| `export-Forest-6000000227086380915.ged` | 969 | 2467 | 2089 | 76 | 7097 | 30373 |
+| `export-Forest-6000000227086432913.ged` | 1880 | 3892 | 0 | 9 | 259 | 140 |
+| `export-Forest-6000000227086452843.ged` | 369 | 604 | 0 | 1 | 5308 | 5036 |
+| `export-Forest-6000000227086455824.ged` | 636 | 1506 | 1228 | 65 | 11827 | 5496 |
+| `export-Forest-6000000227086465839.ged` | 1763 | 3768 | 0 | 1 | 414 | 67 |
+| `export-Forest-6000000227086500885.ged` | 773 | 1452 | 0 | 0 | 4303 | 1007 |
+| `export-Forest-6000000227086506866.ged` | 1995 | 3219 | 1258 | 87 | 3613 | 3675 |
+| `export-Forest-6000000227086510841.ged` | 247 | 433 | 0 | 2 | 6157 | 591 |
+| `export-Forest-6000000210475738822.ged` | 453 | 732 | 0 | 0 | 5649 | 471 |
+| `export-Forest.ged` | 727 | 1075 | 3 | 58 | 4396 | 902 |
+| `export-Forest.ged` | 727 | 1075 | 3 | 58 | 4396 | 902 |
+| `export-Forest.ged` | 727 | 1075 | 3 | 58 | 4396 | 902 |
+| `export-Ancestors.ged` | 1 | 0 | 0 | 0 | 7720 | 13016 |
+| `export-BloodTree.ged` | 1 | 2 | 0 | 0 | 5291 | 3720 |
+| `export-Forest-6000000226977233850.ged` | 1453 | 2699 | 0 | 89 | 1623 | 1047 |
 | `export-Forest-6000000226989731860.ged` | 7 | 9 | 0 | 0 | 6323 | 494 |
-| `export-Forest.ged` | 727 | 1084 | 3 | 59 | 4386 | 908 |
-| `export-Forest-40.ged` | 2833 | 3725 | 155 | 296 | 919 | 1731 |
-| `export-Forest-41.ged` | 865 | 2638 | 9 | 114 | 2393 | 2451 |
-| `export-Forest-42.ged` | 805 | 1317 | 0 | 0 | 4586 | 1840 |
+| `export-Forest.ged` | 727 | 1075 | 3 | 58 | 4396 | 902 |
+| `export-Forest-40.ged` | 2832 | 3724 | 155 | 291 | 926 | 1730 |
+| `export-Forest-41.ged` | 865 | 2638 | 9 | 112 | 2395 | 2451 |
+| `export-Forest-42.ged` | 553 | 840 | 0 | 0 | 5315 | 1657 |
 | `export-Forest-43.ged` | 2319 | 3915 | 104 | 364 | 284 | 193 |
 
 ## Pointers to records we do not have
 
-**850** pointers name a record that is not in the merged file, of which **0** are family-structure pointers (`CHIL`, `HUSB`, `WIFE`, `FAMC`, `FAMS`). Only the structural ones would mean a broken tree; the rest are incidental references to submitter or note records the exports did not include.
+**968** pointers name a record that is not in the merged file, of which **0** are family-structure pointers (`CHIL`, `HUSB`, `WIFE`, `FAMC`, `FAMS`). Only the structural ones would mean a broken tree; the rest are incidental references to submitter or note records the exports did not include.
 
 | pointer | unresolved |
 | --- | ---: |
-| `INDI.SUBM` | 806 |
+| `INDI.SUBM` | 923 |
 | `INDI.PLAC` | 22 |
-| `NOTE.NOTE` | 19 |
+| `NOTE.NOTE` | 20 |
 | `INDI.OCCU` | 3 |
 
 ## Conflicts
 
-**22** value disagreements on single-valued paths. The value from the later source was kept; the other is recorded here and is not in the merged file.
+**61** value disagreements on single-valued paths. The value from the later source was kept; the other is recorded here and is not in the merged file.
 
 By path:
 
 | path | conflicts |
 | --- | ---: |
-| `INDI.CHAN.DATE` | 11 |
-| `INDI.CHAN.DATE.TIME` | 11 |
+| `INDI.CHAN.DATE` | 27 |
+| `INDI.CHAN.DATE.TIME` | 27 |
+| `INDI.BIRT.PLAC` | 3 |
+| `INDI.DEAT.PLAC` | 2 |
+| `INDI.BURI.PLAC` | 2 |
 
 Every conflict is listed individually in `out/merge-report.md`, which this file deliberately does not duplicate.

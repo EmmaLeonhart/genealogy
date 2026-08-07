@@ -1,10 +1,8 @@
 # Relationship path: madgacen-300-d
 
-**67 of 88 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**88 of 88 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**The unbroken run stops at step 32, Arnulf II the Young, count of Flanders.** The next step, **Baldwin III, count of Flanders**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
-
-**35 steps past the gap are held anyway** — Oswiu of Northumbria, King of Bernicia, Mercia and of Northumbria onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
+Every step is held: this path is walkable inside our own data.
 
 ## Steps
 
@@ -42,28 +40,28 @@
 | 30 | Judith of Flanders | his mother | [Judith of Flanders](https://www.geni.com/people/x/4927821238910067084) | id | 1 |
 | 31 | Baldwin IV the Bearded, count of Flanders | her father | [Baldwin](https://www.geni.com/people/x/6000000001412935350) | id | 1 |
 | 32 | Arnulf II the Young, count of Flanders | his father | [Arnulf](https://www.geni.com/people/x/6000000002198946285) | id | 1 |
-| 33 | Baldwin III, count of Flanders | his father | — | absent | — |
-| 34 | Arnulf I the Great, count of Flanders | his father | — | absent | — |
-| 35 | Ælfthryth, countess of Flanders | his mother | — | absent | — |
-| 36 | Alfred the Great, king of the Anglo-Saxons | her father | — | absent | — |
-| 37 | Aethelwulf, king of Wessex | his father | — | absent | — |
-| 38 | Egbert, king of Wessex | his father | — | absent | — |
-| 39 | Ealhmund, Under King Of Kent | his father | — | absent | — |
-| 40 | Eaba | his father | — | absent | — |
-| 41 | Eoppa | his father | — | absent | — |
-| 42 | Ingild | his father | — | absent | — |
-| 43 | Saint Cuthburga of Wimborne, Abbess Of Barking | his sister | — | absent | — |
-| 44 | Aldfrith, king of Northumbria | her husband | — | absent | — |
+| 33 | Baldwin III, count of Flanders | his father | [Baldwin](https://www.geni.com/people/x/6000000002214355256) | id | 1 |
+| 34 | Arnulf I the Great, count of Flanders | his father | [Arnulf](https://www.geni.com/people/x/6000000002213340177) | id | 1 |
+| 35 | Ælfthryth, countess of Flanders | his mother | [Ælfthryth](https://www.geni.com/people/x/6000000003300400465) | id | 1 |
+| 36 | Alfred the Great, king of the Anglo-Saxons | her father | [Ælfrēd Veliký](https://www.geni.com/people/x/3967262167710039627) | id | 1 |
+| 37 | Aethelwulf, king of Wessex | his father | [Æþelwulf](https://www.geni.com/people/x/6000000003826814612) | id | 1 |
+| 38 | Egbert, king of Wessex | his father | [Ecgberht](https://www.geni.com/people/x/6000000002142373595) | id | 1 |
+| 39 | Ealhmund, Under King Of Kent | his father | [Ealhmund](https://www.geni.com/people/x/6000000000297316210) | id | 1 |
+| 40 | Eaba | his father | [Eaba](https://www.geni.com/people/x/6000000001184040598) | id | 1 |
+| 41 | Eoppa | his father | [Eoppa](https://www.geni.com/people/x/6000000001183968441) | id | 1 |
+| 42 | Ingild | his father | [Ingild](https://www.geni.com/people/x/6000000001184035610) | id | 1 |
+| 43 | Saint Cuthburga of Wimborne, Abbess Of Barking | his sister | [Cuthburga](https://www.geni.com/people/x/6000000003232563199) | id | 1 |
+| 44 | Aldfrith, king of Northumbria | her husband | [Aldfrith](https://www.geni.com/people/x/6000000005010538474) | id | 1 |
 | 45 | Oswiu of Northumbria, King of Bernicia, Mercia and of Northumbria | his father | [Oswiu of Northumbria](https://www.geni.com/people/x/6000000004975954471) | id | 1 |
-| 46 | Rhieinfellt verch Royth | his wife | — | absent | — |
-| 47 | Royth ap Rhun | her father | — | absent | — |
-| 48 | Rhun ap Urien | his father | — | absent | — |
-| 49 | Urien ap Cynfarch, Brenin Rhegid | his father | — | absent | — |
-| 50 | Nyfain verch Brychan | his mother | — | absent | — |
-| 51 | Prawst verch Tudwal | her mother | — | absent | — |
-| 52 | Tudwal ap Turmwr Morfawr, King of Dumnonia (Cornwall) | her father | — | absent | — |
-| 53 | Gwrfawr Morfawr Dumnonia, King of Dumnonia | his father | — | absent | — |
-| 54 | Gadeon ap Cynan | his father | — | absent | — |
+| 46 | Rhieinfellt verch Royth | his wife | [Rhieinfellt verch Royth](https://www.geni.com/people/x/6000000007553768854) | id | 1 |
+| 47 | Royth ap Rhun | her father | [Royth ap Rhun](https://www.geni.com/people/x/6000000007553976572) | id | 1 |
+| 48 | Rhun ap Urien | his father | [Rhun ap Urien](https://www.geni.com/people/x/6000000007553907727) | id | 1 |
+| 49 | Urien ap Cynfarch, Brenin Rhegid | his father | [Urien ap Cynfarch](https://www.geni.com/people/x/6000000006290723416) | id | 1 |
+| 50 | Nyfain verch Brychan | his mother | [Nyfain verch Brychan](https://www.geni.com/people/x/6000000001354422610) | id | 1 |
+| 51 | Prawst verch Tudwal | her mother | [Prawst Verch verch Tudwal](https://www.geni.com/people/x/377662173460007528) | id | 1 |
+| 52 | Tudwal ap Turmwr Morfawr, King of Dumnonia (Cornwall) | her father | [Tudwal](https://www.geni.com/people/x/377667004310013809) | id | 1 |
+| 53 | Gwrfawr Morfawr Dumnonia, King of Dumnonia | his father | [Gwrfawr Morfawr ap Cadfan](https://www.geni.com/people/x/6000000005739230155) | id | 1 |
+| 54 | Gadeon ap Cynan | his father | [Gadeon](https://www.geni.com/people/x/6000000011595393870) | id | 1 |
 | 55 | Cynan ap Eudaf Hen | his father | [Cynan](https://www.geni.com/people/x/6000000056597824874) | id | 1 |
 | 56 | Elen ferch Eudaf Hen | his sister | [Elen](https://www.geni.com/people/x/377649183480004232) | id | 1 |
 | 57 | Maxentius, Western Roman Emperor | her partner | [Marcus Aurelius Valerius Maxentius Augustus](https://www.geni.com/people/x/6000000006792546007) | id | 1 |
