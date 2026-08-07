@@ -3645,3 +3645,41 @@ export had been seen to span. A batch of twelve exports then closed a 52-person
 run, a 25 and a 10. The number was a fact about exports already taken, dressed
 as a limit on what could be taken next. Emma had not asked for it and said so.
 Gone from the module, the tests, the markdown and the page.
+
+## 2026-08-06 (late night, cont.) — one gap left, and the tree's shape in time
+
+Four more exports (127 total), merge **244 790 people**, 122 340 families, 119
+conflicts, 2 components. Paths **3 460 of 3 464 (99.9%), 25 of 26 complete, one
+bridge, four people** — Stephen Merrill, Erastus Merrell, William H Merrell,
+Julia Eugenia Vories, steps 17-20, doorway Simeon Merrill
+`6000000008427171641`, `Forest` because step 17 is his brother. Emma's export
+closed Enok Danielson at step 10.
+
+**Measured, at Emma's ask: when does this tree live?** Neither of the two
+readings on the table was right. Hers-first was ancient/medieval bias; hers-
+revised was that 20th-21st century people would dominate. The dated population
+peaks hard in the early modern period:
+
+| period | share of dated |
+| --- | ---: |
+| 17th-19th century | **49.5%** |
+| medieval C6-C15 | 35.1% |
+| 20th-21st century | **4.8%** |
+| ancient, pre-C6 | 3.3% |
+
+C19 alone is 17.4% and C20 is 4.5% — a cliff, not a taper.
+
+**The caveat is load-bearing and cuts towards her reading.** Only 46.1% of
+people carry a usable birth year. Of the 130 702 without one, 11 091 have
+redacted names, and Geni redacts the living. So 4.8% is a **floor on the modern
+share, not a measurement of it**: every living person is structurally incapable
+of appearing in that bar. The remaining 119 611 undated people are not explained
+by redaction and their period is unknown.
+
+That distinction decides whether the `Descendants` campaign is reaching new
+people or reaching people who will arrive as `<private>` with no dates, and
+nothing measured so far separates the two.
+
+This was a throwaway script, not an instrument — no module, no test, nothing
+committed that can be re-run. Offered to build it as `genimerge dates`;
+awaiting an answer rather than assuming.

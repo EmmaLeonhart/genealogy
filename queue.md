@@ -41,17 +41,21 @@ Big priorities:
    `reports/path-hata.md` **29/55 → 39/55**, closing all eight of steps 33–40.
 
    **What is left of that path is not Japanese and is not clan work** — the
-   Daniels / Searle / Merrell / Vories families in America up to the
-   Hitotsuyanagi marriage. **Now 11 consecutive steps, 10–20, re-measured
-   2026-08-06 night over the 115-export merge**; it was sixteen. Step 9 is held
-   and step 10 is his *brother*, so the doorway is a sibling link, and steps 11,
-   13 and 15 are marriages — `Forest`, or a blood-only walk stops at step 10.
-   **BLOCKED-ON-USER-ACTION**, unblock signal is a new `.ged` under `exports/`;
-   seed **Enok Danielson `6000000004104838733`**.
+   Merrill / Merrell / Vories families in America. **Down to 4 steps, 17–20,
+   re-measured over the 127-export merge**; it was sixteen, then eleven, then
+   five. **BLOCKED-ON-USER-ACTION**, unblock signal is a new `.ged` under
+   `exports/`; seed **Simeon Merrill `6000000008427171641`**, style `Forest`
+   because step 17 is his *brother* and a blood-only walk stops there.
 
-   This is now **the largest remaining gap in the whole path corpus** — the
-   other two are three people each. Eleven consecutive is just past the nine a
-   targeted export has been observed to span, so it may take two.
+   **This is the only gap left in the entire path corpus** — 3 460 of 3 464
+   steps held, 25 of 26 paths complete, one bridge.
+
+   **Never call this "the Hata gap".** The path is named `hata` for its
+   *endpoint*; all 13 steps on it named Hata are held, and so are all 35 steps
+   from 21 to 55, the whole Japanese side. Reporting it by path name led Emma to
+   believe her Hata export had failed when it had not. Name the people who are
+   missing, never the path they sit on. `out/hata-missing.html` shows all 55
+   steps marked held or absent.
 
    Also worth recording as a method note rather than a task: **a clan name is
    not a clan.** Counting Hata-named people implied a population Geni does not

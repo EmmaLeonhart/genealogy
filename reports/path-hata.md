@@ -1,10 +1,10 @@
 # Relationship path: hata
 
-**50 of 55 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**51 of 55 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**The unbroken run stops at step 9, Daniel Danielson Nerabø.** The next step, **Enok Danielson (Enoch Daniels) i USA**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 16, Simeon Merrill.** The next step, **Stephen Merrill**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
-**41 steps past the gap are held anyway** — Rebecca Jane Daniels onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
+**35 steps past the gap are held anyway** — Merrell Vories Hitotsuyanagi onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
 
 ## Steps
 
@@ -19,7 +19,7 @@
 | 7 | Gurina Jonasdatter Egland | his wife | [Gurina Jonasdatter Espedal](https://www.geni.com/people/x/6000000207769838867) | id | 1 |
 | 8 | Hanna Danielsdatter Frafjord | her mother | [Hanna Danielsdatter Frafjord](https://www.geni.com/people/x/6000000008961666136) | id | 1 |
 | 9 | Daniel Danielson Nerabø | her father | [Daniel Danielson Nerabø](https://www.geni.com/people/x/6000000004105285975) | id | 1 |
-| 10 | Enok Danielson (Enoch Daniels) i USA | his brother | — | absent | — |
+| 10 | Enok Danielson (Enoch Daniels) i USA | his brother | [Enok Danielson](https://www.geni.com/people/x/6000000004104838733) | id | 1 |
 | 11 | Rebecca Jane Daniels | his wife | [Rebecca Jane Brinkley](https://www.geni.com/people/x/6000000137763536821) | id | 1 |
 | 12 | Leonard Breed Searle | her husband | [Leonard Breed Searle](https://www.geni.com/people/x/6000000025819589873) | id | 1 |
 | 13 | Rebecca Ann Searle | his wife | [Rebecca Ann Saxton](https://www.geni.com/people/x/6000000025819541317) | id | 1 |
