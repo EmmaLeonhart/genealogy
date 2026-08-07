@@ -1,10 +1,10 @@
 # Relationship path: hata
 
-**44 of 55 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**50 of 55 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
 **The unbroken run stops at step 9, Daniel Danielson Nerabø.** The next step, **Enok Danielson (Enoch Daniels) i USA**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
-**35 steps past the gap are held anyway** — Merrell Vories Hitotsuyanagi onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
+**41 steps past the gap are held anyway** — Rebecca Jane Daniels onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
 
 ## Steps
 
@@ -20,12 +20,12 @@
 | 8 | Hanna Danielsdatter Frafjord | her mother | [Hanna Danielsdatter Frafjord](https://www.geni.com/people/x/6000000008961666136) | id | 1 |
 | 9 | Daniel Danielson Nerabø | her father | [Daniel Danielson Nerabø](https://www.geni.com/people/x/6000000004105285975) | id | 1 |
 | 10 | Enok Danielson (Enoch Daniels) i USA | his brother | — | absent | — |
-| 11 | Rebecca Jane Daniels | his wife | — | absent | — |
-| 12 | Leonard Breed Searle | her husband | — | absent | — |
-| 13 | Rebecca Ann Searle | his wife | — | absent | — |
-| 14 | Mary Amy Merrell | her sister | — | absent | — |
-| 15 | Hosea Merrell | her husband | — | absent | — |
-| 16 | Simeon Merrill | his father | — | absent | — |
+| 11 | Rebecca Jane Daniels | his wife | [Rebecca Jane Brinkley](https://www.geni.com/people/x/6000000137763536821) | id | 1 |
+| 12 | Leonard Breed Searle | her husband | [Leonard Breed Searle](https://www.geni.com/people/x/6000000025819589873) | id | 1 |
+| 13 | Rebecca Ann Searle | his wife | [Rebecca Ann Saxton](https://www.geni.com/people/x/6000000025819541317) | id | 1 |
+| 14 | Mary Amy Merrell | her sister | [Mary Amy Saxton](https://www.geni.com/people/x/6000000041104512805) | id | 1 |
+| 15 | Hosea Merrell | her husband | [Hosea Merrell](https://www.geni.com/people/x/6000000041104512798) | id | 1 |
+| 16 | Simeon Merrill | his father | [Simeon](https://www.geni.com/people/x/6000000008427171641) | id | 1 |
 | 17 | Stephen Merrill | his brother | — | absent | — |
 | 18 | Erastus Merrell | his son | — | absent | — |
 | 19 | William H Merrell | his son | — | absent | — |

@@ -3602,3 +3602,46 @@ raised, which would not fall back. `GENI_EXPORT_CAP` 4020 → 4056, caught by
 `tests/test_seeds.py` as designed. Every value is a multiple of four and that
 still means nothing: "steps of four" has now been proposed and falsified three
 times in that docstring.
+
+## 2026-08-06 (late night) — 99.9%, and a labelling fault worth naming
+
+Eight more exports (corpus 115 → 123), merge **228 673 → 239 552 people**,
+119 440 families, 2 components (239 519 + 33).
+
+Paths: **3 459 of 3 464 held (99.9%), 25 of 26 complete, 2 bridges, 5 people.**
+
+**Both remaining gaps are on `hata`, and neither is Hata.** Emma asked, twice and
+with justified suspicion, whether Hata people were still missing after she took
+an export specifically for them. They are not. All 13 steps on that path named
+Hata are held; all 35 steps from 21 to 55 — the entire Japanese side — are held.
+The five absent are steps 10 and 17-20: Enok Danielson, Stephen Merrill, Erastus
+Merrell, William H Merrell, Julia Eugenia Vories, all 19th-century Americans,
+sitting ten steps into a chain that only reaches Japan at step 21.
+
+**The fault was mine and it was in the reporting, not the data.** Calling them
+"gaps on the hata path" reads as "Hata people are missing", because the path is
+named for its endpoint. A path file's name says where the chain *ends* and
+nothing about who is on it. Say who is missing — "five Americans on the Merrill
+line" — never which path they sit on. `out/hata-missing.html` marks every one of
+the 55 steps held or absent so the shape is visible rather than asserted.
+
+Verified independently of the path checker, because a claim that had already
+been mis-stated deserved it: each of the five was grepped against
+`out/merged.ged` and all 123 GEDCOMs. Zero hits each, not even as a relative
+referenced by somebody else.
+
+**The export size bound is no longer a mystery.** Emma states it: four times the
+number of profiles she has added. That accounts for the multiples of four, for
+its being neither per-style nor per-seed, and for its rising across a session.
+`GENI_EXPORT_CAP` 4056 → 4068, and its docstring now leads with the mechanism
+rather than with 123 exports of inference.
+
+**A fifth export style exists — `Bio`**, first seen 21:33. `CLAUDE.md` said four.
+Nothing enumerates them, so a sixth would land as silently as this one did.
+
+**Removed: the "one export?" flag on `connectors`.** It marked any cluster wider
+than nine people as too big to close, nine being the widest gap one targeted
+export had been seen to span. A batch of twelve exports then closed a 52-person
+run, a 25 and a 10. The number was a fact about exports already taken, dressed
+as a limit on what could be taken next. Emma had not asked for it and said so.
+Gone from the module, the tests, the markdown and the page.

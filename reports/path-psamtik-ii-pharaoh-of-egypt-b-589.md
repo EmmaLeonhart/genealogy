@@ -1,10 +1,8 @@
 # Relationship path: psamtik-ii-pharaoh-of-egypt-b-589
 
-**114 of 117 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**117 of 117 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**The unbroken run stops at step 42, Musa bin Musa Al-Qasi.** The next step, **Musa Al-Qasi**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
-
-**72 steps past the gap are held anyway** — Musa bin Nusayr Al-Balawi onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
+Every step is held: this path is walkable inside our own data.
 
 ## Steps
 
@@ -52,9 +50,9 @@
 | 40 | García I Íñiguez, rey de Pamplona | her father | [García Ennecones](https://www.geni.com/people/x/6000000000037773272) | id | 1 |
 | 41 | Assona Iñiguez | his sister | [Assona](https://www.geni.com/people/x/4069381735600010388) | id | 1 |
 | 42 | Musa bin Musa Al-Qasi | her husband | [Musa Al-Qasi](https://www.geni.com/people/x/6000000012263275369) | id | 1 |
-| 43 | Musa Al-Qasi | his father | — | absent | — |
-| 44 | Aisha Al-Balawi | his mother | — | absent | — |
-| 45 | Abdul-Aziz Al-Balawi | her father | — | absent | — |
+| 43 | Musa Al-Qasi | his father | [Musa القسي](https://www.geni.com/people/x/6000000012229586298) | id | 1 |
+| 44 | Aisha Al-Balawi | his mother | [Aisha Al-Balawi](https://www.geni.com/people/x/6000000225488825010) | id | 1 |
+| 45 | Abdul-Aziz Al-Balawi | her father | [Abdul-Aziz Al-Balawi](https://www.geni.com/people/x/6000000225488906854) | id | 1 |
 | 46 | Musa bin Nusayr Al-Balawi | his father | [Musa Al-Balawi](https://www.geni.com/people/x/6000000225488923825) | id | 1 |
 | 47 | Amina Al-Umawi | his wife | [Amina Al-Umawi](https://www.geni.com/people/x/6000000036940796919) | id | 1 |
 | 48 | Marwan I bin al-Hakam | her father | [Marwan Al-Umawi](https://www.geni.com/people/x/6000000003153451632) | id | 1 |

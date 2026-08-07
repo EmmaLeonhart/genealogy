@@ -1,10 +1,8 @@
 # Relationship path: makeda-to-marguerite
 
-**152 of 155 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**155 of 155 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**The unbroken run stops at step 151, Pierre Louis de l'Estandart, seigneur de Hanche et Sévines, Baron d'Ouillé-la-Ribaud.** The next step, **Marguerite de l'Estandart**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
-
-**1 steps past the gap are held anyway** — Marguerite Baudry onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
+Every step is held: this path is walkable inside our own data.
 
 ## Steps
 
@@ -161,7 +159,7 @@
 | 149 | Siméon Robert de Beynes | his son | [Siméon Robert de Beynes](https://www.geni.com/people/x/6000000004869064889) | id | 1 |
 | 150 | Louis de L'Estendart, Dit Louvel | his son | [Louis de L'ESTENDART](https://www.geni.com/people/x/6000000044367617884) | id | 1 |
 | 151 | Pierre Louis de l'Estandart, seigneur de Hanche et Sévines, Baron d'Ouillé-la-Ribaud | his son | [Pierre Louis](https://www.geni.com/people/x/6000000196474936821) | id | 1 |
-| 152 | Marguerite de l'Estandart | his daughter | — | absent | — |
-| 153 | Marguerite de Saint Ouen | her daughter | — | absent | — |
-| 154 | Macé Pierre Baudry, Seigneur de Pierrecourt | her husband | — | absent | — |
+| 152 | Marguerite de l'Estandart | his daughter | [Marguerite](https://www.geni.com/people/x/6000000194202368852) | id | 1 |
+| 153 | Marguerite de Saint Ouen | her daughter | [Marguerite](https://www.geni.com/people/x/6000000194202495823) | id | 1 |
+| 154 | Macé Pierre Baudry, Seigneur de Pierrecourt | her husband | [Macé Pierre](https://www.geni.com/people/x/6000000194202129863) | id | 1 |
 | 155 | Marguerite Baudry | his wife | [Marguerite De Saint-Ouen](https://www.geni.com/people/x/6000000210867309854) | id | 1 |
