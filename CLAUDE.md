@@ -178,8 +178,14 @@ is meant to close a specific path, read the relation column first and pick a
 style that follows those link types.**
 
 **An export is named for its style, not its seed — so filenames collide.** Geni
-writes `export-<style>.ged`, and `Forest`, `Ancestors`, `BloodTree` and
-`Descendants` are the styles seen so far. The first three exports are all three
+writes `export-<style>.ged`, and **five** styles have now been seen: `Forest`,
+`Ancestors`, `BloodTree`, `Descendants` and — first seen 2026-08-06 21:33 —
+**`Bio`**. This paragraph said "four" until that file arrived, which is worth
+noting as a caution rather than a correction: nothing enumerates the styles, so
+a sixth would land silently. What `Bio` selects for is **not established** and
+should not be guessed; the one export of it holds 4056 people, the same as the
+`Descendants`, `Ancestors` and `BloodTree` takes minutes either side of it, so
+its size says nothing about its shape. The first three exports are all three
 styles of the *same* seed, Eric Borsheim `6000000087535357291`, which is also
 their `SUBM` xref. A second `Forest` export from a different seed therefore
 arrives with a filename already taken. Disambiguate by appending

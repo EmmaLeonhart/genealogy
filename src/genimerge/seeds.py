@@ -73,6 +73,20 @@ __all__ = [
 #: Individuals to model one Geni export as holding: **the largest export we have
 #: actually seen**, not a cap we know Geni enforces.
 #:
+#: **2026-08-06 — Emma states the mechanism, and it is not a Geni-side mystery:
+#: the bound is four times the number of profiles she has added.** That explains
+#: what the measurements below could not. Every observed value is a multiple of
+#: four because the rule multiplies by four. It is not per-style and not
+#: per-seed because it is a property of her account's contributions. It rises
+#: across a session because she is adding profiles as she goes — which is also
+#: why each batch of exports has a higher ceiling than the last, and why seeding
+#: placeholders at the frontier raises it as a side effect.
+#:
+#: The long record below is kept because it is the evidence, and because the
+#: readings it rules out are worth not re-proposing. But it is now subordinate
+#: to a stated mechanism rather than being the best available guess, and no
+#: future observation should be written up as though the cause were unknown.
+#:
 #: The distinction is not pedantry, because the obvious reading was wrong. The
 #: first three exports each held exactly 3836, and since they are three
 #: different styles of one seed that reach largely different people — they share
@@ -165,8 +179,18 @@ __all__ = [
 #: ``tests/test_seeds.py`` asserts this stays >= the largest export in the
 #: corpus, so the next export to exceed it fails loudly instead of silently
 #: modelling a ball that is too small. That is how 3840, 3844, 3856, 4008, 4020
-#: and now 4056 were each caught.
-GENI_EXPORT_CAP = 4056
+#: and now 4068 were each caught.
+#:
+#: **2026-08-06, 21:23-21:53 — 4060, 4064, 4068 across three `Forest` exports.**
+#: Taken minutes apart, and rising monotonically this time where the hour before
+#: them did not. Alongside them a `Descendants`, an `Ancestors`, a `BloodTree`
+#: and a `Bio` export all held 4056 exactly, and two `Ancestors` takes held 1073
+#: and 663 — those two exhausted their component rather than filling.
+#: Recorded because the mixed picture is the point: four different styles
+#: landing on the same 4056 within twenty minutes, then three consecutive
+#: `Forest` takes each four higher than the last. Neither "it sits still" nor
+#: "it steps by four" survives both halves.
+GENI_EXPORT_CAP = 4068
 
 #: The step between reading this report and running an export.
 #:

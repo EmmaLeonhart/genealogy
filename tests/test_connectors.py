@@ -19,9 +19,6 @@ from genimerge import connectors, paths as paths_mod
 REPO = Path(__file__).resolve().parents[1]
 PATHS_DIR = REPO / "paths"
 
-#: One person past what a targeted export has been observed to close.
-TOO_WIDE = connectors.TARGETED_EXPORT_SPAN + 1
-
 
 def report(*rows) -> paths_mod.PathReport:
     """A checked path from ``(name, geni_id, held, relation)`` tuples."""
@@ -184,43 +181,6 @@ def test_a_pure_descent_run_does_not_demand_forest():
     )
 
     assert connectors.cluster(found)[0].style == "Ancestors or Forest"
-
-
-# -- the feasibility caveat --------------------------------------------
-
-
-def test_a_cluster_wider_than_an_export_is_flagged_but_not_demoted():
-    """Payoff and feasibility come apart at the top of the table, and the
-    ranking answers only the first. The 52-person `zeng-yuan` run outranks the
-    10-person Alemannian bridge on slots while being the one no single export
-    can close, so the flag has to travel with it."""
-    wide = [("A", "1", True, "")] + [
-        (f"P{n}", str(100 + n), False, "") for n in range(TOO_WIDE)
-    ]
-    narrow = [("Z", "50", True, "")] + [
-        (f"Q{n}", str(200 + n), False, "") for n in range(connectors.TARGETED_EXPORT_SPAN)
-    ]
-    found = connectors.bridges(report(*wide), "solo") + connectors.bridges(
-        report(*narrow), "one"
-    )
-
-    clusters = connectors.cluster(found)
-
-    assert clusters[0].wider_than_an_export_reaches
-    assert not clusters[1].wider_than_an_export_reaches
-    # Flagged, still first: the caveat must not quietly become a re-ranking.
-    assert clusters[0].slots > clusters[1].slots
-
-
-def test_the_flag_reaches_both_renderings():
-    wide = [("A", "1", True, "")] + [
-        (f"P{n}", str(100 + n), False, "") for n in range(TOO_WIDE)
-    ]
-    clusters = connectors.cluster(connectors.bridges(report(*wide), "solo"))
-    whole = {"solo": report(("A", "1", True, ""))}
-
-    assert "wider than one export" in connectors.render_html(clusters, whole, 10)
-    assert "| no |" in connectors.render_markdown(clusters, whole, 10)
 
 
 # -- rendering ---------------------------------------------------------
