@@ -3996,3 +3996,31 @@ both.
 Also filed: `chats/` and `todo.md` § 8a-decided, and `out/merged.ged` (409 MB,
 generated) noted as ignored by necessity — covered by the existing `out/` line,
 with no `.ged` pattern added.
+
+
+## 2026-08-07 (later still) — the pilot ran, and it went well except for one number
+
+`wikidata-download --limit 1000`, the first request this repo has made to
+`wbgetentities`. **20 requests, 33 seconds, zero 429s, zero missing, zero
+errors.** 13,713 bytes of JSON per item, 2.0 MB gzipped per 1,000 — about 7:1.
+Full numbers and the reasoning in `reports/wikidata-pilot-2026-08-07.md`.
+
+Projected over the seed set, as a floor: **10,305 requests, ~4.7 hours, ~1.05 GB
+of shards** (~515 files of 2 MB). That is +1 GB on a repo holding 1.1 GB of
+exports with a 230 MB `.git`, and it pushes incrementally. The dump stays
+unnecessary.
+
+**The frontier is running above prediction.** 428 QIDs discovered from the first
+1,000 items scanned — 0.43 per item, and these are genuinely outside the P2600
+seed set. `todo.md` § 8a-revised expects a small patchy frontier and says a
+large one is a symptom to investigate. Sustained, 0.43 would mean ~220,000
+items. Three things could explain it and only the run will say which: the walk
+has covered 0.19% of the seed so everything looks new; the seed file is
+QID-ascending so the first 1,000 are the oldest, most-edited, most-royal items;
+and P3373 was added to the walk beyond § 8a's four properties. Discovered-per-
+scanned across progress lines is the thing to watch, and a flat 0.4 is a reason
+to stop rather than to let it finish.
+
+User-Agent now carries contact@emmaleonhart.com, with Emma's say-so — Wikimedia
+asks for a contact and throttles harder without one, and 10,305 requests is the
+case that policy is written for.

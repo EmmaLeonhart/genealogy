@@ -44,8 +44,13 @@ __all__ = [
 SPARQL_ENDPOINT = "https://query.wikidata.org/sparql"
 API_ENDPOINT = "https://www.wikidata.org/w/api.php"
 
-#: Wikimedia asks for a descriptive User-Agent that identifies the tool.
-USER_AGENT = "genimerge/0.1 (Geni GEDCOM to Wikidata reconciliation; run by a researcher)"
+#: Wikimedia asks for a descriptive User-Agent that identifies the tool **and a
+#: way to reach whoever runs it**, and throttles harder without one. The contact
+#: is Emma's, added 2026-08-07 with her say-so before the bulk download — a
+#: ~10,300-request run is exactly the case the policy is written for.
+USER_AGENT = (
+    "genimerge/0.1 (Geni GEDCOM to Wikidata reconciliation; contact@emmaleonhart.com)"
+)
 
 #: How many Geni IDs to put in one ``VALUES`` clause. Large enough that 8766 IDs
 #: is a couple of dozen queries, small enough to stay well inside the endpoint's

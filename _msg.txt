@@ -1,34 +1,20 @@
-wikidata-download: the two-queue walk, built and tested offline
+wikidata pilot: 1000 items, 20 requests, zero 429s
 
-Emma's design, mid-session: a fetch queue seeded with all 514,822 P2600 QIDs,
-and an iteration queue of held items read for the relatives they name
-(P22/P25/P26/P40/P3373). Anything named and not already known joins the fetch
-queue; anything fetched joins the end of the iteration queue. The people it
-reaches that carry no Geni ID are the objective, not a side effect.
+First requests this repo has made to wbgetentities. 33 seconds, no throttling,
+no missing items, no errors. 13,713 bytes per item, 2.0 MB gzipped per 1,000.
 
-The iteration queue is the shard sequence plus a cursor rather than a second
-list -- items append in fetch order, so the end of the store is the end of the
-queue, and scanning is a forward read of files already on disk.
+Projected over the seed set as a floor: 10,305 requests, ~4.7 hours, ~1.05 GB
+of shards in ~515 files. +1 GB on a repo with 1.1 GB of exports and a 230 MB
+.git, pushing incrementally. The JSON dump stays unnecessary.
 
-Storage is many ordinary committed files: gzipped JSONL shards of 1000 items
-under wikidata/items/, one gzip member per batch so compression works. No LFS,
-no single large file. The resume index is SQLite under out/, derived from the
-shards and rebuildable, never committed.
+The frontier is running above prediction: 428 QIDs discovered from the first
+1,000 scanned, all outside the P2600 seed set. todo.md 8a-revised expects a
+small patchy frontier and treats a large one as a symptom. Sustained, 0.43 per
+item means ~220,000. Reasons it may not sustain -- 0.19% coverage so far, a
+QID-ascending seed file putting the oldest and most royal items first, and
+P3373 being in the walk beyond 8a's four properties -- are in the report, along
+with what to watch during the long run.
 
-Live API for the whole seed set; the JSON dump is the fallback. 50 QIDs per
-wbgetentities request is ~10,300 requests rather than 500,000.
+User-Agent carries contact@emmaleonhart.com with Emma's say-so.
 
-Nothing has been queried. The pilot is BLOCKED-ON-USER-ACTION in queue.md item
-4. CLAUDE.md now carries the standing rule that no ad-hoc Wikidata query is
-permitted at all -- a stray check is how the run collects a 429 -- and todo.md
-8b holds the questions that wait for the store, including Emma's recorded
-prediction about the century distribution.
-
-Two defects of mine, found by running it rather than reading it, fatal only at
-scale: the fetch queue did a SELECT MAX(seq) per row and took over five minutes
-to seed 514,822 (now 1.6s), and the scan rebuilt a half-million-QID set every
-round. The ten-item tests were happy with both.
-
-32 new tests, none touching the network. out/merged.ged (409 MB, generated)
-noted as ignored by necessity -- the existing out/ line covers it and no .ged
-pattern was added.
+The pilot shard itself is committed: wikidata/items/items-00000.jsonl.gz.
