@@ -1,6 +1,6 @@
 """Ranking lines that stop early — the downward edge, bucketed by period."""
 
-from genimerge import descendants, gedcom
+from genimerge import descendants, frontier, gedcom
 from genimerge.model import build_tree
 
 
@@ -129,24 +129,48 @@ DIAMOND = """0 HEAD
 # ---------------------------------------------------------------- measures
 
 
-def test_descendants_counted_once_when_two_lines_rejoin():
-    """Cousins marrying must not double-count the ancestor they share."""
-    counts, _ = descendants.descendant_and_tip_counts(_tree(DIAMOND))
-    assert counts["10"] == 5
+def test_a_descendant_reached_down_two_lines_counts_twice():
+    """The whole point of the measure, so pinned against the distinct count.
+
+    S descends from P down both Q's line and R's line. `frontier` de-duplicates
+    to five people; this module counts six paths, because six is how many lines
+    run down from P and lines are what an export follows.
+    """
+    tree = _tree(DIAMOND)
+    paths, _ = descendants.descent_paths(tree)
+    assert paths["10"] == 6
+    assert frontier.descendant_counts(tree)["10"] == 5
 
 
-def test_open_tips_counts_only_childless_descendants():
-    """Two childless great-grandchildren are two places the line can carry on."""
-    _, tips = descendants.descendant_and_tip_counts(_tree(STALLED))
-    assert tips["1"] == 2  # E and F, not C — C has a child recorded
-    assert tips["5"] == 0  # E has no descendants at all, so none of them are tips
+def test_paths_are_emmas_recursion_child_by_child():
+    """`sum over children of (1 + paths(child))`, asserted at each level."""
+    paths, _ = descendants.descent_paths(_tree(STALLED))
+    assert paths["5"] == 0  # E is childless
+    assert paths["3"] == 2  # C: (1 + 0) for E, (1 + 0) for F
+    assert paths["1"] == 3  # A: (1 + 2) for C
 
 
-def test_childless_person_is_their_own_open_tip():
-    """A leaf's mask holds nobody, and reporting `0` would read as nowhere to go."""
+def test_open_paths_counts_only_paths_ending_at_someone_childless():
+    """A path stopping at somebody who has children is a line already followed."""
+    _, open_paths = descendants.descent_paths(_tree(STALLED))
+    assert open_paths["1"] == 2  # ends at E and at F, not at C
+    assert open_paths["5"] == 0  # E has nothing below them at all
+
+    # In DIAMOND both of P's open paths end at the *same* person, S — and both
+    # count, because they are two different lines reaching them.
+    _, open_paths = descendants.descent_paths(_tree(DIAMOND))
+    assert open_paths["10"] == 2
+
+
+def test_childless_person_is_their_own_open_end():
+    """`descent_paths` counts below someone, so a leaf has none of its own.
+
+    Reporting `0` for a leaf would read as "nowhere to carry on" when the leaf
+    itself is the place to carry on from.
+    """
     lines = descendants.build_lines(_tree(STALLED))
-    assert lines["5"].descendants == 0
-    assert lines["5"].open_tips == 1
+    assert lines["5"].paths == 0
+    assert lines["5"].open_paths == 1
 
 
 def test_descendant_depth_is_the_longest_chain_below():
@@ -191,23 +215,23 @@ def test_zero_descendants_is_not_a_candidate():
     """A leaf may be childless or unexplored, and our data cannot tell which."""
     lines = descendants.build_lines(_tree(STALLED))
     picked = descendants.candidates(lines, present=2026)
-    assert all(line.descendants > 0 for line in picked)
+    assert all(line.paths > 0 for line in picked)
     assert "5" not in {line.geni_id for line in picked}
 
 
 def test_small_ceiling_excludes_lines_we_have_already_walked():
     lines = descendants.build_lines(_tree(DIAMOND))
-    assert lines["10"].descendants == 5
-    assert "10" in {c.geni_id for c in descendants.candidates(lines, present=2026, small=5)}
-    assert "10" not in {c.geni_id for c in descendants.candidates(lines, present=2026, small=4)}
+    assert lines["10"].paths == 6
+    assert "10" in {c.geni_id for c in descendants.candidates(lines, present=2026, small=6)}
+    assert "10" not in {c.geni_id for c in descendants.candidates(lines, present=2026, small=5)}
 
 
 def _line(geni_id: str, **kw) -> descendants.Line:
     """A Line with every ranked field pinned, so a test can vary exactly one."""
     fields = dict(
         geni_id=geni_id, name="X", birth=1500, generation=0,
-        descendants=2, descendants_exact=True, depth=1,
-        reach=1500, open_tips=2,
+        paths=2, depth=1,
+        reach=1500, open_paths=2,
     )
     fields.update(kw)
     return descendants.Line(**fields)
@@ -220,28 +244,28 @@ def _order(*lines) -> list[str]:
 def test_a_line_walked_fewer_generations_ranks_first():
     """Depth is the primary key: one generation down is a line we stopped at."""
     assert _order(
-        _line("2", depth=3, open_tips=9, descendants=9),
-        _line("1", depth=1, open_tips=1, descendants=1),
+        _line("2", depth=3, open_paths=9, paths=9),
+        _line("1", depth=1, open_paths=1, paths=1),
     ) == ["1", "2"]
 
 
-def test_more_open_tips_breaks_a_tie_on_depth():
+def test_more_open_paths_breaks_a_tie_on_depth():
     """Each childless end is another place Geni may carry the line on from."""
     assert _order(
-        _line("3", depth=2, open_tips=1),
-        _line("4", depth=2, open_tips=4),
+        _line("3", depth=2, open_paths=1),
+        _line("4", depth=2, open_paths=4),
     ) == ["4", "3"]
 
 
-def test_the_better_attested_family_breaks_a_tie_on_tips():
-    """Documented as a judgement, so pinned: more recorded people ranks first.
+def test_the_better_attested_family_breaks_a_tie_on_open_paths():
+    """Documented as a judgement, so pinned: more descent paths ranks first.
 
     Ranking the other way would put the enormous tail of one-child stubs at the
     top of every band.
     """
     assert _order(
-        _line("5", depth=2, open_tips=2, descendants=3),
-        _line("6", depth=2, open_tips=2, descendants=8),
+        _line("5", depth=2, open_paths=2, paths=3),
+        _line("6", depth=2, open_paths=2, paths=8),
     ) == ["6", "5"]
 
 
@@ -386,30 +410,25 @@ def test_seed_list_does_not_repeat_a_candidate_who_is_their_own_tip():
         assert line.count("http") == 1
 
 
-# ---------------------------------------------------------------- the cap
+# ---------------------------------------------------------------- saturation
 
 
-def test_a_line_over_the_cap_is_recorded_as_large_not_as_a_number():
-    """Counting stops above the cap, and an abandoned count must not read as 0."""
-    counts, _ = descendants.descendant_and_tip_counts(_tree(DIAMOND), cap=2)
-    assert "10" not in counts  # P descends to 5, which is over a cap of 2
-    lines = descendants.build_lines(_tree(DIAMOND), cap=2)
-    assert lines["10"].descendants_exact is False
-    assert lines["16"].descendants_exact is True  # S is a leaf, counted at 0
+def test_the_sum_saturates_rather_than_growing_without_bound():
+    """Path counts compound through shared subtrees; the ceiling caps display only."""
+    paths, open_paths = descendants.descent_paths(_tree(DIAMOND), ceiling=3)
+    assert paths["10"] == 3  # would be 6
+    assert paths["12"] == 2  # under the ceiling, so untouched
+    assert open_paths["10"] == 2
 
 
-def test_an_uncounted_line_is_never_a_candidate():
-    """It is large, which is the one thing the abandoned walk does establish."""
-    lines = descendants.build_lines(_tree(DIAMOND), cap=2)
-    assert "10" not in {c.geni_id for c in descendants.candidates(lines, present=2026)}
+def test_saturation_is_far_enough_above_small_to_never_decide_candidacy():
+    """The ceiling is a display bound, not a filter — pinned so it stays one."""
+    assert descendants.PATH_CEILING > descendants.SMALL * 10**9
 
 
-def test_a_child_over_the_cap_puts_its_parent_over_it_too():
-    """The pruning that makes the walk affordable, asserted rather than assumed."""
-    tree = _tree(DIAMOND)
-    counts, _ = descendants.descendant_and_tip_counts(tree, cap=3)
-    assert "12" in counts  # Q descends to 3: QC, RC, S
-    assert "10" not in counts  # so P, above Q, is over the cap without a walk
+def test_the_default_ceiling_leaves_real_counts_untouched():
+    lines = descendants.build_lines(_tree(DIAMOND))
+    assert lines["10"].paths == 6
 
 
 # ---------------------------------------------------------------- robustness

@@ -697,7 +697,7 @@ def _cmd_descendants(args: argparse.Namespace) -> int:
     tree = _load_tree(args.source, ws)
     present = args.present or descendants_mod.present_year()
 
-    lines = descendants_mod.build_lines(tree, cap=args.cap)
+    lines = descendants_mod.build_lines(tree)
     parents = descendants_mod.parent_map(tree)
     by_birth, by_generation = descendants_mod.bands(
         lines,
@@ -715,7 +715,7 @@ def _cmd_descendants(args: argparse.Namespace) -> int:
         descendants_mod.render_markdown(
             tree, lines, by_birth, by_generation,
             present=present, small=args.small, width=args.band,
-            min_stall=args.min_stall, per_band=args.per_band, cap=args.cap,
+            min_stall=args.min_stall, per_band=args.per_band,
         ),
     )
     seed_list = ws.out / "stalled-line-seeds.txt"
@@ -730,7 +730,7 @@ def _cmd_descendants(args: argparse.Namespace) -> int:
     )
     print(
         f"{total} of {len(tree.people)} people have 1-{args.small} recorded "
-        f"descendants and nobody above them in the same period who does"
+        f"descent paths and nobody above them in the same period who does"
     )
     # The most recent band with a pick, because that is what the campaign is
     # aiming at — not the worst-ranked line anywhere, which is always ancient.
@@ -743,8 +743,8 @@ def _cmd_descendants(args: argparse.Namespace) -> int:
         pick = newest.picks[0]
         print(
             f"nearest the present: {pick.name or pick.geni_id} ({newest.label}), "
-            f"{pick.descendants} descendants over {pick.depth} generation(s), "
-            f"{pick.open_tips} open tip(s)"
+            f"{pick.paths} descent path(s) over {pick.depth} generation(s), "
+            f"{pick.open_paths} open"
         )
     return 0
 
@@ -1571,10 +1571,12 @@ def build_parser() -> argparse.ArgumentParser:
         "descendants",
         help="rank lines that stop early, by period, to reach modern times",
         description=(
-            "Ranks people whose recorded descendant line is small but not zero — "
-            "the line demonstrably continues and we have barely followed it — "
-            "bucketed by birth-year period and by generations of recorded "
-            "ancestry. The downward counterpart to `frontier`."
+            "Ranks people with few but not zero lines of descent running down "
+            "from them — the line demonstrably continues and we have barely "
+            "followed it — bucketed by birth-year period and by generations of "
+            "recorded ancestry. The downward counterpart to `frontier`. Counts "
+            "descent paths, not distinct people: somebody reached down two "
+            "lines is two lines."
         ),
     )
     p_desc.add_argument("--source", type=Path, default=None, help="a GEDCOM to read instead of merging")
@@ -1582,7 +1584,7 @@ def build_parser() -> argparse.ArgumentParser:
         "--small",
         type=int,
         default=descendants_mod.SMALL,
-        help=f"most descendants a line may hold and still count as barely followed (default: {descendants_mod.SMALL})",
+        help=f"most descent paths a line may hold and still count as barely followed (default: {descendants_mod.SMALL})",
     )
     p_desc.add_argument(
         "--band", type=int, default=descendants_mod.BAND_YEARS, help="width of a birth-year band in years"
@@ -1595,12 +1597,6 @@ def build_parser() -> argparse.ArgumentParser:
         type=int,
         default=0,
         help="drop lines already followed to within this many years of now (default: 0, off)",
-    )
-    p_desc.add_argument(
-        "--cap",
-        type=int,
-        default=descendants_mod.CAP,
-        help=f"stop counting a line above this size (default: {descendants_mod.CAP})",
     )
     p_desc.add_argument(
         "--present",

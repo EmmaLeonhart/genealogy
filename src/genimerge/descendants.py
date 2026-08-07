@@ -10,20 +10,39 @@ people, and the goal is to reach the present.*
 This module ranks the **downward** edge, and it buckets by when people lived so
 that the ranking can be read one period at a time.
 
-**The signal is a small but nonzero descendant count.** Nonzero and small are
-doing different jobs and both are load-bearing:
+**The signal is a small but nonzero count of descent paths.** Nonzero and small
+are doing different jobs and both are load-bearing:
 
 - **Nonzero** means the line demonstrably continues. Geni recorded at least one
   child, so there is something below to follow, and an export seeded here is not
   a bet on a childless couple.
 - **Small** means we have barely followed it. A person with three recorded
-  descendants either had three, or had three hundred and we walked one step.
+  descent paths either had three, or had three hundred and we walked one step.
 
 A person with *zero* recorded descendants is the ambiguous case and is left out
 of the candidate list on purpose: they may be a genuine leaf, and nothing in our
 data separates "childless" from "unexplored". That is the same discriminator
 `density` uses upward, where a thin region full of parentless people is
 under-sampled and a thin region with none may simply be finished.
+
+**Descent paths, not distinct people — Emma's call, 2026-08-07.** The measure is
+her recursion: a person's count is, over each recorded child, *one for the child
+plus the child's own count*. Someone reachable down two lines is therefore
+counted twice, and that is the point rather than a defect to correct. What this
+report is looking for is **lines coming down from a person**, and a descendant
+reached twice is two lines. Distinct-person counting was the first
+implementation and she ruled it out as not merely irrelevant here but plausibly
+worse: pedigree collapse is dense in this tree, and de-duplicating it makes a
+person at the top of a wide, repeatedly-intermarried descent look like a narrow
+one. :func:`genimerge.frontier.descendant_counts` still counts distinct people
+for callers that want that.
+
+The change also made this module cheap. Distinct counting needs a set union per
+person, which does not scale at 257219 people — it wanted a bitmask per person
+(32 KB each, tens of gigabytes) or a walk abandoned above a cap, and this module
+carried the capped walk and its ``descendants_exact`` flag for exactly that
+reason. Emma's recursion is a plain post-order sum, O(V+E), exact at every size,
+with no cap and nothing to explain away.
 
 **`stall` is the measure that serves the campaign.** For each person it is the
 number of years between the latest birth recorded anywhere at or below them and
@@ -45,12 +64,12 @@ at all, and those people are invisible to the time axis entirely.
 person with no recorded birth year has no birth year in this module; they are
 counted in an `undated` bucket that the report prints rather than hides.
 
-**What this cannot tell you** is the same limit `density` has. Our descendant
-count measures *our* sampling. Whether Geni holds a large descent below a
-stalled line is precisely the unknown an export resolves — a line can also stop
-because it really did stop, and the `open tips` column is the check: a stalled
-line whose end is several childless people is a line with several places to
-carry on from, while one ending in a single person may just have ended.
+**What this cannot tell you** is the same limit `density` has. Our path count
+measures *our* sampling. Whether Geni holds a large descent below a stalled line
+is precisely the unknown an export resolves — a line can also stop because it
+really did stop, and the `open paths` column is the check: a stalled line whose
+paths end at several different childless people has several places to carry on
+from, while one ending in a single person may just have ended.
 """
 
 from __future__ import annotations
@@ -76,7 +95,7 @@ __all__ = [
     "present_year",
     "line_reach",
     "descendant_depth",
-    "descendant_and_tip_counts",
+    "descent_paths",
     "build_lines",
     "candidates",
     "band_by_birth",
@@ -91,12 +110,14 @@ __all__ = [
 #: knob the report is meant to be re-run with, which is why it is a CLI flag.
 SMALL = 20
 
-#: Where counting stops. Above this a line's size is reported as unknown rather
-#: than as a number, because :func:`descendant_and_tip_counts` abandons the walk
-#: — see its docstring for why an exact count for everyone is not affordable at
-#: this tree's size. Kept comfortably above :data:`SMALL` so the ceiling can be
-#: raised on the command line without also raising this.
-CAP = 200
+#: Where the arithmetic saturates. Path counts are sums over a graph that shares
+#: subtrees heavily, so they grow like ``branching ** depth`` and a deep, densely
+#: intermarried ancestor can carry a number thousands of digits long. Python
+#: would compute it, slowly, and nothing here would use it: every question this
+#: module asks is about counts near :data:`SMALL`. So the sums stop at this
+#: value, which is a display ceiling and never a candidacy one — it is thirteen
+#: orders of magnitude above any usable ``small``.
+PATH_CEILING = 10**12
 
 #: Default width of a birth-year band, in years. Wide enough that a band holds
 #: enough people to rank within, narrow enough that "born in this band" is a
@@ -119,66 +140,65 @@ def _has_child(tree: Tree, geni_id: str) -> bool:
     return any(c in tree.people for c in tree.people[geni_id].child_ids)
 
 
-def descendant_and_tip_counts(
-    tree: Tree, cap: int = CAP
+def descent_paths(
+    tree: Tree, ceiling: int = PATH_CEILING
 ) -> tuple[dict[str, int], dict[str, int]]:
-    """For each person: how many people descend from them, and how many of
-    those are childless — **exactly, up to `cap`, and no further**.
+    """For each person: how many lines of descent run down from them, and how
+    many of those end at somebody childless.
 
-    Returns ``(sizes, tips)``. A person whose line exceeds `cap` is absent from
-    both dicts, which is the caller's signal that the count is unknown rather
-    than zero; :class:`Line` carries it as ``descendants_exact = False``.
+    Returns ``(paths, open_paths)``.
 
-    **Why this is bounded, when `genimerge.frontier.descendant_counts` is not.**
-    Descendant sets overlap heavily — cousins marry, and the same ancestor is
-    reached down several lines — so counts cannot be summed from children
-    without double-counting. `frontier` solves that exactly for every person by
-    carrying each set as a bitmask in a Python int, which costs one bit per
-    person per person: at 8766 people that was about a kilobyte each, and at the
-    257219 this tree now holds it is 32 KB each and tens of gigabytes in total.
+    **`paths` is Emma's recursion**, and it is the measure this whole module is
+    built on::
 
-    This module does not need the big numbers. Its entire question is *small but
-    nonzero*, so counts above the ceiling are interchangeable and only need to
-    be recognised as large. So each line is walked with a visited set and
-    abandoned the moment it passes `cap`, and — the pruning that makes it cheap
-    — **a person with a child whose line is over the cap is over it too**, which
-    is exact and settles nearly every ancestor without a walk. Each remaining
-    walk visits at most ``cap + 1`` people.
+        paths(person) = sum over each recorded child c of (1 + paths(c))
 
-    Cycle-tolerant by the visited set: a person entered twice and linked to
-    themselves is ordinary in a genealogy database.
+    One for the child, plus everything below the child. A descendant reachable
+    down two separate lines is therefore counted **twice**, which is deliberate:
+    the question is how many lines come down from a person, and a person reached
+    twice is two lines. See the module docstring for why distinct-person
+    counting was tried first and dropped.
 
-    The person themselves is not in their own descendant set, so a childless
-    person has zero open tips of their own — see :func:`build_lines`, which adds
-    them back where that matters.
+    **`open_paths`** counts the same paths but only those terminating at a
+    person with no recorded child — the places a `Descendants` export could
+    carry the line on from. A path that ends at somebody who *does* have
+    children recorded is a line we have already followed to its end.
+
+    Exact and O(V+E): one post-order, one addition per edge. Nothing here needs
+    a set, a bitmask or a counting cap, which is the practical reason the change
+    was worth making at 257219 people.
+
+    **Saturating at `ceiling`.** Sums over a graph that shares subtrees compound,
+    so a deep and densely intermarried ancestor's true path count can run to
+    thousands of digits. It is arithmetic nobody reads and everybody waits for.
+    Both counts stop at the ceiling, which is far above any usable ``small``, so
+    no candidate is ever affected.
+
+    Cycle-tolerant through :func:`genimerge.frontier._post_order`, which ignores
+    an edge back into a node still being expanded — the only sane reading, since
+    a person is not their own descendant, and the alternative for a path count
+    is a number that is genuinely infinite. A cycle therefore makes these counts
+    *low*, not wrong-in-an-unbounded-way, and cycles are already reported by
+    :func:`genimerge.frontier.ancestry_cycles`.
     """
     children = _child_map(tree)
-    sizes: dict[str, int] = {}
-    tips: dict[str, int] = {}
-    over: set[str] = set()
+    paths: dict[str, int] = {}
+    open_paths: dict[str, int] = {}
 
     for node in _post_order(list(tree.people), children):
-        kids = children[node]
-        if any(child in over for child in kids):
-            over.add(node)
-            continue
+        total = 0
+        open_total = 0
+        for child in children[node]:
+            below = paths.get(child, 0)
+            total += 1 + below
+            # A childless child is one path, ending here. Otherwise the child
+            # contributes only the open paths below it — the child itself is not
+            # an open end, because we already know who came after them.
+            open_total += 1 if not children[child] else open_paths.get(child, 0)
+        paths[node] = min(total, ceiling)
+        open_paths[node] = min(open_total, ceiling)
 
-        seen: set[str] = set()
-        stack = list(kids)
-        while stack:
-            current = stack.pop()
-            if current in seen:
-                continue
-            seen.add(current)
-            if len(seen) > cap:
-                over.add(node)
-                break
-            stack.extend(children[current])
-        else:
-            sizes[node] = len(seen)
-            tips[node] = sum(1 for person in seen if not children[person])
-
-    return sizes, tips
+    return paths, open_paths
 
 
 def descendant_depth(tree: Tree) -> dict[str, int]:
@@ -256,19 +276,16 @@ class Line:
     #: generations of recorded ancestors above — see the module docstring on why
     #: this is a second axis rather than a substitute clock
     generation: int
-    #: distinct people below them in our data. Meaningless unless
-    #: ``descendants_exact``, where it is the counting cap rather than a count.
-    descendants: int
-    #: whether the line was small enough to finish counting — see
-    #: :func:`descendant_and_tip_counts`. A line we gave up on is large, which is
-    #: all this module needs to know about it.
-    descendants_exact: bool
+    #: lines of descent running down from them — see :func:`descent_paths`.
+    #: Not distinct people: somebody reached down two lines counts twice.
+    paths: int
     #: longest chain of generations below them
     depth: int
     #: latest birth year recorded at or below them
     reach: int | None
-    #: descendants with no recorded child — the places the line could carry on
-    open_tips: int
+    #: how many of those paths end at somebody with no recorded child — the
+    #: places a `Descendants` export could carry the line on from
+    open_paths: int
     #: the childless person at the forward edge of the line, to export from or near
     tip: str = ""
     tip_name: str = ""
@@ -305,12 +322,11 @@ class Line:
     def is_candidate_shape(self, small: int) -> bool:
         """Small but nonzero: the line continues and we have barely followed it.
 
-        A line whose size we never finished counting is not small, so it is not
-        a candidate — which is the same answer it would get from an exact count,
-        since the walk only gives up above :data:`CAP` and :data:`CAP` is above
-        any sane ``small``.
+        Measured on descent paths, so somebody at the top of a densely
+        intermarried descent counts every line down to it rather than every
+        person — see :func:`descent_paths`.
         """
-        return self.descendants_exact and 0 < self.descendants <= small
+        return 0 < self.paths <= small
 
     @property
     def has_usable_name(self) -> bool:
@@ -324,9 +340,9 @@ class Line:
         return bool(name) and name != "private"
 
 
-def build_lines(tree: Tree, cap: int = CAP) -> dict[str, Line]:
+def build_lines(tree: Tree, ceiling: int = PATH_CEILING) -> dict[str, Line]:
     """Every person, measured. One pass of each underlying walk, not one per person."""
-    counts, tips = descendant_and_tip_counts(tree, cap)
+    paths, open_paths = descent_paths(tree, ceiling)
     depth = descendant_depth(tree)
     reach, tip_of = line_reach(tree)
     generation = ancestor_depth(tree)
@@ -335,22 +351,20 @@ def build_lines(tree: Tree, cap: int = CAP) -> dict[str, Line]:
     for geni_id, person in tree.people.items():
         tip = tip_of.get(geni_id, "")
         tip_person = tree.people.get(tip) if tip else None
-        exact = geni_id in counts
-        # A childless person is their own open tip. The walk collects
-        # descendants only, so it cannot count them, and reporting `0 open tips`
-        # for a leaf would read as "nowhere to carry on" when the leaf itself is
-        # the place to carry on from.
-        open_tips = tips.get(geni_id, 0) + (0 if _has_child(tree, geni_id) else 1)
+        # A childless person is their own open end. `descent_paths` counts paths
+        # *below* someone, and a leaf has none, so reporting `0 open paths` for
+        # one would read as "nowhere to carry on" when the leaf itself is the
+        # place to carry on from.
+        open_below = open_paths.get(geni_id, 0)
         lines[geni_id] = Line(
             geni_id=geni_id,
             name=person.display_name,
             birth=person.birth_year,
             generation=generation.get(geni_id, 0),
-            descendants=counts.get(geni_id, cap),
-            descendants_exact=exact,
+            paths=paths.get(geni_id, 0),
             depth=depth.get(geni_id, 0),
             reach=reach.get(geni_id),
-            open_tips=open_tips,
+            open_paths=open_below if _has_child(tree, geni_id) else 1,
             tip=tip,
             tip_name=tip_person.display_name if tip_person else "",
             tip_birth=tip_person.birth_year if tip_person else None,
@@ -376,15 +390,15 @@ def _rank_key(line: Line, present: int):
        it by birth year. Every band's top pick came out born in the band's first
        year — an artefact of where the band edge fell, reported as a finding.
 
-    2. **Open tips** — how many childless people the line ends in. Each is a
-       place Geni may carry on from; one is a line that may genuinely have
-       ended, several is a line we stopped walking.
+    2. **Open paths** — how many of the descent paths end at somebody with no
+       recorded child. Each is a place Geni may carry on from; one is a line
+       that may genuinely have ended, several is a line we stopped walking.
 
-    3. **Descendants, most first** — a judgement rather than a measurement, so
+    3. **Descent paths, most first** — a judgement rather than a measurement, so
        worth stating which way and why. Every candidate is already below the
        ``small`` ceiling; among lines walked equally far that end in equally
-       many places, the one with *more* recorded people is the better-attested
-       family, and one with six recorded members is likelier to have a real
+       many places, the one with *more* lines running down from it is the
+       better-attested family, and one with six is likelier to have a real
        descent below it than a couple with a single recorded child. Ranking the
        other way would fill the report with the enormous tail of one-child
        stubs, which are also the likeliest to be fragments or genuine dead ends.
@@ -406,8 +420,8 @@ def _rank_key(line: Line, present: int):
     followed = line.followed
     return (
         line.depth,
-        -line.open_tips,
-        -line.descendants,
+        -line.open_paths,
+        -line.paths,
         0 if followed is not None else 1,
         followed if followed is not None else 0,
         0 if line.has_usable_name else 1,
@@ -461,7 +475,7 @@ def candidates(
             # ancestor and hold the identical set — drops neither rather than
             # both. Losing both would be silent.
             if not any(
-                inside[p].descendants > line.descendants
+                inside[p].paths > line.paths
                 for p in parents.get(line.geni_id, ())
                 if p in inside
             )
@@ -594,7 +608,7 @@ def _sorted_bands(
                 people=len(members),
                 with_descendants=sum(
                     1 for line in members
-                    if not line.descendants_exact or line.descendants > 0
+                    if line.paths > 0
                 ),
                 picks=tuple(picks[:per_band]),
                 total_candidates=len(picks),
@@ -667,8 +681,8 @@ def _band_rows(band_list: list[Band], present: int) -> list[list[str]]:
                     _link(line.geni_id, line.name),
                     _year(line.birth),
                     str(line.depth),
-                    str(line.descendants),
-                    str(line.open_tips),
+                    str(line.paths),
+                    str(line.open_paths),
                     _year(line.reach),
                     "—" if stall is None else str(stall),
                 ]
@@ -679,13 +693,13 @@ def _band_rows(band_list: list[Band], present: int) -> list[list[str]]:
 _HEADER = [
     "band",
     "people",
-    "with a descendant",
+    "with a descent",
     "candidates",
     "export from",
     "born",
     "generations followed",
-    "descendants",
-    "open tips",
+    "descent paths",
+    "open paths",
     "line reaches",
     "stall",
 ]
@@ -702,13 +716,12 @@ def render_markdown(
     width: int,
     min_stall: int,
     per_band: int = 5,
-    cap: int = CAP,
 ) -> str:
     total = len(tree.people)
     dated = sum(1 for line in lines.values() if line.birth is not None)
     histogram: Counter = Counter()
     for line in lines.values():
-        histogram[min(line.descendants, 50) if line.descendants_exact else 50] += 1
+        histogram[min(line.paths, 50)] += 1
     zero = histogram.get(0, 0)
     # Counted from the bands the tables are actually built from, not from a
     # second global call: nesting is collapsed per band, so a global collapse
@@ -755,7 +768,7 @@ def render_markdown(
             ["with a recorded birth year", str(dated), f"{dated / total:.1%}"],
             ["with no recorded descendant", str(zero), f"{zero / total:.1%}"],
             [
-                f"candidates (1–{small} descendants, none inside another's line)",
+                f"candidates (1–{small} descent paths, none inside another's line)",
                 str(candidate_total),
                 f"{candidate_total / total:.1%}",
             ],
@@ -768,17 +781,19 @@ def render_markdown(
         "`undated` band below, and the generation view is the axis that can rank "
         "them.",
         "",
-        "## Descendants per person",
+        "## Descent paths per person",
         "",
-        f"Counting stops at {cap}. A line bigger than that is recorded as large "
-        "rather than measured: this report's whole question is *small*, and an "
-        "exact count for everybody costs tens of gigabytes at this tree's size. "
-        "The last row is therefore everyone with 50 or more **plus** everyone we "
-        "stopped counting.",
+        "A person's count is, over each recorded child, **one for the child plus "
+        "the child's own count** — so this counts *lines coming down from* "
+        "someone, not distinct people, and a descendant reachable down two lines "
+        "counts twice. That is the intent: pedigree collapse is dense here, and "
+        "de-duplicating it makes the top of a wide, repeatedly-intermarried "
+        "descent look narrow. Every count is exact; the table's last row is "
+        "everyone at 50 or above.",
         "",
     ]
     out += _table(
-        ["descendants", "people"],
+        ["descent paths", "people"],
         [
             [("50 or more" if k == 50 else str(k)), str(histogram[k])]
             for k in sorted(histogram)
@@ -789,11 +804,12 @@ def render_markdown(
         "## By period",
         "",
         f"Birth-year bands of {width} years, best {per_band} candidates each, "
-        "least-followed first. **Read `generations followed` and `open tips` "
-        "together**: a line walked one generation that ends in several childless "
-        "people is a line we stopped walking, while one ending in a single person "
-        "may simply have ended. The profile linked is the one to export from; "
-        "*near them* is its line's forward edge, which the seed file also lists.",
+        "least-followed first. **Read `generations followed` and `open paths` "
+        "together**: a line walked one generation whose paths end at several "
+        "different childless people is a line we stopped walking, while one "
+        "ending in a single person may simply have ended. The profile linked is "
+        "the one to export from; *near them* is its line's forward edge, which "
+        "the seed file also lists.",
         "",
         "**A candidate whose own parent is also a candidate is not shown**, "
         "within a band: an export seeded on the ancestor covers the descendant's "

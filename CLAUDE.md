@@ -227,13 +227,22 @@ reaching later generations.
 **downward** edge the way `frontier` ranks the upward one, and buckets it by
 period so the ranking can be read one century at a time.
 
-- **The signal is a descendant count that is small but nonzero**, and both
+- **The signal is a descent-path count that is small but nonzero**, and both
   halves carry weight. *Nonzero* means Geni recorded at least one child, so the
   line demonstrably continues and there is something below to follow. *Small*
   means we have barely followed it. A person with **zero** recorded descendants
   is deliberately excluded: nothing in our data separates childless from
   unexplored, which is the same discriminator `density` applies upward with its
   doorway column.
+- **Count descent paths, not distinct people — Emma's call, 2026-08-07.** The
+  measure is her recursion, `paths(p) = Σ over each recorded child c of
+  (1 + paths(c))`. Somebody reachable down two lines counts **twice**, and that
+  is the point: the question is how many lines come down from a person, and a
+  descendant reached twice is two lines. She ruled distinct-person counting out
+  as not merely irrelevant but plausibly *worse* here — pedigree collapse is
+  dense in this tree, and de-duplicating it makes the top of a wide,
+  repeatedly-intermarried descent look narrow. `frontier.descendant_counts`
+  still counts distinct people for callers that want that.
 - **Rank on `generations followed` (`depth`), never on `stall`.** Stall — years
   between the line's last recorded birth and now — was the first ranking and is
   a trap: a person's own birth year is a floor on how far their line reaches, so
@@ -241,20 +250,23 @@ period so the ranking can be read one century at a time.
   top pick came out born in the band's first year**. That is where the band edge
   fell, not a finding. Depth is available for dated and undated people alike and
   does not move with the band. Stall stays as a column worth reading.
-- **Counting stops at `CAP` (200) and that is not an optimisation to remove.**
-  `frontier.descendant_counts` is exact for everyone by carrying each descendant
-  set as a bitmask — one bit per person per person, which was a kilobyte each at
-  8766 people and is 32 KB each at 257219. This module's whole question is
-  *small*, so it walks each line with a visited set, abandons it above the cap,
-  and prunes with the exact fact that **a person with an over-cap child is
-  over-cap too**. A line we gave up on carries `descendants_exact = False` and is
-  never a candidate — reading an abandoned count as zero would invent leaves.
+- **The path count is why this module is cheap, and it was not always.**
+  Distinct-person counting needs a set union per person: `frontier` carries a
+  bitmask, one bit per person per person, a kilobyte each at 8766 people and
+  32 KB each at 257219 — tens of gigabytes. This module carried a capped walk
+  and a `descendants_exact` flag to work around that. Emma's recursion is a
+  plain post-order sum, O(V+E), exact at every size, and deleted all of it. The
+  sums saturate at `PATH_CEILING` (1e12) because path counts compound through
+  shared subtrees and a deep intermarried ancestor's true count runs to
+  thousands of digits; that is a display bound thirteen orders of magnitude
+  above any usable `small`, never a candidacy one.
 - **A candidate whose parent is also a candidate is dropped, per band.** An
   export seeded on the ancestor covers the descendant's line plus branches off
   it we never saw, so the ancestor is strictly the better seed and a six-person
   line would otherwise be reported six times. Checking parents alone suffices,
-  because descendant counts rise strictly upward. Per band rather than
-  report-wide, so a band keeps its own best pick.
+  because path counts rise strictly upward — a parent's count is at least
+  `1 + child's`. Per band rather than report-wide, so a band keeps its own best
+  pick.
 - **Both axes are reported because neither covers everyone.** 53% of the tree
   carries no birth year, and those people are invisible to the period view.
   Generations-above ranks them — but it is **not a second clock**: it measures
