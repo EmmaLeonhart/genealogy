@@ -180,3 +180,9 @@ exports/gaps/export-geni (30).zip
 exports/gaps/export-geni (31).zip
 exports/gaps/export-geni (32).zip
 exports/gaps/export-geni.zip
+
+# Commit-message scratch files. Never content -- an agent writes one, passes it
+# to `git commit -F`, and deletes it. One escaped into a commit on 2026-08-07
+# because scripts/flush.ps1 runs `git add -A` on a schedule and does not know
+# the difference. Ignored so the automatic flush cannot pick one up again.
+_msg.txt
