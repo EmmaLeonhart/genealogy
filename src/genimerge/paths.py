@@ -39,6 +39,7 @@ __all__ = [
     "PARTIAL",
     "ABSENT",
     "AMBIGUOUS",
+    "REPEAT",
     "NAME_MATCHING_IS_ADVISORY",
     "PathStep",
     "StepResult",
@@ -59,6 +60,21 @@ PARTIAL = "partial"
 AMBIGUOUS = "ambiguous"
 UNRESOLVED = "unresolved"
 ABSENT = "absent"
+
+#: Held, and already walked earlier on this same path.
+#:
+#: A saved Geni page can carry more than one relationship path — a blood one and
+#: an in-law one — and `path-from-html` writes them into a single file, so the
+#: second chain restarts at "You" and re-walks the first few people.
+#: `paths/nn-basse.tsv` does exactly this: steps 36-44 repeat steps 1-9.
+#:
+#: This exists because those rows used to be reported `ABSENT`. The `used` rule
+#: below refuses a person to a second step, which is right for the name
+#: fallback and wrong for an exact ID, and the two cases shared one branch. The
+#: cost was not a cosmetic mislabel: `genimerge connectors` reads a run of
+#: absent steps as a *bridge* and ranks an export by it, so the account owner
+#: himself was being reported as a missing person to go and fetch from Geni.
+REPEAT = "repeat"
 
 #: Stated in the generated report, and asserted by `tests/test_paths.py`.
 #:
@@ -156,6 +172,10 @@ class StepResult:
         is very likely one of them even though which is unsettled. `UNRESOLVED`
         does not — past `AMBIGUITY_LIMIT` the name has stopped identifying
         anyone and a match means nothing.
+
+        `REPEAT` counts as held for the plainest possible reason: it is a person
+        we hold, walked twice. Counting a repeat as a gap is what made
+        `nn-basse` read 47 of 57 when it is 57 of 57.
         """
         return self.how not in (ABSENT, UNRESOLVED)
 
@@ -330,9 +350,21 @@ def _resolve(
         # is absent from the tree cannot find the right person — we know their
         # ID and it is not here — and can only find a wrong one: step 42 is
         # `n n`, which 73 profiles share.
-        if step.geni_id in tree.people and step.geni_id not in used:
-            return finish(BY_ID, [step.geni_id])
-        return StepResult(step=step, how=ABSENT)
+        if step.geni_id not in tree.people:
+            return StepResult(step=step, how=ABSENT)
+        if step.geni_id in used:
+            # Seen earlier on this path. The `used` rule exists to stop a *name*
+            # landing twice on one profile, which is a matching error; an exact
+            # ID landing twice is not an error at all, it is a file holding two
+            # relationship paths end to end. Reporting it absent claimed we did
+            # not hold somebody we demonstrably do.
+            return StepResult(
+                step=step,
+                how=REPEAT,
+                candidates=[tree.people[step.geni_id]],
+                component=component_of.get(step.geni_id),
+            )
+        return finish(BY_ID, [step.geni_id])
 
     exact = [i for i in by_name.get(normalise(step.name), []) if i not in used]
     if exact:

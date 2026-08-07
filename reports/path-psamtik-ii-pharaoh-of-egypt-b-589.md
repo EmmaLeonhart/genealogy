@@ -1,10 +1,10 @@
 # Relationship path: psamtik-ii-pharaoh-of-egypt-b-589
 
-**97 of 117 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**114 of 117 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
 **The unbroken run stops at step 42, Musa bin Musa Al-Qasi.** The next step, **Musa Al-Qasi**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
-**55 steps past the gap are held anyway** — Musa bin Nusayr Al-Balawi onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
+**72 steps past the gap are held anyway** — Musa bin Nusayr Al-Balawi onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
 
 ## Steps
 
@@ -74,23 +74,23 @@
 | 62 | Firan Al-Balawi | her father | [Firan Al-Balawi](https://www.geni.com/people/x/6000000224497681831) | id | 1 |
 | 63 | Bali Al-Quda'i | his father | [Bali Al-Quda'i](https://www.geni.com/people/x/6000000224497505998) | id | 1 |
 | 64 | Amr Al-Quda'i | his father | [Amr Al-Quda'i](https://www.geni.com/people/x/6000000224497698839) | id | 1 |
-| 65 | Al-Haf Al-Quda'i | his father | — | absent | — |
-| 66 | Quda'a Al-Himyari | his father | — | absent | — |
-| 67 | Malik Al-Himyari | his father | — | absent | — |
-| 68 | Amr Al-Himyari | his father | — | absent | — |
-| 69 | Murra Al-Himyari | his father | — | absent | — |
-| 70 | Malik Al-Himyari | his father | — | absent | — |
-| 71 | Himyar bin Saba | his father | — | absent | — |
-| 72 | Abir Al-Qahtani | his brother | — | absent | — |
-| 73 | Jurhum bin Jala | his son | — | absent | — |
-| 74 | Abd Yaleel Al-Jurhumi | his son | — | absent | — |
-| 75 | Jursham Al-Jurhumi | his son | — | absent | — |
-| 76 | Abdul-Madan Al-Jurhumi | his son | — | absent | — |
-| 77 | Thaqila Al-Jurhumi | his son | — | absent | — |
-| 78 | Abdul-Masih Al-Jurhumi | his son | — | absent | — |
-| 79 | Mudad al-Akbar | his son | — | absent | — |
-| 80 | Amr Al-Jurhumi | his son | — | absent | — |
-| 81 | Mudad al-Asghar Al-Jurhumi | his son | — | absent | — |
+| 65 | Al-Haf Al-Quda'i | his father | [Al-Haf القضاعي](https://www.geni.com/people/x/6000000224851501918) | id | 1 |
+| 66 | Quda'a Al-Himyari | his father | [Quda'a Al-Himyari](https://www.geni.com/people/x/6000000224851675851) | id | 1 |
+| 67 | Malik Al-Himyari | his father | [Malik](https://www.geni.com/people/x/6000000067681633932) | id | 1 |
+| 68 | Amr Al-Himyari | his father | [Amr Al-Himyari](https://www.geni.com/people/x/6000000067682092821) | id | 1 |
+| 69 | Murra Al-Himyari | his father | [Murra Al-Himyari](https://www.geni.com/people/x/6000000067682027822) | id | 1 |
+| 70 | Malik Al-Himyari | his father | [Malik Al-Himyari](https://www.geni.com/people/x/6000000014833883125) | id | 1 |
+| 71 | Himyar bin Saba | his father | [Himyar Al-Qahtani](https://www.geni.com/people/x/6000000223020464825) | id | 1 |
+| 72 | Abir Al-Qahtani | his brother | [Abir](https://www.geni.com/people/x/6000000225582889858) | id | 1 |
+| 73 | Jurhum bin Jala | his son | [Jurhum Al-Qahtani](https://www.geni.com/people/x/6000000225582929836) | id | 1 |
+| 74 | Abd Yaleel Al-Jurhumi | his son | [Abd Yaleel](https://www.geni.com/people/x/6000000225583016831) | id | 1 |
+| 75 | Jursham Al-Jurhumi | his son | [Jursham Al-Jurhumi](https://www.geni.com/people/x/6000000225583050840) | id | 1 |
+| 76 | Abdul-Madan Al-Jurhumi | his son | [Abdul-Madan](https://www.geni.com/people/x/6000000225583084823) | id | 1 |
+| 77 | Thaqila Al-Jurhumi | his son | [Thaqila](https://www.geni.com/people/x/6000000225583119821) | id | 1 |
+| 78 | Abdul-Masih Al-Jurhumi | his son | [Amr Al-Jurhumi](https://www.geni.com/people/x/6000000225583022903) | id | 1 |
+| 79 | Mudad al-Akbar | his son | [Mudad](https://www.geni.com/people/x/6000000225583110824) | id | 1 |
+| 80 | Amr Al-Jurhumi | his son | [Amr](https://www.geni.com/people/x/6000000225583168821) | id | 1 |
+| 81 | Mudad al-Asghar Al-Jurhumi | his son | [Mudad al-Asghar](https://www.geni.com/people/x/6000000225583105848) | id | 1 |
 | 82 | Ra’la Al-Jurhumi | his daughter | [Ra’la Al-Jurhumi](https://www.geni.com/people/x/6000000225583110838) | id | 1 |
 | 83 | Isma'il | her husband | [Isma'il](https://www.geni.com/people/x/6000000201846727876) | id | 1 |
 | 84 | Hajar | his mother | [Hajar Al-Qibtiya](https://www.geni.com/people/x/6000000202316814862) | id | 1 |

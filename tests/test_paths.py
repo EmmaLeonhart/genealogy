@@ -106,6 +106,40 @@ def test_an_id_in_the_note_wins_over_the_name():
     assert report.results[0].person.geni_id == "100"
 
 
+def test_a_person_walked_twice_is_held_both_times():
+    """A saved Geni page can hold two relationship paths, so the second chain
+    restarts at "You" and re-walks the first few people. `paths/nn-basse.tsv`
+    does this at steps 36-44.
+
+    Those rows used to be reported ABSENT, because the rule that refuses a
+    person to a second step — right for a name, wrong for an exact ID — shared
+    a branch with "the ID is not in the tree". It read the account owner
+    himself as somebody we do not hold, and `connectors` then offered that run
+    as a nine-person bridge worth taking an export for.
+    """
+    report = check("1\tsomeone\t-\tgeni:100\n2\tsomeone again\this son\tgeni:100\n")
+
+    assert [r.how for r in report.results] == [paths.BY_ID, paths.REPEAT]
+    assert all(r.held for r in report.results)
+    assert report.absent == []
+
+
+def test_a_repeat_of_a_person_we_lack_is_still_absent():
+    """The two conditions are independent, and only one of them means a gap."""
+    report = check("1\tghost\t-\tgeni:404\n2\tghost again\this son\tgeni:404\n")
+
+    assert [r.how for r in report.results] == [paths.ABSENT, paths.ABSENT]
+    assert len(report.absent) == 2
+
+
+def test_a_repeat_still_carries_the_person_and_their_component():
+    report = check("1\tsomeone\t-\tgeni:100\n2\tsomeone again\this son\tgeni:100\n")
+    second = report.results[1]
+
+    assert second.person is not None and second.person.geni_id == "100"
+    assert second.component == report.results[0].component
+
+
 def test_exact_match_survives_accents_and_surname_slashes():
     report = check("1\tGulleik Jakobsson Oye\this father\n")
     assert report.results[0].how == paths.EXACT

@@ -3421,3 +3421,89 @@ A prediction is recorded before the next merge, so `git show` supplies it: two
 of this evening's four seeds are `NN /譚/` and `NN /Ubay/`, and if seeding a
 placeholder near a known gap works, re-merging should close part of the Jurhumid
 or Chinese runs while leaving the Alemannian ten untouched.
+
+## 2026-08-06 (late) — the deferred compute, and a defect it uncovered
+
+Emma said the machine could be loud, which was the unblock signal on the queue's
+deferred-compute item. All four steps ran. Also `genimerge connectors`, new, in
+answer to "can you open an html thing linking all of the connectors we lack?".
+
+**The merge over 103 exports.** 208 089 people (+4 766 over the 99-export tree),
+104 105 families, 22 conflicts, all `INDI.CHAN.DATE`. It is **2 components again**
+— 208 056 and 33 — where it was 1. Normal rather than wrong: an export reached
+somewhere nothing else does, and a 33-person island is what that looks like.
+
+**`genimerge connectors`.** Reads every path file against one loaded tree and
+groups the absent steps into *bridges* — runs of consecutive missing people, each
+with the doorway to seed on and the resume point on the far side. Bridges sharing
+any person are one cluster, so the ranking is step-slots closed across every path
+a cluster blocks, not the length of any one gap. A ten-person bridge crossing
+five paths beats a fifty-person run private to one.
+
+It carries a second column the slot ranking cannot express: **whether one export
+can actually collect it.** Nine people is the widest gap a targeted export has
+closed here, so anything wider is flagged. That keeps payoff and feasibility
+apart instead of letting a 52-person run at rank 1 read as the thing to go and
+take. The flag does not re-order the table — the observation behind it is n=a
+handful and would not carry the weight.
+
+**The defect.** `paths._resolve` had one branch for two unrelated conditions:
+
+    if step.geni_id in tree.people and step.geni_id not in used:  # held
+    return StepResult(step=step, how=ABSENT)                      # everything else
+
+So a person walked **twice on one path** was reported absent the second time. A
+saved Geni page can hold two relationship paths, and `path-from-html` writes both
+into one file, so the second chain restarts at "You" and re-walks the opening
+people. `paths/nn-basse.tsv` does exactly this at steps 36-44 — and the tool was
+therefore reporting **Eric Borsheim, the account owner and the seed of the first
+three exports, as a person missing from our tree**. `connectors` then read that
+run as a nine-person bridge and ranked it as an export worth taking.
+
+`ABSENT` now means only "not in the tree"; a held repeat is `REPEAT`, which counts
+as held. The `used` rule survives untouched for the name fallback, which is what
+it was written for — a *name* landing twice on one profile is a matching error,
+an exact ID landing twice is a file holding two paths.
+
+Worth recording how it was found, because the route generalises: the new report
+named a missing person whose absence was *implausible on its face*. Nothing in
+the numbers looked wrong. 47 of 57 is an unremarkable figure; "we do not hold the
+account owner" is not.
+
+**What this corrects.** `reports/path-gaps-2026-08-06.md` said 3 199 of 3 464
+steps and 11 complete paths; the generated JSON said 3 189 and 10. **The prose
+was right and the generated data was wrong** — the ten-step difference is exactly
+nn-basse's ten repeats. Two of the fifteen clusters in the first connectors run
+were artifacts of the bug.
+
+**The predictions in `path-gaps-2026-08-06.md`, scored.** All three hold.
+
+- *Closes part of the Jurhumid/Qahtani cluster or a Chinese run.* Held, and more
+  than partly: the 'A'idhullah al-'Ashiri bridge — 19 people, rank 1 at 55 slots
+  across three paths — is **gone entirely**, and the `hou-zhang` run with it.
+  Seeding a placeholder near a known gap works. First time a bridge queued here
+  has been closed by exports taken for other reasons.
+- *The Alemannian ten are untouched.* Held. Still 50 slots across 5 paths, the
+  same steps 35-44, and now the top buy outright — no other cluster in the report
+  touches more than one path.
+- *Held rises from 92.3% but stays below 97%.* Held: **94.5%**, 13 of 26 paths
+  complete.
+
+**`density` re-run** over 103 exports: 126 060 of 208 089 people in ≤1 export,
+5 814 regions of 2+, largest thin region 10 051 people with 2 689 doorways. The
+queue's region-6 prediction is **still unscored** — none of the four new exports
+was seeded on a pick from that table, and scoring it needs an export from one of
+those seeds. Region numbering is positional and has shifted twice, so the seed
+IDs rather than the numbers are what to carry forward.
+
+**Two test failures found by the run, one of them pre-existing.**
+`tests/test_cli.py`'s `COMMANDS` was missing `overlap`, so
+`test_every_command_is_registered` had been failing since `overlap` shipped —
+nothing to do with this session's work. The other was the stale `reports/merge.md`,
+which the merge above refreshed.
+
+Also: `cli.main` now reconfigures stdout/stderr with `errors="replace"`. Printing
+a summary line naming 蘇瑗 raised `UnicodeEncodeError` on a cp1252 console *after*
+the files were written — a command that had done its whole job exiting non-zero
+over a progress message. The reports were never at risk; they are opened with an
+explicit UTF-8 encoding.

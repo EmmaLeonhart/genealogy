@@ -15,28 +15,6 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
-0.001 **BLOCKED-ON-USER-ACTION — the deferred compute from the 2026-08-06
-   evening ingest. Unblock signal: Emma says the machine is somewhere it can
-   spin up** (the batch was handled on a hot laptop with the fan audible in
-   public, under an explicit instruction to document rather than compute).
-
-   Ingest itself is done — four new exports in `exports/edges/`, two repeats
-   identified and left in `~/Downloads`, cap raised to 4020, nine path pages
-   converted; see `reports/audit-downloads-2026-08-06.md` and the devlog entry.
-   What is owed, in this order:
-
-   1. `py -m pytest` — the corpus is 103 GEDCOMs now. The one assertion at risk,
-      `test_export_cap_is_at_least_the_largest_real_export`, is satisfied by
-      construction (largest new export 4020, constant 4020), but that is an
-      argument and not a run.
-   2. `python -m genimerge merge` — gives the new-people count for the four, and
-      refreshes `out/merged.ged`, which still describes the 99-export tree.
-   3. `python -m genimerge density` — scores the prediction recorded in item 3
-      below, that region 6 yields more new people than region 4 would have.
-   4. Re-run the path/gap check in `reports/path-gaps-2026-08-06.md` against the
-      new merge, to score the prediction that report records about which gaps
-      the four new exports close.
-
 0.000 The "FIRST ITEM" is finished — all 19 path files re-checked against the
 98-export merge, `reports/paths.md` rewritten, devlog entry dated 2026-08-06.
 Emma's update to the agenda of this project:
@@ -102,9 +80,18 @@ Big priorities:
    step-slots sit on 196 people, but 29 people carry 98 of them, and five
    separate paths break at the *same ten* Alemannians. Sparse ancient graph,
    connectivity through few individuals. **Saving more path pages is not the
-   work; closing the two shared bridges is** — see item 2.5, now measured at
-   five paths rather than the five it predicted, and the
-   'A'idhullah al-'Ashiri `6000000226741965864` bridge, which is new.
+   work; closing the shared bridges is.**
+
+   **Re-measured 2026-08-06 late, over the 103-export merge, by
+   `python -m genimerge connectors` — and the numbers above are superseded.**
+   `reports/connectors.md` and `out/connectors.html` are now the live answer;
+   do not read the counts in this item as current. **3 274 of 3 464 steps held
+   (94.5%), 13 of 26 paths complete, 16 bridges in 12 clusters.** Two things
+   changed: the four `exports/edges/` takes closed the
+   'A'idhullah al-'Ashiri `6000000226741965864` bridge **entirely**, and a
+   defect in `genimerge.paths` was fixed that had been reporting people we
+   hold as missing (see the devlog entry — a person walked twice on one path
+   was reported `ABSENT` the second time, and `nn-basse` is 57/57, not 47/57).
 
 0.05 **The P2600 overlap is measured — `reports/wikidata-overlap.md`,
    2026-08-06.** Emma's ask, answered: **9,026 in both — 4.44% of our tree,
@@ -174,14 +161,25 @@ Big priorities:
    paths that each run unbroken to step 34 and stop there. All ten verified
    absent by profile ID against `out/merged.ged`.
 
-   **Re-measured 2026-08-06 over 26 paths and it holds up exactly** —
-   `reports/path-gaps-2026-08-06.md`. The same ten people block five paths at
-   the *identical* steps 35–44, doorway **Gisela of Friuli
+   **Re-measured 2026-08-06 late over the 103-export merge and it is now the
+   top buy outright** — `reports/connectors.md`, rank 2 by slots and the
+   highest-ranked cluster that more than one path needs. The same ten people
+   block five paths at the *identical* steps 35–44, doorway **Gisela of Friuli
    `6000000008592343633`**, first absent Berengar I (her father), resuming at
-   Leutharis II. 50 step-slots for one export. **A second bridge of the same
-   kind is now known and is not yet queued elsewhere: 'A'idhullah al-'Ashiri
-   `6000000226741965864`**, 19 Jurhumid/Qahtani people, ~48 slots across
-   `scorpion-i`, `pasuti` and `psamtik-ii`. Take it `Forest` for the same reason.
+   Leutharis II. **50 step-slots across 5 paths for one export**, and no other
+   cluster in the report touches more than one path.
+
+   **The second bridge of this kind is closed and needs no export.**
+   'A'idhullah al-'Ashiri `6000000226741965864`, 19 Jurhumid/Qahtani people
+   across `scorpion-i`, `pasuti` and `psamtik-ii`, was the rank-1 cluster at 55
+   slots before the four `exports/edges/` takes were merged; it is gone from
+   the report entirely. That is the first time a bridge named here has been
+   closed by exports taken for other reasons.
+
+   **Caveat carried by the report itself: ten people is one past the nine that
+   is the widest gap a targeted export has closed here**, so `connectors` flags
+   this cluster "one export? no". It may take two, exactly as this item has
+   said since it was written.
 
    It beats the density picks because the payoff is *observed*: Geni has already
    named who is behind this door. `Forest` because Giséle of Cysoing and Emma of
@@ -232,6 +230,14 @@ Big priorities:
    `density` should show region 6 shrink or split. Recording the prediction here
    so `git show` supplies it later — **region 6 is predicted to yield more new
    people than region 4 would have**, on the density argument alone.
+
+   **Still unscored as of 2026-08-06 late, and the seeds and region numbers
+   above are stale.** `density` was re-run over the 103-export merge
+   (126 060 of 208 089 people in ≤1 export, 5 814 regions), but none of the
+   four new exports was seeded on a pick from this table, so the prediction has
+   not been tested — it needs an export *from one of these seeds*. Re-read
+   `reports/density.md` for current seeds before acting: region numbering is
+   positional and has already shifted twice under it.
 
 6. **The Wikidata reports are stale.** `reports/wikidata-coverage.md`,
    `wikidata-crosscheck.md` and `names.md` describe the 16266-person tree; it is

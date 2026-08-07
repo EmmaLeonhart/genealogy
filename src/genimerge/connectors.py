@@ -57,6 +57,12 @@ _SIBLING_WORDS = ("brother", "sister", "sibling")
 
 _GENI_URL = "https://www.geni.com/people/x/{}"
 
+#: The widest gap a single targeted export has actually been observed to close
+#: in this repo. `CLAUDE.md` records the range as 6-9 steps; the Jimmu bridge
+#: needed four exports to cross 21. Used only to caveat the ranking — see
+#: `Cluster.wider_than_an_export_reaches` for why it does not re-order it.
+TARGETED_EXPORT_SPAN = 9
+
 
 @dataclass
 class Bridge:
@@ -159,6 +165,24 @@ class Cluster:
     def ends_a_path(self) -> bool:
         """True when some path simply runs out here rather than resuming."""
         return any(b.resume is None for b in self.bridges)
+
+    @property
+    def wider_than_an_export_reaches(self) -> bool:
+        """Whether this cluster is too wide for one targeted export to close.
+
+        Ranking by slots is right for *payoff* and silent about *feasibility*,
+        and the two come apart at the top of the table: a 52-person run private
+        to one path outranks a 10-person bridge crossing five, while being the
+        one nobody can actually close. `CLAUDE.md` records the observed span of
+        a targeted export here as 6-9 steps — the Jimmu bridge took four
+        exports for 21 — so anything past `TARGETED_EXPORT_SPAN` is at least
+        two takes and possibly not worth them.
+
+        This is a caveat on the ranking, not a re-ranking. The observation is
+        n=a-handful and hard-coding it into the sort would give it more
+        authority than it has earned.
+        """
+        return len(self.people) > TARGETED_EXPORT_SPAN
 
 
 def bridges(report: paths_mod.PathReport, path_name: str) -> list[Bridge]:
@@ -289,17 +313,24 @@ def render_markdown(
         "the slot count is the payoff across every path it blocks — not the",
         "length of any one gap.",
         "",
-        "| rank | slots | people | paths | doorway | style |",
-        "| ---: | ---: | ---: | ---: | --- | --- |",
+        f"Slots rank the payoff; the **one export?** column is the check on "
+        f"whether it can be collected. A cluster wider than "
+        f"{TARGETED_EXPORT_SPAN} people is past anything a targeted export has "
+        f"closed here, so the best *buy* is the widest cluster that still says "
+        f"yes — not necessarily rank 1.",
+        "",
+        "| rank | slots | people | paths | one export? | doorway | style |",
+        "| ---: | ---: | ---: | ---: | :-: | --- | --- |",
     ]
     for i, c in enumerate(clusters, 1):
         door = c.doorways[0] if c.doorways else None
         door_text = (
             f"{door.step.name} `{door.step.geni_id}`" if door else "*(path starts absent)*"
         )
+        fits = "no" if c.wider_than_an_export_reaches else "**yes**"
         lines.append(
             f"| {i} | {c.slots} | {len(c.people)} | {len(c.path_names)} "
-            f"| {door_text} | {c.style} |"
+            f"| {fits} | {door_text} | {c.style} |"
         )
     lines += ["", "## Every cluster, with its missing people", ""]
     for i, c in enumerate(clusters, 1):
@@ -358,6 +389,12 @@ def render_html(
         frontier = (
             "<span class=tag-f>ends a path</span>" if c.ends_a_path else ""
         )
+        if c.wider_than_an_export_reaches:
+            frontier += (
+                f"<span class=tag-w>wider than one export &mdash; "
+                f"{len(c.people)} people, and {TARGETED_EXPORT_SPAN} is the most "
+                "a targeted export has closed here</span>"
+            )
         blocks.append(
             f"<section><h2><span class=rank>{i}</span> {len(c.people)} people "
             f"&middot; {c.slots} slots &middot; {len(c.path_names)} path"
@@ -399,7 +436,9 @@ def render_html(
         ".tag,.path,.tag-f{display:inline-block;background:var(--tag);border-radius:4px;"
         "padding:.05rem .4rem;font-size:.82rem;margin-right:.25rem}"
         ".tag-f{background:#f6d7d7;color:#7a1f1f}"
-        "@media(prefers-color-scheme:dark){.tag-f{background:#4a2323;color:#f0b8b8}}"
+        ".tag-w{background:#f7e6c8;color:#6d4a12}"
+        "@media(prefers-color-scheme:dark){.tag-f{background:#4a2323;color:#f0b8b8}"
+        ".tag-w{background:#463618;color:#f0d9a8}}"
         ".muted{color:var(--muted)}"
         "table{border-collapse:collapse;width:100%;font-size:.94rem;margin-top:.6rem}"
         "th,td{text-align:left;padding:.4rem .6rem;border-bottom:1px solid var(--line);"
@@ -423,7 +462,10 @@ def render_html(
         f"{len(reports)} relationship paths. Ranked by slots — a person who "
         "blocks five paths counts five times, because that is what one export "
         "would buy. Presence here measures our own sampling, never Geni's "
-        "content: every one of these people is somebody Geni already names.</p>"
+        "content: every one of these people is somebody Geni already names. "
+        f"A cluster wider than {TARGETED_EXPORT_SPAN} people is flagged: that "
+        "is past anything one targeted export has closed here, so the best buy "
+        "is the widest cluster without the flag rather than rank 1.</p>"
         + "".join(blocks)
         + "</body></html>"
     )

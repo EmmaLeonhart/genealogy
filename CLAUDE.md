@@ -72,6 +72,30 @@ family, managers, followers — and only those inside `span.segment > span.name`
 are on the path. Matching anchors directly yields a plausible-looking list that
 is not a path.
 
+**`reports/connectors.md` and `out/connectors.html` answer "who do we lack?"
+across all the paths at once.** `python -m genimerge connectors` checks every
+path file against one loaded tree — a second `genimerge path` run per file would
+pay the whole cost of loading the merge each time, so `--write-paths` refreshes
+every `reports/path-*.md` from the same pass. It groups absent steps into
+**bridges** (a run of consecutive missing people, plus the doorway to seed on and
+the resume point beyond) and merges bridges that share any person into one
+cluster. **Rank by slots closed across every path a cluster blocks, never by gap
+length**: ten people blocking five paths beat fifty private to one. The report
+carries a separate **"one export?"** column because payoff and feasibility come
+apart at the top of the table — nine people is the widest gap a targeted export
+has closed here, and the highest-slot cluster is routinely wider than that.
+
+**`ABSENT` on a path means "not in the tree" and nothing else.** A person walked
+*twice* on one path is `REPEAT`, which counts as held. The two shared a branch
+until 2026-08-06 and the cost was not cosmetic: `paths/nn-basse.tsv` holds two
+relationship paths end to end, so its second chain re-walks steps 1–9, and the
+tool reported **the account owner himself** as a missing person — which
+`connectors` then offered as a nine-person bridge worth exporting for. The
+`used` rule that caused it is still right for the *name* fallback, where a
+second step landing on one profile is a matching error; an exact ID landing
+twice is a file holding two paths. `tests/test_paths.py` pins both directions,
+including that a repeat of someone genuinely absent stays absent.
+
 `genimerge.paths` **falls back to name matching only for rows with no ID**, and
 that fallback is a report for a human, never an input to a merge. Do not let it
 become load-bearing: run against the Jimmu path it invented eleven holes in a

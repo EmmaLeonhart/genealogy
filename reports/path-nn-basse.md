@@ -1,10 +1,8 @@
 # Relationship path: nn-basse
 
-**47 of 57 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**57 of 57 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**The unbroken run stops at step 35, NN Basse.** The next step, **You**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
-
-**12 steps past the gap are held anyway** — Torbjørn Madsson Sæve onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
+Every step is held: this path is walkable inside our own data.
 
 ## Steps
 
@@ -45,15 +43,15 @@
 | 33 | Christine Olufsdatter Blaa | her daughter | [Christine Olufsdatter Blaa](https://www.geni.com/people/x/6000000034771514143) | id | 1 |
 | 34 | Christine Nielsdatter Basse, (Nye) | her daughter | [Christine Nielsdatter Basse](https://www.geni.com/people/x/6000000044835902936) | id | 1 |
 | 35 | NN Basse | her child | [NN](https://www.geni.com/people/x/6000000209053003954) | id | 1 |
-| 36 | You | — | — | absent | — |
-| 37 | Richard Wade Borsheim | your father | — | absent | — |
-| 38 | Caroline Signe Borsheim | his mother | — | absent | — |
-| 39 | Alfred Ingerman Hoknes | her father | — | absent | — |
-| 40 | Clara Amilia Hoknes | his mother | — | absent | — |
-| 41 | Kasbar L Knutson | her father | — | absent | — |
-| 42 | Gjertrud Magnesdtr Bjorgo | his mother | — | absent | — |
-| 43 | Gudve Rognaldsdatter Nestås | her mother | — | absent | — |
-| 44 | Gjertrud Torbjørnsdatter Sæve | her mother | — | absent | — |
+| 36 | You | — | [Eric Borsheim](https://www.geni.com/people/x/6000000087535357291) | repeat | 1 |
+| 37 | Richard Wade Borsheim | your father | [Richard Wade Borsheim](https://www.geni.com/people/x/6000000177921459056) | repeat | 1 |
+| 38 | Caroline Signe Borsheim | his mother | [Caroline Signe Hoknes](https://www.geni.com/people/x/6000000177921459072) | repeat | 1 |
+| 39 | Alfred Ingerman Hoknes | her father | [Alfred Ingerman Hoknes](https://www.geni.com/people/x/6000000015117490925) | repeat | 1 |
+| 40 | Clara Amilia Hoknes | his mother | [Clara Amilia Knutson](https://www.geni.com/people/x/6000000177921459114) | repeat | 1 |
+| 41 | Kasbar L Knutson | her father | [Kasbar L Knutson](https://www.geni.com/people/x/6000000177921459169) | repeat | 1 |
+| 42 | Gjertrud Magnesdtr Bjorgo | his mother | [Gjertrud Magnesdtr Hjornevik](https://www.geni.com/people/x/6000000026258097510) | repeat | 1 |
+| 43 | Gudve Rognaldsdatter Nestås | her mother | [Gudve Rognaldsdatter Nestås](https://www.geni.com/people/x/6000000002267060138) | repeat | 1 |
+| 44 | Gjertrud Torbjørnsdatter Sæve | her mother | [Gjertrud Torbjørnsdatter](https://www.geni.com/people/x/6000000005744994427) | repeat | 1 |
 | 45 | Torbjørn Madsson Sæve | her father | [Torbjørn Madsson](https://www.geni.com/people/x/6000000003875720930) | id | 1 |
 | 46 | Mass Torbjørnson Seve | his father | [Mass Torbjørnson Dal](https://www.geni.com/people/x/6000000007224180913) | id | 1 |
 | 47 | Torbjørn Gauteson Dal til Hov i Fresvik Gauteson Dal | his father | [Torbjørn Gauteson Dal til Hov i Fresvik](https://www.geni.com/people/x/6000000012271160019) | id | 1 |
@@ -66,4 +64,4 @@
 | 54 | Anna Harboe, af Nystrup | her mother | [Anna](https://www.geni.com/people/x/6000000040322032691) | id | 1 |
 | 55 | Niels Knudsen Dyre, af Hjelmsø | her brother | [Niels Knudsen](https://www.geni.com/people/x/6000000034770397072) | id | 1 |
 | 56 | Christiern Nielsen Dyre, af Hjelmsø | his son | [Christiern](https://www.geni.com/people/x/6000000034771304089) | id | 1 |
-| 57 | NN Basse | his child | — | absent | — |
+| 57 | NN Basse | his child | [NN](https://www.geni.com/people/x/6000000209053003954) | repeat | 1 |
