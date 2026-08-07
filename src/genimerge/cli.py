@@ -205,6 +205,47 @@ def _cmd_export(args: argparse.Namespace) -> int:
 
 def _cmd_overlap(args: argparse.Namespace) -> int:
     ws = Workspace.from_args(args)
+    cached = ws.wikidata / "p2600-all.tsv"
+
+    if args.offline:
+        # The expensive half of this command is sixteen partitions over a live
+        # endpoint, and it answers "what does Wikidata hold?" — which barely
+        # moves between our merges. Our own side moves every time an export
+        # lands, so re-asking Wikidata to watch our coverage climb is wasted
+        # traffic. This reuses the map the last online run wrote.
+        if not cached.exists():
+            print(
+                f"{cached} not found. Run `python -m genimerge overlap` once "
+                "without --offline to fetch it.",
+                file=sys.stderr,
+            )
+            return 1
+        tree = _load_tree(args.source, ws)
+        pairs = doubles_mod.load_pairs(cached)
+        stamp = date.fromtimestamp(cached.stat().st_mtime).isoformat()
+        print(f"offline: {len(pairs):,} P2600 statements cached {stamp}")
+        # No `reported`: those counts come from the endpoint. Passing the
+        # fetched totals instead would print a number that looks like Wikidata
+        # answering and is really our own file counting itself.
+        result = overlap_mod.measure(pairs, tree.people)
+        report = _write(
+            args.output or ws.reports / "wikidata-overlap.md",
+            overlap_mod.render_markdown(
+                result,
+                people=len(tree.people),
+                exports=len(ws.exports()),
+                names={gid: p.display_name for gid, p in tree.people.items()},
+                fetched=stamp,
+            ),
+        )
+        print(f"wrote {report}")
+        print(
+            f"{len(result.both):,} of {len(result.theirs):,} Geni IDs on Wikidata "
+            f"are in our tree ({100 * len(result.both) / len(result.theirs):.2f}%); "
+            f"{len(result.both) / len(result.ours):.2%} of our tree is on Wikidata"
+        )
+        return 0
+
     tree = _load_tree(args.source, ws)
     client = make_client(ws, args)
 
@@ -1017,6 +1058,15 @@ def build_parser() -> argparse.ArgumentParser:
         ),
     )
     p_over.add_argument("--source", type=Path, default=None, help="a GEDCOM to read instead of merging")
+    p_over.add_argument(
+        "--offline",
+        action="store_true",
+        help=(
+            "reuse the cached out/wikidata/p2600-all.tsv instead of fetching. "
+            "Our side moves with every export and Wikidata's barely moves "
+            "between them, so this is the one to run after a merge."
+        ),
+    )
     p_over.add_argument(
         "--delay", type=float, default=1.0, help="seconds between requests (default: 1.0)"
     )

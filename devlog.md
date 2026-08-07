@@ -3846,3 +3846,30 @@ those people. It is a floor on novelty rather than a new-people count.
 map: **11 494 of Wikidata's 516 885 Geni-linked people are in our tree —
 2.22%**, against 1.75% at 203k people this afternoon. Our tree is 4.50%
 Wikidata-known. **505 391 Geni-linked people on Wikidata we still do not hold.**
+
+## 2026-08-06 (end) — export 134, and the Wikidata percentage becomes re-runnable
+
+Corpus **134**, merge **257 219 people**, 129 348 families.
+
+**Emma changed the campaign and said so: future exports are descendant-adding,
+not gap-filling.** The paths are complete, so there is nothing left to bridge
+and a new export is aimed at breadth in later generations. `exports/gaps/` is
+closed at the night it was named for; new exports go to `exports/descendants/`.
+Filing only — every `.ged` under `exports/` is corpus the moment it exists, and
+the merge reads them all recursively.
+
+**`genimerge overlap --offline`.** She wants a running figure for what share of
+Wikidata's Geni-linked people we hold, and that number should not cost sixteen
+partitions against a live endpoint every time an export lands. Our side moves
+with every merge; Wikidata's side barely moves between them. `--offline` reuses
+the cached `p2600-all.tsv`, stamps the report with the date it was fetched, and
+says plainly that the denominator is a snapshot which ages.
+
+The four endpoint-reported totals now render as *not fetched (offline)* rather
+than as `0`, which would have read as "Wikidata carries no Geni IDs" — the
+opposite of true. Two tests pin both directions.
+
+**Current coverage, 134 exports:** **11 522 of 516 885 Geni IDs on Wikidata are
+in our tree — 2.23%**, and 4.48% of our tree is on Wikidata. It was 1.75% at 103
+exports this afternoon, on 9 026 people. So the night moved it by roughly half a
+percentage point, which is 2 496 people Wikidata already knew about.

@@ -243,3 +243,26 @@ def test_a_clean_dataset_gets_no_review_sections():
     assert "## Geni IDs on more than one Wikidata item" not in rendered
     assert "## Wikidata items carrying more than one Geni ID" not in rendered
     assert "## P2600 values that are not a profile ID" not in rendered
+
+
+def test_endpoint_totals_read_as_not_fetched_when_offline():
+    """An offline run has no honest value for the four endpoint-reported
+    totals, and printing 0 would read as "Wikidata carries no Geni IDs" —
+    the opposite of true."""
+    result = overlap.measure([("Q1", "100"), ("Q2", "200")], {"100"})
+
+    text = overlap.render_markdown(result, people=1, exports=1, fetched="2026-08-06")
+
+    assert "not fetched (offline)" in text
+    assert "cached 2026-08-06" in text
+
+
+def test_a_live_run_prints_the_endpoint_totals():
+    result = overlap.measure(
+        [("Q1", "100")], {"100"}, reported={"items": 7, "humans": 5, "values": 7, "statements": 9}
+    )
+
+    text = overlap.render_markdown(result, people=1, exports=1)
+
+    assert "not fetched (offline)" not in text
+    assert "| 7 |" in text

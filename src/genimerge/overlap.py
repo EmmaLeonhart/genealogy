@@ -180,9 +180,28 @@ def _pct(part: int, whole: int) -> str:
     return f"{100 * part / whole:.2f}%" if whole else "—"
 
 
+def _reported(o: "Overlap", key: str) -> str:
+    """An endpoint-reported total, or a dash when the run was offline."""
+    value = o.reported.get(key)
+    return f"{value:,}" if value is not None else "*not fetched (offline)*"
+
+
 def render_markdown(
-    o: Overlap, *, people: int, exports: int, names: dict[str, str] | None = None
+    o: Overlap,
+    *,
+    people: int,
+    exports: int,
+    names: dict[str, str] | None = None,
+    fetched: str | None = None,
 ) -> str:
+    """`fetched` marks an offline run: the Wikidata side came from a cached map
+    written on that date rather than from the endpoint just now.
+
+    Worth saying in the report rather than only in the terminal. Our side moves
+    with every export and Wikidata's barely moves between them, so re-fetching
+    to watch our own coverage climb is wasted traffic — but a reader comparing
+    two runs needs to know the denominator is a snapshot, and how old.
+    """
     both, ours_only, theirs_only = len(o.both), len(o.ours_only), len(o.theirs_only)
     lines = [
         "# Our tree against every Wikidata item with a Geni ID",
@@ -194,14 +213,28 @@ def render_markdown(
         "**every P2600 statement on Wikidata**, fetched in sixteen MD5 partitions",
         "rather than by asking about our own IDs, so the count faces both ways.",
         "",
+    ]
+    if fetched:
+        lines += [
+            f"**Offline run: the Wikidata side is a snapshot cached {fetched}**, not a",
+            "live fetch. Our side is current. Coverage percentages therefore track",
+            "*our* growth against a fixed denominator — which is what watching the",
+            "tree fill in wants — but the denominator itself ages, so re-run without",
+            "`--offline` before quoting the Wikidata totals as current.",
+            "",
+        ]
+    lines += [
         "## The two sides",
         "",
         "| | count |",
         "| --- | ---: |",
-        f"| Wikidata items carrying a Geni ID | {o.reported.get('items', 0):,} |",
-        f"| …of those, instances of human (Q5) | {o.reported.get('humans', 0):,} |",
-        f"| distinct Geni ID **values** on Wikidata | {o.reported.get('values', 0):,} |",
-        f"| P2600 **statements** | {o.reported.get('statements', 0):,} |",
+        # These four come from the endpoint, not from the fetched rows, so on an
+        # offline run there is no honest number to print. A zero would read as
+        # "Wikidata carries no Geni IDs", which is the opposite of true.
+        f"| Wikidata items carrying a Geni ID | {_reported(o, 'items')} |",
+        f"| …of those, instances of human (Q5) | {_reported(o, 'humans')} |",
+        f"| distinct Geni ID **values** on Wikidata | {_reported(o, 'values')} |",
+        f"| P2600 **statements** | {_reported(o, 'statements')} |",
         f"| joinable Geni IDs fetched (all digits) | {len(o.theirs):,} |",
         f"| people in our tree | {len(o.ours):,} |",
         "",
