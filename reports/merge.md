@@ -104,40 +104,41 @@ Sources in merge order (later sources win value conflicts):
 98. `export-Descendants-6000000209931920826.ged`
 99. `export-Descendants-6000000227040600959.ged`
 100. `export-Descendants-6000000227085797849.ged`
-101. `export-Descendants-6000000227085871850.ged`
-102. `export-Forest-6000000227086244080.ged`
-103. `export-Forest-6000000227086380915.ged`
-104. `export-Forest-6000000227086432913.ged`
-105. `export-Forest-6000000227086452843.ged`
-106. `export-Forest-6000000227086455824.ged`
-107. `export-Forest-6000000227086465839.ged`
-108. `export-Forest-6000000227086500885.ged`
-109. `export-Forest-6000000227086506866.ged`
-110. `export-Forest-6000000227086510841.ged`
-111. `export-Forest-6000000227086620980.ged`
-112. `export-Forest-6000000227086715937.ged`
-113. `export-Forest-6000000227086717913.ged`
-114. `export-Forest-6000000227087120840.ged`
-115. `export-Forest-6000000210475738822.ged`
-116. `export-Forest.ged`
+101. `export-Descendants-6000000227085828865.ged`
+102. `export-Descendants-6000000227085871850.ged`
+103. `export-Forest-6000000227086244080.ged`
+104. `export-Forest-6000000227086380915.ged`
+105. `export-Forest-6000000227086432913.ged`
+106. `export-Forest-6000000227086452843.ged`
+107. `export-Forest-6000000227086455824.ged`
+108. `export-Forest-6000000227086465839.ged`
+109. `export-Forest-6000000227086500885.ged`
+110. `export-Forest-6000000227086506866.ged`
+111. `export-Forest-6000000227086510841.ged`
+112. `export-Forest-6000000227086620980.ged`
+113. `export-Forest-6000000227086715937.ged`
+114. `export-Forest-6000000227086717913.ged`
+115. `export-Forest-6000000227087120840.ged`
+116. `export-Forest-6000000210475738822.ged`
 117. `export-Forest.ged`
 118. `export-Forest.ged`
-119. `export-Ancestors.ged`
-120. `export-BloodTree.ged`
-121. `export-Forest-6000000226977233850.ged`
-122. `export-Forest-6000000226989731860.ged`
-123. `export-Forest.ged`
-124. `export-Forest-40.ged`
-125. `export-Forest-41.ged`
-126. `export-Forest-42.ged`
-127. `export-Forest-43.ged`
+119. `export-Forest.ged`
+120. `export-Ancestors.ged`
+121. `export-BloodTree.ged`
+122. `export-Forest-6000000226977233850.ged`
+123. `export-Forest-6000000226989731860.ged`
+124. `export-Forest.ged`
+125. `export-Forest-40.ged`
+126. `export-Forest-41.ged`
+127. `export-Forest-42.ged`
+128. `export-Forest-43.ged`
 
 ## Merged totals
 
 | record | count |
 | --- | ---: |
-| FAM | 122340 |
-| INDI | 244790 |
+| FAM | 122399 |
+| INDI | 244871 |
 | NOTE | 28967 |
 | SUBM | 9361 |
 
@@ -245,6 +246,7 @@ Sources in merge order (later sources win value conflicts):
 | `export-Descendants-6000000209931920826.ged` | 733 | 1204 | 0 | 0 | 4845 | 749 |
 | `export-Descendants-6000000227040600959.ged` | 1054 | 3019 | 2 | 98 | 1747 | 2527 |
 | `export-Descendants-6000000227085797849.ged` | 694 | 964 | 0 | 0 | 3916 | 1094 |
+| `export-Descendants-6000000227085828865.ged` | 91 | 127 | 0 | 0 | 6573 | 800 |
 | `export-Descendants-6000000227085871850.ged` | 0 | 0 | 0 | 0 | 938 | 32 |
 | `export-Forest-6000000227086244080.ged` | 2030 | 3552 | 7902 | 202 | 3746 | 12959 |
 | `export-Forest-6000000227086380915.ged` | 969 | 2467 | 2089 | 75 | 7098 | 30373 |
@@ -254,7 +256,7 @@ Sources in merge order (later sources win value conflicts):
 | `export-Forest-6000000227086465839.ged` | 1763 | 3768 | 0 | 1 | 414 | 67 |
 | `export-Forest-6000000227086500885.ged` | 474 | 1066 | 0 | 0 | 4988 | 822 |
 | `export-Forest-6000000227086506866.ged` | 1995 | 3219 | 1258 | 87 | 3613 | 3675 |
-| `export-Forest-6000000227086510841.ged` | 247 | 433 | 0 | 2 | 6157 | 534 |
+| `export-Forest-6000000227086510841.ged` | 215 | 387 | 0 | 2 | 6235 | 336 |
 | `export-Forest-6000000227086620980.ged` | 387 | 705 | 273 | 13 | 7454 | 14927 |
 | `export-Forest-6000000227086715937.ged` | 1496 | 4066 | 293 | 491 | 252 | 21 |
 | `export-Forest-6000000227086717913.ged` | 1790 | 2688 | 308 | 53 | 3621 | 2976 |
@@ -286,14 +288,14 @@ Sources in merge order (later sources win value conflicts):
 
 ## Conflicts
 
-**119** value disagreements on single-valued paths. The value from the later source was kept; the other is recorded here and is not in the merged file.
+**121** value disagreements on single-valued paths. The value from the later source was kept; the other is recorded here and is not in the merged file.
 
 By path:
 
 | path | conflicts |
 | --- | ---: |
-| `INDI.CHAN.DATE` | 54 |
-| `INDI.CHAN.DATE.TIME` | 54 |
+| `INDI.CHAN.DATE` | 55 |
+| `INDI.CHAN.DATE.TIME` | 55 |
 | `FAM.HUSB` | 3 |
 | `INDI.BIRT.PLAC` | 3 |
 | `INDI.DEAT.PLAC` | 2 |

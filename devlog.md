@@ -3683,3 +3683,50 @@ nothing measured so far separates the two.
 This was a throwaway script, not an instrument — no module, no test, nothing
 committed that can be re-run. Offered to build it as `genimerge dates`;
 awaiting an answer rather than assuming.
+
+## 2026-08-06 (night) — 128 exports; the last four are genuinely not on Geni's side of any export taken
+
+One more `Descendants` export (128 GEDCOMs), merge **244 871 people**, 122 399
+families, 121 conflicts, 2 components.
+
+Paths unchanged at **3 460 of 3 464, 25 of 26 complete, one bridge**: Stephen
+Merrill, Erastus Merrell, William H Merrell and Julia Eugenia Vories, steps
+17-20 of `hata`. Doorway Simeon Merrill `6000000008427171641`, `Forest`, step 17
+being his brother. Twenty-eight downloaded zips were checked and none contains
+any of the four, so the gap is not an ingest failure.
+
+**A method note about that check, because it was the wrong instinct.** Asked
+whether the newest exports had closed the gap, the answer came from grepping the
+zips rather than from merging them and asking the tree. It gave the right answer
+and it was still wrong: this repo exists to build one synoptic tree, and a
+question about what the tree holds is answered by the tree. The zip is a
+delivery mechanism. Merge first, then ask.
+
+**Session ingest record, since the question came up:** 12 GEDCOMs at `a36eb97`,
+8 at `a871b34`, 4 at `def2781`, 1 here — 25 in total, corpus 103 → 128, four
+full merges, tree 203 323 → 244 871 people. Every batch went in within minutes
+of arriving.
+
+**The birth-year distribution was re-measured with `genimerge.dates`**, which
+already existed and which the first pass bypassed in favour of a hand-rolled
+regex. That regex read Geni's minus-sign BC years as AD — `-1310` became 1310 —
+so the ancient end of the first figures was wrong. Corrected, over 113 427
+parsed birth dates with 661 unreadable:
+
+| period | share of dated |
+| --- | ---: |
+| BC | 2.0% |
+| AD C1-C5 | 2.6% |
+| medieval C6-C15 | 34.8% |
+| **early modern C16-C19** | **56.3%** |
+| C20-C21 | 4.3% |
+
+C19 alone is 17.4% against C20's 4.3%. The caveat from the earlier entry stands
+and is the important half: 53% of people carry no usable birth year, 11 091 of
+those are name-redacted, and Geni redacts the living — so 4.3% is a floor on the
+modern share, not a measurement of it.
+
+The lesson is the same one twice in one entry: **use the parser this repo
+already has.** `genimerge.dates` exists precisely because Geni's date grammar
+has traps, and the BC-minus-sign trap is documented in its own docstring as
+having gone unnoticed once before.
