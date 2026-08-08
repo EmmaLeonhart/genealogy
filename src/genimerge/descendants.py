@@ -103,9 +103,11 @@ __all__ = [
     "band_by_birth",
     "band_by_generation",
     "bands",
+    "drop_duplicate_balls",
     "REACH_TARGET",
     "REACH_GENERATIONS",
     "render_markdown",
+    "render_html",
     "render_seed_list",
 ]
 
@@ -339,6 +341,10 @@ class Line:
     #: how many of those paths end at somebody with no recorded child — the
     #: places a `Descendants` export could carry the line on from
     open_paths: int
+    #: exactly which children, sorted. Two people with the same set are a couple,
+    #: and a `Descendants` export from either returns the identical ball — see
+    #: :func:`drop_duplicate_balls`.
+    child_ids: tuple[str, ...] = ()
     #: the childless person at the forward edge of the line, to export from or near
     tip: str = ""
     tip_name: str = ""
@@ -468,6 +474,7 @@ def build_lines(tree: Tree, ceiling: int = PATH_CEILING) -> dict[str, Line]:
             generation=generation.get(geni_id, 0),
             paths=paths.get(geni_id, 0),
             children=len([c for c in person.child_ids if c in tree.people]),
+            child_ids=tuple(sorted(c for c in person.child_ids if c in tree.people)),
             depth=depth.get(geni_id, 0),
             reach=reach.get(geni_id),
             open_paths=open_below if _has_child(tree, geni_id) else 1,
@@ -590,6 +597,35 @@ def candidates(
 
     picked.sort(key=lambda line: _rank_key(line, present))
     return picked
+
+
+def drop_duplicate_balls(ranked: list[Line]) -> list[Line]:
+    """Keep one seed per set of children — a couple is a single export.
+
+    Two parents of the same children have the same descendants, so a
+    `Descendants` export seeded on either returns the **identical ball**. Listing
+    both spends two of a shortlist's places on one export.
+
+    It is not a rare edge case at the top of a ranking; it is the common case,
+    because the ranking rewards a large recorded family and both parents of a
+    large family score identically. Ranks 1 and 2 of the campaign list were
+    Margaret Outlaw (b. 1858, 20 children) and Samuel D. Outlaw (b. 1855, 20
+    children), reaching the same year — a married couple, offered as two
+    suggestions.
+
+    The earlier-listed of the pair is kept, so this preserves whatever order it
+    is given. Childless people are never merged: an empty child set is not
+    evidence of anything shared.
+    """
+    seen: set[tuple[str, ...]] = set()
+    kept: list[Line] = []
+    for line in ranked:
+        if line.child_ids:
+            if line.child_ids in seen:
+                continue
+            seen.add(line.child_ids)
+        kept.append(line)
+    return kept
 
 
 @dataclass(frozen=True)
@@ -912,13 +948,17 @@ def render_markdown(
         # who have nothing left to add. The screen removes the first, and
         # `reach` removes nothing — it is a column, because a line already past
         # the target is still worth an export for the generations after it.
-        reachable = sorted(
+        reachable = drop_duplicate_balls(sorted(
             reachable,
             key=lambda line: (-line.open_paths, -(line.birth or 0), int(line.geni_id)),
-        )
+        ))
         out += [
             f"{len(reachable):,} candidates qualify, most **open ends** first — "
-            "the seeds with the most places a walk could carry on from.",
+            "the seeds with the most places a walk could carry on from. **One "
+            "per couple**: two parents of the same children have the same "
+            "descendants, so an export from either returns the identical ball, "
+            "and the ranking rewards a large family so both parents of one score "
+            "alike. Ranks 1 and 2 were a married couple before this was applied.",
             "",
             "**`ball reaches ~` is width-aware and is what makes the screen "
             f"work.** The {REACH_GENERATIONS}-generation figure is the "
@@ -1072,6 +1112,104 @@ def render_markdown(
         "",
     ]
     return "\n".join(out) + "\n"
+
+
+def render_html(reachable: list[Line], target: int, tree_size: int, shown: int = 600) -> str:
+    """A page to look over, rather than a ranking to obey.
+
+    The shortlist in `descendants.md` is thirty rows of an untested ordering,
+    and two orderings have already been wrong. This is the same candidates with
+    the judgement handed back: filter by the decade you want, sort by whichever
+    column you think matters, and pick by eye. Every name links to Geni.
+
+    Self-contained — no network, no fonts, no scripts from anywhere — because
+    `out/` is gitignored scratch that gets opened straight off disk.
+    """
+    import html as _html
+
+    rows = []
+    for i, line in enumerate(reachable[:shown], start=1):
+        decade = (line.birth // 10) * 10 if line.birth is not None else 0
+        rows.append(
+            f'<tr data-decade="{decade}">'
+            f'<td class=num>{i}</td>'
+            f'<td><a href="{profile_url(line.geni_id)}" target=_blank>'
+            f'{_html.escape(line.name or line.geni_id)}</a>'
+            f'<br><code>{line.geni_id}</code></td>'
+            f'<td class=num>{_year(line.birth)}</td>'
+            f'<td class=num>{line.children}</td>'
+            f'<td class=num>{_year(line.arrives())}</td>'
+            f'<td class=num>{_year(line.reach)}</td>'
+            f'<td class=num>{line.depth}</td>'
+            f'<td class=num>{line.open_paths}</td></tr>'
+        )
+    decades = sorted({(l.birth // 10) * 10 for l in reachable[:shown] if l.birth is not None})
+    buttons = " ".join(
+        f'<button data-d="{d}">{d}s</button>' for d in decades
+    )
+    return f"""<!doctype html><html><head><meta charset=utf-8>
+<meta name=viewport content='width=device-width,initial-scale=1'>
+<title>Seeds that can reach {target}</title><style>
+:root{{color-scheme:light dark;--bg:#fff;--fg:#1a1a1a;--line:#d8d8d8;--muted:#666;--link:#0b5cad;--chip:#eee}}
+@media(prefers-color-scheme:dark){{:root{{--bg:#15171a;--fg:#e8e8e8;--line:#33383e;--muted:#9aa0a6;--link:#79b8ff;--chip:#23262b}}}}
+body{{margin:0 auto;padding:2rem 1.25rem 4rem;max-width:1100px;background:var(--bg);color:var(--fg);
+font:16px/1.55 -apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}}
+h1{{font-size:1.5rem;margin:0 0 .25rem}}
+p{{color:var(--muted);max-width:70ch}}
+table{{border-collapse:collapse;width:100%;margin-top:1rem;font-size:14px}}
+th,td{{border-bottom:1px solid var(--line);padding:.45rem .5rem;text-align:left;vertical-align:top}}
+th{{cursor:pointer;user-select:none;white-space:nowrap}}
+th:hover{{color:var(--link)}}
+.num{{text-align:right;white-space:nowrap}}
+code{{color:var(--muted);font-size:11px}}
+a{{color:var(--link)}}
+button{{background:var(--chip);color:var(--fg);border:1px solid var(--line);border-radius:999px;
+padding:.25rem .7rem;margin:.15rem .1rem;cursor:pointer;font-size:13px}}
+button.on{{background:var(--link);color:#fff;border-color:var(--link)}}
+</style></head><body>
+<h1>Seeds that can reach {target}</h1>
+<p><b>{len(reachable):,} candidates</b> out of {tree_size:,} people, showing the first
+{min(shown, len(reachable)):,}. One per couple. Every one is born late enough that a
+breadth-first ball of ~{GENI_EXPORT_CAP:,} people can arrive at {target}, given how wide
+their recorded family already is — <i>ball reaches</i> is that estimate.</p>
+<p><b>This ordering is untested and two previous ones were wrong.</b> Sort by any column,
+filter to a decade, and pick by eye. <i>open ends</i> is how many places the line could be
+carried on from; <i>line reaches</i> is the latest birth we already hold below them, so the
+gap between that and <i>ball reaches</i> is roughly what an export would add.</p>
+<p>{buttons} <button data-d="all" class=on>all</button></p>
+<table><thead><tr>
+<th>#</th><th>person</th><th class=num>born</th><th class=num>children</th>
+<th class=num>ball reaches</th><th class=num>line reaches</th>
+<th class=num>gens followed</th><th class=num>open ends</th>
+</tr></thead><tbody>
+{chr(10).join(rows)}
+</tbody></table>
+<script>
+const tb=document.querySelector('tbody');
+document.querySelectorAll('button').forEach(b=>b.onclick=()=>{{
+  document.querySelectorAll('button').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');
+  const d=b.dataset.d;
+  tb.querySelectorAll('tr').forEach(r=>{{
+    r.style.display=(d==='all'||r.dataset.decade===d)?'':'none';
+  }});
+}});
+document.querySelectorAll('th').forEach((th,i)=>{{
+  let asc=false;
+  th.onclick=()=>{{
+    asc=!asc;
+    const rs=[...tb.querySelectorAll('tr')];
+    rs.sort((a,b)=>{{
+      const x=a.cells[i].innerText.trim(), y=b.cells[i].innerText.trim();
+      const nx=parseFloat(x.replace(/[^-\\d.]/g,'')), ny=parseFloat(y.replace(/[^-\\d.]/g,''));
+      const bothNum=!isNaN(nx)&&!isNaN(ny);
+      return (asc?1:-1)*(bothNum?nx-ny:x.localeCompare(y));
+    }});
+    rs.forEach(r=>tb.appendChild(r));
+  }};
+}});
+</script></body></html>
+"""
 
 
 def render_seed_list(band_list: list[Band], *, newest_first: bool = True) -> str:

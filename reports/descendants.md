@@ -18,42 +18,42 @@ Candidates whose ball can arrive at 1900. The screen is **width-aware**: the gen
 
 **This list is untested.** Two methods have already been refuted by measurement here, and the honest position is that this one is a constraint plus an unvalidated ranking rather than a demonstrated improvement. To test it, take one of these exports and diff the tree the way the backtest did.
 
-10,071 candidates qualify, most **open ends** first — the seeds with the most places a walk could carry on from.
+7,591 candidates qualify, most **open ends** first — the seeds with the most places a walk could carry on from. **One per couple**: two parents of the same children have the same descendants, so an export from either returns the identical ball, and the ranking rewards a large family so both parents of one score alike. Ranks 1 and 2 were a married couple before this was applied.
 
 **`ball reaches ~` is width-aware and is what makes the screen work.** The 12-generation figure is the *narrowest* case, a descent branching twice per couple; one branching twenty times spends the same budget in three generations and travels 90 years instead of 360. So a person born in 1670 with nineteen recorded children does **not** qualify, and one born in 1858 with twenty does. A recorded child count is the only branching estimate available and it is a lower bound — Geni may know more children than we do — so this errs towards saying a seed reaches further than it will.
 
 | # | export from | born | children | ball reaches ~ | generations followed | descent paths | open paths | line reaches |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | 1 | [Margaret Outlaw Outlaw](https://www.geni.com/people/x/6000000019386810114) | 1858 | 20 | 1948 | 1 | 20 | 20 | 1901 |
-| 2 | [Samuel D. Outlaw](https://www.geni.com/people/x/6000000019386543915) | 1855 | 20 | 1945 | 1 | 20 | 20 | 1901 |
-| 3 | [Johan Oldrik Iverson Enersen](https://www.geni.com/people/x/6000000005606851912) | 1845 | 20 | 1935 | 1 | 20 | 20 | 1905 |
-| 4 | [Loren Wright](https://www.geni.com/people/x/6000000002053748047) | 1809 | 10 | 1929 | 2 | 20 | 19 | 1896 |
-| 5 | [Benajah Mallery Brown](https://www.geni.com/people/x/6000000109283382483) | 1804 | 10 | 1924 | 2 | 20 | 19 | 1882 |
-| 6 | [Amy Maria Swetland](https://www.geni.com/people/x/6000000014645311678) | 1893 | 18 | 1983 | 1 | 18 | 18 | 1928 |
-| 7 | [Nils Edvart](https://www.geni.com/people/x/6000000030877400578) | 1864 | 4 | 2044 | 2 | 20 | 18 | 1939 |
-| 8 | [Sedsel Sørensdatter Bredholt](https://www.geni.com/people/x/6000000030877883865) | 1855 | 4 | 2035 | 2 | 20 | 18 | 1939 |
-| 9 | [Hans Hansen](https://www.geni.com/people/x/6000000020070753150) | 1852 | 9 | 1972 | 2 | 19 | 18 | 1922 |
-| 10 | [Signe Kolbeinsdatter Salmelid](https://www.geni.com/people/x/6000000001770002664) | 1851 | 9 | 1971 | 2 | 19 | 18 | 1922 |
-| 11 | [Augusta Andersdotter](https://www.geni.com/people/x/6000000162914633845) | 1847 | 8 | 1967 | 2 | 19 | 18 | 1919 |
-| 12 | [Mikkel Andreas Pedersen](https://www.geni.com/people/x/6000000008718054034) | 1846 | 8 | 1966 | 2 | 20 | 18 | 1919 |
-| 13 | [Anna Maria Danielsdatter Bore](https://www.geni.com/people/x/6000000003492033839) | 1845 | 5 | 1995 | 2 | 20 | 18 | 1910 |
-| 14 | [Anne Kristine Mikkelsdatter Lien](https://www.geni.com/people/x/6000000010869716821) | 1844 | 8 | 1964 | 2 | 20 | 18 | 1919 |
-| 15 | [Ommund Øysteinson Reve](https://www.geni.com/people/x/6000000011487137701) | 1844 | 5 | 1994 | 2 | 20 | 18 | 1910 |
-| 16 | [Anna Maria Andersdatter Gimra](https://www.geni.com/people/x/6000000013430886181) | 1844 | 10 | 1964 | 2 | 20 | 18 | 1923 |
-| 17 | [Carl Fredrik Oä Carlsson](https://www.geni.com/people/x/6000000162913885932) | 1842 | 8 | 1962 | 2 | 19 | 18 | 1919 |
-| 18 | [Kristian Andersson](https://www.geni.com/people/x/6000000013430951746) | 1836 | 10 | 1956 | 2 | 20 | 18 | 1923 |
-| 19 | [Brita Maja Larsdotter](https://www.geni.com/people/x/6000000148053410836) | 1826 | 9 | 1946 | 2 | 19 | 18 | 1891 |
-| 20 | [Jens Andersen](https://www.geni.com/people/x/6000000198753984875) | 1825 | 5 | 1975 | 2 | 20 | 18 | 1908 |
-| 21 | [Charlotte Eliza Warren](https://www.geni.com/people/x/6000000001510466276) | 1822 | 10 | 1942 | 3 | 20 | 18 | 1886 |
-| 22 | [Gjertru Olsdatter Lyse](https://www.geni.com/people/x/6000000003094977819) | 1822 | 7 | 1942 | 2 | 19 | 18 | 1910 |
-| 23 | [Lars Johan OLsson](https://www.geni.com/people/x/6000000095704622861) | 1822 | 9 | 1942 | 2 | 19 | 18 | 1891 |
-| 24 | [Per Person Nerabø](https://www.geni.com/people/x/6000000003094977793) | 1819 | 7 | 1939 | 2 | 19 | 18 | 1910 |
-| 25 | [William Davenport Justus](https://www.geni.com/people/x/6000000078146778345) | 1819 | 18 | 1909 | 1 | 18 | 18 | 1870 |
-| 26 | [Sally Wright](https://www.geni.com/people/x/6000000015738199379) | 1817 | 6 | 1967 | 2 | 19 | 18 | 1886 |
-| 27 | [George Washington Race](https://www.geni.com/people/x/6000000001510504813) | 1812 | 10 | 1932 | 3 | 20 | 18 | 1886 |
-| 28 | [Ådne (Ånon) Knutsen Vatland](https://www.geni.com/people/x/6000000014063232909) | 1791 | 8 | 1911 | 2 | 20 | 18 | 1891 |
-| 29 | [Kerstin Persdotter](https://www.geni.com/people/x/6000000077370361123) | 1780 | 1 | 2140 | 3 | 20 | 18 | 1907 |
-| 30 | [Gunhild Brynjulfsdtr](https://www.geni.com/people/x/6000000012973258551) | 1755 | 3 | 1995 | 3 | 20 | 18 | 1854 |
+| 2 | [Johan Oldrik Iverson Enersen](https://www.geni.com/people/x/6000000005606851912) | 1845 | 20 | 1935 | 1 | 20 | 20 | 1905 |
+| 3 | [Loren Wright](https://www.geni.com/people/x/6000000002053748047) | 1809 | 10 | 1929 | 2 | 20 | 19 | 1896 |
+| 4 | [Benajah Mallery Brown](https://www.geni.com/people/x/6000000109283382483) | 1804 | 10 | 1924 | 2 | 20 | 19 | 1882 |
+| 5 | [Amy Maria Swetland](https://www.geni.com/people/x/6000000014645311678) | 1893 | 18 | 1983 | 1 | 18 | 18 | 1928 |
+| 6 | [Nils Edvart](https://www.geni.com/people/x/6000000030877400578) | 1864 | 4 | 2044 | 2 | 20 | 18 | 1939 |
+| 7 | [Hans Hansen](https://www.geni.com/people/x/6000000020070753150) | 1852 | 9 | 1972 | 2 | 19 | 18 | 1922 |
+| 8 | [Augusta Andersdotter](https://www.geni.com/people/x/6000000162914633845) | 1847 | 8 | 1967 | 2 | 19 | 18 | 1919 |
+| 9 | [Mikkel Andreas Pedersen](https://www.geni.com/people/x/6000000008718054034) | 1846 | 8 | 1966 | 2 | 20 | 18 | 1919 |
+| 10 | [Anna Maria Danielsdatter Bore](https://www.geni.com/people/x/6000000003492033839) | 1845 | 5 | 1995 | 2 | 20 | 18 | 1910 |
+| 11 | [Anna Maria Andersdatter Gimra](https://www.geni.com/people/x/6000000013430886181) | 1844 | 10 | 1964 | 2 | 20 | 18 | 1923 |
+| 12 | [Brita Maja Larsdotter](https://www.geni.com/people/x/6000000148053410836) | 1826 | 9 | 1946 | 2 | 19 | 18 | 1891 |
+| 13 | [Jens Andersen](https://www.geni.com/people/x/6000000198753984875) | 1825 | 5 | 1975 | 2 | 20 | 18 | 1908 |
+| 14 | [Charlotte Eliza Warren](https://www.geni.com/people/x/6000000001510466276) | 1822 | 10 | 1942 | 3 | 20 | 18 | 1886 |
+| 15 | [Gjertru Olsdatter Lyse](https://www.geni.com/people/x/6000000003094977819) | 1822 | 7 | 1942 | 2 | 19 | 18 | 1910 |
+| 16 | [William Davenport Justus](https://www.geni.com/people/x/6000000078146778345) | 1819 | 18 | 1909 | 1 | 18 | 18 | 1870 |
+| 17 | [Sally Wright](https://www.geni.com/people/x/6000000015738199379) | 1817 | 6 | 1967 | 2 | 19 | 18 | 1886 |
+| 18 | [Ådne (Ånon) Knutsen Vatland](https://www.geni.com/people/x/6000000014063232909) | 1791 | 8 | 1911 | 2 | 20 | 18 | 1891 |
+| 19 | [Kerstin Persdotter](https://www.geni.com/people/x/6000000077370361123) | 1780 | 1 | 2140 | 3 | 20 | 18 | 1907 |
+| 20 | [Gunhild Brynjulfsdtr](https://www.geni.com/people/x/6000000012973258551) | 1755 | 3 | 1995 | 3 | 20 | 18 | 1854 |
+| 21 | [Juan Miguel De Acevedo Peñalosa y Breton Ortiz](https://www.geni.com/people/x/6000000004068642403) | 1742 | 3 | 1982 | 2 | 20 | 18 | 1809 |
+| 22 | [Anna Augusta von Braunschweig-Wolfenbüttel](https://www.geni.com/people/x/6000000006727757638) | 1612 | 2 | 1972 | 2 | 20 | 18 | 1689 |
+| 23 | [Elizabeth of Brunswick-Luneburg Braunschweig-Lüneburg , Welf](https://www.geni.com/people/x/311701678080003943) | 1593 | 1 | 1953 | 2 | 19 | 18 | 1663 |
+| 24 | [Gunnar Torp](https://www.geni.com/people/x/6000000020020410201) | 1896 | 17 | 1986 | 1 | 17 | 17 | 1936 |
+| 25 | [Sian Ewe KHOO 邱](https://www.geni.com/people/x/6000000002176751452) | 1886 | 13 | 1976 | 2 | 18 | 17 | 1918 |
+| 26 | [Sarah Ethel Valentine](https://www.geni.com/people/x/6000000005966005412) | 1880 | 9 | 2000 | 2 | 18 | 17 | 1942 |
+| 27 | [Andrea Flaskerud](https://www.geni.com/people/x/6000000007204062249) | 1863 | 8 | 1983 | 3 | 20 | 17 | 1922 |
+| 28 | [R. Alibasjah or Aom Bradja or R. Rangga Wirahadinagara (Wedana Cicurug Sukabumi) - Makam; Singaparna - Tasikmalaya R. Rangga Wirahadinagara or Aom Bradja](https://www.geni.com/people/x/6000000023729478322) | 1860 | 17 | 1950 | 1 | 17 | 17 | 1880 |
+| 29 | [Anne Rasmine Tygesine Jakobsdatter Berge](https://www.geni.com/people/x/6000000064382636026) | 1859 | 6 | 2009 | 2 | 19 | 17 | 1918 |
+| 30 | [Penelope Outlaw](https://www.geni.com/people/x/6000000124504440959) | 1854 | 17 | 1944 | 1 | 17 | 17 | 1897 |
 
 Undated people are **not** screened out of the bands below — we do not know when they lived, and rejecting them would be inferring a date from silence. They simply cannot appear in this section.
 

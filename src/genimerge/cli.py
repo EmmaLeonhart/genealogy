@@ -737,6 +737,9 @@ def _cmd_descendants(args: argparse.Namespace) -> int:
         ),
         key=lambda line: (-line.open_paths, -(line.birth or 0), int(line.geni_id)),
     )
+    # One seed per couple: both parents of the same children give the identical
+    # ball, and the ranking rewards a large family so both score alike.
+    reachable = descendants_mod.drop_duplicate_balls(reachable)
     reach_list = ws.out / f"reach-{args.target_year}-seeds.txt"
     _write(
         reach_list,
@@ -754,7 +757,17 @@ def _cmd_descendants(args: argparse.Namespace) -> int:
         f"{args.target_year}; everything else cannot arrive whatever else is "
         f"true of it"
     )
-    print(f"wrote {reach_list}: the best {min(200, len(reachable))} of them, latest-born first")
+    page = ws.out / f"reach-{args.target_year}-seeds.html"
+    _write(page, descendants_mod.render_html(reachable, args.target_year, len(tree.people)))
+    print(f"wrote {reach_list}: the best {min(200, len(reachable))} of them")
+    print(f"wrote {page}: sortable and filterable, to look over and pick by eye")
+    # Which century the campaign seeds actually live in, rather than an argument
+    # about which one they ought to.
+    from collections import Counter as _Counter
+    by_century = _Counter((line.birth // 100) * 100 for line in reachable)
+    for century in sorted(by_century):
+        share = by_century[century] / len(reachable)
+        print(f"  born {century}s: {by_century[century]:>5} ({share:.0%})")
     print(
         f"wrote {seed_list}: "
         f"{sum(len(band.picks) for band in by_birth)} picks across "

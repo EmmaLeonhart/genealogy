@@ -239,6 +239,28 @@ export must be seeded after about 1750. `genimerge.descendants.REACH_GENERATIONS
 and `REACH_TARGET` encode the screen, and `reports/descendants.md` leads with
 § *Seeds that can reach 1900*. Everything else in that report is background.
 
+**The campaign's seeds are 1800s people, measured not argued.** Of the 7591
+candidates a ball can get to 1900 from: 1500s 605 (8%), 1600s 1426 (19%), 1700s
+1777 (23%), **1800s 2980 (39%)**, 1900s 803 (11%). Two independent reasons put
+the answer there rather than later — a seed born 1850 needs two or three
+generations to pass 1900 and has them to spare, and **Geni redacts living
+people**, so a 1900s seed's descendants largely cannot be exported at all. The
+1800s are the last cohort whose full descent is retrievable, not a compromise.
+
+**One seed per couple — `drop_duplicate_balls`.** Two parents of the same
+children have the same descendants, so a `Descendants` export from either
+returns the identical ball. This is not an edge case: the ranking rewards a
+large recorded family and both parents of one score alike, so **a quarter of the
+shortlist was the same export listed twice** (10071 → 7591). Ranks 1 and 2 were
+Margaret Outlaw and Samuel D. Outlaw, a married couple with the same 20
+children, offered as two suggestions.
+
+**`out/reach-1900-seeds.html` is the thing to actually use** — 600 candidates,
+filter by decade, sort by any column, pick by eye. Emma asked to "arbitrarily
+look over" them and that is the right instinct given the ordering is untested;
+the page says so on itself. Read `line reaches` against `ball reaches`: the gap
+is roughly what an export would add.
+
 **Two seed-choosing methods have been refuted by measurement. Do not propose a
 third on reasoning alone.** `reports/descendants-backtest-2026-08-07.md` is the
 record, and it exists because `out/merged-134.ged` was kept before the batch was

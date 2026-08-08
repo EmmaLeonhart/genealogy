@@ -230,7 +230,7 @@ def _line(geni_id: str, **kw) -> descendants.Line:
     """A Line with every ranked field pinned, so a test can vary exactly one."""
     fields = dict(
         geni_id=geni_id, name="X", birth=1500, generation=0,
-        paths=2, children=2, depth=1,
+        paths=2, children=2, child_ids=(), depth=1,
         reach=1500, open_paths=2,
     )
     fields.update(kw)
@@ -361,6 +361,39 @@ def test_a_late_birth_beats_width():
     """Twenty children born in 1858 still arrive; the same family in 1670 does not."""
     assert _line("3", birth=1858, children=20).can_reach(1900) is True
     assert _line("4", birth=1670, children=20).can_reach(1900) is False
+
+
+def test_a_married_couple_is_one_export_not_two():
+    """Ranks 1 and 2 of the campaign list were a couple with the same 20 children.
+
+    Both parents descend to the identical set, so a `Descendants` export from
+    either returns the same ball. Not an edge case at the top of this ranking —
+    it rewards a large recorded family, and both parents of one score alike.
+    """
+    husband = _line("1", birth=1858, child_ids=("10", "11", "12"))
+    wife = _line("2", birth=1855, child_ids=("10", "11", "12"))
+    other = _line("3", birth=1860, child_ids=("20",))
+    kept = descendants.drop_duplicate_balls([husband, wife, other])
+    assert [line.geni_id for line in kept] == ["1", "3"]
+
+
+def test_childless_candidates_are_never_merged_together():
+    """An empty child set is not evidence of anything shared."""
+    a = _line("4", child_ids=())
+    b = _line("5", child_ids=())
+    assert len(descendants.drop_duplicate_balls([a, b])) == 2
+
+
+def test_the_browsable_page_is_self_contained():
+    """`out/` is scratch opened straight off disk — no network at all."""
+    page = descendants.render_html(
+        [_line("1", birth=1858, children=6), _line("2", birth=1902, children=3)],
+        target=1900, tree_size=275437,
+    )
+    assert "https://www.geni.com/people/x/1" in page  # profile links are fine
+    for remote in ("<script src", "<link rel=stylesheet", "@import", "fonts.googleapis"):
+        assert remote not in page
+    assert "1850s" in page and "1900s" in page  # decade filters exist
 
 
 def test_an_undated_person_is_kept_rather_than_screened_out():

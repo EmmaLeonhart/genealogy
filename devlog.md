@@ -4227,3 +4227,26 @@ reaching 1935–2044, and lines that currently stop between 1882 and 1939 —
 **It is labelled untested, in those words.** Two methods have died on
 measurement here in one day; this one is a constraint plus an unvalidated
 ranking. `queue.md` holds the specific falsifiable test.
+
+**Later the same day — the 1800s answer, and a quarter of the list was duplicates.**
+Emma asked whether it should be 1800s people rather than 1900s, and to "kinda
+arbitrarily look over" the candidates instead of trusting a ranking. Both were
+right and the second exposed a defect.
+
+Measured: of the 7591 seeds a ball can reach 1900 from, **1800s hold 39%** —
+1500s 8%, 1600s 19%, 1700s 23%, 1900s 11%. Two reasons converge there: a seed
+born 1850 needs two or three generations to pass 1900 and has them spare, and
+**Geni redacts living people**, so a 1900s seed's descendants cannot be exported
+at all. The 1800s are the last fully retrievable cohort.
+
+**`drop_duplicate_balls`**: ranks 1 and 2 were Margaret Outlaw (b. 1858, 20
+children) and Samuel D. Outlaw (b. 1855, 20 children) — a married couple with
+the same children, so an export from either returns the identical ball. The
+ranking rewards a large family and both parents of one score alike, so this was
+systematic rather than a fluke: **10071 → 7591 candidates, a quarter of the list
+was one export written twice.**
+
+**`out/reach-1900-seeds.html`**: 600 candidates, filter by decade, sort by any
+column, every name linking to Geni, self-contained. Built because "look over and
+pick by eye" is the correct response to an ordering that has been wrong twice,
+and the page says exactly that on itself.
