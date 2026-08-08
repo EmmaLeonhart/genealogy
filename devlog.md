@@ -4168,3 +4168,62 @@ the two diverge in the tail, where this report does not look. So Emma's argument
 for descent paths stands on being the right question rather than on changing the
 answer — what it changed was the implementation, which lost a cap, a flag and a
 walk.
+
+
+## 2026-08-07 (branch `geni-descendants`) — the batch, and two methods refuted by it
+
+Emma imported eleven `Descendants` exports explicitly aimed at reaching later
+generations. Ingested (134 → 145 GEDCOMs), merged (**257,219 → 275,437 people**,
++18,218), and — because `out/merged.ged` was copied to `out/merged-134.ged`
+first — measurable. That copy is the whole reason any of the below is knowable;
+**do it every time a batch lands.**
+
+**The campaign goal was not served.** Median birth year of a new person: **1582**.
+Born after 1900: **four**. The 1500s gained 3,369, the 1600s 3,045, the 1700s
+1,967, the 1800s 101, the 1900s 4. **No person born 1800 or later gained a
+child, of 14,371.**
+
+**The cause is mechanical.** A `Descendants` ball is breadth-first with a ~4,076
+budget, so it spends everything on the generations nearest the seed. Every seed
+in the batch was ancient or undated — `Soeiro` born 680, the rest medieval
+placeholders — and twelve generations from 1300 lands in the 1660s, which is
+exactly where the new people are. Full numbers in
+`reports/descendants-backtest-2026-08-07.md`.
+
+**Method 1, "small but nonzero descent" — refuted.** All ten seeds that already
+existed had **exactly one recorded child** and descent-path counts from 371 to
+**1.5 billion**, every one outside the 1–20 candidate band. The report this repo
+had been building all day would not have proposed a single one of them.
+
+**Method 2, "the rim of a cut-off ball" — proposed and refuted the same hour.**
+Childless people inside an export that came back at the size bound gained
+children at **0.71%**, below the 1.00% base rate and below the 1.05% of people
+on no rim. It anti-predicts. Worth recording that it was going to be presented
+as an improvement on the strength of its reasoning; the measurement is the only
+reason it was not.
+
+**What replaced them is a constraint, not a cleverer ranking.** Seed where you
+want to arrive. `REACH_GENERATIONS`, `REACH_TARGET` and `Line.can_reach` encode
+it and `reports/descendants.md` now opens with § *Seeds that can reach 1900*.
+
+**The screen went through three versions in an hour, each fixed by reading real
+output rather than by thinking harder:**
+
+1. *Flat twelve generations, ranked by open ends.* Passed a person born 1670
+   with nineteen recorded children — whose ball actually lands about 1755.
+2. *Ranked by birth year instead.* Overshot: the top became people born
+   1965–1973 whose lines already reach 1996–2004, with nothing left to add.
+3. *Width-aware.* A ball costs `branching ** k` to reach generation *k*, so the
+   budget buys `log(4076)/log(branching)` of them — **12 at two children per
+   couple, 8 at three, 3 at twenty.** `Line.generations_affordable` and
+   `Line.arrives` compute it and `ball reaches ~` is a column, so the trade
+   between payoff and reach is visible instead of assumed.
+
+Candidates 14,193 → **10,071** under the width-aware screen. The head of the
+list is now named 19th-century people with 4–20 recorded children, balls
+reaching 1935–2044, and lines that currently stop between 1882 and 1939 —
+`out/reach-1900-seeds.txt` is the paste-from file.
+
+**It is labelled untested, in those words.** Two methods have died on
+measurement here in one day; this one is a constraint plus an unvalidated
+ranking. `queue.md` holds the specific falsifiable test.

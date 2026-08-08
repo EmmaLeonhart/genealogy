@@ -77,6 +77,7 @@ from __future__ import annotations
 from collections import Counter
 from dataclasses import dataclass
 from datetime import date
+from math import log
 
 from .frontier import _child_map, _parent_map, _post_order, ancestor_depth
 from .seeds import GENI_EXPORT_CAP
@@ -328,6 +329,9 @@ class Line:
     #: lines of descent running down from them — see :func:`descent_paths`.
     #: Not distinct people: somebody reached down two lines counts twice.
     paths: int
+    #: children we hold. The branching estimate :meth:`generations_affordable`
+    #: needs, and a lower bound on the real figure.
+    children: int
     #: longest chain of generations below them
     depth: int
     #: latest birth year recorded at or below them
@@ -377,6 +381,36 @@ class Line:
         """
         return 0 < self.paths <= small
 
+    def generations_affordable(self, budget: int = GENI_EXPORT_CAP) -> int:
+        """How many generations a ball seeded here can carry, given how wide
+        this person's recorded descent already is.
+
+        A breadth-first ball fills generation *k* before starting *k+1*, so a
+        descent branching `b` times per couple costs ``b ** k`` to reach
+        generation *k* and the budget buys ``log(budget) / log(b)`` of them.
+        :data:`REACH_GENERATIONS` is that figure at ``b = 2``; it is a ceiling,
+        not a constant, and **width is what moves it**.
+
+        Ignoring width got the report wrong in both directions on 2026-08-07: a
+        person born 1670 with nineteen recorded children passed a flat
+        twelve-generation screen, when nineteen-fold branching spends the whole
+        budget in under three generations and lands in 1755. Their recorded
+        child count is the only branching estimate available and it is a lower
+        bound — Geni may know more children than we do — so this errs towards
+        saying a seed reaches *further* than it will.
+        """
+        # Rounded, not truncated: at ``b = 2`` the quotient is 11.99, and
+        # truncating gave 11 where :data:`REACH_GENERATIONS` says 12. The two
+        # are the same formula and must not disagree by a rounding mode.
+        branching = max(2, self.children)
+        return max(1, round(log(budget) / log(branching)))
+
+    def arrives(self, budget: int = GENI_EXPORT_CAP, years: int = GENERATION_YEARS) -> int | None:
+        """The year a ball seeded here plausibly reaches. ``None`` if undated."""
+        if self.birth is None:
+            return None
+        return self.birth + self.generations_affordable(budget) * years
+
     def can_reach(
         self,
         target: int,
@@ -385,11 +419,9 @@ class Line:
     ) -> bool:
         """Whether a `Descendants` ball seeded here could arrive at `target`.
 
-        The screen the 2026-08-07 backtest says comes first: a ball carries
-        about `generations` generations, so it reaches roughly
-        ``birth + generations * years`` and no further, whatever else is true of
-        the seed. A person born too early to arrive is not a bad seed for the
-        campaign, they are an impossible one.
+        The screen the 2026-08-07 backtest says comes first: a person born too
+        early to arrive is not a bad seed for the campaign, they are an
+        impossible one. Width-aware — see :meth:`generations_affordable`.
 
         An undated person cannot be screened and is **kept**, not dropped. We do
         not know when they lived, and rejecting them would be inferring a date
@@ -398,7 +430,8 @@ class Line:
         """
         if self.birth is None:
             return True
-        return self.birth + generations * years >= target
+        reachable = min(generations, self.generations_affordable())
+        return self.birth + reachable * years >= target
 
     @property
     def has_usable_name(self) -> bool:
@@ -434,6 +467,7 @@ def build_lines(tree: Tree, ceiling: int = PATH_CEILING) -> dict[str, Line]:
             birth=person.birth_year,
             generation=generation.get(geni_id, 0),
             paths=paths.get(geni_id, 0),
+            children=len([c for c in person.child_ids if c in tree.people]),
             depth=depth.get(geni_id, 0),
             reach=reach.get(geni_id),
             open_paths=open_below if _has_child(tree, geni_id) else 1,
@@ -846,9 +880,12 @@ def render_markdown(
         "",
         f"## Seeds that can reach {target}",
         "",
-        f"Candidates born late enough that {REACH_GENERATIONS} generations "
-        f"reaches {target} — that is, born {target - REACH_GENERATIONS * GENERATION_YEARS} "
-        "or later. This is a **reachability screen, not a promise**: it rules "
+        f"Candidates whose ball can arrive at {target}. The screen is "
+        "**width-aware**: the generations a ball carries is "
+        "``log(budget) / log(branching)``, so the earliest a *narrow* seed can "
+        f"be born and still arrive is {target - REACH_GENERATIONS * GENERATION_YEARS}, "
+        "and a wide one has to be much later. This is a **reachability screen, "
+        "not a promise**: it rules "
         "out seeds that cannot arrive rather than claiming the rest will. A wide "
         "descent exhausts the budget sooner than a narrow one, so the later-born "
         "a seed is, the more certain the arrival.",
@@ -867,20 +904,45 @@ def render_markdown(
         if line.birth is not None and line.can_reach(target)
     ]
     if reachable:
+        # Most open ends first, among seeds the width-aware screen says arrive.
+        # Both simpler orderings were tried against the real tree and both
+        # failed: by open ends alone put people born 1670 with nineteen children
+        # at the top, whose ball actually lands in 1755; by birth year alone put
+        # people born in the 1960s at the top, whose lines already reach 1996 and
+        # who have nothing left to add. The screen removes the first, and
+        # `reach` removes nothing — it is a column, because a line already past
+        # the target is still worth an export for the generations after it.
+        reachable = sorted(
+            reachable,
+            key=lambda line: (-line.open_paths, -(line.birth or 0), int(line.geni_id)),
+        )
         out += [
-            f"{len(reachable):,} candidates qualify. The best {min(per_band * 6, len(reachable))} "
-            "by the same ranking the bands use — fewest generations followed, "
-            "then most open ends:",
+            f"{len(reachable):,} candidates qualify, most **open ends** first — "
+            "the seeds with the most places a walk could carry on from.",
+            "",
+            "**`ball reaches ~` is width-aware and is what makes the screen "
+            f"work.** The {REACH_GENERATIONS}-generation figure is the "
+            "*narrowest* case, a descent branching twice per couple; one "
+            "branching twenty times spends the same budget in three generations "
+            "and travels 90 years instead of 360. So a person born in 1670 with "
+            "nineteen recorded children does **not** qualify, and one born in "
+            "1858 with twenty does. A recorded child count is the only branching "
+            "estimate available and it is a lower bound — Geni may know more "
+            "children than we do — so this errs towards saying a seed reaches "
+            "further than it will.",
             "",
         ]
         out += _table(
-            ["#", "export from", "born", "generations followed", "descent paths",
-             "open paths", "line reaches"],
+            ["#", "export from", "born", "children", "ball reaches ~",
+             "generations followed", "descent paths", "open paths",
+             "line reaches"],
             [
                 [
                     str(i),
                     _link(line.geni_id, line.name),
                     _year(line.birth),
+                    str(line.children),
+                    _year(line.arrives()),
                     str(line.depth),
                     str(line.paths),
                     str(line.open_paths),

@@ -722,13 +722,30 @@ def _cmd_descendants(args: argparse.Namespace) -> int:
     seed_list = ws.out / "stalled-line-seeds.txt"
     _write(seed_list, descendants_mod.render_seed_list(by_birth))
 
-    reachable = [
-        line for line in descendants_mod.candidates(
-            lines, present=present, small=args.small,
-            min_stall=args.min_stall, parents=parents,
-        )
-        if line.birth is not None and line.can_reach(args.target_year)
-    ]
+    # The campaign list is the one to paste from, so it gets its own file rather
+    # than being mixed into the survey. Latest-born first: a ball only carries
+    # about twelve generations, so a seed born before ~1750 cannot deliver
+    # anybody modern whatever else is true of it.
+    reachable = sorted(
+        (
+            line for line in descendants_mod.candidates(
+                lines, present=present, small=args.small,
+                min_stall=args.min_stall, parents=parents,
+            )
+            if line.birth is not None and line.can_reach(args.target_year)
+        ),
+        key=lambda line: (-(line.birth or 0), -line.open_paths, int(line.geni_id)),
+    )
+    reach_list = ws.out / f"reach-{args.target_year}-seeds.txt"
+    _write(
+        reach_list,
+        "".join(
+            f"{descendants_mod.profile_url(line.geni_id)} | Geni - "
+            f"{line.name or 'NN'} (b. {line.birth}, {line.open_paths} open)\n"
+            for line in reachable[:200]
+        ),
+    )
+
     total = sum(band.total_candidates for band in by_birth)
     print(f"wrote {output}")
     print(
@@ -736,6 +753,7 @@ def _cmd_descendants(args: argparse.Namespace) -> int:
         f"{args.target_year}; everything else cannot arrive whatever else is "
         f"true of it"
     )
+    print(f"wrote {reach_list}: the best {min(200, len(reachable))} of them, latest-born first")
     print(
         f"wrote {seed_list}: "
         f"{sum(len(band.picks) for band in by_birth)} picks across "

@@ -230,7 +230,7 @@ def _line(geni_id: str, **kw) -> descendants.Line:
     """A Line with every ranked field pinned, so a test can vary exactly one."""
     fields = dict(
         geni_id=geni_id, name="X", birth=1500, generation=0,
-        paths=2, depth=1,
+        paths=2, children=2, depth=1,
         reach=1500, open_paths=2,
     )
     fields.update(kw)
@@ -338,6 +338,29 @@ def test_the_screen_is_exactly_generations_times_years():
     edge = descendants.REACH_TARGET - descendants.REACH_GENERATIONS * descendants.GENERATION_YEARS
     assert _line("3", birth=edge).can_reach(descendants.REACH_TARGET) is True
     assert _line("4", birth=edge - 1).can_reach(descendants.REACH_TARGET) is False
+
+
+def test_a_wide_descent_reaches_less_far_than_a_narrow_one():
+    """Width is what the flat twelve-generation screen was missing.
+
+    A breadth-first ball costs ``branching ** k`` to reach generation k, so
+    twenty children spend the whole budget in three generations where two
+    children buy twelve. Ignoring this passed a person born 1670 with nineteen
+    recorded children as able to reach 1900, when they land around 1755.
+    """
+    narrow = _line("1", birth=1670, children=2)
+    wide = _line("2", birth=1670, children=19)
+    assert narrow.generations_affordable() == descendants.REACH_GENERATIONS
+    assert wide.generations_affordable() < 4
+    assert narrow.can_reach(1900) is True
+    assert wide.can_reach(1900) is False
+    assert wide.arrives() < 1800
+
+
+def test_a_late_birth_beats_width():
+    """Twenty children born in 1858 still arrive; the same family in 1670 does not."""
+    assert _line("3", birth=1858, children=20).can_reach(1900) is True
+    assert _line("4", birth=1670, children=20).can_reach(1900) is False
 
 
 def test_an_undated_person_is_kept_rather_than_screened_out():
