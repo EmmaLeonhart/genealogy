@@ -222,6 +222,40 @@ serving this goal, and do not describe her `Descendants` takes as thin-region
 work. `Descendants` fans out downward, which is what makes it the instrument for
 reaching later generations.
 
+**A `Descendants` export reaches about twelve generations forward, and that
+outranks every seed heuristic — measured 2026-08-07.** The export is a
+breadth-first ball of ~4076 people, so it fills the generations *nearest* the
+seed; a descent branching twice per couple hits 4096 at generation 12 unaided.
+So a ball carries roughly **350 years** and no choice of seed changes it.
+
+Emma's batch of **eleven** `Descendants` exports, all seeded on ancient or
+undated people, added **18,218 people** — median birth year **1582** — and
+**four** born after 1900. The 1500s gained 3,369, the 1600s 3,045, the 1800s
+101, the 1900s 4. **No person born 1800 or later gained a child, of 14,371.**
+The campaign is about reaching modern times and this did not move it.
+
+**So: seed where you want to arrive.** To deliver people born after 1900 an
+export must be seeded after about 1750. `genimerge.descendants.REACH_GENERATIONS`
+and `REACH_TARGET` encode the screen, and `reports/descendants.md` leads with
+§ *Seeds that can reach 1900*. Everything else in that report is background.
+
+**Two seed-choosing methods have been refuted by measurement. Do not propose a
+third on reasoning alone.** `reports/descendants-backtest-2026-08-07.md` is the
+record, and it exists because `out/merged-134.ged` was kept before the batch was
+merged — **keep the pre-batch tree whenever a batch lands**, it is the only way
+this question is answerable.
+
+- *"Small but nonzero descent"* — refuted. All ten seeds that already existed had
+  **exactly one recorded child** and descent-path counts from 371 to **1.5
+  billion**, every one outside the 1–20 candidate band. The report would not
+  have proposed any of them.
+- *"The rim of a cut-off ball"* — proposed and refuted the same day. Childless
+  people inside an export that came back at the size bound gained children at
+  **0.71%**, *below* the 1.00% base rate and below the 1.05% of people on no rim.
+  It anti-predicts. The test is indirect, so it refutes the premise rather than
+  the tactic — but the method was going to be presented as an improvement on
+  reasoning alone, and that is exactly what is no longer allowed here.
+
 **`reports/descendants.md` is the report built for that campaign** — added
 2026-08-07 on the `geni-descendants` branch. `genimerge.descendants` ranks the
 **downward** edge the way `frontier` ranks the upward one, and buckets it by

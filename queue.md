@@ -15,26 +15,25 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ## Active
 
-0.00A **Validate `reports/descendants.md` against an outcome.** The report is
-built and running (branch `geni-descendants`, devlog 2026-08-07), but like
-`seeds.md` before it, **it has never been checked against what an export
-actually did**. `density.md` earned its place in `CLAUDE.md` by being measured
-from real exports; this one is so far only reasoned.
+0.00A **Take one `Descendants` export seeded after 1750 and diff the tree.**
+The 2026-08-07 batch settled the previous version of this item and produced
+`reports/descendants-backtest-2026-08-07.md`: eleven exports, 18,218 new people,
+median birth 1582, **four** born after 1900. Two seed-choosing methods were
+refuted against it. What is left is the one claim that has not been tested —
+that seeding *after 1750* is what makes a ball arrive in modern times.
 
-The check: take a `Descendants` export seeded on a top pick from a **modern**
-band — the 1800–1899 and 1900–1999 rows are the campaign target — and measure
-what it added. The prediction the report is making is specific and falsifiable:
-a person with N recorded children and no recorded grandchildren has a real
-descent below them, so the export should return a ball reaching materially later
-than the seed's own `line reaches` value. If it comes back with the same people
-plus nothing, the "small but nonzero" premise is wrong for modern profiles and
-the module needs to say so.
+The prediction is specific: an export seeded on a candidate from
+`reports/descendants.md` § *Seeds that can reach 1900* should return people born
+after 1900 in numbers, where the eleven ancient seeds returned four between them.
+If it does not, the twelve-generation reach model is wrong and the campaign needs
+a different instrument than `Descendants` entirely.
 
-**BLOCKED-ON-USER-ACTION** — taking a Geni export is Emma's to do; nothing in
-this repo can run one. Unblock signal: a new `export-Descendants-*.ged` landing
-under `exports/` seeded on one of the report's picks. Re-run
-`python -m genimerge merge` then `python -m genimerge descendants` and compare
-the seed's row before and after.
+**Keep `out/merged.ged` as `out/merged-<n>.ged` before merging the next batch.**
+That is the only reason this batch could be measured at all.
+
+**BLOCKED-ON-USER-ACTION** — taking a Geni export is Emma's to do. Unblock
+signal: a new `export-Descendants-*.ged` under `exports/` seeded on a post-1750
+profile.
 
 0.000 The "FIRST ITEM" is finished — all 19 path files re-checked against the
 98-export merge, `reports/paths.md` rewritten, devlog entry dated 2026-08-06.

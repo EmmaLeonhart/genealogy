@@ -317,6 +317,72 @@ def test_min_stall_drops_lines_already_followed_close_to_now():
     assert descendants.candidates(lines, present=2026, min_stall=500)
 
 
+# ---------------------------------------------------------------- reachability
+
+
+def test_a_seed_born_too_early_cannot_reach_the_target():
+    """The constraint the 2026-08-07 backtest established, and it comes first.
+
+    A ball carries about twelve generations. Eleven exports seeded on medieval
+    people added 18,218 people and four of them were born after 1900 — so a
+    ranking that sorts among unreachable seeds is sorting the wrong set.
+    """
+    medieval = _line("1", birth=1300)
+    georgian = _line("2", birth=1800)
+    assert medieval.can_reach(1900) is False
+    assert georgian.can_reach(1900) is True
+
+
+def test_the_screen_is_exactly_generations_times_years():
+    """Stated as arithmetic in the docstring, so pinned as arithmetic."""
+    edge = descendants.REACH_TARGET - descendants.REACH_GENERATIONS * descendants.GENERATION_YEARS
+    assert _line("3", birth=edge).can_reach(descendants.REACH_TARGET) is True
+    assert _line("4", birth=edge - 1).can_reach(descendants.REACH_TARGET) is False
+
+
+def test_an_undated_person_is_kept_rather_than_screened_out():
+    """Rejecting them would be inferring a date from silence.
+
+    They cannot appear in the campaign section — it is a birth-year screen — but
+    they must not be treated as born too early.
+    """
+    assert _line("5", birth=None).can_reach(1900) is True
+
+
+def test_the_report_leads_with_the_reachable_seeds():
+    tree = _tree(STALLED)
+    lines = descendants.build_lines(tree)
+    parents = descendants.parent_map(tree)
+    by_birth, by_generation = descendants.bands(lines, present=2026, parents=parents)
+    text = descendants.render_markdown(
+        tree, lines, by_birth, by_generation,
+        present=2026, small=20, width=100, min_stall=0,
+        target=1900, parents=parents,
+    )
+    assert "## Seeds that can reach 1900" in text
+    # Everyone in STALLED is born in the 1400s, so none of them can arrive.
+    assert "None: no candidate is born" in text
+    # And the section must come before the background it demotes.
+    assert text.index("Seeds that can reach") < text.index("## By period")
+
+
+def test_a_reachable_candidate_is_listed_with_its_own_target():
+    text_tree = STALLED.replace("2 DATE 1400", "2 DATE 1840").replace(
+        "2 DATE 1430", "2 DATE 1870").replace("2 DATE 1460", "2 DATE 1895"
+    ).replace("2 DATE 1465", "2 DATE 1899")
+    tree = _tree(text_tree)
+    lines = descendants.build_lines(tree)
+    parents = descendants.parent_map(tree)
+    by_birth, by_generation = descendants.bands(lines, present=2026, parents=parents)
+    text = descendants.render_markdown(
+        tree, lines, by_birth, by_generation,
+        present=2026, small=20, width=100, min_stall=0,
+        target=1900, parents=parents,
+    )
+    assert "None: no candidate is born" not in text
+    assert "candidates qualify" in text
+
+
 # ---------------------------------------------------------------- bands
 
 

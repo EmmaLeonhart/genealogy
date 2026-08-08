@@ -716,13 +716,26 @@ def _cmd_descendants(args: argparse.Namespace) -> int:
             tree, lines, by_birth, by_generation,
             present=present, small=args.small, width=args.band,
             min_stall=args.min_stall, per_band=args.per_band,
+            target=args.target_year, parents=parents,
         ),
     )
     seed_list = ws.out / "stalled-line-seeds.txt"
     _write(seed_list, descendants_mod.render_seed_list(by_birth))
 
+    reachable = [
+        line for line in descendants_mod.candidates(
+            lines, present=present, small=args.small,
+            min_stall=args.min_stall, parents=parents,
+        )
+        if line.birth is not None and line.can_reach(args.target_year)
+    ]
     total = sum(band.total_candidates for band in by_birth)
     print(f"wrote {output}")
+    print(
+        f"{len(reachable)} candidates are born late enough for a ball to reach "
+        f"{args.target_year}; everything else cannot arrive whatever else is "
+        f"true of it"
+    )
     print(
         f"wrote {seed_list}: "
         f"{sum(len(band.picks) for band in by_birth)} picks across "
@@ -1597,6 +1610,15 @@ def build_parser() -> argparse.ArgumentParser:
         type=int,
         default=0,
         help="drop lines already followed to within this many years of now (default: 0, off)",
+    )
+    p_desc.add_argument(
+        "--target-year",
+        type=int,
+        default=descendants_mod.REACH_TARGET,
+        help=(
+            "the year a seed must be able to reach to be listed as a campaign "
+            f"seed (default: {descendants_mod.REACH_TARGET})"
+        ),
     )
     p_desc.add_argument(
         "--present",

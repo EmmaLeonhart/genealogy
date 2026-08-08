@@ -79,6 +79,7 @@ from dataclasses import dataclass
 from datetime import date
 
 from .frontier import _child_map, _parent_map, _post_order, ancestor_depth
+from .seeds import GENI_EXPORT_CAP
 from .identity import profile_url
 from .model import Tree
 
@@ -101,6 +102,8 @@ __all__ = [
     "band_by_birth",
     "band_by_generation",
     "bands",
+    "REACH_TARGET",
+    "REACH_GENERATIONS",
     "render_markdown",
     "render_seed_list",
 ]
@@ -123,6 +126,35 @@ PATH_CEILING = 10**12
 #: enough people to rank within, narrow enough that "born in this band" is a
 #: real period rather than "the middle ages".
 BAND_YEARS = 100
+
+#: How many generations a `Descendants` export can carry, and how many years a
+#: generation is worth.
+#:
+#: **This is the constraint the 2026-08-07 backtest established, and it outranks
+#: every ranking heuristic in this module.** A `Descendants` export is a
+#: breadth-first ball with a budget of about
+#: :data:`genimerge.seeds.GENI_EXPORT_CAP` people. Breadth-first means it fills
+#: generation *k* before starting *k+1*, so the budget goes to the generations
+#: nearest the seed — and a descent branching twice per couple reaches 4096
+#: people at generation 12 unaided. So a ball carries roughly a dozen
+#: generations forward and no choice of seed changes that.
+#:
+#: Eleven exports seeded on ancient and undated people added 18218 people whose
+#: median birth year was 1582 and produced **four** born after 1900. Twelve
+#: generations from a seed in 1300 lands around 1660, which is exactly where
+#: they landed. See `reports/descendants-backtest-2026-08-07.md`.
+#:
+#: Both numbers are deliberately round. 30 years per generation is the ordinary
+#: demographic figure and the arithmetic is a reachability screen, not a
+#: prediction: it exists to rule out seeds that cannot arrive, not to promise
+#: that the ones left will.
+REACH_GENERATIONS = 12
+GENERATION_YEARS = 30
+
+#: The year the campaign is trying to arrive at. 1900 rather than "now" because
+#: Geni redacts living people, so the reachable frontier stops well short of the
+#: present whatever the budget allows.
+REACH_TARGET = 1900
 
 
 def present_year() -> int:
@@ -344,6 +376,29 @@ class Line:
         person — see :func:`descent_paths`.
         """
         return 0 < self.paths <= small
+
+    def can_reach(
+        self,
+        target: int,
+        generations: int = REACH_GENERATIONS,
+        years: int = GENERATION_YEARS,
+    ) -> bool:
+        """Whether a `Descendants` ball seeded here could arrive at `target`.
+
+        The screen the 2026-08-07 backtest says comes first: a ball carries
+        about `generations` generations, so it reaches roughly
+        ``birth + generations * years`` and no further, whatever else is true of
+        the seed. A person born too early to arrive is not a bad seed for the
+        campaign, they are an impossible one.
+
+        An undated person cannot be screened and is **kept**, not dropped. We do
+        not know when they lived, and rejecting them would be inferring a date
+        from silence — the thing this module refuses everywhere else. They are
+        marked in the report instead.
+        """
+        if self.birth is None:
+            return True
+        return self.birth + generations * years >= target
 
     @property
     def has_usable_name(self) -> bool:
@@ -734,6 +789,8 @@ def render_markdown(
     width: int,
     min_stall: int,
     per_band: int = 5,
+    target: int = REACH_TARGET,
+    parents: dict[str, list[str]] | None = None,
 ) -> str:
     total = len(tree.people)
     dated = sum(1 for line in lines.values() if line.birth is not None)
@@ -757,6 +814,16 @@ def render_markdown(
         "because the `Descendants` campaign is about time — the tree is biased "
         "towards ancient and medieval people and the goal is to reach the present.",
         "",
+        f"> **Read § Seeds that can reach {target} first, and treat the rest of "
+        "this report as background.** A `Descendants` export is a breadth-first "
+        f"ball of about {GENI_EXPORT_CAP:,} people, so it carries roughly "
+        f"{REACH_GENERATIONS} generations — about "
+        f"{REACH_GENERATIONS * GENERATION_YEARS} years — forward from its seed "
+        "and no further. Eleven exports seeded on ancient people added 18,218 "
+        "people in 2026-08-07 and **four** of them were born after 1900. "
+        "Choosing well among seeds that cannot arrive does not help; "
+        "`reports/descendants-backtest-2026-08-07.md` has the measurement.",
+        "",
         "**The signal is a descent-path count that is small but not zero.** "
         "Nonzero means the line demonstrably continues, so there is something "
         "below to follow. Small means we have barely followed it: a person with "
@@ -776,6 +843,64 @@ def render_markdown(
         "reaches, sorting a band by stall sorted it by birth year, and every "
         "band's top pick came out born in the band's first year. That is where "
         "the band edge fell, not a finding.",
+        "",
+        f"## Seeds that can reach {target}",
+        "",
+        f"Candidates born late enough that {REACH_GENERATIONS} generations "
+        f"reaches {target} — that is, born {target - REACH_GENERATIONS * GENERATION_YEARS} "
+        "or later. This is a **reachability screen, not a promise**: it rules "
+        "out seeds that cannot arrive rather than claiming the rest will. A wide "
+        "descent exhausts the budget sooner than a narrow one, so the later-born "
+        "a seed is, the more certain the arrival.",
+        "",
+        "**This list is untested.** Two methods have already been refuted by "
+        "measurement here, and the honest position is that this one is a "
+        "constraint plus an unvalidated ranking rather than a demonstrated "
+        "improvement. To test it, take one of these exports and diff the tree "
+        "the way the backtest did.",
+        "",
+    ]
+    reachable = [
+        line for line in candidates(
+            lines, present=present, small=small, min_stall=min_stall, parents=parents
+        )
+        if line.birth is not None and line.can_reach(target)
+    ]
+    if reachable:
+        out += [
+            f"{len(reachable):,} candidates qualify. The best {min(per_band * 6, len(reachable))} "
+            "by the same ranking the bands use — fewest generations followed, "
+            "then most open ends:",
+            "",
+        ]
+        out += _table(
+            ["#", "export from", "born", "generations followed", "descent paths",
+             "open paths", "line reaches"],
+            [
+                [
+                    str(i),
+                    _link(line.geni_id, line.name),
+                    _year(line.birth),
+                    str(line.depth),
+                    str(line.paths),
+                    str(line.open_paths),
+                    _year(line.reach),
+                ]
+                for i, line in enumerate(reachable[: per_band * 6], start=1)
+            ],
+        )
+    else:
+        out += [
+            f"None: no candidate is born {target - REACH_GENERATIONS * GENERATION_YEARS} "
+            "or later. Every seed available would run out of budget before "
+            f"{target}.",
+            "",
+        ]
+    out += [
+        "",
+        "Undated people are **not** screened out of the bands below — we do not "
+        "know when they lived, and rejecting them would be inferring a date from "
+        "silence. They simply cannot appear in this section.",
         "",
         "## How much of the tree this can see",
         "",
