@@ -16,6 +16,16 @@
 #
 # Safe to start more than once -- the heartbeat lock means a second loop's ticks
 # do nothing until the first stops.
+#
+# **Never `tail -f` out\wikidata-loop.log.** Git's MSYS tail.exe opens the file
+# without sharing write access, so `Add-Content` below starts failing and
+# $ErrorActionPreference = 'Continue' swallows the error: the loop keeps ticking
+# and downloading, and logs nothing at all. It looks exactly like a dead job.
+# Measured 2026-08-08 -- an hour of silent log with 88,000 items downloaded
+# underneath it, and the blocked line appeared the second tail was killed.
+# To watch progress, read the sqlite index instead; it takes no lock on this
+# file:
+#     python -c "import sys; sys.path.insert(0,'src'); from genimerge import wikidownload; print(wikidownload.StateIndex('out/wikidata/download-state.sqlite3').counts())"
 
 $ErrorActionPreference = 'Continue'
 $repo = Split-Path -Parent $PSScriptRoot

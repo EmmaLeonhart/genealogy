@@ -4024,3 +4024,34 @@ to stop rather than to let it finish.
 User-Agent now carries contact@emmaleonhart.com, with Emma's say-so — Wikimedia
 asks for a contact and throttles harder without one, and 10,305 requests is the
 case that policy is written for.
+## 2026-08-08 — the download loop's log freezes when anything tails it
+
+The download had stopped: nothing running, `out/wikidata-loop.log` last written
+2026-08-07 18:41 even though shards kept landing until 12:18 today. Restarted it
+with `scripts/wikidata-detach.ps1` (849,742 stored, 233,649 queued, 18 missing,
+0 errored; 850 shards, 2.27 GB).
+
+Then reproduced the log gap by causing it. A watch on the log — `tail -f` piped
+to `grep`, from Git's MSYS binaries — went a full hour without emitting one
+line, while the index showed the download running fine underneath it: 849,742 →
+937,543 stored, four ticks committed and pushed. The log had frozen mid-tick at
+exactly the same shape as yesterday's gap.
+
+**MSYS `tail.exe` opens the file in a way that locks out the writer.** The
+loop's `Add-Content` then fails, and `$ErrorActionPreference = 'Continue'`
+swallows it, so the loop keeps ticking in silence. Killing the orphaned
+`tail.exe` and `grep.exe` released it and the buffered line appeared the same
+second. The watching *was* the outage — of the log, not of the download.
+
+Two consequences, neither cosmetic:
+
+- **Never `tail -f` `out/wikidata-loop.log`.** Warning added at the top of
+  `scripts/wikidata-loop.ps1`. Watch the sqlite index instead — it answers the
+  same question (`done`/`queued`) and takes no lock on the log.
+- **A timed-out Monitor can leave its pipeline alive.** The `tail`/`grep` pair
+  outlived the monitor that started them by an hour. Check with
+  `Get-CimInstance Win32_Process -Filter "Name='tail.exe'"` after one ends.
+
+This also retires the NEEDS-INVESTIGATION note about yesterday's silent gap:
+same cause, and the ticks that produced `db1e1b0` and `6ef7db8` came from the
+loop as designed, logging nowhere.
