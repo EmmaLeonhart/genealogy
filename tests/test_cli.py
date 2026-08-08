@@ -248,6 +248,40 @@ def test_descendants_writes_its_report_and_a_seed_list(workspace):
     assert (workspace["out"] / "stalled-line-seeds.txt").exists()
 
 
+def test_the_campaign_seed_file_is_ordered_like_the_report(workspace, tmp_path):
+    """They disagreed once, and the file is the one that gets pasted from.
+
+    The report led with an 1858 profile holding twenty open ends while the file
+    led with a 1973 one holding three, because the two sorts were written in
+    different places and only one was updated.
+    """
+    lake = tmp_path / "reach"
+    lake.mkdir()
+    # Two seeds that both arrive; the wide one must come first in both places.
+    people = ["0 HEAD"]
+    for n, (born, kids) in enumerate([(1850, 6), (1960, 1)], start=1):
+        parent = 100 * n
+        people += [f"0 @I{parent}@ INDI", f"1 NAME P{n} /Reach/",
+                   "1 BIRT", f"2 DATE {born}", f"1 FAMS @F{parent}@"]
+        for k in range(kids):
+            people += [f"0 @I{parent + k + 1}@ INDI", f"1 NAME C{n}_{k} /Reach/",
+                       "1 BIRT", f"2 DATE {born + 30}", f"1 FAMC @F{parent}@"]
+        people += [f"0 @F{parent}@ FAM", f"1 HUSB @I{parent}@"]
+        people += [f"1 CHIL @I{parent + k + 1}@" for k in range(kids)]
+    (lake / "reach.ged").write_text("\n".join(people + ["0 TRLR", ""]),
+                                    encoding="utf-8", newline="\n")
+    ws = {"exports": lake, "out": tmp_path / "out", "reports": tmp_path / "reports"}
+    assert run(ws, "merge") == 0
+    assert run(ws, "descendants", "--present", "2026") == 0
+
+    seeds = (ws["out"] / "reach-1900-seeds.txt").read_text(encoding="utf-8")
+    report = (ws["reports"] / "descendants.md").read_text(encoding="utf-8")
+    order = [line.split("/x/")[1].split(" ")[0] for line in seeds.splitlines()]
+    assert order, "no campaign seeds written"
+    assert order[0] == "100"  # the 1850 seed with six open ends, not the 1960 one
+    assert report.index("/x/100)") < report.index("/x/200)")
+
+
 def test_seeds_writes_a_report_and_a_csv(workspace):
     run(workspace, "merge")
     assert run(workspace, "seeds") == 0

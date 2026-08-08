@@ -723,9 +723,10 @@ def _cmd_descendants(args: argparse.Namespace) -> int:
     _write(seed_list, descendants_mod.render_seed_list(by_birth))
 
     # The campaign list is the one to paste from, so it gets its own file rather
-    # than being mixed into the survey. Latest-born first: a ball only carries
-    # about twelve generations, so a seed born before ~1750 cannot deliver
-    # anybody modern whatever else is true of it.
+    # than being mixed into the survey. **Same order as the report's § Seeds
+    # that can reach section** — they disagreed once, the file leading with a
+    # 1973 profile holding three open ends while the report led with an 1858 one
+    # holding twenty, and the file is the one that actually gets used.
     reachable = sorted(
         (
             line for line in descendants_mod.candidates(
@@ -734,7 +735,7 @@ def _cmd_descendants(args: argparse.Namespace) -> int:
             )
             if line.birth is not None and line.can_reach(args.target_year)
         ),
-        key=lambda line: (-(line.birth or 0), -line.open_paths, int(line.geni_id)),
+        key=lambda line: (-line.open_paths, -(line.birth or 0), int(line.geni_id)),
     )
     reach_list = ws.out / f"reach-{args.target_year}-seeds.txt"
     _write(
