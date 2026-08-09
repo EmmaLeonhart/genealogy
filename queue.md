@@ -13,7 +13,23 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ---
 
-## Active
+## Active after import finished
+
+Once we are finished with the wikidata tree export, or have decided we are finished with it, we can then look to see how much of the tree is interconnected.
+
+The geni tree export should be analyzed and merged into, but this involves a lot of AskUserQuestion
+
+We have the large batch of shared individuals, we will need to reconcile the radically different formats, and do entity resolution piecemeal across the graph. So like if person has two fathers, analyze if they seem to fit
+
+With entity resolution stuff, parents are easier to resolve, but we need to do a test of say 10,000 individuals for any entity resolution algorithm. It needs to be rigorous. 
+
+Notably geni names are structured with the form of separate first names and last names. There is a display name but I do not think it commonly happens. Display names are complicated and we need an analysis, plus our name property adding things. 
+
+We also need some other geni-wikidata entity resolutions manually or with searches. Well there are a couple ids I have to manually propose at least.
+
+Adding the geni source properties
+
+## Active Earlier
 
 0.000 The "FIRST ITEM" is finished — all 19 path files re-checked against the
 98-export merge, `reports/paths.md` rewritten, devlog entry dated 2026-08-06.
