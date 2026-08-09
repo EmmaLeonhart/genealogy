@@ -105,6 +105,18 @@ them needs only a count of relation statements per item, which the same pass can
 carry. Until it does, do not describe the 183,296 as "people with no family on
 Wikidata" — that is one of the two readings and it is unverified.
 
+**The HTML must split the two, and isolates need investigation — Emma,
+2026-08-09.** The component output (HTML) has to separate genuine **isolates**
+— items with *zero* relation statements, no family recorded on Wikidata at all
+— from items that only look isolated because their **relatives were not
+downloaded** — items carrying P22/P25/P26/P40 that point at QIDs not yet in the
+store. Those two are different work: the not-downloaded ones **just need
+import** (the expansion walk fetches the referenced items and they stop looking
+isolated), while the true isolates are **NEEDS-INVESTIGATION** — nothing the
+import closes, a standing question about why Wikidata records no family for
+them. The relation-statement count this item already calls for is the
+discriminator; surface it per item so the two groups are told apart in the page.
+
 2.B **Port the remaining `client.sparql` call sites to the store, by question.**
 `reconcile`, `crosscheck` and `namelinks` still import `genimerge.wikidata`, so
 they still cannot run under the no-query rule. Ten call sites; each asks one
