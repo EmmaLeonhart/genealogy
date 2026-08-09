@@ -37,6 +37,36 @@ imo we need to figure out how to reach all the wikidata items with geni ids, but
 
 ## Active Earlier
 
+0.00Z **Three `FAM.HUSB` conflicts in the 145-export merge — decide them on
+evidence, not on filename order.** The first structural disagreements the merge
+has had to resolve: two exports naming different husbands for one family, where
+every prior conflict was a value like a date or a place.
+
+`@F6000000179131721834@` is the sharp case. It appears **twice** in
+`out/merge-report.md` with the winners reversed —
+`export-Descendants-6000000226989731860.ged` beats `export-Forest-14.ged` in one
+row, and `export-Forest-6000000226989731860.ged` beats that same Descendants
+file in the other. Candidate husbands are `@I6000000001829492981@` and
+`@I6000000179131744821@`. The third is `@F6000000195596077832@`
+(`export-Bio-6000000212213649822.ged` vs `export-Forest-32.ged`), husbands
+`@I6000000198604813825@` and `@I6000000195595965846@`.
+
+Later-wins picked the survivor, and **merge order is path order, not export
+date** — so filename sorting decided which husband is in the tree. That is
+within the stated rule and is still the wrong instrument for this question.
+
+Two things to do, in order: (1) look at the six people and the two families in
+the merged tree and say whether these are two records of one man or two men —
+this is the "person has two fathers" case § *Active after import finished*
+names, and it is the first real test case for whatever entity-resolution method
+gets built; (2) decide whether `merge_files` should sort sources by their `HEAD`
+date before merging, which `CLAUDE.md` says follows without a code change.
+
+Do **not** settle it by re-running the merge in a different order — that changes
+the answer without producing evidence for it.
+
+**NEEDS-INVESTIGATION.**
+
 0.00A **Take one `Descendants` export seeded after 1750 and diff the tree.**
 The 2026-08-07 batch settled the previous version of this item and produced
 `reports/descendants-backtest-2026-08-07.md`: eleven exports, 18,218 new people,

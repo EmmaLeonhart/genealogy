@@ -4283,3 +4283,50 @@ Two consequences, neither cosmetic:
 This also retires the NEEDS-INVESTIGATION note about yesterday's silent gap:
 same cause, and the ticks that produced `db1e1b0` and `6ef7db8` came from the
 loop as designed, logging nowhere.
+
+## 2026-08-09 — the branch lands, and the synoptic tree at 145
+
+`geni-descendants` merged to main (`61ed38b`). There was no open pull request:
+both #1 and #2 were already merged, and the unmerged work was the branch itself
+— twelve commits carrying `genimerge.descendants`, the eleven 2026-08-07
+`Descendants` exports, and the backtest that refuted both proposed
+seed-choosing methods.
+
+`devlog.md` was the only conflict, both sides having appended. The branch's four
+2026-08-07 entries now sit ahead of main's 2026-08-08 entry, which is this
+file's oldest-first order. `queue.md` auto-merged. Corpus invariants hold: 145
+GEDCOMs tracked and 145 on disk, no `*.ged` or `*.zip` pattern in `.gitignore`.
+
+**The local merge reproduces the cloud session's figures exactly** — 275,437
+INDI, 137,764 FAM, from all 145 exports. That is worth having: the branch's
+`reports/merge.md` was written by a session whose `out/` nobody here can see,
+and the numbers now come from a run on this machine. `out/merged.ged` is 438 MB.
+`out/merged-134.ged` was kept first, per the rule the last backtest established.
+
+**Two components, and the small one is not new.** 275,404 and 33. `CLAUDE.md`
+still says one component as of 2026-08-04, but the pre-existing
+`reports/frontier.md` — generated against a 202,433-person tree — already listed
+the same 33-person island headed by Tabia. So the batch did not split anything;
+the one-component note had simply gone stale. `reports/frontier.md` is now
+regenerated against the 275,437 tree: 48,163 parentless (17.5%), and 15 people
+recorded as their own ancestor.
+
+**Of 197 value conflicts, 182 are `INDI.CHAN.DATE` and `INDI.CHAN.DATE.TIME`** —
+the profile's own last-edited stamp, which is the case later-wins was adopted
+for. The remainder is small and mostly places and dates.
+
+**Three are `FAM.HUSB`, and two of those are the same family.**
+`@F6000000179131721834@` appears twice with the winners reversed:
+`export-Descendants-6000000226989731860.ged` beats `export-Forest-14.ged` in one
+row, and `export-Forest-6000000226989731860.ged` beats that same Descendants
+file in the other. Merge order is **path order, not export date** — a caveat
+`genimerge.sources` already carries — so which husband survived was decided by
+filename sorting rather than by which export is newer. Not wrong under the
+stated rule, but this is the first time the rule has picked between two
+candidate husbands rather than between two timestamps, and it is a structural
+disagreement of the kind § "two fathers" in `queue.md` is about.
+**NEEDS-INVESTIGATION** — carried there rather than settled here.
+
+`genimerge merge --help` said "Earlier files win value conflicts". The
+implementation has been later-wins since 2026-08-04 (`merge.py:198`, `:322`,
+`:356`); only the argparse description was stale. Fixed, no behaviour change.

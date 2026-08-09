@@ -1265,7 +1265,7 @@ def build_parser() -> argparse.ArgumentParser:
     p_merge = sub.add_parser(
         "merge",
         help="merge exports into one GEDCOM keyed on the Geni profile ID",
-        description="Earlier files win value conflicts on single-valued paths.",
+        description="Later files win value conflicts on single-valued paths.",
     )
     p_merge.add_argument("exports", nargs="*", help="GEDCOM files (default: every distinct .ged under exports/)")
     p_merge.add_argument(
