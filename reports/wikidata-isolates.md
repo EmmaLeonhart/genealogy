@@ -77,6 +77,31 @@ So the edit is P22/P25 (and P26/P40) onto an existing, well-sourced item — not
 item creation, not entity resolution, and not a name match: the Geni ID on the
 item is the join, which is this repo's primary key.
 
+## The full count, 2026-08-09
+
+The sample above is now superseded by a complete pass. **183,681 Geni-linked
+items carry no relation statement**, of which **246** are people our tree holds.
+The sample predicted ~179,800 and ~286 — close enough on both that nothing in
+the reasoning changes.
+
+Full list: `reports/wikidata-isolates.tsv`. Browsable, sorted by number of
+Wikipedia articles so the best-documented come first:
+`out/wikidata-isolates.html` (gitignored; rebuild with
+`python scripts/build-isolates-page.py`).
+
+**One definitional catch worth stating.** 183,681 here is slightly *larger* than
+the 183,296 single-item components in `reports/wikidata-components.md`, and the
+two are not the same measurement. This count is "the item states no relation";
+that one is "nothing links the item in either direction". An item can state no
+parent and still be named as somebody else's parent — no outgoing edge, an
+incoming one. For adding family **to** an item, the outgoing-absent count is the
+right one, which is why it is used here. For "is this person isolated in the
+graph", it is not.
+
+The isolates also stop appearing after roughly shard 800 of 1,408: they are
+concentrated in the seed phase, and the expansion tail is made of items fetched
+*because* they were someone's relative, which by construction have relations.
+
 ## Except it is not, and the same sample says so
 
 The obvious next step was to assume Geni supplies the family. Measuring the
