@@ -68,6 +68,20 @@ feed the export campaign the way `reports/descendants.md` does. Note the
 tension worth resolving before acting: the `Descendants` campaign is about
 reaching *modern* times, and a parent is by construction a step **backwards**.
 
+2.E **Make the component walk a command, and separate the 183,296 isolates.**
+`reports/wikidata-components.md` answers "how many trees is the Wikidata side"
+— one of 1,042,423 (74%) plus 223,207 fragments — but it was produced by a
+throwaway script, so it is not re-runnable as the store grows. Port it to a
+module the way `wikistore` was, reusing `wikidownload.RELATION_PROPERTIES`
+rather than restating the five properties.
+
+While there: **an isolated item and an item whose relatives were not downloaded
+are different things and the current pass cannot tell them apart**, because an
+item with no relation statements emits no dangling reference either. Splitting
+them needs only a count of relation statements per item, which the same pass can
+carry. Until it does, do not describe the 183,296 as "people with no family on
+Wikidata" — that is one of the two readings and it is unverified.
+
 2.B **Port the remaining `client.sparql` call sites to the store, by question.**
 `reconcile`, `crosscheck` and `namelinks` still import `genimerge.wikidata`, so
 they still cannot run under the no-query rule. Ten call sites; each asks one

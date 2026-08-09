@@ -4525,3 +4525,36 @@ the expensive version of it".
 report buckets targets by century — 21 tests green — but the regeneration was
 killed part-way for heat, so `reports/wikidata-ancestors.md` on disk is still
 counts-only. Said plainly rather than left to look finished.
+
+## 2026-08-09 (night, later) — the Wikidata side is one tree plus dust
+
+Emma noticed the gap: *"never established if all of the wikidata items are
+linked, or how many trees there are."* Our Geni side has carried a component
+count in `reports/frontier.md` from the start; the Wikidata side never had one.
+
+One pass over the store, relation graph from the same five properties the
+download walk used, union-find. 412 seconds. **223,208 components over
+1,408,401 items, largest 1,042,423 — 74.0%.** The second largest is 2,168, so
+the gap from first to second is three orders of magnitude: there is no second
+genealogy, there is one and then 223,207 fragments, 183,296 of them single
+items.
+
+**The number that keeps this honest is 83,057** — relation references pointing
+at items the download never fetched. A component boundary caused by one of those
+is our copy being truncated, not Wikidata being disconnected. The download
+stopped with 74,610 QIDs queued, the same population seen from the other side.
+So **223,208 is an upper bound on the number of Wikidata genealogies, not a
+count of them**, and finishing the download would merge an unknown number of the
+fragments in.
+
+That bears directly on the union tree: a union built now inherits boundaries
+that are partly artifacts of where the download stopped.
+
+**What the 183,296 isolates are is deliberately left open.** A seed was fetched
+for carrying P2600 whether or not it had any family statement, so an isolate is
+either a person with no recorded relatives or one whose relatives were not
+downloaded — and this pass cannot separate them, because an item with no
+relation statements produces no dangling reference either. Queued as 2.E along
+with making the walk re-runnable; it was a throwaway script, which is the reason
+it is queued rather than left as-is.
+
