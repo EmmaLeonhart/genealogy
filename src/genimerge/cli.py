@@ -667,6 +667,10 @@ def _cmd_wikidata_ancestors(args: argparse.Namespace) -> int:
         result = wikiancestors.find_missing_parents(
             tree, reader, qid_by_geni_id, progress=progress
         )
+        # A second pass for the targets' birth dates. Without them the rows can
+        # be counted but not judged against a campaign that is about *when*.
+        print("  reading parent birth dates", flush=True)
+        result.years = wikiancestors.parent_birth_years(reader, result.findings)
 
     output = args.output or (ws.reports / "wikidata-ancestors.md")
     _write(output, wikiancestors.render_markdown(result, tree))

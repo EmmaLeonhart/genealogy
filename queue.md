@@ -42,7 +42,23 @@ The five items planned this morning are done and are in `devlog.md`.
 `wikidata-index` / `wikidata-ancestors` are the two new commands. What that
 opened up, and what it did not:
 
-2.A **1,821 export targets nobody has looked at yet.**
+2.A **1,821 export targets — the century breakdown is coded and not yet run.**
+`wikiancestors.parent_birth_years` reads P569 for each target from the store and
+`render_markdown` buckets them by century, with 21 tests green. The report on
+disk does **not** have that section: the regeneration was killed part-way to
+keep the laptop cool, so `reports/wikidata-ancestors.md` is still the
+counts-only version. Re-run `python -m genimerge wikidata-ancestors --source
+out/merged.ged` when heat allows — two store passes, a few minutes.
+
+The question it answers, so the run is not mistaken for a formality: the
+`Descendants` campaign is about reaching **modern times** and a parent is one
+step backwards, so the list is only worth anything if enough of the targets are
+late enough for their descent to arrive where the campaign is going. A
+`Descendants` export seeded on a missing parent returns that parent's whole
+descent — the siblings of somebody we hold, and their lines — which is why a
+parent is not simply a backwards move.
+
+**The older framing, kept because it is what the report currently supports:**
 `reports/wikidata-ancestors.md` lists Geni profiles Wikidata names as a parent
 of somebody we already hold, and that no export here has reached. These are
 doorways `frontier` **cannot** see — it ranks our own parentless people and
@@ -60,11 +76,53 @@ one — it compares our parents, spouses and dates against Wikidata's, and the
 4,491 parents with no Geni ID are exactly the population it would speak to.
 Do **not** write a SPARQL emulator.
 
-2.C **Build the union tree — one genealogy holding both sources.** This is the
-project, not a phase of it: `CLAUDE.md` § *Project Description* is merge the
-exports, reconcile against Wikidata, then create what is missing. Emma,
-2026-08-09: *"the wikidata also needs to have its own synoptic tree … we're
-trying to integrate them."*
+2.C **Build the union tree — one genealogy holding both sources.**
+
+**The shape, from Emma directly, 2026-08-09.** A union individual is a JSON
+object with the two sides **nested whole and side by side**:
+
+```json
+{
+  "geni_id":     "6000000087535357291",
+  "geni":        { ...the full text of the Geni export for that person... },
+  "wikidata_id": "Q12345",
+  "wikidata":    { ...the nesting of the Wikidata content... }
+}
+```
+
+**It is synoptic, and that word is doing real work.** This is a *duplicated*
+tree, not a fused one: both sides are kept verbatim, nothing is reconciled at
+build time, and *"this duplicated tree is intended to be later updated for a
+later integration process."* Integration is a **later** pass over this
+structure, not a condition of writing it.
+
+So the three things that follow are decided, not open:
+
+- **Do not merge fields.** No picking a birth date, no preferring a parent. When
+  the two sides disagree the union simply holds both, tagged by which side they
+  came from — Emma's call, and it falls straight out of the structure: the
+  disagreement *is* `geni.birth` next to `wikidata.P569`.
+- **Do not drop either side's content.** Both nests are full, not a projection.
+  Same reasoning as `wikidownload` storing whole items: what a later phase wants
+  is not yet known, and something stored lossily has to be fetched again.
+- **Everything downloaded is in scope** — all 1,408,401 stored items, not just
+  the 514,903 carrying a Geni ID. A node with an empty `geni` side is normal.
+
+Either side may be absent, which gives four node kinds: both sides (12,860
+pairs), Geni only (262,587), Wikidata-with-an-unreached-Geni-ID (504,123 pairs
+— `reports/wikidata-unreached.tsv`), and Wikidata with no Geni ID at all
+(893,498).
+
+**What it is for**, all of which the structure has to survive: queueing Wikidata
+edits that create the missing people, planning the next Geni exports, being one
+complete genealogy to look at, and surfacing where the two sources disagree.
+Emma also marked "something else" — **ask before assuming the four are the whole
+list.**
+
+**Still to settle before building:** what an *edge* is in the union. A Geni
+parent link is a FAM record and a Wikidata one is P22/P25 on an item, and the
+node shape above says nothing about how the graph is walked. Write that down
+first.
 
 **Corrected here after getting it wrong.** This item previously asked Emma to
 decide whether the 4,491 Geni-ID-less parents were "an authoring batch or a

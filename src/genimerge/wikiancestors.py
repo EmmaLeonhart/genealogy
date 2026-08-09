@@ -29,14 +29,17 @@ from dataclasses import dataclass, field
 from typing import Callable, Iterable
 
 from .model import Tree
+from .reconcile import _year_of
 from .wikistore import StoreReader
 
 __all__ = [
+    "BIRTH",
     "FATHER",
     "MOTHER",
     "Finding",
     "Result",
     "find_missing_parents",
+    "parent_birth_years",
     "render_markdown",
 ]
 
@@ -44,6 +47,11 @@ __all__ = [
 #: structure*; `P22` is father and `P25` is mother.
 FATHER = "P22"
 MOTHER = "P25"
+
+#: Date of birth — `CLAUDE.md` § *Life events*. Read to place a target in a
+#: century, because "is this worth exporting from?" is a question about *when*
+#: here: the campaign is about reaching modern times.
+BIRTH = "P569"
 
 PARENT_PROPERTIES = (FATHER, MOTHER)
 
@@ -102,6 +110,10 @@ class Result:
     #: short of some of them.
     not_stored: int = 0
     counts: Counter = field(default_factory=Counter)
+    #: Parent QID -> birth year, filled by :func:`parent_birth_years`. Empty
+    #: until that second pass runs, so the report degrades to counts rather
+    #: than failing when it has not.
+    years: dict[str, int | None] = field(default_factory=dict)
 
     def by_status(self, status: str) -> list[Finding]:
         return [f for f in self.findings if f.status == status]
@@ -180,6 +192,61 @@ def find_missing_parents(
     return result
 
 
+def parent_birth_years(reader: StoreReader, findings: Iterable[Finding]) -> dict[str, int | None]:
+    """Birth year per parent QID, from P569 on the stored item.
+
+    A second store pass, and worth it: without a date these targets can be
+    counted but not *judged*. The campaign is about reaching modern times, so
+    "which century is this person in" is the question that decides whether a
+    row is worth an export at all.
+
+    ``None`` where the item states no birth — kept as a key rather than dropped,
+    because "no date recorded" is a large and honest bucket here and silently
+    omitting it would inflate every percentage below it.
+    """
+    qids = sorted({f.parent_qid for f in findings})
+    years: dict[str, int | None] = {}
+    for entity in reader.entities(qids).values():
+        year = None
+        for statement in (entity.get("claims") or {}).get(BIRTH) or []:
+            snak = statement.get("mainsnak") or {}
+            if snak.get("snaktype") != "value":
+                continue
+            value = (snak.get("datavalue") or {}).get("value")
+            # Stored items carry the whole time object; `_year_of` takes the
+            # literal, which is the `time` field of it.
+            literal = value.get("time") if isinstance(value, dict) else value
+            year = _year_of(literal if isinstance(literal, str) else None)
+            if year is not None:
+                break
+        years[entity["id"]] = year
+    for qid in qids:
+        years.setdefault(qid, None)
+    return years
+
+
+def _century(year: int | None) -> str:
+    if year is None:
+        return "no date"
+    if year <= 0:
+        return "BCE"
+    return f"{(year - 1) // 100 + 1}00s"
+
+
+def _century_rows(findings: Iterable[Finding], years: dict[str, int | None]) -> list[tuple[str, int]]:
+    """Counts per century, oldest first, with the undated bucket last."""
+    counts = Counter(_century(years.get(f.parent_qid)) for f in findings)
+
+    def sort_key(label: str) -> tuple[int, int]:
+        if label == "BCE":
+            return (0, 0)
+        if label == "no date":
+            return (2, 0)
+        return (1, int(label[:-2]))
+
+    return [(label, counts[label]) for label in sorted(counts, key=sort_key)]
+
+
 def render_markdown(result: Result, tree: Tree, limit: int = 400) -> str:
     exportable = result.by_status(EXPORTABLE)
     unlinked = result.by_status(UNLINKED)
@@ -212,6 +279,40 @@ def render_markdown(result: Result, tree: Tree, limit: int = 400) -> str:
         "knows and Geni may not, which is entity resolution, not exporting.",
         "",
     ]
+
+    if exportable and result.years:
+        rows = _century_rows(exportable, result.years)
+        dated = sum(count for label, count in rows if label != "no date")
+        modern = sum(
+            count for label, count in rows if label.endswith("00s") and int(label[:-2]) >= 18
+        )
+        lines += [
+            "## Which centuries the export targets sit in",
+            "",
+            "**This is the question that decides whether the list is worth "
+            "anything**, and it is not the same as how many there are. The "
+            "`Descendants` campaign is about reaching *modern times*; a parent "
+            "is by construction one step backwards. What redeems a parent as a "
+            "seed is that a `Descendants` export from them returns their whole "
+            "descent — the siblings of the person we already hold, and those "
+            "siblings' lines, which we do not have. So a target is useful when "
+            "it is late enough for its descent to reach where the campaign is "
+            "going.",
+            "",
+            "| century of birth | targets |",
+            "| --- | ---: |",
+        ]
+        lines += [f"| {label} | {count:,} |" for label, count in rows]
+        lines += [
+            "",
+            f"**{modern:,} of {len(exportable):,}** are born 1800 or later, "
+            f"and {len(exportable) - dated:,} state no birth date at all. "
+            "`reports/descendants.md` § *Seeds that can reach 1900* puts the "
+            "threshold for arriving after 1900 at a seed born around 1750, so "
+            "read the rows above that line as campaign-relevant and the rest "
+            "as tree-filling — worth doing, and a different job.",
+            "",
+        ]
 
     if exportable:
         lines += [

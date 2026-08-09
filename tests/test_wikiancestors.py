@@ -134,6 +134,73 @@ def test_both_parents_are_read(store):
     assert {f.relation for f in result.findings} == {wikiancestors.FATHER, wikiancestors.MOTHER}
 
 
+def dated_item(qid: str, year: int | None, geni: list[str] | None = None) -> dict:
+    entity = item(qid, geni)
+    if year is not None:
+        literal = f"{'+' if year > 0 else '-'}{abs(year):04d}-01-01T00:00:00Z"
+        entity["claims"][wikiancestors.BIRTH] = [
+            {"mainsnak": {"snaktype": "value", "datavalue": {"value": {"time": literal}}}}
+        ]
+    return entity
+
+
+def test_a_parents_birth_year_is_read_from_the_stored_item(store):
+    reader = store([parent_item("Q1", father="Q2", geni=["100"]), dated_item("Q2", 1834, ["200"])])
+    with reader:
+        result = wikiancestors.find_missing_parents(tree_of(person("100")), reader, {"100": "Q1"})
+        years = wikiancestors.parent_birth_years(reader, result.findings)
+    assert years == {"Q2": 1834}
+
+
+def test_a_parent_with_no_birth_date_is_kept_as_none_not_dropped(store):
+    # Dropping it would inflate every percentage computed below it.
+    reader = store([parent_item("Q1", father="Q2", geni=["100"]), dated_item("Q2", None, ["200"])])
+    with reader:
+        result = wikiancestors.find_missing_parents(tree_of(person("100")), reader, {"100": "Q1"})
+        years = wikiancestors.parent_birth_years(reader, result.findings)
+    assert years == {"Q2": None}
+
+
+def test_a_bce_birth_year_survives_the_round_trip(store):
+    reader = store([parent_item("Q1", father="Q2", geni=["100"]), dated_item("Q2", -44, ["200"])])
+    with reader:
+        result = wikiancestors.find_missing_parents(tree_of(person("100")), reader, {"100": "Q1"})
+        years = wikiancestors.parent_birth_years(reader, result.findings)
+    assert years == {"Q2": -44}
+
+
+@pytest.mark.parametrize(
+    "year,label",
+    [(-44, "BCE"), (1, "100s"), (100, "100s"), (101, "200s"), (1834, "1900s"), (None, "no date")],
+)
+def test_centuries_are_labelled_by_the_years_they_contain(year, label):
+    assert wikiancestors._century(year) == label
+
+
+def test_century_rows_are_oldest_first_with_undated_last():
+    findings = [
+        wikiancestors.Finding("1", "Q1", wikiancestors.FATHER, "Qa", wikiancestors.EXPORTABLE),
+        wikiancestors.Finding("2", "Q2", wikiancestors.FATHER, "Qb", wikiancestors.EXPORTABLE),
+        wikiancestors.Finding("3", "Q3", wikiancestors.FATHER, "Qc", wikiancestors.EXPORTABLE),
+    ]
+    years = {"Qa": 1834, "Qb": -100, "Qc": None}
+    assert wikiancestors._century_rows(findings, years) == [("BCE", 1), ("1900s", 1), ("no date", 1)]
+
+
+def test_the_century_section_appears_only_once_dates_are_read(store):
+    reader = store([parent_item("Q1", father="Q2", geni=["100"]), dated_item("Q2", 1834, ["200"])])
+    tree = tree_of(person("100"))
+    with reader:
+        result = wikiancestors.find_missing_parents(tree, reader, {"100": "Q1"})
+        without = wikiancestors.render_markdown(result, tree)
+        result.years = wikiancestors.parent_birth_years(reader, result.findings)
+        with_dates = wikiancestors.render_markdown(result, tree)
+    # Degrades to counts rather than failing when the second pass has not run.
+    assert "Which centuries" not in without
+    assert "Which centuries" in with_dates
+    assert "**1 of 1** are born 1800 or later" in with_dates
+
+
 def test_the_report_names_both_problems_separately(store):
     reader = store(
         [parent_item("Q1", father="Q2", mother="Q3", geni=["100"]), parent_item("Q2", geni=["200"]), parent_item("Q3")]

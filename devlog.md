@@ -4484,3 +4484,44 @@ Left undone and named rather than absorbed: `reconcile`, `crosscheck` and
 (`queue.md` 2.B). The 4,491 unlinked parents and the 10,000-person
 entity-resolution backtest are both **NEEDS-DECISION** — 2.C and 2.D — because
 each needs a call from Emma that reasoning cannot supply.
+
+## 2026-08-09 (night) — why only 12,850 join, and what the union tree actually is
+
+**The union tree, corrected by Emma after I got it wrong twice.** A union
+individual is a JSON object holding both sides **nested whole**: `geni_id` /
+`geni` (the full export text) and `wikidata_id` / `wikidata` (the nested item).
+It is **synoptic — a duplicated tree, not a fused one** — and *"intended to be
+later updated for a later integration process."* Nothing is reconciled at build
+time. Disagreements are not resolved; they are simply both present, which is
+what "keep both, tagged by source" means once the structure is this shape.
+Everything downloaded is in scope, all 1,408,401 items, not only the 514,903
+with a Geni ID.
+
+Two wrong turns preceded that and are worth naming. First I proposed one node
+with two ID slots and a merge rule — a fused tree, which is the opposite of
+synoptic. Then I turned the 4,491 Geni-ID-less parents into a NEEDS-DECISION
+about whether they were "an authoring batch or a matching problem", a dichotomy
+I invented; in a union they are simply nodes from the other source and nothing
+had to be chosen to admit them. `queue.md` 2.C now carries the shape as Emma
+gave it.
+
+**Why the joined figure is only ~12,850, answered.** Not because the sites
+disagree about who exists: because our 145 exports have reached 2.5% of the Geni
+population Wikidata already points at. `reports/wikidata-unreached.tsv` is the
+whole list — **504,123 pairs, 504,063 distinct Geni IDs, 502,165 distinct
+items** — every one a Geni profile Wikidata names and no export here has pulled.
+`out/wikidata-unreached.html` is the browsable version (virtual-scrolled, since
+half a million rows will not render as a table).
+
+**Getting our own ID set cost 2.2 seconds, not a parse.** The obvious route is
+`_load_tree`, which builds the whole object model of a 438 MB GEDCOM. Only the
+`0 @I…@ INDI` xref lines are needed to answer "which Geni IDs do we hold?", and
+a streaming scan of those through `identity.GENI_ID_RE` lands on 275,437 exactly
+— matching the full parse, at a fraction of the CPU. Emma is watching laptop
+heat, and this is the shape of the answer: not "skip the work", but "stop doing
+the expensive version of it".
+
+**2.A is coded and not run.** `parent_birth_years` reads P569 per target and the
+report buckets targets by century — 21 tests green — but the regeneration was
+killed part-way for heat, so `reports/wikidata-ancestors.md` on disk is still
+counts-only. Said plainly rather than left to look finished.
