@@ -100,6 +100,8 @@ COMMANDS = [
     "names",
     "profile-names",
     "wikidata-download",
+    "wikidata-index",
+    "wikidata-ancestors",
     "name-links",
     "crosscheck",
     "entity-resolution",

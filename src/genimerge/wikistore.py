@@ -291,6 +291,24 @@ class StoreReader:
                 found[geni_id].append(qid)
         return dict(found)
 
+    def geni_ids_of_qids(self, qids: Iterable[str]) -> dict[str, list[str]]:
+        """The reverse join: which Geni IDs each of these items claims.
+
+        Batched for the same reason :meth:`entities` is — the callers ask about
+        thousands of parent QIDs at once, and a query per QID turns an indexed
+        lookup into the slow part of the report.
+        """
+        found: dict[str, list[str]] = defaultdict(list)
+        wanted = list({str(q) for q in qids})
+        for chunk in _chunks(wanted, 900):
+            placeholders = ",".join("?" * len(chunk))
+            rows = self._conn.execute(
+                f"SELECT qid, geni_id FROM geni WHERE qid IN ({placeholders});", chunk
+            )
+            for qid, geni_id in rows:
+                found[qid].append(geni_id)
+        return dict(found)
+
     def geni_ids_with_several_items(self) -> list[tuple[str, list[str]]]:
         """Geni IDs claimed by more than one stored item."""
         rows = self._conn.execute(

@@ -38,6 +38,7 @@ from . import (
     seeds,
     sources,
     wikidata,
+    wikiancestors,
     wikidownload,
     wikistore,
 )
@@ -621,6 +622,65 @@ def _cmd_wikidata_index(args: argparse.Namespace) -> int:
         with wikistore.StoreReader(store_dir, index_path) as reader:
             rows = wikistore.write_p2600_map(reader, args.map)
         print(f"wrote {args.map} ({rows:,} pairs)")
+    return 0
+
+
+def _cmd_wikidata_ancestors(args: argparse.Namespace) -> int:
+    ws = Workspace.from_args(args)
+    store_dir = args.store or WIKIDATA_STORE
+    index_path = args.index or wikistore.default_index_path(ws.out)
+    pairs_file = args.pairs or (ws.wikidata / "p2600-all.tsv")
+
+    if not Path(index_path).exists():
+        print(
+            f"{index_path} not found. Run `python -m genimerge wikidata-index` first.",
+            file=sys.stderr,
+        )
+        return 1
+    if not Path(pairs_file).exists():
+        print(
+            f"{pairs_file} not found. Run `python -m genimerge overlap` once to fetch it.",
+            file=sys.stderr,
+        )
+        return 1
+
+    # A Geni ID sitting on more than one item cannot be joined without choosing,
+    # and choosing silently is what `reports/wikidata-doubles.md` exists to stop.
+    # They are skipped and counted rather than picked.
+    qids_for: dict[str, set[str]] = {}
+    with open(pairs_file, encoding="utf-8") as handle:
+        for line in handle:
+            parts = line.rstrip("\n").split("\t")
+            if len(parts) != 2:
+                continue
+            qid, geni_id = parts
+            qids_for.setdefault(geni_id, set()).add(qid)
+    ambiguous = {g for g, qids in qids_for.items() if len(qids) > 1}
+    qid_by_geni_id = {g: next(iter(qids)) for g, qids in qids_for.items() if len(qids) == 1}
+
+    tree = _load_tree(args.source, ws)
+
+    def progress(done: int, total: int) -> None:
+        print(f"  {done:,}/{total:,} matched people", flush=True)
+
+    with wikistore.StoreReader(store_dir, index_path) as reader:
+        result = wikiancestors.find_missing_parents(
+            tree, reader, qid_by_geni_id, progress=progress
+        )
+
+    output = args.output or (ws.reports / "wikidata-ancestors.md")
+    _write(output, wikiancestors.render_markdown(result, tree))
+    print(f"wrote {output}")
+    print(
+        f"{result.matched:,} of our people carry an item; "
+        f"{result.counts[wikiancestors.EXPORTABLE]:,} parents have a Geni ID we lack, "
+        f"{result.counts[wikiancestors.UNLINKED]:,} have no Geni ID, "
+        f"{result.counts[wikiancestors.HELD]:,} we already hold"
+    )
+    if ambiguous:
+        print(f"{len(ambiguous):,} Geni IDs sit on more than one item and were skipped")
+    if result.not_stored:
+        print(f"{result.not_stored:,} matched items are not in the store")
     return 0
 
 
@@ -1598,6 +1658,31 @@ def build_parser() -> argparse.ArgumentParser:
         help="also write a Geni ID/QID pair file extracted from the store",
     )
     p_widx.set_defaults(func=_cmd_wikidata_index)
+
+    p_wanc = sub.add_parser(
+        "wikidata-ancestors",
+        help="parents Wikidata records that our tree does not have",
+        description=(
+            "For every one of our people linked to a Wikidata item, reads the "
+            "item's P22/P25 and reports the parents we lack. Splits them in "
+            "two: a parent carrying a Geni ID is a profile that exists on Geni "
+            "one hop above somebody we hold — a doorway `frontier` cannot see; "
+            "a parent with no Geni ID is entity resolution, not exporting. "
+            "Offline: reads the store index, never Wikidata."
+        ),
+    )
+    p_wanc.add_argument("--source", type=Path, default=None, help="a GEDCOM to read instead of merging")
+    p_wanc.add_argument("--store", type=Path, default=None, help=f"default: {WIKIDATA_STORE}")
+    p_wanc.add_argument(
+        "--index", type=Path, default=None, help="default: <out>/wikidata/store-index.sqlite3"
+    )
+    p_wanc.add_argument(
+        "--pairs", type=Path, default=None, help="default: <out>/wikidata/p2600-all.tsv"
+    )
+    p_wanc.add_argument(
+        "-o", "--output", type=Path, default=None, help="default: <reports>/wikidata-ancestors.md"
+    )
+    p_wanc.set_defaults(func=_cmd_wikidata_ancestors)
 
     p_dbl = sub.add_parser(
         "doubles",
