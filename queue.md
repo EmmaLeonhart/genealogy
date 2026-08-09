@@ -13,6 +13,29 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ---
 
+## Import the two new exports in Downloads (2026-08-09)
+
+**Two `export-geni*.zip` files are sitting in the Downloads folder and are not
+yet in the corpus.** Import them the usual way, and **filter out repeats** —
+the same export arrives twice routinely, so this batch may not be two new files.
+
+Needs the machine that has the Downloads folder; the cloud session cannot reach
+it, so this is the first thing for a PC session to run.
+
+1. Extract each zip beside itself; move the `.ged` under `exports/` into a
+   directory named for the seed (the file's first `INDI`), disambiguating by
+   seed profile ID if a `export-<style>.ged` name is already taken.
+2. **Drop any that is a byte-identical repeat of a file already committed under
+   `exports/`** before committing — as the 2026-08-06 edges batch did with two
+   of its six zips. Check containment too: a strict subset of a committed export
+   adds nothing.
+3. Add the one-line gitignore entry per zip (full path, never a `*.zip`
+   pattern), so the unignored zip is the signal a download arrived.
+4. **Keep the current `out/merged.ged` as `out/merged-<n>.ged` before merging**
+   — item 0.00A relies on the pre-batch tree being kept to measure a batch.
+5. `python -m genimerge merge`, then record the new-people count and update the
+   corpus count in `reports/`.
+
 ## Active after import finished
 
 Once we are finished with the wikidata tree export, or have decided we are finished with it, we can then look to see how much of the tree is interconnected.
@@ -81,6 +104,18 @@ item with no relation statements emits no dangling reference either. Splitting
 them needs only a count of relation statements per item, which the same pass can
 carry. Until it does, do not describe the 183,296 as "people with no family on
 Wikidata" — that is one of the two readings and it is unverified.
+
+**The HTML must split the two, and isolates need investigation — Emma,
+2026-08-09.** The component output (HTML) has to separate genuine **isolates**
+— items with *zero* relation statements, no family recorded on Wikidata at all
+— from items that only look isolated because their **relatives were not
+downloaded** — items carrying P22/P25/P26/P40 that point at QIDs not yet in the
+store. Those two are different work: the not-downloaded ones **just need
+import** (the expansion walk fetches the referenced items and they stop looking
+isolated), while the true isolates are **NEEDS-INVESTIGATION** — nothing the
+import closes, a standing question about why Wikidata records no family for
+them. The relation-statement count this item already calls for is the
+discriminator; surface it per item so the two groups are told apart in the page.
 
 2.B **Port the remaining `client.sparql` call sites to the store, by question.**
 `reconcile`, `crosscheck` and `namelinks` still import `genimerge.wikidata`, so
