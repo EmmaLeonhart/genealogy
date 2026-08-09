@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import gzip
 import json
+from dataclasses import dataclass, field
 from pathlib import Path
 
 import pytest
@@ -58,52 +59,94 @@ def stored_items():
                     yield json.loads(line)
 
 
+#: Enough offenders to diagnose from, without accumulating a million of them.
+EXAMPLE_LIMIT = 5
+
+
+@dataclass
+class _Scan:
+    """Everything the tests below assert, accumulated in a single pass.
+
+    The store is read **streaming**, and this holds aggregates rather than the
+    items themselves. The fixture used to be ``list(stored_items())``, which
+    was fine against the pilot store and does not survive the real one: at
+    1,408 shards and ~1.4M items that list is tens of gigabytes of dicts, and
+    on 2026-08-09 it took the whole suite down twice — killed at 99% with no
+    summary line, which reads as a hang rather than as the memory exhaustion
+    it is.
+
+    Every stored item is still examined one at a time, so what is asserted is
+    unchanged; only the retention is. Keep it that way — sampling the store
+    would silently retire the guarantee Emma asked for in the module docstring.
+    """
+
+    total: int = 0
+    missing_count: int = 0
+    missing_keys: dict = field(default_factory=dict)
+    claims_without_mainsnak: list = field(default_factory=list)
+    seen_qualifiers: int = 0
+    seen_references: int = 0
+    properties: set = field(default_factory=set)
+    with_geni: int = 0
+    with_family: int = 0
+
+
 @pytest.fixture(scope="module")
-def items():
-    return list(stored_items())
-
-
-def test_every_stored_item_carries_the_full_entity_shape(items):
-    missing = {}
-    for item in items:
+def scan():
+    stats = _Scan()
+    for item in stored_items():
+        stats.total += 1
         absent = FULL_ITEM_KEYS - set(item)
         if absent:
-            missing[item.get("id", "?")] = sorted(absent)
-    assert not missing, f"items stored without every top-level key: {list(missing.items())[:5]}"
+            stats.missing_count += 1
+            if len(stats.missing_keys) < EXAMPLE_LIMIT:
+                stats.missing_keys[item.get("id", "?")] = sorted(absent)
+        # `.get`, not `[...]`: a missing `claims` is precisely what the
+        # full-shape test detects, and indexing here would turn that finding
+        # into a fixture error that fails all five tests with one message.
+        claims = item.get("claims") or {}
+        stats.properties.update(claims)
+        for statements in claims.values():
+            for statement in statements:
+                if "mainsnak" not in statement and len(stats.claims_without_mainsnak) < EXAMPLE_LIMIT:
+                    stats.claims_without_mainsnak.append(item.get("id", "?"))
+                stats.seen_qualifiers += bool(statement.get("qualifiers"))
+                stats.seen_references += bool(statement.get("references"))
+        stats.with_geni += "P2600" in claims
+        stats.with_family += bool(wikidownload.relatives(item))
+    return stats
 
 
-def test_claims_are_stored_in_full_not_summarised(items):
+def test_every_stored_item_carries_the_full_entity_shape(scan):
+    assert not scan.missing_keys, (
+        f"{scan.missing_count} of {scan.total} items stored without every "
+        f"top-level key: {list(scan.missing_keys.items())}"
+    )
+
+
+def test_claims_are_stored_in_full_not_summarised(scan):
     # A statement carries its mainsnak, and the ones that matter carry
     # qualifiers and references too. Storing only the value would halve the
     # item and lose every date qualifier the QuickStatements work needs.
-    seen_qualifiers = seen_references = 0
-    for item in items:
-        for statements in item["claims"].values():
-            for statement in statements:
-                assert "mainsnak" in statement, f"{item['id']} has a claim with no mainsnak"
-                seen_qualifiers += bool(statement.get("qualifiers"))
-                seen_references += bool(statement.get("references"))
-    assert seen_qualifiers, "no qualifier survived anywhere in the store"
-    assert seen_references, "no reference survived anywhere in the store"
+    assert not scan.claims_without_mainsnak, f"claims with no mainsnak on: {scan.claims_without_mainsnak}"
+    assert scan.seen_qualifiers, "no qualifier survived anywhere in the store"
+    assert scan.seen_references, "no reference survived anywhere in the store"
 
 
-def test_the_store_is_not_a_thin_slice_of_wikidata(items):
+def test_the_store_is_not_a_thin_slice_of_wikidata(scan):
     # 770 distinct properties over the first 1,000 items. A store holding only
     # the handful this repo currently reads would pass every other test here.
-    properties = {prop for item in items for prop in item["claims"]}
-    assert len(properties) > 100, f"only {len(properties)} distinct properties in the whole store"
+    assert len(scan.properties) > 100, f"only {len(scan.properties)} distinct properties in the whole store"
 
 
-def test_the_seed_items_carry_the_geni_id_they_were_selected_for(items):
+def test_the_seed_items_carry_the_geni_id_they_were_selected_for(scan):
     # The seed list is every QID with P2600. An item stored without it means
     # the wrong thing was fetched, or the P2600 map has drifted from Wikidata.
     # Expansion items legitimately have none, so this is a floor, not a rule.
-    with_geni = sum(1 for item in items if "P2600" in item["claims"])
-    assert with_geni > len(items) * 0.5, f"only {with_geni} of {len(items)} carry P2600"
+    assert scan.with_geni > scan.total * 0.5, f"only {scan.with_geni} of {scan.total} carry P2600"
 
 
-def test_relatives_finds_family_links_in_the_real_items(items):
+def test_relatives_finds_family_links_in_the_real_items(scan):
     # The walk's expansion depends on this reading real Wikidata JSON, not the
     # shape a fixture happens to have.
-    with_family = sum(1 for item in items if wikidownload.relatives(item))
-    assert with_family > len(items) * 0.5, f"only {with_family} of {len(items)} name any relative"
+    assert scan.with_family > scan.total * 0.5, f"only {scan.with_family} of {scan.total} name any relative"

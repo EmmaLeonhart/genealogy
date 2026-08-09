@@ -37,6 +37,34 @@ imo we need to figure out how to reach all the wikidata items with geni ids, but
 
 ## Active Earlier
 
+0.00Y **`test_the_seed_items_carry_the_geni_id_they_were_selected_for` fails,
+and the assertion is what expired, not the download.** It asserts that over half
+of every stored item carries P2600. Measured 2026-08-09 over the whole store:
+**514,903 of 1,408,401 — 36.6%**.
+
+Nothing is wrong with the data. The seed set is ~516,983 QIDs
+(`out/wikidata/p2600-all.tsv`; `wikidownload.py:354` calls it "the real
+514,822") and **514,903 of them are stored**, so the seed phase is essentially
+complete. The other 893,498 items are expansion relatives, which is exactly what
+the walk exists to fetch. The floor held only while the store was
+seed-dominated, i.e. during the pilot, and the test's own comment already
+concedes "Expansion items legitimately have none, so this is a floor, not a
+rule".
+
+**The decision is what should be asserted instead**, and it is Emma's because
+the test encodes her requirement. The obvious candidate — P2600 count against
+the seed-file count, rather than against the store total — has a catch worth
+knowing before choosing: `out/` is gitignored, so `p2600-all.tsv` is absent on a
+fresh checkout and the test would have to skip there, which is a weaker guard
+than it looks. A plain absolute floor (say 500,000) is self-contained but goes
+stale in the other direction.
+
+Do **not** just lower `0.5` to a number that passes today. That retires the
+guard without replacing it, and the guard is the one that would catch the seed
+map drifting.
+
+**NEEDS-DECISION** — Emma; what the seed-coverage invariant should be.
+
 0.00Z **Three `FAM.HUSB` conflicts in the 145-export merge — decide them on
 evidence, not on filename order.** The first structural disagreements the merge
 has had to resolve: two exports naming different husbands for one family, where

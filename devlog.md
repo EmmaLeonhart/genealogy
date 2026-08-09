@@ -4330,3 +4330,44 @@ disagreement of the kind § "two fathers" in `queue.md` is about.
 `genimerge merge --help` said "Earlier files win value conflicts". The
 implementation has been later-wins since 2026-08-04 (`merge.py:198`, `:322`,
 `:356`); only the argparse description was stale. Fixed, no behaviour change.
+
+## 2026-08-09 (later) — the suite could not finish, and the reason was a fixture
+
+Verifying the merge meant running `pytest`, and it died twice at **exactly 2025
+dots of 2075** — no summary line, no traceback, no `F`. Identical stopping point
+both times, so not a flake.
+
+Test 2026 is
+`tests/test_wikidata_store_real.py::test_every_stored_item_carries_the_full_entity_shape`,
+and the cause was its module fixture: `list(stored_items())`. That materialises
+every stored Wikidata item as a dict at once. Written against the pilot store it
+was fine; against the real one — 1,408 shards, 2.7 GB gzipped, 1.4M items — it
+is tens of gigabytes, and the process climbed past 6.9 GB and never came back.
+It reads as a hang and is memory exhaustion.
+
+Replaced with a single streaming pass accumulating aggregates (`_Scan`). Every
+stored item is still examined one at a time, so nothing asserted has weakened —
+only the retention changed. **The store must not be sampled here**: the module
+docstring records Emma's reason for checking the bytes on disk, and a sample
+would quietly retire it. Memory now sits at **0.05 GB** and the file runs in
+**5m45s** over all 1,408,401 items.
+
+Two smaller things fell out of writing it. `claims` is read with `.get`, not
+`[...]`, because a missing `claims` is exactly what the full-shape test detects
+and indexing would convert that finding into a fixture error failing all five.
+Offender examples are capped at five with a separate total, so a systematic
+fault reports its size without accumulating a million ids.
+
+**Four of the five pass. The fifth fails, and the assertion is what expired.**
+`test_the_seed_items_carry_the_geni_id_they_were_selected_for` wants over half of
+all stored items to carry P2600; the store is at **514,903 of 1,408,401, 36.6%**.
+The seed set is ~516,983 QIDs and 514,903 are stored, so the seed phase is
+essentially done and the remaining 893,498 are expansion relatives — what the
+walk is for. The floor only ever held while the store was seed-dominated.
+Left failing rather than tuned to pass: lowering the number would retire the
+guard that catches the seed map drifting. `queue.md` 0.00Y, **NEEDS-DECISION**.
+
+So the standing count is **2074 of 2075 green**, with that one known red. The
+figure is assembled from two runs — 2025 dots before the fixture, then
+`test_wikidownload.py` (45 passed in 1.09s) and this file separately — because a
+whole-suite run now costs the store pass on top of 145 exports.
