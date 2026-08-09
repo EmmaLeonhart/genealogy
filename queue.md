@@ -35,6 +35,70 @@ Also the wikidata items with two geni ids, we need to resolve this
 imo we need to figure out how to reach all the wikidata items with geni ids, but we do not have the geni ids. These can be discovered with tree traversal planning. Mainly descendants of individuals we have. Extension of the other descendants thing we were doing. We do that thing first, and then the general geni export thing later. This might get most of the significant geni stuff here anyways, but we can get say clearly terminating clusters in the 1800s or 1700s later after the incorporation of the geni descendants and such
 
 
+## Active — joining the two trees offline (planned 2026-08-09)
+
+Decomposed from § *Active after import finished* above and `todo.md` § 8b. The
+gate on that section — *"once we are finished with the wikidata tree export, or
+have decided we are finished with it"* — is passed: Emma's call, 2026-08-09,
+*"I consider wikidata stuff to be, for the most part, present enough that we can
+focus on geni."* The download stays stopped.
+
+**The blocker this section exists to remove.** `reconcile`, `crosscheck` and
+`namelinks` all import `genimerge.wikidata`, the SPARQL/API client, and
+`coverage` sits on `reconcile`. So every existing geni↔Wikidata answer is
+currently reachable **only by querying Wikidata**, which is precisely what
+`CLAUDE.md` § *Never query Wikidata to check something* forbids. The 1,408,401
+stored items are supposed to make those questions free, and today no command
+can read them for this purpose. Everything below is blocked on 1.A.
+
+The seam is already there and was built on purpose (`cli.py:119`): the client is
+injected, not constructed inline. The surface to satisfy is small — `sparql`
+(10 call sites), `entities`, `full_entities`, `search_people`.
+
+1.A **`genimerge.wikistore`: random access to the local dump.** A sqlite index
+mapping QID → shard, built in one streaming pass over `wikidata/items/*.jsonl.gz`,
+plus `entities(qids)` returning the same dict shape `wbgetentities` returns so
+callers cannot tell the difference. Random access decompresses one ~2 MB shard
+rather than 2.7 GB. Index lives in `out/` (gitignored, regenerable).
+
+Do **not** emulate SPARQL. The 10 `client.sparql` call sites each ask one
+concrete question; port them one at a time by *question*, not by pretending to
+be an endpoint. `tests/` must cover the index against the real store, skipping
+when absent the way `test_wikidata_store_real.py` does.
+
+1.B **The P2600 → QID map, extracted once.** One pass over the store writing
+`out/wikidata/p2600-map.tsv`. This is *the* join key between the two trees and
+every item below reads it. Emit **one row per (Geni ID, QID) pair, not a dict** —
+the same reason `wikidata.Match` is a list: the mapping is not one-to-one, and
+collapsing a double would hide exactly the cases § *Active after import
+finished* wants resolved.
+
+1.C **How much of the tree is interconnected** — the first question the queue
+asks after the import, and the first that 1.A/1.B make answerable offline.
+Join the 275,437-person merged tree against the map and report, to
+`reports/interconnection.md`: how many of our people carry a Wikidata item; how
+many stored items carry a Geni ID we have never exported; and the same split per
+connected component, since a component nobody links to is a different problem
+from a thin one.
+
+1.D **Items carrying two Geni IDs.** Named explicitly in § *Active after import
+finished*. Falls out of 1.B's pair list at no extra cost — a QID appearing with
+two distinct Geni IDs is either a Wikidata-side duplicate claim or two of our
+profiles that are one person. Report both readings separately; do not merge
+anything on this evidence alone. `genimerge.doubles` already asks the mirror-image
+question and should be read before writing a second one.
+
+1.E **Where Wikidata holds ancestors our Geni tree lacks** — `todo.md` § 8b calls
+this the thing neither tree can do alone: both a Geni-side export target and the
+input to entity resolution. Needs 1.A for P22/P25 on stored items.
+
+**Not planned here, deliberately.** The 10,000-individual entity-resolution
+backtest § *Active after import finished* asks for is **NEEDS-DECISION** — it
+needs a stated success criterion before any algorithm is written, and Emma's own
+note says "It needs to be rigorous". Do not start it by inventing the criterion.
+The display-name and name-property analysis is likewise unstarted; `genimerge
+profile-names` already measures the Geni side.
+
 ## Active Earlier
 
 0.00Y **`test_the_seed_items_carry_the_geni_id_they_were_selected_for` fails,
