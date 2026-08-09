@@ -13,11 +13,12 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ---
 
-## STANDING ORDER — quiet until 18:25 on 2026-08-09
+## STANDING ORDER — quiet until 18:30 on 2026-08-09
 
-**Emma, 14:25: no work loop, and nothing CPU intensive for four hours.** The
-three crons are deleted, not paused; do not recreate them before 18:25, and do
-not read the `## Always last` pinned tail as licence to restart them early.
+**Emma, 14:25: nothing CPU intensive until 18:30.** The work loop is *running* —
+she restarted it with this order attached. Quiet, not stopped. The
+three crons are running again as of 14:35; the ban is on expensive *steps*, not
+on working. After 18:30 the ban lifts and the queued CPU work is top priority.
 
 **Banned until then** — each a known multi-minute burn on this machine:
 
@@ -37,6 +38,65 @@ exists precisely so questions cost a lookup instead of a scan.
 Emma's own framing earlier today: *"if this is gonna be too hot then we should
 not do this and just write more into the specs and queue."* That is why the
 import below is committed with its merge deliberately not run.
+
+## Order of work — synthesized 2026-08-09
+
+Three queues had accumulated: this machine's, the cloud session's (the import
+item and 2.E's second half), and the older `0.*` items. **The IDs below are
+unchanged on purpose** — `devlog.md` entries and commit messages already point
+at them, so they are ordered here rather than renumbered.
+
+| # | item | state |
+| --- | --- | --- |
+| 1 | **3.A singleton Wikidata items carrying Geni links** | Emma's pick, 2026-08-09. Sampled part doable now |
+| 2 | **Import** — merge at 147 + the three corpus tests | steps 1-3 done; **4-5 need CPU, after 18:30** |
+| 3 | **2.A** century breakdown of the 1,821 targets | coded, 21 tests green; **run needs CPU** |
+| 4 | **2.E** component walk as a command, isolates split out | overlaps 3.A — do 3.A first, it is the same discriminator |
+| 5 | **2.B** port the `client.sparql` call sites offline | pure code, fine under the ban |
+| 6 | **2.C** build the union tree | shape settled by Emma; *edge* still undefined |
+| 7 | **0.00Z** three `FAM.HUSB` conflicts | NEEDS-INVESTIGATION |
+| 8 | **6** the stale Wikidata reports | rerun after the 147 merge |
+| 9 | **0.00Y** the known-red seed-coverage test | NEEDS-DECISION, Emma |
+| 10 | **2.D** the 10,000-person ER backtest | NEEDS-DECISION, Emma |
+| — | 0.0, 0.00A, 1, 3, 4 | BLOCKED-ON-USER-ACTION, all needing Emma at Geni |
+
+**`## Emma's brief — her words, the destinations these decompose from` below is Emma's own brief, not steps.** It is
+the destination list these decompose from; leave its wording alone.
+
+3.A **Singleton Wikidata items that carry a Geni link.** Emma, 2026-08-09:
+*"first thing is investigate the singleton wikidata ones with geni links."*
+
+`reports/wikidata-components.md` found **183,296 isolated single items** out of
+1,408,401. The subset that matters here is those carrying a P2600: Wikidata
+names a Geni profile for them and records **no family at all** on its side.
+
+**Keep 2.E's distinction — it is the whole question.** A **true isolate** has
+*zero* relation statements; an item only *appears* isolated when it carries
+P22/P25/P26/P40/P3373 pointing at QIDs the download never fetched. The second
+is closed by finishing the import and is not interesting; the first is a real
+question about what Wikidata holds. **Both are per-item properties**, so a
+sample answers the shape without the full pass the component walk needed.
+
+**Sampled 2026-08-09 — `reports/wikidata-isolates.md`.** What is left:
+
+- **The full count**, after 18:30. The sample is 24 of 1,408 shards; every
+  figure in that report is a proportion and is written as one.
+- **Export from a handful of isolates and see whether Geni returns family.**
+  This is the load-bearing unknown and it is BLOCKED-ON-USER-ACTION — only Emma
+  can take a Geni export. Pick seeds from the isolates already in our tree
+  (~286 of them) or from `reports/wikidata-unreached.tsv`, since an isolate is
+  almost never someone we hold.
+
+Two results worth carrying forward, because they change what other items mean:
+
+1. **The "relatives not downloaded" explanation is dead** — 0 of 9,000 sampled.
+   So 183,296 is close to a real isolate count rather than the upper bound
+   `wikidata-components.md` had to call it, and **2.E's discriminator has already
+   done its job** — implement it for re-runnability, not to settle the question.
+2. **An isolate is 21x less likely to be someone we hold** (0.16% against
+   3.43%). The ~180,000 well-described items missing only their genealogy are
+   therefore an *export target list*, not an authoring list — which is the
+   opposite of how they first read.
 
 ## Import the two new exports in Downloads (2026-08-09)
 
@@ -71,7 +131,7 @@ and all now see two files they have never seen. The cap change is *believed* to
 be what they need and **that has not been verified** — run them before trusting
 the import.
 
-## Active after import finished
+## Emma's brief — her words, the destinations these decompose from
 
 Once we are finished with the wikidata tree export, or have decided we are finished with it, we can then look to see how much of the tree is interconnected.
 
@@ -93,7 +153,7 @@ Also the wikidata items with two geni ids, we need to resolve this
 imo we need to figure out how to reach all the wikidata items with geni ids, but we do not have the geni ids. These can be discovered with tree traversal planning. Mainly descendants of individuals we have. Extension of the other descendants thing we were doing. We do that thing first, and then the general geni export thing later. This might get most of the significant geni stuff here anyways, but we can get say clearly terminating clusters in the 1800s or 1700s later after the incorporation of the geni descendants and such
 
 
-## Active — after the offline join (2026-08-09)
+## Active — the numbered items (see the order table above)
 
 The five items planned this morning are done and are in `devlog.md`.
 `genimerge.wikistore` now reads the downloaded store, and

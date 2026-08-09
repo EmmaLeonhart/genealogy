@@ -4558,3 +4558,40 @@ relation statements produces no dangling reference either. Queued as 2.E along
 with making the walk re-runnable; it was a throwaway script, which is the reason
 it is queued rather than left as-is.
 
+## 2026-08-09 (afternoon) — the isolates are real, and they are not the easy win
+
+Emma restarted the work loop with a standing order — nothing CPU intensive until
+18:30 — and picked the first item: the singleton Wikidata items carrying Geni
+links. The constraint shaped the method rather than blocking it. "Has no
+relation statement" is a **per-item** property, unlike component membership, so
+a sample answers it; 24 of 1,408 shards, evenly spaced because the store is
+written in walk order and the first 24 would have been all seed phase.
+
+**Of 9,000 sampled Geni-linked items, 3,143 — 34.9% — carry no relation
+statement at all, and 0 carry relations pointing only at un-fetched items.** The
+second reading `queue.md` 2.E was written to protect is not rare but absent.
+Finishing the import will not close these, and 183,296 is therefore close to a
+real count rather than the upper bound `wikidata-components.md` had to call it.
+
+**They are not stubs.** All 3,143 are `P31`=`Q5`, median ~15 claim properties,
+87.8% with a family name item, 85.1% with a birth date, 57.6% with an
+occupation. Robert Mallet-Stevens carries 122 properties and 19 sitelinks. What
+they lack is *only* the genealogy — no parent, spouse, child or sibling.
+
+That reads as the clearest authoring target in the project: good items, already
+existing, joined by the Geni ID, missing exactly what a genealogy site holds.
+**Then the same sample killed it.** An isolate is in our tree 0.16% of the time
+against 3.43% for Geni-linked items that do have family — twenty-one times less
+likely. Scaled, ~286 of ~180,000 are people we hold. Our tree is built by
+walking Geni's family graph, so it fills with the densely-related population
+Wikidata also records parents for; the isolates are the other kind of notable
+person, outside the interconnected genealogy on both sites.
+
+So it is an **export target list, not an authoring list**. The earlier section
+in `reports/wikidata-isolates.md` is left standing above the correction rather
+than rewritten, because the reasoning that made it look like an authoring win is
+worth being able to see.
+
+Measuring that overlap cost nothing once the sample was open. Asserting it would
+have cost the next several days.
+
