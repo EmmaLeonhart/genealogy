@@ -29,6 +29,12 @@ We also need some other geni-wikidata entity resolutions manually or with search
 
 Adding the geni source properties
 
+
+Also the wikidata items with two geni ids, we need to resolve this
+
+imo we need to figure out how to reach all the wikidata items with geni ids, but we do not have the geni ids. These can be discovered with tree traversal planning. Mainly descendants of individuals we have. Extension of the other descendants thing we were doing. We do that thing first, and then the general geni export thing later. This might get most of the significant geni stuff here anyways, but we can get say clearly terminating clusters in the 1800s or 1700s later after the incorporation of the geni descendants and such
+
+
 ## Active Earlier
 
 0.000 The "FIRST ITEM" is finished — all 19 path files re-checked against the
