@@ -4024,6 +4024,234 @@ to stop rather than to let it finish.
 User-Agent now carries contact@emmaleonhart.com, with Emma's say-so — Wikimedia
 asks for a contact and throttles harder without one, and 10,305 requests is the
 case that policy is written for.
+
+
+## 2026-08-07 (branch `geni-descendants`) — ranking lines that stop early
+
+New module `genimerge.descendants`, command `python -m genimerge descendants`,
+report `reports/descendants.md`, seed file `out/stalled-line-seeds.txt`.
+
+The downward counterpart to `frontier`. `frontier` ranks parentless people —
+where Geni knows an ancestor we do not. `density` ranks neighbourhoods few
+exports touched and knows nothing about dates. Neither serves the `Descendants`
+campaign, which is Emma's and is about **time**: the tree skews ancient and
+medieval, and the goal is the present.
+
+**The measure is a descendant count that is small but nonzero**, bucketed by
+birth-year band so it can be read one century at a time. Nonzero means the line
+demonstrably continues; small means we barely followed it. Zero is excluded on
+purpose — childless and unexplored look identical in our data.
+
+Three things went wrong on the way and are worth keeping:
+
+**Stall was the ranking and had to be demoted.** Stall is `present - reach`, and
+a person's own birth year is a floor on how far their line reaches, so ranking a
+100-year band by it sorted the band by birth year. Every band's top pick came
+out **born in the band's first year** — 1500, 1600, 1700, 1800, 1900 — which is
+where the band edge fell, not a finding. The primary key is now
+`generations followed`, which every person has and which does not move with the
+band. Stall stays as a column.
+
+**The exact descendant count does not scale to this tree.**
+`frontier.descendant_counts` carries each descendant set as a bitmask, one bit
+per person per person: a kilobyte each at the 8766 people its docstring was
+written for, 32 KB each at today's **257,219**, tens of gigabytes in total. This
+module walks each line with a visited set instead and abandons it above
+`CAP = 200`, pruning on the exact fact that a person with an over-cap child is
+over-cap too. An abandoned count is carried as `descendants_exact = False`, never
+as zero — reading it as zero would have invented leaves.
+
+**Nested candidates had to be collapsed.** A six-person stalled line was
+reported six times, once per member, with the bottom of the line ranked above
+its own ancestor. An export seeded on the ancestor covers the whole subtree plus
+branches we never saw, so the ancestor is strictly the better seed. Checking
+parents alone is enough — descendant counts rise strictly upward — and the
+collapse is per band, so a band keeps its own best pick rather than losing it to
+someone a century earlier.
+
+Against 134 exports merged to 257,219 people: 46.8% carry a birth year, 52.1%
+have no recorded descendant, and 52,196 people are candidates. The report covers
+50 periods plus an `undated` band of 136,953 people, which is why the
+generations-above view exists at all — and it is not a second clock, since depth
+measures how far *we* have traced upward.
+
+30 tests in `tests/test_descendants.py`, plus registration and an end-to-end
+check in `tests/test_cli.py`.
+
+
+## 2026-08-07 (branch `geni-descendants`) — descent paths, not distinct people
+
+Emma's call, and it replaced the module's measure a few hours after it was
+built: **count lines of descent, not distinct descendants.** Her recursion —
+
+    paths(person) = sum over each recorded child c of (1 + paths(c))
+
+Somebody reachable down two lines counts twice. That is the intent, not a defect
+to correct: the question this report asks is how many lines come down from a
+person, and a descendant reached twice is two lines. She ruled distinct counting
+out as not merely irrelevant here but plausibly *worse* — pedigree collapse is
+dense in this tree, and de-duplicating it makes the top of a wide,
+repeatedly-intermarried descent look narrow.
+
+**It deleted the expensive half of the module.** Distinct counting needs a set
+union per person, which is why `frontier.descendant_counts` carries a bitmask —
+one bit per person per person, a kilobyte each at the 8766 its docstring was
+written for and 32 KB each at 257219. This module had a capped walk, a `CAP`
+constant, a `--cap` flag and a `descendants_exact` flag purely to work around
+that. Emma's recursion is a plain post-order sum, O(V+E), exact at every size.
+All of it is gone.
+
+What replaced it is `PATH_CEILING = 1e12`, and for the opposite reason: path
+counts *compound* through shared subtrees, so a deep intermarried ancestor's
+true count runs to thousands of digits — arithmetic nobody reads and everybody
+waits for. The sums saturate there. It is thirteen orders of magnitude above any
+usable `small`, so it is a display bound and never a candidacy one.
+
+`descendant_and_tip_counts` → `descent_paths`; `Line.descendants` →
+`Line.paths`; `Line.open_tips` → `Line.open_paths`, now "how many of those paths
+end at somebody with no recorded child" rather than "how many childless
+descendants". The nesting collapse is unaffected — path counts still rise
+strictly upward, a parent's being at least `1 + child's`.
+
+31 tests. The DIAMOND fixture now pins the divergence directly: six paths from P
+against `frontier.descendant_counts`'s five people, asserted side by side.
+
+`reports/descendants.md` is stale until the next run and is regenerated by a
+local cron at 20:00 — the ~11 minutes is CPU-heavy and Emma was in public.
+
+
+## 2026-08-07 (branch `geni-descendants`) — a depth of 0 that meant "cycle", not "leaf"
+
+Caught by reading the regenerated report rather than by a test. The top pick of
+the `undated` band — 136953 people, the largest band there is — read
+`generations followed = 0` beside `descent paths = 12`. Both cannot be true.
+
+`_post_order` drops an edge back into a node still being expanded, which is the
+right call: a person is not their own descendant, and a genealogy database
+routinely contains people who are, because one person exists under two profiles
+and the two got linked as parent and child. But `descendant_depth` then wrote
+
+    known = [depth[c] for c in children[node] if c in depth]
+    depth[node] = 1 + max(known) if known else 0
+
+and the `if c in depth` guard silently turns "this child is in a cycle" into
+"this person has no children". **Depth is this module's primary ranking key,
+ascending**, so every such person sorted above every genuine candidate.
+
+Measured over the merged tree: **8 people** of the 123256 who have a recorded
+child came out at depth 0, and 28 changed value in total. A tiny population with
+an outsized effect — being ranked first is a position of exactly one per band.
+`Arne` (6000000007351784249), one descent path and no open ends, held the top of
+the undated band; it is now a person with 20 paths and 20 open ends.
+
+`frontier.ancestor_depth` is the same eight lines with `parents` in place of
+`children` and had the identical bug: **5** of 208863 people with a recorded
+parent were reported as the top of their own ancestry, 26 changed value. It was
+invisible there because nothing ranks on it — it only skewed the "generations
+above" histogram in `reports/frontier.md`. Fixed in the same change, since
+`descendants` reads it for the generation axis.
+
+Both now contribute `0` for an unresolved neighbour rather than nothing, and
+apply the `1 +` whenever there is a neighbour at all. A cycle therefore
+*truncates* the measure instead of falsifying it. The invariant is asserted for
+every person in a fixture built around a two-person cycle: recorded children and
+zero depth cannot both be true.
+
+The tree holds **15 ancestry cycles across 55 distinct people**;
+`frontier.ancestry_cycles` reports them as the defects they are, and
+`reports/descendants.md` now says so in its caveats.
+
+**On the metric change itself, measured:** candidates went 52196 → 52171, and
+the per-band picks barely moved. Path counts and distinct counts coincide almost
+exactly at the small end, because a line of twenty people rarely re-converges;
+the two diverge in the tail, where this report does not look. So Emma's argument
+for descent paths stands on being the right question rather than on changing the
+answer — what it changed was the implementation, which lost a cap, a flag and a
+walk.
+
+
+## 2026-08-07 (branch `geni-descendants`) — the batch, and two methods refuted by it
+
+Emma imported eleven `Descendants` exports explicitly aimed at reaching later
+generations. Ingested (134 → 145 GEDCOMs), merged (**257,219 → 275,437 people**,
++18,218), and — because `out/merged.ged` was copied to `out/merged-134.ged`
+first — measurable. That copy is the whole reason any of the below is knowable;
+**do it every time a batch lands.**
+
+**The campaign goal was not served.** Median birth year of a new person: **1582**.
+Born after 1900: **four**. The 1500s gained 3,369, the 1600s 3,045, the 1700s
+1,967, the 1800s 101, the 1900s 4. **No person born 1800 or later gained a
+child, of 14,371.**
+
+**The cause is mechanical.** A `Descendants` ball is breadth-first with a ~4,076
+budget, so it spends everything on the generations nearest the seed. Every seed
+in the batch was ancient or undated — `Soeiro` born 680, the rest medieval
+placeholders — and twelve generations from 1300 lands in the 1660s, which is
+exactly where the new people are. Full numbers in
+`reports/descendants-backtest-2026-08-07.md`.
+
+**Method 1, "small but nonzero descent" — refuted.** All ten seeds that already
+existed had **exactly one recorded child** and descent-path counts from 371 to
+**1.5 billion**, every one outside the 1–20 candidate band. The report this repo
+had been building all day would not have proposed a single one of them.
+
+**Method 2, "the rim of a cut-off ball" — proposed and refuted the same hour.**
+Childless people inside an export that came back at the size bound gained
+children at **0.71%**, below the 1.00% base rate and below the 1.05% of people
+on no rim. It anti-predicts. Worth recording that it was going to be presented
+as an improvement on the strength of its reasoning; the measurement is the only
+reason it was not.
+
+**What replaced them is a constraint, not a cleverer ranking.** Seed where you
+want to arrive. `REACH_GENERATIONS`, `REACH_TARGET` and `Line.can_reach` encode
+it and `reports/descendants.md` now opens with § *Seeds that can reach 1900*.
+
+**The screen went through three versions in an hour, each fixed by reading real
+output rather than by thinking harder:**
+
+1. *Flat twelve generations, ranked by open ends.* Passed a person born 1670
+   with nineteen recorded children — whose ball actually lands about 1755.
+2. *Ranked by birth year instead.* Overshot: the top became people born
+   1965–1973 whose lines already reach 1996–2004, with nothing left to add.
+3. *Width-aware.* A ball costs `branching ** k` to reach generation *k*, so the
+   budget buys `log(4076)/log(branching)` of them — **12 at two children per
+   couple, 8 at three, 3 at twenty.** `Line.generations_affordable` and
+   `Line.arrives` compute it and `ball reaches ~` is a column, so the trade
+   between payoff and reach is visible instead of assumed.
+
+Candidates 14,193 → **10,071** under the width-aware screen. The head of the
+list is now named 19th-century people with 4–20 recorded children, balls
+reaching 1935–2044, and lines that currently stop between 1882 and 1939 —
+`out/reach-1900-seeds.txt` is the paste-from file.
+
+**It is labelled untested, in those words.** Two methods have died on
+measurement here in one day; this one is a constraint plus an unvalidated
+ranking. `queue.md` holds the specific falsifiable test.
+
+**Later the same day — the 1800s answer, and a quarter of the list was duplicates.**
+Emma asked whether it should be 1800s people rather than 1900s, and to "kinda
+arbitrarily look over" the candidates instead of trusting a ranking. Both were
+right and the second exposed a defect.
+
+Measured: of the 7591 seeds a ball can reach 1900 from, **1800s hold 39%** —
+1500s 8%, 1600s 19%, 1700s 23%, 1900s 11%. Two reasons converge there: a seed
+born 1850 needs two or three generations to pass 1900 and has them spare, and
+**Geni redacts living people**, so a 1900s seed's descendants cannot be exported
+at all. The 1800s are the last fully retrievable cohort.
+
+**`drop_duplicate_balls`**: ranks 1 and 2 were Margaret Outlaw (b. 1858, 20
+children) and Samuel D. Outlaw (b. 1855, 20 children) — a married couple with
+the same children, so an export from either returns the identical ball. The
+ranking rewards a large family and both parents of one score alike, so this was
+systematic rather than a fluke: **10071 → 7591 candidates, a quarter of the list
+was one export written twice.**
+
+**`out/reach-1900-seeds.html`**: 600 candidates, filter by decade, sort by any
+column, every name linking to Geni, self-contained. Built because "look over and
+pick by eye" is the correct response to an ordering that has been wrong twice,
+and the page says exactly that on itself.
+
+
 ## 2026-08-08 — the download loop's log freezes when anything tails it
 
 The download had stopped: nothing running, `out/wikidata-loop.log` last written

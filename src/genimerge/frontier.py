@@ -239,13 +239,31 @@ def descendant_counts(tree: Tree) -> dict[str, int]:
 
 
 def ancestor_depth(tree: Tree) -> dict[str, int]:
-    """Longest chain of recorded ancestors above each person."""
+    """Longest chain of recorded ancestors above each person.
+
+    **Anyone with a recorded parent has depth at least 1.** :func:`_post_order`
+    drops an edge back into a node still being expanded, which is right — a
+    person is not their own ancestor — but it leaves that parent missing from
+    ``depth`` when the child is processed. Treating the gap as "no parents" and
+    falling through to ``0`` reported people who demonstrably have parents as
+    the top of their own ancestry.
+
+    Found 2026-08-07 through the identical bug in
+    :func:`genimerge.descendants.descendant_depth`, where the same fall-through
+    put a person with twelve descent paths at the top of a report ranked on
+    fewest generations. Here it only skews the "generations above" histogram, so
+    it was invisible; the two are one line apart and were written the same day.
+
+    An unresolved parent therefore contributes ``0`` rather than nothing, so a
+    cycle truncates the measurement instead of falsifying it.
+    :func:`ancestry_cycles` is what reports these people as defects.
+    """
     parents = _parent_map(tree)
     depth: dict[str, int] = {}
 
     for node in _post_order(list(tree.people), parents):
-        known = [depth[p] for p in parents[node] if p in depth]
-        depth[node] = 1 + max(known) if known else 0
+        above = parents[node]
+        depth[node] = 1 + max((depth.get(p, 0) for p in above), default=0) if above else 0
 
     return depth
 

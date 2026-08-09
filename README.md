@@ -142,6 +142,7 @@ python -m genimerge consistency      # dates that contradict -> reports/consiste
 python -m genimerge frontier         # where the tree stops -> reports/frontier.md
 python -m genimerge seeds            # what to export next  -> reports/seeds.md
 python -m genimerge density          # where the tree is thin -> reports/density.md
+python -m genimerge descendants      # lines that stop early -> reports/descendants.md
 # a saved Geni profile page -> a path file carrying every profile ID
 python -m genimerge path-from-html "geni_pages/<saved page>.html" -o paths/jimmu.tsv
 # how much of that path the tree holds -> reports/path-jimmu.md and .json
@@ -196,6 +197,7 @@ Generated, and worth reading in this order:
 - `reports/wikidata-overlap.md` — the same join counted from *both* sides: how much of our tree Wikidata knows, and how much of Wikidata's Geni-linked population we hold. `coverage` and `reconcile` ask about the IDs we already have and so can only answer the first; `overlap` fetches every P2600 statement, which is the only way to see an item whose Geni profile no export has reached
 - `reports/consistency.md` — dates in the tree that contradict each other, split into impossible and implausible
 - `reports/frontier.md` — where the tree stops: parentless people, components, generational depth
+- `reports/descendants.md` — the downward counterpart to `frontier.md`: people with few but **not zero** lines of descent running down from them, so the line demonstrably continues and we have barely followed it, ranked inside birth-year bands by how few generations down we have walked. It counts **descent paths, not distinct people** — `paths(p) = Σ over children (1 + paths(child))` — so somebody reached down two lines counts twice, because two lines is what an export would follow. The axis `density.md` does not have — it is about *when*, which is what the `Descendants` export campaign is for
 - `reports/seeds.md` — the next exports to take, as a sequence whose breadth-first balls barely overlap
 - `reports/path-jimmu.md` — how much of a Geni relationship path the tree holds, and where it breaks; `reports/path-jimmu.json` is the same thing per step, with each person's Geni link, whether we hold them, and which component they are in. Joined on the profile ID, because the IDs are extracted from a saved page rather than a pasted one — see `path-from-html`. A path file missing IDs falls back to name matching, and then the report says so at the top
 - `reports/names.md` — which surnames and given names already have Wikidata items

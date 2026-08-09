@@ -18,6 +18,7 @@ from . import (
     coverage,
     crosscheck,
     density,
+    descendants as descendants_mod,
     distant,
     entities,
     frontier,
@@ -687,6 +688,108 @@ def _cmd_density(args: argparse.Namespace) -> int:
         print(
             f"largest thin region: {biggest.size} people, {biggest.parentless} doorways"
             + (f" — {biggest.sample[0]}" if biggest.sample else "")
+        )
+    return 0
+
+
+def _cmd_descendants(args: argparse.Namespace) -> int:
+    ws = Workspace.from_args(args)
+    tree = _load_tree(args.source, ws)
+    present = args.present or descendants_mod.present_year()
+
+    lines = descendants_mod.build_lines(tree)
+    parents = descendants_mod.parent_map(tree)
+    by_birth, by_generation = descendants_mod.bands(
+        lines,
+        present=present,
+        small=args.small,
+        width=args.band,
+        per_band=args.per_band,
+        min_stall=args.min_stall,
+        parents=parents,
+    )
+
+    output = args.output or (ws.reports / "descendants.md")
+    _write(
+        output,
+        descendants_mod.render_markdown(
+            tree, lines, by_birth, by_generation,
+            present=present, small=args.small, width=args.band,
+            min_stall=args.min_stall, per_band=args.per_band,
+            target=args.target_year, parents=parents,
+        ),
+    )
+    seed_list = ws.out / "stalled-line-seeds.txt"
+    _write(seed_list, descendants_mod.render_seed_list(by_birth))
+
+    # The campaign list is the one to paste from, so it gets its own file rather
+    # than being mixed into the survey. **Same order as the report's § Seeds
+    # that can reach section** — they disagreed once, the file leading with a
+    # 1973 profile holding three open ends while the report led with an 1858 one
+    # holding twenty, and the file is the one that actually gets used.
+    reachable = sorted(
+        (
+            line for line in descendants_mod.candidates(
+                lines, present=present, small=args.small,
+                min_stall=args.min_stall, parents=parents,
+            )
+            if line.birth is not None and line.can_reach(args.target_year)
+        ),
+        key=lambda line: (-line.open_paths, -(line.birth or 0), int(line.geni_id)),
+    )
+    # One seed per couple: both parents of the same children give the identical
+    # ball, and the ranking rewards a large family so both score alike.
+    reachable = descendants_mod.drop_duplicate_balls(reachable)
+    reach_list = ws.out / f"reach-{args.target_year}-seeds.txt"
+    _write(
+        reach_list,
+        "".join(
+            f"{descendants_mod.profile_url(line.geni_id)} | Geni - "
+            f"{line.name or 'NN'} (b. {line.birth}, {line.open_paths} open)\n"
+            for line in reachable[:200]
+        ),
+    )
+
+    total = sum(band.total_candidates for band in by_birth)
+    print(f"wrote {output}")
+    print(
+        f"{len(reachable)} candidates are born late enough for a ball to reach "
+        f"{args.target_year}; everything else cannot arrive whatever else is "
+        f"true of it"
+    )
+    page = ws.out / f"reach-{args.target_year}-seeds.html"
+    _write(page, descendants_mod.render_html(reachable, args.target_year, len(tree.people)))
+    print(f"wrote {reach_list}: the best {min(200, len(reachable))} of them")
+    print(f"wrote {page}: sortable and filterable, to look over and pick by eye")
+    # Which century the campaign seeds actually live in, rather than an argument
+    # about which one they ought to.
+    from collections import Counter as _Counter
+    by_century = _Counter((line.birth // 100) * 100 for line in reachable)
+    for century in sorted(by_century):
+        share = by_century[century] / len(reachable)
+        print(f"  born {century}s: {by_century[century]:>5} ({share:.0%})")
+    print(
+        f"wrote {seed_list}: "
+        f"{sum(len(band.picks) for band in by_birth)} picks across "
+        f"{sum(1 for band in by_birth if band.picks)} periods"
+    )
+    print(
+        f"{total} of {len(tree.people)} people have 1-{args.small} recorded "
+        f"descent paths and nobody above them in the same period who does"
+    )
+    # The most recent band with a pick, because that is what the campaign is
+    # aiming at — not the worst-ranked line anywhere, which is always ancient.
+    newest = max(
+        (b for b in by_birth if b.picks and not b.is_undated),
+        key=lambda b: b.order,
+        default=None,
+    )
+    if newest is not None:
+        pick = newest.picks[0]
+        print(
+            f"nearest the present: {pick.name or pick.geni_id} ({newest.label}), "
+            f"{pick.paths} descent path(s) over {pick.depth} generation(s), "
+            f"{pick.open_paths} open"
         )
     return 0
 
@@ -1508,6 +1611,57 @@ def build_parser() -> argparse.ArgumentParser:
         "-o", "--output", type=Path, default=None, help="default: <reports>/density.md"
     )
     p_den.set_defaults(func=_cmd_density)
+
+    p_desc = sub.add_parser(
+        "descendants",
+        help="rank lines that stop early, by period, to reach modern times",
+        description=(
+            "Ranks people with few but not zero lines of descent running down "
+            "from them — the line demonstrably continues and we have barely "
+            "followed it — bucketed by birth-year period and by generations of "
+            "recorded ancestry. The downward counterpart to `frontier`. Counts "
+            "descent paths, not distinct people: somebody reached down two "
+            "lines is two lines."
+        ),
+    )
+    p_desc.add_argument("--source", type=Path, default=None, help="a GEDCOM to read instead of merging")
+    p_desc.add_argument(
+        "--small",
+        type=int,
+        default=descendants_mod.SMALL,
+        help=f"most descent paths a line may hold and still count as barely followed (default: {descendants_mod.SMALL})",
+    )
+    p_desc.add_argument(
+        "--band", type=int, default=descendants_mod.BAND_YEARS, help="width of a birth-year band in years"
+    )
+    p_desc.add_argument(
+        "--per-band", type=int, default=5, help="how many candidates to show per band"
+    )
+    p_desc.add_argument(
+        "--min-stall",
+        type=int,
+        default=0,
+        help="drop lines already followed to within this many years of now (default: 0, off)",
+    )
+    p_desc.add_argument(
+        "--target-year",
+        type=int,
+        default=descendants_mod.REACH_TARGET,
+        help=(
+            "the year a seed must be able to reach to be listed as a campaign "
+            f"seed (default: {descendants_mod.REACH_TARGET})"
+        ),
+    )
+    p_desc.add_argument(
+        "--present",
+        type=int,
+        default=None,
+        help="the year to measure stall against (default: this year)",
+    )
+    p_desc.add_argument(
+        "-o", "--output", type=Path, default=None, help="default: <reports>/descendants.md"
+    )
+    p_desc.set_defaults(func=_cmd_descendants)
 
     p_er = sub.add_parser(
         "entity-resolution",
