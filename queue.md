@@ -13,6 +13,31 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ---
 
+## STANDING ORDER — quiet until 18:25 on 2026-08-09
+
+**Emma, 14:25: no work loop, and nothing CPU intensive for four hours.** The
+three crons are deleted, not paused; do not recreate them before 18:25, and do
+not read the `## Always last` pinned tail as licence to restart them early.
+
+**Banned until then** — each a known multi-minute burn on this machine:
+
+- `genimerge merge` (~5 min, and 147 exports is the expensive one)
+- `genimerge wikidata-index` (~6 min, one pass over 2.7 GB)
+- `genimerge wikidata-ancestors` (two store passes)
+- the **full** `pytest` run — `test_wikidata_store_real.py` alone scans 1.4M
+  items and takes 5m45s
+- any fresh pass over `wikidata/items/` or `out/merged.ged`
+
+**Fine**: reading and writing files, editing code, targeted test files that use
+fixtures rather than the real store, git, and anything answered from
+`out/wikidata/store-index.sqlite3` or an existing `reports/*.tsv` — the index
+exists precisely so questions cost a lookup instead of a scan.
+
+**If a task needs a banned step, stop and write it into this queue instead.**
+Emma's own framing earlier today: *"if this is gonna be too hot then we should
+not do this and just write more into the specs and queue."* That is why the
+import below is committed with its merge deliberately not run.
+
 ## Import the two new exports in Downloads (2026-08-09)
 
 **Two `export-geni*.zip` files are sitting in the Downloads folder and are not
