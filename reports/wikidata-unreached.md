@@ -4,26 +4,44 @@ Generated offline from `out/wikidata/p2600-all.tsv` against the 275,437-person
 merge. Full pair list: `reports/wikidata-unreached.tsv`. Browsable page:
 `out/wikidata-unreached.html` (gitignored — regenerate rather than commit).
 
+**What it is for**, in Emma's words: *"a table that lets me click to the geni
+ids and run exports that will contain them and resolve these things."* Each row
+links to the Wikidata item and to the Geni profile to export from.
+
 | | count |
 | --- | ---: |
 | P2600 pairs on Wikidata | 516,983 |
-| **pairs whose Geni ID is not in our tree** | **504,123** |
-| …distinct Geni IDs | 504,063 |
-| …distinct Wikidata items | 502,165 |
+| …numeric, i.e. joinable | 516,955 |
+| …malformed, kept separately | 28 |
+| **pairs whose Geni ID is not in our tree** | **504,095** |
 | pairs we do hold | 12,860 |
 
-**Every row is a person Wikidata already names a Geni profile for, and that no
-export here has reached.** This is the direct answer to why the joined figure is
-only ~12,850: not because the two sites disagree about who exists, but because
-our 145 exports have touched 2.5% of the Geni population Wikidata points at.
+**Why only ~12,850 join.** Not because the two sites disagree about who exists:
+because 145 exports have reached about 2.5% of the Geni population Wikidata
+already points at.
 
-The three counts differ on purpose. Distinct Geni IDs is smaller than pairs
-because an item can carry two Geni IDs; distinct items is smaller again because
-a Geni ID can sit on two items. Collapsing them would hide exactly the rows
-worth looking at — see `reports/wikidata-doubles.md`.
+## Two things measured while building this, both worth knowing
 
-**What this is not.** It is not a queue of people to create on Wikidata: these
-already have items. It is a list of **export targets** — Geni profiles that
-exist and that we have never pulled. It says nothing about where they sit in
-the genealogy, so it does not rank; `reports/wikidata-ancestors.md` is the
-ranked slice (the 1,821 sitting one hop above somebody we already hold).
+**28 P2600 values are not IDs at all** — `reports/wikidata-p2600-malformed.tsv`.
+They are URLs and URL fragments pasted into the field, e.g.
+`https://www.geni.com/people/Abdul-MUTHALIB/4799832763350031690` and
+`people/Josefina-Virginia-Alvear-…/6000000013301059830`. Each one *contains* a
+usable ID, and none is extracted here: recovering an ID by parsing a URL out of
+a field that should not hold one is the fuzzy matching this repo refuses
+everywhere else. They are listed so they can be fixed **on Wikidata**, which is
+where the defect is.
+
+**Geni IDs are bimodal in length, and the short ones are real.** Of the numeric
+values: 511,236 are 19 digits, 3,646 are 18, and **2,073 are 7 digits or
+fewer** — down to a single digit. The short ones are old-style Geni IDs, not
+corruption, and they are kept. This mattered: the first version of this table
+sorted by ID length ascending, which put every oddity at the top and made the
+page look like it held nothing but junk. It is now sorted by item (QID).
+
+## What this is not
+
+Not a queue of people to create on Wikidata — they already have items. Not
+ranked, either: it says nothing about where a person sits in the genealogy, so
+it cannot tell you which export would cover the most rows.
+`reports/wikidata-ancestors.md` is the ranked slice — the 1,821 sitting one hop
+above somebody we already hold.
