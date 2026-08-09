@@ -4371,3 +4371,64 @@ So the standing count is **2074 of 2075 green**, with that one known red. The
 figure is assembled from two runs — 2025 dots before the fixture, then
 `test_wikidownload.py` (45 passed in 1.09s) and this file separately — because a
 whole-suite run now costs the store pass on top of 145 exports.
+
+## 2026-08-09 (later still) — the two trees measured against each other
+
+Emma: *"merging geni exports and wikidata dump stuff as per queue.md"*. The gate
+on § *Active after import finished* is her call earlier the same day that the
+Wikidata side is present enough to focus on Geni, so the download stays stopped
+and everything here is offline.
+
+**The blocker that section turned out to have.** `reconcile`, `crosscheck` and
+`namelinks` all import `genimerge.wikidata`, the SPARQL/API client, and
+`coverage` sits on `reconcile`. So the geni↔Wikidata answers were reachable only
+by querying Wikidata, which `CLAUDE.md` forbids — the 1.4M downloaded items were
+supposed to make exactly those questions free.
+
+**Two of the five planned items turned out to be already built, and reading the
+code first is what caught it.** This is worth recording as a method rather than
+as a near-miss: the plan was written from the queue's prose, and two of its items
+described commands that exist.
+
+- `overlap --offline` already joins the tree against the cached P2600 map.
+- `genimerge doubles` already reads that map for items claiming two of our
+  people — the queue's *"wikidata items with two geni ids"*.
+
+So `out/wikidata/p2600-all.tsv` is the join key, not something to derive: 516,983
+rows written by `overlap` from **all** of Wikidata's P2600 in sixteen partitions.
+A store-derived map can only cover what was downloaded, so it is demoted to a
+cross-check.
+
+**How interconnected the two trees are, over the 275,437-person merge.** 12,850
+people in both — **4.67% of our tree, 2.49% of Wikidata's Geni IDs**. The
+asymmetry is the finding: **504,035 people whose Geni profile Wikidata names and
+no export here has ever reached**, against 262,587 of ours Wikidata does not
+know. That 504,035 is the queue's *"reach all the wikidata items with geni ids,
+but we do not have the geni ids"*, now a number.
+
+Raw shape of the map, before any tree is involved: 516,983 rows over **514,821
+distinct QIDs** and **516,912 distinct Geni IDs** — so 2,162 items carry more
+than one Geni ID, and 71 Geni IDs sit on more than one item.
+
+**52 items claim two or more people we hold** (`reports/wikidata-doubles.md`);
+27 share a relative, 4 share a name, none have births over 120 years apart.
+`Q2501720` claims three. Our merge keys on the profile ID and cannot see any of
+this: two IDs are two people to it. The report decides nothing — each row is
+either one person with two Geni profiles or two people one of whose P2600
+statements is wrong, and the shared-relative column is the discriminator worth
+starting from.
+
+**`genimerge.wikistore` — the offline reader**, and the part that was genuinely
+missing. A sqlite index of QID → shard and Geni ID → QID built in one streaming
+pass, plus `entities()` returning items in the shape `wbgetentities` returned so
+callers cannot tell the difference. Indexing to *shard* rather than byte offset
+is the version gzip supports: a lookup decompresses one ~2 MB shard instead of
+2.7 GB. The index is derived, lives in `out/`, and is never committed — 
+`wikidownload`'s rule, unchanged.
+
+It does **not** emulate SPARQL, deliberately. The ten `client.sparql` call sites
+each ask one concrete question and will be ported by question. A query engine
+pretending to be an endpoint is far more code and invites the "just quickly
+check" habit the rule exists to stop. 16 tests, including two real shards copied
+into a temp directory — a full index build is minutes, and what needs proving
+against real bytes is that the parsing holds, not that a loop repeats.

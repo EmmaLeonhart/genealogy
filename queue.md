@@ -66,27 +66,12 @@ concrete question; port them one at a time by *question*, not by pretending to
 be an endpoint. `tests/` must cover the index against the real store, skipping
 when absent the way `test_wikidata_store_real.py` does.
 
-1.B **The P2600 → QID map, extracted once.** One pass over the store writing
-`out/wikidata/p2600-map.tsv`. This is *the* join key between the two trees and
-every item below reads it. Emit **one row per (Geni ID, QID) pair, not a dict** —
-the same reason `wikidata.Match` is a list: the mapping is not one-to-one, and
-collapsing a double would hide exactly the cases § *Active after import
-finished* wants resolved.
-
-1.C **How much of the tree is interconnected** — the first question the queue
-asks after the import, and the first that 1.A/1.B make answerable offline.
-Join the 275,437-person merged tree against the map and report, to
-`reports/interconnection.md`: how many of our people carry a Wikidata item; how
-many stored items carry a Geni ID we have never exported; and the same split per
-connected component, since a component nobody links to is a different problem
-from a thin one.
-
-1.D **Items carrying two Geni IDs.** Named explicitly in § *Active after import
-finished*. Falls out of 1.B's pair list at no extra cost — a QID appearing with
-two distinct Geni IDs is either a Wikidata-side duplicate claim or two of our
-profiles that are one person. Report both readings separately; do not merge
-anything on this evidence alone. `genimerge.doubles` already asks the mirror-image
-question and should be read before writing a second one.
+1.B **A store-derived P2600 map, as a cross-check only.** `--map` on
+`wikidata-index` writes `out/wikidata/p2600-stored.tsv`. It is **not** the join
+key: `out/wikidata/p2600-all.tsv` is, and it is authoritative because `overlap`
+fetched *all* of Wikidata's P2600 in sixteen partitions, where the store holds
+only what was downloaded. The two differing tells us what the download has left,
+which is worth knowing and is not the same question.
 
 1.E **Where Wikidata holds ancestors our Geni tree lacks** — `todo.md` § 8b calls
 this the thing neither tree can do alone: both a Geni-side export target and the

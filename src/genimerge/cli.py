@@ -39,6 +39,7 @@ from . import (
     sources,
     wikidata,
     wikidownload,
+    wikistore,
 )
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -583,6 +584,43 @@ def _cmd_connectors(args: argparse.Namespace) -> int:
             f"  {i}. {c.slots} slots, {len(c.people)} people, "
             f"{len(c.path_names)} path(s) — seed on {where} [{c.style}]"
         )
+    return 0
+
+
+def _cmd_wikidata_index(args: argparse.Namespace) -> int:
+    """Build the derived index over the downloaded store.
+
+    Offline by construction: it reads `wikidata/items/` and talks to nothing.
+    """
+    ws = Workspace.from_args(args)
+    store_dir = args.store or WIKIDATA_STORE
+    index_path = args.index or wikistore.default_index_path(ws.out)
+
+    if not Path(store_dir).exists():
+        print(
+            f"{store_dir} not found — nothing to index. The store is written by "
+            "`python -m genimerge wikidata-download`.",
+            file=sys.stderr,
+        )
+        return 1
+
+    def progress(done: int, total: int, items: int) -> None:
+        if done % 100 == 0 or done == total:
+            print(f"  {done}/{total} shards, {items:,} items", flush=True)
+
+    stats = wikistore.build_index(store_dir, index_path, progress=progress)
+    print(f"wrote {index_path}")
+    print(
+        f"{stats.items:,} items over {stats.shards} shards; "
+        f"{stats.items_with_geni:,} carry P2600 ({stats.geni_pairs:,} statements)"
+    )
+    if stats.items_with_several_geni:
+        print(f"{stats.items_with_several_geni:,} items carry more than one Geni ID")
+
+    if args.map:
+        with wikistore.StoreReader(store_dir, index_path) as reader:
+            rows = wikistore.write_p2600_map(reader, args.map)
+        print(f"wrote {args.map} ({rows:,} pairs)")
     return 0
 
 
@@ -1535,6 +1573,31 @@ def build_parser() -> argparse.ArgumentParser:
         "-o", "--output", type=Path, default=None, help="default: <reports>/remote-people.md"
     )
     p_rem.set_defaults(func=_cmd_remote)
+
+    p_widx = sub.add_parser(
+        "wikidata-index",
+        help="index the downloaded Wikidata store for random access",
+        description=(
+            "One streaming pass over `wikidata/items/`, writing a sqlite index "
+            "of QID -> shard and Geni ID -> QID. Offline: it reads the store "
+            "and talks to nothing. The index is derived and lives under `out/` "
+            "— shards are the truth, and a committed index would be a second "
+            "copy of it that can disagree."
+        ),
+    )
+    p_widx.add_argument(
+        "--store", type=Path, default=None, help=f"default: {WIKIDATA_STORE}"
+    )
+    p_widx.add_argument(
+        "--index", type=Path, default=None, help="default: <out>/wikidata/store-index.sqlite3"
+    )
+    p_widx.add_argument(
+        "--map",
+        type=Path,
+        default=None,
+        help="also write a Geni ID/QID pair file extracted from the store",
+    )
+    p_widx.set_defaults(func=_cmd_wikidata_index)
 
     p_dbl = sub.add_parser(
         "doubles",
