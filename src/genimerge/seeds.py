@@ -190,7 +190,16 @@ __all__ = [
 #: landing on the same 4056 within twenty minutes, then three consecutive
 #: `Forest` takes each four higher than the last. Neither "it sits still" nor
 #: "it steps by four" survives both halves.
-GENI_EXPORT_CAP = 4076
+#:
+#: **2026-08-09, 12:32 and 12:49 — 4080, from one seed in two styles.** A
+#: `Forest` and a `Descendants` export of `6000000227143930843`, seventeen
+#: minutes apart, both exactly 4080. Two things worth separating: the number
+#: moved again, three days after the last reading, which is the fourth time;
+#: and **two different styles from one seed returned the identical count**,
+#: which is the same style-independence the eleven exports of 2026-08-04
+#: showed at 3860 and is now seen at a second value. Their *contents* differ —
+#: 2459 families against 2283 — so this is not one export downloaded twice.
+GENI_EXPORT_CAP = 4080
 
 #: The step between reading this report and running an export.
 #:

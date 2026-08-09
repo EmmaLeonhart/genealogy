@@ -22,19 +22,29 @@ the same export arrives twice routinely, so this batch may not be two new files.
 Needs the machine that has the Downloads folder; the cloud session cannot reach
 it, so this is the first thing for a PC session to run.
 
-1. Extract each zip beside itself; move the `.ged` under `exports/` into a
-   directory named for the seed (the file's first `INDI`), disambiguating by
-   seed profile ID if a `export-<style>.ged` name is already taken.
-2. **Drop any that is a byte-identical repeat of a file already committed under
-   `exports/`** before committing — as the 2026-08-06 edges batch did with two
-   of its six zips. Check containment too: a strict subset of a committed export
-   adds nothing.
-3. Add the one-line gitignore entry per zip (full path, never a `*.zip`
-   pattern), so the unignored zip is the signal a download arrived.
-4. **Keep the current `out/merged.ged` as `out/merged-<n>.ged` before merging**
-   — item 0.00A relies on the pre-batch tree being kept to measure a batch.
-5. `python -m genimerge merge`, then record the new-people count and update the
-   corpus count in `reports/`.
+**Steps 1-3 are done (2026-08-09). Steps 4-5 are not, and were stopped for
+laptop heat at Emma's word, not because of a problem.**
+
+There were **three** zips, not two. `export-geni.zip` (2026-08-08) is a
+byte-identical repeat of `exports/descendants/export-Descendants-6000000177955802827.ged`
+and was dropped. The other two are in `exports/Wife of John Harvey/`, both
+seeded on `6000000227143930843`, one `Forest` and one `Descendants`, **4080
+individuals each** — which raised `GENI_EXPORT_CAP` from 4076.
+
+What remains, both of which cost CPU and neither of which is started:
+
+4. **Keep the current `out/merged.ged` as `out/merged-145.ged` before merging**
+   — item 0.00A relies on the pre-batch tree being kept to measure a batch. The
+   current file is the 145-export tree; do this *first* or the measurement is
+   lost.
+5. `python -m genimerge merge` (147 exports now), then record the new-people
+   count and update the corpus count in `reports/`.
+
+**Also not run: the test suite.** `tests/test_seeds.py`,
+`test_repo_invariants.py` and `test_gedcom_real_exports.py` all read the corpus
+and all now see two files they have never seen. The cap change is *believed* to
+be what they need and **that has not been verified** — run them before trusting
+the import.
 
 ## Active after import finished
 
