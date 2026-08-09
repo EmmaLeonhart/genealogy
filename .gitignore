@@ -30,7 +30,14 @@ Thumbs.db
 # No, actually, the zips being all like this. The zips should be ignored individually because it makes it so that, as a human, I'm able to see when the zips are there. 
 
 # Generated artifacts. Committed prose lives in reports/, not here.
-out/
+out/*
+
+# ...except the browsable pages Emma actually works from. This one was lost to a
+# fresh clone once: gitignored, with "regenerate rather than commit" written in
+# reports/wikidata-unreached.md and no script that could regenerate it. It is
+# tracked now, and scripts/build-unreached-page.py rebuilds it from the tracked
+# TSV in about a second.
+!out/wikidata-unreached.html
 
 # Coverage measurement leftovers
 .coverage

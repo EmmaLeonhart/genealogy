@@ -2,7 +2,10 @@
 
 Generated offline from `out/wikidata/p2600-all.tsv` against the 275,437-person
 merge. Full pair list: `reports/wikidata-unreached.tsv`. Browsable page:
-`out/wikidata-unreached.html` (gitignored — regenerate rather than commit).
+`out/wikidata-unreached.html` — **tracked**, and rebuilt from the TSV by
+`python scripts/build-unreached-page.py` in about a second, no store pass and no
+network. It used to say "gitignored — regenerate rather than commit" here, with
+no script that could regenerate it; a fresh clone then took the page with it.
 
 **What it is for**, in Emma's words: *"a table that lets me click to the geni
 ids and run exports that will contain them and resolve these things."* Each row
