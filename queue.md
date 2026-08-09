@@ -35,54 +35,46 @@ Also the wikidata items with two geni ids, we need to resolve this
 imo we need to figure out how to reach all the wikidata items with geni ids, but we do not have the geni ids. These can be discovered with tree traversal planning. Mainly descendants of individuals we have. Extension of the other descendants thing we were doing. We do that thing first, and then the general geni export thing later. This might get most of the significant geni stuff here anyways, but we can get say clearly terminating clusters in the 1800s or 1700s later after the incorporation of the geni descendants and such
 
 
-## Active — joining the two trees offline (planned 2026-08-09)
+## Active — after the offline join (2026-08-09)
 
-Decomposed from § *Active after import finished* above and `todo.md` § 8b. The
-gate on that section — *"once we are finished with the wikidata tree export, or
-have decided we are finished with it"* — is passed: Emma's call, 2026-08-09,
-*"I consider wikidata stuff to be, for the most part, present enough that we can
-focus on geni."* The download stays stopped.
+The five items planned this morning are done and are in `devlog.md`.
+`genimerge.wikistore` now reads the downloaded store, and
+`wikidata-index` / `wikidata-ancestors` are the two new commands. What that
+opened up, and what it did not:
 
-**The blocker this section exists to remove.** `reconcile`, `crosscheck` and
-`namelinks` all import `genimerge.wikidata`, the SPARQL/API client, and
-`coverage` sits on `reconcile`. So every existing geni↔Wikidata answer is
-currently reachable **only by querying Wikidata**, which is precisely what
-`CLAUDE.md` § *Never query Wikidata to check something* forbids. The 1,408,401
-stored items are supposed to make those questions free, and today no command
-can read them for this purpose. Everything below is blocked on 1.A.
+2.A **1,821 export targets nobody has looked at yet.**
+`reports/wikidata-ancestors.md` lists Geni profiles Wikidata names as a parent
+of somebody we already hold, and that no export here has reached. These are
+doorways `frontier` **cannot** see — it ranks our own parentless people and
+knows nothing about what the other tree says is above them. Nothing has been
+done with the list: it wants reading, and then a decision about whether these
+feed the export campaign the way `reports/descendants.md` does. Note the
+tension worth resolving before acting: the `Descendants` campaign is about
+reaching *modern* times, and a parent is by construction a step **backwards**.
 
-The seam is already there and was built on purpose (`cli.py:119`): the client is
-injected, not constructed inline. The surface to satisfy is small — `sparql`
-(10 call sites), `entities`, `full_entities`, `search_people`.
+2.B **Port the remaining `client.sparql` call sites to the store, by question.**
+`reconcile`, `crosscheck` and `namelinks` still import `genimerge.wikidata`, so
+they still cannot run under the no-query rule. Ten call sites; each asks one
+concrete thing and gets answered from the index. `crosscheck` is the valuable
+one — it compares our parents, spouses and dates against Wikidata's, and the
+4,491 parents with no Geni ID are exactly the population it would speak to.
+Do **not** write a SPARQL emulator.
 
-1.A **`genimerge.wikistore`: random access to the local dump.** A sqlite index
-mapping QID → shard, built in one streaming pass over `wikidata/items/*.jsonl.gz`,
-plus `entities(qids)` returning the same dict shape `wbgetentities` returns so
-callers cannot tell the difference. Random access decompresses one ~2 MB shard
-rather than 2.7 GB. Index lives in `out/` (gitignored, regenerable).
+2.C **4,491 parents Wikidata knows with no Geni ID at all.** Counted, not
+listed, because listing them implies a next action nobody has chosen. They are
+either people Geni lacks — which is `todo.md` § 4's authoring pipeline — or
+people Geni has under a profile no item links to, which is entity resolution.
+**NEEDS-DECISION** — Emma; which of those two this population is treated as,
+because the answer decides whether it becomes a creation batch or a matching
+problem.
 
-Do **not** emulate SPARQL. The 10 `client.sparql` call sites each ask one
-concrete question; port them one at a time by *question*, not by pretending to
-be an endpoint. `tests/` must cover the index against the real store, skipping
-when absent the way `test_wikidata_store_real.py` does.
-
-1.B **A store-derived P2600 map, as a cross-check only.** `--map` on
-`wikidata-index` writes `out/wikidata/p2600-stored.tsv`. It is **not** the join
-key: `out/wikidata/p2600-all.tsv` is, and it is authoritative because `overlap`
-fetched *all* of Wikidata's P2600 in sixteen partitions, where the store holds
-only what was downloaded. The two differing tells us what the download has left,
-which is worth knowing and is not the same question.
-
-1.E **Where Wikidata holds ancestors our Geni tree lacks** — `todo.md` § 8b calls
-this the thing neither tree can do alone: both a Geni-side export target and the
-input to entity resolution. Needs 1.A for P22/P25 on stored items.
-
-**Not planned here, deliberately.** The 10,000-individual entity-resolution
-backtest § *Active after import finished* asks for is **NEEDS-DECISION** — it
-needs a stated success criterion before any algorithm is written, and Emma's own
-note says "It needs to be rigorous". Do not start it by inventing the criterion.
-The display-name and name-property analysis is likewise unstarted; `genimerge
-profile-names` already measures the Geni side.
+2.D **The 10,000-individual entity-resolution backtest.** § *Active after import
+finished* asks for it and says "It needs to be rigorous". It still has no stated
+success criterion, and inventing one is the failure mode — two seed-choosing
+methods have already been refuted by measurement here, and both were proposed on
+reasoning alone. **NEEDS-DECISION** — Emma; what counts as success.
+The display-name and name-property analysis is likewise unstarted;
+`genimerge profile-names` already measures the Geni side.
 
 ## Active Earlier
 

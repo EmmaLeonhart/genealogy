@@ -4432,3 +4432,55 @@ pretending to be an endpoint is far more code and invites the "just quickly
 check" habit the rule exists to stop. 16 tests, including two real shards copied
 into a temp directory — a full index build is minutes, and what needs proving
 against real bytes is that the parsing holds, not that a loop repeats.
+
+## 2026-08-09 (evening) — what Wikidata says is above us
+
+`genimerge.wikistore` indexed the whole store: **1,408,401 items over 1,408
+shards, 514,903 carrying P2600 across 517,878 statements**, and **2,861 items
+carrying more than one Geni ID**. One pass, flat memory, ~6 minutes.
+
+**The cross-check the store-derived map exists for.** Against
+`out/wikidata/p2600-all.tsv`, which `overlap` fetched from Wikidata on
+2026-08-06: 516,982 pairs in both, **1** pair listed and not stored, and **869
+pairs stored that the snapshot does not list** on 55 QIDs it never named. So the
+seed download is complete to within one pair, and the store has since drifted
+*ahead* of the map — items edited after the fetch, plus expansion items that
+happen to carry P2600. Also 517,878 statements over 517,851 distinct pairs:
+**27 items state the same Geni ID twice.**
+
+**`wikidata-ancestors`, the first thing here that needed both trees.** Over the
+12,840 of our people carrying an item (67 Geni IDs sit on more than one item and
+were skipped rather than picked), **17,385 parent statements**:
+
+| | count |
+| --- | ---: |
+| parent we already hold | 11,073 |
+| **parent with a Geni ID we have never exported** | 1,821 |
+| parent with no Geni ID on the item | 4,491 |
+| matched items missing from the store | 0 |
+
+**The 1,821 are doorways `frontier` cannot see**, and that is the point of the
+report rather than a side note: `frontier` ranks *our* parentless people, so it
+can only nominate somebody it already holds. These are profiles it has no row
+for — Geni IDs that exist, sit one hop above somebody we hold, and no export has
+reached. The 4,491 are a different problem wearing the same shape: Wikidata
+knows a person and no Geni ID is claimed, which is entity resolution or an
+authoring target, not an export.
+
+Deliberately **not** `crosscheck`. That module only calls a relationship
+comparable when both ends are linked to items, so "Wikidata names a father we do
+not hold" is invisible to it by construction — correct there, and exactly the
+question here.
+
+**Two of the five planned items were already built**, and reading the code
+before writing any is what caught it: `overlap --offline` already joins the tree
+against the cached map, and `doubles` already reads it for items claiming two of
+our people. The plan committed in `1dd6ede` was wrong on both. The queue's prose
+describes destinations, and more of them are already reached than it implies;
+check each remaining item the same way.
+
+Left undone and named rather than absorbed: `reconcile`, `crosscheck` and
+`namelinks` still import the SPARQL client and still cannot run offline
+(`queue.md` 2.B). The 4,491 unlinked parents and the 10,000-person
+entity-resolution backtest are both **NEEDS-DECISION** — 2.C and 2.D — because
+each needs a call from Emma that reasoning cannot supply.
