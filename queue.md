@@ -60,13 +60,41 @@ one — it compares our parents, spouses and dates against Wikidata's, and the
 4,491 parents with no Geni ID are exactly the population it would speak to.
 Do **not** write a SPARQL emulator.
 
-2.C **4,491 parents Wikidata knows with no Geni ID at all.** Counted, not
-listed, because listing them implies a next action nobody has chosen. They are
-either people Geni lacks — which is `todo.md` § 4's authoring pipeline — or
-people Geni has under a profile no item links to, which is entity resolution.
-**NEEDS-DECISION** — Emma; which of those two this population is treated as,
-because the answer decides whether it becomes a creation batch or a matching
-problem.
+2.C **Build the union tree — one genealogy holding both sources.** This is the
+project, not a phase of it: `CLAUDE.md` § *Project Description* is merge the
+exports, reconcile against Wikidata, then create what is missing. Emma,
+2026-08-09: *"the wikidata also needs to have its own synoptic tree … we're
+trying to integrate them."*
+
+**Corrected here after getting it wrong.** This item previously asked Emma to
+decide whether the 4,491 Geni-ID-less parents were "an authoring batch or a
+matching problem", as though admitting them required choosing. In a union tree
+it does not: a person Wikidata records with no Geni ID is simply a node that
+came from the other source. Whether one later proves to be a Geni profile under
+a different ID is entity resolution **inside** the union, not a gate on entry.
+The dichotomy was invented and the NEEDS-DECISION tag was wrong — by this repo's
+own load-bearing default that made it undone work, not deferred work.
+
+Concretely, the union holds:
+
+- **12,850 in both** — joined on P2600, one node with two source IDs.
+- **262,587 Geni-only** — our tree, no item.
+- **504,035 Wikidata items carrying a Geni ID no export has reached** — known to
+  both sites, held by neither of our datasets yet.
+- **893,498 Wikidata items with no Geni ID** — the expansion walk's catch, of
+  which the 4,491 parents are the part sitting directly above people we hold.
+
+The node identity has to carry **which source each fact came from**, because
+`todo.md` § 8's whole point is provenance and because a union that forgets
+whether a parent link came from a GEDCOM or from P22 cannot later be turned into
+Wikidata edits. Do not collapse the two IDs into one key: the Geni profile ID is
+this repo's primary key for the Geni side and the QID is Wikidata's, and a node
+can have either, both, or (after a merge) two of one.
+
+Start by writing the shape down before building it — what a union node is, what
+an edge is, and what happens when the two sources disagree about a parent. The
+merge rule for the Geni side is later-sources-win on single-valued paths; the
+union across *sites* is a different question and is not answered by that rule.
 
 2.D **The 10,000-individual entity-resolution backtest.** § *Active after import
 finished* asks for it and says "It needs to be rigorous". It still has no stated
