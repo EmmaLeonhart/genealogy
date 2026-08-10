@@ -58,10 +58,10 @@ at them, so they are ordered here rather than renumbered.
 | 1 | **3.A singleton Wikidata items carrying Geni links** | Emma's pick, 2026-08-09. Sampled part doable now |
 | 3 | **2.A** century breakdown of the 1,821 targets | coded, 21 tests green; **run now unblocked** |
 | 4 | **2.E** component walk as a command, isolates split out | overlaps 3.A — do 3.A first, it is the same discriminator |
-| 5 | **2.B** port the `client.sparql` call sites offline | pure code, fine under the ban |
+| 5 | **2.B** port the `client.sparql` call sites offline | pure code |
 | 6 | **2.C** build the union tree | shape settled by Emma; *edge* still undefined |
 | 7 | **0.00Z** three `FAM.HUSB` conflicts | NEEDS-INVESTIGATION |
-| 8 | **6** the stale Wikidata reports | rerun against the 149 merge |
+| 8 | **6** the stale Wikidata reports | rerun against the 151 merge |
 | 9 | **0.00Y** the known-red seed-coverage test | NEEDS-DECISION, Emma |
 | 10 | **2.D** the 10,000-person ER backtest | NEEDS-DECISION, Emma |
 | — | 0.0, 0.00A, 1, 3, 4 | BLOCKED-ON-USER-ACTION, all needing Emma at Geni |
@@ -69,7 +69,7 @@ at them, so they are ordered here rather than renumbered.
 **Item 2 (the import) is done and deleted.** Merged at 149 exports, and the three
 corpus tests that had never been run against the new files are green — `pytest
 tests/test_seeds.py tests/test_repo_invariants.py tests/test_gedcom_real_exports.py`,
-**1248 passed, 1 skipped, 4m39s**. The `GENI_EXPORT_CAP` 4080 → 4088 change is
+**1264 passed, 1 skipped, 4m17s** at 151 exports. The `GENI_EXPORT_CAP` 4080 → 4088 change is
 therefore measured, not believed. Its one unrecoverable piece is recorded under
 the re-clone above: the 145-export baseline item 0.00A wanted no longer exists.
 
@@ -90,26 +90,37 @@ is closed by finishing the import and is not interesting; the first is a real
 question about what Wikidata holds. **Both are per-item properties**, so a
 sample answers the shape without the full pass the component walk needed.
 
-**Sampled 2026-08-09 — `reports/wikidata-isolates.md`.** What is left:
+**Counted in full 2026-08-09 — `scripts/count-isolates.py`, all 1,408 shards.**
+**183,681 true isolates**, 35.7% of the 514,903 Geni-linked items; 331,220
+connected; **2** that only look isolated; **330** of the isolates already in our
+tree. `reports/wikidata-isolates.md` carries the full table and keeps the sample
+beside it. The page is rebuilt and tracked: `out/wikidata-isolates.html`.
 
-- **The full count**, after 18:30. The sample is 24 of 1,408 shards; every
-  figure in that report is a proportion and is written as one.
+**What is left of 3.A is one thing, and only Emma can do it:**
+
 - **Export from a handful of isolates and see whether Geni returns family.**
-  This is the load-bearing unknown and it is BLOCKED-ON-USER-ACTION — only Emma
-  can take a Geni export. Pick seeds from the isolates already in our tree
-  (~286 of them) or from `reports/wikidata-unreached.tsv`, since an isolate is
-  almost never someone we hold.
+  BLOCKED-ON-USER-ACTION — only Emma can take a Geni export. Pick seeds from the
+  330 isolates already in our tree, or from `reports/wikidata-unreached.tsv`,
+  since an isolate is almost never someone we hold. This is the load-bearing
+  unknown: the whole "export target list" reading assumes Geni *has* the family
+  Wikidata lacks, and that assumption is untested.
 
-Two results worth carrying forward, because they change what other items mean:
+Three results worth carrying forward, because they change what other items mean:
 
-1. **The "relatives not downloaded" explanation is dead** — 0 of 9,000 sampled.
-   So 183,296 is close to a real isolate count rather than the upper bound
-   `wikidata-components.md` had to call it, and **2.E's discriminator has already
-   done its job** — implement it for re-runnability, not to settle the question.
-2. **An isolate is 21x less likely to be someone we hold** (0.16% against
-   3.43%). The ~180,000 well-described items missing only their genealogy are
-   therefore an *export target list*, not an authoring list — which is the
-   opposite of how they first read.
+1. **The "relatives not downloaded" explanation is all but dead — 2 items in
+   514,903.** The sample said 0 of 9,000 and this queue said *dead*; the full
+   pass says vanishing, not absent. The conclusion survives: 183,681 is a real
+   isolate count, not the upper bound `wikidata-components.md` had to call it,
+   and **2.E's discriminator has already done its job** — implement it for
+   re-runnability, not to settle the question.
+2. **An isolate is ~20x less likely to be someone we hold** (0.18% against
+   3.43%). The ~183,000 well-described items missing only their genealogy are
+   therefore an *export target list*, not an authoring list — the opposite of
+   how they first read.
+3. **Isolates are confined to the seed phase.** The count reaches 183,681 by
+   shard ~600 of 1,408 and never moves again: expansion items were fetched
+   *because* they were somebody's relative, so they cannot be isolates. Nothing
+   further to download will reduce this number.
 
 ## Emma's brief — her words, the destinations these decompose from
 

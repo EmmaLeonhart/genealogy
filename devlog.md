@@ -4688,3 +4688,50 @@ run keeps working while the reports describe a corpus nobody else can read. Ran
 the suite, committed, re-ran: **1264 passed, 1 skipped, 4m17s**. The first run's
 failure is left in the record rather than tidied away, because the invariant
 catching a real mid-import state is the point of it existing.
+
+## 2026-08-09 — 3.A counted in full: 183,681 isolates, and a zero that was not zero
+
+Queue item 3.A, Emma's own pick: *"first thing is investigate the singleton
+wikidata ones with geni links."* The sample answered it from 24 of 1,408 shards
+because a full pass was banned for laptop heat; the ban lifted this afternoon,
+so it is counted properly now — `scripts/count-isolates.py`, one offline pass
+over all 1,408 shards.
+
+| | count | of Geni-linked | sample said |
+| --- | ---: | ---: | ---: |
+| carrying a Geni ID | 514,903 | | |
+| connected | 331,220 | 64.3% | 65.1% |
+| **true isolate** | **183,681** | **35.7%** | 34.9% |
+| looks isolated | **2** | 0.0004% | 0 of 9,000 |
+| isolates in our tree | 330 | 0.18% | ~286 est. |
+
+**The correction worth having.** The sample found no "looks isolated" items at
+all and this repo wrote down that the second reading was *dead*. It is not dead;
+it is two items in 514,903. Every conclusion that rested on it still stands, but
+"absent" was a sample result stated as a fact about the store, and a sample can
+only ever say *below my resolution*. The report now says vanishing and shows
+both columns. The script names the two QIDs on its next run — this pass only
+counted them, and that gap is recorded rather than papered over.
+
+**A structural finding that came free.** The isolate count reaches 183,681 by
+shard ~600 and does not move across the remaining 800. Seed-phase items were
+fetched because they carry a P2600; expansion items were fetched *because they
+were somebody's relative*, so they are connected by construction. Nothing
+further to download will reduce this number — which retires the last version of
+"finish the import and it will shrink".
+
+**The head of the list is not obscure.** Sorted by Wikipedia articles: Ovid
+(201 sitelinks), Avicenna (193), Omar Khayyám (166), Aesop (166), Horace (166),
+Thomas Hobbes (160). None of the six is in our tree. These are well-described
+people, carrying a Geni profile ID, with no father, mother, spouse, child or
+sibling recorded on Wikidata.
+
+`out/wikidata-isolates.html` is rebuilt from the full data and is now **tracked**,
+for the same reason the unreached page is: it had been generated into gitignored
+`out/` by an ad-hoc pass, and both the page and the `out/_isolates.json` behind
+it were lost in the re-clone with no script that could remake them.
+
+3.A is not closed. What remains is BLOCKED-ON-USER-ACTION and is the
+load-bearing part: export from a handful of isolates and see whether Geni
+returns the family Wikidata lacks. The entire "export target list" reading
+assumes it does, and that has never been tested.

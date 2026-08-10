@@ -1,12 +1,44 @@
 # The Geni-linked Wikidata items with no family at all
 
-Sampled 2026-08-09, offline. **24 of 1,408 shards, evenly spaced** — 24,000
-items, ~1.7% of the store. Spaced rather than taken from the front because the
-store is written in walk order: the front is all seed phase, the tail all
-expansion, and the first 24 shards would have answered a different question.
+**Counted in full 2026-08-09, offline — all 1,408 shards, 1,408,401 items.**
+`scripts/count-isolates.py`. The sample this report was first written from (24
+shards, ~1.7%) is preserved below where it differs, because what the full pass
+changed is worth being able to see.
 
-A full count is queued rather than run — nothing CPU-intensive before 18:30.
-Everything below is a sample proportion, and is written as one.
+| | count | of Geni-linked | sample said |
+| --- | ---: | ---: | ---: |
+| items in store | 1,408,401 | | |
+| carrying a Geni ID | 514,903 | | |
+| connected — a relation pointing at an item we hold | 331,220 | 64.3% | 65.1% |
+| **true isolate — no relation statement whatsoever** | **183,681** | **35.7%** | 34.9% |
+| looks isolated, relations all point at un-fetched items | **2** | 0.0004% | 0 of 9,000 |
+| …of the isolates, ones already in our tree | 330 | 0.18% | ~286 est. |
+
+**One correction, and it matters more than its size.** The sample found *zero*
+"looks isolated" items in 9,000 and this report called the second reading
+**dead**. It is not dead — it is **2 items in 514,903**. The conclusion drawn
+from it survives intact (isolation is not an artifact of stopping the download
+early, and finishing the import will not close it), but "absent" was a sample
+result stated as a fact about the store, and the honest word is *vanishing*.
+The next run of the script names the two QIDs; this one only counted them.
+
+**The isolates are all in the seed phase, and that is structural.** The running
+count reaches 183,681 by shard ~600 and does not move again over the remaining
+800 shards. Seed-phase items were fetched because they carry a P2600; expansion
+items were fetched *because they were somebody's relative*, so they are
+connected by construction and cannot be isolates. The store's own write order
+makes this visible.
+
+**Against `wikidata-components.md`'s 183,296 isolated single items:** the true
+isolate count is **183,681**, 385 higher. The two are measuring adjacent things
+— that report walked components, this one reads per-item relation statements —
+and their near-coincidence is the point: essentially every isolate in the store
+is a Geni-linked person with no family on Wikidata.
+
+**The best-documented ones are not obscure.** Sorted by Wikipedia articles, the
+head of the list is Ovid (201 sitelinks), Avicenna (193), Omar Khayyám (166),
+Aesop (166), Horace (166), Thomas Hobbes (160) — and none of those six is in our
+tree. Browsable: `out/wikidata-isolates.html`.
 
 ## The split that matters
 
@@ -18,25 +50,21 @@ insisted on keeping them apart:
 - an item **only looks isolated** when its P22/P25/P26/P40/P3373 point at QIDs
   the download never fetched.
 
-Of 9,000 sampled items carrying a Geni ID:
+Of 9,000 sampled items carrying a Geni ID — **superseded by the full count at
+the top of this report, and kept because the one place it was wrong is worth
+seeing**:
 
-| | count | of Geni-linked |
-| --- | ---: | ---: |
-| connected — a relation pointing at an item we hold | 5,857 | 65.1% |
-| **true isolate — no relation statement whatsoever** | **3,143** | **34.9%** |
-| looks isolated, relations all point at un-fetched items | **0** | **0.0%** |
+| | count | of Geni-linked | full pass |
+| --- | ---: | ---: | ---: |
+| connected — a relation pointing at an item we hold | 5,857 | 65.1% | 64.3% |
+| **true isolate — no relation statement whatsoever** | **3,143** | **34.9%** | 35.7% |
+| looks isolated, relations all point at un-fetched items | **0** | **0.0%** | 2 |
 
-**The second reading is dead.** Not rare — *absent* from a 9,000-item sample.
-The isolation is not an artifact of stopping the download early, and finishing
-the import will not close it. Which also means the 183,296 is close to a real
-figure rather than the upper bound `wikidata-components.md` had to call it: the
-one mechanism that would have inflated it does not occur here.
-
-Scaled to the 514,903 stored items carrying a Geni ID, 34.9% is **~180,000**,
-against 183,296 isolates found globally. The two nearly coincide, and the reason
-is structural: an expansion item was fetched *because* it was somebody's
-relative, so it is connected by construction. **Essentially every isolate in the
-store is a Geni-linked person with no family on Wikidata.**
+The sample called the second reading **dead** — not rare, *absent*. The full
+pass found two. The proportions were good to within a point; the zero was not a
+zero, and a sample can only ever say "below my resolution". The conclusion it
+supported still holds: isolation is not an artifact of stopping the download
+early, and finishing the import will not close it.
 
 ## They are not stubs — this is the surprise
 
