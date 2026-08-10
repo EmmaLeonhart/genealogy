@@ -68,7 +68,7 @@ at them, so they are ordered here rather than renumbered.
 | 1 | **3.A singleton Wikidata items carrying Geni links** | counted in full; rest is BLOCKED-ON-USER-ACTION |
 | 3 | **2.A** century breakdown of the 2,123 targets | **run 2026-08-09**; rest is NEEDS-DECISION, Emma |
 | 4 | **2.E** component walk as a command, isolates split out | overlaps 3.A — do 3.A first, it is the same discriminator |
-| 5 | **2.B** port the `client.sparql` call sites offline | pure code |
+| 5 | **2.B** port the `client.sparql` call sites offline | **1 of 10 ported**; unblocks item 6 |
 | 6 | **2.C** build the union tree | shape settled by Emma; *edge* still undefined |
 | 7 | **0.00Z** three `FAM.HUSB` conflicts | NEEDS-INVESTIGATION |
 | 8 | **6** the stale Wikidata reports | rerun against the 151 merge |
@@ -211,8 +211,26 @@ discriminator; surface it per item so the two groups are told apart in the page.
 they still cannot run under the no-query rule. Ten call sites; each asks one
 concrete thing and gets answered from the index. `crosscheck` is the valuable
 one — it compares our parents, spouses and dates against Wikidata's, and the
-4,491 parents with no Geni ID are exactly the population it would speak to.
+4,854 parents with no Geni ID are exactly the population it would speak to.
 Do **not** write a SPARQL emulator.
+
+**1 of 10 ported, 2026-08-09.** `crosscheck.claims_from_store` answers
+`fetch_claims`'s question — `qid -> {property -> [values]}` for P22/P25/P26/
+P569/P570 — from `StoreReader.entities`. Same return shape, so callers do not
+care which side produced it. 5 tests, plus a real-store spot check (Q42 returns
+father/mother/spouse/dates; the isolates Q7198/Q8011/Q37621 return dates and no
+relations, matching 3.A).
+
+**Truthy semantics are the part worth not fumbling.** `wdt:` is not "every
+statement": preferred-rank if any exist, else normal, never deprecated. Reading
+every statement out of the JSON would quietly widen the comparison and turn
+superseded values into fresh conflicts for a human to adjudicate. The port
+reproduces this and has a test for each half.
+
+Remaining 9: `cli.py:264`, `namelinks.py:101`, `names.py:240`, `overlap.py:89`,
+`quickstatements.py:151`, `reconcile.py:295/512/600`, `wikidata.py:309`. The
+`crosscheck` command itself still constructs a `WikidataClient` — wiring it to
+the store reader is the next step and is what makes item 6 runnable.
 
 2.C **Build the union tree — one genealogy holding both sources.**
 

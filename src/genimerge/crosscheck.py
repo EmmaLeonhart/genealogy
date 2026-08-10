@@ -232,6 +232,43 @@ def fetch_claims(
     return claims
 
 
+def claims_from_store(reader, qids: Iterable[str]) -> dict[str, dict[str, list[str]]]:
+    """:func:`fetch_claims`, answered from the downloaded store instead of SPARQL.
+
+    Same return shape — ``qid -> {property -> [values]}``, item values as bare
+    QIDs and time values as the raw literal — so callers do not care which side
+    produced it. `queue.md` 2.B: port the call sites *by question*, and this
+    call site asks exactly one question.
+
+    **Truthy semantics are reproduced deliberately.** The SPARQL version used
+    ``wdt:``, which is not "every statement": it is preferred-rank statements if
+    any exist, otherwise normal-rank, and never deprecated. Reading every
+    statement out of the JSON instead would quietly widen the comparison and
+    turn superseded values into fresh conflicts for a human to adjudicate.
+    """
+    claims: dict[str, dict[str, list[str]]] = {}
+    for qid, entity in reader.entities(qids).items():
+        entity_claims = entity.get("claims") or {}
+        for prop in PROPERTIES:
+            statements = entity_claims.get(prop) or []
+            live = [s for s in statements if s.get("rank") != "deprecated"]
+            preferred = [s for s in live if s.get("rank") == "preferred"]
+            for statement in preferred or live:
+                snak = statement.get("mainsnak") or {}
+                if snak.get("snaktype") != "value":
+                    continue
+                value = (snak.get("datavalue") or {}).get("value")
+                if isinstance(value, dict):
+                    text = value.get("id") or value.get("time")
+                elif isinstance(value, str):
+                    text = value
+                else:
+                    text = None
+                if isinstance(text, str) and text:
+                    claims.setdefault(qid, {}).setdefault(prop, []).append(text)
+    return claims
+
+
 def _date_verdict(person: Person, kind: str, theirs: list[str]) -> tuple[str, str, str]:
     """Compare one of our dates with Wikidata's. Returns (verdict, ours, theirs)."""
     event = person.events.get(kind)

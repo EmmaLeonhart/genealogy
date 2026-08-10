@@ -460,3 +460,88 @@ def test_no_suspect_links_says_so_rather_than_omitting_the_section():
 
     assert "## Links worth re-checking (0)" in markdown
     assert crosscheck.NO_SUSPECT_LINKS in markdown
+
+
+# -- claims_from_store: the 2.B port ------------------------------------
+
+
+class _FakeReader:
+    """Stands in for wikistore.StoreReader.entities, which is all this uses."""
+
+    def __init__(self, items):
+        self._items = items
+
+    def entities(self, qids):
+        wanted = {str(q) for q in qids}
+        return {q: e for q, e in self._items.items() if q in wanted}
+
+
+def _statement(value, rank="normal", snaktype="value"):
+    snak = {"snaktype": snaktype}
+    if snaktype == "value":
+        snak["datavalue"] = {"value": value}
+    return {"mainsnak": snak, "rank": rank}
+
+
+def test_the_store_port_returns_what_sparql_returned():
+    reader = _FakeReader({
+        "Q1": {
+            "id": "Q1",
+            "claims": {
+                "P22": [_statement({"id": "Q2"})],
+                "P569": [_statement({"time": "+1150-03-12T00:00:00Z"})],
+            },
+        }
+    })
+
+    assert crosscheck.claims_from_store(reader, ["Q1"]) == {
+        "Q1": {"P22": ["Q2"], "P569": ["+1150-03-12T00:00:00Z"]}
+    }
+
+
+def test_a_deprecated_statement_is_not_a_value():
+    reader = _FakeReader({
+        "Q1": {"id": "Q1", "claims": {"P22": [_statement({"id": "Q2"}, rank="deprecated")]}}
+    })
+
+    assert crosscheck.claims_from_store(reader, ["Q1"]) == {}
+
+
+def test_a_preferred_statement_hides_the_normal_ones():
+    # This is what wdt: meant. Reading every statement instead would turn a
+    # superseded value into a fresh conflict for a human to adjudicate.
+    reader = _FakeReader({
+        "Q1": {
+            "id": "Q1",
+            "claims": {
+                "P22": [
+                    _statement({"id": "Q_old"}),
+                    _statement({"id": "Q_best"}, rank="preferred"),
+                ]
+            },
+        }
+    })
+
+    assert crosscheck.claims_from_store(reader, ["Q1"]) == {"Q1": {"P22": ["Q_best"]}}
+
+
+def test_novalue_snaks_and_absent_qids_are_simply_missing():
+    reader = _FakeReader({
+        "Q1": {"id": "Q1", "claims": {"P22": [_statement(None, snaktype="novalue")]}}
+    })
+
+    assert crosscheck.claims_from_store(reader, ["Q1", "Q_absent"]) == {}
+
+
+def test_only_the_compared_properties_come_back():
+    reader = _FakeReader({
+        "Q1": {
+            "id": "Q1",
+            "claims": {
+                "P22": [_statement({"id": "Q2"})],
+                "P31": [_statement({"id": "Q5"})],
+            },
+        }
+    })
+
+    assert crosscheck.claims_from_store(reader, ["Q1"]) == {"Q1": {"P22": ["Q2"]}}

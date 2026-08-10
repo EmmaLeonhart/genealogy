@@ -4787,3 +4787,34 @@ of somebody we hold, and their lines. The 723 undated targets are the real gap
 in this reading and are not counted as either.
 
 What is left of 2.A is a decision rather than a computation, and it is Emma's.
+
+## 2026-08-09 — 2.B started: the first SPARQL call site answered from the store
+
+Item 6 (the stale Wikidata reports) turned out not to be actionable, and finding
+out why was the useful part. `coverage` is fully offline in itself, but it reads
+`matched_all.csv` and `candidates.csv` — both produced by `reconcile`, the
+networked step, and both lost with `out/` in the re-clone. `crosscheck` and
+`names` still carry a `--delay` flag because they make requests. So item 6 sits
+behind 2.B rather than behind CPU, and 2.B is where the work went.
+
+**1 of 10 call sites ported.** `crosscheck.claims_from_store` answers what
+`fetch_claims` asked — `qid -> {property -> [values]}` over P22/P25/P26/P569/
+P570 — from `StoreReader.entities`, in the identical return shape. No SPARQL
+emulator, which `wikistore`'s own docstring rules out: the ten call sites each
+ask one concrete question and get answered one at a time.
+
+**The detail that mattered.** `wdt:` is not "every statement". It is
+preferred-rank statements if any exist, otherwise normal-rank, and never
+deprecated. Reading every statement straight out of the item JSON would have
+widened the comparison silently and turned superseded values into fresh
+CONFLICT rows for a human to adjudicate — the exact opposite of what this
+report is for. Both halves have a test.
+
+Five fixture tests plus a real-store spot check: Q42 returns father, mother,
+spouse and both dates; Q7198 (Ovid), Q8011 (Avicenna) and Q37621 (Hobbes)
+return dates and no relations at all, which is 3.A's isolate finding showing up
+from a different direction. `tests/test_crosscheck.py`: 44 passed.
+
+Nine call sites remain, listed by file and line in `queue.md`. The `crosscheck`
+command still constructs a `WikidataClient`; wiring it to the store reader is
+the next step and is what actually makes item 6 runnable.
