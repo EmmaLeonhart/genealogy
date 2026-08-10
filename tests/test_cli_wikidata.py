@@ -410,3 +410,76 @@ def test_every_command_went_through_the_seam(ws):
     # Reaching here at all means nothing touched urlopen, and the fake saw the
     # traffic instead.
     assert ws["fake"].queries
+
+
+# -- crosscheck --offline: the 2.B port ---------------------------------
+
+
+def _store_item(qid, geni=None, claims=None):
+    built = {}
+    for value in geni or []:
+        built.setdefault("P2600", []).append(
+            {"mainsnak": {"snaktype": "value", "datavalue": {"value": value}}}
+        )
+    for prop, value in (claims or {}).items():
+        built.setdefault(prop, []).append(
+            {"mainsnak": {"snaktype": "value", "datavalue": {"value": value}}}
+        )
+    return {"id": qid, "claims": built}
+
+
+def _offline_inputs(ws, items, pairs):
+    """A store, its index and a P2600 map, wired where --offline looks."""
+    import gzip
+
+    from genimerge import wikistore
+
+    store = ws["out"] / "store"
+    store.mkdir(parents=True, exist_ok=True)
+    with gzip.open(store / "items-00000.jsonl.gz", "wt", encoding="utf-8") as handle:
+        for entity in items:
+            handle.write(json.dumps(entity) + "\n")
+
+    index = ws["out"] / "index.sqlite3"
+    wikistore.build_index(store, index)
+
+    pairs_file = ws["out"] / "wikidata" / "p2600-all.tsv"
+    pairs_file.parent.mkdir(parents=True, exist_ok=True)
+    pairs_file.write_text(
+        "".join(f"{qid}\t{geni}\n" for qid, geni in pairs), encoding="utf-8", newline="\n"
+    )
+    return store, index
+
+
+def test_crosscheck_offline_reads_the_store_and_never_the_network(ws):
+    # The `ws` fixture makes urlopen explode, so passing here is itself the
+    # proof that nothing reached Wikidata — the point of queue.md 2.B.
+    store, index = _offline_inputs(
+        ws,
+        items=[
+            # Ada's spouse on both sides is Bo -> AGREES.
+            # Her Wikidata birth is 1400, ours is 1150 -> CONFLICT.
+            _store_item("Q1", geni=["1"], claims={"P26": {"id": "Q2"}, "P569": {"time": "+1400-00-00T00:00:00Z"}}),
+            _store_item("Q2", geni=["2"]),
+        ],
+        pairs=[("Q1", "1"), ("Q2", "2")],
+    )
+
+    code = run(ws, "crosscheck", "--offline", "--store", str(store), "--index", str(index))
+
+    assert code == 0
+    report = (ws["reports"] / "wikidata-crosscheck.md").read_text(encoding="utf-8")
+    assert "Cross-check" in report
+    assert "P26 spouse" in report
+    # The conflict is real and reported, not smoothed away.
+    assert "1400" in report
+
+
+def test_crosscheck_offline_says_which_file_to_build_when_one_is_missing(ws, capsys):
+    # No pairs file and no index at all.
+    code = run(ws, "crosscheck", "--offline")
+
+    assert code == 1
+    err = capsys.readouterr().err
+    assert "p2600-all.tsv" in err
+    assert "build-p2600-all.py" in err

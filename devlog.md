@@ -4966,3 +4966,30 @@ show the table before any merge rule is generated from it. The structural
 conflicts (father, mother, spouse: 292) are the ones that cannot be split by a
 tolerance and will need real adjudication; the 638 date conflicts already pass
 through a 3-year threshold that is deliberately tight.
+
+## 2026-08-10 — the suite is green, and the offline path now has tests
+
+**Full suite: 2177 passed, 1 skipped, 0 failed, 18m52s.** First fully green run
+of this session. The previous measurement was 2170 passed / 1 failed at
+`d515fb6`; the delta is +6 new tests and the 0.00Y fix turning its failure into
+a pass, which reconciles exactly.
+
+**That run did not cover `crosscheck --offline`.** It started before the CLI
+wiring landed, so the claim "green" would have been true of the tree as it was
+twenty minutes earlier and not of the tree as committed. Checking rather than
+assuming turned up something worth fixing: `test_cli.py` and
+`test_cli_wikidata.py` passed (175 tests), but **nothing exercised the new code
+path at all** — the only thing that had run it was me, by hand, once.
+
+Two tests now do:
+
+- One builds a store, an index and a P2600 map in the workspace and runs
+  `crosscheck --offline` end to end. The `ws` fixture makes `urlopen` raise, so
+  the test passing *is* the proof that nothing reached Wikidata — which is the
+  whole claim 2.B is making. It asserts the agreeing spouse and the conflicting
+  date both come through, so a path that silently produced an empty report
+  would fail.
+- One runs `--offline` with no pair file and no index, and asserts the error
+  names both the missing file and the script that builds it.
+
+`tests/test_cli_wikidata.py`: 20 passed.
