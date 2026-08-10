@@ -208,7 +208,16 @@ __all__ = [
 #: person. Within a single afternoon the value went 4080 → 4084 → 4088, which is
 #: the fastest it has been observed to move and the reason this constant is
 #: documented as "the largest seen" rather than a known limit.
-GENI_EXPORT_CAP = 4088
+#: **2026-08-09, 16:57 and 17:10 - 4092 then 4096.** `Forest` exports of
+#: `6000000227147210844` ("Niels NN") and `6000000227147141927` ("wife of
+#: Ignazio Malerba"). Five consecutive readings now, each exactly four higher
+#: than the last, across five different seeds within five hours: 4080, 4084,
+#: 4088, 4092, 4096. At this point "it steps by four" describes the afternoon
+#: better than any fixed limit does, and the spacing is roughly how long Emma
+#: takes between exports - so this may be tracking Geni's own growth rather
+#: than a cap at all. Not asserted, recorded: the next reading either continues
+#: the run or breaks it, and both are informative.
+GENI_EXPORT_CAP = 4096
 
 #: The step between reading this report and running an export.
 #:

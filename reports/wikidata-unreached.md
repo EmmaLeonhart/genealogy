@@ -11,25 +11,30 @@ no script that could regenerate it; a fresh clone then took the page with it.
 ids and run exports that will contain them and resolve these things."* Each row
 links to the Wikidata item and to the Geni profile to export from.
 
-| | count | at 145 exports |
-| --- | ---: | ---: |
-| P2600 pairs | 517,878 | 516,983 |
-| …numeric, i.e. joinable | 517,850 | 516,955 |
-| …malformed, kept separately | 28 | 28 |
-| **pairs whose Geni ID is not in our tree** | **504,480** | 504,095 |
-| pairs we do hold | 13,370 | 12,860 |
+| | 151 exports | 149 exports | 145 exports |
+| --- | ---: | ---: | ---: |
+| P2600 pairs | 517,878 | 517,878 | 516,983 |
+| …numeric, i.e. joinable | 517,850 | 517,850 | 516,955 |
+| …malformed, kept separately | 28 | 28 | 28 |
+| **pairs whose Geni ID is not in our tree** | **503,646** | 504,480 | 504,095 |
+| pairs we do hold | 14,204 | 13,370 | 12,860 |
 
-**Why only ~13,000 join.** Not because the two sites disagree about who exists:
-because 149 exports have reached about 2.6% of the Geni population Wikidata
+**Why only ~14,000 join.** Not because the two sites disagree about who exists:
+because 151 exports have reached about 2.7% of the Geni population Wikidata
 already points at.
 
-**Both columns went up, for different reasons.** We hold 510 more of them than
-at 145 exports — that is what the two new Forest exports and the Wife of John
-Harvey pair bought on this axis. The *unreached* count also rose, because the
-pair list itself is 895 larger: the 145-export figure came from a live SPARQL
-query and this one is counted from the downloaded store, which is a later
-snapshot. The two numbers are not measuring the same instant of Wikidata and
-the drift is ordinary.
+**The 149 → 151 step is the clean one to read.** The pair list did not move
+between them — same store snapshot, same 517,850 numeric pairs — so the whole
+change is ours: **+834 held, −834 unreached**, bought by two `Forest` exports
+of about 4,000 people each. Roughly one in ten people in those exports was
+someone Wikidata already had a Geni ID for and we did not.
+
+**The 145 → 149 step needs a caveat.** Both columns rose there, which looks
+wrong until you separate the causes: we held 510 more because the tree grew,
+while the unreached count also rose because the pair list itself is 895 larger.
+The 145-export figure came from a live SPARQL query and everything since is
+counted from the downloaded store, which is a later snapshot of Wikidata. Those
+two numbers are not measuring the same instant, and the drift is ordinary.
 
 **Where the pair list comes from now.** `out/wikidata/p2600-all.tsv`, written
 from `wikidata/items/` by `genimerge wikidata-index --map`. It used to be a
