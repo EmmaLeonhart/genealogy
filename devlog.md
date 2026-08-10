@@ -5107,3 +5107,42 @@ by narrowing it to items we happen to hold.
 One call site is deliberately staying online: `overlap.py:89` is the seed fetch
 itself, and `overlap --offline` already reuses what it wrote. Porting the thing
 that populates the store to read from the store would be circular.
+
+## 2026-08-10 — 2.B: relatives ported, and the name-search half blocked
+
+**Ported.** `reconcile.fetch_relatives` → `relatives_from_store`. The best-suited
+call site in the set: the download grew by walking P22/P25/P26/P40/P3373, so a
+matched item's relatives are in the store *by construction* — they are the
+reason it was fetched at all.
+
+Two things reproduced rather than approximated, because both would change what
+the reconciler sees without changing what it looks like:
+
+- **Label priority.** The query asked `en,no,nb,nn,sv,da,de,fr` in that order.
+  `LABEL_LANGUAGES` keeps it, so a candidate is scored on the same string
+  whichever side answered. A test pins that a Norwegian label beats a German one.
+- **Truthy ranks.** `wdt:` is preferred-if-any, else normal, never deprecated.
+  Reading every statement would widen what reconciliation sees and quietly move
+  its scoring.
+
+A relative the download never reached is still returned — QID and role, no label
+or dates — the way the endpoint answers for an item with no label in those
+languages. Dropping it would hide a real edge from the reconciler. Five tests,
+plus a real-store check: Q42 returns father, mother, spouse and child with dates,
+including one father who has no label in any of the eight languages and comes
+back blank exactly as designed.
+
+**`reconcile.py:512` is blocked, and for the same reason as `names.py`.** It
+searches `rdfs:label|skos:altLabel` with `P31 wd:Q5` to find people we have
+**not** matched. The store holds the P2600 set and their relatives, so searching
+it by name can only return people we already hold — porting it would turn a
+discovery step into a silent no-op that still returned a well-formed dict.
+**BLOCKED-ON-EXTERNAL**, same unblock as `names.py`: a download pass reaching
+beyond the family walk.
+
+`reconcile.py:600` is portable in shape but consumes that blocked search's
+output, so porting it alone buys nothing. Recorded rather than done.
+
+Two of the ten are now blocked on the same missing data, one stays online by
+design, four are ported. That leaves three genuinely portable and worth doing:
+`cli.py:264`, `quickstatements.py:151`, `wikidata.py:309`.

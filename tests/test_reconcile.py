@@ -626,3 +626,100 @@ def test_search_restricts_results_to_humans(tmp_path):
     assert "haswbstatement" in client.urls_requested[0]
     assert "P31%3DQ5" in client.urls_requested[0]
     assert "Karl+Sverkersson" in client.urls_requested[0]
+
+
+# -- relatives_from_store: the 2.B port --------------------------------
+
+
+class _FakeReader:
+    def __init__(self, items):
+        self._items = items
+
+    def entities(self, qids):
+        wanted = {str(q) for q in qids}
+        return {q: e for q, e in self._items.items() if q in wanted}
+
+
+def _item_claim(value, rank="normal", snaktype="value"):
+    snak = {"snaktype": snaktype}
+    if snaktype == "value":
+        snak["datavalue"] = {"value": value}
+    return {"mainsnak": snak, "rank": rank}
+
+
+def _person(qid, labels=None, claims=None):
+    return {
+        "id": qid,
+        "labels": {lang: {"value": text} for lang, text in (labels or {}).items()},
+        "claims": claims or {},
+    }
+
+
+def test_relatives_from_store_returns_role_label_and_dates():
+    reader = _FakeReader({
+        "Q1": _person("Q1", claims={"P22": [_item_claim({"id": "Q2"})]}),
+        "Q2": _person(
+            "Q2",
+            labels={"en": "Father"},
+            claims={
+                "P569": [_item_claim({"time": "+1150-01-01T00:00:00Z"})],
+                "P570": [_item_claim({"time": "+1200-01-01T00:00:00Z"})],
+                "P2600": [_item_claim("900")],
+            },
+        ),
+    })
+
+    got = reconcile.relatives_from_store(reader, ["Q1"])
+
+    assert list(got) == ["Q1"]
+    (rel,) = got["Q1"]
+    assert (rel.qid, rel.role, rel.label) == ("Q2", "father", "Father")
+    assert (rel.birth_year, rel.death_year, rel.geni_id) == (1150, 1200, "900")
+
+
+def test_the_label_language_order_matches_what_sparql_asked_for():
+    # en,no,nb,nn,sv,da,de,fr - so a Norwegian label wins over a German one,
+    # and the candidate is scored on the same string either way.
+    reader = _FakeReader({
+        "Q1": _person("Q1", claims={"P26": [_item_claim({"id": "Q2"})]}),
+        "Q2": _person("Q2", labels={"de": "Deutsch", "no": "Norsk"}),
+    })
+
+    (rel,) = reconcile.relatives_from_store(reader, ["Q1"])["Q1"]
+    assert rel.label == "Norsk"
+
+
+def test_a_preferred_relation_hides_the_normal_ones():
+    reader = _FakeReader({
+        "Q1": _person("Q1", claims={"P22": [
+            _item_claim({"id": "Q_old"}),
+            _item_claim({"id": "Q_best"}, rank="preferred"),
+        ]}),
+        "Q_old": _person("Q_old"),
+        "Q_best": _person("Q_best"),
+    })
+
+    rels = reconcile.relatives_from_store(reader, ["Q1"])["Q1"]
+    assert [r.qid for r in rels] == ["Q_best"]
+
+
+def test_a_deprecated_relation_is_not_returned():
+    reader = _FakeReader({
+        "Q1": _person("Q1", claims={"P22": [_item_claim({"id": "Q2"}, rank="deprecated")]}),
+        "Q2": _person("Q2"),
+    })
+
+    assert reconcile.relatives_from_store(reader, ["Q1"]) == {}
+
+
+def test_a_relative_the_download_never_reached_is_still_an_edge():
+    # Returned with QID and role and nothing else, the way the endpoint would
+    # answer for an item with no label in those languages. Dropping it would
+    # hide a real edge from the reconciler.
+    reader = _FakeReader({
+        "Q1": _person("Q1", claims={"P40": [_item_claim({"id": "Q_absent"})]}),
+    })
+
+    (rel,) = reconcile.relatives_from_store(reader, ["Q1"])["Q1"]
+    assert (rel.qid, rel.role, rel.label) == ("Q_absent", "child", "")
+    assert (rel.birth_year, rel.death_year, rel.geni_id) == (None, None, None)

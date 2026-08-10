@@ -126,7 +126,7 @@ at them, so they are ordered here rather than renumbered.
 | --- | --- | --- |
 | 1 | **3.A singleton Wikidata items carrying Geni links** | counted in full; rest is BLOCKED-ON-USER-ACTION |
 | 4 | **2.E** component walk as a command, isolates split out | overlaps 3.A — do 3.A first, it is the same discriminator |
-| 5 | **2.B** port the `client.sparql` call sites offline | **3 of 10**; `names.py` BLOCKED-ON-EXTERNAL |
+| 5 | **2.B** port the `client.sparql` call sites offline | **4 of 10**; 2 blocked, 1 stays online by design |
 | 6 | **2.C** build the union tree | shape settled by Emma; *edge* still undefined |
 | 7 | **0.00Z** three `FAM.HUSB` conflicts | **answered**: both are one man twice; step 2 NEEDS-DECISION |
 | 8 | **6** the stale Wikidata reports | rerun against the 151 merge |
@@ -351,10 +351,35 @@ name items per 40,000 people scanned. **Do not** port `names.py` by widening it
 to "any item we happen to hold" — that would silently return a fraction of the
 matches and read as if the endpoint had answered.
 
-Remaining after that: `cli.py:264`, `overlap.py:89`, `quickstatements.py:151`,
-`reconcile.py:295/512/600`, `wikidata.py:309`. `overlap.py:89` is the seed fetch
-itself and is the one call site that *should* stay online — `--offline` already
-reuses what it wrote. `crosscheck.claims_from_store` answers
+**4 of 10 ported, 2026-08-10.** `reconcile.fetch_relatives` →
+`relatives_from_store`. This is the call site the store suits best: the download
+grew the set by walking P22/P25/P26/P40/P3373, so a matched item's relatives are
+in the store *by construction* — they are why it was fetched. Two shapes
+reproduced rather than approximated: the `en,no,nb,nn,sv,da,de,fr` label
+priority (`LABEL_LANGUAGES`), so a candidate is scored on the same string either
+way; and `wdt:` truthy ranks. A relative the download never reached is still
+returned as an edge with no label — dropping it would hide a real edge from the
+reconciler. 5 tests, plus a real-store check on Q42 (father, mother, spouse,
+child, with dates).
+
+**`reconcile.py:512` is blocked for the same reason `names.py` is.** It asks
+`?item rdfs:label|skos:altLabel ?label` with `P31 wd:Q5` — a label-to-item search
+over all of Wikidata, to find people we have *not* matched. The store contains
+the P2600 set and their relatives, so searching it by name can only return
+people we already hold, which is the opposite of what the call is for.
+**BLOCKED-ON-EXTERNAL**, same unblock signal as `names.py`: a download pass that
+fetches beyond the family walk. Porting it against the store would silently turn
+a discovery step into a no-op.
+
+`reconcile.py:600` hydrates QIDs with label/dates/P2600 and *is* portable — the
+same shape as the relatives hydration above — but it consumes the output of the
+blocked search, so porting it alone buys nothing.
+
+Remaining: `cli.py:264`, `overlap.py:89`, `quickstatements.py:151`,
+`reconcile.py:600`, `wikidata.py:309`. `overlap.py:89` is the seed fetch itself
+and is the one call site that *should* stay online — `--offline` already reuses
+what it wrote, and porting the thing that fills the store to read from the store
+is circular. `crosscheck.claims_from_store` answers
 `fetch_claims`'s question — `qid -> {property -> [values]}` for P22/P25/P26/
 P569/P570 — from `StoreReader.entities`. Same return shape, so callers do not
 care which side produced it. 5 tests, plus a real-store spot check (Q42 returns

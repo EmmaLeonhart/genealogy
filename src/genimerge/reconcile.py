@@ -268,6 +268,98 @@ def score_pair(
     return None, score, evidence or "nothing in common"
 
 
+#: Label languages the SPARQL form asked for, in the order it asked. Kept
+#: identical so the offline port picks the same label the endpoint would have.
+LABEL_LANGUAGES = ("en", "no", "nb", "nn", "sv", "da", "de", "fr")
+
+
+def _best_label(entity: dict) -> str:
+    labels = entity.get("labels") or {}
+    for lang in LABEL_LANGUAGES:
+        value = (labels.get(lang) or {}).get("value")
+        if value:
+            return value
+    return ""
+
+
+def _truthy_values(entity: dict, prop: str) -> list:
+    """Statement values for ``prop`` under ``wdt:`` semantics.
+
+    Preferred rank if any exist, otherwise normal; never deprecated. The SPARQL
+    form used ``wdt:`` throughout, so reading every statement here would widen
+    what reconciliation sees and quietly change its scoring.
+    """
+    statements = (entity.get("claims") or {}).get(prop) or []
+    live = [s for s in statements if s.get("rank") != "deprecated"]
+    chosen = [s for s in live if s.get("rank") == "preferred"] or live
+    out = []
+    for statement in chosen:
+        snak = statement.get("mainsnak") or {}
+        if snak.get("snaktype") != "value":
+            continue
+        value = (snak.get("datavalue") or {}).get("value")
+        if value is not None:
+            out.append(value)
+    return out
+
+
+def relatives_from_store(reader, qids: Iterable[str]) -> dict[str, list[Relative]]:
+    """:func:`fetch_relatives`, answered from the downloaded store.
+
+    `queue.md` 2.B. This is the call site the store is *best* suited to: the
+    download grew the set by walking P22/P25/P26/P40/P3373, so a matched item's
+    relatives are in the store by construction — they are why it was fetched.
+
+    Two shapes are reproduced deliberately rather than approximated:
+
+    * **Label choice.** The query asked for `en,no,nb,nn,sv,da,de,fr` in that
+      order; :data:`LABEL_LANGUAGES` keeps it, so the label a candidate is
+      scored on does not change with the data source.
+    * **Truthy ranks.** ``wdt:`` is preferred-rank-if-any, else normal, never
+      deprecated — see :func:`_truthy_values`.
+
+    A relative the download never reached is still returned, with its QID and
+    role and no label or dates, exactly as the endpoint would have done for an
+    item carrying no label in those languages. Dropping it instead would hide a
+    real edge from the reconciler.
+    """
+    ordered = sorted({str(q) for q in qids})
+    out: dict[str, list[Relative]] = defaultdict(list)
+
+    items = reader.entities(ordered)
+    wanted: set[str] = set()
+    edges: list[tuple[str, str, str]] = []
+    for qid, entity in items.items():
+        for prop, role in ROLE_BY_PROPERTY.items():
+            for value in _truthy_values(entity, prop):
+                other = value.get("id") if isinstance(value, dict) else None
+                if isinstance(other, str) and other.startswith("Q"):
+                    edges.append((qid, role, other))
+                    wanted.add(other)
+
+    others = reader.entities(wanted)
+    seen: set[tuple[str, str, str]] = set()
+    for qid, role, other in edges:
+        if (qid, role, other) in seen:
+            continue
+        seen.add((qid, role, other))
+        entity = others.get(other) or {}
+        births = _truthy_values(entity, "P569")
+        deaths = _truthy_values(entity, "P570")
+        genis = _truthy_values(entity, "P2600")
+        out[qid].append(
+            Relative(
+                qid=other,
+                role=role,
+                label=_best_label(entity),
+                birth_year=_year_of(births[0].get("time")) if births else None,
+                death_year=_year_of(deaths[0].get("time")) if deaths else None,
+                geni_id=next((g for g in genis if isinstance(g, str)), None),
+            )
+        )
+    return dict(out)
+
+
 def fetch_relatives(
     client: WikidataClient, qids: Iterable[str], batch_size: int = 150
 ) -> dict[str, list[Relative]]:
