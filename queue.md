@@ -56,16 +56,22 @@ at them, so they are ordered here rather than renumbered.
 | # | item | state |
 | --- | --- | --- |
 | 1 | **3.A singleton Wikidata items carrying Geni links** | Emma's pick, 2026-08-09. Sampled part doable now |
-| 2 | **Import** — merge at 147 + the three corpus tests | steps 1-3 done; **4-5 need CPU, after 18:30** |
-| 3 | **2.A** century breakdown of the 1,821 targets | coded, 21 tests green; **run needs CPU** |
+| 3 | **2.A** century breakdown of the 1,821 targets | coded, 21 tests green; **run now unblocked** |
 | 4 | **2.E** component walk as a command, isolates split out | overlaps 3.A — do 3.A first, it is the same discriminator |
 | 5 | **2.B** port the `client.sparql` call sites offline | pure code, fine under the ban |
 | 6 | **2.C** build the union tree | shape settled by Emma; *edge* still undefined |
 | 7 | **0.00Z** three `FAM.HUSB` conflicts | NEEDS-INVESTIGATION |
-| 8 | **6** the stale Wikidata reports | rerun after the 147 merge |
+| 8 | **6** the stale Wikidata reports | rerun against the 149 merge |
 | 9 | **0.00Y** the known-red seed-coverage test | NEEDS-DECISION, Emma |
 | 10 | **2.D** the 10,000-person ER backtest | NEEDS-DECISION, Emma |
 | — | 0.0, 0.00A, 1, 3, 4 | BLOCKED-ON-USER-ACTION, all needing Emma at Geni |
+
+**Item 2 (the import) is done and deleted.** Merged at 149 exports, and the three
+corpus tests that had never been run against the new files are green — `pytest
+tests/test_seeds.py tests/test_repo_invariants.py tests/test_gedcom_real_exports.py`,
+**1248 passed, 1 skipped, 4m39s**. The `GENI_EXPORT_CAP` 4080 → 4088 change is
+therefore measured, not believed. Its one unrecoverable piece is recorded under
+the re-clone above: the 145-export baseline item 0.00A wanted no longer exists.
 
 **`## Emma's brief — her words, the destinations these decompose from` below is Emma's own brief, not steps.** It is
 the destination list these decompose from; leave its wording alone.
@@ -104,39 +110,6 @@ Two results worth carrying forward, because they change what other items mean:
    3.43%). The ~180,000 well-described items missing only their genealogy are
    therefore an *export target list*, not an authoring list — which is the
    opposite of how they first read.
-
-## Import the two new exports in Downloads (2026-08-09) — DONE, superseded below
-
-**Two `export-geni*.zip` files are sitting in the Downloads folder and are not
-yet in the corpus.** Import them the usual way, and **filter out repeats** —
-the same export arrives twice routinely, so this batch may not be two new files.
-
-Needs the machine that has the Downloads folder; the cloud session cannot reach
-it, so this is the first thing for a PC session to run.
-
-**Steps 1-3 are done (2026-08-09). Steps 4-5 are not, and were stopped for
-laptop heat at Emma's word, not because of a problem.**
-
-There were **three** zips, not two. `export-geni.zip` (2026-08-08) is a
-byte-identical repeat of `exports/descendants/export-Descendants-6000000177955802827.ged`
-and was dropped. The other two are in `exports/Wife of John Harvey/`, both
-seeded on `6000000227143930843`, one `Forest` and one `Descendants`, **4080
-individuals each** — which raised `GENI_EXPORT_CAP` from 4076.
-
-What remains, both of which cost CPU and neither of which is started:
-
-4. **Keep the current `out/merged.ged` as `out/merged-145.ged` before merging**
-   — item 0.00A relies on the pre-batch tree being kept to measure a batch. The
-   current file is the 145-export tree; do this *first* or the measurement is
-   lost.
-5. `python -m genimerge merge` (147 exports now), then record the new-people
-   count and update the corpus count in `reports/`.
-
-**Also not run: the test suite.** `tests/test_seeds.py`,
-`test_repo_invariants.py` and `test_gedcom_real_exports.py` all read the corpus
-and all now see two files they have never seen. The cap change is *believed* to
-be what they need and **that has not been verified** — run them before trusting
-the import.
 
 ## Emma's brief — her words, the destinations these decompose from
 

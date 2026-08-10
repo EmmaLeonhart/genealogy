@@ -4639,3 +4639,17 @@ the opposite column order to this report. Reading it by position classified all
 without erroring. It reads the header by name now. The 28-malformed count
 matching the previous run is the thing that says the classification is right —
 a total that reproduces is worth more than a total that looks plausible.
+
+## 2026-08-09 — the import verified, and item 2 closed
+
+The half of item 2 that had never been run: `tests/test_seeds.py`,
+`tests/test_repo_invariants.py`, `tests/test_gedcom_real_exports.py` all read
+the corpus and all now see two files they have never seen. The queue said the
+`GENI_EXPORT_CAP` change was *believed* to be what they needed and that this had
+not been verified. It is verified now — **1248 passed, 1 skipped, 4m39s**. The
+4080 → 4088 raise is measured rather than assumed, which is the only reason the
+import is allowed to leave the queue.
+
+Nothing else changed in this tick. Item 2 is deleted from `queue.md`; the order
+table renumbers nothing, per the standing note that IDs stay put because commit
+messages already point at them.
