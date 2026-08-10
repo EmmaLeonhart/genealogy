@@ -5222,3 +5222,43 @@ is an **independent reproduction**, written separately, and the total came back
 disagreement either — the tree grew from 275,437 to 298,591 people across six
 exports in between. The report now says all of this instead of carrying two
 "full count" sections that appeared to contradict each other.
+
+## 2026-08-10 — the century distribution, and a prediction scored
+
+The queue held no unblocked work — everything left needs Emma, a Geni export, or
+a download pass — so `todo.md` 8b was promoted, planned into `queue.md`, and run.
+`reports/centuries.md`, `scripts/build-centuries.py`, offline throughout.
+
+**Emma's prediction of 2026-08-07, recorded before the store existed, is half
+right.** She guessed the Geni-linked Wikidata items would *"skew heavily to the
+20th and 21st centuries much as the Geni profiles do, with the 19th ambiguous"*.
+
+- **Wikidata skews modern: right.** 72.8% of its dated Geni-linked people were
+  born in the 1900s or 2000s; the 1900s alone is 49.3%.
+- **"much as the Geni profiles do": wrong.** Geni is **25.6%** — under a third of
+  Wikidata's share. The two trees are not the same shape at all.
+- **The 19th is ambiguous: right, and precisely.** Geni leads every century
+  through the 1800s, Wikidata leads every century after. The 1800s is the
+  crossover and the closest the two come in the modern range, 15.0% against
+  18.5%. She named the exact century before the data existed.
+
+**The wrong half is the more useful finding.** Our tree is medieval and
+early-modern — the 1200s–1800s carry 57.9% of our dated people, and we hold
+**nine times** as many second-century people as Wikidata does in a tree half the
+size. Wikidata's Geni-linked population is notable modern people who happen to
+have a Geni profile. `reports/descendants.md`'s premise — that the campaign is
+about reaching modern times — is confirmed here from the other side, and the two
+populations barely overlap in era, which is worth carrying into entity
+resolution.
+
+**One thing nobody predicted.** 225 Geni-linked Wikidata items state a birth
+year in the **2100s**; 15 people in our own tree are born in the 22nd century or
+later. Both are almost certainly typos, and they matter before the authoring
+pipeline runs: `add-claims.qs` builds P569/P570 from our dates, so an
+uncorrected year becomes a wrong year on Wikidata.
+
+The Geni-side parser was validated before the expensive half ran — it counts
+298,591 people, matching the merge exactly, with dated + undated reconciling.
+Comparing shares of the *dated* population on each side rather than of the whole
+is deliberate: coverage is 77.5% against 49.6%, and mixing that in would make the
+better-covered side look older or younger purely by having fewer blanks.

@@ -140,7 +140,32 @@ tests/test_seeds.py tests/test_repo_invariants.py tests/test_gedcom_real_exports
 therefore measured, not believed. Its one unrecoverable piece is recorded under
 the re-clone above: the 145-export baseline item 0.00A wanted no longer exists.
 
-**`## Emma's brief — her words, the destinations these decompose from` below is Emma's own brief, not steps.** It is
+**`## 8b-i **The century distribution** — DONE, `reports/centuries.md`
+
+Emma's 2026-08-07 prediction is **half right, and the wrong half matters more**.
+
+| the claim | verdict |
+| --- | --- |
+| Wikidata skews heavily to the 20th/21st | **right** — 72.8% of dated Geni-linked items |
+| …*much as the Geni profiles do* | **wrong** — Geni is 25.6%, under a third of that |
+| the 19th is ambiguous | **right, precisely** — it is the crossover century |
+
+**The two trees are not the same shape.** Wikidata's Geni-linked population is
+modern: half of it born in the 1900s. Ours is medieval and early-modern — the
+1200s–1800s hold 57.9% of our dated people, and we have **nine times** as many
+second-century people as Wikidata does in a tree half the size. Geni leads every
+century through the 1800s; Wikidata leads every century after. That is
+`reports/descendants.md`'s premise — the campaign is about reaching modern times
+— confirmed from the other side.
+
+**Unpredicted, and worth acting on before the authoring pipeline runs:** 225
+Geni-linked Wikidata items state a birth date in the **2100s**, and 15 of our own
+people are born in the 22nd century or later. `add-claims.qs` builds P569/P570
+from our dates, so an uncorrected year becomes a wrong year on Wikidata. The Geni
+side belongs with `reports/consistency.md`; the Wikidata side is a defect there
+and is listed rather than fixed.
+
+## Emma's brief — her words, the destinations these decompose from` below is Emma's own brief, not steps.** It is
 the destination list these decompose from; leave its wording alone.
 
 3.A **Singleton Wikidata items that carry a Geni link.** Emma, 2026-08-09:
