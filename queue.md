@@ -173,6 +173,52 @@ grandparents, and so on. `python scripts/show-case.py 979118 --up N`.
   Wikramawardhana undecided — she said she does not know him. **This is a
   decision about two records, not a merge rule.**
 
+### Case 1, continued — the marriage date, run to ground
+
+Emma: *"agentic rag to figure this out it's probably a typo in geni"*. It is not.
+**Geni's 14 JAN 1236 is right; Wikidata's `P580 = +1236-01-04` is wrong.**
+
+Westminster Abbey — which is Wikidata's **own first reference on that statement**
+— says *"in Canterbury cathedral on 14th January 1236"*. Britannica, Historic
+Royal Palaces, English Monarchs and Wikipedia agree. Eleanor was crowned on 20
+January, six days later; sixteen days would be odd. Almost certainly a dropped
+`1`.
+
+**Resolving the four references changes what "4 references" means:**
+
+| | what it actually is |
+| --- | --- |
+| `Q5933` Westminster Abbey | authoritative, and **contradicts** the statement |
+| `Q1465172` Lulu Press | a self-published book, page 155 |
+| `Q75653886` | no English label; described only as "online genealogical network" — in context, very likely Geni |
+| `Q21401824` The Peerage | hobbyist compilation site |
+
+**This undercuts `reports/conflicts.md`.** That report measured that 69% of
+disputed Wikidata dates carry a reference and offered it as evidence about where
+errors are likelier. Reference *count* says nothing about reference *quality*,
+and nothing in that pass looked at what a single reference was. Treat the 69% as
+a coverage statistic and not as an argument.
+
+### Places: Geni's string is Wikidata's hierarchy, flattened
+
+`scripts/fetch-labels.py` — one batched SPARQL query, labels only. The store
+holds people, so places and source items cannot be resolved offline at all.
+
+| Geni string | Wikidata |
+| --- | --- |
+| `Winchester Castle, Winchester, Hampshire, England` | `Q1704670` Winchester Castle **and** `Q172157` Winchester |
+| `Westminster Palace, Westminster, London, England` | `Q62408` Palace of Westminster |
+| `Westminster Abbey, Westminster, Middlesex, England` | `Q5933` Westminster Abbey |
+| `Canterbury Cathedral, Canterbury, Kent, England` | `Q29265` Canterbury Cathedral |
+
+The two `P19` values are not a contradiction — they are the building and the
+city. Wikidata states the birthplace twice at two levels of nesting; Geni states
+it once as a comma-chain containing both. Emma: *"Wikidata stores data as QIDs
+that are stored as strings on Jenny... if the strings show the same stuff,
+Wikidata is basically always going to be good, just keep that in mind: difficult
+conversion."* Note `Middlesex` — an administrative county abolished in 1965 — so
+the chain can be historically stale.
+
 **Next case: [2] FATHER — John, King of England**, geni `4924870419470035934`,
 wikidata `Q129308`. His record is **7,358 lines**, the largest seen.
 

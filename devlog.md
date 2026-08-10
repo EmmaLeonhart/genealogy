@@ -5445,3 +5445,34 @@ until more cases are seen; child-count diffs shown case by case; field-level
 sources collected but not trusted; notes useful only where they disambiguate.
 
 Next case is [2] John, King of England — 7,358 lines, the largest record yet.
+
+## 2026-08-10 — case 1 finished: a Wikidata error, and what "4 references" is worth
+
+Emma guessed the ten-day marriage disagreement was *"probably a typo in geni"*.
+It is the other way round. **Geni's 14 JAN 1236 is right.** Westminster Abbey —
+Wikidata's own first reference on that statement — says "in Canterbury cathedral
+on 14th January 1236", and Britannica, Historic Royal Palaces, English Monarchs
+and Wikipedia agree. Eleanor's coronation six days later corroborates it.
+Wikidata's `P580 = +1236-01-04` looks like a dropped `1`.
+
+**Resolving the references is the part worth keeping.** "4 references" sounds
+like weight until you look: Westminster Abbey (contradicts the statement), a
+**Lulu Press** self-published book, an item with no English label described only
+as an "online genealogical network" — very likely Geni itself — and **The
+Peerage**, a hobbyist site.
+
+That undercuts something I published two days ago. `reports/conflicts.md`
+measured that 69% of disputed Wikidata dates carry a reference and offered it as
+a signal about where errors are likelier. Reference *count* is not reference
+*quality*, and that pass never looked at what a single reference was. The 69% is
+a coverage statistic and nothing more; it is now labelled as such.
+
+**Places, from `scripts/fetch-labels.py`** — one batched SPARQL query, which is
+the exception the no-query rule does not cover: the download walked family
+properties, so it holds people and cannot resolve a building or a source item at
+all. The result reframes a difficulty I had reported: Wikidata's two `P19` values
+for Henry III are `Q1704670` Winchester Castle and `Q172157` Winchester — the
+building and the city, not a contradiction. Geni's
+`Winchester Castle, Winchester, Hampshire, England` is the same hierarchy
+flattened into one string. Its `Middlesex` token is a county abolished in 1965,
+so the chain can also be historically stale.
