@@ -4926,3 +4926,43 @@ before working down it.
 The 511 undated targets remain out of the list and undiscarded. Undated does not
 mean early, and treating it as early would quietly drop a fifth of the
 population.
+
+## 2026-08-10 — `crosscheck` runs offline, and 2.D has a population
+
+`genimerge crosscheck --offline`. Both of the command's network dependencies are
+gone: the claims come from the downloaded store via `claims_from_store`, and the
+links come from `out/wikidata/p2600-all.tsv` instead of `reconcile`'s
+`matched_all.csv`, which only the networked path writes and which died with
+`out/` in the re-clone. The report that measures Geni against Wikidata no longer
+has to ask Wikidata anything.
+
+Over the 151-export tree: **14,157 linked people, 30,303 agree, 4,700 gaps,
+930 conflicts.** 3,238 QuickStatements written, 1,462 gaps withheld, nothing
+sent anywhere.
+
+**One honest limit, stated in the flag's own help.** The offline path sees the
+exact P2600 links only. `reconcile`'s expansion matches are not in the P2600
+map, so this is a subset of what the online command would compare. It is also
+exactly the population `build_claim_batch` will emit statements for, so nothing
+downstream is short-changed — but "14,157" is not the same number the online
+command would print, and pretending otherwise would be the kind of quiet drift
+this repo keeps catching.
+
+**2.D now has its population, counted per property:**
+
+| property | conflicts |
+| --- | ---: |
+| P569 date of birth | 321 |
+| P570 date of death | 317 |
+| P22 father | 134 |
+| P25 mother | 90 |
+| P26 spouse | 68 |
+| **total** | **930** |
+
+Worth being precise about what this is: a count of *disagreements*, not of
+errors. It says nothing yet about which side is right, which is the whole of
+2.D. Emma's instruction holds — measure per property, assume no global winner,
+show the table before any merge rule is generated from it. The structural
+conflicts (father, mother, spouse: 292) are the ones that cannot be split by a
+tolerance and will need real adjudication; the 638 date conflicts already pass
+through a 3-year threshold that is deliberately tight.

@@ -126,7 +126,7 @@ at them, so they are ordered here rather than renumbered.
 | --- | --- | --- |
 | 1 | **3.A singleton Wikidata items carrying Geni links** | counted in full; rest is BLOCKED-ON-USER-ACTION |
 | 4 | **2.E** component walk as a command, isolates split out | overlaps 3.A — do 3.A first, it is the same discriminator |
-| 5 | **2.B** port the `client.sparql` call sites offline | **1 of 10 ported**; unblocks item 6 |
+| 5 | **2.B** port the `client.sparql` call sites offline | **2 of 10**; `crosscheck --offline` works |
 | 6 | **2.C** build the union tree | shape settled by Emma; *edge* still undefined |
 | 7 | **0.00Z** three `FAM.HUSB` conflicts | NEEDS-INVESTIGATION |
 | 8 | **6** the stale Wikidata reports | rerun against the 151 merge |
@@ -271,7 +271,34 @@ one — it compares our parents, spouses and dates against Wikidata's, and the
 4,854 parents with no Geni ID are exactly the population it would speak to.
 Do **not** write a SPARQL emulator.
 
-**1 of 10 ported, 2026-08-09.** `crosscheck.claims_from_store` answers
+**`crosscheck` runs fully offline as of 2026-08-10 — `--offline`.** Both of its
+network dependencies are gone: the claims come from the store, and the links
+come from `p2600-all.tsv` instead of `reconcile`'s `matched_all.csv`. Measured
+over the 151-export tree: **14,157 linked people, 30,303 agree, 4,700 gaps,
+930 conflicts**, 3,238 QuickStatements written, nothing sent anywhere.
+
+The offline path covers the **exact P2600 links only** — `reconcile`'s expansion
+matches are not in the map, so this is a subset of what the online command sees,
+and the flag's help says so. That is the population `build_claim_batch` emits
+for anyway.
+
+**This unblocks 2.D**, whose population is now identified and counted:
+
+| property | conflicts |
+| --- | ---: |
+| P569 date of birth | 321 |
+| P570 date of death | 317 |
+| P22 father | 134 |
+| P25 mother | 90 |
+| P26 spouse | 68 |
+| **total** | **930** |
+
+What that table does **not** say is who is right — it counts disagreements, not
+errors. Adjudicating them is 2.D proper, and Emma's instruction stands: measure
+per property, assume no global winner, and show the table before generating any
+merge rule from it.
+
+**2 of 10 ported, 2026-08-09/10.** `crosscheck.claims_from_store` answers
 `fetch_claims`'s question — `qid -> {property -> [values]}` for P22/P25/P26/
 P569/P570 — from `StoreReader.entities`. Same return shape, so callers do not
 care which side produced it. 5 tests, plus a real-store spot check (Q42 returns

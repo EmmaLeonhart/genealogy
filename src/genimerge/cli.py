@@ -953,18 +953,67 @@ def _read_all_matches(ws: Workspace) -> dict[str, str]:
         return {row["geni_id"]: row["qid"] for row in csv.DictReader(handle)}
 
 
+def _linked_from_pairs(ws: Workspace, tree) -> dict[str, str]:
+    """``geni_id -> qid`` for our people, straight from the P2600 map.
+
+    The online path gets this from `reconcile`'s `matched_all.csv`, which also
+    holds expansion matches this cannot see. What it does hold is every *exact*
+    P2600 link, which is the population `crosscheck` compares and the only one
+    `build_claim_batch` will emit statements for.
+
+    A Geni ID claimed by more than one item is skipped, not chosen between —
+    the rule `reports/wikidata-doubles.md` exists to enforce.
+    """
+    qids_for: dict[str, set[str]] = {}
+    for qid, geni_id in doubles_mod.load_pairs(ws.wikidata / "p2600-all.tsv"):
+        if geni_id in tree.people:
+            qids_for.setdefault(geni_id, set()).add(qid)
+    return {g: next(iter(q)) for g, q in qids_for.items() if len(q) == 1}
+
+
 def _cmd_crosscheck(args: argparse.Namespace) -> int:
     ws = Workspace.from_args(args)
     tree = _load_tree(args.source, ws)
-    linked = _read_all_matches(ws)
-    if not linked:
-        print("no linked people found; run `genimerge reconcile` and `expand` first",
-              file=sys.stderr)
-        return 1
-    exact = set(_read_seed_matches(ws))
 
-    client = make_client(ws, args)
-    claims = crosscheck.fetch_claims(client, linked.values())
+    if args.offline:
+        # `queue.md` 2.B. Both halves of this command reached the network: the
+        # claims themselves, and `matched_all.csv`, which only `reconcile`
+        # writes. Offline, the claims come from the downloaded store and the
+        # links come from the P2600 map — so the report that measures Geni
+        # against Wikidata no longer has to ask Wikidata anything.
+        pairs_file = ws.wikidata / "p2600-all.tsv"
+        index_path = args.index or wikistore.default_index_path(ws.out)
+        for path, hint in (
+            (pairs_file, "scripts/build-p2600-all.py"),
+            (index_path, "python -m genimerge wikidata-index"),
+        ):
+            if not Path(path).exists():
+                print(f"{path} not found. Build it with `{hint}`.", file=sys.stderr)
+                return 1
+
+        linked = _linked_from_pairs(ws, tree)
+        if not linked:
+            print(f"no P2600 link in {pairs_file} matches anyone in the tree",
+                  file=sys.stderr)
+            return 1
+        # Every link here *is* an exact P2600 match; there is no expansion half
+        # offline. Saying so keeps `render_markdown` and `build_claim_batch`
+        # honest rather than letting them treat these as unconfirmed.
+        exact = set(linked)
+        stamp = date.fromtimestamp(pairs_file.stat().st_mtime).isoformat()
+        print(f"offline: {len(linked):,} P2600-linked people, map cached {stamp}")
+        with wikistore.StoreReader(args.store or WIKIDATA_STORE, index_path) as reader:
+            claims = crosscheck.claims_from_store(reader, linked.values())
+    else:
+        linked = _read_all_matches(ws)
+        if not linked:
+            print("no linked people found; run `genimerge reconcile` and `expand` first",
+                  file=sys.stderr)
+            return 1
+        exact = set(_read_seed_matches(ws))
+        client = make_client(ws, args)
+        claims = crosscheck.fetch_claims(client, linked.values())
+
     result = crosscheck.cross_check(tree, linked, claims)
 
     output = args.output or ws.reports / "wikidata-crosscheck.md"
@@ -1953,6 +2002,18 @@ def build_parser() -> argparse.ArgumentParser:
     )
     p_cross.add_argument("--source", type=Path, default=None, help="a GEDCOM to read instead of merging")
     p_cross.add_argument("--delay", type=float, default=1.0, help="seconds between requests")
+    p_cross.add_argument(
+        "--offline",
+        action="store_true",
+        help=(
+            "read the claims from the downloaded store and the links from "
+            "out/wikidata/p2600-all.tsv instead of asking Wikidata. Covers the "
+            "exact P2600 links only - reconcile's expansion matches are not in "
+            "the map - and sends nothing over the network."
+        ),
+    )
+    p_cross.add_argument("--store", type=Path, default=None, help=f"the item store (default: {WIKIDATA_STORE})")
+    p_cross.add_argument("--index", type=Path, default=None, help="the store index (default: <out>/wikidata/store-index.sqlite3)")
     p_cross.add_argument(
         "--retrieved",
         default=date.today().isoformat(),
