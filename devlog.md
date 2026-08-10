@@ -4653,3 +4653,38 @@ import is allowed to leave the queue.
 Nothing else changed in this tick. Item 2 is deleted from `queue.md`; the order
 table renumbers nothing, per the standing note that IDs stay put because commit
 messages already point at them.
+
+## 2026-08-09 — hourly sweep: 151 exports, and the first clean read on "held"
+
+The sweep found two new downloads among nine zips. `Niels NN`
+(`6000000227147210844`, 4092) and `wife of Ignazio Malerba`
+(`6000000227147141927`, 4096), both `Forest`, both above the cap, so
+`GENI_EXPORT_CAP` 4088 → 4096.
+
+**Five readings, each four higher, five different seeds, five hours:** 4080,
+4084, 4088, 4092, 4096. "It steps by four" now describes the afternoon better
+than any fixed limit does, and the spacing matches how long Emma takes between
+exports — so this may be tracking Geni's own growth rather than a cap. Recorded
+in the docstring rather than asserted; the next reading either continues the run
+or breaks it, and both are worth having.
+
+**Merge at 151:** 298,591 INDI / 149,613 FAM, up from 290,419. Unlike the
+previous pair, both of these merged into the main component (282,214 →
+290,386). The two isolated components from the earlier sweep sit untouched at
+4,088 and 4,084, each still needing its own seed.
+
+**Unreached: 503,646, held 14,204** — and this is the first clean before-and-
+after that number has had. The pair list did not move between 149 and 151
+exports (same store snapshot, same 517,850 numeric pairs), so the whole change
+is ours: **+834 held, −834 unreached** from roughly 8,000 people imported. About
+one in ten was someone Wikidata already carried a Geni ID for and we did not.
+That ratio is the useful thing to carry forward — it is the first measured
+estimate of what an arbitrary Forest export buys on the Wikidata axis.
+
+**A test earned its keep.** `test_every_gedcom_on_disk_is_tracked_by_git` failed
+on the first run of the corpus suite, naming both new files. It was right: they
+were on disk and not yet committed, which is exactly the state where every local
+run keeps working while the reports describe a corpus nobody else can read. Ran
+the suite, committed, re-ran: **1264 passed, 1 skipped, 4m17s**. The first run's
+failure is left in the record rather than tidied away, because the invariant
+catching a real mid-import state is the point of it existing.
