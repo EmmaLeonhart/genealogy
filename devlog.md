@@ -5476,3 +5476,27 @@ building and the city, not a contradiction. Geni's
 `Winchester Castle, Winchester, Hampshire, England` is the same hierarchy
 flattened into one string. Its `Middlesex` token is a county abolished in 1965,
 so the chain can also be historically stale.
+
+## 2026-08-10 — cases 2-11 laid out
+
+`scripts/prepare-cases.py` writes one file per ancestor in ahnentafel order:
+structured GEDCOM record, every `FAM` record they appear in whole, and every
+Wikidata statement **with qualifiers and references**. Long notes and image
+blocks withheld and counted. It compares nothing and concludes nothing — Emma
+asked for the data in front of her, not another report.
+
+Ten cases written, 366 distinct QIDs resolved in one query.
+
+A bug in it, caught from its own output rather than by Emma for once: the run
+first reported "376 distinct QIDs mentioned" and then "10/10 resolved". Those
+numbers cannot both be right. I had collected `w[1:]`, stripping the `Q`, so 366
+of the ids were bare digits that `fetch-labels.py` filtered out silently and the
+run announced full success on a tenth of the set. Fixed; 366/366 now.
+
+**Visible in case 3 and left uninterpreted:** Geni places are not only
+comma-strings. Isabelle of Angoulême carries `2 PLAC Abbaye de Fontevraud` *and*
+a structured `2 ADDR / 3 CITY / 3 STAE / 3 CTRY`. Yesterday's note that "Geni's
+string is Wikidata's hierarchy flattened" came from Henry III alone and is
+incomplete. How consistently that address block is filled is unknown and not
+measured, because measuring it before Emma has looked at cases is the habit being
+corrected.

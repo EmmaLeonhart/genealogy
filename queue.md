@@ -219,8 +219,40 @@ Wikidata is basically always going to be good, just keep that in mind: difficult
 conversion."* Note `Middlesex` — an administrative county abolished in 1965 — so
 the chain can be historically stale.
 
-**Next case: [2] FATHER — John, King of England**, geni `4924870419470035934`,
-wikidata `Q129308`. His record is **7,358 lines**, the largest seen.
+### Cases 2-11 are laid out and waiting — `out/cases/`
+
+`python scripts/prepare-cases.py 979118 --count 10`. Regenerable in one command,
+so not committed. Each file holds the person's structured GEDCOM record, **every
+`FAM` record they appear in whole**, and **every Wikidata statement with its
+qualifiers and references**. Long notes and image blocks are withheld and
+counted. Nothing is compared and nothing is concluded.
+
+| # | position | geni | source record |
+| --- | --- | --- | ---: |
+| 2 | father | `4924870419470035934` John, King of England | 7,358 lines |
+| 3 | mother | `6000000007593862015` Isabelle of Angoulême | 959 |
+| 4 | ff | `5597271884650100378` Henry II | 6,682 |
+| 5 | fm | `6000000003582502504` Aliénor d'Aquitaine | 2,788 |
+| 6 | mf | `6000000000134496318` Aymer d'Angoulême | 471 |
+| 7 | mm | `6000000000134665152` Alice de Courtenay | 1,494 |
+| 8 | fff | `4194887957440076070` | 1,732 |
+| 9 | ffm | `6000000002106021492` | 1,245 |
+| 10 | fmf | `6000000003523986134` | 1,163 |
+| 11 | fmm | `6000000000701127473` | 342 |
+
+**366 distinct QIDs** across the ten, all resolved in **one** SPARQL query →
+`out/cases/labels.txt`.
+
+**One thing already visible and not yet interpreted:** Geni places are *not*
+only comma-strings. Isabelle's record carries both `2 PLAC Abbaye de Fontevraud`
+and a structured `2 ADDR / 3 CITY Fontevraud-l'Abbaye / 3 STAE Pays de la Loire
+/ 3 CTRY France`. The earlier note that "Geni's string is Wikidata's hierarchy
+flattened" was drawn from Henry III alone and is incomplete — there is a
+structured address block too, and how consistently it is filled is unknown. Her
+call, not mine.
+
+She also carries **six `NAME` records** across French, English and Lithuanian
+(`Izabelė iš Angulemo`), with an empty `2 SURN` on one.
 
 ## Order of work — synthesized 2026-08-09
 
