@@ -46,9 +46,9 @@ Measured over the **298,591-person merge**, across the **14,157** of our people 
 
 **1,396 of 2,123** are born 1800 or later, and 723 state no birth date at all. `reports/descendants.md` § *Seeds that can reach 1900* puts the threshold for arriving after 1900 at a seed born around 1750, so read the rows above that line as campaign-relevant and the rest as tree-filling — worth doing, and a different job.
 
-## Geni profiles one hop above us — 2,123
+## Geni profiles one hop above us — 1,482
 
-Each row is an export target: the Geni ID exists and no export here has reached it.
+**1,482 distinct people** over **2,123** parent-of rows: a parent Wikidata names for several of our people appears once per child below, and is still a single export. Each row is an export target: the Geni ID exists and no export here has reached it.
 
 | our person | relation | Wikidata parent | parent's Geni ID |
 | --- | :-: | --- | --- |

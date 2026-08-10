@@ -4887,3 +4887,42 @@ the 28 malformed URL values, and not a defect.
   merge rule the code applies. Blocked on 2.B, since `crosscheck` still builds a
   `WikidataClient`. Recorded with the caveat that a merge rule is the more
   committal output: build the table, show it, then generate the rule from it.
+
+## 2026-08-09 — 2.A's seed list, and the count it was chosen from was wrong
+
+`reports/ancestor-seeds.tsv` — **610 export seeds**, ranked newest first, ties
+broken by how many of our people the target is a parent of. Built offline by
+`scripts/build-ancestor-seeds.py` from the merge, the pair file and the store
+index. Emma's cut: parents born 1500s or later, because a `Descendants` export
+from one returns that parent's whole descent and is only worth taking when it is
+late enough to arrive where the campaign is going.
+
+**The number she chose from was 829 and the answer is 610.** Building the list
+surfaced that `reports/wikidata-ancestors.md` had been counting *findings* where
+it said *profiles*. A parent Wikidata names for three of our children is three
+findings and **one** export; the heading and the century table both counted
+rows. Over the real tree:
+
+| | rows | distinct people |
+| --- | ---: | ---: |
+| one hop above us | 2,123 | **1,482** |
+| …dated 1500+ | 829 | **610** |
+| …dated pre-1500 | ~495 | 361 |
+| …undated | 723 | 511 |
+
+Nothing was miscomputed — every figure was right for what it counted — but
+"Geni profiles one hop above us — 2,123" reads as a number of people, and a
+seed list is a list of people. The heading now gives both figures and says which
+is which. The existing test used a one-finding fixture, where rows and people
+are the same number, so it could not have caught this; a new test builds one
+parent over two children and asserts the heading says **1**.
+
+Emma's decision is unaffected — same cut, same reasoning — but the list is a
+third shorter than the figure it was chosen from, and she should know that
+before working down it.
+
+`tests/test_wikiancestors.py`: 22 passed.
+
+The 511 undated targets remain out of the list and undiscarded. Undated does not
+mean early, and treating it as early would quietly drop a fifth of the
+population.

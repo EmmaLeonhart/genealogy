@@ -212,3 +212,30 @@ def test_the_report_names_both_problems_separately(store):
     assert "Geni profiles one hop above us — 1" in text
     assert "Parents with no Geni link — 1" in text
     assert "Q2" in text
+
+
+def test_one_parent_of_two_children_is_one_profile_not_two(store):
+    # A parent Wikidata names for several of our people is several findings and
+    # a single export. The heading counted rows until 2026-08-09, which read as
+    # a profile count and overstated the seed list by a third - 2,123 rows
+    # against 1,482 people over the real tree.
+    reader = store(
+        [
+            parent_item("Q1", father="Q9", geni=["100"]),
+            parent_item("Q2", father="Q9", geni=["200"]),
+            parent_item("Q9", geni=["900"]),
+        ]
+    )
+    tree = tree_of(person("100"), person("200"))
+    with reader:
+        result = wikiancestors.find_missing_parents(
+            tree, reader, {"100": "Q1", "200": "Q2"}
+        )
+
+    exportable = result.by_status(wikiancestors.EXPORTABLE)
+    assert len(exportable) == 2, "two findings, one per child"
+    assert len({f.parent_qid for f in exportable}) == 1, "one person to export"
+
+    text = wikiancestors.render_markdown(result, tree)
+    assert "Geni profiles one hop above us — 1" in text
+    assert "**1 distinct people** over **2** parent-of rows" in text

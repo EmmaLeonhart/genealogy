@@ -76,14 +76,23 @@ wrong and 183,681 items are not an export target at all.
 **BLOCKED-ON-USER-ACTION** — only Emma can take a Geni export. The hourly sweep
 imports them automatically once the zips land in Downloads.
 
-**2.A — yes, seed from the 829 dated 1500s+.** Of 2,123 targets one hop above
-us, 1,400 carry a birth date and 829 of those are 1500s or later (1700s 283,
-1600s 204, 1800s 192, 1500s 150). A `Descendants` export from each returns that
-parent's whole descent — the siblings of somebody we hold, and their lines — so
-a backwards step buys forwards reach. **Next step, unblocked:** write the 829
-out as a ranked seed list from `reports/wikidata-ancestors.md`, newest first, so
-Emma can work down it. The 723 undated targets are **not** in scope for this
-list and are not discarded either; they want their own question later.
+**2.A — yes, seed from the dated 1500s+ targets. DONE —
+`reports/ancestor-seeds.tsv`, 610 rows.** Built by
+`scripts/build-ancestor-seeds.py`, ranked newest first, ties broken by how many
+of our people the target is a parent of.
+
+**The count Emma decided on was 829 and the real figure is 610, because the
+report was counting rows.** `_century_rows` and the section heading both
+counted *findings* — a parent Wikidata names for three of our children is three
+findings and **one** export. Distinct people one hop above us is **1,482**, not
+2,123; dated 1500s+ is **610**, not 829. The decision is unaffected — same cut,
+same reasoning — but the seed list is a third shorter than the number it was
+chosen from, and that is worth knowing before working down it. The heading now
+states both figures and a test pins the distinction.
+
+The split, distinct people: **610** dated 1500+, **361** dated pre-1500, **511**
+undated. The 511 undated are still not in the list and still not discarded —
+undated does not mean early, and they want their own question.
 
 **2.D — measure Geni against Wikidata per property, assume nothing.** This is
 not a matching-accuracy backtest; Emma reframed it as *source reliability*.
@@ -116,7 +125,6 @@ at them, so they are ordered here rather than renumbered.
 | # | item | state |
 | --- | --- | --- |
 | 1 | **3.A singleton Wikidata items carrying Geni links** | counted in full; rest is BLOCKED-ON-USER-ACTION |
-| 3 | **2.A** the 829 dated targets as export seeds | **decided 2026-08-09** — build the seed list |
 | 4 | **2.E** component walk as a command, isolates split out | overlaps 3.A — do 3.A first, it is the same discriminator |
 | 5 | **2.B** port the `client.sparql` call sites offline | **1 of 10 ported**; unblocks item 6 |
 | 6 | **2.C** build the union tree | shape settled by Emma; *edge* still undefined |

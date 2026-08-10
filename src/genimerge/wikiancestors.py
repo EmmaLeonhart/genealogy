@@ -315,11 +315,19 @@ def render_markdown(result: Result, tree: Tree, limit: int = 400) -> str:
         ]
 
     if exportable:
+        # Distinct people, not rows. One parent named for three of our children
+        # is three findings and *one* export — counting rows here read as a
+        # profile count and overstated the seed list by a third (2,123 rows
+        # against 1,482 people on 2026-08-09).
+        distinct_parents = len({f.parent_qid for f in exportable})
         lines += [
-            f"## Geni profiles one hop above us — {len(exportable):,}",
+            f"## Geni profiles one hop above us — {distinct_parents:,}",
             "",
-            "Each row is an export target: the Geni ID exists and no export "
-            "here has reached it.",
+            f"**{distinct_parents:,} distinct people** over **{len(exportable):,}** "
+            "parent-of rows: a parent Wikidata names for several of our people "
+            "appears once per child below, and is still a single export. Each "
+            "row is an export target: the Geni ID exists and no export here has "
+            "reached it.",
             "",
             "| our person | relation | Wikidata parent | parent's Geni ID |",
             "| --- | :-: | --- | --- |",
