@@ -600,6 +600,57 @@ The suite is fast, needs only pytest, and covers the real 24 MB exports. The one
 thing local runs cannot do is the Python version matrix — `tests/test_python_floor.py`
 is a partial stand-in for that, and says so.
 
+### How this project works now: case by case, Emma interprets
+
+**2026-08-10. This supersedes the "build a report over the whole corpus" habit.**
+Emma: *"we go through the merging on a case-by-case basis. I am going to say we
+go through the merging, and I look over each case one by one. You display each
+case to me one by one, and I look over it. We try to derive rules for that."*
+
+The failure being corrected: *"you're just aggressively jumping into the database
+modelling and skipping the interpretation... you've run this algorithm on a bunch
+of stuff without telling me and not even looked at a single thing."*
+
+So:
+
+1. **Show records, not statistics.** A markdown file of counts is not a
+   deliverable. `scripts/show-case.py` prints one person, both sides.
+2. **Never reformat data you were asked to inspect.** Emma, on a display that
+   collapsed a 2,686-line record to fifteen lines of my formatting: *"Your
+   display of the GEDCOM data is 100% wrong... you made editorial decisions on
+   the GEDCOM data. You actively obscured stuff from me."* Print raw lines. If
+   something is withheld, say what and how much.
+3. **Rules come out of cases, not before them.** Do not generalise a merge rule
+   from one example; Emma explicitly refused that for the Ōjin conflict.
+4. **Ask on ambiguity.** *"The whole thing is you're supposed to slow down and
+   ask the user a question on ambiguities."*
+
+### Reading a Wikidata statement: the value is not the statement
+
+**Qualifiers and references carry the genealogy.** Reading only `mainsnak` and
+reporting what you found is how this project twice told Emma that Wikidata held
+nothing when it held the answer.
+
+Henry III (`Q160311`), 2026-08-10. The `P26` spouse statement's mainsnak is just
+`Q228885`. Everything that matters is beside it:
+
+    P26 -> Q228885
+      P580  start time        +1236-01-04
+      P582  end time          +1272-11-16
+      P1534 end cause         Q99521170
+      P2842 place of marriage Q29265
+      4 references
+
+Marriage date, marriage place, when and why it ended, all sourced. A display that
+read mainsnak only reported "Wikidata has the spouse link but no date and no
+place", and Emma corrected it: *"No wikidata often has it, but not in the same
+place and it's relatively rare."* Both halves of that are true and the second is
+the trap — it is rare enough that a sample can miss it and confident enough to
+mislead when it is there.
+
+**Geni says 14 JAN 1236; Wikidata says 4 JAN 1236.** Ten days apart. That
+disagreement only exists to be found if qualifiers are read.
+
 ### GEDCOM dates have a specification. Use `genimerge.dates`, never a regex
 
 **Do not parse a GEDCOM date by hand.** Not with a regex, not with

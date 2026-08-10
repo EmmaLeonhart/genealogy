@@ -115,6 +115,67 @@ not a matching-accuracy backtest; Emma reframed it as *source reliability*.
 
 **0.00Y — decided and done.** Floor plus seed-file check; see `devlog.md`.
 
+## THE WORK NOW: the ancestor walk, case by case — 2026-08-10
+
+**Everything below this section is older and lower priority.** Emma redirected
+the project on 2026-08-10 from corpus-wide reports to case-by-case review, with
+her doing the interpretation. `CLAUDE.md` § *How this project works now* has the
+rule; this is the state of the walk.
+
+**Seed: Henry III of England** — geni `979118`, wikidata `Q160311`. Emma:
+*"He is a really good starting point."* **34 generations and 717 distinct
+ancestors above him.** (An earlier "13 generations" was a recursion cap reported
+as a measurement.) Order is ahnentafel: self, father, mother, then the four
+grandparents, and so on. `python scripts/show-case.py 979118 --up N`.
+
+**Case 1 — Henry III. Reviewed. What it produced:**
+
+- **The record is 2,686 lines**, of which 149 are `NOTE` and 367 are `OBJE`.
+  Only 9 notes exceed 20 lines; those are pasted articles (English Wikipedia and
+  a Norwegian one). The other 130 are short and real: Burke's Peerage, Scots
+  Peerage, Dictionary of National Biography with volume and page, a `!RESEARCH
+  NOTES:` block arguing a claimed daughter Mary "cannot be accepted", LDS sealing
+  dates from 1933 and 1938.
+- **No language marking exists anywhere.** Zero `LANG` subtags in the corpus. The
+  only `NAME` subtags are `GIVN` (352,545), `_MARNM` (244,392), `SURN` (219,117),
+  `NICK` (66,926), `NSFX` (36,072), `CONC` (6). Henry III has four `NAME` records,
+  two English and two Spanish, and nothing distinguishes them. Emma: Geni drops
+  the language on export, so this needs linguistic judgement — **parked, and she
+  used the word deliberately**.
+- **`FAM` objects carry marriage data**: `@F6000000009811238831@` has
+  `1 MARR / 2 DATE 14 JAN 1236 / 2 PLAC Canterbury Cathedral`. His parents'
+  family has `26 AUG 1200, Bordeaux`.
+- **Wikidata has the same marriage, in qualifiers**, and disagrees:
+  **P580 = 4 JAN 1236** against Geni's **14 JAN 1236**, plus P2842 place,
+  P582 end, P1534 end cause, 4 references. Ten days apart.
+- **A field-level source is plainly wrong**: Henry III's `First Name` and `Date
+  of Death` both cite a Find A Grave memorial for **Edward I (1239–1307)**, his
+  son.
+- **Child counts differ**: Geni 8 in that family, Wikidata 9 under P40.
+
+## Emma's decisions, 2026-08-10 (the walk)
+
+- **Labels: only for the 14,177 people carrying both IDs.** Wikidata is the
+  definitive source for a person's label. If an individual already has both an
+  English and a Japanese label, **park it immediately** — move on to fields
+  worth talking about.
+- **Marriage mapping: not decided.** *"Show me marriage cases first."* Walk more
+  `FAM` records before choosing any P26-qualifier shape.
+- **Child-count disagreements: show the diff case by case.** Resolve both sides
+  to names and dates, show what only one side has, Emma judges missing vs
+  illegitimate vs different family vs duplicate.
+- **Field-level sources: collect, do not trust.** Record what each `SOUR` claims
+  to source; treat the citation as unverified. The Edward I case proves they can
+  be simply wrong. Not usable as a Wikidata reference on that basis.
+- **Notes: useful, but only where they disambiguate a data record.** Not the
+  current job. Pasted articles are droppable; the short ones are not.
+- **Ōjin: keep the detailed record** (`@I6000000001829492981@`).
+  Wikramawardhana undecided — she said she does not know him. **This is a
+  decision about two records, not a merge rule.**
+
+**Next case: [2] FATHER — John, King of England**, geni `4924870419470035934`,
+wikidata `Q129308`. His record is **7,358 lines**, the largest seen.
+
 ## Order of work — synthesized 2026-08-09
 
 Three queues had accumulated: this machine's, the cloud session's (the import

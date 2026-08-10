@@ -5402,3 +5402,46 @@ Wikramawardhana case, so that one stays undecided. That is a decision about two
 records, not a merge rule — whether `merge_files` should generally prefer the
 richer record remains open, and deriving it from one case would be over-reading
 her.
+
+## 2026-08-10 — the method changed, and case 1
+
+Emma redirected the project. The failure she named: *"you're just aggressively
+jumping into the database modelling and skipping the interpretation... you've run
+this algorithm on a bunch of stuff without telling me and not even looked at a
+single thing."* From here the work is case-by-case, she interprets, rules come
+out of cases rather than being applied to them. `CLAUDE.md` carries the rule.
+
+Three of my displays were wrong in the same way, and she caught all three.
+
+**"13 generations" above Henry III** was my recursion cap (`seen > 12`) printed
+as a measurement. She said *"either a data issue or you kind of just
+bullshitting"*. Real figure: **34 generations, 717 ancestors**.
+
+**The case display collapsed a 2,686-line record to fifteen lines of my own
+formatting.** *"Your display of the GEDCOM data is 100% wrong... you made
+editorial decisions on the GEDCOM data. You actively obscured stuff from me."*
+It dropped five `NICK` subtags, an empty `SURN`, 7 `SOUR` blocks and 149 notes
+containing Burke's Peerage and Scots Peerage citations, and a `!RESEARCH NOTES:`
+block arguing a claimed daughter cannot be accepted.
+
+**And the Wikidata side read only `mainsnak`.** I reported that Wikidata had the
+spouse link but no marriage date or place. Emma: *"No wikidata often has it, but
+not in the same place and it's relatively rare."* It has all of it, in
+qualifiers — P580 start, P582 end, P1534 end cause, P2842 place, 4 references.
+**And it disagrees with Geni: 4 JAN 1236 against 14 JAN 1236.** A ten-day
+conflict that only exists to be found if qualifiers are read.
+
+Both rules are now in `CLAUDE.md` beside the GEDCOM-date one, which was the same
+class of error a day earlier.
+
+**Case 1 findings** are in `queue.md`: no language marking anywhere in the corpus
+(zero `LANG` subtags, four undistinguished `NAME` records on Henry III), `FAM`
+objects carrying marriage date and place, a field-level `SOUR` citing Henry III's
+death to his *son's* Find A Grave memorial, and child counts of 8 against 9.
+
+**Emma's decisions** are recorded there too: labels only for the 14,177 with both
+IDs and parked once English and Japanese exist; marriage mapping not decided
+until more cases are seen; child-count diffs shown case by case; field-level
+sources collected but not trusted; notes useful only where they disambiguate.
+
+Next case is [2] John, King of England — 7,358 lines, the largest record yet.
