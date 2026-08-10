@@ -142,28 +142,47 @@ the re-clone above: the 145-export baseline item 0.00A wanted no longer exists.
 
 **`## 8b-i **The century distribution** — DONE, `reports/centuries.md`
 
-Emma's 2026-08-07 prediction is **half right, and the wrong half matters more**.
+**Corrected 2026-08-10 after Emma asked to look over the future birth dates.**
+The first run's `century_of` returned the century *ordinal* formatted as a year
+range — 1950 came out as `2000s` — so every label was a hundred years late and
+the headline conclusion was inverted. Fixed, re-run, and the report now carries
+the corrected table.
 
 | the claim | verdict |
 | --- | --- |
-| Wikidata skews heavily to the 20th/21st | **right** — 72.8% of dated Geni-linked items |
-| …*much as the Geni profiles do* | **wrong** — Geni is 25.6%, under a third of that |
-| the 19th is ambiguous | **right, precisely** — it is the crossover century |
+| Wikidata skews to the 20th/21st | **wrong** — 1900s+2000s are 24.2% |
+| …*much as Geni does* | **wrong** — Geni is 4.5% there |
+| the 19th is where it gets interesting | **right** — the 1800s is the biggest bucket on both sides |
 
-**The two trees are not the same shape.** Wikidata's Geni-linked population is
-modern: half of it born in the 1900s. Ours is medieval and early-modern — the
-1200s–1800s hold 57.9% of our dated people, and we have **nine times** as many
-second-century people as Wikidata does in a tree half the size. Geni leads every
-century through the 1800s; Wikidata leads every century after. That is
-`reports/descendants.md`'s premise — the campaign is about reaching modern times
-— confirmed from the other side.
+Wikidata's Geni-linked people peak in the **1800s (48.9%)**; ours are flatter and
+older (1800s 21.4%, 1700s 18.6%, 1600s 15.2%, with a medieval tail Wikidata
+barely has — 7,916 people born in the 1300s against their 1,523). Geni leads
+every century through the 1700s, Wikidata from the 1800s on. The instinct
+underneath the prediction survives — the Wikidata side *is* the more modern of
+the two, 73.0% at 1800s-or-later against our 25.9% — but the centuries named
+were a hundred years early.
 
-**Unpredicted, and worth acting on before the authoring pipeline runs:** 225
-Geni-linked Wikidata items state a birth date in the **2100s**, and 15 of our own
-people are born in the 22nd century or later. `add-claims.qs` builds P569/P570
-from our dates, so an uncorrected year becomes a wrong year on Wikidata. The Geni
-side belongs with `reports/consistency.md`; the Wikidata side is a defect there
-and is listed rather than fixed.
+## BCE is unrepresentable in the corpus — NEEDS-DECISION, Emma
+
+Five people carry a birth year after 2026, and all five are BCE dates written as
+bare positives: Merenre Nemtyemsaf II (2216), Hetep (2191), Intef I (2166),
+Mentuhotep II (2111), Sesostris (2060). Mentuhotep II reads birth 2111, death
+2046 — birth *after* death, the signature of a lost era marker.
+
+**`out/merged.ged` contains zero `BC` strings.** So this is not rare data, it is
+a corpus that cannot express BCE at all: every BCE person is filed into the
+matching CE century, and only those whose year exceeds 2026 are self-evident.
+
+**This blocks nothing today and breaks the authoring pipeline tomorrow.**
+`out/wikidata/add-claims.qs` builds P569/P570 from these dates — left alone it
+would state Mentuhotep II was born in **2111 CE** and push that to Wikidata.
+
+The decision is Emma's because it is about what the corpus should hold, not how
+to compute it: whether the exports' BCE dates are recoverable from Geni at all,
+whether a negative-year convention should be introduced into the merged GEDCOM,
+or whether the pipeline should simply refuse to emit a date for anyone flagged.
+A partial detector exists — birth year later than death year, 74 people — but it
+mixes BCE with truncated dates (`2 DATE 12`) and is not a clean population.
 
 ## Emma's brief — her words, the destinations these decompose from` below is Emma's own brief, not steps.** It is
 the destination list these decompose from; leave its wording alone.

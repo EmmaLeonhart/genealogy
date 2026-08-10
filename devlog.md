@@ -5262,3 +5262,55 @@ The Geni-side parser was validated before the expensive half ran — it counts
 Comparing shares of the *dated* population on each side rather than of the whole
 is deliberate: coverage is 77.5% against 49.6%, and mixing that in would make the
 better-covered side look older or younger purely by having fewer blanks.
+
+## 2026-08-10 — correcting the century report, and what the "impossible" dates really are
+
+Emma asked me to look over the future birth dates I had reported. There were
+none of the kind I claimed, and finding that out exposed a bug that had inverted
+the report's main conclusion.
+
+**The bug.** `century_of` returned `f"{(year - 1) // 100 + 1}00s"` — the century
+*ordinal*, 1950 being in the 20th century — formatted as though it were a year
+range. So 1950 was filed under `2000s` and 2001 under `2100s`, and every label in
+the table was a hundred years late. What I reported as "225 Wikidata items claim
+a birth in the 2100s" were ordinary people born 2001–2100. **Actual future-dated
+Wikidata items: zero.**
+
+**The conclusion that has to be withdrawn.** I told Emma that Wikidata's
+Geni-linked population is 72.8% born in the 1900s or 2000s. It is **24.2%**. The
+72.8% was real but it was the 1800s+1900s. Corrected:
+
+- Wikidata peaks in the **1800s at 48.9%**, with 24.1% in the 1900s.
+- Geni is flatter and older — 21.4% / 18.6% / 15.2% across the 1800s, 1700s,
+  1600s, with a medieval tail Wikidata barely has.
+- Geni leads every century through the 1700s; Wikidata leads from the 1800s.
+
+The *direction* survives — the Wikidata side is the more modern of the two,
+73.0% at 1800s-or-later against our 25.9% — so the earlier "the two trees are not
+the same shape" reading still holds. The centuries attached to it did not.
+Emma's prediction is now scored as wrong in specifics (neither side skews to the
+20th/21st) and right in instinct.
+
+**What the five genuinely future dates are.** All Ancient Egyptian pharaohs —
+Merenre Nemtyemsaf II (2216), Hetep (2191), Intef I (2166), Mentuhotep II (2111),
+Sesostris (2060). They are **BCE dates written as bare positive years**.
+Mentuhotep II reads birth 2111, death 2046: birth after death, which is what a
+BCE pair looks like with the era marker gone.
+
+**And there is no era marker anywhere: `out/merged.ged` contains zero `BC`
+strings.** BCE is not rare in this corpus, it is unrepresentable. Every BCE
+person is silently filed into the matching CE century, and only those whose year
+exceeds 2026 give themselves away. The `BCE | Geni 0` row is an artifact of that
+rather than a fact — we demonstrably hold pharaohs.
+
+That is now a queue item and **NEEDS-DECISION, Emma**, because it is about what
+the corpus should hold rather than how to compute it. It also matters before the
+authoring pipeline runs: `add-claims.qs` builds P569/P570 from these dates and
+would state that Mentuhotep II was born in 2111 CE.
+
+Two lessons I am recording rather than absorbing quietly. The century bug
+produced a table that was internally consistent, plausibly shaped, and wrong —
+nothing in the output looked off, and it took a question from Emma to surface it.
+And the "225 impossible births" I flagged as a data-quality finding were an
+artifact of my own labelling, while the five real ones sat unremarked in a bucket
+I had labelled correctly by accident.

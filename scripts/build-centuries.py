@@ -38,9 +38,21 @@ MERGED = ROOT / "out" / "merged.ged"
 
 
 def century_of(year: int) -> str:
+    """The year-range label a year falls in: 1950 -> ``1900s``.
+
+    **Not the century ordinal.** The first version of this returned
+    ``f"{(year - 1) // 100 + 1}00s"``, which is the ordinal — 1950 is in the
+    20th century — formatted as though it were a year range, so every label came
+    out a hundred years late. 1950 was filed under "2000s" and 2001 under
+    "2100s". The report read as if 225 Wikidata items claimed a birth in the
+    22nd century; they were ordinary 21st-century people, and the conclusion
+    drawn about which era each tree covers was inverted.
+    """
     if year <= 0:
         return "BCE"
-    return f"{(year - 1) // 100 + 1}00s"
+    if year < 100:
+        return "0s"
+    return f"{year // 100}00s"
 
 
 def _truthy_times(entity: dict, prop: str) -> list[str]:
@@ -128,6 +140,8 @@ def geni_side() -> tuple[Counter, int, int]:
 def _sort_key(label: str) -> tuple[int, int]:
     if label == "BCE":
         return (0, 0)
+    if label == "0s":
+        return (1, 0)
     return (1, int(label[:-2]))
 
 
@@ -182,10 +196,10 @@ def main() -> int:
     print()
     print(f"wikidata: {wd_linked:,} linked, {wd_dated:,} dated")
     print(f"geni    : {gd_people:,} people, {gd_dated:,} dated")
-    modern = ("1900s", "2000s")
-    print(f"  20th+21st  wikidata {100 * sum(wd[c] for c in modern) / max(1, wd_dated):.1f}%"
+    modern = ("1900s", "2000s")  # the 20th and 21st centuries, by year range
+    print(f"  1900s+2000s wikidata {100 * sum(wd[c] for c in modern) / max(1, wd_dated):.1f}%"
           f"   geni {100 * sum(gd[c] for c in modern) / max(1, gd_dated):.1f}%")
-    print(f"  19th       wikidata {100 * wd['1800s'] / max(1, wd_dated):.1f}%"
+    print(f"  1800s      wikidata {100 * wd['1800s'] / max(1, wd_dated):.1f}%"
           f"   geni {100 * gd['1800s'] / max(1, gd_dated):.1f}%")
     print(f"wrote {out}")
     return 0
