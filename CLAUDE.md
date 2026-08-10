@@ -600,6 +600,40 @@ The suite is fast, needs only pytest, and covers the real 24 MB exports. The one
 thing local runs cannot do is the Python version matrix — `tests/test_python_floor.py`
 is a partial stand-in for that, and says so.
 
+### GEDCOM dates have a specification. Use `genimerge.dates`, never a regex
+
+**Do not parse a GEDCOM date by hand.** Not with a regex, not with
+`str.isdigit()`, not by taking the last integer token. Call
+`genimerge.dates.parse_date`.
+
+GEDCOM 5.5.1 specifies the date grammar precisely — exact dates, bare years,
+month-and-year, the `ABT`/`BEF`/`AFT`/`EST`/`CAL` modifiers, and `BET x AND y`
+ranges. Geni emits that grammar with **one documented deviation**: BC years are
+written as a **minus** (`-73`, `ABT -95`, `BEF -1310`) rather than 5.5.1's
+`73 B.C.`. `dates.py` implements the grammar and that deviation, and reports no
+structured value for anything it does not recognise — a date we cannot read must
+not become a date we guessed.
+
+**This has now cost the project twice, the same way both times.** A hand-rolled
+parser drops what it does not understand *silently*, because an unreadable date
+is discarded by design:
+
+- 2026-08-05 — negative years were unhandled and **4,459 events**, every date
+  before year 1 in the corpus including Emperor Jimmu and Makeda, parsed to
+  `year=None`. Nothing downstream complained.
+- 2026-08-10 — `scripts/build-centuries.py` and `scripts/find-bce.py` each took
+  the last integer token. `"-73".isdigit()` is `False`, so **all 4,750
+  negative-year `DATE` lines** vanished, a report concluded the corpus "cannot
+  express BCE", and the century histogram was published with a `BCE: 0` row.
+
+Both times the output looked entirely reasonable. That is the hazard: a wrong
+date parser does not raise, it just quietly narrows the data.
+
+**If a date genuinely does not fit the grammar**, that is a finding about the
+corpus — record the raw text and say how many, rather than widening a pattern
+until it swallows the value. Reaching for a regex here is how the specification
+gets re-implemented badly.
+
 ### Working on Windows here
 
 - Commit with `git commit -F <msgfile>`, not `-m` with a here-string: PowerShell
