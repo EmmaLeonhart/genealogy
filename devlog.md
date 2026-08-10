@@ -4818,3 +4818,30 @@ from a different direction. `tests/test_crosscheck.py`: 44 passed.
 Nine call sites remain, listed by file and line in `queue.md`. The `crosscheck`
 command still constructs a `WikidataClient`; wiring it to the store reader is
 the next step and is what actually makes item 6 runnable.
+
+## 2026-08-09 — the full suite, measured at last
+
+**1 failed, 2170 passed, 1 skipped, 19m38s.** First full run of the session; it
+had been skipped in favour of the three corpus files for several ticks, and by
+the load-bearing default that was not-yet-done rather than deferred.
+
+Two results worth separating.
+
+**The single failure is 0.00Y, already catalogued.**
+`test_the_seed_items_carry_the_geni_id_they_were_selected_for` asserts that over
+half of every stored item carries P2600; the measurement is 514,903 of
+1,408,401, 36.6%. That is the figure already written into `queue.md` 0.00Y, from
+the same store. Nothing is newly broken and nothing regressed: the seed phase is
+essentially complete and the other 893,498 items are expansion relatives, which
+is what the walk exists to fetch. The assertion expired, the download did not.
+It stays red and it stays NEEDS-DECISION — Emma's, because the test encodes her
+requirement, and because lowering `0.5` to a number that passes today would
+retire the guard that would catch the seed map drifting.
+
+**A previously-red test is now green.** `HANDOFF.md` recorded
+`test_merge_real_exports.py::test_the_committed_merge_report_still_describes_these_exports`
+as failing on `main` because the committed `reports/merge.md` no longer matched
+a fresh merge. It passed. `genimerge merge` rewrites that report whenever it is
+run without `--output`, so the three merges this session regenerated it as a
+side effect. The fix HANDOFF asked for — "run merge, commit the regenerated
+report" — happened without being aimed at.
