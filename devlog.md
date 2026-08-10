@@ -5146,3 +5146,46 @@ output, so porting it alone buys nothing. Recorded rather than done.
 Two of the ten are now blocked on the same missing data, one stays online by
 design, four are ported. That leaves three genuinely portable and worth doing:
 `cli.py:264`, `quickstatements.py:151`, `wikidata.py:309`.
+
+## 2026-08-10 — 2.B finished, to the limit of what the download holds
+
+Two more call sites ported, and the remaining four accounted for individually
+rather than left as a number.
+
+**`wikidata.find_matches` → `matches_from_store`** — the P2600 join itself, which
+is what the store index was built for. A table lookup rather than a scan. One
+`Match` per (Geni ID, item) pair as the online form does, because the mapping is
+not one-to-one and collapsing a double-match would hide exactly the cases
+`reports/wikidata-doubles.md` exists to put in front of a human.
+
+**`quickstatements._existing_p2600` → `existing_p2600_from_store`** — kept the
+online form's lossy `qid -> one geni_id` shape on purpose. It is wrong in the
+same way in both, and fixing it here alone would make the two paths disagree
+about a population another report owns. The lowest Geni ID is chosen so repeated
+runs agree with each other rather than picking arbitrarily.
+
+Five tests; real-store check resolves Ovid's Geni ID to Q7198 and Avicenna's to
+Q8011, with the reverse lookup returning their P2600 values.
+
+**The ten, finally triaged: 6 ported, 2 blocked, 2 staying online.**
+
+`cli.py:264` stays online because a previous session already wrote the reason
+into the offline branch it sits next to: *"those counts come from the endpoint.
+Passing the fetched totals instead would print a number that looks like Wikidata
+answering and is really our own file counting itself."* The store could produce
+a number for "how many items on Wikidata carry P2600" and that number would be a
+count of our snapshot wearing Wikidata's name. `overlap.py:89` is the seed fetch
+that fills the store; porting it to read the store is circular.
+
+`names.py:240` and `reconcile.py:512` are both label-to-item searches over all of
+Wikidata, and both stay **BLOCKED-ON-EXTERNAL** on the same missing data: the
+walk followed family properties, so the store holds people we already have. A
+port of either would return a well-formed nothing.
+
+**What it leaves for item 6, and it is Emma's call.** `crosscheck` runs offline
+now. `reconcile` can do its P2600 seeding and relative-walking offline but not
+its name search, so an offline `reconcile` would produce seeds and expansion
+without name-matched candidates — a smaller reconcile, not a broken one.
+Whether that is worth having, or whether item 6 waits for a download pass that
+unblocks both searches, is **NEEDS-DECISION — Emma**. Building it either way
+without asking would be guessing at what "the stale reports" are supposed to say.

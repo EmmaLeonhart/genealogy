@@ -137,6 +137,24 @@ class Batch:
         return len(self.edits) + len(self.already_present) + len(self.conflicting)
 
 
+def existing_p2600_from_store(reader, qids) -> dict[str, str]:
+    """:func:`_existing_p2600`, answered from the store index.
+
+    `queue.md` 2.B. "Which of these items already state a Geni ID, and which
+    one" — a reverse join the index already holds, so this is a table lookup.
+
+    **Keeps the online form's lossy shape on purpose.** Both return
+    ``qid -> geni_id``, one value per item, so an item carrying two Geni IDs
+    reports only one. That is wrong in the same way in both, and changing it
+    here alone would make the offline path disagree with the online one about a
+    population `reports/wikidata-doubles.md` is separately responsible for. The
+    lowest Geni ID is chosen rather than an arbitrary one, so repeated runs
+    agree with each other.
+    """
+    found = reader.geni_ids_of_qids(qids)
+    return {qid: min(ids) for qid, ids in found.items() if ids}
+
+
 def _existing_p2600(client: WikidataClient, qids: list[str], batch_size: int = 200) -> dict[str, str]:
     found: dict[str, str] = {}
     for start in range(0, len(qids), batch_size):

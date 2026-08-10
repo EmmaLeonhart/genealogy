@@ -297,6 +297,7 @@ def match_by_geni_id(
     ordered = sorted(set(geni_ids), key=lambda s: (len(s), s))
     matches: list[Match] = []
     batches = list(_batched(ordered, batch_size))
+    # (offline twin: `matches_from_store` below)
 
     for index, batch in enumerate(batches, start=1):
         values = " ".join(f'"{gid}"' for gid in batch)
@@ -312,6 +313,30 @@ def match_by_geni_id(
             progress(index, len(batches))
 
     return matches
+
+
+def matches_from_store(reader, geni_ids: Iterable[str]) -> list[Match]:
+    """:func:`find_matches`, answered from the store index instead of SPARQL.
+
+    `queue.md` 2.B. This is the P2600 join itself, and the index was built for
+    exactly it — `StoreReader.qids_for_geni_ids` is a table lookup, not a scan.
+
+    **One Match per (Geni ID, item) pair, same as the online form**, and for the
+    same reason: the mapping is not one-to-one, and collapsing a double-match
+    would hide precisely the cases `reports/wikidata-doubles.md` exists to put
+    in front of a human. The sort order is kept too — shortest Geni ID first —
+    so the two forms produce comparable output.
+
+    Labels are not filled in; :func:`add_labels` is a separate step online and
+    stays separate here.
+    """
+    ordered = sorted({str(g) for g in geni_ids}, key=lambda s: (len(s), s))
+    found = reader.qids_for_geni_ids(ordered)
+    return [
+        Match(geni_id=geni_id, qid=qid)
+        for geni_id in ordered
+        for qid in sorted(found.get(geni_id, ()))
+    ]
 
 
 def add_labels(client: WikidataClient, matches: list[Match], languages: str = "en") -> list[Match]:

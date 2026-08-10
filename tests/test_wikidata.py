@@ -264,3 +264,40 @@ def test_a_match_with_no_label_gets_an_empty_one_not_a_crash(tmp_path):
     labelled = wikidata.add_labels(client, [Match(geni_id="1", qid="Q1")])
 
     assert labelled[0].label == ""
+
+
+# -- matches_from_store: the 2.B port ----------------------------------
+
+
+class _FakeReader:
+    def __init__(self, by_geni):
+        self._by_geni = by_geni
+
+    def qids_for_geni_ids(self, geni_ids):
+        wanted = {str(g) for g in geni_ids}
+        return {g: list(q) for g, q in self._by_geni.items() if g in wanted}
+
+
+def test_matches_from_store_returns_one_match_per_pair():
+    reader = _FakeReader({"100": ["Q1"], "200": ["Q2"]})
+
+    got = wikidata.matches_from_store(reader, ["100", "200", "300"])
+
+    assert [(m.geni_id, m.qid) for m in got] == [("100", "Q1"), ("200", "Q2")]
+
+
+def test_a_geni_id_on_two_items_stays_two_matches():
+    # Collapsing it would hide exactly what wikidata-doubles.md is for.
+    reader = _FakeReader({"100": ["Q2", "Q1"]})
+
+    got = wikidata.matches_from_store(reader, ["100"])
+
+    assert [(m.geni_id, m.qid) for m in got] == [("100", "Q1"), ("100", "Q2")]
+
+
+def test_the_shortest_geni_id_comes_first_as_it_does_online():
+    reader = _FakeReader({"7": ["Q7"], "6000000000000000001": ["Q1"]})
+
+    got = wikidata.matches_from_store(reader, ["6000000000000000001", "7"])
+
+    assert [m.geni_id for m in got] == ["7", "6000000000000000001"]

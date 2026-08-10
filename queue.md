@@ -126,7 +126,7 @@ at them, so they are ordered here rather than renumbered.
 | --- | --- | --- |
 | 1 | **3.A singleton Wikidata items carrying Geni links** | counted in full; rest is BLOCKED-ON-USER-ACTION |
 | 4 | **2.E** component walk as a command, isolates split out | overlaps 3.A — do 3.A first, it is the same discriminator |
-| 5 | **2.B** port the `client.sparql` call sites offline | **4 of 10**; 2 blocked, 1 stays online by design |
+| 5 | **2.B** port the `client.sparql` call sites offline | **done to the data's limit**: 6 ported, 2 blocked, 2 stay online |
 | 6 | **2.C** build the union tree | shape settled by Emma; *edge* still undefined |
 | 7 | **0.00Z** three `FAM.HUSB` conflicts | **answered**: both are one man twice; step 2 NEEDS-DECISION |
 | 8 | **6** the stale Wikidata reports | rerun against the 151 merge |
@@ -375,11 +375,45 @@ a discovery step into a no-op.
 same shape as the relatives hydration above — but it consumes the output of the
 blocked search, so porting it alone buys nothing.
 
-Remaining: `cli.py:264`, `overlap.py:89`, `quickstatements.py:151`,
-`reconcile.py:600`, `wikidata.py:309`. `overlap.py:89` is the seed fetch itself
-and is the one call site that *should* stay online — `--offline` already reuses
-what it wrote, and porting the thing that fills the store to read from the store
-is circular. `crosscheck.claims_from_store` answers
+**6 of 10 ported, 2026-08-10 — 2.B is done to the limit of the downloaded data.**
+
+- `wikidata.find_matches` → `matches_from_store`. **The P2600 join itself**, and
+  the index was built for exactly this — a table lookup, not a scan. One `Match`
+  per (Geni ID, item) pair as online, because the mapping is not one-to-one and
+  collapsing a double-match hides what `wikidata-doubles.md` exists to surface.
+  Sort order kept (shortest Geni ID first) so the two forms are comparable.
+- `quickstatements._existing_p2600` → `existing_p2600_from_store`. Keeps the
+  online form's **lossy** `qid -> one geni_id` shape deliberately: fixing it here
+  alone would make the offline path disagree with the online one about a
+  population another report owns. Lowest ID chosen, so repeated runs agree.
+
+5 tests, plus a real-store check: Ovid's Geni ID resolves to Q7198, Avicenna's to
+Q8011, and the reverse lookup returns their P2600 values.
+
+**The final triage of the ten:**
+
+| | call site | |
+| --- | --- | --- |
+| **ported (6)** | `crosscheck:224`, `namelinks:101`, `reconcile:295`, `wikidata:309`, `quickstatements:151`, plus the `crosscheck` command | |
+| **BLOCKED-ON-EXTERNAL (2)** | `names.py:240`, `reconcile.py:512` | label-to-item search; the store holds people we already have, so a port returns a well-formed nothing. Unblock: a `wikidownload` pass beyond the family walk |
+| **stays online (2)** | `overlap.py:89`, `cli.py:264` | see below |
+
+**`cli.py:264` stays online, and a previous session already wrote why.** It reads
+`COUNT_QUERIES` — how many items Wikidata holds with P2600, globally. The store
+could produce a number, and `_cmd_overlap`'s offline branch already refuses to:
+*"No `reported`: those counts come from the endpoint. Passing the fetched totals
+instead would print a number that looks like Wikidata answering and is really our
+own file counting itself."* That reasoning is unchanged. `overlap.py:89` is the
+seed fetch that fills the store; porting it to read the store is circular.
+
+**What this means for item 6.** `crosscheck` is offline and runnable. `coverage`
+still needs `reconcile`'s `matched_all.csv`, and `reconcile` can now do its
+P2600 seeding and relative-walking offline but **not** its name search — so a
+fully offline `reconcile` would produce seeds and expansion without the
+name-matched candidates. That is a smaller `reconcile`, not a broken one, but it
+is a **NEEDS-DECISION — Emma**: whether an offline `reconcile --offline` that
+skips name-matching is worth having, or whether item 6 waits for the download
+pass that would unblock both searches. `crosscheck.claims_from_store` answers
 `fetch_claims`'s question — `qid -> {property -> [values]}` for P22/P25/P26/
 P569/P570 — from `StoreReader.entities`. Same return shape, so callers do not
 care which side produced it. 5 tests, plus a real-store spot check (Q42 returns

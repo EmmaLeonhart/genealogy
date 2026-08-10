@@ -206,3 +206,31 @@ def test_no_contradiction_section_when_nothing_contradicts(tmp_path):
     assert "error rate" not in markdown
     # the denominator is still reported, because 0-of-N is a result too
     assert "| expansion-inferred links examined | 1 |" in markdown
+
+
+# -- existing_p2600_from_store: the 2.B port ---------------------------
+
+
+class _FakeReader:
+    def __init__(self, by_qid):
+        self._by_qid = by_qid
+
+    def geni_ids_of_qids(self, qids):
+        wanted = {str(q) for q in qids}
+        return {q: list(g) for q, g in self._by_qid.items() if q in wanted}
+
+
+def test_existing_p2600_from_store_reports_the_geni_id_each_item_states():
+    reader = _FakeReader({"Q1": ["100"], "Q2": ["200"], "Q3": []})
+
+    got = quickstatements.existing_p2600_from_store(reader, ["Q1", "Q2", "Q3", "Q4"])
+
+    assert got == {"Q1": "100", "Q2": "200"}
+
+
+def test_an_item_with_two_geni_ids_reports_the_lowest_deterministically():
+    # The online form is lossy in the same way; what matters is that repeated
+    # runs agree, so the choice is the lowest rather than an arbitrary one.
+    reader = _FakeReader({"Q1": ["200", "100"]})
+
+    assert quickstatements.existing_p2600_from_store(reader, ["Q1"]) == {"Q1": "100"}
