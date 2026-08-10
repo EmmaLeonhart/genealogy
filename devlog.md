@@ -5500,3 +5500,39 @@ string is Wikidata's hierarchy flattened" came from Henry III alone and is
 incomplete. How consistently that address block is filled is unknown and not
 measured, because measuring it before Emma has looked at cases is the habit being
 corrected.
+
+## 2026-08-10 — the walk through cases 2-11, and three kinds of conflict
+
+The useful output of ten cases is not a number, it is a taxonomy. Three
+researched date conflicts came out three different ways:
+
+- **Henry III's marriage** — Wikidata wrong. Its `P580` of 4 JAN 1236 contradicts
+  Westminster Abbey, which is the first reference attached to that very
+  statement.
+- **John's marriage** — Geni wrong. 24 AUG 1200 is confirmed by five independent
+  sources; Geni's 26 AUG has none.
+- **Eleanor of Aquitaine's birth** — *neither*. 1122 against 1124 is a live
+  scholarly dispute, Alison Weir against Elizabeth Brown, on evidence that has
+  been argued over for decades.
+
+The third is the one that changes the design. A merge rule that picks a winner
+invents certainty that does not exist, and both sides currently handle it badly:
+Wikidata states 1124 alone with **zero references** while carrying three on the
+death date of the same item, and Geni states 1122 with a birthplace field reading
+`Nieul-sur-Autize, Vendée or Château de Belin, Guyenne or Palais d'Ombrière,
+Bordeaux` — three candidates joined by "or" inside a field meant to hold one
+place. Neither uses the idiom that fits, which on Wikidata is ranked statements.
+
+Otherwise the dates are in far better shape than the conflict counts implied:
+**nine of ten cases match exactly on both birth and death year.**
+
+**A thread opened and closed in the same tick.** 16,229 of 36,257 dated `FAM`
+records name no spouse, and 22,513 name one spouse with nothing else. I counted
+them because Emma asked for a count before deciding. Her answer closed it:
+*"These aren't anything meaningful because they can't be represented on
+wikidata."* Marriage data hangs off `P26` — no spouse, no statement to qualify.
+The counts are real and the conversion cannot use them.
+
+Also corrected: I had called six of John's families "empty shells". None are
+empty; John is `HUSB` on all six, and the one-spouse-and-nothing-else shape is
+corpus-wide rather than particular to him.

@@ -219,6 +219,55 @@ Wikidata is basically always going to be good, just keep that in mind: difficult
 conversion."* Note `Middlesex` — an administrative county abolished in 1965 — so
 the chain can be historically stale.
 
+### Cases 2-11 reviewed — what the walk has actually produced
+
+**Three kinds of conflict, from three cases. This is the finding.**
+
+| | case | who is wrong |
+| --- | --- | --- |
+| 1 | Henry III marriage, 14 vs 4 JAN 1236 | **Wikidata** — contradicts its own first reference |
+| 2 | John marriage, 26 vs 24 AUG 1200 | **Geni** — 24 Aug confirmed by five sources |
+| 3 | Eleanor of Aquitaine birth, 1122 vs 1124 | **neither** — a live scholarly dispute |
+
+Type 3 is the one that matters for design. Alison Weir argues 1122 from Eleanor's
+age at death and the 1136 fealty oath; Elizabeth Brown argues 1124 from a
+13th-century genealogy giving her age as thirteen in 1137. **Any merge rule that
+picks a winner fabricates certainty here.** Wikidata's own idiom for it — two
+statements with ranks, or a sourcing-circumstances qualifier — is the shape that
+survives, and neither side uses it: Wikidata states 1124 alone with **zero
+references**, while its death date on the same item carries three.
+
+**Dates otherwise agree almost perfectly.** Across cases 2-11, nine of ten match
+exactly on both birth and death year. Eleanor is the only disagreement.
+
+**Geni encodes uncertainty as prose, inside structured fields.** Eleanor's
+birthplace:
+
+    2 PLAC Nieul-sur-Autize, Vendée or Château de Belin, Guyenne or Palais d'Ombrière, Bordeaux
+
+Three candidate birthplaces joined by "or" in a field that should hold one place.
+Unparseable as a place, and unrepresentable on Wikidata without becoming three
+ranked statements.
+
+**Orphan marriage dates: counted, then dropped.** 16,229 of 36,257 dated `FAM`
+records name no spouse (45%), and 22,513 families name one spouse with no
+children and no marriage event. Emma: *"These aren't anything meaningful because
+they can't be represented on wikidata"* — correct, and it closes the thread.
+Marriage data hangs off `P26`; with no spouse there is no statement to qualify,
+and expressing the one-spouse families would need an item for a partner Wikidata
+does not have. Real counts, irrelevant to the conversion.
+
+**Marriage ordinals: derive from dates.** Emma's call. `P1545` (Wikidata numbers
+John's marriages 1 and 2) is a cross-check, not a source.
+
+**The one-spouse families may be real.** Emma's reading: relationships Geni knows
+about whose partner was not in the export's scope. Checking one against a live
+Geni profile is **BLOCKED-ON-USER-ACTION**.
+
+**Correction to an earlier note here:** I described six of John's families as
+"empty shells". None are empty — John is `HUSB` on all six. The pattern is one
+spouse named and nothing else, and it is corpus-wide, not a John quirk.
+
 ### Cases 2-11 are laid out and waiting — `out/cases/`
 
 `python scripts/prepare-cases.py 979118 --count 10`. Regenerable in one command,
