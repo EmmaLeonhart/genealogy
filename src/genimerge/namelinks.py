@@ -83,6 +83,38 @@ class NameBatch:
         return len({link.geni_id for link in self.links})
 
 
+def existing_name_claims_from_store(reader, qids: Iterable[str]) -> dict[str, set[str]]:
+    """:func:`_existing_name_claims`, answered from the downloaded store.
+
+    `queue.md` 2.B, ported by question rather than by emulating SPARQL. The
+    question is only "which of P735/P734 does this item already state" — the
+    *values* are never read here, so it does not matter that the name items
+    themselves are absent from the store.
+
+    That absence is real and worth stating next to this function, because it is
+    what stops `names.py` being ported the same way: the download walked
+    P22/P25/P26/P40/P3373, so it holds people and not name items. Measured over
+    40 shards on 2026-08-10 — of 13,683 distinct P735/P734 targets referenced,
+    **55 were in the store, 0.4%**.
+
+    Truthy semantics, as in :func:`genimerge.crosscheck.claims_from_store`: a
+    deprecated statement is not something the item states.
+    """
+    have: dict[str, set[str]] = {}
+    for qid, entity in reader.entities(qids).items():
+        claims = entity.get("claims") or {}
+        for prop in (GIVEN_NAME, FAMILY_NAME):
+            for statement in claims.get(prop) or []:
+                if statement.get("rank") == "deprecated":
+                    continue
+                snak = statement.get("mainsnak") or {}
+                if snak.get("snaktype") != "value":
+                    continue
+                have.setdefault(qid, set()).add(prop)
+                break
+    return have
+
+
 def _existing_name_claims(
     client: WikidataClient, qids: list[str], batch_size: int = 200
 ) -> dict[str, set[str]]:

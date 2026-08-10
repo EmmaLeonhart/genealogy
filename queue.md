@@ -126,7 +126,7 @@ at them, so they are ordered here rather than renumbered.
 | --- | --- | --- |
 | 1 | **3.A singleton Wikidata items carrying Geni links** | counted in full; rest is BLOCKED-ON-USER-ACTION |
 | 4 | **2.E** component walk as a command, isolates split out | overlaps 3.A — do 3.A first, it is the same discriminator |
-| 5 | **2.B** port the `client.sparql` call sites offline | **2 of 10**; `crosscheck --offline` works |
+| 5 | **2.B** port the `client.sparql` call sites offline | **3 of 10**; `names.py` BLOCKED-ON-EXTERNAL |
 | 6 | **2.C** build the union tree | shape settled by Emma; *edge* still undefined |
 | 7 | **0.00Z** three `FAM.HUSB` conflicts | **answered**: both are one man twice; step 2 NEEDS-DECISION |
 | 8 | **6** the stale Wikidata reports | rerun against the 151 merge |
@@ -329,7 +329,32 @@ rather than a disagreement. The merge rule should come from an adjudicated
 sample, not from citation coverage; building it on the table above would encode
 "Wikidata cites more sources" as "Wikidata is right", which nothing here shows.
 
-**2 of 10 ported, 2026-08-09/10.** `crosscheck.claims_from_store` answers
+**3 of 10 ported, 2026-08-09/10.** `namelinks._existing_name_claims` →
+`existing_name_claims_from_store`: which of P735/P734 an item already states.
+The *values* are never read, only which properties exist, so it is answerable
+from the store even though the name items are not in it. 4 tests, plus a
+real-store check (Q42 and Hobbes state both, Avicenna P735 only, Ovid neither).
+
+**`names.py:240` cannot be ported, and this is a measurement, not an opinion.**
+It asks Wikidata for *items whose label or alias equals a given name string and
+whose P31 is a name type* — a label-to-item lookup over all of Wikidata. The
+store cannot answer it because it does not contain name items: the download
+walked P22/P25/P26/P40/P3373, which reaches people, not the items their names
+point at. Sampled 40 shards, 40,000 items, 2026-08-10: of **13,683** distinct
+P735/P734 targets referenced, **55 are in the store — 0.4%**.
+
+**BLOCKED-ON-EXTERNAL** — the missing data is on Wikidata, and the unblock
+signal is a download pass that fetches name items. That is a `wikidownload`
+change (a second seed set, or following P735/P734 as well as the family
+properties), not a `names.py` change, and it is a real amount of work: ~13,700
+name items per 40,000 people scanned. **Do not** port `names.py` by widening it
+to "any item we happen to hold" — that would silently return a fraction of the
+matches and read as if the endpoint had answered.
+
+Remaining after that: `cli.py:264`, `overlap.py:89`, `quickstatements.py:151`,
+`reconcile.py:295/512/600`, `wikidata.py:309`. `overlap.py:89` is the seed fetch
+itself and is the one call site that *should* stay online — `--offline` already
+reuses what it wrote. `crosscheck.claims_from_store` answers
 `fetch_claims`'s question — `qid -> {property -> [values]}` for P22/P25/P26/
 P569/P570 — from `StoreReader.entities`. Same return shape, so callers do not
 care which side produced it. 5 tests, plus a real-store spot check (Q42 returns

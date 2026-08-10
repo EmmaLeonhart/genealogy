@@ -5079,3 +5079,31 @@ structural, and 0.00Z showed a structural conflict can be a duplicate rather
 than a disagreement. The merge rule Emma asked for should be generated from an
 adjudicated sample; built on citation coverage it would encode "Wikidata cites
 more sources" as "Wikidata is right", which this measurement does not show.
+
+## 2026-08-10 — 2.B: one more call site ported, and one proved unportable
+
+**Ported.** `namelinks._existing_name_claims` → `existing_name_claims_from_store`.
+The question is only *which* of P735/P734 an item already states — the values
+are never read — so the store answers it directly. Truthy semantics as in
+`crosscheck.claims_from_store`: a deprecated statement is not something the item
+states. Four tests, plus a real-store check: Q42 and Hobbes state both, Avicenna
+P735 only, Ovid neither. `tests/test_namelinks.py`: 20 passed.
+
+**`names.py:240` cannot be ported, and the reason is measured rather than
+argued.** It asks for items whose label *or alias* equals a name string and
+whose P31 is a name type — a label-to-item lookup over all of Wikidata. The
+store holds people, not the items their names point at, because the download
+walked P22/P25/P26/P40/P3373. Sampled 40 shards, 40,000 items: of **13,683**
+distinct P735/P734 targets referenced, **55 are in the store — 0.4%**.
+
+Checking that first was the whole value of the tick. The port looks identical in
+shape to the two that worked, and would have produced a function that ran, typed
+correctly, returned a dict, and found essentially nothing — reading as if
+Wikidata had answered and said no. It is now tagged **BLOCKED-ON-EXTERNAL** with
+the unblock signal named: a `wikidownload` pass that fetches name items, roughly
+13,700 per 40,000 people scanned. The queue also says plainly not to "port" it
+by narrowing it to items we happen to hold.
+
+One call site is deliberately staying online: `overlap.py:89` is the seed fetch
+itself, and `overlap --offline` already reuses what it wrote. Porting the thing
+that populates the store to read from the store would be circular.

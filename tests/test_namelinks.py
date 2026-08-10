@@ -195,3 +195,61 @@ def test_people_touched_counts_people_not_statements(tmp_path):
 
     assert len(batch.links) == 3  # one surname, two given names
     assert batch.people_touched == 1
+
+
+# -- existing_name_claims_from_store: the 2.B port ---------------------
+
+
+class _FakeReader:
+    def __init__(self, items):
+        self._items = items
+
+    def entities(self, qids):
+        wanted = {str(q) for q in qids}
+        return {q: e for q, e in self._items.items() if q in wanted}
+
+
+def _claim(value, rank="normal", snaktype="value"):
+    snak = {"snaktype": snaktype}
+    if snaktype == "value":
+        snak["datavalue"] = {"value": {"id": value}}
+    return {"mainsnak": snak, "rank": rank}
+
+
+def test_the_store_port_reports_which_name_properties_an_item_states():
+    reader = _FakeReader({
+        "Q1": {"id": "Q1", "claims": {"P735": [_claim("Q100")], "P734": [_claim("Q200")]}},
+        "Q2": {"id": "Q2", "claims": {"P735": [_claim("Q100")]}},
+        "Q3": {"id": "Q3", "claims": {}},
+    })
+
+    got = namelinks.existing_name_claims_from_store(reader, ["Q1", "Q2", "Q3"])
+
+    assert got == {"Q1": {"P735", "P734"}, "Q2": {"P735"}}
+
+
+def test_a_deprecated_name_claim_is_not_something_the_item_states():
+    reader = _FakeReader({
+        "Q1": {"id": "Q1", "claims": {"P735": [_claim("Q100", rank="deprecated")]}}
+    })
+
+    assert namelinks.existing_name_claims_from_store(reader, ["Q1"]) == {}
+
+
+def test_the_values_are_never_read_so_absent_name_items_do_not_matter():
+    # The name items themselves are not in the store - 0.4% of referenced
+    # P735/P734 targets were present when measured. This function must still
+    # answer correctly, because it only ever asks which properties exist.
+    reader = _FakeReader({
+        "Q1": {"id": "Q1", "claims": {"P735": [_claim("Q_not_in_store")]}}
+    })
+
+    assert namelinks.existing_name_claims_from_store(reader, ["Q1"]) == {"Q1": {"P735"}}
+
+
+def test_novalue_snaks_and_absent_qids_are_missing():
+    reader = _FakeReader({
+        "Q1": {"id": "Q1", "claims": {"P734": [_claim(None, snaktype="novalue")]}}
+    })
+
+    assert namelinks.existing_name_claims_from_store(reader, ["Q1", "Q_absent"]) == {}
