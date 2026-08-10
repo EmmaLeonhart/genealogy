@@ -11,34 +11,34 @@ purely by having fewer blanks.
 | | Wikidata (Geni-linked) | Geni (merged tree) |
 | --- | ---: | ---: |
 | people | 514,903 | 298,591 |
-| with a birth date | 398,799 (77.5%) | 147,984 (49.6%) |
-| undated | 116,104 | 150,607 |
+| with a birth date | 398,799 (77.5%) | 150,198 (50.3%) |
+| undated | 116,104 | 148,393 |
 
 ## The distribution
 
 | century | Wikidata | share | Geni | share |
 | --- | ---: | ---: | ---: | ---: |
-| BCE | 404 | 0.1% | 0 | 0.0% |
-| 0s | 78 | 0.0% | 678 | 0.5% |
+| BCE | 404 | 0.1% | 2,256 | 1.5% |
+| 0s | 78 | 0.0% | 637 | 0.4% |
 | 100s | 95 | 0.0% | 662 | 0.4% |
-| 200s | 106 | 0.0% | 501 | 0.3% |
-| 300s | 123 | 0.0% | 666 | 0.5% |
-| 400s | 158 | 0.0% | 1,057 | 0.7% |
-| 500s | 274 | 0.1% | 1,227 | 0.8% |
-| 600s | 336 | 0.1% | 1,280 | 0.9% |
-| 700s | 497 | 0.1% | 1,317 | 0.9% |
-| 800s | 475 | 0.1% | 1,678 | 1.1% |
-| 900s | 1,366 | 0.3% | 2,763 | 1.9% |
-| 1000s | 2,752 | 0.7% | 4,830 | 3.3% |
-| 1100s | 2,814 | 0.7% | 7,517 | 5.1% |
-| 1200s | 2,201 | 0.6% | 7,380 | 5.0% |
-| 1300s | 1,523 | 0.4% | 7,916 | 5.3% |
-| 1400s | 2,546 | 0.6% | 8,218 | 5.6% |
-| 1500s | 7,444 | 1.9% | 12,010 | 8.1% |
-| 1600s | 24,683 | 6.2% | 22,529 | 15.2% |
-| 1700s | 59,394 | 14.9% | 27,470 | 18.6% |
-| 1800s | 195,144 | 48.9% | 31,610 | 21.4% |
-| 1900s | 96,120 | 24.1% | 6,658 | 4.5% |
+| 200s | 106 | 0.0% | 502 | 0.3% |
+| 300s | 123 | 0.0% | 666 | 0.4% |
+| 400s | 158 | 0.0% | 1,059 | 0.7% |
+| 500s | 274 | 0.1% | 1,226 | 0.8% |
+| 600s | 336 | 0.1% | 1,277 | 0.9% |
+| 700s | 497 | 0.1% | 1,320 | 0.9% |
+| 800s | 475 | 0.1% | 1,677 | 1.1% |
+| 900s | 1,366 | 0.3% | 2,777 | 1.8% |
+| 1000s | 2,752 | 0.7% | 4,825 | 3.2% |
+| 1100s | 2,814 | 0.7% | 7,536 | 5.0% |
+| 1200s | 2,201 | 0.6% | 7,364 | 4.9% |
+| 1300s | 1,523 | 0.4% | 7,923 | 5.3% |
+| 1400s | 2,546 | 0.6% | 8,206 | 5.5% |
+| 1500s | 7,444 | 1.9% | 12,026 | 8.0% |
+| 1600s | 24,683 | 6.2% | 22,513 | 15.0% |
+| 1700s | 59,394 | 14.9% | 27,466 | 18.3% |
+| 1800s | 195,144 | 48.9% | 31,609 | 21.0% |
+| 1900s | 96,120 | 24.1% | 6,654 | 4.4% |
 | 2000s | 266 | 0.1% | 13 | 0.0% |
 | 2100s | 0 | 0.0% | 3 | 0.0% |
 | 2200s | 0 | 0.0% | 1 | 0.0% |
@@ -53,55 +53,41 @@ profiles do, with the 19th ambiguous"*.
 
 | the claim | verdict | |
 | --- | --- | --- |
-| Wikidata skews to the 20th/21st centuries | **wrong** | the 1900s and 2000s together are **24.2%** |
-| …*much as Geni does* | **wrong**, differently | Geni is **4.5%** there — both are low, but not equally |
+| Wikidata skews to the 20th/21st | **wrong** | the 1900s and 2000s together are **24.2%** |
+| …*much as Geni does* | **wrong**, differently | Geni is **4.4%** there |
 | the 19th is where it gets interesting | **right** | the 1800s is the largest bucket on *both* sides |
 
-**Where each tree actually sits.** Wikidata's Geni-linked population peaks hard
-in the **1800s — 48.9%**, with 24.1% in the 1900s and 14.9% in the 1700s: 87.9%
-of it falls in three centuries. Ours is far flatter and older — 21.4% in the
-1800s, 18.6% in the 1700s, 15.2% in the 1600s, and a long medieval tail the
-other side barely has. We hold **7,916** people born in the 1300s against
-Wikidata's **1,523**, in a tree half the size.
+Wikidata's Geni-linked population peaks hard in the **1800s — 48.9%**, with 24.1%
+in the 1900s: 87.9% of it falls in the 1700s–1900s. Ours is flatter and older —
+21.0% in the 1800s, 18.3% in the 1700s, 15.0% in the 1600s, with a long tail the
+other side barely has. We hold **7,923** people born in the 1300s against
+Wikidata's **1,523**, in a tree half the size, and **2,256** BCE people against
+their 404.
 
 **The lead changes hands at the 1700s/1800s boundary.** Geni leads every century
-up to and including the 1700s; Wikidata leads the 1800s onward. So the intuition
-underneath the prediction — that the Wikidata side is the more modern of the two
-— holds: 73.0% of it is 1800s-or-later against 25.9% of ours. The centuries
-named were a hundred years early, and "ambiguous" is not what the 1800s turned
-out to be: it is where Wikidata takes the lead decisively, and simultaneously
-the biggest single bucket in our own tree.
+up to and including the 1700s; Wikidata leads the 1800s onward. The intuition
+underneath the prediction holds — the Wikidata side is the more modern of the
+two, 73.0% at 1800s-or-later against our 25.4% — but the centuries named were a
+hundred years early.
 
-## The dates that look impossible are BCE, and the corpus cannot say so
+## A note on the BCE row, because it was wrong twice
 
-Five people in the merged tree carry a birth year later than 2026:
+**Geni: 2,256 BCE people, 1.5% of our dated population.** Two earlier versions of
+this report said **0**, and both were bugs in this script rather than facts about
+the tree.
 
-| year | who |
-| ---: | --- |
-| 2216 | Merenre Nemtyemsaf II, Pharaoh of Egypt |
-| 2191 | Hetep |
-| 2166 | Sehertawy Intef I "the Great", Pharaoh of Egypt |
-| 2111 | Nebhepetre Mentuhotep II, Pharaoh of Egypt |
-| 2060 | Sesostris |
+Geni writes BC years as a **minus**, not `B.C.` — `-73`, `ABT -95`, `BEF -1310` —
+and `out/merged.ged` carries **4,750** such `DATE` lines. The first parser here
+took the last integer token, and `"-73".isdigit()` is `False`, so every one of
+them was dropped in silence. `genimerge.dates` has handled this correctly since
+2026-08-05, and its own docstring records the identical bug being found and fixed
+once already: 4,459 events parsed to `year=None` and nothing complained, because
+an unreadable date is discarded by design.
 
-They are not typos. They are **BCE dates written as bare positive years**.
-Mentuhotep II reigned around 2061–2010 BCE and his record reads
-`1 BIRT / 2 DATE 2111`, `1 DEAT / 2 DATE 2046` — birth *after* death, which is
-what a BCE pair looks like once the era marker is gone.
+This script now calls `parse_date` rather than parsing dates itself, which is
+what it should have done from the start.
 
-**There is no era marker to lose: `out/merged.ged` contains zero `BC` strings.**
-So BCE is not merely rare in this corpus, it is **unrepresentable** — every BCE
-person is silently filed into the matching CE century. The `BCE` row above
-reading `Geni 0` is an artifact of that, not a fact about the tree: we demonstrably
-hold Egyptian pharaohs and reach further back still.
-
-**What this contaminates.** The old end of the Geni column above, by an unknown
-amount — only the five whose years exceed 2026 are self-evident; a BCE person
-born in a year below 2026 is indistinguishable from a CE one by parsing alone.
-And more seriously, `out/wikidata/add-claims.qs` builds P569/P570 from these
-dates: left alone it would state that Mentuhotep II was **born in 2111 CE**.
-
-**A partial detector exists.** Birth year later than death year flags the shape,
-and 74 people in the tree match it — but it mixes two populations, because a
-truncated date (`2 DATE 12`) trips it too. The five above are the unambiguous
-subset. Sizing the rest is not attempted here.
+**Five records genuinely do have the sign missing** — all Egyptian pharaohs,
+carrying positive years above 2026 (Merenre Nemtyemsaf II 2216, Hetep 2191,
+Intef I 2166, Mentuhotep II 2111, Sesostris 2060). Those are real data errors,
+and they are five, not a systemic gap. See `reports/bce.md`.

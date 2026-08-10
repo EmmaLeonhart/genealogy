@@ -33,6 +33,10 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+
+from genimerge.dates import parse_date  # noqa: E402
+
 ROOT = Path(__file__).resolve().parents[1]
 MERGED = ROOT / "out" / "merged.ged"
 
@@ -41,10 +45,8 @@ TODAY = 2026
 
 
 def _year(text: str) -> int | None:
-    for token in reversed(text.replace(",", " ").split()):
-        if token.isdigit():
-            return int(token)
-    return None
+    """Via `genimerge.dates`, which handles Geni's minus-sign BC dates."""
+    return parse_date(text).year
 
 
 def read_tree(path: Path):

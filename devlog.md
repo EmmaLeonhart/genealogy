@@ -5354,3 +5354,51 @@ P569/P570 from these dates and would tell Wikidata that Mentuhotep II was born i
 2111 CE, sourced to a Geni profile. Seven dated people is small enough to fix by
 hand and bad enough to fix before the batch runs. What the corpus should hold
 stays Emma's decision.
+
+## 2026-08-10 — BCE was never missing; I was dropping it
+
+Emma's answer to the BCE question was *"it's negative years what the fuck"*, and
+she was telling me what the corpus already does rather than asking for a change.
+
+**`out/merged.ged` carries 4,750 minus-sign `DATE` lines and 2,256 BCE people.**
+My grep for `BC` found nothing, which is true and irrelevant: Geni writes BC as a
+minus — `-73`, `ABT -95`, `BEF -1310`. The parser I hand-rolled used
+`str.isdigit()`, which is `False` for `"-73"`, so it discarded every one and I
+read that silence as absence. `reports/bce.md` said the corpus "cannot express
+BCE"; that is withdrawn.
+
+**`genimerge.dates` has handled this correctly since 2026-08-05**, and its own
+docstring records the identical bug being found and fixed once already: 4,459
+events reduced to `year=None`, invisible because an unreadable date is discarded
+by design. I reproduced a documented, already-fixed bug by writing my own parser
+instead of calling theirs. Emma, on being told: *"the gedcom content is highly
+standardized but it also needs its own parser"* — which is exactly what
+`dates.py` is, and what I bypassed.
+
+Both `scripts/build-centuries.py` and `scripts/find-bce.py` now call
+`parse_date`. What changed:
+
+| | before | after |
+| --- | ---: | ---: |
+| Geni dated people | 147,984 | **150,198** |
+| Geni BCE | 0 | **2,256** |
+| birth-after-death | 74 | 67 |
+| parent-after-child pairs | 963 | 1,018 |
+
+A test in `tests/test_scripts_centuries.py` now pins `-73`, `ABT -95` and
+`BEF -1310`. One of its existing assertions was wrong and got corrected rather
+than the parser: `BET 1400 AND 1410` reports **1400**, the range start, with
+`year_end` carrying the other end. I had asserted 1410 from a comment I wrote
+myself.
+
+**What survives of the finding:** five records genuinely have the sign missing —
+all pharaohs, positive birth years above 2026. Their 176 ancestors are fine; 42
+carry dates and those run -3305 to 2216, correctly negative. So it is five
+errors, not a broken convention. They still matter before `add-claims.qs` runs.
+
+**Also recorded:** Emma chose the detailed record for Ōjin
+(`@I6000000001829492981@`) and said explicitly she does not know the
+Wikramawardhana case, so that one stays undecided. That is a decision about two
+records, not a merge rule — whether `merge_files` should generally prefer the
+richer record remains open, and deriving it from one case would be over-reading
+her.

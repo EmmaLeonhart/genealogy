@@ -71,10 +71,19 @@ def test_bce_and_the_first_century_do_not_fall_off_the_end():
         ("1950", 1950),
         ("3 OCT 270", 270),
         ("ABT 1420", 1420),
-        ("BET 1400 AND 1410", 1410),
+        # A range reports its *start*; `GedcomDate.year_end` carries the other
+        # end. The first version of this test asserted 1410, from a comment I
+        # had written claiming dates.py took the end. It does not.
+        ("BET 1400 AND 1410", 1400),
+        # The one that mattered: Geni writes BC as a minus, and the hand-rolled
+        # parser this replaced used `str.isdigit()`, which is False for "-73".
+        # It dropped all 4,750 negative-year DATE lines in the corpus in silence.
+        ("-73", -73),
+        ("ABT -95", -95),
+        ("BEF -1310", -1310),
         ("", None),
         ("ABT", None),
     ],
 )
-def test_the_gedcom_year_is_the_last_integer_token(text, year):
+def test_the_gedcom_year_comes_from_the_repos_own_parser(text, year):
     assert _gedcom_year(text) == year

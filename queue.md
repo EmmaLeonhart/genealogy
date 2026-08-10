@@ -162,39 +162,40 @@ underneath the prediction survives — the Wikidata side *is* the more modern of
 the two, 73.0% at 1800s-or-later against our 25.9% — but the centuries named
 were a hundred years early.
 
-## BCE is unrepresentable in the corpus — sized 2026-08-10, NEEDS-DECISION, Emma
+## Emma's decisions, 2026-08-10 — four more
 
-`reports/bce.md`, `scripts/find-bce.py`. `out/merged.ged` has **zero `BC`
-strings**, so every BCE year is a bare positive and a BCE person born below 2026
-cannot be told from a CE one by reading the number.
+**BCE: the corpus already uses negative years.** Emma: *"it's negative years what
+the fuck"* — and she was right; `out/merged.ged` carries **4,750** minus-sign
+`DATE` lines and **2,256** BCE people. My earlier claim that BCE was
+unrepresentable came from a hand-rolled parser using `str.isdigit()`, which is
+`False` for `"-73"`. Both scripts now call `genimerge.dates.parse_date`.
+`reports/bce.md` is rewritten; `reports/centuries.md` shows the 2,256.
 
-**Certain: 181 people.** Five carry a birth year after 2026 (Merenre Nemtyemsaf
-II 2216, Hetep 2191, Intef I 2166, Mentuhotep II 2111, Sesostris 2060), and
-walking up from them gives **176 ancestors** who are BCE by construction — an
-ancestor of a Middle Kingdom pharaoh did not live in the common era.
+What survives: **five records have the sign missing**, all pharaohs with positive
+birth years above 2026. Correcting them is a Geni edit — **BLOCKED-ON-USER-ACTION**
+— or the pipeline adds a guard refusing any birth year later than the current
+year, which catches the class rather than the five. Emma has not chosen between
+those.
 
-**Of those 181, only 7 carry a birth date at all.** That settles the worry the
-century report raised: `reports/centuries.md` counts only dated people, so the
-confirmed contamination of its Geni column is **7 of 147,984 — 0.005%**, and five
-of the seven are visible as impossible years rather than hidden. No conclusion in
-that report changes. The reason is structural: this corpus's BCE population is
-ancient and legendary, and those profiles rarely carry dates on Geni.
+**Ōjin: keep the detailed record.** Emma, on being shown the two:
+*"keep the more detailed one for ojin and idk who the wikramawardhana guy is"*.
+So `@I6000000001829492981@` (誉田別命 /応神天皇/ — death date, occupation, five
+spouse families, four images) wins over `@I6000000179131744821@` (`Ōjin /Tenno/`,
+a birth year and nothing else). **Wikramawardhana is not decided** and she said
+so plainly; leave it.
 
-**Two weaker signals, reported as weak.** Birth after death: 74 people, of which
-12 are truncated dates and **62** are BCE-shaped but unconfirmed — a
-transposition looks identical. Parent born after child: 963 pairs, 1,650 people,
-which BCE inverts but so does any wrong year. Both are upper bounds on disorder,
-not counts of BCE people, and nothing here separates them.
+This is a decision about *these records*, not yet a merge rule. Whether
+`merge_files` should generally prefer the richer record is still open, and
+inventing that rule from one case would be over-reading her.
 
-**Where it does bite: the authoring pipeline.** `out/wikidata/add-claims.qs`
-builds P569/P570 from these dates, so left alone it would state on Wikidata that
-Mentuhotep II was **born in 2111 CE**, sourced to a Geni profile. Seven dated
-people is small enough to fix by hand and bad enough to fix before the batch
-runs.
+**Item 6: build the smaller offline `reconcile` now** — seeds and relative
+expansion from the store, no name-matched candidates, so `coverage.md` can
+refresh against the 151-export tree. The name-match half waits on the download
+pass.
 
-**NEEDS-DECISION — Emma**, because it is about what the corpus should hold: are
-the era markers recoverable from Geni, should the merged GEDCOM carry negative
-years, or should the pipeline refuse to emit a date for a flagged person?
+**2.D: chase the structural lead first.** Test whether the 292 structural
+conflicts are duplicates rather than disagreements, the way 0.00Z turned out,
+before adjudicating any dates.
 
 ## Emma's brief — her words, the destinations these decompose from` below is Emma's own brief, not steps.** It is
 the destination list these decompose from; leave its wording alone.

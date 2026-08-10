@@ -31,6 +31,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from genimerge import wikistore  # noqa: E402
+from genimerge.dates import parse_date  # noqa: E402
 
 ROOT = Path(__file__).resolve().parents[1]
 STORE = ROOT / "wikidata" / "items"
@@ -97,14 +98,18 @@ def wikidata_side() -> tuple[Counter, int, int]:
     return counts, linked, undated
 
 
-#: GEDCOM years can carry qualifiers ("ABT 1420", "BET 1400 AND 1410"). The last
-#: integer token is the year in every form this corpus uses; a range takes its
-#: end, which is what `dates.py` does too.
 def _gedcom_year(text: str) -> int | None:
-    for token in reversed(text.replace(",", " ").split()):
-        if token.isdigit():
-            return int(token)
-    return None
+    """The year in a GEDCOM date, via the repo's own parser.
+
+    **Do not hand-roll this.** The first version took the last integer token,
+    and `"-73".isdigit()` is `False`, so it silently dropped every BCE date in
+    the corpus - 4,750 `DATE` lines carrying a negative year. Geni writes BC as
+    a minus rather than `B.C.`, `genimerge.dates` has handled that since
+    2026-08-05, and `dates.py`'s own docstring records the identical bug being
+    found and fixed once already: 4,459 events parsed to `year=None` and nothing
+    complained, because an unreadable date is dropped by design.
+    """
+    return parse_date(text).year
 
 
 def geni_side() -> tuple[Counter, int, int]:
