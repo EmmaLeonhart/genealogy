@@ -5035,3 +5035,47 @@ Step 2 — whether `merge_files` should sort sources by `HEAD` date — stays
 not have produced a better answer here: the right resolution is "one person,
 merge them on Geni", and date-sorting still picks one of two duplicates. The
 Geni-side merges are **BLOCKED-ON-USER-ACTION**.
+
+## 2026-08-10 — the 930 conflicts, characterised
+
+Queue item 2.D's measurement half. `reports/conflicts.md`, data in
+`reports/conflicts.tsv` — all 930 rows, since the crosscheck report lists only
+the worst 100, which is right for reading and useless for measuring.
+`scripts/build-conflicts.py`, offline from the store and the merge.
+
+**The per-property asymmetry Emma asked to look for is there.** Where the two
+sides disagree about a date, Wikidata's value carries a reference **69%** of the
+time; about a relationship, **46–53%**. That runs the way the "Geni wins
+relationships, Wikidata wins dates" prior would predict — which is a reason to
+test the prior, not to adopt it. It measures citation coverage, not correctness;
+Geni has no comparable field, so it is one-sided evidence about where to spend
+adjudication effort rather than about who is right.
+
+638 date conflicts, median **13 years** apart, 44% within a decade, 17 over a
+century. A rule that picks a winner on a four-year gap in a medieval record is
+choosing between two plausible readings of a thin source, not correcting an
+error.
+
+**Two bugs of mine, both caught by looking at the output rather than the exit
+code.** The script ran clean and produced a wrong table twice:
+
+1. The evidence columns came back `?` for **926 of 930** rows. I had matched
+   Wikidata's statement against `Finding.target_qid` — which is what *we* would
+   point at, so in a conflict it is by definition the value Wikidata does not
+   hold. Matching against `theirs` (QIDs directly, dates by year) took unmatched
+   to **zero**.
+2. The `apart` column read `structural` for **every** row, including all 638
+   date conflicts, because I trusted `Finding.detail`, which is empty on the
+   conflict path. Computing the year distance directly gives 292 structural —
+   exactly 134 + 90 + 68 — and a real distribution.
+
+Both would have shipped a plausible-looking table that was quietly meaningless.
+The exit code was 0 each time.
+
+**The lead worth following is not in this table.** The one conflict settled by
+hand, `reports/husb-conflicts.md`, was resolved by *structure* — two records
+sharing a `FAMC` — not by citation, rank or distance. 292 of the 930 are
+structural, and 0.00Z showed a structural conflict can be a duplicate rather
+than a disagreement. The merge rule Emma asked for should be generated from an
+adjudicated sample; built on citation coverage it would encode "Wikidata cites
+more sources" as "Wikidata is right", which this measurement does not show.

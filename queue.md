@@ -293,10 +293,41 @@ for anyway.
 | P26 spouse | 68 |
 | **total** | **930** |
 
-What that table does **not** say is who is right — it counts disagreements, not
-errors. Adjudicating them is 2.D proper, and Emma's instruction stands: measure
-per property, assume no global winner, and show the table before generating any
-merge rule from it.
+**Characterised 2026-08-10 — `reports/conflicts.md`, data in
+`reports/conflicts.tsv`** (all 930; the crosscheck report shows only the worst
+100). `scripts/build-conflicts.py`, offline.
+
+| property | conflicts | Wikidata sourced | unsourced |
+| --- | ---: | ---: | ---: |
+| P569 birth | 321 | **69%** | 98 |
+| P570 death | 317 | **69%** | 97 |
+| P22 father | 134 | 48% | 70 |
+| P25 mother | 90 | 46% | 49 |
+| P26 spouse | 68 | 53% | 32 |
+
+**The per-property asymmetry Emma asked for is present**: Wikidata's disputed
+*dates* carry a reference 69% of the time, its disputed *relationships* only
+46–53%. That runs the way the "Geni wins relationships, Wikidata wins dates"
+prior would predict, which is a reason to **test** that prior rather than adopt
+it. It measures citation coverage, not correctness, and Geni has no comparable
+field — so it says where to spend adjudication effort, not who is right.
+
+Date conflicts are mostly near-misses: 638 of them, **median 13 years apart**,
+44% within a decade, only 17 over a century. A rule that picks a winner on a
+four-year gap in a medieval record is choosing between two plausible readings,
+not correcting an error, and should say so.
+
+Also: **12** disputed statements carry `preferred` rank — a Wikidata editor
+already chose that value over a competitor — and **54** are against items
+holding other values for the same property as well.
+
+**Still open, and the lead worth following:** the adjudication itself. The one
+case settled by hand (`reports/husb-conflicts.md`) was resolved by **structure**
+— two records sharing a `FAMC` — not by any column in this table. 292 of the 930
+are structural, and 0.00Z showed a structural conflict can be a *duplicate*
+rather than a disagreement. The merge rule should come from an adjudicated
+sample, not from citation coverage; building it on the table above would encode
+"Wikidata cites more sources" as "Wikidata is right", which nothing here shows.
 
 **2 of 10 ported, 2026-08-09/10.** `crosscheck.claims_from_store` answers
 `fetch_claims`'s question — `qid -> {property -> [values]}` for P22/P25/P26/
