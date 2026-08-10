@@ -47,9 +47,27 @@ QUERY = """SELECT ?item ?itemLabel ?itemDescription WHERE {
 
 
 def fetch(qids: list[str], attempt: int = 1) -> dict:
+    """One request, however many QIDs.
+
+    **POST, not GET.** A GET puts the whole VALUES clause in the URL and
+    Wikidata answers `HTTP 414: URI Too Long` somewhere past a few hundred
+    QIDs — 366 was fine, 30 cases' worth was not. Chunking would have meant
+    several requests, which is the thing Emma asked this to avoid: *"Wikidata
+    is great for getting large amounts of information all at once in a single
+    query, and it sucks ass at giving you lots of information in rapid
+    sequential queries."* The body has no such limit.
+    """
     values = " ".join(f"wd:{q}" for q in qids)
-    url = ENDPOINT + "?" + urllib.parse.urlencode({"query": QUERY % values, "format": "json"})
-    request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT, "Accept": "application/sparql-results+json"})
+    body = urllib.parse.urlencode({"query": QUERY % values, "format": "json"}).encode("ascii")
+    request = urllib.request.Request(
+        ENDPOINT,
+        data=body,
+        headers={
+            "User-Agent": USER_AGENT,
+            "Accept": "application/sparql-results+json",
+            "Content-Type": "application/x-www-form-urlencoded",
+        },
+    )
     try:
         with urllib.request.urlopen(request, timeout=60) as response:
             return json.loads(response.read().decode("utf-8"))
