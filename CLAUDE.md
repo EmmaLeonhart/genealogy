@@ -600,6 +600,37 @@ The suite is fast, needs only pytest, and covers the real 24 MB exports. The one
 thing local runs cannot do is the Python version matrix — `tests/test_python_floor.py`
 is a partial stand-in for that, and says so.
 
+### The purpose is to ADD to Wikidata, not to correct it
+
+**2026-08-10, Emma:** *"the entire purpose of this is to add it… Correcting
+stuff on Wikidata is actually such a pain that it's almost effectively out of the
+question. We will be more prone to adding in contradictory information cited to
+Geni than we are to correcting information."*
+
+This governs what is worth working on. Over the 14,157 people carrying both a
+Geni ID and a Wikidata item:
+
+| | count |
+| --- | ---: |
+| **addable statements** (Geni has a value, Wikidata is silent) | **24,957** |
+| conflicts (both sides state it, values differ) | 930 |
+
+**Twenty-seven to one.** Contradiction resolution is worth doing and is *not a
+priority* — Emma, same day: *"remember contradiction resolution is not that high
+priority here generally… it is worth doing but genuinely not that important."*
+
+Practical consequences:
+
+- A disagreement is a **note**, not a work item. Do not build machinery to
+  adjudicate them.
+- Where Geni contradicts Wikidata and Geni looks right, prefer **adding a second
+  statement cited to Geni** over editing the existing one.
+- The measurement that matters for any field is *how many people have it in Geni
+  and lack it on Wikidata*, not *how often the two disagree*.
+
+`reports/model.md` holds the field-by-field version of that table;
+`reports/names-spec.md` is the first spec written against it.
+
 ### How this project works now: case by case, Emma interprets
 
 **2026-08-10. This supersedes the "build a report over the whole corpus" habit.**

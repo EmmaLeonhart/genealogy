@@ -5536,3 +5536,51 @@ The counts are real and the conversion cannot use them.
 Also corrected: I had called six of John's families "empty shells". None are
 empty; John is `HUSB` on all six, and the one-spouse-and-nothing-else shape is
 corpus-wide rather than particular to him.
+
+## 2026-08-10 — the walk's real output: a model, and a redirected goal
+
+Thirty cases prepared and reviewed. The date comparison across them: **10 of 30
+are not linked to Wikidata at all**, 13 agree exactly, 7 disagree. Six of the
+seven disagreements are 1–4 years apart, the medieval-approximation band.
+
+**The seventh was not a date problem at all, and it produced the one genuinely
+reusable heuristic of the walk.** Philippa Mathilda de Toulouse showed a 29-year
+death-date gap — 1117 against 1146. Her Geni profile is linked to `Q3056729`,
+which is **Ermengarde of Anjou, Duchess of Brittany**. Philippa is `Q3048073`.
+The link is wrong; Wikidata's item for a different woman carries Philippa's Geni
+ID as its `P2600`.
+
+So: **a large date gap is evidence of a bad link, not a bad date.** Small gaps
+are approximation, large gaps are mismatched identity. `crosscheck`'s docstring
+had predicted this shape — "either our match being wrong or a real error on one
+of the two sites" — and nothing had ever checked which.
+
+Also visible there: Wikidata *does* have an idiom for uncertainty. `Q3056729`
+carries three `P569` statements, one deprecated with `P1319`/`P1326` earliest and
+latest bounds. It exists and is used inconsistently — Eleanor of Aquitaine's
+disputed birth year is a single unreferenced statement.
+
+**Then Emma redirected, and it is the most consequential steer of the session.**
+*"you are spending too much time on contradictions and not enough time on actual
+real modelling stuff"*, then *"the entire purpose of this is to add it…
+Correcting stuff on Wikidata is actually such a pain that it's almost effectively
+out of the question."*
+
+Measured: **24,957 addable statements against 930 conflicts.** Twenty-seven to
+one. Every contradiction-hunting artefact this session produced — the 930-row
+conflicts table, the citation-coverage measurement, the adjudication plan — was
+work on the small end of that ratio.
+
+`reports/model.md` is the corpus-wide field census with Wikidata targets, and it
+corrected a claim I had drawn from a single record: Geni does **not** primarily
+store places as comma-strings. The structured `ADDR` block is about twice as well
+filled as `PLAC` on every event and decomposes into `CTRY`/`STAE`/`CITY`.
+
+`reports/names-spec.md` is the first spec written against the model. Names are
+the largest gap; Japanese labels are the tractable slice, and 4,500 of them need
+no inference beyond a codepoint range.
+
+**One tooling note.** `fetch-labels.py` moved from GET to POST after `HTTP 414:
+URI Too Long` at 30 cases' worth of QIDs. Chunking would have meant several
+requests, which is exactly what Emma said to avoid; the body has no such limit.
+590 QIDs now resolve in one query.

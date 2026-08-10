@@ -115,6 +115,38 @@ not a matching-accuracy backtest; Emma reframed it as *source reliability*.
 
 **0.00Y — decided and done.** Floor plus seed-file check; see `devlog.md`.
 
+## THE GOAL, restated 2026-08-10 — add to Wikidata
+
+Emma: *"the entire purpose of this is to add it."* Correcting Wikidata is
+*"almost effectively out of the question"*. **24,957 addable statements against
+930 conflicts** over the 14,157 linked people. `CLAUDE.md` § *The purpose is to
+ADD* has the rule; `reports/model.md` has the field-by-field table.
+
+**Priority order, highest first:**
+
+1. **Names — `reports/names-spec.md`.** The largest gap: 7,215 addable `P735`
+   and 4,477 `P734`. Labels: English is 96.5% done (501 missing), **Japanese is
+   the work at 10,161 missing**, and **4,500 of those already carry a CJK string
+   in Geni with an empty `ja` slot** — addable with no language inference, only a
+   codepoint range.
+2. **Places.** 3,502 `P19` + 2,737 `P20` + 1,560 `P119` addable. Start from
+   `ADDR/CTRY`+`STAE`+`CITY`, **not** from parsing `PLAC` — the structured block
+   is twice as well filled. Blocked on place items being absent from the store;
+   `scripts/fetch-labels.py` resolves them one batched query at a time.
+3. **Dates and the rest.** 1,719 `P569`, 1,248 `P570`, 1,261 `P106`, 925 `P97`,
+   312 `P1636`.
+4. **Contradictions — explicitly low priority.** Emma: *"worth doing but
+   genuinely not that important."* Note them, do not build for them.
+
+**Open and needing Emma**, all from `reports/names-spec.md`:
+
+- **What `_MARNM` is.** 55% of all name records carry it, non-standard, undefined
+  by the export. The second most common name subtag in the corpus.
+- **Which `NAME` record becomes the label** when several share a script.
+- **Whether `NSFX` belongs in a label** — Geni's `Henry III King of England`
+  against Wikidata's own `Henry III of England`.
+- **What "occasionally" means for `mul` labels.**
+
 ## THE WORK NOW: the ancestor walk, case by case — 2026-08-10
 
 **Everything below this section is older and lower priority.** Emma redirected
