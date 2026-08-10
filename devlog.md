@@ -5189,3 +5189,36 @@ without name-matched candidates — a smaller reconcile, not a broken one.
 Whether that is worth having, or whether item 6 waits for a download pass that
 unblocks both searches, is **NEEDS-DECISION — Emma**. Building it either way
 without asking would be guessing at what "the stale reports" are supposed to say.
+
+## 2026-08-10 — the two outliers named, and a correction to my own record
+
+**The two "looks isolated" items are Q68188** (Johann von Ewald, 13 Wikipedia
+articles) **and Q928741** (Fausto Gardini, 10). Each carries exactly one relation
+statement, and in both cases it points at an item the download never fetched —
+Q140701793 and Q41438181.
+
+**Why they were missed is not answerable offline, and my first hypothesis was
+wrong.** "Created after our snapshot" dies on measurement: 1,427 stored items
+have a higher QID than Q140701793, and **76%** of the store is higher than
+Q41438181. Both sit well inside the range the download covered. What would settle
+it is `download-state.sqlite3`, whose `missing`/`error` rows record a QID
+Wikidata refused to serve — and that file went with `out/` in the re-clone. It is
+documented as disposable because `rebuild` restores it from the shards, but
+`rebuild` can only recover `done`: an item that was never stored leaves no trace
+in a shard to rebuild from. The next download run re-attempts both and answers it
+for free.
+
+**A correction to what I wrote yesterday.** My entry for `e686497` said 3.A's
+full count had never been run and that the sample was all that existed. That is
+wrong. `9a4a83e` — the commit this working tree was cloned at — is *"All 183,681
+Geni-linked isolates, listed and browsable"*, and `reports/wikidata-isolates.tsv`
+has been tracked since. The full count had already been done; `queue.md` 3.A
+still said "the full count, after 18:30" and I took the queue's word for the
+state of the repo instead of checking the log.
+
+The re-run was still worth having, but for a different reason than I claimed: it
+is an **independent reproduction**, written separately, and the total came back
+**183,681 exactly**. The in-tree figure moved 246 → 330, which is not a
+disagreement either — the tree grew from 275,437 to 298,591 people across six
+exports in between. The report now says all of this instead of carrying two
+"full count" sections that appeared to contradict each other.

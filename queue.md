@@ -175,7 +175,13 @@ beside it. The page is rebuilt and tracked: `out/wikidata-isolates.html`.
 Three results worth carrying forward, because they change what other items mean:
 
 1. **The "relatives not downloaded" explanation is all but dead — 2 items in
-   514,903.** The sample said 0 of 9,000 and this queue said *dead*; the full
+   514,903, and both are now named: Q68188 and Q928741.** Each has one relation,
+   to an item the download never fetched. Recency is ruled out by measurement
+   (76% of the store has a higher QID than one of the two targets); the file
+   that would say *why* — `download-state.sqlite3` — died in the re-clone, and
+   `rebuild` cannot recover a `missing` row from shards that never held the item.
+   **Answered as far as offline data allows**; the next download run settles it
+   for free. The sample said 0 of 9,000 and this queue said *dead*; the full
    pass says vanishing, not absent. The conclusion survives: 183,681 is a real
    isolate count, not the upper bound `wikidata-components.md` had to call it,
    and **2.E's discriminator has already done its job** — implement it for

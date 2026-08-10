@@ -1,9 +1,13 @@
 # The Geni-linked Wikidata items with no family at all
 
-**Counted in full 2026-08-09, offline — all 1,408 shards, 1,408,401 items.**
-`scripts/count-isolates.py`. The sample this report was first written from (24
-shards, ~1.7%) is preserved below where it differs, because what the full pass
-changed is worth being able to see.
+**Counted in full 2026-08-09 (`9a4a83e`), and re-counted independently
+2026-08-10 by `scripts/count-isolates.py`** — all 1,408 shards, 1,408,401 items,
+offline. The totals agree exactly. The sample this report was first written from
+(24 shards, ~1.7%) is preserved below where it differs, because what the full
+pass changed is worth being able to see.
+
+The `sample said` column below compares against that 24-shard sample, not
+against the first full count.
 
 | | count | of Geni-linked | sample said |
 | --- | ---: | ---: | ---: |
@@ -14,13 +18,30 @@ changed is worth being able to see.
 | looks isolated, relations all point at un-fetched items | **2** | 0.0004% | 0 of 9,000 |
 | …of the isolates, ones already in our tree | 330 | 0.18% | ~286 est. |
 
+*(330 against the 151-export tree; the first full count found 246 against 145
+exports. The tree grew by 23,154 people in between.)*
+
 **One correction, and it matters more than its size.** The sample found *zero*
 "looks isolated" items in 9,000 and this report called the second reading
 **dead**. It is not dead — it is **2 items in 514,903**. The conclusion drawn
 from it survives intact (isolation is not an artifact of stopping the download
 early, and finishing the import will not close it), but "absent" was a sample
 result stated as a fact about the store, and the honest word is *vanishing*.
-The next run of the script names the two QIDs; this one only counted them.
+The two are named now: **Q68188** (Johann von Ewald, 13 Wikipedia articles) and
+**Q928741** (Fausto Gardini, 10). Each carries exactly one relation statement,
+and in both cases it points at an item the download never fetched — Q140701793
+and Q41438181 respectively.
+
+**Why those two were missed is not answerable offline, and the obvious guess is
+wrong.** "Created after our snapshot" dies on measurement: 1,427 stored items
+have a *higher* QID than Q140701793, and **76%** of the store is higher than
+Q41438181. Both sit comfortably inside the range the download covered. The
+record that would settle it is `out/wikidata/download-state.sqlite3`, whose
+`missing`/`error` rows say whether Wikidata refused to serve a QID — and that
+file was lost with `out/` in the 2026-08-09 re-clone. It is described as
+disposable because `rebuild` restores it from the shards, but `rebuild` can only
+recover `done`: a QID that was never stored leaves no trace in a shard. The next
+download run re-attempts them and will answer it for free.
 
 **The isolates are all in the seed phase, and that is structural.** The running
 count reaches 183,681 by shard ~600 and does not move again over the remaining
@@ -105,17 +126,24 @@ So the edit is P22/P25 (and P26/P40) onto an existing, well-sourced item — not
 item creation, not entity resolution, and not a name match: the Geni ID on the
 item is the join, which is this repo's primary key.
 
-## The full count, 2026-08-09
+## The full count, 2026-08-09 — and its independent re-run
 
-The sample above is now superseded by a complete pass. **183,681 Geni-linked
-items carry no relation statement**, of which **246** are people our tree holds.
-The sample predicted ~179,800 and ~286 — close enough on both that nothing in
-the reasoning changes.
+The sample above is superseded by a complete pass. **183,681 Geni-linked items
+carry no relation statement**, of which **246** were people our tree held at 145
+exports. The sample predicted ~179,800 and ~286 — close enough on both that
+nothing in the reasoning changes.
+
+**Re-counted independently on 2026-08-10** by `scripts/count-isolates.py`,
+against the 151-export tree, and the total reproduced **exactly**: 183,681. That
+is worth more than a fresh number, because the two passes were written
+separately. The in-tree figure moved **246 → 330**, which is not a disagreement:
+the tree grew from 275,437 to 298,591 people over six exports, so more isolates
+are people we now hold.
 
 Full list: `reports/wikidata-isolates.tsv`. Browsable, sorted by number of
 Wikipedia articles so the best-documented come first:
-`out/wikidata-isolates.html` (gitignored; rebuild with
-`python scripts/build-isolates-page.py`).
+`out/wikidata-isolates.html` — **tracked** since the 2026-08-09 re-clone
+destroyed it; rebuild with `python scripts/build-isolates-page.py`.
 
 **One definitional catch worth stating.** 183,681 here is slightly *larger* than
 the 183,296 single-item components in `reports/wikidata-components.md`, and the
