@@ -199,7 +199,16 @@ __all__ = [
 #: which is the same style-independence the eleven exports of 2026-08-04
 #: showed at 3860 and is now seen at a second value. Their *contents* differ —
 #: 2459 families against 2283 — so this is not one export downloaded twice.
-GENI_EXPORT_CAP = 4080
+#:
+#: **2026-08-09, 14:26 and 15:03 — 4084 then 4088, two more seeds.** `Forest`
+#: exports of `6000000227145420853` ("wife of Samuel Standen") and
+#: `6000000227145774838` ("wife of Baruch Jafe"), taken about forty minutes
+#: apart. Two readings, each four higher than the last, from *different* seeds —
+#: so the step-by-four seen on 2026-08-04 is not an artefact of re-exporting one
+#: person. Within a single afternoon the value went 4080 → 4084 → 4088, which is
+#: the fastest it has been observed to move and the reason this constant is
+#: documented as "the largest seen" rather than a known limit.
+GENI_EXPORT_CAP = 4088
 
 #: The step between reading this report and running an export.
 #:
