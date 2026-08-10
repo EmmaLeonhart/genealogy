@@ -162,27 +162,39 @@ underneath the prediction survives — the Wikidata side *is* the more modern of
 the two, 73.0% at 1800s-or-later against our 25.9% — but the centuries named
 were a hundred years early.
 
-## BCE is unrepresentable in the corpus — NEEDS-DECISION, Emma
+## BCE is unrepresentable in the corpus — sized 2026-08-10, NEEDS-DECISION, Emma
 
-Five people carry a birth year after 2026, and all five are BCE dates written as
-bare positives: Merenre Nemtyemsaf II (2216), Hetep (2191), Intef I (2166),
-Mentuhotep II (2111), Sesostris (2060). Mentuhotep II reads birth 2111, death
-2046 — birth *after* death, the signature of a lost era marker.
+`reports/bce.md`, `scripts/find-bce.py`. `out/merged.ged` has **zero `BC`
+strings**, so every BCE year is a bare positive and a BCE person born below 2026
+cannot be told from a CE one by reading the number.
 
-**`out/merged.ged` contains zero `BC` strings.** So this is not rare data, it is
-a corpus that cannot express BCE at all: every BCE person is filed into the
-matching CE century, and only those whose year exceeds 2026 are self-evident.
+**Certain: 181 people.** Five carry a birth year after 2026 (Merenre Nemtyemsaf
+II 2216, Hetep 2191, Intef I 2166, Mentuhotep II 2111, Sesostris 2060), and
+walking up from them gives **176 ancestors** who are BCE by construction — an
+ancestor of a Middle Kingdom pharaoh did not live in the common era.
 
-**This blocks nothing today and breaks the authoring pipeline tomorrow.**
-`out/wikidata/add-claims.qs` builds P569/P570 from these dates — left alone it
-would state Mentuhotep II was born in **2111 CE** and push that to Wikidata.
+**Of those 181, only 7 carry a birth date at all.** That settles the worry the
+century report raised: `reports/centuries.md` counts only dated people, so the
+confirmed contamination of its Geni column is **7 of 147,984 — 0.005%**, and five
+of the seven are visible as impossible years rather than hidden. No conclusion in
+that report changes. The reason is structural: this corpus's BCE population is
+ancient and legendary, and those profiles rarely carry dates on Geni.
 
-The decision is Emma's because it is about what the corpus should hold, not how
-to compute it: whether the exports' BCE dates are recoverable from Geni at all,
-whether a negative-year convention should be introduced into the merged GEDCOM,
-or whether the pipeline should simply refuse to emit a date for anyone flagged.
-A partial detector exists — birth year later than death year, 74 people — but it
-mixes BCE with truncated dates (`2 DATE 12`) and is not a clean population.
+**Two weaker signals, reported as weak.** Birth after death: 74 people, of which
+12 are truncated dates and **62** are BCE-shaped but unconfirmed — a
+transposition looks identical. Parent born after child: 963 pairs, 1,650 people,
+which BCE inverts but so does any wrong year. Both are upper bounds on disorder,
+not counts of BCE people, and nothing here separates them.
+
+**Where it does bite: the authoring pipeline.** `out/wikidata/add-claims.qs`
+builds P569/P570 from these dates, so left alone it would state on Wikidata that
+Mentuhotep II was **born in 2111 CE**, sourced to a Geni profile. Seven dated
+people is small enough to fix by hand and bad enough to fix before the batch
+runs.
+
+**NEEDS-DECISION — Emma**, because it is about what the corpus should hold: are
+the era markers recoverable from Geni, should the merged GEDCOM carry negative
+years, or should the pipeline refuse to emit a date for a flagged person?
 
 ## Emma's brief — her words, the destinations these decompose from` below is Emma's own brief, not steps.** It is
 the destination list these decompose from; leave its wording alone.

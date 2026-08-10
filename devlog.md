@@ -5314,3 +5314,43 @@ nothing in the output looked off, and it took a question from Emma to surface it
 And the "225 impossible births" I flagged as a data-quality finding were an
 artifact of my own labelling, while the five real ones sat unremarked in a bucket
 I had labelled correctly by accident.
+
+## 2026-08-10 — sizing the BCE problem, and testing the thing that broke
+
+Two pieces, both following from yesterday's correction.
+
+**A test for `century_of`.** `scripts/` holds report generators and none of them
+had tests, on the reasoning that they run once and a human reads the output.
+That is exactly the gap the century bug fell through: a pure function with an
+obvious contract, returning the century ordinal where a year range was meant,
+producing a table that looked entirely reasonable. `tests/test_scripts_centuries.py`
+now pins it — 1950 is `1900s`, not `2000s` — plus the GEDCOM year parser beside
+it. 18 tests. Cheap, and it would have caught the thing that took a question
+from Emma to surface.
+
+**Sizing the BCE contamination — `reports/bce.md`, `scripts/find-bce.py`.** The
+measurement deliberately ignores the year *values*, since a BCE year below 2026
+is indistinguishable from a CE one, and looks at direction instead.
+
+**181 people are certainly BCE**: the five with birth years after 2026, plus the
+**176 ancestors** reachable above them, who are BCE by construction rather than
+by inference.
+
+**Of those 181, only 7 carry a birth date.** That is the useful number, and it
+settles the worry rather than confirming it: `reports/centuries.md` counts only
+dated people, so its confirmed contamination is **7 of 147,984 — 0.005%**, five
+of which are visible as impossible years anyway. No conclusion in that report
+moves. The reason is structural, not luck — this corpus's BCE population is
+ancient and legendary, and Geni rarely dates those profiles.
+
+Two weaker signals are reported as weak rather than folded in: 74 birth-after-
+death (12 truncated dates, 62 BCE-shaped but unconfirmed, since a transposition
+looks identical), and 963 parent-born-after-child pairs covering 1,650 people,
+which BCE inverts but so does any wrong year. Both are upper bounds on disorder.
+Presenting either as a BCE count would manufacture a population out of a signal.
+
+**Where it actually bites is the authoring pipeline.** `add-claims.qs` builds
+P569/P570 from these dates and would tell Wikidata that Mentuhotep II was born in
+2111 CE, sourced to a Geni profile. Seven dated people is small enough to fix by
+hand and bad enough to fix before the batch runs. What the corpus should hold
+stays Emma's decision.
