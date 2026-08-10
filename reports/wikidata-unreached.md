@@ -13,11 +13,18 @@ links to the Wikidata item and to the Geni profile to export from.
 
 | | 151 exports | 149 exports | 145 exports |
 | --- | ---: | ---: | ---: |
-| P2600 pairs | 517,878 | 517,878 | 516,983 |
-| …numeric, i.e. joinable | 517,850 | 517,850 | 516,955 |
+| P2600 **statements** | 517,878 | 517,878 | — |
+| P2600 **distinct pairs** | 517,851 | 517,878 | 516,983 |
+| …numeric, i.e. joinable | 517,823 | 517,850 | 516,955 |
 | …malformed, kept separately | 28 | 28 | 28 |
 | **pairs whose Geni ID is not in our tree** | **503,646** | 504,480 | 504,095 |
-| pairs we do hold | 14,204 | 13,370 | 12,860 |
+| pairs we do hold | 14,177 | 13,370 | 12,860 |
+
+**Statements are not pairs — 27 of them are duplicates.** An item can carry the
+same P2600 value twice, and the 149-export column counted statements, so its
+`held` figure was 27 too high. The pair list is deduplicated at source now
+(`scripts/build-p2600-all.py`). `unreached` is unaffected because it was always
+computed over a set; only `held` moves, 14,204 → 14,177.
 
 **Why only ~14,000 join.** Not because the two sites disagree about who exists:
 because 151 exports have reached about 2.7% of the Geni population Wikidata

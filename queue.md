@@ -43,8 +43,18 @@ lost**. `wikidata/` (2.7 GB) and `exports/` are tracked and survived.
   0.00A's before-measurement is **lost, not deferred** — the earliest baseline
   now obtainable is the 149-export tree.
 - `out/wikidata/p2600-all.tsv` — gone, and it was *fetched from Wikidata*, which
-  CLAUDE.md forbids re-querying. Must be **reconstructed offline** from
-  `wikidata/items/`; see the item below.
+  CLAUDE.md forbids re-querying. **Rebuilt offline** from `wikidata/items/` by
+  `scripts/build-p2600-all.py`.
+
+  **Two files, two formats, and crossing them fails silently.** `p2600-all.tsv`
+  is `qid<TAB>geni_id` with **no header** — what `genimerge overlap` writes and
+  what `_cmd_wikidata_ancestors`, `doubles` and the rest read *positionally*.
+  `p2600-map.tsv` is `geni_id<TAB>qid` **with** a header, written by
+  `wikistore.write_p2600_map` / `wikidata-index --map`. The first rebuild put
+  map content at the all path; nothing raised, and `genimerge
+  wikidata-ancestors` printed `0 of our people carry an item` while exiting 0.
+  Anything reading this file should assert the first token starts with `Q`
+  rather than trusting the path.
 
 ## Order of work — synthesized 2026-08-09
 
@@ -55,8 +65,8 @@ at them, so they are ordered here rather than renumbered.
 
 | # | item | state |
 | --- | --- | --- |
-| 1 | **3.A singleton Wikidata items carrying Geni links** | Emma's pick, 2026-08-09. Sampled part doable now |
-| 3 | **2.A** century breakdown of the 1,821 targets | coded, 21 tests green; **run now unblocked** |
+| 1 | **3.A singleton Wikidata items carrying Geni links** | counted in full; rest is BLOCKED-ON-USER-ACTION |
+| 3 | **2.A** century breakdown of the 2,123 targets | **run 2026-08-09**; rest is NEEDS-DECISION, Emma |
 | 4 | **2.E** component walk as a command, isolates split out | overlaps 3.A — do 3.A first, it is the same discriminator |
 | 5 | **2.B** port the `client.sparql` call sites offline | pure code |
 | 6 | **2.C** build the union tree | shape settled by Emma; *edge* still undefined |
@@ -151,31 +161,24 @@ The five items planned this morning are done and are in `devlog.md`.
 `wikidata-index` / `wikidata-ancestors` are the two new commands. What that
 opened up, and what it did not:
 
-2.A **1,821 export targets — the century breakdown is coded and not yet run.**
-`wikiancestors.parent_birth_years` reads P569 for each target from the store and
-`render_markdown` buckets them by century, with 21 tests green. The report on
-disk does **not** have that section: the regeneration was killed part-way to
-keep the laptop cool, so `reports/wikidata-ancestors.md` is still the
-counts-only version. Re-run `python -m genimerge wikidata-ancestors --source
-out/merged.ged` when heat allows — two store passes, a few minutes.
+2.A **Export targets, one hop above us — RUN 2026-08-09, `reports/wikidata-ancestors.md`.**
+The century breakdown that was coded but never run is now in the report, against
+the 151-export tree. **2,123 targets** (was 1,821 at 145 exports); 14,157 of our
+people carry an item; 4,854 parents have no Geni ID at all; 12,367 we already
+hold; 70 Geni IDs sit on more than one item and were skipped.
 
-The question it answers, so the run is not mistaken for a formality: the
-`Descendants` campaign is about reaching **modern times** and a parent is one
-step backwards, so the list is only worth anything if enough of the targets are
-late enough for their descent to arrive where the campaign is going. A
-`Descendants` export seeded on a missing parent returns that parent's whole
-descent — the siblings of somebody we hold, and their lines — which is why a
-parent is not simply a backwards move.
+**The question it was run to answer — is the list worth anything for a campaign
+aimed at modern times? — answers yes.** Of the 1,400 targets carrying a birth
+date, **829 are 1500s or later**, and the single biggest bucket is the **1700s at
+283**. 1600s 204, 1800s 192, 1500s 150. Only ~495 are pre-1500. **723 carry no
+date at all** — a third of the list, and the one real gap in this reading.
 
-**The older framing, kept because it is what the report currently supports:**
-`reports/wikidata-ancestors.md` lists Geni profiles Wikidata names as a parent
-of somebody we already hold, and that no export here has reached. These are
-doorways `frontier` **cannot** see — it ranks our own parentless people and
-knows nothing about what the other tree says is above them. Nothing has been
-done with the list: it wants reading, and then a decision about whether these
-feed the export campaign the way `reports/descendants.md` does. Note the
-tension worth resolving before acting: the `Descendants` campaign is about
-reaching *modern* times, and a parent is by construction a step **backwards**.
+What is left of 2.A is a decision, not a computation: **NEEDS-DECISION, Emma** —
+whether these 2,123 feed the export campaign the way `reports/descendants.md`
+does, and what to do with the 723 undated ones. The tension the item was written
+around is now measured rather than argued: a parent is a step backwards, but a
+`Descendants` export from one returns their whole descent, and 829 of them are
+late enough for that descent to reach modern times.
 
 2.E **Make the component walk a command, and separate the 183,296 isolates.**
 `reports/wikidata-components.md` answers "how many trees is the Wikidata side"

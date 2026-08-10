@@ -58,26 +58,31 @@ def main() -> int:
 
     ours = tree_geni_ids(merged)
 
-    # write_p2600_map writes `geni_id<TAB>qid`, with a header — the opposite
-    # column order to the report this feeds. Read it by name rather than by
-    # position; getting this backwards silently classified all 517,878 pairs as
-    # malformed and emitted an empty report.
+    # `p2600-all.tsv` is `qid<TAB>geni_id` with NO header — the format
+    # `genimerge overlap` writes and every consumer reads positionally. It is
+    # *not* `p2600-map.tsv`, which is `geni_id<TAB>qid` with a header. Getting
+    # these two crossed is silent in both directions: it once classified all
+    # 517,878 pairs as malformed here, and separately made
+    # `genimerge wikidata-ancestors` report `0 of our people carry an item`
+    # while exiting 0. Assert the shape rather than trusting the filename.
     numeric: list[tuple[str, str]] = []
     malformed: list[tuple[str, str]] = []
     with io.open(pairs_path, encoding="utf-8") as fh:
-        header = fh.readline().rstrip("\n").split("\t")
-        if sorted(header) != ["geni_id", "qid"]:
-            print(f"unexpected header {header!r} in {pairs_path}", file=sys.stderr)
+        first = fh.readline().rstrip("\n")
+        if not first.startswith("Q"):
+            print(
+                f"{pairs_path} does not start with a QID (got {first!r}). "
+                "Expected qid<TAB>geni_id with no header - rebuild it with "
+                "scripts/build-p2600-all.py.",
+                file=sys.stderr,
+            )
             return 1
-        gid_col, qid_col = header.index("geni_id"), header.index("qid")
+        fh.seek(0)
         for line in fh:
             line = line.rstrip("\n")
             if not line:
                 continue
-            cells = line.split("\t")
-            if len(cells) <= max(gid_col, qid_col):
-                continue
-            geni_id, qid = cells[gid_col], cells[qid_col]
+            qid, _, geni_id = line.partition("\t")
             (numeric if NUMERIC.match(geni_id) else malformed).append((qid, geni_id))
 
     unreached = sorted({(q, g) for q, g in numeric if g not in ours})

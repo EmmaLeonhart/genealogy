@@ -4735,3 +4735,55 @@ it were lost in the re-clone with no script that could remake them.
 load-bearing part: export from a handful of isolates and see whether Geni
 returns the family Wikidata lacks. The entire "export target list" reading
 assumes it does, and that has never been tested.
+
+## 2026-08-09 — 2.A run, and a silent join failure found by running it
+
+Queue item 2.A: the century breakdown was coded with 21 green tests and had
+never been run, because the regeneration was killed part-way for laptop heat.
+Ran it. The first run returned **all zeros** — `0 of our people carry an item,
+0 parents have a Geni ID we lack` — while exiting 0.
+
+**The cause was mine, from `5622f4c`.** There are two P2600 files and they are
+not interchangeable:
+
+| file | format | written by | read by |
+| --- | --- | --- | --- |
+| `p2600-all.tsv` | `qid<TAB>geni_id`, no header | `genimerge overlap` | `wikidata-ancestors`, `doubles`, … **positionally** |
+| `p2600-map.tsv` | `geni_id<TAB>qid`, header | `wikistore.write_p2600_map` | the join-key artifact |
+
+Rebuilding the lost cache, I wrote *map* content to the *all* path. Every
+consumer then read a QID where it expected a Geni ID, every join missed, and
+nothing raised — the command reported zeros and succeeded. `unreached` was
+unaffected only because that script happened to read by header name.
+
+`scripts/build-p2600-all.py` now rebuilds the file in the format its consumers
+read, offline from the store, and `build-unreached-tsv.py` asserts the first
+token starts with `Q` instead of trusting the path. The failure mode is written
+into `queue.md` next to the file, because a wrong-format file here is silent in
+both directions and costs a full re-run to notice.
+
+**A counting correction came with it.** Deduplicating at source showed 517,878
+P2600 *statements* are only 517,851 distinct *pairs* — 27 items carry the same
+value twice. The previous `held` figure counted statements and was 27 high:
+14,204 → **14,177**. `unreached` is unchanged at 503,646, having always been
+computed over a set.
+
+**2.A's actual answer, from the re-run.** 2,123 targets now (1,821 at 145
+exports); 14,157 of our people carry an item; 4,854 parents have no Geni ID;
+12,367 we already hold; 70 ambiguous Geni IDs skipped.
+
+| century | targets | | century | targets |
+| --- | ---: | --- | --- | ---: |
+| pre-1500 | ~495 | | 1600s | 204 |
+| 1500s | 150 | | 1700s | **283** |
+| 1800s | 192 | | 1900s+ | 76 |
+| **no date** | **723** | | | |
+
+**The question it was run to settle answers yes.** Of the 1,400 dated targets,
+**829 are 1500s or later** — late enough that a `Descendants` export from them
+reaches where the campaign is going. A parent is a step backwards, but a
+`Descendants` export from one returns that parent's whole descent: the siblings
+of somebody we hold, and their lines. The 723 undated targets are the real gap
+in this reading and are not counted as either.
+
+What is left of 2.A is a decision rather than a computation, and it is Emma's.
