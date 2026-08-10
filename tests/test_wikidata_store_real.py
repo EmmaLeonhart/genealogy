@@ -89,13 +89,49 @@ class _Scan:
     properties: set = field(default_factory=set)
     with_geni: int = 0
     with_family: int = 0
+    #: Seed QIDs that are in the store but carry no P2600 — the real invariant
+    #: behind `test_the_seed_items_carry_the_geni_id_they_were_selected_for`.
+    #: Offenders only, never the seed set itself; see the retention note above.
+    seeds_without_geni: list = field(default_factory=list)
+    seeds_checked: int = 0
+
+
+#: The seed list: every QID Wikidata states a P2600 for. Written by
+#: `genimerge overlap`, or rebuilt offline by `scripts/build-p2600-all.py`.
+#: `qid<TAB>geni_id`, no header — *not* `p2600-map.tsv`, which is the other way
+#: round and carries one.
+SEED_FILE = Path(__file__).resolve().parents[1] / "out" / "wikidata" / "p2600-all.tsv"
+
+
+def _seed_qids() -> set[str] | None:
+    """Every QID in the seed file, or None when `out/` is empty.
+
+    `out/` is gitignored, so a fresh checkout has no seed file and the precise
+    invariant cannot be checked there. That is why the floor below is asserted
+    unconditionally rather than only when this returns a set.
+    """
+    if not SEED_FILE.exists():
+        return None
+    qids: set[str] = set()
+    with SEED_FILE.open(encoding="utf-8") as handle:
+        for line in handle:
+            qid, _, _ = line.partition("\t")
+            if qid.startswith("Q"):
+                qids.add(qid)
+    return qids or None
 
 
 @pytest.fixture(scope="module")
 def scan():
     stats = _Scan()
+    seeds = _seed_qids()
     for item in stored_items():
         stats.total += 1
+        if seeds is not None and item.get("id") in seeds:
+            stats.seeds_checked += 1
+            if "P2600" not in (item.get("claims") or {}):
+                if len(stats.seeds_without_geni) < EXAMPLE_LIMIT:
+                    stats.seeds_without_geni.append(item.get("id", "?"))
         absent = FULL_ITEM_KEYS - set(item)
         if absent:
             stats.missing_count += 1
@@ -140,10 +176,29 @@ def test_the_store_is_not_a_thin_slice_of_wikidata(scan):
 
 
 def test_the_seed_items_carry_the_geni_id_they_were_selected_for(scan):
-    # The seed list is every QID with P2600. An item stored without it means
-    # the wrong thing was fetched, or the P2600 map has drifted from Wikidata.
-    # Expansion items legitimately have none, so this is a floor, not a rule.
-    assert scan.with_geni > scan.total * 0.5, f"only {scan.with_geni} of {scan.total} carry P2600"
+    # An item fetched as a seed but stored without P2600 means the wrong thing
+    # was fetched, or the seed map has drifted from Wikidata.
+    #
+    # This used to read `scan.with_geni > scan.total * 0.5`. That was a proxy,
+    # and it expired: it holds only while the store is seed-dominated, and the
+    # expansion walk has since overtaken the seed phase — 514,903 of 1,408,401,
+    # 36.6%, on 2026-08-09. The download was right and the assertion was wrong.
+    # Lowering the ratio to something that passes today would retire the guard
+    # instead of replacing it, so it is replaced by the two checks below.
+
+    # 1. An absolute floor, asserted everywhere including a fresh checkout.
+    #    Deliberately far under the ~515k actually stored: this catches a seed
+    #    phase that collapsed, not one that grew.
+    assert scan.with_geni >= 500_000, f"only {scan.with_geni} of {scan.total} carry P2600"
+
+    # 2. The real invariant, whenever the seed list is on disk. `out/` is
+    #    gitignored, so this half is absent on a fresh checkout — which is
+    #    exactly why it does not stand alone.
+    if scan.seeds_checked:
+        assert not scan.seeds_without_geni, (
+            f"{len(scan.seeds_without_geni)}+ seed items stored without P2600, "
+            f"starting with {scan.seeds_without_geni}"
+        )
 
 
 def test_relatives_finds_family_links_in_the_real_items(scan):

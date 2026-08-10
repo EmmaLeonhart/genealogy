@@ -4845,3 +4845,45 @@ a fresh merge. It passed. `genimerge merge` rewrites that report whenever it is
 run without `--output`, so the three merges this session regenerated it as a
 side effect. The fix HANDOFF asked for — "run merge, commit the regenerated
 report" — happened without being aimed at.
+
+## 2026-08-09 — four decisions from Emma, and the suite goes green
+
+**0.00Y is decided and implemented, so the suite has no red left.**
+`test_the_seed_items_carry_the_geni_id_they_were_selected_for` asserted that
+over half of every stored item carries P2600 — a proxy that held only while the
+store was seed-dominated, and the expansion walk overtook it long ago (514,903
+of 1,408,401, 36.6%). Emma chose floor-plus-seed-file over lowering the ratio:
+
+1. `scan.with_geni >= 500_000`, asserted everywhere including a fresh checkout,
+   deliberately far under the ~515k actually stored — it catches a seed phase
+   that *collapsed*, not one that grew.
+2. When `out/wikidata/p2600-all.tsv` is on disk, the real invariant: every seed
+   QID present in the store carries P2600. 514,876 seed QIDs loaded, **zero
+   offenders**.
+
+The second half is the guard that would catch the seed map drifting, which is
+what lowering `0.5` would have retired. `out/` is gitignored so it cannot stand
+alone, which is exactly why the floor is unconditional. The scan collects
+offenders only — never the seed set — keeping the streaming retention the
+module docstring insists on. `tests/test_wikidata_store_real.py`: 5 passed,
+3m05s, and the seed half genuinely ran rather than skipping.
+
+One benign discrepancy noticed while verifying: 514,903 items carry a P2600
+*claim* but the seed file holds 514,876 distinct QIDs. The 27 difference is
+items whose P2600 snak carries no usable value — `novalue`/`somevalue` or a
+non-string datavalue — so `geni_ids_of` yields nothing for them. Same class as
+the 28 malformed URL values, and not a defect.
+
+**The other three decisions are recorded in `queue.md`, not acted on yet.**
+
+- **3.A** — export from Ovid, Avicenna, Omar Khayyám, Aesop, Horace and Hobbes.
+  BLOCKED-ON-USER-ACTION; the queue carries the six Geni profile links and the
+  hourly sweep will import the zips on its own.
+- **2.A** — yes, seed the campaign from the 829 targets born 1500s or later.
+  Next step is writing that ranked seed list, and it is unblocked.
+- **2.D** — reframed by Emma from matching accuracy to **source reliability**:
+  measure Geni against Wikidata *per property* over every conflict in the
+  14,177 held pairs, assuming no global winner, and turn the result into a
+  merge rule the code applies. Blocked on 2.B, since `crosscheck` still builds a
+  `WikidataClient`. Recorded with the caveat that a merge rule is the more
+  committal output: build the table, show it, then generate the rule from it.

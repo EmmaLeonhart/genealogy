@@ -56,6 +56,56 @@ lost**. `wikidata/` (2.7 GB) and `exports/` are tracked and survived.
   Anything reading this file should assert the first token starts with `Q`
   rather than trusting the path.
 
+## Emma's decisions, 2026-08-09 — four answered
+
+**3.A — export from the best-documented isolates.** Emma's pick. These six carry
+a Geni profile ID and record no father, mother, spouse, child or sibling on
+Wikidata, and none is in our tree. If Geni returns family for these, the
+"export target list" reading holds for the tail; if it does not, the reading is
+wrong and 183,681 items are not an export target at all.
+
+| item | who | articles | Geni profile to export from |
+| --- | --- | ---: | --- |
+| [Q7198](https://www.wikidata.org/wiki/Q7198) | Ovid | 201 | [6000000015256128571](https://www.geni.com/people/x/6000000015256128571) |
+| [Q8011](https://www.wikidata.org/wiki/Q8011) | Avicenna | 193 | [6000000010664917790](https://www.geni.com/people/x/6000000010664917790) |
+| [Q35900](https://www.wikidata.org/wiki/Q35900) | Omar Khayyám | 166 | [6000000015297447236](https://www.geni.com/people/x/6000000015297447236) |
+| [Q43423](https://www.wikidata.org/wiki/Q43423) | Aesop | 166 | [6000000073056397940](https://www.geni.com/people/x/6000000073056397940) |
+| [Q6197](https://www.wikidata.org/wiki/Q6197) | Horace | 166 | [6000000015255871584](https://www.geni.com/people/x/6000000015255871584) |
+| [Q37621](https://www.wikidata.org/wiki/Q37621) | Thomas Hobbes | 160 | [6000000010648830087](https://www.geni.com/people/x/6000000010648830087) |
+
+**BLOCKED-ON-USER-ACTION** — only Emma can take a Geni export. The hourly sweep
+imports them automatically once the zips land in Downloads.
+
+**2.A — yes, seed from the 829 dated 1500s+.** Of 2,123 targets one hop above
+us, 1,400 carry a birth date and 829 of those are 1500s or later (1700s 283,
+1600s 204, 1800s 192, 1500s 150). A `Descendants` export from each returns that
+parent's whole descent — the siblings of somebody we hold, and their lines — so
+a backwards step buys forwards reach. **Next step, unblocked:** write the 829
+out as a ranked seed list from `reports/wikidata-ancestors.md`, newest first, so
+Emma can work down it. The 723 undated targets are **not** in scope for this
+list and are not discarded either; they want their own question later.
+
+**2.D — measure Geni against Wikidata per property, assume nothing.** This is
+not a matching-accuracy backtest; Emma reframed it as *source reliability*.
+
+- **Population:** every CONFLICT `crosscheck` finds over the 14,177 held pairs.
+  Not a sample — whatever the data actually disagrees about.
+- **Measurement:** per property (P22 father, P25 mother, P26 spouse, P569 birth,
+  P570 death) — how often Geni is right, how often Wikidata is, how often both
+  are wrong. **No global winner is assumed**; Geni may be better at
+  relationships and worse at dates, and that is the shape the table exists to
+  reveal.
+- **Output:** Emma chose **a merge rule the code can apply**, per-property
+  precedence the union tree uses automatically. Worth stating plainly since it
+  is the more committal of the two options offered: this turns the measured
+  numbers into behaviour, so the adjudication has to be sound before the rule
+  ships. Build the table first, show it, then generate the rule from it — not
+  the rule directly.
+- **Blocked on 2.B:** `crosscheck` still constructs a `WikidataClient`. Wiring
+  it to the store reader is what makes this runnable offline.
+
+**0.00Y — decided and done.** Floor plus seed-file check; see `devlog.md`.
+
 ## Order of work — synthesized 2026-08-09
 
 Three queues had accumulated: this machine's, the cloud session's (the import
@@ -66,14 +116,13 @@ at them, so they are ordered here rather than renumbered.
 | # | item | state |
 | --- | --- | --- |
 | 1 | **3.A singleton Wikidata items carrying Geni links** | counted in full; rest is BLOCKED-ON-USER-ACTION |
-| 3 | **2.A** century breakdown of the 2,123 targets | **run 2026-08-09**; rest is NEEDS-DECISION, Emma |
+| 3 | **2.A** the 829 dated targets as export seeds | **decided 2026-08-09** — build the seed list |
 | 4 | **2.E** component walk as a command, isolates split out | overlaps 3.A — do 3.A first, it is the same discriminator |
 | 5 | **2.B** port the `client.sparql` call sites offline | **1 of 10 ported**; unblocks item 6 |
 | 6 | **2.C** build the union tree | shape settled by Emma; *edge* still undefined |
 | 7 | **0.00Z** three `FAM.HUSB` conflicts | NEEDS-INVESTIGATION |
 | 8 | **6** the stale Wikidata reports | rerun against the 151 merge |
-| 9 | **0.00Y** the known-red seed-coverage test | NEEDS-DECISION, Emma |
-| 10 | **2.D** the 10,000-person ER backtest | NEEDS-DECISION, Emma |
+| 10 | **2.D** source-reliability backtest | **decided 2026-08-09**, see below |
 | — | 0.0, 0.00A, 1, 3, 4 | BLOCKED-ON-USER-ACTION, all needing Emma at Geni |
 
 **Item 2 (the import) is done and deleted.** Merged at 149 exports, and the three
@@ -319,34 +368,6 @@ The display-name and name-property analysis is likewise unstarted;
 `genimerge profile-names` already measures the Geni side.
 
 ## Active Earlier
-
-0.00Y **`test_the_seed_items_carry_the_geni_id_they_were_selected_for` fails,
-and the assertion is what expired, not the download.** It asserts that over half
-of every stored item carries P2600. Measured 2026-08-09 over the whole store:
-**514,903 of 1,408,401 — 36.6%**.
-
-Nothing is wrong with the data. The seed set is ~516,983 QIDs
-(`out/wikidata/p2600-all.tsv`; `wikidownload.py:354` calls it "the real
-514,822") and **514,903 of them are stored**, so the seed phase is essentially
-complete. The other 893,498 items are expansion relatives, which is exactly what
-the walk exists to fetch. The floor held only while the store was
-seed-dominated, i.e. during the pilot, and the test's own comment already
-concedes "Expansion items legitimately have none, so this is a floor, not a
-rule".
-
-**The decision is what should be asserted instead**, and it is Emma's because
-the test encodes her requirement. The obvious candidate — P2600 count against
-the seed-file count, rather than against the store total — has a catch worth
-knowing before choosing: `out/` is gitignored, so `p2600-all.tsv` is absent on a
-fresh checkout and the test would have to skip there, which is a weaker guard
-than it looks. A plain absolute floor (say 500,000) is self-contained but goes
-stale in the other direction.
-
-Do **not** just lower `0.5` to a number that passes today. That retires the
-guard without replacing it, and the guard is the one that would catch the seed
-map drifting.
-
-**NEEDS-DECISION** — Emma; what the seed-coverage invariant should be.
 
 0.00Z **Three `FAM.HUSB` conflicts in the 145-export merge — decide them on
 evidence, not on filename order.** The first structural disagreements the merge
