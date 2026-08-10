@@ -105,29 +105,6 @@ Two results worth carrying forward, because they change what other items mean:
    therefore an *export target list*, not an authoring list — which is the
    opposite of how they first read.
 
-## Rebuild `p2600-all.tsv` offline, then the unreached page — NEXT
-
-The unreached page is currently the **145-export** answer (504,095 pairs). The
-tree is now 290,419 people, so the list is stale by two merges' worth. Updating
-it needs the P2600 pair set, and `out/wikidata/p2600-all.tsv` was lost with
-`out/`.
-
-**Do not re-query Wikidata for it.** Every P2600 claim is already in
-`wikidata/items/`. The step is a single offline pass over the store emitting
-`qid<TAB>geni_id`, which is the same shape the SPARQL cache had. Then:
-
-1. `genimerge wikidata-index` (~6 min) if the store index is wanted for later
-   lookups — it was in `out/` and is also gone.
-2. Reconstruct `out/wikidata/p2600-all.tsv` from the store.
-3. Diff against the 290,419-person tree → `reports/wikidata-unreached.tsv`.
-4. `python scripts/build-unreached-page.py`, then `node --check
-   out/_check_unreached.js` before declaring it good.
-5. Commit both the TSV and the HTML — both are tracked now.
-
-Keep the 28 malformed P2600 values going to `reports/wikidata-p2600-malformed.tsv`
-rather than being parsed; recovering an ID from a URL is the fuzzy matching this
-repo refuses everywhere else.
-
 ## Import the two new exports in Downloads (2026-08-09) — DONE, superseded below
 
 **Two `export-geni*.zip` files are sitting in the Downloads folder and are not

@@ -4595,3 +4595,47 @@ worth being able to see.
 Measuring that overlap cost nothing once the sample was open. Asserting it would
 have cost the next several days.
 
+
+## 2026-08-09 — the re-clone, 149 exports, and the unreached page made rebuildable
+
+The repo was re-cloned into place at 16:37. Everything gitignored under `out/`
+went with it, and one of the casualties was the page Emma actually works from:
+`out/wikidata-unreached.html`, half a million rows telling her which Geni
+profiles Wikidata names that our tree has never reached. Its own report said
+*"gitignored — regenerate rather than commit"* while nothing in the repo could
+regenerate it. That is the defect, not the clone.
+
+Fixed so it cannot recur: `scripts/build-unreached-page.py` rebuilds the page
+from the tracked TSV in about a second, `scripts/build-unreached-tsv.py`
+rebuilds the TSV from the store and the merge, and the HTML is tracked — `out/`
+stays ignored otherwise, with a negation for the pages Emma opens by hand.
+
+**Lost, not deferred:** `out/merged-145.ged` can no longer be produced. Item 2
+step 4 wanted the 145-export tree preserved so 0.00A could measure a batch
+against it. The file never existed and the tree is gone; the earliest baseline
+now obtainable is the 149-export one.
+
+**Imports.** Seven zips in Downloads, five repeats by content. Two new Forest
+exports — `wife of Samuel Standen` (4084) and `wife of Baruch Jafe` (4088) —
+both above the cap, so `GENI_EXPORT_CAP` 4080 → 4088. Within one afternoon the
+value read 4080, 4084, 4088 from three different seeds, so the step-by-four is
+not an artefact of re-exporting one person.
+
+**Merge at 149:** 290,419 INDI / 145,299 FAM, up from 275,437. Both new exports
+landed as isolated components (4088 and 4084 touching nothing else we hold), so
+the tree is four components: 282,214 / 4,088 / 4,084 / 33. Two of the three
+afternoon exports bought territory rather than depth.
+
+**Unreached, rebuilt offline:** 504,480 unreached, 13,370 held. The pair list
+came from the store rather than a fresh SPARQL query — the cache was gone and
+re-querying is forbidden, but every P2600 claim was already downloaded. Both
+counts rose, for different reasons, which the report separates: +510 held
+because the tree grew, and a larger pair list because a store snapshot is a
+later instant of Wikidata than the old live query.
+
+One silent bug worth remembering: `write_p2600_map` writes `geni_id<TAB>qid`,
+the opposite column order to this report. Reading it by position classified all
+517,878 pairs as malformed and wrote a valid, empty, entirely wrong report
+without erroring. It reads the header by name now. The 28-malformed count
+matching the previous run is the thing that says the classification is right —
+a total that reproduces is worth more than a total that looks plausible.
