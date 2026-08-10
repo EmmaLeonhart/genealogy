@@ -127,8 +127,20 @@ ADD* has the rule; `reports/model.md` has the field-by-field table.
 1. **Names — `reports/names-spec.md`.** The largest gap: 7,215 addable `P735`
    and 4,477 `P734`. Labels: English is 96.5% done (501 missing), **Japanese is
    the work at 10,161 missing**, and **4,500 of those already carry a CJK string
-   in Geni with an empty `ja` slot** — addable with no language inference, only a
-   codepoint range.
+   in Geni with an empty `ja` slot**.
+
+   **The "addable with no language inference, only a codepoint range" reading is
+   refuted — `reports/ja-labels.md`, 2026-08-10.** The 5,383/4,500 counts
+   reproduce exactly, but the CJK strings are not usable labels as they stand.
+   For the Chinese profiles that fill the slice, Geni puts the **family name in
+   `_MARNM`** (99.7% of the 4,500 carry a CJK `_MARNM`), a **place / ancestral
+   seat 郡望 in `SURN`** (88% carry a ≥3-char CJK `SURN`), personal + courtesy
+   name in `GIVN`, and writes surname-first — so the display join is reversed,
+   place-padded, and missing the family name (`白 孔` for Kong Bai 孔白). Only 105
+   of the 4,500 carry a single CJK form, and even those decompose wrong. A
+   **candidate assembly rule** (`_MARNM` + first `GIVN` token, surname-first) is
+   shown in the report next to raw slots — **NEEDS-DECISION, Emma**; nothing is
+   emitted, because a batch of wrong labels is worse than none.
 2. **Places.** 3,502 `P19` + 2,737 `P20` + 1,560 `P119` addable. Start from
    `ADDR/CTRY`+`STAE`+`CITY`, **not** from parsing `PLAC` — the structured block
    is twice as well filled. Blocked on place items being absent from the store;
@@ -141,7 +153,12 @@ ADD* has the rule; `reports/model.md` has the field-by-field table.
 **Open and needing Emma**, all from `reports/names-spec.md`:
 
 - **What `_MARNM` is.** 55% of all name records carry it, non-standard, undefined
-  by the export. The second most common name subtag in the corpus.
+  by the export. The second most common name subtag in the corpus. **Partly
+  answered for Chinese records — `reports/ja-labels.md`, 2026-08-10:** there it
+  holds the native-script **family name** (孔, 曾, 高), not a married name and not
+  a romanisation. That is one meaning in one sub-population; the Norwegian tree's
+  `_MARNM` is a married surname (`profilenames` says so), so the tag genuinely
+  carries different things in different places and still is not one field.
 - **Which `NAME` record becomes the label** when several share a script.
 - **Whether `NSFX` belongs in a label** — Geni's `Henry III King of England`
   against Wikidata's own `Henry III of England`.

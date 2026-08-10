@@ -5584,3 +5584,44 @@ no inference beyond a codepoint range.
 URI Too Long` at 30 cases' worth of QIDs. Chunking would have meant several
 requests, which is exactly what Emma said to avoid; the body has no such limit.
 590 QIDs now resolve in one query.
+
+## 2026-08-10 — the Japanese-label slice, made reproducible and then refuted
+
+`reports/names-spec.md` named a tractable first slice: 4,500 linked people with a
+CJK string in Geni and an empty `ja` label on Wikidata, *"addable without
+inferring anything… only a codepoint range."* That count came from an ad-hoc
+pass with no committed code. `scripts/build-ja-labels.py` makes it reproducible —
+and the run refutes the claim it was built on.
+
+The counts reproduce exactly: 14,167 linked, **5,383** with a CJK `NAME`, 883
+already labelled, **4,500** addable. But the CJK strings are not usable labels as
+they stand. For the Chinese profiles that fill the slice, Geni stores the name
+where a naive reader will not look:
+
+- the **family name** (孔, 曾, 高) is in **`_MARNM`** — 99.7% of the 4,500 carry a
+  CJK `_MARNM`;
+- the `SURN` slot holds a **place of origin / ancestral seat** (郡望) — 88% carry
+  a ≥3-character CJK `SURN` like `渤海蓨縣`, `湖南湘鄉`;
+- `GIVN` holds the personal name and a courtesy name (`紀鴻 粟誠`);
+- the order is surname-first.
+
+So the slash-stripped display join is wrong three ways over — reversed,
+place-padded, and missing the family name: `白 孔` for Kong Bai (孔白), `紀鴻 粟誠
+湖南湘鄉` for Zeng Jihong (曾紀鴻). Only 105 of the 4,500 carry a single CJK form,
+and even those decompose the wrong way. Verified against the raw GEDCOM before
+writing it up.
+
+**No QuickStatements batch is emitted** — there is no settled label form, and a
+batch of demonstrably-wrong labels is worse than none. The report carries a
+*candidate* assembly rule (`_MARNM` + first `GIVN` token, surname-first: 孔白,
+曾紀鴻, 高) shown next to the raw slots so it can be judged, plus a decomposition
+sample and the full per-person data in `reports/ja-labels.tsv`. It is
+**NEEDS-DECISION, Emma** — case-by-case material, not a decision.
+
+Side effects of the same session: `out/merged.ged`, the store index and
+`out/wikidata/p2600-all.tsv` were all regenerated (lost in the 08-09 re-clone),
+so `reports/merge.md` updates to the current 151-export corpus — 298,591
+individuals, 149,613 families, **four components** (290,386 / 4,088 / 4,084 / 33),
+205 conflicts. The finding also partly answers the standing "what is `_MARNM`"
+question: in Chinese records it is the family name, which is a third meaning
+beside the Norwegian married-surname and the CJK-romanisation readings.

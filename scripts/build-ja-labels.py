@@ -1,38 +1,47 @@
-"""Propose Japanese (`ja`) Wikidata labels from Geni CJK name records.
+"""What it would take to add Japanese (`ja`) Wikidata labels from Geni CJK names.
 
-This makes reproducible the measurement `reports/names-spec.md` states from an
-ad-hoc pass — of the linked people, how many carry a CJK Geni ``NAME`` and lack
-a ``ja`` label on Wikidata — and turns it into a candidate list.
+`reports/names-spec.md` names a tractable slice — *"4,500 already carry a CJK
+string in Geni with an empty `ja` slot… addable with no language inference, only
+a codepoint range."* This script makes that count reproducible and then tests
+the "no inference" claim against the records. **The claim does not hold**, and
+the finding is why.
 
-**The rule is Emma's, 2026-08-10, and this script does not exceed it.** Labels
-are proposed only for people carrying **both** a Geni ID and a Wikidata item; an
-existing label is never touched; nothing is transliterated. A ``ja`` label is
-proposed only where the slot is **empty** and the string is **already present in
-CJK** in the Geni record — no language inference beyond "does this contain a CJK
-codepoint", which is a property of the bytes.
+**The rule is Emma's, 2026-08-10:** labels only for people carrying both a Geni
+ID and a Wikidata item; never correct an existing label; never transliterate; a
+`ja` label only where Wikidata's slot is empty.
 
-**Ambiguity is shown, never resolved.** Per the spec's step 3, a person whose
-CJK ``NAME`` records disagree (more than one distinct CJK string) is listed for
-Emma rather than assigned a label here.
+**The finding.** For the Chinese profiles that make up this slice, Geni does not
+put the name where a naive reader expects:
 
-**One decision is still open and this script flags rather than hides it:** what
-string forms the label. Geni writes ``誉田別命 /応神天皇/`` — given ``誉田別命`` and
-surname ``応神天皇`` (a reign name, not a family name), slashes and all. The raw
-value, the slash-stripped display join, and either slot alone are all different
-labels, and nothing in the data ranks them. The QuickStatements batch uses the
-display join as a first cut and says so; the report foregrounds the choice.
+* the **family name** (孔, 曾, 高) sits in **`_MARNM`**, not `SURN`;
+* the `SURN` slot holds a **place of origin / ancestral seat** (郡望) —
+  `渤海蓨縣`, `湖南湘鄉`;
+* `GIVN` holds the **personal name plus a courtesy name** (`紀鴻 粟誠`);
+* and the written order is **surname-first**, so a `given + surname` join is
+  also reversed.
 
-Terminal output only, never sent to Wikidata:
+So the slash-stripped display join — `白 孔` for Kong Bai (孔白), `紀鴻 粟誠
+湖南湘鄉` for Zeng Jihong (曾紀鴻) — is a wrong label three ways over: reversed,
+padded with a place, and missing the family name that is off in `_MARNM`.
+Measured: of the people with a CJK `NAME`, **98% carry a CJK `_MARNM`** and
+**85% carry a ≥3-character CJK `SURN`**. The "codepoint range is all you need"
+path does not exist; forming the label needs a rule, and the rule is Emma's.
 
-* ``reports/ja-labels.md``          — the measurement and the split, with samples
-* ``reports/ja-labels.tsv``         — every candidate, both buckets, full detail
-* ``out/wikidata/ja-labels.qs``     — QuickStatements for the unambiguous subset
+**This script therefore emits no QuickStatements.** There is no settled label
+form to emit, and a batch of demonstrably-wrong labels is worse than none. It
+writes the measurement, the decomposition, and a *candidate* assembly rule shown
+next to the raw slots so its output can be judged — for review, not for sending.
+
+Outputs (terminal, nothing leaves the machine):
+
+* ``reports/ja-labels.md``   — the count, the finding, the decision
+* ``reports/ja-labels.tsv``  — every addable person, raw slots and all forms
 
 Inputs, all offline:
 
-* ``out/merged.ged``                — the canonical Geni tree (``genimerge merge``)
-* ``out/wikidata/p2600-all.tsv``    — qid<TAB>geni_id (``scripts/build-p2600-all.py``)
-* ``wikidata/items/`` + its index   — the store (``genimerge wikidata-index``)
+* ``out/merged.ged``               — the canonical Geni tree (``genimerge merge``)
+* ``out/wikidata/p2600-all.tsv``   — qid<TAB>geni_id (``scripts/build-p2600-all.py``)
+* ``wikidata/items/`` + its index  — the store (``genimerge wikidata-index``)
 """
 
 from __future__ import annotations
@@ -54,7 +63,6 @@ STORE = ROOT / "wikidata" / "items"
 
 REPORT = ROOT / "reports" / "ja-labels.md"
 TSV = ROOT / "reports" / "ja-labels.tsv"
-QS = ROOT / "out" / "wikidata" / "ja-labels.qs"
 
 # The CJK codepoint range, taken from the one place that defines it so this
 # stays consistent with `profilenames`' script classification.
@@ -62,28 +70,41 @@ _CJK_BODY = dict(profilenames.SCRIPT_RANGES)["cjk"]
 CJK = re.compile(f"[{_CJK_BODY}]")
 
 
-def _cjk_strings(name: model.Name) -> list[str]:
-    """The CJK-bearing forms of one NAME record, de-duplicated, order kept.
+def _has_cjk(text: str | None) -> bool:
+    return bool(text and CJK.search(text))
 
-    Checks the whole value and the given/surname slots. ``_MARNM`` is skipped:
-    in CJK records it is the *romanised* slot, so it carries Latin, not the
-    native string this is looking for.
+
+def _bears_cjk(name: model.Name) -> bool:
+    """A record *bears CJK* if its value / given / surname slot has a CJK char."""
+    return any(_has_cjk(t) for t in (name.full, name.given, name.surname))
+
+
+def _cjk_form(name: model.Name) -> str:
+    """The slash-stripped display join for one CJK record — one string, not three.
+
+    Counting ``full``, ``given`` and ``surname`` separately made every record
+    look self-contradictory (`誉田別命 /応神天皇/` splitting into three "distinct"
+    forms), which is a decomposition of one name, not a disagreement.
     """
-    out: list[str] = []
-    for text in (name.full, name.given, name.surname):
-        text = (text or "").strip()
-        if text and CJK.search(text) and text not in out:
-            out.append(text)
-    return out
+    return name.display.strip() or name.full.replace("/", "").strip()
 
 
-def _display_label(name: model.Name) -> str:
-    """A first-cut ``ja`` label: the slash-stripped display join.
+def _candidate_label(name: model.Name) -> str:
+    """A *candidate* ja label under the finding's rule — for review, not sending.
 
-    This is *a* reading of the record, not the reading — see the module
-    docstring. Reported and emitted so the shape exists; the choice is Emma's.
+    Rule under test: the family name is in ``_MARNM``, the personal name is the
+    first ``GIVN`` token, and the order is surname-first with no separator. So
+    Kong Bai → 孔白, Zeng Jihong → 曾紀鴻, Lady Gao → 高. Shown beside the raw
+    slots in the report so Emma can judge it; never applied in bulk here.
     """
-    return name.display.strip()
+    family = (name.married or "").strip()
+    if not _has_cjk(family):
+        return ""
+    given_tokens = (name.given or "").split()
+    personal = given_tokens[0] if given_tokens else ""
+    if not _has_cjk(personal):
+        return family  # place-of-origin only in GIVN/SURN; the family name alone
+    return f"{family}{personal}"
 
 
 def load_geni_to_qids(path: Path) -> dict[str, list[str]]:
@@ -115,115 +136,112 @@ def main() -> int:
     tree = model.build_tree(gedcom.stream_file(MERGED))
     geni_to_qids = load_geni_to_qids(P2600_ALL)
 
-    # The linked population: our people who carry a Wikidata item via P2600.
     linked_geni = [g for g in tree.people if g in geni_to_qids]
     all_qids = sorted({q for g in linked_geni for q in geni_to_qids[g]})
 
-    # Which of those items already carry a `ja` label (and `en`, for the report).
+    # Which items already carry a `ja` label (and `en`, for the report).
     ja_present: set[str] = set()
     en_label: dict[str, str] = {}
     with wikistore.StoreReader(STORE, INDEX) as reader:
         for qid, entity in reader.entities(all_qids).items():
             labels = entity.get("labels", {})
-            if "ja" in labels and labels["ja"].get("value", "").strip():
+            if labels.get("ja", {}).get("value", "").strip():
                 ja_present.add(qid)
-            en = labels.get("en", {}).get("value", "")
-            if en:
-                en_label[qid] = en
+            if labels.get("en", {}).get("value", ""):
+                en_label[qid] = labels["en"]["value"]
 
-    # Rows. One per linked person that carries at least one CJK NAME.
-    proposals: list[dict] = []  # exactly one distinct CJK string, no `ja` yet
-    ambiguous: list[dict] = []  # >1 distinct CJK string, no `ja` yet
-    already_ja = 0              # has a CJK NAME but Wikidata already has `ja`
     with_cjk = 0
+    already_ja = 0
+    rows: list[dict] = []             # the addable people (no `ja` yet)
+    form_hist: dict[int, int] = defaultdict(int)
+    cjk_marnm = 0                     # addable people with a CJK `_MARNM`
+    surn_place = 0                    # addable people with a >=3-char CJK `SURN`
 
     for geni_id in linked_geni:
         person = tree.people[geni_id]
-        qids = geni_to_qids[geni_id]
-
-        cjk_records = [n for n in person.names if _cjk_strings(n)]
+        cjk_records = [n for n in person.names if _bears_cjk(n)]
         if not cjk_records:
             continue
         with_cjk += 1
 
-        # A person is "already labelled" if any of their items carries `ja`.
+        qids = geni_to_qids[geni_id]
         if any(q in ja_present for q in qids):
             already_ja += 1
             continue
 
-        distinct = []
+        forms: list[str] = []
         for n in cjk_records:
-            for s in _cjk_strings(n):
-                if s not in distinct:
-                    distinct.append(s)
+            f = _cjk_form(n)
+            if f and f not in forms:
+                forms.append(f)
+        form_hist[len(forms)] += 1
 
-        en = next((en_label[q] for q in qids if q in en_label), "")
-        row = {
+        has_marnm = any(_has_cjk(n.married) for n in cjk_records)
+        has_surn3 = any(
+            sum(1 for c in (n.surname or "") if CJK.search(c)) >= 3
+            for n in cjk_records
+        )
+        cjk_marnm += has_marnm
+        surn_place += has_surn3
+
+        rows.append({
             "geni_id": geni_id,
             "qids": qids,
-            "en": en,
-            "n_cjk_records": len(cjk_records),
-            "distinct": distinct,
-            "label": _display_label(cjk_records[0]),
+            "en": next((en_label[q] for q in qids if q in en_label), ""),
+            "n_forms": len(forms),
+            "forms": forms,
+            "records": [
+                (n.given, n.surname, n.married, n.full) for n in cjk_records
+            ],
+            "candidate": _candidate_label(cjk_records[0]),
             "double": len(qids) > 1,
-        }
-        # "Unambiguous" = one distinct CJK string across all CJK records, and the
-        # person maps to a single item. Everything else is Emma's to look at.
-        if len(distinct) == 1 and len(qids) == 1:
-            proposals.append(row)
-        else:
-            ambiguous.append(row)
+        })
 
-    _write_tsv(proposals, ambiguous)
-    n_qs = _write_qs(proposals)
-    _write_report(
-        len(linked_geni), with_cjk, already_ja, proposals, ambiguous, n_qs
-    )
+    _write_tsv(rows)
+    _write_report(len(linked_geni), with_cjk, already_ja, rows,
+                  form_hist, cjk_marnm, surn_place)
 
+    addable = len(rows)
     print(
         f"linked: {len(linked_geni)}  with CJK NAME: {with_cjk}  "
-        f"already ja: {already_ja}  proposals: {len(proposals)}  "
-        f"ambiguous: {len(ambiguous)}  qs statements: {n_qs}"
+        f"already ja: {already_ja}  addable: {addable}"
     )
+    print(f"  CJK _MARNM (family name): {cjk_marnm}  "
+          f">=3-char CJK SURN (place): {surn_place}")
+    print("  distinct CJK forms: " +
+          ", ".join(f"{k}:{form_hist[k]}" for k in sorted(form_hist)))
     return 0
 
 
-def _write_tsv(proposals: list[dict], ambiguous: list[dict]) -> None:
+def _write_tsv(rows: list[dict]) -> None:
     TSV.parent.mkdir(parents=True, exist_ok=True)
     with TSV.open("w", encoding="utf-8") as fh:
-        fh.write("bucket\tgeni_id\tqid\ten_label\tn_cjk_records\tproposed_label\tdistinct_cjk\n")
-        for bucket, rows in (("propose", proposals), ("ambiguous", ambiguous)):
-            for r in rows:
-                fh.write(
-                    f"{bucket}\t{r['geni_id']}\t{'|'.join(r['qids'])}\t{r['en']}\t"
-                    f"{r['n_cjk_records']}\t{r['label']}\t{' | '.join(r['distinct'])}\n"
-                )
-
-
-def _write_qs(proposals: list[dict]) -> int:
-    QS.parent.mkdir(parents=True, exist_ok=True)
-    n = 0
-    with QS.open("w", encoding="utf-8") as fh:
         fh.write(
-            "# ja labels proposed from Geni CJK NAME records. Provisional label\n"
-            "# form: the slash-stripped display join. See reports/ja-labels.md -\n"
-            "# the label string is Emma's open decision. Nothing here is sent.\n"
+            "geni_id\tqid\ten_label\tn_cjk_forms\tcandidate_label\t"
+            "given|surname|_MARNM per record\tdisplay_join_forms\n"
         )
-        for r in proposals:
-            label = r["label"].replace('"', '\\"')
-            fh.write(f'{r["qids"][0]}\tLja\t"{label}"\n')
-            n += 1
-    return n
+        for r in rows:
+            recs = " ;; ".join(
+                f"{g}|{s}|{m}" for (g, s, m, _full) in r["records"]
+            )
+            fh.write(
+                f"{r['geni_id']}\t{'|'.join(r['qids'])}\t{r['en']}\t"
+                f"{r['n_forms']}\t{r['candidate']}\t{recs}\t"
+                f"{' | '.join(r['forms'])}\n"
+            )
 
 
-def _sample(rows: list[dict], k: int = 15) -> str:
-    lines = ["| geni_id | qid | en label | CJK NAME record(s) | proposed `ja` |",
-             "| --- | --- | --- | --- | --- |"]
+def _decomp_sample(rows: list[dict], k: int = 12) -> str:
+    lines = [
+        "| geni_id | qid | en label | GIVN | SURN | `_MARNM` | display join | candidate |",
+        "| --- | --- | --- | --- | --- | --- | --- | --- |",
+    ]
     for r in rows[:k]:
-        distinct = " · ".join(r["distinct"])
+        g, s, m, _full = r["records"][0]
         lines.append(
             f"| {r['geni_id']} | {'|'.join(r['qids'])} | {r['en'] or '—'} | "
-            f"{distinct} | {r['label']} |"
+            f"{g or '—'} | {s or '—'} | {m or '—'} | {r['forms'][0]} | "
+            f"{r['candidate'] or '—'} |"
         )
     return "\n".join(lines)
 
@@ -232,70 +250,101 @@ def _write_report(
     linked: int,
     with_cjk: int,
     already_ja: int,
-    proposals: list[dict],
-    ambiguous: list[dict],
-    n_qs: int,
+    rows: list[dict],
+    form_hist: dict[int, int],
+    cjk_marnm: int,
+    surn_place: int,
 ) -> None:
-    doubles = sum(1 for r in ambiguous if r["double"])
+    addable = len(rows)
+    single = form_hist.get(1, 0)
+    hist_rows = "\n".join(
+        f"| {k} distinct CJK form{'s' if k != 1 else ''} | {form_hist[k]:,} |"
+        for k in sorted(form_hist)
+    )
+
+    def pct(n: int) -> str:
+        return f"{100 * n / addable:.1f}%" if addable else "—"
+
     REPORT.write_text(
-        f"""# Japanese labels proposable from Geni CJK names
+        f"""# Japanese labels from Geni CJK names — what it would actually take
 
-Generated by `scripts/build-ja-labels.py`, offline. This is the reproducible
-form of the count `reports/names-spec.md` gave from an ad-hoc pass, and the
-candidate list that follows from it.
+Generated by `scripts/build-ja-labels.py`, offline. The reproducible form of the
+slice `reports/names-spec.md` named, and a test of its central claim.
 
-**The rule, Emma 2026-08-10:** labels only for people carrying both a Geni ID
-and a Wikidata item; never correct an existing label; never transliterate. A
-`ja` label is proposed only where Wikidata's slot is **empty** and the Geni
-record **already holds a CJK string** — no language inference beyond a codepoint
-range.
+**Emma's rule, 2026-08-10:** labels only for people carrying both a Geni ID and a
+Wikidata item; never correct an existing label; never transliterate; a `ja` label
+only where Wikidata's slot is empty.
 
-## The count
+## The count — reproduces the spec exactly
 
 | | people |
 | --- | ---: |
 | linked (both IDs) | {linked:,} |
 | …with a CJK `NAME` record | **{with_cjk:,}** |
 | …of those, Wikidata already has a `ja` label | {already_ja:,} |
-| …**no `ja` label — the addable slice** | **{len(proposals) + len(ambiguous):,}** |
-| of that slice: one distinct CJK string (proposable) | {len(proposals):,} |
-| of that slice: several distinct CJK strings (for Emma) | {len(ambiguous):,} |
+| …**no `ja` label — the addable slice** | **{addable:,}** |
 
-`reports/names-spec.md` gave 5,383 with a CJK `NAME` and 4,500 addable from an
-earlier tree; this run measures the current merged tree. The split into
-proposable vs. ambiguous is new here — the spec's step 3 (*"if more than one, do
-not choose"*) is a real bucket, not a footnote.
+`reports/names-spec.md` gave 5,383 and 4,500; this run reproduces both, so the
+number is confirmed. What it means is the problem.
 
-## The open decision, before any of these ships — NEEDS-DECISION, Emma
+## The finding — "only a codepoint range" does not hold
 
-**What string forms the `ja` label.** Geni writes e.g. `誉田別命 /応神天皇/`: given
-`誉田別命`, surname `応神天皇`, which is a reign name rather than a family name. The
-raw value, the slash-stripped join (`誉田別命 応神天皇`), and either slot alone are
-all different labels, and nothing in the data ranks them. `out/wikidata/ja-labels.qs`
-uses the **slash-stripped display join** as a first cut so the batch exists in a
-runnable shape — it is not a decision that the join is right.
+The spec calls the slice *"addable without inferring anything… only a codepoint
+range."* Against the records that is not true. For the Chinese profiles that fill
+this slice, Geni stores the name where a naive reader will not look:
 
-## Proposable — one distinct CJK string ({len(proposals):,})
+- the **family name** (孔, 曾, 高) is in **`_MARNM`**, not `SURN`;
+- the `SURN` slot holds a **place of origin / ancestral seat** (郡望) —
+  `渤海蓨縣`, `湖南湘鄉`;
+- `GIVN` holds the **personal name and a courtesy name** (`紀鴻 粟誠`);
+- the written order is **surname-first**, so a `given + surname` join is reversed.
 
-{_sample(proposals)}
+Measured over the {addable:,} addable people:
 
-…{max(0, len(proposals) - 15):,} more in `reports/ja-labels.tsv`.
+| | people | share |
+| --- | ---: | ---: |
+| carry a **CJK `_MARNM`** (the real family name) | {cjk_marnm:,} | **{pct(cjk_marnm)}** |
+| carry a **≥3-char CJK `SURN`** (a place, not a surname) | {surn_place:,} | **{pct(surn_place)}** |
 
-## Ambiguous — shown, not resolved ({len(ambiguous):,})
+So the slash-stripped display join is a wrong label three ways over — reversed,
+padded with a place, and missing the family name. `白 孔` for Kong Bai (孔白);
+`紀鴻 粟誠 湖南湘鄉` for Zeng Jihong (曾紀鴻).
 
-{doubles:,} of these are people whose Geni ID maps to more than one Wikidata
-item (the `doubles` case), where "does Wikidata have a `ja` label" is itself
-per-item. The rest carry more than one distinct CJK string across their `NAME`
-records.
+And the forms disagree *within* a person too — the "romanised" record commonly
+embeds the Han characters again, plus generation markers (`86, 53G`; `139,25世`):
 
-{_sample(ambiguous)}
+| | people |
+| --- | ---: |
+{hist_rows}
 
-…full list in `reports/ja-labels.tsv`.
+Only **{single:,}** carry a single CJK form, and even those decompose the wrong
+way — see the sample below.
+
+## A candidate rule, shown for judging — NEEDS-DECISION, Emma
+
+Under the finding, one rule fits the records: **label = `_MARNM` (family name) +
+first `GIVN` token (personal name), surname-first, no separator.** Its output is
+the `candidate` column below. It is **not applied and no batch is written** — a
+QuickStatements file of labels this uncertain would be worse than none. This is
+the case-by-case material for a decision, not the decision.
+
+Open questions the rule does not settle: the courtesy name (`粟誠`) and place
+(`湖南湘鄉`) are dropped — right for a label, but confirm; a person with only a
+place in `SURN`/`GIVN` and a family name in `_MARNM` (Lady Gao → `高`) gets a
+one-character label; and this rule is Chinese-shaped — whether the same profiles'
+Japanese and Korean records behave the same way is unmeasured here.
+
+## Decomposition sample — raw slots, nothing collapsed
+
+{_decomp_sample(rows)}
+
+…every addable person, with all raw slots, is in `reports/ja-labels.tsv`.
 
 ## What this deliberately does not do
 
-Correct an existing label · transliterate · pick between name variants · touch
-`P735`/`P734` name items · send anything to Wikidata.
+Correct an existing label · transliterate · apply the candidate rule in bulk ·
+emit a QuickStatements batch · touch `P735`/`P734` name items · send anything to
+Wikidata.
 """,
         encoding="utf-8",
     )
