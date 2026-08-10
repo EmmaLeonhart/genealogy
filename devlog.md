@@ -4993,3 +4993,45 @@ Two tests now do:
   names both the missing file and the script that builds it.
 
 `tests/test_cli_wikidata.py`: 20 passed.
+
+## 2026-08-10 — the three `FAM.HUSB` conflicts are two duplicates, not two disagreements
+
+Queue item 0.00Z, step 1: look at the people and say whether these are two
+records of one man or two men. `reports/husb-conflicts.md`. Three conflict rows
+over two families — `@F6000000179131721834@` appears twice with the winners
+reversed — and **both families are one man recorded twice**.
+
+- **Emperor Ōjin.** `Ōjin /Tenno/` against `誉田別命 /応神天皇/` (also
+  `Ojin-tenno (Homutawake)`). 応神天皇 *is* Ōjin-tennō and 誉田別命 is his
+  personal name; birth year 201 on both. Emma predicted this one in `queue.md`
+  0.2 — *"there were duplicates of Emperor Ojin and some other people"*.
+- **Wikramawardhana**, seventh ruler of Majapahit, twice — both records carry
+  *Bhre Hyang Wisesa Aji Wikrama* inside the name string.
+
+**The discriminator is the shared `FAMC`, and that is the transferable part.**
+In both pairs the two profiles are children of the *same family record*. Two men
+who happen to share a name do not share a parent record. Names are where these
+records differ most — different scripts, different word order, different
+epithets — and parentage is where they agree exactly. Any entity resolution
+built here should weight the structure over the string, and this is the first
+real case saying so with evidence rather than by argument.
+
+**The conflict list finds duplicates Wikidata cannot.** None of the four
+profiles appears in `reports/wikidata-doubles.md`, which detects duplicates by
+one Wikidata item claiming two Geni IDs. Wikidata does not link these, so that
+method is blind to them; our own merge surfaced them structurally from two
+exports disagreeing about one family. The conflict list is worth mining, not
+just resolving.
+
+**One live defect, reported rather than fixed.** For Ōjin the merge keeps the
+*thin* record — a birth year and nothing else — because filename order beat the
+one carrying the death date, the occupation, five further spouse families and
+the images. Nothing is lost from the file, but the family points at the sparser
+duplicate. For Wikramawardhana the richer record won, by the same accident. Two
+conflicts resolved opposite ways for reasons unconnected to the evidence.
+
+Step 2 — whether `merge_files` should sort sources by `HEAD` date — stays
+**NEEDS-DECISION, Emma**. It would make the winner deterministic, but it would
+not have produced a better answer here: the right resolution is "one person,
+merge them on Geni", and date-sorting still picks one of two duplicates. The
+Geni-side merges are **BLOCKED-ON-USER-ACTION**.
