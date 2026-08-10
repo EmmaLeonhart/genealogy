@@ -11,17 +11,31 @@ no script that could regenerate it; a fresh clone then took the page with it.
 ids and run exports that will contain them and resolve these things."* Each row
 links to the Wikidata item and to the Geni profile to export from.
 
-| | count |
-| --- | ---: |
-| P2600 pairs on Wikidata | 516,983 |
-| …numeric, i.e. joinable | 516,955 |
-| …malformed, kept separately | 28 |
-| **pairs whose Geni ID is not in our tree** | **504,095** |
-| pairs we do hold | 12,860 |
+| | count | at 145 exports |
+| --- | ---: | ---: |
+| P2600 pairs | 517,878 | 516,983 |
+| …numeric, i.e. joinable | 517,850 | 516,955 |
+| …malformed, kept separately | 28 | 28 |
+| **pairs whose Geni ID is not in our tree** | **504,480** | 504,095 |
+| pairs we do hold | 13,370 | 12,860 |
 
-**Why only ~12,850 join.** Not because the two sites disagree about who exists:
-because 145 exports have reached about 2.5% of the Geni population Wikidata
+**Why only ~13,000 join.** Not because the two sites disagree about who exists:
+because 149 exports have reached about 2.6% of the Geni population Wikidata
 already points at.
+
+**Both columns went up, for different reasons.** We hold 510 more of them than
+at 145 exports — that is what the two new Forest exports and the Wife of John
+Harvey pair bought on this axis. The *unreached* count also rose, because the
+pair list itself is 895 larger: the 145-export figure came from a live SPARQL
+query and this one is counted from the downloaded store, which is a later
+snapshot. The two numbers are not measuring the same instant of Wikidata and
+the drift is ordinary.
+
+**Where the pair list comes from now.** `out/wikidata/p2600-all.tsv`, written
+from `wikidata/items/` by `genimerge wikidata-index --map`. It used to be a
+cached SPARQL result; that cache was lost with `out/` on 2026-08-09 and was
+rebuilt offline rather than re-queried. `scripts/build-unreached-tsv.py` does
+the diff against `out/merged.ged`.
 
 ## Two things measured while building this, both worth knowing
 
