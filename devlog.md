@@ -5584,3 +5584,49 @@ no inference beyond a codepoint range.
 URI Too Long` at 30 cases' worth of QIDs. Chunking would have meant several
 requests, which is exactly what Emma said to avoid; the body has no such limit.
 590 QIDs now resolve in one query.
+
+## 2026-08-11 — `_MARNM` answered, and what the corpus does with the slot
+
+Emma: **"_MARNM is married name."** That closes the second of the four questions
+`reports/names-spec.md` was blocked on, and it is right about the tag — it is the
+PAF/Ancestral File convention, and it holds on every female record checkable
+against history. Judith `/de France/` carries `_MARNM Flandre` and married into
+Flanders; Hildegarde `/of Flanders/` carries `Van Holland`; Adelheid
+`/of Saxony/` carries `Przemyślid`. `SURN` is the maiden name, `_MARNM` the
+married one.
+
+Measured before writing it into the spec, because 55% of all name records
+carrying a married name would mean the corpus is mostly married women. It is not.
+Of the 244,392 records with the tag:
+
+| `_MARNM` against `SURN` | records | | sex |
+| --- | ---: | ---: | --- |
+| identical | 75,952 | 31% | M 62% / F 38% |
+| `SURN` empty, `_MARNM` the only surname | 106,218 | 43% | M 72% / F 28% |
+| differs | 62,222 | 25% | M 53% / F 47% |
+
+So the field can neither be dropped nor trusted. Dropping it loses the only
+surname on 106,218 records. Reading it as marriage misreads 53% of the differing
+group, whose male cases are spelling variants (`Osborn`/`Osborne`), Norwegian
+farm names that move with residence (`Byre`/`Aga`, `Opsal`/`Barkeland`), and one
+shape that matters more than the rest:
+
+    NAME '琰 瑗度 /陳郡陽夏/'   SURN '陳郡陽夏'   _MARNM '謝'
+
+`陳郡陽夏` is Chen commandery, Yangxia — an ancestral place — and `謝` is the Xie
+clan surname. The two fields are inverted against what a P734 mapping assumes,
+and it is the same failure already recorded for `秦州成紀` in the Hata work: a
+Chinese place sitting in the surname field. A surname link built on `SURN` alone
+proposes a place as a family name.
+
+Left open and named rather than guessed: **which Geni input field feeds which
+tag**. *Maiden name* → `SURN` and *Last name* → `_MARNM` fits the female cases,
+the empty-`SURN` majority and the farm names together, but it is inference from
+the export. Settling it means comparing one profile's edit form on Geni against
+its exported record — BLOCKED-ON-USER-ACTION.
+
+One pattern recorded so it is not mistaken for a route to language marking: 1,191
+people hold a constant `SURN` with a varying `_MARNM` across their `NAME` records
+(Otto I: `Liudolfinger` with `of Saxony`, `von Sachsen`, `saksilainen`). That is
+1.3% of the 90,901 people with more than one `NAME` — real, and far too rare to
+build on.

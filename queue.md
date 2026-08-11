@@ -138,10 +138,20 @@ ADD* has the rule; `reports/model.md` has the field-by-field table.
 4. **Contradictions — explicitly low priority.** Emma: *"worth doing but
    genuinely not that important."* Note them, do not build for them.
 
+**`_MARNM` is answered — Emma, 2026-08-11: it is the married name.** Right about
+the tag, and the corpus uses the slot far more widely: of the 244,392 records
+carrying it, 31% duplicate `SURN`, **43% are the only surname on the record**
+(`SURN` empty), and the 25% that differ are **53% male** — spelling variants,
+Norwegian farm names, and CJK records where `_MARNM` holds the clan surname
+while `SURN` holds an ancestral *place* (`謝` against `陳郡陽夏`). So it can
+neither be dropped nor read as marriage. `reports/names-spec.md` § `_MARNM` has
+the table and the three consequences for P734.
+
+Which Geni input field feeds which tag is inference, not fact —
+**BLOCKED-ON-USER-ACTION**, one profile's edit form against its exported record.
+
 **Open and needing Emma**, all from `reports/names-spec.md`:
 
-- **What `_MARNM` is.** 55% of all name records carry it, non-standard, undefined
-  by the export. The second most common name subtag in the corpus.
 - **Which `NAME` record becomes the label** when several share a script.
 - **Whether `NSFX` belongs in a label** — Geni's `Henry III King of England`
   against Wikidata's own `Henry III of England`.

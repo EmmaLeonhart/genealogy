@@ -374,6 +374,19 @@ entirely**: the whole structure is 41 people, a father-to-son thread with two
 clan exits and a single marriage. Reach for the neighbourhood walk first; the
 name screen is at best a way to pick seeds for it.
 
+**`SURN` is not reliably a surname, and `_MARNM` is not reliably a married
+name.** `_MARNM` *is* the married name — Emma, 2026-08-11, and it is confirmed on
+the female records checkable against history (Judith `/de France/` → `Flandre`).
+But 244,392 of 444,874 `NAME` records carry the tag and most are not doing that:
+31% duplicate `SURN`, **43% are the only surname on the record** because `SURN`
+is empty, and the 25% that differ are **53% male**. So neither field can be read
+alone. The trap for P734 is the CJK shape — `SURN 陳郡陽夏` (Chen commandery,
+Yangxia, a *place*) against `_MARNM 謝` (the Xie clan surname), the same
+inversion as the 秦州成紀 case above, and the wrong way round from what a
+surname mapping assumes. `reports/names-spec.md` § `_MARNM` is the long form.
+Which Geni input field feeds which tag is inference from the export, not
+established.
+
 **Zero recorded marriages after a `Forest` export is evidence, not a gap.**
 `Forest` follows spouse links — that is why the style gets specified for
 targeted exports — so a `Forest` ball that returns no marriages has found none
