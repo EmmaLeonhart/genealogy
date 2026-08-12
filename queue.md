@@ -13,6 +13,54 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ---
 
+## ELEVEN DECISIONS WAITING — 2026-08-12
+
+**Everything in this queue is blocked on one of these.** They accumulated over
+twelve autonomous ticks and are collected here because eleven decisions scattered
+across eleven reports is not answerable, and one list is. Each has the measurement
+already done and the cases already in front of you.
+
+**One question unblocks three items.** Everything else is independent.
+
+| # | the decision | what it blocks | where the evidence is |
+| --- | --- | --- | --- |
+| **1** | **Where does a correction to Geni data live?** Editing `exports/` in place, or a corrections file applied at merge. `CLAUDE.md` says every GEDCOM under `exports/` is committed and that tracking them is what this repo is *for* — so editing in place fixes the data and destroys the record of what Geni sent, across up to five files per person. | the BCE minus signs · the Ōjin/Wikramawardhana merges · the 442 encoding reconstructions | `reports/impossible-years.md`, `reports/encoding.md` |
+| 2 | **Which date faults are in scope?** 6 missing BCE signs (recoverable, four self-proving), 3 digit typos in day-precision records (correcting = guessing), 24 modifiers with no operand (unrecoverable), 13 cosmological years (not errors — somebody recording a myth). | the BCE item | `reports/impossible-years.md` |
+| 3 | **Does ingestion strip invisible characters?** 4,199 of them in `NAME`/`PLAC`: 1,409 LRM, 1,336 RLM, 1,281 NBSP, 132 soft hyphen, 26 ZWSP, 15 BOM — one BOM mid-word in `Willis Hil﻿l Cemetery`. ZWSP/BOM/soft-hyphen are clearly unwanted; the bidi marks may be doing real work in Arabic and Hebrew names. | any label emission | `reports/encoding.md` |
+| 4 | **What shape does `P26` take?** And are the 30 "Wikidata names a different spouse" rows excluded outright — Christian IV's mistress is in that bucket, so Geni records a union where Wikidata records a marriage. | marriage conversion | `reports/marriages.md` |
+| 5 | **`P734` for territorial bynames?** Wikidata gives one to *dynastic* names (Habsburg, Savoia) and not to individual bynames (de Provence, of Württemberg). And the largest self-evidencing group is Norwegian **farm names**, which are ordinary surnames. | surname conversion | `reports/toponym-surn.md` |
+| 6 | **Does a patronymic ever become a `P735`?** 27,003 Latin multi-token `GIVN`s end in one — `Olsen`, `Olsdatter`. Arne Olson Anda is the ordinary case, not an edge case. | given-name conversion | `reports/givn.md` |
+| 7 | **The `ABT` tolerance**, and whether `consistency.py` changes at all. At ±5 years 41% of the 6,734 "impossible" findings dissolve; 14% go at tolerance zero on `BEF`/`AFT`/`BET` alone. | the consistency report's standing as a verdict | `reports/consistency-analysis.md` |
+| 8 | **Is the `Q1349864xx` batch investigated as a batch?** 26 of the 66 suspect links sit in one contiguous QID creation block holding 1.7% of linked people — a 23× enrichment. | link quality | `reports/link-suspects.md` |
+| 9 | **The personal data.** 639 postal addresses of living people and 12,176 names of living Geni users, already committed inside the GEDCOMs and now trivially extractable. Does it matter given the repo is private; must anything public strip `SUBM`? | publication of anything derived | `reports/subm.md` |
+| 10 | **Rip out `reconcile.py`'s fuzzy matcher now, or after modelling?** You ordered it removed. It touches `coverage`, `quickstatements`, `crosscheck` and five test modules. | nothing — but it is unremoved code that contradicts rule 1 | this file, § the queue wipe |
+| 11 | **The display-name rule.** My proposal, for you to overrule: apply "Latin display name becomes the label" only where the name carries no title apparatus, and treat titled people as needing a name we do not have. 20.6% land exactly right; a perfect oracle reaches only 26.8%, so it is not a name-selection problem. | label emission | `reports/display-names.md` |
+
+**What was measured while these waited**, all committed, all offline, nothing
+altered in the corpus:
+
+| report | the finding |
+| --- | --- |
+| `reports/consistency-analysis.md` | the "impossible" dates are 41% artefact — the check compares bare integers and discards every date modifier |
+| `reports/subm.md` | `SUBM` is the Geni user managing the profile, and 657 of 12,176 are people in our own tree |
+| `reports/link-suspects.md` | 66 suspect links, not 2; the worst was never named; 26 are one batch import |
+| `reports/impossible-years.md` | the "five pharaohs" are nine people and three distinct faults |
+| `reports/display-names.md` | display-name-as-English-label is 20.6% exact; failures are almost all royalty |
+| `reports/givn.md` | the multi-token `GIVN` trap is real and `todo.md` locates it wrongly — 85% Latin, patronymics beat honorifics 4:1 |
+| `reports/nsfx.md` | `NSFX` is an open field of 19,875 values and holds CJK numerals beside Latin ordinals |
+| `reports/toponym-surn.md` | toponymic surnames are mostly Norwegian farm names, not nobility |
+| `reports/marriages.md` | 240 marriages Wikidata has no `P26` for; marriage **place** is the biggest addable gap yet — 575 |
+| `reports/encoding.md` | `Malm°` is Latin-1-read-as-CP437, 442 reversible lines; 4,199 invisible characters matter more |
+
+**A note on how this went, because it is a finding about the process rather than
+the data.** Six consecutive ticks produced an analysis each, every one defensible
+on its own, while the decision list grew from eight to eleven. Producing more
+measurement does not advance a project that is waiting on judgement. If the next
+tick has nothing but analysis available, the honest report is `nothing
+actionable` rather than a seventh census.
+
+---
+
 ## 2026-08-11 — the queue wipe, and what the project actually is
 
 **Emma emptied the blocked half of this queue by answering it.** Her framing:

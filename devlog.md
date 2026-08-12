@@ -5798,3 +5798,51 @@ Also this tick: `queue.md`'s BCE item corrected to say what it now is â€” a
 of three distinct faults, not an outstanding fix â€” and `correspondence.md`'s
 `GIVN` row updated with the measurement.
 
+
+## 2026-08-12 â€” twelve autonomous ticks, ten reports, eleven decisions waiting
+
+`queue.md` had gone five ticks without being touched while six analyses landed.
+It is now current, and its first section is a single table of the eleven
+decisions that everything is blocked on, with the evidence for each already
+measured and each set of cases already in front of Emma. Eleven decisions
+scattered across eleven reports is not answerable; one list is.
+
+**One question unblocks three items** â€” where a correction to Geni data lives.
+Editing `exports/` in place would fix the data and destroy the record of what
+Geni actually sent, across up to five files per person, against a `CLAUDE.md`
+rule that tracking the exports is what this repo is *for*. The alternative is a
+corrections file applied at merge. That single answer releases the BCE minus
+signs, the ÅŒjin and Wikramawardhana merges, and the 442 encoding
+reconstructions.
+
+What the autonomous run measured, all offline, nothing in the corpus altered:
+the "impossible" dates are 41% artefact of comparing bare integers; `SUBM` is the
+Geni user who manages a profile and 657 of them are people in our own tree; there
+are 66 suspect P2600 links rather than 2 and 26 are one batch import; the five
+pharaohs are nine people and three faults; display-name-as-English-label lands
+exactly right 20.6% of the time and a perfect oracle reaches only 26.8%; the
+multi-token `GIVN` trap is real and `todo.md` locates it in the wrong population;
+`NSFX` is an open field of 19,875 values holding CJK numerals beside Latin
+ordinals; toponymic surnames are mostly Norwegian farm names; 240 marriages have
+no `P26` at all and marriage *place* is the largest addable gap yet found at 575;
+and `MalmÂ°` is Latin-1 read as CP437, reversible across 442 lines, while 4,199
+invisible characters are the bigger problem.
+
+**The process finding, recorded because it is about the run rather than the
+data.** Six consecutive ticks produced one analysis each. Every one was
+defensible; the decision list grew from eight to eleven across them. Producing
+more measurement does not advance a project waiting on judgement, and the
+autonomous loop has no way to notice that from inside a single tick â€” each tick
+asks "did this tick produce something", which is the wrong question. If a future
+tick has nothing but another census available, the honest report is `nothing
+actionable` rather than a seventh one.
+
+Three wrong claims were caught before publication rather than after, in three
+consecutive analyses: a `parent-under-12` test that asked for the minimum
+possible parent age instead of the maximum and so made all 2,479 findings survive
+at every tolerance; a reading of "Wikidata drops the suffix 73% of the time" that
+was really 10.8% once "different name entirely" was separated from "suffix
+dropped"; and a claim that a mis-rendered place string was console encoding
+rather than a data fault, which checking the bytes reversed. Each was caught by
+checking rather than by suspecting.
+
