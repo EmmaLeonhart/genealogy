@@ -216,7 +216,40 @@ wrong. `Duchess of Aquitaine` and `King of England` are not foreign matter to be
 removed before a name is usable in English; they are how the name is written in
 English. The Latin-alphabet name is taken **as it renders**, suffix included.
 
-36,072 records carry the tag.
+**Censused 2026-08-12 — `reports/nsfx.md`.** 36,072 records carry the tag, and
+they hold **19,875 distinct values**, so it is an open field and not a controlled
+vocabulary of titles. It appears inside the rendered display name **99.8%** of
+the time, which is the GEDCOM `NPFX GIVN /SPFX SURN/ NSFX` rendering holding.
+
+At least four different kinds of thing live in it:
+
+| kind | examples |
+| --- | --- |
+| regnal ordinals, Latin | `II` 825, `I` 755, `III` 437, `IV` 196, `V` 96 |
+| **regnal/generation numerals, CJK** | `一` 762, `二` 653, `三` 416, `四` 264, `五` 179 |
+| generational suffixes | `Jr.` 460, `Sr.` 415, `Jr` 121, `Sr` 95 — unnormalised |
+| noble titles, many languages | `Graf` 278, `Herzog` 118, `Prinz` 118, `Gräfin` 114, `książę` 94 |
+| roles and epithets | `Pharaoh of Egypt` 107, `Saint` 104, `Capitán` 99 |
+
+The CJK numerals are the finding worth carrying: **the same slot holds `II` and
+`二`**, so a suffix rule written for Latin ordinals silently covers a CJK
+population it was not designed for.
+
+**Against Wikidata's own English labels**, over the 5,700 `NSFX` records whose
+person has one: 536 keep every suffix token, 1,017 keep part, 4,147 keep none.
+But "keeps none" splits, and the split reverses the obvious reading —
+
+| | records | share of "keeps none" |
+| --- | ---: | ---: |
+| different name entirely | 1,959 | 47.2% |
+| name partly shared | 1,544 | 37.2% |
+| **same name, suffix dropped** | **615** | **14.8%** |
+
+So Wikidata genuinely writes the same name minus the suffix in only **615 of
+5,700 cases (10.8%)**. The rest of the divergence is the regnal-name substitution
+`reports/display-names.md` already found — `Louis II` against `Louis the
+Stammerer` — which is not a suffix question at all. **Emma's rule is not in
+tension with Wikidata's practice nearly as often as a first reading suggested.**
 
 ---
 
