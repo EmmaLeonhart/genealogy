@@ -5846,3 +5846,57 @@ dropped"; and a claim that a mis-rendered place string was console encoding
 rather than a data fault, which checking the bytes reversed. Each was caught by
 checking rather than by suspecting.
 
+
+## 2026-08-12 â€” plan items 1, 3 and 4: labels, occupation, dates and places
+
+Emma replaced the twelve-decision stall with an ordered plan and the instruction
+not to do everything at once. Three of its seven items are done.
+
+**Item 1, labels.** `reports/derived-labels.csv`, one row per person for all
+298,591, applying rules she had already given: the label is the `NAME` line
+rendered with slashes removed; grouping is by script and never by language; the
+Latin-alphabet name becomes both the `mul` and the `en` label with noble suffixes
+left in; a lone `.` means the field is absent; a `_MARNM` identical to `SURN` is
+ignored and a differing one produces an alias. 47,125 people gain an alias.
+
+The catalogue she asked for as a bulk operation: 242,664 people have a Latin name
+only, 40,571 CJK only, 6,773 only a mixed-script name, 4,694 no usable name at
+all, 2,049 both Latin and CJK, 1,840 another script only. **49,184 people â€”
+16.5% â€” have no derivable English label**, which sizes her *"if there's only a
+name present in some sort of other script, we have to do a translation"*.
+
+No Japanese/Chinese split was attempted: Han characters are shared, a codepoint
+test would mis-assign them, and that split is what the cataloguing is *for*.
+
+**A defect in that script was caught by two of my own reports disagreeing.** It
+first reported 11.6% of derived labels matching Wikidata's English label where
+`reports/display-names.md` said 20.6%. The strict-Latin population is 8,457 at
+18.3% identical, plus 2.3% case-insensitive, so those two always agreed. The
+11.6% came from falling back to a mixed Latin+CJK name where no pure Latin one
+existed â€” which is not an English label, since it contains CJK characters. The
+fallback admitted 4,990 extra people for 8 extra matches. Removed before commit.
+I would not have caught it from the code; I caught it because a number
+disagreed with a number produced four hours earlier.
+
+**Items 3 and 4, occupation and the dates and places.** `reports/derived-facts.csv`,
+one row per person, one pass over the merged GEDCOM. Sex 298,130 Â· occupation
+31,401 Â· birth 150,203 dates and 58,562 places Â· death 118,918 and 38,990 Â·
+burial 11,907 and 16,360. Dates go through `genimerge.dates.parse_date`; twelve
+values across nine distinct strings parse to no year and keep their raw text.
+
+**The measured cost of a decision she already made.** Her rule is *ignore `ADDR`,
+use `PLAC` only*. Applied, **101,579 events carry an `ADDR` block and no `PLAC`
+at all** â€” against 113,912 events where `PLAC` supplied a place. The rule is not
+costing precision on those; it is costing the place entirely, for **47% of the
+events that have any location information**. The alternative she declined â€” use
+`ADDR` only when `PLAC` is absent â€” is exactly that population and would never
+override a `PLAC`. The rule stands and is applied; the number is recorded so the
+choice is re-openable on evidence rather than recollection.
+
+Item 2, deriving name items, is blocked: resolving a name string to an existing
+Wikidata item cannot be done offline, and the download that would fix it is
+sized but unrun. Item 5, family links, is next and unblocked â€” including the rule
+that a sibling group with no recorded parents gets two invented ones, *"father of
+x and y"* and *"mother of x and y"*, Geni-linked where possible, which is the
+first step in this plan that creates data rather than converting it.
+

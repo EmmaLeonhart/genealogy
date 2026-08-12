@@ -20,6 +20,29 @@ twelve-decision table below is no longer the state of the project; it is
 background. Several of its rows are answered here, and the rest wait rather than
 block.
 
+**Progress — 2026-08-12.** Her ordered list below is left verbatim rather than
+having items deleted from it, because it is her wording and the queue's
+delete-when-done rule is about *my* steps. Status is tracked here instead:
+
+| item | state |
+| --- | --- |
+| 1 · derive labels | **done** — `reports/derived-labels.csv`, 298,591 rows; `reports/labels.md` carries the catalogue. 49,184 people (16.5%) have no derivable English label; 47,125 gain a married-name alias |
+| 2 · derive name items | **blocked** on decision 12 — resolving a string to an existing item is impossible offline |
+| 3 · occupation | **done** — `reports/derived-facts.csv`; 31,401 people carry one |
+| 4 · places and dates | **done** — same file. birth 150,203 dates / 58,562 places · death 118,918 / 38,990 · burial 11,907 / 16,360 |
+| 5 · family links | **next, unblocked** — including the invent-two-parents rule for parentless sibling groups |
+| 6 · marriage | unblocked — `reports/marriages.md` already has the cases and the gaps |
+| 7 · everything else | *"cool but not necessary"* |
+
+**One number from item 4 that bears on a decision she already made.** She chose
+*ignore `ADDR`, use `PLAC` only*. Applied, that costs **101,579 events their
+place entirely** — they carry an `ADDR` block and no `PLAC` — against 113,912
+events where `PLAC` supplied one. So the rule drops the location for **47% of
+the events that have any**. The alternative she declined, *use `ADDR` only when
+`PLAC` is absent*, is exactly that population and would never override a `PLAC`.
+The rule stands; `reports/facts.md` records the size so it is re-openable on a
+number rather than a recollection.
+
 **Order, in her words:**
 
 1. **Derive labels from GEDCOM.** *"First thing is deriving labels from gedcom.
