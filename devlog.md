@@ -5630,3 +5630,63 @@ people hold a constant `SURN` with a varying `_MARNM` across their `NAME` record
 (Otto I: `Liudolfinger` with `of Saxony`, `von Sachsen`, `saksilainen`). That is
 1.3% of the 90,901 people with more than one `NAME` — real, and far too rare to
 build on.
+
+## 2026-08-11 — the queue wipe, and the two rules that replace it
+
+Emma emptied the blocked half of `queue.md` by answering it, having pointed out
+what it was doing: *"so much stuff is blocked on user action, and half of this
+stuff probably is stuff that I have no intention of ever actually doing. It's
+just clogging up the queue."* Nine items are gone — not deferred, deleted — and
+five that were recorded as needing her turned out to be mine to research.
+
+**Two rules now govern the project, and both narrow it sharply.**
+
+**Matching is genealogical only.** *"I only want us to be doing it based off of
+genealogical relationships and connections and stuff. That's all I want. That is
+the entirety of what I'm wanting to do."* The join she gave is the mother: two
+records are the same person when the mother matches on both sides, and a genuine
+conflict is resolved rather than decided, possibly leaving a second or third
+mother. No name similarity anywhere, in any role.
+
+**This is ingestion, not conversion.** *"It takes a long-ass fucking time to get
+from a GEDCOM to a Wikidata item. These are very different data structures."*
+
+**The fuzzy matcher is to be ripped out, and it should never have existed.** Emma
+saw it and asked why there was a matcher she had not consented to. She had not:
+`reconcile.py` entered on 2026-07-30 inside commit `8f60681`, whose message is
+entirely about `frontier.py` and a component bug. Worse, its own docstring says
+*"nothing is auto-accepted into the final answer"* while `expand_from_matches`
+accepts every HIGH-confidence pair into `matched_all.csv`, and
+`_cmd_quickstatements` reads **only** those rows to build `add-p2600.qs` — the
+file that proposes writing P2600 statements onto Wikidata items. A name-token
+overlap of 0.6 with no date agreement was enough to qualify. Nothing has ever
+shipped from it, which is luck rather than design.
+
+**What the session actually produced is a document, not code.** `correspondence.md`
+models the GEDCOM-to-Wikidata field correspondence one record at a time, from
+records Emma looked at whole. It marks each row ESTABLISHED (she said it, quoted),
+OPEN (looked at, undecided), or TO ANALYSE (assigned to me as research). No code
+is written from it until the modelling is finished — her instruction: *"Tooling is
+something that is going to be done all at once, once all of our modelling is
+finished."*
+
+Established today: `_MARNM` identical to `SURN` is ignored; a lone `.` in a name
+field means the field is absent; `FAMS`/`RFN`/`SUBM`/`CHAN` are ignored on the
+individual because the `FAM` records carry that information; notes are not used;
+`ADDR` is dropped in favour of `PLAC`; burial is two properties (P119 place,
+P4602 date) and not qualifiers; names split by script and not yet by language;
+and a conflict is added as a second statement carrying a **reference** of
+P2600 = the Geni profile ID, never a qualifier and never a correction.
+
+**Two questions were answered by reading documentation rather than by asking
+Emma**, which is how they should have been answered in the first place. Geni's
+display name auto-generates from first, middle, birth and last, and is meant to
+be filled only for "best known as" names, transliterations and royalty — so a
+filled one is a deliberate override. And Geni has both a *Birth (maiden)* field
+and a *Last name* field, which is what `SURN` and `_MARNM` are. That had been
+sitting in the queue as BLOCKED-ON-USER-ACTION, waiting for Emma to open an edit
+form, for a fact published on Geni's own help pages.
+
+`parked.md` exists now and is deliberately empty. Everything put in it today was
+resolved the same day by asking. Nothing enters it unless Emma has been asked and
+has chosen to park it.

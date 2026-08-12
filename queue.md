@@ -13,6 +13,88 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ---
 
+## 2026-08-11 — the queue wipe, and what the project actually is
+
+**Emma emptied the blocked half of this queue by answering it.** Her framing:
+*"so much stuff is blocked on user action, and half of this stuff probably is
+stuff that I have no intention of ever actually doing. It's just clogging up the
+queue."* Everything below that she killed is deleted rather than marked.
+
+**Two rules now govern everything. Both are in `correspondence.md` in full.**
+
+1. **Matching is genealogical only.** *"I only want us to be doing it based off
+   of genealogical relationships and connections and stuff. That's all I want.
+   That is the entirety of what I'm wanting to do."* The join is the **mother on
+   both sides**: *"we merge them based off of whether something is the mother on
+   both sides of an individual. We merge them together unless the mothers really
+   conflict… might have it so they have a third mother or a second mother."*
+   No fuzzy search, no label similarity, no long-distance search.
+2. **We are doing ingestion, not conversion.** *"It takes a long-ass fucking time
+   to get from a GEDCOM to a Wikidata item. These are very different data
+   structures."* The Wikidata-emitting end is not being built yet.
+
+**`reconcile.py`'s fuzzy matcher is to be removed.** Emma, on being shown it:
+*"no fucking clue why there's a fuzzy matcher that sounds like something you made
+with zero consent from me."* Correct — it entered on 2026-07-30 in commit
+`8f60681`, whose message is entirely about `frontier.py`. Its docstring claims
+nothing is auto-accepted; in fact `expand_from_matches` accepts every HIGH pair
+into `matched_all.csv`, and `_cmd_quickstatements` reads **only** those rows to
+build `add-p2600.qs`. Nothing has shipped from it. **Rip it out** — and no
+matching method, threshold or score enters this repo again without being shown
+to Emma first.
+
+**Dropped permanently, by her decision:**
+
+- **3.A's isolate exports** — the six seeds (Ovid, Avicenna, Khayyám, Aesop,
+  Horace, Hobbes). The 183,681 isolate count stays as a measured fact.
+- **2.A's export-target list** and the question of how out-of-tree seeds are
+  found.
+- **All three seed-research investigations** — smallest-ball ordering, whether
+  the seed ranking predicts anything, and what bounds an export. The
+  `GENI_EXPORT_CAP` test stays; the open questions do not.
+- **The 10,000-individual entity-resolution backtest.** Emma: *"whatever this
+  10,000 individual entity resolution backtest is, it is not something that I
+  consent to."*
+
+**No longer blocked on Emma — reassigned to analysis, which is my job:**
+
+- **The "impossible" dates.** *"it's your job to do analysis on these to figure
+  out what's actually going on with them. The chances are there is actually
+  something going on with them, and you're just deeming them impossible."*
+  `reports/consistency.md`'s 3,189 + 1,966 are not a verdict until that is done.
+- **The two suspect `P2600` links** — Canute I Erikska `Q442876`, Bengt
+  Folkesson `Q1621801`. Same treatment.
+- **`SUBM`** — *"agentic RAG to figure it out."*
+- **The five missing BCE minus signs** — *"Fix them in the fucking data."*
+  Locally, not on Geni.
+- **Ōjin and Wikramawardhana** — *"Just merge the fucking Geni stuff within our
+  data… I have merged them on Geni, but it's not going to appear for you because
+  the export's already done. You've got to fucking merge them yourself."* The
+  discriminator is the shared `FAMC`.
+- **Which Geni field feeds `SURN` vs `_MARNM`** — answered by reading Geni's own
+  documentation rather than by Emma opening an edit form. Geni has both a
+  *Birth (maiden)* field and a *Last name* field; `SURN` is the maiden name and
+  `_MARNM` the last name, which is why 43% of records carry only `_MARNM` and why
+  the differing group is 53% male.
+
+**Decided and now in scope:**
+
+- **Creating new items is the point.** *"We create new people and new name items.
+  This is literally the fundamental purpose of this entire project."*
+- **Name items must be downloaded** — a `wikidownload` pass fetching `P31` =
+  family name / given name. The store holds people; 0.4% of referenced name items
+  are in it, so no name resolves offline today.
+- **Names split by script, not by language.** *"We will sort by languages later.
+  We are sorting by scripts right now."*
+- **`ADDR` is ignored; `PLAC` only.**
+- **Burial is two properties** — `P119` place, `P4602` date, no qualifiers.
+- **Conflicts are added, referenced to `P2600`** — a reference, not a qualifier.
+
+**Field-by-field modelling lives in `correspondence.md`** and is built one record
+at a time. **No tooling is written from it until the modelling is finished** —
+Emma: *"Tooling is something that is going to be done all at once, once all of
+our modelling is finished."*
+
 ## STANDING ORDER LIFTED — 2026-08-09 16:50
 
 **Emma: "you can barrel now, and you can also finally be loud and merge things
