@@ -326,8 +326,13 @@ pointer lines say nothing alone.
 
 - **`RFN`** — restates the profile ID that `P2600` already carries. Emma:
   *"anything that has Geni in it is just not useful."*
-- **`SUBM`** — **TO ANALYSE.** Emma: *"agentic RAG to figure it out."* No longer
-  parked; the job is to find out what a Geni `SUBM` record denotes.
+- **`SUBM`** — **ANSWERED, `reports/subm.md`.** It is the Geni **user who
+  manages the profile**, and that user is themselves a Geni profile: `SUBM` ids
+  share the namespace with `INDI` ids, and **657 of the 12,176 submitters also
+  occur as people in our tree**. 99.6% of people carry one. The records hold a
+  name and sometimes a postal address, and no other subtag. It stays ignored for
+  the conversion — nothing on Wikidata records who typed a fact into a
+  third-party site — but it is the only provenance the corpus has.
 - **`CHAN`** — the profile's last-edited stamp.
 
 ### `OBJE`
