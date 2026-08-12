@@ -5753,3 +5753,48 @@ day. `src/genimerge/wikilabels.py`, the one new module, has no test coverage â�
 is imported only by `scripts/show-pair.py`, so nothing regressed, but it is
 untested code under `src/`.
 
+
+## 2026-08-12 â€” the multi-token `GIVN` trap is real and `todo.md` locates it wrongly
+
+`todo.md` Â§ 4 has warned since 2026-08-07 that splitting `GIVN` on spaces to make
+`P1545` statements emits wrong `P735`s, and gave a reason: *"36.9% of people have
+a multi-token given string, but most are romanised CJK/steppe names where the
+extra tokens are honorifics, particles and titles ("Lady", "no", "Chanyu"), not
+given names. â€¦ The genuine P1545 case â€¦ is the Latin-script subset."*
+
+Censused from `reports/display-names.csv`, so it cost nothing beyond a census
+that already existed. **342,340 `NAME` records carry a `GIVN`; 130,712 (38.2%)
+hold more than one token** â€” the count matches. The population does not.
+
+- **111,610 of the 130,712 are Latin-script â€” 85%.** Latin is not a subset to be
+  carved out of the problem; it is nearly the whole problem.
+- **Han is 6,465 records, 10.3% of Han `GIVN`s** â€” the least multi-token script in
+  the corpus, not the most.
+- Within Latin, the last token is wordlike 68.2%, **patronymic 24.2%**, honorific
+  or particle or ordinal 6.5%.
+
+So **patronymics outnumber honorifics about four to one**, and a patronymic is
+neither a given name nor a title â€” a third category the warning does not mention.
+`Olsen`, `Olsdatter`, `Pedersdatter` and `Pedersen` are all top-twenty non-first
+tokens. Arne Olson Anda, whose `GIVN Arne Olson` raised the question in
+`correspondence.md` and whose Wikidata item holds `P735 = Arne` and nothing for
+`Olson`, is not an edge case. He is the ordinary case.
+
+The honorific-class tokens that do reach the top are mostly **regnal ordinals** â€”
+`i`, `ii`, `iii`, `iv`, about 7,000 between them â€” which is a different problem
+from "Lady" and "Chanyu" and would need a different step.
+
+The conclusion `todo.md` draws survives untouched: a naive space split is wrong.
+Its reason does not, and that matters because anything built on "handle the CJK
+romanisations and the Latin subset is fine" would be built on a misapprehension.
+This is the fifth time this session a written summary has failed against a
+census, which is the argument for Emma's rule rather than an incidental result.
+
+`reports/givn-multitoken.csv` holds every one of the 130,712 instances.
+Nothing is stripped and no rule is proposed; whether a patronymic should become a
+`P735` at all is Emma's.
+
+Also this tick: `queue.md`'s BCE item corrected to say what it now is â€” a census
+of three distinct faults, not an outstanding fix â€” and `correspondence.md`'s
+`GIVN` row updated with the measurement.
+

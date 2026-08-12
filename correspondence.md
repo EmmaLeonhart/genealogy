@@ -141,6 +141,28 @@ Wikidata has `P735 = Q645757 (Arne)` and nothing for `Olson`.
 `P735 Olson` at ordinal 2 follows the protocol mechanically and may be wrong
 about what `Olson` is. Not decided, and it is downstream of ingestion anyway.
 
+**Censused 2026-08-12 — `reports/givn.md`, and it is not one record's problem.**
+Of 342,340 `NAME` records carrying a `GIVN`, **130,712 (38.2%) hold more than
+one token**. Within the Latin-script ones, the last token is:
+
+| | records | share |
+| --- | ---: | ---: |
+| wordlike | 76,069 | 68.2% |
+| **patronymic** | **27,003** | **24.2%** |
+| honorific / particle / ordinal | 7,219 | 6.5% |
+
+So roughly **one Latin multi-token `GIVN` in four ends in a patronymic** —
+`Olsen`, `Olsdatter`, `Pedersdatter`, `Pedersen` are all top-twenty tokens. Arne
+is not an edge case; he is the ordinary case.
+
+**This corrects `todo.md` § 4**, which says the multi-token strings are *"most …
+romanised CJK/steppe names where the extra tokens are honorifics, particles and
+titles"* and that the genuine P1545 case is *"the Latin-script subset"*. The
+count it gives is right; the population is not. **85% of multi-token records are
+Latin-script**, and Han is the *least* multi-token script at 10.3%. Patronymics
+outnumber honorifics about four to one. The conclusion survives — a naive space
+split emits wrong `P735`s — but not for the stated reason.
+
 ### `SURN`
 
 **OPEN.** Record A is the easy shape and it agrees: `SURN Anda` against

@@ -59,7 +59,15 @@ to Emma first.
 **No longer blocked on Emma — reassigned to analysis, which is my job:**
 
 - **The five missing BCE minus signs** — *"Fix them in the fucking data."*
-  Locally, not on Geni. **Still to do — the only one of the four left.**
+  **Censused, not fixed — `reports/impossible-years.md`.** The instruction covers
+  six of nine people. There are **three faults, not one**: 6 missing minus signs
+  (four self-proving, birth year later than death year), **3 digit typos in
+  day-precision modern records** where correcting means guessing, and 38
+  unreadable dates over 13 more people (24 modifiers with no operand, 13
+  cosmological years for Shinto creation deities, 1 unseparated digit run).
+  **NEEDS-DECISION — Emma, twice over:** where a correction lives, given every
+  GEDCOM under `exports/` is committed and one person appears in up to five of
+  them; and which faults are in scope.
 
 The other three are **done**, and each replaced a verdict with a measurement:
 
