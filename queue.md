@@ -13,7 +13,7 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ---
 
-## ELEVEN DECISIONS WAITING — 2026-08-12
+## TWELVE DECISIONS WAITING — 2026-08-12
 
 **Everything in this queue is blocked on one of these.** They accumulated over
 twelve autonomous ticks and are collected here because eleven decisions scattered
@@ -35,6 +35,7 @@ already done and the cases already in front of you.
 | 9 | **The personal data.** 639 postal addresses of living people and 12,176 names of living Geni users, already committed inside the GEDCOMs and now trivially extractable. Does it matter given the repo is private; must anything public strip `SUBM`? | publication of anything derived | `reports/subm.md` |
 | 10 | **Rip out `reconcile.py`'s fuzzy matcher now, or after modelling?** You ordered it removed. It touches `coverage`, `quickstatements`, `crosscheck` and five test modules. | nothing — but it is unremoved code that contradicts rule 1 | this file, § the queue wipe |
 | 11 | **The display-name rule.** My proposal, for you to overrule: apply "Latin display name becomes the label" only where the name carries no title apparatus, and treat titled people as needing a name we do not have. 20.6% land exactly right; a perfect oracle reaches only 26.8%, so it is not a name-selection problem. | label emission | `reports/display-names.md` |
+| **12** | **How much of the name-item download to run** — all 132,456, or the top 1,000 for **55.3%** of references, or 2,420 for 66.3%. A live run needs your **confirmation**, which `CLAUDE.md` requires separately from approval. Was BLOCKED-ON-EXTERNAL until sized on 2026-08-12; the external part is measured now and only the scale is open. | `names.py:240` · `reconcile.py:512` · **all `P734`/`P735` resolution**, which decisions 5 and 6 depend on | `reports/name-item-download.md`, `reports/name-items.csv` |
 
 **What was measured while these waited**, all committed, all offline, nothing
 altered in the corpus:
@@ -788,11 +789,31 @@ walked P22/P25/P26/P40/P3373, which reaches people, not the items their names
 point at. Sampled 40 shards, 40,000 items, 2026-08-10: of **13,683** distinct
 P735/P734 targets referenced, **55 are in the store — 0.4%**.
 
-**BLOCKED-ON-EXTERNAL** — the missing data is on Wikidata, and the unblock
-signal is a download pass that fetches name items. That is a `wikidownload`
-change (a second seed set, or following P735/P734 as well as the family
-properties), not a `names.py` change, and it is a real amount of work: ~13,700
-name items per 40,000 people scanned. **Do not** port `names.py` by widening it
+**That sample was wrong by 4.7×, and the download is now measured — 2026-08-12,
+`reports/name-item-download.md`.** All 1,408 shards, 1,408,401 stored items:
+**132,569 distinct name items referenced, 113 already present (0.09%), 132,456
+to download.** `P734` references 101,854 of them against `P735`'s 31,023.
+
+**This is no longer BLOCKED-ON-EXTERNAL. It is a NEEDS-DECISION about scale**,
+because the distribution is steep enough that the download need not be
+all-or-nothing:
+
+| download the top | of 132,569 | references covered |
+| ---: | ---: | ---: |
+| 100 | 0.1% | 28.4% |
+| 1,000 | 0.8% | **55.3%** |
+| 2,420 | 1.8% | 66.3% |
+| 17,936 | 13.5% | 86.6% |
+
+**0.8% of the vocabulary resolves over half of all 2,016,016 references.**
+Per-item counts for all 132,569 are in `reports/name-items.csv`, so any other cut
+is answerable without re-reading the 2.7 GB store.
+
+**A live run still needs Emma's confirmation separately from her approval** —
+`CLAUDE.md`: the one bulk job permitted to talk to Wikidata *"is confirmed before
+a live run"*. She approved fetching name items inside a rapid four-question
+round; that is not the same thing, and the sizing above exists so the
+confirmation can be informed rather than blind. **Do not** port `names.py` by widening it
 to "any item we happen to hold" — that would silently return a fraction of the
 matches and read as if the endpoint had answered.
 
@@ -840,7 +861,7 @@ Q8011, and the reverse lookup returns their P2600 values.
 | | call site | |
 | --- | --- | --- |
 | **ported (6)** | `crosscheck:224`, `namelinks:101`, `reconcile:295`, `wikidata:309`, `quickstatements:151`, plus the `crosscheck` command | |
-| **BLOCKED-ON-EXTERNAL (2)** | `names.py:240`, `reconcile.py:512` | label-to-item search; the store holds people we already have, so a port returns a well-formed nothing. Unblock: a `wikidownload` pass beyond the family walk |
+| **needs the name-item download (2)** | `names.py:240`, `reconcile.py:512` | label-to-item search; the store holds people we already have, so a port returns a well-formed nothing. **No longer BLOCKED-ON-EXTERNAL** — the pass is sized (132,456 items, or 1,000 for 55.3% coverage) and what remains is Emma's decision on scale plus confirmation for a live run |
 | **stays online (2)** | `overlap.py:89`, `cli.py:264` | see below |
 
 **`cli.py:264` stays online, and a previous session already wrote why.** It reads
