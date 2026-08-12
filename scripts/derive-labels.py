@@ -1,0 +1,270 @@
+"""Plan item 1 — derive labels from the GEDCOM, and catalogue what we have.
+
+Emma, 2026-08-12: *"First thing is deriving labels from gedcom. Something that's
+very easy."* And: *"Every individual needs an English, Japanese, and Chinese
+label but really we gotta catalogue these things a bit better too as a bulk
+operation."*
+
+So this does both halves: derives what the rules already settle, and counts what
+is present per person so the cataloguing is a measurement rather than a guess.
+
+**The rules applied, each one hers and quoted where it was given:**
+
+* The label is the `NAME` line **rendered** — slashes removed. GEDCOM 5.5.1 puts
+  the name in spoken order with the surname in slashes, and says systems must
+  construct from this line rather than from the pieces.
+* **Group by script, never by language.** *"We are sorting by scripts. We are not
+  sorting by languages. We will sort by languages later."*
+* **The Latin-alphabet name becomes both the `mul` and the `en` label**, with any
+  noble suffix left in: *"a noble suffix or a noble particle is a legitimately
+  common thing in English."*
+* **A lone `.` means the field is absent.** *"If the surname is just a single dot
+  … we just pretend it doesn't exist because that is the convention on Geni."*
+* **`_MARNM` identical to `SURN` is ignored.**
+* **A differing `_MARNM` produces an alias.** *"Married name plugs into name to
+  produce an alias."*
+
+**What is deliberately not done.** No Japanese/Chinese split — that needs the
+cataloguing this script produces, and guessing it from codepoints alone would
+mis-assign Han characters shared by both. No name items are resolved: they are
+*derived, never created*, and resolving a string to an existing item needs the
+download that has not run.
+
+Writes `reports/derived-labels.csv` (one row per person) and
+`reports/labels.md`. Offline; reads `reports/display-names.csv`.
+
+    py scripts/derive-labels.py
+"""
+
+from __future__ import annotations
+
+import csv
+import sys
+from collections import Counter, defaultdict
+from pathlib import Path
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+SOURCE = REPO_ROOT / "reports" / "display-names.csv"
+OUT_CSV = REPO_ROOT / "reports" / "derived-labels.csv"
+OUT_MD = REPO_ROOT / "reports" / "labels.md"
+
+csv.field_size_limit(10_000_000)
+
+#: Scripts that carry Han characters. Kept as one bucket on purpose: telling
+#: Japanese from Chinese is the cataloguing question, not a codepoint question.
+CJK_SCRIPTS = {"Han", "Hiragana", "Katakana", "Hangul", "Ideographic"}
+
+#: A name field holding only this means "absent", by Geni convention.
+ABSENT = {".", "..", "?", "-", "_"}
+
+
+def script_group(scripts: str) -> str:
+    """`Latin`, `CJK`, `mixed`, `other`, or `none` — never a language."""
+    if not scripts:
+        return "none"
+    parts = set(scripts.split("+"))
+    has_latin = "Latin" in parts
+    has_cjk = bool(parts & CJK_SCRIPTS)
+    others = parts - {"Latin"} - CJK_SCRIPTS
+    if has_latin and has_cjk:
+        return "mixed"
+    if has_cjk:
+        return "CJK"
+    if has_latin and not others:
+        return "Latin"
+    if has_latin and others:
+        return "mixed"
+    return "other"
+
+
+def clean(text: str) -> str:
+    """Drop tokens that Geni uses to mean 'no value', per Emma's dot rule."""
+    return " ".join(t for t in text.split() if t not in ABSENT)
+
+
+def alias_from_married_name(givn: str, marnm: str, nsfx: str) -> str:
+    """The married name plugged into the name.
+
+    Emma: *"Married name plugs into name to produce an alias."* Read as: the
+    married name takes the surname's place in the rendered name. `Judith
+    /de France/` carrying `_MARNM Flandre` gives `Judith Flandre`.
+
+    **This reading is an interpretation of one sentence** and is flagged as such
+    in `reports/labels.md` rather than presented as settled.
+    """
+    parts = [clean(givn), clean(marnm), clean(nsfx)]
+    return " ".join(p for p in parts if p)
+
+
+def main() -> int:
+    by_person: dict[str, list[dict]] = defaultdict(list)
+    with open(SOURCE, encoding="utf-8", newline="") as handle:
+        for row in csv.DictReader(handle):
+            by_person[row["geni_id"]].append(row)
+
+    print(f"{len(by_person):,} people", flush=True)
+
+    groups: Counter[str] = Counter()
+    coverage: Counter[str] = Counter()
+    alias_count = 0
+    rows = []
+
+    for geni_id, records in by_person.items():
+        labels: dict[str, list[str]] = defaultdict(list)
+        aliases: list[str] = []
+        qid = records[0]["qid"]
+        wd_en = records[0]["wikidata_en"]
+        wd_mul = records[0]["wikidata_mul"]
+
+        for record in records:
+            rendered = clean(record["display_name"])
+            if not rendered:
+                continue
+            group = script_group(record["scripts"])
+            groups[group] += 1
+            if rendered not in labels[group]:
+                labels[group].append(rendered)
+
+            surn = clean(record["surn"])
+            marnm = clean(record["marnm"])
+            # Identical means ignore it — 31% of the corpus's _MARNM records.
+            if marnm and marnm != surn:
+                alias = alias_from_married_name(record["givn"], marnm, record["nsfx"])
+                if alias and alias != rendered and alias not in aliases:
+                    aliases.append(alias)
+
+        # `en` and `mul` come from a *strictly* Latin name. A mixed Latin+CJK
+        # string is not a usable English label — it carries CJK characters — and
+        # falling back to it was a defect in the first version of this script:
+        # it admitted 4,990 more people and gained 8 exact matches against
+        # Wikidata, which is what gave it away.
+        latin = labels.get("Latin") or []
+        mixed = labels.get("mixed") or []
+        cjk = labels.get("CJK") or []
+        other = labels.get("other") or []
+        if aliases:
+            alias_count += 1
+
+        if latin and cjk:
+            coverage["Latin and CJK"] += 1
+        elif latin:
+            coverage["Latin only"] += 1
+        elif cjk:
+            coverage["CJK only — needs translation for en"] += 1
+        elif mixed:
+            coverage["mixed-script only — no clean Latin label"] += 1
+        elif other:
+            coverage["other script only — needs translation for en"] += 1
+        else:
+            coverage["no usable name at all"] += 1
+
+        rows.append([
+            geni_id,
+            qid,
+            # en and mul both come from the Latin name, suffix included.
+            latin[0] if latin else "",
+            latin[0] if latin else "",
+            " | ".join(latin[1:]),
+            " | ".join(cjk),
+            " | ".join(other + mixed),
+            " | ".join(aliases),
+            len(records),
+            wd_en,
+            wd_mul,
+            "yes" if (wd_en and latin and wd_en == latin[0]) else "no",
+        ])
+
+    OUT_CSV.parent.mkdir(parents=True, exist_ok=True)
+    with open(OUT_CSV, "w", encoding="utf-8", newline="") as handle:
+        writer = csv.writer(handle)
+        writer.writerow([
+            "geni_id", "qid", "label_en", "label_mul", "further_latin_names",
+            "cjk_names", "other_script_names", "aliases_from_married_name",
+            "name_records", "wikidata_en", "wikidata_mul", "matches_wikidata_en",
+        ])
+        writer.writerows(rows)
+
+    total = len(by_person)
+    L: list[str] = []
+    add = L.append
+    add("# Derived labels, and the catalogue behind them")
+    add("")
+    add("Plan item 1. Emma, 2026-08-12: *\"First thing is deriving labels from gedcom.")
+    add("Something that's very easy.\"* And: *\"Every individual needs an English,")
+    add("Japanese, and Chinese label but really we gotta catalogue these things a bit")
+    add("better too as a bulk operation.\"*")
+    add("")
+    add(f"One row per person in `reports/derived-labels.csv` — **{total:,} people**.")
+    add("")
+    add("## What each person has to build a label from")
+    add("")
+    add("| | people | share |")
+    add("| --- | ---: | ---: |")
+    for kind, n in coverage.most_common():
+        add(f"| {kind} | {n:,} | {100.0*n/max(total,1):.1f}% |")
+    add("")
+    add("**This is the catalogue.** The `en` and `mul` labels come from the Latin name,")
+    add("so everyone in a *needs translation* row has no derivable English label at all —")
+    add("that is the population Emma's *\"if there's only a name present in some sort of")
+    add("other script, we have to do a translation\"* applies to, sized.")
+    add("")
+    add("## Name records by script group")
+    add("")
+    add("| script group | name records |")
+    add("| --- | ---: |")
+    for group, n in groups.most_common():
+        add(f"| {group} | {n:,} |")
+    add("")
+    add("Grouped by **script, never language** — her rule. `CJK` deliberately holds Han,")
+    add("Hiragana, Katakana and Hangul together: **the Japanese/Chinese split is not")
+    add("attempted here**, because Han characters are shared and a codepoint test would")
+    add("mis-assign them. That split is what the cataloguing is *for*, and it needs a")
+    add("decision rather than a rule.")
+    add("")
+    add(f"## Aliases from married names — {alias_count:,} people")
+    add("")
+    add("Emma: *\"Married name plugs into name to produce an alias.\"*")
+    add("")
+    add("**Read as:** the married name takes the surname's place in the rendered name, so")
+    add("`Judith /de France/` carrying `_MARNM Flandre` yields the alias `Judith Flandre`.")
+    add("A `_MARNM` identical to `SURN` is ignored, per her earlier rule, which is 31% of")
+    add("the 244,392 records carrying the tag.")
+    add("")
+    add("**That reading is an interpretation of one sentence and is flagged rather than")
+    add("settled.** The alternative — appending the married name to the full rendered")
+    add("name — produces a different string, and nothing she has said chooses between")
+    add("them.")
+    add("")
+    add("## Against Wikidata, where both exist")
+    add("")
+    matched = sum(1 for r in rows if r[11] == "yes")
+    have_both = sum(1 for r in rows if r[9] and r[2])
+    add(f"{have_both:,} people have both a derived Latin label and a Wikidata English")
+    add(f"label. **{matched:,} match exactly ({100.0*matched/max(have_both,1):.1f}%).**")
+    add("")
+    add("`reports/display-names.md` has the breakdown of the rest: the failures")
+    add("concentrate in royalty, where Geni holds the native birth name and Wikidata the")
+    add("English regnal form, and a perfect oracle picking among a person's Latin names")
+    add("reaches only 26.8%. Deriving the label is easy; the derived label disagreeing")
+    add("with Wikidata's is the normal case, not the exception.")
+    add("")
+    add("## Not done here")
+    add("")
+    add("- **No Japanese/Chinese split.** Needs the catalogue above plus a decision.")
+    add("- **No name items resolved.** They are *derived, never created* — and resolving")
+    add("  a string to an existing item needs the download that has not run.")
+    add("- **Nothing emitted to Wikidata.** This is ingestion.")
+
+    OUT_MD.write_text("\n".join(L) + "\n", encoding="utf-8")
+    print(f"wrote {OUT_CSV} ({len(rows):,} rows)")
+    print(f"wrote {OUT_MD}")
+    print()
+    for kind, n in coverage.most_common():
+        print(f"  {n:>8,}  {kind}")
+    print(f"\n  {alias_count:,} people gain an alias from a married name")
+    print(f"  {matched:,} of {have_both:,} derived labels match Wikidata's exactly")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
