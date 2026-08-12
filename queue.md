@@ -13,7 +13,72 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ---
 
-## TWELVE DECISIONS WAITING — 2026-08-12
+## THE PLAN — Emma, 2026-08-12. This supersedes the decision list below
+
+**"When we are doing this we do not need to do everything all at once."** The
+twelve-decision table below is no longer the state of the project; it is
+background. Several of its rows are answered here, and the rest wait rather than
+block.
+
+**Order, in her words:**
+
+1. **Derive labels from GEDCOM.** *"First thing is deriving labels from gedcom.
+   Something that's very easy."*
+2. **Derive name items but never create them.** *"We derive name items but never
+   create name items."*
+3. **Occupation** — *"can be done with string stuff"*.
+4. **Birthplace, birth date, death date, death place, burial date, burial
+   place** — *"all can be done with string"*.
+5. **Family links.** Mother, father, spouse and child are *"easier"*.
+   **Siblings with no parents recorded need two parents invented** — *"sibling
+   relationships without parents need to get two parents that are 'father of x
+   and y' and 'mother of x and y' and geni linked if possible"*.
+6. **Marriage date and place and end** — *"will be easy-ish"*.
+7. **Everything else** — *"other things in really common stuff will be cool but
+   not necessary"*.
+
+**Two rules stated alongside the order:**
+
+- **The married name becomes an alias.** *"Married name plugs into name to
+  produce an alias."*
+- **Every individual needs an English, a Japanese and a Chinese label** — and
+  *"we gotta catalogue these things a bit better too as a bulk operation"*.
+
+**A recorded entity resolution, put in without analysis at her instruction**
+(*"Do not analyze this just fucking put it in whatever data the discovered
+correspondence goes into"*): geni `6000000087535357291` ↔ `Q140568870`, now in
+`entity_resolution.md`, which is where hand-recognised Geni-to-Wikidata
+identities live. `tests/test_entities.py` still passes, so the parser
+understands the entry without the file being reformatted to suit it.
+
+### What this changes about the twelve decisions
+
+| # | status now |
+| --- | --- |
+| 5, 6 (`P734` bynames, patronymic `P735`) | **narrowed** — name items are *derived, never created*, so the open part is only which existing item a string resolves to |
+| 4 (`P26` shape) | **in scope**, item 6 above |
+| 11 (display-name rule) | **superseded in spirit** — she calls label derivation "very easy" and it is item 1 |
+| 12 (name-item download scale) | **still open**, and now load-bearing: deriving a name item means resolving a string to an existing item, which nothing can do offline today |
+| 1, 2, 3, 7, 8, 9, 10 | **not addressed** — they wait, they do not block items 1–7 |
+
+**One reversal recorded so it is not lost.** On 2026-08-11 she said *"We create
+new people and new name items. This is literally the fundamental purpose of this
+entire project."* Today: *"We derive name items but never create name items."*
+The later statement holds. Whether **people** are still created is not restated
+either way and is not assumed here.
+
+**One measurement that bears on item 1, offered and not argued.**
+`reports/display-names.md` measured "the Latin display name becomes the English
+label" against the 8,457 people where Wikidata already has a human-chosen English
+label: **20.6% land exactly right**, and a perfect oracle picking the best of a
+person's Latin names reaches only 26.8%. The failures concentrate in royalty,
+where Geni holds the native birth name and Wikidata the English regnal form.
+That does not make item 1 hard — deriving the label is easy — but the derived
+label will disagree with Wikidata's four times in five where both exist.
+
+---
+
+## TWELVE DECISIONS WAITING — 2026-08-12 (background; see THE PLAN above)
 
 **Everything in this queue is blocked on one of these.** They accumulated over
 twelve autonomous ticks and are collected here because eleven decisions scattered

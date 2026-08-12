@@ -28,3 +28,8 @@ https://www.wikidata.org/wiki/Q12598947
 https://www.geni.com/people/%E6%89%B6%E9%A4%98/6000000186285688286?through=6000000001829589817
 
 add engligh label "Buyeo Taebi"
+
+
+Emma Bishop
+https://www.geni.com/people/Emma-Bishop/6000000087535357291
+https://www.wikidata.org/wiki/Q140568870
