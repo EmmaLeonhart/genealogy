@@ -5690,3 +5690,66 @@ form, for a fact published on Geni's own help pages.
 `parked.md` exists now and is deliberately empty. Everything put in it today was
 resolved the same day by asking. Nothing enters it unless Emma has been asked and
 has chosen to park it.
+
+## 2026-08-11 â€” three assigned analyses, and what censusing changed about each
+
+Emma reassigned four items from "blocked on her" to analysis that is mine, with
+the same instruction each time: work out what is actually going on rather than
+labelling it. Three are done. In all three the census contradicted the summary
+that preceded it.
+
+**The "impossible" dates.** `consistency.check` compares `person.birth_year`
+against `parent.birth_year` â€” bare integers â€” while `GedcomDate` carries `raw`,
+`modifier`, `year_end` and `is_exact` that never reach the comparison. A child
+recorded `ABT 1500` against a parent recorded `ABT 1512` is reported as born
+twelve years before their own parent, on two dates the source declines to assert.
+5,094 of 6,734 findings involve such a date. Read as intervals, 41% dissolve at
+Â±5 years, and 14% dissolve at tolerance zero on `BEF`/`AFT`/`BET` handling alone
+â€” that part is not a matter of opinion. The `ABT` tolerance is deliberately not
+chosen here; four values are published so the sensitivity is visible.
+`consistency.py` is unchanged.
+
+A bug in my own analysis was caught before publication rather than after: the
+parent-under-12 test asked whether the *minimum* possible parent age was under 12
+when it should ask whether the maximum is, which made all 2,479 of those findings
+survive at every tolerance. A number that does not move when the tolerance moves
+is a defect, not a result.
+
+**`SUBM`.** It is the Geni user who manages the profile. The decisive test was in
+the xrefs: they come in the same two shapes as Geni profile IDs, so the question
+is whether they share the namespace â€” and 657 of 12,176 submitters also occur as
+`INDI` ids in our tree. 99.6% of people carry one; the records hold a name and
+sometimes a postal address and no other subtag at all. It is the only provenance
+this corpus has, and it is not a Wikidata field â€” nothing there records who typed
+a fact into a third-party site. Flagged separately: 639 postal addresses of
+living people, already committed inside the GEDCOMs, now trivially extractable.
+
+**The two suspect P2600 links.** Emma: *"Analyse them like the dates."* Censusing
+all 70,785 comparisons over 14,157 linked people rather than reading the two
+worst changed the answer four ways. The report's own criterion â€” two or more
+conflicts, more conflicts than agreements â€” yields 66 links, not 2. The single
+worst was never named: `Q23502804`, four conflicts and no agreements, where Geni
+has a woman born and dead within twenty days of December 1607 and Wikidata has
+one who lived 1589â€“1646, with both parents differing too. Bengt Folkesson, one of
+the two originally flagged, ranks 52nd of 14,157 with 143 people sharing his
+margin â€” singling him out was an artefact of a short list rather than a
+distribution.
+
+Two things emerged that only a census could show. Suspect links disagree about
+relationships at twice the overall rate (49% father-or-mother against 24%), which
+is the shape expected when the link itself is wrong rather than a date being
+sloppy. And 26 of the 66 sit in one contiguous QID block, `Q1349864xx`, holding
+1.7% of linked people â€” a 23-fold enrichment, and a Spanish-colonial and Nahua
+cluster. The right unit of investigation is a batch import, not a person.
+
+Nothing was edited or excluded. 66 of 14,157 is 0.47%, and
+`crosscheck.SUSPECT_IS_NOT_WRONG` stands: a concentration of conflicts does not
+say the link is wrong, only that the link is where the disagreement lives.
+
+**The full suite ran green for the first time this session: 2,217 passed, 1
+skipped, 19m10s.** That is 40 more tests than the 2,177 recorded on 2026-08-10
+and the delta is untraced; the plausible cause is tests committed later that same
+day. `src/genimerge/wikilabels.py`, the one new module, has no test coverage â€” it
+is imported only by `scripts/show-pair.py`, so nothing regressed, but it is
+untested code under `src/`.
+

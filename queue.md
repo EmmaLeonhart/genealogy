@@ -58,15 +58,29 @@ to Emma first.
 
 **No longer blocked on Emma — reassigned to analysis, which is my job:**
 
-- **The "impossible" dates.** *"it's your job to do analysis on these to figure
-  out what's actually going on with them. The chances are there is actually
-  something going on with them, and you're just deeming them impossible."*
-  `reports/consistency.md`'s 3,189 + 1,966 are not a verdict until that is done.
-- **The two suspect `P2600` links** — Canute I Erikska `Q442876`, Bengt
-  Folkesson `Q1621801`. Same treatment.
-- **`SUBM`** — *"agentic RAG to figure it out."*
 - **The five missing BCE minus signs** — *"Fix them in the fucking data."*
-  Locally, not on Geni.
+  Locally, not on Geni. **Still to do — the only one of the four left.**
+
+The other three are **done**, and each replaced a verdict with a measurement:
+
+- **The "impossible" dates — `reports/consistency-analysis.md`.** The check
+  compares bare integers and discards every `ABT`/`BEF`/`AFT`/`BET` modifier, so
+  a child `ABT 1500` against a parent `ABT 1512` was reported as impossible.
+  Read as intervals, **41% of the 6,734 findings dissolve at ±5 years**; 14% go
+  at tolerance zero, on `BEF`/`AFT`/`BET` handling alone. The `ABT` tolerance is
+  **NEEDS-DECISION — Emma**, and `consistency.py` is deliberately unchanged.
+- **`SUBM` — `reports/subm.md`.** The Geni user who manages the profile, and
+  they are a profile themselves: `SUBM` ids share the `INDI` namespace and
+  **657 of 12,176 submitters are people in our tree**. 99.6% of people carry
+  one. Also surfaced 639 postal addresses of living people —
+  **NEEDS-DECISION — Emma**.
+- **The two suspect `P2600` links — `reports/link-suspects.md`.** Censused all
+  70,785 comparisons instead of reading the two worst. The report's own
+  criterion yields **66 suspect links, not 2**, and the worst was never named.
+  Bengt Folkesson ranks 52nd — unremarkable. The real structure: **26 of the 66
+  are one contiguous QID creation block** holding 1.7% of linked people, a 23×
+  enrichment. **NEEDS-DECISION — Emma:** whether to investigate that batch as a
+  batch.
 - **Ōjin and Wikramawardhana** — *"Just merge the fucking Geni stuff within our
   data… I have merged them on Geni, but it's not going to appear for you because
   the export's already done. You've got to fucking merge them yourself."* The
