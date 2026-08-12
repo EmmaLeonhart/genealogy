@@ -669,6 +669,33 @@ So:
 4. **Ask on ambiguity.** *"The whole thing is you're supposed to slow down and
    ask the user a question on ambiguities."*
 
+### "Analyse this" means: build a CSV of every instance, then analyse that
+
+**Emma's rule, 2026-08-11, and she stated it as a correction of what I am and am
+not good at:** *"When I ask you to analyse a problem, it generally means you run a
+script to build a CSV of every single instance of the phenomenon that I'm asking
+you about, and then do an analysis on it, and then make a decision explicitly.
+I'm realising this is a thing you're good at, and you're absolutely not good at
+analysing individual components."*
+
+So the shape of every analysis task is three steps, in this order:
+
+1. **Build the CSV.** Every single instance of the phenomenon, one row each — not
+   a sample, not the top 100, not a summary table. A person with four `NAME`
+   records is four rows.
+2. **Commit and push it.** *"We're not trying to make the repo small. We don't
+   care about repo size. We care about actually getting results."* These go in
+   `reports/`, which is tracked; `out/` is gitignored and is the wrong place.
+   `reports/display-names.csv` is 48 MB and that is fine.
+3. **Analyse the CSV, and state the decision explicitly.**
+
+**This supersedes reaching for a hand-picked example.** Looking at one record and
+generalising is the failure this rule exists to stop — and note it does *not*
+contradict § *How this project works now*, which is about Emma interpreting
+**records** she has been shown. Showing her a record is how a rule gets decided;
+building the CSV is how the phenomenon gets measured. Do both, in that order:
+records first so she can see what the thing is, then the full census.
+
 ### Reading a Wikidata statement: the value is not the statement
 
 **Qualifiers and references carry the genealogy.** Reading only `mainsnak` and
