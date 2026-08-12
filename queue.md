@@ -30,9 +30,15 @@ delete-when-done rule is about *my* steps. Status is tracked here instead:
 | 2 · derive name items | **blocked** on decision 12 — resolving a string to an existing item is impossible offline |
 | 3 · occupation | **done** — `reports/derived-facts.csv`; 31,401 people carry one |
 | 4 · places and dates | **done** — same file. birth 150,203 dates / 58,562 places · death 118,918 / 38,990 · burial 11,907 / 16,360 |
-| 5 · family links | **next, unblocked** — including the invent-two-parents rule for parentless sibling groups |
-| 6 · marriage | unblocked — `reports/marriages.md` already has the cases and the gaps |
+| 5 · family links | **done** — `reports/derived-family.csv`; 231,472 fathers, 178,656 mothers, 125,890 spouses. The invent-two-parents case is **250 families** → `reports/invented-parents.csv`, 500 placeholders. **Only 17 of the 250 have a child carrying a QID**, so "geni linked if possible" rarely applies |
+| 6 · marriage | **next, unblocked** — `reports/marriages.md` already has the cases and the gaps |
 | 7 · everything else | *"cool but not necessary"* |
+
+**One number from item 5 that her rule does not reach.** A sibling group with no
+parents is **250 families**. A family with **exactly one** recorded parent is
+**40,884** — 36,097 father-only, 4,787 mother-only. Whether the missing one is
+invented too is not stated, and the unaddressed population is **163×** the
+addressed one. `reports/family.md` has it. **NEEDS-DECISION — Emma.**
 
 **One number from item 4 that bears on a decision she already made.** She chose
 *ignore `ADDR`, use `PLAC` only*. Applied, that costs **101,579 events their

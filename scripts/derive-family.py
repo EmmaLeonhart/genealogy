@@ -44,6 +44,25 @@ OUT_INVENTED = REPO_ROOT / "reports" / "invented-parents.csv"
 csv.field_size_limit(10_000_000)
 
 
+def join_names(names: list[str]) -> str:
+    """`a and b`, `a and b and c`, then `a, b, c and d`.
+
+    Emma gave the label format as *"father of x and y"*, which fixes the
+    two-child case and leaves the rest to follow. Extracted from ``main`` so the
+    rule is testable: this string becomes the label of a **created** item, and a
+    silent change to it changes data we are inventing.
+    """
+    if not names:
+        return ""
+    if len(names) <= 3:
+        return " and ".join(names)
+    return ", ".join(names[:-1]) + " and " + names[-1]
+
+
+def parent_label(role: str, names: list[str]) -> str:
+    return f"{role} of {join_names(names)}"
+
+
 def main() -> int:
     qids: dict[str, str] = {}
     if PAIRS.exists():
@@ -167,11 +186,9 @@ def main() -> int:
                          "children_with_qid"])
         for fam_id, chil in needs_parents:
             names = [name_of(c) for c in chil]
-            joined = " and ".join(names) if len(names) <= 3 else (
-                ", ".join(names[:-1]) + " and " + names[-1])
             linked = sum(1 for c in chil if c in qids)
             for role in ("father", "mother"):
-                writer.writerow([fam_id, role, f"{role} of {joined}",
+                writer.writerow([fam_id, role, parent_label(role, names),
                                  " | ".join(chil), len(chil), linked])
 
     with_father = sum(1 for p in people if p in father)
