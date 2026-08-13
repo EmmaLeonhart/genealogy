@@ -44,9 +44,13 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(REPO_ROOT / "src"))
+
 SOURCE = REPO_ROOT / "reports" / "display-names.csv"
 OUT_CSV = REPO_ROOT / "reports" / "derived-labels.csv"
 OUT_MD = REPO_ROOT / "reports" / "labels.md"
+#: Emma's scratchpad. Holds identities and corrections no query here can produce.
+RESOLUTIONS = REPO_ROOT / "entity_resolution.md"
 
 csv.field_size_limit(10_000_000)
 
@@ -97,6 +101,21 @@ def alias_from_married_name(givn: str, marnm: str, nsfx: str) -> str:
 
 
 def main() -> int:
+    # A Geni export is a snapshot. A profile renamed afterwards keeps its old
+    # name in every GEDCOM already taken, and no amount of re-parsing fixes it —
+    # only a correction recorded by hand can. Applying it here, at derivation,
+    # leaves the exports untouched as the record of what Geni actually said.
+    corrected: dict[str, str] = {}
+    if RESOLUTIONS.exists():
+        from genimerge import entities
+
+        parsed = entities.parse(RESOLUTIONS.read_text(encoding="utf-8"))
+        corrected = parsed.corrected_names()
+        print(f"{len(corrected):,} name corrections from {RESOLUTIONS.name}", flush=True)
+        if parsed.unparsed:
+            print(f"  WARNING: {len(parsed.unparsed)} unparsed entries in that file",
+                  flush=True)
+
     by_person: dict[str, list[dict]] = defaultdict(list)
     with open(SOURCE, encoding="utf-8", newline="") as handle:
         for row in csv.DictReader(handle):
@@ -107,6 +126,7 @@ def main() -> int:
     groups: Counter[str] = Counter()
     coverage: Counter[str] = Counter()
     alias_count = 0
+    corrections_applied: list[str] = []
     rows = []
 
     for geni_id, records in by_person.items():
@@ -140,6 +160,14 @@ def main() -> int:
         # Wikidata, which is what gave it away.
         latin = labels.get("Latin") or []
         mixed = labels.get("mixed") or []
+
+        # A hand-recorded correction outranks every name in the export, and goes
+        # to the front rather than replacing the list: the stale names stay
+        # visible in `further_latin_names` instead of being erased.
+        correction = corrected.get(geni_id)
+        if correction:
+            latin = [correction] + [n for n in latin if n != correction]
+            corrections_applied.append(geni_id)
         cjk = labels.get("CJK") or []
         other = labels.get("other") or []
         if aliases:
@@ -248,6 +276,20 @@ def main() -> int:
     add("reaches only 26.8%. Deriving the label is easy; the derived label disagreeing")
     add("with Wikidata's is the normal case, not the exception.")
     add("")
+    if corrections_applied:
+        add(f"## Name corrections applied — {len(corrections_applied)}")
+        add("")
+        add("A Geni export is a snapshot: a profile renamed afterwards keeps its old name")
+        add("in every GEDCOM already taken. `entity_resolution.md` records the current")
+        add("name by hand, and it is applied **here, at derivation** — the exports stay")
+        add("untouched as the record of what Geni actually said, and the superseded name")
+        add("stays visible in `further_latin_names` rather than being erased.")
+        add("")
+        add("| geni | corrected to |")
+        add("| --- | --- |")
+        for gid in corrections_applied:
+            add(f"| `{gid}` | {corrected[gid]} |")
+        add("")
     add("## Not done here")
     add("")
     add("- **No Japanese/Chinese split.** Needs the catalogue above plus a decision.")

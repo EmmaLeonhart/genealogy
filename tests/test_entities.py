@@ -141,3 +141,100 @@ def test_the_real_file_parses_completely():
     # Wikidata item would be a duplicate-profile claim, not a resolution.
     qids = [r.qid for r in parsed.resolutions]
     assert len(qids) == len(set(qids))
+
+
+# --- name corrections: the Geni side is stale, not Wikidata's -------------
+
+CORRECTION = """\
+Emma Bishop
+https://www.geni.com/people/Emma-Bishop/6000000087535357291
+https://www.wikidata.org/wiki/Q140568870
+
+the name on that one is "Emma Leonhart", Emma /Leonhart/ - already corrected on
+geni, the exports here are just old.
+"""
+
+
+def test_a_name_correction_is_keyed_by_geni_id_not_qid():
+    """It corrects *our* stale export, not a label on Wikidata.
+
+    A Geni export is a snapshot: a profile renamed afterwards keeps its old name
+    in every GEDCOM already taken. `LabelEdit` cannot express that — it is keyed
+    by QID, and the person may have no item at all.
+    """
+    parsed = entities.parse(CORRECTION)
+    assert len(parsed.name_corrections) == 1
+    correction = parsed.name_corrections[0]
+    assert correction.geni_id == "6000000087535357291"
+    assert correction.text == "Emma Leonhart"
+    # and it is not mistaken for a Wikidata label edit
+    assert parsed.labels == []
+
+
+def test_the_resolution_still_parses_alongside_the_correction():
+    parsed = entities.parse(CORRECTION)
+    assert [(r.geni_id, r.qid) for r in parsed.resolutions] == [
+        ("6000000087535357291", "Q140568870")
+    ]
+
+
+def test_a_correction_requires_quotes():
+    """Without them it would rename somebody to the rest of the sentence."""
+    parsed = entities.parse(
+        "https://www.geni.com/people/x/6000000087535357291\n"
+        "the name on that one is Emma Leonhart and she moved to Vancouver\n"
+    )
+    assert parsed.name_corrections == []
+
+
+def test_two_profiles_split_into_two_blocks_and_the_correction_stays_local():
+    """Written after the first version of this test asserted the wrong thing.
+
+    I expected two profiles in one block to make a correction ambiguous and be
+    reported unparsed. They never share a block: `_entries` starts a new one at
+    each new Geni profile, so the correction attaches to the block it is written
+    in — the one immediately above it.
+
+    The `len(geni) == 1` guard in `parse` is therefore defensive rather than
+    reachable through this shape, and is kept for that reason rather than
+    deleted as dead.
+    """
+    parsed = entities.parse(
+        "https://www.geni.com/people/x/6000000087535357291\n"
+        "https://www.geni.com/people/y/6000000001835522164\n"
+        'the name on that one is "Emma Leonhart"\n'
+    )
+    assert [(c.geni_id, c.text) for c in parsed.name_corrections] == [
+        ("6000000001835522164", "Emma Leonhart")
+    ]
+
+
+@pytest.mark.parametrize(
+    "line",
+    [
+        'the name on that one is "Emma Leonhart"',
+        'the name is "Emma Leonhart"',
+        'real name is "Emma Leonhart"',
+        'rename to "Emma Leonhart"',
+    ],
+)
+def test_the_phrasings_that_are_understood(line):
+    parsed = entities.parse(
+        f"https://www.geni.com/people/x/6000000087535357291\n{line}\n"
+    )
+    assert [c.text for c in parsed.name_corrections] == ["Emma Leonhart"]
+
+
+def test_corrected_names_lets_a_later_entry_win():
+    """A second correction on one profile is a further correction, not a rival."""
+    parsed = entities.parse(
+        'https://www.geni.com/people/x/6000000087535357291\nrename to "First"\n\n'
+        'https://www.geni.com/people/x/6000000087535357291\nrename to "Second"\n'
+    )
+    assert parsed.corrected_names() == {"6000000087535357291": "Second"}
+
+
+def test_the_real_file_carries_the_correction():
+    parsed = entities.parse(REAL.read_text(encoding="utf-8"))
+    assert parsed.corrected_names().get("6000000087535357291") == "Emma Leonhart"
+    assert parsed.unparsed == []

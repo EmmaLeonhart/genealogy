@@ -75,6 +75,29 @@ _LABEL_PATTERNS = (
     re.compile(r'^\s*change\s+(?:his|her|their|the)\s+name\s+to\s+"?(?P<text>[^"]+)"?\s*$', re.I),
 )
 
+#: Corrections to the **Geni** side, not to a Wikidata label.
+#:
+#: An export is a snapshot: a profile renamed on Geni afterwards keeps its old
+#: name in every GEDCOM already taken, and no re-parse fixes that. Emma,
+#: 2026-08-12, on her own profile: *"the name on that one is 'Emma Leonhart' …
+#: already corrected on geni, the exports here are just old."*
+#:
+#: Keyed by **Geni ID**, because that is what is wrong — the person may have no
+#: Wikidata item at all, and `LabelEdit` cannot express a correction to a record
+#: that exists only on our side.
+#:
+#: The quotes are required. A correction that silently swallowed the rest of a
+#: sentence would rename somebody to a fragment of prose.
+_NAME_CORRECTION_PATTERNS = (
+    re.compile(
+        r'^\s*the name (?:on |for |of )?(?:that one|this one|them|him|her|it|this)?\s*'
+        r'is\s+"(?P<text>[^"]+)"',
+        re.I,
+    ),
+    re.compile(r'^\s*(?:the )?real name (?:is|was)\s+"(?P<text>[^"]+)"', re.I),
+    re.compile(r'^\s*rename (?:to|as)\s+"(?P<text>[^"]+)"', re.I),
+)
+
 
 @dataclass(frozen=True)
 class Resolution:
@@ -101,6 +124,24 @@ class LabelEdit:
 
 
 @dataclass(frozen=True)
+class NameCorrection:
+    """The Geni record's name is stale; this is the current one.
+
+    Distinct from :class:`LabelEdit`, which asks for an edit *on Wikidata*. This
+    asks for our own derived data to stop repeating something an old export
+    said. Nothing is edited anywhere; the correction overrides at derivation.
+    """
+
+    geni_id: str
+    text: str
+    context: str = ""
+
+    @property
+    def url(self) -> str:
+        return profile_url(self.geni_id)
+
+
+@dataclass(frozen=True)
 class Unparsed:
     """A line that named something but was not understood.
 
@@ -116,7 +157,16 @@ class Unparsed:
 class ResolutionFile:
     resolutions: list[Resolution] = field(default_factory=list)
     labels: list[LabelEdit] = field(default_factory=list)
+    name_corrections: list[NameCorrection] = field(default_factory=list)
     unparsed: list[Unparsed] = field(default_factory=list)
+
+    def corrected_names(self) -> dict[str, str]:
+        """``geni_id -> corrected name``, last entry winning.
+
+        Later wins for the same reason merges do: a second correction on one
+        profile is a further correction, not a competing one.
+        """
+        return {c.geni_id: c.text for c in self.name_corrections}
 
     @property
     def qids(self) -> set[str]:
@@ -164,6 +214,14 @@ def _label_edit_in(line: str) -> str | None:
     return None
 
 
+def _name_correction_in(line: str) -> str | None:
+    for pattern in _NAME_CORRECTION_PATTERNS:
+        found = pattern.match(line)
+        if found:
+            return found.group("text").strip()
+    return None
+
+
 def parse(text: str) -> ResolutionFile:
     """Read resolutions, label edits and anything unrecognised out of the prose.
 
@@ -183,6 +241,9 @@ def parse(text: str) -> ResolutionFile:
             qids = list(dict.fromkeys(BARE_QID_RE.findall(block)))
 
         labels = [t for line in block.splitlines() if (t := _label_edit_in(line))]
+        corrections = [
+            t for line in block.splitlines() if (t := _name_correction_in(line))
+        ]
 
         if not geni and not qids:
             continue  # prose with nothing machine-readable in it: the preamble
@@ -198,6 +259,20 @@ def parse(text: str) -> ResolutionFile:
                     "order would be a guess",
                 )
             )
+
+        for text_value in corrections:
+            if len(geni) == 1:
+                result.name_corrections.append(
+                    NameCorrection(geni[0], text_value, context=block)
+                )
+            else:
+                result.unparsed.append(
+                    Unparsed(
+                        block,
+                        f"a name correction needs exactly one Geni profile to apply to; "
+                        f"this block names {len(geni)}",
+                    )
+                )
 
         for text_value in labels:
             if len(qids) == 1:

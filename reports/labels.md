@@ -64,6 +64,18 @@ English regnal form, and a perfect oracle picking among a person's Latin names
 reaches only 26.8%. Deriving the label is easy; the derived label disagreeing
 with Wikidata's is the normal case, not the exception.
 
+## Name corrections applied — 1
+
+A Geni export is a snapshot: a profile renamed afterwards keeps its old name
+in every GEDCOM already taken. `entity_resolution.md` records the current
+name by hand, and it is applied **here, at derivation** — the exports stay
+untouched as the record of what Geni actually said, and the superseded name
+stays visible in `further_latin_names` rather than being erased.
+
+| geni | corrected to |
+| --- | --- |
+| `6000000087535357291` | Emma Leonhart |
+
 ## Not done here
 
 - **No Japanese/Chinese split.** Needs the catalogue above plus a decision.
