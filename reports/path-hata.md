@@ -8,7 +8,7 @@ Every step is held: this path is walkable inside our own data.
 
 | # | name | relation | in the tree | matched | component |
 | ---: | --- | --- | --- | --- | ---: |
-| 1 | You | — | [Eric Borsheim](https://www.geni.com/people/x/6000000087535357291) | id | 1 |
+| 1 | You | — | [Emma Leonhart](https://www.geni.com/people/x/6000000087535357291) | id | 1 |
 | 2 | Richard Wade Borsheim | your father | [Richard Wade Borsheim](https://www.geni.com/people/x/6000000177921459056) | id | 1 |
 | 3 | Randolph Paulus Borsheim | his father | [Randolph Paulus Borsheim](https://www.geni.com/people/x/6000000177921459078) | id | 1 |
 | 4 | Theoline Henrika Borsheim | his mother | [Theoline Henrika Birkland](https://www.geni.com/people/x/6000000169037819865) | id | 1 |

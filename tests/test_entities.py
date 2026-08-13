@@ -146,8 +146,8 @@ def test_the_real_file_parses_completely():
 # --- name corrections: the Geni side is stale, not Wikidata's -------------
 
 CORRECTION = """\
-Emma Bishop
-https://www.geni.com/people/Emma-Bishop/6000000087535357291
+Emma Leonhart
+https://www.geni.com/people/Emma-Leonhart/6000000087535357291
 https://www.wikidata.org/wiki/Q140568870
 
 the name on that one is "Emma Leonhart", Emma /Leonhart/ - already corrected on

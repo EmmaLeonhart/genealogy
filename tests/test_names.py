@@ -22,7 +22,7 @@ TREE = """0 HEAD
 2 SURN Olavsson
 1 RFN geni:2
 0 @I3@ INDI
-1 NAME Eric /Borsheim/
+1 NAME Emma /Leonhart/
 2 GIVN Eric
 2 SURN Borsheim
 1 NAME Eric Wade /Borsheim/

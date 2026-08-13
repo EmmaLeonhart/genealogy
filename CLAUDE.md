@@ -186,7 +186,7 @@ a sixth would land silently. What `Bio` selects for is **not established** and
 should not be guessed; the one export of it holds 4056 people, the same as the
 `Descendants`, `Ancestors` and `BloodTree` takes minutes either side of it, so
 its size says nothing about its shape. The first three exports are all three
-styles of the *same* seed, Eric Borsheim `6000000087535357291`, which is also
+styles of the *same* seed, Emma Leonhart `6000000087535357291`, which is also
 their `SUBM` xref. A second `Forest` export from a different seed therefore
 arrives with a filename already taken. Disambiguate by appending
 the seed's Geni profile ID — `export-Forest-6000000226977233850.ged` — since the

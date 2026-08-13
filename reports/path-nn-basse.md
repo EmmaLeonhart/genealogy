@@ -8,7 +8,7 @@ Every step is held: this path is walkable inside our own data.
 
 | # | name | relation | in the tree | matched | component |
 | ---: | --- | --- | --- | --- | ---: |
-| 1 | You | — | [Eric Borsheim](https://www.geni.com/people/x/6000000087535357291) | id | 1 |
+| 1 | You | — | [Emma Leonhart](https://www.geni.com/people/x/6000000087535357291) | id | 1 |
 | 2 | Richard Wade Borsheim | your father | [Richard Wade Borsheim](https://www.geni.com/people/x/6000000177921459056) | id | 1 |
 | 3 | Caroline Signe Borsheim | his mother | [Caroline Signe Hoknes](https://www.geni.com/people/x/6000000177921459072) | id | 1 |
 | 4 | Alfred Ingerman Hoknes | her father | [Alfred Ingerman Hoknes](https://www.geni.com/people/x/6000000015117490925) | id | 1 |
@@ -43,7 +43,7 @@ Every step is held: this path is walkable inside our own data.
 | 33 | Christine Olufsdatter Blaa | her daughter | [Christine Olufsdatter Blaa](https://www.geni.com/people/x/6000000034771514143) | id | 1 |
 | 34 | Christine Nielsdatter Basse, (Nye) | her daughter | [Christine Nielsdatter Basse](https://www.geni.com/people/x/6000000044835902936) | id | 1 |
 | 35 | NN Basse | her child | [NN](https://www.geni.com/people/x/6000000209053003954) | id | 1 |
-| 36 | You | — | [Eric Borsheim](https://www.geni.com/people/x/6000000087535357291) | repeat | 1 |
+| 36 | You | — | [Emma Leonhart](https://www.geni.com/people/x/6000000087535357291) | repeat | 1 |
 | 37 | Richard Wade Borsheim | your father | [Richard Wade Borsheim](https://www.geni.com/people/x/6000000177921459056) | repeat | 1 |
 | 38 | Caroline Signe Borsheim | his mother | [Caroline Signe Hoknes](https://www.geni.com/people/x/6000000177921459072) | repeat | 1 |
 | 39 | Alfred Ingerman Hoknes | her father | [Alfred Ingerman Hoknes](https://www.geni.com/people/x/6000000015117490925) | repeat | 1 |

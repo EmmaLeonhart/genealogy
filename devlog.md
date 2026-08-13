@@ -1005,7 +1005,7 @@ Two things about it changed the conventions rather than just adding data.
 
 **`Forest` is a style, not a person.** The three exports already in
 `data_lake/` — `Forest`, `Ancestors`, `BloodTree` — are all rooted at the *same*
-first `INDI` record, Eric Borsheim `6000000087535357291`, which is also their
+first `INDI` record, Emma Leonhart `6000000087535357291`, which is also their
 `SUBM` xref. They are three shapes of one seed. So Geni's filename is
 `export-<style>.ged` and carries nothing about who the export is *of*, and the
 fourth export — rooted at Iver Mellegård `6000000226977233850`, who appears in
@@ -3456,7 +3456,7 @@ So a person walked **twice on one path** was reported absent the second time. A
 saved Geni page can hold two relationship paths, and `path-from-html` writes both
 into one file, so the second chain restarts at "You" and re-walks the opening
 people. `paths/nn-basse.tsv` does exactly this at steps 36-44 — and the tool was
-therefore reporting **Eric Borsheim, the account owner and the seed of the first
+therefore reporting **Emma Leonhart, the account owner and the seed of the first
 three exports, as a person missing from our tree**. `connectors` then read that
 run as a nine-person bridge and ranked it as an export worth taking.
 

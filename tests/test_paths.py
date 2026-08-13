@@ -231,7 +231,7 @@ def jimmu():
 @pytestmark_real
 def test_the_path_file_runs_from_the_account_owner_to_jimmu(jimmu):
     first, last = jimmu.results[0], jimmu.results[-1]
-    assert first.person.geni_id == "6000000087535357291", "step 1 is Eric Borsheim"
+    assert first.person.geni_id == "6000000087535357291", "step 1 is Emma Leonhart"
     assert last.step.name == "Emperor Jimmu"
     assert last.person.geni_id == "6000000001829589817"
 

@@ -38,7 +38,7 @@ EVENT_TAGS = {
 class Name:
     """One ``NAME`` line. People routinely have several."""
 
-    #: the whole GEDCOM name, e.g. ``"Eric /Borsheim/"``
+    #: the whole GEDCOM name, e.g. ``"Emma /Leonhart/"``
     full: str
     given: str = ""
     surname: str = ""
@@ -48,7 +48,7 @@ class Name:
 
     @property
     def display(self) -> str:
-        """``"Eric Borsheim"`` — the slashes around the surname removed."""
+        """``"Emma Leonhart"`` — the slashes around the surname removed."""
         if self.given or self.surname:
             return " ".join(p for p in (self.given, self.surname) if p)
         return self.full.replace("/", "").strip()

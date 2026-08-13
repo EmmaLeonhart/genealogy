@@ -8,7 +8,7 @@ Every step is held: this path is walkable inside our own data.
 
 | # | name | relation | in the tree | matched | component |
 | ---: | --- | --- | --- | --- | ---: |
-| 1 | You | — | [Eric Borsheim](https://www.geni.com/people/x/6000000087535357291) | id | 1 |
+| 1 | You | — | [Emma Leonhart](https://www.geni.com/people/x/6000000087535357291) | id | 1 |
 | 2 | Richard Wade Borsheim | your father | [Richard Wade Borsheim](https://www.geni.com/people/x/6000000177921459056) | id | 1 |
 | 3 | Caroline Signe Borsheim | his mother | [Caroline Signe Hoknes](https://www.geni.com/people/x/6000000177921459072) | id | 1 |
 | 4 | Alfred Ingerman Hoknes | her father | [Alfred Ingerman Hoknes](https://www.geni.com/people/x/6000000015117490925) | id | 1 |

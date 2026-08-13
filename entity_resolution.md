@@ -30,10 +30,8 @@ https://www.geni.com/people/%E6%89%B6%E9%A4%98/6000000186285688286?through=60000
 add engligh label "Buyeo Taebi"
 
 
-Emma Bishop
-https://www.geni.com/people/Emma-Bishop/6000000087535357291
+Emma Leonhart
+https://www.geni.com/people/Emma-Leonhart/6000000087535357291
 https://www.wikidata.org/wiki/Q140568870
 
-the name on that one is "Emma Leonhart", Emma /Leonhart/ — already corrected on
-geni, the exports here are just old. our derived label says "Eric Borsheim" and
-is wrong.
+the name on that one is "Emma Leonhart", Emma /Leonhart/

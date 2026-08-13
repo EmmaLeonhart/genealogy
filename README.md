@@ -55,7 +55,7 @@ can split it again — that is normal, not a defect. Disjoint components do not
 conflict; they just never meet.
 
 **How the two halves were joined.** `reports/path-jimmu.md` checks an 83-step
-Geni relationship path — Eric Borsheim to Emperor Jimmu — against the merged
+Geni relationship path — Emma Leonhart to Emperor Jimmu — against the merged
 tree, joining on the profile ID at every step. It went **62/83 held, then 77/83,
 then 83/83**: a 21-step gap attacked from both ends, then closed by two exports
 seeded in the six people that were left. Every step of that path is now walkable
