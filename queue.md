@@ -1267,6 +1267,42 @@ profiles on Geni. Belongs with the postponed Geni-side merge queue.
 
 ---
 
+## 2026-08-13 — restore the lost link to two disconnected clusters (Emma)
+
+Emma sent herself two Geni profiles that sit in **large but currently
+disconnected** components of the merged tree, and believes each was once linked
+to her / the main tree — the connecting relationship existing in one of the
+saved HTML files (a relationship-path page, an ancestor page, or a `geni_pages/`
+save) before that edge was removed on Geni:
+
+- **wife of Baruch Jafe** — `6000000227145774838`
+  <https://www.geni.com/people/wife-of-Baruch-Jafe/6000000227145774838>
+- **wife of Samuel Standen** — `6000000227145420853`
+  <https://www.geni.com/people/wife-of-Samuel-Standen/6000000227145420853>
+
+**Her framing (2026-08-13):** whatever relation was removed from Geni will, once
+found, go **back into the synoptic tree** and then into the later Wikidata edits.
+So the deliverable is the missing connecting edge(s), not an analysis.
+
+**Steps:**
+
+1. Confirm both IDs are in the corpus and identify the component each sits in
+   over the merged tree (are these two big components, and are they distinct from
+   the main one?).
+2. Enumerate every profile ID in each of the two clusters.
+3. Cross-check those IDs against **everything else in the repo** — all other
+   exports, every saved page under `missing ancestors/` and `geni_pages/`, and
+   `paths/` — looking for any person who appears both in a cluster and in a file
+   that also reaches Emma / the main component. That shared person (or the edge a
+   saved page records) is the lost link.
+4. If a saved page holds the connecting relationship, extract it the repo's way
+   (`path-from-html`) so the edge becomes data, and note what re-connects the
+   component. Report the found link(s) to Emma before merging anything.
+
+**Not-done tag:** NEEDS-INVESTIGATION — the connecting edge is not yet located.
+
+---
+
 ## Always last — restart the three crons and summarize
 
 **These two items stay pinned to the tail of the queue at all times** — below every real work item:
