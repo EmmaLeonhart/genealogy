@@ -27,7 +27,7 @@ delete-when-done rule is about *my* steps. Status is tracked here instead:
 | item | state |
 | --- | --- |
 | 1 · derive labels | **done** — `reports/derived-labels.csv`, 298,591 rows; `reports/labels.md` carries the catalogue. 49,184 people (16.5%) have no derivable English label; 47,125 gain a married-name alias |
-| 2 · derive name items | **blocked** on decision 12 — resolving a string to an existing item is impossible offline |
+| 2 · derive name items | **possible now, and measured — `reports/name-resolution.md`.** The 882,477-label fetch made the lookup exist. It resolves **30.7% of given-name occurrences and 27.3% of surname occurrences**, but only 9.0% and 14.6% of *distinct* strings. **The unresolved head is mostly not names** — `I`, `II`, `of`, `NN`, `/`, `Rd.` — so the true rate for real names is higher and is *not* measured. Separating names from non-names is the missing step, and it is `todo.md` § 4's trap seen from the other side |
 | 3 · occupation | **done** — `reports/derived-facts.csv`; 31,401 people carry one |
 | 4 · places and dates | **done** — same file. birth 150,203 dates / 58,562 places · death 118,918 / 38,990 · burial 11,907 / 16,360 |
 | 5 · family links | **done** — `reports/derived-family.csv`; 231,472 fathers, 178,656 mothers, 125,890 spouses. The invent-two-parents case is **250 families** → `reports/invented-parents.csv`, 500 placeholders. **Only 17 of the 250 have a child carrying a QID**, so "geni linked if possible" rarely applies |

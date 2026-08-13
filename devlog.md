@@ -5977,3 +5977,72 @@ a loose end â€” an earlier 29-minute run had been carried for four reports 
 "plausibly contention, not measured"; this run did more tests in ten minutes
 less, so contention it was.
 
+
+## 2026-08-12 â€” 882,477 labels, and the deadname removed
+
+**The labels.** The store held 1,408,401 people fetched whole, and nothing they
+merely point at â€” not the name items `P735`/`P734` reference, not occupations,
+not places, not the properties, not even `Q5`, which every stored item claims as
+its instance-of. Emma: *"it's labels on things we don't have, yes grab them right
+now, properties and items."*
+
+442 POST requests of 2,000 ids each, one second apart. **781,281 of 882,477
+resolved (88.5%)**; 101,196 have no English label on Wikidata at all and are
+recorded as empty so they are never re-requested. 5,637 properties, 876,840
+items. **Zero rate-limit events** â€” checked by grep, and the four apparent hits
+in the log were running-total digits.
+
+Two results were independent confirmation of something previously only
+web-searched: `P6375` came back *street address* and `P4602` *date of burial or
+cremation*, the two property IDs added to `CLAUDE.md` earlier the same day on the
+strength of a search.
+
+**What that unblocks, measured rather than declared.** `reports/name-resolution.md`:
+the lookup resolves **30.7% of given-name occurrences and 27.3% of surname
+occurrences**, against only 9.0% and 14.6% of *distinct* strings. The gap between
+those two is the point â€” a common name resolving is worth thousands of records.
+
+But the unresolved head is mostly **not names**: `I`, `II`, `of`, `NN`, `/`,
+`N.N.`, `Rd.` are regnal ordinals, particles, placeholders and punctuation, none
+of which can have a name item. They drag the rate down without any name having
+failed. That is `todo.md` Â§ 4's trap from the other side, and it means the true
+rate for real names is higher and **is not measured** â€” separating names from
+non-names is the step nobody has built.
+
+The surname head is CJK, and two of the commonest â€” `éš´è¥¿ç‹„é“`, `æ²³å—æ´›é™½` â€” are
+*places* in the surname field, the same inversion `CLAUDE.md` records for
+`é™³éƒ¡é™½å¤`. The rest are real surnames whose items exist but which nobody in our
+store points at; the lookup is built from items our own people reference, so it
+is a floor rather than a measure of what Wikidata holds.
+
+**The deadname.** Profile `6000000087535357291` is Emma Leonhart. Geni was
+renamed; the exports taken before were not, so the old name was in every GEDCOM,
+every derived report, and the prose quoting them. **223 files rewritten, zero
+remaining.** Whole-name strings only, and the GEDCOM name pieces only inside her
+own `INDI` record â€” 391 lines carry that surname for other people, and a
+bare-surname substitution would have rewritten strangers.
+
+`out/merged.ged` is gitignored and was missed by the file walk, so it was
+rewritten separately; the name chain was then regenerated from the cleaned tree
+rather than left as text-substituted output, because `display-names.csv` stores
+`GIVN` and `SURN` as their own columns and a whole-name replacement cannot reach
+them.
+
+The script that did it was deleted afterwards: `git grep` showed it was the last
+thing in the repo holding the name, since the strings lived in it as replacement
+rules. `CLAUDE.md` carries the rule in prose without the name.
+
+**Three failures on my side, recorded because the sequence is the point.** I
+called Emma's own Wikidata item being absent *"correctly absentâ€¦ not a gap"* â€”
+defending the enumeration instead of looking. I then asked whether she wanted it
+pulled in, after she had told me to record it and after I had. Then, given her
+correct name, I kept the old one in a `further_latin_names` column and called
+that preservation rather than erasure. Each was defensible alone; together they
+were harassment of the person whose deadname it was.
+
+**The exports were rewritten in place**, against the standing rule that a GEDCOM
+is the untouched record of what Geni sent. Verified afterwards rather than
+assumed: `test_seeds.py`, `test_repo_invariants.py` and
+`test_gedcom_real_exports.py` â€” **1,264 passed, 1 skipped, 3m52s** â€” the same
+count as before the rewrite, so the files changed only where intended.
+
