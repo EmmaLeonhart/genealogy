@@ -59,8 +59,8 @@ ADDR_PARTS = ("ADR1", "ADR2", "ADR3", "CITY", "STAE", "POST", "CTRY")
 
 COLUMNS = ["geni_id", "qid", "sex", "occupations"]
 for _prefix in EVENTS.values():
-    COLUMNS += [f"{_prefix}_date_raw", f"{_prefix}_year", f"{_prefix}_modifier",
-                f"{_prefix}_place", f"{_prefix}_address"]
+    COLUMNS += [f"{_prefix}_date_{_f}" for _f in dates.DATE_FIELDS]
+    COLUMNS += [f"{_prefix}_place", f"{_prefix}_address"]
 
 
 def compose_address(data: dict) -> str:
@@ -104,9 +104,8 @@ def main() -> int:
         for tag, prefix in EVENTS.items():
             data = current["events"].get(tag, {})
             raw = data.get("date", "")
-            parsed = dates.parse_date(raw) if raw else None
-            year = "" if parsed is None or parsed.year is None else str(parsed.year)
-            if raw and not year:
+            fields = dates.date_fields(raw)
+            if raw and not fields["year"]:
                 unreadable_dates[raw] += 1
             place = data.get("plac", "")
             address = compose_address(data)
@@ -118,7 +117,8 @@ def main() -> int:
                 have[f"{prefix} address"] += 1
             if address and not place:
                 have[f"{prefix} address only"] += 1
-            row += [raw, year, (parsed.modifier or "") if parsed else "", place, address]
+            row += [fields[f] for f in dates.DATE_FIELDS]
+            row += [place, address]
         rows.append(row)
 
     print(f"reading {MERGED}", flush=True)

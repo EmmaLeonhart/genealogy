@@ -28,10 +28,23 @@ from dataclasses import dataclass
 __all__ = [
     "GedcomDate",
     "parse_date",
+    "date_fields",
+    "DATE_FIELDS",
     "PRECISION_DAY",
     "PRECISION_MONTH",
     "PRECISION_YEAR",
 ]
+
+#: The columns a derived date occupies, in order.
+#:
+#: One definition, because two scripts writing "a date" to CSV independently is
+#: how half of one gets lost. `derive-facts.py` originally wrote only raw, year
+#: and modifier — so `BET 1400 AND 1410` kept its start, reported "between", and
+#: **dropped 1410 entirely**, and a day-precision date was indistinguishable from
+#: a bare year. Emma, 2026-08-12: *"you basically completely bullshit most of the
+#: dates and have been persistently ignoring the actual properties of the dates
+#: … the before, after, between, and about."*
+DATE_FIELDS = ("raw", "iso", "precision", "year", "month", "day", "year_end", "modifier")
 
 PRECISION_YEAR = 9
 PRECISION_MONTH = 10
@@ -177,3 +190,32 @@ def parse_date(value: str | None) -> GedcomDate:
         return GedcomDate(raw=raw)
     year, month, day = parsed
     return GedcomDate(raw=raw, year=year, month=month, day=day, modifier=modifier)
+
+
+def date_fields(raw: str | None) -> dict[str, str]:
+    """Every part of a GEDCOM date, as strings, keyed by :data:`DATE_FIELDS`.
+
+    The whole date or nothing. A caller that writes a subset of these is
+    silently discarding what the grammar recovered — a range losing its end, or
+    a day-precision date becoming indistinguishable from a bare year.
+
+    An unparseable date keeps its ``raw`` text and leaves the rest empty, so a
+    date we cannot read never becomes a date we guessed.
+    """
+    empty = {name: "" for name in DATE_FIELDS}
+    if not raw:
+        return empty
+
+    empty["raw"] = raw
+    parsed = parse_date(raw)
+    if parsed is None or parsed.year is None:
+        return empty
+
+    empty["iso"] = parsed.iso() or ""
+    empty["precision"] = "" if parsed.precision is None else str(parsed.precision)
+    empty["year"] = str(parsed.year)
+    empty["month"] = "" if parsed.month is None else str(parsed.month)
+    empty["day"] = "" if parsed.day is None else str(parsed.day)
+    empty["year_end"] = "" if parsed.year_end is None else str(parsed.year_end)
+    empty["modifier"] = parsed.modifier or ""
+    return empty

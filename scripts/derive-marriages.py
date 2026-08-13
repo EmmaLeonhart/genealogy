@@ -78,9 +78,8 @@ def main() -> int:
         for tag, prefix in EVENTS.items():
             data = current["events"].get(tag, {})
             raw = data.get("date", "")
-            parsed = dates.parse_date(raw) if raw else None
-            year = "" if parsed is None or parsed.year is None else str(parsed.year)
-            if raw and not year:
+            fields = dates.date_fields(raw)
+            if raw and not fields["year"]:
                 unreadable[raw] += 1
             if raw:
                 have[f"{prefix} date"] += 1
@@ -88,8 +87,8 @@ def main() -> int:
                 have[f"{prefix} place"] += 1
             if tag in current["events"]:
                 have[prefix] += 1
-            families_row += [raw, year, (parsed.modifier or "") if parsed else "",
-                             data.get("plac", "")]
+            families_row += [fields[f] for f in dates.DATE_FIELDS]
+            families_row.append(data.get("plac", ""))
         families_row.append(current["children"])
         both = bool(husb and wife)
         families_row.append("yes" if both else "no")
@@ -137,16 +136,19 @@ def main() -> int:
     OUT_CSV.parent.mkdir(parents=True, exist_ok=True)
     columns = ["family", "husband", "husband_qid", "wife", "wife_qid"]
     for prefix in EVENTS.values():
-        columns += [f"{prefix}_date_raw", f"{prefix}_year", f"{prefix}_modifier",
-                    f"{prefix}_place"]
+        columns += [f"{prefix}_date_{f}" for f in dates.DATE_FIELDS]
+        columns.append(f"{prefix}_place")
     columns += ["children", "both_spouses_named", "both_spouses_linked"]
     with open(OUT_CSV, "w", encoding="utf-8", newline="") as handle:
         writer = csv.writer(handle)
         writer.writerow(columns)
         writer.writerows(rows)
 
-    both_named = sum(1 for r in rows if r[14] == "yes")
-    both_linked = sum(1 for r in rows if r[15] == "yes")
+    # Counted from the end, not by position: the date columns grew from 4 to 8
+    # when `DATE_FIELDS` became canonical, and a fixed index silently read the
+    # wrong column rather than failing.
+    both_named = sum(1 for r in rows if r[-2] == "yes")
+    both_linked = sum(1 for r in rows if r[-1] == "yes")
     divorced = have["divorce"]
 
     L: list[str] = []
