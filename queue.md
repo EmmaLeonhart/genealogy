@@ -1284,22 +1284,33 @@ save) before that edge was removed on Geni:
 found, go **back into the synoptic tree** and then into the later Wikidata edits.
 So the deliverable is the missing connecting edge(s), not an analysis.
 
-**Steps:**
+**Investigation done 2026-08-13 — the link is not anywhere in the repo yet.**
 
-1. Confirm both IDs are in the corpus and identify the component each sits in
-   over the merged tree (are these two big components, and are they distinct from
-   the main one?).
-2. Enumerate every profile ID in each of the two clusters.
-3. Cross-check those IDs against **everything else in the repo** — all other
-   exports, every saved page under `missing ancestors/` and `geni_pages/`, and
-   `paths/` — looking for any person who appears both in a cluster and in a file
-   that also reaches Emma / the main component. That shared person (or the edge a
-   saved page records) is the lost link.
-4. If a saved page holds the connecting relationship, extract it the repo's way
-   (`path-from-html`) so the edge becomes data, and note what re-connects the
-   component. Report the found link(s) to Emma before merging anything.
+1. Both IDs are in the corpus, each only as the seed of its own dedicated
+   `Forest` export (`exports/wife of Baruch Jafe/…774838.ged` 4088 people,
+   `exports/wife of Samuel Standen/…420853.ged` 4084 people).
+2. Both are **still isolated components** in the current 172-export merge — the
+   same state the devlog recorded at 149 exports (2026-08-09): "4088 and 4084
+   touching nothing else we hold."
+3. Cross-checked **every one of the ~8,172 people** in the two balls against the
+   whole repo: **0** appear in any other export, **0** in any saved page under
+   `missing ancestors/` or `geni_pages/`, **0** in any `paths/*.tsv`. The two
+   balls also share 0 people with each other. So no saved html file holds a
+   cluster person — the lost edge is not captured as data anywhere here.
+4. **Why:** 4088/4084 sit right under the export cap (4104). These are `Forest`
+   balls that **hit the size ceiling**, not exhausted islands — the bridge to the
+   main tree lies just outside the ball's radius and was simply never exported.
 
-**Not-done tag:** NEEDS-INVESTIGATION — the connecting edge is not yet located.
+**Next step is Emma's:** save the Geni relationship-path page from Emma to each
+seed (Geni still shows the chain if they connect, which she believes they do),
+then `path-from-html` → `paths/…tsv` names the bridge people; a targeted export
+seeded on a bridge person pulls the connecting chain into the corpus and the
+component merges into the synoptic tree — after which the edge flows into the
+later Wikidata edits.
+
+**Not-done tag:** BLOCKED-ON-USER-ACTION — save the two Emma↔seed relationship-
+path pages from Geni into `geni_pages/` (the connecting chain does not exist as
+data in the repo and cannot be derived offline).
 
 ---
 
