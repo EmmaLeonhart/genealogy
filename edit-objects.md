@@ -12,6 +12,54 @@ anything.
 | `create_individual` | create a person with their names and link them to parents or children **already on Wikidata** |
 | `link_siblings` | connect two people **both already on Wikidata** with `P3373` |
 | `add_statement` | add one property to an individual |
+| `create_name_item` | create a Wikidata item for a name, and link it to a person who bears it |
+
+## An item without a Geni ID is the ordinary case, not a special one
+
+Emma, 2026-08-12: *"it's just a wikidata object. It's a wikidata object that
+should be linked in the way that any other wikidata object should be linked.
+There should not be anything special about it."*
+
+We hold a synoptic tree — Wikidata items with their whole JSON, Geni people with
+their whole content — and the merge runs along the family trees. A match is
+whatever that merge produces, and every matched item takes the same path:
+
+1. `add_geni_id` — always first, because everything else cites it;
+2. then claims, relationships, and creations hanging off it.
+
+**The expected shape of the work**, in her words: *"the majority of the JSONs are
+going to be minor trait edits on existing items … because the majority of the
+surface area is existing items."* The initially-valid ones are mostly
+`add_geni_id` on merged items, plus labels. Creations are occasional and
+**progressively open more slots** — each created person becomes an anchor others
+can link to.
+
+## Name items
+
+Emma, 2026-08-12: *"the name items are things that would get created. There would
+be a create name item thing that would be done for all of the names that fit
+sufficiently into Western name conventions … when they are created, they are
+always linked to one of the people who links to it in a similar way."*
+
+So `create_name_item` follows the same shape as `create_individual`: the item is
+created **and** immediately attached to a bearer, never created bare.
+
+**Not every name qualifies.** *"I'm not going to say I think all of them are
+going to need to fit this"* — the condition is Western name conventions, and the
+corpus is full of names that are not: CJK clan names, Chinese commandery places
+misfiled as surnames, Norwegian patronymics that are not family names at all, and
+strings that are not names (`NN`, regnal ordinals, `Rd.`).
+
+**This is unbuilt**, and deliberately so: the classification it depends on does
+not exist. `reports/name-items-to-create.csv` names 128,668 candidates and that
+figure is contaminated three ways — names whose items exist but are unreferenced
+by anyone we hold, places in the surname field, and abbreviations. A
+`create_name_item` built on that number would create items for the wrong things.
+
+**A systematic analysis is scheduled for midnight, 2026-08-13**, covering how
+many name objects exist, how many do not, and the structure of the names —
+*"some of the names are relatively irregular, some of them are normal, and some
+of them are patronyms."*
 
 ## Not every object is valid to run when it is written
 

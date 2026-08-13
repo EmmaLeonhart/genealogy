@@ -94,10 +94,16 @@ def main() -> int:
     family = {r["geni_id"]: r for r in csv.DictReader(open(FAMILY, encoding="utf-8"))}
     linked = {g: r["qid"] for g, r in labels.items() if r["qid"]}
 
-    # Hand-recorded identities from entity_resolution.md. These are exactly the
-    # population `add_geni_id` exists for: Emma recognised the pair, and the
-    # Wikidata item does not state the Geni ID, so nothing can be cited to it
-    # until it does. Her own item, Q140568870, is one.
+    # Matches from entity_resolution.md. **Nothing about these is special.** They
+    # are Wikidata items that we have matched to a Geni profile and that do not
+    # yet state the Geni ID — which is the ordinary output of a merge, and the
+    # ordinary starting state for a person. Emma, 2026-08-12: "it's just a
+    # wikidata object … there should not be anything special about it."
+    #
+    # The merge along the family trees is meant to produce these; the file is one
+    # source of them, not a separate category. Every such item takes the same
+    # path: add_geni_id first, because the Geni ID must exist before any claim
+    # can be cited to it or any relationship added.
     hand: dict[str, str] = {}
     if RESOLUTIONS.exists():
         parsed = entities.parse(RESOLUTIONS.read_text(encoding="utf-8"))
@@ -106,7 +112,7 @@ def main() -> int:
                 hand[resolution.geni_id] = resolution.qid
         linked.update(hand)
     print(f"{len(linked):,} people carry an item "
-          f"({len(hand):,} of them hand-recorded)", flush=True)
+          f"({len(hand):,} matched but not yet stating the Geni ID)", flush=True)
 
     by_parent: dict[str, list[str]] = {}
     for geni_id, row in family.items():
