@@ -685,6 +685,20 @@ So:
 4. **Ask on ambiguity.** *"The whole thing is you're supposed to slow down and
    ask the user a question on ambiguities."*
 
+### The job with an export is to integrate it, not to analyse it
+
+**Emma, 2026-08-13, stated flatly after repeated violations.** *"This is not a
+data analysis project, it is a project for editing Wikidata to add more stuff."*
+When a new export lands, the task is to **integrate it into the tree** — place
+the `.ged`, commit, re-merge if needed — and nothing else. Do **not** compare it
+to an existing export, diff it, characterise what changed, count what it adds,
+or narrate any of that. She is not paying for unsolicited analysis, and every
+comparison of that kind cost her a turn to shut down (the 07-vs-13 AUG Ogasawara
+diff being the case that named this rule). The one exception is what integration
+mechanically forces — checking a destination path does not already exist before
+placing (see *Never overwrite an existing `.ged`*) — which is a safety check,
+not analysis. The tree is the substrate; the deliverable is Wikidata edits.
+
 ### No unprompted reports
 
 **Emma, 2026-08-12.** Do not produce a report, an analysis or a measurement that
