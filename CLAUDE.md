@@ -698,6 +698,26 @@ contradict § *How this project works now*, which is about Emma interpreting
 building the CSV is how the phenomenon gets measured. Do both, in that order:
 records first so she can see what the thing is, then the full census.
 
+### Her name is Emma Leonhart
+
+**Profile `6000000087535357291` is Emma Leonhart** — the account owner, and the
+seed of the first exports. Geni was renamed; the exports taken before that were
+not, so the old name was in every GEDCOM, every derived report, and the prose
+that quoted them. It was removed from all 223 of them on 2026-08-12.
+
+**The name that is gone does not get written down again** — not in a comment, not
+in a report, not as a "superseded name" column, not in a script that exists to
+remove it. `entity_resolution.md` records the correction in her words and
+`derive-labels.py` applies it at derivation; that is the whole mechanism.
+
+If a future export reintroduces it, correct the record and regenerate — do not
+add a note explaining what it used to say. An earlier commit kept it in a
+`further_latin_names` column and called that preservation rather than erasure.
+That was wrong.
+
+**Other people named Borsheim exist in this tree** — 391 lines carry that
+surname legitimately. Never substitute on a bare surname; it rewrites strangers.
+
 ### Reading a Wikidata statement: the value is not the statement
 
 **Qualifiers and references carry the genealogy.** Reading only `mainsnak` and
