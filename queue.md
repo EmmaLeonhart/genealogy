@@ -31,7 +31,7 @@ delete-when-done rule is about *my* steps. Status is tracked here instead:
 | 3 · occupation | **done** — `reports/derived-facts.csv`; 31,401 people carry one |
 | 4 · places and dates | **done** — same file. birth 150,203 dates / 58,562 places · death 118,918 / 38,990 · burial 11,907 / 16,360 |
 | 5 · family links | **done** — `reports/derived-family.csv`; 231,472 fathers, 178,656 mothers, 125,890 spouses. The invent-two-parents case is **250 families** → `reports/invented-parents.csv`, 500 placeholders. **Only 17 of the 250 have a child carrying a QID**, so "geni linked if possible" rarely applies |
-| 6 · marriage | **next, unblocked** — `reports/marriages.md` already has the cases and the gaps |
+| 6 · marriage | **done** — `reports/derived-marriages.csv`, 36,314 families. **36,257 carry a date (99.8%)**, 10,779 a place. But only **1,251 have both spouses on Wikidata**, which is the emittable size. "End" is divorce and only divorce: **483 families**, and Geni has no way to express a marriage ending at a death, so this is the one field where Wikidata has more than Geni |
 | 7 · everything else | *"cool but not necessary"* |
 
 **One number from item 5 that her rule does not reach.** A sibling group with no
