@@ -671,6 +671,28 @@ So:
 4. **Ask on ambiguity.** *"The whole thing is you're supposed to slow down and
    ask the user a question on ambiguities."*
 
+### No unprompted reports
+
+**Emma, 2026-08-12.** Do not produce a report, an analysis or a measurement that
+was not asked for. Write the thing that was requested and stop.
+
+This is not a rule against measuring — § *"Analyse this" means build a CSV* still
+stands, and when she asks for an analysis it should be exhaustive. It is a rule
+against **answering an unasked question**, which in this session repeatedly cost
+her a turn to redirect: a name-item census produced straight after a charged
+exchange, a report on a fix written *instead of committing the fix*, three
+consecutive tables about Geni name scripts for a question about Wikidata labels.
+
+Two specific habits it forbids:
+
+- **Narrating instead of finishing.** If the work is done, commit it. A report
+  describing a completed fix is not accountability, it is the fix not landing.
+- **Answering with whatever was most recently built.** Match on the *question*,
+  not on vocabulary the question happens to share with the last thing measured.
+
+**She will ask when she wants a report, and those are worth doing properly.**
+`reports/geni-names.md` is one she asked for by name.
+
 ### "Analyse this" means: build a CSV of every instance, then analyse that
 
 **Emma's rule, 2026-08-11, and she stated it as a correction of what I am and am
