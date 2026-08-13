@@ -224,7 +224,11 @@ __all__ = [
 #: the step-by-four run and the first across a style boundary, which strengthens
 #: "tracking Geni's own growth" over "a per-export ceiling". Still recorded, not
 #: asserted.
-GENI_EXPORT_CAP = 4100
+#: **2026-08-13 — 4104.** A large same-day batch (Descendants and BloodTree
+#: seeds across the Borsheim/Norwegian mother's side, feeding the Charlemagne
+#: route) topped out at 4104: seven exports read exactly 4104 across both
+#: styles. Seventh reading in the step-by-four run. Still recorded, not asserted.
+GENI_EXPORT_CAP = 4104
 
 #: The step between reading this report and running an export.
 #:
