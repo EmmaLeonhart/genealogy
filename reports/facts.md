@@ -20,21 +20,32 @@ of whom 14,157 carry a Wikidata item.
 | burial date | 11,907 | 4.0% |
 | burial place | 16,360 | 5.5% |
 
-## The cost of `PLAC` only
+## Addresses, kept as text
 
-Emma chose *ignore `ADDR`, use `PLAC` only* on 2026-08-11. That is applied here,
-and the loss is counted rather than left implicit:
+Emma, 2026-08-12: *"Do addresses with the address property (multilingual
+text)."* Wikidata's **`P6375` street address** is monolingual text, so an
+address never has to become a place item. **This supersedes the `PLAC`-only
+rule of 2026-08-11**, which was chosen before its cost was known.
 
-**101,579 events carry an `ADDR` block and no `PLAC` at all**, against **113,912** events where `PLAC` supplied a place.
+| | events |
+| --- | ---: |
+| birth address | 71,735 |
+| death address | 51,681 |
+| burial address | 16,328 |
+| birth address, **no `PLAC` at all** | 54,202 |
+| death address, **no `PLAC` at all** | 39,747 |
+| burial address, **no `PLAC` at all** | 7,347 |
 
-So the rule is not costing precision on those events — it is costing the place
-entirely, and it applies to 47% of the events that have any location information at all.
+**101,579 events would have had no location under the old rule** and now keep one.
 
-**The rule stands; this is the size of it.** It was chosen over *"use `ADDR`
-only when `PLAC` is absent"*, which is exactly the population counted here —
-that alternative would roughly double the places available and never override a
-`PLAC`. Recorded so the choice is re-openable on a number rather than on a
-recollection.
+**One thing to flag rather than decide.** `P6375` is documented as a *street*
+address — building number, locality, post code, and explicitly not country.
+These blocks are the opposite shape: `CTRY` 147,173, `STAE` 132,781, `CITY`
+107,734, and a street line (`ADR1`) only 2,738 times. A typical block is
+`CITY Erie, STAE PA, CTRY United States` — a place hierarchy, not a street
+address. The values are composed and carried as instructed; whether `P6375` is
+the right destination for a country-level string is a conversion question, and
+this is ingestion.
 
 ## Dates the grammar could not read
 

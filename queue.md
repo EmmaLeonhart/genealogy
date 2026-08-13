@@ -34,6 +34,26 @@ delete-when-done rule is about *my* steps. Status is tracked here instead:
 | 6 · marriage | **done** — `reports/derived-marriages.csv`, 36,314 families. **36,257 carry a date (99.8%)**, 10,779 a place. But only **1,251 have both spouses on Wikidata**, which is the emittable size. "End" is divorce and only divorce: **483 families**, and Geni has no way to express a marriage ending at a death, so this is the one field where Wikidata has more than Geni |
 | 7 · everything else | *"cool but not necessary"* |
 
+### Answered 2026-08-12, second round
+
+- **`ADDR` is kept as text, not dropped.** *"Do addresses with the address
+  property (multilingual text)."* → **`P6375` street address**, monolingual text,
+  so an address never has to become a place item. **This supersedes the
+  `PLAC`-only rule** and recovers the location for **101,579 events** that had an
+  `ADDR` block and no `PLAC`. Applied in `derive-facts.py`; `reports/facts.md` has
+  the counts. **Flagged, not decided:** `P6375` is documented as a *street*
+  address explicitly excluding country, while these blocks are `CTRY` 147,173 /
+  `STAE` 132,781 / `CITY` 107,734 with a street line only 2,738 times.
+- **Invented parents: the no-parent case only.** The 40,884 single-parent
+  families get nothing. As implemented — 250 families, 500 placeholders.
+- **The married-name alias is substitution.** `Judith /de France/` + `_MARNM
+  Flandre` → `Judith Flandre`. As implemented and pinned by test.
+- **The name-item download** — she asked what it is rather than choosing a size.
+  It is fetching the Wikidata items that *represent names*, so that `P735`/`P734`
+  can point at them: the store holds people and **113 of the 132,569 name items**
+  their name statements reference. Deriving a name item means looking one up, and
+  that is impossible offline today. Still open.
+
 **One number from item 5 that her rule does not reach.** A sibling group with no
 parents is **250 families**. A family with **exactly one** recorded parent is
 **40,884** — 36,097 father-only, 4,787 mother-only. Whether the missing one is

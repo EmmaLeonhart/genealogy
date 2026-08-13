@@ -8,10 +8,15 @@ They come off the same `INDI` record, so this is one pass.
 
 **Rules already settled, applied here:**
 
-* **`PLAC` only; `ADDR` is ignored.** Her decision of 2026-08-11, chosen over
-  "use ADDR when PLAC is absent". The structured block is dropped even where it
-  is the better-filled of the two — recorded because it is a real loss, counted
-  below rather than left implicit.
+* **`ADDR` is kept as an address string, not dropped and not resolved.** Emma,
+  2026-08-12: *"Do addresses with the address property (multilingual text)."*
+  Wikidata's `P6375` street address is monolingual text, so an address never has
+  to become a place item. **This supersedes the `PLAC`-only rule of 2026-08-11**,
+  which was chosen before its cost was known and dropped the location entirely
+  for 101,579 events.
+* **`PLAC` is still carried separately.** The two are different things — a
+  comma-chain place string and a structured address block — and neither is
+  derived from the other.
 * **Dates go through `genimerge.dates.parse_date`, never a regex.** The corpus
   writes BC years as a minus and two hand-rolled parsers have already silently
   dropped all 4,750 of them. Anything the grammar does not recognise keeps its
@@ -47,11 +52,15 @@ OUT_MD = REPO_ROOT / "reports" / "facts.md"
 #: The events this pass carries, and the column prefix each gets.
 EVENTS = {"BIRT": "birth", "DEAT": "death", "BURI": "burial"}
 
+#: The `ADDR` sub-tags, in the order they compose into an address string.
+#: Measured over the corpus rather than taken from the spec: CTRY 147,173,
+#: STAE 132,781, CITY 107,734, POST 4,726, ADR1 2,738, ADR2 402, ADR3 102.
+ADDR_PARTS = ("ADR1", "ADR2", "ADR3", "CITY", "STAE", "POST", "CTRY")
+
 COLUMNS = ["geni_id", "qid", "sex", "occupations"]
 for _prefix in EVENTS.values():
     COLUMNS += [f"{_prefix}_date_raw", f"{_prefix}_year", f"{_prefix}_modifier",
-                f"{_prefix}_place"]
-COLUMNS += ["addr_dropped"]
+                f"{_prefix}_place", f"{_prefix}_address"]
 
 
 def main() -> int:
@@ -71,6 +80,7 @@ def main() -> int:
 
     current: dict | None = None
     event: str | None = None
+    in_addr = False
 
     def flush() -> None:
         nonlocal current
@@ -86,12 +96,18 @@ def main() -> int:
             if raw and not year:
                 unreadable_dates[raw] += 1
             place = data.get("plac", "")
+            address = ", ".join(
+                data[part] for part in ADDR_PARTS if data.get(part)
+            )
             if raw:
                 have[f"{prefix} date"] += 1
             if place:
                 have[f"{prefix} place"] += 1
-            row += [raw, year, (parsed.modifier or "") if parsed else "", place]
-        row.append(current["addr_dropped"])
+            if address:
+                have[f"{prefix} address"] += 1
+            if address and not place:
+                have[f"{prefix} address only"] += 1
+            row += [raw, year, (parsed.modifier or "") if parsed else "", place, address]
         rows.append(row)
 
     print(f"reading {MERGED}", flush=True)
@@ -101,13 +117,14 @@ def main() -> int:
                 flush()
                 current = None
                 event = None
+                in_addr = False
                 parts = line.split()
                 if len(parts) >= 3 and parts[2] == "INDI":
                     xref = parts[1]
                     if xref.startswith("@I") and xref.endswith("@"):
                         people += 1
                         current = {"id": xref[2:-1], "sex": "", "occu": [],
-                                   "events": {}, "addr_dropped": 0}
+                                   "events": {}}
                 continue
             if current is None:
                 continue
@@ -118,6 +135,7 @@ def main() -> int:
             value = parts[2].strip() if len(parts) > 2 else ""
 
             if level == "1":
+                in_addr = False
                 event = tag if tag in EVENTS else None
                 if event:
                     current["events"].setdefault(event, {})
@@ -129,16 +147,26 @@ def main() -> int:
                 continue
 
             if level == "2" and event:
+                in_addr = False
                 data = current["events"][event]
                 if tag == "DATE" and value and "date" not in data:
                     data["date"] = value
                 elif tag == "PLAC" and value and "plac" not in data:
                     data["plac"] = value
                 elif tag == "ADDR":
-                    # Emma's rule: PLAC only. Counted, not used.
-                    current["addr_dropped"] += 1
+                    # Emma, 2026-08-12: "Do addresses with the address property
+                    # (multilingual text)." So the block is kept as text rather
+                    # than dropped or resolved to a place item. This supersedes
+                    # the PLAC-only rule of 2026-08-11, which cost 101,579
+                    # events their location entirely.
+                    in_addr = True
                     if "plac" not in data:
                         addr_without_plac += 1
+                    continue
+
+            if level == "3" and event and in_addr:
+                if tag in ADDR_PARTS and value:
+                    current["events"][event].setdefault(tag, value)
     flush()
 
     OUT_CSV.parent.mkdir(parents=True, exist_ok=True)
@@ -173,24 +201,31 @@ def main() -> int:
             n = have[f"{prefix} {kind}"]
             add(f"| {prefix} {kind} | {n:,} | {100.0*n/max(len(rows),1):.1f}% |")
     add("")
-    add("## The cost of `PLAC` only")
+    add("## Addresses, kept as text")
     add("")
-    add("Emma chose *ignore `ADDR`, use `PLAC` only* on 2026-08-11. That is applied here,")
-    add("and the loss is counted rather than left implicit:")
+    add("Emma, 2026-08-12: *\"Do addresses with the address property (multilingual")
+    add("text).\"* Wikidata's **`P6375` street address** is monolingual text, so an")
+    add("address never has to become a place item. **This supersedes the `PLAC`-only")
+    add("rule of 2026-08-11**, which was chosen before its cost was known.")
     add("")
-    places_kept = sum(have[f"{p} place"] for p in EVENTS.values())
-    add(f"**{addr_without_plac:,} events carry an `ADDR` block and no `PLAC` at all**, "
-        f"against **{places_kept:,}** events where `PLAC` supplied a place.")
+    add("| | events |")
+    add("| --- | ---: |")
+    for prefix in EVENTS.values():
+        add(f"| {prefix} address | {have[f'{prefix} address']:,} |")
+    for prefix in EVENTS.values():
+        add(f"| {prefix} address, **no `PLAC` at all** | {have[f'{prefix} address only']:,} |")
     add("")
-    add("So the rule is not costing precision on those events — it is costing the place")
-    add(f"entirely, and it applies to {100.0*addr_without_plac/max(addr_without_plac+places_kept,1):.0f}% "
-        "of the events that have any location information at all.")
+    add(f"**{addr_without_plac:,} events would have had no location under the old rule** "
+        "and now keep one.")
     add("")
-    add("**The rule stands; this is the size of it.** It was chosen over *\"use `ADDR`")
-    add("only when `PLAC` is absent\"*, which is exactly the population counted here —")
-    add("that alternative would roughly double the places available and never override a")
-    add("`PLAC`. Recorded so the choice is re-openable on a number rather than on a")
-    add("recollection.")
+    add("**One thing to flag rather than decide.** `P6375` is documented as a *street*")
+    add("address — building number, locality, post code, and explicitly not country.")
+    add("These blocks are the opposite shape: `CTRY` 147,173, `STAE` 132,781, `CITY`")
+    add("107,734, and a street line (`ADR1`) only 2,738 times. A typical block is")
+    add("`CITY Erie, STAE PA, CTRY United States` — a place hierarchy, not a street")
+    add("address. The values are composed and carried as instructed; whether `P6375` is")
+    add("the right destination for a country-level string is a conversion question, and")
+    add("this is ingestion.")
     add("")
     add("## Dates the grammar could not read")
     add("")

@@ -539,6 +539,8 @@ ran.
 | P106 | occupation | item |
 | P97 | noble title | item |
 | P535 | Find a Grave memorial ID | external-id |
+| P4602 | date of burial or cremation | time — burial is **two** properties with P119, never a qualifier |
+| P6375 | street address | monolingual text — where a GEDCOM `ADDR` block goes |
 
 **Names** — the part of `todo.md` that needs new items created
 
