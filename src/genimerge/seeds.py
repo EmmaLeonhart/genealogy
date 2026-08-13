@@ -217,7 +217,14 @@ __all__ = [
 #: takes between exports - so this may be tracking Geni's own growth rather
 #: than a cap at all. Not asserted, recorded: the next reading either continues
 #: the run or breaks it, and both are informative.
-GENI_EXPORT_CAP = 4096
+#: **2026-08-12/13 — 4100, the run continues.** Two exports read exactly 4100:
+#: a `Descendants` of `6000000227212960823` ("Erik", 12 Aug 23:52) and an
+#: `Ancestors` of `6000000177921459056` ("Richard Wade Borsheim", 13 Aug 14:05),
+#: from different seeds and different styles. 4096 → 4100 is the sixth reading in
+#: the step-by-four run and the first across a style boundary, which strengthens
+#: "tracking Geni's own growth" over "a per-export ceiling". Still recorded, not
+#: asserted.
+GENI_EXPORT_CAP = 4100
 
 #: The step between reading this report and running an export.
 #:
