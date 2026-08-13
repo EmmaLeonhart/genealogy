@@ -467,6 +467,20 @@ minutes apart, 3972 people and 4008. Check containment before inventing a
 disambiguator — the 3972 was a strict subset of the 4008, so keeping only the
 larger lost nothing.
 
+**Never overwrite an existing `.ged`. A new export is always a NEW file.**
+Emma's rule, stated 2026-08-13 after it was broken. `cp`-ing a freshly
+downloaded export **on top of** an existing tracked `.ged` clobbers a committed
+file, and that must never happen. When placing an export, if the destination
+path **already exists**, STOP — do not overwrite it. The download goes somewhere
+as its own new file (its own seed-named path, or the bulk directory Emma names,
+e.g. `fleshing-out/`), and where it goes is **her call, not a default to guess**.
+Ask. This was got wrong when a 13 AUG re-export of the Ogasawara Descendants
+seed was `cp`'d over `exports/descendants/export-Descendants-6000000227040613855.ged`
+— it belonged in `exports/fleshing-out/` as a new file, and the committed
+descendants copy had to be restored from git. Two exports sharing a seed *and* a
+style is a filing question to raise, never a licence to overwrite. **Before any
+`cp`/`mv`/`>` onto a path under `exports/`, check it does not already exist.**
+
 **Never delete a GEDCOM, and never add a zip.** The zips are gitignored **one
 line at a time**, deliberately: Emma wants an unignored zip to show up in
 `git status` so she can see a download has arrived. Do not replace those lines
