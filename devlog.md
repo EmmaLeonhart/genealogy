@@ -5900,3 +5900,80 @@ that a sibling group with no recorded parents gets two invented ones, *"father o
 x and y"* and *"mother of x and y"*, Geni-linked where possible, which is the
 first step in this plan that creates data rather than converting it.
 
+
+## 2026-08-12 â€” plan items 5 and 6, and addresses stop being thrown away
+
+Four commits landed without a devlog entry between them, which is the queue's own
+rule broken four times. This covers them.
+
+**Item 5, family links.** `reports/derived-family.csv`, one row per person:
+231,472 have a father recorded, 178,656 a mother, 125,890 a spouse, 138,511 at
+least one child. Each row carries the related person's QID where there is one, so
+a link is emittable only when both ends exist.
+
+The invented-parents rule needed the family shapes counted *before* anything was
+generated, because it is the first step in the plan that creates data. That
+mattered: **the case Emma named is 250 families**, while families with exactly
+one recorded parent are **40,884** â€” 163 times larger and not covered by the
+rule as given. She has since confirmed the no-parent case only, so the 40,884
+get nothing. 500 placeholders are in `reports/invented-parents.csv`, labelled
+`father of x and y` as she specified. *"Geni linked if possible"* barely applies:
+only 17 of the 250 groups have even one child carrying a QID.
+
+Routing siblings through invented parents means **no `P3373` is emitted at all**.
+That falls out of her rule rather than being a separate decision.
+
+**Item 6, marriage.** `reports/derived-marriages.csv`, 36,314 families that say
+anything about a marriage; 36,257 carry a date (99.8%), 10,779 a place.
+
+*"End"* was measured rather than assumed, and the answer narrows the item. The
+`FAM`-level tags are exactly `CHIL` 267,517, `HUSB` 126,894, `WIFE` 89,543,
+`MARR` 36,314, `DIV` 483, `NOTE` 73 â€” no annulment, no engagement, no separation.
+**A Geni marriage ends only by divorce, 483 times.** This is the one field in the
+project where the direction reverses: Wikidata's `P582` sits on 257 of the 981
+comparable marriages, because a marriage ending at a death is an end Wikidata
+states and Geni has no family-level way to express.
+
+The emittable size is far below the derived size â€” 20,059 families name both
+spouses, and only **1,251** have both carrying an item. That 1,251 is the same
+number `reports/marriages.md` reached hours earlier by a different route with a
+separately written script.
+
+**Addresses stop being discarded.** Asked whether `PLAC`-only should stand now its
+cost was known, Emma answered: *"Do addresses with the address property
+(multilingual text)."* Wikidata's **`P6375` street address is monolingual text**,
+so an address never has to be resolved to a place item â€” which is the difficulty
+the old rule was avoiding. `derive-facts.py` now carries a composed address string
+beside the `PLAC` string. **101,579 events that had no location under the old rule
+now keep one.**
+
+Flagged and not decided: `P6375` is documented as a *street* address, explicitly
+excluding country, while these blocks are `CTRY` 147,173 / `STAE` 132,781 /
+`CITY` 107,734 with a street line only 2,738 times. `Erie, PA, United States` is
+a place hierarchy, not a street address.
+
+**A measurement error of mine, caught mid-task.** The first `ADDR` sub-tag census
+returned 629 countries and a sample full of email addresses, contradicting the
+101,579 figure from hours earlier. It was scanning *level-1* `ADDR` â€” submitter
+records â€” while event addresses sit at level 2 with their parts at level 3.
+Redone correctly: **245,374 blocks under events**.
+
+**`P4602` had been used in reports since the burial work and was never in
+CLAUDE.md's property table.** The documentation rule exists precisely to prevent
+that, but its test scans `src/genimerge/` only, so a script can use an ID nothing
+checks. `P4602` and `P6375` are both in the table now.
+
+**Tests reached `scripts/` for the first time.** Every CSV Emma is asked to decide
+from is written there, and the suite covered `src/genimerge/` only â€” a gap that
+had already produced a real defect. 26 tests now pin the rules that turn her
+instructions into data: script grouping, the dot rule, the married-name alias as
+substitution, the invented-parent label format, and the address composition.
+Three small extractions moved those rules out of `main()` so they could be
+tested, and each script was re-run afterwards to confirm `reports/` was
+byte-identical rather than assuming the refactor was safe.
+
+Full suite after all of it: **2,255 passed, 1 skipped, 19m40s.** That also retires
+a loose end â€” an earlier 29-minute run had been carried for four reports as
+"plausibly contention, not measured"; this run did more tests in ten minutes
+less, so contention it was.
+

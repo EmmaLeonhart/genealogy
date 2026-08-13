@@ -63,6 +63,19 @@ for _prefix in EVENTS.values():
                 f"{_prefix}_place", f"{_prefix}_address"]
 
 
+def compose_address(data: dict) -> str:
+    """The `ADDR` block as one string, narrowest part first.
+
+    Emma, 2026-08-12: *"Do addresses with the address property (multilingual
+    text)."* This is the string that would become the `P6375` value, so the
+    ordering is a data decision rather than a formatting one — extracted from
+    ``main`` so it can be pinned by a test.
+
+    Parts absent from the block are skipped rather than left as empty commas.
+    """
+    return ", ".join(data[part] for part in ADDR_PARTS if data.get(part))
+
+
 def main() -> int:
     qids: dict[str, str] = {}
     if PAIRS.exists():
@@ -96,9 +109,7 @@ def main() -> int:
             if raw and not year:
                 unreadable_dates[raw] += 1
             place = data.get("plac", "")
-            address = ", ".join(
-                data[part] for part in ADDR_PARTS if data.get(part)
-            )
+            address = compose_address(data)
             if raw:
                 have[f"{prefix} date"] += 1
             if place:

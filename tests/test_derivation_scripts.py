@@ -40,6 +40,11 @@ def family():
     return _load("derive-family")
 
 
+@pytest.fixture(scope="module")
+def facts():
+    return _load("derive-facts")
+
+
 # --- script grouping: by script, never by language -------------------------
 
 
@@ -143,3 +148,43 @@ def test_the_mother_label_uses_the_same_joining(family):
 
 def test_no_children_produces_no_name_list(family):
     assert family.join_names([]) == ""
+
+
+# --- the address string, which becomes a P6375 value -----------------------
+
+
+def test_a_typical_block_composes_narrowest_first(facts):
+    """`CITY Erie / STAE PA / CTRY United States` is the ordinary shape."""
+    assert facts.compose_address(
+        {"CITY": "Erie", "STAE": "PA", "CTRY": "United States"}
+    ) == "Erie, PA, United States"
+
+
+def test_a_street_line_leads(facts):
+    assert facts.compose_address(
+        {"ADR1": "12 Main St", "CITY": "Erie", "CTRY": "United States"}
+    ) == "12 Main St, Erie, United States"
+
+
+def test_missing_parts_do_not_leave_empty_commas(facts):
+    """Two thirds of blocks have no CITY; a gap must not become `, ,`."""
+    assert facts.compose_address(
+        {"STAE": "Sogn og Fjordane", "CTRY": "Norway"}
+    ) == "Sogn og Fjordane, Norway"
+
+
+def test_the_post_code_sits_before_the_country(facts):
+    assert facts.compose_address(
+        {"CITY": "Los Angeles", "STAE": "CA", "POST": "90012", "CTRY": "United States"}
+    ) == "Los Angeles, CA, 90012, United States"
+
+
+def test_an_empty_block_composes_to_nothing(facts):
+    assert facts.compose_address({}) == ""
+
+
+def test_unknown_subtags_are_ignored(facts):
+    """`EMAIL` and `PHON` occur under submitter addresses and are not places."""
+    assert facts.compose_address(
+        {"CITY": "Oslo", "EMAIL": "someone@example.com", "PHON": "555"}
+    ) == "Oslo"
