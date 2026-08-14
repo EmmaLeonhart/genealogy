@@ -184,6 +184,14 @@ So Altif is a **branch of the Dinfi family**, descended from Abed Hanuna ben
 Jacob Hadinfi — and the Ukrainian marriages of the 2000s (Alexandra Kraskuk →
 Wadah Altif; Alla Evdokimova → Azzam Altif) attach to that branch.
 
+**Correction, 2026-08-14: Wadah's surname is disputed and may be Cohen.** The
+Globe and Mail (2007) names Alexandra's husband **Wada Cohen**, son of **High
+Priest Elazar Ben Tzadaka** — who is `Elazar XX ben Tsedaka ben Yitzhaq`, Geni
+`6000000178794668840`, Wikidata `Q2164896`. The 2013 AP coverage calls him
+**Wadah Altif**. Their son is named **Eliazar**, which is his grandfather's name
+if the Globe and Mail is right. **Azzam Altif is not in doubt.** See
+`reports/samaritan-ukrainian-marriages.md`.
+
 **Extinct Dinfi branches:** *Dar Imsallam*, after **Amshallemaa ben
 Ab-Sikkuwwa** — so a brother of Yishmael — and *Dar Elshalabi*, after **Sadaqa
 ben Jacob**.
