@@ -1329,6 +1329,40 @@ disconnected on the live site and the question becomes which edge to add.
 
 ---
 
+## 2026-09-30 — create the two unlinked items on Wikidata (Emma)
+
+**Scheduled, not pending.** Emma, 2026-08-13: *"create wikidata items for
+[Baruch Jafe] and [Samuell Standen] on September 30 as independent unlinked items
+completely independently of their links elsewhere... these appear to have gotten
+into the data somehow but are apparently completely unlinked and I still want
+them to get in."* And on what it is for: *"this allows for the wikidata stuff to
+finally start doing connections."*
+
+- **Baruch Jafe** `6000000040078764766` —
+  <https://www.geni.com/people/Baruch-Jafe/6000000040078764766>
+- **Samuell Standen** `6000000107265740881` —
+  <https://www.geni.com/people/Samuell-Standen/6000000107265740881>
+
+The edits are already written: `reports/unlinked-items.md` and
+`out/wikidata/unlinked-items.json`, built by `scripts/build-unlinked-items.py`,
+in the same object shape as the Charlemagne priority chain so one executor serves
+both. Four statements on Jafe, six on Standen — label, `P31` human, `P2600`,
+`P21`, and the dates Geni records, each referenced to the Geni ID.
+
+**No relationship statements, on purpose.** Both men are the husbands of the two
+`wife of ...` profiles whose exports are the corpus's two cut-off components, so
+every relative they have is inside a ball that shares nobody with the other 173
+exports. Nothing to point a `P26` or `P40` at yet.
+
+**On the day:** re-run `py scripts/build-unlinked-items.py` first — if either man
+has acquired a `qid` in `reports/derived-labels.csv` by then, the script exits
+non-zero rather than creating a duplicate. Then execute the two creations.
+
+**Not-done tag:** BLOCKED-ON-USER-ACTION — this is a Wikidata write, and it is
+dated 2026-09-30 by Emma's instruction.
+
+---
+
 ## Always last — restart the three crons and summarize
 
 **These two items stay pinned to the tail of the queue at all times** — below every real work item:
