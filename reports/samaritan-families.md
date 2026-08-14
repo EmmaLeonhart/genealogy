@@ -87,10 +87,24 @@ Marchiv
 Benyamim Tsedaka                │
   └─ Ratson ben Benyamim Tsedaka Hatsafari
         b. 22 Feb 1922 Nablus, d. 20 Jan 1990 (Saturday); prolific writer
-        m. Batia bat Yefet ben Abraham
+        m. 1943 Batia bat Yefet ben Abraham — his *first daughter*, about four
+              years younger than Ratson so b. ~1926; moved from Tel Aviv to
+              Nablus on marriage; teacher, then a school principal in the Dan
+              District
         ├─ Benyamim   b. 1944 Nablus — co-founded A.B. 1969;
         │             opened the A.B. Institute of Samaritan Studies, Holon, 1981
         └─ Yefet      co-founded A.B. 1969
+
+Shelach Tsedaka Hatsafari
+  ├─ Asher ben Shelach Tsedaka Hatsafari    Ratson's uncle, who raised him
+  └─ Benyamim                                Ratson's father — an eye illness
+                                             ended his work; the family kept a
+                                             materials shop in Nablus market
+
+Nor Tsedaka
+  └─ Abraham ben Nor Tsedaka                Ratson's cousin; with Ratson published
+                                             the first comparative edition of the
+                                             Jewish and Samaritan Torah, 1962–65
 
 Gamliel
   └─ Yisrael ben Gamliel Tsedaka Hatsafari
@@ -141,9 +155,14 @@ married into a 700-person community between roughly 1960 and 1990, each from a
 documented Israeli Jewish family, is exactly the kind of link that reaches the
 world tree. It needs record access rather than search.
 
-**`Batia bat Yefet ben Abraham` is a named woman with a named father.** She is
-the only one found in this entire search, and she marries the two Tsedaka lines
-together.
+**`Batia bat Yefet ben Abraham` is a named woman with a named father, a birth
+year, a marriage year and a career.** b. ~1926, m. 1943, teacher and then school
+principal in the Dan District. She is the best-documented Samaritan woman found
+anywhere in this search, and she marries the two Tsedaka lines together.
+
+**See `reports/samaritan-priesthood.md`** for the priestly succession — which now
+has a father for Tabia ha'Åbtå'i, a named family forefather, and the full
+1624–2010 high-priest list with dates.
 
 ---
 
