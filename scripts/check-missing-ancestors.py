@@ -35,11 +35,27 @@ REPO = Path(__file__).resolve().parent.parent
 PAGES_DIR = REPO / "missing ancestors"
 OUT_CSV = REPO / "reports" / "missing-ancestors-check.csv"
 
-# href is the first attribute on the anchor, so its value ends at the closing
-# quote before the other attributes; capture id, the through= seed, then the
-# visible name in the anchor body (empty for the avatar-image copy of the link).
-ANCHOR = re.compile(
-    r'<a href="[^"]*?people/[^"/]+/(\d+)\?through=(\d+)"[^>]*>([^<]*)</a>'
+# **Scope to the row, never to the anchors.** Matching `people/<slug>/<id>`
+# anchors anywhere on the page silently pulls in the *profile managers* -- the
+# Geni users who curate each ancestor -- because their links sit in a
+# `managed_by-area` cell of the same row and carry the same `?through=` seed.
+# That is not a near-miss: it put Sally Cole, Margaret C and Bernard Assaf into
+# a list of Clara's Norwegian ancestors, and inflated the absent count with
+# living account holders no export will ever contain. It is the same trap
+# CLAUDE.md documents for relationship paths, where only anchors inside
+# `span.segment > span.name` are on the path.
+#
+# Geni gives one `<tr>` per enumerated ancestor and stamps the id on the row
+# itself, so the row is the record and everything nested in it is decoration.
+ROW = re.compile(
+    r'<tr id="list_row_(\d+)"[^>]*data-profile-id="\1"(.*?)</tr>', re.S
+)
+# ...and within a row, the ancestor's own name lives in the name-area cell.
+NAME_CELL = re.compile(r'<td class="name-area[^"]*"[^>]*>(.*?)</td>', re.S)
+NAME_LINK = re.compile(r'<a [^>]*data-profile-id="(\d+)"[^>]*>([^<]*)</a>')
+SEED = re.compile(r"\?through=(\d+)")
+RELATION = re.compile(
+    r'<td class="relationship-area[^"]*"[^>]*>.*?</div>\s*([^<]*)</td>', re.S
 )
 INDI_XREF = re.compile(r"^0 @I(\d+)@ INDI", re.MULTILINE)
 
@@ -63,11 +79,26 @@ def root_name(page: Path) -> str:
 
 
 def read_pages():
-    """Yield (geni_id, name, root, seed, page) for every enumerated ancestor."""
+    """Yield (geni_id, name, relationship, root, seed, page) per enumerated ancestor.
+
+    One record per `<tr>`. The name is taken from the row's own name-area cell
+    and only when the anchor's `data-profile-id` equals the row's, so a manager
+    link cannot supply it either.
+    """
     for page in sorted(PAGES_DIR.glob("*.html")):
         text = page.read_text(encoding="utf-8", errors="replace")
-        for gid, seed, name in ANCHOR.findall(text):
-            yield gid, html.unescape(name).strip(), root_name(page), seed, page.name
+        for gid, body in ROW.findall(text):
+            name = ""
+            cell = NAME_CELL.search(body)
+            if cell:
+                for anchor_id, anchor_text in NAME_LINK.findall(cell.group(1)):
+                    if anchor_id == gid and anchor_text.strip():
+                        name = html.unescape(anchor_text).strip()
+                        break
+            rel = RELATION.search(body)
+            seed = SEED.search(body)
+            yield (gid, name, html.unescape(rel.group(1)).strip() if rel else "",
+                   root_name(page), seed.group(1) if seed else "", page.name)
 
 
 def main() -> None:
@@ -76,15 +107,18 @@ def main() -> None:
     # Collapse to one record per (id, root): a person is listed once per page but
     # appears twice in the markup (avatar + name link); keep the best name seen.
     people: dict[tuple[str, str], dict] = {}
-    for gid, name, root, seed, pagename in read_pages():
+    for gid, name, rel, root, seed, pagename in read_pages():
         key = (gid, root)
         rec = people.setdefault(
             key,
-            {"geni_id": gid, "name": name, "root": root, "seed": seed, "pages": set()},
+            {"geni_id": gid, "name": name, "relationship": rel, "root": root,
+             "seed": seed, "pages": set()},
         )
         rec["pages"].add(pagename)
         if len(name) > len(rec["name"]):
             rec["name"] = name
+        if rel and not rec["relationship"]:
+            rec["relationship"] = rel
 
     rows = []
     for rec in people.values():
@@ -93,6 +127,7 @@ def main() -> None:
             {
                 "geni_id": rec["geni_id"],
                 "name": rec["name"],
+                "relationship": rec["relationship"],
                 "root": rec["root"],
                 "seed": rec["seed"],
                 "present": "yes" if n else "no",
@@ -110,6 +145,7 @@ def main() -> None:
             fieldnames=[
                 "geni_id",
                 "name",
+                "relationship",
                 "root",
                 "seed",
                 "present",

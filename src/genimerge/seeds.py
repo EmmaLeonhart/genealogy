@@ -240,7 +240,11 @@ __all__ = [
 #: ("NN"), 16:57 — held **4116**, so the same sitting read 4112, 4112, 4116.
 #: **2026-08-13, 17:37 — 4120**, a `Forest` of `6000000227226600829` ("mother of
 #: James Baskerville"). Fourth reading of the evening: 4112, 4112, 4116, 4120.
-GENI_EXPORT_CAP = 4120
+#: Then **4124** (`6000000227226552913`, "mother of Nicolaii Tregarthen", 17:43)
+#: and **4128** (`6000000227226579873`, "mother of Robert Kemsley", 17:49). Six
+#: readings in one evening, 4112 → 4128, and after the single step of eight the
+#: rest went up by four apiece.
+GENI_EXPORT_CAP = 4128
 
 #: The step between reading this report and running an export.
 #:
