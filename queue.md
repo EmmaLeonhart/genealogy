@@ -94,6 +94,32 @@ Israel Henshel Isserles".** Worth keeping because the shape of it generalises:
 
 ---
 
+## 4 · The 33 Samaritan high priests — one door, and it may be shut
+
+The remaining component is **33 people**, the Samaritan high-priestly line
+(Abisha, Phinehas, Elazar, Tsedaka, Aabed-El ben Asher…).
+
+**It is a single descent with exactly one attachment point.** Of the 33, only
+**Tabia ha'Åbtå'i** `6000000220294810877` has no parent recorded, and all 32
+others sit beneath him — 11 generations. So this is not 33 candidate doorways;
+it is one.
+
+**Emma's reading, 2026-08-13:** they are legitimately not connected, because of
+the change in the priestly house, and no export will find an edge Geni does not
+record. That is very likely right and it is also **one export away from being
+measured**: a `Forest` seeded on Tabia ha'Åbtå'i either returns a parent or does
+not, and a `Forest` ball that returns nothing has found nothing to follow — the
+same asymmetry that settled the Hata question in `reports/hata.md`.
+
+She also raised **agentic RAG** over outside sources for a link. Worth doing only
+after the export, because the export says whether there is anything on the Geni
+side to attach a found link to.
+
+**Not-done tag:** NEEDS-DECISION — Emma, whether to spend one export on it or
+close the component as genuinely separate.
+
+---
+
 ## 2026-09-30 — create the two unlinked items on Wikidata (Emma)
 
 **Scheduled, not pending.** Emma, 2026-08-13: *"create wikidata items for
