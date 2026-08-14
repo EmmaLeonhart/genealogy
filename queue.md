@@ -31,8 +31,17 @@ anybody was going to execute.
 **She is running the exports. This is her task, not mine.** The job here is to
 re-run the check after each batch lands and report the number.
 
-`py scripts/check-missing-ancestors.py` → **absent: 63** as of 2026-08-13, over
-178 GEDCOMs. Definition of done is **absent: 0**.
+`py scripts/check-missing-ancestors.py` → **absent: 61** as of 2026-08-13, over
+182 GEDCOMs. Definition of done is **absent: 0**.
+
+**Seed the exports at the 14 midpoints, or the number will not move.** The four
+exports placed on 13 AUG evening took the count 63 → 61, and both people closed
+came from the single export seeded on `NN Chirino`. The other three were seeded
+on cluster-joining targets and closed nothing on this list. An export only helps
+here if its seed is on it.
+
+**Check Downloads before reporting the number.** Those four had been finished
+and were sitting unplaced, so the count was stale rather than stuck.
 
 Full write-up — why the task exists, how the check works, the per-generation
 table, and the 14 midpoint seeds in page order —
@@ -55,39 +64,28 @@ where it goes), commit it, re-run the check, report `absent: N`. Nothing else.
 
 ---
 
-## 2 · Wikidata isolates — triage, then clear
+## 2 · Wikidata isolates — PARKED ENTIRELY, Emma's decision 2026-08-13
 
-**183,681 true isolates** — Geni-linked Wikidata items carrying zero relation
-statements, 35.7% of the 514,903 Geni-linked items. `out/_isolates.json` holds
-them as `[qid, label, geni_id, dates, sitelinks, flag]`, ordered by how
-well-documented the item is.
+**Do nothing with the Wikidata islands. Treat them as random noise.** Her words:
+*"my opinion on it is they are useful data in the event something changes and
+this is a more active project, but for now we are parking that line of inquiry
+entirely."*
 
-Emma is triaging them by hand in the browser, and splitting them two ways:
+So: **no triage batches, no removal mechanism, no exports seeded on isolates.**
+Do not open another 25. Do not build the clear-the-text-file path — it was
+flagged as unbuilt and is now not to be built, because it is out of scope rather
+than because it is hard.
 
-- **Connected on Geni after all** → she saves the profile page into
-  `paths_for_wikidata_isolates/`, and those become export seeds. Six so far: Dan
-  Brown, Emma Watson, George R. R. Martin, Benedict XV, Luka Modrić, Magnus
-  Carlsen.
-- **Genuinely isolated on Geni** → the line goes into
-  `wikidata_isolates_to_clear/New Text Document.txt`. **That file is an active
-  queue of removal**, in her words: as each Geni ID is removed from the
-  repository's data, remove its line from the file too. 19 entries so far.
+The data stays where it is, unchanged, in case the decision reverses:
+`out/_isolates.json` (183,681 items, `[qid, label, geni_id, dates, sitelinks,
+flag]`), `out/wikidata-isolates.html`, `wikidata_isolates_to_clear/New Text
+Document.txt` (19 triaged as genuine isolates), and
+`paths_for_wikidata_isolates/` (6 triaged as connected — Dan Brown, Emma Watson,
+George R. R. Martin, Benedict XV, Luka Modrić, Magnus Carlsen).
 
-**Her working hypothesis, 2026-08-13, offered as a pattern to test rather than a
-rule:** modern celebrities are often connected; non-sports and possibly
-anglophone celebrities more so than sports figures; **ancient people definitively
-are not**.
-
-**Steps:**
-
-1. **Open batches of 25 untriaged isolates for her to look at**, skipping
-   anything already in the removal file or already saved as connected. 25 opened
-   2026-08-13 — Averroes down to Dennis Ritchie, sitelinks 131 → 93.
-2. **Build the removal path.** The text file's contract — remove the Geni ID from
-   our data, remove the line — has no script behind it yet. NEEDS-INVESTIGATION:
-   what "removed from the repository" means concretely, given that GEDCOMs are
-   never edited and never deleted. Likely a suppression list consulted by the
-   Wikidata derivation, not a deletion. **Ask Emma before building it.**
+Her half-formed pattern is recorded here so it is not re-derived from scratch if
+this reopens: modern celebrities are often connected, non-sports more than
+sports, and **ancient people definitively are not**. It was never tested.
 
 ---
 
