@@ -70,15 +70,34 @@ sports, and **ancient people definitively are not**. It was never tested.
 
 ---
 
-## 3 · The Baruch Jafe cluster — is it still cut off?
+## 3 · The Baruch Jafe cluster — MEASURED, still cut off
 
-The Samuel Standen cluster was joined to the main tree by one export (`3b37f1f`).
-The **wife of Baruch Jafe** component — 4,088 people, 130 doorways, 69 Wikidata
-anchors per `reports/cluster-anchors.md` — has not been confirmed joined.
+`py scripts/check-components.py`, 2026-08-13, 187 exports: **3 components**.
 
-**Step:** re-merge (`python -m genimerge merge`; `out/merged.ged` is stale, it
-predates the 13 AUG gap exports) and report the component count and which
-component Jafe's cluster sits in. NEEDS-INVESTIGATION until that number exists.
+| | people | who |
+| --- | ---: | --- |
+| #1 | 350,777 | Emma, **and Samuell Standen + wife** |
+| #2 | **12,267** | **Baruch Jafe + wife — cut off** |
+| #3 | 33 | |
+
+The Samuel Standen cluster was joined by `3b37f1f` and that holds. **Baruch Jafe
+was not and is not.**
+
+**Do not confuse "joined to Wikidata" with "joined to the tree."** `000dafd`
+says the two clusters were *already joined to Wikidata* — they carry Wikidata
+anchors. That is not connectivity in the genealogy, and reading it as such is
+how this came to be reported as connected when it is not.
+
+The component is **12,267 people, not the 4,088** in
+`reports/cluster-anchors.md`, so it has absorbed later exports while never
+meeting the main tree.
+
+**Not-done tag:** NEEDS-INVESTIGATION — which doorway in component #2 has a
+relative in component #1. `reports/cluster-anchors.md` lists 130 doorways and 69
+Wikidata anchors to start from.
+
+**Ancestors come first** — Emma, 2026-08-13: *"we are getting all of the
+ancestors first."* This waits behind them.
 
 ---
 

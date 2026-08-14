@@ -39,11 +39,12 @@ class DSU:
         self.parent: dict[str, str] = {}
 
     def find(self, x: str) -> str:
-        p = self.parent.setdefault(x, x)
-        while p != x:
-            self.parent[x] = p = self.parent.setdefault(p, p)
-            x, p = p, self.parent.setdefault(p, p)
-        return x
+        root = x
+        while self.parent.setdefault(root, root) != root:
+            root = self.parent[root]
+        while self.parent[x] != root:          # path compression
+            self.parent[x], x = root, self.parent[x]
+        return root
 
     def union(self, a: str, b: str) -> None:
         ra, rb = self.find(a), self.find(b)
@@ -63,28 +64,28 @@ def main() -> int:
 
     files = sources.find_exports()
     for n, path in enumerate(files, 1):
+        text = Path(path).read_text(encoding="utf-8", errors="replace")
+        # every INDI is a component even if it is in no family
+        for gid in indi.findall(text):
+            dsu.find(gid)
         members: list[str] = []
         in_fam = False
-        with Path(path).open(encoding="utf-8", errors="replace") as fh:
-            for raw in fh:
-                line = raw.rstrip("\r\n")
-                if line.startswith("0 "):
-                    if in_fam and len(members) > 1:
-                        for m in members[1:]:
-                            dsu.union(members[0], m)
-                    members = []
-                    in_fam = bool(fam_start.match(line))
-                    continue
-                if in_fam:
-                    m = member.match(line)
-                    if m:
-                        members.append(m.group(1))
+        for line in text.split("\n"):
+            line = line.rstrip("\r")
+            if line.startswith("0 "):
+                if in_fam and len(members) > 1:
+                    for m in members[1:]:
+                        dsu.union(members[0], m)
+                members = []
+                in_fam = bool(fam_start.match(line))
+                continue
+            if in_fam:
+                m = member.match(line)
+                if m:
+                    members.append(m.group(1))
         if in_fam and len(members) > 1:
             for m in members[1:]:
                 dsu.union(members[0], m)
-        # people in no family at all are still their own component
-        for gid in indi.findall(Path(path).read_text(encoding="utf-8", errors="replace")):
-            dsu.find(gid)
         if n % 40 == 0:
             print(f"  {n}/{len(files)} exports", file=sys.stderr)
 
