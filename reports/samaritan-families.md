@@ -94,9 +94,52 @@ Benyamim Tsedaka                │
 
 Gamliel
   └─ Yisrael ben Gamliel Tsedaka Hatsafari
-        a Samaritan sage in Holon; printed copied Torah manuscripts and
-        prayer books for Samaritan use
+        b. 1932. A Samaritan sage in Holon. Worked at the Israeli Society for
+        the Production of Coins and Medals. Published Samaritan texts, prayer
+        books and a detailed edition of the Samaritan Pentateuch; long
+        association with Prof. Ze'ev Ben-Hayyim and Prof. Abraham Tal.
+        Sons: attested but unnamed — see below.
 ```
+
+**Abraham ben Marchiv died in 1928.** His sons moved first to Tel Aviv, then to
+Holon in 1951 — which is the same year Ratson moved there.
+
+### The sons of Yisrael ben Gamliel are attested but not named
+
+Sean Ireton's fieldwork quotes him directly: *"My (four) sons all married Jews —
+but they left the religion of the Jews and became Samaritans."* Four sons, four
+non-Samaritan wives. **No published source found names any of the six.**
+
+**Ireton calls him "a Cohen", and the institute does not.** The families page
+places Yisrael ben Gamliel among the *Tsedaka Hassafari* literary figures, tribe
+of **Menasseh** — so his paternal line runs to **Safar ben Jacob** in the 14th
+century, not to the priestly house. The priests' common ancestor is **Shalma ben
+Tabia** (1787), a different family in a different tribe. Both chains are
+documented; they are not the same chain, and conflating them would put this man
+in the wrong descent. Which of the two readings is right is **NEEDS-INVESTIGATION**
+— the institute is the family's own publication and Ireton is an outside
+ethnographer working from conversation, which favours the institute.
+
+### Where the sons' names would be
+
+**`A.B. — The Samaritan News`**, the bi-weekly Benyamim and Yefet founded in
+December 1969, and the A.B. Institute of Samaritan Studies archive. That is where
+a community this size records births and marriages. Its web home,
+`thesamaritanupdate.com` and the `shomron0.tripod.com` mirror, **refuses
+connections from here** — but it served the 2008 Tsedaka PDF to Emma's browser,
+so it is reachable from her machine and not from this tool.
+
+Two files worth pulling by hand:
+
+- `https://shomron0.tripod.com/articles/ratson2012.pdf` — a 2012 piece on Ratson
+- `https://shomron0.tripod.com/2012/marchapril.html` — the issue that carried the
+  death notice for the last member of *Dar Elnimir*, 25 March 2012
+
+**The route Emma named — Israeli marriage and birth records to find one of the
+four wives — is the right shape and is not open-web material.** Four women who
+married into a 700-person community between roughly 1960 and 1990, each from a
+documented Israeli Jewish family, is exactly the kind of link that reaches the
+world tree. It needs record access rather than search.
 
 **`Batia bat Yefet ben Abraham` is a named woman with a named father.** She is
 the only one found in this entire search, and she marries the two Tsedaka lines
