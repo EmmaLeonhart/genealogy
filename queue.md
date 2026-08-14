@@ -72,13 +72,19 @@ sports, and **ancient people definitively are not**. It was never tested.
 
 ## 3 · The Baruch Jafe cluster — MEASURED, still cut off
 
-`py scripts/check-components.py`, 2026-08-13, 187 exports: **3 components**.
+`py scripts/check-components.py`, 2026-08-13, 189 exports: **3 components**.
 
 | | people | who |
 | --- | ---: | --- |
 | #1 | 350,777 | Emma, **and Samuell Standen + wife** |
-| #2 | **12,267** | **Baruch Jafe + wife — cut off** |
-| #3 | 33 | |
+| #2 | **19,806** | **Baruch Jafe + wife — cut off** |
+| #3 | 33 | the Samaritan high-priestly line |
+
+**Component #2 grows without joining.** It was 4,088 in `cluster-anchors.md`,
+12,267 at 187 exports, 19,806 at 189 — the exports seeded inside it keep
+enlarging it and none has yet touched component #1. Component #1 has not moved
+at all across those exports: 350,777 both times. Seeding *inside* the cluster
+adds to the cluster; what bridges it is a seed whose ball reaches both.
 
 The Samuel Standen cluster was joined by `3b37f1f` and that holds. **Baruch Jafe
 was not and is not.**

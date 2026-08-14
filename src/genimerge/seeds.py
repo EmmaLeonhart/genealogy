@@ -258,8 +258,10 @@ __all__ = [
 #: `6000000227227104853` ("father of Marianos Argyros"). Eleventh reading of the
 #: evening; the run reads 4112, 4112, 4116, 4120, 4124, 4128, 4156, 4164, 4164,
 #: 4208, 4212, and **4216** (`6000000227227092862`, "father of Cian mac Mug
-#: Nuadat"), twelve readings in one evening.
-GENI_EXPORT_CAP = 4216
+#: Nuadat"), twelve readings in one evening. Then **4220** ("mother of Kendel
+#: Meyer Moch", `6000000227227238821`) and **4224** ("mother of Falk Jonas
+#: Gamburg", `6000000227227141848`) — fourteen readings, 4112 to 4224.
+GENI_EXPORT_CAP = 4224
 
 #: The step between reading this report and running an export.
 #:
