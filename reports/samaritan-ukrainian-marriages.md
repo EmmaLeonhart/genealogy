@@ -1,8 +1,15 @@
 # The Ukrainian marriages into the Samaritan community
 
-**Asked for by Emma, 2026-08-14.** Press research only — none of this is in Geni
-or in the local Wikidata store, and the point of writing it down is that these
-are the **only contemporary Samaritan wives anywhere on record by name**.
+**Emma's line of enquiry, 2026-08-14, and she was ahead of it throughout.** She
+named Yousef Cohen as the thread to pull, asked for the Ukrainian marriages
+specifically, and when four pages returned 403 she **downloaded all four
+herself**. Those saved pages are what settled the surname question and corrected
+two of my claims — the Altif attribution and the Elazar-as-father reading. This
+file is the write-up of a search she directed, not a discovery.
+
+Press research only — none of this is in Geni or in the local Wikidata store, and
+the point of writing it down is that these are the **only contemporary Samaritan
+wives anywhere on record by name**.
 
 `reports/samaritan-marriages.md` established the hole: 99 family records in the
 priestly tree, two wives, both ancient. These women fill part of it.
