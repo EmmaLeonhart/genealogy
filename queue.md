@@ -1297,9 +1297,12 @@ So the deliverable is the missing connecting edge(s), not an analysis.
    `missing ancestors/` or `geni_pages/`, **0** in any `paths/*.tsv`. The two
    balls also share 0 people with each other. So no saved html file holds a
    cluster person — the lost edge is not captured as data anywhere here.
-4. **Why:** 4088/4084 sit right under the export cap (4104). These are `Forest`
-   balls that **hit the size ceiling**, not exhausted islands — the bridge to the
-   main tree lies just outside the ball's radius and was simply never exported.
+
+(Earlier note struck: I claimed the balls "hit the export cap" and so the bridge
+sits just outside the exported radius. That is a forbidden inference — the cap is
+the largest export *seen* and it grows; a size near it says nothing about
+truncation. Whether the connecting person is inside or outside the ball is
+unknown, and does not change the next step.)
 
 **Next step is Emma's:** save the Geni relationship-path page from Emma to each
 seed (Geni still shows the chain if they connect, which she believes they do),
