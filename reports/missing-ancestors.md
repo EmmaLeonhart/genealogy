@@ -1,7 +1,7 @@
 # Missing ancestors — the ancestor-page cross-reference
 
 **A bounded task with a definition of done: get the named people into the corpus.**
-**23 left of the 63 this started at.**
+**1 left of the 63 this started at.**
 Emma is running the exports. This file is what the task *is*, so it survives a
 session boundary.
 
@@ -47,26 +47,38 @@ Writes `reports/missing-ancestors-check.csv` — one row per (person, root), eve
 instance, with `present` and `n_exports` — and
 `reports/missing-ancestors-still-absent.csv`, one row per distinct absent person.
 
-## Where it stands — 2026-08-13, 184 exports
+## Where it stands — 2026-08-13, 185 exports
 
 | | count |
 | --- | ---: |
 | enumerated ancestors on the pages | 337 |
-| present in the corpus | 291 |
-| absent rows | 46 |
-| **distinct people absent** | **23** |
+| present in the corpus | 335 |
+| absent rows | 2 |
+| **distinct people absent** | **1** |
 
-**63 at 178 exports → 61 at 182 → 23 at 184.** The two exports that did the work
-were seeded on *mother of Heimgest Godgestsson* (`6000000227227035828`) and
-*father of Nauma, Queen of Haalogaland* (`6000000227227016909`), both on the
-list; between them they closed the whole Norse block — Hålogaland, the
-Hervarar-saga giants, Gylfi's line, Starkad, Varmland, Reidgotaland. That is 38
-people from two exports, against 2 from the four before them, and the difference
-is entirely whether the seed was on the list.
+**63 at 178 exports → 61 at 182 → 23 at 184 → 1 at 185.** Three exports did
+effectively all of it, and all three were seeded on people who were on the list:
 
-**What is left is Irish.** 22 of the 23 are Leinster / Uí Dúnlainge, Dál Fiatach
-/ Ulster, and Ciannachta / Munster. The 23rd is **Marianos Argyros**, Byzantine
-and unattached to either.
+| seed | who | closed |
+| --- | --- | ---: |
+| `6000000227227035828` | mother of Heimgest Godgestsson | — |
+| `6000000227227016909` | father of Nauma, Queen of Haalogaland | 38 together |
+| `6000000227227039845` | mother of Fiachu MacCathaír Bélach Ciannachta | 22 |
+
+The first two closed the whole Norse block — Hålogaland, the Hervarar-saga
+giants, Gylfi's line, Starkad, Varmland, Reidgotaland. The third closed every
+Irish line at once: Leinster / Uí Dúnlainge, Dál Fiatach / Ulster, Ciannachta /
+Munster, and all four unnamed wives.
+
+Against that, the four exports placed just before them — seeded on
+cluster-joining targets rather than on the list — closed **2** between them.
+**Seed on the list or the number does not move**, and that is the single lesson
+of this task.
+
+**One person left: Marianos Argyros** `6000000026979610847`, Clara's 40th
+great-grandfather, enumerated on both roots' pages. He is Byzantine and attached
+to none of the lines that have been closed, so the export that gets him will be
+seeded somewhere the other seven never reached.
 
 **The gap is a band in the middle, not a cut-off tail.** Generations 50–54 are
 fully present, 18 of 18 — Fjolnir King of Uppsala, Svegdi Fjolnarson, Vana,
@@ -130,7 +142,7 @@ did. The page order is Geni's own enumeration. Use it.
 ## Definition of done
 
 `py scripts/check-missing-ancestors.py` reports **absent: 0**. Re-run it after
-every batch of exports lands; it takes about a minute over 184 GEDCOMs and needs
+every batch of exports lands; it takes about a minute over 185 GEDCOMs and needs
 no merge.
 
 ## What this task is not
