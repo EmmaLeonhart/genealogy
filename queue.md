@@ -94,36 +94,36 @@ Israel Henshel Isserles".** Worth keeping because the shape of it generalises:
 
 ---
 
-## 4 · The 33 Samaritan high priests — RESEARCHED, both routes closed
+## 4 · The 33 Samaritan high priests — the line is documented after all
 
-`reports/samaritan-component.md`. Two ways out were checked, on Emma's framing:
-the **mothers**, which would link sideways into other families, and **upward past
-Tabia**, which would eventually reach recorded ground.
+**Superseded 2026-08-13, twice in one evening.** The first conclusion — that
+nothing above the component was named and it could never be joined — was wrong,
+and `reports/samaritan-priesthood.md` is the correction.
 
-**Mothers: 0 in all four places they could be.** Geni records **0 mothers and 0
-wives** across the 33 — every marriage in eleven generations is unrecorded.
-Wikidata has 18 of the 33 as items; 16 carry `P22`, **none carries `P25` or
-`P26`**, including the modern ones with full biographies. The Israelite Samaritan
-Information Institute's own genealogies are father-to-son by construction — women
-appear in photo captions, and the 1787 near-extinction is described without
-naming the mother who kept the surviving four-year-old alive. Press coverage of
-the post-1923 out-marriages names exactly one wife, **Alexandra**, a given name
-with no surname.
+**Tabia ha'Åbtå'i's father is Yusef**, from the community's own record: *"they
+asked the priest Tsedaka b. Tabia b. Yusef to be the first High Priest from the
+family of Itamar."* Above him the family forefather is **'Abed Ela ben Shalma**,
+born and active in Damascus, titled *President of the House of 'Abtah*. And
+**'Abtah means Translator** (Arabic *Haftawi*) — an occupation, from the Itamar
+priests' duty of rendering the High Priest's Hebrew into Aramaic. It is not a
+place, and reading it as one would be `CLAUDE.md` § *A clan name is not a clan*
+in reverse.
 
-**Upward: blocked at one profile.** Nothing names Tabia ha'Åbtå'i's father — not
-Geni, not Wikidata (`Q135489922` has no `P22`), not the literature. The Åbtå
-family took the priesthood in 1624 when the Eleazar line died out and traces
-itself to Ithamar as a bare claim. The *Tolidah* records the succession, but the
-succession it records is the Eleazar line — this family's own ascent is the part
-it does not cover. So there is no second step, not a long chain of hard ones.
+**The deliverable is `gedcom/samaritan-sources.ged`** — 176 individuals, 69 named
+and 107 explicit placeholders, for Emma to open in a tree editor and enter into
+Geni by hand. See `gedcom/README.md`; it is deliberately outside `exports/` so
+the corpus tests never see it.
 
-**Optional, one export:** a `Forest` on `6000000220294810877`. `Forest` follows
-spouse links, so a ball returning no parent and no wife has found none — it
-converts the Geni half from inference to measurement. It will not join the
-component.
+**Steps:**
 
-**Not-done tag:** OUT-OF-SCOPE — the mothers were never written down, so no
-amount of sourcing produces them.
+1. **Emma enters the named people into Geni**, starting with Yusef as Tabia's
+   father — that one edge is what joins the component.
+2. Re-export and re-run `py scripts/check-components.py`.
+3. **The eight people who would reach the world tree** are the four sons of
+   Yisrael ben Gamliel Tsedaka (b. 1932) and their four Jewish wives, attested in
+   his own words to Sean Ireton and named in no source found. `A.B. — The
+   Samaritan News`, founded December 1969, is where a community of 751 records
+   births and marriages. NEEDS-INVESTIGATION.
 
 ---
 
