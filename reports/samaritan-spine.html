@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Samaritan Itamar line</title>
+<style>
+  :root {
+    --bg: #fbfaf7; --fg: #1b1a17; --muted: #6b675e; --rule: #ded9cf;
+    --card: #ffffff; --accent: #7a5c1e; --ghost: #f2efe8; --faint: #a29c90;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #16151a; --fg: #ecebe6; --muted: #9c968a; --rule: #2f2d35;
+      --card: #1e1d23; --accent: #d8b45e; --ghost: #1a1920; --faint: #6d6860;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg);
+    font: 16px/1.5 "Iowan Old Style", Georgia, "Times New Roman", serif; }
+  main { max-width: 48rem; margin: 0 auto; padding: 3rem 1.25rem 5rem; }
+  h1 { font-size: 2rem; line-height: 1.12; margin: 0 0 .4rem; letter-spacing: -.015em; }
+  .sub { color: var(--muted); margin: 0 0 2rem; }
+  .counts { display: flex; flex-wrap: wrap; gap: .75rem; margin: 0 0 2.25rem;
+    padding: 0; list-style: none; }
+  .counts li { background: var(--card); border: 1px solid var(--rule);
+    border-radius: .5rem; padding: .6rem .9rem; min-width: 8rem; }
+  .counts b { display: block; font-size: 1.5rem; font-variant-numeric: tabular-nums; }
+  .counts span { color: var(--muted); font-size: .8rem; text-transform: uppercase;
+    letter-spacing: .06em; }
+  .warn { border-left: 3px solid var(--accent); background: var(--ghost);
+    padding: .9rem 1.1rem; margin: 0 0 2.5rem; border-radius: 0 .4rem .4rem 0; }
+  .warn p { margin: 0 0 .6rem; } .warn p:last-child { margin: 0; }
+  ol.chain { list-style: none; margin: 0; padding: 0; }
+  ol.chain li { display: flex; gap: 1rem; align-items: flex-start;
+    padding: .3rem 0; position: relative; }
+  ol.chain li::before { content: ""; position: absolute; left: 1.35rem; top: 0;
+    bottom: 0; width: 1px; background: var(--rule); }
+  ol.chain li:first-child::before { top: 1.1rem; }
+  ol.chain li:last-child::before { bottom: calc(100% - 1.1rem); }
+  .gen { position: relative; z-index: 1; flex: 0 0 2.7rem; text-align: center;
+    font-variant-numeric: tabular-nums; font-size: .78rem; color: var(--muted);
+    background: var(--bg); padding: .15rem 0; border-radius: 1rem; }
+  .cell { flex: 1 1 auto; min-width: 0; padding-bottom: .15rem; }
+  .named .cell, .absent .cell { background: var(--card); border: 1px solid var(--rule);
+    border-radius: .5rem; padding: .7rem .9rem; margin: .15rem 0 .55rem; }
+  .absent .cell { border-style: dashed; opacity: .8; }
+  .named .gen { color: var(--accent); font-weight: 700; }
+  .who { font-size: 1.05rem; }
+  .named .who, .absent .who { font-weight: 600; }
+  .placeholder .who { color: var(--faint); font-size: .92rem; }
+  .titl { font-size: .9rem; margin-top: .1rem; }
+  .occu { color: var(--accent); font-size: .8rem; text-transform: uppercase;
+    letter-spacing: .06em; margin-top: .15rem; }
+  .note { color: var(--muted); font-size: .86rem; margin-top: .45rem; }
+  .placeholder .note { font-size: .78rem; margin-top: .1rem; }
+  footer { margin-top: 3rem; padding-top: 1.2rem; border-top: 1px solid var(--rule);
+    color: var(--muted); font-size: .88rem; }
+  code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .85em; }
+</style></head><body><main>
+
+<h1>The Samaritan Itamar line</h1>
+<p class="sub">Itamar ben Aaron down to Tabia ha'Abta'i, generation by
+generation — a view of <code>gedcom/samaritan-itamar-spine.ged</code>, the file
+built for entering into Geni.</p>
+
+<ul class="counts">
+  <li><b>111</b><span>records</span></li>
+  <li><b>5</b><span>named</span></li>
+  <li><b>106</b><span>numbered generations</span></li>
+  <li><b>2 – 112</b><span>generations spanned</span></li>
+</ul>
+
+<div class="warn">
+  <p><strong>Five people here are named by a source. The other 106 are
+  positions, not people.</strong> They are labelled
+  <em>&ldquo;4th generation Samaritan Itamar line&rdquo;</em> and so on because
+  that is exactly what the record asserts — a place in a named lineage. It is not
+  a personal name and no name has been invented anywhere.</p>
+  <p>The <strong>length</strong> of the unnamed stretch is borrowed from the
+  parallel Phinhas line, which the source gives as <strong>112 generations
+  father-to-son from Aaron</strong> to 1624. Nobody counted this line. Do not
+  read these numbers as a measurement of it.</p>
+  <p>Generation 110 is weaker still: the source does not state the distance
+  between 'Abed Ela ben Shalma and Yusef, and <strong>it may be zero</strong>.</p>
+</div>
+
+<ol class="chain">
+<li class="absent"><span class="gen">1</span><div class="cell"><div class="who">Aaron ben Amram</div><div class="occu">High Priest</div><div class="note">Generation 1, and where the count starts — but NOT in the spine file. He is already on Geni; emitting him again would invite a duplicate. Attach Itamar to this Aaron.</div></div></li>
+<li class="named"><span class="gen">2</span><div class="cell"><div class="who">Itamar ben Aaron</div><div class="occu">priest</div><div class="note">Younger son of Aaron. The &#x27;Abtah (Haftawi) priests descend from him; the Phinhas high-priestly line descends from his brother Eleazar. Source: A.B. - The Samaritan News / The Samaritan Update, March-April 2012, &#x27;The High Priesthood and the Israelite Samaritan Priests&#x27;, by Benyamim Tsedaka</div></div></li>
+<li class="placeholder"><span class="gen">3</span><div class="cell"><div class="who">3rd generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">4</span><div class="cell"><div class="who">4th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">5</span><div class="cell"><div class="who">5th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">6</span><div class="cell"><div class="who">6th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">7</span><div class="cell"><div class="who">7th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">8</span><div class="cell"><div class="who">8th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">9</span><div class="cell"><div class="who">9th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">10</span><div class="cell"><div class="who">10th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">11</span><div class="cell"><div class="who">11th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">12</span><div class="cell"><div class="who">12th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">13</span><div class="cell"><div class="who">13th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">14</span><div class="cell"><div class="who">14th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">15</span><div class="cell"><div class="who">15th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">16</span><div class="cell"><div class="who">16th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">17</span><div class="cell"><div class="who">17th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">18</span><div class="cell"><div class="who">18th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">19</span><div class="cell"><div class="who">19th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">20</span><div class="cell"><div class="who">20th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">21</span><div class="cell"><div class="who">21st generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">22</span><div class="cell"><div class="who">22nd generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">23</span><div class="cell"><div class="who">23rd generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">24</span><div class="cell"><div class="who">24th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">25</span><div class="cell"><div class="who">25th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">26</span><div class="cell"><div class="who">26th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">27</span><div class="cell"><div class="who">27th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">28</span><div class="cell"><div class="who">28th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">29</span><div class="cell"><div class="who">29th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">30</span><div class="cell"><div class="who">30th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">31</span><div class="cell"><div class="who">31st generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">32</span><div class="cell"><div class="who">32nd generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">33</span><div class="cell"><div class="who">33rd generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">34</span><div class="cell"><div class="who">34th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">35</span><div class="cell"><div class="who">35th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">36</span><div class="cell"><div class="who">36th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">37</span><div class="cell"><div class="who">37th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">38</span><div class="cell"><div class="who">38th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">39</span><div class="cell"><div class="who">39th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">40</span><div class="cell"><div class="who">40th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">41</span><div class="cell"><div class="who">41st generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">42</span><div class="cell"><div class="who">42nd generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">43</span><div class="cell"><div class="who">43rd generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">44</span><div class="cell"><div class="who">44th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">45</span><div class="cell"><div class="who">45th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">46</span><div class="cell"><div class="who">46th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">47</span><div class="cell"><div class="who">47th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">48</span><div class="cell"><div class="who">48th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">49</span><div class="cell"><div class="who">49th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">50</span><div class="cell"><div class="who">50th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">51</span><div class="cell"><div class="who">51st generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">52</span><div class="cell"><div class="who">52nd generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">53</span><div class="cell"><div class="who">53rd generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">54</span><div class="cell"><div class="who">54th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">55</span><div class="cell"><div class="who">55th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">56</span><div class="cell"><div class="who">56th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">57</span><div class="cell"><div class="who">57th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">58</span><div class="cell"><div class="who">58th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">59</span><div class="cell"><div class="who">59th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">60</span><div class="cell"><div class="who">60th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">61</span><div class="cell"><div class="who">61st generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">62</span><div class="cell"><div class="who">62nd generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">63</span><div class="cell"><div class="who">63rd generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">64</span><div class="cell"><div class="who">64th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">65</span><div class="cell"><div class="who">65th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">66</span><div class="cell"><div class="who">66th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">67</span><div class="cell"><div class="who">67th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">68</span><div class="cell"><div class="who">68th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">69</span><div class="cell"><div class="who">69th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">70</span><div class="cell"><div class="who">70th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">71</span><div class="cell"><div class="who">71st generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">72</span><div class="cell"><div class="who">72nd generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">73</span><div class="cell"><div class="who">73rd generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">74</span><div class="cell"><div class="who">74th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">75</span><div class="cell"><div class="who">75th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">76</span><div class="cell"><div class="who">76th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">77</span><div class="cell"><div class="who">77th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">78</span><div class="cell"><div class="who">78th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">79</span><div class="cell"><div class="who">79th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">80</span><div class="cell"><div class="who">80th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">81</span><div class="cell"><div class="who">81st generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">82</span><div class="cell"><div class="who">82nd generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">83</span><div class="cell"><div class="who">83rd generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">84</span><div class="cell"><div class="who">84th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">85</span><div class="cell"><div class="who">85th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">86</span><div class="cell"><div class="who">86th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">87</span><div class="cell"><div class="who">87th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">88</span><div class="cell"><div class="who">88th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">89</span><div class="cell"><div class="who">89th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">90</span><div class="cell"><div class="who">90th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">91</span><div class="cell"><div class="who">91st generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">92</span><div class="cell"><div class="who">92nd generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">93</span><div class="cell"><div class="who">93rd generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">94</span><div class="cell"><div class="who">94th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">95</span><div class="cell"><div class="who">95th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">96</span><div class="cell"><div class="who">96th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">97</span><div class="cell"><div class="who">97th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">98</span><div class="cell"><div class="who">98th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">99</span><div class="cell"><div class="who">99th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">100</span><div class="cell"><div class="who">100th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">101</span><div class="cell"><div class="who">101st generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">102</span><div class="cell"><div class="who">102nd generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">103</span><div class="cell"><div class="who">103rd generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">104</span><div class="cell"><div class="who">104th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">105</span><div class="cell"><div class="who">105th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">106</span><div class="cell"><div class="who">106th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="placeholder"><span class="gen">107</span><div class="cell"><div class="who">107th generation Samaritan Itamar line</div><div class="note">No source names this person. The record asserts a position in the descent and nothing else.</div></div></li>
+<li class="named"><span class="gen">108</span><div class="cell"><div class="who">Shalma</div><div class="occu">priest</div><div class="note">Father of &#x27;Abed Ela. Named only through his son&#x27;s patronymic. Source: A.B. - The Samaritan News / The Samaritan Update, March-April 2012, &#x27;The High Priesthood and the Israelite Samaritan Priests&#x27;, by Benyamim Tsedaka</div></div></li>
+<li class="named"><span class="gen">109</span><div class="cell"><div class="who">&#x27;Abed Ela ben Shalma</div><div class="titl">President of the House of &#x27;Abtah</div><div class="occu">priest, poet, translator</div><div class="note">Forefather of the current Israelite Samaritan priestly families. Born and active in Damascus, then moved to Nablus to serve the high priests. Great poet, translator and teacher of religion. &#x27;Abtah means Translator (Arabic: Haftawi) - the Itamar priests rendered the Phinhas High Priest&#x27;s Hebrew reading of the Pentateuch into Aramaic, and are named for that duty. Source: A.B. - The Samaritan News / The Samaritan Update, March-April 2012, &#x27;The High Priesthood and the Israelite Samaritan Priests&#x27;, by Benyamim Tsedaka</div></div></li>
+<li class="placeholder"><span class="gen">110</span><div class="cell"><div class="who">110th generation Samaritan Itamar line</div><div class="note">No source names this person, and this generation&#x27;s distance MAY BE ZERO — &#x27;Abed Ela may simply be Yusef&#x27;s father. Not attested either way.</div></div></li>
+<li class="named"><span class="gen">111</span><div class="cell"><div class="who">Yusef</div><div class="occu">priest</div><div class="note">Father of Tabia. Named in the patronymic of the first Itamar-line High Priest: &#x27;the priest Tsedaka b. Tabia b. Yusef&#x27;. Source: A.B. - The Samaritan News / The Samaritan Update, March-April 2012, &#x27;The High Priesthood and the Israelite Samaritan Priests&#x27;, by Benyamim Tsedaka</div></div></li>
+<li class="named"><span class="gen">112</span><div class="cell"><div class="who">Tabia ha&#x27;Abta&#x27;i</div><div class="occu">priest</div><div class="note">Father of Tsedaka b. Tabia, first High Priest of the Itamar line (1624). On Geni as profile 6000000220294810877, where he is the root of a component of 33 people disconnected from the main tree. Source: A.B. - The Samaritan News / The Samaritan Update, March-April 2012, &#x27;The High Priesthood and the Israelite Samaritan Priests&#x27;, by Benyamim Tsedaka</div></div></li>
+</ol>
+
+<footer>
+<p>Below Tabia the descent continues into the 33 Samaritan priests Geni already
+holds as a component disconnected from everything else — he is profile
+<code>6000000220294810877</code>, and attaching this line above him is what
+connects them.</p>
+<p>Source: <em>The High Priesthood and the Israelite Samaritan Priests</em>,
+Benyamim Tsedaka, A.B. — The Samaritan News / The Samaritan Update,
+March–April 2012. See <code>reports/samaritan-priesthood.md</code>.</p>
+<p>Generated by <code>scripts/build-samaritan-spine-page.py</code>.</p>
+</footer>
+</main></body></html>
