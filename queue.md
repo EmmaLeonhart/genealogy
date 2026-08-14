@@ -94,28 +94,36 @@ Israel Henshel Isserles".** Worth keeping because the shape of it generalises:
 
 ---
 
-## 4 · The 33 Samaritan high priests — RESEARCHED, cannot be joined
+## 4 · The 33 Samaritan high priests — RESEARCHED, both routes closed
 
-`reports/samaritan-component.md` is the write-up. Short form:
+`reports/samaritan-component.md`. Two ways out were checked, on Emma's framing:
+the **mothers**, which would link sideways into other families, and **upward past
+Tabia**, which would eventually reach recorded ground.
 
-- The component is **one descent with one door** — only **Tabia ha'Åbtå'i**
-  `6000000220294810877` has no parent recorded, and the other 32 sit beneath him.
-- Above him the sources give a **claim, not a genealogy**. The Åbtå family took
-  the high priesthood in 1624 when the Eleazar line died out, and traces itself
-  to Ithamar — with no intermediate ancestors named anywhere. The *Tolidah*
-  chronicles the Eleazar dynasty, which is precisely not this family.
-- **The corpus holds no biblical line at all** — no Aaron, Ithamar, Eleazar,
-  Moses, Levi, Jacob, Abraham, Adam or David. So even a complete Åbtå→Ithamar
-  chain would have nothing in component #1 to attach to. This half is decisive on
-  its own and is the reason agentic RAG would not help.
+**Mothers: 0 in all four places they could be.** Geni records **0 mothers and 0
+wives** across the 33 — every marriage in eleven generations is unrecorded.
+Wikidata has 18 of the 33 as items; 16 carry `P22`, **none carries `P25` or
+`P26`**, including the modern ones with full biographies. The Israelite Samaritan
+Information Institute's own genealogies are father-to-son by construction — women
+appear in photo captions, and the 1787 near-extinction is described without
+naming the mother who kept the surviving four-year-old alive. Press coverage of
+the post-1923 out-marriages names exactly one wife, **Alexandra**, a given name
+with no surname.
 
-**Optional, one export:** a `Forest` seeded on Tabia ha'Åbtå'i would measure
-rather than infer whether Geni records anything above him — a `Forest` ball that
-returns no parent has found none. It would not join the component.
+**Upward: blocked at one profile.** Nothing names Tabia ha'Åbtå'i's father — not
+Geni, not Wikidata (`Q135489922` has no `P22`), not the literature. The Åbtå
+family took the priesthood in 1624 when the Eleazar line died out and traces
+itself to Ithamar as a bare claim. The *Tolidah* records the succession, but the
+succession it records is the Eleazar line — this family's own ascent is the part
+it does not cover. So there is no second step, not a long chain of hard ones.
 
-**Not-done tag:** OUT-OF-SCOPE — joining this component requires importing the
-biblical patriarchs into the tree, which is a different project from the one
-Emma is running.
+**Optional, one export:** a `Forest` on `6000000220294810877`. `Forest` follows
+spouse links, so a ball returning no parent and no wife has found none — it
+converts the Geni half from inference to measurement. It will not join the
+component.
+
+**Not-done tag:** OUT-OF-SCOPE — the mothers were never written down, so no
+amount of sourcing produces them.
 
 ---
 
