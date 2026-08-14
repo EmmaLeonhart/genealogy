@@ -26,10 +26,11 @@ on:
         description: "Path to the reviewed batch file"
         type: string
         default: "out/wikidata/unlinked-items.json"
-  schedule:
-    # 04:17 UTC daily. Off-peak, and a non-round minute so it is not queued
-    # behind everybody else's midnight cron.
-    - cron: "17 4 * * *"
+  # No `schedule:` and no `push:`. `tests/test_repo_invariants.py` fails on any
+  # automatic trigger and CLAUDE.md § "Cost: this repo is private, so CI is
+  # manual-only" says why: Actions minutes are billable here. A daily cron was
+  # present and failing that test; removed 2026-08-14. Restoring it is one
+  # `- cron:` line, and needs the test and CLAUDE.md changed in the same commit.
 
 concurrency:
   group: wikidata-edits

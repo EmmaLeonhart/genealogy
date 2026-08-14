@@ -272,7 +272,15 @@ __all__ = [
 #: `6000000227227190927`). Twenty-one readings in one sitting, 4112 → 4276, the
 #: two styles interleaved throughout — the same style independence the earlier
 #: flat runs showed.
-GENI_EXPORT_CAP = 4276
+#:
+#: **2026-08-14 — 4868**, a `Forest` export seeded on **Alexandra Krasuk**
+#: (`6000000227240691895`), a profile Emma created that day, taken at 16:08.
+#: `exports/samaritans/export-Forest-6000000227240691895.ged`. That is a jump of
+#: **592** over the previous reading, the largest single step recorded here, and
+#: it is consistent with the stated mechanism rather than surprising under it:
+#: the ceiling is four times the profiles she has added, and she had been adding
+#: Samaritan profiles all day.
+GENI_EXPORT_CAP = 4868
 
 #: The step between reading this report and running an export.
 #:
