@@ -257,8 +257,9 @@ __all__ = [
 #: **2026-08-13, later the same evening — 4212**, a `Forest` of
 #: `6000000227227104853` ("father of Marianos Argyros"). Eleventh reading of the
 #: evening; the run reads 4112, 4112, 4116, 4120, 4124, 4128, 4156, 4164, 4164,
-#: 4208, 4212.
-GENI_EXPORT_CAP = 4212
+#: 4208, 4212, and **4216** (`6000000227227092862`, "father of Cian mac Mug
+#: Nuadat"), twelve readings in one evening.
+GENI_EXPORT_CAP = 4216
 
 #: The step between reading this report and running an export.
 #:
