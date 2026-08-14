@@ -264,7 +264,15 @@ __all__ = [
 #: **4228** ("mother of Dawid Halberstadt", `6000000227227142945`) and **4236**
 #: ("mother of Samuel Abraham Sussman Ballin", `6000000227227132960`), and
 #: **4240** ("mother of Rabbi Israel Henshel Isserles", `6000000227227041063`).
-GENI_EXPORT_CAP = 4240
+#: **Later the same evening the run continued to 4276**, over `Forest` and
+#: `Descendants` seeds alike: 4244 ("mother of Rabbi Israel Henshel Isserles" and
+#: "father of איציק עסלינגן"), 4264 ("mother of Elia Sussman Ballin"), 4268
+#: ("mother of Fraidchen Scheuer von Deutz"), 4272 ("father of Uri" and "wife of
+#: Simon Gunzburg") and **4276** ("mother of Bonna bat Kalonymos II",
+#: `6000000227227190927`). Twenty-one readings in one sitting, 4112 → 4276, the
+#: two styles interleaved throughout — the same style independence the earlier
+#: flat runs showed.
+GENI_EXPORT_CAP = 4276
 
 #: The step between reading this report and running an export.
 #:
