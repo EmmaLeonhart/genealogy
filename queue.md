@@ -94,29 +94,28 @@ Israel Henshel Isserles".** Worth keeping because the shape of it generalises:
 
 ---
 
-## 4 · The 33 Samaritan high priests — one door, and it may be shut
+## 4 · The 33 Samaritan high priests — RESEARCHED, cannot be joined
 
-The remaining component is **33 people**, the Samaritan high-priestly line
-(Abisha, Phinehas, Elazar, Tsedaka, Aabed-El ben Asher…).
+`reports/samaritan-component.md` is the write-up. Short form:
 
-**It is a single descent with exactly one attachment point.** Of the 33, only
-**Tabia ha'Åbtå'i** `6000000220294810877` has no parent recorded, and all 32
-others sit beneath him — 11 generations. So this is not 33 candidate doorways;
-it is one.
+- The component is **one descent with one door** — only **Tabia ha'Åbtå'i**
+  `6000000220294810877` has no parent recorded, and the other 32 sit beneath him.
+- Above him the sources give a **claim, not a genealogy**. The Åbtå family took
+  the high priesthood in 1624 when the Eleazar line died out, and traces itself
+  to Ithamar — with no intermediate ancestors named anywhere. The *Tolidah*
+  chronicles the Eleazar dynasty, which is precisely not this family.
+- **The corpus holds no biblical line at all** — no Aaron, Ithamar, Eleazar,
+  Moses, Levi, Jacob, Abraham, Adam or David. So even a complete Åbtå→Ithamar
+  chain would have nothing in component #1 to attach to. This half is decisive on
+  its own and is the reason agentic RAG would not help.
 
-**Emma's reading, 2026-08-13:** they are legitimately not connected, because of
-the change in the priestly house, and no export will find an edge Geni does not
-record. That is very likely right and it is also **one export away from being
-measured**: a `Forest` seeded on Tabia ha'Åbtå'i either returns a parent or does
-not, and a `Forest` ball that returns nothing has found nothing to follow — the
-same asymmetry that settled the Hata question in `reports/hata.md`.
+**Optional, one export:** a `Forest` seeded on Tabia ha'Åbtå'i would measure
+rather than infer whether Geni records anything above him — a `Forest` ball that
+returns no parent has found none. It would not join the component.
 
-She also raised **agentic RAG** over outside sources for a link. Worth doing only
-after the export, because the export says whether there is anything on the Geni
-side to attach a found link to.
-
-**Not-done tag:** NEEDS-DECISION — Emma, whether to spend one export on it or
-close the component as genuinely separate.
+**Not-done tag:** OUT-OF-SCOPE — joining this component requires importing the
+biblical patriarchs into the tree, which is a different project from the one
+Emma is running.
 
 ---
 
