@@ -32,9 +32,32 @@ REPO = Path(__file__).resolve().parent.parent
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 OUT = REPO / "gedcom" / "samaritan-sources.ged"
 
-#: Generations father-to-son in the parallel Phinhas line, Aaron to 1624, as the
-#: community records it. The yardstick for the 'Abtah line's unnamed stretch.
-PHINHAS_GENERATIONS = 112
+#: **Tabia ha'Abta'i is generation 121, counting Aaron ben Amram as 1.**
+#:
+#: This is the Itamar line's own count and it replaces the Phinhas line's 112,
+#: which was the wrong family's number borrowed for want of reading the source.
+#: Two statements in A.B. / The Samaritan Update, March-April 2012 fix it:
+#:
+#:   1. Benyamim Tsedaka: "the High Priest Aaron b. Ab-Hisda, 85, the 132nd High
+#:      Priest since Aaron b. 'Amram".
+#:   2. Der Spiegel (Matthias Schulz, 13 Apr 2012), reprinted in the same issue,
+#:      quoting that same man: "his family tree goes back 132 generations. He
+#:      says: 'I am a direct descendent of Aaron, the brother of the prophet
+#:      Moses'". That one counts ANCESTORS rather than offices.
+#:
+#: The article then gives his descent in full, thirteen names: "Aaron b.
+#: Ab-Hisda b. HP Jacob b. Aaron b. HP Shalma b. HP Tabia b. Yitzhaq b. HP
+#: Abraham b. HP Yitzhaq b. HP Tabia b. HP Tsedaka b. Tabia b. Yusef". Eleven
+#: steps back from 132 lands on Tabia ha'Abta'i, and Yusef is 120.
+#:
+#: **The two 132s are not the same kind of number and that is worth holding on
+#: to.** "132nd High Priest" counts the office, which since 1624 passes to "the
+#: eldest priest of his brothers" and so moves sideways as well as down; the
+#: Spiegel line counts generations of descent. They agree at 132, which is
+#: either corroboration or the community using one figure for both. The
+#: generation claim is the one this constant rests on.
+CURRENT_HP_GENERATION = 132
+TABIA_GENERATION = CURRENT_HP_GENERATION - 11
 
 SRC_AB = ("A.B. - The Samaritan News / The Samaritan Update, March-April 2012, "
           "'The High Priesthood and the Israelite Samaritan Priests', "
@@ -45,9 +68,12 @@ SRC_FAMILIES = "Israelite Samaritan Information Institute, families page"
 SRC_TSEDAKA08 = "'The Tsedaka Family', theSamaritanUpdate.com, 2008"
 
 PLACEHOLDER_NOTE = (
-    "PLACEHOLDER - no source names this person. Position derived from the "
-    "generation count of the parallel Phinhas line (112 generations, Aaron to "
-    "1624). Do not treat the count as measured for this line."
+    "PLACEHOLDER - no source names this person. The POSITION is real: the "
+    "community counts Tabia ha'Abta'i as generation 121 from Aaron ben Amram, "
+    "so this many generations stand between them. The IDENTITY is unknown. "
+    "Source for the count: the current High Priest is the 132nd since Aaron and "
+    "his family tree is said to go back 132 generations; the published chain "
+    "puts Tabia eleven steps above him."
 )
 
 
@@ -150,8 +176,11 @@ def main() -> int:
                   "Eleazar. Source: " + SRC_AB)
     t.child_of("aaron", "itamar")
 
-    named_count = 6  # aaron, itamar, shalma, abed-ela, yusef, tabia
-    gaps = PHINHAS_GENERATIONS - named_count - 1  # one gap sits lower down
+    # Generations, counting Aaron as 1: aaron 1, itamar 2, [gaps], shalma,
+    # abed-ela, the unstated gap, yusef, tabia 121. So the run of unnamed
+    # generations fills everything from 3 up to shalma's slot, exclusive.
+    shalma_generation = TABIA_GENERATION - 4
+    gaps = shalma_generation - 2 - 1
     prev = "itamar"
     for i in range(1, gaps + 1):
         key = f"gap{i:03d}"

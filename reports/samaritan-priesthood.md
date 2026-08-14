@@ -56,6 +56,39 @@ current High Priest is the **132nd since Aaron**. Two Damascus high priests,
 **Itamar b. 'Amram** and **Yusef b. 'Azzi**, are the only Damascene ones counted
 in the 112.
 
+## Tabia ha'Abta'i is generation 121 — the Itamar line's own count
+
+**Added 2026-08-14, and it corrects a real error.** The 112 above belongs to the
+**Phinhas** line, which descends from Eleazar and died out in 1624 — the line
+these priests *replaced*. It was used as the yardstick for the 'Abtah line's
+unnamed stretch, which gave the Itamar priests the shape of a different family.
+
+The number for *this* family is in the same issue, twice:
+
+> "In the top of the Israelite Samaritan Community stands today the High Priest
+> **Aaron b. Ab-Hisda**, 85, the **132nd High Priest since Aaron b. 'Amram**"
+
+> "The man is a high priest — and **his family tree goes back 132 generations**.
+> He says: 'I am a direct descendent of Aaron, the brother of the prophet
+> Moses'" — Der Spiegel, Matthias Schulz, 13 April 2012, reprinted in the same
+> issue
+
+The second counts **ancestors**, not offices, and it is the priest's own claim
+about his own tree. Set Aaron b. Ab-Hisda at 132 and walk the published chain
+back — `Ab-Hisda 131, Jacob 130, Aaron 129, Shalma 128, Tabia 127, Yitzhaq 126,
+Abraham 125, Yitzhaq 124, Tabia 123, Tsedaka 122` — and the eleventh step is
+**Tabia ha'Abta'i at 121**, with Yusef at 120.
+
+**Hold the two 132s apart.** The office count moves sideways: since 1624 the high
+priesthood passes to "the eldest priest of his brothers", so the 20 Itamar high
+priests are not 20 generations. The Spiegel figure is the one that says
+*generations*. They agree, which is either corroboration or one number doing two
+jobs — the generation claim is what the count rests on, and `Tabia = 121` should
+be re-read if a source ever separates them.
+
+`scripts/build-samaritan-gedcom.py` encodes this as `CURRENT_HP_GENERATION = 132`
+and `TABIA_GENERATION = 132 - 11`; `gedcom/README.md` carries the short form.
+
 ---
 
 ## The complete Itamar-line succession, 1624 to 2010
@@ -145,6 +178,11 @@ that the line was undocumented is superseded by this file.
 - *The High Priesthood and the Israelite Samaritan Priests*, Benyamim Tsedaka,
   A.B. — The Samaritan News / The Samaritan Update, March–April 2012.
   `shomron0.tripod.com/2012/marchapril.html` — host unreachable; page saved by Emma.
+- *Israel's Other Temple: Research Reveals Ancient Struggle over Holy Land
+  Supremacy*, Matthias Schulz, Der Spiegel, 13 April 2012 — **reprinted in that
+  same saved issue**, and the source of the "132 generations" quotation. It is in
+  `reports/sources/samaritan-update-2012-marchapril.html` along with everything
+  else; nothing extra needs fetching.
 - *Ratson b. Benyamim Tsedaka — 90 Years to His Birthday*, Benyamim Tsedaka,
   2012. `shomron0.tripod.com/articles/ratson2012.pdf` — archived in
   `reports/sources/`.

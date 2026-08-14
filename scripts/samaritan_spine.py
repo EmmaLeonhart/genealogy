@@ -4,10 +4,16 @@ Both `build-samaritan-spine-gedcom.py` and `build-samaritan-spine-page.py` walk
 the same descent and number the same generations, so the walk lives here rather
 than in each of them.
 
-**Generation 1 is Aaron ben Amram.** Itamar is 2, Tabia ha'Abta'i is 112. The
-numbering counts from Aaron even though the spine file starts at Itamar, because
-Aaron is where the count means something — the source's own claim is "112
-generations father-to-son from Aaron" for the parallel Phinhas line.
+**Generation 1 is Aaron ben Amram.** Itamar is 2, Tabia ha'Abta'i is **121**.
+The numbering counts from Aaron even though the spine file starts at Itamar,
+because Aaron is where the count means something.
+
+**121 is the Itamar line's own number and it comes from the source.** The
+community counts the current High Priest as the 132nd since Aaron and says his
+family tree goes back 132 generations; the published father-to-son chain puts
+Tabia eleven steps above him. `scripts/build-samaritan-gedcom.py` holds the long
+form. It is *not* the Phinhas line's 112, which is a different family and was
+what this chain was built to before the source was read.
 """
 
 from __future__ import annotations
