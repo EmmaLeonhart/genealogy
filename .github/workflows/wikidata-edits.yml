@@ -69,20 +69,23 @@ jobs:
       - name: Check the secrets are present
         if: steps.gate.outputs.go == 'true'
         env:
-          USER_SECRET: ${{ secrets.WIKIDATA_BOT_USER }}
-          PASS_SECRET: ${{ secrets.WIKIDATA_BOT_PASSWORD }}
+          USER_SECRET: ${{ secrets.USERNAME }}
+          BOT_SECRET: ${{ secrets.BOT_NAME }}
+          PASS_SECRET: ${{ secrets.BOT_PASSWORD }}
         run: |
           missing=0
-          [[ -z "$USER_SECRET" ]] && { echo "::error::WIKIDATA_BOT_USER is not set"; missing=1; }
-          [[ -z "$PASS_SECRET" ]] && { echo "::error::WIKIDATA_BOT_PASSWORD is not set"; missing=1; }
+          [[ -z "$USER_SECRET" ]] && { echo "::error::USERNAME is not set"; missing=1; }
+          [[ -z "$BOT_SECRET" ]] && { echo "::error::BOT_NAME is not set"; missing=1; }
+          [[ -z "$PASS_SECRET" ]] && { echo "::error::BOT_PASSWORD is not set"; missing=1; }
           [[ "$missing" == 1 ]] && exit 1
-          echo "both secrets present"
+          echo "all three secrets present"
 
       - name: Run the batch
         if: steps.gate.outputs.go == 'true'
         env:
-          WIKIDATA_BOT_USER: ${{ secrets.WIKIDATA_BOT_USER }}
-          WIKIDATA_BOT_PASSWORD: ${{ secrets.WIKIDATA_BOT_PASSWORD }}
+          USERNAME: ${{ secrets.USERNAME }}
+          BOT_NAME: ${{ secrets.BOT_NAME }}
+          BOT_PASSWORD: ${{ secrets.BOT_PASSWORD }}
           PYTHONPATH: src
         run: |
           python scripts/wikidata-edit-run.py \

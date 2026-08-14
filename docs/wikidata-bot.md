@@ -15,8 +15,19 @@ password.
 
 | Secret name | Holds |
 | --- | --- |
-| `WIKIDATA_BOT_USER` | the bot login, form `<account>@<botname>` (the "log in with" name) |
-| `WIKIDATA_BOT_PASSWORD` | the generated bot-password string |
+| `USERNAME` | the Wikidata account name |
+| `BOT_NAME` | the bot's name from `Special:BotPasswords` |
+| `BOT_PASSWORD` | the generated bot-password string |
+
+**These are the three names Emma set on 2026-08-14** (screenshotted from the
+repo's Actions secrets page), and the workflow and runner were changed to match
+them — they previously read `WIKIDATA_BOT_USER` / `WIKIDATA_BOT_PASSWORD`, names
+nothing had ever been stored under.
+
+The API's `lgname` is the **joined** form `<account>@<botname>`, so
+`scripts/wikidata-edit-run.py` builds it as `f"{USERNAME}@{BOT_NAME}"`. If
+`USERNAME` already contains an `@` it is used as-is, so storing the joined login
+in `USERNAME` also works.
 
 The API endpoint `https://www.wikidata.org/w/api.php` is **not** secret and can
 be a plain workflow `env:` value.
@@ -27,11 +38,15 @@ Run locally after `gh auth login`. Pass no `--body` so `gh` reads the value from
 a prompt instead of your shell history:
 
 ```bash
-gh secret set WIKIDATA_BOT_USER
+gh secret set USERNAME
 ```
 
 ```bash
-gh secret set WIKIDATA_BOT_PASSWORD
+gh secret set BOT_NAME
+```
+
+```bash
+gh secret set BOT_PASSWORD
 ```
 
 Confirm the names are stored (values are never displayed):
@@ -42,8 +57,8 @@ gh secret list
 
 Claude does not run these — handling a live account password into a secret store
 is a hard line it will not cross even when asked, precisely so an injected
-instruction can never make it move a credential. This is a two-command job for
-the account owner.
+instruction can never make it move a credential. This is a three-command job for
+the account owner, and Emma did it on 2026-08-14.
 
 ### The account, 2026-08-13
 
@@ -51,8 +66,9 @@ A bot password was generated at `Special:BotPasswords` for a bot named `test` on
 a personal account, and the credentials were given to Claude in chat. **Claude
 did not store them**: they are not in this file, not in the workflow, not in any
 commit, and were not passed to `gh secret set`. Handling a live credential into
-a secret store is the hard line — the two `gh secret set` commands above are the
-account owner's to run.
+a secret store is the hard line — the `gh secret set` commands above are the
+account owner's to run, and she ran them (or set them through the web UI) on
+2026-08-14.
 
 **Treat that password as burned and regenerate it.** It was pasted into a chat
 transcript, which is a place credentials should not live. Revoke the `test` bot
@@ -75,7 +91,7 @@ before it. Nothing else needs changing on the day; the gate opens itself.
 
 | file | what it does |
 | --- | --- |
-| `.github/workflows/wikidata-edits.yml` | `workflow_dispatch` + a daily `schedule`, gated on `START_DATE`. Reads the two secrets, fails loudly if either is missing, and calls the runner. **Dry run by default** — a live run needs `dry_run: false` on a manual dispatch. |
+| `.github/workflows/wikidata-edits.yml` | `workflow_dispatch` + a daily `schedule`, gated on `START_DATE`. Reads the three secrets, fails loudly if any is missing, and calls the runner. **Dry run by default** — a live run needs `dry_run: false` on a manual dispatch. |
 | `scripts/wikidata-edit-run.py` | Logs in with the bot password, gets a CSRF token, and walks the batch. Dry run is the default; `--live` is required to send. Caps at `MAX_EDITS_PER_RUN = 100`. Refuses a live run on any batch outside `REVIEWED_BATCHES`. Stdlib only. |
 
 **The runner deliberately stops short of editing.** The step that turns an edit
@@ -100,14 +116,14 @@ before 1 September it is a single date comparison that exits immediately.
 - **Trigger:** `workflow_dispatch` and/or `schedule` **only** — never `push` or
   `pull_request` (CLAUDE.md § *Cost: this repo is private, so CI is manual-only*).
   Actions minutes are billable on a private repo.
-- **Login:** API bot login with `lgname=$WIKIDATA_BOT_USER`,
-  `lgpassword=$WIKIDATA_BOT_PASSWORD`, then a fresh CSRF edit token per request.
+- **Login:** API bot login with `lgname=$USERNAME@$BOT_NAME`,
+  `lgpassword=$BOT_PASSWORD`, then a fresh CSRF edit token per request.
 
 ## Next steps (NEEDS-DECISION — Emma reviews the sequence)
 
 1. The batch generator that emits the ordered, reviewable edit sequence. The
    repo already has `genimerge quickstatements` and the entity-resolution →
    `.qs` path; the reviewable sequence hangs off those.
-2. The workflow YAML that reads the two secrets, paces itself to 10–100 edits a
+2. The workflow YAML that reads the secrets, paces itself to 10–100 edits a
    day, and executes only the reviewed batch. Not written yet, on purpose — no
    live-editing workflow exists until Emma has approved the sequence format.

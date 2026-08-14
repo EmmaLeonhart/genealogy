@@ -38,6 +38,32 @@ state, and **it may be zero** — 'Abed Ela may simply be Yusef's father.
 eldest priest of his brothers", not father to son, so the twenty high priests are
 linked by the patronymics the source states and never by their order in office.
 
+## `samaritan-itamar-spine.ged`
+
+**The one to actually enter into Geni.** 111 records — the Itamar-line descent
+only, no households and no branches: `Itamar ben Aaron` is the **first** record
+and `Tabia ha'Abta'i` is the **last**, with every generation between them in
+descent order and each `FAM` sitting directly under the father it belongs to.
+Emma's instruction, 2026-08-14: that ordering is what makes it straightforward to
+add, and Geni is the only one of these sites that will accept a run of numbered
+generations at all. Built by `scripts/build-samaritan-spine-gedcom.py` from
+`samaritan-sources.ged`.
+
+**Aaron ben Amram is deliberately not in it.** He is generation 1 and the count
+starts from him, but he is already on Geni — emitting him would invite a
+duplicate. Itamar's `NOTE` says so and names the attachment point.
+
+**The 106 unnamed generations carry a descriptive label, not a blank `NAME`.**
+Each is `<n>th generation Samaritan Itamar line`. Emma's instruction, same day:
+these are not "unnamed placeholders", they are numbered positions in a named
+lineage and the label has to say which lineage and which position. An empty
+`NAME` is also not something Geni can hold or a person can read.
+
+**The label is still not a name, and the `NOTE` on every one says so** — in
+capitals: no source names the person, and the *length* of the stretch is borrowed
+from the parallel Phinhas line's 112 generations rather than counted for this
+one. Generation 110 additionally says its distance **may be zero**.
+
 ## `reports/sources/`
 
 The three source documents, archived because two of the three hosts are dead:

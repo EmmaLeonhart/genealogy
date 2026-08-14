@@ -4,10 +4,12 @@
 the run is capped by `--limit` and refuses a batch that is not the reviewed file
 committed to the repo.
 
-Credentials come from the environment — `WIKIDATA_BOT_USER` and
-`WIKIDATA_BOT_PASSWORD`, both GitHub Actions secrets. They are never read from a
-file, never logged, and never written anywhere. If either is missing the run
-stops before touching the network.
+Credentials come from the environment — `USERNAME`, `BOT_NAME` and
+`BOT_PASSWORD`, all three GitHub Actions secrets, named for what Emma actually
+created in the repo's secret store. A bot-password login name is
+`<account>@<botname>`, so the first two are joined with `@` to make `lgname`.
+They are never read from a file, never logged, and never written anywhere. If
+any is missing the run stops before touching the network.
 
 Stdlib only, per CLAUDE.md: `urllib` covers the API.
 
@@ -127,13 +129,17 @@ def main() -> int:
             "Review before execute is load-bearing — see docs/wikidata-bot.md."
         )
 
-    user = os.environ.get("WIKIDATA_BOT_USER")
-    password = os.environ.get("WIKIDATA_BOT_PASSWORD")
-    if not user or not password:
+    account = os.environ.get("USERNAME")
+    botname = os.environ.get("BOT_NAME")
+    password = os.environ.get("BOT_PASSWORD")
+    if not account or not botname or not password:
         raise SystemExit(
-            "WIKIDATA_BOT_USER / WIKIDATA_BOT_PASSWORD not in the environment. "
+            "USERNAME / BOT_NAME / BOT_PASSWORD not in the environment. "
             "They are GitHub Actions secrets; nothing reads them from a file."
         )
+    # Bot-password logins are `<account>@<botname>`. If the account secret was
+    # given in that joined form already, leave it alone rather than doubling it.
+    user = account if "@" in account else f"{account}@{botname}"
 
     session = Session(API)
     session.login(user, password)
