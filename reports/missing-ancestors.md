@@ -1,13 +1,14 @@
 # Missing ancestors — the ancestor-page cross-reference
 
-**A bounded task with a definition of done: get 63 named people into the corpus.**
+**A bounded task with a definition of done: get the named people into the corpus.**
+**23 left of the 63 this started at.**
 Emma is running the exports. This file is what the task *is*, so it survives a
 session boundary.
 
 ## Why the task exists
 
-A Geni export stops at roughly 4,100 people (`genimerge.seeds.GENI_EXPORT_CAP`,
-4,128 as of 2026-08-13). Clara Amilia Hoknes and Randolph Paulus Borsheim each
+A Geni export stops at roughly 4,200 people (`genimerge.seeds.GENI_EXPORT_CAP`,
+4,208 as of 2026-08-13). Clara Amilia Hoknes and Randolph Paulus Borsheim each
 have **more ancestors than that**, so exporting from either returns a ball that
 is cut off before it finishes, and nothing in the export says who was left out.
 
@@ -46,18 +47,26 @@ Writes `reports/missing-ancestors-check.csv` — one row per (person, root), eve
 instance, with `present` and `n_exports` — and
 `reports/missing-ancestors-still-absent.csv`, one row per distinct absent person.
 
-## Where it stands — 2026-08-13, 178 exports
+## Where it stands — 2026-08-13, 184 exports
 
 | | count |
 | --- | ---: |
 | enumerated ancestors on the pages | 337 |
-| present in the corpus | 213 |
-| absent rows | 124 |
-| **distinct people absent** | **63** |
+| present in the corpus | 291 |
+| absent rows | 46 |
+| **distinct people absent** | **23** |
 
-124 absent rows collapse to 63 people because the two roots enumerate nearly the
-same set: Clara's pages carry all 63, Randolph's carry 61 — lacking only Brasila
-and Evancio Chirino.
+**63 at 178 exports → 61 at 182 → 23 at 184.** The two exports that did the work
+were seeded on *mother of Heimgest Godgestsson* (`6000000227227035828`) and
+*father of Nauma, Queen of Haalogaland* (`6000000227227016909`), both on the
+list; between them they closed the whole Norse block — Hålogaland, the
+Hervarar-saga giants, Gylfi's line, Starkad, Varmland, Reidgotaland. That is 38
+people from two exports, against 2 from the four before them, and the difference
+is entirely whether the seed was on the list.
+
+**What is left is Irish.** 22 of the 23 are Leinster / Uí Dúnlainge, Dál Fiatach
+/ Ulster, and Ciannachta / Munster. The 23rd is **Marianos Argyros**, Byzantine
+and unattached to either.
 
 **The gap is a band in the middle, not a cut-off tail.** Generations 50–54 are
 fully present, 18 of 18 — Fjolnir King of Uppsala, Svegdi Fjolnarson, Vana,
@@ -67,19 +76,19 @@ at 44–47.
 
 | great-grandparent generation | present | absent |
 | --- | ---: | ---: |
-| Clara 39–41 | 44 | 16 |
-| Clara 42–44 | 24 | 19 |
-| Clara 45–47 | 14 | **22** |
-| Clara 48–49 | 11 | 6 |
+| Clara 38–41 | 53 | 7 |
+| Clara 42–44 | 38 | 5 |
+| Clara 45–47 | 29 | 7 |
+| Clara 48–49 | 13 | 4 |
 | Clara 50–54 | 18 | **0** |
-| Randolph 38–41 | 40 | 18 |
-| Randolph 42–44 | 22 | 21 |
-| Randolph 45–47 | 13 | **18** |
-| Randolph 48 | 6 | 4 |
-| Randolph 49–53 | 21 | **0** |
+| Randolph 38–41 | 49 | 9 |
+| Randolph 42–44 | 39 | 4 |
+| Randolph 45–47 | 23 | 8 |
+| Randolph 48–49 | 13 | 2 |
+| Randolph 50–54 | 16 | **0** |
 
-Two pages are already clear: `Clara …Ancestors214` (14 rows) and `Randolph
-…Ancestors214` (3 rows) report zero absent.
+Three pages are clear: `Clara …Ancestors214`, `Randolph …Ancestors213` and
+`Randolph …Ancestors214`.
 
 ## Seeding the exports
 
@@ -89,27 +98,28 @@ than either end. Taken in page order, one per page:
 
 | page | absent | midpoint seed |
 | --- | ---: | --- |
-| Clara 2017 | 8 | `6000000006906358676` NN vife of Heimgest Godgestsson |
+| Clara 2017 | 3 | `6000000001452856689` Ailill mac Dunlainge |
 | Clara 206 | 2 | `6000000014055774662` NN |
-| Clara 208 | 6 | `6000000008630666201` Niae Dunlaing mac Éndae Niae |
-| Clara 209 | 6 | `6000000049537463401` Gudmund |
-| Clara 210 | 12 | `6000000006906358126` Himileig Hodbrodsson |
-| Clara 211 | 11 | `6000000008248183477` Ama Ymirsdatter |
-| Clara 212 | 12 | `6000000008248206405` Kong Trym Jotun av Vârmland |
-| Clara 213 | 6 | `6000000011830284701` NN Dál Fiatach |
+| Clara 208 | 2 | `6000000008630666201` Niae Dunlaing mac Éndae Niae |
+| Clara 209 | 2 | `6000000008630666206` Éndae Niae mac Bressail Bélach |
+| Clara 210 | 2 | `6000000002188140044` NN NN |
+| Clara 211 | 2 | `6000000003828254160` Condla mac Taidhg Ciannachta |
+| Clara 212 | 6 | `6000000003828110552` Cian mac Mug Nuadat, King of Munster |
+| Clara 213 | 4 | `6000000003828250921` Oengus (Aenghus) Finn, King of Ulster |
 | Clara 214 | 0 | — clear |
-| Randolph 206 | 5 | `6000000045210662979` Grím Jotne |
-| Randolph 207 | 5 | `6000000014056180070` N.N. |
-| Randolph 208 | 8 | `6000000049537463401` Gudmund |
-| Randolph 209 | 7 | `6000000002188140044` NN NN |
-| Randolph 210 | 13 | `6000000000314930151` Gylfi (Gylve) King of Sweden |
-| Randolph 211 | 11 | `6000000006906358038` Hodbrod Sverdhjaltsson |
-| Randolph 212 | 10 | `6000000011830284701` NN Dál Fiatach |
-| Randolph 213 | 2 | `6000000006271194025` Saemingr, King in Hålogaland |
+| Randolph 206 | 2 | `6000000014055774662` NN |
+| Randolph 207 | 4 | `6000000014056180070` N.N. |
+| Randolph 208 | 3 | `6000000002188140029` NN NN |
+| Randolph 209 | 2 | `6000000002188140044` NN NN |
+| Randolph 210 | 2 | `6000000003828254160` Condla mac Taidhg Ciannachta |
+| Randolph 211 | 4 | `6000000003827138372` Findchaem ingen Cerb |
+| Randolph 212 | 6 | `6000000011830284701` NN Dál Fiatach |
+| Randolph 213 | 0 | — clear |
 | Randolph 214 | 0 | — clear |
 
-14 distinct midpoints; Gudmund and NN Dál Fiatach are each the midpoint of two
-pages.
+12 distinct midpoints; NN, NN NN and Condla mac Taidhg Ciannachta are each the
+midpoint of two pages. Recompute these after every batch — they move as the
+absent runs shrink.
 
 **Do not group these by patronymic and export from the "line".** That was tried
 on 2026-08-13 — `X Ysson` names a father who does sit one generation up, so the
@@ -120,7 +130,7 @@ did. The page order is Geni's own enumeration. Use it.
 ## Definition of done
 
 `py scripts/check-missing-ancestors.py` reports **absent: 0**. Re-run it after
-every batch of exports lands; it takes about a minute over 178 GEDCOMs and needs
+every batch of exports lands; it takes about a minute over 184 GEDCOMs and needs
 no merge.
 
 ## What this task is not
