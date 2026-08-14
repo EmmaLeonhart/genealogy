@@ -579,3 +579,17 @@ Wikidata store makes the same measurement possible on the other tree, and then a
 third thing that neither side can do alone: **where Wikidata holds ancestors of a
 Geni person that our Geni tree lacks**, which is both a Geni-side target to
 export toward and the input to entity resolution between the two trees.
+
+## order.life: the descent-from-antiquity material
+
+**Emma, 2026-08-14.** `order.life` is chaotic but she believes it **gets the link
+right** for the cases Geni cannot express — Zerubbabel especially, where
+`6000000000961704850` and `6000000206646432835` are the same person and Geni
+cannot merge them. She thinks it has the correct father for him.
+
+It is **not** a source to make our real-life tree from. It carries descent-from-
+antiquity material she wants to **include in the synoptic tree**, and she asked
+for its content to be gone over **later**.
+
+Wikidata should also be getting this right, which is the check to run against the
+local store once the pairs are in.

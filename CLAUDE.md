@@ -354,6 +354,36 @@ period so the ranking can be read one century at a time.
   how far *we* have traced upward, so an untraced person looks shallow whenever
   they lived. No date is ever inferred.
 
+### A second Geni ID on one Wikidata item is NOT a conflict
+
+**Emma, 2026-08-14: *"it is impossible to merge these geni profiles, simple as
+that."*** Two Geni profiles for one person is a permanent, structural feature of
+Geni, not an error to resolve, and a second `P2600` on a Wikidata item is the
+correct representation of it.
+
+**Why it happens:** Geni has rules against connecting biblical people to living
+people. So users who want their line to reach antiquity keep **creating fresh
+biblical profiles** and attaching to those instead. The duplicates accumulate and
+cannot be merged. Emma's words for what a second ID means: *"it usually means
+that the person just isn't properly done that way."*
+
+Known pairs, both unmergeable:
+
+| person | profiles |
+| --- | --- |
+| Aaron | `6000000000792907064` · `6000000227239142939` (`Aaron I /Samaritan High Priest/`) |
+| Zerubbabel | `6000000000961704850` · `6000000206646432835` (`Zerubbabel-PLACEHOLDER`) |
+
+**So: emit the second ID as an additional `P2600` statement. Never replace the
+first, never hold it back as a conflict, never build machinery to adjudicate
+it.** `P2600` is multi-valued and the local store already counts **2861 items
+carrying more than one Geni ID** — this is ordinary. It is also the general rule
+one section down: *prefer adding a second statement cited to Geni over editing
+the existing one*.
+
+`scripts/build-geni-wikidata-pairs.py` implements this; a run that reports these
+as "conflicts" has regressed.
+
 ### "Is X present?" means BOTH stores. Answer for each, and name which
 
 **Emma's rule, 2026-08-14, after a whole session was lost to the ambiguity.**

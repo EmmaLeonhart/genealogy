@@ -12,9 +12,23 @@ profile ID from the xref, item from the URL inside that record. No name matching
 Each pair is then checked against the local Wikidata store, offline:
 
 * the item already carries this Geni ID  -> nothing to do
-* the item carries a *different* Geni ID -> reported, never emitted
+* the item carries a *different* Geni ID -> **emitted as an ADDITIONAL P2600**
 * the item is absent from the store      -> still emitted; the store is a
   Geni-seeded slice and an unlinked item is exactly what falls outside it
+
+**A second Geni ID on one item is normal and permanent, not a conflict.**
+Emma, 2026-08-14: *"it is impossible to merge these geni profiles, simple as
+that."* Geni forbids connecting biblical people to living people, so users
+repeatedly create fresh biblical profiles and attach their own lines to those.
+The duplicates cannot be merged and will keep appearing. Aaron has two
+(`6000000000792907064` and `6000000227239142939`); Zerubbabel has two
+(`6000000000961704850` and `6000000206646432835`).
+
+P2600 takes multiple values — the local store already counts **2861 items
+carrying more than one Geni ID** — so the correct edit is to add the second
+statement, never to replace the first. That is also CLAUDE.md § *The purpose is
+to ADD to Wikidata, not to correct it*: prefer a second statement cited to Geni
+over editing an existing one.
 
     py scripts/build-geni-wikidata-pairs.py
 """
@@ -99,7 +113,7 @@ def main() -> int:
     known = store_geni_ids(all_qids)
     print(f"{len(all_qids)} distinct items; {len(known)} of them are in the local store")
 
-    rows, batch, conflicts = [], [], []
+    rows, batch, duplicates = [], [], []
     for g, rec in sorted(merged.items()):
         for q in sorted(rec["qids"]):
             in_store = q in known
@@ -107,8 +121,9 @@ def main() -> int:
             if g in on_item:
                 status = "already linked"
             elif on_item:
-                status = f"item carries a different Geni ID: {','.join(on_item)}"
-                conflicts.append((g, q, on_item))
+                status = (f"additional P2600 - item already carries "
+                          f"{','.join(on_item)}, unmergeable Geni duplicate")
+                duplicates.append((g, q, on_item))
             elif in_store:
                 status = "in store, no Geni ID -> add"
             else:
@@ -119,7 +134,7 @@ def main() -> int:
                 "item_geni_ids": " ".join(on_item), "status": status,
                 "exports": " ".join(sorted(rec["exports"])),
             })
-            if status.startswith(("in store", "not in")):
+            if status.startswith(("in store", "not in", "additional")):
                 batch.append({
                     "id": f"add_geni_id:{q}",
                     "type": "add_geni_id",
@@ -148,10 +163,11 @@ def main() -> int:
     ) + "\n", encoding="utf-8")
     print(f"wrote {qs}")
 
-    if conflicts:
-        print(f"\n{len(conflicts)} CONFLICTS (never emitted):")
-        for g, q, on in conflicts:
-            print(f"  {q} carries {on} but the Geni profile is {g}")
+    if duplicates:
+        print(f"\n{len(duplicates)} items get an ADDITIONAL P2600 "
+              f"(unmergeable Geni duplicates, not conflicts):")
+        for g, q, on in duplicates:
+            print(f"  {q} already carries {on}; adding {g} alongside it")
     return 0
 
 
