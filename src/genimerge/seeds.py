@@ -228,7 +228,17 @@ __all__ = [
 #: seeds across the Borsheim/Norwegian mother's side, feeding the Charlemagne
 #: route) topped out at 4104: seven exports read exactly 4104 across both
 #: styles. Seventh reading in the step-by-four run. Still recorded, not asserted.
-GENI_EXPORT_CAP = 4104
+#: **2026-08-13, 16:45 and 16:53 — 4112, and the run skipped a value.** Two
+#: `Forest` exports, of `6000000227225628908` ("Unknown Sorbian Prince") and
+#: `6000000227225654852` ("Wife of Froyla Ferrández, Conde"), eight minutes
+#: apart, both exactly 4112. 4104 → 4112 is a step of *eight*, the first reading
+#: in the run that is not four higher than the last — either 4108 was never read
+#: because no export was taken while it stood, or the step is not four. The two
+#: readings agreeing with each other is the same style-and-seed independence
+#: seen throughout. Recorded, not asserted, and the reason this stays "largest
+#: seen". A third `Forest` take ten minutes later — `6000000227225487992`
+#: ("NN"), 16:57 — held **4116**, so the same sitting read 4112, 4112, 4116.
+GENI_EXPORT_CAP = 4116
 
 #: The step between reading this report and running an export.
 #:

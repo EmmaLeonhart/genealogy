@@ -140,8 +140,9 @@ arithmetic**: a run of eleven identical values is evidence the number sits
 still, not evidence it steps by four on a schedule, and do not describe it as a
 cap Geni enforces.
 
-`genimerge.seeds.GENI_EXPORT_CAP` is **4020** as of 2026-08-06, meaning *largest
-yet seen*; its docstring is the long form of this. It was 3860 when the
+`genimerge.seeds.GENI_EXPORT_CAP` is **4116** as of 2026-08-13, meaning *largest
+yet seen*; its docstring is the long form of this, and is where each reading is
+recorded — do not update this number without adding the reading there. It was 3860 when the
 paragraph above was written, and the sentence about the number sitting still
 survived the move rather than being falsified by it — 4008 came from a pair of
 exports taken seven minutes apart that held 3972 and 4008, which is a ceiling

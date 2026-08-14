@@ -1299,7 +1299,33 @@ So the deliverable is the missing connecting edge(s), not an analysis.
    (`path-from-html`) so the edge becomes data, and note what re-connects the
    component. Report the found link(s) to Emma before merging anything.
 
-**Not-done tag:** NEEDS-INVESTIGATION — the connecting edge is not yet located.
+**Steps 1-3 ran 2026-08-13 17:20. The search space is empty — the connecting
+edge is not in this repo.** Union-find over all 175 exports:
+
+- Four components. Main 325,661 (Emma). `wife of Baruch Jafe` sits in one of
+  **4,088**; `wife of Samuel Standen` in one of **4,084**. A fourth holds 33.
+- Each cluster is **exactly its own Forest export and nothing else**: of those
+  4,088 and 4,084 people, **zero appear in any other export**. Not one person
+  overlaps the other 173 files.
+- **No cluster ID occurs in any saved page or path** — `geni_pages/`,
+  `missing ancestors/`, `paths/` all return nothing. The `reports/*.csv` hits
+  are derived from the merge itself, not independent evidence.
+
+So step 3's cross-check has no material to work on, and step 4 cannot run.
+
+**What the sizes say.** 4,088 and 4,084 are the export-size readings recorded for
+exactly those two seeds in `seeds.GENI_EXPORT_CAP`'s docstring, so both balls
+**stopped at the size bound rather than exhausting the neighbourhood**. A
+truncated `Forest` ball proves nothing about whether the neighbourhood connects —
+it only shows our walk stopped ~4,000 people out without meeting anything we had.
+"The edge was removed on Geni" is therefore neither supported nor refuted here.
+
+**Not-done tag:** BLOCKED-ON-USER-ACTION — resolving this needs Geni asked
+directly, which is a browser action. Open the relationship path between Emma and
+each of `6000000227145774838` / `6000000227145420853` on Geni; if Geni draws one,
+save the page into `geni_pages/` and run `path-from-html`, and the chain names the
+people the exports never reached. If Geni draws no path, the two really are
+disconnected on the live site and the question becomes which edge to add.
 
 ---
 
