@@ -70,40 +70,27 @@ sports, and **ancient people definitively are not**. It was never tested.
 
 ---
 
-## 3 · The Baruch Jafe cluster — MEASURED, still cut off
+## 3 · The Baruch Jafe cluster — JOINED 2026-08-13
 
-`py scripts/check-components.py`, 2026-08-13, 189 exports: **3 components**.
+`py scripts/check-components.py`, 192 exports: **2 components**, 381,035 people.
+Baruch Jafe, his wife, Samuell Standen and Emma are all in component #1 at
+381,002. What is left is component #2 at **33 people — the Samaritan
+high-priestly line**, which nothing has touched.
 
-| | people | who |
-| --- | ---: | --- |
-| #1 | 350,777 | Emma, **and Samuell Standen + wife** |
-| #2 | **19,806** | **Baruch Jafe + wife — cut off** |
-| #3 | 33 | the Samaritan high-priestly line |
+**The bridge was `export-Forest-6000000227227041063`, seeded on "mother of Rabbi
+Israel Henshel Isserles".** Worth keeping because the shape of it generalises:
 
-**Component #2 grows without joining.** It was 4,088 in `cluster-anchors.md`,
-12,267 at 187 exports, 19,806 at 189 — the exports seeded inside it keep
-enlarging it and none has yet touched component #1. Component #1 has not moved
-at all across those exports: 350,777 both times. Seeding *inside* the cluster
-adds to the cluster; what bridges it is a seed whose ball reaches both.
-
-The Samuel Standen cluster was joined by `3b37f1f` and that holds. **Baruch Jafe
-was not and is not.**
-
-**Do not confuse "joined to Wikidata" with "joined to the tree."** `000dafd`
-says the two clusters were *already joined to Wikidata* — they carry Wikidata
-anchors. That is not connectivity in the genealogy, and reading it as such is
-how this came to be reported as connected when it is not.
-
-The component is **12,267 people, not the 4,088** in
-`reports/cluster-anchors.md`, so it has absorbed later exports while never
-meeting the main tree.
-
-**Not-done tag:** NEEDS-INVESTIGATION — which doorway in component #2 has a
-relative in component #1. `reports/cluster-anchors.md` lists 130 doorways and 69
-Wikidata anchors to start from.
-
-**Ancestors come first** — Emma, 2026-08-13: *"we are getting all of the
-ancestors first."* This waits behind them.
+- **Six exports seeded inside the cluster moved nothing.** Component #1 held at
+  exactly 350,777 across all of them while the cluster went 4,088 → 27,075. A
+  ball seeded inside a component stays inside it.
+- **Escaping through in-laws cannot work by construction** — Emma's own
+  correction, 2026-08-13. A spouse edge joins two people already in the same
+  component, or it would not be in it.
+- **What worked was seeding at the top of the deepest line.**
+  `scripts/cluster-upward-frontier.py` ranks parentless people in a component by
+  how many generations of descent sit beneath them, which separates the head of
+  a long line from the interior in-laws and leaves that a flat parentless list
+  mixes together. The Isserles seed came out of that ranking.
 
 ---
 
