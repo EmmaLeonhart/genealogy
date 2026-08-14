@@ -26,41 +26,22 @@ anybody was going to execute.
 
 ---
 
-## 1 · Missing ancestors — Emma is exporting, the check is the scoreboard
+## 1 · Missing ancestors — DONE 2026-08-13
 
-**She is running the exports. This is her task, not mine.** The job here is to
-re-run the check after each batch lands and report the number.
+`py scripts/check-missing-ancestors.py` → **absent: 0** over 186 GEDCOMs. All
+337 ancestors enumerated on the 18 saved pages for Clara Amilia Hoknes and
+Randolph Paulus Borsheim are in the corpus. Write-up:
+`reports/missing-ancestors.md`.
 
-`py scripts/check-missing-ancestors.py` → **absent: 61** as of 2026-08-13, over
-182 GEDCOMs. Definition of done is **absent: 0**.
+It went 63 → 61 → 23 → 1 → 0 across 178, 182, 184, 185 and 186 exports, and four
+exports did nearly all of it — every one seeded on somebody who was on the list.
+The four before them were seeded on cluster-joining targets and closed 2 between
+them. **Seed on the list or the number does not move.**
 
-**Seed the exports at the 14 midpoints, or the number will not move.** The four
-exports placed on 13 AUG evening took the count 63 → 61, and both people closed
-came from the single export seeded on `NN Chirino`. The other three were seeded
-on cluster-joining targets and closed nothing on this list. An export only helps
-here if its seed is on it.
-
-**Check Downloads before reporting the number.** Those four had been finished
-and were sitting unplaced, so the count was stale rather than stuck.
-
-Full write-up — why the task exists, how the check works, the per-generation
-table, and the 14 midpoint seeds in page order —
-**`reports/missing-ancestors.md`**. Read that rather than re-deriving it.
-
-Three things about it that were got wrong once and must not be got wrong again:
-
-- **The saved ancestor pages in `missing ancestors/` are the source.** Not the
-  merged tree, not a frontier walk, not "which people have no parent recorded".
-  Geni's enumeration is the only evidence of people no export has reached.
-- **The gap is a band at generations 39–49, not a cut-off tail.** Generations
-  50–54 are 18 present / 0 absent — Fjolnir, Woden, Vanlandi and the rest are
-  already in. Do not describe the missing 63 as "the deep end".
-- **Seed from the page-order midpoint of each page's absent run.** Do not group
-  them into lineages by patronymic and export from those; that inference was
-  tried and produced worse seeds than the ordering Geni already gives.
-
-**Steps:** after each export batch — place the `.ged` (never overwriting; ask
-where it goes), commit it, re-run the check, report `absent: N`. Nothing else.
+**Reopen this only when new ancestor pages are saved.** The result covers the 18
+pages in `missing ancestors/` and says nothing about any root whose pages have
+not been saved. If Emma saves more, drop them in that directory and re-run — the
+script needs no other change.
 
 ---
 

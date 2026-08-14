@@ -1,7 +1,7 @@
 # Missing ancestors — the ancestor-page cross-reference
 
 **A bounded task with a definition of done: get the named people into the corpus.**
-**1 left of the 63 this started at.**
+**DONE — 0 left of the 63 this started at, as of 2026-08-13, 186 exports.**
 Emma is running the exports. This file is what the task *is*, so it survives a
 session boundary.
 
@@ -47,16 +47,16 @@ Writes `reports/missing-ancestors-check.csv` — one row per (person, root), eve
 instance, with `present` and `n_exports` — and
 `reports/missing-ancestors-still-absent.csv`, one row per distinct absent person.
 
-## Where it stands — 2026-08-13, 185 exports
+## Where it stands — 2026-08-13, 186 exports — COMPLETE
 
 | | count |
 | --- | ---: |
 | enumerated ancestors on the pages | 337 |
-| present in the corpus | 335 |
-| absent rows | 2 |
-| **distinct people absent** | **1** |
+| present in the corpus | 337 |
+| absent rows | 0 |
+| **distinct people absent** | **0** |
 
-**63 at 178 exports → 61 at 182 → 23 at 184 → 1 at 185.** Three exports did
+**63 at 178 exports → 61 at 182 → 23 at 184 → 1 at 185 → 0 at 186.** Three exports did
 effectively all of it, and all three were seeded on people who were on the list:
 
 | seed | who | closed |
@@ -64,6 +64,7 @@ effectively all of it, and all three were seeded on people who were on the list:
 | `6000000227227035828` | mother of Heimgest Godgestsson | — |
 | `6000000227227016909` | father of Nauma, Queen of Haalogaland | 38 together |
 | `6000000227227039845` | mother of Fiachu MacCathaír Bélach Ciannachta | 22 |
+| `6000000227227104853` | father of Marianos Argyros | 1 |
 
 The first two closed the whole Norse block — Hålogaland, the Hervarar-saga
 giants, Gylfi's line, Starkad, Varmland, Reidgotaland. The third closed every
@@ -75,10 +76,12 @@ cluster-joining targets rather than on the list — closed **2** between them.
 **Seed on the list or the number does not move**, and that is the single lesson
 of this task.
 
-**One person left: Marianos Argyros** `6000000026979610847`, Clara's 40th
-great-grandfather, enumerated on both roots' pages. He is Byzantine and attached
-to none of the lines that have been closed, so the export that gets him will be
-seeded somewhere the other seven never reached.
+**Every enumerated ancestor on both pages is now in the corpus.** The last was
+Marianos Argyros `6000000026979610847`, closed by an export seeded on his father.
+
+**Re-run the check when new ancestor pages are saved.** This is done for the 18
+pages in `missing ancestors/`, which are Clara's and Randolph's deep pages. It
+says nothing about any root whose pages have not been saved.
 
 **The gap is a band in the middle, not a cut-off tail.** Generations 50–54 are
 fully present, 18 of 18 — Fjolnir King of Uppsala, Svegdi Fjolnarson, Vana,
@@ -142,7 +145,7 @@ did. The page order is Geni's own enumeration. Use it.
 ## Definition of done
 
 `py scripts/check-missing-ancestors.py` reports **absent: 0**. Re-run it after
-every batch of exports lands; it takes about a minute over 185 GEDCOMs and needs
+every batch of exports lands; it takes about a minute over 186 GEDCOMs and needs
 no merge.
 
 ## What this task is not
