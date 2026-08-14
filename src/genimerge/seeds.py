@@ -244,7 +244,17 @@ __all__ = [
 #: and **4128** (`6000000227226579873`, "mother of Robert Kemsley", 17:49). Six
 #: readings in one evening, 4112 → 4128, and after the single step of eight the
 #: rest went up by four apiece.
-GENI_EXPORT_CAP = 4128
+#: **2026-08-13, 18:19 to 19:32 — 4156, 4164, 4164, 4208**, four more `Forest`
+#: takes the same evening: `6000000227226720863` ("mother of Sir John
+#: Robertson") 4156, `6000000227226792872` ("mother of Isaac Dreyfus") 4164,
+#: `6000000227226796847` ("mother of Michael Katzenellenbogen") 4164, and
+#: `6000000227226850980` ("NN Chirino") **4208**. Ten readings in one evening,
+#: 4112 → 4208. The steps here are 28, 8, 0 and 44 — so the run that "went up by
+#: four apiece" earlier the same evening did not continue, which is the second
+#: time a step description has been overtaken within hours of being written. The
+#: pair at 4164 is two different seeds eight minutes apart, the usual
+#: style-and-seed independence. Recorded, not asserted.
+GENI_EXPORT_CAP = 4208
 
 #: The step between reading this report and running an export.
 #:
