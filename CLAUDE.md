@@ -354,6 +354,42 @@ period so the ranking can be read one century at a time.
   how far *we* have traced upward, so an untraced person looks shallow whenever
   they lived. No date is ever inferred.
 
+### "Is X present?" means BOTH stores. Answer for each, and name which
+
+**Emma's rule, 2026-08-14, after a whole session was lost to the ambiguity.**
+When she asks whether somebody or something is *present*, she is **completely
+agnostic between Wikidata and Geni**. She is asking whether it exists in the
+material this project works with, not which container it sits in. So:
+
+- **Check both.** The corpus under `exports/` (plus `gedcom/`), and the local
+  Wikidata store under `wikidata/items/` with its index in
+  `out/wikidata/store-index.sqlite3`. Never one and report as if it were the
+  question.
+- **Say which store each answer is about, in the answer itself.** "Not present"
+  with no store named is not an answer, it is a trap. "On Geni: 35 profiles, in
+  `exports/gaps/export-Bio-…`. On Wikidata: none of the 35 carry an item."
+- **Say when the absence is bounded.** Our exports are a sample of Geni, so
+  absent-from-corpus never means absent-from-Geni. The Wikidata store is a
+  *Geni-shaped slice* — 1,408,402 items seeded from P2600 holders and their
+  neighbours — so absent-from-store never means absent-from-Wikidata. Both
+  limits get stated, not implied.
+
+**How it went wrong, because the shape recurs.** Asked whether the pre-1600s
+Samaritan high priests existed, the answer given was scoped silently: first to
+Wikidata (0 of 35 linked), then to `order.life` (0 of 35), each true, neither the
+question. Emma had **built that tree on Geni herself** and heard "they are not
+present". The 35 were in the corpus the whole time.
+
+**Join on the Geni ID; do not search by name.** The same session grepped for
+`Shalma|Tabia|Abta` — names from the *modern* end of the family — and missed 35
+priests called Hezekiah, Akabon and Netaniel entirely, while matching
+`Shalmaneser V`, an Assyrian king, across six exports. A later grep for `Abisha`
+returned `Abishai` and `SHATABISHA Chandra`. The Geni profile ID is this repo's
+primary key on **both** sides: `store-index.sqlite3` has a `geni` table keyed on
+it, and `order.life`'s `wikibase/analysis/persons.tsv` carries a `geni_id`
+column. Every one of those joins is exact and instant. Reach for the join first
+and the name search never, except to pick candidates for a join.
+
 **Presence measures our sampling, never Geni's content.** A thin region is one
 *we* barely covered. Whether Geni holds more there is precisely the unknown an
 export resolves — reading it as "Geni has little here" is backwards. The doorway
