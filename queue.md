@@ -1320,12 +1320,20 @@ truncated `Forest` ball proves nothing about whether the neighbourhood connects 
 it only shows our walk stopped ~4,000 people out without meeting anything we had.
 "The edge was removed on Geni" is therefore neither supported nor refuted here.
 
-**Not-done tag:** BLOCKED-ON-USER-ACTION — resolving this needs Geni asked
-directly, which is a browser action. Open the relationship path between Emma and
-each of `6000000227145774838` / `6000000227145420853` on Geni; if Geni draws one,
-save the page into `geni_pages/` and run `path-from-html`, and the chain names the
-people the exports never reached. If Geni draws no path, the two really are
-disconnected on the live site and the question becomes which edge to add.
+**2026-08-13 17:37 — half of it is closed, by an export.** Emma took a `Forest`
+of `6000000227226600829` ("mother of James Baskerville"), 4,120 people. It
+overlaps the Standen cluster at **12 people** and the main tree as well, so the
+corpus went **4 components to 3** and `wife of Samuel Standen` is now inside the
+main component: 325,661 → **333,744** people. No edge had been removed on Geni.
+The export simply reached where the earlier ones stopped, which is what a
+sampling gap looks like when it closes.
+
+**Left:** `wife of Baruch Jafe`, still a separate 4,088, plus the stray 33.
+
+**Not-done tag:** BLOCKED-ON-USER-ACTION — one more export, seeded near the Jafe
+ball the way this one was seeded near the Standen ball. Note the Wikidata side is
+already joined regardless: `reports/cluster-anchors.md` lists 69 people in that
+cluster who sit inside the 1,116,499-person world tree.
 
 ---
 

@@ -238,7 +238,9 @@ __all__ = [
 #: seen throughout. Recorded, not asserted, and the reason this stays "largest
 #: seen". A third `Forest` take ten minutes later — `6000000227225487992`
 #: ("NN"), 16:57 — held **4116**, so the same sitting read 4112, 4112, 4116.
-GENI_EXPORT_CAP = 4116
+#: **2026-08-13, 17:37 — 4120**, a `Forest` of `6000000227226600829` ("mother of
+#: James Baskerville"). Fourth reading of the evening: 4112, 4112, 4116, 4120.
+GENI_EXPORT_CAP = 4120
 
 #: The step between reading this report and running an export.
 #:
