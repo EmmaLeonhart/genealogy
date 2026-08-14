@@ -261,8 +261,9 @@ __all__ = [
 #: Nuadat"), twelve readings in one evening. Then **4220** ("mother of Kendel
 #: Meyer Moch", `6000000227227238821`) and **4224** ("mother of Falk Jonas
 #: Gamburg", `6000000227227141848`) — fourteen readings, 4112 to 4224. Then
-#: **4228** ("mother of Dawid Halberstadt", `6000000227227142945`).
-GENI_EXPORT_CAP = 4228
+#: **4228** ("mother of Dawid Halberstadt", `6000000227227142945`) and **4236**
+#: ("mother of Samuel Abraham Sussman Ballin", `6000000227227132960`).
+GENI_EXPORT_CAP = 4236
 
 #: The step between reading this report and running an export.
 #:
