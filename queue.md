@@ -13,6 +13,15 @@ See `CLAUDE.md` § "Workflow Rules" for how this file, planning mode, and the ta
 
 ---
 
+## START
+
+OH MY GOD THE QUEUE IS SO BLOATED I AM ALMOST CERTAIN NONE OF IT EVEN IS RELEVANT ANYMORE AND IT IS JUST DECAYED COMPLETELY INTO BULLSHIT
+
+But aside from that, you may see the new text document that was done based off of the Wikidata isolates. Because of the fact that now our synoptic tree has gotten those two major islands, last session those two major islands were connected into the synoptic tree. That means that, as a result, our main concerns now are:
+1. My missing ancestors, which I am pretty confident that I got all of them, but you've just been refusing to actually do the research on.
+2. The Wikidata isolates. I notice right now that the Wikidata isolates, most of them seem like they're genuine geni isolates, but not all of them. I saved the ones that are connected into a thing for us to do exports for, but for the ones that are genuinely not connected, this is a bit more of a challenge. I am going to want you to remove all the ones from that text file. I'm going to say preserve, and I'm going to say, as you remove them from our database or our repository stuff, remove it from the text file. The text file is essentially an active queue of removal of the geni IDs, so with the geni ID removed, it makes it so that thing is removed from the repository too.
+All this is going to be good. I want you to open up another 25 so that I can figure it out and essentially kind of triage them, because I think I am finding a pattern. I think the pattern that I've noticed is that modern celebrities sometimes have large families. I think the pattern I noticed is that celebrities tend to be connected, although not always. Celebrities that are not sports people tend to be connected, or maybe anglophone celebrities or something, and ancient people definitively are not.
+
 ## THE PLAN — Emma, 2026-08-12. This supersedes the decision list below
 
 **"When we are doing this we do not need to do everything all at once."** The
