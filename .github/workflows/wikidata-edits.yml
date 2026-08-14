@@ -1,0 +1,91 @@
+name: wikidata-edits
+
+# Executes a REVIEWED batch of Wikidata edits through the bot-password account.
+#
+# Triggers are workflow_dispatch and schedule ONLY. Never add push: or
+# pull_request: — this repo is private and Actions minutes are billable
+# (CLAUDE.md § "Cost: this repo is private, so CI is manual-only").
+#
+# The scheduled run does nothing before START_DATE. Emma's instruction,
+# 2026-08-13: the actions start properly on 1 September 2026.
+#
+# Default is a DRY RUN. A live run requires dispatching with dry_run: false.
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Print the edits without sending them"
+        type: boolean
+        default: true
+      limit:
+        description: "Maximum edits this run (cadence is 10-100/day)"
+        type: string
+        default: "10"
+      batch:
+        description: "Path to the reviewed batch file"
+        type: string
+        default: "out/wikidata/unlinked-items.json"
+  schedule:
+    # 04:17 UTC daily. Off-peak, and a non-round minute so it is not queued
+    # behind everybody else's midnight cron.
+    - cron: "17 4 * * *"
+
+concurrency:
+  group: wikidata-edits
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+env:
+  WIKIDATA_API: https://www.wikidata.org/w/api.php
+  START_DATE: "2026-09-01"
+
+jobs:
+  edit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Hold until the start date
+        id: gate
+        run: |
+          today=$(date -u +%F)
+          if [[ "$today" < "$START_DATE" ]]; then
+            echo "today=$today is before START_DATE=$START_DATE — nothing to do"
+            echo "go=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "go=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.gate.outputs.go == 'true'
+
+      - uses: actions/setup-python@v5
+        if: steps.gate.outputs.go == 'true'
+        with:
+          python-version: "3.11"
+
+      - name: Check the secrets are present
+        if: steps.gate.outputs.go == 'true'
+        env:
+          USER_SECRET: ${{ secrets.WIKIDATA_BOT_USER }}
+          PASS_SECRET: ${{ secrets.WIKIDATA_BOT_PASSWORD }}
+        run: |
+          missing=0
+          [[ -z "$USER_SECRET" ]] && { echo "::error::WIKIDATA_BOT_USER is not set"; missing=1; }
+          [[ -z "$PASS_SECRET" ]] && { echo "::error::WIKIDATA_BOT_PASSWORD is not set"; missing=1; }
+          [[ "$missing" == 1 ]] && exit 1
+          echo "both secrets present"
+
+      - name: Run the batch
+        if: steps.gate.outputs.go == 'true'
+        env:
+          WIKIDATA_BOT_USER: ${{ secrets.WIKIDATA_BOT_USER }}
+          WIKIDATA_BOT_PASSWORD: ${{ secrets.WIKIDATA_BOT_PASSWORD }}
+          PYTHONPATH: src
+        run: |
+          python scripts/wikidata-edit-run.py \
+            --batch "${{ inputs.batch || 'out/wikidata/unlinked-items.json' }}" \
+            --limit "${{ inputs.limit || '10' }}" \
+            ${{ (inputs.dry_run == false) && '--live' || '--dry-run' }}

@@ -45,6 +45,49 @@ is a hard line it will not cross even when asked, precisely so an injected
 instruction can never make it move a credential. This is a two-command job for
 the account owner.
 
+### The account, 2026-08-13
+
+A bot password was generated at `Special:BotPasswords` for a bot named `test` on
+a personal account, and the credentials were given to Claude in chat. **Claude
+did not store them**: they are not in this file, not in the workflow, not in any
+commit, and were not passed to `gh secret set`. Handling a live credential into
+a secret store is the hard line — the two `gh secret set` commands above are the
+account owner's to run.
+
+**Treat that password as burned and regenerate it.** It was pasted into a chat
+transcript, which is a place credentials should not live. Revoke the `test` bot
+password at `Special:BotPasswords`, generate a fresh one, and put *that* into
+`WIKIDATA_BOT_PASSWORD`. Nothing downstream cares which password it is.
+
+**Also: `test` is a poor bot name.** Wikidata bot policy and the edit filters
+read the bot name; something like `genimerge` describes what the edits are and
+makes them defensible on a talk page. Worth changing at the same time as the
+regeneration, since both mean creating a new bot password anyway.
+
+## Start date: 1 September 2026
+
+Emma's instruction, 2026-08-13 — the actions start properly on **1 September
+2026**. `.github/workflows/wikidata-edits.yml` enforces it: the first step
+compares today's date against `START_DATE` and every later step is skipped
+before it. Nothing else needs changing on the day; the gate opens itself.
+
+## What is built
+
+| file | what it does |
+| --- | --- |
+| `.github/workflows/wikidata-edits.yml` | `workflow_dispatch` + a daily `schedule`, gated on `START_DATE`. Reads the two secrets, fails loudly if either is missing, and calls the runner. **Dry run by default** — a live run needs `dry_run: false` on a manual dispatch. |
+| `scripts/wikidata-edit-run.py` | Logs in with the bot password, gets a CSRF token, and walks the batch. Dry run is the default; `--live` is required to send. Caps at `MAX_EDITS_PER_RUN = 100`. Refuses a live run on any batch outside `REVIEWED_BATCHES`. Stdlib only. |
+
+**The runner deliberately stops short of editing.** The step that turns an edit
+object into an API call raises rather than guessing, because the batch format is
+still NEEDS-DECISION and wiring it now would bypass the review-before-execute
+rule this whole design exists to enforce. Everything up to and including login
+and token acquisition is real and will work once the secrets are set.
+
+**No `push:` or `pull_request:` trigger, and none may be added.** The `schedule:`
+trigger does cost Actions minutes on a private repo — one short run a day, and
+before 1 September it is a single date comparison that exits immediately.
+
 ## The edit workflow (designed, not yet built)
 
 - **Cadence:** 10–100 edits/day. The Charlemagne → Emma Leonhart spine is about
