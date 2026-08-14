@@ -5,15 +5,25 @@ Standen] on September 30 as independent unlinked items completely independently
 of their links elsewhere... these appear to have gotten into the data somehow but
 are apparently completely unlinked and I still want them to get in."*
 
-**Unlinked is the point, not a shortcut.** Both men are the husbands of the two
-`wife of ...` profiles whose exports form the corpus's two cut-off components
-(4,088 and 4,084 people, sharing nobody with the other 173 exports). Every
-relative either man has is inside that cut-off ball, so a relationship statement
-would point at an item that does not exist and cannot be created without dragging
-the whole component in. So each item carries only what stands on its own: label,
-`P31` human, `P2600` Geni ID, `P21` sex, and the dates Geni records — every
-statement referenced to the Geni ID. **`P22`/`P25`/`P26`/`P40` are deliberately
-absent**; the links come later, if they come.
+**Unlinked is the starting point, not the goal.** Emma, 2026-08-13: *"I want
+everything on geni naturally linked to wikidata but also ideally linked into both
+of their world trees."* Both — Geni's tree and Wikidata's. These two items are
+created standalone because *"this allows for the wikidata stuff to finally start
+doing connections"*: an item has to exist before anything can point at it.
+
+**Nothing to point at yet.** Neither man's father, mother, spouse or child
+carries a Wikidata item — checked against `reports/derived-labels.csv`, all six
+have no QID — so a `P22`/`P25`/`P26`/`P40` would have no target regardless of how
+well connected the Geni side is. That, not the Geni component structure, is why
+these are unlinked on the day.
+
+**The Geni side is no longer symmetric between them**, which is worth stating
+because it stops being a reason to treat them alike. Samuell Standen joined the
+main tree on 2026-08-13 when Emma's `Forest` of `6000000227226600829` bridged the
+Standen ball; Baruch Jafe is still inside the remaining cut-off component of
+4,088. Each item carries only what stands on its own: label, `P31` human, `P2600`
+Geni ID, `P21` sex, and the dates Geni records — every statement referenced to
+the Geni ID. The links follow later, as their relatives get items.
 
 **Places are absent too, for a different reason.** Geni gives Samuell Standen
 "Sussex, England" as free text, and turning that into an item means asking
@@ -82,8 +92,8 @@ def date_statement(row: dict, kind: str, prop: str, geni_id: str) -> dict | None
 
 
 def main() -> int:
-    lab = {r["geni_id"]: r for r in csv.DictReader(open(LABELS, encoding="utf-8"))
-           if r["geni_id"] in SUBJECTS}
+    lab_all = {r["geni_id"]: r for r in csv.DictReader(open(LABELS, encoding="utf-8"))}
+    lab = {g: r for g, r in lab_all.items() if g in SUBJECTS}
     fac = {r["geni_id"]: r for r in csv.DictReader(open(FACTS, encoding="utf-8"))
            if r["geni_id"] in SUBJECTS}
     fam = {r["geni_id"]: r for r in csv.DictReader(open(FAMILY, encoding="utf-8"))
@@ -160,18 +170,33 @@ def main() -> int:
     add("")
     add("## What is deliberately not on them")
     add("")
-    add("**No relationship statements.** Both men are the husbands of the two")
-    add("`wife of ...` profiles whose exports form the corpus's two cut-off")
-    add("components — 4,088 and 4,084 people that share nobody with the other 173")
-    add("exports. Every relative either man has sits inside that ball, so a `P26` or")
-    add("`P40` would point at an item that does not exist yet. That is the whole")
-    add("reason these are being created standalone:")
+    add("**No relationship statements — because there is nothing to point at.**")
+    add("Every relative either man has is listed below, and **not one of them")
+    add("carries a Wikidata item**. A `P22`/`P25`/`P26`/`P40` needs a target QID,")
+    add("so the links wait until those relatives have items of their own.")
     add("")
     for gid in SUBJECTS:
         r = fam.get(gid, {})
-        rel = ", ".join(f"{k} `{r[k]}`" for k in ("father", "mother", "spouses", "children")
-                        if r.get(k))
-        add(f"- **{lab[gid]['label_en']}** `{gid}` — {rel or 'no recorded relatives'}")
+        bits = []
+        for k in ("father", "mother", "spouses", "children"):
+            for other in (r.get(k) or "").split(";"):
+                other = other.strip()
+                if not other:
+                    continue
+                orow = lab_all.get(other, {})
+                name = orow.get("label_en") or other
+                q = orow.get("qid")
+                bits.append(f"{k[:-1] if k.endswith('s') else k} {name} "
+                            f"`{other}`{' ' + q if q else ' (no item)'}")
+        add(f"- **{lab[gid]['label_en']}** `{gid}` — "
+            + ("; ".join(bits) if bits else "no recorded relatives"))
+    add("")
+    add("**The Geni side differs between them, and that is not why.** Samuell")
+    add("Standen joined the main tree on 2026-08-13, when a `Forest` of")
+    add("`6000000227226600829` bridged the ball he sat in. Baruch Jafe is still")
+    add("inside the remaining cut-off component of 4,088 people. Both are queued the")
+    add("same way regardless: the goal is everything on Geni linked to Wikidata and")
+    add("into both world trees, and an item has to exist before it can be connected.")
     add("")
     add("**No places.** Geni gives Samuell Standen \"Sussex, England\" as free text.")
     add("Resolving that to an item means asking Wikidata which item it is, and this")

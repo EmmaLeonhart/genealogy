@@ -17,15 +17,20 @@ shares its shape with `out/wikidata/priority-chain.json`.
 
 ## What is deliberately not on them
 
-**No relationship statements.** Both men are the husbands of the two
-`wife of ...` profiles whose exports form the corpus's two cut-off
-components — 4,088 and 4,084 people that share nobody with the other 173
-exports. Every relative either man has sits inside that ball, so a `P26` or
-`P40` would point at an item that does not exist yet. That is the whole
-reason these are being created standalone:
+**No relationship statements — because there is nothing to point at.**
+Every relative either man has is listed below, and **not one of them
+carries a Wikidata item**. A `P22`/`P25`/`P26`/`P40` needs a target QID,
+so the links wait until those relatives have items of their own.
 
-- **Baruch Jafe** `6000000040078764766` — spouses `6000000227145774838`, children `6000000008471807525`
-- **Samuell Standen** `6000000107265740881` — father `6000000107265740865`, mother `6000000107265740822`, spouses `6000000227145420853`, children `6000000024557679929`
+- **Baruch Jafe** `6000000040078764766` — spouse wife of Baruch Jafe `6000000227145774838` (no item); children Edel Jafe `6000000008471807525` (no item)
+- **Samuell Standen** `6000000107265740881` — father John Standen `6000000107265740865` (no item); mother Joane Simmons `6000000107265740822` (no item); spouse wife of Samuel Standen `6000000227145420853` (no item); children Samuel Standen `6000000024557679929` (no item)
+
+**The Geni side differs between them, and that is not why.** Samuell
+Standen joined the main tree on 2026-08-13, when a `Forest` of
+`6000000227226600829` bridged the ball he sat in. Baruch Jafe is still
+inside the remaining cut-off component of 4,088 people. Both are queued the
+same way regardless: the goal is everything on Geni linked to Wikidata and
+into both world trees, and an item has to exist before it can be connected.
 
 **No places.** Geni gives Samuell Standen "Sussex, England" as free text.
 Resolving that to an item means asking Wikidata which item it is, and this
