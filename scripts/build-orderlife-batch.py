@@ -59,7 +59,7 @@ Inputs, all from `order.life/wikibase/`:
   `analysis/persons.tsv`  qid, label, sex, birth, death, gedcom, wikidata_qid, geni_id
   `analysis/edges.tsv`    parent -> child
   `analysis/spouses.tsv`  a <-> b
-  `items/<qid>.json`      read only to test for the Gaiad flag
+  `items/items-*.jsonl.gz` gzipped shards, read for the Gaiad flag
 
     py scripts/build-orderlife-batch.py
 """
@@ -68,6 +68,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import gzip
 import json
 import re
 import sqlite3
@@ -150,39 +151,44 @@ def gaiad_qids(qids: list[str]) -> set[str]:
     bug was found: over a 4,000-item sample the substring test and the `P39`
     claim agreed exactly, 3,970 each, with zero false positives. The change is to
     the method, and the answer did not move.
-    """
-    items = OL / "items"
-    if not items.is_dir():
-        # Fail loudly. An absent directory would otherwise mean "nobody is a
-        # Gaiad character", which is a silent, wrong answer of exactly the kind
-        # this repo keeps getting burned by.
-        raise SystemExit(
-            f"no {items} — the order.life item JSONs are not vendored yet. "
-            "orderlife/analysis and orderlife/properties are; items/ is 164,558 "
-            "files and is pending Emma's call on how to store it.")
 
+    **Reads the vendored shards**, not 164,558 loose files. Emma chose the shard
+    layout on 2026-08-15 to keep git fast; ``orderlife/items/items-*.jsonl.gz``
+    matches ``wikidata/items/``. One streaming pass over the shards replaces one
+    ``open()`` per person.
+    """
+    shards = sorted((OL / "items").glob("items-*.jsonl.gz"))
+    if not shards:
+        # Fail loudly. No shards would otherwise mean "nobody is a Gaiad
+        # character", which is a silent wrong answer of exactly the kind this
+        # repo keeps getting burned by.
+        raise SystemExit(
+            f"no shards in {OL / 'items'} — run "
+            "`py scripts/vendor-orderlife-items.py` first.")
+
+    wanted = set(qids)
     out = set()
-    for n, q in enumerate(qids, 1):
-        p = items / f"{q}.json"
-        if not p.exists():
-            continue
-        try:
-            item = json.loads(p.read_text(encoding="utf-8", errors="replace"))
-        except (json.JSONDecodeError, OSError):
-            continue
-        if not isinstance(item, dict):
-            continue
-        claims = item.get("claims") or {}
-        for prop in INSTANCE_OF:
-            if any(((s.get("mainsnak") or {}).get("datavalue", {})
-                    .get("value") or {}).get("id") == GAIAD
-                   for s in claims.get(prop, [])
-                   if isinstance((s.get("mainsnak") or {}).get("datavalue", {})
-                                 .get("value"), dict)):
-                out.add(q)
-                break
-        if n % 20000 == 0:
-            print(f"  read {n:,}/{len(qids):,} items for the Gaiad flag")
+    for n, path in enumerate(shards, 1):
+        with gzip.open(path, "rt", encoding="utf-8") as fh:
+            for line in fh:
+                try:
+                    item = json.loads(line)
+                except json.JSONDecodeError:
+                    continue
+                q = item.get("id")
+                if q not in wanted:
+                    continue
+                claims = item.get("claims") or {}
+                for prop in INSTANCE_OF:
+                    if any(((s.get("mainsnak") or {}).get("datavalue", {})
+                            .get("value") or {}).get("id") == GAIAD
+                           for s in claims.get(prop, [])
+                           if isinstance((s.get("mainsnak") or {})
+                                         .get("datavalue", {}).get("value"), dict)):
+                        out.add(q)
+                        break
+        if n % 40 == 0:
+            print(f"  read {n}/{len(shards)} shards for the Gaiad flag")
     return out
 
 
