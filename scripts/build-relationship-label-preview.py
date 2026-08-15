@@ -66,6 +66,17 @@ CHILD_WORD = {"M": "son", "F": "daughter", "": "child"}
 SPOUSE_WORD = {"M": "husband", "F": "wife", "": "spouse"}
 PARENT_WORD = {"M": "father", "F": "mother", "": "parent"}
 
+#: Two hops out. Queue item 6, and Emma's ordering extends the one-hop
+#: precedence rather than replacing it:
+#: **child-of -> spouse-of -> parent-of -> grandchild-of -> sibling / nephew /
+#: uncle.** A one-hop relative is always preferred; these only run when every
+#: one-hop candidate is missing or unusable.
+GRANDCHILD_WORD = {"M": "grandson", "F": "granddaughter", "": "grandchild"}
+GRANDPARENT_WORD = {"M": "grandfather", "F": "grandmother", "": "grandparent"}
+SIBLING_WORD = {"M": "brother", "F": "sister", "": "sibling"}
+NIBLING_WORD = {"M": "nephew", "F": "niece", "": "nephew or niece"}
+PIBLING_WORD = {"M": "uncle", "F": "aunt", "": "uncle or aunt"}
+
 
 def is_placeholder(given: str) -> bool:
     return given.strip().lower() in PLACEHOLDER_GIVEN
@@ -109,8 +120,33 @@ def main() -> int:
     for row in csv.DictReader(FACTS.open(encoding="utf-8", newline="")):
         sex_of[row["geni_id"]] = (row.get("sex") or "").strip()
 
-    rows = []
+    # The family rows are needed twice - once to walk two hops, once to emit -
+    # so they are read into memory rather than streamed.
+    family: dict[str, dict] = {}
     for row in csv.DictReader(FAMILY.open(encoding="utf-8", newline="")):
+        family[row["geni_id"]] = row
+
+    def parents(pid: str) -> list[str]:
+        row = family.get(pid) or {}
+        return [x for x in ((row.get("father") or "").strip(),
+                            (row.get("mother") or "").strip()) if x]
+
+    def kids(pid: str) -> list[str]:
+        row = family.get(pid) or {}
+        return [c for c in (row.get("children") or "").split(" | ") if c]
+
+    # child -> parents is in the CSV; parent -> children is too, so no inversion
+    # is needed. Siblings are the other children of either parent.
+    def siblings(pid: str) -> list[str]:
+        out: list[str] = []
+        for parent in parents(pid):
+            for child in kids(parent):
+                if child != pid and child not in out:
+                    out.append(child)
+        return out
+
+    rows = []
+    for row in family.values():
         gid = row["geni_id"]
         given, surname = name_of.get(gid, ("", ""))
         if not is_placeholder(given):
@@ -133,9 +169,25 @@ def main() -> int:
         #
         # Every spouse and child is tried, not just the first, because skipping
         # more relatives means the first one is more often unusable.
+        # One hop first, in her precedence. Two-hop candidates are appended
+        # after, so a nearer relative always wins and the extra hops only run
+        # when the near ones are absent or unusable.
+        grandparents = [g for parent in (father, mother) if parent
+                        for g in parents(parent)]
+        grandchildren = [g for child in children for g in kids(child)]
+        sibs = siblings(gid)
+        niblings = [n for s in sibs for n in kids(s)]
+        piblings = [u for parent in (father, mother) if parent
+                    for u in siblings(parent)]
+
         candidates = ([("father", father), ("mother", mother)]
                       + [("spouse", s) for s in spouses]
-                      + [("child", c) for c in children])
+                      + [("child", c) for c in children]
+                      + [("grandparent", g) for g in grandparents]
+                      + [("grandchild", g) for g in grandchildren]
+                      + [("sibling", s) for s in sibs]
+                      + [("pibling", u) for u in piblings]
+                      + [("nibling", n) for n in niblings])
 
         relation = via = generated = skipped = ""
         for kind, candidate in candidates:
@@ -154,8 +206,18 @@ def main() -> int:
                 generated = f"{CHILD_WORD.get(sex, 'child')} of {other}"
             elif kind == "spouse":
                 generated = f"{SPOUSE_WORD.get(sex, 'spouse')} of {other}"
-            else:
+            elif kind == "child":
                 generated = f"{PARENT_WORD.get(sex, 'parent')} of {other}"
+            elif kind == "grandparent":
+                generated = f"{GRANDCHILD_WORD.get(sex, 'grandchild')} of {other}"
+            elif kind == "grandchild":
+                generated = f"{GRANDPARENT_WORD.get(sex, 'grandparent')} of {other}"
+            elif kind == "sibling":
+                generated = f"{SIBLING_WORD.get(sex, 'sibling')} of {other}"
+            elif kind == "pibling":
+                generated = f"{NIBLING_WORD.get(sex, 'nephew or niece')} of {other}"
+            else:
+                generated = f"{PIBLING_WORD.get(sex, 'uncle or aunt')} of {other}"
             break
 
         # Emma, 2026-08-15: a surname that is itself placeholder vocabulary
@@ -171,6 +233,9 @@ def main() -> int:
             "sex": sex,
             "mul_label": f"NN {surname}".strip() if surname else "NN",
             "relation_used": relation,
+            "hops": ("" if not relation else
+                     "1" if relation in ("father", "mother", "spouse", "child")
+                     else "2"),
             "skipped_a_relative": skipped,
             "via_geni_id": via,
             "generated_en": generated,

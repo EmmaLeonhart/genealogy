@@ -148,15 +148,6 @@ on across two status reports. She already knew, and the data stands as recorded.
 `reports/samaritan-source-comparison.csv` keeps the seven for reference; nothing
 is blocked on them and nothing is to be resolved.
 
-## 6 · Multi-hop relationship labels
-
-Ordering, extending the one-hop precedence rather than replacing it:
-**child-of → spouse-of → parent-of → grandchild-of → sibling / nephew / uncle.**
-
-Of the 11,930 people with no one-hop label, **3,604 (30%) have a named relative
-two hops out** — 2,020 via a grandfather, 1,449 a grandmother, 135 a grandchild.
-Sibling, uncle and nephew need the family graph rather than the derived CSVs.
-
 ## THREE SEPARATE WIKIDATA OPERATIONS — Emma, 2026-08-15, correcting a conflation
 
 *"These are three completely different operations that you conflated with each

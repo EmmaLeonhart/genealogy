@@ -6921,3 +6921,27 @@ Eliazar is complete. But she was clear about what I should have done instead:
 relationships of the Samaritans are correct? Cuz you shouldn't be doing that. The
 family relationships of the Samaritans are done."* Correct — the item was stale
 and the move was to delete it, not to audit her tree. Recorded in `CLAUDE.md`.
+
+
+## 2026-08-15 — item 6, multi-hop relationship labels
+
+Emma's ordering, extending the one-hop precedence rather than replacing it:
+**child-of → spouse-of → parent-of → grandchild-of → sibling / nephew / uncle.**
+Built into `scripts/build-relationship-label-preview.py` rather than a second
+script, so the placeholder vocabulary, the redaction skip and the unusable-label
+fall-through stay in one place.
+
+A one-hop relative always wins; the two-hop candidates are appended after, so the
+extra hops only run when the near ones are absent or unusable.
+
+Of 35,207 placeholder people: **one hop 20,202, two hops 6,224, none 8,781.** By
+relation — father 12,353, spouse 5,094, **grandparent 5,045**, mother 1,919,
+child 836, **pibling 584, sibling 339, grandchild 149, nibling 107**.
+
+`granddaughter of Jose Alfonso Delgadillo Claure`, `sister of Kenneth Chiu`,
+`nephew of Svanhild Haugvaldstad`, `uncle of RT Endoeng Soeriapoetra KOESOEMAH
+ADINATA`.
+
+**Unknown sex takes the neutral word** — `grandchild`, `sibling`, `nephew or
+niece` — rather than a guess. Inventing a gender to make a label read better is
+the normalisation Emma has objected to before.
