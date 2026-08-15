@@ -7112,3 +7112,52 @@ and resolving those to strings needs the name-item download still running.
 
 Also deleted item 14, which was marked DONE and kept "for the finding" — the exact
 pattern Emma had this queue cleaned of this morning, reintroduced by me.
+
+
+## 2026-08-15 — item 16, the order.life processing, run from the vendored copy
+
+Emma at 04:46: *"And why was the order.life one not run? Should be run based on
+the contents of this repo or a cron job to run at 1am."* No 1am cron was ever
+created; she then chose a queue item over a cron, because a cron only fires while
+the session is idle and these keep starving.
+
+All three ran against `orderlife/`, which is vendored, so nothing reaches outside
+this repo:
+
+**`build-orderlife-identifiers.py`** — external identifiers order.life holds that
+Wikidata does not. 80 `time`, 9 `wikibase-item` and 2 `string` values held back by
+datatype rather than emitted blind.
+
+**`build-orderlife-batch.py`** — `reports/wikidata-orderlife.json`, 54,356 entries:
+
+| tier | | entries |
+| --- | --- | ---: |
+| — | nothing to do | 59,783 |
+| 0 | `add_geni_id` | 506 |
+| 1 | `add_relationship` | 7,109 |
+| 2 | `create_geni_only` | 27,513 |
+| 3 | `create_orderlife_only` | 19,228 |
+
+The **59,783 nothing-to-do** are the point of the tiering: they already exist and
+creating them would duplicate. 17 rows land in
+`orderlife-parent-sex-unresolved.csv` as `P22_or_P25` — **emitted rather than
+dropped**, with the property left to be chosen.
+
+**`build-orderlife-diff.py`** — `reports/orderlife-diff.csv`, 107,037 rows:
+
+| | rows |
+| --- | ---: |
+| MISSING: on Wikidata, no Geni link, not in our tree | 52,257 |
+| held: Geni ID in our corpus | 28,640 |
+| order.life only: no Geni ID and no Wikidata QID | 19,235 |
+| MISSING: has a Geni ID we have never exported | 6,499 |
+| held via Wikidata | 230 |
+| MISSING: Wikidata QID outside our store | 176 |
+
+`tests/test_edit_emitters.py` — **9 passed** against the freshly generated batch,
+including that no order.life QID reaches a Wikidata value and no class item is
+created as a person.
+
+**Item 9 deleted too.** It was a complete record of finished patronymic work
+sitting in the queue as if it were a step — the third time this session I have
+left a done item in place after Emma had the file cleaned out this morning.

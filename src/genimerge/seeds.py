@@ -289,6 +289,16 @@ __all__ = [
 #: out of the earlier take; the ball came back 4940 rather than 4868 with him in
 #: it. Consistent with the ceiling tracking the profiles she has added, and not
 #: evidence of a rule about the number.
+#: **2026-08-15, evening — 5000**, and it is a round number for the first time.
+#: Eight `Forest` exports in Emma's edge batch came back at exactly 5000:
+#: `6000000227254368832`, `…254335853`, `…254292863`, `…254162896`, `…254345871`,
+#: `…254292875`, `…254550821`, `…254397877`, plus a `BloodTree` of
+#: `6000000178918422849`. Nine readings on one flat number, from nine different
+#: seeds and two styles, which is the same global-not-per-seed behaviour every
+#: earlier flat run showed. **Do not read 5000 as a cap Geni enforces** — the
+#: previous flat runs sat on 3860, 4020 and 4944, none of them round, and the
+#: roundness here is not evidence of anything. The same batch also holds 4976,
+#: 4952, 4948 and 4944, so the ceiling is not uniform across it.
 #: **2026-08-15, later — 4944**, a `BloodTree` export seeded on **Jair IV**
 #: (`6000000178918541826`), a Samaritan High Priest:
 #: `exports/samaritans/export-BloodTree-6000000178918541826.ged`. A step of
@@ -299,7 +309,7 @@ __all__ = [
 #: within minutes, the same style-and-seed independence every earlier flat run
 #: showed. The `Ancestors` take holding 348 exhausted its component rather than
 #: reaching the ceiling, which is the ordinary reason a reading comes in low.
-GENI_EXPORT_CAP = 4944
+GENI_EXPORT_CAP = 5000
 
 #: The step between reading this report and running an export.
 #:

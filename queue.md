@@ -252,39 +252,6 @@ population her fallback algorithm would prioritise.
 
 ---
 
-## 9 · Patronymic follow-ups, from Emma's ruling of 2026-08-15
-
-**Her call on the 19,621 unconfirmed:** *"Generally speaking I'm going to say
-these things are patronymics."* Applied. Verdicts now:
-
-| | tokens |
-| --- | ---: |
-| patronymic — father confirms | 34,683 |
-| **patronymic (inferred, no father recorded)** | **18,374** |
-| surname — patronymic form conflicts with recorded sex | 1,247 |
-| form, father differs (still open) | 28,917 |
-
-**The sex guard is hers and it measured out at 68:1.** *"If there is a gender
-mismatch, it might be that the married name goes through an error to become a
-patronymic."* A *son-of* suffix on a woman is **13.7%** of the sexed cases; a
-*daughter-of* suffix on a man is **0.2%**. The son-of ones are `Gustafsson`,
-`Wilson`, `Rasmussen`, `Nilsen` on women in the surname field — inherited or
-married names. `-datter` never became heritable, which is why it does not do this.
-
-**Context supported inferring the rest**: 41.2% have a mother recorded and no
-father, 58.8% have a spouse or children, and **6 of 19,621** have no family link
-at all.
-
-The Norse genitive is now encoded — a final doubled consonant drops one, and a
-doubled consonant anywhere collapses, so `Ketill` → `Ketilsson`, `Þorsteinn` →
-`Þorsteinsdóttir` and `Clemmet` → `Clemetsdatter` confirm. **123 more confirmed**;
-`father differs` 28,917 → 28,794.
-
-**Deliberately not done:** the C/K, th/t, ph/f, y/i fold used to *measure* the
-1,395 near-misses. It matches `Christen`/`Kristen` and a great many genuinely
-different names, and recall is not worth wrong matches here. `Dmitry` →
-`Dmitriyevich` stays unconfirmed.
-
 ## 10 · Create the fathers the patronymics imply — Emma's item
 
 **Emma, 2026-08-15:** *"If they are patronymics I actually think I'm going to want
@@ -626,15 +593,6 @@ vanished without firing. Emma, 2026-08-15: put it in the queue instead, because
 `CLAUDE.md` already says `reports/density.md` is where to look for the next export
 and that `seeds.md` *"ranks by doorway count and has never been validated against
 an outcome"*. The question is whether it is kept, regenerated or deleted.
-
-## 16 · The order.life job Emma asked for at 04:46 — a queue item, not a cron
-
-*"And why was the order.life one not run? Should be run based on the contents of
-this repo or a cron job to run at 1am."* No 1am cron was ever created. Her call
-2026-08-15: make it a queue item rather than a scheduled job.
-
-Run the order.life processing **from the contents of this repo** — `orderlife/` is
-vendored, so nothing depends on the separate repository.
 
 ## 17 · Audit `todo.md` against what is actually built
 
