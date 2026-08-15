@@ -6,13 +6,19 @@ the order.life thing as a third data source… we are, in fact, trying to get al
 this information, some of which was destroyed on geni."* So no person is dropped
 for lacking an identifier.
 
-**Gaiad individuals are flagged, not excluded.** `Q153802` is order.life's
-"Gaiad character" item — its epic. Wikidata does carry genealogies of fictional
-characters, so how these are eventually handled is undecided; what is decided is
-that they sort **last**. Emma: *"the specific algorithmic way that stuff is
-actually added over time… would make it so that the Gaiad stuff would be added
-only very, very, very, very late."* Ordering does the excluding, so nothing has
-to be thrown away now.
+**The Gaiad flag is recorded but does NOT tier, because it marks everything.**
+`Q153802` "Gaiad character" is on **105,720 of 106,908** persons — and on
+**400 of 400** sampled people who carry a Wikidata QID, i.e. definitely real
+historical people. The epic runs through the whole genealogy, so the flag
+separates nothing. An earlier version tiered on it and pushed 45,437 creations,
+real people included, into "add last". Every entry still carries
+`"gaiad": true`/`false` as data.
+
+**Tiering is on identifiers instead**, which does discriminate: a person with no
+Geni ID and no Wikidata QID is order.life-only, and that is where epic-only
+material actually concentrates. Emma's intent — *"the Gaiad stuff would be added
+only very, very, very, very late"* — is served by tier 3 being last, not by a
+flag that is always true.
 
 **No order.life citation is emitted, and that is the bug this fixes.** Emma:
 *"These JSONs aren't gonna fire because they're trying to cite an order.life
@@ -38,6 +44,14 @@ commonly with wiki data but not entirely."* So its property numbers are its own 
 `P47` father, `P48` mother, `P42` spouse, `P20` child — and must be translated
 rather than passed through. The `analysis/*.tsv` tables are used instead of the
 raw claims for exactly that reason.
+
+**Emma's property decisions, 2026-08-14.** `P64 Multi language label` is
+Wikidata's multilingual label and is emitted as `Lmul`. `P59 Cladoplast of` is
+not mapped and not emitted — *"we don't do anything with it until there is a
+Cladoplast object on Wikidata, which there currently is not."* `P12 Occupation`
+and `P13 Residence` are **dropped**, not normalised: *"the only monolingual text
+that we just don't do is the P12 and P13 occupation and residence."* Of the
+monolingual-text properties, address is the one that is done, as `P6375`.
 
 `Q2` is Emma and is skipped — her own item, not genealogy this should assert.
 
@@ -81,7 +95,6 @@ TIERS = {
     "add_relationship": 1,
     "create_geni_only": 2,
     "create_orderlife_only": 3,
-    "create_gaiad": 9,
 }
 
 #: **Never create an item for someone who already has one.** A person carrying a
@@ -247,15 +260,10 @@ def main() -> int:
             kind = NOTHING          # exists on Wikidata, nothing to add
         elif already:
             kind = NOTHING          # the Geni ID is already on an item
-        elif q in gaiad:
-            kind = "create_gaiad"
         elif gid:
             kind = "create_geni_only"
         else:
             kind = "create_orderlife_only"
-        if kind != NOTHING and q in gaiad and kind.startswith("create"):
-            kind = "create_gaiad"
-
         if kind == NOTHING:
             # The identifier work is done for this person, but their edges may
             # still be missing from Wikidata. Queue them for the relationship

@@ -119,6 +119,35 @@ same as, P1317 floruit, P1630 formatter URL, P1813 short name, P1814 name in
 kana, P4425 mtDNA haplogroup, P4426 Y-DNA haplogroup, **P4602 date of burial or
 cremation** (in CLAUDE.md's table already), P58/P68/P94 image properties.
 
+## Emma's decisions, 2026-08-14
+
+- **P64 Multi language label → Wikidata's `mul` label.** It is the multilingual
+  label and is emitted as `Lmul`, not as a claim.
+- **P59 Cladoplast of → do nothing.** *"We don't do anything with it until there
+  is a Cladoplast object on Wikidata, which there currently is not. I do not have
+  any intention of making it right now."* Not mapped, not emitted, not created.
+- **P12 Occupation and P13 Residence → do not include.** *"The only monolingual
+  text that we just don't do is the P12 and P13 occupation and residence."* They
+  are dropped rather than normalised. This supersedes the note above suggesting
+  they wait for normalisation.
+- **Of the monolingual-text properties, address is the one that is done** —
+  `P6375 street address`, which is already where a GEDCOM `ADDR` block goes
+  (`CLAUDE.md` § Life events).
+
+## The Gaiad flag does not discriminate — measured, 2026-08-14
+
+`Q153802` "Gaiad character" is carried by **105,720 of 106,908** persons, and by
+**400 of 400** sampled people who also carry a Wikidata QID — people who are
+definitely real and historical. The epic runs through the entire genealogy rather
+than sitting beside it.
+
+So the flag cannot be used to hold the epic back. An earlier version of
+`build-orderlife-batch.py` tiered on it and put **45,437 creations, real people
+included, into "add last"**. Tiering is now on identifiers, where a person with
+neither a Geni ID nor a Wikidata QID is order.life-only — which is the population
+that actually needs to go last. The flag is still written onto every entry as
+data.
+
 ## The decision
 
 1. **Nothing below P155 is ever emitted with its own number.** Translate through
