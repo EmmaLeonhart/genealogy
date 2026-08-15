@@ -161,6 +161,57 @@ Of the 11,930 people with no one-hop label, **3,604 (30%) have a named relative
 two hops out** — 2,020 via a grandfather, 1,449 a grandmother, 135 a grandchild.
 Sibling, uncle and nephew need the family graph rather than the derived CSVs.
 
+## 8a · RUNNING — mass export of every name item on Wikidata
+
+**Emma, 2026-08-15:** *"Because we are not allowed to do this individual querying,
+you're supposed to be doing mass exports on this stuff… every instance of a
+surname, every single instance of a patronymic, and every single instance of a
+given name."*
+
+**Two steps, and the split is the whole point.** `scripts/collect-name-item-qids.py`
+asks for the **QIDs** a page at a time — aggregate queries, never one per item —
+and writes `reports/name-item-qids.tsv`. Then
+`genimerge wikidata-download --seeds reports/name-item-qids.tsv --scan-per-round 0`
+fetches the items. `--scan-per-round 0` matters: the scan expands along
+`P22/P25/P26/P40/P3373`, and left on it would wander back into the 1.4M people
+instead of fetching names.
+
+Sized with one `COUNT` query:
+
+| class | | items |
+| --- | --- | ---: |
+| `Q101352` | family name | 693,297 |
+| `Q12308941` | male given name | 59,782 |
+| `Q11879590` | female given name | 38,195 |
+| `Q202444` | given name | 31,487 |
+| `Q3409032` | unisex given name | 4,142 |
+| `Q110874` | patronymic | 633 |
+
+**~827,536 items, so ~16,500 requests at 50 per batch — about 4.6 hours at the
+default 1s delay.** Inside Emma's stated 3–8 hour budget for item 8.
+
+**Why every item and not the 132,456 our people reference.**
+`reports/name-item-download.md` sized the *referenced* set — which is the wrong
+set for deciding whether a token already has an item. Answering that needs every
+item that exists; asking about one name we do not hold is precisely the
+individual query the rules forbid.
+
+**What it unblocks:** item 2. Telling `Q110874` from `Q202444` needs the item's
+own `P31`, and all 1,731 competing QIDs are currently absent from the store.
+
+## 8b · The offline patronymic classifier — buildable NOW, no download needed
+
+**Emma's correction, 2026-08-15:** *"Whether something is or is not a patronymic
+here is determined by completely offline information related to the person's
+father's name."*
+
+She is right and I had item 2 wrong. `Olsen` on a man whose father is `Ole` is a
+patronymic, and **nothing on Wikidata is needed to know that** — it is our own
+data, the father's given name against the token. Wikidata only decides *which
+existing item to link to* once we already know what our token is.
+
+So this runs **in parallel with the download**, not after it.
+
 ## 7 · Single-export clusters — Emma's item, in her words
 
 > Add to the queue that we are going to look over the geni exports to try to find
