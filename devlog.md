@@ -6534,3 +6534,38 @@ Emma's two rulings on being shown that:
   `ja`/`zh` from the start rather than being revisited.
 
 Queue items 7, 8 and 9 merge into one item, moved to the end of the pipeline.
+
+## 2026-08-16 — the Samaritan succession, standardised
+
+Emma's final queue item, added at 02:46: *"look over the data modeling of all of
+them and try to put together something based upon the most recent data modeling…
+in a standard way, with the succession… Particularly the ones from around 1600 to
+1980 are really badly modeled."*
+
+**Measured, it is not merely inconsistent — there are two opposite styles and no
+item uses both.** Five modern priests carry `P39` = `Q678510` *Samaritan High
+Priest* and no succession at all; eleven older ones carry item-level
+`P155`/`P156` succession and **no `P39`**; five carry neither. So **16 of 21 do
+not state that they held the office.**
+
+**The target model** is Wikidata's normal shape for an office: `P39` → `Q678510`,
+with `P1365` *replaces* and `P1366` *replaced by* as **qualifiers on that
+statement**, plus `P580`/`P582` for the term. `P155`/`P156` are generic
+follows/followed-by and say nothing about *what* was succeeded to.
+
+**The order is sourced.** The existing links gave 14 of 21 — one chain from
+Yitzhaq I to Yaacob II — and left the modern five floating. The Wikipedia article
+Emma pointed at (Pummer's list) closed both ends: Tsedaka II before Yitzhaq I, and
+Yaacob II → Yoseph II → Levi VI → Shalom II → Elazar XX → Aharon IV → Aabed-El V.
+**All 21 placed.**
+
+**`Saloum Cohen` `Q2067443` is Shalom II**, checked rather than assumed: its `nl`
+and `fr` labels both read *Shalom ben Amram* and its `P570` is 2004-02-09 against
+the article's 2001–2004 term.
+
+The article also corroborated the earlier name matching from the other side — it
+uses **Yoseph II, Levi VI, Elazar XX, Aharon IV, Aabed-El V**, exactly the regnal
+numerals Geni carried and Wikidata lacked.
+
+`reports/wikidata-samaritan-succession.json`: **21 entries, 21 adding the office
+statement, 14 removing the old `P155`/`P156`.** Nothing runs before 1 September.
