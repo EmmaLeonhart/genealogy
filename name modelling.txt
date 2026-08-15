@@ -34,3 +34,24 @@ Vladimir Putin (Q7747)
 
 * family name (P734)
 ** Putin (Q30524893)
+
+
+## Chained Patronymic example
+## This one is not actually on Wikidata. It is what I am saying it should be on Wikidata. 
+
+Abisha III ben Phinhas ben Yittzhaq ben Shalma (Q107534535)
+
+* given name (P735) Abisha
+** series ordinal (P1545) 1
+** reason for preferred rank (P7452) usual forename (Q3409033)
+
+* patronym or matronym (P5056) ben Phinhas
+** based on (P144) Phinhas ben Yittzhaq ben Shalma
+** series ordinal (P1545) 1
+* patronym or matronym (P5056) ben Yittzhaq
+** based on (P144) Yittzhaq ben Shalma
+** series ordinal (P1545) 2
+* patronym or matronym (P5056) ben Shalma
+** based on (P144)  Shalma
+** series ordinal (P1545) 3
+
