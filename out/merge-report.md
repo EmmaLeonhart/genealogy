@@ -194,27 +194,25 @@ Sources in merge order (later sources win value conflicts):
 188. `export-Forest-6000000226977233850.ged`
 189. `export-Forest-6000000226989731860.ged`
 190. `export-Forest.ged`
-191. `export-Ancestors-6000000227240714964.ged`
-192. `export-BloodTree-6000000227240714964.ged`
-193. `export-Forest-6000000178794141887.ged`
-194. `export-Forest-6000000178795709821.ged`
-195. `export-Forest-6000000227240691895.ged`
-196. `export-Forest-40.ged`
-197. `export-Forest-41.ged`
-198. `export-Forest-42.ged`
-199. `export-Forest-43.ged`
-200. `export-Forest-6000000227145774838.ged`
-201. `export-Forest-6000000227147141927.ged`
-202. `export-Descendants-6000000227143930843.ged`
-203. `export-Forest-6000000227143930843.ged`
-204. `export-Forest-6000000227145420853.ged`
+191. `export-BloodTree-6000000178794141887.ged`
+192. `export-Forest-6000000178795709821.ged`
+193. `export-Forest-6000000178918116832.ged`
+194. `export-Forest-40.ged`
+195. `export-Forest-41.ged`
+196. `export-Forest-42.ged`
+197. `export-Forest-43.ged`
+198. `export-Forest-6000000227145774838.ged`
+199. `export-Forest-6000000227147141927.ged`
+200. `export-Descendants-6000000227143930843.ged`
+201. `export-Forest-6000000227143930843.ged`
+202. `export-Forest-6000000227145420853.ged`
 
 ## Merged totals
 
 | record | count |
 | --- | ---: |
 | FAM | 192556 |
-| INDI | 396181 |
+| INDI | 396235 |
 | NOTE | 37890 |
 | SUBM | 16296 |
 
@@ -412,11 +410,9 @@ Sources in merge order (later sources win value conflicts):
 | `export-Forest-6000000226977233850.ged` | 1112 | 1870 | 0 | 47 | 2835 | 1419 |
 | `export-Forest-6000000226989731860.ged` | 5 | 6 | 0 | 0 | 6328 | 496 |
 | `export-Forest.ged` | 534 | 913 | 0 | 31 | 4781 | 1621 |
-| `export-Ancestors-6000000227240714964.ged` | 175 | 172 | 0 | 0 | 381 | 409 |
-| `export-BloodTree-6000000227240714964.ged` | 605 | 1101 | 7 | 31 | 6906 | 9278 |
-| `export-Forest-6000000178794141887.ged` | 0 | 0 | 0 | 0 | 8787 | 7957 |
-| `export-Forest-6000000178795709821.ged` | 4 | 18 | 0 | 0 | 8929 | 11408 |
-| `export-Forest-6000000227240691895.ged` | 0 | 0 | 0 | 0 | 8851 | 152 |
+| `export-BloodTree-6000000178794141887.ged` | 784 | 1345 | 7 | 31 | 6560 | 9683 |
+| `export-Forest-6000000178795709821.ged` | 0 | 0 | 0 | 0 | 8951 | 8109 |
+| `export-Forest-6000000178918116832.ged` | 0 | 0 | 0 | 0 | 8954 | 834 |
 | `export-Forest-40.ged` | 1791 | 2504 | 118 | 121 | 3394 | 3676 |
 | `export-Forest-41.ged` | 861 | 2634 | 9 | 95 | 2420 | 2455 |
 | `export-Forest-42.ged` | 337 | 562 | 0 | 0 | 5809 | 1242 |
@@ -1030,13 +1026,13 @@ By path:
 | `@F6000000179131721834@` | `FAM.HUSB` | @I6000000179131744821@ | export-Forest-6000000226989731860.ged | @I6000000001829492981@ | export-Descendants-6000000226989731860.ged |
 | `@I6000000039025973103@` | `INDI.CHAN.DATE` | 05 SEP 2023 | export-Forest.ged | 02 AUG 2026 | export-Descendants-6000000227224418030.ged |
 | `@I6000000039025973103@` | `INDI.CHAN.DATE.TIME` | 10:10:47 | export-Forest.ged | 03:56:35 | export-Descendants-6000000227224418030.ged |
-| `@I6000000220294810877@` | `INDI.CHAN.DATE` | 14 AUG 2026 | export-Ancestors-6000000227240714964.ged | 28 JUL 2025 | export-Forest-51.ged |
-| `@I6000000220294810877@` | `INDI.CHAN.DATE.TIME` | 12:45:03 | export-Ancestors-6000000227240714964.ged | 13:27:09 | export-Forest-51.ged |
-| `@I6000000178918116832@` | `INDI.CHAN.DATE` | 14 AUG 2026 | export-Ancestors-6000000227240714964.ged | 01 OCT 2021 | export-Forest-15.ged |
-| `@I6000000178918116832@` | `INDI.CHAN.DATE.TIME` | 15:16:50 | export-Ancestors-6000000227240714964.ged | 12:31:33 | export-Forest-15.ged |
-| `@I6000000198604770842@` | `INDI.SUBM` | @S6000000179366352856@ | export-BloodTree-6000000227240714964.ged | @S6000000181939316841@ | export-Forest-32.ged |
-| `@I6000000198604770842@` | `INDI.CHAN.DATE` | 05 AUG 2026 | export-BloodTree-6000000227240714964.ged | 08 MAR 2025 | export-Forest-32.ged |
-| `@I6000000198604770842@` | `INDI.CHAN.DATE.TIME` | 11:24:49 | export-BloodTree-6000000227240714964.ged | 20:44:21 | export-Forest-32.ged |
+| `@I6000000220294810877@` | `INDI.CHAN.DATE` | 14 AUG 2026 | export-BloodTree-6000000178794141887.ged | 28 JUL 2025 | export-Forest-51.ged |
+| `@I6000000220294810877@` | `INDI.CHAN.DATE.TIME` | 12:45:03 | export-BloodTree-6000000178794141887.ged | 13:27:09 | export-Forest-51.ged |
+| `@I6000000178918116832@` | `INDI.CHAN.DATE` | 14 AUG 2026 | export-BloodTree-6000000178794141887.ged | 01 OCT 2021 | export-Forest-15.ged |
+| `@I6000000178918116832@` | `INDI.CHAN.DATE.TIME` | 15:16:50 | export-BloodTree-6000000178794141887.ged | 12:31:33 | export-Forest-15.ged |
+| `@I6000000198604770842@` | `INDI.SUBM` | @S6000000179366352856@ | export-BloodTree-6000000178794141887.ged | @S6000000181939316841@ | export-Forest-32.ged |
+| `@I6000000198604770842@` | `INDI.CHAN.DATE` | 05 AUG 2026 | export-BloodTree-6000000178794141887.ged | 08 MAR 2025 | export-Forest-32.ged |
+| `@I6000000198604770842@` | `INDI.CHAN.DATE.TIME` | 11:24:49 | export-BloodTree-6000000178794141887.ged | 20:44:21 | export-Forest-32.ged |
 | `@I6000000001838989849@` | `INDI.CHAN.DATE` | 27 APR 2022 | export-Forest-40.ged | 11 AUG 2026 | export-Descendants-6000000178898487831.ged |
 | `@I6000000001838989849@` | `INDI.CHAN.DATE.TIME` | 10:42:25 | export-Forest-40.ged | 13:32:38 | export-Descendants-6000000178898487831.ged |
 | `@I6000000000574102715@` | `INDI.CHAN.DATE` | 12 APR 2023 | export-Forest-40.ged | 09 AUG 2026 | export-Descendants-6000000178898487831.ged |
