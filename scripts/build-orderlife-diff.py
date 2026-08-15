@@ -37,8 +37,10 @@ sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 from genimerge import sources  # noqa: E402
 
-ORDERLIFE = Path("C:/Users/Emma/Documents/GitHub/order.life")
-PERSONS = ORDERLIFE / "wikibase" / "analysis" / "persons.tsv"
+#: Vendored under `orderlife/`; see `build-orderlife-batch`. This was an absolute
+#: path into a sibling checkout until 2026-08-15.
+ORDERLIFE = REPO / "orderlife"
+PERSONS = ORDERLIFE / "analysis" / "persons.tsv"
 INDEX = REPO / "out" / "wikidata" / "store-index.sqlite3"
 INDI = re.compile(r"^0 @I(\d+)@ INDI")
 

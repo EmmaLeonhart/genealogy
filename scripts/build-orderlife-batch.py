@@ -83,7 +83,15 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from genimerge import sources  # noqa: E402
 from labels import label_for  # noqa: E402
 
-OL = Path("C:/Users/Emma/Documents/GitHub/order.life/wikibase")
+REPO = Path(__file__).resolve().parent.parent
+#: **Vendored, not a sibling checkout.** Emma, 2026-08-15: *"The data should
+#: be vendored here… we preserve the Order.life QIDs because there's some
+#: important stuff about it. It should be here so that we can easily reference
+#: it all the time."* Until 2026-08-15 this was an absolute path into
+#: `C:/Users/Emma/Documents/GitHub/order.life`, so a clean checkout of this
+#: repo could not build the batch at all — the same failure as the 37
+#: gitignored GEDCOMs, where a fresh clone silently measured something else.
+OL = REPO / "orderlife"
 INDEX = REPO / "out" / "wikidata" / "store-index.sqlite3"
 INDI = re.compile(r"^0 @I(\d+)@ INDI")
 
@@ -143,9 +151,19 @@ def gaiad_qids(qids: list[str]) -> set[str]:
     claim agreed exactly, 3,970 each, with zero false positives. The change is to
     the method, and the answer did not move.
     """
+    items = OL / "items"
+    if not items.is_dir():
+        # Fail loudly. An absent directory would otherwise mean "nobody is a
+        # Gaiad character", which is a silent, wrong answer of exactly the kind
+        # this repo keeps getting burned by.
+        raise SystemExit(
+            f"no {items} — the order.life item JSONs are not vendored yet. "
+            "orderlife/analysis and orderlife/properties are; items/ is 164,558 "
+            "files and is pending Emma's call on how to store it.")
+
     out = set()
     for n, q in enumerate(qids, 1):
-        p = OL / "items" / f"{q}.json"
+        p = items / f"{q}.json"
         if not p.exists():
             continue
         try:
