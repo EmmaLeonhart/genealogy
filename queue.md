@@ -219,6 +219,48 @@ easy-to-resolve name stuff is resolved."*
 build the new tooling."* The existing downloader manages its own queue. Run it,
 measure the queue's decay, and estimate whether there is an end point.
 
+## 8c · Patronymic stems: 1,395 confirmed misses, morphological not orthographic
+
+Measured 2026-08-15 inside the `AMBIGUOUS: form, father differs` bucket. **1,395
+of 28,917 are the same name**, missed because the stem match is too literal:
+
+| token | father | why |
+| --- | --- | --- |
+| `Ketilsson` | `Ketill` | Icelandic nominative `-ll` → genitive `-l` |
+| `Þorsteinsdóttir` | `Þorsteinn` | nominative `-nn` → genitive `-n` |
+| `Kaðalsdóttir` | `Kaðall` | same |
+| `Clemetsdatter` | `Clemmet` | doubled consonant |
+| `Dmitriyevich` | `Dmitry` | transliteration variance |
+| `Danilovich` | `Daniil` | transliteration variance |
+
+**The Icelandic ones are a grammar rule, not noise** — `-ll`/`-nn` genuinely drop
+to `-l`/`-n` in the genitive, which is what a patronymic is built on. That is a
+stem rule worth encoding. The Russian ones are romanisation variance and are
+softer.
+
+**Fix the declension rule; be careful with the loose-match.** The C/K, th/t, y/i
+fold used to *measure* this is deliberately aggressive and must not ship as-is —
+it would start matching genuinely different names. Encode the Icelandic genitive
+properly and leave the rest ambiguous.
+
+## 8d · NEEDS-DECISION — apply the surname prior, or not
+
+**Emma's prior, and it tests out:** *"most patronymics are not used as surnames."*
+
+| patronymic-form token, father named | tokens | father confirms | rate |
+| --- | ---: | ---: | ---: |
+| in the **given** field | 37,389 | 25,970 | **69.5%** |
+| in the **surname** field | 26,211 | 8,713 | **33.2%** |
+
+**2.1× apart**, and 74.9% of all confirmed patronymics sit in the given field.
+
+So the field is real evidence about whether a form-bearing token is functioning as
+a patronymic. **The decision is whether to act on it** for the 19,621 tokens whose
+form is patronymic and whose father is simply not recorded — 12,185 of them in the
+given field. Calling those patronymic on the field alone would decide them by
+inference rather than by the father, which is the line this classifier was built
+to hold. Emma: *"you should be testing… or queueing it up."* Tested; queued.
+
 ## 8b · The offline patronymic classifier — DONE
 
 **Emma's correction:** *"Whether something is or is not a patronymic here is
