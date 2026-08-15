@@ -287,11 +287,11 @@ once in its name item and every bearer inherits it.
 
 | | |
 | --- | ---: |
-| name items planned | **17,335** |
-| link an item that already exists | **5,695** |
-| create | **10,469** |
-| **ambiguous — several items share the label, held** | **1,171** |
-| below 5 bearers, not planned yet | 116,583 |
+| name items planned | **21,939** |
+| link an item that already exists | **6,547** |
+| create | **14,080** |
+| **ambiguous — several items share the label, held** | **1,312** |
+| below 5 bearers, not planned yet | 136,022 |
 | excluded: particle, ordinal or placeholder | 123 |
 
 **`ambiguous` counts as existing, and getting that wrong nearly created a tenth
@@ -301,7 +301,7 @@ came out as creations. Duplicates are the failure `CLAUDE.md` says damages
 Wikidata rather than wasting a run. They are now held: **choosing among nine
 items is a judgement, and so is deciding there are none.**
 
-**NEEDS-DECISION for Emma:** the 1,171 ambiguous names. Link the most-referenced
+**NEEDS-DECISION for Emma:** the 1,312 ambiguous names. Link the most-referenced
 item, hold them all, or look at the top few by hand.
 
 **The 116,583 below five bearers** are the long tail — 70% of distinct tokens are

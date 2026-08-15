@@ -6586,3 +6586,34 @@ Emma appended it to `queue.md` at 02:46 and it is done in full:
 
 The heading is deleted from the queue per the file's own rule; the record is
 here.
+
+## 2026-08-16 — a stale link in the derived chain, and everything downstream of it
+
+Re-merged with export 204: **204 sources, 396,181 people (+18), one tree.** The
+export is 4,940 people but overlaps the existing Samaritan ones almost entirely.
+
+**Then `derived-labels.csv` refused to grow, and that was the finding.**
+`derive-family.py` reads `out/merged.ged` directly and went 298,591 → 396,181;
+`derive-labels.py` reads **`reports/display-names.csv`**, which is itself derived
+and had never been regenerated. A derived file depending on a derived file, with
+only one refreshed — so labels were still describing the 176-export tree while
+the family data described 204.
+
+Rebuilding the middle link and re-running everything below it:
+
+| | before | after |
+| --- | ---: | ---: |
+| `display-names.csv` rows | 444,875 | **560,432** |
+| our people carrying a Wikidata item | 14,157 | **16,611** |
+| `derived-labels.csv` | 298,591 | **396,181** |
+| distinct name tokens | 140,764 | **167,087** |
+| placeholder people | 26,281 | **35,011** |
+| …with a generable `en` label | 14,351 | **20,024** |
+| name items planned | 17,335 | **21,939** |
+| …link an existing item | 5,695 | **6,547** |
+| …create | 10,469 | **14,080** |
+| …ambiguous, held | 1,171 | **1,312** |
+| structural correspondences | 3,206 | **3,663** |
+| structural placeholders | 7,851 | **11,387** |
+
+Every number in the queue that came from these was stale by roughly a third.
