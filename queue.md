@@ -6,6 +6,11 @@
 
 The purpose of this file is also to bound scope. If a task is not in this queue, it is not in scope for the current session. New ideas go at the bottom of the queue (or to `todo.md` if they are longer-term / architectural), not silently into whatever is being worked on.
 
+**`provisional-queue.md` is where new work goes right now, not here.** Emma,
+2026-08-15: this file *"is kind of messed up"* and is being audited, so anything
+decided since goes to the provisional queue and folds back in when the audit
+settles. Item 0 below is that audit.
+
 **Three-cron playbook.** Extensive work runs under three local `CronCreate` jobs — **work-loop at :03**, **auto-flush at :15**, **status-report at :42**. On a fresh session they are started as the opening step; on a mid-session large-scale re-fill of this queue the FIRST item worked is instead to **kill** the already-running crons. Either way the last two items are pinned at the tail.
 
 ---
