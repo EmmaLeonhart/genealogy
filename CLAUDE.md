@@ -360,8 +360,21 @@ period so the ranking can be read one century at a time.
 that against the data getting onto Wikidata because it still is informative, like
 the so-called private names."*
 
-Geni writes `1 NAME Private` for a profile it will not display. **16,402 of the
-corpus's 390,560 profiles** carry exactly that, plus 772 `NN` or blank — 4.2%.
+**Geni has TWO redaction markers and they withhold different amounts.** Of the
+corpus's 390,560 profiles:
+
+| form | count | what survives |
+| --- | ---: | --- |
+| `Private` | **16,402** | nothing; the whole name is gone |
+| `<private> /Surname/` | **3,605** | **the surname is real data** |
+| `NN` or blank | 772 | nothing |
+
+`<private> /HUÁNG 黃/`, `<private> /Rådestad/`, `<private> /Larsson/` — the
+**given name** is withheld and the family name is not. Treating those as fully
+redacted throws away 3,605 surnames, which is the material Emma called valuable:
+*"they still do flush out the wiki data, and they flush it out by a substantial
+amount."* `surname_of()` exposes it; a bare surname is not a person's label, so it
+feeds the `P734` family-name work rather than the label.
 
 - **The person is created.** What is informative is the structure, and none of it
   is redacted: the Geni ID, the sex, the parents, the children, the dates.
