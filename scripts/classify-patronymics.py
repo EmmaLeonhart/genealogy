@@ -89,6 +89,38 @@ PARTICLES = {"ben", "bin", "ibn", "bint", "bat", "bar", "ap", "ab",
 
 ABSENT = {".", "..", "?", "-", "_", "nn", "n.n.", "private", "<private>"}
 
+#: Suffixes that name the bearer's own sex. A `-sen`/`-son` is *son of*; a
+#: `-datter`/`-dóttir` is *daughter of*.
+SON_OF = {"sen", "son", "sson", "ssen", "zen", "zoon", "szoon", "sz",
+          "ovich", "evich", "ovitch", "evitch", "ovic", "evic"}
+DAUGHTER_OF = {"sdatter", "sdotter", "sdottir", "datter", "dotter", "dottir",
+               "ovna", "evna", "tytar"}
+
+
+def sex_conflict(form: str, sex: str) -> bool:
+    """Does the suffix contradict the bearer's recorded sex?
+
+    **Emma's hypothesis, 2026-08-15, and it holds:** *"if there is a gender
+    mismatch, it might be that the married name goes through an error to become a
+    patronymic or something like that."*
+
+    Measured over the 19,621 form-with-no-father tokens: a *son-of* suffix on a
+    woman is **13.7%** of those with a recorded sex (1,236 of 8,999); a
+    *daughter-of* suffix on a man is **0.2%** (11 of 6,074). Sixty-eight times
+    apart, and the son-of cases are `Gustafsson`, `Wilson`, `Rasmussen`, `Nilsen`
+    on women in the surname field — inherited or married family names, exactly as
+    she predicted. `-datter` almost never does this because it never became
+    heritable.
+    """
+    if not sex:
+        return False
+    bare = form.lstrip("-")
+    if bare in SON_OF:
+        return sex == "F"
+    if bare in DAUGHTER_OF:
+        return sex == "M"
+    return False
+
 
 def fold(text: str) -> str:
     """Casefold and strip diacritics **for stem comparison only**.
@@ -169,6 +201,16 @@ def derives_from_father(token: str, father: str, father_stems: set[str]) -> str 
 
 
 def main() -> int:
+    # Sex comes from the tree rather than the name CSVs, which do not carry it.
+    sys.path.insert(0, str(REPO / "src"))
+    from genimerge.gedcom import stream_file
+    from genimerge.model import build_tree
+    print("loading out/merged.ged for recorded sex", flush=True)
+    tree = build_tree(stream_file(REPO / "out" / "merged.ged"))
+    sex_of = {g: (person.sex or "") for g, person in tree.people.items()}
+    print(f"{sum(1 for v in sex_of.values() if v):,} people with a recorded sex",
+          flush=True)
+
     father_of: dict[str, str] = {}
     with FAMILY.open(encoding="utf-8", newline="") as handle:
         for row in csv.DictReader(handle):
@@ -217,7 +259,21 @@ def main() -> int:
                 if derived:
                     verdict, evidence = "patronymic", derived
                 elif form and not fid:
-                    verdict, evidence = "AMBIGUOUS: form, no father recorded", form
+                    # **Emma's call, 2026-08-15:** *"Generally speaking I'm going
+                    # to say these things are patronymics."* Almost all of them
+                    # sit in real family context — 41.2% have a mother recorded
+                    # and no father, 58.8% have a spouse or children, and only 6
+                    # of 19,621 have no family link at all. The missing father is
+                    # a gap in our data, not evidence against the name.
+                    #
+                    # The exception is the sex conflict she predicted, which is
+                    # an inherited or married surname wearing patronymic shape.
+                    if sex_conflict(form, sex_of.get(gid, "")):
+                        verdict, evidence = ("surname: patronymic form conflicts "
+                                             "with recorded sex", form)
+                    else:
+                        verdict, evidence = ("patronymic (inferred, no father "
+                                             "recorded)", form)
                 elif form and not fname:
                     verdict, evidence = "AMBIGUOUS: form, father unnamed", form
                 elif form:
@@ -271,9 +327,7 @@ def main() -> int:
     add("")
     add("| verdict | tokens | share |")
     add("| --- | ---: | ---: |")
-    for key in (["patronymic"] + sorted(AMBIG) +
-                ["not patronymic", "no father recorded",
-                 "father has no given name"]):
+    for key in sorted(tally, key=lambda k: -tally[k]):
         add(f"| {key} | {tally[key]:,} | {100.0*tally[key]/max(total,1):.1f}% |")
     add(f"| **total** | **{total:,}** | |")
     add("")
@@ -325,10 +379,8 @@ def main() -> int:
     print(f"wrote {OUT_MD}")
 
     print()
-    for key in (["patronymic"] + sorted(AMBIG) +
-                ["not patronymic", "no father recorded",
-                 "father has no given name"]):
-        print(f"  {key:<40} {tally[key]:>9,}")
+    for key in sorted(tally, key=lambda k: -tally[k]):
+        print(f"  {key:<52} {tally[key]:>9,}")
     print(f"\n  {len(both):,} tokens go both ways")
     for token, counts in sorted(both.items(),
                                 key=lambda kv: -(kv[1]["patronymic"]))[:10]:

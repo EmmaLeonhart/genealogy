@@ -9,16 +9,17 @@ Every token of every person is a row in
 
 | verdict | tokens | share |
 | --- | ---: | ---: |
-| patronymic | 34,683 | 6.6% |
-| AMBIGUOUS: form, father differs | 28,917 | 5.5% |
-| AMBIGUOUS: form, father unnamed | 136 | 0.0% |
-| AMBIGUOUS: form, no father recorded | 19,621 | 3.7% |
 | not patronymic | 347,287 | 65.7% |
 | no father recorded | 95,023 | 18.0% |
+| patronymic | 34,683 | 6.6% |
+| AMBIGUOUS: form, father differs | 28,917 | 5.5% |
+| patronymic (inferred, no father recorded) | 18,374 | 3.5% |
 | father has no given name | 2,945 | 0.6% |
+| surname: patronymic form conflicts with recorded sex | 1,247 | 0.2% |
+| AMBIGUOUS: form, father unnamed | 136 | 0.0% |
 | **total** | **528,612** | |
 
-**48,674 tokens carry a patronymic FORM that the father does
+**29,053 tokens carry a patronymic FORM that the father does
 not confirm.** Emma asked for these to be separated rather than silently
 called non-patronymic: *"We probably should be doing some level of
 classification for situations where it is ambiguous."* They are the

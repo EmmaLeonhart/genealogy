@@ -5,6 +5,8 @@
 checkmarks, no "done" markers, no keeping a finished item "for context" — that is
 what bloated this file twice. If an item is here, it is not done.
 
+**Items are flat numbers. No `8a`/`8b` sub-lettering** — Emma, 2026-08-15, after I appended four lettered items under her item 8 and it read as a scheme rather than as me tacking things on: *"I have no idea what 8D is… this is just some sort of imagined code thing that you just added into the queue system."* A new item gets the next plain number at the end.
+
 Longer-horizon, abstract work lives in `todo.md` and is decomposed into steps here
 when it is ready to run. New ideas go at the bottom, never silently into whatever
 is being worked on.
@@ -134,18 +136,17 @@ tenth `Maria`. Emma named the one genuine residue herself: `Q325872` / `Q2541338
 the **male** and **female** given name `Maria`, settled by the person's sex rather
 than by the string.
 
-## 3 · The 7 Samaritan father disagreements — for Emma to look at
+## 3 · The 7 Samaritan father disagreements — CLOSED, we operate off them
 
-`reports/samaritan-source-comparison.csv`. 130 of 137 comparable people agree; the
-transcription is not superseded and does not contradict Geni.
+**Emma, 2026-08-15:** *"we're just leaving them in here. Just to be clear, we're
+leaving them in here. You're just making up stuff here. I know about the father
+disagreements. I don't think they're exactly the best data modeling, but they're
+there, and we're operating off of it."*
 
-- `Matzliach ben Phinhas` — source `Phinhas ben Yitzhaq`, Geni `Phinehas`
-  (probably only a spelling)
-- `Yusef`, `Yusef ben Ab-Hisda`, `Yusef ben Yehoshua` — Geni gives a
-  `119th generation Samaritan…` placeholder as the father
-- `Shalom ben 'Amram` — source `'Amram ben Yitzhaq`, Geni `Shembet ben Bakhi`
-- `Asher ben Shelach` — source `Shelach`, Geni `Matzliach ben Phinehas`
-- `'Abed Hanuna ben Jacob Hadinfi` — source `Jacob Hadinfi`, Geni `Shalma`
+**Not a decision and never was.** I listed them as something she owed an answer
+on across two status reports. She already knew, and the data stands as recorded.
+`reports/samaritan-source-comparison.csv` keeps the seven for reference; nothing
+is blocked on them and nothing is to be resolved.
 
 ## 5 · Wadah Cohen's father
 
@@ -219,57 +220,6 @@ easy-to-resolve name stuff is resolved."*
 build the new tooling."* The existing downloader manages its own queue. Run it,
 measure the queue's decay, and estimate whether there is an end point.
 
-## 8c · Patronymic stems: 1,395 confirmed misses, morphological not orthographic
-
-Measured 2026-08-15 inside the `AMBIGUOUS: form, father differs` bucket. **1,395
-of 28,917 are the same name**, missed because the stem match is too literal:
-
-| token | father | why |
-| --- | --- | --- |
-| `Ketilsson` | `Ketill` | Icelandic nominative `-ll` → genitive `-l` |
-| `Þorsteinsdóttir` | `Þorsteinn` | nominative `-nn` → genitive `-n` |
-| `Kaðalsdóttir` | `Kaðall` | same |
-| `Clemetsdatter` | `Clemmet` | doubled consonant |
-| `Dmitriyevich` | `Dmitry` | transliteration variance |
-| `Danilovich` | `Daniil` | transliteration variance |
-
-**The Icelandic ones are a grammar rule, not noise** — `-ll`/`-nn` genuinely drop
-to `-l`/`-n` in the genitive, which is what a patronymic is built on. That is a
-stem rule worth encoding. The Russian ones are romanisation variance and are
-softer.
-
-**Fix the declension rule; be careful with the loose-match.** The C/K, th/t, y/i
-fold used to *measure* this is deliberately aggressive and must not ship as-is —
-it would start matching genuinely different names. Encode the Icelandic genitive
-properly and leave the rest ambiguous.
-
-## 8d · NEEDS-DECISION — apply the surname prior, or not
-
-**Emma's prior, and it tests out:** *"most patronymics are not used as surnames."*
-
-| patronymic-form token, father named | tokens | father confirms | rate |
-| --- | ---: | ---: | ---: |
-| in the **given** field | 37,389 | 25,970 | **69.5%** |
-| in the **surname** field | 26,211 | 8,713 | **33.2%** |
-
-**2.1× apart**, and 74.9% of all confirmed patronymics sit in the given field.
-
-So the field is real evidence about whether a form-bearing token is functioning as
-a patronymic. **The decision is whether to act on it** for the 19,621 tokens whose
-form is patronymic and whose father is simply not recorded — 12,185 of them in the
-given field. Calling those patronymic on the field alone would decide them by
-inference rather than by the father, which is the line this classifier was built
-to hold. Emma: *"you should be testing… or queueing it up."* Tested; queued.
-
-## 8b · The offline patronymic classifier — DONE
-
-**Emma's correction:** *"Whether something is or is not a patronymic here is
-determined by completely offline information related to the person's father's
-name."* Built and run: `reports/patronymic-classification.csv`, 528,612 rows.
-34,139 patronymic, 376,748 not, 114,644 with no verdict because no father is
-recorded. **958 tokens go both ways** — `Olsen` is patronymic for 1,018 people
-whose father is Ole and an inherited surname for 119 whose father is not.
-
 ## Scheduled — `e6e0915c` at 13:02, ONE-SHOT · Emma's name-modelling file
 
 She is writing her own file on name modelling into the repo root. *"I have an idea
@@ -282,18 +232,6 @@ Her reference example, Donald John Trump: `P735` Donald with `P1545` 1 and
 *reason for preferred rank* = usual forename; `P735` John with `P1545` 2 and
 `P3831` = middle name; `P734` Trump. **`P7452` reason for preferred rank is not in
 `CLAUDE.md`'s table** and must be added if her file uses it, confirmed offline.
-
-## 7 · Single-export clusters — Emma's item, in her words
-
-> Add to the queue that we are going to look over the geni exports to try to find
-> large clusters like the Javanese ones that have only one geni export covering
-> them. My perception here is that such areas are more likely to have important
-> links that were not covered and that with a different entry point and a larger
-> export window thing, particularly looking at the deepest members of such
-> clusters of people only in one export.
-
-The Javanese case that prompted it: the excluded `BloodTree` held **1,091** people
-no other export had, all Mataram and Demak royalty.
 
 ## 8 · Comprehensive Wikidata re-import — Emma's item, in her words
 
@@ -327,6 +265,68 @@ hold**, and **71% of those are children with no birth date** — which is the
 population her fallback algorithm would prioritise.
 
 ---
+
+## 9 · Patronymic follow-ups, from Emma's ruling of 2026-08-15
+
+**Her call on the 19,621 unconfirmed:** *"Generally speaking I'm going to say
+these things are patronymics."* Applied. Verdicts now:
+
+| | tokens |
+| --- | ---: |
+| patronymic — father confirms | 34,683 |
+| **patronymic (inferred, no father recorded)** | **18,374** |
+| surname — patronymic form conflicts with recorded sex | 1,247 |
+| form, father differs (still open) | 28,917 |
+
+**The sex guard is hers and it measured out at 68:1.** *"If there is a gender
+mismatch, it might be that the married name goes through an error to become a
+patronymic."* A *son-of* suffix on a woman is **13.7%** of the sexed cases; a
+*daughter-of* suffix on a man is **0.2%**. The son-of ones are `Gustafsson`,
+`Wilson`, `Rasmussen`, `Nilsen` on women in the surname field — inherited or
+married names. `-datter` never became heritable, which is why it does not do this.
+
+**Context supported inferring the rest**: 41.2% have a mother recorded and no
+father, 58.8% have a spouse or children, and **6 of 19,621** have no family link
+at all.
+
+### 9a — remaining work
+
+- **Stem misses, 1,395 of the 28,917 `father differs`.** The Icelandic ones are
+  grammar, not noise: nominative `-ll`/`-nn` drops to `-l`/`-n` in the genitive,
+  so `Ketill` → `Ketilsson` and `Þorsteinn` → `Þorsteinsdóttir`. Encode the
+  declension. `Dmitry` → `Dmitriyevich` is romanisation variance and is softer.
+  **The aggressive C/K, th/t, y/i fold used to measure this must not ship** — it
+  would start matching genuinely different names.
+
+## 10 · Create the fathers the patronymics imply — Emma's item
+
+**Emma, 2026-08-15:** *"If they are patronymics I actually think I'm going to want
+to add items for the hypothetical fathers that are implied to exist from the
+patronymics. These ones would be wiki data items that do not have geni items.
+They're going to be created because they are inferred from the existence of the
+patronymic."*
+
+A person called `Pedersdatter` with no recorded father implies a father called
+`Peder`. That father is a **Wikidata item with no Geni ID** — created because the
+patronymic attests him, not because any profile exists.
+
+**Note what is new here:** every creation so far has been a Geni profile getting
+an item. These have no `P2600` at all, so `CLAUDE.md` § *the Geni ID is added
+first* does not apply and the citation cannot be a Geni profile. What the
+statement is sourced to is the open question to settle before emitting anything.
+
+## 11 · Run the whole name analysis on the WIKIDATA side too — Emma's item
+
+**Emma, 2026-08-15:** *"Of course we also should be running this processing on both
+the geni stuff and the wiki data stuff although I understand if we're just running
+it on the geni stuff first. If we're doing it not on the wiki data stuff, have at
+the end of the queue a thing to run this same name analysis operation on the wiki
+data stuff at the end of this."*
+
+Everything in item 9 — patronymic classification from the father's given name, the
+sex guard, the form tables — run against `wikidata/items/` instead of the Geni
+corpus. Wikidata's `P22` is the father and `P735`/`P734` are the name tokens, so
+the same method applies with different field names.
 
 ## Daily jobs — queued because a cron only fires while the session is idle
 
