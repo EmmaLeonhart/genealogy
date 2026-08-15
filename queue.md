@@ -150,35 +150,75 @@ problem is there lol. But about only geni well same? Tehy are created lol."*
 The 162 ambiguous positions are left alone: Wikidata names more than one parent
 there, so the position does not single anybody out.
 
-## 7+8+9 · Placeholder labels — LAST, and not until `ja`/`zh` exist on everything
+## 7+8+9 · Labels in seven scripts — the last step before Wikidata editing
 
 **Emma, 2026-08-16:** *"WE ARE NOT DOING THIS SHIT UNTIL WE HAVE JA and ZH LABELS
-ON EVERYTHING THIS IS RIGHT BEFORE WIKIDATA EDITING."* So this is the final step
-of the pipeline, not an early one, and it does not ship English-only.
+ON EVERYTHING THIS IS RIGHT BEFORE WIKIDATA EDITING."*
 
-`reports/wikidata-placeholder-labels.json` is **built** — 26,281 `set_labels`
-edits, `mul` on all, `en` on 14,351 — and **must not run** in that state.
+**The labels are MADE, not copied, and that is the part I had wrong.** Her
+instruction: *"you're supposed to make Japanese labels and Chinese labels for
+everything, really Japanese first and then Chinese, just because a large amount
+of stuff has to be romanized… like the ancient Near East stuff, has to go into
+katakana."* So this is transliteration work, not a lookup — which is why the 3%
+copy ceiling measured below is beside the point rather than a blocker.
 
-**Why the ceiling is 3% and what lifts it.** Measured 2026-08-16: the 14,351
-generable labels are named by **8,018 distinct relatives, of whom only 432 have a
-Wikidata QID**. So `ja` is copyable for 478 people and `zh` for 439, against
-14,351 for `en`. The relatives are Geni-only people who are not on Wikidata yet —
-**and 7,851 of them are exactly the `create_individual` placeholders the
-structural walk produced.**
+### The language set
 
-**So the order is creations first, labels last.** Emma's call, same day: *"create
-the relatives first, then label."* Every person created can carry `ja`/`zh` from
-the start instead of being revisited, and the ceiling rises as a consequence of
-the creations rather than needing its own mechanism.
+`en` · **`ja`** · **`zh`** · `hi` · `ar` · `ru` · `el` · plus `mul`
 
-**Sequence:**
+Japanese first, then Chinese, then the rest. Her reason for the last four:
+*"Hindi, Arabic, and Russian are all languages because this kind of gives a
+general strong coverage of all the different scripts of the world"* — plus Greek,
+added immediately after: *"And I guess also Greek, the Greek alphabet and also
+Greek."* Devanagari, Arabic, Cyrillic, Greek: with Latin and CJK that is most of
+the world's living scripts.
 
-1. `reports/wikidata-structural-placeholders.json` — 7,851 people on Geni and not
-   on Wikidata, created **with** `ja`/`zh` labels.
-2. Everything else that creates a person: the Samaritan line, the order.life
-   tiers.
-3. Re-measure the ceiling; it should no longer be 3%.
-4. **Then** the 26,281 label edits, with `en`, `ja`, `zh` and `mul` on every one.
+### How each is built
+
+- **`ja`** — katakana for anything not already Japanese. Ancient Near Eastern
+  names are the bulk of it. A name already in kanji keeps its kanji, and
+  `CLAUDE.md` records her earlier rule that a kanji-only name gives the same
+  string for `ja` and `zh`.
+- **`zh`** — the phonetic rendering, after Japanese.
+- **`hi`/`ar`/`ru`/`el`** — transliteration into Devanagari, Arabic, Cyrillic and
+  Greek.
+- **`mul`** — the `NN` / `NN <surname>` normalisation, already built.
+
+### Order of work, and why
+
+`reports/wikidata-placeholder-labels.json` holds **26,281 `set_labels` edits**
+with `mul` on all and `en` on 14,351. It **must not run** in that state.
+
+Emma: *"create the relatives first, then label."* The 8,018 relatives who name
+these people are Geni-only; **7,851 of them are the `create_individual`
+placeholders the structural walk produced**. Create them first and each carries
+its full label set from the start rather than being revisited.
+
+1. Create the 7,851 structural placeholders, **with the full label set**.
+2. Then the other creations — the Samaritan line, the order.life tiers.
+3. Then the 26,281 label edits, every one carrying all seven languages + `mul`.
+
+**Measured for context, not as a blocker:** copying `ja` from a relative's
+Wikidata item reaches 478 people and `zh` 439, against 14,351 for `en`, because
+only 432 of the 8,018 relatives have a QID at all. Transliteration is what closes
+that gap.
+
+## 9b · The old Samaritan GEDCOM against the new export — supersede or amend?
+
+**Emma, 2026-08-16, and she is explicit that she does not know the answer:**
+*"I don't really know what you're supposed to do with the old Samaritan stuff.
+Now that we have this new Samaritan stuff, has that one changed relationship?
+This relationship would kind of either have to be changed in them or they need to
+be superseded… I think it's an easy thing to do but I don't know."*
+
+`gedcom/samaritan-sources.ged` and `gedcom/samaritan-itamar-spine.ged` are
+**hand-transcribed from published sources**, carry no Geni profile IDs, and
+predate the four Samaritan exports and export 204. The question is whether their
+relationships still hold now that Geni has the same people with real IDs.
+
+**Show her the comparison before deciding anything** — which people appear in
+both, and where the two disagree about a parent. Do not supersede a
+hand-transcribed source on inference.
 
 ## 10 · Name items: link the 143 that exist, create the rest
 
