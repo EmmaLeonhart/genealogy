@@ -6046,3 +6046,28 @@ assumed: `test_seeds.py`, `test_repo_invariants.py` and
 `test_gedcom_real_exports.py` â€” **1,264 passed, 1 skipped, 3m52s** â€” the same
 count as before the rewrite, so the files changed only where intended.
 
+## 2026-08-14 — queue audit: items 1-4 closed
+
+Moved out of `queue.md`, which had them sitting as live work. None was.
+
+**1 · Missing ancestors — done 2026-08-13.** `absent: 0` over 186 GEDCOMs; all
+337 ancestors on the 18 saved pages are in the corpus. `reports/missing-ancestors.md`.
+Reopen only if more ancestor pages are saved.
+
+**2 · Wikidata isolates — parked entirely**, Emma's decision 2026-08-13. No
+triage, no removal mechanism, no isolate-seeded exports. Data left untouched in
+`out/_isolates.json` in case it reverses.
+
+**3 · The Baruch Jafe cluster — joined 2026-08-13** by
+`export-Forest-6000000227227041063`, seeded on "mother of Rabbi Israel Henshel
+Isserles". The generalisable part: a ball seeded inside a component stays inside
+it, escaping through in-laws cannot work by construction, and what worked was
+seeding at the top of the deepest line.
+
+**4 · The 33 Samaritan high priests — joined 2026-08-14.** Emma built the
+profiles on Geni and took four exports into `exports/samaritans/`: `Forest` on
+Alexandra Krasuk (4,868), `Ancestors` and `BloodTree` on Eliazar Cohen (348 and
+4,868), `Forest` on the current High Priest's daughter (4,820). Corpus 203
+GEDCOMs. The pre-1624 line was in the corpus all along — 78 people from Uzzi ben
+Bakhi through Baba Rabba — and `reports/wikidata-samaritan-priests.json` is the
+batch to create them.

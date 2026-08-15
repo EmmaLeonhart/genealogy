@@ -10,6 +10,14 @@ The purpose of this file is also to bound scope. If a task is not in this queue,
 
 ---
 
+## Audited 2026-08-14 — items 1-4 closed out to devlog
+
+Four items were still sitting here describing finished or parked work: missing
+ancestors (0 absent), the Wikidata isolates (parked entirely), the Baruch Jafe
+cluster (joined), and the Samaritan high priests (joined, and its steps 1-3 done
+by Emma today). Per this file's own rule they belong in `devlog.md`, and the
+decisions that still govern the project are in `CLAUDE.md`.
+
 ## Wiped 2026-08-13 — 1,396 lines down to this
 
 Emma: *"OH MY GOD THE QUEUE IS SO BLOATED I AM ALMOST CERTAIN NONE OF IT EVEN IS
@@ -23,153 +31,6 @@ the project are in `CLAUDE.md`, which is where they belong; the rest is in
 anybody was going to execute.
 
 **Two live concerns, Emma's own numbering:**
-
----
-
-## 1 · Missing ancestors — DONE 2026-08-13
-
-`py scripts/check-missing-ancestors.py` → **absent: 0** over 186 GEDCOMs. All
-337 ancestors enumerated on the 18 saved pages for Clara Amilia Hoknes and
-Randolph Paulus Borsheim are in the corpus. Write-up:
-`reports/missing-ancestors.md`.
-
-It went 63 → 61 → 23 → 1 → 0 across 178, 182, 184, 185 and 186 exports, and four
-exports did nearly all of it — every one seeded on somebody who was on the list.
-The four before them were seeded on cluster-joining targets and closed 2 between
-them. **Seed on the list or the number does not move.**
-
-**Reopen this only when new ancestor pages are saved.** The result covers the 18
-pages in `missing ancestors/` and says nothing about any root whose pages have
-not been saved. If Emma saves more, drop them in that directory and re-run — the
-script needs no other change.
-
----
-
-## 2 · Wikidata isolates — PARKED ENTIRELY, Emma's decision 2026-08-13
-
-**Do nothing with the Wikidata islands. Treat them as random noise.** Her words:
-*"my opinion on it is they are useful data in the event something changes and
-this is a more active project, but for now we are parking that line of inquiry
-entirely."*
-
-So: **no triage batches, no removal mechanism, no exports seeded on isolates.**
-Do not open another 25. Do not build the clear-the-text-file path — it was
-flagged as unbuilt and is now not to be built, because it is out of scope rather
-than because it is hard.
-
-The data stays where it is, unchanged, in case the decision reverses:
-`out/_isolates.json` (183,681 items, `[qid, label, geni_id, dates, sitelinks,
-flag]`), `out/wikidata-isolates.html`, `wikidata_isolates_to_clear/New Text
-Document.txt` (19 triaged as genuine isolates), and
-`paths_for_wikidata_isolates/` (6 triaged as connected — Dan Brown, Emma Watson,
-George R. R. Martin, Benedict XV, Luka Modrić, Magnus Carlsen).
-
-Her half-formed pattern is recorded here so it is not re-derived from scratch if
-this reopens: modern celebrities are often connected, non-sports more than
-sports, and **ancient people definitively are not**. It was never tested.
-
----
-
-## 3 · The Baruch Jafe cluster — JOINED 2026-08-13
-
-`py scripts/check-components.py`, 192 exports: **2 components**, 381,035 people.
-Baruch Jafe, his wife, Samuell Standen and Emma are all in component #1 at
-381,002. What is left is component #2 at **33 people — the Samaritan
-high-priestly line**, which nothing has touched.
-
-**The bridge was `export-Forest-6000000227227041063`, seeded on "mother of Rabbi
-Israel Henshel Isserles".** Worth keeping because the shape of it generalises:
-
-- **Six exports seeded inside the cluster moved nothing.** Component #1 held at
-  exactly 350,777 across all of them while the cluster went 4,088 → 27,075. A
-  ball seeded inside a component stays inside it.
-- **Escaping through in-laws cannot work by construction** — Emma's own
-  correction, 2026-08-13. A spouse edge joins two people already in the same
-  component, or it would not be in it.
-- **What worked was seeding at the top of the deepest line.**
-  `scripts/cluster-upward-frontier.py` ranks parentless people in a component by
-  how many generations of descent sit beneath them, which separates the head of
-  a long line from the interior in-laws and leaves that a flat parentless list
-  mixes together. The Isserles seed came out of that ranking.
-
----
-
-## 4 · The 33 Samaritan high priests — JOINED 2026-08-14
-
-**Steps 1-3 below are done.** Emma built the profiles on Geni herself and took
-four exports (`exports/samaritans/`): a `Forest` seeded on **Alexandra Krasuk**
-(4,868), an `Ancestors` and a `BloodTree` on **Eliazar Cohen** (348 / 4,868), and
-a `Forest` on the current High Priest's daughter (4,820). The corpus is 203
-GEDCOMs. The pre-1624 line turned out to be in the corpus all along — 78 people
-from `Uzzi ben Bakhi` down through Baba Rabba — and the batch to create them on
-Wikidata is `reports/wikidata-samaritan-priests.json`.
-
-**Kept below for the record of how it was reasoned about.**
-
-## 4a · The original entry — the line is documented after all
-
-**Superseded 2026-08-13, twice in one evening.** The first conclusion — that
-nothing above the component was named and it could never be joined — was wrong,
-and `reports/samaritan-priesthood.md` is the correction.
-
-**Tabia ha'Åbtå'i's father is Yusef**, from the community's own record: *"they
-asked the priest Tsedaka b. Tabia b. Yusef to be the first High Priest from the
-family of Itamar."* Above him the family forefather is **'Abed Ela ben Shalma**,
-born and active in Damascus, titled *President of the House of 'Abtah*. And
-**'Abtah means Translator** (Arabic *Haftawi*) — an occupation, from the Itamar
-priests' duty of rendering the High Priest's Hebrew into Aramaic. It is not a
-place, and reading it as one would be `CLAUDE.md` § *A clan name is not a clan*
-in reverse.
-
-**The deliverable is `gedcom/samaritan-sources.ged`** — 176 individuals, 69 named
-and 107 explicit placeholders, for Emma to open in a tree editor and enter into
-Geni by hand. See `gedcom/README.md`; it is deliberately outside `exports/` so
-the corpus tests never see it.
-
-**Steps:**
-
-1. **Emma enters the named people into Geni**, starting with Yusef as Tabia's
-   father — that one edge is what joins the component.
-2. Re-export and re-run `py scripts/check-components.py`.
-3. **The eight people who would reach the world tree** are the four sons of
-   Yisrael ben Gamliel Tsedaka (b. 1932) and their four Jewish wives, attested in
-   his own words to Sean Ireton and named in no source found. `A.B. — The
-   Samaritan News`, founded December 1969, is where a community of 751 records
-   births and marriages. NEEDS-INVESTIGATION.
-
----
-
-## 2026-09-30 — create the two unlinked items on Wikidata (Emma)
-
-**Scheduled, not pending.** Emma, 2026-08-13: *"create wikidata items for
-[Baruch Jafe] and [Samuell Standen] on September 30 as independent unlinked items
-completely independently of their links elsewhere... these appear to have gotten
-into the data somehow but are apparently completely unlinked and I still want
-them to get in."* And on what it is for: *"this allows for the wikidata stuff to
-finally start doing connections."*
-
-- **Baruch Jafe** `6000000040078764766` —
-  <https://www.geni.com/people/Baruch-Jafe/6000000040078764766>
-- **Samuell Standen** `6000000107265740881` —
-  <https://www.geni.com/people/Samuell-Standen/6000000107265740881>
-
-The edits are already written: `reports/unlinked-items.md` and
-`out/wikidata/unlinked-items.json`, built by `scripts/build-unlinked-items.py`,
-in the same object shape as the Charlemagne priority chain so one executor serves
-both. Four statements on Jafe, six on Standen — label, `P31` human, `P2600`,
-`P21`, and the dates Geni records, each referenced to the Geni ID.
-
-**No relationship statements, on purpose.** Both men are the husbands of the two
-`wife of ...` profiles whose exports are the corpus's cut-off components, so
-every relative they have is inside a ball that shares nobody with the rest.
-Nothing to point a `P26` or `P40` at yet.
-
-**On the day:** re-run `py scripts/build-unlinked-items.py` first — if either man
-has acquired a `qid` in `reports/derived-labels.csv` by then, the script exits
-non-zero rather than creating a duplicate. Then execute the two creations.
-
-**Not-done tag:** BLOCKED-ON-USER-ACTION — this is a Wikidata write, dated
-2026-09-30 by Emma's instruction.
 
 ---
 
