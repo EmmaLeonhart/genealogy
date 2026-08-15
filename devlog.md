@@ -6569,3 +6569,20 @@ numerals Geni carried and Wikidata lacked.
 
 `reports/wikidata-samaritan-succession.json`: **21 entries, 21 adding the office
 statement, 14 removing the old `P155`/`P156`.** Nothing runs before 1 September.
+
+## 2026-08-16 — "Final thing to do" closed
+
+Emma appended it to `queue.md` at 02:46 and it is done in full:
+
+- **Download the Wikidata items for all the Samaritan high priests** — 8 fetched,
+  all 21 now held.
+- **Connect them in** — 20 matched to Geni profiles by the exports, the 21st
+  given directly by her; 9 `add_geni_id`.
+- **Standardise the modelling with the succession** —
+  `reports/wikidata-samaritan-succession.json`, 21 office statements with
+  `P1365`/`P1366` and term dates, 14 removals of the old `P155`/`P156`.
+- **JSONs that add and remove until the ideal shape** — that is the `add`/`remove`
+  structure of those 21 entries.
+
+The heading is deleted from the queue per the file's own rule; the record is
+here.

@@ -502,14 +502,6 @@ fail so no Gaiad-derived statement can execute before the citation system exists
 lasted one day by design; `CLAUDE.md` records `data_lake/` as the cost of a
 second store that outlived its reason.
 
-## Final thing to do
-
-Download the wiki data items for all of the Samaritan high priests. They probably should be connected in from that other thing. I want you to look over the data modeling of all of them and try to put together something based upon the most recent data modeling to be done across all of them in a standard way, with the succession and stuff like that.
-
-You can use the Wikipedia article on Samaritan high priest to find the order of succession if you need it. Try to build up this modeling, and then we'll figure out how to build up this modeling with ID wiki data items for them. Once that is finished, you work on putting together the JSONs that would have to add all these different things and remove all these things until we get the ideal ones, just because they're rather poorly modeled.
-
-I guess I'd even say the entire thing with the succession should have this, but it doesn't. Particularly the ones from around 1600 to 1980 are really badly modeled, and you can do them. 
-
 ## Always last — restart the three crons and summarize
 
 **These two items stay pinned to the tail of the queue at all times** — below every real work item:
