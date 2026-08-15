@@ -703,6 +703,8 @@ ran.
 | P1559 | name in native language | monolingual text |
 | P1545 | series ordinal | string — **qualifier**, not a claim |
 | P3831 | object of statement has role | item — **qualifier** saying *which kind* of name this `P735` is |
+| P144 | based on | item — on a **patronymic name item**, points at the name it derives from |
+| P5278 | surname for other gender | item — pairs `Olsson` with `Olsdotter` |
 | Q245025 | middle name | item — the `P3831` value for a middle given name |
 | Q110874 | patronymic | item — the `P3831` value for a patronymic, which is also what the name item is an *instance of* |
 
@@ -734,9 +736,27 @@ the name item is an **instance of `Q110874`**, and the `P735` statement carries
 first given name `Q202444`. `P1545` still numbers them in order. *"The daughter
 and son would be the same thing"* — `-son` and `-datter` are one category.
 
-**These three were confirmed offline**, against `reports/wikidata-labels.tsv`
-from the bulk download, not by asking Wikidata — which is the only way a property
-gets checked here now.
+**How a patronymic item records what it derives from: `P144` based on.** Measured
+on 2026-08-15 over the 633 items that are `instance of` `Q110874`: **`P144` on
+119 of them**, plus `P5278` *surname for other gender* on 97 — which is the
+`Olsson` ↔ `Olsdotter` pairing. `P1705` native label (513), `P282` writing system
+(579) and `P407` language of work or name (370) are the near-universal ones.
+Emma also wants the derivation stated in the item's **description text**, not
+only as a claim.
+
+**That measurement is the one live Wikidata query this project has made since the
+rule, and Emma authorised it specifically.** *"You are going to look at Wikidata
+live to see if there are objects for patronymics… this is a legitimate reason to
+keep Wikidata. It's not a legitimate reason to query Wikidata because you just
+want to figure out something about some random individual."* It was one aggregate
+`SPARQL` query, no per-item lookups, run only after the local store was checked
+and found not to hold `Q110874` — the store is a Geni-shaped slice of **people**
+and carries almost no name items. **The rule is unchanged**: the exception was
+for a question about Wikidata's own modelling conventions that the store cannot
+answer, granted explicitly, once.
+
+**`P3831`, `Q110874`, `Q245025` and `Q202444` were confirmed offline**, against
+`reports/wikidata-labels.tsv` from the bulk download.
 
 `P1545` is how a person with several given names keeps them in order: each P735
 statement carries the ordinal of that name within the full given-name string.
