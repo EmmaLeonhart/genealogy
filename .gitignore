@@ -41,14 +41,18 @@ Thumbs.db
 # GitHub's hard limit is 100 MB per file and both of these are over it. Both
 # are REBUILDABLE from tracked inputs, so this costs a rebuild, never data:
 #
-#   out/merged.ged                     534 MB  <- `genimerge merge` over exports/
+#   out/merged.ged                      534 MB  <- `genimerge merge` over exports/
 #   out/wikidata/download-state.sqlite3 126 MB  <- `wikidata-download --rebuild-index`
+#   out/wikidata/store-index.sqlite3    100.5 MB <- `genimerge wikidata-index`
 #
-# out/wikidata/store-index.sqlite3 is 99.9 MB and tracked. It is close enough to
-# the limit that the next growth spurt will cross it; when a push is rejected for
-# that file, add a line here and say so rather than widening this to a pattern.
+# The third one crossed the limit ONE COMMIT after being tracked at 99.9 MB. The
+# 14,836-item download of 2026-08-15 took the store to 1,423,234 items and the
+# index to 100.5 MB, so the next push carrying it would have been rejected. The
+# previous comment here said to add a line rather than widen this to a pattern
+# when that happened, so that is what this is.
 out/merged.ged
 out/wikidata/download-state.sqlite3
+out/wikidata/store-index.sqlite3
 
 # Coverage measurement leftovers
 .coverage

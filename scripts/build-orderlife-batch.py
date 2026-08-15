@@ -365,6 +365,19 @@ def main() -> int:
     for r in read_tsv(OL / "analysis" / "edges.tsv"):
         father.setdefault(r["child"], []).append(r["parent"])
 
+    # `father` is child -> [parents] despite the name. `infer_sex` needs both
+    # directions, and until 2026-08-15 it was called with two names that did not
+    # exist anywhere in this function - `children_of` and `parents_of`. The
+    # branch therefore raised `NameError` whenever it was reached, which is to
+    # say whenever a parent's sex was unresolvable. Earlier runs never reached
+    # it; the 14,836-item download changed which edges get compared and it fired
+    # on the first line.
+    parents_of = father
+    children_of: dict[str, list[str]] = {}
+    for child, parents in father.items():
+        for parent in parents:
+            children_of.setdefault(parent, []).append(child)
+
     spouses: dict[str, list[str]] = {}
     for r in read_tsv(OL / "analysis" / "spouses.tsv"):
         spouses.setdefault(r["a"], []).append(r["b"])

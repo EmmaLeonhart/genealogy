@@ -6300,3 +6300,52 @@ same blocker as queue item 2 and resolve with the same expanded download.
 Held back and counted rather than emitted: 80 `time` claims (`P1317` floruit, in
 order.life's own date format), 9 `wikibase-item` (`P155`/`P156`/`P460`, whose
 values are order.life QIDs and mean something else on Wikidata), 2 `string`.
+
+## 2026-08-15 — the expanded Wikidata download, and a NameError it exposed
+
+Emma: *"Bruh omg run the expanded wikidata download now don't delay shit like
+this."*
+
+**It could not have been a re-run, and nearly was run blind.** `--dry-run` first
+reported *"514,876 QIDs added to the fetch queue, held 0"* — the state index
+lives in `out/`, which was gitignored, so a machine restart had lost it and the
+downloader believed nothing had ever been fetched while 1,408,402 items sat in
+the tracked shards. `--rebuild-index` recovered it from the shards in a few
+minutes: **queue 0, held 1,408,353**. The seed set and its relative-scan closure
+were already exhausted.
+
+**So expansion needed new seeds, and there was a real source for them:**
+order.life points at **60,039** Wikidata QIDs, **14,836** of which were outside
+the Geni-linked population entirely — which is why the relative scan never
+reached them.
+
+**The run: 14,832 stored, 10 missing, 0 errored, 297 requests over 417 seconds,
+throttled 0 times.** Store now **1,423,022 items**.
+
+What it bought:
+
+| | before | after |
+| --- | ---: | ---: |
+| order.life identifiers uncheckable | 4,245 | **145** |
+| already stated on Wikidata | 42,727 | 46,802 |
+| addable identifiers | 10 | 12 |
+| `add_relationship` in the batch | 5,108 | **7,109** |
+
+The +2,001 edges are the point: they were being dropped because the child's item
+was unreadable, which `docs/future-modelling.md` had logged as 15,094 lost edges
+and NEEDS-DECISION.
+
+**A latent `NameError` fired on the first line of the new run.**
+`build-orderlife-batch` called `infer_sex(parent, persons, children_of,
+parents_of, spouses)` and **neither `children_of` nor `parents_of` existed** in
+that function. The branch only runs when a parent's sex is unresolvable, and no
+previous run had reached it; the enlarged store changed which edges get compared
+and it fired immediately. Fixed by building both from `father` — which despite
+its name is child → parents. `infer_sex` now does what its own docstring claimed:
+2 recovered from the graph, 17 emitted as `P22_or_P25` rather than dropped.
+
+**`out/wikidata/store-index.sqlite3` crossed GitHub's 100 MB limit one commit
+after being tracked** — 99.9 MB then 100.5 MB after the download. Ignored with
+its own line, as the comment written that morning said to do. It rebuilds with
+`genimerge wikidata-index`, which **has to run after every download** or the new
+items are invisible to every offline check.

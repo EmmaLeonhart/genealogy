@@ -142,16 +142,26 @@ and a placeholder for everyone on Geni but not on Wikidata, to be created later.
 **Show cases one by one before generalising.** `CLAUDE.md` § *How this project
 works now* — do not build the pipeline first, and do not reformat the records.
 
-## 2 · Bulk-download the Samaritan priests' Wikidata items and fold them in
+## 2 · The Samaritan priests' Wikidata items — the half of the download still open
 
-They are on Geni **and** on Wikidata; what they lack on Wikidata is genealogy.
-`CLAUDE.md` § *An item with no relationships is not a missing item* has the order
-this follows: `P2600` first, then everything Geni supports, each cited to it.
+**The download ran on 2026-08-15** and closed the order.life half: 14,836 seeds,
+14,832 stored, 7 minutes, nothing throttled. The store is **1,423,022 items**.
+That resolved the uncheckable order.life identifiers (4,245 → 145) and recovered
+**+2,001 `add_relationship` edges** (5,108 → 7,109).
 
-Part of the same download run as the **15,094 unreadable-item relationship
-edges** — Emma chose *expand the download, then re-check* over emitting
-unchecked. `genimerge wikidata-download` is the only thing in this repo allowed
-to talk to Wikidata, and it is confirmed before a live run.
+**What it did not reach: the Samaritan priests who have a Wikidata item and no
+Geni ID** — Yoseph II, `Q2031200` Aharon ben Ab-Chisda, Levi ben Abisha,
+Aabed-El ben Asher. They were never in the P2600 closure and are not in
+order.life, so no seed list built so far contains them. `Q2031200` was fetched by
+hand and its relative-scan **discovered nothing new**, so walking outward from it
+does not find the others either.
+
+**The blocker is finding their QIDs, and it cannot be done offline**: they are
+not in the store, so there is nothing local to search. Naming them means either
+Emma supplying the QIDs, or a search against Wikidata — which is the thing
+`CLAUDE.md` forbids without her say-so, exactly as the patronymic survey needed.
+
+**NEEDS-DECISION:** supply the QIDs, or authorise one search.
 
 ## 4 · Re-merge over 203 exports and refresh the derived reports
 

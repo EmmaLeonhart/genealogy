@@ -27,7 +27,7 @@
   ]
  },
  {
-  "id": "orderlife_identifier:Q51822:P4159",
+  "id": "orderlife_identifier:Q51822:P1185",
   "type": "add_statement",
   "source": "order.life",
   "subject": {
@@ -38,8 +38,8 @@
   "requires": [],
   "statements": [
    {
-    "property": "P4159",
-    "value": "Ptolemy_Auletes_(2)",
+    "property": "P1185",
+    "value": "103775",
     "references": [
      {
       "property": "P854",
@@ -54,7 +54,7 @@
   ]
  },
  {
-  "id": "orderlife_identifier:Q51822:P1185",
+  "id": "orderlife_identifier:Q51822:P4159",
   "type": "add_statement",
   "source": "order.life",
   "subject": {
@@ -65,8 +65,8 @@
   "requires": [],
   "statements": [
    {
-    "property": "P1185",
-    "value": "103775",
+    "property": "P4159",
+    "value": "Ptolemy_Auletes_(2)",
     "references": [
      {
       "property": "P854",
@@ -98,6 +98,33 @@
      {
       "property": "P854",
       "value": "https://www.geni.com/people/x/6000000003828204054"
+     },
+     {
+      "property": "P813",
+      "value": "+2026-08-15T00:00:00Z/11"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "orderlife_identifier:Q70439:P9495",
+  "type": "add_statement",
+  "source": "order.life",
+  "subject": {
+   "qid": "Q2997581",
+   "geni_id": "6000000002145556219",
+   "orderlife_qid": "Q70439"
+  },
+  "requires": [],
+  "statements": [
+   {
+    "property": "P9495",
+    "value": "term/c174a101-c41e-4a4c-b041-912dc67e3d73",
+    "references": [
+     {
+      "property": "P854",
+      "value": "https://www.geni.com/people/x/6000000002145556219"
      },
      {
       "property": "P813",
@@ -185,6 +212,33 @@
     "property": "P1185",
     "value": "26831|288719",
     "references": []
+   }
+  ]
+ },
+ {
+  "id": "orderlife_identifier:Q136037:P1819",
+  "type": "add_statement",
+  "source": "order.life",
+  "subject": {
+   "qid": "Q24558760",
+   "geni_id": "6000000001132486947",
+   "orderlife_qid": "Q136037"
+  },
+  "requires": [],
+  "statements": [
+   {
+    "property": "P1819",
+    "value": "I00759140",
+    "references": [
+     {
+      "property": "P854",
+      "value": "https://www.geni.com/people/x/6000000001132486947"
+     },
+     {
+      "property": "P813",
+      "value": "+2026-08-15T00:00:00Z/11"
+     }
+    ]
    }
   ]
  },
