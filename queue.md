@@ -339,7 +339,7 @@ reachable input, duplicated censuses. **Never touch `exports/`, never delete a
 `.ged`, never add a `*.ged`/`*.zip` pattern.** Delete nothing on your own
 judgement — candidates with a reason and evidence, to Emma in batches of four.
 
-**`d62449e3` 22:01** — ask about `reports/seeds.md`'s future.
+~~`d62449e3` 22:01 — seeds.md~~ **This cron is GONE.** It is listed here as live and is not in the running set; it vanished without ever firing. Emma's call, 2026-08-15: make it a queue item instead — item 15 below. *"Crons only fire while the session is idle and keep starving."*
 
 **`9f41a7a4` 23:03 — entity resolution.** `entity_resolution.md` is Emma's
 free-form scratchpad. **Do not reformat it to suit the parser** — teach the
@@ -629,6 +629,84 @@ from which field the token sits in. That part agrees with her file.
 
 **Edge cases go to her**: *"Do an ask-user question on the edge cases so that I
 can figure them out."*
+
+## 13 · Does order.life's Japanese carry the labels? MEASURE IT FIRST
+
+**Emma, 2026-08-15, answering whether order.life feeds item 1: yes, but measure
+it properly first.**
+
+She had said order.life *"doesn't have a whole lot of them"*. Sampled over 40,000
+of its items, it has a lot:
+
+| lang | items |
+| --- | ---: |
+| en | 34,209 |
+| **ja** | **29,085** — 73% |
+| ko | 14,845 |
+| he | 11,376 |
+| zh | 11,209 |
+| es | 10,912 |
+| ru | 6,123 |
+
+**The measurement to make:** how many of *our* people have an order.life `ja`/`zh`
+label actually available — joined on the Geni ID, not on names. A copied label is
+free; a transliterated one is hand-built agentically. This could remove a large
+part of item 1's workload, and the size of that part is not yet known.
+
+**It does not reopen the rule.** The seven-language labels are still *made*, not
+copied, for everybody order.life does not cover.
+
+## 14 · Show the raw order.life rows the parser used to mangle — DONE, kept for the finding
+
+**Answered 2026-08-15.** Emma at 04:18: *"I still don't really understand what the
+128 recovered rows are. I'm very confused, and I feel like the order.life data
+might be really strange."*
+
+**The data is not strange. The parser was wrong.** 357 raw lines in
+`orderlife/analysis/persons.tsv` contain a `"` as **data** — an epithet inside a
+name:
+
+    Q31705   Alonso "el Joven" de Avalos Saavedra
+    Q32254   Gonzalo de Salazar "El mozo"
+    Q36342   Marcos "Solomon Israel" Diaz
+    Q36346   Don Yehuda "Aryeh" ibn Yahya
+    Q38162   Baal-Eser II "Belus" King of Tyre
+    Q153369  Queen Flora the Harmonious "wasp waist" Apocrita
+
+Python's default reader treats `"` as a field-quoting character, so it swallowed
+the following tab and glued rows together: **107,037 rows parsed as 106,909**, 157
+differing. `QUOTE_NONE` says there is no quoting in the file and a tab is the only
+delimiter, which is correct for it.
+
+## 15 · `reports/seeds.md`'s future — a queue item, not a cron
+
+The 22:01 cron `d62449e3` was created for this and **is no longer running**; it
+vanished without firing. Emma, 2026-08-15: put it in the queue instead, because
+*crons only fire while the session is idle and keep starving*.
+
+`CLAUDE.md` already says `reports/density.md` is where to look for the next export
+and that `seeds.md` *"ranks by doorway count and has never been validated against
+an outcome"*. The question is whether it is kept, regenerated or deleted.
+
+## 16 · The order.life job Emma asked for at 04:46 — a queue item, not a cron
+
+*"And why was the order.life one not run? Should be run based on the contents of
+this repo or a cron job to run at 1am."* No 1am cron was ever created. Her call
+2026-08-15: make it a queue item rather than a scheduled job.
+
+Run the order.life processing **from the contents of this repo** — `orderlife/` is
+vendored, so nothing depends on the separate repository.
+
+## 17 · Audit `todo.md` against what is actually built
+
+**Emma, 2026-08-15:** *"It's on our own recording this in the to-do, not the queue,
+and I don't know if the to-do is being properly done."* Her call: audit it at the
+end of the queue.
+
+Same method as the `queue.md` audit — every item checked against what exists in
+the repo, stale ones corrected or closed, and the difference between *stale* and
+*incomplete* stated for each. Four items were found stale rather than incomplete
+last time; that is the expected shape.
 
 ## Always last — pinned to the tail
 
