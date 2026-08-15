@@ -1,0 +1,36 @@
+Here is our modeling of data with an example of Donald Trump. 
+
+Please use AskUserQuestion if anything here is unclear in the modeling. I tried to make it as clear as possible
+
+One issue that we do have with our data is that some people have patronyms but no surnames. Some people have surnames but no patronyms. Some people have middle names, have first name, middle name, patronym. Some people have first name, patronym, given name.
+
+What is in the surname lit? The surname thing on geni is not always something that clearly corresponds to a surname versus a patronym particularly. We have to check in the given names and in the surname whether it is a patronym or the regular name.
+
+There are probably going to be edge cases and for the edge cases I am going to want you to tell me about the edge cases. Do an ask-user question on the edge cases so that I can figure them out.
+
+Donald Trump (Q22686)
+* given name (P735) Donald (Q13422248)
+** series ordinal (P1545) 1
+** reason for preferred rank (P7452) usual forename (Q3409033)
+
+* given name (P735) John (Q4925477)
+** series ordinal (P1545) 2
+** object of statement has role (P3831) middle name (Q245025)
+
+* family name (P734)
+** Trump (Q16944413)
+
+
+Vladimir Putin (Q7747)
+
+* given name (P735) Vladimir (Q2253934)
+** series ordinal (P1545) 1
+** reason for preferred rank (P7452) usual forename (Q3409033)
+
+* patronym or matronym (P5056) Vladimirovich (Q27670878)
+** based on (P144) Vladimir Putin (Q19300851) (his father, has the same name)
+
+
+
+* family name (P734)
+** Putin (Q30524893)
