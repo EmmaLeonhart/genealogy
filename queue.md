@@ -526,6 +526,48 @@ ambiguous as a given name and created as a family name; and scanning the whole
 JSON blob flagged `subject.orderlife_qid`, which is provenance and is *supposed*
 to hold a local QID.
 
+## 16 · Superseded Geni relationships survive the merge. 653 people have two fathers
+
+**Emma found this, 2026-08-16, and I had missed it entirely:** *"his child and his
+father used to be linked on Jenny as father and child, skipping over him, and in
+many of our Samaritan exports, they continue to reference him and his father. Did
+you fix that in the GEDcons?"* No. I had not noticed it.
+
+**The worked case.** `Yitzhaq I ben Tsedaka` (`6000000227245553985`) was missing
+from Geni, so Geni linked **Tsedaka II → Abram** directly, skipping him. Emma
+added him and re-exported. Now:
+
+| export | Abram's father |
+| --- | --- |
+| `export-Ancestors-6000000227240714964` | Tsedaka II |
+| `export-BloodTree-6000000227240714964` | Tsedaka II |
+| `export-Forest-6000000178794141887` | Tsedaka II |
+| `export-Forest-6000000227240691895` | Tsedaka II |
+| **`export-Forest-6000000178795709821`** (204) | **Yitzhaq I** |
+
+**In `out/merged.ged` Abram has two `FAMC` links and therefore two fathers.**
+
+**This is general, not one person.** 333,073 people carry a `FAMC`; **1,240 carry
+more than one**, and **653 of those have two different fathers**. The merge
+unions edges by design — it never drops a `FAMC` — so **a Geni relationship that
+Geni itself has since corrected survives forever once any export carries it.**
+
+**Why the existing rule does not cover it.** `CLAUDE.md`'s *later sources win*
+applies to **value conflicts on single-valued paths**. A `FAMC` is not one: a
+person can genuinely belong to two families — adoption, a re-recorded marriage —
+so blanket later-wins would delete real structure. That is exactly why this needs
+looking at rather than a one-line patch.
+
+**It contaminates the Wikidata output**, which is why it is not cosmetic. The
+structural walk reads our father from `derived-family.csv`; a person with two
+fathers gets the wrong one half the time, and the placeholder creations and
+relationship edits inherit it.
+
+**Do not generalise from Abram.** `CLAUDE.md` § *How this project works now*:
+show the cases first. **653 is small enough to look at.** The discriminator to
+test is whether the superseded parent is the *grandparent* under the new edge —
+which is what "skipping over him" means, and is checkable without judgement.
+
 ## Always last — restart the three crons and summarize
 
 **These two items stay pinned to the tail of the queue at all times** — below every real work item:
