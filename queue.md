@@ -161,77 +161,85 @@ Of the 11,930 people with no one-hop label, **3,604 (30%) have a named relative
 two hops out** — 2,020 via a grandfather, 1,449 a grandmother, 135 a grandchild.
 Sibling, uncle and nephew need the family graph rather than the derived CSVs.
 
-## 8a · RUNNING — mass export of every name item on Wikidata
+## THREE SEPARATE WIKIDATA OPERATIONS — Emma, 2026-08-15, correcting a conflation
 
-**Emma, 2026-08-15:** *"Because we are not allowed to do this individual querying,
-you're supposed to be doing mass exports on this stuff… every instance of a
-surname, every single instance of a patronymic, and every single instance of a
-given name."*
+*"These are three completely different operations that you conflated with each
+other."* She is right; I had merged all three and then applied her budget to the
+wrong one. They are listed together **only** so the distinction cannot be lost
+again.
 
-**Two steps, and the split is the whole point.** `scripts/collect-name-item-qids.py`
-asks for the **QIDs** a page at a time — aggregate queries, never one per item —
-and writes `reports/name-item-qids.tsv`. Then
-`genimerge wikidata-download --seeds reports/name-item-qids.tsv --scan-per-round 0`
-fetches the items. `--scan-per-round 0` matters: the scan expands along
-`P22/P25/P26/P40/P3373`, and left on it would wander back into the 1.4M people
-instead of fetching names.
+### A · Labels fetch — DONE, and it was never the core data
 
-Sized with one `COUNT` query:
+`scripts/fetch-referenced-labels.py`, run 2026-08-12: English labels for every
+property and item the store references but does not hold.
+`reports/wikidata-labels.tsv`, 876,840 items + 5,637 properties.
 
-| class | | items |
-| --- | --- | ---: |
-| `Q101352` | family name | 693,297 |
-| `Q12308941` | male given name | 59,782 |
-| `Q11879590` | female given name | 38,195 |
-| `Q202444` | given name | 31,487 |
-| `Q3409032` | unisex given name | 4,142 |
-| `Q110874` | patronymic | 633 |
+Emma: *"The labels fetch thing was always intended... but it wasn't really the
+core data. It was more of a metadata thing for helping us make decisions."* And
+her warning about what it cannot do: *"It wouldn't be giving something that would
+be comprehensible for the names at all because most of the name objects will not
+be linked."* Correct — it only ever covered items somebody in our store points at.
 
-**~827,536 items, so ~16,500 requests at 50 per batch — about 4.6 hours at the
-default 1s delay.**
+### B · Name items — RUNNING NOW. *"should be done right now"*
 
-**That is NOT the 3–8 hour budget.** Emma, 2026-08-15: *"The three to eight hour
-budget thing is about a completely different thing. It's about the Wikidata
-individuals. It's not about the names. It's not about the name items."* Her budget
-belongs to item 8, the people download. This is its own job with its own cost, and
-quoting her figure against it was borrowing an authorisation she had not given.
+Every instance of the six name classes on Wikidata, not just the ones our people
+reference. `scripts/collect-name-item-qids.py` enumerates the QIDs by aggregate
+page query, writing `reports/name-item-qids.tsv`; then
+`genimerge wikidata-download --seeds reports/name-item-qids.tsv --scan-per-round 0`.
 
-**Why every item and not the 132,456 our people reference.**
-`reports/name-item-download.md` sized the *referenced* set — which is the wrong
-set for deciding whether a token already has an item. Answering that needs every
-item that exists; asking about one name we do not hold is precisely the
-individual query the rules forbid.
+**824,358 items**: 693,049 family name, 59,275 male given, 37,736 female given,
+30,894 given, 4,141 unisex given, 631 patronymic. `--scan-per-round 0` is
+required — the scan expands along `P22/P25/P26/P40/P3373` and would otherwise
+wander back into the 1.4M people.
 
-**What it unblocks:** item 2. Telling `Q110874` from `Q202444` needs the item's
-own `P31`, and all 1,731 competing QIDs are currently absent from the store.
+**This is NOT the 3-8 hour budget.** Emma: *"The three to eight hour budget thing
+is about a completely different thing. It's about the Wikidata individuals. It's
+not about the names."*
 
-**Where the name work has been getting its data until now**, because Emma asked
-and the answer is narrower than it looks:
+### C · Individuals — LATER, and this is where the 3-8 hours belongs
 
-- **the QIDs** — off our own stored *people*. An item states `P735 → Q4925477`;
-  that is a local read of the shards. `reports/name-items.csv`, 132,569 rows,
-  every one marked `in_store: no`.
-- **the labels** — `scripts/fetch-referenced-labels.py`, run 2026-08-12 on her
-  instruction, batched via `VALUES`, one request per batch, POST, never per item.
-  `reports/wikidata-labels.tsv`: 876,840 items and 5,637 properties.
+The relatives in the Wikidata world tree that are not downloaded. Her words:
 
-So it has been running on **QID plus label and nothing else** — which is why a
-name string resolves to an item at all, and why `P31` is empty for every one of
-them. No per-item query ever happened; the gap is that the item download was
-sized in `reports/name-item-download.md` and never run.
+> This situation could theoretically last almost forever because we have an
+> existing downloading thing that manages the queue that we were running a lot
+> last week... It started off with the seed of all the geni-linked ones. It then
+> expanded and queued up all the linked individuals that were not specifically
+> present... When I stopped it, I stopped it because it was difficult to do. The
+> queue amount initially dramatically increased, but then it started gradually
+> decreasing. I think it's at a relatively low level, but I think it was
+> logarithmically decreasing... I stopped it for reasons mostly related to the
+> way I was moving around, which do not really apply as much anymore.
 
-## 8b · The offline patronymic classifier — buildable NOW, no download needed
+**Order: after B.** *"The individuals thing, since it's a bit of a longer-running,
+more difficult task, should be occurring after we're finished with this other
+stuff, where we can monitor it a bit better and where the relatively
+easy-to-resolve name stuff is resolved."*
 
-**Emma's correction, 2026-08-15:** *"Whether something is or is not a patronymic
-here is determined by completely offline information related to the person's
-father's name."*
+**And when it runs: do not build new tooling.** *"Whatever the fuck you do, do not
+build the new tooling."* The existing downloader manages its own queue. Run it,
+measure the queue's decay, and estimate whether there is an end point.
 
-She is right and I had item 2 wrong. `Olsen` on a man whose father is `Ole` is a
-patronymic, and **nothing on Wikidata is needed to know that** — it is our own
-data, the father's given name against the token. Wikidata only decides *which
-existing item to link to* once we already know what our token is.
+## 8b · The offline patronymic classifier — DONE
 
-So this runs **in parallel with the download**, not after it.
+**Emma's correction:** *"Whether something is or is not a patronymic here is
+determined by completely offline information related to the person's father's
+name."* Built and run: `reports/patronymic-classification.csv`, 528,612 rows.
+34,139 patronymic, 376,748 not, 114,644 with no verdict because no father is
+recorded. **958 tokens go both ways** — `Olsen` is patronymic for 1,018 people
+whose father is Ole and an inherited surname for 119 whose father is not.
+
+## Scheduled — `e6e0915c` at 13:02, ONE-SHOT · Emma's name-modelling file
+
+She is writing her own file on name modelling into the repo root. *"I have an idea
+of the way the modeling is working, but I feel like you may have not understood
+it."* The job reads it, quotes it back before changing anything, fixes
+**formatting only**, folds her model into `CLAUDE.md` as the authority, and lists
+where the code disagrees **without changing the code**.
+
+Her reference example, Donald John Trump: `P735` Donald with `P1545` 1 and
+*reason for preferred rank* = usual forename; `P735` John with `P1545` 2 and
+`P3831` = middle name; `P734` Trump. **`P7452` reason for preferred rank is not in
+`CLAUDE.md`'s table** and must be added if her file uses it, confirmed offline.
 
 ## 7 · Single-export clusters — Emma's item, in her words
 
@@ -313,6 +321,14 @@ is her job to be *given* JSONs, not to make them.
 people holding both identifiers. **The label only confirms a position the
 structure chose; it never searches for a name.** Everything offline. Show cases
 one by one before generalising; do not reformat records.
+
+## Samaritan High Priest wikidata normalization
+
+Please actually start to set up and plan the wikidata normalization that I've been constantly asking you to set up and plan for the Samaritan High Priests that you've just kind of been fucking off with. I don't really understand why it is that you've been not doing it, and by the way do AskUserQuestion liberally if you are confused. 
+
+I will give some info
+
+
 
 ---
 

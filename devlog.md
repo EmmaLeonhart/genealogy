@@ -6867,3 +6867,34 @@ when first written, both too broad.
 the way, that is intended. It is not something to be added to a wikidata."*
 Checked: **no export holds it yet**, so there is nothing to suppress today. It is
 a rule for when one does, and it is in `CLAUDE.md` rather than here.
+
+
+## 2026-08-15 — three Wikidata operations, told apart
+
+**Emma:** *"These are three completely different operations that you conflated
+with each other."* She is right, and the conflation had already cost a wrong
+decision: her 3-8 hour budget belongs to the **individuals** download and I quoted
+it against the **names** one.
+
+- **Labels** — done 2026-08-12, and never the core data. Her framing: *"more of a
+  metadata thing for helping us make decisions."*
+- **Names** — *"should be done right now."* Running: 824,358 items enumerated
+  across the six name classes and fed to the bulk downloader.
+- **Individuals** — later, monitored, and where the 3-8 hours goes. The existing
+  downloader manages its own queue and **no new tooling is to be built for it**.
+
+**Item 7, single-export clusters, done.** `reports/single-export-clusters.md` and
+`.csv`: **877 clusters, 191,438 people** reached by at most one export, each
+ranked by its **deepest** members rather than by doorway count, because Emma asked
+for reach rather than coverage. The largest is 17,574 people; the deepest single
+member sits under **162 generations** of recorded ancestry.
+
+Two bugs of mine on the way, both guesses at an API I had not read: `Gedcom` has
+no `.people` (the tree comes from `model.build_tree(gedcom.stream_file(...))`, as
+`cli._load_tree` already knew), and `Person.name` is a `Name` object whose string
+is `.display`.
+
+**The patronymic classifier, done**, and entirely offline as she said it should
+be. 528,612 rows; **958 tokens are a patronymic for some bearers and a plain
+surname for others**, which is the *"Jackson Jackson Jackson"* rule showing up in
+real data.
