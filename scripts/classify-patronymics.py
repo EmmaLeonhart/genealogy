@@ -90,6 +90,13 @@ PARTICLES = {"ben", "bin", "ibn", "bint", "bat", "bar", "ap", "ab",
 
 ABSENT = {".", "..", "?", "-", "_", "nn", "n.n.", "private", "<private>"}
 
+#: Regnal ordinals are **not name tokens and never patronymic material**. Emma,
+#: 2026-08-15: *"The ordinals on them are not patronymic-related and the
+#: classifier should not really be looking at the ordinals."* They are skipped as
+#: candidates entirely; where they belong is a `P7338` qualifier on the given
+#: name, which is a separate queue item of hers.
+ORDINAL = re.compile(r"^(?:[IVXLCDM]+|\d{1,3})$", re.IGNORECASE)
+
 #: Suffixes that name the bearer's own sex. A `-sen`/`-son` is *son of*; a
 #: `-datter`/`-dóttir` is *daughter of*.
 SON_OF = {"sen", "son", "sson", "ssen", "zen", "zoon", "szoon", "sz",
@@ -278,7 +285,7 @@ def main() -> int:
                 candidates.append((surn, "surname", 0))
 
             for token, where, ordinal in candidates:
-                if token.casefold() in ABSENT:
+                if token.casefold() in ABSENT or ORDINAL.match(token):
                     continue
                 form = has_patronymic_form(token)
                 derived = (derives_from_father(token, fname, fstems)

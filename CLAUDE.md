@@ -733,7 +733,8 @@ ran.
 | P1950 | second family name in Spanish name | item (not applicable here) |
 | P1477 | birth name | monolingual text |
 | P1559 | name in native language | monolingual text |
-| P1545 | series ordinal | string — **qualifier**, not a claim |
+| P1545 | series ordinal | string — **qualifier**, ordering several given names |
+| P7338 | regnal ordinal | **qualifier** on the given name — `Robert VII` is `P735` Robert + `P7338` VII. Emma, 2026-08-15: *"they should all have the regnal orders put on their names as qualifiers"*, and **not only the Samaritans** — anyone whose name carries an ordering. Confirmed offline against `reports/wikidata-labels.tsv`. Distinct from `P1545`, which orders a person's several given names rather than the person among namesakes. |
 | P3831 | object of statement has role | item — **qualifier** saying *which kind* of name this `P735` is |
 | P144 | based on | item — on a **patronymic name item**, points at the name it derives from |
 | P5278 | surname for other gender | item — pairs `Olsson` with `Olsdotter` |

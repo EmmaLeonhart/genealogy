@@ -9,15 +9,15 @@ Every token of every person is a row in
 
 | verdict | tokens | share |
 | --- | ---: | ---: |
-| not patronymic | 347,287 | 65.7% |
-| no father recorded | 95,023 | 18.0% |
-| patronymic | 34,806 | 6.6% |
-| AMBIGUOUS: form, father differs | 28,794 | 5.4% |
+| not patronymic | 338,914 | 65.4% |
+| no father recorded | 92,949 | 17.9% |
+| patronymic | 34,806 | 6.7% |
+| AMBIGUOUS: form, father differs | 28,794 | 5.6% |
 | patronymic (inferred, no father recorded) | 18,374 | 3.5% |
-| father has no given name | 2,945 | 0.6% |
+| father has no given name | 2,883 | 0.6% |
 | surname: patronymic form conflicts with recorded sex | 1,247 | 0.2% |
 | AMBIGUOUS: form, father unnamed | 136 | 0.0% |
-| **total** | **528,612** | |
+| **total** | **518,103** | |
 
 **28,930 tokens carry a patronymic FORM that the father does
 not confirm.** Emma asked for these to be separated rather than silently
@@ -29,7 +29,7 @@ Her prior on them, recorded and **not applied** — deciding on it would be
 inference where this project uses evidence: *"most patronymics are not used
 as surnames."*
 
-**Of the 382,093 tokens where a verdict was possible, 34,806 are patronymic (9.1%).**
+**Of the 373,720 tokens where a verdict was possible, 34,806 are patronymic (9.3%).**
 
 **A person with no recorded father gets no verdict**, not a `no` — absence of
 a father in our data is absence of evidence, and a `no` there would be a

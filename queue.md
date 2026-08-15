@@ -585,6 +585,37 @@ As far as descriptions go, I'll say we should have a series of descriptions that
 
 ---
 
+## 12 · Go through Emma's name-modelling file, analyse it, apply it
+
+**Her instruction, 2026-08-15:** *"Check in the queue to see if we're actually
+going to be going through the name modeling file and analyzing it and applying it
+at some point in the queue. If there isn't a point in the queue that talks about
+it, then add a thing at the end of the queue for it."* There was only a cron entry
+and not a queue item, so this is the item.
+
+The file is hers, hand-written, in the repo root. She has said she is putting the
+**ordinal patronymics** into it, and her position on ordinals generally: *"they
+should all have the regnal orders put on their names as qualifiers"* — `P7338`
+regnal ordinal, **not only for the Samaritans**, for anyone whose name carries an
+ordering.
+
+Do it in this order, which is the same shape as `entity_resolution.md`'s rule:
+
+1. **Read it whole and quote it back** before changing anything, naming every
+   place it differs from `CLAUDE.md`. Her premise is that the modelling may not
+   have been understood, so the differences are the point.
+2. **Formatting fixes only.** Do not rewrite her prose, reorder her argument, or
+   add hedges. When something is not understood, ask.
+3. **Fold it into `CLAUDE.md` as the authority.** Where the two disagree, her file
+   wins and the old text is corrected rather than kept beside it.
+4. **Check the code against it** — `scripts/build-name-item-batch.py`,
+   `scripts/classify-patronymics.py`, `src/genimerge/namelinks.py`,
+   `reports/names-spec.md` — and list the disagreements **without changing the
+   code**.
+
+Cron `e6e0915c` at 13:02 does the same job; this item exists so the work survives
+if the cron does not fire, which is the standing reason cron contents are queued.
+
 ## Always last — pinned to the tail
 
 A. **Ensure the three crons are running** — work-loop `3 * * * *`, auto-flush
