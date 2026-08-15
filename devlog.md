@@ -6432,3 +6432,33 @@ corpus: 44 profiles carry a Wikidata URL, 43 distinct items, and the batch went
 32 → 36 `add_geni_id`. Two items get an **additional** `P2600` rather than a
 correction, which is the unmergeable-duplicate case and not a conflict: `Q120564`
 and `Q51676` (Aaron).
+
+## 2026-08-16 — placeholder labels generated; queue items 2, 4, 7 and 8 closed
+
+**Item 2 — the Samaritan priests.** `samaritans/priests.txt` held the 21 QIDs the
+whole time. 20 matched a Geni profile, 12 already linked, **8 new
+`add_geni_id`**; `Q137394557 Yitzhaq I ben Tsedaka` is genuinely absent from Geni
+and the structure is what established it. The item had been reported blocked
+across two status reports on a file that was never searched for.
+
+**Item 4 — the re-merge.** 203 exports, **396,163 people, 192,552 families, one
+connected tree**, 578 value conflicts. `seeds.md`, `frontier.md`, `density.md`
+and `inventory.md` regenerated against it; `seeds.md` had been the stalest
+artifact in the repo at 10 exports.
+
+**Items 7 and 8 — placeholder labels**, which are one job: the `mul` label is the
+normalisation and the per-language label is the generated relationship.
+`reports/wikidata-placeholder-labels.json`, **26,281 `set_labels` edits**.
+
+| | |
+| --- | ---: |
+| `mul` label | 26,281 |
+| `en` relationship label | 14,351 |
+| `mul` only, no relative with a real name | 11,930 |
+| bare `NN` | 22,347 |
+| `NN <surname>` | 3,934 |
+
+`ja` and `zh` are absent on all of them and that is item 9 rather than a gap in
+this one: `en` is copied from the relative's own label, Japanese and Chinese have
+to be constructed. Each edit lists its `missing_languages` so item 9 can find
+them.

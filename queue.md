@@ -150,116 +150,25 @@ similarity, ever — the label only confirms a position the structure chose.
 Then: build the QID ↔ Geni ID correspondence from the merges, and the
 placeholder system for people on Geni and not on Wikidata.
 
-## 2 · The Samaritan priests' Wikidata items — the half of the download still open
+## 7+8 · Placeholder labels — GENERATED, `ja`/`zh` outstanding
 
-**The download ran on 2026-08-15** and closed the order.life half: 14,836 seeds,
-14,832 stored, 7 minutes, nothing throttled. The store is **1,423,022 items**.
-That resolved the uncheckable order.life identifiers (4,245 → 145) and recovered
-**+2,001 `add_relationship` edges** (5,108 → 7,109).
+`reports/wikidata-placeholder-labels.json`, **26,281 `set_labels` edits**, built
+2026-08-16 from the rulings Emma gave on the preview.
 
-**What it did not reach: the Samaritan priests who have a Wikidata item and no
-Geni ID** — Yoseph II, `Q2031200` Aharon ben Ab-Chisda, Levi ben Abisha,
-Aabed-El ben Asher. They were never in the P2600 closure and are not in
-order.life, so no seed list built so far contains them. `Q2031200` was fetched by
-hand and its relative-scan **discovered nothing new**, so walking outward from it
-does not find the others either.
+- **`mul` on all 26,281** — `NN`, or `NN <surname>`. A surname that is itself
+  placeholder vocabulary collapses to bare `NN` (351 people).
+- **`en` on 14,351** — the generated relationship label. 11,930 have no relative
+  with a real name and carry `mul` only.
+- 22,347 bare `NN`, 3,934 with a surname; both populations included, per her
+  ruling, and the 331 whose surname repeats inside the label are generated too.
 
-**The blocker is finding their QIDs, and it cannot be done offline**: they are
-not in the store, so there is nothing local to search. Naming them means either
-Emma supplying the QIDs, or a search against Wikidata — which is the thing
-`CLAUDE.md` forbids without her say-so, exactly as the patronymic survey needed.
+**`ja` and `zh` are missing on all 26,281 and that is item 9**, not an oversight:
+`en` comes free from the relative's own label, while Japanese and Chinese have to
+be constructed. Every edit lists its `missing_languages`.
 
-**NEEDS-DECISION:** supply the QIDs, or authorise one search.
-
-## 4 · Re-merge over 203 exports and refresh the derived reports
-
-**RUNNING as of 2026-08-16 00:30**, started by hand. The 19:07 cron never fired —
-crons only fire while the session is idle and the session was busy continuously,
-so it starved. Emma: *"fucking do this shit right there fuck now or at least
-queue it up at the end so it actually runs."* Waiting on a cron for something
-this load-bearing was the mistake.
-
-`out/merged-176.ged` holds the pre-merge tree — `CLAUDE.md` says keep it whenever
-a batch lands, because it is the only thing that makes the seed-method backtests
-answerable.
-
-When it finishes, regenerate the reports whose CLI command exists — inventory,
-paths, connectors, density, frontier, descendants — plus
-`reports/samaritan-component.md`, then re-run `scripts/build-repo-freshness.py`
-and confirm `behind_by` has emptied. **`reports/seeds.md` is deleted and gets
-regenerated here**, which is what Emma meant by "delete it so we could
-regenerate it".
-
-## 7 · Normalise the placeholder names to `NN`
-
-**Emma, 2026-08-14.** All 55 discovered forms (`reports/given-name-forms.csv`,
-35,414 records) collapse to one `mul` label: `NN`, or `NN <surname>` where a
-surname is present. The **relationship** labels that go with this are item 8,
-whose spec is settled.
-
-**Guardrail, measured:** of the 33,564 profiles carrying a placeholder name,
-**28,268 have ONLY placeholder names and are safe**, and **5,296 also carry a
-real name** — `/Avitus/` on one record and `Avitus, Western Roman Emperor` on
-another. Those 5,296 must keep the real name; `reports/name-alternatives.csv`
-lists them individually.
-
-**The surname is usually informative, with two contaminations — measured
-2026-08-14.** Of the 29,452 placeholder records on profiles with no real name,
-**10,362 carry a surname**, over **4,003 distinct** values, **70% used once**.
-
-- **The bulk is a large Korean population** — 이 319, 김 214, 권 142, 허 106,
-  홍 89, 안 71, 윤 68, 박 61, 최 61, 노 61 — plus `HUÁNG 黃` 83. **485 distinct
-  surnames contain CJK.** These are real family names and are exactly the P734
-  material.
-- **Contamination 1: placeholders inside the surname slot.** `NN` 158, `???` 119,
-  `N.N.` 70, plus `?`, `??`, `**`, `'`. Emma's rule, 2026-08-15: these **collapse
-  to bare `NN`**, since a surname of `???` carries no information.
-- **Contamination 2: a place in the surname slot.** `隴西狄道` (Longxi Didao)
-  110 records — the `SURN 秦州成紀` trap from `CLAUDE.md` § *A clan name is not a
-  clan*, recurring.
-
-**Do not screen these by length.** 361 distinct surnames are <=2 characters, but
-Korean and Chinese surnames are one character — 이 and 김 would both be discarded.
-Screen on the placeholder vocabulary and on punctuation, never on length.
-
-## 8 · Relationship labels — SETTLED, ready to generate
-
-`reports/relationship-label-preview.md` showed both populations and Emma decided
-on the rows. **26,281 people carry a placeholder given name.**
-
-**Who gets a generated label: everyone with a placeholder given name.** No
-filter on whether they have a surname, and **no filter on whether the surname is
-repeated inside the generated label** — the 331 cases where `NN Kalf` becomes
-`son of Anders Kalf` are generated, because the label still carries a given name
-the `mul` label does not. Her two earlier answers pointed opposite ways on this;
-shown the actual rows, she chose to generate.
-
-**The surname is preserved, and the 36% is the reason.** A relative has a real
-name for **69%** of bare-`NN` people but only **36%** of `NN <surname>` people.
-Emma read that correctly and I had it backwards: *"the surname ones being badly
-connected is kind of evidence in favour of the fact that we need to keep the
-surname."* For that population the relationship label usually **cannot** be
-built, so the surname is the only informative thing they have. `mul` stays `NN`
-or `NN <surname>`.
-
-**Precedence, one hop:** parent (father, then mother), spouse, child →
-`daughter of Joe`, `wife of Carl`, `mother of Joseph`.
-
-**Two rules from the preview, both hers:**
-
-- **A redacted or placeholder relative is skipped** and the precedence falls
-  through to the next one, trying every spouse and child rather than only the
-  first. This removed all 2,730 labels reading *"husband of `<private>` Gaya
-  Pereira"*. Only 1,052 of the 7,654 affected people (13%) recover a label from a
-  later relative — for the rest the skip costs the label outright.
-- **A surname that is itself placeholder vocabulary collapses to bare `NN`** —
-  `NN ???`, `NN NN`, `NN N.N.`, `NN Unknown`. 351 people.
-
-**Unknown sex takes the neutral form** (`child of`, `spouse of`), 127 cases. No
-gender is inferred to make a label read better.
-
-**Yield:** 14,351 of the 26,281 get a one-hop label — 13,140 bare `NN` and 1,211
-with a surname.
+**The subject carries no QID.** These people are overwhelmingly not on Wikidata,
+so the labels attach to whatever creates them; the runner resolves by Geni ID,
+which is what everything here joins on.
 
 ## 9 · Label languages: English, Japanese, Chinese, and `mul`
 
