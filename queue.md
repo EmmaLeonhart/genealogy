@@ -202,6 +202,36 @@ the other side: `SURN 秦州成紀` is a *place*, not a surname.
 **Do not guess a culture from a name.** Where the script does not settle it, the
 tree does — a person's neighbours, and which exports they came from.
 
+### How the transliteration is done — Emma's ruling, 2026-08-16
+
+**Hand-built tables, not a dependency.** `CLAUDE.md`'s stdlib-only rule stands.
+
+**But CJK → English is NOT programmatic.** Her words: *"from CJK to English do not
+remotely try to do any kind of programmatic transliteration because they all
+suck. But AI almost always knows Japanese to Romaji."* So romanising a kanji name
+is done **agentically, name by name**, and written into the repo as data. A
+romanisation table produced by a library would be wrong often enough to poison
+everything downstream.
+
+**Name items first, and that is what makes it tractable.** *"the name objects can
+actually be used in this because we can build the name objects first of all and
+establish all the labels for them. We can do them probably kinda by hand,
+agentically, and then put them here. We then only need to potentially not have
+that many raw things that we need to do for the transliteration."*
+
+The arithmetic is the point: `reports/name-classes.csv` holds **140,764 distinct
+name tokens** across 396,163 people, and the CJK part is **30,876 Han tokens,
+1,552 Hangul, 92 kana**. Transliterate the *tokens* once, in their name items,
+and every person bearing them inherits it. Per-person transliteration would be
+the same work multiplied by bearer count.
+
+**So the order inside this item is:**
+
+1. Build the name items and give **them** the seven labels — agentically for
+   CJK → English, hand-built tables for English → the other scripts.
+2. Compose each person's labels from the name items they already link to.
+3. Only the residue — names that belong to no name item — needs raw work.
+
 ### How each is built
 
 - **`ja`** — katakana for anything not already Japanese. Ancient Near Eastern
