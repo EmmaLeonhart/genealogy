@@ -211,32 +211,6 @@ def rows(path):
         return list(csv.DictReader(handle))
 
 
-# -- reconcile ---------------------------------------------------------
-
-
-def test_reconcile_writes_the_matches_it_found(ws):
-    assert run(ws, "reconcile") == 0
-
-    matched = rows(ws["out"] / "wikidata" / "matched_p2600.csv")
-    assert [(r["geni_id"], r["qid"]) for r in matched] == [("1", "Q1"), ("2", "Q2")]
-
-
-def test_reconcile_carries_both_sides_of_each_match(ws):
-    run(ws, "reconcile")
-    ada = rows(ws["out"] / "wikidata" / "matched_p2600.csv")[0]
-
-    assert ada["wikidata_label"] == "Ada of Alpha"
-    assert ada["wikidata_description"] == "medieval noblewoman"
-    assert ada["geni_name"] == "Ada Alpha"
-    assert ada["birth_year"] == "1150"
-
-
-def test_reconcile_reports_what_it_did(ws, capsys):
-    run(ws, "reconcile")
-
-    assert "2 of 3 people matched by P2600" in capsys.readouterr().out
-
-
 # -- overlap -----------------------------------------------------------
 
 
@@ -277,37 +251,48 @@ def test_overlap_says_so_when_the_fetched_rows_miss_the_reported_total(ws, capsy
     assert "warning: fetched 3 statements" in capsys.readouterr().err
 
 
-# -- expand ------------------------------------------------------------
+# -- what `reconcile` and `expand` used to leave behind ------------------
+#
+# Both commands were deleted on 2026-08-15: they queried Wikidata live, and
+# `reconcile` searched for people by name, which Emma had ordered removed on
+# 2026-08-12. The four commands below still READ the CSVs they wrote, so the
+# fixture writes those files directly. The rows are exactly what the deleted
+# pair produced against this fake: Ada and Bo matched by P2600, Cy reached by
+# walking from Ada as her child.
 
 
-def test_expand_walks_to_an_unlinked_relative(ws):
-    run(ws, "reconcile")
-    assert run(ws, "expand") == 0
+def seeded(ws):
+    """Write the link files by hand, as `reconcile` and `expand` once did."""
+    out = ws["out"] / "wikidata"
+    out.mkdir(parents=True, exist_ok=True)
 
-    linked = rows(ws["out"] / "wikidata" / "matched_all.csv")
-    by_id = {r["geni_id"]: r for r in linked}
-    assert by_id["3"]["qid"] == "Q3"
-    assert by_id["3"]["source"] == "expansion"
-    assert by_id["1"]["source"] == "P2600"
+    with open(out / "matched_p2600.csv", "w", encoding="utf-8", newline="") as fh:
+        w = csv.writer(fh)
+        w.writerow(["geni_id", "qid", "wikidata_label", "wikidata_description",
+                    "geni_name", "birth_year", "death_year"])
+        w.writerow(["1", "Q1", "Ada of Alpha", "medieval noblewoman",
+                    "Ada Alpha", "1150", ""])
+        w.writerow(["2", "Q2", "Bo of Beta", "", "Bo Beta", "", ""])
 
+    with open(out / "matched_all.csv", "w", encoding="utf-8", newline="") as fh:
+        w = csv.writer(fh)
+        w.writerow(["geni_id", "qid", "source", "geni_name"])
+        w.writerow(["1", "Q1", "P2600", "Ada Alpha"])
+        w.writerow(["2", "Q2", "P2600", "Bo Beta"])
+        w.writerow(["3", "Q3", "expansion", "Cy Alpha"])
 
-def test_expand_records_its_candidates_with_evidence(ws):
-    run(ws, "reconcile")
-    run(ws, "expand")
-
-    candidates = rows(ws["out"] / "wikidata" / "candidates.csv")
-    cy = next(c for c in candidates if c["geni_id"] == "3")
-    assert cy["role"] == "child"
-    assert cy["via_geni_id"] == "1"
-    assert cy["used_to_expand"] == "yes"
+    with open(out / "candidates.csv", "w", encoding="utf-8", newline="") as fh:
+        w = csv.writer(fh)
+        w.writerow(["geni_id", "qid", "role", "via_geni_id", "confidence",
+                    "used_to_expand"])
+        w.writerow(["3", "Q3", "child", "1", "high", "yes"])
 
 
 # -- coverage ----------------------------------------------------------
 
 
 def test_coverage_reports_both_link_sources_separately(ws):
-    run(ws, "reconcile")
-    run(ws, "expand")
+    seeded(ws)
     assert run(ws, "coverage") == 0
 
     text = (ws["reports"] / "wikidata-coverage.md").read_text(encoding="utf-8")
@@ -319,8 +304,7 @@ def test_coverage_reports_both_link_sources_separately(ws):
 
 
 def test_quickstatements_proposes_the_geni_id_for_the_expansion_match(ws):
-    run(ws, "reconcile")
-    run(ws, "expand")
+    seeded(ws)
     assert run(ws, "quickstatements", "--retrieved", "2026-07-30") == 0
 
     line = (ws["out"] / "wikidata" / "add-p2600.qs").read_text(encoding="utf-8").strip()
@@ -334,8 +318,7 @@ def test_quickstatements_proposes_the_geni_id_for_the_expansion_match(ws):
 
 
 def test_crosscheck_reports_agreements_and_gaps(ws, capsys):
-    run(ws, "reconcile")
-    run(ws, "expand")
+    seeded(ws)
     assert run(ws, "crosscheck", "--retrieved", "2026-07-30") == 0
 
     out = capsys.readouterr().out
@@ -346,8 +329,7 @@ def test_crosscheck_reports_agreements_and_gaps(ws, capsys):
 
 
 def test_crosscheck_proposes_a_date_wikidata_lacks(ws):
-    run(ws, "reconcile")
-    run(ws, "expand")
+    seeded(ws)
     run(ws, "crosscheck", "--retrieved", "2026-07-30")
 
     statements = (ws["out"] / "wikidata" / "add-claims.qs").read_text(encoding="utf-8")
@@ -369,8 +351,7 @@ def test_names_measures_the_vocabulary_against_wikidata(ws, capsys):
 
 
 def test_name_links_proposes_links_to_existing_name_items(ws):
-    run(ws, "reconcile")
-    run(ws, "expand")
+    seeded(ws)
     assert run(ws, "name-links", "--retrieved", "2026-07-30") == 0
 
     statements = (ws["out"] / "wikidata" / "add-names.qs").read_text(encoding="utf-8")
@@ -379,8 +360,7 @@ def test_name_links_proposes_links_to_existing_name_items(ws):
 
 
 def test_name_links_leaves_a_name_with_no_item_alone(ws):
-    run(ws, "reconcile")
-    run(ws, "expand")
+    seeded(ws)
     run(ws, "name-links", "--retrieved", "2026-07-30")
 
     report = (ws["out"] / "wikidata" / "add-names.md").read_text(encoding="utf-8")
@@ -404,7 +384,8 @@ def test_the_offline_guard_actually_fires(ws):
 
 
 def test_every_command_went_through_the_seam(ws):
-    for command in ("reconcile", "expand", "coverage", "names"):
+    seeded(ws)
+    for command in ("overlap", "coverage", "names"):
         assert run(ws, command) == 0, command
 
     # Reaching here at all means nothing touched urlopen, and the fake saw the

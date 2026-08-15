@@ -34,7 +34,7 @@ from dataclasses import dataclass, field
 from typing import Iterable
 
 from .model import Person, Tree
-from .reconcile import YEAR_TOLERANCE, YEAR_TOLERANCE_APPROX, _year_of
+from .matching import YEAR_TOLERANCE, YEAR_TOLERANCE_APPROX, year_of
 from .wikidata import WikidataClient
 
 __all__ = [
@@ -274,7 +274,7 @@ def _date_verdict(person: Person, kind: str, theirs: list[str]) -> tuple[str, st
     event = person.events.get(kind)
     our_date = event.date if event else None
     our_year = our_date.year if our_date else None
-    their_years = [y for y in (_year_of(v) for v in theirs) if y is not None]
+    their_years = [y for y in (year_of(v) for v in theirs) if y is not None]
     their_text = ", ".join(str(y) for y in sorted(set(their_years)))
 
     if our_year is None:

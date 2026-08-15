@@ -52,8 +52,9 @@ person with two or three mothers rather than one.
 Consequences, stated because they are load-bearing:
 
 - **No name similarity, ever.** Not as a tiebreak, not as corroboration, not as
-  a "candidate" list for a human. The fuzzy matcher in `reconcile.py` does
-  exactly what this forbids and Emma ordered it removed the same day.
+  a "candidate" list for a human. The fuzzy matcher in `reconcile.py` did
+  exactly what this forbids; Emma ordered it removed the same day and the whole
+  module was deleted on 2026-08-15.
 - **The exact `P2600` join stays** — that is Wikidata stating the Geni ID
   outright, not an inference.
 - Two suspect `P2600` links are **TO ANALYSE**, below.

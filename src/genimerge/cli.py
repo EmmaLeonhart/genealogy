@@ -33,7 +33,6 @@ from . import (
     overlap as overlap_mod,
     paths as paths_mod,
     quickstatements,
-    reconcile,
     remote,
     seeds,
     sources,
@@ -303,128 +302,18 @@ def _cmd_overlap(args: argparse.Namespace) -> int:
     return 0
 
 
-def _cmd_reconcile(args: argparse.Namespace) -> int:
-    ws = Workspace.from_args(args)
-    tree = _load_tree(args.source, ws)
-    client = make_client(ws, args)
-
-    def progress(done: int, total: int) -> None:
-        print(f"  batch {done}/{total}", end="\r", flush=True)
-
-    matches = wikidata.match_by_geni_id(client, tree.people, progress=progress)
-    print(" " * 30, end="\r")
-    matches = wikidata.add_labels(client, matches)
-
-    out_path = ws.wikidata / "matched_p2600.csv"
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-    with open(out_path, "w", encoding="utf-8", newline="") as handle:
-        writer = csv.writer(handle)
-        writer.writerow(["geni_id", "qid", "wikidata_label", "wikidata_description",
-                         "geni_name", "birth_year", "death_year"])
-        for match in sorted(matches, key=lambda m: (m.geni_id, m.qid)):
-            person = tree.people.get(match.geni_id)
-            writer.writerow(
-                [
-                    match.geni_id,
-                    match.qid,
-                    match.label,
-                    match.description,
-                    person.display_name if person else "",
-                    person.birth_year if person else "",
-                    person.death_year if person else "",
-                ]
-            )
-
-    people_matched = len({m.geni_id for m in matches})
-    print(f"wrote {out_path}")
-    print(
-        f"{people_matched} of {len(tree.people)} people matched by P2600 "
-        f"({100.0 * people_matched / len(tree.people):.1f}%); "
-        f"{len(matches)} item links; "
-        f"{client.requests_made} requests, {client.cache_hits} cache hits"
-    )
-    return 0
-
-
 def _read_seed_matches(ws: Workspace) -> dict[str, str]:
-    """The confirmed P2600 matches written by `reconcile`."""
+    """The confirmed P2600 matches, if an older run left the file behind.
+
+    Nothing writes this any more: `reconcile` and `expand` were deleted on
+    2026-08-15. The offline replacement is `out/wikidata/p2600-all.tsv`,
+    read by :func:`_linked_from_pairs`.
+    """
     path = ws.wikidata / "matched_p2600.csv"
     if not path.exists():
         return {}
     with open(path, encoding="utf-8", newline="") as handle:
         return {row["geni_id"]: row["qid"] for row in csv.DictReader(handle)}
-
-
-def _cmd_expand(args: argparse.Namespace) -> int:
-    ws = Workspace.from_args(args)
-    tree = _load_tree(args.source, ws)
-    seeds = _read_seed_matches(ws)
-    if not seeds:
-        print("no P2600 matches found; run `genimerge reconcile` first", file=sys.stderr)
-        return 1
-
-    client = make_client(ws, args)
-    result = reconcile.expand_from_matches(
-        client,
-        tree,
-        seeds,
-        max_rings=args.max_rings,
-        progress=lambda ring, added: print(f"  ring {ring}: +{added} matched", flush=True),
-    )
-
-    out_dir = ws.wikidata
-    out_dir.mkdir(parents=True, exist_ok=True)
-
-    candidates = list(result.candidates)
-
-    if args.search or args.api_search:
-        targets = reconcile.search_targets(tree, result.confirmed)
-        print(f"looking up {len(targets)} unmatched people by name")
-
-        def note(done: int, total: int) -> None:
-            print(f"  batch {done}/{total}", end="\r", flush=True)
-
-        if args.api_search:
-            # The search API is rate-limited to roughly one request every 20
-            # seconds for this corpus, so it is opt-in only.
-            candidates += reconcile.search_candidates(
-                client, tree, targets, result.confirmed, progress=note
-            )
-        else:
-            candidates += reconcile.label_candidates(
-                client, tree, targets, result.confirmed, progress=note
-            )
-        print()
-
-    with open(out_dir / "candidates.csv", "w", encoding="utf-8", newline="") as handle:
-        writer = csv.writer(handle)
-        writer.writerow(reconcile.CANDIDATE_COLUMNS)
-        for candidate in sorted(candidates, key=lambda c: (-c.name_score, c.geni_id)):
-            writer.writerow(candidate.to_row())
-
-    with open(out_dir / "matched_all.csv", "w", encoding="utf-8", newline="") as handle:
-        writer = csv.writer(handle)
-        writer.writerow(["geni_id", "qid", "source", "geni_name"])
-        for geni_id, qid in sorted(result.confirmed.items()):
-            person = tree.people.get(geni_id)
-            writer.writerow(
-                [
-                    geni_id,
-                    qid,
-                    SOURCE_EXACT if geni_id in seeds else SOURCE_EXPANSION,
-                    person.display_name if person else "",
-                ]
-            )
-
-    gained = len(result.confirmed) - len(seeds)
-    print(f"wrote {out_dir / 'candidates.csv'} ({len(candidates)} proposals)")
-    print(
-        f"{len(result.confirmed)} of {len(tree.people)} people now linked "
-        f"({100.0 * len(result.confirmed) / len(tree.people):.1f}%): "
-        f"{len(seeds)} by P2600 + {gained} by expansion over {result.rings} rings"
-    )
-    print(f"{client.requests_made} requests, {client.cache_hits} cache hits")
-    return 0
 
 
 def _cmd_coverage(args: argparse.Namespace) -> int:
@@ -452,7 +341,9 @@ def _cmd_coverage(args: argparse.Namespace) -> int:
                 )
 
     if not seeds and not expansion:
-        print("no matches found; run `genimerge reconcile` first", file=sys.stderr)
+        print("no matches found: out/wikidata/matched_p2600.csv is absent and "
+              "nothing writes it since `reconcile` was deleted. Use the P2600 "
+              "map at out/wikidata/p2600-all.tsv instead.", file=sys.stderr)
         return 1
 
     text = coverage.render_markdown(
@@ -473,7 +364,8 @@ def _cmd_quickstatements(args: argparse.Namespace) -> int:
 
     all_path = ws.wikidata / "matched_all.csv"
     if not all_path.exists():
-        print("run `genimerge expand` first", file=sys.stderr)
+        print("no out/wikidata/matched_all.csv: `expand` wrote it and was "
+              "deleted on 2026-08-15", file=sys.stderr)
         return 1
 
     # Structure-confirmed links only. Name-search proposals live in
@@ -956,10 +848,10 @@ def _read_all_matches(ws: Workspace) -> dict[str, str]:
 def _linked_from_pairs(ws: Workspace, tree) -> dict[str, str]:
     """``geni_id -> qid`` for our people, straight from the P2600 map.
 
-    The online path gets this from `reconcile`'s `matched_all.csv`, which also
-    holds expansion matches this cannot see. What it does hold is every *exact*
-    P2600 link, which is the population `crosscheck` compares and the only one
-    `build_claim_batch` will emit statements for.
+    This is now the only path. `reconcile` and `expand`, which wrote
+    `matched_all.csv` and its expansion matches, were deleted on 2026-08-15.
+    The map holds every *exact* P2600 link, which is the population
+    `crosscheck` compares and the only one `build_claim_batch` emits for.
 
     A Geni ID claimed by more than one item is skipped, not chosen between —
     the rule `reports/wikidata-doubles.md` exists to enforce.
@@ -976,11 +868,12 @@ def _cmd_crosscheck(args: argparse.Namespace) -> int:
     tree = _load_tree(args.source, ws)
 
     if args.offline:
-        # `queue.md` 2.B. Both halves of this command reached the network: the
-        # claims themselves, and `matched_all.csv`, which only `reconcile`
-        # writes. Offline, the claims come from the downloaded store and the
-        # links come from the P2600 map — so the report that measures Geni
-        # against Wikidata no longer has to ask Wikidata anything.
+        # Both halves of this command used to reach the network: the claims
+        # themselves, and `matched_all.csv`, which only `reconcile` wrote.
+        # Offline, the claims come from the downloaded store and the links
+        # come from the P2600 map — so the report that measures Geni against
+        # Wikidata asks Wikidata nothing. Since `reconcile` was deleted on
+        # 2026-08-15 this is the only branch with an input.
         pairs_file = ws.wikidata / "p2600-all.tsv"
         index_path = args.index or wikistore.default_index_path(ws.out)
         for path, hint in (
@@ -1007,7 +900,8 @@ def _cmd_crosscheck(args: argparse.Namespace) -> int:
     else:
         linked = _read_all_matches(ws)
         if not linked:
-            print("no linked people found; run `genimerge reconcile` and `expand` first",
+            print("no linked people found: `reconcile`/`expand` were deleted, so "
+              "nothing writes matched_all.csv. Use --offline where available.",
                   file=sys.stderr)
             return 1
         exact = set(_read_seed_matches(ws))
@@ -1043,7 +937,8 @@ def _cmd_name_links(args: argparse.Namespace) -> int:
     tree = _load_tree(args.source, ws)
     linked = _read_all_matches(ws)
     if not linked:
-        print("no linked people found; run `genimerge reconcile` and `expand` first",
+        print("no linked people found: `reconcile`/`expand` were deleted, so "
+              "nothing writes matched_all.csv. Use --offline where available.",
               file=sys.stderr)
         return 1
 
@@ -1469,41 +1364,6 @@ def build_parser() -> argparse.ArgumentParser:
         help="where to write (default: <reports>/wikidata-overlap.md)"
     )
     p_over.set_defaults(func=_cmd_overlap)
-
-    p_rec = sub.add_parser(
-        "reconcile",
-        help="match people to Wikidata items by P2600 (Geni.com profile ID)",
-        description="Responses are cached under out/wikidata/cache; delete it to refresh.",
-    )
-    p_rec.add_argument("--source", type=Path, default=None, help="a GEDCOM to read instead of merging")
-    p_rec.add_argument(
-        "--delay", type=float, default=1.0, help="seconds between requests (default: 1.0)"
-    )
-    p_rec.set_defaults(func=_cmd_reconcile)
-
-    p_exp = sub.add_parser(
-        "expand",
-        help="walk outward from the P2600 matches along family links",
-        description=(
-            "Proposes further Geni-to-Wikidata links from relationship structure. "
-            "Nothing is written to Wikidata; candidates.csv is for human review."
-        ),
-    )
-    p_exp.add_argument("--source", type=Path, default=None, help="a GEDCOM to read instead of merging")
-    p_exp.add_argument("--delay", type=float, default=1.0, help="seconds between requests")
-    p_exp.add_argument("--max-rings", type=int, default=12, help="how far to walk (default: 12)")
-    p_exp.add_argument(
-        "--search",
-        action="store_true",
-        help="also look unmatched people up by name in Wikidata's label index",
-    )
-    p_exp.add_argument(
-        "--api-search",
-        action="store_true",
-        help="use the full-text search API instead: better recall, but the "
-        "endpoint throttles it to roughly one name every 20 seconds",
-    )
-    p_exp.set_defaults(func=_cmd_expand)
 
     p_front = sub.add_parser(
         "frontier",
@@ -2008,8 +1868,8 @@ def build_parser() -> argparse.ArgumentParser:
         help=(
             "read the claims from the downloaded store and the links from "
             "out/wikidata/p2600-all.tsv instead of asking Wikidata. Covers the "
-            "exact P2600 links only - reconcile's expansion matches are not in "
-            "the map - and sends nothing over the network."
+            "exact P2600 links only and sends nothing over the network. The "
+            "online branch has had no input since `reconcile` was deleted."
         ),
     )
     p_cross.add_argument("--store", type=Path, default=None, help=f"the item store (default: {WIKIDATA_STORE})")

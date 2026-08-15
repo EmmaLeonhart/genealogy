@@ -134,9 +134,7 @@ export PYTHONPATH=src                # on PowerShell: $env:PYTHONPATH="src"
 python -m genimerge inventory        # measure the exports  -> reports/inventory.md
 python -m genimerge merge            # merge them           -> out/merged.ged
 python -m genimerge export           # canonical dataset    -> out/people.jsonl
-python -m genimerge reconcile        # match by P2600       -> out/wikidata/
 python -m genimerge overlap          # us vs all of P2600   -> reports/wikidata-overlap.md
-python -m genimerge expand --search  # propose more links   -> out/wikidata/candidates.csv
 python -m genimerge coverage         # what is linked       -> reports/wikidata-coverage.md
 python -m genimerge consistency      # dates that contradict -> reports/consistency.md
 python -m genimerge frontier         # where the tree stops -> reports/frontier.md
@@ -194,7 +192,7 @@ Generated, and worth reading in this order:
 - `reports/inventory.md` — what is in each export, and how little they overlap
 - `reports/merge.md` — what merged, what conflicted, what did not resolve
 - `reports/wikidata-coverage.md` — how much of the tree reaches Wikidata
-- `reports/wikidata-overlap.md` — the same join counted from *both* sides: how much of our tree Wikidata knows, and how much of Wikidata's Geni-linked population we hold. `coverage` and `reconcile` ask about the IDs we already have and so can only answer the first; `overlap` fetches every P2600 statement, which is the only way to see an item whose Geni profile no export has reached
+- `reports/wikidata-overlap.md` — the same join counted from *both* sides: how much of our tree Wikidata knows, and how much of Wikidata's Geni-linked population we hold. `coverage` asks about the IDs we already have and so can only answer the first; `overlap` fetches every P2600 statement, which is the only way to see an item whose Geni profile no export has reached
 - `reports/consistency.md` — dates in the tree that contradict each other, split into impossible and implausible
 - `reports/frontier.md` — where the tree stops: parentless people, components, generational depth
 - `reports/descendants.md` — the downward counterpart to `frontier.md`: people with few but **not zero** lines of descent running down from them, so the line demonstrably continues and we have barely followed it, ranked inside birth-year bands by how few generations down we have walked. It counts **descent paths, not distinct people** — `paths(p) = Σ over children (1 + paths(child))` — so somebody reached down two lines counts twice, because two lines is what an export would follow. The axis `density.md` does not have — it is about *when*, which is what the `Descendants` export campaign is for

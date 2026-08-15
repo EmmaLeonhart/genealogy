@@ -29,7 +29,7 @@ from dataclasses import dataclass, field
 from typing import Callable, Iterable
 
 from .model import Tree
-from .reconcile import _year_of
+from .matching import year_of
 from .wikistore import StoreReader
 
 __all__ = [
@@ -213,10 +213,10 @@ def parent_birth_years(reader: StoreReader, findings: Iterable[Finding]) -> dict
             if snak.get("snaktype") != "value":
                 continue
             value = (snak.get("datavalue") or {}).get("value")
-            # Stored items carry the whole time object; `_year_of` takes the
+            # Stored items carry the whole time object; `year_of` takes the
             # literal, which is the `time` field of it.
             literal = value.get("time") if isinstance(value, dict) else value
-            year = _year_of(literal if isinstance(literal, str) else None)
+            year = year_of(literal if isinstance(literal, str) else None)
             if year is not None:
                 break
         years[entity["id"]] = year

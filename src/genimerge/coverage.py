@@ -23,7 +23,7 @@ from dataclasses import dataclass, field
 
 from .frontier import descendant_counts
 from .model import Tree
-from .reconcile import distance_from_matched
+from .matching import distance_from_matched
 
 __all__ = ["CoverageInput", "render_markdown"]
 

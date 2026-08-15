@@ -90,8 +90,6 @@ COMMANDS = [
     "merge",
     "export",
     "overlap",
-    "reconcile",
-    "expand",
     "frontier",
     "consistency",
     "seeds",
@@ -366,29 +364,30 @@ def test_an_empty_exports_dir_fails_with_a_useful_message(tmp_path, capsys):
     assert "no .ged files" in capsys.readouterr().err
 
 
-def test_expand_refuses_to_run_before_reconcile(workspace, capsys):
-    assert run(workspace, "expand") == 1
-    assert "run `genimerge reconcile` first" in capsys.readouterr().err
+# `reconcile` and `expand` were deleted on 2026-08-15 (Emma: the name-search
+# matcher went in with "zero consent from me"). The four commands that used to
+# read their output still refuse to run without it, which is now the permanent
+# state of the online branch rather than a "run this first" hint.
 
 
-def test_quickstatements_refuses_to_run_before_expand(workspace, capsys):
+def test_quickstatements_refuses_to_run_without_matches(workspace, capsys):
     assert run(workspace, "quickstatements") == 1
-    assert "expand" in capsys.readouterr().err
+    assert "matched_all.csv" in capsys.readouterr().err
 
 
 def test_crosscheck_refuses_to_run_before_there_are_matches(workspace, capsys):
     assert run(workspace, "crosscheck") == 1
-    assert "reconcile" in capsys.readouterr().err
+    assert "matched_all.csv" in capsys.readouterr().err
 
 
 def test_name_links_refuses_to_run_before_there_are_matches(workspace, capsys):
     assert run(workspace, "name-links") == 1
-    assert "reconcile" in capsys.readouterr().err
+    assert "matched_all.csv" in capsys.readouterr().err
 
 
 def test_coverage_refuses_to_run_before_there_are_matches(workspace, capsys):
     assert run(workspace, "coverage") == 1
-    assert "reconcile" in capsys.readouterr().err
+    assert "matched_p2600.csv" in capsys.readouterr().err
 
 
 # -- merge reports connectivity ----------------------------------------
@@ -490,7 +489,7 @@ def test_the_redirected_report_describes_the_redirected_merge(workspace, tmp_pat
 # What this adds is the README's stated guarantee, which is adjacent to that bug
 # rather than the same thing.
 #
-# Five of the eleven commands. `reconcile`, `expand`, `coverage`, `crosscheck`,
+# Four of the remaining commands. `coverage`, `crosscheck`,
 # `names` and `name-links` need Wikidata and this suite is offline on purpose —
 # they are also the ones that write cache files, so they are the likelier place
 # for a stray path. Uncovered, and said so rather than implied.

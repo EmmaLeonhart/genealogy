@@ -523,6 +523,24 @@ file parses with zero unparsed entries. Entries are grouped by "one Geni profile
 and one Wikidata item, greedily" — *not* by blank lines, which was tried and
 split one of Emma's entries into two unparsable halves.
 
+**`reconcile` is deleted, and name matching does not come back.** Emma ordered
+the name-search matcher removed on 2026-08-12 — *"no fucking clue why there's a
+fuzzy matcher that sounds like something you made with zero consent from me"* —
+and on 2026-08-15 chose to delete the whole module rather than strip it, along
+with `genimerge reconcile` and `genimerge expand`. It held a live Wikidata
+client, which is the other reason: a command that queries on a keystroke is how
+the 2026-08-07 rate-limit incident happened. The four offline pieces that other
+modules still need moved to `genimerge.matching` — two year tolerances,
+`year_of` for **Wikidata** time literals, and `distance_from_matched`. Nothing
+in `matching` makes a request and nothing in it compares names.
+
+`out/wikidata/matched_p2600.csv`, `matched_all.csv` and `candidates.csv` were
+its outputs and nothing writes them now; `coverage`, and the online branches of
+`crosscheck`, `name-links` and `quickstatements`, read them and therefore have
+no input. The offline replacement is the P2600 map, `out/wikidata/p2600-all.tsv`,
+plus the downloaded item store — which is what `crosscheck --offline` already
+uses.
+
 **Stdlib only.** `urllib` covers the Wikidata SPARQL endpoint. Add a dependency
 only when the stdlib genuinely cannot do the job.
 
