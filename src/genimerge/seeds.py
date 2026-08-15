@@ -289,7 +289,17 @@ __all__ = [
 #: out of the earlier take; the ball came back 4940 rather than 4868 with him in
 #: it. Consistent with the ceiling tracking the profiles she has added, and not
 #: evidence of a rule about the number.
-GENI_EXPORT_CAP = 4940
+#: **2026-08-15, later — 4944**, a `BloodTree` export seeded on **Jair IV**
+#: (`6000000178918541826`), a Samaritan High Priest:
+#: `exports/samaritans/export-BloodTree-6000000178918541826.ged`. A step of
+#: **4** over the reading above. Four exports arrived in that sitting — a
+#: `Forest` of Sanballat's daughter and a `BloodTree` of
+#: `6000000178794141887` at **4940** each, an `Ancestors` of `NN /Cohen/` at
+#: **348**, and this one — so three styles and four seeds sat on 4940/4944
+#: within minutes, the same style-and-seed independence every earlier flat run
+#: showed. The `Ancestors` take holding 348 exhausted its component rather than
+#: reaching the ceiling, which is the ordinary reason a reading comes in low.
+GENI_EXPORT_CAP = 4944
 
 #: The step between reading this report and running an export.
 #:
