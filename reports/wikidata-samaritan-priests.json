@@ -361,69 +361,6 @@
   ]
  },
  {
-  "id": "create_individual:6000000178917300876",
-  "type": "create_individual",
-  "priority": false,
-  "subject": {
-   "qid": null,
-   "geni_id": "6000000178917300876"
-  },
-  "requires": [
-   "create_individual:6000000178913855067"
-  ],
-  "anchor": null,
-  "labels": {
-   "en": "Jonathan I",
-   "mul": "Jonathan I"
-  },
-  "descriptions": {
-   "en": "Samaritan High Priest"
-  },
-  "statements": [
-   {
-    "property": "P31",
-    "value": "Q5",
-    "references": [
-     {
-      "property": "P2600",
-      "value": "6000000178917300876"
-     }
-    ]
-   },
-   {
-    "property": "P2600",
-    "value": "6000000178917300876",
-    "references": []
-   },
-   {
-    "property": "P21",
-    "value": "Q6581097",
-    "references": [
-     {
-      "property": "P2600",
-      "value": "6000000178917300876"
-     }
-    ]
-   }
-  ],
-  "links": [
-   {
-    "property": "P22",
-    "value": "@create_individual:6000000178913855067",
-    "references": [
-     {
-      "property": "P2600",
-      "value": "6000000178917300876"
-     },
-     {
-      "property": "P2600",
-      "value": "6000000178913855067"
-     }
-    ]
-   }
-  ]
- },
- {
   "id": "create_individual:6000000178918426863",
   "type": "create_individual",
   "priority": false,
@@ -431,9 +368,7 @@
    "qid": null,
    "geni_id": "6000000178918426863"
   },
-  "requires": [
-   "create_individual:6000000178917300876"
-  ],
+  "requires": [],
   "anchor": null,
   "labels": {
    "en": "Jair I ben Jonathan",
@@ -472,7 +407,7 @@
   "links": [
    {
     "property": "P22",
-    "value": "@create_individual:6000000178917300876",
+    "value": "Q20502598",
     "references": [
      {
       "property": "P2600",
@@ -3511,69 +3446,6 @@
   ]
  },
  {
-  "id": "create_individual:6000000178918027844",
-  "type": "create_individual",
-  "priority": false,
-  "subject": {
-   "qid": null,
-   "geni_id": "6000000178918027844"
-  },
-  "requires": [
-   "create_individual:6000000178918192840"
-  ],
-  "anchor": null,
-  "labels": {
-   "en": "Baba Rabba",
-   "mul": "Baba Rabba"
-  },
-  "descriptions": {
-   "en": "Samaritan High Priest"
-  },
-  "statements": [
-   {
-    "property": "P31",
-    "value": "Q5",
-    "references": [
-     {
-      "property": "P2600",
-      "value": "6000000178918027844"
-     }
-    ]
-   },
-   {
-    "property": "P2600",
-    "value": "6000000178918027844",
-    "references": []
-   },
-   {
-    "property": "P21",
-    "value": "Q6581097",
-    "references": [
-     {
-      "property": "P2600",
-      "value": "6000000178918027844"
-     }
-    ]
-   }
-  ],
-  "links": [
-   {
-    "property": "P22",
-    "value": "@create_individual:6000000178918192840",
-    "references": [
-     {
-      "property": "P2600",
-      "value": "6000000178918027844"
-     },
-     {
-      "property": "P2600",
-      "value": "6000000178918192840"
-     }
-    ]
-   }
-  ]
- },
- {
   "id": "create_individual:6000000178913798001",
   "type": "create_individual",
   "priority": false,
@@ -3581,9 +3453,7 @@
    "qid": null,
    "geni_id": "6000000178913798001"
   },
-  "requires": [
-   "create_individual:6000000178918027844"
-  ],
+  "requires": [],
   "anchor": null,
   "labels": {
    "en": "Akabon III",
@@ -3622,7 +3492,7 @@
   "links": [
    {
     "property": "P22",
-    "value": "@create_individual:6000000178918027844",
+    "value": "Q2911644",
     "references": [
      {
       "property": "P2600",

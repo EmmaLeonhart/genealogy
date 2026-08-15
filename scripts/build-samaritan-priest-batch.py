@@ -91,6 +91,17 @@ def main() -> int:
     print(f"{len(line)} profiles in the pre-1624 line")
 
     # Anything already on Wikidata is not a creation. Joined on the Geni ID.
+    #
+    # **Two sources, and missing the second one was a real bug.** The store index
+    # only knows a link once *Wikidata* states the `P2600`. Emma also writes the
+    # Wikidata URL onto the **Geni profile**, which is a hand-made identity claim
+    # that Wikidata has not been told about yet — and those were invisible here.
+    # The batch therefore proposed creating `Jonathan I` (`Q20502598`) and
+    # `Baba Rabba` (`Q2911644`), both of which already exist and both of which
+    # she had linked herself. Emma, 2026-08-16: *"I literally have an entire file
+    # dedicated to samaritan high priest qids that you ignored."* Duplicate items
+    # are the one failure mode here that damages Wikidata rather than wasting a
+    # run, so this reads both sources.
     linked = {}
     if INDEX.exists():
         conn = sqlite3.connect(INDEX)
@@ -99,7 +110,21 @@ def main() -> int:
                 "select qid from geni where geni_id=?", (g,)).fetchone()
             if row:
                 linked[g] = row[0]
-    print(f"{len(linked)} of them already carry a Wikidata item")
+    from_wikidata = len(linked)
+
+    pairs_csv = REPO / "reports" / "geni-wikidata-pairs.csv"
+    embedded = {}
+    if pairs_csv.exists():
+        with pairs_csv.open(encoding="utf-8", newline="") as fh:
+            for row in csv.DictReader(fh):
+                g, q = row.get("geni_id", ""), row.get("qid", "")
+                if g in line and q and g not in linked:
+                    embedded[g] = q
+    linked.update(embedded)
+    print(f"{from_wikidata} already carry a Wikidata item; "
+          f"{len(embedded)} more are linked by a QID on the Geni profile")
+    for g, q in sorted(embedded.items()):
+        print(f"  NOT creating {people[g]['name']!r} - it is {q}")
 
     # Order parents before children so `requires` is satisfiable in sequence.
     ordered, placed = [], set()
