@@ -997,15 +997,27 @@ reason, analyze whether the family relationships of the Samaritans are correct?
 Cuz you shouldn't be doing that. I don't want you to be doing that. The family
 relationships of the Samaritans are done."*
 
-She built that tree on Geni by hand. Parent, child and spouse links among the
-Samaritan priests are **her data, already correct**, and checking them is not
-work — it is the export-analysis reflex one section down, wearing a different
-costume.
+She built that tree on Geni by hand. **She also knows it contains errors, and has
+decided they stay** — 2026-08-15: *"I know that the Samaritans have errors in
+their relationships but my perspective here is it's good enough and we're moving
+on."* So finding one is not a discovery and reporting one is not a service. This
+is the export-analysis reflex one section down, wearing a different costume.
 
 **What this does not forbid.** Work *about* those people that is not an audit of
 their relationships: giving them Wikidata items, normalising their office and
 succession, classifying their **names** — `ben Yitzhaq` is a patronymic and that
 is name work, not a relationship check.
+
+**Two name forms the Samaritans use that the classifier does not yet handle**,
+raised by Emma 2026-08-15 and going into her own name-modelling document rather
+than being guessed at here:
+
+- **Ordinal patronymics** — `Yitzhaq I ben Tsedaka`, `Tabia III ben Yitzhaq ben
+  Abram`. The ordinal sits between the given name and the patronymic, and it is
+  part of how the person is named rather than decoration to strip.
+- **Chained patronymics** — `Yaacob II ben Uzzi ben Yaacob ben Aaharon` is four
+  generations in one string. `classify-patronymics.py` reads only the first
+  `ben X`, so the grandfather and great-grandfather are invisible to it.
 
 **How it went wrong:** a stale queue item said Wadah Cohen's father was missing.
 The right move was to notice the item was stale and delete it. Instead the
