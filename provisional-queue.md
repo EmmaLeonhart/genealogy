@@ -56,19 +56,44 @@ tokens. What it settled, so it does not get re-litigated:
 that is where the ratio flips, not because it was chosen. Worth Emma's eye before
 anything is generated from it.
 
-## 2 · Show both relationship-label populations, then ask
+## 2 · Relationship labels — SETTLED 2026-08-15, ready to generate
 
-Emma chose *"show me both populations first and do an ask-user question on it"*.
-Build the CSV of what the generated labels would actually look like, for:
+`reports/relationship-label-preview.md` showed both populations and Emma decided
+on the rows. **26,281 people carry a placeholder given name.**
 
-- **bare `NN`** — no surname at all
-- **`NN <surname>`** — 10,362 records carrying a real surname
+**Who gets a generated label: everyone with a placeholder given name.** No
+filter on whether they have a surname, and **no filter on whether the surname is
+repeated inside the generated label** — the 331 cases where `NN Kalf` becomes
+`son of Anders Kalf` are generated, because the label still carries a given name
+the `mul` label does not. Her two earlier answers pointed opposite ways on this;
+shown the actual rows, she chose to generate.
 
-**What she has already decided, so do not re-ask it:** *"the multi-language
-labels keep the NN surname"* — `mul` stays `NN` or `NN <surname>`. The
-per-language labels are the generated relationship ones. And: *"if the generated
-name will contain the surname, then we do the generated name, but the NN surname
-is kept there."*
+**The surname is preserved, and the 36% is the reason.** A relative has a real
+name for **69%** of bare-`NN` people but only **36%** of `NN <surname>` people.
+Emma read that correctly and I had it backwards: *"the surname ones being badly
+connected is kind of evidence in favour of the fact that we need to keep the
+surname."* For that population the relationship label usually **cannot** be
+built, so the surname is the only informative thing they have. `mul` stays `NN`
+or `NN <surname>`.
+
+**Precedence, one hop:** parent (father, then mother), spouse, child →
+`daughter of Joe`, `wife of Carl`, `mother of Joseph`.
+
+**Two rules from the preview, both hers:**
+
+- **A redacted or placeholder relative is skipped** and the precedence falls
+  through to the next one, trying every spouse and child rather than only the
+  first. This removed all 2,730 labels reading *"husband of `<private>` Gaya
+  Pereira"*. Only 1,052 of the 7,654 affected people (13%) recover a label from a
+  later relative — for the rest the skip costs the label outright.
+- **A surname that is itself placeholder vocabulary collapses to bare `NN`** —
+  `NN ???`, `NN NN`, `NN N.N.`, `NN Unknown`. 351 people.
+
+**Unknown sex takes the neutral form** (`child of`, `spouse of`), 127 cases. No
+gender is inferred to make a label read better.
+
+**Yield:** 14,351 of the 26,281 get a one-hop label — 13,140 bare `NN` and 1,211
+with a surname.
 
 ## 3 · Label languages: English, Japanese, Chinese, and `mul`
 
@@ -100,3 +125,19 @@ Emma can download in one click. So it sits here rather than being forced.
 **Unblock:** download it to `~/Downloads` and it gets filed and merged like any
 other export. Per `CLAUDE.md`, where it goes under `exports/` is **her call** —
 and if the destination path already exists, stop rather than overwrite.
+
+## 5 · Multi-hop relationship labels — parked at the tail
+
+Emma, 2026-08-15: *"Put this at the end of the provisional queue… we'll work on
+this later."* Her sketch of the ordering, extending the one-hop precedence rather
+than replacing it:
+
+**child-of → spouse-of → parent-of → grandchild-of → sibling / nephew / uncle.**
+
+**Measured, so the size is known before it is built:** of the **11,930** people
+with no one-hop label, **3,604 (30%) have a named relative two hops out** — 2,020
+via a grandfather, 1,449 a grandmother, 135 a grandchild. So it is present in the
+data and worth about a third of what one hop leaves behind.
+
+Sibling, uncle and nephew need the family graph rather than the derived CSVs, so
+that part waits on the re-merge.
