@@ -189,6 +189,47 @@ def _assert_wikidata_qid(value: str, where: str) -> str:
         raise SystemExit(f"{where}: {value!r} is not a QID")
     return value
 
+#: **Sex from the graph, when order.life's own column is unusable.**
+#:
+#: `Q1`/`Q153721` is "Aster, Goddess of Alpha" and appears in the sex column of
+#: 40 people; 3,081 more are blank. Emma, 2026-08-14: *"Sex = Q1 is an error, but
+#: it is not an error that means all the data is bad. I believe you can literally
+#: just figure out the sex."*
+#:
+#: Two inferences, both from recorded relationships rather than from names:
+#:
+#:   * every co-parent of every child is female  -> this person is male
+#:   * every recorded spouse is female           -> this person is male
+#:
+#: and the mirror of each. Unanimity is required: a mixed set resolves nothing.
+#: This is evidence, not a heuristic about naming, which is the line this repo
+#: draws everywhere else.
+#:
+#: It recovers 2 of the 18 Aster-sexed parents. The other 16 are a single-parent
+#: Japanese descent chain with no co-parents and no spouses, so nothing in the
+#: graph separates father from mother for them - their Wikidata items would, and
+#: none of those items are in the local store.
+def infer_sex(q, persons, kids, parents_of, spouses):
+    known = {"Q153718": OL_MALE, "Q153719": OL_FEMALE}
+
+    def sex_of(p):
+        return known.get((persons.get(p, {}).get("sex") or "").strip())
+
+    co = {sex_of(o) for c in kids.get(q, ()) for o in parents_of.get(c, ())
+          if o != q}
+    co.discard(None)
+    if co == {OL_FEMALE}:
+        return OL_MALE, "co-parent is female"
+    if co == {OL_MALE}:
+        return OL_FEMALE, "co-parent is male"
+    sp = {sex_of(s) for s in spouses.get(q, ())}
+    sp.discard(None)
+    if sp == {OL_FEMALE}:
+        return OL_MALE, "spouse is female"
+    if sp == {OL_MALE}:
+        return OL_FEMALE, "spouse is male"
+    return None, ""
+
 def _rel(q, wqid, prop, value, ref, other, persons, gaiad):
     return {
         "id": f"add_relationship:{wqid}:{prop}:{value}",
@@ -270,6 +311,7 @@ def main() -> int:
 
     batch, summary, skipped = [], {}, []
     unresolved: list[dict] = []
+    inferred: list[dict] = []
     #: order.life qid -> (wikidata qid, geni id or "") for everyone who has an
     #: item on Wikidata. Their edges are the `add_relationship` source.
     rel_candidates: dict[str, tuple[str, str]] = {}
@@ -361,6 +403,19 @@ def main() -> int:
                 continue                  # parent has no item to point at
             psex = (persons.get(parent, {}).get("sex") or "").strip()
             prop = {OL_MALE: "P22", OL_FEMALE: "P25"}.get(psex)
+            why = ""
+            if not prop:
+                guess, why = infer_sex(parent, persons, children_of, parents_of,
+                                       spouses)
+                prop = {OL_MALE: "P22", OL_FEMALE: "P25"}.get(guess)
+                if prop:
+                    inferred.append({
+                        "parent_orderlife_qid": parent,
+                        "parent": persons.get(parent, {}).get("label", ""),
+                        "recorded_sex": psex or "(blank)",
+                        "inferred": "male" if guess == OL_MALE else "female",
+                        "property": prop, "because": why,
+                    })
             if not prop:
                 # **Do not drop the edge.** Wikidata has only P22 father and P25
                 # mother, so an unresolved parent sex means the PROPERTY cannot
@@ -411,6 +466,14 @@ def main() -> int:
             w.writerow([k, TIERS.get(k, ""), n])
             print(f"  tier {TIERS.get(k, '-'):>2}  {n:>7,}  {k}")
     print(f"wrote {s}")
+
+    if inferred:
+        i = REPO / "reports" / "orderlife-sex-inferred.csv"
+        with i.open("w", encoding="utf-8", newline="") as fh:
+            w = csv.DictWriter(fh, fieldnames=list(inferred[0]))
+            w.writeheader()
+            w.writerows(inferred)
+        print(f"wrote {i} ({len(inferred):,} rows) - sex recovered from the graph")
 
     if unresolved:
         u = REPO / "reports" / "orderlife-parent-sex-unresolved.csv"

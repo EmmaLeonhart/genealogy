@@ -171,11 +171,22 @@ Nakui no Atai → Yukitei no Atai → Yamato no Tehiko — plus `Ante Adam →
 Y-Chromosomal Adam`. A guard on one *column* deleted fourteen generations of
 *relationships*.
 
-And the value it tripped on was not junk. `Q1` and `Q153721` are both **"Aster,
-Goddess of Alpha"** — a third value in order.life's own sex scheme, beside
-`Q153718` Male and `Q153719` Female. Across all 106,909 persons: 72,575 male,
-31,213 female, 3,081 blank, 37 Aster, 3 `Q153721`. This file previously called it
-"Aster in the sex column", dismissing a category rather than reading it.
+**`Q1` in the sex column is an error, and it is a fixable one.** Emma,
+2026-08-14: *"Q1 is not a third gender, it is an error, but it is an error that
+can be clearly fixed on all of the items that have it."* An earlier draft of this
+file called it a third value in order.life's scheme because `Q1`'s *label* is
+"Aster, Goddess of Alpha" — reading what the item is instead of what the column
+means. It is a bad pointer, not a category.
+
+It affects **40 people**: 37 with `Q1` and 3 with `Q153721`, against 72,575 male,
+31,213 female and 3,081 blank. All 40 are listed in
+`reports/orderlife-sex-q1.csv` with their parents, children and spouses.
+
+**39 of the 40 carry a Wikidata QID**, so the sex is directly recoverable from
+their own Wikidata items — none of which are in the local store. Only `Huzziya I
+King of the Hittites` has no QID at all. Two more resolve from the graph today:
+`DoHwa` is female (co-parent and spouse are male) and `Asotsuhime no Mikoto` the
+same.
 
 **Now emitted as `P22_or_P25` with `needs: "parent sex unresolved"`**, listed in
 `reports/orderlife-parent-sex-unresolved.csv`. Wikidata has only father and
