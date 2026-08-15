@@ -54,7 +54,7 @@ Emma actually said, in order, including the corrections:
 
     C:/Users/Emma/.claude/projects/C--Users-Emma-Documents-GitHub-geni/*.jsonl
 
-**23 files, 67 MB, one per session, going back to at least 2026-08-11.** Each line
+**23 files, 67 MB, one per session, going back to 2026-08-01.** Each line
 is a JSON object; a user turn has `message.role == "user"` and the text in
 `message.content`. Read them **newest first by mtime** and stop when the material
 stops being new — a week or more of history is in scope, and the older files are
