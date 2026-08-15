@@ -123,52 +123,48 @@ it, rather than after midnight.
 
 ---
 
-## 1 · Merge the two trees structurally — STARTED, showing cases
+## 1 · The structural merge produced its two outputs — review them
 
-**Emma queued this for midnight and it is running as a walk, not a pipeline.**
-`scripts/walk-structural-merge.py` prints lines and writes nothing;
-`CLAUDE.md` § *How this project works now* says the rule comes out of the cases.
+`scripts/walk-structural-merge.py --all`, run 2026-08-16 over all **12,620
+anchors** (people holding both a Geni ID and a QID with a recorded parent), ten
+generations up.
 
-**First three lines shown 2026-08-16.** 12,620 people hold both a Geni ID and a
-QID and have a recorded parent — those are the anchors. Six generations up the
-Bonaparte line gave **10 AGREE then 2 MERGE**, the merges being people with no
-QID on our side sitting in the identical family position on Wikidata:
-`Maria da Bozzi` ↔ `Maria Colonna di Bozzi`, `Carlo Maria Buonaparte` ↔
-`Carlo Maria Buonaparte`.
+| outcome | positions |
+| --- | ---: |
+| `AGREE` — same person, already the same item | 52,977 |
+| `GENI ONLY` — we have a parent, Wikidata does not | 52,731 |
+| `MERGE` — both sides, ours has no QID | 20,265 |
+| `WD ONLY` — Wikidata has a parent, we do not | 8,064 |
+| ambiguous — Wikidata names more than one at that position | 162 |
 
-**The structure finds them, not the name.** `Maria Anna Tusilo` /
-`Maria Anna Tusoli` differ by one letter and are already the same item; a name
-matcher would have hesitated. `correspondence.md` still holds: no name
-similarity, ever — the label only confirms a position the structure chose.
+**Neither `WD ONLY` nor `GENI ONLY` was ever a decision**, and treating them as
+blockers was wrong. Emma, 2026-08-16: *"if they are only on wikidata there is no
+problem is there lol. But about only geni well same? Tehy are created lol."*
 
-**Three questions put to Emma and not yet answered**, so nothing is written:
+- **`reports/structural-correspondence.csv` — 3,206 distinct QID ↔ Geni ID
+  pairs**, each found by position and recorded with both names so the pairing can
+  be read.
+- **`reports/wikidata-structural-placeholders.json` — 7,851 `create_individual`**
+  for people on Geni and not on Wikidata.
 
-1. Is `MERGE` right as shown, when the two labels differ?
-2. `WD ONLY` — Wikidata names a parent we lack. Import them, or ignore?
-3. `GENI ONLY` — the placeholder population. Record now or later?
+The 162 ambiguous positions are left alone: Wikidata names more than one parent
+there, so the position does not single anybody out.
 
-Then: build the QID ↔ Geni ID correspondence from the merges, and the
-placeholder system for people on Geni and not on Wikidata.
+## 7+8 · Placeholder labels — BUILT, but NOT to be run until item 9 lands
 
-## 7+8 · Placeholder labels — GENERATED, `ja`/`zh` outstanding
+`reports/wikidata-placeholder-labels.json`, **26,281 `set_labels` edits**: `mul`
+on all of them, `en` on the 14,351 who have a relative with a real name.
 
-`reports/wikidata-placeholder-labels.json`, **26,281 `set_labels` edits**, built
-2026-08-16 from the rulings Emma gave on the preview.
+**Do not run this yet.** Emma, 2026-08-16: *"this is something that we shouldn't
+be running this thing at all really until we've already given everything a
+Japanese and Chinese label or potentially whatever other languages were
+included."* Every one of the 26,281 is missing `ja` and `zh`, and shipping
+English-only labels now would mean revisiting all of them.
 
-- **`mul` on all 26,281** — `NN`, or `NN <surname>`. A surname that is itself
-  placeholder vocabulary collapses to bare `NN` (351 people).
-- **`en` on 14,351** — the generated relationship label. 11,930 have no relative
-  with a real name and carry `mul` only.
-- 22,347 bare `NN`, 3,934 with a surname; both populations included, per her
-  ruling, and the 331 whose surname repeats inside the label are generated too.
-
-**`ja` and `zh` are missing on all 26,281 and that is item 9**, not an oversight:
-`en` comes free from the relative's own label, while Japanese and Chinese have to
-be constructed. Every edit lists its `missing_languages`.
-
-**The subject carries no QID.** These people are overwhelmingly not on Wikidata,
-so the labels attach to whatever creates them; the runner resolves by Geni ID,
-which is what everything here joins on.
+**And the construction is not a template.** Her answer to how ja/zh should be
+built: *"Every one of them comes from the Japanese or Chinese label"* — the
+relative's own ja/zh label, not a transliteration of their English one. So item 9
+is a prerequisite, not a follow-up.
 
 ## 9 · Label languages: English, Japanese, Chinese, and `mul`
 
@@ -365,6 +361,24 @@ do not reformat the records. Produces our own QID ↔ Geni ID correspondence and
 placeholder system for people on Geni and not on Wikidata.
 **Last run 2026-08-16: `scripts/walk-structural-merge.py`, three lines shown,
 three questions outstanding.**
+
+## 14d · Test the three edit-object emitters
+
+Emma, 2026-08-16: *"Don't just test them before September 1st. Put them at the
+end of the queue."* `build-orderlife-identifiers`, `build-entity-resolution-batch`
+and `build-samaritan-priest-links` have none. Every other `scripts/` file is the
+same, but these three emit **edit objects meant to run against Wikidata**, which
+is a different risk class from a report.
+
+The rules worth pinning, each of which has already failed once here:
+
+- **No creation for somebody who already has an item.** `build-samaritan-priest-batch`
+  proposed creating `Jonathan I` and `Baba Rabba` because it only read links
+  Wikidata already stated, ignoring the QIDs Emma wrote onto the Geni profiles.
+- **No order.life QID as a Wikidata value.** `Q153719` is order.life's *Female*
+  and would type-check as a person.
+- **Citation shape** — `P2600` reference where a Geni ID exists, no reference at
+  all where it does not, never a citation to a source Wikidata lacks.
 
 ## 15 · Audit `todo.md` the way `queue.md` was audited, then fold in the provisional to-do
 

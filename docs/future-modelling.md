@@ -217,3 +217,14 @@ exception handling for stuff that I do not consider to be even necessarily
 errors."* A skip that is never counted reads as "there was nothing there". Every
 guard that drops data must report how much it dropped, in the run output, or it
 is not a guard — it is a silent narrowing of the answer.
+
+## `P1317` floruit — skipped, 2026-08-16
+
+order.life holds **80 `P1317` claims on 20 people**, in its own time format.
+`P1317` is a real Wikidata property with the same meaning, so mapping it would be
+straightforward. Emma's call when shown the size: **skip it.** 80 claims on 20
+people does not earn a date-format port, and `genimerge.dates` exists for GEDCOM
+dates rather than order.life's.
+
+Reopen it if the count grows, or if order.life's dates get normalised for some
+other reason.

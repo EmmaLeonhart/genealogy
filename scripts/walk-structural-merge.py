@@ -49,6 +49,7 @@ REPO = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO / "src"))
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
+from collections import Counter  # noqa: E402
 from genimerge import wikistore  # noqa: E402
 
 FAMILY = REPO / "reports" / "derived-family.csv"
@@ -83,11 +84,117 @@ def label_of(entity, lang="en"):
     return lab.get("value") if isinstance(lab, dict) else lab
 
 
+
+def walk_all(anchors, fam, ourqid, names, depth):
+    """Every anchor, writing what the walk finds.
+
+    Emma, 2026-08-16, on the three "questions" this had been sitting on:
+    *"if they are only on wikidata there is no problem is there lol. But about
+    only geni well same? Tehy are created lol. WAHT TE FUCK IS THIS THIS IS A
+    SUPER EASY THING ANS YOU ARE TRATING IT AS A BLOCKER."* She is right on both.
+    `WD ONLY` needs nothing — Wikidata knowing a parent we do not costs us
+    nothing. `GENI ONLY` is a **creation**, which is the entire point of the
+    project. Neither was ever a decision.
+
+    So this writes the two things she asked the midnight job to produce: the
+    QID ↔ Geni ID correspondence built from the merges, and the placeholder list
+    for people on Geni and not on Wikidata.
+    """
+    import csv as _csv
+    import json as _json
+
+    # Everything the walk needs to look up, gathered before touching the store.
+    need = set()
+    for g in anchors:
+        cur = g
+        for _ in range(depth):
+            if cur in ourqid:
+                need.add(ourqid[cur])
+            row = fam.get(cur)
+            if not row:
+                break
+            cur = (row.get("father") or row.get("mother") or "").strip()
+            if not cur:
+                break
+    print(f"reading {len(need):,} items out of the store")
+    with wikistore.StoreReader(STORE, INDEX) as reader:
+        ents = reader.entities(sorted(need))
+    print(f"{len(ents):,} of them are held")
+
+    corr, placeholders, tally = {}, {}, Counter()
+    for start in anchors:
+        cur = start
+        for _ in range(depth):
+            row = fam.get(cur)
+            if not row:
+                break
+            ent = ents.get(ourqid.get(cur, ""))
+            for prop, key in ((FATHER, "father"), (MOTHER, "mother")):
+                ours_id = (row.get(key) or "").strip()
+                theirs = wd_parent(ent, prop) if ent else []
+                if not ours_id and not theirs:
+                    continue
+                if ours_id and theirs:
+                    mine = ourqid.get(ours_id, "")
+                    if mine and mine in theirs:
+                        tally["AGREE"] += 1
+                    elif len(theirs) == 1:
+                        # One candidate in the same family position: the
+                        # correspondence. More than one and the position does not
+                        # single anybody out, so it is left alone.
+                        tally["MERGE"] += 1
+                        corr[ours_id] = (theirs[0], key,
+                                         names.get(ours_id, ""),
+                                         label_of(ents.get(theirs[0])) or "")
+                    else:
+                        tally["AMBIGUOUS"] += 1
+                elif ours_id:
+                    tally["GENI ONLY"] += 1
+                    if not ourqid.get(ours_id):
+                        placeholders[ours_id] = (names.get(ours_id, ""), key, cur)
+                else:
+                    tally["WD ONLY"] += 1
+            nxt = (row.get("father") or row.get("mother") or "").strip()
+            if not nxt:
+                break
+            cur = nxt
+
+    c = REPO / "reports" / "structural-correspondence.csv"
+    with c.open("w", encoding="utf-8", newline="") as fh:
+        w = _csv.writer(fh)
+        w.writerow(["geni_id", "qid", "position", "geni_name", "wikidata_label"])
+        for g, (q, pos, gn, wl) in sorted(corr.items()):
+            w.writerow([g, q, pos, gn, wl])
+
+    edits = [{
+        "id": f"structural_placeholder:{g}",
+        "type": "create_individual",
+        "source": "structural merge walk",
+        "subject": {"qid": None, "geni_id": g},
+        "requires": [],
+        "labels": {"en": nm} if nm else {},
+        "statements": [{"property": "P31", "value": "Q5", "references": []},
+                       {"property": "P2600", "value": g, "references": []}],
+        "found_as": pos,
+        "child_geni_id": child,
+    } for g, (nm, pos, child) in sorted(placeholders.items())]
+    j = REPO / "reports" / "wikidata-structural-placeholders.json"
+    j.write_text(_json.dumps(edits, ensure_ascii=False, indent=1), encoding="utf-8")
+
+    for k, v in tally.most_common():
+        print(f"  {v:>8,}  {k}")
+    print(f"\nwrote {c} ({len(corr):,} correspondences)")
+    print(f"wrote {j} ({len(edits):,} placeholder creations)")
+    return 0
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--start", help="one Geni ID to walk from")
     ap.add_argument("--lines", type=int, default=5, help="how many lines to show")
     ap.add_argument("--depth", type=int, default=8, help="generations up")
+    ap.add_argument("--all", action="store_true",
+                    help="walk every anchor and write the correspondence + placeholders")
     args = ap.parse_args()
 
     fam, ourqid = {}, {}
@@ -133,6 +240,9 @@ def main() -> int:
         for e in ents.values():
             more.update(wd_parent(e, FATHER) + wd_parent(e, MOTHER))
         ents.update(reader.entities(sorted(more - set(ents))))
+
+    if args.all:
+        return walk_all(anchors, fam, ourqid, names, args.depth)
 
     tally = {"AGREE": 0, "MERGE": 0, "GENI ONLY": 0, "WD ONLY": 0}
     for n, start in enumerate(anchors[:args.lines], 1):
