@@ -19,7 +19,16 @@ Confirmed against the property table in `CLAUDE.md`:
 | --- | --- | --- |
 | **P20** | **Child** | **place of death** |
 | **P40** | Reference number (deprecated?) | **child** |
-| P31 | instance of | instance of — *the one low number that agrees* |
+| P31 | instance of | instance of — the label agrees, but **see below** |
+| **P39** | **instance of** | — *a second, identical property, and the one person items actually use* |
+
+**order.life defines `instance of` TWICE — `P31` and `P39`, same label, same
+`wikibase-item` datatype — and person items use `P39`.** Measured 2026-08-15 over
+a 4,000-item sample: `P39` carried the class on 3,970 of them and `P31` on
+**zero**. Kenan (`Q10`) has `P39` and no `P31` at all. This paragraph said `P31`
+was "the one low number that agrees" with Wikidata, which is true of the property
+*definition* and misleading about the *data* — anything reading order.life's
+class must check `P39` first, or it silently finds nothing.
 
 `P20` is the dangerous one: order.life's *Child* is Wikidata's *place of death*,
 both `wikibase-item`, so a pass-through would type-check and write a person into

@@ -119,17 +119,52 @@ def corpus_geni_ids() -> set[str]:
     return ids
 
 
+#: order.life's *instance of*. It defines **two** properties with that exact
+#: label and datatype, `P31` and `P39`, and person items use **`P39`** — Kenan
+#: (`Q10`) carries `P39` and no `P31` at all. Measured over a 4,000-item sample:
+#: `P39` 3,970, `P31` **zero**. `reports/orderlife-properties.md` documents only
+#: `P31` and calls it "the one low number that agrees" with Wikidata, which is
+#: true of the definition and misleading about the data.
+INSTANCE_OF = ("P39", "P31")
+
+
 def gaiad_qids(qids: list[str]) -> set[str]:
-    """Which of these order.life items carry the Gaiad-character flag."""
+    """Which of these order.life items are flagged as Gaiad characters.
+
+    **Reads the claim, not the file text.** This used to ask whether the string
+    ``Q153802`` appeared anywhere in the raw JSON. Emma, 2026-08-15: *"You
+    shouldn't be doing a raw substring search."* It is the method she rejected on
+    2026-08-14 — *"random text searches almost always show up false positives"* —
+    and it would have matched the QID in a qualifier, a reference, or on any
+    unrelated property.
+
+    **It was accidentally correct**, which is worth saying rather than implying a
+    bug was found: over a 4,000-item sample the substring test and the `P39`
+    claim agreed exactly, 3,970 each, with zero false positives. The change is to
+    the method, and the answer did not move.
+    """
     out = set()
     for n, q in enumerate(qids, 1):
         p = OL / "items" / f"{q}.json"
         if not p.exists():
             continue
-        if GAIAD in p.read_text(encoding="utf-8", errors="replace"):
-            out.add(q)
+        try:
+            item = json.loads(p.read_text(encoding="utf-8", errors="replace"))
+        except (json.JSONDecodeError, OSError):
+            continue
+        if not isinstance(item, dict):
+            continue
+        claims = item.get("claims") or {}
+        for prop in INSTANCE_OF:
+            if any(((s.get("mainsnak") or {}).get("datavalue", {})
+                    .get("value") or {}).get("id") == GAIAD
+                   for s in claims.get(prop, [])
+                   if isinstance((s.get("mainsnak") or {}).get("datavalue", {})
+                                 .get("value"), dict)):
+                out.add(q)
+                break
         if n % 20000 == 0:
-            print(f"  scanned {n:,}/{len(qids):,} items for the Gaiad flag")
+            print(f"  read {n:,}/{len(qids):,} items for the Gaiad flag")
     return out
 
 
