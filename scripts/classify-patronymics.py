@@ -53,18 +53,39 @@ OUT_MD = REPO / "reports" / "patronymic-classification.md"
 
 csv.field_size_limit(10_000_000)
 
-#: Patronymic and matronymic endings. Order matters only in that the longest
-#: match is taken first, so `sdatter` is tried before `datter`.
+#: **Patronymic endings, by tradition.** Emma, 2026-08-15: *"the patronymics have
+#: a variety of forms and you might not have gotten all the forms… we have things
+#: like Anes and Rodriguez and Fitz John that are all patronymics too."* She was
+#: right — the first version was Scandinavian, Dutch and Slavic only, and handled
+#: no prefix form at all, so `Fitz John` and `FitzGerald` were invisible.
+#:
+#: Measured over the tokens that version called *not patronymic*: 6,879 end `-es`,
+#: 3,376 `-ez`, 523 `-yan`/`-ian`, 513 `-ić`/`-vić`, 338 begin `ap`/`ab`, 286
+#: begin `Fitz`.
 SUFFIXES = (
+    # Scandinavian / Germanic
     "sdottir", "sdatter", "sdotter", "dottir", "datter", "dotter",
-    "ssen", "sson", "sen", "son", "zen", "zoon", "sz", "szoon",
-    "ovich", "evich", "ovitch", "evitch", "owicz", "ewicz",
-    "ovna", "evna", "ovic", "evic",
+    "ssen", "sson", "sen", "son", "zen", "zoon", "szoon", "sz",
+    # Iberian. **The largest and the least reliable**: `-ez`/`-es` is a live
+    # patronymic ending in Spanish and Portuguese and also the plain ending of
+    # `Charles`, `Holmes`, `James`. Form can never decide these.
+    "ez", "es", "iz", "oz", "az",
+    # Slavic
+    "ovich", "evich", "ovitch", "evitch", "owicz", "ewicz", "wicz",
+    "ovna", "evna", "ovic", "evic", "vic", "ic",
+    # Armenian, Greek, Turkish, Romanian, Finnish
+    "yan", "ian", "opoulos", "poulos", "oglu", "escu", "poika", "tytar",
 )
 
-#: `ben Yitzhaq`, `bint Aabed-El`, `ibn Rushd`. The particle is followed by the
-#: father's own name rather than a derived form.
-PARTICLES = {"ben", "bin", "ibn", "bint", "bat", "ap", "mac", "mc", "o"}
+#: Prefixes written **joined** to the father's name: `FitzGerald`, `MacDonald`,
+#: `O'Brien`, `ApRhys`.
+PREFIXES = ("fitz", "mac", "mc", "o'", "ap", "ab")
+
+#: Prefixes written as a **separate token**: `ben Yitzhaq`, `bint Aabed-El`,
+#: `ap Gronwy`, `Fitz John`, `bar Hananya`. The particle is followed by the
+#: father's own name rather than by a derived form.
+PARTICLES = {"ben", "bin", "ibn", "bint", "bat", "bar", "ap", "ab",
+             "mac", "mc", "fitz", "o", "ó", "ua", "ni"}
 
 ABSENT = {".", "..", "?", "-", "_", "nn", "n.n.", "private", "<private>"}
 
@@ -92,18 +113,58 @@ def stems(name: str) -> set[str]:
     return {s for s in out if len(s) >= 2}
 
 
-def suffixed(token: str, father_stems: set[str]) -> str | None:
+def has_patronymic_form(token: str) -> str | None:
+    """Does this token *look* like a patronymic? Form only — never a verdict.
+
+    Kept strictly separate from the father test because `Charles` and `Holmes`
+    have patronymic form and are not patronymics, while `Rodríguez` has the same
+    form and often is. **Form proposes; the father disposes.**
+    """
     low = fold(token)
+    parts = low.split()
+    if len(parts) >= 2 and parts[0] in PARTICLES:
+        return f"particle {parts[0]}"
+    joined = low.replace("'", "'")
+    for prefix in PREFIXES:
+        if joined.startswith(prefix) and len(joined) > len(prefix) + 2:
+            return f"prefix {prefix}"
+    for suffix in sorted(SUFFIXES, key=len, reverse=True):
+        if low.endswith(suffix) and len(low) > len(suffix) + 1:
+            return f"-{suffix}"
+    return None
+
+
+def derives_from_father(token: str, father: str, father_stems: set[str]) -> str | None:
+    """Is this token built on **this person's father's** name? The actual test."""
+    low = fold(token)
+    parts = low.split()
+
+    # `ben Yitzhaq` / `Fitz John` / `ap Gronwy` — particle plus the father's name.
+    if len(parts) >= 2 and parts[0] in PARTICLES:
+        rest = " ".join(parts[1:])
+        if rest in father_stems or rest == fold(father):
+            return f"{parts[0]} {father}"
+
+    # `FitzGerald` / `MacDonald` — prefix joined to the father's name.
+    joined = low.replace("'", "")
+    for prefix in PREFIXES:
+        clean = prefix.replace("'", "")
+        if joined.startswith(clean):
+            rest = joined[len(clean):]
+            if rest in father_stems:
+                return f"{prefix} + {father}"
+
+    # `Olsen` from `Ole` — the father's stem plus an ending.
     for suffix in sorted(SUFFIXES, key=len, reverse=True):
         if not low.endswith(suffix):
             continue
         head = low[: -len(suffix)]
         if head in father_stems:
-            return suffix
-        # `Olsen` from `Ole`: the linking -s- belongs to the suffix in some
-        # spellings and to the stem in others, so allow one trailing `s`.
+            return f"{father} + -{suffix}"
+        # The linking -s- belongs to the suffix in some spellings and to the
+        # stem in others.
         if head.endswith("s") and head[:-1] in father_stems:
-            return suffix
+            return f"{father} + -{suffix}"
     return None
 
 
@@ -150,30 +211,33 @@ def main() -> int:
             for token, where, ordinal in candidates:
                 if token.casefold() in ABSENT:
                     continue
-                if not fid:
+                form = has_patronymic_form(token)
+                derived = (derives_from_father(token, fname, fstems)
+                           if fname else None)
+                if derived:
+                    verdict, evidence = "patronymic", derived
+                elif form and not fid:
+                    verdict, evidence = "AMBIGUOUS: form, no father recorded", form
+                elif form and not fname:
+                    verdict, evidence = "AMBIGUOUS: form, father unnamed", form
+                elif form:
+                    verdict, evidence = "AMBIGUOUS: form, father differs", form
+                elif not fid:
                     verdict, evidence = "no father recorded", ""
                 elif not fname:
                     verdict, evidence = "father has no given name", ""
                 else:
-                    parts = token.split()
-                    hit = suffixed(token, fstems)
-                    if hit:
-                        verdict, evidence = "patronymic", f"{fname} + -{hit}"
-                    elif (len(parts) >= 2 and parts[0].casefold() in PARTICLES
-                          and fold(parts[1]) in {fold(fname)} | fstems):
-                        verdict, evidence = "patronymic", f"{parts[0]} {fname}"
-                    else:
-                        verdict, evidence = "not patronymic", ""
+                    verdict, evidence = "not patronymic", ""
                 tally[verdict] += 1
                 by_token[token][verdict] += 1
                 rows.append([gid, token, where, ordinal, fid, fname,
-                             verdict, evidence])
+                             verdict, evidence, form or ""])
 
     OUT_CSV.parent.mkdir(parents=True, exist_ok=True)
     with OUT_CSV.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.writer(handle)
         writer.writerow(["geni_id", "token", "field", "ordinal", "father_id",
-                         "father_given", "verdict", "evidence"])
+                         "father_given", "verdict", "evidence", "form"])
         writer.writerows(rows)
     print(f"wrote {OUT_CSV} ({len(rows):,} rows)")
 
@@ -182,8 +246,17 @@ def main() -> int:
 
     # The tokens that go BOTH ways are the whole point: same string, different
     # usage, different Wikidata item.
+    # **Same string, different usage.** Now that a form the father does not
+    # confirm is its own verdict, the contrast that matters is `patronymic`
+    # against `AMBIGUOUS: form, father differs` — a token that IS built on one
+    # person's father and is NOT built on another's. Comparing against
+    # `not patronymic` returns nothing, because anything with the form no longer
+    # lands there.
+    DIFFERS = "AMBIGUOUS: form, father differs"
     both = {t: c for t, c in by_token.items()
-            if c["patronymic"] and c["not patronymic"]}
+            if c["patronymic"] and c[DIFFERS]}
+    AMBIG = [k for k in tally if k.startswith("AMBIGUOUS")]
+    ambiguous_total = sum(tally[k] for k in AMBIG)
 
     L: list[str] = []
     add = L.append
@@ -198,10 +271,21 @@ def main() -> int:
     add("")
     add("| verdict | tokens | share |")
     add("| --- | ---: | ---: |")
-    for key in ("patronymic", "not patronymic", "no father recorded",
-                "father has no given name"):
+    for key in (["patronymic"] + sorted(AMBIG) +
+                ["not patronymic", "no father recorded",
+                 "father has no given name"]):
         add(f"| {key} | {tally[key]:,} | {100.0*tally[key]/max(total,1):.1f}% |")
     add(f"| **total** | **{total:,}** | |")
+    add("")
+    add(f"**{ambiguous_total:,} tokens carry a patronymic FORM that the father does")
+    add("not confirm.** Emma asked for these to be separated rather than silently")
+    add("called non-patronymic: *\"We probably should be doing some level of")
+    add("classification for situations where it is ambiguous.\"* They are the")
+    add("`AMBIGUOUS:` rows, split by why the father could not settle it.")
+    add("")
+    add("Her prior on them, recorded and **not applied** — deciding on it would be")
+    add("inference where this project uses evidence: *\"most patronymics are not used")
+    add("as surnames.\"*")
     add("")
     add(f"**Of the {decided:,} tokens where a verdict was possible, "
         f"{tally['patronymic']:,} are patronymic "
@@ -213,16 +297,16 @@ def main() -> int:
     add("")
     add("## The tokens that go both ways — this is the point")
     add("")
-    add(f"**{len(both):,} distinct tokens are a patronymic for some bearers and not for")
-    add("others.** Same string, different usage, and therefore **different Wikidata")
+    add(f"**{len(both):,} distinct tokens are built on one bearer's father and not on")
+    add("another's.** Same string, different usage, and therefore **different Wikidata")
     add("items** — `CLAUDE.md` § *\"Jackson Jackson Jackson\"*. A suffix list alone would")
     add("have called every bearer of these a patronymic.")
     add("")
-    add("| token | patronymic | not | ")
+    add("| token | father confirms | father differs |")
     add("| --- | ---: | ---: |")
     for token, counts in sorted(both.items(),
                                 key=lambda kv: -(kv[1]["patronymic"]))[:25]:
-        add(f"| {token} | {counts['patronymic']:,} | {counts['not patronymic']:,} |")
+        add(f"| {token} | {counts['patronymic']:,} | {counts[DIFFERS]:,} |")
     add("")
     add("## Method")
     add("")
@@ -241,14 +325,15 @@ def main() -> int:
     print(f"wrote {OUT_MD}")
 
     print()
-    for key in ("patronymic", "not patronymic", "no father recorded",
-                "father has no given name"):
-        print(f"  {key:<26} {tally[key]:>9,}")
+    for key in (["patronymic"] + sorted(AMBIG) +
+                ["not patronymic", "no father recorded",
+                 "father has no given name"]):
+        print(f"  {key:<40} {tally[key]:>9,}")
     print(f"\n  {len(both):,} tokens go both ways")
     for token, counts in sorted(both.items(),
                                 key=lambda kv: -(kv[1]["patronymic"]))[:10]:
-        print(f"    {token:<22} patronymic {counts['patronymic']:>6,}   "
-              f"not {counts['not patronymic']:>6,}")
+        print(f"    {token:<22} father confirms {counts['patronymic']:>6,}   "
+              f"differs {counts[DIFFERS]:>6,}")
     return 0
 
 
