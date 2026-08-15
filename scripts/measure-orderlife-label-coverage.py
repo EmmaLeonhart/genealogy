@@ -13,10 +13,19 @@ people item 1 has to label, item 1 gets much smaller.
 *made*, not copied, for everybody order.life does not cover — Emma's ruling
 stands. This only measures the part that need not be made.
 
-**Joined on the Geni profile ID**, which `orderlife/analysis/persons.tsv` carries
-in a `geni_id` column and which is this repo's primary key on both sides. Never on
-names: `correspondence.md` forbids it and the 2026-08-14 session lost a day to
-exactly that.
+**Joined on BOTH identifiers.** `orderlife/analysis/persons.tsv` carries a
+`geni_id` column *and* a `wikidata_qid` column, and a row may have either, both or
+neither. Emma, 2026-08-15: *"WHY THE FUCK DID YOU JOIN ON THE GENI ID RATHER THAN
+JOINING ON THE WIKIDATA ID? THE ORDER.LIFE THING HAS WIKIDATA IDS AS A PROPERTY ON
+ITS OWN ITEMS."*
+
+The first version joined on `geni_id` alone and reached **35,139** of the
+**87,802** joinable rows — 27,727 Geni-only, **52,663 QID-only**, 7,412 both.
+Those 52,663 were invisible to it, **60% of the joinable population**, and every
+figure it produced was a floor rather than a measurement.
+
+Never on names: `correspondence.md` forbids it and the 2026-08-14 session lost a
+day to exactly that.
 
 Writes `reports/orderlife-label-coverage.md` and `.csv`.
 
@@ -53,26 +62,47 @@ WANTED = ("en", "ja", "zh", "hi", "ar", "ru", "el", "mul")
 def main() -> int:
     # -- our side ---------------------------------------------------------
     ours: set[str] = set()
+    our_qid: dict[str, str] = {}          # our QID -> our geni id
     with OURS.open(encoding="utf-8", newline="") as handle:
         for row in csv.DictReader(handle):
             ours.add(row["geni_id"])
-    print(f"{len(ours):,} people in our tree", flush=True)
+            qid = (row.get("qid") or "").strip()
+            if qid:
+                our_qid.setdefault(qid, row["geni_id"])
+    print(f"{len(ours):,} people in our tree, {len(our_qid):,} carrying a QID",
+          flush=True)
 
     # -- the join, on the Geni ID and nothing else ------------------------
     # `persons.tsv` is QUOTE_NONE: a double quote in it is DATA, an epithet
     # inside a name. Reading it any other way glues rows together - 107,037
     # parsed as 106,909 before this was fixed.
-    ol_qid_for: dict[str, str] = {}
+    shared: dict[str, str] = {}           # our geni id -> order.life qid
+    via: Counter[str] = Counter()
+    joinable = 0
     with PERSONS.open(encoding="utf-8", newline="") as handle:
-        for row in csv.DictReader(handle, delimiter="\t", quoting=csv.QUOTE_NONE):
+        for row in csv.DictReader(handle, delimiter="	", quoting=csv.QUOTE_NONE):
+            ol = (row.get("qid") or "").strip()
+            if not ol:
+                continue
             gid = (row.get("geni_id") or "").strip()
-            qid = (row.get("qid") or "").strip()
-            if gid and qid:
-                ol_qid_for[gid] = qid
-    print(f"{len(ol_qid_for):,} order.life rows carry a Geni ID", flush=True)
-
-    shared = {g: q for g, q in ol_qid_for.items() if g in ours}
-    print(f"{len(shared):,} of them are people we also hold", flush=True)
+            wqid = (row.get("wikidata_qid") or "").strip()
+            if gid or wqid:
+                joinable += 1
+            # Geni ID first where present - it is this repo's primary key - and
+            # the Wikidata QID otherwise. Both are exact; neither is a name.
+            if gid and gid in ours:
+                if gid not in shared:
+                    shared[gid] = ol
+                    via["geni id"] += 1
+            elif wqid and wqid in our_qid:
+                mine = our_qid[wqid]
+                if mine not in shared:
+                    shared[mine] = ol
+                    via["wikidata qid"] += 1
+    print(f"{joinable:,} order.life rows carry at least one identifier", flush=True)
+    print(f"{len(shared):,} matched to our people: "
+          f"{via['geni id']:,} by Geni ID, {via['wikidata qid']:,} by Wikidata QID",
+          flush=True)
 
     # -- what labels those order.life items actually have -----------------
     need = set(shared.values())
@@ -128,12 +158,16 @@ def main() -> int:
     add("**Queue item 13.** Emma, 2026-08-15, on whether order.life feeds the")
     add("seven-language work: *\"Yes — measure it properly first.\"*")
     add("")
-    add("**Joined on the Geni profile ID**, never on names.")
+    add("**Joined on the Geni ID where present and the Wikidata QID otherwise**,")
+    add("never on names. Joining on the Geni ID alone reached 35,139 of 87,802")
+    add("joinable rows and missed the 52,663 that carry only a QID.")
     add("")
     add("| | count |")
     add("| --- | ---: |")
     add(f"| people in our tree | {len(ours):,} |")
-    add(f"| order.life rows carrying a Geni ID | {len(ol_qid_for):,} |")
+    add(f"| order.life rows carrying either identifier | {joinable:,} |")
+    add(f"| …matched by Geni ID | {via['geni id']:,} |")
+    add(f"| …matched by Wikidata QID | {via['wikidata qid']:,} |")
     add(f"| **people on both sides** | **{len(shared):,}** |")
     add(f"| …whose order.life item is in the vendored store | {len(labels):,} |")
     add("")

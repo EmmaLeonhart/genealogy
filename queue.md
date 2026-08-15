@@ -682,39 +682,6 @@ the repo, stale ones corrected or closed, and the difference between *stale* and
 *incomplete* stated for each. Four items were found stale rather than incomplete
 last time; that is the expected shape.
 
-## 18 · Redo the order.life join on the WIKIDATA ID as well — it missed 60%
-
-**Emma, 2026-08-15:** *"WHY THE FUCK DID YOU JOIN ON THE GENI ID RATHER THAN
-JOINING ON THE WIKIDATA ID? THE ORDER.LIFE THING HAS WIKIDATA IDS AS A PROPERTY ON
-ITS OWN ITEMS."*
-
-She is right and the error is large. `orderlife/analysis/persons.tsv` carries a
-`geni_id` column **and** a `wikidata_qid` column, and a row may have either, both
-or neither:
-
-| | rows |
-| --- | ---: |
-| Geni ID only | 27,727 |
-| **Wikidata QID only** | **52,663** |
-| both | 7,412 |
-| neither | 19,235 |
-| **joinable** | **87,802** |
-
-`scripts/measure-orderlife-label-coverage.py` joins on `geni_id` alone, so it
-reached **35,139** of the 87,802 — **the 52,663 QID-only rows were invisible to
-it**, 60% of the joinable population, silently missing. Every figure in
-`reports/orderlife-label-coverage.md` and the devlog entry that quotes them is a
-floor, not a measurement.
-
-**The fix:** match on the Geni ID where present, otherwise on `wikidata_qid`
-against the `qid` column of `reports/derived-family.csv` — we hold 16,562 people
-carrying a QID. Report which key matched each row, because the two populations are
-not the same people and the difference is worth seeing.
-
-**A half-applied patch was reverted** rather than left in place: the docstring had
-been rewritten to describe the both-key join while the code still did the
-single-key one, which is worse than either.
-
 ## 19 · Who are the isolated Wikidata individuals? A demographic analysis
 
 **Emma, 2026-08-15:** *"Can you look over the isolated wikidata individuals? I

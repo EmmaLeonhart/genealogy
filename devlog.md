@@ -7014,3 +7014,33 @@ the hard part.
 
 Emma was right the first time: *"it doesn't have a whole lot of them."* The 73%
 was mine and it was measured on the wrong population.
+
+
+## 2026-08-15 — item 18: the order.life join fixed, and why it changed almost nothing
+
+**The join was wrong.** `persons.tsv` carries `geni_id` **and** `wikidata_qid`;
+the first version used `geni_id` alone and reached 35,139 of 87,802 joinable rows,
+missing the **52,663 that carry only a QID** — 60% of them.
+
+Fixed: Geni ID where present, Wikidata QID otherwise, both exact.
+
+**The result moved 28,624 → 28,825, and only 227 of the matches came via the
+QID.** The reason is on our side, not order.life's: **we hold only 16,562 people
+carrying a QID at all**, and almost all of them already matched by Geni ID. So the
+52,663 QID-only order.life rows are overwhelmingly people **our Geni corpus does
+not contain** — they exist on Wikidata and we have never exported them.
+
+| lang | before | after |
+| --- | ---: | ---: |
+| `en` | 28,405 | 28,606 |
+| `zh` | 4,335 | 4,440 |
+| `ru` | 2,615 | 2,810 |
+| `ja` | 2,477 | **2,625** |
+| `el` | 2,086 | 2,179 |
+| `ar` | 1,227 | 1,266 |
+
+**The conclusion from item 13 survives**: order.life supplies `ja` for 2,625 of
+396,377 people (0.7%) and `zh` for 4,440 (1.1%). It does not shrink item 1.
+
+**But the earlier claim was not established when it was made.** It was a floor
+quoted as a measurement, and it happened to be close. That is luck, not method.
