@@ -179,14 +179,6 @@ needed. A run that reports the two unmergeable Aaron / Zerubbabel pairs as
 "conflicts" has regressed — see `CLAUDE.md` § *A second Geni ID … is NOT a
 conflict*.
 
-## 6 · The 59 order.life properties from P155 up
-
-Emma, 2026-08-15 #288: *"look over all the order.life properties that might be
-novel."* Rodovid, FamilySearch, WikiTree, Roglo, Geneanet, The Peerage, JewAge,
-DAR/SAR, Find a Grave, a large Swedish cluster. Same numbers and meanings as
-Wikidata, values Wikidata often lacks, on items that already exist. **No
-creation, no normalisation** — the easiest remaining win.
-
 ## 7 · Normalise the placeholder names to `NN`
 
 **Emma, 2026-08-14.** All 55 discovered forms (`reports/given-name-forms.csv`,

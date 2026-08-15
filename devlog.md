@@ -6263,3 +6263,40 @@ now models properly. Three live touchpoints replaced:
 
 That leaves three commands able to reach Wikidata: `overlap`, `crosscheck`
 (which has `--offline`) and `wikidata-download`, the one that is supposed to.
+
+## 2026-08-15 — queue item 6: the "easiest remaining win" is 10 edits
+
+The item said: *"the 59 order.life properties from P155 up… Same numbers and
+meanings as Wikidata, values Wikidata often lacks, on items that already exist.
+No creation, no normalisation — the easiest remaining win."*
+
+**Measured, the premise is wrong.** `scripts/build-orderlife-identifiers.py` →
+`reports/orderlife-identifiers.csv`, one row per candidate:
+
+| | |
+| --- | ---: |
+| identifier claims on people who also have a Wikidata item | 48,102 |
+| **already stated on Wikidata** | **42,727 (89%)** |
+| item states a *different* value | 1,100 |
+| item not in the local store, so uncheckable | 4,245 |
+| **addable** | **10** |
+
+Obvious in hindsight and worth writing down: order.life took these identifiers
+**from** Wikidata, which is the same reason its property numbers match above
+P155. "Wikidata often lacks these" was never checked before being written into
+the queue.
+
+Two corrections found while building it:
+
+- **It is 55 properties, not 59.** 45 are `external-id`; 27 carry any values.
+- **The first run emitted 30 edits for 10 distinct triples.** Several order.life
+  items map to one Wikidata QID — separate people there, one person here — so
+  the same identifier arrived three times. Deduped on `(item, property, value)`.
+
+The 1,100 disagreements are **notes, not work**, per `CLAUDE.md` § *The purpose
+is to ADD to Wikidata, not to correct it*. The 4,245 uncheckable ones are the
+same blocker as queue item 2 and resolve with the same expanded download.
+
+Held back and counted rather than emitted: 80 `time` claims (`P1317` floruit, in
+order.life's own date format), 9 `wikibase-item` (`P155`/`P156`/`P460`, whose
+values are order.life QIDs and mean something else on Wikidata), 2 `string`.
