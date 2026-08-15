@@ -94,7 +94,19 @@ Israel Henshel Isserles".** Worth keeping because the shape of it generalises:
 
 ---
 
-## 4 · The 33 Samaritan high priests — the line is documented after all
+## 4 · The 33 Samaritan high priests — JOINED 2026-08-14
+
+**Steps 1-3 below are done.** Emma built the profiles on Geni herself and took
+four exports (`exports/samaritans/`): a `Forest` seeded on **Alexandra Krasuk**
+(4,868), an `Ancestors` and a `BloodTree` on **Eliazar Cohen** (348 / 4,868), and
+a `Forest` on the current High Priest's daughter (4,820). The corpus is 203
+GEDCOMs. The pre-1624 line turned out to be in the corpus all along — 78 people
+from `Uzzi ben Bakhi` down through Baba Rabba — and the batch to create them on
+Wikidata is `reports/wikidata-samaritan-priests.json`.
+
+**Kept below for the record of how it was reasoned about.**
+
+## 4a · The original entry — the line is documented after all
 
 **Superseded 2026-08-13, twice in one evening.** The first conclusion — that
 nothing above the component was named and it could never be joined — was wrong,
@@ -158,6 +170,38 @@ non-zero rather than creating a duplicate. Then execute the two creations.
 
 **Not-done tag:** BLOCKED-ON-USER-ACTION — this is a Wikidata write, dated
 2026-09-30 by Emma's instruction.
+
+---
+
+## 5 · Normalise the placeholder names, then generate relationship labels
+
+**Emma, 2026-08-14.** Two stages, the second explicitly at the END of the queue.
+
+**Stage 1 — normalise every placeholder form to `NN`.** All 55 discovered forms
+(`reports/given-name-forms.csv`, 35,414 records) collapse to one `mul` label:
+
+- no surname -> `mul: "NN"`
+- surname present -> `NN <surname>`
+
+**Guardrail, measured:** of the 33,564 profiles carrying a placeholder name,
+**28,268 have ONLY placeholder names and are safe**, and **5,296 also carry a
+real name** — `/Avitus/` on one record and `Avitus, Western Roman Emperor` on
+another. Those 5,296 must keep the real name;
+`reports/name-alternatives.csv` lists them individually.
+
+**Stage 2 — progressive relationship labels, per language.** Generate labels from
+recorded relationships in this precedence:
+
+1. parent  2. father  3. mother  4. spouse  5. child
+
+producing `daughter of Joe`, `wife of Carl`, `mother of Joseph`.
+
+**A relationship label can only exist in a language the RELATIVE already has a
+label in** — that is the binding constraint and it is measured before anything is
+generated.
+
+**Open, Emma's own uncertainty:** whether to run stage 2 for people who already
+have a surname, or only for the bare-`NN` ones. Not decided.
 
 ---
 
