@@ -6692,3 +6692,24 @@ bearers, which is `CLAUDE.md`'s one-item-per-usage rule working correctly.
 Scanning the whole JSON blob flagged `subject.orderlife_qid`, which is provenance
 and is meant to hold a local QID. Both times the emitter was right and the test
 was wrong.
+
+## 2026-08-16 — the export cap fired, exactly as designed
+
+The fast suite came back **956 passed, 1 failed**, and the failure was
+`test_export_cap_is_at_least_the_largest_real_export` — the test whose whole
+purpose is to be loud when a new export exceeds the largest yet seen.
+
+Export 204 holds **4,940** individuals against `GENI_EXPORT_CAP = 4868`. Raised
+to **4940**, with the reading recorded in the constant's own docstring as its
+rule requires: a `Forest` export seeded on **Abram ben Yitzhaq**
+(`6000000178795709821`), himself one of the 21 Samaritan high priests, taken
+02:30 on 2026-08-15. A step of 72.
+
+The context is worth keeping: Emma re-exported because `Yitzhaq I ben Tsedaka`
+had been left out of the earlier take, and the ball came back 4940 rather than
+4868 **with him in it**. Consistent with the ceiling tracking the profiles she
+has added, and not evidence of any rule about the number — `CLAUDE.md` is
+explicit that this is *largest yet seen*, never a cap Geni enforces.
+
+`CLAUDE.md`'s own sentence still said **4128 as of 2026-08-13** while the
+constant had already moved to 4868. Corrected to 4940.

@@ -280,7 +280,16 @@ __all__ = [
 #: it is consistent with the stated mechanism rather than surprising under it:
 #: the ceiling is four times the profiles she has added, and she had been adding
 #: Samaritan profiles all day.
-GENI_EXPORT_CAP = 4868
+#: **2026-08-15 — 4940**, a `Forest` export seeded on **Abram ben Yitzhaq**
+#: (`6000000178795709821`), taken at 02:30 and imported as export 204:
+#: `exports/samaritans/export-Forest-6000000178795709821.ged`. A step of **72**
+#: over the previous reading, and the seed is himself one of the 21 Samaritan
+#: high priests Emma had been building that night. Emma re-exported because one
+#: individual — `Yitzhaq I ben Tsedaka`, `6000000227245553985` — had been left
+#: out of the earlier take; the ball came back 4940 rather than 4868 with him in
+#: it. Consistent with the ceiling tracking the profiles she has added, and not
+#: evidence of a rule about the number.
+GENI_EXPORT_CAP = 4940
 
 #: The step between reading this report and running an export.
 #:
