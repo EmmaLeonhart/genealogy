@@ -1044,6 +1044,39 @@ contradict § *How this project works now*, which is about Emma interpreting
 building the CSV is how the phenomenon gets measured. Do both, in that order:
 records first so she can see what the thing is, then the full census.
 
+### Emma's own profile: the middle name is intended on Geni and stays off Wikidata
+
+**Emma, 2026-08-15:** *"There was a middle name added to me, by the way, that is
+intended. It is not something to be added to a wikidata."*
+
+Two separate facts, and the second is the rule. The middle name on her Geni
+profile is **deliberate** — not a data error, nothing to correct, nothing to ask
+about. And it is **not to be emitted**: no `P735` with `P3831` → `Q245025`, no
+appearance in a label, in any language.
+
+**No export holds it yet**, checked 2026-08-15 across all 203 — every copy of
+`6000000087535357291` reads `Emma /Bishop/` or `Emma /Leonhart/` with no middle
+token. So this is a rule for the first export that brings it in, not a
+suppression to apply today. It is written here rather than in the queue because
+it governs how the project works and has no step attached.
+
+This is the same shape as § *Her name is Emma Leonhart*: what her profile says
+and what gets emitted are separate questions, and the emitter is where the
+answer lives.
+
+### A cron only fires while the session is idle — never schedule a long job into active work
+
+**Measured 2026-08-15/16.** Of seven crons, six fired and one never did: the
+19:07 re-merge starved for four hours because the session was busy on the hour,
+every hour. Emma: *"fucking do this shit right there fuck now or at least queue
+it up at the end so it actually runs."* It ran by hand at 00:30.
+
+**So: run a long or load-bearing job directly, or schedule it for a window when
+nothing else is running.** The short hourly ticks are fine because they re-fire;
+a twenty-minute merge is not. And **check the crons when a session resumes** —
+they are session-only, so they die with it, and a job that quietly never fires
+looks exactly like one that had nothing to do.
+
 ### Her name is Emma Leonhart
 
 **Profile `6000000087535357291` is Emma Leonhart** — the account owner, and the

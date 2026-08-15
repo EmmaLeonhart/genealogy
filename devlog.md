@@ -6819,3 +6819,51 @@ in `todo.md`.
 succession with `P1365`/`P1366` and his 1650–1694 term, and is **created
 nowhere**. Had the batches not been rebuilt after export 204 brought him in, he
 would have been created and linked at the same time.
+
+
+## 2026-08-15 — the queue cleaned out, and what came out of it
+
+**Emma:** *"PLEASE CLEAN UP THE QUEUE! Oh my God! We did a comprehensive audit of
+the queue, and then you just decided to fuck around and immediately bloat it."*
+She is right. The audit rebuilt it on 2026-08-15 and within a day it was **567
+lines**, most of which described work already finished. A queue that narrates is
+not a queue.
+
+**The rule this restates:** the queue holds *steps not yet taken*. The moment
+something is done it moves here, in the same commit. A finished item kept "for
+context" is what made the file unreadable both times.
+
+Closed out of the queue and recorded here:
+
+**Item 1 — the structural walk's two outputs.** `scripts/walk-structural-merge.py --all`
+over **14,693 anchors**: 51,949 `AGREE`, 55,324 `GENI ONLY`, 19,064 `MERGE`,
+8,077 `WD ONLY`, 166 ambiguous. **3,668 correspondences** in
+`reports/structural-correspondence.csv` and **11,001 placeholder creations** in
+`reports/wikidata-structural-placeholders.json`. Regenerated against the merge as
+corrected by the export exclusions, and the missing-label defect fixed in the
+same pass — the parent QIDs are discovered *during* the walk and had never been
+fetched, so 3,526 of 3,668 rows carried a QID with no name against it. A second
+store read closed it: **3,577 of 3,668 labelled**, the residue being items the
+Geni-shaped store simply does not hold.
+
+**Item 11's three closed sub-items** — `Q98159`'s malformed row (128 rows, fixed
+by reading order.life's TSVs with `QUOTE_NONE`), the Samaritan office (`P39` →
+`Q678510` on all 21, confirmed offline), and the numbered-generation profiles
+(Chinese generation reckonings ending in `世`, **6,368 name records**; Emma was
+right about the culture).
+
+**Item 14b — a lesson, not a step.** A cron only fires while the session is idle,
+so a twenty-minute job scheduled during active work starves; the 19:07 re-merge
+never fired and ran by hand at 00:30. Moved to `CLAUDE.md`, where a standing rule
+belongs.
+
+**Item 14d — the emitter tests.** `tests/test_edit_emitters.py`, 9 tests. They
+caught order.life's **class items** being emitted as `create_individual` with
+`P31` = `Q5` human — `Male`, `Female`, `Person`, `Non Gaiad Character` — found
+structurally rather than by a list, and two of the tests were themselves wrong
+when first written, both too broad.
+
+**Item 0.1 — the middle name.** Emma: *"There was a middle name added to me, by
+the way, that is intended. It is not something to be added to a wikidata."*
+Checked: **no export holds it yet**, so there is nothing to suppress today. It is
+a rule for when one does, and it is in `CLAUDE.md` rather than here.
