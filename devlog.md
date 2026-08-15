@@ -6108,3 +6108,44 @@ Every report derived from the merge is describing a tree that no longer exists �
 
 Dated snapshots are excluded from that count on purpose: an old number in
 `ingest-2026-08-05.md` is the record working, not rot.
+
+## 2026-08-15 — the audit's first day of consequences
+
+Queue item 0 ran (see the entry above); this is what came of it.
+
+**Three unrequested surfaces deleted**, each on Emma's answer to a question the
+audit raised:
+
+- **`reconcile`** — the whole module, plus `genimerge reconcile` and `expand`.
+  She had ordered its name-search matcher removed on 08-12 and chose deletion
+  over stripping. Four offline pieces three other modules still needed moved to
+  `genimerge.matching`, which makes no requests and compares no names.
+- **QuickStatements** — module, command, both committed `.qs` files, all four
+  `.qs` outputs and the three `render_quickstatements` functions. *"We are
+  deleting the entire thing right now."* The claim model survives in
+  `genimerge.claims` with plain `P854`/`P813` references; the `S` prefix was
+  QuickStatements marking a reference inside a flat line.
+- **The impossible-years census**, replaced by the report she asked for instead:
+  future dates only. 35 lines on 9 people out of 1,592,331 `DATE` lines.
+
+`HANDOFF.md` went too. **969 tests pass** after all of it.
+
+**`provisional-queue.md` exists now.** Emma: *"the old queue is kind of messed
+up… once we're clear of all of this, the provisional queue is just going to
+basically get back into the regular queue."* It also fixes an ambiguity she
+caught — *"queuing something for midnight versus setting up a midnight cron job
+are very different things"* — so every scheduled item is listed with its real
+`CronCreate` id.
+
+**The name census**, `reports/name-classes.md`: 140,764 distinct tokens placed by
+which slot they occupy. The finding that changed the plan is that `both` is
+mostly **genuine** ambiguity — only 12% of both-slot tokens are lopsided, rising
+to 45% above 50 bearers — so the rule needs a bearer floor and not just a
+dominance ratio. The first draft of that paragraph claimed the opposite; the
+number it quoted contradicted it.
+
+**Two corrections from Emma recorded in `CLAUDE.md`:** an item with no
+relationships is not a missing item, and the Geni ID goes on first before
+anything derived from Geni; and merging the two trees is a walk **up** the
+relationships, where labels confirm a position the structure already chose rather
+than searching for one.

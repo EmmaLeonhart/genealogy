@@ -35,39 +35,26 @@ The ordering is deliberate. The midnight merge needs *"the proper synoptic tree
 and the proper samaritans"*, so the re-merge runs at 19:07, five hours ahead of
 it, rather than after midnight.
 
-## 1 · The name analysis over the synoptic tree
+## 1 · The name analysis — DONE 2026-08-15, decision below
 
-**Emma, 2026-08-15**, attached to the name-items decision: *"my intention for you
-to, right now, or at least cue it up for 1am… running an analysis of this
-[synoptic] tree, all the different names inside… you're supposed to be doing this
-analysis of most commonly occurring names, patronymics, and surnames, and it very
-much can occur in other languages like CJK and stuff."*
+`reports/name-classes.md` and `reports/name-classes.csv`, 140,764 distinct
+tokens. What it settled, so it does not get re-litigated:
 
-**"Western convention" does not mean Western names.** Her clarification, and the
-thing that was being got wrong: *"Western convention does not mean that there are
-only western names. For the most part, everything that behaves like a surname, or
-is a first name that behaves like a first name, or is a patronymic, would
-count."* So the classification is **behavioural, not geographic**, and CJK names
-are in scope.
+- **Classify by dominance ratio WITH a bearer floor**, not by presence in both
+  slots. Only 12% of the 7,838 both-slot tokens put 95% of bearers in one slot;
+  above 50 bearers it is 45%. Below the floor a 1-vs-1 split is arithmetic, not
+  evidence.
+- **Particles and regnal numerals never become name items** — 41 particles
+  (`de`, `von`, `van`, `y`, `la`, `of`) across 86,772 bearers, plus `I`/`II`/`III`
+  in the given slot.
+- **The patronymic is inside the `GIVN` string**, which is why it needs its own
+  role rather than being read as a middle name. `P3831` → `Q110874`, now in
+  `CLAUDE.md`'s table alongside `Q245025` for middle names. All three resolved
+  **offline** against `reports/wikidata-labels.tsv`.
 
-**Patronymics are their own category, not middle names.** The name enumeration
-she specified:
-
-- given name → *object has role* given name, or the role omitted
-- middle names → *object has role* middle name
-- **patronymics → *object has role* patronymic**, the name item being an
-  **instance of patronymic**, with a convention recording which name it derives
-  from
-
-*"The daughter and son would be the same thing"* — `-son` and `-datter` are both
-patronymic. The series ordinal continues to number the given names in order, with
-the patronymic sitting where a middle name would.
-
-**Not yet resolved and must not be guessed:** the property for *object has role*
-is not in `CLAUDE.md`'s table, and `CLAUDE.md` § *Never query Wikidata* forbids
-looking it up live. Resolve it **offline** against `reports/wikidata-labels.tsv`
-and the downloaded store, then add it to the table — `tests/test_wikidata_ids_documented.py`
-fails on any undocumented ID reaching `src/`.
+**Still open:** the bearer floor is set at 50 in the report's analysis because
+that is where the ratio flips, not because it was chosen. Worth Emma's eye before
+anything is generated from it.
 
 ## 2 · Show both relationship-label populations, then ask
 

@@ -702,6 +702,22 @@ ran.
 | P1477 | birth name | monolingual text |
 | P1559 | name in native language | monolingual text |
 | P1545 | series ordinal | string — **qualifier**, not a claim |
+| P3831 | object of statement has role | item — **qualifier** saying *which kind* of name this `P735` is |
+| Q245025 | middle name | item — the `P3831` value for a middle given name |
+| Q110874 | patronymic | item — the `P3831` value for a patronymic, which is also what the name item is an *instance of* |
+
+**A patronymic is not a middle name, and that distinction is Emma's**
+(2026-08-15). Geni writes `Ole Olsen` into `GIVN`, so the patronymic lands in the
+position a middle name occupies — `Olsen` is a *given* token for 742 people and a
+surname for 266, measured in `reports/name-classes.md`. Her model separates them:
+the name item is an **instance of `Q110874`**, and the `P735` statement carries
+`P3831` → `Q110874` where an ordinary middle name would carry `Q245025` and a
+first given name `Q202444`. `P1545` still numbers them in order. *"The daughter
+and son would be the same thing"* — `-son` and `-datter` are one category.
+
+**These three were confirmed offline**, against `reports/wikidata-labels.tsv`
+from the bulk download, not by asking Wikidata — which is the only way a property
+gets checked here now.
 
 `P1545` is how a person with several given names keeps them in order: each P735
 statement carries the ordinal of that name within the full given-name string.
