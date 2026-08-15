@@ -7044,3 +7044,33 @@ not contain** — they exist on Wikidata and we have never exported them.
 
 **But the earlier claim was not established when it was made.** It was a floor
 quoted as a measurement, and it happened to be close. That is luck, not method.
+
+
+## 2026-08-15 — item 19: who the isolated Wikidata people are
+
+**185,422 humans in the store state no `P22`/`P25`/`P40`/`P3373`/`P26` at all** —
+13% of the 1,417,100 humans we hold. `edge-of-slice`, items whose relatives were
+simply never downloaded, is a separate **131**, and is reported separately because
+it is a fact about our download rather than about Wikidata.
+
+**They are overwhelmingly ours already: 99.1% carry a `P2600`.** 183,674 of
+185,422. So these are not strangers — they are Geni people who reached Wikidata,
+and the thing missing is the genealogy, exactly the shape `CLAUDE.md` records for
+the Samaritan priests and for `Q140568870`.
+
+**They are modern.** 47.8% born in the 1800s and 28.1% in the 1900s — **76% in two
+centuries**. Everything before 1500 together is under 1.5%. Emma's guess about the
+Geni-linked items skewing modern (`todo.md` § 8b, deferred until the download
+finished) holds for this population.
+
+| | |
+| --- | ---: |
+| male | 142,750 (77.0%) |
+| female | 42,550 (22.9%) |
+| carries an occupation `P106` | 94,393 (50.9%) |
+| carries a noble title `P97` | 1,501 (0.8%) |
+| carries a birth date | 153,118 (82.6%) |
+
+**Half carry an occupation and only 0.8% a title**, which is the opposite of the
+pre-modern population this project usually works with. These are documented modern
+people with no family tree on Wikidata — and we hold their families on Geni.

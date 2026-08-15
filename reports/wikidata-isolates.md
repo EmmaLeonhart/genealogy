@@ -1,196 +1,62 @@
-# The Geni-linked Wikidata items with no family at all
+# Who the isolated Wikidata people are
 
-**Counted in full 2026-08-09 (`9a4a83e`), and re-counted independently
-2026-08-10 by `scripts/count-isolates.py`** — all 1,408 shards, 1,408,401 items,
-offline. The totals agree exactly. The sample this report was first written from
-(24 shards, ~1.7%) is preserved below where it differs, because what the full
-pass changed is worth being able to see.
+**Emma, 2026-08-15:** *"I want to basically analyze them demographically."*
 
-The `sample said` column below compares against that 24-shard sample, not
-against the first full count.
+**Isolated = the item states no `P22`/`P25`/`P40`/`P3373`/`P26`.** Every one
+is a row in `reports/wikidata-isolates.csv`.
 
-| | count | of Geni-linked | sample said |
-| --- | ---: | ---: | ---: |
-| items in store | 1,408,401 | | |
-| carrying a Geni ID | 514,903 | | |
-| connected — a relation pointing at an item we hold | 331,220 | 64.3% | 65.1% |
-| **true isolate — no relation statement whatsoever** | **183,681** | **35.7%** | 34.9% |
-| looks isolated, relations all point at un-fetched items | **2** | 0.0004% | 0 of 9,000 |
-| …of the isolates, ones already in our tree | 330 | 0.18% | ~286 est. |
-
-*(330 against the 151-export tree; the first full count found 246 against 145
-exports. The tree grew by 23,154 people in between.)*
-
-**One correction, and it matters more than its size.** The sample found *zero*
-"looks isolated" items in 9,000 and this report called the second reading
-**dead**. It is not dead — it is **2 items in 514,903**. The conclusion drawn
-from it survives intact (isolation is not an artifact of stopping the download
-early, and finishing the import will not close it), but "absent" was a sample
-result stated as a fact about the store, and the honest word is *vanishing*.
-The two are named now: **Q68188** (Johann von Ewald, 13 Wikipedia articles) and
-**Q928741** (Fausto Gardini, 10). Each carries exactly one relation statement,
-and in both cases it points at an item the download never fetched — Q140701793
-and Q41438181 respectively.
-
-**Why those two were missed is not answerable offline, and the obvious guess is
-wrong.** "Created after our snapshot" dies on measurement: 1,427 stored items
-have a *higher* QID than Q140701793, and **76%** of the store is higher than
-Q41438181. Both sit comfortably inside the range the download covered. The
-record that would settle it is `out/wikidata/download-state.sqlite3`, whose
-`missing`/`error` rows say whether Wikidata refused to serve a QID — and that
-file was lost with `out/` in the 2026-08-09 re-clone. It is described as
-disposable because `rebuild` restores it from the shards, but `rebuild` can only
-recover `done`: a QID that was never stored leaves no trace in a shard. The next
-download run re-attempts them and will answer it for free.
-
-**The isolates are all in the seed phase, and that is structural.** The running
-count reaches 183,681 by shard ~600 and does not move again over the remaining
-800 shards. Seed-phase items were fetched because they carry a P2600; expansion
-items were fetched *because they were somebody's relative*, so they are
-connected by construction and cannot be isolates. The store's own write order
-makes this visible.
-
-**Against `wikidata-components.md`'s 183,296 isolated single items:** the true
-isolate count is **183,681**, 385 higher. The two are measuring adjacent things
-— that report walked components, this one reads per-item relation statements —
-and their near-coincidence is the point: essentially every isolate in the store
-is a Geni-linked person with no family on Wikidata.
-
-**The best-documented ones are not obscure.** Sorted by Wikipedia articles, the
-head of the list is Ovid (201 sitelinks), Avicenna (193), Omar Khayyám (166),
-Aesop (166), Horace (166), Thomas Hobbes (160) — and none of those six is in our
-tree. Browsable: `out/wikidata-isolates.html`.
-
-## The split that matters
-
-`reports/wikidata-components.md` found 183,296 isolated single items and could
-not say *why* they were isolated. Two readings were open, and `queue.md` 2.E
-insisted on keeping them apart:
-
-- a **true isolate** carries no relation statement at all;
-- an item **only looks isolated** when its P22/P25/P26/P40/P3373 point at QIDs
-  the download never fetched.
-
-Of 9,000 sampled items carrying a Geni ID — **superseded by the full count at
-the top of this report, and kept because the one place it was wrong is worth
-seeing**:
-
-| | count | of Geni-linked | full pass |
-| --- | ---: | ---: | ---: |
-| connected — a relation pointing at an item we hold | 5,857 | 65.1% | 64.3% |
-| **true isolate — no relation statement whatsoever** | **3,143** | **34.9%** | 35.7% |
-| looks isolated, relations all point at un-fetched items | **0** | **0.0%** | 2 |
-
-The sample called the second reading **dead** — not rare, *absent*. The full
-pass found two. The proportions were good to within a point; the zero was not a
-zero, and a sample can only ever say "below my resolution". The conclusion it
-supported still holds: isolation is not an artifact of stopping the download
-early, and finishing the import will not close it.
-
-## They are not stubs — this is the surprise
-
-| | share of isolates |
+| | items |
 | --- | ---: |
-| instance of human (`P31`=`Q5`) | 100.0% |
-| sex or gender (`P21`) | 100.0% |
-| family name (`P734`) | 87.8% |
-| date of birth (`P569`) | 85.1% |
-| given name (`P735`) | 82.5% |
-| date of death (`P570`) | 81.4% |
-| country of citizenship (`P27`) | 62.5% |
-| occupation (`P106`) | 57.6% |
-| place of birth (`P19`) | 53.9% |
+| humans in the store | 1,417,100 |
+| **stated-none — no relationship at all** | **185,422** |
+| edge-of-slice — states relatives we do not hold | 131 |
+| connected | 1,231,547 |
 
-The median isolate carries about **15 distinct claim properties**. Examples,
-with their claim-property and sitelink counts:
+**`edge-of-slice` is NOT isolation.** Those items state relationships whose
+targets were never downloaded — a fact about our slice, not about Wikidata.
+Merging the two would measure our own sampling and report it as Wikidata's
+content, which is the § *"Is X present?"* failure this repo keeps making.
 
-| item | label | properties | sitelinks |
-| --- | --- | ---: | ---: |
-| [Q1000203](https://www.wikidata.org/wiki/Q1000203) | Robert Mallet-Stevens | 122 | 19 |
-| [Q1000005](https://www.wikidata.org/wiki/Q1000005) | Karel Matěj Čapek-Chod | 89 | 15 |
-| [Q1000498](https://www.wikidata.org/wiki/Q1000498) | Bud Greenspan | 50 | 13 |
-| [Q1000051](https://www.wikidata.org/wiki/Q1000051) | Joseph C. O'Mahoney | 44 | 11 |
+## By century of birth
 
-These are well-described people with Wikipedia articles in a dozen-plus
-languages. What they are missing is **exclusively the genealogy**: no father, no
-mother, no spouse, no child, no sibling.
+| century | isolated | share |
+| --- | ---: | ---: |
+| BCE | 35 | 0.0% |
+| 1s | 4 | 0.0% |
+| 101s | 5 | 0.0% |
+| 201s | 7 | 0.0% |
+| 301s | 4 | 0.0% |
+| 401s | 5 | 0.0% |
+| 501s | 3 | 0.0% |
+| 601s | 18 | 0.0% |
+| 701s | 10 | 0.0% |
+| 801s | 37 | 0.0% |
+| 901s | 184 | 0.1% |
+| 1001s | 497 | 0.3% |
+| 1101s | 450 | 0.2% |
+| 1201s | 276 | 0.1% |
+| 1301s | 76 | 0.0% |
+| 1401s | 112 | 0.1% |
+| 1501s | 668 | 0.4% |
+| 1601s | 1,912 | 1.0% |
+| 1701s | 8,020 | 4.3% |
+| 1801s | 88,666 | 47.8% |
+| 1901s | 52,039 | 28.1% |
+| 2001s | 90 | 0.0% |
+| no date | 32,304 | 17.4% |
 
-## Why this is the clearest authoring target in the project
+**Only 153,118 of 185,422 carry a birth date at all** (82.6%).
 
-`todo.md` § 4 is about creating absent people on Wikidata. This population is
-the easier half of that and had not been identified: the *items already exist*
-and are good. Each one names a Geni profile, and Geni is a genealogy site whose
-whole content is the relationships Wikidata is missing here.
+## Sex, and what else they carry
 
-So the edit is P22/P25 (and P26/P40) onto an existing, well-sourced item — not
-item creation, not entity resolution, and not a name match: the Geni ID on the
-item is the join, which is this repo's primary key.
+| | items | share |
+| --- | ---: | ---: |
+| male | 142,750 | 77.0% |
+| female | 42,550 | 22.9% |
+| not stated | 122 | 0.1% |
+| carries an occupation `P106` | 94,393 | 50.9% |
+| carries a noble title `P97` | 1,501 | 0.8% |
+| **carries a Geni ID `P2600`** | **183,674** | 99.1% |
 
-## The full count, 2026-08-09 — and its independent re-run
-
-The sample above is superseded by a complete pass. **183,681 Geni-linked items
-carry no relation statement**, of which **246** were people our tree held at 145
-exports. The sample predicted ~179,800 and ~286 — close enough on both that
-nothing in the reasoning changes.
-
-**Re-counted independently on 2026-08-10** by `scripts/count-isolates.py`,
-against the 151-export tree, and the total reproduced **exactly**: 183,681. That
-is worth more than a fresh number, because the two passes were written
-separately. The in-tree figure moved **246 → 330**, which is not a disagreement:
-the tree grew from 275,437 to 298,591 people over six exports, so more isolates
-are people we now hold.
-
-Full list: `reports/wikidata-isolates.tsv`. Browsable, sorted by number of
-Wikipedia articles so the best-documented come first:
-`out/wikidata-isolates.html` — **tracked** since the 2026-08-09 re-clone
-destroyed it; rebuild with `python scripts/build-isolates-page.py`.
-
-**One definitional catch worth stating.** 183,681 here is slightly *larger* than
-the 183,296 single-item components in `reports/wikidata-components.md`, and the
-two are not the same measurement. This count is "the item states no relation";
-that one is "nothing links the item in either direction". An item can state no
-parent and still be named as somebody else's parent — no outgoing edge, an
-incoming one. For adding family **to** an item, the outgoing-absent count is the
-right one, which is why it is used here. For "is this person isolated in the
-graph", it is not.
-
-The isolates also stop appearing after roughly shard 800 of 1,408: they are
-concentrated in the seed phase, and the expansion tail is made of items fetched
-*because* they were someone's relative, which by construction have relations.
-
-## Except it is not, and the same sample says so
-
-The obvious next step was to assume Geni supplies the family. Measuring the
-overlap costs nothing once the sample is open, so it was measured rather than
-assumed — and it kills the easy version of the story:
-
-| | in our tree |
-| --- | ---: |
-| Geni-linked items **with** family on Wikidata | 201 of 5,857 — **3.43%** |
-| Geni-linked items **without** family (the isolates) | 5 of 3,143 — **0.16%** |
-
-**An isolate is twenty-one times less likely to be somebody we hold.** Scaled
-up: of ~180,000 isolates, roughly **286** are people already in our tree. The
-immediately actionable slice is not 180,000. It is a few hundred.
-
-The asymmetry is itself the finding, and it is not a sampling accident at these
-counts. Our tree is built by walking Geni's family graph, so it fills with
-exactly the densely-related population — the royal and noble lines Wikidata also
-records parents for. The isolates are the other kind of notable person: writers,
-architects, senators, who have a Geni profile and sit outside the big
-interconnected genealogy on *both* sites.
-
-**What this does not say.** It does not say Geni lacks their family. It says no
-export here has reached them, which is a fact about our sampling and not about
-Geni — the distinction `CLAUDE.md` insists on for `density`, and it applies
-unchanged. Whether Geni holds parents for a Wikidata isolate is exactly the
-unknown one export would settle, and the cheapest test is a handful of exports
-seeded on isolates we can already see.
-
-So the population is **an export target list, not an authoring list** — the
-reverse of the reading the previous section sets up, and the reason that section
-is left standing above rather than quietly rewritten.
-
-**Still not established:** whether an isolate exported from Geni comes back with
-family. Until one does, "add P22/P25 to 180,000 good items" is a hypothesis with
-a measured obstacle in front of it.
+A `P2600` on an isolated item is the case `CLAUDE.md` describes: the person
+is on Geni **and** on Wikidata, and what is missing is the genealogy.

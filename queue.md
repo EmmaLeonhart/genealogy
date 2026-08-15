@@ -682,31 +682,6 @@ the repo, stale ones corrected or closed, and the difference between *stale* and
 *incomplete* stated for each. Four items were found stale rather than incomplete
 last time; that is the expected shape.
 
-## 19 · Who are the isolated Wikidata individuals? A demographic analysis
-
-**Emma, 2026-08-15:** *"Can you look over the isolated wikidata individuals? I
-want to analyze who they are. We did a bit of analysis but I want to basically
-analyze them demographically."*
-
-**Isolated means present as an item and absent as genealogy** — `CLAUDE.md`
-§ *An item with no relationships is not a missing item*. The Samaritan high
-priests were the worked example: on Geni, on Wikidata, and attached to nothing.
-Her own item `Q140568870` is the same shape.
-
-**Demographic, not just a count.** The previous pass established *that* they
-exist. This one asks *who they are*: century of birth and death, sex, whether they
-carry `P569`/`P570` at all, occupation `P106`, noble title `P97`, country, and
-which of them carry a `P2600` — plus how many are in the Geni corpus under a
-different route.
-
-**Entirely offline** against `wikidata/items/`, and it must state both stores
-separately, per § *"Is X present?"*. Note the store is a Geni-shaped slice, so
-"isolated in our store" is not "isolated on Wikidata" — an item whose relatives
-simply were not downloaded looks identical to one with no relatives at all, and
-**that distinction has to be made explicitly** rather than assumed away. The
-name-item download currently running does not change this; it fetches names, not
-people.
-
 ## Always last — pinned to the tail
 
 A. **Ensure the three crons are running** — work-loop `3 * * * *`, auto-flush
