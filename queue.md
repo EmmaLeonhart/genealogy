@@ -188,7 +188,13 @@ Sized with one `COUNT` query:
 | `Q110874` | patronymic | 633 |
 
 **~827,536 items, so ~16,500 requests at 50 per batch — about 4.6 hours at the
-default 1s delay.** Inside Emma's stated 3–8 hour budget for item 8.
+default 1s delay.**
+
+**That is NOT the 3–8 hour budget.** Emma, 2026-08-15: *"The three to eight hour
+budget thing is about a completely different thing. It's about the Wikidata
+individuals. It's not about the names. It's not about the name items."* Her budget
+belongs to item 8, the people download. This is its own job with its own cost, and
+quoting her figure against it was borrowing an authorisation she had not given.
 
 **Why every item and not the 132,456 our people reference.**
 `reports/name-item-download.md` sized the *referenced* set — which is the wrong
@@ -198,6 +204,21 @@ individual query the rules forbid.
 
 **What it unblocks:** item 2. Telling `Q110874` from `Q202444` needs the item's
 own `P31`, and all 1,731 competing QIDs are currently absent from the store.
+
+**Where the name work has been getting its data until now**, because Emma asked
+and the answer is narrower than it looks:
+
+- **the QIDs** — off our own stored *people*. An item states `P735 → Q4925477`;
+  that is a local read of the shards. `reports/name-items.csv`, 132,569 rows,
+  every one marked `in_store: no`.
+- **the labels** — `scripts/fetch-referenced-labels.py`, run 2026-08-12 on her
+  instruction, batched via `VALUES`, one request per batch, POST, never per item.
+  `reports/wikidata-labels.tsv`: 876,840 items and 5,637 properties.
+
+So it has been running on **QID plus label and nothing else** — which is why a
+name string resolves to an item at all, and why `P31` is empty for every one of
+them. No per-item query ever happened; the gap is that the item download was
+sized in `reports/name-item-download.md` and never run.
 
 ## 8b · The offline patronymic classifier — buildable NOW, no download needed
 
