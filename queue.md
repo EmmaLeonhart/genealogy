@@ -540,6 +540,16 @@ I am adding this here because I'm not sure how reliable it is to ask the chat to
 
 Add to the queue that we are going to look over the geni exports to try to find large clusters like the Javanese ones that have only one geni export covering them. My perception here is that such areas are more likely to have important links that were not covered and that with a different entry point and a larger export window thing, particularly looking at the deepest members of such clusters of people only in one export. again this is at the end of the queue.md
 
+## Other thing
+
+It is clear here that the Wikidata data that we were importing over the past little while is not sufficient, and my intention as a result of this is that you are going to have to do a bit of a comprehensive importing again.
+
+We were at a point where it was good, where we had our existing scripts related to Wikidata, and the level of missing/queued people was going down. I don't know what the rate of that was, but I want to continue with that. I think that it's possible we're going to be able to comprehensively get all the Wikidata stuff eventually. Because I realized that the geni stuff lacking wiki data was more of a concern than I was expecting Because it was interfering with some of the entity resolution, where there would be a missing wiki data link and there would be a present geni link I had earlier assumed that this was not the case, although I am interested in it here. If we'd be able to specifically look at this stuff, prioritizing the ancient, I want to spend maybe 3 to 8 hours working on this without thinking with the algorithm that we already had that was working great. If that algorithm isn't working well, then I'd like to switch towards one that prioritizes people in ancient times or people who do not have birthdates and what's linked on them first, and then, from that, moves on to more recent people.
+
+This is a later thing that I want to do. Again, we have great software. We have a great script for downloading. We should use the great download script and come up with some level of estimation of how long it'll take to actually properly get all the Wikidata stuff. If it turns out that, after that, the amount doesn't seem like there's a clear end point, then we move on to this stuff.
+
+When you reach this queue item, do not build the new tooling. Whatever the fuck you do, do not build the new tooling. You should be setting up cron jobs or something to do tests on the existing tooling that you're going to run to figure out what's going on and whether it fits it. Run the tooling for several hours, and then make a decision. 
+
 ## Always last — restart the three crons and summarize
 
 **These two items stay pinned to the tail of the queue at all times** — below every real work item:
