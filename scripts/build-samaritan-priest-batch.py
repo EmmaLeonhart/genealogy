@@ -35,7 +35,10 @@ import sys
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
+from labels import label_for  # noqa: E402
 
 CENSUS_PEOPLE = REPO / "reports" / "samaritan-people.csv"
 CENSUS_FAMS = REPO / "reports" / "samaritan-marriages.csv"
@@ -159,8 +162,11 @@ def main() -> int:
     for e in batch:
         g = e["subject"]["geni_id"]
         lines.append("CREATE")
-        lines.append(f'LAST\tLen\t"{e["labels"]["en"]}"')
-        lines.append(f'LAST\tLmul\t"{e["labels"]["mul"]}"')
+        # An empty label is deliberate - see scripts/labels.py. Emitting
+        # `Len ""` would set a blank label rather than leaving it unset.
+        if e["labels"]["en"]:
+            lines.append(f'LAST\tLen\t"{e["labels"]["en"]}"')
+            lines.append(f'LAST\tLmul\t"{e["labels"]["mul"]}"')
         lines.append(f'LAST\tDen\t"{e["descriptions"]["en"]}"')
         lines.append(f"LAST\tP31\t{HUMAN}\tS2600\t\"{g}\"")
         lines.append(f'LAST\tP2600\t"{g}"')
