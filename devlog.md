@@ -6513,3 +6513,24 @@ matching, and now he is here.
 
 The zip is ignored by its own explicit line, per the one-line-per-file rule that
 keeps an unlisted download visible in `git status`.
+
+## 2026-08-16 — labels move to last; creations come first
+
+Item 9 assumed `ja`/`zh` could be copied from the relative the way `en` is.
+**Measured, that route reaches 3%.** The 14,351 generable relationship labels are
+named by 8,018 distinct relatives, of whom **only 432 carry a Wikidata QID** — so
+`ja` is copyable for 478 people and `zh` for 439. `en` reaches all 14,351 because
+Geni gives nearly everyone an English name; `ja`/`zh` have nothing to copy from.
+
+Emma's two rulings on being shown that:
+
+- **The labels do not ship early and do not ship English-only.** *"WE ARE NOT
+  DOING THIS SHIT UNTIL WE HAVE JA and ZH LABELS ON EVERYTHING THIS IS RIGHT
+  BEFORE WIKIDATA EDITING."*
+- **Create the relatives first, then label.** The 3% ceiling exists because the
+  relatives are Geni-only people not yet on Wikidata — and **7,851 of them are
+  already the `create_individual` placeholders the structural walk produced**.
+  Creating them lifts the ceiling as a side effect, and each one can carry
+  `ja`/`zh` from the start rather than being revisited.
+
+Queue items 7, 8 and 9 merge into one item, moved to the end of the pipeline.

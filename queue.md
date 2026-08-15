@@ -150,46 +150,35 @@ problem is there lol. But about only geni well same? Tehy are created lol."*
 The 162 ambiguous positions are left alone: Wikidata names more than one parent
 there, so the position does not single anybody out.
 
-## 7+8 · Placeholder labels — BUILT, but NOT to be run until item 9 lands
+## 7+8+9 · Placeholder labels — LAST, and not until `ja`/`zh` exist on everything
 
-`reports/wikidata-placeholder-labels.json`, **26,281 `set_labels` edits**: `mul`
-on all of them, `en` on the 14,351 who have a relative with a real name.
+**Emma, 2026-08-16:** *"WE ARE NOT DOING THIS SHIT UNTIL WE HAVE JA and ZH LABELS
+ON EVERYTHING THIS IS RIGHT BEFORE WIKIDATA EDITING."* So this is the final step
+of the pipeline, not an early one, and it does not ship English-only.
 
-**Do not run this yet.** Emma, 2026-08-16: *"this is something that we shouldn't
-be running this thing at all really until we've already given everything a
-Japanese and Chinese label or potentially whatever other languages were
-included."* Every one of the 26,281 is missing `ja` and `zh`, and shipping
-English-only labels now would mean revisiting all of them.
+`reports/wikidata-placeholder-labels.json` is **built** — 26,281 `set_labels`
+edits, `mul` on all, `en` on 14,351 — and **must not run** in that state.
 
-**And the construction is not a template.** Her answer to how ja/zh should be
-built: *"Every one of them comes from the Japanese or Chinese label"* — the
-relative's own ja/zh label, not a transliteration of their English one. So item 9
-is a prerequisite, not a follow-up.
+**Why the ceiling is 3% and what lifts it.** Measured 2026-08-16: the 14,351
+generable labels are named by **8,018 distinct relatives, of whom only 432 have a
+Wikidata QID**. So `ja` is copyable for 478 people and `zh` for 439, against
+14,351 for `en`. The relatives are Geni-only people who are not on Wikidata yet —
+**and 7,851 of them are exactly the `create_individual` placeholders the
+structural walk produced.**
 
-## 9 · Label languages — MEASURED 2026-08-16, and the ceiling is 3%
+**So the order is creations first, labels last.** Emma's call, same day: *"create
+the relatives first, then label."* Every person created can carry `ja`/`zh` from
+the start instead of being revisited, and the ceiling rises as a consequence of
+the creations rather than needing its own mechanism.
 
-Emma requires English, Japanese and Chinese on everything, plus `mul`, and said
-the ja/zh labels come from *"the Japanese or Chinese label"* of the relative
-rather than a template. **Measured, that route reaches almost nobody.**
+**Sequence:**
 
-Of the **14,351** placeholder people who have a generable relationship label,
-their naming relative is one of **8,018** distinct people — and only **432 of
-those 8,018 carry a Wikidata QID at all**. So:
-
-| source of a ja/zh label | people reachable |
-| --- | ---: |
-| relative's Wikidata item has a `ja` label | **478** (3.3%) |
-| relative's Wikidata item has a `zh` label | **439** (3.1%) |
-| relative's **Geni** name is Han or kana | 107 |
-
-`en` reaches 14,351 because it copies the relative's English label, which Geni
-supplies for nearly everyone. `ja`/`zh` cannot copy anything, because the
-relatives are overwhelmingly Geni-only people with no Wikidata item.
-
-**So item 7+8 cannot ship on the stated rule** — waiting for ja/zh means waiting
-for something that is 3% available and not growing on its own. Put to Emma
-2026-08-16; her answer decides whether the labels are templated, restricted to
-the ~3%, or English-first after all.
+1. `reports/wikidata-structural-placeholders.json` — 7,851 people on Geni and not
+   on Wikidata, created **with** `ja`/`zh` labels.
+2. Everything else that creates a person: the Samaritan line, the order.life
+   tiers.
+3. Re-measure the ceiling; it should no longer be 3%.
+4. **Then** the 26,281 label edits, with `en`, `ja`, `zh` and `mul` on every one.
 
 ## 10 · Name items: link the 143 that exist, create the rest
 
