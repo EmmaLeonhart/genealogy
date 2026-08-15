@@ -6149,3 +6149,27 @@ relationships is not a missing item, and the Geni ID goes on first before
 anything derived from Geni; and merging the two trees is a walk **up** the
 relationships, where labels confirm a position the structure already chose rather
 than searching for one.
+
+## 2026-08-15 — the provisional queue folded back in, one day after it was made
+
+Emma made `provisional-queue.md` in the morning because `queue.md` was untrusted
+while the audit ran, and asked in the evening whether it could go: *"does this
+mean that the queue is kind of a clean list of tasks and stuff, so that we can
+put our provisional queue at the end of it and delete the provisional queue
+file?"*
+
+It could, but not by concatenation — three items overlapped. The merge
+deduplicated them: the old NN item kept its measured guardrails (the 5,296
+profiles that also carry a real name, the surname contaminations, the rule
+against screening by length) and lost its stage-2 spec, which the settled
+relationship-label item now holds in full.
+
+**14 items, each tracing to a dated instruction in the transcripts**, plus the
+cron table so a scheduled item is visibly a real `CronCreate` job rather than a
+line in a file. A second queue file was the *"second store"* mistake `CLAUDE.md`
+already warns about after `data_lake/`; it lasted one day on purpose.
+
+One wording correction from Emma, worth keeping because the vocabulary is
+load-bearing here: multi-hop labels are **not "parked"**. Parked means abandoned
+in this repo — the Wikidata isolates are parked. Multi-hop is item 13, an
+ordinary queued task the work loop reaches in the normal order.

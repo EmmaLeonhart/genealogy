@@ -15,6 +15,11 @@ settles. Item 0 below is that audit.
 
 ---
 
+**`provisional-queue.md` is gone**, folded in here on 2026-08-15. It existed
+because this file was untrustworthy while the audit ran; the audit is done, the
+items below all trace to a dated instruction in the transcripts, and a second
+queue file is exactly the *"second store"* mistake `CLAUDE.md` warns about.
+
 ## 0 · STANDING PROCEDURE — audit this queue against the chat logs before running it
 
 **Emma, 2026-08-14, and this item exists because she could not tell what was
@@ -96,6 +101,28 @@ the older files are where standing decisions were made. Then:
 
 ---
 
+## Scheduled — live cron jobs, this session
+
+Session-only: they die when the Claude session ends and are recreated at the
+start of the next one.
+
+| id | fires | what |
+| --- | --- | --- |
+| `d425c1f5` | :03 hourly | work-loop |
+| `be98e574` | :15 hourly | auto-flush — commit and push anything pending |
+| `f8b152ab` | :42 hourly | status-report — reporting only |
+| `f3d681e4` | **19:07** | **re-merge** the 203-export corpus, refresh the derived reports |
+| `43140a93` | **21:02** | **bloat review** — candidates only, nothing deleted without asking |
+| `d62449e3` | **22:01** | ask about `reports/seeds.md`'s future |
+| `9f41a7a4` | **23:03** | entity-resolution: is it still a real task, and what format now |
+| `05926d1d` | **00:01** | **the structural Geni↔Wikidata merge** |
+
+The ordering is deliberate. The midnight merge needs *"the proper synoptic tree
+and the proper samaritans"*, so the re-merge runs at 19:07, five hours ahead of
+it, rather than after midnight.
+
+---
+
 ## 1 · Merge the two trees structurally — the midnight job
 
 **Emma, 2026-08-15, and she says plainly it has not been done:** *"it is an idea
@@ -167,39 +194,18 @@ DAR/SAR, Find a Grave, a large Swedish cluster. Same numbers and meanings as
 Wikidata, values Wikidata often lacks, on items that already exist. **No
 creation, no normalisation** — the easiest remaining win.
 
-## 7 · Normalise the placeholder names, then generate relationship labels
+## 7 · Normalise the placeholder names to `NN`
 
-**Emma, 2026-08-14.** Two stages, the second explicitly at the END of the queue.
-
-**Stage 1 — normalise every placeholder form to `NN`.** All 55 discovered forms
-(`reports/given-name-forms.csv`, 35,414 records) collapse to one `mul` label:
-
-- no surname -> `mul: "NN"`
-- surname present -> `NN <surname>`
+**Emma, 2026-08-14.** All 55 discovered forms (`reports/given-name-forms.csv`,
+35,414 records) collapse to one `mul` label: `NN`, or `NN <surname>` where a
+surname is present. The **relationship** labels that go with this are item 8,
+whose spec is settled.
 
 **Guardrail, measured:** of the 33,564 profiles carrying a placeholder name,
 **28,268 have ONLY placeholder names and are safe**, and **5,296 also carry a
 real name** — `/Avitus/` on one record and `Avitus, Western Roman Emperor` on
-another. Those 5,296 must keep the real name;
-`reports/name-alternatives.csv` lists them individually.
-
-**Stage 2 — progressive relationship labels, per language.** Generate labels from
-recorded relationships in this precedence:
-
-1. parent  2. father  3. mother  4. spouse  5. child
-
-producing `daughter of Joe`, `wife of Carl`, `mother of Joseph`.
-
-**A relationship label can only exist in a language the RELATIVE already has a
-label in** — that is the binding constraint and it is measured before anything is
-generated.
-
-**Every item must carry English AND Japanese, plus the `mul` label.** Emma,
-2026-08-14: *"English and Japanese have to be present on everything and then
-there's the multi-language label."* Measured ceiling for relationship labels
-(`reports/relationship-label-languages.md`): en 96.1%, nl 81.1%, de/es/fr ~32%,
-`mul` 25.3%. Japanese is **not** in the top 18 by coverage, so `ja` will usually
-have to be constructed rather than copied from a relative.
+another. Those 5,296 must keep the real name; `reports/name-alternatives.csv`
+lists them individually.
 
 **The surname is usually informative, with two contaminations — measured
 2026-08-14.** Of the 29,452 placeholder records on profiles with no real name,
@@ -210,7 +216,8 @@ have to be constructed rather than copied from a relative.
   surnames contain CJK.** These are real family names and are exactly the P734
   material.
 - **Contamination 1: placeholders inside the surname slot.** `NN` 158, `???` 119,
-  `N.N.` 70, plus `?`, `??`, `**`, `'`. The surname field is not clean.
+  `N.N.` 70, plus `?`, `??`, `**`, `'`. Emma's rule, 2026-08-15: these **collapse
+  to bare `NN`**, since a surname of `???` carries no information.
 - **Contamination 2: a place in the surname slot.** `隴西狄道` (Longxi Didao)
   110 records — the `SURN 秦州成紀` trap from `CLAUDE.md` § *A clan name is not a
   clan*, recurring.
@@ -219,10 +226,86 @@ have to be constructed rather than copied from a relative.
 Korean and Chinese surnames are one character — 이 and 김 would both be discarded.
 Screen on the placeholder vocabulary and on punctuation, never on length.
 
-**Open, Emma's own uncertainty:** whether to run stage 2 for people who already
-have a surname, or only for the bare-`NN` ones. Put to her in item 1.
+## 8 · Relationship labels — SETTLED, ready to generate
 
-## 8 · Small, named, and unblocked
+`reports/relationship-label-preview.md` showed both populations and Emma decided
+on the rows. **26,281 people carry a placeholder given name.**
+
+**Who gets a generated label: everyone with a placeholder given name.** No
+filter on whether they have a surname, and **no filter on whether the surname is
+repeated inside the generated label** — the 331 cases where `NN Kalf` becomes
+`son of Anders Kalf` are generated, because the label still carries a given name
+the `mul` label does not. Her two earlier answers pointed opposite ways on this;
+shown the actual rows, she chose to generate.
+
+**The surname is preserved, and the 36% is the reason.** A relative has a real
+name for **69%** of bare-`NN` people but only **36%** of `NN <surname>` people.
+Emma read that correctly and I had it backwards: *"the surname ones being badly
+connected is kind of evidence in favour of the fact that we need to keep the
+surname."* For that population the relationship label usually **cannot** be
+built, so the surname is the only informative thing they have. `mul` stays `NN`
+or `NN <surname>`.
+
+**Precedence, one hop:** parent (father, then mother), spouse, child →
+`daughter of Joe`, `wife of Carl`, `mother of Joseph`.
+
+**Two rules from the preview, both hers:**
+
+- **A redacted or placeholder relative is skipped** and the precedence falls
+  through to the next one, trying every spouse and child rather than only the
+  first. This removed all 2,730 labels reading *"husband of `<private>` Gaya
+  Pereira"*. Only 1,052 of the 7,654 affected people (13%) recover a label from a
+  later relative — for the rest the skip costs the label outright.
+- **A surname that is itself placeholder vocabulary collapses to bare `NN`** —
+  `NN ???`, `NN NN`, `NN N.N.`, `NN Unknown`. 351 people.
+
+**Unknown sex takes the neutral form** (`child of`, `spouse of`), 127 cases. No
+gender is inferred to make a label read better.
+
+**Yield:** 14,351 of the 26,281 get a one-hop label — 13,140 bare `NN` and 1,211
+with a surname.
+
+## 9 · Label languages: English, Japanese, Chinese, and `mul`
+
+Emma, 2026-08-15, resolving the 08-12 / 08-14 conflict in favour of the longer
+list: **English + Japanese + Chinese + `mul`**, with Korean in the covered set
+too. Her reasoning, which is the part worth keeping:
+
+- *"Japanese is the lostiest language"* — it is not in Wikidata's top 18 by
+  coverage, so `ja` nearly always has to be constructed rather than copied.
+- *"Chinese needs to be generated to differentiate stuff with Japanese and
+  Korean."* A Han-only string does not say which language it is; having zh
+  explicitly is what separates the three.
+- English is standard.
+
+*"We might extend this to other languages, but this is something I consider to be
+up for debate right now."* So the set is not final — do not build it as if it
+were closed.
+
+## 10 · Name items: link the 143 that exist, create the rest
+
+**One item per USAGE, not per string** — `CLAUDE.md` § *"Jackson Jackson
+Jackson"*. A token used as a given name, a surname and a patronymic is three
+items. Nothing adjudicates between them.
+
+**Already saved so nothing gets duplicated:** `reports/name-items.csv` (132,569
+given- and family-name items our people reference) and
+`reports/patronymic-items.csv` (**all 633** Wikidata items that are `instance of`
+`Q110874`, fetched 2026-08-15).
+
+- **143 of the 633 match a token in this corpus** — `Eriksson` (331 bearers),
+  `Eriksdotter` (146). **Link these, never create them.**
+- **4,143 patronymic-shaped tokens have no item.** Wikidata's patronymic coverage
+  is Russian, Icelandic, Spanish and Ukrainian; Swedish has 13 items and
+  Danish/Norwegian essentially none, which is most of this corpus.
+- **A created patronymic item carries `P31` → `Q110874` and `P144` → the base
+  name's item**, plus the derivation in the description text. 119 of the 633 do
+  this already. `P5278` pairs `Eriksson` with `Eriksdotter`.
+- **The suffix is evidence, not proof.** `-ovich`/`-ovna`/`-sdatter` are
+  reliable; `-son`/`-sen` are not — `Jefferson` has 30 bearers in the given slot.
+  `reports/name-classes.md` has the per-suffix reliability.
+
+## 11 · Small, named, and unblocked
 
 Each of these is one instruction with no decision attached.
 
@@ -239,7 +322,41 @@ Each of these is one instruction with no decision attached.
 - **The Samaritan office** (`Samaritan High Priest`) is still only a description;
   no `P106`, because choosing the item means asking Wikidata.
 
-## 9 · Wikidata batches built and waiting — nothing runs before 1 Sept
+## 12 · The old Geni export on Google Drive
+
+`1nwHvAJTv_rrq_rBWhFrJXjy62ok-Ly-E` — **`export-geni.zip`, 895,065 bytes, created
+2026-08-13 06:56**, owned by Emma. The Drive MCP server **can** see it; the
+metadata above came from it.
+
+What stopped it: moving 895 KB of binary through the model's context as base64
+costs roughly 300k tokens in and 300k back out to write it to disk, for a file
+Emma can download in one click. So it sits here rather than being forced.
+
+**Unblock:** download it to `~/Downloads` and it gets filed and merged like any
+other export. Per `CLAUDE.md`, where it goes under `exports/` is **her call** —
+and if the destination path already exists, stop rather than overwrite.
+
+## 13 · Multi-hop relationship labels
+
+Emma, 2026-08-15: *"Put this at the end of the… queue, and we'll work on this
+later. We'll immediately get working on this."* **This is an ordinary queued
+task, not parked** — it sits at position 13 because that is where it goes in the
+order, and the work loop reaches it in the normal way. ("Parked" in this repo
+means abandoned, as the Wikidata isolates were; that is not this.)
+
+Her sketch of the ordering, extending the one-hop precedence rather than
+replacing it:
+
+**child-of → spouse-of → parent-of → grandchild-of → sibling / nephew / uncle.**
+
+**Measured, so the size is known before it is built:** of the **11,930** people
+with no one-hop label, **3,604 (30%) have a named relative two hops out** — 2,020
+via a grandfather, 1,449 a grandmother, 135 a grandchild. So it is present in the
+data and worth about a third of what one hop leaves behind.
+
+Sibling, uncle and nephew need the family graph rather than the derived CSVs, so
+that part waits on the re-merge.
+## 14 · Wikidata batches built and waiting — nothing runs before 1 Sept
 
 Their `.qs` siblings were deleted with QuickStatements on 2026-08-15; the
 JSON is the artifact.
