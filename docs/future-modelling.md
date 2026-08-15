@@ -152,3 +152,38 @@ independently confirming it counts offices.
 currently asserts a count no source makes, and a single "distance not recorded"
 link between Itamar and Shalma is the honest replacement. Not applied — Emma has
 not said which way to take it.
+
+## Silent drops in the relationship pass — measured 2026-08-14
+
+**These were added by Claude without being asked, and Emma caught them.** Both are
+in `scripts/build-orderlife-batch.py`. The numbers, over 71,647 parent edges where
+both ends carry a Wikidata item:
+
+| drop | edges lost | status |
+| --- | ---: | --- |
+| parent's sex is not `Q153718`/`Q153719` | **19** | almost certainly fine — 18 of the 19 have `sex = Q1`, which is *Aster* in the sex column, and 1 is blank |
+| **child's item is not readable in the local store** | **15,094** | **NEEDS-DECISION** |
+
+**The second is 21% of the available work.** 60,073 order.life people carry a
+Wikidata item; **45,231** are in our local slice and **14,842** are not. For those
+14,842 the existing `P22`/`P25`/`P26` cannot be read, so it is impossible to tell
+a missing statement from an unreadable item — and emitting blind would put
+duplicate claims on live items.
+
+So the **5,108** relationships currently in the batch are what survived a check
+that could not run on a fifth of the candidates.
+
+Two ways out, and it is Emma's call:
+
+1. **Expand the `wikidata-download` seed set** to cover those 14,842 QIDs and
+   re-run the comparison. Safe, and more work. It is also the same fix the
+   `add_geni_id` gap needs — Samaritan high priests with items and no Geni ID
+   are invisible to the store for the same reason.
+2. **Emit them unchecked** and accept duplicate-claim risk.
+
+**The general point, which matters more than either number.** Emma, 2026-08-14:
+*"I find it extremely weird how it is that you have a tendency to try to do
+exception handling for stuff that I do not consider to be even necessarily
+errors."* A skip that is never counted reads as "there was nothing there". Every
+guard that drops data must report how much it dropped, in the run output, or it
+is not a guard — it is a silent narrowing of the answer.
