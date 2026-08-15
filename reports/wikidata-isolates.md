@@ -60,3 +60,61 @@ content, which is the § *"Is X present?"* failure this repo keeps making.
 
 A `P2600` on an isolated item is the case `CLAUDE.md` describes: the person
 is on Geni **and** on Wikidata, and what is missing is the genealogy.
+
+
+## Who they actually are — Emma's questions, 2026-08-15
+
+She asked for this and named what she wanted: *"the degree that these people have,
+Anglophone names, their nationalities, maybe some level of categorization... Do
+they tend to be celebrities? Do they tend to be athletes? Do they tend to be
+academics?"* The first version of this report answered with centuries and with the
+tautology that 99.1% carry a `P2600` — which is the definition of the group, not a
+finding.
+
+### Her guess about Wikipedia — WRONG
+
+*"My guess is, out of these people, almost all of them have Wikipedia articles. Is
+that true?"* No.
+
+| | of 183,674 |
+| --- | ---: |
+| any Wikipedia article | 83,226 (**45.3%**) |
+| English Wikipedia | 46,237 (25.2%) |
+| **none at all** | **100,448 (54.7%)** |
+
+### Her guess about Geni connectedness — untestable for 99.6%, and false for the rest
+
+*"They tend to be people who are relatively not that well-connected on Jenny."*
+
+**Only 722 of the 183,671 are in our Geni corpus at all — 0.4%.** The other
+**182,949 appear in none of our 203 exports**, so their Geni connectivity is not
+something this data can speak to.
+
+For the 722 we do hold: median 2 relatives, mean 3.28 — against a whole-corpus
+median of 2 and mean 3.20. **Indistinguishable from everybody else.**
+
+**Her conclusion still holds, for a different reason.** Not that they are poorly
+connected, but that they are *outside the tree entirely*. Her ruling, same day:
+*"this group of people is a group that I probably would consider to be very low
+priority... I don't think that they're that important to get into the World Tree."*
+
+### Not celebrities, not athletes — officials, writers and academics
+
+| occupation | | country | |
+| --- | ---: | --- | ---: |
+| politician | 20,273 | United States | 21,543 |
+| writer | 9,157 | **Song dynasty** | **17,259** |
+| lawyer | 5,918 | Kingdom of Italy | 6,400 |
+| university teacher | 5,917 | Germany | 5,232 |
+| journalist | 4,600 | Italy | 4,934 |
+| painter | 4,500 | Sweden | 3,983 |
+| actor | 4,332 | Norway | 3,972 |
+| military personnel | 3,945 | Finland | 3,455 |
+| physician | 3,495 | Netherlands | 3,251 |
+
+`actor` at 4,332 and `film actor` at 2,307 are the only celebrity-shaped entries
+and together are under 4%. **No athlete occupation reaches the top 18.**
+
+**The Song dynasty at 17,259 is the anomaly** — a large Chinese cohort inside a
+group that is otherwise American and European, and it is second only to the United
+States. Not explained here.

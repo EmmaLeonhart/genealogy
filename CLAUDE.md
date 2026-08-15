@@ -943,6 +943,24 @@ The suite is fast, needs only pytest, and covers the real 24 MB exports. The one
 thing local runs cannot do is the Python version matrix — `tests/test_python_floor.py`
 is a partial stand-in for that, and says so.
 
+### The 183,674 isolated Geni-linked Wikidata items are LOW PRIORITY
+
+**Emma's ruling, 2026-08-15**, after the demographic analysis:
+*"this group of people is a group that I probably would consider to be very low
+priority, and I don't consider my relationship with them to be that important. I
+don't think that they're that important to get into the World Tree."*
+
+`reports/wikidata-isolates.md` is the analysis. The measurement that matters:
+**only 722 of them — 0.4% — are in our Geni corpus at all.** The other 182,949
+appear in none of the 203 exports, so they are not people the tree is missing a
+link to; they are outside it entirely.
+
+They are politicians, writers, lawyers and academics, mostly 19th–20th century,
+and **54.7% have no Wikipedia article** — Emma guessed almost all would.
+
+**Do not spend effort connecting them.** This is recorded because the group is
+large enough (13% of stored humans) to look like a priority and is not.
+
 ### An item with no relationships is not a missing item. Geni ID first, then everything else
 
 **Emma, 2026-08-15, correcting the framing of the Samaritan high priests.** They
