@@ -6617,3 +6617,27 @@ Rebuilding the middle link and re-running everything below it:
 | structural placeholders | 7,851 | **11,387** |
 
 Every number in the queue that came from these was stale by roughly a third.
+
+## 2026-08-16 — the Samaritan source does not conflict with Geni
+
+Queue item 9b, Emma's open question: supersede the hand-transcribed GEDCOMs or
+amend them? **Neither.** Of 137 people present in both,
+**130 agree on the father**, 7 differ, and the transcription holds **48 people
+Geni does not have** — which is the value of having transcribed it.
+
+**Matching took three passes and the first two were wrong in opposite
+directions.** Exact normalised names were too strict: the two sides decorate
+differently in *both* directions — Geni writes `Aaron I /Samaritan High Priest/`
+where the source writes `Aaron /ben Amram/`, and plain `Ab-Hisda` where the
+source writes `Ab-Hisda /ben Jacob/`. Dropping the regnal numerals was too loose:
+`Levi` then matched any Levi, and it paired `Levi ben Abraham` with a man whose
+father is Simeon.
+
+**What works is the rule the rest of this repo already relies on — the structure
+confirms, the name only locates.** Two people are the same when their own leading
+name agrees *and* their fathers' leading names agree. Decoration falls out; a
+wrong Levi does not survive the father check.
+
+The 7 disagreements go to Emma rather than being resolved here, and at least one
+is only `Phinhas` against `Phinehas`. Three of the seven are cases where Geni
+gives a `119th generation Samaritan…` placeholder as the father.

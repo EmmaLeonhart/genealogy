@@ -262,22 +262,42 @@ Wikidata item reaches 478 people and `zh` 439, against 14,351 for `en`, because
 only 432 of the 8,018 relatives have a QID at all. Transliteration is what closes
 that gap.
 
-## 9b · The old Samaritan GEDCOM against the new export — supersede or amend?
+## 9b · The Samaritan source vs Geni — they do not conflict. 7 cases for Emma
 
-**Emma, 2026-08-16, and she is explicit that she does not know the answer:**
-*"I don't really know what you're supposed to do with the old Samaritan stuff.
-Now that we have this new Samaritan stuff, has that one changed relationship?
-This relationship would kind of either have to be changed in them or they need to
-be superseded… I think it's an easy thing to do but I don't know."*
+`reports/samaritan-source-comparison.csv`, built 2026-08-16. Emma's question was
+whether the hand-transcribed GEDCOMs need superseding now Geni has the same
+people. **Measured, the answer is neither.**
 
-`gedcom/samaritan-sources.ged` and `gedcom/samaritan-itamar-spine.ged` are
-**hand-transcribed from published sources**, carry no Geni profile IDs, and
-predate the four Samaritan exports and export 204. The question is whether their
-relationships still hold now that Geni has the same people with real IDs.
+| | |
+| --- | ---: |
+| present in both, **fathers agree** | **130** |
+| **fathers disagree — for Emma to look at** | **7** |
+| in the published source, not on Geni | 48 |
+| Geni records a father, the source does not | 4 |
+| ambiguous on name alone | 2 |
 
-**Show her the comparison before deciding anything** — which people appear in
-both, and where the two disagree about a parent. Do not supersede a
-hand-transcribed source on inference.
+**The transcription is not superseded and does not contradict Geni.** 130 of 137
+comparable people agree on the father; the 48 it holds alone are its value.
+
+**The 7 to look at**, at least one of which is only a spelling difference
+(`Phinhas` vs `Phinehas`):
+
+- `Matzliach ben Phinhas` — source `Phinhas ben Yitzhaq`, Geni `Phinehas`
+- `Yusef` and `Yusef ben Ab-Hisda` and `Yusef ben Yehoshua` — Geni gives a
+  `119th generation Samaritan…` placeholder as the father
+- `Shalom ben 'Amram` — source `'Amram ben Yitzhaq`, Geni `Shembet ben Bakhi`
+- `Asher ben Shelach` — source `Shelach`, Geni `Matzliach ben Phinehas`
+- `'Abed Hanuna ben Jacob Hadinfi` — source `Jacob Hadinfi`, Geni `Shalma`
+
+**Matching took three passes and the first two were wrong in opposite
+directions**, which is worth keeping because the shape recurs. Exact names were
+too strict — the two sides decorate differently *both* ways, Geni writing
+`Aaron I /Samaritan High Priest/` for the source's `Aaron /ben Amram/` and plain
+`Ab-Hisda` for its `Ab-Hisda /ben Jacob/`. Dropping regnal numerals was too
+loose — `Levi` then matched any Levi, pairing `Levi ben Abraham` with a man whose
+father is Simeon. What works is the rule the rest of the repo already uses:
+**the structure confirms and the name only locates** — same leading name *and*
+same father's leading name.
 
 ## 10 · Name items — PLANNED, and the ambiguous ones need Emma
 
