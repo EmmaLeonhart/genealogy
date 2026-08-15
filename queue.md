@@ -123,24 +123,32 @@ it, rather than after midnight.
 
 ---
 
-## 1 · Merge the two trees structurally — the midnight job
+## 1 · Merge the two trees structurally — STARTED, showing cases
 
-**Emma, 2026-08-15, and she says plainly it has not been done:** *"it is an idea
-of a thing that we still haven't really done yet."* Queued by cron for **00:01**,
-after the re-merge at 19:07, because it needs *"the proper synoptic tree and the
-proper samaritans"* in place first.
+**Emma queued this for midnight and it is running as a walk, not a pipeline.**
+`scripts/walk-structural-merge.py` prints lines and writes nothing;
+`CLAUDE.md` § *How this project works now* says the rule comes out of the cases.
 
-Walk up the relationships from people holding **both** a Geni ID and a QID,
-merging the parents where both sides have one. `CLAUDE.md` § *Merging the two
-trees is a walk up the relationships* is the full rule, including the part that
-is easy to get wrong: **labels confirm a position the structure already chose;
-they never search for one.**
+**First three lines shown 2026-08-16.** 12,620 people hold both a Geni ID and a
+QID and have a recorded parent — those are the anchors. Six generations up the
+Bonaparte line gave **10 AGREE then 2 MERGE**, the merges being people with no
+QID on our side sitting in the identical family position on Wikidata:
+`Maria da Bozzi` ↔ `Maria Colonna di Bozzi`, `Carlo Maria Buonaparte` ↔
+`Carlo Maria Buonaparte`.
 
-Produces two things: our own QID ↔ Geni ID correspondence built from the merges,
-and a placeholder for everyone on Geni but not on Wikidata, to be created later.
+**The structure finds them, not the name.** `Maria Anna Tusilo` /
+`Maria Anna Tusoli` differ by one letter and are already the same item; a name
+matcher would have hesitated. `correspondence.md` still holds: no name
+similarity, ever — the label only confirms a position the structure chose.
 
-**Show cases one by one before generalising.** `CLAUDE.md` § *How this project
-works now* — do not build the pipeline first, and do not reformat the records.
+**Three questions put to Emma and not yet answered**, so nothing is written:
+
+1. Is `MERGE` right as shown, when the two labels differ?
+2. `WD ONLY` — Wikidata names a parent we lack. Import them, or ignore?
+3. `GENI ONLY` — the placeholder population. Record now or later?
+
+Then: build the QID ↔ Geni ID correspondence from the merges, and the
+placeholder system for people on Geni and not on Wikidata.
 
 ## 2 · The Samaritan priests' Wikidata items — the half of the download still open
 
@@ -165,22 +173,22 @@ Emma supplying the QIDs, or a search against Wikidata — which is the thing
 
 ## 4 · Re-merge over 203 exports and refresh the derived reports
 
-**`out/merged.ged` is from 2026-08-13 17:53 and `reports/merge.md` lists 176
-sources.** 27 exports have landed since, including the four Samaritan ones.
-Everything derived from the merge is therefore describing a tree that no longer
-exists — `paths.md`, `density.md`, `connectors.md`, `frontier.md`,
-`descendants.md`, `samaritan-component.md`, the ten path reports.
+**RUNNING as of 2026-08-16 00:30**, started by hand. The 19:07 cron never fired —
+crons only fire while the session is idle and the session was busy continuously,
+so it starved. Emma: *"fucking do this shit right there fuck now or at least
+queue it up at the end so it actually runs."* Waiting on a cron for something
+this load-bearing was the mistake.
 
-Steps, in order:
+`out/merged-176.ged` holds the pre-merge tree — `CLAUDE.md` says keep it whenever
+a batch lands, because it is the only thing that makes the seed-method backtests
+answerable.
 
-1. **Keep the pre-batch tree.** `CLAUDE.md`: *"keep the pre-batch tree whenever a
-   batch lands, it is the only way this question is answerable."* Copy
-   `out/merged.ged` to `out/merged-176.ged` before re-running.
-2. `python -m genimerge merge` — CPU-heavy, so check Emma is not on a hot laptop
-   in public first.
-3. Regenerate the reports whose CLI command exists, then commit.
-4. Re-run `scripts/build-repo-freshness.py` and confirm the `behind_by` column
-   has emptied for the generated rows.
+When it finishes, regenerate the reports whose CLI command exists — inventory,
+paths, connectors, density, frontier, descendants — plus
+`reports/samaritan-component.md`, then re-run `scripts/build-repo-freshness.py`
+and confirm `behind_by` has emptied. **`reports/seeds.md` is deleted and gets
+regenerated here**, which is what Emma meant by "delete it so we could
+regenerate it".
 
 ## 5 · Re-run `build-geni-wikidata-pairs.py` over the 203-export corpus
 

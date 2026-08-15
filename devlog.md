@@ -6349,3 +6349,32 @@ after being tracked** — 99.9 MB then 100.5 MB after the download. Ignored with
 its own line, as the comment written that morning said to do. It rebuilds with
 `genimerge wikidata-index`, which **has to run after every download** or the new
 items are invisible to every offline check.
+
+## 2026-08-16 — the structural merge walks, and the re-merge stops waiting on a cron
+
+**The re-merge was scheduled for 19:07 and never fired.** Crons only fire while
+the session is idle, and the session ran continuously from 19:00, so it starved
+every hour. Emma: *"fucking do this shit right there fuck now or at least queue
+it up at the end so it actually runs."* Started by hand instead, with
+`out/merged-176.ged` kept as the pre-merge tree.
+
+**Holding the midnight structural merge for it was the wrong call**, and Emma
+overruled it. The walk reads `reports/derived-family.csv`, not `out/merged.ged`,
+so a stale merge makes it *smaller*, not wrong. Refusing to start cost hours for
+nothing.
+
+**`scripts/walk-structural-merge.py` prints cases and writes nothing.** 12,620
+people hold both a Geni ID and a QID and have a recorded parent. Six generations
+up the Bonaparte line: **10 AGREE, then 2 MERGE** — people with no QID on our
+side occupying the identical family position on Wikidata.
+
+**The structure is doing the work and the labels are only confirming it**, which
+is the distinction that matters here. `Maria da Bozzi` ↔ `Maria Colonna di Bozzi`
+merged on position alone with labels that differ. `Maria Anna Tusilo` /
+`Maria Anna Tusoli` differ by one letter and were already the same item — a name
+matcher would have hesitated where the structure did not. `correspondence.md`
+holds: no name similarity, ever.
+
+Three questions are with Emma — whether `MERGE` is right when the labels differ,
+what to do with `WD ONLY` parents Wikidata has and we lack, and when the
+`GENI ONLY` placeholders get recorded. Nothing is written until she answers.
