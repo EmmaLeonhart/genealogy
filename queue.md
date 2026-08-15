@@ -153,13 +153,6 @@ edges** — Emma chose *expand the download, then re-check* over emitting
 unchecked. `genimerge wikidata-download` is the only thing in this repo allowed
 to talk to Wikidata, and it is confirmed before a live run.
 
-## 3 · Include the descent-from-antiquity people in the JSON generation
-
-Emma, 2026-08-15, asked whether to import them, leave them out, or see the
-population first: *"No, I am going to say just include these with the generation
-of the jsns and everything."* So people with neither a Geni ID nor a Wikidata
-item go in alongside the rest, not behind a flag or a gate.
-
 ## 4 · Re-merge over 203 exports and refresh the derived reports
 
 **`out/merged.ged` is from 2026-08-13 17:53 and `reports/merge.md` lists 176

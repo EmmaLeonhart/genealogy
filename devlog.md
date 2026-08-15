@@ -6173,3 +6173,18 @@ One wording correction from Emma, worth keeping because the vocabulary is
 load-bearing here: multi-hop labels are **not "parked"**. Parked means abandoned
 in this repo — the Wikidata isolates are parked. Multi-hop is item 13, an
 ordinary queued task the work loop reaches in the normal order.
+
+## 2026-08-15 — item 3 closed: the DFA people were already in the batch
+
+Emma, asked whether descent-from-antiquity people with neither a Geni ID nor a
+Wikidata item should be imported: *"No, I am going to say just include these with
+the generation of the jsns and everything."*
+
+Checked before building anything, and **the batch already does it**.
+`scripts/build-orderlife-batch.py` has a `create_orderlife_only` tier for exactly
+this population and `reports/wikidata-orderlife.json` carries **19,234 of them** —
+`create_individual` entries with `qid: null` and `geni_id: null`, tier 3. Aster
+and Kenan are in there. The audit listed this as undone because no transcript
+recorded the decision, not because the code was missing it.
+
+So the item is closed with no code change, which is the outcome worth having.
