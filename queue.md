@@ -526,6 +526,12 @@ ambiguous as a given name and created as a family name; and scanning the whole
 JSON blob flagged `subject.orderlife_qid`, which is provenance and is *supposed*
 to hold a local QID.
 
+## ACTUAL REAL ITEM ThAT NEEDS TO BE DONE
+
+I am adding this here because I'm not sure how reliable it is to ask the chat to add something to the queue. 
+
+Add to the queue that we are going to look over the geni exports to try to find large clusters like the Javanese ones that have only one geni export covering them. My perception here is that such areas are more likely to have important links that were not covered and that with a different entry point and a larger export window thing, particularly looking at the deepest members of such clusters of people only in one export. again this is at the end of the queue.md
+
 ## Always last — restart the three crons and summarize
 
 **These two items stay pinned to the tail of the queue at all times** — below every real work item:
