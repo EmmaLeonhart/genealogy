@@ -348,3 +348,67 @@ def test_the_import_reader_is_not_fooled_by_prose_that_looks_like_an_import(tmp_
     )
 
     assert {name for _, name in _imports(module)} == {"json"}
+
+
+# -- exports/excluded/ ---------------------------------------------------
+
+
+def _individual_ids(path):
+    import re
+    pattern = re.compile(r"^0 @I(\d+)@ INDI")
+    with open(path, encoding="utf-8-sig", errors="replace") as handle:
+        return {m.group(1) for m in
+                (pattern.match(line) for line in handle) if m}
+
+
+def test_no_excluded_export_strands_a_person():
+    """Excluding a file must not remove anybody from the tree.
+
+    **Emma's condition, 2026-08-15:** *"I want you to move them into an excluded
+    directory or something like Samaritan's excluded and check to see if every
+    single individual there is present in at least one other export."*
+
+    She said it after I proposed excluding them *once* a later export covered
+    their people — *"That is stupid. It's a prediction of something that may or
+    may not happen."* So the check runs against the corpus as it stands, here,
+    and an exclusion that would strand somebody fails the suite rather than
+    quietly shrinking the tree.
+
+    The four Samaritan exports were only excludable because
+    `export-BloodTree-6000000178794141887.ged` arrived and covered the last
+    1,091 — before it, exclusion would have lost Zipporah, Gershom, Eliezer and
+    the Itamar-line placeholders.
+    """
+    from genimerge import sources
+
+    excluded = sources.excluded_files()
+    if not excluded:
+        pytest.skip("nothing excluded")
+
+    corpus = set()
+    for path in sources.find_exports():
+        corpus |= _individual_ids(path)
+    assert corpus, "no corpus exports found"
+
+    for path in excluded:
+        stranded = _individual_ids(path) - corpus
+        assert not stranded, (
+            f"{path.name} is excluded from the merge but holds {len(stranded)} "
+            f"people no corpus export has, e.g. {sorted(stranded)[:5]} - "
+            "excluding it would delete them from the tree")
+
+
+def test_excluded_exports_are_still_tracked_in_git():
+    """Excluded from the merge is not deleted. `CLAUDE.md`: never lose a GEDCOM."""
+    import subprocess
+
+    from genimerge import sources
+
+    excluded = sources.excluded_files()
+    if not excluded:
+        pytest.skip("nothing excluded")
+    tracked = subprocess.run(
+        ["git", "ls-files", "exports/excluded"],
+        cwd=sources.REPO_ROOT, capture_output=True, text=True, check=True).stdout
+    for path in excluded:
+        assert path.name in tracked, f"{path.name} is excluded and untracked"

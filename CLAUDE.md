@@ -550,6 +550,38 @@ batch, read recursively · `paths/` relationship paths generated from saved page
 `reports/` generated reports worth keeping in git · `out/` generated data,
 gitignored · `tests/` pytest.
 
+**`exports/excluded/` is the one part of `exports/` that is NOT corpus.** Added
+2026-08-15. An export lands there when Geni has since **changed a relationship it
+records**: the merge unions `FAMC`/`CHIL` and never drops one, so a parent link
+Geni has deleted survives forever once any export carries it, and no later export
+can undo it. Excluding the file is the only mechanism that removes it.
+
+**The files stay in git** — the never-delete-a-GEDCOM rule is untouched. They are
+tracked, readable, and still the record of what Geni said that day; they are only
+kept out of the merge. `genimerge.sources` skips them and `excluded_files()`
+lists them.
+
+**The condition is checked now, never predicted.** Emma, 2026-08-15, rejecting a
+proposal to exclude them *once* a later export covered their people: *"That is
+stupid. It's a prediction of something that may or may not happen. I want you to
+move them into an excluded directory… and check to see if every single individual
+there is present in at least one other export."*
+`tests/test_repo_invariants.py::test_no_excluded_export_strands_a_person` is that
+check, so an exclusion that would drop somebody from the tree fails the suite.
+
+**The worked case, `excluded/samaritans/`** — four exports taken before
+`Yitzhaq I ben Tsedaka` (`6000000227245553985`) existed on Geni. Geni had linked
+**Tsedaka II → Abram** directly, skipping him; when Emma created him, Geni
+rewrote family `F6000000178795360833` **in place**, swapping its child from Abram
+to Yitzhaq I. Merging old and new gave that family both children and gave Abram
+two fathers, one of them the other's father. They became excludable only when
+`export-BloodTree-6000000178794141887.ged` arrived and covered the last **1,091**
+people — before it, exclusion would have lost Zipporah, Gershom, Eliezer and the
+Itamar-line placeholders. **Do not treat this as licence to exclude an export for
+disagreeing with another.** Two exports differing on a *value* is the
+later-wins rule; this is Geni having deleted a *relationship*, which nothing else
+can express.
+
 **`exports/` is the corpus and is read recursively — there is no ingest step.**
 Geni's downloads land as `export-geni (N).zip`, extracted beside themselves,
 grouped into a directory named for the person Emma exported from

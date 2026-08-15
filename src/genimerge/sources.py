@@ -35,14 +35,44 @@ import hashlib
 from collections import defaultdict
 from pathlib import Path
 
-__all__ = ["EXPORTS_DIR", "REPO_ROOT", "find_exports", "duplicate_groups"]
+__all__ = ["EXPORTS_DIR", "EXCLUDED_DIR", "REPO_ROOT", "find_exports",
+           "duplicate_groups", "excluded_files"]
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 
-#: Everything under here is corpus. Subdirectories are Emma's filing — one per
-#: seed she exported from, plus `archive/` and `fleshing-out/` for bulk takes —
-#: and carry no meaning for the merge.
+#: Everything under here is corpus **except `excluded/`**. Subdirectories are
+#: Emma's filing — one per seed she exported from, plus `archive/` and
+#: `fleshing-out/` for bulk takes — and carry no meaning for the merge.
 EXPORTS_DIR = REPO_ROOT / "exports"
+
+#: **The one subdirectory that is not corpus.** An export lands here when Geni
+#: has since changed a relationship it records and the old edge would otherwise
+#: survive forever: the merge unions `FAMC`/`CHIL` and never drops one, so a
+#: parent link Geni has deleted cannot be removed by any later export. Excluding
+#: the file is the only way it goes away.
+#:
+#: **The files stay in git.** `CLAUDE.md`'s rule is that a GEDCOM is never
+#: deleted, and this does not weaken it — the export is still tracked, still
+#: readable, still the record of what Geni said that day. It is only kept out of
+#: the merge.
+#:
+#: **Emma's instruction, 2026-08-15**, after I proposed excluding them *once* a
+#: later export covered their people: *"I want to exclude these particular ones,
+#: not stop reading them once Export 204 covers their people. That is stupid.
+#: It's a prediction of something that may or may not happen. I want you to move
+#: them into an excluded directory or something like Samaritan's excluded and
+#: check to see if every single individual there is present in at least one
+#: other export."* The check is the condition, and it is checked **now** against
+#: the corpus as it actually stands — `tests/test_repo_invariants.py` asserts
+#: it, so an exclusion that would strand somebody fails the suite.
+#:
+#: `excluded/samaritans/` — four exports taken before `Yitzhaq I ben Tsedaka`
+#: (`6000000227245553985`) existed on Geni. Geni had linked **Tsedaka II →
+#: Abram** directly, skipping him; when Emma added him, Geni rewrote family
+#: `F6000000178795360833` in place, swapping the child from Abram to Yitzhaq I.
+#: The union of old and new gave that family both children and gave Abram two
+#: fathers, one of them the other's father.
+EXCLUDED_DIR = EXPORTS_DIR / "excluded"
 
 
 def _digest(path: Path) -> str:
@@ -82,6 +112,31 @@ def _distinct(paths: list[Path]) -> tuple[list[Path], dict[str, list[Path]]]:
     return sorted(kept), dupes
 
 
+def _corpus_files(root: Path) -> list[Path]:
+    """Every `.ged` under `root` that is corpus — i.e. not under `excluded/`.
+
+    Matched on the path relative to `root` rather than absolutely, so a test
+    pointing this at a temporary directory gets the same rule.
+    """
+    out = []
+    for path in sorted(root.rglob("*.ged")):
+        try:
+            parts = path.relative_to(root).parts
+        except ValueError:  # pragma: no cover - root is always a parent here
+            parts = path.parts
+        if EXCLUDED_DIR.name in parts[:-1]:
+            continue
+        out.append(path)
+    return out
+
+
+def excluded_files(root: Path | None = None) -> list[Path]:
+    """The exports deliberately kept out of the merge. Tracked, never read."""
+    root = Path(root) if root is not None else EXPORTS_DIR
+    excluded = root / EXCLUDED_DIR.name
+    return sorted(excluded.rglob("*.ged")) if excluded.exists() else []
+
+
 def find_exports(root: Path | None = None) -> list[Path]:
     """Every distinct export GEDCOM under `root`, in a stable order.
 
@@ -91,7 +146,7 @@ def find_exports(root: Path | None = None) -> list[Path]:
     root = Path(root) if root is not None else EXPORTS_DIR
     if not root.exists():
         return []
-    kept, _ = _distinct(sorted(root.rglob("*.ged")))
+    kept, _ = _distinct(_corpus_files(root))
     return kept
 
 
@@ -104,5 +159,5 @@ def duplicate_groups(root: Path | None = None) -> dict[str, list[Path]]:
     root = Path(root) if root is not None else EXPORTS_DIR
     if not root.exists():
         return {}
-    _, dupes = _distinct(sorted(root.rglob("*.ged")))
+    _, dupes = _distinct(_corpus_files(root))
     return dupes
