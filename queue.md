@@ -328,6 +328,35 @@ Please actually start to set up and plan the wikidata normalization that I've be
 
 I will give some info
 
+== Well modelled ones ==
+
+Aabed-El ben Asher ben Matzliach (Q13485740)
+Aharon ben Ab-Chisda ben Yaacob (Q2031200)
+Elazar ben Tsedaka ben Yitzhaq (Q2164896)
+Saloum Cohen (Q2067443)
+Levi ben Abisha ben Phinhas ben Yitzhaq (Q2666440)
+
+==Badly modelled ones==
+Yoseph ben Ab-Hisda ben Yaacov ben Aaharon (Q8055954)
+Yaacob II ben Uzzi ben Yaacob ben Aaharon (Q118782320)
+Phinehas X ben Matzliach ben Phinehas (Q108907046)
+Asher ben Matzliach ben Phinhas (Q108764515)
+Amram IX ben Yitzhaq ben Amram ben Shalma (Q107534557)
+Abisha III ben Phinhas ben Yittzhaq ben Shalma (Q107534535)
+Matzliach ben Phinhas ben Yitzhaq ben Shalma (Q108907045)
+Yitzhaq II ben Amram ben Shalma ben Tabia (Q107534637)
+Yaacob I ben Aaharon ben Shalma (Q109888305)
+Amram VIII ben Shalma (Q135489819)
+Shalma II ben Tabia (Q135489727)
+Tabia III ben Yitzhaq ben Abram (Q135489728)
+Levi V ben Abram (Q135489805)
+Abram ben Yitzhaq (Q135489730)
+Tsedaka II ben Tabia ha'Åbtå'i (Q135489731)
+
+==worst modelled one (empty)==
+Yitzhaq I ben Tsedaka (Q137394557)
+
+
 
 
 ---
