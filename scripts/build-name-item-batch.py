@@ -83,7 +83,11 @@ PARTICLES = {"de", "di", "da", "del", "della", "des", "du", "van", "von", "der",
 ORDINALS = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X",
             "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII"}
 PLACEHOLDERS = {"nn", "n.n.", "n", "?", "??", "???", "????", "*", "**", "***",
-                "unknown", "private", "<private>", "'", "-", "--", "."}
+                "unknown", "private", "<private>", "'", "-", "--", ".",
+                # A bare quote character reached the batch as a name item on the
+                # first run. Geni's nickname field puts quotes round a value and
+                # the tokeniser split one off on its own.
+                '"', "''", '""', "``", "--", "---"}
 
 #: Below this many bearers a token is not worth an item of its own yet. Not a
 #: confidence threshold — a workload one; the tail is 70% single-use strings.

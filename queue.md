@@ -507,23 +507,40 @@ placeholder system for people on Geni and not on Wikidata.
 **Last run 2026-08-16: `scripts/walk-structural-merge.py`, three lines shown,
 three questions outstanding.**
 
-## 14d · Test the three edit-object emitters
+## 14d · The emitter tests — WRITTEN, and they found a live bug immediately
 
-Emma, 2026-08-16: *"Don't just test them before September 1st. Put them at the
-end of the queue."* `build-orderlife-identifiers`, `build-entity-resolution-batch`
-and `build-samaritan-priest-links` have none. Every other `scripts/` file is the
-same, but these three emit **edit objects meant to run against Wikidata**, which
-is a different risk class from a report.
+`tests/test_edit_emitters.py`, **8 tests**, written 2026-08-16. Emma: *"Don't
+just test them before September 1st. Put them at the end of the queue."*
 
-The rules worth pinning, each of which has already failed once here:
+**They caught a real defect on the first run.** order.life's **class items** are
+rows in `persons.tsv` alongside real people — `Q153718` Male, `Q153719` Female,
+`Q153800` Non Gaiad Character, `Q153801` Person, `Q153802` Gaiad character,
+`Q153806`, plus `Q1` Aster and `Q5`. The batch was emitting all eight as
+`create_individual` with `P31` = `Q5` **human**, so it would have created
+Wikidata items asserting that "Male" and "Person" are people. Creations
+19,234 → **19,226**.
 
-- **No creation for somebody who already has an item.** `build-samaritan-priest-batch`
-  proposed creating `Jonathan I` and `Baba Rabba` because it only read links
-  Wikidata already stated, ignoring the QIDs Emma wrote onto the Geni profiles.
-- **No order.life QID as a Wikidata value.** `Q153719` is order.life's *Female*
-  and would type-check as a person.
-- **Citation shape** — `P2600` reference where a Geni ID exists, no reference at
-  all where it does not, never a citation to a source Wikidata lacks.
+**Found structurally, not by a list.** Anything another row names as its `sex`,
+plus **every value anything declares itself an instance of** — collected in the
+same shard pass that reads the Gaiad flag. A sex-only screen caught 4 of the 8;
+`Person` and `Non Gaiad Character` never appear in that column.
+
+**What the tests pin** — the shape of the failures, not the numbers, which move
+whenever the corpus grows:
+
+- a name whose label is **ambiguous** is never created, per `(token, usage)`
+- a name item that exists is **linked**, never created
+- the Samaritan batch creates nobody who already has a QID
+- **no order.life QID reaches a Wikidata value**, and no class item is created
+- a Geni-sourced statement cites the profile; nothing cites a source Wikidata
+  lacks
+- the succession never **removes** `P155`/`P156` without restating it
+
+**Two of the eight were wrong when first written**, both too broad: comparing
+bare tokens rather than `(token, usage)` flagged `Maria`, which is legitimately
+ambiguous as a given name and created as a family name; and scanning the whole
+JSON blob flagged `subject.orderlife_qid`, which is provenance and is *supposed*
+to hold a local QID.
 
 ## 15 · Audit `todo.md` the way `queue.md` was audited, then fold in the provisional to-do
 

@@ -6665,3 +6665,30 @@ through 121**. Nine more than its header, nine more than the source's 112.
 Put to Emma in `questions.md` with three options rather than fixed overnight. The
 file is hand-transcribed, and item 9b has just established that a published
 source does not get overridden on inference.
+
+## 2026-08-16 — the emitter tests, and the bug they found in their first run
+
+Queue item 14d. `tests/test_edit_emitters.py`, 8 tests over the six scripts that
+write JSON edit objects. Emma had put it at the end of the queue; three
+near-misses in one night had already argued for it, and the first run produced a
+fourth — this one not caught by eye.
+
+**order.life's class items are rows in `persons.tsv`.** `Q153718` Male, `Q153719`
+Female, `Q153800` Non Gaiad Character, `Q153801` Person, `Q153802` Gaiad
+character, `Q153806`, plus `Q1` Aster and `Q5`. The batch emitted all eight as
+`create_individual` with `P31` = `Q5` **human** — Wikidata items asserting that
+"Male" and "Person" are people. Creations 19,234 → **19,226**.
+
+**The fix is structural, and the first attempt at it was not enough.** Screening
+on what other rows name as their `sex` caught 4 of the 8; `Person` and `Non Gaiad
+Character` never appear in that column. What catches all eight is **every value
+anything declares itself an instance of**, collected in the same shard pass that
+already reads the Gaiad flag.
+
+**Two of the eight tests were themselves wrong when first written**, both by
+being too broad. Comparing bare tokens instead of `(token, usage)` flagged
+`Maria` — ambiguous as a given name, legitimately created as a family name with 8
+bearers, which is `CLAUDE.md`'s one-item-per-usage rule working correctly.
+Scanning the whole JSON blob flagged `subject.orderlife_qid`, which is provenance
+and is meant to hold a local QID. Both times the emitter was right and the test
+was wrong.

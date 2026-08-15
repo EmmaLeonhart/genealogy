@@ -136,6 +136,11 @@ def corpus_geni_ids() -> set[str]:
 #: true of the definition and misleading about the data.
 INSTANCE_OF = ("P39", "P31")
 
+#: Filled by :func:`gaiad_qids` as it streams the shards: every QID that
+#: anything declares itself an *instance of*. Those are classes, and
+#: order.life keeps them in `persons.tsv` alongside real people.
+CLASS_VALUES: set = set()
+
 
 def gaiad_qids(qids: list[str]) -> set[str]:
     """Which of these order.life items are flagged as Gaiad characters.
@@ -168,6 +173,11 @@ def gaiad_qids(qids: list[str]) -> set[str]:
 
     wanted = set(qids)
     out = set()
+    # Every value anything is an *instance of* is a class, not a person. That is
+    # how `Q153800` "Non Gaiad Character", `Q153801` "Person" and `Q153806` are
+    # caught: they never appear in the `sex` column, so a sex-based screen misses
+    # them, and they are rows in persons.tsv like everyone else.
+    CLASS_VALUES.clear()
     for n, path in enumerate(shards, 1):
         with gzip.open(path, "rt", encoding="utf-8") as fh:
             for line in fh:
@@ -180,13 +190,12 @@ def gaiad_qids(qids: list[str]) -> set[str]:
                     continue
                 claims = item.get("claims") or {}
                 for prop in INSTANCE_OF:
-                    if any(((s.get("mainsnak") or {}).get("datavalue", {})
-                            .get("value") or {}).get("id") == GAIAD
-                           for s in claims.get(prop, [])
-                           if isinstance((s.get("mainsnak") or {})
-                                         .get("datavalue", {}).get("value"), dict)):
-                        out.add(q)
-                        break
+                    for s in claims.get(prop, []):
+                        v = (s.get("mainsnak") or {}).get("datavalue", {}).get("value")
+                        if isinstance(v, dict) and v.get("id"):
+                            CLASS_VALUES.add(v["id"])
+                            if v["id"] == GAIAD:
+                                out.add(q)
         if n % 40 == 0:
             print(f"  read {n}/{len(shards)} shards for the Gaiad flag")
     return out
@@ -398,6 +407,28 @@ def main() -> int:
     print("scanning items for the Gaiad flag...")
     gaiad = gaiad_qids(list(persons))
     print(f"{len(gaiad):,} of them are flagged Gaiad characters")
+
+    # **order.life's CLASS items are rows in persons.tsv and are not people.**
+    # `Q153718` Male, `Q153719` Female, `Q153801` Person, `Q153802` Gaiad
+    # character, `Q153800`, `Q153806`. Left in, the batch emits six
+    # `create_individual` entries asserting `P31` = `Q5` **human** for things
+    # called "Male" and "Person". Caught by `tests/test_edit_emitters.py` on
+    # 2026-08-16, which is the test queue item 14d existed to write.
+    #
+    # Found structurally rather than by a hardcoded list: anything another
+    # person's row points at as its `sex`, plus the instance-of values the items
+    # themselves use, is a class and not a person.
+
+    classes = {v.strip() for r in persons.values()
+               for v in ((r.get("sex") or "").strip(),) if v.strip()}
+    classes |= CLASS_VALUES | {GAIAD, OL_MALE, OL_FEMALE}
+    removed = [q for q in classes if q in persons]
+    for q in removed:
+        persons.pop(q, None)
+    if removed:
+        print(f"dropped {len(removed)} order.life class items from the person set: "
+              + ", ".join(sorted(removed)))
+
 
     batch, summary, skipped = [], {}, []
     unresolved: list[dict] = []
