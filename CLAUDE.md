@@ -733,10 +733,13 @@ ran.
 | P1950 | second family name in Spanish name | item (not applicable here) |
 | P1477 | birth name | monolingual text |
 | P1559 | name in native language | monolingual text |
-| P1545 | series ordinal | string — **qualifier**, ordering several given names |
+| P1545 | series ordinal | string — **qualifier**, ordering several given names, and ordering the links of a chained patronymic |
+| P5056 | patronym or matronym | item — **the property a patronymic uses**, parallel to `P735`/`P734`, per `name modelling.txt`. Not a qualifier on `P735`. |
+| P7452 | reason for preferred rank | **qualifier** — value `Q3409033` *usual forename* on the first given name |
+| Q3409033 | usual forename | item — the `P7452` value. **Not** `Q3409032`, which is *unisex given name* |
 | P7338 | regnal ordinal | **qualifier** on the given name — `Robert VII` is `P735` Robert + `P7338` VII. Emma, 2026-08-15: *"they should all have the regnal orders put on their names as qualifiers"*, and **not only the Samaritans** — anyone whose name carries an ordering. Confirmed offline against `reports/wikidata-labels.tsv`. Distinct from `P1545`, which orders a person's several given names rather than the person among namesakes. |
 | P3831 | object of statement has role | item — **qualifier** saying *which kind* of name this `P735` is |
-| P144 | based on | item — on a **patronymic name item**, points at the name it derives from |
+| P144 | based on | item — **qualifier on `P5056`, pointing at the PERSON that link names**: the father, then the grandfather for a chained patronymic. `name modelling.txt` supersedes the earlier reading of this as a name-item-to-name-item link. |
 | P5278 | surname for other gender | item — pairs `Olsson` with `Olsdotter` |
 | Q245025 | middle name | item — the `P3831` value for a middle given name |
 | Q110874 | patronymic | item — the `P3831` value for a patronymic, which is also what the name item is an *instance of* |
@@ -782,14 +785,79 @@ So position alone does not make a middle name — the second given token is a mi
 name **only** if it is not patronymic. `Q245025` and `Q110874` are decided by what
 the token *is*, and `P1545` numbers them either way.
 
-**A patronymic is not a middle name, and that distinction is Emma's**
-(2026-08-15). Geni writes `Ole Olsen` into `GIVN`, so the patronymic lands in the
-position a middle name occupies — `Olsen` is a *given* token for 742 people and a
-surname for 266, measured in `reports/name-classes.md`. Her model separates them:
-the name item is an **instance of `Q110874`**, and the `P735` statement carries
-`P3831` → `Q110874` where an ordinary middle name would carry `Q245025` and a
-first given name `Q202444`. `P1545` still numbers them in order. *"The daughter
-and son would be the same thing"* — `-son` and `-datter` are one category.
+### `name modelling.txt` is the authority on how a name is modelled
+
+**Emma wrote it by hand, 2026-08-15, in the repo root.** It supersedes what this
+file previously said, and where the two disagree it wins. *"Please use
+AskUserQuestion if anything here is unclear in the modeling. I tried to make it as
+clear as possible."*
+
+**The patronymic is `P5056` patronym or matronym — NOT `P735` with a qualifier.**
+This is the correction. This file used to say the patronymic was a `P735` given
+name carrying `P3831` → `Q110874`, with the name item an instance of `Q110874`.
+Her model gives the patronymic **its own property**, parallel to `P735` and
+`P734` rather than nested inside `P735`:
+
+    Vladimir Putin (Q7747)
+      P735 given name          Vladimir (Q2253934)
+        P1545 series ordinal   1
+        P7452 reason for preferred rank  usual forename (Q3409033)
+      P5056 patronym or matronym  Vladimirovich (Q27670878)
+        P144 based on          Vladimir Putin (Q19300851)  ← his father
+      P734 family name         Putin (Q30524893)
+
+**`P144` based on points at the FATHER, the person.** Not at a name item. Her
+note in the file: *"(his father, has the same name)"*. That is a different claim
+from what this file recorded before, which had `P144` on a patronymic *name item*
+pointing at the name it derives from.
+
+**The first given name carries `P7452` → `Q3409033` usual forename.** A middle
+name instead carries `P3831` → `Q245025`, which is unchanged:
+
+    Donald Trump (Q22686)
+      P735 Donald (Q13422248)   P1545 1   P7452 usual forename (Q3409033)
+      P735 John   (Q4925477)    P1545 2   P3831 middle name (Q245025)
+      P734 Trump  (Q16944413)
+
+**Chained patronymics get one `P5056` each, ordered by `P1545`.** Her worked
+example, and she is explicit that this one is **not on Wikidata yet** — *"It is
+what I am saying it should be on Wikidata"*:
+
+    Abisha III ben Phinhas ben Yittzhaq ben Shalma (Q107534535)
+      P735 Abisha    P1545 1   P7452 usual forename   P7338 regnal ordinal 3
+      P5056 ben Phinhas    P144 Phinhas ben Yittzhaq ben Shalma   P1545 1
+      P5056 ben Yittzhaq   P144 Yittzhaq ben Shalma               P1545 2
+      P5056 ben Shalma     P144 Shalma                            P1545 3
+
+So `P144` on each link points at **the person that link names** — the father, then
+the grandfather, then the great-grandfather — and `P1545` numbers the links
+outward from the bearer. The regnal ordinal sits on the **given name**, not on the
+person.
+
+**The data problem she states, and it governs how the tokens are read:** *"some
+people have patronyms but no surnames. Some people have surnames but no patronyms.
+Some people have middle names, have first name, middle name, patronym. Some people
+have first name, patronym, given name."* And: *"The surname thing on geni is not
+always something that clearly corresponds to a surname versus a patronym
+particularly. We have to check in the given names and in the surname whether it is
+a patronym or the regular name."*
+
+**Both fields, always.** A patronym can be in `GIVN` or in `SURN`, and which field
+it sits in decides nothing.
+
+**Edge cases go to her, not to a rule.** *"There are probably going to be edge
+cases and for the edge cases I am going to want you to tell me about the edge
+cases. Do an ask-user question on the edge cases so that I can figure them out."*
+
+**`Q3409032` and `Q3409033` are adjacent and are different things** — *unisex
+given name* and *usual forename*. Confirmed offline against
+`reports/wikidata-labels.tsv`, along with `P5056`, `P7452` and `P7338`.
+
+**What survives from the old text:** Geni writes `Ole Olsen` into `GIVN`, so the
+patronymic lands in the position a middle name occupies — `Olsen` is a *given*
+token for 742 people and a surname for 266, measured in `reports/name-classes.md`.
+*"The daughter and son would be the same thing"* — `-son` and `-datter` are one
+category.
 
 **How a patronymic item records what it derives from: `P144` based on.** Measured
 on 2026-08-15 over the 633 items that are `instance of` `Q110874`: **`P144` on

@@ -576,36 +576,59 @@ As far as descriptions go, I'll say we should have a series of descriptions that
 
 ---
 
-## 12 · Go through Emma's name-modelling file, analyse it, apply it
+## 12 · Make the code match `name modelling.txt` — DISAGREEMENTS FOUND, none fixed
 
-**Her instruction, 2026-08-15:** *"Check in the queue to see if we're actually
-going to be going through the name modeling file and analyzing it and applying it
-at some point in the queue. If there isn't a point in the queue that talks about
-it, then add a thing at the end of the queue for it."* There was only a cron entry
-and not a queue item, so this is the item.
+Her file is read and folded into `CLAUDE.md`. **The code was not changed** — this
+job lists disagreements and queues them, per her instruction. Four, and the first
+is structural.
 
-The file is hers, hand-written, in the repo root. She has said she is putting the
-**ordinal patronymics** into it, and her position on ordinals generally: *"they
-should all have the regnal orders put on their names as qualifiers"* — `P7338`
-regnal ordinal, **not only for the Samaritans**, for anyone whose name carries an
-ordering.
+### a · The patronymic property is wrong everywhere
 
-Do it in this order, which is the same shape as `entity_resolution.md`'s rule:
+Her model: **`P5056` patronym or matronym**, a property of its own, parallel to
+`P735` and `P734`.
 
-1. **Read it whole and quote it back** before changing anything, naming every
-   place it differs from `CLAUDE.md`. Her premise is that the modelling may not
-   have been understood, so the differences are the point.
-2. **Formatting fixes only.** Do not rewrite her prose, reorder her argument, or
-   add hedges. When something is not understood, ask.
-3. **Fold it into `CLAUDE.md` as the authority.** Where the two disagree, her file
-   wins and the old text is corrected rather than kept beside it.
-4. **Check the code against it** — `scripts/build-name-item-batch.py`,
-   `scripts/classify-patronymics.py`, `src/genimerge/namelinks.py`,
-   `reports/names-spec.md` — and list the disagreements **without changing the
-   code**.
+What the code does: `scripts/build-name-item-batch.py` line 22 documents
+`patronymic | Q110874 | P735 + P3831 -> Q110874`, and `PATRONYMIC_ITEM = "Q110874"`
+at line 69 is used as an `instance of` for a *name item* attached via `P735`.
+That is the superseded model this file itself carried until today.
 
-Cron `e6e0915c` at 13:02 does the same job; this item exists so the work survives
-if the cron does not fire, which is the standing reason cron contents are queued.
+**Nothing emits `P5056` at all.** `src/genimerge/namelinks.py` knows only
+`P735`, `P734` and `P1545`.
+
+### b · `P144` points at the wrong kind of thing
+
+Her model: `P144` is a **qualifier on `P5056` pointing at the PERSON** that link
+names — the father, then the grandfather. Her note: *"(his father, has the same
+name)"*.
+
+The code treats `P144` as a claim on a patronymic **name item** pointing at the
+name it derives from (`build-name-item-batch.py` line 34).
+
+### c · `P7452` / `Q3409033` are not emitted
+
+Her model puts `P7452` *reason for preferred rank* → `Q3409033` *usual forename*
+on the **first** given name. `namelinks.py` emits `P1545` and nothing else, so
+first-given-name versus middle-name is not expressed at all.
+
+`Q3409033` is *usual forename*; `Q3409032` is *unisex given name*. Adjacent
+numbers, different things. Both confirmed offline.
+
+### d · Chained patronymics are unmodelled end to end
+
+`Abisha III ben Phinhas ben Yittzhaq ben Shalma` needs **three** `P5056`
+statements ordered by `P1545`, each with its own `P144`.
+`scripts/classify-patronymics.py` reads only the first `ben X` of a string, and
+no emitter produces more than one patronymic per person.
+
+### What to do about the ambiguity she names
+
+*"We have to check in the given names and in the surname whether it is a patronym
+or the regular name."* `classify-patronymics.py` already does exactly this — it
+takes candidates from **both** `GIVN` and `SURN` and decides from the father, not
+from which field the token sits in. That part agrees with her file.
+
+**Edge cases go to her**: *"Do an ask-user question on the edge cases so that I
+can figure them out."*
 
 ## Always last — pinned to the tail
 

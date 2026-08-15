@@ -6945,3 +6945,35 @@ ADINATA`.
 **Unknown sex takes the neutral word** — `grandchild`, `sibling`, `nephew or
 niece` — rather than a guess. Inventing a gender to make a label read better is
 the normalisation Emma has objected to before.
+
+
+## 2026-08-15 — `name modelling.txt`, and the patronymic model was wrong
+
+Emma wrote it by hand and committed it at 13:03. **I had reported one minute
+earlier that no such file existed** — my search was for `*.md` in the repo root
+and hers is `.txt`. The cron prompt I wrote said "markdown file", which is the
+bug: it narrowed a search that had no reason to be narrow.
+
+**Her model corrects this repo's central claim about patronymics.** `CLAUDE.md`
+said a patronymic was a `P735` given name qualified with `P3831` → `Q110874`, the
+name item being an instance of `Q110874`. Her file gives it **its own property**:
+
+    P5056  patronym or matronym
+
+parallel to `P735` and `P734`, not nested inside `P735`. `P144` *based on* is a
+qualifier on it pointing at **the father as a person** — *"(his father, has the
+same name)"* — rather than a name-item-to-name-item link.
+
+Two more pieces this repo did not have: `P7452` *reason for preferred rank* →
+`Q3409033` *usual forename* on the first given name, and chained patronymics as
+one `P5056` per link ordered by `P1545`, which is how the Samaritan names work.
+`Q3409033` *usual forename* and `Q3409032` *unisex given name* are adjacent and
+different; both confirmed offline against `reports/wikidata-labels.tsv`, as were
+`P5056`, `P7452` and `P7338`.
+
+`CLAUDE.md` corrected rather than annotated. **No code changed** — the four
+disagreements are queue item 12.
+
+One thing the code already had right: her rule that a patronym may sit in `GIVN`
+or `SURN` and the field decides nothing. `classify-patronymics.py` takes
+candidates from both and decides from the father.
