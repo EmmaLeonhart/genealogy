@@ -166,22 +166,30 @@ built: *"Every one of them comes from the Japanese or Chinese label"* — the
 relative's own ja/zh label, not a transliteration of their English one. So item 9
 is a prerequisite, not a follow-up.
 
-## 9 · Label languages: English, Japanese, Chinese, and `mul`
+## 9 · Label languages — MEASURED 2026-08-16, and the ceiling is 3%
 
-Emma, 2026-08-15, resolving the 08-12 / 08-14 conflict in favour of the longer
-list: **English + Japanese + Chinese + `mul`**, with Korean in the covered set
-too. Her reasoning, which is the part worth keeping:
+Emma requires English, Japanese and Chinese on everything, plus `mul`, and said
+the ja/zh labels come from *"the Japanese or Chinese label"* of the relative
+rather than a template. **Measured, that route reaches almost nobody.**
 
-- *"Japanese is the lostiest language"* — it is not in Wikidata's top 18 by
-  coverage, so `ja` nearly always has to be constructed rather than copied.
-- *"Chinese needs to be generated to differentiate stuff with Japanese and
-  Korean."* A Han-only string does not say which language it is; having zh
-  explicitly is what separates the three.
-- English is standard.
+Of the **14,351** placeholder people who have a generable relationship label,
+their naming relative is one of **8,018** distinct people — and only **432 of
+those 8,018 carry a Wikidata QID at all**. So:
 
-*"We might extend this to other languages, but this is something I consider to be
-up for debate right now."* So the set is not final — do not build it as if it
-were closed.
+| source of a ja/zh label | people reachable |
+| --- | ---: |
+| relative's Wikidata item has a `ja` label | **478** (3.3%) |
+| relative's Wikidata item has a `zh` label | **439** (3.1%) |
+| relative's **Geni** name is Han or kana | 107 |
+
+`en` reaches 14,351 because it copies the relative's English label, which Geni
+supplies for nearly everyone. `ja`/`zh` cannot copy anything, because the
+relatives are overwhelmingly Geni-only people with no Wikidata item.
+
+**So item 7+8 cannot ship on the stated rule** — waiting for ja/zh means waiting
+for something that is 3% available and not growing on its own. Put to Emma
+2026-08-16; her answer decides whether the labels are templated, restricted to
+the ~3%, or English-first after all.
 
 ## 10 · Name items: link the 143 that exist, create the rest
 
