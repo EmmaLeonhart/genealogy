@@ -32,7 +32,6 @@ from . import (
     profilenames,
     overlap as overlap_mod,
     paths as paths_mod,
-    quickstatements,
     remote,
     seeds,
     sources,
@@ -54,7 +53,7 @@ WIKIDATA_STORE = REPO_ROOT / "wikidata" / "items"
 
 #: Values of the ``source`` column in ``out/wikidata/matched_all.csv``, which
 #: `expand` writes and `coverage`, `crosscheck`, `name-links` and
-#: `quickstatements` all read back. Named because a writer and a reader in
+#: the wikidata commands all read back. Named because a writer and a reader in
 #: different functions should not agree by coincidence of spelling.
 #:
 #: ``SOURCE_EXACT`` is spelled like the property it refers to, but it is a token
@@ -355,44 +354,6 @@ def _cmd_coverage(args: argparse.Namespace) -> int:
     output = args.output or ws.reports / "wikidata-coverage.md"
     _write(output, text)
     print(f"wrote {output}")
-    return 0
-
-
-def _cmd_quickstatements(args: argparse.Namespace) -> int:
-    ws = Workspace.from_args(args)
-    tree = _load_tree(args.source, ws)
-
-    all_path = ws.wikidata / "matched_all.csv"
-    if not all_path.exists():
-        print("no out/wikidata/matched_all.csv: `expand` wrote it and was "
-              "deleted on 2026-08-15", file=sys.stderr)
-        return 1
-
-    # Structure-confirmed links only. Name-search proposals live in
-    # candidates.csv and deliberately never reach a batch file.
-    links: dict[str, str] = {}
-    with open(all_path, encoding="utf-8", newline="") as handle:
-        for row in csv.DictReader(handle):
-            if row["source"] == SOURCE_EXPANSION:
-                links[row["geni_id"]] = row["qid"]
-
-    if not links:
-        print("no expansion-confirmed links to propose", file=sys.stderr)
-        return 1
-
-    client = make_client(ws, args)
-    batch = quickstatements.build_batch(client, tree, links, retrieved=args.retrieved)
-
-    out_dir = ws.wikidata
-    _write(out_dir / "add-p2600.qs", quickstatements.render_quickstatements(batch))
-    _write(out_dir / "add-p2600.md", quickstatements.render_markdown(batch))
-
-    print(f"wrote {out_dir / 'add-p2600.qs'}: {len(batch.edits)} statements")
-    print(
-        f"{len(batch.already_present)} already correct, "
-        f"{len(batch.conflicting)} contradict an existing ID (excluded, listed in the .md)"
-    )
-    print("Nothing has been sent to Wikidata. Review the .md before running the batch.")
     return 0
 
 
@@ -808,10 +769,6 @@ def _cmd_entity_resolution(args: argparse.Namespace) -> int:
             print(f"could not load the tree to corroborate ({exc}); continuing", file=sys.stderr)
 
     out_dir = ws.wikidata
-    _write(
-        out_dir / "entity-resolution.qs",
-        entities.render_quickstatements(parsed, retrieved=args.retrieved, known=known),
-    )
     report = args.output or (ws.reports / "entity-resolution.md")
     _write(
         report,
@@ -822,7 +779,7 @@ def _cmd_entity_resolution(args: argparse.Namespace) -> int:
 
     missing = [r for r in parsed.resolutions if r.geni_id not in known]
     print(
-        f"wrote {out_dir / 'entity-resolution.qs'}: "
+        f"wrote {report}: "
         f"{len(parsed.resolutions)} P2600 statements, {len(parsed.labels)} label edits"
     )
     if missing:
@@ -915,7 +872,6 @@ def _cmd_crosscheck(args: argparse.Namespace) -> int:
 
     batch = crosscheck.build_claim_batch(result, tree, exact, retrieved=args.retrieved)
     out_dir = ws.wikidata
-    _write(out_dir / "add-claims.qs", quickstatements.render_statements(batch.statements))
     _write(out_dir / "add-claims.md", crosscheck.render_claim_markdown(batch))
 
     counts = result.counts()
@@ -925,7 +881,7 @@ def _cmd_crosscheck(args: argparse.Namespace) -> int:
     print(f"wrote {output}")
     print(f"{result.people_checked} people: {agrees} agree, {gaps} gaps, {conflicts} conflicts")
     print(
-        f"wrote {out_dir / 'add-claims.qs'}: {len(batch.statements)} statements, "
+        f"wrote {out_dir / 'add-claims.md'}: {len(batch.statements)} statements, "
         f"{len(batch.withheld)} gaps withheld"
     )
     print("Nothing has been sent to Wikidata.")
@@ -958,11 +914,10 @@ def _cmd_name_links(args: argparse.Namespace) -> int:
     )
 
     out_dir = ws.wikidata
-    _write(out_dir / "add-names.qs", namelinks.render_quickstatements(batch))
     _write(out_dir / "add-names.md", namelinks.render_markdown(batch))
 
     print(
-        f"wrote {out_dir / 'add-names.qs'}: {len(batch.links)} statements "
+        f"wrote {out_dir / 'add-names.md'}: {len(batch.links)} proposed links "
         f"covering {batch.people_touched} of {batch.considered} people"
     )
     print(f"{len(batch.skipped)} names set aside; see add-names.md for why")
@@ -1484,24 +1439,6 @@ def build_parser() -> argparse.ArgumentParser:
         help="where to write (default: <reports>/wikidata-coverage.md)",
     )
     p_cov.set_defaults(func=_cmd_coverage)
-
-    p_qs = sub.add_parser(
-        "quickstatements",
-        help="write a reviewable QuickStatements batch adding P2600 to matched items",
-        description=(
-            "Writes a file for you to review and run yourself. Nothing is sent to "
-            "Wikidata. Structure-confirmed links only; name-search proposals are "
-            "excluded."
-        ),
-    )
-    p_qs.add_argument("--source", type=Path, default=None, help="a GEDCOM to read instead of merging")
-    p_qs.add_argument("--delay", type=float, default=1.0, help="seconds between requests")
-    p_qs.add_argument(
-        "--retrieved",
-        default=date.today().isoformat(),
-        help="date for the reference qualifier, YYYY-MM-DD (default: today)",
-    )
-    p_qs.set_defaults(func=_cmd_quickstatements)
 
     p_dist = sub.add_parser(
         "distant",

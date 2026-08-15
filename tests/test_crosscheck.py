@@ -270,7 +270,9 @@ def test_a_relationship_gap_between_two_exactly_linked_people_is_proposed():
     father = [s for s in batch.statements if s.prop == "P22"]
 
     assert [(s.qid, s.value) for s in father] == [("Q1", "Q2")]
-    assert all("S854" in s.to_line() and "S813" in s.to_line() for s in batch.statements)
+    # Plain P854/P813: the S prefix was QuickStatements-only and went with it.
+    assert all({"P854", "P813"} <= set(dict(s.references))
+               for s in batch.statements)
 
 
 def test_a_relationship_is_withheld_when_the_subject_is_linked_by_inference():

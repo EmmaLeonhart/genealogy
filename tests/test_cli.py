@@ -94,7 +94,6 @@ COMMANDS = [
     "consistency",
     "seeds",
     "coverage",
-    "quickstatements",
     "names",
     "profile-names",
     "wikidata-download",
@@ -368,11 +367,6 @@ def test_an_empty_exports_dir_fails_with_a_useful_message(tmp_path, capsys):
 # matcher went in with "zero consent from me"). The four commands that used to
 # read their output still refuse to run without it, which is now the permanent
 # state of the online branch rather than a "run this first" hint.
-
-
-def test_quickstatements_refuses_to_run_without_matches(workspace, capsys):
-    assert run(workspace, "quickstatements") == 1
-    assert "matched_all.csv" in capsys.readouterr().err
 
 
 def test_crosscheck_refuses_to_run_before_there_are_matches(workspace, capsys):

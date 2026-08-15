@@ -98,7 +98,7 @@ def _neighbours(person: Person, tree: Tree) -> list[str]:
 #: Why more than one component is a state to report, not a fault to fix.
 #:
 #: A constant for the same reason as
-#: :data:`genimerge.quickstatements.NOT_AN_ERROR_RATE`: a test asserts it
+#: :data:`genimerge.crosscheck.SUSPECT_IS_NOT_WRONG`: a test asserts it
 #: reaches the output, and pinning that with a copy of the sentence would break
 #: on rewording and invite loosening the assertion. The separate test that this
 #: line contains none of "error", "invalid", "failed" or "corrupt" is unaffected

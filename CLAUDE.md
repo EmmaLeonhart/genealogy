@@ -765,6 +765,66 @@ The suite is fast, needs only pytest, and covers the real 24 MB exports. The one
 thing local runs cannot do is the Python version matrix — `tests/test_python_floor.py`
 is a partial stand-in for that, and says so.
 
+### An item with no relationships is not a missing item. Geni ID first, then everything else
+
+**Emma, 2026-08-15, correcting the framing of the Samaritan high priests.** They
+are **on Geni and on Wikidata**. What they lack on Wikidata is *genealogy*:
+*"they aren't really genealogical entries. They are just individuals… They just
+are individuals without any relationships and such."* Reporting them as absent
+was the § *"Is X present?"* failure again, one section down, in a new costume —
+present as items, absent as a family tree.
+
+**Her own item is the same shape and is the worked example.** `Q140568870`
+exists, carries no Geni ID, and is attached to nothing. She has been explicit
+that this is ordinary rather than special: *"it's just a wiki data object. It's
+a wiki data object that should be linked in the way that any other wiki data
+object should be linked. There should not be anything special about it"* —
+after an earlier session turned it into a bespoke case.
+
+**So the order is fixed, and it generalises to every merge:**
+
+1. **Add the `P2600`.** *"The Jenny ID needs to be present before any properties
+   derived from Jenny can be taken from it, or before any relationships can be
+   added."*
+2. **Then everything Geni supports**, each statement cited to that Geni ID.
+
+*"It's the same logic that would be occurring in the future for when we are
+merging the trees more for situations where the Jenny and the wiki data are not
+there. The Jenny ID is added first, and then all the Jenny-derived stuff is
+added after."*
+
+### Merging the two trees is a walk up the relationships, not a name search
+
+**Emma, 2026-08-15, and she is clear this has not actually been done yet:**
+*"it is an idea of a thing that we still haven't really done yet. I think we may
+have tried at some point to do it, but we haven't really done it."*
+
+**The method is structural.** *"For the synoptic tree, we're supposed to be
+specifically going up the parental lines and stuff like that and merging the
+parents on Jenny and Wikidata if there are ones on both. Same with all the other
+relationships. That is a critical part of building up this synoptic tree."* Start
+from somebody holding **both** a Geni ID and a QID, walk `P22`/`P25` against our
+father/mother, and where both sides have a person in the same position, that is
+a merge — her 2026-08-12 rule: *"we merge them based off of whether something is
+the mother on both sides of an individual. We merge them together unless the
+mothers really conflict."*
+
+**Labels confirm a position; they never choose one.** She said *"you basically
+have to use text-based stuff with their labels matching them to the ones on
+Jenny"*, and that is **not** a reversal of *no name similarity, ever*. The
+structure picks the pair — Wikidata's `P22` of this item against our father of
+this Geni ID — and the label is read to check the pair is not absurd. Searching
+Wikidata for a name is the deleted `reconcile` matcher, and it stays deleted.
+
+**Two things come out of the walk:**
+
+- **Our own `QID` ↔ Geni ID correspondence**, built from the merges rather than
+  from `P2600` alone: *"we definitely need to… be essentially building up our own
+  correspondence of the QIDs and Jenny IDs for these ones."*
+- **A placeholder for anyone on Geni and not on Wikidata**, created later —
+  *"because our entire thing is we're trying to expand. There's going to be a
+  very large amount of individuals that are merged."*
+
 ### The purpose is to ADD to Wikidata, not to correct it
 
 **2026-08-10, Emma:** *"the entire purpose of this is to add it… Correcting

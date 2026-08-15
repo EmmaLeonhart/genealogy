@@ -50,7 +50,6 @@ __all__ = [
     "ResolutionFile",
     "parse",
     "read_file",
-    "render_quickstatements",
     "render_markdown",
 ]
 
@@ -293,36 +292,6 @@ def parse(text: str) -> ResolutionFile:
 
 def read_file(path: str | Path) -> ResolutionFile:
     return parse(Path(path).read_text(encoding="utf-8"))
-
-
-def render_quickstatements(
-    parsed: ResolutionFile, retrieved: str, known: set[str] | None = None
-) -> str:
-    """QuickStatements v1 for the resolutions and label edits.
-
-    ``known`` is the set of Geni IDs present in the merged tree. A resolution
-    naming a profile we do not hold is **still emitted** — the assertion is
-    Emma's and does not depend on our coverage — but it is flagged in the
-    markdown so a reviewer knows the ID could not be checked against anything.
-    """
-    from .quickstatements import PROPERTY, Statement, geni_reference, render_statements
-
-    statements = [
-        Statement(
-            qid=r.qid,
-            prop=PROPERTY,
-            value=f'"{r.geni_id}"',
-            references=geni_reference(r.geni_id, retrieved),
-        )
-        for r in parsed.resolutions
-    ]
-    # Labels carry no reference: QuickStatements does not accept one on a label,
-    # and inventing a claim to hang it off would be a different edit.
-    statements += [
-        Statement(qid=e.qid, prop=f"L{e.language}", value=f'"{e.text}"')
-        for e in parsed.labels
-    ]
-    return render_statements(statements)
 
 
 def render_markdown(

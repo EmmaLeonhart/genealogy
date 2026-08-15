@@ -105,17 +105,6 @@ def test_a_label_edit_with_no_item_is_reported_rather_than_dropped():
     assert all("Nobody" not in e.text for e in parsed.labels)
 
 
-def test_quickstatements_puts_a_geni_reference_on_claims_but_not_on_labels():
-    """QuickStatements rejects a reference on a label, so one must not be emitted."""
-    parsed = entities.parse(SPREAD)
-    text = entities.render_quickstatements(parsed, retrieved="2026-08-04")
-    claim, label = text.strip().splitlines()
-
-    assert claim.startswith("Q12598947\tP2600\t")
-    assert "S854" in claim and "S813" in claim
-    assert label == 'Q12598947\tLen\t"Buyeo Taebi"'
-
-
 def test_the_report_flags_a_profile_the_tree_does_not_hold():
     parsed = entities.parse(TIDY)
     md = entities.render_markdown(parsed, source="x.md", retrieved="2026-08-04", known=set())

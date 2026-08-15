@@ -300,20 +300,6 @@ def test_coverage_reports_both_link_sources_separately(ws):
     assert "| **linked, total** | 3 |" in text
 
 
-# -- quickstatements ---------------------------------------------------
-
-
-def test_quickstatements_proposes_the_geni_id_for_the_expansion_match(ws):
-    seeded(ws)
-    assert run(ws, "quickstatements", "--retrieved", "2026-07-30") == 0
-
-    line = (ws["out"] / "wikidata" / "add-p2600.qs").read_text(encoding="utf-8").strip()
-    assert line.split("\t")[:3] == ["Q3", "P2600", '"3"']
-    assert "Nothing here has been sent to Wikidata" in (
-        ws["out"] / "wikidata" / "add-p2600.md"
-    ).read_text(encoding="utf-8")
-
-
 # -- crosscheck --------------------------------------------------------
 
 
@@ -325,18 +311,23 @@ def test_crosscheck_reports_agreements_and_gaps(ws, capsys):
     assert "3 people:" in out
     text = (ws["reports"] / "wikidata-crosscheck.md").read_text(encoding="utf-8")
     assert "# Cross-check" in text
-    assert (ws["out"] / "wikidata" / "add-claims.qs").exists()
+    assert (ws["out"] / "wikidata" / "add-claims.md").exists()
 
 
 def test_crosscheck_proposes_a_date_wikidata_lacks(ws):
     seeded(ws)
     run(ws, "crosscheck", "--retrieved", "2026-07-30")
 
-    statements = (ws["out"] / "wikidata" / "add-claims.qs").read_text(encoding="utf-8")
+    # `add-claims.qs` was the QuickStatements rendering of this batch and went
+    # with the rest of QuickStatements on 2026-08-15. The markdown carries the
+    # same proposals, which is what a reviewer reads anyway.
+    statements = (ws["out"] / "wikidata" / "add-claims.md").read_text(encoding="utf-8")
     # Ada's death year is ours alone, and both she and it are exact.
-    assert "Q1\tP570\t+1200-00-00T00:00:00Z" in statements
-    # Her birth year agrees, so it is not proposed again.
-    assert "Q1\tP569" not in statements
+    assert "+1200-00-00T00:00:00Z" in statements
+    # Her birth year agrees, so it is not proposed again. Checked per row:
+    # the markdown lists every person, and Bo's P569 is a different gap.
+    assert not [l for l in statements.splitlines()
+                if "/Q1)" in l and "P569" in l]
 
 
 # -- names and name-links ----------------------------------------------
@@ -354,9 +345,9 @@ def test_name_links_proposes_links_to_existing_name_items(ws):
     seeded(ws)
     assert run(ws, "name-links", "--retrieved", "2026-07-30") == 0
 
-    statements = (ws["out"] / "wikidata" / "add-names.qs").read_text(encoding="utf-8")
-    assert "Q1\tP734\tQ900" in statements  # Alpha, the family name
-    assert "Q1\tP735\tQ901" in statements  # Ada, the given name
+    report = (ws["out"] / "wikidata" / "add-names.md").read_text(encoding="utf-8")
+    assert "Q900" in report  # Alpha, the family name
+    assert "Q901" in report  # Ada, the given name
 
 
 def test_name_links_leaves_a_name_with_no_item_alone(ws):

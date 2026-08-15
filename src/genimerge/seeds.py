@@ -292,7 +292,7 @@ GENI_EXPORT_CAP = 4868
 #: actually did, and it returned 95% new people.
 #:
 #: A constant for the same reason as
-#: :data:`genimerge.quickstatements.NOT_AN_ERROR_RATE`: a test asserts it
+#: :data:`genimerge.crosscheck.SUSPECT_IS_NOT_WRONG`: a test asserts it
 #: reaches the report, and a copy of the sentence in the test would break on any
 #: rewording.
 EXPORT_FROM_THE_PARENT = (

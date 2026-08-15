@@ -165,21 +165,29 @@ def test_a_name_with_no_item_at_all_is_reported_not_invented(tmp_path):
     assert any("no Wikidata name item exists" in s.reason for s in batch.skipped)
 
 
-def test_the_quickstatements_lines_are_well_formed(tmp_path):
-    batch = build(tmp_path, {"1": "Q1"})
-    lines = namelinks.render_quickstatements(batch).strip().split("\n")
-    family = [l for l in lines if "\tP734\t" in l][0]
-    given = [l for l in lines if "\tP735\t" in l][0]
+def test_the_statements_are_well_formed(tmp_path):
+    """`render_quickstatements` went with QuickStatements on 2026-08-15.
 
-    assert family.split("\t")[:3] == ["Q1", "P734", "Q100"]
-    assert "P1545" in given and '"1"' in given
+    What it rendered is still built: `to_statements` turns the batch into the
+    claim model in `genimerge.claims`, which is what the JSON edit objects will
+    serialise. The reference properties are plain `P854`/`P813` now — the `S`
+    prefix was QuickStatements' way of marking a reference inside a flat line.
+    """
+    statements = namelinks.to_statements(build(tmp_path, {"1": "Q1"}))
+    family = [s for s in statements if s.prop == "P734"][0]
+    given = [s for s in statements if s.prop == "P735"][0]
+
+    assert (family.qid, family.value) == ("Q1", "Q100")
+    assert dict(given.qualifiers)["P1545"] == '"1"'
     # Every statement carries its source.
-    assert all("S854" in line and "S813" in line for line in lines)
-    assert all("+2026-07-30T00:00:00Z/11" in line for line in lines)
+    for s in statements:
+        refs = dict(s.references)
+        assert "P854" in refs and "P813" in refs
+        assert refs["P813"] == "+2026-07-30T00:00:00Z/11"
 
 
-def test_an_empty_batch_renders_no_stray_newline():
-    assert namelinks.render_quickstatements(namelinks.NameBatch()) == ""
+def test_an_empty_batch_yields_no_statements():
+    assert namelinks.to_statements(namelinks.NameBatch()) == []
 
 
 def test_the_report_states_the_rules_and_counts(tmp_path):

@@ -20,7 +20,7 @@ enough to run. This item is **not deleted when it completes**; it is a procedure
 not a step.
 
 **Last run: 2026-08-15** → `reports/audit-transcripts-2026-08-15.md`
-(24 transcripts, 311 user turns, 2026-08-01 → 2026-08-15). Items 1–6 below are
+(24 transcripts, 311 user turns, 2026-08-01 → 2026-08-15). Items 1–9 below are
 its output.
 
 ### What went wrong, the first time
@@ -91,15 +91,44 @@ the older files are where standing decisions were made. Then:
 
 ---
 
-## 1 · Answer the audit's open questions, then act on the answers
+## 1 · Merge the two trees structurally — the midnight job
 
-`reports/audit-transcripts-2026-08-15.md` § 5 lists five decisions that were put
-to Emma by `AskUserQuestion` on 2026-08-15. **Her answers go into `CLAUDE.md`
-(if they are decisions about how the project works) or become items here (if they
-are work).** This item is done when every answer has landed somewhere and this
-paragraph is deleted.
+**Emma, 2026-08-15, and she says plainly it has not been done:** *"it is an idea
+of a thing that we still haven't really done yet."* Queued by cron for **00:01**,
+after the re-merge at 19:07, because it needs *"the proper synoptic tree and the
+proper samaritans"* in place first.
 
-## 2 · Re-merge over 203 exports and refresh the derived reports
+Walk up the relationships from people holding **both** a Geni ID and a QID,
+merging the parents where both sides have one. `CLAUDE.md` § *Merging the two
+trees is a walk up the relationships* is the full rule, including the part that
+is easy to get wrong: **labels confirm a position the structure already chose;
+they never search for one.**
+
+Produces two things: our own QID ↔ Geni ID correspondence built from the merges,
+and a placeholder for everyone on Geni but not on Wikidata, to be created later.
+
+**Show cases one by one before generalising.** `CLAUDE.md` § *How this project
+works now* — do not build the pipeline first, and do not reformat the records.
+
+## 2 · Bulk-download the Samaritan priests' Wikidata items and fold them in
+
+They are on Geni **and** on Wikidata; what they lack on Wikidata is genealogy.
+`CLAUDE.md` § *An item with no relationships is not a missing item* has the order
+this follows: `P2600` first, then everything Geni supports, each cited to it.
+
+Part of the same download run as the **15,094 unreadable-item relationship
+edges** — Emma chose *expand the download, then re-check* over emitting
+unchecked. `genimerge wikidata-download` is the only thing in this repo allowed
+to talk to Wikidata, and it is confirmed before a live run.
+
+## 3 · Include the descent-from-antiquity people in the JSON generation
+
+Emma, 2026-08-15, asked whether to import them, leave them out, or see the
+population first: *"No, I am going to say just include these with the generation
+of the jsns and everything."* So people with neither a Geni ID nor a Wikidata
+item go in alongside the rest, not behind a flag or a gate.
+
+## 4 · Re-merge over 203 exports and refresh the derived reports
 
 **`out/merged.ged` is from 2026-08-13 17:53 and `reports/merge.md` lists 176
 sources.** 27 exports have landed since, including the four Samaritan ones.
@@ -118,14 +147,14 @@ Steps, in order:
 4. Re-run `scripts/build-repo-freshness.py` and confirm the `behind_by` column
    has emptied for the generated rows.
 
-## 3 · Re-run `build-geni-wikidata-pairs.py` over the 203-export corpus
+## 5 · Re-run `build-geni-wikidata-pairs.py` over the 203-export corpus
 
 The 40-profile pass predates the four Samaritan exports. Cheap; no decision
 needed. A run that reports the two unmergeable Aaron / Zerubbabel pairs as
 "conflicts" has regressed — see `CLAUDE.md` § *A second Geni ID … is NOT a
 conflict*.
 
-## 4 · The 59 order.life properties from P155 up
+## 6 · The 59 order.life properties from P155 up
 
 Emma, 2026-08-15 #288: *"look over all the order.life properties that might be
 novel."* Rodovid, FamilySearch, WikiTree, Roglo, Geneanet, The Peerage, JewAge,
@@ -133,7 +162,7 @@ DAR/SAR, Find a Grave, a large Swedish cluster. Same numbers and meanings as
 Wikidata, values Wikidata often lacks, on items that already exist. **No
 creation, no normalisation** — the easiest remaining win.
 
-## 5 · Normalise the placeholder names, then generate relationship labels
+## 7 · Normalise the placeholder names, then generate relationship labels
 
 **Emma, 2026-08-14.** Two stages, the second explicitly at the END of the queue.
 
@@ -188,7 +217,7 @@ Screen on the placeholder vocabulary and on punctuation, never on length.
 **Open, Emma's own uncertainty:** whether to run stage 2 for people who already
 have a surname, or only for the bare-`NN` ones. Put to her in item 1.
 
-## 6 · Small, named, and unblocked
+## 8 · Small, named, and unblocked
 
 Each of these is one instruction with no decision attached.
 
@@ -205,7 +234,10 @@ Each of these is one instruction with no decision attached.
 - **The Samaritan office** (`Samaritan High Priest`) is still only a description;
   no `P106`, because choosing the item means asking Wikidata.
 
-## 7 · Wikidata batches built and waiting — nothing runs before 1 Sept
+## 9 · Wikidata batches built and waiting — nothing runs before 1 Sept
+
+Their `.qs` siblings were deleted with QuickStatements on 2026-08-15; the
+JSON is the artifact.
 
 Not work items; here so they are not rebuilt from scratch by a future session.
 
