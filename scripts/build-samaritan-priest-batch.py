@@ -118,7 +118,7 @@ def main() -> int:
         if g in linked:
             continue
         rec = people[g]
-        label = strip_office(rec["name"])
+        label = label_for(strip_office(rec["name"]))
         ref = [{"property": "P2600", "value": g}]
         entry = {
             "id": f"create_individual:{g}",

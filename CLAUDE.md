@@ -354,6 +354,39 @@ period so the ranking can be read one century at a time.
   how far *we* have traced upward, so an untraced person looks shallow whenever
   they lived. No date is ever inferred.
 
+### Redacted people go in. `Private` never becomes a label
+
+**Emma, 2026-08-14:** *"Even if the data is affected by redaction, I'm not really
+that against the data getting onto Wikidata because it still is informative, like
+the so-called private names."*
+
+Geni writes `1 NAME Private` for a profile it will not display. **16,402 of the
+corpus's 390,560 profiles** carry exactly that, plus 772 `NN` or blank — 4.2%.
+
+- **The person is created.** What is informative is the structure, and none of it
+  is redacted: the Geni ID, the sex, the parents, the children, the dates.
+- **The item gets no label.** "Private" is a redaction marker, not a name, and an
+  item labelled that asserts something false while being impossible to find. The
+  `P2600` is what makes it retrievable.
+
+`scripts/labels.py` is the single place that decides this — `label_for()` returns
+`''` for `Private`, `NN`, blank and `?`. A caller that falls back to the raw
+string when it gets `''` reintroduces the whole problem.
+
+**This is the same rule as the Samaritan "wives" in `docs/future-modelling.md`,
+with the opposite outcome, and the difference is what to check for.** `daughter
+of Sanballat the Horonite` is also not a name — but she has no identifier and no
+structure, so there is nothing to create. A `Private` profile has both. The test
+is never "is the label bad", it is "is there anything real underneath it".
+
+**Do not confuse redacted with unnamed.** The seed of
+`exports/samaritans/export-Forest-6000000178794141887.ged` is
+`NN /bint Aabed-El ben Asher ben Matzliach/` — that is how she is *recorded*, not
+Geni withholding a name it holds. Her record comes through complete. Only 29 of
+that export's 4,820 people are `Private` at all, so an export seeded on a living
+person is **not** substantially redacted; assuming otherwise was wrong when it
+was assumed here.
+
 ### A second Geni ID on one Wikidata item is NOT a conflict
 
 **Emma, 2026-08-14: *"it is impossible to merge these geni profiles, simple as
