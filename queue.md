@@ -635,6 +635,42 @@ actually worked** — plainly, and low if it is low. Then re-run
 `scripts/find-export-entry-points.py` against the re-merged tree, since 31 edge
 exports landed on 2026-08-15 and the clusters will have moved.
 
+## 21 · Do the isolate-path thing for Sweden, Norway, Canada — and her maternal American line
+
+**Emma, 2026-08-15:** *"I want to do a similar thing like this to basically anybody
+who is from Sweden or Norway or Canada. I'm trying to get people who are relatively
+closely related to me and the paths to them, which would mean Sweden, Norway, and
+Canada are the places that I'm linked to. Maybe also the states that a couple of my
+American ancestors are from."* And: *"my maternal grandmother has some American
+ancestry that would be worth looking a bit into, although focusing on Norway and
+Sweden."*
+
+**The method is proven, so this is a filter change, not new machinery.** The
+academic run went: filter the isolates by `P106`, open 200 Geni profiles evenly
+spaced, she saves the ones with real paths, `path-from-html` extracts them.
+Measured on the first 200:
+
+| | |
+| --- | ---: |
+| save rate | **39.0%** (78 of 200) |
+| paths extracted / failed | 89 / **0** |
+| distinct people named | 2,068 |
+| **not in any of our 234 exports** | **1,436 (69.4%)** |
+
+**Filter on `P27` country of citizenship** instead of occupation — Sweden, Norway,
+Canada — and take the same evenly-spaced 200. `reports/wikidata-isolates.csv`
+already carries every isolate; the country pass is the same shape as
+`reports/academic-isolates.csv`.
+
+**Norway and Sweden first, her ordering.** The American piece needs her to name
+which states, since it comes from her maternal grandmother's line and nothing in
+the data says which. **Ask before filtering on a state.**
+
+**Why this population and not the Song dynasty one:** her framing, and it is worth
+keeping because it is a hypothesis about *why* it works — *"academics tend to come
+from kind of wealthy upper-middle-class families of more ancient origin and are a
+bit more socioeconomically stable."* Untested, and not needed for the work.
+
 ## Always last — pinned to the tail
 
 A. **Ensure the three crons are running** — work-loop `3 * * * *`, auto-flush
