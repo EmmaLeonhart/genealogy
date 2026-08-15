@@ -24,6 +24,10 @@ queue file is exactly the *"second store"* mistake `CLAUDE.md` warns about.
 
 PLEASE CLEAN UP THE QUEUE! Oh my God! Please clean up the queue! Oh my God, we did a comprehensive audit of the queue, and then you just decided to fuck around and immediately bloat it. 
 
+## 0.1
+
+There was a middle name added to me, by the way, that is intended. It is not something to be added to a wikidata. 
+
 ## 0 · STANDING PROCEDURE — audit this queue against the chat logs before running it
 
 **Emma, 2026-08-14, and this item exists because she could not tell what was
