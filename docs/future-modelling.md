@@ -161,8 +161,27 @@ both ends carry a Wikidata item:
 
 | drop | edges lost | status |
 | --- | ---: | --- |
-| parent's sex is not `Q153718`/`Q153719` | **19** | almost certainly fine — 18 of the 19 have `sex = Q1`, which is *Aster* in the sex column, and 1 is blank |
+| parent's sex is not `Q153718`/`Q153719` | **19** | **FIXED** — was deleting a fourteen-generation descent chain |
 | **child's item is not readable in the local store** | **15,094** | **NEEDS-DECISION** |
+
+**The first was not fine, and calling it fine was the same mistake again.** The
+19 edges are not strays: they are a continuous Japanese descent chain —
+Hayamikatama no Mikoto → Asotsuhime → … → Naruko no Sukune → Maro no Sukune →
+Nakui no Atai → Yukitei no Atai → Yamato no Tehiko — plus `Ante Adam →
+Y-Chromosomal Adam`. A guard on one *column* deleted fourteen generations of
+*relationships*.
+
+And the value it tripped on was not junk. `Q1` and `Q153721` are both **"Aster,
+Goddess of Alpha"** — a third value in order.life's own sex scheme, beside
+`Q153718` Male and `Q153719` Female. Across all 106,909 persons: 72,575 male,
+31,213 female, 3,081 blank, 37 Aster, 3 `Q153721`. This file previously called it
+"Aster in the sex column", dismissing a category rather than reading it.
+
+**Now emitted as `P22_or_P25` with `needs: "parent sex unresolved"`**, listed in
+`reports/orderlife-parent-sex-unresolved.csv`. Wikidata has only father and
+mother, so the *property* genuinely cannot be chosen — but that is not a reason to
+discard the *relationship*, and none of those 18 parents are in the local store
+either, so the sex cannot be recovered from their item.
 
 **The second is 21% of the available work.** 60,073 order.life people carry a
 Wikidata item; **45,231** are in our local slice and **14,842** are not. For those

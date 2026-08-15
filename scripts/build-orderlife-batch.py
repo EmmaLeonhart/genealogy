@@ -78,7 +78,10 @@ REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO / "src"))
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
 from genimerge import sources  # noqa: E402
+from labels import label_for  # noqa: E402
 
 OL = Path("C:/Users/Emma/Documents/GitHub/order.life/wikibase")
 INDEX = REPO / "out" / "wikidata" / "store-index.sqlite3"
@@ -216,6 +219,28 @@ def main() -> int:
     persons.pop("Q2", None)
     print(f"{len(persons):,} order.life persons (Q2 dropped)")
 
+    # **Validate the identifier columns on read.** One row - `Eurycratides` -
+    # carries its own label in `wikidata_qid` instead of a QID, and it reached
+    # the emit stage and tripped `_assert_wikidata_qid` there. Catching it here
+    # keeps a malformed identifier from being treated as a real one at all: a
+    # bad QID would otherwise have counted as "already exists on Wikidata" and
+    # suppressed a creation. Geni IDs are all well-formed but are checked on the
+    # same principle rather than trusted.
+    bad_q = bad_g = 0
+    for r in persons.values():
+        if (r.get("wikidata_qid") or "").strip() and not re.fullmatch(
+                r"Q\d+", r["wikidata_qid"].strip()):
+            print(f"  dropping malformed wikidata_qid "
+                  f"{r['wikidata_qid']!r} on {r.get('label','')!r}")
+            r["wikidata_qid"] = ""
+            bad_q += 1
+        if (r.get("geni_id") or "").strip() and not re.fullmatch(
+                r"\d+", r["geni_id"].strip()):
+            r["geni_id"] = ""
+            bad_g += 1
+    if bad_q or bad_g:
+        print(f"  {bad_q} malformed QIDs and {bad_g} malformed Geni IDs dropped")
+
     father: dict[str, list[str]] = {}
     for r in csv.DictReader((OL / "analysis" / "edges.tsv").open(encoding="utf-8"),
                             delimiter="\t"):
@@ -244,13 +269,18 @@ def main() -> int:
     print(f"{len(gaiad):,} of them are flagged Gaiad characters")
 
     batch, summary, skipped = [], {}, []
+    unresolved: list[dict] = []
     #: order.life qid -> (wikidata qid, geni id or "") for everyone who has an
     #: item on Wikidata. Their edges are the `add_relationship` source.
     rel_candidates: dict[str, tuple[str, str]] = {}
     for q, r in persons.items():
         gid = (r.get("geni_id") or "").strip()
         wqid = (r.get("wikidata_qid") or "").strip()
-        label = (r.get("label") or "").strip() or (r.get("gedcom") or "").strip()
+        # order.life carries Geni's redaction markers through into its own
+        # label column - 278 "private", 47 "nn", 26 "unknown", 57 "?". Same
+        # rule as everywhere else: the person is created, the label is not set.
+        label = label_for((r.get("label") or "").strip()
+                          or (r.get("gedcom") or "").strip())
 
         already = geni_to_qid.get(gid) if gid else None
         if wqid and gid:
@@ -332,7 +362,26 @@ def main() -> int:
             psex = (persons.get(parent, {}).get("sex") or "").strip()
             prop = {OL_MALE: "P22", OL_FEMALE: "P25"}.get(psex)
             if not prop:
-                continue                  # parent's sex unknown -> cannot choose
+                # **Do not drop the edge.** Wikidata has only P22 father and P25
+                # mother, so an unresolved parent sex means the PROPERTY cannot
+                # be chosen - it does not mean the RELATIONSHIP is absent. An
+                # earlier version `continue`d here and silently deleted a
+                # fourteen-generation Japanese descent chain, because
+                # order.life records those parents' sex as `Q1` / `Q153721`,
+                # which is "Aster, Goddess of Alpha" - a third value in its own
+                # scheme, not a data error. Emitted unresolved and counted.
+                unresolved.append({
+                    "orderlife_qid": q, "wikidata_qid": wqid,
+                    "parent_orderlife_qid": parent, "parent_wikidata_qid": target[0],
+                    "parent_sex_value": psex or "(blank)",
+                    "person": persons.get(q, {}).get("label", ""),
+                    "parent": persons.get(parent, {}).get("label", ""),
+                })
+                e = _rel(q, wqid, "P22_or_P25", target[0], ref, parent,
+                         persons, gaiad)
+                e["needs"] = "parent sex unresolved - choose P22 or P25"
+                batch.append(e)
+                continue
             if target[0] in have.get(prop, set()):
                 continue
             batch.append(_rel(q, wqid, prop, target[0], ref, parent,
@@ -362,6 +411,15 @@ def main() -> int:
             w.writerow([k, TIERS.get(k, ""), n])
             print(f"  tier {TIERS.get(k, '-'):>2}  {n:>7,}  {k}")
     print(f"wrote {s}")
+
+    if unresolved:
+        u = REPO / "reports" / "orderlife-parent-sex-unresolved.csv"
+        with u.open("w", encoding="utf-8", newline="") as fh:
+            w = csv.DictWriter(fh, fieldnames=list(unresolved[0]))
+            w.writeheader()
+            w.writerows(unresolved)
+        print(f"wrote {u} ({len(unresolved):,} rows) - emitted as P22_or_P25, "
+              f"NOT dropped; the property needs choosing")
 
     sk = REPO / "reports" / "orderlife-nothing-to-do.csv"
     with sk.open("w", encoding="utf-8", newline="") as fh:
