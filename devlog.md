@@ -6782,3 +6782,40 @@ this audit exists to catch:**
 because `todo.md` was untrusted, which is what this audit fixed. Its `gaiad`
 entry is marked FIXED and kept, because it is where the other three came from and
 because the fix broke twice on the way.
+
+## 2026-08-16 09:04 — both questions answered, and one of them found a real bug
+
+**The 1,312 ambiguous name items.** Emma looked at `Maria` herself and diagnosed
+it: *"everything appears to be diacritics or stuff that's not actually it. As far
+as Maria goes… there's a male and a female Maria."*
+
+She was right. `measure-name-resolution` folded diacritics away, so of the nine
+`Maria` candidates **four were `María`, `Mária` or `Marià`** — Spanish, Hungarian
+and Catalan names with their own Wikidata items on purpose. Collapsing them
+manufactured ambiguity that does not exist:
+
+| | before | after |
+| --- | ---: | ---: |
+| ambiguous, held | 1,312 | **525** |
+| link an existing item | 6,547 | **8,092** |
+| create | 14,078 | 13,320 |
+
+1,545 names moved from *create* to *link* — every one a duplicate that would
+otherwise have been created. The genuine residue is the male/female `Maria`
+distinction she named, which is settled by the person's sex rather than the
+string.
+
+**The Itamar spine** — *"Fix the header to say 121."* Done, with the 112 kept in
+the note as what it actually is: the source's figure for the **parallel Phinhas
+line**, which is where the length was borrowed from.
+
+**And the 1 September list is out of the queue.** Emma: *"What the fuck waits on
+1 September? That shouldn't be in the queue?"* Correct — it is a list of ten
+built batches, not work, and it was making the queue look longer than it is. Now
+in `todo.md`.
+
+**Checked on her prompt: `Yitzhaq I ben Tsedaka` is handled consistently.**
+`Q137394557` ↔ `6000000227245553985` appears as one `add_geni_id` and in the
+succession with `P1365`/`P1366` and his 1650–1694 term, and is **created
+nowhere**. Had the batches not been rebuilt after export 204 brought him in, he
+would have been created and linked at the same time.

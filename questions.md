@@ -23,48 +23,12 @@ record the decision in `CLAUDE.md` if it governs how the project works.
 
 ---
 
-## 1 · The 1,312 ambiguous name items
+*No questions outstanding. Entries below this line as they arise.*
 
-`reports/name-item-plan.csv`. A name whose label matches **several** Wikidata
-items — `Maria` matches nine, `Anna` five, `John` and `Anne` two each. 1,034 given
-names and 278 family names.
+Both 2026-08-16 entries were answered at 09:04 and applied:
 
-**Done in the meantime: nothing.** They are held, marked
-`AMBIGUOUS - review, do not create`, and are **not** in
-`reports/wikidata-name-items.json`. Reversing costs nothing; the alternative was
-creating a tenth `Maria`, which does not reverse cheaply.
-
-**The options:**
-
-- **Link the most-referenced item.** `reports/name-items.csv` has a `references`
-  count per item, so "the one most of Wikidata already uses" is available and is
-  probably right for common given names.
-- **Hold all 1,312** until the rest of the name items are done.
-- **Show you the top 20 by bearer count** and decide those by hand; they cover
-  most of the affected people.
-
-
-## 2 · The Itamar spine says 112 in its header and 121 in its content
-
-`gedcom/samaritan-itamar-spine.ged`. The `HEAD` note says *"Itamar is 2 and Tabia
-is 112"*; Tabia's own note says **Generation 121**; the file holds **120 people
-numbered 2 through 121**. Nine more than its header, and nine more than the
-**112** generations the source gives father-to-son for the parallel Phinhas line.
-
-**Done in the meantime: nothing.** The file is hand-made and hand-sourced, and
-`@I3@` already carries the right caveat — *"Nobody counted this line. Do not read
-the number as measured."* Changing it on inference is the thing item 9b just
-established should not happen.
-
-**The options:**
-
-- **Renumber to end at 112**, dropping nine invented placeholders, so the file
-  agrees with its own header and with the source's figure.
-- **Collapse the whole unnamed stretch** to one *"distance not recorded"* link
-  between Itamar and Tabia — your original suggestion, and the only version that
-  asserts nothing the source does not.
-- **Leave the chain, fix the header** to say 121 — keeps the Geni-entry ordering
-  intact and admits the number is borrowed rather than counted.
-
-The third is cheapest and the second is most honest; they differ in whether you
-want 118 placeholder people to enter Geni.
+- **The ambiguous name items** — Emma looked and found the cause: *"everything
+  appears to be diacritics or stuff that's not actually it."* The matcher folded
+  diacritics away, so `María`, `Mária` and `Marià` collapsed onto `Maria`.
+  Corrected; ambiguity **1,312 → 525**, links **6,547 → 8,092**.
+- **The Itamar spine** — *"Fix the header to say 121."* Done.

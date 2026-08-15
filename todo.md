@@ -637,6 +637,29 @@ for its content to be gone over **later**.
 Wikidata should also be getting this right, which is the check to run against the
 local store once the pairs are in.
 
+## The built batches, and the 1 September date
+
+**Moved out of `queue.md` on 2026-08-16.** Emma: *"What the fuck waits on 1
+September? That shouldn't be in the queue?"* Right — it is not work, it is a
+list of what exists, and it was sitting in the work list making the queue look
+longer than it was. The date is her own instruction of 2026-08-14: *"no wikidata
+edits until September 1."*
+
+Every batch below is generated, committed, and has sent nothing anywhere.
+
+| batch | entries |
+| --- | ---: |
+| `reports/wikidata-orderlife.json` | 54,356 |
+| `reports/wikidata-placeholder-labels.json` | 35,011 — **held** until all seven languages exist |
+| `reports/wikidata-name-items.json` | 14,078 |
+| `reports/wikidata-structural-placeholders.json` | 11,387 |
+| `reports/wikidata-samaritan-priests.json` | 76 |
+| `reports/wikidata-add-geni-id.json` | 36 |
+| `reports/wikidata-samaritan-succession.json` | 21 |
+| `reports/wikidata-orderlife-identifiers.json` | 12 |
+| `reports/wikidata-entity-resolution.json` | 10 |
+| `reports/wikidata-samaritan-links.json` | 9 |
+
 ## 9. Future modelling, folded in from `provisional-todo.md` (2026-08-16)
 
 Emma made that file on 2026-08-15 because `todo.md` was untrusted; this audit is

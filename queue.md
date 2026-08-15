@@ -388,22 +388,6 @@ data and worth about a third of what one hop leaves behind.
 
 Sibling, uncle and nephew need the family graph rather than the derived CSVs, so
 that part waits on the re-merge.
-## 14 · Wikidata batches built and waiting — nothing runs before 1 Sept
-
-Their `.qs` siblings were deleted with QuickStatements on 2026-08-15; the
-JSON is the artifact.
-
-Not work items; here so they are not rebuilt from scratch by a future session.
-
-- `reports/wikidata-samaritan-priests.json` — 78 `create_individual` for the
-  pre-1624 line, chained `P22`, kept separate from the post-1624 items.
-- `reports/wikidata-add-geni-id.json` — 32 `add_geni_id` from the QIDs Emma put
-  in Geni `about_me`, including 2 additional-`P2600` unmergeable duplicates.
-- `reports/wikidata-orderlife.json` — 52,233 entries; needs ONE rerun to pick up
-  the label rule.
-
----
-
 ## 14b · A long job scheduled by cron will starve. Run it, or schedule it idle
 
 **Measured 2026-08-15/16.** Of seven crons, six fired and one never did: the

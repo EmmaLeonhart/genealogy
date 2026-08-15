@@ -708,6 +708,19 @@ ran.
 | Q245025 | middle name | item — the `P3831` value for a middle given name |
 | Q110874 | patronymic | item — the `P3831` value for a patronymic, which is also what the name item is an *instance of* |
 
+**A diacritic makes a different name, and folding it away invents ambiguity.**
+Emma, 2026-08-16, asked why `Maria` matched nine Wikidata items: *"everything
+appears to be diacritics or stuff that's not actually it… there's a male and a
+female Maria."* `María` (Spanish), `Mária` (Hungarian) and `Marià` (Catalan) each
+have their own Wikidata item on purpose. `measure-name-resolution` folded them
+together, which manufactured ambiguity for **1,312** names and blocked them all
+from being created or linked; keeping the diacritic cut that to **525** and moved
+1,545 names from "create" to "link". Case and whitespace fold; nothing else does.
+
+The genuine residue is the one she named — `Q325872` and `Q25413386`, the **male**
+and **female** given name `Maria`. That is settled by the *person's* sex, not by
+the string, and neither item is in the local store yet.
+
 **One name item per USAGE, not per string — "Jackson Jackson Jackson".** Emma's
 worked example, 2026-08-15: somebody whose given name is Jackson, whose surname
 is Jackson, and who carries a patronymic Jackson **because their father is Jack

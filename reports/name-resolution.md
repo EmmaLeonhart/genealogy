@@ -13,19 +13,19 @@ Every distinct name string is a row in `reports/name-resolution.csv`.
 
 | | distinct | share | occurrences | share |
 | --- | ---: | ---: | ---: | ---: |
-| resolved | 9,344 | 9.0% | 163,386 | 30.7% |
-| ambiguous — several items share the label | 2,107 | 2.0% | 91,450 | 17.2% |
-| no item | 92,224 | 89.0% | 276,630 | 52.1% |
-| **total** | **103,675** | | **531,466** | |
+| resolved | 10,886 | 9.2% | 270,609 | 39.2% |
+| ambiguous — several items share the label | 841 | 0.7% | 75,723 | 11.0% |
+| no item | 106,353 | 90.1% | 343,248 | 49.8% |
+| **total** | **118,080** | | **689,580** | |
 
 ### Surnames
 
 | | distinct | share | occurrences | share |
 | --- | ---: | ---: | ---: | ---: |
-| resolved | 6,487 | 14.6% | 57,462 | 27.3% |
-| ambiguous — several items share the label | 560 | 1.3% | 5,198 | 2.5% |
-| no item | 37,432 | 84.2% | 147,993 | 70.3% |
-| **total** | **44,479** | | **210,653** | |
+| resolved | 9,231 | 16.6% | 95,893 | 34.2% |
+| ambiguous — several items share the label | 229 | 0.4% | 3,544 | 1.3% |
+| no item | 46,163 | 83.0% | 180,726 | 64.5% |
+| **total** | **55,623** | | **280,163** | |
 
 **Distinct and occurrences differ a lot, and the second is the one that
 matters for coverage.** A common name resolving is worth thousands of records;
@@ -36,7 +36,7 @@ a rare one is worth one. Both are given so neither can be quoted alone.
 Before reading 30.7% as a name-coverage figure, look at what fails. The
 commonest unresolved strings, by occurrence:
 
-- **given-name tokens** — `I` (2,663), `II` (2,540), `of` (2,418), `NN` (2,351), `/` (1,380), `N.N.` (1,223), `III` (1,213), `Rd.` (1,114)
+- **given-name tokens** — `of` (2,951), `I` (2,890), `II` (2,810), `NN` (2,797), `Thomas` (2,031), `/` (1,762), `Hans` (1,714), `N.N.` (1,592)
 - **surnames** — `隴西狄道` (2,526), `曾` (2,319), `陳` (1,871), `河南洛陽` (1,528), `Chén 陳` (1,340), `京兆長安` (1,205), `藤原` (1,135), `이` (902)
 
 The given-name head is **regnal ordinals, particles, placeholders and
