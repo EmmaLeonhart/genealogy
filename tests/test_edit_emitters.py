@@ -212,3 +212,23 @@ def test_every_succession_entry_states_the_office():
         assert any(a["property"] == "P39" and a["value"] == "Q678510"
                    for a in edit["add"]), (
             f"{edit['id']} adds something other than the office")
+
+
+def test_a_person_with_genealogy_is_never_dropped_as_a_class():
+    """`Q1` Aster and `Q5` Hesper are people, and were briefly dropped as classes.
+
+    The class screen started as "every QID anything declares itself an instance
+    of", which finds order.life's `Male`/`Female`/`Person` rows — and also caught
+    Aster (child, spouse, sex, birth) and Hesper (mother, child, sex), because
+    Wikidata happens to use `Q5` for *human*. A class is a thing pointed at as a
+    class **and** carrying no genealogy of its own.
+    """
+    batch = _load("build-orderlife-batch")
+    assert batch.GENEALOGICAL, "the genealogical-property guard has been removed"
+
+    created = {(e.get("subject") or {}).get("orderlife_qid")
+               for e in _edits(REPORTS / "wikidata-orderlife.json")}
+    for qid, who in (("Q1", "Aster"), ("Q5", "Hesper")):
+        assert qid in created, (
+            f"order.life {qid} ({who}) has genealogy and must not be screened "
+            "out as a class")

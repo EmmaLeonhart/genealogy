@@ -6713,3 +6713,35 @@ explicit that this is *largest yet seen*, never a cap Geni enforces.
 
 `CLAUDE.md`'s own sentence still said **4128 as of 2026-08-13** while the
 constant had already moved to 4868. Corrected to 4940.
+
+## 2026-08-16 — the class screen dropped two real people, and the flag caught it
+
+The last status report flagged the `Q5` exclusion as inferred rather than
+checked. Checked: **it was wrong.**
+
+order.life's **`Q5` is Hesper** — a woman with a mother, a child and a sex — and
+**`Q1` is Aster**, with a child, a spouse, a sex and a birth. Both were being
+dropped from the batch as "class items" because the screen was *every QID
+anything declares itself an instance of*, and Wikidata happens to use `Q5` for
+**human**. Two real people deleted from the creations on a coincidence of
+numbering between two wikis.
+
+**The discriminator is clean once looked at:**
+
+| | genealogical properties |
+| --- | --- |
+| `Q1` Aster | child, spouse, sex, birth |
+| `Q5` Hesper | mother, child, sex |
+| `Q153718` Male, `Q153719` Female, `Q153800`, `Q153801` Person, `Q153802`, `Q153806` | **none** |
+
+A class is a thing pointed at as a class **and** carrying no genealogy of its
+own. Dropped items 8 → **6**, creations 19,226 → **19,228**.
+
+`tests/test_edit_emitters.py` now pins it: a person with genealogy is never
+screened out as a class. **9 tests.**
+
+The sequence is worth noting. The screen was written to fix a real bug — six
+class items being created as humans — and in fixing it introduced a smaller one
+in the opposite direction. Both were structural rules applied one step too
+broadly, and the second was caught only because the first had made me suspicious
+enough to write it down as unverified.

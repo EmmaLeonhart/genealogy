@@ -136,10 +136,24 @@ def corpus_geni_ids() -> set[str]:
 #: true of the definition and misleading about the data.
 INSTANCE_OF = ("P39", "P31")
 
-#: Filled by :func:`gaiad_qids` as it streams the shards: every QID that
-#: anything declares itself an *instance of*. Those are classes, and
-#: order.life keeps them in `persons.tsv` alongside real people.
+#: Filled by :func:`gaiad_qids` as it streams the shards: every QID that anything
+#: declares itself an *instance of*, and separately every QID that has any
+#: genealogical property of its own.
+#:
+#: **Both halves are needed, and using only the first was wrong.** order.life
+#: keeps its classes in `persons.tsv` alongside real people, so "used as an
+#: instance-of value" finds them — but it also caught **`Q1` Aster** and **`Q5`
+#: Hesper**, who are people: Aster has a child, a spouse, a sex and a birth;
+#: Hesper has a mother, a child and a sex. Dropping them would have deleted two
+#: real people from the batch because Wikidata happens to use `Q5` for *human*.
+#: A class is a thing pointed at as a class **and** carrying no genealogy of its
+#: own.
 CLASS_VALUES: set = set()
+HAS_GENEALOGY: set = set()
+
+#: order.life's father, mother, spouse, child, sex, birth, death. Anything with
+#: one of these is a person whatever else points at it.
+GENEALOGICAL = ("P47", "P48", "P42", "P20", "P55", "P56", "P57")
 
 
 def gaiad_qids(qids: list[str]) -> set[str]:
@@ -178,6 +192,7 @@ def gaiad_qids(qids: list[str]) -> set[str]:
     # caught: they never appear in the `sex` column, so a sex-based screen misses
     # them, and they are rows in persons.tsv like everyone else.
     CLASS_VALUES.clear()
+    HAS_GENEALOGY.clear()
     for n, path in enumerate(shards, 1):
         with gzip.open(path, "rt", encoding="utf-8") as fh:
             for line in fh:
@@ -186,9 +201,11 @@ def gaiad_qids(qids: list[str]) -> set[str]:
                 except json.JSONDecodeError:
                     continue
                 q = item.get("id")
+                claims = item.get("claims") or {}
+                if any(pr in claims for pr in GENEALOGICAL):
+                    HAS_GENEALOGY.add(q)
                 if q not in wanted:
                     continue
-                claims = item.get("claims") or {}
                 for prop in INSTANCE_OF:
                     for s in claims.get(prop, []):
                         v = (s.get("mainsnak") or {}).get("datavalue", {}).get("value")
@@ -422,6 +439,7 @@ def main() -> int:
     classes = {v.strip() for r in persons.values()
                for v in ((r.get("sex") or "").strip(),) if v.strip()}
     classes |= CLASS_VALUES | {GAIAD, OL_MALE, OL_FEMALE}
+    classes -= HAS_GENEALOGY
     removed = [q for q in classes if q in persons]
     for q in removed:
         persons.pop(q, None)
