@@ -542,32 +542,6 @@ ambiguous as a given name and created as a family name; and scanning the whole
 JSON blob flagged `subject.orderlife_qid`, which is provenance and is *supposed*
 to hold a local QID.
 
-## 15 · Audit `todo.md` the way `queue.md` was audited, then fold in the provisional to-do
-
-**Emma, 2026-08-15:** *"I don't know if the to-do is being properly done."* This
-is the last real item in the queue, and it is the same shape as § 0 was for this
-file. In her order:
-
-1. **Look over `todo.md` and see the degree to which it has actually been
-   followed.** 595 lines, last touched 2026-08-14.
-2. **Analyse it** — per `CLAUDE.md`, that means one row per item with its state,
-   not an impression.
-3. **Remove what is finished**, to `devlog.md` with a dated entry in the same
-   commit, exactly as this file's own rule requires.
-4. **Convert what is immediately actionable into queue items**, appended at the
-   end of this queue.
-5. **Move `provisional-todo.md` into `todo.md`.**
-6. **Delete `provisional-todo.md`.**
-
-`provisional-todo.md` holds three future-modelling items — Cladoplast's eventual
-property plus `P3831` role qualifier, Gaiad characters eventually getting
-individual citations, and `P999999` as a Gaiad reference that is **meant** to
-fail so no Gaiad-derived statement can execute before the citation system exists.
-
-**Do not let a second to-do file become permanent.** `provisional-queue.md`
-lasted one day by design; `CLAUDE.md` records `data_lake/` as the cost of a
-second store that outlived its reason.
-
 ## Always last — restart the three crons and summarize
 
 **These two items stay pinned to the tail of the queue at all times** — below every real work item:

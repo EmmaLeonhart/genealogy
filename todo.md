@@ -9,45 +9,35 @@ See `CLAUDE.md` § "Queue and longer-horizon work".
 
 ---
 
-**Progress note (2026-08-01).** Items 1 and 2 are built and running. Item 3 now
-has **both** halves: the analysis in `reports/frontier.md` and `reports/seeds.md`,
-and the ingest, exercised for real by a fourth export on 2026-08-01. Item 6 has
-all three of its edit-generating slices — P2600, name links, and the
-parent/spouse/date gaps — leaving only the post-acceptance re-run. Items 4, 5
-and the non-GEDCOM half of 7 are untouched. What is done in detail lives in
-`devlog.md`.
+**Progress note — audited 2026-08-16.** Every item was checked against the repo
+rather than carried forward. Items **1, 2, 3, 5** and the GEDCOM half of **7** are
+built; **4** and **6** are built as far as they can go before anything runs
+against Wikidata, which is not before 1 September; **8a**'s download is done at
+1,423,022 items. What was *stale* rather than incomplete is corrected in place:
+item 2's weak-evidence fallback is dead, item 4's QuickStatements format is
+deleted, item 6's three commands are two-deleted-one-rewritten, and item 7's "no
+second format in hand" was false — order.life is vendored.
 
-**Two claims below stopped being predictions on 2026-08-01.** The fourth export
-tested them and both held; they are marked *Confirmed* where they appear. This
-file is a list of intentions, so it is worth being explicit about which of them
-have since been measured — item 3b's "the merge absorbs it without changes", and
-item 7's "a file drop and a re-run, not a code change".
-
-The tree is **89474 people in one connected component** (`reports/frontier.md`,
-2026-08-04, over 45 exports). **Treat the numbers in this paragraph as a
-timestamp, not a fact.** It has been wrong four times in five days: it read
-"12422 people in one connected component" and was left alone when the fifth
-export made it two; then 16266/12422/3844; then 27718/16217/11501; then 32393,
-each for a matter of hours.
-`reports/frontier.md` is the live count and this file is not regenerated.
+**The tree is 396,181 people in one connected component** over 204 exports
+(2026-08-16). **Treat that as a timestamp, not a fact.** It has been wrong many
+times: 12422, then 16266/12422/3844, then 27718/16217/11501, then 32393, then
+89474, each for a matter of hours. `reports/frontier.md` is the live count and
+this file is not regenerated.
 
 The warning that used to follow it turned out to be a description rather than a
 caution: an export seeded outside what we hold merges without a single conflict
-and still leaves two trees. That is why `genimerge merge` reports connectivity
-on every run — and it is also why "one component" is not a permanent state. The
-next export to reach somewhere nothing else does will split it again, and that
-is normal.
+and still leaves two trees. That is why `genimerge merge` reports connectivity on
+every run — and why "one component" is not a permanent state. The next export to
+reach somewhere nothing else does will split it again, and that is normal.
 
 **The Japanese line was joined on 2026-08-04** by two `Forest` exports seeded in
-the six-person gap that `reports/path-jimmu.md` had isolated. The path from the
-account owner to Emperor Jimmu is now 83 of 83 steps held. The method — save a
-Geni page for a target, extract the path, read off exactly who is missing —
-generalises to every other line worth reaching, and is item 4 in `queue.md` for
-the nine pages already saved.
+the six-person gap `reports/path-jimmu.md` had isolated: 83 of 83 steps held. The
+method — save a Geni page, extract the path, read off exactly who is missing —
+generalises.
 
-Every batch under items 4, 5 and 6 stops at a file in `out/wikidata/`.
-**Nothing in this repo writes to Wikidata**, and nothing should start doing so
-without the user saying it may.
+Every batch under items 4, 5 and 6 stops at a file in `reports/`.
+**Nothing in this repo writes to Wikidata**, and nothing starts before
+1 September.
 
 ## 1. One canonical genealogy, not N exports
 
@@ -67,11 +57,22 @@ the style has to be in the name because one seed can be exported in several.
 ## 2. Wikidata reconciliation
 
 For every person in the canonical dataset, determine whether a Wikidata item
-already exists. The primary key is **P2600 (Geni.com profile ID)**; where that
-is absent — which it will be for most of the tree — fall back to progressively
-weaker evidence (name + birth/death dates, parent/child links to already-matched
-items, known-royalty name forms). Reconciliation output is a mapping table with
-a confidence level per row, never a silent guess.
+already exists. The primary key is **P2600 (Geni.com profile ID)**.
+
+**The "progressively weaker evidence" half of this item is DEAD, and saying so
+is the point of keeping the paragraph.** It used to read: *fall back to name +
+birth/death dates, parent/child links, known-royalty name forms*. Emma killed it
+on 2026-08-12 — *"no fucking clue why there's a fuzzy matcher that sounds like
+something you made with zero consent from me"* — and `correspondence.md` states
+the rule: **no name similarity, ever.** `genimerge.reconcile`, which implemented
+it, was deleted on 2026-08-15.
+
+**What replaced it is structural, and it is built.** `scripts/walk-structural-merge.py`
+walks **up** the parental lines from people holding both a Geni ID and a QID and
+merges the parents where both sides have one; the label only *confirms* a
+position the structure already chose. Over 14,685 anchors: 57,213 positions
+agree, **3,663 new QID ↔ Geni ID correspondences**, 11,387 people on Geni and not
+on Wikidata. `reports/structural-correspondence.csv`.
 
 ## 3. Expansion planning — where to export next
 
@@ -193,8 +194,23 @@ in `queue.md`, and the thing most likely to change what is worth building next.
 
 ## 4. Wikidata authoring pipeline — queue up the missing people
 
-For people with no Wikidata item, generate a reviewable batch (QuickStatements
-v1 to start) that creates them with everything the genealogy actually supports:
+For people with no Wikidata item, generate a reviewable batch that creates them
+with everything the genealogy actually supports.
+
+**The format is JSON edit objects, not QuickStatements.** Emma's 2026-08-12 spec
+calls for JSON with dependency ordering, roughly a hundred executed per day;
+QuickStatements was deleted entirely on 2026-08-15 — *"we are deleting the entire
+thing right now."* Every batch below is JSON.
+
+**Built and waiting**, none of it run, nothing before 1 September:
+`wikidata-orderlife.json` (54,356), `wikidata-structural-placeholders.json`
+(11,387), `wikidata-name-items.json` (14,078), `wikidata-samaritan-priests.json`
+(76), `wikidata-samaritan-succession.json` (21), `wikidata-entity-resolution.json`
+(10), `wikidata-add-geni-id.json` (36), `wikidata-samaritan-links.json` (9),
+`wikidata-placeholder-labels.json` (35,011, **held** until the labels exist in
+all seven languages).
+
+What each carries:
 
 - multilingual label (the name, as a label in each applicable language)
 - English label + description
@@ -240,10 +256,22 @@ is missing, the harder part being to distinguish Japanese from Chinese first.
 ## 5. Name and surname items
 
 Wikidata models names as items: P735 (given name) and P734 (family name) point
-at dedicated name items. Many of the given names and surnames in this tree —
-Norwegian patronymics especially (`Olavsdotter`, `Torsteinson`, …) — have no
-Wikidata item yet. Detect which name strings lack items, and queue the creation
-of the missing name items so people can then be linked to them.
+at dedicated name items.
+
+**Built 2026-08-16** — `reports/name-item-plan.csv`, **21,939 name items**: 6,547
+link one that already exists, 14,078 create, **1,312 held as ambiguous** because
+several Wikidata items share the label (`Maria` matches nine). One item per
+**usage**, not per string, so a token used as a given name, a surname and a
+patronymic is three items.
+
+**Emma was right about the patronymics.** All 633 Wikidata items that are
+`instance of` `Q110874` are saved in `reports/patronymic-items.csv`; coverage is
+Russian, Icelandic, Spanish and Ukrainian, Swedish has 13 and Danish/Norwegian
+essentially none. 143 of the 633 match a token here and get **linked**; 4,143
+patronymic-shaped tokens have no item at all.
+
+**This item is now the prerequisite for the labels**, not a follow-on: label a
+token once in its name item and every bearer inherits it.
 
 ## 6. Backfill existing Wikidata items
 
@@ -255,14 +283,20 @@ so they need a higher review bar than new-item creation.
 Three slices of this are built, each writing a reviewable batch to
 `out/wikidata/` that nothing has sent anywhere:
 
-- **P2600 backfill** — `genimerge quickstatements` → `add-p2600.qs`.
-- **P735/P734 name links to name items that already exist** —
-  `genimerge name-links` → `add-names.qs`. Only the *missing* name items
-  depend on item 5; linking to extant ones never did.
-- **Missing parent/spouse links, and dates** — `genimerge crosscheck` →
-  `add-claims.qs`, 65 statements today (P22 x1, P25 x4, P26 x18, P569 x18,
-  P570 x24). Only gaps are proposed, never conflicts, and a relationship needs
-  both people linked by P2600 rather than by inference.
+- **P2600 backfill** — `genimerge quickstatements` and its `.qs` output were
+  **deleted 2026-08-15**. The work now lives in
+  `scripts/build-geni-wikidata-pairs.py` → `reports/wikidata-add-geni-id.json`,
+  36 entries from the Wikidata URLs Emma wrote onto Geni profiles.
+- **P735/P734 name links to items that already exist** — `genimerge name-links`,
+  **now fully offline**: the P2600 map, `reports/name-resolution.csv` and the
+  downloaded store, no network at all.
+- **Missing parent/spouse links, and dates** — `genimerge crosscheck --offline`
+  → `add-claims.md`. Only gaps are proposed, never conflicts, and a relationship
+  needs both people linked by P2600 rather than by inference.
+- **order.life's identifiers** — measured 2026-08-16 and the answer was
+  negative, which is worth keeping: of 48,102 identifier claims on people who
+  also have a Wikidata item, **46,802 are already stated** and **12** are
+  addable. order.life took them *from* Wikidata.
 
 What is left under item 6 is **re-running reconciliation after a batch is
 accepted**, since each new P2600 makes the exact join reach further. That is
@@ -288,9 +322,18 @@ name — but it is the kind of detail a claim like "just a file drop" hides, so 
 is worth recording that the claim survived with an asterisk rather than
 untouched.
 
-What is genuinely unbuilt is a non-GEDCOM input path, and there is no second
-format in hand to build one against — so this stays abstract until a source that
-is not a GEDCOM turns up.
+**A second format did turn up, and it is in the repo.** This paragraph used to
+say there was none. `order.life` is a Wikibase, not a GEDCOM, and it is vendored
+under `orderlife/` as of 2026-08-15: 165 gzipped item shards (164,477 items,
+1,001 MB → 93 MB), the `analysis/*.tsv` tables, all 94 property definitions and
+the 20 images the wikibase actually references. Before that the scripts read an
+absolute path into a sibling checkout, so a clean clone could not build the batch
+at all.
+
+It is **not** merged into the GEDCOM store — it is read alongside it, joined on
+the Geni ID and the Wikidata QID. That is the honest shape of "ingest another
+source" for something whose Q-space is its own: `Q1` there is Aster, and
+`Q153719` is *Female*.
 
 ## 8. A parallel Wikidata tree, built by SPARQL, and provenance throughout
 
@@ -593,3 +636,88 @@ for its content to be gone over **later**.
 
 Wikidata should also be getting this right, which is the check to run against the
 local store once the pairs are in.
+
+## 9. Future modelling, folded in from `provisional-todo.md` (2026-08-16)
+
+Emma made that file on 2026-08-15 because `todo.md` was untrusted; this audit is
+what it was waiting for, so it comes here and the file goes.
+
+### 9a · Cladoplast — a property plus a role qualifier, once the item exists
+
+The Gaiad's `P59 Cladoplast of` has no Wikidata equivalent
+(`reports/orderlife-properties.md` § *Genuinely novel*). Emma's model for it, when
+the time comes:
+
+> some sort of other Wikidata property, with a qualifier of *object of statement
+> has role* → **Cladoplast**, for when a Cladoplast item exists on Wikidata
+
+So the shape is `<some property>` + **`P3831`** → *Cladoplast*, exactly the
+pattern already used for patronymics (`P3831` → `Q110874`). The base property is
+**not chosen** and must not be guessed.
+
+**Her own estimate of when: not soon.** *"The Cladoplast item is probably going to
+take a really long time to be made, so it's not exactly something that's that
+relevant."* Nothing is blocked on it.
+
+**Note the distinction that has already been got wrong once:** the Cladoplast
+*property* is not the Cladoplast *object*. `queue.md` § 0 lists that among the
+corrections a transcript audit has to respect.
+
+### 9b · Gaiad characters — individual citations, eventually
+
+*"Gaiad characters, I don't know what's going to happen with them. My thought is,
+eventually, once the Gaiad stuff is better sorted out, the Gaiad stuff is going to
+have individual citations."*
+
+**They are not a separate class of person.** Emma, same message: *"Everybody is a
+human, basically."* So `P31` → `Q5` stays, and no Gaiad-specific typing is
+emitted.
+
+### 9c · `T999999` — a Gaiad reference that is MEANT to fail
+
+The interim mechanism, and the deliberate part is the point:
+
+> Right now, I am going to say that the best way to do it would be that
+> `T999999` is going to be the property for a Gaiad reference. It's going to be
+> the thing that's given as a reference for anything that specifically comes out
+> of the Gaiad in the JSON files. **This one's going to throw an error, and it's
+> intentionally throwing an error.** Because they would be intentionally throwing
+> an error, as I understand it, the JSON editor is just going to not be able to
+> add it.
+
+So: anything sourced from the Gaiad carries a reference on `T999999`, which does
+not exist on Wikidata, so the edit **cannot execute**. That is a fence, not a bug
+— it keeps Gaiad-derived statements in the batch, visible and countable, while
+making it impossible for one to reach Wikidata before the citation system is
+designed. **Do not "fix" it, do not substitute a real property, and do not filter
+these entries out of the batch to make it run clean.**
+
+**It is `T`, not `P`, and that was checked.** Written as `P999999` at first on
+the reasoning that properties are `P`; Emma, 2026-08-15: *"It is not P."* So the
+`T` is deliberate and is part of why the reference cannot resolve. Do not
+"correct" it back.
+
+*"We'll figure out the Gaiad citation system at a later point."*
+
+### 9d · The `gaiad` flag — FIXED 2026-08-15/16
+
+Kept because it is where 9a–9c came from, and because the fix went wrong twice.
+
+It set `"gaiad": true` by **searching the raw JSON text** of each order.life item
+for `Q153802`. Emma: *"You shouldn't be doing a raw substring search."* It reads
+the **claim** now — and it was accidentally correct: over a 4,000-item sample the
+substring test and the `P39` claim agreed exactly, 3,970 each, zero false
+positives. The method changed; the answer did not.
+
+**The scan found something that did matter.** order.life defines *instance of*
+**twice**, `P31` and `P39`, identical labels and datatypes, and person items use
+`P39` — 164,216 against 255 over all 164,477 items, and `P31`'s commonest value
+is `Q1` (Aster). `reports/orderlife-properties.md` documented only `P31`.
+
+**And the class screen it led to broke twice.** order.life keeps its classes in
+`persons.tsv` alongside people, so the batch was creating `Male`, `Female`,
+`Person` and `Gaiad character` as humans with `P31` = `Q5`. Screening on the
+`sex` column caught 4 of 8; screening on *every instance-of value* caught all 8
+but also caught **`Q1` Aster and `Q5` Hesper, who are people**. The rule that
+works: a class is pointed at as a class **and** carries no genealogy of its own.
+`tests/test_edit_emitters.py` pins both directions.

@@ -6745,3 +6745,40 @@ class items being created as humans — and in fixing it introduced a smaller on
 in the opposite direction. Both were structural rules applied one step too
 broadly, and the second was caught only because the first had made me suspicious
 enough to write it down as unverified.
+
+## 2026-08-16 — `todo.md` audited; the provisional to-do folded in and deleted
+
+Queue item 15, the last one. Every item checked against the repo rather than
+carried forward.
+
+| item | state |
+| --- | --- |
+| 1 · one canonical genealogy | **built** — 204 exports, 396,181 people, one tree |
+| 2 · Wikidata reconciliation | **built**, and half of it **dead** — see below |
+| 3 · expansion planning | **built** — frontier, seeds, density, descendants |
+| 4 · authoring pipeline | **built**, waiting on 1 September |
+| 5 · name and surname items | **built 2026-08-16** — 21,939 planned |
+| 6 · backfill existing items | **built**, its three commands rewritten |
+| 7 · ingest more sources | GEDCOM done; **the second format arrived** |
+| 8 · parallel tree, SPARQL, provenance | 8a's download **done**, 1,423,022 items |
+
+**Four things were stale rather than incomplete, and staleness is the failure
+this audit exists to catch:**
+
+- **Item 2's "progressively weaker evidence" fallback is dead.** Emma killed it
+  on 08-12, `correspondence.md` forbids name similarity outright, and
+  `genimerge.reconcile` was deleted on 08-15. The item still described it as the
+  plan. Replaced with what actually does the job: the structural walk, 3,663
+  correspondences.
+- **Item 4 said QuickStatements v1.** Deleted entirely on 08-15. The format is
+  JSON edit objects, and the item now lists the nine batches that exist.
+- **Item 6's three slices named three commands**: `genimerge quickstatements`
+  (deleted), `name-links` (now fully offline), `crosscheck` (now `--offline`).
+- **Item 7 said "there is no second format in hand to build one against".**
+  False since 08-15: order.life is a Wikibase and is vendored under
+  `orderlife/`, 165 shards and 164,477 items.
+
+`provisional-todo.md` is folded in as item 9 and **deleted** — it existed only
+because `todo.md` was untrusted, which is what this audit fixed. Its `gaiad`
+entry is marked FIXED and kept, because it is where the other three came from and
+because the fix broke twice on the way.
