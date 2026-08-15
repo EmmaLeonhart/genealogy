@@ -7074,3 +7074,41 @@ finished) holds for this population.
 **Half carry an occupation and only 0.8% a title**, which is the opposite of the
 pre-modern population this project usually works with. These are documented modern
 people with no family tree on Wikidata — and we hold their families on Geni.
+
+
+## 2026-08-15 — item 11: the patronymic classifier on the Wikidata side
+
+Same method as the Geni side — **the father's given name decides, never the
+token's shape** — and it reuses that script's form tables and father test **by
+import** rather than by copy, so the two cannot drift apart. `CLAUDE.md` already
+records what happened the last time one question had six answers.
+
+**1,417,101 humans, 888,685 stating a `P22` father, 2,523,585 name tokens.**
+
+| verdict | tokens |
+| --- | ---: |
+| not patronymic | 1,582,814 |
+| no father recorded | 723,289 |
+| AMBIGUOUS: form, father differs | 106,054 |
+| patronymic (inferred, no father) | 50,870 |
+| father has no label | 47,062 |
+| surname: form conflicts with sex | 5,686 |
+| **patronymic — father confirms** | **4,816** |
+
+**Wikidata barely uses live patronymics, and that is the finding.** 4,816 confirmed
+against 888,685 people who state a father — 0.5%. The Geni corpus gave 34,806 from
+300,760, which is 11.6%. Twenty times the rate, because the Geni material is
+heavily Scandinavian and the Wikidata population is modern Western with inherited
+surnames.
+
+Spot-checked and correct in both directions: `Yelizaveta Borisovna Yusupova` ←
+Boris, `Brita Björnsdotter` ← Björn, `Fin Hareksson` ← Hårek; and the
+`father differs` bucket is `Sisson`, `Ryerson`, `Watson` — inherited surnames in
+patronymic shape, which is what that bucket is for.
+
+**The limitation, stated rather than worked around:** Wikidata has no `GIVN`/`SURN`
+split here, so the tokens are the **label's** words. `P735`/`P734` name *items*,
+and resolving those to strings needs the name-item download still running.
+
+Also deleted item 14, which was marked DONE and kept "for the finding" — the exact
+pattern Emma had this queue cleaned of this morning, reintroduced by me.

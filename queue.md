@@ -302,19 +302,6 @@ an item. These have no `P2600` at all, so `CLAUDE.md` § *the Geni ID is added
 first* does not apply and the citation cannot be a Geni profile. What the
 statement is sourced to is the open question to settle before emitting anything.
 
-## 11 · Run the whole name analysis on the WIKIDATA side too — Emma's item
-
-**Emma, 2026-08-15:** *"Of course we also should be running this processing on both
-the geni stuff and the wiki data stuff although I understand if we're just running
-it on the geni stuff first. If we're doing it not on the wiki data stuff, have at
-the end of the queue a thing to run this same name analysis operation on the wiki
-data stuff at the end of this."*
-
-Everything in item 9 — patronymic classification from the father's given name, the
-sex guard, the form tables — run against `wikidata/items/` instead of the Geni
-corpus. Wikidata's `P22` is the father and `P735`/`P734` are the name tokens, so
-the same method applies with different field names.
-
 ## Daily jobs — queued because a cron only fires while the session is idle
 
 Emma: *"QUEUE UP THE CRON JOB CONTENTS."* Each is a live `CronCreate` id **and** an
@@ -629,28 +616,6 @@ from which field the token sits in. That part agrees with her file.
 
 **Edge cases go to her**: *"Do an ask-user question on the edge cases so that I
 can figure them out."*
-
-## 14 · Show the raw order.life rows the parser used to mangle — DONE, kept for the finding
-
-**Answered 2026-08-15.** Emma at 04:18: *"I still don't really understand what the
-128 recovered rows are. I'm very confused, and I feel like the order.life data
-might be really strange."*
-
-**The data is not strange. The parser was wrong.** 357 raw lines in
-`orderlife/analysis/persons.tsv` contain a `"` as **data** — an epithet inside a
-name:
-
-    Q31705   Alonso "el Joven" de Avalos Saavedra
-    Q32254   Gonzalo de Salazar "El mozo"
-    Q36342   Marcos "Solomon Israel" Diaz
-    Q36346   Don Yehuda "Aryeh" ibn Yahya
-    Q38162   Baal-Eser II "Belus" King of Tyre
-    Q153369  Queen Flora the Harmonious "wasp waist" Apocrita
-
-Python's default reader treats `"` as a field-quoting character, so it swallowed
-the following tab and glued rows together: **107,037 rows parsed as 106,909**, 157
-differing. `QUOTE_NONE` says there is no quoting in the file and a tab is the only
-delimiter, which is correct for it.
 
 ## 15 · `reports/seeds.md`'s future — a queue item, not a cron
 
