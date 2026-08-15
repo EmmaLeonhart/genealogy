@@ -159,6 +159,31 @@ def walk_all(anchors, fam, ourqid, names, depth):
                 break
             cur = nxt
 
+    # **Second store read, for the parents' own labels.**
+    #
+    # `need` above holds only the QIDs of people *we* already link — the anchors
+    # and their linked ancestors. The QID on the other side of a correspondence
+    # comes out of the anchor's `P22`/`P25` and is therefore discovered *during*
+    # the walk, after the store has been read. It was never fetched, so
+    # `label_of` had nothing to read and **3,526 of 3,668 rows came out with an
+    # empty `wikidata_label`**.
+    #
+    # That is not cosmetic. Emma's method is *"the structure picks the pair; the
+    # label only confirms it"* — a correspondence with no label cannot be
+    # reviewed at all, which is the entire purpose of this file.
+    missing = sorted({q for q, _, _, _ in corr.values()} - set(ents))
+    if missing:
+        print(f"reading {len(missing):,} more items for the parents' own labels")
+        with wikistore.StoreReader(STORE, INDEX) as reader:
+            extra = reader.entities(missing)
+        print(f"{len(extra):,} of them are held")
+        for g, (q, pos, gn, wl) in list(corr.items()):
+            if not wl:
+                corr[g] = (q, pos, gn, label_of(extra.get(q)) or "")
+
+    labelled = sum(1 for v in corr.values() if v[3])
+    print(f"{labelled:,} of {len(corr):,} correspondences carry a Wikidata label")
+
     c = REPO / "reports" / "structural-correspondence.csv"
     with c.open("w", encoding="utf-8", newline="") as fh:
         w = _csv.writer(fh)
