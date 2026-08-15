@@ -16,6 +16,29 @@ them.
 
 ---
 
+## RUN ORDER — Emma's call, 2026-08-15
+
+**Imports first, labels last.** She asked why the seven-language labels were in
+progress, and the numbers back her: the target moved **7,851 → 11,001 placeholders
+and 26,281 → 35,011 label edits in one day**, from four exports plus a merge
+correction. Item 7 exists to find *more* exports to take, so labelling now means
+hand-romanising a set that grows by a third each time.
+
+Her `ja`/`zh` rule is a **gate on editing** — nothing reaches Wikidata unlabelled —
+not a claim that labels come first in build order. That ordering was mine.
+
+    7 · sparse Geni clusters   →  the tree grows
+    8 · Wikidata re-import     →  the store fills, and name items arrive
+    ---- tree and store settle ----
+    2 · name items             →  needs item 8: the competing QIDs are not held
+    1 · seven-language labels  →  built once, over a stable set
+    ---- the gate opens ----
+        Wikidata editing
+
+Items 3, 5 and 6 are independent of this chain and can run at any point.
+
+---
+
 ## 0 · STANDING PROCEDURE — audit this queue against the transcripts first
 
 **Not deleted when it completes: it is a procedure, not a step.** Run it before
@@ -81,22 +104,35 @@ the name** — the tree settles it, via neighbours and which exports they came f
 `reports/wikidata-placeholder-labels.json` currently has `mul` on all and `en` on
 14,351. **It must not run in that state.**
 
-## 2 · Name items — 525 ambiguous ones need Emma
+## 2 · Name items — the ambiguity is a PATRONYMIC problem, and needs the download first
+
+**Emma, 2026-08-15, diagnosing it herself:** *"Didn't we just answer this question
+way long ago? For the most part this is based off of diacritics and based off of
+you not differentiating patronymics versus surnames versus given names."*
+
+Measured against her diagnosis:
+
+- **diacritics — fixed.** `Maria` and `María` are separate rows now, not folded.
+- **given vs family — already separate.** Ambiguity is computed within a usage.
+- **patronymic vs given — NOT separated, and not separable offline.** Telling
+  `Q110874` from `Q202444` needs the item's own `P31`. All **1,731** competing
+  QIDs were checked against the store: **0 are held.** The store is a Geni-shaped
+  slice of people and carries almost no name items.
+
+**So this waits on item 8**, and that is a second independent reason for running
+the imports first.
+
+**A separate bug visible in the same list:** `de` is an ambiguous *given name*
+with 1,997 bearers. It is a particle, not a name — the token-splitting problem in
+`todo.md` § 4, not an ambiguity.
 
 `reports/name-item-plan.csv`, `reports/wikidata-name-items.json`. Prerequisite for
-item 1.
+item 1: 21,939 planned, 8,092 link, 13,320 create, **525 held as ambiguous**.
 
-| | |
-| --- | ---: |
-| planned | 21,939 |
-| link an existing item | 8,092 |
-| create | 13,320 |
-| **ambiguous — held** | **525** |
-
-**NEEDS-DECISION:** link the most-referenced item, hold them all, or look at the
-top few by hand. `ambiguous` counts as **existing** — treating it otherwise would
-have created a tenth `Maria`. The genuine residue Emma named is `Q325872` /
-`Q25413386`, the male and female given name `Maria`, settled by the person's sex.
+`ambiguous` counts as **existing** — treating it otherwise would have created a
+tenth `Maria`. Emma named the one genuine residue herself: `Q325872` / `Q25413386`,
+the **male** and **female** given name `Maria`, settled by the person's sex rather
+than by the string.
 
 ## 3 · The 7 Samaritan father disagreements — for Emma to look at
 
@@ -110,14 +146,6 @@ transcription is not superseded and does not contradict Geni.
 - `Shalom ben 'Amram` — source `'Amram ben Yitzhaq`, Geni `Shembet ben Bakhi`
 - `Asher ben Shelach` — source `Shelach`, Geni `Matzliach ben Phinehas`
 - `'Abed Hanuna ben Jacob Hadinfi` — source `Jacob Hadinfi`, Geni `Shalma`
-
-## 4 · The Itamar spine numbering — NEEDS-DECISION
-
-The `HEAD` now says 121 and the file holds 120 people numbered 2–121, but the
-source's figure for the **parallel Phinhas line** is 112. Renumber to end at 112,
-or collapse the invented stretch to a single *"distance not recorded"* link as
-Emma originally suggested. **The GEDCOM is not touched until she says** — it is
-hand-made, and a hand-transcribed source is not superseded on inference.
 
 ## 5 · Wadah Cohen's father
 

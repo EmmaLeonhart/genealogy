@@ -772,6 +772,15 @@ stuff here that I did not want."* All of it was deleted.
 whether Jackson is ever a middle name: *"if there is an ambiguity like that, you
 ask me what the ambiguity is. You don't try to figure it out on your own."*
 
+**A middle name is a given name after the first that is NOT a patronymic.** Emma's
+definition, 2026-08-15, stated when asked about the ambiguous name items: *"The way
+we define a middle name, to be clear, is that a middle name is like a given name
+that comes after the first given name but it's not a patronymic."*
+
+So position alone does not make a middle name — the second given token is a middle
+name **only** if it is not patronymic. `Q245025` and `Q110874` are decided by what
+the token *is*, and `P1545` numbers them either way.
+
 **A patronymic is not a middle name, and that distinction is Emma's**
 (2026-08-15). Geni writes `Ole Olsen` into `GIVN`, so the patronymic lands in the
 position a middle name occupies — `Olsen` is a *given* token for 742 people and a
