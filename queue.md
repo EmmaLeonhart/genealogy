@@ -526,47 +526,53 @@ ambiguous as a given name and created as a family name; and scanning the whole
 JSON blob flagged `subject.orderlife_qid`, which is provenance and is *supposed*
 to hold a local QID.
 
-## 16 · Superseded Geni relationships survive the merge. 653 people have two fathers
+## 16 · Retire the superseded Samaritan exports by covering them
 
-**Emma found this, 2026-08-16, and I had missed it entirely:** *"his child and his
-father used to be linked on Jenny as father and child, skipping over him, and in
-many of our Samaritan exports, they continue to reference him and his father. Did
-you fix that in the GEDcons?"* No. I had not noticed it.
+**Emma, 2026-08-15:** *"I am just gonna do imports until all items found in the
+Tsedaka II ones are also present in later exports."*
 
-**The worked case.** `Yitzhaq I ben Tsedaka` (`6000000227245553985`) was missing
-from Geni, so Geni linked **Tsedaka II → Abram** directly, skipping him. Emma
-added him and re-exported. Now:
+`Yitzhaq I ben Tsedaka` (`6000000227245553985`) was missing from Geni, so Geni
+linked **Tsedaka II → Abram** directly, skipping him. Emma added him and
+re-exported. Four Samaritan exports predate that fix; `export-Forest-…178795709821`
+carries the corrected edge. The merge unions `FAMC` and never drops one, and a
+GEDCOM is never deleted here — **so the stale edge is retired by covering every
+person in the old files with a newer export**, not by removing a file.
 
-| export | Abram's father |
-| --- | --- |
-| `export-Ancestors-6000000227240714964` | Tsedaka II |
-| `export-BloodTree-6000000227240714964` | Tsedaka II |
-| `export-Forest-6000000178794141887` | Tsedaka II |
-| `export-Forest-6000000227240691895` | Tsedaka II |
-| **`export-Forest-6000000178795709821`** (204) | **Yitzhaq I** |
+`scripts/measure-superseded-coverage.py` measures the gap; `reports/superseded-coverage.md`
+is the live state. **Re-run it after each import and add the new export to
+`CORRECTED`.** Target is 0.
 
-**In `out/merged.ged` Abram has two `FAMC` links and therefore two fathers.**
+| superseded export | people | uncovered |
+| --- | ---: | ---: |
+| `Forest-…178794141887` | 4,806 | **0** |
+| `Forest-…227240691895` | 4,854 | **0** |
+| `Ancestors-…227240714964` | 348 | **24** |
+| `BloodTree-…227240714964` | 4,830 | **3,290** |
 
-**This is general, not one person.** 333,073 people carry a `FAMC`; **1,240 carry
-more than one**, and **653 of those have two different fathers**. The merge
-unions edges by design — it never drops a `FAMC` — so **a Geni relationship that
-Geni itself has since corrected survives forever once any export carries it.**
+**The two gaps are different problems.** The 24 are the relevant ones — eight
+`Nth generation Samaritan Itamar line` placeholders plus Assyrian kings, Amram
+and Jochebed, one targeted export from zero. The 3,290 are **Javanese**: the
+`BloodTree` walked up out of the Samaritan cluster into Mataram and Demak
+royalty, and **1,069 of them appear in no other export at all**. None carries the
+superseded edge. Covering them satisfies the criterion but buys nothing towards
+this fix.
 
-**Why the existing rule does not cover it.** `CLAUDE.md`'s *later sources win*
-applies to **value conflicts on single-valued paths**. A `FAMC` is not one: a
-person can genuinely belong to two families — adoption, a re-recorded marriage —
-so blanket later-wins would delete real structure. That is exactly why this needs
-looking at rather than a one-line patch.
+### The general version, measured, and much smaller than first reported
 
-**It contaminates the Wikidata output**, which is why it is not cosmetic. The
-structural walk reads our father from `derived-family.csv`; a person with two
-fathers gets the wrong one half the time, and the placeholder creations and
-relationship edits inherit it.
+I first wrote this up as 653 people. **That was wrong** — Emma: *"A large amount
+of people have multiple FAMC and this is just not intended for this particular
+person."* She is right. 1,240 people carry more than one `FAMC` and 653 have two
+different fathers, and **that is ordinary**: a person genuinely can belong to two
+families.
 
-**Do not generalise from Abram.** `CLAUDE.md` § *How this project works now*:
-show the cases first. **653 is small enough to look at.** The discriminator to
-test is whether the superseded parent is the *grandparent* under the new edge —
-which is what "skipping over him" means, and is checkable without judgement.
+The defect has a specific shape — **one "father" is the father of the other**,
+which is what *skipping a generation* means. Measured over `out/merged.ged`:
+
+**36 people, of whom 7 are in a Samaritan export.** The rest are scattered —
+`Varela de Losada`, Sassanian, Majapahit. That is a list short enough to read
+rather than a phenomenon needing a rule, and per `CLAUDE.md` § *How this project
+works now* it gets shown case by case. **Do not generalise from Abram to a
+later-wins rule for `FAMC`** — it would delete real second families.
 
 ## Always last — restart the three crons and summarize
 
