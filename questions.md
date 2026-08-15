@@ -23,4 +23,22 @@ record the decision in `CLAUDE.md` if it governs how the project works.
 
 ---
 
-*No questions outstanding. Entries below this line as they arise.*
+## 1 · The 1,171 ambiguous name items
+
+`reports/name-item-plan.csv`. A name whose label matches **several** Wikidata
+items — `Maria` matches nine, `Anna` five, `John` and `Anne` two each. 928 given
+names and 243 family names.
+
+**Done in the meantime: nothing.** They are held, marked
+`AMBIGUOUS - review, do not create`, and are **not** in
+`reports/wikidata-name-items.json`. Reversing costs nothing; the alternative was
+creating a tenth `Maria`, which does not reverse cheaply.
+
+**The options:**
+
+- **Link the most-referenced item.** `reports/name-items.csv` has a `references`
+  count per item, so "the one most of Wikidata already uses" is available and is
+  probably right for common given names.
+- **Hold all 1,171** until the rest of the name items are done.
+- **Show you the top 20 by bearer count** and decide those by hand; they cover
+  most of the affected people.

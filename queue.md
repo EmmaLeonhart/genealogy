@@ -279,28 +279,34 @@ relationships still hold now that Geni has the same people with real IDs.
 both, and where the two disagree about a parent. Do not supersede a
 hand-transcribed source on inference.
 
-## 10 · Name items: link the 143 that exist, create the rest
+## 10 · Name items — PLANNED, and the ambiguous ones need Emma
 
-**One item per USAGE, not per string** — `CLAUDE.md` § *"Jackson Jackson
-Jackson"*. A token used as a given name, a surname and a patronymic is three
-items. Nothing adjudicates between them.
+`reports/name-item-plan.csv` and `reports/wikidata-name-items.json`, built
+2026-08-16. **This is the prerequisite for the labels**: transliterate a token
+once in its name item and every bearer inherits it.
 
-**Already saved so nothing gets duplicated:** `reports/name-items.csv` (132,569
-given- and family-name items our people reference) and
-`reports/patronymic-items.csv` (**all 633** Wikidata items that are `instance of`
-`Q110874`, fetched 2026-08-15).
+| | |
+| --- | ---: |
+| name items planned | **17,335** |
+| link an item that already exists | **5,695** |
+| create | **10,469** |
+| **ambiguous — several items share the label, held** | **1,171** |
+| below 5 bearers, not planned yet | 116,583 |
+| excluded: particle, ordinal or placeholder | 123 |
 
-- **143 of the 633 match a token in this corpus** — `Eriksson` (331 bearers),
-  `Eriksdotter` (146). **Link these, never create them.**
-- **4,143 patronymic-shaped tokens have no item.** Wikidata's patronymic coverage
-  is Russian, Icelandic, Spanish and Ukrainian; Swedish has 13 items and
-  Danish/Norwegian essentially none, which is most of this corpus.
-- **A created patronymic item carries `P31` → `Q110874` and `P144` → the base
-  name's item**, plus the derivation in the description text. 119 of the 633 do
-  this already. `P5278` pairs `Eriksson` with `Eriksdotter`.
-- **The suffix is evidence, not proof.** `-ovich`/`-ovna`/`-sdatter` are
-  reliable; `-son`/`-sen` are not — `Jefferson` has 30 bearers in the given slot.
-  `reports/name-classes.md` has the per-suffix reliability.
+**`ambiguous` counts as existing, and getting that wrong nearly created a tenth
+`Maria`.** The first run treated only `resolved` as existing, so `Maria` (nine
+items on Wikidata, 5,476 bearers here), `Anna`, `John`, `Anne` and 1,167 others
+came out as creations. Duplicates are the failure `CLAUDE.md` says damages
+Wikidata rather than wasting a run. They are now held: **choosing among nine
+items is a judgement, and so is deciding there are none.**
+
+**NEEDS-DECISION for Emma:** the 1,171 ambiguous names. Link the most-referenced
+item, hold them all, or look at the top few by hand.
+
+**The 116,583 below five bearers** are the long tail — 70% of distinct tokens are
+used once. Not excluded on principle, just not worth an item before the ones that
+matter exist.
 
 ## 11 · Small, named, and unblocked
 
