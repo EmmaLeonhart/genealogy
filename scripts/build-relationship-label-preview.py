@@ -18,7 +18,7 @@ one.
 
 **Built from the derived CSVs, not from a fresh merge.** `reports/derived-family.csv`
 (298,591 people with their father, mother, spouses and children),
-`reports/derived-labels.csv` (labels) and `reports/geni-name-records.csv` (the
+`reports/derived-labels.csv` (labels) and `reports/display-names.csv` (the
 raw `GIVN`/`SURN` split). Those were derived before the last 27 exports landed,
 so this is a **preview of shape, not a final count** — which is what was asked
 for.
@@ -43,7 +43,7 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parent.parent
 FAMILY = REPO / "reports" / "derived-family.csv"
 LABELS = REPO / "reports" / "derived-labels.csv"
-NAMES = REPO / "reports" / "geni-name-records.csv"
+NAMES = REPO / "reports" / "display-names.csv"
 CSV_OUT = REPO / "reports" / "relationship-label-preview.csv"
 MD_OUT = REPO / "reports" / "relationship-label-preview.md"
 FACTS = REPO / "reports" / "derived-facts.csv"

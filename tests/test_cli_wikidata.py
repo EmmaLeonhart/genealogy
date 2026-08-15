@@ -288,18 +288,6 @@ def seeded(ws):
         w.writerow(["3", "Q3", "child", "1", "high", "yes"])
 
 
-# -- coverage ----------------------------------------------------------
-
-
-def test_coverage_reports_both_link_sources_separately(ws):
-    seeded(ws)
-    assert run(ws, "coverage") == 0
-
-    text = (ws["reports"] / "wikidata-coverage.md").read_text(encoding="utf-8")
-    assert "| **linked by P2600** (exact Geni ID on the Wikidata item) | 2 |" in text
-    assert "| **linked, total** | 3 |" in text
-
-
 # -- crosscheck --------------------------------------------------------
 
 
@@ -331,14 +319,6 @@ def test_crosscheck_proposes_a_date_wikidata_lacks(ws):
 
 
 # -- names and name-links ----------------------------------------------
-
-
-def test_names_measures_the_vocabulary_against_wikidata(ws, capsys):
-    assert run(ws, "names") == 0
-
-    text = (ws["reports"] / "names.md").read_text(encoding="utf-8")
-    assert "# Name vocabulary" in text
-    assert "surnames:" in capsys.readouterr().out
 
 
 def test_name_links_proposes_links_to_existing_name_items(ws):
@@ -376,7 +356,7 @@ def test_the_offline_guard_actually_fires(ws):
 
 def test_every_command_went_through_the_seam(ws):
     seeded(ws)
-    for command in ("overlap", "coverage", "names"):
+    for command in ("overlap", "crosscheck"):
         assert run(ws, command) == 0, command
 
     # Reaching here at all means nothing touched urlopen, and the fake saw the

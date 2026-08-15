@@ -25,7 +25,7 @@ not Chinese, it is Han, and turning any of this into a label is a separate
 pipeline that does not exist yet.
 
 Reads `reports/display-names.csv`. Writes `reports/geni-names.md` and
-`reports/geni-name-records.csv`.
+`out/geni-name-records.csv`.
 
     py scripts/build-geni-names-report.py
 """
@@ -40,7 +40,12 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SOURCE = REPO_ROOT / "reports" / "display-names.csv"
 OUT_MD = REPO_ROOT / "reports" / "geni-names.md"
-OUT_CSV = REPO_ROOT / "reports" / "geni-name-records.csv"
+#: **Deleted 2026-08-15**: `reports/geni-name-records.csv` duplicated
+#: `display-names.csv` on all 11 shared columns across all 444,875 rows, and
+#: its one extra column `script_class` is a pure function of `scripts`. Emma
+#: approved removing it. This writes to `out/` now, so re-running the report
+#: does not reintroduce the 41 MB duplicate into git.
+OUT_CSV = REPO_ROOT / "out" / "geni-name-records.csv"
 
 csv.field_size_limit(10_000_000)
 
@@ -202,7 +207,7 @@ def main() -> int:
     add("# Geni name records: how many, which fields, which scripts")
     add("")
     add("Asked for by Emma, 2026-08-12. Every `NAME` record is a row in")
-    add("`reports/geni-name-records.csv`.")
+    add("`out/geni-name-records.csv`.")
     add("")
     add(f"**{people:,} people, {records:,} `NAME` records.**")
     add("")

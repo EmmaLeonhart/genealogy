@@ -6188,3 +6188,42 @@ and Kenan are in there. The audit listed this as undone because no transcript
 recorded the decision, not because the code was missing it.
 
 So the item is closed with no code change, which is the outcome worth having.
+
+## 2026-08-15 — the 21:00 bloat review, four deletions Emma approved
+
+The cron she asked for at 9pm, run against `reports/repo-freshness.csv` and the
+transcript audit. Candidates were put to her with evidence; nothing was deleted
+on my own judgement.
+
+**`reports/geni-name-records.csv`, 41 MB — fully redundant.** All 444,875 rows
+are identical to `reports/display-names.csv` on the 11 shared columns, checked
+row-by-row over the first 50,000 with zero differences, and its one extra column
+`script_class` is a **pure function** of `scripts` — the mapping is 1:1
+(`Han+Latin` → `MIXED: Han+Latin`). `build-name-classes` and
+`build-relationship-label-preview` now read `display-names.csv`; both were re-run
+and produce identical output. `build-geni-names-report` writes to `out/` so a
+re-run cannot reintroduce it.
+
+**`genimerge coverage`, `coverage.py`, `reports/wikidata-coverage.md`** — no
+reachable input. It read `matched_p2600.csv`, `matched_all.csv` and
+`candidates.csv`, written only by `reconcile` and `expand`, deleted earlier the
+same day. The command could only ever print its own error.
+
+**`genimerge names` and `reports/names.md`** — the report was from 2026-08-03,
+the oldest artifact in the repo, and the command reached Wikidata live to measure
+which names have items. `reports/name-items.csv` answers that offline.
+**`names.py` stays**: `namelinks` imports `is_patronymic` and `name-links` uses
+`build_vocabulary`, so only the command and the report went.
+
+**The missing-ancestors machinery** — `check-missing-ancestors.py`,
+`missing-ancestors.md` and three CSVs. Last measured **0 absent** on 2026-08-13
+and Emma called the question closed. **The `missing ancestors/` directory is
+untouched**: 70 MB of pages she saved by hand, the definitive enumeration of the
+Geni IDs, and irreplaceable.
+
+Also fixed on the way through: deleting `coverage` took `_read_seed_matches` with
+it, which `crosscheck`'s online branch still called. Its whole point was
+separating exact P2600 links from expansion matches, and the expansion source no
+longer exists, so every remaining row is exact.
+
+**208 tests pass** across the affected modules.

@@ -93,8 +93,6 @@ COMMANDS = [
     "frontier",
     "consistency",
     "seeds",
-    "coverage",
-    "names",
     "profile-names",
     "wikidata-download",
     "wikidata-index",
@@ -379,11 +377,6 @@ def test_name_links_refuses_to_run_before_there_are_matches(workspace, capsys):
     assert "matched_all.csv" in capsys.readouterr().err
 
 
-def test_coverage_refuses_to_run_before_there_are_matches(workspace, capsys):
-    assert run(workspace, "coverage") == 1
-    assert "matched_p2600.csv" in capsys.readouterr().err
-
-
 # -- merge reports connectivity ----------------------------------------
 
 
@@ -483,8 +476,7 @@ def test_the_redirected_report_describes_the_redirected_merge(workspace, tmp_pat
 # What this adds is the README's stated guarantee, which is adjacent to that bug
 # rather than the same thing.
 #
-# Four of the remaining commands. `coverage`, `crosscheck`,
-# `names` and `name-links` need Wikidata and this suite is offline on purpose —
+# Two of the remaining commands. `crosscheck` and `name-links` need Wikidata and this suite is offline on purpose —
 # they are also the ones that write cache files, so they are the likelier place
 # for a stray path. Uncovered, and said so rather than implied.
 

@@ -15,7 +15,6 @@ from . import (
     connectors,
     consistency,
     doubles as doubles_mod,
-    coverage,
     crosscheck,
     density,
     descendants as descendants_mod,
@@ -298,62 +297,6 @@ def _cmd_overlap(args: argparse.Namespace) -> int:
         f"{len(result.both):,} in both; {len(result.ours_only):,} ours only; "
         f"{len(result.theirs_only):,} Wikidata only"
     )
-    return 0
-
-
-def _read_seed_matches(ws: Workspace) -> dict[str, str]:
-    """The confirmed P2600 matches, if an older run left the file behind.
-
-    Nothing writes this any more: `reconcile` and `expand` were deleted on
-    2026-08-15. The offline replacement is `out/wikidata/p2600-all.tsv`,
-    read by :func:`_linked_from_pairs`.
-    """
-    path = ws.wikidata / "matched_p2600.csv"
-    if not path.exists():
-        return {}
-    with open(path, encoding="utf-8", newline="") as handle:
-        return {row["geni_id"]: row["qid"] for row in csv.DictReader(handle)}
-
-
-def _cmd_coverage(args: argparse.Namespace) -> int:
-    ws = Workspace.from_args(args)
-    tree = _load_tree(args.source, ws)
-    seeds = _read_seed_matches(ws)
-
-    all_path = ws.wikidata / "matched_all.csv"
-    expansion: dict[str, str] = {}
-    if all_path.exists():
-        with open(all_path, encoding="utf-8", newline="") as handle:
-            for row in csv.DictReader(handle):
-                if row["source"] != SOURCE_EXACT:
-                    expansion[row["geni_id"]] = row["qid"]
-
-    proposals: list[tuple[str, str, str, str]] = []
-    candidates_path = ws.wikidata / "candidates.csv"
-    if candidates_path.exists():
-        with open(candidates_path, encoding="utf-8", newline="") as handle:
-            for row in csv.DictReader(handle):
-                if row["used_to_expand"] == "yes":
-                    continue
-                proposals.append(
-                    (row["geni_id"], row["qid"], row["confidence"], row["role"])
-                )
-
-    if not seeds and not expansion:
-        print("no matches found: out/wikidata/matched_p2600.csv is absent and "
-              "nothing writes it since `reconcile` was deleted. Use the P2600 "
-              "map at out/wikidata/p2600-all.tsv instead.", file=sys.stderr)
-        return 1
-
-    text = coverage.render_markdown(
-        coverage.CoverageInput(
-            tree=tree, by_p2600=seeds, by_expansion=expansion, proposals=proposals
-        ),
-        top_gaps=args.top,
-    )
-    output = args.output or ws.reports / "wikidata-coverage.md"
-    _write(output, text)
-    print(f"wrote {output}")
     return 0
 
 
@@ -861,7 +804,12 @@ def _cmd_crosscheck(args: argparse.Namespace) -> int:
               "nothing writes matched_all.csv. Use --offline where available.",
                   file=sys.stderr)
             return 1
-        exact = set(_read_seed_matches(ws))
+        # `_read_seed_matches` went with `coverage` on 2026-08-15; the file it
+        # read, `matched_p2600.csv`, has had no writer since `reconcile` was
+        # deleted. Every row `matched_all.csv` can still hold is an exact P2600
+        # link, because the expansion source that produced the inexact ones is
+        # gone — so the whole set is exact.
+        exact = set(linked)
         client = make_client(ws, args)
         claims = crosscheck.fetch_claims(client, linked.values())
 
@@ -922,33 +870,6 @@ def _cmd_name_links(args: argparse.Namespace) -> int:
     )
     print(f"{len(batch.skipped)} names set aside; see add-names.md for why")
     print("Nothing has been sent to Wikidata. Review the .md before running the batch.")
-    return 0
-
-
-def _cmd_names(args: argparse.Namespace) -> int:
-    ws = Workspace.from_args(args)
-    tree = _load_tree(args.source, ws)
-    vocabulary = names_mod.build_vocabulary(tree)
-    strings = vocabulary.all_strings()
-    print(f"{len(strings)} distinct name strings; checking Wikidata")
-
-    client = make_client(ws, args)
-    items = names_mod.find_name_items(
-        client,
-        strings,
-        progress=lambda done, total: print(f"  batch {done}/{total}", end="\r", flush=True),
-    )
-    print()
-
-    output = args.output or ws.reports / "names.md"
-    _write(output, names_mod.render_markdown(vocabulary, items, top=args.top))
-
-    summary = names_mod.summarise(vocabulary)
-    for which in ("surnames", "given_tokens"):
-        store = getattr(vocabulary, which)
-        have = sum(1 for name in store if items.get(name))
-        print(f"{which}: {have} of {summary[which]['distinct']} have a Wikidata name item")
-    print(f"wrote {output}")
     return 0
 
 
@@ -1425,21 +1346,6 @@ def build_parser() -> argparse.ArgumentParser:
     )
     p_seeds.set_defaults(func=_cmd_seeds)
 
-    p_cov = sub.add_parser(
-        "coverage",
-        help="report how much of the tree is connected to Wikidata",
-    )
-    p_cov.add_argument("--source", type=Path, default=None, help="a GEDCOM to read instead of merging")
-    p_cov.add_argument("--top", type=int, default=25, help="how many unlinked gaps to list")
-    p_cov.add_argument(
-        "-o",
-        "--output",
-        type=Path,
-        default=None,
-        help="where to write (default: <reports>/wikidata-coverage.md)",
-    )
-    p_cov.set_defaults(func=_cmd_coverage)
-
     p_dist = sub.add_parser(
         "distant",
         help="pairs of people far apart in our tree — ask Geni for the path between them",
@@ -1683,23 +1589,6 @@ def build_parser() -> argparse.ArgumentParser:
         help="date for the reference qualifier, YYYY-MM-DD (default: today)",
     )
     p_er.set_defaults(func=_cmd_entity_resolution)
-
-    p_names = sub.add_parser(
-        "names",
-        help="measure the tree's name vocabulary against Wikidata's name items",
-        description=(
-            "Which surnames and given names already have a Wikidata item, and "
-            "which do not. Read-only; proposes nothing."
-        ),
-    )
-    p_names.add_argument("--source", type=Path, default=None, help="a GEDCOM to read instead of merging")
-    p_names.add_argument("--delay", type=float, default=1.0, help="seconds between requests")
-    p_names.add_argument("--top", type=int, default=40, help="rows per table")
-    p_names.add_argument(
-        "-o", "--output", type=Path, default=None,
-        help="where to write (default: <reports>/names.md)"
-    )
-    p_names.set_defaults(func=_cmd_names)
 
     p_dl = sub.add_parser(
         "wikidata-download",
