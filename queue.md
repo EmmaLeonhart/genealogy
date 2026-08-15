@@ -190,13 +190,6 @@ and confirm `behind_by` has emptied. **`reports/seeds.md` is deleted and gets
 regenerated here**, which is what Emma meant by "delete it so we could
 regenerate it".
 
-## 5 · Re-run `build-geni-wikidata-pairs.py` over the 203-export corpus
-
-The 40-profile pass predates the four Samaritan exports. Cheap; no decision
-needed. A run that reports the two unmergeable Aaron / Zerubbabel pairs as
-"conflicts" has regressed — see `CLAUDE.md` § *A second Geni ID … is NOT a
-conflict*.
-
 ## 7 · Normalise the placeholder names to `NN`
 
 **Emma, 2026-08-14.** All 55 discovered forms (`reports/given-name-forms.csv`,

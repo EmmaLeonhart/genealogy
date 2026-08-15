@@ -6412,3 +6412,23 @@ landed.** Queue item 5, deferred behind a re-merge it never needed — it reads
 **The 25 other name collisions are not duplicates** and were checked rather than
 assumed: `Eleazar II` against `Eleazar I`, `Amram III` against `Amram` — regnal
 numbering, different people. Only the two exact-label matches were real.
+
+## 2026-08-16 — the re-merge landed: 396,163 people, still one tree
+
+Started by hand at 00:30 after the 19:07 cron starved four times.
+
+**203 exports → 396,163 individuals, 192,552 families, 37,890 notes, 578 value
+conflicts, and one connected component.** The previous merge was 176 sources; the
+one before that, at 54 exports, held 105,349 people. `out/merged-176.ged` keeps
+the pre-merge tree, which is the only thing that makes the seed-method backtests
+answerable.
+
+**Still one tree.** `CLAUDE.md` warns that an export reaching somewhere nothing
+else does will split it again and that this is normal rather than wrong — 27 more
+exports did not.
+
+**Queue item 5 closed**, `build-geni-wikidata-pairs.py` re-run over the full
+corpus: 44 profiles carry a Wikidata URL, 43 distinct items, and the batch went
+32 → 36 `add_geni_id`. Two items get an **additional** `P2600` rather than a
+correction, which is the unmergeable-duplicate case and not a conflict: `Q120564`
+and `Q51676` (Aaron).
