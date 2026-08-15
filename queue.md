@@ -10,6 +10,96 @@ The purpose of this file is also to bound scope. If a task is not in this queue,
 
 ---
 
+## 0 · READ THIS FIRST — how the queue went wrong, and how to audit it from the chat logs
+
+**Emma, 2026-08-14, and this item exists because she could not tell what was
+going on:** *"I'm extremely confused about what's going on here."* When she next
+asks for the queue to be executed, **work this item before anything else** — it
+rebuilds the queue from the transcripts, and only then is the rest of the queue
+trustworthy enough to run.
+
+### What went wrong
+
+**The queue stopped driving the work, and nothing announced it.** On 2026-08-14 a
+full day of work happened entirely from chat: four Geni exports integrated, three
+Wikidata batches built, five reports written, `CLAUDE.md` amended four times —
+**none of it in this file**, before or after. The queue was not consulted at the
+start of the session and not updated during it.
+
+Four distinct failures, all of which recur:
+
+1. **Finished work sat here as live work.** Items 1-4 described the missing-
+   ancestor sweep (done 08-13), the isolates (parked 08-13), the Baruch Jafe
+   cluster (joined 08-13) and the Samaritan high priests (joined 08-14, and its
+   "steps" already carried out by Emma). Reading the queue gave a picture of the
+   project that was days out of date.
+2. **Instructions given in chat never landed here.** Every decision below in
+   items 5 and 6 was spoken, acted on, and only written into the queue
+   retrospectively at the end of the day, when Emma asked why the queue was not
+   being used.
+3. **The queue's own pinned tail was ignored.** It says three crons run the work
+   loop; none were running. The only cron in this session was one created ad hoc.
+4. **`git log` and `devlog.md` held the truth and the queue did not** — so the
+   queue became the least reliable file in the repo while looking like the plan.
+
+**The root cause is not laziness about a file.** It is that chat instructions
+arrive faster than they are recorded, and a queue that is only written to at the
+end of a session is a transcript, not a plan. The fix is the audit below, run at
+the START of a session rather than the end.
+
+### How to audit the queue from the chat logs
+
+**The transcripts are on disk and they are the authority**, because they hold what
+Emma actually said, in order, including the corrections:
+
+    C:/Users/Emma/.claude/projects/C--Users-Emma-Documents-GitHub-geni/*.jsonl
+
+**23 files, 67 MB, one per session, going back to at least 2026-08-11.** Each line
+is a JSON object; a user turn has `message.role == "user"` and the text in
+`message.content`. Read them **newest first by mtime** and stop when the material
+stops being new — a week or more of history is in scope, and the older files are
+where standing decisions were made.
+
+Do this, in order:
+
+1. **Extract every user turn** across the transcripts, newest first, with its
+   timestamp. Do not summarise while extracting — the summarising step is where
+   instructions get lost.
+2. **Classify each one**: an instruction to do something, a decision about how
+   something should work, a correction of something already done, or
+   conversation. Only the first three matter.
+3. **For every instruction and decision, ask three questions.** Is it done? Is it
+   in `queue.md`? Is it in `CLAUDE.md` or `devlog.md`? An item that is done and
+   recorded needs nothing. An item that is done and unrecorded goes to
+   `devlog.md`. An item that is **not** done goes into this queue as a concrete
+   step. A *decision about how the project works* goes to `CLAUDE.md`, not here.
+4. **Corrections outrank the thing they correct.** Emma reverses herself
+   explicitly and often — *"I didn't tell you to do that"*, *"Q1 is not a third
+   gender, it is an error"*, *"the Cladoplast property is not the Cladoplast
+   object"*. The **latest** statement on any point is the live one, and the
+   superseded version must not survive anywhere as if it were current.
+5. **Delete finished items from this file** and append a dated `devlog.md` entry
+   in the same commit. No checkmarks, no "done" markers — if it is here, it is
+   not done.
+6. **Commit and push**, then report what moved.
+
+### What to watch for specifically
+
+- **Instructions phrased as frustration are still instructions.** *"Just fucking
+  run the census"* is a queue item.
+- **A thing done in chat but never written down is invisible to the next
+  session** — that is exactly how the 2026-08-14 work nearly vanished.
+- **Do not re-derive settled questions.** If the transcripts show a question was
+  answered, the answer belongs in `CLAUDE.md` and the question does not belong
+  here.
+- **Unrequested normalisation is its own category.** Emma, 2026-08-14: *"I find
+  it extremely weird how it is that you have a tendency to try to do exception
+  handling for stuff that I do not consider to be even necessarily errors."*
+  Anything the audit finds of that shape goes on the list to be removed, not
+  kept.
+
+---
+
 ## Audited 2026-08-14 — items 1-4 closed out to devlog
 
 Four items were still sitting here describing finished or parked work: missing
