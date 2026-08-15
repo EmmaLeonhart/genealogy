@@ -6493,3 +6493,23 @@ the work survives whether or not the job fires: the three hourly ticks (work-loo
 `:03`, auto-flush `:15`, status-report `:42`) and the four daily jobs (re-merge
 19:07, bloat review 21:02, entity resolution 23:03, structural merge 00:01). Each
 is listed with its real `CronCreate` id and its last run.
+
+## 2026-08-16 — export 204: the missing Samaritan priest arrives
+
+Emma: *"There was a bit of an error on Geni… One individual was not included and
+should have been included."*
+
+`export-Forest-6000000178795709821.ged`, taken 15 AUG 2026 02:30, **4,940
+individuals**, seeded on **Abram ben Yitzhaq** (`Q135489730`, himself one of the
+21 priests). Placed as a new file in `exports/samaritans/`; the destination did
+not exist and nothing was overwritten. Corpus **203 → 204**.
+
+**It contains `6000000227245553985` — `Yitzhaq I ben Tsedaka`**, the one priest
+of the 21 that no match could find. The structural check had established he was
+genuinely absent rather than merely unmatched: the only Geni `Yitzhaq` in the
+Samaritan exports has `Shalma II ben Tabia` for a father, and no Yitzhaq with a
+Tsedaka father existed anywhere in them. He was missing from Geni, not from our
+matching, and now he is here.
+
+The zip is ignored by its own explicit line, per the one-line-per-file rule that
+keeps an unlisted download visible in `git status`.
