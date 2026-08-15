@@ -383,7 +383,12 @@ feeds the `P734` family-name work rather than the label.
   `P2600` is what makes it retrievable.
 
 `scripts/labels.py` is the single place that decides this — `label_for()` returns
-`''` for `Private`, `NN`, blank and `?`. A caller that falls back to the raw
+`''` for `Private` and `<private>` **and nothing else**. It briefly also emptied
+`NN`, `unknown` and `?`; Emma, same day: *"I didn't tell you to do that. I didn't
+tell you to avoid the NN people."* `NN` is *nomen nescio*, a genealogist saying
+the name is unknown — a real statement about a person, not Geni withholding data,
+and whether it becomes a label is a decision rather than a string to add to a set.
+A caller that falls back to the raw
 string when it gets `''` reintroduces the whole problem.
 
 **This is the same rule as the Samaritan "wives" in `docs/future-modelling.md`,

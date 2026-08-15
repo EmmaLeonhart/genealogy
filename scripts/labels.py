@@ -40,8 +40,18 @@ structure, so there is nothing to create. A `Private` profile has both.
 
 from __future__ import annotations
 
-#: Values Geni uses in the NAME slot that are not names.
-NOT_A_NAME = {"private", "nn", "n n", "unknown", "?", ".", ""}
+#: **Only Geni's redaction markers, and only because Emma named them.**
+#:
+#: An earlier version of this set also held `nn`, `n n`, `unknown` and `?`. Emma,
+#: 2026-08-14: *"I didn't tell you to do that. I didn't tell you to avoid the NN
+#: people."* She specified `Private` and `<private>`; the rest was added here
+#: unasked and silently suppressed labels on people nobody had decided about.
+#:
+#: `NN` is *nomen nescio* — a genealogist recording that the name is unknown. It
+#: is a real thing to say about a person, and it is not Geni withholding data.
+#: Whether it should become a Wikidata label is a decision, and not one to make
+#: by quietly adding a string to a set.
+NOT_A_NAME = {"private", ""}
 
 #: The given-name marker. Unlike `Private`, what follows it is real.
 GIVEN_REDACTED = "<private>"
@@ -53,13 +63,15 @@ def display_name(gedcom_name: str) -> str:
 
 
 def surname_of(gedcom_name: str) -> str:
-    """The `/.../` slot, `''` if empty or itself a placeholder.
+    """The `/.../` slot, `''` if empty.
 
-    `<private> /./` occurs 286 times and that `.` is not a surname.
+    `.` is dropped here and only here: `<private> /./` occurs 286 times and a
+    lone full stop is not a family name to link a P734 item to. That is a
+    judgement about this one string, not a general rule about placeholders.
     """
     parts = (gedcom_name or "").split("/")
     surname = " ".join(parts[1].split()) if len(parts) > 2 else ""
-    return "" if surname.strip().lower() in NOT_A_NAME else surname
+    return "" if surname.strip() in ("", ".") else surname
 
 
 def label_for(gedcom_name: str) -> str:
