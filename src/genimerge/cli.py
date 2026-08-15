@@ -756,8 +756,11 @@ def _linked_from_pairs(ws: Workspace, tree) -> dict[str, str]:
     A Geni ID claimed by more than one item is skipped, not chosen between —
     the rule `reports/wikidata-doubles.md` exists to enforce.
     """
+    pairs_file = ws.wikidata / "p2600-all.tsv"
+    if not pairs_file.exists():
+        return {}
     qids_for: dict[str, set[str]] = {}
-    for qid, geni_id in doubles_mod.load_pairs(ws.wikidata / "p2600-all.tsv"):
+    for qid, geni_id in doubles_mod.load_pairs(pairs_file):
         if geni_id in tree.people:
             qids_for.setdefault(geni_id, set()).add(qid)
     return {g: next(iter(q)) for g, q in qids_for.items() if len(q) == 1}
@@ -837,39 +840,54 @@ def _cmd_crosscheck(args: argparse.Namespace) -> int:
 
 
 def _cmd_name_links(args: argparse.Namespace) -> int:
+    """Propose P735/P734 links to name items that already exist. Fully offline.
+
+    Emma, 2026-08-15, asked what this command was for and then chose *"make it
+    offline, keep the logic"*. It had three live touchpoints, all replaced:
+
+    * the linked population came from `matched_all.csv`, which `expand` wrote and
+      nothing writes now -> the P2600 map, `out/wikidata/p2600-all.tsv`;
+    * which names have items came from SPARQL -> `reports/name-resolution.csv`,
+      which matches on an item's **label** only and is therefore stricter than
+      the lookup it replaces;
+    * which items already state a name came from SPARQL -> the downloaded store.
+    """
     ws = Workspace.from_args(args)
     tree = _load_tree(args.source, ws)
-    linked = _read_all_matches(ws)
+
+    linked = _linked_from_pairs(ws, tree)
     if not linked:
-        print("no linked people found: `reconcile`/`expand` were deleted, so "
-              "nothing writes matched_all.csv. Use --offline where available.",
-              file=sys.stderr)
+        print(f"no P2600 map at {ws.wikidata / 'p2600-all.tsv'}; "
+              "run `genimerge overlap` to build it", file=sys.stderr)
         return 1
 
-    client = make_client(ws, args)
+    resolution = args.names or (REPO_ROOT / "reports" / "name-resolution.csv")
+    if not resolution.exists():
+        print(f"no {resolution}; run scripts/measure-name-resolution.py",
+              file=sys.stderr)
+        return 1
+    with open(resolution, encoding="utf-8", newline="") as handle:
+        items = namelinks.name_items_from_resolution(csv.DictReader(handle))
 
-    # Only the names of people we have actually linked need looking up.
-    vocabulary = names_mod.build_vocabulary(tree, people=linked)
-    items = names_mod.find_name_items(
-        client,
-        vocabulary.all_strings(),
-        progress=lambda done, total: print(f"  names {done}/{total}", end="\r", flush=True),
-    )
-    print()
+    index_path = args.index or wikistore.default_index_path(ws.out)
+    with wikistore.StoreReader(args.store or WIKIDATA_STORE, index_path) as reader:
+        existing = namelinks.existing_name_claims_from_store(
+            reader, sorted(set(linked.values())))
 
     batch = namelinks.build_name_links(
-        client, tree, linked, items, retrieved=args.retrieved
+        existing, tree, linked, items, retrieved=args.retrieved
     )
 
     out_dir = ws.wikidata
     _write(out_dir / "add-names.md", namelinks.render_markdown(batch))
 
+    print(f"{len(linked):,} P2600-linked people, {len(items):,} names with an item")
     print(
         f"wrote {out_dir / 'add-names.md'}: {len(batch.links)} proposed links "
         f"covering {batch.people_touched} of {batch.considered} people"
     )
     print(f"{len(batch.skipped)} names set aside; see add-names.md for why")
-    print("Nothing has been sent to Wikidata. Review the .md before running the batch.")
+    print("Nothing has been sent to Wikidata, and nothing asked it anything.")
     return 0
 
 
@@ -1666,11 +1684,16 @@ def build_parser() -> argparse.ArgumentParser:
         help="propose P735/P734 links to name items that already exist",
         description=(
             "Writes a reviewable batch. Creates no name items, resolves no "
-            "ambiguous name, and touches no item that already states a name."
+            "ambiguous name, and touches no item that already states a name. "
+            "Fully offline since 2026-08-15: reads the P2600 map, "
+            "reports/name-resolution.csv and the downloaded store."
         ),
     )
     p_links.add_argument("--source", type=Path, default=None, help="a GEDCOM to read instead of merging")
-    p_links.add_argument("--delay", type=float, default=1.0, help="seconds between requests")
+    p_links.add_argument("--names", type=Path, default=None,
+                         help="name->item table (default: reports/name-resolution.csv)")
+    p_links.add_argument("--store", type=Path, default=None, help=f"the item store (default: {WIKIDATA_STORE})")
+    p_links.add_argument("--index", type=Path, default=None, help="the store index (default: <out>/wikidata/store-index.sqlite3)")
     p_links.add_argument(
         "--retrieved",
         default=date.today().isoformat(),

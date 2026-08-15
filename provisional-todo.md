@@ -40,29 +40,29 @@ have individual citations."*
 human, basically."* So `P31` → `Q5` stays, and no Gaiad-specific typing is
 emitted.
 
-## 3 · `P999999` — a Gaiad reference that is MEANT to fail
+## 3 · `T999999` — a Gaiad reference that is MEANT to fail
 
 The interim mechanism, and the deliberate part is the point:
 
 > Right now, I am going to say that the best way to do it would be that
-> `P999999` is going to be the property for a Gaiad reference. It's going to be
+> `T999999` is going to be the property for a Gaiad reference. It's going to be
 > the thing that's given as a reference for anything that specifically comes out
 > of the Gaiad in the JSON files. **This one's going to throw an error, and it's
 > intentionally throwing an error.** Because they would be intentionally throwing
 > an error, as I understand it, the JSON editor is just going to not be able to
 > add it.
 
-So: anything sourced from the Gaiad carries a reference on `P999999`, which does
+So: anything sourced from the Gaiad carries a reference on `T999999`, which does
 not exist on Wikidata, so the edit **cannot execute**. That is a fence, not a bug
 — it keeps Gaiad-derived statements in the batch, visible and countable, while
 making it impossible for one to reach Wikidata before the citation system is
 designed. **Do not "fix" it, do not substitute a real property, and do not filter
 these entries out of the batch to make it run clean.**
 
-**One thing to confirm:** she said *"T999999"*. Properties are `P`, and the
-sentence is *"the property for a Gaiad reference"*, so this is written as
-`P999999`. Recorded rather than silently corrected — say so if it was meant
-literally.
+**It is `T`, not `P`, and that was checked.** Written as `P999999` at first on
+the reasoning that properties are `P`; Emma, 2026-08-15: *"It is not P."* So the
+`T` is deliberate and is part of why the reference cannot resolve. Do not
+"correct" it back.
 
 *"We'll figure out the Gaiad citation system at a later point."*
 

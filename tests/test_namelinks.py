@@ -2,7 +2,6 @@ import json
 
 from genimerge import gedcom, namelinks
 from genimerge.model import build_tree
-from genimerge.wikidata import WikidataClient
 
 TREE = """0 HEAD
 0 @I1@ INDI
@@ -42,29 +41,18 @@ def tree():
     return build_tree(gedcom.parse(TREE).records)
 
 
-def _client(tmp_path, existing_claims=()):
-    """`existing_claims` is an iterable of (qid, property)."""
-    response = json.dumps(
-        {
-            "results": {
-                "bindings": [
-                    {
-                        "item": {"value": f"http://www.wikidata.org/entity/{qid}"},
-                        "prop": {"value": f"http://www.wikidata.org/prop/direct/{prop}"},
-                    }
-                    for qid, prop in existing_claims
-                ]
-            }
-        }
-    ).encode("utf-8")
-    return WikidataClient(
-        cache_dir=tmp_path / "c", fetch=lambda *a, **k: response, delay=0, max_backoff=0
-    )
-
-
 def build(tmp_path, linked, existing_claims=(), items=None):
+    """`existing_claims` is an iterable of (qid, property).
+
+    `build_name_links` took a `WikidataClient` and asked SPARQL which items
+    already state a name. It stopped touching the network on 2026-08-15 and now
+    takes that mapping directly, so the fake client this used to build is gone.
+    """
+    existing: dict[str, set[str]] = {}
+    for qid, prop in existing_claims:
+        existing.setdefault(qid, set()).add(prop)
     return namelinks.build_name_links(
-        _client(tmp_path, existing_claims),
+        existing,
         tree(),
         linked,
         ITEMS if items is None else items,

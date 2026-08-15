@@ -372,9 +372,11 @@ def test_crosscheck_refuses_to_run_before_there_are_matches(workspace, capsys):
     assert "matched_all.csv" in capsys.readouterr().err
 
 
-def test_name_links_refuses_to_run_before_there_are_matches(workspace, capsys):
+def test_name_links_refuses_to_run_without_the_p2600_map(workspace, capsys):
+    # Offline since 2026-08-15: the linked population is the P2600 map, not
+    # `matched_all.csv`, which nothing writes any more.
     assert run(workspace, "name-links") == 1
-    assert "matched_all.csv" in capsys.readouterr().err
+    assert "p2600-all.tsv" in capsys.readouterr().err
 
 
 # -- merge reports connectivity ----------------------------------------

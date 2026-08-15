@@ -315,20 +315,6 @@ Each of these is one instruction with no decision attached.
 - **The Samaritan office** (`Samaritan High Priest`) is still only a description;
   no `P106`, because choosing the item means asking Wikidata.
 
-## 12 · The old Geni export on Google Drive
-
-`1nwHvAJTv_rrq_rBWhFrJXjy62ok-Ly-E` — **`export-geni.zip`, 895,065 bytes, created
-2026-08-13 06:56**, owned by Emma. The Drive MCP server **can** see it; the
-metadata above came from it.
-
-What stopped it: moving 895 KB of binary through the model's context as base64
-costs roughly 300k tokens in and 300k back out to write it to disk, for a file
-Emma can download in one click. So it sits here rather than being forced.
-
-**Unblock:** download it to `~/Downloads` and it gets filed and merged like any
-other export. Per `CLAUDE.md`, where it goes under `exports/` is **her call** —
-and if the destination path already exists, stop rather than overwrite.
-
 ## 13 · Multi-hop relationship labels
 
 Emma, 2026-08-15: *"Put this at the end of the… queue, and we'll work on this

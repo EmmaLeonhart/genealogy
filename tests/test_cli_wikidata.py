@@ -321,21 +321,40 @@ def test_crosscheck_proposes_a_date_wikidata_lacks(ws):
 # -- names and name-links ----------------------------------------------
 
 
-def test_name_links_proposes_links_to_existing_name_items(ws):
-    seeded(ws)
-    assert run(ws, "name-links", "--retrieved", "2026-07-30") == 0
+def _name_links_inputs(ws, tmp_path):
+    """The three offline inputs `name-links` reads since it stopped querying."""
+    store, index = _offline_inputs(
+        ws,
+        [_store_item("Q1", geni=["1"]), _store_item("Q2", geni=["2"])],
+        [("Q1", "1"), ("Q2", "2")],
+    )
+    names = tmp_path / "name-resolution.csv"
+    names.write_text(
+        "kind,name,occurrences,verdict,qids\n"
+        "family,Alpha,1,resolved,Q900\n"
+        "given,Ada,1,resolved,Q901\n",
+        encoding="utf-8", newline="")
+    return names, store, index
+
+
+def test_name_links_proposes_links_to_existing_name_items(ws, tmp_path):
+    names, store, index = _name_links_inputs(ws, tmp_path)
+    assert run(ws, "name-links", "--retrieved", "2026-07-30",
+               "--names", str(names), "--store", str(store),
+               "--index", str(index)) == 0
 
     report = (ws["out"] / "wikidata" / "add-names.md").read_text(encoding="utf-8")
     assert "Q900" in report  # Alpha, the family name
     assert "Q901" in report  # Ada, the given name
 
 
-def test_name_links_leaves_a_name_with_no_item_alone(ws):
-    seeded(ws)
-    run(ws, "name-links", "--retrieved", "2026-07-30")
+def test_name_links_leaves_a_name_with_no_item_alone(ws, tmp_path):
+    names, store, index = _name_links_inputs(ws, tmp_path)
+    run(ws, "name-links", "--retrieved", "2026-07-30", "--names", str(names),
+        "--store", str(store), "--index", str(index))
 
     report = (ws["out"] / "wikidata" / "add-names.md").read_text(encoding="utf-8")
-    # "Beta" and "Bo" have no name item in the fake, so they are set aside.
+    # "Beta" and "Bo" are absent from the resolution table, so they are set aside.
     assert "no Wikidata name item exists" in report
 
 

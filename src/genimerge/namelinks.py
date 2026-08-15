@@ -38,7 +38,6 @@ from typing import Iterable
 from .model import Tree
 from .names import is_patronymic
 from .claims import Statement, geni_reference
-from .wikidata import WikidataClient
 
 __all__ = ["NameLink", "Skipped", "NameBatch", "build_name_links", "render_markdown"]
 
@@ -84,7 +83,11 @@ class NameBatch:
 
 
 def existing_name_claims_from_store(reader, qids: Iterable[str]) -> dict[str, set[str]]:
-    """:func:`_existing_name_claims`, answered from the downloaded store.
+    """Which of P735/P734 each item already states, from the downloaded store.
+
+    This was the offline half of a pair; the SPARQL half, `_existing_name_claims`,
+    was deleted on 2026-08-15 when Emma chose *"make it offline, keep the logic"*
+    for `name-links`. It is now the only implementation.
 
     `queue.md` 2.B, ported by question rather than by emulating SPARQL. The
     question is only "which of P735/P734 does this item already state" — the
@@ -115,39 +118,42 @@ def existing_name_claims_from_store(reader, qids: Iterable[str]) -> dict[str, se
     return have
 
 
-def _existing_name_claims(
-    client: WikidataClient, qids: list[str], batch_size: int = 200
-) -> dict[str, set[str]]:
-    """Which of P735/P734 each item already states."""
-    have: dict[str, set[str]] = {}
-    for start in range(0, len(qids), batch_size):
-        batch = qids[start : start + batch_size]
-        values = " ".join(f"wd:{q}" for q in batch)
-        query = (
-            "SELECT ?item ?prop WHERE {\n"
-            f"  VALUES ?item {{ {values} }}\n"
-            f"  VALUES ?prop {{ wdt:{GIVEN_NAME} wdt:{FAMILY_NAME} }}\n"
-            "  ?item ?prop ?value.\n"
-            "}"
-        )
-        for row in client.sparql(query):
-            qid = row["item"].rsplit("/", 1)[-1]
-            prop = row["prop"].rsplit("/", 1)[-1]
-            have.setdefault(qid, set()).add(prop)
-    return have
+def name_items_from_resolution(rows: Iterable[dict]) -> dict[str, list[tuple[str, str, str]]]:
+    """`reports/name-resolution.csv` in the shape :func:`build_name_links` wants.
+
+    That file is built by matching **exactly on an item's label**, case- and
+    diacritic-folded — never on an alias. So every entry here is a ``"label"``
+    match, which is *stricter* than the SPARQL lookup it replaces rather than
+    looser: the alias-only matches this module deliberately sets aside simply
+    never appear. The middle element is the item type, which the CSV does not
+    carry; it is empty and nothing reads it.
+    """
+    out: dict[str, list[tuple[str, str, str]]] = {}
+    for row in rows:
+        name = (row.get("name") or "").strip()
+        qids = [q.strip() for q in (row.get("qids") or "").split("|") if q.strip()]
+        if not name or not qids:
+            continue
+        out.setdefault(name, []).extend((q, "", "label") for q in qids)
+    return out
 
 
 def build_name_links(
-    client: WikidataClient,
+    existing: dict[str, set[str]],
     tree: Tree,
     linked: dict[str, str],
-    name_items: dict[str, list[tuple[str, str]]],
+    name_items: dict[str, list[tuple[str, str, str]]],
     *,
     retrieved: str,
 ) -> NameBatch:
-    """Build the batch. ``linked`` is geni_id -> qid; ``name_items`` is from `names`."""
+    """Build the batch.
+
+    ``existing`` is ``qid -> {properties it already states}``, from
+    :func:`existing_name_claims_from_store`. ``linked`` is geni_id -> qid;
+    ``name_items`` is from :func:`name_items_from_resolution`. **Nothing here
+    takes a client** — this module stopped touching the network on 2026-08-15.
+    """
     batch = NameBatch(retrieved=retrieved)
-    existing = _existing_name_claims(client, sorted(set(linked.values())))
 
     def resolve(text: str) -> tuple[str | None, str]:
         """The single name item whose *label* is this text, or why there isn't one."""

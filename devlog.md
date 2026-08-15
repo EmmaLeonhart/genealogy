@@ -6227,3 +6227,39 @@ separating exact P2600 links from expansion matches, and the expansion source no
 longer exists, so every remaining row is exact.
 
 **208 tests pass** across the affected modules.
+
+## 2026-08-15 — the Drive export was already here; `name-links` goes offline
+
+**The Drive export, queue item 12 — closed with nothing added.** Emma asked where
+the request even came from: one line on 2026-08-13 06:57, *"the old geni export
+there to be downloaded is https://drive.google.com/…"*. A previous session
+recorded that it *"requires Google sign-in and could not be fetched"* and
+suggested a manual download; that conclusion was about plain `WebFetch`, and the
+Drive **MCP server reads it fine**. I carried the stale note forward and told her
+to download it herself, which she cannot do.
+
+The download also cost nothing, against the ~597,000 tokens estimated: the
+harness spilled the 1.19 MB base64 result to disk, so it was decoded from there
+and never entered context. **`export-Descendants.ged`, 12 AUG 2026 23:41, 4,100
+individuals, seed `6000000227212960823` — byte-identical to
+`exports/descendants/export-Descendants-6000000227212960823.ged`**, already in
+the corpus. The never-overwrite rule would have caught it anyway.
+
+**`name-links` is offline.** Emma, asked what it was even for: *"make it offline,
+keep the logic."* It proposes `P735`/`P734` links to name items that already
+exist and creates nothing; its conservative rules are the valuable part, and one
+of them — never proposing a patronymic found in `GIVN` — is what queue item 10
+now models properly. Three live touchpoints replaced:
+
+- the linked population came from `matched_all.csv`, which nothing writes since
+  `expand` was deleted → the P2600 map;
+- which names have items came from SPARQL → `reports/name-resolution.csv`, which
+  matches on an item's **label** only and so is **stricter** than the lookup it
+  replaces, not looser: the alias-only matches this module already set aside
+  simply never appear;
+- which items already state a name came from SPARQL → the downloaded store, via
+  a port that **already existed and was already tested**. A duplicate was written
+  before noticing and then removed.
+
+That leaves three commands able to reach Wikidata: `overlap`, `crosscheck`
+(which has `--offline`) and `wikidata-download`, the one that is supposed to.
