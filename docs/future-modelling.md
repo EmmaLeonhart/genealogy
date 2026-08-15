@@ -17,7 +17,7 @@ left out of `scripts/build-orderlife-batch.py`.
 
 | property | decision | what would unblock it |
 | --- | --- | --- |
-| **P59 Cladoplast of** | **Not mapped, not emitted, no item created.** Emma, 2026-08-14: *"we don't do anything with it until there is a Cladoplast object on Wikidata, which there currently is not. I do not have any intention of making it right now."* | a Cladoplast item existing on Wikidata — and that is her call to make, not something to propose |
+| **P59 Cladoplast of** | **Not mapped, not emitted.** See the section below — the property and the object are two different things and an earlier draft of this file conflated them. | the **object** existing on Wikidata, which is Emma's call and is not being made now |
 | **P12 Occupation** (monolingual text) | **Dropped.** *"The only monolingual text that we just don't do is the P12 and P13 occupation and residence."* | a decision to reverse it; the technical blocker would be normalising free text to `P106` items |
 | **P13 Residence** (monolingual text) | **Dropped**, same instruction | as above, target would be `P551` |
 | P49 ordinal within year, P50 ordinal within month, P51 ISO week number, P52 ISO weekday number | Not mapped — this is `calendar-lib`, not genealogy | nothing; there is no Wikidata target and no reason to invent one |
@@ -30,6 +30,32 @@ left out of `scripts/build-orderlife-batch.py`.
 **Address is the monolingual-text property that IS done** — `P6375 street
 address`, per `CLAUDE.md` § Life events. P12 and P13 are the exceptions, not the
 rule.
+
+## P59 Cladoplast: the property and the object are different things
+
+**Emma, 2026-08-14, correcting an earlier draft of this file:** *"you get that
+the Cladoplast property is not the Cladoplast object. Those are different things.
+The property doesn't exist on Wikidata and probably never will. The object might
+exist on Wikidata someday but it would be really weird if it existed right now."*
+
+- **The property** is order.life's `P59` "Cladoplast of", datatype `external-id`,
+  formatter `https://wikidata.org/wiki/$1` — so **its values are Wikidata QIDs**.
+  There is no Wikidata property for this and there is not expected to be one.
+- **The object** would be a Wikidata item for the concept *cladoplast*. That is
+  the thing that might exist one day. Emma is not making it now.
+
+**What P59 actually links to is taxa**, e.g. `Corticus → Q2998108`,
+`Kenichthys campbelli → Q3814561`, `Rhizodontiformes → Q3934109`,
+`Canowindridae → Q1033622`. It says "this node of my tree corresponds to that
+clade", which is not a genealogical statement about a person.
+
+**It is also a working discriminator, and worth keeping for that alone.**
+order.life's own devlog records it: *"`P59` 'Cladoplast of' marks the taxonomic
+layer. Proteus, Proteus Ascidiacea and Helios matched as gods and are clades;
+Zeus, Poseidon and Hermes carry no `P59`."* That is exactly the separator
+`Q153802` failed to be — presence of P59 identifies the taxonomic layer, which is
+definitionally not human genealogy. If a discriminator is ever needed for what to
+hold back, this is a real one and the Gaiad flag is not.
 
 ## Gaiad characters
 
