@@ -1,0 +1,370 @@
+"""Turn `order.life` into the third source of the synoptic tree, as edit objects.
+
+**Everything goes in.** Emma, 2026-08-14: *"Something without a geni ID and
+without a Wikidata ID can still be merged into the synoptic tree because we have
+the order.life thing as a third data source… we are, in fact, trying to get all
+this information, some of which was destroyed on geni."* So no person is dropped
+for lacking an identifier.
+
+**Gaiad individuals are flagged, not excluded.** `Q153802` is order.life's
+"Gaiad character" item — its epic. Wikidata does carry genealogies of fictional
+characters, so how these are eventually handled is undecided; what is decided is
+that they sort **last**. Emma: *"the specific algorithmic way that stuff is
+actually added over time… would make it so that the Gaiad stuff would be added
+only very, very, very, very late."* Ordering does the excluding, so nothing has
+to be thrown away now.
+
+**No order.life citation is emitted, and that is the bug this fixes.** Emma:
+*"These JSONs aren't gonna fire because they're trying to cite an order.life
+citation that doesn't exist."* A reference to a source Wikidata does not have
+makes the whole statement unusable. So: a Geni ID gives `S2600`, and a person
+with no Geni ID gets **no reference at all** rather than a broken one.
+
+**Relationships order.life has and Wikidata does not are added to the existing
+items.** Emma, 2026-08-14: *"some of the wiki data stuff with wiki data IDs but
+no geni IDs is literally stuff that I added… we are going to be adding all of the
+relationships that are not present on wiki data that are present there in the
+order.life stuff, because some of it is just work that I did that is not on
+geni."* That is `add_relationship`, and it is why a person carrying a QID and no
+Geni ID is **not** nothing to do — an earlier version of this script called them
+that and buried 37,728 people.
+
+Each candidate edge is checked against the local store first: if the existing
+item already states that `P22`/`P25`/`P26` value, nothing is emitted.
+
+**order.life is its own Wikibase, not a Wikidata mirror.** Emma: *"It isn't a
+true wiki data export. It's its own wiki base, which is mostly structured very
+commonly with wiki data but not entirely."* So its property numbers are its own —
+`P47` father, `P48` mother, `P42` spouse, `P20` child — and must be translated
+rather than passed through. The `analysis/*.tsv` tables are used instead of the
+raw claims for exactly that reason.
+
+`Q2` is Emma and is skipped — her own item, not genealogy this should assert.
+
+Inputs, all from `order.life/wikibase/`:
+  `analysis/persons.tsv`  qid, label, sex, birth, death, gedcom, wikidata_qid, geni_id
+  `analysis/edges.tsv`    parent -> child
+  `analysis/spouses.tsv`  a <-> b
+  `items/<qid>.json`      read only to test for the Gaiad flag
+
+    py scripts/build-orderlife-batch.py
+"""
+
+from __future__ import annotations
+
+import argparse
+import csv
+import json
+import re
+import sqlite3
+import sys
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(REPO / "src"))
+sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
+from genimerge import sources  # noqa: E402
+
+OL = Path("C:/Users/Emma/Documents/GitHub/order.life/wikibase")
+INDEX = REPO / "out" / "wikidata" / "store-index.sqlite3"
+INDI = re.compile(r"^0 @I(\d+)@ INDI")
+
+GAIAD = "Q153802"          # order.life: "Gaiad character"
+HUMAN = "Q5"
+MALE, FEMALE = "Q6581097", "Q6581072"
+OL_MALE, OL_FEMALE = "Q153718", "Q153719"
+
+#: Lowest number is added first. Identified, real people lead; the epic trails.
+TIERS = {
+    "add_geni_id": 0,
+    "add_relationship": 1,
+    "create_geni_only": 2,
+    "create_orderlife_only": 3,
+    "create_gaiad": 9,
+}
+
+#: **Never create an item for someone who already has one.** A person carrying a
+#: `wikidata_qid` already exists on Wikidata; creating a second item is a
+#: duplicate, and duplicates are the one failure mode here that damages Wikidata
+#: rather than merely wasting a run. So a QID with nothing to add is
+#: `nothing_to_do`, and a Geni ID the local store already maps to an item is too.
+NOTHING = "nothing_to_do"
+
+
+def corpus_geni_ids() -> set[str]:
+    ids: set[str] = set()
+    for path in sources.find_exports():
+        with path.open(encoding="utf-8-sig", errors="replace") as fh:
+            for raw in fh:
+                m = INDI.match(raw)
+                if m:
+                    ids.add(m.group(1))
+    return ids
+
+
+def gaiad_qids(qids: list[str]) -> set[str]:
+    """Which of these order.life items carry the Gaiad-character flag."""
+    out = set()
+    for n, q in enumerate(qids, 1):
+        p = OL / "items" / f"{q}.json"
+        if not p.exists():
+            continue
+        if GAIAD in p.read_text(encoding="utf-8", errors="replace"):
+            out.add(q)
+        if n % 20000 == 0:
+            print(f"  scanned {n:,}/{len(qids):,} items for the Gaiad flag")
+    return out
+
+
+def read_existing_relations(qids: set[str]) -> dict[str, dict[str, set[str]]]:
+    """qid -> {P22/P25/P26 -> the item ids already stated}, from the local store.
+
+    A shard is opened once and every wanted item in it read, because the store is
+    2.7 GB and per-item seeking over 37,000 items would read it many times over.
+    An item absent from the store yields nothing and its edges are skipped: we
+    cannot tell a missing statement from a missing item, and guessing that way
+    round produces duplicate claims on live items.
+    """
+    import gzip
+    if not INDEX.exists():
+        return {}
+    conn = sqlite3.connect(INDEX)
+    by_shard: dict[int, set[str]] = {}
+    for q in qids:
+        row = conn.execute("select shard from items where qid=?", (q,)).fetchone()
+        if row:
+            by_shard.setdefault(row[0], set()).add(q)
+
+    out: dict[str, dict[str, set[str]]] = {}
+    for n, (shard, wants) in enumerate(sorted(by_shard.items()), 1):
+        path = REPO / "wikidata" / "items" / f"items-{shard:05d}.jsonl.gz"
+        if not path.exists():
+            continue
+        with gzip.open(path, "rb") as fh:
+            for raw in fh:
+                if not any(f'"{q}"'.encode() in raw for q in wants):
+                    continue
+                item = json.loads(raw)
+                q = item.get("id")
+                if q not in wants:
+                    continue
+                claims = item.get("claims") or {}
+                out[q] = {
+                    p: {s["mainsnak"]["datavalue"]["value"]["id"]
+                        for s in claims.get(p, [])
+                        if s.get("mainsnak", {}).get("datavalue")}
+                    for p in ("P22", "P25", "P26")
+                }
+        if n % 100 == 0:
+            print(f"  read {n:,}/{len(by_shard):,} shards")
+    return out
+
+
+#: **An order.life QID is never a Wikidata value.** Its Q-space is its own: `Q1`
+#: is Aster, `Q153718/9` are Male/Female, `Q153801/2` are Person/Gaiad character.
+#: A `wikibase-item` value carries no marker saying which wiki it came from, so
+#: passing one through would write a real statement pointing at a wrong item.
+#: Every emitted value is resolved through the target's own `P61` first, and a
+#: target with no Wikidata item is simply not pointed at - which is also why
+#: every edge into Aster falls out without needing a special case.
+def _assert_wikidata_qid(value: str, where: str) -> str:
+    if not re.fullmatch(r"Q\d+", value or ""):
+        raise SystemExit(f"{where}: {value!r} is not a QID")
+    return value
+
+def _rel(q, wqid, prop, value, ref, other, persons, gaiad):
+    return {
+        "id": f"add_relationship:{wqid}:{prop}:{value}",
+        "type": "add_relationship",
+        "tier": TIERS["add_relationship"],
+        "gaiad": q in gaiad or other in gaiad,
+        "source": "order.life",
+        "subject": {"qid": wqid, "geni_id": ref[0]["value"] if ref else None,
+                    "orderlife_qid": q},
+        "requires": [],
+        "statement": {"property": prop,
+                      "value": _assert_wikidata_qid(value, f"{q}->{other}"),
+                      "references": ref},
+        "note": (persons.get(q, {}).get("label", "")
+                 + " -> " + persons.get(other, {}).get("label", "")),
+    }
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("-o", "--out", default="reports/wikidata-orderlife.json")
+    ap.add_argument("--summary", default="reports/orderlife-batch-summary.csv")
+    args = ap.parse_args()
+
+    persons = {r["qid"]: r for r in
+               csv.DictReader((OL / "analysis" / "persons.tsv").open(encoding="utf-8"),
+                              delimiter="\t")}
+    persons.pop("Q2", None)
+    print(f"{len(persons):,} order.life persons (Q2 dropped)")
+
+    father: dict[str, list[str]] = {}
+    for r in csv.DictReader((OL / "analysis" / "edges.tsv").open(encoding="utf-8"),
+                            delimiter="\t"):
+        father.setdefault(r["child"], []).append(r["parent"])
+
+    spouses: dict[str, list[str]] = {}
+    for r in csv.DictReader((OL / "analysis" / "spouses.tsv").open(encoding="utf-8"),
+                            delimiter="\t"):
+        spouses.setdefault(r["a"], []).append(r["b"])
+        spouses.setdefault(r["b"], []).append(r["a"])
+
+    ours = corpus_geni_ids()
+    print(f"{len(ours):,} Geni profiles in this corpus")
+
+    geni_to_qid: dict[str, str] = {}
+    qid_to_geni: dict[str, set[str]] = {}
+    if INDEX.exists():
+        conn = sqlite3.connect(INDEX)
+        for gid_, qid_ in conn.execute("select geni_id, qid from geni"):
+            geni_to_qid[gid_] = qid_
+            qid_to_geni.setdefault(qid_, set()).add(gid_)
+    print(f"{len(geni_to_qid):,} Geni->item links in the local store")
+
+    print("scanning items for the Gaiad flag...")
+    gaiad = gaiad_qids(list(persons))
+    print(f"{len(gaiad):,} of them are flagged Gaiad characters")
+
+    batch, summary, skipped = [], {}, []
+    #: order.life qid -> (wikidata qid, geni id or "") for everyone who has an
+    #: item on Wikidata. Their edges are the `add_relationship` source.
+    rel_candidates: dict[str, tuple[str, str]] = {}
+    for q, r in persons.items():
+        gid = (r.get("geni_id") or "").strip()
+        wqid = (r.get("wikidata_qid") or "").strip()
+        label = (r.get("label") or "").strip() or (r.get("gedcom") or "").strip()
+
+        already = geni_to_qid.get(gid) if gid else None
+        if wqid and gid:
+            # The item exists. Add the Geni ID unless it is already on it.
+            kind = NOTHING if gid in qid_to_geni.get(wqid, ()) else "add_geni_id"
+        elif wqid:
+            kind = NOTHING          # exists on Wikidata, nothing to add
+        elif already:
+            kind = NOTHING          # the Geni ID is already on an item
+        elif q in gaiad:
+            kind = "create_gaiad"
+        elif gid:
+            kind = "create_geni_only"
+        else:
+            kind = "create_orderlife_only"
+        if kind != NOTHING and q in gaiad and kind.startswith("create"):
+            kind = "create_gaiad"
+
+        if kind == NOTHING:
+            # The identifier work is done for this person, but their edges may
+            # still be missing from Wikidata. Queue them for the relationship
+            # pass rather than discarding them.
+            summary[NOTHING] = summary.get(NOTHING, 0) + 1
+            skipped.append({"orderlife_qid": q, "label": label,
+                            "wikidata_qid": wqid, "geni_id": gid,
+                            "already_on": already or wqid})
+            if wqid or already:
+                rel_candidates[q] = (wqid or already, gid)
+            continue
+        if wqid:
+            rel_candidates[q] = (wqid, gid)
+
+        # A Geni ID is the ONLY citation available. Never cite order.life.
+        ref = [{"property": "P2600", "value": gid}] if gid else []
+
+        statements = [{"property": "P31", "value": HUMAN, "references": ref}]
+        if gid:
+            statements.append({"property": "P2600", "value": gid, "references": []})
+        sex = (r.get("sex") or "").strip()
+        if sex in (OL_MALE, OL_FEMALE):
+            statements.append({
+                "property": "P21",
+                "value": MALE if sex == OL_MALE else FEMALE,
+                "references": ref,
+            })
+
+        batch.append({
+            "id": f"{kind}:{q}",
+            "type": "add_geni_id" if kind == "add_geni_id" else "create_individual",
+            "tier": TIERS[kind],
+            "gaiad": q in gaiad,
+            "source": "order.life",
+            "subject": {"qid": wqid or None, "geni_id": gid or None,
+                        "orderlife_qid": q},
+            "requires": [f"person:{p}" for p in father.get(q, [])],
+            "labels": {"en": label, "mul": label},
+            "statements": statements,
+            "links": (
+                [{"property": "P22_or_P25", "value": f"@person:{p}",
+                  "references": ref} for p in father.get(q, [])]
+                + [{"property": "P26", "value": f"@person:{s}", "references": ref}
+                   for s in spouses.get(q, [])]
+            ),
+            "geni_id_in_our_corpus": bool(gid and gid in ours),
+        })
+        summary[kind] = summary.get(kind, 0) + 1
+
+    # ---- relationships order.life has that Wikidata does not ---------------
+    print(f"\n{len(rel_candidates):,} people have a Wikidata item; "
+          f"checking their edges against it")
+    wanted = {w for w, _ in rel_candidates.values()}
+    existing = read_existing_relations(wanted)
+    print(f"read {len(existing):,} of those items out of the local store")
+
+    for q, (wqid, gid) in sorted(rel_candidates.items()):
+        have = existing.get(wqid)
+        if have is None:
+            continue                      # item not in our slice; cannot compare
+        ref = [{"property": "P2600", "value": gid}] if gid else []
+        for parent in father.get(q, []):
+            target = rel_candidates.get(parent)
+            if not target:
+                continue                  # parent has no item to point at
+            psex = (persons.get(parent, {}).get("sex") or "").strip()
+            prop = {OL_MALE: "P22", OL_FEMALE: "P25"}.get(psex)
+            if not prop:
+                continue                  # parent's sex unknown -> cannot choose
+            if target[0] in have.get(prop, set()):
+                continue
+            batch.append(_rel(q, wqid, prop, target[0], ref, parent,
+                              persons, gaiad))
+        for sp in spouses.get(q, []):
+            target = rel_candidates.get(sp)
+            if not target or target[0] in have.get("P26", set()):
+                continue
+            batch.append(_rel(q, wqid, "P26", target[0], ref, sp,
+                              persons, gaiad))
+
+    for e in batch:
+        if e["type"] == "add_relationship":
+            summary["add_relationship"] = summary.get("add_relationship", 0) + 1
+
+    batch.sort(key=lambda e: (e["tier"], e["subject"]["orderlife_qid"]))
+
+    out = REPO / args.out
+    out.write_text(json.dumps(batch, ensure_ascii=False) + "\n", encoding="utf-8")
+    print(f"\nwrote {out} ({len(batch):,} entries)")
+
+    s = REPO / args.summary
+    with s.open("w", encoding="utf-8", newline="") as fh:
+        w = csv.writer(fh)
+        w.writerow(["kind", "tier", "count"])
+        for k, n in sorted(summary.items(), key=lambda kv: TIERS.get(kv[0], -1)):
+            w.writerow([k, TIERS.get(k, ""), n])
+            print(f"  tier {TIERS.get(k, '-'):>2}  {n:>7,}  {k}")
+    print(f"wrote {s}")
+
+    sk = REPO / "reports" / "orderlife-nothing-to-do.csv"
+    with sk.open("w", encoding="utf-8", newline="") as fh:
+        w = csv.DictWriter(fh, fieldnames=["orderlife_qid", "label",
+                                           "wikidata_qid", "geni_id", "already_on"])
+        w.writeheader()
+        w.writerows(skipped)
+    print(f"wrote {sk} ({len(skipped):,} rows) - these already exist, "
+          f"creating them would duplicate")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
