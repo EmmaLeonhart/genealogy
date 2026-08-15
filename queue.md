@@ -605,6 +605,36 @@ the repo, stale ones corrected or closed, and the difference between *stale* and
 *incomplete* stated for each. Four items were found stale rather than incomplete
 last time; that is the expected shape.
 
+## 20 · The saved Wikidata-isolate paths — cron `ae339bb3` at 17:03, and queued
+
+**Emma, 2026-08-15:** *"Set up a cron job that will, at 5:00 p.m., commit and push
+all of the saved files in the wiki data isolate HTML things. Then it's gonna do an
+analysis on them because basically of the 200 that you opened, a sizable amount of
+them have real workable paths that I'm saving in there."*
+
+Queued as well as croned, because a cron only fires while the session is idle and
+two have already vanished or starved.
+
+**The two populations came out opposite, and that is the finding so far.**
+
+- **Song dynasty — dismissed, by her.** *"Of the 200 I found none of the
+  individuals there were connected to the World Tree."* Her hypothesis was exact:
+  **100% of the 17,259 carry `P497` CBDB ID**, 99.3% a Shanghai Library ID, and
+  their Geni IDs sit in two adjacent blocks (`6000000074…`/`6000000075…`,
+  17,229 of 17,259). *"The biographical database is great but it makes Geni
+  profiles for people who have no business and are not connected to the World
+  Tree."* `reports/song-dynasty-isolates.csv`.
+- **Academics — the opposite.** *"These ones were extremely reliable and I saved a
+  bunch of paths into a directory."* 5,913 university teachers, Geni IDs scattered
+  from `6000000017…` to `6000000176…` with no bulk signature, VIAF on 97% rather
+  than one database's identifier. `reports/academic-isolates.csv`.
+
+**The steps, in her order:** commit and push the saved pages **first**, then
+extract paths with `path-from-html`, then report **what fraction of the 200
+actually worked** — plainly, and low if it is low. Then re-run
+`scripts/find-export-entry-points.py` against the re-merged tree, since 31 edge
+exports landed on 2026-08-15 and the clusters will have moved.
+
 ## Always last — pinned to the tail
 
 A. **Ensure the three crons are running** — work-loop `3 * * * *`, auto-flush
