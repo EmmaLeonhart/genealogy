@@ -1,0 +1,1003 @@
+[
+ {
+  "id": "add_geni_id:Q140568870",
+  "type": "add_geni_id",
+  "priority": true,
+  "subject": {
+   "qid": "Q140568870",
+   "geni_id": "6000000087535357291"
+  },
+  "requires": [],
+  "statement": {
+   "property": "P2600",
+   "value": "6000000087535357291",
+   "references": []
+  }
+ },
+ {
+  "id": "create_individual:6000000005264351012",
+  "type": "create_individual",
+  "priority": true,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000005264351012"
+  },
+  "requires": [],
+  "anchor": {
+   "qid": "Q110302785",
+   "geni_id": "4968422205310029120",
+   "property": "P40"
+  },
+  "labels": {
+   "en": "Anna Fartegnsdatter Seim",
+   "mul": "Anna Fartegnsdatter Seim"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000005264351012"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000005264351012",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581072",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000005264351012"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P40",
+    "value": "Q110302785",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000005264351012"
+     },
+     {
+      "property": "P2600",
+      "value": "4968422205310029120"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000002376915521",
+  "type": "create_individual",
+  "priority": true,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000002376915521"
+  },
+  "requires": [
+   "create_individual:6000000005264351012"
+  ],
+  "anchor": {
+   "qid": null,
+   "geni_id": "6000000005264351012",
+   "property": "P25"
+  },
+  "labels": {
+   "en": "Laurits Knutson Hogganvik",
+   "mul": "Laurits Knutson Hogganvik"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000002376915521"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000002376915521",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000002376915521"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P25",
+    "value": null,
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000002376915521"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000005264351012"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000005607268671",
+  "type": "create_individual",
+  "priority": true,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000005607268671"
+  },
+  "requires": [
+   "create_individual:6000000002376915521"
+  ],
+  "anchor": {
+   "qid": null,
+   "geni_id": "6000000002376915521",
+   "property": "P22"
+  },
+  "labels": {
+   "en": "Magdalena Lauritsd Hogganvik",
+   "mul": "Magdalena Lauritsd Hogganvik"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000005607268671"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000005607268671",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581072",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000005607268671"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": null,
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000005607268671"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000002376915521"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000005607123730",
+  "type": "create_individual",
+  "priority": true,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000005607123730"
+  },
+  "requires": [
+   "create_individual:6000000005607268671"
+  ],
+  "anchor": {
+   "qid": null,
+   "geni_id": "6000000005607268671",
+   "property": "P25"
+  },
+  "labels": {
+   "en": "Lars Jonsen Raunes",
+   "mul": "Lars Jonsen Raunes"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000005607123730"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000005607123730",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000005607123730"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P25",
+    "value": null,
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000005607123730"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000005607268671"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000001770188397",
+  "type": "create_individual",
+  "priority": true,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000001770188397"
+  },
+  "requires": [
+   "create_individual:6000000005607123730"
+  ],
+  "anchor": {
+   "qid": null,
+   "geni_id": "6000000005607123730",
+   "property": "P22"
+  },
+  "labels": {
+   "en": "Nils Larsen Landsnes",
+   "mul": "Nils Larsen Landsnes"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000001770188397"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000001770188397",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000001770188397"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": null,
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000001770188397"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000005607123730"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000005609304829",
+  "type": "create_individual",
+  "priority": true,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000005609304829"
+  },
+  "requires": [
+   "create_individual:6000000001770188397"
+  ],
+  "anchor": {
+   "qid": null,
+   "geni_id": "6000000001770188397",
+   "property": "P22"
+  },
+  "labels": {
+   "en": "Lars Nilsen Raunes",
+   "mul": "Lars Nilsen Raunes"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000005609304829"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000005609304829",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000005609304829"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": null,
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000005609304829"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000001770188397"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000012587690898",
+  "type": "create_individual",
+  "priority": true,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000012587690898"
+  },
+  "requires": [
+   "create_individual:6000000005609304829"
+  ],
+  "anchor": {
+   "qid": null,
+   "geni_id": "6000000005609304829",
+   "property": "P22"
+  },
+  "labels": {
+   "en": "Osmund Larsen Raunes",
+   "mul": "Osmund Larsen Raunes"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000012587690898"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000012587690898",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000012587690898"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": null,
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000012587690898"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000005609304829"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000069466362236",
+  "type": "create_individual",
+  "priority": true,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000069466362236"
+  },
+  "requires": [
+   "create_individual:6000000012587690898"
+  ],
+  "anchor": {
+   "qid": null,
+   "geni_id": "6000000012587690898",
+   "property": "P22"
+  },
+  "labels": {
+   "en": "Lars Osmundsen Foss-Eikeland d. y.",
+   "mul": "Lars Osmundsen Foss-Eikeland d. y."
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000069466362236"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000069466362236",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000069466362236"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": null,
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000069466362236"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000012587690898"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000002744891329",
+  "type": "create_individual",
+  "priority": true,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000002744891329"
+  },
+  "requires": [
+   "create_individual:6000000069466362236"
+  ],
+  "anchor": {
+   "qid": null,
+   "geni_id": "6000000069466362236",
+   "property": "P22"
+  },
+  "labels": {
+   "en": "Osmund Larsson Nese",
+   "mul": "Osmund Larsson Nese"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000002744891329"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000002744891329",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000002744891329"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": null,
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000002744891329"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000069466362236"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000005609547544",
+  "type": "create_individual",
+  "priority": true,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000005609547544"
+  },
+  "requires": [
+   "create_individual:6000000002744891329"
+  ],
+  "anchor": {
+   "qid": null,
+   "geni_id": "6000000002744891329",
+   "property": "P22"
+  },
+  "labels": {
+   "en": "Anne Berta Osmundsdatter Nese",
+   "mul": "Anne Berta Osmundsdatter Nese"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000005609547544"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000005609547544",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581072",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000005609547544"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": null,
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000005609547544"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000002744891329"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000005609547535",
+  "type": "create_individual",
+  "priority": true,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000005609547535"
+  },
+  "requires": [
+   "create_individual:6000000005609547544"
+  ],
+  "anchor": {
+   "qid": null,
+   "geni_id": "6000000005609547544",
+   "property": "P40"
+  },
+  "labels": {
+   "en": "Rasmus Wibye Andersson Lea",
+   "mul": "Rasmus Wibye Andersson Lea"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000005609547535"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000005609547535",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000005609547535"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P40",
+    "value": null,
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000005609547535"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000005609547544"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000020344732085",
+  "type": "create_individual",
+  "priority": true,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000020344732085"
+  },
+  "requires": [
+   "create_individual:6000000005609547535"
+  ],
+  "anchor": {
+   "qid": null,
+   "geni_id": "6000000005609547535",
+   "property": "P22"
+  },
+  "labels": {
+   "en": "Rakel Rasmusdottir Lea",
+   "mul": "Rakel Rasmusdottir Lea"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000020344732085"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000020344732085",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581072",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000020344732085"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": null,
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000020344732085"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000005609547535"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000032068841409",
+  "type": "create_individual",
+  "priority": true,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000032068841409"
+  },
+  "requires": [
+   "create_individual:6000000020344732085"
+  ],
+  "anchor": {
+   "qid": null,
+   "geni_id": "6000000020344732085",
+   "property": "P25"
+  },
+  "labels": {
+   "en": "Reinhert Borsheim",
+   "mul": "Reinhert Borsheim"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000032068841409"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000032068841409",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000032068841409"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P25",
+    "value": null,
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000032068841409"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000020344732085"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000177921459078",
+  "type": "create_individual",
+  "priority": true,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000177921459078"
+  },
+  "requires": [
+   "create_individual:6000000032068841409"
+  ],
+  "anchor": {
+   "qid": null,
+   "geni_id": "6000000032068841409",
+   "property": "P22"
+  },
+  "labels": {
+   "en": "Randolph Paulus Borsheim",
+   "mul": "Randolph Paulus Borsheim"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000177921459078"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000177921459078",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000177921459078"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": null,
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000177921459078"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000032068841409"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000177921459056",
+  "type": "create_individual",
+  "priority": true,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000177921459056"
+  },
+  "requires": [
+   "create_individual:6000000177921459078"
+  ],
+  "anchor": {
+   "qid": null,
+   "geni_id": "6000000177921459078",
+   "property": "P22"
+  },
+  "labels": {
+   "en": "Richard Wade Borsheim",
+   "mul": "Richard Wade Borsheim"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000177921459056"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000177921459056",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000177921459056"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": null,
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000177921459056"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000177921459078"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "add_statement:Q140568870:P22",
+  "type": "add_statement",
+  "priority": true,
+  "subject": {
+   "qid": "Q140568870",
+   "geni_id": "6000000087535357291"
+  },
+  "requires": [
+   "add_geni_id:Q140568870",
+   "create_individual:6000000177921459056"
+  ],
+  "statement": {
+   "property": "P22",
+   "value": null,
+   "value_from": "create_individual:6000000177921459056",
+   "references": [
+    {
+     "property": "P2600",
+     "value": "6000000087535357291"
+    },
+    {
+     "property": "P2600",
+     "value": "6000000177921459056"
+    }
+   ]
+  }
+ }
+]

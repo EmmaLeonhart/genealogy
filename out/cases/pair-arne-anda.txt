@@ -1,0 +1,895 @@
+﻿GENI 6000000038740385839   WIKIDATA Q16164886
+
+==========================================================================
+GENI — the whole INDI record, verbatim
+==========================================================================
+0 @I6000000038740385839@ INDI
+1 NAME Arne Olson /Anda/
+2 GIVN Arne Olson
+2 SURN Anda
+2 _MARNM Anda
+1 SEX M
+1 BIRT
+2 DATE 25 APR 1894
+2 PLAC Anda
+2 ADDR
+3 STAE Rogaland
+3 CTRY Norway
+1 DEAT
+2 DATE 15 NOV 1984
+1 OCCU Missionær i Kina
+1 NOTE {geni:about_me} * Klepp Gards- og ættesoga gjenom 400 år, 1519-1900, Anda, side 36, nr. 34d, https://www.nb.no/items/URN:NBN:no-nb_digibok_2016090948122?page=41
+1 FAMC @F6000000034054654706@
+1 FAMS @F6000000043188048333@
+1 RFN geni:6000000038740385839
+1 SUBM @S6000000002973566792@
+1 CHAN
+2 DATE 13 APR 2025
+3 TIME 10:01:05
+
+==========================================================================
+GENI — @F6000000034054654706@, verbatim
+==========================================================================
+0 @F6000000034054654706@ FAM
+1 MARR
+2 DATE 11 NOV 1880
+1 HUSB @I6000000034054654701@
+1 WIFE @I6000000034054746464@
+1 CHIL @I6000000038739592699@
+1 CHIL @I6000000038740234936@
+1 CHIL @I6000000038739979194@
+1 CHIL @I6000000038740385839@
+1 CHIL @I6000000038740360876@
+
+==========================================================================
+GENI — @F6000000043188048333@, verbatim
+==========================================================================
+0 @F6000000043188048333@ FAM
+1 HUSB @I6000000038740385839@
+
+==========================================================================
+WIKIDATA — Q16164886, every field
+==========================================================================
+{
+  "aliases": {},
+  "claims": {
+    "P106": [
+      {
+        "id": "Q16164886$E92C79F5-600E-4022-B39C-7E0941D3B014",
+        "mainsnak": {
+          "datatype": "wikibase-item",
+          "datavalue": {
+            "type": "wikibase-entityid",
+            "value": {
+              "entity-type": "item",
+              "id": "Q219477",
+              "numeric-id": 219477
+            }
+          },
+          "hash": "d8a3d0f7e9b16a9021dee8bff9c98d11777c4507",
+          "property": "P106",
+          "snaktype": "value"
+        },
+        "rank": "normal",
+        "references": [
+          {
+            "hash": "2410efd4e57c5d8a24b2af7501bfb4a6aaf7acb2",
+            "snaks": {
+              "P1932": [
+                {
+                  "datatype": "string",
+                  "datavalue": {
+                    "type": "string",
+                    "value": "Misjonær"
+                  },
+                  "hash": "a9c1c441c24c910458aaaa60ac3f5b95b8d5db1a",
+                  "property": "P1932",
+                  "snaktype": "value"
+                }
+              ],
+              "P813": [
+                {
+                  "datatype": "time",
+                  "datavalue": {
+                    "type": "time",
+                    "value": {
+                      "after": 0,
+                      "before": 0,
+                      "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+                      "precision": 11,
+                      "time": "+2026-03-01T00:00:00Z",
+                      "timezone": 0
+                    }
+                  },
+                  "hash": "77a323f5c6c8d68935c078ab75448ec7f40e2103",
+                  "property": "P813",
+                  "snaktype": "value"
+                }
+              ],
+              "P8269": [
+                {
+                  "datatype": "external-id",
+                  "datavalue": {
+                    "type": "string",
+                    "value": "17622"
+                  },
+                  "hash": "e06fb7c7899ca0b675bf759c6296e5722eff573c",
+                  "property": "P8269",
+                  "snaktype": "value"
+                }
+              ]
+            },
+            "snaks-order": [
+              "P8269",
+              "P1932",
+              "P813"
+            ]
+          }
+        ],
+        "type": "statement"
+      }
+    ],
+    "P19": [
+      {
+        "id": "Q16164886$457fbf65-463b-f5ee-27a9-4bea84c74489",
+        "mainsnak": {
+          "datatype": "wikibase-item",
+          "datavalue": {
+            "type": "wikibase-entityid",
+            "value": {
+              "entity-type": "item",
+              "id": "Q500223",
+              "numeric-id": 500223
+            }
+          },
+          "hash": "e909d5e9d186094ef19d514aee5956cac233466a",
+          "property": "P19",
+          "snaktype": "value"
+        },
+        "rank": "normal",
+        "references": [
+          {
+            "hash": "5fbc1877a97188e8ccfcea96bc4a7bc29137f62f",
+            "snaks": {
+              "P1810": [
+                {
+                  "datatype": "string",
+                  "datavalue": {
+                    "type": "string",
+                    "value": "Arne Olsen Anda"
+                  },
+                  "hash": "2264969707ee3ee1b35d285a1de7da5ffe21ed42",
+                  "property": "P1810",
+                  "snaktype": "value"
+                }
+              ],
+              "P248": [
+                {
+                  "datatype": "wikibase-item",
+                  "datavalue": {
+                    "type": "wikibase-entityid",
+                    "value": {
+                      "entity-type": "item",
+                      "id": "Q11969385",
+                      "numeric-id": 11969385
+                    }
+                  },
+                  "hash": "8dfd4d5c76fa894fe0228bb8e139dc5386491a2a",
+                  "property": "P248",
+                  "snaktype": "value"
+                }
+              ],
+              "P854": [
+                {
+                  "datatype": "url",
+                  "datavalue": {
+                    "type": "string",
+                    "value": "https://www.digitalarkivet.no/census/person/pf01036629000931"
+                  },
+                  "hash": "bb4ba21080f1bb7605e1726d88fe5d46cc3269f9",
+                  "property": "P854",
+                  "snaktype": "value"
+                }
+              ]
+            },
+            "snaks-order": [
+              "P248",
+              "P1810",
+              "P854"
+            ]
+          }
+        ],
+        "type": "statement"
+      }
+    ],
+    "P21": [
+      {
+        "id": "Q16164886$8DF0EE88-953B-4C92-A8F4-1B981293E077",
+        "mainsnak": {
+          "datatype": "wikibase-item",
+          "datavalue": {
+            "type": "wikibase-entityid",
+            "value": {
+              "entity-type": "item",
+              "id": "Q6581097",
+              "numeric-id": 6581097
+            }
+          },
+          "hash": "85ad4b1c7348f7a5aac521135040d74e91fb5939",
+          "property": "P21",
+          "snaktype": "value"
+        },
+        "rank": "normal",
+        "type": "statement"
+      }
+    ],
+    "P26": [
+      {
+        "id": "Q16164886$62ca99d5-4f57-4041-6fd5-a6f14163500d",
+        "mainsnak": {
+          "datatype": "wikibase-item",
+          "datavalue": {
+            "type": "wikibase-entityid",
+            "value": {
+              "entity-type": "item",
+              "id": "Q7291689",
+              "numeric-id": 7291689
+            }
+          },
+          "hash": "6932ef999d47de50ccea4f6900a89ea4480711a1",
+          "property": "P26",
+          "snaktype": "value"
+        },
+        "rank": "normal",
+        "type": "statement"
+      }
+    ],
+    "P2600": [
+      {
+        "id": "Q16164886$2abd9e0e-40d8-2792-e7f9-6113312304b0",
+        "mainsnak": {
+          "datatype": "external-id",
+          "datavalue": {
+            "type": "string",
+            "value": "6000000038740385839"
+          },
+          "hash": "9cf0e7295d0cc5a3f5661525cd55e91a0e074cfc",
+          "property": "P2600",
+          "snaktype": "value"
+        },
+        "rank": "normal",
+        "type": "statement"
+      }
+    ],
+    "P2632": [
+      {
+        "id": "Q16164886$5A45DF61-97F6-43AE-BF0F-ADCC92795330",
+        "mainsnak": {
+          "datatype": "wikibase-item",
+          "datavalue": {
+            "type": "wikibase-entityid",
+            "value": {
+              "entity-type": "item",
+              "id": "Q140458948",
+              "numeric-id": 140458948
+            }
+          },
+          "hash": "e66459a50220ab39e923f023a90c73574bfc56e7",
+          "property": "P2632",
+          "snaktype": "value"
+        },
+        "qualifiers": {
+          "P1534": [
+            {
+              "datatype": "wikibase-item",
+              "datavalue": {
+                "type": "wikibase-entityid",
+                "value": {
+                  "entity-type": "item",
+                  "id": "Q700924",
+                  "numeric-id": 700924
+                }
+              },
+              "hash": "8fd2771497db3a88b86c1d1ed1f99fe00c869cad",
+              "property": "P1534",
+              "snaktype": "value"
+            }
+          ]
+        },
+        "qualifiers-order": [
+          "P1534"
+        ],
+        "rank": "normal",
+        "references": [
+          {
+            "hash": "536ae562d55ece6a67c6060f161920933d89598d",
+            "snaks": {
+              "P1932": [
+                {
+                  "datatype": "string",
+                  "datavalue": {
+                    "type": "string",
+                    "value": "Tsitsihar, Mandsjuria"
+                  },
+                  "hash": "dc2bf2b1e5f71defb6ac5e0d3dd0b0d9510cd317",
+                  "property": "P1932",
+                  "snaktype": "value"
+                }
+              ],
+              "P248": [
+                {
+                  "datatype": "wikibase-item",
+                  "datavalue": {
+                    "type": "wikibase-entityid",
+                    "value": {
+                      "entity-type": "item",
+                      "id": "Q96105649",
+                      "numeric-id": 96105649
+                    }
+                  },
+                  "hash": "b34a22f9b7ce734b257e16bedb7d55eadfbaf0f4",
+                  "property": "P248",
+                  "snaktype": "value"
+                }
+              ],
+              "P813": [
+                {
+                  "datatype": "time",
+                  "datavalue": {
+                    "type": "time",
+                    "value": {
+                      "after": 0,
+                      "before": 0,
+                      "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+                      "precision": 11,
+                      "time": "+2026-03-01T00:00:00Z",
+                      "timezone": 0
+                    }
+                  },
+                  "hash": "77a323f5c6c8d68935c078ab75448ec7f40e2103",
+                  "property": "P813",
+                  "snaktype": "value"
+                }
+              ],
+              "P8269": [
+                {
+                  "datatype": "external-id",
+                  "datavalue": {
+                    "type": "string",
+                    "value": "17622"
+                  },
+                  "hash": "e06fb7c7899ca0b675bf759c6296e5722eff573c",
+                  "property": "P8269",
+                  "snaktype": "value"
+                }
+              ]
+            },
+            "snaks-order": [
+              "P248",
+              "P1932",
+              "P813",
+              "P8269"
+            ]
+          }
+        ],
+        "type": "statement"
+      }
+    ],
+    "P2671": [
+      {
+        "id": "Q16164886$930865E1-C8C8-4B1E-A0E3-54A114482A40",
+        "mainsnak": {
+          "datatype": "external-id",
+          "datavalue": {
+            "type": "string",
+            "value": "/g/122dyh07"
+          },
+          "hash": "d6c47670acfa3a64f4125f421cc4fc6be4b63567",
+          "property": "P2671",
+          "snaktype": "value"
+        },
+        "rank": "normal",
+        "type": "statement"
+      }
+    ],
+    "P27": [
+      {
+        "id": "Q16164886$2A9C3CDF-F2A9-481A-BFB7-E87E63E13AE8",
+        "mainsnak": {
+          "datatype": "wikibase-item",
+          "datavalue": {
+            "type": "wikibase-entityid",
+            "value": {
+              "entity-type": "item",
+              "id": "Q20",
+              "numeric-id": 20
+            }
+          },
+          "hash": "5f085cca282017b843e96f04256fcc8ecacd48dd",
+          "property": "P27",
+          "snaktype": "value"
+        },
+        "rank": "normal",
+        "references": [
+          {
+            "hash": "6bc3443c7f071d3ebfc85de0e6ffe757bd167d6b",
+            "snaks": {
+              "P813": [
+                {
+                  "datatype": "time",
+                  "datavalue": {
+                    "type": "time",
+                    "value": {
+                      "after": 0,
+                      "before": 0,
+                      "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+                      "precision": 11,
+                      "time": "+2026-03-01T00:00:00Z",
+                      "timezone": 0
+                    }
+                  },
+                  "hash": "77a323f5c6c8d68935c078ab75448ec7f40e2103",
+                  "property": "P813",
+                  "snaktype": "value"
+                }
+              ],
+              "P8269": [
+                {
+                  "datatype": "external-id",
+                  "datavalue": {
+                    "type": "string",
+                    "value": "17622"
+                  },
+                  "hash": "e06fb7c7899ca0b675bf759c6296e5722eff573c",
+                  "property": "P8269",
+                  "snaktype": "value"
+                }
+              ]
+            },
+            "snaks-order": [
+              "P813",
+              "P8269"
+            ]
+          }
+        ],
+        "type": "statement"
+      }
+    ],
+    "P2868": [
+      {
+        "id": "Q16164886$e2435ffb-4e0e-ae55-e675-50c45b18f991",
+        "mainsnak": {
+          "datatype": "wikibase-item",
+          "datavalue": {
+            "type": "wikibase-entityid",
+            "value": {
+              "entity-type": "item",
+              "id": "Q217105",
+              "numeric-id": 217105
+            }
+          },
+          "hash": "0f67af61721ca1113df03873b19340d92b3f3556",
+          "property": "P2868",
+          "snaktype": "value"
+        },
+        "rank": "normal",
+        "type": "statement"
+      }
+    ],
+    "P31": [
+      {
+        "id": "Q16164886$A12989E5-E928-47AC-92E4-47C551549331",
+        "mainsnak": {
+          "datatype": "wikibase-item",
+          "datavalue": {
+            "type": "wikibase-entityid",
+            "value": {
+              "entity-type": "item",
+              "id": "Q5",
+              "numeric-id": 5
+            }
+          },
+          "hash": "ad7d38a03cdd40cdc373de0dc4e7b7fcbccb31d9",
+          "property": "P31",
+          "snaktype": "value"
+        },
+        "rank": "normal",
+        "type": "statement"
+      }
+    ],
+    "P4574": [
+      {
+        "id": "Q16164886$5a6981c0-48b0-7b0e-c737-ef379ee4f066",
+        "mainsnak": {
+          "datatype": "external-id",
+          "datavalue": {
+            "type": "string",
+            "value": "pf01036629000931"
+          },
+          "hash": "e8c21c4056911bf557d1d930f0d05222ea0733b7",
+          "property": "P4574",
+          "snaktype": "value"
+        },
+        "rank": "normal",
+        "type": "statement"
+      }
+    ],
+    "P569": [
+      {
+        "id": "Q16164886$C28ADA25-AD26-4B7A-BFB3-A6F29236072C",
+        "mainsnak": {
+          "datatype": "time",
+          "datavalue": {
+            "type": "time",
+            "value": {
+              "after": 0,
+              "before": 0,
+              "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+              "precision": 11,
+              "time": "+1894-04-25T00:00:00Z",
+              "timezone": 0
+            }
+          },
+          "hash": "80bc28a3dc5978ff8074e6e51eccd02f62b63f84",
+          "property": "P569",
+          "snaktype": "value"
+        },
+        "rank": "normal",
+        "references": [
+          {
+            "hash": "5fbc1877a97188e8ccfcea96bc4a7bc29137f62f",
+            "snaks": {
+              "P1810": [
+                {
+                  "datatype": "string",
+                  "datavalue": {
+                    "type": "string",
+                    "value": "Arne Olsen Anda"
+                  },
+                  "hash": "2264969707ee3ee1b35d285a1de7da5ffe21ed42",
+                  "property": "P1810",
+                  "snaktype": "value"
+                }
+              ],
+              "P248": [
+                {
+                  "datatype": "wikibase-item",
+                  "datavalue": {
+                    "type": "wikibase-entityid",
+                    "value": {
+                      "entity-type": "item",
+                      "id": "Q11969385",
+                      "numeric-id": 11969385
+                    }
+                  },
+                  "hash": "8dfd4d5c76fa894fe0228bb8e139dc5386491a2a",
+                  "property": "P248",
+                  "snaktype": "value"
+                }
+              ],
+              "P854": [
+                {
+                  "datatype": "url",
+                  "datavalue": {
+                    "type": "string",
+                    "value": "https://www.digitalarkivet.no/census/person/pf01036629000931"
+                  },
+                  "hash": "bb4ba21080f1bb7605e1726d88fe5d46cc3269f9",
+                  "property": "P854",
+                  "snaktype": "value"
+                }
+              ]
+            },
+            "snaks-order": [
+              "P248",
+              "P1810",
+              "P854"
+            ]
+          }
+        ],
+        "type": "statement"
+      }
+    ],
+    "P570": [
+      {
+        "id": "Q16164886$8E05E1F0-EE35-42CD-8575-F52F18184CB9",
+        "mainsnak": {
+          "datatype": "time",
+          "datavalue": {
+            "type": "time",
+            "value": {
+              "after": 0,
+              "before": 0,
+              "calendarmodel": "http://www.wikidata.org/entity/Q1985727",
+              "precision": 11,
+              "time": "+1984-11-15T00:00:00Z",
+              "timezone": 0
+            }
+          },
+          "hash": "c02ccf881a2785f1a02d57a3ea4d9bf9cc33f51d",
+          "property": "P570",
+          "snaktype": "value"
+        },
+        "rank": "normal",
+        "references": [
+          {
+            "hash": "3c8d687f5173128acbe62280aef77b0056b4e5f3",
+            "snaks": {
+              "P1810": [
+                {
+                  "datatype": "string",
+                  "datavalue": {
+                    "type": "string",
+                    "value": "Arne Anda"
+                  },
+                  "hash": "330543e5cfe55a05b1f8e3f91030885c482b66d1",
+                  "property": "P1810",
+                  "snaktype": "value"
+                }
+              ],
+              "P248": [
+                {
+                  "datatype": "wikibase-item",
+                  "datavalue": {
+                    "type": "wikibase-entityid",
+                    "value": {
+                      "entity-type": "item",
+                      "id": "Q95999752",
+                      "numeric-id": 95999752
+                    }
+                  },
+                  "hash": "1139a6a2c626a6b981caae807d8dcee6cf758e16",
+                  "property": "P248",
+                  "snaktype": "value"
+                }
+              ],
+              "P854": [
+                {
+                  "datatype": "url",
+                  "datavalue": {
+                    "type": "string",
+                    "value": "https://www.digitalarkivet.no/view/387/pc00000003903730"
+                  },
+                  "hash": "78567cc48055f3bbfc3dcb40aa9c94eb8707085a",
+                  "property": "P854",
+                  "snaktype": "value"
+                }
+              ]
+            },
+            "snaks-order": [
+              "P248",
+              "P854",
+              "P1810"
+            ]
+          }
+        ],
+        "type": "statement"
+      }
+    ],
+    "P734": [
+      {
+        "id": "Q16164886$7f2608db-40cc-62b7-21f5-2c49153d8043",
+        "mainsnak": {
+          "datatype": "wikibase-item",
+          "datavalue": {
+            "type": "wikibase-entityid",
+            "value": {
+              "entity-type": "item",
+              "id": "Q16479635",
+              "numeric-id": 16479635
+            }
+          },
+          "hash": "575fdceadb83717a6817091cc1392768c3654749",
+          "property": "P734",
+          "snaktype": "value"
+        },
+        "rank": "normal",
+        "type": "statement"
+      }
+    ],
+    "P735": [
+      {
+        "id": "Q16164886$F50F80F8-402F-48C3-8EBF-BCDFA5D1439A",
+        "mainsnak": {
+          "datatype": "wikibase-item",
+          "datavalue": {
+            "type": "wikibase-entityid",
+            "value": {
+              "entity-type": "item",
+              "id": "Q645757",
+              "numeric-id": 645757
+            }
+          },
+          "hash": "74a8572ed6a008774bf133adeb5c825b199f386e",
+          "property": "P735",
+          "snaktype": "value"
+        },
+        "rank": "normal",
+        "type": "statement"
+      }
+    ],
+    "P8269": [
+      {
+        "id": "Q16164886$16de8d3f-48fe-ba11-2f5a-50dcdbc005aa",
+        "mainsnak": {
+          "datatype": "external-id",
+          "datavalue": {
+            "type": "string",
+            "value": "17622"
+          },
+          "hash": "e06fb7c7899ca0b675bf759c6296e5722eff573c",
+          "property": "P8269",
+          "snaktype": "value"
+        },
+        "rank": "normal",
+        "type": "statement"
+      }
+    ]
+  },
+  "descriptions": {
+    "ar": {
+      "language": "ar",
+      "value": "مبشّر نرويجي"
+    },
+    "as": {
+      "language": "as",
+      "value": "নৰৱেজীয় মিচনেৰী"
+    },
+    "ast": {
+      "language": "ast",
+      "value": "misioneru noruegu (1894–1984)"
+    },
+    "bn": {
+      "language": "bn",
+      "value": "নরওয়েজীয় মিশনারি"
+    },
+    "ca": {
+      "language": "ca",
+      "value": "missioner noruec"
+    },
+    "de": {
+      "language": "de",
+      "value": "norwegischer Missionar"
+    },
+    "en": {
+      "language": "en",
+      "value": "Norwegian missionary"
+    },
+    "es": {
+      "language": "es",
+      "value": "misionero noruego"
+    },
+    "eu": {
+      "language": "eu",
+      "value": "misiolari norvegiarra"
+    },
+    "fr": {
+      "language": "fr",
+      "value": "missionnaire norvégien"
+    },
+    "ga": {
+      "language": "ga",
+      "value": "misinéir Ioruach"
+    },
+    "gl": {
+      "language": "gl",
+      "value": "misioneiro noruegués"
+    },
+    "it": {
+      "language": "it",
+      "value": "missionario norvegese"
+    },
+    "nb": {
+      "language": "nb",
+      "value": "norsk misjonær i Kina"
+    },
+    "nl": {
+      "language": "nl",
+      "value": "Noors missionaris (1894-1984)"
+    },
+    "pt": {
+      "language": "pt",
+      "value": "missionário norueguês"
+    }
+  },
+  "id": "Q16164886",
+  "labels": {
+    "ast": {
+      "language": "ast",
+      "value": "Arne Anda"
+    },
+    "ca": {
+      "language": "ca",
+      "value": "Arne Anda"
+    },
+    "da": {
+      "language": "da",
+      "value": "Arne Anda"
+    },
+    "de": {
+      "language": "de",
+      "value": "Arne Anda"
+    },
+    "en": {
+      "language": "en",
+      "value": "Arne Anda"
+    },
+    "es": {
+      "language": "es",
+      "value": "Arne Anda"
+    },
+    "fo": {
+      "language": "fo",
+      "value": "Arne Anda"
+    },
+    "fr": {
+      "language": "fr",
+      "value": "Arne Anda"
+    },
+    "ga": {
+      "language": "ga",
+      "value": "Arne Anda"
+    },
+    "is": {
+      "language": "is",
+      "value": "Arne Anda"
+    },
+    "it": {
+      "language": "it",
+      "value": "Arne Anda"
+    },
+    "nb": {
+      "language": "nb",
+      "value": "Arne Anda"
+    },
+    "nl": {
+      "language": "nl",
+      "value": "Arne Anda"
+    },
+    "nn": {
+      "language": "nn",
+      "value": "Arne Anda"
+    },
+    "se": {
+      "language": "se",
+      "value": "Arne Anda"
+    },
+    "sje": {
+      "language": "sje",
+      "value": "Arne Anda"
+    },
+    "sl": {
+      "language": "sl",
+      "value": "Arne Anda"
+    },
+    "sma": {
+      "language": "sma",
+      "value": "Arne Anda"
+    },
+    "smj": {
+      "language": "smj",
+      "value": "Arne Anda"
+    },
+    "sq": {
+      "language": "sq",
+      "value": "Arne Anda"
+    },
+    "sv": {
+      "language": "sv",
+      "value": "Arne Anda"
+    }
+  },
+  "lastrevid": 2526739380,
+  "modified": "2026-08-03T12:29:39Z",
+  "ns": 0,
+  "pageid": 17788349,
+  "sitelinks": {
+    "nowiki": {
+      "badges": [],
+      "site": "nowiki",
+      "title": "Arne Anda"
+    }
+  },
+  "title": "Q16164886",
+  "type": "item"
+}

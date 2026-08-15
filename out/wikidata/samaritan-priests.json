@@ -1,0 +1,4899 @@
+[
+ {
+  "id": "create_individual:6000000178918814849",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918814849"
+  },
+  "requires": [],
+  "anchor": null,
+  "labels": {
+   "en": "Uzzi ben Bakhi",
+   "mul": "Uzzi ben Bakhi"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918814849"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918814849",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918814849"
+     }
+    ]
+   }
+  ],
+  "links": []
+ },
+ {
+  "id": "create_individual:6000000178796053821",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178796053821"
+  },
+  "requires": [
+   "create_individual:6000000178918814849"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Shashai II ben Uzzi",
+   "mul": "Shashai II ben Uzzi"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178796053821"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178796053821",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178796053821"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918814849",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178796053821"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918814849"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178915984982",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178915984982"
+  },
+  "requires": [
+   "create_individual:6000000178796053821"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Bakhi II ben Sashai",
+   "mul": "Bakhi II ben Sashai"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178915984982"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178915984982",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178915984982"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178796053821",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178915984982"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178796053821"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918692828",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918692828"
+  },
+  "requires": [
+   "create_individual:6000000178915984982"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Shembet ben Bakhi",
+   "mul": "Shembet ben Bakhi"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918692828"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918692828",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918692828"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178915984982",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918692828"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178915984982"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918781824",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918781824"
+  },
+  "requires": [
+   "create_individual:6000000178918692828"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Shalom I ben Shembet",
+   "mul": "Shalom I ben Shembet"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918781824"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918781824",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918781824"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918692828",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918781824"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918692828"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178913855067",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178913855067"
+  },
+  "requires": [
+   "create_individual:6000000178918781824"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Hezekiah I ben Shalom",
+   "mul": "Hezekiah I ben Shalom"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178913855067"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178913855067",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178913855067"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918781824",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178913855067"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918781824"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178917300876",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178917300876"
+  },
+  "requires": [
+   "create_individual:6000000178913855067"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Jonathan I",
+   "mul": "Jonathan I"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917300876"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178917300876",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917300876"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178913855067",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917300876"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178913855067"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918426863",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918426863"
+  },
+  "requires": [
+   "create_individual:6000000178917300876"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Jair I ben Jonathan",
+   "mul": "Jair I ben Jonathan"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918426863"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918426863",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918426863"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178917300876",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918426863"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178917300876"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918812830",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918812830"
+  },
+  "requires": [
+   "create_individual:6000000178918426863"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Daliah I",
+   "mul": "Daliah I"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918812830"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918812830",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918812830"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918426863",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918812830"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918426863"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178917445863",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178917445863"
+  },
+  "requires": [
+   "create_individual:6000000178918812830"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Jair II ben Daliah",
+   "mul": "Jair II ben Daliah"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917445863"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178917445863",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917445863"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918812830",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917445863"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918812830"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918714857",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918714857"
+  },
+  "requires": [
+   "create_individual:6000000178917445863"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Jonathan II ben Jair",
+   "mul": "Jonathan II ben Jair"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918714857"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918714857",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918714857"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178917445863",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918714857"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178917445863"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918851821",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918851821"
+  },
+  "requires": [
+   "create_individual:6000000178918714857"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Ishmael ben Jonathan",
+   "mul": "Ishmael ben Jonathan"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918851821"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918851821",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918851821"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918714857",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918851821"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918714857"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918838823",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918838823"
+  },
+  "requires": [
+   "create_individual:6000000178918851821"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Tabia I",
+   "mul": "Tabia I"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918838823"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918838823",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918838823"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918851821",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918838823"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918851821"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918631830",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918631830"
+  },
+  "requires": [
+   "create_individual:6000000178918838823"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Zedekiah I",
+   "mul": "Zedekiah I"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918631830"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918631830",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918631830"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918838823",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918631830"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918838823"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918366838",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918366838"
+  },
+  "requires": [
+   "create_individual:6000000178918631830"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Ahid",
+   "mul": "Ahid"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918366838"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918366838",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918366838"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918631830",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918366838"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918631830"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178917518898",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178917518898"
+  },
+  "requires": [
+   "create_individual:6000000178918366838"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Jair III",
+   "mul": "Jair III"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917518898"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178917518898",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917518898"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918366838",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917518898"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918366838"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178916666920",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178916666920"
+  },
+  "requires": [
+   "create_individual:6000000178917518898"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Jehozadak",
+   "mul": "Jehozadak"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178916666920"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178916666920",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178916666920"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178917518898",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178916666920"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178917518898"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178917117901",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178917117901"
+  },
+  "requires": [
+   "create_individual:6000000178916666920"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Zadok",
+   "mul": "Zadok"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917117901"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178917117901",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917117901"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178916666920",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917117901"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178916666920"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918625831",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918625831"
+  },
+  "requires": [
+   "create_individual:6000000178917117901"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Amram I.",
+   "mul": "Amram I."
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918625831"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918625831",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918625831"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178917117901",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918625831"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178917117901"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178914966945",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178914966945"
+  },
+  "requires": [
+   "create_individual:6000000178918625831"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Hilkiah or Hezekiah II",
+   "mul": "Hilkiah or Hezekiah II"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178914966945"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178914966945",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178914966945"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918625831",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178914966945"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918625831"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918544825",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918544825"
+  },
+  "requires": [
+   "create_individual:6000000178914966945"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Amram II",
+   "mul": "Amram II"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918544825"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918544825",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918544825"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178914966945",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918544825"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178914966945"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178914668980",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178914668980"
+  },
+  "requires": [
+   "create_individual:6000000178918544825"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Akkub",
+   "mul": "Akkub"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178914668980"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178914668980",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178914668980"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918544825",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178914668980"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918544825"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178916918921",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178916918921"
+  },
+  "requires": [
+   "create_individual:6000000178914668980"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Akkubiah I",
+   "mul": "Akkubiah I"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178916918921"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178916918921",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178916918921"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178914668980",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178916918921"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178914668980"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918718823",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918718823"
+  },
+  "requires": [
+   "create_individual:6000000178916918921"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Hillel I",
+   "mul": "Hillel I"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918718823"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918718823",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918718823"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178916918921",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918718823"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178916918921"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178916928879",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178916928879"
+  },
+  "requires": [
+   "create_individual:6000000178918718823"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Seriah",
+   "mul": "Seriah"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178916928879"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178916928879",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178916928879"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918718823",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178916928879"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918718823"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918385827",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918385827"
+  },
+  "requires": [
+   "create_individual:6000000178916928879"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Levi I",
+   "mul": "Levi I"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918385827"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918385827",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918385827"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178916928879",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918385827"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178916928879"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178917879865",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178917879865"
+  },
+  "requires": [
+   "create_individual:6000000178918385827"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Netaniel I",
+   "mul": "Netaniel I"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917879865"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178917879865",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917879865"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918385827",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917879865"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918385827"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918444842",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918444842"
+  },
+  "requires": [
+   "create_individual:6000000178917879865"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Azariah",
+   "mul": "Azariah"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918444842"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918444842",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918444842"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178917879865",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918444842"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178917879865"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918285871",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918285871"
+  },
+  "requires": [
+   "create_individual:6000000178918444842"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Aabed-El",
+   "mul": "Aabed-El"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918285871"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918285871",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918285871"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918444842",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918285871"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918444842"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918655833",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918655833"
+  },
+  "requires": [
+   "create_individual:6000000178918285871"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Hezekiah III",
+   "mul": "Hezekiah III"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918655833"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918655833",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918655833"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918285871",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918655833"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918285871"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918599826",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918599826"
+  },
+  "requires": [
+   "create_individual:6000000178918655833"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Hananiah",
+   "mul": "Hananiah"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918599826"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918599826",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918599826"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918655833",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918599826"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918655833"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918623825",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918623825"
+  },
+  "requires": [
+   "create_individual:6000000178918599826"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Amram III",
+   "mul": "Amram III"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918623825"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918623825",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918623825"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918599826",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918623825"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918599826"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178917712846",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178917712846"
+  },
+  "requires": [
+   "create_individual:6000000178918623825"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Hillel II",
+   "mul": "Hillel II"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917712846"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178917712846",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917712846"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918623825",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917712846"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918623825"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918560829",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918560829"
+  },
+  "requires": [
+   "create_individual:6000000178917712846"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Hezekiah IV",
+   "mul": "Hezekiah IV"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918560829"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918560829",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918560829"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178917712846",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918560829"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178917712846"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918443849",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918443849"
+  },
+  "requires": [
+   "create_individual:6000000178918560829"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Daliah II",
+   "mul": "Daliah II"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918443849"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918443849",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918443849"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918560829",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918443849"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918560829"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918571830",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918571830"
+  },
+  "requires": [
+   "create_individual:6000000178918443849"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Akkub II",
+   "mul": "Akkub II"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918571830"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918571830",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918571830"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918443849",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918571830"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918443849"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918529825",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918529825"
+  },
+  "requires": [
+   "create_individual:6000000178918571830"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Akkubiah II",
+   "mul": "Akkubiah II"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918529825"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918529825",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918529825"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918571830",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918529825"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918571830"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178917883839",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178917883839"
+  },
+  "requires": [
+   "create_individual:6000000178918529825"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Levi II",
+   "mul": "Levi II"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917883839"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178917883839",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917883839"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918529825",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917883839"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918529825"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918011846",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918011846"
+  },
+  "requires": [
+   "create_individual:6000000178917883839"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Eleazar II",
+   "mul": "Eleazar II"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918011846"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918011846",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918011846"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178917883839",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918011846"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178917883839"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918614821",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918614821"
+  },
+  "requires": [
+   "create_individual:6000000178918011846"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Manasseh",
+   "mul": "Manasseh"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918614821"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918614821",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918614821"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918011846",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918614821"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918011846"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918541826",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918541826"
+  },
+  "requires": [
+   "create_individual:6000000178918614821"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Jair IV",
+   "mul": "Jair IV"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918541826"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918541826",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918541826"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918614821",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918541826"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918614821"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918574821",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918574821"
+  },
+  "requires": [
+   "create_individual:6000000178918541826"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Netaniel II",
+   "mul": "Netaniel II"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918574821"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918574821",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918574821"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918541826",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918574821"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918541826"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178915542947",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178915542947"
+  },
+  "requires": [
+   "create_individual:6000000178918574821"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Joachim",
+   "mul": "Joachim"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178915542947"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178915542947",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178915542947"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918574821",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178915542947"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918574821"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918520823",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918520823"
+  },
+  "requires": [
+   "create_individual:6000000178915542947"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Jonathan III",
+   "mul": "Jonathan III"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918520823"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918520823",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918520823"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178915542947",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918520823"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178915542947"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918494826",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918494826"
+  },
+  "requires": [
+   "create_individual:6000000178918520823"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Elishama",
+   "mul": "Elishama"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918494826"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918494826",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918494826"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918520823",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918494826"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918520823"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178917225876",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178917225876"
+  },
+  "requires": [
+   "create_individual:6000000178918494826"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Shemaiah",
+   "mul": "Shemaiah"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917225876"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178917225876",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917225876"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918494826",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917225876"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918494826"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918246839",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918246839"
+  },
+  "requires": [
+   "create_individual:6000000178917225876"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Tabia II",
+   "mul": "Tabia II"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918246839"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918246839",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918246839"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178917225876",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918246839"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178917225876"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918015868",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918015868"
+  },
+  "requires": [
+   "create_individual:6000000178918246839"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Amram IV",
+   "mul": "Amram IV"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918015868"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918015868",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918015868"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918246839",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918015868"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918246839"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178917722864",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178917722864"
+  },
+  "requires": [
+   "create_individual:6000000178918015868"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Akabon I",
+   "mul": "Akabon I"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917722864"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178917722864",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917722864"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918015868",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917722864"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918015868"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918207842",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918207842"
+  },
+  "requires": [
+   "create_individual:6000000178917722864"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Phinehas II",
+   "mul": "Phinehas II"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918207842"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918207842",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918207842"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178917722864",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918207842"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178917722864"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178917758844",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178917758844"
+  },
+  "requires": [
+   "create_individual:6000000178918207842"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Levi III",
+   "mul": "Levi III"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917758844"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178917758844",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917758844"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918207842",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917758844"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918207842"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178917662852",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178917662852"
+  },
+  "requires": [
+   "create_individual:6000000178917758844"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Eleazar III",
+   "mul": "Eleazar III"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917662852"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178917662852",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917662852"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178917758844",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917662852"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178917758844"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178917369858",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178917369858"
+  },
+  "requires": [
+   "create_individual:6000000178917662852"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Baba I",
+   "mul": "Baba I"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917369858"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178917369858",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917369858"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178917662852",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917369858"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178917662852"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918374828",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918374828"
+  },
+  "requires": [
+   "create_individual:6000000178917369858"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Eleazar IV",
+   "mul": "Eleazar IV"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918374828"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918374828",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918374828"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178917369858",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918374828"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178917369858"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178916547925",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178916547925"
+  },
+  "requires": [
+   "create_individual:6000000178918374828"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Akabon II",
+   "mul": "Akabon II"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178916547925"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178916547925",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178916547925"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918374828",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178916547925"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918374828"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918192840",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918192840"
+  },
+  "requires": [
+   "create_individual:6000000178916547925"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Netaniel III",
+   "mul": "Netaniel III"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918192840"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918192840",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918192840"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178916547925",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918192840"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178916547925"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918027844",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918027844"
+  },
+  "requires": [
+   "create_individual:6000000178918192840"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Baba Rabba",
+   "mul": "Baba Rabba"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918027844"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918027844",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918027844"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918192840",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918027844"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918192840"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178913798001",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178913798001"
+  },
+  "requires": [
+   "create_individual:6000000178918027844"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Akabon III",
+   "mul": "Akabon III"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178913798001"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178913798001",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178913798001"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918027844",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178913798001"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918027844"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178917506855",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178917506855"
+  },
+  "requires": [
+   "create_individual:6000000178913798001"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Netaniel IV",
+   "mul": "Netaniel IV"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917506855"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178917506855",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917506855"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178913798001",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917506855"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178913798001"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178916715907",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178916715907"
+  },
+  "requires": [
+   "create_individual:6000000178917506855"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Akabon IV",
+   "mul": "Akabon IV"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178916715907"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178916715907",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178916715907"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178917506855",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178916715907"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178917506855"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178916677903",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178916677903"
+  },
+  "requires": [
+   "create_individual:6000000178916715907"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Eleazar V",
+   "mul": "Eleazar V"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178916677903"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178916677903",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178916677903"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178916715907",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178916677903"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178916715907"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178917661869",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178917661869"
+  },
+  "requires": [
+   "create_individual:6000000178916677903"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Akabon V",
+   "mul": "Akabon V"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917661869"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178917661869",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917661869"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178916677903",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917661869"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178916677903"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178917172871",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178917172871"
+  },
+  "requires": [
+   "create_individual:6000000178917661869"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Eleazar VI",
+   "mul": "Eleazar VI"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917172871"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178917172871",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917172871"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178917661869",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917172871"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178917661869"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918444821",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918444821"
+  },
+  "requires": [
+   "create_individual:6000000178917172871"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Akabon VI",
+   "mul": "Akabon VI"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918444821"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918444821",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918444821"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178917172871",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918444821"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178917172871"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918134827",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918134827"
+  },
+  "requires": [
+   "create_individual:6000000178918444821"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Eleazar VII",
+   "mul": "Eleazar VII"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918134827"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918134827",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918134827"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918444821",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918134827"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918444821"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178917376830",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178917376830"
+  },
+  "requires": [
+   "create_individual:6000000178918134827"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Netaniel V",
+   "mul": "Netaniel V"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917376830"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178917376830",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917376830"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918134827",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917376830"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918134827"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918428821",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918428821"
+  },
+  "requires": [
+   "create_individual:6000000178917376830"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Eleazar VIII",
+   "mul": "Eleazar VIII"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918428821"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918428821",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918428821"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178917376830",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918428821"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178917376830"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178917733851",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178917733851"
+  },
+  "requires": [
+   "create_individual:6000000178918428821"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Netaniel VI",
+   "mul": "Netaniel VI"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917733851"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178917733851",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917733851"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918428821",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917733851"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918428821"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918375822",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918375822"
+  },
+  "requires": [
+   "create_individual:6000000178917733851"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Eleazar IX",
+   "mul": "Eleazar IX"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918375822"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918375822",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918375822"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178917733851",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918375822"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178917733851"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178916898908",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178916898908"
+  },
+  "requires": [
+   "create_individual:6000000178918375822"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Akabon VII",
+   "mul": "Akabon VII"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178916898908"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178916898908",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178916898908"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918375822",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178916898908"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918375822"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918023825",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918023825"
+  },
+  "requires": [
+   "create_individual:6000000178916898908"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Eleazar X",
+   "mul": "Eleazar X"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918023825"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918023825",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918023825"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178916898908",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918023825"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178916898908"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178917217910",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178917217910"
+  },
+  "requires": [
+   "create_individual:6000000178918023825"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Akabon VIII",
+   "mul": "Akabon VIII"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917217910"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178917217910",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917217910"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918023825",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917217910"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918023825"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178917576851",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178917576851"
+  },
+  "requires": [
+   "create_individual:6000000178917217910"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Eleazar XI",
+   "mul": "Eleazar XI"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917576851"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178917576851",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917576851"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178917217910",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917576851"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178917217910"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178915186023",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178915186023"
+  },
+  "requires": [
+   "create_individual:6000000178917576851"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Akabon IX",
+   "mul": "Akabon IX"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178915186023"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178915186023",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178915186023"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178917576851",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178915186023"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178917576851"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178917492859",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178917492859"
+  },
+  "requires": [
+   "create_individual:6000000178915186023"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Eleazar XII",
+   "mul": "Eleazar XII"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917492859"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178917492859",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917492859"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178915186023",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178917492859"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178915186023"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178914959996",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178914959996"
+  },
+  "requires": [
+   "create_individual:6000000178917492859"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Simeon",
+   "mul": "Simeon"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178914959996"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178914959996",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178914959996"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178917492859",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178914959996"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178917492859"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918212822",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918212822"
+  },
+  "requires": [
+   "create_individual:6000000178914959996"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Levi IV",
+   "mul": "Levi IV"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918212822"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918212822",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918212822"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178914959996",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918212822"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178914959996"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "create_individual:6000000178918316822",
+  "type": "create_individual",
+  "priority": false,
+  "subject": {
+   "qid": null,
+   "geni_id": "6000000178918316822"
+  },
+  "requires": [
+   "create_individual:6000000178918212822"
+  ],
+  "anchor": null,
+  "labels": {
+   "en": "Phinehas III",
+   "mul": "Phinehas III"
+  },
+  "descriptions": {
+   "en": "Samaritan High Priest"
+  },
+  "statements": [
+   {
+    "property": "P31",
+    "value": "Q5",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918316822"
+     }
+    ]
+   },
+   {
+    "property": "P2600",
+    "value": "6000000178918316822",
+    "references": []
+   },
+   {
+    "property": "P21",
+    "value": "Q6581097",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918316822"
+     }
+    ]
+   }
+  ],
+  "links": [
+   {
+    "property": "P22",
+    "value": "@create_individual:6000000178918212822",
+    "references": [
+     {
+      "property": "P2600",
+      "value": "6000000178918316822"
+     },
+     {
+      "property": "P2600",
+      "value": "6000000178918212822"
+     }
+    ]
+   }
+  ]
+ }
+]
