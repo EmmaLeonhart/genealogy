@@ -40,6 +40,7 @@ pages so far kept.
 from __future__ import annotations
 
 import json
+import re
 import sys
 import time
 import urllib.error
@@ -67,6 +68,16 @@ CLASSES = {
 PAGE = 100_000
 DELAY = 2.0
 
+#: A real item QID and nothing else. The first run crashed sorting `Q40394-S1`,
+#: a **statement node** — `wdt:P31` can land on one, and its URI ends up looking
+#: like an entity. Everything fetched was lost because the crash came after the
+#: last query and before the write. Hence both halves of the fix: filter here,
+#: and cache each class to disk as it completes so a later failure never costs
+#: the queries again.
+ITEM = re.compile(r"^Q\d+$")
+
+CACHE = REPO / "out" / "name-item-qids"
+
 
 def page(qid: str, offset: int, limit: int) -> list[str]:
     query = (f"SELECT ?item WHERE {{ ?item wdt:P31 wd:{qid} }} "
@@ -75,13 +86,19 @@ def page(qid: str, offset: int, limit: int) -> list[str]:
     request = urllib.request.Request(url, headers={"User-Agent": AGENT})
     with urllib.request.urlopen(request, timeout=600) as handle:
         data = json.load(handle)
-    return [b["item"]["value"].rsplit("/", 1)[-1]
-            for b in data["results"]["bindings"]]
+    return [q for q in (b["item"]["value"].rsplit("/", 1)[-1]
+                       for b in data["results"]["bindings"]) if ITEM.match(q)]
 
 
 def main() -> int:
+    CACHE.mkdir(parents=True, exist_ok=True)
     found: dict[str, set[str]] = {}
     for qid, label in CLASSES.items():
+        cached = CACHE / f"{qid}.txt"
+        if cached.exists():
+            found[qid] = set(cached.read_text(encoding="utf-8").split())
+            print(f"  {label:<20} {len(found[qid]):>9,} from cache", flush=True)
+            continue
         got: set[str] = set()
         offset = 0
         while True:
@@ -98,6 +115,7 @@ def main() -> int:
                 break
             offset += PAGE
             time.sleep(DELAY)
+        cached.write_text("\n".join(sorted(got)), encoding="utf-8")
         found[qid] = got
         time.sleep(DELAY)
 
