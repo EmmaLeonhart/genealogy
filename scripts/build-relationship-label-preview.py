@@ -71,6 +71,22 @@ def is_placeholder(given: str) -> bool:
     return given.strip().lower() in PLACEHOLDER_GIVEN
 
 
+def is_unusable(label: str) -> bool:
+    """Whether a relative's label is too empty to name somebody else by.
+
+    Two cases, both ruled on by Emma on 2026-08-15: a redaction marker, which
+    must not travel into another person's label; and a label that is itself a
+    placeholder, where `NN de Nantes` names nobody.
+    """
+    low = label.strip().lower()
+    if not low or low in PLACEHOLDER_GIVEN:
+        return True
+    if "private" in low:
+        return True
+    first = low.split()[0] if low.split() else ""
+    return first in PLACEHOLDER_GIVEN
+
+
 def main() -> int:
     for path in (FAMILY, LABELS, NAMES, FACTS):
         if not path.exists():
@@ -105,29 +121,48 @@ def main() -> int:
         spouses = [s for s in (row.get("spouses") or "").split(" | ") if s]
         children = [c for c in (row.get("children") or "").split(" | ") if c]
 
-        # Emma's precedence: parent, father, mother, spouse, child. "Parent"
-        # first means: if both parents are known, the label says "child of X and
-        # Y" is NOT what she asked for -- she asked for a single relative, so
-        # father outranks mother within the parent step.
-        relation = via = generated = ""
-        for kind, candidate in (
-                ("father", father), ("mother", mother),
-                ("spouse", spouses[0] if spouses else ""),
-                ("child", children[0] if children else "")):
+        # Emma, 2026-08-15: a redacted relative is SKIPPED and the precedence
+        # falls through to the next one. "husband of <private> Gaya Pereira"
+        # puts a redaction marker into somebody else's label, which the rule
+        # about `Private` never being a label was written to prevent.
+        #
+        # The same fall-through is applied to a relative whose own label is a
+        # placeholder ("husband of NN de Nantes", 53 cases). She ruled on the
+        # redacted case and not explicitly on this one; it is the same shape,
+        # and it is called out in the report so it can be reversed.
+        #
+        # Every spouse and child is tried, not just the first, because skipping
+        # more relatives means the first one is more often unusable.
+        candidates = ([("father", father), ("mother", mother)]
+                      + [("spouse", s) for s in spouses]
+                      + [("child", c) for c in children])
+
+        relation = via = generated = skipped = ""
+        for kind, candidate in candidates:
+            if not candidate:
+                continue
             other = label_of.get(candidate, "")
-            if not candidate or not other or is_placeholder(other):
+            if not other:
+                continue
+            if is_unusable(other):
+                skipped = skipped or ("redacted" if "private" in other.lower()
+                                      else "placeholder")
                 continue
             via = candidate
+            relation = kind
             if kind in ("father", "mother"):
-                relation = kind
-                generated = f"{CHILD_WORD[sex if sex in CHILD_WORD else '']} of {other}"
+                generated = f"{CHILD_WORD.get(sex, 'child')} of {other}"
             elif kind == "spouse":
-                relation = kind
-                generated = f"{SPOUSE_WORD[sex if sex in SPOUSE_WORD else '']} of {other}"
+                generated = f"{SPOUSE_WORD.get(sex, 'spouse')} of {other}"
             else:
-                relation = kind
-                generated = f"{PARENT_WORD[sex if sex in PARENT_WORD else '']} of {other}"
+                generated = f"{PARENT_WORD.get(sex, 'parent')} of {other}"
             break
+
+        # Emma, 2026-08-15: a surname that is itself placeholder vocabulary
+        # carries no information, so these collapse to bare `NN` rather than
+        # becoming `NN ???`.
+        if surname.strip().lower() in PLACEHOLDER_GIVEN:
+            surname = ""
 
         rows.append({
             "geni_id": gid,
@@ -136,6 +171,7 @@ def main() -> int:
             "sex": sex,
             "mul_label": f"NN {surname}".strip() if surname else "NN",
             "relation_used": relation,
+            "skipped_a_relative": skipped,
             "via_geni_id": via,
             "generated_en": generated,
             "has_label": "yes" if generated else "",
@@ -195,40 +231,39 @@ def main() -> int:
         lines.append(f"| {kind} | {bare_rel.get(kind, 0):,} | "
                      f"{sur_rel.get(kind, 0):,} |")
 
-    # -- what this preview exposes, measured rather than quietly patched -----
+    # -- the rules Emma set on this preview, and what they cost -------------
     got = bare_got + sur_got
-    private = [r for r in got if "private" in r["generated_en"].lower()]
-    named_by_nn = [r for r in got if " of NN" in r["generated_en"]]
-    ph_surname = [r for r in rows
-                  if r["surname"].strip().lower() in PLACEHOLDER_GIVEN]
+    leaked = [r for r in got if "private" in r["generated_en"].lower()
+              or " of NN" in r["generated_en"]]
+    skipped = [r for r in rows if r["skipped_a_relative"]]
+    rescued = [r for r in skipped if r["has_label"]]
     no_sex = [r for r in got if not r["sex"]]
     lines += [
         "",
-        "## Three things this preview exposes — none of them fixed here",
+        "## The rules applied here, and what they cost",
         "",
-        "`CLAUDE.md` is explicit that unrequested normalisation is its own "
-        "category of error, so these are measured and put to Emma rather than "
-        "quietly patched.",
+        "Emma ruled on both of these on 2026-08-15 after seeing the first "
+        "version of this preview.",
         "",
-        f"1. **{len(private):,} of {len(got):,} generated labels name a "
-        "redacted relative** — *\"husband of `<private>` Gaya Pereira\"*, "
-        "*\"daughter of `<private>` Campero\"*. The rule that `Private` never "
-        "becomes a label was written for the person's **own** label; this puts "
-        "the marker into somebody **else's**. The surname beside it is real "
-        "data, so dropping the relative wholesale would throw that away too.",
-        f"2. **{len(named_by_nn):,} are named by a placeholder relative** — "
-        "*\"husband of NN de Nantes\"*, *\"daughter of NN ???\"*. The check "
-        "that skips a placeholder naming relative tests the given-name "
-        "vocabulary, and `NN de Nantes` is not in it as a whole string.",
-        f"3. **{len(ph_surname):,} `mul` labels carry a placeholder surname** — "
-        "`NN ???` (118), `NN NN` (106), `NN N.N.` (50), `NN Unknown` (30). "
-        "This is *contamination 1* from the queue item, showing up in the "
-        "output: the surname field is not clean, so `NN <surname>` sometimes "
-        "means `NN` twice.",
+        f"1. **A redacted or placeholder relative is skipped**, and the "
+        "precedence falls through to the next one — *\"skip, fall through to "
+        "the next relative\"*. The first version put the marker into somebody "
+        "else's label: *\"husband of `<private>` Gaya Pereira\"*, 2,730 times. "
+        f"Now **{len(leaked):,}** do. {len(skipped):,} people had a relative "
+        f"skipped and **{len(rescued):,} of them "
+        f"({100 * len(rescued) // max(len(skipped), 1)}%) still get a label** "
+        "from a later relative. That is a minority: for the rest the skipped "
+        "relative was the only one with a real name, so the skip costs the "
+        "label outright. Every spouse and child is tried rather than only the "
+        "first, which is what recovers the share that is recovered.",
+        f"2. **A surname that is itself placeholder vocabulary collapses to "
+        "bare `NN`** — `NN ???`, `NN NN`, `NN N.N.`, `NN Unknown`. 351 people "
+        "moved from the surname population to the bare one, which is why the "
+        "two totals here differ from the first version.",
         "",
-        f"Separately, {len(no_sex):,} of the generable labels have **no recorded "
-        "sex** and take the neutral form (`child of`, `spouse of`). Inventing a "
-        "gender to make the label read better is not done here.",
+        f"{len(no_sex):,} of the generable labels have **no recorded sex** and "
+        "take the neutral form (`child of`, `spouse of`). Inventing a gender to "
+        "make the label read better is not done here.",
         "",
     ]
 

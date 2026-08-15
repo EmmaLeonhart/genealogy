@@ -102,17 +102,13 @@ Emma's model for these, 2026-08-15: the name item is an **instance of patronymic
 
 ## What the numbers say
 
-**`both` is mostly genuine ambiguity, and that was worth checking rather than assuming.** Of the 7,838 tokens seen in both slots, only **952 (12%) put at least 95% of their bearers in one slot.** The intuition that `Maria` — 5,476 given against 8 surname — is typical is wrong: it is typical of the *common* tokens and not of the population, because the population is dominated by rare ones. 1,018 of these tokens have two bearers or fewer, where one use in each slot is a 50/50 split by arithmetic and says nothing.
+**A token used both ways gets both name items.** Emma, 2026-08-15, when this report first tried to adjudicate between them: *"If something is a surname and a given name, then it gets a surname and a given name object… They're two completely different things with completely different objects."* So the 7,838 `both` tokens are not a problem to be resolved. `Chen` is a family name **and** a given name; two items, and each person links to whichever one their record puts them in. There is no dominance ratio, no bearer floor and no per-person adjudication — an earlier draft of this section built all three and none of it was wanted.
 
-**Restrict to tokens with more than 50 bearers and it flips**: 644 of 1,407 (45%) are lopsided. Bearer-weighted across all of `both`, 188,970 of 450,288 bearers (41%) sit on a token that behaves overwhelmingly one way.
+**Particles and regnal numerals are the real exclusion, and they are structural rather than ambiguous.** 41 nobiliary and toponymic particles — `de`, `von`, `van`, `y`, `la`, `da`, `of` — carry 86,772 bearers and top the table only because they sit inside surname strings. They are `SPFX`, not names. Same for the 18 regnal numerals (`I`, `II`, `III`) in the given slot: ordinals on a title.
 
-**So the rule is a dominance ratio with a bearer floor**, not presence-in-both and not dominance alone. Below the floor there is no evidence either way, and a name item assigned on a 1-vs-1 split would be a guess wearing a statistic.
+**The patronymic is inside the given-name string, which is why it needs its own role.** `Olsen` is recorded as a *given* token for 742 people and a surname for 266; `Olsdatter` 691 against 213. Geni writes `Ole Olsen` into `GIVN`, so the patronymic lands where a middle name would — the position Emma's model assigns `P3831` → `Q110874` rather than `Q245025`.
 
-**The loudest `both` tokens are not names at all.** 41 distinct nobiliary and toponymic particles — `de`, `von`, `van`, `y`, `la`, `da`, `of` — carry 86,772 bearers between them and top the table purely because they sit inside surname strings. They are `SPFX` material and **must not become name items**. Same for the 18 regnal numerals (`I`, `II`, `III`) sitting in the given slot: they are ordinals on a title, not given names.
-
-**The patronymic is inside the given-name string, which is the whole reason it needs its own role.** `Olsen` is recorded as a *given* token for 742 people and a surname for 266; `Olsdatter` 691 against 213. Geni writes `Ole Olsen` into `GIVN`, so the patronymic lands where a middle name would — exactly the position Emma's model assigns `P3831` → `Q110874` rather than `Q245025`.
-
-**CJK behaves cleanly and needs no special case.** 陳 is 3,247 surname against 8 given; 曾 is 2,263 against 6. The clan names sort themselves by the same dominance rule as the Latin ones, which is what Emma meant by the classification being behavioural rather than geographic. The one thing to watch is the transliteration: `Chén` appears separately in Latin script with its own bearers, so the same clan name exists as two tokens and must not be counted as two families.
+**CJK needs no special case.** 陳 is 3,247 surname against 8 given; 曾 is 2,263 against 6. The one thing to watch is transliteration: `Chén` appears separately in Latin script with its own bearers, so one clan name exists as two tokens and must not be counted as two families.
 
 ## Most common tokens that behave as BOTH
 

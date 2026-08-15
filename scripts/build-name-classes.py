@@ -16,8 +16,9 @@ is classified by **which slot it occupies, and how often**.
 One row per distinct token, with the counts that decide it:
 
 - `as_given` / `as_surname` / `as_married` — how many `NAME` records put it in
-  `GIVN`, `SURN`, `_MARNM`. A token in both slots is the interesting case and is
-  reported as `both`, never forced to one.
+  `GIVN`, `SURN`, `_MARNM`. **A token in both slots gets both name items** —
+  Emma, 2026-08-15: *"They're two completely different things with completely
+  different objects."* Nothing here adjudicates between them.
 - `patronymic_marker` — the suffix or particle matched, empty if none. **The
   marker is evidence, not a verdict**: `-sen` is Danish patronymic morphology and
   is also an ordinary frozen surname, and nothing here can tell those apart. The
@@ -133,17 +134,6 @@ def patronymic_marker(token: str) -> str:
         if low.endswith(suffix) and len(low) > len(suffix) + 1:
             return "-" + suffix
     return ""
-
-
-def _dominance(row) -> float:
-    """The share of a token's slot uses that fall in its majority slot.
-
-    1.0 means every bearer uses it one way; 0.5 means it is evenly split. The
-    denominator is the two slot counts rather than `bearers`, because a person
-    counted in both slots would otherwise deflate their own token.
-    """
-    g, s = row["as_given"], row["as_surname"]
-    return max(g, s) / (g + s) if (g + s) else 0.0
 
 
 TOKEN_SPLIT = re.compile(r"[\s]+")
@@ -287,62 +277,44 @@ def main() -> int:
     ]
     lines += top("Most common patronymic-marked tokens", patro)
     lines += top("Most common tokens overall", real)
-    # -- what the numbers say, computed rather than asserted ----------------
+    # -- what the numbers say ----------------------------------------------
     both = [r for r in real if r["behaves"] == "both"]
-    lopsided = [r for r in both if _dominance(r) >= 0.95]
     particles = [r for r in real if r["token"] in PARTICLES]
     ordinals = [r for r in real if r["token"] in ORDINALS]
-    big = [r for r in both if r["bearers"] > 50]
-    big_lop = [r for r in big if _dominance(r) >= 0.95]
-    weighted = sum(r["bearers"] for r in both)
-    weighted_lop = sum(r["bearers"] for r in lopsided)
     lines += [
         "## What the numbers say",
         "",
-        f"**`both` is mostly genuine ambiguity, and that was worth checking "
-        f"rather than assuming.** Of the {len(both):,} tokens seen in both "
-        f"slots, only **{len(lopsided):,} ({100 * len(lopsided) // max(len(both), 1)}%) "
-        "put at least 95% of their bearers in one slot.** The intuition that "
-        "`Maria` — 5,476 given against 8 surname — is typical is wrong: it is "
-        "typical of the *common* tokens and not of the population, because the "
-        f"population is dominated by rare ones. {len([r for r in both if r['bearers'] <= 2]):,} "
-        "of these tokens have two bearers or fewer, where one use in each slot "
-        "is a 50/50 split by arithmetic and says nothing.",
+        f"**A token used both ways gets both name items.** Emma, 2026-08-15, "
+        "when this report first tried to adjudicate between them: *\"If "
+        "something is a surname and a given name, then it gets a surname and a "
+        "given name object… They're two completely different things with "
+        "completely different objects.\"* So the "
+        f"{len(both):,} `both` tokens are not a problem to be resolved. `Chen` "
+        "is a family name **and** a given name; two items, and each person "
+        "links to whichever one their record puts them in. There is no "
+        "dominance ratio, no bearer floor and no per-person adjudication — an "
+        "earlier draft of this section built all three and none of it was "
+        "wanted.",
         "",
-        f"**Restrict to tokens with more than 50 bearers and it flips**: "
-        f"{len(big_lop):,} of {len(big):,} ({100 * len(big_lop) // max(len(big), 1)}%) "
-        f"are lopsided. Bearer-weighted across all of `both`, {weighted_lop:,} "
-        f"of {weighted:,} bearers ({100 * weighted_lop // max(weighted, 1)}%) sit "
-        "on a token that behaves overwhelmingly one way.",
+        "**Particles and regnal numerals are the real exclusion, and they are "
+        f"structural rather than ambiguous.** {len(particles):,} nobiliary and "
+        "toponymic particles — `de`, `von`, `van`, `y`, `la`, `da`, `of` — "
+        f"carry {sum(r['bearers'] for r in particles):,} bearers and top the "
+        "table only because they sit inside surname strings. They are `SPFX`, "
+        f"not names. Same for the {len(ordinals):,} regnal numerals (`I`, "
+        "`II`, `III`) in the given slot: ordinals on a title.",
         "",
-        "**So the rule is a dominance ratio with a bearer floor**, not "
-        "presence-in-both and not dominance alone. Below the floor there is no "
-        "evidence either way, and a name item assigned on a 1-vs-1 split would "
-        "be a guess wearing a statistic.",
+        "**The patronymic is inside the given-name string, which is why it "
+        "needs its own role.** `Olsen` is recorded as a *given* token for 742 "
+        "people and a surname for 266; `Olsdatter` 691 against 213. Geni writes "
+        "`Ole Olsen` into `GIVN`, so the patronymic lands where a middle name "
+        "would — the position Emma's model assigns `P3831` → `Q110874` rather "
+        "than `Q245025`.",
         "",
-        f"**The loudest `both` tokens are not names at all.** "
-        f"{len(particles):,} distinct nobiliary and toponymic particles — `de`, "
-        "`von`, `van`, `y`, `la`, `da`, `of` — carry "
-        f"{sum(r['bearers'] for r in particles):,} bearers between them and top "
-        "the table purely because they sit inside surname strings. They are "
-        "`SPFX` material and **must not become name items**. Same for the "
-        f"{len(ordinals):,} regnal numerals (`I`, `II`, `III`) sitting in the "
-        "given slot: they are ordinals on a title, not given names.",
-        "",
-        "**The patronymic is inside the given-name string, which is the whole "
-        "reason it needs its own role.** `Olsen` is recorded as a *given* token "
-        "for 742 people and a surname for 266; `Olsdatter` 691 against 213. "
-        "Geni writes `Ole Olsen` into `GIVN`, so the patronymic lands where a "
-        "middle name would — exactly the position Emma's model assigns "
-        "`P3831` → `Q110874` rather than `Q245025`.",
-        "",
-        "**CJK behaves cleanly and needs no special case.** 陳 is 3,247 surname "
-        "against 8 given; 曾 is 2,263 against 6. The clan names sort themselves "
-        "by the same dominance rule as the Latin ones, which is what Emma meant "
-        "by the classification being behavioural rather than geographic. The "
-        "one thing to watch is the transliteration: `Chén` appears separately "
-        "in Latin script with its own bearers, so the same clan name exists as "
-        "two tokens and must not be counted as two families.",
+        "**CJK needs no special case.** 陳 is 3,247 surname against 8 given; 曾 "
+        "is 2,263 against 6. The one thing to watch is transliteration: `Chén` "
+        "appears separately in Latin script with its own bearers, so one clan "
+        "name exists as two tokens and must not be counted as two families.",
         "",
     ]
     lines += top("Most common tokens that behave as BOTH", both)

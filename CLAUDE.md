@@ -706,6 +706,25 @@ ran.
 | Q245025 | middle name | item — the `P3831` value for a middle given name |
 | Q110874 | patronymic | item — the `P3831` value for a patronymic, which is also what the name item is an *instance of* |
 
+**One name item per USAGE, not per string — "Jackson Jackson Jackson".** Emma's
+worked example, 2026-08-15: somebody whose given name is Jackson, whose surname
+is Jackson, and who carries a patronymic Jackson **because their father is Jack
+Jackson**. That is *"a different object for all three usages"* — a given-name
+item, a family-name item and a patronymic item, three separate Wikidata items
+that happen to share a spelling.
+
+So a token appearing in more than one slot is **not an ambiguity to resolve**.
+This was got wrong on 2026-08-15: the name census built a dominance ratio and a
+bearer floor to decide which slot a token "really" belonged to, and Emma: *"If
+something is a surname and a given name, then it gets a surname and a given name
+object… They're two completely different things with completely different
+objects. I feel like you jumped through a lot of hoops to try to introduce safety
+stuff here that I did not want."* All of it was deleted.
+
+**Where a real ambiguity does exist, ask.** Her rule in the same breath, on
+whether Jackson is ever a middle name: *"if there is an ambiguity like that, you
+ask me what the ambiguity is. You don't try to figure it out on your own."*
+
 **A patronymic is not a middle name, and that distinction is Emma's**
 (2026-08-15). Geni writes `Ole Olsen` into `GIVN`, so the patronymic lands in the
 position a middle name occupies — `Olsen` is a *given* token for 742 people and a

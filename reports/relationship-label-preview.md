@@ -8,28 +8,27 @@ Emma asked to see both populations before deciding whether the generated label r
 
 | | bare `NN` | `NN` + surname |
 | --- | ---: | ---: |
-| people | 21,978 | 4,303 |
-| a label can be generated | **15,174** (69%) | **1,573** (36%) |
-| no relative with a real name | 6,804 | 2,730 |
+| people | 22,347 | 3,934 |
+| a label can be generated | **13,140** (58%) | **1,211** (30%) |
+| no relative with a real name | 9,207 | 2,723 |
 
 ## Which relative ends up naming them
 
 | relation | bare `NN` | `NN` + surname |
 | --- | ---: | ---: |
-| father | 9,209 | 795 |
-| mother | 1,554 | 62 |
-| spouse | 3,973 | 672 |
-| child | 438 | 44 |
+| father | 7,815 | 768 |
+| mother | 1,156 | 61 |
+| spouse | 3,563 | 329 |
+| child | 606 | 53 |
 
-## Three things this preview exposes — none of them fixed here
+## The rules applied here, and what they cost
 
-`CLAUDE.md` is explicit that unrequested normalisation is its own category of error, so these are measured and put to Emma rather than quietly patched.
+Emma ruled on both of these on 2026-08-15 after seeing the first version of this preview.
 
-1. **2,730 of 16,747 generated labels name a redacted relative** — *"husband of `<private>` Gaya Pereira"*, *"daughter of `<private>` Campero"*. The rule that `Private` never becomes a label was written for the person's **own** label; this puts the marker into somebody **else's**. The surname beside it is real data, so dropping the relative wholesale would throw that away too.
-2. **53 are named by a placeholder relative** — *"husband of NN de Nantes"*, *"daughter of NN ???"*. The check that skips a placeholder naming relative tests the given-name vocabulary, and `NN de Nantes` is not in it as a whole string.
-3. **22,347 `mul` labels carry a placeholder surname** — `NN ???` (118), `NN NN` (106), `NN N.N.` (50), `NN Unknown` (30). This is *contamination 1* from the queue item, showing up in the output: the surname field is not clean, so `NN <surname>` sometimes means `NN` twice.
+1. **A redacted or placeholder relative is skipped**, and the precedence falls through to the next one — *"skip, fall through to the next relative"*. The first version put the marker into somebody else's label: *"husband of `<private>` Gaya Pereira"*, 2,730 times. Now **0** do. 7,654 people had a relative skipped and **1,052 of them (13%) still get a label** from a later relative. That is a minority: for the rest the skipped relative was the only one with a real name, so the skip costs the label outright. Every spouse and child is tried rather than only the first, which is what recovers the share that is recovered.
+2. **A surname that is itself placeholder vocabulary collapses to bare `NN`** — `NN ???`, `NN NN`, `NN N.N.`, `NN Unknown`. 351 people moved from the surname population to the bare one, which is why the two totals here differ from the first version.
 
-Separately, 132 of the generable labels have **no recorded sex** and take the neutral form (`child of`, `spouse of`). Inventing a gender to make the label read better is not done here.
+127 of the generable labels have **no recorded sex** and take the neutral form (`child of`, `spouse of`). Inventing a gender to make the label read better is not done here.
 
 
 ## Bare `NN` — what it would say
@@ -38,7 +37,7 @@ Separately, 132 of the generable labels have **no recorded sex** and take the ne
 | --- | --- | --- | --- |
 | NN | daughter of Angel Pereira Galdo | father | F |
 | NN | daughter of Pedro Celín Gaya Rojas | father | F |
-| NN | husband of <private> Gaya Pereira | spouse | M |
+| NN | father of Monica Poveda Gaya | child | M |
 | NN | son of Luis Fernando Gaya Pereira | father | M |
 | NN | son of René Carlos Gaya Pereyra | father | M |
 | NN | daughter of René Carlos Gaya Pereyra | father | F |
@@ -50,11 +49,11 @@ Separately, 132 of the generable labels have **no recorded sex** and take the ne
 | NN | daughter of Rene Carlos Pereira Aranibar | father | F |
 | NN | son of Osvaldo Krutsfeldt | father | M |
 | NN | husband of Aída Pereira Aranibar | spouse | M |
-| NN | daughter of <private> Campero | father | F |
+| NN | daughter of Aída Pereira Aranibar | mother | F |
 | NN | husband of Angela Pereira Aranibar | spouse | M |
-| NN | son of <private> Jimenez | father | M |
-| NN | son of <private> Jimenez | father | M |
-| NN | son of <private> Jimenez | father | M |
+| NN | son of Angela Pereira Aranibar | mother | M |
+| NN | son of Angela Pereira Aranibar | mother | M |
+| NN | son of Angela Pereira Aranibar | mother | M |
 | NN | daughter of Jose Alfonso Delgadillo Claure | father | F |
 
 ## `NN` + surname — what it would say
@@ -65,15 +64,12 @@ Separately, 132 of the generable labels have **no recorded sex** and take the ne
 | NN Burgundians | son of Willibald of the Burgundians | father | M |
 | NN de Roussillon | wife of Rostaing Arbald | spouse | F |
 | NN d'Orléans | wife of Aubry de Mâcon | spouse | F |
-| NN NN | wife of Centoth de Gasconha duc de Gascogne | spouse | F |
 | NN van de Betuwe | daughter of Ricfried (Dodo) in de Betuwe | father | F |
-| NN d'Amboise | husband of NN de Nantes | spouse | M |
 | NN Olofsdotter | daughter of Olof Larsson | father | F |
 | NN Sasani | daughter of Hormazd IV, King of Persia | father | F |
 | NN de Salcedo (Ayala) | daughter of Ortún Sáenz Garcia de Salcedo VI Señor de Ayala | father | F |
 | NN Nielsdatter (Hvide) | daughter of Niels Alexandersen Due | father | F |
 | NN Johansdotter | daughter of Johan Jonsson Sr | father | F |
-| NN Unknown | wife of Aleran I von Worms | spouse | F |
 | NN Norton | husband of Jeanne de Brienne | spouse | M |
 | NN Buonaparte | son of Carlo Maria Buonaparte | father | M |
 | NN Kalf | son of Anders Kalf | father | M |
@@ -81,3 +77,6 @@ Separately, 132 of the generable labels have **no recorded sex** and take the ne
 | NN Kjølstad | wife of Geirlaug Tordsson Haug | spouse | F |
 | NN Von Chiemgau | daughter of Adala von Bayern | mother | F |
 | NN Byre | wife of Kjetil Aslaksson Hodne | spouse | F |
+| NN Jerstad | wife of Ola Helle | spouse | F |
+| NN de Rumigny | daughter of Nicolas III de Florennes et Rumigny | father | F |
+| NN Roberts | daughter of Hannah Burnham | mother | F |
