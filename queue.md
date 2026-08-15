@@ -173,6 +173,35 @@ added immediately after: *"And I guess also Greek, the Greek alphabet and also
 Greek."* Devanagari, Arabic, Cyrillic, Greek: with Latin and CJK that is most of
 the world's living scripts.
 
+### The three directions, and the one hard problem
+
+**Emma, 2026-08-16, on what this actually is:** *"we have a large amount of
+Japanese individuals that essentially have Japanese native names and most of them
+have English language labels. Some of them don't… For the most part we're just
+translating stuff from CJK into English, and from English into CJK, and then also
+from English into the rest of these."*
+
+So three directions, not one:
+
+1. **CJK → English.** A person whose name is only in kanji and who has no English
+   label. Romanisation.
+2. **English → CJK.** The larger population: a Latin-script name needing `ja` and
+   `zh`. Katakana for anything not already Japanese.
+3. **English → `hi`/`ar`/`ru`/`el`.** Transliteration into the four remaining
+   scripts.
+
+**The hard part is not the scripts, it is knowing which culture a CJK name is.**
+Her words: *"We have some CJK stuff that's confusing and needs work to figure out
+what culture it is from."* Han characters do not say whether a name is Chinese,
+Japanese or Korean, and the romanisation differs completely — 陳 is *Chen*,
+*Chin* and *Jin* depending. `reports/name-classes.md` already measures the
+population: **30,876 distinct Han tokens, 1,552 Hangul, 92 kana**, and kana or
+Hangul are decisive while bare Han is not. `CLAUDE.md` records the same trap from
+the other side: `SURN 秦州成紀` is a *place*, not a surname.
+
+**Do not guess a culture from a name.** Where the script does not settle it, the
+tree does — a person's neighbours, and which exports they came from.
+
 ### How each is built
 
 - **`ja`** — katakana for anything not already Japanese. Ancient Near Eastern
