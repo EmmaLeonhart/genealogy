@@ -630,32 +630,6 @@ from which field the token sits in. That part agrees with her file.
 **Edge cases go to her**: *"Do an ask-user question on the edge cases so that I
 can figure them out."*
 
-## 13 · Does order.life's Japanese carry the labels? MEASURE IT FIRST
-
-**Emma, 2026-08-15, answering whether order.life feeds item 1: yes, but measure
-it properly first.**
-
-She had said order.life *"doesn't have a whole lot of them"*. Sampled over 40,000
-of its items, it has a lot:
-
-| lang | items |
-| --- | ---: |
-| en | 34,209 |
-| **ja** | **29,085** — 73% |
-| ko | 14,845 |
-| he | 11,376 |
-| zh | 11,209 |
-| es | 10,912 |
-| ru | 6,123 |
-
-**The measurement to make:** how many of *our* people have an order.life `ja`/`zh`
-label actually available — joined on the Geni ID, not on names. A copied label is
-free; a transliterated one is hand-built agentically. This could remove a large
-part of item 1's workload, and the size of that part is not yet known.
-
-**It does not reopen the rule.** The seven-language labels are still *made*, not
-copied, for everybody order.life does not cover.
-
 ## 14 · Show the raw order.life rows the parser used to mangle — DONE, kept for the finding
 
 **Answered 2026-08-15.** Emma at 04:18: *"I still don't really understand what the

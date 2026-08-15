@@ -6977,3 +6977,40 @@ disagreements are queue item 12.
 One thing the code already had right: her rule that a patronym may sit in `GIVN`
 or `SURN` and the field decides nothing. `classify-patronymics.py` takes
 candidates from both and decides from the father.
+
+
+## 2026-08-15 — item 13: order.life will not carry the CJK labels
+
+**Measured, and it contradicts the figure I used to raise the question.** I told
+Emma order.life carries `ja` on 73% of its items and that this could remove a
+large part of item 1. That was a sample of **order.life's own items**, not of the
+people we share with it, and it does not hold on the population that matters.
+
+Joined on the Geni profile ID:
+
+| | count |
+| --- | ---: |
+| people in our tree | 396,377 |
+| order.life rows carrying a Geni ID | 35,121 |
+| **people on both sides** | **28,624** |
+
+Labels available on those 28,624:
+
+| lang | available |
+| --- | ---: |
+| `en` | 28,405 |
+| `zh` | 4,335 |
+| `ru` | 2,615 |
+| `ja` | **2,477** |
+| `el` | 2,086 |
+| `ar` | 1,227 |
+| `mul` | 239 |
+| `hi` | 110 |
+
+**So order.life supplies `ja` for 2,477 people and `zh` for 4,335** — 8.7% and
+15.1% of the shared set, and **0.6% and 1.1% of the tree**. It does not
+meaningfully shrink item 1. The `en` coverage is real (28,405) but `en` was never
+the hard part.
+
+Emma was right the first time: *"it doesn't have a whole lot of them."* The 73%
+was mine and it was measured on the wrong population.
