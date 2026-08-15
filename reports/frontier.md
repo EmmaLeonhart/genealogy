@@ -14,10 +14,10 @@ parents recorded**. Those are the places Geni knows more than we do.
 
 |  | count | share |
 | --- | ---: | ---: |
-| people | 275437 | 100% |
-| with no parents recorded | 48163 | 17.5% |
+| people | 396163 | 100% |
+| with no parents recorded | 68347 | 17.3% |
 | with no relatives at all | 0 | 0.0% |
-| connected components | 2 |  |
+| connected components | 1 |  |
 
 ## Components
 
@@ -26,15 +26,16 @@ no walk outward from the main tree will ever reach it.
 
 | component | people | of which parentless | largest branch point |
 | --- | ---: | ---: | ---: |
-| 1 | 275404 | 48162 | Arnoul |
-| 2 | 33 | 1 | Tabia |
+| 1 | 396163 | 68347 | `6000000000183188387` |
 
 ## People recorded as their own ancestor
 
-**15** — impossible in life, and a sign the same person exists under two Geni profiles that were then linked as parent and child. Each one quietly distorts the generational measures below, and each is worth fixing on Geni.
+**19** — impossible in life, and a sign the same person exists under two Geni profiles that were then linked as parent and child. Each one quietly distorts the generational measures below, and each is worth fixing on Geni.
 
 | cycle |
 | --- |
+| Joseph Schweizer → Toret Schweizer → Joseph Schweizer |
+| Halldor Arnesson → Arne → Halldor Arnesson |
 | SANJNA / Saranyu → TVAŚTAR → Aditi → DAKSHA → PRACHETAS (10 sons) → PRACHINBARHI → HAVIRDHANA → Vijitashva → ARCHIS → VENA → SUNĪTA → YAMA Dharma → SANJNA / Saranyu |
 | Aditi → DAKSHA → PRACHETAS (10 sons) → PRACHINBARHI → HAVIRDHANA → Vijitashva → ARCHIS → VENA → SUNĪTA → YAMA Dharma → SURYA Dev aka SUN GOD → Aditi |
 | Shapur → Bahram → Shapur |
@@ -42,14 +43,16 @@ no walk outward from the main tree will ever reach it.
 | Lucius Junius → C. Junius Junius Brutus Brutus → C. Junius → Lucius Junius |
 | Mentuhotep . . → Senebhenaf . . → Yauyebi of Egypt → Sebekemsaf . . → Sankhenre Mentuhotep VI → Mentuhotep . . |
 | Sekhemre Sankhtawy Neferhotep III → Mentuhotep . . → Senebhenaf . . → Yauyebi of Egypt → Sebekemsaf . . → Sankhenre Mentuhotep VI → Sekhemre Sankhtawy Neferhotep III |
-| Halldor Arnesson → Arne → Halldor Arnesson |
 | Lorenzo → Antonio → Juan → Lorenzo |
 | Quintus Cæcilius Metellus → Quintus Caecilius Metellus Nepos Cæcilius Metellus → Quintus Cæcilius Metellus |
 | Diogo → Francisca Fogaça → Diogo Borges Borges da Cunha → Diogo |
 | Catarina → Ruy → Senhorinha do Rego Borges → Catarina |
 | Venkatacharya → Rangacharya → Venkatacharyar → Rangacharya → Venkatacharya → Srinivasacharyar → Srinivasacharya → Venkatacharya |
 | Esther → Esther → Esther |
+| Joseph → David → Señor → Isaac → Joseph |
 | 某 隴西狄道 → 某 隴西狄道 → 某 隴西狄道 → 某 隴西狄道 → 某 隴西狄道 → 某 隴西狄道 |
+| Ange-Michel FILIPPINI → Hyacinthe Horace FILIPPINI → Ange-Michel FILIPPINI |
+| Abisha ben Pinḥas ben Josef → Abishua II ben Pinḥas ben Abisha → Phinehas VI → Raban → Phinehas VI → Abisha ben Pinḥas ben Josef |
 
 ## Generational depth
 
@@ -59,156 +62,156 @@ descendants are where an export would add the most.
 
 | generations above | people |
 | --- | ---: |
-| 0 | 48163 |
-| 1 | 11468 |
-| 2 | 6946 |
-| 3 | 7664 |
-| 4 | 5592 |
-| 5 | 7006 |
-| 6 | 5461 |
-| 7 | 6177 |
-| 8 | 6391 |
-| 9 | 7690 |
-| 10 | 5594 |
-| 11 | 5816 |
-| 12 | 4729 |
-| 13 | 3893 |
-| 14 | 2468 |
-| 15 | 1681 |
-| 16 | 1580 |
-| 17 | 1374 |
-| 18 | 1465 |
-| 19 | 1155 |
-| 20 | 1394 |
-| 21 | 1732 |
-| 22 | 2137 |
-| 23 | 1680 |
-| 24 | 1422 |
-| 25 | 1492 |
-| 26 | 1651 |
-| 27 | 1684 |
-| 28 | 1203 |
-| 29 | 860 |
-| 30 | 966 |
-| 31 | 1090 |
-| 32 | 1398 |
-| 33 | 1674 |
-| 34 | 2043 |
-| 35 | 1894 |
-| 36 | 1780 |
-| 37 | 1749 |
-| 38 | 1749 |
-| 39 | 1742 |
-| 40 | 1929 |
-| 41 | 1978 |
-| 42 | 2025 |
-| 43 | 2058 |
-| 44 | 2084 |
-| 45 | 2123 |
-| 46 | 1907 |
-| 47 | 1953 |
-| 48 | 1949 |
-| 49 | 2044 |
-| 50 | 2055 |
-| 51 | 2434 |
-| 52 | 2103 |
-| 53 | 2079 |
-| 54 | 2465 |
-| 55 | 1889 |
-| 56 | 1739 |
-| 57 | 1703 |
-| 58 | 1422 |
-| 59 | 1698 |
-| 60 | 1918 |
-| 61 | 1627 |
-| 62 | 1482 |
-| 63 | 1309 |
-| 64 | 708 |
-| 65 | 626 |
-| 66 | 349 |
-| 67 | 315 |
-| 68 | 347 |
-| 69 | 344 |
-| 70 | 299 |
-| 71 | 268 |
-| 72 | 418 |
-| 73 | 316 |
-| 74 | 355 |
-| 75 | 408 |
-| 76 | 412 |
-| 77 | 407 |
-| 78 | 429 |
-| 79 | 390 |
-| 80 | 378 |
-| 81 | 330 |
-| 82 | 340 |
-| 83 | 459 |
-| 84 | 463 |
-| 85 | 543 |
-| 86 | 503 |
-| 87 | 618 |
-| 88 | 632 |
-| 89 | 796 |
-| 90 | 935 |
-| 91 | 1323 |
-| 92 | 1702 |
-| 93 | 2049 |
-| 94 | 1403 |
-| 95 | 1369 |
-| 96 | 839 |
-| 97 | 443 |
-| 98 | 330 |
-| 99 | 308 |
-| 100 | 297 |
-| 101 | 309 |
-| 102 | 201 |
-| 103 | 101 |
-| 104 | 75 |
-| 105 | 97 |
-| 106 | 142 |
-| 107 | 173 |
-| 108 | 221 |
-| 109 | 188 |
-| 110 | 193 |
-| 111 | 220 |
-| 112 | 264 |
-| 113 | 260 |
-| 114 | 239 |
-| 115 | 215 |
-| 116 | 191 |
-| 117 | 179 |
-| 118 | 189 |
-| 119 | 139 |
-| 120 | 219 |
-| 121 | 261 |
-| 122 | 325 |
-| 123 | 272 |
-| 124 | 293 |
-| 125 | 385 |
-| 126 | 382 |
-| 127 | 388 |
-| 128 | 365 |
-| 129 | 313 |
-| 130 | 379 |
-| 131 | 391 |
-| 132 | 407 |
-| 133 | 378 |
-| 134 | 397 |
-| 135 | 365 |
-| 136 | 402 |
-| 137 | 262 |
-| 138 | 280 |
-| 139 | 219 |
-| 140 | 253 |
-| 141 | 332 |
-| 142 | 442 |
+| 0 | 68347 |
+| 1 | 17539 |
+| 2 | 10426 |
+| 3 | 12414 |
+| 4 | 8590 |
+| 5 | 10541 |
+| 6 | 8133 |
+| 7 | 9250 |
+| 8 | 9413 |
+| 9 | 11756 |
+| 10 | 9242 |
+| 11 | 10768 |
+| 12 | 8884 |
+| 13 | 7080 |
+| 14 | 5321 |
+| 15 | 5319 |
+| 16 | 3901 |
+| 17 | 2769 |
+| 18 | 2941 |
+| 19 | 2211 |
+| 20 | 1783 |
+| 21 | 2112 |
+| 22 | 2611 |
+| 23 | 2332 |
+| 24 | 2219 |
+| 25 | 2277 |
+| 26 | 2589 |
+| 27 | 3010 |
+| 28 | 2977 |
+| 29 | 2590 |
+| 30 | 2294 |
+| 31 | 2120 |
+| 32 | 2210 |
+| 33 | 2184 |
+| 34 | 2515 |
+| 35 | 2305 |
+| 36 | 2530 |
+| 37 | 2427 |
+| 38 | 2176 |
+| 39 | 2073 |
+| 40 | 2266 |
+| 41 | 2207 |
+| 42 | 2449 |
+| 43 | 2274 |
+| 44 | 2263 |
+| 45 | 2147 |
+| 46 | 1929 |
+| 47 | 1977 |
+| 48 | 1955 |
+| 49 | 1957 |
+| 50 | 1806 |
+| 51 | 2078 |
+| 52 | 2092 |
+| 53 | 1988 |
+| 54 | 2146 |
+| 55 | 2322 |
+| 56 | 2139 |
+| 57 | 1988 |
+| 58 | 2139 |
+| 59 | 2610 |
+| 60 | 2599 |
+| 61 | 2972 |
+| 62 | 3589 |
+| 63 | 3028 |
+| 64 | 2659 |
+| 65 | 2348 |
+| 66 | 2164 |
+| 67 | 2170 |
+| 68 | 1834 |
+| 69 | 1854 |
+| 70 | 925 |
+| 71 | 545 |
+| 72 | 708 |
+| 73 | 395 |
+| 74 | 382 |
+| 75 | 416 |
+| 76 | 413 |
+| 77 | 408 |
+| 78 | 430 |
+| 79 | 391 |
+| 80 | 379 |
+| 81 | 331 |
+| 82 | 341 |
+| 83 | 460 |
+| 84 | 464 |
+| 85 | 544 |
+| 86 | 504 |
+| 87 | 619 |
+| 88 | 634 |
+| 89 | 797 |
+| 90 | 939 |
+| 91 | 1345 |
+| 92 | 1743 |
+| 93 | 2147 |
+| 94 | 1460 |
+| 95 | 1472 |
+| 96 | 907 |
+| 97 | 453 |
+| 98 | 332 |
+| 99 | 310 |
+| 100 | 299 |
+| 101 | 311 |
+| 102 | 203 |
+| 103 | 103 |
+| 104 | 77 |
+| 105 | 99 |
+| 106 | 144 |
+| 107 | 175 |
+| 108 | 223 |
+| 109 | 190 |
+| 110 | 195 |
+| 111 | 222 |
+| 112 | 266 |
+| 113 | 262 |
+| 114 | 243 |
+| 115 | 225 |
+| 116 | 203 |
+| 117 | 207 |
+| 118 | 219 |
+| 119 | 219 |
+| 120 | 258 |
+| 121 | 323 |
+| 122 | 402 |
+| 123 | 349 |
+| 124 | 301 |
+| 125 | 390 |
+| 126 | 392 |
+| 127 | 395 |
+| 128 | 368 |
+| 129 | 314 |
+| 130 | 380 |
+| 131 | 392 |
+| 132 | 408 |
+| 133 | 379 |
+| 134 | 399 |
+| 135 | 366 |
+| 136 | 403 |
+| 137 | 265 |
+| 138 | 285 |
+| 139 | 227 |
+| 140 | 262 |
+| 141 | 338 |
+| 142 | 446 |
 | 143 | 440 |
-| 144 | 374 |
-| 145 | 502 |
-| 146 | 662 |
-| 147 | 517 |
-| 148 | 308 |
-| 149 | 251 |
+| 144 | 372 |
+| 145 | 514 |
+| 146 | 684 |
+| 147 | 535 |
+| 148 | 339 |
+| 149 | 255 |
 | 150 | 247 |
 | 151 | 237 |
 | 152 | 353 |
@@ -261,27 +264,27 @@ descendants are where an export would add the most.
 | 199 | 28 |
 | 200 | 19 |
 | 201 | 13 |
-| 202 | 26 |
-| 203 | 37 |
-| 204 | 49 |
-| 205 | 36 |
-| 206 | 47 |
-| 207 | 72 |
-| 208 | 78 |
-| 209 | 80 |
-| 210 | 139 |
-| 211 | 197 |
-| 212 | 60 |
-| 213 | 78 |
-| 214 | 78 |
-| 215 | 80 |
-| 216 | 129 |
-| 217 | 192 |
-| 218 | 226 |
-| 219 | 239 |
-| 220 | 227 |
-| 221 | 277 |
-| 222 | 442 |
+| 202 | 25 |
+| 203 | 42 |
+| 204 | 50 |
+| 205 | 106 |
+| 206 | 51 |
+| 207 | 76 |
+| 208 | 114 |
+| 209 | 106 |
+| 210 | 200 |
+| 211 | 162 |
+| 212 | 94 |
+| 213 | 140 |
+| 214 | 232 |
+| 215 | 138 |
+| 216 | 161 |
+| 217 | 194 |
+| 218 | 240 |
+| 219 | 254 |
+| 220 | 230 |
+| 221 | 296 |
+| 222 | 453 |
 | 223 | 433 |
 | 224 | 630 |
 | 225 | 864 |
@@ -309,43 +312,43 @@ leaf adds a lone leaf.
 
 | # | name | born | descendants | relatives | component | Geni profile |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| 1 | Arnoul | 582 | 53338 | 4 | 275404 | [6000000003302337846](https://www.geni.com/people/x/6000000003302337846) |
-| 2 | Dode Clotilde De Metz | 583 | 53338 | 4 | 275404 | [6000000006296799111](https://www.geni.com/people/x/6000000006296799111) |
-| 3 | Pepin | 575 | 53320 | 5 | 275404 | [6000000000490564196](https://www.geni.com/people/x/6000000000490564196) |
-| 4 | Itta De Nivelles | 592 | 53320 | 5 | 275404 | [6000000001867425629](https://www.geni.com/people/x/6000000001867425629) |
-| 5 | Alpaïde | 654 | 53282 | 3 | 275404 | [6000000006098393265](https://www.geni.com/people/x/6000000006098393265) |
-| 6 | Rotrude | 685 | 53207 | 5 | 275404 | [6000000002154297114](https://www.geni.com/people/x/6000000002154297114) |
-| 7 | Bertrade | 670 | 53195 | 3 | 275404 | [6000000001842551452](https://www.geni.com/people/x/6000000001842551452) |
-| 8 | NN |  | 53192 | 2 | 275404 | [6000000010922063674](https://www.geni.com/people/x/6000000010922063674) |
-| 9 | Leutfried | 450 | 52738 | 1 | 275404 | [6000000009305090835](https://www.geni.com/people/x/6000000009305090835) |
-| 10 | NN |  | 52738 | 1 | 275404 | [6000000227086455824](https://www.geni.com/people/x/6000000227086455824) |
-| 11 | Wife of Gottfrid | 640 | 52719 | 10 | 275404 | [6000000006864196194](https://www.geni.com/people/x/6000000006864196194) |
-| 12 | Wife of Huoching |  | 52669 | 5 | 275404 | [6000000039890480371](https://www.geni.com/people/x/6000000039890480371) |
-| 13 | Hereswintha | 700 | 52634 | 3 | 275404 | [6000000003513749928](https://www.geni.com/people/x/6000000003513749928) |
-| 14 | Gerold | 720 | 52632 | 8 | 275404 | [6000000005794085315](https://www.geni.com/people/x/6000000005794085315) |
-| 15 | NN |  | 50647 | 8 | 275404 | [6000000003051292494](https://www.geni.com/people/x/6000000003051292494) |
-| 16 | Hardrad | 690 | 49061 | 2 | 275404 | [6000000023856784189](https://www.geni.com/people/x/6000000023856784189) |
-| 17 | Ermengarde Von Argengau | 691 | 49061 | 2 | 275404 | [6000000085481822170](https://www.geni.com/people/x/6000000085481822170) |
-| 18 | Ermenane | 745 | 49060 | 2 | 275404 | [6000000030192750410](https://www.geni.com/people/x/6000000030192750410) |
-| 19 | Hedwig |  | 49059 | 5 | 275404 | [6000000005895908004](https://www.geni.com/people/x/6000000005895908004) |
-| 20 | Billung I | 780 | 48751 | 5 | 275404 | [6000000079932445829](https://www.geni.com/people/x/6000000079932445829) |
-| 21 | Bruno | 786 | 48748 | 2 | 275404 | [6000000016130176241](https://www.geni.com/people/x/6000000016130176241) |
-| 22 | Poppo I of Babenberg Grabfeld Saalgau | 790 | 48662 | 3 | 275404 | [6000000220205914891](https://www.geni.com/people/x/6000000220205914891) |
-| 23 | Kunigunda Franconia | 807 | 48662 | 3 | 275404 | [6000000220206162871](https://www.geni.com/people/x/6000000220206162871) |
-| 24 | Ingeltrudis (Baba) |  | 48659 | 5 | 275404 | [6000000003926704373](https://www.geni.com/people/x/6000000003926704373) |
-| 25 | Mathilda von Merseburg | 835 | 48340 | 1 | 275404 | [6000000001745033813](https://www.geni.com/people/x/6000000001745033813) |
-| 26 | Reginlind [Reinhild] | 875 | 48339 | 8 | 275404 | [6000000022587109295](https://www.geni.com/people/x/6000000022587109295) |
-| 27 | Eystein «the Noisy» Ivarsson | 810 | 48149 | 4 | 275404 | [6000000000701119941](https://www.geni.com/people/x/6000000000701119941) |
-| 28 | nn |  | 48149 | 4 | 275404 | [6000000078144525581](https://www.geni.com/people/x/6000000078144525581) |
-| 29 | Ava de Morvois | 779 | 47555 | 7 | 275404 | [6000000006210203413](https://www.geni.com/people/x/6000000006210203413) |
-| 30 | Hugues |  | 47555 | 7 | 275404 | [6000000007331622581](https://www.geni.com/people/x/6000000007331622581) |
-| 31 | Cunigundis | 795 | 47019 | 2 | 275404 | [6000000000161097536](https://www.geni.com/people/x/6000000000161097536) |
-| 32 | Rothaida de Vermandois |  | 46968 | 2 | 275404 | [6000000024365266740](https://www.geni.com/people/x/6000000024365266740) |
-| 33 | Lietgardis |  | 46967 | 5 | 275404 | [6000000011511306547](https://www.geni.com/people/x/6000000011511306547) |
-| 34 | Robert "le Fort" | 815 | 46962 | 2 | 275404 | [6000000006036670007](https://www.geni.com/people/x/6000000006036670007) |
-| 35 | Sigrimaine | 714 | 46706 | 3 | 275404 | [6000000004533401102](https://www.geni.com/people/x/6000000004533401102) |
-| 36 | Rotrude |  | 46703 | 2 | 275404 | [388793565870003237](https://www.geni.com/people/x/388793565870003237) |
-| 37 | Wedulphe Tour de Walincourt | 690 | 46633 | 1 | 275404 | [6000000196706961844](https://www.geni.com/people/x/6000000196706961844) |
-| 38 | Richard de Lommois | 755 | 46630 | 4 | 275404 | [6000000007510090247](https://www.geni.com/people/x/6000000007510090247) |
-| 39 | Matfried | 795 | 46307 | 2 | 275404 | [6000000179404334821](https://www.geni.com/people/x/6000000179404334821) |
-| 40 | Boson "l'Ancien" de Bourgogne | 800 | 46305 | 5 | 275404 | [6000000002976460830](https://www.geni.com/people/x/6000000002976460830) |
+| 1 | *(unnamed)* |  | 68208 | 2 | 396163 | [6000000000183188387](https://www.geni.com/people/x/6000000000183188387) |
+| 2 | NN |  | 68208 | 2 | 396163 | [6000000008643258069](https://www.geni.com/people/x/6000000008643258069) |
+| 3 | N.N. |  | 68207 | 4 | 396163 | [6000000006209978636](https://www.geni.com/people/x/6000000006209978636) |
+| 4 | N.N. |  | 66088 | 5 | 396163 | [6000000006442486534](https://www.geni.com/people/x/6000000006442486534) |
+| 5 | N | 509 | 66084 | 2 | 396163 | [6000000001519026227](https://www.geni.com/people/x/6000000001519026227) |
+| 6 | Unknown |  | 66083 | 2 | 396163 | [6000000003495300745](https://www.geni.com/people/x/6000000003495300745) |
+| 7 | Unknown |  | 66082 | 2 | 396163 | [6000000003688058509](https://www.geni.com/people/x/6000000003688058509) |
+| 8 | nn |  | 66080 | 4 | 396163 | [6000000078144525581](https://www.geni.com/people/x/6000000078144525581) |
+| 9 | Arnoul | 582 | 65439 | 4 | 396163 | [6000000003302337846](https://www.geni.com/people/x/6000000003302337846) |
+| 10 | Dode Clotilde De Metz | 583 | 65439 | 4 | 396163 | [6000000006296799111](https://www.geni.com/people/x/6000000006296799111) |
+| 11 | Pepin | 575 | 65421 | 5 | 396163 | [6000000000490564196](https://www.geni.com/people/x/6000000000490564196) |
+| 12 | Itta De Nivelles | 592 | 65421 | 5 | 396163 | [6000000001867425629](https://www.geni.com/people/x/6000000001867425629) |
+| 13 | Alpaïde | 654 | 65383 | 3 | 396163 | [6000000006098393265](https://www.geni.com/people/x/6000000006098393265) |
+| 14 | Rotrude | 685 | 65308 | 5 | 396163 | [6000000002154297114](https://www.geni.com/people/x/6000000002154297114) |
+| 15 | Bertrade | 670 | 65296 | 3 | 396163 | [6000000001842551452](https://www.geni.com/people/x/6000000001842551452) |
+| 16 | NN |  | 65293 | 2 | 396163 | [6000000010922063674](https://www.geni.com/people/x/6000000010922063674) |
+| 17 | Leutfried | 450 | 64841 | 1 | 396163 | [6000000009305090835](https://www.geni.com/people/x/6000000009305090835) |
+| 18 | NN |  | 64841 | 1 | 396163 | [6000000227086455824](https://www.geni.com/people/x/6000000227086455824) |
+| 19 | Wife of Gottfrid | 640 | 64822 | 10 | 396163 | [6000000006864196194](https://www.geni.com/people/x/6000000006864196194) |
+| 20 | Wife of Huoching |  | 64772 | 5 | 396163 | [6000000039890480371](https://www.geni.com/people/x/6000000039890480371) |
+| 21 | Hereswintha | 700 | 64737 | 3 | 396163 | [6000000003513749928](https://www.geni.com/people/x/6000000003513749928) |
+| 22 | Gerold | 720 | 64735 | 8 | 396163 | [6000000005794085315](https://www.geni.com/people/x/6000000005794085315) |
+| 23 | NN |  | 62776 | 8 | 396163 | [6000000003051292494](https://www.geni.com/people/x/6000000003051292494) |
+| 24 | Hrolf 'Nose' Nefja | 768 | 62236 | 1 | 396163 | [6000000001209426947](https://www.geni.com/people/x/6000000001209426947) |
+| 25 | Hardrad | 690 | 61143 | 2 | 396163 | [6000000023856784189](https://www.geni.com/people/x/6000000023856784189) |
+| 26 | Ermengarde Von Argengau | 691 | 61143 | 2 | 396163 | [6000000085481822170](https://www.geni.com/people/x/6000000085481822170) |
+| 27 | Ermenane | 745 | 61142 | 2 | 396163 | [6000000030192750410](https://www.geni.com/people/x/6000000030192750410) |
+| 28 | Hedwig |  | 61141 | 5 | 396163 | [6000000005895908004](https://www.geni.com/people/x/6000000005895908004) |
+| 29 | Ava de Morvois | 779 | 59479 | 7 | 396163 | [6000000006210203413](https://www.geni.com/people/x/6000000006210203413) |
+| 30 | Hugues |  | 59479 | 7 | 396163 | [6000000007331622581](https://www.geni.com/people/x/6000000007331622581) |
+| 31 | Billung I | 780 | 59272 | 5 | 396163 | [6000000079932445829](https://www.geni.com/people/x/6000000079932445829) |
+| 32 | Bruno | 786 | 59269 | 2 | 396163 | [6000000016130176241](https://www.geni.com/people/x/6000000016130176241) |
+| 33 | Poppo I of Babenberg Grabfeld Saalgau | 790 | 59183 | 3 | 396163 | [6000000220205914891](https://www.geni.com/people/x/6000000220205914891) |
+| 34 | Kunigunda Franconia | 807 | 59183 | 3 | 396163 | [6000000220206162871](https://www.geni.com/people/x/6000000220206162871) |
+| 35 | Ingeltrudis (Baba) |  | 59180 | 5 | 396163 | [6000000003926704373](https://www.geni.com/people/x/6000000003926704373) |
+| 36 | Cunigundis | 795 | 58925 | 2 | 396163 | [6000000000161097536](https://www.geni.com/people/x/6000000000161097536) |
+| 37 | Rothaida de Vermandois |  | 58874 | 2 | 396163 | [6000000024365266740](https://www.geni.com/people/x/6000000024365266740) |
+| 38 | Lietgardis |  | 58873 | 5 | 396163 | [6000000011511306547](https://www.geni.com/people/x/6000000011511306547) |
+| 39 | Robert "le Fort" | 815 | 58868 | 2 | 396163 | [6000000006036670007](https://www.geni.com/people/x/6000000006036670007) |
+| 40 | Sigrimaine | 714 | 58827 | 3 | 396163 | [6000000004533401102](https://www.geni.com/people/x/6000000004533401102) |
