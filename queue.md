@@ -635,41 +635,33 @@ actually worked** — plainly, and low if it is low. Then re-run
 `scripts/find-export-entry-points.py` against the re-merged tree, since 31 edge
 exports landed on 2026-08-15 and the clusters will have moved.
 
-## 21 · Do the isolate-path thing for Sweden, Norway, Canada — and her maternal American line
+## 21 · Norwegian academics, then Swedish academics — 100 at a time
 
-**Emma, 2026-08-15:** *"I want to do a similar thing like this to basically anybody
-who is from Sweden or Norway or Canada. I'm trying to get people who are relatively
-closely related to me and the paths to them, which would mean Sweden, Norway, and
-Canada are the places that I'm linked to. Maybe also the states that a couple of my
-American ancestors are from."* And: *"my maternal grandmother has some American
-ancestry that would be worth looking a bit into, although focusing on Norway and
-Sweden."*
+**Emma, 2026-08-15, narrowing her own earlier ask:** *"in the future I think
+probably it'll be good to try to force open 100 Norwegian academics and then the
+next run would be force open 100 Swedish academics. For Canadians my opinion right
+now is I'm just going to say no. Canadians and Americans don't do it. It's just
+Norwegians and Swedes. I don't really have Finnish ancestry so it wouldn't be that
+useful for the Finnish."*
 
-**The method is proven, so this is a filter change, not new machinery.** The
-academic run went: filter the isolates by `P106`, open 200 Geni profiles evenly
-spaced, she saves the ones with real paths, `path-from-html` extracts them.
-Measured on the first 200:
+So the filter is `P106` university teacher **AND** `P27` Norway, then the same for
+Sweden. **Not** Canada, **not** the United States, **not** Finland — she ruled all
+three out. Her maternal grandmother's American line is **dropped for now**:
+*"Let's just right now ignore the American ancestry of my grandmother because I'm
+struggling to find it too so I'm a bit unsure of it."*
 
-| | |
-| --- | ---: |
-| save rate | **39.0%** (78 of 200) |
-| paths extracted / failed | 89 / **0** |
-| distinct people named | 2,068 |
-| **not in any of our 234 exports** | **1,436 (69.4%)** |
+**100 at a time, not 200.** Her reason: *"I found basically it is easier for 100
+since this lets me do a slight change thing that makes things easier."* She has a
+workflow now and 100 fits it. **Her labour is the limiting factor here, not
+compute** — *"force opening a hundred academics is the thing that involves the
+limiting factor of my labor"* — so batches exist to serve her pace.
 
-**Filter on `P27` country of citizenship** instead of occupation — Sweden, Norway,
-Canada — and take the same evenly-spaced 200. `reports/wikidata-isolates.csv`
-already carries every isolate; the country pass is the same shape as
-`reports/academic-isolates.csv`.
+**She may also just ask.** *"If I prompt you to do it, you'll just do it."* This
+item is the standing version, not a gate.
 
-**Norway and Sweden first, her ordering.** The American piece needs her to name
-which states, since it comes from her maternal grandmother's line and nothing in
-the data says which. **Ask before filtering on a state.**
-
-**Why this population and not the Song dynasty one:** her framing, and it is worth
-keeping because it is a hypothesis about *why* it works — *"academics tend to come
-from kind of wealthy upper-middle-class families of more ancient origin and are a
-bit more socioeconomically stable."* Untested, and not needed for the work.
+Measured on the first 200 academics, which is what makes this worth repeating:
+save rate **39.0%**, 89 paths extracted with **0 failures**, 2,068 people named,
+**1,436 of them (69.4%) in none of our exports**.
 
 ## Always last — pinned to the tail
 
