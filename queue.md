@@ -682,6 +682,64 @@ the repo, stale ones corrected or closed, and the difference between *stale* and
 *incomplete* stated for each. Four items were found stale rather than incomplete
 last time; that is the expected shape.
 
+## 18 · Redo the order.life join on the WIKIDATA ID as well — it missed 60%
+
+**Emma, 2026-08-15:** *"WHY THE FUCK DID YOU JOIN ON THE GENI ID RATHER THAN
+JOINING ON THE WIKIDATA ID? THE ORDER.LIFE THING HAS WIKIDATA IDS AS A PROPERTY ON
+ITS OWN ITEMS."*
+
+She is right and the error is large. `orderlife/analysis/persons.tsv` carries a
+`geni_id` column **and** a `wikidata_qid` column, and a row may have either, both
+or neither:
+
+| | rows |
+| --- | ---: |
+| Geni ID only | 27,727 |
+| **Wikidata QID only** | **52,663** |
+| both | 7,412 |
+| neither | 19,235 |
+| **joinable** | **87,802** |
+
+`scripts/measure-orderlife-label-coverage.py` joins on `geni_id` alone, so it
+reached **35,139** of the 87,802 — **the 52,663 QID-only rows were invisible to
+it**, 60% of the joinable population, silently missing. Every figure in
+`reports/orderlife-label-coverage.md` and the devlog entry that quotes them is a
+floor, not a measurement.
+
+**The fix:** match on the Geni ID where present, otherwise on `wikidata_qid`
+against the `qid` column of `reports/derived-family.csv` — we hold 16,562 people
+carrying a QID. Report which key matched each row, because the two populations are
+not the same people and the difference is worth seeing.
+
+**A half-applied patch was reverted** rather than left in place: the docstring had
+been rewritten to describe the both-key join while the code still did the
+single-key one, which is worse than either.
+
+## 19 · Who are the isolated Wikidata individuals? A demographic analysis
+
+**Emma, 2026-08-15:** *"Can you look over the isolated wikidata individuals? I
+want to analyze who they are. We did a bit of analysis but I want to basically
+analyze them demographically."*
+
+**Isolated means present as an item and absent as genealogy** — `CLAUDE.md`
+§ *An item with no relationships is not a missing item*. The Samaritan high
+priests were the worked example: on Geni, on Wikidata, and attached to nothing.
+Her own item `Q140568870` is the same shape.
+
+**Demographic, not just a count.** The previous pass established *that* they
+exist. This one asks *who they are*: century of birth and death, sex, whether they
+carry `P569`/`P570` at all, occupation `P106`, noble title `P97`, country, and
+which of them carry a `P2600` — plus how many are in the Geni corpus under a
+different route.
+
+**Entirely offline** against `wikidata/items/`, and it must state both stores
+separately, per § *"Is X present?"*. Note the store is a Geni-shaped slice, so
+"isolated in our store" is not "isolated on Wikidata" — an item whose relatives
+simply were not downloaded looks identical to one with no relatives at all, and
+**that distinction has to be made explicitly** rather than assumed away. The
+name-item download currently running does not change this; it fetches names, not
+people.
+
 ## Always last — pinned to the tail
 
 A. **Ensure the three crons are running** — work-loop `3 * * * *`, auto-flush
