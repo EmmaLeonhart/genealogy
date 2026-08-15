@@ -551,6 +551,41 @@ https://www.wikidata.org/wiki/Q127270796 | NN - Wikidata
 https://www.wikidata.org/wiki/Q116187194 | NN - Wikidata
 https://www.wikidata.org/wiki/Q116471193 | NN - Wikidata
 
+Oh, and to be clear, we are supposed to be generating descriptions for these people too. as well as the unnamed people there
+
+## Wikidata person descriptions
+
+For descriptions of people, which would include applying to people without descriptions who are currently on Wikidata and other things, descriptions are a bit of a difficult task. Obviously, my opinion on this is that a person always gets labeled before they have a description added to them. This is a quite hard rule. 
+
+This is a quite hard rule here: a person always gets labeled before they have a description added to them. This includes generation. We don't generate when we're looking at individuals or when we create an individual. We create the individual with their multi-language label, their English language label, their Japanese language label, their Chinese language label, their Korean language label, their Russian language label, and their Hindi language label. We do all of those things to start, but no descriptions are added to any of the people, any short descriptions on any other people.
+
+The reason why this is extremely critical is because blank descriptions are not deduplicated, but descriptions are deduplicated. Basically, the idea here would be, for example 
+
+
+We have two individuals with the label "John".
+
+We add a description to one of them as "Son of Jack"
+
+This means if we attempt to add the same description to the other "John" then it will give an error
+
+But there are worse things
+
+If there is an unlabelled individual then attempting to give them the label and description "John", "Son of Jack" then it will just refuse to give the label
+
+But there is worse
+
+If there is an unlabelled individual with the description "Son of Jack" and you try to add the label "John" then it just straight up refuses it. 
+
+This is by far the worst trap to accidentally fall into because there are many unlabeled individuals, and them having generic descriptions often makes it effectively impossible to add labels to them. 
+
+But also, this will cause it so that if we're trying to create an individual, it throws an error. 
+
+Our rule here is basically:
+1. Top priority: add labels to items that already have descriptions.
+2. Add labels to ones without descriptions.
+3. Add descriptions only to ones with it.
+
+As far as descriptions go, I'll say we should have a series of descriptions that we could decrease from. As far as this goes, we should have a series of descriptions that we apply from top priority to least priority. Top priority would be some sort of thing related to the person's top priority, which would be whatever's on Wikidata at the moment. We can always use the geni IDs of a person as deduplicators, except for in the couple events that we've been covering of potentially adding our own individuals that are not on geni, but this is a different topic related to patronyms. 
 
 ---
 
