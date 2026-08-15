@@ -184,6 +184,27 @@ def read_existing_relations(qids: set[str]) -> dict[str, dict[str, set[str]]]:
 #: Every emitted value is resolved through the target's own `P61` first, and a
 #: target with no Wikidata item is simply not pointed at - which is also why
 #: every edge into Aster falls out without needing a special case.
+def read_tsv(path):
+    """Read one of order.life's `analysis/*.tsv` tables.
+
+    **`quoting=csv.QUOTE_NONE` is the whole point.** These are tab-separated
+    files with no quoting convention, so a `"` in a label is literal data. With
+    Python's default quoting it is an opening quote instead, and the field runs
+    on until the next one — swallowing the tabs and newlines in between.
+
+    Measured 2026-08-15: the default cost **128 rows** of `persons.tsv`, and
+    corrupted the row before each loss. `Q98159` (*"Abu'l Hasan" Muhammad bin
+    Yahya bin al-Husain*) was the one Emma reported. Its own line is well formed;
+    the parser merged it with the next row, so its `geni_id` went missing and its
+    `wikidata_qid` picked up `Q153719` — **order.life's "Female" item** — which
+    is a syntactically valid QID and therefore sails past the validation below.
+    That is the exact hazard `reports/orderlife-properties.md` warns about: an
+    order.life QID appearing where a Wikidata QID is expected.
+    """
+    return csv.DictReader(path.open(encoding="utf-8", newline=""),
+                          delimiter="	", quoting=csv.QUOTE_NONE)
+
+
 def _assert_wikidata_qid(value: str, where: str) -> str:
     if not re.fullmatch(r"Q\d+", value or ""):
         raise SystemExit(f"{where}: {value!r} is not a QID")
