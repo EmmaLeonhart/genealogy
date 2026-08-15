@@ -280,6 +280,92 @@ twenty-minute merge is not.
 with it and need recreating — and a job that quietly never fires looks identical
 to one that had nothing to do.
 
+## 14c · The recurring cron jobs, written out as queue items
+
+**Emma, 2026-08-16: queue up the cron contents.** A cron only fires while the
+session is idle, so its instruction can be lost without trace — item 14b. These
+are the four daily jobs in full, so the work survives whether or not the job
+fires. Each is a real `CronCreate` id **and** an item here.
+
+### :03 hourly — `d425c1f5` · work-loop tick
+
+In order. **(a) SYNC** — `git fetch origin`, fast-forward or rebase main; never
+force-push, never `reset --hard`, never discard another machine's work.
+**(b) WORK** — take the top actionable item from this file and do it; if nothing
+here is actionable, promote the next genuinely unblocked, bounded, verifiable
+`todo.md` item, **writing it into this file first**. **(c) HARD RAILS** — never
+fake a result; never weaken, skip or delete a test to make it pass; never claim
+"works" or "verified" without having run it and measured. A real defect becomes a
+strict `xfail` or a named blocker, never a loosened assertion. Never query
+Wikidata live. Never overwrite an existing `.ged`. No unprompted reports or
+analysis. **(d) COMMIT** — delete the finished item from this file in the same
+commit, append a dated `devlog.md` entry, push. **(e) REPORT** one line: the shas
+advanced, or `nothing actionable; <reason>`.
+
+### :15 hourly — `be98e574` · auto-flush tick
+
+If and only if something is actually pending, commit all uncommitted work with a
+message saying **why**, and push. **No empty commits.** Never add a `*.ged` or
+`*.zip` pattern to `.gitignore` — the zips are ignored one explicit line per file
+so an unlisted one shows up in `git status`, which is how a new download
+announces itself. Never delete a GEDCOM. Report the shas pushed, or
+`nothing pending`.
+
+### :42 hourly — `f8b152ab` · status-report tick
+
+**Reporting only. No code changes, no files written.** Cover: what advanced since
+the last report, shas with one line each; the current state of this file; any
+place the hard rails were brushed; blockers, each tagged with exactly one of
+**NEEDS-DECISION / BLOCKED-ON-USER-ACTION / BLOCKED-ON-EXTERNAL /
+NEEDS-INVESTIGATION / UNSAFE-TO-GUESS / OUT-OF-SCOPE**, naming the specific
+decision, action, signal, risk or owner — and if a not-done item fits none of
+them with a specifically-named blocker, it is **not deferred, do it now**; and
+test-suite health.
+
+### 19:07 — `f3d681e4` · re-merge the corpus
+
+Keep `out/merged.ged` as `out/merged-<n>.ged` first — `CLAUDE.md` says keep the
+pre-batch tree whenever a batch lands, it is the only thing that makes the
+seed-method backtests answerable. Then `python -m genimerge merge` over every
+`.ged` under `exports/`, recursively. Regenerate the reports whose CLI command
+exists — inventory, paths, connectors, density, frontier, descendants, seeds —
+plus `reports/samaritan-component.md`. Re-run `scripts/build-repo-freshness.py`
+and confirm `behind_by` has emptied. Never overwrite or delete a `.ged`.
+**Last run 2026-08-16 00:30, by hand: 203 exports, 396,163 people, one tree.**
+
+### 21:02 — `43140a93` · bloat review
+
+Start from `reports/repo-freshness.csv` and
+`reports/audit-transcripts-2026-08-15.md`. Look for work whose question is
+**closed**; reports superseded by a later one; scripts nothing calls; CLI
+commands with no reachable input; duplicated censuses of one phenomenon. **Never
+delete a `.ged`, never add a `*.ged` or `*.zip` pattern to `.gitignore`, never
+touch `exports/`.** Delete nothing on your own judgement — produce the candidate
+list with a one-line reason and evidence each, put it to Emma in batches of four,
+delete only what she approves. **Last run 2026-08-15: four deletions approved.**
+
+### 23:03 — `9f41a7a4` · entity resolution
+
+`entity_resolution.md` is Emma's free-form scratchpad of Geni-to-Wikidata
+identities she recognised by hand. **Do not reformat it to suit the parser** —
+teach the parser instead; `tests/test_entities.py` asserts the real file parses
+with zero unparsed entries. Show her what is in it **raw**, entry by entry, and
+say which entries are reflected in the data. It is **her job to be given JSONs,
+not to make them**: `scripts/build-entity-resolution-batch.py` emits them.
+**Last run 2026-08-16: 7 `add_geni_id` + 3 `set_label`.**
+
+### 00:01 — `05926d1d` · the structural Geni↔Wikidata merge
+
+Walk **up** the parental lines from people holding both a Geni ID and a QID,
+merging the parents where both sides have one. **The label only confirms a
+position the structure already chose; it never searches for a name** — that is
+the matcher deleted on 2026-08-15, and `correspondence.md` forbids it. Everything
+offline against `wikidata/items/`. Show cases one by one before generalising, and
+do not reformat the records. Produces our own QID ↔ Geni ID correspondence and a
+placeholder system for people on Geni and not on Wikidata.
+**Last run 2026-08-16: `scripts/walk-structural-merge.py`, three lines shown,
+three questions outstanding.**
+
 ## 15 · Audit `todo.md` the way `queue.md` was audited, then fold in the provisional to-do
 
 **Emma, 2026-08-15:** *"I don't know if the to-do is being properly done."* This

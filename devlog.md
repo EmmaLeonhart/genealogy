@@ -6481,3 +6481,15 @@ Emma answered it directly.
 Geni `Yitzhaq` there has `Shalma II ben Tabia` for a father, and **the profile is
 in none of the 203 exports** because she created it after the last Samaritan
 export ran. All 21 priests are now linked; 9 `add_geni_id` edits.
+
+## 2026-08-16 — all seven cron prompts written into the queue
+
+Emma: *"OH MY FUCKING GOD QUEUE UP THE CRON JOB CONTENTS… all of them."*
+
+A cron only fires while the session is idle, so its instruction can vanish
+without trace — which is exactly what happened to the 19:07 re-merge, starved
+four hours running. Queue item 14c now carries **all seven prompts in full**, so
+the work survives whether or not the job fires: the three hourly ticks (work-loop
+`:03`, auto-flush `:15`, status-report `:42`) and the four daily jobs (re-merge
+19:07, bloat review 21:02, entity resolution 23:03, structural merge 00:01). Each
+is listed with its real `CronCreate` id and its last run.
