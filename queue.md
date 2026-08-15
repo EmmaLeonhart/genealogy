@@ -20,6 +20,10 @@ because this file was untrustworthy while the audit ran; the audit is done, the
 items below all trace to a dated instruction in the transcripts, and a second
 queue file is exactly the *"second store"* mistake `CLAUDE.md` warns about.
 
+## 00
+
+PLEASE CLEAN UP THE QUEUE! Oh my God! Please clean up the queue! Oh my God, we did a comprehensive audit of the queue, and then you just decided to fuck around and immediately bloat it. 
+
 ## 0 · STANDING PROCEDURE — audit this queue against the chat logs before running it
 
 **Emma, 2026-08-14, and this item exists because she could not tell what was
