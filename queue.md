@@ -10,119 +10,128 @@ The purpose of this file is also to bound scope. If a task is not in this queue,
 
 ---
 
-## 0 · READ THIS FIRST — how the queue went wrong, and how to audit it from the chat logs
+## 0 · STANDING PROCEDURE — audit this queue against the chat logs before running it
 
 **Emma, 2026-08-14, and this item exists because she could not tell what was
-going on:** *"I'm extremely confused about what's going on here."* When she next
-asks for the queue to be executed, **work this item before anything else** — it
-rebuilds the queue from the transcripts, and only then is the rest of the queue
-trustworthy enough to run.
+going on:** *"I'm extremely confused about what's going on here."* When she asks
+for the queue to be executed, **run this before anything else** — it rebuilds the
+queue from the transcripts, and only then is the rest of the queue trustworthy
+enough to run. This item is **not deleted when it completes**; it is a procedure,
+not a step.
 
-### What went wrong
+**Last run: 2026-08-15** → `reports/audit-transcripts-2026-08-15.md`
+(24 transcripts, 311 user turns, 2026-08-01 → 2026-08-15). Items 1–6 below are
+its output.
+
+### What went wrong, the first time
 
 **The queue stopped driving the work, and nothing announced it.** On 2026-08-14 a
 full day of work happened entirely from chat: four Geni exports integrated, three
 Wikidata batches built, five reports written, `CLAUDE.md` amended four times —
-**none of it in this file**, before or after. The queue was not consulted at the
-start of the session and not updated during it.
+**none of it in this file**, before or after.
 
-Four distinct failures, all of which recur:
+Four failures, all of which recur:
 
-1. **Finished work sat here as live work.** Items 1-4 described the missing-
-   ancestor sweep (done 08-13), the isolates (parked 08-13), the Baruch Jafe
-   cluster (joined 08-13) and the Samaritan high priests (joined 08-14, and its
-   "steps" already carried out by Emma). Reading the queue gave a picture of the
-   project that was days out of date.
-2. **Instructions given in chat never landed here.** Every decision below in
-   items 5 and 6 was spoken, acted on, and only written into the queue
-   retrospectively at the end of the day, when Emma asked why the queue was not
-   being used.
-3. **The queue's own pinned tail was ignored.** It says three crons run the work
-   loop; none were running. The only cron in this session was one created ad hoc.
-4. **`git log` and `devlog.md` held the truth and the queue did not** — so the
-   queue became the least reliable file in the repo while looking like the plan.
+1. **Finished work sat here as live work**, so reading the queue gave a picture
+   of the project days out of date.
+2. **Instructions given in chat never landed here**, and were written in
+   retrospectively at the end of the day.
+3. **The queue's own pinned tail was ignored** — it says three crons run the work
+   loop; none were running.
+4. **`git log` and `devlog.md` held the truth and the queue did not.**
 
-**The root cause is not laziness about a file.** It is that chat instructions
-arrive faster than they are recorded, and a queue that is only written to at the
-end of a session is a transcript, not a plan. The fix is the audit below, run at
-the START of a session rather than the end.
+**The root cause is not laziness about a file.** Chat instructions arrive faster
+than they are recorded, and a queue only written to at the end of a session is a
+transcript, not a plan. The fix is the audit below, run at the START.
 
-### How to audit the queue from the chat logs
+### The audit
 
-**The transcripts are on disk and they are the authority**, because they hold what
+The transcripts are on disk and they are the authority, because they hold what
 Emma actually said, in order, including the corrections:
 
     C:/Users/Emma/.claude/projects/C--Users-Emma-Documents-GitHub-geni/*.jsonl
 
-**23 files, 67 MB, one per session, going back to 2026-08-01.** Each line
-is a JSON object; a user turn has `message.role == "user"` and the text in
-`message.content`. Read them **newest first by mtime** and stop when the material
-stops being new — a week or more of history is in scope, and the older files are
-where standing decisions were made.
+Each line is a JSON object; a user turn has `message.role == "user"` with the
+text in `message.content`. Read **newest first by mtime**, a week or more back —
+the older files are where standing decisions were made. Then:
 
-Do this, in order:
-
-1. **Extract every user turn** across the transcripts, newest first, with its
-   timestamp. Do not summarise while extracting — the summarising step is where
-   instructions get lost.
-2. **Classify each one**: an instruction to do something, a decision about how
-   something should work, a correction of something already done, or
-   conversation. Only the first three matter.
+1. **Extract every user turn** with its timestamp. Do not summarise while
+   extracting — summarising is where instructions get lost. A context-compaction
+   turn is not something Emma wrote; its quoted messages are evidence, its
+   narration is not.
+2. **Classify each one**: an instruction, a decision about how something should
+   work, a correction, or conversation. Only the first three matter.
 3. **For every instruction and decision, ask three questions.** Is it done? Is it
-   in `queue.md`? Is it in `CLAUDE.md` or `devlog.md`? An item that is done and
-   recorded needs nothing. An item that is done and unrecorded goes to
-   `devlog.md`. An item that is **not** done goes into this queue as a concrete
-   step. A *decision about how the project works* goes to `CLAUDE.md`, not here.
+   in `queue.md`? Is it in `CLAUDE.md` or `devlog.md`? Done and recorded needs
+   nothing. Done and unrecorded goes to `devlog.md`. **Not** done becomes a
+   concrete step here. A decision about how the project works goes to
+   `CLAUDE.md`, not here.
 4. **Corrections outrank the thing they correct.** Emma reverses herself
    explicitly and often — *"I didn't tell you to do that"*, *"Q1 is not a third
-   gender, it is an error"*, *"the Cladoplast property is not the Cladoplast
-   object"*. The **latest** statement on any point is the live one, and the
-   superseded version must not survive anywhere as if it were current.
-5. **Delete finished items from this file** and append a dated `devlog.md` entry
-   in the same commit. No checkmarks, no "done" markers — if it is here, it is
-   not done.
+   gender, it is an error"*. The **latest** statement on any point is the live
+   one, and the superseded version must not survive anywhere as if it were
+   current.
+5. **Delete finished items** and append a dated `devlog.md` entry in the same
+   commit. No checkmarks — if it is here, it is not done.
 6. **Commit and push**, then report what moved.
 
-### What to watch for specifically
+### What to watch for
 
 - **Instructions phrased as frustration are still instructions.** *"Just fucking
   run the census"* is a queue item.
 - **A thing done in chat but never written down is invisible to the next
-  session** — that is exactly how the 2026-08-14 work nearly vanished.
+  session** — that is how the 2026-08-14 work nearly vanished.
 - **Do not re-derive settled questions.** If the transcripts show a question was
   answered, the answer belongs in `CLAUDE.md` and the question does not belong
   here.
 - **Unrequested normalisation is its own category.** Emma, 2026-08-14: *"I find
   it extremely weird how it is that you have a tendency to try to do exception
   handling for stuff that I do not consider to be even necessarily errors."*
-  Anything the audit finds of that shape goes on the list to be removed, not
-  kept.
+  Anything of that shape goes on the list to be **removed**, not kept.
 
 ---
 
-## Audited 2026-08-14 — items 1-4 closed out to devlog
+## 1 · Answer the audit's open questions, then act on the answers
 
-Four items were still sitting here describing finished or parked work: missing
-ancestors (0 absent), the Wikidata isolates (parked entirely), the Baruch Jafe
-cluster (joined), and the Samaritan high priests (joined, and its steps 1-3 done
-by Emma today). Per this file's own rule they belong in `devlog.md`, and the
-decisions that still govern the project are in `CLAUDE.md`.
+`reports/audit-transcripts-2026-08-15.md` § 5 lists five decisions that were put
+to Emma by `AskUserQuestion` on 2026-08-15. **Her answers go into `CLAUDE.md`
+(if they are decisions about how the project works) or become items here (if they
+are work).** This item is done when every answer has landed somewhere and this
+paragraph is deleted.
 
-## Wiped 2026-08-13 — 1,396 lines down to this
+## 2 · Re-merge over 203 exports and refresh the derived reports
 
-Emma: *"OH MY GOD THE QUEUE IS SO BLOATED I AM ALMOST CERTAIN NONE OF IT EVEN IS
-RELEVANT ANYMORE AND IT IS JUST DECAYED COMPLETELY INTO BULLSHIT."*
+**`out/merged.ged` is from 2026-08-13 17:53 and `reports/merge.md` lists 176
+sources.** 27 exports have landed since, including the four Samaritan ones.
+Everything derived from the merge is therefore describing a tree that no longer
+exists — `paths.md`, `density.md`, `connectors.md`, `frontier.md`,
+`descendants.md`, `samaritan-component.md`, the ten path reports.
 
-What was removed was **decision history, not steps** — the twelve-decision table,
-the case-by-case walk notes, the 2026-08-09/10/11/12 decision rounds, the
-re-clone post-mortem, the standing-order records. The decisions that still govern
-the project are in `CLAUDE.md`, which is where they belong; the rest is in
-`git log` at `4127170^`. Nothing was lost, and nothing below it was a step
-anybody was going to execute.
+Steps, in order:
 
-**Two live concerns, Emma's own numbering:**
+1. **Keep the pre-batch tree.** `CLAUDE.md`: *"keep the pre-batch tree whenever a
+   batch lands, it is the only way this question is answerable."* Copy
+   `out/merged.ged` to `out/merged-176.ged` before re-running.
+2. `python -m genimerge merge` — CPU-heavy, so check Emma is not on a hot laptop
+   in public first.
+3. Regenerate the reports whose CLI command exists, then commit.
+4. Re-run `scripts/build-repo-freshness.py` and confirm the `behind_by` column
+   has emptied for the generated rows.
 
----
+## 3 · Re-run `build-geni-wikidata-pairs.py` over the 203-export corpus
+
+The 40-profile pass predates the four Samaritan exports. Cheap; no decision
+needed. A run that reports the two unmergeable Aaron / Zerubbabel pairs as
+"conflicts" has regressed — see `CLAUDE.md` § *A second Geni ID … is NOT a
+conflict*.
+
+## 4 · The 59 order.life properties from P155 up
+
+Emma, 2026-08-15 #288: *"look over all the order.life properties that might be
+novel."* Rodovid, FamilySearch, WikiTree, Roglo, Geneanet, The Peerage, JewAge,
+DAR/SAR, Find a Grave, a large Swedish cluster. Same numbers and meanings as
+Wikidata, values Wikidata often lacks, on items that already exist. **No
+creation, no normalisation** — the easiest remaining win.
 
 ## 5 · Normalise the placeholder names, then generate relationship labels
 
@@ -177,15 +186,28 @@ Korean and Chinese surnames are one character — 이 and 김 would both be disc
 Screen on the placeholder vocabulary and on punctuation, never on length.
 
 **Open, Emma's own uncertainty:** whether to run stage 2 for people who already
-have a surname, or only for the bare-`NN` ones. Not decided.
+have a surname, or only for the bare-`NN` ones. Put to her in item 1.
 
----
+## 6 · Small, named, and unblocked
 
-## 6 · Everything else outstanding from the 2026-08-14 session
+Each of these is one instruction with no decision attached.
 
-Swept out of the chat log because none of it was ever queued.
+- **`Q98159` in order.life's `persons.tsv` is a malformed row** — an embedded
+  quote splits it, so its identifiers land in the wrong columns.
+- **Wadah Cohen's father** is a missing son of `Amram ben Yitzhaq`
+  (`6000000178795370821`); Geni records only one child for him.
+- **The Itamar spine's generation 121** is still committed and still wrong — it
+  is an office count, not a generation depth. A single *"distance not recorded"*
+  link is the honest replacement.
+- **Find the numbered-generation placeholder profiles on Geni.** Emma,
+  2026-08-14 #258: *"There are numbered generation things… I think they're
+  Chinese. I'd like you to try to find them."* Not attempted.
+- **The Samaritan office** (`Samaritan High Priest`) is still only a description;
+  no `P106`, because choosing the item means asking Wikidata.
 
-**Wikidata batches built today, none executed** (nothing runs before 1 Sept):
+## 7 · Wikidata batches built and waiting — nothing runs before 1 Sept
+
+Not work items; here so they are not rebuilt from scratch by a future session.
 
 - `reports/wikidata-samaritan-priests.json` — 78 `create_individual` for the
   pre-1624 line, chained `P22`, kept separate from the post-1624 items.
@@ -193,44 +215,6 @@ Swept out of the chat log because none of it was ever queued.
   in Geni `about_me`, including 2 additional-`P2600` unmergeable duplicates.
 - `reports/wikidata-orderlife.json` — 52,233 entries; needs ONE rerun to pick up
   the label rule.
-
-**Decisions waiting on Emma:**
-
-1. **The 15,094 unreadable-item relationship edges.** 21% of the available work.
-   Expand the `wikidata-download` seed set and re-check, or emit unchecked and
-   accept duplicate-claim risk. `docs/future-modelling.md`.
-2. **The 40 people whose `sex` column points at `Q1`.** An error, fixable; 39 of
-   40 have a Wikidata QID so their own item has the answer, but none are in the
-   local store. `reports/orderlife-sex-q1.csv`.
-3. **The Itamar spine's generation 121.** Still committed and still wrong — it is
-   an office count, not a generation depth. A single "distance not recorded" link
-   is the honest replacement.
-
-**Unbuilt, and the easiest remaining win:** the **59 order.life properties from
-P155 up** — Rodovid, FamilySearch, WikiTree, Roglo, Geneanet, The Peerage,
-JewAge, DAR/SAR, Find a Grave, a large Swedish cluster. Same numbers and meanings
-as Wikidata, values Wikidata often lacks, on items that already exist. No
-creation, no normalisation.
-
-**Blocked on one thing, which unblocks two:** expanding the Wikidata download
-would resolve both the 15,094 edges AND the Samaritan high priests who have
-Wikipedia articles and Wikidata items but no Geni ID on them (Yoseph II,
-`Q2031200` Aharon ben Ab-Chisda, Levi ben Abisha, Aabed-El ben Asher).
-
-**Smaller:**
-
-- Re-run `scripts/build-geni-wikidata-pairs.py` over the enlarged 203-export
-  corpus; the 40-profile pass predates the four Samaritan exports.
-- `Q98159` in order.life's `persons.tsv` is a malformed row — an embedded quote
-  splits it, so its identifiers land in the wrong columns.
-- The Samaritan office (`Samaritan High Priest`) is still only a description; no
-  `P106`, because choosing the item means asking Wikidata.
-- Wadah Cohen's father is a missing son of `Amram ben Yitzhaq`
-  (`6000000178795370821`) — Geni records only one child for him.
-
-**Running:** one cron, `a1b6b180` at 19:03 daily — audits unrequested
-normalisation and exception handling, writes `reports/unrequested-normalisation.md`,
-fixes nothing.
 
 ---
 

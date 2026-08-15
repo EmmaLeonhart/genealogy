@@ -6071,3 +6071,40 @@ Alexandra Krasuk (4,868), `Ancestors` and `BloodTree` on Eliazar Cohen (348 and
 GEDCOMs. The pre-1624 line was in the corpus all along — 78 people from Uzzi ben
 Bakhi through Baba Rabba — and `reports/wikidata-samaritan-priests.json` is the
 batch to create them.
+
+## 2026-08-15 — the transcript audit (queue item 0), run for the first time
+
+Emma, opening this session: *"We're doing a very, very systematic review of the
+transcripts and what I asked and what was actually done."*
+
+**What was read.** All 24 session transcripts, 2026-08-01 00:46 → 2026-08-15
+01:46, 67 MB. **311 user turns** extracted verbatim by
+`scratchpad/extract_turns.py` — tool-result and hook turns filtered out — and
+read in chronological order, so a correction is read after the thing it
+corrects. Nothing was summarised during extraction; that is the step where
+instructions get lost.
+
+**What came out**, in `reports/audit-transcripts-2026-08-15.md`:
+
+- **13 standing instructions checked against the repo**, not assumed. All hold
+  except the never-query-Wikidata rule, which holds in practice but has five
+  live-client surfaces still wired into the CLI.
+- **12 instructions given and not done**, now items 1–6 of the queue. The
+  largest are the 59 order.life properties, the `NN` normalisation, and ripping
+  the name-search matcher out of `reconcile.py` (ordered 2026-08-12).
+- **Six things built without being asked for**, §3 — the audit Emma scheduled by
+  cron for 19:00 on 08-15, which died with the session and never ran. The
+  QuickStatements emitter against a JSON-object spec, the impossible-dates
+  census, and the order.life normalisation are the substantive three.
+- **The staleness census**, `scripts/build-repo-freshness.py` →
+  `reports/repo-freshness.csv`, 201 tracked artifacts one row each.
+
+**The staleness has a single root cause.** `out/merged.ged` is from 2026-08-13
+17:53 and `reports/merge.md` lists **176 sources against 203 exports on disk**.
+Every report derived from the merge is describing a tree that no longer exists —
+12 artifacts state a corpus size smaller than the live one, from `seeds.md` at
+10 exports (193 behind) to `samaritan-component.md` at 192 (11 behind).
+`missing-ancestors.md`, which Emma named, is at 186 and last reported 0 absent.
+
+Dated snapshots are excluded from that count on purpose: an old number in
+`ingest-2026-08-05.md` is the record working, not rot.
