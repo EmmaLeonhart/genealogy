@@ -38,6 +38,7 @@ and a summary in `reports/patronymic-classification.md`.
 from __future__ import annotations
 
 import csv
+import re
 import sys
 import unicodedata
 from collections import Counter, defaultdict
@@ -137,11 +138,37 @@ def fold(text: str) -> str:
 
 
 def stems(name: str) -> set[str]:
-    """The father's name and the forms a patronymic is built on."""
+    """The father's name and the forms a patronymic is built on.
+
+    **The doubled-consonant rule is Norse grammar, not spelling noise.** A
+    masculine name ending `-ll` or `-nn` takes a single consonant in the genitive,
+    which is what the patronymic is built on: `Ketill` → `Ketilsson`, `Þorsteinn`
+    → `Þorsteinsdóttir`, `Kaðall` → `Kaðalsdóttir`. Without it those read as a
+    father who differs.
+
+    Measured before adding it: **1,395 of the 28,917 `father differs` rows** were
+    the same name under some spelling variance, and the Norse declension was the
+    largest identifiable share.
+
+    **What is deliberately NOT done here:** the C/K, th/t, ph/f, y/i fold used to
+    *measure* that 1,395. It matches `Christen`/`Kristen` and also a great many
+    genuinely different names, and this project does not buy recall with wrong
+    matches. `Dmitry` → `Dmitriyevich` stays unconfirmed for the same reason.
+    """
     base = fold(name)
     out = {base}
     if base.endswith(("e", "a", "o", "i")):
         out.add(base[:-1])
+    # Final doubled consonant: the Norse genitive drops one.
+    if len(base) >= 3 and base[-1] == base[-2] and base[-1] not in "aeiou":
+        out.add(base[:-1])
+    # A doubled consonant anywhere: `Clemmet` -> `Clemet`. Narrow on purpose —
+    # only a repeat collapses, never a substitution.
+    collapsed = re.sub(r"([^aeiou])", r"", base)
+    if collapsed != base:
+        out.add(collapsed)
+        if collapsed.endswith(("e", "a", "o", "i")):
+            out.add(collapsed[:-1])
     return {s for s in out if len(s) >= 2}
 
 

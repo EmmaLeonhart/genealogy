@@ -990,6 +990,28 @@ So:
 4. **Ask on ambiguity.** *"The whole thing is you're supposed to slow down and
    ask the user a question on ambiguities."*
 
+### The Samaritan family relationships are DONE. Do not audit them
+
+**Emma, 2026-08-15:** *"Oh my god are you trying to somehow, for some bullshit
+reason, analyze whether the family relationships of the Samaritans are correct?
+Cuz you shouldn't be doing that. I don't want you to be doing that. The family
+relationships of the Samaritans are done."*
+
+She built that tree on Geni by hand. Parent, child and spouse links among the
+Samaritan priests are **her data, already correct**, and checking them is not
+work — it is the export-analysis reflex one section down, wearing a different
+costume.
+
+**What this does not forbid.** Work *about* those people that is not an audit of
+their relationships: giving them Wikidata items, normalising their office and
+succession, classifying their **names** — `ben Yitzhaq` is a patronymic and that
+is name work, not a relationship check.
+
+**How it went wrong:** a stale queue item said Wadah Cohen's father was missing.
+The right move was to notice the item was stale and delete it. Instead the
+relationships were walked and reported back to her. They were fine — she had
+created the intervening `NN ben Amram ben Yitzhaq /Cohen/` the week before.
+
 ### The job with an export is to integrate it, not to analyse it
 
 **Emma, 2026-08-13, stated flatly after repeated violations.** *"This is not a

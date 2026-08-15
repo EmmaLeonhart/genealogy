@@ -148,11 +148,6 @@ on across two status reports. She already knew, and the data stands as recorded.
 `reports/samaritan-source-comparison.csv` keeps the seven for reference; nothing
 is blocked on them and nothing is to be resolved.
 
-## 5 · Wadah Cohen's father
-
-A missing son of `Amram ben Yitzhaq` (`6000000178795370821`); Geni records only
-one child for him.
-
 ## 6 · Multi-hop relationship labels
 
 Ordering, extending the one-hop precedence rather than replacing it:
@@ -289,14 +284,15 @@ married names. `-datter` never became heritable, which is why it does not do thi
 father, 58.8% have a spouse or children, and **6 of 19,621** have no family link
 at all.
 
-### 9a — remaining work
+The Norse genitive is now encoded — a final doubled consonant drops one, and a
+doubled consonant anywhere collapses, so `Ketill` → `Ketilsson`, `Þorsteinn` →
+`Þorsteinsdóttir` and `Clemmet` → `Clemetsdatter` confirm. **123 more confirmed**;
+`father differs` 28,917 → 28,794.
 
-- **Stem misses, 1,395 of the 28,917 `father differs`.** The Icelandic ones are
-  grammar, not noise: nominative `-ll`/`-nn` drops to `-l`/`-n` in the genitive,
-  so `Ketill` → `Ketilsson` and `Þorsteinn` → `Þorsteinsdóttir`. Encode the
-  declension. `Dmitry` → `Dmitriyevich` is romanisation variance and is softer.
-  **The aggressive C/K, th/t, y/i fold used to measure this must not ship** — it
-  would start matching genuinely different names.
+**Deliberately not done:** the C/K, th/t, ph/f, y/i fold used to *measure* the
+1,395 near-misses. It matches `Christen`/`Kristen` and a great many genuinely
+different names, and recall is not worth wrong matches here. `Dmitry` →
+`Dmitriyevich` stays unconfirmed.
 
 ## 10 · Create the fathers the patronymics imply — Emma's item
 

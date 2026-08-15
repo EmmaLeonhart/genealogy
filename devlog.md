@@ -6898,3 +6898,26 @@ is `.display`.
 be. 528,612 rows; **958 tokens are a patronymic for some bearers and a plain
 surname for others**, which is the *"Jackson Jackson Jackson"* rule showing up in
 real data.
+
+
+## 2026-08-15 — patronymics: the Norse genitive, and a Samaritan item I should not have opened
+
+**The Norse genitive, encoded.** `Ketill` → `Ketilsson`, `Þorsteinn` →
+`Þorsteinsdóttir`, `Kaðall` → `Kaðalsdóttir`: a masculine name ending `-ll`/`-nn`
+takes a single consonant in the genitive, which is what the patronymic is built
+on. Without it the classifier read those as a father who differs. **123 more
+confirmed**, 34,683 → 34,806.
+
+**What was deliberately left out**: the C/K, th/t, ph/f, y/i fold used to measure
+the 1,395 near-misses. It matches `Christen`/`Kristen` and also a great many
+genuinely different names. `Dmitry` → `Dmitriyevich` stays unconfirmed rather than
+being bought with a rule that would produce wrong matches elsewhere.
+
+**Item 5, Wadah Cohen's father — closed, and opening it was a mistake.** The item
+was stale: Emma created `NN ben Amram ben Yitzhaq /Cohen/`
+(`6000000227240700841`) on 14 AUG 2026 and the chain Amram → NN → Wadah →
+Eliazar is complete. But she was clear about what I should have done instead:
+*"are you trying to somehow, for some bullshit reason, analyze whether the family
+relationships of the Samaritans are correct? Cuz you shouldn't be doing that. The
+family relationships of the Samaritans are done."* Correct — the item was stale
+and the move was to delete it, not to audit her tree. Recorded in `CLAUDE.md`.

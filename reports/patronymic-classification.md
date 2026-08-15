@@ -11,15 +11,15 @@ Every token of every person is a row in
 | --- | ---: | ---: |
 | not patronymic | 347,287 | 65.7% |
 | no father recorded | 95,023 | 18.0% |
-| patronymic | 34,683 | 6.6% |
-| AMBIGUOUS: form, father differs | 28,917 | 5.5% |
+| patronymic | 34,806 | 6.6% |
+| AMBIGUOUS: form, father differs | 28,794 | 5.4% |
 | patronymic (inferred, no father recorded) | 18,374 | 3.5% |
 | father has no given name | 2,945 | 0.6% |
 | surname: patronymic form conflicts with recorded sex | 1,247 | 0.2% |
 | AMBIGUOUS: form, father unnamed | 136 | 0.0% |
 | **total** | **528,612** | |
 
-**29,053 tokens carry a patronymic FORM that the father does
+**28,930 tokens carry a patronymic FORM that the father does
 not confirm.** Emma asked for these to be separated rather than silently
 called non-patronymic: *"We probably should be doing some level of
 classification for situations where it is ambiguous."* They are the
@@ -29,7 +29,7 @@ Her prior on them, recorded and **not applied** — deciding on it would be
 inference where this project uses evidence: *"most patronymics are not used
 as surnames."*
 
-**Of the 381,970 tokens where a verdict was possible, 34,683 are patronymic (9.1%).**
+**Of the 382,093 tokens where a verdict was possible, 34,806 are patronymic (9.1%).**
 
 **A person with no recorded father gets no verdict**, not a `no` — absence of
 a father in our data is absence of evidence, and a `no` there would be a
@@ -37,7 +37,7 @@ claim we cannot make.
 
 ## The tokens that go both ways — this is the point
 
-**1,031 distinct tokens are built on one bearer's father and not on
+**1,023 distinct tokens are built on one bearer's father and not on
 another's.** Same string, different usage, and therefore **different Wikidata
 items** — `CLAUDE.md` § *"Jackson Jackson Jackson"*. A suffix list alone would
 have called every bearer of these a patronymic.
