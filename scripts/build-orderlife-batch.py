@@ -202,7 +202,7 @@ def read_tsv(path):
     order.life QID appearing where a Wikidata QID is expected.
     """
     return csv.DictReader(path.open(encoding="utf-8", newline=""),
-                          delimiter="	", quoting=csv.QUOTE_NONE)
+                          delimiter="\t", quoting=csv.QUOTE_NONE)
 
 
 def _assert_wikidata_qid(value: str, where: str) -> str:
@@ -276,8 +276,7 @@ def main() -> int:
     args = ap.parse_args()
 
     persons = {r["qid"]: r for r in
-               csv.DictReader((OL / "analysis" / "persons.tsv").open(encoding="utf-8"),
-                              delimiter="\t")}
+               read_tsv(OL / "analysis" / "persons.tsv")}
     persons.pop("Q2", None)
     print(f"{len(persons):,} order.life persons (Q2 dropped)")
 
@@ -304,13 +303,11 @@ def main() -> int:
         print(f"  {bad_q} malformed QIDs and {bad_g} malformed Geni IDs dropped")
 
     father: dict[str, list[str]] = {}
-    for r in csv.DictReader((OL / "analysis" / "edges.tsv").open(encoding="utf-8"),
-                            delimiter="\t"):
+    for r in read_tsv(OL / "analysis" / "edges.tsv"):
         father.setdefault(r["child"], []).append(r["parent"])
 
     spouses: dict[str, list[str]] = {}
-    for r in csv.DictReader((OL / "analysis" / "spouses.tsv").open(encoding="utf-8"),
-                            delimiter="\t"):
+    for r in read_tsv(OL / "analysis" / "spouses.tsv"):
         spouses.setdefault(r["a"], []).append(r["b"])
         spouses.setdefault(r["b"], []).append(r["a"])
 

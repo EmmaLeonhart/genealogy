@@ -65,7 +65,11 @@ def main() -> int:
     if not PERSONS.exists():
         raise SystemExit(f"no persons.tsv at {PERSONS}")
 
-    rows = list(csv.DictReader(PERSONS.open(encoding="utf-8"), delimiter="\t"))
+    # `quoting=QUOTE_NONE`: a `"` in an order.life label is literal data, not an
+    # opening quote. The default swallowed 128 rows of this file, merging each
+    # with the row after it. See `build-orderlife-batch.read_tsv`.
+    rows = list(csv.DictReader(PERSONS.open(encoding="utf-8", newline=""),
+                               delimiter="\t", quoting=csv.QUOTE_NONE))
     print(f"{len(rows):,} persons in order.life")
 
     ours = corpus_geni_ids()
