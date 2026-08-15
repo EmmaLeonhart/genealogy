@@ -6462,3 +6462,22 @@ normalisation and the per-language label is the generated relationship.
 this one: `en` is copied from the relative's own label, Japanese and Chinese have
 to be constructed. Each edit lists its `missing_languages` so item 9 can find
 them.
+
+## 2026-08-16 — cron audit, and the last Samaritan priest
+
+**Six of seven crons fired; one never did.** The 19:07 re-merge starved four
+hours running, because a cron only fires while the session is idle and the
+session was busy on every hour. Recorded as queue item 14b: a long job scheduled
+by cron during active work will not run, and a job that silently never fires
+looks exactly like one with nothing to do.
+
+Ran: work-loop `:03`, auto-flush `:15`, status-report `:42`, bloat review 21:02
+(four approved deletions), entity-resolution 23:03 (the 10 JSON edits),
+structural merge 00:01 (the walk). The 22:01 seeds question was deleted after
+Emma answered it directly.
+
+**`Q137394557 Yitzhaq I ben Tsedaka` is linked**, given by Emma directly:
+`6000000227245553985`. No match over the exports could have found him — the only
+Geni `Yitzhaq` there has `Shalma II ben Tabia` for a father, and **the profile is
+in none of the 203 exports** because she created it after the last Samaritan
+export ran. All 21 priests are now linked; 9 `add_geni_id` edits.

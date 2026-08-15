@@ -263,6 +263,23 @@ Not work items; here so they are not rebuilt from scratch by a future session.
 
 ---
 
+## 14b · A long job scheduled by cron will starve. Run it, or schedule it idle
+
+**Measured 2026-08-15/16.** Of seven crons, six fired and one never did: the
+19:07 re-merge, starved four hours running because **a cron only fires while the
+session is idle** and the session was busy on the hour, every hour. Emma caught
+it — *"fucking do this shit right there fuck now or at least queue it up at the
+end so it actually runs"* — and it ran by hand at 00:30.
+
+**So: never schedule a long or load-bearing job by cron during active work.**
+Either run it directly, or schedule it for a window when nothing else is running.
+The three hourly ticks are fine because they are short and re-fire; a
+twenty-minute merge is not.
+
+**Check the crons when a session resumes.** They are session-only, so they die
+with it and need recreating — and a job that quietly never fires looks identical
+to one that had nothing to do.
+
 ## 15 · Audit `todo.md` the way `queue.md` was audited, then fold in the provisional to-do
 
 **Emma, 2026-08-15:** *"I don't know if the to-do is being properly done."* This

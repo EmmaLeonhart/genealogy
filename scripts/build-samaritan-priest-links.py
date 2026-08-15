@@ -87,6 +87,21 @@ def samaritan_people() -> dict[str, str]:
     return people
 
 
+#: Links Emma gave directly, which no match over the exports could find.
+#:
+#: `Q137394557 Yitzhaq I ben Tsedaka` had no counterpart: the only Geni `Yitzhaq`
+#: in the Samaritan exports has `Shalma II ben Tabia` for a father, and no
+#: Yitzhaq with a Tsedaka father existed anywhere in them. Emma, 2026-08-16, with
+#: the profile: *"this is the person for the qid to correspond to."* The profile
+#: is **not in any of the 203 exports** — she created it on Geni after the last
+#: Samaritan export ran — so the link is recorded here and the person arrives
+#: with her next export. Hand-given identity, same standing as
+#: `entity_resolution.md`.
+GIVEN_BY_EMMA = {
+    "Q137394557": ("6000000227245553985", "Yitzhaq I ben Tsedaka"),
+}
+
+
 def main() -> int:
     if not LIST.exists():
         print(f"no {LIST}", file=sys.stderr)
@@ -136,6 +151,9 @@ def main() -> int:
         # this priest is genuinely absent rather than merely unmatched.
         if best is not None and best[3] < 2 and len(want) > 1:
             best = None
+        if best is None and qid in GIVEN_BY_EMMA:
+            gid, geni_name = GIVEN_BY_EMMA[qid]
+            best = ((0, 0), gid, geni_name, -1)   # -1 marks "not matched, given"
         if best is None:
             rows.append({"qid": qid, "wikidata_name": name, "geni_id": "",
                          "geni_name": "", "shared_tokens": 0,
@@ -144,9 +162,13 @@ def main() -> int:
         _key, gid, geni_name, shared = best
         matched += 1
         already = gid in linked.get(qid, set())
+        given = shared == -1
         rows.append({"qid": qid, "wikidata_name": name, "geni_id": gid,
-                     "geni_name": geni_name, "shared_tokens": shared,
-                     "verdict": "already linked" if already else "add_geni_id"})
+                     "geni_name": geni_name,
+                     "shared_tokens": "" if given else shared,
+                     "verdict": "already linked" if already
+                     else ("add_geni_id (given by Emma, not in any export)"
+                           if given else "add_geni_id")})
         if already:
             continue
         edits.append({
