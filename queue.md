@@ -328,22 +328,45 @@ item, hold them all, or look at the top few by hand.
 used once. Not excluded on principle, just not worth an item before the ones that
 matter exist.
 
-## 11 · Small, named, and unblocked
+## 11 · Small, named — three closed, one measured, one with Emma
 
-Each of these is one instruction with no decision attached.
+**Closed 2026-08-16:**
 
-- **`Q98159` in order.life's `persons.tsv` is a malformed row** — an embedded
-  quote splits it, so its identifiers land in the wrong columns.
+- **`Q98159`'s malformed row** — fixed by reading order.life's TSVs with
+  `QUOTE_NONE`. Its `geni_id` is `6000000011399707950` again and its
+  `wikidata_qid` is correctly empty. It was 128 rows, not one.
+- **The Samaritan office** — done as `P39` → `Q678510` *Samaritan High Priest*
+  on all 21, in `reports/wikidata-samaritan-succession.json`. It needed no
+  Wikidata query; the label was confirmed offline.
+- **The numbered-generation profiles on Geni** — found, and **Emma was right that
+  they are Chinese.** The convention is a comma-separated list of generation
+  counts in different lineage reckonings ending in `世`: `,106,94,41,37,2世`,
+  `(毛灬),136,124,71,67,32世`. **6,368 name records** carry one. Separately, the
+  115 `Nth generation Samaritan Itamar line` profiles are her own placeholders.
+
+**Still open:**
+
 - **Wadah Cohen's father** is a missing son of `Amram ben Yitzhaq`
   (`6000000178795370821`); Geni records only one child for him.
-- **The Itamar spine's generation 121** is still committed and still wrong — it
-  is an office count, not a generation depth. A single *"distance not recorded"*
-  link is the honest replacement.
-- **Find the numbered-generation placeholder profiles on Geni.** Emma,
-  2026-08-14 #258: *"There are numbered generation things… I think they're
-  Chinese. I'd like you to try to find them."* Not attempted.
-- **The Samaritan office** (`Samaritan High Priest`) is still only a description;
-  no `P106`, because choosing the item means asking Wikidata.
+
+### The Itamar spine contradicts itself, 112 against 121
+
+Measured 2026-08-16, and the file is **more careful than the queue gave it credit
+for** — `@I3@`'s note already says *"The LENGTH of the unnamed stretch is borrowed
+from the parallel Phinhas line… Nobody counted this line. Do not read the number
+as measured."* That is exactly right.
+
+**But its header and its contents disagree.** The `HEAD` says *"Generation numbers
+count from Aaron ben Amram = 1, so Itamar is 2 and Tabia is 112."* Tabia's own
+note says **"Generation 121"**. The file holds **120 people numbered 2 through
+121** — so nine more than its own header states, and nine more than the 112
+generations the source gives for the parallel Phinhas line.
+
+**NEEDS-DECISION, in `questions.md`:** renumber to end at 112, or collapse the
+invented stretch to a single *"distance not recorded"* link as Emma originally
+suggested. **The GEDCOM is not touched either way until she says** — it is
+hand-made, and `CLAUDE.md` § 9b's rule applies: do not supersede a
+hand-transcribed source on inference.
 
 ## 13 · Multi-hop relationship labels
 

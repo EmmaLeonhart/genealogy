@@ -6641,3 +6641,27 @@ wrong Levi does not survive the father check.
 The 7 disagreements go to Emma rather than being resolved here, and at least one
 is only `Phinhas` against `Phinehas`. Three of the seven are cases where Geni
 gives a `119th generation Samaritan…` placeholder as the father.
+
+## 2026-08-16 — item 11: three closed, and the Itamar spine contradicts itself
+
+- **`Q98159`'s malformed row** — already fixed by the `QUOTE_NONE` reader; it was
+  128 rows, not one.
+- **The Samaritan office** — done as `P39` → `Q678510` on all 21.
+- **The numbered-generation profiles** — found, and **Emma's memory was right
+  that they are Chinese.** The convention is a comma-separated list of generation
+  counts in different lineage reckonings ending in `世` — `,106,94,41,37,2世`,
+  `(毛灬),136,124,71,67,32世` — on **6,368 name records**. The 115
+  `Nth generation Samaritan Itamar line` profiles are a separate thing: her own.
+
+**The Itamar spine turns out to be better than its queue entry said, and wrong in
+a way the entry missed.** `@I3@` already warns *"The LENGTH of the unnamed stretch
+is borrowed from the parallel Phinhas line… Nobody counted this line. Do not read
+the number as measured"* — so it is not asserting a measured count.
+
+What it does do is contradict itself: the `HEAD` says Tabia is **112**, Tabia's
+own note says **Generation 121**, and the file holds **120 people numbered 2
+through 121**. Nine more than its header, nine more than the source's 112.
+
+Put to Emma in `questions.md` with three options rather than fixed overnight. The
+file is hand-transcribed, and item 9b has just established that a published
+source does not get overridden on inference.
