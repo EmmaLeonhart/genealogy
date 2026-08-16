@@ -420,39 +420,39 @@ people holding both identifiers. **The label only confirms a position the
 structure chose; it never searches for a name.** Everything offline. Show cases
 one by one before generalising; do not reformat records.
 
-## Samaritan High Priest wikidata normalization
+## Samaritan High Priest normalization — BUILT, one defect found and fixed
 
-Please actually start to set up and plan the wikidata normalization that I've been constantly asking you to set up and plan for the Samaritan High Priests that you've just kind of been fucking off with. I don't really understand why it is that you've been not doing it, and by the way do AskUserQuestion liberally if you are confused. 
+**Emma:** *"Please actually start to set up and plan the wikidata normalization
+that I've been constantly asking you to set up and plan for the Samaritan High
+Priests that you've just kind of been fucking off with."*
 
-I will give some info
+**Measured what her own labels mean.** Comparing her five *well modelled* against
+her fifteen *badly modelled*, offline:
 
-== Well modelled ones ==
+| property | | well | badly |
+| --- | --- | ---: | ---: |
+| `P39` *position held* | → `Q678510` *Samaritan High Priest* | **5/5** | **0/15** |
+| `P31` *instance of*, `P21` *sex or gender* | | 5/5 | 15/15 |
+| `P2600` *Geni.com profile ID* | | 2/5 | **10/15** |
+| `P40` *child* | | 0/5 | **6/15** |
 
-Aabed-El ben Asher ben Matzliach (Q13485740)
-Aharon ben Ab-Chisda ben Yaacob (Q2031200)
-Elazar ben Tsedaka ben Yitzhaq (Q2164896)
-Saloum Cohen (Q2067443)
-Levi ben Abisha ben Phinhas ben Yitzhaq (Q2666440)
+**"Well modelled" means exactly one thing: the office statement.** Everything else
+is noise, and on two counts the badly-modelled ones score *better*.
 
-==Badly modelled ones==
-Yoseph ben Ab-Hisda ben Yaacov ben Aaharon (Q8055954)
-Yaacob II ben Uzzi ben Yaacob ben Aaharon (Q118782320)
-Phinehas X ben Matzliach ben Phinehas (Q108907046)
-Asher ben Matzliach ben Phinhas (Q108764515)
-Amram IX ben Yitzhaq ben Amram ben Shalma (Q107534557)
-Abisha III ben Phinhas ben Yittzhaq ben Shalma (Q107534535)
-Matzliach ben Phinhas ben Yitzhaq ben Shalma (Q108907045)
-Yitzhaq II ben Amram ben Shalma ben Tabia (Q107534637)
-Yaacob I ben Aaharon ben Shalma (Q109888305)
-Amram VIII ben Shalma (Q135489819)
-Shalma II ben Tabia (Q135489727)
-Tabia III ben Yitzhaq ben Abram (Q135489728)
-Levi V ben Abram (Q135489805)
-Abram ben Yitzhaq (Q135489730)
-Tsedaka II ben Tabia ha'Åbtå'i (Q135489731)
+**It was already built.** `reports/wikidata-samaritan-succession.json`, 21 edits,
+each adding `P39` → `Q678510` qualified with `P1365` *replaces*, `P1366` *replaced
+by*, `P580` *start time*, `P582` *end time* — the same shape the five carry. It
+covers all 16 she listed, including `Q137394557` *Yitzhaq I ben Tsedaka*, the empty
+one.
 
-==worst modelled one (empty)==
-Yitzhaq I ben Tsedaka (Q137394557)
+**The defect: 9 of the 21 cited a `P2600` the item does not carry.** That breaks
+her own ordering rule — *"The Jenny ID needs to be present before any properties
+derived from Jenny can be taken from it"* — and produces an unusable reference.
+The dependency is now declared (`requires: entity_resolution:<qid>`) rather than
+the reference dropped, because the provenance is real and simply has to land
+second. 12 of 21 already carry a Geni ID and need no dependency.
+
+**Blocked only on the calendar.**
 
 ## NN on wikidata
 

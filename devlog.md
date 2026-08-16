@@ -7479,3 +7479,26 @@ points at the name the patronymic derives from; on a **person's `P5056` statemen
 it points at the father as a person. Those are different jobs in different scripts.
 
 `tests/test_edit_emitters.py` — 9 passed.
+
+
+## 2026-08-16 — Samaritan normalization: already built, and one real defect
+
+Emma listed five priests as *well modelled* and fifteen as *badly modelled* and
+asked for the normalization to be planned. **What her labels mean is measurable**,
+and it is one property: `P39` *position held* → `Q678510` *Samaritan High Priest*,
+present on **5/5** of the good and **0/15** of the bad. On two other counts the
+badly-modelled ones are *better* — `P2600` *Geni.com profile ID* 10/15 against 2/5,
+and `P40` *child* 6/15 against 0/5.
+
+**The batch already existed** and already produced the right shape: 21 edits adding
+the office with `P1365` *replaces*, `P1366` *replaced by*, `P580` *start time* and
+`P582` *end time*, covering all 16 she named including the empty `Q137394557`.
+
+**The defect worth the tick: 9 of the 21 referenced a `P2600` the item does not
+have.** Her rule is that the Geni ID precedes anything derived from Geni, and a
+reference to an identifier the item lacks is unusable. Fixed by declaring
+`requires: entity_resolution:<qid>` rather than dropping the reference — the
+provenance is real, it just has to land second. Which items already carry the ID is
+read from the store, not assumed: 12 of 21 do.
+
+`tests/test_edit_emitters.py` — 9 passed.

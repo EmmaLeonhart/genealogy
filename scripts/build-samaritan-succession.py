@@ -166,6 +166,20 @@ def main() -> int:
     print("  " + " -> ".join(name[q].split(" ben ")[0] for q in order if q in name))
     print()
 
+    # **Which items already carry a `P2600` Geni.com profile ID.** Read from the
+    # store, because a reference to a Geni ID the item does not have is unusable.
+    has_p2600: set[str] = set()
+    try:
+        with wikistore.StoreReader(REPO / "wikidata" / "items",
+                                   REPO / "out" / "wikidata" / "store-index.sqlite3") as reader:
+            for found_qid, entity in reader.entities(sorted(qids)).items():
+                if "P2600" in (entity.get("claims") or {}):
+                    has_p2600.add(found_qid)
+    except Exception as exc:                     # noqa: BLE001 - reported, not hidden
+        print(f"  could not read the store ({exc}); every P2600 reference will be "
+              "treated as needing the ID added first", file=sys.stderr)
+    print(f"  {len(has_p2600)} of {len(qids)} already carry a Geni ID")
+
     edits = []
     for q in qids:
         e = ents.get(q, {})
@@ -183,7 +197,15 @@ def main() -> int:
             "type": "normalise_office",
             "source": "samaritans/priests.txt + existing P155/P156",
             "subject": {"qid": q, "geni_id": geni.get(q) or None},
-            "requires": [],
+            # **A `P2600` reference is only usable once the item carries that
+            # Geni ID.** Emma's rule: *"The Jenny ID needs to be present before
+            # any properties derived from Jenny can be taken from it."* Nine of
+            # these 21 cited a Geni ID the item does not yet have, which is the
+            # broken-reference case `tests/test_edit_emitters.py` pins. The
+            # dependency is declared rather than the reference dropped: the
+            # provenance is real, it just has to land second.
+            "requires": ([f"entity_resolution:{q}"]
+                         if geni.get(q) and q not in has_p2600 else []),
             "add": [{
                 "property": POSITION_HELD,
                 "value": OFFICE,
