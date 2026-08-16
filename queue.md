@@ -207,35 +207,49 @@ the name** — the tree settles it, via neighbours and which exports they came f
 `reports/wikidata-placeholder-labels.json` currently has `mul` on all and `en` on
 14,351. **It must not run in that state.**
 
-## Name items — the ambiguity is a PATRONYMIC problem, and needs the download first
+## Name items — the ambiguity, measured now the download is in
 
-**Emma, 2026-08-15, diagnosing it herself:** *"Didn't we just answer this question
-way long ago? For the most part this is based off of diacritics and based off of
-you not differentiating patronymics versus surnames versus given names."*
+**Emma's diagnosis was right about the causes and wrong about the size.** She said
+the ambiguity was *"diacritics and… you not differentiating patronymics versus
+surnames versus given names."* With all 824,358 name items downloaded and the store
+index rebuilt, **1,633 of the 1,731 competing items are readable** and the split is:
 
-Measured against her diagnosis:
+| | strings |
+| --- | ---: |
+| **resolved by usage class** (`P31` *instance of* separates given from family) | **192** |
+| still ambiguous *within* one class | 769 |
+| no item of the right class at all | 14 |
 
-- **diacritics — fixed.** `Maria` and `María` are separate rows now, not folded.
-- **given vs family — already separate.** Ambiguity is computed within a usage.
-- **patronymic vs given — NOT separated, and not separable offline.** Telling
-  `Q110874` *patronymic* from `Q202444` *given name* needs the item's own `P31` *instance of*. All **1,731** competing
-  QIDs were checked against the store: **0 are held.** The store is a Geni-shaped
-  slice of people and carries almost no name items.
+**So the usage split resolves 192, not the bulk.** Most ambiguity is genuinely two
+items of the same kind sharing a label.
 
-**So this waits on item 8**, and that is a second independent reason for running
-the imports first.
+Of the 769:
 
-**A separate bug visible in the same list:** `de` is an ambiguous *given name*
-with 1,997 bearers. It is a particle, not a name — the token-splitting problem in
-`todo.md` § 4, not an ambiguity.
+| cause | strings | |
+| --- | ---: | --- |
+| **male vs female given name** | **95** | **resolved — her rule** |
+| one item far better populated than the other | 207 | not acted on |
+| neither | 467 | open |
 
-`reports/name-item-plan.csv`, `reports/wikidata-name-items.json`. Prerequisite for
-item 1: 21,939 planned, 8,092 link, 13,320 create, **525 held as ambiguous**.
+**The 95 are settled per BEARER, not per name string** — her ruling on `Maria`:
+*"there's a male and a female Maria… That is settled by the person's sex."* So the
+same token resolves to different items depending on who carries it, which is the
+*one item per usage* principle applied to a person rather than to a string.
+`reports/name-resolved-by-sex.csv`: **13,503 bearer-token pairs, 13,501 resolved**,
+2 left because the bearer has no recorded sex.
 
-`ambiguous` counts as **existing** — treating it otherwise would have created a
-tenth `Maria`. Emma named the one genuine residue herself: `Q325872` *Maria* / `Q25413386`,
-the **male** and **female** given name `Maria`, settled by the person's sex rather
-than by the string.
+**The 207 are deliberately NOT acted on.** One item having ten times the label
+languages of the other is a plausible tie-break and she has rejected exactly that
+shape of reasoning before — *"you jumped through a lot of hoops to try to introduce
+safety stuff here that I did not want."* Recorded as an observation; it needs her
+before it becomes a rule.
+
+**A real cause visible in the 467, also not acted on:** several are the same
+spelling in different languages, which Wikidata models as separate items — `Juan`
+is `Q110700065` *Chinese given name* and `Q475210` *Spanish*; `Marie` is
+`Q106674406` *Japanese* and `Q632104` *French*. Resolving those needs a view on
+which language a Geni name is, which is the CJK-culture problem from the labels
+item and is not solved.
 
 ## The 7 Samaritan father disagreements — CLOSED, we operate off them
 

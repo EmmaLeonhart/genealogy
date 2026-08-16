@@ -7425,3 +7425,29 @@ name appears nowhere, and she is correctly absent from the creations because
 `Q140568870` already exists.
 
 `test_edit_emitters` and `test_repo_invariants` — 22 passed.
+
+
+## 2026-08-16 — the name ambiguity, measured against the downloaded items
+
+The download and the store-index rebuild made this answerable for the first time.
+**1,633 of the 1,731 competing items are readable.**
+
+Emma's diagnosis named the right causes and overstated their reach. Splitting by
+`P31` *instance of* — given name versus family name — resolves **192** of 975
+ambiguous strings. The other 769 are two items of the *same* kind sharing a label.
+
+**95 of those are the male/female given name case she had already ruled on**, and
+they are settled per **bearer**: `reports/name-resolved-by-sex.csv`, 13,503
+bearer-token pairs, **13,501 resolved**, 2 left where the bearer has no recorded
+sex. The same token maps to different items depending on who carries it.
+
+**207 more could be resolved by preferring the better-populated item** — one having
+ten times the label languages of the other. **Not done.** That is a tie-break
+heuristic of exactly the shape she rejected in the name census, and it needs her
+before it becomes a rule.
+
+**And a cause worth recording: same spelling, different language, separate items.**
+`Juan` is `Q110700065` *Chinese given name* and `Q475210` *Spanish*; `Marie` is
+`Q106674406` *Japanese* and `Q632104` *French*. Choosing between them needs a view
+on which language a Geni name is — the same unsolved CJK-culture problem the
+seven-language label work turns on.
