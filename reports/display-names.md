@@ -17,16 +17,16 @@ below has to be taken on trust.
 
 | | people |
 | --- | ---: |
-| linked to a Wikidata item | 14,157 |
-| …of which no English label on Wikidata | 501 |
-| …of which **no Latin-script `NAME` at all** | 5,199 |
-| **scored** | **8,457** |
-| of the scored, carrying more than one Latin name | 4,167 |
+| linked to a Wikidata item | 16,611 |
+| …of which no English label on Wikidata | 541 |
+| …of which **no Latin-script `NAME` at all** | 5,216 |
+| **scored** | **10,854** |
+| of the scored, carrying more than one Latin name | 4,919 |
 
-**5,199 people have no Latin-script name whatsoever.** Those are the
+**5,216 people have no Latin-script name whatsoever.** Those are the
 translation cases Emma named — *"If there's only a name present in some sort of
 other script, we have to do a translation"* — and they are not a fringe: they are
-37% of the linked people.
+31% of the linked people.
 
 ## How well the rule does
 
@@ -36,38 +36,38 @@ a proposal, since nothing can choose better than the best available.
 
 | verdict | first | | best | |
 | --- | ---: | ---: | ---: | ---: |
-| identical | 1,546 | 18.3% | 2,009 | 23.8% |
-| identical bar case/diacritics | 192 | 2.3% | 259 | 3.1% |
-| Geni is a superset | 1,872 | 22.1% | 2,311 | 27.3% |
-| Wikidata is a superset | 472 | 5.6% | 389 | 4.6% |
-| overlap, half or more | 2,517 | 29.8% | 2,314 | 27.4% |
-| overlap, under half | 946 | 11.2% | 617 | 7.3% |
-| nothing in common | 912 | 10.8% | 558 | 6.6% |
+| identical | 2,205 | 20.3% | 2,820 | 26.0% |
+| identical bar case/diacritics | 268 | 2.5% | 328 | 3.0% |
+| Geni is a superset | 2,381 | 21.9% | 2,839 | 26.2% |
+| Wikidata is a superset | 556 | 5.1% | 451 | 4.2% |
+| overlap, half or more | 3,378 | 31.1% | 3,074 | 28.3% |
+| overlap, under half | 1,027 | 9.5% | 687 | 6.3% |
+| nothing in common | 1,039 | 9.6% | 655 | 6.0% |
 
-**Exactly right: 1,738 of 8,457 (20.6%) taking the first name, 2,268 (26.8%) taking the best.**
+**Exactly right: 2,473 of 10,854 (22.8%) taking the first name, 3,148 (29.0%) taking the best.**
 
 ## Scripts across all 444,874 name records
 
 | script(s) | records |
 | --- | ---: |
-| Latin | 296,936 |
+| Latin | 404,500 |
 | Han | 94,444 |
 | Han+Latin | 23,355 |
-| (no letters) | 7,963 |
-| Cyrillic | 7,874 |
+| (no letters) | 10,450 |
+| Cyrillic | 8,219 |
 | Hangul | 6,066 |
-| Arabic | 3,921 |
-| Cyrillic+Latin | 1,024 |
-| Latin+Masculine | 735 |
+| Hebrew | 5,115 |
+| Arabic | 3,929 |
+| Cyrillic+Latin | 1,092 |
+| Latin+Masculine | 738 |
 | Han+Hiragana | 482 |
-| Hebrew | 471 |
-| Greek | 404 |
+| Hebrew+Latin | 477 |
+| Greek | 418 |
 | Han+Ideographic | 250 |
-| Arabic+Latin | 166 |
+| Arabic+Latin | 167 |
 | Latin+Modifier | 104 |
 | Feminine+Latin | 85 |
 | Hiragana | 79 |
-| Hebrew+Latin | 62 |
 | Han+Katakana | 61 |
 | Greek+Latin | 46 |
 | Armenian | 46 |
@@ -96,9 +96,9 @@ Raw, first-name measure, up to 15 each.
 | `303021670170005628` | Q452705 | Domitia Paulina | Domitia Paulina |
 | `307514259060008270` | Q105426953 | Margery Willard | Margery Willard |
 | `310151979050001364` | Q735297 | Thomas Metcalfe | Thomas Metcalfe |
-| `315336717180006465` | Q98050960 | Joseph Willard | Joseph Willard |
-| `3153782` | Q101247694 | Peder Fleming | Peder Fleming |
-| `328059704870005473` | Q6260751 | John Thornton Augustine Washington | John Thornton Augustine Washington |
+| `3119955` | Q135529178 | Narfi Vigfússon | Narfi Vigfússon |
+| `3119993` | Q135529188 | Vigfús Flosason | Vigfús Flosason |
+| `3120040` | Q135529195 | Flosi Jónsson | Flosi Jónsson |
 
 ### identical bar case/diacritics
 
@@ -108,17 +108,17 @@ Raw, first-name measure, up to 15 each.
 | `283896414940007239` | Q125472016 | John Sargent Jr. | John Sargent, Jr. |
 | `294414873430006408` | Q1346964 | Lambert margrave of Tuscany | Lambert, Margrave of Tuscany |
 | `300537894950005354` | Q692265 | Jérôme Napoléon Bonaparte | Jérôme Napoleon Bonaparte |
+| `3137288` | Q5642805 | Hallbera Úlfsdóttir | Hallbera Ulfsdóttir |
 | `331624398740011365` | Q104537663 | Levi Moss Sr. | Levi Moss, Sr. |
 | `3825252` | Q112958671 | Samuel S. Terry Sr. | Samuel S. Terry, Sr. |
 | `4924875649300067216` | Q43899851 | Filippo Lante Montefeltro Della Rovere IV duca di Bomarzo | Filippo Lante Montefeltro della Rovere, IV duca di Bomarzo |
 | `4956444637700125722` | Q136411203 | Anders Nielsen Sehested Broholm Linjen | Anders Nielsen Sehested, Broholm Linjen |
 | `4973001485280125785` | Q140761504 | Niels Jensen Sehested Oberstløjtnant, til Broholm | Niels Jensen Sehested, Oberstløjtnant, til Broholm |
 | `4973011274330029032` | Q136411204 | Elisabeth Andersdatter Skeel til Broholm og Mullerup | Elisabeth Andersdatter Skeel, til Broholm og Mullerup |
+| `5016639768770048095` | Q361204 | Edmund Tudor 1st Earl of Richmond | Edmund Tudor, 1st Earl of Richmond |
 | `5414792841960084676` | Q101423826 | Benjamin Wright Jr. | Benjamin Wright, Jr. |
 | `5432947433130027698` | Q16063735 | Frederik Christian Michaëlsen | Frederik Christian Michaelsen |
-| `5657833973450023638` | Q101537627 | Charles “Charley” Phelps I | Charles “Charley” Phelps, I |
-| `6000000000112073804` | Q123702048 | Robert Douglas of New London | Robert Douglas, of New London |
-| `6000000000115658620` | Q2601233 | Robert de Ferrers 2nd Earl of Derby | Robert de Ferrers, 2nd Earl of Derby |
+| `5614178293470033239` | Q942577 | Ralph de Stafford 1st Earl of Stafford | Ralph de Stafford, 1st Earl of Stafford |
 
 ### Geni is a superset
 
@@ -134,17 +134,19 @@ Raw, first-name measure, up to 15 each.
 | `300340430900007929` | Q604419 | Infanta Maria Josefa Carmela of Spain | Infanta Maria Josefa of Spain |
 | `305332989800002467` | Q116150300 | Cecilie Ebbesdatter Hvide | Cecilie Ebbesdatter |
 | `306650341960001516` | Q2221910 | Samuel Symon Willard Sr. | Samuel Willard |
+| `3096772` | Q63242517 | Israel Tzvi Landau | Israel Landau |
+| `3096838` | Q1385975 | Yechezkel Halevi Landau haNoda bYehuda | Yechezkel Landau |
+| `3120112` | Q16423408 | Erlendur „sterki“ Ólafsson sterki 'the Strong' | Erlendur Ólafsson sterki |
 | `312479826640001569` | Q168674 | Sophie Frederika Mathilde von Württemberg Queen consort of the Netherlands | Sophie of Württemberg |
-| `317651825030005113` | Q350220 | Magnus III Ladulås Birgersson King of Sweden | Magnus III of Sweden |
-| `337578418680004010` | Q172471 | Flavius Julius Valens | Valens |
-| `339435131070013659` | Q1663709 | Johannes Johannis Rudbeckius d.ä. | Johannes Rudbeckius |
-| `339493353880007732` | Q98108235 | William Bassett of Sandwich | William Bassett |
+| `3128249` | Q4919484 | Brunda Bjálki (Bjalfi) Ögmundsson | Bjalfi |
 
 ### Wikidata is a superset
 
 | geni | item | the rule would produce | Wikidata's English label |
 | --- | --- | --- | --- |
 | `1077061` | Q108743024 | Marguerite Blosset | Marguerite de Blosset |
+| `299241483040004362` | Q16197796 | Håkon | Hakon Sunnivasson |
+| `342470603550004525` | Q616618 | Þorvaldur Snorrason | Þorvaldur Snorrason Vatnsfirðingur |
 | `348889594040013469` | Q100327211 | Ermengarde | Ermengarde of Provence |
 | `353442154280012039` | Q75930730 | Anne Radcliffe | Lady Anne Radcliffe |
 | `359281527140013083` | Q210564 | Michael Doukas | Michael VII Doukas |
@@ -152,13 +154,11 @@ Raw, first-name measure, up to 15 each.
 | `377208681320011176` | Q121464332 | Mercy Porter | Mercy Fitch (Porter) |
 | `3996823052360126946` | Q1032321 | Maria Karoline Maria of Austria | Archduchess Maria Karoline of Austria |
 | `4194887957440076070` | Q111490 | Geoffrey | Geoffrey Plantagenet, Count of Anjou |
+| `4642736` | Q5537375 | George Brydges | George Brydges, 6th Baron Chandos |
 | `4764222` | Q600581 | Leuthard | Leuthard I of Paris |
 | `4927794328070059657` | Q60171 | Henry | Henry IX, Duke of Bavaria |
 | `4927821238910067084` | Q273181 | Judith of Flanders | Judith of Flanders, Countess of Northumbria |
 | `4957925890120125479` | Q451377 | Otto of Savoy | Otto I, Count of Savoy |
-| `5020469289250100933` | Q60094 | Henry | Henry IV |
-| `5364986739170034579` | Q220994 | Robert | Robert Curthose |
-| `5365042495540103778` | Q102005 | William II | William II of England |
 
 ### overlap, half or more
 
@@ -177,8 +177,8 @@ Raw, first-name measure, up to 15 each.
 | `302888257510001064` | Q109536562 | Winifred Anne Oldham | Winifred Anne Neville |
 | `304435320540004195` | Q57989 | Charles Louis Wittelsbach Elector of the Palatine, K.G. | Charles I Louis, Elector Palatine |
 | `3080341` | Q1621801 | Bengt Folkesson | Bengt Snivil |
+| `309722704990006453` | Q119700536 | Eliezer Isserles of Okopy, Father of Baal Shem Tov | Eliezer,  Father of the Baal Shem Tov |
 | `310787864080006466` | Q65878 | Johann VI. zu Anhalt-Zerbst | John VI of Anhalt-Zerbst |
-| `312473166720001563` | Q170398 | Wilhelm Friedrich Karl of Württemberg King of Württemberg | Wilhelm I of Württemberg |
 
 ### overlap, under half
 
@@ -205,6 +205,7 @@ Raw, first-name measure, up to 15 each.
 | geni | item | the rule would produce | Wikidata's English label |
 | --- | --- | --- | --- |
 | `1354718` | Q168691 | Vittorio Emanuele Maria Alberto Eugenio Ferdinando Tommaso di Savoia | Victor Emmanuel II of Italy |
+| `297811137290006350` | Q7220725 | Tzvi Hirsh Isserles BESHT son [of Pinsk] | Tsvi |
 | `311714621730004586` | Q452932 | Hedvig af Slesvig-Holsteen & Oldenborg Kurfürstin zu Sachsen | Hedwig of Denmark |
 | `312468491750006446` | Q170179 | Friedrich Wilhelm Karl | Frederick I of Württemberg |
 | `312474987850005822` | Q57662 | Karoline Charlotte Auguste Wittelsbach Kronprinzessin von Württemberg, Kaiserin zu Österreich und HRR | Caroline Augusta of Bavaria |
@@ -212,11 +213,10 @@ Raw, first-name measure, up to 15 each.
 | `3381491` | Q16130364 | Abraham Joshua Levenshtam Head, Cracow Yeshiva | Avraham Yehoshua Heschel |
 | `347868854190012671` | Q266495 | Oluf Hunger Svendsøn | Olaf I of Denmark |
 | `353440830330013057` | Q122961015 | Tora Guttormsdotter Vik | Thora |
+| `353479885240011139` | Q1752172 | Håkon Magnussen Toresfostre | Haakon Magnusson of Norway |
 | `361890384880013875` | Q6146474 | Vasily Dmitriyevich "Kirdyapa" of Suzdal | Vasiliy Kirdyapa |
 | `3624121` | Q6032078 | Ingeborga Tryggvės duktė | Ingeborg Tryggvasdotter |
 | `365447742810013159` | Q10795576 | Jeanne de la Marche | Joan of Lusignan |
 | `367922923820005107` | Q394552 | Agnieszka Władysławówna | Agnes I, Abbess of Quedlinburg |
 | `376469227150012924` | Q150642 | Vittorio Emanuele Ferdinando Maria Gennaro di Savoia | Victor Emmanuel III of Italy |
-| `376470307830012909` | Q459441 | Ferdinando Maria Alberto Amedeo Filiberto Vincenzo di Savoia duca di Genova | Prince Ferdinand, Duke of Genoa |
-| `385953397470012188` | Q41608 | Constantine Porphyrogennetos | Konstantinos VII |
 

@@ -596,6 +596,16 @@ GEDCOM goes to `export-geni/export-<style>-<N>.ged`, where `N` is the zip's
 download number — a local label for that batch, not a Geni identifier, and
 meaningless across directories.
 
+**Correcting her own record in an export does nothing until the tree is
+re-merged, and nothing after that until `build-display-names.py` re-runs.** Learnt
+2026-08-16. The chain is long and every link caches: `exports/*.ged` →
+`out/merged.ged` → `reports/display-names.csv` → `reports/derived-labels.csv` →
+every label emitter. Fixing the exports and regenerating `derived-labels.csv`
+left the old surname in place, because `derive-labels.py` reads
+`display-names.csv` and **does not build it** — `build-display-names.py` does, and
+that is the only script that reads the merged tree. Running the analysers is not
+running the generator.
+
 **Every GEDCOM is committed. Never gitignore a `.ged`.** Tracking the exports is
 what this repo is *for*, and disk size is not a reason to lose that. This is
 written down because it was got wrong: `6eddadd` moved 37 exports out of git on
@@ -1245,10 +1255,16 @@ profile is **deliberate** — not a data error, nothing to correct, nothing to a
 about. And it is **not to be emitted**: no `P735` with `P3831` → `Q245025`, no
 appearance in a label, in any language.
 
-**No export holds it yet**, checked 2026-08-15 across all 203 — every copy of
-`6000000087535357291` reads `Emma /Bishop/` or `Emma /Leonhart/` with no middle
-token. So this is a rule for the first export that brings it in, not a
-suppression to apply today. It is written here rather than in the queue because
+**It is in the corpus now.** When she first mentioned it no export held it; a
+later one did. `out/merged.ged` carries `1 NAME Emma Himiko /Leonhart/` as a second
+`NAME` record, and `reports/derived-labels.csv` shows it under
+`further_latin_names`.
+
+**Checked 2026-08-16: nothing emits it.** No batch contains the string, and the
+only edit referencing `6000000087535357291` anywhere is the `P2600` *Geni.com
+profile ID* from her own `entity_resolution.md` entry — no label, no name, no sex.
+The rule holds because the label emitters use `label_en`, which is the corrected
+single name, and never `further_latin_names`. It is written here rather than in the queue because
 it governs how the project works and has no step attached.
 
 This is the same shape as § *Her name is Emma Leonhart*: what her profile says

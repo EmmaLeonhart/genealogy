@@ -303,7 +303,7 @@ Sources in merge order (later sources win value conflicts):
 | `export-Forest-50.ged` | 2140 | 3487 | 0 | 17 | 552 | 185 |
 | `export-Forest-6.ged` | 55 | 126 | 0 | 0 | 5798 | 81 |
 | `export-Forest-9.ged` | 0 | 7 | 0 | 0 | 6229 | 1357 |
-| `export-Descendants-6000000177921389824.ged` | 66 | 134 | 0 | 2 | 1 | 5 |
+| `export-Descendants-6000000177921389824.ged` | 66 | 134 | 0 | 2 | 1 | 4 |
 | `export-Descendants-6000000177941048933.ged` | 301 | 696 | 0 | 41 | 192 | 2 |
 | `export-Descendants-6000000177943120858.ged` | 99 | 191 | 0 | 18 | 45 | 2 |
 | `export-Descendants-6000000177943658830.ged` | 1 | 2 | 0 | 0 | 881 | 1 |
@@ -400,7 +400,7 @@ Sources in merge order (later sources win value conflicts):
 | `export-Forest-7.ged` | 219 | 608 | 0 | 14 | 5358 | 3510 |
 | `export-Forest-8.ged` | 669 | 884 | 0 | 11 | 5263 | 448 |
 | `export-Forest-9.ged` | 0 | 7 | 0 | 0 | 6229 | 1357 |
-| `export-Ancestors-6000000087535357291.ged` | 1690 | 2948 | 730 | 137 | 3206 | 13430 |
+| `export-Ancestors-6000000087535357291.ged` | 1690 | 2948 | 730 | 137 | 3206 | 13427 |
 | `export-Ancestors-6000000177921459052.ged` | 0 | 0 | 0 | 0 | 881 | 155 |
 | `export-Ancestors-6000000177921459056.ged` | 215 | 464 | 1191 | 23 | 9238 | 29294 |
 | `export-Ancestors-6000000177921459078.ged` | 664 | 1046 | 4054 | 32 | 8840 | 2510 |
@@ -411,7 +411,7 @@ Sources in merge order (later sources win value conflicts):
 | `export-BloodTree-6000000087535357291.ged` | 0 | 0 | 0 | 0 | 5520 | 3861 |
 | `export-BloodTree-6000000177943379826.ged` | 793 | 2319 | 0 | 59 | 218 | 26 |
 | `export-BloodTree-6000000177944025822.ged` | 898 | 2820 | 1 | 80 | 1852 | 2102 |
-| `export-BloodTree-6000000178415387935.ged` | 901 | 2832 | 0 | 140 | 1868 | 618 |
+| `export-BloodTree-6000000178415387935.ged` | 901 | 2832 | 0 | 140 | 1868 | 615 |
 | `export-BloodTree-6000000178418577840.ged` | 1241 | 3672 | 15 | 183 | 662 | 225 |
 | `export-BloodTree-6000000178420660827.ged` | 75 | 204 | 0 | 7 | 2557 | 201 |
 | `export-BloodTree-6000000209655085851.ged` | 0 | 274 | 2 | 2 | 5989 | 6719 |
@@ -506,7 +506,7 @@ Sources in merge order (later sources win value conflicts):
 
 ## Conflicts
 
-**813** value disagreements on single-valued paths. The value from the later source was kept; the other is recorded here and is not in the merged file.
+**810** value disagreements on single-valued paths. The value from the later source was kept; the other is recorded here and is not in the merged file.
 
 By path:
 
@@ -523,7 +523,6 @@ By path:
 | `FAM.WIFE` | 4 |
 | `INDI.BAPM.ADDR.CTRY` | 4 |
 | `INDI.BIRT.ADDR.CITY` | 3 |
-| `INDI.SEX` | 3 |
 | `INDI.DEAT.ADDR.CITY` | 3 |
 | `INDI.DEAT.ADDR.STAE` | 3 |
 | `INDI.DEAT.PLAC` | 3 |
