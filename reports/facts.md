@@ -4,21 +4,21 @@ Plan items 3 and 4. Emma, 2026-08-12: *"Occupation can be done with string
 stuff"* and *"Birthplace birth date death date death place burial date burial
 place all can be done with string."*
 
-One row per person in `reports/derived-facts.csv` — **298,591 people**, 
-of whom 14,157 carry a Wikidata item.
+One row per person in `reports/derived-facts.csv` — **448,665 people**, 
+of whom 17,721 carry a Wikidata item.
 
 ## What is actually present
 
 | field | people | share |
 | --- | ---: | ---: |
-| sex | 298,130 | 99.8% |
-| occupation | 31,401 | 10.5% |
-| birth date | 150,203 | 50.3% |
-| birth place | 58,562 | 19.6% |
-| death date | 118,918 | 39.8% |
-| death place | 38,990 | 13.1% |
-| burial date | 11,907 | 4.0% |
-| burial place | 16,360 | 5.5% |
+| sex | 448,028 | 99.9% |
+| occupation | 47,779 | 10.6% |
+| birth date | 255,454 | 56.9% |
+| birth place | 98,205 | 21.9% |
+| death date | 203,313 | 45.3% |
+| death place | 67,049 | 14.9% |
+| burial date | 22,076 | 4.9% |
+| burial place | 25,841 | 5.8% |
 
 ## Addresses, kept as text
 
@@ -29,14 +29,14 @@ rule of 2026-08-11**, which was chosen before its cost was known.
 
 | | events |
 | --- | ---: |
-| birth address | 71,735 |
-| death address | 51,681 |
-| burial address | 16,328 |
-| birth address, **no `PLAC` at all** | 54,202 |
-| death address, **no `PLAC` at all** | 39,747 |
-| burial address, **no `PLAC` at all** | 7,347 |
+| birth address | 136,821 |
+| death address | 101,008 |
+| burial address | 27,331 |
+| birth address, **no `PLAC` at all** | 99,843 |
+| death address, **no `PLAC` at all** | 75,894 |
+| burial address, **no `PLAC` at all** | 13,242 |
 
-**101,579 events would have had no location under the old rule** and now keep one.
+**189,611 events would have had no location under the old rule** and now keep one.
 
 **One thing to flag rather than decide.** `P6375` is documented as a *street*
 address — building number, locality, post code, and explicitly not country.
@@ -49,19 +49,20 @@ this is ingestion.
 
 ## Dates the grammar could not read
 
-**12 date values**, 9 distinct, parsed to no year. They keep their raw
+**14 date values**, 10 distinct, parsed to no year. They keep their raw
 text in the CSV rather than being dropped — a date we cannot read must not
 become a date we guessed.
 
 | raw value | times |
 | --- | ---: |
-| `ABT` | 4 |
+| `ABT` | 5 |
 | `BET 725 AND` | 1 |
 | `-538000000` | 1 |
 | `-1400000000` | 1 |
 | `ABT -538000000` | 1 |
 | `13011704` | 1 |
 | `BET  AND` | 1 |
+| `105 NOV 1743` | 1 |
 | `AFT` | 1 |
 | `BET 25 JUN 1284 AND` | 1 |
 

@@ -7387,3 +7387,41 @@ first given name carries *usual forename* while later ones carry *middle name*.
 
 `tests/test_namelinks.py` 21 passed; with the emitter, ID-documentation and
 entities suites, 53 passed.
+
+
+## 2026-08-16 — the exports-then-gaps-then-regeneration sequence, finished
+
+Emma's sequence, which she asked to be queued so it ran in exactly this order:
+exports in, measure what they cleared, gaps analysis, then a full synoptic
+regeneration.
+
+**Exports.** 72, 73, 74 placed, then 75 and 76. Corpus **234 → 239**, 245 GEDCOMs,
+all tracked. Two of them sat untracked for a tick because I staged by explicit path
+and listed the zips without the `.ged`s; she caught it and committed them herself.
+
+**What they cleared.** Chain coverage moved **22.4% → 25.0%** across the 560 saved
+paths: the three exports filled 194 chain people and the later two filled 42. About
+65 and 21 per export out of 5,000 each, so the balls land mostly off-chain. The
+aggregate thin-set measure cannot show this at all — every export reaches people
+nothing else has, and those are thin by definition — so the targeted measure is the
+only one that answers the question.
+
+**Regenerated, in dependency order**, which matters because every link caches:
+
+    out/merged.ged            448,665 people, 2 components
+    derived-family.csv        448,665, 17,721 carrying a QID
+    display-names.csv         623,414 rows
+    derived-labels.csv
+    derived-facts.csv         448,665
+    structural-correspondence 3,902, now carrying the anchor
+    wikidata-structural-placeholders  12,260
+    path-midpoint-seeds.csv   6,908 still missing
+    wikidata-trunk-batch.json 118 creations, 7,172 path-slots
+
+**The corrections to her own record reach the end of the chain now.**
+`derived-facts.csv` reads `sex: F`, which is the file the trunk batch takes `P21`
+*sex or gender* from. The removed surname appears nowhere in the batch, the middle
+name appears nowhere, and she is correctly absent from the creations because
+`Q140568870` already exists.
+
+`test_edit_emitters` and `test_repo_invariants` — 22 passed.

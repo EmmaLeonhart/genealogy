@@ -6352,6 +6352,80 @@
     ]
   },
   {
+    "id": "trunk:4195948006000122911",
+    "type": "create_individual",
+    "source": "bridge trunk - agenda task A",
+    "subject": {
+      "qid": null,
+      "geni_id": "4195948006000122911"
+    },
+    "labels": {
+      "en": "Private",
+      "mul": "Private"
+    },
+    "paths_through": 37,
+    "statements": [
+      {
+        "property": "P2600",
+        "value": "4195948006000122911",
+        "references": [
+          {
+            "property": "P854",
+            "value": "https://www.geni.com/people/x/4195948006000122911"
+          },
+          {
+            "property": "P813",
+            "value": "2026-08-15"
+          }
+        ]
+      },
+      {
+        "property": "P31",
+        "value": "Q5",
+        "references": [
+          {
+            "property": "P854",
+            "value": "https://www.geni.com/people/x/4195948006000122911"
+          },
+          {
+            "property": "P813",
+            "value": "2026-08-15"
+          }
+        ]
+      },
+      {
+        "property": "P21",
+        "value": "Q6581072",
+        "references": [
+          {
+            "property": "P854",
+            "value": "https://www.geni.com/people/x/4195948006000122911"
+          },
+          {
+            "property": "P813",
+            "value": "2026-08-15"
+          }
+        ]
+      }
+    ],
+    "links": [
+      {
+        "property": "P22",
+        "value": "NEW:4195891192880058503",
+        "references": [
+          {
+            "property": "P854",
+            "value": "https://www.geni.com/people/x/4195948006000122911"
+          },
+          {
+            "property": "P813",
+            "value": "2026-08-15"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "trunk:6000000010222435520",
     "type": "create_individual",
     "source": "bridge trunk - agenda task A",
@@ -6944,6 +7018,80 @@
     ]
   },
   {
+    "id": "trunk:6000000006293783777",
+    "type": "create_individual",
+    "source": "bridge trunk - agenda task A",
+    "subject": {
+      "qid": null,
+      "geni_id": "6000000006293783777"
+    },
+    "labels": {
+      "en": "Anna Maria Josefina Hultgren",
+      "mul": "Anna Maria Josefina Hultgren"
+    },
+    "paths_through": 23,
+    "statements": [
+      {
+        "property": "P2600",
+        "value": "6000000006293783777",
+        "references": [
+          {
+            "property": "P854",
+            "value": "https://www.geni.com/people/x/6000000006293783777"
+          },
+          {
+            "property": "P813",
+            "value": "2026-08-15"
+          }
+        ]
+      },
+      {
+        "property": "P31",
+        "value": "Q5",
+        "references": [
+          {
+            "property": "P854",
+            "value": "https://www.geni.com/people/x/6000000006293783777"
+          },
+          {
+            "property": "P813",
+            "value": "2026-08-15"
+          }
+        ]
+      },
+      {
+        "property": "P21",
+        "value": "Q6581072",
+        "references": [
+          {
+            "property": "P854",
+            "value": "https://www.geni.com/people/x/6000000006293783777"
+          },
+          {
+            "property": "P813",
+            "value": "2026-08-15"
+          }
+        ]
+      }
+    ],
+    "links": [
+      {
+        "property": "P25",
+        "value": "NEW:6000000013166100337",
+        "references": [
+          {
+            "property": "P854",
+            "value": "https://www.geni.com/people/x/6000000006293783777"
+          },
+          {
+            "property": "P813",
+            "value": "2026-08-15"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "trunk:6000000177921459129",
     "type": "create_individual",
     "source": "bridge trunk - agenda task A",
@@ -7417,65 +7565,6 @@
     "links": []
   },
   {
-    "id": "trunk:4195948006000122911",
-    "type": "create_individual",
-    "source": "bridge trunk - agenda task A",
-    "subject": {
-      "qid": null,
-      "geni_id": "4195948006000122911"
-    },
-    "labels": {
-      "en": "Private",
-      "mul": "Private"
-    },
-    "paths_through": 37,
-    "statements": [
-      {
-        "property": "P2600",
-        "value": "4195948006000122911",
-        "references": [
-          {
-            "property": "P854",
-            "value": "https://www.geni.com/people/x/4195948006000122911"
-          },
-          {
-            "property": "P813",
-            "value": "2026-08-15"
-          }
-        ]
-      },
-      {
-        "property": "P31",
-        "value": "Q5",
-        "references": [
-          {
-            "property": "P854",
-            "value": "https://www.geni.com/people/x/4195948006000122911"
-          },
-          {
-            "property": "P813",
-            "value": "2026-08-15"
-          }
-        ]
-      },
-      {
-        "property": "P21",
-        "value": "Q6581072",
-        "references": [
-          {
-            "property": "P854",
-            "value": "https://www.geni.com/people/x/4195948006000122911"
-          },
-          {
-            "property": "P813",
-            "value": "2026-08-15"
-          }
-        ]
-      }
-    ],
-    "links": []
-  },
-  {
     "id": "trunk:6000000007549309545",
     "type": "create_individual",
     "source": "bridge trunk - agenda task A",
@@ -7925,7 +8014,10 @@
       "qid": null,
       "geni_id": "6000000013166100337"
     },
-    "labels": {},
+    "labels": {
+      "en": "Anna Lovisa Andersdotter",
+      "mul": "Anna Lovisa Andersdotter"
+    },
     "paths_through": 23,
     "statements": [
       {
@@ -7955,42 +8047,14 @@
             "value": "2026-08-15"
           }
         ]
-      }
-    ],
-    "links": []
-  },
-  {
-    "id": "trunk:6000000006293783777",
-    "type": "create_individual",
-    "source": "bridge trunk - agenda task A",
-    "subject": {
-      "qid": null,
-      "geni_id": "6000000006293783777"
-    },
-    "labels": {},
-    "paths_through": 23,
-    "statements": [
-      {
-        "property": "P2600",
-        "value": "6000000006293783777",
-        "references": [
-          {
-            "property": "P854",
-            "value": "https://www.geni.com/people/x/6000000006293783777"
-          },
-          {
-            "property": "P813",
-            "value": "2026-08-15"
-          }
-        ]
       },
       {
-        "property": "P31",
-        "value": "Q5",
+        "property": "P21",
+        "value": "Q6581072",
         "references": [
           {
             "property": "P854",
-            "value": "https://www.geni.com/people/x/6000000006293783777"
+            "value": "https://www.geni.com/people/x/6000000013166100337"
           },
           {
             "property": "P813",
@@ -8009,7 +8073,10 @@
       "qid": null,
       "geni_id": "4195891192880058503"
     },
-    "labels": {},
+    "labels": {
+      "en": "Sten Harald Bertel Harald Bertel Hård af Segerstad",
+      "mul": "Sten Harald Bertel Harald Bertel Hård af Segerstad"
+    },
     "paths_through": 23,
     "statements": [
       {
@@ -8039,9 +8106,52 @@
             "value": "2026-08-15"
           }
         ]
+      },
+      {
+        "property": "P21",
+        "value": "Q6581097",
+        "references": [
+          {
+            "property": "P854",
+            "value": "https://www.geni.com/people/x/4195891192880058503"
+          },
+          {
+            "property": "P813",
+            "value": "2026-08-15"
+          }
+        ]
       }
     ],
-    "links": []
+    "links": [
+      {
+        "property": "P22",
+        "value": "Q97631713",
+        "references": [
+          {
+            "property": "P854",
+            "value": "https://www.geni.com/people/x/4195891192880058503"
+          },
+          {
+            "property": "P813",
+            "value": "2026-08-15"
+          }
+        ]
+      },
+      {
+        "property": "P25",
+        "value": "Q97633528",
+        "references": [
+          {
+            "property": "P854",
+            "value": "https://www.geni.com/people/x/4195891192880058503"
+          },
+          {
+            "property": "P813",
+            "value": "2026-08-15"
+          }
+        ]
+      }
+    ]
   },
   {
     "id": "trunk:6000000002585455740",

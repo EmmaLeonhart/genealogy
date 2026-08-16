@@ -741,49 +741,6 @@ the limiting factor, not compute.
 American line — *"I'm struggling to find it too so I'm a bit unsure of it."*
 Finland and Denmark are allowed but not the focus. **Especially Norway.**
 
-## The three new exports, then gaps, then the full synoptic regeneration
-
-**Emma's sequence, 2026-08-15, and she asked for it queued so it runs in this
-order:** *"check the downloads folder. I downloaded three additional exports
-there… figure out the degree to which they contributed to clearing up the gaps,
-because my expectation is they're probably gonna clear up the gaps quite a lot.
-After that is done, we then do the gaps analysis. Once the gaps analysis is
-finished, you completely incorporate all this into the Synoptic Tree and
-regenerate it fully. Probably you should be organising this into the queue so that
-it certainly operates in this specific way."*
-
-**Step 1 — DONE.** Zips 72, 73, 74 placed in `exports/edges/` by seed ID, all three
-`Forest`, all three **5,000 people**, no destination collisions. Corpus **234 →
-237**. One gitignore line per zip.
-
-| zip | seed | people |
-| ---: | --- | ---: |
-| 72 | `6000000227258573822` | 5,000 |
-| 73 | `6000000227258452920` | 5,000 |
-| 74 | `6000000227258246190` | 5,000 |
-
-**Step 2 — how much did they clear?** Measure against the pre-placement state,
-which is why `out/merged-234-pre.ged` was kept. The measure that works is the
-*targeted* one, not the aggregate: the thin set never shrinks by exporting,
-because every export reaches people nothing else has and those are thin by
-definition (measured 2026-08-15: 23,638 left the thin set, 25,750 entered). Ask
-instead **which specific entry points and path-gap people are now covered.**
-`reports/export-entry-points.csv` and `reports/path-entry-points.csv` are the
-target lists.
-
-**Step 3 — the gaps analysis**, once step 2 is known.
-
-**Step 4 — the full synoptic regeneration.** Re-merge over all 237, then
-regenerate every derived artifact rather than the handful that happen to be
-convenient: `derive-family`, `derive-labels`, `derive-facts`, the structural walk,
-the bridge and path-entry-point rankings, and `build-repo-freshness.py`. Emma:
-*"you completely incorporate all this into the Synoptic Tree and regenerate it
-fully."*
-
-**Do not reorder these.** She asked for the sequence explicitly because the gaps
-answer depends on the exports being in, and the regeneration depends on the gaps
-answer.
-
 ## `reports/repo-freshness.csv` is stale and misled a bloat review
 
 Found 2026-08-15 during the 21:00 bloat review. It still lists
