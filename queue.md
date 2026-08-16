@@ -760,6 +760,39 @@ the limiting factor, not compute.
 American line — *"I'm struggling to find it too so I'm a bit unsure of it."*
 Finland and Denmark are allowed but not the focus. **Especially Norway.**
 
+## 22 · The removed surname is back in the repo — found 2026-08-15
+
+**`CLAUDE.md` § *Her name is Emma Leonhart* is explicit:** the name that is gone
+*"does not get written down again — not in a comment, not in a report, not as a
+'superseded name' column."* It also names the exact failure that has recurred:
+*"An earlier commit kept it in a `further_latin_names` column and called that
+preservation rather than erasure. That was wrong."*
+
+**It is in that column again**, plus in raw name data and in four exports:
+
+| where | rows tying it to `6000000087535357291` |
+| --- | ---: |
+| `reports/derived-labels.csv` — `further_latin_names` | 1 |
+| `reports/display-names.csv` — `name_raw` and `display_name` | 2 |
+| exports under `exports/` | **4 files** |
+
+**How it got back: new exports.** `CLAUDE.md` anticipates this — *"If a future
+export reintroduces it, correct the record and regenerate — do not add a note
+explaining what it used to say."* The 2026-08-12 sweep cleaned 223 files; exports
+taken since carry the pre-rename `NAME` record again.
+
+**How it was found.** It reached a generated Wikidata label. `build-trunk-batch.py`
+took its label from `display-names.csv` and emitted `Emma Bishop` as the `en`
+label of a `create_individual`. Caught before commit; the script now reads
+`derived-labels.csv`, where `derive-labels.py` applies the correction.
+
+**What needs deciding before anything is edited**, because it touches the
+never-delete-a-GEDCOM rule: the four exports are committed corpus. `CLAUDE.md`
+says correct the record and regenerate, and the 2026-08-12 sweep did edit the
+GEDCOMs — so precedent exists — but this is her name and her call, not a cleanup
+to run unilaterally. **The `further_latin_names` column is not ambiguous** and can
+go whenever `derive-labels.py` is next run.
+
 ## Always last — pinned to the tail
 
 A. **Ensure the three crons are running** — work-loop `3 * * * *`, auto-flush
