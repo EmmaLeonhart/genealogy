@@ -468,6 +468,34 @@ the chain is contiguous over the stretch we hold. If they ever disagree, no `P15
 is emitted at all — a wrong ordinal is worse than none. That puts Yaacob I at 119
 and runs unbroken to Aabed-El at 132.
 
+### The other inconsistencies, since she said there were some
+
+**Emma, 2026-08-16:** *"many of the poorly modeled ones are inconsistent in other
+ways."* Read every property of all 21 out of the store. What is actually there:
+
+**1 · Wikidata carries the Abram generation-skip we removed from Geni today.**
+`Q135489730` *Abram ben Yitzhaq* has `P22` *father* → `Q135489731` *Tsedaka II*,
+**and `P155` *follows* → Yitzhaq I**. So the same item says Yitzhaq I preceded him
+in office while Tsedaka II fathered him — which is precisely the skip that existed
+on Geni until she created Yitzhaq I and re-exported. Our corrected tree says the
+father is **Yitzhaq I** (`6000000227245553985`). **Wikidata is wrong here and we
+can prove it**, which makes it an *add a second statement cited to Geni* case
+rather than a correction.
+
+**2 · One father disagreement we cannot adjudicate.** `Q2067443` *Saloum Cohen*:
+Wikidata `P22` → `Q135489963` *Phinehas*; our tree says *Amram ben Yitzhaq*.
+Different men, no basis to prefer either. A note, not a work item —
+`CLAUDE.md`: contradiction resolution is not a priority.
+
+**The other four father-versus-predecessor mismatches are NOT errors.** The
+Samaritan high priesthood does not pass father to son, so a predecessor who is not
+the father is the normal case. Checked all six against our tree: four agree.
+
+**3 · Succession style is a mess, and this is what the batch fixes.** Of 21:
+**8 use `P156` *followed by*, 5 use `P155` *follows*, 7 use neither**, and
+`Q118782320` carries **both an old `P155` and a new `P1366` *replaced by*** on the
+same item.
+
 **Blocked only on the calendar.**
 
 ## NN on wikidata
