@@ -1,0 +1,64 @@
+[
+  {
+    "id": "abram_father:Q135489730",
+    "type": "add_statement",
+    "source": "corrected Geni tree; Pummer succession 113-114-115",
+    "subject": {
+      "qid": "Q135489730",
+      "geni_id": "6000000178795709821"
+    },
+    "requires": [
+      "entity_resolution:Q137394557"
+    ],
+    "statements": [
+      {
+        "property": "P22",
+        "value": "Q137394557",
+        "references": [
+          {
+            "property": "P854",
+            "value": "https://www.geni.com/people/x/6000000178795709821"
+          },
+          {
+            "property": "P813",
+            "value": "+2026-08-16T00:00:00Z/11"
+          }
+        ]
+      }
+    ],
+    "note": "ADDS a second father. The existing P22 -> Q135489731 Tsedaka II is left in place; this project adds contradictory information cited to Geni rather than correcting. The same item already states P155 follows -> Q137394557 Yitzhaq I, so it contradicts itself: Yitzhaq I preceded Abram in office while Tsedaka II is given as his father, skipping a generation.",
+    "contradicts": {
+      "property": "P22",
+      "value": "Q135489731"
+    }
+  },
+  {
+    "id": "abram_father_child:Q137394557",
+    "type": "add_statement",
+    "source": "corrected Geni tree; Pummer succession 113-114-115",
+    "subject": {
+      "qid": "Q137394557",
+      "geni_id": "6000000227245553985"
+    },
+    "requires": [
+      "entity_resolution:Q137394557"
+    ],
+    "statements": [
+      {
+        "property": "P40",
+        "value": "Q135489730",
+        "references": [
+          {
+            "property": "P854",
+            "value": "https://www.geni.com/people/x/6000000227245553985"
+          },
+          {
+            "property": "P813",
+            "value": "+2026-08-16T00:00:00Z/11"
+          }
+        ]
+      }
+    ],
+    "note": "The reciprocal. Q137394557 has no claims at all - Emma's 'worst modelled one (empty)' - so this is an addition to an empty item and contradicts nothing."
+  }
+]

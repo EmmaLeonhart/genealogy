@@ -487,7 +487,17 @@ Tsedaka II 113 → Aabed-El 133 unbroken.
 **Emma, 2026-08-16:** *"many of the poorly modeled ones are inconsistent in other
 ways."* Read every property of all 21 out of the store. What is actually there:
 
-**1 · Wikidata carries the Abram generation-skip we removed from Geni today.**
+**1 · Wikidata carries the Abram generation-skip we removed from Geni — FIXED.**
+Emma, 2026-08-16: *"we are right, and Wikidata is wrong for the father. Deal with
+it."* `scripts/build-abram-father-fix.py` →
+`reports/wikidata-abram-father.json`, 2 edits: a second `P22` *father* on
+`Q135489730` pointing at `Q137394557` *Yitzhaq I*, and the reciprocal `P40` *child*
+on Yitzhaq I. **The existing `P22` → Tsedaka II is left in place** — this project
+adds contradictory information cited to Geni rather than correcting. Both depend on
+Yitzhaq I getting his Geni ID first, since `Q137394557` currently has no claims at
+all.
+
+
 `Q135489730` *Abram ben Yitzhaq* has `P22` *father* → `Q135489731` *Tsedaka II*,
 **and `P155` *follows* → Yitzhaq I**. So the same item says Yitzhaq I preceded him
 in office while Tsedaka II fathered him — which is precisely the skip that existed
@@ -510,7 +520,8 @@ the father is the normal case. Checked all six against our tree: four agree.
 `Q118782320` carries **both an old `P155` and a new `P1366` *replaced by*** on the
 same item.
 
-**Blocked only on the calendar.**
+**Not blocked on anything external — waiting on 1 September, which is her own
+instruction of 2026-08-14:** *"no wikidata edits until September 1."*
 
 ## NN on wikidata — BUILT, 1,570 label edits waiting on 1 September
 
@@ -814,7 +825,8 @@ broken-reference failure `tests/test_edit_emitters.py` pins.
 store being a Geni-shaped slice seeded from `P2600` holders: an item with no Geni
 ID cannot be reached by that seed. Not a defect.
 
-**Blocked only on the calendar** — no Wikidata edits before 1 September.
+**Waiting on 1 September**, which is her own instruction of 2026-08-14 — not an
+external blocker.
 
 ## Always last — pinned to the tail
 
