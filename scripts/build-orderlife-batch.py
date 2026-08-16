@@ -82,7 +82,7 @@ sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from genimerge import sources  # noqa: E402
-from labels import label_for  # noqa: E402
+from labels import describe, label_for, labels_for  # noqa: E402
 
 REPO = Path(__file__).resolve().parent.parent
 #: **Vendored, not a sibling checkout.** Emma, 2026-08-15: *"The data should
@@ -315,6 +315,30 @@ def _assert_wikidata_qid(value: str, where: str) -> str:
 #: Japanese descent chain with no co-parents and no spouses, so nothing in the
 #: graph separates father from mother for them - their Wikidata items would, and
 #: none of those items are in the local store.
+#: order.life's sex codes, as the single letters `describe()` wants.
+_SEX_LETTER = {OL_MALE: "M", OL_FEMALE: "F"}
+
+
+def _describe_from_relatives(q, persons, parents_of, spouses, children_of):
+    """`"daughter of Gerard Spencer"` for somebody order.life records no name for.
+
+    Emma's precedence, from the Geni placeholder work and reused by
+    `build-nn-label-batch.py`: **parent, then spouse, then child.** A relative
+    whose own label is itself a marker is skipped rather than used - *"mother of
+    NN"* names nobody - which is what `describe()` returning `''` signals.
+    """
+    sex = _SEX_LETTER.get((persons.get(q, {}).get("sex") or "").strip(), "")
+    for relation, table in (("parent", parents_of),
+                            ("spouse", spouses),
+                            ("child", children_of)):
+        for other in table.get(q, ()):
+            phrase = describe(sex, relation,
+                              label_for((persons.get(other, {}).get("label") or "")))
+            if phrase:
+                return phrase
+    return ""
+
+
 def infer_sex(q, persons, kids, parents_of, spouses):
     known = {"Q153718": OL_MALE, "Q153719": OL_FEMALE}
 
@@ -458,10 +482,22 @@ def main() -> int:
         gid = (r.get("geni_id") or "").strip()
         wqid = (r.get("wikidata_qid") or "").strip()
         # order.life carries Geni's redaction markers through into its own
-        # label column - 278 "private", 47 "nn", 26 "unknown", 57 "?". Same
-        # rule as everywhere else: the person is created, the label is not set.
-        label = label_for((r.get("label") or "").strip()
-                          or (r.get("gedcom") or "").strip())
+        # label column - 278 "private", 47 "nn", 26 "unknown", 57 "?". The
+        # person is created either way; what changes is what the label says.
+        #
+        # **Until 2026-08-16 this set both `en` and `mul` to `''`**, so 1,109 of
+        # these creations had no label in any language and could not be read or
+        # found. Emma: *"NN and private are the same thing here"* and *"NN is
+        # always preserved in the multi-language label. It just has more
+        # descriptive labels added in some languages for the relationships."*
+        # So `mul` carries `NN` and `en` carries a relationship phrase built
+        # from a named relative - parent, then spouse, then child, her
+        # precedence from the placeholder work.
+        raw = ((r.get("label") or "").strip()
+               or (r.get("gedcom") or "").strip())
+        labels = labels_for(raw, _describe_from_relatives(
+            q, persons, parents_of, spouses, children_of))
+        label = labels.get("en", "")
 
         already = geni_to_qid.get(gid) if gid else None
         if wqid and gid:
@@ -512,7 +548,7 @@ def main() -> int:
             "subject": {"qid": wqid or None, "geni_id": gid or None,
                         "orderlife_qid": q},
             "requires": [f"person:{p}" for p in father.get(q, [])],
-            "labels": {"en": label, "mul": label},
+            "labels": labels,
             "statements": statements,
             "links": (
                 [{"property": "P22_or_P25", "value": f"@person:{p}",

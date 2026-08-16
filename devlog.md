@@ -7523,3 +7523,61 @@ because *"mother of NN"* names nobody.
 `Private` rule and is deliberate. `CLAUDE.md`: *nomen nescio* is a genealogist
 saying the name is unknown — a real statement about a person — where `Private` is
 Geni withholding one.
+
+
+## 2026-08-16 — `Private` and `NN` are one population, and 1,109 items had no label at all
+
+Emma, correcting two things in one message: *"why the fuck are you emptying private
+but relabeling NN? Everything is NN. NN and private are the same thing here, because
+if there's a private individual whose name is not exported, it comes out as an NN."*
+And then the model itself: *"NN is not relabeled… NN is always preserved in the
+multi-language label. It just has more descriptive labels added in some languages for
+the relationships."*
+
+**What the code did.** `scripts/labels.py` held `NOT_A_NAME = {"private", ""}`, so
+`label_for` returned `''` for a redacted profile, and both batch emitters wrote that
+straight into both slots: `"labels": {"en": label, "mul": label}`. **1,109 order.life
+creations were set to be created with no label in any language.** The rule as written
+— *`Private` never becomes a label* — was right about what must not be written and
+stopped one step short of saying what must. An item labelled "Private" asserts
+something false; an item labelled nothing cannot be read or found. Same objection.
+
+**The shape now, and it is one shape for both markers:**
+
+    mul  NN                                <- always present, never a person's name
+    en   daughter of Gerard Spencer        <- descriptive, from a named relative
+
+`labels.py` gains `is_unnamed()`, `labels_for()` and `describe()`. `is_unnamed` is
+**wider than `is_redacted`** — it catches the `NN` spellings too — and **narrower than
+suppression**: nobody is dropped, everybody gets `mul`, and `en` is filled wherever a
+relative supplies a name. That distinction is the whole of Emma's earlier objection
+when `nn` was quietly added to `NOT_A_NAME`: *"I didn't tell you to avoid the NN
+people."* Avoiding them is still forbidden; giving them a readable label is the
+opposite of avoiding them.
+
+`_NN_FORMS` deliberately excludes `unknown` and `?`. Those were part of the same
+unasked addition she rejected, they are somebody's editorial choice rather than a
+marker this project owns, and widening the set again on my own initiative is the
+exact move that produced the original complaint.
+
+**Measured after the rebuild**, `reports/wikidata-orderlife.json`, 47,247
+label-bearing edits:
+
+| | count |
+| --- | ---: |
+| unnamed, `mul` = `NN` | **1,555** |
+| of those, also carrying a descriptive `en` | **1,369** |
+| carrying `mul` = `NN` only — no relative with a name | 186 |
+| **created with no label in any language** | **0** |
+
+The count rose 1,109 → 1,555 because `is_unnamed` now catches the people order.life
+records literally as `NN`, who previously took `NN` as their *English* label. The
+Samaritan batch has no unnamed people and is unchanged at 76.
+
+**The descriptive phrase uses her precedence — parent, spouse, child** — and skips a
+relative whose own label is a marker, because *"mother of NN"* names nobody.
+
+**The Wikidata side of the same rule, fixed in `81673fb`.** `build-nn-label-batch.py`
+emitted `set_label` on `en` with `"replaces": "NN"`; NN lives in `en` on 1,549 of the
+1,588 such items and in `mul` on only 278, so it would have erased the marker on
+1,271 of them. Now two edits, the `mul` one named in the `en` one's `requires`.
