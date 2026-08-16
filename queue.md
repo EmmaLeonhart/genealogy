@@ -142,7 +142,7 @@ it.
 
 ---
 
-## 0 · STANDING PROCEDURE — audit this queue against the transcripts first
+## STANDING PROCEDURE — audit this queue against the transcripts first
 
 **Not deleted when it completes: it is a procedure, not a step.** Run it before
 executing the rest of the queue, because otherwise the rest is not trustworthy.
@@ -171,7 +171,7 @@ Newest first by mtime. Each line is JSON; a user turn is `message.role == "user"
 
 ---
 
-## 1 · Labels in seven languages — the gate on all Wikidata editing
+## Labels in seven languages — the gate on all Wikidata editing
 
 **Emma:** *"WE ARE NOT DOING THIS SHIT UNTIL WE HAVE JA and ZH LABELS ON
 EVERYTHING THIS IS RIGHT BEFORE WIKIDATA EDITING."*
@@ -207,7 +207,7 @@ the name** — the tree settles it, via neighbours and which exports they came f
 `reports/wikidata-placeholder-labels.json` currently has `mul` on all and `en` on
 14,351. **It must not run in that state.**
 
-## 2 · Name items — the ambiguity is a PATRONYMIC problem, and needs the download first
+## Name items — the ambiguity is a PATRONYMIC problem, and needs the download first
 
 **Emma, 2026-08-15, diagnosing it herself:** *"Didn't we just answer this question
 way long ago? For the most part this is based off of diacritics and based off of
@@ -218,7 +218,7 @@ Measured against her diagnosis:
 - **diacritics — fixed.** `Maria` and `María` are separate rows now, not folded.
 - **given vs family — already separate.** Ambiguity is computed within a usage.
 - **patronymic vs given — NOT separated, and not separable offline.** Telling
-  `Q110874` from `Q202444` needs the item's own `P31`. All **1,731** competing
+  `Q110874` *patronymic* from `Q202444` *given name* needs the item's own `P31` *instance of*. All **1,731** competing
   QIDs were checked against the store: **0 are held.** The store is a Geni-shaped
   slice of people and carries almost no name items.
 
@@ -233,11 +233,11 @@ with 1,997 bearers. It is a particle, not a name — the token-splitting problem
 item 1: 21,939 planned, 8,092 link, 13,320 create, **525 held as ambiguous**.
 
 `ambiguous` counts as **existing** — treating it otherwise would have created a
-tenth `Maria`. Emma named the one genuine residue herself: `Q325872` / `Q25413386`,
+tenth `Maria`. Emma named the one genuine residue herself: `Q325872` *Maria* / `Q25413386`,
 the **male** and **female** given name `Maria`, settled by the person's sex rather
 than by the string.
 
-## 3 · The 7 Samaritan father disagreements — CLOSED, we operate off them
+## The 7 Samaritan father disagreements — CLOSED, we operate off them
 
 **Emma, 2026-08-15:** *"we're just leaving them in here. Just to be clear, we're
 leaving them in here. You're just making up stuff here. I know about the father
@@ -315,12 +315,12 @@ it."* The job reads it, quotes it back before changing anything, fixes
 **formatting only**, folds her model into `CLAUDE.md` as the authority, and lists
 where the code disagrees **without changing the code**.
 
-Her reference example, Donald John Trump: `P735` Donald with `P1545` 1 and
-*reason for preferred rank* = usual forename; `P735` John with `P1545` 2 and
-`P3831` = middle name; `P734` Trump. **`P7452` reason for preferred rank is not in
+Her reference example, Donald John Trump: `P735` *given name* Donald with `P1545` *series ordinal* 1 and
+*reason for preferred rank* = usual forename; `P735` *given name* John with `P1545` *series ordinal* 2 and
+`P3831` *object of statement has role* = middle name; `P734` *family name* Trump. **`P7452` reason for preferred rank is not in
 `CLAUDE.md`'s table** and must be added if her file uses it, confirmed offline.
 
-## 8 · Comprehensive Wikidata re-import — Emma's item, in her words
+## Comprehensive Wikidata re-import — Emma's item, in her words
 
 > It is clear here that the Wikidata data that we were importing over the past
 > little while is not sufficient… We were at a point where it was good, where we
@@ -347,13 +347,13 @@ Her reference example, Donald John Trump: `P735` Donald with `P1545` 1 and
 > hours, and then make a decision.
 
 Context measured 2026-08-15, `reports/store-parent-coverage.md`: of 1,528,454
-`P22`/`P25` statements in the store, **34,104 (2.2%) point at an item we do not
+`P22` *father*/`P25` *mother* statements in the store, **34,104 (2.2%) point at an item we do not
 hold**, and **71% of those are children with no birth date** — which is the
 population her fallback algorithm would prioritise.
 
 ---
 
-## 10 · Create the fathers the patronymics imply — Emma's item
+## Create the fathers the patronymics imply — Emma's item
 
 **Emma, 2026-08-15:** *"If they are patronymics I actually think I'm going to want
 to add items for the hypothetical fathers that are implied to exist from the
@@ -366,7 +366,7 @@ A person called `Pedersdatter` with no recorded father implies a father called
 patronymic attests him, not because any profile exists.
 
 **Note what is new here:** every creation so far has been a Geni profile getting
-an item. These have no `P2600` at all, so `CLAUDE.md` § *the Geni ID is added
+an item. These have no `P2600` *Geni.com profile ID* at all, so `CLAUDE.md` § *the Geni ID is added
 first* does not apply and the citation cannot be a Geni profile. What the
 statement is sourced to is the open question to settle before emitting anything.
 
@@ -631,7 +631,7 @@ As far as descriptions go, I'll say we should have a series of descriptions that
 
 ---
 
-## 12 · Make the code match `name modelling.txt` — DISAGREEMENTS FOUND, none fixed
+## Make the code match `name modelling.txt` — DISAGREEMENTS FOUND, none fixed
 
 Her file is read and folded into `CLAUDE.md`. **The code was not changed** — this
 job lists disagreements and queues them, per her instruction. Four, and the first
@@ -640,29 +640,29 @@ is structural.
 ### a · The patronymic property is wrong everywhere
 
 Her model: **`P5056` patronym or matronym**, a property of its own, parallel to
-`P735` and `P734`.
+`P735` *given name* and `P734` *family name*.
 
 What the code does: `scripts/build-name-item-batch.py` line 22 documents
 `patronymic | Q110874 | P735 + P3831 -> Q110874`, and `PATRONYMIC_ITEM = "Q110874"`
-at line 69 is used as an `instance of` for a *name item* attached via `P735`.
+at line 69 is used as an `instance of` for a *name item* attached via `P735` *given name*.
 That is the superseded model this file itself carried until today.
 
-**Nothing emits `P5056` at all.** `src/genimerge/namelinks.py` knows only
-`P735`, `P734` and `P1545`.
+**Nothing emits `P5056` *patronym or matronym* at all.** `src/genimerge/namelinks.py` knows only
+`P735` *given name*, `P734` *family name* and `P1545` *series ordinal*.
 
-### b · `P144` points at the wrong kind of thing
+### b · `P144` *based on* points at the wrong kind of thing
 
-Her model: `P144` is a **qualifier on `P5056` pointing at the PERSON** that link
+Her model: `P144` *based on* is a **qualifier on `P5056` *patronym or matronym* pointing at the PERSON** that link
 names — the father, then the grandfather. Her note: *"(his father, has the same
 name)"*.
 
-The code treats `P144` as a claim on a patronymic **name item** pointing at the
+The code treats `P144` *based on* as a claim on a patronymic **name item** pointing at the
 name it derives from (`build-name-item-batch.py` line 34).
 
-### c · `P7452` / `Q3409033` are not emitted
+### c · `P7452` *reason for preferred rank* / `Q3409033` *usual forename* are not emitted
 
 Her model puts `P7452` *reason for preferred rank* → `Q3409033` *usual forename*
-on the **first** given name. `namelinks.py` emits `P1545` and nothing else, so
+on the **first** given name. `namelinks.py` emits `P1545` *series ordinal* and nothing else, so
 first-given-name versus middle-name is not expressed at all.
 
 `Q3409033` is *usual forename*; `Q3409032` is *unisex given name*. Adjacent
@@ -670,8 +670,8 @@ numbers, different things. Both confirmed offline.
 
 ### d · Chained patronymics are unmodelled end to end
 
-`Abisha III ben Phinhas ben Yittzhaq ben Shalma` needs **three** `P5056`
-statements ordered by `P1545`, each with its own `P144`.
+`Abisha III ben Phinhas ben Yittzhaq ben Shalma` needs **three** `P5056` *patronym or matronym*
+statements ordered by `P1545` *series ordinal*, each with its own `P144` *based on*.
 `scripts/classify-patronymics.py` reads only the first `ben X` of a string, and
 no emitter produces more than one patronymic per person.
 
@@ -685,7 +685,7 @@ from which field the token sits in. That part agrees with her file.
 **Edge cases go to her**: *"Do an ask-user question on the edge cases so that I
 can figure them out."*
 
-## 15 · `reports/seeds.md`'s future — a queue item, not a cron
+## `reports/seeds.md`'s future — a queue item, not a cron
 
 The 22:01 cron `d62449e3` was created for this and **is no longer running**; it
 vanished without firing. Emma, 2026-08-15: put it in the queue instead, because
@@ -695,7 +695,7 @@ vanished without firing. Emma, 2026-08-15: put it in the queue instead, because
 and that `seeds.md` *"ranks by doorway count and has never been validated against
 an outcome"*. The question is whether it is kept, regenerated or deleted.
 
-## 17 · Audit `todo.md` against what is actually built
+## Audit `todo.md` against what is actually built
 
 **Emma, 2026-08-15:** *"It's on our own recording this in the to-do, not the queue,
 and I don't know if the to-do is being properly done."* Her call: audit it at the
@@ -706,7 +706,7 @@ the repo, stale ones corrected or closed, and the difference between *stale* and
 *incomplete* stated for each. Four items were found stale rather than incomplete
 last time; that is the expected shape.
 
-## 20 · The saved Wikidata-isolate paths — cron `ae339bb3` at 17:03, and queued
+## The saved Wikidata-isolate paths — cron `ae339bb3` at 17:03, and queued
 
 **Emma, 2026-08-15:** *"Set up a cron job that will, at 5:00 p.m., commit and push
 all of the saved files in the wiki data isolate HTML things. Then it's gonna do an
@@ -736,7 +736,7 @@ actually worked** — plainly, and low if it is low. Then re-run
 `scripts/find-export-entry-points.py` against the re-merged tree, since 31 edge
 exports landed on 2026-08-15 and the clusters will have moved.
 
-## 21 · Nordic isolates — 92% hit rate, and the country filter is what matters
+## Nordic isolates — 92% hit rate, and the country filter is what matters
 
 **Measured 2026-08-15, and it is the strongest result this method has produced.**
 
@@ -777,7 +777,7 @@ the limiting factor, not compute.
 American line — *"I'm struggling to find it too so I'm a bit unsure of it."*
 Finland and Denmark are allowed but not the focus. **Especially Norway.**
 
-## 22 · The removed surname is back in the repo — found 2026-08-15
+## The removed surname is back in the repo — found 2026-08-15
 
 **`CLAUDE.md` § *Her name is Emma Leonhart* is explicit:** the name that is gone
 *"does not get written down again — not in a comment, not in a report, not as a
@@ -810,7 +810,7 @@ GEDCOMs — so precedent exists — but this is her name and her call, not a cle
 to run unilaterally. **The `further_latin_names` column is not ambiguous** and can
 go whenever `derive-labels.py` is next run.
 
-## 23 · The three new exports, then gaps, then the full synoptic regeneration
+## The three new exports, then gaps, then the full synoptic regeneration
 
 **Emma's sequence, 2026-08-15, and she asked for it queued so it runs in this
 order:** *"check the downloads folder. I downloaded three additional exports
@@ -853,7 +853,7 @@ fully."*
 answer depends on the exports being in, and the regeneration depends on the gaps
 answer.
 
-## 24 · `reports/repo-freshness.csv` is stale and misled a bloat review
+## `reports/repo-freshness.csv` is stale and misled a bloat review
 
 Found 2026-08-15 during the 21:00 bloat review. It still lists
 `reports/missing-ancestors-check.csv` and `scripts/check-missing-ancestors.py`,
@@ -864,7 +864,7 @@ A staleness report that is itself stale sends a review after things that are
 already gone. Regenerate it as part of item 23 step 4, and prefer checking the
 filesystem over trusting its rows.
 
-## 25 · Regnal ordinals as `P7338` qualifiers — asked 19:52, never built
+## Regnal ordinals as `P7338` qualifiers — asked 19:52, never built
 
 **Emma, 2026-08-15:** *"I think that the initial given names of them should all
 have the qualifier regnal ordinal (P7338), as should anything else that does that
@@ -872,7 +872,7 @@ stuff… they should all have the regnal orders put on their names as qualifiers
 and explicitly **not only the Samaritans**: *"as really everybody should have if
 they have orderings."*
 
-**What happened instead:** `P7338` was documented in `CLAUDE.md`'s property table
+**What happened instead:** `P7338` *regnal ordinal* was documented in `CLAUDE.md`'s property table
 and `classify-patronymics.py` was taught to **skip** ordinals as name tokens.
 Nothing emits it. `grep -rl P7338 scripts/ src/` returns one file and it is the
 skipper.
@@ -881,7 +881,7 @@ So half the instruction landed — ordinals stopped being mistaken for patronymi
 and the half she actually asked for, putting them on the name statements, was
 never built. **7,843 people carry an ordinal token in a given name.**
 
-## 26 · The decision-support thing she asked for twice — never set up
+## The decision-support thing she asked for twice — never set up
 
 **Emma, 2026-08-15, around the business context:** *"Probably at some point it'll
 be good for you to run an interview thing on me to make a decision on this… it'll
@@ -899,7 +899,7 @@ immediate task right now"*, so the timing is hers.
 cron, a decision log, a standing agenda review. Guessing here would produce exactly
 the unrequested machinery she has objected to before.
 
-## 27 · Chinese and Japanese genealogy — CLOSED by Emma, 2026-08-15
+## Chinese and Japanese genealogy — CLOSED by Emma, 2026-08-15
 
 **Her conclusion, and it is the whole answer:** *"We figured it out, and it's
 pretty simple. These genealogical people are mostly isolates or otherwise are not

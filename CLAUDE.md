@@ -674,6 +674,37 @@ two counts.
 do not exist yet, so a pattern broad enough to swallow the *next* batch fails now
 rather than after it arrives.
 
+### Always write the English label next to a property or item ID
+
+**Emma, 2026-08-15:** *"I have no fucking clue what any property or Q ID property
+name is or what Q ID is. So you need to actually provide the English labels with
+them."*
+
+So `P5056` alone is not a thing anyone can read. Write **`P5056` *patronym or
+matronym***, **`Q110874` *patronymic***, **`P7338` *regnal ordinal***. This applies
+in chat, in reports, in queue items and in commit messages — everywhere a bare ID
+would otherwise appear.
+
+`reports/wikidata-labels.tsv` has the label for almost every ID this project
+touches, so there is no excuse for a bare one and no reason to guess: looking it up
+is a grep. Guessing is also how `Q28513` got written down as *Empire of Japan* when
+it is **Austria–Hungary**, which produced 1,406 fake Japanese isolates.
+
+### Queue items are BULLET POINTS, never numbered or lettered
+
+**Emma, 2026-08-15, and the reasoning is hers:** *"they should be bullet points
+because you should be blasting through them. Having something like A, B, C, or
+whatever kind of implies durability, because you can't easily just remove A, so
+that is actually detrimental."*
+
+A number is a promise that the item will still be there. It makes deletion feel
+like renumbering everything else, so items accumulate instead of being blasted
+through — which is exactly what happened to `queue.md` twice in one day. An
+unnumbered item can be deleted the moment it is done and nothing else moves.
+
+**This also killed the `8a`/`8b` sub-lettering** and the `Task A/B/C` labels I
+invented for her three priorities, which she had never used.
+
 ### Wikidata properties and items
 
 All confirmed against live Wikidata via `wbgetentities` on 2026-07-30. On
