@@ -7161,3 +7161,27 @@ created as a person.
 **Item 9 deleted too.** It was a complete record of finished patronymic work
 sitting in the queue as if it were a step — the third time this session I have
 left a done item in place after Emma had the file cleaned out this morning.
+
+
+## 2026-08-15 — Nordic isolates hit 92%, and the country filter is the reason
+
+Three batches of academics filtered only by occupation ran **39%, 37%, 34%**. One
+batch of 100 filtered by **country as well** — 55 Norwegian, 44 Swedish, 1 Swedish
+Pomerania — came back at **92%**.
+
+**That kills the academics hypothesis as the explanation.** Emma's theory was that
+academics come from stable, well-documented families; that fits 34–39% but cannot
+explain a jump to 92% when the only variable changed was nationality. These people
+are close to *her* tree — Norway and Sweden are where she is linked — so the path
+exists and is short.
+
+**And it resizes the opportunity.** Nordic academics are nearly used up at 297
+unopened. Nordic isolates *without* the occupation filter are Sweden 3,983, Norway
+3,972, Finland 3,455 — roughly 65× more. Whether the 92% survives dropping the
+occupation filter is one 100-profile batch away from being known, and is worth
+running before anything is built on it.
+
+**Also measured: her workflow change is real.** Batch speed went 2.4 → 3.6 → 4.7
+profiles a minute across the three academic batches while the hit rate stayed flat,
+so the improvement is throughput, not selectivity. She is the limiting factor in
+this loop, which is why the batch size is hers to set.
