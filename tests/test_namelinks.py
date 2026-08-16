@@ -364,23 +364,74 @@ def test_a_patronymic_in_the_surname_slot_is_not_a_family_name():
     assert not [l for l in batch.links if l.prop == namelinks.FAMILY_NAME]
 
 
-def test_the_regnal_ordinal_still_withholds_the_given_name():
-    """**Documents a real limitation, and it is why `P7338` is queued.**
+def test_the_regnal_ordinal_is_a_qualifier_and_frees_the_given_name():
+    """**This turns over the test written one tick earlier, as predicted there.**
 
-    `Abisha III` tokenises to `Abisha` and `III`. `III` is a
-    `P7338` regnal ordinal, not a name, so no name item is labelled it and the
-    person blocks under the all-or-nothing rule that keeps `P1545` series ordinal
-    off a partial set of given names.
-
-    So `Abisha` is withheld - correctly, given what the emitter currently knows -
-    and the three patronymics emit anyway because they are their own series. That
-    decoupling is what this asserts; the given name arrives when the regnal
-    ordinal is handled.
+    That test asserted `Abisha` was withheld, because `Abisha III` tokenised to
+    `Abisha` and `III`, nothing is labelled `III`, and the person blocked under the
+    all-or-nothing rule that keeps a wrong `P1545` off a partial set of given
+    names. It documented a limitation and named `P7338` regnal ordinal as what
+    would change it. This is that change, so the old assertion is now wrong and is
+    replaced rather than deleted.
     """
     batch = chain_batch()
     given = [l for l in batch.links
              if l.prop == namelinks.GIVEN_NAME and l.qid == "Q10"]
-    assert given == []
-    assert any(s.text == "III" for s in batch.skipped)
-    assert len([l for l in batch.links
-                if l.prop == namelinks.PATRONYM and l.qid == "Q10"]) == 3
+    assert [(l.text, l.regnal) for l in given] == [("Abisha", "III")]
+    assert not any(sk.text == "III" for sk in batch.skipped)
+
+    quals = {st.value: dict(st.qualifiers)
+             for st in namelinks.to_statements(batch)
+             if st.prop == namelinks.GIVEN_NAME}
+    assert quals["Q500"][namelinks.REGNAL_ORDINAL] == '"III"'
+
+
+def test_the_regnal_ordinal_is_a_string_not_a_number():
+    """Established from data, not from `name modelling.txt`.
+
+    Her file writes Abisha's ordinal as `3`, which reads as an integer. The repo's
+    own case dumps show `qualifier P7338 = II`, `= I`, `= VI`, and the one `P7338`
+    in the downloaded store — `Q46734` — has datatype **string** with value `II`.
+    So the arabic numeral in her file is shorthand for the ordinal, and the roman
+    form is what a statement carries.
+    """
+    st = [s for s in namelinks.to_statements(chain_batch())
+          if s.prop == namelinks.GIVEN_NAME][0]
+    assert dict(st.qualifiers)[namelinks.REGNAL_ORDINAL].startswith('"')
+
+
+def test_a_name_fragment_is_never_taken_for_an_ordinal():
+    """`Vi`, `Mil` and `Di` are all roman characters and none is an ordinal.
+
+    A loose case-insensitive `[IVXLCDM]+` matches every one of them, and an
+    ordinal that eats a name is worse than one never emitted. A lone `I` is
+    refused too: `P7338` is a qualifier, so it needs a given name to hang on.
+    """
+    for name in ("Vi", "Mil", "Livia", "Di Caprio", "I"):
+        assert namelinks.split_regnal_ordinal(name)[1] == "", name
+    for name, want in (("Abisha III", "III"), ("Robert VII", "VII"),
+                       ("Charles X", "X"), ("Anders 2", "2")):
+        assert namelinks.split_regnal_ordinal(name)[1] == want, name
+
+
+def test_only_the_first_given_name_carries_the_ordinal():
+    """It orders the PERSON among namesakes, so putting it on a middle name would
+    say something different and false."""
+    links = [l for l in chain_batch().links if l.prop == namelinks.GIVEN_NAME]
+    assert all(l.regnal == "" for l in links if not l.is_first_given)
+
+
+def test_a_middle_initial_is_not_a_regnal_ordinal():
+    """`M`, `D`, `C`, `L` are 1000, 500, 100 and 50 — and are middle initials.
+
+    Measured over `reports/display-names.csv`, not argued: 164 people trail an `M`
+    and 119 a `C`, and they are `Ruby M /Marsh/`, `Faith C`, `Adelaide D
+    /Swetland/`, `William L`. Emitting those would have put a regnal ordinal on
+    283 people who have none. `I`, `V` and `X` stay because the corpus shows them
+    used as ordinals: `Ramesses X`, `Guillaume X d'Aquitaine`, `Friedrich V`.
+    """
+    for name in ("Ruby M", "Faith C", "Adelaide D", "William L"):
+        assert namelinks.split_regnal_ordinal(name)[1] == "", name
+    for name, want in (("Ramesses X", "X"), ("Friedrich V", "V"),
+                       ("Yitzhaq I", "I")):
+        assert namelinks.split_regnal_ordinal(name)[1] == want, name

@@ -74,6 +74,60 @@ MIDDLE_NAME = "Q245025"           #: middle name
 #: reading of `P144` as a name-item-to-name-item link.
 BASED_ON = "P144"                 #: based on
 
+#: **`P7338` regnal ordinal — a qualifier on the GIVEN NAME, holding a string.**
+#: Emma, 2026-08-15: *"they should all have the regnal orders put on their names as
+#: qualifiers"*, and **not only the Samaritans** — anyone whose name carries an
+#: ordering.
+#:
+#: **The value is the roman numeral, and that was established from data rather than
+#: assumed.** `name modelling.txt` writes Abisha's as `3`, which reads as an
+#: integer; the repo's own case dumps show `qualifier P7338 = II`, `= I`, `= VI`,
+#: and the one `P7338` in the downloaded store, `Q46734`, has datatype **string**
+#: with value `'II'`. So the arabic `3` in her file is shorthand for the ordinal,
+#: not the literal to emit. Checked offline, per the no-live-queries rule.
+#:
+#: Distinct from `P1545` series ordinal, which orders a person's several given
+#: names rather than the person among their namesakes.
+REGNAL_ORDINAL = "P7338"          #: regnal ordinal
+
+#: A **strict** roman numeral, uppercase only, plus a bare 1-3 digit number.
+#:
+#: Strictness is the whole design. A loose `[IVXLCDM]+` case-insensitively matches
+#: `Vi`, `Di` and `Mil`, which are name fragments, and a regnal ordinal that eats a
+#: name is worse than one never emitted. Requiring the token to be uppercase as
+#: written and to be a well-formed numeral rejects those without a name blacklist.
+_REGNAL = re.compile(
+    r"^(?:(?=[IVXLCDM]{1,15}$)M{0,3}(?:CM|CD|D?C{0,3})(?:XC|XL|L?X{0,3})"
+    r"(?:IX|IV|V?I{0,3})|\d{1,3})$"
+)
+
+
+#: **Single letters that are middle initials, not ordinals.** `M`, `D`, `C` and `L`
+#: are 1000, 500, 100 and 50 — no person is the thousandth of their name — and the
+#: corpus confirms it outright: `Ruby M /Marsh/`, `Faith C`, `Adelaide D /Swetland/`,
+#: `William L`. 164 `M` and 119 `C` would have been emitted as regnal ordinals.
+#:
+#: `I`, `V` and `X` stay, because those *are* how people are numbered and the corpus
+#: shows it: `Ramesses X`, `Guillaume X d'Aquitaine`, `Friedrich V`,
+#: `John V /Palaiologos/`. A single `I` standing for an initial will slip through;
+#: that is a known and accepted residue, not an oversight, and it is the direction
+#: that costs a qualifier rather than inventing one.
+_INITIALS = {"M", "D", "C", "L"}
+
+
+def split_regnal_ordinal(given: str) -> tuple[str, str]:
+    """`"Abisha III"` -> `("Abisha", "III")`; `("Olsen", "")` when there is none.
+
+    The ordinal must **trail** and must not be the only token: a person recorded
+    solely as `I` has no given name for the qualifier to hang on, and `P7338` is a
+    qualifier rather than a statement of its own.
+    """
+    tokens = (given or "").replace("/", " ").split()
+    last = tokens[-1] if tokens else ""
+    if len(tokens) > 1 and _REGNAL.match(last) and last not in _INITIALS:
+        return " ".join(tokens[:-1]), last
+    return " ".join(tokens), ""
+
 _WORD = re.compile(r"[^\W\d_]+", re.UNICODE)
 
 
@@ -98,6 +152,10 @@ class NameLink:
     #: True for a given name after the first that is NOT a patronymic — Emma's
     #: definition of a middle name, 2026-08-15.
     is_middle: bool = False
+    #: `P7338` regnal ordinal, as the roman numeral string. Only ever set on the
+    #: first given name — it orders the *person* among namesakes, so hanging it on
+    #: a middle name would say something different and false.
+    regnal: str = ""
 
 
 @dataclass(frozen=True)
@@ -276,9 +334,14 @@ def build_name_links(
         # separate tokens and `Phinhas` reads as a given name.
         given_chain = patronymic_chain(primary.given)
         chain = given_chain or surname_chain
-        tokens = _WORD.findall(
+        # The regnal ordinal comes off before tokenising. `_WORD` matches letters,
+        # so `III` would otherwise arrive as a given-name token, resolve to no name
+        # item, and block the whole person under the all-or-nothing rule below -
+        # which is exactly what it did to every Samaritan.
+        given_text, regnal = split_regnal_ordinal(
             given_part(primary.given) if given_chain else primary.given
         )
+        tokens = _WORD.findall(given_text)
         if tokens and GIVEN_NAME in already:
             batch.skipped.append(
                 Skipped(geni_id, display, primary.given, "item already states a given name")
@@ -366,6 +429,7 @@ def build_name_links(
                             ordinal=index if len(resolved) > 1 else None,
                             is_first_given=(index == 1),
                             is_middle=(index > 1),
+                            regnal=regnal if index == 1 else "",
                         )
                     )
             elif resolved and blocked:
@@ -394,6 +458,8 @@ def _qualifiers(link: "NameLink") -> tuple[tuple[str, str], ...]:
       `P3831` object of statement has role → `Q245025` middle name
     * a patronymic: `P144` based on → the father, **as a person**, where we hold
       his QID
+    * the first given name of somebody numbered among namesakes:
+      `P7338` regnal ordinal, as the roman numeral string
     """
     out: list[tuple[str, str]] = []
     if link.ordinal:
@@ -403,6 +469,8 @@ def _qualifiers(link: "NameLink") -> tuple[tuple[str, str], ...]:
             out.append((PREFERRED_RANK_REASON, USUAL_FORENAME))
         elif link.is_middle:
             out.append((HAS_ROLE, MIDDLE_NAME))
+        if link.regnal:
+            out.append((REGNAL_ORDINAL, f'"{link.regnal}"'))
     elif link.prop == PATRONYM and link.based_on:
         out.append((BASED_ON, link.based_on))
     return tuple(out)

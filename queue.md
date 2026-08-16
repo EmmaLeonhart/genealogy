@@ -590,26 +590,6 @@ As far as descriptions go, I'll say we should have a series of descriptions that
 
 ---
 
-## `P7338` *regnal ordinal* — the last piece of `name modelling.txt`
-
-**Everything else in her model is emitted.** `P5056` *patronym or matronym* with
-`P144` *based on* → the ancestor each link names, `P1545` *series ordinal* along
-the chain, `P7452` *reason for preferred rank* → `Q3409033` *usual forename*,
-`P3831` *object of statement has role* → `Q245025` *middle name*. Chained
-patronymics landed 2026-08-16.
-
-**What is left.** Emma, 2026-08-15: *"they should all have the regnal orders put on
-their names as qualifiers"*, and **not only the Samaritans**. `Abisha III`
-tokenises to `Abisha` and `III`; no name item is labelled `III`, so the person
-blocks under the all-or-nothing rule that keeps a wrong `P1545` off a partial set
-of given names — and the given name is withheld. `tests/test_namelinks.py::
-test_the_regnal_ordinal_still_withholds_the_given_name` pins exactly that, so
-building the emitter will turn that test over rather than surprise anyone.
-
-**Do:** recognise a trailing roman numeral or digit on the given name, emit it as
-`P7338` on the `P735` statement, and stop treating it as a name token. 7,843
-people carry one.
-
 ## `reports/seeds.md`'s future — a queue item, not a cron
 
 The 22:01 cron `d62449e3` was created for this and **is no longer running**; it
@@ -712,23 +692,6 @@ of a `genimerge coverage` command that had **already been deleted on 2026-08-15*
 A staleness report that is itself stale sends a review after things that are
 already gone. Regenerate it as part of item 23 step 4, and prefer checking the
 filesystem over trusting its rows.
-
-## Regnal ordinals as `P7338` qualifiers — asked 19:52, never built
-
-**Emma, 2026-08-15:** *"I think that the initial given names of them should all
-have the qualifier regnal ordinal (P7338), as should anything else that does that
-stuff… they should all have the regnal orders put on their names as qualifiers"* —
-and explicitly **not only the Samaritans**: *"as really everybody should have if
-they have orderings."*
-
-**What happened instead:** `P7338` *regnal ordinal* was documented in `CLAUDE.md`'s property table
-and `classify-patronymics.py` was taught to **skip** ordinals as name tokens.
-Nothing emits it. `grep -rl P7338 scripts/ src/` returns one file and it is the
-skipper.
-
-So half the instruction landed — ordinals stopped being mistaken for patronymics —
-and the half she actually asked for, putting them on the name statements, was
-never built. **7,843 people carry an ordinal token in a given name.**
 
 ## Chinese and Japanese genealogy — CLOSED by Emma, 2026-08-15
 

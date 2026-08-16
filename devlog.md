@@ -7686,3 +7686,50 @@ asserts the real behaviour and names `P7338` as what changes it.
 
 Fast lane **943 passed** (up 11), 1 failed — the byte-identical duplicate export,
 still NEEDS-DECISION and still untouched.
+
+
+## 2026-08-16 — `P7338` regnal ordinal, and the 283 middle initials it nearly invented
+
+The last piece of `name modelling.txt`. `Abisha III` now emits `P735` *given name*
+`Abisha` qualified with `P7338` *regnal ordinal* `"III"`, instead of tokenising to
+`Abisha` + `III` and blocking the whole person because nothing is labelled `III`.
+
+**The value format was settled from data, offline, not from her file.**
+`name modelling.txt` writes Abisha's ordinal as `3`, which reads as an integer. The
+repo's own case dumps show `qualifier P7338 = II`, `= I`, `= VI`, and the single
+`P7338` in the downloaded store — `Q46734` — has **datatype `string`, value `II`**.
+So the arabic numeral in her file is shorthand for the ordinal and the roman form is
+what a statement carries. No Wikidata query was made; `out/cases/` and
+`wikidata/items/` answered it.
+
+**The near-miss, and it is the reason to count before emitting.** A first count said
+**6,647** people carry a trailing ordinal, with `M` 164 and `C` 119 in the top eight.
+`M`, `D`, `C` and `L` are 1000, 500, 100 and 50 — no person is the thousandth of
+their name — and sampling settled it outright: `Ruby M /Marsh/`, `Faith C`,
+`Adelaide D /Swetland/`, `William L`. **Middle initials.** `X` and `V` sampled the
+other way and are genuine: `Ramesses X`, `Guillaume X d'Aquitaine`, `Friedrich V`,
+`John V /Palaiologos/`. Excluding single-letter `M`/`D`/`C`/`L` drops the count to
+**6,227** and prevents a regnal ordinal being asserted about **283 people who have
+none**.
+
+A single `I` standing for an initial still slips through. That is accepted and
+recorded rather than patched around: `I` is the commonest genuine ordinal at 1,893,
+and the alternative — a name blacklist — is the fuzzy matching this repo refuses.
+
+**The regex is strict on purpose.** A loose case-insensitive `[IVXLCDM]+` matches
+`Vi`, `Mil`, `Di` and `Livia`. Requiring the token to be uppercase as written and a
+well-formed roman numeral rejects those with no name list at all. A lone `I` is also
+refused: `P7338` is a qualifier and needs a given name to hang on.
+
+**One test turned over, as its own docstring predicted.**
+`test_the_regnal_ordinal_still_withholds_the_given_name` was written one tick
+earlier to pin the limitation and named `P7338` as what would change it. It is
+replaced by an assertion that `Abisha` now emits carrying `"III"` — not deleted to
+make a run go green, but obsoleted by the work it described.
+
+The ordinal is set **only on the first given name**: it orders the person among
+namesakes, so hanging it on a middle name would say something different and false.
+
+Fast lane **947 passed** (up 4), 1 failed — the byte-identical duplicate export,
+still NEEDS-DECISION and still untouched. `queue.md` loses **two** sections for this
+one item; it had been queued twice under different headings.
