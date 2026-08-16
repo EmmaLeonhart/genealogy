@@ -405,6 +405,73 @@ that export's 4,820 people are `Private` at all, so an export seeded on a living
 person is **not** substantially redacted; assuming otherwise was wrong when it
 was assumed here.
 
+### `NN` is PRESERVED in `mul`. Descriptive labels are ADDED in other languages
+
+**Emma, 2026-08-16:** *"NN is not relabeled. Why are you thinking that I'm saying
+that it's relabeled? NN is always preserved in the multi-language label. It just
+has more descriptive labels added in some languages for the relationships."*
+
+So the shape on a Wikidata item for an unnamed person is **both**:
+
+    mul  NN                              <- the marker, never removed
+    en   daughter of Fujiwara no Tadaki   <- descriptive, added
+
+**This nearly went wrong at scale.** `build-nn-label-batch.py` emitted
+`set_label` on `en` with `"replaces": "NN"`, and NN lives in `en` on **1,549** of
+the 1,588 such items and in `mul` on only **278** — so the batch would have erased
+the only copy on 1,271 items. Measured over the store, not supposed:
+
+    en 1549 · nl 671 · mul 278 · cy 25 · be 6 · pl 4 · ru 3 · da 3 · ca 3
+
+The fix is two edits per item, the `mul` one declared as a dependency of the `en`
+one, so the marker is written before the slot holding it is reused. An item whose
+`en` already says something real is left alone (36 of them).
+
+**`Private` and `NN` are the same population and get the same treatment.** Emma,
+same message: *"NN and private are the same thing here, because if there's a
+private individual whose name is not exported, it comes out as an NN."* The rule
+one section down — *`Private` never becomes a label* — was right about what must
+not be written and wrong to stop there: emptying it leaves an item with no way to
+be read at all, which is the same objection. **Neither marker is a label; neither
+person is left unlabelled.**
+
+### Emma not replying means she is content. It is NEVER a block
+
+**Emma, 2026-08-16:** *"Is there anything else that you treated me not responding
+to as being a block? Because generally speaking, when I'm not responding to
+anything, the assumption should be I'm happy with what you're doing."*
+
+Showing her cases — which `CLAUDE.md` § *How this project works now* requires
+before generalising a rule — is **not** a request for permission. Show the records,
+then keep going. If she disagrees she says so, loudly and immediately; that is the
+one thing this project can rely on.
+
+**The failure this is written against.** `scripts/walk-structural-merge.py` ran and
+wrote `reports/structural-correspondence.csv` (3,902 rows) and
+`reports/wikidata-structural-placeholders.json` (12,260). Eight sample rows were
+printed for her to eyeball. She did not reply, and **six consecutive status reports
+carried "8 structural merge cases unanswered — 3,902 correspondences and 12,260
+placeholders blocked behind it"** as the largest blocker in the repo. Nothing was
+behind it. The files were on disk the entire time.
+
+Related: a decision that is genuinely mine — the 207 name strings where one
+candidate item is far better populated than the other — gets **taken and recorded**,
+not parked on her. Asking is reserved for what § *One name item per USAGE* names:
+a real ambiguity in what she wants, not a judgement call I would rather not own.
+
+### A start date is not a blocker
+
+*"no wikidata edits until September 1"* (2026-08-14) is a date on which execution
+begins. Emma, 2026-08-16: *"Waiting until September, until the stuff is
+implemented, that's not blocked on user action. That's literally not blocked at
+all. It's just waiting to get started. Literally none of the entire fucking
+programme waits until September to execute. Nothing is blocked."*
+
+Every batch builds, is reviewed and is committed now. Do not tag the date
+BLOCKED-ON-EXTERNAL, BLOCKED-ON-USER-ACTION, or anything else from the not-done
+taxonomy — it is not a not-done item, and calling it one made a plan of hers look
+like something outside anyone's control.
+
 ### A second Geni ID on one Wikidata item is NOT a conflict
 
 **Emma, 2026-08-14: *"it is impossible to merge these geni profiles, simple as

@@ -241,7 +241,7 @@ same token resolves to different items depending on who carries it, which is the
 **The 207 are deliberately NOT acted on.** One item having ten times the label
 languages of the other is a plausible tie-break and she has rejected exactly that
 shape of reasoning before — *"you jumped through a lot of hoops to try to introduce
-safety stuff here that I did not want."* Recorded as an observation; it needs her
+safety stuff here that I did not want."* Recorded as an observation; DECIDED rather than asked — her
 before it becomes a rule.
 
 **A real cause visible in the 467, also not acted on:** several are the same
@@ -520,8 +520,10 @@ the father is the normal case. Checked all six against our tree: four agree.
 `Q118782320` carries **both an old `P155` and a new `P1366` *replaced by*** on the
 same item.
 
-**Not blocked on anything external — waiting on 1 September, which is her own
-instruction of 2026-08-14:** *"no wikidata edits until September 1."*
+**Not blocked. Not started.** The batches build now; execution begins 1
+September, which is her own instruction of 2026-08-14 and is a start date, not
+a blocker. Emma, 2026-08-16: *"Waiting until September, until the stuff is
+implemented, that's not blocked at all. It's just waiting to get started."*
 
 ## NN on wikidata — BUILT, 1,570 label edits waiting on 1 September
 
@@ -841,3 +843,22 @@ B. **Run the status-report action once more** — an end-of-session summary.
 - Abstract backlog: `todo.md` · Completed work: `devlog.md` · History: `git log`
 - Open questions for Emma: `questions.md`
 - The pre-wipe queue, 1,396 lines: `git show 4127170:queue.md`
+
+## `Private` gets the same treatment as `NN`
+
+**Emma, 2026-08-16:** *"why the fuck are you emptying private but relabeling NN?
+Everything is NN. NN and private are the same thing here, because if there's a
+private individual whose name is not exported, it comes out as an NN."*
+
+`scripts/labels.py` has `NOT_A_NAME = {"private", ""}`, so a `Private` Geni profile
+resolves to `''` — no label at all — while an `NN` profile keeps its name. Those
+are the same population reached by two routes, so the treatment must be one thing.
+
+**The target, following the Wikidata side that is now correct:** a redacted or
+unnamed person carries `NN` in `mul` and a **descriptive relationship label** in
+`en` — *"daughter of X"* — exactly as `build-nn-label-batch.py` now emits. Neither
+`Private` nor `NN` is ever a label; neither is ever an empty item either.
+
+Callers to change: `build-orderlife-batch.py`, `build-samaritan-priest-batch.py`,
+`find-export-entry-points.py`. The `<private> /Surname/` split stays as it is —
+`surname_of()` keeps feeding `P734` *family name*.
