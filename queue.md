@@ -874,6 +874,42 @@ and an empty interview is a good outcome — do not invent questions to fill it.
 Answers are applied in the same tick, because an answered question that is not
 applied is worse than an unasked one.
 
+## Entity resolution — LIVE, emitter correct, 10 edits waiting on 1 September
+
+**Emma, 2026-08-15, asked whether this was still a real task and ruled: live, and
+the highest-value thing in the repo.** Format: JSON edit objects, the same as
+everything else.
+
+**Nothing in `entity_resolution.md` has reached Wikidata.** All ten are
+outstanding, and every claim in the batch was verified offline against the store:
+
+| QID | current `en` label | `P2600` *Geni.com profile ID* |
+| --- | --- | --- |
+| `Q11443857` | `Futohime` | **absent** — her *Mononobe no Futohime* is a real replacement |
+| `Q19657284` | *(none)* | absent — *Buyeo Deokjang* is an addition |
+| `Q12598947` | *(none)* | absent — *Buyeo Taebi* is an addition |
+| `Q11596350` | Prince Wakatakehiko | absent |
+| `Q11078587` | Harima no Inabi no Ooiratsume | absent |
+| `Q24890131` | Mononobe no Ikofutsu | absent |
+| `Q140568870` | not in the store | absent |
+
+**The emitter already exists and is correct.**
+`scripts/build-entity-resolution-batch.py` → `reports/wikidata-entity-resolution.json`,
+7 `add_geni_id` + 3 `set_label`. The QuickStatements renderer was deleted on
+2026-08-15 and this replaced it in the format her 08-12 spec asks for.
+
+**The empty `requires` on the label edits is right, not an oversight.** Her rule
+is that the Geni ID must precede anything *derived from Geni*. A label she supplied
+by hand is her own judgement, not Geni-derived, so it needs no dependency and
+correctly cites nothing — citing a Geni profile it did not come from would be the
+broken-reference failure `tests/test_edit_emitters.py` pins.
+
+**`Q140568870`, her own item, is not in the local store.** Consistent with the
+store being a Geni-shaped slice seeded from `P2600` holders: an item with no Geni
+ID cannot be reached by that seed. Not a defect.
+
+**Blocked only on the calendar** — no Wikidata edits before 1 September.
+
 ## Always last — pinned to the tail
 
 A. **Ensure the three crons are running** — work-loop `3 * * * *`, auto-flush
