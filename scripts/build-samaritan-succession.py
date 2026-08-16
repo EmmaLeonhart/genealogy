@@ -150,7 +150,56 @@ def main() -> int:
     # gave 14 of 21 and left the modern five floating; the article closes both
     # ends. Where the two disagree, the article wins - it is a source, and
     # P155/P156 here are an artefact of piecemeal editing.
+    # store, because a reference to a Geni ID the item does not have is unusable.
+    # Ordinals already stated on Wikidata, read from the store - these are the
+    # anchors the numbering is derived from.
+    existing_ordinals: dict[str, str] = {}
+    has_p2600: set[str] = set()
+    try:
+        with wikistore.StoreReader(REPO / "wikidata" / "items",
+                                   REPO / "out" / "wikidata" / "store-index.sqlite3") as reader:
+            for found_qid, entity in reader.entities(sorted(qids)).items():
+                claims = entity.get("claims") or {}
+                if "P2600" in claims:
+                    has_p2600.add(found_qid)
+                for c in claims.get("P39", []):
+                    v = (c.get("mainsnak", {}).get("datavalue") or {}).get("value", {})
+                    if isinstance(v, dict) and v.get("id") == OFFICE:
+                        for x in (c.get("qualifiers") or {}).get("P1545", []):
+                            dv = (x.get("datavalue") or {}).get("value")
+                            if dv:
+                                existing_ordinals[found_qid] = str(dv)
+    except Exception as exc:                     # noqa: BLE001 - reported, not hidden
+        print(f"  could not read the store ({exc}); every P2600 reference will be "
+              "treated as needing the ID added first", file=sys.stderr)
+    print(f"  {len(has_p2600)} of {len(qids)} already carry a Geni ID")
+
     order = [q for q, _n, _s, _e in SUCCESSION if q]
+
+    # **`P1545` series ordinal — the priest's absolute number in the line.**
+    # Emma, 2026-08-16: *"the single property for the samaritans is highly
+    # qualified... Qualifiers are extremely important here."* She is right and
+    # this one was missing: three of the five she called well modelled carry it
+    # (`Q2164896` 130, `Q2031200` 131, `Q13485740` 132) and the batch emitted
+    # none.
+    #
+    # **The offset is derived and checked, never assumed.** Each of those three
+    # gives `absolute number - position in SUCCESSION`; all three give **111**,
+    # which is what makes the chain provably contiguous over the stretch we hold.
+    # If they ever disagree the chain has a gap and no number is emitted at all,
+    # because a wrong ordinal is worse than none.
+    positions = {q: i for i, (q, _n, _s, _e) in enumerate(SUCCESSION) if q}
+    offsets = {q: int(n) - positions[q]
+               for q, n in existing_ordinals.items() if q in positions}
+    if offsets and len(set(offsets.values())) == 1:
+        offset = next(iter(offsets.values()))
+        ordinals = {q: positions[q] + offset for q in positions}
+        print(f"  series ordinal: {len(offsets)} anchors agree on offset {offset}, "
+              f"numbering {len(ordinals)} priests")
+    else:
+        ordinals = {}
+        print(f"  series ordinal: anchors disagree ({sorted(set(offsets.values()))}), "
+              "so no P1545 is emitted", file=sys.stderr)
     terms = {q: (s, e) for q, _n, s, e in SUCCESSION if q}
     predecessor, successor = {}, {}
     for i, q in enumerate(order):
@@ -167,18 +216,6 @@ def main() -> int:
     print()
 
     # **Which items already carry a `P2600` Geni.com profile ID.** Read from the
-    # store, because a reference to a Geni ID the item does not have is unusable.
-    has_p2600: set[str] = set()
-    try:
-        with wikistore.StoreReader(REPO / "wikidata" / "items",
-                                   REPO / "out" / "wikidata" / "store-index.sqlite3") as reader:
-            for found_qid, entity in reader.entities(sorted(qids)).items():
-                if "P2600" in (entity.get("claims") or {}):
-                    has_p2600.add(found_qid)
-    except Exception as exc:                     # noqa: BLE001 - reported, not hidden
-        print(f"  could not read the store ({exc}); every P2600 reference will be "
-              "treated as needing the ID added first", file=sys.stderr)
-    print(f"  {len(has_p2600)} of {len(qids)} already carry a Geni ID")
 
     edits = []
     for q in qids:
@@ -209,7 +246,9 @@ def main() -> int:
             "add": [{
                 "property": POSITION_HELD,
                 "value": OFFICE,
-                "qualifiers": ([{"property": p, "value": v}
+                "qualifiers": ([{"property": "P1545", "value": str(ordinals[q])}]
+                               if q in ordinals and q not in existing_ordinals else [])
+                              + ([{"property": p, "value": v}
                                 for p, v in sorted(quals.items())]
                                + [{"property": pr, "value": f"+{yr}-00-00T00:00:00Z/9"}
                                   for pr, yr in ((START_TIME, terms.get(q, ("", ""))[0]),

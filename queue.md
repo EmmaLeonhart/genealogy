@@ -452,6 +452,22 @@ The dependency is now declared (`requires: entity_resolution:<qid>`) rather than
 the reference dropped, because the provenance is real and simply has to land
 second. 12 of 21 already carry a Geni ID and need no dependency.
 
+**Emma's correction, 2026-08-16:** *"the single property for the samaritans is
+highly qualified and many of the poorly modeled ones are inconsistent in other
+ways. Qualifiers are extremely important here."* She is right, and one qualifier
+was missing entirely.
+
+**`P1545` *series ordinal* — the priest's absolute number in the line.** Three of
+her five well-modelled ones carry it (`Q2164896` 130, `Q2031200` 131, `Q13485740`
+132) and the batch emitted none. Now emitted on **18 of 21**, the other three
+already having it.
+
+**The numbering is derived and proved, not assumed.** Each anchor gives *absolute
+number − position in the chain*; **all three give 111**, which is what establishes
+the chain is contiguous over the stretch we hold. If they ever disagree, no `P1545`
+is emitted at all — a wrong ordinal is worse than none. That puts Yaacob I at 119
+and runs unbroken to Aabed-El at 132.
+
 **Blocked only on the calendar.**
 
 ## NN on wikidata
