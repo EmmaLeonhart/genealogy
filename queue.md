@@ -41,6 +41,90 @@ Items 3, 5 and 6 are independent of this chain and can run at any point.
 
 ---
 
+## THE AGENDA — three tasks, Emma 2026-08-15. Everything else is secondary
+
+*"As far as actually getting any information from now, I only have three things
+that I'm trying to do. You should probably write this down because this is an
+important agenda thing."*
+
+**A · Connect herself to the researchers on Wikidata.** The bridge work. 560 saved
+paths, 8,650 bridge people, **511 of them missing from our corpus AND on more than
+one path** — importing those clears 1,454 path-slots. The cluster at the top is
+**Hård af Segerstad** and **Sandelin**. Her framing of what makes a bridge person
+worth doing first: *"find people that are in multiple bridges and are also not in"*
+our data.
+
+**B · The sparse areas — she already did exports off them and I lost track.**
+*"Finding these sparse areas, which we kind of did, and I did exports based off of
+them, but it feels like you kind of forgot about them."* `reports/single-export-clusters.md`
+and `reports/export-entry-points.csv` are the outputs; 31 edge exports landed on
+2026-08-15 and were placed, but **nothing has checked what they closed**.
+
+**C · Chinese and Japanese genealogy — minor, and partly done.** *"I believe
+Japanese and Chinese genealogies are partially there, partially overlapping with
+data."* Measured: **only 30 Japanese isolates exist** because the Japanese material
+in this corpus is *connected*, not isolated. The isolate method is the wrong
+instrument here; density and export seeding are.
+
+**All three are completable, and she thinks completable today.**
+
+---
+
+## THE EDIT ALGORITHM — her specification, recorded verbatim in substance
+
+**She raised this because she was worried it had been altered:** *"I don't think I
+expressed to you how much my version actually favours me, and I'm hoping that, as
+a result, you didn't decide to change something and go against specification to
+make it favour me less."*
+
+**Checked 2026-08-15: nothing implements it yet.** `scripts/wikidata-edit-run.py`
+is a batch executor with `MAX_EDITS_PER_RUN = 100` and a reviewed-batch allowlist.
+There is no random selection and no service-area gate, so there was nothing to
+alter. **When it is built, it is built to this spec and the bias toward her
+neighbourhood is deliberate — do not normalise it away.**
+
+**The rate.** 100 JSONs executed per day, chosen at random from the eligible set.
+
+**The service area — what makes an edit eligible.** An edit needs a *service
+area*: something that has a Geni ID, or an item that has a Geni ID, or an item
+that is getting one added. *"Something that, in our version, has a GeniID but on
+Wikidata gets it. That's a service area… particularly something that has a GeniID
+but is otherwise isolated."*
+
+**Why it favours her, and why that is the design.** Her own item can add a mother
+or a father with equal probability. Once one is added, **each of them can add the
+other**, either can add her brother, and her brother can add her back as a sibling.
+Each addition creates new surface area for the next.
+
+**So the growth rate depends on saturation, not on size.** *"There's a very large
+amount of saturated relationships in the very dense areas. The most ideal situation
+for lots of people being added is a bunch of individuals that are not linked to
+each other and are relatively close to each other, so that each of them has a
+relatively high probability of growing out more individuals."* A dense, fully-linked
+region has nothing left to add; a cluster of near-but-unlinked people compounds.
+
+**That is why the researchers and the Nordic cluster come out on top** — not
+because they are ranked highest, but because *"the algorithm is most optimised to
+hit these people, because they are entry points for the algorithm to function."*
+
+**De-prioritise Geni-IDs-as-sources.** She expects most items to receive a Geni ID
+and nothing else, and if Geni IDs start being added as sources onto relationships
+that already exist, **that class drops to roughly 5–25 edits a day** rather than
+competing for the 100.
+
+**Scheduled path-building runs alongside the random 100.** Deliberate edits that
+build a path from her outward, *"starting with the people close to me that have
+wiki data items"*, then filling the Charlemagne line from the medieval period
+downward until it intercepts.
+
+**The end state she is describing:** a dense region around her, mostly of people
+she did not create, which keeps accumulating because each addition raises the
+surface area. *"It looks like established genealogical stuff"* — and the Samaritan
+high priests and the antiquity work sit inside the same region rather than beside
+it.
+
+---
+
 ## 0 · STANDING PROCEDURE — audit this queue against the transcripts first
 
 **Not deleted when it completes: it is a procedure, not a step.** Run it before
