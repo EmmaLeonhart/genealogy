@@ -7231,3 +7231,58 @@ family, not distant notables.
 
 `reports/path-bridge-targets.csv` ranks all 9,211 by paths-through, with QID where
 one exists and the nearest step at which each appears.
+
+
+## 2026-08-15 — the bridge census, and the Japan experiment cannot run
+
+**Emma's four questions about the paths, answered.** 560 paths name 9,211 people;
+560 of those are the researchers themselves, so **8,650 are bridge people**
+between her and a researcher.
+
+| | | |
+| --- | ---: | ---: |
+| in our corpus | 2,059 | 24% |
+| **not in our corpus** | **6,591** | **76%** |
+| on more than one path | 1,330 | 15% |
+| **not in corpus AND shared** | **511** | |
+
+**Importing those 511 clears 1,454 path-slots** — 2.8 paths per person against 1.0
+for the 6,080 that appear once. The top of that list is one family: **Hård af
+Segerstad** and **Sandelin**, Swedish nobility that many researcher paths route
+through and which we hold none of. `Anna Lovisa Andersdotter`, `Anna Maria
+Josefina Sandelin` and `Sten Harald Bertel Hård af Segerstad` are on 23 paths each.
+
+**The structure, stated once:** the near end of every path is her own Borsheim and
+Frisk ancestors — **held but with no Wikidata item**, so those are creations. The
+far end is 76% absent from the exports — those are imports. The 511 are where an
+import pays more than once.
+
+### The Japan/China experiment: 30 Japanese isolates exist, six are researchers
+
+**And the first run of it was wrong in a way worth recording.** The country QIDs
+were **assumed rather than read from `reports/wikidata-labels.tsv`**, which was
+already on disk:
+
+| QID | assumed | actually |
+| --- | --- | --- |
+| `Q28513` | Empire of Japan | **Austria–Hungary** |
+| `Q9683` | Qing dynasty | **Tang dynasty** |
+| `Q13426199` | Tang dynasty | **Republic of China** |
+
+That produced "1,406 Japanese isolates" which were Czechs, Poles and Hungarians,
+and 100 of them were about to be opened as Japanese researchers. It surfaced only
+because the names in the preview were visibly not Japanese. This is exactly the
+failure `CLAUDE.md` § *Wikidata properties* warns about for `P…` IDs, committed
+with `Q…` IDs instead.
+
+Rescanned with every ID read from the dump: **30 Japanese isolates, 6 researchers.
+19,467 Chinese, of which 17,259 are the Song/CBDB dead end**, leaving 2,208 and 45
+researchers.
+
+**Why so few is the actual finding.** Japanese people in this corpus are
+*connected*, not isolated — the Jimmu component is one of the largest in the tree.
+Isolates are by definition people Wikidata holds with no family at all, so a dense
+imperial line produces almost none. **The isolate method is the wrong instrument
+for fleshing out Japanese genealogy**; density and export seeding are the right
+ones, because they find thin regions of a connected tree rather than disconnected
+individuals.
