@@ -777,39 +777,6 @@ the limiting factor, not compute.
 American line — *"I'm struggling to find it too so I'm a bit unsure of it."*
 Finland and Denmark are allowed but not the focus. **Especially Norway.**
 
-## The removed surname is back in the repo — found 2026-08-15
-
-**`CLAUDE.md` § *Her name is Emma Leonhart* is explicit:** the name that is gone
-*"does not get written down again — not in a comment, not in a report, not as a
-'superseded name' column."* It also names the exact failure that has recurred:
-*"An earlier commit kept it in a `further_latin_names` column and called that
-preservation rather than erasure. That was wrong."*
-
-**It is in that column again**, plus in raw name data and in four exports:
-
-| where | rows tying it to `6000000087535357291` |
-| --- | ---: |
-| `reports/derived-labels.csv` — `further_latin_names` | 1 |
-| `reports/display-names.csv` — `name_raw` and `display_name` | 2 |
-| exports under `exports/` | **4 files** |
-
-**How it got back: new exports.** `CLAUDE.md` anticipates this — *"If a future
-export reintroduces it, correct the record and regenerate — do not add a note
-explaining what it used to say."* The 2026-08-12 sweep cleaned 223 files; exports
-taken since carry the pre-rename `NAME` record again.
-
-**How it was found.** It reached a generated Wikidata label. `build-trunk-batch.py`
-took its label from `display-names.csv` and emitted `Emma Bishop` as the `en`
-label of a `create_individual`. Caught before commit; the script now reads
-`derived-labels.csv`, where `derive-labels.py` applies the correction.
-
-**What needs deciding before anything is edited**, because it touches the
-never-delete-a-GEDCOM rule: the four exports are committed corpus. `CLAUDE.md`
-says correct the record and regenerate, and the 2026-08-12 sweep did edit the
-GEDCOMs — so precedent exists — but this is her name and her call, not a cleanup
-to run unilaterally. **The `further_latin_names` column is not ambiguous** and can
-go whenever `derive-labels.py` is next run.
-
 ## The three new exports, then gaps, then the full synoptic regeneration
 
 **Emma's sequence, 2026-08-15, and she asked for it queued so it runs in this
@@ -881,24 +848,6 @@ So half the instruction landed — ordinals stopped being mistaken for patronymi
 and the half she actually asked for, putting them on the name statements, was
 never built. **7,843 people carry an ordinal token in a given name.**
 
-## The decision-support thing she asked for twice — never set up
-
-**Emma, 2026-08-15, around the business context:** *"Probably at some point it'll
-be good for you to run an interview thing on me to make a decision on this… it'll
-probably be a good thing for you to start something up for me that will, as a
-whole, make it so that important stuff happens. Probably it'll be good for you to
-establish kind of a thing, a user interview or something, for what we are doing
-right now."*
-
-**Nothing was set up and nothing was written down at the time.** She said it three
-times in one message, which is usually how she signals something she wants and has
-not fully specified. She also said the application itself *"is just not the
-immediate task right now"*, so the timing is hers.
-
-**Ask what shape it should take before building anything** — a recurring interview
-cron, a decision log, a standing agenda review. Guessing here would produce exactly
-the unrequested machinery she has objected to before.
-
 ## Chinese and Japanese genealogy — CLOSED by Emma, 2026-08-15
 
 **Her conclusion, and it is the whole answer:** *"We figured it out, and it's
@@ -944,6 +893,22 @@ the visible half was done and the rest was never written down.
 
 **Nothing was found that had been lost entirely.** Every instruction traced to
 either completed work, an existing queue item, or one of the three above.
+
+## The decision interview — cron `9e17b300` at 10:07 daily
+
+**Emma asked for this three times on 2026-08-15** and chose a recurring cron when
+asked what shape it should take.
+
+**Why it exists:** decisions piled up silently. The same blockers appeared in three
+consecutive status reports before being put to her as questions. Reporting a
+blocker is not asking about it.
+
+**Its rules, which are the ones she has stated elsewhere:** discard any "blocker"
+that could be settled by reading the repo and settle it instead; every option
+carries its consequence; every property or item ID carries its **English label**;
+and an empty interview is a good outcome — do not invent questions to fill it.
+Answers are applied in the same tick, because an answered question that is not
+applied is worse than an unasked one.
 
 ## Always last — pinned to the tail
 
