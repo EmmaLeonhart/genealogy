@@ -645,23 +645,26 @@ As far as descriptions go, I'll say we should have a series of descriptions that
 
 ---
 
-## Make the code match `name modelling.txt` — namelinks DONE, batch builder still open
+## Make the code match `name modelling.txt` — namelinks DONE, chained patronymics open
 
-**`src/genimerge/namelinks.py` now emits her model.** `P5056` *patronym or
-matronym* as its own property, `P144` *based on* → the father as a person,
+**`src/genimerge/namelinks.py` emits her model.** `P5056` *patronym or matronym*
+as its own property, `P144` *based on* → the father as a person,
 `P7452` *reason for preferred rank* → `Q3409033` *usual forename* on the first
-given name, and `P3831` *object of statement has role* → `Q245025` *middle name*
-on later ones.
+given name, `P3831` *object of statement has role* → `Q245025` *middle name* on
+later ones.
 
-**Still to do:** `scripts/build-name-item-batch.py` documents and implements the
-superseded `P735` *given name* + `P3831` model at lines 22 and 69, and
-`reports/wikidata-name-items.json` (21,939 planned items) was built against it, so
-every patronymic in that batch is wrong and it needs regenerating.
+**`build-name-item-batch.py` needed only a documentation fix, not a rebuild.** Its
+table said a person links to a patronymic with `P735` + `P3831`; corrected to
+`P5056`. **The output was never wrong** — that script creates *name items* and
+emits no person statements, so the 13,320 planned creations carry only
+`P31` *instance of* and `P144` *based on*, both correct. Reported here as a
+blocker for several ticks on the strength of reading the docstring rather than the
+JSON.
 
-**Chained patronymics are still unmodelled.** `Abisha III ben Phinhas ben Yittzhaq
-ben Shalma` needs three `P5056` statements ordered by `P1545` *series ordinal*,
-each with its own `P144`. `classify-patronymics.py` reads only the first `ben X`,
-so nothing produces more than one patronymic per person.
+**Still open: chained patronymics.** `Abisha III ben Phinhas ben Yittzhaq ben
+Shalma` needs three `P5056` statements ordered by `P1545` *series ordinal*, each
+with its own `P144`. `classify-patronymics.py` reads only the first `ben X`, so
+nothing produces more than one patronymic per person.
 
 ## `reports/seeds.md`'s future — a queue item, not a cron
 

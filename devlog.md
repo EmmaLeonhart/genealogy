@@ -7451,3 +7451,31 @@ before it becomes a rule.
 `Q106674406` *Japanese* and `Q632104` *French*. Choosing between them needs a view
 on which language a Geni name is — the same unsolved CJK-culture problem the
 seven-language label work turns on.
+
+
+## 2026-08-16 — the name-item batch was never wrong; I had read the docstring
+
+Reported for several ticks as a blocker: *"`build-name-item-batch.py` still
+implements the superseded name model, so its 21,939 planned items are wrong for
+every patronymic."*
+
+**That was false.** The script creates **name items** and emits no person
+statements. Its 13,320 creations carry `P31` *instance of* and `P144` *based on*
+and nothing else — `P735` *given name* appears nowhere in the output. Under Emma's
+model a patronymic name item **is** an instance of `Q110874` *patronymic*, so
+`P31 → Q110874` is right, and `P144` on a name item pointing at the base name is
+the convention 119 of the 633 existing patronymic items already follow.
+
+What was actually wrong was one row of a documentation table saying a person links
+to a patronymic with `P735` + `P3831` *object of statement has role*. Corrected to
+`P5056` *patronym or matronym*. **Nothing needed regenerating.**
+
+**The lesson is the same one as `derive-labels.py` two ticks ago:** I read a file's
+description of itself and reported that as the state of its output. Both times the
+output was one command away from being checked.
+
+`P144` genuinely means two things here and both are correct: on a **name item** it
+points at the name the patronymic derives from; on a **person's `P5056` statement**
+it points at the father as a person. Those are different jobs in different scripts.
+
+`tests/test_edit_emitters.py` — 9 passed.

@@ -15,11 +15,24 @@ that was the dominance ratio Emma threw out on 2026-08-15.
 
 **Three usages, three item types:**
 
-| usage | `P31` of the name item | linked by |
+| usage | `P31` *instance of* the name item | a person links to it with |
 | --- | --- | --- |
-| given name | `Q202444` | `P735` |
-| family name | `Q101352` | `P734` |
-| patronymic | `Q110874` | `P735` + `P3831` → `Q110874` |
+| given name | `Q202444` *given name* | `P735` *given name* |
+| family name | `Q101352` *family name* | `P734` *family name* |
+| patronymic | `Q110874` *patronymic* | **`P5056` *patronym or matronym*** |
+
+**The last row was wrong until 2026-08-16** — it said `P735` + `P3831` *object of
+statement has role*, the model Emma's `name modelling.txt` superseded. **Only the
+documentation was wrong.** This script creates *name items*; it emits no person
+statements at all, so `P735` never appeared in its output and the 13,320 planned
+items did not need regenerating. That was reported as a blocker for several ticks
+on the strength of reading this table rather than the JSON.
+
+**`P144` *based on* means two different things and both are correct.** On a *name
+item* it points at the name the patronymic derives from — the convention 119 of the
+633 existing patronymic items follow, and what this script emits. On a *person's*
+`P5056` statement it points at **the father as a person**, which is
+`namelinks.py`'s job, not this one's.
 
 **Nothing is created that already exists**, which is the failure mode that
 damages Wikidata rather than wasting a run. **A name whose label is `ambiguous`
