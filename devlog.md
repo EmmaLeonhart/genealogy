@@ -7185,3 +7185,49 @@ running before anything is built on it.
 profiles a minute across the three academic batches while the hit rate stayed flat,
 so the improvement is throughput, not selectivity. She is the limiting factor in
 this loop, which is why the batch size is hers to set.
+
+
+## 2026-08-15 — all 560 saved paths ingested, and where the bridges actually are
+
+**Emma's ask:** *"I want you to ingest the paths and stuff like that so that we
+have all the paths down. I want to figure out… what level of overlap there is
+between these paths, what amounts of these paths we have, where we have overlaps."*
+
+I had extracted 89 early and then let it drift while pages kept arriving. **All 560
+now extracted, 0 failures.**
+
+| | |
+| --- | ---: |
+| paths | 560 |
+| distinct people named | **9,211** |
+| held in the 234-export corpus | 2,067 |
+| **not held** | **7,144 (78%)** |
+| **carrying a Wikidata QID** | **224 (2.4%)** |
+| path length | median 33 steps, max 99 |
+
+**The overlap is entirely at her end, and that is the whole strategy.** Only 14% of
+the 9,211 appear in more than one path — the far ends are almost all unique. But
+the near end is shared by nearly everything:
+
+| paths through | who | step |
+| ---: | --- | ---: |
+| 597 | Richard Wade Borsheim | 2 |
+| 434 | Randolph Paulus Borsheim | 3 |
+| 380 | Reinhert Borsheim | 4 |
+| 204 | Helen Frisk / Hans Bertil Frisk | 2–3 |
+| 194 | Beda Elvira Wedberg | 4 |
+
+**8,987 of the 9,211 have no Wikidata item.** Including every one of the above —
+her own father, grandfather and great-grandfather are on 597, 434 and 380 of the
+560 paths respectively and are on Wikidata nowhere.
+
+**So the bridge order is forced, and it is short.** Creating ~10 items — her
+direct ancestors in the first four steps — puts a linked node on **the shared
+trunk of nearly every path she has collected.** Every isolate she then attaches
+reaches Wikidata through that trunk rather than needing its own chain. That is her
+*"finding the nearest person with a Wikidata ID to me, adding that, forming the
+bridge"* — and the measurement says the nearest useful ones are her immediate
+family, not distant notables.
+
+`reports/path-bridge-targets.csv` ranks all 9,211 by paths-through, with QID where
+one exists and the nearest step at which each appears.
