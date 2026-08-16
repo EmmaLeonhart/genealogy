@@ -864,6 +864,85 @@ A staleness report that is itself stale sends a review after things that are
 already gone. Regenerate it as part of item 23 step 4, and prefer checking the
 filesystem over trusting its rows.
 
+## 25 · Regnal ordinals as `P7338` qualifiers — asked 19:52, never built
+
+**Emma, 2026-08-15:** *"I think that the initial given names of them should all
+have the qualifier regnal ordinal (P7338), as should anything else that does that
+stuff… they should all have the regnal orders put on their names as qualifiers"* —
+and explicitly **not only the Samaritans**: *"as really everybody should have if
+they have orderings."*
+
+**What happened instead:** `P7338` was documented in `CLAUDE.md`'s property table
+and `classify-patronymics.py` was taught to **skip** ordinals as name tokens.
+Nothing emits it. `grep -rl P7338 scripts/ src/` returns one file and it is the
+skipper.
+
+So half the instruction landed — ordinals stopped being mistaken for patronymics —
+and the half she actually asked for, putting them on the name statements, was
+never built. **7,843 people carry an ordinal token in a given name.**
+
+## 26 · The decision-support thing she asked for twice — never set up
+
+**Emma, 2026-08-15, around the business context:** *"Probably at some point it'll
+be good for you to run an interview thing on me to make a decision on this… it'll
+probably be a good thing for you to start something up for me that will, as a
+whole, make it so that important stuff happens. Probably it'll be good for you to
+establish kind of a thing, a user interview or something, for what we are doing
+right now."*
+
+**Nothing was set up and nothing was written down at the time.** She said it three
+times in one message, which is usually how she signals something she wants and has
+not fully specified. She also said the application itself *"is just not the
+immediate task right now"*, so the timing is hers.
+
+**Ask what shape it should take before building anything** — a recurring interview
+cron, a decision log, a standing agenda review. Guessing here would produce exactly
+the unrequested machinery she has objected to before.
+
+## 27 · Task C's real work — Chinese and Japanese genealogy, via density not isolates
+
+**Agenda task C is only half answered.** The measurement is done and it says the
+isolate method is the wrong instrument: **30 Japanese isolates exist** because the
+Japanese material in this corpus is *connected* — the Jimmu component is one of the
+largest in the tree — and isolates are by definition people with no family at all.
+19,467 Chinese isolates exist but 17,259 are the CBDB block she dismissed.
+
+**What has NOT been done is the actual fleshing out.** Her words: *"I want to do a
+bit of fleshing out on Chinese and Japanese genealogies… I'm going to use them
+relative to the Emperor Jimmu because I just want to flesh out the Japanese
+genealogy a bit too."*
+
+The right instrument is the one that finds thin *regions* of a connected tree:
+`reports/density.md` and `scripts/find-export-entry-points.py`, restricted to the
+Jimmu component and the Chinese material. That has never been run for those
+regions.
+
+---
+
+## AUDIT 2026-08-15 — what she asked for versus what was done
+
+Run after she said *"I'm a bit concerned that some of my instructions may have just
+never been followed, maybe lost, and maybe important things."* 67 instruction turns
+reviewed against the repo.
+
+**Done and verifiable:** the transcript audit; order.life vendored, its 128-row
+parse explained and its jobs run; the expanded Wikidata download and the 824,358
+name items; Yitzhaq I linked; the cron contents queued; `questions.md`; the Abram
+two-fathers fix and the `exports/excluded/` mechanism; the missing-ancestor census;
+the queue clean-out; the mass name export; patronymic forms, the sex guard and the
+surname prior; the isolate demographics and the CBDB finding; five Nordic batches
+and Rogaland; the bridge census and the midpoint re-ranking; the 560 paths ingested;
+the trunk batch.
+
+**Not done, and already queued:** items 1, 2, 8, 10, 12, 15, 17, 20–24.
+
+**Not done and NOT queued until now:** items 25, 26 and 27 above. All three are
+from instructions that were answered in part, which is how they escaped notice —
+the visible half was done and the rest was never written down.
+
+**Nothing was found that had been lost entirely.** Every instruction traced to
+either completed work, an existing queue item, or one of the three above.
+
 ## Always last — pinned to the tail
 
 A. **Ensure the three crons are running** — work-loop `3 * * * *`, auto-flush
