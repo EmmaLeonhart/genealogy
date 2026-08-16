@@ -7356,3 +7356,34 @@ gone on 2026-08-15.
 `build-samaritan-spine-gedcom.py` and `build-samaritan-spine-page.py`. My
 "unreferenced" scan only looked for the literal string `scripts/`, so a module
 imported by name looked unused. Worth remembering before the next sweep.
+
+
+## 2026-08-15 — namelinks rewritten to `name modelling.txt`
+
+Emma approved "rewrite now, regenerate the batch". `src/genimerge/namelinks.py`
+now emits her model rather than the superseded one:
+
+- **`P5056` patronym or matronym** as a property of its own, parallel to `P735`
+  given name and `P734` family name — not a `P735` statement qualified with
+  `P3831` object of statement has role → `Q110874` patronymic.
+- **`P144` based on** as a qualifier on it, pointing at **the father as a person**,
+  where his QID is known. Absent, the patronymic still emits and simply carries no
+  derivation; a missing qualifier is not a wrong one.
+- **`P7452` reason for preferred rank → `Q3409033` usual forename** on the first
+  given name, and **`P3831` → `Q245025` middle name** on later ones.
+
+**A patronymic is now emitted instead of discarded.** It used to be skipped with
+"patronymic in the given-name field" — not because dropping it was right, but
+because the only available property was `P735` and putting it there would have
+been a false claim. Her model provides the correct property, so the workaround has
+no reason to exist.
+
+**One test was replaced, and it is worth being explicit about why.**
+`test_a_patronymic_in_the_given_field_is_never_proposed` asserted the old
+behaviour. It was not weakened or deleted to make a change pass — it encoded a
+workaround for a missing property, and it is replaced by two tests asserting what
+the model actually requires: that a patronymic emits as `P5056`, and that the
+first given name carries *usual forename* while later ones carry *middle name*.
+
+`tests/test_namelinks.py` 21 passed; with the emitter, ID-documentation and
+entities suites, 53 passed.

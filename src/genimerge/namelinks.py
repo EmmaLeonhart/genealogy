@@ -41,9 +41,38 @@ from .claims import Statement, geni_reference
 
 __all__ = ["NameLink", "Skipped", "NameBatch", "build_name_links", "render_markdown"]
 
-GIVEN_NAME = "P735"
-FAMILY_NAME = "P734"
-SERIES_ORDINAL = "P1545"
+GIVEN_NAME = "P735"          #: given name
+FAMILY_NAME = "P734"         #: family name
+SERIES_ORDINAL = "P1545"     #: series ordinal — qualifier, orders several names
+
+#: **`P5056` patronym or matronym — the property a patronymic uses.** Emma's
+#: `name modelling.txt`, 2026-08-15, and it is a correction: this repo previously
+#: modelled a patronymic as a `P735` given name qualified with
+#: `P3831` object of statement has role → `Q110874` patronymic. Her model gives it
+#: **its own property**, parallel to `P735` and `P734` rather than nested inside
+#: `P735`:
+#:
+#:     P735  given name           Vladimir
+#:       P1545 series ordinal     1
+#:       P7452 reason for preferred rank → Q3409033 usual forename
+#:     P5056 patronym or matronym  Vladimirovich
+#:       P144 based on            ← his FATHER, as a person
+#:     P734  family name          Putin
+PATRONYM = "P5056"           #: patronym or matronym
+
+#: **`P7452` reason for preferred rank → `Q3409033` usual forename**, on the FIRST
+#: given name. A middle name instead carries
+#: `P3831` object of statement has role → `Q245025` middle name.
+PREFERRED_RANK_REASON = "P7452"   #: reason for preferred rank
+USUAL_FORENAME = "Q3409033"       #: usual forename — NOT Q3409032, unisex given name
+HAS_ROLE = "P3831"                #: object of statement has role
+MIDDLE_NAME = "Q245025"           #: middle name
+
+#: **`P144` based on, as a qualifier on `P5056`, pointing at the PERSON that link
+#: names** — the father, then the grandfather for a chained patronymic. Her note
+#: in the file: *"(his father, has the same name)"*. This supersedes the earlier
+#: reading of `P144` as a name-item-to-name-item link.
+BASED_ON = "P144"                 #: based on
 
 _WORD = re.compile(r"[^\W\d_]+", re.UNICODE)
 
@@ -58,6 +87,17 @@ class NameLink:
     geni_id: str
     person: str = ""
     ordinal: int | None = None
+    #: For `P5056` patronym or matronym: the QID of the person the patronymic
+    #: names, emitted as a `P144` based on qualifier. Empty when the father has
+    #: no Wikidata item, in which case the link is still valid and simply carries
+    #: no derivation.
+    based_on: str = ""
+    #: True for the first given name, which takes
+    #: `P7452` reason for preferred rank → `Q3409033` usual forename.
+    is_first_given: bool = False
+    #: True for a given name after the first that is NOT a patronymic — Emma's
+    #: definition of a middle name, 2026-08-15.
+    is_middle: bool = False
 
 
 @dataclass(frozen=True)
@@ -202,19 +242,21 @@ def build_name_links(
         elif tokens:
             resolved: list[tuple[str, str]] = []
             blocked = False
+            patronyms: list[tuple[str, str]] = []
             for token in tokens:
                 if is_patronymic(token):
-                    batch.skipped.append(
-                        Skipped(
-                            geni_id,
-                            display,
-                            token,
-                            "patronymic in the given-name field",
-                            "Geni's GIVN holds the whole given string; this token is "
-                            "not a given name",
-                        )
-                    )
-                    blocked = True
+                    # **Emitted as `P5056` patronym or matronym, not skipped.**
+                    # Until 2026-08-15 this was dropped with "patronymic in the
+                    # given-name field", because the only place to put it was a
+                    # `P735` given name and that would have been wrong. Emma's
+                    # model gives it its own property, so there is somewhere
+                    # correct to put it and no reason to discard it.
+                    item, why = resolve(token)
+                    if item is None:
+                        batch.skipped.append(Skipped(geni_id, display, token, why))
+                        blocked = True
+                    else:
+                        patronyms.append((token, item))
                     continue
                 item, why = resolve(token)
                 if item is None:
@@ -236,6 +278,25 @@ def build_name_links(
                             geni_id,
                             display,
                             ordinal=index if len(resolved) > 1 else None,
+                            is_first_given=(index == 1),
+                            is_middle=(index > 1),
+                        )
+                    )
+                # The father's QID, where we have one, is the `P144` based on
+                # value. Absent, the patronymic is still correct and simply
+                # carries no derivation - a missing qualifier is not a wrong one.
+                father_qid = linked.get(getattr(person, "father_id", "") or "", "")
+                for index, (token, item) in enumerate(patronyms, start=1):
+                    batch.links.append(
+                        NameLink(
+                            qid,
+                            PATRONYM,
+                            item,
+                            token,
+                            geni_id,
+                            display,
+                            ordinal=index if len(patronyms) > 1 else None,
+                            based_on=father_qid,
                         )
                     )
             elif resolved and blocked:
@@ -254,15 +315,37 @@ def build_name_links(
     return batch
 
 
+def _qualifiers(link: "NameLink") -> tuple[tuple[str, str], ...]:
+    """The qualifiers `name modelling.txt` puts on each kind of name statement.
+
+    * every statement in a numbered series: `P1545` series ordinal
+    * the first given name: `P7452` reason for preferred rank → `Q3409033`
+      usual forename
+    * a later given name that is not a patronymic:
+      `P3831` object of statement has role → `Q245025` middle name
+    * a patronymic: `P144` based on → the father, **as a person**, where we hold
+      his QID
+    """
+    out: list[tuple[str, str]] = []
+    if link.ordinal:
+        out.append((SERIES_ORDINAL, f'"{link.ordinal}"'))
+    if link.prop == GIVEN_NAME:
+        if link.is_first_given:
+            out.append((PREFERRED_RANK_REASON, USUAL_FORENAME))
+        elif link.is_middle:
+            out.append((HAS_ROLE, MIDDLE_NAME))
+    elif link.prop == PATRONYM and link.based_on:
+        out.append((BASED_ON, link.based_on))
+    return tuple(out)
+
+
 def to_statements(batch: NameBatch) -> list[Statement]:
     return [
         Statement(
             qid=link.qid,
             prop=link.prop,
             value=link.name_item,
-            qualifiers=(
-                ((SERIES_ORDINAL, f'"{link.ordinal}"'),) if link.ordinal else ()
-            ),
+            qualifiers=_qualifiers(link),
             references=geni_reference(link.geni_id, batch.retrieved),
         )
         for link in batch.links
@@ -336,7 +419,9 @@ def render_markdown(batch: NameBatch, *, top: int = 60) -> str:
             [
                 [
                     f"[{link.qid}](https://www.wikidata.org/wiki/{link.qid})",
-                    "family name" if link.prop == FAMILY_NAME else "given name",
+                    "family name" if link.prop == FAMILY_NAME
+                    else "patronym or matronym" if link.prop == PATRONYM
+                    else "given name",
                     f"[{link.name_item}](https://www.wikidata.org/wiki/{link.name_item})",
                     link.text,
                     link.person,

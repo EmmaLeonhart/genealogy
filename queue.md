@@ -631,59 +631,23 @@ As far as descriptions go, I'll say we should have a series of descriptions that
 
 ---
 
-## Make the code match `name modelling.txt` — DISAGREEMENTS FOUND, none fixed
+## Make the code match `name modelling.txt` — namelinks DONE, batch builder still open
 
-Her file is read and folded into `CLAUDE.md`. **The code was not changed** — this
-job lists disagreements and queues them, per her instruction. Four, and the first
-is structural.
+**`src/genimerge/namelinks.py` now emits her model.** `P5056` *patronym or
+matronym* as its own property, `P144` *based on* → the father as a person,
+`P7452` *reason for preferred rank* → `Q3409033` *usual forename* on the first
+given name, and `P3831` *object of statement has role* → `Q245025` *middle name*
+on later ones.
 
-### a · The patronymic property is wrong everywhere
+**Still to do:** `scripts/build-name-item-batch.py` documents and implements the
+superseded `P735` *given name* + `P3831` model at lines 22 and 69, and
+`reports/wikidata-name-items.json` (21,939 planned items) was built against it, so
+every patronymic in that batch is wrong and it needs regenerating.
 
-Her model: **`P5056` patronym or matronym**, a property of its own, parallel to
-`P735` *given name* and `P734` *family name*.
-
-What the code does: `scripts/build-name-item-batch.py` line 22 documents
-`patronymic | Q110874 | P735 + P3831 -> Q110874`, and `PATRONYMIC_ITEM = "Q110874"`
-at line 69 is used as an `instance of` for a *name item* attached via `P735` *given name*.
-That is the superseded model this file itself carried until today.
-
-**Nothing emits `P5056` *patronym or matronym* at all.** `src/genimerge/namelinks.py` knows only
-`P735` *given name*, `P734` *family name* and `P1545` *series ordinal*.
-
-### b · `P144` *based on* points at the wrong kind of thing
-
-Her model: `P144` *based on* is a **qualifier on `P5056` *patronym or matronym* pointing at the PERSON** that link
-names — the father, then the grandfather. Her note: *"(his father, has the same
-name)"*.
-
-The code treats `P144` *based on* as a claim on a patronymic **name item** pointing at the
-name it derives from (`build-name-item-batch.py` line 34).
-
-### c · `P7452` *reason for preferred rank* / `Q3409033` *usual forename* are not emitted
-
-Her model puts `P7452` *reason for preferred rank* → `Q3409033` *usual forename*
-on the **first** given name. `namelinks.py` emits `P1545` *series ordinal* and nothing else, so
-first-given-name versus middle-name is not expressed at all.
-
-`Q3409033` is *usual forename*; `Q3409032` is *unisex given name*. Adjacent
-numbers, different things. Both confirmed offline.
-
-### d · Chained patronymics are unmodelled end to end
-
-`Abisha III ben Phinhas ben Yittzhaq ben Shalma` needs **three** `P5056` *patronym or matronym*
-statements ordered by `P1545` *series ordinal*, each with its own `P144` *based on*.
-`scripts/classify-patronymics.py` reads only the first `ben X` of a string, and
-no emitter produces more than one patronymic per person.
-
-### What to do about the ambiguity she names
-
-*"We have to check in the given names and in the surname whether it is a patronym
-or the regular name."* `classify-patronymics.py` already does exactly this — it
-takes candidates from **both** `GIVN` and `SURN` and decides from the father, not
-from which field the token sits in. That part agrees with her file.
-
-**Edge cases go to her**: *"Do an ask-user question on the edge cases so that I
-can figure them out."*
+**Chained patronymics are still unmodelled.** `Abisha III ben Phinhas ben Yittzhaq
+ben Shalma` needs three `P5056` statements ordered by `P1545` *series ordinal*,
+each with its own `P144`. `classify-patronymics.py` reads only the first `ben X`,
+so nothing produces more than one patronymic per person.
 
 ## `reports/seeds.md`'s future — a queue item, not a cron
 

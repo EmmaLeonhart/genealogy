@@ -116,11 +116,41 @@ def test_an_ambiguous_name_is_set_aside_not_picked_between(tmp_path):
     assert any("2 name items share this text" in s.reason for s in batch.skipped)
 
 
-def test_a_patronymic_in_the_given_field_is_never_proposed(tmp_path):
-    batch = build(tmp_path, {"2": "Q2"})
+def test_a_patronymic_is_emitted_as_P5056_not_dropped(tmp_path):
+    """**This test replaces one that asserted the opposite, and the change is the
+    point.** Until 2026-08-15 a patronymic in the `GIVN` field was skipped with
+    "patronymic in the given-name field", because the only property available was
+    `P735` given name and putting it there would have been a false claim.
 
-    assert any(s.reason == "patronymic in the given-name field" for s in batch.skipped)
-    assert "Rasmusdatter" not in [l.text for l in batch.links]
+    Emma's `name modelling.txt` gives a patronymic **its own property**, `P5056`
+    patronym or matronym, parallel to `P735` and `P734`. There is now somewhere
+    correct to put it, so discarding it is no longer right - the old test encoded
+    a workaround for a missing property, not a rule about names.
+    """
+    items = dict(ITEMS)
+    items["Rasmusdatter"] = [("Q400", "Q110874", "label")]
+    batch = build(tmp_path, {"2": "Q2"}, items=items)
+
+    patronyms = [l for l in batch.links if l.prop == namelinks.PATRONYM]
+    assert [(l.text, l.name_item) for l in patronyms] == [("Rasmusdatter", "Q400")]
+    assert not any(
+        s.reason == "patronymic in the given-name field" for s in batch.skipped
+    )
+
+
+def test_the_first_given_name_carries_usual_forename(tmp_path):
+    """`P7452` reason for preferred rank -> `Q3409033` usual forename, on the
+    first given name only; a later one carries
+    `P3831` object of statement has role -> `Q245025` middle name."""
+    batch = build(tmp_path, {"1": "Q1"})
+    quals = {
+        st.value: dict(st.qualifiers)
+        for st in namelinks.to_statements(batch)
+        if st.prop == namelinks.GIVEN_NAME
+    }
+    assert quals["Q200"].get(namelinks.PREFERRED_RANK_REASON) == namelinks.USUAL_FORENAME
+    assert quals["Q201"].get(namelinks.HAS_ROLE) == namelinks.MIDDLE_NAME
+    assert namelinks.PREFERRED_RANK_REASON not in quals["Q201"]
 
 
 def test_a_partly_resolvable_given_string_is_held_back_entirely(tmp_path):
