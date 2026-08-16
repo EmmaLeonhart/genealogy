@@ -512,160 +512,34 @@ same item.
 
 **Blocked only on the calendar.**
 
-## NN on wikidata
+## NN on wikidata — BUILT, 1,570 label edits waiting on 1 September
 
-I am not sure if we did something with NN on Wikidata, but we also want to be updating the English language name and stuff. We also want to be doing the label application stuff for basically all the NN stuff on Wikidata, for example, these. 
+**Emma's item:** *"we also want to be updating the English language name and stuff.
+We also want to be doing the label application stuff for basically all the NN stuff
+on Wikidata."* She listed ~40 examples; one of them, `Q111238834`, already reads
+*"daughter of Fujiwara no Tadaki"*, which is the shape the rest should take.
 
-https://www.wikidata.org/wiki/Q116150736 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116170403 | NN - Wikidata
-https://www.wikidata.org/wiki/Q112898955 | NN - Wikidata
-https://www.wikidata.org/wiki/Q102538880 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116170456 | NN - Wikidata
-https://www.wikidata.org/wiki/Q111238834 | daughter of Fujiwara no Tadaki - Wikidata
-https://www.wikidata.org/wiki/Q109010839 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116150282 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116168954 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116170392 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116148496 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116150058 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116149964 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116150153 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116150934 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116150939 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116150859 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116168480 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116170947 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116170401 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116182904 | NN - Wikidata
-https://www.wikidata.org/wiki/Q110570759 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116168870 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116168942 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116169266 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116172108 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116163178 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116156723 | NN - Wikidata
-https://www.wikidata.org/wiki/Q110355897 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116150949 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116146032 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116183322 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116183114 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116150463 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116168349 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116177411 | NN - Wikidata
-https://www.wikidata.org/wiki/Q112534635 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116159043 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116183332 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116170207 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116156771 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116150739 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116183515 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116157197 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116178118 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116145410 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116159110 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116163179 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116178117 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116150462 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116150113 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116150133 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116150932 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116183329 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116151033 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116150416 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116162055 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116149816 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116182903 | NN - Wikidata
-https://www.wikidata.org/wiki/Q110154679 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116150940 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116150918 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116151040 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116182716 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116170702 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116168632 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116170452 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116146412 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116177497 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116177507 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116182728 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116185122 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116150926 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116150132 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116150135 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116168345 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116170043 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116149934 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116151181 | NN - Wikidata
-https://www.wikidata.org/wiki/Q112542671 | NN - Wikidata
-https://www.wikidata.org/wiki/Q110411995 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116150284 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116145503 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116149807 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116149936 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116163177 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116183512 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116182620 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116150250 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116170393 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116168310 | NN - Wikidata
-https://www.wikidata.org/wiki/Q109533561 | NN - Wikidata
-https://www.wikidata.org/wiki/Q104538450 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116146049 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116146356 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116177495 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116173843 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116148081 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116162343 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116183544 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116179686 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116169037 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116149960 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116183594 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116183523 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116170394 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116170457 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116183490 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116146421 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116161974 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116174053 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116170962 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116170453 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116179547 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116173324 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116168584 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116183171 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116183217 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116183170 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116156772 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116170400 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116183302 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116007128 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116182893 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116177820 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116150917 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116182719 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116150140 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116149915 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116161968 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116170402 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116185068 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116183325 | NN - Wikidata
-https://www.wikidata.org/wiki/Q117246336 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116469442 | NN - Wikidata
-https://www.wikidata.org/wiki/Q130359529 | NN - Wikidata
-https://www.wikidata.org/wiki/Q130339723 | NN - Wikidata
-https://www.wikidata.org/wiki/Q130340457 | NN - Wikidata
-https://www.wikidata.org/wiki/Q128804059 | NN - Wikidata
-https://www.wikidata.org/wiki/Q125524276 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116469530 | NN - Wikidata
-https://www.wikidata.org/wiki/Q117268674 | NN - Wikidata
-https://www.wikidata.org/wiki/Q127270785 | NN - Wikidata
-https://www.wikidata.org/wiki/Q129257442 | NN - Wikidata
-https://www.wikidata.org/wiki/Q123206948 | NN - Wikidata
-https://www.wikidata.org/wiki/Q127270796 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116187194 | NN - Wikidata
-https://www.wikidata.org/wiki/Q116471193 | NN - Wikidata
+**Measured, not sampled: 1,588 Wikidata items carry `NN` or an equivalent as their
+English label.** Only **27** carry a `P2600` *Geni.com profile ID*, so this is
+almost entirely Wikidata-side work rather than a Geni join.
 
-Oh, and to be clear, we are supposed to be generating descriptions for these people too. as well as the unnamed people there
+`scripts/build-nn-label-batch.py` → `reports/wikidata-nn-labels.json`, **1,570
+`set_label` edits**. **18 get nothing** because every relative they name is itself
+unnamed. **10 of the 11 examples of hers I checked have a proposal** —
+`Q116150736` → *daughter of John Hunyadi*, `Q112898955` → *wife of Roger I of
+Gabarret*.
+
+**Same rule as the Geni placeholder work**, her precedence: parent, then spouse,
+then child. **A relative whose own label is `NN` is skipped rather than used** —
+*"mother of NN"* names nobody — and the fall-through continues to the next
+candidate.
+
+**`NN` is relabelled, never emptied.** `CLAUDE.md`: *"`NN` is nomen nescio, a
+genealogist saying the name is unknown — a real statement about a person, not Geni
+withholding data."* That is the opposite of the `Private` rule, and her instruction
+here is to update the label rather than blank it.
+
+Offline throughout; nothing executed.
 
 ## Wikidata person descriptions
 

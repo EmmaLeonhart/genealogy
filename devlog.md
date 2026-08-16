@@ -7502,3 +7502,24 @@ provenance is real, it just has to land second. Which items already carry the ID
 read from the store, not assumed: 12 of 21 do.
 
 `tests/test_edit_emitters.py` — 9 passed.
+
+
+## 2026-08-16 — NN on Wikidata: 1,570 relationship labels
+
+Emma's item, untouched since she wrote it. **1,588 Wikidata items carry `NN` or an
+equivalent as their English label**, and only **27** carry a `P2600` *Geni.com
+profile ID* — so this is Wikidata-side work, not a Geni join.
+
+**1,570 get a label from a named relative**; 18 do not, because every relative they
+name is itself unnamed. Her own listed examples come out as
+*daughter of John Hunyadi*, *wife of Roger I of Gabarret*,
+*son of Mychailo of Chernigiv*.
+
+The rule is the one the Geni placeholder work already uses — parent, then spouse,
+then child — with the same guard: **a relative whose own label is `NN` is skipped**,
+because *"mother of NN"* names nobody.
+
+**And `NN` is relabelled rather than emptied**, which is the opposite of the
+`Private` rule and is deliberate. `CLAUDE.md`: *nomen nescio* is a genealogist
+saying the name is unknown — a real statement about a person — where `Private` is
+Geni withholding one.
