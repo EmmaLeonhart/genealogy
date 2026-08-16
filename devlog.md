@@ -7286,3 +7286,48 @@ imperial line produces almost none. **The isolate method is the wrong instrument
 for fleshing out Japanese genealogy**; density and export seeding are the right
 ones, because they find thin regions of a connected tree rather than disconnected
 individuals.
+
+
+## 2026-08-15 — agenda task B: did the edge exports close the sparse areas?
+
+**Nobody had checked.** Emma: *"I did exports based off of them, but it feels like
+you kind of forgot about them."* Correct — 31 edge exports were placed and no
+measurement followed.
+
+**On the targets: yes.** **23 of the 30 entry points offered in the top 10
+clusters are now reached by 2+ exports.** Her seeding hit what it aimed at.
+
+**In aggregate: no, and that is arithmetic rather than failure.** Thin population
+191,438 → 193,550; clusters 877 → 945.
+
+| | people |
+| --- | ---: |
+| left the thin set (now 2+ exports) | 23,638 |
+| entered it (new, reached once) | 25,750 |
+| still thin | 167,800 |
+
+**Every export reaches people nothing else has, and those are thin by
+definition.** So "did sparseness go down" cannot be answered by exporting, and
+**"did the people I targeted get covered" is the measure that works.**
+
+### The entry points for the neighbourhood, which is the third ask
+
+**1,012 people are missing from the corpus AND on more than one path. 372 of them
+are adjacent to somebody we already hold**, so an export seeded on that neighbour
+reaches them. `reports/path-entry-points.csv` carries a seed Geni ID per person.
+
+| paths | who | export from |
+| ---: | --- | --- |
+| 23 | Anna Lovisa Andersdotter | Carl Peter |
+| 23 | Sten Harald Bertel Hård af Segerstad | `<private>` Sjögren (Hård af Segerstad) |
+| 14 | Louise Hedvig Elisabet Hård af Segerstad | *the same seed* |
+| 11 | Hedvig Sofia Tillberg | Lars Lennart Larsson |
+| 11 | Ragnhild Sahlin Wendt | Aagot Garborg |
+
+The top 18 account for **178 path-slots**, and two of them share one seed.
+
+### Task C, closed by measurement
+
+**30 Japanese isolates exist**, all now opened. **19,467 Chinese**, of which
+**17,259 are the Song/CBDB block** Emma already dismissed — leaving **2,208** real
+ones across Qing, Yuan, Tang, Ming and the two republics.

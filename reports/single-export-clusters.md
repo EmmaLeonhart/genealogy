@@ -5,7 +5,7 @@ to try to find large clusters like the Javanese ones that have only one geni
 export covering them… particularly looking at the deepest members of such
 clusters of people only in one export."*
 
-**877 clusters, 191,438 people**, each reached by at most one
+**945 clusters, 193,550 people**, each reached by at most one
 export, each cluster at least 25 people. Every member is a row in
 `reports/single-export-clusters.csv` with its depth.
 
@@ -21,9 +21,24 @@ unknown an export resolves.
 
 ## The clusters
 
-### 1. 17,574 people — 1,199 with no parents recorded
+### 1. 18,019 people — 3,325 with no parents recorded
 
-Sample: Arnbjørn Guttormsson, Gotschalk Guttormsen Torsnes, Herborg Oledatter, Eufemia Arnbjørnsdotter
+Sample: Joost Ruychrock van de Werve, Johanna, Philips, Maria Philipsdr Ruychrock van de Werve
+
+| deepest members | generations above |
+| --- | ---: |
+| Philippe (`6000000000628843233`) | 124 |
+| Françoise de Lorraine (`6000000003306282722`) | 124 |
+| Philippe (`6000000075303107928`) | 124 |
+| Francois (`6000000075303152835`) | 124 |
+| Philippe de La Trémoille (`6000000084582573894`) | 124 |
+| Louis (`6000000000905018424`) | 123 |
+| François d'Orléans (`6000000000905085347`) | 123 |
+| Mary Stewart (`6000000003234018546`) | 123 |
+
+### 2. 16,935 people — 1,124 with no parents recorded
+
+Sample: Jon Ågeson Hauge, Liva Ågesdatter Nedre-Hauge, Åge Jonson Jonson, Jone Ågeson Ågeson
 
 | deepest members | generations above |
 | --- | ---: |
@@ -36,39 +51,39 @@ Sample: Arnbjørn Guttormsson, Gotschalk Guttormsen Torsnes, Herborg Oledatter, 
 |  (`4536460`) | 72 |
 |  (`4536464`) | 72 |
 
-### 2. 15,119 people — 2,287 with no parents recorded
+### 3. 7,838 people — 1,494 with no parents recorded
 
-Sample: Marguerite d'Harcourt, Mahaut d'Estouteville, Robert, Raoul d'Estouteville
-
-| deepest members | generations above |
-| --- | ---: |
-| Philippe (`6000000000628843233`) | 124 |
-| Françoise de Lorraine (`6000000003306282722`) | 124 |
-| Philippe (`6000000075303107928`) | 124 |
-| Francois (`6000000075303152835`) | 124 |
-| Philippe de La Trémoille (`6000000084582573894`) | 124 |
-| Marie (`6000000004178183584`) | 123 |
-| Gilbert de LA TRÉMOILLE (`6000000084580888266`) | 123 |
-| Catherine de Clèves (`6000000000883304840`) | 123 |
-
-### 3. 7,917 people — 858 with no parents recorded
-
-Sample: Jonathan Tenny Adams, Seth, Harriet E Adams, Diadama Warren
+Sample: Olof Nilsson, Anders Olofsson Hjort, Kristian Olofsson Harr, Daniel Olofsson
 
 | deepest members | generations above |
 | --- | ---: |
-| <private> Nemo (`6000000022513951045`) | 162 |
-| <private> Nemo (`6000000046934637094`) | 162 |
-| Selah Mar (`6000000201006728822`) | 162 |
-| Zemen Ezana (`338582950350014016`) | 162 |
-| Dano (`338583169530011591`) | 162 |
-| Mary (`339066148540012163`) | 162 |
-| Natnaelle (`339065602910001302`) | 162 |
-| Christian (`339065762750010464`) | 162 |
+| Sofia Viktoria (`6000000021929806920`) | 17 |
+| Märtha Lovisa (`6000000028149548562`) | 17 |
+| Anna* Erika Charlotta Renberg (`6000000187448342837`) | 17 |
+| Emil Ferdinand Renberg (`6000000196729319622`) | 17 |
+| Oskar Manfred Renberg (`6000000196729319628`) | 17 |
+| Jonas Israel Renberg (`6000000196732787838`) | 17 |
+| Martha Sofia Grundström (`6000000187261060840`) | 17 |
+| Nils Albin Grundström (`6000000187261286859`) | 17 |
 
-### 4. 7,588 people — 1,201 with no parents recorded
+### 4. 6,194 people — 508 with no parents recorded
 
-Sample: Diogo Afonso, Rui, Isabel Gonçalves, André de Aguiar da Câmara
+Sample: Maria Hopkins, Rhoda Colt, Chester Hopkins, Joel Hopkins
+
+| deepest members | generations above |
+| --- | ---: |
+| Jane Walker Huston (`6000000006987314492`) | 15 |
+| Lucy Huston (`6000000006987379337`) | 15 |
+| Charles (`6000000006987435307`) | 15 |
+| Susan Ward (`6000000014826495439`) | 13 |
+| Constance Ward (`6000000014826607536`) | 13 |
+| Harvey Ward (`6000000014826692220`) | 13 |
+| Hubbard Beach Ward (`6000000014826705121`) | 13 |
+| Martha Delphina (`6000000039518171417`) | 12 |
+
+### 5. 5,282 people — 603 with no parents recorded
+
+Sample: Constantino, Bartolomeu, Cosma, Maria Lins
 
 | deepest members | generations above |
 | --- | ---: |
@@ -76,119 +91,44 @@ Sample: Diogo Afonso, Rui, Isabel Gonçalves, André de Aguiar da Câmara
 | Vasco Martins Moniz (`6000000003493176482`) | 121 |
 | Diogo Gil Moniz (`6000000003493176544`) | 121 |
 | Guiomar (`6000000078109937693`) | 121 |
-| Teresa (`6000000189366475834`) | 95 |
-| Nicolasa (`6000000189366660833`) | 95 |
-| Miguel (`6000000189422691856`) | 95 |
-| Diego (`6000000191714562838`) | 95 |
+| José Félix (`6000000021708996342`) | 65 |
+| Miguel Carlos (`6000000011211309624`) | 65 |
+| Maria Ana Teresa Rita (`6000000016107515503`) | 65 |
+| Manuel Carlos da Cunha e Tavora (`6000000016197144501`) | 65 |
 
-### 5. 5,785 people — 1,011 with no parents recorded
+### 6. 3,633 people — 995 with no parents recorded
 
-Sample: Elsabe Marie von Schack, Emeke von Schack, Augusta Von Schack, Catharine Marie von Schack
-
-| deepest members | generations above |
-| --- | ---: |
-| Øllegaard Christine Elisabeth Rosenkrantz (`6000000001504893746`) | 69 |
-| Birgitte Sophie Frederikke Rosenkrantz (`6000000001504893755`) | 69 |
-| Jørgen Rosenkrantz (`6000000001504893764`) | 69 |
-| Marie Elisabeth Rosenkrantz (`6000000001504893782`) | 69 |
-| Frederik Rosenkrantz (`6000000001504893791`) | 69 |
-| Iver Vernersen Rosenkrantz (`6000000001921331492`) | 69 |
-| Berthel Højer (`6000000190200148918`) | 69 |
-| Marie Magdalene Mund (`6000000013684115222`) | 69 |
-
-### 6. 4,142 people — 644 with no parents recorded
-
-Sample: Mervin, Calvin Pease, Alonzo, Mary Pease
+Sample: 철손 이, 이, 방직 이, 승도 이
 
 | deepest members | generations above |
 | --- | ---: |
-| Joshua Hall (`6000000000723821146`) | 63 |
-| Thomas Hall (`6000000001363868253`) | 63 |
-| Phineas Hall (`6000000001959766292`) | 63 |
-| Abigail Hall (`6000000001959766300`) | 63 |
-| Wallace Byron (`5448047271210110481`) | 13 |
-| Edith Mae Swetland (`5486686841910139549`) | 13 |
-| Mary Elizabeth Swetland (`5486709268260073063`) | 13 |
-| Laura Gertrude Swetland (`5486712275730045796`) | 13 |
-
-### 7. 4,122 people — 822 with no parents recorded
-
-Sample: Gunder Jensen Berg, Beata Jørgensdatter, Jens Joensen, Anna Sophie Jensdatter Berg
-
-| deepest members | generations above |
-| --- | ---: |
-| Greg (`6000000071017152348`) | 61 |
-|  (`6000000120193572835`) | 61 |
-| Private (`6000000209617611842`) | 61 |
-| Private (`6000000128102978825`) | 60 |
-| Walter George (`6000000196280016833`) | 60 |
-| Inger Elvira Margaretha Amundsen (`6000000042034165892`) | 60 |
-| Asbjørn Arnold Antonsen Østby (`6000000163102675848`) | 60 |
-| Lars Antonsen Østby (`6000000209617651822`) | 60 |
-
-### 8. 4,056 people — 1,166 with no parents recorded
-
-Sample: Carlo Rossi del Barbazzale, Giuseppe, Giovanna Rossi del Barbazzale, Charlotte Madeleine Elisabeth Marie Madeleine Colonna Walewski
-
-| deepest members | generations above |
-| --- | ---: |
-| Marie-Eugénie de Witt (`6000000007891876750`) | 19 |
-|  (`6000000079398146677`) | 19 |
-|  (`6000000080769168345`) | 19 |
-|  (`6000000080769752974`) | 19 |
-| Private (`6000000080769887896`) | 19 |
-| Private (`6000000080793516829`) | 19 |
-|  (`6000000080800635851`) | 19 |
-|  (`6000000080803163444`) | 19 |
-
-### 9. 3,777 people — 936 with no parents recorded
-
-Sample: Lazarus Michael, Seraphine Katzenstein, Friederike Katzenstein, Bertha Wallach
-
-| deepest members | generations above |
-| --- | ---: |
-| Private (`6000000006436677828`) | 42 |
-| Private (`6000000006436685839`) | 42 |
-| Private (`6000000006436738586`) | 42 |
-| Private (`6000000006436825515`) | 42 |
-| Private (`6000000006436877579`) | 42 |
-| Private (`6000000006436960432`) | 42 |
-| Private (`6000000006437109178`) | 42 |
-| Private (`6000000006437175143`) | 42 |
-
-### 10. 3,668 people — 868 with no parents recorded
-
-Sample: Abraham Olofsson Skräddare, Margareta Olofsdotter Burman, Margareta Olofsdotter, Olof Karlsson Karlsson Burman
-
-| deepest members | generations above |
-| --- | ---: |
-| Chatarina Margareta (Kajsa Greta) Johansdotter (`6000000019567209909`) | 14 |
-| Anders Olofsson (`6000000000134719317`) | 14 |
-| Eva Olofsdotter (`6000000007925746800`) | 14 |
-| Margreta "Greta" Olofsdotter (`6000000031768390347`) | 14 |
-| Magdalene Olofsson (`6000000069258146189`) | 14 |
-| Östen Olofsson (`6000000069258444049`) | 14 |
-| Anna Olofsson (`6000000069258486944`) | 14 |
-| Olof Olofsson (`6000000069258490005`) | 14 |
-
-### 11. 3,633 people — 995 with no parents recorded
-
-Sample: 여 홍, Sim Hong심 홍, 홍, 항 홍
-
-| deepest members | generations above |
-| --- | ---: |
+| 자오 유 (`6000000183071420870`) | 16 |
+| 유 (`6000000183071420896`) | 16 |
+| 자은 유 (`6000000183071420908`) | 16 |
+| 잠 이 (`6000000183074593822`) | 16 |
+| 이 (`6000000185688201820`) | 16 |
 | 기문 이 (`6000000194691025381`) | 16 |
 | 선문 이 (`6000000194691025405`) | 16 |
 | 이 (`6000000194691025411`) | 16 |
-| 수간 박 (`6000000183044116828`) | 16 |
-| 수근 박 (`6000000183044116834`) | 16 |
-| 박 (`6000000183044116840`) | 16 |
-| 홍 (`6000000183043882829`) | 16 |
-| 홍 (`6000000183043882835`) | 16 |
 
-### 12. 3,552 people — 838 with no parents recorded
+### 7. 3,619 people — 586 with no parents recorded
 
-Sample: Albert Andersson, Hilda Agusta Andersson, Carolina Josephina Carlsson, Hilda Agusta Josefina Andersson
+Sample: Mary Tuller, Jacob Tuller, John Tuller, Samuel Tuller
+
+| deepest members | generations above |
+| --- | ---: |
+| John Case (`6000000033199219309`) | 10 |
+| Anna Hosford (`314179834750002096`) | 10 |
+| Joseph Hosford (`6000000005735607221`) | 10 |
+| Mindwell Hosford (`6000000010094524769`) | 10 |
+| Daniel Hosford (`6000000037076614856`) | 10 |
+| Obediah Hosford (`6000000175847334902`) | 10 |
+| John Hosford (`6000000175847400893`) | 10 |
+| Obadiah Hosford (`6000000175848771824`) | 10 |
+
+### 8. 3,552 people — 838 with no parents recorded
+
+Sample: Ida Sofia Carlsdotter, Hedda Lena Carlsdotter, Edla Charlotta Karlsson, Anna Louisa Karlsdotter
 
 | deepest members | generations above |
 | --- | ---: |
@@ -201,9 +141,9 @@ Sample: Albert Andersson, Hilda Agusta Andersson, Carolina Josephina Carlsson, H
 | Private (`5017158315240034739`) | 12 |
 | Private (`5017159494670048095`) | 12 |
 
-### 13. 3,495 people — 861 with no parents recorded
+### 9. 3,495 people — 861 with no parents recorded
 
-Sample: John Tompkins, Mary Tomkins, Richard Tomkins, Mary Roosse
+Sample: N.N., Llewelyn, Dafydd Llwyd Deuddwr, Margred verch Dafydd Llwyd Deuddwr
 
 | deepest members | generations above |
 | --- | ---: |
@@ -216,9 +156,24 @@ Sample: John Tompkins, Mary Tomkins, Richard Tomkins, Mary Roosse
 |  (`6000000223055013736`) | 67 |
 |  (`6000000223056162315`) | 67 |
 
-### 14. 3,233 people — 558 with no parents recorded
+### 10. 3,461 people — 650 with no parents recorded
 
-Sample: John Trembath, John Trembath, Thomas Trembath, Sarah Richards Williams
+Sample: Anne Ottesdatter Stampe, Marine Ottesdatter Stampe, Mogens Ottesen, Inger Lauridsdt. Lauritsdatter
+
+| deepest members | generations above |
+| --- | ---: |
+| Berthel Højer (`6000000190200148918`) | 69 |
+| Marie Magdalene Mund (`6000000013684115222`) | 69 |
+| Jensine Elisabeth Birgitte Mund (`6000000024629434083`) | 69 |
+| Frederikke Jensine Elisabeth Birgitte Mund (`6000000024629616956`) | 69 |
+| Cathrine Christiane Charlotte Sophie Mund (`6000000024629623887`) | 69 |
+| Mogens Rosenkrantz Mund (`6000000024629631849`) | 69 |
+| Regine Christine Laurentia Mund (`6000000024474499105`) | 69 |
+| Berger (`6000000040339968962`) | 69 |
+
+### 11. 3,233 people — 558 with no parents recorded
+
+Sample: Thomas Grenfell, Edward, William Grenfell, Charity Wallis
 
 | deepest members | generations above |
 | --- | ---: |
@@ -227,28 +182,13 @@ Sample: John Trembath, John Trembath, Thomas Trembath, Sarah Richards Williams
 | Elizabeth James Woolcock (`6000000004118987260`) | 68 |
 | Noah James Woolcock (`6000000004119032213`) | 68 |
 | Joanna Woolcock (`6000000005081855892`) | 68 |
-| Elizabeth Jane Trembath (`6000000018302227882`) | 67 |
-| William Trembath (`6000000018303244470`) | 67 |
-| Ann Trembath (`6000000018303811381`) | 67 |
+| Annie Jane Stevens (`6000000127708883711`) | 67 |
+| Mary Richard Stevens (`6000000140061569738`) | 67 |
+| Elizabeth Pee Stevens (`6000000140061569746`) | 67 |
 
-### 15. 2,835 people — 500 with no parents recorded
+### 12. 2,834 people — 808 with no parents recorded
 
-Sample: Fernando Gómez Hurtado de Mendoza, Francisco Javier Xavier Gómez Hurtado de Mendoza, Francisca Martin Del Campo y Romo de Vivar, María Francisca Gómez Hurtado de Mendoza Martín del Campo
-
-| deepest members | generations above |
-| --- | ---: |
-| Francisco Xavier (`6000000017371612025`) | 93 |
-| Maria Clara Feliciana Feliciana Moreno de Ortega y Gutiérrez (`6000000015877512052`) | 93 |
-| Miguel Moreno de Ortega y Gutiérrez de Mendoza (`6000000016531249967`) | 93 |
-| Maria de Guadalupe de Guadalupe Moreno de Ortega y Gutiérrez (`6000000016531714625`) | 93 |
-| Joseph Alexandro Alejandro Moreno de Ortega y Gutiérrez de M (`6000000016531943024`) | 93 |
-| Gabriel Antonio Antonio Moreno de Ortega y Gutiérrez de Mend (`6000000025768392352`) | 93 |
-| Andrés (`6000000055889463015`) | 93 |
-| Juan Manuel (`6000000055889558929`) | 93 |
-
-### 16. 2,834 people — 808 with no parents recorded
-
-Sample: Private, Private, Private, Private
+Sample: Nelly Sofia, <private> Aloisio Bustillo, <private> Zenteno Pereira, Jose Simon
 
 | deepest members | generations above |
 | --- | ---: |
@@ -261,9 +201,9 @@ Sample: Private, Private, Private, Private
 | <private> Ascarrunz Caba (`6000000200039743878`) | 29 |
 | <private> Ascarrunz Lorenzo (`6000000138203451821`) | 29 |
 
-### 17. 2,731 people — 765 with no parents recorded
+### 13. 2,731 people — 765 with no parents recorded
 
-Sample: Dick LeDoux John Wedekind, Ella Ernestine Wedekind, Nina Florence Wedekind, Emmie Maud LeDoux
+Sample: Elizabeth NN, John, William, William Finch
 
 | deepest members | generations above |
 | --- | ---: |
@@ -276,9 +216,24 @@ Sample: Dick LeDoux John Wedekind, Ella Ernestine Wedekind, Nina Florence Wedeki
 | Private (`6000000008078524998`) | 13 |
 | Private (`6000000008078739636`) | 13 |
 
-### 18. 2,414 people — 574 with no parents recorded
+### 14. 2,719 people — 565 with no parents recorded
 
-Sample: Hilda Gertrude Walker, Ruth Anderson, Joseph Allen Walker, Herbert William Walker
+Sample: Syver Halvorsen, Anders Halvorsen Lilledal, Halvor Legsen Begby, Johanne Syversdatter Borge
+
+| deepest members | generations above |
+| --- | ---: |
+| Greg (`6000000071017152348`) | 68 |
+|  (`6000000120193572835`) | 68 |
+| Private (`6000000209617611842`) | 68 |
+| Private (`6000000128102978825`) | 67 |
+| Walter George (`6000000196280016833`) | 67 |
+| Inger Elvira Margaretha Amundsen (`6000000042034165892`) | 67 |
+| Asbjørn Arnold Antonsen Østby (`6000000163102675848`) | 67 |
+| Lars Antonsen Østby (`6000000209617651822`) | 67 |
+
+### 15. 2,414 people — 574 with no parents recorded
+
+Sample: Private, Ernest Edward, Private, Kathleen Elsa Natt
 
 | deepest members | generations above |
 | --- | ---: |
@@ -291,9 +246,9 @@ Sample: Hilda Gertrude Walker, Ruth Anderson, Joseph Allen Walker, Herbert Willi
 | Martin Lee (`6000000186146753263`) | 18 |
 | Craig Lee (`6000000008789131215`) | 18 |
 
-### 19. 2,270 people — 677 with no parents recorded
+### 16. 2,268 people — 677 with no parents recorded
 
-Sample: Eric, Jonas, Brita Ersdotter, Lars
+Sample: Astrid Sigrid Helena Bergsten, Erik Strömberg, Åke Alvar Strömberg, Johan Alfred Strömberg
 
 | deepest members | generations above |
 | --- | ---: |
@@ -306,24 +261,24 @@ Sample: Eric, Jonas, Brita Ersdotter, Lars
 | Private (`6000000010549566038`) | 14 |
 | Private (`6000000010549604087`) | 14 |
 
-### 20. 2,268 people — 649 with no parents recorded
+### 17. 2,241 people — 638 with no parents recorded
 
-Sample: Jon, Nils Jørgenson, Margit Severine Aakre, Helga Brekke
+Sample: Nils, Brita Einarsdotter Bolstad, Torgeir Nilsson, Trygve
 
 | deepest members | generations above |
 | --- | ---: |
-| Private (`6000000011433761417`) | 13 |
-| Private (`6000000011433910327`) | 13 |
-| Morten (`6000000199141734882`) | 13 |
-| Private (`5110505172490114874`) | 13 |
-| Private (`6000000002989209756`) | 13 |
-| Private (`6000000003365033609`) | 13 |
-| Private (`6000000003365199120`) | 13 |
-| Private (`6000000003364975887`) | 13 |
+| Private (`6000000165969534837`) | 45 |
+| Private (`6000000165969589880`) | 45 |
+| Private (`6000000005077208411`) | 45 |
+| Private (`6000000019211511015`) | 45 |
+| Private (`6000000019211511047`) | 45 |
+| Private (`6000000019211602289`) | 45 |
+| Private (`6000000019211667283`) | 45 |
+| Private (`6000000072329485215`) | 44 |
 
-### 21. 2,233 people — 534 with no parents recorded
+### 18. 2,232 people — 534 with no parents recorded
 
-Sample: Samuel, Esther Rosenwald, Abraham, Léon
+Sample: Emma Fernande Bernheim, Jeannette Woog, Léon Bernheim, Laure Henriette Bernheim
 
 | deepest members | generations above |
 | --- | ---: |
@@ -336,24 +291,54 @@ Sample: Samuel, Esther Rosenwald, Abraham, Léon
 | Private (`6000000007210462254`) | 46 |
 | Private (`6000000007210513203`) | 46 |
 
-### 22. 2,214 people — 478 with no parents recorded
+### 19. 2,204 people — 476 with no parents recorded
 
-Sample: Esias Joseph, Esther Holländer, Hendel Fürst, Rechel Reina Rintel-Wallach
+Sample: Mathilde Lippmann, Merley Mélanie Maas, Lucien, Still Born Lippmann
 
 | deepest members | generations above |
 | --- | ---: |
 | Anton Ludwig (`6000000002765080595`) | 97 |
 | Rebecca Meyer (`6000000002765041608`) | 96 |
+| Léontine Adélaïde Lina Ratisbonne (`6000000015493660172`) | 39 |
+| Ferdinand Henri (Heinrich) Ratisbonne (`6000000015493820111`) | 39 |
 | Friedrich Alexander (`6000000007832862674`) | 39 |
 | Edmund Viktor Alexander (`6000000007833486900`) | 39 |
 | Carl J. Erich Alexander (`6000000008300115873`) | 39 |
 | Margarete Alexander (`6000000008300882112`) | 39 |
-| Johann Alexander (`6000000009876168131`) | 39 |
-| Wilhelm Alexander (`6000000033793911298`) | 39 |
 
-### 23. 1,976 people — 413 with no parents recorded
+### 20. 2,159 people — 462 with no parents recorded
 
-Sample: Thomas Patten, Thomas Patten, Joseph Patten, Hannah Foster
+Sample: Jacob Andersen, Berthe Bertelsdatter Langekile, Ole Peter Andersen, Anders Arnesen
+
+| deepest members | generations above |
+| --- | ---: |
+| Private (`6000000178542624847`) | 17 |
+| Private (`6000000178542904849`) | 17 |
+| Private (`6000000178542936830`) | 17 |
+| Private (`6000000178543040839`) | 17 |
+| Private (`6000000107663355244`) | 16 |
+| Private (`6000000107665204960`) | 16 |
+| Private (`6000000020572953453`) | 16 |
+| Private (`6000000020572994417`) | 16 |
+
+### 21. 2,081 people — 401 with no parents recorded
+
+Sample: Francisco, Alonso Galvan de Rojas, Juana Antonia Galván de Rojas, Ana de Rivera
+
+| deepest members | generations above |
+| --- | ---: |
+| Francisco Xavier (`6000000059783205316`) | 93 |
+| Juan José Moreno de Ortega Alcalá (`6000000042466910068`) | 93 |
+| Juan de Dios Moreno de Ortega y Alcalá (`6000000083563465874`) | 93 |
+| Nicolasa Moreno de Ortega y Alcalá (`6000000083589666075`) | 93 |
+| Luis Moreno de Ortega y Alcalá (`6000000083593910171`) | 93 |
+| María Cecilia Moreno de Ortega y Alcalá (`6000000083614207461`) | 93 |
+| Felipe Moreno de Ortega y Alcalá (`6000000083614586120`) | 93 |
+| Miguel Moreno de Ortega y Alcalá (`6000000083614652103`) | 93 |
+
+### 22. 1,976 people — 413 with no parents recorded
+
+Sample: T. E., Mary Emma Spivey, Charlie P "Pea", William "Ail"
 
 | deepest members | generations above |
 | --- | ---: |
@@ -366,27 +351,43 @@ Sample: Thomas Patten, Thomas Patten, Joseph Patten, Hannah Foster
 | Freda Hooper/ Collins (`6000000065538455954`) | 13 |
 | Private (`6000000065538511010`) | 13 |
 
-### 24. 1,710 people — 481 with no parents recorded
+### 23. 1,753 people — 448 with no parents recorded
 
-Sample: Pascoal, Antonio, Sebastião, Maria,
+Sample: Aron Meyer-Sust, Itzig Meyer-Sust, Sarah Meyer-Sust, Samuel Meyer Sust
 
 | deepest members | generations above |
 | --- | ---: |
-| Sebastião de Castro (`6000000020855621174`) | 61 |
-| Isabel, (`6000000020864775080`) | 61 |
-| Diogo (`6000000020864991146`) | 61 |
-| Gaspar (`6000000020865008086`) | 61 |
-| Maria, (`6000000020865025081`) | 61 |
+| Gideon (`6000000004006705422`) | 10 |
+| Aaron (`6000000004006705427`) | 10 |
+| Private (`6000000004006705379`) | 10 |
+| Private (`6000000004006705387`) | 10 |
+| Private (`6000000004006705402`) | 10 |
+| Private (`6000000004006705407`) | 10 |
+| Private (`6000000059321642534`) | 10 |
+| Private (`6000000059322527823`) | 10 |
+
+### 24. 1,710 people — 481 with no parents recorded
+
+Sample: Guiomar, D. Garcia, Filipa, Beatriz
+
+| deepest members | generations above |
+| --- | ---: |
+| Guiomar (`6000000021289064376`) | 61 |
 | Leonor de Sousa Lobato (`6000000026816993157`) | 61 |
 | Isabel Francisca Lobato (`6000000026926270833`) | 61 |
-| Guiomar (`6000000021289064376`) | 61 |
+| Alvaro Manuel (`6000000033396280357`) | 61 |
+| Félix Francisco (`6000000033396915014`) | 61 |
+| José Manuel de Pantoja Carvajal (`6000000069699419002`) | 61 |
+| José Antonio de Mendoza Caamaño y Sotomayor (`6000000041186983526`) | 61 |
+| Maria Antonia de Mendoza Caamaño Sotomayor (`6000000092348150835`) | 61 |
 
 ### 25. 1,710 people — 279 with no parents recorded
 
-Sample: 濟州鉅野, 端禮 次膺 濟州鉅野, 濟州鉅野, 仲參 孝先 濟州鉅野
+Sample: 存叟 Tan 陳, 金享 Tan 陳, 連峰 Tan 陳, 南橋 Tan 陳
 
 | deepest members | generations above |
 | --- | ---: |
+| 連峰 Tan 陳 (`6000000039572041139`) | 136 |
 | 均惠 (`6000000039686027745`) | 136 |
 | 均茂 (`6000000039686319534`) | 136 |
 | 仲燮 (`6000000039688940852`) | 136 |
@@ -394,56 +395,25 @@ Sample: 濟州鉅野, 端禮 次膺 濟州鉅野, 濟州鉅野, 仲參 孝先 �
 | 伯祝 (`6000000039688475064`) | 136 |
 | 伯壎 (`6000000039688696834`) | 136 |
 | 豪一 (`6000000039688007666`) | 136 |
-| 金公 (`6000000039686536821`) | 136 |
 
-### 26. 1,632 people — 204 with no parents recorded
+### 26. 1,568 people — 257 with no parents recorded
 
-Sample: 2. R. Pandu, 1. Nji R. Mariah, 12. RH. Muh. Hasan / Endung (Penghulu Tangerang), NRA. Antamirah
-
-| deepest members | generations above |
-| --- | ---: |
-| 3. Nyi R. Tirta (`6000000192988554862`) | 240 |
-| 1. Nji R. Ijong (`6000000192988745880`) | 240 |
-| 2. R. Somawidjaja (`6000000192988984855`) | 240 |
-| 4. R. Udi Djuhdi (`6000000192988995841`) | 240 |
-|  (`6000000190199482868`) | 239 |
-| Nji R. Kuraesin (`6000000190116651853`) | 239 |
-| 4 RH. Ahmad (`6000000192075555856`) | 239 |
-| 2 NR. Itjoh (`6000000192075611841`) | 239 |
-
-### 27. 1,594 people — 257 with no parents recorded
-
-Sample: María de Jesús Escobar Angel, JOSE MARIA ESCOBAR ANGEL, Micaela Micaela Francisca Ángel, Manuel José Escobar
+Sample: Francisca Martinez de Angulo, Juana Martin, Pedro Martin, Pedro
 
 | deepest members | generations above |
 | --- | ---: |
 | Maria Josefa (`6000000027061671789`) | 24 |
 | Domingo (`6000000034170232738`) | 24 |
-| Joaquin (`4812483753230069815`) | 23 |
-| Pedro (`6000000023206004850`) | 23 |
-| Ignacia Correa Fernandez (`6000000027626979522`) | 23 |
-| Mariana Correa Fernandez (`6000000109051841878`) | 23 |
-| Estanislao (`6000000007511433201`) | 23 |
-| María Dionisia (`6000000021532561777`) | 23 |
+| Maria Antonia (`4812416397560013621`) | 14 |
+| Alberto (`6000000094820767722`) | 14 |
+| María Antonia Antonia Estrada Córdoba (`6000000001188430121`) | 14 |
+| María Josefa (`6000000085072591004`) | 14 |
+| Maria Josefa del Sacramento Isaza Palacio (`365386424370006334`) | 13 |
+| Domingo Isaza Palacio (`6000000000907470411`) | 13 |
 
-### 28. 1,208 people — 3 with no parents recorded
+### 27. 1,199 people — 270 with no parents recorded
 
-Sample: Sian, Gwenllian verch Ednyfed Fychan, Gwilym ap Gwrwared, Rhirid
-
-| deepest members | generations above |
-| --- | ---: |
-| Rhirid (`6000000039677552361`) | 47 |
-| Einion (`6000000071162104841`) | 47 |
-| Einion Fawr ap Gwilym (`6000000003221194236`) | 47 |
-| Gwrwared ap Gwilym (`6000000007823792889`) | 47 |
-| Ieuan ap Gwilym (`6000000046973705200`) | 47 |
-| Madog (`6000000003649670341`) | 47 |
-| Ieuan (`6000000217023962832`) | 47 |
-| Einion ap Gruffudd (`6000000009091526347`) | 47 |
-
-### 29. 1,199 people — 270 with no parents recorded
-
-Sample: Ole Pederson Myrold, Synnøve Olsdatter Orheim, Mogns Pedersen Myrold, Karen Olsdotter
+Sample: Ingrid Orheim, Svanhild Marie Orheim, Marie Larsdtr Dombestein, Alvdis Bergljot Orheim
 
 | deepest members | generations above |
 | --- | ---: |
@@ -456,9 +426,9 @@ Sample: Ole Pederson Myrold, Synnøve Olsdatter Orheim, Mogns Pedersen Myrold, K
 | Solveig Tunheim (`6000000020598127204`) | 70 |
 | Erling Tunheim (`6000000020590566312`) | 70 |
 
-### 30. 1,119 people — 44 with no parents recorded
+### 28. 1,119 people — 44 with no parents recorded
 
-Sample: Josef, Gustav, Heinrich Edler von Portheim, Alois Peter Ignatz Porges
+Sample: Bella Schulhof, Rele Schulhof, Wolf Chaim, Ziperl Raudnitz
 
 | deepest members | generations above |
 | --- | ---: |
@@ -471,5 +441,35 @@ Sample: Josef, Gustav, Heinrich Edler von Portheim, Alois Peter Ignatz Porges
 | Surah Heschel Babad (`6000000003866136650`) | 93 |
 | Wife of R' Moses Babad (`6000000003866136656`) | 93 |
 
-…and 847 more clusters in the CSV.
+### 29. 1,103 people — 309 with no parents recorded
+
+Sample: Julie Frieda Model, Franziska Plaut, Paul Model, Julius Gustav
+
+| deepest members | generations above |
+| --- | ---: |
+| Private (`6000000054722904823`) | 39 |
+| Hans L. (`6000000054722552938`) | 38 |
+| Private (`6000000009224538943`) | 34 |
+| Private (`6000000009224541055`) | 34 |
+| Private (`6000000009368760193`) | 34 |
+| Private (`6000000009368760196`) | 34 |
+| Guy-Laurent (`6000000008923706212`) | 33 |
+| Robyn (`6000000001790389683`) | 33 |
+
+### 30. 1,099 people — 339 with no parents recorded
+
+Sample: Marie d'Azincourt, Jeanne d'Azincourt, Gilles d'Azincourt, François d'Azincourt
+
+| deepest members | generations above |
+| --- | ---: |
+| Othon de Wignacourt (`6000000019051795147`) | 47 |
+| Robert (`6000000015885263675`) | 47 |
+| Pierre de Wignacourt (`6000000016076466955`) | 46 |
+| Othon de Wignacourt (`6000000019051790237`) | 46 |
+| Gilles Le Roy (`6000000036620579011`) | 46 |
+| Jean (`6000000112068282836`) | 46 |
+| Simon (`6000000031753108341`) | 46 |
+| Alix de Domqueur (`6000000031753188425`) | 46 |
+
+…and 915 more clusters in the CSV.
 
