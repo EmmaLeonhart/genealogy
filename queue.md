@@ -64,26 +64,26 @@ Items 3, 5 and 6 are independent of this chain and can run at any point.
 that I'm trying to do. You should probably write this down because this is an
 important agenda thing."*
 
-**A · Connect herself to the researchers on Wikidata.** The bridge work. 560 saved
+**Connect herself to the researchers on Wikidata.** The bridge work. 560 saved
 paths, 8,650 bridge people, **511 of them missing from our corpus AND on more than
 one path** — importing those clears 1,454 path-slots. The cluster at the top is
 **Hård af Segerstad** and **Sandelin**. Her framing of what makes a bridge person
 worth doing first: *"find people that are in multiple bridges and are also not in"*
 our data.
 
-**B · The sparse areas — she already did exports off them and I lost track.**
+**The sparse areas — she already did exports off them and I lost track.**
 *"Finding these sparse areas, which we kind of did, and I did exports based off of
 them, but it feels like you kind of forgot about them."* `reports/single-export-clusters.md`
 and `reports/export-entry-points.csv` are the outputs; 31 edge exports landed on
 2026-08-15 and were placed, but **nothing has checked what they closed**.
 
-**C · Chinese and Japanese genealogy — minor, and partly done.** *"I believe
+**Chinese and Japanese genealogy — CLOSED, see below.** *"I believe
 Japanese and Chinese genealogies are partially there, partially overlapping with
 data."* Measured: **only 30 Japanese isolates exist** because the Japanese material
 in this corpus is *connected*, not isolated. The isolate method is the wrong
 instrument here; density and export seeding are.
 
-**All three are completable, and she thinks completable today.**
+**The lettering above was mine, not hers.** She listed three things; labelling them A/B/C and then calling them "Task C" back at her was invented structure. Her words on that: *"I don't know why you think that you should be using these made-up task names."*
 
 ---
 
@@ -899,23 +899,25 @@ immediate task right now"*, so the timing is hers.
 cron, a decision log, a standing agenda review. Guessing here would produce exactly
 the unrequested machinery she has objected to before.
 
-## 27 · Task C's real work — Chinese and Japanese genealogy, via density not isolates
+## 27 · Chinese and Japanese genealogy — CLOSED by Emma, 2026-08-15
 
-**Agenda task C is only half answered.** The measurement is done and it says the
-isolate method is the wrong instrument: **30 Japanese isolates exist** because the
-Japanese material in this corpus is *connected* — the Jimmu component is one of the
-largest in the tree — and isolates are by definition people with no family at all.
-19,467 Chinese isolates exist but 17,259 are the CBDB block she dismissed.
+**Her conclusion, and it is the whole answer:** *"We figured it out, and it's
+pretty simple. These genealogical people are mostly isolates or otherwise are not
+connected. Otherwise, they are like Jenny just doesn't actually record them very
+well. That's just simply what we discovered."*
 
-**What has NOT been done is the actual fleshing out.** Her words: *"I want to do a
-bit of fleshing out on Chinese and Japanese genealogies… I'm going to use them
-relative to the Emperor Jimmu because I just want to flesh out the Japanese
-genealogy a bit too."*
+The measurements agree and are kept only as the evidence for that sentence:
 
-The right instrument is the one that finds thin *regions* of a connected tree:
-`reports/density.md` and `scripts/find-export-entry-points.py`, restricted to the
-Jimmu component and the Chinese material. That has never been run for those
-regions.
+- **30 Japanese isolates exist** in the whole store. Not a small sample — the whole
+  population.
+- **19,467 Chinese isolates**, of which **17,259 are the CBDB import** she dismissed
+  after finding 0 of 200 connectable. 2,208 remain; 47 are researchers, all opened.
+- The Japanese material that *is* in the corpus sits in the Jimmu component, which
+  is connected, so it produces almost no isolates by definition.
+
+**Nothing further is queued for this.** I had written it up as unfinished work
+needing a density pass over the Jimmu component; she has ruled that the question is
+answered, and it is her call what counts as answered.
 
 ---
 
