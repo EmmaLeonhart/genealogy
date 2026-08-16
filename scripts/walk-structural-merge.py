@@ -143,9 +143,17 @@ def walk_all(anchors, fam, ourqid, names, depth):
                         # correspondence. More than one and the position does not
                         # single anybody out, so it is left alone.
                         tally["MERGE"] += 1
+                        # **Record the anchor too.** Without it a row says "this
+                        # Geni person is that QID" and gives no way to check the
+                        # claim: the whole basis is that both sit at the same
+                        # parent position of the SAME child, and the child was
+                        # missing from the output. Emma reviews cases one by one,
+                        # so a row she cannot verify is not a case.
                         corr[ours_id] = (theirs[0], key,
                                          names.get(ours_id, ""),
-                                         label_of(ents.get(theirs[0])) or "")
+                                         label_of(ents.get(theirs[0])) or "",
+                                         cur, ourqid.get(cur, ""),
+                                         names.get(cur, ""))
                     else:
                         tally["AMBIGUOUS"] += 1
                 elif ours_id:
@@ -171,15 +179,16 @@ def walk_all(anchors, fam, ourqid, names, depth):
     # That is not cosmetic. Emma's method is *"the structure picks the pair; the
     # label only confirms it"* — a correspondence with no label cannot be
     # reviewed at all, which is the entire purpose of this file.
-    missing = sorted({q for q, _, _, _ in corr.values()} - set(ents))
+    missing = sorted({v[0] for v in corr.values()} - set(ents))
     if missing:
         print(f"reading {len(missing):,} more items for the parents' own labels")
         with wikistore.StoreReader(STORE, INDEX) as reader:
             extra = reader.entities(missing)
         print(f"{len(extra):,} of them are held")
-        for g, (q, pos, gn, wl) in list(corr.items()):
-            if not wl:
-                corr[g] = (q, pos, gn, label_of(extra.get(q)) or "")
+        for g, v in list(corr.items()):
+            if not v[3]:
+                corr[g] = (v[0], v[1], v[2], label_of(extra.get(v[0])) or "",
+                           v[4], v[5], v[6])
 
     labelled = sum(1 for v in corr.values() if v[3])
     print(f"{labelled:,} of {len(corr):,} correspondences carry a Wikidata label")
@@ -187,9 +196,11 @@ def walk_all(anchors, fam, ourqid, names, depth):
     c = REPO / "reports" / "structural-correspondence.csv"
     with c.open("w", encoding="utf-8", newline="") as fh:
         w = _csv.writer(fh)
-        w.writerow(["geni_id", "qid", "position", "geni_name", "wikidata_label"])
-        for g, (q, pos, gn, wl) in sorted(corr.items()):
-            w.writerow([g, q, pos, gn, wl])
+        w.writerow(["geni_id", "qid", "position", "geni_name", "wikidata_label",
+                    "anchor_geni_id", "anchor_qid", "anchor_name"])
+        for g, v in sorted(corr.items()):
+            q, pos, gn, wl, ag, aq, an = v
+            w.writerow([g, q, pos, gn, wl, ag, aq, an])
 
     edits = [{
         "id": f"structural_placeholder:{g}",
