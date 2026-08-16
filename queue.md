@@ -5,6 +5,23 @@
 checkmarks, no "done" markers, no keeping a finished item "for context" — that is
 what bloated this file twice. If an item is here, it is not done.
 
+**AN INSTRUCTION FROM EMMA IN CHAT GOES IN THIS FILE BEFORE IT IS EXECUTED.**
+Added 2026-08-15 after she asked why the queue was being followed so badly. It was
+not the work-loop prompt — that says *"take the top actionable item from queue.md
+and do it"* and the ticks mostly did. **The failure is everything between the
+ticks.** 67 instruction turns that session produced 14 numbered items; the isolates
+analysis, the CBDB finding, five Nordic batches, Rogaland, Japan/China, the bridge
+census and 500+ opened profiles were **never queue items at any point**.
+
+The work-loop rule only covers one direction — promote from `todo.md`, *writing it
+into `queue.md` first*. Nothing covered her chat instructions, so they bypassed the
+queue and the file came to describe only the work nobody was doing. That is also
+why it keeps refilling with finished items: the live work was invisible to it.
+
+**So: write it down first, then do it — even when it takes one line, even when it
+is being done immediately.** The queue is the record of what the project is, not a
+backlog of what is left over.
+
 **Items are flat numbers. No `8a`/`8b` sub-lettering** — Emma, 2026-08-15, after I appended four lettered items under her item 8 and it read as a scheme rather than as me tacking things on: *"I have no idea what 8D is… this is just some sort of imagined code thing that you just added into the queue system."* A new item gets the next plain number at the end.
 
 Longer-horizon, abstract work lives in `todo.md` and is decomposed into steps here
