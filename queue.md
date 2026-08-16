@@ -462,11 +462,25 @@ her five well-modelled ones carry it (`Q2164896` 130, `Q2031200` 131, `Q13485740
 132) and the batch emitted none. Now emitted on **18 of 21**, the other three
 already having it.
 
-**The numbering is derived and proved, not assumed.** Each anchor gives *absolute
-number − position in the chain*; **all three give 111**, which is what establishes
-the chain is contiguous over the stretch we hold. If they ever disagree, no `P1545`
-is emitted at all — a wrong ordinal is worse than none. That puts Yaacob I at 119
-and runs unbroken to Aabed-El at 132.
+**The numbering is now READ from Pummer's list**, via the English Wikipedia article
+*Samaritan High Priest*, at Emma's instruction. It was previously *derived* from the
+three ordinals already on Wikidata, which agreed with each other on an offset of 111
+and therefore looked sound.
+
+**They are off by one against the source.** Pummer numbers `Q2164896` **131**,
+`Q2031200` **132**, `Q13485740` **133**; Wikidata states 130, 131, 132. The
+agreement between the three anchors was real and the anchor itself was wrong —
+three consistent readings of the same mistake, which is exactly what a derived
+constant invites. Every number the old code produced was one too low.
+
+**Wikidata's three are left alone.** The project adds rather than corrects, and a
+disagreement over three ordinals is a note. New statements carry Pummer's number;
+the three already stating one are untouched. `P1545` now on **18 of 21**, running
+Tsedaka II 113 → Aabed-El 133 unbroken.
+
+**The article also filled two term gaps** the list had blank: Amram VIII
+1828–1859/60 and Yaacob I 1859/60–1916. `P580` *start time* is now on all 21 and
+`P582` *end time* on 20, the exception being the incumbent.
 
 ### The other inconsistencies, since she said there were some
 

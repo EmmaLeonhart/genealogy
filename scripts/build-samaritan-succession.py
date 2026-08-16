@@ -93,29 +93,49 @@ FOLLOWS, FOLLOWED_BY = "P155", "P156"
 #: **A slashed year is left empty rather than halved.** `1859/60` is the article
 #: hedging between two, and picking one would state a precision the source does
 #: not have.
+#: **The succession, from Pummer's list as given in the English Wikipedia article
+#: *Samaritan High Priest*.** Emma, 2026-08-16: *"read the Wikipedia article on
+#: samaritan high priest to find the succession and we normalize the qualifiers
+#: too."*
+#:
+#: Each row is **(ordinal, QID, name, start, end)**. The ordinal is the priest's
+#: absolute number in the line and is now **read from the source, not derived**.
+#:
+#: **This corrected an off-by-one that would have shipped.** The numbering was
+#: previously inferred from the three `P1545` *series ordinal* values already on
+#: Wikidata — `Q2164896` 130, `Q2031200` 131, `Q13485740` 132 — which agreed with
+#: each other on an offset of 111 and therefore looked sound. **Pummer numbers
+#: those three 131, 132 and 133.** The agreement was real and the anchor was
+#: wrong, which is exactly the failure a derived constant invites: three
+#: consistent readings of the same mistake.
+#:
+#: **Wikidata's existing three are left alone.** Emma's standing rule is that this
+#: project adds rather than corrects, and a disagreement between Pummer and
+#: Wikidata over three ordinals is a note, not a work item. New statements carry
+#: Pummer's number; the three that already state one are not touched.
 SUCCESSION = [
-    (None,         "Shalma I ben Phinehas",                       "", ""),
-    ("Q135489731", "Tsedaka II ben Tabia ha'Åbtå'i",              "", "1650"),
-    ("Q137394557", "Yitzhaq I ben Tsedaka",                   "1650", "1694"),
-    ("Q135489730", "Abram ben Yitzhaq",                       "1694", "1732"),
-    ("Q135489805", "Levi V ben Abram",                        "1733", "1752"),
-    ("Q135489728", "Tabia III ben Yitzhaq ben Abram",         "1752", "1787"),
-    ("Q135489727", "Shalma II ben Tabia",                     "1798", "1828"),
-    ("Q135489819", "Amram VIII ben Shalma",                   "1828",     ""),
-    ("Q109888305", "Yaacob I ben Aaharon ben Shalma",             "", "1916"),
-    ("Q107534637", "Yitzhaq II ben Amram ben Shalma ben Tabia",    "", "1932"),
-    ("Q108907045", "Matzliach ben Phinehas ben Yitzhaq ben Shalma", "1933", "1943"),
-    ("Q107534535", "Abisha III ben Phinehas ben Yitzhaq ben Shalma", "1943", "1960"),
-    ("Q107534557", "Amram IX ben Yitzhaq ben Amram ben Shalma", "1960", "1980"),
-    ("Q108764515", "Asher ben Matzliach ben Phinehas",         "1980", "1982"),
-    ("Q108907046", "Phinehas X ben Matzliach ben Phinehas",    "1982", "1984"),
-    ("Q118782320", "Yaacob II ben Uzzi ben Yaacob ben Aaharon", "1984", "1987"),
-    ("Q8055954",   "Yoseph II ben Ab-Hisda ben Yaacov ben Aaharon", "1987", "1998"),
-    ("Q2666440",   "Levi VI ben Abisha ben Phinehas ben Yitzhaq", "1998", "2001"),
-    ("Q2067443",   "Shalom II ben Amram ben Yitzhaq",          "2001", "2004"),
-    ("Q2164896",   "Elazar XX ben Tsedaka ben Yitzhaq",        "2004", "2010"),
-    ("Q2031200",   "Aharon IV ben Ab-Chisda ben Yaacob",       "2010", "2013"),
-    ("Q13485740",  "Aabed-El V ben Asher ben Matzliach",       "2013",     ""),
+    (112, None,         "Shalma I ben Phinehas",                          "1614", "1623"),
+    (113, "Q135489731", "Tsedaka II ben Tabia ha'Åbtå'i",                 "1623", "1650"),
+    (114, "Q137394557", "Yitzhaq I ben Tsedaka",                          "1650", "1694"),
+    (115, "Q135489730", "Abram ben Yitzhaq",                              "1694", "1732"),
+    (116, "Q135489805", "Levi V ben Abram",                               "1733", "1752"),
+    (117, "Q135489728", "Tabia III ben Yitzhaq ben Abram",                "1752", "1787"),
+    (118, "Q135489727", "Shalma II ben Tabia",                            "1798", "1828"),
+    (119, "Q135489819", "Amram VIII ben Shalma",                          "1828", "1859"),
+    (120, "Q109888305", "Yaacob I ben Aaharon ben Shalma",                "1859", "1916"),
+    (121, "Q107534637", "Yitzhaq II ben Amram ben Shalma ben Tabia",      "1917", "1932"),
+    (122, "Q108907045", "Matzliach ben Phinehas ben Yitzhaq ben Shalma",  "1933", "1943"),
+    (123, "Q107534535", "Abisha III ben Phinehas ben Yitzhaq ben Shalma", "1943", "1960"),
+    (124, "Q107534557", "Amram IX ben Yitzhaq ben Amram ben Shalma",      "1960", "1980"),
+    (125, "Q108764515", "Asher ben Matzliach ben Phinehas",               "1980", "1982"),
+    (126, "Q108907046", "Phinehas X ben Matzliach ben Phinehas",          "1982", "1984"),
+    (127, "Q118782320", "Yaacob II ben Uzzi ben Yaacob ben Aaharon",      "1984", "1987"),
+    (128, "Q8055954",   "Yoseph II ben Ab-Hisda ben Yaacov ben Aaharon",  "1987", "1998"),
+    (129, "Q2666440",   "Levi VI ben Abisha ben Phinehas ben Yitzhaq",    "1998", "2001"),
+    (130, "Q2067443",   "Shalom II ben Amram ben Yitzhaq",                "2001", "2004"),
+    (131, "Q2164896",   "Elazar XX ben Tsedaka ben Yitzhaq",              "2004", "2010"),
+    (132, "Q2031200",   "Aharon IV ben Ab-Chisda ben Yaacob",             "2010", "2013"),
+    (133, "Q13485740",  "Aabed-El V ben Asher ben Matzliach",             "2013", ""),
 ]
 
 START_TIME, END_TIME = "P580", "P582"
@@ -174,33 +194,18 @@ def main() -> int:
               "treated as needing the ID added first", file=sys.stderr)
     print(f"  {len(has_p2600)} of {len(qids)} already carry a Geni ID")
 
-    order = [q for q, _n, _s, _e in SUCCESSION if q]
+    order = [q for _o, q, _n, _s, _e in SUCCESSION if q]
 
-    # **`P1545` series ordinal — the priest's absolute number in the line.**
-    # Emma, 2026-08-16: *"the single property for the samaritans is highly
-    # qualified... Qualifiers are extremely important here."* She is right and
-    # this one was missing: three of the five she called well modelled carry it
-    # (`Q2164896` 130, `Q2031200` 131, `Q13485740` 132) and the batch emitted
-    # none.
-    #
-    # **The offset is derived and checked, never assumed.** Each of those three
-    # gives `absolute number - position in SUCCESSION`; all three give **111**,
-    # which is what makes the chain provably contiguous over the stretch we hold.
-    # If they ever disagree the chain has a gap and no number is emitted at all,
-    # because a wrong ordinal is worse than none.
-    positions = {q: i for i, (q, _n, _s, _e) in enumerate(SUCCESSION) if q}
-    offsets = {q: int(n) - positions[q]
-               for q, n in existing_ordinals.items() if q in positions}
-    if offsets and len(set(offsets.values())) == 1:
-        offset = next(iter(offsets.values()))
-        ordinals = {q: positions[q] + offset for q in positions}
-        print(f"  series ordinal: {len(offsets)} anchors agree on offset {offset}, "
-              f"numbering {len(ordinals)} priests")
-    else:
-        ordinals = {}
-        print(f"  series ordinal: anchors disagree ({sorted(set(offsets.values()))}), "
-              "so no P1545 is emitted", file=sys.stderr)
-    terms = {q: (s, e) for q, _n, s, e in SUCCESSION if q}
+    ordinals = {q: o for o, q, _n, _s, _e in SUCCESSION if q}
+
+    # **`P1545` series ordinal, read from Pummer's list rather than derived.**
+    # The previous version inferred it from the three ordinals already on
+    # Wikidata; those three are off by one against the source, so the inference
+    # was consistent and wrong. Anything already stating an ordinal is left
+    # alone — this project adds, it does not correct.
+    print(f"  series ordinal: {len(ordinals)} priests numbered from Pummer's list; "
+          f"{len(existing_ordinals)} already state one and are untouched")
+    terms = {q: (s, e) for _o, q, _n, s, e in SUCCESSION if q}
     predecessor, successor = {}, {}
     for i, q in enumerate(order):
         if i:
