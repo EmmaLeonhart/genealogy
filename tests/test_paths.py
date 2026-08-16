@@ -212,9 +212,17 @@ def test_report_says_it_is_advisory():
 
 # --- the real path against the real merge ------------------------------------
 
+#: **`slow` is part of this**: these are the tests that load the real merge, and
+#: they take minutes. The pure-logic tests above carry neither mark and stay in the
+#: fast lane. Not skipped by default — `-m "not slow"` is a deliberate opt-out.
 pytestmark_real = pytest.mark.skipif(
     not EXPORTS or not JIMMU.exists(), reason="no exports or no path file"
 )
+
+
+def _real(func):
+    """`skipif` plus `slow`, so the real-merge tests carry both."""
+    return pytestmark_real(pytest.mark.slow(func))
 
 
 @pytest.fixture(scope="module")
@@ -228,7 +236,7 @@ def jimmu():
     return paths.check(built, paths.load_path(JIMMU))
 
 
-@pytestmark_real
+@_real
 def test_the_path_file_runs_from_the_account_owner_to_jimmu(jimmu):
     first, last = jimmu.results[0], jimmu.results[-1]
     assert first.person.geni_id == "6000000087535357291", "step 1 is Emma Leonhart"
@@ -236,7 +244,7 @@ def test_the_path_file_runs_from_the_account_owner_to_jimmu(jimmu):
     assert last.person.geni_id == "6000000001829589817"
 
 
-@pytestmark_real
+@_real
 def test_both_ends_of_the_path_are_held_in_one_component(jimmu):
     """The two ends met on 2026-08-04.
 
@@ -253,7 +261,7 @@ def test_both_ends_of_the_path_are_held_in_one_component(jimmu):
     assert len(jimmu.components_touched) == 1
 
 
-@pytestmark_real
+@_real
 def test_there_is_no_gap_left_in_the_path(jimmu):
     """Nothing absent, where a 21-step block used to be.
 
@@ -275,7 +283,7 @@ def test_there_is_no_gap_left_in_the_path(jimmu):
     assert absent == []
 
 
-@pytestmark_real
+@_real
 def test_the_path_is_unbroken_the_whole_way_to_jimmu(jimmu):
     """All 83 steps, with the checkpoints that were once the end of the run.
 
@@ -294,7 +302,7 @@ def test_the_path_is_unbroken_the_whole_way_to_jimmu(jimmu):
     assert jimmu.results[35].person.geni_id == "6000000002837351971"  # Helena
 
 
-@pytestmark_real
+@_real
 def test_every_step_joins_on_the_profile_id(jimmu):
     """No row falls back to name matching, so nothing here is advisory.
 

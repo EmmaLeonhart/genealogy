@@ -7581,3 +7581,51 @@ relative whose own label is a marker, because *"mother of NN"* names nobody.
 emitted `set_label` on `en` with `"replaces": "NN"`; NN lives in `en` on 1,549 of the
 1,588 such items and in `mul` on only 278, so it would have erased the marker on
 1,271 of them. Now two edits, the `mul` one named in the `en` one's `requires`.
+
+
+## 2026-08-16 — the suite outgrew the tool ceiling; a fast lane, and one true failure
+
+Raised as NEEDS-INVESTIGATION the tick before: three attempts at `python -m pytest`
+were killed at ~10 minutes, **including one excluding the four heaviest real-export
+files**, so the cost was clearly not where I assumed.
+
+**Measured per module, under a 100-second cap, rather than guessed.** Everything is
+1s or less except `test_repo_invariants` (11s), `test_seeds` (74s), and six modules
+that time out: `test_merge_real_exports`, `test_gedcom_real_exports`, `test_density`,
+`test_paths`, `test_wikidata_store_real`, and — importantly — `test_sources`, which
+turned out to **fail in 0.13s rather than time out**. Distinguishing exit 124 from
+exit 1 is what caught that; a bare "did it finish" check would have marked a failing
+module as slow and hidden it.
+
+**The cause is one merge, and it is nobody's bug.** `test_merge_real_exports.py`
+merges all 245 exports in a module-scoped fixture. That single fixture now exceeds
+ten minutes, which is the per-command ceiling here. The suite did not regress — the
+corpus grew past what one tool call can hold.
+
+**`slow` marker added, deselecting nothing by default.** `pytest -m "not slow"` is
+**932 passed in 114.77s**. A bare `pytest` still runs all 2,885.
+
+**The trap that cost three ten-minute runs: a second `pytestmark` assignment
+overwrites the first.** I added `pytestmark = pytest.mark.slow` at line 24 of
+`test_merge_real_exports.py`; line 28 already had
+`pytestmark = pytest.mark.skipif(...)` and silently replaced it. `--collect-only`
+reported the tests deselected while a real run still executed them, which is a
+uniquely misleading pair of signals. Both are now lists. `test_paths` had the same
+shape under a different name — a hand-rolled `pytestmark_real` applied per test —
+and gets a `_real` decorator combining `skipif` with `slow`.
+
+**One genuine failure, left standing and not touched.**
+`test_the_real_corpus_has_no_byte_identical_duplicates` reports
+`exports/descendants/` and `exports/edges/` holding the same
+`export-Descendants-6000000178898487831.ged`, same sha256. The merge is unaffected —
+`sources` drops byte-identical repeats — and the test's own docstring calls the
+failure *"information rather than breakage"*. **The only recorded remedy is deleting
+the repeat, which `CLAUDE.md` forbids without qualification**, and which of the two
+paths keeps the file is a filing question that is explicitly Emma's. So nothing was
+deleted, renamed, or asserted away, and it is queued as NEEDS-DECISION with the
+options written out. Making that test pass by loosening it is precisely the move the
+hard rails forbid.
+
+**What I still cannot do:** run the slow lane end to end from a tool call. That is
+now a documented property of the environment rather than an open question, and
+`CLAUDE.md` says to run the full suite in a terminal.

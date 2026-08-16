@@ -1047,6 +1047,28 @@ monthly allowance is used, and a surprise bill is not worth a green tick.
 GitHub end as well.
 
 Verification therefore happens **locally, before pushing**: `python -m pytest`.
+
+**The suite has a fast lane, and the full run now needs a real terminal.**
+`pytest -m "not slow"` is **932 tests in ~115 seconds**. A bare `pytest` still runs
+everything — `slow` deselects nothing by default, and a run that has not included
+the slow tests is not a full verification.
+
+Six modules carry `slow`, each working over the whole corpus:
+`test_merge_real_exports`, `test_gedcom_real_exports`, `test_density`, `test_paths`
+(its real-merge tests only), `test_wikidata_store_real`, and the real-merge work in
+`test_sources`. `test_merge_real_exports` alone merges all 245 exports in one
+module-scoped fixture and **exceeds ten minutes**, which is the agent tooling's
+per-command ceiling — so the full suite became unrunnable from a tool call around
+2026-08-16, purely because the corpus grew. Nothing is wrong with it; it is just
+long. **Run it in your own terminal.**
+
+**A second `pytestmark` assignment silently overwrites the first.** That is how the
+marker looked applied and was not: `test_merge_real_exports.py` had
+`pytestmark = pytest.mark.slow` on line 24 and
+`pytestmark = pytest.mark.skipif(...)` on line 28, so the slow mark vanished and the
+ten-minute merge kept running in the fast lane. Combine them into a **list**. The
+symptom is a `-m "not slow"` run that still takes minutes while
+`--collect-only` reports the tests as deselected.
 The suite is fast, needs only pytest, and covers the real 24 MB exports. The one
 thing local runs cannot do is the Python version matrix — `tests/test_python_floor.py`
 is a partial stand-in for that, and says so.

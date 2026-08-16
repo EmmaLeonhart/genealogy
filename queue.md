@@ -830,6 +830,30 @@ ID cannot be reached by that seed. Not a defect.
 **Waiting on 1 September**, which is her own instruction of 2026-08-14 — not an
 external blocker.
 
+## Two byte-identical copies of one export — NEEDS-DECISION, hers
+
+`tests/test_sources.py::test_the_real_corpus_has_no_byte_identical_duplicates`
+fails, and **the failure is true**:
+
+    exports/descendants/export-Descendants-6000000178898487831.ged
+    exports/edges/export-Descendants-6000000178898487831.ged
+
+Same seed, same bytes, same sha256. `genimerge.sources` drops byte-identical
+repeats, so **the merge is unaffected** — the test's own docstring says the failure
+is *"information rather than breakage"*.
+
+**The decision is hers because the only fix is forbidden to me.** The historical
+remedy recorded in that docstring is deleting the repeat, and `CLAUDE.md` says
+**never delete a GEDCOM** without qualification. Which of the two paths keeps the
+file is also a filing question, and filing under `exports/` is explicitly her call,
+not a default to guess. So: nothing touched, nothing deleted, nothing renamed.
+
+**Options, for when she picks one:** keep both and let the test stay red as the
+standing signal it was written to be; or she removes one herself; or the test is
+changed to *report* duplicates rather than assert their absence — which is a change
+to what the suite claims, not a weakening to make a run go green, and is hers to
+authorise.
+
 ## Always last — pinned to the tail
 
 A. **Ensure the three crons are running** — work-loop `3 * * * *`, auto-flush

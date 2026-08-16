@@ -27,6 +27,12 @@ import pytest
 
 from genimerge import wikidownload
 
+#: **Marked `slow`.** This module works over the whole corpus and takes minutes,
+#: not seconds; measured over 100s on its own, 2026-08-16. It is NOT skipped by
+#: default — a bare `pytest` runs it, and a run that has not is not a full
+#: verification. `-m "not slow"` is a deliberate opt-out for a fast signal.
+pytestmark = pytest.mark.slow
+
 STORE = Path(__file__).resolve().parents[1] / "wikidata" / "items"
 
 #: What `wbgetentities` returns for an item when nothing is selected away. The

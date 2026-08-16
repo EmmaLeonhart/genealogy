@@ -16,9 +16,18 @@ import pytest
 from genimerge import gedcom, merge, sources
 from genimerge.identity import geni_id_of
 
+#: **Marked `slow`: the module-scoped fixture below merges every export.** At 245
+#: exports that one merge exceeds ten minutes, which is the whole reason the
+#: marker exists. It is NOT skipped by default - a bare `pytest` runs it, and a
+#: run that has not is not a full verification. `-m "not slow"` is a deliberate
+#: opt-out for when only a fast signal is wanted.
+
 EXPORTS = sources.find_exports()
 
-pytestmark = pytest.mark.skipif(not EXPORTS, reason="no GEDCOM exports in exports/")
+pytestmark = [
+    pytest.mark.skipif(not EXPORTS, reason="no GEDCOM exports in exports/"),
+    pytest.mark.slow,
+]
 
 
 @pytest.fixture(scope="module")

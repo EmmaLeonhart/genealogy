@@ -16,7 +16,12 @@ from genimerge import gedcom, sources
 
 EXPORTS = sources.find_exports()
 
-pytestmark = pytest.mark.skipif(not EXPORTS, reason="no GEDCOM exports in exports/")
+#: **Also marked `slow`**: this module reparses every export and takes minutes.
+#: Not skipped by default — `-m "not slow"` is a deliberate opt-out.
+pytestmark = [
+    pytest.mark.skipif(not EXPORTS, reason="no GEDCOM exports in exports/"),
+    pytest.mark.slow,
+]
 
 
 @pytest.fixture(scope="module", params=[str(p) for p in EXPORTS])

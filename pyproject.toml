@@ -22,3 +22,18 @@ where = ["src"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]
+# **`slow` marks the tests that merge or reparse the WHOLE corpus.** Nothing is
+# skipped by default - a bare `pytest` still runs every one of them, and that is
+# the run that counts before pushing. The marker exists so a fast lane can be
+# selected explicitly with `-m "not slow"`.
+#
+# Why it was needed: `test_merge_real_exports.py` merges all 245 exports in one
+# module-scoped fixture, and that single merge now exceeds **ten minutes** on its
+# own. Its cost scales with the corpus, so it crossed the agent tooling's
+# ten-minute command ceiling somewhere around 2026-08-16 and made the full suite
+# unrunnable from a tool call - which in turn made the "never claim verified
+# without having run it" rule satisfiable only on subsets. See
+# `CLAUDE.md` section *Cost: this repo is private, so CI is manual-only*.
+markers = [
+    "slow: merges or reparses the whole corpus; minutes, not seconds",
+]
