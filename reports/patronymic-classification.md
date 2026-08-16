@@ -9,17 +9,66 @@ Every token of every person is a row in
 
 | verdict | tokens | share |
 | --- | ---: | ---: |
-| not patronymic | 338,914 | 65.4% |
-| no father recorded | 92,949 | 17.9% |
-| patronymic | 34,806 | 6.7% |
-| AMBIGUOUS: form, father differs | 28,794 | 5.6% |
-| patronymic (inferred, no father recorded) | 18,374 | 3.5% |
-| father has no given name | 2,883 | 0.6% |
-| surname: patronymic form conflicts with recorded sex | 1,247 | 0.2% |
-| AMBIGUOUS: form, father unnamed | 136 | 0.0% |
-| **total** | **518,103** | |
+| not patronymic | 386,476 | 65.1% |
+| no father recorded | 105,978 | 17.9% |
+| patronymic | 41,767 | 7.0% |
+| AMBIGUOUS: form, father differs | 33,170 | 5.6% |
+| patronymic (inferred, no father recorded) | 21,242 | 3.6% |
+| father has no given name | 3,273 | 0.6% |
+| surname: patronymic form conflicts with recorded sex | 1,449 | 0.2% |
+| AMBIGUOUS: form, father unnamed | 156 | 0.0% |
+| patronymic (chain link 2, names William) | 9 | 0.0% |
+| patronymic (chain link 2, names Abaye haKohen Gaon) | 7 | 0.0% |
+| patronymic (chain link 2, names Ya'ish) | 4 | 0.0% |
+| patronymic (chain link 2, names Yahya Hazaken) | 4 | 0.0% |
+| patronymic (chain link 2, names Musa Banu Qasi) | 2 | 0.0% |
+| patronymic (chain link 2, names Adai) | 2 | 0.0% |
+| patronymic (chain link 2, names Éireann) | 2 | 0.0% |
+| patronymic (chain link 2, names Briain) | 2 | 0.0% |
+| patronymic (chain link 2, names Ferruzi'el) | 2 | 0.0% |
+| patronymic (chain link 2, names Mar Shealtiel) | 2 | 0.0% |
+| patronymic (chain link 2, names Ezra) | 2 | 0.0% |
+| patronymic (chain link 2, names Khamma) | 2 | 0.0% |
+| patronymic (chain link 2, names Kaspi) | 2 | 0.0% |
+| patronymic (chain link 2, names Asher ben Matzliach) | 2 | 0.0% |
+| patronymic (chain link 3, names Matzliach) | 2 | 0.0% |
+| patronymic (chain link 2, names Muhājir) | 1 | 0.0% |
+| patronymic (chain link 2, names Meir) | 1 | 0.0% |
+| patronymic (chain link 2, names Palṭoi Kohen Ṣedeq) | 1 | 0.0% |
+| patronymic (chain link 2, names Nearya) | 1 | 0.0% |
+| patronymic (chain link 2, names Tzadok) | 1 | 0.0% |
+| patronymic (chain link 2, names ʿAwkal) | 1 | 0.0% |
+| patronymic (chain link 2, names Obadya) | 1 | 0.0% |
+| patronymic (chain link 2, names Petrwn) | 1 | 0.0% |
+| patronymic (chain link 2, names 'Amr) | 1 | 0.0% |
+| patronymic (chain link 2, names Abdullaah bin Muslim bin Aqeel) | 1 | 0.0% |
+| patronymic (chain link 3, names Muslim bin Aqeel) | 1 | 0.0% |
+| patronymic (chain link 4, names Aqeel) | 1 | 0.0% |
+| patronymic (chain link 2, names Muslim bin Aqeel) | 1 | 0.0% |
+| patronymic (chain link 3, names Aqeel) | 1 | 0.0% |
+| patronymic (chain link 2, names Acha) | 1 | 0.0% |
+| patronymic (chain link 2, names Lakhtush) | 1 | 0.0% |
+| patronymic (chain link 2, names Avraham of Opatow) | 1 | 0.0% |
+| patronymic (chain link 2, names Shaprut) | 1 | 0.0% |
+| patronymic (chain link 2, names Samuel Gaon ha-Kohen) | 1 | 0.0% |
+| patronymic (chain link 2, names Israel Gaon ha-Kohen) | 1 | 0.0% |
+| patronymic (chain link 2, names Isaac of Narbonne) | 1 | 0.0% |
+| patronymic (chain link 2, names Hasan) | 1 | 0.0% |
+| patronymic (chain link 2, names Aqeel) | 1 | 0.0% |
+| patronymic (chain link 2, names Muhammad) | 1 | 0.0% |
+| patronymic (chain link 2, names Khalaf) | 1 | 0.0% |
+| patronymic (chain link 2, names Zemah Kohen Ṣedeq) | 1 | 0.0% |
+| patronymic (chain link 2, names Ghayyāth HaLevi) | 1 | 0.0% |
+| patronymic (chain link 2, names Anan) | 1 | 0.0% |
+| patronymic (chain link 2, names Tabin) | 1 | 0.0% |
+| patronymic (chain link 2, names Sallah al-Kafri, resh metivta al-Kafri) | 1 | 0.0% |
+| patronymic (chain link 2, names Albalia) | 1 | 0.0% |
+| patronymic (chain link 2, names Dafydd) | 1 | 0.0% |
+| patronymic (chain link 2, names Shmuel & Yocheved bat RASHI) | 1 | 0.0% |
+| patronymic (chain link 3, names RASHI) | 1 | 0.0% |
+| **total** | **593,591** | |
 
-**28,930 tokens carry a patronymic FORM that the father does
+**33,326 tokens carry a patronymic FORM that the father does
 not confirm.** Emma asked for these to be separated rather than silently
 called non-patronymic: *"We probably should be doing some level of
 classification for situations where it is ambiguous."* They are the
@@ -29,7 +78,7 @@ Her prior on them, recorded and **not applied** — deciding on it would be
 inference where this project uses evidence: *"most patronymics are not used
 as surnames."*
 
-**Of the 373,720 tokens where a verdict was possible, 34,806 are patronymic (9.3%).**
+**Of the 428,243 tokens where a verdict was possible, 41,767 are patronymic (9.8%).**
 
 **A person with no recorded father gets no verdict**, not a `no` — absence of
 a father in our data is absence of evidence, and a `no` there would be a
@@ -37,38 +86,38 @@ claim we cannot make.
 
 ## The tokens that go both ways — this is the point
 
-**1,023 distinct tokens are built on one bearer's father and not on
+**1,117 distinct tokens are built on one bearer's father and not on
 another's.** Same string, different usage, and therefore **different Wikidata
 items** — `CLAUDE.md` § *"Jackson Jackson Jackson"*. A suffix list alone would
 have called every bearer of these a patronymic.
 
 | token | father confirms | father differs |
 | --- | ---: | ---: |
-| Olsdatter | 1,058 | 44 |
-| Olsen | 1,018 | 119 |
-| Pedersdatter | 626 | 36 |
-| Larsdatter | 578 | 14 |
-| Hansdatter | 573 | 3 |
-| Pedersen | 570 | 58 |
-| Larsson | 533 | 112 |
-| Andersdatter | 497 | 5 |
-| Olson | 386 | 26 |
-| Rasmusdatter | 366 | 5 |
-| Andersson | 365 | 117 |
-| Jensdatter | 364 | 10 |
-| Jonsdatter | 324 | 17 |
-| Eriksdatter | 318 | 26 |
-| Nilsdatter | 288 | 15 |
-| Nilsson | 271 | 26 |
-| Eriksen | 256 | 19 |
-| Johannesdatter | 245 | 6 |
-| Rasmusson | 238 | 3 |
-| Larsdotter | 223 | 11 |
-| Rasmussen | 221 | 12 |
-| Jørgensdatter | 210 | 6 |
-| Nielsdatter | 207 | 39 |
-| Pederson | 203 | 13 |
-| Jonson | 193 | 6 |
+| Olsdatter | 1,256 | 50 |
+| Olsen | 1,210 | 164 |
+| Pedersdatter | 688 | 39 |
+| Larsson | 637 | 114 |
+| Pedersen | 633 | 77 |
+| Larsdatter | 620 | 14 |
+| Hansdatter | 618 | 3 |
+| Andersson | 603 | 167 |
+| Andersdatter | 577 | 8 |
+| Andersdotter | 440 | 38 |
+| Olson | 428 | 32 |
+| Nilsson | 424 | 42 |
+| Rasmusdatter | 404 | 5 |
+| Jensdatter | 392 | 10 |
+| Jonsdatter | 370 | 22 |
+| Eriksdatter | 339 | 26 |
+| Larsdotter | 336 | 14 |
+| Nilsdatter | 311 | 22 |
+| Rasmusson | 292 | 3 |
+| Eriksen | 279 | 24 |
+| Nilsdotter | 278 | 16 |
+| Johannesdatter | 276 | 7 |
+| Johansson | 271 | 84 |
+| Johansdotter | 258 | 53 |
+| Olofsson | 257 | 42 |
 
 ## Method
 

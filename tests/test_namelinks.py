@@ -279,3 +279,108 @@ def test_novalue_snaks_and_absent_qids_are_missing():
     })
 
     assert namelinks.existing_name_claims_from_store(reader, ["Q1", "Q_absent"]) == {}
+
+
+# --- chained patronymics -------------------------------------------------------
+
+CHAIN_TREE = """0 HEAD
+0 @I10@ INDI
+1 NAME Abisha III /ben Phinhas ben Yittzhaq ben Shalma/
+2 GIVN Abisha III
+2 SURN ben Phinhas ben Yittzhaq ben Shalma
+1 RFN geni:10
+1 FAMC @F1@
+0 @I11@ INDI
+1 NAME Phinhas /ben Yittzhaq ben Shalma/
+2 GIVN Phinhas
+2 SURN ben Yittzhaq ben Shalma
+1 RFN geni:11
+1 FAMS @F1@
+1 FAMC @F2@
+0 @I12@ INDI
+1 NAME Yittzhaq /ben Shalma/
+2 GIVN Yittzhaq
+2 SURN ben Shalma
+1 RFN geni:12
+1 FAMS @F2@
+0 @F1@ FAM
+1 HUSB @I11@
+1 CHIL @I10@
+0 @F2@ FAM
+1 HUSB @I12@
+1 CHIL @I11@
+0 TRLR
+"""
+
+CHAIN_ITEMS = {
+    "Abisha": [("Q500", "Q12308941", "label")],
+    "ben Phinhas": [("Q501", "Q110874", "label")],
+    "ben Yittzhaq": [("Q502", "Q110874", "label")],
+    "ben Shalma": [("Q503", "Q110874", "label")],
+}
+
+
+def chain_batch(existing_claims=()):
+    existing = {}
+    for qid, prop in existing_claims:
+        existing.setdefault(qid, set()).add(prop)
+    return namelinks.build_name_links(
+        existing,
+        build_tree(gedcom.parse(CHAIN_TREE).records),
+        {"10": "Q10", "11": "Q11", "12": "Q12"},
+        CHAIN_ITEMS,
+        retrieved="2026-07-30",
+    )
+
+
+def test_a_chain_emits_one_P5056_per_generation():
+    """Emma's worked example. Before this, `classify-patronymics` read only the
+    first `ben X` and nothing produced more than one patronymic per person."""
+    links = [l for l in chain_batch().links
+             if l.prop == namelinks.PATRONYM and l.qid == "Q10"]
+    assert [(l.text, l.name_item, l.ordinal) for l in links] == [
+        ("ben Phinhas", "Q501", 1),
+        ("ben Yittzhaq", "Q502", 2),
+        ("ben Shalma", "Q503", 3),
+    ]
+
+
+def test_each_link_is_based_on_the_ancestor_it_names():
+    """`P144` based on points at the PERSON that link names — the father, then the
+    grandfather. The great-grandfather is not in this tree, so link 3 carries no
+    derivation rather than a wrong one."""
+    links = [l for l in chain_batch().links
+             if l.prop == namelinks.PATRONYM and l.qid == "Q10"]
+    assert [l.based_on for l in links] == ["Q11", "Q12", ""]
+
+
+def test_a_patronymic_in_the_surname_slot_is_not_a_family_name():
+    """Geni writes `Abram /ben Yitzhaq/`, so the patronymic sits in SURN.
+
+    Emitting `P734` family name there would assert `ben Yitzhaq` is an inherited
+    surname, which is the false claim `P5056` exists to avoid.
+    """
+    batch = chain_batch()
+    assert not [l for l in batch.links if l.prop == namelinks.FAMILY_NAME]
+
+
+def test_the_regnal_ordinal_still_withholds_the_given_name():
+    """**Documents a real limitation, and it is why `P7338` is queued.**
+
+    `Abisha III` tokenises to `Abisha` and `III`. `III` is a
+    `P7338` regnal ordinal, not a name, so no name item is labelled it and the
+    person blocks under the all-or-nothing rule that keeps `P1545` series ordinal
+    off a partial set of given names.
+
+    So `Abisha` is withheld - correctly, given what the emitter currently knows -
+    and the three patronymics emit anyway because they are their own series. That
+    decoupling is what this asserts; the given name arrives when the regnal
+    ordinal is handled.
+    """
+    batch = chain_batch()
+    given = [l for l in batch.links
+             if l.prop == namelinks.GIVEN_NAME and l.qid == "Q10"]
+    assert given == []
+    assert any(s.text == "III" for s in batch.skipped)
+    assert len([l for l in batch.links
+                if l.prop == namelinks.PATRONYM and l.qid == "Q10"]) == 3

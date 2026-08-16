@@ -36,7 +36,7 @@ from dataclasses import dataclass, field
 from typing import Iterable
 
 from .model import Tree
-from .names import is_patronymic
+from .names import given_part, is_patronymic, patronymic_chain
 from .claims import Statement, geni_reference
 
 __all__ = ["NameLink", "Skipped", "NameBatch", "build_name_links", "render_markdown"]
@@ -178,6 +178,32 @@ def name_items_from_resolution(rows: Iterable[dict]) -> dict[str, list[tuple[str
     return out
 
 
+def _father_line(tree, geni_id: str, depth: int) -> list[str]:
+    """Geni IDs of the father, then his father, up to `depth` generations.
+
+    `P144` *based on* on each `P5056` link points at **the person that link
+    names** — link 1 is the father, link 2 the grandfather — so a chain needs the
+    line, not just the father. Short-returns when the tree runs out; a link with
+    no ancestor to point at simply carries no `P144`, which is a missing
+    qualifier rather than a wrong one.
+
+    Guards against a cycle by refusing to revisit, for the same reason
+    `frontier.ancestor_depth` does: the tree holds 15 ancestry cycles.
+    """
+    line: list[str] = []
+    seen = {geni_id}
+    current = geni_id
+    while len(line) < depth:
+        person = tree.people.get(current)
+        father = getattr(person, "father_id", None) if person else None
+        if not father or father in seen:
+            break
+        line.append(father)
+        seen.add(father)
+        current = father
+    return line
+
+
 def build_name_links(
     existing: dict[str, set[str]],
     tree: Tree,
@@ -220,7 +246,16 @@ def build_name_links(
         already = existing.get(qid, set())
 
         surname = primary.surname.strip()
-        if surname:
+        # **Both fields, always.** Emma, `name modelling.txt`: *"The surname thing
+        # on geni is not always something that clearly corresponds to a surname
+        # versus a patronym particularly. We have to check in the given names and
+        # in the surname whether it is a patronym."* Geni writes the Samaritans as
+        # `Abram /ben Yitzhaq/`, so the patronymic sits in the SURNAME slot - and
+        # emitting `P734` family name for it would assert that `ben Yitzhaq` is an
+        # inherited family name, which is exactly the false claim `P5056` exists
+        # to avoid.
+        surname_chain = patronymic_chain(surname)
+        if surname and not surname_chain:
             if FAMILY_NAME in already:
                 batch.skipped.append(
                     Skipped(geni_id, display, surname, "item already states a family name")
@@ -234,7 +269,16 @@ def build_name_links(
                         NameLink(qid, FAMILY_NAME, item, surname, geni_id, display)
                     )
 
-        tokens = _WORD.findall(primary.given)
+        # **A chained patronymic is read whole, before tokenising.** Emma's
+        # `name modelling.txt`: `Abisha III ben Phinhas ben Yittzhaq ben Shalma`
+        # is three `P5056` statements, not four given-name tokens. Splitting on
+        # words first destroys the structure - `ben` and `Phinhas` become
+        # separate tokens and `Phinhas` reads as a given name.
+        given_chain = patronymic_chain(primary.given)
+        chain = given_chain or surname_chain
+        tokens = _WORD.findall(
+            given_part(primary.given) if given_chain else primary.given
+        )
         if tokens and GIVEN_NAME in already:
             batch.skipped.append(
                 Skipped(geni_id, display, primary.given, "item already states a given name")
@@ -243,6 +287,26 @@ def build_name_links(
             resolved: list[tuple[str, str]] = []
             blocked = False
             patronyms: list[tuple[str, str]] = []
+            # The chain supplies the patronymics when there is one; the per-token
+            # test below then only sees the given names. Suffix-form patronymics
+            # (`Ole Olsen` in GIVN) have no particle and no chain, so they keep
+            # taking the per-token path.
+            # **Blocked separately from the given names.** The all-or-nothing
+            # rule below exists so a wrong `P1545` series ordinal is never put on
+            # a partial set of given names; the patronymic chain is its own
+            # series and its ordinals do not depend on them. Coupling the two
+            # silenced every Samaritan: `Abisha III` tokenises to `Abisha` and
+            # `III`, no name item is labelled `III` - it is a `P7338` regnal
+            # ordinal, not a name - so the person blocked and the three perfectly
+            # resolvable patronymics went with it.
+            patronyms_blocked = False
+            for link in chain:
+                item, why = resolve(link.name)
+                if item is None:
+                    batch.skipped.append(Skipped(geni_id, display, link.name, why))
+                    patronyms_blocked = True
+                else:
+                    patronyms.append((link.name, item))
             for token in tokens:
                 if is_patronymic(token):
                     # **Emitted as `P5056` patronym or matronym, not skipped.**
@@ -267,6 +331,28 @@ def build_name_links(
 
             # All or nothing per person: proposing the second given name without
             # the first would put a wrong series ordinal on the item.
+            if patronyms and not patronyms_blocked:
+                # `P144` based on points at the PERSON each link names: the
+                # father for link 1, the grandfather for link 2. Where we hold no
+                # item for that ancestor the patronymic is still correct and
+                # simply carries no derivation - a missing qualifier is not a
+                # wrong one.
+                line = _father_line(tree, geni_id, len(patronyms))
+                for index, (token, item) in enumerate(patronyms, start=1):
+                    ancestor = line[index - 1] if index <= len(line) else ""
+                    batch.links.append(
+                        NameLink(
+                            qid,
+                            PATRONYM,
+                            item,
+                            token,
+                            geni_id,
+                            display,
+                            ordinal=index if len(patronyms) > 1 else None,
+                            based_on=linked.get(ancestor, "") if ancestor else "",
+                        )
+                    )
+
             if resolved and not blocked:
                 for index, (token, item) in enumerate(resolved, start=1):
                     batch.links.append(
@@ -280,23 +366,6 @@ def build_name_links(
                             ordinal=index if len(resolved) > 1 else None,
                             is_first_given=(index == 1),
                             is_middle=(index > 1),
-                        )
-                    )
-                # The father's QID, where we have one, is the `P144` based on
-                # value. Absent, the patronymic is still correct and simply
-                # carries no derivation - a missing qualifier is not a wrong one.
-                father_qid = linked.get(getattr(person, "father_id", "") or "", "")
-                for index, (token, item) in enumerate(patronyms, start=1):
-                    batch.links.append(
-                        NameLink(
-                            qid,
-                            PATRONYM,
-                            item,
-                            token,
-                            geni_id,
-                            display,
-                            ordinal=index if len(patronyms) > 1 else None,
-                            based_on=father_qid,
                         )
                     )
             elif resolved and blocked:

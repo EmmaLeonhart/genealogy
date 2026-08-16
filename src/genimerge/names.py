@@ -80,6 +80,79 @@ NAME_ITEM_TYPES = (
 _WORD = re.compile(r"[^\W\d_]+", re.UNICODE)
 
 
+#: **Particle-form patronymics** — the father's own name follows a separate token
+#: rather than a suffix being glued on: `ben Yitzhaq`, `bint Aabed-El`,
+#: `ap Gronwy`, `bar Hananya`. Kept in step with `scripts/classify-patronymics.py`,
+#: which uses the same set to decide form.
+PATRONYMIC_PARTICLES = {"ben", "bin", "ibn", "bint", "bat", "bar", "ap", "ab",
+                        "mac", "mc", "fitz", "o", "ó", "ua", "ni"}
+
+
+@dataclass(frozen=True)
+class PatronymLink:
+    """One `P5056` *patronym or matronym* statement in a chain.
+
+    `name` is what the patronymic name item is called — `ben Phinhas`.
+    `based_on` is the `P144` *based on* value, and per `name modelling.txt` it is
+    **the person that link names**, spelled with the whole remaining chain so the
+    grandfather is `Yittzhaq ben Shalma` rather than a bare `Yittzhaq`.
+    `ordinal` is `P1545` *series ordinal*, numbering the links **outward from the
+    bearer** starting at 1.
+    """
+
+    name: str
+    based_on: str
+    ordinal: int
+
+
+def patronymic_chain(name: str) -> list[PatronymLink]:
+    """Split a chained patronymic into one `P5056` link per generation.
+
+    Emma's worked example, `name modelling.txt`, and this reproduces it exactly:
+
+        Abisha III ben Phinhas ben Yittzhaq ben Shalma
+          P5056 ben Phinhas    P144 Phinhas ben Yittzhaq ben Shalma   P1545 1
+          P5056 ben Yittzhaq   P144 Yittzhaq ben Shalma               P1545 2
+          P5056 ben Shalma     P144 Shalma                            P1545 3
+
+    **Each link's `based_on` runs to the end of the string**, which is the whole
+    point: the father is himself named by his own patronymic chain, so naming him
+    `Phinhas` alone would not identify him among the Phinhases. The link's own
+    `name`, by contrast, stops at the next particle — `ben Phinhas`, not
+    `ben Phinhas ben Yittzhaq`.
+
+    Returns `[]` when there is no particle, which includes every suffix-form
+    patronymic (`Olsen`): those are single by construction and are not a chain.
+    Slashes are stripped first, so a GEDCOM `Abram /ben Yitzhaq/` works.
+    """
+    tokens = (name or "").replace("/", " ").split()
+    marks = [i for i, t in enumerate(tokens)
+             if t.lower().strip(".") in PATRONYMIC_PARTICLES and i + 1 < len(tokens)]
+    links: list[PatronymLink] = []
+    for ordinal, start in enumerate(marks, start=1):
+        # The link's own name stops at the next particle; the person it names
+        # carries the rest of the chain.
+        stop = next((m for m in marks if m > start), len(tokens))
+        links.append(PatronymLink(name=" ".join(tokens[start:stop]),
+                                  based_on=" ".join(tokens[start + 1:]),
+                                  ordinal=ordinal))
+    return links
+
+
+def given_part(name: str) -> str:
+    """Everything before the first patronymic particle — `Abisha III`.
+
+    The regnal ordinal stays attached: `name modelling.txt` puts `P7338` *regnal
+    ordinal* on the **given name**, so splitting it off here would lose which name
+    it qualifies.
+    """
+    tokens = (name or "").replace("/", " ").split()
+    for i, t in enumerate(tokens):
+        if t.lower().strip(".") in PATRONYMIC_PARTICLES and i + 1 < len(tokens):
+            return " ".join(tokens[:i])
+    return " ".join(tokens)
+
+
 def is_patronymic(name: str) -> bool:
     """Does this look like a patronymic rather than an inherited surname?
 
@@ -89,6 +162,11 @@ def is_patronymic(name: str) -> bool:
     report, never to decide anything.
     """
     lowered = name.strip().lower()
+    # **Particle form counts too.** `ben Yitzhaq` is a patronymic and carries no
+    # patronymic *suffix*, so a suffix-only test called every Samaritan name an
+    # ordinary surname and `namelinks` never emitted a single `P5056` for them.
+    if patronymic_chain(lowered):
+        return True
     if len(lowered) < 5:
         return False
     return any(lowered.endswith(suffix) for suffix in PATRONYMIC_SUFFIXES)

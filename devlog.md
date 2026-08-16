@@ -7629,3 +7629,60 @@ hard rails forbid.
 **What I still cannot do:** run the slow lane end to end from a tool call. That is
 now a documented property of the environment rather than an open question, and
 `CLAUDE.md` says to run the full suite in a terminal.
+
+
+## 2026-08-16 — chained patronymics, and the surname slot that was asserting a family name
+
+The last open piece of `name modelling.txt` except the regnal ordinal.
+`genimerge.names` gains `patronymic_chain()` and `given_part()`, and they
+reproduce Emma's worked example exactly:
+
+    Abisha III ben Phinhas ben Yittzhaq ben Shalma
+      P5056 ben Phinhas    P144 Phinhas ben Yittzhaq ben Shalma   P1545 1
+      P5056 ben Yittzhaq   P144 Yittzhaq ben Shalma               P1545 2
+      P5056 ben Shalma     P144 Shalma                            P1545 3
+
+**Each link's `based_on` runs to the end of the string, and that is the load-bearing
+part.** The father is himself named by his own chain, so `Phinhas` alone would not
+pick him out among the Phinhases. The link's own *name* stops at the next particle;
+only the person it points at carries the rest.
+
+**Three things were wrong underneath, and two were worse than the stated problem.**
+
+- **`is_patronymic` tested suffixes only.** `ben Yitzhaq` carries no patronymic
+  suffix, so it read as an ordinary surname and `namelinks` had never emitted a
+  single `P5056` for any Samaritan. The queue item said chains were unhandled; in
+  fact *particle patronymics entirely* were.
+- **The surname slot emitted `P734` family name for it.** Geni writes
+  `Abram /ben Yitzhaq/`, so the patronymic sits in `SURN` — and the emitter was
+  asserting `ben Yitzhaq` is an inherited family name, which is the precise false
+  claim `P5056` exists to avoid. Emma had already said both fields must be checked:
+  *"We have to check in the given names and in the surname whether it is a patronym
+  or the regular name."*
+- **The all-or-nothing rule silenced the chain.** Given names are emitted whole or
+  not at all so a partial set never gets a wrong `P1545`. `Abisha III` tokenises to
+  `Abisha` and `III`, nothing is labelled `III` — it is a `P7338` regnal ordinal —
+  so the person blocked and took three perfectly resolvable patronymics with it.
+  The chain is its own series with its own ordinals, so it is now blocked
+  separately. The given name is still withheld, correctly, until `P7338` exists.
+
+**`_father_line` walks the actual ancestors** rather than reusing the father for
+every link, and refuses to revisit a person — the tree holds 15 ancestry cycles.
+A link with no ancestor item carries no `P144`: a missing qualifier, not a wrong
+one.
+
+**The classifier now expands a chain into one row per generation.** Previously the
+whole surname field arrived as a single token, so `derives_from_father` compared the
+father against `phinhas ben yittzhaq ben shalma` and never matched. Only link 1
+names the father and only link 1 is tested against him; deeper links are recorded on
+form with the ancestor they name written into `evidence`, rather than borrowing a
+verdict that was never about them. `reports/patronymic-classification.csv` gains a
+`chain_link` column: **154 chain rows across 74 people** — 74 at link 1, 74 at link
+2, 5 at link 3, 1 at link 4.
+
+**One test I wrote was wrong and was corrected, not the code.** I asserted the given
+name survives the chain; it does not, because of the regnal ordinal. The test now
+asserts the real behaviour and names `P7338` as what changes it.
+
+Fast lane **943 passed** (up 11), 1 failed — the byte-identical duplicate export,
+still NEEDS-DECISION and still untouched.

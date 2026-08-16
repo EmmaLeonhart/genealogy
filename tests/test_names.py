@@ -287,3 +287,73 @@ def test_the_report_ranks_missing_names_by_how_many_people_would_gain_a_link():
 
 def test_the_report_states_the_patronymic_heuristic_is_only_grouping():
     assert "used to group" in names.render_markdown(vocab(), {})
+
+
+# --- chained patronymics, `name modelling.txt` ---------------------------------
+
+
+def test_a_chain_becomes_one_link_per_generation():
+    """Emma's worked example, reproduced exactly.
+
+    `name modelling.txt`, and she is explicit it is not on Wikidata yet: *"It is
+    what I am saying it should be on Wikidata"*. Four generations in one string.
+    """
+    links = names.patronymic_chain("Abisha III ben Phinhas ben Yittzhaq ben Shalma")
+    assert [(l.name, l.based_on, l.ordinal) for l in links] == [
+        ("ben Phinhas", "Phinhas ben Yittzhaq ben Shalma", 1),
+        ("ben Yittzhaq", "Yittzhaq ben Shalma", 2),
+        ("ben Shalma", "Shalma", 3),
+    ]
+
+
+def test_based_on_carries_the_whole_remaining_chain():
+    """The father is named by his own patronymic, not by a bare given name.
+
+    This is the half that makes `P144` *based on* identify a person: there are
+    many Yittzhaqs and only one `Yittzhaq ben Shalma`. A link whose `based_on`
+    stopped at the next particle would point at the wrong man.
+    """
+    first = names.patronymic_chain("Tabia III ben Yitzhaq ben Abram")[0]
+    assert first.name == "ben Yitzhaq"
+    assert first.based_on == "Yitzhaq ben Abram"
+
+
+def test_the_gedcom_surname_slot_is_a_chain_too():
+    """Geni writes the chain into `/.../`; slashes must not hide it."""
+    assert [l.name for l in names.patronymic_chain("Abram /ben Yitzhaq/")] == [
+        "ben Yitzhaq"
+    ]
+
+
+def test_a_suffix_patronymic_is_not_a_chain():
+    """`Olsen` is single by construction — one generation, no particle.
+
+    Returning `[]` rather than a one-element chain keeps "chained" meaning what it
+    says; the suffix case is `is_patronymic`'s job and always was.
+    """
+    assert names.patronymic_chain("Olsen") == []
+    assert names.is_patronymic("Olsen")
+
+
+def test_a_bare_particle_is_not_a_patronymic():
+    """`ben` with nothing after it names no father."""
+    assert names.patronymic_chain("ben") == []
+    assert not names.is_patronymic("ben")
+
+
+def test_particle_form_is_recognised_as_patronymic():
+    """The regression this fixes.
+
+    `is_patronymic` tested suffixes only, so `ben Yitzhaq` read as an ordinary
+    surname and `namelinks` emitted no `P5056` *patronym or matronym* for any
+    Samaritan at all.
+    """
+    assert names.is_patronymic("ben Yitzhaq")
+    assert names.is_patronymic("bint Aabed-El")
+
+
+def test_the_regnal_ordinal_stays_with_the_given_name():
+    """`P7338` *regnal ordinal* qualifies the given name, so it must not be split
+    off from it here."""
+    assert names.given_part("Abisha III ben Phinhas ben Yittzhaq") == "Abisha III"
+    assert names.given_part("Olsen") == "Olsen"

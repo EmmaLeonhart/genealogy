@@ -239,6 +239,7 @@ def main() -> int:
     sys.path.insert(0, str(REPO / "src"))
     from genimerge.gedcom import stream_file
     from genimerge.model import build_tree
+    from genimerge.names import patronymic_chain
     print("loading out/merged.ged for recorded sex", flush=True)
     tree = build_tree(stream_file(REPO / "out" / "merged.ged"))
     sex_of = {g: (person.sex or "") for g, person in tree.people.items()}
@@ -284,12 +285,45 @@ def main() -> int:
             if surn:
                 candidates.append((surn, "surname", 0))
 
+            # **A chain is one candidate per generation, not one per string.**
+            # `Abisha III ben Phinhas ben Yittzhaq ben Shalma` is three `P5056`
+            # statements; before this the whole surname field arrived as a single
+            # token, `derives_from_father` compared the father's name against
+            # `phinhas ben yittzhaq ben shalma` and never matched, and the
+            # grandfather and great-grandfather were invisible.
+            #
+            # `link` is `P1545` series ordinal, numbering outward from the bearer.
+            # Only link 1 names the father, so only link 1 can be checked against
+            # him; deeper links are recorded on **form**, with the ancestor they
+            # name written into `evidence` so the row says what it is rather than
+            # borrowing the father's verdict.
+            expanded: list[tuple[str, str, int, int, str]] = []
             for token, where, ordinal in candidates:
+                chain = patronymic_chain(token)
+                if len(chain) > 1:
+                    for link in chain:
+                        expanded.append((link.name, f"{where} chain", ordinal,
+                                         link.ordinal, link.based_on))
+                else:
+                    expanded.append((token, where, ordinal, 0, ""))
+
+            for token, where, ordinal, link_no, names_person in expanded:
                 if token.casefold() in ABSENT or ORDINAL.match(token):
                     continue
                 form = has_patronymic_form(token)
+                # Link 2 and beyond name the grandfather and above, not the
+                # father, so testing them against the father would be wrong -
+                # and would silently mark a correct chain as unresolved.
                 derived = (derives_from_father(token, fname, fstems)
-                           if fname else None)
+                           if fname and link_no <= 1 else None)
+                if link_no > 1 and form:
+                    verdict, evidence = ("patronymic (chain link "
+                                         f"{link_no}, names {names_person})"), form
+                    tally[verdict] += 1
+                    by_token[token][verdict] += 1
+                    rows.append([gid, token, where, ordinal, link_no, fid, fname,
+                                 verdict, evidence, form or ""])
+                    continue
                 if derived:
                     verdict, evidence = "patronymic", derived
                 elif form and not fid:
@@ -320,14 +354,15 @@ def main() -> int:
                     verdict, evidence = "not patronymic", ""
                 tally[verdict] += 1
                 by_token[token][verdict] += 1
-                rows.append([gid, token, where, ordinal, fid, fname,
+                rows.append([gid, token, where, ordinal, link_no, fid, fname,
                              verdict, evidence, form or ""])
 
     OUT_CSV.parent.mkdir(parents=True, exist_ok=True)
     with OUT_CSV.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.writer(handle)
-        writer.writerow(["geni_id", "token", "field", "ordinal", "father_id",
-                         "father_given", "verdict", "evidence", "form"])
+        writer.writerow(["geni_id", "token", "field", "ordinal", "chain_link",
+                         "father_id", "father_given", "verdict", "evidence",
+                         "form"])
         writer.writerows(rows)
     print(f"wrote {OUT_CSV} ({len(rows):,} rows)")
 

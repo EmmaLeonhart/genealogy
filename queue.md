@@ -590,26 +590,25 @@ As far as descriptions go, I'll say we should have a series of descriptions that
 
 ---
 
-## Make the code match `name modelling.txt` — namelinks DONE, chained patronymics open
+## `P7338` *regnal ordinal* — the last piece of `name modelling.txt`
 
-**`src/genimerge/namelinks.py` emits her model.** `P5056` *patronym or matronym*
-as its own property, `P144` *based on* → the father as a person,
-`P7452` *reason for preferred rank* → `Q3409033` *usual forename* on the first
-given name, `P3831` *object of statement has role* → `Q245025` *middle name* on
-later ones.
+**Everything else in her model is emitted.** `P5056` *patronym or matronym* with
+`P144` *based on* → the ancestor each link names, `P1545` *series ordinal* along
+the chain, `P7452` *reason for preferred rank* → `Q3409033` *usual forename*,
+`P3831` *object of statement has role* → `Q245025` *middle name*. Chained
+patronymics landed 2026-08-16.
 
-**`build-name-item-batch.py` needed only a documentation fix, not a rebuild.** Its
-table said a person links to a patronymic with `P735` + `P3831`; corrected to
-`P5056`. **The output was never wrong** — that script creates *name items* and
-emits no person statements, so the 13,320 planned creations carry only
-`P31` *instance of* and `P144` *based on*, both correct. Reported here as a
-blocker for several ticks on the strength of reading the docstring rather than the
-JSON.
+**What is left.** Emma, 2026-08-15: *"they should all have the regnal orders put on
+their names as qualifiers"*, and **not only the Samaritans**. `Abisha III`
+tokenises to `Abisha` and `III`; no name item is labelled `III`, so the person
+blocks under the all-or-nothing rule that keeps a wrong `P1545` off a partial set
+of given names — and the given name is withheld. `tests/test_namelinks.py::
+test_the_regnal_ordinal_still_withholds_the_given_name` pins exactly that, so
+building the emitter will turn that test over rather than surprise anyone.
 
-**Still open: chained patronymics.** `Abisha III ben Phinhas ben Yittzhaq ben
-Shalma` needs three `P5056` statements ordered by `P1545` *series ordinal*, each
-with its own `P144`. `classify-patronymics.py` reads only the first `ben X`, so
-nothing produces more than one patronymic per person.
+**Do:** recognise a trailing roman numeral or digit on the given name, emit it as
+`P7338` on the `P735` statement, and stop treating it as a name token. 7,843
+people carry one.
 
 ## `reports/seeds.md`'s future — a queue item, not a cron
 
