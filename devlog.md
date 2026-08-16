@@ -7757,3 +7757,37 @@ not redundancy: an export is never deletable because another covers its people �
 that is what `exports/excluded/` is for, where the file stays in git and is only kept
 out of the corpus. Two exports differing at all are not candidates however much they
 overlap.
+
+
+## 2026-08-16 — `NN` moved to `mul` properly, and the one-store habit named again
+
+Emma stated the model in full and it corrected two things I had built.
+
+**`NN` belongs in `mul` and nowhere else.** Not "preserve it wherever it is" — *move*
+it. Every local-language copy goes: 2,273 labels across fifteen languages, `en` 1549
+and `nl` 671 the bulk of them. A previous version had kept `nl`'s 671 on the grounds
+that a Dutch label had not been asked for, which was wrong twice — it left the marker
+in a local language, and it treated describing it as optional.
+
+**No `remove_label` is emitted at all**, because *"there is a bot that exists that
+removes labels that match the multi-language label."* So `mul` lands first, the
+locals we can describe get overwritten, and anything still reading `NN` now matches
+`mul` and the bot clears it. That deletes the 58 removal edits I had written for
+`cy`, `be`, `pl`, `ru`, `uk` — languages that inflect the name after the relationship
+word, where an undeclined `сын X` would be ungrammatical.
+
+**The one-store failure, named by her again.** *"whenever you say things that seem
+utterly bizarre… you're using one source, like either the Wikidata or the Jenny
+stuff, and not the Synoptic Tree."* I had measured long-range reach against the
+Wikidata store alone and reported it as worth 3 people. The check was owed and I did
+not do it.
+
+Redone across the join, and the answer is that **this population barely touches
+Geni**: of 1,588 `NN` items, **27** carry a `P2600` *Geni.com profile ID* at all,
+**4** point at a profile in our corpus, and **4** Wikidata relatives are unnamed on
+Wikidata but named in Geni. They are Wikidata-only people. That bounds the claim to
+this set — it is not a reason to skip the synoptic check next time, which is the
+whole point of her correction.
+
+**Final batch: 3,525 edits.** 1,310 `mul` moves, 2,215 descriptive labels across ten
+Germanic and Romance languages, 17 people with no named relative at any distance.

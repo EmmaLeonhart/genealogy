@@ -35,6 +35,55 @@ them.
 
 ---
 
+## FIRST, ON RESUME — review the last few days of conversation
+
+**Emma's instruction, 2026-08-16, before shutting the machine down:** *"review the
+last few days of conversation to ensure, as the first part of the queue, that
+everything's working well and nothing was overlooked."*
+
+Read back over the recent transcripts before taking any other item. What to look
+for, and these are the failure shapes this project has actually had:
+
+- **Instructions of hers that were never queued.** The 2026-08-15 audit found three.
+  An instruction goes into the queue *before* it is executed.
+- **Things reported as blocked that were not.** Six status reports carried "8
+  structural merge cases unanswered, 3,902 correspondences and 12,260 placeholders
+  blocked behind it" when the files had been on disk the whole time. **Her not
+  replying means she is content** — see `CLAUDE.md`.
+- **Answers scoped silently to one store.** *"Is X present?"* means Geni **and**
+  Wikidata, named separately. She caught this again on 2026-08-16: the long-range
+  relative measurement was run against the Wikidata store alone instead of the
+  synoptic tree.
+- **Reports written instead of work done**, and analysis nobody asked for.
+
+Then check the crons are running — they are session-local and died with the
+shutdown — and only then take the run order below.
+
+## IN FLIGHT AT SHUTDOWN — `NN` labels, rebuilt to her full model
+
+**Committed and pushed; nothing is half-written.** `scripts/build-nn-label-batch.py`
+now emits `reports/wikidata-nn-labels.json`, **3,525 edits**:
+
+- **1,310** move `NN` into `mul`, which is where the marker lives. These are
+  declared in every other edit's `requires`, so the marker lands first.
+- **2,215** descriptive labels across **10** languages — `en` `nl` `de` `da` `sv`
+  `nb` `es` `pt` `it` `ca` — built from the nearest named relative, searching
+  parent → spouse → child → **sibling → grandparent → grandchild**.
+- **0** `remove_label`. Emma: *"there is a bot that exists that removes labels that
+  match the multi-language label, so we don't need to stretch it that much."* So
+  `cy`, `be`, `pl`, `ru`, `uk` get no edit — once `mul` says `NN` their local `NN`
+  matches it and the bot clears them.
+- **17** have no named relative at any distance and get `mul` only.
+
+**What is NOT done here, deliberately:** `ja` and `zh` phrases, because they would
+come out `Gerard Spencerの娘` with the name untransliterated. That belongs to the
+seven-language item further down.
+
+**Open question worth her eye on resume:** the descriptive labels for `nl`, `de`,
+`da`, `sv`, `nb`, `es`, `pt`, `it`, `ca` were written by me from a hand-built table
+of relationship words. `en` is 1,549 of them and is safe; the other nine total 685
+and nobody has checked the phrasing.
+
 ## RUN ORDER — Emma's call, 2026-08-15
 
 **Imports first, labels last.** She asked why the seven-language labels were in
