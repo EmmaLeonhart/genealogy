@@ -1021,6 +1021,36 @@ Wikidata for a name is the deleted `reconcile` matcher, and it stays deleted.
   *"because our entire thing is we're trying to expand. There's going to be a
   very large amount of individuals that are merged."*
 
+### The practical goal is EMMA densely linked, not a comprehensive import
+
+**Emma, 2026-08-15, stating the actual target:** *"while I want to build a
+comprehensive family tree of everybody, while I want to get a full-on
+exfiltration or a full-on import of basically all of the Geni data onto Wikidata
+— that isn't really a feasible thing. But it is very feasible for me to make it
+so that I am in a very good place myself. I make myself go from being completely
+unlinked to being in an extremely dense neighborhood of Wikidata, which is kind
+of like the practical goal for myself that I have here."*
+
+**So proximity to her beats volume.** A thousand people on the far side of the
+tree are worth less than fifty in her own neighbourhood, and any ranking that
+optimises for total people added is optimising for the wrong thing.
+
+**This is what the Nordic result was really telling us.** Norwegian and Swedish
+academic isolates saved at **86–94%** against **34–39%** for academics with no
+country filter — not because Nordic records are better, but because Norway and
+Sweden are *where she is linked*, so a path exists and is short.
+
+**It also sets the stopping rule.** Emma, same day, on the wider Nordic pool:
+*"I feel like we're kind of hitting diminishing returns here… I'm not trying to
+necessarily get all these people. I think I got a good amount."* 7,748 unopened
+Norwegian and Swedish isolates is not a backlog to burn down. **Her labour is the
+constraint** — measured at 4.7 profiles a minute, that pool is ~27 hours of it.
+
+**Tightest first.** Her own instruction: *"find any specific people related to
+Rogaland or Stavanger… these are going to be the closest people and the most
+likely to find clear examples of people who are really close."* Rogaland is where
+her line is from, so place beats nationality beats occupation as a filter.
+
 ### The purpose is to ADD to Wikidata, not to correct it
 
 **2026-08-10, Emma:** *"the entire purpose of this is to add it… Correcting
