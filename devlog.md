@@ -7331,3 +7331,28 @@ The top 18 account for **178 path-slots**, and two of them share one seed.
 **30 Japanese isolates exist**, all now opened. **19,467 Chinese**, of which
 **17,259 are the Song/CBDB block** Emma already dismissed — leaving **2,208** real
 ones across Qing, Yuan, Tang, Ming and the two republics.
+
+
+## 2026-08-15 — bloat review, and three deletions Emma approved
+
+Started from `reports/repo-freshness.csv` as instructed. **Two of my four
+candidates were wrong because that file is stale**, which is now item 24: it lists
+`missing-ancestors-check.csv` and `check-missing-ancestors.py`, both already
+deleted, and I proposed removing a `genimerge coverage` command that had already
+gone on 2026-08-15.
+
+**Approved and deleted:**
+
+- **`reports/name-objects.csv`** (8.9 MB) and **`reports/name-items-to-create.csv`**
+  (8.2 MB) — three censuses answered *"which name strings map to which Wikidata
+  items"* with near-identical columns. `name-resolution.csv` is the newest and was
+  regenerated today with the diacritic fix; these two were earlier attempts.
+- **`scripts/fetch-patronymic-items.py`** — the only script besides the downloader
+  that made a live Wikidata query. Emma: a live-query script is a hazard, which is
+  `CLAUDE.md`'s own reasoning about the 2026-08-07 rate-limit incident. Its output,
+  `reports/patronymic-items.csv`, is kept.
+
+**Checked and NOT bloat:** `scripts/samaritan_spine.py` is imported by
+`build-samaritan-spine-gedcom.py` and `build-samaritan-spine-page.py`. My
+"unreferenced" scan only looked for the literal string `scripts/`, so a module
+imported by name looked unused. Worth remembering before the next sweep.
