@@ -726,6 +726,23 @@ descendants copy had to be restored from git. Two exports sharing a seed *and* a
 style is a filing question to raise, never a licence to overwrite. **Before any
 `cp`/`mv`/`>` onto a path under `exports/`, check it does not already exist.**
 
+**The one exception, and it is narrow: a BYTE-IDENTICAL duplicate.** Emma
+authorised this on 2026-08-16 — *"Yes delete it"* — for
+`export-Descendants-6000000178898487831.ged`, which existed twice with the same
+sha256 `2e2f87a6…`: the original in `exports/descendants/` from 13 AUG and a
+re-download filed into `exports/edges/` on 15 AUG. The `edges/` copy went.
+
+**What makes it safe is identity, not redundancy.** Byte-identical means no person,
+no family and no value is lost — `genimerge.sources` was already dropping the repeat,
+so the merge never saw it. **This is not licence to delete an export because another
+one covers its people**: that is the case `exports/excluded/` exists for, where the
+file stays in git and is merely kept out of the corpus. Two exports that differ at
+all are never candidates, however much they overlap.
+
+**Check before, not after:** `sha256sum` both paths, keep the earlier one, and keep
+the copy whose directory matches its style. `tests/test_sources.py::test_the_real_corpus_has_no_byte_identical_duplicates`
+is what surfaces these, and it went green on this deletion.
+
 **Never delete a GEDCOM, and never add a zip.** The zips are gitignored **one
 line at a time**, deliberately: Emma wants an unignored zip to show up in
 `git status` so she can see a download has arrived. Do not replace those lines

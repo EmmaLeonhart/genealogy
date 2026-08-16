@@ -7733,3 +7733,27 @@ namesakes, so hanging it on a middle name would say something different and fals
 Fast lane **947 passed** (up 4), 1 failed — the byte-identical duplicate export,
 still NEEDS-DECISION and still untouched. `queue.md` loses **two** sections for this
 one item; it had been queued twice under different headings.
+
+
+## 2026-08-16 — the duplicate export deleted, on Emma's authorisation
+
+*"Yes delete it."* The only NEEDS-DECISION in the repo, and the only fix was one
+`CLAUDE.md` forbids outright, so it sat untouched until she ruled.
+
+`export-Descendants-6000000178898487831.ged` existed twice with sha256
+`2e2f87a62c1810b0ca08d3eb8a4b190f524bd3ba6b886577725f44bd40bf510e`: the original in
+`exports/descendants/` from 13 AUG (`cb6b071`, a batch of 14), and a re-download
+filed into `exports/edges/` on 15 AUG (`c574099`, 31 edge exports). The **later**
+copy went, and the surviving one sits in the directory matching its style.
+
+**Nothing was lost and that is checkable rather than argued.** Byte-identical means
+no person, family or value differs, and `genimerge.sources` was already dropping the
+repeat — the merge never saw two. Corpus goes 245 → 244, tracked and on-disk counts
+equal at 244, and `tests/test_sources.py` is **8 passed** where it had been the one
+red test in the suite.
+
+**The rule in `CLAUDE.md` is narrowed, not overturned.** The exception is *identity*,
+not redundancy: an export is never deletable because another covers its people —
+that is what `exports/excluded/` is for, where the file stays in git and is only kept
+out of the corpus. Two exports differing at all are not candidates however much they
+overlap.
