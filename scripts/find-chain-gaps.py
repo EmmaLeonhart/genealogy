@@ -74,6 +74,29 @@ INDI_XREF = re.compile(rb"^0 @I(\d+)@ INDI", re.M)
 #: work in to place a placeholder and run the export.
 FAMILY_TREE_URL = "https://www.geni.com/family-tree/index/{}"
 
+#: People whose tree offers no way in, so ranking them wastes a pick every round.
+#: Emma, 2026-08-17: *"just block off the two ones that are saturated."*
+#:
+#: **This is not the already-opened filter she rejected twice.** That one excluded
+#: people because they had been *looked at*, and its only effect was to push still-open
+#: gaps down the list. This excludes people because their tree is **saturated with Geni
+#: master profiles** — every ancestor already has parents and none of them can be edited
+#: from this account, so there is no slot to place a seed in and no export to run. They
+#: are not gaps that will close; they are gaps that cannot be worked.
+#:
+#: Both surfaced as ranks 1 and 4 in the round after the batch that cleared everything
+#: else, purely because they were the two the loop had *not* been able to touch.
+#:
+#: **They are dropped from the ranking entirely** — Emma, same exchange: *"have them not
+#: show up in the rankings."* So they are out of `chain-gaps.csv`, out of the shortlist
+#: and out of the slot total; the run prints them once under "blocked, not ranked" so
+#: the exclusion is visible rather than silent. Add to this only for a tree that has
+#: been *tried* and found unworkable, never for one that merely looks hard.
+BLOCKED: dict[str, str] = {
+    "4229916861440069622": "James IV, king of Scots — saturated royal master profiles",
+    "6000000004131116716": "Margaret of Denmark, Queen consort of Scotland — same tree",
+}
+
 
 def geni_ids_in_the_corpus() -> set[str]:
     """Every Geni ID that appears as an individual in any export."""
@@ -110,6 +133,9 @@ def main() -> int:
     files_of = chains()
 
     absent = [g for g in files_of if g not in present]
+    blocked_here = sorted((g for g in absent if g in BLOCKED),
+                          key=lambda g: -len(files_of[g]))
+    absent = [g for g in absent if g not in BLOCKED]
     absent.sort(key=lambda g: (-len(files_of[g]), g))
     slots = sum(len(files_of[g]) for g in absent)
 
@@ -127,18 +153,24 @@ def main() -> int:
                              FAMILY_TREE_URL.format(gid),
                              " | ".join(sorted(files_of[gid]))])
 
+    shortlist = absent[:args.open]
+
     with OUT_OPEN.open("w", encoding="utf-8", newline="") as fh:
         writer = csv.writer(fh, delimiter="\t")
         writer.writerow(["rank", "slots", "geni_id", "name", "url"])
-        for rank, gid in enumerate(absent[:args.open], start=1):
+        for rank, gid in enumerate(shortlist, start=1):
             writer.writerow([rank, len(files_of[gid]), gid, names.get(gid, ""),
                              FAMILY_TREE_URL.format(gid)])
 
     held = len(files_of) - len(absent)
     print(f"chain people {len(files_of):,}   held {held:,}   gap {len(absent):,}")
     print(f"unfilled slots {slots:,}   ({time.time() - started:.0f}s, no merge)")
+    if blocked_here:
+        print(f"\nblocked, not ranked ({len(blocked_here)}):")
+        for gid in blocked_here:
+            print(f"  {len(files_of[gid]):>3} slots  {BLOCKED[gid]}")
     print(f"\nwrote {OUT_ALL.name} and {OUT_OPEN.name}\n")
-    for rank, gid in enumerate(absent[:args.open], start=1):
+    for rank, gid in enumerate(shortlist, start=1):
         print(f"  {rank:>2}. {len(files_of[gid]):>3} slots  "
               f"{names.get(gid, '?')[:40]:42} {gid}")
     return 0
