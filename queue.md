@@ -63,16 +63,23 @@ ahead of the run order below.
 
 What follows on from those:
 
-- **The 12,260 structural placeholders still have no label set.**
-  `reports/wikidata-structural-placeholders.json` carries `P31` *instance of* → `Q5`
-  *human*, `P2600` *Geni.com profile ID* and an English label where the person has
-  one — and **nothing else, in no other language**. Her gate is `en` · `ja` · `zh` ·
-  `hi` · `ar` · `ru` · `el` · `mul` on everything created, and *"create the relatives
-  first, then label"* is about ordering the work, not about shipping them bare. Give
-  this batch the same treatment `build-placeholder-label-batch.py` gives its 39,299:
-  `mul` from the normalised name, `en` from the nearest named relative out to two
-  hops. It is the same population, reached from the Wikidata side instead of the Geni
-  side.
+- **806 people have a name only in Han characters, so they have no `mul` and no
+  `en`.** Found while giving the structural placeholders their label set. Their `ja`
+  and `zh` are the kanji as written, which is right and needs no decision; what they
+  lack is any Latin-alphabet label at all, and `emission-spec.md` derives `mul` from
+  the Latin name. This is the romanisation half of the seven-language item and it is
+  **agentic by her instruction** — *"from CJK to English do not remotely try to do any
+  kind of programmatic transliteration because they all suck. But AI almost always
+  knows Japanese to Romaji."* It needs the culture question settled first: 陳 is
+  *Chen*, *Chin* or *Jin* depending on whether the person is Chinese, Japanese or
+  Korean, and *"the tree settles it, via neighbours and which exports they came
+  from"* — never the name.
+
+- **364 structural placeholders end up with no label in any language**, because every
+  relative out to two hops is unnamed too. They still get `P2600` *Geni.com profile
+  ID* and `P31` *instance of* → `Q5` *human*, which is her rule — *"The person is
+  created… the `P2600` is what makes it retrievable"* — but nothing describes them.
+  Long-range relatives beyond two hops are the only untried lever.
 
 ## The audit method was itself incomplete — corrected below
 

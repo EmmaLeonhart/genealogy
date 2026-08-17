@@ -214,6 +214,37 @@ def test_every_succession_entry_states_the_office():
             f"{edit['id']} adds something other than the office")
 
 
+def test_no_created_person_carries_a_marker_as_a_local_label():
+    """`NN` lives in `mul` and nowhere else — Emma, 2026-08-16.
+
+    *"NN is always preserved in the multi-language label. It just has more
+    descriptive labels added in some languages for the relationships."* And *"no
+    local language should have it."* The structural placeholders were built by
+    copying `label_en` across from `derived-labels.csv` without reading it, which
+    put `NN`, `NN NN` and `NN Hildesheim` into `en` for the people whose derived
+    label is exactly that.
+    """
+    walk = _load("walk-structural-merge")
+    assert walk.is_placeholder_label("NN")
+    assert not walk.is_placeholder_label("Hugues I d'Amboise")
+
+    for path in (REPORTS / "wikidata-structural-placeholders.json",
+                 REPORTS / "wikidata-placeholder-labels.json"):
+        for edit in _edits(path):
+            labels = edit.get("labels") or {}
+            for language, value in labels.items():
+                if language == "mul":
+                    # `mul` is where the marker belongs, but the marker is `NN` —
+                    # her words: *"if there's a private individual whose name is
+                    # not exported, it comes out as an NN."* `Private` is not a
+                    # label in any slot.
+                    assert "private" not in value.lower(), (
+                        f"{edit['id']} writes a redaction marker as its mul label")
+                    continue
+                assert not walk.is_placeholder_label(value), (
+                    f"{edit['id']} puts the marker {value!r} in {language}")
+
+
 def test_no_structural_correspondence_gives_one_profile_two_items():
     """A Geni profile already linked to another item is a disagreement, not an edit.
 

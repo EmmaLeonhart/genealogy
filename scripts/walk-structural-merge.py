@@ -54,12 +54,86 @@ from genimerge import wikistore  # noqa: E402
 
 FAMILY = REPO / "reports" / "derived-family.csv"
 LABELS = REPO / "reports" / "derived-labels.csv"
+PREVIEW = REPO / "reports" / "relationship-label-preview.csv"
 INDEX = REPO / "out" / "wikidata" / "store-index.sqlite3"
 STORE = REPO / "wikidata" / "items"
 
 csv.field_size_limit(10 ** 7)
 
 FATHER, MOTHER = "P22", "P25"
+
+#: Emma's gate on everything created: `en` · `ja` · `zh` · `hi` · `ar` · `ru` ·
+#: `el`, plus `mul`. *"WE ARE NOT DOING THIS SHIT UNTIL WE HAVE JA and ZH LABELS
+#: ON EVERYTHING THIS IS RIGHT BEFORE WIKIDATA EDITING."* Every edit records which
+#: of these it still lacks, so the batch that fills them can find its own work.
+REQUIRED_LANGUAGES = ("en", "ja", "zh", "hi", "ar", "ru", "el")
+
+
+#: A label that names nobody, so it must never reach a local language. From
+#: `reports/given-name-forms.csv` by way of
+#: `scripts/build-relationship-label-preview.py`, which screens the same vocabulary.
+PLACEHOLDER_LABELS = {
+    "", "nn", "n n", "n.n.", "n.n", "n", "?", "??", "???", "????", "_", "-",
+    "--", ".", "*", "**", "***", "'", "unknown", "private", "<private>",
+    "(no name)", "no name", "not known", "namn okänt", "ukjent", "onbekend",
+}
+
+
+def is_placeholder_label(label: str) -> bool:
+    """Whether this string is a marker rather than a name.
+
+    **Emma, 2026-08-16:** *"NN is always preserved in the multi-language label. It
+    just has more descriptive labels added in some languages for the
+    relationships."* And: *"no local language should have it."* So `NN` in `en` is
+    the specific thing forbidden — the first version of this walk's label set put
+    it there for 10 people whose derived label is literally `NN`, plus the
+    `NN <surname>` forms, by copying `label_en` across without looking at it.
+    """
+    low = (label or "").strip().lower()
+    if not low or low in PLACEHOLDER_LABELS:
+        return True
+    if "private" in low:
+        return True
+    head = low.split()[0]
+    return head in PLACEHOLDER_LABELS
+
+
+def label_set_for(row: dict) -> dict:
+    """The label set for one `derived-labels.csv` row, per `emission-spec.md`.
+
+    **A placeholder was being created with `en` and nothing else.** Emma's spec is
+    that *"the multi-language label comes from the Latin alphabet name, and the
+    English language label will come from it too"* — so `mul` is the label that
+    matters and it was the one missing on all 12,260. `mul` is not a nicety here:
+    it is the only label a person keeps when a local-language bot clears the rest.
+
+    `ja` and `zh` come from the Han/kanji name **as written**, which is the same
+    string for both: *"If the name is solely in kanji, then the Chinese and
+    Japanese labels are both the same for it."* Only a name carrying kana would
+    need translating, and none is invented here — a person with no CJK name
+    recorded simply has no `ja`, and the seven-language item is what fills it.
+    """
+    out = {}
+    mul = (row.get("label_mul") or "").strip()
+    en = (row.get("label_en") or "").strip()
+    # **A marker is not this function's business, in either slot.** `Private` must
+    # never be written as a label at all — `CLAUDE.md`: *"'Private' is a redaction
+    # marker, not a name, and an item labelled that asserts something false while
+    # being impossible to find"* — and the marker these people *do* get is `NN`,
+    # her words: *"if there's a private individual whose name is not exported, it
+    # comes out as an NN."* So both slots drop it here and the `NN` overlay below
+    # supplies `mul`; a person that overlay cannot reach ends up with no label,
+    # which is the honest outcome rather than a false one.
+    if mul and not is_placeholder_label(mul):
+        out["mul"] = mul
+    if en and not is_placeholder_label(en):
+        out["en"] = en
+    cjk = (row.get("cjk_names") or "").strip()
+    if cjk:
+        first = cjk.split(" | ")[0].strip()
+        if first:
+            out["ja"] = out["zh"] = first
+    return out
 
 
 def wd_parent(entity, prop):
@@ -85,7 +159,7 @@ def label_of(entity, lang="en"):
 
 
 
-def walk_all(anchors, fam, ourqid, names, depth):
+def walk_all(anchors, fam, ourqid, names, label_sets, depth):
     """Every anchor, writing what the walk finds.
 
     Emma, 2026-08-16, on the three "questions" this had been sitting on:
@@ -202,13 +276,24 @@ def walk_all(anchors, fam, ourqid, names, depth):
             q, pos, gn, wl, ag, aq, an = v
             w.writerow([g, q, pos, gn, wl, ag, aq, an])
 
+    # **The label set, not just `en`.** `emission-spec.md`: `mul` is the
+    # Latin-alphabet name and `en` is the same string; `ja`/`zh` are the kanji
+    # name as written. Every one of these 12,260 was going out with `en` alone,
+    # which is the one label a bot that clears redundant locals would remove.
     edits = [{
         "id": f"structural_placeholder:{g}",
         "type": "create_individual",
         "source": "structural merge walk",
         "subject": {"qid": None, "geni_id": g},
         "requires": [],
-        "labels": {"en": nm} if nm else {},
+        # `label_sets` is authoritative and there is **no raw-name fallback**.
+        # There was one — `or {"en": nm}` — and it put back exactly the strings
+        # `is_placeholder_label` had just removed: `NN wife of Aun`, `Unknown
+        # Wife`, `N.N. Andersdatter Skeel`, 113 of them in `en`. A filter with a
+        # fallback past it filters nothing.
+        "labels": label_sets.get(g, {}),
+        "missing_languages": [lang for lang in REQUIRED_LANGUAGES
+                              if lang not in label_sets.get(g, {})],
         "statements": [{"property": "P31", "value": "Q5", "references": []},
                        {"property": "P2600", "value": g, "references": []}],
         "found_as": pos,
@@ -221,6 +306,11 @@ def walk_all(anchors, fam, ourqid, names, depth):
         print(f"  {v:>8,}  {k}")
     print(f"\nwrote {c} ({len(corr):,} correspondences)")
     print(f"wrote {j} ({len(edits):,} placeholder creations)")
+    with_mul = sum(1 for e in edits if "mul" in e["labels"])
+    with_cjk = sum(1 for e in edits if "ja" in e["labels"])
+    bare = sum(1 for e in edits if not e["labels"])
+    print(f"  {with_mul:,} carry a `mul` label, {with_cjk:,} a ja/zh one, "
+          f"{bare:,} carry none at all")
     return 0
 
 
@@ -242,10 +332,37 @@ def main() -> int:
     print(f"{len(fam):,} people in reports/derived-family.csv, "
           f"{len(ourqid):,} carry a QID")
 
-    names = {}
+    names, label_sets = {}, {}
     with LABELS.open(encoding="utf-8", newline="") as fh:
         for r in csv.DictReader(fh):
             names[r["geni_id"]] = (r.get("label_en") or "").strip()
+            label_set = label_set_for(r)
+            if label_set:
+                label_sets[r["geni_id"]] = label_set
+
+    # The NN treatment, for a person whose own name is a placeholder: `mul` is
+    # `NN` or `NN <surname>` and `en` **describes** them by their nearest named
+    # relative. Same file `build-placeholder-label-batch.py` emits from, joined on
+    # the Geni ID, so the two batches cannot disagree about one person.
+    #
+    # This **overlays** rather than filling gaps. A placeholder-named person does
+    # have a `label_mul` — it is `NN` — so keying on "not already present" left
+    # `NN Hildesheim` sitting in `en`, which is the one placement her rule names.
+    if PREVIEW.exists():
+        with PREVIEW.open(encoding="utf-8", newline="") as fh:
+            for r in csv.DictReader(fh):
+                gid = r["geni_id"]
+                described = dict(label_sets.get(gid) or {})
+                mul = (r.get("mul_label") or "").strip()
+                generated = (r.get("generated_en") or "").strip()
+                if mul:
+                    described["mul"] = mul
+                if generated:
+                    described["en"] = generated
+                elif is_placeholder_label(described.get("en", "")):
+                    described.pop("en", None)
+                if described:
+                    label_sets[gid] = described
 
     # Anchors: people with BOTH identifiers AND a parent on our side.
     anchors = [g for g, q in ourqid.items()
@@ -278,7 +395,8 @@ def main() -> int:
         ents.update(reader.entities(sorted(more - set(ents))))
 
     if args.all:
-        return walk_all(anchors, fam, ourqid, names, args.depth)
+        return walk_all(anchors, fam, ourqid, names, label_sets,
+                        args.depth)
 
     tally = {"AGREE": 0, "MERGE": 0, "GENI ONLY": 0, "WD ONLY": 0}
     for n, start in enumerate(anchors[:args.lines], 1):

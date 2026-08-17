@@ -8027,3 +8027,53 @@ it is written down that way in the script.
 
 Top of the ranking: Ragnhild Sahlin Wendt `6000000003002538177`, 11 paths,
 midpointness 0.474.
+
+
+## 2026-08-17 — the 12,260 structural placeholders get a label set, after three wrong tries
+
+They were being created with `en` and nothing else. No `mul` — which per
+`emission-spec.md` is *the* label, *"the multi-language label comes from the Latin
+alphabet name, and the English language label will come from it too"*, and the one a
+person keeps when a bot clears redundant locals.
+
+`label_set_for` reads `derived-labels.csv` properly: `mul` and `en` from the Latin
+name, `ja` and `zh` from the Han name **as written** (the same string for both — *"If
+the name is solely in kanji, then the Chinese and Japanese labels are both the same
+for it"*), and `missing_languages` against her seven-language gate. Placeholder-named
+people get the `NN` treatment by joining `relationship-label-preview.csv` on the Geni
+ID, so this batch and `build-placeholder-label-batch.py` cannot disagree about one
+person.
+
+| | before | after |
+| --- | ---: | ---: |
+| carry a `mul` label | 0 | **11,090** |
+| carry `ja`/`zh` | 0 | **1,217** |
+| carry nothing at all | 1,340 | **364** |
+
+**Three defects, each found by reading the output rather than by reasoning, and each
+the same shape — a filter with something downstream that undid it.**
+
+- **`NN` in `en`.** Copying `label_en` across without looking at it put `NN`, `NN NN`
+  and `NN Hildesheim` into `en` for the 10 people whose derived label is exactly that.
+  Emma, 2026-08-16: *"no local language should have it."*
+- **`Private` in `mul`.** Filtering `en` alone left `structural_placeholder:2302305`
+  labelled `Private` in `mul`. `Private` is not a label in **any** slot, and the
+  marker these people get is `NN` — *"if there's a private individual whose name is
+  not exported, it comes out as an NN."*
+- **`or {"en": nm}`.** The edit builder fell back to the raw derived name whenever the
+  label set came out empty, which is precisely when it had just been filtered. 113
+  `en` labels reading `NN wife of Aun`, `Unknown Wife`, `N.N. Andersdatter Skeel`. **A
+  filter with a fallback past it filters nothing.**
+
+The third was caught by simulating the label assignment over all 12,260 offline before
+spending another 45-minute store read, which is the only reason it took one more run
+rather than two. `tests/test_edit_emitters.py` now asserts no created person carries a
+marker in a local language and that no `mul` is a redaction marker — over **both**
+placeholder batches, since they are one population reached from two sides.
+
+**What is left, and it is not a defect:** 806 people have a name only in Han
+characters, so they have `ja` and `zh` and no Latin label at all. That is the
+romanisation half of the seven-language item, which is agentic by her instruction and
+needs the CJK-culture question settled first. 364 have nothing in any language because
+every relative within two hops is unnamed; they still get their `P2600` *Geni.com
+profile ID*, which is what makes them retrievable.
