@@ -345,3 +345,71 @@ def test_an_unrecognised_description_form_does_not_guess(census, fixes):
              vocabulary="relationship", remainder="Somebody"),
         census.CLAN_SUFFIX)
     assert out["mul"] == "NN"
+
+
+@pytest.mark.parametrize("remainder", ["Daughter (name Biard", "(Female)", "Kal ]"])
+def test_a_repair_that_leaves_wreckage_falls_back_to_nn(census, fixes, remainder):
+    """Taking a marker out of the *middle* of a label can leave a broken string, and
+    the output looks like a name until you read it.
+
+        Daughter (name unknown) Biard  ->  "Daughter (name Biard"   unbalanced
+        (Female) Unknown               ->  "(Female)"               names nobody
+
+    Both faults are objective — brackets balance or they do not — so the repair is
+    refused and the person gets `NN`. The rule keeps its own name, `repair rejected`,
+    so the population stays countable rather than merging into the genuinely unnamed.
+    """
+    assert not fixes.is_a_plausible_name(remainder)
+    out = fixes.classify_row(
+        _row(position="inside", marker="unknown", remainder=remainder),
+        census.CLAN_SUFFIX)
+    assert out == {"rule": "repair rejected", "mul": "NN", "name": ""}
+
+
+def test_a_repair_keeping_balanced_brackets_is_allowed(census, fixes):
+    """`Asbjoern (Asbjørn) Inconnu` → `Asbjoern (Asbjørn)`: the bracket is a spelling
+    variant the record itself carries, and it balances."""
+    assert fixes.is_a_plausible_name("Asbjoern (Asbjørn)")
+    out = fixes.classify_row(
+        _row(position="tail", marker="inconnu", remainder="Asbjoern (Asbjørn)"),
+        census.CLAN_SUFFIX)
+    assert out["rule"] == "name repaired"
+
+
+@pytest.mark.parametrize("text,cleaned", [
+    ("Guttormsdatter Ålesdatter?)", "Guttormsdatter Ålesdatter?"),
+    ("Given Name) Unknown", "Given Name Unknown"),
+    ("Heiress) of Bactria", "Heiress of Bactria"),
+    ("de Villela y Ajanguiz (heredera de la", "de Villela y Ajanguiz heredera de la"),
+    ("河東柳)", "河東柳"),
+])
+def test_unpartnered_brackets_are_dropped(fixes, text, cleaned):
+    """Two causes, same wreckage. The source label was already broken — Geni carries
+    `NN Guttormsdatter Ålesdatter?)` and Wikidata `NN Wife of Quintus Pedius
+    Publicola)` — or removing the marker broke it: `(Unknown Given Name) Unknown`
+    loses `(unknown` and leaves `Given Name)`.
+
+    Dropping an unpartnered bracket is not a guess; the character was noise before
+    this script touched it. Balanced brackets are left alone.
+    """
+    assert fixes.drop_bracket_debris(text) == cleaned
+
+
+def test_balanced_brackets_survive_the_clean(fixes):
+    assert fixes.drop_bracket_debris("Asbjoern (Asbjørn)") == "Asbjoern (Asbjørn)"
+
+
+def test_the_guard_covers_every_rule_that_writes_a_remainder(census, fixes):
+    """The first version guarded the repair branch alone, and 28 labels still
+    shipped with unbalanced brackets through `marker+surname` and
+    `description+clan` — the same defect arriving by a different door."""
+    head = fixes.classify_row(
+        _row(position="head", marker="nn", remainder="Guttormsdatter Ålesdatter?)"),
+        census.CLAN_SUFFIX)
+    assert head["mul"] == "NN Guttormsdatter Ålesdatter?"
+
+    clan = fixes.classify_row(
+        _row(kind="description", position="tail", marker="氏",
+             vocabulary="cjk", remainder="河東柳)"),
+        census.CLAN_SUFFIX)
+    assert clan["mul"] == "NN 河東柳"

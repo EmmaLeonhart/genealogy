@@ -87,6 +87,78 @@ def _census_module():
     return module
 
 
+def is_a_plausible_name(text: str) -> bool:
+    """Whether a repaired remainder can be somebody's label.
+
+    **Taking a marker out of the middle of a label can leave wreckage**, and the
+    output looks like a name until you read it:
+
+        Daughter (name unknown) Biard   ->  "Daughter (name Biard"   unbalanced
+        (Female) Unknown                ->  "(Female)"               not a name
+
+    Both are objective faults rather than matters of taste — brackets either balance
+    or they do not, and a string with no unbracketed word in it names nobody — so
+    this rejects them and the caller falls back to `NN`. A repair that cannot be
+    trusted is worse than no repair: it ships a label nobody would think to check.
+    """
+    if text.count("(") != text.count(")"):
+        return False
+    if text.count("[") != text.count("]"):
+        return False
+    bare = [t for t in text.split()
+            if not (t.startswith("(") or t.endswith(")")
+                    or t.startswith("[") or t.endswith("]"))]
+    return bool(bare)
+
+
+def drop_bracket_debris(text: str) -> str:
+    """Remove bracket characters that have no partner.
+
+    Two causes, and both leave the same wreckage. **The source label was already
+    broken** — `NN Guttormsdatter Ålesdatter?)` carries a stray `)` in Geni, and
+    `NN Wife of Quintus Pedius Publicola)` in Wikidata — or **taking the marker out
+    broke it**: `(Unknown Given Name) Unknown` loses `(unknown` and leaves
+    `Given Name)`.
+
+    Dropping an unpartnered bracket is not a guess: `Guttormsdatter Ålesdatter` is
+    the surname either way, and the character was noise before this script touched
+    it. What is *inside* balanced brackets is left alone.
+    """
+    out, depth = [], 0
+    for ch in text:
+        if ch in "([":
+            depth += 1
+            out.append(ch)
+        elif ch in ")]":
+            if depth == 0:
+                continue          # no opener — debris
+            depth -= 1
+            out.append(ch)
+        else:
+            out.append(ch)
+    if depth:                     # unclosed openers, dropped right to left
+        kept, remaining = [], depth
+        for ch in reversed(out):
+            if ch in "([" and remaining:
+                remaining -= 1
+                continue
+            kept.append(ch)
+        out = list(reversed(kept))
+    return " ".join("".join(out).split())
+
+
+def usable_remainder(text: str) -> str:
+    """A remainder fit to sit in a label, or `''` when nothing survives.
+
+    Applied to **every** rule that puts a remainder into `mul`, not only the repair
+    branch. The first version guarded the repair alone, and 28 labels still shipped
+    with unbalanced brackets through `marker+surname` and `description+clan` — which
+    is the same defect arriving by a different door.
+    """
+    cleaned = drop_bracket_debris(text)
+    return cleaned if is_a_plausible_name(cleaned) else ""
+
+
 def classify_row(row: dict, clan_suffixes: tuple[str, ...]) -> dict | None:
     """The labels one census row implies, or `None` when it implies none."""
     kind, position = row["kind"], row["position"]
@@ -98,23 +170,42 @@ def classify_row(row: dict, clan_suffixes: tuple[str, ...]) -> dict | None:
 
     if kind == "marker" and position == "head":
         # The remainder is the subject's own surname.
-        if not remainder:
+        surname = usable_remainder(remainder)
+        if not surname:
             return {"rule": "unnamed", "mul": UNNAMED_MARKER, "name": ""}
         return {"rule": "marker+surname",
-                "mul": f"{UNNAMED_MARKER} {remainder}", "name": ""}
+                "mul": f"{UNNAMED_MARKER} {surname}", "name": ""}
 
     if kind == "marker":
         # tail or inside: a real name with a marker wedged into it.
         if not remainder:
             return None
-        return {"rule": "name repaired", "mul": remainder, "name": remainder}
+        # **The repair branch checks BEFORE cleaning, and the other branches after.**
+        # That asymmetry is the point rather than an oversight. A remainder that is
+        # the person's *surname* is worth rescuing from stray punctuation —
+        # `Guttormsdatter Ålesdatter?)` is a real surname pair either way. A
+        # remainder that is supposed to be a whole *name* and arrives with debris in
+        # it is evidence the parse went wrong, not a name with a typo: cleaning
+        # `Daughter (name unknown) Biard` yields `Daughter name Biard`, which is a
+        # description wearing a name's clothes. So this one refuses instead.
+        repaired = remainder if is_a_plausible_name(remainder) else ""
+        if not repaired:
+            # The repair produced something that is not a name. Fall back to the
+            # unnamed treatment rather than emit it, and keep the rule name
+            # distinct so the population stays countable instead of merging
+            # silently into the 21,054 genuinely-unnamed.
+            return {"rule": "repair rejected", "mul": UNNAMED_MARKER, "name": ""}
+        return {"rule": "name repaired", "mul": repaired, "name": repaired}
 
     if kind == "description":
         if marker in RELATIVE_FORMS or not remainder:
             return {"rule": "description", "mul": UNNAMED_MARKER, "name": ""}
         if marker in clan_suffixes:
+            clan = usable_remainder(remainder)
+            if not clan:
+                return {"rule": "description", "mul": UNNAMED_MARKER, "name": ""}
             return {"rule": "description+clan",
-                    "mul": f"{UNNAMED_MARKER} {remainder}", "name": ""}
+                    "mul": f"{UNNAMED_MARKER} {clan}", "name": ""}
         # A description form this script does not know: keep the marker label bare
         # rather than guessing whose name the remainder is.
         return {"rule": "description", "mul": UNNAMED_MARKER, "name": ""}
@@ -139,7 +230,7 @@ def main() -> int:
     # languages. Keyed on the subject, and the strongest rule wins so a person whose
     # name is repairable is never also reported as unnamed.
     STRENGTH = {"name repaired": 3, "marker+surname": 2, "description+clan": 2,
-                "description": 1, "unnamed": 1}
+                "description": 1, "repair rejected": 1, "unnamed": 1}
     best: dict[tuple[str, str], dict] = {}
     seen_labels: dict[tuple[str, str], set[str]] = {}
 

@@ -8332,3 +8332,45 @@ name (`南殿(豊臣秀吉側室)`) which the description needs.
 I had asserted `盧氏 Chan` → `盧 Chan` a few commits earlier, on the reasoning that a
 stray token might be a real surname. The Wikidata data says it is annotation. The test is
 rewritten with the evidence in it rather than deleted.
+
+**And a third defect in the same emitter, found the same way.** Taking a marker out of
+the *middle* of a label can leave wreckage, and the output reads as a name until you
+look:
+
+    Daughter (name unknown) Biard   ->  "Daughter (name Biard"   unbalanced
+    (Female) Unknown                ->  "(Female)"               names nobody
+
+`is_a_plausible_name` refuses both — brackets balance or they do not, and a string with
+no unbracketed word in it names nobody — and the person falls back to `NN` under a rule
+of its own, `repair rejected`, so those 26 stay countable rather than merging into the
+21,000 genuinely unnamed.
+
+**I then claimed 0 unbalanced labels and it was 28.** The guard covered the repair
+branch alone, and `marker+surname` and `description+clan` were shipping the same defect
+through a different door — some from source labels already broken in Geni and Wikidata
+(`NN Guttormsdatter Ålesdatter?)`, `NN Wife of Quintus Pedius Publicola)`), two from this
+script's own stripping (`(Unknown Given Name) Unknown` → `NN Given Name) Unknown`). The
+number was measured before the claim reached a commit, not after.
+
+`drop_bracket_debris` removes unpartnered brackets, and **the branches use it
+differently on purpose**: a remainder that is a *surname* is worth rescuing from stray
+punctuation, because `Guttormsdatter Ålesdatter` is the surname either way. A remainder
+that is supposed to be a whole *name* and arrives with debris is evidence the parse went
+wrong — cleaning `Daughter (name unknown) Biard` gives `Daughter name Biard`, a
+description wearing a name's clothes — so the repair branch checks *before* cleaning and
+refuses. Two tests that had asserted the old behaviour survive that split, which is how
+the asymmetry got noticed.
+
+**Final: 56,369 label edits over both stores, 0 with unbalanced brackets.**
+
+| rule | geni | wikidata |
+| --- | ---: | ---: |
+| `unnamed` | 21,069 | 1,770 |
+| `marker+surname` | 8,116 | 11,141 |
+| `description` | 2,348 | 4,631 |
+| `description+clan` | 627 | 5,627 |
+| `name repaired` | 708 | 306 |
+| `repair rejected` | 25 | 1 |
+
+**26,525 keep a real surname beside the marker** and **1,014 are a real name with the
+marker taken out and no `NN` at all**. 60 tests.
