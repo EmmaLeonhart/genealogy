@@ -181,6 +181,23 @@ the bare stem:
 So `Ols father of Karen` — an existing seed of hers — would be made as `Ole`
 today. Her earlier seeds are not the standard; this is.
 
+**Every patronymic system counts, not just the Norse one.** Emma, 2026-08-17:
+*"this happens in all patronymics so like ap X, fitz X, ferch X, X-ez, but Norse
+is by far most common in this data."*
+
+| system | form | child | father |
+| --- | --- | --- | --- |
+| Norse | `-sen` `-son` `-sson` `-datter` `-dotter` | `Anders Olsen` | `Ole` |
+| Welsh | `ap` `ab` `ferch` `verch` | `Rhys ap Gruffudd` | `Gruffudd` |
+| Anglo-Norman | `fitz` | `Robert fitz Walter` | `Walter` |
+| Iberian | `-ez` `-es` `-iz` `-oz` | `Álvar Rodríguez` | `Rodrigo` |
+| Hebrew / Arabic | `ben` `bat` `bin` `ibn` | `Hugh ben Lewis` | `Lewis` |
+
+The Iberian one is the least obvious and the most likely to be missed:
+`Rodríguez` is *son of Rodrigo*, `Fernández` *son of Fernando*, `Sánchez` *son of
+Sancho*, `Núñez` *son of Nuño*. That family is all over the Monrory and de las
+Varillas material.
+
 **Where the ending admits several nominatives, take the commonest and do not
 agonise.** `Ols-` is Ole, Ola or Olav in Norwegian; write `Ole`. This is a
 reconstruction and is allowed to be one — the patronymic is the attestation that
