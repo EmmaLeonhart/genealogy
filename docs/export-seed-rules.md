@@ -84,6 +84,28 @@ informative part.
 
 ---
 
+## Bail on anything weird. The loop is self-healing
+
+**Emma, 2026-08-17, and this is the governing rule for the whole loop:** *"if you
+run into any kind of weirdness on any specific individual that might make you do
+weird stuff — like, say, running a search because you can't figure out how to
+click through — bail on that one, and try the next thing."*
+
+*"We do not need to get every single individual here. The operations here are
+completely self-healing. If you miss an individual because of weird rendering
+errors, then you move on to the next one, and there's a decent chance that you
+won't even need to do that individual this next time."*
+
+**Why it is self-healing:** the ranking is recomputed from the corpus every round,
+so a person skipped this round either gets covered by somebody else's export or
+simply comes back at the top of the next list. Nothing is lost by skipping and
+real time is lost by not skipping.
+
+**So the moment a page fights back — a frozen renderer, a node that will not open,
+a dialog that will not close, an ID that will not come off the page — abandon that
+individual and take the next one on the list.** Do not invent a second route to
+the same person.
+
 ## A master profile is a skip
 
 Sometimes a slot looks addable and is not — Geni's **master profiles** are locked
