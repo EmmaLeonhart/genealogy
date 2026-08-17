@@ -645,20 +645,26 @@ list of what exists, and it was sitting in the work list making the queue look
 longer than it was. The date is her own instruction of 2026-08-14: *"no wikidata
 edits until September 1."*
 
-Every batch below is generated, committed, and has sent nothing anywhere.
+Every batch below is generated, committed, and has sent nothing anywhere. Counted
+2026-08-17 by reading the files, not carried forward — four of the ten rows this
+table used to have were out of date and three batches were missing from it entirely.
 
 | batch | entries |
 | --- | ---: |
 | `reports/wikidata-orderlife.json` | 54,356 |
-| `reports/wikidata-placeholder-labels.json` | 35,011 — **held** until all seven languages exist |
-| `reports/wikidata-name-items.json` | 14,078 |
-| `reports/wikidata-structural-placeholders.json` | 11,387 |
+| `reports/wikidata-placeholder-labels.json` | 39,299 — **held** until all seven languages exist |
+| `reports/wikidata-name-items.json` | 13,320 |
+| `reports/wikidata-structural-placeholders.json` | 12,260 — **held**, no label set yet |
+| `reports/wikidata-structural-correspondence.json` | 3,719 |
+| `reports/wikidata-nn-labels.json` | 3,525 |
+| `reports/wikidata-trunk-batch.json` | 118 |
 | `reports/wikidata-samaritan-priests.json` | 76 |
 | `reports/wikidata-add-geni-id.json` | 36 |
 | `reports/wikidata-samaritan-succession.json` | 21 |
 | `reports/wikidata-orderlife-identifiers.json` | 12 |
 | `reports/wikidata-entity-resolution.json` | 10 |
 | `reports/wikidata-samaritan-links.json` | 9 |
+| `reports/wikidata-abram-father.json` | 2 |
 
 ## 9. Future modelling, folded in from `provisional-todo.md` (2026-08-16)
 
