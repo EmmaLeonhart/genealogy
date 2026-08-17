@@ -74,28 +74,60 @@ INDI_XREF = re.compile(rb"^0 @I(\d+)@ INDI", re.M)
 #: work in to place a placeholder and run the export.
 FAMILY_TREE_URL = "https://www.geni.com/family-tree/index/{}"
 
-#: People whose tree offers no way in, so ranking them wastes a pick every round.
-#: Emma, 2026-08-17: *"just block off the two ones that are saturated."*
+#: ---------------------------------------------------------------- ON HOLD
+#: **Empty, and it should stay that way unless something is genuinely unreachable.**
+#: Emma, 2026-08-17: *"put them on hold… I don't want you to throw them out in the sense
+#: of just not using them at all, because I think we're able to get them. They just
+#: require a slightly different strategy."*
 #:
-#: **This is not the already-opened filter she rejected twice.** That one excluded
-#: people because they had been *looked at*, and its only effect was to push still-open
-#: gaps down the list. This excludes people because their tree is **saturated with Geni
-#: master profiles** — every ancestor already has parents and none of them can be edited
-#: from this account, so there is no slot to place a seed in and no export to run. They
-#: are not gaps that will close; they are gaps that cannot be worked.
+#: **Her bar, in her words:** *"the only situation where I'd be considering somebody to
+#: be unreachable by our method would be if they have 32 ancestors, all of which have 32
+#: ancestors, or if they themselves are a master profile and all of their ancestors are
+#: master profiles."* Both are exhaustion conditions over a whole *walk*, not a property
+#: of one screen.
 #:
-#: Both surfaced as ranks 1 and 4 in the round after the batch that cleared everything
-#: else, purely because they were the two the loop had *not* been able to touch.
+#: **What I did wrong, recorded because it is the failure mode she named.** I put James
+#: IV, Margaret of Denmark, Francis II and Lorenzo II de' Medici here after looking at
+#: the four generations the tree index renders, seeing a green `+N` badge on every box,
+#: and calling the tree saturated. That is not a measurement of reachability — it is not
+#: having walked deeper. `docs/export-seed-rules.md` § *When the whole visible tree is
+#: saturated* says the next move is to follow those counts into a **smaller** ancestor
+#: tree, preferring small odd numbers, and insert there. I skipped that step on all four.
+#: Emma: *"you're dismissing them prematurely because it's very common that you dismiss
+#: tasks prematurely… You just didn't push the depth far enough to actually do it."*
 #:
-#: **They are dropped from the ranking entirely** — Emma, same exchange: *"have them not
-#: show up in the rankings."* So they are out of `chain-gaps.csv`, out of the shortlist
-#: and out of the slot total; the run prints them once under "blocked, not ranked" so
-#: the exclusion is visible rather than silent. Add to this only for a tree that has
-#: been *tried* and found unworkable, never for one that merely looks hard.
-BLOCKED: dict[str, str] = {
-    "4229916861440069622": "James IV, king of Scots — saturated royal master profiles",
-    "6000000004131116716": "Margaret of Denmark, Queen consort of Scotland — same tree",
-}
+#: **A master profile is not an unworkable person.** It cannot be edited from this
+#: account, but the walk does not stop at it, and its neighbours are usually ordinary.
+#:
+#: **Never a heuristic.** Not an ancestor count on one screen, not a title in the name,
+#: and **not "they have a Wikidata item"** — that last one was checked rather than
+#: assumed and the number kills it: **1,109 of 6,758 absent chain people (16.4%)** carry
+#: a `P2600` in `out/wikidata/p2600-all.tsv`, and they are mostly ordinary Nordic people
+#: the loop handles well — Jens Jacobsen Bull, Gidsken Hermannsdatter Lange, Johanna
+#: Bonnier, Anna Lorentzen. Holding on that would park 1,164 slots, most of them
+#: workable.
+#:
+#: The QID is still carried into `reports/chain-gaps-on-hold.csv` when somebody is held,
+#: because it is the handle for the different strategy: an item can be read offline from
+#: the local store instead of exported from Geni.
+ON_HOLD: dict[str, str] = {}
+
+#: QID -> Geni ID dump from the bulk download; read to attach a Wikidata handle to the
+#: held people. Absent file is fine, the column just comes out blank.
+P2600_MAP = REPO / "out" / "wikidata" / "p2600-all.tsv"
+OUT_HOLD = REPO / "reports" / "chain-gaps-on-hold.csv"
+
+
+def wikidata_by_geni_id() -> dict[str, str]:
+    """Geni ID -> QID, from the local store only. Never queries Wikidata."""
+    out: dict[str, str] = {}
+    if not P2600_MAP.exists():
+        return out
+    for line in P2600_MAP.read_text(encoding="utf-8").splitlines():
+        parts = line.split("	")
+        if len(parts) >= 2:
+            out.setdefault(parts[1], parts[0])
+    return out
 
 
 def geni_ids_in_the_corpus() -> set[str]:
@@ -133,9 +165,9 @@ def main() -> int:
     files_of = chains()
 
     absent = [g for g in files_of if g not in present]
-    blocked_here = sorted((g for g in absent if g in BLOCKED),
-                          key=lambda g: -len(files_of[g]))
-    absent = [g for g in absent if g not in BLOCKED]
+    held = sorted((g for g in absent if g in ON_HOLD),
+                  key=lambda g: -len(files_of[g]))
+    absent = [g for g in absent if g not in ON_HOLD]
     absent.sort(key=lambda g: (-len(files_of[g]), g))
     slots = sum(len(files_of[g]) for g in absent)
 
@@ -162,13 +194,23 @@ def main() -> int:
             writer.writerow([rank, len(files_of[gid]), gid, names.get(gid, ""),
                              FAMILY_TREE_URL.format(gid)])
 
-    held = len(files_of) - len(absent)
-    print(f"chain people {len(files_of):,}   held {held:,}   gap {len(absent):,}")
+    in_corpus = len(files_of) - len(absent) - len(held)
+    print(f"chain people {len(files_of):,}   held {in_corpus:,}   gap {len(absent):,}")
     print(f"unfilled slots {slots:,}   ({time.time() - started:.0f}s, no merge)")
-    if blocked_here:
-        print(f"\nblocked, not ranked ({len(blocked_here)}):")
-        for gid in blocked_here:
-            print(f"  {len(files_of[gid]):>3} slots  {BLOCKED[gid]}")
+    qid_of = wikidata_by_geni_id()
+    with OUT_HOLD.open("w", encoding="utf-8", newline="") as fh:
+        writer = csv.writer(fh)
+        writer.writerow(["slots", "geni_id", "qid", "reason", "url", "paths"])
+        for gid in held:
+            writer.writerow([len(files_of[gid]), gid, qid_of.get(gid, ""),
+                             ON_HOLD[gid], FAMILY_TREE_URL.format(gid),
+                             " | ".join(sorted(files_of[gid]))])
+    if held:
+        print(f"\non hold, not ranked ({len(held)}, "
+              f"{sum(len(files_of[g]) for g in held)} slots) -> {OUT_HOLD.name}:")
+        for gid in held:
+            print(f"  {len(files_of[gid]):>3} slots  {qid_of.get(gid, '--'):>10}  "
+                  f"{ON_HOLD[gid]}")
     print(f"\nwrote {OUT_ALL.name} and {OUT_OPEN.name}\n")
     for rank, gid in enumerate(shortlist, start=1):
         print(f"  {rank:>2}. {len(files_of[gid]):>3} slots  "
