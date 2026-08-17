@@ -35,7 +35,7 @@ Every step is held: this path is walkable inside our own data.
 | 25 | 秋月種任 | her father | [種任](https://www.geni.com/people/x/6000000032170128401) | id | 1 |
 | 26 | 松平盈子 | his mother | [盈子](https://www.geni.com/people/x/6000000006840005152) | id | 1 |
 | 27 | 幸姫 | her mother | [幸](https://www.geni.com/people/x/6000000002510973487) | id | 1 |
-| 28 | 小笠原忠基 | her father | [忠基](https://www.geni.com/people/x/6000000002494069423) | id | 1 |
+| 28 | 小笠原忠基 | her father | [Tadamoto](https://www.geni.com/people/x/6000000002494069423) | id | 1 |
 | 29 | 小笠原忠雄 | his father | [忠雄](https://www.geni.com/people/x/6000000002232963326) | id | 1 |
 | 30 | 小笠原忠真 | his father | [忠真](https://www.geni.com/people/x/6000000001886024014) | id | 1 |
 | 31 | 小笠原時長女 | his sister | [時長女](https://www.geni.com/people/x/6000000008141648952) | id | 1 |

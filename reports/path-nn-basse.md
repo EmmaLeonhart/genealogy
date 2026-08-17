@@ -2,6 +2,8 @@
 
 **57 of 57 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–35, 35 of 35 held; path 2 — steps 36–57, 22 of 22 held. The run and doorway below are the first path's.
+
 Every step is held: this path is walkable inside our own data.
 
 ## Steps

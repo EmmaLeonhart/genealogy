@@ -7949,3 +7949,45 @@ for the run. `check` still builds its own when handed none, so a single-path cal
 unchanged. `tests/test_connectors.py` pins the count at one build for three paths,
 because this is the kind of regression that shows up only at scale and only as a run
 that never ends.
+
+
+## 2026-08-17 — the connectors report, 82 seconds instead of never
+
+With `TreeIndex` hoisted out of `check`, the run that had gone ninety minutes without
+writing anything finished in **1m22s**. The report it produced is the first one
+measured over the full corpus of paths — the committed version was **26 paths against
+a 255,465-person merge**, from before the 560-path ingest.
+
+| | before | now |
+| --- | ---: | ---: |
+| paths | 26 | **586** |
+| steps | 3,464 | **24,480** |
+| held | 3,464 (100%) | **16,291 (66.5%)** |
+| absent step-slots | 0 | **8,189** |
+| distinct missing people | 0 | **6,950** |
+| held end to end | 26 of 26 | **30 of 586** |
+| bridges | 0 | **891 in 419 clusters** |
+
+The old 100% was not a finding, it was 26 hand-picked paths that had already been
+closed. The real number is two thirds.
+
+**This is her agenda item one, and it now has a ranking.** *"find people that are in
+multiple bridges and are also not in"* our data. The top five clusters:
+
+| slots | people | paths | seed on | style |
+| ---: | ---: | ---: | --- | --- |
+| 395 | 308 | 27 | Sevald Dyresen Lunner `6000000000101143665` | Forest |
+| 349 | 237 | 22 | Birgitta (Vinstorp) `6000000004657088722` | Forest |
+| 262 | 176 | 18 | Tora Gunnarsdatter Vølstad `6000000003025853747` | Forest |
+| 254 | 199 | 14 | Eunice Nix `6000000111817455021` | Forest |
+| 234 | 184 | 11 | Aagot Moestue `6000000019296260954` | Forest |
+
+Every one of the five wants `Forest`, because the runs cross marriage and sibling
+links that `Ancestors` and `BloodTree` walk straight past. All five are Norwegian or
+Swedish, which is where she is linked — the same reason the Nordic isolate batches ran
+at 92%.
+
+**And the chain split shows in the reports.** `reports/path-nn-basse.md` now opens
+*"This file holds 2 relationship paths, not one… path 1 — steps 1–35, 35 of 35 held;
+path 2 — steps 36–57, 22 of 22 held"*, where it used to present 57 steps as one walk.
+242 of the 586 files say something equivalent.

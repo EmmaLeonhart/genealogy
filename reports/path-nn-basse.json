@@ -1,10 +1,29 @@
 {
   "steps_total": 57,
   "steps_in_tree": 57,
-  "unbroken_run_ends_at": 57,
+  "paths_in_this_file": 2,
+  "chains": [
+    {
+      "chain": 1,
+      "first_step": 1,
+      "last_step": 35,
+      "steps_total": 35,
+      "steps_in_tree": 35,
+      "unbroken_run_ends_at": 35
+    },
+    {
+      "chain": 2,
+      "first_step": 36,
+      "last_step": 57,
+      "steps_total": 22,
+      "steps_in_tree": 22,
+      "unbroken_run_ends_at": 57
+    }
+  ],
+  "unbroken_run_ends_at": 35,
   "components": {
-    "1": 255432,
-    "2": 33
+    "1": 448321,
+    "2": 344
   },
   "components_touched": [
     1
@@ -13,6 +32,7 @@
   "steps": [
     {
       "step": 1,
+      "chain": 1,
       "name": "You",
       "relation_to_previous": "",
       "geni_id": "6000000087535357291",
@@ -26,6 +46,7 @@
     },
     {
       "step": 2,
+      "chain": 1,
       "name": "Richard Wade Borsheim",
       "relation_to_previous": "your father",
       "geni_id": "6000000177921459056",
@@ -39,6 +60,7 @@
     },
     {
       "step": 3,
+      "chain": 1,
       "name": "Caroline Signe Borsheim",
       "relation_to_previous": "his mother",
       "geni_id": "6000000177921459072",
@@ -52,6 +74,7 @@
     },
     {
       "step": 4,
+      "chain": 1,
       "name": "Alfred Ingerman Hoknes",
       "relation_to_previous": "her father",
       "geni_id": "6000000015117490925",
@@ -65,6 +88,7 @@
     },
     {
       "step": 5,
+      "chain": 1,
       "name": "Clara Amilia Hoknes",
       "relation_to_previous": "his mother",
       "geni_id": "6000000177921459114",
@@ -78,6 +102,7 @@
     },
     {
       "step": 6,
+      "chain": 1,
       "name": "Kasbar L Knutson",
       "relation_to_previous": "her father",
       "geni_id": "6000000177921459169",
@@ -91,6 +116,7 @@
     },
     {
       "step": 7,
+      "chain": 1,
       "name": "Gjertrud Magnesdtr Bjorgo",
       "relation_to_previous": "his mother",
       "geni_id": "6000000026258097510",
@@ -104,6 +130,7 @@
     },
     {
       "step": 8,
+      "chain": 1,
       "name": "Gudve Rognaldsdatter Nestås",
       "relation_to_previous": "her mother",
       "geni_id": "6000000002267060138",
@@ -117,6 +144,7 @@
     },
     {
       "step": 9,
+      "chain": 1,
       "name": "Gjertrud Torbjørnsdatter Sæve",
       "relation_to_previous": "her mother",
       "geni_id": "6000000005744994427",
@@ -130,6 +158,7 @@
     },
     {
       "step": 10,
+      "chain": 1,
       "name": "Gudve Knudsdatter",
       "relation_to_previous": "her mother",
       "geni_id": "6000000005744994368",
@@ -143,6 +172,7 @@
     },
     {
       "step": 11,
+      "chain": 1,
       "name": "Ingjerd Clausdatter Miltzow",
       "relation_to_previous": "her mother",
       "geni_id": "6000000000694158525",
@@ -156,6 +186,7 @@
     },
     {
       "step": 12,
+      "chain": 1,
       "name": "Inger Lauritsdatter Heiberg",
       "relation_to_previous": "her mother",
       "geni_id": "6000000002078126382",
@@ -169,6 +200,7 @@
     },
     {
       "step": 13,
+      "chain": 1,
       "name": "Kirsten Jakobsdatter Bolstad",
       "relation_to_previous": "her mother",
       "geni_id": "6000000007635631030",
@@ -182,6 +214,7 @@
     },
     {
       "step": 14,
+      "chain": 1,
       "name": "Inger Axelsdatter Güntersberg",
       "relation_to_previous": "her mother",
       "geni_id": "6000000000757999620",
@@ -195,6 +228,7 @@
     },
     {
       "step": 15,
+      "chain": 1,
       "name": "Kristine Trondsdatter Benkestok",
       "relation_to_previous": "her mother",
       "geni_id": "4976573922110117540",
@@ -208,6 +242,7 @@
     },
     {
       "step": 16,
+      "chain": 1,
       "name": "Anna Haard",
       "relation_to_previous": "her mother",
       "geni_id": "6000000000758079676",
@@ -221,6 +256,7 @@
     },
     {
       "step": 17,
+      "chain": 1,
       "name": "Jon Olofsson Haard",
       "relation_to_previous": "her father",
       "geni_id": "6000000002342416311",
@@ -234,6 +270,7 @@
     },
     {
       "step": 18,
+      "chain": 1,
       "name": "Olof Pedersson Liljesparre, till Böjeryd",
       "relation_to_previous": "his father",
       "geni_id": "6000000002893316227",
@@ -247,6 +284,7 @@
     },
     {
       "step": 19,
+      "chain": 1,
       "name": "Peder Jönsson Liljesparre, till Böjeryd",
       "relation_to_previous": "his father",
       "geni_id": "6000000001584801190",
@@ -260,6 +298,7 @@
     },
     {
       "step": 20,
+      "chain": 1,
       "name": "Bengta Knutsdotter Liljesparre",
       "relation_to_previous": "his mother",
       "geni_id": "6000000003897585979",
@@ -273,6 +312,7 @@
     },
     {
       "step": 21,
+      "chain": 1,
       "name": "ukjent Knutsdatter",
       "relation_to_previous": "her mother",
       "geni_id": "6000000018448055702",
@@ -286,6 +326,7 @@
     },
     {
       "step": 22,
+      "chain": 1,
       "name": "Knut Bengtsson Bengtsson Sparre över Blad",
       "relation_to_previous": "her father",
       "geni_id": "6000000031873939968",
@@ -299,6 +340,7 @@
     },
     {
       "step": 23,
+      "chain": 1,
       "name": "Bengt Lindormsson (Sparre över Blad)",
       "relation_to_previous": "his father",
       "geni_id": "6000000007089842705",
@@ -312,6 +354,7 @@
     },
     {
       "step": 24,
+      "chain": 1,
       "name": "Estrid Pedersdotter Sparre över Blad",
       "relation_to_previous": "his mother",
       "geni_id": "6000000007089811407",
@@ -325,6 +368,7 @@
     },
     {
       "step": 25,
+      "chain": 1,
       "name": "Peder Knudsen Porse",
       "relation_to_previous": "her father",
       "geni_id": "6000000004138841068",
@@ -338,6 +382,7 @@
     },
     {
       "step": 26,
+      "chain": 1,
       "name": "Knud Nielsen Porse",
       "relation_to_previous": "his father",
       "geni_id": "6000000013969796343",
@@ -351,6 +396,7 @@
     },
     {
       "step": 27,
+      "chain": 1,
       "name": "Anders Nielsen Kyrning",
       "relation_to_previous": "his brother",
       "geni_id": "6000000003160924298",
@@ -364,6 +410,7 @@
     },
     {
       "step": 28,
+      "chain": 1,
       "name": "Jon Kyrning",
       "relation_to_previous": "his son",
       "geni_id": "6000000007170459692",
@@ -377,6 +424,7 @@
     },
     {
       "step": 29,
+      "chain": 1,
       "name": "Ose Jonsdotter Kyrning, till Rännenäs",
       "relation_to_previous": "his daughter",
       "geni_id": "6000000000853042335",
@@ -390,6 +438,7 @@
     },
     {
       "step": 30,
+      "chain": 1,
       "name": "Margretha Pedersdotter Brahe",
       "relation_to_previous": "her daughter",
       "geni_id": "6000000001504743216",
@@ -403,6 +452,7 @@
     },
     {
       "step": 31,
+      "chain": 1,
       "name": "Haagen Henningsen Grubendal",
       "relation_to_previous": "her son",
       "geni_id": "6000000034767136322",
@@ -416,6 +466,7 @@
     },
     {
       "step": 32,
+      "chain": 1,
       "name": "Barbara Haagensdatter Grubendal",
       "relation_to_previous": "his daughter",
       "geni_id": "6000000002814372507",
@@ -429,6 +480,7 @@
     },
     {
       "step": 33,
+      "chain": 1,
       "name": "Christine Olufsdatter Blaa",
       "relation_to_previous": "her daughter",
       "geni_id": "6000000034771514143",
@@ -442,6 +494,7 @@
     },
     {
       "step": 34,
+      "chain": 1,
       "name": "Christine Nielsdatter Basse, (Nye)",
       "relation_to_previous": "her daughter",
       "geni_id": "6000000044835902936",
@@ -455,6 +508,7 @@
     },
     {
       "step": 35,
+      "chain": 1,
       "name": "NN Basse",
       "relation_to_previous": "her child",
       "geni_id": "6000000209053003954",
@@ -468,6 +522,7 @@
     },
     {
       "step": 36,
+      "chain": 2,
       "name": "You",
       "relation_to_previous": "",
       "geni_id": "6000000087535357291",
@@ -481,6 +536,7 @@
     },
     {
       "step": 37,
+      "chain": 2,
       "name": "Richard Wade Borsheim",
       "relation_to_previous": "your father",
       "geni_id": "6000000177921459056",
@@ -494,6 +550,7 @@
     },
     {
       "step": 38,
+      "chain": 2,
       "name": "Caroline Signe Borsheim",
       "relation_to_previous": "his mother",
       "geni_id": "6000000177921459072",
@@ -507,6 +564,7 @@
     },
     {
       "step": 39,
+      "chain": 2,
       "name": "Alfred Ingerman Hoknes",
       "relation_to_previous": "her father",
       "geni_id": "6000000015117490925",
@@ -520,6 +578,7 @@
     },
     {
       "step": 40,
+      "chain": 2,
       "name": "Clara Amilia Hoknes",
       "relation_to_previous": "his mother",
       "geni_id": "6000000177921459114",
@@ -533,6 +592,7 @@
     },
     {
       "step": 41,
+      "chain": 2,
       "name": "Kasbar L Knutson",
       "relation_to_previous": "her father",
       "geni_id": "6000000177921459169",
@@ -546,6 +606,7 @@
     },
     {
       "step": 42,
+      "chain": 2,
       "name": "Gjertrud Magnesdtr Bjorgo",
       "relation_to_previous": "his mother",
       "geni_id": "6000000026258097510",
@@ -559,6 +620,7 @@
     },
     {
       "step": 43,
+      "chain": 2,
       "name": "Gudve Rognaldsdatter Nestås",
       "relation_to_previous": "her mother",
       "geni_id": "6000000002267060138",
@@ -572,6 +634,7 @@
     },
     {
       "step": 44,
+      "chain": 2,
       "name": "Gjertrud Torbjørnsdatter Sæve",
       "relation_to_previous": "her mother",
       "geni_id": "6000000005744994427",
@@ -585,6 +648,7 @@
     },
     {
       "step": 45,
+      "chain": 2,
       "name": "Torbjørn Madsson Sæve",
       "relation_to_previous": "her father",
       "geni_id": "6000000003875720930",
@@ -598,6 +662,7 @@
     },
     {
       "step": 46,
+      "chain": 2,
       "name": "Mass Torbjørnson Seve",
       "relation_to_previous": "his father",
       "geni_id": "6000000007224180913",
@@ -611,6 +676,7 @@
     },
     {
       "step": 47,
+      "chain": 2,
       "name": "Torbjørn Gauteson Dal til Hov i Fresvik Gauteson Dal",
       "relation_to_previous": "his father",
       "geni_id": "6000000012271160019",
@@ -624,6 +690,7 @@
     },
     {
       "step": 48,
+      "chain": 2,
       "name": "Gaute Torbjørnson Dal",
       "relation_to_previous": "his father",
       "geni_id": "6000000009627834886",
@@ -637,6 +704,7 @@
     },
     {
       "step": 49,
+      "chain": 2,
       "name": "Torbjørn Gauteson Dahl",
       "relation_to_previous": "his father",
       "geni_id": "6000000001169143209",
@@ -650,6 +718,7 @@
     },
     {
       "step": 50,
+      "chain": 2,
       "name": "Gudrun Gautesdatter Sveen",
       "relation_to_previous": "his sister",
       "geni_id": "6000000003433057104",
@@ -663,6 +732,7 @@
     },
     {
       "step": 51,
+      "chain": 2,
       "name": "Niels Claussøn Grønnou, til Grønnekær",
       "relation_to_previous": "her husband",
       "geni_id": "6000000012749375472",
@@ -676,6 +746,7 @@
     },
     {
       "step": 52,
+      "chain": 2,
       "name": "Claus Grønnou",
       "relation_to_previous": "his father",
       "geni_id": "6000000035874070548",
@@ -689,6 +760,7 @@
     },
     {
       "step": 53,
+      "chain": 2,
       "name": "Kirstine Munk, af Getterupgård",
       "relation_to_previous": "his mother",
       "geni_id": "6000000040322230552",
@@ -702,6 +774,7 @@
     },
     {
       "step": 54,
+      "chain": 2,
       "name": "Anna Harboe, af Nystrup",
       "relation_to_previous": "her mother",
       "geni_id": "6000000040322032691",
@@ -715,6 +788,7 @@
     },
     {
       "step": 55,
+      "chain": 2,
       "name": "Niels Knudsen Dyre, af Hjelmsø",
       "relation_to_previous": "her brother",
       "geni_id": "6000000034770397072",
@@ -728,6 +802,7 @@
     },
     {
       "step": 56,
+      "chain": 2,
       "name": "Christiern Nielsen Dyre, af Hjelmsø",
       "relation_to_previous": "his son",
       "geni_id": "6000000034771304089",
@@ -741,6 +816,7 @@
     },
     {
       "step": 57,
+      "chain": 2,
       "name": "NN Basse",
       "relation_to_previous": "his child",
       "geni_id": "6000000209053003954",
