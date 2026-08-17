@@ -8312,3 +8312,23 @@ with his name. `氏` is the opposite, her own clan, and belongs there. A descrip
 the script does not recognise contributes nothing to `mul` rather than being guessed at.
 
 45 tests in `tests/test_marker_labels.py`.
+
+**The Wikidata side then corrected the clan rule, and this is the second time a test I
+wrote had to be revised rather than defended.** Running the emitter over both stores
+produced `Li Shi 李氏` → `NN Li Shi 李`, and worse:
+
+    Li Shi 李氏                          `Shi` IS 氏, romanised — the description twice
+    Fang Shi (concubine of Lü Daqi) 方氏   a bracketed description
+    Xiao Shi of Yangdi) 蕭氏(炀帝后)        unbalanced paren debris
+
+113 clan rows carry a bare `Shi`, and adding `Shi` to the vocabulary was not an option:
+**428 labels carry it with no `氏` at all** — `Li Shi (hija de Li Song)` — and would have
+lost a real token. What the three cases share is that **everything except the clan
+character is annotation**, so the clan branch now keeps only that: `李`, `方`, `蕭`, `盧`.
+A parenthetical is stripped too, since a surname is never bracketed — confined to the
+clan branch, because for a relative suffix the bracket often holds the relative's own
+name (`南殿(豊臣秀吉側室)`) which the description needs.
+
+I had asserted `盧氏 Chan` → `盧 Chan` a few commits earlier, on the reasoning that a
+stray token might be a real surname. The Wikidata data says it is annotation. The test is
+rewritten with the evidence in it rather than deleted.

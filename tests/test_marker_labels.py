@@ -140,8 +140,27 @@ def test_the_clan_suffix_keeps_her_own_surname(census):
     why `CLAN_SUFFIX` is a separate list rather than a flag.
     """
     assert census.CLAN_SUFFIX == ("氏",)
-    assert census._classify("盧氏 Chan")[4] == "盧 Chan"
-    assert census._classify("大唐帝國 謝氏")[4] == "大唐帝國 謝"
+    assert census._classify("盧氏 Chan")[4] == "盧"
+    assert census._classify("大唐帝國 謝氏")[4] == "謝"
+
+
+@pytest.mark.parametrize("label,clan", [
+    ("Li Shi 李氏", "李"),                                  # `Shi` IS 氏, romanised
+    ("Fang Shi (concubine of Lü Daqi) 方氏", "方"),          # a bracketed description
+    ("Xiao Shi of Yangdi) 蕭氏(炀帝后)", "蕭"),                # unbalanced paren debris
+    ("17. Lady Shi 施氏", "施"),
+])
+def test_a_clan_label_keeps_only_the_clan(census, label, clan):
+    """Everything else in a `氏` label is annotation, and the Wikidata side is what
+    showed it.
+
+    An earlier version of this test asserted `盧氏 Chan` → `盧 Chan`, on the reasoning
+    that a stray token might be a real surname. Then 113 clan rows turned up carrying
+    `Shi` — the romanisation of `氏` itself — and others carrying a bracketed
+    description or broken parentheses, all of which would have gone into `mul` behind
+    an `NN`. The clan character is the only part of these labels that is hers.
+    """
+    assert census._classify(label)[4] == clan
 
 
 def test_a_relative_suffix_does_not_carry_the_relative_into_her_label(census):

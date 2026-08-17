@@ -382,8 +382,28 @@ def cjk_relationship_in(label: str) -> tuple[str, str] | None:
             residue = residue.replace(other, "")
         residue = residue.strip()
         if suffix in CLAN_SUFFIX:
-            # Her own surname is in the carrying token. Keep it, in place.
-            rest = [residue if suffix in t else t for t in tokens]
+            # **Her own surname is the ONLY thing worth keeping.** It lives in the
+            # carrying token, and everything else in a `氏` label turns out to be
+            # annotation rather than name — which the Wikidata side is what showed:
+            #
+            #     Li Shi 李氏                          Shi IS 氏, romanised
+            #     Fang Shi (concubine of Lü Daqi) 方氏   a description in brackets
+            #     Xiao Shi of Yangdi) 蕭氏(炀帝后)        unbalanced paren debris
+            #
+            # An earlier version kept the other tokens, so `盧氏 Chan` came out
+            # `盧 Chan` and those three came out with the annotation intact and
+            # `NN` in front of it. Keeping only `李`, `方`, `蕭`, `盧` is both the
+            # correct surname and the only part that is hers.
+            # A parenthetical is annotation about her, never part of a surname:
+            # `蕭氏(炀帝后)` is *the Xiao-clan woman (Emperor Yang's empress)*, and the
+            # bracket contents are a description. Only the clan survives. This is
+            # confined to the clan branch on purpose — for a relative suffix the
+            # bracket often holds the relative's own name, which the description
+            # needs (`南殿(豊臣秀吉側室)`).
+            for opener in ("(", "（"):
+                if opener in residue:
+                    residue = residue.split(opener, 1)[0].strip()
+            rest = [residue]
         elif not rest:
             # Nothing else to fall back on, so the residue is all there is — and
             # for a relative-suffix that residue is the relative, which is why this
