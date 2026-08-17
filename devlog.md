@@ -7930,3 +7930,22 @@ consequences were not cosmetic:
 
 All four are now chain-bounded, `report.chains` gives one report per path, and the
 markdown and JSON both say how many paths a file holds. Four new tests pin it.
+
+
+## 2026-08-17 — `connectors` rebuilt the whole tree index once per path file
+
+`reports/connectors.md` was stale at **26 paths and a 255,465-person merge** while
+`paths/` holds **586** files and the tree is 448,665 people. Re-running it did not
+finish: ninety minutes in, 1.8 GB resident, nothing written.
+
+**The cause is the reason `connectors` exists, one level down.** Its docstring says a
+per-file `genimerge path` run *"would pay the whole cost of loading the merge each
+time"* — and then `paths.check` rebuilt, per call, a name-variant index over every
+person **and** a full connected-components walk. 26 path files hid it. 586 files means
+586 sweeps of 448,665 people and 586 component walks over 213,562 families.
+
+`paths.TreeIndex` and `paths.build_index` now hold that work and `collect` builds one
+for the run. `check` still builds its own when handed none, so a single-path caller is
+unchanged. `tests/test_connectors.py` pins the count at one build for three paths,
+because this is the kind of regression that shows up only at scale and only as a run
+that never ends.

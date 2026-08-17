@@ -216,6 +216,38 @@ def test_a_pure_descent_run_does_not_demand_forest():
     assert connectors.cluster(found)[0].style == "Ancestors or Forest"
 
 
+def test_collect_builds_the_tree_index_once_not_once_per_path(tmp_path, monkeypatch):
+    """The whole reason `connectors` exists, one level down.
+
+    `check` builds a name-variant index and walks connected components when it is
+    handed no index — a full sweep of the tree. Doing that per path file is what
+    `collect` was written to avoid for the tree *load*, and it was happening
+    anyway: at 586 path files that is 586 sweeps of 448,665 people and 586
+    component walks over 213,562 families, and the run stopped completing.
+    """
+    from genimerge import gedcom
+    from genimerge.model import build_tree
+
+    tree = build_tree(gedcom.parse(
+        "0 HEAD\n0 @I100@ INDI\n1 NAME Someone\n2 GIVN Someone\n0 TRLR\n").records)
+    tree.resolve_relationships()
+
+    for n in range(3):
+        (tmp_path / f"p{n}.tsv").write_text(
+            f"1\tSomeone\t-\tgeni:100\n2\tghost{n}\this son\tgeni:404\n",
+            encoding="utf-8")
+
+    calls = []
+    real = paths_mod.build_index
+    monkeypatch.setattr(paths_mod, "build_index",
+                        lambda t: (calls.append(t), real(t))[1])
+
+    clusters, reports = connectors.collect(tree, sorted(tmp_path.glob("*.tsv")))
+
+    assert len(reports) == 3, "every path was still checked"
+    assert len(calls) == 1, f"index built {len(calls)} times for 3 paths"
+
+
 # -- rendering ---------------------------------------------------------
 
 

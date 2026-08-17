@@ -44,6 +44,8 @@ __all__ = [
     "PathStep",
     "StepResult",
     "PathReport",
+    "TreeIndex",
+    "build_index",
     "normalise",
     "parse_path",
     "load_path",
@@ -336,7 +338,54 @@ def _name_variants(person: Person) -> set[str]:
     return variants
 
 
-def check(tree: Tree, steps: list[PathStep]) -> PathReport:
+@dataclass
+class TreeIndex:
+    """Everything `check` needs about a tree, independent of any path.
+
+    **Built once per tree, not once per path.** `connectors` exists because
+    loading the merge for every path file would pay the whole cost each time —
+    and then `check` went and rebuilt a name index and a full connected-components
+    pass per call anyway, which is the same mistake one level down. At 26 path
+    files that was invisible. At **586** it is a run measured in hours: 586 sweeps
+    over 448,665 people building name variants, plus 586 component walks over
+    213,562 families.
+
+    `check` still builds one on demand, so a single-path caller needs no index and
+    behaves exactly as before.
+    """
+
+    by_name: dict[str, list[str]]
+    by_token: dict[str, set[str]]
+    token_people: dict[str, int]
+    component_of: dict[str, int]
+    component_sizes: list[int]
+
+
+def build_index(tree: Tree) -> TreeIndex:
+    """The name and component lookups for one tree."""
+    by_name: dict[str, list[str]] = {}
+    by_token: dict[str, set[str]] = {}
+    for geni_id, person in tree.people.items():
+        for variant in _name_variants(person):
+            by_name.setdefault(variant, []).append(geni_id)
+            for token in variant.split():
+                by_token.setdefault(token, set()).add(geni_id)
+
+    comps = frontier.components(tree)
+    return TreeIndex(
+        by_name=by_name,
+        by_token=by_token,
+        token_people={token: len(ids) for token, ids in by_token.items()},
+        component_of={
+            member: index
+            for index, comp in enumerate(comps, start=1)
+            for member in comp.members
+        },
+        component_sizes=[c.size for c in comps],
+    )
+
+
+def check(tree: Tree, steps: list[PathStep], index: TreeIndex | None = None) -> PathReport:
     """Resolve every step of a path against the merged tree.
 
     Steps are resolved in order and a person settled by one step is not offered
@@ -348,31 +397,21 @@ def check(tree: Tree, steps: list[PathStep]) -> PathReport:
     ``Queen consort of Hungary`` and the tokens are a subset. It reported the
     doorway itself as already held, which is the exact opposite of the truth and
     would have argued against taking the export that matters most.
-    """
-    by_name: dict[str, list[str]] = {}
-    by_token: dict[str, set[str]] = {}
-    for geni_id, person in tree.people.items():
-        for variant in _name_variants(person):
-            by_name.setdefault(variant, []).append(geni_id)
-            for token in variant.split():
-                by_token.setdefault(token, set()).add(geni_id)
-    token_people = {token: len(ids) for token, ids in by_token.items()}
 
-    comps = frontier.components(tree)
-    component_of = {
-        member: index
-        for index, comp in enumerate(comps, start=1)
-        for member in comp.members
-    }
+    Pass an `index` when checking many paths against one tree; see `TreeIndex`.
+    """
+    if index is None:
+        index = build_index(tree)
 
     results = []
     used: set[str] = set()
     for step in steps:
-        result = _resolve(step, tree, by_name, by_token, token_people, component_of, used)
+        result = _resolve(step, tree, index.by_name, index.by_token,
+                          index.token_people, index.component_of, used)
         if result.person is not None:
             used.add(result.person.geni_id)
         results.append(result)
-    return PathReport(results=results, component_sizes=[c.size for c in comps])
+    return PathReport(results=results, component_sizes=index.component_sizes)
 
 
 def _resolve(

@@ -260,9 +260,13 @@ def collect(
     """
     reports: dict[str, paths_mod.PathReport] = {}
     found: list[Bridge] = []
+    # One index for the whole run. `check` builds its own when handed none, and
+    # that is a full name-variant sweep plus a connected-components walk — fine
+    # for one path, and 586 times over at the size this corpus of paths reached.
+    index = paths_mod.build_index(tree)
     for file in sorted(path_files):
         name = file.stem
-        report = paths_mod.check(tree, paths_mod.load_path(file))
+        report = paths_mod.check(tree, paths_mod.load_path(file), index)
         reports[name] = report
         found.extend(bridges(report, name))
     return cluster(found), reports
