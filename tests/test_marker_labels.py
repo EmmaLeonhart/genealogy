@@ -247,3 +247,82 @@ def test_the_marker_classes_stay_distinguishable(census):
     assert census.VOCABULARY["nn"] == "narrow"
     assert census.VOCABULARY["unknown"] == "word"
     assert "子" not in census.CJK_RELATIONSHIP
+
+
+# -- the normalisation, which is where a wrong class says a wrong thing ------
+
+
+@pytest.fixture(scope="module")
+def fixes():
+    spec = importlib.util.spec_from_file_location(
+        "marker_label_fixes", REPO / "scripts" / "build-marker-label-fixes.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def _row(**kw):
+    row = {"kind": "marker", "position": "whole", "marker": "nn",
+           "vocabulary": "narrow", "remainder": "", "label": "", "qid": "",
+           "geni_id": "1"}
+    row.update(kw)
+    return row
+
+
+def test_a_repaired_name_never_becomes_nn(census, fixes):
+    """`Catherine unknown` is a woman called Catherine, not an unnamed person.
+
+    A marker at the tail or inside means the name is *there* with a hole punched in
+    it. Classing these as unnamed would erase a given name sitting in the same
+    string, and the edit would look entirely reasonable while doing it.
+    """
+    out = fixes.classify_row(
+        _row(position="tail", marker="unknown", remainder="Catherine"),
+        census.CLAN_SUFFIX)
+    assert out == {"rule": "name repaired", "mul": "Catherine", "name": "Catherine"}
+
+
+def test_a_leading_marker_keeps_the_surname_beside_nn(census, fixes):
+    """`CLAUDE.md`: discarding these loses 3,605 real surnames."""
+    out = fixes.classify_row(
+        _row(position="head", marker="unknown", remainder="Bloomfield"),
+        census.CLAN_SUFFIX)
+    assert out["mul"] == "NN Bloomfield"
+    assert out["name"] == ""
+
+
+def test_the_clan_suffix_puts_her_surname_beside_nn(census, fixes):
+    """`盧氏 Chan` → `NN 盧 Chan`. `氏` is her own clan, so it belongs in her label."""
+    out = fixes.classify_row(
+        _row(kind="description", position="tail", marker="氏",
+             vocabulary="cjk", remainder="盧 Chan"),
+        census.CLAN_SUFFIX)
+    assert out == {"rule": "description+clan", "mul": "NN 盧 Chan", "name": ""}
+
+
+@pytest.mark.parametrize("marker,remainder", [
+    ("娘", "織田敏信"),          # her father
+    ("正室", "織田"),
+    ("wife", "William Lantham"),
+    ("mrs.", "Isaak Guggenheim"),
+])
+def test_a_relative_form_never_puts_the_relative_in_her_label(census, fixes,
+                                                              marker, remainder):
+    """The remainder here is somebody else. `織田敏信娘` is *daughter of Oda
+    Toshinobu* — putting `織田敏信` in her `mul` labels her with her father's name."""
+    out = fixes.classify_row(
+        _row(kind="description", position="tail", marker=marker,
+             vocabulary="cjk", remainder=remainder),
+        census.CLAN_SUFFIX)
+    assert out["mul"] == "NN"
+    assert out["name"] == ""
+
+
+def test_an_unrecognised_description_form_does_not_guess(census, fixes):
+    """A form this script has no rule for keeps the marker label bare rather than
+    assuming whose name the remainder is."""
+    out = fixes.classify_row(
+        _row(kind="description", position="tail", marker="something-new",
+             vocabulary="relationship", remainder="Somebody"),
+        census.CLAN_SUFFIX)
+    assert out["mul"] == "NN"

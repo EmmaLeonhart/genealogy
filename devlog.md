@@ -8276,3 +8276,39 @@ cannot serve both: dropping the carrying token loses her surname, and keeping it
 her husband's name. `CLAN_SUFFIX` is now its own list. `盧氏 Chan` → `盧 Chan`,
 `信秀正室 織田` → `織田`, and `正室`/`側室`/`室` stay distinct because principal wife,
 concubine and consort are different statements about a person.
+
+
+## 2026-08-17 — the normalisation, four rules, and the class that must not be `NN`
+
+`scripts/build-marker-label-fixes.py` turns the census into label edits. Against the
+Geni half, **32,893 edits**:
+
+| rule | edits |
+| --- | ---: |
+| `unnamed` — no name at all, `mul: NN` | 21,054 |
+| `marker+surname` — `<private> Pereira` → `NN Pereira` | 8,131 |
+| `description` — `Wife of William Lantham` → `mul: NN` | 2,329 |
+| `name repaired` — **no `NN` at all** | 733 |
+| `description+clan` — `盧氏 Chan` → `NN 盧 Chan` | 646 |
+
+**9,510 keep a real surname beside the marker** rather than collapsing to bare `NN`.
+
+**The class that matters most is the smallest.** 733 people whose label is a real name
+with a marker wedged into it are **not unnamed** and must not get `NN`:
+
+    Catherine unknown                 -> Catherine
+    Theodechildis (Unknown)           -> Theodechildis
+    Hermelt Unknown                   -> Hermelt
+    Hadaburg N.N. Gräfin im Saalgau   -> Hadaburg Gräfin im Saalgau
+
+Classing those as unnamed would erase a given name sitting in the same string, and the
+edit would look entirely reasonable while doing it. That is the failure this file's
+structure is built around: a wrong *class* does not produce a broken edit, it produces a
+plausible one that says the wrong thing about a person.
+
+**`RELATIVE_FORMS` is the other half of that.** `織田敏信娘` is *daughter of Oda
+Toshinobu*, so its remainder is her **father** — putting it in her `mul` would label her
+with his name. `氏` is the opposite, her own clan, and belongs there. A description form
+the script does not recognise contributes nothing to `mul` rather than being guessed at.
+
+45 tests in `tests/test_marker_labels.py`.
