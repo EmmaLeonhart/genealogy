@@ -1082,17 +1082,27 @@ B. **Run the status-report action once more** — an end-of-session summary.
 - Open questions for Emma: `questions.md`
 - The pre-wipe queue, 1,396 lines: `git show 4127170:queue.md`
 
-## Forest export run, 2026-08-17 — seven seeds Emma created, in sequence
+## THE EXPORT LOOP — 2026-08-17, and it is the top of this file
 
-Her instruction in chat: run a **Forest** export from each profile in
-`export_individuals_to_do_on_your_own.txt`, **in sequence**, downloading each zip
-before starting the next. Do **not** integrate them one at a time — the whole batch
-is filed into `exports/` in bulk only after every zip is down.
+**Emma, 2026-08-17:** *"this thing here is currently essentially the absolute top
+importance task to do. This full sequence and all this other stuff that we're
+doing, we should be operating on sequentially through the queue, with this stuff
+being the very first thing."*
 
-Precedent set the same morning: the `NN` mother created at
-`6000000227291886826` (mother of Rodrigo de las Varillas) was exported and
-downloaded end to end through Chrome automation — `export-geni (4).zip`, 11:39.
-That is the whole manual export workflow running without her.
+**The job changed shape.** *"From now on it's your job to create the individual and
+then do other stuff."* Creating the export seed on Geni was her manual labour; it
+is now mine. `docs/export-seed-rules.md` is the method — five tiers, patronymics
+first — and it is not repeated here.
+
+**A master profile is a skip, not a problem.** *"Sometimes you'll just run into a
+situation where it looks like you should be able to add an individual but you
+can't. If you run into anything like that then just don't bother that much and
+skip through it."* Move to the next slot; do not investigate, do not report it.
+
+### Phase 1 — the seven seeds she created herself
+
+`export_individuals_to_do_on_your_own.txt`. **Forest, 5000, one at a time**, each
+zip on disk before the next export is queued.
 
 - `6000000227258546877` Anders father of Anna
 - `6000000227291195824` NN Hersleb
@@ -1101,4 +1111,48 @@ That is the whole manual export workflow running without her.
 - `6000000227291028845` Håvard Øye-in-Heskestad
 - `6000000227290969847` Karl father of Carl
 - `6000000227289886830` Lewis father of Hugh
-- Then, and only then: file all seven zips into `exports/` in one batch.
+
+Precedent, same morning: the `NN` mother created at `6000000227291886826` (mother
+of Rodrigo de las Varillas) was created, exported and downloaded end to end under
+Chrome automation. That is the whole manual workflow running without her.
+
+### Phase 2 — the top-ten loop, and it repeats until the paths are flat
+
+**Only once every Phase 1 zip is down.** Then, on repeat:
+
+- Find the **ten people who appear most often across the relationship paths**
+  (`scripts/find-chain-gaps.py`, ranked by slots).
+- For each of the ten, **sequentially**: create the export individual per
+  `docs/export-seed-rules.md`, run the Forest export, download the zip.
+- Finish all ten, **then** integrate that batch of ten into `exports/`.
+- Re-run the check, take the new top ten, go again.
+
+**The stopping condition is flatness, not exhaustion.** Emma: *"until eventually
+we end up in a situation where every individual in these paths only shows up
+once… every individual in the path is there an equal amount, which would in this
+case be each one of them shows up exactly once."*
+
+### Phase 3 — midpoints, when and only when the paths are flat
+
+Once no person outranks another by slot count, rank by the **midpoint of each path
+sequence** instead. Her reasoning: a person created at a midpoint is where the
+Forest walk reaches and then spreads out from.
+
+**She expects this phase mostly not to fire.** *"I don't think it's going to be
+that common because the midpoint people are more rare."* So do not build machinery
+for it ahead of time.
+
+### Phase 4 — the sparse regions, after every bridge is cleared
+
+*"The second thing in the queue, after we've cleared all of the bridges in these
+files."* From the sparseness analysis (`reports/density.md`), take the regions
+**exported from exactly once**, and within those go for the ones **deepest down**.
+Create an individual there and run the same create → Forest → download loop.
+
+Her reason: *"these are the places that are likely going to have more people that
+we might not have encountered before."* Sampled once means the neighbourhood was
+touched and never returned to, which is exactly what the doorway column in
+`density` is measuring.
+
+Two of the three objectives set today come out of this loop running to completion,
+and it runs unattended.

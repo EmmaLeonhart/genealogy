@@ -84,6 +84,16 @@ informative part.
 
 ---
 
+## A master profile is a skip
+
+Sometimes a slot looks addable and is not — Geni's **master profiles** are locked
+against edits from an account that does not curate them. Emma, 2026-08-17: *"if it
+looks like you should be able to add an individual but you can't… just don't
+bother that much and skip through it."*
+
+So: move to the next slot. Do not work out why, do not report it, do not count
+them.
+
 ## When the whole visible tree is saturated
 
 If every slot on the page is filled, move to an ancestor's own tree rather than
