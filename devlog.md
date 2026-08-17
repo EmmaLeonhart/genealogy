@@ -8135,3 +8135,60 @@ for.
 `test_edit_emitters` 11 passed. The correspondence batch is unchanged at 3,719 edits
 and 180 withheld; only its review column moved, 996 → 990 pairs sharing no name token,
 because six of those pairs now have a label to share tokens with.
+
+
+## 2026-08-17 — the marker-label census, and a false positive caught before it shipped
+
+Emma's first label item: *"finds these kinds of ones where the label has this stuff
+already in it, and normalizes them into proper things based on our rules."*
+`scripts/build-marker-label-census.py` is the census that has to come first, per
+§ *"Analyse this" means build a CSV of every instance*. **Both stores, named
+separately** — the corpus through `reports/derived-labels.csv`, the local Wikidata store
+by a full scan of all 2,248 shards. Nothing asked of the network.
+
+**Three populations, and they need different handling**, which is why one number would
+have been useless:
+
+- **A marker leading a real surname.** `unknown Bloomfield`, `N Пузына`,
+  `N.N. Andersdatter Skeel`. The surname is real data — `CLAUDE.md` is explicit that
+  discarding it loses 3,605 surnames. Wikidata dominates: 18,280 `unknown`, 3,362 `nn`,
+  480 `n`, 260 `?`, 60 `n.n.`, 35 `private`, across ~11,400 items of which **only 367
+  carry a Geni ID**. This is Wikidata-side work, the same shape as the 1,588-item `NN`
+  batch and seven times its size.
+- **A real name with a marker wedged inside it**, ~1,950 labels, where the remainder is
+  simply the better label: `Catherine unknown` → `Catherine`,
+  `Hadaburg N.N. Gräfin im Saalgau` → `Hadaburg Gräfin im Saalgau`.
+  `is_placeholder_label` reads only the head token, so all of these ship as names today.
+- **A description already in the name slot** — 1,222 Geni people, 1,508 Wikidata items.
+  `wife of` 871, `daughter of` 605, `son of` 241, `mother of` 234, `nieto de` 58.
+
+**The description vocabulary is read out of the repo, not written from memory.**
+`_relationship_phrases` imports `WORDS` from `scripts/build-nn-label-batch.py` — the
+ten-language table this project uses to *generate* these very phrases — giving 154
+`(word, of)` pairs required adjacent. A label that reads like something we emit is a
+description by construction. `hija de Pedro` matches; `Rodrigo de Vivar` does not.
+**CJK is deliberately not detected**: `陳母` is *Chen's mother*, and reading a trailing
+`母` as a relationship marker is a decision about Chinese naming rather than a lookup.
+
+**The false positive, found by reading the output and fixed before the CSV was
+committed.** The first pass treated bare punctuation as a marker anywhere in a label,
+which caught `George Clark, II - farmer` and
+`Birch, Charles Weldon (1821 - 1894), Naturalist` — hyphenated prose, 289 rows over 112
+items, and stripping the hyphen mangles both. The cost here is asymmetric: a missed
+marker leaves a bad label alone, a false positive **destroys a good one**.
+
+Punctuation is now a marker only where a name would end **or when parenthesised**:
+`Toeloes .` and `Siti Komara .` keep their tail dot, `Nechama (?) Heller` keeps its
+bracketed hole, and the hyphenated prose is left alone. The brackets are in the data
+rather than inferred, which is why that is a second rule and not a shorter list.
+
+`tests/test_marker_labels.py`, 16 tests, pins the guards in both directions — because
+the regression that matters is the one that strips a real label, and it would only show
+up as a slightly smaller number in a later run.
+
+**Final census: 92,794 rows** — 62,093 over **31,243** Geni people and 30,701 over
+**17,707** Wikidata items. Zero hyphen-inside rows survive, 45 parenthesised stand-ins
+are correctly kept, and **9,679 rows over 6,957 subjects** are labels where simply
+stripping the marker leaves a better one. `reports/wikidata-nn-items.csv` — another file
+that fed a live batch with no generator — is superseded by this, since the 1,588 `NN`
+items it lists are a filtered view of these 17,707.

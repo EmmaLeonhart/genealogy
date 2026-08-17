@@ -914,17 +914,39 @@ the 806 Han-only people a `mul` — there was no route to one before.
 words. So the batches are `en` for everybody, then `mul` for everybody, then `ja`, then
 `zh`, then the rest — never a person walked once and labelled in seven languages.
 
-- **Normalise the labels that already carry a marker inside them.** Not `NN` alone —
-  labels that *contain* placeholder vocabulary and read as a description rather than a
-  name: `NN wife of Aun`, `Unknown Wife`, `N.N. Andersdatter Skeel`,
-  `Maka till Brynjolf Brandsson` (Swedish for *spouse of*), `Wife of רבי משה`,
-  `陳母` (*Chen's mother*), `nn Pedersdatter`, `ukj.`. These are what the marker rules
-  are for and they are currently passing straight through as names. Find every one —
-  **in the corpus and in the local Wikidata store, both sides named separately** — and
-  put them through the existing rules: the marker to `mul`, a real description to the
-  local languages, the surname kept where it is real. `scripts/labels.py` and
-  `is_placeholder_label` in `scripts/walk-structural-merge.py` are the two places that
-  already know part of this vocabulary and should end up as one.
+- **Normalise the labels that already carry a marker inside them.** The census is
+  built — `scripts/build-marker-label-census.py` → `reports/marker-labels.csv`, both
+  stores — and it splits the job into three populations that need different handling.
+  What is left is the *normalisation*, which is emitting from that CSV:
+
+  - **A marker leading a real surname — keep the surname, marker to `mul`.**
+    `unknown Bloomfield` → `mul: NN Bloomfield`, and a description in the local
+    languages. This is the bulk of it and the Wikidata side dominates: 18,280
+    `unknown`, 3,362 `nn`, 480 `n`, 260 `?`, 60 `n.n.`, 35 `private`.
+  - **A real name with a marker wedged inside it — strip the marker, keep the rest.**
+    `Catherine unknown` → `Catherine`, `Nechama (?) Heller` → `Nechama Heller`,
+    `Hadaburg N.N. Gräfin im Saalgau` → `Hadaburg Gräfin im Saalgau`. Mechanical, no
+    judgement, ~1,950 labels. `is_placeholder_label` reads only the head token, so
+    every one of these currently ships as a name.
+  - **A description already sitting in the name slot** — 1,222 Geni people and 1,508
+    Wikidata items. `wife of` 871, `daughter of` 605, `son of` 241, `mother of` 234,
+    `nieto de` 58. These go `mul: NN` with the description kept as the local label,
+    which is where it already belongs — it is written, just in the wrong slot.
+
+  **Then fold the three vocabularies into one**, which is the part her item names and
+  the part that needs her answer below.
+
+- **NEEDS-DECISION, Emma: does the `wide` marker vocabulary stand?** `scripts/labels.py`
+  is deliberately narrow — `private`, `<private>` and the `NN` spellings — and its
+  docstring records her refusing `unknown` and `?` when they were added unasked: *"I
+  didn't tell you to do that. I didn't tell you to avoid the NN people."*
+  `build-relationship-label-preview.py` and `walk-structural-merge.py` treat a wider set
+  as markers, and **that wider set is what shipped in the 39,299-edit placeholder
+  batch**. The census puts the counts behind the question rather than a principle:
+  `unknown` **18,280 on Wikidata** and 2,127 in the corpus, `n` 612, `ukjent` 188,
+  `???` 137, `??` 130, `*` 96, `?` 95, `no name` 92, `not known` 15. It is not a tail.
+  Everything in the two bullets above that does not depend on the answer proceeds
+  meanwhile.
 
 - **`en` for every individual, as one step.** Includes the transcription she names:
   a Han-only or Cyrillic-only or Hebrew-only person gets an `en` made for them.
