@@ -1,10 +1,10 @@
 # Relationship path: isolate-geni-ole-mathias-abrahamsen-1883-1980
 
-**25 of 44 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**29 of 44 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–25, 15 of 25 held; path 2 — steps 26–44, 10 of 19 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–25, 19 of 25 held; path 2 — steps 26–44, 10 of 19 held. The run and doorway below are the first path's.
 
-**The unbroken run stops at step 15, Karen Pedersdatter Thrane.** The next step, **Maren Hansdatter Thrane**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 19, Christen Tygesen Trane.** The next step, **Daniel Kristensen Trane**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -25,10 +25,10 @@
 | 13 | Peder Christensson Lind | her father | [Peder Christensson Lind](https://www.geni.com/people/x/6000000005420097975) | id | 1 |
 | 14 | Margreta Pedersdatter Trane | his mother | [Margreta Pedersdatter Trane](https://www.geni.com/people/x/6000000003273013428) | id | 1 |
 | 15 | Karen Pedersdatter Thrane | her sister | [Karen Pedersdatter Thrane](https://www.geni.com/people/x/309744814030004598) | id | 1 |
-| 16 | Maren Hansdatter Thrane | her daughter | — | absent | — |
-| 17 | Christen Mathiasen Trane | her son | — | absent | — |
-| 18 | Tyge Christensen Trane | his son | — | absent | — |
-| 19 | Christen Tygesen Trane | his son | — | absent | — |
+| 16 | Maren Hansdatter Thrane | her daughter | [Maren Hansdatter Trane](https://www.geni.com/people/x/6000000004041912995) | id | 1 |
+| 17 | Christen Mathiasen Trane | her son | [Christen Mathiasen Trane](https://www.geni.com/people/x/300561274950002052) | id | 1 |
+| 18 | Tyge Christensen Trane | his son | [Tyge Christensen Trane](https://www.geni.com/people/x/6000000011593417435) | id | 1 |
+| 19 | Christen Tygesen Trane | his son | [Christen Tygesen Trane](https://www.geni.com/people/x/307394468360004699) | id | 1 |
 | 20 | Daniel Kristensen Trane | his son | — | absent | — |
 | 21 | Cathrine Marie Danielsdatter Trane | his daughter | — | absent | — |
 | 22 | Else Marie Fredriksdatter Rockman | her daughter | — | absent | — |

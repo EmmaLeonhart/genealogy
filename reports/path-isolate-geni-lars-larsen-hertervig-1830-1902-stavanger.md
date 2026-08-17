@@ -1,10 +1,10 @@
 # Relationship path: isolate-geni-lars-larsen-hertervig-1830-1902-stavanger
 
-**22 of 38 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**26 of 38 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–20, 12 of 20 held; path 2 — steps 21–38, 10 of 18 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–20, 16 of 20 held; path 2 — steps 21–38, 10 of 18 held. The run and doorway below are the first path's.
 
-**The unbroken run stops at step 12, Claus Henriksen Miltzow.** The next step, **Margareta Henriksdatter Miltzow**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 16, Karen Henrichsdatter Weinwich.** The next step, **Fenrik og sersjant ved det Bergenske infanteriregiment) Carl Philip Adamsen de Wahl**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -22,10 +22,10 @@
 | 10 | Gudve Knudsdatter | her mother | [Gudve](https://www.geni.com/people/x/6000000005744994368) | id | 1 |
 | 11 | Ingjerd Clausdatter Miltzow | her mother | [Ingjerd Clausdatter Miltzow](https://www.geni.com/people/x/6000000000694158525) | id | 1 |
 | 12 | Claus Henriksen Miltzow | her father | [Claus Henriksen Miltzow](https://www.geni.com/people/x/6000000008115020929) | id | 1 |
-| 13 | Margareta Henriksdatter Miltzow | his sister | — | absent | — |
-| 14 | Karen Ottesdatter Schreuder | her daughter | — | absent | — |
-| 15 | Heinrich Christensen Weinwich | her son | — | absent | — |
-| 16 | Karen Henrichsdatter Weinwich | his daughter | — | absent | — |
+| 13 | Margareta Henriksdatter Miltzow | his sister | [Margareta Henriksdatter Miltzow](https://www.geni.com/people/x/6000000002736882707) | id | 1 |
+| 14 | Karen Ottesdatter Schreuder | her daughter | [Karen Ottesdatter](https://www.geni.com/people/x/6000000007980656874) | id | 1 |
+| 15 | Heinrich Christensen Weinwich | her son | [Heinrich Christensen](https://www.geni.com/people/x/6000000007980534360) | id | 1 |
+| 16 | Karen Henrichsdatter Weinwich | his daughter | [Karen Henrichsdatter Weinwich](https://www.geni.com/people/x/6000000007980874677) | id | 1 |
 | 17 | Fenrik og sersjant ved det Bergenske infanteriregiment) Carl Philip Adamsen de Wahl | her son | — | absent | — |
 | 18 | Lars Karlsen Tøge | his son | — | absent | — |
 | 19 | Joren Larsdtr. Hertervig | his daughter | — | absent | — |

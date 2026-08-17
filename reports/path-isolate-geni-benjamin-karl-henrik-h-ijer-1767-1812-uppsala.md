@@ -1,10 +1,10 @@
 # Relationship path: isolate-geni-benjamin-karl-henrik-h-ijer-1767-1812-uppsala
 
-**35 of 60 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**38 of 60 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–39, 25 of 39 held; path 2 — steps 40–60, 10 of 21 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–39, 28 of 39 held; path 2 — steps 40–60, 10 of 21 held. The run and doorway below are the first path's.
 
-**The unbroken run stops at step 25, Kristina Ivarsdatter Rova.** The next step, **Cecilia Nilsdotter**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 28, Cecilia Gren.** The next step, **Sigrid Eskilsdotter Banér**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -35,9 +35,9 @@
 | 23 | Eyvor Gautesdatter | his sister | [Eyvor](https://www.geni.com/people/x/6000000001165655151) | id | 1 |
 | 24 | Baron Ivar Ogmundsson Rova | her son | [Ivar Ogmundsson Rova](https://www.geni.com/people/x/6000000007328981837) | id | 1 |
 | 25 | Kristina Ivarsdatter Rova | his daughter | [Kristina Ivarsdatter](https://www.geni.com/people/x/6000000003897513958) | id | 1 |
-| 26 | Cecilia Nilsdotter | her daughter | — | absent | — |
-| 27 | Harald Stensson Gren | her son | — | absent | — |
-| 28 | Cecilia Gren | his daughter | — | absent | — |
+| 26 | Cecilia Nilsdotter | her daughter | [Cecilia Nilsdotter Ivar Nilssons ätt](https://www.geni.com/people/x/6000000006727840002) | id | 1 |
+| 27 | Harald Stensson Gren | her son | [Harald](https://www.geni.com/people/x/6000000001846026759) | id | 1 |
+| 28 | Cecilia Gren | his daughter | [Cecilia Haraldsdotter](https://www.geni.com/people/x/6000000001307847408) | id | 1 |
 | 29 | Sigrid Eskilsdotter Banér | her daughter | — | absent | — |
 | 30 | Cecilia Magnusdotter Eka | her daughter | — | absent | — |
 | 31 | Margareta Eriksdotter (Vasa) | her daughter | — | absent | — |

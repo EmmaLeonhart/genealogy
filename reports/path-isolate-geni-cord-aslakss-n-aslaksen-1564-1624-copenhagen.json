@@ -1,6 +1,6 @@
 {
   "steps_total": 22,
-  "steps_in_tree": 13,
+  "steps_in_tree": 16,
   "paths_in_this_file": 1,
   "chains": [
     {
@@ -8,13 +8,13 @@
       "first_step": 1,
       "last_step": 22,
       "steps_total": 22,
-      "steps_in_tree": 13,
+      "steps_in_tree": 16,
       "unbroken_run_ends_at": 13
     }
   ],
   "unbroken_run_ends_at": 13,
   "components": {
-    "1": 448321,
+    "1": 472655,
     "2": 344
   },
   "components_touched": [
@@ -23,8 +23,13 @@
   "gaps": [
     {
       "from": 14,
+      "to": 14,
+      "length": 1
+    },
+    {
+      "from": 18,
       "to": 22,
-      "length": 9
+      "length": 5
     }
   ],
   "steps": [
@@ -231,11 +236,11 @@
       "relation_to_previous": "her husband",
       "geni_id": "6000000003902489870",
       "geni_url": "https://www.geni.com/people/x/6000000003902489870",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "6000000003902489870",
+      "matched_name": "Christopher Giertssøn Morgenstierne",
       "candidates": []
     },
     {
@@ -245,11 +250,11 @@
       "relation_to_previous": "his wife",
       "geni_id": "5131571863040103622",
       "geni_url": "https://www.geni.com/people/x/5131571863040103622",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "5131571863040103622",
+      "matched_name": "Birgitte Ludvigsdatter Munthe",
       "candidates": []
     },
     {
@@ -259,11 +264,11 @@
       "relation_to_previous": "her father",
       "geni_id": "6000000002517120513",
       "geni_url": "https://www.geni.com/people/x/6000000002517120513",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "6000000002517120513",
+      "matched_name": "Ludvig Hansen Munthe",
       "candidates": []
     },
     {

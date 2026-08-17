@@ -1,8 +1,8 @@
 # Relationship path: isolate-geni-philip-fischel-vineberg-1914-1987-montreal-east
 
-**10 of 24 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**14 of 24 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**The unbroken run stops at step 10, Lars Lennart Larsson.** The next step, **Hedvig Sofia Tillberg**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 14, Liv Ullmann.** The next step, **Hans Jakob Stang**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -18,10 +18,10 @@
 | 8 | Karl Gustaf Eriksson | her son | [Karl Gustav](https://www.geni.com/people/x/6000000025153348204) | id | 1 |
 | 9 | Hildur Cecilia Frideborg Eriksson | his daughter | [Hildur Cecilia Frideborg Eriksson](https://www.geni.com/people/x/6000000019509377608) | id | 1 |
 | 10 | Lars Lennart Larsson | her adopted son | [Lars Lennart Sjöberg](https://www.geni.com/people/x/6000000186609053824) | id | 1 |
-| 11 | Hedvig Sofia Tillberg | his mother | — | absent | — |
-| 12 | Erik Henrik Fredrik Bergman | her partner | — | absent | — |
-| 13 | Ingmar Bergman | his son | — | absent | — |
-| 14 | Liv Ullmann | his ex-partner | — | absent | — |
+| 11 | Hedvig Sofia Tillberg | his mother | [Hedvig Sofia Sjöberg](https://www.geni.com/people/x/6000000012754388121) | id | 1 |
+| 12 | Erik Henrik Fredrik Bergman | her partner | [Erik Henrik Fredrik Bergman](https://www.geni.com/people/x/6000000003252323043) | id | 1 |
+| 13 | Ingmar Bergman | his son | [Ernst Ingmar Bergman](https://www.geni.com/people/x/6000000003252172731) | id | 1 |
+| 14 | Liv Ullmann | his ex-partner | [Liv Johanne Ullmann](https://www.geni.com/people/x/6000000006918976244) | id | 1 |
 | 15 | Hans Jakob Stang | her ex-husband | — | absent | — |
 | 16 | <private> Stang | his brother | — | absent | — |
 | 17 | Marianne Christine Stang Ihlen | his wife | — | absent | — |

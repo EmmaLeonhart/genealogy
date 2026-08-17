@@ -1047,9 +1047,18 @@ people, seeded on placeholders she made at the midpoints of path gaps:
 `6000000227288930948` `Wilchen /Tybekken/` · `…289663852` `Øystein /father of Berta/` ·
 `…289604840` `Michel /Jude/` · `…289792822` `Björn /father of Prinsessan/`.
 
-**Still to run for this batch, in order:** re-merge; `genimerge connectors` to measure
-what the four closed; then the next midpoint batch off the new gaps, opened as
-family-tree pages. Her framing: *"I think I can get those paths cleared soon."*
+**Done for this batch:** re-merged to 472,999 people; measured — the four exports closed
+**199 chain people**, held 3,337 → 3,536 and steps held 66.5% → **67.7%**; the next 50
+midpoints picked off the regenerated ranking and opened as family-tree pages.
+
+**No already-opened filter, and no accumulating handoff.** The regenerated ranking drops
+a closed person by itself — eight of the first batch's fifty are gone from it — so the
+filter I added excluded 42 people who are still gaps and pushed her down to weaker
+candidates. Both corrections are in `CLAUDE.md`.
+
+**Next for this campaign:** her exports off the current 50, then the same loop —
+re-merge, regenerate, open the new top 50. Her framing: *"I think I can get those paths
+cleared soon."*
 
 ## Always last — pinned to the tail
 

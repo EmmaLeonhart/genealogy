@@ -1,8 +1,8 @@
 # Relationship path: isolate-geni-dr-phil-otto-antscherl-1895-1942
 
-**11 of 24 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**14 of 24 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**The unbroken run stops at step 11, Peder Olsen.** The next step, **Thorvald Pedersen Olsen**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 14, Lilly Wilhelmine Olsen.** The next step, **Pauline Stastny / Kohoutek**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -19,9 +19,9 @@
 | 9 | Inger Maria Hansdtr. Stangeland | his wife | [Inger Maria Hansdtr. Skjæveland](https://www.geni.com/people/x/6000000009501285201) | id | 1 |
 | 10 | Karina Maria Olsdatter Skjæveland | her mother | [Karina Maria Olsdatter Skjæveland)](https://www.geni.com/people/x/6000000003020260250) | id | 1 |
 | 11 | Peder Olsen | her brother | [Peder Olsen Skjæveland](https://www.geni.com/people/x/6000000003020007786) | id | 1 |
-| 12 | Thorvald Pedersen Olsen | his son | — | absent | — |
-| 13 | Erling Olsen | his son | — | absent | — |
-| 14 | Lilly Wilhelmine Olsen | his wife | — | absent | — |
+| 12 | Thorvald Pedersen Olsen | his son | [Thorvald Pedersen Olsen](https://www.geni.com/people/x/6000000058942363901) | id | 1 |
+| 13 | Erling Olsen | his son | [Erling Olsen](https://www.geni.com/people/x/6000000058941952122) | id | 1 |
+| 14 | Lilly Wilhelmine Olsen | his wife | [Lilly Wilhelmine Kohoutek](https://www.geni.com/people/x/6000000053542203021) | id | 1 |
 | 15 | Pauline Stastny / Kohoutek | her mother | — | absent | — |
 | 16 | Gustav Spitz | her brother | — | absent | — |
 | 17 | Elisabeth Spitz | his wife | — | absent | — |

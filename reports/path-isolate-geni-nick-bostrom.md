@@ -1,10 +1,10 @@
 # Relationship path: isolate-geni-nick-bostrom
 
-**31 of 60 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**32 of 60 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–39, 20 of 39 held; path 2 — steps 40–60, 11 of 21 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–39, 21 of 39 held; path 2 — steps 40–60, 11 of 21 held. The run and doorway below are the first path's.
 
-**The unbroken run stops at step 20, Olov Eriksdotter.** The next step, **Gyrid Eriksdatter Galtung**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 21, Gyrid Eriksdatter Galtung.** The next step, **Toralde Gunnarsson Kane, III**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -30,7 +30,7 @@
 | 18 | Viking Finnson Aga | his father | [Viking Finnson Aga](https://www.geni.com/people/x/6000000002893299372) | id | 1 |
 | 19 | N.N. Vikingsdotter Nordbø | his mother | [N.N. Vikingsdotter Nordbø](https://www.geni.com/people/x/382365552280005357) | id | 1 |
 | 20 | Olov Eriksdotter | her mother | [Olov Eriksdotter](https://www.geni.com/people/x/6000000004211630381) | id | 1 |
-| 21 | Gyrid Eriksdatter Galtung | her sister | — | absent | — |
+| 21 | Gyrid Eriksdatter Galtung | her sister | [Gyrid Eriksdatter Galtung](https://www.geni.com/people/x/6000000001463345179) | id | 1 |
 | 22 | Toralde Gunnarsson Kane, III | her son | — | absent | — |
 | 23 | Otte Toraldesson Kane | his son | — | absent | — |
 | 24 | Ottilia Ottesdatter Kane | his daughter | — | absent | — |

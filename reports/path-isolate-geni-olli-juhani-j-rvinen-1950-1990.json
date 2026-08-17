@@ -1,6 +1,6 @@
 {
   "steps_total": 79,
-  "steps_in_tree": 43,
+  "steps_in_tree": 45,
   "paths_in_this_file": 2,
   "chains": [
     {
@@ -8,7 +8,7 @@
       "first_step": 1,
       "last_step": 56,
       "steps_total": 56,
-      "steps_in_tree": 32,
+      "steps_in_tree": 34,
       "unbroken_run_ends_at": 32
     },
     {
@@ -22,7 +22,7 @@
   ],
   "unbroken_run_ends_at": 32,
   "components": {
-    "1": 448321,
+    "1": 472655,
     "2": 344
   },
   "components_touched": [
@@ -31,8 +31,13 @@
   "gaps": [
     {
       "from": 33,
+      "to": 45,
+      "length": 13
+    },
+    {
+      "from": 48,
       "to": 56,
-      "length": 24
+      "length": 9
     },
     {
       "from": 68,
@@ -678,11 +683,11 @@
       "relation_to_previous": "her daughter",
       "geni_id": "6000000002269510873",
       "geni_url": "https://www.geni.com/people/x/6000000002269510873",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "6000000002269510873",
+      "matched_name": "Emerentia Thomasdotter Palthen",
       "candidates": []
     },
     {
@@ -692,11 +697,11 @@
       "relation_to_previous": "her daughter",
       "geni_id": "6000000002269448390",
       "geni_url": "https://www.geni.com/people/x/6000000002269448390",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "6000000002269448390",
+      "matched_name": "Ingeborg Kustaantytär Speitz",
       "candidates": []
     },
     {

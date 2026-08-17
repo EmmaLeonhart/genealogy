@@ -1,8 +1,8 @@
 # Relationship path: isolate-geni-gerhard-otto-heinzelmann-1884-1951-halle-saale
 
-**15 of 28 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**19 of 28 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**The unbroken run stops at step 15, Jens Povelsen Alstrup.** The next step, **Elisabeth Jacobsdatter Bantzbil**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 19, Maren Vistisdatter.** The next step, **Karen Jensdatter**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -23,10 +23,10 @@
 | 13 | Kirsten Madsdatter Huus | his mother | [Kirsten Madsdatter](https://www.geni.com/people/x/6000000077762121855) | id | 1 |
 | 14 | Povel Madsen Alstrup | her brother | [Povel Madsen Alstrup](https://www.geni.com/people/x/6000000007259558393) | id | 1 |
 | 15 | Jens Povelsen Alstrup | his son | [Jens Povelsen Alstrup](https://www.geni.com/people/x/6000000007980446198) | id | 1 |
-| 16 | Elisabeth Jacobsdatter Bantzbil | his wife | — | absent | — |
-| 17 | Jacob Jensen Bandsbøl | her father | — | absent | — |
-| 18 | Karen Jensdatter Dahl | his sister | — | absent | — |
-| 19 | Maren Vistisdatter | her daughter | — | absent | — |
+| 16 | Elisabeth Jacobsdatter Bantzbil | his wife | [Elisabeth Jacobsdatter Bantzbil](https://www.geni.com/people/x/6000000006818041447) | id | 1 |
+| 17 | Jacob Jensen Bandsbøl | her father | [Jacob Jensen](https://www.geni.com/people/x/6000000000375056969) | id | 1 |
+| 18 | Karen Jensdatter Dahl | his sister | [Karen Jensdatter](https://www.geni.com/people/x/340883344110012776) | id | 1 |
+| 19 | Maren Vistisdatter | her daughter | [Maren Vistisdatter](https://www.geni.com/people/x/340860969230013158) | id | 1 |
 | 20 | Karen Jensdatter | her daughter | — | absent | — |
 | 21 | Mads Christensen Rahbek, i Borris | her son | — | absent | — |
 | 22 | Jacob Madsen Rahbek | his son | — | absent | — |

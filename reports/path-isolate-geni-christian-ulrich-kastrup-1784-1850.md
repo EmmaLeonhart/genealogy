@@ -1,10 +1,10 @@
 # Relationship path: isolate-geni-christian-ulrich-kastrup-1784-1850
 
-**25 of 37 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**30 of 37 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–21, 14 of 21 held; path 2 — steps 22–37, 11 of 16 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–21, 17 of 21 held; path 2 — steps 22–37, 13 of 16 held. The run and doorway below are the first path's.
 
-**The unbroken run stops at step 14, Prost, Kristen Lauritsen Lind.** The next step, **Samuel Lauritsson Lind**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 17, Gabriel Christenson Linde.** The next step, **Else Beate Gabrielsdatter Linde**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -24,9 +24,9 @@
 | 12 | Margreta Pedersdatter Lind | her mother | [Margreta Pedersdatter](https://www.geni.com/people/x/6000000005420481509) | id | 1 |
 | 13 | Peder Christensson Lind | her father | [Peder Christensson Lind](https://www.geni.com/people/x/6000000005420097975) | id | 1 |
 | 14 | Prost, Kristen Lauritsen Lind | his father | [Kristen Lauritsen Lind](https://www.geni.com/people/x/6000000005419036970) | id | 1 |
-| 15 | Samuel Lauritsson Lind | his brother | — | absent | — |
-| 16 | Margrethe Samuelsdatter Lind | his daughter | — | absent | — |
-| 17 | Gabriel Christenson Linde | her son | — | absent | — |
+| 15 | Samuel Lauritsson Lind | his brother | [Samuel Lauritsson](https://www.geni.com/people/x/6000000007648809246) | id | 1 |
+| 16 | Margrethe Samuelsdatter Lind | his daughter | [Margrethe Samuelsdatter Lind](https://www.geni.com/people/x/6000000001169257586) | id | 1 |
+| 17 | Gabriel Christenson Linde | her son | [Gabriel Christenson Linde](https://www.geni.com/people/x/6000000007245267073) | id | 1 |
 | 18 | Else Beate Gabrielsdatter Linde | his daughter | — | absent | — |
 | 19 | Niels Christiansen Bugge | her son | — | absent | — |
 | 20 | Maren Vaal Bugge | his daughter | — | absent | — |
@@ -40,8 +40,8 @@
 | 28 | Jorine Tollaksdatter Lura | his sister | [Jorine Tollaksdatter Raustad](https://www.geni.com/people/x/6000000003491988494) | id | 1 |
 | 29 | Jonas Eivindson Lura | her husband | [Jonas Eivindson Lura](https://www.geni.com/people/x/6000000003491988732) | id | 1 |
 | 30 | Johanna Elisabet Eriksdatter Lura | his wife | [Johanna Elisabet Eriksdatter Stangeland](https://www.geni.com/people/x/6000000003491988781) | id | 1 |
-| 31 | Erik Erikson Stangeland | her father | — | absent | — |
-| 32 | Ingeborg Eriksdatter Time | his mother | — | absent | — |
+| 31 | Erik Erikson Stangeland | her father | [Erik Erikson Time](https://www.geni.com/people/x/6000000011198194484) | id | 1 |
+| 32 | Ingeborg Eriksdatter Time | his mother | [Ingeborg Eriksdatter Netland](https://www.geni.com/people/x/6000000005607411844) | id | 1 |
 | 33 | Erik Eriksen Netland | her brother | [Erik Eriksen](https://www.geni.com/people/x/6000000003514436577) | id | 1 |
 | 34 | Ellen Marie Michaelsdatter Berg | his wife | [Ellen Marie Michaelsdatter](https://www.geni.com/people/x/6000000003514644022) | id | 1 |
 | 35 | Anna Nielsdatter Bugge | her mother | — | absent | — |

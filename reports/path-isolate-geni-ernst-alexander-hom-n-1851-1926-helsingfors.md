@@ -1,10 +1,10 @@
 # Relationship path: isolate-geni-ernst-alexander-hom-n-1851-1926-helsingfors
 
-**34 of 63 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**39 of 63 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–42, 24 of 42 held; path 2 — steps 43–63, 10 of 21 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–42, 29 of 42 held; path 2 — steps 43–63, 10 of 21 held. The run and doorway below are the first path's.
 
-**The unbroken run stops at step 24, Estrid Pedersdotter Sparre över Blad.** The next step, **NN Pedersdatter Porse**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 29, Knut Arvidsson Sparre.** The next step, **Arvid Knutsson, till Torpa (Drake af Intorp)**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -34,11 +34,11 @@
 | 22 | Knut Bengtsson Bengtsson Sparre över Blad | her father | [Knut Bengtsson Bengtsson Sparre över Blad](https://www.geni.com/people/x/6000000031873939968) | id | 1 |
 | 23 | Bengt Lindormsson (Sparre över Blad) | his father | [Bengt](https://www.geni.com/people/x/6000000007089842705) | id | 1 |
 | 24 | Estrid Pedersdotter Sparre över Blad | his mother | [Estrid Pedersdotter Porse](https://www.geni.com/people/x/6000000007089811407) | id | 1 |
-| 25 | NN Pedersdatter Porse | her sister | — | absent | — |
-| 26 | Sigvid "The Robber" Sigvidsen Ribbing | her son | — | absent | — |
-| 27 | Ingeborg Sigvidsdotter (Sjöblad) | his daughter | — | absent | — |
-| 28 | Ingegärd Stjärna | her daughter | — | absent | — |
-| 29 | Knut Arvidsson Sparre | her son | — | absent | — |
+| 25 | NN Pedersdatter Porse | her sister | [NN Pedersdatter Porse](https://www.geni.com/people/x/6000000005506110023) | id | 1 |
+| 26 | Sigvid "The Robber" Sigvidsen Ribbing | her son | [Sigvid "The Robber" Sigvidsen Ribbing](https://www.geni.com/people/x/6000000002192078283) | id | 1 |
+| 27 | Ingeborg Sigvidsdotter (Sjöblad) | his daughter | [Ingeborg Sigvidsdotter](https://www.geni.com/people/x/6000000004661569157) | id | 1 |
+| 28 | Ingegärd Stjärna | her daughter | [Ingegärd Petersdatter Petersdotter](https://www.geni.com/people/x/6000000004647676194) | id | 1 |
+| 29 | Knut Arvidsson Sparre | her son | [Knut Arvidsson Drake af Intorp](https://www.geni.com/people/x/6000000005035483019) | id | 1 |
 | 30 | Arvid Knutsson, till Torpa (Drake af Intorp) | his son | — | absent | — |
 | 31 | Christina Arvidsdotter (Drake af Intorp) | his daughter | — | absent | — |
 | 32 | Cecilia Krok | her daughter | — | absent | — |

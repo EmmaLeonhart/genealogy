@@ -1,10 +1,12 @@
 # Relationship path: isolate-geni-anders-wilhelm-ingman-1819-1877-helsinki
 
-**35 of 48 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**37 of 48 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–28, 22 of 28 held; path 2 — steps 29–48, 13 of 20 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–28, 23 of 28 held; path 2 — steps 29–48, 14 of 20 held. The run and doorway below are the first path's.
 
 **The unbroken run stops at step 22, Johannes Simonsson Nauclérus.** The next step, **Harald Johansson Nauclérus**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+
+**1 steps past the gap are held anyway** — Anders Wilhelm Ingman onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
 
 ## Steps
 
@@ -37,7 +39,7 @@
 | 25 | Elias Haraldsson Nauclér | his son | — | absent | — |
 | 26 | Ebba Christina Nauklér | his daughter | — | absent | — |
 | 27 | Henrik Johan Henriksson Ingman | her son | — | absent | — |
-| 28 | Anders Wilhelm Ingman | his son | — | absent | — |
+| 28 | Anders Wilhelm Ingman | his son | [Anders Wilhelm](https://www.geni.com/people/x/6000000008034160064) | id | 1 |
 | 29 | You | — | [Emma Leonhart](https://www.geni.com/people/x/6000000087535357291) | repeat | 1 |
 | 30 | Helen Frisk | your mother | [Helen Frisk](https://www.geni.com/people/x/6000000177921459052) | repeat | 1 |
 | 31 | Hans Bertil Frisk | her father | [Hans Bertil Frisk](https://www.geni.com/people/x/6000000177921459066) | repeat | 1 |
@@ -57,4 +59,4 @@
 | 45 | Elisabet Fredrika Florin | his sister | — | absent | — |
 | 46 | Karl Fredrik Palmroth | her son | — | absent | — |
 | 47 | Emilia Fredrika Vilhelmina Palmroth | his daughter | — | absent | — |
-| 48 | Anders Wilhelm Ingman | her husband | — | absent | — |
+| 48 | Anders Wilhelm Ingman | her husband | [Anders Wilhelm](https://www.geni.com/people/x/6000000008034160064) | repeat | 1 |

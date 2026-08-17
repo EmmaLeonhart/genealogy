@@ -1,10 +1,10 @@
 # Relationship path: isolate-geni-christen-christian-dreyer-collin-1857-1926-oslo
 
-**25 of 42 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**30 of 42 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–24, 15 of 24 held; path 2 — steps 25–42, 10 of 18 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–24, 20 of 24 held; path 2 — steps 25–42, 10 of 18 held. The run and doorway below are the first path's.
 
-**The unbroken run stops at step 15, Karine Mikkelsdatter.** The next step, **Peder Haderslev Hansen**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 20, Else Marie Nicolaisdatter Lorentzen.** The next step, **Maren Østensdatter Dreyer**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -25,11 +25,11 @@
 | 13 | Peder Christensson Lind | her father | [Peder Christensson Lind](https://www.geni.com/people/x/6000000005420097975) | id | 1 |
 | 14 | Margreta Pedersdatter Trane | his mother | [Margreta Pedersdatter Trane](https://www.geni.com/people/x/6000000003273013428) | id | 1 |
 | 15 | Karine Mikkelsdatter | her mother | [Karine](https://www.geni.com/people/x/6000000001814424522) | id | 1 |
-| 16 | Peder Haderslev Hansen | her son | — | absent | — |
-| 17 | Alhed Pedersdatter Klæboe | his daughter | — | absent | — |
-| 18 | Peder Rasmussen Bardahl | her son | — | absent | — |
-| 19 | Nicolay Pedersen Greger | his son | — | absent | — |
-| 20 | Else Marie Nicolaisdatter Lorentzen | his daughter | — | absent | — |
+| 16 | Peder Haderslev Hansen | her son | [Peder Haderslev](https://www.geni.com/people/x/6000000001700481715) | id | 1 |
+| 17 | Alhed Pedersdatter Klæboe | his daughter | [Alhed Pedersdatter](https://www.geni.com/people/x/6000000007435635268) | id | 1 |
+| 18 | Peder Rasmussen Bardahl | her son | [Peder Rasmussen Bardahl](https://www.geni.com/people/x/6000000003575798587) | id | 1 |
+| 19 | Nicolay Pedersen Greger | his son | [Nicolay Pedersen Bardahl](https://www.geni.com/people/x/6000000001349326891) | id | 1 |
+| 20 | Else Marie Nicolaisdatter Lorentzen | his daughter | [Else Marie Nicolaisdatter Greger](https://www.geni.com/people/x/4341858) | id | 1 |
 | 21 | Maren Østensdatter Dreyer | her daughter | — | absent | — |
 | 22 | Østen Angell Eriksen Dreyer | her son | — | absent | — |
 | 23 | Marie Fredrikke Dreyer | his daughter | — | absent | — |

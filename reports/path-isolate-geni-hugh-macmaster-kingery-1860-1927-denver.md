@@ -1,8 +1,8 @@
 # Relationship path: isolate-geni-hugh-macmaster-kingery-1860-1927-denver
 
-**32 of 46 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**33 of 46 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**The unbroken run stops at step 30, Heilwig von Holstein-Rendsburg.** The next step, **Christian I King of Denmark, Norway and Sweden**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 31, Christian I King of Denmark, Norway and Sweden.** The next step, **Margaret of Denmark, Queen consort of Scotland**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 **2 steps past the gap are held anyway** — James V, King of Scots onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
 
@@ -40,7 +40,7 @@
 | 28 | Ingeburg von Mecklenburg | her daughter | [Ingeborg Princesson von Mecklenburg](https://www.geni.com/people/x/6000000003858749453) | id | 1 |
 | 29 | Gerhard VI von Holstein, Herzog von Schleswig-Holstein | her son | [Gerhard VI Von Holstein-rendsburg Holstein, Schauenburg](https://www.geni.com/people/x/4079111) | id | 1 |
 | 30 | Heilwig von Holstein-Rendsburg | his daughter | [Hedwig Holstein, Schauenburg](https://www.geni.com/people/x/6000000000679344754) | id | 1 |
-| 31 | Christian I King of Denmark, Norway and Sweden | her son | — | absent | — |
+| 31 | Christian I King of Denmark, Norway and Sweden | her son | [Christian I Christiaan of Oldenburg](https://www.geni.com/people/x/4103872) | id | 1 |
 | 32 | Margaret of Denmark, Queen consort of Scotland | his daughter | — | absent | — |
 | 33 | James IV, king of Scots | her son | — | absent | — |
 | 34 | James V, King of Scots | his son | [James V Stewart](https://www.geni.com/people/x/6000000003233882803) | id | 1 |

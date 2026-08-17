@@ -1,6 +1,6 @@
 {
   "steps_total": 45,
-  "steps_in_tree": 29,
+  "steps_in_tree": 31,
   "paths_in_this_file": 2,
   "chains": [
     {
@@ -8,7 +8,7 @@
       "first_step": 1,
       "last_step": 27,
       "steps_total": 27,
-      "steps_in_tree": 19,
+      "steps_in_tree": 21,
       "unbroken_run_ends_at": 19
     },
     {
@@ -22,7 +22,7 @@
   ],
   "unbroken_run_ends_at": 19,
   "components": {
-    "1": 448321,
+    "1": 472655,
     "2": 344
   },
   "components_touched": [
@@ -31,8 +31,13 @@
   "gaps": [
     {
       "from": 20,
+      "to": 24,
+      "length": 5
+    },
+    {
+      "from": 27,
       "to": 27,
-      "length": 8
+      "length": 1
     },
     {
       "from": 38,
@@ -384,11 +389,11 @@
       "relation_to_previous": "his daughter",
       "geni_id": "6000000007512010737",
       "geni_url": "https://www.geni.com/people/x/6000000007512010737",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "6000000007512010737",
+      "matched_name": "Maria Lovisa Erik-Johanintytär Snellman",
       "candidates": []
     },
     {
@@ -398,11 +403,11 @@
       "relation_to_previous": "her daughter",
       "geni_id": "6000000002757754423",
       "geni_url": "https://www.geni.com/people/x/6000000002757754423",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "6000000002757754423",
+      "matched_name": "Maria Augusta Emilia Cajanus",
       "candidates": []
     },
     {

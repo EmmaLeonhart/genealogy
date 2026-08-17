@@ -1,10 +1,12 @@
 # Relationship path: isolate-geni-haaken-hasberg-gran-1870-1955-oslo
 
-**22 of 41 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**24 of 41 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–23, 13 of 23 held; path 2 — steps 24–41, 9 of 18 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–23, 15 of 23 held; path 2 — steps 24–41, 9 of 18 held. The run and doorway below are the first path's.
 
 **The unbroken run stops at step 13, Laurits Andersen Heiberg.** The next step, **Sara Andersdatter Fuhr**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+
+**2 steps past the gap are held anyway** — Cathrine Fredrikke Holberg onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
 
 ## Steps
 
@@ -27,8 +29,8 @@
 | 15 | Karen Pedersdatter Hierman | her daughter | — | absent | — |
 | 16 | Maren Thøgersdatter Hofmann | her daughter | — | absent | — |
 | 17 | Karen Trulsdatter Krog | her daughter | — | absent | — |
-| 18 | Cathrine Fredrikke Holberg | her daughter | — | absent | — |
-| 19 | Fredrich Christian Holberg Arentz | her son | — | absent | — |
+| 18 | Cathrine Fredrikke Holberg | her daughter | [Cathrine Fredrikke Holberg](https://www.geni.com/people/x/6000000006979060394) | id | 1 |
+| 19 | Fredrich Christian Holberg Arentz | her son | [Fredrich Christian Holberg Arentz](https://www.geni.com/people/x/6000000006129048268) | id | 1 |
 | 20 | Ole Tidemann Arentz | his son | — | absent | — |
 | 21 | Maren Marie Gran | his daughter | — | absent | — |
 | 22 | August Kriegsmann Gran | her son | — | absent | — |

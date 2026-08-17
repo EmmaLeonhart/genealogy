@@ -1,12 +1,10 @@
 # Relationship path: isolate-geni-friedlieb-ferdinand-runge-1795-1867-oranienburg
 
-**37 of 69 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**42 of 69 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–44, 27 of 44 held; path 2 — steps 45–69, 10 of 25 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–44, 32 of 44 held; path 2 — steps 45–69, 10 of 25 held. The run and doorway below are the first path's.
 
-**The unbroken run stops at step 25, Ulfhild Sigtryggsdotter Boberg.** The next step, **Katarina Karlsdotter Lejonbalk**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
-
-**2 steps past the gap are held anyway** — Joachim Breide onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
+**The unbroken run stops at step 32, Ida Joachimsdatter Breide.** The next step, **N.N. Clausdatter von Ahlefeldt**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -37,11 +35,11 @@
 | 23 | Bengt Hafridsson Lejon | his father | [Bengt Hafridsson Lejon](https://www.geni.com/people/x/6000000005795638104) | id | 1 |
 | 24 | Hafrid Sigtryggsdotter Boberg | his mother | [Hafrid Sigtryggsdotter Boberg](https://www.geni.com/people/x/6000000003559734445) | id | 1 |
 | 25 | Ulfhild Sigtryggsdotter Boberg | her sister | [Ulfhild Sigtryggsdotter Boberg](https://www.geni.com/people/x/6000000004974399295) | id | 1 |
-| 26 | Katarina Karlsdotter Lejonbalk | her daughter | — | absent | — |
-| 27 | NN Puke | her daughter | — | absent | — |
-| 28 | Kettil Henriksson Glysing | her son | — | absent | — |
-| 29 | Bengta Kettilsdotter Glysing | his daughter | — | absent | — |
-| 30 | Katharina Ummereise | her daughter | — | absent | — |
+| 26 | Katarina Karlsdotter Lejonbalk | her daughter | [Katarina Karlsdotter Lejonbalk](https://www.geni.com/people/x/370166216450011194) | id | 1 |
+| 27 | NN Puke | her daughter | [NN Ragvaldsdotter](https://www.geni.com/people/x/6000000042612556966) | id | 1 |
+| 28 | Kettil Henriksson Glysing | her son | [Kettil](https://www.geni.com/people/x/6000000002514748909) | id | 1 |
+| 29 | Bengta Kettilsdotter Glysing | his daughter | [Bengta Kettilsdotter Glysing](https://www.geni.com/people/x/6000000005069335884) | id | 1 |
+| 30 | Katharina Ummereise | her daughter | [Katharina Johansdatter](https://www.geni.com/people/x/6000000005069556656) | id | 1 |
 | 31 | Joachim Breide | her son | [Joachim](https://www.geni.com/people/x/6000000001504212484) | id | 1 |
 | 32 | Ida Joachimsdatter Breide | his daughter | [Ida Harburgi](https://www.geni.com/people/x/6000000001504298777) | id | 1 |
 | 33 | N.N. Clausdatter von Ahlefeldt | her daughter | — | absent | — |

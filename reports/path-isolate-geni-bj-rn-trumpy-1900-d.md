@@ -1,10 +1,10 @@
 # Relationship path: isolate-geni-bj-rn-trumpy-1900-d
 
-**23 of 42 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**24 of 42 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–24, 13 of 24 held; path 2 — steps 25–42, 10 of 18 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–24, 14 of 24 held; path 2 — steps 25–42, 10 of 18 held. The run and doorway below are the first path's.
 
-**The unbroken run stops at step 13, Samuel Pedersen Vatne.** The next step, **Daniel Pedersen**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 14, Daniel Pedersen.** The next step, **Susanne Danielsdatter**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -23,7 +23,7 @@
 | 11 | Elisabeth Samuelsdatter Store Vatne | her mother | [Elisabeth Samuelsdatter Store Vatne](https://www.geni.com/people/x/6000000003253601093) | id | 1 |
 | 12 | Samuel Samuelson Store Vatne | her father | [Samuel Samuelson Vatne](https://www.geni.com/people/x/6000000002748554800) | id | 1 |
 | 13 | Samuel Pedersen Vatne | his father | [Samuel Pedersen Vatne](https://www.geni.com/people/x/6000000003253261775) | id | 1 |
-| 14 | Daniel Pedersen | his brother | — | absent | — |
+| 14 | Daniel Pedersen | his brother | [Daniel Pedersen](https://www.geni.com/people/x/6000000003492057788) | id | 1 |
 | 15 | Susanne Danielsdatter | his daughter | — | absent | — |
 | 16 | Gabriel Hansen, Feda | her son | — | absent | — |
 | 17 | Gabriel Gabrielsen Rolach | his son | — | absent | — |

@@ -1,10 +1,10 @@
 # Relationship path: isolate-geni-bengt-henry-gabriel-arne-broms-1929-2023-helsinki
 
-**36 of 65 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**39 of 65 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–44, 25 of 44 held; path 2 — steps 45–65, 11 of 21 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–44, 28 of 44 held; path 2 — steps 45–65, 11 of 21 held. The run and doorway below are the first path's.
 
-**The unbroken run stops at step 25, Carin Pedersdotter Fargalt.** The next step, **Sten Bosson, till Ekhult (Natt och Dag)**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 28, Måns Bengtsson (Natt och Dag).** The next step, **Kristina Natt och Dag**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -35,9 +35,9 @@
 | 23 | Ingeborg Svantepolksdotter | her sister | [Ingeborg Svantepolksdotter](https://www.geni.com/people/x/6000000006575228798) | id | 1 |
 | 24 | Birgitta Jonsdotter, Aspenäs | her daughter | [Birgitta Jonsdotter](https://www.geni.com/people/x/6000000011648683509) | id | 1 |
 | 25 | Carin Pedersdotter Fargalt | her daughter | [Carin Pedersdotter](https://www.geni.com/people/x/6000000001951168720) | id | 1 |
-| 26 | Sten Bosson, till Ekhult (Natt och Dag) | her son | — | absent | — |
-| 27 | Bengt Stensson, till Göksholm (Natt och Dag) | his son | — | absent | — |
-| 28 | Måns Bengtsson (Natt och Dag) | his son | — | absent | — |
+| 26 | Sten Bosson, till Ekhult (Natt och Dag) | her son | [Sten Bosson Bosson Natt Och Dag](https://www.geni.com/people/x/6000000001951142201) | id | 1 |
+| 27 | Bengt Stensson, till Göksholm (Natt och Dag) | his son | [Bengt Stensson Natt och Dag](https://www.geni.com/people/x/6000000003035926837) | id | 1 |
+| 28 | Måns Bengtsson (Natt och Dag) | his son | [Måns Bengtsson](https://www.geni.com/people/x/6000000003036073169) | id | 1 |
 | 29 | Kristina Natt och Dag | his daughter | — | absent | — |
 | 30 | Ingeborg Siggesdotter, till Bysta (Sparre) | her daughter | — | absent | — |
 | 31 | Catharina Göransdotter Stiernsköld, till Harviala | her daughter | — | absent | — |

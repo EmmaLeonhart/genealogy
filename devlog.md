@@ -8473,3 +8473,35 @@ repo-relative paths to zips copied *into* the export directory — I first added
 `Downloads/...` lines, which ignore nothing, and reverted. And the zip belongs beside the
 GEDCOM: `exports/edges/` holds both, which is what keeps her signal working, since an
 unignored zip appearing in `git status` is how a download announces itself.
+
+
+## 2026-08-17 — the midpoint loop, one turn of it
+
+Her four exports off the first midpoint batch, measured on the re-merged tree:
+
+| | before | after |
+| --- | ---: | ---: |
+| people | 448,665 | 472,999 |
+| path steps held | 16,291 (66.5%) | **16,578 (67.7%)** |
+| chain people held | 3,337 | **3,536** |
+| still a gap | 6,950 | **6,751** |
+| bridges / clusters | 891 / 419 | 895 / 447 |
+
+**199 chain people closed**, and eight of the fifty she had open are among them.
+
+**Two corrections, both mine, both things she had already told me.**
+
+I said the handoff file should accumulate what had been opened. It should not — *"don't
+make it accumulate overwriting is the intended functionality lol"*. And I had built an
+already-opened filter on top of it, which is the same thing she rejected on 2026-08-16
+(*"I don't know what the already open filter is for… I feel like it might be
+overcomplicating things"*). **The filter was not merely unnecessary, it was harmful**:
+the regenerated ranking already drops a person once an export covers them, so the only
+people the filter excluded were the **42 still-open gaps** from the first batch — including
+`Ragnhild Sahlin Wendt`, the single strongest candidate at 11 paths. It pushed her down the
+list to weaker seeds. Re-picked without it and re-opened.
+
+**And I reported a 344-person component as if it were a finding.** It is not: every path
+starts at her own profile, so a separate component cannot be on a chain, and 0 of the 344
+are. *"I asked for the chains being filled I didn't ask for an analysis of islands."*
+`CLAUDE.md` now says a small component is ignored.

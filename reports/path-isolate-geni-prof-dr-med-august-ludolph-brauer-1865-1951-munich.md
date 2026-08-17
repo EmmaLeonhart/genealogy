@@ -1,8 +1,8 @@
 # Relationship path: isolate-geni-prof-dr-med-august-ludolph-brauer-1865-1951-munich
 
-**30 of 45 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**32 of 45 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**The unbroken run stops at step 30, Heilwig von Holstein-Rendsburg.** The next step, **Gerhard VI "the Quarrelsome", Count of Oldenburg**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 32, Johann V. Graf von Oldenburg und Delmenhorst.** The next step, **Georg von Oldenburg, Count**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -38,8 +38,8 @@
 | 28 | Ingeburg von Mecklenburg | her daughter | [Ingeborg Princesson von Mecklenburg](https://www.geni.com/people/x/6000000003858749453) | id | 1 |
 | 29 | Gerhard VI von Holstein, Herzog von Schleswig-Holstein | her son | [Gerhard VI Von Holstein-rendsburg Holstein, Schauenburg](https://www.geni.com/people/x/4079111) | id | 1 |
 | 30 | Heilwig von Holstein-Rendsburg | his daughter | [Hedwig Holstein, Schauenburg](https://www.geni.com/people/x/6000000000679344754) | id | 1 |
-| 31 | Gerhard VI "the Quarrelsome", Count of Oldenburg | her son | — | absent | — |
-| 32 | Johann V. Graf von Oldenburg und Delmenhorst | his son | — | absent | — |
+| 31 | Gerhard VI "the Quarrelsome", Count of Oldenburg | her son | [Gerhard VI "the Quarrelsome" Oldenburg](https://www.geni.com/people/x/6000000004388761892) | id | 1 |
+| 32 | Johann V. Graf von Oldenburg und Delmenhorst | his son | [Johann V. von Oldenburg](https://www.geni.com/people/x/6000000001504437876) | id | 1 |
 | 33 | Georg von Oldenburg, Count | his son | — | absent | — |
 | 34 | Anna Honrichs | his daughter | — | absent | — |
 | 35 | Frowe Butjenter | her daughter | — | absent | — |

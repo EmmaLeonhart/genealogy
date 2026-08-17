@@ -1,8 +1,8 @@
 # Relationship path: isolate-geni-rni-magn-sson-1663-1730-k-benhavn
 
-**13 of 27 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**14 of 27 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**The unbroken run stops at step 13, Samuel Pedersen Vatne.** The next step, **Daniel Pedersen**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 14, Daniel Pedersen.** The next step, **Susanne Danielsdatter**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -21,7 +21,7 @@
 | 11 | Elisabeth Samuelsdatter Store Vatne | her mother | [Elisabeth Samuelsdatter Store Vatne](https://www.geni.com/people/x/6000000003253601093) | id | 1 |
 | 12 | Samuel Samuelson Store Vatne | her father | [Samuel Samuelson Vatne](https://www.geni.com/people/x/6000000002748554800) | id | 1 |
 | 13 | Samuel Pedersen Vatne | his father | [Samuel Pedersen Vatne](https://www.geni.com/people/x/6000000003253261775) | id | 1 |
-| 14 | Daniel Pedersen | his brother | — | absent | — |
+| 14 | Daniel Pedersen | his brother | [Daniel Pedersen](https://www.geni.com/people/x/6000000003492057788) | id | 1 |
 | 15 | Susanne Danielsdatter | his daughter | — | absent | — |
 | 16 | Anne Hansdatter Stangeland | her daughter | — | absent | — |
 | 17 | Thormodus Torveson Torfæus | her husband | — | absent | — |

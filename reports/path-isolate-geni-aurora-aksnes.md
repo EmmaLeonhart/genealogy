@@ -1,12 +1,10 @@
 # Relationship path: isolate-geni-aurora-aksnes
 
-**27 of 45 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**28 of 45 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–26, 17 of 26 held; path 2 — steps 27–45, 10 of 19 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–26, 18 of 26 held; path 2 — steps 27–45, 10 of 19 held. The run and doorway below are the first path's.
 
-**The unbroken run stops at step 13, Peder Christensson Lind.** The next step, **Karen Christensdatter Lind**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
-
-**4 steps past the gap are held anyway** — Karen Torlaksdatter Vikøy onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
+**The unbroken run stops at step 18, Lars Torsteinson Skeie.** The next step, **Synneva Larsdatter (116f) Skeie**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -25,7 +23,7 @@
 | 11 | Anna Tjølsdatter Obrestad | her mother | [Anna Tjølsdatter Obrestad](https://www.geni.com/people/x/6000000006776171804) | id | 1 |
 | 12 | Margreta Pedersdatter Lind | her mother | [Margreta Pedersdatter](https://www.geni.com/people/x/6000000005420481509) | id | 1 |
 | 13 | Peder Christensson Lind | her father | [Peder Christensson Lind](https://www.geni.com/people/x/6000000005420097975) | id | 1 |
-| 14 | Karen Christensdatter Lind | his sister | — | absent | — |
+| 14 | Karen Christensdatter Lind | his sister | [Karen Christensdatter Lind](https://www.geni.com/people/x/6000000007649299513) | id | 1 |
 | 15 | Karen Torlaksdatter Vikøy | her daughter | [Karen Torlaksdatter](https://www.geni.com/people/x/6000000002647962525) | id | 1 |
 | 16 | Ingegerd Monsdotter Soldal | her daughter | [Ingegerd Monsdotter Neteland](https://www.geni.com/people/x/6000000011987509395) | id | 1 |
 | 17 | Sigrid Olavsdatter Byrkjeland | her daughter | [Sigrid Olavsdatter Byrkjeland](https://www.geni.com/people/x/6000000023010651075) | id | 1 |

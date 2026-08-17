@@ -1,10 +1,12 @@
 # Relationship path: isolate-geni-olli-juhani-j-rvinen-1950-1990
 
-**43 of 79 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**45 of 79 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–56, 32 of 56 held; path 2 — steps 57–79, 11 of 23 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–56, 34 of 56 held; path 2 — steps 57–79, 11 of 23 held. The run and doorway below are the first path's.
 
 **The unbroken run stops at step 32, Prinzessin Euphemia Moerle-Kleeberg/Büdingen.** The next step, **Countess Irmgard von Büdingen, Gräfin von Mörle-Kleeburg**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+
+**2 steps past the gap are held anyway** — Emerentia Thomasdotter Palthen onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
 
 ## Steps
 
@@ -55,8 +57,8 @@
 | 43 | Heinrich I. von Stryck | his son | — | absent | — |
 | 44 | Margaretha von Strijk | his daughter | — | absent | — |
 | 45 | Anna Hartvigsdotter Palthenius | her daughter | — | absent | — |
-| 46 | Emerentia Thomasdotter Palthen | her daughter | — | absent | — |
-| 47 | Ingeborg Speitz | her daughter | — | absent | — |
+| 46 | Emerentia Thomasdotter Palthen | her daughter | [Emerentia Thomasdotter Palthen](https://www.geni.com/people/x/6000000002269510873) | id | 1 |
+| 47 | Ingeborg Speitz | her daughter | [Ingeborg Kustaantytär Speitz](https://www.geni.com/people/x/6000000002269448390) | id | 1 |
 | 48 | Ingeborg Johansdotter Pastell | her daughter | — | absent | — |
 | 49 | Gustaf Thomasson Roucko | her son | — | absent | — |
 | 50 | Johannes Gustafsson Pentilä | his son | — | absent | — |

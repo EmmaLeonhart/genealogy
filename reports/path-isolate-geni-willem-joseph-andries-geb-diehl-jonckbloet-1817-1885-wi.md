@@ -1,12 +1,12 @@
 # Relationship path: isolate-geni-willem-joseph-andries-geb-diehl-jonckbloet-1817-1885-wi
 
-**38 of 61 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**39 of 61 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–39, 27 of 39 held; path 2 — steps 40–61, 11 of 22 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–39, 28 of 39 held; path 2 — steps 40–61, 11 of 22 held. The run and doorway below are the first path's.
 
 **The unbroken run stops at step 23, Märta Pedersdatter Budde.** The next step, **Bengt Ebbesson Piik**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
-**4 steps past the gap are held anyway** — Bodil Bengtsdotter Piik onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
+**5 steps past the gap are held anyway** — Bodil Bengtsdotter Piik onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
 
 ## Steps
 
@@ -37,7 +37,7 @@
 | 23 | Märta Pedersdatter Budde | his mother | [Märta (Merete) Pederintytär Pedersdatter Budde](https://www.geni.com/people/x/6000000004139888268) | id | 1 |
 | 24 | Bengt Ebbesson Piik | her son | — | absent | — |
 | 25 | Bodil Bengtsdotter Piik | his daughter | [Bodil Bengtsdotter Piik](https://www.geni.com/people/x/6000000006727826436) | id | 1 |
-| 26 | Karin Lagesdotter Sparre | her daughter | — | absent | — |
+| 26 | Karin Lagesdotter Sparre | her daughter | [Karin Lagesdotter](https://www.geni.com/people/x/6000000006127381394) | id | 1 |
 | 27 | Anna Karlsdotter Vinstorp | her daughter | [Anna Karlsdotter Karlsdotter Vinstorp](https://www.geni.com/people/x/6000000001448263075) | id | 1 |
 | 28 | Ebba Eriksdotter (Vasa) | her daughter | [Ebba Eriksdotter](https://www.geni.com/people/x/6000000001448151252) | id | 1 |
 | 29 | Sveriges Drottning Margareta Eriksdotter Leijonhufvud, Queen of Sweden | her daughter | — | absent | — |

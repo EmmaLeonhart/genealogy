@@ -1,10 +1,8 @@
 # Relationship path: isolate-geni-aira-tellervo-kemil-inen-1919-2006-vesanto
 
-**25 of 46 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**26 of 46 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**The unbroken run stops at step 24, Estrid Pedersdotter Sparre över Blad.** The next step, **Peder Porse, unge**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
-
-**1 steps past the gap are held anyway** — Katarina Persdotter Porse onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
+**The unbroken run stops at step 26, Katarina Persdotter Porse.** The next step, **Knut Erengislesson Barun**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -34,7 +32,7 @@
 | 22 | Knut Bengtsson Bengtsson Sparre över Blad | her father | [Knut Bengtsson Bengtsson Sparre över Blad](https://www.geni.com/people/x/6000000031873939968) | id | 1 |
 | 23 | Bengt Lindormsson (Sparre över Blad) | his father | [Bengt](https://www.geni.com/people/x/6000000007089842705) | id | 1 |
 | 24 | Estrid Pedersdotter Sparre över Blad | his mother | [Estrid Pedersdotter Porse](https://www.geni.com/people/x/6000000007089811407) | id | 1 |
-| 25 | Peder Porse, unge | her brother | — | absent | — |
+| 25 | Peder Porse, unge | her brother | [Peder Porse](https://www.geni.com/people/x/6000000011238099380) | id | 1 |
 | 26 | Katarina Persdotter Porse | his daughter | [Katarina Persdotter Porse](https://www.geni.com/people/x/6000000005564554089) | id | 1 |
 | 27 | Knut Erengislesson Barun | her son | — | absent | — |
 | 28 | Estrid Knutsdotter Barun | his daughter | — | absent | — |

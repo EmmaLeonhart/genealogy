@@ -1,6 +1,6 @@
 {
   "steps_total": 51,
-  "steps_in_tree": 34,
+  "steps_in_tree": 38,
   "paths_in_this_file": 2,
   "chains": [
     {
@@ -8,7 +8,7 @@
       "first_step": 1,
       "last_step": 30,
       "steps_total": 30,
-      "steps_in_tree": 23,
+      "steps_in_tree": 25,
       "unbroken_run_ends_at": 23
     },
     {
@@ -16,13 +16,13 @@
       "first_step": 31,
       "last_step": 51,
       "steps_total": 21,
-      "steps_in_tree": 11,
+      "steps_in_tree": 13,
       "unbroken_run_ends_at": 41
     }
   ],
   "unbroken_run_ends_at": 23,
   "components": {
-    "1": 448321,
+    "1": 472655,
     "2": 344
   },
   "components_touched": [
@@ -31,13 +31,23 @@
   "gaps": [
     {
       "from": 24,
+      "to": 25,
+      "length": 2
+    },
+    {
+      "from": 28,
       "to": 30,
-      "length": 7
+      "length": 3
     },
     {
       "from": 42,
+      "to": 46,
+      "length": 5
+    },
+    {
+      "from": 49,
       "to": 51,
-      "length": 10
+      "length": 3
     }
   ],
   "steps": [
@@ -398,11 +408,11 @@
       "relation_to_previous": "her son",
       "geni_id": "6000000010877033547",
       "geni_url": "https://www.geni.com/people/x/6000000010877033547",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "6000000010877033547",
+      "matched_name": "Nils",
       "candidates": []
     },
     {
@@ -412,11 +422,11 @@
       "relation_to_previous": "his daughter",
       "geni_id": "6000000004407753123",
       "geni_url": "https://www.geni.com/people/x/6000000004407753123",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "6000000004407753123",
+      "matched_name": "Maria Catharina Mathesius",
       "candidates": []
     },
     {
@@ -692,11 +702,11 @@
       "relation_to_previous": "her son",
       "geni_id": "6000000010877033547",
       "geni_url": "https://www.geni.com/people/x/6000000010877033547",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "repeat",
+      "component": 1,
+      "matched_geni_id": "6000000010877033547",
+      "matched_name": "Nils",
       "candidates": []
     },
     {
@@ -706,11 +716,11 @@
       "relation_to_previous": "his daughter",
       "geni_id": "6000000004407753123",
       "geni_url": "https://www.geni.com/people/x/6000000004407753123",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "repeat",
+      "component": 1,
+      "matched_geni_id": "6000000004407753123",
+      "matched_name": "Maria Catharina Mathesius",
       "candidates": []
     },
     {

@@ -1,8 +1,8 @@
 # Relationship path: isolate-geni-jens-gregoriussen-riber-1480-1480-1571
 
-**16 of 28 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**19 of 28 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**The unbroken run stops at step 16, Peder Jensen Schielderup.** The next step, **Maren Pedersdatter Schielderup**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 19, Steen Christophersen Darre.** The next step, **Marte Steensdatter Darre**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -24,9 +24,9 @@
 | 14 | Jens Jørgensen | her father | [Jens Jørgensen](https://www.geni.com/people/x/6000000001838607806) | id | 1 |
 | 15 | Bispedatter Adriane Jensd Schielderup | his mother | [Adriane Jensdatter Schielderup](https://www.geni.com/people/x/6000000001506899998) | id | 1 |
 | 16 | Peder Jensen Schielderup | her brother | [Peder Jensen](https://www.geni.com/people/x/6000000000873947684) | id | 1 |
-| 17 | Maren Pedersdatter Schielderup | his daughter | — | absent | — |
-| 18 | Mentz Christophersen Darre | her husband | — | absent | — |
-| 19 | Steen Christophersen Darre | his brother | — | absent | — |
+| 17 | Maren Pedersdatter Schielderup | his daughter | [Maren Pedersdatter](https://www.geni.com/people/x/6000000006978128358) | id | 1 |
+| 18 | Mentz Christophersen Darre | her husband | [Mentz Christophersen Darre](https://www.geni.com/people/x/6000000001344452722) | id | 1 |
+| 19 | Steen Christophersen Darre | his brother | [Steen Christophersen Darre](https://www.geni.com/people/x/6000000001623460113) | id | 1 |
 | 20 | Marte Steensdatter Darre | his daughter | — | absent | — |
 | 21 | Jacob Olsen, 1655 | her husband | — | absent | — |
 | 22 | Gertrud Hansdatter | his wife | — | absent | — |

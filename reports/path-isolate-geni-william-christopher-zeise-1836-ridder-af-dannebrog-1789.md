@@ -1,10 +1,10 @@
 # Relationship path: isolate-geni-william-christopher-zeise-1836-ridder-af-dannebrog-1789
 
-**24 of 45 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**26 of 45 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–23, 15 of 23 held; path 2 — steps 24–45, 9 of 22 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–23, 16 of 23 held; path 2 — steps 24–45, 10 of 22 held. The run and doorway below are the first path's.
 
-**The unbroken run stops at step 15, Anna Adriansdatter Falkener.** The next step, **Peder Adriansøn Falkener**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 16, Peder Adriansøn Falkener.** The next step, **Rickert Petersøn Falkener**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -25,7 +25,7 @@
 | 13 | Henrik Gjertsen Gjertsen Miltzow | his father | [Henrik Gjertsen Miltzow](https://www.geni.com/people/x/6000000008115048412) | id | 1 |
 | 14 | Gjert Clausson Miltzow | his father | [Gjert Clausson Miltzow](https://www.geni.com/people/x/6000000002163543379) | id | 1 |
 | 15 | Anna Adriansdatter Falkener | his mother | [Anna Adriansdatter Falkener](https://www.geni.com/people/x/6000000007635630965) | id | 1 |
-| 16 | Peder Adriansøn Falkener | her brother | — | absent | — |
+| 16 | Peder Adriansøn Falkener | her brother | [Peter Adriansøn Falckner](https://www.geni.com/people/x/6000000002516491073) | id | 1 |
 | 17 | Rickert Petersøn Falkener | his son | — | absent | — |
 | 18 | Hans Rickartsen Hagerup | his son | — | absent | — |
 | 19 | Sogneprest Hans Hansen Hagerup | his son | — | absent | — |
@@ -42,7 +42,7 @@
 | 30 | Peder Pedersen Holm | his brother | [Peder Pedersen Pedersen](https://www.geni.com/people/x/6000000022232192246) | id | 1 |
 | 31 | Wallace Holm | his son | [George Wallace Pedersen](https://www.geni.com/people/x/6000000013125404014) | id | 1 |
 | 32 | Anna Severine Sahl Gjestdatter | his wife | [Anna Severine Sahl](https://www.geni.com/people/x/6000000010331113653) | id | 1 |
-| 33 | Johan Gerhard Gjestsen Sandnes | her brother | — | absent | — |
+| 33 | Johan Gerhard Gjestsen Sandnes | her brother | [Johan Gerhard Gjestsen](https://www.geni.com/people/x/6000000009958369975) | id | 1 |
 | 34 | Marie Sandnes | his wife | — | absent | — |
 | 35 | Georg Jakob Markus Sverdrup Johnsen | her brother | — | absent | — |
 | 36 | Georg Jacob Ulrichsen Sverdrup | his foster father | — | absent | — |

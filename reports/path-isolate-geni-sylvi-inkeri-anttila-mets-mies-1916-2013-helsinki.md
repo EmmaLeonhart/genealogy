@@ -1,8 +1,8 @@
 # Relationship path: isolate-geni-sylvi-inkeri-anttila-mets-mies-1916-2013-helsinki
 
-**38 of 59 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**41 of 59 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–17, 13 of 17 held; path 2 — steps 18–59, 25 of 42 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–17, 13 of 17 held; path 2 — steps 18–59, 28 of 42 held. The run and doorway below are the first path's.
 
 **The unbroken run stops at step 13, Maria Ivarintytär Hård af Segerstad.** The next step, **Thyra Landtman**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
@@ -52,9 +52,9 @@
 | 40 | Ingeborg Svantepolksdotter | her sister | [Ingeborg Svantepolksdotter](https://www.geni.com/people/x/6000000006575228798) | id | 1 |
 | 41 | Birgitta Jonsdotter, Aspenäs | her daughter | [Birgitta Jonsdotter](https://www.geni.com/people/x/6000000011648683509) | id | 1 |
 | 42 | Carin Pedersdotter Fargalt | her daughter | [Carin Pedersdotter](https://www.geni.com/people/x/6000000001951168720) | id | 1 |
-| 43 | Sten Bosson, till Ekhult (Natt och Dag) | her son | — | absent | — |
-| 44 | Bengt Stensson, till Göksholm (Natt och Dag) | his son | — | absent | — |
-| 45 | Brita Bengtsdotter (Natt och Dag) | his daughter | — | absent | — |
+| 43 | Sten Bosson, till Ekhult (Natt och Dag) | her son | [Sten Bosson Bosson Natt Och Dag](https://www.geni.com/people/x/6000000001951142201) | id | 1 |
+| 44 | Bengt Stensson, till Göksholm (Natt och Dag) | his son | [Bengt Stensson Natt och Dag](https://www.geni.com/people/x/6000000003035926837) | id | 1 |
+| 45 | Brita Bengtsdotter (Natt och Dag) | his daughter | [Brita Bengtsdotter Natt och Dag](https://www.geni.com/people/x/6000000001383550206) | id | 1 |
 | 46 | Karin Arendsdotter (Ulv) | her daughter | — | absent | — |
 | 47 | Arendt Persson, till Granhammar (Örnflycht) | her son | — | absent | — |
 | 48 | Bengt Arentsson (Örnflycht) | his son | — | absent | — |

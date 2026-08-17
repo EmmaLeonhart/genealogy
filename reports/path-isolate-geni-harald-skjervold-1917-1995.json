@@ -1,6 +1,6 @@
 {
   "steps_total": 50,
-  "steps_in_tree": 28,
+  "steps_in_tree": 30,
   "paths_in_this_file": 2,
   "chains": [
     {
@@ -8,7 +8,7 @@
       "first_step": 1,
       "last_step": 33,
       "steps_total": 33,
-      "steps_in_tree": 16,
+      "steps_in_tree": 18,
       "unbroken_run_ends_at": 16
     },
     {
@@ -22,7 +22,7 @@
   ],
   "unbroken_run_ends_at": 16,
   "components": {
-    "1": 448321,
+    "1": 472655,
     "2": 344
   },
   "components_touched": [
@@ -31,8 +31,13 @@
   "gaps": [
     {
       "from": 17,
+      "to": 19,
+      "length": 3
+    },
+    {
+      "from": 22,
       "to": 33,
-      "length": 17
+      "length": 12
     },
     {
       "from": 46,
@@ -314,11 +319,11 @@
       "relation_to_previous": "his son",
       "geni_id": "4958556935020125425",
       "geni_url": "https://www.geni.com/people/x/4958556935020125425",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "4958556935020125425",
+      "matched_name": "Kristen Sørensen Wittrup",
       "candidates": []
     },
     {
@@ -328,11 +333,11 @@
       "relation_to_previous": "his son",
       "geni_id": "6000000001169101609",
       "geni_url": "https://www.geni.com/people/x/6000000001169101609",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "6000000001169101609",
+      "matched_name": "Søfren Christensen Wittrup",
       "candidates": []
     },
     {

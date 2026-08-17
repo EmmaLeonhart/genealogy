@@ -1,6 +1,6 @@
 {
   "steps_total": 61,
-  "steps_in_tree": 33,
+  "steps_in_tree": 34,
   "paths_in_this_file": 2,
   "chains": [
     {
@@ -8,7 +8,7 @@
       "first_step": 1,
       "last_step": 42,
       "steps_total": 42,
-      "steps_in_tree": 23,
+      "steps_in_tree": 24,
       "unbroken_run_ends_at": 23
     },
     {
@@ -22,7 +22,7 @@
   ],
   "unbroken_run_ends_at": 23,
   "components": {
-    "1": 448321,
+    "1": 472655,
     "2": 344
   },
   "components_touched": [
@@ -31,8 +31,13 @@
   "gaps": [
     {
       "from": 24,
+      "to": 24,
+      "length": 1
+    },
+    {
+      "from": 26,
       "to": 42,
-      "length": 19
+      "length": 17
     },
     {
       "from": 53,
@@ -384,11 +389,11 @@
       "relation_to_previous": "her son",
       "geni_id": "6000000003815865534",
       "geni_url": "https://www.geni.com/people/x/6000000003815865534",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "6000000003815865534",
+      "matched_name": "Jöns Abjörnsson Sparre över Blad",
       "candidates": []
     },
     {

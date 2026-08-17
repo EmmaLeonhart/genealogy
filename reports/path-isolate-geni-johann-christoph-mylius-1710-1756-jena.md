@@ -1,8 +1,8 @@
 # Relationship path: isolate-geni-johann-christoph-mylius-1710-1756-jena
 
-**51 of 87 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**52 of 87 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–60, 36 of 60 held; path 2 — steps 61–87, 15 of 27 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–60, 36 of 60 held; path 2 — steps 61–87, 16 of 27 held. The run and doorway below are the first path's.
 
 **The unbroken run stops at step 36, Guta von Wittelsbach.** The next step, **N.N. von Sachsenkam**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
@@ -85,7 +85,7 @@
 | 73 | Henrik Gjertsen Gjertsen Miltzow | his father | [Henrik Gjertsen Miltzow](https://www.geni.com/people/x/6000000008115048412) | id | 1 |
 | 74 | Gjert Clausson Miltzow | his father | [Gjert Clausson Miltzow](https://www.geni.com/people/x/6000000002163543379) | id | 1 |
 | 75 | Anna Adriansdatter Falkener | his mother | [Anna Adriansdatter Falkener](https://www.geni.com/people/x/6000000007635630965) | id | 1 |
-| 76 | Peder Adriansøn Falkener | her brother | — | absent | — |
+| 76 | Peder Adriansøn Falkener | her brother | [Peter Adriansøn Falckner](https://www.geni.com/people/x/6000000002516491073) | id | 1 |
 | 77 | Rickert Petersøn Falkener | his son | — | absent | — |
 | 78 | Richard Rickertsen Hagerup | his son | — | absent | — |
 | 79 | Anne Richardsdatter Hagerup | his daughter | — | absent | — |

@@ -1,8 +1,8 @@
 # Relationship path: isolate-geni-jens-erichstrup-eidsvollsmann-1775-1826
 
-**9 of 18 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**10 of 18 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**The unbroken run stops at step 9, Tore Kristoffersen Vetteland.** The next step, **Torger Christofferson Vetteland**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 10, Torger Christofferson Vetteland.** The next step, **Torger Torgerson Vetteland**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -17,7 +17,7 @@
 | 7 | Ingebret Pederson Ølberg | his brother | [Ingebret Pederson Borsok](https://www.geni.com/people/x/6000000035525972877) | id | 1 |
 | 8 | Jorina Toresdotter Ølberg | his wife | [Jorina Toresdotter Njå](https://www.geni.com/people/x/6000000077297672317) | id | 1 |
 | 9 | Tore Kristoffersen Vetteland | her father | [Tore Kristoffersen Kristofferson](https://www.geni.com/people/x/6000000009099803774) | id | 1 |
-| 10 | Torger Christofferson Vetteland | his brother | — | absent | — |
+| 10 | Torger Christofferson Vetteland | his brother | [Torger Christofferson Vetteland](https://www.geni.com/people/x/6000000016662825611) | id | 1 |
 | 11 | Torger Torgerson Vetteland | his son | — | absent | — |
 | 12 | Kristine "Kitty" Grondahl | his daughter | — | absent | — |
 | 13 | Wilhelm Andreas Grondahl | her husband | — | absent | — |

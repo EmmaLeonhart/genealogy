@@ -1,10 +1,10 @@
 # Relationship path: isolate-geni-raphael-jan-h-egh-krohn-krohn-1938-1988-b-rum
 
-**30 of 46 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**31 of 46 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–27, 16 of 27 held; path 2 — steps 28–46, 14 of 19 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–27, 17 of 27 held; path 2 — steps 28–46, 14 of 19 held. The run and doorway below are the first path's.
 
-**The unbroken run stops at step 16, Peder Jensen Schielderup.** The next step, **Maren Pedersdatter Schielderup**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 17, Maren Pedersdatter Schielderup.** The next step, **Oluf Mentzsøn Darre**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -26,7 +26,7 @@
 | 14 | Jens Jørgensen | her father | [Jens Jørgensen](https://www.geni.com/people/x/6000000001838607806) | id | 1 |
 | 15 | Bispedatter Adriane Jensd Schielderup | his mother | [Adriane Jensdatter Schielderup](https://www.geni.com/people/x/6000000001506899998) | id | 1 |
 | 16 | Peder Jensen Schielderup | her brother | [Peder Jensen](https://www.geni.com/people/x/6000000000873947684) | id | 1 |
-| 17 | Maren Pedersdatter Schielderup | his daughter | — | absent | — |
+| 17 | Maren Pedersdatter Schielderup | his daughter | [Maren Pedersdatter](https://www.geni.com/people/x/6000000006978128358) | id | 1 |
 | 18 | Oluf Mentzsøn Darre | her son | — | absent | — |
 | 19 | Mentz Olufsen Darre Schjelderup | his son | — | absent | — |
 | 20 | Wilhelm Mentzen Schjelderup | his son | — | absent | — |

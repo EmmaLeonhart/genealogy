@@ -1,8 +1,8 @@
 # Relationship path: isolate-geni-eino-armas-saari-1894-1971
 
-**16 of 23 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**18 of 23 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**The unbroken run stops at step 16, Emma Josefina Josefsdotter Durchman.** The next step, **Frans Wilhelm Durchman**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 18, Aino Rafael Durchman.** The next step, **Inga Ilia Durchman**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -24,8 +24,8 @@
 | 14 | Karl Robert Sandelin | his father | [Karl Robert](https://www.geni.com/people/x/6000000003620618740) | id | 1 |
 | 15 | Frans Viktor Sandelin | his brother | [Frans Viktor Sandelin](https://www.geni.com/people/x/6000000001072315309) | id | 1 |
 | 16 | Emma Josefina Josefsdotter Durchman | his wife | [Emma Josefina Josefsdotter Durchman](https://www.geni.com/people/x/6000000021161255151) | id | 1 |
-| 17 | Frans Wilhelm Durchman | her brother | — | absent | — |
-| 18 | Aino Rafael Durchman | his son | — | absent | — |
+| 17 | Frans Wilhelm Durchman | her brother | [Frans Wilhelm Durchman](https://www.geni.com/people/x/6000000006942219435) | id | 1 |
+| 18 | Aino Rafael Durchman | his son | [Aino Rafael Durchman](https://www.geni.com/people/x/6000000001072396425) | id | 1 |
 | 19 | Inga Ilia Durchman | his wife | — | absent | — |
 | 20 | Kalle Kustaa Heikinpoika Juvenius | her father | — | absent | — |
 | 21 | Johanna Vilhelmiina Heikintytär Juvenius | his sister | — | absent | — |

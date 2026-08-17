@@ -1,12 +1,10 @@
 # Relationship path: isolate-geni-geir-vegar-hoel-1973-2021
 
-**28 of 47 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**31 of 47 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–27, 16 of 27 held; path 2 — steps 28–47, 12 of 20 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–27, 19 of 27 held; path 2 — steps 28–47, 12 of 20 held. The run and doorway below are the first path's.
 
-**The unbroken run stops at step 15, Karen Pedersdatter Thrane.** The next step, **Maren Hansdatter Thrane**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
-
-**1 steps past the gap are held anyway** — Dorthe Mathiasdatter Trane onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
+**The unbroken run stops at step 19, Dorthe Mathiasdatter Trane.** The next step, **Mathias Mikkelsen Ursin**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -27,9 +25,9 @@
 | 13 | Peder Christensson Lind | her father | [Peder Christensson Lind](https://www.geni.com/people/x/6000000005420097975) | id | 1 |
 | 14 | Margreta Pedersdatter Trane | his mother | [Margreta Pedersdatter Trane](https://www.geni.com/people/x/6000000003273013428) | id | 1 |
 | 15 | Karen Pedersdatter Thrane | her sister | [Karen Pedersdatter Thrane](https://www.geni.com/people/x/309744814030004598) | id | 1 |
-| 16 | Maren Hansdatter Thrane | her daughter | — | absent | — |
-| 17 | Christen Mathiasen Trane | her son | — | absent | — |
-| 18 | Mathias Christensen Trane | his son | — | absent | — |
+| 16 | Maren Hansdatter Thrane | her daughter | [Maren Hansdatter Trane](https://www.geni.com/people/x/6000000004041912995) | id | 1 |
+| 17 | Christen Mathiasen Trane | her son | [Christen Mathiasen Trane](https://www.geni.com/people/x/300561274950002052) | id | 1 |
+| 18 | Mathias Christensen Trane | his son | [Mathias Christensen Trane](https://www.geni.com/people/x/310078132560005707) | id | 1 |
 | 19 | Dorthe Mathiasdatter Trane | his daughter | [Dorthe Mathiasdatter Trane](https://www.geni.com/people/x/6000000002496723001) | id | 1 |
 | 20 | Mathias Mikkelsen Ursin | her son | — | absent | — |
 | 21 | Martha Marie Mathiasdatter Ursin | his daughter | — | absent | — |

@@ -1,10 +1,10 @@
 # Relationship path: isolate-geni-bj-rn-bue-1934-1997-stavanger
 
-**22 of 30 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**23 of 30 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–17, 12 of 17 held; path 2 — steps 18–30, 10 of 13 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–17, 13 of 17 held; path 2 — steps 18–30, 10 of 13 held. The run and doorway below are the first path's.
 
-**The unbroken run stops at step 12, Jens Larsen Nedrebø.** The next step, **Lars Jensen Bue**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 13, Lars Jensen Bue.** The next step, **Jonas Larsen Bue**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -22,7 +22,7 @@
 | 10 | Søren Ådneson Helland | his father | [Søren Ådneson Haukamork](https://www.geni.com/people/x/6000000003094961773) | id | 1 |
 | 11 | Lars Sørensen Nedrebø | his son | [Lars Sørensen Helland](https://www.geni.com/people/x/6000000003095047769) | id | 1 |
 | 12 | Jens Larsen Nedrebø | his son | [Jens Larsen Søyland](https://www.geni.com/people/x/6000000038271425951) | id | 1 |
-| 13 | Lars Jensen Bue | his son | — | absent | — |
+| 13 | Lars Jensen Bue | his son | [Lars Jensen Nedrebø](https://www.geni.com/people/x/6000000038270824693) | id | 1 |
 | 14 | Jonas Larsen Bue | his son | — | absent | — |
 | 15 | Halvor Jonassen Bue | his son | — | absent | — |
 | 16 | Jonas Bue | his son | — | absent | — |

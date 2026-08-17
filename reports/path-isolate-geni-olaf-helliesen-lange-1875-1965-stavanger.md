@@ -1,8 +1,8 @@
 # Relationship path: isolate-geni-olaf-helliesen-lange-1875-1965-stavanger
 
-**23 of 31 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**25 of 31 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–16, 13 of 16 held; path 2 — steps 17–31, 10 of 15 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–16, 13 of 16 held; path 2 — steps 17–31, 12 of 15 held. The run and doorway below are the first path's.
 
 **The unbroken run stops at step 13, Ola Heljesen Haga.** The next step, **Ole Olson Helliesen, d.y**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
@@ -36,8 +36,8 @@
 | 24 | Lars Svensen Sør-Kolnes | his brother | [Lars Svensen Kolnes](https://www.geni.com/people/x/6000000005609513997) | id | 1 |
 | 25 | Sven Larson Stokka | his son | [Sven Larson Stokka](https://www.geni.com/people/x/6000000003491992611) | id | 1 |
 | 26 | Kristine Kristensdatter Stokka | his wife | [Kristine Kristensdatter Vatne](https://www.geni.com/people/x/6000000003491992641) | id | 1 |
-| 27 | Karen Kristensdatter Store Vatne | her mother | — | absent | — |
-| 28 | Marta Kristensdatter Vatne | her sister | — | absent | — |
+| 27 | Karen Kristensdatter Store Vatne | her mother | [Karen Kristensdatter](https://www.geni.com/people/x/6000000014523560536) | id | 1 |
+| 28 | Marta Kristensdatter Vatne | her sister | [Marta Kristensdatter Vatne](https://www.geni.com/people/x/6000000084003202114) | id | 1 |
 | 29 | Karen Laurentia Helmichsdatter Helliesen | her daughter | — | absent | — |
 | 30 | Marthe Gurine Ingeborg Marie Lange | her daughter | — | absent | — |
 | 31 | Olaf Helliesen Lange | her son | — | absent | — |

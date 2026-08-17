@@ -1,12 +1,12 @@
 # Relationship path: isolate-geni-helge-finn-rancken-1857-1912-helsinki
 
-**40 of 59 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**47 of 59 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–41, 25 of 41 held; path 2 — steps 42–59, 15 of 18 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–41, 29 of 41 held; path 2 — steps 42–59, 18 of 18 held. The run and doorway below are the first path's.
 
 **The unbroken run stops at step 22, Knut Bengtsson Bengtsson Sparre över Blad.** The next step, **Ingeborg Bengtsdotter Sparre över blad**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
-**3 steps past the gap are held anyway** — Cecilia Lassesdotter onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
+**7 steps past the gap are held anyway** — Cecilia Lassesdotter onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
 
 ## Steps
 
@@ -47,12 +47,12 @@
 | 33 | Susanna Gyldenstolpe | his daughter | [Susanna Crucimontana](https://www.geni.com/people/x/4263630100270128037) | id | 1 |
 | 34 | Susanna Svenonia (Wexionia / Gyldenstolpe) | her daughter | — | absent | — |
 | 35 | Susanna Juliana Svenonia | her daughter | — | absent | — |
-| 36 | Hedvig Margareta Wanochius | her daughter | — | absent | — |
-| 37 | Katarina Henriksdotter Lilius | her daughter | — | absent | — |
+| 36 | Hedvig Margareta Wanochius | her daughter | [Hedvig Margareta Andreasdotter Wanochius](https://www.geni.com/people/x/6000000010680345246) | id | 1 |
+| 37 | Katarina Henriksdotter Lilius | her daughter | [Katarina Henriksdotter Lilius](https://www.geni.com/people/x/6000000010680123679) | id | 1 |
 | 38 | Anna Kristina Indrenius | her daughter | — | absent | — |
 | 39 | Karl Henrik Asp | her son | — | absent | — |
-| 40 | Christina Wilhelmina Asp | his daughter | — | absent | — |
-| 41 | Helge Finn Rancken | her son | — | absent | — |
+| 40 | Christina Wilhelmina Asp | his daughter | [Christina Wilhelmina Asp](https://www.geni.com/people/x/6000000000646740659) | id | 1 |
+| 41 | Helge Finn Rancken | her son | [Helge Finn](https://www.geni.com/people/x/6000000080929243843) | id | 1 |
 | 42 | You | — | [Emma Leonhart](https://www.geni.com/people/x/6000000087535357291) | repeat | 1 |
 | 43 | Helen Frisk | your mother | [Helen Frisk](https://www.geni.com/people/x/6000000177921459052) | id | 1 |
 | 44 | Hans Bertil Frisk | her father | [Hans Bertil Frisk](https://www.geni.com/people/x/6000000177921459066) | id | 1 |
@@ -68,6 +68,6 @@
 | 54 | Arne Wilhelm Rancken | her father | [Arne Wilhelm](https://www.geni.com/people/x/6000000000127612134) | id | 1 |
 | 55 | Wilhelm Rancken | his father | [Wilhelm Rancken](https://www.geni.com/people/x/6000000000127612116) | id | 1 |
 | 56 | Fredrik Wilhelm Rancken | his father | [Fredrik Wilhelm Rancken](https://www.geni.com/people/x/6000000007511832794) | id | 1 |
-| 57 | Engelbrekt Rancken | his brother | — | absent | — |
-| 58 | Johan Oskar Immanuel Rancken | his son | — | absent | — |
-| 59 | Helge Finn Rancken | his son | — | absent | — |
+| 57 | Engelbrekt Rancken | his brother | [Engelbrekt](https://www.geni.com/people/x/6000000000019972451) | id | 1 |
+| 58 | Johan Oskar Immanuel Rancken | his son | [Johan Oskar Immanuel](https://www.geni.com/people/x/6000000000646636987) | id | 1 |
+| 59 | Helge Finn Rancken | his son | [Helge Finn](https://www.geni.com/people/x/6000000080929243843) | repeat | 1 |

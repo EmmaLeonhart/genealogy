@@ -1,8 +1,8 @@
 # Relationship path: isolate-geni-johann-vollrath-christian-heinrich-b-nger-1782-1842
 
-**10 of 25 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**11 of 25 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**The unbroken run stops at step 10, Tjøl Sørenson Helland.** The next step, **Siri Jespersdatter Skorve**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 11, Siri Jespersdatter Skorve.** The next step, **Lars Svenson Geilane**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -18,7 +18,7 @@
 | 8 | Inger Sørensdatter Lima | his mother | [Inger Sørensdatter Gjesdal](https://www.geni.com/people/x/6000000065991527068) | id | 1 |
 | 9 | Søren Sørenson Gjesdal | her father | [Søren Sørenson Helland](https://www.geni.com/people/x/6000000003095047808) | id | 1 |
 | 10 | Tjøl Sørenson Helland | his brother | [Tjøl Sørenson Helland](https://www.geni.com/people/x/6000000003095047800) | id | 1 |
-| 11 | Siri Jespersdatter Skorve | his wife | — | absent | — |
+| 11 | Siri Jespersdatter Skorve | his wife | [Siri Jespersdatter Skurve](https://www.geni.com/people/x/6000000005606976538) | id | 1 |
 | 12 | Lars Svenson Geilane | her son | — | absent | — |
 | 13 | Svend Larsen Geilane | his son | — | absent | — |
 | 14 | Ole Sveinsen | his son | — | absent | — |

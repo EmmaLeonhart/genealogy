@@ -1,10 +1,12 @@
 # Relationship path: isolate-geni-prof-torsten-evert-karsten-ph-d-1870-1942-helsinki
 
-**29 of 45 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**31 of 45 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–27, 19 of 27 held; path 2 — steps 28–45, 10 of 18 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–27, 21 of 27 held; path 2 — steps 28–45, 10 of 18 held. The run and doorway below are the first path's.
 
 **The unbroken run stops at step 19, Elisabeth Hansdotter Stålbohm.** The next step, **Hans Olofsson Snellman**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+
+**2 steps past the gap are held anyway** — Maria Lovisa Erik-Johanintytär Cajanus onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
 
 ## Steps
 
@@ -34,8 +36,8 @@
 | 22 | Petter Johansson Snellman | his son | — | absent | — |
 | 23 | Rovasti Johannes Snellman | his son | — | absent | — |
 | 24 | Erik Johan Johansson Snellman | his son | — | absent | — |
-| 25 | Maria Lovisa Erik-Johanintytär Cajanus | his daughter | — | absent | — |
-| 26 | Emmi Karsten | her daughter | — | absent | — |
+| 25 | Maria Lovisa Erik-Johanintytär Cajanus | his daughter | [Maria Lovisa Erik-Johanintytär Snellman](https://www.geni.com/people/x/6000000007512010737) | id | 1 |
+| 26 | Emmi Karsten | her daughter | [Maria Augusta Emilia Cajanus](https://www.geni.com/people/x/6000000002757754423) | id | 1 |
 | 27 | Prof. Tor Karsten | her son | — | absent | — |
 | 28 | You | — | [Emma Leonhart](https://www.geni.com/people/x/6000000087535357291) | repeat | 1 |
 | 29 | Helen Frisk | your mother | [Helen Frisk](https://www.geni.com/people/x/6000000177921459052) | repeat | 1 |

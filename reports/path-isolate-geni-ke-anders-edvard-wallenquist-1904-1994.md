@@ -1,12 +1,12 @@
 # Relationship path: isolate-geni-ke-anders-edvard-wallenquist-1904-1994
 
-**38 of 61 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**41 of 61 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–39, 25 of 39 held; path 2 — steps 40–61, 13 of 22 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–39, 28 of 39 held; path 2 — steps 40–61, 13 of 22 held. The run and doorway below are the first path's.
 
 **The unbroken run stops at step 22, Knut Bengtsson Bengtsson Sparre över Blad.** The next step, **Ingeborg Bengtsdotter Sparre över blad**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
-**3 steps past the gap are held anyway** — Peder Størle, til Gaasevad onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
+**6 steps past the gap are held anyway** — Lars Piik, til Gåsevad onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
 
 ## Steps
 
@@ -36,9 +36,9 @@
 | 22 | Knut Bengtsson Bengtsson Sparre över Blad | her father | [Knut Bengtsson Bengtsson Sparre över Blad](https://www.geni.com/people/x/6000000031873939968) | id | 1 |
 | 23 | Ingeborg Bengtsdotter Sparre över blad | his sister | — | absent | — |
 | 24 | Märitta Arvidsdotter Pik | her daughter | — | absent | — |
-| 25 | Lars Piik, til Gåsevad | her son | — | absent | — |
-| 26 | Märta Larsdotter Pik | his daughter | — | absent | — |
-| 27 | Edla Nilsdotter (pil) på Oplo | her daughter | — | absent | — |
+| 25 | Lars Piik, til Gåsevad | her son | [Lars](https://www.geni.com/people/x/6000000003645811287) | id | 1 |
+| 26 | Märta Larsdotter Pik | his daughter | [Märta Larsdotter Pik](https://www.geni.com/people/x/6000000003645811280) | id | 1 |
+| 27 | Edla Nilsdotter (pil) på Oplo | her daughter | [Edla Nilsdotter](https://www.geni.com/people/x/6000000011367184297) | id | 1 |
 | 28 | Peder Størle, til Gaasevad | her son | [Peder](https://www.geni.com/people/x/6000000011467467392) | id | 1 |
 | 29 | Merete Pedersdatter Størle | his daughter | [Merete Pedersdatter Størle](https://www.geni.com/people/x/6000000003367318273) | id | 1 |
 | 30 | Sophie Hammer | her daughter | [Sophie Madsdatter](https://www.geni.com/people/x/6000000007512900311) | id | 1 |

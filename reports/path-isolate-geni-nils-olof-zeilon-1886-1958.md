@@ -1,10 +1,10 @@
 # Relationship path: isolate-geni-nils-olof-zeilon-1886-1958
 
-**35 of 62 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**38 of 62 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–41, 25 of 41 held; path 2 — steps 42–62, 10 of 21 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–41, 28 of 41 held; path 2 — steps 42–62, 10 of 21 held. The run and doorway below are the first path's.
 
-**The unbroken run stops at step 25, Carin Pedersdotter Fargalt.** The next step, **Sten Bosson, till Ekhult (Natt och Dag)**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 28, Brita Bengtsdotter (Natt och Dag).** The next step, **Karin Arendsdotter (Ulv)**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -35,9 +35,9 @@
 | 23 | Ingeborg Svantepolksdotter | her sister | [Ingeborg Svantepolksdotter](https://www.geni.com/people/x/6000000006575228798) | id | 1 |
 | 24 | Birgitta Jonsdotter, Aspenäs | her daughter | [Birgitta Jonsdotter](https://www.geni.com/people/x/6000000011648683509) | id | 1 |
 | 25 | Carin Pedersdotter Fargalt | her daughter | [Carin Pedersdotter](https://www.geni.com/people/x/6000000001951168720) | id | 1 |
-| 26 | Sten Bosson, till Ekhult (Natt och Dag) | her son | — | absent | — |
-| 27 | Bengt Stensson, till Göksholm (Natt och Dag) | his son | — | absent | — |
-| 28 | Brita Bengtsdotter (Natt och Dag) | his daughter | — | absent | — |
+| 26 | Sten Bosson, till Ekhult (Natt och Dag) | her son | [Sten Bosson Bosson Natt Och Dag](https://www.geni.com/people/x/6000000001951142201) | id | 1 |
+| 27 | Bengt Stensson, till Göksholm (Natt och Dag) | his son | [Bengt Stensson Natt och Dag](https://www.geni.com/people/x/6000000003035926837) | id | 1 |
+| 28 | Brita Bengtsdotter (Natt och Dag) | his daughter | [Brita Bengtsdotter Natt och Dag](https://www.geni.com/people/x/6000000001383550206) | id | 1 |
 | 29 | Karin Arendsdotter (Ulv) | her daughter | — | absent | — |
 | 30 | Arendt Persson, till Granhammar (Örnflycht) | her son | — | absent | — |
 | 31 | Margareta Arendtsdotter Örnflycht, till Granhammar | his daughter | — | absent | — |

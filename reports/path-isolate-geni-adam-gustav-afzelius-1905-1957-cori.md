@@ -1,12 +1,10 @@
 # Relationship path: isolate-geni-adam-gustav-afzelius-1905-1957-cori
 
-**38 of 69 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**42 of 69 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–47, 28 of 47 held; path 2 — steps 48–69, 10 of 22 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–47, 32 of 47 held; path 2 — steps 48–69, 10 of 22 held. The run and doorway below are the first path's.
 
-**The unbroken run stops at step 25, Ulfhild Sigtryggsdotter Boberg.** The next step, **Katarina Karlsdotter Lejonbalk**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
-
-**3 steps past the gap are held anyway** — Kristina Staffansdotter Ulv onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
+**The unbroken run stops at step 32, Birgitta (Vinstorp).** The next step, **Peter Olofsson Tysk**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -37,10 +35,10 @@
 | 23 | Bengt Hafridsson Lejon | his father | [Bengt Hafridsson Lejon](https://www.geni.com/people/x/6000000005795638104) | id | 1 |
 | 24 | Hafrid Sigtryggsdotter Boberg | his mother | [Hafrid Sigtryggsdotter Boberg](https://www.geni.com/people/x/6000000003559734445) | id | 1 |
 | 25 | Ulfhild Sigtryggsdotter Boberg | her sister | [Ulfhild Sigtryggsdotter Boberg](https://www.geni.com/people/x/6000000004974399295) | id | 1 |
-| 26 | Katarina Karlsdotter Lejonbalk | her daughter | — | absent | — |
-| 27 | Filip Ulfsson Ulv | her son | — | absent | — |
-| 28 | Ulf Filipsson Ulv | his son | — | absent | — |
-| 29 | Staffan Ulfsson Ulv | his son | — | absent | — |
+| 26 | Katarina Karlsdotter Lejonbalk | her daughter | [Katarina Karlsdotter Lejonbalk](https://www.geni.com/people/x/370166216450011194) | id | 1 |
+| 27 | Filip Ulfsson Ulv | her son | [Filip](https://www.geni.com/people/x/6000000003349295306) | id | 1 |
+| 28 | Ulf Filipsson Ulv | his son | [Ulf Filipsson Ulv](https://www.geni.com/people/x/6000000005573779416) | id | 1 |
+| 29 | Staffan Ulfsson Ulv | his son | [Staffan Ulfsson Ulv af Lagnö](https://www.geni.com/people/x/6000000003827763493) | id | 1 |
 | 30 | Kristina Staffansdotter Ulv | his daughter | [Kristina Staffansdotter Ulv](https://www.geni.com/people/x/6000000005573779404) | id | 1 |
 | 31 | Staffan Bengtsson (Vinstorp) | her son | [Staffan Bengtsson (Vinstorp)](https://www.geni.com/people/x/6000000068860102014) | id | 1 |
 | 32 | Birgitta (Vinstorp) | his daughter | [Birgitta Staffansdotter](https://www.geni.com/people/x/6000000004657088722) | id | 1 |

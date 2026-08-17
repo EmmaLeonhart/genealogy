@@ -1,10 +1,10 @@
 # Relationship path: isolate-geni-fernando-luis-cardoso-de-meneses-de-tavares-e-tavora-19
 
-**47 of 74 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**48 of 74 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–47, 37 of 47 held; path 2 — steps 48–74, 10 of 27 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–47, 38 of 47 held; path 2 — steps 48–74, 10 of 27 held. The run and doorway below are the first path's.
 
-**The unbroken run stops at step 30, Heinrich IV, Herzog zu Mecklenburg.** The next step, **Magnus II von Mecklenburg, Herzog zu Mecklenburg-Schwerin**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 31, Magnus II von Mecklenburg, Herzog zu Mecklenburg-Schwerin.** The next step, **Anna von Mecklenburg-Schwerin**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 **7 steps past the gap are held anyway** — Friedrich Magnus von Solms-Laubach, Graf onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
 
@@ -42,7 +42,7 @@
 | 28 | Magnus I, Herzog von Mecklenburg Schwerin | her son | [Magnus I Mecklenburg](https://www.geni.com/people/x/6000000001965828944) | id | 1 |
 | 29 | Johann IV, Herzog von Mecklenburg-Schwerin | his son | [Johann IV von Mecklenburg](https://www.geni.com/people/x/6000000003858710834) | id | 1 |
 | 30 | Heinrich IV, Herzog zu Mecklenburg | his son | [Heinrich IV "der Dicke" Mecklenburg](https://www.geni.com/people/x/6000000003827368201) | id | 1 |
-| 31 | Magnus II von Mecklenburg, Herzog zu Mecklenburg-Schwerin | his son | — | absent | — |
+| 31 | Magnus II von Mecklenburg, Herzog zu Mecklenburg-Schwerin | his son | [Magnus II Mecklenburg](https://www.geni.com/people/x/6000000007606027348) | id | 1 |
 | 32 | Anna von Mecklenburg-Schwerin | his daughter | — | absent | — |
 | 33 | Friedrich Magnus von Solms-Laubach, Graf | her son | [Friedrich Magnus zu Solms-Laubach-Sonnenwalde](https://www.geni.com/people/x/6000000003827438452) | id | 1 |
 | 34 | Dorothea, Gräfin zu Solms-Laubach | his daughter | [Dorothea zu Solms-Laubach](https://www.geni.com/people/x/6000000006727770704) | id | 1 |

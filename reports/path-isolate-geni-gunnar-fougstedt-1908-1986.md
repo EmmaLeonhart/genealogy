@@ -1,12 +1,12 @@
 # Relationship path: isolate-geni-gunnar-fougstedt-1908-1986
 
-**40 of 64 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**41 of 64 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–43, 25 of 43 held; path 2 — steps 44–64, 15 of 21 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–43, 26 of 43 held; path 2 — steps 44–64, 15 of 21 held. The run and doorway below are the first path's.
 
 **The unbroken run stops at step 23, Bengt Lindormsson (Sparre över Blad).** The next step, **Ragnhild Lindormsdotter Sparre över Blad**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
-**2 steps past the gap are held anyway** — Lennart Pedersson Svenske, till Satra onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
+**3 steps past the gap are held anyway** — Jöns Abjörnsson Sparre över Blad onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
 
 ## Steps
 
@@ -36,7 +36,7 @@
 | 22 | Knut Bengtsson Bengtsson Sparre över Blad | her father | [Knut Bengtsson Bengtsson Sparre över Blad](https://www.geni.com/people/x/6000000031873939968) | id | 1 |
 | 23 | Bengt Lindormsson (Sparre över Blad) | his father | [Bengt](https://www.geni.com/people/x/6000000007089842705) | id | 1 |
 | 24 | Ragnhild Lindormsdotter Sparre över Blad | his sister | — | absent | — |
-| 25 | Jöns Abjörnsson Sparre över Blad | her son | — | absent | — |
+| 25 | Jöns Abjörnsson Sparre över Blad | her son | [Jöns Abjörnsson Sparre över Blad](https://www.geni.com/people/x/6000000003815865534) | id | 1 |
 | 26 | Abjörn Jönsson (Bagge af Berga) | his son | — | absent | — |
 | 27 | Bengta Abjörnsdotter (Bagge af Berga) | his daughter | — | absent | — |
 | 28 | Gyrit Bengtsdotter Ryting | her daughter | — | absent | — |

@@ -1,8 +1,8 @@
 # Relationship path: isolate-geni-hans-gram-1685-1748-k-benhavn
 
-**12 of 21 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**17 of 21 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**The unbroken run stops at step 12, Claus Henriksen Miltzow.** The next step, **Margareta Henriksdatter Miltzow**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 17, Christian Hansen Arentz.** The next step, **Margaretha Henriette Henricha Susanne Frimann Müller**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -20,11 +20,11 @@
 | 10 | Gudve Knudsdatter | her mother | [Gudve](https://www.geni.com/people/x/6000000005744994368) | id | 1 |
 | 11 | Ingjerd Clausdatter Miltzow | her mother | [Ingjerd Clausdatter Miltzow](https://www.geni.com/people/x/6000000000694158525) | id | 1 |
 | 12 | Claus Henriksen Miltzow | her father | [Claus Henriksen Miltzow](https://www.geni.com/people/x/6000000008115020929) | id | 1 |
-| 13 | Margareta Henriksdatter Miltzow | his sister | — | absent | — |
-| 14 | Otto Hanssen Schreuder | her husband | — | absent | — |
-| 15 | Susanne Ottosdatter Arentz | his daughter | — | absent | — |
-| 16 | Hans Hansen Arentz | her son | — | absent | — |
-| 17 | Christian Hansen Arentz | his son | — | absent | — |
+| 13 | Margareta Henriksdatter Miltzow | his sister | [Margareta Henriksdatter Miltzow](https://www.geni.com/people/x/6000000002736882707) | id | 1 |
+| 14 | Otto Hanssen Schreuder | her husband | [Otto Hanssen](https://www.geni.com/people/x/6000000001885933328) | id | 1 |
+| 15 | Susanne Ottosdatter Arentz | his daughter | [Susanne Ottosdatter Schreuder](https://www.geni.com/people/x/6000000003502102279) | id | 1 |
+| 16 | Hans Hansen Arentz | her son | [Hans Hansen](https://www.geni.com/people/x/6000000006131952062) | id | 1 |
+| 17 | Christian Hansen Arentz | his son | [Christian Hansen Arentz](https://www.geni.com/people/x/6000000011389964741) | id | 1 |
 | 18 | Margaretha Henriette Henricha Susanne Frimann Müller | his wife | — | absent | — |
 | 19 | Charlotte Amalie Gram | her mother | — | absent | — |
 | 20 | Laurits Nielsen Gram | her father | — | absent | — |

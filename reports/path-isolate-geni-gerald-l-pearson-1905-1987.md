@@ -1,10 +1,10 @@
 # Relationship path: isolate-geni-gerald-l-pearson-1905-1987
 
-**40 of 66 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**41 of 66 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–46, 30 of 46 held; path 2 — steps 47–66, 10 of 20 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–46, 31 of 46 held; path 2 — steps 47–66, 10 of 20 held. The run and doorway below are the first path's.
 
-**The unbroken run stops at step 30, Heilwig von Holstein-Rendsburg.** The next step, **Christian I King of Denmark, Norway and Sweden**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 31, Christian I King of Denmark, Norway and Sweden.** The next step, **Margaret of Denmark, Queen consort of Scotland**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -40,7 +40,7 @@
 | 28 | Ingeburg von Mecklenburg | her daughter | [Ingeborg Princesson von Mecklenburg](https://www.geni.com/people/x/6000000003858749453) | id | 1 |
 | 29 | Gerhard VI von Holstein, Herzog von Schleswig-Holstein | her son | [Gerhard VI Von Holstein-rendsburg Holstein, Schauenburg](https://www.geni.com/people/x/4079111) | id | 1 |
 | 30 | Heilwig von Holstein-Rendsburg | his daughter | [Hedwig Holstein, Schauenburg](https://www.geni.com/people/x/6000000000679344754) | id | 1 |
-| 31 | Christian I King of Denmark, Norway and Sweden | her son | — | absent | — |
+| 31 | Christian I King of Denmark, Norway and Sweden | her son | [Christian I Christiaan of Oldenburg](https://www.geni.com/people/x/4103872) | id | 1 |
 | 32 | Margaret of Denmark, Queen consort of Scotland | his daughter | — | absent | — |
 | 33 | James IV, king of Scots | her son | — | absent | — |
 | 34 | Janet Stewart | his daughter | — | absent | — |

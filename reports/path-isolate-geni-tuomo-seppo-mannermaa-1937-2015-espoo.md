@@ -1,12 +1,12 @@
 # Relationship path: isolate-geni-tuomo-seppo-mannermaa-1937-2015-espoo
 
-**39 of 48 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**40 of 48 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–28, 21 of 28 held; path 2 — steps 29–48, 18 of 20 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–28, 22 of 28 held; path 2 — steps 29–48, 18 of 20 held. The run and doorway below are the first path's.
 
 **The unbroken run stops at step 19, Johan Ståhlbom.** The next step, **Katarina Johansdotter Ståhlbom**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
-**2 steps past the gap are held anyway** — Hanna Schwartzberg onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
+**3 steps past the gap are held anyway** — Johan Jakob Johansson Rahm onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
 
 ## Steps
 
@@ -35,7 +35,7 @@
 | 21 | Hedvig Chydenius | her daughter | — | absent | — |
 | 22 | Jakob Chydenius | her son | — | absent | — |
 | 23 | Anna Beata Chydenius | his daughter | — | absent | — |
-| 24 | Johan Jakob Johansson Rahm | her son | — | absent | — |
+| 24 | Johan Jakob Johansson Rahm | her son | [Johan Jakob Johansson](https://www.geni.com/people/x/6000000007802705556) | id | 1 |
 | 25 | Hanna Schwartzberg | his daughter | [Hanna Rahm](https://www.geni.com/people/x/6000000000378713450) | id | 1 |
 | 26 | Laura Magdalena Magdalena Mannermaa | her daughter | [Laura Magdalena Magdalena Schwartzberg](https://www.geni.com/people/x/6000000031450901497) | id | 1 |
 | 27 | Johannes Abraham Juhonpoika Mannermaa | her son | — | absent | — |

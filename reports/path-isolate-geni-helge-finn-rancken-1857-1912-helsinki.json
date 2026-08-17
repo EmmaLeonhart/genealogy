@@ -1,6 +1,6 @@
 {
   "steps_total": 59,
-  "steps_in_tree": 40,
+  "steps_in_tree": 47,
   "paths_in_this_file": 2,
   "chains": [
     {
@@ -8,7 +8,7 @@
       "first_step": 1,
       "last_step": 41,
       "steps_total": 41,
-      "steps_in_tree": 25,
+      "steps_in_tree": 29,
       "unbroken_run_ends_at": 22
     },
     {
@@ -16,13 +16,13 @@
       "first_step": 42,
       "last_step": 59,
       "steps_total": 18,
-      "steps_in_tree": 15,
-      "unbroken_run_ends_at": 56
+      "steps_in_tree": 18,
+      "unbroken_run_ends_at": 59
     }
   ],
   "unbroken_run_ends_at": 22,
   "components": {
-    "1": 448321,
+    "1": 472655,
     "2": 344
   },
   "components_touched": [
@@ -36,13 +36,13 @@
     },
     {
       "from": 34,
-      "to": 41,
-      "length": 8
+      "to": 35,
+      "length": 2
     },
     {
-      "from": 57,
-      "to": 59,
-      "length": 3
+      "from": 38,
+      "to": 39,
+      "length": 2
     }
   ],
   "steps": [
@@ -543,11 +543,11 @@
       "relation_to_previous": "her daughter",
       "geni_id": "6000000010680345246",
       "geni_url": "https://www.geni.com/people/x/6000000010680345246",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "6000000010680345246",
+      "matched_name": "Hedvig Margareta Andreasdotter Wanochius",
       "candidates": []
     },
     {
@@ -557,11 +557,11 @@
       "relation_to_previous": "her daughter",
       "geni_id": "6000000010680123679",
       "geni_url": "https://www.geni.com/people/x/6000000010680123679",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "6000000010680123679",
+      "matched_name": "Katarina Henriksdotter Lilius",
       "candidates": []
     },
     {
@@ -599,11 +599,11 @@
       "relation_to_previous": "his daughter",
       "geni_id": "6000000000646740659",
       "geni_url": "https://www.geni.com/people/x/6000000000646740659",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "6000000000646740659",
+      "matched_name": "Christina Wilhelmina Asp",
       "candidates": []
     },
     {
@@ -613,11 +613,11 @@
       "relation_to_previous": "her son",
       "geni_id": "6000000080929243843",
       "geni_url": "https://www.geni.com/people/x/6000000080929243843",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "6000000080929243843",
+      "matched_name": "Helge Finn",
       "candidates": []
     },
     {
@@ -837,11 +837,11 @@
       "relation_to_previous": "his brother",
       "geni_id": "6000000000019972451",
       "geni_url": "https://www.geni.com/people/x/6000000000019972451",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "6000000000019972451",
+      "matched_name": "Engelbrekt",
       "candidates": []
     },
     {
@@ -851,11 +851,11 @@
       "relation_to_previous": "his son",
       "geni_id": "6000000000646636987",
       "geni_url": "https://www.geni.com/people/x/6000000000646636987",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "6000000000646636987",
+      "matched_name": "Johan Oskar Immanuel",
       "candidates": []
     },
     {
@@ -865,11 +865,11 @@
       "relation_to_previous": "his son",
       "geni_id": "6000000080929243843",
       "geni_url": "https://www.geni.com/people/x/6000000080929243843",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "repeat",
+      "component": 1,
+      "matched_geni_id": "6000000080929243843",
+      "matched_name": "Helge Finn",
       "candidates": []
     }
   ]

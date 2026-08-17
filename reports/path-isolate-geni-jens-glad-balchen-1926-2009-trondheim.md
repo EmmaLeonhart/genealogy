@@ -1,10 +1,10 @@
 # Relationship path: isolate-geni-jens-glad-balchen-1926-2009-trondheim
 
-**23 of 43 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**24 of 43 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–26, 13 of 26 held; path 2 — steps 27–43, 10 of 17 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–26, 14 of 26 held; path 2 — steps 27–43, 10 of 17 held. The run and doorway below are the first path's.
 
-**The unbroken run stops at step 13, Samuel Pedersen Vatne.** The next step, **Daniel Pedersen**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 14, Daniel Pedersen.** The next step, **Magdalena Danielsdatter**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -23,7 +23,7 @@
 | 11 | Elisabeth Samuelsdatter Store Vatne | her mother | [Elisabeth Samuelsdatter Store Vatne](https://www.geni.com/people/x/6000000003253601093) | id | 1 |
 | 12 | Samuel Samuelson Store Vatne | her father | [Samuel Samuelson Vatne](https://www.geni.com/people/x/6000000002748554800) | id | 1 |
 | 13 | Samuel Pedersen Vatne | his father | [Samuel Pedersen Vatne](https://www.geni.com/people/x/6000000003253261775) | id | 1 |
-| 14 | Daniel Pedersen | his brother | — | absent | — |
+| 14 | Daniel Pedersen | his brother | [Daniel Pedersen](https://www.geni.com/people/x/6000000003492057788) | id | 1 |
 | 15 | Magdalena Danielsdatter | his daughter | — | absent | — |
 | 16 | Sissel Nielsdatter Faaborg | her daughter | — | absent | — |
 | 17 | Signe Mortensdatter Augland | her daughter | — | absent | — |

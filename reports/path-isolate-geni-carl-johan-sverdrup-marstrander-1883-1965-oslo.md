@@ -1,10 +1,10 @@
 # Relationship path: isolate-geni-carl-johan-sverdrup-marstrander-1883-1965-oslo
 
-**28 of 38 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**33 of 38 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–23, 15 of 23 held; path 2 — steps 24–38, 13 of 15 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–23, 20 of 23 held; path 2 — steps 24–38, 13 of 15 held. The run and doorway below are the first path's.
 
-**The unbroken run stops at step 14, Anders Lauritzen Heiberg.** The next step, **Søfren Lauritzsøn Heiberg af Talle**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 19, Petter Fredrikson Marstrander.** The next step, **Friederich Pettersen Marstrander**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 **1 steps past the gap are held anyway** — Peter Fredrikson Marstrander onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
 
@@ -26,11 +26,11 @@
 | 12 | Inger Lauritsdatter Heiberg | her mother | [Inger Lauritsdatter Heiberg](https://www.geni.com/people/x/6000000002078126382) | id | 1 |
 | 13 | Laurits Andersen Heiberg | her father | [Laurits Andersen Heiberg](https://www.geni.com/people/x/6000000007635630874) | id | 1 |
 | 14 | Anders Lauritzen Heiberg | his father | [Anders Lauritzen Heiberg](https://www.geni.com/people/x/6000000000756952602) | id | 1 |
-| 15 | Søfren Lauritzsøn Heiberg af Talle | his brother | — | absent | — |
-| 16 | Kirsten Søfrensdatter Heiberg | his daughter | — | absent | — |
-| 17 | Metta Pedersdatter Hanning | her daughter | — | absent | — |
-| 18 | Christina Maria Didrichsdatter Muhle | her daughter | — | absent | — |
-| 19 | Petter Fredrikson Marstrander | her son | — | absent | — |
+| 15 | Søfren Lauritzsøn Heiberg af Talle | his brother | [Søren Lauritssøn Heiberg](https://www.geni.com/people/x/6000000001169082706) | id | 1 |
+| 16 | Kirsten Søfrensdatter Heiberg | his daughter | [Kirsten Søfrensdatter Heiberg](https://www.geni.com/people/x/6000000002925250843) | id | 1 |
+| 17 | Metta Pedersdatter Hanning | her daughter | [Metta Pedersdatter Hanning](https://www.geni.com/people/x/6000000025731074430) | id | 1 |
+| 18 | Christina Maria Didrichsdatter Muhle | her daughter | [Christina Maria Didrichsdatter Muhle](https://www.geni.com/people/x/6000000060827710962) | id | 1 |
+| 19 | Petter Fredrikson Marstrander | her son | [Petter Fredrikson](https://www.geni.com/people/x/6000000060827442837) | id | 1 |
 | 20 | Friederich Pettersen Marstrander | his son | — | absent | — |
 | 21 | Peter Fredrikson Marstrander | his son | [Peter Marstrander](https://www.geni.com/people/x/4948723559480038444) | id | 1 |
 | 22 | Fredrik Marstrander | his son | — | absent | — |

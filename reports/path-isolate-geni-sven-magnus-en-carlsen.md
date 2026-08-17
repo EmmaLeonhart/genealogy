@@ -1,10 +1,10 @@
 # Relationship path: isolate-geni-sven-magnus-en-carlsen
 
-**21 of 39 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**22 of 39 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–20, 12 of 20 held; path 2 — steps 21–39, 9 of 19 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–20, 13 of 20 held; path 2 — steps 21–39, 9 of 19 held. The run and doorway below are the first path's.
 
-**The unbroken run stops at step 12, Jens Larsen Nedrebø.** The next step, **Thalida Kristine Jensdatter Odland**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 13, Thalida Kristine Jensdatter Odland.** The next step, **Marthe Pedersdatter Odland**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -22,7 +22,7 @@
 | 10 | Søren Ådneson Helland | his father | [Søren Ådneson Haukamork](https://www.geni.com/people/x/6000000003094961773) | id | 1 |
 | 11 | Lars Sørensen Nedrebø | his son | [Lars Sørensen Helland](https://www.geni.com/people/x/6000000003095047769) | id | 1 |
 | 12 | Jens Larsen Nedrebø | his son | [Jens Larsen Søyland](https://www.geni.com/people/x/6000000038271425951) | id | 1 |
-| 13 | Thalida Kristine Jensdatter Odland | his daughter | — | absent | — |
+| 13 | Thalida Kristine Jensdatter Odland | his daughter | [Thalida Kristine Jensdatter Bue](https://www.geni.com/people/x/6000000005607460605) | id | 1 |
 | 14 | Marthe Pedersdatter Odland | her daughter | — | absent | — |
 | 15 | Christian Christiansen Øen | her son | — | absent | — |
 | 16 | Nils Christiansen Øen | his son | — | absent | — |

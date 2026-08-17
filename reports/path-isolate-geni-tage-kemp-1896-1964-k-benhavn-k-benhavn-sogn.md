@@ -1,10 +1,10 @@
 # Relationship path: isolate-geni-tage-kemp-1896-1964-k-benhavn-k-benhavn-sogn
 
-**26 of 44 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**30 of 44 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–25, 16 of 25 held; path 2 — steps 26–44, 10 of 19 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–25, 20 of 25 held; path 2 — steps 26–44, 10 of 19 held. The run and doorway below are the first path's.
 
-**The unbroken run stops at step 16, Peder Jensen Schielderup.** The next step, **Jens Pedersen Schielderup**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 20, Anna Sophia Samuelsdatter Werløs.** The next step, **Johanne Ludovica Werløs**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -26,10 +26,10 @@
 | 14 | Jens Jørgensen | her father | [Jens Jørgensen](https://www.geni.com/people/x/6000000001838607806) | id | 1 |
 | 15 | Bispedatter Adriane Jensd Schielderup | his mother | [Adriane Jensdatter Schielderup](https://www.geni.com/people/x/6000000001506899998) | id | 1 |
 | 16 | Peder Jensen Schielderup | her brother | [Peder Jensen](https://www.geni.com/people/x/6000000000873947684) | id | 1 |
-| 17 | Jens Pedersen Schielderup | his son | — | absent | — |
-| 18 | Christine Dorothea Schjeldrup | his daughter | — | absent | — |
-| 19 | Samuel Jenssen Bugge | her son | — | absent | — |
-| 20 | Anna Sophia Samuelsdatter Werløs | his daughter | — | absent | — |
+| 17 | Jens Pedersen Schielderup | his son | [Jens Pedersen](https://www.geni.com/people/x/6000000003499086616) | id | 1 |
+| 18 | Christine Dorothea Schjeldrup | his daughter | [Christine Dorothea](https://www.geni.com/people/x/6000000001606535037) | id | 1 |
+| 19 | Samuel Jenssen Bugge | her son | [Samuel Jenssen](https://www.geni.com/people/x/6000000001470726162) | id | 1 |
+| 20 | Anna Sophia Samuelsdatter Werløs | his daughter | [Anna Sophia Samuelsdatter Bugge](https://www.geni.com/people/x/6000000000905956057) | id | 1 |
 | 21 | Johanne Ludovica Werløs | her daughter | — | absent | — |
 | 22 | Christian Fridrich Kemp | her son | — | absent | — |
 | 23 | Carl Emil Kemp | his son | — | absent | — |

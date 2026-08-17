@@ -1,8 +1,8 @@
 # Relationship path: isolate-geni-george-armitage-miller-phd-1920-2012-plainsboro-townshi
 
-**9 of 24 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**11 of 24 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**The unbroken run stops at step 9, Anna Severine Sahl Gjestdatter.** The next step, **Johanna Sletten**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 11, Thomas Prestenget.** The next step, **Elen Mortina Aronsdatter**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -17,8 +17,8 @@
 | 7 | Peder Pedersen Holm | his brother | [Peder Pedersen Pedersen](https://www.geni.com/people/x/6000000022232192246) | id | 1 |
 | 8 | Wallace Holm | his son | [George Wallace Pedersen](https://www.geni.com/people/x/6000000013125404014) | id | 1 |
 | 9 | Anna Severine Sahl Gjestdatter | his wife | [Anna Severine Sahl](https://www.geni.com/people/x/6000000010331113653) | id | 1 |
-| 10 | Johanna Sletten | her mother | — | absent | — |
-| 11 | Thomas Prestenget | her husband | — | absent | — |
+| 10 | Johanna Sletten | her mother | [Johanna Lorentze Kristoffersdatter](https://www.geni.com/people/x/6000000008923672201) | id | 1 |
+| 11 | Thomas Prestenget | her husband | [Thomas Aronsen](https://www.geni.com/people/x/6000000001655586475) | id | 1 |
 | 12 | Elen Mortina Aronsdatter | his sister | — | absent | — |
 | 13 | Johannes Johnsen | her son | — | absent | — |
 | 14 | Emilie Antonette Kildahl | his daughter | — | absent | — |

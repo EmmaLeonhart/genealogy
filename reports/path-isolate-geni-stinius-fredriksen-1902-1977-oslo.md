@@ -1,10 +1,10 @@
 # Relationship path: isolate-geni-stinius-fredriksen-1902-1977-oslo
 
-**24 of 41 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**26 of 41 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–22, 12 of 22 held; path 2 — steps 23–41, 12 of 19 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–22, 14 of 22 held; path 2 — steps 23–41, 12 of 19 held. The run and doorway below are the first path's.
 
-**The unbroken run stops at step 12, Kari Asbjørnsdatter Ims.** The next step, **NN Asbjørnsdotter Ims**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 14, nn Olavsdatter Kilane.** The next step, **Johannes Torsteinsen Skår**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -22,8 +22,8 @@
 | 10 | Svein Sveinsen Eikeland | his father | [Svein Sveinsen Hommeland](https://www.geni.com/people/x/6000000006979615129) | id | 1 |
 | 11 | Sven Rasmusson Hommeland | his father | [Sven Rasmusson Høle](https://www.geni.com/people/x/6000000003094936883) | id | 1 |
 | 12 | Kari Asbjørnsdatter Ims | his mother | [Kari Asbjørnsdatter Ims](https://www.geni.com/people/x/6000000003094936831) | id | 1 |
-| 13 | NN Asbjørnsdotter Ims | her sister | — | absent | — |
-| 14 | nn Olavsdatter Kilane | her daughter | — | absent | — |
+| 13 | NN Asbjørnsdotter Ims | her sister | [NN Asbjørnsdotter Ims](https://www.geni.com/people/x/6000000002276887401) | id | 1 |
+| 14 | nn Olavsdatter Kilane | her daughter | [nn Olavsdatter Kilane](https://www.geni.com/people/x/6000000216348672821) | id | 1 |
 | 15 | Johannes Torsteinsen Skår | her son | — | absent | — |
 | 16 | Torbjørn Johannesson Hauske | his son | — | absent | — |
 | 17 | Ommund Torbjørnson Jørstad | his son | — | absent | — |

@@ -1,6 +1,6 @@
 {
   "steps_total": 48,
-  "steps_in_tree": 35,
+  "steps_in_tree": 37,
   "paths_in_this_file": 2,
   "chains": [
     {
@@ -8,7 +8,7 @@
       "first_step": 1,
       "last_step": 28,
       "steps_total": 28,
-      "steps_in_tree": 22,
+      "steps_in_tree": 23,
       "unbroken_run_ends_at": 22
     },
     {
@@ -16,13 +16,13 @@
       "first_step": 29,
       "last_step": 48,
       "steps_total": 20,
-      "steps_in_tree": 13,
+      "steps_in_tree": 14,
       "unbroken_run_ends_at": 41
     }
   ],
   "unbroken_run_ends_at": 22,
   "components": {
-    "1": 448321,
+    "1": 472655,
     "2": 344
   },
   "components_touched": [
@@ -31,13 +31,13 @@
   "gaps": [
     {
       "from": 23,
-      "to": 28,
-      "length": 6
+      "to": 27,
+      "length": 5
     },
     {
       "from": 42,
-      "to": 48,
-      "length": 7
+      "to": 47,
+      "length": 6
     }
   ],
   "steps": [
@@ -426,11 +426,11 @@
       "relation_to_previous": "his son",
       "geni_id": "6000000008034160064",
       "geni_url": "https://www.geni.com/people/x/6000000008034160064",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "6000000008034160064",
+      "matched_name": "Anders Wilhelm",
       "candidates": []
     },
     {
@@ -706,11 +706,11 @@
       "relation_to_previous": "her husband",
       "geni_id": "6000000008034160064",
       "geni_url": "https://www.geni.com/people/x/6000000008034160064",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "repeat",
+      "component": 1,
+      "matched_geni_id": "6000000008034160064",
+      "matched_name": "Anders Wilhelm",
       "candidates": []
     }
   ]

@@ -1,10 +1,10 @@
 # Relationship path: isolate-geni-ewald-benedictus-ziervogel-1728-1765-uppsala
 
-**40 of 64 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**44 of 64 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–43, 29 of 43 held; path 2 — steps 44–64, 11 of 21 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–43, 33 of 43 held; path 2 — steps 44–64, 11 of 21 held. The run and doorway below are the first path's.
 
-**The unbroken run stops at step 29, Sophie von der Asseburg.** The next step, **Burchard XlV Vasold von der Asseburg, XIV**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 33, Georg von Wansleben.** The next step, **Ritter Georg von Wansleben**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -39,10 +39,10 @@
 | 27 | Katharina von Schweden | his daughter | [Katerina Birgersdotter Birgersson Sverre](https://www.geni.com/people/x/6000000008019682504) | id | 1 |
 | 28 | Sophie von Anhalt, Gräfin von Anhalt-Zerbst | her daughter | [Sophie von Anhalt](https://www.geni.com/people/x/6000000011024212805) | id | 1 |
 | 29 | Sophie von der Asseburg | her daughter | [Sophie von Hackeborn](https://www.geni.com/people/x/6000000009870783858) | id | 1 |
-| 30 | Burchard XlV Vasold von der Asseburg, XIV | her son | — | absent | — |
-| 31 | Gisela von der Asseburg | his daughter | — | absent | — |
-| 32 | Gumprecht auch Busso von Wansleben | her son | — | absent | — |
-| 33 | Georg von Wansleben | his son | — | absent | — |
+| 30 | Burchard XlV Vasold von der Asseburg, XIV | her son | [Burchard XlV Vasold](https://www.geni.com/people/x/6000000013907902192) | id | 1 |
+| 31 | Gisela von der Asseburg | his daughter | [Gisela von der Asseburg](https://www.geni.com/people/x/6000000011024045497) | id | 1 |
+| 32 | Gumprecht auch Busso von Wansleben | her son | [Gumprecht auch Busso](https://www.geni.com/people/x/6000000011023904156) | id | 1 |
+| 33 | Georg von Wansleben | his son | [Georg](https://www.geni.com/people/x/6000000012136843807) | id | 1 |
 | 34 | Ritter Georg von Wansleben | his son | — | absent | — |
 | 35 | Anna Katharina Gericke | his daughter | — | absent | — |
 | 36 | Marcus der Ältere Gericke | her son | — | absent | — |

@@ -1,8 +1,8 @@
 # Relationship path: isolate-geni-daniel-gerhard-brown
 
-**30 of 48 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**31 of 48 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**The unbroken run stops at step 30, Heinrich IV, Herzog zu Mecklenburg.** The next step, **Magnus II von Mecklenburg, Herzog zu Mecklenburg-Schwerin**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 31, Magnus II von Mecklenburg, Herzog zu Mecklenburg-Schwerin.** The next step, **Anna von Mecklenburg-Schwerin**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -38,7 +38,7 @@
 | 28 | Magnus I, Herzog von Mecklenburg Schwerin | her son | [Magnus I Mecklenburg](https://www.geni.com/people/x/6000000001965828944) | id | 1 |
 | 29 | Johann IV, Herzog von Mecklenburg-Schwerin | his son | [Johann IV von Mecklenburg](https://www.geni.com/people/x/6000000003858710834) | id | 1 |
 | 30 | Heinrich IV, Herzog zu Mecklenburg | his son | [Heinrich IV "der Dicke" Mecklenburg](https://www.geni.com/people/x/6000000003827368201) | id | 1 |
-| 31 | Magnus II von Mecklenburg, Herzog zu Mecklenburg-Schwerin | his son | — | absent | — |
+| 31 | Magnus II von Mecklenburg, Herzog zu Mecklenburg-Schwerin | his son | [Magnus II Mecklenburg](https://www.geni.com/people/x/6000000007606027348) | id | 1 |
 | 32 | Anna von Mecklenburg-Schwerin | his daughter | — | absent | — |
 | 33 | Philip I, Landgrave of Hesse | her son | — | absent | — |
 | 34 | Margarethe von Dietz, Gräfin von Eberstein | his daughter | — | absent | — |

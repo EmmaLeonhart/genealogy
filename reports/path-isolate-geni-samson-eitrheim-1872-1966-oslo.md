@@ -1,10 +1,10 @@
 # Relationship path: isolate-geni-samson-eitrheim-1872-1966-oslo
 
-**23 of 42 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**27 of 42 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–22, 13 of 22 held; path 2 — steps 23–42, 10 of 20 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–22, 17 of 22 held; path 2 — steps 23–42, 10 of 20 held. The run and doorway below are the first path's.
 
-**The unbroken run stops at step 13, Peder Christensson Lind.** The next step, **Karen Christensdatter Lind**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 17, Sigrid Olsdatter Helleland.** The next step, **Samson Mathisen Staen**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -23,10 +23,10 @@
 | 11 | Anna Tjølsdatter Obrestad | her mother | [Anna Tjølsdatter Obrestad](https://www.geni.com/people/x/6000000006776171804) | id | 1 |
 | 12 | Margreta Pedersdatter Lind | her mother | [Margreta Pedersdatter](https://www.geni.com/people/x/6000000005420481509) | id | 1 |
 | 13 | Peder Christensson Lind | her father | [Peder Christensson Lind](https://www.geni.com/people/x/6000000005420097975) | id | 1 |
-| 14 | Karen Christensdatter Lind | his sister | — | absent | — |
-| 15 | Margrete Tollaksdatter Løgit, d.e. | her daughter | — | absent | — |
-| 16 | Ola Pederson Løgit | her son | — | absent | — |
-| 17 | Sigrid Olsdatter Helleland | his daughter | — | absent | — |
+| 14 | Karen Christensdatter Lind | his sister | [Karen Christensdatter Lind](https://www.geni.com/people/x/6000000007649299513) | id | 1 |
+| 15 | Margrete Tollaksdatter Løgit, d.e. | her daughter | [Margrete Tollaksdatter Vikøy Aukland](https://www.geni.com/people/x/6000000002452595502) | id | 1 |
+| 16 | Ola Pederson Løgit | her son | [Ola Persson Løget](https://www.geni.com/people/x/6000000002665012189) | id | 1 |
+| 17 | Sigrid Olsdatter Helleland | his daughter | [Sigrid Olsdatter Løgit](https://www.geni.com/people/x/6000000014065299148) | id | 1 |
 | 18 | Samson Mathisen Staen | her son | — | absent | — |
 | 19 | Samson Samsonson Isberg | his son | — | absent | — |
 | 20 | Anna Samsonsdatter Eitrheim | his daughter | — | absent | — |

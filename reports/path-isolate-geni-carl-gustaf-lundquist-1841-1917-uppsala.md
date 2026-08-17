@@ -1,8 +1,8 @@
 # Relationship path: isolate-geni-carl-gustaf-lundquist-1841-1917-uppsala
 
-**10 of 24 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**14 of 24 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**The unbroken run stops at step 10, Lars Lennart Larsson.** The next step, **Hedvig Sofia Tillberg**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 14, Anna Tillberg.** The next step, **Sofia Albertina Charlotta Augusta Eleonora Catharina af Petersons**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -18,10 +18,10 @@
 | 8 | Karl Gustaf Eriksson | her son | [Karl Gustav](https://www.geni.com/people/x/6000000025153348204) | id | 1 |
 | 9 | Hildur Cecilia Frideborg Eriksson | his daughter | [Hildur Cecilia Frideborg Eriksson](https://www.geni.com/people/x/6000000019509377608) | id | 1 |
 | 10 | Lars Lennart Larsson | her adopted son | [Lars Lennart Sjöberg](https://www.geni.com/people/x/6000000186609053824) | id | 1 |
-| 11 | Hedvig Sofia Tillberg | his mother | — | absent | — |
-| 12 | Birger Tillberg | her husband | — | absent | — |
-| 13 | Hugo Tillberg | his brother | — | absent | — |
-| 14 | Anna Tillberg | his ex-wife | — | absent | — |
+| 11 | Hedvig Sofia Tillberg | his mother | [Hedvig Sofia Sjöberg](https://www.geni.com/people/x/6000000012754388121) | id | 1 |
+| 12 | Birger Tillberg | her husband | [Birger Henning Tillberg](https://www.geni.com/people/x/6000000015230639035) | id | 1 |
+| 13 | Hugo Tillberg | his brother | [Hugo Alexander Tillberg](https://www.geni.com/people/x/6000000078709241051) | id | 1 |
+| 14 | Anna Tillberg | his ex-wife | [Anna af Peterséns](https://www.geni.com/people/x/6000000078709420078) | id | 1 |
 | 15 | Sofia Albertina Charlotta Augusta Eleonora Catharina af Petersons | her mother | — | absent | — |
 | 16 | Johanna Margareta Gustafsdotter Hamilton | her mother | — | absent | — |
 | 17 | Gustaf Wathier Hamilton, till Barsebäck | her father | — | absent | — |

@@ -1,6 +1,6 @@
 {
   "steps_total": 45,
-  "steps_in_tree": 24,
+  "steps_in_tree": 26,
   "paths_in_this_file": 2,
   "chains": [
     {
@@ -8,21 +8,21 @@
       "first_step": 1,
       "last_step": 23,
       "steps_total": 23,
-      "steps_in_tree": 15,
-      "unbroken_run_ends_at": 15
+      "steps_in_tree": 16,
+      "unbroken_run_ends_at": 16
     },
     {
       "chain": 2,
       "first_step": 24,
       "last_step": 45,
       "steps_total": 22,
-      "steps_in_tree": 9,
-      "unbroken_run_ends_at": 32
+      "steps_in_tree": 10,
+      "unbroken_run_ends_at": 33
     }
   ],
-  "unbroken_run_ends_at": 15,
+  "unbroken_run_ends_at": 16,
   "components": {
-    "1": 448321,
+    "1": 472655,
     "2": 344
   },
   "components_touched": [
@@ -30,14 +30,14 @@
   ],
   "gaps": [
     {
-      "from": 16,
+      "from": 17,
       "to": 23,
-      "length": 8
+      "length": 7
     },
     {
-      "from": 33,
+      "from": 34,
       "to": 45,
-      "length": 13
+      "length": 12
     }
   ],
   "steps": [
@@ -258,11 +258,11 @@
       "relation_to_previous": "her brother",
       "geni_id": "6000000002516491073",
       "geni_url": "https://www.geni.com/people/x/6000000002516491073",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "6000000002516491073",
+      "matched_name": "Peter Adriansøn Falckner",
       "candidates": []
     },
     {
@@ -496,11 +496,11 @@
       "relation_to_previous": "her brother",
       "geni_id": "6000000009958369975",
       "geni_url": "https://www.geni.com/people/x/6000000009958369975",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "6000000009958369975",
+      "matched_name": "Johan Gerhard Gjestsen",
       "candidates": []
     },
     {

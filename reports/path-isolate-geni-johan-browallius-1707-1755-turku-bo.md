@@ -1,8 +1,8 @@
 # Relationship path: isolate-geni-johan-browallius-1707-1755-turku-bo
 
-**15 of 20 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**16 of 20 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**The unbroken run stops at step 15, Johanna Elisabeth Rancken.** The next step, **Sara Elisabet Ekman**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 16, Sara Elisabet Ekman.** The next step, **Andreas Jacobi Gadolin**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -23,7 +23,7 @@
 | 13 | Arne Wilhelm Rancken | her father | [Arne Wilhelm](https://www.geni.com/people/x/6000000000127612134) | id | 1 |
 | 14 | Wilhelm Rancken | his father | [Wilhelm Rancken](https://www.geni.com/people/x/6000000000127612116) | id | 1 |
 | 15 | Johanna Elisabeth Rancken | his mother | [Johanna Elisabeth Ekman](https://www.geni.com/people/x/5328971090140130337) | id | 1 |
-| 16 | Sara Elisabet Ekman | her mother | — | absent | — |
+| 16 | Sara Elisabet Ekman | her mother | [Sara Elisabet Gadolin](https://www.geni.com/people/x/5679634808960060299) | id | 1 |
 | 17 | Andreas Jacobi Gadolin | her father | — | absent | — |
 | 18 | Bishop Jakob Gadolin | his brother | — | absent | — |
 | 19 | Elisabet Browallia | his wife | — | absent | — |

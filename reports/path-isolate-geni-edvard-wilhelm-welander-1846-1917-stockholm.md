@@ -1,8 +1,8 @@
 # Relationship path: isolate-geni-edvard-wilhelm-welander-1846-1917-stockholm
 
-**10 of 20 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**14 of 20 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**The unbroken run stops at step 10, Lars Lennart Larsson.** The next step, **Hedvig Sofia Tillberg**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 14, Hugo Fredrik Wickenberg.** The next step, **Magnus Wickenberg**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -18,10 +18,10 @@
 | 8 | Karl Gustaf Eriksson | her son | [Karl Gustav](https://www.geni.com/people/x/6000000025153348204) | id | 1 |
 | 9 | Hildur Cecilia Frideborg Eriksson | his daughter | [Hildur Cecilia Frideborg Eriksson](https://www.geni.com/people/x/6000000019509377608) | id | 1 |
 | 10 | Lars Lennart Larsson | her adopted son | [Lars Lennart Sjöberg](https://www.geni.com/people/x/6000000186609053824) | id | 1 |
-| 11 | Hedvig Sofia Tillberg | his mother | — | absent | — |
-| 12 | Gösta Bertil Theodor Bäckström | her son | — | absent | — |
-| 13 | Torborg Viola Bäckström | his wife | — | absent | — |
-| 14 | Hugo Fredrik Wickenberg | her ex-husband | — | absent | — |
+| 11 | Hedvig Sofia Tillberg | his mother | [Hedvig Sofia Sjöberg](https://www.geni.com/people/x/6000000012754388121) | id | 1 |
+| 12 | Gösta Bertil Theodor Bäckström | her son | [Gösta Bertil Theodor Bäckström](https://www.geni.com/people/x/5525749701690023991) | id | 1 |
+| 13 | Torborg Viola Bäckström | his wife | [Torborg Viola Bågenholm](https://www.geni.com/people/x/6000000008058065240) | id | 1 |
+| 14 | Hugo Fredrik Wickenberg | her ex-husband | [Hugo Fredrik Wickenberg](https://www.geni.com/people/x/5553662861070136341) | id | 1 |
 | 15 | Magnus Wickenberg | his father | — | absent | — |
 | 16 | Anna (Nanna) Wickenberg | his sister | — | absent | — |
 | 17 | Frans Johan Wilhelm Dahl | her husband | — | absent | — |

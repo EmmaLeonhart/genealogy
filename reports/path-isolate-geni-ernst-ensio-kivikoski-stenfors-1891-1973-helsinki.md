@@ -1,10 +1,12 @@
 # Relationship path: isolate-geni-ernst-ensio-kivikoski-stenfors-1891-1973-helsinki
 
-**40 of 62 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**45 of 62 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–40, 22 of 40 held; path 2 — steps 41–62, 18 of 22 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–40, 26 of 40 held; path 2 — steps 41–62, 19 of 22 held. The run and doorway below are the first path's.
 
 **The unbroken run stops at step 22, Knut Bengtsson Bengtsson Sparre över Blad.** The next step, **Ingeborg Bengtsdotter Sparre över blad**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+
+**4 steps past the gap are held anyway** — Lars Piik, til Gåsevad onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
 
 ## Steps
 
@@ -34,10 +36,10 @@
 | 22 | Knut Bengtsson Bengtsson Sparre över Blad | her father | [Knut Bengtsson Bengtsson Sparre över Blad](https://www.geni.com/people/x/6000000031873939968) | id | 1 |
 | 23 | Ingeborg Bengtsdotter Sparre över blad | his sister | — | absent | — |
 | 24 | Märitta Arvidsdotter Pik | her daughter | — | absent | — |
-| 25 | Lars Piik, til Gåsevad | her son | — | absent | — |
-| 26 | Märta Larsdotter Pik | his daughter | — | absent | — |
-| 27 | Edla Nilsdotter (pil) på Oplo | her daughter | — | absent | — |
-| 28 | Peder Bryntesson Lilliehöök, dä | her son | — | absent | — |
+| 25 | Lars Piik, til Gåsevad | her son | [Lars](https://www.geni.com/people/x/6000000003645811287) | id | 1 |
+| 26 | Märta Larsdotter Pik | his daughter | [Märta Larsdotter Pik](https://www.geni.com/people/x/6000000003645811280) | id | 1 |
+| 27 | Edla Nilsdotter (pil) på Oplo | her daughter | [Edla Nilsdotter](https://www.geni.com/people/x/6000000011367184297) | id | 1 |
+| 28 | Peder Bryntesson Lilliehöök, dä | her son | [Peder Bryntesson Lilliehöök](https://www.geni.com/people/x/6000000011367279282) | id | 1 |
 | 29 | Märta Pedersdotter Lilliehöök | his daughter | — | absent | — |
 | 30 | Claes Göransson Prytz | her son | — | absent | — |
 | 31 | Georgius Nicolai Prytz | his son | — | absent | — |
@@ -67,7 +69,7 @@
 | 55 | Petter Johan Sandelin | his father | [Petter Johan](https://www.geni.com/people/x/6000000010076488689) | id | 1 |
 | 56 | Maria Matilda Alcenius | his wife | [Maria Matilda Alcenius](https://www.geni.com/people/x/6000000002117403820) | id | 1 |
 | 57 | Helena Sofia Wilskman | her sister | [Helena Sofia Alcenius](https://www.geni.com/people/x/6000000002477426003) | id | 1 |
-| 58 | Helena Forsman | her daughter | — | absent | — |
+| 58 | Helena Forsman | her daughter | [Helena Wilskman](https://www.geni.com/people/x/6000000005482062001) | id | 1 |
 | 59 | William Vindician Forsman | her husband | [William Vindician Forsman](https://www.geni.com/people/x/6000000010675779518) | id | 1 |
 | 60 | Sofia Josefina Forsman | his wife | — | absent | — |
 | 61 | Ernst Wilhelm Stenfors | her brother | — | absent | — |

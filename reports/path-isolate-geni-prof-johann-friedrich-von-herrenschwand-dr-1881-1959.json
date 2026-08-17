@@ -1,6 +1,6 @@
 {
   "steps_total": 72,
-  "steps_in_tree": 43,
+  "steps_in_tree": 44,
   "paths_in_this_file": 2,
   "chains": [
     {
@@ -8,8 +8,8 @@
       "first_step": 1,
       "last_step": 48,
       "steps_total": 48,
-      "steps_in_tree": 33,
-      "unbroken_run_ends_at": 27
+      "steps_in_tree": 34,
+      "unbroken_run_ends_at": 34
     },
     {
       "chain": 2,
@@ -20,20 +20,15 @@
       "unbroken_run_ends_at": 58
     }
   ],
-  "unbroken_run_ends_at": 27,
+  "unbroken_run_ends_at": 34,
   "components": {
-    "1": 448321,
+    "1": 472655,
     "2": 344
   },
   "components_touched": [
     1
   ],
   "gaps": [
-    {
-      "from": 28,
-      "to": 28,
-      "length": 1
-    },
     {
       "from": 35,
       "to": 48,
@@ -431,11 +426,11 @@
       "relation_to_previous": "his son",
       "geni_id": "6000000009680143787",
       "geni_url": "https://www.geni.com/people/x/6000000009680143787",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "6000000009680143787",
+      "matched_name": "Günther Graf von Lindow-Ruppin",
       "candidates": []
     },
     {

@@ -1,10 +1,10 @@
 # Relationship path: isolate-geni-viggo-brun-1885-1978
 
-**24 of 38 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**28 of 38 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–20, 12 of 20 held; path 2 — steps 21–38, 12 of 18 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–20, 16 of 20 held; path 2 — steps 21–38, 12 of 18 held. The run and doorway below are the first path's.
 
-**The unbroken run stops at step 12, Claus Henriksen Miltzow.** The next step, **Margareta Henriksdatter Miltzow**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 16, Alida Christensdatter Beyer.** The next step, **Alida Jørgine Heiberg**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -22,10 +22,10 @@
 | 10 | Gudve Knudsdatter | her mother | [Gudve](https://www.geni.com/people/x/6000000005744994368) | id | 1 |
 | 11 | Ingjerd Clausdatter Miltzow | her mother | [Ingjerd Clausdatter Miltzow](https://www.geni.com/people/x/6000000000694158525) | id | 1 |
 | 12 | Claus Henriksen Miltzow | her father | [Claus Henriksen Miltzow](https://www.geni.com/people/x/6000000008115020929) | id | 1 |
-| 13 | Margareta Henriksdatter Miltzow | his sister | — | absent | — |
-| 14 | Alhed Sophie Ottosdatter Schreuder | her daughter | — | absent | — |
-| 15 | Skipper Christen Christensen Beyer | her son | — | absent | — |
-| 16 | Alida Christensdatter Beyer | his daughter | — | absent | — |
+| 13 | Margareta Henriksdatter Miltzow | his sister | [Margareta Henriksdatter Miltzow](https://www.geni.com/people/x/6000000002736882707) | id | 1 |
+| 14 | Alhed Sophie Ottosdatter Schreuder | her daughter | [Alhed Sophie Ottosdatter](https://www.geni.com/people/x/6000000016364344015) | id | 1 |
+| 15 | Skipper Christen Christensen Beyer | her son | [Christen Christensen](https://www.geni.com/people/x/6000000016806071990) | id | 1 |
+| 16 | Alida Christensdatter Beyer | his daughter | [Alida Christensdatter](https://www.geni.com/people/x/6000000016805579610) | id | 1 |
 | 17 | Alida Jørgine Heiberg | her daughter | — | absent | — |
 | 18 | Marie Brunchorst | her daughter | — | absent | — |
 | 19 | Søren Martens Brun | her son | — | absent | — |

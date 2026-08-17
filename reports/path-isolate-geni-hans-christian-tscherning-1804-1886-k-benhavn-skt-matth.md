@@ -1,8 +1,8 @@
 # Relationship path: isolate-geni-hans-christian-tscherning-1804-1886-k-benhavn-skt-matth
 
-**9 of 19 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**12 of 19 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**The unbroken run stops at step 9, Anna Severine Sahl Gjestdatter.** The next step, **Johanna Sletten**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 12, Hans Larsen, Storalteren.** The next step, **Maren Kristine Larsdatter**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -17,9 +17,9 @@
 | 7 | Peder Pedersen Holm | his brother | [Peder Pedersen Pedersen](https://www.geni.com/people/x/6000000022232192246) | id | 1 |
 | 8 | Wallace Holm | his son | [George Wallace Pedersen](https://www.geni.com/people/x/6000000013125404014) | id | 1 |
 | 9 | Anna Severine Sahl Gjestdatter | his wife | [Anna Severine Sahl](https://www.geni.com/people/x/6000000010331113653) | id | 1 |
-| 10 | Johanna Sletten | her mother | — | absent | — |
-| 11 | Adrianne Kristoffersdatter | her sister | — | absent | — |
-| 12 | Hans Larsen, Storalteren | her husband | — | absent | — |
+| 10 | Johanna Sletten | her mother | [Johanna Lorentze Kristoffersdatter](https://www.geni.com/people/x/6000000008923672201) | id | 1 |
+| 11 | Adrianne Kristoffersdatter | her sister | [Adrianne Kristoffersdatter](https://www.geni.com/people/x/6000000016910773797) | id | 1 |
+| 12 | Hans Larsen, Storalteren | her husband | [Hans Larsen](https://www.geni.com/people/x/6000000008685335207) | id | 1 |
 | 13 | Maren Kristine Larsdatter | his sister | — | absent | — |
 | 14 | Vincens Steensen Steensen-Leth, til Steensgaard | her husband | — | absent | — |
 | 15 | Constance Henriette Fabritius de Tengnagel | his mother | — | absent | — |

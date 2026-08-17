@@ -1,6 +1,6 @@
 {
   "steps_total": 47,
-  "steps_in_tree": 28,
+  "steps_in_tree": 31,
   "paths_in_this_file": 2,
   "chains": [
     {
@@ -8,8 +8,8 @@
       "first_step": 1,
       "last_step": 27,
       "steps_total": 27,
-      "steps_in_tree": 16,
-      "unbroken_run_ends_at": 15
+      "steps_in_tree": 19,
+      "unbroken_run_ends_at": 19
     },
     {
       "chain": 2,
@@ -20,20 +20,15 @@
       "unbroken_run_ends_at": 37
     }
   ],
-  "unbroken_run_ends_at": 15,
+  "unbroken_run_ends_at": 19,
   "components": {
-    "1": 448321,
+    "1": 472655,
     "2": 344
   },
   "components_touched": [
     1
   ],
   "gaps": [
-    {
-      "from": 16,
-      "to": 18,
-      "length": 3
-    },
     {
       "from": 20,
       "to": 27,
@@ -268,11 +263,11 @@
       "relation_to_previous": "her daughter",
       "geni_id": "6000000004041912995",
       "geni_url": "https://www.geni.com/people/x/6000000004041912995",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "6000000004041912995",
+      "matched_name": "Maren Hansdatter Trane",
       "candidates": []
     },
     {
@@ -282,11 +277,11 @@
       "relation_to_previous": "her son",
       "geni_id": "300561274950002052",
       "geni_url": "https://www.geni.com/people/x/300561274950002052",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "300561274950002052",
+      "matched_name": "Christen Mathiasen Trane",
       "candidates": []
     },
     {
@@ -296,11 +291,11 @@
       "relation_to_previous": "his son",
       "geni_id": "310078132560005707",
       "geni_url": "https://www.geni.com/people/x/310078132560005707",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "310078132560005707",
+      "matched_name": "Mathias Christensen Trane",
       "candidates": []
     },
     {

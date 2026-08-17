@@ -1,8 +1,8 @@
 # Relationship path: isolate-geni-andreas-bauer-1590-1638-leipzig
 
-**16 of 29 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**17 of 29 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**The unbroken run stops at step 16, Peder Jensen Schielderup.** The next step, **Jørgen Pedersen Schielderup**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 17, Jørgen Pedersen Schielderup.** The next step, **Anna Magdalena Beata Hansdatter Busch**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -24,7 +24,7 @@
 | 14 | Jens Jørgensen | her father | [Jens Jørgensen](https://www.geni.com/people/x/6000000001838607806) | id | 1 |
 | 15 | Bispedatter Adriane Jensd Schielderup | his mother | [Adriane Jensdatter Schielderup](https://www.geni.com/people/x/6000000001506899998) | id | 1 |
 | 16 | Peder Jensen Schielderup | her brother | [Peder Jensen](https://www.geni.com/people/x/6000000000873947684) | id | 1 |
-| 17 | Jørgen Pedersen Schielderup | his son | — | absent | — |
+| 17 | Jørgen Pedersen Schielderup | his son | [Jørgen Pedersen](https://www.geni.com/people/x/6000000020182272013) | id | 1 |
 | 18 | Anna Magdalena Beata Hansdatter Busch | his wife | — | absent | — |
 | 19 | Hans Gjertsen Busch | her father | — | absent | — |
 | 20 | Anna Christophersdatter Boldich | his mother | — | absent | — |

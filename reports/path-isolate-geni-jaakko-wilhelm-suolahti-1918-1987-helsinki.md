@@ -1,10 +1,12 @@
 # Relationship path: isolate-geni-jaakko-wilhelm-suolahti-1918-1987-helsinki
 
-**34 of 51 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**38 of 51 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–30, 23 of 30 held; path 2 — steps 31–51, 11 of 21 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–30, 25 of 30 held; path 2 — steps 31–51, 13 of 21 held. The run and doorway below are the first path's.
 
 **The unbroken run stops at step 23, Catharina Arnkihl.** The next step, **Brita Katarina Arnkihl**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+
+**2 steps past the gap are held anyway** — Nils Mathesius onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
 
 ## Steps
 
@@ -35,8 +37,8 @@
 | 23 | Catharina Arnkihl | his daughter | [Catharina Fellenia](https://www.geni.com/people/x/6000000020299295861) | id | 1 |
 | 24 | Brita Katarina Arnkihl | her daughter | — | absent | — |
 | 25 | Katarina Brunell | her daughter | — | absent | — |
-| 26 | Nils Mathesius | her son | — | absent | — |
-| 27 | Maria Catharina Forssell | his daughter | — | absent | — |
+| 26 | Nils Mathesius | her son | [Nils](https://www.geni.com/people/x/6000000010877033547) | id | 1 |
+| 27 | Maria Catharina Forssell | his daughter | [Maria Catharina Mathesius](https://www.geni.com/people/x/6000000004407753123) | id | 1 |
 | 28 | Ida Charlotta Bonsdorff | her daughter | — | absent | — |
 | 29 | Ilta Emilia Bonsdorff | her daughter | — | absent | — |
 | 30 | Jaakko Suolahti | her son | — | absent | — |
@@ -56,8 +58,8 @@
 | 44 | Lars Herman Uhlbrandt | her son | — | absent | — |
 | 45 | Kristina Uhlbrandt | his wife | — | absent | — |
 | 46 | Katarina Brunell | her sister | — | absent | — |
-| 47 | Nils Mathesius | her son | — | absent | — |
-| 48 | Maria Catharina Forssell | his daughter | — | absent | — |
+| 47 | Nils Mathesius | her son | [Nils](https://www.geni.com/people/x/6000000010877033547) | repeat | 1 |
+| 48 | Maria Catharina Forssell | his daughter | [Maria Catharina Mathesius](https://www.geni.com/people/x/6000000004407753123) | repeat | 1 |
 | 49 | Ida Charlotta Bonsdorff | her daughter | — | absent | — |
 | 50 | Ilta Emilia Bonsdorff | her daughter | — | absent | — |
 | 51 | Jaakko Suolahti | her son | — | absent | — |

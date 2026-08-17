@@ -1,8 +1,8 @@
 # Relationship path: isolate-geni-bendix-christian-de-fine-1696-1746-stavanger
 
-**36 of 56 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**38 of 56 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–34, 21 of 34 held; path 2 — steps 35–56, 15 of 22 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–34, 21 of 34 held; path 2 — steps 35–56, 17 of 22 held. The run and doorway below are the first path's.
 
 **The unbroken run stops at step 21, Gyda Guttormsdatter Skådem.** The next step, **Gjertrud Guttormsdatter**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
@@ -62,7 +62,7 @@
 | 50 | Nils Pedersen Sunnanå, Prest | her father | — | absent | — |
 | 51 | Peder Pedersen Sunnanå | his father | — | absent | — |
 | 52 | Else Pedersdatter Sunnanå | his daughter | — | absent | — |
-| 53 | Hans Hansen Lillienskiold | her son | — | absent | — |
-| 54 | Jonas Hansson Lillienskiold | his son | — | absent | — |
+| 53 | Hans Hansen Lillienskiold | her son | [Hans Hansen Schmidt](https://www.geni.com/people/x/6000000008648843733) | id | 1 |
+| 54 | Jonas Hansson Lillienskiold | his son | [Jonas Hansson Lillienskiold](https://www.geni.com/people/x/6000000006267697208) | id | 1 |
 | 55 | Charlotta Amalie Lillienschiold | his daughter | — | absent | — |
 | 56 | Bendix Christian de Fine | her husband | — | absent | — |

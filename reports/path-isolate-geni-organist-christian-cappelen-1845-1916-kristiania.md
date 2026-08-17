@@ -1,8 +1,8 @@
 # Relationship path: isolate-geni-organist-christian-cappelen-1845-1916-kristiania
 
-**26 of 42 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**28 of 42 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–27, 16 of 27 held; path 2 — steps 28–42, 10 of 15 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–27, 16 of 27 held; path 2 — steps 28–42, 12 of 15 held. The run and doorway below are the first path's.
 
 **The unbroken run stops at step 16, Maren Nielsdatter [Borke].** The next step, **Kirsten Jensdatter**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
@@ -47,8 +47,8 @@
 | 35 | Helge Olsen Ytre Lima | his father | [Helge Olsen Ytre Lima](https://www.geni.com/people/x/6000000005607599821) | id | 1 |
 | 36 | Ola Svenson Ytre Lima | his father | [Ola Svenson Ytre Lima](https://www.geni.com/people/x/6000000005607599800) | id | 1 |
 | 37 | Guri Olsdatter Lima | his daughter | [Guri Olsdatter Olsdatter](https://www.geni.com/people/x/6000000007590879500) | id | 1 |
-| 38 | Lars Olson Vigre | her son | — | absent | — |
-| 39 | Tolette Christine Vigre | his daughter | — | absent | — |
+| 38 | Lars Olson Vigre | her son | [Lars Olson Eikeland](https://www.geni.com/people/x/6000000035539136715) | id | 1 |
+| 39 | Tolette Christine Vigre | his daughter | [Tolette Christine Vigre](https://www.geni.com/people/x/6000000219882263829) | id | 1 |
 | 40 | Anna Cappelen | her daughter | — | absent | — |
 | 41 | Paul Thrane Cappelen | her husband | — | absent | — |
 | 42 | organist Christian Cappelen | his father | — | absent | — |

@@ -1,12 +1,12 @@
 # Relationship path: isolate-geni-alfred-hartmann-bj-rnson-1889-1974-stavanger
 
-**42 of 65 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**44 of 65 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–47, 32 of 47 held; path 2 — steps 48–65, 10 of 18 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–47, 34 of 47 held; path 2 — steps 48–65, 10 of 18 held. The run and doorway below are the first path's.
 
 **The unbroken run stops at step 30, Torbjörn Guttormsson.** The next step, **Guttorm Torbjörnsson**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
-**2 steps past the gap are held anyway** — Peder Örjansen [Skanke] onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
+**4 steps past the gap are held anyway** — Peder Örjansen [Skanke] onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
 
 ## Steps
 
@@ -49,8 +49,8 @@
 | 35 | Väpnare Örjan Karlsson [Skanke] | his son | — | absent | — |
 | 36 | Peder Örjansen [Skanke] | his son | [Peder](https://www.geni.com/people/x/307420627760001832) | id | 1 |
 | 37 | Jens Pedersen Schancke | his son | [Jens Pedersen Schancke](https://www.geni.com/people/x/6000000001097250198) | id | 1 |
-| 38 | Elisabeth Jensdatter | his daughter | — | absent | — |
-| 39 | Elen Mogensdatter Herdal | her daughter | — | absent | — |
+| 38 | Elisabeth Jensdatter | his daughter | [Elisabeth Jensdatter](https://www.geni.com/people/x/6000000000262627181) | id | 1 |
+| 39 | Elen Mogensdatter Herdal | her daughter | [Elen Mogensdatter Herdal](https://www.geni.com/people/x/6000000003580660516) | id | 1 |
 | 40 | Hans Christophersen von Aphelen | her son | — | absent | — |
 | 41 | Hans Hansen von Aphelen | his son | — | absent | — |
 | 42 | Sønne Hansen Hansen von Aphelen | his son | — | absent | — |

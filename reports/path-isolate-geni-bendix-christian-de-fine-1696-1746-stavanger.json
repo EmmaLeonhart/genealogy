@@ -1,6 +1,6 @@
 {
   "steps_total": 56,
-  "steps_in_tree": 36,
+  "steps_in_tree": 38,
   "paths_in_this_file": 2,
   "chains": [
     {
@@ -16,13 +16,13 @@
       "first_step": 35,
       "last_step": 56,
       "steps_total": 22,
-      "steps_in_tree": 15,
+      "steps_in_tree": 17,
       "unbroken_run_ends_at": 49
     }
   ],
   "unbroken_run_ends_at": 21,
   "components": {
-    "1": 448321,
+    "1": 472655,
     "2": 344
   },
   "components_touched": [
@@ -36,8 +36,13 @@
     },
     {
       "from": 50,
+      "to": 52,
+      "length": 3
+    },
+    {
+      "from": 55,
       "to": 56,
-      "length": 7
+      "length": 2
     }
   ],
   "steps": [
@@ -776,11 +781,11 @@
       "relation_to_previous": "her son",
       "geni_id": "6000000008648843733",
       "geni_url": "https://www.geni.com/people/x/6000000008648843733",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "6000000008648843733",
+      "matched_name": "Hans Hansen Schmidt",
       "candidates": []
     },
     {
@@ -790,11 +795,11 @@
       "relation_to_previous": "his son",
       "geni_id": "6000000006267697208",
       "geni_url": "https://www.geni.com/people/x/6000000006267697208",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "6000000006267697208",
+      "matched_name": "Jonas Hansson Lillienskiold",
       "candidates": []
     },
     {

@@ -1,12 +1,12 @@
 # Relationship path: isolate-geni-lauritz-scavenius-1562-1626-stavanger
 
-**38 of 51 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**42 of 51 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–31, 26 of 31 held; path 2 — steps 32–51, 12 of 20 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–31, 28 of 31 held; path 2 — steps 32–51, 14 of 20 held. The run and doorway below are the first path's.
 
 **The unbroken run stops at step 21, Gyda Guttormsdatter Skådem.** The next step, **Gudrun Guttormsdatter Hudfat**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
-**5 steps past the gap are held anyway** — Ingeborg Lydersdatter Struds von Bergen onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
+**7 steps past the gap are held anyway** — Haakon Agmundsen Bolt onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
 
 ## Steps
 
@@ -35,8 +35,8 @@
 | 21 | Gyda Guttormsdatter Skådem | her mother | [Gyda Guttormsdatter Hudfat](https://www.geni.com/people/x/6000000011183696687) | id | 1 |
 | 22 | Gudrun Guttormsdatter Hudfat | her sister | — | absent | — |
 | 23 | Elin Bergsveinsdotter | her daughter | — | absent | — |
-| 24 | Haakon Agmundsen Bolt | her son | — | absent | — |
-| 25 | Gunhild Haakonsdatter Bolt | his daughter | — | absent | — |
+| 24 | Haakon Agmundsen Bolt | her son | [Haakon](https://www.geni.com/people/x/6000000002512241178) | id | 1 |
+| 25 | Gunhild Haakonsdatter Bolt | his daughter | [Gunhild Haakonsdatter Bolt](https://www.geni.com/people/x/6000000001139144268) | id | 1 |
 | 26 | Ingeborg Lydersdatter Struds von Bergen | her daughter | [Ingeborg Lydersdatter Struds von Bergen](https://www.geni.com/people/x/6000000001722370024) | id | 1 |
 | 27 | Anne Ottesdatter Rømer | her daughter | [Anne Ottesdatter Ottesdatter(?) Rømer](https://www.geni.com/people/x/6000000001827531760) | id | 1 |
 | 28 | Sigvardt Amundsen Holck | her son | — | absent | — |
@@ -59,7 +59,7 @@
 | 45 | Else Marie Paust Kyvik | her mother | — | absent | — |
 | 46 | Sophie Hellesdatter Paust | her mother | — | absent | — |
 | 47 | Helle Christensen Hellemann | her father | — | absent | — |
-| 48 | Christen Lauritsen Hillemand | his father | — | absent | — |
-| 49 | Maren Gabrielsdatter Lind | his mother | — | absent | — |
+| 48 | Christen Lauritsen Hillemand | his father | [Christen Lauritsen](https://www.geni.com/people/x/4275395618020068615) | id | 1 |
+| 49 | Maren Gabrielsdatter Lind | his mother | [Maren Gabrielsdatter](https://www.geni.com/people/x/4275583289130033084) | id | 1 |
 | 50 | Anne Lauritzdatter Lind | her mother | [Anne Lauritzdatter Scavenius](https://www.geni.com/people/x/4275641755920033011) | id | 1 |
 | 51 | Lauritz Scavenius | her father | [Lauritz Clausen Scavenius](https://www.geni.com/people/x/6000000007959864423) | repeat | 1 |

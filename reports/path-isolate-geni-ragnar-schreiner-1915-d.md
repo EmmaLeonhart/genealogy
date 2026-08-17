@@ -1,10 +1,10 @@
 # Relationship path: isolate-geni-ragnar-schreiner-1915-d
 
-**26 of 43 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**29 of 43 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–26, 16 of 26 held; path 2 — steps 27–43, 10 of 17 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–26, 19 of 26 held; path 2 — steps 27–43, 10 of 17 held. The run and doorway below are the first path's.
 
-**The unbroken run stops at step 16, Peder Jensen Schielderup.** The next step, **Jørgen Pedersen Schielderup**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 19, Karen Olsdatter Tønder.** The next step, **Hans Jenssen Collin**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -26,9 +26,9 @@
 | 14 | Jens Jørgensen | her father | [Jens Jørgensen](https://www.geni.com/people/x/6000000001838607806) | id | 1 |
 | 15 | Bispedatter Adriane Jensd Schielderup | his mother | [Adriane Jensdatter Schielderup](https://www.geni.com/people/x/6000000001506899998) | id | 1 |
 | 16 | Peder Jensen Schielderup | her brother | [Peder Jensen](https://www.geni.com/people/x/6000000000873947684) | id | 1 |
-| 17 | Jørgen Pedersen Schielderup | his son | — | absent | — |
-| 18 | Maren Jørgensdatter Schielderup | his daughter | — | absent | — |
-| 19 | Karen Olsdatter Tønder | her daughter | — | absent | — |
+| 17 | Jørgen Pedersen Schielderup | his son | [Jørgen Pedersen](https://www.geni.com/people/x/6000000020182272013) | id | 1 |
+| 18 | Maren Jørgensdatter Schielderup | his daughter | [Maren Jørgensdatter Schielderup](https://www.geni.com/people/x/6000000001624111597) | id | 1 |
+| 19 | Karen Olsdatter Tønder | her daughter | [Karen Olsdatter Tønder](https://www.geni.com/people/x/6000000012198494299) | id | 1 |
 | 20 | Hans Jenssen Collin | her son | — | absent | — |
 | 21 | Frederich Hansen Collin | his son | — | absent | — |
 | 22 | Christine Fridericha Elster | his daughter | — | absent | — |

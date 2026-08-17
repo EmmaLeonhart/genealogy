@@ -1,12 +1,12 @@
 # Relationship path: isolate-geni-akateemikko-erkki-aukusti-laurila-1913-1998-porvoo
 
-**45 of 65 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**49 of 65 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–43, 28 of 43 held; path 2 — steps 44–65, 17 of 22 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–43, 30 of 43 held; path 2 — steps 44–65, 19 of 22 held. The run and doorway below are the first path's.
 
-**The unbroken run stops at step 23, Ulv Jonsson (Roos af Ervalla).** The next step, **Katarina Ulvsdatter Roos, af Ervalla**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 27, Katarina Johansdotter Gädda.** The next step, **Gunilla Johansdotter Bese**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
-**5 steps past the gap are held anyway** — Katarina Bengtsdotter Königsmark onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
+**3 steps past the gap are held anyway** — Karin Eriksdotter Bielke onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
 
 ## Steps
 
@@ -35,8 +35,8 @@
 | 21 | Snefrid Håkonsdotter | his mother | [Snefrid](https://www.geni.com/people/x/6000000010222435520) | id | 1 |
 | 22 | Haakon Jonsson Rose, til Sudrheim | her father | [Haakon Jonsson Roos](https://www.geni.com/people/x/6000000007549309545) | id | 1 |
 | 23 | Ulv Jonsson (Roos af Ervalla) | his brother | [Ulv Jonssøn Jonsson (Roos af Ervalla)](https://www.geni.com/people/x/6000000008861916763) | id | 1 |
-| 24 | Katarina Ulvsdatter Roos, af Ervalla | his daughter | — | absent | — |
-| 25 | Märta Tordsdotter Bonde | her daughter | — | absent | — |
+| 24 | Katarina Ulvsdatter Roos, af Ervalla | his daughter | [Katarina Ulvsdatter](https://www.geni.com/people/x/6000000005596270769) | id | 1 |
+| 25 | Märta Tordsdotter Bonde | her daughter | [Märta Tordsdotter](https://www.geni.com/people/x/6000000005909245879) | id | 1 |
 | 26 | Katarina Bengtsdotter Königsmark | her daughter | [Katarina Bengtsdotter](https://www.geni.com/people/x/6000000005597991421) | id | 1 |
 | 27 | Katarina Johansdotter Gädda | her daughter | [Katarina Johansdotter](https://www.geni.com/people/x/6000000181806049880) | id | 1 |
 | 28 | Gunilla Johansdotter Bese | her daughter | — | absent | — |
@@ -72,8 +72,8 @@
 | 58 | Konrad Fredriksson Ottelin | her father | [Konrad Fredriksson Ottelin](https://www.geni.com/people/x/6000000002446066050) | id | 1 |
 | 59 | Fredrik Napoleon Fredriksson Ottelin | his brother | [Fredrik Napoleon Fredriksson Ottelin](https://www.geni.com/people/x/6000000001536107417) | id | 1 |
 | 60 | Amalia Josefina Henriette Karlsdotter Limón | his wife | [Amalia Josefina Henriette Karlsdotter Limón](https://www.geni.com/people/x/6000000001535833485) | id | 1 |
-| 61 | Johan Werner Limón | her brother | — | absent | — |
-| 62 | Maria Charlotta Limon | his daughter | — | absent | — |
+| 61 | Johan Werner Limón | her brother | [Johan Werner](https://www.geni.com/people/x/6000000001525520299) | id | 1 |
+| 62 | Maria Charlotta Limon | his daughter | [Maria Charlotta Limón](https://www.geni.com/people/x/6000000001535396965) | id | 1 |
 | 63 | Yrjö Kalervo Leiwo | her son | — | absent | — |
 | 64 | Helka Kerttuli Leiwo | his daughter | — | absent | — |
 | 65 | Akateemikko Erkki Aukusti Laurila | her husband | — | absent | — |

@@ -1,6 +1,6 @@
 {
   "steps_total": 37,
-  "steps_in_tree": 25,
+  "steps_in_tree": 30,
   "paths_in_this_file": 2,
   "chains": [
     {
@@ -8,21 +8,21 @@
       "first_step": 1,
       "last_step": 21,
       "steps_total": 21,
-      "steps_in_tree": 14,
-      "unbroken_run_ends_at": 14
+      "steps_in_tree": 17,
+      "unbroken_run_ends_at": 17
     },
     {
       "chain": 2,
       "first_step": 22,
       "last_step": 37,
       "steps_total": 16,
-      "steps_in_tree": 11,
-      "unbroken_run_ends_at": 30
+      "steps_in_tree": 13,
+      "unbroken_run_ends_at": 34
     }
   ],
-  "unbroken_run_ends_at": 14,
+  "unbroken_run_ends_at": 17,
   "components": {
-    "1": 448321,
+    "1": 472655,
     "2": 344
   },
   "components_touched": [
@@ -30,14 +30,9 @@
   ],
   "gaps": [
     {
-      "from": 15,
+      "from": 18,
       "to": 21,
-      "length": 7
-    },
-    {
-      "from": 31,
-      "to": 32,
-      "length": 2
+      "length": 4
     },
     {
       "from": 35,
@@ -249,11 +244,11 @@
       "relation_to_previous": "his brother",
       "geni_id": "6000000007648809246",
       "geni_url": "https://www.geni.com/people/x/6000000007648809246",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "6000000007648809246",
+      "matched_name": "Samuel Lauritsson",
       "candidates": []
     },
     {
@@ -263,11 +258,11 @@
       "relation_to_previous": "his daughter",
       "geni_id": "6000000001169257586",
       "geni_url": "https://www.geni.com/people/x/6000000001169257586",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "6000000001169257586",
+      "matched_name": "Margrethe Samuelsdatter Lind",
       "candidates": []
     },
     {
@@ -277,11 +272,11 @@
       "relation_to_previous": "her son",
       "geni_id": "6000000007245267073",
       "geni_url": "https://www.geni.com/people/x/6000000007245267073",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "6000000007245267073",
+      "matched_name": "Gabriel Christenson Linde",
       "candidates": []
     },
     {
@@ -473,11 +468,11 @@
       "relation_to_previous": "her father",
       "geni_id": "6000000011198194484",
       "geni_url": "https://www.geni.com/people/x/6000000011198194484",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "6000000011198194484",
+      "matched_name": "Erik Erikson Time",
       "candidates": []
     },
     {
@@ -487,11 +482,11 @@
       "relation_to_previous": "his mother",
       "geni_id": "6000000005607411844",
       "geni_url": "https://www.geni.com/people/x/6000000005607411844",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "6000000005607411844",
+      "matched_name": "Ingeborg Eriksdatter Netland",
       "candidates": []
     },
     {

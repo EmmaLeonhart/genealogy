@@ -1,8 +1,8 @@
 # Relationship path: isolate-geni-jarl-axel-wasastjerna-1896-1972-helsinki
 
-**29 of 46 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**33 of 46 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–27, 19 of 27 held; path 2 — steps 28–46, 10 of 19 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–27, 19 of 27 held; path 2 — steps 28–46, 14 of 19 held. The run and doorway below are the first path's.
 
 **The unbroken run stops at step 19, Margareta Hansdotter Stålbom.** The next step, **Brita Jakobsdotter Holmius (Essevius)**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
@@ -47,10 +47,10 @@
 | 35 | Karl Gustaf Eriksson | her son | [Karl Gustav](https://www.geni.com/people/x/6000000025153348204) | id | 1 |
 | 36 | Hildur Cecilia Frideborg Eriksson | his daughter | [Hildur Cecilia Frideborg Eriksson](https://www.geni.com/people/x/6000000019509377608) | id | 1 |
 | 37 | Lars Lennart Larsson | her adopted son | [Lars Lennart Sjöberg](https://www.geni.com/people/x/6000000186609053824) | id | 1 |
-| 38 | Hedvig Sofia Tillberg | his mother | — | absent | — |
-| 39 | Erik Henrik Fredrik Bergman | her partner | — | absent | — |
-| 40 | Ingmar Bergman | his son | — | absent | — |
-| 41 | <private> Andersson | his ex-partner | — | absent | — |
+| 38 | Hedvig Sofia Tillberg | his mother | [Hedvig Sofia Sjöberg](https://www.geni.com/people/x/6000000012754388121) | id | 1 |
+| 39 | Erik Henrik Fredrik Bergman | her partner | [Erik Henrik Fredrik Bergman](https://www.geni.com/people/x/6000000003252323043) | id | 1 |
+| 40 | Ingmar Bergman | his son | [Ernst Ingmar Bergman](https://www.geni.com/people/x/6000000003252172731) | id | 1 |
+| 41 | <private> Andersson | his ex-partner | [<private> Andersson](https://www.geni.com/people/x/6000000007188279318) | id | 1 |
 | 42 | Jörn Donner | her ex-partner | — | absent | — |
 | 43 | Kai Donner | his father | — | absent | — |
 | 44 | Otto Donner | his father | — | absent | — |

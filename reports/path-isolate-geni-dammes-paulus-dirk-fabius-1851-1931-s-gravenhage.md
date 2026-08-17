@@ -1,8 +1,8 @@
 # Relationship path: isolate-geni-dammes-paulus-dirk-fabius-1851-1931-s-gravenhage
 
-**29 of 46 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**33 of 46 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**The unbroken run stops at step 29, Adelheid von Braunschweig-Göttingen.** The next step, **Elisabeth von Hessen**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 33, Freiherr Heinrich Bayer von Boppard.** The next step, **Johanetta Bayer von Boppard**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -37,10 +37,10 @@
 | 27 | Queen Consort Rikissa Birgersdotter Folkunga | his daughter | [Rikissa Birgersdotter](https://www.geni.com/people/x/6000000003801656372) | id | 1 |
 | 28 | Rixa von Werle | her daughter | [Rixa von Werle](https://www.geni.com/people/x/6000000000621618160) | id | 1 |
 | 29 | Adelheid von Braunschweig-Göttingen | her daughter | [Adelheid](https://www.geni.com/people/x/6000000003828092974) | id | 1 |
-| 30 | Elisabeth von Hessen | her daughter | — | absent | — |
-| 31 | Graf Rudolf von Ochsenstein, II | her son | — | absent | — |
-| 32 | Agnes von Ochsenstein | his daughter | — | absent | — |
-| 33 | Freiherr Heinrich Bayer von Boppard | her son | — | absent | — |
+| 30 | Elisabeth von Hessen | her daughter | [Elisabeth von Hessen](https://www.geni.com/people/x/6000000009967433153) | id | 1 |
+| 31 | Graf Rudolf von Ochsenstein, II | her son | [Rudolf von Ochsenstein](https://www.geni.com/people/x/6000000009967852859) | id | 1 |
+| 32 | Agnes von Ochsenstein | his daughter | [Agnes von Ochsenstein](https://www.geni.com/people/x/6000000021237833093) | id | 1 |
+| 33 | Freiherr Heinrich Bayer von Boppard | her son | [Heinrich Bayer von Boppard](https://www.geni.com/people/x/6000000018108500103) | id | 1 |
 | 34 | Johanetta Bayer von Boppard | his daughter | — | absent | — |
 | 35 | Bernhard von Kerpen | her son | — | absent | — |
 | 36 | Heinrich von Kerpen, Herr zu Ilingen | his son | — | absent | — |

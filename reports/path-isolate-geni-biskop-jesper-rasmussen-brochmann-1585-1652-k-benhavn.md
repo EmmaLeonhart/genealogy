@@ -1,8 +1,8 @@
 # Relationship path: isolate-geni-biskop-jesper-rasmussen-brochmann-1585-1652-k-benhavn
 
-**12 of 19 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**16 of 19 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**The unbroken run stops at step 12, Claus Henriksen Miltzow.** The next step, **Gerdt Henrikson Miltzow**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 16, Dorthea Thomasdatter Worm.** The next step, **Drude Thomasdatter Finke**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -20,10 +20,10 @@
 | 10 | Gudve Knudsdatter | her mother | [Gudve](https://www.geni.com/people/x/6000000005744994368) | id | 1 |
 | 11 | Ingjerd Clausdatter Miltzow | her mother | [Ingjerd Clausdatter Miltzow](https://www.geni.com/people/x/6000000000694158525) | id | 1 |
 | 12 | Claus Henriksen Miltzow | her father | [Claus Henriksen Miltzow](https://www.geni.com/people/x/6000000008115020929) | id | 1 |
-| 13 | Gerdt Henrikson Miltzow | his brother | — | absent | — |
-| 14 | Susanne Jensdatter Schielderup | his wife | — | absent | — |
-| 15 | Inger Olsdatter Worm | her mother | — | absent | — |
-| 16 | Dorthea Thomasdatter Worm | her mother | — | absent | — |
+| 13 | Gerdt Henrikson Miltzow | his brother | [Gerdt Henrikson](https://www.geni.com/people/x/6000000001827610153) | id | 1 |
+| 14 | Susanne Jensdatter Schielderup | his wife | [Susanne Jensdatter](https://www.geni.com/people/x/6000000001613970246) | id | 1 |
+| 15 | Inger Olsdatter Worm | her mother | [Inger Olsdatter](https://www.geni.com/people/x/6000000018110421350) | id | 1 |
+| 16 | Dorthea Thomasdatter Worm | her mother | [Dorthea Thomasdatter Fincke](https://www.geni.com/people/x/6000000000593738894) | id | 1 |
 | 17 | Drude Thomasdatter Finke | her sister | — | absent | — |
 | 18 | Hans Rasmussen Brochmand | her husband | — | absent | — |
 | 19 | Jesper Rasmussen Brochmann | his brother | — | absent | — |

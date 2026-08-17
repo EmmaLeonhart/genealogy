@@ -1,8 +1,8 @@
 # Relationship path: isolate-geni-torsten-ludvig-thunberg-1873-1952-lund
 
-**30 of 50 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**31 of 50 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–28, 21 of 28 held; path 2 — steps 29–50, 9 of 22 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–28, 21 of 28 held; path 2 — steps 29–50, 10 of 22 held. The run and doorway below are the first path's.
 
 **The unbroken run stops at step 21, Johan Gertsson Ysing.** The next step, **Catharina Juliana Ysing**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
@@ -47,7 +47,7 @@
 | 35 | Ingebret Pederson Ølberg | his brother | [Ingebret Pederson Borsok](https://www.geni.com/people/x/6000000035525972877) | id | 1 |
 | 36 | Jorina Toresdotter Ølberg | his wife | [Jorina Toresdotter Njå](https://www.geni.com/people/x/6000000077297672317) | id | 1 |
 | 37 | Tore Kristoffersen Vetteland | her father | [Tore Kristoffersen Kristofferson](https://www.geni.com/people/x/6000000009099803774) | id | 1 |
-| 38 | Torsten Kristoffersen Wetteland | his brother | — | absent | — |
+| 38 | Torsten Kristoffersen Wetteland | his brother | [Torsten Kristoffersen Wetteland](https://www.geni.com/people/x/6000000006265019302) | id | 1 |
 | 39 | Thea Johanne Torstensdatter Wetteland | his daughter | — | absent | — |
 | 40 | Salmine Sophia Severine Pedersen | her daughter | — | absent | — |
 | 41 | John Edward Winblad, I | her husband | — | absent | — |

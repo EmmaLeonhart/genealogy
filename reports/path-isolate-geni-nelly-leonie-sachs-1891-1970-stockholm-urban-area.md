@@ -1,8 +1,8 @@
 # Relationship path: isolate-geni-nelly-leonie-sachs-1891-1970-stockholm-urban-area
 
-**9 of 24 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**10 of 24 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**The unbroken run stops at step 9, Anna Severine Sahl Gjestdatter.** The next step, **Johan Gerhard Gjestsen Sandnes**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 10, Johan Gerhard Gjestsen Sandnes.** The next step, **Godtfred Kristian Sandnes**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -17,7 +17,7 @@
 | 7 | Peder Pedersen Holm | his brother | [Peder Pedersen Pedersen](https://www.geni.com/people/x/6000000022232192246) | id | 1 |
 | 8 | Wallace Holm | his son | [George Wallace Pedersen](https://www.geni.com/people/x/6000000013125404014) | id | 1 |
 | 9 | Anna Severine Sahl Gjestdatter | his wife | [Anna Severine Sahl](https://www.geni.com/people/x/6000000010331113653) | id | 1 |
-| 10 | Johan Gerhard Gjestsen Sandnes | her brother | — | absent | — |
+| 10 | Johan Gerhard Gjestsen Sandnes | her brother | [Johan Gerhard Gjestsen](https://www.geni.com/people/x/6000000009958369975) | id | 1 |
 | 11 | Godtfred Kristian Sandnes | his son | — | absent | — |
 | 12 | Synnøve Folkestad | his wife | — | absent | — |
 | 13 | Jens Folkestad | her brother | — | absent | — |

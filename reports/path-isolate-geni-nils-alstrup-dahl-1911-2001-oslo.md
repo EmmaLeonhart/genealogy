@@ -1,10 +1,10 @@
 # Relationship path: isolate-geni-nils-alstrup-dahl-1911-2001-oslo
 
-**24 of 40 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**28 of 40 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–23, 15 of 23 held; path 2 — steps 24–40, 9 of 17 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–23, 19 of 23 held; path 2 — steps 24–40, 9 of 17 held. The run and doorway below are the first path's.
 
-**The unbroken run stops at step 15, Hans Povelssøn Alstrup.** The next step, **Hr. Peder Alstrup**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 19, Niels Astrup Dahl.** The next step, **Henning Frimann Dahl**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -25,10 +25,10 @@
 | 13 | Kirsten Madsdatter Huus | his mother | [Kirsten Madsdatter](https://www.geni.com/people/x/6000000077762121855) | id | 1 |
 | 14 | Povel Madsen Alstrup | her brother | [Povel Madsen Alstrup](https://www.geni.com/people/x/6000000007259558393) | id | 1 |
 | 15 | Hans Povelssøn Alstrup | his son | [Hans Povelssøn Alstrup](https://www.geni.com/people/x/6000000007980466903) | id | 1 |
-| 16 | Hr. Peder Alstrup | his son | — | absent | — |
-| 17 | Niels Griis Alstrup | his son | — | absent | — |
-| 18 | Else Nilsdatter Astrup | his daughter | — | absent | — |
-| 19 | Niels Astrup Dahl | her son | — | absent | — |
+| 16 | Hr. Peder Alstrup | his son | [Peder Hanssøn](https://www.geni.com/people/x/6000000007980773660) | id | 1 |
+| 17 | Niels Griis Alstrup | his son | [Niels Griis](https://www.geni.com/people/x/6000000013466096795) | id | 1 |
+| 18 | Else Nilsdatter Astrup | his daughter | [Else Nilsdatter Astrup](https://www.geni.com/people/x/6000000022305979511) | id | 1 |
+| 19 | Niels Astrup Dahl | her son | [Niels Astrup Dahl](https://www.geni.com/people/x/6000000020208884747) | id | 1 |
 | 20 | Henning Frimann Dahl | his son | — | absent | — |
 | 21 | Nils Alstrup Dahl | his son | — | absent | — |
 | 22 | Theodor Dahl | his son | — | absent | — |

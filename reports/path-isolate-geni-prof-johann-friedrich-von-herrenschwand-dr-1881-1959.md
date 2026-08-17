@@ -1,12 +1,10 @@
 # Relationship path: isolate-geni-prof-johann-friedrich-von-herrenschwand-dr-1881-1959
 
-**43 of 72 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**44 of 72 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–48, 33 of 48 held; path 2 — steps 49–72, 10 of 24 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–48, 34 of 48 held; path 2 — steps 49–72, 10 of 24 held. The run and doorway below are the first path's.
 
-**The unbroken run stops at step 27, Ulrich I von Lindau-Ruppin, I.** The next step, **Günther Count of Lindau, II**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
-
-**6 steps past the gap are held anyway** — Agnes Wittenberg onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
+**The unbroken run stops at step 34, Margaretha von Sagan (Piast dynasty).** The next step, **GR János VI. Bánffy de Alsólendva**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -39,7 +37,7 @@
 | 25 | Margaretha Sverkerdatter von Rügen, of Sweden | her sister | [Margaretha Sverkerdatter Sverkesdatter](https://www.geni.com/people/x/6000000007584661312) | id | 1 |
 | 26 | Euphemia von Rügen | her daughter | [Euphemia](https://www.geni.com/people/x/6000000003828061401) | id | 1 |
 | 27 | Ulrich I von Lindau-Ruppin, I | her son | [Ulrich I](https://www.geni.com/people/x/6000000004533205907) | id | 1 |
-| 28 | Günther Count of Lindau, II | his son | — | absent | — |
+| 28 | Günther Count of Lindau, II | his son | [Günther Graf von Lindow-Ruppin](https://www.geni.com/people/x/6000000009680143787) | id | 1 |
 | 29 | Agnes Wittenberg | his daughter | [Agnes von Lindow-Ruppin](https://www.geni.com/people/x/6000000003827477652) | id | 1 |
 | 30 | Wenceslas von Sachsen-Wittenberg, I, Herzog, Kurfürst zu Sachsen, Herzog zu Braunschweig-Lünebur | her son | [Wenceslas von Sachsen-Wittenberg](https://www.geni.com/people/x/5441266921810062407) | id | 1 |
 | 31 | Rudolf III von Sachsen-Wittenberg, Herzog zu Sachsen-Wittenberg und Kurfürst zu Sachsen | his son | [Rudolf III Askanier](https://www.geni.com/people/x/6000000004533185794) | id | 1 |

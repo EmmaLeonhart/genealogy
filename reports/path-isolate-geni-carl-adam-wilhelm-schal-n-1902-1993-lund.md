@@ -1,10 +1,10 @@
 # Relationship path: isolate-geni-carl-adam-wilhelm-schal-n-1902-1993-lund
 
-**42 of 65 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**43 of 65 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–45, 30 of 45 held; path 2 — steps 46–65, 12 of 20 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–45, 31 of 45 held; path 2 — steps 46–65, 12 of 20 held. The run and doorway below are the first path's.
 
-**The unbroken run stops at step 30, Heilwig von Holstein-Rendsburg.** The next step, **Christian I King of Denmark, Norway and Sweden**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 31, Christian I King of Denmark, Norway and Sweden.** The next step, **Frederick I King of Denmark and Norway**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -40,7 +40,7 @@
 | 28 | Ingeburg von Mecklenburg | her daughter | [Ingeborg Princesson von Mecklenburg](https://www.geni.com/people/x/6000000003858749453) | id | 1 |
 | 29 | Gerhard VI von Holstein, Herzog von Schleswig-Holstein | her son | [Gerhard VI Von Holstein-rendsburg Holstein, Schauenburg](https://www.geni.com/people/x/4079111) | id | 1 |
 | 30 | Heilwig von Holstein-Rendsburg | his daughter | [Hedwig Holstein, Schauenburg](https://www.geni.com/people/x/6000000000679344754) | id | 1 |
-| 31 | Christian I King of Denmark, Norway and Sweden | her son | — | absent | — |
+| 31 | Christian I King of Denmark, Norway and Sweden | her son | [Christian I Christiaan of Oldenburg](https://www.geni.com/people/x/4103872) | id | 1 |
 | 32 | Frederick I King of Denmark and Norway | his son | — | absent | — |
 | 33 | Geseke Knudsen | his daughter | — | absent | — |
 | 34 | Marike Hansdattere Knudsen Wraamann | her daughter | — | absent | — |

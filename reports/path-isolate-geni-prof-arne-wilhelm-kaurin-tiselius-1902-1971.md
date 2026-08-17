@@ -1,10 +1,10 @@
 # Relationship path: isolate-geni-prof-arne-wilhelm-kaurin-tiselius-1902-1971
 
-**25 of 43 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**30 of 43 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–24, 15 of 24 held; path 2 — steps 25–43, 10 of 19 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–24, 20 of 24 held; path 2 — steps 25–43, 10 of 19 held. The run and doorway below are the first path's.
 
-**The unbroken run stops at step 15, Karine Mikkelsdatter.** The next step, **Peder Haderslev Hansen**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 20, Christian Magelssen.** The next step, **Lovise Petronelle Hanna Thomsine Magelssen**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -25,11 +25,11 @@
 | 13 | Peder Christensson Lind | her father | [Peder Christensson Lind](https://www.geni.com/people/x/6000000005420097975) | id | 1 |
 | 14 | Margreta Pedersdatter Trane | his mother | [Margreta Pedersdatter Trane](https://www.geni.com/people/x/6000000003273013428) | id | 1 |
 | 15 | Karine Mikkelsdatter | her mother | [Karine](https://www.geni.com/people/x/6000000001814424522) | id | 1 |
-| 16 | Peder Haderslev Hansen | her son | — | absent | — |
-| 17 | Kristian Pedersen | his son | — | absent | — |
-| 18 | Johan Kristiansen Klebo | his son | — | absent | — |
-| 19 | Petronelle Johansdatter Kleboe | his daughter | — | absent | — |
-| 20 | Christian Magelssen | her son | — | absent | — |
+| 16 | Peder Haderslev Hansen | her son | [Peder Haderslev](https://www.geni.com/people/x/6000000001700481715) | id | 1 |
+| 17 | Kristian Pedersen | his son | [Kristian](https://www.geni.com/people/x/6000000015944103172) | id | 1 |
+| 18 | Johan Kristiansen Klebo | his son | [Johan Kristiansen](https://www.geni.com/people/x/6000000014420080674) | id | 1 |
+| 19 | Petronelle Johansdatter Kleboe | his daughter | [Petronelle Johansdatter Kleboe](https://www.geni.com/people/x/6000000003012249622) | id | 1 |
+| 20 | Christian Magelssen | her son | [Christian Magelssen](https://www.geni.com/people/x/6000000003011753262) | id | 1 |
 | 21 | Lovise Petronelle Hanna Thomsine Magelssen | his daughter | — | absent | — |
 | 22 | Christian Kaurin | her son | — | absent | — |
 | 23 | Rosalide "Rosa" Ludoviska Tiselius | his daughter | — | absent | — |

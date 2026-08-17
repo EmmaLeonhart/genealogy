@@ -1,10 +1,10 @@
 # Relationship path: isolate-geni-annik-anna-constance-saxegaard-1905-1990-kiel
 
-**23 of 42 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**25 of 42 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–24, 13 of 24 held; path 2 — steps 25–42, 10 of 18 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–24, 15 of 24 held; path 2 — steps 25–42, 10 of 18 held. The run and doorway below are the first path's.
 
-**The unbroken run stops at step 13, Laurits Andersen Heiberg.** The next step, **Hans Anderson Heiberg af Fuhr**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 15, Elisabeth Hansdotter Heiberg.** The next step, **Elsebe Marie Stevelinsdatter Reutz**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -23,8 +23,8 @@
 | 11 | Ingjerd Clausdatter Miltzow | her mother | [Ingjerd Clausdatter Miltzow](https://www.geni.com/people/x/6000000000694158525) | id | 1 |
 | 12 | Inger Lauritsdatter Heiberg | her mother | [Inger Lauritsdatter Heiberg](https://www.geni.com/people/x/6000000002078126382) | id | 1 |
 | 13 | Laurits Andersen Heiberg | her father | [Laurits Andersen Heiberg](https://www.geni.com/people/x/6000000007635630874) | id | 1 |
-| 14 | Hans Anderson Heiberg af Fuhr | his brother | — | absent | — |
-| 15 | Elisabeth Hansdotter Heiberg | his daughter | — | absent | — |
+| 14 | Hans Anderson Heiberg af Fuhr | his brother | [Hans Anderson Brahe Nitter](https://www.geni.com/people/x/6000000001169254430) | id | 1 |
+| 15 | Elisabeth Hansdotter Heiberg | his daughter | [Elisabeth Hansdotter Heiberg](https://www.geni.com/people/x/6000000008686193227) | id | 1 |
 | 16 | Elsebe Marie Stevelinsdatter Reutz | her daughter | — | absent | — |
 | 17 | Elsebe Marie Hansdatter Urdahl | her daughter | — | absent | — |
 | 18 | Elsebe Marie Sørensdatter Lem | her daughter | — | absent | — |

@@ -1,8 +1,8 @@
 # Relationship path: isolate-geni-arvo-kunto-viljanti-wiklund-1900-1974-turku
 
-**15 of 22 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**18 of 22 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**The unbroken run stops at step 15, Julia Elisabet Sandelin (Öller).** The next step, **Fredrika Lovisa Charlotta Elisdotter Rancken**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+**The unbroken run stops at step 18, Ernest Richard Rainesalo.** The next step, **Charles Ilmari Rainesalo**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
 
 ## Steps
 
@@ -23,9 +23,9 @@
 | 13 | Karl Sanfrid Sandelin | her husband | [Karl Sanfrid](https://www.geni.com/people/x/6000000013071838546) | id | 1 |
 | 14 | Lars Hugo Sandelin | his brother | [Lars Hugo](https://www.geni.com/people/x/6000000006347922972) | id | 1 |
 | 15 | Julia Elisabet Sandelin (Öller) | his wife | [Julia Elisabet Öller](https://www.geni.com/people/x/6000000006348177628) | id | 1 |
-| 16 | Fredrika Lovisa Charlotta Elisdotter Rancken | her mother | — | absent | — |
-| 17 | Augusta Sofia Lovisa Rothström | her sister | — | absent | — |
-| 18 | Ernest Richard Rainesalo | her son | — | absent | — |
+| 16 | Fredrika Lovisa Charlotta Elisdotter Rancken | her mother | [Fredrika Lovisa Charlotta Elisdotter](https://www.geni.com/people/x/6000000006352963090) | id | 1 |
+| 17 | Augusta Sofia Lovisa Rothström | her sister | [Augusta Sofia Lovisa Rancken](https://www.geni.com/people/x/6000000000041551134) | id | 1 |
+| 18 | Ernest Richard Rainesalo | her son | [Ernest Richard Rothström](https://www.geni.com/people/x/6000000000041578043) | id | 1 |
 | 19 | Charles Ilmari Rainesalo | his son | — | absent | — |
 | 20 | Martha Valdine Rainesalo | his wife | — | absent | — |
 | 21 | Hedvig Nora Alice Viljanti | her sister | — | absent | — |

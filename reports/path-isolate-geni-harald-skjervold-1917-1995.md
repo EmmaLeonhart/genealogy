@@ -1,10 +1,12 @@
 # Relationship path: isolate-geni-harald-skjervold-1917-1995
 
-**28 of 50 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
+**30 of 50 steps** on this path are in the merged tree. Every step carries its Geni profile ID, so this is an exact join on this repo's primary key — not a name match, and not advisory.
 
-**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–33, 16 of 33 held; path 2 — steps 34–50, 12 of 17 held. The run and doorway below are the first path's.
+**This file holds 2 relationship paths, not one.** Geni shows a blood path and an in-law path for the same pair and the saved page carries both: path 1 — steps 1–33, 18 of 33 held; path 2 — steps 34–50, 12 of 17 held. The run and doorway below are the first path's.
 
 **The unbroken run stops at step 16, Peder Jensen.** The next step, **Kirsten Jensdatter NN**, is not in the tree — so that is the doorway, and everything past it that Geni shows is the payoff for exporting from there.
+
+**2 steps past the gap are held anyway** — Fogd i Nordfjord Kristen Sørensen Wittrup onward. Both ends of this path are anchored and the middle is missing, which is a bridge to build rather than a reach into the unknown.
 
 ## Steps
 
@@ -29,8 +31,8 @@
 | 17 | Kirsten Jensdatter NN | his sister | — | absent | — |
 | 18 | Christen Søfrenssøn Wittrup | her son | — | absent | — |
 | 19 | Søren Christensen Wittrup | his son | — | absent | — |
-| 20 | Fogd i Nordfjord Kristen Sørensen Wittrup | his son | — | absent | — |
-| 21 | Søfren Christensen Wittrup | his son | — | absent | — |
+| 20 | Fogd i Nordfjord Kristen Sørensen Wittrup | his son | [Kristen Sørensen Wittrup](https://www.geni.com/people/x/4958556935020125425) | id | 1 |
+| 21 | Søfren Christensen Wittrup | his son | [Søfren Christensen Wittrup](https://www.geni.com/people/x/6000000001169101609) | id | 1 |
 | 22 | Baltzer Sørensen Wittrup | his son | — | absent | — |
 | 23 | Anna Maria Baltzersdatter Wittrup | his daughter | — | absent | — |
 | 24 | Michel Arnessøn Wittrup | her son | — | absent | — |

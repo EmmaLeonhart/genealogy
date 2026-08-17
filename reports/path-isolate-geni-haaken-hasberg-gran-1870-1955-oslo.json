@@ -1,6 +1,6 @@
 {
   "steps_total": 41,
-  "steps_in_tree": 22,
+  "steps_in_tree": 24,
   "paths_in_this_file": 2,
   "chains": [
     {
@@ -8,7 +8,7 @@
       "first_step": 1,
       "last_step": 23,
       "steps_total": 23,
-      "steps_in_tree": 13,
+      "steps_in_tree": 15,
       "unbroken_run_ends_at": 13
     },
     {
@@ -22,7 +22,7 @@
   ],
   "unbroken_run_ends_at": 13,
   "components": {
-    "1": 448321,
+    "1": 472655,
     "2": 344
   },
   "components_touched": [
@@ -31,8 +31,13 @@
   "gaps": [
     {
       "from": 14,
+      "to": 17,
+      "length": 4
+    },
+    {
+      "from": 20,
       "to": 23,
-      "length": 10
+      "length": 4
     },
     {
       "from": 33,
@@ -286,11 +291,11 @@
       "relation_to_previous": "her daughter",
       "geni_id": "6000000006979060394",
       "geni_url": "https://www.geni.com/people/x/6000000006979060394",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "6000000006979060394",
+      "matched_name": "Cathrine Fredrikke Holberg",
       "candidates": []
     },
     {
@@ -300,11 +305,11 @@
       "relation_to_previous": "her son",
       "geni_id": "6000000006129048268",
       "geni_url": "https://www.geni.com/people/x/6000000006129048268",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "6000000006129048268",
+      "matched_name": "Fredrich Christian Holberg Arentz",
       "candidates": []
     },
     {

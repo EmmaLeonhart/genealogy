@@ -1,6 +1,6 @@
 {
   "steps_total": 29,
-  "steps_in_tree": 22,
+  "steps_in_tree": 25,
   "paths_in_this_file": 2,
   "chains": [
     {
@@ -8,7 +8,7 @@
       "first_step": 1,
       "last_step": 18,
       "steps_total": 18,
-      "steps_in_tree": 13,
+      "steps_in_tree": 15,
       "unbroken_run_ends_at": 13
     },
     {
@@ -16,13 +16,13 @@
       "first_step": 19,
       "last_step": 29,
       "steps_total": 11,
-      "steps_in_tree": 9,
-      "unbroken_run_ends_at": 27
+      "steps_in_tree": 10,
+      "unbroken_run_ends_at": 28
     }
   ],
   "unbroken_run_ends_at": 13,
   "components": {
-    "1": 448321,
+    "1": 472655,
     "2": 344
   },
   "components_touched": [
@@ -31,13 +31,18 @@
   "gaps": [
     {
       "from": 14,
-      "to": 18,
-      "length": 5
+      "to": 15,
+      "length": 2
     },
     {
-      "from": 28,
+      "from": 18,
+      "to": 18,
+      "length": 1
+    },
+    {
+      "from": 29,
       "to": 29,
-      "length": 2
+      "length": 1
     }
   ],
   "steps": [
@@ -258,11 +263,11 @@
       "relation_to_previous": "her son",
       "geni_id": "6000000003477369115",
       "geni_url": "https://www.geni.com/people/x/6000000003477369115",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "6000000003477369115",
+      "matched_name": "Kristoffer Mikkelson Hustoft",
       "candidates": []
     },
     {
@@ -272,11 +277,11 @@
       "relation_to_previous": "his son",
       "geni_id": "6000000016662825611",
       "geni_url": "https://www.geni.com/people/x/6000000016662825611",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "id",
+      "component": 1,
+      "matched_geni_id": "6000000016662825611",
+      "matched_name": "Torger Christofferson Vetteland",
       "candidates": []
     },
     {
@@ -426,11 +431,11 @@
       "relation_to_previous": "his brother",
       "geni_id": "6000000016662825611",
       "geni_url": "https://www.geni.com/people/x/6000000016662825611",
-      "in_tree": false,
-      "matched": "absent",
-      "component": null,
-      "matched_geni_id": null,
-      "matched_name": null,
+      "in_tree": true,
+      "matched": "repeat",
+      "component": 1,
+      "matched_geni_id": "6000000016662825611",
+      "matched_name": "Torger Christofferson Vetteland",
       "candidates": []
     },
     {
