@@ -11,10 +11,10 @@ One row per person in `reports/derived-labels.csv` — **448,665 people**.
 
 | | people | share |
 | --- | ---: | ---: |
-| Latin only | 388,492 | 86.6% |
+| Latin only | 389,138 | 86.7% |
 | CJK only — needs translation for en | 41,543 | 9.3% |
-| mixed-script only — no clean Latin label | 7,188 | 1.6% |
 | no usable name at all | 7,097 | 1.6% |
+| mixed-script only — no clean Latin label | 6,542 | 1.5% |
 | other script only — needs translation for en | 2,274 | 0.5% |
 | Latin and CJK | 2,071 | 0.5% |
 
@@ -27,9 +27,9 @@ other script, we have to do a translation"* applies to, sized.
 
 | script group | name records |
 | --- | ---: |
-| Latin | 462,049 |
+| Latin | 462,979 |
 | CJK | 105,035 |
-| mixed | 26,354 |
+| mixed | 25,424 |
 | other | 18,106 |
 | none | 303 |
 
@@ -55,8 +55,8 @@ them.
 
 ## Against Wikidata, where both exist
 
-11,923 people have both a derived Latin label and a Wikidata English
-label. **2,571 match exactly (21.6%).**
+11,936 people have both a derived Latin label and a Wikidata English
+label. **2,571 match exactly (21.5%).**
 
 `reports/display-names.md` has the breakdown of the rest: the failures
 concentrate in royalty, where Geni holds the native birth name and Wikidata the

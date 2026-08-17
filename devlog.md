@@ -8077,3 +8077,54 @@ romanisation half of the seven-language item, which is agentic by her instructio
 needs the CJK-culture question settled first. 364 have nothing in any language because
 every relative within two hops is unnamed; they still get their `P2600` *Geni.com
 profile ID*, which is what makes them retrievable.
+
+
+## 2026-08-17 — `º` was a writing system, and it cost 646 people their label
+
+Emma, shown the 364 structural placeholders with no label: *"OH MY GOD What the FUCK
+ARE THESE 364 placeholders… just fucking figure them out."*
+
+**They are not unnamed. 219 of the 364 have a real name that was thrown away**, and
+only 145 have nothing recorded anywhere.
+
+`scripts_of` in `scripts/build-display-names.py` decides a character's script from the
+first word of its Unicode name. `º` is `MASCULINE ORDINAL INDICATOR` and `'º'.isalpha()`
+is **`True`** in Python, so the classifier invented a script called `Masculine`.
+`derive-labels.py` then read `scripts = Latin+Masculine`, called the name
+**mixed-script**, and refused it as an `en` or `mul` label.
+
+**646 people, every one an Iberian noble with an ordinal in their title:**
+
+    Afonso de Bragança 1º conde de Faro e 2º de Odemira
+    Maria da Cunha 3ª senhora de Basto
+    Mª Manuela Fernández de Córdoba
+    João Soares de Sousa 3.º Capitão donatário da ilha de Santa Maria
+
+`Feminine` (86 records), `Modifier` (105), `Superscript` and `Micro` share the fault —
+**943 NAME records** carry a pseudo-script.
+
+**The fix is that a sign which is not a writing system contributes no script**, rather
+than being reclassified as Latin: `º` says nothing about which script a name is in, and
+a string of nothing but ordinals is honestly `none`. `Unnamed` deliberately stays out of
+the exempt set — a character with no Unicode name at all is a finding, which is what the
+classifier's own docstring says it is for.
+
+Measured over the whole corpus, and the prediction and the result agree exactly:
+
+| | before | after |
+| --- | ---: | ---: |
+| Latin only | 388,492 | **389,138** |
+| mixed-script only, no clean Latin label | 7,188 | **6,542** |
+
+**646 either way.** The Iberian nobles now carry `label_en`, and the placeholder batch
+went 30,012 → 30,015 readable labels.
+
+**What the other 145 of the 364 are**, since the question was what they all are: 63
+Cyrillic-only, 35 Latin+Hebrew, 30 Latin+CJK (`陳母 Chan` — *Chen's mother*), 19
+Latin+Cyrillic, 18 that genuinely are markers (`nn Pedersdatter`, `ukj.`, `Maka till
+Brynjolf Brandsson`), 5 Hebrew or Arabic only. Every non-Latin one of those is a person
+whose `en` has to be **made**, which is exactly the step she ordered first.
+
+Five tests in `tests/test_derivation_scripts.py` pin it, including that a real mixed
+name (`陳母 Chan`) is still mixed — the fix must not swallow the case the bucket exists
+for.

@@ -103,6 +103,39 @@ SCRIPT_WORDS = {
     "ORIYA": "Oriya",
 }
 
+#: First words of Unicode character names that are **not writing systems**, and
+#: therefore contribute no script at all.
+#:
+#: **This cost 646 people their label.** `str.isalpha()` is `True` for `º`
+#: (`MASCULINE ORDINAL INDICATOR`), so the classifier below invented a script
+#: called `Masculine`; `derive-labels.py` then read `scripts = Latin+Masculine`,
+#: called the name mixed-script, and refused it as an `en` or `mul` label. Every
+#: one of the 646 is an Iberian noble whose title carries an ordinal —
+#: `Afonso de Bragança 1º conde de Faro e 2º de Odemira`,
+#: `Maria da Cunha 3ª senhora de Basto`, `Mª Manuela Fernández de Córdoba`.
+#:
+#: **Contributing nothing is right, and calling them Latin would be wrong.** `º`
+#: says nothing about which script a name is written in; it is a typographic sign
+#: that happens to be a letter to Python. A string of nothing but ordinals
+#: classifies as `none`, which is the truth about it.
+#:
+#: Counted over the corpus, 943 `NAME` records carry one: Masculine 739,
+#: Modifier 105, Feminine 86, plus single Superscript and Micro. `Unnamed` stays
+#: out of this set on purpose — a character with no Unicode name at all is a
+#: finding worth surfacing, not a typographic sign to skip.
+NOT_A_SCRIPT = {
+    "MASCULINE",   # º ordinal indicator
+    "FEMININE",    # ª ordinal indicator
+    "MODIFIER",    # ʹ ˈ ʼ modifier letters
+    "SUPERSCRIPT",
+    "MICRO",       # µ
+    "OHM",
+    "KELVIN",
+    "ANGSTROM",
+    "ESTIMATED",
+    "INFORMATION",
+}
+
 
 def scripts_of(text: str) -> str:
     """Every script present among the letters, alphabetical, `+`-joined.
@@ -110,6 +143,9 @@ def scripts_of(text: str) -> str:
     Mixed-script names stay visible as mixed rather than being forced into one
     bucket — `Izabelė iš Angulemo` and `誉田別命 /応神天皇/` are different
     problems and a single dominant-script label would hide the first kind.
+
+    A character that is a letter to Python but not part of a writing system —
+    see `NOT_A_SCRIPT` — contributes nothing, so `1º senhor de Baião` is Latin.
     """
     found: set[str] = set()
     for char in text:
@@ -120,6 +156,8 @@ def scripts_of(text: str) -> str:
             found.add("Unnamed")
             continue
         word = name.split()[0]
+        if word in NOT_A_SCRIPT:
+            continue
         found.add(SCRIPT_WORDS.get(word, word.title()))
     return "+".join(sorted(found))
 

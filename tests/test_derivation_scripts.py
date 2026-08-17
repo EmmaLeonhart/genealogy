@@ -45,6 +45,61 @@ def facts():
     return _load("derive-facts")
 
 
+@pytest.fixture(scope="module")
+def display():
+    return _load("build-display-names")
+
+
+# --- a typographic sign is not a writing system ----------------------------
+#
+# The one that cost 646 people their label, all of them Iberian nobles whose
+# title carries an ordinal.
+
+
+@pytest.mark.parametrize("name", [
+    "Afonso de Bragança 1º conde de Faro e 2º de Odemira",
+    "Maria da Cunha 3ª senhora de Basto",
+    "Mª Manuela Fernández de Córdoba",
+    "João Soares de Sousa 3.º Capitão donatário da ilha de Santa Maria",
+])
+def test_an_ordinal_indicator_does_not_make_a_name_mixed_script(display, labels, name):
+    """`'º'.isalpha()` is True, and its Unicode name starts `MASCULINE`.
+
+    The classifier read the first word of every character's Unicode name, so `º`
+    invented a script called `Masculine`; `derive-labels.script_group` then called
+    the name mixed and refused it as an `en` or `mul` label. 646 people, and the
+    only visible symptom was structural placeholders with no label at all.
+    """
+    assert display.scripts_of(name) == "Latin"
+    assert labels.script_group(display.scripts_of(name)) == "Latin"
+
+
+def test_a_sign_that_is_not_a_script_contributes_nothing(display):
+    """Not "counts as Latin" — `º` says nothing about which script a name is in."""
+    assert display.scripts_of("º") == ""
+    assert display.scripts_of("ª 3.º") == ""
+
+
+def test_an_unnamed_character_is_still_reported(display):
+    """`Unnamed` stays out of `NOT_A_SCRIPT`: it is a finding, not a sign.
+
+    12 NAME records carry a character with no Unicode name. Skipping those would
+    hide them, which is the opposite of what the classifier's own docstring says
+    it is for.
+    """
+    assert "Unnamed" not in display.NOT_A_SCRIPT
+    # U+17000 is a Tangut ideograph: a letter to Python, and `unicodedata` has no
+    # name for it. A private-use codepoint will not do here — those are not
+    # `isalpha()`, so they never reach the name lookup at all.
+    assert display.scripts_of("\U00017000") == "Unnamed"
+
+
+def test_a_real_mixed_script_name_is_still_mixed(display, labels):
+    """The fix must not swallow the case the bucket exists for."""
+    assert display.scripts_of("陳母 Chan") == "Han+Latin"
+    assert labels.script_group("Han+Latin") == "mixed"
+
+
 # --- script grouping: by script, never by language -------------------------
 
 

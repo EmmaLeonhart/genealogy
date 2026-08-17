@@ -9,23 +9,23 @@ Emma asked to see both populations before deciding whether the generated label r
 | | bare `NN` | `NN` + surname |
 | --- | ---: | ---: |
 | people | 34,758 | 4,541 |
-| a label can be generated | **27,773** (79%) | **2,239** (49%) |
-| no relative with a real name | 6,985 | 2,302 |
+| a label can be generated | **27,776** (79%) | **2,239** (49%) |
+| no relative with a real name | 6,982 | 2,302 |
 
 ## Which relative ends up naming them
 
 | relation | bare `NN` | `NN` + surname |
 | --- | ---: | ---: |
-| father | 13,055 | 1,186 |
-| mother | 2,184 | 95 |
-| spouse | 5,094 | 466 |
-| child | 867 | 64 |
+| father | 13,067 | 1,186 |
+| mother | 2,179 | 95 |
+| spouse | 5,114 | 466 |
+| child | 848 | 64 |
 
 ## The rules applied here, and what they cost
 
 Emma ruled on both of these on 2026-08-15 after seeing the first version of this preview.
 
-1. **A redacted or placeholder relative is skipped**, and the precedence falls through to the next one — *"skip, fall through to the next relative"*. The first version put the marker into somebody else's label: *"husband of `<private>` Gaya Pereira"*, 2,730 times. Now **2** do. 12,534 people had a relative skipped and **7,398 of them (59%) still get a label** from a later relative. That is a minority: for the rest the skipped relative was the only one with a real name, so the skip costs the label outright. Every spouse and child is tried rather than only the first, which is what recovers the share that is recovered.
+1. **A redacted or placeholder relative is skipped**, and the precedence falls through to the next one — *"skip, fall through to the next relative"*. The first version put the marker into somebody else's label: *"husband of `<private>` Gaya Pereira"*, 2,730 times. Now **2** do. 12,532 people had a relative skipped and **7,396 of them (59%) still get a label** from a later relative. That is a minority: for the rest the skipped relative was the only one with a real name, so the skip costs the label outright. Every spouse and child is tried rather than only the first, which is what recovers the share that is recovered.
 2. **A surname that is itself placeholder vocabulary collapses to bare `NN`** — `NN ???`, `NN NN`, `NN N.N.`, `NN Unknown`. 351 people moved from the surname population to the bare one, which is why the two totals here differ from the first version.
 
 219 of the generable labels have **no recorded sex** and take the neutral form (`child of`, `spouse of`). Inventing a gender to make the label read better is not done here.
