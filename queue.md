@@ -39,21 +39,14 @@ them.
 
 Her instruction of 2026-08-16 was to review the last few days before doing anything
 else. Done: `reports/audit-resume-2026-08-17.md`, over her **49** messages of
-08-16. Everything else traces to committed work; these three do not, and they run
+08-16. Everything else traces to committed work; these three did not, and they run
 ahead of the run order below.
 
-- **Long-range relatives are missing from the batch that needs them most.** Her
-  words: *"long-range relationships have much larger things to contribute than you
-  consider them to do so… grandparents or grandchildren or siblings."* Applied to
-  `scripts/build-nn-label-batch.py` (1,588 Wikidata items) and **not** to
-  `scripts/build-placeholder-label-batch.py`, which is twenty-two times larger and
-  stops at child. **14,987 of its 35,011 edits — 43% — carry `mul: NN` and no
-  readable label**, because that person's parent, spouse and child are all
-  themselves unnamed. That is exactly the population a sibling, grandparent or
-  grandchild reaches. Extend the search to parent → spouse → child → sibling →
-  grandparent → grandchild, the same order `build-nn-label-batch.py` already uses,
-  and report how many of the 14,987 gain a label. The seven-language item is gated
-  on these labels, so this sits upstream of the gate.
+**The first of the three is already fixed** and is recorded here only so the fix is
+findable: the placeholder label batch was two days stale behind its own generator, so
+**9,988** labels the code already computed were not in the shipped file — 7,001 of
+them from the long-range relatives she asked for. Re-run, `en` now on **30,012 of
+39,299** where it was 20,024 of 35,011. Two remain:
 
 - **The structural merge stopped at showing cases.** *"The structural cases you were
   going to do and then you didn't do."* `reports/structural-correspondence.csv`
@@ -285,10 +278,12 @@ the name** — the tree settles it, via neighbours and which exports they came f
 
 1. Create the **11,001 structural placeholders**, each with the full label set.
 2. Then the other creations — the Samaritan line, the order.life tiers.
-3. Then the 26,281 `set_labels` edits, every one carrying all seven + `mul`.
+3. Then the `set_labels` edits, every one carrying all seven + `mul`.
 
-`reports/wikidata-placeholder-labels.json` currently has `mul` on all and `en` on
-14,351. **It must not run in that state.**
+`reports/wikidata-placeholder-labels.json` is **39,299 edits** as of 2026-08-17:
+`mul` on all, `en` on **30,012**, `ja` and `zh` on none. **It must not run in that
+state** — and the 9,287 with `mul` only have no named relative at any distance out to
+two hops, so they need something other than a relative or they stay markers.
 
 ## Name items — the ambiguity, measured now the download is in
 

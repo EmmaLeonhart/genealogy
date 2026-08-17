@@ -41,32 +41,81 @@ is gone. `queue.md`'s procedure is corrected to read both record types.
 
 ---
 
-## Not done · long-range relatives are missing from the batch that needs them most
+## Not done · 6,206 long-range labels exist and are not in the batch
 
 **Emma, 2026-08-16:** *"I'm pretty sure that long-range relationships have much
 larger things to contribute than you consider them to do so… It can work off of
 those long-range things… grandparents or grandchildren or siblings."*
 
-That was applied to `scripts/build-nn-label-batch.py` — 1,588 Wikidata items — which
-now searches parent → spouse → child → **sibling → grandparent → grandchild**.
+**The two-hop search is implemented.** `scripts/build-relationship-label-preview.py`
+walks grandparent, grandchild, sibling, uncle/aunt and nephew/niece after the
+one-hop candidates, and `scripts/build-nn-label-batch.py` does the same for the 1,588
+Wikidata `NN` items. An earlier draft of this report said the long-range search was
+missing from the placeholder work. That was wrong: the search is there and it works.
 
-It was **not** applied to `scripts/build-placeholder-label-batch.py`, which is
-twenty-two times larger and stops at child:
+**What is wrong is that the shipped batch predates it.**
+`reports/wikidata-placeholder-labels.json` was written 08-15 **05:01**; the preview it
+reads was rebuilt at **12:56** the same day, and nothing re-ran the emitter. So the
+batch on disk is the one-hop-only version:
 
-| relative found | edits |
-| --- | ---: |
-| father | 12,254 |
-| spouse | 5,052 |
-| mother | 1,882 |
-| child | 836 |
-| **none — `mul: NN` and no readable label** | **14,987** |
-| total | 35,011 |
+| relative found | shipped batch (05:01) | current preview (12:56) |
+| --- | ---: | ---: |
+| father | 12,254 | 12,353 |
+| spouse | 5,052 | 5,094 |
+| mother | 1,882 | 1,919 |
+| child | 836 | 836 |
+| grandparent | — | 5,045 |
+| uncle or aunt | — | 584 |
+| sibling | — | 339 |
+| grandchild | — | 149 |
+| nephew or niece | — | 107 |
+| **none — `mul: NN` and no readable label** | **14,987** | **8,781** |
+| total | 35,011 | 35,207 |
 
-**43% of the largest label batch in the repo describes nobody.** Each of those
-14,987 people has a parent, spouse and child who are all themselves unnamed — which
-is precisely the population a sibling, grandparent or grandchild can reach and the
-reason she raised long-range relatives at all. Her seven-language item is gated on
-these labels, so the gap is upstream of the gate.
+**43% of the largest label batch in the repo describes nobody, and 6,206 of those
+labels were already computed.** The seven-language item is gated on these labels, so
+the stale file sits upstream of the gate.
+
+**This is `CLAUDE.md`'s cache chain again, running the other way.** That rule was
+written about an *analyser* being re-run when the *generator* was the thing that
+needed it; here the analyser was rebuilt and the generator never re-ran. Either way
+the file on disk is not what the code would produce.
+
+**Two links were stale, not one.** `reports/derived-family.csv` looked stale by mtime
+— 08-16 00:17 against `out/merged.ged` at 00:36 — and re-running `derive-family.py`
+reproduced it **byte for byte**, so it was current and the mtime meant nothing. The
+stale links were the preview (08-15 12:56, built before `derived-labels.csv` and
+`display-names.csv` were regenerated at 08-16 00:42) and the batch behind it.
+
+### Fixed, 2026-08-17
+
+Chain re-run end to end: `derive-family.py` → `build-relationship-label-preview.py`
+→ `build-placeholder-label-batch.py`.
+
+| | before | after |
+| --- | ---: | ---: |
+| placeholder people | 35,011 | **39,299** |
+| carrying a readable `en` label | 20,024 | **30,012** |
+| `mul: NN` and nothing else | 14,987 | **9,287** |
+
+**+9,988 labels**, of which **7,001** come from the two-hop relatives — 5,720
+grandparent, 617 uncle/aunt, 382 sibling, 166 grandchild, 116 nephew/niece — and the
+rest from the tree having grown. They read as intended: *grandson of Aída Pereira
+Aranibar*, *sister of Kenneth Chiu*, *nephew of Svanhild Haugvaldstad*.
+
+**A note on duplication, measured because it is a property of what is being shipped:
+15,810 of the 30,012 share their label with somebody else**, across 5,132 strings —
+57 people labelled *granddaughter of Kandjeng Pangeran Soeria Koesoemah Adinata
+(Bupati Sumedang)* being the worst. 8,270 of the affected are one-hop `father` cases,
+so this predates the two-hop work rather than being caused by it.
+
+**It is not an error under Emma's own spec and nothing is being changed for it.**
+Wikidata does not require labels to be unique — label *plus description* is the unique
+pair — and her rule is that a created person gets labels and **no description**:
+*"We create the individual with their multi-language label, their English language
+label… but no descriptions are added to any of the people."* So a shared label
+collides with nothing today. It becomes live the moment descriptions are worked, which
+is the item that already carries her deduplication warning.
 
 ## Not done · the structural merge stopped at showing cases
 

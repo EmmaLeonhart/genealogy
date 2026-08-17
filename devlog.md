@@ -7827,3 +7827,41 @@ that exists that removes labels"*, the structural-merge complaint and the
 blood-versus-marriage instruction. All four were acted on live, so nothing was lost
 this time. The audit is what runs when the live thread is gone, and it would not have
 found them. `queue.md`'s standing procedure now reads both record types.
+
+
+## 2026-08-17 — the label batch was two days behind its own generator
+
+9,988 labels the code already computed were not in the file that ships them.
+
+`reports/wikidata-placeholder-labels.json` was written 08-15 **05:01**. The preview it
+reads, `reports/relationship-label-preview.csv`, was rebuilt at **12:56** — after the
+two-hop relative search went in — and again implicitly by `derived-labels.csv` and
+`display-names.csv` being regenerated at 08-16 **00:42**. Nothing re-ran the emitter,
+so the batch on disk was still the one-hop-only version built from a smaller tree.
+
+Chain re-run end to end — `derive-family.py` → `build-relationship-label-preview.py`
+→ `build-placeholder-label-batch.py`:
+
+| | before | after |
+| --- | ---: | ---: |
+| placeholder people | 35,011 | **39,299** |
+| carrying a readable `en` label | 20,024 | **30,012** |
+| `mul: NN` and nothing else | 14,987 | **9,287** |
+
+**7,001 of the gain is the long-range relatives** — 5,720 grandparent, 617
+uncle/aunt, 382 sibling, 166 grandchild, 116 nephew/niece — which is what Emma was
+pointing at on 08-16: *"long-range relationships have much larger things to contribute
+than you consider them to do so."* The rest is the tree having grown.
+
+**`derived-family.csv` looked stale and was not.** Its mtime is 08-16 00:17 against a
+merge at 00:36; re-running `derive-family.py` reproduced it byte for byte. An mtime
+comparison found the wrong link in the chain and only running the generator settled
+which one was actually behind.
+
+**53% of the generated labels are shared with somebody else** — 15,810 people across
+5,132 strings, worst case 57 people reading *granddaughter of Kandjeng Pangeran
+Soeria Koesoemah Adinata (Bupati Sumedang)*. 8,270 of those are one-hop `father`
+cases, so it predates the two-hop work. Measured and left alone: Wikidata's uniqueness
+constraint is on label *plus description*, and her spec creates people with labels and
+no description, so nothing collides until descriptions are worked — which is the item
+that already carries her warning about exactly this.
