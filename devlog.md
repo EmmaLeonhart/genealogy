@@ -8425,3 +8425,9 @@ have come out smaller.
 The flag now refuses to overwrite a two-store census unless `--force` is passed. That is
 the guard rather than a note to remember, because the failure was invisible — a
 fifteen-minute shortcut that quietly halved the input to a 56,000-edit batch.
+
+**The truncated census never reached git**, and it is worth writing down which safeguard
+caught it: the auto-flush tick declined to commit `reports/marker-labels.csv` while a
+census was mid-write, so the half file stayed in the working tree and the full re-run
+replaced it with a file byte-identical to what `1dd42c3` had committed. No restore was
+needed. The damage was real and its blast radius was one working tree.
