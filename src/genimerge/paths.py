@@ -133,6 +133,21 @@ class PathStep:
     name: str
     relation: str = ""
     note: str = ""
+    #: Which of the file's paths this row belongs to, 1-based.
+    #:
+    #: **Emma, 2026-08-16:** *"You haven't been distinguishing the blood and
+    #: marriage things. You've been treating them as one gigantic tree, one
+    #: gigantic line? If so, that's really weird… It doesn't really matter that
+    #: much whether you're distinguishing them, as long as you treat it as being
+    #: two paths and not one."*
+    #:
+    #: Geni shows a pair both a blood path and an in-law path, and
+    #: `path-from-html` writes them into one file end to end. The boundary is
+    #: stated by the page rather than guessed: the first step of a path has no
+    #: relation to a previous one, because there is no previous one, so a row
+    #: with an empty relation after the first row starts a new chain.
+    #: `paths/nn-basse.tsv` has exactly two, at steps 1 and 36, both `You`.
+    chain: int = 1
 
     @property
     def geni_id(self) -> str:
@@ -201,16 +216,40 @@ class PathReport:
         return [r for r in self.results if not r.held]
 
     @property
+    def chains(self) -> list["PathReport"]:
+        """One report per path in the file, because a file can hold two.
+
+        Emma, 2026-08-16: *"as long as you treat it as being two paths and not
+        one."* Geni shows a pair a blood path and an in-law path and
+        `path-from-html` writes both into one file; `PathStep.chain` marks which
+        is which. Every property here is per chain once it is read off a member
+        of this list, which is what makes the split cost nothing at the call
+        sites that only ever see one path.
+        """
+        out: list[PathReport] = []
+        for result in self.results:
+            if not out or result.step.chain != out[-1].results[0].step.chain:
+                out.append(PathReport([], self.component_sizes))
+            out[-1].results.append(result)
+        return out
+
+    @property
     def run_ends_at(self) -> StepResult | None:
-        """The last step before the first gap.
+        """The last step before the first gap, **within the first chain**.
 
         This is the number the project actually acts on. Everything up to here
         is a walk we could already make; the step after it is the doorway, and
         the people beyond it are the observed payoff for exporting from it.
+
+        The chain bound is load-bearing rather than tidy: without it a file whose
+        first path is entirely held keeps scanning into the *second* path, and
+        reports a doorway belonging to a different chain of people. Read
+        `report.chains[i].run_ends_at` for the others.
         """
         last = None
+        chain = self.results[0].step.chain if self.results else 1
         for result in self.results:
-            if not result.held:
+            if result.step.chain != chain or not result.held:
                 break
             last = result
         return last
@@ -222,11 +261,16 @@ class PathReport:
         Empty until an export lands past the gap. When it is not empty, the
         path has two anchored ends and a missing middle, which is a different
         and better situation than a path that simply runs out.
+
+        **Bounded to the first chain**, for the same reason as `run_ends_at`: a
+        second path in the same file being held is not the far side of the first
+        path's gap, and reading it as one turns a plain reach-into-the-unknown
+        into a bridge that does not exist.
         """
-        first_gap = next(
-            (i for i, r in enumerate(self.results) if not r.held), len(self.results)
-        )
-        return [r for r in self.results[first_gap:] if r.held]
+        chain = self.results[0].step.chain if self.results else 1
+        mine = [r for r in self.results if r.step.chain == chain]
+        first_gap = next((i for i, r in enumerate(mine) if not r.held), len(mine))
+        return [r for r in mine[first_gap:] if r.held]
 
     @property
     def components_touched(self) -> list[int]:
@@ -240,6 +284,7 @@ def parse_path(text: str) -> list[PathStep]:
     most rows and trailing tabs are exactly what an editor strips.
     """
     steps: list[PathStep] = []
+    chain = 1
     for line in text.splitlines():
         if not line.strip() or line.lstrip().startswith("#"):
             continue
@@ -250,12 +295,18 @@ def parse_path(text: str) -> list[PathStep]:
         number, name, relation, note = (c.strip() for c in cells[:4])
         if not name:
             continue
+        relation = "" if relation == "-" else relation
+        # A row with nothing to relate back to is the head of a path. The first
+        # such row opens chain 1; every later one opens the next chain.
+        if not relation and steps:
+            chain += 1
         steps.append(
             PathStep(
                 step=int(number) if number.isdigit() else len(steps) + 1,
                 name=name,
-                relation="" if relation == "-" else relation,
+                relation=relation,
                 note=note,
+                chain=chain,
             )
         )
     return steps
@@ -423,6 +474,7 @@ def to_json(report: PathReport) -> dict:
         person = result.person
         row = {
             "step": step.step,
+            "chain": step.chain,
             "name": step.name,
             "relation_to_previous": step.relation,
             "geni_id": step.geni_id or None,
@@ -439,9 +491,25 @@ def to_json(report: PathReport) -> dict:
         steps.append(row)
 
     end = report.run_ends_at
+    chains = report.chains
     return {
         "steps_total": len(report.results),
         "steps_in_tree": len(report.held),
+        # A saved page can carry a blood path and an in-law path; both land in
+        # one file, and the run below belongs to the first of them.
+        "paths_in_this_file": len(chains),
+        "chains": [
+            {
+                "chain": c.results[0].step.chain,
+                "first_step": c.results[0].step.step,
+                "last_step": c.results[-1].step.step,
+                "steps_total": len(c.results),
+                "steps_in_tree": len(c.held),
+                "unbroken_run_ends_at": (c.run_ends_at.step.step
+                                         if c.run_ends_at else None),
+            }
+            for c in chains
+        ],
         "unbroken_run_ends_at": end.step.step if end else None,
         "components": {
             str(index): size for index, size in enumerate(report.component_sizes, 1)
@@ -456,15 +524,27 @@ def to_json(report: PathReport) -> dict:
 
 
 def _gaps(report: PathReport) -> list[tuple[int, int]]:
-    """Contiguous runs of not-held steps, as (first, last) step numbers."""
+    """Contiguous runs of not-held steps, as (first, last) step numbers.
+
+    A run never spans two chains: consecutive step numbers across the seam
+    between a blood path and an in-law path are two separate gaps in two
+    separate paths, not one long one.
+    """
     runs: list[list[int]] = []
+    chain_of: dict[int, int] = {}
     for result in report.results:
         if result.held:
             continue
-        if runs and runs[-1][1] == result.step.step - 1:
-            runs[-1][1] = result.step.step
+        step = result.step.step
+        previous_same_chain = (
+            runs and runs[-1][1] == step - 1
+            and chain_of.get(runs[-1][1]) == result.step.chain
+        )
+        if previous_same_chain:
+            runs[-1][1] = step
         else:
-            runs.append([result.step.step, result.step.step])
+            runs.append([step, step])
+        chain_of[step] = result.step.chain
     return [(a, b) for a, b in runs]
 
 
@@ -488,15 +568,37 @@ def render_markdown(report: PathReport, title: str) -> str:
         "",
     ]
 
+    chains = report.chains
+    if len(chains) > 1:
+        # Emma, 2026-08-16: "as long as you treat it as being two paths and not
+        # one." Geni gives a pair both a blood path and an in-law path and the
+        # saved page carries both, so the counts above span two chains of people
+        # and every "the run stops at" sentence below is about the first.
+        counts = "; ".join(
+            f"path {i} — steps {c.results[0].step.step}–{c.results[-1].step.step}, "
+            f"{len(c.held)} of {len(c.results)} held"
+            for i, c in enumerate(chains, start=1)
+        )
+        lines += [
+            f"**This file holds {len(chains)} relationship paths, not one.** Geni "
+            "shows a blood path and an in-law path for the same pair and the saved "
+            f"page carries both: {counts}. The run and doorway below are the first "
+            "path's.",
+            "",
+        ]
+
+    # The run and the doorway are properties of ONE path, so they are read off
+    # the first chain rather than off the whole file.
+    first = chains[0] if chains else report
     end = report.run_ends_at
     if end is None:
         lines += ["The path is broken at its first step.", ""]
-    elif len(held) == len(results):
+    elif len(first.held) == len(first.results):
         lines += ["Every step is held: this path is walkable inside our own data.", ""]
     else:
         # By position in the list, not by step number — a hand-edited path file
         # with a gap in its numbering would otherwise name the wrong person.
-        first_gap = next(r for r in results if not r.held)
+        first_gap = next(r for r in first.results if not r.held)
         lines += [
             f"**The unbroken run stops at step {end.step.step}, "
             f"{end.step.name}.** The next step, **{first_gap.step.name}**, is not "

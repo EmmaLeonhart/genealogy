@@ -124,6 +124,55 @@ def test_a_person_walked_twice_is_held_both_times():
     assert report.absent == []
 
 
+def test_a_row_with_no_relation_starts_a_new_chain():
+    """Emma, 2026-08-16: *"treat it as being two paths and not one."*
+
+    Geni shows a pair a blood path and an in-law path, and `path-from-html`
+    writes both into one file. The boundary is stated rather than guessed: only
+    the head of a path has nothing to relate back to.
+    """
+    steps = paths.parse_path(
+        "1\tYou\t-\tgeni:100\n"
+        "2\ther mother\this mother\tgeni:200\n"
+        "3\tYou\t-\tgeni:100\n"
+        "4\ther husband\ther husband\tgeni:300\n"
+    )
+    assert [s.chain for s in steps] == [1, 1, 2, 2]
+
+
+def test_the_run_and_the_doorway_belong_to_the_first_chain_only():
+    """A fully-held first path must not borrow the second path's doorway.
+
+    Without the chain bound the scan runs off the end of path one, and a file
+    whose first path is complete reports a doorway belonging to a different chain
+    of people — which `connectors` then ranks an export by.
+    """
+    report = check(
+        "1\tsomeone\t-\tgeni:100\n"
+        "2\this wife\this wife\tgeni:200\n"
+        "3\tsomeone\t-\tgeni:100\n"
+        "4\tghost\this son\tgeni:404\n"
+    )
+    chains = report.chains
+    assert [len(c.results) for c in chains] == [2, 2]
+    assert [len(c.held) for c in chains] == [2, 1]
+    # Path one is whole, so its run ends at its own last step, not at step 3.
+    assert report.run_ends_at.step.step == 2
+    assert report.held_beyond_the_gap == []
+    assert chains[1].run_ends_at.step.step == 3
+
+
+def test_a_gap_never_spans_two_chains():
+    """Consecutive step numbers across the seam are two gaps, not one."""
+    report = check(
+        "1\tsomeone\t-\tgeni:100\n"
+        "2\tghost\this son\tgeni:404\n"
+        "3\tghost two\t-\tgeni:405\n"
+        "4\tghost three\this son\tgeni:406\n"
+    )
+    assert paths._gaps(report) == [(2, 2), (3, 4)]
+
+
 def test_a_repeat_of_a_person_we_lack_is_still_absent():
     """The two conditions are independent, and only one of them means a gap."""
     report = check("1\tghost\t-\tgeni:404\n2\tghost again\this son\tgeni:404\n")

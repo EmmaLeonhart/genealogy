@@ -67,6 +67,39 @@ def test_two_separate_runs_are_two_bridges():
     assert [b.doorway.step.name for b in found] == ["A", "C"]
 
 
+def test_a_bridge_never_spans_two_paths_in_one_file():
+    """Emma, 2026-08-16: *"treat it as being two paths and not one."*
+
+    A saved page carries a blood path and an in-law path, and both land in one
+    file. A run of absent steps that reaches the seam has reached the end of
+    *its own* path: it has no resume, and the next path's missing people are not
+    behind the same doorway. Reading them as one run would rank an export by a
+    gap that does not exist.
+    """
+    results = []
+    for i, (name, gid, held, relation, chain) in enumerate(
+        [("A", "1", True, "", 1),
+         ("B", "2", False, "his father", 1),
+         ("C", "3", False, "-", 2),
+         ("D", "4", True, "her husband", 2)], 1
+    ):
+        step = paths_mod.PathStep(step=i, name=name, relation=relation,
+                                  note=f"geni:{gid}", chain=chain)
+        results.append(paths_mod.StepResult(
+            step=step, how="id" if held else paths_mod.ABSENT))
+    checked = paths_mod.PathReport(results=results)
+
+    found = connectors.bridges(checked, "p")
+
+    assert len(found) == 2
+    assert [r.step.name for r in found[0].members] == ["B"]
+    assert found[0].doorway.step.name == "A"
+    assert found[0].resume is None, "B's run ends with its own path, not at C"
+    assert [r.step.name for r in found[1].members] == ["C"]
+    assert found[1].doorway is None, "the second path has no held step before C"
+    assert found[1].resume.step.name == "D"
+
+
 def test_a_path_that_ends_absent_has_no_resume():
     """A frontier, not a bridge. The distinction decides what an export buys:
     a bridge has a named far side, a frontier walks into the unknown."""

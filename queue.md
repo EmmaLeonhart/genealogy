@@ -42,29 +42,37 @@ else. Done: `reports/audit-resume-2026-08-17.md`, over her **49** messages of
 08-16. Everything else traces to committed work; these three did not, and they run
 ahead of the run order below.
 
-**The first of the three is already fixed** and is recorded here only so the fix is
-findable: the placeholder label batch was two days stale behind its own generator, so
-**9,988** labels the code already computed were not in the shipped file — 7,001 of
-them from the long-range relatives she asked for. Re-run, `en` now on **30,012 of
-39,299** where it was 20,024 of 35,011. Two remain:
+**All three are now done**, and are recorded here only so the fixes are findable:
 
-- **The structural merge stopped at showing cases.** *"The structural cases you were
-  going to do and then you didn't do."* `reports/structural-correspondence.csv`
-  (3,902 rows) and `reports/wikidata-structural-placeholders.json` (12,260) have been
-  on disk since 08-15 and **nothing consumes either**. Her 08-15 rule is that those
-  3,902 rows *are* the QID ↔ Geni ID correspondence this project is meant to be
-  building, so wire them in: emit the correspondence as the repo's own map, and the
-  placeholders as a reviewed batch. Structure picks the pair; the label only confirms
-  it. Offline throughout.
+- The placeholder label batch was two days stale behind its own generator, so
+  **9,988** labels the code already computed were not in the shipped file — 7,001 of
+  them from the long-range relatives she asked for. Re-run: `en` on **30,012 of
+  39,299**, where it was 20,024 of 35,011.
+- The structural correspondences now emit.
+  `scripts/build-structural-correspondence-batch.py` →
+  `reports/wikidata-structural-correspondence.json`, **3,719** `add_geni_id` edits,
+  each adding `P2600` *Geni.com profile ID* to an item the walk paired structurally.
+  **180 are withheld** and listed in
+  `reports/structural-correspondence-disagreements.csv`: our Geni person is already
+  linked to a *different* item, which is a claim about identity rather than an
+  addition — `Eric Jedvardsson of Sweden` came out paired with `Q41864` *Sigurd
+  Snake-in-the-Eye*, so the guard earns its place.
+- A saved page's two paths are two paths. `PathStep.chain`, and **242 of the 586 path
+  files hold more than one**, so the run, the doorway and the bridges were all being
+  computed across a seam for 41% of them.
 
-- **A saved page's two paths are still one chain.** *"You haven't been
-  distinguishing the blood and marriage things… as long as you treat it as being two
-  paths and not one."* `path-from-html` writes Geni's blood path and in-law path into
-  one TSV. `genimerge.paths` handles the visible symptom — the re-walked opening is
-  `REPEAT`, not `ABSENT` — but nothing splits the chains, so a per-file "held: X of
-  Y" spans two unrelated paths. Smallest of the three: chain two restarts at *You*,
-  who is held, so a bridge cannot run across the seam. Give each chain an index and
-  count per chain.
+What follows on from those:
+
+- **The 12,260 structural placeholders still have no label set.**
+  `reports/wikidata-structural-placeholders.json` carries `P31` *instance of* → `Q5`
+  *human*, `P2600` *Geni.com profile ID* and an English label where the person has
+  one — and **nothing else, in no other language**. Her gate is `en` · `ja` · `zh` ·
+  `hi` · `ar` · `ru` · `el` · `mul` on everything created, and *"create the relatives
+  first, then label"* is about ordering the work, not about shipping them bare. Give
+  this batch the same treatment `build-placeholder-label-batch.py` gives its 39,299:
+  `mul` from the normalised name, `en` from the nearest named relative out to two
+  hops. It is the same population, reached from the Wikidata side instead of the Geni
+  side.
 
 ## The audit method was itself incomplete — corrected below
 

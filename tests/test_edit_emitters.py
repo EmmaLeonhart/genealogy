@@ -214,6 +214,29 @@ def test_every_succession_entry_states_the_office():
             f"{edit['id']} adds something other than the office")
 
 
+def test_no_structural_correspondence_gives_one_profile_two_items():
+    """A Geni profile already linked to another item is a disagreement, not an edit.
+
+    The walk's `MERGE` branch fires whenever our parent's QID is not among
+    Wikidata's — including when our parent *has* a QID and it is a different one.
+    Emitting `P2600` there would leave two items claiming one Geni profile, which
+    is the reverse of the case `CLAUDE.md` blesses: two Geni profiles on one item
+    is ordinary, one Geni profile on two items is a claim about identity.
+
+    A second Geni ID on the *item* stays allowed, and the flag stays on it.
+    """
+    for edit in _edits(REPORTS / "wikidata-structural-correspondence.json"):
+        gid = edit["subject"]["geni_id"]
+        already = edit.get("geni_ids_already_on_item") or []
+        assert gid not in already, (
+            f"{edit['id']} adds a Geni ID the item already states")
+        assert edit.get("adds_a_second_geni_id") == bool(already), (
+            f"{edit['id']} mis-flags whether it adds a second Geni ID")
+        assert edit["statements"][0]["property"] == "P2600", (
+            f"{edit['id']} emits something other than the identifier; her order "
+            "is the Geni ID first and everything derived from it after")
+
+
 def test_a_person_with_genealogy_is_never_dropped_as_a_class():
     """`Q1` Aster and `Q5` Hesper are people, and were briefly dropped as classes.
 

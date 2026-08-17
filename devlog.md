@@ -7865,3 +7865,68 @@ cases, so it predates the two-hop work. Measured and left alone: Wikidata's uniq
 constraint is on label *plus description*, and her spec creates people with labels and
 no description, so nothing collides until descriptions are worked — which is the item
 that already carries her warning about exactly this.
+
+
+## 2026-08-17 — the structural correspondences finally emit, and a path file is two paths
+
+Two of the three findings from the resume review, closed.
+
+### 3,719 `add_geni_id` edits, and 180 withheld because they are identity claims
+
+`scripts/walk-structural-merge.py` had been writing
+`reports/structural-correspondence.csv` since 08-15 and **nothing consumed it**. Emma:
+*"The structural cases you were going to do and then you didn't do."*
+`scripts/build-structural-correspondence-batch.py` is the consumer, and it emits the
+one thing her ordering rule allows first — the identifier:
+
+    3,413  emit
+      306  a second Geni ID on the item  (emitted, flagged)
+      180  our person is already linked elsewhere  (withheld)
+        3  already stated on the item
+
+**The 180 are the point of the exercise.** The walk's `MERGE` branch fires whenever
+our parent's QID is not among Wikidata's — including when our parent already *has* a
+QID and it is a different one. Emitting there would leave two items claiming one Geni
+profile, which is the reverse of the case `CLAUDE.md` blesses: two Geni profiles on one
+item is ordinary and 2,861 items already have that, one profile on two items is a
+contradiction about who somebody is. Reading the withheld rows shows the guard is
+catching real errors rather than being tidy — `Eric Jedvardsson of Sweden` paired
+structurally with `Q41864` *Sigurd Snake-in-the-Eye*, `Rikissa of Sweden` with
+`Christina Ingesdotter`. Every one is in
+`reports/structural-correspondence-disagreements.csv` rather than counted and dropped.
+
+The 306 second-Geni-ID cases are emitted per `CLAUDE.md` § *A second Geni ID on one
+Wikidata item is NOT a conflict*, and several are the CBDB block she dismissed
+(`Q45485638` *Chen Boxuan* gaining `335848880110006014` beside `6000000074732500795`).
+
+`label_tokens_shared` rides along on each edit and **nothing filters on it**: 996 of
+the emitted pairs share no name token with their Wikidata label, and that is normal
+rather than suspect — `Regintrude I de Bourgogne` and `Ragnétrude` are one woman. It
+exists so a reviewer can read those first, which is what *"the label only confirms a
+position the structure chose"* asks for.
+
+### A saved Geni page holds two paths, and 242 of 586 files are affected
+
+Emma, 2026-08-16: *"You haven't been distinguishing the blood and marriage things…
+as long as you treat it as being two paths and not one."*
+
+Geni shows a pair a blood path **and** an in-law path; `path-from-html` writes both
+into one TSV. The boundary is stated by the page rather than guessed — only the head
+of a path has nothing to relate back to — so `PathStep.chain` increments on a row with
+an empty relation. `paths/nn-basse.tsv` splits 35 + 22.
+
+**41% of the corpus of paths was being read as one chain when it is two**, and the
+consequences were not cosmetic:
+
+- `run_ends_at` scanned past the end of path one, so a file whose first path is whole
+  reported a **doorway belonging to the other chain of people** — and `connectors`
+  ranks exports by exactly that.
+- `held_beyond_the_gap` read path two being held as the far side of path one's gap,
+  turning a reach into the unknown into a bridge that does not exist.
+- `_gaps` merged runs across the seam whenever the step numbers happened to be
+  consecutive.
+- `connectors.bridges` built one bridge spanning both paths, with a doorway from one
+  and a resume from the other.
+
+All four are now chain-bounded, `report.chains` gives one report per path, and the
+markdown and JSON both say how many paths a file holds. Four new tests pin it.

@@ -179,7 +179,19 @@ def bridges(report: paths_mod.PathReport, path_name: str) -> list[Bridge]:
     doorway: paths_mod.StepResult | None = None
     last_held: paths_mod.StepResult | None = None
 
+    chain = results[0].step.chain if results else 1
     for result in results:
+        # A file can hold a blood path and an in-law path (`PathStep.chain`).
+        # Crossing the seam closes whatever run is open: a gap in the second path
+        # is not the continuation of a gap in the first, and a doorway from one
+        # path is not the doorway to the other's missing people.
+        if result.step.chain != chain:
+            if run:
+                # No resume: the run reached the end of its own path.
+                out.append(Bridge(path_name, doorway, None, run))
+                run = []
+            chain = result.step.chain
+            last_held = None
         if result.held:
             if run:
                 out.append(Bridge(path_name, doorway, result, run))
