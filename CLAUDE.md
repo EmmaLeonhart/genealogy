@@ -185,6 +185,28 @@ paragraph: an export that reaches somewhere nothing else does will split it
 again, and that is normal rather than wrong. Disjoint components do not
 conflict — they just never meet.
 
+### A small component is IGNORED. Do not report it, do not analyse it
+
+**Emma, 2026-08-17:** *"if there's a cluster of 344 people you fucking ignore it and add
+to claude.md"* — and, on being told the merge had split into 472,655 and 344: *"this
+isolated group of 344 people, they aren't in the chains, are they? They're not in the
+chains, and because they're not in the chains, it means you shouldn't even be analysing
+them."*
+
+**She is right and it is checkable: 0 of those 344 appear in any of the 586 relationship
+paths.** Every path starts at her own profile, which is in the large component, so a
+small component cannot be on a chain — that is what being a separate component means.
+The work is clearing chains, so a group off the chains is not small-priority, it is **no
+priority**.
+
+**So the merge's component count is not a finding and does not go in a report to her.**
+The line the merge prints is fine where it is. Mentioning it in a status update, working
+out what is in it, or wondering which export brought it — all of that is the unprompted
+analysis § *No unprompted reports* forbids, and it cost her a turn to shut down.
+
+`reports/frontier.md` § Components stays as the place the number lives for anyone who
+ever needs it.
+
 **How it was joined, because the method generalises.** `reports/path-jimmu.md`
 checks an 83-step Geni relationship path against the tree. It went 62/83 held
 (gap of 21 steps) → 77/83 (gap of 6) → **83/83, every step held**. Two `Forest`
