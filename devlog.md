@@ -8505,3 +8505,36 @@ list to weaker seeds. Re-picked without it and re-opened.
 starts at her own profile, so a separate component cannot be on a chain, and 0 of the 344
 are. *"I asked for the chains being filled I didn't ask for an analysis of islands."*
 `CLAUDE.md` now says a small component is ignored.
+
+
+## 2026-08-17 — presence does not need the merged tree
+
+Emma, on a re-merge I ran without being asked: *"I didn't request that you rebuild the
+synoptic tree. You just did that on your own… rebuilding the synoptic tree right now is
+just going to create another tree that's going to become out of date pretty soon."*
+
+She was right, and the cost was not only the wait. Re-merging while she worked took the
+machine to **0.3 GB free of 31.3 GB** and killed two background jobs — including the
+merge's own first attempt, which is what she was asking about when she said *"what the
+fuck happened"*.
+
+**The chain task never needed it.** *Do we hold this person?* is answered by whether
+their Geni ID appears as an `INDI` xref in any export: one pass over `exports/` and a set
+of strings. **18 seconds against roughly five minutes and 4.5 GB**, and it cannot be
+stale, because it reads the corpus rather than a snapshot of it.
+
+`scripts/find-chain-gaps.py` is that, committed rather than retyped inline each time she
+asks for a regeneration — the same defect `path-bridge-targets.csv` had, a live artifact
+with no generator.
+
+**The ranking is slots, also her call.** *"The midpoints for path segments were making
+some assumptions: an assumption of relative equality of presence in slots, but I don't
+think this is true anymore."* Slot counts run from 10 down to 1, so the assumption fails
+plainly: midpointness was treating somebody blocking ten paths the same as somebody
+blocking one.
+
+Current: **held 3,655, gap 6,632, 7,174 unfilled slots** over 251 exports.
+
+**The merged tree is still right for structure** — who is whose parent, which component
+somebody is in. It is the wrong instrument for presence, and I reached for it because it
+was the one I had already built rather than because the question needed it.

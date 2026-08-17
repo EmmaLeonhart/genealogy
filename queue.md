@@ -1056,9 +1056,17 @@ a closed person by itself — eight of the first batch's fifty are gone from it 
 filter I added excluded 42 people who are still gaps and pushed her down to weaker
 candidates. Both corrections are in `CLAUDE.md`.
 
-**Next for this campaign:** her exports off the current 50, then the same loop —
-re-merge, regenerate, open the new top 50. Her framing: *"I think I can get those paths
-cleared soon."*
+**The loop does NOT re-merge, and the ranking is slots.** Both her corrections of
+2026-08-17. `scripts/find-chain-gaps.py` answers *do we hold this person* straight off
+the export files — 18 seconds against five minutes and 4.5 GB, and it cannot go stale.
+Ranking is by **path slots filled**, her call: *"the midpoints for path segments were
+making some assumptions: an assumption of relative equality of presence in slots, but I
+don't think this is true anymore."* Slot counts run 10 down to 1, so they are not equal.
+
+**The loop, per new export:** place it in `exports/midpoints/`, run
+`find-chain-gaps.py --open 10`, open the ten. Nothing else. Currently **held 3,655, gap
+6,632, 7,174 unfilled slots** over 251 exports. Her framing: *"I think I can get those
+paths cleared soon."*
 
 ## Always last — pinned to the tail
 
