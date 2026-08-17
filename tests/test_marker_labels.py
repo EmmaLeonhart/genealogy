@@ -45,26 +45,125 @@ def test_a_hyphen_inside_prose_is_not_a_marker(census, label):
     assert census._classify(label) is None
 
 
-@pytest.mark.parametrize("label,remainder", [
-    ("Toeloes .", "Toeloes"),
-    ("Siti Komara .", "Siti Komara"),
-])
-def test_punctuation_where_a_name_would_end_is_a_marker(census, label, remainder):
-    """An Indonesian name with no surname, the dot standing in for one."""
-    kind, _marker, _vocab, position, rest = census._classify(label)
-    assert (kind, position, rest) == ("marker", "tail", remainder)
+@pytest.mark.parametrize("label", ["Toeloes .", "Siti Komara .", "Nechama (?) Heller"])
+def test_punctuation_inside_a_label_is_left_alone(census, label):
+    """Emma, 2026-08-17: *"Words yes, punctuation no."*
+
+    Her ruling goes further than the hyphen fix and leaves the tail dot and the
+    bracketed hole alone as well — 3,102 `?`-at-tail rows an earlier pass would have
+    rewritten. Stripping typography is guessing at it.
+    """
+    assert census._classify(label) is None
+
+
+@pytest.mark.parametrize("label", ["?", "???", "-", "."])
+def test_punctuation_as_the_whole_label_still_means_absent(census, label):
+    """`derive-labels.ABSENT` has always read a label of nothing but punctuation
+    that way, and her ruling is about not stripping it from *inside* a name."""
+    kind, _marker, vocab, position, _rest = census._classify(label)
+    assert (kind, vocab, position) == ("marker", "punctuation", "whole")
 
 
 @pytest.mark.parametrize("label,remainder", [
-    ("Nechama (?) Heller", "Nechama Heller"),
-    ("Theodechildis (Unknown)", "Theodechildis"),
+    ("Без име", ""),
+    ("ukendt Hansen", "Hansen"),
+    ("unknown Bloomfield", "Bloomfield"),
 ])
-def test_a_parenthesised_stand_in_counts_wherever_it_sits(census, label, remainder):
-    """Brackets are the difference between a stand-in and prose, and they are in
-    the data rather than inferred — which is why the positional rule has this
-    exception instead of a shorter punctuation list."""
-    kind, _marker, _vocab, _position, rest = census._classify(label)
-    assert (kind, rest) == ("marker", remainder)
+def test_a_word_meaning_unknown_is_a_marker_in_any_language(census, label, remainder):
+    """`Без име` — Bulgarian for *without name*, 52 people — was found by ranking
+    label strings by how many different people carry them, not by being remembered."""
+    kind, _marker, vocab, _position, rest = census._classify(label)
+    assert (kind, vocab, rest) == ("marker", "word", remainder)
+
+
+def test_anon_is_a_norwegian_name_and_not_a_marker(census):
+    """89 people. `Anon Olsen Syverstad` and `Anon Mathisen Lund` are Norwegians and
+    `Anon` is their given name, not an abbreviation of *anonymous*."""
+    assert "anon" in census.NOT_MARKERS
+    assert census._classify("Anon Olsen Syverstad") is None
+
+
+def test_the_child_character_is_not_a_marker(census):
+    """`子` ends 2,091 ordinary Japanese given names — `多恵子`, `英子`."""
+    assert "子" in census.NOT_MARKERS
+    assert census._classify("多恵子 加納") is None
+
+
+@pytest.mark.parametrize("label,position", [
+    ("N Пузына", "head"),
+    ("N Lozinska", "head"),
+])
+def test_a_bare_n_leading_a_surname_is_a_marker(census, label, position):
+    kind, marker, _vocab, pos, _rest = census._classify(label)
+    assert (kind, marker, pos) == ("marker", "n", position)
+
+
+@pytest.mark.parametrize("label", ["Gunteroda N", "Laura N"])
+def test_a_trailing_single_letter_is_a_middle_initial_not_a_marker(census, label):
+    """205 of them, and `f9b9f86` records 283 middle initials this repo nearly
+    invented once already. Decided rather than asked: `n` is neither a word nor
+    punctuation, so Emma's ruling does not reach it."""
+    assert census._classify(label) is None
+
+
+# -- the CJK description class ----------------------------------------------
+#
+# Emma, 2026-08-17, shown the measurement: descriptions, the same as the English
+# ones. About 5,400 people, more than the 1,222 English descriptions.
+
+
+@pytest.mark.parametrize("label,suffix,remainder", [
+    ("信秀正室 織田", "正室", "織田"),       # principal wife of Nobuhide, of the Oda
+    ("謝氏", "氏", "謝"),                  # the Xie-clan woman
+    ("織田敏信娘", "娘", "織田敏信"),        # daughter of Oda Toshinobu
+    ("母 陳", "母", "陳"),                 # mother, of the Chen
+])
+def test_a_cjk_relationship_suffix_is_a_description(census, label, suffix, remainder):
+    """The remainder keeps the real surname, which `CLAUDE.md` insists is not thrown
+    away — `謝氏` leaves `謝`, so `mul` can be `NN 謝` rather than bare `NN`."""
+    kind, found, vocab, _position, rest = census._classify(label)
+    assert (kind, found, vocab, rest) == ("description", suffix, "cjk", remainder)
+
+
+def test_every_cjk_suffix_comes_off_the_remainder_not_just_the_matched_one(census):
+    """`古河某妻` is *wife of a certain Kogawa* and carries two suffixes. Stripping
+    only the matched `某` left `古河妻`, which is neither a name nor a description."""
+    assert census._classify("古河某妻")[4] == "古河"
+
+
+def test_the_clan_suffix_keeps_her_own_surname(census):
+    """`氏` attaches to **her** surname, the other suffixes to the relative.
+
+    `盧氏 Chan` is what exposed this: dropping the whole `盧氏` token left `Chan` and
+    threw away `盧`, the woman's actual clan. Getting it wrong is silent in both
+    directions — one loses a real surname, the other adopts a stranger's — which is
+    why `CLAN_SUFFIX` is a separate list rather than a flag.
+    """
+    assert census.CLAN_SUFFIX == ("氏",)
+    assert census._classify("盧氏 Chan")[4] == "盧 Chan"
+    assert census._classify("大唐帝國 謝氏")[4] == "大唐帝國 謝"
+
+
+def test_a_relative_suffix_does_not_carry_the_relative_into_her_label(census):
+    """`信秀正室 織田` is *principal wife of Nobuhide, of the Oda*. `信秀` is her
+    husband's given name and must not end up in her `mul`; `織田` is the surname."""
+    assert census._classify("信秀正室 織田")[4] == "織田"
+
+
+def test_the_consort_ranks_are_not_folded_together(census):
+    """`正室` principal wife, `側室` concubine, `室` consort are different statements
+    about a person, so the census reports which one the source used."""
+    assert census._classify("信秀正室 織田")[1] == "正室"
+    assert census._classify("南殿(豊臣秀吉側室)")[1] == "側室"
+
+
+def test_an_honorific_leading_a_label_is_a_description(census):
+    """`Mrs. Isaak Guggenheim` is a woman named by her husband; 249 of them. And
+    `Daughter Charif` carries no *of* for the relationship pair rule to find."""
+    for label, remainder in (("Mrs. Isaak Guggenheim", "Isaak Guggenheim"),
+                             ("Daughter Charif", "Charif")):
+        kind, _head, vocab, _position, rest = census._classify(label)
+        assert (kind, vocab, rest) == ("description", "honorific", remainder)
 
 
 # -- the three shapes, kept apart -------------------------------------------
@@ -122,24 +221,29 @@ def test_a_name_that_merely_contains_the_of_word_is_left_alone(census):
     assert census._classify("Afonso de Bragança 1º conde de Faro") is None
 
 
-def test_cjk_descriptions_are_deliberately_not_detected(census):
-    """`陳母` is *Chen's mother* and there is no table for it.
+def test_cjk_descriptions_are_detected_since_emmas_ruling(census):
+    """This test asserted the opposite until 2026-08-17, and the reason it flipped
+    is a decision rather than a bug.
 
-    Reading a trailing `母` as a relationship marker is a decision about Chinese
-    naming rather than a lookup, so the census reports these as ordinary labels and
-    the evidence for the decision comes out of the `remainder` column.
+    The census shipped with CJK deliberately undetected, because reading a trailing
+    `母` as a relationship marker is a claim about Chinese naming and not a lookup.
+    Measuring the population — 室 2,565 · 氏 1,613 · 娘 617 · 某 311 · 妻 210 ·
+    母 100 — and putting it to Emma got *"Descriptions, same as English"*. So the
+    evidence the old test was waiting for arrived and she ruled on it.
     """
-    assert census._classify("陳母 Chan") is None
+    kind, suffix, vocab, _position, rest = census._classify("陳母 Chan")
+    assert (kind, suffix, vocab, rest) == ("description", "母", "cjk", "Chan")
 
 
 # -- the two vocabularies, and that they stay distinguishable ----------------
 
 
-def test_the_narrow_and_wide_vocabularies_do_not_overlap(census):
-    """`scripts/labels.py` is narrow on purpose — Emma refused `unknown` and `?`
-    when they were added unasked. The census reports which set matched instead of
-    merging them, because whether `wide` stands is her decision and it covers
-    18,280 `unknown` labels on the Wikidata side."""
-    assert not (census.NARROW & census.WIDE)
+def test_the_marker_classes_stay_distinguishable(census):
+    """A row says which class matched, so her ruling stays legible in the output:
+    `narrow` is `NN`/`Private`, `word` is the 18,280 `unknown` labels and their
+    equivalents in eight other languages."""
+    assert not (census.NARROW & census.WORDS_MEANING_UNKNOWN)
+    assert not (census.NOT_MARKERS & census.WORDS_MEANING_UNKNOWN)
     assert census.VOCABULARY["nn"] == "narrow"
-    assert census.VOCABULARY["unknown"] == "wide"
+    assert census.VOCABULARY["unknown"] == "word"
+    assert "子" not in census.CJK_RELATIONSHIP

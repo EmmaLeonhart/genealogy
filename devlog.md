@@ -8192,3 +8192,87 @@ are correctly kept, and **9,679 rows over 6,957 subjects** are labels where simp
 stripping the marker leaves a better one. `reports/wikidata-nn-items.csv` — another file
 that fed a live batch with no generator — is superseded by this, since the 1,588 `NN`
 items it lists are a filtered view of these 17,707.
+
+
+## 2026-08-17 — three rulings from Emma, and the CJK records turn out to be the template
+
+She answered both questions the census raised, and then added two instructions that
+change what the `ja`/`zh` step is.
+
+### Words yes, punctuation no
+
+Asked whether `unknown` / `?` / `ukjent` / `*` are markers the way `NN` and `Private`
+are: **words yes, punctuation no.** Somebody who typed a word meaning *I don't know* is
+making the statement `NN` makes; bare punctuation is typography we would be guessing at.
+
+So `unknown Bloomfield` normalises and **`Nechama (?) Heller` and `Toeloes .` are left
+exactly as they are** — 3,102 `?`-at-tail rows an earlier pass would have rewritten.
+Punctuation still means *absent* as the whole label, which `derive-labels.ABSENT` has
+always said.
+
+**Half the word list came from measurement, not memory.** Ranking every label string by
+how many *different* people carry it — a real name repeats a little, a placeholder
+repeats hundreds of times — put `Без име` (Bulgarian, *without name*, 52 people) above
+most genuine names. Danish `ukendt` 18, Swedish `okänd` 17, Spanish `desconocida` 13,
+French `inconnu` 9, Russian `неизвестна` 6, German `unbekannt` 6, Italian `ignota` 3,
+Chinese `佚名` 3.
+
+**Two forms that look like markers and are not**, both measured before being excluded:
+
+- **`anon`, 89 people.** `Anon Olsen Syverstad`, `Anon Mathisen Lund` — `Anon` is a
+  Norwegian given name, not an abbreviation of *anonymous*.
+- **`子`, 2,091 people.** It ends a great many ordinary Japanese given names: `多恵子`,
+  `英子`. Nothing about it means unnamed.
+
+They are an explicit `NOT_MARKERS` set rather than simply absent, so adding either later
+is an argument somebody has to make.
+
+**`n` is neither a word nor punctuation, so her ruling does not reach it** — decided
+here rather than put to her, per the rule that a judgement call is mine to take. It is a
+marker at the **head** (`N Пузына`, `N Lozinska`, 917 of them) and not inside or at the
+tail (`Gunteroda N`, `Laura N`, 205), because a trailing single letter is a middle
+initial — the mistake `f9b9f86` records this repo nearly making 283 times.
+
+### CJK relationship suffixes are descriptions, same as English
+
+Shown 室 2,565 · 氏 1,613 · 娘 617 · 某 311 · 妻 210 · 母 100 — about **5,400 people**,
+more than the 1,222 English descriptions — she ruled them the CJK arm of the description
+class. **`mul` gets `NN`**, her words: *"And NN for mul there"*, plus the real surname
+where the description leaves one: `謝氏` → `NN 謝`, `信秀正室 織田` → `NN 織田`.
+
+This test had asserted the opposite until today. The census shipped with CJK excluded on
+the grounds that reading a trailing `母` as a relationship marker is a claim about
+Chinese naming rather than a lookup — which was right, and the evidence it was waiting
+for is what arrived.
+
+**One bug in the remainder, found by reading output:** `古河某妻` carries *two* suffixes,
+and stripping only the matched `某` left `古河妻` — neither a name nor a description. All
+suffixes come off now, leaving `古河`.
+
+### The records are the template for generated `ja`/`zh` labels
+
+**Emma:** *"That relationship description should be the template for how we generate
+Chinese and Japanese nn suppleting labels."*
+
+This unblocks what `ja`/`zh` were deferred for. The stated objection was that a
+generated Japanese description *"would come out `Gerard Spencerの娘` with the name
+untransliterated"*. The corpus already holds ~5,400 of these written natively, with no
+borrowed grammar, and they are the model:
+
+    織田敏信娘        daughter of Oda Toshinobu   <name>娘
+    信秀正室 織田      principal wife of Nobuhide  <name>正室
+    謝氏             the Xie-clan woman          <surname>氏
+
+**It works precisely where the relative's name is already CJK** — which is the same
+population that has no `en` and is otherwise unreachable, so the two problems solve each
+other. And `室`/`正室`/`側室` are not interchangeable: principal wife, concubine and
+consort are different statements, so the suffix is taken from the source and never
+chosen when generating.
+
+**A second remainder bug, and this one was silent in both directions.** `盧氏 Chan` came
+out with remainder `Chan`, throwing away `盧` — the woman's actual clan. `氏` attaches to
+**her own** surname while `妻`/`娘`/`母`/`正室` attach to the **relative**, so one rule
+cannot serve both: dropping the carrying token loses her surname, and keeping it adopts
+her husband's name. `CLAN_SUFFIX` is now its own list. `盧氏 Chan` → `盧 Chan`,
+`信秀正室 織田` → `織田`, and `正室`/`側室`/`室` stay distinct because principal wife,
+concubine and consort are different statements about a person.

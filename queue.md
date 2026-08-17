@@ -929,24 +929,32 @@ words. So the batches are `en` for everybody, then `mul` for everybody, then `ja
     judgement, ~1,950 labels. `is_placeholder_label` reads only the head token, so
     every one of these currently ships as a name.
   - **A description already sitting in the name slot** — 1,222 Geni people and 1,508
-    Wikidata items. `wife of` 871, `daughter of` 605, `son of` 241, `mother of` 234,
-    `nieto de` 58. These go `mul: NN` with the description kept as the local label,
-    which is where it already belongs — it is written, just in the wrong slot.
+    Wikidata items in English, plus **~5,400 in CJK** and 249 behind an honorific.
+    `wife of` 871, `daughter of` 605, `son of` 241, `mother of` 234, `nieto de` 58;
+    `室` 2,565, `氏` 1,613, `娘` 617, `某` 311, `妻` 210, `母` 100; `Mrs.` 249,
+    `Miss` 30. **`mul` gets `NN`** — Emma, 2026-08-17: *"And NN for mul there"* — plus
+    the real surname where the description leaves one standing (`謝氏` → `NN 謝`,
+    `信秀正室 織田` → `NN 織田`). The description itself is kept as the local-language
+    label, which is where it already belonged; it is written, just in the wrong slot.
 
   **Then fold the three vocabularies into one**, which is the part her item names and
   the part that needs her answer below.
 
-- **NEEDS-DECISION, Emma: does the `wide` marker vocabulary stand?** `scripts/labels.py`
-  is deliberately narrow — `private`, `<private>` and the `NN` spellings — and its
-  docstring records her refusing `unknown` and `?` when they were added unasked: *"I
-  didn't tell you to do that. I didn't tell you to avoid the NN people."*
-  `build-relationship-label-preview.py` and `walk-structural-merge.py` treat a wider set
-  as markers, and **that wider set is what shipped in the 39,299-edit placeholder
-  batch**. The census puts the counts behind the question rather than a principle:
-  `unknown` **18,280 on Wikidata** and 2,127 in the corpus, `n` 612, `ukjent` 188,
-  `???` 137, `??` 130, `*` 96, `?` 95, `no name` 92, `not known` 15. It is not a tail.
-  Everything in the two bullets above that does not depend on the answer proceeds
-  meanwhile.
+- **ANSWERED 2026-08-17 — words yes, punctuation no.** Asked whether `unknown` / `?` /
+  `ukjent` / `*` are markers the way `NN` and `Private` are, Emma chose *"Words yes,
+  punctuation no"*: a word meaning *I don't know* makes the same statement `NN` makes,
+  and bare punctuation is typography we would be guessing at. So `unknown Bloomfield`
+  normalises and `Nechama (?) Heller` and `Toeloes .` are left exactly as they are —
+  3,102 `?`-at-tail rows an earlier pass would have rewritten. Punctuation still means
+  *absent* when it is the **whole** label, which is what `derive-labels.ABSENT` has
+  always said.
+
+  **Still to do:** fold `scripts/labels.py`, `build-relationship-label-preview.py` and
+  `walk-structural-merge.py` onto one vocabulary, which is the *"should end up as one"*
+  half of her item. `build-marker-label-census.py` now holds the decided sets and is
+  the natural place for them to live; the other three import from it. The preview's
+  set currently includes punctuation forms that her ruling removes, so this changes
+  the 39,299-edit batch and must re-run it.
 
 - **`en` for every individual, as one step.** Includes the transcription she names:
   a Han-only or Cyrillic-only or Hebrew-only person gets an `en` made for them.
@@ -960,9 +968,37 @@ words. So the batches are `en` for everybody, then `mul` for everybody, then `ja
 - **`mul` for every individual, derived from `en`.** *"Almost always derived from en"* —
   so the exceptions are the thing to find and report, not to guess at.
 
-- **`ja` for every individual.** Han-only people already have it, as the kanji written:
-  *"If the name is solely in kanji, then the Chinese and Japanese labels are both the
-  same for it."* The work is everybody else.
+- **`ja` for every individual — and the native construction is the template.**
+  **Emma, 2026-08-17:** *"That relationship description should be the template for how
+  we generate Chinese and Japanese nn suppleting labels."*
+
+  This unblocks the thing `ja`/`zh` were deferred for. The recorded objection was that
+  a generated Japanese description *"would come out `Gerard Spencerの娘` with the name
+  untransliterated"*. The corpus already contains ~5,400 CJK relationship descriptions
+  written the native way, with no `の` and no borrowed grammar, and those are the model:
+
+      織田敏信娘        daughter of Oda Toshinobu   <name>娘
+      信秀正室 織田      principal wife of Nobuhide  <name>正室
+      古河某妻          wife of a certain Kogawa    <name>某妻
+      謝氏             the Xie-clan woman          <surname>氏
+      母 陳            mother, of the Chen         母 <surname>
+
+  So an unnamed person whose relative is recorded in Han characters gets
+  `ja` = `<relative's name><suffix>`, taking the suffix from the table the records
+  themselves use. **It only works where the relative's name is already CJK** — which is
+  exactly the population that has no `en` and is otherwise unreachable, so the two
+  problems solve each other. Where the relative is Latin-only the `ja` label still
+  waits on the transcription step.
+
+  Han-only people already have a `ja` label, as the kanji written: *"If the name is
+  solely in kanji, then the Chinese and Japanese labels are both the same for it."*
+  The work is everybody else.
+
+  **`室`/`正室`/`側室` are not interchangeable and must not be normalised to one.**
+  Principal wife, concubine and consort are different statements about a person. Pick
+  the suffix the source used; do not choose one when generating from scratch — for a
+  generated label the plain relationship word is the safe form and the specific rank is
+  something only the source can supply.
 
 - **`zh` for every individual.** Same string as `ja` for a Han name; the 291 people
   whose name carries **kana** are the ones needing a real Chinese form.
