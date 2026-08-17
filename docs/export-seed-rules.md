@@ -106,6 +106,22 @@ a dialog that will not close, an ID that will not come off the page — abandon 
 individual and take the next one on the list.** Do not invent a second route to
 the same person.
 
+## Edge case seen in the wild: `father of NN`
+
+Anna Jonsdotter's tree, 2026-08-17. `NN Persson` is fatherless and carries a
+patronymic, which is tier 2 — but tier 2 names the father `father of <the child's
+given name>`, and here the child's given name *is* the unknown-marker. The result
+would be `Per /father of NN/`, which names nobody.
+
+**What I did:** took the tier 3 slot in the same tree instead (`Ingrid Jönsdotter`,
+father present, mother absent) and created a plain `NN`. Nothing degenerate, same
+neighbourhood, one export either way.
+
+**Not yet a rule.** The alternatives are to use the child's full display name
+(`father of NN Persson`), to fall back a tier whenever the child's given name is a
+marker, or to accept `father of NN`. Raise it with Emma when the loop is not
+mid-flight.
+
 ## A master profile is a skip
 
 Sometimes a slot looks addable and is not — Geni's **master profiles** are locked
