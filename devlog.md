@@ -8374,3 +8374,40 @@ the asymmetry got noticed.
 
 **26,525 keep a real surname beside the marker** and **1,014 are a real name with the
 marker taken out and no `NN` at all**. 60 tests.
+
+
+## 2026-08-17 — three marker vocabularies folded into one, and it was additive
+
+Emma's item said they *"should end up as one"*. There were three: `scripts/labels.py`,
+and a 27-form set copied verbatim into `build-relationship-label-preview.py` and
+`walk-structural-merge.py`. They now import `labels.PLACEHOLDER_FORMS`.
+
+**Checked before touching anything: the two copies were identical to each other and a
+subset of the decided vocabulary.** So the fold removes nothing and adds nineteen forms —
+the ones measurement had found: Bulgarian `Без име`, Danish `ukendt`, Swedish `okänd`,
+Spanish `desconocida`, French `inconnu`, Russian `неизвестна`, German `unbekannt`,
+Italian `ignota`, Chinese `佚名`, Japanese `未詳`. Nobody previously screened stops being
+screened, which is the property that made this safe to do in one step.
+
+**`NOT_A_NAME` is untouched, and that is the point rather than an omission.** Two
+questions were being conflated. `NOT_A_NAME` decides what `label_for()` **empties**, and
+Emma has ruled on it twice — `Private` and `<private>`, nothing else, after an earlier
+version added `NN`, `unknown` and `?` unasked. The new sets decide what a **marker** is,
+for detection and normalisation. Widening detection is not widening suppression: an
+`unknown Bloomfield` is now detected and still keeps a label, it just becomes
+`NN Bloomfield` instead of passing as a name.
+
+**What re-running found.** The preview and placeholder batch moved 39,299 → **39,375**
+people and 30,015 → **30,090** readable `en` labels. And `tests/test_edit_emitters.py`
+went red on the widened vocabulary, correctly: seven labels in the structural
+placeholder batch are markers sitting in `en`.
+
+    Ukendt                              Danish, "unknown"
+    Okänd fru                           Swedish, "unknown wife"
+    Ukendt hustru Unknown
+    Ukendt hustru NN
+    N. N.
+    Okänd Michaelson? svensk major
+
+Every one is genuine, so the test found real defects rather than objecting to the change.
+The structural walk is re-running to clear them.

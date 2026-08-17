@@ -52,6 +52,9 @@ sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 from collections import Counter  # noqa: E402
 from genimerge import wikistore  # noqa: E402
 
+sys.path.insert(0, str(REPO / "scripts"))
+import labels as _labels  # noqa: E402
+
 FAMILY = REPO / "reports" / "derived-family.csv"
 LABELS = REPO / "reports" / "derived-labels.csv"
 PREVIEW = REPO / "reports" / "relationship-label-preview.csv"
@@ -72,11 +75,7 @@ REQUIRED_LANGUAGES = ("en", "ja", "zh", "hi", "ar", "ru", "el")
 #: A label that names nobody, so it must never reach a local language. From
 #: `reports/given-name-forms.csv` by way of
 #: `scripts/build-relationship-label-preview.py`, which screens the same vocabulary.
-PLACEHOLDER_LABELS = {
-    "", "nn", "n n", "n.n.", "n.n", "n", "?", "??", "???", "????", "_", "-",
-    "--", ".", "*", "**", "***", "'", "unknown", "private", "<private>",
-    "(no name)", "no name", "not known", "namn okänt", "ukjent", "onbekend",
-}
+PLACEHOLDER_LABELS = _labels.PLACEHOLDER_FORMS
 
 
 def is_placeholder_label(label: str) -> bool:

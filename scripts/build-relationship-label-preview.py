@@ -41,6 +41,8 @@ from collections import Counter
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(REPO / "scripts"))
+import labels as _labels  # noqa: E402
 FAMILY = REPO / "reports" / "derived-family.csv"
 LABELS = REPO / "reports" / "derived-labels.csv"
 NAMES = REPO / "reports" / "display-names.csv"
@@ -50,14 +52,19 @@ FACTS = REPO / "reports" / "derived-facts.csv"
 
 csv.field_size_limit(10 ** 7)
 
-#: The placeholder vocabulary, from `reports/given-name-forms.csv`. Screened on
-#: the vocabulary and on punctuation, never on length — Korean and Chinese
-#: surnames are one character.
-PLACEHOLDER_GIVEN = {
-    "", "nn", "n n", "n.n.", "n.n", "n", "?", "??", "???", "????", "_", "-",
-    "--", ".", "*", "**", "***", "'", "unknown", "private", "<private>",
-    "(no name)", "no name", "not known", "namn okänt", "ukjent", "onbekend",
-}
+#: The placeholder vocabulary, now **imported rather than copied**.
+#:
+#: This was a 27-form set duplicated here and in `walk-structural-merge.py`.
+#: `scripts/labels.PLACEHOLDER_FORMS` is the single version, and folding onto it is
+#: **strictly additive**: every form this file already had is in it, plus 19 found by
+#: measurement — Bulgarian `Без име`, Danish `ukendt`, Swedish `okänd`, Spanish
+#: `desconocida`, French `inconnu`, Russian `неизвестна`, German `unbekannt`,
+#: Italian `ignota`, Chinese `佚名`, Japanese `未詳`. Nothing was removed, so no
+#: person previously screened stops being screened.
+#:
+#: Screened on the vocabulary, never on length — Korean and Chinese surnames are one
+#: character.
+PLACEHOLDER_GIVEN = _labels.PLACEHOLDER_FORMS
 
 #: Sex -> the word for a child and for a spouse. Unknown sex gets the neutral
 #: form rather than a guess: inventing a gender to make a label read better is

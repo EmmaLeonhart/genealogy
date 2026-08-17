@@ -937,8 +937,13 @@ words. So the batches are `en` for everybody, then `mul` for everybody, then `ja
     `信秀正室 織田` → `NN 織田`). The description itself is kept as the local-language
     label, which is where it already belonged; it is written, just in the wrong slot.
 
-  **Then fold the three vocabularies into one**, which is the part her item names and
-  the part that needs her answer below.
+  **The three vocabularies are now one** — `scripts/labels.PLACEHOLDER_FORMS`, imported
+  by the preview, the structural walk and the census instead of each carrying a copy.
+  Strictly additive: all 27 forms the copies held are in it, plus 19 found by
+  measurement, so nobody previously screened stops being screened. `NOT_A_NAME` is
+  deliberately untouched — that decides what `label_for()` **empties** and she has ruled
+  on it twice; these sets decide what a **marker** is. Widening detection is not
+  widening suppression.
 
 - **ANSWERED 2026-08-17 — words yes, punctuation no.** Asked whether `unknown` / `?` /
   `ukjent` / `*` are markers the way `NN` and `Private` are, Emma chose *"Words yes,
@@ -949,12 +954,12 @@ words. So the batches are `en` for everybody, then `mul` for everybody, then `ja
   *absent* when it is the **whole** label, which is what `derive-labels.ABSENT` has
   always said.
 
-  **Still to do:** fold `scripts/labels.py`, `build-relationship-label-preview.py` and
-  `walk-structural-merge.py` onto one vocabulary, which is the *"should end up as one"*
-  half of her item. `build-marker-label-census.py` now holds the decided sets and is
-  the natural place for them to live; the other three import from it. The preview's
-  set currently includes punctuation forms that her ruling removes, so this changes
-  the 39,299-edit batch and must re-run it.
+  **Done 2026-08-17.** The fold landed in `scripts/labels.py`, and re-running the
+  batches it feeds moved the placeholder count 39,299 → **39,375** and readable `en`
+  labels 30,015 → **30,090** — 76 more people recognised as placeholder-named by the
+  nine languages the measurement added. Seven labels in the structural batch turned out
+  to be markers sitting in `en`: `Ukendt`, `Okänd fru`, `Ukendt hustru Unknown`,
+  `N. N.`, `Okänd Michaelson? svensk major`.
 
 - **`en` for every individual, as one step.** Includes the transcription she names:
   a Han-only or Cyrillic-only or Hebrew-only person gets an `en` made for them.

@@ -86,6 +86,9 @@ sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 from genimerge import wikistore  # noqa: E402
 
+sys.path.insert(0, str(REPO / "scripts"))
+import labels as _labels  # noqa: E402
+
 LABELS = REPO / "reports" / "derived-labels.csv"
 STORE = REPO / "wikidata" / "items"
 OUT = REPO / "reports" / "marker-labels.csv"
@@ -94,10 +97,7 @@ csv.field_size_limit(10 ** 7)
 
 #: The forms all three vocabularies agree on. `scripts/labels.py` is the authority
 #: for this set and it is narrow on purpose.
-NARROW = {
-    "private", "<private>",
-    "nn", "n n", "n.n.", "n. n.", "n.n", "n-n",
-}
+NARROW = _labels.NARROW_MARKERS
 
 #: Words meaning *unknown*. **Emma ruled on these on 2026-08-17: words yes,
 #: punctuation no.** Asked whether `unknown` / `?` / `ukjent` / `*` are markers the

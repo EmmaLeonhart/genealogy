@@ -93,6 +93,117 @@ def is_redacted(gedcom_name: str) -> bool:
 _NN_FORMS = {"nn", "n n", "n.n.", "n. n.", "n.n", "n-n"}
 
 
+# --------------------------------------------------------------------------
+# THE MARKER VOCABULARY — one set, replacing three
+#
+# Emma's item said the vocabularies *"should end up as one"*, and there were
+# three: this module's, and a copy of a wider set in
+# `build-relationship-label-preview.py` and `walk-structural-merge.py`. They are
+# folded here because `CLAUDE.md` names this module as the single place that
+# decides what a label may be.
+#
+# **`NOT_A_NAME` above is untouched, and that is the whole point.** Two different
+# questions were being conflated. `NOT_A_NAME` decides what `label_for()`
+# **empties**, and Emma has ruled on it twice — `Private` and `<private>` and
+# nothing else. The sets below decide what a **marker** is, for finding and
+# normalising labels that carry one. Widening detection is not widening
+# suppression: an `unknown Bloomfield` is detected here and still keeps a label,
+# it just becomes `NN Bloomfield` instead of reading as a name.
+# --------------------------------------------------------------------------
+
+#: The forms all three vocabularies already agreed on.
+NARROW_MARKERS = _NN_FORMS | {"private", "<private>"}
+
+#: Words meaning *unknown*, in any language. **Emma's ruling, 2026-08-17: words
+#: yes, punctuation no.** Somebody who typed a word meaning *I don't know* is
+#: making the statement `NN` makes.
+#:
+#: The nine non-English forms were found by **measurement**: ranking every label in
+#: the corpus by how many *different* people carry it, where a real name repeats a
+#: little and a placeholder repeats hundreds of times. Bulgarian `Без име` sat
+#: above most genuine names at 52 people. Counts are in the corpus.
+WORDS_MEANING_UNKNOWN = {
+    "unknown",        # 2,127
+    "ukjent",         #   188  Norwegian
+    "no name",        #    92
+    "без име",        #    52  Bulgarian / Macedonian
+    "ukendt",         #    18  Danish
+    "okänd",          #    17  Swedish
+    "not known",      #    15
+    "desconocida",    #    13  Spanish
+    "desconocido",
+    "inconnu",        #     9  French
+    "inconnue",       #     4
+    "неизвестна",     #     6  Russian
+    "неизвестно",
+    "unbekannt",      #     6  German
+    "ignota",         #     3  Italian
+    "ignoto",
+    "noname",         #     3
+    "佚名",            #     3  Chinese
+    "onbekend",       #     1  Dutch
+    "namn okänt",     #        Swedish
+    "(no name)",
+    "ukj.",           #        Norwegian, abbreviating ukjent
+    "未詳",            #     1  Japanese, "details unknown"
+    "無名",            #        Japanese / Chinese, "nameless"
+}
+
+#: Punctuation, a marker **only as the whole label** — the other half of her
+#: ruling. `George Clark, II - farmer` is prose and `Nechama (?) Heller` is a name
+#: with a bracketed hole; neither is rewritten. A label that is *nothing but*
+#: punctuation has no name in it, which `derive-labels.ABSENT` has always said.
+PUNCTUATION_MARKERS = {"-", "--", ".", "..", "_", "*", "**", "***", "'",
+                       "?", "??", "???", "????"}
+
+#: `n` alone — a marker at the **start** of a label, never inside or at the end.
+#: `N Пузына` is a placeholder given name before a real surname, 917 of them;
+#: `Laura N` is a **middle initial**, 205, and this repo has already nearly
+#: invented 283 of those (`f9b9f86`). Neither a word nor punctuation, so her
+#: ruling does not reach it and this is a judgement recorded rather than asked.
+SINGLE_LETTER_MARKERS = {"n"}
+
+#: **Words that look like markers and are not**, each measured before exclusion:
+#:
+#: * `anon` — 89 people, and `Anon Olsen Syverstad` is a Norwegian given name, not
+#:   an abbreviation of *anonymous*.
+#: * `子` — 2,091 people; it ends ordinary Japanese given names like `多恵子`.
+#:
+#: Explicit rather than merely absent, so adding either back is an argument
+#: somebody has to make.
+NOT_MARKERS = {"anon", "子"}
+
+#: Every form that means *absent* when it stands as a whole field or label. This
+#: is what the given-name screens want: `PLACEHOLDER_GIVEN` in the preview and
+#: `PLACEHOLDER_LABELS` in the structural walk were both copies of a narrower
+#: version of this.
+PLACEHOLDER_FORMS = (
+    {""} | NARROW_MARKERS | WORDS_MEANING_UNKNOWN
+    | PUNCTUATION_MARKERS | SINGLE_LETTER_MARKERS
+) - NOT_MARKERS
+
+
+def is_placeholder_form(text: str) -> bool:
+    """Whether this whole field or label means *no name here*."""
+    return (text or "").strip().lower() in PLACEHOLDER_FORMS
+
+
+def leads_with_a_marker(text: str) -> bool:
+    """Whether a label opens with a marker and continues with something else.
+
+    `NN Hildesheim`, `unknown Bloomfield`, `N Пузына`. The surname after it is real
+    data — `CLAUDE.md` records that discarding these loses 3,605 surnames — so the
+    caller keeps it rather than collapsing the label to bare `NN`.
+    """
+    tokens = (text or "").split()
+    if len(tokens) < 2:
+        return False
+    head = tokens[0].strip(",;:()[]").lower()
+    if head in NOT_MARKERS:
+        return False
+    return head in NARROW_MARKERS | WORDS_MEANING_UNKNOWN | SINGLE_LETTER_MARKERS
+
+
 def is_unnamed(gedcom_name: str) -> bool:
     """True when there is no usable name here — redacted, `NN`, or blank.
 
