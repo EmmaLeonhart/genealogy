@@ -7791,3 +7791,39 @@ whole point of her correction.
 
 **Final batch: 3,525 edits.** 1,310 `mul` moves, 2,215 descriptive labels across ten
 Germanic and Romance languages, 17 people with no named relative at any distance.
+
+
+## 2026-08-17 — the resume review, and the audit method that would have missed it
+
+Her last instruction before shutting the machine down was to review the last few days
+before taking anything else: *"to ensure, as the first part of the queue, that
+everything's working well and nothing was overlooked."* Done over her **49** messages
+of 2026-08-16 — `reports/audit-resume-2026-08-17.md`. The 08-15 audit covers
+everything earlier.
+
+**Three things she asked for are not done.** The rest traces to committed work.
+
+**The largest is a 43% hole in the biggest label batch in the repo.** She said
+long-range relationships contribute more than I credit them with —
+*"grandparents or grandchildren or siblings"* — and that was applied to
+`build-nn-label-batch.py`, 1,588 Wikidata items, and not to
+`build-placeholder-label-batch.py`, 35,011 edits, which still stops at child.
+**14,987 of those edits carry `mul: NN` and no readable label**, every one of them a
+person whose parent, spouse and child are all themselves unnamed. That is the exact
+population a sibling or grandparent reaches. The seven-language item is gated on
+these labels, so the gap sits upstream of the gate.
+
+Also open: the structural merge produced 3,902 correspondences and 12,260
+placeholders on 08-15 and **nothing has consumed either file since** — she asked
+about that directly, *"the structural cases you were going to do and then you didn't
+do"*; and a saved Geni page's blood path and in-law path are still one concatenated
+chain, against *"as long as you treat it as being two paths and not one."*
+
+**The audit procedure itself was finding 57% of her.** It read
+`{"type": "user"}` records only. A message she types while a tool call is running is
+written as `{"type": "queue-operation", "operation": "enqueue"}` instead, and on
+08-16 that was **21 of 49** — including *"NN is not relabeled"*, *"there is a bot
+that exists that removes labels"*, the structural-merge complaint and the
+blood-versus-marriage instruction. All four were acted on live, so nothing was lost
+this time. The audit is what runs when the live thread is gone, and it would not have
+found them. `queue.md`'s standing procedure now reads both record types.

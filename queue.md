@@ -35,29 +35,54 @@ them.
 
 ---
 
-## FIRST, ON RESUME — review the last few days of conversation
+## FOUND BY THE RESUME REVIEW, 2026-08-17 — three things she asked for and did not get
 
-**Emma's instruction, 2026-08-16, before shutting the machine down:** *"review the
-last few days of conversation to ensure, as the first part of the queue, that
-everything's working well and nothing was overlooked."*
+Her instruction of 2026-08-16 was to review the last few days before doing anything
+else. Done: `reports/audit-resume-2026-08-17.md`, over her **49** messages of
+08-16. Everything else traces to committed work; these three do not, and they run
+ahead of the run order below.
 
-Read back over the recent transcripts before taking any other item. What to look
-for, and these are the failure shapes this project has actually had:
+- **Long-range relatives are missing from the batch that needs them most.** Her
+  words: *"long-range relationships have much larger things to contribute than you
+  consider them to do so… grandparents or grandchildren or siblings."* Applied to
+  `scripts/build-nn-label-batch.py` (1,588 Wikidata items) and **not** to
+  `scripts/build-placeholder-label-batch.py`, which is twenty-two times larger and
+  stops at child. **14,987 of its 35,011 edits — 43% — carry `mul: NN` and no
+  readable label**, because that person's parent, spouse and child are all
+  themselves unnamed. That is exactly the population a sibling, grandparent or
+  grandchild reaches. Extend the search to parent → spouse → child → sibling →
+  grandparent → grandchild, the same order `build-nn-label-batch.py` already uses,
+  and report how many of the 14,987 gain a label. The seven-language item is gated
+  on these labels, so this sits upstream of the gate.
 
-- **Instructions of hers that were never queued.** The 2026-08-15 audit found three.
-  An instruction goes into the queue *before* it is executed.
-- **Things reported as blocked that were not.** Six status reports carried "8
-  structural merge cases unanswered, 3,902 correspondences and 12,260 placeholders
-  blocked behind it" when the files had been on disk the whole time. **Her not
-  replying means she is content** — see `CLAUDE.md`.
-- **Answers scoped silently to one store.** *"Is X present?"* means Geni **and**
-  Wikidata, named separately. She caught this again on 2026-08-16: the long-range
-  relative measurement was run against the Wikidata store alone instead of the
-  synoptic tree.
-- **Reports written instead of work done**, and analysis nobody asked for.
+- **The structural merge stopped at showing cases.** *"The structural cases you were
+  going to do and then you didn't do."* `reports/structural-correspondence.csv`
+  (3,902 rows) and `reports/wikidata-structural-placeholders.json` (12,260) have been
+  on disk since 08-15 and **nothing consumes either**. Her 08-15 rule is that those
+  3,902 rows *are* the QID ↔ Geni ID correspondence this project is meant to be
+  building, so wire them in: emit the correspondence as the repo's own map, and the
+  placeholders as a reviewed batch. Structure picks the pair; the label only confirms
+  it. Offline throughout.
 
-Then check the crons are running — they are session-local and died with the
-shutdown — and only then take the run order below.
+- **A saved page's two paths are still one chain.** *"You haven't been
+  distinguishing the blood and marriage things… as long as you treat it as being two
+  paths and not one."* `path-from-html` writes Geni's blood path and in-law path into
+  one TSV. `genimerge.paths` handles the visible symptom — the re-walked opening is
+  `REPEAT`, not `ABSENT` — but nothing splits the chains, so a per-file "held: X of
+  Y" spans two unrelated paths. Smallest of the three: chain two restarts at *You*,
+  who is held, so a bridge cannot run across the seam. Give each chain an index and
+  count per chain.
+
+## The audit method was itself incomplete — corrected below
+
+**A `type: "user"` record is not the only place her words live.** On 08-16 a
+`role == "user"` scan finds **28** of her **49** messages; the other 21 are
+`{"type": "queue-operation", "operation": "enqueue"}` records, which is what the
+harness writes when she types while a tool call is running. Among the missed ones:
+*"NN is not relabeled"*, *"there is a bot that exists that removes labels"*, the
+structural-merge complaint, and the blood-versus-marriage instruction. All four were
+acted on live, so nothing was lost — but the audit is what runs when the live thread
+is gone, and it would not have found them.
 
 ## IN FLIGHT AT SHUTDOWN — `NN` labels, rebuilt to her full model
 
@@ -201,7 +226,16 @@ transcripts, 311 user turns).
 Transcripts are the authority — they hold what Emma actually said, in order,
 including the corrections:
 `C:/Users/Emma/.claude/projects/C--Users-Emma-Documents-GitHub-geni/*.jsonl`.
-Newest first by mtime. Each line is JSON; a user turn is `message.role == "user"`.
+Newest first by mtime. Each line is JSON.
+
+**Read BOTH record types, or the scan misses half of her.** A turn she typed while
+the model was idle is `{"type": "user", "message": {"role": "user"}}`. A turn she
+typed while a tool call was running is
+`{"type": "queue-operation", "operation": "enqueue", "content": "…"}`, and it is
+**not** a user record. On 2026-08-16 the split was 28 user records against 21
+queue-operations, so a `role == "user"` scan finds 57% of what she said. Skip the
+`enqueue` entries whose content is a cron prompt or a `<task-notification>`; those
+are the harness talking, not her. Found 2026-08-17.
 
 1. **Extract every user turn with its timestamp.** Do not summarise while
    extracting — that is where instructions get lost. A compaction turn is not
@@ -440,9 +474,15 @@ item here, so the work survives whether or not the job fires.
 
 | id | fires | what |
 | --- | --- | --- |
-| `d425c1f5` | :03 | work-loop tick |
-| `be98e574` | :15 | auto-flush — commit and push anything pending, no empty commits |
-| `f8b152ab` | :42 | status-report — reporting only, no code changes |
+| `089c2d58` | :03 | work-loop tick |
+| `2fdc3d34` | :15 | auto-flush — commit and push anything pending, no empty commits |
+| `210d3747` | :42 | status-report — reporting only, no code changes |
+
+**The ids above are this session's**, created 2026-08-17 on resume; the previous
+ones died with the shutdown, as every `CronCreate` job does. **The daily jobs listed
+below are NOT running in this session** — they are queue items and only queue items
+until somebody re-creates them, which is why Emma had their contents queued in the
+first place.
 
 **`f3d681e4` 19:07 — re-merge.** Keep `out/merged.ged` as `out/merged-<n>.ged`
 first; the pre-batch tree is the only thing that makes the seed backtests
