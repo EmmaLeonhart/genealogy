@@ -230,6 +230,9 @@ is by far most common in this data."*
 | Anglo-Norman | `fitz` | `Robert fitz Walter` | `Walter` |
 | Iberian | `-ez` `-es` `-iz` `-oz` | `Álvar Rodríguez` | `Rodrigo` |
 | Hebrew / Arabic | `ben` `bat` `bin` `ibn` | `Hugh ben Lewis` | `Lewis` |
+| Polish | `-ic` `-yc` `-owic` | `Sulisława Wojsławic` | `Wojsław` |
+| East Slavic | `-ovich` `-evich` `-ovna` `-evna` | `Ivan Petrovich` | `Pyotr` |
+| South Slavic | `-ović` `-ević` `-ić` | `Marko Petrović` | `Petar` |
 
 The Iberian one is the least obvious and the most likely to be missed:
 `Rodríguez` is *son of Rodrigo*, `Fernández` *son of Fernando*, `Sánchez` *son of
