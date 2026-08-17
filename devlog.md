@@ -8128,3 +8128,10 @@ whose `en` has to be **made**, which is exactly the step she ordered first.
 Five tests in `tests/test_derivation_scripts.py` pin it, including that a real mixed
 name (`陳母 Chan`) is still mixed — the fix must not swallow the case the bucket exists
 for.
+
+**The walk, re-run on the corrected labels:** placeholders with a `mul` label 11,090 →
+**11,139**, with nothing at all 364 → **315**. The difference is **49**, which is
+`Masculine` 39 + `Feminine` 5 + `Modifier` 5 — the pseudo-script cases, to the person.
+`test_edit_emitters` 11 passed. The correspondence batch is unchanged at 3,719 edits
+and 180 withheld; only its review column moved, 996 → 990 pairs sharing no name token,
+because six of those pairs now have a label to share tokens with.
