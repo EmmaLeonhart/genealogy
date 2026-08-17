@@ -1116,6 +1116,30 @@ Precedent, same morning: the `NN` mother created at `6000000227291886826` (mothe
 of Rodrigo de las Varillas) was created, exported and downloaded end to end under
 Chrome automation. That is the whole manual workflow running without her.
 
+### Phase 1b — the Ettinger bridge, and it jumps the queue ahead of the top ten
+
+**Emma, 2026-08-17, mid-run:** *"You run this one first before you do the top 10…
+If you get started with the top 10 because you didn't get the message until you
+started it, then immediately after the last one of them you run this one."*
+
+The tree is `https://www.geni.com/family-tree/index/6000000002764956522`,
+**Mordechai Zeev Ettinger, A.B.D. Lwow (1804–1863)**. She thinks one Forest export
+seeded here may be enough to merge the isolated 344 into the world tree on its
+own: *"we'll see if it just connects to the world tree just based off of this
+export alone. If it does then that'll be great. We'll have a synoptically
+integrated tree."*
+
+Done: seed created at `6000000227293218831` — `NN`, mother of
+`Sarah Landau (Ziskind)`, tier 3, three generations up the Ettinger line. Forest
+export run from her.
+
+**If it does not connect**, she is adding a second person to the paths who will
+also sort it out. Do not start improvising a fix — wait for that.
+
+The 344 are the Ettingers, all of them in
+`exports/edges/export-Forest-6000000227256597825.ged`
+(`scripts/which-export-holds-component.py`).
+
 ### Phase 2 — the top-ten loop, and it repeats until the paths are flat
 
 **Only once every Phase 1 zip is down.** Then, on repeat:
