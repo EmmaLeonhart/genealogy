@@ -1,0 +1,152 @@
+# How to make an export individual
+
+**Emma's rules, dictated 2026-08-17.** An *export individual* is a placeholder
+profile created on Geni at an open slot in the tree, purely so a `Forest` export
+can be run from it. This file is the whole method: where to put one, what to call
+it, and what to do when a tree has no open slots left.
+
+Her framing for why it is written down at all: *"This all occurs sequentially and
+this is why it takes a bit of difficulty to do because it's sequential. It's a bit
+time-consuming but I'm realizing I can just save all my time by having you do
+it."*
+
+The export itself is always **`Forest`, size 5000** — see § *Running the export*
+at the bottom.
+
+---
+
+## The preference order
+
+Five tiers, most preferred first. Take the highest tier the page offers.
+
+### 1. Fatherless, has a surname, has a patronymic → create the father
+
+The best case, and the reason patronymics rank above everything else: the
+patronymic *names the father*, so the person being created is directly attested
+rather than invented. Emma: *"patronymics allow us to create an individual that is
+directly historically attested and doesn't involve the NN on them."*
+
+- **Given name** — read it off the patronymic. `Anders Olsen` → the father is
+  `Ole`.
+- **Surname** — the child's surname, and **the patronymic must not survive into
+  it**.
+
+**The patronymic sits in either field and which one decides nothing.** Emma:
+*"Sometimes the patronymic is part of the first name and sometimes it's in the
+last name, so you want to make sure that just the surname comes in and the
+patronymic is not present — the patronymic is removed if it was in the surname
+thing."* So when the patronymic was occupying the surname field, the created
+father gets **no** surname from it; strip it. This is the same both-fields rule
+`CLAUDE.md` § *`name modelling.txt`* states for reading names generally.
+
+### 2. Fatherless, has a patronymic, nothing else → create the father
+
+Same father, but there is no surname to give him.
+
+- **Given name** — from the patronymic, as above.
+- **Surname** — `father of <the child's given name>`.
+
+This is the form the existing seeds are in: `Anders father of Anna`,
+`Karl father of Carl`, `Lewis father of Hugh`, `Øystein father of Berta`,
+`Lars father of Sigrid`.
+
+### 3. Has one parent, is missing the other → create the missing parent as `NN`
+
+Almost always this is *father present, mother absent*, which is what Geni's tree
+view offers as an **Add mother** box.
+
+- **Given name** — `NN`.
+- **Surname** — none. We do not know it, and Geni's *Suggest surnames* will offer
+  the child's, which would be invented.
+
+**Father-absent works identically.** Emma: *"For mother is present, father is
+absent — we really will do the same thing. It's not a super preferable thing that
+it has to be that the placeholder individual we're creating is for the mother. It
+can be for the father. That's just really rare."*
+
+**Why this is worth doing even with no name to give.** Emma: *"We don't really
+know what their name is, but what we do know is that by creating this person we're
+actually reducing ambiguity in the tree, because now there's an individual
+representing their mother — which can be helpful for situations where somebody may
+have had multiple marriages."* The value is the slot, not the label. This is the
+same reasoning as `CLAUDE.md` § *Redacted people go in*: the structure is the
+informative part.
+
+### 4. No parents at all, has a surname → create the father as `NN`
+
+- **Given name** — `NN`. No patronymic means no evidence of what he was called.
+- **Surname** — the child's **birth** surname.
+
+### 5. No parents at all, no surname → create the father as `NN father of …`
+
+- **Given name** — `NN`.
+- **Surname** — `father of <the child's given name>`.
+
+---
+
+## When the whole visible tree is saturated
+
+If every slot on the page is filled, move to an ancestor's own tree rather than
+giving up on the page.
+
+**The tree icon carries a count.** Each person's node has a small tree icon
+showing how many people are in that person's family tree. Click it to open that
+person's tree, and pick where to work from that number.
+
+**Prefer a small count, and prefer an odd one.**
+
+- **Small**, because a small tree means more open slots.
+- **Odd**, because an odd number of ancestors almost always means one couple is
+  half-filled — a father present with the mother absent — which is a guaranteed
+  legitimate insertion point. Emma: *"an odd number of ancestors guarantees a
+  legitimate insertion point."*
+
+An even count is not disqualifying; it just does not come with that guarantee.
+Emma: *"even number of ancestors — you can have that same kind of insertion point
+if there is, say, a single eternal lineage of four people or something like
+that."*
+
+**Zero is a special case.** It happens rarely and is in some ways the ideal, but
+in the context of choosing which tree to move to, **1 beats 0**.
+
+**Rough ranking, and it is explicitly rough:** `1, 3, 5, 0, 2, 4, 6, 7, 9, 11, …`
+Emma: *"you can make your own ordering ranking for this, and don't put too much
+stress on it… just don't overthink it."* So this ordering is a tiebreak heuristic,
+not a rule to defend. The tier list above is the part that matters.
+
+---
+
+## Running the export
+
+Once the individual exists, export from **their** profile:
+
+1. Their profile → **Actions** → **Export GEDCOM**, which is
+   `https://www.geni.com/gedcom/export/<geni id>`.
+2. Walk: **`Forest`**. Size: **5000**. Everything else default.
+3. Submit, leave the page open — it refreshes itself when the file is built — then
+   click **Download My GEDCOM File**.
+
+**Strictly one at a time.** Emma, 2026-08-17: the batch of seeds *"needs to be
+exported after these people have the GEDCOMs exported and downloaded"*, and
+sequence is the point. Queue the next export only once the previous zip is on
+disk.
+
+**Do not integrate as you go.** *"I don't actually want you to import or integrate
+the GEDCOM zip files because we're not doing it all at once."* The zips
+accumulate in `~/Downloads`, and only when every one of them is down does the
+whole batch get filed into `exports/` together.
+
+---
+
+## Two readings of the dictation I am not certain of
+
+Flagged rather than guessed at, per `CLAUDE.md` § *Edge cases go to her*:
+
+- **Tier 4's given name.** *"you add the father to them as their first names and
+  in their surname is whatever the surname of their child is"* — I have read the
+  given name as `NN`, on the grounds that tier 4 is defined by having no
+  patronymic and therefore no evidence of a given name. If you meant the father
+  takes the **child's** given name, say so and I will change it.
+- **Tier 1's given name form.** `Olsen` → `Ole` is a reconstruction, and the
+  Norwegian/Swedish forms are not always one-to-one. I will use the plain
+  nominative and not try to be clever about it.

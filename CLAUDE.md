@@ -88,6 +88,24 @@ It does not change the *isolate* batches, where the thing being judged is whethe
 person connects at all, nor the saved-page workflow below, which needs the profile
 page because that is where the relationship panel and its `href`s live.
 
+### `docs/export-seed-rules.md` is how an export individual gets made
+
+**Emma dictated the whole method on 2026-08-17** and asked for it written down.
+It covers where to put a placeholder profile, what to name it, and what to do when
+a tree has no open slots left — a five-tier preference order with patronymics at
+the top, because a patronymic names the father and so the created person is
+attested rather than invented. It also fixes the export itself: **`Forest`, size
+5000, strictly one at a time, and the zips are filed into `exports/` in bulk only
+once every one of them is down.**
+
+That file is the authority; do not re-derive any of it here.
+
+**The whole loop runs under Chrome automation now**, proven end to end on
+2026-08-17: create the profile in the tree view, Actions → Export GEDCOM, poll the
+download page, click through. Emma's framing: *"we've managed to use Chrome
+automation to actually completely run my old workflow… all of my human labor
+involved with the exports."*
+
 **Relationship paths: save the page, never the pasted text.** A Geni
 relationship path — the chain of people between two profiles, which Geni shows
 for any pair it can connect — is the only evidence in this repo that comes from

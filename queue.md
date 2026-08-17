@@ -1081,3 +1081,24 @@ B. **Run the status-report action once more** — an end-of-session summary.
 - Abstract backlog: `todo.md` · Completed work: `devlog.md` · History: `git log`
 - Open questions for Emma: `questions.md`
 - The pre-wipe queue, 1,396 lines: `git show 4127170:queue.md`
+
+## Forest export run, 2026-08-17 — seven seeds Emma created, in sequence
+
+Her instruction in chat: run a **Forest** export from each profile in
+`export_individuals_to_do_on_your_own.txt`, **in sequence**, downloading each zip
+before starting the next. Do **not** integrate them one at a time — the whole batch
+is filed into `exports/` in bulk only after every zip is down.
+
+Precedent set the same morning: the `NN` mother created at
+`6000000227291886826` (mother of Rodrigo de las Varillas) was exported and
+downloaded end to end through Chrome automation — `export-geni (4).zip`, 11:39.
+That is the whole manual export workflow running without her.
+
+- `6000000227258546877` Anders father of Anna
+- `6000000227291195824` NN Hersleb
+- `6000000227289933834` Sunes Sterenius
+- `6000000227291086839` Rasmus Friis
+- `6000000227291028845` Håvard Øye-in-Heskestad
+- `6000000227290969847` Karl father of Carl
+- `6000000227289886830` Lewis father of Hugh
+- Then, and only then: file all seven zips into `exports/` in one batch.
