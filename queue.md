@@ -1034,6 +1034,23 @@ being called Latin: `º` says nothing about what script a name is in. Then
 `build-display-names.py` → `derive-labels.py` → every label emitter, which is the whole
 cache chain `CLAUDE.md` warns about.
 
+## The midpoint export campaign — her batch of 2026-08-17
+
+**Open the family-tree index page, never the profile page.** Emma, 2026-08-17:
+*"rather definitively this kind of thing
+https://www.geni.com/family-tree/index/6000000085113755501 is a better page to open up
+for them rather than the pages you opened."* Recorded in `CLAUDE.md`; the first 50 were
+opened as `/people/x/<id>` and should have been `/family-tree/index/<id>`.
+
+**Four exports integrated**, `exports/midpoints/`, all `Forest`, all exactly 5000
+people, seeded on placeholders she made at the midpoints of path gaps:
+`6000000227288930948` `Wilchen /Tybekken/` · `…289663852` `Øystein /father of Berta/` ·
+`…289604840` `Michel /Jude/` · `…289792822` `Björn /father of Prinsessan/`.
+
+**Still to run for this batch, in order:** re-merge; `genimerge connectors` to measure
+what the four closed; then the next midpoint batch off the new gaps, opened as
+family-tree pages. Her framing: *"I think I can get those paths cleared soon."*
+
 ## Always last — pinned to the tail
 
 A. **Ensure the three crons are running** — work-loop `3 * * * *`, auto-flush

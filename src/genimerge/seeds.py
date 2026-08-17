@@ -309,6 +309,19 @@ __all__ = [
 #: within minutes, the same style-and-seed independence every earlier flat run
 #: showed. The `Ancestors` take holding 348 exhausted its component rather than
 #: reaching the ceiling, which is the ordinary reason a reading comes in low.
+#: **2026-08-17 — 5000 again, four times, from a new kind of seed.** Emma's first
+#: midpoint batch: `Forest` exports of `6000000227288930948` (`Wilchen /Tybekken/`),
+#: `…289663852` (`Øystein /father of Berta/`), `…289604840` (`Michel /Jude/`) and
+#: `…289792822` (`Björn /father of Prinsessan/`), all four at **exactly 5000**,
+#: taken between 09:04 and 09:35 and filed in `exports/midpoints/`.
+#:
+#: What makes this reading worth adding rather than redundant: the seeds were chosen
+#: by a *different method* from every earlier flat run — placeholders created at the
+#: **midpoint of a relationship-path gap** rather than at a component edge or on a
+#: Samaritan line — and the number did not move. Thirteen readings now sit on 5000
+#: across two styles and thirteen seeds picked three different ways. That is more
+#: evidence the ceiling is global rather than a property of how a seed is found, and
+#: still not evidence of a rule about the number itself.
 GENI_EXPORT_CAP = 5000
 
 #: The step between reading this report and running an export.

@@ -8431,3 +8431,45 @@ caught it: the auto-flush tick declined to commit `reports/marker-labels.csv` wh
 census was mid-write, so the half file stayed in the working tree and the full re-run
 replaced it with a file byte-identical to what `1dd42c3` had committed. No restore was
 needed. The damage was real and its blast radius was one working tree.
+
+
+## 2026-08-17 — the first midpoint exports, and the family-tree page is the right one
+
+**Emma, definitively:** *"rather definitively this kind of thing
+https://www.geni.com/family-tree/index/6000000085113755501 is a better page to open up
+for them rather than the pages you opened."*
+
+So a seed batch opens as `/family-tree/index/<geni id>`, not `/people/x/<geni id>`. The
+profile page shows one person; the index shows the neighbourhood she has to work in to
+place the placeholder and run the export. The 50 I opened were profile pages. Recorded in
+`CLAUDE.md`, scoped to **seed** batches — the isolate batches are judging whether one
+person connects at all, and the saved-page workflow needs the profile page because the
+relationship panel and its `href`s live there.
+
+**Four exports integrated into `exports/midpoints/`**, a new directory on her call rather
+than a guess. All `Forest`, all **exactly 5000** people, seeded on placeholders she made
+at the midpoints of path gaps:
+
+| seed | who |
+| --- | --- |
+| `6000000227288930948` | `Wilchen /Tybekken/` |
+| `6000000227289663852` | `Øystein /father of Berta/` |
+| `6000000227289604840` | `Michel /Jude/` |
+| `6000000227289792822` | `Björn /father of Prinsessan/` |
+
+Corpus 244 → **248**, tracked and on-disk equal at 248.
+
+**I said these exceeded `GENI_EXPORT_CAP` and they do not.** `CLAUDE.md` says 4940 as of
+2026-08-15; the constant was raised to 5000 later that evening with nine readings recorded
+against it, and I read the prose instead of the code. `test_seeds` passes. The stale
+figure in `CLAUDE.md` is corrected, and the four new readings are added to the docstring —
+worth adding rather than redundant because **the seeds were chosen by a different method**
+from every earlier flat run, placeholders at a path midpoint rather than at a component
+edge, and the number did not move. Thirteen readings now sit on 5000 across two styles and
+thirteen seeds picked three different ways.
+
+**Two conventions I got wrong first and checked second.** The `.gitignore` zip lines are
+repo-relative paths to zips copied *into* the export directory — I first added
+`Downloads/...` lines, which ignore nothing, and reverted. And the zip belongs beside the
+GEDCOM: `exports/edges/` holds both, which is what keeps her signal working, since an
+unignored zip appearing in `git status` is how a download announces itself.

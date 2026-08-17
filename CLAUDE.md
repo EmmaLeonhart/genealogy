@@ -56,6 +56,23 @@ naming the offending prefix and record type if Geni ever adds a fifth — so it
 needs no remembering, and a change breaks the suite instead of quietly changing
 which profile an ID points at.
 
+### Open the FAMILY TREE page for an export seed, not the profile page
+
+**Emma, 2026-08-17, definitively:** *"rather definitively this kind of thing
+https://www.geni.com/family-tree/index/6000000085113755501 is a better page to open up
+for them rather than the pages you opened."*
+
+So a batch of export seeds is opened as
+`https://www.geni.com/family-tree/index/<geni id>`, **not**
+`https://www.geni.com/people/x/<geni id>`. The profile page shows one person; the
+family-tree index shows the neighbourhood around them, which is what she needs in
+front of her to create the placeholder and run the export.
+
+This applies to **seed batches** — the midpoint openings, the density and edge picks.
+It does not change the *isolate* batches, where the thing being judged is whether one
+person connects at all, nor the saved-page workflow below, which needs the profile
+page because that is where the relationship panel and its `href`s live.
+
 **Relationship paths: save the page, never the pasted text.** A Geni
 relationship path — the chain of people between two profiles, which Geni shows
 for any pair it can connect — is the only evidence in this repo that comes from
@@ -140,7 +157,7 @@ arithmetic**: a run of eleven identical values is evidence the number sits
 still, not evidence it steps by four on a schedule, and do not describe it as a
 cap Geni enforces.
 
-`genimerge.seeds.GENI_EXPORT_CAP` is **4940** as of 2026-08-15, meaning *largest
+`genimerge.seeds.GENI_EXPORT_CAP` is **5000** as of 2026-08-17, meaning *largest
 yet seen*; its docstring is the long form of this, and is where each reading is
 recorded — do not update this number without adding the reading there. It was 3860 when the
 paragraph above was written, and the sentence about the number sitting still
