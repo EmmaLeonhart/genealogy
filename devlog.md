@@ -7991,3 +7991,39 @@ at 92%.
 *"This file holds 2 relationship paths, not one… path 1 — steps 1–35, 35 of 35 held;
 path 2 — steps 36–57, 22 of 22 held"*, where it used to present 57 steps as one walk.
 242 of the 586 files say something equivalent.
+
+
+## 2026-08-17 — the two files her first agenda item runs on had no generator
+
+`reports/path-bridge-targets.csv` and `reports/path-midpoint-seeds.csv` are what
+*"find people that are in multiple bridges and are also not in"* our data is answered
+from, and **nothing in the repo could rebuild either**. They came out of one-off code
+in a session that ended. `scripts/build-trunk-batch.py` reads one of them, so the
+118-creation trunk batch was derived from a file no command could reproduce — and both
+were measured over 560 paths and a smaller tree.
+
+`scripts/build-bridge-targets.py` writes both from one `connectors.collect` pass, 2m22s.
+
+**Positions are per chain**, which the chain split makes possible: measuring position
+within a *file* puts the head of the second path at the middle of the first, and the
+middle is exactly what this ranks on, so a seam would manufacture the best candidate
+on the page.
+
+**Her question needs two conditions and the old file carried one.** `held` and
+`bridges_through` are new columns. Emma is row 1 — **818 chains**, because *"You"*
+opens every path — and now reads `held: yes`, `bridges_through: 0`, the opposite of a
+bridge person. Of 10,287 people named by a path, **3,337 are held and 6,950 are not**.
+
+`held` is deliberately not a creation filter: somebody we hold with no Wikidata item is
+precisely who the trunk batch should create. It filters *seeding an export*.
+
+**The midpointness formula is stated, not recovered.** It is the mean of
+`min(position, 1 - position)` over the chains naming the person, peaking at 0.5 in the
+exact middle. Against the three rows sampled from the lost file: `Alice de Lucy` 0.423
+→ 0.422, `Joan Dacre` 0.412 → 0.407, `Ingeborg Bengtsdotter Sparre över blad` 0.373 →
+0.443. Two near-matches recommend the formula; the third moved in the direction the
+chain split predicts. That is agreement where the inputs agree, not a reproduction, and
+it is written down that way in the script.
+
+Top of the ranking: Ragnhild Sahlin Wendt `6000000003002538177`, 11 paths,
+midpointness 0.474.
