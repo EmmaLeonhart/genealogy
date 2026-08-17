@@ -68,6 +68,21 @@ So a batch of export seeds is opened as
 family-tree index shows the neighbourhood around them, which is what she needs in
 front of her to create the placeholder and run the export.
 
+**`reports/midpoint-seeds-to-open.tsv` is overwritten every batch, and that is the
+intended behaviour.** Emma, 2026-08-17: *"don't make it accumulate overwriting is the
+intended functionality lol."* It is the handoff for the batch being opened now, not a
+history of what has been opened.
+
+**So there is no already-opened filter.** Each batch is simply the top of the current
+ranking. She has said this twice — 2026-08-16, on a filter built for the same reason:
+*"I don't know what the already open filter is for… I feel like it might be
+overcomplicating things"*, and its bug had cut a candidate list from 778 to 7. Re-opening
+a tab she has already dealt with costs her one glance; a filter costs correctness.
+
+Keeping the picks on **disjoint chains** is a different thing and stays: without it fifty
+tabs can all be standing on the same three chains, so they buy three exports rather than
+fifty.
+
 This applies to **seed batches** — the midpoint openings, the density and edge picks.
 It does not change the *isolate* batches, where the thing being judged is whether one
 person connects at all, nor the saved-page workflow below, which needs the profile
