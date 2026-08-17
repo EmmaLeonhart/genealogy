@@ -148,15 +148,41 @@ whole batch get filed into `exports/` together.
 
 ---
 
-## Two readings of the dictation I am not certain of
+## Numbered decisions
 
-Flagged rather than guessed at, per `CLAUDE.md` § *Edge cases go to her*:
+Kept numbered so they can be referred to later without re-reading the whole file.
 
-- **Tier 4's given name.** *"you add the father to them as their first names and
-  in their surname is whatever the surname of their child is"* — I have read the
-  given name as `NN`, on the grounds that tier 4 is defined by having no
-  patronymic and therefore no evidence of a given name. If you meant the father
-  takes the **child's** given name, say so and I will change it.
-- **Tier 1's given name form.** `Olsen` → `Ole` is a reconstruction, and the
-  Norwegian/Swedish forms are not always one-to-one. I will use the plain
-  nominative and not try to be clever about it.
+### Decision 1 — tier 4's given name is `NN`
+
+**Emma, 2026-08-17, asked directly.** A tier 4 father is `NN` plus the child's
+**birth surname**: child `Kari /Bergstrom/` gives father `NN /Bergstrom/`.
+
+Tier 4 is *defined* by having no patronymic, so nothing attests his given name,
+and `NN` is already this project's marker for a name genuinely not known — see
+`CLAUDE.md` § *`NN` is PRESERVED in `mul`*. It also keeps tier 4 and tier 5
+consistent, since tier 5 gives `NN /father of Kari/`.
+
+The father does **not** inherit the child's given name.
+
+### Decision 2 — the patronymic resolves to the proper nominative
+
+**Emma, 2026-08-17, choosing against the option that matched her own past seeds.**
+Strip the patronymic ending and write the **real given name it came from**, not
+the bare stem:
+
+| child | father |
+| --- | --- |
+| `Anders Olsen` | `Ole` |
+| `Karen Olsdatter` | `Ole` |
+| `Anna Andersdotter` | `Anders` |
+| `Carl Karlsson` | `Karl` |
+| `Hugh ben Lewis` | `Lewis` |
+
+So `Ols father of Karen` — an existing seed of hers — would be made as `Ole`
+today. Her earlier seeds are not the standard; this is.
+
+**Where the ending admits several nominatives, take the commonest and do not
+agonise.** `Ols-` is Ole, Ola or Olav in Norwegian; write `Ole`. This is a
+reconstruction and is allowed to be one — the patronymic is the attestation that
+the father existed and was called something of that stem, which is what makes
+tiers 1 and 2 worth more than an `NN`.
