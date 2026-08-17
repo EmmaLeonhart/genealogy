@@ -891,6 +891,86 @@ ID cannot be reached by that seed. Not a defect.
 **Waiting on 1 September**, which is her own instruction of 2026-08-14 — not an
 external blocker.
 
+## LABELS, IN HER ORDER — one step per language, every individual at once
+
+**Emma, 2026-08-17**, after being shown the 364 structural placeholders with no label:
+*"Put an item at the end of the queue that finds these kinds of ones where the label
+has this stuff already in it, and normalizes them into proper things based on our
+rules, and then tasks at the end that in order: makes en labels for every individual
+(so Japanese gets transcribed), and then mul gets made for every individual (almost
+always derived from en), and then the Japanese gets made for all languages, and then
+the Chinese gets made for all languages, and then after we continue with the other
+universal languages. Note that these are all distinct items for the language so all of
+the en labels are done at the same time as one step, and then mul, then ja, then zh,
+then others."*
+
+**This fixes the ordering `emission-spec.md` had.** That file says `mul` comes from the
+Latin name and `en` comes from `mul`. Her order is the other way round and it is the
+one that works for a person with no Latin name at all: **`en` is made first, by
+transcribing**, and `mul` is then *"almost always derived from en"*. That is what gives
+the 806 Han-only people a `mul` — there was no route to one before.
+
+**Each language is one step over the whole population, not a per-person loop.** Her
+words. So the batches are `en` for everybody, then `mul` for everybody, then `ja`, then
+`zh`, then the rest — never a person walked once and labelled in seven languages.
+
+- **Normalise the labels that already carry a marker inside them.** Not `NN` alone —
+  labels that *contain* placeholder vocabulary and read as a description rather than a
+  name: `NN wife of Aun`, `Unknown Wife`, `N.N. Andersdatter Skeel`,
+  `Maka till Brynjolf Brandsson` (Swedish for *spouse of*), `Wife of רבי משה`,
+  `陳母` (*Chen's mother*), `nn Pedersdatter`, `ukj.`. These are what the marker rules
+  are for and they are currently passing straight through as names. Find every one —
+  **in the corpus and in the local Wikidata store, both sides named separately** — and
+  put them through the existing rules: the marker to `mul`, a real description to the
+  local languages, the surname kept where it is real. `scripts/labels.py` and
+  `is_placeholder_label` in `scripts/walk-structural-merge.py` are the two places that
+  already know part of this vocabulary and should end up as one.
+
+- **`en` for every individual, as one step.** Includes the transcription she names:
+  a Han-only or Cyrillic-only or Hebrew-only person gets an `en` made for them.
+  **CJK → English is agentic, never programmatic** — *"from CJK to English do not
+  remotely try to do any kind of programmatic transliteration because they all suck.
+  But AI almost always knows Japanese to Romaji."* The culture question comes first:
+  陳 is *Chen*, *Chin* or *Jin*, and *"the tree settles it, via neighbours and which
+  exports they came from"*, never the name. 806 Han-only among the structural
+  placeholders alone; the corpus figure is larger and is what this step must count.
+
+- **`mul` for every individual, derived from `en`.** *"Almost always derived from en"* —
+  so the exceptions are the thing to find and report, not to guess at.
+
+- **`ja` for every individual.** Han-only people already have it, as the kanji written:
+  *"If the name is solely in kanji, then the Chinese and Japanese labels are both the
+  same for it."* The work is everybody else.
+
+- **`zh` for every individual.** Same string as `ja` for a Han name; the 291 people
+  whose name carries **kana** are the ones needing a real Chinese form.
+
+- **Then the other universal languages** — `hi` · `ar` · `ru` · `el` from her earlier
+  list, each its own step over the whole population.
+
+### First, the bug underneath all of it — 646 labels deleted by an ordinal sign
+
+Found 2026-08-17 while answering *"what the FUCK are these 364 placeholders"*.
+
+`scripts_of` in `scripts/build-display-names.py` classifies each character by the first
+word of its Unicode name. `º` is `MASCULINE ORDINAL INDICATOR` and `'º'.isalpha()` is
+**True** in Python, so it becomes a script called `Masculine`. `derive-labels.py` then
+reads `scripts = Latin+Masculine`, calls the name **mixed-script**, and refuses it as
+an `en` or `mul` label.
+
+**646 people lose their Latin label to this**, every one an Iberian noble whose title
+carries an ordinal: `Afonso de Bragança 1º conde de Faro e 2º de Odemira`,
+`Maria da Cunha 3ª senhora de Basto`, `Mª Manuela Fernández de Córdoba`,
+`João Soares de Sousa 3.º Capitão donatário da ilha de Santa Maria`. The same fault
+hits `Feminine` (86 records), `Modifier` (105), `Superscript`, `Micro` and `Unnamed`
+(12) — **943 NAME records** carry one of these pseudo-scripts.
+
+**A character that is not a writing system must contribute no script**, rather than
+being called Latin: `º` says nothing about what script a name is in. Then
+`1º senhor de Baião` is Latin and the label survives. Fixing this means re-running
+`build-display-names.py` → `derive-labels.py` → every label emitter, which is the whole
+cache chain `CLAUDE.md` warns about.
+
 ## Always last — pinned to the tail
 
 A. **Ensure the three crons are running** — work-loop `3 * * * *`, auto-flush
