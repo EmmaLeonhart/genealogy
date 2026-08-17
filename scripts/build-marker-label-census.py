@@ -502,8 +502,25 @@ def wikidata_side(writer) -> Counter:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--skip-wikidata", action="store_true",
-                    help="Geni side only; the store scan is the slow half")
+                    help="Geni side only; refuses to overwrite a two-store census")
+    ap.add_argument("--force", action="store_true",
+                    help="allow --skip-wikidata to replace a two-store census")
     args = ap.parse_args()
+
+    # **`--skip-wikidata` silently truncated a complete census once.** It opens the
+    # same output file and writes only half of it, so a run meant to save fifteen
+    # minutes deleted 37,914 Wikidata rows and left a file that still looked whole.
+    # The flag is for iterating on the Geni detector; it is not a cheaper version of
+    # the real thing, and nothing downstream can tell the difference.
+    if args.skip_wikidata and OUT.exists() and not args.force:
+        with OUT.open(encoding="utf-8", newline="") as fh:
+            has_wikidata = any(row["store"] == "wikidata"
+                               for row in csv.DictReader(fh))
+        if has_wikidata:
+            print(f"{OUT.name} holds Wikidata rows and --skip-wikidata would drop "
+                  "them. Run without the flag, or pass --force if that is meant.",
+                  file=sys.stderr)
+            return 1
 
     fields = ["store", "geni_id", "qid", "language", "label", "kind", "marker",
               "vocabulary", "position", "remainder"]

@@ -8411,3 +8411,17 @@ placeholder batch are markers sitting in `en`.
 
 Every one is genuine, so the test found real defects rather than objecting to the change.
 The structural walk is re-running to clear them.
+
+**The walk cleared all seven** — `test_edit_emitters` 11 passed. Placeholders carrying a
+`mul` label 11,139 → **11,142**, carrying nothing 315 → **312**, which is the three whose
+only `en` label was `Ukendt` or `Okänd fru` and who now correctly have none.
+
+**And I broke something with a flag while doing it.** `--skip-wikidata` writes the Geni
+half to the *same* output file, so running it to iterate quickly on the detector silently
+deleted the 37,914 Wikidata rows and left a census that still looked complete. Nothing
+downstream can tell a half census from a whole one, and the count it feeds would simply
+have come out smaller.
+
+The flag now refuses to overwrite a two-store census unless `--force` is passed. That is
+the guard rather than a note to remember, because the failure was invisible — a
+fifteen-minute shortcut that quietly halved the input to a 56,000-edit batch.
