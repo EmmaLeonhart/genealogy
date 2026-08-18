@@ -9013,3 +9013,37 @@ with real marker rows and assert the slots come back empty.
 It also pins the other half of the rule — `NN Hildesheim` reads as a marker *label*
 while `Hildesheim` stays a real surname, and `. Weill`, `Nechama (?) Heller` and
 `? binti Pg Seri Lela` are names rather than markers. Words yes, punctuation no.
+
+## 2026-08-18 — the synoptic tree, rebuilt on the name-development branch
+
+`PYTHONPATH=src python -m genimerge merge` over all 362 exports in `exports/`.
+
+    896,828 ... out/merged.ged: 396,346 FAM, 897,828 INDI, 50,972 NOTE, 34,474 SUBM
+    1,368 conflicts -> out/merge-report.md
+    3 separate trees, not one: 897,483, 344, 1 people
+
+1.22 GB, gitignored. The previous build on `main` was 712 MB on 2026-08-17, so the
+chain-seed campaign has added a great deal since.
+
+**The three components are not a defect and the tool says so itself:** *"components
+do not conflict, they just never meet. Each one needs its own export seed to grow."*
+One is a single person. Growing them needs exports, which is the other session's job
+and does not happen here — so on this branch that is a finding, not a task.
+
+### The red test attached to it
+
+`tests/test_merge_real_exports.py::test_the_committed_merge_report_still_describes_these_exports`
+asserts `reports/merge.md` byte-equals a fresh merge of `exports/`, and the queue
+recorded it as **red** — the chain-seed campaign added five exports every forty
+minutes, so the committed report went stale within a round of any regeneration. The
+queue was explicit that the test is correct and *"is not to be weakened, skipped or
+marked xfail"*.
+
+Nothing was weakened. The merge regenerated `reports/merge.md` and
+`out/merge-report.md`, both committed. The test is re-run separately because it
+re-does the whole merge and takes far longer than a normal test; its result is
+reported rather than assumed.
+
+**It will go stale again the moment the export session lands another round**, and
+that is the test doing its job rather than a problem to solve here. On this branch
+the corpus does not move, so it stays green here.

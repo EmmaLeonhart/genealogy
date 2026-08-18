@@ -1405,26 +1405,6 @@ the `P735` *given name* statement, per `name modelling.txt`, and that is all it 
 scanned, 19,023 carrying an ordinal — 8,093 unambiguous Roman, 5,892 single-letter,
 5,038 Arabic. The Samaritan subset is the part this item needs.
 
-## Build the synoptic tree
-
-- Re-merge the whole corpus into `out/merged.ged` once the exports above are all in.
-  This is the first point in the programme where a fresh merge is actually *needed*
-  rather than convenient — presence questions are answered from `exports/` directly
-  (`scripts/find-chain-gaps.py`), but the structural walk below needs parents.
-- **Keep the pre-merge tree.** `reports/descendants-backtest-2026-08-07.md` exists only
-  because `out/merged-134.ged` was kept before a batch landed.
-
-- **Regenerate and commit `reports/merge.md` in the same step.**
-  `tests/test_merge_real_exports.py::test_the_committed_merge_report_still_describes_these_exports`
-  asserts that file byte-equals a fresh merge of `exports/`, and it is **red right now**:
-  the chain-seed campaign adds five exports roughly every forty minutes, so the committed
-  report goes stale within one round of any regeneration. Measured 2026-08-18 on the full
-  suite — **1 failed, 3611 passed in 77 minutes**, and that one failure is this. The test
-  is correct and is not to be weakened, skipped or marked xfail; it is doing exactly its
-  job, which is to say the committed artifact no longer describes the corpus. Re-running
-  the merge now would turn it green until the next round and cost a 5-minute, 4.5 GB pass
-  each time. It goes green and stays green here, once the corpus stops moving.
-
 ## What was here, and why it is gone — Emma, 2026-08-18
 
 Four sections stood between the synoptic tree and the end of this file:
