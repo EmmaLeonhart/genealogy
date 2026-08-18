@@ -18,6 +18,7 @@ index is updated rather than rebuilt.
 
 from __future__ import annotations
 
+import os
 import gzip
 import json
 import sys
@@ -32,9 +33,7 @@ from genimerge import wikidata as _wd, wikistore  # noqa: E402
 STORE = REPO_ROOT / "wikidata" / "items"
 INDEX = REPO_ROOT / "out" / "wikidata" / "store-index.sqlite3"
 
-USER_AGENT = _wd._agent(
-    "geni-merge/0.1", "https://github.com/EmmaLeonhart/geni; single-item import"
-)
+USER_AGENT = os.environ.get("BOT_CONTACT", "").strip()
 
 
 def fetch(qid: str) -> dict:

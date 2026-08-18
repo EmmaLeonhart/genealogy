@@ -35,12 +35,7 @@ ENDPOINT = "https://query.wikidata.org/sparql"
 
 #: Descriptive, with contact and purpose, per Wikidata's user-agent policy and
 #: `todo.md` 8a: "Wikidata is hostile - design for 429s from line one."
-_CONTACT = os.environ.get("BOT_CONTACT", "").strip()
-USER_AGENT = (
-    "geni-merge/0.1 (https://github.com/EmmaLeonhart/geni; python-urllib label fetch"
-    + (f"; {_CONTACT}" if _CONTACT else "")
-    + ")"
-)
+USER_AGENT = os.environ.get("BOT_CONTACT", "").strip()
 
 #: One query per run. VALUES takes thousands of QIDs comfortably.
 QUERY = """SELECT ?item ?itemLabel ?itemDescription WHERE {

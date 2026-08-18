@@ -1,51 +1,33 @@
-"""Who the edit bot says it is.
+"""The User-Agent, which is an email address and nothing else.
 
-Emma, 2026-08-18: *"User agent for my ci/cd bot should have email Email Address B."* Then: *"Ideally, the Benthic one should be a secret in the
-repo."* And on what to do when it is not available: *"No email on the user agent is fine!
-Although Benthic thoughts are best."*
+Emma, 2026-08-18: *"This GitHub repo shouldn't be linked into the user agent. Really,
+none of this should be in the user agent. You're leaking a massive amount of information
+here. It's just an email address. That is the secret."* And: *"you never, ever, in any
+user agent or anything, link the repository."*
 
-So the address is **not in this file**. It comes from the `BOT_CONTACT` environment
-variable, set from a GitHub Actions secret of the same name, alongside the `USERNAME`,
-`BOT_NAME` and `BOT_PASSWORD` secrets the workflow already uses. Without it the agent
-still names the tool and links the source and simply carries no contact, which she said is
-acceptable.
+So the agent carries **no repository URL, no tool name and no description of what the
+project does**. Every one of those told a reader where the code lives and what it is for,
+which is the leak. The address comes from the ``BOT_CONTACT`` secret and is the only
+content.
 
-**What must never come back is `Email Address T`.** That address belongs to
-order.life, not here — her words, *"order.life should use Email Address T because
-it is order.life; the geni one is supposed to use the Benthic one"* — and
-`tests/test_bot_identity.py` asserts no agent in this repo carries it.
-
-WHAT THIS REPLACED
-
-`.github/workflows/wikidata-edits.yml` runs two scripts and each carried its own
-hand-written agent, neither naming a contact at all:
-
-    wikidata_lockout.py    "genimerge-bot/0.1 (wikidata lockout check)"
-    wikidata-edit-run.py   "genimerge-bot/0.1 (https://github.com/EmmaLeonhart/geni)"
-
-An anonymous agent that *writes* is the case Wikimedia's policy is written for and the one
-it throttles hardest, and the two strings had already drifted apart from each other.
-
-WHY A MODULE BESIDE THEM RATHER THAN A CONSTANT IN `genimerge`
-
-`wikidata-edit-run.py` already imports `wikidata_lockout` as a sibling, and Python puts a
-script's own directory on the path, so this import works however the step is invoked. The
-workflow does set `PYTHONPATH: src` on the batch step — an earlier version of this
-docstring claimed otherwise and was wrong — but the lockout step runs before it and does
-not, so a `genimerge` import would work in one of the two places it is needed.
+There is one address for this whole repo. It is not in the source; version history was
+not rewritten, which she said is unnecessary.
 """
 
 from __future__ import annotations
 
 import os
 
-#: The contact, from the `BOT_CONTACT` secret. Empty when unset, and that is a supported
-#: state rather than an error.
-BOT_CONTACT = os.environ.get("BOT_CONTACT", "").strip()
 
-#: Identifies the tool and links the source always; adds the contact when there is one.
-BOT_USER_AGENT = (
-    "genimerge-bot/0.1 (https://github.com/EmmaLeonhart/geni"
-    + (f"; {BOT_CONTACT}" if BOT_CONTACT else "")
-    + ")"
-)
+def agent() -> str:
+    """The contact address, or empty when the secret is not set.
+
+    Empty is a supported state -- *"no email on the user agent is fine"* -- and it is
+    still better than an agent that advertises the repository.
+    """
+    return os.environ.get("BOT_CONTACT", "").strip()
+
+
+#: Evaluated at import, which is what every caller uses.
+BOT_CONTACT = agent()
+BOT_USER_AGENT = BOT_CONTACT

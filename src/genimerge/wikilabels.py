@@ -33,10 +33,7 @@ from genimerge import wikidata as _wd
 
 ENDPOINT = "https://query.wikidata.org/sparql"
 
-#: Same contact, same source: the ``BOT_CONTACT`` secret, empty when unset.
-USER_AGENT = _wd._agent(
-    "geni-merge/0.1", "https://github.com/EmmaLeonhart/geni; python-urllib label lookup"
-)
+USER_AGENT = _wd.USER_AGENT
 
 #: `wd:` resolves properties as entities too, so P-ids and Q-ids go in one query.
 QUERY = """SELECT ?item ?itemLabel WHERE {

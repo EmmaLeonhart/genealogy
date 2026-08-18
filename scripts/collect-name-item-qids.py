@@ -54,12 +54,7 @@ sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 OUT = REPO / "reports" / "name-item-qids.tsv"
 ENDPOINT = "https://query.wikidata.org/sparql"
-_CONTACT = os.environ.get("BOT_CONTACT", "").strip()
-AGENT = (
-    "genimerge/1.0 (https://github.com/EmmaLeonhart/geni; name-item enumeration"
-    + (f"; {_CONTACT}" if _CONTACT else "")
-    + ")"
-)
+AGENT = os.environ.get("BOT_CONTACT", "").strip()
 #: The six name classes, documented in `CLAUDE.md` § *Wikidata properties*.
 CLASSES = {
     "Q110874": "patronymic",
