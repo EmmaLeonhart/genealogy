@@ -1426,6 +1426,41 @@ branch is merged back only once that session is done — so read the deletion as
 here*, not as *cancelled*. Whoever handles that merge should take `main`'s side on
 these four sections unless Emma has said otherwise by then.
 
+## The CI/CD bot's User-Agent — Emma, 2026-08-18
+
+> *"User agent for my ci/cd bot should have email benthicthoughts@gmail.com."*
+> *"Idk what email it has but I bet it uses emma@topazcomputing.com which is wrong."*
+
+**It had no email at all**, which is worse than a wrong one: Wikimedia's policy asks for a
+contact and throttles hardest on an anonymous agent that *writes*.
+`.github/workflows/wikidata-edits.yml` runs two scripts and each carried its own
+hand-written string, already drifted apart from the other:
+
+    wikidata_lockout.py    "genimerge-bot/0.1 (wikidata lockout check)"
+    wikidata-edit-run.py   "genimerge-bot/0.1 (https://github.com/EmmaLeonhart/geni)"
+
+`emma@topazcomputing.com` is real but sits on `genimerge.wikilabels`'s SPARQL lookup, a
+read-only fetcher the workflow never invokes — her guess named a real string in the wrong
+place.
+
+**DONE.** `scripts/bot_identity.py` holds `BOT_USER_AGENT` and `BOT_CONTACT`; both scripts
+import it. It is a standalone module rather than a constant in `genimerge.wikidata`
+because neither bot script imports the package — the workflow runs them as
+`python scripts/...` with no `PYTHONPATH`, and adding a path hack to the one code path
+that must not break on 1 September buys nothing. `wikidata-edit-run.py` already imports
+`wikidata_lockout` as a sibling, so the pattern is proven in CI.
+
+`tests/test_bot_identity.py`, 5 tests, pins the rule rather than the string: the contact is
+Emma's bot address, the agent names the tool and links the source, both entry points use
+the one constant, and **no bot script hand-writes an agent again**.
+
+**Deliberately NOT changed, and pinned by a test so it does not drift:** the read-only
+agents. `genimerge.wikidata.USER_AGENT` keeps `contact@emmaleonhart.com` (hers, 2026-08-07,
+for the bulk download) and `genimerge.wikilabels.USER_AGENT` keeps
+`emma@topazcomputing.com`. She specified the CI/CD bot and those are not it. **If the bot
+address should be used everywhere, that is one word from her** — but widening it by
+inference is how a wrong address gets believed.
+
 ## The living-relatives analysis — Emma, 2026-08-18
 
 ### THE ACTUAL GOAL, in her words, and it is not "are these people relatives"

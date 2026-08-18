@@ -27,6 +27,7 @@ import urllib.parse
 import urllib.request
 
 import wikidata_lockout
+from bot_identity import BOT_USER_AGENT
 from http.cookiejar import CookieJar
 from pathlib import Path
 
@@ -55,7 +56,7 @@ class Session:
             urllib.request.HTTPCookieProcessor(CookieJar())
         )
         self.opener.addheaders = [
-            ("User-Agent", "genimerge-bot/0.1 (https://github.com/EmmaLeonhart/geni)")
+            ("User-Agent", BOT_USER_AGENT)
         ]
 
     def _call(self, **params) -> dict:

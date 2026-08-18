@@ -9109,3 +9109,47 @@ The mother's side. Emma's own framing is that the surname is generic, so a surna
 census followed by a birth cohort — the method that worked above — returns noise
 there. It needs given names and affiliations to carry the weight. Ten Scholar profiles
 are recorded in `queue.md` against it.
+
+## 2026-08-18 — the CI/CD bot had no contact at all
+
+Emma: *"User agent for my ci/cd bot should have email benthicthoughts@gmail.com."*
+Then, guessing: *"I bet it uses emma@topazcomputing.com which is wrong."*
+
+**It used no email.** Both scripts `.github/workflows/wikidata-edits.yml` runs —
+`wikidata_lockout.py` and `wikidata-edit-run.py` — carried their own hand-written
+agent, and neither named a contact:
+
+    "genimerge-bot/0.1 (wikidata lockout check)"
+    "genimerge-bot/0.1 (https://github.com/EmmaLeonhart/geni)"
+
+An anonymous agent that *writes* is precisely what Wikimedia's User-Agent policy is
+written for, and what it throttles hardest. Her guess was a worse outcome than the
+truth, and she was right that something was wrong.
+
+`emma@topazcomputing.com` does exist here — on `genimerge.wikilabels`'s SPARQL
+lookup, a read-only fetcher the workflow never invokes. A real string in the wrong
+place.
+
+### One definition, and where it had to live
+
+`scripts/bot_identity.py`. Not a constant in `genimerge.wikidata`, because **neither
+bot script imports the package**: the workflow runs them as `python scripts/...` from
+the repo root with no `PYTHONPATH`, and `wikidata-edit-run.py` already imports
+`wikidata_lockout` as a sibling module. Reaching into `src/` would add a path hack to
+the one code path that must not break at 03:00 on 1 September.
+
+Same shape as this morning's marker-guard fix in the other direction: two callers,
+two hand-written copies, already drifted. The fix is one definition both can reach —
+and "can reach" did the deciding here, not tidiness.
+
+### The scope is pinned by a test, not by intention
+
+`tests/test_bot_identity.py` asserts the read-only agents **keep their own
+addresses** — `contact@emmaleonhart.com` and `emma@topazcomputing.com` — and that the
+bot contact does *not* appear in either. She specified the CI/CD bot. If the bot
+address should be everywhere that is one word from her and the test changes with it;
+it should not drift there while nobody is looking, which is how a wrong address comes
+to be believed in the first place.
+
+It also asserts no bot script hand-writes an agent string again, which is the defect
+rather than the symptom.

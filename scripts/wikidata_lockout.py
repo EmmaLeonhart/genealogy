@@ -29,6 +29,8 @@ closed is a skipped run; the cost of failing open is editing through a stop orde
 
 from __future__ import annotations
 
+from bot_identity import BOT_USER_AGENT
+
 import datetime
 import io
 import json
@@ -47,7 +49,7 @@ def editing_allowed(url: str = STATE_URL) -> tuple[bool, str]:
     """(allowed, detail). Any failure is LOCKED — see the module docstring."""
     try:
         req = urllib.request.Request(
-            url, headers={"User-Agent": "genimerge-bot/0.1 (wikidata lockout check)"}
+            url, headers={"User-Agent": BOT_USER_AGENT}
         )
         with urllib.request.urlopen(req, timeout=TIMEOUT) as fh:
             state = json.loads(fh.read().decode("utf-8"))
