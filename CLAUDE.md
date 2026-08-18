@@ -1574,6 +1574,25 @@ gets re-implemented badly.
   double-encodes non-ASCII. Use the editing tools, or Python with an explicit
   `encoding="utf-8"`.
 
+## ⛔ WIKIDATA LOCKOUT — no Wikidata editing until 2026-09-18 (Emma, 2026-08-18)
+
+Emma: *"I want a gate to be set up that there will be no wikidata editing for a month."*
+Locked through **2026-09-17**; resumes **2026-09-18**. It applies here: this repo has its
+own Wikidata editor with its own bot-password secrets, and `wikidata-edits.yml`'s
+`START_DATE` of **2026-09-01 falls inside the lockout**.
+
+- **The state file is NOT in this repo.** There is exactly one, in the public
+  `shintowiki-scripts` repo: `shinto_miraheze/wikidata_editing_lockout.state`. Read it
+  with `python scripts/wikidata_lockout.py` (exit 0 = allowed, 1 = locked).
+- **To lift or extend, edit that ONE file.** Never by editing this repo's script or
+  workflow. The mechanism this replaced was a freeze date pasted into two workflows, and
+  one of them missed a freeze — do not recreate that by copying the date here.
+- **Enforced twice:** `scripts/wikidata-edit-run.py` checks it on the `--live` path (a
+  dry run is unaffected and still useful), and `wikidata-edits.yml` has a guard step that
+  both credentialed steps depend on.
+- **Fails closed.** No network, a 404, unparseable JSON — all report LOCKED. A lockout
+  you cannot read is not an absent lockout.
+
 ## Long command series run in strict order
 When the user gives a long series of commands, treat it as a long series of commands to be
 executed in relatively STRICT ORDER, one after another, EVEN IF the order seems not to make

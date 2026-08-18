@@ -8673,3 +8673,36 @@ like a slot that was never clicked: `Ole /father of Erich/` needed a second atte
 and the tell was the `Add father` box still sitting there after the reload. Re-checking
 the tree after every save is what catches it; one retry is fine, a second would be the
 "second route to the same person" that `docs/export-seed-rules.md` forbids.
+
+## 2026-08-18 — the Wikidata lockout reaches this repo too
+
+Emma, in the funding-and-networking session: *"I want a gate to be set up that there
+will be no wikidata editing for a month."* Locked through **2026-09-17**, resuming
+**2026-09-18**.
+
+That gate was built around the shintowiki bots, and this repo would have been the
+hole in it. `scripts/wikidata-edit-run.py` is a **separate Wikidata editor with its
+own bot-password secrets** (`USERNAME` / `BOT_NAME` / `BOT_PASSWORD`), and
+`wikidata-edits.yml` carries `START_DATE: 2026-09-01` — **inside the lockout month**.
+A dispatch on or after 1 September would have edited straight through it.
+
+Now gated in two places:
+
+- `scripts/wikidata_lockout.py` — reads the **one** state file, which lives in the
+  public `shintowiki-scripts` repo at `shinto_miraheze/wikidata_editing_lockout.state`,
+  over plain HTTPS. Called by `wikidata-edit-run.py` on the **live** path only, so a
+  dry run stays useful while locked.
+- A `Wikidata lockout guard` step in `wikidata-edits.yml`; both credentialed steps
+  now also require `steps.lockout.outputs.open == 'true'`.
+
+**The state file is deliberately not copied into this repo.** The mechanism this
+replaces was a freeze date pasted into two workflow files, and one of them missed a
+freeze; a copy here would be that same mistake spread across two repos. To lift or
+extend, edit that one file.
+
+**Fails closed** — no network, a 404 or bad JSON all report LOCKED. A lockout you
+cannot read is not an absent lockout.
+
+No trigger was added and no schedule restored: this repo is private and Actions
+minutes are billable. `tests/test_repo_invariants.py` and `tests/test_cli_wikidata.py`
+pass (25 tests). Verified by running the live path — it bails before login.

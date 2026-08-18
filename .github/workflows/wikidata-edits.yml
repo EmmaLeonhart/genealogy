@@ -67,8 +67,25 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Check the secrets are present
+      # THE WIKIDATA LOCKOUT (Emma, 2026-08-18: no Wikidata editing for a month).
+      # The state file is the single one in the public shintowiki-scripts repo, read
+      # over HTTPS — deliberately not copied here, because a freeze duplicated per
+      # repo is a freeze one repo can miss. FAILS CLOSED: unreadable == locked.
+      # scripts/wikidata-edit-run.py checks it too, on the live path, so a local run
+      # is covered. Note START_DATE above (2026-09-01) falls inside this lockout.
+      - name: Wikidata lockout guard
+        id: lockout
         if: steps.gate.outputs.go == 'true'
+        run: |
+          if python scripts/wikidata_lockout.py; then
+            echo "open=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "open=false" >> "$GITHUB_OUTPUT"
+            echo "::notice title=Wikidata lockout::LOCKED — no edits will be sent."
+          fi
+
+      - name: Check the secrets are present
+        if: steps.gate.outputs.go == 'true' && steps.lockout.outputs.open == 'true'
         env:
           USER_SECRET: ${{ secrets.USERNAME }}
           BOT_SECRET: ${{ secrets.BOT_NAME }}
@@ -82,7 +99,7 @@ jobs:
           echo "all three secrets present"
 
       - name: Run the batch
-        if: steps.gate.outputs.go == 'true'
+        if: steps.gate.outputs.go == 'true' && steps.lockout.outputs.open == 'true'
         env:
           USERNAME: ${{ secrets.USERNAME }}
           BOT_NAME: ${{ secrets.BOT_NAME }}

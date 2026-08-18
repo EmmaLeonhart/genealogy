@@ -25,6 +25,8 @@ import os
 import sys
 import urllib.parse
 import urllib.request
+
+import wikidata_lockout
 from http.cookiejar import CookieJar
 from pathlib import Path
 
@@ -120,6 +122,21 @@ def main() -> int:
             print("  " + json.dumps(e, ensure_ascii=False)[:300])
         print(f"\n{min(limit, len(edits))} would be attempted. "
               f"Re-run with --live to execute.")
+        return 0
+
+    # THE WIKIDATA LOCKOUT. Emma, 2026-08-18: "I want a gate to be set up that
+    # there will be no wikidata editing for a month." Checked only on the LIVE
+    # path — a dry run sends nothing, so it stays useful while locked.
+    #
+    # The state file is NOT in this repo; it is the single one in the public
+    # shintowiki-scripts repo, read over HTTPS. See scripts/wikidata_lockout.py
+    # for why it is not copied here. FAILS CLOSED: unreadable == locked.
+    allowed, why = wikidata_lockout.editing_allowed()
+    if not allowed:
+        print("")
+        print(f"WIKIDATA LOCKOUT — no live run. {why}")
+        print("Lift or extend it in shintowiki-scripts/shinto_miraheze/"
+              "wikidata_editing_lockout.state — not here.")
         return 0
 
     if rel not in REVIEWED_BATCHES:
