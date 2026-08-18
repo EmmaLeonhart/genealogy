@@ -9041,8 +9041,14 @@ marked xfail"*.
 
 Nothing was weakened. The merge regenerated `reports/merge.md` and
 `out/merge-report.md`, both committed. The test is re-run separately because it
-re-does the whole merge and takes far longer than a normal test; its result is
-reported rather than assumed.
+re-does the whole merge and takes far longer than a normal test.
+
+**It passes: `1 passed in 531.91s`.** The queue's red test is green, by regenerating
+the artifact it guards rather than by touching the test. Two earlier attempts to run
+it were killed before finishing, and in between I had only an argument for why it
+should pass — that the CLI writes `reports/merge.md` through the identical
+`render_report(report, detail=False, doc=doc)` call the test compares against. That
+argument was correct and it was still not a run.
 
 **It will go stale again the moment the export session lands another round**, and
 that is the test doing its job rather than a problem to solve here. On this branch
