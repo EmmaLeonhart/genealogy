@@ -1,31 +1,34 @@
-"""Every person in the corpus recorded with a single name and nothing else.
+"""Every person in the corpus Geni records as having no surname at all.
 
-**Emma's rule, 2026-08-18:** *"if it repeats, it's a name. If it repeats over 10 times, I
-think that was our actual criterion. […] Mononyms: it depends on whether somebody is
-mononymous. Again, it's like they'll get a first name. People with mononyms get a first
-name if it's a repeated name."*
+**Emma's definition, 2026-08-18: mononyms are `Name /./`.** Geni writes an explicit
+full stop in the GEDCOM surname slot to mean *this person has no surname*, which is a
+positive statement and not the same as an empty slot. **10,695** NAME lines carry it.
 
-So a mononym is not a defect to be padded out with an `NN` surname. The person gets a
-`P735` *given name* — and only when the token repeats, because a token carried once is
-as likely to be a fragment, a transcription, or a place as it is to be a name. The
-threshold is `MIN_BEARERS` in `scripts/build-name-item-batch.py`, which is 10 and is
-Emma's number; that script's docstring records why it is not five.
+**The first version of this script missed every one of them.** It treated the surname
+slot as a string and skipped anyone whose slot was non-empty, so `Anna /./` — the exact
+shape being looked for — was discarded as "has a surname `.`", and what got measured
+instead was the empty-slot population. Both are reported below now, apart, because they
+are different statements: `/./` is Geni saying there is no surname, and `//` is Geni
+saying nothing.
 
-**Nothing in the repo handled mononyms before this.** `genimerge.namelinks` proposes
-`P735`/`P734` for people whose names it can split into given and family parts; a person
-with one token and no surname simply has no family part, and was never singled out. This
-census is the first measurement of how many such people there are and how many of them
-clear the bar.
+**Emma's rule for what they get, same day:** *"if it repeats, it's a name. If it repeats
+over 10 times, I think that was our actual criterion. […] People with mononyms get a
+first name if it's a repeated name."* So a mononym is not a defect to pad out with an
+`NN` surname — the person gets a `P735` *given name*, and only when the token repeats,
+because a token carried once is as likely to be a fragment or a place as a name. The
+threshold matches `MIN_BEARERS` in `scripts/build-name-item-batch.py`.
 
-**A mononym is not the same as a redacted or unnamed person**, and the distinction is
-`CLAUDE.md` § *Redacted people go in* and § *`NN` is PRESERVED in `mul`*. `Private` and
-`NN` are markers rather than names, so they are counted separately here and never
-proposed as a given name — `label_for()` in `scripts/labels.py` is the single place that
-decides that, and this script defers to the same list rather than inventing a second one.
+**The marker vocabulary is imported, never redefined.** The first version carried its own
+English-only set and so ranked `Ukjent` (Norwegian) and `未知` (Chinese) — both meaning
+*unknown* — among Anna, Anders and Lars as though they were names. `scripts/labels.py`
+already held `ukjent`, which is Emma's *"I thought that was in the logic"*; `未知` was
+genuinely missing and has been added there. That module is the single place that decides
+what a marker is, per `CLAUDE.md`, and the whole failure came from having a second copy.
 
-**Sorted so the decision is readable**: qualifying people first, then by how common their
-name is, so the head of the file is the population the rule actually creates statements
-for.
+Those people are not dropped. Emma: *"Ukjent and 未知 get the mul NN treatment"* — the
+shape in `CLAUDE.md` § *`NN` is PRESERVED in `mul`*, where `NN` stays in `mul` and
+descriptive labels are added in other languages. They are counted here as markers so they
+do not become a `P735` given name; what they *do* get is that treatment, elsewhere.
 
     PYTHONPATH=src python scripts/build-mononym-census.py
 """
@@ -38,21 +41,22 @@ from collections import Counter
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from genimerge import sources
 from genimerge.names import given_part
+from labels import (NARROW_MARKERS, PUNCTUATION_MARKERS, SINGLE_LETTER_MARKERS,
+                    WORDS_MEANING_UNKNOWN)
 
 OUT_CSV = sources.REPO_ROOT / "reports" / "mononyms.csv"
 OUT_MD = sources.REPO_ROOT / "reports" / "mononyms.md"
 
-#: Emma's number. Kept in step with `MIN_BEARERS` in build-name-item-batch.py.
+#: Emma's number, kept in step with `MIN_BEARERS` in build-name-item-batch.py.
 MIN_BEARERS = 10
 
-#: Redaction and unknown markers. These are never a given name — `Private` withholds
-#: the name and `NN` is a genealogist saying it is unknown. Both are still *people*
-#: and both still get items; they just do not get a `P735` out of this.
-MARKERS = {"private", "<private>", "nn", "n.n.", "n n", "n", "unknown", "?", "??",
-           "???", "-", "--", ".", "*", ""}
+#: Everything `scripts/labels.py` calls a marker. One vocabulary, imported.
+MARKERS = (NARROW_MARKERS | WORDS_MEANING_UNKNOWN | PUNCTUATION_MARKERS
+           | SINGLE_LETTER_MARKERS)
 
 
 def read_corpus() -> dict[str, dict[str, str]]:
@@ -67,16 +71,14 @@ def read_corpus() -> dict[str, dict[str, str]]:
                     xref = line.split("@")[1]
                     current = xref[1:] if xref.startswith("I") else None
                     if current:
-                        people[current] = {"name": "", "givn": "", "surn": "",
-                                           "sex": "", "file": path.name}
+                        people[current] = {"name": "", "surn": "", "sex": "",
+                                           "file": path.name}
                 elif current is None:
                     continue
                 elif line.startswith("0 "):
                     current = None
                 elif line.startswith("1 NAME "):
                     people[current]["name"] = line[7:].strip()
-                elif line.startswith("2 GIVN "):
-                    people[current]["givn"] = line[7:].strip()
                 elif line.startswith("2 SURN "):
                     people[current]["surn"] = line[7:].strip()
                 elif line.startswith("1 SEX "):
@@ -84,36 +86,52 @@ def read_corpus() -> dict[str, dict[str, str]]:
     return people
 
 
+def surname_slot(gedcom_name: str) -> str:
+    """What sits between the GEDCOM slashes, verbatim."""
+    _, sep, rest = gedcom_name.partition("/")
+    if not sep:
+        return ""
+    return rest.partition("/")[0].strip()
+
+
 def main() -> None:
     people = read_corpus()
 
-    mono: list[tuple[str, str, dict[str, str]]] = []
+    rows_in: list[tuple[str, str, str, dict[str, str]]] = []
+    empty_slot = 0
     for geni_id, rec in people.items():
         name = rec.get("name", "")
         if not name:
             continue
-        # A GEDCOM name is `Given /Surname/`. A mononym has nothing in the
-        # surname slot and exactly one token before it.
-        before, _, after = name.partition("/")
-        surname = after.rstrip("/").strip()
-        if surname or (rec.get("surn") or "").strip():
+        slot = surname_slot(name)
+        if slot and slot != ".":
             continue
-        given = given_part(before).strip()
-        tokens = given.split()
-        if len(tokens) != 1:
+        form = "dot" if slot == "." else "empty"
+        if form == "empty" and (rec.get("surn") or "").strip():
             continue
-        mono.append((geni_id, tokens[0], rec))
+        if form == "empty":
+            empty_slot += 1
+        given = given_part(name.partition("/")[0]).strip()
+        if not given:
+            continue
+        rows_in.append((geni_id, given, form, rec))
 
-    counts = Counter(tok for _, tok, _ in mono)
+    # Bearers are counted over the whole given string, which is what a label is
+    # built from. A multi-token given name is still a mononym in Geni's sense --
+    # `#1 Dewi Saroh (Sarah) /./` has no surname -- so it is not filtered out.
+    counts = Counter(g for _, g, _, _ in rows_in)
 
     rows = []
-    for geni_id, token, rec in mono:
-        marker = token.strip().lower() in MARKERS
-        n = counts[token]
+    for geni_id, given, form, rec in rows_in:
+        low = given.strip().lower()
+        marker = low in MARKERS
+        n = counts[given]
         rows.append({
             "geni_id": geni_id,
-            "name": token,
+            "name": given,
+            "surname_slot": form,
             "sex": rec.get("sex", ""),
+            "tokens": len(given.split()),
             "bearers_in_corpus": n,
             "is_marker": int(marker),
             "qualifies": int(n >= MIN_BEARERS and not marker),
@@ -127,37 +145,60 @@ def main() -> None:
         w.writeheader()
         w.writerows(rows)
 
+    dot = sum(1 for r in rows if r["surname_slot"] == "dot")
     qual = sum(r["qualifies"] for r in rows)
+    qual_dot = sum(r["qualifies"] for r in rows if r["surname_slot"] == "dot")
     markers = sum(r["is_marker"] for r in rows)
     once = sum(1 for r in rows if r["bearers_in_corpus"] == 1 and not r["is_marker"])
     distinct_qual = len({r["name"] for r in rows if r["qualifies"]})
+    one_token = sum(1 for r in rows if r["tokens"] == 1)
 
     lines = [
-        "# People recorded with one name and no surname",
+        "# People Geni records as having no surname",
         "",
-        f"**{len(rows):,} mononyms** out of {len(people):,} people in the corpus.",
+        "Emma, 2026-08-18: **\"Mononyms are `Name /./`\"** — Geni writes an explicit "
+        "full stop in the GEDCOM surname slot to say *this person has no surname*. "
+        "That is a positive statement, and different from an empty slot, which says "
+        "nothing. Both are counted here and kept apart.",
         "",
-        "Emma, 2026-08-18: *\"if it repeats, it's a name. If it repeats over 10 times, "
+        "| surname slot | people |",
+        "| --- | ---: |",
+        f"| `/./` — Geni says there is no surname | {dot:,} |",
+        f"| `//` — the slot is simply empty | {len(rows) - dot:,} |",
+        f"| **total** | **{len(rows):,}** |",
+        "",
+        "The first version of this script measured only the second row, because it "
+        "read a `.` as a surname and skipped exactly the people it was looking for.",
+        "",
+        "## What they get",
+        "",
+        "Emma, same day: *\"if it repeats, it's a name. If it repeats over 10 times, "
         "I think that was our actual criterion. […] People with mononyms get a first "
         "name if it's a repeated name.\"*",
         "",
-        "| | people | |",
-        "| --- | ---: | --- |",
-        f"| qualify for a `P735` given name | {qual:,} | the token repeats "
-        f"{MIN_BEARERS}+ times and is not a marker |",
-        f"| a redaction or unknown marker | {markers:,} | `Private`, `NN` — a person, "
-        "but not a name |",
-        f"| the token appears exactly once | {once:,} | too thin to call a name |",
+        "| | people |",
+        "| --- | ---: |",
+        f"| qualify for a `P735` given name | {qual:,} |",
+        f"| …of those, in the `/./` form | {qual_dot:,} |",
+        f"| a marker rather than a name | {markers:,} |",
+        f"| the name appears exactly once | {once:,} |",
         "",
-        f"The qualifying people share just **{distinct_qual:,} distinct names**, which "
-        "is the whole reason the rule is worth having: a handful of name items covers "
-        "thousands of people.",
+        f"The qualifying people share **{distinct_qual:,} distinct names**, which is why "
+        "the rule is worth having: a few name items cover thousands of people. "
+        f"{one_token:,} of all these people have a single given token; the rest have "
+        "several and still no surname, which is ordinary in the Indonesian and Javanese "
+        "records this form is common in.",
         "",
-        "Nothing in the repo handled mononyms before this. `genimerge.namelinks` splits "
-        "a name into given and family parts and a mononym has no family part, so these "
-        "people were never singled out either way.",
+        "**The marker vocabulary is imported from `scripts/labels.py`, not redefined.** "
+        "The first version carried its own English-only list and ranked `Ukjent` "
+        "(Norwegian) and `未知` (Chinese) among Anna, Anders and Lars as if they were "
+        "names. `ukjent` was already in `labels.py` — Emma: *\"I thought that was in "
+        "the logic\"* — and `未知` was the real gap, now added there at 204 occurrences. "
+        "Those people are not discarded: *\"Ukjent and 未知 get the mul NN treatment\"*, "
+        "so they keep `NN` in `mul` and gain descriptive labels in other languages. "
+        "They are excluded here only from becoming a given name.",
         "",
-        "## The most common mononyms that qualify",
+        "## The most common qualifying names",
         "",
         "| name | people |",
         "| --- | ---: |",
@@ -168,7 +209,8 @@ def main() -> None:
     lines.append("")
     OUT_MD.write_text("\n".join(lines), encoding="utf-8")
 
-    print(f"{len(people):,} people; {len(rows):,} mononyms")
+    print(f"{len(people):,} people; {len(rows):,} with no surname "
+          f"({dot:,} written /./, {len(rows)-dot:,} empty slot)")
     print(f"  qualify for P735   {qual:,}  ({distinct_qual:,} distinct names)")
     print(f"  markers            {markers:,}")
     print(f"  appear once        {once:,}")

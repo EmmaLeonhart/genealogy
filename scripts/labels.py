@@ -145,6 +145,10 @@ WORDS_MEANING_UNKNOWN = {
     "namn okänt",     #        Swedish
     "(no name)",
     "ukj.",           #        Norwegian, abbreviating ukjent
+    "未知",            #   204  Chinese, "unknown" — Emma, 2026-08-18: "Ukjent and
+                      #        未知 get the mul NN treatment". `ukjent` was already
+                      #        here at 188; this one was the gap, and it was found
+                      #        by the mononym census ranking it among Anna and Lars.
     "未詳",            #     1  Japanese, "details unknown"
     "無名",            #        Japanese / Chinese, "nameless"
 }
