@@ -8706,3 +8706,34 @@ cannot read is not an absent lockout.
 No trigger was added and no schedule restored: this repo is private and Actions
 minutes are billable. `tests/test_repo_invariants.py` and `tests/test_cli_wikidata.py`
 pass (25 tests). Verified by running the live path — it bails before login.
+
+
+## 2026-08-18 — Round 13, five for five a third time
+
+| seed | id | tier | slot | target |
+| --- | --- | --- | --- | --- |
+| `Ola /Roda/` | `6000000227300121832` | 1 | father of Gyri Olsdatter Roda | Torborg Olsdatter Sande |
+| `NN /Lange/` | `6000000227300290832` | 4 | father of Frederik Julius Lange | Kristine Jersin |
+| `Bertel /Svensk/` | `6000000227300208835` | 1 | father of Matts Bertelsson Svensk | Emil Alfred Svensson |
+| `Anders /Raa/` | `6000000227300039935` | 1 | father of Ingeborg Andersdatter Hauge (Raa) | Ingard Teigstol Hauge |
+| `NN` | `6000000227300176839` | 3 | mother of Elin Larsdotter Finngård | Christina Dahl |
+
+    328 corpus exports, 808,249 distinct Geni IDs
+    chain people 11,431   held 5,991   gap 5,440   unfilled slots 5,536
+    gap 5,506 -> 5,440
+
+**Three guesses taken rather than asked, per her rule of tonight.**
+
+`Olsdatter` → **`Ola`**, not `Ole`. `docs/export-seed-rules.md` uses `Ole` in its worked
+example, but every man on that page is an `Ola` — Ola Olson Gard, Ola Andersson Gard,
+Ola Ingemundson. The neighbourhood's own spelling beats the doc's generic example.
+
+`Johanna Maria Kragh / Monrad` → the created father is **`NN /Kragh/`**. Her Geni page
+title is `Johanna Maria Kragh (1777-1832)`, so `Kragh` is the birth surname and `Monrad`
+the married one, which is what tier 4 asks for.
+
+`Torborg Olsdatter Sande`'s own four generations were full, so the seed went three
+generations further up, into `Nils Erikson Roda`'s tree, reached by following the
+smallest green badge on the page. Five hops from the target, and it closed — consistent
+with round 11's eight-hop Finnish seed and with density rather than distance being what
+costs reach.
