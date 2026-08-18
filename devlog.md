@@ -8770,3 +8770,37 @@ reading `document.body.innerText` and clicking known coordinates. And when a dia
 re-lays out between the screenshot and the click, typing lands in the wrong field —
 `Henrik` went into Middle Name once; reading the field values back before saving is
 what caught it.
+
+
+## 2026-08-18 — Round 15, five for five for the fifth round running
+
+| seed | id | tier | slot | target |
+| --- | --- | --- | --- | --- |
+| `NN /Holmström/` | `6000000227302080982` | 4 | father of Kristina Holmström | Hulda Helena Cecilia Charlotta af Ekenstam |
+| `Sven /Njå/` | `6000000227300430000` | 1 | father of Ola Svenson Sletthei (Njå) | Anna Elisabeth Sunde |
+| `NN /father of Erik/` | `6000000227302210847` | 5 | father of Erik, father of Brita Eriksdotter | Brita Aminoff |
+| `NN` | `6000000227303611823` | 3 | mother of Erich Christensen Lind | Christen Johansen Brun |
+| `Anders /Sundt/` | `6000000227303522852` | 1 | father of Peder Andersen Sundt | Lars Pedersen Sundt |
+
+    338 corpus exports, 848,381 distinct Geni IDs
+    chain people 11,431   held 6,167   gap 5,264   unfilled slots 5,340
+    gap 5,381 -> 5,264
+
+**Twenty-five exports, twenty-five targets closed**, rounds 11–15. The gap has gone
+5,754 → 5,264 and the corpus 309 → 343 files since the crash was recovered.
+
+**Geni's build times stretched right out overnight.** Earlier rounds ran 6–8 minutes an
+export; this round went 55, 60, 9, 51 and 8. Nothing was re-submitted over it — a slow
+build looks exactly like a hung one, and the only way to tell them apart is to wait,
+which is cheaper than a second export in flight against the one-at-a-time rule.
+
+**The tier-5 case ran clean.** `NN /father of Erik/` is the first seed of the campaign at
+the bottom of the preference order — an Erik with a given name and nothing else. It is
+distinct from the degenerate `father of NN` that `docs/export-seed-rules.md` flags as an
+open question: the child here has a real given name, so the created father names somebody.
+
+**Closest placement yet: `Anders /Sundt/`, two hops.** Lars Pedersen Sundt's own father
+was parentless, so the placeholder went directly on the target's grandfather slot rather
+than four generations up a side branch. Every other seed this round sat three or four
+hops out; all five closed regardless, which is the same reading as rounds 11–14 — density
+governs reach, not distance.
