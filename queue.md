@@ -1180,3 +1180,109 @@ touched and never returned to, which is exactly what the doorway column in
 
 Two of the three objectives set today come out of this loop running to completion,
 and it runs unattended.
+
+---
+
+# THE TAIL OF THE QUEUE — Emma, 2026-08-18, dictated in one go
+
+**This is the end of the queue and the order inside it is hers.** Every item below
+happens *after* the current chain-gap work loop finishes and *after* the sparse-region
+exports (Phase 4 above). She was explicit that "final part of the queue" means "by
+definition after all this stuff is complete", so nothing here jumps ahead of the loop
+that is running now.
+
+Her framing of why it is written like this: *"as long as the agent just continues to
+action, as long as the agent properly constructs, as long as the agent properly writes
+out all the cue stuff that I gave back then and also continues to follow the cue over
+time and does not decide to start ignoring it."* The tail is meant to be walkable
+without her — she wants the loop to be able to carry itself all the way to the CI/CD
+step. **No `AskUserQuestion` until 2026-08-18 ~12:40 PST at the earliest — she is
+asleep.**
+
+## Mass export from every profile Emma has added to Geni
+
+- Enumerate **every individual Emma has personally added to Geni**, and that
+  **includes every placeholder created on her account by this loop** — the chain seeds,
+  the midpoint seeds, all of them. Her words: *"every single individual that I have
+  added personally and this includes, of course, the ones that you added."*
+- Run a **`Descendants`** export from each. She calls this step *"the mass exporting
+  of the descendants"* and says the results *"would be in the descendants of people I
+  added section"*, so they are filed together rather than scattered.
+- **Expect them to be fast and small.** *"I expect a lot of these exports are going to
+  be relatively quick by contrast to the descendants one."* That is the signature of
+  seeding on a placeholder: a person created as somebody's missing parent has exactly
+  one line below them, so the ball closes quickly instead of running to 5000.
+- **One phrase in the dictation is ambiguous and is recorded rather than resolved:**
+  *"does a similar export to the one except it doesn't export the descendants."* Read
+  against the rest of the paragraph — which twice names this the descendants job and
+  contrasts its *speed* with the descendants campaign — this reads as *these seeds have
+  barely any descendants to export*, not as *use a different walk*. **Go with
+  `Descendants`.** If the first handful come back empty rather than merely small, that
+  reading is wrong and the alternative is a `Forest` walk; say so and switch, do not
+  grind through a thousand empty exports. Raise it with her when she is awake.
+- The export mechanics are unchanged: `docs/export-seed-rules.md` § *Running the
+  export*, strictly one at a time, zips filed into `exports/` in bulk at the end.
+
+## Build the synoptic tree
+
+- Re-merge the whole corpus into `out/merged.ged` once the exports above are all in.
+  This is the first point in the programme where a fresh merge is actually *needed*
+  rather than convenient — presence questions are answered from `exports/` directly
+  (`scripts/find-chain-gaps.py`), but the structural walk below needs parents.
+- **Keep the pre-merge tree.** `reports/descendants-backtest-2026-08-07.md` exists only
+  because `out/merged-134.ged` was kept before a batch landed.
+
+## Identify Geni profiles with Wikidata items, structurally
+
+- Walk the relationships, not the names. Start from anybody holding **both** a Geni ID
+  and a QID, walk `P22` *father* / `P25` *mother* / `P40` *child* / `P26` *spouse*
+  against our own edges, and where both sides have a person in the same position, that
+  is a merge.
+- **Name similarity is a check on a pair the structure already proposed, never a way to
+  find one.** Emma, 2026-08-18: *"This is only the case, obviously, for individuals who
+  are actually linked so we're merging on the tree. We're not going to do any kind of
+  text-related similarity or any of that bullshit."* The deleted `reconcile` matcher
+  stays deleted.
+- Output is our own QID ↔ Geni ID correspondence, built from the merges, plus a
+  placeholder for everyone on Geni and not on Wikidata.
+
+## Labels, in this order, once the correspondence is large
+
+- **`mul` first — everything gets one.** Then **`en` on everything**, then **`ja`**,
+  then **`zh`**, then the remaining languages.
+- `scripts/labels.py` is the single place that decides what a label may say; `NN` and
+  `Private` are preserved in `mul` and given descriptive labels elsewhere, per
+  `CLAUDE.md`.
+- Build all the JSONs. They are committed, not held in `out/`.
+
+## The three spine lines from Charlemagne to Emma
+
+- **This is built BEFORE the CI/CD wiring**, because it queues its own special JSONs
+  and the pipeline has to have them to fire.
+- Three lines, hers:
+  - **Charlemagne → Emma through her paternal grandfather**
+  - **Charlemagne → Emma through her maternal grandmother**
+  - **the `Burekenship` line on her mother's side** — spelling is as dictated and is
+    not confirmed; check it against `paths/` and the corpus before building on it, and
+    do not silently correct it to a similar surname.
+- The lines are **spines, not the deliverable**: *"trying to kind of more or less go
+  through these lines as the spines but hit a sufficiently large amount of nearby
+  people who have Wikidata so that it practically connects up a lot of people."*
+- From 2026-09-01 there must be **at least one item that tries to connect these
+  people**.
+
+## Wire up CI/CD so the committed JSONs fire from 2026-09-01
+
+- The JSONs are already in git; the pipeline reads them and starts executing edits on
+  Wikidata on **1 September 2026**.
+- **Never add a `push:` or `pull_request:` trigger** — `CLAUDE.md` § *Cost* forbids it
+  and this does not need one. A `schedule:` cron plus `workflow_dispatch:` is what this
+  wants, and it leaves that rule intact.
+- She expects it to be **stateful about the repo**: *"something that would do some
+  degree of stateful editing of the repo through GitHub Actions, including something
+  that would take out this part of the repo once it's done."* So the workflow commits
+  back — marking a batch executed, and removing the spine-line queue once it has run.
+- The edit algorithm it executes is already specified above in § *THE EDIT ALGORITHM*:
+  100 edits a day chosen at random from the eligible set, service-area gate,
+  Geni-IDs-as-sources de-prioritised to 5–25 a day. **Do not normalise away the bias
+  toward her neighbourhood** — it is deliberate.
