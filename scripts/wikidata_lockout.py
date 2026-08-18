@@ -8,12 +8,12 @@ its `START_DATE` of 2026-09-01 falls inside that month. A gate that covered only
 the shintowiki bots would have left this path open.
 
 **There is exactly one lockout state file for all of Emma's repos**, and it is
-NOT in this one:
+NOT in this one. Its location is held in the ``LOCKOUT_STATE_URL`` secret rather than
+written here: Emma, 2026-08-18, *"no fucking github links in it either"* — an agent or a
+source file that names her repositories tells a reader where to look, and that applies to
+a URL in a constant as much as to a User-Agent.
 
-    https://github.com/EmmaLeonhart/shintowiki-scripts
-      -> shinto_miraheze/wikidata_editing_lockout.state
-
-That repo is public, so this reads it over plain HTTPS with no credentials. It is
+That file is public, so this reads it over plain HTTPS with no credentials. It is
 deliberately NOT copied here: the mechanism this replaced was a freeze date pasted
 into two workflow files, and one of them missed a freeze. A local copy would be
 the same mistake across two repos instead of two files. To lift or extend the
@@ -33,20 +33,25 @@ from bot_identity import BOT_USER_AGENT
 
 import datetime
 import io
+import os
 import json
 import sys
 import urllib.request
 
-STATE_URL = (
-    "https://raw.githubusercontent.com/EmmaLeonhart/shintowiki-scripts/"
-    "main/shinto_miraheze/wikidata_editing_lockout.state"
-)
+#: From the ``LOCKOUT_STATE_URL`` secret. Empty when unset, and an empty URL is treated
+#: as LOCKED below — the same fail-closed rule the whole module runs on, so a missing
+#: secret stops editing rather than silently allowing it.
+STATE_URL = os.environ.get("LOCKOUT_STATE_URL", "").strip()
 
 TIMEOUT = 20
 
 
-def editing_allowed(url: str = STATE_URL) -> tuple[bool, str]:
+def editing_allowed(url: str = "") -> tuple[bool, str]:
     """(allowed, detail). Any failure is LOCKED — see the module docstring."""
+    url = url or STATE_URL
+    if not url:
+        return (False, "LOCKOUT_STATE_URL is not set - locked, because this module "
+                       "fails closed and an unconfigured gate is not an open one")
     try:
         req = urllib.request.Request(
             url, headers={"User-Agent": BOT_USER_AGENT}

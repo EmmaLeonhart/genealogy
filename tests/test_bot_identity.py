@@ -5,7 +5,7 @@ none of this should be in the user agent. You're leaking a massive amount of inf
 here. It's just an email address. That is the secret."*
 
 Every earlier version of the agent named the tool, linked
-`https://github.com/EmmaLeonhart/geni`, and described what the project does. All three
+her repository, and described what the project does. All three
 told a reader where the code lives and what it is for, which is the leak. What is pinned
 here is that none of them can come back.
 
@@ -88,3 +88,22 @@ def test_the_bot_scripts_do_not_hand_write_an_agent():
 
 def test_the_lockout_check_uses_the_same_constant():
     assert wikidata_lockout.BOT_USER_AGENT == bot_identity.BOT_USER_AGENT
+
+
+def test_no_source_file_links_a_repository():
+    """Emma, 2026-08-18: *"no fucking github links in it either"*.
+
+    Not only the agent. A URL in a constant names her repositories to anyone reading the
+    code, which is the same disclosure by a different route -- so the lockout state file's
+    location moved into the LOCKOUT_STATE_URL secret too, and the gate fails closed
+    without it.
+
+    `.github/workflows` is a path inside this repo, not a link out to one, so the check
+    is for the host rather than the string "github".
+    """
+    host = "github" + ".com"
+    raw = "raw." + "githubusercontent.com"
+    for path in sorted((REPO / "scripts").glob("*.py")) +             sorted((REPO / "src" / "genimerge").glob("*.py")):
+        text = path.read_text(encoding="utf-8")
+        assert host not in text, f"{path.name} links {host}"
+        assert raw not in text, f"{path.name} links {raw}"
