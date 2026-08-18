@@ -69,6 +69,28 @@ megabytes, and today's files are *smaller*.
 **The lost throughput is latency on this side** — 3.8 → 8.8 min per cycle, from running
 multi-gigabyte scans and batch regenerations between polls. That is the whole difference.
 
+### SETTLED by Geni's own emails — it was me, not Geni
+
+109 server-side "export is ready" emails, `reports/export-ready-emails.txt`. Independent
+of every log on this machine, which is why Emma suggested them.
+
+| window | what was being done | median gap | rate |
+| --- | --- | ---: | ---: |
+| 08-17 16:00 - 08-18 06:00 | running the loop | 9.2 min | 6.5/hr |
+| 08-18 06:00 - 09:30 | running the loop | **6.9 min** | **8.7/hr** |
+| 08-18 09:30 - 18:30 | name censuses, marker fixes | **60.2 min** | **1.0/hr** |
+| 08-18 18:30 onward | back on the loop | 12.3 min | 4.9/hr |
+
+Build time itself, submit to ready email, was **3.8-6.4 minutes today** — the same as
+yesterday. **Geni never slowed down.** Throughput fell 8.7/hr to 1.0/hr exactly across
+the window spent on other work and recovered on returning to the loop.
+
+So the cause is not rate limiting, not the server, not file size, and not the power cycle.
+It was doing other work between exports. **Plan B is NOT triggered** and stays unbuilt.
+
+**The operating rule from this: while the loop runs, nothing else runs.** No background
+scans, no batch regeneration, no analysis. Poll, download, seed, export.
+
 ### Still to do on this item
 
 - **Corroborate against Geni's own emails.** Her suggestion: *"I get emails saying when
