@@ -101,12 +101,7 @@ def is_placeholder_label(label: str) -> bool:
     `low in PLACEHOLDER_LABELS` line above, and `labels.is_placeholder_form` also
     catches `? ?` and `NN .`, where every component is one.
     """
-    low = (label or "").strip().lower()
-    if not low or _labels.is_placeholder_form(low):
-        return True
-    if "private" in low:
-        return True
-    return _labels.leads_with_a_marker(low)
+    return _labels.is_marker_label(label)
 
 
 def label_set_for(row: dict) -> dict:

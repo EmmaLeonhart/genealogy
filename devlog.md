@@ -8961,3 +8961,55 @@ number wins over my unstated one, and the asymmetry settles it independently: ra
 bar is reversible next run, shipping 8,560 unsanctioned Wikidata items is not. Batch
 13,320 → 6,143 creations. The 5..9 band is 8,560 names and is not junk —
 `Ingebretsdatter`, `Birgersdotter`, `Iñiguez` — so it is deferred, not rejected.
+
+## 2026-08-18 — `build-edit-objects.py`'s missing marker guard, and one predicate for six sites
+
+First item on the `name-development` branch. queue.md carried this as a known
+defect: the script wrote labels *"with no marker guard, at both of its emission
+sites"*, harmless only because `out/wikidata/edits.json` is gitignored and fires
+nothing — with the instruction **fix it before anything reads that file**.
+
+### The shape of it, which is the part worth keeping
+
+Six label emission sites across two scripts needed the same predicate. Four had it
+and two did not, and the predicate itself existed as a *copy* inside
+`walk-structural-merge.py`. That is how the `未知` bug happened three days ago: the
+word was added to `labels.WORDS_MEANING_UNKNOWN`, the callers that consulted the
+vocabulary picked it up, and the `ja`/`zh` branch that kept its own logic emitted 22
+edits labelling people *unknown* in Japanese and Chinese.
+
+**A predicate copied per caller is a predicate that will disagree with itself.** So:
+
+* `labels.is_marker_label` is now the single definition, with the reasoning that was
+  scattered across the copies gathered into its docstring.
+* `walk-structural-merge.py`'s `is_placeholder_label` is a one-line delegation.
+* `build-edit-objects.py` gained `label_slots()`, one function filling `en`, `mul`,
+  `ja` and `zh` through the guard, and both of its emission sites now call it instead
+  of writing the same four lines out twice.
+
+### `mul` is guarded too, and that is not a contradiction
+
+Emma, 2026-08-16: *"NN is always preserved in the multi-language label."* True, and
+not what this was doing. The marker that belongs in `mul` is **`NN` specifically**,
+written by `build-nn-label-batch.py` from the full relationship model. Copying
+whatever marker happened to sit in `label_en` — `Private`, `Ukjent`, `未知` — is a
+different thing wearing the same shape. A person dropped here gets no label from this
+script and gets one from the NN pipeline instead, which is the honest outcome rather
+than a false one.
+
+### The test, and proof that it is not vacuous
+
+`tests/test_edit_object_labels.py`, six tests. `build-edit-objects.py` had **no test
+coverage at all** before this.
+
+The first version asserted that the guard *existed* — `build.is_marker` is callable —
+which is exactly the useless kind: the guard existed in `walk-structural-merge.py`
+while the branch two lines below it went without. Rewritten to call `label_slots()`
+with real marker rows and assert the slots come back empty.
+
+**Checked by removing the guard**: the suite goes to `1 failed, 5 passed`, and back to
+6 passing when it is restored. A gate nobody has seen fail is not a gate.
+
+It also pins the other half of the rule — `NN Hildesheim` reads as a marker *label*
+while `Hildesheim` stays a real surname, and `. Weill`, `Nechama (?) Heller` and
+`? binti Pg Seri Lela` are names rather than markers. Words yes, punctuation no.

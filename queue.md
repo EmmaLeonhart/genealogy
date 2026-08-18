@@ -253,11 +253,6 @@ needs a ruling rather than a measurement. `devlog.md` has the numbers.
   other languages."* An initial is not a name and has no katakana, so the three options
   — drop it, transliterate the letter, keep it Latin inside a non-Latin label — are a
   presentation decision, not a derivation.
-- **`scripts/build-edit-objects.py` writes labels with no marker guard**, at both of its
-  emission sites: `ja`/`zh` from `cjk_names` and `en`/`mul` from `label_en`. Same defect
-  as the one fixed in `walk-structural-merge.py`, and it is only harmless today because
-  its output is `out/wikidata/edits.json`, which is gitignored and fires nothing. Fix it
-  before anything reads that file.
 
 
 ## RUN ORDER — Emma's call, 2026-08-15

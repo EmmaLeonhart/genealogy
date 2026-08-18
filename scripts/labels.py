@@ -236,6 +236,42 @@ def leads_with_a_marker(text: str) -> bool:
     return head in NARROW_MARKERS | WORDS_MEANING_UNKNOWN | SINGLE_LETTER_MARKERS
 
 
+def is_marker_label(label: str) -> bool:
+    """Whether this string is a marker rather than a name, for LABEL emission.
+
+    The one definition. It lived in `walk-structural-merge.py` as
+    `is_placeholder_label` and `build-edit-objects.py` had no copy at all, which is
+    the whole defect: the same guard was needed at six emission sites across two
+    scripts and existed at four of them. Two of the faults already recorded in this
+    repo are that shape -- the `ja`/`zh` branch of `walk-structural-merge.py` wrote
+    22 edits carrying `未知` because it was not consulting the vocabulary its
+    neighbours consulted, and `build-edit-objects.py` still writes `label_en`
+    straight into `en` and `mul`. A predicate copied per caller is a predicate that
+    will disagree with itself.
+
+    Three tests, in order:
+
+    * `is_placeholder_form` -- the whole label means *no name here*, including the
+      all-components case `? ?` and `NN .`.
+    * `private` anywhere -- `CLAUDE.md`: *"'Private' is a redaction marker, not a
+      name, and an item labelled that asserts something false while being impossible
+      to find"*. The marker those people get is `NN` in `mul`.
+    * `leads_with_a_marker` -- `NN Hildesheim` opens with a marker and continues
+      with a real surname, so the label is not written to a local language, but the
+      surname is not thrown away either; that is the 3,605-surname rule.
+
+    **Words yes, punctuation no** for the head test -- Emma, 2026-08-17 -- so
+    `. Weill` and `Nechama (?) Heller` are left alone. Punctuation is a marker only
+    as the whole label, which is the first test's business.
+    """
+    low = (label or "").strip().lower()
+    if not low or is_placeholder_form(low):
+        return True
+    if "private" in low:
+        return True
+    return leads_with_a_marker(low)
+
+
 def is_unnamed(gedcom_name: str) -> bool:
     """True when there is no usable name here — redacted, `NN`, or blank.
 
