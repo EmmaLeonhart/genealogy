@@ -8737,3 +8737,36 @@ generations further up, into `Nils Erikson Roda`'s tree, reached by following th
 smallest green badge on the page. Five hops from the target, and it closed — consistent
 with round 11's eight-hop Finnish seed and with density rather than distance being what
 costs reach.
+
+
+## 2026-08-18 — Round 14, and the Portuguese one closed too
+
+| seed | id | tier | slot | target |
+| --- | --- | --- | --- | --- |
+| `Henrik /Rank/` | `6000000227300950839` | 1 | father of Thomas Henriksson Rank | Greta Lillian Löf |
+| `Erik /Tre Musslor/` | `6000000227301562877` | 1 | father of Erik Eriksson Tre Musslor | Reinhold Hoyer |
+| `NN /Ståhl/` | `6000000227301875865` | 4 | father of Christina Ståhl | Erik Johan Isaksson Grape |
+| `NN` | `6000000227301847888` | 3 | mother of Bierte Olsson Morstøl | Hans Christian Olsen Helseth |
+| `NN /Pinto/` | `6000000227301842878` | 4 | father of Ana Adelaide Pinto | Salvador José Maria Correia de Sá, Visconde de Soveral |
+
+    333 corpus exports, 830,311 distinct Geni IDs
+    chain people 11,431   held 6,050   gap 5,381   unfilled slots 5,467
+    gap 5,440 -> 5,381
+
+**Twenty exports tonight, twenty of twenty targets closed** across rounds 11–14. Gap
+5,754 at the start of the evening, 5,381 now, and the corpus 309 → 338 files.
+
+**The Portuguese one is the interesting case.** `Salvador José Maria Correia de Sá,
+Visconde de Soveral` is exactly the shape that beat rounds 9 and 10 — titled nobility,
+four full generations, `+30` on nearly every box. It closed anyway, and the reason looks
+like the seed's *side*: the Correia de Sá half is all `+30`, the Soveral half is `+2`,
+`+1` and blank. The placeholder went on the thin side, three hops out. **When a dense
+tree has a thin branch, take the thin branch** — the badges say which is which before
+you click anything.
+
+**Two mechanical notes.** Geni's renderer stops answering screenshot requests on the
+heavy noble trees while it is still answering JavaScript, so the loop can carry on by
+reading `document.body.innerText` and clicking known coordinates. And when a dialog
+re-lays out between the screenshot and the click, typing lands in the wrong field —
+`Henrik` went into Middle Name once; reading the field values back before saving is
+what caught it.
