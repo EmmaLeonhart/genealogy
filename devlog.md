@@ -8538,3 +8538,49 @@ Current: **held 3,655, gap 6,632, 7,174 unfilled slots** over 251 exports.
 **The merged tree is still right for structure** — who is whose parent, which component
 somebody is in. It is the wrong instrument for presence, and I reached for it because it
 was the one I had already built rather than because the question needed it.
+
+
+## 2026-08-17 — Round 10, recovered after the session died mid-export
+
+The previous session ended at 22:20 with round 10 half-run. Nothing was lost, but
+nothing was committed either: three zips sat in `~/Downloads` (22:09, 22:14, 22:19)
+with no record in the repo of what they were, and a fourth export had been requested
+and never collected.
+
+**What the recovery needed.** The seeds are identifiable from the exports themselves —
+the first `INDI` of each file is the seed, so the three orphan zips named themselves.
+The fourth came off Geni's own export list at `/gedcom`, which had `Johan Pöls
+Requested today at 10:19 PM` still holding a live download link. Requested, built,
+never fetched; one click brought it down.
+
+**Four of five seeds exported:**
+
+| seed | id | zip |
+| --- | --- | --- |
+| `NN /von Anhalt-Wildberg/` | `6000000227298391886` | 66 |
+| `Anders /father of Bohl/` | `6000000227298341009` | 67 |
+| `NN /Holmbom/` | `6000000227298630829` | 68 |
+| `Johan /Pöls/` | `6000000227298555861` | 69 |
+
+All four came back at the 5000 bound.
+
+**`NN Holst` is bailed on.** It was created on Geni and its ID never came off the
+canvas; the previous session searched for it 37 times and this one tried again 1.5
+hours later against a search index that still does not hold it. `docs/export-seed-rules.md`
+says to bail on exactly this and let the next round's ranking re-offer whoever is still
+missing, so that is what happens rather than inventing a second route to the profile.
+The `Anders Alopaeus` precedent — index caught up after twenty minutes — did not repeat
+here.
+
+    313 corpus exports, 745,541 distinct Geni IDs
+    chain people 11,322   held 5,662   gap 5,660   unfilled slots 5,790
+    gap 5,715 -> 5,660; top slot count still 2
+
+**Three of the round's five targets cleared** — Grevinna Elsa von Rosen, Björn Runeberg
+and Johan Gustafsson Knifsund are all off the ranking. `Anna von Mecklenburg-Schwerin`
+and `Anna Charlotta Stenius` survive a second round at ranks 1 and 2, which is now two
+rounds each. Round 9 read that as hops costing reach; this round seeded closer in and
+they still survived, so the shorter-seed explanation does not cover it on its own.
+
+The three session crons were recreated on resume — work-loop `:03`, auto-flush `:15`,
+status-report `:42`. They are session-local, so the crash took all three with it.
