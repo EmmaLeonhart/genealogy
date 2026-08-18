@@ -8848,3 +8848,70 @@ the page was actually being watched, ran 4–13 minutes all evening.
 Please use the web page changing as a clock."* And concurrency was never available to
 trade against it — *"There's no way that you can do an export concurrently. That isn't my
 decision thats geni."* Both are now in `docs/export-seed-rules.md`.
+
+## 2026-08-18 — Round 17: five seeds, seven targets, and a marker leak the tests caught
+
+Five `Forest` exports, all at the 5000 bound, all seeded on a fresh placeholder at an
+open parent slot. Four were **tier 1** — the best case, where the child's patronymic
+names the father, so the created person is attested rather than invented.
+
+| seed | tier | slot | target |
+| --- | --- | --- | --- |
+| Nils Arnetveit `6000000227310727839` | 1 | father of Marthe Nilsdtr. Arnetveit | Rolv Einar Ryssdal **+ Sigrid Stray + Signe Marie Ryssdal** |
+| Mikkel Mjåland `6000000227310843862` | 1 | father of Seri Mikkelsdatter Mjåland | Samuel Toresen Haaland |
+| Ole Salte `6000000227311010870` | 1 | father of Ole Olsen Salte | Isaach Johannesen |
+| Jens Høg `6000000227311193823` | 1 | father of Anna Jensdatter Høg | Morten Nielsen Bloch |
+| NN Clasen `6000000227311267869` | 4 | father of Molly Clasen | Karen Sophie Wiborg Dybwad |
+
+**Seven targets from five exports**, because the first seed's ball held all three of the
+people standing on the two Leist paths.
+
+    corpus  348 -> 353
+    gap     5,169 -> 5,098
+    people blocking TWO paths  61 -> 42
+
+That last row is the one that matters: Phase 2 ends when every path person appears
+exactly once, so the two-slot population is the distance to the stopping condition, and
+it is now 42.
+
+**Two targets went on hold**, both in `reports/chain-gaps-on-hold.csv`. Anna von
+Mecklenburg-Schwerin's tree is saturated — every leaf offers `+30` more ancestors and
+there is no open slot anywhere on the page — and it is the dense German high nobility the
+density lesson already records as failing to reach its target. Anna Charlotta Stenius
+froze the renderer on the expand click. Both come back automatically; the ranking is
+recomputed from the corpus every round.
+
+**Molly Clasen is why tier 4 exists.** `Clasen` is a `-sen` form and tier 1 would read it
+as a patronymic naming a father called Claus. She was born 1816 in Denmark, where a
+woman's `-sen` name is an inherited surname rather than her own patronymic, so tier 1
+would have invented a man. Tier 4 gives `NN /Clasen/` and claims nothing.
+
+### The marker leak
+
+Adding `未知` to `labels.WORDS_MEANING_UNKNOWN` — Emma: *"Ukjent and 未知 get the mul NN
+treatment"* — made `test_no_created_person_carries_a_marker_as_a_local_label` fail, and it
+was right to. `reports/wikidata-structural-placeholders.json` had **22 edits writing 未知,
+Chinese for *unknown*, as their `ja` and `zh` label**.
+
+Two faults, one symptom. `label_set_for()` guards `mul` and `en` with
+`is_placeholder_label` and its `cjk` branch did not — an asymmetry inside a single
+function. And the vocabulary was short the word, so the guard had nothing to catch even
+where it existed. Either alone would have been invisible.
+
+Order matters in the fix: `relationship-label-preview.csv` is regenerated **first**,
+because the `NN` overlay that supplies `mul` comes from it. Without that the ten people
+whose only name was `未知` lose their CJK label and get nothing, instead of `NN` in `mul`
+plus a descriptive label elsewhere, which is what her rule actually says. Placeholders
+carrying no label at all went 312 → 322 → back to 312.
+
+**`ukjent` was already there, at 188.** Emma's *"I thought that was in the logic"* was
+correct; `scripts/labels.py` has held nineteen words meaning *unknown* across ten
+languages for some time. What was not in the logic was my own mononym census, which had
+defined a second, English-only marker list rather than importing that one — which is
+exactly the duplication the module's *"one set, replacing three"* comment was written
+against, reintroduced by me two days later.
+
+Still open and deliberately not fixed: `scripts/build-edit-objects.py` writes `ja`/`zh`
+from `cjk_names` and `en`/`mul` from `label_en` with no marker guard at either of its two
+emission sites. Its output is `out/wikidata/edits.json`, which is gitignored and so is not
+one of the committed batches — the same defect, in a file nothing fires from yet.
