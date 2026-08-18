@@ -1,90 +1,146 @@
-# Living relatives on Google Scholar and ORCID — first pass
+# Living relatives on Google Scholar, ORCID and arXiv
 
-**Emma's item, 2026-08-18.** Candidates she supplied: two Google Scholar profiles and
-twelve ORCID records on the father's side (`Borsheim` / `Børsheim`, the more unique
-surname), ten Scholar profiles on the mother's side, and three arXiv papers.
+**Emma's item, 2026-08-18.** Twelve Scholar profiles and twelve ORCID records, read from
+the profiles themselves. No Wikidata, no Geni export.
 
-**This pass answers one question and no more: are any of the twelve ORCID people already
-in the corpus?** Offline, from `reports/display-names.csv` and `reports/derived-facts.csv`.
-Nothing was fetched, nothing was written to Wikidata, no export was run.
+**Her ranking, which is the frame for everything below:**
 
-## The answer is no, and the near-miss is worth stating
+> **Hoknes > Borsheim > Børsheim > Frisk**, in order of probability of relatedness.
 
-The corpus holds **215 records** carrying `Borsheim`/`Børsheim` in a name field, 190 of
-them distinct people, **143 with a birth year, running 1566 to 1998**. So this is not a
-family that stops before living memory — **38 of them were born in 1940 or later**, and
-the youngest in 1998. If these academics were in the tree, this is where they would be.
+## The first pass got this wrong three ways, and the corrections are the findings
 
-**None of the twelve ORCID names is among those 38.** Not Brianna, Christoffer, Sjur,
-Elisabet, Anna, Preston, Kirsten, Ragnar Loken, Ingebjørg Træland, Carlin, or either
-Knut Yngve.
+1. **It folded `Borsheim` and `Børsheim` into one surname.** They are two, they rank
+   differently, and **the corpus says they are two different families** — see below.
+2. **It never looked at `Hoknes` or `Frisk` at all**, having assumed the father's side was
+   the whole question.
+3. **It called the Bergen/Hordaland candidates the plausible ones.** Hordaland is the
+   `Børsheim` spelling, which ranks *third*. Emma's own pick — Scholar profile 2, Carlin
+   **Borsheim**-Black — is the spelling that ranks second, and the corpus agrees with her
+   rather than with me.
 
-### The false positive this replaced, because it is the trap
+## Who these people actually are
 
-A first pass matched ORCID *given names* against the 215 and reported **5 of 12 as hits** —
-Sjur, Anna, Kirsten, and Knut Yngve twice. Every one of those matched a person born in the
-seventeenth to nineteenth century: `Sjur Ivarson`, `Sjur Hansson`, `Anna Ivarsdtr.`,
-`Kirsten Taletta Olsdatter`, `Knut Sjurson`.
+**Father's side — two profiles, both American, and they overlap the ORCID list.**
 
-Norwegian farm families recycle given names down the generations by rule — a son is named
-for a grandfather — so a given-name match inside one such family is close to **no evidence
-at all**. Restricting to people who could plausibly *be* the living person takes it from
-five hits to zero. **A name match is not a person match.**
+| profile | person | affiliation | field |
+| --- | --- | --- | --- |
+| `qg1-JFAAAAAJ` | **Elisabet Børsheim** | Arkansas Children's Nutrition Center; UAMS | energy and substrate metabolism |
+| `riYs2qYAAAAJ` | **Carlin Borsheim-Black** ← *Emma: "much more plausible"* | Central Michigan University | antiracist English education |
 
-## What the corpus family actually is, which narrows the question
+Carlin Borsheim-Black published as **`C Borsheim`** through 2008 and as `Borsheim-Black`
+from 2010 — a married name, so the birth surname is the unhyphenated `Borsheim`. She is
+also ORCID `0000-0002-3831-609X`, so profile and ORCID row are one person, not two
+candidates.
 
-| | |
-| --- | --- |
-| birth places | `Borsheim` (18), `Borsok` (12), `Klepp` (3), `Årsvoll`, `Raustad`, `Nærbø` |
-| region | **Rogaland / Jæren** — Klepp and Nærbø are Jæren municipalities, south of Stavanger |
-| emigrant branch | Canada — `Birch Hills, Saskatchewan`, `Vancouver`, two more just `Canada` |
+**Mother's side — all ten profiles are `Frisk`**, the surname Emma ranks *last*:
 
-Against the candidates' affiliations:
-
-| candidate | affiliation | region |
+| person | affiliation | country |
 | --- | --- | --- |
-| Sjur Børsheim | Haukeland University Hospital | **Bergen — Hordaland** |
-| Christoffer Børsheim | University of Bergen; Bournemouth | **Bergen — Hordaland** |
-| Ragnar Loken Borsheim | University of Bergen | **Bergen — Hordaland** |
-| Elisabet Børsheim | Arkansas Children's; UAMS | **USA** |
-| Brianna Borsheim | Wake Forest; Lurie Children's | **USA** |
-| Carlin Borsheim-Black | — | **USA** (Michigan, by publication record) |
+| Anton Frisk Kockum | Chalmers | Sweden |
+| Erik Frisk | Linköping | Sweden |
+| Fredrik Frisk | Göteborg | Sweden |
+| Thomas Wilhelm Frisk | KTH | Sweden |
+| Jane Elisabeth Frisk | associate professor, unaffiliated listing | — |
+| Anna-Lena Frisk | Dr.med.vet., toxicopathology | — |
+| Michael Frisk | University of Oslo | Norway |
+| Carl A Frisk | NIBIO | Norway |
+| Michael G. Frisk | Stony Brook | USA |
+| Tarja Frisk | Karvi | Finland |
 
-**Two mismatches, not one.** The Norwegian candidates are Hordaland and the corpus family
-is Rogaland; the American candidates are the United States and the corpus emigrant branch
-went to **Canada**. Neither is fatal — people move, and Bergen is where western Norwegians
-go to work — but neither supports the connection either.
+The corpus's own `Frisk` records are **Swedish** — Järbo, Munsåker, Grindstugan,
+Skjelsbostrand — which is consistent with seven of the ten, and consistent with nothing in
+particular, because that is what a generic surname looks like.
 
-**`Børsheim` is a farm name.** It is a toponym, and there is more than one farm: Børsheim
-in Hordaland and Børsheim in Rogaland are different places, and families took the name of
-the farm they lived on. Two unrelated families can carry it honestly. That is why the
-surname on its own is the weakest evidence available here, and why the regional split
-above matters more than the spelling.
+## The four surnames in the corpus, unfolded
 
-## One thing that is decidable and is not genealogy
+| surname | records | dated | range | **born ≥ 1940** | places |
+| --- | ---: | ---: | --- | ---: | --- |
+| **Hoknes** | 23 | 7 | 1849–1938 | **0** | Canada (1); the rest blank |
+| **Borsheim** | 167 | 127 | 1632–1998 | **36** | Borsheim, Borsok, Klepp, Årsvoll, Malmheim, Nærbø — **Jæren, Rogaland**; emigrants to **Canada**. **Emma's ancestral line** |
+| **Børsheim** | 16 | 10 | 1587–1927 | **0** | M./Y. Børsheim, Strandebarm — **Hardanger, Hordaland** |
+| **Frisk** | 25 | 16 | 1720–1931 | **0** | Järbo, Munsåker, Grindstugan — **Sweden** |
 
-**`0000-0003-2180-1811` and `0009-0009-7736-1326` are both `Knut Yngve Børsheim`.** One
-person with a duplicate ORCID record, or two people sharing a name. ORCID's own record
-shows the affiliations, and the newer `0009-` prefix is a later registration — the usual
-shape of somebody registering twice. Worth resolving before either is treated as a
-candidate, because a duplicate counted twice inflates whatever comes next.
+**The two spellings separate cleanly in the corpus — and that is weaker evidence than it
+looks.** Rogaland farms against a Hordaland farm, no overlap in place, and a 150-year gap
+in where the records stop. `Børsheim` is a farm name and there is a farm of that name in
+each county, so two unrelated families can carry it honestly.
 
-## What would actually decide this, in order of cost
+**But the spelling on any individual person is not reliable, in either direction.** Emma,
+2026-08-18:
 
-1. **The Scholar profiles' own co-author and affiliation history** — a Bergen academic
-   with a Jæren birthplace is a real signal; a Bergen academic with a Bergen family is
-   not. Not yet fetched.
-2. **The three arXiv papers**, which may name institutions and given names not in the
-   ORCID rows.
-3. **The mother's side, deliberately not started.** Emma's own framing is that the surname
-   is generic, which means the method above — surname census, then birth cohort — will
-   return noise rather than a shortlist. It needs the given names and the affiliations to
-   do the work, not the surname. Ten Scholar profiles are recorded in `queue.md`.
+> *"Borsheim is the surname of my ancestors. Børsheim is sometimes conflated with people
+> erroneously changing between them — Børsheim is more commonly changed to Borsheim
+> historically, but Borsheim sometimes gets hypercorrected to Børsheim."*
 
-## What this does not settle, and is not mine to settle
+So the corpus's clean split is evidence about **the two farms**, not a guarantee about the
+two people-sets, and the drift runs asymmetrically: `Børsheim → Borsheim` is the common
+historical direction, `Borsheim → Børsheim` the rarer hypercorrection.
 
-**Whether any of these people is a relative at all**, and **whether living people belong
-in the tree**, are Emma's rulings. This report establishes only that none of the twelve is
-in the corpus today, and that the regional evidence points away from rather than toward
-the connection. A negative result on a first pass is not a refutation — the corpus is one
-family's exports, not a census of the surname.
+**This changes a candidate's standing rather than a family's.** `Elisabet Børsheim` in
+Arkansas is spelled with the ø — but a Norwegian-American writing ø is exactly where the
+hypercorrection lives, so the spelling is not evidence that she is *not* from the Borsheim
+line. Her spelling should be treated as unknown, not as third-ranked.
+
+The correction the first pass needed was not "stop folding". It was: **fold for people,
+separate for farms.** Folding hid Emma's ranking; treating the spellings as two closed
+families would now hide the drift she is describing.
+
+## Hoknes is the interesting one, and nobody supplied a candidate for it
+
+It ranks **first** and **not one of the twenty-two profiles and ORCID records is a
+Hoknes.** So the surname most likely to be related has no academic candidate to test.
+
+What the corpus holds for it is a **Norwegian-American emigrant family**, and the given
+names say so on their own:
+
+    1849  Elias Kahrs Ingebrigtsen Hoknes      <- the Norwegian-born progenitor
+    1868  Andreas Petrus Eliassen Hoknes
+    1905  Alfred Ingerman Hoknes
+    1912  Sophia Borgit Gunderson
+    1931  Ilene (Eileen) Schwan
+    1932  Caroline Signe Hoknes                <- Canada
+    1938  Floyd Olaf Hoknes
+    ----  Albert S. · Carl Arnold · Clara Amilia Knutson · Elizabeth Greeta ·
+          Ella N. · Harvey · Kenny · Leone · Linda · Melford Alvin · Melford ·
+          Mildred Amilia Elias · Robert · Sigurd Albert · Svanhild · Vern
+
+Patronymics in the nineteenth century, then Harvey, Kenny, Linda, Melford, Vern, Floyd —
+that is assimilation happening across three generations. **Sixteen of the twenty-three
+carry no date at all**, which is what a Geni tree looks like exactly where living people
+are: present as names, undated because nobody exported them.
+
+That is a coherent reason for Emma's ranking — it is her recent family, so it is the line
+that could still reach a living academic, and it is the line the corpus documents worst.
+
+## The one thing that argues against the Borsheim candidates
+
+**The corpus `Borsheim` emigrant branch went to Canada, not the United States.** Birch
+Hills (Saskatchewan), Vancouver, and two records that say only `Canada`. There is **no US
+birth or death place among the 167**.
+
+Both American candidates — Carlin Borsheim-Black in Michigan, Elisabet Børsheim in
+Arkansas — would therefore attach to a branch the corpus does not currently record. Given
+the hypercorrection above, **Elisabet's ø does not put her outside the Borsheim line**;
+it puts her spelling in doubt, which is a different thing.
+Norwegians settled Saskatchewan and the American upper Midwest in the same migration, so
+this is not a refutation; it is a missing branch, and it is the specific thing to look for.
+
+## What would settle it, in order of what it costs
+
+1. **Carlin Borsheim-Black's birth family.** She is the strongest candidate by Emma's own
+   ranking *and* her own pick, publishes under an unhyphenated `Borsheim` before 2008, and
+   is in Michigan. A US census or obituary trace back two generations meets either the
+   Canadian branch or the Jæren farm, or neither — and either answer is worth having.
+2. **A Hoknes candidate.** None was supplied. If Emma has one, it goes to the front of the
+   queue ahead of everything here.
+3. **The three arXiv papers**, not yet read, which may carry names outside these lists.
+4. **Frisk: do not chase it on the surname.** Ten profiles across four countries with a
+   common Swedish word for "healthy" is the definition of a name that cannot carry
+   evidence. It needs a given name and a place, or it needs dropping.
+
+## Not settled here, and not mine to settle
+
+Whether any of these people is a relative, and whether living people belong in the tree at
+all, are Emma's rulings. This establishes that **none of the twenty-two is in the corpus
+today**, that the corpus stops one generation short of all of them, and that the two
+spellings she ranks separately are separate families in the data as well.
