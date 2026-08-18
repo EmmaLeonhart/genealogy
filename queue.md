@@ -35,6 +35,38 @@ them.
 
 ---
 
+## THIS IS THE `name-development` BRANCH — Emma, 2026-08-18
+
+**This checkout is not the one doing the Geni exports.** Emma split the work after the
+export session spent a day doing two jobs badly at once:
+
+> *"there was a bit of a conflict with that session going all ADHD with trying to perform
+> two tasks at once. It was trying to do a combination of Geni exports that were occurring
+> about every — and doing name work — and not being able to do either one."*
+
+- **Directory:** `GitHub/name-development`, a fresh clone. **Branch:**
+  `name-development`, off `main`. The original checkout at `GitHub/geni` belongs to the
+  export session and is not touched from here.
+- **NO exports and NO browser work of any kind.** *"you do not do any browser activity of
+  running exports from individuals, because that's the job of the other session."*
+- **NO Wikidata runs.** The standing 1 September rule holds; asked directly, Emma:
+  *"Yes, of course it doesn't run!"*
+- **The export-slowness item below does not apply to this branch.** Her words, asked
+  directly: *"In this branch that you are making, it is resolved. There are no exports
+  whatsoever. You are doing the name stuff and other things like that that it was getting
+  distracted by."*
+- **Commit and push to `name-development` constantly. NO pull request** until the export
+  branch has finished what it is doing: *"There is a pull request once the other branch is
+  done with all the shit it's doing with the Geni exporting."*
+
+**Note for whoever reads this on `main` later:** the branch was cut at `7ad0596` and
+`main` moves under it with every export round, so expect the eventual merge to be a
+reconciliation, not a fast-forward.
+
+*(`git push` over HTTPS returned HTTP 500 for this repo on 2026-08-18 and the branch ref
+had to be created with `gh api ... git/refs` instead. If a push fails that way again, that
+is the workaround, not a reason to stop committing.)*
+
 ## ⛔ TOP PRIORITY — the export slowness. NOTHING ELSE RUNS — Emma, 2026-08-18
 
 *"figuring out this download stuff is the top priority of this entire thing. It is THE
