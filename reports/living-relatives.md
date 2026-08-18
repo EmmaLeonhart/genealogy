@@ -127,6 +127,42 @@ it puts her spelling in doubt, which is a different thing.
 Norwegians settled Saskatchewan and the American upper Midwest in the same migration, so
 this is not a refutation; it is a missing branch, and it is the specific thing to look for.
 
+## The three arXiv papers, and the one real piece of evidence in the whole set
+
+**No paper has a Borsheim, Børsheim, Hoknes or Frisk among its authors.** All three are
+citation trails rather than candidate papers:
+
+| paper | what it is | why it is in the list |
+| --- | --- | --- |
+| `2005.11344` | The Discussion Tracker Corpus of Collaborative Argumentation | **cites Borsheim-Black** — "Juzwik, M. M., Borsheim-Black, C., Caughlan, S., and Heintz, A. (2013). *Inspiring dialogue: Talking to learn in the English classroom*" |
+| `2403.03920` | Computer-assisted textual analysis of educational artifacts | none of the four surnames appears anywhere, references included |
+| `2509.21273` | A Sentinel-3 foundation model for ocean colour | **cites "Yngve Borsheim"** in a reference author list |
+
+### `Yngve Borsheim` — the spelling drift, documented on one person
+
+The Sentinel-3 paper's reference list carries the bio-optical in-situ data compilation
+whose author list runs, verbatim:
+
+> … S. Bélanger, J.-F. Berthon, Ş. Beşiktepe, **Y. Borsheim**, A. Bracher, V. Brando …
+
+and in full form, **`Yngve Borsheim`**. **That is `Knut Yngve Børsheim`**, ORCID
+`0000-0003-2180-1811` and `0009-0009-7736-1326` — who is registered with the **ø** and
+publishes **without** it.
+
+**This is Emma's point about the spellings, evidenced on a single named individual rather
+than argued from farm names.** One person, two spellings, in sources of record. Any method
+here that treats `Borsheim` and `Børsheim` as disjoint sets will split him in half.
+
+**It also settles the duplicate-ORCID question the other way from the first guess.** The
+`0009-` record's only work is *"AI-Light Spectrum Replicator (LSR): A Novel Simulated In
+Situ Lab/On-Deck…"* — light spectrum, in situ, on deck. That is marine optics, which is
+the same field as a bio-optical ocean-colour compilation. An empty 2014 record and a 2023
+record in the field the person actually publishes in is **one person who registered
+twice**, not two people who share a name.
+
+**He is not in the corpus.** No `Yngve` appears among the 167 Borsheim records — the
+corpus's Yngves are unrelated Norse and Swedish lines.
+
 ## What would settle it, in order of what it costs
 
 1. **Carlin Borsheim-Black's birth family.** She is the strongest candidate by Emma's own
