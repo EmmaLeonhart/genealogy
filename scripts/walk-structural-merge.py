@@ -130,7 +130,18 @@ def label_set_for(row: dict) -> dict:
     cjk = (row.get("cjk_names") or "").strip()
     if cjk:
         first = cjk.split(" | ")[0].strip()
-        if first:
+        # **The same guard `mul` and `en` get, and it was missing here.** A marker
+        # is not a label in any local language, and this branch wrote one straight
+        # through: 22 edits carried `未知` — Chinese for *unknown* — as their `ja`
+        # and `zh` label. Emma, 2026-08-18: *"Ukjent and 未知 get the mul NN
+        # treatment"*, which is `NN` in `mul` and a descriptive label elsewhere,
+        # never the marker itself in a local slot.
+        #
+        # It went unnoticed because `未知` was not in `labels.WORDS_MEANING_UNKNOWN`
+        # until the same day, so `is_placeholder_label` said no and the asymmetry
+        # in this function had nothing to catch. Two faults, one visible symptom:
+        # the vocabulary was short a word *and* this branch was not consulting it.
+        if first and not is_placeholder_label(first):
             out["ja"] = out["zh"] = first
     return out
 
