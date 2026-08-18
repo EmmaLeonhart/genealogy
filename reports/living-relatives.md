@@ -9,8 +9,10 @@ the profiles themselves. No Wikidata, no Geni export.
 
 ## The first pass got this wrong three ways, and the corrections are the findings
 
-1. **It folded `Borsheim` and `Børsheim` into one surname.** They are two, they rank
-   differently, and **the corpus says they are two different families** — see below.
+1. **It folded `Borsheim` and `Børsheim` into one surname**, so it could not see a ranking
+   that separates them. The corpus separates them by farm and county — but the spelling on
+   an individual drifts both ways, so the rule is **fold for people, separate for farms**.
+   See below; this is not the same as saying they are two closed families.
 2. **It never looked at `Hoknes` or `Frisk` at all**, having assumed the father's side was
    the whole question.
 3. **It called the Bergen/Hordaland candidates the plausible ones.** Hordaland is the
