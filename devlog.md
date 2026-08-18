@@ -4021,7 +4021,7 @@ and P3373 was added to the walk beyond § 8a's four properties. Discovered-per-
 scanned across progress lines is the thing to watch, and a flat 0.4 is a reason
 to stop rather than to let it finish.
 
-User-Agent now carries contact@emmaleonhart.com, with Emma's say-so — Wikimedia
+User-Agent now carries Email Address E, with Emma's say-so — Wikimedia
 asks for a contact and throttles harder without one, and 10,305 requests is the
 case that policy is written for.
 
@@ -9145,7 +9145,7 @@ and "can reach" did the deciding here, not tidiness.
 ### The scope is pinned by a test, not by intention
 
 `tests/test_bot_identity.py` asserts the read-only agents **keep their own
-addresses** — `contact@emmaleonhart.com` and `Email Address T` — and that the
+addresses** — `Email Address E` and `Email Address T` — and that the
 bot contact does *not* appear in either. She specified the CI/CD bot. If the bot
 address should be everywhere that is one word from her and the test changes with it;
 it should not drift there while nobody is looking, which is how a wrong address comes
@@ -9156,7 +9156,7 @@ rather than the symptom.
 
 ### Correction, same day: one address, and a test that encoded a judgement
 
-The first version of this kept the read-only agents on `contact@emmaleonhart.com`
+The first version of this kept the read-only agents on `Email Address E`
 and `Email Address T`, reasoning that Emma had named *the CI/CD bot*
 specifically — and asserted that in `tests/test_bot_identity.py`, which turned a
 guess of mine into a durable rule.
@@ -9168,7 +9168,7 @@ BenthicThoughts one."*
 Every agent in the repo now carries `Email Address B` —
 `genimerge.wikidata`, `genimerge.wikilabels`, `fetch-labels.py`, `import-item.py`,
 `collect-name-item-qids.py` — and the test asserts **no agent holds a
-topazcomputing address**, which is the thing she actually said was wrong.
+Email Address T**, which is the thing she actually said was wrong.
 
 Worth naming, because it is not the same mistake as a wrong value: I made an
 inference she had not asked for, and then wrote a test to protect it. A test is the

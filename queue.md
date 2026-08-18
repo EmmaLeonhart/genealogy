@@ -1455,13 +1455,13 @@ Emma's bot address, the agent names the tool and links the source, both entry po
 the one constant, and **no bot script hand-writes an agent again**.
 
 **One address, everywhere.** The first version of this change kept the read-only agents
-on `contact@emmaleonhart.com` and `Email Address T`, on my reasoning that she had
+on `Email Address E` and `Email Address T`, on my reasoning that she had
 named the CI/CD bot specifically — and pinned that with a test, which made my judgement
 durable. She had not asked for the distinction: *"Please do not make up your own random
 judgments. No email is better than the Topaz computing one. Just use the BenthicThoughts
 one."* So `genimerge.wikidata`, `genimerge.wikilabels`, `fetch-labels.py`,
 `import-item.py` and `collect-name-item-qids.py` carry it too, and the test now asserts
-**no agent anywhere holds a topazcomputing address**.
+**no agent anywhere holds a Email Address T**.
 
 ## The living-relatives analysis — Emma, 2026-08-18
 

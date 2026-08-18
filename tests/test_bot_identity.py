@@ -75,7 +75,7 @@ def test_no_bot_script_hand_writes_an_agent_string():
 def test_every_agent_in_the_repo_uses_the_same_contact():
     """Emma, 2026-08-18: *"Just use the BenthicThoughts one, please!"*
 
-    An earlier version of this test pinned `contact@emmaleonhart.com` and
+    An earlier version of this test pinned `Email Address E` and
     `Email Address T` onto the read-only agents, on my reasoning that she had
     named the CI/CD bot specifically. That was my judgement, not her instruction, and
     writing it into a test made it durable. She was explicit: *"No email is better than
@@ -83,6 +83,6 @@ def test_every_agent_in_the_repo_uses_the_same_contact():
     """
     for agent in (wikidata.USER_AGENT, wikilabels.USER_AGENT,
                   bot_identity.BOT_USER_AGENT):
-        assert "topazcomputing.com" not in agent, agent
+        assert "Email Address T" not in agent, agent
         if bot_identity.BOT_CONTACT:
             assert bot_identity.BOT_CONTACT in agent, agent
