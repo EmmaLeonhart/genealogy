@@ -1428,6 +1428,76 @@ these four sections unless Emma has said otherwise by then.
 
 ## The living-relatives analysis — Emma, 2026-08-18
 
+### THE ACTUAL GOAL, in her words, and it is not "are these people relatives"
+
+> *"What I'm doing here is kind of a long shot. Earlier I was trying to find the person
+> with the least amount of hops in the family tree from me to somebody else with a
+> Wikidata item. I don't really know who it is — I think you have to rebuild this synoptic
+> tree, or possibly look at some of the chains, to find a very small chain in our chain
+> index. I don't know who it is that is the least amount, but I'm thinking that I might be
+> able to get somebody who's a smaller amount of hops away, but who would be considered to
+> be kind of notable through their publications."*
+
+**So the Scholar/ORCID/arXiv names are not candidates for "is this my relative".** They
+are candidates for **a shorter chain than the current best one**, where the endpoint is
+notable enough to hold a Wikidata item *because of their publications*. Two properties at
+once, and the second is why academics are the search space at all:
+
+1. **few hops from `6000000087535357291`** in the family graph, and
+2. **notable**, so an item either exists or would survive being created.
+
+**THE ITEM DOES NOT HAVE TO EXIST YET — Emma will create it.** Her words, 2026-08-18:
+
+> *"I can make an individual who is considered notable by publication. I can make such an
+> individual, and if they are close enough to me, that's great. I'm trying to do something
+> like that because publications are the easiest way for somebody to be Wikidata notable."*
+
+This changes the search space and it is the point of the whole item. **Do not filter to
+relatives who already hold a QID.** The target is a relative with a *publication record*
+— the item is the deliverable, not the precondition. Publications are the cheapest route
+to Wikidata notability, which is why academics are the hunting ground rather than, say,
+local officeholders.
+
+So the ranked output has three columns and not two: **hops**, **who**, and **what would
+justify the item** — a citation count, an h-index, an authored book, a named position.
+
+**This is not a new question.** She asked for it by name on 2026-08-12 — *"find the
+earliest one of my ancestors that has a Wikidata item… the least amount of hops in the
+family tree to somebody with a Wikidata item"* — and `scripts/build-path-to-wikidata-report.py`
+exists to answer it. It reports four measures because the first three each looked like the
+answer and were not, and the one that matters here is **fewest hops by any relation**,
+sideways allowed, since a cousin is as good as an ancestor for this purpose.
+
+**And it is a long shot by her own framing.** Say so in the output rather than dressing up
+a weak result: the honest deliverable is a ranked list with the hop count attached, and
+"nothing beats the current best" is a real answer.
+
+### What is already established, and what it cost
+
+`reports/living-relatives.md` — read from the profiles themselves. **None of the
+twenty-two supplied names is in the corpus**, so none of them has a hop count yet. What the
+pass did establish:
+
+- **`Yngve Borsheim` and `Knut Yngve Børsheim` are one person**, ORCID with the `ø` and
+  publications without it, evidenced in a bio-optical ocean-colour author list. Any
+  hop-counting that treats the two spellings as disjoint will split him.
+- **Hoknes ranks first and has no candidate**, and the corpus documents it worst — sixteen
+  of twenty-three records undated, which is where living people sit.
+- **The `Borsheim` emigrant branch went to Canada**, and both American candidates would
+  attach to a branch the corpus does not record.
+
+### Next, in order
+
+1. **Run `build-path-to-wikidata-report.py` against the rebuilt tree** and get the current
+   best chain. Needs `genimerge wikidata-index` first — the store index is not in the
+   clone. **Until that number exists there is nothing to beat**, and every candidate
+   assessment above is unanchored.
+2. **Then ask of each candidate: would they beat it?** A candidate ten hops away is
+   worthless if an ancestor with an item sits at four.
+3. **Only then** chase Carlin Borsheim-Black's birth family, which is the one candidate
+   with both a plausible line and a publication record that could carry an item.
+
+
 **This is research, not editing.** Nothing here touches Wikidata and nothing here runs a
 Geni export. It reads public academic profiles and asks whether these people are relatives
 and where they would attach.
