@@ -117,6 +117,24 @@ seven-language item further down.
 of relationship words. `en` is 1,549 of them and is safe; the other nine total 685
 and nobody has checked the phrasing.
 
+## Name processing, run in parallel with the export loop — Emma, 2026-08-18
+
+*"I think you can do some work parallel to this actually. Processing the geni names."*
+The chain loop is bound by Geni's build time and leaves the machine idle, so name work
+runs alongside it. Everything here is **local and offline** — no Geni, no Wikidata.
+
+- **Census every regnal ordinal in the corpus.** `P7338` *regnal ordinal* is named in
+  `CLAUDE.md` and carried through `genimerge.names.given_part`, which deliberately keeps
+  the ordinal attached to the given name — but **nothing extracts or counts them**, so
+  there is no idea how many people this touches or what the forms are. Emma's rule is
+  that it is not a Samaritan special case: *"they should all have the regnal orders put
+  on their names as qualifiers"*, anyone whose name carries an ordering. One row per
+  instance in `reports/regnal-ordinals.csv`, then the analysis and the decision, per
+  § *"Analyse this" means build a CSV of every instance*.
+- The known trap to measure rather than assume: a lone `I`, `V`, `X`, `C`, `D`, `M` is a
+  valid Roman numeral **and** a plausible middle initial, so those are reported as their
+  own class rather than folded in with `II`, `III`, `IV`.
+
 ## RUN ORDER — Emma's call, 2026-08-15
 
 **Imports first, labels last.** She asked why the seven-language labels were in
