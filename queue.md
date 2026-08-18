@@ -67,6 +67,91 @@ reconciliation, not a fast-forward.
 had to be created with `gh api ... git/refs` instead. If a push fails that way again, that
 is the workaround, not a reason to stop committing.)*
 
+## NEXT ON THIS BRANCH — Emma, 2026-08-18, in order
+
+> *"After finishing this, build the synoptic tree and remove all the steps from the queue
+> after building the synoptic tree — they depend on completed exports. And replace that
+> part with an analysis thing over potential relatives of mine who are on Google Scholar
+> or arXiv."*
+
+**1 · Build the synoptic tree.**
+
+**2 · Delete every queue step that comes after it and depends on completed exports.**
+That is the point of the branch split: the exports are the other session's job, so a step
+here that waits on one is a step that will never run here. Delete it, do not park it —
+`main` still carries it for the export session, and this branch is merged back later.
+
+**3 · Replace that part with the living-relatives analysis below.**
+
+### The living-relatives analysis — candidates Emma supplied
+
+**This is research, not editing.** Nothing here touches Wikidata and nothing here runs a
+Geni export. It reads public academic profiles and asks whether these people are relatives
+and where they would attach.
+
+**Father's side — `Borsheim` / `Børsheim`, the more unique surname.** Emma's note on the
+two Scholar profiles: *"Second one is much more plausible."*
+
+    https://scholar.google.ca/citations?hl=en&user=qg1-JFAAAAAJ
+    https://scholar.google.ca/citations?hl=en&user=riYs2qYAAAAJ     <- more plausible
+
+**ORCID, father's side.** Twelve records, supplied 2026-08-18:
+
+| ORCID | name | affiliations |
+| --- | --- | --- |
+| 0000-0001-6670-6450 | Brianna Borsheim | Atrium Health Wake Forest Baptist; Lurie Children's Hospital |
+| 0009-0001-7717-1858 | Christoffer Børsheim | Bournemouth University; CARL; University of Bergen |
+| 0009-0006-3098-6300 | Sjur Børsheim | Haukeland University Hospital |
+| 0000-0002-7842-0625 | Elisabet Børsheim | Arkansas Children's Hospital; Arkansas Children's Nutrition Center; UAMS |
+| 0000-0001-8806-9739 | Anna Børsheim | — |
+| 0000-0001-6988-413X | Preston Borsheim | — |
+| 0000-0002-2412-9939 | Kirsten Borsheim | — |
+| 0009-0007-2406-4294 | Ragnar Loken Borsheim | University of Bergen |
+| 0000-0003-4706-7790 | Ingebjørg Træland Børsheim | — |
+| 0000-0002-3831-609X | Carlin Borsheim-Black | — |
+| 0000-0003-2180-1811 | Knut Yngve Børsheim | — |
+| 0009-0009-7736-1326 | Knut Yngve Børsheim | — |
+
+Note the last two are the **same name on two ORCID records** — a duplicate-identity case
+before any genealogy is attempted.
+
+**Mother's side — the more generic surname, so expect the hit rate to be far lower.**
+
+    https://scholar.google.ca/citations?hl=en&user=kHl9AxEAAAAJ
+    https://scholar.google.ca/citations?hl=en&user=8hbkM5UAAAAJ
+    https://scholar.google.ca/citations?hl=en&user=o7sLRpcAAAAJ
+    https://scholar.google.ca/citations?hl=en&user=ZUPYVMcAAAAJ
+    https://scholar.google.ca/citations?hl=en&user=--fEQ6cAAAAJ
+    https://scholar.google.ca/citations?hl=en&user=y8WNPfcAAAAJ
+    https://scholar.google.ca/citations?hl=en&user=NsueXQ8AAAAJ
+    https://scholar.google.ca/citations?hl=en&user=1MY2YwwAAAAJ
+    https://scholar.google.ca/citations?hl=en&user=b7uk_acAAAAJ
+    https://scholar.google.ca/citations?hl=en&user=gd_Yu6gAAAAJ
+
+**arXiv papers supplied alongside them:**
+
+    https://arxiv.org/pdf/2509.21273
+    https://arxiv.org/html/2403.03920v1
+    https://arxiv.org/pdf/2005.11344
+
+### How to work it, and what NOT to conclude
+
+**A shared surname is not a relationship.** `Børsheim` is a Norwegian farm name — a
+toponym that many unrelated families took — so surname alone is the weakest possible
+evidence and the mother's side is weaker still by her own framing. The corpus already
+holds the Norwegian material; the question is whether a candidate joins it **through a
+named ancestor**, not whether they reach it at all.
+
+This is the same rule the order.life sibling repo learned the hard way and it applies
+here unchanged: *"reaches the tree: True" is not a result.* Name the people the line
+passes through, or say the line is not found.
+
+**Two questions are for Emma and must not be guessed:** whether a candidate really is a
+relative, and whether to record living people in the tree at all. Report the evidence and
+let her rule.
+
+---
+
 ## ⛔ TOP PRIORITY — the export slowness. NOTHING ELSE RUNS — Emma, 2026-08-18
 
 *"figuring out this download stuff is the top priority of this entire thing. It is THE
