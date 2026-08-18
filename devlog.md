@@ -8632,3 +8632,44 @@ All five IDs came off the canvas first try.
 than at integration time, and is overwritten each round like
 `midpoint-seeds-to-open.tsv`. The crash cost an hour of reconstruction; the file costs
 nothing.
+
+
+## 2026-08-18 — Round 12, five for five again
+
+| seed | id | tier | slot | target |
+| --- | --- | --- | --- | --- |
+| `Johann /father of Matthias/` | `6000000227299791853` | 2 | father of Matthias Johannsen, aus Wesslingburen | Matthias Claudius |
+| `Ole /father of Erich/` | `6000000227299559985` | 2 | father of Erich Olsen | Kaja Kristine Jonsdatter Samdal |
+| `NN /Kragh/` | `6000000227300008823` | 4 | father of Johanna Maria Kragh / Monrad | Alf Bugge |
+| `Sten /Nedrebø/` | `6000000227299732860` | 1 | father of Torgils Stensen Nedrebø | Torger Torgerson Vetteland |
+| `NN` | `6000000227299967829` | 3 | mother of Jacob Madsen Lindeman | Jacob Christian Lindemann Bull |
+
+All five at the 5000 bound; all five targets closed.
+
+    323 corpus exports, 785,492 distinct Geni IDs
+    chain people 11,431   held 5,925   gap 5,506   unfilled slots 5,617
+    gap 5,613 -> 5,506
+
+Eight new relationship paths of Emma's went in ahead of this round — Adasi, Aha
+(Menes), Bahá'u'lláh, Muhammad, Möngkä~Tämur, Shah Sultan Hossein Safavi, Akbar and
+Genghis Khan. They add 109 chain people of whom 73 were already held, so the chain
+total moved 11,322 → 11,431 while the gap barely felt it.
+
+**Two rules from her tonight, both now in the repo rather than in a habit.**
+
+Geni's search is banned outright — *"actively hostilely designed and built towards
+upselling you on a very expensive subscription… you should absolutely never even
+consider it."* `site:geni.com` on Google is the substitute where a lookup is genuinely
+needed, and it is no help to this loop at all: new profiles are not indexed for a while
+and every placeholder here is seconds old. The page is the only source, and clicking
+the created node gives the ID immediately.
+
+And while the queue is being worked, an ambiguity is settled by a reasonable guess with
+the reading written down, not by an `AskUserQuestion` — she is asleep for twelve hours
+and said the queue is explained sufficiently.
+
+**One mechanical note worth keeping.** A save that silently does not take looks exactly
+like a slot that was never clicked: `Ole /father of Erich/` needed a second attempt,
+and the tell was the `Add father` box still sitting there after the reload. Re-checking
+the tree after every save is what catches it; one retry is fine, a second would be the
+"second route to the same person" that `docs/export-seed-rules.md` forbids.
