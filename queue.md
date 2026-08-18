@@ -1454,12 +1454,14 @@ that must not break on 1 September buys nothing. `wikidata-edit-run.py` already 
 Emma's bot address, the agent names the tool and links the source, both entry points use
 the one constant, and **no bot script hand-writes an agent again**.
 
-**Deliberately NOT changed, and pinned by a test so it does not drift:** the read-only
-agents. `genimerge.wikidata.USER_AGENT` keeps `contact@emmaleonhart.com` (hers, 2026-08-07,
-for the bulk download) and `genimerge.wikilabels.USER_AGENT` keeps
-`emma@topazcomputing.com`. She specified the CI/CD bot and those are not it. **If the bot
-address should be used everywhere, that is one word from her** — but widening it by
-inference is how a wrong address gets believed.
+**One address, everywhere.** The first version of this change kept the read-only agents
+on `contact@emmaleonhart.com` and `emma@topazcomputing.com`, on my reasoning that she had
+named the CI/CD bot specifically — and pinned that with a test, which made my judgement
+durable. She had not asked for the distinction: *"Please do not make up your own random
+judgments. No email is better than the Topaz computing one. Just use the BenthicThoughts
+one."* So `genimerge.wikidata`, `genimerge.wikilabels`, `fetch-labels.py`,
+`import-item.py` and `collect-name-item-qids.py` carry it too, and the test now asserts
+**no agent anywhere holds a topazcomputing address**.
 
 ## The living-relatives analysis — Emma, 2026-08-18
 

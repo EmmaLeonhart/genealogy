@@ -24,10 +24,11 @@ path hack to the one code path that must not break at 03:00 on 1 September. A
 dependency-free module beside them costs nothing and gives the two agents one definition
 instead of two strings that had already drifted apart.
 
-**The read-only agents are deliberately not changed.** `genimerge.wikidata.USER_AGENT`
-carries `contact@emmaleonhart.com`, added 2026-08-07 with her say-so for the bulk
-download, and `genimerge.wikilabels.USER_AGENT` carries `emma@topazcomputing.com`. She
-specified the CI/CD bot; those are not it.
+**Every agent in the repo uses this address.** An earlier version of this change kept
+the read-only fetchers on their old contacts, reasoning that Emma had named the CI/CD bot
+specifically. She had not asked for that distinction: *"No email is better than the Topaz
+computing one. Just use the BenthicThoughts one."* So `genimerge.wikidata`,
+`genimerge.wikilabels` and the fetch scripts all carry it now too.
 """
 
 from __future__ import annotations

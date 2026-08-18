@@ -62,14 +62,16 @@ def test_no_bot_script_hand_writes_an_agent_string():
             f"{name} hand-writes a User-Agent again; import BOT_USER_AGENT instead")
 
 
-def test_the_read_only_agents_are_left_alone():
-    """Scope, pinned. She named the CI/CD bot; these are not it.
+def test_every_agent_in_the_repo_uses_the_same_contact():
+    """Emma, 2026-08-18: *"Just use the BenthicThoughts one, please!"*
 
-    If the bot address should be used everywhere that is a one-word instruction from her
-    and this test changes with it — but it should not drift there by accident, which is
-    exactly how the wrong address came to be believed in the first place.
+    An earlier version of this test pinned `contact@emmaleonhart.com` and
+    `emma@topazcomputing.com` onto the read-only agents, on my reasoning that she had
+    named the CI/CD bot specifically. That was my judgement, not her instruction, and
+    writing it into a test made it durable. She was explicit: *"No email is better than
+    the Topaz computing one. Just use the BenthicThoughts one."* One address, everywhere.
     """
-    assert "contact@emmaleonhart.com" in wikidata.USER_AGENT
-    assert "emma@topazcomputing.com" in wikilabels.USER_AGENT
-    assert bot_identity.BOT_CONTACT not in wikidata.USER_AGENT
-    assert bot_identity.BOT_CONTACT not in wikilabels.USER_AGENT
+    for agent in (wikidata.USER_AGENT, wikilabels.USER_AGENT,
+                  bot_identity.BOT_USER_AGENT):
+        assert bot_identity.BOT_CONTACT in agent, agent
+        assert "topazcomputing.com" not in agent, agent

@@ -9153,3 +9153,24 @@ to be believed in the first place.
 
 It also asserts no bot script hand-writes an agent string again, which is the defect
 rather than the symptom.
+
+### Correction, same day: one address, and a test that encoded a judgement
+
+The first version of this kept the read-only agents on `contact@emmaleonhart.com`
+and `emma@topazcomputing.com`, reasoning that Emma had named *the CI/CD bot*
+specifically — and asserted that in `tests/test_bot_identity.py`, which turned a
+guess of mine into a durable rule.
+
+She had not asked for the distinction: *"Please do not make up your own random
+judgments. No email is better than the Topaz computing one. Just use the
+BenthicThoughts one."*
+
+Every agent in the repo now carries `benthicthoughts@gmail.com` —
+`genimerge.wikidata`, `genimerge.wikilabels`, `fetch-labels.py`, `import-item.py`,
+`collect-name-item-qids.py` — and the test asserts **no agent holds a
+topazcomputing address**, which is the thing she actually said was wrong.
+
+Worth naming, because it is not the same mistake as a wrong value: I made an
+inference she had not asked for, and then wrote a test to protect it. A test is the
+most durable place to put a judgement, which makes it the worst place to put one
+that was never requested.

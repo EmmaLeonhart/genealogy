@@ -33,7 +33,7 @@ STORE = REPO_ROOT / "wikidata" / "items"
 INDEX = REPO_ROOT / "out" / "wikidata" / "store-index.sqlite3"
 
 USER_AGENT = (
-    "geni-merge/0.1 (https://github.com/EmmaLeonhart/geni; emma@topazcomputing.com) "
+    "geni-merge/0.1 (https://github.com/EmmaLeonhart/geni; benthicthoughts@gmail.com) "
     "python-urllib single-item import"
 )
 

@@ -53,7 +53,7 @@ sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 OUT = REPO / "reports" / "name-item-qids.tsv"
 ENDPOINT = "https://query.wikidata.org/sparql"
-AGENT = "genimerge/1.0 (emma@topazcomputing.com) name-item enumeration"
+AGENT = "genimerge/1.0 (benthicthoughts@gmail.com) name-item enumeration"
 
 #: The six name classes, documented in `CLAUDE.md` § *Wikidata properties*.
 CLASSES = {

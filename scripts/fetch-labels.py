@@ -35,7 +35,7 @@ ENDPOINT = "https://query.wikidata.org/sparql"
 #: Descriptive, with contact and purpose, per Wikidata's user-agent policy and
 #: `todo.md` 8a: "Wikidata is hostile - design for 429s from line one."
 USER_AGENT = (
-    "geni-merge/0.1 (https://github.com/EmmaLeonhart/geni; emma@topazcomputing.com) "
+    "geni-merge/0.1 (https://github.com/EmmaLeonhart/geni; benthicthoughts@gmail.com) "
     "python-urllib label lookup"
 )
 
