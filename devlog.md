@@ -8804,3 +8804,47 @@ was parentless, so the placeholder went directly on the target's grandfather slo
 than four generations up a side branch. Every other seed this round sat three or four
 hops out; all five closed regardless, which is the same reading as rounds 11–14 — density
 governs reach, not distance.
+
+
+## 2026-08-18 — Round 16, five for five, and the Hård af Segerstad cluster is in
+
+| seed | id | tier | target |
+| --- | --- | --- | --- |
+| `Ole /father of Peder/` | `6000000227305963833` | 2 | Anne Matea Iversdatter Øverby |
+| `NN /von der Osten/` | `6000000227306452830` | 4 | Heinrich von der Osten gen. Sacken |
+| `NN` | `6000000227306504844` | 3 | Gabriel Condulmer-Barbo |
+| `Nils /Halvmåne med en Stjärna/` | `6000000227308361821` | 1 | Karin Pedersdotter Hård av Segerstad |
+| `NN /Lange/` | `6000000227308444837` | 4 | Peder Willumsen Lange |
+
+    343 corpus exports, 865,527 distinct Geni IDs
+    chain people 11,431   held 6,262   gap 5,169   unfilled slots 5,230
+    gap 5,264 -> 5,169
+
+Six rounds, thirty exports, **thirty of thirty targets closed**. One bail, recorded
+separately: Gustaf Adolph Mattsson Martin, whose placeholder was created but whose ID
+never came off the canvas — he is back at rank 3 of the ranking, which is the loop being
+self-healing exactly as `docs/export-seed-rules.md` says.
+
+**Karin Pedersdotter Hård av Segerstad closed**, which matters beyond one slot: `queue.md`
+names **Hård af Segerstad** as the top bridge cluster of the whole agenda.
+
+## The overnight slowdown was mine, not Geni's
+
+Emma asked why the night was slow, and the answer is not the one I first gave her.
+
+| window | exports | rate |
+| --- | ---: | ---: |
+| 23:20–02:09, rounds 11–14 | 20 | **7.1/hour** |
+| 02:17–05:26, round 15 | 5 | **1.6/hour** |
+| 06:25–09:05, round 16 part | 3 | **1.1/hour** |
+
+I reported that as Geni build times stretching to 50–60 minutes. The zip timestamps say
+otherwise: overnight they land at **03:15, 04:15, 05:15, 07:15, 08:15, 09:15** — every
+one on the auto-flush cron's minute. Those are not builds, they are the interval between
+a finished export sitting ready and me next looking at it. Geni's real builds, timed when
+the page was actually being watched, ran 4–13 minutes all evening.
+
+**So the clock is the page, not the cron.** Emma: *"please don't use the ticks as a clock.
+Please use the web page changing as a clock."* And concurrency was never available to
+trade against it — *"There's no way that you can do an export concurrently. That isn't my
+decision thats geni."* Both are now in `docs/export-seed-rules.md`.
