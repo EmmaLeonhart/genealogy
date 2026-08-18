@@ -9047,3 +9047,59 @@ reported rather than assumed.
 **It will go stale again the moment the export session lands another round**, and
 that is the test doing its job rather than a problem to solve here. On this branch
 the corpus does not move, so it stays green here.
+
+## 2026-08-18 — the living-relatives first pass, and the name match that wasn't
+
+Emma's item: potential relatives on Google Scholar and arXiv. `reports/living-relatives.md`.
+Offline — nothing fetched, nothing sent, no export.
+
+**None of the twelve ORCID `Borsheim`/`Børsheim` people is in the corpus.**
+
+The corpus holds 215 records carrying the surname, 190 distinct people, 143 with a
+birth year running **1566 to 1998** — so it is not a family that stops before living
+memory. **38 were born in 1940 or later.** If these academics were in the tree, that
+is where they would be, and none of them is.
+
+### The false positive, which is the part worth keeping
+
+The first pass matched given names against all 215 and reported **5 of 12 hits** —
+Sjur, Anna, Kirsten and Knut Yngve twice. Every one matched a person born in the
+seventeenth to nineteenth century: `Sjur Ivarson`, `Anna Ivarsdtr.`, `Knut Sjurson`.
+
+Norwegian farm families recycle given names by rule, a son named for a grandfather, so
+a given-name match *inside one such family* is close to no evidence at all. Adding the
+one constraint that the match must be able to **be** the living person took it from
+five to zero.
+
+Same shape as order.life's *"reaches Aster: True is not a result"* — a measurement can
+look identical whether it means something or nothing, and the discipline is to ask
+what story it implies before reporting the number.
+
+### What the corpus family is, which narrows the question more than the names did
+
+Birth places are `Borsheim`, `Borsok`, **`Klepp`**, `Årsvoll`, **`Nærbø`** — Jæren, in
+**Rogaland**, south of Stavanger — with a **Canadian** emigrant branch at Birch Hills,
+Saskatchewan and Vancouver.
+
+The Norwegian candidates are **Hordaland**: Haukeland University Hospital and the
+University of Bergen. The American candidates are the **United States**: Arkansas,
+Wake Forest, Michigan. **Two mismatches, not one** — wrong Norwegian county, wrong
+side of the 49th parallel.
+
+`Børsheim` is a farm name, and there is a Børsheim in Hordaland and a Børsheim in
+Rogaland. Families took the name of the farm they lived on, so two unrelated families
+carry it honestly. That is why the regional split says more than the spelling does.
+
+### One decidable thing that is not genealogy
+
+`0000-0003-2180-1811` and `0009-0009-7736-1326` are both **Knut Yngve Børsheim**. The
+`0009-` prefix is a later registration, which is the usual shape of somebody
+registering twice. Resolve it before either is treated as a candidate — a duplicate
+counted twice inflates everything downstream.
+
+### Not started, deliberately
+
+The mother's side. Emma's own framing is that the surname is generic, so a surname
+census followed by a birth cohort — the method that worked above — returns noise
+there. It needs given names and affiliations to carry the weight. Ten Scholar profiles
+are recorded in `queue.md` against it.
