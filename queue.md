@@ -1,3 +1,59 @@
+## NEXT THREE, IN THIS ORDER — Emma, 2026-08-18
+
+She picked these from a question and said: *"Add all these to the queue at the beginning
+in the order provided."* So this is the running order, not a menu.
+
+### 1 · Fix the hop counter
+
+`scripts/build-nearest-wikidata.py` is committed and **wrong**. It counts hops in the
+parent/child graph the way she specified — *"a sibling is considered two hops, not one
+hop"* — and returns:
+
+    0 hops        1 person
+    1 hop         2 people
+    2 hops        6 people
+    3 hops  119,472 people      <- not a family graph
+
+**Her hypothesis, and it is the place to start:** *"probably a one-directional
+relationship or something."* The BFS builds every edge from both endpoints — a record's
+`father`/`mother` and a record's `children` — so a relationship declared on **one** side
+only still becomes an edge. If one record lists thousands of children that do not list it
+back, that record is a hub and the whole graph collapses through it at hop 3.
+
+**Until this works there is no answer to the actual question**, and the ancestor-only
+number from `build-path-to-wikidata-report.py` — 14 generations to Jørgen Erikssøn
+`Q11979685`, who is an isolate on Wikidata anyway — is the wrong measure. Find which node
+explodes, name it, and say whether it is a one-sided relationship, a placeholder everyone
+hangs off, or a bad merge. **Report it; do not merge or delete anything to make the number
+look better.**
+
+### 2 · Chase Carlin Borsheim-Black
+
+The strongest candidate: Emma's own pick from the two father-side Scholar profiles,
+Central Michigan University, and she published as plain **`C Borsheim`** through 2008
+before the married name — so the birth surname is the unhyphenated spelling, which is the
+one Emma ranks second and calls her ancestral line.
+
+Trace her birth family back two generations and see whether it meets the Jæren farm, the
+Canadian branch, or neither. **Any answer is worth having**, including neither.
+
+**Note the ordering dependency:** how many hops she is cannot be stated until item 1
+works, and hops are the whole point — *"if they are close enough to me, that's great."*
+
+### 3 · order.life item 0c — more `Q200022`-shaped gaps
+
+**This one is in the other repo**, `C:\Users\Emma\Documents\GitHub\order.life`, and is
+listed here because she gave the three as one ordered list. The hourly crons now run
+against `name-development`, so order.life work happens when this item comes up rather
+than on a tick of its own.
+
+Look for the shape the Haji repair found: a **childless** record and a **fatherless**
+record both already in the dump, whose own `P61` Wikidata ids are a short `P22` chain
+apart — meaning one missing generation is all that separates two runs that are already
+there. One created record joined two Haji fragments that had been sitting apart.
+**Report the gaps; create nothing without reading the case**, and Wikidata was wrong about
+one of them last time.
+
 # geni — Work Queue
 
 **This file holds steps not yet taken. Nothing else.** When an item is done,
