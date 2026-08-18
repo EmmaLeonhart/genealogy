@@ -8961,3 +8961,52 @@ number wins over my unstated one, and the asymmetry settles it independently: ra
 bar is reversible next run, shipping 8,560 unsanctioned Wikidata items is not. Batch
 13,320 → 6,143 creations. The 5..9 band is 8,560 names and is not junk —
 `Ingebretsdatter`, `Birgersdotter`, `Iñiguez` — so it is deferred, not rejected.
+
+## 2026-08-18 — Round 19, and the chains go flat
+
+**The two-slot population is cleared.** Phase 2's stopping condition is that every
+person on a relationship path appears exactly once — no one blocking two or more paths.
+That population went **61 → 4 today**, and the four that remain are all on hold for
+recorded reasons, not for want of trying.
+
+| | |
+| --- | ---: |
+| chain people | 11,431 |
+| held | 6,504 |
+| gap | 4,927 |
+| two-slot people | **4, all on hold** |
+
+Round 19 ran six seeds and closed **fourteen** targets:
+
+| seed | tier | closed |
+| --- | --- | --- |
+| Elias father of Maja Stina | 2 | Arvo Einar Uuskallio |
+| NN Weigel | 4 | **nine** — the whole Holzschuher / Esler / Hofstetten cluster |
+| NN Rynd | 4 | James Rhind of Carse |
+| NN Henkelmann | 4 | Sara Henkelman **and** Helena Schönbeck |
+| NN (mother of Angelerio Camilla) | 3 | Simona Fieschi |
+| NN Al-Fihri | 4 | the Al-Fihri lineage |
+
+**Near-sequential Geni IDs mean one cluster, and one export retires all of it.** The nine
+Nuremberg patricians had IDs from `6000000059484044105` to `6000000072033907827` and one
+`Forest` ball took the lot. Checking the next several ranked targets against the corpus
+after *every* integration — not just between rounds — is now the habit: the ranking is
+only regenerated per round, and a single export can make a whole run of it stale.
+
+### The first genuine locked master profile
+
+`Asma Al-Kinani`'s tree refused a parent twice, with Geni's own words: *"You cannot add a
+parent to this person because relationships have been locked on a parent or another
+sibling."* `docs/export-seed-rules.md` has always said a master profile is a skip; this is
+the first time the loop hit one and **read the reason** instead of inferring it.
+
+It is **per profile, not per cluster**. The very next person in the same Quraysh lineage,
+`Umm Malik Al-Fihri`, accepted a father without complaint. A lock is a skip, never a
+reason to abandon the neighbourhood.
+
+### Five on hold, and why each
+
+Two saturated rims with no open slot (`Ola R Sande`, `Artur Lidman`), one dense German
+noble tree with `+30` on every leaf (`Anna von Mecklenburg-Schwerin`), one frozen renderer
+(`Anna Charlotta Stenius`), one locked master profile (`Asma Al-Kinani`, since covered by
+the Al-Fihri export). All in `reports/chain-gaps-on-hold.csv`.
