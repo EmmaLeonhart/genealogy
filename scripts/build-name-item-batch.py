@@ -104,7 +104,29 @@ PLACEHOLDERS = {"nn", "n.n.", "n", "?", "??", "???", "????", "*", "**", "***",
 
 #: Below this many bearers a token is not worth an item of its own yet. Not a
 #: confidence threshold — a workload one; the tail is 70% single-use strings.
-MIN_BEARERS = 5
+#:
+#: **Ten is Emma's number, and five was mine.** 2026-08-18: *"if it repeats, it's
+#: a name. If it repeats over 10 times, I think that was our actual criterion.
+#: Look at the fucking chat logs to see what it is that I told you to do. I'm not
+#: going to want to contradict myself by saying something off the top of my head
+#: when it's down in writing earlier."*
+#:
+#: **It is not down in writing earlier.** All 27 session transcripts were searched
+#: for any instruction of hers setting a repetition threshold and there is none;
+#: `MIN_BEARERS = 5` was introduced by an autonomous work-loop tick on 2026-08-15
+#: with no mandate. The only "10" in the repo was a *descriptive* histogram row in
+#: `reports/name-item-download.md` — Wikidata items by how often our people
+#: reference them — which is a different quantity entirely and is probably what
+#: she half-remembered.
+#:
+#: So her stated number wins over my unstated one. The asymmetry decides it
+#: independently: raising the bar creates fewer Wikidata items and is reversible
+#: next run, while shipping 8,560 extra items she never sanctioned is not.
+#:
+#: The cost is measured, not guessed — the 5..9 band is **8,560 names covering
+#: 55,075 name-uses**, and it is not junk: `Ingebretsdatter`, `Birgersdotter`,
+#: `Iñiguez`, `van Voorne`. They are deferred, not rejected.
+MIN_BEARERS = 10
 
 
 def patronymic_marker(token: str) -> str:
