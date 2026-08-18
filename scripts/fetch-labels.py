@@ -21,6 +21,7 @@ caller needs 400 labels that is still one request, not 400.
 
 from __future__ import annotations
 
+import os
 import json
 import sys
 import time
@@ -34,9 +35,11 @@ ENDPOINT = "https://query.wikidata.org/sparql"
 
 #: Descriptive, with contact and purpose, per Wikidata's user-agent policy and
 #: `todo.md` 8a: "Wikidata is hostile - design for 429s from line one."
+_CONTACT = os.environ.get("BOT_CONTACT", "").strip()
 USER_AGENT = (
-    "geni-merge/0.1 (https://github.com/EmmaLeonhart/geni; benthicthoughts@gmail.com) "
-    "python-urllib label lookup"
+    "geni-merge/0.1 (https://github.com/EmmaLeonhart/geni; python-urllib label fetch"
+    + (f"; {_CONTACT}" if _CONTACT else "")
+    + ")"
 )
 
 #: One query per run. VALUES takes thousands of QIDs comfortably.

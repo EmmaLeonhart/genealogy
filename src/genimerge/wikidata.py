@@ -23,6 +23,7 @@ from __future__ import annotations
 
 import gzip
 import hashlib
+import os
 import json
 import time
 import urllib.error
@@ -48,9 +49,19 @@ API_ENDPOINT = "https://www.wikidata.org/w/api.php"
 #: way to reach whoever runs it**, and throttles harder without one. The contact
 #: is Emma's, added 2026-08-07 with her say-so before the bulk download — a
 #: ~10,300-request run is exactly the case the policy is written for.
-USER_AGENT = (
-    "genimerge/0.1 (Geni GEDCOM to Wikidata reconciliation; benthicthoughts@gmail.com)"
-)
+#: The contact, from the ``BOT_CONTACT`` secret, empty when unset. Emma, 2026-08-18:
+#: *"Ideally, the Benthic one should be a secret in the repo"*, and *"no email on the user
+#: agent is fine"* when it is not there. `scripts/bot_identity.py` reads the same variable
+#: for the two bot scripts, which cannot import this package on every code path.
+CONTACT = os.environ.get("BOT_CONTACT", "").strip()
+
+
+def _agent(tool: str, purpose: str) -> str:
+    """Tool, purpose, and the contact when there is one. Never a bare script name."""
+    return f"{tool} ({purpose}{'; ' + CONTACT if CONTACT else ''})"
+
+
+USER_AGENT = _agent("genimerge/0.1", "Geni GEDCOM to Wikidata reconciliation")
 
 #: How many Geni IDs to put in one ``VALUES`` clause. Large enough that 8766 IDs
 #: is a couple of dozen queries, small enough to stay well inside the endpoint's

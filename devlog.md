@@ -9112,8 +9112,8 @@ are recorded in `queue.md` against it.
 
 ## 2026-08-18 — the CI/CD bot had no contact at all
 
-Emma: *"User agent for my ci/cd bot should have email benthicthoughts@gmail.com."*
-Then, guessing: *"I bet it uses emma@topazcomputing.com which is wrong."*
+Emma: *"User agent for my ci/cd bot should have email Email Address B."*
+Then, guessing: *"I bet it uses Email Address T which is wrong."*
 
 **It used no email.** Both scripts `.github/workflows/wikidata-edits.yml` runs —
 `wikidata_lockout.py` and `wikidata-edit-run.py` — carried their own hand-written
@@ -9126,7 +9126,7 @@ An anonymous agent that *writes* is precisely what Wikimedia's User-Agent policy
 written for, and what it throttles hardest. Her guess was a worse outcome than the
 truth, and she was right that something was wrong.
 
-`emma@topazcomputing.com` does exist here — on `genimerge.wikilabels`'s SPARQL
+`Email Address T` does exist here — on `genimerge.wikilabels`'s SPARQL
 lookup, a read-only fetcher the workflow never invokes. A real string in the wrong
 place.
 
@@ -9145,7 +9145,7 @@ and "can reach" did the deciding here, not tidiness.
 ### The scope is pinned by a test, not by intention
 
 `tests/test_bot_identity.py` asserts the read-only agents **keep their own
-addresses** — `contact@emmaleonhart.com` and `emma@topazcomputing.com` — and that the
+addresses** — `contact@emmaleonhart.com` and `Email Address T` — and that the
 bot contact does *not* appear in either. She specified the CI/CD bot. If the bot
 address should be everywhere that is one word from her and the test changes with it;
 it should not drift there while nobody is looking, which is how a wrong address comes
@@ -9157,7 +9157,7 @@ rather than the symptom.
 ### Correction, same day: one address, and a test that encoded a judgement
 
 The first version of this kept the read-only agents on `contact@emmaleonhart.com`
-and `emma@topazcomputing.com`, reasoning that Emma had named *the CI/CD bot*
+and `Email Address T`, reasoning that Emma had named *the CI/CD bot*
 specifically — and asserted that in `tests/test_bot_identity.py`, which turned a
 guess of mine into a durable rule.
 
@@ -9165,7 +9165,7 @@ She had not asked for the distinction: *"Please do not make up your own random
 judgments. No email is better than the Topaz computing one. Just use the
 BenthicThoughts one."*
 
-Every agent in the repo now carries `benthicthoughts@gmail.com` —
+Every agent in the repo now carries `Email Address B` —
 `genimerge.wikidata`, `genimerge.wikilabels`, `fetch-labels.py`, `import-item.py`,
 `collect-name-item-qids.py` — and the test asserts **no agent holds a
 topazcomputing address**, which is the thing she actually said was wrong.

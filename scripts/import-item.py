@@ -27,14 +27,13 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT / "src"))
 
-from genimerge import wikistore  # noqa: E402
+from genimerge import wikidata as _wd, wikistore  # noqa: E402
 
 STORE = REPO_ROOT / "wikidata" / "items"
 INDEX = REPO_ROOT / "out" / "wikidata" / "store-index.sqlite3"
 
-USER_AGENT = (
-    "geni-merge/0.1 (https://github.com/EmmaLeonhart/geni; benthicthoughts@gmail.com) "
-    "python-urllib single-item import"
+USER_AGENT = _wd._agent(
+    "geni-merge/0.1", "https://github.com/EmmaLeonhart/geni; single-item import"
 )
 
 

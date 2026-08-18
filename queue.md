@@ -1428,8 +1428,8 @@ these four sections unless Emma has said otherwise by then.
 
 ## The CI/CD bot's User-Agent — Emma, 2026-08-18
 
-> *"User agent for my ci/cd bot should have email benthicthoughts@gmail.com."*
-> *"Idk what email it has but I bet it uses emma@topazcomputing.com which is wrong."*
+> *"User agent for my ci/cd bot should have email Email Address B."*
+> *"Idk what email it has but I bet it uses Email Address T which is wrong."*
 
 **It had no email at all**, which is worse than a wrong one: Wikimedia's policy asks for a
 contact and throttles hardest on an anonymous agent that *writes*.
@@ -1439,7 +1439,7 @@ hand-written string, already drifted apart from the other:
     wikidata_lockout.py    "genimerge-bot/0.1 (wikidata lockout check)"
     wikidata-edit-run.py   "genimerge-bot/0.1 (https://github.com/EmmaLeonhart/geni)"
 
-`emma@topazcomputing.com` is real but sits on `genimerge.wikilabels`'s SPARQL lookup, a
+`Email Address T` is real but sits on `genimerge.wikilabels`'s SPARQL lookup, a
 read-only fetcher the workflow never invokes — her guess named a real string in the wrong
 place.
 
@@ -1455,7 +1455,7 @@ Emma's bot address, the agent names the tool and links the source, both entry po
 the one constant, and **no bot script hand-writes an agent again**.
 
 **One address, everywhere.** The first version of this change kept the read-only agents
-on `contact@emmaleonhart.com` and `emma@topazcomputing.com`, on my reasoning that she had
+on `contact@emmaleonhart.com` and `Email Address T`, on my reasoning that she had
 named the CI/CD bot specifically — and pinned that with a test, which made my judgement
 durable. She had not asked for the distinction: *"Please do not make up your own random
 judgments. No email is better than the Topaz computing one. Just use the BenthicThoughts
