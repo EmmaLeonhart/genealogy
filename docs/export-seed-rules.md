@@ -101,6 +101,16 @@ so a person skipped this round either gets covered by somebody else's export or
 simply comes back at the top of the next list. Nothing is lost by skipping and
 real time is lost by not skipping.
 
+**Never run a search to recover an ID. Bail.** Emma, 2026-08-18: *"bruh why did
+you attempt a search?"* and *"you do not search you just bail if you run into
+issues."* The ID comes off the page — click the newly created node in the tree and
+it opens the profile in a new tab whose URL carries the ID. If it does not come off
+the page, that individual is done: drop it and take the next one. Searching Geni for
+the name you just typed is the second route to the same person that the paragraph
+below forbids, and it is slow *and* unreliable — `NN Holst` was searched 37 times in
+one session and 40 minutes later in the next, and never appeared, because Geni's
+search index lags profile creation by an unbounded amount.
+
 **So the moment a page fights back — a frozen renderer, a node that will not open,
 a dialog that will not close, an ID that will not come off the page — abandon that
 individual and take the next one on the list.** Do not invent a second route to

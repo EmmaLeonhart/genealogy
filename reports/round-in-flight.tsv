@@ -1,10 +1,7 @@
-# Round 11 seeds, created 2026-08-17 23:xx. Written before the exports run so a
-# crashed session can pick the batch up: the seed IDs are the whole state.
-# Exports are Forest/5000, strictly one at a time; zips land in ~/Downloads and
-# are filed into exports/chain-seeds/ only once every one of them is down.
+# The seeds of the round being exported RIGHT NOW, written at creation time and
+# overwritten every round — the same handoff shape as midpoint-seeds-to-open.tsv,
+# not a history. It exists because the 2026-08-17 crash left three downloaded zips
+# with nothing in the repo saying what they were: the seed IDs are the whole state
+# of a round, and they are cheap to write down and expensive to reconstruct.
+# Empty below the header means no round is mid-flight.
 seed_geni_id	seed_name	tier	slot	target_geni_id	target_name
-6000000227299181836	NN	3	mother of Gullsmed Jochum Jacobsen Kirsebom	6000000003264489915	Sogneprest Daniel Sørensen Schive
-6000000227299182891	NN	3	mother of Voldemar II von Rosen	6000000003295167768	Johann I von Rosen auf Roop
-6000000227299240825	Tollak /Anda/	1	father of Tollak Tollaksen Anda	6000000003492089048	Arnt Reiarson Øksnevad
-6000000227299323845	NN	3	mother of Dr. med. Johan Carl Brun	6000000003793509580	Constance Frederikke Sophie Janson
-6000000227299323884	Michel /Kukola/	1	father of Henrik Michelsson Kukola	6000000004133082228	Edvard Johan Horelli

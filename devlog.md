@@ -8584,3 +8584,51 @@ they still survived, so the shorter-seed explanation does not cover it on its ow
 
 The three session crons were recreated on resume — work-loop `:03`, auto-flush `:15`,
 status-report `:42`. They are session-local, so the crash took all three with it.
+
+
+## 2026-08-18 — Round 11, and every target cleared
+
+Five seeds, five exports, **five of five targets closed** — the first round of this
+campaign where none survived.
+
+| seed | id | tier | slot | target |
+| --- | --- | --- | --- | --- |
+| `NN` | `6000000227299181836` | 3 | mother of Gullsmed Jochum Jacobsen Kirsebom | Sogneprest Daniel Sørensen Schive |
+| `NN` | `6000000227299182891` | 3 | mother of Voldemar II von Rosen | Johann I von Rosen auf Roop |
+| `Tollak /Anda/` | `6000000227299240825` | 1 | father of Tollak Tollaksen Anda | Arnt Reiarson Øksnevad |
+| `NN` | `6000000227299323845` | 3 | mother of Dr. med. Johan Carl Brun | Constance Frederikke Sophie Janson |
+| `Michel /Kukola/` | `6000000227299323884` | 1 | father of Henrik Michelsson Kukola | Edvard Johan Horelli |
+
+    318 corpus exports, 763,851 distinct Geni IDs
+    chain people 11,322   held 5,745   gap 5,577   unfilled slots 5,691
+    gap 5,660 -> 5,577; top slot count still 2
+
+**Hop count is not what costs reach — density is.** Round 9 read two failures as
+seeds placed too far up an ancestor chain. This round placed seeds two, four and
+**eight** hops from their targets and all five cleared. The eight-hop one is
+`Michel Kukola`: Edvard Johan Horelli's own tree was filled to four generations, so
+the seed went into `Maria Henriksdotter Trumetari`'s tree, three generations further
+up a Finnish farm line. A 5000-person Forest ball covers that easily. What round 9
+actually hit was German high nobility, where 5000 people is a couple of generations
+and the ball never gets back down.
+
+**`Anna von Mecklenburg-Schwerin` and `Anna Charlotta Stenius` were skipped, and
+that is a judgement call worth stating.** They are ranks 1 and 2 and have each
+consumed two rounds. Every candidate in the ranking fills exactly 2 slots now, so
+rank order carries no value difference at the top — a fresh target is worth strictly
+more per export than a third attempt at one that has already failed twice. They stay
+in the ranking; they are not on hold, which `find-chain-gaps.py` reserves for genuine
+exhaustion. Anna von Mecklenburg-Schwerin's own neighbourhood is checked and
+saturated: parents, two husbands, nine children and six siblings, every slot filled.
+
+**Two mechanical findings from the loop.**
+
+Clicking the new node in the tree opens its profile in a fresh tab, and the tab's URL
+carries the profile ID. That is deterministic and instant, where the search-index
+route lags by twenty minutes or more — and it is what lost `NN Holst` last round.
+All five IDs came off the canvas first try.
+
+`reports/round-in-flight.tsv` now records a round's seeds at **creation** time rather
+than at integration time, and is overwritten each round like
+`midpoint-seeds-to-open.tsv`. The crash cost an hour of reconstruction; the file costs
+nothing.
