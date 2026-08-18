@@ -83,73 +83,6 @@ here that waits on one is a step that will never run here. Delete it, do not par
 
 **3 · Replace that part with the living-relatives analysis below.**
 
-### The living-relatives analysis — candidates Emma supplied
-
-**This is research, not editing.** Nothing here touches Wikidata and nothing here runs a
-Geni export. It reads public academic profiles and asks whether these people are relatives
-and where they would attach.
-
-**Father's side — `Borsheim` / `Børsheim`, the more unique surname.** Emma's note on the
-two Scholar profiles: *"Second one is much more plausible."*
-
-    https://scholar.google.ca/citations?hl=en&user=qg1-JFAAAAAJ
-    https://scholar.google.ca/citations?hl=en&user=riYs2qYAAAAJ     <- more plausible
-
-**ORCID, father's side.** Twelve records, supplied 2026-08-18:
-
-| ORCID | name | affiliations |
-| --- | --- | --- |
-| 0000-0001-6670-6450 | Brianna Borsheim | Atrium Health Wake Forest Baptist; Lurie Children's Hospital |
-| 0009-0001-7717-1858 | Christoffer Børsheim | Bournemouth University; CARL; University of Bergen |
-| 0009-0006-3098-6300 | Sjur Børsheim | Haukeland University Hospital |
-| 0000-0002-7842-0625 | Elisabet Børsheim | Arkansas Children's Hospital; Arkansas Children's Nutrition Center; UAMS |
-| 0000-0001-8806-9739 | Anna Børsheim | — |
-| 0000-0001-6988-413X | Preston Borsheim | — |
-| 0000-0002-2412-9939 | Kirsten Borsheim | — |
-| 0009-0007-2406-4294 | Ragnar Loken Borsheim | University of Bergen |
-| 0000-0003-4706-7790 | Ingebjørg Træland Børsheim | — |
-| 0000-0002-3831-609X | Carlin Borsheim-Black | — |
-| 0000-0003-2180-1811 | Knut Yngve Børsheim | — |
-| 0009-0009-7736-1326 | Knut Yngve Børsheim | — |
-
-Note the last two are the **same name on two ORCID records** — a duplicate-identity case
-before any genealogy is attempted.
-
-**Mother's side — the more generic surname, so expect the hit rate to be far lower.**
-
-    https://scholar.google.ca/citations?hl=en&user=kHl9AxEAAAAJ
-    https://scholar.google.ca/citations?hl=en&user=8hbkM5UAAAAJ
-    https://scholar.google.ca/citations?hl=en&user=o7sLRpcAAAAJ
-    https://scholar.google.ca/citations?hl=en&user=ZUPYVMcAAAAJ
-    https://scholar.google.ca/citations?hl=en&user=--fEQ6cAAAAJ
-    https://scholar.google.ca/citations?hl=en&user=y8WNPfcAAAAJ
-    https://scholar.google.ca/citations?hl=en&user=NsueXQ8AAAAJ
-    https://scholar.google.ca/citations?hl=en&user=1MY2YwwAAAAJ
-    https://scholar.google.ca/citations?hl=en&user=b7uk_acAAAAJ
-    https://scholar.google.ca/citations?hl=en&user=gd_Yu6gAAAAJ
-
-**arXiv papers supplied alongside them:**
-
-    https://arxiv.org/pdf/2509.21273
-    https://arxiv.org/html/2403.03920v1
-    https://arxiv.org/pdf/2005.11344
-
-### How to work it, and what NOT to conclude
-
-**A shared surname is not a relationship.** `Børsheim` is a Norwegian farm name — a
-toponym that many unrelated families took — so surname alone is the weakest possible
-evidence and the mother's side is weaker still by her own framing. The corpus already
-holds the Norwegian material; the question is whether a candidate joins it **through a
-named ancestor**, not whether they reach it at all.
-
-This is the same rule the order.life sibling repo learned the hard way and it applies
-here unchanged: *"reaches the tree: True" is not a result.* Name the people the line
-passes through, or say the line is not found.
-
-**Two questions are for Emma and must not be guessed:** whether a candidate really is a
-relative, and whether to record living people in the tree at all. Report the evidence and
-let her rule.
-
 ---
 
 ## ⛔ TOP PRIORITY — the export slowness. NOTHING ELSE RUNS — Emma, 2026-08-18
@@ -1492,57 +1425,90 @@ scanned, 19,023 carrying an ordinal — 8,093 unambiguous Roman, 5,892 single-le
   the merge now would turn it green until the next round and cost a 5-minute, 4.5 GB pass
   each time. It goes green and stays green here, once the corpus stops moving.
 
-## Identify Geni profiles with Wikidata items, structurally
+## What was here, and why it is gone — Emma, 2026-08-18
 
-- Walk the relationships, not the names. Start from anybody holding **both** a Geni ID
-  and a QID, walk `P22` *father* / `P25` *mother* / `P40` *child* / `P26` *spouse*
-  against our own edges, and where both sides have a person in the same position, that
-  is a merge.
-- **Name similarity is a check on a pair the structure already proposed, never a way to
-  find one.** Emma, 2026-08-18: *"This is only the case, obviously, for individuals who
-  are actually linked so we're merging on the tree. We're not going to do any kind of
-  text-related similarity or any of that bullshit."* The deleted `reconcile` matcher
-  stays deleted.
-- Output is our own QID ↔ Geni ID correspondence, built from the merges, plus a
-  placeholder for everyone on Geni and not on Wikidata.
+Four sections stood between the synoptic tree and the end of this file:
 
-## Labels, in this order, once the correspondence is large
+* Identify Geni profiles with Wikidata items, structurally
+* Labels, in this order, once the correspondence is large
+* The three spine lines from Charlemagne to Emma
+* Wire up CI/CD so the committed JSONs fire from 2026-09-01
 
-- **`mul` first — everything gets one.** Then **`en` on everything**, then **`ja`**,
-  then **`zh`**, then the remaining languages.
-- `scripts/labels.py` is the single place that decides what a label may say; `NN` and
-  `Private` are preserved in `mul` and given descriptive labels elsewhere, per
-  `CLAUDE.md`.
-- Build all the JSONs. They are committed, not held in `out/`.
+**Every one of them waits on completed exports**, directly or through the chain
+merge → correspondence → labels → JSONs → pipeline. Exports are the other session's
+job and never happen on this branch, so on this branch they are steps that cannot
+run. Emma: *"remove all the steps from the queue after building the synoptic tree —
+they depend on completed exports — and replace that part with an analysis thing over
+potential relatives of mine who are on Google Scholar or arXiv."*
 
-## The three spine lines from Charlemagne to Emma
+**They are not lost.** `main` still carries all four for the export session, and this
+branch is merged back only once that session is done — so read the deletion as *not
+here*, not as *cancelled*. Whoever handles that merge should take `main`'s side on
+these four sections unless Emma has said otherwise by then.
 
-- **This is built BEFORE the CI/CD wiring**, because it queues its own special JSONs
-  and the pipeline has to have them to fire.
-- Three lines, hers:
-  - **Charlemagne → Emma through her paternal grandfather**
-  - **Charlemagne → Emma through her maternal grandmother**
-  - **the `Burekenship` line on her mother's side** — spelling is as dictated and is
-    not confirmed; check it against `paths/` and the corpus before building on it, and
-    do not silently correct it to a similar surname.
-- The lines are **spines, not the deliverable**: *"trying to kind of more or less go
-  through these lines as the spines but hit a sufficiently large amount of nearby
-  people who have Wikidata so that it practically connects up a lot of people."*
-- From 2026-09-01 there must be **at least one item that tries to connect these
-  people**.
+## The living-relatives analysis — Emma, 2026-08-18
 
-## Wire up CI/CD so the committed JSONs fire from 2026-09-01
+**This is research, not editing.** Nothing here touches Wikidata and nothing here runs a
+Geni export. It reads public academic profiles and asks whether these people are relatives
+and where they would attach.
 
-- The JSONs are already in git; the pipeline reads them and starts executing edits on
-  Wikidata on **1 September 2026**.
-- **Never add a `push:` or `pull_request:` trigger** — `CLAUDE.md` § *Cost* forbids it
-  and this does not need one. A `schedule:` cron plus `workflow_dispatch:` is what this
-  wants, and it leaves that rule intact.
-- She expects it to be **stateful about the repo**: *"something that would do some
-  degree of stateful editing of the repo through GitHub Actions, including something
-  that would take out this part of the repo once it's done."* So the workflow commits
-  back — marking a batch executed, and removing the spine-line queue once it has run.
-- The edit algorithm it executes is already specified above in § *THE EDIT ALGORITHM*:
-  100 edits a day chosen at random from the eligible set, service-area gate,
-  Geni-IDs-as-sources de-prioritised to 5–25 a day. **Do not normalise away the bias
-  toward her neighbourhood** — it is deliberate.
+**Father's side — `Borsheim` / `Børsheim`, the more unique surname.** Emma's note on the
+two Scholar profiles: *"Second one is much more plausible."*
+
+    https://scholar.google.ca/citations?hl=en&user=qg1-JFAAAAAJ
+    https://scholar.google.ca/citations?hl=en&user=riYs2qYAAAAJ     <- more plausible
+
+**ORCID, father's side.** Twelve records, supplied 2026-08-18:
+
+| ORCID | name | affiliations |
+| --- | --- | --- |
+| 0000-0001-6670-6450 | Brianna Borsheim | Atrium Health Wake Forest Baptist; Lurie Children's Hospital |
+| 0009-0001-7717-1858 | Christoffer Børsheim | Bournemouth University; CARL; University of Bergen |
+| 0009-0006-3098-6300 | Sjur Børsheim | Haukeland University Hospital |
+| 0000-0002-7842-0625 | Elisabet Børsheim | Arkansas Children's Hospital; Arkansas Children's Nutrition Center; UAMS |
+| 0000-0001-8806-9739 | Anna Børsheim | — |
+| 0000-0001-6988-413X | Preston Borsheim | — |
+| 0000-0002-2412-9939 | Kirsten Borsheim | — |
+| 0009-0007-2406-4294 | Ragnar Loken Borsheim | University of Bergen |
+| 0000-0003-4706-7790 | Ingebjørg Træland Børsheim | — |
+| 0000-0002-3831-609X | Carlin Borsheim-Black | — |
+| 0000-0003-2180-1811 | Knut Yngve Børsheim | — |
+| 0009-0009-7736-1326 | Knut Yngve Børsheim | — |
+
+Note the last two are the **same name on two ORCID records** — a duplicate-identity case
+before any genealogy is attempted.
+
+**Mother's side — the more generic surname, so expect the hit rate to be far lower.**
+
+    https://scholar.google.ca/citations?hl=en&user=kHl9AxEAAAAJ
+    https://scholar.google.ca/citations?hl=en&user=8hbkM5UAAAAJ
+    https://scholar.google.ca/citations?hl=en&user=o7sLRpcAAAAJ
+    https://scholar.google.ca/citations?hl=en&user=ZUPYVMcAAAAJ
+    https://scholar.google.ca/citations?hl=en&user=--fEQ6cAAAAJ
+    https://scholar.google.ca/citations?hl=en&user=y8WNPfcAAAAJ
+    https://scholar.google.ca/citations?hl=en&user=NsueXQ8AAAAJ
+    https://scholar.google.ca/citations?hl=en&user=1MY2YwwAAAAJ
+    https://scholar.google.ca/citations?hl=en&user=b7uk_acAAAAJ
+    https://scholar.google.ca/citations?hl=en&user=gd_Yu6gAAAAJ
+
+**arXiv papers supplied alongside them:**
+
+    https://arxiv.org/pdf/2509.21273
+    https://arxiv.org/html/2403.03920v1
+    https://arxiv.org/pdf/2005.11344
+
+### How to work it, and what NOT to conclude
+
+**A shared surname is not a relationship.** `Børsheim` is a Norwegian farm name — a
+toponym that many unrelated families took — so surname alone is the weakest possible
+evidence and the mother's side is weaker still by her own framing. The corpus already
+holds the Norwegian material; the question is whether a candidate joins it **through a
+named ancestor**, not whether they reach it at all.
+
+This is the same rule the order.life sibling repo learned the hard way and it applies
+here unchanged: *"reaches the tree: True" is not a result.* Name the people the line
+passes through, or say the line is not found.
+
+**Two questions are for Emma and must not be guessed:** whether a candidate really is a
+relative, and whether to record living people in the tree at all. Report the evidence and
+let her rule.
