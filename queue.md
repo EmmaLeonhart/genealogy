@@ -1232,6 +1232,17 @@ asleep.**
 - **Keep the pre-merge tree.** `reports/descendants-backtest-2026-08-07.md` exists only
   because `out/merged-134.ged` was kept before a batch landed.
 
+- **Regenerate and commit `reports/merge.md` in the same step.**
+  `tests/test_merge_real_exports.py::test_the_committed_merge_report_still_describes_these_exports`
+  asserts that file byte-equals a fresh merge of `exports/`, and it is **red right now**:
+  the chain-seed campaign adds five exports roughly every forty minutes, so the committed
+  report goes stale within one round of any regeneration. Measured 2026-08-18 on the full
+  suite — **1 failed, 3611 passed in 77 minutes**, and that one failure is this. The test
+  is correct and is not to be weakened, skipped or marked xfail; it is doing exactly its
+  job, which is to say the committed artifact no longer describes the corpus. Re-running
+  the merge now would turn it green until the next round and cost a 5-minute, 4.5 GB pass
+  each time. It goes green and stays green here, once the corpus stops moving.
+
 ## Identify Geni profiles with Wikidata items, structurally
 
 - Walk the relationships, not the names. Start from anybody holding **both** a Geni ID
