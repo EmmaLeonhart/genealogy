@@ -8915,3 +8915,49 @@ Still open and deliberately not fixed: `scripts/build-edit-objects.py` writes `j
 from `cjk_names` and `en`/`mul` from `label_en` with no marker guard at either of its two
 emission sites. Its output is `out/wikidata/edits.json`, which is gitignored and so is not
 one of the committed batches — the same defect, in a file nothing fires from yet.
+
+## 2026-08-18 — Name censuses, and a declared output that was never written
+
+Emma's parallel-work instruction — *"I think you can do some work parallel to this
+actually. Processing the geni names"* — while the export loop waits on Geni builds.
+
+**`reports/regnal-ordinals.{csv,md}`** — 19,450 people of 883,478 carry an ordinal in
+the given-name portion. `roman` 8,341, `single-letter` 6,031, `arabic` 5,078. Her ruling
+on what this population is: *"regular ordinals simply are not a thing. There won't be
+regular ordinals here because somebody would need to be like a monarch or something."*
+
+The markdown half of that report **did not exist until today**. `OUT_MD` was declared in
+the first version and never written, so a path the module names as its own output was
+not there — worse than having no path, because it reads as a file somebody could open.
+Two false-positive classes stay documented in the script rather than silently filtered:
+`DI` (3,076, the Italian preposition, not 501) and `LI` (99, the surname, pulled in
+because `given_part` strips slashes).
+
+**`reports/middle-initials.{csv,md}`** — 26,337 single-letter given tokens across 25,353
+people; 12,805 in the middle-initial position, 7,296 of them one of `I V X L C D M` and
+so indistinguishable in isolation from a regnal ordinal. A superset of the regnal
+script's `single-letter` class, which tests only those seven letters and cannot see
+`John Q Adams`.
+
+**`reports/mechanical-translation.md`** — the ceiling on assembling person labels from
+name-item labels. The raw per-item share for Japanese is 9.0% and is the wrong number to
+plan from: the 824,358 name items are dominated by long-tail surnames nobody here bears.
+Weighted by occurrences, of 969,743 name-uses, 366,502 (37.8%) resolve to exactly one
+name item — and **71.0% of those already carry a Japanese label**. The bottleneck is not
+Japanese coverage; it is that 55.5% of name-uses point at no Wikidata name item at all.
+
+**`reports/name-label-gaps.{csv,md}`** — the worklist that follows: 12,880 name items
+carrying our people's names and missing a label in at least one of `mul`/`en`/`ja`/`zh`,
+ranked by bearers. It proposes no labels, because what katakana a name takes is a reading
+rather than a derivation.
+
+**`MIN_BEARERS` 5 → 10.** Emma: *"if it repeats over 10 times, I think that was our
+actual criterion. Look at the fucking chat logs… I'm not going to want to contradict
+myself by saying something off the top of my head when it's down in writing earlier."*
+It is not down in writing earlier — all 27 transcripts were searched and no instruction
+of hers sets a threshold; the 5 came from an autonomous work-loop tick with no mandate,
+and the only "10" in the repo is a histogram row about a different quantity. Her stated
+number wins over my unstated one, and the asymmetry settles it independently: raising the
+bar is reversible next run, shipping 8,560 unsanctioned Wikidata items is not. Batch
+13,320 → 6,143 creations. The 5..9 band is 8,560 names and is not junk —
+`Ingebretsdatter`, `Birgersdotter`, `Iñiguez` — so it is deferred, not rejected.

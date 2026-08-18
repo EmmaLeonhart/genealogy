@@ -117,23 +117,29 @@ seven-language item further down.
 of relationship words. `en` is 1,549 of them and is safe; the other nine total 685
 and nobody has checked the phrasing.
 
-## Name processing, run in parallel with the export loop — Emma, 2026-08-18
+## Name processing — what is left and needs Emma, 2026-08-18
 
-*"I think you can do some work parallel to this actually. Processing the geni names."*
-The chain loop is bound by Geni's build time and leaves the machine idle, so name work
-runs alongside it. Everything here is **local and offline** — no Geni, no Wikidata.
+The censuses she asked for are built and committed; this is only the residue that
+needs a ruling rather than a measurement. `devlog.md` has the numbers.
 
-- **Census every regnal ordinal in the corpus.** `P7338` *regnal ordinal* is named in
-  `CLAUDE.md` and carried through `genimerge.names.given_part`, which deliberately keeps
-  the ordinal attached to the given name — but **nothing extracts or counts them**, so
-  there is no idea how many people this touches or what the forms are. Emma's rule is
-  that it is not a Samaritan special case: *"they should all have the regnal orders put
-  on their names as qualifiers"*, anyone whose name carries an ordering. One row per
-  instance in `reports/regnal-ordinals.csv`, then the analysis and the decision, per
-  § *"Analyse this" means build a CSV of every instance*.
-- The known trap to measure rather than assume: a lone `I`, `V`, `X`, `C`, `D`, `M` is a
-  valid Roman numeral **and** a plausible middle initial, so those are reported as their
-  own class rather than folded in with `II`, `III`, `IV`.
+- **Two marker phrases found by the mononym census and NOT added to the vocabulary.**
+  `Name Not Known` (45 people) and `Unknown Wife` (37). The first is a marker by her own
+  *"words meaning unknown"* rule and slips through only because matching is whole-label
+  and exact, so the listed `not known` never fires on the longer phrase. The second is a
+  description rather than a name — the `NN` in `mul` plus a descriptive label case. Both
+  are held because she has twice said widening that vocabulary is her call.
+- **Middle initials in non-Latin languages.** `reports/middle-initials.md` — 12,805
+  tokens in the middle-initial position across the corpus. Her words: *"As far as the
+  middle initial people, I'm not really sure what to do with them, at least going into
+  other languages."* An initial is not a name and has no katakana, so the three options
+  — drop it, transliterate the letter, keep it Latin inside a non-Latin label — are a
+  presentation decision, not a derivation.
+- **`scripts/build-edit-objects.py` writes labels with no marker guard**, at both of its
+  emission sites: `ja`/`zh` from `cjk_names` and `en`/`mul` from `label_en`. Same defect
+  as the one fixed in `walk-structural-merge.py`, and it is only harmless today because
+  its output is `out/wikidata/edits.json`, which is gitignored and fires nothing. Fix it
+  before anything reads that file.
+
 
 ## RUN ORDER — Emma's call, 2026-08-15
 

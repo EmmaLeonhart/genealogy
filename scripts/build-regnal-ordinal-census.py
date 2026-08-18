@@ -194,13 +194,55 @@ def main() -> None:
     kinds = Counter(r["kind"] for r in rows)
     tokens = Counter(r["ordinal_token"].upper() for r in rows if r["kind"] == "roman")
     with_chain = sum(1 for r in rows if r["patronymic_links"])
+
+    # `OUT_MD` was declared from the first version and never written, so the
+    # report this module names as its own output simply did not exist. Every
+    # sibling census writes one; a declared-but-unwritten path is worse than no
+    # path, because it reads as a file somebody could go and open.
+    lines = [
+        "# Names in the corpus that carry an ordinal", "",
+        f"**{len(rows):,} people** of {len(people):,}, one row each in "
+        "`regnal-ordinals.csv`. The ordinal is searched for in the given-name "
+        "portion only — everything before the first GEDCOM slash — and never in "
+        "the first token, because a name that opens with a numeral is a record "
+        "that begins oddly rather than somebody's regnal number.", "",
+        "**Emma, 2026-08-18, on what this population actually is:** *\"regular "
+        "ordinals simply are not a thing. There won't be regular ordinals here "
+        "because somebody would need to be like a monarch or something.\"* So the "
+        "roman class is the real one and the other two want reading with care.", "",
+        "| kind | people | |", "| --- | ---: | --- |",
+    ]
+    notes = {
+        "roman": "`II`, `III`, `IV` — unambiguous at two characters or more",
+        "single-letter": "a lone `I V X L C D M`: a numeral **and** the commonest "
+                         "Anglophone middle initial, so never folded in with the "
+                         "roman count",
+        "arabic": "`12`, `14th`",
+    }
+    for kind, n in kinds.most_common():
+        lines.append(f"| {kind} | {n:,} | {notes.get(kind, '')} |")
+    lines += [
+        "", f"{with_chain:,} of them also carry a patronymic chain.", "",
+        "**Two false-positive classes were found by reading the rows**, and both "
+        "are excluded in code rather than filtered here: `DI` (3,076) is the "
+        "Italian preposition, not 501, so a token must equal its own upper-casing; "
+        "and `LI` (99) is the surname, pulled in because `given_part` strips "
+        "slashes, so the search runs on the pre-slash portion only.", "",
+        "## Most common roman tokens", "", "| token | people |", "| --- | ---: |",
+    ]
+    for token, n in tokens.most_common(20):
+        lines.append(f"| {token} | {n:,} |")
+    lines.append("")
+    OUT_MD.write_text("\n".join(lines), encoding="utf-8")
+
     print(f"{len(people):,} people in the corpus")
     print(f"{len(rows):,} carry an ordinal in the given part")
     for kind, n in kinds.most_common():
         print(f"  {kind:<14} {n:,}")
     print(f"  of which with a patronymic chain: {with_chain:,}")
     print(f"top roman tokens: {tokens.most_common(12)}")
-    print(f"wrote {OUT_CSV.relative_to(sources.REPO_ROOT)}")
+    print(f"wrote {OUT_CSV.relative_to(sources.REPO_ROOT)} "
+          f"and {OUT_MD.relative_to(sources.REPO_ROOT)}")
 
 
 if __name__ == "__main__":
