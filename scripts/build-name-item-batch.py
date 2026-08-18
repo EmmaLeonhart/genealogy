@@ -105,28 +105,29 @@ PLACEHOLDERS = {"nn", "n.n.", "n", "?", "??", "???", "????", "*", "**", "***",
 #: Below this many bearers a token is not worth an item of its own yet. Not a
 #: confidence threshold — a workload one; the tail is 70% single-use strings.
 #:
-#: **Ten is Emma's number, and five was mine.** 2026-08-18: *"if it repeats, it's
-#: a name. If it repeats over 10 times, I think that was our actual criterion.
-#: Look at the fucking chat logs to see what it is that I told you to do. I'm not
-#: going to want to contradict myself by saying something off the top of my head
-#: when it's down in writing earlier."*
+#: **Five is Emma's decision, 2026-08-18: _"Back to 5"_.** That is the whole reason
+#: for the value; everything below is why the question was worth putting to her.
+#:
+#: She had recalled a different number — *"if it repeats, it's a name. If it repeats
+#: over 10 times, I think that was our actual criterion. Look at the fucking chat
+#: logs to see what it is that I told you to do. I'm not going to want to contradict
+#: myself by saying something off the top of my head when it's down in writing
+#: earlier."*
 #:
 #: **It is not down in writing earlier.** All 27 session transcripts were searched
-#: for any instruction of hers setting a repetition threshold and there is none;
-#: `MIN_BEARERS = 5` was introduced by an autonomous work-loop tick on 2026-08-15
-#: with no mandate. The only "10" in the repo was a *descriptive* histogram row in
-#: `reports/name-item-download.md` — Wikidata items by how often our people
-#: reference them — which is a different quantity entirely and is probably what
-#: she half-remembered.
+#: and no instruction of hers sets a repetition threshold. The 5 sitting here came
+#: from an autonomous work-loop tick on 2026-08-15 with no mandate, and the only
+#: "10" in the repo is a *descriptive* histogram row in
+#: `reports/name-item-download.md` — Wikidata items counted by how often our people
+#: reference them — which is a different quantity and is probably what she
+#: half-remembered. It was briefly raised to 10 on the reasoning that her stated
+#: number should beat my unstated one; shown the actual cost, she chose 5.
 #:
-#: So her stated number wins over my unstated one. The asymmetry decides it
-#: independently: raising the bar creates fewer Wikidata items and is reversible
-#: next run, while shipping 8,560 extra items she never sanctioned is not.
-#:
-#: The cost is measured, not guessed — the 5..9 band is **8,560 names covering
-#: 55,075 name-uses**, and it is not junk: `Ingebretsdatter`, `Birgersdotter`,
-#: `Iñiguez`, `van Voorne`. They are deferred, not rejected.
-MIN_BEARERS = 10
+#: The cost is what decided it, and it was measured rather than argued: the 5..9
+#: band is **8,560 names covering 55,075 name-uses**, and it is not junk —
+#: `Ingebretsdatter`, `Birgersdotter`, `Iñiguez`, `van Voorne`. Those are Nordic
+#: patronymics and Iberian surnames, created now rather than left to a later pass.
+MIN_BEARERS = 5
 
 
 def patronymic_marker(token: str) -> str:

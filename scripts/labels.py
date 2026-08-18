@@ -126,6 +126,15 @@ WORDS_MEANING_UNKNOWN = {
     "unknown",        # 2,127
     "ukjent",         #   188  Norwegian
     "no name",        #    92
+    "name not known", #    45  Emma, 2026-08-18, asked which of two phrases the
+                      #        mononym census turned up were markers: "Both are
+                      #        markers". This one slipped through only because
+                      #        matching is whole-label and exact, so the `not
+                      #        known` already listed never fired on the longer
+                      #        phrase.
+    "unknown wife",   #    37  A description of a relationship rather than a name,
+                      #        and her ruling puts it here: not a `P735` given
+                      #        name, `NN` in `mul`, descriptive labels elsewhere.
     "без име",        #    52  Bulgarian / Macedonian
     "ukendt",         #    18  Danish
     "okänd",          #    17  Swedish
@@ -188,8 +197,27 @@ PLACEHOLDER_FORMS = (
 
 
 def is_placeholder_form(text: str) -> bool:
-    """Whether this whole field or label means *no name here*."""
-    return (text or "").strip().lower() in PLACEHOLDER_FORMS
+    """Whether this whole field or label means *no name here*.
+
+    **A label every component of which is a marker is a marker.** Emma's rule,
+    2026-08-18, chosen over listing the spellings one at a time: *"All-marker
+    components rule"*. Matching whole labels exactly had let `? ?` (13 rows),
+    `N.N. N.N.` (8) and `NN .` (3) through, each of them two markers with a space
+    between, while `?`, `n.n.` and `.` were all listed individually.
+
+    The generalisation is what makes it worth having — the next such spelling is
+    caught the day it appears rather than after somebody notices it in a batch.
+
+    **It stops exactly where real data starts.** `NN Barba` splits to
+    `["nn", "barba"]`, `barba` is not a marker, so the label is not one and the
+    surname is not thrown away. That is the 3,605-surname rule in `CLAUDE.md`, and
+    `leads_with_a_marker()` below is what the caller uses to handle that case.
+    """
+    low = (text or "").strip().lower()
+    if low in PLACEHOLDER_FORMS:
+        return True
+    parts = low.split()
+    return len(parts) > 1 and all(p in PLACEHOLDER_FORMS for p in parts)
 
 
 def leads_with_a_marker(text: str) -> bool:
@@ -218,10 +246,28 @@ def is_unnamed(gedcom_name: str) -> bool:
     `NN` in `mul`, and still gets a descriptive `en` where a relative supplies
     one. Nobody is dropped, which is what she objected to when `nn` was quietly
     added to `NOT_A_NAME`.
+
+    **It consults the whole marker vocabulary, not `_NN_FORMS`.** It used to test
+    the six `nn` spellings alone, so a person whose entire recorded name was
+    `Unknown Wife` — or `Ukjent`, or `未知` — was treated as *named* and their
+    marker was written into `mul` **and** `en` as though it were what they were
+    called. Five items in `reports/wikidata-orderlife.json` carried
+    `Unknown Wife` in both slots that way.
+
+    Emma settled it on 2026-08-18, asked which of two such phrases counted:
+    *"Both are markers"*, alongside her earlier *"Ukjent and 未知 get the mul NN
+    treatment"*. That treatment is precisely this branch — `NN` in `mul`, a
+    descriptive phrase in `en` — so routing these here is what her rule asks for,
+    and keeping a second narrower list next to `PLACEHOLDER_FORMS` is the
+    duplication this module's *one set, replacing three* note exists against.
+
+    Note this widens **routing**, not suppression: every one of these people is
+    still created and still readable through `mul`. That distinction is the one
+    she objected to losing when `nn` was quietly added to `NOT_A_NAME`.
     """
     if is_redacted(gedcom_name):
         return True
-    return display_name(gedcom_name).strip().lower() in _NN_FORMS | {""}
+    return is_placeholder_form(display_name(gedcom_name))
 
 
 def labels_for(gedcom_name: str, descriptive: str = "") -> dict[str, str]:
@@ -239,11 +285,43 @@ def labels_for(gedcom_name: str, descriptive: str = "") -> dict[str, str]:
     **`en` never falls back to the raw string.** That is the "Private" label this
     module exists to stop, and it is why the marker goes in `mul` instead of
     leaving the item blank enough to tempt someone into it.
+
+    **A marker with a real surname behind it keeps the surname — in `mul` only.**
+    `N.N. binti Lubb` and `NN (Wife of Marcus Aemilius Lepidus)` are the shape, and
+    they were reaching `en` verbatim, marker and all, on 575 rows. Emma chose the
+    split on 2026-08-18: *generated description in `en` instead*, so
+
+        N.N. binti Lubb   ->  mul  NN binti Lubb
+                              en   daughter of Lubb        (ours, from relatives)
+
+    `mul` keeps `NN <surname>` because the surname is real data and
+    `CLAUDE.md` records that discarding these loses 3,605 surnames. `en` gets the
+    phrase this project builds, never Geni's string — which is what stops the
+    marker appearing in a local language at all.
+
+    Without a `descriptive` from the caller, `en` is simply absent. That is the
+    honest outcome: the item is still readable through `mul`, and inventing an
+    English label out of the marker is the thing being prevented.
     """
     if not is_unnamed(gedcom_name):
-        name = label_for(gedcom_name)
-        if name:
-            return {"mul": name, "en": name}
+        name = display_name(gedcom_name)
+        if leads_with_a_marker(name):
+            rest = " ".join(name.split()[1:]).strip()
+            # **A parenthetical is a description, not a surname.**
+            # `NN (Wife of Marcus Aemilius Lepidus)` carries no family name at all
+            # — somebody wrote the relationship into the name field. Her model for
+            # `mul` is `NN` or `NN <surname>`, so a bracketed phrase is dropped
+            # rather than promoted into the multilingual label, and the same fact
+            # reaches `en` properly through `descriptive`.
+            if rest.startswith("(") and rest.endswith(")"):
+                rest = ""
+            out = {"mul": f"{UNNAMED_MARKER} {rest}".strip()}
+            if descriptive.strip():
+                out["en"] = descriptive.strip()
+            return out
+        label = label_for(gedcom_name)
+        if label:
+            return {"mul": label, "en": label}
     out = {"mul": UNNAMED_MARKER}
     if descriptive.strip():
         out["en"] = descriptive.strip()

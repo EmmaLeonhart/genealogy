@@ -61,7 +61,10 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO / "src"))
+sys.path.insert(0, str(REPO / "scripts"))
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
+import labels as _labels  # noqa: E402  — the single marker vocabulary
 
 CENSUS = REPO / "reports" / "marker-labels.csv"
 OUT = REPO / "reports" / "wikidata-marker-label-fixes.json"
@@ -100,10 +103,23 @@ def is_a_plausible_name(text: str) -> bool:
     or they do not, and a string with no unbracketed word in it names nobody — so
     this rejects them and the caller falls back to `NN`. A repair that cannot be
     trusted is worse than no repair: it ships a label nobody would think to check.
+
+    **A repair that yields another marker is not a repair.** `?? Unknown` had its
+    word marker taken out and shipped `??` as both `mul` and `en` on four items —
+    a Wikidata label made entirely of question marks. The brackets balanced and
+    there was a bare token, so both tests above passed it. `labels.is_placeholder_form`
+    is the check that catches it, and deferring to that module rather than adding a
+    local test is the *one set, replacing three* rule in `scripts/labels.py`.
+
+    Rejecting here is the right outcome rather than a loss: the caller falls back to
+    the unnamed treatment, so the person still gets `NN` in `mul` and stays
+    findable. What is prevented is only the false label.
     """
     if text.count("(") != text.count(")"):
         return False
     if text.count("[") != text.count("]"):
+        return False
+    if _labels.is_placeholder_form(text):
         return False
     bare = [t for t in text.split()
             if not (t.startswith("(") or t.endswith(")")

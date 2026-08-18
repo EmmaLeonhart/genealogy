@@ -52,7 +52,39 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO / "src"))
+sys.path.insert(0, str(REPO / "scripts"))
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+
+import labels as _labels  # noqa: E402  — the single marker vocabulary
+
+
+def label_set(label: str) -> dict:
+    """`mul` and `en` for a derived label, with markers kept out of `en`.
+
+    This script copied the derived label straight into both slots, which shipped
+    `Private` as a Wikidata label on one item and `ukjent Knutsdatter` on another.
+    `CLAUDE.md` is explicit that `Private` must never be a label at all, and Emma
+    2026-08-16: *"no local language should have"* `NN`.
+
+    The same three cases the rest of the pipeline uses:
+
+    * the whole label is a marker  -> `mul: NN`, no `en`
+    * a marker leading a real surname -> `mul: NN <surname>`, no `en`; the surname
+      is real data and discarding it loses the 3,605 surnames `CLAUDE.md` counts
+    * anything else -> the label, unchanged, in both
+
+    `en` is simply absent rather than guessed: this script has no relatives to
+    build a description from, and inventing one is the failure being prevented.
+    """
+    text = (label or "").strip()
+    if not text:
+        return {}
+    if _labels.is_redacted(text) or _labels.is_placeholder_form(text):
+        return {"mul": _labels.UNNAMED_MARKER}
+    if _labels.leads_with_a_marker(text):
+        rest = " ".join(text.split()[1:]).strip()
+        return {"mul": f"{_labels.UNNAMED_MARKER} {rest}".strip()}
+    return {"en": text, "mul": text}
 
 BRIDGE = REPO / "reports" / "path-bridge-targets.csv"
 FAMILY = REPO / "reports" / "derived-family.csv"
@@ -184,7 +216,7 @@ def main() -> int:
             "type": "create_individual",
             "source": "bridge trunk - agenda task A",
             "subject": {"qid": None, "geni_id": gid},
-            "labels": {"en": label, "mul": label} if label else {},
+            "labels": label_set(label),
             "paths_through": trunk[gid],
             "statements": statements,
             "links": links,

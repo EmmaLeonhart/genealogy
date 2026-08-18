@@ -87,14 +87,26 @@ def is_placeholder_label(label: str) -> bool:
     the specific thing forbidden — the first version of this walk's label set put
     it there for 10 people whose derived label is literally `NN`, plus the
     `NN <surname>` forms, by copying `label_en` across without looking at it.
+
+    **The head check defers to `labels.leads_with_a_marker`, and used to be its own
+    copy.** Testing `head in PLACEHOLDER_LABELS` made a leading full stop a marker,
+    so `. Bagration-Davitashvili`, `. Weill` and `? binti Pg Seri Lela` counted as
+    markers on the strength of their punctuation. Emma ruled on that specific point
+    on 2026-08-17 — **words yes, punctuation no**, punctuation being a marker *only
+    as the whole label* — precisely so that `Nechama (?) Heller` and
+    `George Clark, II - farmer` are left alone. A stray leading dot before a real
+    surname is a typo, not somebody saying the name is unknown.
+
+    A label that is *nothing but* punctuation is still a marker: that is the
+    `low in PLACEHOLDER_LABELS` line above, and `labels.is_placeholder_form` also
+    catches `? ?` and `NN .`, where every component is one.
     """
     low = (label or "").strip().lower()
-    if not low or low in PLACEHOLDER_LABELS:
+    if not low or _labels.is_placeholder_form(low):
         return True
     if "private" in low:
         return True
-    head = low.split()[0]
-    return head in PLACEHOLDER_LABELS
+    return _labels.leads_with_a_marker(low)
 
 
 def label_set_for(row: dict) -> dict:

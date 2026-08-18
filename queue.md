@@ -35,6 +35,71 @@ them.
 
 ---
 
+## ⛔ TOP PRIORITY — the export slowness. NOTHING ELSE RUNS — Emma, 2026-08-18
+
+*"figuring out this download stuff is the top priority of this entire thing. It is THE
+top priority. You should not be doing any other work."*
+
+**Exactly one thing may interrupt it**, in her words: *"downloading an exported GEDCOM,
+then creating a new individual and exporting from there, because that is time-dependent."*
+Everything else in this file waits behind this item, including the name work, the label
+batches and the marker fixes.
+
+### The measurement, and what it is made of
+
+**The data is the session transcripts**, `~/.claude/projects/C--Users-Emma-Documents-GitHub-geni/*.jsonl`.
+Every tool call and every result carries a UTC timestamp, so they *are* the log of when
+each export was requested and when its page was next seen. `scripts/measure-export-build-times.py`
+reads them; `reports/export-build-times.{csv,md}` is the output.
+
+Two earlier attempts were worse and should not be revived: timing from **file mtimes**
+(`measure-export-throughput.py`) is biased because a late download makes the next build
+look short, and matching a page's text to **every** task id in the message attributes one
+poll's state to other open tabs.
+
+| day | exports | Geni build ≥ | cycle | latency here | exports/hour |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 2026-08-17 | 53 | 4.2 min | 8.0 min | 3.8 min | 7.5 |
+| 2026-08-18 | 8 | 3.5 min | 12.3 min | 8.8 min | 4.9 |
+
+**Geni is not slower. It is slightly faster.** Build times fell 4.2 → 3.5 min median and
+the worst case fell 9.8 → 6.1 min. Size does not explain it either: `r = 0.13` against
+megabytes, and today's files are *smaller*.
+
+**The lost throughput is latency on this side** — 3.8 → 8.8 min per cycle, from running
+multi-gigabyte scans and batch regenerations between polls. That is the whole difference.
+
+### Still to do on this item
+
+- **Corroborate against Geni's own emails.** Her suggestion: *"I get emails saying when
+  the downloads are finished. I might even get emails saying when the export starts."*
+  That is a server-side timestamp, independent of anything measured here, and it settles
+  the question rather than resting on my own logs.
+- **Poll tightly and run nothing heavy in parallel** until throughput is back near 7.5/hour.
+
+### Contingency — Plan B, NOT started, and only if rate limiting turns out real
+
+Her design, recorded because it was dictated and must not be reconstructed from memory.
+A fourth dataset beside Wikidata, Geni, and order.life: **the Geni page scrape**.
+
+- Per individual: open their page, **open the relatives section** — the links are not in
+  the DOM until it is expanded — and whatever else needs clicking, then save the page.
+- Save into **`geni-scraping/`**, *not* `geni_pages/`.
+- Capture: their name, whatever data the page shows, and **every relative shown in the
+  relatives tab — siblings, parents, spouses — with names and Geni IDs**. It also gives
+  sex, which she notes simplifies things.
+- **Once a minute, no concurrency**, *"so it doesn't look bad"*.
+- **Bail immediately on any suspicious behaviour.**
+- Scope: *"use this to complete the missing bridge profiles first"*. If rate limiting is
+  real, the **sparse-region exports and the Descendants work go on hold indefinitely**,
+  moved to the end of the queue after the CI/CD item.
+- Her own estimate of the prize: given how flat the chains already are, *"it's probably
+  relatively on the small side."*
+
+**Trigger:** only if the evidence clearly shows rate limiting or a server problem. It does
+not today. If it ever does: finish the in-flight export, download it, integrate it,
+rebuild the chains, and only then switch.
+
 ## FOUND BY THE RESUME REVIEW, 2026-08-17 — three things she asked for and did not get
 
 Her instruction of 2026-08-16 was to review the last few days before doing anything

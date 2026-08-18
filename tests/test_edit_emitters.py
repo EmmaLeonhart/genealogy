@@ -223,14 +223,25 @@ def test_no_created_person_carries_a_marker_as_a_local_label():
     copying `label_en` across from `derived-labels.csv` without reading it, which
     put `NN`, `NN NN` and `NN Hildesheim` into `en` for the people whose derived
     label is exactly that.
+
+    Naming two files here was itself the bug the second time. `Unknown Wife` sat
+    in **both** `mul` and `en` on five items of `wikidata-orderlife.json`, which
+    this test did not look at, so a marker Emma had just ruled on
+    (2026-08-18, *"Both are markers"*) went on passing. Every batch that emits
+    `labels` is checked now, discovered by globbing rather than by a list somebody
+    has to remember to extend — a new emitter is covered the day it lands.
     """
     walk = _load("walk-structural-merge")
     assert walk.is_placeholder_label("NN")
     assert not walk.is_placeholder_label("Hugues I d'Amboise")
 
-    for path in (REPORTS / "wikidata-structural-placeholders.json",
-                 REPORTS / "wikidata-placeholder-labels.json"):
-        for edit in _edits(path):
+    checked = 0
+    for path in sorted(REPORTS.glob("wikidata-*.json")):
+        edits = _edits(path)
+        if not any((e.get("labels") or {}) for e in edits):
+            continue
+        checked += 1
+        for edit in edits:
             labels = edit.get("labels") or {}
             for language, value in labels.items():
                 if language == "mul":
@@ -243,6 +254,10 @@ def test_no_created_person_carries_a_marker_as_a_local_label():
                     continue
                 assert not walk.is_placeholder_label(value), (
                     f"{edit['id']} puts the marker {value!r} in {language}")
+
+    # A glob that matches nothing would make this test vacuously green, which is
+    # exactly the failure mode the rewrite was meant to remove.
+    assert checked >= 3, f"only {checked} label-emitting batches found"
 
 
 def test_no_structural_correspondence_gives_one_profile_two_items():
