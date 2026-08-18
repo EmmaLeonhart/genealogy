@@ -216,6 +216,20 @@ Once the individual exists, export from **their** profile:
 3. Submit, leave the page open — it refreshes itself when the file is built — then
    click **Download My GEDCOM File**.
 
+**One at a time is GENI's limit, not a preference.** Emma, 2026-08-18: *"There's no
+way that you can do an export concurrently. That isn't my decision thats geni."* So
+there is no throughput dial here and nothing to trade off — a second export cannot be
+in flight, short of a second Geni account. When builds are slow the rate is slow, and
+the only thing the loop controls is dead time between one zip landing and the next
+export being submitted.
+
+**Poll the page, not a clock.** Her instruction the same day: *"please don't use the
+ticks as a clock. Please use the web page changing as a clock."* The download page
+flips to *Your GEDCOM File is Ready to Download* the moment the build finishes; that
+flip is the signal to act. Waiting for an hourly cron tick to notice instead can add
+most of an hour per export — measured overnight 2026-08-18, where letting the ticks
+drive dropped the rate from 7.1 exports/hour to about 1.
+
 **Strictly one at a time.** Emma, 2026-08-17: the batch of seeds *"needs to be
 exported after these people have the GEDCOMs exported and downloaded"*, and
 sequence is the point. Queue the next export only once the previous zip is on
