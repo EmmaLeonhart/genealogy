@@ -145,6 +145,25 @@ neighbourhood, one export either way.
 marker, or to accept `father of NN`. Raise it with Emma when the loop is not
 mid-flight.
 
+## The ID can be lost AFTER the profile is created, and that is still a bail
+
+Seen 2026-08-18 on `Margareta Eriksdotter`, four generations up `Gustaf Adolph Mattsson
+Martin`'s tree. The father was created — her node went from no badge to `+1`, which is
+Geni saying the parent exists — but the `+1` would not expand on two attempts, the
+renderer stopped answering screenshots, and the profile's own page was never reached.
+No ID, so no export.
+
+**Bail on the individual, not on the placeholder.** The created person stays: it is a
+legitimate insertion at a real open slot, it is attached to the tree, and a later round
+or a later export may well pick it up. What is abandoned is *this round's* attempt at
+that target, and the round takes the next disjoint candidate from the ranking instead of
+running four seeds.
+
+**Do not go looking for the ID.** Geni's search is banned outright (§ above), and the
+only other route — hunting the person through a saved page or a relationship panel — is
+exactly the "second route to the same person" this file forbids. Two tries at the same
+route is the limit.
+
 ## A master profile is a skip
 
 Sometimes a slot looks addable and is not — Geni's **master profiles** are locked
