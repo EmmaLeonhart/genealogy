@@ -1,5 +1,13 @@
 # Name objects: what exists, what does not, and what kind of names these are
 
+> **STALE, 2026-08-18.** The "no item found" counts below are built from only the
+> name items our own people already point at, and that was superseded three days after
+> this report was written. `scripts/collect-name-item-qids.py` enumerated **824,358**
+> name items by `P31` across the six name classes on 2026-08-15 and **823,907 of them
+> (99.9%) are in the local store**. Quoting the figures below as current coverage is
+> wrong; check the store. This warning exists because the report was quoted that way.
+
+
 Scheduled by Emma for midnight. Every distinct name is a row in
 `reports/name-objects.csv`, ranked by how many people carry it.
 

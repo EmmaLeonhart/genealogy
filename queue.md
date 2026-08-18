@@ -1241,6 +1241,32 @@ asleep.**
 - The export mechanics are unchanged: `docs/export-seed-rules.md` § *Running the
   export*, strictly one at a time, zips filed into `exports/` in bulk at the end.
 
+## Regnal ordinals on the Samaritan high priests — Emma, 2026-08-18
+
+**Runs immediately before the mass merge, and not before then.** Her placement:
+*"place them at the point before the mass merging… Queue it right before the mass merge
+thing so that we can deal with more important stuff."* Read as the synoptic-tree build
+below, which is the point the trees are merged; nothing about it needs doing earlier.
+
+**What is missing.** `reports/wikidata-samaritan-succession.json` models the office and
+its succession — `P39` *position held* on all 21, with `P1545` *series ordinal* carrying
+the priest's number in the office on 18 of them — but **`P7338` *regnal ordinal* appears
+in none of the three Samaritan batches**. Geni carries the ordinals: `Yoseph II`,
+`Levi VI`, `Elazar XX`, `Aharon IV`, `Aabed-El V`.
+
+`P1545` on the office and `P7338` on the name are different statements about different
+things: one numbers the man among the holders of the post, the other numbers him among
+the men of that name. Having the first is not having the second.
+
+**Do not model regnal ordinals as anything resembling a middle name.** Emma, 2026-08-18:
+*"regnal ordinals fucking cannot behave like a middle name."* `P7338` is a qualifier on
+the `P735` *given name* statement, per `name modelling.txt`, and that is all it is.
+
+**The measurement is already done, so this item is emission only.**
+`scripts/build-regnal-ordinal-census.py` → `reports/regnal-ordinals.csv`: 848,381 people
+scanned, 19,023 carrying an ordinal — 8,093 unambiguous Roman, 5,892 single-letter,
+5,038 Arabic. The Samaritan subset is the part this item needs.
+
 ## Build the synoptic tree
 
 - Re-merge the whole corpus into `out/merged.ged` once the exports above are all in.
