@@ -43,6 +43,27 @@ csv.field_size_limit(10_000_000)
 EMMA = "6000000087535357291"
 
 
+def _ids(field: str | None) -> list[str]:
+    """Geni ids out of a `` | ``-separated column.
+
+    **This is the bug that made the first run useless.** The column is pipe-separated
+    with spaces around the pipes, and splitting on whitespace turned every ``|`` into a
+    person. Every record with more than one child then linked to that one fake node, so
+    it reached degree **119,472** and the graph collapsed through it: 1 person at zero
+    hops, 2 at one, 6 at two, and 119,472 at three.
+
+    A separator is not a person, and the shape of the failure said so plainly -- a family
+    graph does not multiply by twenty thousand in one step. Ids are all digits, so
+    anything else is dropped rather than trusted.
+    """
+    out = []
+    for tok in (field or "").replace("|", " ").split():
+        tok = tok.strip()
+        if tok.isdigit():
+            out.append(tok)
+    return out
+
+
 def main() -> int:
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
     args = [a for a in sys.argv[1:] if not a.startswith("--")]
@@ -64,13 +85,11 @@ def main() -> int:
                 if parent:
                     adj[me].add(parent)
                     adj[parent].add(me)
-            for kid in (r.get("children") or "").split():
-                if kid:
-                    adj[me].add(kid)
-                    adj[kid].add(me)
-            for sp in (r.get("spouses") or "").split():
-                if sp:
-                    spouse[me].add(sp)
+            for kid in _ids(r.get("children")):
+                adj[me].add(kid)
+                adj[kid].add(me)
+            for sp in _ids(r.get("spouses")):
+                spouse[me].add(sp)
 
     if start not in adj:
         print(f"{start} has no parent or child edge in derived-family.csv")

@@ -9174,3 +9174,63 @@ Worth naming, because it is not the same mistake as a wrong value: I made an
 inference she had not asked for, and then wrote a test to protect it. A test is the
 most durable place to put a judgement, which makes it the worst place to put one
 that was never requested.
+
+## 2026-08-18 — the hop counter, and the separator that became a person
+
+Queue item 1. `scripts/build-nearest-wikidata.py` works. **The answer is 9 hops.**
+
+### The bug was mine and the shape of it announced itself
+
+The first run gave 1 person at zero hops, 2 at one, 6 at two, and **119,472 at
+three**. Emma's read was *"probably a one-directional relationship or something"* —
+right in spirit, wrong in detail, and the detail is worse.
+
+`derived-family.csv`'s `children` column is **pipe-separated with spaces**:
+`id | id | id`. I split it on whitespace, so every `|` became a person. Every record
+with more than one child then linked to that one fake node, which reached **degree
+119,472** and connected the entire corpus to itself at hop three.
+
+**A family graph does not multiply by twenty thousand in one step.** The number said
+so before any debugging did, which is the part worth keeping: the result was
+discarded on its shape, before its cause was known.
+
+### The answer
+
+    hops  people  with an item
+       1       2
+       2       5
+       3      15
+       4      45
+       5      78
+       6      95
+       7     235
+       8     539
+       9   1,203             1   <- Racin Hansen Kolnes [Q30019076]
+      10   2,511             2
+      11   3,623             2
+      12   5,055             4
+
+**Nearest person already carrying a Wikidata item: 9 hops.** Racin Hansen Kolnes,
+born 1898, by:
+
+    Emma Leonhart ← Richard Wade Borsheim ← Randolph Paulus Borsheim
+      ← Reinhert Borsheim ← Rasmus (Paulson) Borsheim
+      ← Berta Serina Rasmusdatter Kolnes ← Berta Marie Larsdatter Kolnes
+      ← Ommund Rasmussen Kolnes ← Berta Maria Ommundsdatter Sør-Kolnes
+      ← Racin Hansen Kolnes
+
+Four Borsheim generations, then across into the Kolnes family — **the Jæren line**,
+which is what the surname census said her ancestry is.
+
+**Against the ancestor-only measure this replaces, 9 hops beats 14 generations**, and
+beats it twice over: the 14-generation answer was Jørgen Erikssøn `Q11979685`, who is
+an *isolate* on Wikidata and joins nothing.
+
+### What this gives the actual question
+
+Her goal is a relative close enough to be worth making notable, and **the item does
+not have to exist yet**. So the useful column is the middle one: **95 people at six
+hops, 235 at seven, 539 at eight**. That is the population to look for a publication
+record in — and it is small enough to read.
+
+Nobody at 8 hops or nearer carries an item. The first is at 9.

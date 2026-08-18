@@ -3,30 +3,6 @@
 She picked these from a question and said: *"Add all these to the queue at the beginning
 in the order provided."* So this is the running order, not a menu.
 
-### 1 · Fix the hop counter
-
-`scripts/build-nearest-wikidata.py` is committed and **wrong**. It counts hops in the
-parent/child graph the way she specified — *"a sibling is considered two hops, not one
-hop"* — and returns:
-
-    0 hops        1 person
-    1 hop         2 people
-    2 hops        6 people
-    3 hops  119,472 people      <- not a family graph
-
-**Her hypothesis, and it is the place to start:** *"probably a one-directional
-relationship or something."* The BFS builds every edge from both endpoints — a record's
-`father`/`mother` and a record's `children` — so a relationship declared on **one** side
-only still becomes an edge. If one record lists thousands of children that do not list it
-back, that record is a hub and the whole graph collapses through it at hop 3.
-
-**Until this works there is no answer to the actual question**, and the ancestor-only
-number from `build-path-to-wikidata-report.py` — 14 generations to Jørgen Erikssøn
-`Q11979685`, who is an isolate on Wikidata anyway — is the wrong measure. Find which node
-explodes, name it, and say whether it is a one-sided relationship, a placeholder everyone
-hangs off, or a bad merge. **Report it; do not merge or delete anything to make the number
-look better.**
-
 ### 2 · Chase Carlin Borsheim-Black
 
 The strongest candidate: Emma's own pick from the two father-side Scholar profiles,
