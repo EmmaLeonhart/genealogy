@@ -84,6 +84,36 @@ informative part.
 
 ---
 
+## `-ez` IS a patronymic, and it is read as one
+
+**Emma, 2026-08-18:** *"-ez is a real patronymic in some cases lol and we do treat it as
+one in historical contexts."*
+
+So `Juana Jiménez de Castro` is **tier 1**, not tier 4: the patronymic names her father
+`Jimeno`, and the surname he takes is `de Castro` — the toponymic — because tier 1 is
+explicit that *the patronymic must not survive into the surname*.
+
+    Juana Jiménez de Castro   ->   Jimeno /de Castro/
+
+**This was got wrong once**, on 2026-08-18, on that exact person. The reasoning was that
+`-ez` had fossilised into an inherited surname by the 1400s and that reading it live would
+invent a man. That is a real linguistic fact and it is **not** how this project reads
+them; her ruling is that the historical context is where the patronymic is live. The
+profile created under the wrong reading is `NN Jiménez de Castro`
+(`6000000227314434935`) — it carries both faults, the `NN` and the patronymic left in the
+surname. It is left as-is rather than edited: the export it seeded already ran and closed
+its target, and re-editing a placeholder costs loop time for no gain.
+
+The same reading applies to the other Iberian patronymic endings — `-az`, `-iz`, `-oz`,
+`-es` in Portuguese — and they will recur, since the remaining gap is thousands of people
+wide and Iberian lines are well represented in it.
+
+**Contrast with the Nordic farm name, which is the opposite call.** `Ingeborg Olsdotter
+Gilja` and `Seri Mikkelsdatter Mjåland` take tier 2, not tier 1, because `Gilja` and
+`Mjåland` are farm names both spouses carry rather than a patrilineal surname — there the
+suffix is a live patronymic *and* the surname is not the father's. Two different traps
+that look alike: read the suffix and the surname separately.
+
 ## Bail on anything weird. The loop is self-healing
 
 **Emma, 2026-08-17, and this is the governing rule for the whole loop:** *"if you
