@@ -982,6 +982,30 @@ So position alone does not make a middle name — the second given token is a mi
 name **only** if it is not patronymic. `Q245025` and `Q110874` are decided by what
 the token *is*, and `P1545` numbers them either way.
 
+### Working the queue: GUESS. Do not ask
+
+**Emma, 2026-08-18:** *"as for everything in the queue, I'm gonna say don't do an
+ask-user question because I have explained everything sufficiently… when going through
+the queue right now, you just make a reasonable guess whenever you have some sort of an
+ambiguity."*
+
+So while the queue is being worked, an ambiguity is **resolved by making a reasonable
+guess and recording it**, not by stopping. This suspends the *ask on ambiguity* habit
+for queue execution specifically — it does not repeal § *One name item per USAGE* or
+`name modelling.txt` § *edge cases*, which are about the name model and are decisions
+she wants to make herself once she is back.
+
+**What "recording it" means, because a guess that vanishes is just an unlogged
+decision:** write the reading you took and the reading you rejected next to the work —
+the queue item, the devlog entry, or the module docstring — plus what would falsify it.
+`queue.md` § *Mass export from every profile Emma has added* is the worked example: two
+readings of one dictated phrase, the one chosen, and the observation that would switch
+it.
+
+**She was asleep from roughly 2026-08-18 00:40 PST for twelve hours** and asked for no
+`AskUserQuestion` in that window. The guess rule is what makes that workable rather
+than a stall.
+
 ### `name modelling.txt` is the authority on how a name is modelled
 
 **Emma wrote it by hand, 2026-08-15, in the repo root.** It supersedes what this
