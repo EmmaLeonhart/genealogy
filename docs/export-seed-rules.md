@@ -101,6 +101,19 @@ so a person skipped this round either gets covered by somebody else's export or
 simply comes back at the top of the next list. Nothing is lost by skipping and
 real time is lost by not skipping.
 
+**Geni's own search is never used for anything, ever.** Emma, 2026-08-18:
+*"Geni search should absolutely never be used whatsoever because it is actively
+hostilely designed and built towards upselling you on a very expensive subscription.
+It does not give any useful information whatsoever… you should absolutely never even
+consider it."* That is a blanket ban, not advice about ID recovery — it applies
+anywhere in this repo, and it is a stronger claim than "the index lags": the results
+are engineered to sell a subscription rather than to answer the query.
+
+**The substitute, where a lookup is genuinely needed, is `site:geni.com` on Google** —
+and it does **not** help here, because *"new individuals take a while to be indexed"*
+and every profile this loop creates is seconds old. For a freshly created placeholder
+there is no search of any kind that works. The page is the only source.
+
 **Never run a search to recover an ID. Bail.** Emma, 2026-08-18: *"bruh why did
 you attempt a search?"* and *"you do not search you just bail if you run into
 issues."* The ID comes off the page — click the newly created node in the tree and
