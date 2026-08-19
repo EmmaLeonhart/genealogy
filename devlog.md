@@ -10130,3 +10130,42 @@ adding 966 romanised rows did not move the accuracy.
 receive pinyin. And 博爾濟吉特 appears in the output as `ja` on 2 records — wrong in the
 other direction, put there by the traversal before this rule existed. Neither is caused by
 this change; both are now visible because of it.
+
+## 2026-08-19 — the person's own Wikidata item, the strongest evidence, was unused
+
+Chasing the cheapest identifications in `unidentified-clusters.md` — the records carrying
+their own Wikidata item — turned up a gap larger than the 58 records that prompted it.
+**5,222 of the Han-only records are linked to an item, and none of the culture rules ever
+looked at one.**
+
+An item states its own language in its labels: a `ja` label written in kana, a `ko` label
+in hangul, a `zh` label with no Japanese one beside it. That is the item declaring what it
+is, not an inference from a neighbour or a surname, so it now outranks everything.
+**4,684 records settled by it.**
+
+**It contradicted our inference on 155 records, and the direction matters: 148 we called
+Chinese are Korean**, their items carrying a hangul label and no kana. With `ko` suppressed
+those were being handed **pinyin readings for Korean people** — precisely the failure the
+姜/韓/崔 caveat predicted one commit earlier, now measured rather than feared. Four more are
+Japanese where we said Chinese, three Korean where we said Japanese. **Zero disagreements
+remain.**
+
+`ko` suppressed rises **88 → 1,040**, and that is the whole gain: ~950 records that were
+getting a confident wrong Chinese label now get none. zh romanised falls 12,817 → 12,038
+for the same reason. **The external check against Wikidata's own English labels rose 91.8%
+→ 93.2%** (2,798 of 3,001).
+
+**A `zh` and a `ja` label together with no kana is ambiguous and is not used** — 523
+records. A Chinese name item routinely carries a `ja` label of the same characters, so the
+pair says nothing; only kana, hangul, or a `zh` label standing alone is decisive.
+
+**Placement was the fiddly part and the first attempt was wrong.** Put before the other
+rules it crashed — `culture` is not defined yet — and would have been overwritten anyway,
+because the name-fact rules assign unconditionally. It now runs after the name facts and
+before the traversal snapshot, so it wins over them and still feeds the walk.
+
+**No-culture rose 1,014 → 1,418, which is honest rather than a regression.** 946 are the
+true residue with no evidence within fourteen hops. The other ~470 are split votes and
+refused Japanese verdicts that only became *visible* once real evidence entered the walk —
+the traversal used to settle them confidently and wrongly. Checks after: reading probe 0
+wrong across 2,311 slots, and no Japanese surname romanised as Chinese.

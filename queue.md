@@ -237,12 +237,43 @@ to be attempted.
 
 ### Standing
 
-    zh  12,817   compose per character, gated on being a Mandarin syllable
-    ja     217   whole-name items ONLY -- kanji do not compose
-    ko       0   suppressed
+    zh  12,038   compose per character, gated on being a Mandarin syllable
+    ja     204   whole-name items ONLY -- kanji do not compose
+    ko       0   suppressed -- but now 1,040 records are correctly KNOWN to be Korean
 
-Out of **36,625** Han-only records, with **35,611 cultures settled**. **1,014 still have
-no culture**, 12,368 Japanese have no whole-name item, and **3,059 are not names at all**.
+Out of **36,625** Han-only records, with **35,207 cultures settled**. **1,418 still have
+no culture**, 12,136 Japanese have no whole-name item, and **3,059 are not names at all**.
+
+### The person's own Wikidata item — the strongest evidence, and it was unused
+
+**5,222 of the Han-only records are linked to a Wikidata item, and an item states its own
+language in its labels**: a `ja` label written in kana, a `ko` label in hangul, a `zh` label
+with no Japanese one beside it. That is the item declaring what it is rather than an
+inference from a neighbour or a surname, so it now outranks everything else. **4,684
+records settled by it.**
+
+**It contradicted our inference on 155 records, and the direction is the point: 148 we
+called Chinese are Korean.** Their items carry a hangul label and no kana. With `ko`
+suppressed, those were being handed **pinyin readings for Korean people** — exactly the
+failure the `姜`/`韓`/`崔` caveat predicted one commit earlier, now measured instead of
+feared. Four more are Japanese where we said Chinese, three Korean where we said Japanese.
+**Zero disagreements remain.**
+
+**`ko` suppressed rises 88 → 1,040**, which is the whole gain: ~950 records that were
+getting a confident wrong Chinese label now get none. zh romanised falls **12,817 →
+12,038** for the same reason.
+
+**A `zh` and a `ja` label together with no kana is ambiguous and is NOT used** — 523
+records. A Chinese name item routinely carries a `ja` label of the same characters, so the
+pair says nothing.
+
+**The external check rose: 91.8% → 93.2%** (2,798 of 3,001 against Wikidata's own English
+labels), because the wrongly-romanised Korean records are gone.
+
+**No-culture rose 1,014 → 1,418, and that is honest rather than a regression.** 946 are the
+true residue — no evidence within fourteen hops. The other ~470 are **split votes and
+refused Japanese verdicts that only became visible once the item evidence entered the
+walk**: the traversal used to settle them confidently and wrongly.
 
 ### The surname, judged by the records already settled — Emma's call, 2026-08-19
 

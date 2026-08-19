@@ -358,6 +358,52 @@ def main() -> int:
                 adj[me].add(sp)
                 adj[sp].add(me)
 
+    # ---- culture evidence 0: what the person's OWN Wikidata item says ---------
+    # **The strongest evidence there is, and it was not being used.** 5,222 of the
+    # Han-only records are linked to a Wikidata item, and an item states its own language
+    # in its labels: a `ja` label written in kana, a `ko` label in hangul, a `zh` label
+    # with no Japanese one beside it. That is the item declaring what it is, not an
+    # inference from a neighbour or a surname, so it outranks everything below.
+    #
+    # **It contradicts our inference on 155 records**, and the direction matters: **148 we
+    # called Chinese are Korean**, their items carrying a hangul label and no kana. With
+    # `ko` suppressed those were being handed **pinyin readings for Korean people** -- the
+    # exact failure the 姜/韓/崔 caveat predicted, now measured instead of feared. Four more
+    # are Japanese where we said Chinese, and three Korean where we said Japanese.
+    #
+    # **A `zh` and a `ja` label together, with no kana, is ambiguous and is NOT used** --
+    # 523 records. A Chinese name item routinely carries a `ja` label of the same
+    # characters, so the pair says nothing; only kana, hangul, or a `zh` label standing
+    # alone is decisive.
+    linked = {}
+    with io.open(FAMILY, encoding="utf-8", newline="") as fh:
+        for r in csv.DictReader(fh):
+            if r.get("qid") and r["geni_id"] in need:
+                linked[r["geni_id"]] = r["qid"]
+    by_item = 0
+    if linked:
+        item_says = {}
+        with wikistore.StoreReader(STORE, INDEX) as rd:
+            ids = sorted(set(linked.values()))
+            for i in range(0, len(ids), 5000):
+                for qq, e in rd.entities(ids[i:i + 5000]).items():
+                    L = {k: v["value"] for k, v in (e.get("labels") or {}).items()}
+                    ja_l, ko_l = L.get("ja"), L.get("ko")
+                    zh_l = L.get("zh") or L.get("zh-hant") or L.get("zh-hans")
+                    if ja_l and KANA.search(ja_l):
+                        item_says[qq] = "ja"
+                    elif ko_l and HANGUL.search(ko_l):
+                        item_says[qq] = "ko"
+                    elif zh_l and not ja_l:
+                        item_says[qq] = "zh"
+        for g, qq in linked.items():
+            v = item_says.get(qq)
+            if v:
+                culture[g] = v
+                why[g] = f"the person's own Wikidata item {qq} is labelled in {v}"
+                by_item += 1
+    print(f"  settled by the person's own Wikidata item: {by_item:,}")
+
     #: The cultures settled by DIRECT evidence -- a script, a place, or a fact about the
     #: name itself. Snapshotted before the walk so that one inference never feeds another:
     #: a neighbour may vote only if something about *them* settled it, never because the
