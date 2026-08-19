@@ -448,6 +448,25 @@ def main() -> int:
                         if han and HAN.fullmatch(han):
                             table["ja"].setdefault(han, en)
                             break
+                # **Single character, and the multi-character case is a dead end.**
+                # `HAN.fullmatch` restricts this to one kanji, which looks like the same
+                # oversight as the zh branch above and is not. Measured 2026-08-19:
+                # **14,909 tokens have a Latin `en` and a kanji `ja` label, 13,489 of them
+                # longer than one character** -- so lifting the restriction looks like it
+                # would answer the 11,688 Japanese names that have no whole-name reading.
+                # It would not, for two independent reasons.
+                #
+                # **A kanji `ja` label does not mean the item is Japanese.** Chinese name
+                # items carry one of the same characters, so the tokens this would reach
+                # are led by `氏` = *Shi*, `藺` = *Lin*, `母` = *Mu*, `則` = *Ze* --
+                # Mandarin readings that would be written into the Japanese table.
+                #
+                # **Where it IS Japanese, the reading is not one thing.** `都築` has **23**
+                # distinct readings across items -- Tochiku, Tokizu, Totsugi, Miyachiku
+                # and 19 more; `生方` has 18, `古閑` 17, `新保` 17. Emma: *"Japanese
+                # readings are not straightforward."* Choosing one is not a better guess,
+                # it is a different person's name, which is the rule this file already
+                # follows for composition and which applies unchanged here.
                 elif en and ja and HAN.fullmatch(ja) and not zh:
                     table["ja"].setdefault(ja, en)
                 # **A Japanese name item usually also carries a `zh` label of the same

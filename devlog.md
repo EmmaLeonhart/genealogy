@@ -9789,3 +9789,38 @@ what the withholding was for.
 
 The `ja` and `ko` tables are deliberately untouched: they still require a plain-ASCII
 label, so nothing about Japanese or Korean changed in this pass.
+
+## 2026-08-19 — the Japanese whole-name gap: Wikidata's name items are not the source
+
+`table["ja"]` is built with `HAN.fullmatch`, a one-character class, so the Japanese table
+holds single kanji only — which is why 11,688 names fail for want of a whole-name item
+while 185 succeed. The obvious reading is that this is the same oversight found in the
+`zh` branch, and that lifting it is the whole fix. **It is not**, and both reasons are
+measured.
+
+**There is no shortage of candidates.** 14,909 tokens have a Latin `en` label and a kanji
+`ja` label; **13,489 of them are longer than one character**. So the restriction really is
+what stands between the script and a whole-name table.
+
+**But a kanji `ja` label does not mean the item is Japanese.** Chinese name items carry a
+`ja` label of the same characters. The tokens this would reach are led by `氏` = *Shi*,
+`藺` = *Lin*, `母` = *Mu*, `則` = *Ze* — Mandarin readings that would be written into the
+Japanese table, the mirror of the pollution the pinyin gate exists to stop.
+
+**And where it genuinely is Japanese, the reading is not one thing.** `都築` has **23**
+distinct readings across items — Tochiku, Tokizu, Totsugi, Totsuki, Miyachiku, Kunichiku
+and 17 more. `生方` has 18, `古閑` 17, `新保` 17, `一戸` 16. Only 11,847 of 14,909 tokens
+carry a single reading, and that set is the polluted one above. Emma: *"Japanese readings
+are not straightforward."* The file already refuses to compose kanji on the grounds that a
+composed reading is a different name; choosing among 23 published readings is the same
+error with a citation attached.
+
+**One reusable by-product.** Of 11,689 multi-character items with a kana reading, **11,612
+read in katakana only** — 奥莉加 = *Olga*, 约瑟夫 = *Josef*, 莫里斯 = *Morris*. Katakana is
+the script Japanese uses for foreign words, so a katakana reading marks a transcription of
+a foreign name rather than a CJK name. That is the same population that makes the
+multi-character `zh` items unusable, seen from the other side — and it explains why they
+are there rather than merely observing that they are.
+
+No behaviour changed. The finding is that the change should not be made, and the reasoning
+is now in the code beside the gate so the next pass does not "fix" it.

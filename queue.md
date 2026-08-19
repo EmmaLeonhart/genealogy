@@ -287,8 +287,34 @@ from; a name tells you what it is.
 - **13,956 with no culture at all**, down from 19,170. What is left has no place, no
   seat, no Japanese name ending, no Japan-only or simplified-only character, and no
   relative writing kana or hangul within six hops.
-- **11,688 Japanese with no whole-name item.** Composition is not available — 文仁 is
-  *Fumihito*, not `Aya Masashi` — so this needs per-name readings from somewhere else.
+- **11,688 Japanese with no whole-name item, and Wikidata's name items are NOT the
+  source.** Composition is not available — 文仁 is *Fumihito*, not `Aya Masashi` — so the
+  question was where per-name readings could come from. The obvious answer is that the
+  `ja` table is built with `HAN.fullmatch`, one character, while **14,909 tokens have a
+  Latin `en` and a kanji `ja` label and 13,489 of those are longer than one character**.
+  Lifting the restriction looks like the whole fix. Measured 2026-08-19, it is not, for two
+  independent reasons:
+
+  - **A kanji `ja` label does not mean the item is Japanese.** Chinese name items carry one
+    of the same characters, so the tokens this reaches are led by `氏` = *Shi*, `藺` =
+    *Lin*, `母` = *Mu*, `則` = *Ze* — Mandarin readings that would be written straight into
+    the Japanese table.
+  - **Where it genuinely is Japanese, the reading is not one thing.** `都築` has **23**
+    distinct readings across items — Tochiku, Tokizu, Totsugi, Miyachiku and 19 more —
+    `生方` has 18, `古閑` 17, `新保` 17. Only 11,847 of 14,909 tokens have a single
+    reading at all, and that set is the polluted one above. Choosing among them is not a
+    better guess, it is a different person's name.
+
+  So this stays open, and the note that it *"needs per-name readings from somewhere else"*
+  now has a specific exclusion attached: not from Wikidata's name items. The code carries
+  the same note so the one-character gate is not "fixed" by the next pass.
+
+- **The katakana test, which is the one reusable by-product.** Of 11,689 multi-character
+  items with a kana reading, **11,612 read in katakana only** — 奥莉加 = *Olga*, 约瑟夫 =
+  *Josef*, 莫里斯 = *Morris*. Katakana is the script Japanese uses for foreign words, so a
+  katakana reading marks a **transcription of a foreign name**, not a CJK name. It is the
+  same population that makes the multi-character `zh` items unusable, seen from the other
+  side, and it explains *why* rather than just observing it.
 - **`英` read `Ei` instead of `Ying` — FIXED, and the cause was far bigger than 英.**
   The two items that spell it correctly label it **`Yīng`**, and the tone mark made
   `LATIN_NAME` reject them, so a Japanese item won by default. **Tone-marked pinyin was
