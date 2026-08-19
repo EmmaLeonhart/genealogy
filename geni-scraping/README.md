@@ -145,3 +145,20 @@ works, one person at a time:
     browser_batch [navigate, javascript_tool, tabs_close_mcp]
 
 Two calls per person, no tabs left behind.
+
+## A reported extension failure may still have saved the page — check before retrying
+
+**Seen 2026-08-19.** A `browser_batch` returned *"Browser extension is not connected"*, so
+the person was retried. The first attempt **had** already downloaded the page; Chrome named
+the retry `<geni id> (1).html`, the sweep filed both, and the round came back 31 files for
+30 people.
+
+`" (1)"` is not a Geni ID, so nothing downstream can key on that file and
+`next-scrape-batch.py` will never match it. Delete the `(1)` copy and keep the plain one.
+This is not the never-delete rule: those are `.ged` files under `exports/`, and neither
+copy here was committed.
+
+Cheap guard — the sweep line already prints the count, so **a round that reports more files
+than people is this, every time.** Reconcile before committing:
+
+    ls "geni-scraping"/*\ \(1\).html 2>/dev/null    # any retry duplicates
