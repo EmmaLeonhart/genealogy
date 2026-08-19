@@ -40,8 +40,23 @@ suspicious behaviour**.
 2026-08-18: **102 paths of 543 (19%) fall under the threshold, and they are only 221
 people.** The other 441 paths hold 4,621 people and are where exports go.
 
-A path's missing people are usually adjacent, so one saved page frequently captures
-several of them at once — they appear in each other's relatives list.
+**Every missing person on the path gets their OWN page saved.** Emma, 2026-08-18,
+correcting exactly this: *"You run through and save everybody in the path. You go through
+and run and save every single person in the path."* And the reason: *"A mention on the
+saved page is not legitimate enough for a path member. It's just enough for making a
+non-path individual."*
+
+So there are two grades of person coming out of this, and they must not be confused:
+
+| | source | good enough for |
+| --- | --- | --- |
+| **path member** | **their own saved page** | a person on the chain — the thing being connected |
+| **non-path individual** | a mention in someone else's relatives panel | a peripheral relative, thin but still worth creating |
+
+The tempting shortcut — save one page and harvest the two or three missing neighbours out
+of its relatives list — is **wrong**, and it was written into this file before she caught
+it. A mention gives a name, an ID and a relationship word; that is enough to create
+somebody's cousin, and not enough to stand as a link in the chain.
 
 ## What a saved page yields, and what it becomes
 
