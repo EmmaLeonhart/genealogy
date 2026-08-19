@@ -84,3 +84,30 @@ richer version of the same two people is not.
 **The sex comes from the relationship word, never from the name.** That is the one
 inference this method makes, and it is safe because the word states it — `his daughter`
 is not a guess. No sex is recorded where the relationship word is neutral.
+
+## How the page actually gets saved, and the Chrome block that shapes it
+
+**The page saves itself.** A tiny script in the page builds a `Blob` of its own
+`document.documentElement.outerHTML` and clicks an `<a download="<geni id>.html">`,
+so Chrome writes the file and **the markup never passes through the agent's
+context**. `scripts/sweep-scraped-pages.sh` then moves it here, refusing to
+overwrite a page already saved.
+
+**Chrome allows exactly one automatic download per tab.** The second script-driven
+download from the same tab is blocked silently — no error in the page, nothing in
+`Downloads`, just a blocked-downloads bubble in the omnibox. So the loop is **one
+fresh tab per person**: create tab, navigate, save, close it, create the next.
+
+That is why this is not done with `Ctrl+S` (a native dialog the extension cannot
+answer) and not by reading the page into the agent (a 145 KB page per person, and
+1,824 people).
+
+**Reading the page instead of saving it is not a substitute, and the reason is
+measurable.** The visible *Immediate Family* block truncates — Alfred Ingerman
+Hoknes reads `Father of Caroline Signe Borsheim; Floyd Olaf Hoknes; ... and 4
+others`. The DOM carries all **27** relatives with their profile IDs. The text
+loses seven people; the saved page keeps them.
+
+    PYTHONPATH=src python scripts/build-scrape-targets.py   # who to save
+    PYTHONPATH=src python scripts/next-scrape-batch.py 20   # next N, skipping saved
+    bash scripts/sweep-scraped-pages.sh                     # file what landed
