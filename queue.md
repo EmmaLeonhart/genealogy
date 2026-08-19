@@ -237,12 +237,12 @@ to be attempted.
 
 ### Standing
 
-    zh   6,757   compose per character, gated on being a Mandarin syllable
-    ja     185   whole-name items ONLY -- kanji do not compose
+    zh  10,116   compose per character, gated on being a Mandarin syllable
+    ja     242   whole-name items ONLY -- kanji do not compose
     ko       0   suppressed
 
-Out of **36,625** Han-only records, with **22,669 cultures settled**. **13,956 still have
-no culture** and 11,688 Japanese have no whole-name item.
+Out of **36,625** Han-only records, with **30,258 cultures settled**. **6,367 still have
+no culture** and 14,057 Japanese have no whole-name item.
 
 ### Culture: the script facts, then the name, then the place, then the graph
 
@@ -256,13 +256,22 @@ fell **931 → 30** the moment it was removed.
 
 | evidence | people |
 | --- | ---: |
-| graph traversal | 12,809 |
-| **a Chinese clan seat — a 郡望 is a commandery of the Chinese empire** | **8,300** |
+| graph traversal | 20,398 |
+| **a Chinese clan seat — a 郡望 is a commandery of the Chinese empire** | **8,255** |
 | a Japanese given-name ending — `子` `郎` `助` `丸` `衛門` `兵衛` `之丞` | 994 |
-| a simplified-only Chinese form — `张` `陈` `华` `长` `东` | 302 |
+| a simplified-only Chinese form — `张` `陈` `华` `长` `东` | 301 |
 | a character that exists only in Japanese — a 国字, `辻` `畑` `畠` `榊` `麿` | 174 |
-| a listed place | 90 |
-| **total** | **22,669** |
+| a listed place | 137 |
+| **total** | **30,258** |
+
+**The traversal ran BEFORE the name evidence and that was the whole defect.** It voted on
+kana, hangul and a listed place — the evidence that existed when it was written — and could
+not see one of the cultures the clan seat, the kokuji or the endings had settled. A record
+surrounded by twenty people known Chinese by their 郡望 still came out unknown. Computing
+the name facts first took traversal settlements **12,809 → 20,398** and no-culture
+**13,956 → 6,367**. **One inference never feeds another**: the walk votes on a snapshot of
+the directly-evidenced cultures taken before it starts, so a neighbour counts only when
+something about *them* settled it.
 
 **The table is now derived from the evidence strings, not hand-written.** The hand-written
 one had gone stale exactly the way this file is not supposed to: it still carried an
@@ -284,10 +293,10 @@ from; a name tells you what it is.
 
 ### What is left, and the one that is genuinely hard
 
-- **13,956 with no culture at all**, down from 19,170. What is left has no place, no
-  seat, no Japanese name ending, no Japan-only or simplified-only character, and no
-  relative writing kana or hangul within six hops.
-- **11,688 Japanese with no whole-name item, and Wikidata's name items are NOT the
+- **6,367 with no culture at all**, down from 19,170. What is left has no place, no seat,
+  no Japanese name ending, no Japan-only or simplified-only character, and no relative
+  within six hops that any of those settled either.
+- **14,057 Japanese with no whole-name item, and Wikidata's name items are NOT the
   source.** Composition is not available — 文仁 is *Fumihito*, not `Aya Masashi` — so the
   question was where per-name readings could come from. The obvious answer is that the
   `ja` table is built with `HAN.fullmatch`, one character, while **14,909 tokens have a

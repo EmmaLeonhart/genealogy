@@ -9824,3 +9824,36 @@ are there rather than merely observing that they are.
 
 No behaviour changed. The finding is that the change should not be made, and the reasoning
 is now in the code beside the gate so the next pass does not "fix" it.
+
+## 2026-08-19 — the traversal ran before the evidence it needed: no-culture 13,956 → 6,367
+
+The graph walk was computed **before** the name-fact evidence, so it voted only on kana,
+hangul and a listed place — the evidence that existed when it was written — and could not
+see a single one of the cultures the clan seat, the kokuji, the simplified forms and the
+Japanese endings had settled. A record surrounded by twenty people known Chinese by their
+郡望 still came out unknown, because at the moment the walk ran, none of them were known.
+
+Computing the name facts first and letting the walk vote on them:
+
+- cultures settled **22,669 → 30,258**, no-culture **13,956 → 6,367**
+- traversal settlements **12,809 → 20,398**
+- zh romanised **6,757 → 10,116**, ja **185 → 242**
+
+**One inference never feeds another.** The walk votes on `direct`, a snapshot of the
+directly-evidenced cultures taken before it starts, so a neighbour counts only when
+something about *them* settled it — a script, a place, or a fact about their own name.
+Without the snapshot the walk would consume its own guesses and a single misread record
+would spread through a component.
+
+**Checked for the failure this could cause.** A propagation that large is exactly where a
+Japanese family gets swept into Chinese, so: of the romanised rows carrying an
+unmistakably Japanese surname — 藤原, 松平, 織田, 徳川, 細川, 武田 and 26 others — **all 76
+are `ja` and none was romanised as Chinese**. Of those carrying a common Chinese surname,
+1,346 are `zh` against 2 `ja`. The reading probe over 33 characters whose Mandarin reading
+is not in dispute stays at **0 wrong, now across 1,731 character-slots**.
+
+**Two data defects visible in the output, neither of them romanisation's fault.**
+`大唐帝國 謝氏` romanises as `Da Tang Di Guo` — the Tang Empire is not a person. And
+`氏 鄭` comes out `Shi`, but 氏 is the clan marker meaning *née*, so that record is an
+unnamed woman of the Zheng clan rather than someone called Shi. Both are records whose
+name field is not a name; measuring the marker case is the next step.

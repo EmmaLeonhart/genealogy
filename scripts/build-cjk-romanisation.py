@@ -264,69 +264,15 @@ def main() -> int:
     # `reports/export-provenance.csv` still stands and is still useful for asking what an
     # export is; it is simply not evidence about an individual.
 
-    # ---- culture evidence 3: graph traversal ---------------------------------
-    # Emma, 2026-08-18: *"graph traversal for people with unknown country there will
-    # probably work for inferring nationality"*. Immediate kin is not enough -- a
-    # Han-only person's parents are often Han-only too -- so this walks outward and
-    # takes the NEAREST evidence, which is what makes it an inference rather than a
-    # vote over the whole component.
-    adj = collections.defaultdict(set)
-    with io.open(FAMILY, encoding="utf-8", newline="") as fh:
-        for r in csv.DictReader(fh):
-            me = r["geni_id"]
-            for p in (r.get("father"), r.get("mother")):
-                if p:
-                    adj[me].add(p)
-                    adj[p].add(me)
-            for k in (r.get("children") or "").replace("|", " ").split():
-                adj[me].add(k)
-                adj[k].add(me)
-            for sp in (r.get("spouses") or "").replace("|", " ").split():
-                adj[me].add(sp)
-                adj[sp].add(me)
-
-    def evidence_at(g):
-        """What this one person says about culture, if anything."""
-        s = scripts.get(g)
-        if s:
-            if KANA.search(s):
-                return "ja"
-            if HANGUL.search(s):
-                return "ko"
-        return place_culture.get(g)
-
-    settled_by_neighbour = 0
-    MAX_HOPS = 6
-    for g in list(need):
-        if g in culture:
-            continue
-        seen = {g}
-        frontier = [g]
-        for hop in range(1, MAX_HOPS + 1):
-            nxt = []
-            votes = collections.Counter()
-            for x in frontier:
-                for y in adj[x]:
-                    if y in seen:
-                        continue
-                    seen.add(y)
-                    nxt.append(y)
-                    e = evidence_at(y)
-                    if e:
-                        votes[e] += 1
-            if votes:
-                top, n = votes.most_common(1)[0]
-                if n / sum(votes.values()) >= 0.7:
-                    culture[g] = top
-                    why[g] = f"graph traversal, {hop} hop(s)"
-                    settled_by_neighbour += 1
-                break
-            frontier = nxt
-            if not frontier:
-                break
     # ---- culture evidence 2: the NAME's own form ----------------------------
     # Evidence carried by the name itself, which outranks the graph: a neighbour tells
     # you where a family was reached from, a name tells you what it is.
+    #
+    # **This runs BEFORE the traversal, and that ordering is the point.** It used to
+    # run after, so the walk voted only on kana, hangul and a listed place -- the
+    # evidence available when it was written -- and could not see a single one of the
+    # cultures the clan seat, the kokuji and the name endings had settled. A record
+    # surrounded by twenty people known Chinese by their 郡望 still came out unknown.
     #
     # **A 郡望 is Chinese, full stop.** The clan seat is a commandery-and-county of the
     # Chinese empire, and 8,315 Han-only records carry one. It was already being computed
@@ -386,6 +332,72 @@ def main() -> int:
                 by_seat += 1
             culture[g] = "zh"
             why[g] = f"carries the clan seat {last}, which is Chinese"
+    # ---- culture evidence 3: graph traversal ---------------------------------
+    # Emma, 2026-08-18: *"graph traversal for people with unknown country there will
+    # probably work for inferring nationality"*. Immediate kin is not enough -- a
+    # Han-only person's parents are often Han-only too -- so this walks outward and
+    # takes the NEAREST evidence, which is what makes it an inference rather than a
+    # vote over the whole component.
+    adj = collections.defaultdict(set)
+    with io.open(FAMILY, encoding="utf-8", newline="") as fh:
+        for r in csv.DictReader(fh):
+            me = r["geni_id"]
+            for p in (r.get("father"), r.get("mother")):
+                if p:
+                    adj[me].add(p)
+                    adj[p].add(me)
+            for k in (r.get("children") or "").replace("|", " ").split():
+                adj[me].add(k)
+                adj[k].add(me)
+            for sp in (r.get("spouses") or "").replace("|", " ").split():
+                adj[me].add(sp)
+                adj[sp].add(me)
+
+    #: The cultures settled by DIRECT evidence -- a script, a place, or a fact about the
+    #: name itself. Snapshotted before the walk so that one inference never feeds another:
+    #: a neighbour may vote only if something about *them* settled it, never because the
+    #: walk had already guessed at them.
+    direct = dict(culture)
+
+    def evidence_at(g):
+        """What this one person says about culture, if anything."""
+        s = scripts.get(g)
+        if s:
+            if KANA.search(s):
+                return "ja"
+            if HANGUL.search(s):
+                return "ko"
+        return direct.get(g) or place_culture.get(g)
+
+    settled_by_neighbour = 0
+    MAX_HOPS = 6
+    for g in list(need):
+        if g in culture:
+            continue
+        seen = {g}
+        frontier = [g]
+        for hop in range(1, MAX_HOPS + 1):
+            nxt = []
+            votes = collections.Counter()
+            for x in frontier:
+                for y in adj[x]:
+                    if y in seen:
+                        continue
+                    seen.add(y)
+                    nxt.append(y)
+                    e = evidence_at(y)
+                    if e:
+                        votes[e] += 1
+            if votes:
+                top, n = votes.most_common(1)[0]
+                if n / sum(votes.values()) >= 0.7:
+                    culture[g] = top
+                    why[g] = f"graph traversal, {hop} hop(s)"
+                    settled_by_neighbour += 1
+                break
+            frontier = nxt
+            if not frontier:
+                break
     print(f"  settled by a Japan-only character: {by_kokuji:,}")
     print(f"  settled by a simplified-only form: {by_simp:,}")
     print(f"  settled by a Chinese clan seat: {by_seat:,}")
