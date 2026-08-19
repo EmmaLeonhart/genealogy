@@ -11,7 +11,8 @@ DL="/c/Users/Emma/Downloads"
 DEST="geni-scraping"
 n=0; skip=0
 shopt -s nullglob
-for f in "$DL"/6*.html; do
+# Geni has two ID shapes: the modern 6000000... and short legacy ones like 2120676.
+for f in "$DL"/[0-9]*.html; do
   b=$(basename "$f")
   if [ -e "$DEST/$b" ]; then rm -f "$f"; skip=$((skip+1)); continue; fi
   mv "$f" "$DEST/$b"; n=$((n+1))
