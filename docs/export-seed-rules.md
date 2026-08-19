@@ -380,3 +380,45 @@ agonise.** `Ols-` is Ole, Ola or Olav in Norwegian; write `Ole`. This is a
 reconstruction and is allowed to be one — the patronymic is the attestation that
 the father existed and was called something of that stem, which is what makes
 tiers 1 and 2 worth more than an `NN`.
+
+## Which paths earn an export at all
+
+**Emma, 2026-08-18**, once the destination-seeded exports were measured honestly and
+turned out to halve gaps rather than clear them: *"the person has to be either really
+weird and far out there... or popes or something like that. They have to be weird and far
+out there, or they need to be popes, or they need to be Scandinavian, for us to do a
+series of them. Otherwise, they'll just be in the same page thing."*
+
+Three qualifying categories. Everything else goes to `geni-scraping/` page-saving
+regardless of how many people are missing:
+
+- **Scandinavian / Nordic** — *"if there's particularly very large paths that are
+  specifically related to Scandinavian people, like the Norwegian, Swedish academics we
+  were doing for the Rogaland people, these ones are pretty valuable."* Same reasoning as
+  `CLAUDE.md` § *The practical goal is EMMA densely linked*: that is where she is linked,
+  so the paths are short and the links land near her.
+- **Popes.** Named explicitly, twice.
+- **Weird and far out there.** Her phrase. She confirmed three groups: religious founders
+  and missionaries, people who named or founded something load-bearing, and non-European
+  scholars. **Ask when unsure** — *"if you are unsure if somebody is weird enough or not"*
+  — this is the one category that is a judgement rather than a lookup.
+
+**A random celebrity does not qualify.** Her words: *"for paths that are like a random
+celebrity ... basically the person has to be either really weird and far out there."* So
+Magnus Carlsen, Emma Watson, Dan Brown and Luka Modrić are page-saving, not exports.
+
+`scripts/classify-export-worth.py` applies this. Of the 451 paths still holding 4+
+missing people: **151 earn exports** (126 Nordic, 18 popes, 7 weird) and **300 go to
+page-saving**.
+
+**Read the place off the path FILENAME, not the path body.** Every path starts at Emma
+and climbs through her Norwegian ancestors, so scanning the file for Nordic place names
+fires on the path's own members and tells you nothing about the destination — it scored
+Nelly Sachs and Burton Watson as strongly Scandinavian. The isolate slug carries the
+destination's own recorded place (`...-1879-1964-oslo`).
+
+**George R.R. Martin is IN**, on her instruction, despite being none of the three: *"the
+sheer length of his tree makes it pretty interesting"* and *"I think there's a reasonable
+chance that a massive amount will just be cut off of this path by doing so."* He is the
+longest path in the corpus at 35 missing over 85 steps. This is an exception she made by
+name, not a fourth category.
