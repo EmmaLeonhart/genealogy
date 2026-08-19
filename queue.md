@@ -157,6 +157,24 @@ What follows on from those:
   Korean, and *"the tree settles it, via neighbours and which exports they came
   from"* — never the name.
 
+  **THE EXPORT HALF NOW EXISTS — 2026-08-18.** It did not before: the merge keys on the
+  xref and *"knows nothing about which file it came from"* (`todo.md` §7, a deliberate
+  design property), and no derived report carried a source column, so half of her rule
+  was unavailable and the instruction could only have been half-followed.
+  `scripts/build-export-provenance.py` derives it read-only from `exports/` without
+  touching the merge: **897,828 people across 357 files — exactly the merge's own INDI
+  count — and 652,617 of them (72.7%) appear in exactly one export.**
+
+  **It discriminates.** All 41,543 Han-only people have provenance, and the script mix
+  inside an export characterises it: `export-Forest-28` carries **4,677 hangul against
+  17 kana**, which is a Korean-rooted seed, while `export-Forest-6000000227252387856`
+  is 4,552 Han with 68 kana and no hangul. `reports/export-provenance.{csv,md}`.
+
+  **Still to do: the romanisation itself**, which is agentic by her instruction and now
+  has the evidence it was missing. Settle culture per person from provenance plus
+  neighbours, then romanise — and note the corpus-wide Han-only figure is **41,543**,
+  of which the 806 structural placeholders are a subset.
+
 - **364 structural placeholders end up with no label in any language**, because every
   relative out to two hops is unnamed too. They still get `P2600` *Geni.com profile
   ID* and `P31` *instance of* → `Q5` *human*, which is her rule — *"The person is

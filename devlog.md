@@ -9419,3 +9419,49 @@ Kesja`, `hustru til Sviatopolk II of Kiev`, `mor till Harald Kesja`.
 **Blast radius is 4 edits** — 3 Danish, 1 Norwegian — and saying so matters more than
 the fix. The design was the finding; these labels are written once over a corpus that
 grows by thousands per export round, and the Nordic share grows with it.
+
+## 2026-08-18 — half of a rule was missing, so the rule could only be half-followed
+
+Emma's rule for romanising a Han-only name: 陳 is *Chen*, *Chin* or *Jin* depending on
+whether the person is Chinese, Japanese or Korean, and **"the tree settles it, via
+neighbours and which exports they came from" — never the name.**
+
+**The export half did not exist.** `Merger.add_source` keys on the xref and *"knows
+nothing about which file it came from"* — `todo.md` §7 records that as a deliberate
+design property, and a good one, because it is what makes a new export a file drop
+rather than a code change. But no derived report carried a source column either, so
+there was nowhere downstream to recover it from. The neighbour half was available; the
+other half was not, and nobody had said so.
+
+`scripts/build-export-provenance.py` derives it read-only from `exports/`, leaving the
+merge exactly as it is — provenance is computed where it is needed instead of being
+threaded through a merge that is better off not caring.
+
+    357 export files
+    897,828 people          <- exactly the merge's own INDI count
+    652,617 in exactly one export (72.7%)
+
+**The count matching the merge to the person is the check that it read the same corpus**,
+and it cost one line of comparison rather than a test.
+
+### It discriminates, which was not guaranteed
+
+All 41,543 Han-only people have provenance. The script mix inside an export
+characterises the seed it grew from:
+
+    export-Forest-28                    han 2,329   kana 17   hangul 4,677   <- Korean
+    export-Forest-6000000227252387856   han 4,552   kana 68   hangul     0   <- not Korean
+    export-Forest                       han 6,259   kana  0   hangul    18
+
+A person carrying only Han characters, in an export whose other members write hangul, is
+Korean — and 陳 is *Jin*. That is the inference the rule asked for and could not make
+yesterday.
+
+### Not done, deliberately
+
+**The romanisation itself.** It is agentic by her instruction — *"AI almost always knows
+Japanese to Romaji"* — and it now has the evidence it was missing, but settling culture
+per person from provenance *and* neighbours is the next step and it is not this one.
+
+Also corrected: the queue said **806** Han-only people, which is the structural-placeholder
+subset. The corpus-wide figure is **41,543**.
