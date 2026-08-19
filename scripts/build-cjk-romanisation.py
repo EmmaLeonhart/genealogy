@@ -357,6 +357,35 @@ def main() -> int:
     #: name itself. Snapshotted before the walk so that one inference never feeds another:
     #: a neighbour may vote only if something about *them* settled it, never because the
     #: walk had already guessed at them.
+    #: Surnames this corpus itself shows are never Japanese, derived rather than
+    #: listed. A single-character surname carried by 25+ records, **not one of which
+    #: has any direct Japanese evidence** -- no kana anywhere in the person's names, no
+    #: kokuji, no Japanese given-name ending -- is not a Japanese surname in this data.
+    #: It yields 24: 曾 邱 劉 張 孔 王 趙 黃 陸 楊 胡 周 崔 姜 秦 韓 朱 譚 and more.
+    #:
+    #: **Deriving it is what makes it safe.** A hand-written list of "Chinese
+    #: surnames" would have caught 源, 橘, 紀, 平, 森, 林 and 堀, which are ordinary
+    #: Japanese surnames; the corpus excludes every one of them, because records
+    #: carrying them DO show kana and Japanese endings. 源 has 42 such records of 396.
+    #:
+    #: **Why it exists.** The walk was giving Japanese readings to people with these
+    #: surnames when it reached a Japanese neighbourhood: 高 趙 came out *Takashi*,
+    #: 直 鄭 *Tadashi*, 熙 劉 *Hiroshi*, 良 崔 *Naoshi* -- 11 rows.
+    _ev = collections.defaultdict(collections.Counter)
+    for g2, c2 in need.items():
+        toks2 = [x for x in c2.split() if HAN_TOKEN.fullmatch(x)]
+        if len(toks2) < 2:
+            continue
+        sc = scripts.get(g2) or ""
+        first2 = toks2[0]
+        if (KANA.search(sc) or any(ch in KOKUJI for ch in c2)
+                or (len(first2) > 1 and first2.endswith(JP_ENDINGS))):
+            _ev[toks2[-1]]["ja"] += 1
+        _ev[toks2[-1]]["n"] += 1
+    NEVER_JA = {k for k, v in _ev.items()
+                if len(k) == 1 and v["n"] >= 25 and v["ja"] == 0}
+    print("  surnames this corpus shows are never Japanese: %d" % len(NEVER_JA))
+
     direct = dict(culture)
 
     def evidence_at(g):
@@ -370,12 +399,18 @@ def main() -> int:
         return direct.get(g) or place_culture.get(g)
 
     settled_by_neighbour = 0
-    MAX_HOPS = 6
+    MAX_HOPS = 14
+    #: Why the walk failed, per record it could not settle. WHICH of the two decides
+    #: whether a longer walk would help: `no evidence` means the six-hop neighbourhood
+    #: is silent and more hops might reach something, while a `split vote` means
+    #: evidence was found and disagreed, where more hops change nothing.
+    unsettled_why = {}
     for g in list(need):
         if g in culture:
             continue
         seen = {g}
         frontier = [g]
+        reached = 0
         for hop in range(1, MAX_HOPS + 1):
             nxt = []
             votes = collections.Counter()
@@ -388,16 +423,36 @@ def main() -> int:
                     e = evidence_at(y)
                     if e:
                         votes[e] += 1
+            reached += len(nxt)
             if votes:
                 top, n = votes.most_common(1)[0]
+                # A verdict of Japanese is refused when the surname is one this
+                # corpus never shows as Japanese. The record is left UNSETTLED
+                # rather than pushed to Chinese -- it may well be Korean, and a
+                # wrong label is worse than none, which is why `ko` is suppressed
+                # wholesale a few lines below.
+                _t = [x for x in need[g].split() if HAN_TOKEN.fullmatch(x)]
+                if top == "ja" and len(_t) > 1 and _t[-1] in NEVER_JA:
+                    unsettled_why[g] = ("walk said ja at %d hop(s), refused: the "
+                                        "surname %s is never Japanese here"
+                                        % (hop, _t[-1]))
+                    break
                 if n / sum(votes.values()) >= 0.7:
                     culture[g] = top
                     why[g] = f"graph traversal, {hop} hop(s)"
                     settled_by_neighbour += 1
+                else:
+                    unsettled_why[g] = ("split vote at %d hop(s): " % hop) + ", ".join(
+                        "%s %d" % (k, v) for k, v in votes.most_common())
                 break
             frontier = nxt
             if not frontier:
+                unsettled_why[g] = ("component exhausted at %d hop(s), %d relative(s), "
+                                    "none with evidence" % (hop, reached))
                 break
+        else:
+            unsettled_why[g] = ("no evidence within %d hops, %d relative(s) reached"
+                                % (MAX_HOPS, reached))
     print(f"  settled by a Japan-only character: {by_kokuji:,}")
     print(f"  settled by a simplified-only form: {by_simp:,}")
     print(f"  settled by a Chinese clan seat: {by_seat:,}")
@@ -699,6 +754,26 @@ def main() -> int:
           "Japanese one takes different readings in different names and the item only "
           "gives the reading for *that* name. **The `ja` rows are the ones to distrust.**"]
     OUT_MD.write_text("\n".join(md) + "\n", encoding="utf-8")
+
+    # ---- the residue, written out rather than merely counted ------------------
+    # The records with no culture have been a line in the status report for days.
+    # This puts them on disk with the reason the walk failed on each, so the question
+    # "would a longer walk help" is answered by reading a file, not re-deriving it.
+    no_cult = [g for g in need if g not in culture]
+    with (REPO / "reports" / "cjk-no-culture.csv").open(
+            "w", encoding="utf-8", newline="") as fh:
+        w = csv.writer(fh)
+        w.writerow(["geni_id", "cjk", "why_not"])
+        for g in sorted(no_cult):
+            w.writerow([g, need[g], unsettled_why.get(g, "no family edge at all")])
+    kinds = collections.Counter(
+        unsettled_why.get(g, "no family edge at all").split(":")[0].split(",")[0]
+        for g in no_cult)
+    print()
+    print("  no culture: %d -- written to reports/cjk-no-culture.csv"
+          % len(no_cult))
+    for kk, vv in kinds.most_common():
+        print("    %s: %d" % (kk, vv))
     print(f"\nwrote {OUT_CSV} and {OUT_MD}")
     for g, cjk, code, rom, ev, name, seat in rows[:15]:
         print("   %-20s %-14s %-3s %-18s %-6s %s" % (g, cjk[:14], code, rom[:18], name, ev[:24]))

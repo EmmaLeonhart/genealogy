@@ -237,12 +237,51 @@ to be attempted.
 
 ### Standing
 
-    zh   9,800   compose per character, gated on being a Mandarin syllable
+    zh  11,851   compose per character, gated on being a Mandarin syllable
     ja     242   whole-name items ONLY -- kanji do not compose
     ko       0   suppressed
 
-Out of **36,625** Han-only records, with **30,258 cultures settled**. **6,367 still have
+Out of **36,625** Han-only records, with **34,227 cultures settled**. **2,398 still have
 no culture**, 11,342 Japanese have no whole-name item, and **3,059 are not names at all**.
+
+### The walk stopped at six hops for no reason, and that was the whole residue
+
+`reports/cjk-no-culture.csv` now records **why** the walk failed on each record it could
+not settle, answering a question that had been a status-report line for days: of the 6,367
+then unsettled, **6,293 — 98.8% — had simply run out of hops**, not run into disagreement.
+Only 40 were split votes, where more hops change nothing.
+
+Emma's instruction has no limit in it: *"Bfs from the individual until you find one of
+known family people and assume nationality from it."* Raising it to 14 settles **4,109**
+more records: no-culture **6,367 → 2,398**, zh romanised **9,800 → 11,851**.
+
+**A longer walk reaches further into other people's families, and it did.** Rows with a
+Chinese or Korean surname started taking Japanese readings once the walk touched a Japanese
+neighbourhood — `高 趙` came out *Takashi*, `直 鄭` *Tadashi*, `熙 劉` *Hiroshi*, `良 崔`
+*Naoshi*. 2 rows at six hops, **11 at fourteen**.
+
+**The guard is derived from the corpus, not written by hand.** A single-character surname
+carried by 25+ records, not one of which shows any direct Japanese evidence — no kana
+anywhere in the person's names, no kokuji, no Japanese given-name ending — is not a
+Japanese surname in this data. That yields 23: `曾` `邱` `劉` `張` `孔` `王` `趙` `黃`
+`陸` `楊` `胡` `周` `崔` `姜` `秦` `韓` `朱` `譚` and more. **Deriving it is what makes it
+safe**: a hand-written list of "Chinese surnames" would have caught `源`, `橘`, `紀`, `平`,
+`森`, `林` and `堀`, which are ordinary Japanese surnames — the corpus excludes every one,
+because records carrying them *do* show kana and Japanese endings. `源` has 42 such records
+of 396.
+
+When the walk says Japanese and the surname is on that list, the record is left
+**unsettled** rather than pushed to Chinese. It may well be Korean, and a wrong label is
+worse than none — the same reason `ko` is suppressed wholesale.
+
+**Residual, stated rather than buried: 3 rows are still wrong**, all `鄭`, which has one
+record with direct Japanese evidence out of 56 and so fails the zero-evidence test. The
+threshold is left strict; loosening it to catch three rows would start admitting real
+Japanese surnames.
+
+**Checks after the change**: all 85 rows with an unmistakably Japanese surname are `ja`,
+Chinese surnames run 2,602 `zh` against 3 `ja`, and the reading probe over 33 characters
+whose Mandarin reading is not in dispute is **0 wrong across 2,180 slots**.
 
 ### 3,059 records whose name field is not a name
 
@@ -322,9 +361,10 @@ from; a name tells you what it is.
 
 ### What is left, and the one that is genuinely hard
 
-- **6,367 with no culture at all**, down from 19,170. What is left has no place, no seat,
-  no Japanese name ending, no Japan-only or simplified-only character, and no relative
-  within six hops that any of those settled either.
+- **2,398 with no culture at all**, down from 19,170. `reports/cjk-no-culture.csv` lists
+  every one with the reason. What is left is genuinely evidence-free: 2,126 reach fourteen
+  hops without meeting a single relative that any rule settled, 34 sit in components
+  exhausted before then, and ~100 are split votes or refused Japanese verdicts.
 - **11,342 Japanese with no whole-name item, and Wikidata's name items are NOT the
   source.** Composition is not available — 文仁 is *Fumihito*, not `Aya Masashi` — so the
   question was where per-name readings could come from. The obvious answer is that the
