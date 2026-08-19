@@ -10169,3 +10169,42 @@ true residue with no evidence within fourteen hops. The other ~470 are split vot
 refused Japanese verdicts that only became *visible* once real evidence entered the walk —
 the traversal used to settle them confidently and wrongly. Checks after: reading probe 0
 wrong across 2,311 slots, and no Japanese surname romanised as Chinese.
+
+## 2026-08-19 — the veto rested on absence of evidence and vetoed a samurai house
+
+Looking at the ~470 records the walk left unsettled turned up two things, and the first is
+a defect I introduced myself.
+
+**113 records were refused a Japanese verdict, and they are the Tani clan.** The rule that
+blocked a Japanese verdict when the surname was "never Japanese" derived that list from
+surnames with **no direct Japanese evidence** — no kana anywhere in the person's names, no
+kokuji, no Japanese given-name ending. 谷 has 41 records and none carries any of those, so
+谷 went on the list. **谷 is Tani**, a samurai house, and 谷衛友 was a daimyo. I flagged this
+exact risk when I wrote the rule — *"谷 (Tani) is definitely Japanese… including it could
+misfire"* — and then included it anyway.
+
+**Absence of evidence is not evidence.** A veto now requires the surname to be *positively*
+Chinese: 10+ already-settled records agreeing 95% of the time. The same consensus settles
+Japanese and Korean surnames rather than only Chinese ones, which is the symmetry the first
+version lacked. All 41 谷 records are `ja` again and **zero records are refused**.
+
+**And the measurement that would have caught it was impossible, because of a second gap.**
+`cjk-romanisation.csv` holds only rows that produced a reading. Japanese records mostly fail
+to romanise for want of a whole-name item, so they are **absent** from it — deriving "which
+surnames are Japanese" from that file returns **three**, and 谷 comes back with an *empty*
+tally rather than a Japanese one. The script knew the culture of all 36,625 records and was
+writing 12,000. `reports/cjk-culture.csv` now carries every one with its evidence:
+
+    zh 18,977   ja 15,365   ko 1,090   none 1,193
+
+**Japanese is 42% of this corpus and 218 records of it romanise.** That was invisible in
+every report written before today.
+
+**Two consensuses, deliberately.** The one computed before the walk is what the veto uses —
+a veto must rest on evidence the walk did not produce, or it is the walk agreeing with
+itself. The richer post-walk tally (396 surnames: ja 264, zh 131, ko 1) fills records the
+walk could not reach: 1,068 settled, no-culture **1,418 → 1,193**.
+
+Checks: reading probe **0 wrong of 2,305**; no Japanese surname romanised as Chinese; the
+external check against Wikidata's own English labels holds at **93.2%** (2,800 of 3,003).
+The dead `NEVER_JA` derivation was removed rather than left looking live.

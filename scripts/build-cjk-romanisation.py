@@ -404,38 +404,41 @@ def main() -> int:
                 by_item += 1
     print(f"  settled by the person's own Wikidata item: {by_item:,}")
 
+    #: What each surname says, judged by the records ALREADY settled above -- the item,
+    #: the place, and the facts about the name itself. A surname carried by 10+ settled
+    #: records that agree 95% of the time is that culture.
+    #:
+    #: **Symmetric on purpose, and the asymmetry was a bug.** An earlier version derived
+    #: only a "never Japanese" list -- surnames with no *direct* Japanese evidence -- and
+    #: used it to veto a Japanese verdict. `谷` has 41 records and none of them carries
+    #: kana, a kokuji or a Japanese ending, so it was vetoed; `谷` is **Tani**, a samurai
+    #: house, and `谷衛友` was a daimyo. 113 records refused for that reason. Absence
+    #: of evidence is not evidence, so a veto now requires the surname to be POSITIVELY
+    #: Chinese, and the same consensus settles Japanese and Korean surnames too.
+    _sur_of = {}
+    for _g, _cjk in need.items():
+        _t = [x for x in _cjk.split() if HAN_TOKEN.fullmatch(x)]
+        if len(_t) > 1:
+            _sur_of[_g] = _t[-1]
+    _tally = collections.defaultdict(collections.Counter)
+    for _g, _sn in _sur_of.items():
+        if _g in culture:
+            _tally[_sn][culture[_g]] += 1
+    SURNAME_CULTURE = {}
+    for _sn, _c in _tally.items():
+        _tot = sum(_c.values())
+        if _tot >= 10:
+            _top, _n = _c.most_common(1)[0]
+            if _n / _tot >= 0.95:
+                SURNAME_CULTURE[_sn] = _top
+    _bycode = collections.Counter(SURNAME_CULTURE.values())
+    print(f"  surname consensus from the settled records: {len(SURNAME_CULTURE):,} surnames "
+          + ", ".join(f"{k} {v}" for k, v in _bycode.most_common()))
+
     #: The cultures settled by DIRECT evidence -- a script, a place, or a fact about the
     #: name itself. Snapshotted before the walk so that one inference never feeds another:
     #: a neighbour may vote only if something about *them* settled it, never because the
     #: walk had already guessed at them.
-    #: Surnames this corpus itself shows are never Japanese, derived rather than
-    #: listed. A single-character surname carried by 25+ records, **not one of which
-    #: has any direct Japanese evidence** -- no kana anywhere in the person's names, no
-    #: kokuji, no Japanese given-name ending -- is not a Japanese surname in this data.
-    #: It yields 24: 曾 邱 劉 張 孔 王 趙 黃 陸 楊 胡 周 崔 姜 秦 韓 朱 譚 and more.
-    #:
-    #: **Deriving it is what makes it safe.** A hand-written list of "Chinese
-    #: surnames" would have caught 源, 橘, 紀, 平, 森, 林 and 堀, which are ordinary
-    #: Japanese surnames; the corpus excludes every one of them, because records
-    #: carrying them DO show kana and Japanese endings. 源 has 42 such records of 396.
-    #:
-    #: **Why it exists.** The walk was giving Japanese readings to people with these
-    #: surnames when it reached a Japanese neighbourhood: 高 趙 came out *Takashi*,
-    #: 直 鄭 *Tadashi*, 熙 劉 *Hiroshi*, 良 崔 *Naoshi* -- 11 rows.
-    _ev = collections.defaultdict(collections.Counter)
-    for g2, c2 in need.items():
-        toks2 = [x for x in c2.split() if HAN_TOKEN.fullmatch(x)]
-        if len(toks2) < 2:
-            continue
-        sc = scripts.get(g2) or ""
-        first2 = toks2[0]
-        if (KANA.search(sc) or any(ch in KOKUJI for ch in c2)
-                or (len(first2) > 1 and first2.endswith(JP_ENDINGS))):
-            _ev[toks2[-1]]["ja"] += 1
-        _ev[toks2[-1]]["n"] += 1
-    NEVER_JA = {k for k, v in _ev.items()
-                if len(k) == 1 and v["n"] >= 25 and v["ja"] == 0}
-    print("  surnames this corpus shows are never Japanese: %d" % len(NEVER_JA))
 
     direct = dict(culture)
 
@@ -483,7 +486,8 @@ def main() -> int:
                 # wrong label is worse than none, which is why `ko` is suppressed
                 # wholesale a few lines below.
                 _t = [x for x in need[g].split() if HAN_TOKEN.fullmatch(x)]
-                if top == "ja" and len(_t) > 1 and _t[-1] in NEVER_JA:
+                if (top == "ja" and len(_t) > 1
+                        and SURNAME_CULTURE.get(_t[-1]) == "zh"):
                     unsettled_why[g] = ("walk said ja at %d hop(s), refused: the "
                                         "surname %s is never Japanese here"
                                         % (hop, _t[-1]))
@@ -525,28 +529,37 @@ def main() -> int:
     # `長宗我部` (Chosokabe) 6, `渡辺` 4 and `斎藤` 4 are Japanese, and
     # `博爾濟吉特` 16 is Borjigit, the Mongol clan. None of them reaches 95% Chinese
     # among settled records, so none is touched.
+    # **Two consensuses, and the difference between them is deliberate.** The one computed
+    # before the walk is what the veto uses: a veto has to rest on evidence the walk did
+    # not produce, or it is just the walk agreeing with itself. For *settling* the records
+    # the walk could not reach, the richer post-walk tally is the better base -- it is
+    # applied only to records that are still unsettled, so it fills gaps rather than
+    # overruling anything.
     settled_by_surname = 0
-    _snapshot = dict(culture)              # never let this rule feed itself
-    _sur_of = {}
-    for g, cjk in need.items():
-        toks = [x for x in cjk.split() if HAN_TOKEN.fullmatch(x)]
-        if len(toks) > 1:
-            _sur_of[g] = toks[-1]
     _tally = collections.defaultdict(collections.Counter)
+    for _g, _sn in _sur_of.items():
+        if _g in culture:
+            _tally[_sn][culture[_g]] += 1
+    SURNAME_CULTURE = {}
+    for _sn, _c in _tally.items():
+        _tot = sum(_c.values())
+        if _tot >= 10:
+            _top, _n = _c.most_common(1)[0]
+            if _n / _tot >= 0.95:
+                SURNAME_CULTURE[_sn] = _top
+    _bc = collections.Counter(SURNAME_CULTURE.values())
+    print("  surname consensus after the walk: %d surnames (%s)"
+          % (len(SURNAME_CULTURE), ", ".join(f"{k} {v}" for k, v in _bc.most_common())))
+    _named = {"zh": "Chinese", "ja": "Japanese", "ko": "Korean"}
     for g, sname in _sur_of.items():
-        if g in _snapshot:
-            _tally[sname][_snapshot[g]] += 1
-    CHINESE_SURNAMES = {sn for sn, c in _tally.items()
-                        if sum(c.values()) >= 10 and c["zh"] / sum(c.values()) >= 0.95}
-    for g, sname in _sur_of.items():
-        if g not in culture and sname in CHINESE_SURNAMES:
-            culture[g] = "zh"
-            pct = 100 * _tally[sname]["zh"] / sum(_tally[sname].values())
-            why[g] = ("the surname %s is Chinese in %.0f%% of the records already settled"
-                      % (sname, pct))
+        code = SURNAME_CULTURE.get(sname)
+        if g not in culture and code:
+            culture[g] = code
+            pct = 100 * _tally[sname][code] / sum(_tally[sname].values())
+            why[g] = ("the surname %s is %s in %.0f%% of the records already settled"
+                      % (sname, _named.get(code, code), pct))
             unsettled_why.pop(g, None)
             settled_by_surname += 1
-    print(f"  Chinese surnames derived from settled records: {len(CHINESE_SURNAMES):,}")
     print(f"  settled by the surname: {settled_by_surname:,}")
     print(f"  settled by a Japan-only character: {by_kokuji:,}")
     print(f"  settled by a simplified-only form: {by_simp:,}")
@@ -861,6 +874,25 @@ def main() -> int:
           "Japanese one takes different readings in different names and the item only "
           "gives the reading for *that* name. **The `ja` rows are the ones to distrust.**"]
     OUT_MD.write_text("\n".join(md) + "\n", encoding="utf-8")
+
+    # ---- the culture of EVERY record, not only the ones that romanised ---------
+    # **`cjk-romanisation.csv` holds only rows that produced a reading**, which makes it a
+    # trap for any measurement about culture: Japanese records mostly fail to romanise for
+    # want of a whole-name item, so they are simply absent from it. Deriving "which
+    # surnames are Japanese" from that file returns **three**, and `谷` -- the Tani clan,
+    # a samurai house -- comes back with an *empty* tally rather than a Japanese one.
+    #
+    # The script knows the culture of all 36,625 records and was throwing most of it away.
+    with (REPO / "reports" / "cjk-culture.csv").open("w", encoding="utf-8", newline="") as fh:
+        w = csv.writer(fh)
+        w.writerow(["geni_id", "cjk", "culture", "evidence"])
+        for g in sorted(need):
+            w.writerow([g, need[g], culture.get(g, ""),
+                        why.get(g, "") or unsettled_why.get(g, "")])
+    _c = collections.Counter(culture.get(g, "(none)") for g in need)
+    print()
+    print(f"  culture for all {len(need):,} records -> reports/cjk-culture.csv")
+    print("   " + ", ".join(f"{k2} {v2:,}" for k2, v2 in _c.most_common()))
 
     # ---- the residue, written out rather than merely counted ------------------
     # The records with no culture have been a line in the status report for days.

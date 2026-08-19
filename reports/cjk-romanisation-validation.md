@@ -2,18 +2,18 @@
 
 Built by `scripts/validate-cjk-romanisation.py`. **An external check** — every other measurement of this pipeline compares it against sources it already uses, or against a list of characters I wrote myself.
 
-- romanised people: **12,242**
-- of those, linked to a Wikidata item: **3,067**
-- whose item already carries an English label somebody else wrote: **2,996**
+- romanised people: **12,214**
+- of those, linked to a Wikidata item: **3,069**
+- whose item already carries an English label somebody else wrote: **2,998**
 
-## My syllables appear in their label for **2,798 of 3,001** — 93.2%
+## My syllables appear in their label for **2,800 of 3,003** — 93.2%
 
 The two strings are not meant to match. Wikidata writes the whole name, surname first and the given name run together — `Sun Changqing`. This pipeline romanises the **given name only**, syllables separated — `Chang Qing`. The test is whether my syllables occur in their label.
 
 | culture | agree | differ |
 | --- | ---: | ---: |
 | ja | 0 | 3 |
-| zh | 2,798 | 200 |
+| zh | 2,800 | 200 |
 
 ## The 203 that differ, and why most are not errors
 
@@ -146,4 +146,4 @@ Wikidata catalogues rulers under **regnal and temple names**. `世民` is `Shi M
 
 ## What this says about writing labels
 
-**Wikidata's label is better than ours wherever it exists.** It carries the surname, and for a ruler it carries the name history uses. So a label batch over this population must not overwrite: for the **2,996** people whose item already has an English label there is nothing to add, and the romanisation's value is for the ones that do not.
+**Wikidata's label is better than ours wherever it exists.** It carries the surname, and for a ruler it carries the name history uses. So a label batch over this population must not overwrite: for the **2,998** people whose item already has an English label there is nothing to add, and the romanisation's value is for the ones that do not.

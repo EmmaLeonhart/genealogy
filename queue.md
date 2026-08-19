@@ -237,12 +237,46 @@ to be attempted.
 
 ### Standing
 
-    zh  12,038   compose per character, gated on being a Mandarin syllable
-    ja     204   whole-name items ONLY -- kanji do not compose
-    ko       0   suppressed -- but now 1,040 records are correctly KNOWN to be Korean
+    zh  11,996   compose per character, gated on being a Mandarin syllable
+    ja     218   whole-name items ONLY -- kanji do not compose
+    ko       0   suppressed -- but 1,090 records are correctly KNOWN to be Korean
 
-Out of **36,625** Han-only records, with **35,207 cultures settled**. **1,418 still have
-no culture**, 12,136 Japanese have no whole-name item, and **3,059 are not names at all**.
+Out of **36,625** Han-only records, with **35,432 cultures settled**. **1,193 still have
+no culture**, 12,352 Japanese have no whole-name item, and **3,059 are not names at all**.
+
+### `reports/cjk-culture.csv` — the culture of EVERY record, which nothing recorded
+
+`cjk-romanisation.csv` holds **only rows that produced a reading**, and that makes it a trap
+for any question about culture: Japanese records mostly fail to romanise for want of a
+whole-name item, so they are simply **absent** from it. Deriving "which surnames are
+Japanese" from that file returns **three**; from the full data it returns **264**.
+
+The script knew the culture of all 36,625 records and was writing 12,000 of them. It now
+writes all of them, with the evidence or the reason there is none:
+
+    zh 18,977   ja 15,365   ko 1,090   none 1,193
+
+**Japanese is 42% of this corpus and 218 records of it romanise.** That was invisible.
+
+### The surname veto rested on absence of evidence, and vetoed a samurai house
+
+The rule that refused a Japanese verdict when the surname was "never Japanese" was derived
+from surnames with **no direct Japanese evidence** — no kana, no kokuji, no Japanese ending.
+`谷` has 41 records and none carries any of those, so `谷` was on the list. **`谷` is
+Tani**, a samurai house; `谷衛友` was a daimyo. 113 records refused on that basis.
+
+**Absence of evidence is not evidence.** A veto now requires the surname to be *positively*
+Chinese — 10+ already-settled records agreeing 95% of the time — and the same consensus
+settles Japanese and Korean surnames rather than only Chinese ones. All 41 `谷` records are
+`ja` again and **zero records are refused**.
+
+**Two consensuses, deliberately.** The one computed *before* the walk is what the veto uses,
+because a veto must rest on evidence the walk did not produce or it is the walk agreeing
+with itself. The richer *post-walk* tally — 396 surnames, ja 264, zh 131, ko 1 — fills the
+records the walk could not reach: **1,068 settled**, no-culture **1,418 → 1,193**.
+
+Checks unchanged: reading probe **0 wrong of 2,305**, no Japanese surname romanised as
+Chinese, and the external check against Wikidata's own labels holds at **93.2%**.
 
 ### The person's own Wikidata item — the strongest evidence, and it was unused
 
