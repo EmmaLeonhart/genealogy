@@ -19,3 +19,20 @@ Emma, 2026-08-18: *"uhh farm names are surnames here lol"* --- and *"add a task 
 | [6000000227295719853](https://www.geni.com/people/x/6000000227295719853) | `Wojsław /father of Sulisława/` | `Wojsław /nn/` | Sulisława /nn/ |
 | [6000000227289508960](https://www.geni.com/people/x/6000000227289508960) | `Ølver /father of Ingrid/` | `Ølver /Rømer/` | Ingrid Ølversdatter /Rømer/ |
 | [6000000227289663852](https://www.geni.com/people/x/6000000227289663852) | `Øystein /father of Berta/` | `Øystein /Riveland/` | Berta Øysteinsdatter /Riveland/ |
+
+## 2026-08-19 — one more placeholder to correct: `Lorent father of Anne Maria Lorentzen`
+
+Created during the chain-seed campaign. The given name should be **`Lorentz`**,
+not `Lorent`.
+
+The patronymic stripper matched `zen` as a suffix and removed all three letters.
+`Lorentzen` is *Lorentz* + *-en*, so only the `-en` comes off. `zen` has been
+dropped from the suffix list, which sends names like this to the tier 4
+`NN <surname>` form instead of guessing a given name — safe, and one letter is
+not worth a wrong name.
+
+* <https://www.geni.com/people/x/6000000227323913877>
+
+The other placeholders created tonight are all `NN <surname>` or a patronymic
+that stripped cleanly (`Anders father of Anders Brodin`, `Jon father of Olof
+Jonsson`, `Hans Thon`, `Александр Синайский`) and need no correction.
