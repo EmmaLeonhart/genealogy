@@ -36,3 +36,17 @@ not worth a wrong name.
 The other placeholders created tonight are all `NN <surname>` or a patronymic
 that stripped cleanly (`Anders father of Anders Brodin`, `Jon father of Olof
 Jonsson`, `Hans Thon`, `Александр Синайский`) and need no correction.
+
+## 2026-08-19 — `NN Balchen` should be `NN Foss`
+
+Created as the father of **Birgitte Johanne Balchen (Foss)** (1867–). Her birth
+surname is **Foss**; Balchen is her husband's. Her father is a Foss.
+
+The dialog heading Geni shows when you click "Add father" is
+`Add father of Birgitte Johanne Balchen` — it drops the parenthesised birth
+surname that the tree node itself displays. So the automatic surname derivation,
+which reads that heading, cannot see it. The tree node is the place to read a
+married woman's birth surname from; the dialog heading is not.
+
+This is the same failure the NN Goddard and NN Stevenson entries above were
+created to avoid, arriving through a different door.
