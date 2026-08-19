@@ -1423,7 +1423,7 @@ And kinda go up the ancestry of Rakel and Arne on the general sides until you ge
 
 I want a thing that similarly does this and adds links with the Bure Kinship and builds the linking down to my mother.
 
-
+This is a thing that is more chaotic and honestly requires a task of geni export for the Bure kinship in the same way as with the Norwegian group and should be occurring somewhat gradually too. The Bure Kinship has a fuckton of people who have so many fucking people with sweidsh wikipedia articles and wikidata items but no linked tree
 
 ### AI explanation of this task
 
