@@ -237,12 +237,41 @@ to be attempted.
 
 ### Standing
 
-    zh  11,996   compose per character, gated on being a Mandarin syllable
-    ja     218   whole-name items ONLY -- kanji do not compose
-    ko       0   suppressed -- but 1,090 records are correctly KNOWN to be Korean
+    zh  12,695   compose per character, gated on being a Mandarin syllable
+    ja     228   whole-name items ONLY -- kanji do not compose
+    ko       0   suppressed
 
-Out of **36,625** Han-only records, with **35,432 cultures settled**. **1,193 still have
-no culture**, 12,352 Japanese have no whole-name item, and **3,059 are not names at all**.
+Out of **36,625** Han-only records, with **35,661 cultures settled**:
+
+    zh 20,012   ja 15,578   ko 71   none 964
+
+### WITHDRAWN: the person's own Wikidata item — the rule was wrong, 2026-08-19
+
+**It read a person item's labels the way the reading table reads a NAME item's**: a hangul
+`ko` label meant Korean, a kana `ja` label meant Japanese. That is valid for a name item,
+which is *about* a name in a language. It is meaningless for a person item, where a hangul
+label only means the Korean Wikipedia has an article.
+
+**It called 226 people Korean and not one of them was.** `Q314464` **Tokugawa Hidetada**,
+`Q3482119` **Shimazu Tadahisa**, `Q1379947` **Kiyohara no Fukayabu**, `Q708108` **Wu
+Shihuo**, `Q1149178` **Emperor Daowu of Northern Wei**, `Q471820` **Tang of Shang**,
+`Q698909` **King Wen of Zhou**, `Q270018` **Fu Hao**, `Q9701` **Li Shimin**. They carry 18
+to 54 language labels each. The traversal then propagated it to ~830 more, so `ko` read
+1,090 where the true figure is **71**.
+
+**And it made the headline metric improve while making the data worse.** Marking Chinese
+people Korean suppressed their romanisation, so the rows that survived agreed more often
+and the external check read **93.2%**. With the rule withdrawn it is **91.8% — exactly what
+it was before**, which confirms the whole gain was suppression. **The tell was in the same
+line of output**: the validation set shrank 3,144 → 3,003 at the same moment, and that number
+was printed without being explained. *A metric that improves because less was emitted is not
+an improvement.*
+
+**What a person item CAN say is in its claims, not its labels.** `P735` given name and
+`P734` family name point at the name items, and **5,100 of the 5,222 linked people carry
+one**. Those give whole names with the surname attached — `Q9701` → *Li Shimin*, `Q314464`
+→ *Tokugawa Hidetada*, `Q11095892` → *Li Tianxi* — which is better than anything this
+pipeline composes. **That is the replacement, and it is the next piece of work.**
 
 ### `reports/cjk-culture.csv` — the culture of EVERY record, which nothing recorded
 

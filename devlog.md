@@ -10208,3 +10208,43 @@ walk could not reach: 1,068 settled, no-culture **1,418 → 1,193**.
 Checks: reading probe **0 wrong of 2,305**; no Japanese surname romanised as Chinese; the
 external check against Wikidata's own English labels holds at **93.2%** (2,800 of 3,003).
 The dead `NEVER_JA` derivation was removed rather than left looking live.
+
+## 2026-08-19 — WITHDRAWN: the Wikidata-item culture rule was wrong, and its metric lied
+
+The rule added earlier today read a **person** item's labels the way the reading table reads
+a **name** item's: a hangul `ko` label meant Korean, a kana `ja` label meant Japanese. That
+inference is sound for a name item, which is *about* a name in a language. It is
+meaningless for a person item, where a hangul label only means the Korean Wikipedia has an
+article about them.
+
+**It called 226 people Korean and not one of them was.** `Q314464` Tokugawa Hidetada,
+`Q3482119` Shimazu Tadahisa, `Q1379947` Kiyohara no Fukayabu, `Q708108` Wu Shihuo,
+`Q1149178` Emperor Daowu of Northern Wei, `Q471820` Tang of Shang, `Q698909` King Wen of
+Zhou, `Q270018` Fu Hao, `Q9701` Li Shimin. They carry 18 to 54 language labels each, so of
+course one of them is Korean. The graph traversal then propagated the verdict to ~830 more:
+`ko` read **1,090** where the true figure is **71**.
+
+**The metric moved the right way while the data moved the wrong way, and that is the part
+worth keeping.** Marking Chinese people Korean suppressed their romanisation, so the rows
+that survived agreed more often and the external check against Wikidata's own English
+labels read **93.2%**. With the rule withdrawn it reads **91.8% — exactly what it was
+before it landed**. The entire "improvement" was suppression.
+
+**The tell was in the same line of output I quoted.** The validation set shrank from 3,144
+to 3,003 in the same breath as the accuracy rose, and I printed that number without asking
+why it had moved. A metric that improves because less was emitted is not an improvement.
+The rule survived one full status report on the strength of it.
+
+Found only because sampling `P735`/`P734` printed `Q314464 → ko` beside the English label
+`Tokugawa Hidetada`.
+
+**Figures with the rule gone:** cultures 35,661 of 36,625 — zh **20,012**, ja **15,578**,
+ko **71**, none **964**. zh romanised 11,996 → **12,695**, ja 218 → **228**. Reading probe
+**0 wrong of 2,408**; no Japanese surname romanised as Chinese; all nine people named above
+are back to `ja` or `zh` correctly.
+
+**What a person item CAN say is in its claims.** `P735` given name and `P734` family name
+point at the name items, and **5,100 of the 5,222 linked people carry one**. Those yield
+whole names with the surname attached — `Q9701` → *Li Shimin*, `Q314464` → *Tokugawa
+Hidetada*, `Q11095892` → *Li Tianxi* — which is better than anything this pipeline
+composes, and it is per-person rather than per-character. That is the replacement.
