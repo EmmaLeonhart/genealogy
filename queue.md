@@ -1366,6 +1366,58 @@ and it runs unattended.
 
 ---
 
+
+
+## Fix the surnames of the tier-2 placeholders before the synoptic tree is built
+
+- Emma does the Geni edits herself; do not touch the profiles. `reports/farmname-seed-fixes.md` is the worklist -- 11 placeholders carrying `father of X` whose child has a real surname. Farm names are surnames (2026-08-18), so those were mis-tiered.
+
+## Connect Emma and Arne Garborg to Bergitte Aukland, and Bergitte to Charlemagne
+
+**Emma, 2026-08-18. Do this BEFORE the synoptic tree is built. Not an investigation
+task — the finding is hers and it is already made.**
+
+She saved the ancestry from **Charlemagne to Arne Garborg** and identified
+**Bergitte Aukland** — `6000000002481819312`,
+<https://www.geni.com/people/Bergitte-Aukland/6000000002481819312?through=6000000002457013227>.
+
+**What Bergitte Aukland is, precisely, in her words:** *"they are not the person
+who is the nearest common ancestor of me and Arne, but they are the common
+ancestor in the two lines between me and Arne who is a descendant of
+Charlemagne."*
+
+So she is **not** the MRCA of Emma and Arne. She is the person who is (a) on both
+of the two lines that run between Emma and Arne, and (b) herself descended from
+Charlemagne. That second property is the whole point — she is the junction where
+the Emma↔Arne link meets the Charlemagne descent.
+
+The `?through=6000000002457013227` on the URL names the profile the relationship
+was traced through and is part of the evidence; keep it.
+
+**The work, in two halves:**
+
+- Connect **Emma → Bergitte Aukland** and **Arne Garborg → Bergitte Aukland**.
+- Connect **Bergitte Aukland → Charlemagne**.
+
+**Why Arne Garborg specifically, in her words:** *"Arne is the person we were
+looking for, as he is significant enough that really anyone being connected in the
+tree is gonna be seen as legitimate."* That is an argument about how the Wikidata
+edits will be received, not about genealogy: a link to a major documented
+Norwegian writer carries its own justification, so people hanging off that link
+inherit the legitimacy. It is the same instinct as CLAUDE.md § *The practical goal
+is EMMA densely linked* — proximity to a well-attested anchor beats volume.
+
+Both paths to Arne are already complete in the corpus (25 steps, 0 absent —
+`paths/isolate-geni-aadne-eivindson-garborg-1851-1924.tsv`), and all 20 people on
+them are held in at least 4 exports with parents recorded
+(`reports/garborg-coverage.txt`). So the Emma↔Arne half is evidenced; what is
+outstanding is Bergitte→Charlemagne and the modelling of all of it.
+
+**Her saved Charlemagne→Arne page goes into the repo as soon as it lands** — run
+`python -m genimerge path-from-html` on it into `paths/` the moment it appears,
+the same handling as every other saved page.
+
+
 # THE TAIL OF THE QUEUE — Emma, 2026-08-18, dictated in one go
 
 **This is the end of the queue and the order inside it is hers.** Every item below
@@ -1506,52 +1558,3 @@ scanned, 19,023 carrying an ordinal — 8,093 unambiguous Roman, 5,892 single-le
   100 edits a day chosen at random from the eligible set, service-area gate,
   Geni-IDs-as-sources de-prioritised to 5–25 a day. **Do not normalise away the bias
   toward her neighbourhood** — it is deliberate.
-
-## Fix the surnames of the tier-2 placeholders before the synoptic tree is built
-
-- Emma does the Geni edits herself; do not touch the profiles. `reports/farmname-seed-fixes.md` is the worklist -- 11 placeholders carrying `father of X` whose child has a real surname. Farm names are surnames (2026-08-18), so those were mis-tiered.
-
-## Connect Emma and Arne Garborg to Bergitte Aukland, and Bergitte to Charlemagne
-
-**Emma, 2026-08-18. Do this BEFORE the synoptic tree is built. Not an investigation
-task — the finding is hers and it is already made.**
-
-She saved the ancestry from **Charlemagne to Arne Garborg** and identified
-**Bergitte Aukland** — `6000000002481819312`,
-<https://www.geni.com/people/Bergitte-Aukland/6000000002481819312?through=6000000002457013227>.
-
-**What Bergitte Aukland is, precisely, in her words:** *"they are not the person
-who is the nearest common ancestor of me and Arne, but they are the common
-ancestor in the two lines between me and Arne who is a descendant of
-Charlemagne."*
-
-So she is **not** the MRCA of Emma and Arne. She is the person who is (a) on both
-of the two lines that run between Emma and Arne, and (b) herself descended from
-Charlemagne. That second property is the whole point — she is the junction where
-the Emma↔Arne link meets the Charlemagne descent.
-
-The `?through=6000000002457013227` on the URL names the profile the relationship
-was traced through and is part of the evidence; keep it.
-
-**The work, in two halves:**
-
-- Connect **Emma → Bergitte Aukland** and **Arne Garborg → Bergitte Aukland**.
-- Connect **Bergitte Aukland → Charlemagne**.
-
-**Why Arne Garborg specifically, in her words:** *"Arne is the person we were
-looking for, as he is significant enough that really anyone being connected in the
-tree is gonna be seen as legitimate."* That is an argument about how the Wikidata
-edits will be received, not about genealogy: a link to a major documented
-Norwegian writer carries its own justification, so people hanging off that link
-inherit the legitimacy. It is the same instinct as CLAUDE.md § *The practical goal
-is EMMA densely linked* — proximity to a well-attested anchor beats volume.
-
-Both paths to Arne are already complete in the corpus (25 steps, 0 absent —
-`paths/isolate-geni-aadne-eivindson-garborg-1851-1924.tsv`), and all 20 people on
-them are held in at least 4 exports with parents recorded
-(`reports/garborg-coverage.txt`). So the Emma↔Arne half is evidenced; what is
-outstanding is Bergitte→Charlemagne and the modelling of all of it.
-
-**Her saved Charlemagne→Arne page goes into the repo as soon as it lands** — run
-`python -m genimerge path-from-html` on it into `paths/` the moment it appears,
-the same handling as every other saved page.
