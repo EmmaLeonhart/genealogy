@@ -10248,3 +10248,41 @@ point at the name items, and **5,100 of the 5,222 linked people carry one**. Tho
 whole names with the surname attached — `Q9701` → *Li Shimin*, `Q314464` → *Tokugawa
 Hidetada*, `Q11095892` → *Li Tianxi* — which is better than anything this pipeline
 composes, and it is per-person rather than per-character. That is the replacement.
+
+## 2026-08-19 — P735/P734 measured and mostly rejected; Wikidata's own label applied instead
+
+The replacement named in the last entry was `P735`/`P734` — the claims on a person item
+pointing at their given-name and family-name items. **5,113 of the 5,222 linked people
+carry one**, which looked like the answer.
+
+**Measured before use, and mostly not usable.** The safety question is whether the name
+item Wikidata links corresponds to the Han token on our record, and usually it does not: of
+5,113, only **716** have a given-name item whose Han form matches ours. The failures are
+informative rather than random — our token is a truncation (`儀` where the item says `溥儀`,
+**Puyi**), or a courtesy name occupies the given-name slot (`易占 不疑` against `不疑`), or
+the item uses a variant character (`天賜` against `天錫`). And the 4,369 "family differs" are
+not failures at all: **our last token is a clan seat** (`隴西狄道`) while the item's family
+name is the actual surname (`李`). So `P734` supplies exactly what the romanisation lacks —
+the surname — but only 144 line up with anything we hold. Not applied.
+
+Given the last entry, the discipline that mattered was checking the correspondence *before*
+building on it rather than after. A rule that took the linked name item's reading on trust
+would have written **Puyi's** name onto a record whose token is `儀`, and a dozen courtesy
+names into given-name slots.
+
+**The simpler route beside it is safe and larger, and it is applied.**
+`cjk-romanisation-validation.md` had already established that a published label beats ours
+wherever it exists — ours is the given name alone, `Shi Min`, where Wikidata says `Emperor
+Taizong of Tang`. So: **17,721 people are linked, 12,334 already have a local English label,
+5,387 do not, and 5,208 of those have one on Wikidata.** Jacques Offenbach, Tokugawa
+Hidetada, David HaLevi Segal, Shimazu Tadahisa.
+
+`scripts/build-linked-english-labels.py` → `reports/linked-english-labels.csv`, ranked
+**above** the romanisation in `build-relationship-label-preview.py`. `en` **31,765 →
+31,882**, `mul`-only **7,675 → 7,558**, and the generated labels read `wife of Tokugawa
+Ieyasu`, `son of Yoshichika Tokugawa`.
+
+**This is not a CJK job** — it fell out of the CJK work because that is where the comparison
+was made, but the population is every linked person. And nothing here proposes a Wikidata
+edit: the direction is inward, taking a published name as the best available name for our
+own labelling.

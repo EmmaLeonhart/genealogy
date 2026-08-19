@@ -52,6 +52,11 @@ FACTS = REPO / "reports" / "derived-facts.csv"
 #: Romanised Han-only names, built by `build-cjk-romanisation.py`. Used ONLY where a
 #: person has no English label at all -- see `label_of` below.
 ROMANISED = REPO / "reports" / "cjk-romanisation.csv"
+#: Wikidata's own English label for linked people who have none of ours, built by
+#: `build-linked-english-labels.py`. Ranked ABOVE the romanisation: a published label is
+#: the whole name -- `Emperor Taizong of Tang` -- where the romanisation is the given name
+#: alone, `Shi Min`. Measured in `reports/cjk-romanisation-validation.md`.
+LINKED_EN = REPO / "reports" / "linked-english-labels.csv"
 
 csv.field_size_limit(10 ** 7)
 
@@ -137,6 +142,19 @@ def main() -> int:
     # as it goes while Wikidata calls the same man `Emperor Taizong of Tang`. Where a
     # label exists it is better than this, measured in
     # `reports/cjk-romanisation-validation.md`.
+    # **Wikidata's label first, then the romanisation.** 5,208 linked people have no
+    # English label here and one there -- Jacques Offenbach, Tokugawa Hidetada, David
+    # HaLevi Segal. Taking it is not a Wikidata edit; it is using a published name as the
+    # best available name for our own labelling.
+    if LINKED_EN.exists():
+        added_wd = 0
+        for row in csv.DictReader(LINKED_EN.open(encoding="utf-8", newline="")):
+            v = (row.get("label_en") or "").strip()
+            if v and not label_of.get(row["geni_id"]):
+                label_of[row["geni_id"]] = v
+                added_wd += 1
+        print(f"Wikidata's own English label used for {added_wd:,} linked people")
+
     if ROMANISED.exists():
         added = 0
         for row in csv.DictReader(ROMANISED.open(encoding="utf-8", newline="")):
