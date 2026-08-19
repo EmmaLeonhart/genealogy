@@ -1411,8 +1411,13 @@ And then the common ancestry of Reinhert Borsheim going up and also adding his d
 
 Descendants can go in any order roughly. He has only 38
 
-Ancestor order to optimize getting to 
+Ancestor order to optimize getting to Charlemagne and the other person fastest
 
+Rakel Rasmusdottir Borsheim
+
+Add both of her parents at once
+
+And kinda go up the ancestry of Rakel and Arne on the general sides until you get the blood lins at both of the two people
 
 ### Other thing
 
