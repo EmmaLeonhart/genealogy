@@ -153,7 +153,16 @@ WORDS: dict[str, dict[str, object]] = {
            "grandchild_of": {"M": "Enkel", "F": "Enkelin", "": "Enkelkind"},
            "grandparent_of": {"M": "Großvater", "F": "Großmutter",
                               "": "Großelternteil"}},
-    "da": {"of": "af",
+    # **Danish and Norwegian take a DIFFERENT preposition depending on the relation**,
+    # so `of` may be a dict keyed by relation with a `""` default. Checked 2026-08-18
+    # against the generated batch, which had `mor af Harald Kesja`: Danish is `mor til`,
+    # and `af` marks origin rather than relation. Danish keeps `af` for the downward
+    # relations -- `søn af`, `datter af`, `barnebarn af` -- and takes `til` for the rest.
+    #
+    # Norwegian is the SAME defect mirrored: a single `til` gave `sønn til`, where
+    # Norwegian says `sønn av`. Swedish really does use `till` throughout, which is what
+    # made one preposition per language look like it worked.
+    "da": {"of": {"": "til", "child_of": "af", "grandchild_of": "af"},
            "child_of": {"M": "søn", "F": "datter", "": "barn"},
            "spouse_of": {"M": "ægtemand", "F": "hustru", "": "ægtefælle"},
            "parent_of": {"M": "far", "F": "mor", "": "forælder"},
@@ -170,7 +179,7 @@ WORDS: dict[str, dict[str, object]] = {
            "grandparent_of": {"M": "morfar eller farfar",
                               "F": "mormor eller farmor",
                               "": "mor- eller farförälder"}},
-    "nb": {"of": "til",
+    "nb": {"of": {"": "til", "child_of": "av", "grandchild_of": "av"},
            "child_of": {"M": "sønn", "F": "datter", "": "barn"},
            "spouse_of": {"M": "ektemann", "F": "hustru", "": "ektefelle"},
            "parent_of": {"M": "far", "F": "mor", "": "forelder"},
@@ -358,6 +367,11 @@ def main() -> int:
                 touched.add(lang)
                 table = words[relation]
                 word = table.get(sex) or table[""]
+                # `of` is a plain string for most languages and a per-relation dict for
+                # the ones where the preposition depends on which way the relation runs.
+                joiner = words["of"]
+                if isinstance(joiner, dict):
+                    joiner = joiner.get(relation, joiner[""])
                 edits.append({
                     "id": f"nn_label:{qid}:{lang}",
                     "type": "set_label",
@@ -365,7 +379,7 @@ def main() -> int:
                     "subject": {"qid": qid, "geni_id": row.get("geni_id") or None},
                     "requires": depends,
                     "label": {"language": lang,
-                              "value": f"{word} {words['of']} {other}"},
+                              "value": f"{word} {joiner} {other}"},
                     "replaces": current,
                     "kind": "change" if current else "add",
                     "via": {"qid": via, "relation": relation},
