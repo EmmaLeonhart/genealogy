@@ -9983,3 +9983,39 @@ and `國` are ordinary given-name characters, not institution words in the name 
 
 So there is no rule here. One record has an empire in its name field, which is a data edit,
 and building a rule off it would have suppressed several hundred real names.
+
+## 2026-08-19 — the ja table's Chinese pollution is 2 output rows, and has no clean fix
+
+The last entry left 409 characters entering the `ja` table through the kanji-label branch
+with Chinese readings among them — 髦 *Mao*, 影 *Ying*, 菜 *Tsai* — and no measurement of
+what that cost. Measured now, by reading the entire output.
+
+**All 217 `ja` rows, 117 distinct character→reading pairs, and exactly two are wrong:**
+`影` = *Ying* (Chinese; Japanese is Kage or Ei) and `俊` = *Chun* (Korean; Japanese is Toshi
+or Shun). **0.9%.** 髦 *Mao* and 菜 *Tsai* are in the table and used by no record. Everything
+else is right, including the twelve different kanji that all read *Tadashi* — 直, 正, 嘉,
+整, 儀, 紀, 真, 督, 義, 貞, 克, 伝 — which is correct, because Tadashi is a common name
+written many ways.
+
+**Two discriminators were tested. Neither is shippable, so nothing was changed.**
+
+*"A Chinese item carries some Chinese-variant label the `not zh` test misses."* The test
+only looks at `zh`, `zh-hant`, `zh-hans`, so an item labelled `zh-cn`, `lzh` or `nan` would
+walk straight through — a clean hypothesis with an obvious fix. **It is false.** 21 of the
+436 carry `hak`, `cdo`, `lzh` or `gan` labels and **every single one is a correct Japanese
+reading**: 鈴 Rin, 穂 Minoru, 勉 Tsutomu, 駿 Shun, 葵 Aoi, 萌 Moe, 輝 Hikaru, 奏 Kanade, 桂
+Katsura. The pollution lives in the 415 with *no* Chinese label at all, so the signal points
+away from the problem.
+
+*"A Japanese reading is never identical to the Mandarin one."* This finds 8 characters and 6
+are genuine leaks — 賁 Ben, 博 Bo, 芸 Yun, 影 Ying, 毛 Mao, 天 Tian. But it also flags **舞 =
+*Mai*, which is a perfectly good Japanese name**; the fault there is a wrong `zh` entry
+rather than a wrong `ja` one. And it does not catch 俊 *Chun* at all. Shipping it would trade
+one wrong entry for another and lose a right one.
+
+The pinyin gate cannot be mirrored here either, which is the root of the whole difficulty:
+genuine Japanese readings *are* legal pinyin syllables — Ken, Sen, Gen, Jun, Shun, Rin.
+Whatever separates 俊 *Chun* from 順 *Jun* is not in the string.
+
+**2 wrong rows is the honest cost of having no discriminator.** Recorded rather than fixed
+with a two-character blacklist that the next export would silently outgrow.

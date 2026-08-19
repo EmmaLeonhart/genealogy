@@ -419,9 +419,30 @@ from; a name tells you what it is.
   ja table **497 → 432**, ja rows **242 → 217**: 25 false labels gone, and the ones left are
   right — `鶴` Tsuru, `春` Haru, `千` Sen, `栄` Sakae, `満` Mitsuru.
 
-  **Not fixed, and stated:** the 409 characters arriving through the kanji-label branch still
-  include Chinese readings — `髰` *Mao*, `影` *Ying*, `菜` *Tsai*. The pinyin gate cannot be
-  mirrored here because real Japanese readings *are* legal pinyin syllables (Chun, Tan, Yun).
+  **The residual pollution is measured, and it is 2 rows — audited 2026-08-19.** The 415
+  characters arriving through the kanji-label branch do still include Chinese readings, but
+  the output barely touches them. All 217 `ja` rows were read: **117 distinct
+  character→reading pairs, of which exactly two are wrong** — `影` = *Ying* (Chinese; Japanese
+  is Kage or Ei) and `俊` = *Chun* (Korean; Japanese is Toshi or Shun). 0.9%. `髰` *Mao* and
+  `菜` *Tsai* sit in the table and are used by no record. The rest are right, including the
+  twelve different kanji that all read *Tadashi* — it is a common name written many ways.
+
+  **Two discriminators were tested and neither is shippable**, so nothing was changed:
+
+  - *"A Chinese item carries some Chinese-variant label the `not zh` test misses"* — plausible,
+    since that test only looks at `zh`, `zh-hant`, `zh-hans`. **False.** 21 of the 436 carry
+    `hak`, `cdo`, `lzh` or `gan` labels and **every one is a correct Japanese reading**:
+    `鈴` Rin, `駿` Shun, `葵` Aoi, `萌` Moe, `輝` Hikaru, `奏` Kanade. The pollution is in the
+    415 with *no* Chinese label at all.
+  - *"A Japanese reading is never identical to the Mandarin one"* — finds 8 characters and
+    6 are genuine leaks (`賁` Ben, `博` Bo, `芸` Yun, `影` Ying, `毛` Mao, `天` Tian). But it
+    also flags **`舞` = *Mai*, which is a correct Japanese name** — the fault there is a wrong
+    `zh` entry, not a wrong `ja` one — and it misses `俊` *Chun* entirely. It trades one wrong
+    entry for another.
+
+  The pinyin gate cannot be mirrored here either: real Japanese readings *are* legal pinyin
+  syllables — Ken, Sen, Gen, Jun, Shun, Rin. **2 wrong rows is the honest cost of having no
+  discriminator, and it is recorded rather than papered over.**
 
 **The empire case was one record, not a class — CLOSED.** `大唐帝國 謝氏` looked like the tip
 of a population of records naming institutions rather than people. It is not. Of 599 given
