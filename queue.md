@@ -1374,6 +1374,12 @@ and it runs unattended.
 
 ## Connect Emma and Arne Garborg to Bergitte Aukland, and Bergitte to Charlemagne
 
+Uhh the AI generated explanations are kinda bad and do not fully explain what is supposed to be going on. So this is an explanation of some of the specifically queued up edits that will be done manually as a part of the ci/cd bot stuff. We have the paths going to these people. 
+
+Initial edits clear out the paths from Arne Garborg to Charlemagne 
+
+### AI explanation of this task
+
 **Emma, 2026-08-18. Do this BEFORE the synoptic tree is built. Not an investigation
 task — the finding is hers and it is already made.**
 
