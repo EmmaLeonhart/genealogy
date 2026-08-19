@@ -226,12 +226,6 @@ only those two languages carry the extra structure.
 The censuses she asked for are built and committed; this is only the residue that
 needs a ruling rather than a measurement. `devlog.md` has the numbers.
 
-- **Two marker phrases found by the mononym census and NOT added to the vocabulary.**
-  `Name Not Known` (45 people) and `Unknown Wife` (37). The first is a marker by her own
-  *"words meaning unknown"* rule and slips through only because matching is whole-label
-  and exact, so the listed `not known` never fires on the longer phrase. The second is a
-  description rather than a name — the `NN` in `mul` plus a descriptive label case. Both
-  are held because she has twice said widening that vocabulary is her call.
 - **Middle initials in non-Latin languages.** `reports/middle-initials.md` — 12,805
   tokens in the middle-initial position across the corpus. Her words: *"As far as the
   middle initial people, I'm not really sure what to do with them, at least going into

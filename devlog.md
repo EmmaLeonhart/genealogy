@@ -9525,3 +9525,55 @@ something false about a person while being hard to find later — the same argum
 What it needs: a source of readings that is genuinely per-culture, the export signal
 demoted below the personal one, and the name/origin split solved before the reading is
 attempted. The culture inference can stay as it is.
+
+## 2026-08-18 — the Han-only "names" are name + courtesy name + clan seat
+
+One of the two faults that made the romanisation unusable: `陳郡陽夏` was being
+romanised into a personal name when it is a *place*. Measured, and it resolves into a
+rule rather than a judgement. `reports/cjk-name-structure.md`.
+
+    鯤  幼輿  陳郡陽夏
+    名   字    郡望
+
+Given name, courtesy name, and the 郡望 — the commandery and county a clan claims as
+its ancestral seat. The last belongs to nobody in particular and repeats down the
+whole lineage.
+
+**66 four-character trailing tokens appear 20 or more times, across 8,315 records** —
+`隴西狄道` 1,253 times, `河南洛陽` 747, `琅邪臨沂` 368. **A personal name does not
+repeat 1,253 times as the last token of a lineage**, and that is the entire test. No
+gazetteer needed.
+
+Strip the seat and what is left is the useful measurement:
+
+    0 tokens    714   the whole recorded name WAS a seat
+    1 token   6,113   a single given name -- the tractable set
+    2 tokens  1,459   given plus courtesy name
+    3 tokens     28
+
+### The rule does not generalise downward, and that is the trap
+
+Two-character trailing tokens look like the same shape and are not:
+
+    藤原 1,199  松平 770  織田 274  前田 236    <- Japanese surnames, real names
+    姬姓   279  范陽 214  河南 145  彭城 132    <- Chinese clan and place markers
+
+Dropping repeated trailing tokens by frequency alone would delete some three thousand
+Fujiwaras and Matsudairas. **Two-character tokens need the culture settled first**,
+which the traversal already does.
+
+### What it means for the romanisation
+
+The reading tables were never the only problem. 8,315 records were being romanised with
+a place stuck to them, and **714 have no personal name underneath at all** — no
+romanisation can invent one. Stripping seats first takes the tractable target from
+1,934 mixed strings to **6,113 single given names**, where a wrong reading is at least a
+wrong name rather than a wrong sentence.
+
+### Also closed here
+
+The queue still listed `Name Not Known` (45) and `Unknown Wife` (37) as held pending
+Emma's ruling on widening the marker vocabulary. Both have been in
+`WORDS_MEANING_UNKNOWN` since her ruling of 2026-08-18, with it quoted beside them in
+`labels.py`. Verified both match, and removed the item — I had been carrying it in
+status reports as a blocker on her when it was already answered.
