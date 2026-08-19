@@ -422,3 +422,28 @@ sheer length of his tree makes it pretty interesting"* and *"I think there's a r
 chance that a massive amount will just be cut off of this path by doing so."* He is the
 longest path in the corpus at 35 missing over 85 steps. This is an exception she made by
 name, not a fourth category.
+
+### A long path gets TWO exports, then page-saving. It does not recurse
+
+**Emma, 2026-08-18**, superseding the earlier recurse-until-the-gap-is-small rule:
+
+> *"If the page is particularly long, like the George R.R. Martin one, my vision of how to
+> deal with it is pretty simple: 1. We run the process on the endpoint. 2. We find whatever
+> the path is at this point. 3. We run it on the midpoint person of that path. 4. Whatever
+> is remaining, we then just run the save page thing on it."*
+
+So the loop is **bounded at two exports per path**:
+
+1. **Endpoint** — create an ancestor of the destination, export from them.
+2. **Re-measure** the path against the corpus.
+3. **Midpoint** — one export seeded at the midpoint of what is still missing.
+4. **Everything left goes to `geni-scraping/`**, whatever the count.
+
+**Why bounded.** Measured over fifteen destination-seeded exports on 2026-08-18, a
+Forest/5000 export **halves** a long path's gap rather than closing it — 29 → 14, 28 → 14,
+27 → 12, 23 → 13. Recursing to a gap of 3 would therefore take four or five exports at six
+minutes each on a single path, and there are 151 paths worth exporting. Two exports takes
+a 35-missing path to roughly 8, which is page-saving territory.
+
+The earlier rule — *"if destination export insufficient, attempt the midpoint, recurse
+until <=3"* — is withdrawn. It was written before anyone knew the per-export yield.
