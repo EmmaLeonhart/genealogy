@@ -2,22 +2,21 @@
 
 Emma's rule, 2026-08-18: a path earns a series of exports only if the destination is **Scandinavian**, a **pope**, or **weird and far out there**. Everything else goes to page-saving in `geni-scraping/`.
 
-Of the **450** paths still in the export band (4+ missing):
+Of the **448** paths still in the export band (4+ missing):
 
 | | paths |
 | --- | ---: |
-| long path | 5 |
+| long path | 4 |
 | nordic | 7 |
 | pope | 18 |
 | weird | 7 |
-| **export total** | **37** |
-| page-saving instead | 413 |
+| **export total** | **36** |
+| page-saving instead | 412 |
 
 ## The export list, longest gap first
 
 | missing | steps | destination | why |
 | ---: | ---: | --- | --- |
-| 24 | 55 | Uli Zech | long path |
 | 22 | 56 | Erik Robert Lindahl | long path |
 | 22 | 69 | Karl Gösta* Liebert | long path |
 | 22 | 35 | Vasilijs Sinaiskis | long path |
