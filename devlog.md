@@ -9234,3 +9234,43 @@ hops, 235 at seven, 539 at eight**. That is the population to look for a publica
 record in — and it is small enough to read.
 
 Nobody at 8 hops or nearer carries an item. The first is at 9.
+
+## 2026-08-18 — the eight-hop search, and an item the map could not see
+
+Queue item 2. `reports/eight-hop-search.md`. **1,015 people within eight hops**, 1,010
+named, 852 with a birth year, and **zero** carrying a QID by the `P2600` map.
+
+### Name matching is useless here; birth year is the whole discriminator
+
+852 names through `wbsearchentities` returned 349 distinct items, nearly all of them
+strangers — `Karl Johan Johansson` matches half of Sweden. Checking every hit against
+**birth year within ±2** cut it to eight, and seven of those eight are still
+coincidences. They are written up by name in the report so the next person to run
+this does not re-find them as discoveries.
+
+Emma's own caution was *"wikidata is notoriously finicky"*. It is, but not in the way
+that bites here: the items are fine, it is the **names** that cannot carry evidence.
+
+### `Q138696805` Jonas Salte, and why the map missed him
+
+    ours      born 1 JUN 1920    died 7 MAY 1944
+    Wikidata  born 1920-06-01    died 1944-05-07
+
+Both dates to the day. Norwegian, *gårdsarbeider*, "killed during WWII", no sitelinks,
+**no `P2600`** — and that last one is the point. `derived-family.csv`'s `qid` column is
+built from the Geni-ID map, so **an item that does not carry its subject's Geni ID is
+invisible to every measurement in this repo**. Searching by name and year is what
+finds them.
+
+He is at **8 hops**, through Berta Serina Rasmusdatter Kolnes and Inga Lauritsdatter
+Erga — nearer than the 9-hop Racin Hansen Kolnes that `nearest-wikidata.md` reported
+an hour earlier. The earlier number was not wrong about the graph; it was wrong about
+what "has an item" means.
+
+### It does not advance the goal, and saying so is the point
+
+Salte died in 1944 and his item already exists. Emma's objective is somebody she can
+*make* notable by publication, so the target is the **54 living people** inside eight
+hops, none of whom Wikidata knows — nearest at one, two and three hops. Salte improved
+the measurement. He did not move the objective, and a report that let those look the
+same would be worse than no report.

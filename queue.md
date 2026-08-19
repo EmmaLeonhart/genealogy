@@ -16,7 +16,7 @@ Canadian branch, or neither. **Any answer is worth having**, including neither.
 **Note the ordering dependency:** how many hops she is cannot be stated until item 1
 works, and hops are the whole point — *"if they are close enough to me, that's great."*
 
-### 3 · order.life item 0c — more `Q200022`-shaped gaps
+### 4 · order.life item 0c — more `Q200022`-shaped gaps
 
 **This one is in the other repo**, `C:\Users\Emma\Documents\GitHub\order.life`, and is
 listed here because she gave the three as one ordered list. The hourly crons now run
