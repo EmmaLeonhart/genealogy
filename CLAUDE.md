@@ -1611,3 +1611,26 @@ deferred — DO IT NOW. Bare "deliberately not done" / "blocked on <person>" is 
 
 # currentDate
 Today's date is 2026-07-30.
+
+### Finish all 39 exports BEFORE saving any stragglers, then restart the work loop
+
+**Emma, 2026-08-18.** The closing plan has two phases and they do not interleave:
+
+1. **The 39 exports in `reports/export-worth.md`.** Each qualifying path gets the
+   bounded treatment — an export seeded on an ancestor of the **endpoint**, then one
+   seeded at the **midpoint** of whatever is still missing. Two exports, never more.
+2. **Only once all 39 are complete**, save the straggler pages. That is every person
+   left over on those 39 paths *plus* the 412 paths that never qualified — into
+   `geni-scraping/`, one a minute, no concurrency, every path member getting their own
+   page.
+3. **Then restart the work loop.**
+
+**The ordering is the instruction, not an optimisation.** Do not start page-saving
+because an export is slow, and do not interleave the two to "make progress" while
+waiting — the exports are the phase with a deadline attached (Emma's own hours), and
+page-saving is the cheap fallback that will still be there afterwards. Her framing all
+day has been that she is *"actively trying to close this thing off"*, and closing it
+means the export phase ends before the scraping phase begins.
+
+`scripts/classify-export-worth.py` decides which 39, `scripts/path-gap.py` names the
+seed for each step, and `scripts/census-paths.py` is the current-state snapshot.
