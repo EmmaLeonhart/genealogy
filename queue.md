@@ -47,6 +47,25 @@ exported from there. She wants the export **centred on the destination person** 
 isolate at the end of the chain — and the small gaps handled by a different mechanism
 entirely.
 
+### Work order: LONGEST paths first, then rebuild
+
+Emma, 2026-08-18: *"you should be trying to target it by going from the longest paths to
+the smallest paths… we can very easily run it with the top five longest paths having their
+exports done and then we rebuild and so on and so on."*
+
+**Her reasoning, and she has explicitly forbidden checking it.** *"the small paths are
+likely ones where there are significant diminishing returns on nearby exports whereas the
+large paths are likely ones that haven't had many exports and may be in very sparse
+areas… I'm gonna bet that the longer paths will tend to be in more sparse areas where
+there's more likelihood for it to just get the entire thing. Now I'm making this bet. I do
+not want you to actually check whether this is true."* Running the method **is** the test.
+
+**And it explains why the two-slot campaign underdelivered.** *"This was actually the
+entire reason why it is that we were trying to hit the people who were in multiple paths.
+The issue with the people in multiple paths was basically that… they were in multiple
+paths but they were oftentimes in dense enough areas that they didn't really give the
+extension that I was expecting."*
+
 ### Route by the size of the gap on that path
 
 **Gap of 1–2 people — and 3 is safe too — DO NOT EXPORT.** Her words: *"a gap with one
