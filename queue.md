@@ -157,23 +157,24 @@ What follows on from those:
   Korean, and *"the tree settles it, via neighbours and which exports they came
   from"* — never the name.
 
-  **THE EXPORT HALF NOW EXISTS — 2026-08-18.** It did not before: the merge keys on the
-  xref and *"knows nothing about which file it came from"* (`todo.md` §7, a deliberate
-  design property), and no derived report carried a source column, so half of her rule
-  was unavailable and the instruction could only have been half-followed.
-  `scripts/build-export-provenance.py` derives it read-only from `exports/` without
-  touching the merge: **897,828 people across 357 files — exactly the merge's own INDI
-  count — and 652,617 of them (72.7%) appear in exactly one export.**
+  **THE EXPORT HALF IS DEAD — struck 2026-08-19, and this paragraph used to argue for
+  it.** `scripts/build-export-provenance.py` was built on 08-18 and presented here as the
+  missing half of her rule. She killed it the same day: *"don't fuckinh do export
+  providence oh my god do graph traversal."* She was right and the numbers showed it —
+  provenance characterises the **export**, not the person, because a Korean-rooted seed is
+  full of Chinese ancestors, and it had tagged 大唐帝國, the Tang Empire, Korean. Korean
+  romanisations fell **931 → 30** the moment it was removed.
 
-  **It discriminates.** All 41,543 Han-only people have provenance, and the script mix
-  inside an export characterises it: `export-Forest-28` carries **4,677 hangul against
-  17 kana**, which is a Korean-rooted seed, while `export-Forest-6000000227252387856`
-  is 4,552 Han with 68 kana and no hangul. `reports/export-provenance.{csv,md}`.
+  The old text is struck rather than deleted because it read as an instruction to settle
+  culture from provenance, and it sat **above** the correction in this file — anything
+  working top-down would have rebuilt exactly what she rejected. The
+  quoted rule *"the tree settles it, via neighbours and which exports they came from"*
+  therefore stands **only in its first half**; she overrode the second herself.
 
-  **Still to do: the romanisation itself**, which is agentic by her instruction and now
-  has the evidence it was missing. Settle culture per person from provenance plus
-  neighbours, then romanise — and note the corpus-wide Han-only figure is **41,543**,
-  of which the 806 structural placeholders are a subset.
+  **Still to do: the romanisation itself**, and it is live — see *Romanising the Han-only
+  names* below for the real standing. Culture comes from the script facts, the name, a
+  listed place, and graph traversal. The corpus-wide Han-only figure is **41,543**, of
+  which the 806 structural placeholders are a subset.
 
 - **364 structural placeholders end up with no label in any language**, because every
   relative out to two hops is unnamed too. They still get `P2600` *Geni.com profile
