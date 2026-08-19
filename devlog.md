@@ -9635,3 +9635,43 @@ not know. It needs a Sino-Korean syllable check and a `-子` rule.
 **2,817 romanisations I would stand behind**, from 36,625 Han-only records — and the
 honest denominator is that 19,324 still have no culture and 11,383 Japanese have no
 whole-name item. It is a real result and a small one.
+
+## 2026-08-18 — the 子 ending works; the Sino-Korean check does not, and the reason matters
+
+Two attempts at the Korean half. **One landed, one failed, and the failure is the more
+useful of the two.**
+
+### The 子 ending — kept, 179 people moved
+
+和子, 貴子, 頼子 are *Kazuko, Takako, Yoriko*. All three were filed Korean by the
+traversal, because a Japanese family reached from the Korean side of the tree has Korean
+neighbours. **The `子` ending is on the name, so it is evidence the graph cannot
+supply** — and it overrides the traversal rather than breaking a tie with it. 179
+reassigned to Japanese.
+
+### The Sino-Korean syllable check — built, tested, and it does not work
+
+`is_sino_korean_syllable`, the exact mirror of `is_pinyin_syllable` that took Japanese
+readings out of the Chinese table. It fails, and not for a fixable reason:
+
+**Mandarin and Sino-Korean syllable inventories overlap.** `Ji`, `Jing`, `Wen`, `Cheng`
+and `Wang` are well-formed in both. Gating the Korean table on Korean shapes still let
+pinyin through — 基敬 came out `Ji Jing`, 承旺 `Cheng Wang`. Six rows survived and all
+six were Mandarin wearing a legal Korean shape.
+
+**The pinyin check only worked because `Akira` and `Makoto` fall outside Mandarin
+entirely.** There is no equivalent gap between Mandarin and Korean. The string cannot
+carry the answer; the *item* has to declare which language its reading is in.
+
+It also under-accepts: Revised Romanization gives 이 as `I`, 박 as `Bak`, 최 as `Choe`,
+while the items say `Lee`, `Park`, `Choi`. Twenty-four conventional spellings had to be
+listed by hand before the three commonest Korean surnames passed at all.
+
+**Korean stays suppressed at zero rows**, with the reason written into the code so the
+next person does not rebuild the same check.
+
+### And the queue
+
+This work has been running from chat for several ticks and was not in `queue.md` —
+the one rule the file states about itself. Written in now, with its real numbers rather
+than its intention.

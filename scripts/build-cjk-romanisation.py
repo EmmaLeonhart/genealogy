@@ -114,6 +114,31 @@ def is_pinyin_syllable(word: str) -> bool:
     return word.lower() in PINYIN_SYLLABLES
 
 
+#: Sino-Korean readings are a closed syllable set too, and the mirror of the pinyin
+#: check. It is what stops the `ko` table returning `He Zi` and `Gui Zi` -- pinyin, from
+#: items whose Korean label happens to sit beside a Han one. Revised Romanization
+#: shapes: an optional initial, a vowel, an optional final consonant.
+_K_INIT = ["", "g", "k", "n", "d", "t", "r", "l", "m", "b", "p", "s", "j", "ch", "h",
+           "ss", "jj", "kk", "tt", "pp"]
+_K_VOWEL = ["a", "ae", "ya", "yae", "eo", "e", "yeo", "ye", "o", "wa", "wae", "oe",
+            "yo", "u", "wo", "we", "wi", "yu", "eu", "ui", "i"]
+_K_FINAL = ["", "k", "n", "t", "l", "m", "p", "ng"]
+#: Conventional spellings Wikidata actually uses, which Revised Romanization does not
+#: generate: RR gives 이 as `I`, 박 as `Bak`, 최 as `Choe`, yet the items say `Lee`,
+#: `Park`, `Choi`. Generated shapes alone would reject the three commonest Korean
+#: surnames there are.
+_K_CONVENTIONAL = {"lee", "park", "choi", "kim", "shin", "yoon", "cho", "chung",
+                   "hyun", "woo", "hwang", "kwon", "kang", "yoo", "sung", "seo",
+                   "rhee", "paik", "pak", "moon", "ahn", "oh", "koo", "noh"}
+SINO_KOREAN = ({i + v + f for i in _K_INIT for v in _K_VOWEL for f in _K_FINAL}
+               | _K_CONVENTIONAL)
+
+
+def is_sino_korean_syllable(word: str) -> bool:
+    """One Sino-Korean syllable, so a plausible hanja reading."""
+    return word.lower() in SINO_KOREAN
+
+
 def cjk_of(row: dict) -> str:
     """The first CJK name string on a record, or empty."""
     return (row.get("cjk_names") or "").split(" | ")[0].strip()
@@ -232,6 +257,20 @@ def main() -> int:
             frontier = nxt
             if not frontier:
                 break
+    # **`-子` is a Japanese signal the traversal does not have.** 和子, 貴子 and 頼子 are
+    # Kazuko, Takako and Yoriko, and all three were filed Korean by their neighbours --
+    # a Japanese family inside a tree the traversal reached from the Korean side. The
+    # ending is on the NAME, so it is evidence the graph cannot supply, and it overrides
+    # a traversal verdict rather than merely breaking a tie.
+    overridden = 0
+    for g, cjk in need.items():
+        toks = [p for p in cjk.split() if HAN_TOKEN.fullmatch(p)]
+        first = toks[0] if toks else ""
+        if len(first) >= 2 and first.endswith("子") and culture.get(g) != "ja":
+            culture[g] = "ja"
+            why[g] = "name ends in 子, a Japanese given-name ending"
+            overridden += 1
+    print(f"  reassigned to ja by the 子 ending: {overridden:,}")
     print(f"  settled by graph traversal: {settled_by_neighbour:,}")
     print(f"  culture settled for {len(culture):,} of {len(need):,}")
 
@@ -269,7 +308,7 @@ def main() -> int:
                 ko = L.get("ko")
                 # Korean: a hangul label beside a Han one means the Han is hanja and the
                 # Latin is its Korean reading.
-                if ko and HANGUL.search(ko):
+                if ko and HANGUL.search(ko) and is_sino_korean_syllable(en):
                     for han in (ja, zh):
                         if han and HAN.fullmatch(han):
                             table["ko"].setdefault(han, en)
@@ -349,7 +388,20 @@ def main() -> int:
                 done["ja skipped - no whole-name item, and kanji do not compose"] += 1
             continue
         if code == "ko":
-            # **Suppressed, 2026-08-18.** Korean hanja readings DO compose per character,
+            # **Still suppressed, and the syllable check is why it cannot be lifted.**
+            # `is_sino_korean_syllable` is the mirror of `is_pinyin_syllable` and it does
+            # not separate the two: Mandarin and Sino-Korean syllable inventories OVERLAP.
+            # `Ji`, `Jing`, `Wen`, `Cheng` and `Wang` are well-formed in both, so gating
+            # the table on Korean shapes still let pinyin through -- 基敬 came out
+            # `Ji Jing` and 承旺 `Cheng Wang`, which are Mandarin readings wearing a legal
+            # Korean shape.
+            #
+            # That is the difference from the Japanese case, where `Akira` and `Makoto`
+            # are outside Mandarin entirely and the check bites cleanly. Korean needs the
+            # ITEM to say which language its reading is in; the string cannot.
+            #
+            # The 子 rule stayed and was worth having on its own -- 179 people moved off
+            # the Korean pile to Japanese, which is where Kazuko and Takako belong.
             # so the method is sound -- the inputs are not. All 51 rows were wrong in two
             # ways at once: 和子, 貴子, 頼子 are Japanese female names (Kazuko, Takako,
             # Yoriko) that the traversal put in `ko`, and the `ko` table returned pinyin

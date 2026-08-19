@@ -221,6 +221,53 @@ same fault mirrored. Swedish genuinely uses `till` throughout, which is what mad
 preposition per language look workable. Fixed by letting `of` be a per-relation dict;
 only those two languages carry the extra structure.
 
+## Romanising the Han-only names — 2026-08-18, and where it stands
+
+**Written into the queue late.** Emma asked for this in chat over several turns and I
+worked it directly for several ticks without putting it here first, which is the one rule
+this file states about itself. Recorded now with its real state.
+
+`scripts/build-cjk-romanisation.py`, `reports/cjk-romanisation.{csv,md}`,
+`reports/cjk-name-structure.md`.
+
+**Nothing is transliterated.** Every reading is read off a Wikidata name item carrying
+both the Han form and a Latin one, per her rule that programmatic transliteration is not
+to be attempted.
+
+### Standing
+
+    zh   2,629   compose per character, gated on being a Mandarin syllable
+    ja     184   whole-name items ONLY -- kanji do not compose
+    ko       0   suppressed
+
+Out of **36,625** Han-only records. **19,170 still have no culture**, and 11,562 Japanese
+have no whole-name item. A real result and a small one.
+
+### Culture: place, then graph traversal, then the 子 ending
+
+**Export provenance is OUT** — Emma, 2026-08-18: *"don't fucking do export provenance, do
+graph traversal."* It characterises the export and not the person; a Korean-rooted tree is
+full of Chinese ancestors, and it had tagged the Tang Empire Korean. Korean romanisations
+fell **931 → 30** the moment it was removed.
+
+137 settled by a listed place, **17,164 by traversal**, and **179 reassigned to Japanese
+by the `子` ending** — 和子, 貴子, 頼子 are Kazuko, Takako, Yoriko, Japanese women the
+traversal reached from the Korean side. That ending is on the *name*, so it is evidence
+the graph cannot supply.
+
+### What is left, and the one that is genuinely hard
+
+- **19,170 with no culture at all.** The traversal needs a relative who writes kana or
+  hangul, or a place; whole components have neither.
+- **11,562 Japanese with no whole-name item.** Composition is not available — 文仁 is
+  *Fumihito*, not `Aya Masashi` — so this needs per-name readings from somewhere else.
+- **Korean, and it does not yield to the same trick.** `is_sino_korean_syllable` exists
+  and is the mirror of the pinyin check, and **it does not work, because the Mandarin and
+  Sino-Korean inventories overlap**: `Ji`, `Jing`, `Wen`, `Cheng`, `Wang` are legal in
+  both, so pinyin still passes as Korean. The Japanese case worked only because `Akira`
+  and `Makoto` fall outside Mandarin entirely. **Korean needs the item to declare which
+  language its reading is in; the string cannot say.**
+
 ## Name processing — what is left and needs Emma, 2026-08-18
 
 The censuses she asked for are built and committed; this is only the residue that
