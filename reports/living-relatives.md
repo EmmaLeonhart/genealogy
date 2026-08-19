@@ -163,6 +163,54 @@ twice**, not two people who share a name.
 **He is not in the corpus.** No `Yngve` appears among the 167 Borsheim records — the
 corpus's Yngves are unrelated Norse and Swedish lines.
 
+## Carlin Borsheim-Black, traced three generations — and she does not connect
+
+**Queue item 3, done 2026-08-18.** Public obituary evidence, no Geni export, no Wikidata
+write.
+
+Earl Borsheim's obituary (d. 4 January 2018, Bainbridge Funeral Home) names the line
+outright — he was survived by *"son Eugene (Christeen) Borsheim of Wheaton, MN; and
+grandchildren including **Carlin (Stuart) Black** and their children Marcus and Miles, Mt.
+Pleasant, MI."* Mt. Pleasant is where Central Michigan University is, and her CMU page
+gives her full name as **Carlin Christeen Borsheim-Black** — her middle name is her
+mother's, which corroborates the obituary independently.
+
+    Carlin Christeen Borsheim-Black    Mt. Pleasant, Michigan
+      <- Eugene Borsheim (m. Christeen)  Wheaton, Minnesota
+      <- Earl Borsheim                   b. 12 Feb 1921 Sperling, Manitoba; d. 4 Jan 2018
+      <- Eilert Borsheim & Ellen (Riordan)
+
+She is **Canadian-descended**, which is the branch this report predicted the American
+candidates would need — the corpus's Borsheim emigrants went to Canada and there is no US
+place among the 167.
+
+### But it is the wrong part of Canada, and none of them is in the tree
+
+| | |
+| --- | --- |
+| Carlin's line | **Sperling, Manitoba** → Wheaton, Minnesota → Mt. Pleasant, Michigan |
+| the corpus's Canadian Borsheims | **Birch Hills, Saskatchewan** and Vancouver — and they are Emma's own immediate family: Richard Wade (1 hop), Jared (2), Dean |
+
+Sperling and Birch Hills are about a thousand kilometres apart, both in the Norwegian
+prairie settlement. **Neither Eilert, Earl nor Eugene appears anywhere in the corpus**, and
+neither does Carlin. So there is **no hop count for her**, and there cannot be one until
+the two lines meet.
+
+### Where they would meet, and it is not something this branch can do
+
+Both are Borsheim emigrants out of Norway, and the surname is a farm name — Borsheim in
+Rogaland, Børsheim in Hordaland. If the lines join, they join **in Norway**, at the farm,
+before either emigration. That means tracing **Eilert Borsheim** back across the Atlantic.
+
+Public search does not do it: Sperling's own local history records the Borsheim family
+among its settlers and names no individuals, and no source found gives Eilert's Norwegian
+origin. What would settle it is a Norwegian parish record or a Geni export seeded on
+Eilert — and **exports are the other session's job**, so this is where this branch stops.
+
+**She remains the best candidate on paper** — Emma's own pick, an unhyphenated `Borsheim`
+birth surname, a real publication record, and now a confirmed Canadian-Norwegian
+descent. What is missing is the one edge that would give her a number.
+
 ## What would settle it, in order of what it costs
 
 1. **Carlin Borsheim-Black's birth family.** She is the strongest candidate by Emma's own

@@ -3,19 +3,6 @@
 She picked these from a question and said: *"Add all these to the queue at the beginning
 in the order provided."* So this is the running order, not a menu.
 
-### 3 · Chase Carlin Borsheim-Black
-
-The strongest candidate: Emma's own pick from the two father-side Scholar profiles,
-Central Michigan University, and she published as plain **`C Borsheim`** through 2008
-before the married name — so the birth surname is the unhyphenated spelling, which is the
-one Emma ranks second and calls her ancestral line.
-
-Trace her birth family back two generations and see whether it meets the Jæren farm, the
-Canadian branch, or neither. **Any answer is worth having**, including neither.
-
-**Note the ordering dependency:** how many hops she is cannot be stated until item 1
-works, and hops are the whole point — *"if they are close enough to me, that's great."*
-
 ### 4 · order.life item 0c — more `Q200022`-shaped gaps
 
 **This one is in the other repo**, `C:\Users\Emma\Documents\GitHub\order.life`, and is

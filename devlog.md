@@ -9274,3 +9274,38 @@ Salte died in 1944 and his item already exists. Emma's objective is somebody she
 hops, none of whom Wikidata knows — nearest at one, two and three hops. Salte improved
 the measurement. He did not move the objective, and a report that let those look the
 same would be worse than no report.
+
+## 2026-08-18 — Carlin Borsheim-Black traced to Manitoba, and stops there
+
+Queue item 3. Public obituary evidence only; no export, no Wikidata write.
+
+Earl Borsheim's obituary (d. 4 Jan 2018) names her directly — *"son Eugene (Christeen)
+Borsheim of Wheaton, MN; and grandchildren including Carlin (Stuart) Black… Mt.
+Pleasant, MI"* — and her CMU page gives her full name as **Carlin Christeen**
+Borsheim-Black, her mother's name as her middle name, which corroborates it from a
+second direction.
+
+    Carlin  <- Eugene Borsheim (Wheaton, MN)
+            <- Earl Borsheim, b. 12 Feb 1921 Sperling, Manitoba
+            <- Eilert Borsheim & Ellen (Riordan)
+
+**Three generations in one obituary, and it still does not connect.** Her line is
+Sperling, Manitoba. The corpus's Canadian Borsheims are Birch Hills, Saskatchewan and
+Vancouver — and those turn out to be Emma's own immediate family, Richard Wade at one
+hop and Jared at two. A thousand kilometres apart, both inside the same Norwegian
+prairie settlement. Neither Eilert, Earl, Eugene nor Carlin is anywhere in the corpus.
+
+**So there is no hop count for her**, and this report says so rather than offering the
+Canadian coincidence as if it were a link. The prediction that the American candidates
+would need a Canadian branch was right; the branch is simply a different one.
+
+If the lines join they join **in Norway**, at the farm the surname comes from, before
+either emigration — so it needs Eilert traced across the Atlantic. Sperling's local
+history names the Borsheim family among its settlers and no individuals; no public
+source found gives Eilert's origin. A Norwegian parish record or a Geni export seeded
+on him would settle it, and **exports are the other session's job**, which is where
+this branch stops rather than guessing.
+
+She is still the best candidate on paper — Emma's own pick, an unhyphenated Borsheim
+birth surname, a real publication record, confirmed Canadian-Norwegian descent. The
+missing piece is one edge, and it is one this branch cannot make.
