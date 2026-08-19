@@ -237,7 +237,7 @@ to be attempted.
 
 ### Standing
 
-    zh   4,865   compose per character, gated on being a Mandarin syllable
+    zh   6,757   compose per character, gated on being a Mandarin syllable
     ja     185   whole-name items ONLY -- kanji do not compose
     ko       0   suppressed
 
@@ -289,12 +289,12 @@ from; a name tells you what it is.
   relative writing kana or hangul within six hops.
 - **11,688 Japanese with no whole-name item.** Composition is not available — 文仁 is
   *Fumihito*, not `Aya Masashi` — so this needs per-name readings from somewhere else.
-- **`英` reads `Ei` in the Chinese table, and it should be `Ying`.** A Japanese on-reading
-  that got in because `ei` is *also* a legal pinyin syllable, so the Mandarin-syllable gate
-  cannot see it. Measured 2026-08-19 against 24 characters whose Mandarin reading is not in
-  dispute: **25 of 858 character-slots wrong, 2.9%**, and 英 is the whole of it — 元 `yuan`,
-  文 `wen`, 德 `de`, 松 `song` and 20 others are all correct. The table is sound; this is
-  one entry, not a class.
+- **`英` read `Ei` instead of `Ying` — FIXED, and the cause was far bigger than 英.**
+  The two items that spell it correctly label it **`Yīng`**, and the tone mark made
+  `LATIN_NAME` reject them, so a Japanese item won by default. **Tone-marked pinyin was
+  being discarded wholesale.** Recovering it added **627 characters** to the table and took
+  zh romanised **4,865 → 6,757**. Re-probed against 33 characters whose Mandarin reading is
+  not in dispute: **0 of 1,165 character-slots wrong**, from 25 of 858.
 - **The `ja` table has the same problem and worse: `松` reads `Choong`.** That is neither
   Japanese (*Matsu*) nor plausible — 嶺松院 came out `Choong`. The `ja` rows are already
   flagged as the ones to distrust, and this is why.
@@ -314,7 +314,24 @@ from; a name tells you what it is.
   transliteration. Measured and discarded.
 - **`zh-latn-pinyin` labels.** The obvious source for a bigger character table. There are
   **zero** in this store slice; every `*-latn` label present is Kazakh, Tajik, Kurdish or
-  similar. Not available.
+  similar. Not available. The readings were in the `en` labels all along, behind a tone mark.
+
+### Trusting a tone mark, and the two ways it goes wrong
+
+A tone mark is the item declaring its reading is **Mandarin**, which is exactly the
+evidence the plain-ASCII path lacks — so a tone-marked reading now overrides a plain one.
+Two traps, both measured before the rule was written:
+
+- **Not every diacritic is a tone mark.** The same scan turns up `王` = *Vương*, `氏` =
+  *Thị*, `阮` = *Nguyễn* — Vietnamese Hán-Việt readings, which are diacritic-heavy and
+  not Mandarin at all. The horn, hook, dot-below, circumflex and tilde are excluded.
+- **A macron is ambiguous, and this is where it would have broken.** Pinyin first tone
+  puts a macron on every vowel; Japanese long vowels are `ō` and `ū` almost only. Trusting
+  every macron makes `高` take *Ko* over *Gao*, `盛` *Sho* over *Sheng*, `仲` *Chu* over
+  *Zhong* — Japanese readings whose toneless form is also legal pinyin. **Every wrong
+  override in the measured set was a macron on `o` or `u`**, so those are withheld: 919
+  readings trusted, 83 withheld. `英` = `Yīng` is a macron on `i`, which is why the fix
+  that started this survives the rule that had to exclude its neighbours.
 - **Korean, and it does not yield to the same trick.** `is_sino_korean_syllable` exists
   and is the mirror of the pinyin check, and **it does not work, because the Mandarin and
   Sino-Korean inventories overlap**: `Ji`, `Jing`, `Wen`, `Cheng`, `Wang` are legal in

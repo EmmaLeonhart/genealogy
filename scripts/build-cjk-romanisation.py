@@ -46,6 +46,7 @@ import collections
 import csv
 import io
 import re
+import unicodedata
 import sys
 from pathlib import Path
 
@@ -112,6 +113,62 @@ PINYIN_SYLLABLES = {i + f for i in _INITIALS for f in _FINALS}
 def is_pinyin_syllable(word: str) -> bool:
     """One Mandarin syllable, so a plausible reading of one Han character."""
     return word.lower() in PINYIN_SYLLABLES
+
+
+#: The diacritics pinyin uses: macron, acute, caron, grave (tones 1-4) and the diaeresis
+#: of `ü`. Anything else on a Latin reading means it is not pinyin.
+_PINYIN_MARKS = {"̄", "́", "̌", "̀", "̈"}
+#: Acute, caron and grave are DECISIVE: Hepburn romanisation never uses them, so a
+#: reading carrying one is Mandarin and not Japanese.
+_TONE_2_3_4 = {"́", "̌", "̀"}
+_MACRON = "̄"
+
+
+def _marks(word: str) -> set:
+    return {c for c in unicodedata.normalize("NFD", word)
+            if unicodedata.category(c) == "Mn"}
+
+
+def strip_marks(word: str) -> str:
+    """The reading with its tone marks removed -- `Yīng` -> `Ying`."""
+    return "".join(c for c in unicodedata.normalize("NFD", word)
+                   if unicodedata.category(c) != "Mn")
+
+
+def trusted_pinyin(word: str) -> str | None:
+    r"""The toneless reading, but only when the marks prove it is Mandarin.
+
+    **Tone-marked readings were being thrown away wholesale.** `LATIN_NAME` is
+    `^[A-Z][A-Za-z\-']*$`, so `Yīng` failed it and the two items that spell 英 correctly
+    were discarded -- leaving a Japanese item to win by default and 元英 to come out
+    `Yuan Ei`. Recovering them adds **627 characters** the table did not have.
+
+    **Not every diacritic is a tone mark, and that is the trap.** The same scan turns up
+    `王` = *Vương*, `氏` = *Thị*, `阮` = *Nguyễn* -- Vietnamese Hán-Việt readings, which
+    are diacritic-heavy and not Mandarin. The horn, hook, dot-below, circumflex and tilde
+    they use are excluded outright.
+
+    **A macron is ambiguous and is treated as such.** Pinyin first tone puts a macron on
+    every vowel; Japanese long vowels are `ō` and `ū` almost exclusively. So a macron on
+    `a`, `e` or `i` is Mandarin, while one on `o` or `u` could be either -- and the
+    evidence is unambiguous about what happens if you trust it: `高` would take *Ko* over
+    *Gao*, `盛` *Sho* over *Sheng*, `仲` *Chu* over *Zhong*, all Japanese readings whose
+    toneless form is also a legal pinyin syllable. **Every wrong override in the measured
+    set was a macron on `o` or `u`, and every one of them is withheld here.**
+    """
+    marks = _marks(word)
+    if not marks or not marks <= _PINYIN_MARKS:
+        return None
+    if not (marks & _TONE_2_3_4):
+        # macron only -- trust it just on a/e/i
+        d = unicodedata.normalize("NFD", word)
+        vowels = {d[i - 1].lower() for i, c in enumerate(d) if c == _MACRON and i}
+        if not vowels or (vowels & {"o", "u"}):
+            return None
+    bare = strip_marks(word)
+    if not LATIN_NAME.match(bare) or not is_pinyin_syllable(bare):
+        return None
+    return bare
 
 
 #: Sino-Korean readings are a closed syllable set too, and the mirror of the pinyin
@@ -356,13 +413,23 @@ def main() -> int:
     # whether a hangul or kana label sits beside it, which is the item's own statement
     # about itself rather than an inference from a property.
     table = {"zh": {}, "ja": {}, "ko": {}}
+    #: Readings recovered from a tone-marked label. Kept apart so they can OVERRIDE the
+    #: plain-ASCII ones: a tone mark is the item declaring the reading is Mandarin, which
+    #: is exactly the evidence the plain path lacks. See `trusted_pinyin`.
+    zh_toned = {}
     seen_items = 0
     with wikistore.StoreReader(STORE, INDEX) as rd:
         for i in range(0, len(qids), 5000):
             for q, e in rd.entities(qids[i:i + 5000]).items():
                 L = {k: v["value"] for k, v in (e.get("labels") or {}).items()}
-                en = L.get("en") or L.get("mul")
-                if not en or not LATIN_NAME.match(en):
+                en_raw = L.get("en") or L.get("mul")
+                if not en_raw:
+                    continue
+                # `en` is the plain-ASCII reading the ja/ko tables have always used;
+                # `en_pin` is a tone-marked one proved Mandarin. An item may have either.
+                en = en_raw if LATIN_NAME.match(en_raw) else None
+                en_pin = None if en else trusted_pinyin(en_raw)
+                if en is None and en_pin is None:
                     continue
                 seen_items += 1
                 zh = L.get("zh") or L.get("zh-hant") or L.get("zh-hans")
@@ -370,18 +437,18 @@ def main() -> int:
                 ko = L.get("ko")
                 # Korean: a hangul label beside a Han one means the Han is hanja and the
                 # Latin is its Korean reading.
-                if ko and HANGUL.search(ko) and is_sino_korean_syllable(en):
+                if en and ko and HANGUL.search(ko) and is_sino_korean_syllable(en):
                     for han in (ja, zh):
                         if han and HAN.fullmatch(han):
                             table["ko"].setdefault(han, en)
                             break
                 # Japanese: a kana label beside a Han one, same logic.
-                if ja and KANA.search(ja):
+                if en and ja and KANA.search(ja):
                     for han in (L.get("ja_kanji"), zh):
                         if han and HAN.fullmatch(han):
                             table["ja"].setdefault(han, en)
                             break
-                elif ja and HAN.fullmatch(ja) and not zh:
+                elif en and ja and HAN.fullmatch(ja) and not zh:
                     table["ja"].setdefault(ja, en)
                 # **A Japanese name item usually also carries a `zh` label of the same
                 # character**, so taking every Han `zh` label put Japanese readings in the
@@ -400,12 +467,20 @@ def main() -> int:
                 # those character-by-character would teach the table that 德 reads
                 # "-ade". They are phonetic spellings of names that are not Chinese, so
                 # they are not readings of anything and the branch stays shut.
-                if (zh and HAN.fullmatch(zh) and not (ja and KANA.search(ja))
-                        and is_pinyin_syllable(en)):
-                    table["zh"].setdefault(zh, en)
+                if zh and HAN.fullmatch(zh) and not (ja and KANA.search(ja)):
+                    if en_pin:
+                        zh_toned.setdefault(zh, en_pin)
+                    elif en and is_pinyin_syllable(en):
+                        table["zh"].setdefault(zh, en)
             if i and i % 200000 == 0:
                 print(f"  ...{i:,} read", flush=True)
+    # A tone-marked reading beats a plain one: the mark is the item saying "Mandarin".
+    overrides = sum(1 for c in zh_toned if c in table["zh"] and table["zh"][c] != zh_toned[c])
+    added = sum(1 for c in zh_toned if c not in table["zh"])
+    table["zh"].update(zh_toned)
     print(f"  {seen_items:,} item(s) had a Latin en label")
+    print(f"  tone-marked readings trusted as Mandarin: {len(zh_toned):,} "
+          f"({added:,} new character(s), {overrides:,} override(s))")
     for code in table:
         print(f"  {code}: {len(table[code]):,} character(s) with a published reading")
 

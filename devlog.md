@@ -9752,3 +9752,40 @@ in dispute: 25 of 858 character-slots wrong, 2.9%, and 英 is all of it. In the 
 **Two dead ends, measured rather than assumed.** Mining readings from people who already
 have a Latin label yields 39 pairs and aligns `河` to *princess*. There are zero
 `zh-latn-pinyin` labels in the store.
+
+## 2026-08-19 — tone-marked pinyin was being thrown away: zh 4,865 → 6,757
+
+Chasing one wrong reading found a much larger defect. `元英` came out `Yuan Ei`, and `Ei`
+is the Japanese on-reading of 英, which is *Ying* in Mandarin. The cause was not 英.
+
+**Three Wikidata items carry a `zh` label of 英. The two correct ones label it `Yīng`.**
+`LATIN_NAME` is `^[A-Z][A-Za-z\-']*$`, so the tone mark made both fail the filter, and the
+one remaining item — Japanese, `Ei`, with no kana label to expose it — won by default.
+That is not specific to 英: **tone-marked pinyin was being discarded across the board.**
+
+Recovering it adds **627 characters** to the Chinese table and takes zh romanised
+**4,865 → 6,757**, with `zh incomplete` falling 5,101 → 3,209.
+
+**A tone mark is the item declaring the reading is Mandarin**, which is exactly the
+evidence the plain-ASCII path does not have — so a tone-marked reading now overrides a
+plain one. Two traps, both measured before the rule was written:
+
+- **Not every diacritic is a tone mark.** The scan turns up `王` = *Vương*, `氏` = *Thị*,
+  `阮` = *Nguyễn*, `芳` = *Phương* — Vietnamese Hán-Việt readings, diacritic-heavy and not
+  Mandarin. Horn, hook, dot-below, circumflex and tilde are excluded outright.
+- **A macron is ambiguous, and it is where the rule would have broken.** Pinyin first tone
+  puts a macron on every vowel; Japanese long vowels are `ō` and `ū` almost exclusively.
+  Trusting every macron makes `高` take *Ko* over *Gao*, `盛` *Sho* over *Sheng*, `仲` *Chu*
+  over *Zhong* — Japanese readings whose toneless form is also a legal pinyin syllable.
+  **Every wrong override in the measured set was a macron on `o` or `u`.** Those are
+  withheld: 919 readings trusted, 83 withheld, 59 new characters given up with them.
+  `英` = `Yīng` is a macron on `i`, which is why the fix that started this survives the
+  rule that had to exclude its neighbours.
+
+**Measured, not asserted.** Re-probing 33 characters whose Mandarin reading is not in
+dispute: **0 of 1,165 character-slots wrong**, against 25 of 858 before. The withheld
+characters kept their correct plain readings — 高 `gao`, 盛 `sheng`, 仲 `zhong` — which is
+what the withholding was for.
+
+The `ja` and `ko` tables are deliberately untouched: they still require a plain-ASCII
+label, so nothing about Japanese or Korean changed in this pass.
