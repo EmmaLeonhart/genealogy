@@ -7,6 +7,7 @@
 * run exports to get a good account of the Bure Kinship, see [[Bure Kinship]]. Check to make sure all members of https://sv.wikipedia.org/wiki/Kategori:Bure%C3%A4tten are covered, since I think they are all on geni and can be highly linked up, all of them should have geni exports on them if they are unlinked and we check for those whose wikidata items do not connected geni ids similar to Samaritan high priests
 * attempt 5 sparse region exports, if the sparse region exports work well then go or it very well
 * clear the [[Fucking bizarre cruddy AI generated shit that probably violates the rules]] section to make stuff clear with it
+* then merge the other branch into here (our queue takes priority generally it is much smaller)
 * Then continue off with the other stuff
 
 
