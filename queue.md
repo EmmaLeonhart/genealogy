@@ -1411,10 +1411,12 @@ And then the common ancestry of Reinhert Borsheim going up and also adding his d
 
 Descendants can go in any order roughly. He has only 38
 
+Ancestor order to optimize getting to 
+
 
 ### Other thing
 
-I want a thing that similarly does this and adds links with the Bure Kinship 
+I want a thing that similarly does this and adds links with the Bure Kinship and builds the linking down to my mother.
 
 
 
