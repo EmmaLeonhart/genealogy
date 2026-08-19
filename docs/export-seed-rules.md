@@ -126,6 +126,33 @@ completely self-healing. If you miss an individual because of weird rendering
 errors, then you move on to the next one, and there's a decent chance that you
 won't even need to do that individual this next time."*
 
+**A BAIL IS PER-ATTEMPT, NEVER PER-PERSON. There is no hold list.** Emma, 2026-08-18:
+*"my guess with the bailed people is you can just go back to them… you can try different
+people. You can try adding different individuals at other parts of their tree and then
+running it… I feel like you've been too stateful with this."*
+
+Her intent, in her words, is *"filling up the entire family tree around a certain person
+with new individuals constantly trying to figure out one that actually works"*. So a
+saturated rim is not a dead end — **expand a `+N` button and the frontier appears**, with
+open parent slots on it. That is how `Ola R Sande` was retried after being wrongly written
+off: one click on `Silla Torkelsdatter Ølberg`'s `+18` re-rooted the view and exposed
+`Mareta Torkelsdatter` with both parent slots empty.
+
+**`reports/chain-gaps-on-hold.csv` was a mistake twice over and is not to be relied on.**
+It never persisted — `find-chain-gaps.py` rewrites it every run from an empty in-code
+`ON_HOLD` dict, so the reasons written into it were destroyed on the next regeneration
+(git shows it flipping 1 → 0 → 3 → 0 rows in one afternoon). Worse, the exclusion that
+*did* persist was a hardcoded skip-list carried between target picks, which turned every
+bail into a permanent one.
+
+**The measurement that settles it: of seven people written off on 2026-08-18, three came
+into the corpus on their own** — including *both* the locked master profiles, `Asma
+Al-Kinani` and `Fredrik Gustaf Levan`. A later export simply reached them. Excluding them
+would have been pure loss.
+
+So: the ranking is the state. A person who is still missing is still a target, however
+many times an attempt on them has failed.
+
 **Why it is self-healing:** the ranking is recomputed from the corpus every round,
 so a person skipped this round either gets covered by somebody else's export or
 simply comes back at the top of the next list. Nothing is lost by skipping and
