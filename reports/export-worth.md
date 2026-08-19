@@ -6,29 +6,85 @@ Of the **451** paths still in the export band (4+ missing):
 
 | | paths |
 | --- | ---: |
-| nordic | 126 |
-| pope | 18 |
-| weird | 7 |
-| **export total** | **151** |
-| page-saving instead | 300 |
+| long path | 68 |
+| nordic | 19 |
+| pope | 16 |
+| weird | 3 |
+| **export total** | **106** |
+| page-saving instead | 345 |
 
 ## The export list, longest gap first
 
 | missing | steps | destination | why |
 | ---: | ---: | --- | --- |
-| 21 | 65 | Bengt Broms | nordic |
-| 20 | 50 | Gunnar Brodin | nordic |
-| 20 | 48 | Knut Emil Lundmark | nordic |
-| 19 | 69 | Friedlieb Ferdinand Runge | weird: isolated caffeine |
-| 19 | 55 | John Ugelstad | nordic |
-| 18 | 54 | Pope Clement XIII | pope |
-| 17 | 78 | Bahá'u'lláh Mirza Husayn Ali Nuri | weird: religious founder |
-| 17 | 27 | Dr. Raphael Lemkin | weird: coined 'genocide' |
-| 17 | 64 | Per Johan Magnus Ohlin | nordic |
-| 17 | 66 | Professor Axel Thue | nordic |
-| 16 | 26 | Pope Paul VI | pope |
-| 16 | 43 | Jens Glad Balchen | nordic |
-| 16 | 84 | Ludovico Paolo Francesco Buglio | weird: Jesuit missionary to China |
+| 35 | 85 | George R.R. Martin | long path |
+| 24 | 56 | Kentucky Representative Andy Barr | long path |
+| 24 | 55 | Uli Zech | long path |
+| 22 | 56 | Erik Robert Lindahl | long path |
+| 22 | 69 | Karl Gösta* Liebert | long path |
+| 22 | 35 | Vasilijs Sinaiskis | long path |
+| 22 | 77 | Wilhelm Adolf Diesterweg | long path |
+| 21 | 56 | August Allebé | long path |
+| 21 | 65 | Bengt Broms | long path |
+| 21 | 51 | Johannes Hendrikus Becking | long path |
+| 21 | 54 | prof.dr. Cornelis Pijnacker Hordijk | long path |
+| 21 | 33 | Ramon Prieto Bances | long path |
+| 20 | 71 | Cyrus Thomas | long path |
+| 20 | 50 | Gunnar Brodin | long path |
+| 20 | 57 | Jan Arvid Hellström | long path |
+| 20 | 48 | Knut Emil Lundmark | long path |
+| 20 | 60 | Nick Bostrom | long path |
+| 20 | 72 | Prof. Johann FRIEDRICH von Herrenschwand, Dr. | long path |
+| 20 | 30 | Walter Courvoisier | long path |
+| 19 | 72 | Charles Folsom | long path |
+| 19 | 30 | Charles Harold Williams | long path |
+| 19 | 69 | Friedlieb Ferdinand Runge | long path |
+| 19 | 54 | Kirk Varnedoe | long path |
+| 19 | 55 | John Ugelstad | long path |
+| 19 | 86 | Karl Bertil Mathias Qvist | long path |
+| 19 | 43 | Nils Karlsen Ørvik | long path |
+| 19 | 56 | Wolfgang Anton de Boor | long path |
+| 18 | 54 | Pope Clement XIII | long path |
+| 18 | 57 | Edward Albee | long path |
+| 18 | 43 | Franciszek Longchamps | long path |
+| 18 | 35 | Gian Carlo Wick | long path |
+| 18 | 35 | Ignaz Paul Vital Troxler | long path |
+| 17 | 45 | Aurora Aksnes | long path |
+| 17 | 78 | Bahá'u'lláh Mirza Husayn Ali Nuri | long path |
+| 17 | 48 | Dan Brown | long path |
+| 17 | 27 | Dr. Raphael Lemkin | long path |
+| 17 | 55 | Francis Barton Gummere | long path |
+| 17 | 68 | Graf Philipp Christian Friedrich von Normann-Ehrenfels | long path |
+| 17 | 60 | Hans* Gregor Gunnar Nilsson-Ehle | long path |
+| 17 | 50 | Harald Skjervold | long path |
+| 17 | 49 | Helmer Smith | long path |
+| 17 | 56 | Kylee Curtis | long path |
+| 17 | 48 | Lars Fridthjofsen Tokstad Sem Platou | long path |
+| 17 | 28 | Leonid Hurwicz | long path |
+| 17 | 26 | Paul L. Modrich | long path |
+| 17 | 64 | Per Johan Magnus Ohlin | long path |
+| 17 | 51 | Povl Ole Fanger | long path |
+| 17 | 52 | Frank Johnson Goodnow, Ph.D., LL.B. | long path |
+| 17 | 66 | Professor Axel Thue | long path |
+| 16 | 26 | Adolf Willareth | long path |
+| 16 | 56 | Bjørn Føyn | long path |
+| 16 | 55 | Charles P. Kindleberger Jr. | long path |
+| 16 | 26 | Emil Spjøtvoll | long path |
+| 16 | 61 | Erik Nissen "Ericus Nissenius" Viborg, døbenavn Ericus Nissenius Viborg | long path |
+| 16 | 47 | Geir Vegar Hoel | long path |
+| 16 | 26 | Pope Paul VI | long path |
+| 16 | 27 | Herbert W. B. Skinner | long path |
+| 16 | 41 | Jan Groth | long path |
+| 16 | 43 | Jens Glad Balchen | long path |
+| 16 | 55 | Joseph Hooton Taylor, Jr. | long path |
+| 16 | 53 | Kjetil Jansrud | long path |
+| 16 | 84 | Ludovico Paolo Francesco Buglio | long path |
+| 16 | 62 | Nils Olof Zeilon | long path |
+| 16 | 47 | Pentti Kouri | long path |
+| 16 | 52 | Prof. Kai Viktor Johannes von Fieandt, Ph.D. | long path |
+| 16 | 54 | Sigurd Teodoro Arentsen Steeger | long path |
+| 16 | 39 | Magnus Carlsen | long path |
+| 16 | 60 | Wiktor Marian Dega | long path |
 | 15 | 65 | Peter* Edvard Holm | nordic |
 | 15 | 42 | Samson Eitrheim | nordic |
 | 14 | 56 | Bendix Christian de Fine | nordic |
@@ -53,117 +109,17 @@ Of the **451** paths still in the export band (4+ missing):
 | 12 | 30 | Fu Ssu-nien 傅斯年 | weird: president of Academia Sinica |
 | 12 | 42 | Tove Bærheim | nordic |
 | 11 | 21 | Akeo Watanabe | weird: Japanese conductor |
-| 11 | 25 | Björn Olof Roos | nordic |
-| 11 | 34 | Bror Marklund | nordic |
-| 11 | 65 | Carl Adam Wilhelm Schalén | nordic |
-| 11 | 21 | Isak Björklund | nordic |
-| 11 | 64 | Kalle Putkisto | nordic |
-| 11 | 38 | Lars Larsen Hertervig | nordic |
-| 11 | 62 | Nicolai Edinger Sørensen Balle | nordic |
-| 11 | 42 | Unto Uuno Uotila | nordic |
-| 10 | 40 | Axel Nicolai Herlofson | nordic |
-| 10 | 23 | Bengt I. Samuelsson | nordic |
-| 10 | 24 | Carl Gustaf Lundquist | nordic |
-| 10 | 21 | Erik Björkman | nordic |
-| 10 | 50 | Erkki Voipio | nordic |
-| 10 | 47 | Johan Hjalmar Théel | nordic |
 | 10 | 40 | Pope Benedict XVl | pope |
-| 10 | 70 | Julius Severin Wilhelm Lassen | nordic |
 | 10 | 25 | Pope Urban VIII | pope |
-| 10 | 20 | Paavo Ilmari Ravila | nordic |
-| 10 | 27 | Àrni Magnússon | nordic |
-| 10 | 33 | Sigurd Some Sørensen | nordic |
-| 10 | 22 | Yrjö Henrik Kajava (Nylund) | nordic |
-| 9 | 33 | Bjørn Hervik Nilsen | nordic |
-| 9 | 22 | Carl Gustaf Thomson | nordic |
-| 9 | 22 | Dr Olav Gjærevoll | nordic |
-| 9 | 21 | Gösta Valdemar Edman | nordic |
-| 9 | 43 | Gunnar Henrik Julius Ekman | nordic |
-| 9 | 21 | Gun Widmark (Gustafsson) | nordic |
-| 9 | 23 | Jakob Lennart Simons | nordic |
-| 9 | 22 | Katri Elina Rehtijärvi | nordic |
-| 9 | 21 | Olavi Valdemar Peräsalo | nordic |
-| 9 | 19 | Ole Myrvoll | nordic |
 | 9 | 76 | Pope Gregory X | pope |
-| 8 | 49 | Arthur Isak Edvard Långfors | nordic |
-| 8 | 53 | Arvi Antti Ilmari Sovijärvi | nordic |
-| 8 | 47 | Geir Lundestad | nordic |
-| 8 | 43 | Hans Emil Andersin | nordic |
 | 8 | 74 | Pope John XXII | pope |
-| 8 | 60 | Jacques (Jacob) Ludvig Borelius | nordic |
-| 8 | 62 | Johan Gottschalk Wallerius | nordic |
-| 8 | 52 | Jouko Matti Virkkunen | nordic |
-| 8 | 32 | Martin Nag | nordic |
 | 8 | 81 | Pope Gregory XIV | pope |
-| 8 | 34 | Ståle Eskeland | nordic |
-| 8 | 19 | Svein Geirfinn Molaug | nordic |
-| 8 | 50 | Thure Georg Sahama | nordic |
 | 8 | 33 | Pope Nicholas V | pope |
-| 7 | 43 | Anton Johnson Fridrichsen | nordic |
-| 7 | 20 | Biskop Bengt Sundkler | nordic |
-| 7 | 30 | Bjørn Bue | nordic |
-| 7 | 41 | Eilif Dahl | nordic |
-| 7 | 31 | Erik Anders Allardt | nordic |
-| 7 | 41 | Haaken Hasberg Gran | nordic |
-| 7 | 19 | Hans Christian Tscherning | nordic |
-| 7 | 55 | Herman Valentiner | nordic |
 | 7 | 40 | Pope Urban III | pope |
 | 6 | 40 | Pope Saint Pius V | pope |
-| 6 | 33 | Arne Rettedal | nordic |
-| 6 | 42 | Christen Christian Dreyer Collin | nordic |
-| 6 | 20 | Edvard Wilhelm Welander | nordic |
-| 6 | 23 | Eemeli Knaap(e) | nordic |
-| 6 | 21 | Eliel Lagercrantz | nordic |
-| 6 | 38 | Frank Henrik Aarebrot | nordic |
 | 6 | 78 | Pope Benedict XV | pope |
-| 6 | 32 | Håkon Nilsen | nordic |
-| 6 | 51 | Jaakko Suolahti | nordic |
-| 6 | 46 | Jarl Axel Wasastjerna | nordic |
-| 6 | 18 | Jens Johannesen Tvedt | nordic |
-| 6 | 24 | Johan Carl Wilcke | nordic |
-| 6 | 18 | Johan Marnburg | nordic |
-| 6 | 30 | Karl Aimo ("Kalle") Achté | nordic |
-| 6 | 21 | Karl Frithiof Sundman | nordic |
-| 6 | 31 | Olaf Helliesen Lange | nordic |
-| 6 | 17 | Ole RØISLAND | nordic |
-| 6 | 42 | organist Christian Cappelen | nordic |
 | 6 | 78 | Pope John XXI | pope |
-| 6 | 19 | Philip Heinrich Kriebel, tegnelærer | nordic |
-| 6 | 22 | PM Ralf Törngren | nordic |
-| 6 | 22 | professori Leo Eino Aario | nordic |
-| 6 | 20 | Sven Adolf Diego Helander | nordic |
-| 6 | 45 | Väinö Grönholm | nordic |
-| 5 | 20 | Carl Ferdinand Allen | nordic |
 | 5 | 45 | Pope Innocent XII | pope |
-| 5 | 23 | Caspar Frederich Harsdorff | nordic |
-| 5 | 64 | Fredrik Amadeus Wulff | nordic |
-| 5 | 16 | John Norem | nordic |
-| 5 | 48 | Ernst Palmén | nordic |
 | 5 | 43 | Pope Benedict XIII | pope |
-| 5 | 75 | Sven Axel Hoflund | nordic |
-| 4 | 22 | Arvo Kunto Viljanti | nordic |
-| 4 | 22 | August Tuhka | nordic |
-| 4 | 20 | Christer Thorn | nordic |
-| 4 | 43 | Erling Christophersen | nordic |
 | 4 | 47 | Pope Alexander VII | pope |
-| 4 | 18 | Gabriel Adolf Gustafson | nordic |
 | 4 | 43 | Pope Innocent X | pope |
-| 4 | 19 | Gregers Otto Bruun Begtrup | nordic |
-| 4 | 21 | Hans Gram | nordic |
-| 4 | 22 | Hans Mathias Velschow | nordic |
-| 4 | 22 | Hans Robert Viktor Buch | nordic |
-| 4 | 17 | Jens Jenssen | nordic |
-| 4 | 23 | Johan Ernst Gunnerus, Biskop i Trondheim | nordic |
-| 4 | 47 | Johan Friis | nordic |
-| 4 | 28 | Jonas Hallenberg | nordic |
-| 4 | 16 | Øjvind Winge | nordic |
-| 4 | 38 | Kristoffer Bertram Louis Berg | nordic |
-| 4 | 26 | Lars Arvid Axel von Haartman | nordic |
-| 4 | 38 | Lars Kristian Holm Brynildsen | nordic |
-| 4 | 21 | Lars Magnus Möller | nordic |
-| 4 | 51 | Ludvig Holm-Olsen | nordic |
-| 4 | 17 | Oscar Stig Wikander | nordic |
-| 4 | 19 | Pekka Juhana Myrberg | nordic |
-| 4 | 33 | Per Inge Torkelsen | nordic |
-| 4 | 36 | Sverre Bruland | nordic |
-| 4 | 48 | Tuomo Mannermaa | nordic |

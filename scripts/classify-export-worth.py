@@ -52,6 +52,22 @@ NORDIC = re.compile(
 
 POPE = re.compile(r"\bpope\b", re.I)
 
+#: **"I'm going to leave it up to you to determine what a long path is."** — Emma,
+#: 2026-08-18, and she was explicit that she is handing over an unusually large amount of
+#: discretion because she is trying to close this work off.
+#:
+#: Sixteen. The median incomplete path carries 8 missing people, so 16 is double the
+#: median and is a defensible reading of "particularly long". It is also where the
+#: two-export bound pays: 16 halved twice is 4, which is page-saving territory anyway,
+#: whereas a 10-missing path reaches 5 after ONE export and would be page-saved either
+#: way — so an export below this buys nothing that page-saving does not.
+LONG = 16
+
+#: Popes and the weird tier qualify at ANY length: there are about 25 of them and the
+#: person is the prize rather than the neighbourhood. Nordic paths need 12, because there
+#: are 126 of them and without a floor they swamp the list.
+NORDIC_FLOOR = 12
+
 #: Her three confirmed "weird and far out there" groups, by destination name. This list
 #: is deliberately explicit rather than heuristic --- weirdness is a judgement she made,
 #: and a regex guessing at it would be the fuzzy matching this repo refuses everywhere.
@@ -74,14 +90,20 @@ def main() -> int:
             if r["action"] == "export"]
 
     for r in rows:
-        if POPE.search(r["destination"]):
+        m = int(r["missing"])
+        pope = bool(POPE.search(r["destination"]))
+        weird = r["destination"] in WEIRD
+        nordic = bool(NORDIC.search(r["path"]))
+        if m >= LONG:
+            r["worth"], r["why"] = "export", "long path"
+        elif pope:
             r["worth"], r["why"] = "export", "pope"
-        elif r["destination"] in WEIRD:
+        elif weird:
             r["worth"], r["why"] = "export", f"weird: {WEIRD[r['destination']]}"
-        elif NORDIC.search(r["path"]):
+        elif nordic and m >= NORDIC_FLOOR:
             r["worth"], r["why"] = "export", "nordic"
         else:
-            r["worth"], r["why"] = "save-pages", "not nordic, not a pope, not weird"
+            r["worth"], r["why"] = "save-pages", "short, and not significant"
 
     rows.sort(key=lambda r: (r["worth"] != "export", -int(r["missing"])))
     with OUT.open("w", encoding="utf-8", newline="") as fh:
