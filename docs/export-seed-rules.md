@@ -108,11 +108,34 @@ The same reading applies to the other Iberian patronymic endings — `-az`, `-iz
 `-es` in Portuguese — and they will recur, since the remaining gap is thousands of people
 wide and Iberian lines are well represented in it.
 
-**Contrast with the Nordic farm name, which is the opposite call.** `Ingeborg Olsdotter
-Gilja` and `Seri Mikkelsdatter Mjåland` take tier 2, not tier 1, because `Gilja` and
-`Mjåland` are farm names both spouses carry rather than a patrilineal surname — there the
-suffix is a live patronymic *and* the surname is not the father's. Two different traps
-that look alike: read the suffix and the surname separately.
+## A Nordic farm name IS a surname, so it makes the seed tier 1
+
+**Emma, 2026-08-18:** *"uhh farm names are surnames here lol."*
+
+So `Gilja`, `Mjåland`, `Tjåland`, `Aabø`, `Håle` and `Skårland` are **surnames**, and a
+person carrying a live patronymic *and* a farm name is **tier 1**: the patronymic names
+the father, and the farm name is the surname he takes.
+
+    Ole Larsen Tjåland        ->   Lars /Tjåland/
+    Asgjerd Klausdtr. Aabø    ->   Klaus /Aabø/
+    Ingeborg Olsdotter Gilja  ->   Ole /Gilja/
+
+**This paragraph said the opposite until she corrected it**, and the reasoning it gave
+was that a farm name is carried by both spouses and so is not patrilineal. That is a real
+fact about Norwegian naming and it is **not** the call here — the same shape as the `-ez`
+correction above, where a true linguistic observation was used to talk the seed down a
+tier and she ruled otherwise both times. **Do not reason a surname out of existence.** If
+the surname field holds something that is not the patronymic, it is the surname.
+
+Two placeholders were created under the old reading before the correction and are left
+as-is, on the same precedent as `NN Jiménez de Castro`: `Lars father of Ole`
+(`6000000227315747834`, should have been `Lars /Tjåland/`) and `Klaus father of Asgjerd`
+(`6000000227315706873`, should have been `Klaus /Aabø/`). Both exports were already in
+flight; re-editing a placeholder costs loop time for no gain.
+
+**What still takes tier 2** is a person with a patronymic and *nothing else* — no farm
+name, no surname of any kind. That is the `Anders father of Anna` form and it is
+unaffected.
 
 ## Bail on anything weird. The loop is self-healing
 
