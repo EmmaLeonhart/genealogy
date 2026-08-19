@@ -10019,3 +10019,44 @@ Whatever separates 俊 *Chun* from 順 *Jun* is not in the string.
 
 **2 wrong rows is the honest cost of having no discriminator.** Recorded rather than fixed
 with a two-character blacklist that the next export would silently outgrow.
+
+## 2026-08-19 — the romanisations checked against Wikidata's own labels: 91.9%
+
+Every measurement of this pipeline so far has been internal. The readings come from
+Wikidata name items and the spot-probe compares 33 characters whose Mandarin reading is not
+in dispute — a list I wrote. Neither can catch an error I share with my own probe.
+
+There was an external check available the whole time. **3,188 of the 12,068 romanised
+people are linked to a Wikidata item, and 3,139 of those items already carry an English
+label written by somebody else.** `scripts/validate-cjk-romanisation.py` compares them.
+
+**My syllables appear in their label for 2,888 of 3,144 — 91.9%.**
+
+The strings are not meant to match, and the difference is worth recording: Wikidata writes
+the whole name, surname first and the given name run together — `Sun Changqing`, `Zhang
+Biaochen`, `Li Ji`. This pipeline romanises the **given name only**, syllables separated —
+`Chang Qing`, `Biao Chen`, `Ji`. Same syllables, different convention.
+
+**Most of the 256 disagreements are not errors.** Wikidata catalogues rulers under regnal
+and temple names. `世民` is `Shi Min` here and `Emperor Taizong of Tang` there — the same
+man under the name history uses. `履` is `Tang of Shang`; `昌` is `King Wen of Zhou`; `珪`
+is `Emperor Daowu of Northern Wei`. Naming convention, not reading, so that column is for
+reading rather than counting.
+
+**The real errors are two and they are the same two.** `Q185152`, romanised `Tadashi`, is
+**Puyi** — the last Emperor. `Q77895`, romanised `Masaru`, is his brother **Pujie**. Both
+are 愛新覺羅, Aisin-Gioro, the Manchu imperial house, filed Japanese because that family's
+graph runs through Manchukuo and Japanese marriages. Two records, not a class.
+
+**Extending the never-Japanese surname rule to multi-character surnames was tested and must
+not be done.** Of 179 multi-character surnames with 25+ records, 78 show zero direct
+Japanese evidence — and 武田, Takeda, 84 records, is among them. The single-character rule is
+safe precisely because the corpus keeps 源, 橘, 森 and 林 out of it; there is no such
+protection at two characters and up. 愛新覺羅 appears twice in any case, far below the
+threshold, so the rule would not have caught Puyi even extended.
+
+**What this changes about labelling.** Wikidata's label is better than ours wherever it
+exists — it has the surname, and for a ruler the name history uses. A label batch over this
+population must not overwrite. For the 3,139 already labelled there is nothing to add, and
+the romanisation's value is entirely in the people who have no item or no label. That is a
+correction to how the seven-language item was going to consume this work.
