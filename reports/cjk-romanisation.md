@@ -4,7 +4,7 @@ Built by `scripts/build-cjk-romanisation.py`. **Nothing is transliterated** — 
 
 - people with a CJK name and no Latin label: **36,625**
 - culture settled: **30,258**
-- romanised: **10,358** — zh **10,116**, ko **0**, ja **242**
+- romanised: **10,042** — zh **9,800**, ko **0**, ja **242**
 
 ## How culture was settled, in Emma's order of evidence
 

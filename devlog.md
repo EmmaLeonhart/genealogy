@@ -9857,3 +9857,44 @@ is not in dispute stays at **0 wrong, now across 1,731 character-slots**.
 `氏 鄭` comes out `Shi`, but 氏 is the clan marker meaning *née*, so that record is an
 unnamed woman of the Zheng clan rather than someone called Shi. Both are records whose
 name field is not a name; measuring the marker case is the next step.
+
+## 2026-08-19 — 3,059 records whose name field is not a name
+
+`scripts/labels.py` already carries this vocabulary for Latin labels — `NN`, `unbekannt`,
+`未知`, `Private` — with the rule that a marker gets `mul NN` rather than a label that
+reads as a person. The Han forms of the same thing had no such guard, so the romaniser was
+turning them into fluent Latin strings asserting a person existed under a name nobody ever
+had.
+
+| what | records |
+| --- | ---: |
+| a relationship, not a name — `室` `妻` *wife of*, `養女` *adopted daughter of*, `母` *mother of* | 2,716 |
+| `某` — *a certain one*, the exact sense of `NN` | 252 |
+| `氏` — the clan marker | 65 |
+| `未知` / `未詳` — already in the Latin vocabulary | 26 |
+
+`信秀側室 織田` is not a person called Nobuhide-sokushitsu; it is **Nobunaga's father's
+concubine**, recorded by whose concubine she was because her own name was not. `氏 鄭` is
+not a man called Shi; it is an unnamed woman **née Zheng**.
+
+zh romanised **10,116 → 9,800**, so 316 false Chinese labels are gone. The rest were
+already stuck behind the Japanese whole-name blocker and had been inflating it: `ja
+skipped` falls **14,057 → 11,342**, which is a truer number for that blocker than the one
+reported in the last three status reports.
+
+**Only as the whole given token.** `氏` suffixed to a surname is a legitimate clan name —
+`阿史那氏`, `完顔氏`, `趙州元氏` — and those are untouched, exactly as `labels.py` keeps the
+surname in `NN Hildesheim`.
+
+**The narrowing is the part worth recording.** The first pass took every `女` and every
+`娘` and caught real people with them: `刀自古郎女 蘇我` is **Soga no Tojiko no Iratsume**,
+wife of Prince Shōtoku, and `手白香皇女` is **Princess Tashiraka**. In classical Japanese
+`郎女` and `娘` are both *iratsume*, and `皇女` is *himemiko* — name elements that follow the
+woman's **own** name, where `室` and `妻` follow her **husband's**. `采女` is *uneme*, a
+court office. So 52 `皇女`, 12 `郎女`, 2 `采女` and all 76 `娘` are kept, and the rule now
+covers 2,716 rather than the 2,894 the first cut claimed. The predicate was unit-checked
+against both lists before the run.
+
+**Not fixed, and not a marker question.** `大唐帝國 謝氏` romanises as `Da Tang Di Guo`. The
+Tang Empire is not a person, and no rule about names will repair a record that is an
+empire.

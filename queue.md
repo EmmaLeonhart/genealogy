@@ -237,12 +237,41 @@ to be attempted.
 
 ### Standing
 
-    zh  10,116   compose per character, gated on being a Mandarin syllable
+    zh   9,800   compose per character, gated on being a Mandarin syllable
     ja     242   whole-name items ONLY -- kanji do not compose
     ko       0   suppressed
 
 Out of **36,625** Han-only records, with **30,258 cultures settled**. **6,367 still have
-no culture** and 14,057 Japanese have no whole-name item.
+no culture**, 11,342 Japanese have no whole-name item, and **3,059 are not names at all**.
+
+### 3,059 records whose name field is not a name
+
+`labels.py` already holds this vocabulary for Latin labels — `NN`, `unbekannt`, `未知`.
+These are the Han forms of the same thing, and they were being romanised into fluent Latin
+strings asserting a person existed under a name nobody ever had. 316 false Chinese labels
+were removed; the rest were already stuck behind the Japanese blocker and had been inflating
+it.
+
+| what | records |
+| --- | ---: |
+| **a relationship, not a name** — `室` `妻` *wife of*, `養女` *adopted daughter of*, `母` *mother of* | **2,716** |
+| `某` — *a certain one*, the exact sense of `NN` | 252 |
+| `氏` — the clan marker: `氏 鄭` is not a man called Shi, it is an unnamed woman **née Zheng** | 65 |
+| `未知` / `未詳` — already in the Latin vocabulary | 26 |
+
+`信秀側室 織田` is not a person called Nobuhide-sokushitsu. It is **Nobunaga's father's
+concubine**, recorded by whose concubine she was because her own name was not.
+
+**The rule is narrower than the first pass, and the narrowing is the interesting part.**
+Taking every `女` and every `娘` caught real people: `刀自古郎女 蘇我` is **Soga no Tojiko
+no Iratsume**, wife of Prince Shotoku, and `手白香皇女` is **Princess Tashiraka**. In
+classical Japanese `郎女` and `娘` are both *iratsume* and `皇女` is *himemiko* — name
+elements that sit after the woman's **own** name, where `室` and `妻` sit after her
+**husband's**. 52 `皇女`, 12 `郎女`, 2 `采女` and all 76 `娘` are kept as names.
+
+**Still open, and not a marker question:** `大唐帝國 謝氏` romanises as `Da Tang Di Guo`.
+The Tang Empire is not a person, and no rule about names will fix a record that is an
+empire.
 
 ### Culture: the script facts, then the name, then the place, then the graph
 
@@ -296,7 +325,7 @@ from; a name tells you what it is.
 - **6,367 with no culture at all**, down from 19,170. What is left has no place, no seat,
   no Japanese name ending, no Japan-only or simplified-only character, and no relative
   within six hops that any of those settled either.
-- **14,057 Japanese with no whole-name item, and Wikidata's name items are NOT the
+- **11,342 Japanese with no whole-name item, and Wikidata's name items are NOT the
   source.** Composition is not available — 文仁 is *Fumihito*, not `Aya Masashi` — so the
   question was where per-name readings could come from. The obvious answer is that the
   `ja` table is built with `HAN.fullmatch`, one character, while **14,909 tokens have a

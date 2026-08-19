@@ -515,6 +515,42 @@ def main() -> int:
     for code in table:
         print(f"  {code}: {len(table[code]):,} character(s) with a published reading")
 
+    #: Tokens that stand in the given-name slot and are **not a name**. `scripts/labels.py`
+    #: already holds this vocabulary for Latin labels -- `NN`, `unbekannt`, `未知` -- and
+    #: these are the Han forms of the same thing, measured 2026-08-19 over the 36,625
+    #: Han-only records.
+    #:
+    #: * `某` (259) -- *a certain one*. The exact sense of `NN`, and there is no surname
+    #:   `某` and no given name containing it; it romanised as *Mou*.
+    #: * `氏` (122) -- the clan marker. `氏 鄭` is not a man called Shi, it is an unnamed
+    #:   woman **of the Zheng clan** -- *née Zheng*. 62 of them were being romanised.
+    #:
+    #: **Only as the whole given token.** `氏` suffixed to a surname is a legitimate clan
+    #: name -- `阿史那氏`, `完顏氏`, 32 of them -- and those are left alone, exactly as
+    #: `labels.py` keeps `NN Hildesheim`'s surname.
+    CJK_MARKERS = {"氏", "某", "未知", "佼名", "無名", "未詳"}
+
+    #: A given token ending in one of these is a **relationship, not a name**: `室` and
+    #: `妻` are *wife of*, `母` *mother of*, `女` *daughter of*. So `信秀側室 織田`
+    #: is not a person called Nobuhide-sokushitsu -- it is **Nobunaga's father's
+    #: concubine**, recorded by whose concubine she was because her own name was not.
+    #: `室` 2,410, `妻` 113, `養女` 105, `母` 18, and 106 more of the form
+    #: [personal name] + `女` such as `正光女`, *daughter of Masamitsu*.
+    #:
+    #: Romanising them produces a fluent Latin string asserting a person exists under a
+    #: name nobody ever had, which is worse than leaving the record unlabelled -- the same
+    #: reasoning `labels.py` applies to `Private`.
+    RELATIONAL_SUFFIX = {"室", "妻", "母", "女"}
+
+    #: **Endings in `女` that ARE names, and the reason `娘` is not in the set above.**
+    #: The first pass took every `女` and every `娘` and caught real people with them:
+    #: `刀自古郎女 蘇我` is **Soga no Tojiko no Iratsume**, wife of Prince Shotoku, and
+    #: `手白香皇女` is **Princess Tashiraka**. In classical Japanese `郎女` and `娘` are
+    #: both *iratsume*, a name element, and `皇女` is *himemiko* -- these sit after the
+    #: woman's OWN name, where `室` and `妻` sit after her husband's. `采女` is *uneme*,
+    #: a court office. 52 `皇女`, 12 `郎女`, 2 `采女` and all 76 `娘` are kept.
+    NAME_BEARING_SUFFIX = ("皇女", "郎女", "郞女", "采女")
+
     # ---- strip the clan seat -------------------------------------------------
     # A trailing 4-character token repeated across a lineage is a 郡望, the commandery
     # and county a clan claims -- 隴西狄道 appears 1,253 times. It is a PLACE and belongs
@@ -541,6 +577,17 @@ def main() -> int:
         # then the courtesy name (字) -- 鯤 幼輿 is Kun, courtesy Youyu. A courtesy name
         # is not what a person is catalogued under, so it does not go in the label.
         name = tokens[0]
+        # Not a name at all -- a marker or a description of a relationship. Counted and
+        # skipped rather than romanised, because a reading of `氏` is `Shi`, which reads
+        # as a man's name and is a false statement about a woman recorded only as a
+        # daughter of her clan.
+        if name in CJK_MARKERS:
+            done[f"skipped - {name} is a marker, not a name"] += 1
+            continue
+        if (len(name) > 1 and name[-1] in RELATIONAL_SUFFIX
+                and not name.endswith(NAME_BEARING_SUFFIX)):
+            done["skipped - a relationship, not a name (wife/daughter/mother of)"] += 1
+            continue
         if len(tokens) > 1:
             done[f"{code} given+courtesy, took given"] += 1
         # **Chinese and Korean compose per character; Japanese does not.** Emma said so
