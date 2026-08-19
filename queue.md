@@ -237,12 +237,40 @@ to be attempted.
 
 ### Standing
 
-    zh  11,851   compose per character, gated on being a Mandarin syllable
+    zh  12,817   compose per character, gated on being a Mandarin syllable
     ja     217   whole-name items ONLY -- kanji do not compose
     ko       0   suppressed
 
-Out of **36,625** Han-only records, with **34,227 cultures settled**. **2,398 still have
-no culture**, 11,342 Japanese have no whole-name item, and **3,059 are not names at all**.
+Out of **36,625** Han-only records, with **35,611 cultures settled**. **1,014 still have
+no culture**, 12,368 Japanese have no whole-name item, and **3,059 are not names at all**.
+
+### The surname, judged by the records already settled — Emma's call, 2026-08-19
+
+She read `reports/unidentified-clusters.md` and said: *"Litteally all chinese and its
+obvious from wikidata names lol"*, then *"Apply it lol"*.
+
+She was right about the bulk, and the clusters show why — the unsettled records are
+overwhelmingly one Chinese lineage each: `曾` 656, `陳` 265, `張` 105, `趙` 100, `孔` 64,
+with `世`-generation numbering straight out of a 族譜. They had no culture only because
+their component is isolated — no kana, no hangul, no seat, no place, out to fourteen hops.
+
+**The list of Chinese surnames is derived, not written.** For each surname, look at the
+records the earlier rules already settled; a surname with 10+ settled records running
+≥95% Chinese is a Chinese surname. **162 surnames**, settling **1,384** records.
+no-culture **2,398 → 1,014**, zh romanised **11,851 → 12,817**.
+
+**It is deliberately not applied to everything, because "all Chinese" is not literally
+true**, and the exceptions are ones worth keeping out: `和田` (Wada) 16, `藤原` (Fujiwara)
+11, `三宅` (Miyake) 8, `長宗我部` (Chosokabe) 6, `渡辺` 4, `斎藤` 4 are Japanese, and
+`博爾濟吉特` 16 is **Borjigit, the Mongol clan**. None reaches 95% Chinese, so none was
+touched — verified in the output: `和田`, `三宅`, `長宗我部`, `斎藤`, `児島`, `加藤`
+and `武田` have no Chinese row at all, and `藤原`, `渡辺`, `松平`, `伊達`, `德川` are all `ja`.
+
+**Two caveats, stated rather than buried.** 40 of the 1,384 carry `姜` (21), `韓` (13) and
+`崔` (6) — Chinese surnames that are also common **Korean** ones, and with `ko` suppressed
+they get pinyin. And `博爾濟吉特` sits in the output as **`ja`** for 2 records, which is
+wrong in the other direction: Borjigit is Mongol, and the traversal put it there before
+this rule existed.
 
 ### Checked against Wikidata's own English labels — 91.9%
 

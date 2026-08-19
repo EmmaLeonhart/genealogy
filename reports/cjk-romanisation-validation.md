@@ -2,20 +2,20 @@
 
 Built by `scripts/validate-cjk-romanisation.py`. **An external check** — every other measurement of this pipeline compares it against sources it already uses, or against a list of characters I wrote myself.
 
-- romanised people: **12,068**
-- of those, linked to a Wikidata item: **3,188**
-- whose item already carries an English label somebody else wrote: **3,139**
+- romanised people: **13,034**
+- of those, linked to a Wikidata item: **3,221**
+- whose item already carries an English label somebody else wrote: **3,154**
 
-## My syllables appear in their label for **2,888 of 3,144** — 91.9%
+## My syllables appear in their label for **2,901 of 3,159** — 91.8%
 
 The two strings are not meant to match. Wikidata writes the whole name, surname first and the given name run together — `Sun Changqing`. This pipeline romanises the **given name only**, syllables separated — `Chang Qing`. The test is whether my syllables occur in their label.
 
 | culture | agree | differ |
 | --- | ---: | ---: |
 | ja | 0 | 3 |
-| zh | 2,888 | 253 |
+| zh | 2,901 | 255 |
 
-## The 256 that differ, and why most are not errors
+## The 258 that differ, and why most are not errors
 
 Wikidata catalogues rulers under **regnal and temple names**. `世民` is `Shi Min` here and `Emperor Taizong of Tang` there — the same man under the name history uses. `履` is `Tang of Shang`; `昌` is `King Wen of Zhou`. Those are naming conventions rather than readings, so this column is for reading, not for counting.
 
@@ -46,6 +46,8 @@ Wikidata catalogues rulers under **regnal and temple names**. `世民` is `Shi M
 | `Q7316` | 協 伯和 劉 | Xie | Emperor Xian of Han | zh |
 | `Q7488` | 桓 趙 | Huan | Emperor Qinzong of Song | zh |
 | `Q7486` | 佶 趙 | Ji | Emperor Huizong of Song | zh |
+| `Q22812632` | 嶷 成功 孔 | Yi | Kong Ni | zh |
+| `Q22812640` | 長孫 孔 | Chang Sun | Kong Zhangsun | zh |
 | `Q11091436` | 貞幹 國葆 季洪 湖南湘鄉 | Zhen Gan | Zeng Guobao | zh |
 | `Q5948949` | 共 子姓 | Gong | Duke Min I of Song | zh |
 | `Q5949181` | 申 子姓 | Shen | Duke Ding of Song | zh |
@@ -139,11 +141,9 @@ Wikidata catalogues rulers under **regnal and temple names**. `世民` is `Shi M
 | `Q45692145` | 濬 隴西狄道 | Jun | Li Xun | zh |
 | `Q45696069` | 榮 知言 隴西狄道 | Ei | Li Rong | zh |
 | `Q11097545` | 緯 京兆長安 | Wei | Li Yi | zh |
-| `Q11095612` | 千里 隴西狄道 | Qian Ri | Li Qianli | zh |
-| `Q45698921` | 瓌 孝偉 隴西狄道 | Gui | Li Xiang | zh |
 
-*136 further row(s) not listed.*
+*138 further row(s) not listed.*
 
 ## What this says about writing labels
 
-**Wikidata's label is better than ours wherever it exists.** It carries the surname, and for a ruler it carries the name history uses. So a label batch over this population must not overwrite: for the **3,139** people whose item already has an English label there is nothing to add, and the romanisation's value is for the ones that do not.
+**Wikidata's label is better than ours wherever it exists.** It carries the surname, and for a ruler it carries the name history uses. So a label batch over this population must not overwrite: for the **3,154** people whose item already has an English label there is nothing to add, and the romanisation's value is for the ones that do not.

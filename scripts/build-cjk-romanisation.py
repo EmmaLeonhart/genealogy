@@ -458,6 +458,50 @@ def main() -> int:
         else:
             unsettled_why[g] = ("no evidence within %d hops, %d relative(s) reached"
                                 % (MAX_HOPS, reached))
+    # ---- culture evidence 4: what the surname is, judged by the settled records ----
+    # Emma, 2026-08-19, reading `reports/unidentified-clusters.md`: *"Litteally all
+    # chinese and its obvious from wikidata names lol"* -- then *"Apply it lol"*.
+    #
+    # She is right about the bulk and the clusters show why: the records left unsettled
+    # are overwhelmingly one Chinese lineage each, `曾` 656, `陳` 265, `張` 105,
+    # `趙` 100, `孔` 64, with `世`-generation numbering straight out of a
+    # 族譜. They have no culture only because their component is isolated -- no kana,
+    # no hangul, no clan seat, no place, out to fourteen hops.
+    #
+    # **The list of Chinese surnames is derived, not written.** For every surname, look at
+    # the records the rules above ALREADY settled; a surname with 10+ settled records that
+    # runs 95% or more Chinese is a Chinese surname. That is the same shape as `NEVER_JA`
+    # and it is safe for the same reason: it cannot invent a judgement the corpus does not
+    # already make somewhere else.
+    #
+    # **It is not applied to everything, because "all Chinese" is not literally true.**
+    # `和田` (Wada) 16, `藤原` (Fujiwara) 11, `三宅` (Miyake) 8,
+    # `長宗我部` (Chosokabe) 6, `渡辺` 4 and `斎藤` 4 are Japanese, and
+    # `博爾濟吉特` 16 is Borjigit, the Mongol clan. None of them reaches 95% Chinese
+    # among settled records, so none is touched.
+    settled_by_surname = 0
+    _snapshot = dict(culture)              # never let this rule feed itself
+    _sur_of = {}
+    for g, cjk in need.items():
+        toks = [x for x in cjk.split() if HAN_TOKEN.fullmatch(x)]
+        if len(toks) > 1:
+            _sur_of[g] = toks[-1]
+    _tally = collections.defaultdict(collections.Counter)
+    for g, sname in _sur_of.items():
+        if g in _snapshot:
+            _tally[sname][_snapshot[g]] += 1
+    CHINESE_SURNAMES = {sn for sn, c in _tally.items()
+                        if sum(c.values()) >= 10 and c["zh"] / sum(c.values()) >= 0.95}
+    for g, sname in _sur_of.items():
+        if g not in culture and sname in CHINESE_SURNAMES:
+            culture[g] = "zh"
+            pct = 100 * _tally[sname]["zh"] / sum(_tally[sname].values())
+            why[g] = ("the surname %s is Chinese in %.0f%% of the records already settled"
+                      % (sname, pct))
+            unsettled_why.pop(g, None)
+            settled_by_surname += 1
+    print(f"  Chinese surnames derived from settled records: {len(CHINESE_SURNAMES):,}")
+    print(f"  settled by the surname: {settled_by_surname:,}")
     print(f"  settled by a Japan-only character: {by_kokuji:,}")
     print(f"  settled by a simplified-only form: {by_simp:,}")
     print(f"  settled by a Chinese clan seat: {by_seat:,}")

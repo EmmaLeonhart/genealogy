@@ -10093,3 +10093,40 @@ Rendering `(22.12.1877-29.1.1921)` into katakana is not a transliteration proble
 question about what the record should be called, which is Emma's. Filed as NEEDS-DECISION,
 and it reaches the **English** labels too — they have shipped with these strings since
 08-15, so this is not only a CJK question.
+
+## 2026-08-19 — the surname as culture evidence: no-culture 2,398 → 1,014
+
+Emma read `reports/unidentified-clusters.md` and called it: *"Litteally all chinese and its
+obvious from wikidata names lol"* — then *"Apply it lol"*.
+
+She was right about the bulk, and the clusters are why. The records no rule could settle
+are overwhelmingly one Chinese lineage each — 曾 656, 陳 265, 張 105, 趙 100, 孔 64 — with
+`世`-generation numbering straight out of a 族譜. They had no culture only because their
+component is isolated: no kana, no hangul, no clan seat, no listed place, out to fourteen
+hops. There was never anything subtle about them.
+
+**The list of Chinese surnames is derived, not written.** For each surname, look at the
+records the earlier rules already settled; a surname with 10+ settled records running ≥95%
+Chinese is a Chinese surname. That is the same shape as `NEVER_JA` and safe for the same
+reason — it cannot invent a judgement the corpus does not already make elsewhere. It
+computes from a snapshot taken before it runs, so the rule never feeds itself.
+
+**162 surnames, 1,384 records.** no-culture **2,398 → 1,014**; cultures 34,227 → 35,611; zh
+romanised **11,851 → 12,817**.
+
+**Not applied to everything, because "all Chinese" is not literally true.** 和田 (Wada) 16,
+藤原 (Fujiwara) 11, 三宅 (Miyake) 8, 長宗我部 (Chōsokabe) 6, 渡辺 4 and 斎藤 4 are Japanese,
+and 博爾濟吉特 16 is **Borjigit, the Mongol clan**. None reaches 95% Chinese so none is
+touched, and the output confirms it: 和田, 三宅, 長宗我部, 斎藤, 児島, 加藤 and 武田 have no
+Chinese row at all, while 藤原, 渡辺, 松平, 伊達, 徳川, 細川 and 松浦 remain `ja`.
+
+**Checks.** The reading probe over 33 characters whose Mandarin reading is not in dispute
+stays at **0 wrong, now across 2,428 slots**. The external check against Wikidata's own
+English labels stays at **91.8%** — 2,901 of 3,159, against 91.9% of 3,144 before — so
+adding 966 romanised rows did not move the accuracy.
+
+**Two caveats, stated rather than buried.** 40 of the 1,384 carry 姜 (21), 韓 (13) or 崔
+(6), which are Chinese surnames and also common **Korean** ones; with `ko` suppressed they
+receive pinyin. And 博爾濟吉特 appears in the output as `ja` on 2 records — wrong in the
+other direction, put there by the traversal before this rule existed. Neither is caused by
+this change; both are now visible because of it.
