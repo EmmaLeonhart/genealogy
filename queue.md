@@ -35,6 +35,59 @@ them.
 
 ---
 
+## ⛔ THE TAIL ALGORITHM — Emma's method, 2026-08-18. Supersedes how the loop picks
+
+Her framing: *"I think we can get through this really really quickly if we change our
+approach here… I think a big part of it is the fact that our tail exports were just not
+working nearly as well as we [expected]."* And her estimate of what it buys: *"you'll be
+able to get through the tail maybe even just by the end of today."*
+
+**What the loop was doing wrong.** It seeded a placeholder near a *missing* person and
+exported from there. She wants the export **centred on the destination person** — the
+isolate at the end of the chain — and the small gaps handled by a different mechanism
+entirely.
+
+### Route by the size of the gap on that path
+
+**Gap of 1–2 people — and 3 is safe too — DO NOT EXPORT.** Her words: *"a gap with one
+person or two people is actually basically useless as a deliverable… It is not worth six
+minutes to fill in something on the flat tail that is just covering one or two
+individuals."* Instead: **open the person's page, click open the relatives section and
+whatever else needs expanding, and save the page** into `geni-scraping/` — *not*
+`geni_pages/`. The profiles get built from those saved pages later. *"We later on build up
+the profiles from this separate thing, which won't really be a fallback thing. It'll be
+another thing."*
+
+**Gap of 4 or more — export, but from the RIGHT person.**
+
+1. **Export centred on the destination person.** Go to the Wikidata-target/isolate at the
+   end of the chain, walk their ancestors, export from there. *"I believe most of the time
+   this is just going to fix it and it's going to get that person connected."*
+2. **If the destination is already present and already exported from, go to the midpoint**
+   of the remaining chain and attempt there.
+3. **Recurse.** Her worked example, verbatim in substance: a seven-person chain → export
+   from the Wikidata target → it clears two → a five-chain remains → attempt at the
+   midpoint → that gets the middle three → what is left is two chains of two → and those
+   are finished by the page-saving method, not by more exports.
+
+**The point is not a complete family tree.** *"it doesn't matter that the entire family
+tree is all consistently there."* The deliverable is the chain being connected.
+
+### Also instructed, same message
+
+- **Retry every person previously bailed on.** *"A locked profile almost never means that
+  every single individual in the tree is locked. The stuff is self-healing here but you
+  still have to actually attempt them again. I am instructing you to attempt these
+  people."* Four remain: Anna von Mecklenburg-Schwerin, Anna Charlotta Stenius, Ola R
+  Sande (retry in flight), Artur Lidman.
+- The page-saving mechanism needs the **immediate relatives** of the person being
+  connected to Wikidata, which is why the relatives section must be expanded before the
+  save.
+
+**Current shape of the problem**, so the routing can be applied: 545 paths, median 8
+missing each, max 33. **24 paths need 1 person, 37 need 2** — those go to page-saving.
+The 4+ paths are where exports go, seeded on the destination.
+
 ## ⛔ TOP PRIORITY — the export slowness. NOTHING ELSE RUNS — Emma, 2026-08-18
 
 *"figuring out this download stuff is the top priority of this entire thing. It is THE
