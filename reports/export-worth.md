@@ -6,18 +6,17 @@ Of the **450** paths still in the export band (4+ missing):
 
 | | paths |
 | --- | ---: |
-| long path | 6 |
+| long path | 5 |
 | nordic | 7 |
 | pope | 18 |
 | weird | 7 |
-| **export total** | **38** |
-| page-saving instead | 412 |
+| **export total** | **37** |
+| page-saving instead | 413 |
 
 ## The export list, longest gap first
 
 | missing | steps | destination | why |
 | ---: | ---: | --- | --- |
-| 24 | 56 | Kentucky Representative Andy Barr | long path |
 | 24 | 55 | Uli Zech | long path |
 | 22 | 56 | Erik Robert Lindahl | long path |
 | 22 | 69 | Karl Gösta* Liebert | long path |
