@@ -9309,3 +9309,40 @@ this branch stops rather than guessing.
 She is still the best candidate on paper — Emma's own pick, an unhyphenated Borsheim
 birth surname, a real publication record, confirmed Canadian-Norwegian descent. The
 missing piece is one edge, and it is one this branch cannot make.
+
+## 2026-08-18 — no living relative inside eight hops publishes
+
+Queue item: search the 53 living relatives for publication records. **The answer is
+no**, and `reports/publication-search.md` lists the misses as well as the hits, because
+four hits without fifty-three searched tells the next reader nothing about coverage.
+
+Every one of the 53 went to OpenAlex. Four names returned an author with three or more
+works; **all four are other people**:
+
+- **Karin Buchanan** b.1982 matched Karin M. Buchanan at Royal University Hospital —
+  Saskatchewan, near the family's Birch Hills branch, 3 works, 144 citations. It was
+  the one that looked real. **She published in 1999–2000**, when a person born 1982
+  was seventeen. The geography was the coincidence that would have sold it.
+- **Robert Henry** matched two of the commonest name pairs in English, and **Bjørg**
+  and **Kirsten Judith** matched on a *given name alone*, because those two records
+  carry no surname at all.
+
+The other 49 returned nothing, including every close one: Richard Wade Borsheim at one
+hop, Jared at two, Stephen and Heidi Joan at three, out to seven.
+
+### The negative is real but weaker than it reads, and the report says which parts
+
+OpenAlex indexes **academic** publishing, so an author, journalist or politician in the
+family is invisible to it. Married names hide women in a family that changes surname on
+marriage as a rule. And the binding limit is the corpus itself: 1,015 people within
+eight hops, **53** with a birth year of 1930 or later and no death date. The rest are
+undated or `NN` — what a Geni tree looks like near the living, because nobody exports
+them.
+
+**So no candidate is partly no data,** and reporting it as a clean negative would have
+been the more useful-sounding and less true answer.
+
+The standing best is still Jonas Salte at eight hops, whose item exists and who died in
+1944 — he shortens the measurement and does nothing for the objective. The cheapest
+thing that would beat him is Emma naming a relative she knows publishes; she has
+context this search does not.
