@@ -723,10 +723,53 @@ the name** — the tree settles it, via neighbours and which exports they came f
 2. Then the other creations — the Samaritan line, the order.life tiers.
 3. Then the `set_labels` edits, every one carrying all seven + `mul`.
 
-`reports/wikidata-placeholder-labels.json` is **39,299 edits** as of 2026-08-17:
-`mul` on all, `en` on **30,012**, `ja` and `zh` on none. **It must not run in that
-state** — and the 9,287 with `mul` only have no named relative at any distance out to
-two hops, so they need something other than a relative or they stay markers.
+`reports/wikidata-placeholder-labels.json` is **39,440 edits** as of 2026-08-19:
+`mul` on all, `en` on **31,765**, `ja` and `zh` on none. **It must not run in that state.**
+
+### The romanisations closed 1,675 of the English gap — 2026-08-19
+
+The `mul`-only population was 9,287, described as *"no named relative at any distance out
+to two hops"*. That was true and one of its causes was fixable: **a relative whose name is
+written only in Han characters had no Latin string to build `daughter of ...` out of.**
+`build-cjk-romanisation.py` now supplies one for 12,068 people, and 1,396 of the label-less
+placeholders have such a relative one hop away.
+
+`build-relationship-label-preview.py` now falls back to the romanisation where a person has
+no English label. `en` **30,090 → 31,765**, `mul`-only **9,285 → 7,675**. The labels read
+`wife of Shi Min`, `mother of Tan Xian`, `daughter of Shi Min`.
+
+**It never overrides a real label**, because the romanisation is the **given name alone**
+with no surname: `Shi Min` is right as far as it goes, while Wikidata calls the same man
+`Emperor Taizong of Tang`. Where a label exists it is the better one — measured in
+`reports/cjk-romanisation-validation.md`.
+
+### Item 9 is NOT ready to start, and the reason is the English strings
+
+Scoped 2026-08-19. The `ja`/`zh` labels are built from the English ones, which are
+`<relation> of <name>` over **12,661 distinct relative names**. Those names are not clean
+enough to transliterate:
+
+| the name string contains | distinct | labels |
+| --- | ---: | ---: |
+| five or more words | 2,258 | 4,929 |
+| a parenthetical | 607 | 2,457 |
+| a digit | 435 | 1,813 |
+| a quote mark | 431 | 594 |
+| a comma | 216 | 495 |
+| **any of the above** | **2,732 (21.6%)** | **6,222 (20.7%)** |
+
+The commonest are `Kandjeng Pangeran Soeria Koesoemah Adinata (Bupati Sumedang)` (175),
+`Hamengkubuwana VII Raden Mas Murtejo (22.12.1877-29.1.1921)` (86) and
+`14 R. Kadir Soemawilaga Koesoemah Adinata (Asisten Wedana Ciwalen Garut)` (76) — titles,
+offices, dates and a leading list number carried into the label. Even inside the "clean"
+9,929 there are `.... Tornikaine`, `...some dec..` and `.Peder Christensen`.
+
+**Rendering a date range into katakana is not a transliteration problem, it is a naming
+one**, and naming is Emma's. **NEEDS-DECISION:** should the label use the whole string as
+Geni holds it, or a trimmed form — dropping parentheticals, dates and leading numbers — and
+if trimmed, is the trimmed form also what the **English** label should say? The English
+labels have shipped with these strings since 08-15, so this is a question about them too,
+not only about the CJK ones.
 
 ## Name items — the ambiguity, measured now the download is in
 

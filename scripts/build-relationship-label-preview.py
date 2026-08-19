@@ -49,6 +49,9 @@ NAMES = REPO / "reports" / "display-names.csv"
 CSV_OUT = REPO / "reports" / "relationship-label-preview.csv"
 MD_OUT = REPO / "reports" / "relationship-label-preview.md"
 FACTS = REPO / "reports" / "derived-facts.csv"
+#: Romanised Han-only names, built by `build-cjk-romanisation.py`. Used ONLY where a
+#: person has no English label at all -- see `label_of` below.
+ROMANISED = REPO / "reports" / "cjk-romanisation.csv"
 
 csv.field_size_limit(10 ** 7)
 
@@ -122,6 +125,26 @@ def main() -> int:
     label_of: dict[str, str] = {}
     for row in csv.DictReader(LABELS.open(encoding="utf-8", newline="")):
         label_of[row["geni_id"]] = (row.get("label_en") or "").strip()
+
+    # **A romanised Han name counts as a name here.** 9,285 of the placeholder edits carry
+    # no English label because no relative had one, and a relative whose name is written
+    # only in Han characters was exactly such a case -- there was no Latin string to build
+    # `daughter of ...` out of. `build-cjk-romanisation.py` now supplies one for 12,068
+    # people, and 1,396 of the label-less placeholders have such a relative one hop away.
+    #
+    # **Only where there is nothing else.** It never overrides a real English label: the
+    # romanisation is the GIVEN NAME alone, with no surname, so `Shi Min` is right as far
+    # as it goes while Wikidata calls the same man `Emperor Taizong of Tang`. Where a
+    # label exists it is better than this, measured in
+    # `reports/cjk-romanisation-validation.md`.
+    if ROMANISED.exists():
+        added = 0
+        for row in csv.DictReader(ROMANISED.open(encoding="utf-8", newline="")):
+            rom = (row.get("romanised") or "").strip()
+            if rom and not label_of.get(row["geni_id"]):
+                label_of[row["geni_id"]] = rom
+                added += 1
+        print(f"romanised Han names used as a name for {added:,} people with no label")
 
     sex_of: dict[str, str] = {}
     for row in csv.DictReader(FACTS.open(encoding="utf-8", newline="")):

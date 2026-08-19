@@ -10060,3 +10060,36 @@ exists — it has the surname, and for a ruler the name history uses. A label ba
 population must not overwrite. For the 3,139 already labelled there is nothing to add, and
 the romanisation's value is entirely in the people who have no item or no label. That is a
 correction to how the seven-language item was going to consume this work.
+
+## 2026-08-19 — the romanisations close 1,675 of the English label gap, and item 9 is not ready
+
+Two results on the seven-language item.
+
+**The romanisations were feeding nothing.** Nothing in the repo read
+`reports/cjk-romanisation.csv` — 12,068 names produced over several days and consumed by no
+script. Meanwhile 9,285 placeholder edits carried no English label because no relative had
+one, and one cause of that was directly fixable: a relative whose name is written only in
+Han characters had no Latin string to build `daughter of ...` out of.
+
+`build-relationship-label-preview.py` now falls back to the romanisation where a person has
+no English label. **`en` 30,090 → 31,765; `mul`-only 9,285 → 7,675.** The labels read `wife
+of Shi Min`, `mother of Tan Xian`, `daughter of Shi Min`.
+
+It never overrides a real label. The romanisation is the **given name alone** with no
+surname, so `Shi Min` is right as far as it goes while Wikidata calls the same man `Emperor
+Taizong of Tang` — which is why the fallback fires only on an empty label.
+
+**Item 9 — the `ja`/`zh` labels — is not ready to start, and the blocker is the English
+strings.** The CJK labels are built from the English ones, which are `<relation> of <name>`
+over 12,661 distinct relative names. 2,732 of those (21.6%), used by 6,222 labels (20.7%),
+carry a parenthetical, a digit, a quote, a comma, or run to five or more words. The
+commonest are `Kandjeng Pangeran Soeria Koesoemah Adinata (Bupati Sumedang)`,
+`Hamengkubuwana VII Raden Mas Murtejo (22.12.1877-29.1.1921)` and `14 R. Kadir Soemawilaga
+Koesoemah Adinata (Asisten Wedana Ciwalen Garut)` — titles, offices, dates and a leading
+list number carried straight into the label. Even the "clean" remainder holds `....
+Tornikaine`, `...some dec..` and `.Peder Christensen`.
+
+Rendering `(22.12.1877-29.1.1921)` into katakana is not a transliteration problem; it is a
+question about what the record should be called, which is Emma's. Filed as NEEDS-DECISION,
+and it reaches the **English** labels too — they have shipped with these strings since
+08-15, so this is not only a CJK question.
