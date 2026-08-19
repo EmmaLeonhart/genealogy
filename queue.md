@@ -194,10 +194,14 @@ now emits `reports/wikidata-nn-labels.json`, **3,525 edits**:
 come out `Gerard Spencerの娘` with the name untransliterated. That belongs to the
 seven-language item further down.
 
-**Open question worth her eye on resume:** the descriptive labels for `nl`, `de`,
-`da`, `sv`, `nb`, `es`, `pt`, `it`, `ca` were written by me from a hand-built table
-of relationship words. `en` is 1,549 of them and is safe; the other nine total 685
-and nobody has checked the phrasing.
+**The phrasing has now been checked — 2026-08-18, and two languages were wrong.**
+`nl`, `de`, `es`, `pt`, `it`, `ca` and `sv` are correct. **`da` and `nb` were not**,
+for one structural reason: `WORDS` held a single preposition per language and applied
+it to every relation. Danish `af` produced `mor af`, where Danish is `mor til` and `af`
+marks origin; Norwegian `til` produced `sønn til`, where Norwegian is `sønn av` — the
+same fault mirrored. Swedish genuinely uses `till` throughout, which is what made one
+preposition per language look workable. Fixed by letting `of` be a per-relation dict;
+only those two languages carry the extra structure.
 
 ## Name processing — what is left and needs Emma, 2026-08-18
 

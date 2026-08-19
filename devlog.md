@@ -9389,3 +9389,33 @@ before it is executed**. The ranking request did not: I built it and committed i
 without queueing it first, and `88823cf` carries no devlog entry either. Both are the
 same slip — the one this repo wrote that rule down to stop — and this entry is the
 repair rather than a defence.
+
+## 2026-08-18 — one preposition per language, and the language that hid it
+
+The `NN` label batch shipped with its own warning: the 685 non-English descriptive
+labels *"were written by me from a hand-built table of relationship words… nobody has
+checked the phrasing."* Checked.
+
+**`nl`, `de`, `es`, `pt`, `it`, `ca` and `sv` are correct. `da` and `nb` were wrong**,
+and for one structural reason rather than two vocabulary slips: `WORDS` held a single
+`of` per language and applied it to every relation.
+
+    da  "of": "af"    ->  mor af Harald Kesja       Danish is "mor til"
+    nb  "of": "til"   ->  sønn til …                Norwegian is "sønn av"
+
+**The same fault, mirrored.** Danish takes `af` downward — `søn af`, `datter af`,
+`barnebarn af` — and `til` for parent, sibling, spouse, grandparent. Norwegian is the
+other way round: `av` downward, `til` for the rest. Neither is served by one word.
+
+**Swedish is why nobody noticed.** It really does use `till` for all of them — `son
+till`, `mor till`, `bror till`, `make till` — so the one-preposition design worked
+perfectly for the one Nordic language that does not need the distinction, two lines
+above the one that does.
+
+Fixed by letting `of` be a string *or* a dict keyed by relation with a `""` default, so
+only the two languages needing the structure carry it. Regenerated: `mor til Harald
+Kesja`, `hustru til Sviatopolk II of Kiev`, `mor till Harald Kesja`.
+
+**Blast radius is 4 edits** — 3 Danish, 1 Norwegian — and saying so matters more than
+the fix. The design was the finding; these labels are written once over a corpus that
+grows by thousands per export round, and the Nordic share grows with it.
