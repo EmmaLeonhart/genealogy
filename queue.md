@@ -3,6 +3,28 @@
 She picked these from a question and said: *"Add all these to the queue at the beginning
 in the order provided."* So this is the running order, not a menu.
 
+### 4 · Search the 54 living relatives for publication records
+
+> Emma, 2026-08-18: *"Yeah can you actually search for this stuff?"*
+
+The shortest path to what she wants. She can **create** an item for someone notable by
+publication, so a relative at one or six hops with real publications beats Jonas Salte at
+eight, whose item exists already and who died in 1944.
+
+**The set is the 54 people inside eight hops born ≥ 1930 with no death year**, listed in
+`reports/eight-hop-search.md`. None carries a Wikidata item. The nearest are at **1, 2, 3,
+5 and 6 hops** — Richard Wade Borsheim, Jared Borsheim, Stephen and Heidi Joan Borsheim,
+Milton Francis Schwan, Heather Heppner, the three young Schwans.
+
+**Method: OpenAlex first**, `api.openalex.org/authors?search=`, which is free, needs no
+key, and returns works count, citation count, and institution per author. Then Scholar or
+ORCID for anyone it flags. A hit is a **candidate**, not a person — `Henry Stangeland` will
+match strangers, so an institution or a field that fits is what turns a name into a lead.
+
+**Report the misses too.** Fifty-four searched and three with publications is the useful
+output; fifty-four searched and a list of three is not, because the next person cannot tell
+whether the other fifty-one were checked.
+
 ### 4 · order.life item 0c — more `Q200022`-shaped gaps
 
 **This one is in the other repo**, `C:\Users\Emma\Documents\GitHub\order.life`, and is
