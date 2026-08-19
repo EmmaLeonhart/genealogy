@@ -442,12 +442,23 @@ shape of reasoning before — *"you jumped through a lot of hoops to try to intr
 safety stuff here that I did not want."* Recorded as an observation; DECIDED rather than asked — her
 before it becomes a rule.
 
-**A real cause visible in the 467, also not acted on:** several are the same
-spelling in different languages, which Wikidata models as separate items — `Juan`
-is `Q110700065` *Chinese given name* and `Q475210` *Spanish*; `Marie` is
-`Q106674406` *Japanese* and `Q632104` *French*. Resolving those needs a view on
-which language a Geni name is, which is the CJK-culture problem from the labels
-item and is not solved.
+**THE CAUSE IS MEASURED NOW — 2026-08-18, `reports/name-ambiguity-causes.md`, and the
+language theory was wrong.** All 1,380 competing items were read from the local store.
+The different-language case — `Juan` Chinese vs Spanish, `José` Portuguese vs Spanish —
+is **12 strings of 769, 1.6%**. Real, and not the cause of anything.
+
+| cause | strings | bearers |
+| --- | ---: | ---: |
+| one item is the native-script version of the other (`Landau` / `לנדאו`, `Cohen` / `כהן`) | **271** | 20,372 |
+| other — includes the sex split already ruled on, and items with no English description | 231 | 25,938 |
+| different characters, same romanisation (`Tu` 涂 **and** 屠; `Tachibana` 橘 **and** 立花) | **210** | 5,725 |
+| identical descriptions — a Wikidata duplicate (`Schloss`, `Strauss`, `de Sousa`) | **57** | 700 |
+
+**538 of 769 — 70% — are not ours to fix.** The script pairs and the duplicates are
+Wikidata modelling questions, and the romanisation collisions cannot be resolved from a
+Latin string at all, because the information was destroyed before the data reached us.
+**Record the ambiguity; do not resolve it.** The language view would buy 12 strings and
+is not worth building for this.
 
 ## The 7 Samaritan father disagreements — CLOSED, we operate off them
 
