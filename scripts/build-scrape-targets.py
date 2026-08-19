@@ -17,6 +17,23 @@ gives both a link property and the sex.
 
 Rate: one page a minute, no concurrency, bail immediately on anything suspicious.
 
+**DO NOT RE-RUN THIS WHILE THE SAVING IS IN PROGRESS.** Emma, 2026-08-19:
+*"the target list is just a set amount of individuals that we are determined to
+download. Me mass downloading the descendants of people should not [change it].
+Just ignore these exports honestly... Just focus on getting all the pages
+saved."*
+
+The roster is **not** a fixed set of people — it is re-derived from whichever
+paths currently have 1-3 missing. So any new export moves it: a path at 4
+missing falls to 3 and its whole membership joins the list. Re-running it after
+her thirteen `8-19 exports` took it 1,824 -> 1,869, which is the script working
+and the wrong thing to do mid-run. `reports/scrape-targets.csv` was restored to
+the 1,824 and is **frozen** until the saving finishes.
+
+Her Descendants exports are filed in `exports/8-19 exports/` and are corpus like
+any other; they are simply not allowed to redefine this list while it is being
+worked. She keeps her own copies separately and the two will be joined later.
+
     PYTHONPATH=src python scripts/build-scrape-targets.py
 """
 
