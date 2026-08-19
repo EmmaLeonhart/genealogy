@@ -9713,3 +9713,42 @@ rather than voting alongside it.
 3,700 rows are settled by a seat and spot-checking finds them right: 貞 `Zhen`, 尚
 `Shang`, 峻 `Jun`, 超宗 `Chao Zong`, and 靈運 `Ling Yun` — Xie Lingyun, the poet, under
 his clan's seat at 陳郡陽夏. **Japanese readings leaking into Chinese: still 0.**
+
+## 2026-08-19 — CJK culture: two script facts, and a report that did not add up
+
+Three changes to `scripts/build-cjk-romanisation.py`, all inside the romanisation item.
+
+**The report's evidence table was wrong and visibly so.** It still listed an `export
+provenance` row removed on Emma's instruction, had no row for the clan seat or the name
+endings added the day before, and summed to 17,255 against its own stated 22,296. It is
+now derived from the evidence strings, so it cannot go stale again, and it prints a total.
+
+**Two script facts added as culture evidence**, ahead of everything else because they are
+properties of the characters rather than inferences about the family. A 国字 was coined in
+Japan and exists in no Chinese script and no Korean hanja (`辻` `畑` `畠` `榊` `麿`); a
+simplified-only form exists in neither traditional Chinese nor shinjitai (`张` `陈` `华`
+`长` `东`). 174 and 302 records. They are disjoint — no record carries both — which is the
+check that would catch a character filed in the wrong set. `栗` is deliberately excluded:
+it looks like a kokuji, it is the Chinese surname Li, and it would have moved 12 Chinese
+people to Japanese.
+
+Cultures **22,296 → 22,669**, no-culture **14,329 → 13,956**, zh romanised **4,785 →
+4,865**.
+
+**The unreachable branch is deleted, not enabled.** `HAN.fullmatch` is a one-character
+class, so `len(zh) > 1` beside it never fired and only single-character name items ever
+reached the table. Enabling it would have looked like tripling the source — 1,356
+single-character items against 38,710 longer ones — and would have wrecked it: the long
+ones are Chinese transcriptions of *foreign* names, `布瓦索纳德` = Boissonade, `穆特卢` =
+Mutlu. Aligning those per character teaches the table that `德` reads `-ade`. The zh table
+is 1,177 characters before and after, which confirms the edit changed no behaviour.
+
+**Two defects found by spot-checking, both pre-existing.** `英` reads `Ei` in the Chinese
+table and should read `Ying` — a Japanese on-reading that passes the Mandarin-syllable
+gate because `ei` is also legal pinyin. Probed against 24 characters whose reading is not
+in dispute: 25 of 858 character-slots wrong, 2.9%, and 英 is all of it. In the `ja` table
+`松` reads `Choong`, which is not Japanese at all. Both filed in `queue.md`.
+
+**Two dead ends, measured rather than assumed.** Mining readings from people who already
+have a Latin label yields 39 pairs and aligns `河` to *princess*. There are zero
+`zh-latn-pinyin` labels in the store.

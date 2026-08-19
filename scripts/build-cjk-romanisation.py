@@ -206,7 +206,6 @@ def main() -> int:
     #
     # `reports/export-provenance.csv` still stands and is still useful for asking what an
     # export is; it is simply not evidence about an individual.
-    settled_by_export = 0
 
     # ---- culture evidence 3: graph traversal ---------------------------------
     # Emma, 2026-08-18: *"graph traversal for people with unknown country there will
@@ -282,13 +281,45 @@ def main() -> int:
     # family reached from the Korean side has Korean neighbours. `-郎`, `-助`, `-丸`,
     # `-衛門`, `-兵衛` and `-之丞` are the same signal and add 186 more.
     JP_ENDINGS = ("子", "郎", "助", "丸", "衛門", "兵衛", "之丞")
+
+    #: Characters COINED IN JAPAN -- 国字. They exist in no Chinese script and in no
+    #: Korean hanja, so one of them in a name settles the culture outright rather than
+    #: probably. Deliberately conservative: every character a Chinese reader would also
+    #: recognise is left out, which is why 栗 is absent -- it looks like a kokuji, it is
+    #: not one, it is the ordinary Chinese surname Lì, and including it would have moved
+    #: 12 Chinese people to Japanese.
+    KOKUJI = set("辻込峠榊畑畠匂枠塀鰯鱈鴫笹麿凪凧栃橳杢躾柾椙椛栂樫俣匁籾裃辷雫毟働")
+    #: The mirror: forms that exist ONLY in simplified Chinese -- not in traditional, not
+    #: in Japanese shinjitai. Every form the two share is excluded, which is why 国, 学,
+    #: 会, 体 and 声 are absent; they are shinjitai as well and prove nothing.
+    SIMPLIFIED_ONLY = set(
+        "张陈刘杨赵郑冯韩邓萧谢邹苏潘让讲认识语说请记论试谁议访许"
+        "钱铁银锦锋钟钢针钦锡镇镜链锁铺铭"
+        "红纳结给织经纪级纯纲纸绍绝统继绣绪维绵"
+        "马鸟车门页贝见风飞长东业丽丰严义乐习书买卖农孙师华龙无爱")
+    # The two sets are disjoint over this data -- checked 2026-08-19: 175 records carry a
+    # kokuji, 318 carry a simplified-only form, and **no record carries both**, which is
+    # the check that would have caught a character wrongly filed in either set.
+    by_kokuji = by_simp = 0
     by_seat = by_ending = 0
     for g, cjk in need.items():
         toks = [p for p in cjk.split() if HAN_TOKEN.fullmatch(p)]
         if not toks:
             continue
         first, last = toks[0], toks[-1]
-        if len(first) >= 2 and first.endswith(JP_ENDINGS):
+        # The script facts go first: they are properties of the characters themselves,
+        # not inferences about the family, so nothing outranks them.
+        if any(ch in KOKUJI for ch in cjk):
+            if culture.get(g) != "ja":
+                by_kokuji += 1
+            culture[g] = "ja"
+            why[g] = "carries a character that exists only in Japanese"
+        elif any(ch in SIMPLIFIED_ONLY for ch in cjk):
+            if culture.get(g) != "zh":
+                by_simp += 1
+            culture[g] = "zh"
+            why[g] = "carries a form that exists only in simplified Chinese"
+        elif len(first) >= 2 and first.endswith(JP_ENDINGS):
             if culture.get(g) != "ja":
                 by_ending += 1
             culture[g] = "ja"
@@ -298,6 +329,8 @@ def main() -> int:
                 by_seat += 1
             culture[g] = "zh"
             why[g] = f"carries the clan seat {last}, which is Chinese"
+    print(f"  settled by a Japan-only character: {by_kokuji:,}")
+    print(f"  settled by a simplified-only form: {by_simp:,}")
     print(f"  settled by a Chinese clan seat: {by_seat:,}")
     print(f"  settled by a Japanese name ending: {by_ending:,}")
     print(f"  settled by graph traversal: {settled_by_neighbour:,}")
@@ -355,8 +388,20 @@ def main() -> int:
                 # Chinese table: 端 came out `Tadashi`, 宏 `Hiroshi`, 清 `Kiyoshi`, 治
                 # `Osamu` -- 77 rows. A kana `ja` label is the item saying it is Japanese,
                 # so it is excluded from Chinese rather than trusted for it.
+                # **Single character only, and `len(zh) > 1` is NOT the fix.** The
+                # condition here used to read `len(zh) > 1 or is_pinyin_syllable(en)`,
+                # which was unreachable -- `HAN` is a one-character class, so
+                # `HAN.fullmatch` never matches a longer token -- and enabling it would
+                # have been much worse than leaving it dead. Measured 2026-08-19: of the
+                # name items whose `zh` label is Han and whose `en` label is a Latin
+                # name, **1,356 are one character and 38,710 are longer**, and the long
+                # ones are overwhelmingly Chinese *transcriptions of foreign names* --
+                # 布瓦索纳德 = Boissonade, 穆特卢 = Mutlu, 赖克曼 = Reichmann. Aligning
+                # those character-by-character would teach the table that 德 reads
+                # "-ade". They are phonetic spellings of names that are not Chinese, so
+                # they are not readings of anything and the branch stays shut.
                 if (zh and HAN.fullmatch(zh) and not (ja and KANA.search(ja))
-                        and (len(zh) > 1 or is_pinyin_syllable(en))):
+                        and is_pinyin_syllable(en)):
                     table["zh"].setdefault(zh, en)
             if i and i % 200000 == 0:
                 print(f"  ...{i:,} read", flush=True)
@@ -469,10 +514,31 @@ def main() -> int:
           f"- culture settled: **{len(culture):,}**",
           f"- romanised: **{len(rows):,}** — zh **{zh:,}**, ko **{ko:,}**, ja **{ja:,}**",
           "", "## How culture was settled, in Emma's order of evidence", "",
-          "| evidence | people |", "| --- | ---: |",
-          f"| a listed birth or death place | {sum(1 for g in culture if why.get(g,'').startswith('place')):,} |",
-          f"| export provenance | {settled_by_export:,} |",
-          f"| neighbours' script | {settled_by_neighbour:,} |",
+          "| evidence | people |", "| --- | ---: |"]
+    # **Derived from `why`, never hand-listed.** The hand-written version went stale the
+    # moment the clan seat and the name endings were added: it still carried an `export
+    # provenance` row that had been removed on instruction, had no row at all for the two
+    # new kinds, and summed to 17,255 against a stated 22,296 -- a report that visibly
+    # does not add up is worse than no table.
+    kinds = collections.Counter()
+    for g in culture:
+        w = why.get(g, "")
+        if w.startswith("place"):
+            kinds["a listed birth or death place"] += 1
+        elif w.startswith("graph"):
+            kinds["neighbours' script"] += 1
+        elif "clan seat" in w:
+            kinds["a Chinese clan seat (郡望)"] += 1
+        elif "Japanese given-name ending" in w:
+            kinds["a Japanese given-name ending"] += 1
+        elif "only in Japanese" in w:
+            kinds["a character that exists only in Japanese"] += 1
+        elif "only in simplified" in w:
+            kinds["a simplified-only Chinese character"] += 1
+        else:
+            kinds["unclassified"] += 1
+    md += [f"| {k} | {v:,} |" for k, v in kinds.most_common()]
+    md += [f"| **total** | **{sum(kinds.values()):,}** |",
           "", "## Japanese is separated on purpose", "",
           "Emma: *\"Chinese and Korean readings are all very straightforward. Japanese "
           "readings are not straightforward.\"* She is right, and it is structural: a "

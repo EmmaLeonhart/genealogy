@@ -236,12 +236,12 @@ to be attempted.
 
 ### Standing
 
-    zh   4,785   compose per character, gated on being a Mandarin syllable
-    ja     184   whole-name items ONLY -- kanji do not compose
+    zh   4,865   compose per character, gated on being a Mandarin syllable
+    ja     185   whole-name items ONLY -- kanji do not compose
     ko       0   suppressed
 
-Out of **36,625** Han-only records, with **22,296 cultures settled**. **14,329 still have
-no culture** and 11,604 Japanese have no whole-name item.
+Out of **36,625** Han-only records, with **22,669 cultures settled**. **13,956 still have
+no culture** and 11,688 Japanese have no whole-name item.
 
 ### Culture: place, then graph traversal, then the 子 ending
 
@@ -255,10 +255,27 @@ fell **931 → 30** the moment it was removed.
 
 | evidence | people |
 | --- | ---: |
-| a listed place | 137 |
-| **a Chinese clan seat — a 郡望 is a commandery of the Chinese empire** | **4,821** |
-| a Japanese given-name ending — `子` `郎` `助` `丸` `衛門` `兵衛` `之丞` | 221 |
-| graph traversal | 17,164 |
+| graph traversal | 12,809 |
+| **a Chinese clan seat — a 郡望 is a commandery of the Chinese empire** | **8,300** |
+| a Japanese given-name ending — `子` `郎` `助` `丸` `衛門` `兵衛` `之丞` | 994 |
+| a simplified-only Chinese form — `张` `陈` `华` `长` `东` | 302 |
+| a character that exists only in Japanese — a 国字, `辻` `畑` `畠` `榊` `麿` | 174 |
+| a listed place | 90 |
+| **total** | **22,669** |
+
+**The table is now derived from the evidence strings, not hand-written.** The hand-written
+one had gone stale exactly the way this file is not supposed to: it still carried an
+`export provenance` row that had been removed on instruction, had no row for the clan seat
+or the endings, and **summed to 17,255 against a stated 22,296**.
+
+**The two script facts are the only 100%-certain evidence here.** A 国字 was coined in
+Japan and exists in no Chinese script and no Korean hanja; a simplified-only form exists
+in neither traditional Chinese nor Japanese shinjitai. They are properties of the
+characters, not inferences about the family, so they run before everything else. They are
+also disjoint over this data — 175 records carry a kokuji, 318 a simplified form, **none
+carries both**, which is the check that would catch a character filed in the wrong set.
+`栗` is deliberately *not* in the kokuji set: it looks like one, it is the ordinary Chinese
+surname Li, and including it would have moved 12 Chinese people to Japanese.
 
 The seat was being computed to *strip* it and was not being used as evidence, which is
 why so many records had no culture. A neighbour tells you where a family was reached
@@ -266,10 +283,37 @@ from; a name tells you what it is.
 
 ### What is left, and the one that is genuinely hard
 
-- **19,170 with no culture at all.** The traversal needs a relative who writes kana or
-  hangul, or a place; whole components have neither.
-- **11,562 Japanese with no whole-name item.** Composition is not available — 文仁 is
+- **13,956 with no culture at all**, down from 19,170. What is left has no place, no
+  seat, no Japanese name ending, no Japan-only or simplified-only character, and no
+  relative writing kana or hangul within six hops.
+- **11,688 Japanese with no whole-name item.** Composition is not available — 文仁 is
   *Fumihito*, not `Aya Masashi` — so this needs per-name readings from somewhere else.
+- **`英` reads `Ei` in the Chinese table, and it should be `Ying`.** A Japanese on-reading
+  that got in because `ei` is *also* a legal pinyin syllable, so the Mandarin-syllable gate
+  cannot see it. Measured 2026-08-19 against 24 characters whose Mandarin reading is not in
+  dispute: **25 of 858 character-slots wrong, 2.9%**, and 英 is the whole of it — 元 `yuan`,
+  文 `wen`, 德 `de`, 松 `song` and 20 others are all correct. The table is sound; this is
+  one entry, not a class.
+- **The `ja` table has the same problem and worse: `松` reads `Choong`.** That is neither
+  Japanese (*Matsu*) nor plausible — 嶺松院 came out `Choong`. The `ja` rows are already
+  flagged as the ones to distrust, and this is why.
+
+### Two things that look like the fix and are not
+
+- **The multi-character name items.** `HAN.fullmatch` is a one-character class, so the
+  `len(zh) > 1` branch beside it was unreachable and only single-character items ever
+  reached the table. Enabling it looks like free coverage — **1,356 single-character items
+  against 38,710 longer ones** — and would have been a disaster: the long ones are
+  overwhelmingly Chinese *transcriptions of foreign names*, `布瓦索纳德` = Boissonade,
+  `穆特卢` = Mutlu, `赖克曼` = Reichmann. Per-character alignment would teach the table
+  that `德` reads `-ade`. The branch is deleted rather than left looking fixable.
+- **Bootstrapping readings from people who already have a Latin label.** 39 usable pairs,
+  and the alignment is nonsense — `河` = *princess*, `南` = *of*, `稲` = *inahi* — because
+  an English label is a name with titles and particles in it, not a per-character
+  transliteration. Measured and discarded.
+- **`zh-latn-pinyin` labels.** The obvious source for a bigger character table. There are
+  **zero** in this store slice; every `*-latn` label present is Kazakh, Tajik, Kurdish or
+  similar. Not available.
 - **Korean, and it does not yield to the same trick.** `is_sino_korean_syllable` exists
   and is the mirror of the pinyin check, and **it does not work, because the Mandarin and
   Sino-Korean inventories overlap**: `Ji`, `Jing`, `Wen`, `Cheng`, `Wang` are legal in
