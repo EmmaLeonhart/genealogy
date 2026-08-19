@@ -114,6 +114,32 @@ def main() -> int:
     for band in ["0 (complete)", "1-3 (save pages)", "4-9", "10-19", "20+"]:
         lines.append(f"| {band} | {buckets.get(band, 0)} |")
 
+    # Histogram of path LENGTHS -- Emma asked for this by name, twice:
+    # "How many paths are there of each length?" and "I wanted the histogram of
+    # lengths". It is the shape of the corpus of paths, and it does not move when
+    # exports land -- only the missing-count histogram does. Both are printed so the
+    # pair can be read together.
+    lengths = collections.Counter(r["steps"] for r in rows)
+    lines += ["", "## Histogram of path lengths", "",
+              "Path length is the number of steps Geni walked, and it is fixed by the "
+              "saved page -- exports never change it. Compare it against the "
+              "missing-count histogram above, which is what an export moves.",
+              "", "| steps | paths | |", "| ---: | ---: | --- |"]
+    widest = max(lengths.values())
+    for n in sorted(lengths):
+        bar = "#" * max(1, round(40 * lengths[n] / widest))
+        lines.append(f"| {n} | {lengths[n]} | `{bar}` |")
+
+    band = collections.Counter()
+    for r in rows:
+        s = r["steps"]
+        band["1-9" if s < 10 else "10-19" if s < 20 else "20-29" if s < 30 else
+             "30-39" if s < 40 else "40-49" if s < 50 else "50-59" if s < 60 else
+             "60-69" if s < 70 else "70-79" if s < 80 else "80+"] += 1
+    lines += ["", "### Banded", "", "| steps | paths |", "| --- | ---: |"]
+    for b in ["1-9", "10-19", "20-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80+"]:
+        lines.append(f"| {b} | {band.get(b, 0)} |")
+
     lines += [
         "",
         "## Wikidata isolates",
@@ -137,6 +163,16 @@ def main() -> int:
     print(f"  steps held                     {held:,}/{steps:,} ({100*held/steps:.1f}%)")
     print(f"  destinations missing           {sum(1 for r in rows if r['destination_missing'])}")
     print(f"  isolate destinations missing   {len(iso_dest_missing)} of {len(isolates)}")
+    print("\n  path LENGTH histogram (steps -> paths)")
+    widest2 = max(band.values())
+    for b in ["1-9", "10-19", "20-29", "30-39", "40-49", "50-59", "60-69", "70-79", "80+"]:
+        n = band.get(b, 0)
+        print(f"    {b:>6}  {n:>4}  {'#' * max(0, round(40 * n / widest2))}")
+    print("\n  MISSING-count histogram (missing -> paths)")
+    widest3 = max(buckets.values())
+    for b in ["0 (complete)", "1-3 (save pages)", "4-9", "10-19", "20+"]:
+        n = buckets.get(b, 0)
+        print(f"    {b:>16}  {n:>4}  {'#' * max(0, round(40 * n / widest3))}")
     print(f"\nwrote {OUT.relative_to(REPO)}")
     return 0
 
