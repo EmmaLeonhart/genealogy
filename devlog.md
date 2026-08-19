@@ -10317,3 +10317,43 @@ The genuine CJK collisions are what is left, and 119 is what they amount to.
 The string stays ambiguous; the people do not. No Wikidata edit is proposed and no name
 string is resolved — the file records, per person, which competing item their own name
 points at.
+
+## 2026-08-19 — the patronymic fathers, censused: 3,855 bearers, 492 fathers
+
+Emma's item, 2026-08-15: *"If they are patronymics I actually think I'm going to want to add
+items for the hypothetical fathers that are implied to exist from the patronymics."*
+`scripts/build-patronymic-fathers.py` → `reports/patronymic-fathers.{md,csv}`. **It emits
+nothing**, because the item states its own blocker and that blocker is hers.
+
+    3,855 fatherless people carry a Nordic patronymic
+      492 distinct fathers implied — Anders 349, Lars 222, Nils 164, Jon 140,
+          Hans 139, Erik 138, Olof 122, Johan 121, Per 120
+
+**The stem is not what stripping the suffix gives you**, and the first version proved it by
+producing fathers called *Ander*, *Han*, *Lar* and *Nil*. `Andersson` is `Anders` + `son`,
+not `Ander` + `sson`; `Hansen` is `Hans`; `Nilsson` is `Nils`. The genitive `s` belongs to
+the father's name and merges when that name already ends in one, which no suffix rule can
+decide. Both readings are now generated and the one that is an **attested given name in
+this corpus** wins — 106,679 given-name tokens voting.
+
+**Bare `-son` is excluded, and that is the load-bearing decision.** Split by where the
+bearer was born or died: `-datter`, `-dotter`, `-sen` and `-sson` have one or two
+English-speaking bearers each against hundreds of Nordic ones, while bare **`-son` runs 96
+English-speaking against 36 Nordic**. Those are hereditary surnames. **Robinson's father was
+not called Robin**, and `Wilson`, `Thompson`, `Simpson` and `Dawson` are the same shape — a
+live patronymic attests a father, an inherited surname attests nothing. 762 counted and left
+out. The attested-stem test alone would not have caught them: `Robin`, `John` and `Erick`
+are all real given names.
+
+**One known flaw, stated rather than hidden.** `Olsen` and `Olsson` yield `Ols`, 193 people.
+The father is `Ole`, `Ola` or `Olof`; no suffix rule recovers the dropped vowel and `Ols`
+happens to be attested, so the check passes it. Those rows are wrong about the spelling
+while right that a father is implied.
+
+A second defect caught by reading the output: the Icelandic suffixes were written without
+their accents, so `-dóttir` never matched. 29 bearers were missing.
+
+**Unchanged and hers:** with no `P2600`, what is the statement sourced to? The patronymic is
+the evidence and the bearer's Geni profile is where it is recorded, so a reference to that
+profile is one option and *inferred from name* with no reference is another. A Wikidata
+modelling choice, not research.

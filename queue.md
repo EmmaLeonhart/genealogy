@@ -1134,6 +1134,39 @@ an item. These have no `P2600` *Geni.com profile ID* at all, so `CLAUDE.md` § *
 first* does not apply and the citation cannot be a Geni profile. What the
 statement is sourced to is the open question to settle before emitting anything.
 
+### The census is built — 2026-08-19. Still emits nothing.
+
+`scripts/build-patronymic-fathers.py` → `reports/patronymic-fathers.{md,csv}`.
+
+    3,855 fatherless people carry a Nordic patronymic
+      492 distinct fathers implied -- Anders 349, Lars 222, Nils 164,
+          Jon 140, Hans 139, Erik 138, Olof 122, Johan 121, Per 120
+
+**The stem is not what stripping the suffix gives you.** `Andersson` is `Anders` + `son`,
+not `Ander` + `sson`; `Hansen` is `Hans`, `Nilsson` is `Nils`. The genitive `s` belongs to
+the father's name and merges when that name already ends in one, and no suffix rule decides
+it. Both readings are generated and **the one that is an attested given name here wins**,
+106,679 given-name tokens voting. The first version, without that check, produced fathers
+called *Ander*, *Han*, *Lar* and *Nil*.
+
+**Bare `-son` is excluded, and that is the load-bearing part.** Split by where the bearer
+was born or died, `-datter`, `-dotter`, `-sen` and `-sson` have one or two English-speaking
+bearers each against hundreds of Nordic ones. Bare **`-son` runs 96 English-speaking against
+36 Nordic** — those are **hereditary** surnames. **Robinson's father was not called Robin**,
+and `Wilson`, `Thompson`, `Simpson` and `Dawson` are the same shape. A live patronymic
+attests a father; an inherited surname does not. 762 of them, counted and left out.
+
+**One known flaw, stated rather than hidden:** `Olsen` and `Olsson` yield `Ols` (193
+people). The father is `Ole`, `Ola` or `Olof`; no suffix rule recovers the dropped vowel and
+`Ols` happens to be attested, so the given-name check passes it. Those rows are wrong about
+the **spelling** while right that a father is implied.
+
+**NEEDS-DECISION — Emma.** The item's own blocker is unchanged and nothing was emitted
+against it: with no `P2600`, **what is the statement sourced to?** The patronymic itself is
+the evidence, and the bearer's Geni profile is where it is recorded, so a reference to the
+bearer's profile is one option; *inferred from name* with no reference is another. That is a
+Wikidata modelling choice, not research.
+
 ## Daily jobs — queued because a cron only fires while the session is idle
 
 Emma: *"QUEUE UP THE CRON JOB CONTENTS."* Each is a live `CronCreate` id **and** an
