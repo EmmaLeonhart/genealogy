@@ -67,6 +67,10 @@ OUT_MD = REPO / "reports" / "cjk-romanisation.md"
 csv.field_size_limit(10_000_000)
 
 HAN = re.compile(r"[㐀-鿿]")
+#: A whole token of Han characters. `HAN` is a single-character class, so `HAN.fullmatch`
+#: on a four-character token never matches -- which silently disabled clan-seat stripping
+#: and made the "nothing but a clan seat" counter measure something else entirely.
+HAN_TOKEN = re.compile(r"[㐀-鿿]+")
 KANA = re.compile(r"[぀-ヿ]")
 HANGUL = re.compile(r"[가-힯]")
 LATIN_NAME = re.compile(r"^[A-Z][A-Za-z\-']*$")
@@ -87,6 +91,27 @@ PLACE = [
             "Owari", "Echizen", "Satsuma", "Hizen", "Kii", "Mutsu", "Shinano", "Nagano",
             "Hokkaido", "Kyushu", "Honshu", "Shikoku")),
 ]
+
+
+#: Mandarin pinyin is a **closed syllable set**, and that is what separates a Chinese
+#: reading from a Japanese one hiding on the same character. `哲` came out `Akira`, `信`
+#: `Makoto`, `旦` `Akira` -- 174 rows -- because Japanese name items carry a `zh` label of
+#: the same kanji and do not always carry a kana one, so excluding kana-labelled items was
+#: not enough. A single Han character has a single-syllable Mandarin reading; `Akira` and
+#: `Makoto` are not syllables of Mandarin at all, and no amount of item metadata is needed
+#: to see it.
+_INITIALS = ["", "b", "p", "m", "f", "d", "t", "n", "l", "g", "k", "h", "j", "q", "x",
+             "zh", "ch", "sh", "r", "z", "c", "s", "y", "w"]
+_FINALS = ["a", "o", "e", "i", "u", "v", "ai", "ei", "ao", "ou", "an", "en", "ang",
+           "eng", "ong", "er", "ia", "ie", "iao", "iu", "ian", "in", "iang", "ing",
+           "iong", "ua", "uo", "uai", "ui", "uan", "un", "uang", "ueng", "ue", "van",
+           "vn", "ve", "uang", "o", "n", "ng"]
+PINYIN_SYLLABLES = {i + f for i in _INITIALS for f in _FINALS}
+
+
+def is_pinyin_syllable(word: str) -> bool:
+    """One Mandarin syllable, so a plausible reading of one Han character."""
+    return word.lower() in PINYIN_SYLLABLES
 
 
 def cjk_of(row: dict) -> str:
@@ -135,43 +160,17 @@ def main() -> int:
                     break
     print(f"  settled by a listed place: {len(culture):,}")
 
-    # ---- culture evidence 2: export provenance ------------------------------
-    prov = {}
-    if PROV.exists():
-        with io.open(PROV, encoding="utf-8", newline="") as fh:
-            for r in csv.DictReader(fh):
-                if r["geni_id"] in need:
-                    prov[r["geni_id"]] = r["exports"].split(" | ")
-    # what each export looks like, from the scripts its members write
-    mix = collections.defaultdict(collections.Counter)
-    if PROV.exists():
-        with io.open(PROV, encoding="utf-8", newline="") as fh:
-            for r in csv.DictReader(fh):
-                s = scripts.get(r["geni_id"])
-                if not s:
-                    continue
-                k = "ja" if KANA.search(s) else ("ko" if HANGUL.search(s) else None)
-                if k:
-                    for f in r["exports"].split(" | "):
-                        mix[f][k] += 1
-    export_culture = {}
-    for f, c in mix.items():
-        total = sum(c.values())
-        if total >= 20:
-            top, n = c.most_common(1)[0]
-            if n / total >= 0.80:
-                export_culture[f] = top
+    # ---- culture evidence 2: NOT export provenance ---------------------------
+    # **Removed on Emma's instruction, 2026-08-18: "don't fucking do export provenance,
+    # do graph traversal."** It was in here and it was wrong, in a way the output showed
+    # plainly: 大唐帝國, the Tang Empire, came out tagged Korean because the export it sits
+    # in is Korean-rooted. A Korean-rooted tree is full of Chinese ancestors, so the
+    # signal characterises the EXPORT and not the person, and applying it per person
+    # mislabels every foreign ancestor inside a national tree.
+    #
+    # `reports/export-provenance.csv` still stands and is still useful for asking what an
+    # export is; it is simply not evidence about an individual.
     settled_by_export = 0
-    for g, files in prov.items():
-        if g in culture:
-            continue
-        votes = {export_culture[f] for f in files if f in export_culture}
-        if len(votes) == 1:
-            culture[g] = votes.pop()
-            why[g] = "export provenance"
-            settled_by_export += 1
-    print(f"  settled by export provenance: {settled_by_export:,}  "
-          f"({len(export_culture)} export(s) characterised)")
 
     # ---- culture evidence 3: graph traversal ---------------------------------
     # Emma, 2026-08-18: *"graph traversal for people with unknown country there will
@@ -283,13 +282,32 @@ def main() -> int:
                             break
                 elif ja and HAN.fullmatch(ja) and not zh:
                     table["ja"].setdefault(ja, en)
-                if zh and HAN.fullmatch(zh):
+                # **A Japanese name item usually also carries a `zh` label of the same
+                # character**, so taking every Han `zh` label put Japanese readings in the
+                # Chinese table: 端 came out `Tadashi`, 宏 `Hiroshi`, 清 `Kiyoshi`, 治
+                # `Osamu` -- 77 rows. A kana `ja` label is the item saying it is Japanese,
+                # so it is excluded from Chinese rather than trusted for it.
+                if (zh and HAN.fullmatch(zh) and not (ja and KANA.search(ja))
+                        and (len(zh) > 1 or is_pinyin_syllable(en))):
                     table["zh"].setdefault(zh, en)
             if i and i % 200000 == 0:
                 print(f"  ...{i:,} read", flush=True)
     print(f"  {seen_items:,} item(s) had a Latin en label")
     for code in table:
         print(f"  {code}: {len(table[code]):,} character(s) with a published reading")
+
+    # ---- strip the clan seat -------------------------------------------------
+    # A trailing 4-character token repeated across a lineage is a 郡望, the commandery
+    # and county a clan claims -- 隴西狄道 appears 1,253 times. It is a PLACE and belongs
+    # to nobody in particular, and romanising it produced "Chen Koori Yang Xia" glued to
+    # a person's name. See reports/cjk-name-structure.md.
+    tails = collections.Counter()
+    for g, cjk in need.items():
+        parts = [p for p in cjk.split() if HAN_TOKEN.fullmatch(p)]
+        if parts:
+            tails[parts[-1]] += 1
+    SEATS = {t for t, n in tails.items() if len(t) == 4 and n >= 20}
+    print(f"clan seats identified (4 chars, seen 20+ times): {len(SEATS)}")
 
     # ---- romanise -----------------------------------------------------------
     rows = []
@@ -299,10 +317,56 @@ def main() -> int:
         if not code:
             done["culture unknown"] += 1
             continue
-        chars = [c for c in cjk if HAN.match(c)]
+        tokens = [p for p in cjk.split() if HAN_TOKEN.fullmatch(p)]
+        seat = tokens[-1] if tokens and tokens[-1] in SEATS else None
+        if seat:
+            tokens = tokens[:-1]
+        if not tokens:
+            done["no Han token, or seat only" if seat else "no usable Han token"] += 1
+            continue
+        # **Only the first token.** After the seat, what is left is the given name and
+        # then the courtesy name (字) -- 鯤 幼輿 is Kun, courtesy Youyu. A courtesy name
+        # is not what a person is catalogued under, so it does not go in the label.
+        name = tokens[0]
+        if len(tokens) > 1:
+            done[f"{code} given+courtesy, took given"] += 1
+        # **Chinese and Korean compose per character; Japanese does not.** Emma said so
+        # -- *"Chinese and Korean readings are all very straightforward. Japanese readings
+        # are not straightforward"* -- and composing anyway proved it: 文仁 came out
+        # `Aya Masashi` when it is *Fumihito*, 信直 `Shin Tadashi` when it is *Nobunao*,
+        # 信行 `Shin Kou` when it is *Nobuyuki*. A Japanese given name is read as a whole,
+        # and the reading of each kanji in isolation is not a part of it.
+        #
+        # So Japanese is only emitted when a name item exists for the WHOLE token. That
+        # costs coverage and is the only honest option: a composed Japanese reading is
+        # not a worse guess, it is a different name.
+        if code == "ja":
+            whole = table["ja"].get(name)
+            if whole:
+                rows.append((g, cjk, code, whole, why.get(g, ""), name, seat or ""))
+                done["ja romanised (whole-name item)"] += 1
+            else:
+                done["ja skipped - no whole-name item, and kanji do not compose"] += 1
+            continue
+        if code == "ko":
+            # **Suppressed, 2026-08-18.** Korean hanja readings DO compose per character,
+            # so the method is sound -- the inputs are not. All 51 rows were wrong in two
+            # ways at once: 和子, 貴子, 頼子 are Japanese female names (Kazuko, Takako,
+            # Yoriko) that the traversal put in `ko`, and the `ko` table returned pinyin
+            # for them -- `He Zi`, `Gui Zi`, `Lai Zi`. The `-子` ending is a Japanese
+            # signal the culture step does not know about, and the table is polluted the
+            # way the Chinese one was before the pinyin check.
+            #
+            # Fixing it needs a Sino-Korean syllable check, the mirror of
+            # `is_pinyin_syllable`, plus a `-子` rule in the culture step. Until then 51
+            # wrong labels are worth less than none.
+            done["ko suppressed - table polluted and culture misfires on -子"] += 1
+            continue
+        chars = [c for c in name if HAN.match(c)]
         parts = [table[code].get(c) for c in chars]
         if parts and all(parts):
-            rows.append((g, cjk, code, " ".join(parts), why.get(g, "")))
+            rows.append((g, cjk, code, " ".join(parts), why.get(g, ""),
+                         name, seat or ""))
             done[f"{code} romanised"] += 1
         else:
             done[f"{code} incomplete"] += 1
@@ -313,7 +377,8 @@ def main() -> int:
     OUT_CSV.parent.mkdir(parents=True, exist_ok=True)
     with OUT_CSV.open("w", encoding="utf-8", newline="") as fh:
         w = csv.writer(fh)
-        w.writerow(["geni_id", "cjk", "culture", "romanised", "culture_evidence"])
+        w.writerow(["geni_id", "cjk", "culture", "romanised", "culture_evidence",
+                    "name_token", "clan_seat"])
         for row in rows[:limit] if limit else rows:
             w.writerow(row)
 
@@ -341,8 +406,8 @@ def main() -> int:
           "gives the reading for *that* name. **The `ja` rows are the ones to distrust.**"]
     OUT_MD.write_text("\n".join(md) + "\n", encoding="utf-8")
     print(f"\nwrote {OUT_CSV} and {OUT_MD}")
-    for row in rows[:15]:
-        print("   %-22s %-8s %-3s %-22s %s" % row)
+    for g, cjk, code, rom, ev, name, seat in rows[:15]:
+        print("   %-20s %-14s %-3s %-18s %-6s %s" % (g, cjk[:14], code, rom[:18], name, ev[:24]))
     return 0
 
 

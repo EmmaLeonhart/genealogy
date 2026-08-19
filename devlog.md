@@ -9577,3 +9577,61 @@ Emma's ruling on widening the marker vocabulary. Both have been in
 `WORDS_MEANING_UNKNOWN` since her ruling of 2026-08-18, with it quoted beside them in
 `labels.py`. Verified both match, and removed the item — I had been carrying it in
 status reports as a blocker on her when it was already answered.
+
+## 2026-08-18 — the romanisation, with export provenance out and the seats off
+
+Emma: *"don't fucking do export provenance, do graph traversal."* Removed. And she was
+right to kill it — it was mine, I had presented it that morning as the missing half of
+her rule, and it was the thing producing the wrong answers.
+
+**Culture is now place, then graph traversal, and nothing else.** 137 by a listed place,
+**17,164 by traversal**, 17,301 of 36,625 settled.
+
+    Korean romanisations   931  ->  30   when export provenance came out
+
+Those 931 were Chinese people inside Korean-rooted exports. A national tree is full of
+foreign ancestors, so the export characterises the export.
+
+### A bug of mine that hid itself behind a plausible number
+
+`clan seats identified: 0`, while the same run reported **13,009 "nothing but a clan
+seat"**. Both cannot be true. `HAN` is a *single-character* class, so
+`HAN.fullmatch("陳郡陽夏")` never matches — seat-stripping had been silently doing
+nothing, and the 13,009 counter was measuring "no token survived my broken filter".
+
+Fixed with a `HAN_TOKEN` pattern. Seats now strip on **1,552 records**, and the Chinese
+count went 1,666 → 2,633.
+
+**A statistic that contradicts its neighbour is the cheapest bug detector there is.**
+
+### Three corrections that were each a real linguistic fact
+
+**Pinyin is a closed syllable set.** 哲 came out `Akira`, 信 `Makoto`, 旦 `Akira` — 174
+rows — because Japanese name items carry a `zh` label of the same kanji and do not always
+carry a kana one. `Akira` and `Makoto` are not Mandarin syllables at all, so
+`is_pinyin_syllable` rejects them without needing any item metadata. **zh rows carrying a
+Japanese reading: 174 → 0.**
+
+**Japanese does not compose.** She said so; composing anyway proved it. 文仁 came out
+`Aya Masashi` when it is *Fumihito*; 信直 `Shin Tadashi` when it is *Nobunao*; 信行
+`Shin Kou` when it is *Nobuyuki*. A Japanese given name is read whole and the isolated
+reading of each kanji is not a part of it. Japanese now emits **only where a name item
+exists for the whole token — 184 rows**, down from 1,945 composed ones. That is not a
+worse guess being replaced by fewer; it is a different name being replaced by the right
+one or none.
+
+**Korean is suppressed, 51 rows.** The method is fine — hanja readings do compose — but
+both inputs were wrong at once. 和子, 貴子, 頼子 are *Kazuko, Takako, Yoriko*, Japanese
+women the traversal filed as Korean, and the `ko` table then returned pinyin for them:
+`He Zi`, `Gui Zi`, `Lai Zi`. The `-子` ending is a Japanese signal the culture step does
+not know. It needs a Sino-Korean syllable check and a `-子` rule.
+
+### Where it stands
+
+    zh   2,633   compose per character, pinyin-checked
+    ja     184   whole-name items only
+    ko       0   suppressed
+
+**2,817 romanisations I would stand behind**, from 36,625 Han-only records — and the
+honest denominator is that 19,324 still have no culture and 11,383 Japanese have no
+whole-name item. It is a real result and a small one.
