@@ -972,10 +972,34 @@ is **12 strings of 769, 1.6%**. Real, and not the cause of anything.
 | identical descriptions — a Wikidata duplicate (`Schloss`, `Strauss`, `de Sousa`) | **57** | 700 |
 
 **538 of 769 — 70% — are not ours to fix.** The script pairs and the duplicates are
-Wikidata modelling questions, and the romanisation collisions cannot be resolved from a
-Latin string at all, because the information was destroyed before the data reached us.
-**Record the ambiguity; do not resolve it.** The language view would buy 12 strings and
-is not worth building for this.
+Wikidata modelling questions. **Record the ambiguity; do not resolve it.** The language view
+would buy 12 strings and is not worth building for this.
+
+### One line of that was wrong, and it is now partly done — 2026-08-19
+
+*"The romanisation collisions cannot be resolved from a Latin string at all, because the
+information was destroyed before the data reached us."* **True of the Latin string, false of
+the record.** A Geni profile often carries the Han name beside the romanised one, and
+`derived-labels.csv` has held it in `cjk_names` all along. `Tachibana no Moroe` is written
+橘, so he is `Q16884158`; a Tachibana written 立花 is `Q26216117`.
+
+**Per bearer, not per string** — which is her own `Maria` ruling applied to a different
+signal. `scripts/build-name-resolved-by-han.py` → `reports/name-resolved-by-han.csv`.
+
+**It is small and the reason is worth stating.** 252 ambiguous strings have competing items
+with different Han forms, but **most are not CJK collisions at all**: `Landau` is 朗道 and
+蘭道, `Cohen` is 科恩, `FitzGerald` is 費茲傑羅 — **Chinese transcriptions of European
+names**, the same population that makes the multi-character `zh` name items unusable
+elsewhere in this repo. Their bearers are European, carry no Han name, and nothing resolves,
+which is correct. What is left is the genuine CJK collisions:
+
+    119 bearers resolved -- Chén 73, Tachibana 11, Sono 6, Hayashi 6, Yuan 5,
+                            Abe 4, Takeda 3, Itō 2, Saga, Koga, Kan, Bai
+    179 bearers a Han form could not settle
+
+**The string stays ambiguous; the people do not.** No Wikidata edit is proposed and no name
+string is resolved — the file records, per person, which competing item their own name
+points at.
 
 ## The 7 Samaritan father disagreements — CLOSED, we operate off them
 

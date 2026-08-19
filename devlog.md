@@ -10286,3 +10286,34 @@ Ieyasu`, `son of Yoshichika Tokugawa`.
 was made, but the population is every linked person. And nothing here proposes a Wikidata
 edit: the direction is inward, taking a published name as the best available name for our
 own labelling.
+
+## 2026-08-19 — a "cannot be done" line was half wrong: 119 collisions settled by the Han name
+
+`reports/name-ambiguity-causes.md` put 210 strings in a bucket called *different characters,
+same romanisation* — `Tu` is 涂 and 屠, `Tachibana` is 橘 and 立花 — and concluded they were
+*"unresolvable from a Latin string, because the information needed was destroyed before the
+data reached us."*
+
+**True of the Latin string, false of the record.** A Geni profile often carries the Han name
+beside the romanised one, and `derived-labels.csv` has held it in `cjk_names` the whole
+time. Where the competing items carry different Han forms and the bearer's own name contains
+one of them, the collision is settled for that person: `Tachibana no Moroe` is written 橘, so
+he is `Q16884158`.
+
+**Per bearer, not per string**, which is Emma's own `Maria` ruling — *"there's a male and a
+female Maria… settled by the person's sex"* — applied to a different signal.
+`scripts/build-name-resolved-by-han.py` → `reports/name-resolved-by-han.csv`.
+
+**119 bearers resolved**: Chén 73, Tachibana 11, Sono 6, Hayashi 6, Yuan 5, Abe 4, Takeda 3,
+Itō 2, Saga, Koga, Kan, Bai. 179 more carry a Han name that matches both items or neither.
+
+**Small, and the reason belongs in the record.** 252 ambiguous strings have competing items
+with different Han forms, but most are not CJK collisions at all: `Landau` is 朗道 and 蘭道,
+`Cohen` is 科恩, `FitzGerald` is 費茲傑羅 — **Chinese transcriptions of European names**, the
+same population that makes the multi-character `zh` name items unusable elsewhere here.
+Their bearers are European and carry no Han name, so nothing resolves and nothing should.
+The genuine CJK collisions are what is left, and 119 is what they amount to.
+
+The string stays ambiguous; the people do not. No Wikidata edit is proposed and no name
+string is resolved — the file records, per person, which competing item their own name
+points at.
