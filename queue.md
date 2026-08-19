@@ -243,7 +243,7 @@ to be attempted.
 Out of **36,625** Han-only records, with **22,669 cultures settled**. **13,956 still have
 no culture** and 11,688 Japanese have no whole-name item.
 
-### Culture: place, then graph traversal, then the 子 ending
+### Culture: the script facts, then the name, then the place, then the graph
 
 **Export provenance is OUT** — Emma, 2026-08-18: *"don't fucking do export provenance, do
 graph traversal."* It characterises the export and not the person; a Korean-rooted tree is
@@ -251,7 +251,7 @@ full of Chinese ancestors, and it had tagged the Tang Empire Korean. Korean roma
 fell **931 → 30** the moment it was removed.
 
 **Evidence carried by the NAME outranks the graph**, and adding it took cultures from
-17,455 to 22,296:
+17,455 to 22,669:
 
 | evidence | people |
 | --- | ---: |
