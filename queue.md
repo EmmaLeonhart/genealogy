@@ -1,5 +1,18 @@
 # geni — Work Queue
 
+
+## Emma's personally written queue stuff at the beginning
+
+* Finish the fucking chain completion exports do not try other stuff first
+* run exports to get a good account of the Bure Kinship, see [[Bure Kinship]]. Check to make sure all members of https://sv.wikipedia.org/wiki/Kategori:Bure%C3%A4tten are covered
+* attempt 5 sparse region exports, if the sparse region exports work well then go or it very well
+* clear the [[Fucking bizarre cruddy AI generated shit that probably violates the rules]] section to make stuff clear with it
+
+
+
+
+## Fucking bizarre cruddy AI generated shit that probably violates the rules
+
 **This file holds steps not yet taken. Nothing else.** When an item is done,
 **delete it** and append a dated `devlog.md` entry in the same commit. No
 checkmarks, no "done" markers, no keeping a finished item "for context" — that is
@@ -1419,7 +1432,7 @@ Add both of her parents at once
 
 And kinda go up the ancestry of Rakel and Arne on the general sides until you get the blood lins at both of the two people
 
-### Other thing
+### Bure Kinship
 
 I want a thing that similarly does this and adds links with the Bure Kinship and builds the linking down to my mother.
 
