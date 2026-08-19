@@ -407,9 +407,27 @@ regardless of how many people are missing:
 celebrity ... basically the person has to be either really weird and far out there."* So
 Magnus Carlsen, Emma Watson, Dan Brown and Luka Modrić are page-saving, not exports.
 
-`scripts/classify-export-worth.py` applies this. Of the 451 paths still holding 4+
-missing people: **151 earn exports** (126 Nordic, 18 popes, 7 weird) and **300 go to
-page-saving**.
+`scripts/classify-export-worth.py` applies this, with thresholds Emma delegated and then
+corrected once. Of the 451 paths still holding 4+ missing people, **39 earn exports** and
+**412 go to page-saving**:
+
+| gate | paths |
+| --- | ---: |
+| long path, 22+ missing | 7 |
+| every pope, any length | 18 |
+| every weird, any length | 7 |
+| Nordic, 16+ missing | 7 |
+
+**The first answer was 16 and she rejected it** — it produced 68 long paths, *"68 exports
+is too much, as an export takes about 10 minutes. That is like seven hours."* The binding
+constraint is her clock.
+
+**The Nordic measurement is what settled the number.** She asked for it directly: Nordic
+paths in the export band run **mean 8.6 missing, median 8, max 21**. The entire Nordic
+distribution sits below 16, so "long path" and "Nordic path" were never the same
+population and a threshold tuned to Nordic lengths would have swept in hundreds. 22 puts
+the long-path gate above every Nordic path, which is the right shape: **Nordic paths
+qualify on significance, not on length.**
 
 **Read the place off the path FILENAME, not the path body.** Every path starts at Emma
 and climbs through her Norwegian ancestors, so scanning the file for Nordic place names

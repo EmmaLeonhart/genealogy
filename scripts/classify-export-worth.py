@@ -56,17 +56,22 @@ POPE = re.compile(r"\bpope\b", re.I)
 #: 2026-08-18, and she was explicit that she is handing over an unusually large amount of
 #: discretion because she is trying to close this work off.
 #:
-#: Sixteen. The median incomplete path carries 8 missing people, so 16 is double the
-#: median and is a defensible reading of "particularly long". It is also where the
-#: two-export bound pays: 16 halved twice is 4, which is page-saving territory anyway,
-#: whereas a 10-missing path reaches 5 after ONE export and would be page-saved either
-#: way — so an export below this buys nothing that page-saving does not.
-LONG = 16
+#: **Twenty-two.** Sixteen was the first answer and she rejected it: it produced 68 long
+#: paths, and *"68 exports is too much, as an export takes about 10 minutes. That is like
+#: seven hours."* The binding constraint is her clock, not the statistics.
+#:
+#: The Nordic measurement she asked for is what settles it. Nordic paths in the export
+#: band: **mean 8.6 missing, median 8, max 21** — the entire Nordic distribution sits
+#: below 16, so "long path" and "Nordic path" were never the same population and a
+#: threshold tuned to Nordic lengths would have swept in hundreds. 22 puts the long-path
+#: gate above every Nordic path, which is the right shape: Nordic paths qualify on
+#: significance, not on length.
+LONG = 22
 
-#: Popes and the weird tier qualify at ANY length: there are about 25 of them and the
-#: person is the prize rather than the neighbourhood. Nordic paths need 12, because there
-#: are 126 of them and without a floor they swamp the list.
-NORDIC_FLOOR = 12
+#: **Every pope, at any length** — her instruction: *"the popes just do all of them."*
+#: Same for the weird tier, which is only three. Nordic needs 16: there are 127 Nordic
+#: paths and the floor is what keeps the total at a size she can actually work through.
+NORDIC_FLOOR = 16
 
 #: Her three confirmed "weird and far out there" groups, by destination name. This list
 #: is deliberately explicit rather than heuristic --- weirdness is a judgement she made,
