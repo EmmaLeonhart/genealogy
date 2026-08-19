@@ -3,57 +3,6 @@
 She picked these from a question and said: *"Add all these to the queue at the beginning
 in the order provided."* So this is the running order, not a menu.
 
-### 4 · order.life item 0c — more `Q200022`-shaped gaps
-
-**This one is in the other repo**, `C:\Users\Emma\Documents\GitHub\order.life`, and is
-listed here because she gave the three as one ordered list. The hourly crons now run
-against `name-development`, so order.life work happens when this item comes up rather
-than on a tick of its own.
-
-Look for the shape the Haji repair found: a **childless** record and a **fatherless**
-record both already in the dump, whose own `P61` Wikidata ids are a short `P22` chain
-apart — meaning one missing generation is all that separates two runs that are already
-there. One created record joined two Haji fragments that had been sitting apart.
-**Report the gaps; create nothing without reading the case**, and Wikidata was wrong about
-one of them last time.
-
-# geni — Work Queue
-
-**This file holds steps not yet taken. Nothing else.** When an item is done,
-**delete it** and append a dated `devlog.md` entry in the same commit. No
-checkmarks, no "done" markers, no keeping a finished item "for context" — that is
-what bloated this file twice. If an item is here, it is not done.
-
-**AN INSTRUCTION FROM EMMA IN CHAT GOES IN THIS FILE BEFORE IT IS EXECUTED.**
-Added 2026-08-15 after she asked why the queue was being followed so badly. It was
-not the work-loop prompt — that says *"take the top actionable item from queue.md
-and do it"* and the ticks mostly did. **The failure is everything between the
-ticks.** 67 instruction turns that session produced 14 numbered items; the isolates
-analysis, the CBDB finding, five Nordic batches, Rogaland, Japan/China, the bridge
-census and 500+ opened profiles were **never queue items at any point**.
-
-The work-loop rule only covers one direction — promote from `todo.md`, *writing it
-into `queue.md` first*. Nothing covered her chat instructions, so they bypassed the
-queue and the file came to describe only the work nobody was doing. That is also
-why it keeps refilling with finished items: the live work was invisible to it.
-
-**So: write it down first, then do it — even when it takes one line, even when it
-is being done immediately.** The queue is the record of what the project is, not a
-backlog of what is left over.
-
-**Items are flat numbers. No `8a`/`8b` sub-lettering** — Emma, 2026-08-15, after I appended four lettered items under her item 8 and it read as a scheme rather than as me tacking things on: *"I have no idea what 8D is… this is just some sort of imagined code thing that you just added into the queue system."* A new item gets the next plain number at the end.
-
-Longer-horizon, abstract work lives in `todo.md` and is decomposed into steps here
-when it is ready to run. New ideas go at the bottom, never silently into whatever
-is being worked on.
-
-**Three-cron playbook.** Extensive work runs under three session-local crons —
-work-loop `:03`, auto-flush `:15`, status-report `:42`. A fresh session starts
-them; a mid-session queue re-fill kills them first and the pinned tail restarts
-them.
-
----
-
 ## THIS IS THE `name-development` BRANCH — Emma, 2026-08-18
 
 **This checkout is not the one doing the Geni exports.** Emma split the work after the
