@@ -42,6 +42,8 @@ Jonsson`, `Hans Thon`, `Александр Синайский`) and need no corr
 Created as the father of **Birgitte Johanne Balchen (Foss)** (1867–). Her birth
 surname is **Foss**; Balchen is her husband's. Her father is a Foss.
 
+* <https://www.geni.com/people/x/6000000227324494828>
+
 The dialog heading Geni shows when you click "Add father" is
 `Add father of Birgitte Johanne Balchen` — it drops the parenthesised birth
 surname that the tree node itself displays. So the automatic surname derivation,
