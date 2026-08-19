@@ -1,8 +1,3 @@
-## NEXT THREE, IN THIS ORDER — Emma, 2026-08-18
-
-She picked these from a question and said: *"Add all these to the queue at the beginning
-in the order provided."* So this is the running order, not a menu.
-
 ## THIS IS THE `name-development` BRANCH — Emma, 2026-08-18
 
 **This checkout is not the one doing the Geni exports.** Emma split the work after the
@@ -34,24 +29,6 @@ reconciliation, not a fast-forward.
 *(`git push` over HTTPS returned HTTP 500 for this repo on 2026-08-18 and the branch ref
 had to be created with `gh api ... git/refs` instead. If a push fails that way again, that
 is the workaround, not a reason to stop committing.)*
-
-## NEXT ON THIS BRANCH — Emma, 2026-08-18, in order
-
-> *"After finishing this, build the synoptic tree and remove all the steps from the queue
-> after building the synoptic tree — they depend on completed exports. And replace that
-> part with an analysis thing over potential relatives of mine who are on Google Scholar
-> or arXiv."*
-
-**1 · Build the synoptic tree.**
-
-**2 · Delete every queue step that comes after it and depends on completed exports.**
-That is the point of the branch split: the exports are the other session's job, so a step
-here that waits on one is a step that will never run here. Delete it, do not park it —
-`main` still carries it for the export session, and this branch is merged back later.
-
-**3 · Replace that part with the living-relatives analysis below.**
-
----
 
 ## ⛔ TOP PRIORITY — the export slowness. NOTHING ELSE RUNS — Emma, 2026-08-18
 
