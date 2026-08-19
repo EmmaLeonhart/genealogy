@@ -8,6 +8,7 @@
 * attempt 5 sparse region exports, if the sparse region exports work well then go or it very well
 * clear the [[Fucking bizarre cruddy AI generated shit that probably violates the rules]] section to make stuff clear with it
 * then merge the other branch into here (our queue takes priority generally it is much smaller)
+* Then clarify the queue to only have proper real tasks in it since it has been being abused a lot quite recently
 * Then continue off with the other stuff
 
 
