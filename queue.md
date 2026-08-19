@@ -236,12 +236,12 @@ to be attempted.
 
 ### Standing
 
-    zh   2,629   compose per character, gated on being a Mandarin syllable
+    zh   4,785   compose per character, gated on being a Mandarin syllable
     ja     184   whole-name items ONLY -- kanji do not compose
     ko       0   suppressed
 
-Out of **36,625** Han-only records. **19,170 still have no culture**, and 11,562 Japanese
-have no whole-name item. A real result and a small one.
+Out of **36,625** Han-only records, with **22,296 cultures settled**. **14,329 still have
+no culture** and 11,604 Japanese have no whole-name item.
 
 ### Culture: place, then graph traversal, then the 子 ending
 
@@ -250,10 +250,19 @@ graph traversal."* It characterises the export and not the person; a Korean-root
 full of Chinese ancestors, and it had tagged the Tang Empire Korean. Korean romanisations
 fell **931 → 30** the moment it was removed.
 
-137 settled by a listed place, **17,164 by traversal**, and **179 reassigned to Japanese
-by the `子` ending** — 和子, 貴子, 頼子 are Kazuko, Takako, Yoriko, Japanese women the
-traversal reached from the Korean side. That ending is on the *name*, so it is evidence
-the graph cannot supply.
+**Evidence carried by the NAME outranks the graph**, and adding it took cultures from
+17,455 to 22,296:
+
+| evidence | people |
+| --- | ---: |
+| a listed place | 137 |
+| **a Chinese clan seat — a 郡望 is a commandery of the Chinese empire** | **4,821** |
+| a Japanese given-name ending — `子` `郎` `助` `丸` `衛門` `兵衛` `之丞` | 221 |
+| graph traversal | 17,164 |
+
+The seat was being computed to *strip* it and was not being used as evidence, which is
+why so many records had no culture. A neighbour tells you where a family was reached
+from; a name tells you what it is.
 
 ### What is left, and the one that is genuinely hard
 

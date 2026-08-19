@@ -9675,3 +9675,41 @@ next person does not rebuild the same check.
 This work has been running from chat for several ticks and was not in `queue.md` —
 the one rule the file states about itself. Written in now, with its real numbers rather
 than its intention.
+
+## 2026-08-19 — the clan seat was evidence all along
+
+The culture gap was the top item. **14,329 records still have none, down from 19,170**,
+and cultures settled went **17,455 → 22,296** of 36,625. Chinese romanisations
+**2,629 → 4,785**.
+
+### The signal was already computed and thrown away
+
+`SEATS` — the 66 four-character 郡望 like `隴西狄道` and `琅邪臨沂` — was being computed
+for one purpose only: to strip the seat off a name before romanising it. **A 郡望 is a
+commandery and county of the Chinese empire.** Carrying one is not a hint about culture,
+it *is* the culture, and 8,315 records carry one.
+
+It settled **4,821** that had no culture from any other source.
+
+**The lesson is not about Chinese genealogy.** A value computed for one purpose was
+sitting one line away from answering a different question, and the gap persisted for
+several ticks because I was looking for a *new* signal rather than at what was already
+in the function.
+
+### Evidence on the name outranks evidence from the graph
+
+    a listed place                        137
+    a Chinese clan seat                 4,821
+    a Japanese given-name ending          221
+    graph traversal                    17,164
+
+The `子` rule generalised: `郎`, `助`, `丸`, `衛門`, `兵衛` and `之丞` are the same
+signal and add 186 beyond `子`'s 816. **A neighbour tells you where a family was reached
+from. A name tells you what it is** — which is why these override a traversal verdict
+rather than voting alongside it.
+
+### Quality held
+
+3,700 rows are settled by a seat and spot-checking finds them right: 貞 `Zhen`, 尚
+`Shang`, 峻 `Jun`, 超宗 `Chao Zong`, and 靈運 `Ling Yun` — Xie Lingyun, the poet, under
+his clan's seat at 陳郡陽夏. **Japanese readings leaking into Chinese: still 0.**

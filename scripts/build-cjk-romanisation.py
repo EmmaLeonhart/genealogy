@@ -163,6 +163,17 @@ def main() -> int:
                 need[r["geni_id"]] = cjk
     print(f"people with a CJK name and no Latin label: {len(need):,}")
 
+    # The clan seats are needed as CULTURE evidence below, so they are computed here
+    # rather than just before stripping. A trailing 4-character token repeated 20+ times
+    # across a lineage is a 郡望 -- see reports/cjk-name-structure.md.
+    _tails = collections.Counter()
+    for _g, _c in need.items():
+        _t = [p for p in _c.split() if HAN_TOKEN.fullmatch(p)]
+        if _t:
+            _tails[_t[-1]] += 1
+    SEATS_EARLY = {t for t, n in _tails.items() if len(t) == 4 and n >= 20}
+    print(f"clan seats identified: {len(SEATS_EARLY)}")
+
     # ---- culture evidence 1: birth place ------------------------------------
     culture = {}
     why = {}
@@ -257,20 +268,38 @@ def main() -> int:
             frontier = nxt
             if not frontier:
                 break
-    # **`-子` is a Japanese signal the traversal does not have.** 和子, 貴子 and 頼子 are
-    # Kazuko, Takako and Yoriko, and all three were filed Korean by their neighbours --
-    # a Japanese family inside a tree the traversal reached from the Korean side. The
-    # ending is on the NAME, so it is evidence the graph cannot supply, and it overrides
-    # a traversal verdict rather than merely breaking a tie.
-    overridden = 0
+    # ---- culture evidence 2: the NAME's own form ----------------------------
+    # Evidence carried by the name itself, which outranks the graph: a neighbour tells
+    # you where a family was reached from, a name tells you what it is.
+    #
+    # **A 郡望 is Chinese, full stop.** The clan seat is a commandery-and-county of the
+    # Chinese empire, and 8,315 Han-only records carry one. It was already being computed
+    # to strip it and was not being used as evidence, which is the whole reason so many
+    # records had no culture.
+    #
+    # **The Japanese given-name endings.** `-子` is the big one at 816 -- 和子, 貴子 and
+    # 頼子 are Kazuko, Takako and Yoriko, filed Korean by the traversal because a Japanese
+    # family reached from the Korean side has Korean neighbours. `-郎`, `-助`, `-丸`,
+    # `-衛門`, `-兵衛` and `-之丞` are the same signal and add 186 more.
+    JP_ENDINGS = ("子", "郎", "助", "丸", "衛門", "兵衛", "之丞")
+    by_seat = by_ending = 0
     for g, cjk in need.items():
         toks = [p for p in cjk.split() if HAN_TOKEN.fullmatch(p)]
-        first = toks[0] if toks else ""
-        if len(first) >= 2 and first.endswith("子") and culture.get(g) != "ja":
+        if not toks:
+            continue
+        first, last = toks[0], toks[-1]
+        if len(first) >= 2 and first.endswith(JP_ENDINGS):
+            if culture.get(g) != "ja":
+                by_ending += 1
             culture[g] = "ja"
-            why[g] = "name ends in 子, a Japanese given-name ending"
-            overridden += 1
-    print(f"  reassigned to ja by the 子 ending: {overridden:,}")
+            why[g] = f"name ends in {first[-1]}, a Japanese given-name ending"
+        elif last in SEATS_EARLY:
+            if culture.get(g) != "zh":
+                by_seat += 1
+            culture[g] = "zh"
+            why[g] = f"carries the clan seat {last}, which is Chinese"
+    print(f"  settled by a Chinese clan seat: {by_seat:,}")
+    print(f"  settled by a Japanese name ending: {by_ending:,}")
     print(f"  settled by graph traversal: {settled_by_neighbour:,}")
     print(f"  culture settled for {len(culture):,} of {len(need):,}")
 
@@ -340,13 +369,7 @@ def main() -> int:
     # and county a clan claims -- 隴西狄道 appears 1,253 times. It is a PLACE and belongs
     # to nobody in particular, and romanising it produced "Chen Koori Yang Xia" glued to
     # a person's name. See reports/cjk-name-structure.md.
-    tails = collections.Counter()
-    for g, cjk in need.items():
-        parts = [p for p in cjk.split() if HAN_TOKEN.fullmatch(p)]
-        if parts:
-            tails[parts[-1]] += 1
-    SEATS = {t for t, n in tails.items() if len(t) == 4 and n >= 20}
-    print(f"clan seats identified (4 chars, seen 20+ times): {len(SEATS)}")
+    SEATS = SEATS_EARLY
 
     # ---- romanise -----------------------------------------------------------
     rows = []
