@@ -111,3 +111,37 @@ loses seven people; the saved page keeps them.
     PYTHONPATH=src python scripts/build-scrape-targets.py   # who to save
     PYTHONPATH=src python scripts/next-scrape-batch.py 20   # next N, skipping saved
     bash scripts/sweep-scraped-pages.sh                     # file what landed
+
+## Wait for `#family_profile_module` before saving, or the page comes back short
+
+**Found 2026-08-19, restarting the loop after a session crash.** Saving the moment
+`navigate` returns writes a page of about **98 KB with no immediate-family block at all**
+— the same profile saved a second later is **150 KB and complete**. Nothing errors; the
+file lands, sweeps, and looks like every other saved page until something tries to read
+relatives off it and finds none.
+
+So the in-page script polls for `#family_profile_module` before it builds the Blob, and
+reports whether it found one:
+
+    const t0=Date.now();
+    while(!document.querySelector('#family_profile_module') && Date.now()-t0<15000){
+      await new Promise(r=>setTimeout(r,500));
+    }
+
+It resolves in about a second in practice. **Save regardless of the outcome** and record
+it: a page that times out is usually not a slow page but a **private** one, and those must
+still be written so `scripts/next-scrape-batch.py` stops offering the ID. All twelve saved
+pages with no family module are Geni's *"This profile is private"* page —
+`reports/scrape-private-profiles.txt` lists them.
+
+## The tab group dies with its last tab, so make a fresh group per person
+
+Chrome's one-automatic-download-per-tab rule is above; the wrinkle is that closing the
+group's last tab auto-removes the **group**, and `tabs_create_mcp` then fails. Creating
+the next tab *before* closing the current one does not reliably survive it either. What
+works, one person at a time:
+
+    tabs_context_mcp {createIfEmpty: true}        -> a fresh tab in a fresh group
+    browser_batch [navigate, javascript_tool, tabs_close_mcp]
+
+Two calls per person, no tabs left behind.
