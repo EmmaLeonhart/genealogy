@@ -67,13 +67,13 @@ POPE = re.compile(r"\bpope\b", re.I)
 #: definition, where 16+ gave 68 and she called 68 *"too much... like seven hours."* Her
 #: latest instruction wins, and the tighter set (22 / 16, 39 paths) is one edit away if
 #: the clock turns out to be the real constraint.
-LONG = 14
+LONG = 22
 
 #: **Every pope, at any length** — *"the popes just do all of them."* Same for the weird
 #: tier. The Nordic floor is that population's OWN upper quintile: the 80th percentile of
 #: the 127 Nordic paths in the export band is **12**, which is lower than the all-paths
 #: quintile because Nordic paths are shorter (mean 8.6, median 8, max 21).
-NORDIC_FLOOR = 12
+NORDIC_FLOOR = 16
 
 #: Her three confirmed "weird and far out there" groups, by destination name. This list
 #: is deliberately explicit rather than heuristic --- weirdness is a judgement she made,
