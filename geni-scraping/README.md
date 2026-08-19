@@ -129,10 +129,15 @@ reports whether it found one:
     }
 
 It resolves in about a second in practice. **Save regardless of the outcome** and record
-it: a page that times out is usually not a slow page but a **private** one, and those must
-still be written so `scripts/next-scrape-batch.py` stops offering the ID. All twelve saved
-pages with no family module are Geni's *"This profile is private"* page —
-`reports/scrape-private-profiles.txt` lists them.
+it: a page that times out is usually not a slow page but a **private** one.
+
+**A private profile is saved like any other — it is NOT a skip.** Emma, 2026-08-19:
+*"you're supposed to save the private profiles. The private profiles have very useful
+information on them even if they're private."* And she is right on the measurement: every
+one of the 22 such pages carries **5 to 23 `data-profile-id` anchors**. This file said
+they had nothing to harvest, which was inference rather than a count, and was wrong.
+`ok:false` marks *which shape of page it is*, never whether to keep it.
+`reports/scrape-private-profiles.txt` lists them with their anchor counts.
 
 ## The tab group dies with its last tab, so make a fresh group per person
 

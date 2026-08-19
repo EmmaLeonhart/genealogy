@@ -1,27 +1,37 @@
-# Saved Geni pages that carry no #family_profile_module.
-# Every one is Geni's "This profile is private" page. They are kept so the ID
-# counts as done and is not offered again by scripts/next-scrape-batch.py;
-# there are no relatives on them to harvest.
+# Saved Geni pages whose profile module Geni renders as "This profile is private".
+#
+# THESE PAGES ARE SAVED AND KEPT LIKE ANY OTHER. A private profile is still
+# informative -- Emma, 2026-08-19: "you're supposed to save the private profiles.
+# The private profiles have very useful information on them even if they're private."
+# Every one of them carries profile-id anchors (5 to 23, measured below), so there
+# IS material here; do not treat this list as a skip list.
+#
+# The list exists only so the shape is findable: these are the pages where
+# #family_profile_module is absent, which is why the in-page save script reports
+# ok:false on them. That is the marker, not a failure and not an exclusion.
+#
 # Regenerate: for f in geni-scraping/*.html; do grep -q family_profile_module "$f" || echo "$f"; done
-2023653
-2078870
-4195948006000122911
-4362986
-6000000003686206816
-6000000005547456001
-6000000007188279318
-6000000007335375262
-6000000007587529657
-6000000007587872256
-6000000009875660232
-6000000012493923485
-6000000043648586698
-6000000068333150865
-6000000112538374159
-6000000112539042138
-6000000112539370000
-6000000112539941956
-6000000112540048870
-6000000112540181834
-6000000184266592868
-6000000184266734830
+#
+# id                    profile-id anchors
+2023653                13
+2078870                23
+4195948006000122911    12
+4362986                11
+6000000003686206816    21
+6000000005547456001    20
+6000000007188279318    7
+6000000007335375262    11
+6000000007587529657    13
+6000000007587872256    18
+6000000009875660232    9
+6000000012493923485    13
+6000000043648586698    7
+6000000068333150865    8
+6000000112538374159    5
+6000000112539042138    5
+6000000112539370000    5
+6000000112539941956    5
+6000000112540048870    7
+6000000112540181834    6
+6000000184266592868    9
+6000000184266734830    14
