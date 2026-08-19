@@ -1378,6 +1378,26 @@ Uhh the AI generated explanations are kinda bad and do not fully explain what is
 
 Initial edits clear out the paths from Arne Garborg to Charlemagne 
 
+Each day add an additional hop to Arne's relatives for up to 4 people
+
+Then once that expansion is finished we drop it and are more adding people in the gradual way.
+
+the first common ancestor of us is https://www.geni.com/people/Rasmus-Ingebretsen-Grude/6000000003492045766?through=6000000003492005116 and Bergitte is the bigger target one.
+
+The idea is we establish the quick marriage link of 
+
+Arne Garborg is your great grandfather's wife's first cousin once removed.
+You → Richard Wade Borsheim (your father) → Randolph Paulus Borsheim (his father) → Reinhert Borsheim (his father) → Selma Pedersdtr. Borsheim (his wife) → Peder Tollakson Raugstad (her father) → Marta Kristine Jonsdatter Raustad (his mother) → Ane Oline Jonsdatter Raugstad (her sister) → Arne Garborg (her son)
+
+first
+
+and are working towards the earliest blood link of
+
+Arne Garborg is your fourth cousin five times removed.
+You → Richard Wade Borsheim (your father) → Randolph Paulus Borsheim (his father) → Reinhert Borsheim (his father) → Rakel Rasmusdottir Borsheim (his mother) → Rasmus Wibye Andersson Lea (her father) → Ragnhild Jonsdatter Lea (his mother) → Jon Larsson Sveinsvoll (her father) → Lars Jonson Sveinsvoll (his father) → Lisbeth Rasmusdatter Sveinsvoll (his mother) → Rasmus Ingebretsen Grude (her father) → Jon Rasmusson Grude (his son) → Per Jonson Øksnevad (his son) → Stine Persdatter Øksnevad (his daughter) → Eivind Aadnesson Garborg (her son) → Arne Garborg (his son)
+
+and the common lineage of Bergitte is there too
+
 ### AI explanation of this task
 
 **Emma, 2026-08-18. Do this BEFORE the synoptic tree is built. Not an investigation
