@@ -236,6 +236,15 @@ def leads_with_a_marker(text: str) -> bool:
     return head in NARROW_MARKERS | WORDS_MEANING_UNKNOWN | SINGLE_LETTER_MARKERS
 
 
+#: Quote characters a label may be wrapped in. Stripped before matching, because a
+#: marker in quotation marks is still a marker: `"unknown"` and `"unbekannt"` were both
+#: reading as names, 4 records, found 2026-08-18 while checking Emma's instruction that
+#: `unbekannt` be treated as an NN substitute — it already was, and the quoting was what
+#: defeated it. Straight and typographic, single and double, plus the European guillemets
+#: and the German low-9 forms, since the corpus is Norwegian, German and Swedish.
+SURROUNDING_QUOTES = "\"“”‘’«»„‚'"
+
+
 def is_marker_label(label: str) -> bool:
     """Whether this string is a marker rather than a name, for LABEL emission.
 
@@ -264,7 +273,7 @@ def is_marker_label(label: str) -> bool:
     `. Weill` and `Nechama (?) Heller` are left alone. Punctuation is a marker only
     as the whole label, which is the first test's business.
     """
-    low = (label or "").strip().lower()
+    low = (label or "").strip().strip(SURROUNDING_QUOTES).strip().lower()
     if not low or is_placeholder_form(low):
         return True
     if "private" in low:

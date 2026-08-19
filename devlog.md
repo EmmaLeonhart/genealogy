@@ -9465,3 +9465,63 @@ per person from provenance *and* neighbours is the next step and it is not this 
 
 Also corrected: the queue said **806** Han-only people, which is the structural-placeholder
 subset. The corpus-wide figure is **41,543**.
+
+## 2026-08-18 — the CJK romanisation: the culture works, the readings do not
+
+Emma: *"I am convinced we can actually do the romanization of the CJK pretty decently…
+Chinese and Korean readings are all very straightforward."* Attempted properly.
+`scripts/build-cjk-romanisation.py`. **The culture half works. The reading half does
+not, and the output is not usable yet.**
+
+### The culture half, which is hers and is right
+
+Her order of evidence, all three built:
+
+1. **A listed place.** *"If there's any listed place of birth, then you know which one
+   it is."*
+2. **Export provenance**, built earlier today.
+3. **Graph traversal.** *"BFS from the individual until you find one of known family
+   people and assume nationality from it."* Walks outward, nearest evidence wins, 70%
+   agreement required, 6 hops max — and a relative's *place* counts, not only their
+   script, which is why `place_culture` is kept for everyone rather than for the
+   Han-only set.
+
+**Culture settled for roughly 29,000 of 41,543.** That part I would stand behind.
+
+### The reading half, and why the output is wrong
+
+No `pypinyin`, no `hanja`, no `pykakasi`, and her standing rule forbids programmatic
+transliteration anyway. So readings are read off Wikidata name items carrying both a
+Han label and a Latin one — a *published* reading rather than a guess. Filtering those
+by `P31` gave 494 Chinese characters, 6 Korean and **zero** Japanese; filtering by the
+label set instead gave far more, and 1,934 people romanised.
+
+**They are not right.** Three failures, all visible in the output:
+
+    大唐帝國 謝氏  ->  Da Tang Di Guo Xie Shi     tagged ko
+    貞 元正 陳郡陽夏 ->  Zhen Yuan Tadashi Chen Koori Yang Xia
+    彭城武原      ->  Peng Shiro Wu Yuan
+
+1. **Chinese records tagged Korean.** 大唐帝國 is the *Tang Empire*. Export provenance
+   put it in `ko` because the export is Korean-rooted, and a Korean-rooted tree is full
+   of Chinese ancestors. **The signal characterises the export, not the person.**
+2. **Readings leaking across cultures — 98 rows.** `Tadashi` and `Koori` are Japanese
+   readings inside rows tagged Korean, because the source items themselves carry an
+   English label that is a Japanese reading. Per-culture tables do not help if the
+   items are not per-culture.
+3. **Place and clan names romanised as personal names.** 陳郡陽夏 is Chenjun Yangxia, a
+   *place*. 602 rows are two characters and 472 are four; the long ones are mostly
+   name-plus-origin strings, and nothing here separates the two.
+
+**Only the 254 single-character rows are worth anything**, and even those include
+`11 謝`.
+
+### What I am not doing
+
+**Shipping 1,934 romanisations.** They would go into labels, and a wrong label asserts
+something false about a person while being hard to find later — the same argument
+`CLAUDE.md` makes about `Private`.
+
+What it needs: a source of readings that is genuinely per-culture, the export signal
+demoted below the personal one, and the name/origin split solved before the reading is
+attempted. The culture inference can stay as it is.
