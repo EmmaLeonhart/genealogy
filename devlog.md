@@ -9940,3 +9940,46 @@ strict; loosening it to recover three rows would begin admitting real Japanese s
 **Checks after the change:** all 85 rows with an unmistakably Japanese surname are `ja`;
 Chinese surnames run 2,602 `zh` against 3 `ja`, from 11; the reading probe is **0 wrong
 across 2,180 character-slots**.
+
+## 2026-08-19 — 松 read Choong, and the audit it forced took 65 more out of the ja table
+
+`松` coming out `Choong` had been a one-line blocker for several reports. Dumping the whole
+`ja` table with its source items explained it and found it was not one entry.
+
+`松` had exactly one candidate: `en=Choong` beside the kana `チュン` — a **Korean** reading
+transcribed into Japanese katakana, not a Japanese reading at all.
+
+| what the kana branch was contributing | characters | verdict |
+| --- | ---: | --- |
+| a **katakana** reading | 74 | wrong — 休 *Hugh*, 琼 *June*, 汗 *Khan*, 让 *Jean*, 费 *Fay*, 李 *Lee*, 卞 *Byeon*, 蔡 *Chae* |
+| a **hiragana** reading | 3 | right — 岩 Iwao, 操 Misao, 昴 Subaru |
+
+**Katakana is the script Japanese uses for foreign words**, so a katakana reading on a Han
+character marks a transcription of a foreign name. That is the same signal recorded a few
+entries ago as the reason the multi-character `zh` items are unusable; here it does the
+work rather than merely explaining. The branch now requires hiragana.
+
+A further 11 arrived through the kanji-label branch as Korean surnames — 片 *Pyeon*, 平
+*Pyeong*, 陸 *Yuk*, 葛 *Kal*, 芮 *Ye* — where Japanese reads 片 Kata and 平 Taira. They are
+excluded by the Sino-Korean check the `ko` branch already applies.
+
+ja table **497 → 432**, ja rows **242 → 217**. 25 false labels gone, and the survivors are
+right: 鶴 Tsuru, 春 Haru, 千 Sen, 栄 Sakae, 満 Mitsuru, 保 Tamotsu — women of the Oda,
+Tokugawa and Maeda houses. The reading probe is unchanged at 0 wrong across 2,180 slots.
+
+**Not fixed, and stated rather than left implicit.** The 409 characters arriving through the
+kanji-label branch still include Chinese readings — 髦 *Mao*, 影 *Ying*, 菜 *Tsai*. The
+pinyin gate cannot be mirrored here, because genuine Japanese readings *are* legal pinyin
+syllables: Chun, Tan, Yun.
+
+## 2026-08-19 — the empire case is one record, not a class (closed)
+
+`大唐帝國 謝氏` romanising as `Da Tang Di Guo` looked like the tip of a population of records
+naming institutions rather than people. It is not, and the check says so clearly: of 599
+given tokens ending in an institution word, almost all are real names. `勝家 柴田` is
+**Shibata Katsuie**, `源頼朝` is **Minamoto no Yoritomo**, `和泉式部` is **Izumi Shikibu**,
+and the 261 ending in `院` are posthumous Buddhist names — `芳春院` is Matsu's. `家`, `朝`
+and `國` are ordinary given-name characters, not institution words in the name slot.
+
+So there is no rule here. One record has an empire in its name field, which is a data edit,
+and building a rule off it would have suppressed several hundred real names.

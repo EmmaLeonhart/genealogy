@@ -73,6 +73,11 @@ HAN = re.compile(r"[㐀-鿿]")
 #: and made the "nothing but a clan seat" counter measure something else entirely.
 HAN_TOKEN = re.compile(r"[㐀-鿿]+")
 KANA = re.compile(r"[぀-ヿ]")
+#: Hiragana and katakana separately, because WHICH kana it is carries the meaning:
+#: katakana is the script Japanese uses for foreign words, so a katakana reading on a
+#: Han character marks a **transcription of a foreign name**, not a Japanese reading.
+HIRAGANA = re.compile(r"[ぁ-ゟ]")
+KATAKANA = re.compile(r"[゠-ヿ]")
 HANGUL = re.compile(r"[가-힯]")
 LATIN_NAME = re.compile(r"^[A-Z][A-Za-z\-']*$")
 
@@ -510,7 +515,14 @@ def main() -> int:
                             table["ko"].setdefault(han, en)
                             break
                 # Japanese: a kana label beside a Han one, same logic.
-                if en and ja and KANA.search(ja):
+                # **Hiragana, not just any kana.** Audited 2026-08-19: this branch was
+                # contributing 74 characters and essentially all of them were wrong --
+                # `休` = *Hugh*, `璼` = *June*, `汗` = *Khan*, `让` = *Jean*, `费` = *Fay*,
+                # `李` = *Lee*, and `松` = *Choong* with the kana `チュン`. Those are
+                # foreign and Korean names transcribed into Han characters, and the
+                # katakana is what says so. The hiragana entries were 3, and all 3 are
+                # right: `岩` Iwao, `操` Misao, `昂` Subaru.
+                if en and ja and HIRAGANA.search(ja) and not KATAKANA.search(ja):
                     for han in (L.get("ja_kanji"), zh):
                         if han and HAN.fullmatch(han):
                             table["ja"].setdefault(han, en)
@@ -534,7 +546,12 @@ def main() -> int:
                 # readings are not straightforward."* Choosing one is not a better guess,
                 # it is a different person's name, which is the rule this file already
                 # follows for composition and which applies unchanged here.
-                elif en and ja and HAN.fullmatch(ja) and not zh:
+                # A Korean item may not fill the Japanese table. `片` reads *Pyeon* and
+                # `平` *Pyeong* beside a hangul label -- Korean surnames, where Japanese
+                # reads them Kata and Taira. 11 characters, caught by the check the `ko`
+                # branch above already uses.
+                elif (en and ja and HAN.fullmatch(ja) and not zh
+                      and not (ko and HANGUL.search(ko) and is_sino_korean_syllable(en))):
                     table["ja"].setdefault(ja, en)
                 # **A Japanese name item usually also carries a `zh` label of the same
                 # character**, so taking every Han `zh` label put Japanese readings in the

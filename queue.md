@@ -238,7 +238,7 @@ to be attempted.
 ### Standing
 
     zh  11,851   compose per character, gated on being a Mandarin syllable
-    ja     242   whole-name items ONLY -- kanji do not compose
+    ja     217   whole-name items ONLY -- kanji do not compose
     ko       0   suppressed
 
 Out of **36,625** Han-only records, with **34,227 cultures settled**. **2,398 still have
@@ -309,8 +309,8 @@ elements that sit after the woman's **own** name, where `室` and `妻` sit afte
 **husband's**. 52 `皇女`, 12 `郎女`, 2 `采女` and all 76 `娘` are kept as names.
 
 **Still open, and not a marker question:** `大唐帝國 謝氏` romanises as `Da Tang Di Guo`.
-The Tang Empire is not a person, and no rule about names will fix a record that is an
-empire.
+The Tang Empire is not a person — and it is **one record**, not a class; see the closed
+finding below. Repairing it is a data edit, not a rule.
 
 ### Culture: the script facts, then the name, then the place, then the graph
 
@@ -399,9 +399,36 @@ from; a name tells you what it is.
   being discarded wholesale.** Recovering it added **627 characters** to the table and took
   zh romanised **4,865 → 6,757**. Re-probed against 33 characters whose Mandarin reading is
   not in dispute: **0 of 1,165 character-slots wrong**, from 25 of 858.
-- **The `ja` table has the same problem and worse: `松` reads `Choong`.** That is neither
-  Japanese (*Matsu*) nor plausible — 嶺松院 came out `Choong`. The `ja` rows are already
-  flagged as the ones to distrust, and this is why.
+- **`松` read `Choong` — FIXED, and the audit it forced found 65 more.** The whole `ja`
+  table was dumped with its source items. `松` had exactly one candidate: `en=Choong` with
+  the kana `チュン` — a **Korean** reading transcribed into Japanese katakana, not a
+  Japanese reading at all. It was not alone.
+
+  | what the branch was contributing | characters | verdict |
+  | --- | ---: | --- |
+  | a **katakana** reading | 74 | wrong — `休` *Hugh*, `璼` *June*, `汗` *Khan*, `让` *Jean*, `费` *Fay*, `李` *Lee*, `卒` *Byeon*, `蔡` *Chae* |
+  | a **hiragana** reading | 3 | right — `岩` Iwao, `操` Misao, `昂` Subaru |
+
+  **Katakana is the script Japanese uses for foreign words**, so a katakana reading on a Han
+  character marks a *transcription of a foreign name*. The same signal that explains why the
+  multi-character `zh` items are unusable, now doing work. A further 11 came in through the
+  kanji-label branch as Korean surnames — `片` *Pyeon*, `平` *Pyeong*, `陸` *Yuk*, `葛` *Kal*
+  — where Japanese reads `片` Kata and `平` Taira; those are excluded by the Sino-Korean
+  check the `ko` branch already uses.
+
+  ja table **497 → 432**, ja rows **242 → 217**: 25 false labels gone, and the ones left are
+  right — `鶴` Tsuru, `春` Haru, `千` Sen, `栄` Sakae, `満` Mitsuru.
+
+  **Not fixed, and stated:** the 409 characters arriving through the kanji-label branch still
+  include Chinese readings — `髰` *Mao*, `影` *Ying*, `菜` *Tsai*. The pinyin gate cannot be
+  mirrored here because real Japanese readings *are* legal pinyin syllables (Chun, Tan, Yun).
+
+**The empire case was one record, not a class — CLOSED.** `大唐帝國 謝氏` looked like the tip
+of a population of records naming institutions rather than people. It is not. Of 599 given
+tokens ending in an institution word, almost all are real names: `勝家 柴田` is **Shibata
+Katsuie**, `源頼朝` is **Minamoto no Yoritomo**, `和泉式部` is **Izumi Shikibu**, and the 261
+ending in `院` are posthumous Buddhist names — `芳春院` is Matsu's. `家`, `朝` and `國` are
+ordinary given-name characters. **One record is a defect in the data, not a rule to build.**
 
 ### Two things that look like the fix and are not
 
