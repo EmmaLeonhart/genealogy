@@ -1506,3 +1506,7 @@ scanned, 19,023 carrying an ordinal — 8,093 unambiguous Roman, 5,892 single-le
   100 edits a day chosen at random from the eligible set, service-area gate,
   Geni-IDs-as-sources de-prioritised to 5–25 a day. **Do not normalise away the bias
   toward her neighbourhood** — it is deliberate.
+
+## Fix the surnames of the tier-2 placeholders before the synoptic tree is built
+
+- Emma does the Geni edits herself; do not touch the profiles. `reports/farmname-seed-fixes.md` is the worklist -- 11 placeholders carrying `father of X` whose child has a real surname. Farm names are surnames (2026-08-18), so those were mis-tiered.
