@@ -1398,6 +1398,26 @@ You → Richard Wade Borsheim (your father) → Randolph Paulus Borsheim (his fa
 
 and the common lineage of Bergitte is there too
 
+Now to be clear with this: the path goes from Arne so getting added in the order
+
+Arne Garborg
+Ane Oline Jonsdatter Raugstad
+Marta Kristine Jonsdatter RAustad
+Peder Tollakson Raugstad
+Selma Pedersdtr Borsheim
+Reinhert Borsheim
+
+And then the common ancestry of Reinhert Borsheim going up and also adding his descendants
+
+Descendants can go in any order roughly. He has only 38
+
+
+### Other thing
+
+I want a thing that similarly does this and adds links with the Bure Kinship 
+
+
+
 ### AI explanation of this task
 
 **Emma, 2026-08-18. Do this BEFORE the synoptic tree is built. Not an investigation
