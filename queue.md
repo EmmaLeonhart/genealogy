@@ -3,7 +3,7 @@
 She picked these from a question and said: *"Add all these to the queue at the beginning
 in the order provided."* So this is the running order, not a menu.
 
-### 2 · Chase Carlin Borsheim-Black
+### 3 · Chase Carlin Borsheim-Black
 
 The strongest candidate: Emma's own pick from the two father-side Scholar profiles,
 Central Michigan University, and she published as plain **`C Borsheim`** through 2008
