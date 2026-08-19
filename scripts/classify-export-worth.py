@@ -56,22 +56,24 @@ POPE = re.compile(r"\bpope\b", re.I)
 #: 2026-08-18, and she was explicit that she is handing over an unusually large amount of
 #: discretion because she is trying to close this work off.
 #:
-#: **Twenty-two.** Sixteen was the first answer and she rejected it: it produced 68 long
-#: paths, and *"68 exports is too much, as an export takes about 10 minutes. That is like
-#: seven hours."* The binding constraint is her clock, not the statistics.
+#: **The upper quintile**, her final instruction: *"run it on the upper quintile of
+#: Nordic people, the upper quintile of all people, and on the weird people, and everybody
+#: else gets the abbreviated page saving version."*
 #:
-#: The Nordic measurement she asked for is what settles it. Nordic paths in the export
-#: band: **mean 8.6 missing, median 8, max 21** — the entire Nordic distribution sits
-#: below 16, so "long path" and "Nordic path" were never the same population and a
-#: threshold tuned to Nordic lengths would have swept in hundreds. 22 puts the long-path
-#: gate above every Nordic path, which is the right shape: Nordic paths qualify on
-#: significance, not on length.
-LONG = 22
+#: The 80th percentile of the 451 paths still holding 4+ missing people is **14**.
+#:
+#: **This is larger than the number she rejected an hour earlier**, and that was pointed
+#: out to her rather than quietly reconciled: a quintile of 451 is about 90 paths by
+#: definition, where 16+ gave 68 and she called 68 *"too much... like seven hours."* Her
+#: latest instruction wins, and the tighter set (22 / 16, 39 paths) is one edit away if
+#: the clock turns out to be the real constraint.
+LONG = 14
 
-#: **Every pope, at any length** — her instruction: *"the popes just do all of them."*
-#: Same for the weird tier, which is only three. Nordic needs 16: there are 127 Nordic
-#: paths and the floor is what keeps the total at a size she can actually work through.
-NORDIC_FLOOR = 16
+#: **Every pope, at any length** — *"the popes just do all of them."* Same for the weird
+#: tier. The Nordic floor is that population's OWN upper quintile: the 80th percentile of
+#: the 127 Nordic paths in the export band is **12**, which is lower than the all-paths
+#: quintile because Nordic paths are shorter (mean 8.6, median 8, max 21).
+NORDIC_FLOOR = 12
 
 #: Her three confirmed "weird and far out there" groups, by destination name. This list
 #: is deliberately explicit rather than heuristic --- weirdness is a judgement she made,
