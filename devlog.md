@@ -10528,3 +10528,32 @@ name, forming 1,036 shared fathers, so the merge she guessed would not exist acc
 
 Still to do: emit the creation batch — one item per `father_group`, no `P2600`, sourced to
 the bearer's Geni profile. Nothing runs before 1 September.
+
+## 2026-08-19 — the patronymic fathers emitted: 9,158 creations, 21,303 edit objects
+
+`scripts/build-patronymic-father-batch.py` → `reports/wikidata-patronymic-fathers.json`.
+**Nothing runs; the 1 September rule stands.**
+
+    9,158  create_individual   (1,036 of them shared by siblings)
+   12,145  add_relationship    P22 on each bearer -> his created father
+   21,303  edit objects
+
+**These are the first creations in this repo with no `P2600` of their own.** Every other
+created item is a Geni profile getting a Wikidata item; these men have no Geni profile at
+all — they exist because the patronymic attests them. So `subject.geni_id` is null, no
+`P2600` statement is emitted, and the Geni ID appears **only as the reference** on every
+statement, pointing at the child. That is exactly Emma's ruling of 2026-08-19: *reference
+the bearer's profile*.
+
+Four invariants checked on the emitted file rather than asserted: no creation carries a
+subject Geni ID, no creation carries a `P2600` statement, every creation's statements are
+referenced to a child's profile, and every `P22` link requires a father that the same batch
+creates.
+
+A shared father records **every** attesting child in `attested_by`, not just the one used as
+the reference, so the edit says which profiles the claim rests on instead of silently
+picking one.
+
+The name is the modal given name of the confirmed fathers of that token — `Olsen` implies
+*Ole* because 1,809 real `Olsen` fathers are called Ole. Bearers whose token has no
+confirmed father anywhere (6,373) get no item, because there would be nothing to call him.

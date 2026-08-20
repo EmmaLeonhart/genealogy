@@ -396,32 +396,14 @@ population her fallback algorithm would prioritise.
 
 ---
 
-## Create the fathers the patronymics imply — Emma's item, now unblocked
+## Create the fathers the patronymics imply — BUILT, waiting on 1 September
 
-**Both blockers are ruled, 2026-08-19.** Sourcing: *"reference the bearer's profile"* — each
-created father cites the Geni profile of the child whose patronymic attests him. Unit:
-*"If you don't know the people are siblings you create one per individual."*
+`reports/wikidata-patronymic-fathers.json` — **9,158 fathers** (1,036 shared by siblings)
+and **12,145** `P22` links, 21,303 edit objects. Nothing to do until the edit window opens.
 
-**Her exception, and it does fire:** *"In the event of two people being linked, having the
-same patronym, and being linked, that's a thing that's worth giving them the same father."*
-**124 mothers, 404 people** — one mother has eleven children all `Halvorsen`/`Halvorsdatter`.
-Where the implied names differ under one mother, do **not** merge: one mother's children
-imply `Jon` **and** `Ols`, which is two men.
-
-**The name comes off real fathers, never off the string.** Use
-`reports/patronymic-classification.csv`, which already decides what is a patronymic from the
-father's own name — 21,242 rows are `patronymic (inferred, no father recorded)`. For each
-token the modal confirmed father is the name: `Olsen` → **Ole** (1,809 real fathers),
-`Olsson` → **Olof**. A version that stripped the suffix produced a father called `Ols`.
-
-**DONE 2026-08-19** — rebuilt on the classification. **18,518** bearers need a father,
-**12,145** can be named from confirmed fathers, 6,373 have no confirmed father for their
-token and get no name. **9,158 fathers to create**, after 4,023 people merge into 1,036
-shared fathers under her same-mother rule. Commonest: Ole 900, Peder 593, Lars 499,
-Anders 463. `reports/patronymic-fathers.{md,csv}`.
-
-**TO DO:** emit the creation batch from that CSV — one item per `father_group`, `P2600`
-absent, sourced to the bearer's Geni profile. Nothing runs before 1 September.
+**The first creations here with no `P2600` of their own**: these people have no Geni profile
+at all, so the Geni ID appears only as the *reference* on every statement, pointing at the
+child whose patronymic attests him — Emma's ruling, 2026-08-19.
 
 ## Daily jobs — queued because a cron only fires while the session is idle
 
