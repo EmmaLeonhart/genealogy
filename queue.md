@@ -634,9 +634,20 @@ copying it into `mul` would assert across every language that this is what the p
 called. Her ruling of 2026-08-17 covers exactly that shape: *"And NN for mul there"*, and
 those people already get `mul: NN` from `build-placeholder-label-batch.py`.
 
-**TO DO — step 3:** `ja`, then `zh`, then the rest. This is the English→CJK direction
-(katakana for anything not already Japanese), which is the one still unbuilt. Middle
-initials follow `reports/middle-initial-wikidata-practice.md`.
+**STEP 3 PART-BUILT — `ja` where it needs no invention.**
+`scripts/build-ja-label-batch.py` → `reports/wikidata-ja-labels.json`, **41,952 edits**:
+37,405 from the name as written (Japanese uses a Han name unchanged) and 4,547 from
+Wikidata's own `ja` label.
+
+**TO DO — the hard half, 406,713 people:** English→katakana, plus 5,293 hangul-only names
+deliberately skipped (a `ja` label must not be the hangul). Emma's method is a hand-built
+table — *"hand-built tables, except CJK → English"* — and turning `Brodsky` into
+`ブロツキー` has real failure modes: syllabification, long vowels, and the fact that
+established Japanese spellings of European names are conventional rather than derivable.
+Sized, not guessed at.
+
+**Then `zh`, then the rest.** Middle initials follow
+`reports/middle-initial-wikidata-practice.md`.
 
 The existing batches are per-*population* (placeholders, `NN`, markers), not per-language
 over everybody, which is what she asked for. Middle initials follow the measured

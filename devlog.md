@@ -10652,3 +10652,18 @@ The general shape is worth keeping: **a vocabulary change is not local.** Every 
 has ever emitted a label has to be regenerated when the definition of "marker" widens, and
 the only reason that is safe is that the test globs `reports/wikidata-*.json` rather than
 checking a list somebody has to remember to extend.
+
+## 2026-08-19 — step 3: the `ja` labels that need no invention, 41,952 edits
+
+`scripts/build-ja-label-batch.py` → `reports/wikidata-ja-labels.json`. Two sources, both
+free of guesswork: **37,405** from the name as written (Japanese writes a Han name
+unchanged, so the `ja` label *is* the name) and **4,547** from Wikidata's own `ja` label —
+`カール・マルテル`, `ロロ` — which somebody wrote and which beats anything derived.
+
+**406,713 people are not reached, and that is deliberate.** 5,291 have a hangul-only name
+and a `ja` label must not be the hangul; the rest need English → katakana. Emma's method for
+that direction is a hand-built table, and a table that turns `Brodsky` into `ブロツキー`
+correctly has real failure modes — syllabification, long vowels, and the fact that
+established Japanese spellings of European names are conventional rather than derivable.
+Guessing at 400,000 names would be the largest act of invention in this repo. Sized and
+left for a deliberate build.
