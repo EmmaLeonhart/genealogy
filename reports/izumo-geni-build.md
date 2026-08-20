@@ -303,3 +303,46 @@ The helper now **sets Deceased explicitly** and, after saving, **looks for the e
 text and reports `ERR` instead of `OK`**. Everything created before this fix was
 verified by re-reading the parent's child list, which is the only trustworthy check:
 the return value of the add is not evidence.
+
+## Fifth block — the Kitajima line, 55 to 79, which did not exist at all
+
+`Sadataka Kitajima` `6000000019459854230` had **no children on Geni**. The chart runs
+a Kitajima column in parallel with Senge from generation 55 to 79 and then on to
+Daikou, and none of it was there. Checked twice before creating: by walking the tree
+from Takatoki 53 down, and by Geni name search for `Eitaka Kitajima` and
+`Hisataka Kitajima`, which returned nothing. `Takatomi Senge` returned
+`Takatomi 80 Senge`, so the search itself was working.
+
+**The headship crosses houses, so column alignment is not enough.** Kitajima no
+Masataka 60 descends from **Inaoka no Nobutaka** and Hidetaka 61 from **Takahama no
+Tomotaka**, both cadet houses; the grid puts a Kitajima box directly above each of
+them. `reports/izumo-chart-edges.md` carries the full edge list and how it was read.
+
+## How the adds are driven now — an iframe, so the save's reload lands elsewhere
+
+The 2026-08-19 method scripted the dialog on the profile page itself. That works, but
+**saving reloads the page**, which wipes the helper, so the helper had to live in
+`localStorage` and be `eval`-ed once per person - one tool call per person, and a
+person takes about a minute.
+
+The page now opens the parent's profile in a **hidden iframe** and drives the dialog
+inside it. The reload happens in the iframe; the driving page keeps its state. That
+makes the whole thing a background loop over a work list in `localStorage`, so a
+33-person chain is one call to start and one call to check.
+
+Two things this needed:
+
+- **The queue is idempotent.** Before creating, it reads the parent's child list and
+  returns the existing id if a child of that name is already there. This is not
+  tidiness: a CDP call that times out at 45 seconds has usually *succeeded* on Geni,
+  and the first attempt at Yukitaka 57 did exactly that - the timeout was reported as
+  a failure, the queue retried, and **there are now two Yukitaka 57 Kitajima**.
+- **The verification matches on first + last only.** Geni's profile slug drops the
+  middle name, so `Yoshitaka-Kitajima` is what comes back for `Yoshitaka 56
+  Kitajima`. Matching the full name reported a successful save as a failure.
+
+## Duplicate created today, for Emma to merge
+
+| person | keep | duplicate | how it happened |
+| --- | --- | --- | --- |
+| Yukitaka 57 Kitajima, son of Yoshitaka 56 | `6000000227335131944` | `6000000227335334829` | Mine, 2026-08-20. A 45-second tool timeout on a save that had actually gone through, retried. The queue now checks the parent's children first, so this shape cannot repeat. |
