@@ -10623,3 +10623,32 @@ overwritten a correct marker with a description.
 Three checks on the emitted file rather than assertions: every `mul` value equals its `en`
 value, every edit requires its own `en_label:` step, and no person whose `en` came from a
 relationship label appears in the batch at all.
+
+## 2026-08-19 — adding `某` broke two emitted batches, and I shipped it untested
+
+`e4c6a5c1` added `某` to `scripts/labels.py`'s marker vocabulary on Emma's *"Add it"*. I
+verified the predicate by hand and committed. **I did not run the test suite**: the run had
+been backgrounded, it was killed, and I moved on to the next item without noticing the
+result never came back. The hard rail says never claim a thing works without having run it,
+and "I checked the predicate" is not the same as "I ran the tests".
+
+`tests/test_edit_emitters.py::test_no_created_person_carries_a_marker_as_a_local_label`
+catches it immediately. Widening what counts as a marker means labels already written into
+emitted batches become markers retroactively:
+
+    wikidata-orderlife.json               22 edits with 某 <surname> in `en`
+    wikidata-structural-placeholders.json  1 edit with 某 <surname> in `ja`
+
+`某 姬姓` is *a certain one of the Ji clan* — a marker leading a real surname, which by the
+standing rule becomes `mul: NN 姬姓` with no local-language label. That is what the batches
+now say: `create_orderlife_only:Q57340` went from `en: 某 姬姓` to `mul: NN 姬姓`, with the
+`en` carrying the relationship instead — `son of 光 姬姓`.
+
+**The test was not touched.** Both batches were regenerated — `build-orderlife-batch.py`,
+and `walk-structural-merge.py --all`, which needs the flag or it only prints a comparison
+and silently leaves the batch stale. 58 tests pass.
+
+The general shape is worth keeping: **a vocabulary change is not local.** Every batch that
+has ever emitted a label has to be regenerated when the definition of "marker" widens, and
+the only reason that is safe is that the test globs `reports/wikidata-*.json` rather than
+checking a list somebody has to remember to extend.
