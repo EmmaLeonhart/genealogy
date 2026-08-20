@@ -160,6 +160,12 @@ WORDS_MEANING_UNKNOWN = {
                       #        by the mononym census ranking it among Anna and Lars.
     "未詳",            #     1  Japanese, "details unknown"
     "無名",            #        Japanese / Chinese, "nameless"
+    "某",              #   252  Chinese, "a certain one" -- the exact sense of `NN`.
+                      #        Emma, 2026-08-19, asked whether it belonged here
+                      #        beside 未知 and ukjent: *"Add it"*. It is the whole
+                      #        given name on 252 Han-only records and there is no
+                      #        surname 某 and no given name containing it, so it
+                      #        never collides with a real name.
 }
 
 #: Punctuation, a marker **only as the whole label** — the other half of her

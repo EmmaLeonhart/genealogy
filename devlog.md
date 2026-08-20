@@ -10397,3 +10397,41 @@ Her answer today, *"keep it in Latin"*, matches the measured `ja`/`zh` standard 
 **not** been applied to `ar`, `el` or `ru`, where the evidence and her earlier instruction
 both say otherwise. The lesson is the cheap one: search the reports for a prior ruling
 before spending a question on it.
+
+## 2026-08-19 — four more rulings, and the sibling question I had no business framing
+
+**`某` joins the shared marker vocabulary.** Emma: *"Add it."* It is now in
+`scripts/labels.py` beside `NN`, `unbekannt` and `未知`, so it drives label emission
+repo-wide rather than only the romaniser. 252 records; there is no surname `某` and no given
+name containing it, so it never collides with a real name. Checked: `is_marker_label('某')`
+is True, `'子'` is still False, and `'某 陳'` leads with a marker so the surname survives —
+the `NN Hildesheim` rule doing its job.
+
+**`reports/export-provenance.csv` deleted.** 63 MB supporting a method she killed on 08-18.
+`scripts/build-export-provenance.py` rebuilds it in one run, and it is now gitignored.
+
+**Hindi middle initials: keep the letter Latin.** Asked with the caveat that no Hindi item
+in the sample does this and it would be our own convention, she chose it anyway. `hi` now
+follows `ja`/`zh` instead of the 13%-vs-10% coin flip the evidence offered.
+
+**The patronymic fathers: one per individual, and my question deserved the pushback it
+got.** I offered "one per family cluster" as though grouping siblings were available.
+Emma: *"Uhh what the fuck do you mean creates duplicates per sibling? How do you know they
+are siblings."* I did not, and the premise made it unlikely — **these people have no
+recorded father**, so the ordinary sibling link is exactly what is missing.
+
+Measured after being asked, which is the wrong order:
+
+    3,104 of 3,855 (80.5%)   have NEITHER parent recorded
+      751                    have a recorded mother
+      404 across 124 mothers share a mother AND imply the same father name
+
+So the merge I floated would have reached **10%** of the population, and not even safely:
+one mother's children imply `Jon` **and** `Ol`, which is two men. Her ruling — *"if you
+don't know then you create one for each of these people"* — is **3,855 fathers, one per
+bearer**. Duplicates for real siblings are the accepted cost; inventing a shared father for
+two people who merely share a name is not.
+
+**Still to fix before emitting:** 193 bearers of `Olsen`/`Olsson` imply a father called
+`Ols`, where the name is `Ole`, `Ola` or `Olof`. Creating 193 items for a man called `Ols`
+is the one part of this that would be wrong on its face.

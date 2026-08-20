@@ -719,7 +719,9 @@ needs a ruling rather than a measurement. `devlog.md` has the numbers.
 
   Today's answer, *"keep it in Latin"*, matches the measured `ja`/`zh` standard and is
   **not** applied to `ar`, `el` or `ru`, where the evidence and her earlier instruction both
-  say otherwise.
+  say otherwise. **`hi` RULED 2026-08-19: keep it Latin** — asked specifically, with the note
+  that no Hindi item in the sample does this and it would be our own convention, she chose
+  it anyway. So `hi` follows `ja`/`zh` rather than the 13%/10% coin-flip in the evidence.
 
 
 ## RUN ORDER — Emma's call, 2026-08-15
@@ -1196,10 +1198,27 @@ each created father is sourced to **the Geni profile of the child whose patronym
 him** — the evidence is the name, and that profile is where the name is recorded. The
 blocker that held this item is lifted, so the creation batch can now be built.
 
-**What that means concretely, and it is the next piece of work:** one created item per
-distinct father *per family*, not per name string — 492 fathers is a count of names, and
-`Anders` implying 349 people is not one man. The unit of creation has to be worked out from
-the data before anything is emitted, and the `Ols` spelling flaw has to be fixed first.
+**RULED, Emma 2026-08-19: one father per individual.** Asked whether siblings should share
+a created father, she answered: *"If you don't know the people are siblings you create one
+per individual. I'm not sure how you will know the people are siblings though lol and if you
+don't know then you create one for each of these people."*
+
+**She is right that we mostly cannot know, and the numbers are stark.** These people have no
+recorded father — that is the premise — so the ordinary sibling link, a shared parent, is
+exactly what is missing.
+
+    3,104 of 3,855 (80.5%)  have NEITHER parent recorded
+      751                   have a recorded mother
+      404 across 124 mothers  share a mother AND imply the same father name
+
+So a sibling merge would reach **10%** of the population, and even that is not safe: one
+mother's children imply `Jon` **and** `Ol`, which is two men. **3,855 created fathers, one
+per bearer.** Duplicates for real siblings are the accepted cost; inventing a shared father
+for two people who merely share a name is not.
+
+**Before emitting: the `Ols` spelling flaw.** 193 bearers of `Olsen`/`Olsson` yield a father
+called `Ols`, where the name is `Ole`, `Ola` or `Olof`. Creating 193 items for a man called
+`Ols` is the one part of this that would be wrong on its face.
 
 ## Daily jobs — queued because a cron only fires while the session is idle
 
