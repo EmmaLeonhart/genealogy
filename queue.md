@@ -12,6 +12,28 @@
 * Then continue off with the other stuff
 
 
+## Notes
+
+I downloaded a bunch of zip files while this went on please merge them in
+
+https://www.geni.com/people/Tsusa-no-mikoto-no-Mikoto/6000000012789160423
+
+I added a bunch of stuff of the Sengei clan from this page. 
+
+https://shinto.miraheze.org/wiki/Izumo_clan
+
+We are in a situation where it appears that, to some extent, it has been added three different times by me in 2026, based off of this page, which is an AI translation of the Japanese Wikipedia article. The one person who added them in 2008 was in Japanese, and one person who added them in 2011 was in English.
+
+I am planning on fixing this stuff. I am not 100% sure what I can do here, but I am going to just point out that there's been a lot of merges here. We might want to do some level of reading about what's going on, because it's in this weird situation. Also, on Wikidata, it's in a weird situation where the Senge clan has almost nothing on geni, at least in my cursory glance. I created them as ancestors of the spouse of a princess, the spouse of Noriko Senge. I created them as ancestors going up there based off of this, but I found that Wikidata has them already connected to some level. There are also the ones that, on my wiki, ended up coming into existence because of my script as isolated people.
+
+The middle names of them that are numbers are regnal numbers for the people. They are regnal numbers for the Izumo no Kuni no Miyatsuko. 
+
+And so, these are not really middle names. They're regnal numbers, and that page has the Wikidata links. Most of the Wikidata items do exist to some extent.
+
+The job here is to go through that page and unfurl all this stuff, which I believe involves a lot of browser work. I was trying to do the browser work, but I found that whatever you're doing in the browser just doesn't work with it.
+
+I do trust you with the descriptions and the Wikidata links. I trust you with continuing the page from the Shinto wiki. I do want to clarify that there is this pair of repeated rows. I trust you less with doing the merges, but I pretty much 100% trust you with building up the family tree that is visually on here on Geni, on the page on Geni, and then adding the Wikidata things to their descriptions. 
+
 
 
 ## Fucking bizarre cruddy AI generated shit that probably violates the rules
