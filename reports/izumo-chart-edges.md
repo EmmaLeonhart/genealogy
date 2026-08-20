@@ -174,3 +174,39 @@ will then fill it confidently with whoever happens to be standing there.
 Two things stop this one recurring: a forced pair is rejected when the two names share
 no token at all, which is the name used as a **veto** and never as a chooser; and
 Naokiyo is now anchored by his real id, so the slot is not open to be filled.
+
+## Generations 20 to 40 — the spine, read 2026-08-20
+
+This stretch was the last gap in the edge list: 2-11 and 40-84 were read earlier and
+20-39 never was. It is a **thin** stretch — apart from the numbered kokuso themselves
+the chart draws no collaterals at all between 21 and 44, which is why the earlier
+by-ID walks kept reporting the region as complete.
+
+    Ihohiku 20 -> Miko 21 -> Eiya 22 -> Obitake 23 -> Hatayasu 24
+    Hatayasu 24
+      Hiroshima 25
+      Otoyama 26
+    Hiroshima 25 -> Masukata 27
+    Otoyama 26
+      Kunikami 28
+      Kuninari 29
+    Kuninari 29 -> Chikuni 31
+    Masukata 27
+      Hitonaga 30
+      Kanemutsu 32
+    Hitonaga 30 -> Tabito 33 -> Toyomochi 34 -> Tokinobu 35 -> Tsunesuke 36
+      -> Ujihiro 37 -> Harutoshi 38 -> Yoshitada 39 -> Kuniaki 40
+
+Every edge above was read zoomed in, not by column alignment.
+
+**Two naming things, recorded rather than resolved.**
+
+- **`Hatayasu 24` on the chart is `Ka'an 24` in the roster**, and both carry `Q95161958`.
+  Same person, two romanisations of the same kanji; the regnal number is the join, per
+  the rule at the top of `reports/izumo-geni-build.md`.
+- **The chart numbers Ujihiro `36` as well**, so `36` appears twice and `37` never does.
+  `reports/izumo-kokuso-roster.tsv` carries the same duplicate, taken from the same page,
+  so it is the source's own numbering rather than a misreading. Recorded here as `#37`
+  because he sits between 36 and 38 in the descent; what would settle it is the Japanese
+  Wikipedia article the page translates, or Emma. This changes no Geni edit either way —
+  the regnal number on Geni comes from the roster, not from this file.
