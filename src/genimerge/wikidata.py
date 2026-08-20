@@ -37,6 +37,7 @@ __all__ = [
     "SPARQL_ENDPOINT",
     "API_ENDPOINT",
     "USER_AGENT",
+    "require_agent",
     "WikidataClient",
     "Match",
     "match_by_geni_id",
@@ -55,6 +56,23 @@ API_ENDPOINT = "https://www.wikidata.org/w/api.php"
 CONTACT = os.environ.get("BOT_CONTACT", "").strip()
 
 USER_AGENT = CONTACT
+
+
+def require_agent() -> str:
+    """The contact address, or a clear failure naming the secret.
+
+    **Without this the failure is a mystery 403.** ``CONTACT`` is empty whenever
+    ``BOT_CONTACT`` is unset, and an empty ``User-Agent`` is exactly what Wikimedia
+    refuses -- so a checkout without the secret got a bare "HTTP Error 403" from six
+    different call sites with nothing pointing at the cause. Fail here instead, once,
+    saying what to set.
+    """
+    if not USER_AGENT:
+        raise RuntimeError(
+            "BOT_CONTACT is not set, so the User-Agent would be empty and Wikimedia "
+            "returns 403. Set BOT_CONTACT to the contact address before any fetch."
+        )
+    return USER_AGENT
 
 #: How many Geni IDs to put in one ``VALUES`` clause. Large enough that 8766 IDs
 #: is a couple of dozen queries, small enough to stay well inside the endpoint's
@@ -77,7 +95,7 @@ def _http_fetch(url: str, data: bytes | None = None, headers: dict | None = None
         url,
         data=data,
         headers={
-            "User-Agent": USER_AGENT,
+            "User-Agent": require_agent(),
             "Accept-Encoding": "gzip",
             **(headers or {}),
         },

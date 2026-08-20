@@ -144,7 +144,7 @@ def _fetch(ids: list[str], attempt: int = 1) -> dict[str, str]:
         ENDPOINT,
         data=body,
         headers={
-            "User-Agent": USER_AGENT,
+            "User-Agent": _wd.require_agent(),
             "Accept": "application/sparql-results+json",
             "Content-Type": "application/x-www-form-urlencoded",
         },
