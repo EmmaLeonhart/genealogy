@@ -1,35 +1,30 @@
-"""The fathers the patronymics imply -- a census, not a creation batch.
+"""The fathers the patronymics imply, named from the fathers we actually have.
 
-**Emma, 2026-08-15:** *"If they are patronymics I actually think I'm going to want to add
-items for the hypothetical fathers that are implied to exist from the patronymics. These
-ones would be wiki data items that do not have geni items."*
+**Emma, 2026-08-15:** *"Whether something is or is not a patronymic here is determined by
+completely offline information related to the person's father's name."* That was already
+built. `scripts/classify-patronymics.py` decides every token against the father, with her
+three ambiguity classes. **This consumes that classification; it does not redo it.**
 
-A `Pedersdatter` with no recorded father implies a father called `Peder`. This counts them
-and names them. **It emits nothing**, because the queue item states its own blocker: these
-items would carry no `P2600` Geni.com profile ID, so the usual citation is unavailable and
-what the statement is sourced to is Emma's to settle.
+An earlier version of this file re-derived everything from suffix stripping and named the
+father of an `Olsen` **`Ols`**. Emma: *"We already addressed this. Read through the
+transcripts."* She was right, and the answer was in the classification: across 2,609
+confirmed `Olsen`/`Olsson` patronymics the recorded fathers are **Ole 1,809, Ola 795,
+Olof 73, Olav 69, Oluf 17**. The name is read off real fathers, never off the string.
 
-THE STEM IS NOT WHAT STRIPPING THE SUFFIX GIVES YOU
+ONE FATHER PER PERSON, WITH THE ONE EXCEPTION SHE NAMED
 
-`Andersson` is `Anders` + `son`, not `Ander` + `sson`; `Hansen` is `Hans`; `Nilsson` is
-`Nils`; `Larsdotter` is `Lars`. The genitive `s` belongs to the father's name and merges
-when that name already ends in one, which no suffix rule can decide. Both candidates are
-generated and **the one that is an attested given name in this corpus wins** -- 106,679
-given-name tokens vote. A first version without that check produced fathers called *Ander*,
-*Han*, *Lar* and *Nil*.
+**Emma, 2026-08-19:** *"If you don't know the people are siblings you create one per
+individual."* And: *"In the event of two people being linked, having the same patronym, and
+being linked, that's a thing that's worth giving them the same father, but my guess is I
+don't think that exists."*
 
-TWO POPULATIONS, AND ONLY ONE IS A PATRONYMIC
-
-**Bare `-son` is not safe.** Split by where the bearer was born or died: `-datter`,
-`-dotter`, `-sen` and `-sson` have one or two English-speaking bearers each against hundreds
-of Nordic ones, while bare **`-son` runs 96 English-speaking against 36 Nordic**. Those are
-hereditary surnames -- **Robinson's father was not called Robin**, and `Wilson`, `Thompson`,
-`Simpson` and `Dawson` are the same shape. A live patronymic attests a father; an inherited
-surname does not. The `-son` group is counted separately and excluded.
+**It exists.** Same mother, no father, same implied name -- 124 mothers and 404 people, one
+of them with eleven children all `Halvorsen`/`Halvorsdatter`. Where the implied names differ
+under one mother they are *not* merged: one mother's children imply `Jon` **and** `Ols`.
 
     py scripts/build-patronymic-fathers.py
 
-Offline: derived-family.csv, display-names.csv. Writes reports/patronymic-fathers.{md,csv}.
+Offline. Writes reports/patronymic-fathers.{md,csv}. Emits no edit.
 """
 
 from __future__ import annotations
@@ -37,108 +32,101 @@ from __future__ import annotations
 import csv
 import io
 import sys
-from collections import Counter
+from collections import Counter, defaultdict
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
+CLASS = REPO / "reports" / "patronymic-classification.csv"
 FAMILY = REPO / "reports" / "derived-family.csv"
-NAMES = REPO / "reports" / "display-names.csv"
 OUT_MD = REPO / "reports" / "patronymic-fathers.md"
 OUT_CSV = REPO / "reports" / "patronymic-fathers.csv"
 
 csv.field_size_limit(10 ** 7)
-
-SAFE = ("sdóttir", "sdottir", "sdatter", "sdotter", "dóttir", "dottir",
-        "datter", "dotter", "sson", "sen", "zen")
-AMBIGUOUS = ("son",)
-
-
-def candidates(surname):
-    out = []
-    low = surname.lower()
-    for suf in SAFE + AMBIGUOUS:
-        if low.endswith(suf) and len(surname) > len(suf) + 1:
-            base = surname[:len(surname) - len(suf)]
-            out += [base, base + "s"]
-    return [c for c in dict.fromkeys(out) if c]
+INFERRED = "patronymic (inferred, no father recorded)"
 
 
 def main():
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
-    given = Counter()
-    surname = {}
-    with io.open(NAMES, encoding="utf-8", newline="") as fh:
+
+    named = defaultdict(Counter)
+    inferred = {}
+    with io.open(CLASS, encoding="utf-8", newline="") as fh:
         for r in csv.DictReader(fh):
-            for part in (r.get("givn") or "").split():
-                if part.isalpha():
-                    given[part] += 1
-            s = (r.get("surn") or "").strip()
-            if s:
-                surname[r["geni_id"]] = s
-    fatherless = set()
+            v = r["verdict"]
+            if v == "patronymic" and r.get("father_given"):
+                named[r["token"]][r["father_given"].split()[0]] += 1
+            elif v == INFERRED:
+                inferred.setdefault(r["geni_id"], r["token"])
+    print("tokens with confirmed fathers: %d; bearers needing one: %d"
+          % (len(named), len(inferred)))
+
+    mother = {}
     with io.open(FAMILY, encoding="utf-8", newline="") as fh:
         for r in csv.DictReader(fh):
-            if not (r.get("father") or "").strip():
-                fatherless.add(r["geni_id"])
-    print("fatherless people: %d; attested given-name tokens: %d" % (len(fatherless), len(given)))
+            if r["geni_id"] in inferred:
+                mother[r["geni_id"]] = (r.get("mother") or "").strip()
 
-    rows, unattested, ambiguous = [], Counter(), Counter()
-    for g in sorted(fatherless):
-        s = surname.get(g)
-        if not s:
+    rows, unnamed = [], Counter()
+    for g, tok in sorted(inferred.items()):
+        c = named.get(tok)
+        if not c:
+            unnamed[tok] += 1
             continue
-        low = s.lower()
-        safe = low.endswith(SAFE)
-        if not safe and not low.endswith(AMBIGUOUS):
-            continue
-        scored = sorted(((given.get(c, 0), c) for c in candidates(s)), reverse=True)
-        if not scored or scored[0][0] == 0:
-            (unattested if safe else ambiguous)[s] += 1
-            continue
-        n, stem = scored[0]
-        if safe:
-            rows.append((g, s, stem, n))
-        else:
-            ambiguous[s] += 1
+        name, n = c.most_common(1)[0]
+        rows.append([g, tok, name, n, sum(c.values()), mother.get(g, "")])
 
-    fathers = Counter(stem for _, _, stem, _ in rows)
+    groups = defaultdict(list)
+    for r in rows:
+        if r[5]:
+            groups[(r[5], r[2])].append(r[0])
+    merged = {}
+    for (m, nm), gs in groups.items():
+        if len(gs) > 1:
+            for g in gs:
+                merged[g] = "%s:%s" % (m, nm)
+    for r in rows:
+        r.append(merged.get(r[0], "own"))
+    shared = len(set(merged.values()))
+    people_merged = len(merged)
+    fathers = len(rows) - people_merged + shared
+
     with OUT_CSV.open("w", encoding="utf-8", newline="") as fh:
         w = csv.writer(fh)
-        w.writerow(["geni_id", "surname", "implied_father_given_name", "stem_attested_times"])
+        w.writerow(["geni_id", "token", "implied_father_given_name", "modal_count",
+                    "confirmed_fathers_for_token", "mother_geni_id", "father_group"])
         w.writerows(rows)
 
+    top = Counter(r[2] for r in rows)
     md = ["# The fathers the patronymics imply", "",
-          "Built by `scripts/build-patronymic-fathers.py`. **A census. It emits nothing.**",
-          "",
-          "- fatherless people with a Nordic patronymic: **%d**" % len(rows),
-          "- distinct implied fathers: **%d**" % len(fathers),
-          "- patronymic surnames whose stem is not an attested given name: **%d** (not counted)"
-          % sum(unattested.values()),
-          "- bare `-son`, counted separately and excluded: **%d**" % sum(ambiguous.values()),
-          "", "## The commonest implied fathers", "",
-          "| father | people implying him |", "| --- | ---: |"]
-    md += ["| %s | %d |" % (k, v) for k, v in fathers.most_common(30)]
-    md += ["", "## Why bare `-son` is excluded", "",
-           "Split by where the bearer was born or died, `-datter`, `-dotter`, `-sen` and "
-           "`-sson` have one or two English-speaking bearers each against hundreds of Nordic "
-           "ones. Bare **`-son` runs 96 English-speaking against 36 Nordic** -- those are "
-           "hereditary surnames. **Robinson's father was not called Robin**, and `Wilson`, "
-           "`Thompson`, `Simpson` and `Dawson` are the same shape. A live patronymic attests "
-           "a father; an inherited surname does not.", "",
-           "## Known flaw, stated rather than hidden", "",
-           "**`Olsen` and `Olsson` yield `Ols`.** The father is `Ole`, `Ola` or `Olof`, and "
-           "no suffix rule recovers the dropped vowel -- `Ols` happens to be attested, so "
-           "the given-name check passes it. Those rows are wrong about the father's "
-           "spelling while right that a father is implied.", "",
-           "## Before anything is created", "",
-           "The queue item names the blocker itself: these items would carry **no `P2600` "
-           "Geni.com profile ID**, so the citation cannot be a Geni profile and what the "
-           "statement is sourced to is **Emma's to settle**. Nothing here proposes an edit."]
+          "Built by `scripts/build-patronymic-fathers.py` on top of "
+          "`reports/patronymic-classification.csv`, which decides what is a patronymic from "
+          "the father, per Emma 2026-08-15. **It emits no edit.**", "",
+          "- bearers classified `patronymic (inferred, no father recorded)`: **%d**" % len(inferred),
+          "- of those, a name is available from confirmed fathers: **%d**" % len(rows),
+          "- token has no confirmed father anywhere, so no name: **%d**" % sum(unnamed.values()),
+          "- **fathers to create: %d**" % fathers,
+          "  (%d people merged into %d shared fathers under her same-mother rule)"
+          % (people_merged, shared), "",
+          "## The name comes from real fathers, never from the string", "",
+          "`Olsen` implies **Ole** because that is what 1,809 confirmed `Olsen` fathers are "
+          "called. An earlier version stripped the suffix and produced a father called "
+          "**`Ols`**, which is what Emma meant by *\"we already addressed this\"*.", "",
+          "| implied father | bearers |", "| --- | ---: |"]
+    md += ["| %s | %d |" % (k, v) for k, v in top.most_common(25)]
+    md += ["", "## One per person, with the exception she named", "",
+           "*\"If you don't know the people are siblings you create one per individual.\"* "
+           "The exception is a shared mother plus the same implied name, and it fires for "
+           "**%d people forming %d shared fathers**. Where the names differ under one "
+           "mother they are not merged." % (people_merged, shared), "",
+           "## Sourcing", "",
+           "Each created father is sourced to **the Geni profile of the child whose "
+           "patronymic attests him** (Emma, 2026-08-19)."]
     OUT_MD.write_text("\n".join(md) + "\n", encoding="utf-8")
-    print("  Nordic patronymic, father implied: %d over %d fathers" % (len(rows), len(fathers)))
-    print("  stem not attested: %d; bare -son excluded: %d"
-          % (sum(unattested.values()), sum(ambiguous.values())))
-    print("  commonest: " + ", ".join("%s %d" % (k, v) for k, v in fathers.most_common(10)))
+    print("  named from confirmed fathers: %d; no confirmed father for token: %d"
+          % (len(rows), sum(unnamed.values())))
+    print("  fathers to create: %d (%d merged into %d shared)"
+          % (fathers, people_merged, shared))
+    print("  commonest: " + ", ".join("%s %d" % (k, v) for k, v in top.most_common(8)))
     return 0
 
 

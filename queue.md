@@ -414,8 +414,14 @@ father's own name — 21,242 rows are `patronymic (inferred, no father recorded)
 token the modal confirmed father is the name: `Olsen` → **Ole** (1,809 real fathers),
 `Olsson` → **Olof**. A version that stripped the suffix produced a father called `Ols`.
 
-**TO DO:** rebuild `scripts/build-patronymic-fathers.py` on that classification, then emit
-the creation batch.
+**DONE 2026-08-19** — rebuilt on the classification. **18,518** bearers need a father,
+**12,145** can be named from confirmed fathers, 6,373 have no confirmed father for their
+token and get no name. **9,158 fathers to create**, after 4,023 people merge into 1,036
+shared fathers under her same-mother rule. Commonest: Ole 900, Peder 593, Lars 499,
+Anders 463. `reports/patronymic-fathers.{md,csv}`.
+
+**TO DO:** emit the creation batch from that CSV — one item per `father_group`, `P2600`
+absent, sourced to the bearer's Geni profile. Nothing runs before 1 September.
 
 ## Daily jobs — queued because a cron only fires while the session is idle
 

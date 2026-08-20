@@ -1,55 +1,49 @@
 # The fathers the patronymics imply
 
-Built by `scripts/build-patronymic-fathers.py`. **A census. It emits nothing.**
+Built by `scripts/build-patronymic-fathers.py` on top of `reports/patronymic-classification.csv`, which decides what is a patronymic from the father, per Emma 2026-08-15. **It emits no edit.**
 
-- fatherless people with a Nordic patronymic: **3855**
-- distinct implied fathers: **492**
-- patronymic surnames whose stem is not an attested given name: **301** (not counted)
-- bare `-son`, counted separately and excluded: **762**
+- bearers classified `patronymic (inferred, no father recorded)`: **18518**
+- of those, a name is available from confirmed fathers: **12145**
+- token has no confirmed father anywhere, so no name: **6373**
+- **fathers to create: 9158**
+  (4023 people merged into 1036 shared fathers under her same-mother rule)
 
-## The commonest implied fathers
+## The name comes from real fathers, never from the string
 
-| father | people implying him |
+`Olsen` implies **Ole** because that is what 1,809 confirmed `Olsen` fathers are called. An earlier version stripped the suffix and produced a father called **`Ols`**, which is what Emma meant by *"we already addressed this"*.
+
+| implied father | bearers |
 | --- | ---: |
-| Anders | 349 |
-| Lars | 222 |
-| Ols | 193 |
-| Nils | 164 |
-| Jon | 140 |
-| Hans | 139 |
-| Erik | 138 |
-| Olof | 122 |
-| Johan | 121 |
-| Per | 120 |
-| Peder | 96 |
-| Karl | 79 |
-| Johannes | 56 |
-| Jens | 49 |
-| Carl | 47 |
-| Sven | 45 |
-| Jan | 43 |
-| Petter | 41 |
-| Jacob | 38 |
-| Halvor | 38 |
-| Er | 36 |
-| Gustaf | 35 |
-| Niels | 34 |
-| Christen | 32 |
-| Jakob | 31 |
-| Rasmus | 27 |
-| Søren | 27 |
-| Andreas | 26 |
-| Jöns | 25 |
-| Knud | 24 |
+| Ole | 900 |
+| Peder | 593 |
+| Lars | 499 |
+| Anders | 463 |
+| Jon | 410 |
+| Erik | 348 |
+| Nils | 339 |
+| Rasmus | 279 |
+| Hans | 271 |
+| Ola | 258 |
+| Johannes | 237 |
+| Johan | 212 |
+| Sven | 195 |
+| Per | 181 |
+| Jakob | 163 |
+| Tore | 153 |
+| Knut | 146 |
+| Olof | 144 |
+| Jens | 121 |
+| Elling | 101 |
+| Karl | 97 |
+| Jørgen | 91 |
+| Henrik | 90 |
+| Kristen | 84 |
+| Ivar | 83 |
 
-## Why bare `-son` is excluded
+## One per person, with the exception she named
 
-Split by where the bearer was born or died, `-datter`, `-dotter`, `-sen` and `-sson` have one or two English-speaking bearers each against hundreds of Nordic ones. Bare **`-son` runs 96 English-speaking against 36 Nordic** -- those are hereditary surnames. **Robinson's father was not called Robin**, and `Wilson`, `Thompson`, `Simpson` and `Dawson` are the same shape. A live patronymic attests a father; an inherited surname does not.
+*"If you don't know the people are siblings you create one per individual."* The exception is a shared mother plus the same implied name, and it fires for **4023 people forming 1036 shared fathers**. Where the names differ under one mother they are not merged.
 
-## Known flaw, stated rather than hidden
+## Sourcing
 
-**`Olsen` and `Olsson` yield `Ols`.** The father is `Ole`, `Ola` or `Olof`, and no suffix rule recovers the dropped vowel -- `Ols` happens to be attested, so the given-name check passes it. Those rows are wrong about the father's spelling while right that a father is implied.
-
-## Before anything is created
-
-The queue item names the blocker itself: these items would carry **no `P2600` Geni.com profile ID**, so the citation cannot be a Geni profile and what the statement is sourced to is **Emma's to settle**. Nothing here proposes an edit.
+Each created father is sourced to **the Geni profile of the child whose patronymic attests him** (Emma, 2026-08-19).

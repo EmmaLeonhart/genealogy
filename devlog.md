@@ -10491,3 +10491,40 @@ carry a bracket.
 One defect on the way, caught by the output being empty: the helper went in at column 0
 *inside* `main()`, which ended the function early. It compiled cleanly and exited 0 while
 doing nothing at all.
+
+## 2026-08-19 — the patronymic fathers, rebuilt on the classification that already existed
+
+Emma: *"We already addressed this. Read through the transcripts."* She was right, and the
+transcript says it plainly — 2026-08-15: *"Whether something is or is not a patronymic here
+is determined by completely offline information related to the person's father's name."*
+`scripts/classify-patronymics.py` and `reports/patronymic-classification.csv` were built
+from that, with her three ambiguity classes: *father differs*, *no father recorded*,
+*father unnamed*.
+
+**I duplicated it badly.** My census re-derived patronymics from suffix stripping, which is
+how it produced a father called **`Ols`**. The classification had the answer: across 2,609
+confirmed `Olsen`/`Olsson` patronymics the recorded fathers are Ole 1,809, Ola 795, Olof 73,
+Olav 69, Oluf 17. The name is read off real fathers, never off the string.
+
+Rebuilt on it. For every patronymic token, the modal given name of its **confirmed** fathers
+becomes the implied father's name:
+
+    18,518  bearers classified "patronymic (inferred, no father recorded)"
+    12,145  a name is available from confirmed fathers
+     6,373  no confirmed father anywhere for that token, so no name
+     9,158  FATHERS TO CREATE, after 4,023 people merge into 1,036 shared
+
+`Olsen` now implies **Ole** (890) and **Ola** (55). Zero fathers called `Ols`.
+
+The population is far larger than my version found — 18,518 against 3,855 — because the
+existing classifier recognises patronymic forms well beyond Nordic suffixes, which is
+exactly what Emma warned about on 08-15: *"the patronymics have a variety of forms and you
+might not have gotten all the forms… we have things like Anes and Rodriguez and Fitz John
+that are all patronymics too."*
+
+**Her same-mother exception fires hard.** 4,023 people share a mother and an implied father
+name, forming 1,036 shared fathers, so the merge she guessed would not exist accounts for
+22% of the population.
+
+Still to do: emit the creation batch — one item per `father_group`, no `P2600`, sourced to
+the bearer's Geni profile. Nothing runs before 1 September.
