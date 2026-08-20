@@ -1,5 +1,49 @@
 # geni — Work Queue
 
+## ⛔ DO THE GENI WORK FIRST — Emma, 2026-08-19. Before the merge, before anything
+
+**Every Geni item specified in this queue runs NOW, ahead of the tree merge.** The
+merge is cheap and can wait; the Geni work needs her connection and her machine
+awake, so it goes first. Do not start a re-merge and then discover the Geni work is
+blocked behind it — that happened on 2026-08-19 and cost the session.
+
+**ONLY THE JAPANESE WORK. Do not touch anything already finished.** Her words:
+*"NO FUCKING ATTEMPTS AT DOING FINISHED STUFF ONLY THE JAPANESE."*
+
+- **FINISHED — do not reopen, do not resume, do not offer to:** the
+  `geni-scraping/` page-saving campaign (closed at 1555 of 1831 on 2026-08-19,
+  Emma: *"you are not fucking doing page saves... it is over"*), and the
+  chain-completion / midpoint export campaign.
+- **THE WORK IS the Izumo / Senge clan**, described in her own words under § *Notes*
+  below — the Shinto-wiki page at <https://shinto.miraheze.org/wiki/Izumo_clan> and
+  the Geni tree at
+  <https://www.geni.com/people/Tsusa-no-mikoto-no-Mikoto/6000000012789160423>.
+
+**What she trusts, in her own words, and it is not uniform:**
+
+- *"I pretty much 100% trust you with building up the family tree that is visually
+  on here on Geni, on the page on Geni"* — build the tree from what the page shows.
+- *"I do trust you with the descriptions and the Wikidata links"* and with
+  continuing the Shinto-wiki page.
+- *"I trust you less with doing the merges"* — the duplicate-profile merges are
+  hers, not ours. Flag them, do not perform them.
+
+**Two facts about that data, from her, that change how it is read:**
+
+- The clan was added to Geni **three separate times** (2008 in Japanese, 2011 in
+  English, and by her in 2026 off the AI-translated page), so there is a pair of
+  repeated rows and a lot of prior merging.
+- **The numeric middle names are regnal numbers**, not middle names — they order the
+  *Izumo no Kuni no Miyatsuko*. Most of those people already have Wikidata items,
+  and that page carries the links.
+
+**Her standing warning:** *"I was trying to do the browser work, but I found that
+whatever you're doing in the browser just doesn't work with it."* Geni's tree view
+failed to render at all on 2026-08-19 under a site banner reading *"Geni is
+currently experiencing a high volume of automated traffic."* If the tree will not
+render, say so plainly and stop — do not thrash.
+
+
 
 ## Emma's personally written queue stuff at the beginning
 
