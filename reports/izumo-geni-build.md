@@ -346,3 +346,73 @@ Two things this needed:
 | person | keep | duplicate | how it happened |
 | --- | --- | --- | --- |
 | Yukitaka 57 Kitajima, son of Yoshitaka 56 | `6000000227335131944` | `6000000227335334829` | Mine, 2026-08-20. A 45-second tool timeout on a save that had actually gone through, retried. The queue now checks the parent's children first, so this shape cannot repeat. |
+
+### Created 2026-08-20 — 43 people
+
+Kitajima line and its cadet houses, off `Sadataka Kitajima` `6000000019459854230`:
+
+| person | Geni ID | parent |
+| --- | --- | --- |
+| Yoshitaka 56 Kitajima | `6000000227335094894` | Sadataka Kitajima 55 |
+| Yukitaka 57 Kitajima | `6000000227335131944` | Yoshitaka 56 |
+| Takataka 58 Kitajima | `6000000227335301867` | Yukitaka 57 |
+| Yoshitaka 59 Kitajima | `6000000227335324856` | Takataka 58 |
+| Nobutaka Inaoka | `6000000227335076025` | Takataka 58 |
+| Yoshitaka Takahama | `6000000227335365827` | Takataka 58 |
+| Saburou Kitashima | `6000000227335233864` | Yoshitaka 59 |
+| Masataka 60 Kitajima | `6000000227335360837` | Nobutaka Inaoka |
+| Tomotaka Takahama | `6000000227335310891` | Yoshitaka Takahama |
+| Hidetaka 61 Kitajima | `6000000227335366839` | Tomotaka Takahama |
+| Tokitaka Kitajima | `6000000227335393824` | Saburou Kitashima |
+| Yasutaka Kitajima | `6000000227335224861` | Tokitaka |
+| Hisataka 62 Kitajima | `6000000227335155963` | Yasutaka |
+| Hirokatsu 63 Kitajima | `6000000227335430822` | Hisataka 62 |
+| Harutaka 64 Kitajima | `6000000227335378827` | Hirokatsu 63 |
+| Tsunetaka 65 Kitajima | `6000000227335430827` | Harutaka 64 |
+| Kanetaka 66 Kitajima | `6000000227335397826` | Tsunetaka 65 |
+| Michitaka 67 Kitajima | `6000000227335299879` | Tsunetaka 65 |
+| Mototaka Hisayama | `6000000227335337871` | Tsunetaka 65 |
+| Naotaka 68 Kitajima | `6000000227335344839` | Michitaka 67 |
+| Yoritaka 69 Kitajima | `6000000227335339873` | Naotaka 68 |
+| Akitaka 70 Kitajima | `6000000227335337887` | Yoritaka 69 |
+| Okitaka 72 Kitajima | `6000000227335008051` | Yoritaka 69 |
+| Yoritaka 73 Kitajima | `6000000227335376843` | Yoritaka 69 |
+| Nobutaka 71 Kitajima | `6000000227335365856` | Akitaka 70 |
+| Zentaka 74 Kitajima | `6000000227335365861` | Yoritaka 73 |
+| Naotaka 75 Kitashima | `6000000227335402830` | Zentaka 74 |
+| Naritaka 76 Kitajima | `6000000227335317853` | Naotaka 75 |
+| Yoshinori 77 Kitajima | `6000000227335420843` | Naritaka 76 |
+| Eitaka 78 Kitajima | `6000000227335288917` | Yoshinori 77 |
+| Takataka 79 Kitajima | `6000000227335344862` | Eitaka 78 |
+| Daikou Kitajima | `6000000227335337905` | Takataka 79 |
+| Motonori Yakura | `6000000227335305897` | Mototaka Hisayama |
+| Kazutaka Yakura | `6000000227335311870` | Motonori Yakura |
+
+The Akatsuka branch and the four Senge kokuso that reach the headship through it,
+off `Takakuni Senge` `6000000019459850459`:
+
+| person | Geni ID | parent |
+| --- | --- | --- |
+| Masatoki Akatsuka | `6000000227335344886` | Takakuni Senge 57 |
+| Masakuni Akatsuka | `6000000227335337914` | Masatoki |
+| Tokinobu Akatsuka | `6000000227335416833` | Masakuni |
+| Kazunobu Akatsuka | `6000000227335383864` | Tokinobu |
+| Nagatoshi Akatsuka | `6000000227335344896` | Kazunobu |
+| Motokatsu 66 Senge | `6000000227335415836` | Nagatoshi Akatsuka |
+| Takanou 67 Senge | `6000000227335444826` | Motokatsu 66 |
+| Takamitsu 68 Senge | `6000000227335353899` | Takanou 67 |
+| Hiromitsu 72 Senge | `6000000227335472827` | Takamitsu 68 |
+| Sadatsune Higashi | `6000000227335317878` | Naoharu 70 Senge |
+
+**Which Senge generations already existed, and why the gap had that shape.** Emma
+built the Senge upward from Kunimaro, so Geni already held 64, 65, 69, 70, 71, 73,
+74, 75, 76, 78, 79, 80 and on to 84 — searched by name, one at a time. The four that
+were missing are exactly the four the chart routes through the **Akatsuka** house
+(66, 67, 68, and 72 below them), which an upward walk from Kunimaro would never
+cross. Sakusa no Jisei was already there as `Sakusa no Jisei Senge`.
+
+**`Sadatsune Higashi` is created but not yet joined to what comes below him.** The
+chart makes him the father of `Toshikatsu 75 Senge` (`6000000227331729823`), who
+already exists on Geni with a parent of his own. Adding a second father is not a
+thing to do quietly, so he stands as a child of Naoharu 70 and the link to 75 is
+Emma's.
