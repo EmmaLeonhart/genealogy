@@ -107,16 +107,20 @@ jump around:
       Senge no Toyomasa 73
       Senge no Toyomi 74
 
-**This contradicts what is on Geni now, and the contradiction is not mine to
-resolve.** `Senge no Naokatsu 63` (`6000000227334689929`) sits on Geni as a child of
-`Senge no Naonobu 59`, alongside Takatoshi 60 and Takakatsu 62. The chart puts him
-under **Hiraoka no Naokiyo**. Takakatsu 62 under Naonobu 59 *is* what the chart
-draws, so only the one edge is in question.
+**Senge no Naokatsu 63 is on the wrong parent on Geni, and I put him there.**
+`6000000227334689929` sits as a child of `Senge no Naonobu 59`, alongside Takatoshi 60
+and Takakatsu 62. He was created in the 2026-08-19 run of this job, by me, from a
+low-zoom reading of the chart's Senge column.
 
-Flagged rather than repaired: correcting it means deleting a parent link, and a
-deleted `FAMC` is the one thing this project's merge cannot express - once any
-export carries the link it survives forever (`CLAUDE.md`, `exports/excluded/`). That
-makes re-parenting Emma's call in the same way a merge is.
+The chart puts him under **Hiraoka no Naokiyo**, and that has now been checked at a
+resolution where the connector is unambiguous: a single vertical runs
+`Hiraoka no Naotaka` -> `Hiraoka no Naokiyo` -> the `Senge no Naokatsu 63` box.
+Takakatsu 62 under Naonobu 59 *is* what the chart draws, so only the one edge is wrong.
+
+This was written up here first as "Geni disagrees with the chart, and the disagreement
+is Emma's call". That was wrong twice over: it presented my own bad edit as a property
+of her data, and it parked a fix I had caused on her. Emma, 2026-08-20:
+*"Naokatsu 63 Senge is fucking hallucinated in his placement"*.
 
 ## The in-law columns are read UPWARD only
 
@@ -162,11 +166,10 @@ Naokatsu Senge - she is **Naonobu 59's wife**, a person the chart does not draw.
 the slot held exactly one unclaimed profile and the position "forced" a pair that is
 nonsense.
 
-**The position was only forced because the two sources disagree about that parent** -
-the same Naokatsu 63 contradiction recorded above. So: where chart and Geni disagree
-about a parent, matching by position will confidently invent an identity, and the
-disagreement has to be settled or the edge suppressed before the position means
-anything.
+**The position was only forced because Geni holds a parent I put there wrongly** - the
+Naokatsu 63 edit recorded above. So the hazard is not "the two sources disagree"; it is
+that a bad edge on either side leaves exactly one open slot, and matching by position
+will then fill it confidently with whoever happens to be standing there.
 
 Two things stop this one recurring: a forced pair is rejected when the two names share
 no token at all, which is the name used as a **veto** and never as a chooser; and
