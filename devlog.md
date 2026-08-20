@@ -10357,3 +10357,43 @@ their accents, so `-dóttir` never matched. 29 bearers were missing.
 the evidence and the bearer's Geni profile is where it is recorded, so a reference to that
 profile is one option and *inferred from name* with no reference is another. A Wikidata
 modelling choice, not research.
+
+## 2026-08-19 — four rulings recorded, and one question that should never have been asked
+
+Asked Emma the outstanding decisions. Three were genuinely open; the fourth was not.
+
+**Trim the name strings, and fix the English too.** The placeholder labels read `<relation>
+of <name>` and 2,732 of 12,661 distinct names carry titles, offices, dates or leading list
+numbers. Her ruling: use the plain name — parentheticals, date ranges and leading numbers
+dropped — and **change the English labels to match**, since they have shipped with these
+strings since 08-15. The trim removes bracketed material and dates; it does **not** strip
+titles out of running text, so `Kandjeng Pangeran` and `SINUHUN PAKU BUWANA XII` stay. That
+was a different judgement and not the one asked.
+
+**Keep `MAX_HOPS = 14`.** Put to her directly, with the cost stated — 2,077 romanised rows
+rest on inferences beyond six hops and the checks only detect surname-shaped errors — she
+kept it. Settled; not to be revisited without her.
+
+**Patronymic fathers are sourced to the bearer's Geni profile.** The evidence is the
+patronymic and that profile is where it is recorded. The blocker that held the item is
+lifted. Next: the unit of creation is one father *per family*, not per name string — 492 is
+a count of names, and `Anders` implying 349 people is not one man — and the `Ols` spelling
+flaw has to be fixed before anything is emitted.
+
+**The middle initials were already confirmed, and asking again was a mistake.** Emma: *"we
+had an extensive discussion of this"*, *"the initial thing was confirmed."* She is right.
+`reports/middle-initial-wikidata-practice.md` settled it on evidence over 19,250 items, per
+language, which is precisely what she required at the time — *"I want evidence of it being
+standard"*, and *"I'm guessing Russian and Greek do it with transliterating the initial
+though and they should do that."*
+
+**And there is no single rule, so the question I asked was malformed**: it offered one global
+choice for all languages. `ja` and `zh` keep the letter Latin; `ar` and `el` transliterate
+it; `ru` drops it. `hi` is the only open one, because its commonest practice is `expanded` —
+replacing the initial with the full middle name — which is unavailable to us by definition,
+and excluding it leaves `dropped` 13% against `script_initial` 10% over 79 items.
+
+Her answer today, *"keep it in Latin"*, matches the measured `ja`/`zh` standard and has
+**not** been applied to `ar`, `el` or `ru`, where the evidence and her earlier instruction
+both say otherwise. The lesson is the cheap one: search the reports for a prior ruling
+before spending a question on it.

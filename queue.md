@@ -447,6 +447,10 @@ Emma's instruction has no limit in it: *"Bfs from the individual until you find 
 known family people and assume nationality from it."* Raising it to 14 settles **4,109**
 more records: no-culture **6,367 → 2,398**, zh romanised **9,800 → 11,851**.
 
+**RULED, Emma 2026-08-19: keep 14.** Asked directly whether a fourteen-hop inference was
+acceptable given that 2,077 romanised rows rest on one, she kept it. A fourteenth-hop
+relative is still a relative. `MAX_HOPS` is settled; do not revisit it without her.
+
 **A longer walk reaches further into other people's families, and it did.** Rows with a
 Chinese or Korean surname started taking Japanese readings once the walk touched a Japanese
 neighbourhood — `高 趙` came out *Takashi*, `直 鄭` *Tadashi*, `熙 劉` *Hiroshi*, `良 崔`
@@ -688,12 +692,34 @@ Two traps, both measured before the rule was written:
 The censuses she asked for are built and committed; this is only the residue that
 needs a ruling rather than a measurement. `devlog.md` has the numbers.
 
-- **Middle initials in non-Latin languages.** `reports/middle-initials.md` — 12,805
-  tokens in the middle-initial position across the corpus. Her words: *"As far as the
-  middle initial people, I'm not really sure what to do with them, at least going into
-  other languages."* An initial is not a name and has no katakana, so the three options
-  — drop it, transliterate the letter, keep it Latin inside a non-Latin label — are a
-  presentation decision, not a derivation.
+- **Middle initials — SETTLED ALREADY, and asking again on 2026-08-19 was a mistake.**
+  Emma: *"I just want to clarify that... we had an extensive discussion of this"* and
+  *"the initial thing was confirmed."* She is right. It was settled on evidence, **per
+  language**, which is what she required at the time — *"I want evidence of it being
+  standard"*, and *"I'm guessing Russian and Greek do it with transliterating the initial
+  though and they should do that. Idk what Hindi does but do the standard for it too."*
+
+  `reports/middle-initial-wikidata-practice.md` answers it per language over 19,250 items,
+  and **there is no single rule**, which is why the 2026-08-19 question was malformed: it
+  offered one global choice for all of them.
+
+  | language | what Wikidata does | so we do |
+  | --- | --- | --- |
+  | `ja` | `latin_initial` 58% | keep the letter Latin — ジョセフ・C・オマホーニー |
+  | `zh` | `latin_initial` 46% | keep the letter Latin |
+  | `ar` | `script_initial` 54% | transliterate the letter |
+  | `el` | `script_initial` 50% | transliterate the letter |
+  | `ru` | `dropped` 44% | drop it |
+  | `hi` | `expanded` 77%, and **expanded is not available to us** | see below |
+
+  **`expanded` is not an option**: it replaces the initial with the full middle name, and if
+  we knew the name it would not be an initial. Excluding it, `hi` runs `dropped` 13% against
+  `script_initial` 10% — too close to call from 79 items, and **the only genuinely open
+  language**. Everything else is decided.
+
+  Today's answer, *"keep it in Latin"*, matches the measured `ja`/`zh` standard and is
+  **not** applied to `ar`, `el` or `ru`, where the evidence and her earlier instruction both
+  say otherwise.
 
 
 ## RUN ORDER — Emma's call, 2026-08-15
@@ -915,12 +941,16 @@ The commonest are `Kandjeng Pangeran Soeria Koesoemah Adinata (Bupati Sumedang)`
 offices, dates and a leading list number carried into the label. Even inside the "clean"
 9,929 there are `.... Tornikaine`, `...some dec..` and `.Peder Christensen`.
 
-**Rendering a date range into katakana is not a transliteration problem, it is a naming
-one**, and naming is Emma's. **NEEDS-DECISION:** should the label use the whole string as
-Geni holds it, or a trimmed form — dropping parentheticals, dates and leading numbers — and
-if trimmed, is the trimmed form also what the **English** label should say? The English
-labels have shipped with these strings since 08-15, so this is a question about them too,
-not only about the CJK ones.
+**RULED, Emma 2026-08-19: trim, and fix the English too.** The label uses the plain name —
+parentheticals, dates and leading list numbers dropped — and **the English labels change to
+match**. They have shipped with these strings since 08-15, so this corrects them as well as
+unblocking the CJK ones. `daughter of Hamengkubuwana VII Raden Mas Murtejo
+(22.12.1877-29.1.1921)` becomes `daughter of Hamengkubuwana VII Raden Mas Murtejo`.
+
+**Do not overreach on the trim.** It removes bracketed material, date ranges and a leading
+list number. It does **not** try to strip titles or offices out of the running text —
+`Kandjeng Pangeran` and `SINUHUN PAKU BUWANA XII` stay, because deciding a Javanese title is
+not part of a name is a different judgement and was not the one asked.
 
 ## Name items — the ambiguity, measured now the download is in
 
@@ -1161,11 +1191,15 @@ people). The father is `Ole`, `Ola` or `Olof`; no suffix rule recovers the dropp
 `Ols` happens to be attested, so the given-name check passes it. Those rows are wrong about
 the **spelling** while right that a father is implied.
 
-**NEEDS-DECISION — Emma.** The item's own blocker is unchanged and nothing was emitted
-against it: with no `P2600`, **what is the statement sourced to?** The patronymic itself is
-the evidence, and the bearer's Geni profile is where it is recorded, so a reference to the
-bearer's profile is one option; *inferred from name* with no reference is another. That is a
-Wikidata modelling choice, not research.
+**RULED, Emma 2026-08-19: reference the bearer's profile.** With no `P2600` of their own,
+each created father is sourced to **the Geni profile of the child whose patronymic attests
+him** — the evidence is the name, and that profile is where the name is recorded. The
+blocker that held this item is lifted, so the creation batch can now be built.
+
+**What that means concretely, and it is the next piece of work:** one created item per
+distinct father *per family*, not per name string — 492 fathers is a count of names, and
+`Anders` implying 349 people is not one man. The unit of creation has to be worked out from
+the data before anything is emitted, and the `Ols` spelling flaw has to be fixed first.
 
 ## Daily jobs — queued because a cron only fires while the session is idle
 
