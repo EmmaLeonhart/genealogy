@@ -45,6 +45,13 @@ render, say so plainly and stop — do not thrash.
 
 
 
+## Tanba clan — queued AFTER Izumo, Emma 2026-08-20
+
+<https://shinto.miraheze.org/wiki/Tanba_clan>. Her words: *"I guess this one also
+exists but it is comparably straightforward and I will have the other one do a roster
+of it too so we queue it after"*. So **another session builds the roster**; this one
+does not start it, and does not start it before the Izumo work is finished.
+
 ## Emma's personally written queue stuff at the beginning
 
 * Finish the fucking chain completion exports do not try other stuff first
