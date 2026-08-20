@@ -10557,3 +10557,46 @@ picking one.
 The name is the modal given name of the confirmed fathers of that token — `Olsen` implies
 *Ole* because 1,809 real `Olsen` fathers are called Ole. Bearers whose token has no
 confirmed father anywhere (6,373) get no item, because there would be nothing to call him.
+
+## 2026-08-19 — step 1 of her label order: `en` for every individual, 22,373 edits
+
+Emma, 2026-08-17: *"makes en labels for every individual (so Japanese gets transcribed),
+and then mul gets made for every individual (almost always derived from en), and then the
+Japanese gets made for all languages, and then the Chinese... all of the en labels are done
+at the same time as one step."* `scripts/build-en-label-batch.py` →
+`reports/wikidata-en-labels.json`. **Emits nothing to Wikidata.**
+
+Her order is the one that works. `emission-spec.md` had `mul` first with `en` derived from
+it, which leaves no route at all for a person whose name is written only in Han characters.
+Making `en` first, by transcribing, is what gives those people something to derive a `mul`
+from.
+
+    57,456  individuals with no English label (41,542 written in CJK)
+    22,373  an en is now available
+    35,083  still short
+
+    9,539  romanised from zh
+    7,401  relationship label
+    5,208  Wikidata's own English label
+      225  romanised from ja
+
+Priority is deliberate: **Wikidata's own label beats anything we derive**, because it is a
+whole name — `Emperor Taizong of Tang` — where the romanisation is a fragment, `Shi Min`.
+That ordering came out of `cjk-romanisation-validation.md`, which measured ours against
+theirs at 91.8%.
+
+**A marker is not an `en` label**, so a person whose only name is `NN` is counted in the
+shortfall rather than given a false name here. `NN` belongs in `mul`, which
+`build-marker-label-fixes.py` already emits. Checked on the emitted file: zero edits whose
+value is a marker under `labels.is_marker_label`.
+
+The 35,083 shortfall is almost entirely the standing Japanese gap — 15,578 records whose
+reading no available source supplies.
+
+**One known-bad row rides along:** `Da Tang Di Guo`, which is the Tang Empire and not a
+person. It is a single record whose name field is an empire, recorded in this file on
+2026-08-19; no rule fixes it and a data edit is what it needs.
+
+Also collapsed `LABELS, IN HER ORDER` in the queue from 143 lines to 25 — the marker
+normalisation it described is built (56,369 edits: unnamed 23,237, marker+surname 18,859,
+description 6,979, description+clan 6,254, name repaired 1,010).

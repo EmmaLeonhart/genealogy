@@ -601,146 +601,38 @@ Emitter correct, 10 edits queued. Nothing to do until the edit window opens.
 
 ## LABELS, IN HER ORDER — one step per language, every individual at once
 
-**Emma, 2026-08-17**, after being shown the 364 structural placeholders with no label:
-*"Put an item at the end of the queue that finds these kinds of ones where the label
-has this stuff already in it, and normalizes them into proper things based on our
-rules, and then tasks at the end that in order: makes en labels for every individual
-(so Japanese gets transcribed), and then mul gets made for every individual (almost
-always derived from en), and then the Japanese gets made for all languages, and then
-the Chinese gets made for all languages, and then after we continue with the other
-universal languages. Note that these are all distinct items for the language so all of
-the en labels are done at the same time as one step, and then mul, then ja, then zh,
-then others."*
+**Emma, 2026-08-17:** *"makes en labels for every individual (so Japanese gets
+transcribed), and then mul gets made for every individual (almost always derived from en),
+and then the Japanese gets made for all languages, and then the Chinese... these are all
+distinct items for the language so all of the en labels are done at the same time as one
+step, and then mul, then ja, then zh, then others."*
 
-**This fixes the ordering `emission-spec.md` had.** That file says `mul` comes from the
-Latin name and `en` comes from `mul`. Her order is the other way round and it is the
-one that works for a person with no Latin name at all: **`en` is made first, by
-transcribing**, and `mul` is then *"almost always derived from en"*. That is what gives
-the 806 Han-only people a `mul` — there was no route to one before.
+**Her order overrides `emission-spec.md`**, which had `mul` first and `en` derived from it.
+Hers is the only order that works for a person with no Latin name at all: `en` is made
+first by transcribing, and `mul` follows from `en`.
 
-**Each language is one step over the whole population, not a per-person loop.** Her
-words. So the batches are `en` for everybody, then `mul` for everybody, then `ja`, then
-`zh`, then the rest — never a person walked once and labelled in seven languages.
+**DONE — normalising the labels that already carry a marker.**
+`scripts/build-marker-label-fixes.py` → `reports/wikidata-marker-label-fixes.json`, 56,369
+edits: unnamed 23,237, marker+surname 18,859, description 6,979, description+clan 6,254,
+**name repaired 1,010** (`Catherine unknown` → `Catherine`), repair rejected 30. Her
+*"words yes, punctuation no"* ruling is applied, so `Nechama (?) Heller` is left alone.
 
-- **Normalise the labels that already carry a marker inside them.** The census is
-  built — `scripts/build-marker-label-census.py` → `reports/marker-labels.csv`, both
-  stores — and it splits the job into three populations that need different handling.
-  What is left is the *normalisation*, which is emitting from that CSV:
+**STEP 1 BUILT — `en` for every individual.** `scripts/build-en-label-batch.py` →
+`reports/wikidata-en-labels.json`, **22,373 edits**. 57,456 individuals had no English
+label; an `en` is now available for 22,373 of them — romanised zh 9,539, relationship label
+7,401, Wikidata's own label 5,208, romanised ja 225 — leaving **35,083 short**, almost all
+of them Han names with no reading (the Japanese gap) or people whose only name is a marker.
+A marker is not an `en` label: `NN` belongs in `mul` and is already emitted by
+`build-marker-label-fixes.py`.
 
-  - **A marker leading a real surname — keep the surname, marker to `mul`.**
-    `unknown Bloomfield` → `mul: NN Bloomfield`, and a description in the local
-    languages. This is the bulk of it and the Wikidata side dominates: 18,280
-    `unknown`, 3,362 `nn`, 480 `n`, 260 `?`, 60 `n.n.`, 35 `private`.
-  - **A real name with a marker wedged inside it — strip the marker, keep the rest.**
-    `Catherine unknown` → `Catherine`, `Nechama (?) Heller` → `Nechama Heller`,
-    `Hadaburg N.N. Gräfin im Saalgau` → `Hadaburg Gräfin im Saalgau`. Mechanical, no
-    judgement, ~1,950 labels. `is_placeholder_label` reads only the head token, so
-    every one of these currently ships as a name.
-  - **A description already sitting in the name slot** — 1,222 Geni people and 1,508
-    Wikidata items in English, plus **~5,400 in CJK** and 249 behind an honorific.
-    `wife of` 871, `daughter of` 605, `son of` 241, `mother of` 234, `nieto de` 58;
-    `室` 2,565, `氏` 1,613, `娘` 617, `某` 311, `妻` 210, `母` 100; `Mrs.` 249,
-    `Miss` 30. **`mul` gets `NN`** — Emma, 2026-08-17: *"And NN for mul there"* — plus
-    the real surname where the description leaves one standing (`謝氏` → `NN 謝`,
-    `信秀正室 織田` → `NN 織田`). The description itself is kept as the local-language
-    label, which is where it already belonged; it is written, just in the wrong slot.
+**TO DO — the remaining steps**, each one batch over the whole population:
 
-  **The three vocabularies are now one** — `scripts/labels.PLACEHOLDER_FORMS`, imported
-  by the preview, the structural walk and the census instead of each carrying a copy.
-  Strictly additive: all 27 forms the copies held are in it, plus 19 found by
-  measurement, so nobody previously screened stops being screened. `NOT_A_NAME` is
-  deliberately untouched — that decides what `label_for()` **empties** and she has ruled
-  on it twice; these sets decide what a **marker** is. Widening detection is not
-  widening suppression.
+2. `mul` for every individual, derived from `en`
+3. `ja`, then `zh`, then the rest
 
-- **ANSWERED 2026-08-17 — words yes, punctuation no.** Asked whether `unknown` / `?` /
-  `ukjent` / `*` are markers the way `NN` and `Private` are, Emma chose *"Words yes,
-  punctuation no"*: a word meaning *I don't know* makes the same statement `NN` makes,
-  and bare punctuation is typography we would be guessing at. So `unknown Bloomfield`
-  normalises and `Nechama (?) Heller` and `Toeloes .` are left exactly as they are —
-  3,102 `?`-at-tail rows an earlier pass would have rewritten. Punctuation still means
-  *absent* when it is the **whole** label, which is what `derive-labels.ABSENT` has
-  always said.
-
-  **Done 2026-08-17.** The fold landed in `scripts/labels.py`, and re-running the
-  batches it feeds moved the placeholder count 39,299 → **39,375** and readable `en`
-  labels 30,015 → **30,090** — 76 more people recognised as placeholder-named by the
-  nine languages the measurement added. Seven labels in the structural batch turned out
-  to be markers sitting in `en`: `Ukendt`, `Okänd fru`, `Ukendt hustru Unknown`,
-  `N. N.`, `Okänd Michaelson? svensk major`.
-
-- **`en` for every individual, as one step.** Includes the transcription she names:
-  a Han-only or Cyrillic-only or Hebrew-only person gets an `en` made for them.
-  **CJK → English is agentic, never programmatic** — *"from CJK to English do not
-  remotely try to do any kind of programmatic transliteration because they all suck.
-  But AI almost always knows Japanese to Romaji."* The culture question comes first:
-  陳 is *Chen*, *Chin* or *Jin*, and *"the tree settles it, via neighbours and which
-  exports they came from"*, never the name. 806 Han-only among the structural
-  placeholders alone; the corpus figure is larger and is what this step must count.
-
-- **`mul` for every individual, derived from `en`.** *"Almost always derived from en"* —
-  so the exceptions are the thing to find and report, not to guess at.
-
-- **`ja` for every individual — and the native construction is the template.**
-  **Emma, 2026-08-17:** *"That relationship description should be the template for how
-  we generate Chinese and Japanese nn suppleting labels."*
-
-  This unblocks the thing `ja`/`zh` were deferred for. The recorded objection was that
-  a generated Japanese description *"would come out `Gerard Spencerの娘` with the name
-  untransliterated"*. The corpus already contains ~5,400 CJK relationship descriptions
-  written the native way, with no `の` and no borrowed grammar, and those are the model:
-
-      織田敏信娘        daughter of Oda Toshinobu   <name>娘
-      信秀正室 織田      principal wife of Nobuhide  <name>正室
-      古河某妻          wife of a certain Kogawa    <name>某妻
-      謝氏             the Xie-clan woman          <surname>氏
-      母 陳            mother, of the Chen         母 <surname>
-
-  So an unnamed person whose relative is recorded in Han characters gets
-  `ja` = `<relative's name><suffix>`, taking the suffix from the table the records
-  themselves use. **It only works where the relative's name is already CJK** — which is
-  exactly the population that has no `en` and is otherwise unreachable, so the two
-  problems solve each other. Where the relative is Latin-only the `ja` label still
-  waits on the transcription step.
-
-  Han-only people already have a `ja` label, as the kanji written: *"If the name is
-  solely in kanji, then the Chinese and Japanese labels are both the same for it."*
-  The work is everybody else.
-
-  **`室`/`正室`/`側室` are not interchangeable and must not be normalised to one.**
-  Principal wife, concubine and consort are different statements about a person. Pick
-  the suffix the source used; do not choose one when generating from scratch — for a
-  generated label the plain relationship word is the safe form and the specific rank is
-  something only the source can supply.
-
-- **`zh` for every individual.** Same string as `ja` for a Han name; the 291 people
-  whose name carries **kana** are the ones needing a real Chinese form.
-
-- **Then the other universal languages** — `hi` · `ar` · `ru` · `el` from her earlier
-  list, each its own step over the whole population.
-
-### First, the bug underneath all of it — 646 labels deleted by an ordinal sign
-
-Found 2026-08-17 while answering *"what the FUCK are these 364 placeholders"*.
-
-`scripts_of` in `scripts/build-display-names.py` classifies each character by the first
-word of its Unicode name. `º` is `MASCULINE ORDINAL INDICATOR` and `'º'.isalpha()` is
-**True** in Python, so it becomes a script called `Masculine`. `derive-labels.py` then
-reads `scripts = Latin+Masculine`, calls the name **mixed-script**, and refuses it as
-an `en` or `mul` label.
-
-**646 people lose their Latin label to this**, every one an Iberian noble whose title
-carries an ordinal: `Afonso de Bragança 1º conde de Faro e 2º de Odemira`,
-`Maria da Cunha 3ª senhora de Basto`, `Mª Manuela Fernández de Córdoba`,
-`João Soares de Sousa 3.º Capitão donatário da ilha de Santa Maria`. The same fault
-hits `Feminine` (86 records), `Modifier` (105), `Superscript`, `Micro` and `Unnamed`
-(12) — **943 NAME records** carry one of these pseudo-scripts.
-
-**A character that is not a writing system must contribute no script**, rather than
-being called Latin: `º` says nothing about what script a name is in. Then
-`1º senhor de Baião` is Latin and the label survives. Fixing this means re-running
-`build-display-names.py` → `derive-labels.py` → every label emitter, which is the whole
-cache chain `CLAUDE.md` warns about.
+The existing batches are per-*population* (placeholders, `NN`, markers), not per-language
+over everybody, which is what she asked for. Middle initials follow the measured
+per-language standard in `reports/middle-initial-wikidata-practice.md`.
 
 ## The midpoint export campaign — her batch of 2026-08-17
 
