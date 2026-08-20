@@ -198,3 +198,55 @@ accordingly once you reach that point"*. So the chart's run-together forms in th
 Senge/Kitajima/Higashi/Takaoka/Hiraoka/Akatsuka generations are surname+given
 concatenated and must be split, given name first. This applies from roughly
 generation 51 onward and has not been reached yet.
+
+## Third block — gaps in the numbered line itself, 26 to 53
+
+Walking the chain by ID showed the succession **skipping numbers**: Geni ran
+25 → 27 → 30 → 33 and 42 → 44 → 45 → 47, so eight numbered kokuso simply did not
+exist. These are not collaterals; they are holes in the spine.
+
+| created | parent |
+| --- | --- |
+| Otoyama 26 | Ka'an 24 |
+| Kunikami 28 | Otoyama 26 |
+| Kuninari 29 | Otoyama 26 |
+| Chikuni 31 | Kuninari 29 |
+| Kanemutsu 32 | Masakata 27 |
+| Munefusa 43 | Yukikane 42 |
+| Kaneie | Munefusa 43 |
+| Kanetsune 46 | Kaneie |
+| Takatoki 53 | Yasutaka 52 |
+
+The regnal number goes in the **middle-name** field, matching how the existing chain
+is written (`Hiroshima 25 Izumo` = first `Hiroshima`, middle `25`, last `Izumo`).
+
+**72 people created in total.**
+
+## The name inversion, applied — Emma's rule
+
+*"they are all more like 'Anatsuu Higashi' and they should be changed accordingly once
+you reach that point"* — reached, and done. Ten profiles renamed:
+
+| was | now |
+| --- | --- |
+| Higashitakakage Senge | Takakage Higashi |
+| Higashitokitaka Senge | Tokitaka Higashi |
+| Higashitakataka Senge | Takataka Higashi |
+| Higashisadayori Senge | Sadayori Higashi |
+| Higashitakanori Senge | Takanori Higashi |
+| Higashiyasunori Senge | Yasunori Higashi |
+| **Higashianatsuu Senge** | **Anatsuu Higashi** |
+| Higashiyoshiakira Senge | Yoshiakira Higashi |
+| Higashisadanobu Senge | Sadanobu Higashi |
+| Higashinobutoshi Senge | Nobutoshi Higashi |
+
+Two things this confirmed. The surname was **`Senge`, which was also wrong** — these
+people are Higashi, not Senge; the concatenated form had buried the real surname
+inside the given name and left a wrong one in the surname field. And the **Takaoka
+profiles in the same branch were already correct** — `Sadashige Takaoka`,
+`Shigeyori Takaoka`, `Shigeyasu Takaoka` — so the inversion is specific to the
+run-together spellings, not to the branch.
+
+Renames go through `https://www.geni.com/profile/edit_basics/<id>`, which is a plain
+form: set `page_profile[names][en-US][first_name]` and `[last_name]`, then click
+**`Save & Close`** — not `Save`, which is what the add dialog uses.
