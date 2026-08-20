@@ -346,6 +346,7 @@ Two things this needed:
 | person | keep | duplicate | how it happened |
 | --- | --- | --- | --- |
 | Yukitaka 57 Kitajima, son of Yoshitaka 56 | `6000000227335131944` | `6000000227335334829` | Mine, 2026-08-20. A 45-second tool timeout on a save that had actually gone through, retried. The queue now checks the parent's children first, so this shape cannot repeat. |
+| Sadakiyo En'ya, son of Yoriyasu En'ya | `6000000019402925048` (pre-existing) | `6000000227335445948` (empty) | Mine, 2026-08-20. The pre-check compares the name Geni puts in the profile slug; I passed a curly apostrophe and Geni's slug uses a straight one, so `Sadakiyo En’ya` did not match the `Sadakiyo En'ya` already sitting there. The comparison now ignores apostrophes entirely. |
 
 ### Created 2026-08-20 — 43 people
 
