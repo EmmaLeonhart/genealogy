@@ -10600,3 +10600,26 @@ person. It is a single record whose name field is an empire, recorded in this fi
 Also collapsed `LABELS, IN HER ORDER` in the queue from 143 lines to 25 — the marker
 normalisation it described is built (56,369 edits: unnamed 23,237, marker+surname 18,859,
 description 6,979, description+clan 6,254, name repaired 1,010).
+
+## 2026-08-19 — step 2 of her label order: `mul` from `en`, 14,972 edits
+
+`scripts/build-mul-label-batch.py` → `reports/wikidata-mul-labels.json`. Each edit requires
+its step-1 `en`, so the two land in her order rather than racing.
+
+**The interesting part is what it does not mirror.** Emma's wording was *"mul gets made for
+every individual (almost always derived from en)"*, and "almost always" is doing real work:
+of step 1's three sources, two are names and one is not.
+
+    wikidata's own English label   name        -> mul mirrors it
+    romanised Han name            name        -> mul mirrors it
+    relationship label            NOT a name  -> left alone, 7,401 people
+
+`husband of Lakech Gashawbeza` describes somebody by who they are related to. Copying that
+into `mul` would assert across every language that it is what the person is *called*. Emma
+ruled on this exact shape on 2026-08-17 — *"And NN for mul there"* — and those people
+already receive `mul: NN` from `build-placeholder-label-batch.py`, so mirroring would have
+overwritten a correct marker with a description.
+
+Three checks on the emitted file rather than assertions: every `mul` value equals its `en`
+value, every edit requires its own `en_label:` step, and no person whose `en` came from a
+relationship label appears in the batch at all.

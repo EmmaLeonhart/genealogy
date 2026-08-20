@@ -625,10 +625,18 @@ of them Han names with no reading (the Japanese gap) or people whose only name i
 A marker is not an `en` label: `NN` belongs in `mul` and is already emitted by
 `build-marker-label-fixes.py`.
 
-**TO DO — the remaining steps**, each one batch over the whole population:
+**STEP 2 BUILT — `mul` derived from `en`.** `scripts/build-mul-label-batch.py` →
+`reports/wikidata-mul-labels.json`, **14,972 edits**, each requiring its step-1 `en`.
 
-2. `mul` for every individual, derived from `en`
-3. `ja`, then `zh`, then the rest
+**It is not a blind mirror, and the difference is 7,401 people.** *"Almost always derived
+from en"* — a relationship label, `husband of Lakech Gashawbeza`, is **not a name**, and
+copying it into `mul` would assert across every language that this is what the person is
+called. Her ruling of 2026-08-17 covers exactly that shape: *"And NN for mul there"*, and
+those people already get `mul: NN` from `build-placeholder-label-batch.py`.
+
+**TO DO — step 3:** `ja`, then `zh`, then the rest. This is the English→CJK direction
+(katakana for anything not already Japanese), which is the one still unbuilt. Middle
+initials follow `reports/middle-initial-wikidata-practice.md`.
 
 The existing batches are per-*population* (placeholders, `NN`, markers), not per-language
 over everybody, which is what she asked for. Middle initials follow the measured
