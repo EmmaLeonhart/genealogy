@@ -135,3 +135,66 @@ her instruction.
 Wikidata item, extracted from the chart's `[Wikidata]` links. The regnal number joins
 it to the Geni name. Emma: the numeric middle names *"are regnal numbers for the Izumo
 no Kuni no Miyatsuko"*, not middle names.
+
+## Second block — the numbered line's collaterals, generations 11-21
+
+The main kokuso line **12 to 22 already existed on Geni as a bare chain**: every
+numbered person had exactly one child, the next kokuso, and no siblings at all. The
+chart gives each of those generations several. That made this block large and
+unambiguous — these people are plain siblings of a numbered kokuso, so no
+Isetsuhiko-branch judgement was involved.
+
+| parent | children added |
+| --- | --- |
+| Izumo-Furune 11 | Miyoshiya |
+| Ibe no Mikoto | Hishirahime, Igasokumano |
+| Ukatsu Kunu 12 | Iimochi, Otofukuno, Kisumino, Mikihime, Minibuno, Izumo Kasayano |
+| Okimimi 13 | Kitashiko, Kutano, Mitamino, Uke, Nanashi, Koneno |
+| Raihita no Wiho 14 | Otonakushihimeno, Kushimarozu Ashinazu, Hotsukono |
+| Mishima 15 | Ami, Oshimakono, Fusu, Sahine, Kaguro |
+| Ou 16 | Kiwamebi, Ayoutsunino, Kumamarono |
+| Miyamukasu 17 | Ayu, Tomonoomi, Mananoomi, Kasa |
+| Funin 18 | Tagiko, Shishikoomi, Tomu, Ibanushi |
+| Funei 19 | Ishiazu, Makiyama, Kushi, Manbei |
+| Ihohiku 20 | Chino, Ninikioomi, Omarono, Fushimaro |
+
+**63 people created in total across both blocks.**
+
+## How the adds are driven, because the UI fights back
+
+Three mechanisms were tried and only the third is usable.
+
+- **The tree canvas** re-renders and pans between one click and the next, so about two
+  thirds of clicks land on empty space. It also served a **stale render** — showing
+  Isetsuhiko with only one child when he already had two — which is what produced the
+  duplicate Kamisahime. Abandoned on Emma's instruction.
+- **Coordinate clicking on the profile dialog** works but the browser window keeps
+  resizing between calls (1536x674, 1568x688, 1568x745 all seen in one session), so
+  fixed coordinates drift and silently miss the name field. Several adds saved blank
+  and had to be redone.
+- **Scripting the dialog** is what works: click `Add Family`, set the relationship
+  select to `child`, set the first-name input and fire `input`/`change`, pick the
+  gender radio by its adjacent label text, click `Save`. No coordinates anywhere.
+
+**Saving reloads the page**, which wipes any helper defined on `window` — including
+when `Add another family member` is ticked, so that checkbox does not actually chain.
+The helper is therefore kept in `localStorage.__ADD` and `eval`-ed at the start of
+each call, which survives the reload and makes each person a single tool call.
+
+## Naming artifact worth a look
+
+Geni's `Suggest surnames` fills the surname from the parent, so children added under
+`Mishima 15 Ashinazu-ni-Mikoto` came out as `Ami Ashinazu-ni-Mikoto`,
+`Fusu Ashinazu-ni-Mikoto` and so on, and those under `Funei 19 Izumo` came out as
+`Tagiko Izumo`, `Kushi Izumo`. The chart writes them as bare given names. This was
+left as Geni generated it rather than corrected mid-run — flagging it rather than
+deciding it.
+
+## Emma's naming rule for the later generations, not yet reached
+
+**`Higashianatsuu Senge` and its like are really `Anatsuu Higashi`** — Emma,
+2026-08-19: *"they are all more like 'Anatsuu Higashi' and they should be changed
+accordingly once you reach that point"*. So the chart's run-together forms in the
+Senge/Kitajima/Higashi/Takaoka/Hiraoka/Akatsuka generations are surname+given
+concatenated and must be split, given name first. This applies from roughly
+generation 51 onward and has not been reached yet.
