@@ -117,3 +117,57 @@ Flagged rather than repaired: correcting it means deleting a parent link, and a
 deleted `FAMC` is the one thing this project's merge cannot express - once any
 export carries the link it survives forever (`CLAUDE.md`, `exports/excluded/`). That
 makes re-parenting Emma's call in the same way a merge is.
+
+## The in-law columns are read UPWARD only
+
+Emma, 2026-08-20: *"GO UP the in-laws line"*, and *"the in-laws line is absurd if you
+go the other direction"*. The chart draws each in-law house as an **ancestor chain
+feeding into one marriage** - Sasaki down to En'ya down to Kakunin, who marries
+Yasutaka 52. Following those people *downward* on Geni leaves the chart immediately
+and walks into the whole Sasaki clan, which the chart never claims anything about.
+
+    Sasaki Yasukiyo
+      Toda Yoshiyasu -> Takaoka Muneyoshi -> Ookunishinomikoto
+      En'ya Yoriyasu
+        En'ya Sadakiyo
+        Kakunin            = Yasutaka 52's wife, so Takatoki 53's mother
+      Takaoka Muneyasu
+
+    Izumo no Masataka 50 -> Izumo no Yoshitaka 51 -> Izumo no Yasutaka 52
+
+This is corroborated from the Geni side without any name being consulted: Geni gives
+Takatoki 53 exactly two parents, `Yasutaka Izumo-kokuso` and `Kakujitsu ni En'ya`,
+which is the position the chart puts Kakunin in.
+
+**The repeated rows Emma warned about are visible here.** Chart rows 95-97 recur as
+rows 99-101 - `En'ya Yoriyasu`, `En'ya Sadakiyo`, `Kakunin` and
+`Takaoka Muneyoshi` / `Takao Muneyoshi` each appear twice, and the roster carries
+both copies. They are one person each, not two, and a count of "people still to
+create" that treats them as distinct is wrong by that many.
+
+## Where the two sources disagree, position invents an identity
+
+Worked example, 2026-08-20, caught by Emma: *"how the fuck did Hiraoka no Naokiyo get
+forced in like that looks very sus"*.
+
+The resolver paired `Hiraoka no Naokiyo` with a Geni profile called
+`daughter of Kinunobu Koshi Koshi`. Checking rather than theorising: `Naotaka Hiraoka`
+`6000000227334516908` has exactly one child, `Naokiyo Hiraoka` `6000000227334350078`,
+so the downward edge was never in doubt and Naokiyo was there all along.
+
+The bad pair came from the **upward** edge. The chart says
+`Hiraoka no Naokiyo -> Senge no Naokatsu 63`. On Geni, the parent in that slot is
+`daughter of Kinunobu Koshi Koshi`, whose three children are Takatoshi, Takakatsu and
+Naokatsu Senge - she is **Naonobu 59's wife**, a person the chart does not draw. So
+the slot held exactly one unclaimed profile and the position "forced" a pair that is
+nonsense.
+
+**The position was only forced because the two sources disagree about that parent** -
+the same Naokatsu 63 contradiction recorded above. So: where chart and Geni disagree
+about a parent, matching by position will confidently invent an identity, and the
+disagreement has to be settled or the edge suppressed before the position means
+anything.
+
+Two things stop this one recurring: a forced pair is rejected when the two names share
+no token at all, which is the name used as a **veto** and never as a chooser; and
+Naokiyo is now anchored by his real id, so the slot is not open to be filled.
