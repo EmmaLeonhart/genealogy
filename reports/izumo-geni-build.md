@@ -250,3 +250,56 @@ run-together spellings, not to the branch.
 Renames go through `https://www.geni.com/profile/edit_basics/<id>`, which is a plain
 form: set `page_profile[names][en-US][first_name]` and `[last_name]`, then click
 **`Save & Close`** — not `Save`, which is what the add dialog uses.
+
+## THE MERGE THAT MATTERS — two Takatoki profiles
+
+**`Takatoki Izumo-kokuso` `6000000019459698488` already existed**, from the older
+additions, and it already carries the whole modern tree beneath it:
+
+    Takatoki Izumo-kokuso [6000000019459698488]
+      Takamune Senge [6000000019459773306]  -> Naokuni Senge [...924115]
+      Sadataka Kitajima [6000000019459854230]
+      Kiyotaka Izumo [6000000019460072018]
+      Kojobo Izumo [...878161]
+      Kagetaka Mukai [...756746]
+      Wife of Munenao Nanjo Izumo [...756758]
+
+The `Takatoki 53 Izumo` `6000000227334408837` created today under Yasutaka 52 is the
+**same person**. So this is not merely a duplicate to tidy — **merging these two joins
+the numbered kokuso chain to the entire existing Senge and Kitajima tree**, which is
+the join the whole exercise is for. It is the highest-value item in this file and it
+is Emma's to perform.
+
+It also means **54 and 55 need no creating**: Kiyotaka 54, Senge Takamune 55 and
+Kitajima Sadataka 55 are already there under the old Takatoki.
+
+## Fourth block — the Hiraoka line, absent in full
+
+The chart runs a Hiraoka column in parallel with the Izumo line from generation 53
+down. **None of it existed.** Created as a chain off Yasutaka 52:
+
+    Sadataka Hiraoka [6000000227334496889]
+      Takataka Hiraoka [6000000227334666836]
+        Tsunetaka Hiraoka [6000000227334638839]
+          Kuninori Hiraoka [6000000227334708829]
+            Naonori Hiraoka [6000000227334638877]
+              Naotaka Hiraoka [6000000227334516908]
+                Naokiyo Hiraoka [...]
+
+Named given-first per Emma's rule, so `Hiraoka no Sadataka` becomes `Sadataka Hiraoka`.
+
+**79 people created in total.**
+
+## A silent failure mode, found late — saves that report success and do nothing
+
+Geni's add dialog **rejects a save when Status is neither Living nor Deceased**, with
+`Please select Living or Deceased for this person.` The status radio is only
+pre-selected when the *parent* carries dates; on a profile created today it is blank.
+Clicking Save then does nothing at all, and a script that only clicks the button
+cannot tell the difference — `Kuninori Hiraoka` reported `OK` twice and did not exist
+either time.
+
+The helper now **sets Deceased explicitly** and, after saving, **looks for the error
+text and reports `ERR` instead of `OK`**. Everything created before this fix was
+verified by re-reading the parent's child list, which is the only trustworthy check:
+the return value of the add is not evidence.
