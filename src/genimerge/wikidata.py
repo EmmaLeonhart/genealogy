@@ -23,6 +23,7 @@ from __future__ import annotations
 
 import gzip
 import hashlib
+import os
 import json
 import time
 import urllib.error
@@ -36,6 +37,7 @@ __all__ = [
     "SPARQL_ENDPOINT",
     "API_ENDPOINT",
     "USER_AGENT",
+    "require_agent",
     "WikidataClient",
     "Match",
     "match_by_geni_id",
@@ -48,9 +50,29 @@ API_ENDPOINT = "https://www.wikidata.org/w/api.php"
 #: way to reach whoever runs it**, and throttles harder without one. The contact
 #: is Emma's, added 2026-08-07 with her say-so before the bulk download — a
 #: ~10,300-request run is exactly the case the policy is written for.
-USER_AGENT = (
-    "genimerge/0.1 (Geni GEDCOM to Wikidata reconciliation; contact@emmaleonhart.com)"
-)
+#: The User-Agent is the contact address and nothing else. Emma, 2026-08-18: the
+#: repository must never be linked from an agent, and neither should a description
+#: of what the project does -- both tell a reader where to look. From BOT_CONTACT.
+CONTACT = os.environ.get("BOT_CONTACT", "").strip()
+
+USER_AGENT = CONTACT
+
+
+def require_agent() -> str:
+    """The contact address, or a clear failure naming the secret.
+
+    **Without this the failure is a mystery 403.** ``CONTACT`` is empty whenever
+    ``BOT_CONTACT`` is unset, and an empty ``User-Agent`` is exactly what Wikimedia
+    refuses -- so a checkout without the secret got a bare "HTTP Error 403" from six
+    different call sites with nothing pointing at the cause. Fail here instead, once,
+    saying what to set.
+    """
+    if not USER_AGENT:
+        raise RuntimeError(
+            "BOT_CONTACT is not set, so the User-Agent would be empty and Wikimedia "
+            "returns 403. Set BOT_CONTACT to the contact address before any fetch."
+        )
+    return USER_AGENT
 
 #: How many Geni IDs to put in one ``VALUES`` clause. Large enough that 8766 IDs
 #: is a couple of dozen queries, small enough to stay well inside the endpoint's
@@ -73,7 +95,7 @@ def _http_fetch(url: str, data: bytes | None = None, headers: dict | None = None
         url,
         data=data,
         headers={
-            "User-Agent": USER_AGENT,
+            "User-Agent": require_agent(),
             "Accept-Encoding": "gzip",
             **(headers or {}),
         },

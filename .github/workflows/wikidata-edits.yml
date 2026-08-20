@@ -90,6 +90,8 @@ jobs:
           USER_SECRET: ${{ secrets.USERNAME }}
           BOT_SECRET: ${{ secrets.BOT_NAME }}
           PASS_SECRET: ${{ secrets.BOT_PASSWORD }}
+          BOT_CONTACT: ${{ secrets.BOT_CONTACT }}
+          LOCKOUT_STATE_URL: ${{ secrets.LOCKOUT_STATE_URL }}
         run: |
           missing=0
           [[ -z "$USER_SECRET" ]] && { echo "::error::USERNAME is not set"; missing=1; }
@@ -104,6 +106,8 @@ jobs:
           USERNAME: ${{ secrets.USERNAME }}
           BOT_NAME: ${{ secrets.BOT_NAME }}
           BOT_PASSWORD: ${{ secrets.BOT_PASSWORD }}
+          BOT_CONTACT: ${{ secrets.BOT_CONTACT }}
+          LOCKOUT_STATE_URL: ${{ secrets.LOCKOUT_STATE_URL }}
           PYTHONPATH: src
         run: |
           python scripts/wikidata-edit-run.py \

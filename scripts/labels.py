@@ -160,6 +160,12 @@ WORDS_MEANING_UNKNOWN = {
                       #        by the mononym census ranking it among Anna and Lars.
     "未詳",            #     1  Japanese, "details unknown"
     "無名",            #        Japanese / Chinese, "nameless"
+    "某",              #   252  Chinese, "a certain one" -- the exact sense of `NN`.
+                      #        Emma, 2026-08-19, asked whether it belonged here
+                      #        beside 未知 and ukjent: *"Add it"*. It is the whole
+                      #        given name on 252 Han-only records and there is no
+                      #        surname 某 and no given name containing it, so it
+                      #        never collides with a real name.
 }
 
 #: Punctuation, a marker **only as the whole label** — the other half of her
@@ -234,6 +240,51 @@ def leads_with_a_marker(text: str) -> bool:
     if head in NOT_MARKERS:
         return False
     return head in NARROW_MARKERS | WORDS_MEANING_UNKNOWN | SINGLE_LETTER_MARKERS
+
+
+#: Quote characters a label may be wrapped in. Stripped before matching, because a
+#: marker in quotation marks is still a marker: `"unknown"` and `"unbekannt"` were both
+#: reading as names, 4 records, found 2026-08-18 while checking Emma's instruction that
+#: `unbekannt` be treated as an NN substitute — it already was, and the quoting was what
+#: defeated it. Straight and typographic, single and double, plus the European guillemets
+#: and the German low-9 forms, since the corpus is Norwegian, German and Swedish.
+SURROUNDING_QUOTES = "\"“”‘’«»„‚'"
+
+
+def is_marker_label(label: str) -> bool:
+    """Whether this string is a marker rather than a name, for LABEL emission.
+
+    The one definition. It lived in `walk-structural-merge.py` as
+    `is_placeholder_label` and `build-edit-objects.py` had no copy at all, which is
+    the whole defect: the same guard was needed at six emission sites across two
+    scripts and existed at four of them. Two of the faults already recorded in this
+    repo are that shape -- the `ja`/`zh` branch of `walk-structural-merge.py` wrote
+    22 edits carrying `未知` because it was not consulting the vocabulary its
+    neighbours consulted, and `build-edit-objects.py` still writes `label_en`
+    straight into `en` and `mul`. A predicate copied per caller is a predicate that
+    will disagree with itself.
+
+    Three tests, in order:
+
+    * `is_placeholder_form` -- the whole label means *no name here*, including the
+      all-components case `? ?` and `NN .`.
+    * `private` anywhere -- `CLAUDE.md`: *"'Private' is a redaction marker, not a
+      name, and an item labelled that asserts something false while being impossible
+      to find"*. The marker those people get is `NN` in `mul`.
+    * `leads_with_a_marker` -- `NN Hildesheim` opens with a marker and continues
+      with a real surname, so the label is not written to a local language, but the
+      surname is not thrown away either; that is the 3,605-surname rule.
+
+    **Words yes, punctuation no** for the head test -- Emma, 2026-08-17 -- so
+    `. Weill` and `Nechama (?) Heller` are left alone. Punctuation is a marker only
+    as the whole label, which is the first test's business.
+    """
+    low = (label or "").strip().strip(SURROUNDING_QUOTES).strip().lower()
+    if not low or is_placeholder_form(low):
+        return True
+    if "private" in low:
+        return True
+    return leads_with_a_marker(low)
 
 
 def is_unnamed(gedcom_name: str) -> bool:

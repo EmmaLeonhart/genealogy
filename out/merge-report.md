@@ -52,212 +52,319 @@ Sources in merge order (later sources win value conflicts):
 46. `export-Forest-50.ged`
 47. `export-Forest-6.ged`
 48. `export-Forest-9.ged`
-49. `export-Descendants-6000000177921389824.ged`
-50. `export-Descendants-6000000177941048933.ged`
-51. `export-Descendants-6000000177943120858.ged`
-52. `export-Descendants-6000000177943658830.ged`
-53. `export-Descendants-6000000177944088828.ged`
-54. `export-Descendants-6000000177944124971.ged`
-55. `export-Descendants-6000000177944417821.ged`
-56. `export-Descendants-6000000177955802827.ged`
-57. `export-Descendants-6000000178898487831.ged`
-58. `export-Descendants-6000000210387665830.ged`
-59. `export-Descendants-6000000210455376824.ged`
-60. `export-Descendants-6000000210457327856.ged`
-61. `export-Descendants-6000000226989731860.ged`
-62. `export-Descendants-6000000227039926826.ged`
-63. `export-Descendants-6000000227040338177.ged`
-64. `export-Descendants-6000000227040553824.ged`
-65. `export-Descendants-6000000227040613855.ged`
-66. `export-Descendants-6000000227086380915.ged`
-67. `export-Descendants-6000000227086506866.ged`
-68. `export-Descendants-6000000227212960823.ged`
-69. `export-Descendants-6000000227224418030.ged`
-70. `export-BloodTree-6000000087535357291.ged`
-71. `export-BloodTree-6000000178918422849.ged`
-72. `export-BloodTree-6000000209079906821.ged`
-73. `export-BloodTree-6000000209295506839.ged`
-74. `export-BloodTree-6000000227241026872.ged`
-75. `export-BloodTree-6000000227252355883.ged`
-76. `export-Descendants-6000000178918422849.ged`
-77. `export-Descendants-6000000179131695821.ged`
-78. `export-Descendants-6000000209721822822.ged`
-79. `export-Descendants-6000000209721868822.ged`
-80. `export-Descendants-6000000227252355883.ged`
-81. `export-Forest-6000000087535357291.ged`
-82. `export-Forest-6000000178918422849.ged`
-83. `export-Forest-6000000209079906821.ged`
-84. `export-Forest-6000000209295506839.ged`
-85. `export-Forest-6000000209721822822.ged`
-86. `export-Forest-6000000209721868822.ged`
-87. `export-Forest-6000000227085766947.ged`
-88. `export-Forest-6000000227085797849.ged`
-89. `export-Forest-6000000227085828865.ged`
-90. `export-Forest-6000000227085871850.ged`
-91. `export-Forest-6000000227252355883.ged`
-92. `export-Forest-6000000227252387856.ged`
-93. `export-Forest-6000000227252593825.ged`
-94. `export-Forest-6000000227254162896.ged`
-95. `export-Forest-6000000227254292863.ged`
-96. `export-Forest-6000000227254292875.ged`
-97. `export-Forest-6000000227254306900.ged`
-98. `export-Forest-6000000227254335853.ged`
-99. `export-Forest-6000000227254345871.ged`
-100. `export-Forest-6000000227254368832.ged`
-101. `export-Forest-6000000227254397877.ged`
-102. `export-Forest-6000000227254497932.ged`
-103. `export-Forest-6000000227254550821.ged`
-104. `export-Forest-6000000227256597825.ged`
-105. `export-Forest-6000000227258246190.ged`
-106. `export-Forest-6000000227258354999.ged`
-107. `export-Forest-6000000227258452920.ged`
-108. `export-Forest-6000000227258532866.ged`
-109. `export-Forest-6000000227258573822.ged`
-110. `export-BloodTree-16.ged`
-111. `export-Descendants-21.ged`
-112. `export-Forest-0.ged`
-113. `export-Forest-1.ged`
-114. `export-Forest-10.ged`
-115. `export-Forest-11.ged`
-116. `export-Forest-12.ged`
-117. `export-Forest-13.ged`
-118. `export-Forest-14.ged`
-119. `export-Forest-15.ged`
-120. `export-Forest-18.ged`
-121. `export-Forest-19.ged`
-122. `export-Forest-2.ged`
-123. `export-Forest-20.ged`
-124. `export-Forest-21.ged`
-125. `export-Forest-22.ged`
-126. `export-Forest-23.ged`
-127. `export-Forest-24.ged`
-128. `export-Forest-25.ged`
-129. `export-Forest-26.ged`
-130. `export-Forest-27.ged`
-131. `export-Forest-28.ged`
-132. `export-Forest-29.ged`
-133. `export-Forest-3.ged`
-134. `export-Forest-30.ged`
-135. `export-Forest-31.ged`
-136. `export-Forest-32.ged`
-137. `export-Forest-33.ged`
-138. `export-Forest-34.ged`
-139. `export-Forest-35.ged`
-140. `export-Forest-36.ged`
-141. `export-Forest-37.ged`
-142. `export-Forest-38.ged`
-143. `export-Forest-39.ged`
-144. `export-Forest-4.ged`
-145. `export-Forest-7.ged`
-146. `export-Forest-8.ged`
-147. `export-Forest-9.ged`
-148. `export-Ancestors-6000000087535357291.ged`
-149. `export-Ancestors-6000000177921459052.ged`
-150. `export-Ancestors-6000000177921459056.ged`
-151. `export-Ancestors-6000000177921459078.ged`
-152. `export-Ancestors-6000000177921459114.ged`
-153. `export-Ancestors-6000000209078072833.ged`
-154. `export-Ancestors-6000000220974565012.ged`
-155. `export-Bio-6000000212213649822.ged`
-156. `export-BloodTree-6000000087535357291.ged`
-157. `export-BloodTree-6000000177943379826.ged`
-158. `export-BloodTree-6000000177944025822.ged`
-159. `export-BloodTree-6000000178415387935.ged`
-160. `export-BloodTree-6000000178418577840.ged`
-161. `export-BloodTree-6000000178420660827.ged`
-162. `export-BloodTree-6000000209655085851.ged`
-163. `export-Descendants-6000000209595340830.ged`
-164. `export-Descendants-6000000209931920826.ged`
-165. `export-Descendants-6000000227040600959.ged`
-166. `export-Descendants-6000000227085797849.ged`
-167. `export-Descendants-6000000227085828865.ged`
-168. `export-Descendants-6000000227085871850.ged`
-169. `export-Descendants-6000000227086244080.ged`
-170. `export-Descendants-6000000227086432913.ged`
-171. `export-Descendants-6000000227086452843.ged`
-172. `export-Descendants-6000000227086455824.ged`
-173. `export-Descendants-6000000227086465839.ged`
-174. `export-Descendants-6000000227087382828.ged`
-175. `export-Descendants-6000000227227041063.ged`
-176. `export-Descendants-6000000227227190927.ged`
-177. `export-Descendants-6000000227227194942.ged`
-178. `export-Descendants-6000000227227274837.ged`
-179. `export-Descendants-6000000227227278828.ged`
-180. `export-Descendants-6000000227227295846.ged`
-181. `export-Forest-6000000178918422849.ged`
-182. `export-Forest-6000000227086244080.ged`
-183. `export-Forest-6000000227086380915.ged`
-184. `export-Forest-6000000227086432913.ged`
-185. `export-Forest-6000000227086452843.ged`
-186. `export-Forest-6000000227086455824.ged`
-187. `export-Forest-6000000227086465839.ged`
-188. `export-Forest-6000000227086500885.ged`
-189. `export-Forest-6000000227086506866.ged`
-190. `export-Forest-6000000227086510841.ged`
-191. `export-Forest-6000000227086620980.ged`
-192. `export-Forest-6000000227086715937.ged`
-193. `export-Forest-6000000227086717913.ged`
-194. `export-Forest-6000000227087120840.ged`
-195. `export-Forest-6000000227225487992.ged`
-196. `export-Forest-6000000227225628908.ged`
-197. `export-Forest-6000000227225654852.ged`
-198. `export-Forest-6000000227226552913.ged`
-199. `export-Forest-6000000227226579873.ged`
-200. `export-Forest-6000000227226600829.ged`
-201. `export-Forest-6000000227226720863.ged`
-202. `export-Forest-6000000227226792872.ged`
-203. `export-Forest-6000000227226796847.ged`
-204. `export-Forest-6000000227226850980.ged`
-205. `export-Forest-6000000227227016909.ged`
-206. `export-Forest-6000000227227035828.ged`
-207. `export-Forest-6000000227227039845.ged`
-208. `export-Forest-6000000227227041063.ged`
-209. `export-Forest-6000000227227092862.ged`
-210. `export-Forest-6000000227227104853.ged`
-211. `export-Forest-6000000227227132960.ged`
-212. `export-Forest-6000000227227141848.ged`
-213. `export-Forest-6000000227227142945.ged`
-214. `export-Forest-6000000227227238821.ged`
-215. `export-Forest-6000000227227320831.ged`
-216. `export-Forest-6000000210475738822.ged`
-217. `export-Forest.ged`
-218. `export-Forest.ged`
-219. `export-Forest-6000000227288930948.ged`
-220. `export-Forest-6000000227289463836.ged`
-221. `export-Forest-6000000227289547881.ged`
-222. `export-Forest-6000000227289604840.ged`
-223. `export-Forest-6000000227289663852.ged`
-224. `export-Forest-6000000227289792822.ged`
-225. `export-Forest.ged`
-226. `export-Forest-6000000227147210844.ged`
-227. `export-Ancestors.ged`
-228. `export-BloodTree.ged`
-229. `export-Forest-6000000226977233850.ged`
-230. `export-Forest-6000000226989731860.ged`
-231. `export-Forest.ged`
-232. `export-Ancestors-6000000227241038833.ged`
-233. `export-BloodTree-6000000178794141887.ged`
-234. `export-BloodTree-6000000178918541826.ged`
-235. `export-Forest-6000000178795709821.ged`
-236. `export-Forest-6000000178918116832.ged`
-237. `export-Forest-40.ged`
-238. `export-Forest-41.ged`
-239. `export-Forest-42.ged`
-240. `export-Forest-43.ged`
-241. `export-Forest-6000000227145774838.ged`
-242. `export-Forest-6000000227147141927.ged`
-243. `export-Descendants-6000000227143930843.ged`
-244. `export-Forest-6000000227143930843.ged`
-245. `export-Forest-6000000227145420853.ged`
+49. `export-BloodTree-6000000227291886826.ged`
+50. `export-Forest-6000000227258546877.ged`
+51. `export-Forest-6000000227289886830.ged`
+52. `export-Forest-6000000227289933834.ged`
+53. `export-Forest-6000000227290969847.ged`
+54. `export-Forest-6000000227291028845.ged`
+55. `export-Forest-6000000227291086839.ged`
+56. `export-Forest-6000000227291195824.ged`
+57. `export-Forest-6000000227293218831.ged`
+58. `export-Forest-6000000227293344963.ged`
+59. `export-Forest-6000000227293463834.ged`
+60. `export-Forest-6000000227293577970.ged`
+61. `export-Forest-6000000227293700852.ged`
+62. `export-Forest-6000000227294020862.ged`
+63. `export-Forest-6000000227294050988.ged`
+64. `export-Forest-6000000227294155867.ged`
+65. `export-Forest-6000000227294183891.ged`
+66. `export-Forest-6000000227294770839.ged`
+67. `export-Forest-6000000227294926845.ged`
+68. `export-Forest-6000000227295142836.ged`
+69. `export-Forest-6000000227295542846.ged`
+70. `export-Forest-6000000227295719853.ged`
+71. `export-Forest-6000000227295777037.ged`
+72. `export-Forest-6000000227295848846.ged`
+73. `export-Forest-6000000227295849842.ged`
+74. `export-Forest-6000000227295934952.ged`
+75. `export-Forest-6000000227296074885.ged`
+76. `export-Forest-6000000227296447963.ged`
+77. `export-Forest-6000000227296927882.ged`
+78. `export-Forest-6000000227296930828.ged`
+79. `export-Forest-6000000227296941934.ged`
+80. `export-Forest-6000000227296946901.ged`
+81. `export-Forest-6000000227296962836.ged`
+82. `export-Forest-6000000227297021824.ged`
+83. `export-Forest-6000000227297027825.ged`
+84. `export-Forest-6000000227297029878.ged`
+85. `export-Forest-6000000227297183865.ged`
+86. `export-Forest-6000000227297265832.ged`
+87. `export-Forest-6000000227297291828.ged`
+88. `export-Forest-6000000227297393968.ged`
+89. `export-Forest-6000000227297512829.ged`
+90. `export-Forest-6000000227297534832.ged`
+91. `export-Forest-6000000227297537905.ged`
+92. `export-Forest-6000000227297589821.ged`
+93. `export-Forest-6000000227297681897.ged`
+94. `export-Forest-6000000227297684896.ged`
+95. `export-Forest-6000000227297694836.ged`
+96. `export-Forest-6000000227297762830.ged`
+97. `export-Forest-6000000227297780952.ged`
+98. `export-Forest-6000000227297843999.ged`
+99. `export-Forest-6000000227297913863.ged`
+100. `export-Forest-6000000227297927829.ged`
+101. `export-Forest-6000000227297927849.ged`
+102. `export-Forest-6000000227297999821.ged`
+103. `export-Forest-6000000227298012899.ged`
+104. `export-Forest-6000000227298054843.ged`
+105. `export-Forest-6000000227298120914.ged`
+106. `export-Forest-6000000227298146822.ged`
+107. `export-Forest-6000000227298269847.ged`
+108. `export-Forest-6000000227298295858.ged`
+109. `export-Forest-6000000227298315838.ged`
+110. `export-Forest-6000000227298337835.ged`
+111. `export-Forest-6000000227298341009.ged`
+112. `export-Forest-6000000227298391886.ged`
+113. `export-Forest-6000000227298555861.ged`
+114. `export-Forest-6000000227298630829.ged`
+115. `export-Forest-6000000227299181836.ged`
+116. `export-Forest-6000000227299182891.ged`
+117. `export-Forest-6000000227299240825.ged`
+118. `export-Forest-6000000227299323845.ged`
+119. `export-Forest-6000000227299323884.ged`
+120. `export-Forest-6000000227299559985.ged`
+121. `export-Forest-6000000227299732860.ged`
+122. `export-Forest-6000000227299791853.ged`
+123. `export-Forest-6000000227299967829.ged`
+124. `export-Forest-6000000227300008823.ged`
+125. `export-Forest-6000000227300039935.ged`
+126. `export-Forest-6000000227300121832.ged`
+127. `export-Forest-6000000227300176839.ged`
+128. `export-Forest-6000000227300208835.ged`
+129. `export-Forest-6000000227300290832.ged`
+130. `export-Forest-6000000227300430000.ged`
+131. `export-Forest-6000000227300950839.ged`
+132. `export-Forest-6000000227301562877.ged`
+133. `export-Forest-6000000227301842878.ged`
+134. `export-Forest-6000000227301847888.ged`
+135. `export-Forest-6000000227301875865.ged`
+136. `export-Forest-6000000227302080982.ged`
+137. `export-Forest-6000000227302210847.ged`
+138. `export-Forest-6000000227303522852.ged`
+139. `export-Forest-6000000227303611823.ged`
+140. `export-Forest-6000000227305963833.ged`
+141. `export-Forest-6000000227306452830.ged`
+142. `export-Forest-6000000227306504844.ged`
+143. `export-Forest-6000000227307226865.ged`
+144. `export-Forest-6000000227308361821.ged`
+145. `export-Forest-6000000227308444837.ged`
+146. `export-Forest-6000000227310727839.ged`
+147. `export-Forest-6000000227310843862.ged`
+148. `export-Forest-6000000227311010870.ged`
+149. `export-Forest-6000000227311193823.ged`
+150. `export-Forest-6000000227311267869.ged`
+151. `export-Forest-6000000227312153859.ged`
+152. `export-Forest-6000000227312306880.ged`
+153. `export-Forest-6000000227312490920.ged`
+154. `export-Descendants-6000000177921389824.ged`
+155. `export-Descendants-6000000177941048933.ged`
+156. `export-Descendants-6000000177943120858.ged`
+157. `export-Descendants-6000000177943658830.ged`
+158. `export-Descendants-6000000177944088828.ged`
+159. `export-Descendants-6000000177944124971.ged`
+160. `export-Descendants-6000000177944417821.ged`
+161. `export-Descendants-6000000177955802827.ged`
+162. `export-Descendants-6000000178898487831.ged`
+163. `export-Descendants-6000000210387665830.ged`
+164. `export-Descendants-6000000210455376824.ged`
+165. `export-Descendants-6000000210457327856.ged`
+166. `export-Descendants-6000000226989731860.ged`
+167. `export-Descendants-6000000227039926826.ged`
+168. `export-Descendants-6000000227040338177.ged`
+169. `export-Descendants-6000000227040553824.ged`
+170. `export-Descendants-6000000227040613855.ged`
+171. `export-Descendants-6000000227086380915.ged`
+172. `export-Descendants-6000000227086506866.ged`
+173. `export-Descendants-6000000227212960823.ged`
+174. `export-Descendants-6000000227224418030.ged`
+175. `export-BloodTree-6000000087535357291.ged`
+176. `export-BloodTree-6000000178918422849.ged`
+177. `export-BloodTree-6000000209079906821.ged`
+178. `export-BloodTree-6000000209295506839.ged`
+179. `export-BloodTree-6000000227241026872.ged`
+180. `export-BloodTree-6000000227252355883.ged`
+181. `export-Descendants-6000000178918422849.ged`
+182. `export-Descendants-6000000179131695821.ged`
+183. `export-Descendants-6000000209721822822.ged`
+184. `export-Descendants-6000000209721868822.ged`
+185. `export-Descendants-6000000227252355883.ged`
+186. `export-Forest-6000000087535357291.ged`
+187. `export-Forest-6000000178918422849.ged`
+188. `export-Forest-6000000209079906821.ged`
+189. `export-Forest-6000000209295506839.ged`
+190. `export-Forest-6000000209721822822.ged`
+191. `export-Forest-6000000209721868822.ged`
+192. `export-Forest-6000000227085766947.ged`
+193. `export-Forest-6000000227085797849.ged`
+194. `export-Forest-6000000227085828865.ged`
+195. `export-Forest-6000000227085871850.ged`
+196. `export-Forest-6000000227252355883.ged`
+197. `export-Forest-6000000227252387856.ged`
+198. `export-Forest-6000000227252593825.ged`
+199. `export-Forest-6000000227254162896.ged`
+200. `export-Forest-6000000227254292863.ged`
+201. `export-Forest-6000000227254292875.ged`
+202. `export-Forest-6000000227254306900.ged`
+203. `export-Forest-6000000227254335853.ged`
+204. `export-Forest-6000000227254345871.ged`
+205. `export-Forest-6000000227254368832.ged`
+206. `export-Forest-6000000227254397877.ged`
+207. `export-Forest-6000000227254497932.ged`
+208. `export-Forest-6000000227254550821.ged`
+209. `export-Forest-6000000227256597825.ged`
+210. `export-Forest-6000000227258246190.ged`
+211. `export-Forest-6000000227258354999.ged`
+212. `export-Forest-6000000227258452920.ged`
+213. `export-Forest-6000000227258532866.ged`
+214. `export-Forest-6000000227258573822.ged`
+215. `export-BloodTree-16.ged`
+216. `export-Descendants-21.ged`
+217. `export-Forest-0.ged`
+218. `export-Forest-1.ged`
+219. `export-Forest-10.ged`
+220. `export-Forest-11.ged`
+221. `export-Forest-12.ged`
+222. `export-Forest-13.ged`
+223. `export-Forest-14.ged`
+224. `export-Forest-15.ged`
+225. `export-Forest-18.ged`
+226. `export-Forest-19.ged`
+227. `export-Forest-2.ged`
+228. `export-Forest-20.ged`
+229. `export-Forest-21.ged`
+230. `export-Forest-22.ged`
+231. `export-Forest-23.ged`
+232. `export-Forest-24.ged`
+233. `export-Forest-25.ged`
+234. `export-Forest-26.ged`
+235. `export-Forest-27.ged`
+236. `export-Forest-28.ged`
+237. `export-Forest-29.ged`
+238. `export-Forest-3.ged`
+239. `export-Forest-30.ged`
+240. `export-Forest-31.ged`
+241. `export-Forest-32.ged`
+242. `export-Forest-33.ged`
+243. `export-Forest-34.ged`
+244. `export-Forest-35.ged`
+245. `export-Forest-36.ged`
+246. `export-Forest-37.ged`
+247. `export-Forest-38.ged`
+248. `export-Forest-39.ged`
+249. `export-Forest-4.ged`
+250. `export-Forest-7.ged`
+251. `export-Forest-8.ged`
+252. `export-Forest-9.ged`
+253. `export-Ancestors-6000000087535357291.ged`
+254. `export-Ancestors-6000000177921459052.ged`
+255. `export-Ancestors-6000000177921459056.ged`
+256. `export-Ancestors-6000000177921459078.ged`
+257. `export-Ancestors-6000000177921459114.ged`
+258. `export-Ancestors-6000000209078072833.ged`
+259. `export-Ancestors-6000000220974565012.ged`
+260. `export-Bio-6000000212213649822.ged`
+261. `export-BloodTree-6000000087535357291.ged`
+262. `export-BloodTree-6000000177943379826.ged`
+263. `export-BloodTree-6000000177944025822.ged`
+264. `export-BloodTree-6000000178415387935.ged`
+265. `export-BloodTree-6000000178418577840.ged`
+266. `export-BloodTree-6000000178420660827.ged`
+267. `export-BloodTree-6000000209655085851.ged`
+268. `export-Descendants-6000000209595340830.ged`
+269. `export-Descendants-6000000209931920826.ged`
+270. `export-Descendants-6000000227040600959.ged`
+271. `export-Descendants-6000000227085797849.ged`
+272. `export-Descendants-6000000227085828865.ged`
+273. `export-Descendants-6000000227085871850.ged`
+274. `export-Descendants-6000000227086244080.ged`
+275. `export-Descendants-6000000227086432913.ged`
+276. `export-Descendants-6000000227086452843.ged`
+277. `export-Descendants-6000000227086455824.ged`
+278. `export-Descendants-6000000227086465839.ged`
+279. `export-Descendants-6000000227087382828.ged`
+280. `export-Descendants-6000000227227041063.ged`
+281. `export-Descendants-6000000227227190927.ged`
+282. `export-Descendants-6000000227227194942.ged`
+283. `export-Descendants-6000000227227274837.ged`
+284. `export-Descendants-6000000227227278828.ged`
+285. `export-Descendants-6000000227227295846.ged`
+286. `export-Forest-6000000178918422849.ged`
+287. `export-Forest-6000000227086244080.ged`
+288. `export-Forest-6000000227086380915.ged`
+289. `export-Forest-6000000227086432913.ged`
+290. `export-Forest-6000000227086452843.ged`
+291. `export-Forest-6000000227086455824.ged`
+292. `export-Forest-6000000227086465839.ged`
+293. `export-Forest-6000000227086500885.ged`
+294. `export-Forest-6000000227086506866.ged`
+295. `export-Forest-6000000227086510841.ged`
+296. `export-Forest-6000000227086620980.ged`
+297. `export-Forest-6000000227086715937.ged`
+298. `export-Forest-6000000227086717913.ged`
+299. `export-Forest-6000000227087120840.ged`
+300. `export-Forest-6000000227225487992.ged`
+301. `export-Forest-6000000227225628908.ged`
+302. `export-Forest-6000000227225654852.ged`
+303. `export-Forest-6000000227226552913.ged`
+304. `export-Forest-6000000227226579873.ged`
+305. `export-Forest-6000000227226600829.ged`
+306. `export-Forest-6000000227226720863.ged`
+307. `export-Forest-6000000227226792872.ged`
+308. `export-Forest-6000000227226796847.ged`
+309. `export-Forest-6000000227226850980.ged`
+310. `export-Forest-6000000227227016909.ged`
+311. `export-Forest-6000000227227035828.ged`
+312. `export-Forest-6000000227227039845.ged`
+313. `export-Forest-6000000227227041063.ged`
+314. `export-Forest-6000000227227092862.ged`
+315. `export-Forest-6000000227227104853.ged`
+316. `export-Forest-6000000227227132960.ged`
+317. `export-Forest-6000000227227141848.ged`
+318. `export-Forest-6000000227227142945.ged`
+319. `export-Forest-6000000227227238821.ged`
+320. `export-Forest-6000000227227320831.ged`
+321. `export-Forest-6000000210475738822.ged`
+322. `export-Forest.ged`
+323. `export-Forest.ged`
+324. `export-Forest-6000000227258314174.ged`
+325. `export-Forest-6000000227258622821.ged`
+326. `export-Forest-6000000227288930948.ged`
+327. `export-Forest-6000000227289463836.ged`
+328. `export-Forest-6000000227289547881.ged`
+329. `export-Forest-6000000227289604840.ged`
+330. `export-Forest-6000000227289663852.ged`
+331. `export-Forest-6000000227289792822.ged`
+332. `export-Forest.ged`
+333. `export-Forest-6000000227147210844.ged`
+334. `export-Ancestors.ged`
+335. `export-BloodTree.ged`
+336. `export-Forest-6000000226977233850.ged`
+337. `export-Forest-6000000226989731860.ged`
+338. `export-Forest.ged`
+339. `export-Ancestors-6000000227241038833.ged`
+340. `export-BloodTree-6000000178794141887.ged`
+341. `export-BloodTree-6000000178918541826.ged`
+342. `export-Forest-6000000178795709821.ged`
+343. `export-Forest-6000000178918116832.ged`
+344. `export-Forest-40.ged`
+345. `export-Forest-41.ged`
+346. `export-Forest-42.ged`
+347. `export-Forest-43.ged`
+348. `export-Forest-6000000227145774838.ged`
+349. `export-Forest-6000000227147141927.ged`
+350. `export-Descendants-6000000227143930843.ged`
+351. `export-Forest-6000000227143930843.ged`
+352. `export-Forest-6000000227145420853.ged`
 
 ## Merged totals
 
 | record | count |
 | --- | ---: |
-| FAM | 226105 |
-| INDI | 479782 |
-| NOTE | 40955 |
-| SUBM | 20120 |
+| FAM | 396346 |
+| INDI | 897828 |
+| NOTE | 50972 |
+| SUBM | 34474 |
 
 ## What each source contributed
 
@@ -270,12 +377,12 @@ Sources in merge order (later sources win value conflicts):
 | `export-Descendants-33.ged` | 1693 | 3323 | 0 | 101 | 1078 | 257 |
 | `export-Descendants-45.ged` | 2136 | 3864 | 3 | 327 | 54 | 0 |
 | `export-Descendants-7.ged` | 1063 | 1829 | 0 | 32 | 3255 | 21 |
-| `export-Forest-10.ged` | 172 | 346 | 25 | 13 | 6644 | 36279 |
+| `export-Forest-10.ged` | 148 | 262 | 12 | 7 | 6771 | 36877 |
 | `export-Forest-11.ged` | 0 | 0 | 0 | 0 | 6879 | 22036 |
-| `export-Forest-12.ged` | 1029 | 1945 | 249 | 72 | 4052 | 9344 |
+| `export-Forest-12.ged` | 853 | 1557 | 176 | 21 | 4740 | 11943 |
 | `export-Forest-13.ged` | 1035 | 2158 | 1 | 2 | 2925 | 7175 |
 | `export-Forest-14.ged` | 960 | 2100 | 0 | 27 | 2928 | 2293 |
-| `export-Forest-15.ged` | 2358 | 3979 | 234 | 521 | 315 | 43 |
+| `export-Forest-15.ged` | 2357 | 3966 | 234 | 461 | 389 | 52 |
 | `export-Forest-16.ged` | 729 | 1285 | 191 | 28 | 4938 | 183 |
 | `export-Forest-17.ged` | 194 | 303 | 85 | 10 | 6967 | 101 |
 | `export-Forest-18.ged` | 457 | 1123 | 0 | 24 | 4314 | 1979 |
@@ -284,24 +391,24 @@ Sources in merge order (later sources win value conflicts):
 | `export-Forest-21.ged` | 573 | 1403 | 0 | 6 | 3854 | 1082 |
 | `export-Forest-22.ged` | 413 | 1733 | 0 | 43 | 3360 | 1223 |
 | `export-Forest-23.ged` | 765 | 1465 | 0 | 2 | 3835 | 4681 |
-| `export-Forest-24.ged` | 1252 | 3541 | 2 | 54 | 794 | 2303 |
-| `export-Forest-25.ged` | 292 | 788 | 14 | 6 | 6663 | 9319 |
+| `export-Forest-24.ged` | 1151 | 3221 | 2 | 38 | 1231 | 3783 |
+| `export-Forest-25.ged` | 263 | 675 | 6 | 3 | 6816 | 10432 |
 | `export-Forest-26.ged` | 609 | 1180 | 0 | 0 | 4359 | 1182 |
-| `export-Forest-27.ged` | 1129 | 3689 | 100 | 379 | 566 | 172 |
+| `export-Forest-27.ged` | 1129 | 3689 | 100 | 325 | 620 | 172 |
 | `export-Forest-28.ged` | 1203 | 3892 | 0 | 1 | 202 | 226 |
-| `export-Forest-29.ged` | 1 | 240 | 239 | 9 | 7796 | 25909 |
+| `export-Forest-29.ged` | 1 | 159 | 24 | 4 | 8097 | 31285 |
 | `export-Forest-30.ged` | 750 | 1603 | 0 | 24 | 3600 | 4060 |
-| `export-Forest-31.ged` | 1298 | 1763 | 426 | 34 | 5870 | 4457 |
-| `export-Forest-32.ged` | 1294 | 2419 | 152 | 38 | 3084 | 3747 |
-| `export-Forest-34.ged` | 943 | 3542 | 12 | 206 | 893 | 1209 |
+| `export-Forest-31.ged` | 1037 | 1390 | 27 | 19 | 6918 | 10514 |
+| `export-Forest-32.ged` | 587 | 985 | 8 | 8 | 5399 | 9248 |
+| `export-Forest-34.ged` | 763 | 2898 | 10 | 124 | 1801 | 3034 |
 | `export-Forest-35.ged` | 897 | 2473 | 0 | 36 | 2447 | 1715 |
-| `export-Forest-36.ged` | 831 | 2531 | 41 | 15 | 2390 | 4484 |
-| `export-Forest-37.ged` | 1557 | 2252 | 3 | 23 | 2877 | 2589 |
-| `export-Forest-39.ged` | 1126 | 3873 | 1 | 162 | 294 | 369 |
-| `export-Forest-40.ged` | 1634 | 2306 | 90 | 94 | 3804 | 4298 |
-| `export-Forest-41.ged` | 846 | 2516 | 8 | 76 | 2573 | 2918 |
+| `export-Forest-36.ged` | 647 | 2071 | 17 | 9 | 3064 | 7291 |
+| `export-Forest-37.ged` | 1421 | 2006 | 3 | 18 | 3264 | 3558 |
+| `export-Forest-39.ged` | 906 | 3096 | 0 | 72 | 1382 | 913 |
+| `export-Forest-40.ged` | 1233 | 1695 | 59 | 35 | 4906 | 5632 |
+| `export-Forest-41.ged` | 660 | 2042 | 5 | 24 | 3288 | 5068 |
 | `export-Forest-42.ged` | 230 | 382 | 0 | 0 | 6096 | 1133 |
-| `export-Forest-43.ged` | 2108 | 3634 | 104 | 165 | 975 | 527 |
+| `export-Forest-43.ged` | 1372 | 2387 | 45 | 38 | 3144 | 4729 |
 | `export-Forest-44.ged` | 2628 | 3864 | 14 | 16 | 29 | 1 |
 | `export-Forest-46.ged` | 0 | 0 | 0 | 0 | 2077 | 0 |
 | `export-Forest-47.ged` | 1144 | 1760 | 213 | 13 | 4873 | 261 |
@@ -311,187 +418,294 @@ Sources in merge order (later sources win value conflicts):
 | `export-Forest-50.ged` | 2140 | 3487 | 0 | 17 | 552 | 185 |
 | `export-Forest-6.ged` | 55 | 126 | 0 | 0 | 5798 | 81 |
 | `export-Forest-9.ged` | 0 | 7 | 0 | 0 | 6229 | 1357 |
-| `export-Descendants-6000000177921389824.ged` | 66 | 134 | 0 | 2 | 1 | 4 |
-| `export-Descendants-6000000177941048933.ged` | 301 | 696 | 0 | 41 | 192 | 2 |
-| `export-Descendants-6000000177943120858.ged` | 99 | 191 | 0 | 18 | 45 | 2 |
+| `export-BloodTree-6000000227291886826.ged` | 1748 | 4587 | 9 | 127 | 873 | 988 |
+| `export-Forest-6000000227258546877.ged` | 1217 | 5000 | 75 | 435 | 87 | 0 |
+| `export-Forest-6000000227289886830.ged` | 2314 | 5000 | 137 | 820 | 98 | 0 |
+| `export-Forest-6000000227289933834.ged` | 2663 | 5000 | 11 | 553 | 24 | 0 |
+| `export-Forest-6000000227290969847.ged` | 1570 | 4998 | 4 | 364 | 101 | 4 |
+| `export-Forest-6000000227291028845.ged` | 2253 | 4960 | 17 | 372 | 215 | 23 |
+| `export-Forest-6000000227291086839.ged` | 2567 | 4773 | 24 | 241 | 566 | 332 |
+| `export-Forest-6000000227291195824.ged` | 1877 | 4629 | 63 | 347 | 802 | 109 |
+| `export-Forest-6000000227293218831.ged` | 1695 | 5000 | 94 | 568 | 54 | 0 |
+| `export-Forest-6000000227293344963.ged` | 1485 | 5000 | 9 | 330 | 105 | 0 |
+| `export-Forest-6000000227293463834.ged` | 1532 | 5000 | 45 | 318 | 46 | 0 |
+| `export-Forest-6000000227293577970.ged` | 1299 | 4815 | 54 | 321 | 511 | 91 |
+| `export-Forest-6000000227293700852.ged` | 2401 | 4468 | 23 | 296 | 920 | 144 |
+| `export-Forest-6000000227294020862.ged` | 1504 | 4722 | 43 | 244 | 585 | 241 |
+| `export-Forest-6000000227294050988.ged` | 2327 | 4991 | 10 | 147 | 86 | 51 |
+| `export-Forest-6000000227294155867.ged` | 1567 | 4138 | 7 | 192 | 1577 | 461 |
+| `export-Forest-6000000227294183891.ged` | 1799 | 4681 | 21 | 238 | 739 | 185 |
+| `export-Forest-6000000227294770839.ged` | 2273 | 4928 | 2176 | 622 | 679 | 6198 |
+| `export-Forest-6000000227294926845.ged` | 1429 | 4683 | 5 | 208 | 695 | 283 |
+| `export-Forest-6000000227295142836.ged` | 1309 | 3578 | 1001 | 201 | 3833 | 2213 |
+| `export-Forest-6000000227295542846.ged` | 2792 | 4817 | 171 | 43 | 623 | 298 |
+| `export-Forest-6000000227295719853.ged` | 813 | 2140 | 1222 | 74 | 6503 | 41519 |
+| `export-Forest-6000000227295777037.ged` | 1263 | 4247 | 8 | 343 | 1263 | 209 |
+| `export-Forest-6000000227295848846.ged` | 3428 | 4846 | 305 | 221 | 560 | 247 |
+| `export-Forest-6000000227295849842.ged` | 2149 | 4306 | 70 | 180 | 1228 | 394 |
+| `export-Forest-6000000227295934952.ged` | 1355 | 4703 | 14 | 249 | 708 | 229 |
+| `export-Forest-6000000227296074885.ged` | 1440 | 2428 | 17 | 70 | 4014 | 959 |
+| `export-Forest-6000000227296447963.ged` | 2536 | 4936 | 208 | 213 | 390 | 221 |
+| `export-Forest-6000000227296927882.ged` | 2582 | 4796 | 20 | 110 | 567 | 218 |
+| `export-Forest-6000000227296930828.ged` | 1688 | 4685 | 116 | 267 | 847 | 333 |
+| `export-Forest-6000000227296941934.ged` | 3280 | 4977 | 1195 | 403 | 443 | 26 |
+| `export-Forest-6000000227296946901.ged` | 1931 | 4979 | 9 | 224 | 316 | 84 |
+| `export-Forest-6000000227296962836.ged` | 1185 | 4986 | 136 | 280 | 192 | 27 |
+| `export-Forest-6000000227297021824.ged` | 2373 | 4637 | 1 | 275 | 867 | 244 |
+| `export-Forest-6000000227297027825.ged` | 1357 | 4680 | 141 | 223 | 810 | 168 |
+| `export-Forest-6000000227297029878.ged` | 1758 | 4172 | 272 | 259 | 1721 | 503 |
+| `export-Forest-6000000227297183865.ged` | 2542 | 4870 | 181 | 207 | 492 | 184 |
+| `export-Forest-6000000227297265832.ged` | 1368 | 4913 | 28 | 184 | 397 | 81 |
+| `export-Forest-6000000227297291828.ged` | 1819 | 4438 | 3 | 205 | 961 | 219 |
+| `export-Forest-6000000227297393968.ged` | 1575 | 3729 | 3457 | 88 | 3870 | 9238 |
+| `export-Forest-6000000227297512829.ged` | 2345 | 3193 | 170 | 22 | 3811 | 2694 |
+| `export-Forest-6000000227297534832.ged` | 1422 | 4540 | 257 | 251 | 1151 | 356 |
+| `export-Forest-6000000227297537905.ged` | 1870 | 4933 | 59 | 173 | 350 | 112 |
+| `export-Forest-6000000227297589821.ged` | 2204 | 4963 | 15 | 216 | 285 | 51 |
+| `export-Forest-6000000227297681897.ged` | 1351 | 4174 | 8 | 105 | 1388 | 633 |
+| `export-Forest-6000000227297684896.ged` | 1350 | 4925 | 21 | 409 | 303 | 37 |
+| `export-Forest-6000000227297694836.ged` | 1857 | 4898 | 75 | 212 | 447 | 131 |
+| `export-Forest-6000000227297762830.ged` | 1112 | 3487 | 1041 | 55 | 3796 | 4973 |
+| `export-Forest-6000000227297780952.ged` | 2369 | 4536 | 161 | 130 | 1253 | 922 |
+| `export-Forest-6000000227297843999.ged` | 1177 | 2442 | 1941 | 59 | 6232 | 5076 |
+| `export-Forest-6000000227297913863.ged` | 1570 | 4992 | 42 | 120 | 161 | 22 |
+| `export-Forest-6000000227297927829.ged` | 1754 | 4502 | 264 | 129 | 1127 | 472 |
+| `export-Forest-6000000227297927849.ged` | 1475 | 3719 | 7 | 103 | 2045 | 797 |
+| `export-Forest-6000000227297999821.ged` | 2197 | 4339 | 51 | 148 | 1404 | 431 |
+| `export-Forest-6000000227298012899.ged` | 1962 | 4731 | 208 | 167 | 809 | 300 |
+| `export-Forest-6000000227298054843.ged` | 1560 | 3875 | 655 | 63 | 2217 | 931 |
+| `export-Forest-6000000227298120914.ged` | 2790 | 4738 | 7 | 184 | 858 | 328 |
+| `export-Forest-6000000227298146822.ged` | 1267 | 3089 | 523 | 51 | 3697 | 5690 |
+| `export-Forest-6000000227298269847.ged` | 2244 | 4914 | 56 | 256 | 305 | 56 |
+| `export-Forest-6000000227298295858.ged` | 2030 | 5000 | 0 | 118 | 53 | 0 |
+| `export-Forest-6000000227298315838.ged` | 1098 | 1492 | 366 | 19 | 8013 | 3011 |
+| `export-Forest-6000000227298337835.ged` | 1855 | 3373 | 6 | 216 | 2425 | 442 |
+| `export-Forest-6000000227298341009.ged` | 1273 | 4689 | 47 | 151 | 709 | 231 |
+| `export-Forest-6000000227298391886.ged` | 881 | 1769 | 242 | 30 | 7434 | 1348 |
+| `export-Forest-6000000227298555861.ged` | 2070 | 4932 | 13 | 285 | 372 | 80 |
+| `export-Forest-6000000227298630829.ged` | 1923 | 3707 | 36 | 160 | 2200 | 817 |
+| `export-Forest-6000000227299181836.ged` | 1686 | 4031 | 161 | 126 | 2010 | 691 |
+| `export-Forest-6000000227299182891.ged` | 1535 | 2774 | 24 | 48 | 4754 | 5721 |
+| `export-Forest-6000000227299240825.ged` | 2042 | 4104 | 10 | 166 | 1756 | 718 |
+| `export-Forest-6000000227299323845.ged` | 1271 | 4449 | 17 | 129 | 1063 | 327 |
+| `export-Forest-6000000227299323884.ged` | 1832 | 4980 | 0 | 213 | 207 | 46 |
+| `export-Forest-6000000227299559985.ged` | 1825 | 4955 | 9 | 240 | 246 | 236 |
+| `export-Forest-6000000227299732860.ged` | 1942 | 4622 | 5 | 189 | 883 | 893 |
+| `export-Forest-6000000227299791853.ged` | 1084 | 3956 | 17 | 65 | 1814 | 1974 |
+| `export-Forest-6000000227299967829.ged` | 1346 | 4458 | 39 | 176 | 1219 | 2604 |
+| `export-Forest-6000000227300008823.ged` | 1255 | 4201 | 92 | 155 | 1426 | 3445 |
+| `export-Forest-6000000227300039935.ged` | 2266 | 4731 | 28 | 219 | 701 | 1199 |
+| `export-Forest-6000000227300121832.ged` | 1303 | 4735 | 12 | 154 | 649 | 449 |
+| `export-Forest-6000000227300176839.ged` | 1799 | 4404 | 33 | 87 | 1136 | 1457 |
+| `export-Forest-6000000227300208835.ged` | 2618 | 4940 | 0 | 324 | 351 | 121 |
+| `export-Forest-6000000227300290832.ged` | 1448 | 4764 | 20 | 174 | 571 | 488 |
+| `export-Forest-6000000227300430000.ged` | 2005 | 3566 | 17 | 178 | 2630 | 2359 |
+| `export-Forest-6000000227300950839.ged` | 1388 | 4914 | 2 | 222 | 425 | 127 |
+| `export-Forest-6000000227301562877.ged` | 2320 | 3497 | 170 | 73 | 3184 | 10624 |
+| `export-Forest-6000000227301842878.ged` | 2490 | 4950 | 29 | 99 | 205 | 57 |
+| `export-Forest-6000000227301847888.ged` | 1577 | 4974 | 26 | 310 | 254 | 37 |
+| `export-Forest-6000000227301875865.ged` | 2490 | 4493 | 15 | 230 | 1260 | 3363 |
+| `export-Forest-6000000227302080982.ged` | 1617 | 3910 | 56 | 102 | 1809 | 1661 |
+| `export-Forest-6000000227302210847.ged` | 1043 | 4554 | 12 | 147 | 933 | 1449 |
+| `export-Forest-6000000227303522852.ged` | 1559 | 3298 | 106 | 89 | 2998 | 5511 |
+| `export-Forest-6000000227303611823.ged` | 1064 | 4035 | 58 | 133 | 1717 | 2945 |
+| `export-Forest-6000000227305963833.ged` | 976 | 3900 | 20 | 110 | 1931 | 3698 |
+| `export-Forest-6000000227306452830.ged` | 1728 | 4470 | 17 | 55 | 1055 | 2809 |
+| `export-Forest-6000000227306504844.ged` | 2309 | 3933 | 39 | 35 | 2056 | 4391 |
+| `export-Forest-6000000227307226865.ged` | 1360 | 4879 | 5 | 134 | 466 | 216 |
+| `export-Forest-6000000227308361821.ged` | 1304 | 2106 | 107 | 38 | 5281 | 15798 |
+| `export-Forest-6000000227308444837.ged` | 1946 | 4092 | 14 | 68 | 1729 | 6021 |
+| `export-Forest-6000000227310727839.ged` | 1898 | 4847 | 24 | 181 | 491 | 866 |
+| `export-Forest-6000000227310843862.ged` | 1638 | 4116 | 8 | 113 | 1555 | 1216 |
+| `export-Forest-6000000227311010870.ged` | 881 | 3969 | 4 | 113 | 1666 | 2099 |
+| `export-Forest-6000000227311193823.ged` | 2284 | 3842 | 46 | 70 | 2213 | 2444 |
+| `export-Forest-6000000227311267869.ged` | 1256 | 3830 | 25 | 112 | 1909 | 4496 |
+| `export-Forest-6000000227312153859.ged` | 2016 | 3494 | 5 | 117 | 2734 | 3558 |
+| `export-Forest-6000000227312306880.ged` | 2237 | 3715 | 55 | 39 | 2727 | 3008 |
+| `export-Forest-6000000227312490920.ged` | 912 | 3693 | 122 | 346 | 2199 | 7861 |
+| `export-Descendants-6000000177921389824.ged` | 65 | 134 | 0 | 1 | 3 | 2 |
+| `export-Descendants-6000000177941048933.ged` | 301 | 696 | 0 | 24 | 209 | 2 |
+| `export-Descendants-6000000177943120858.ged` | 98 | 191 | 0 | 10 | 54 | 3 |
 | `export-Descendants-6000000177943658830.ged` | 1 | 2 | 0 | 0 | 881 | 1 |
-| `export-Descendants-6000000177944088828.ged` | 1403 | 4104 | 61 | 399 | 36 | 0 |
-| `export-Descendants-6000000177944124971.ged` | 1978 | 4035 | 47 | 194 | 231 | 21 |
-| `export-Descendants-6000000177944417821.ged` | 1082 | 2975 | 9 | 160 | 2047 | 393 |
-| `export-Descendants-6000000177955802827.ged` | 1526 | 4069 | 138 | 154 | 154 | 170 |
-| `export-Descendants-6000000178898487831.ged` | 2364 | 4096 | 149 | 365 | 195 | 77 |
-| `export-Descendants-6000000210387665830.ged` | 0 | 176 | 0 | 4 | 7396 | 21844 |
+| `export-Descendants-6000000177944088828.ged` | 971 | 3096 | 31 | 112 | 1793 | 3445 |
+| `export-Descendants-6000000177944124971.ged` | 934 | 2217 | 29 | 12 | 3293 | 4149 |
+| `export-Descendants-6000000177944417821.ged` | 815 | 2432 | 7 | 64 | 2955 | 1345 |
+| `export-Descendants-6000000177955802827.ged` | 1452 | 3900 | 102 | 91 | 496 | 1597 |
+| `export-Descendants-6000000178898487831.ged` | 1836 | 3387 | 84 | 85 | 1777 | 3342 |
+| `export-Descendants-6000000210387665830.ged` | 0 | 144 | 0 | 3 | 7429 | 22068 |
 | `export-Descendants-6000000210455376824.ged` | 1475 | 2169 | 0 | 1 | 3367 | 730 |
 | `export-Descendants-6000000210457327856.ged` | 119 | 210 | 0 | 0 | 6739 | 255 |
 | `export-Descendants-6000000226989731860.ged` | 112 | 153 | 0 | 0 | 6528 | 302 |
-| `export-Descendants-6000000227039926826.ged` | 1284 | 2286 | 4 | 55 | 3159 | 8027 |
-| `export-Descendants-6000000227040338177.ged` | 1155 | 3724 | 0 | 156 | 608 | 1168 |
-| `export-Descendants-6000000227040553824.ged` | 1870 | 4046 | 1 | 102 | 147 | 97 |
+| `export-Descendants-6000000227039926826.ged` | 1282 | 2284 | 4 | 45 | 3173 | 8030 |
+| `export-Descendants-6000000227040338177.ged` | 1155 | 3724 | 0 | 154 | 610 | 1168 |
+| `export-Descendants-6000000227040553824.ged` | 1748 | 3789 | 1 | 75 | 553 | 1683 |
 | `export-Descendants-6000000227040613855.ged` | 917 | 1242 | 0 | 0 | 4478 | 1300 |
-| `export-Descendants-6000000227086380915.ged` | 2262 | 3838 | 332 | 219 | 649 | 634 |
-| `export-Descendants-6000000227086506866.ged` | 2706 | 4070 | 1076 | 174 | 152 | 1104 |
-| `export-Descendants-6000000227212960823.ged` | 2692 | 3906 | 88 | 409 | 615 | 423 |
-| `export-Descendants-6000000227224418030.ged` | 1409 | 2911 | 4 | 105 | 2156 | 772 |
+| `export-Descendants-6000000227086380915.ged` | 1880 | 3288 | 115 | 108 | 1909 | 11362 |
+| `export-Descendants-6000000227086506866.ged` | 2685 | 4027 | 1027 | 97 | 342 | 1890 |
+| `export-Descendants-6000000227212960823.ged` | 2096 | 2898 | 43 | 94 | 2579 | 7234 |
+| `export-Descendants-6000000227224418030.ged` | 797 | 1836 | 0 | 20 | 3932 | 3192 |
 | `export-BloodTree-6000000087535357291.ged` | 0 | 0 | 0 | 0 | 5520 | 3861 |
-| `export-BloodTree-6000000178918422849.ged` | 829 | 1701 | 38 | 50 | 6013 | 9606 |
+| `export-BloodTree-6000000178918422849.ged` | 781 | 1603 | 15 | 45 | 6187 | 10836 |
 | `export-BloodTree-6000000209079906821.ged` | 0 | 0 | 0 | 0 | 412 | 0 |
-| `export-BloodTree-6000000209295506839.ged` | 52 | 257 | 198 | 11 | 9251 | 16871 |
+| `export-BloodTree-6000000209295506839.ged` | 52 | 255 | 80 | 6 | 9376 | 18727 |
 | `export-BloodTree-6000000227241026872.ged` | 180 | 226 | 0 | 0 | 8358 | 22 |
 | `export-BloodTree-6000000227252355883.ged` | 1486 | 2740 | 38 | 69 | 3730 | 1907 |
 | `export-Descendants-6000000178918422849.ged` | 0 | 0 | 0 | 0 | 271 | 0 |
 | `export-Descendants-6000000179131695821.ged` | 271 | 280 | 0 | 0 | 8219 | 617 |
-| `export-Descendants-6000000209721822822.ged` | 1 | 926 | 0 | 56 | 6597 | 5631 |
-| `export-Descendants-6000000209721868822.ged` | 889 | 3179 | 51 | 101 | 3263 | 3805 |
+| `export-Descendants-6000000209721822822.ged` | 1 | 926 | 0 | 50 | 6603 | 5631 |
+| `export-Descendants-6000000209721868822.ged` | 889 | 3177 | 51 | 94 | 3272 | 3805 |
 | `export-Descendants-6000000227252355883.ged` | 0 | 876 | 14 | 34 | 7206 | 895 |
-| `export-Forest-6000000087535357291.ged` | 732 | 1838 | 25 | 85 | 4848 | 1468 |
+| `export-Forest-6000000087535357291.ged` | 410 | 1125 | 23 | 22 | 5948 | 2436 |
 | `export-Forest-6000000178918422849.ged` | 0 | 0 | 0 | 0 | 7554 | 9239 |
 | `export-Forest-6000000209079906821.ged` | 4 | 7 | 0 | 0 | 10232 | 4300 |
 | `export-Forest-6000000209295506839.ged` | 381 | 726 | 7 | 8 | 8613 | 9348 |
-| `export-Forest-6000000209721822822.ged` | 0 | 861 | 2 | 21 | 6238 | 3617 |
-| `export-Forest-6000000209721868822.ged` | 31 | 511 | 3 | 8 | 7309 | 5731 |
+| `export-Forest-6000000209721822822.ged` | 0 | 808 | 1 | 18 | 6295 | 3833 |
+| `export-Forest-6000000209721868822.ged` | 31 | 504 | 3 | 8 | 7316 | 5711 |
 | `export-Forest-6000000227085766947.ged` | 125 | 222 | 0 | 0 | 6391 | 2795 |
 | `export-Forest-6000000227085797849.ged` | 1027 | 1818 | 0 | 1 | 3847 | 726 |
-| `export-Forest-6000000227085828865.ged` | 1129 | 1655 | 4 | 8 | 3933 | 3174 |
+| `export-Forest-6000000227085828865.ged` | 1129 | 1655 | 4 | 7 | 3934 | 3174 |
 | `export-Forest-6000000227085871850.ged` | 1020 | 2170 | 0 | 14 | 3030 | 132 |
-| `export-Forest-6000000227252355883.ged` | 672 | 1433 | 0 | 26 | 5399 | 562 |
+| `export-Forest-6000000227252355883.ged` | 672 | 1433 | 0 | 25 | 5400 | 562 |
 | `export-Forest-6000000227252387856.ged` | 365 | 932 | 0 | 0 | 6348 | 752 |
 | `export-Forest-6000000227252593825.ged` | 355 | 631 | 0 | 0 | 7017 | 1446 |
-| `export-Forest-6000000227254162896.ged` | 1302 | 5000 | 61 | 255 | 91 | 0 |
-| `export-Forest-6000000227254292863.ged` | 3063 | 4999 | 492 | 236 | 207 | 35 |
-| `export-Forest-6000000227254292875.ged` | 1437 | 3490 | 90 | 90 | 2916 | 12280 |
+| `export-Forest-6000000227254162896.ged` | 1279 | 4898 | 54 | 138 | 340 | 391 |
+| `export-Forest-6000000227254292863.ged` | 3012 | 4927 | 458 | 166 | 434 | 847 |
+| `export-Forest-6000000227254292875.ged` | 1270 | 3103 | 54 | 23 | 3573 | 14629 |
 | `export-Forest-6000000227254306900.ged` | 253 | 911 | 0 | 22 | 1452 | 625 |
-| `export-Forest-6000000227254335853.ged` | 1848 | 5000 | 30 | 411 | 36 | 0 |
-| `export-Forest-6000000227254345871.ged` | 1302 | 4998 | 408 | 758 | 211 | 57 |
-| `export-Forest-6000000227254368832.ged` | 2512 | 4984 | 10 | 389 | 108 | 5 |
-| `export-Forest-6000000227254397877.ged` | 2494 | 4766 | 4 | 147 | 699 | 560 |
+| `export-Forest-6000000227254335853.ged` | 1842 | 4993 | 30 | 330 | 130 | 36 |
+| `export-Forest-6000000227254345871.ged` | 1302 | 4998 | 408 | 617 | 352 | 57 |
+| `export-Forest-6000000227254368832.ged` | 1973 | 3774 | 10 | 95 | 2151 | 2158 |
+| `export-Forest-6000000227254397877.ged` | 1644 | 3339 | 4 | 38 | 3085 | 2583 |
 | `export-Forest-6000000227254497932.ged` | 3 | 3 | 0 | 0 | 1643 | 88 |
-| `export-Forest-6000000227254550821.ged` | 3228 | 4467 | 542 | 148 | 1871 | 9225 |
-| `export-Forest-6000000227256597825.ged` | 136 | 344 | 0 | 14 | 2 | 0 |
-| `export-Forest-6000000227258246190.ged` | 1613 | 4995 | 157 | 299 | 175 | 6 |
-| `export-Forest-6000000227258354999.ged` | 1508 | 4999 | 691 | 311 | 133 | 1 |
-| `export-Forest-6000000227258452920.ged` | 1942 | 4954 | 170 | 237 | 273 | 72 |
-| `export-Forest-6000000227258532866.ged` | 2721 | 4999 | 6 | 436 | 102 | 2 |
-| `export-Forest-6000000227258573822.ged` | 1997 | 4288 | 0 | 302 | 1152 | 470 |
+| `export-Forest-6000000227254550821.ged` | 2802 | 4088 | 120 | 93 | 3153 | 14186 |
+| `export-Forest-6000000227256597825.ged` | 131 | 330 | 0 | 12 | 23 | 26 |
+| `export-Forest-6000000227258246190.ged` | 1177 | 3725 | 61 | 90 | 2186 | 6465 |
+| `export-Forest-6000000227258354999.ged` | 1426 | 4822 | 681 | 174 | 539 | 403 |
+| `export-Forest-6000000227258452920.ged` | 1520 | 3859 | 61 | 64 | 2072 | 4689 |
+| `export-Forest-6000000227258532866.ged` | 2212 | 4291 | 0 | 110 | 1651 | 5443 |
+| `export-Forest-6000000227258573822.ged` | 1879 | 4053 | 0 | 171 | 1636 | 3533 |
 | `export-BloodTree-16.ged` | 112 | 391 | 0 | 2 | 124 | 218 |
 | `export-Descendants-21.ged` | 0 | 0 | 0 | 0 | 6637 | 605 |
-| `export-Forest-0.ged` | 674 | 2465 | 36 | 36 | 1826 | 443 |
-| `export-Forest-1.ged` | 1075 | 2224 | 0 | 1 | 2730 | 1975 |
-| `export-Forest-10.ged` | 172 | 346 | 25 | 13 | 6644 | 36279 |
+| `export-Forest-0.ged` | 664 | 2452 | 36 | 34 | 1851 | 484 |
+| `export-Forest-1.ged` | 1075 | 2224 | 0 | 0 | 2731 | 1975 |
+| `export-Forest-10.ged` | 148 | 262 | 12 | 7 | 6771 | 36877 |
 | `export-Forest-11.ged` | 0 | 0 | 0 | 0 | 6879 | 22036 |
-| `export-Forest-12.ged` | 1029 | 1945 | 249 | 72 | 4052 | 9344 |
+| `export-Forest-12.ged` | 853 | 1557 | 176 | 21 | 4740 | 11943 |
 | `export-Forest-13.ged` | 1035 | 2158 | 1 | 2 | 2925 | 7175 |
 | `export-Forest-14.ged` | 960 | 2100 | 0 | 27 | 2928 | 2293 |
-| `export-Forest-15.ged` | 2358 | 3979 | 234 | 521 | 315 | 43 |
+| `export-Forest-15.ged` | 2357 | 3966 | 234 | 461 | 389 | 52 |
 | `export-Forest-18.ged` | 457 | 1123 | 0 | 24 | 4314 | 1979 |
 | `export-Forest-19.ged` | 1183 | 3816 | 0 | 19 | 319 | 552 |
 | `export-Forest-2.ged` | 266 | 584 | 0 | 12 | 1476 | 96 |
-| `export-Forest-20.ged` | 1616 | 2575 | 2851 | 50 | 4830 | 20192 |
+| `export-Forest-20.ged` | 1046 | 1660 | 1144 | 20 | 8052 | 35871 |
 | `export-Forest-21.ged` | 573 | 1403 | 0 | 6 | 3854 | 1082 |
 | `export-Forest-22.ged` | 413 | 1733 | 0 | 43 | 3360 | 1223 |
 | `export-Forest-23.ged` | 765 | 1465 | 0 | 2 | 3835 | 4681 |
-| `export-Forest-24.ged` | 1252 | 3541 | 2 | 54 | 794 | 2303 |
-| `export-Forest-25.ged` | 292 | 788 | 14 | 6 | 6663 | 9319 |
+| `export-Forest-24.ged` | 1151 | 3221 | 2 | 38 | 1231 | 3783 |
+| `export-Forest-25.ged` | 263 | 675 | 6 | 3 | 6816 | 10432 |
 | `export-Forest-26.ged` | 609 | 1180 | 0 | 0 | 4359 | 1182 |
-| `export-Forest-27.ged` | 1129 | 3689 | 100 | 379 | 566 | 172 |
+| `export-Forest-27.ged` | 1129 | 3689 | 100 | 325 | 620 | 172 |
 | `export-Forest-28.ged` | 1203 | 3892 | 0 | 1 | 202 | 226 |
-| `export-Forest-29.ged` | 1 | 240 | 239 | 9 | 7796 | 25909 |
-| `export-Forest-3.ged` | 1679 | 3647 | 2 | 118 | 521 | 137 |
+| `export-Forest-29.ged` | 1 | 159 | 24 | 4 | 8097 | 31285 |
+| `export-Forest-3.ged` | 1676 | 3643 | 2 | 111 | 535 | 154 |
 | `export-Forest-30.ged` | 750 | 1603 | 0 | 24 | 3600 | 4060 |
-| `export-Forest-31.ged` | 1298 | 1763 | 426 | 34 | 5870 | 4457 |
-| `export-Forest-32.ged` | 1294 | 2419 | 152 | 38 | 3084 | 3747 |
-| `export-Forest-33.ged` | 1155 | 3826 | 0 | 105 | 278 | 316 |
-| `export-Forest-34.ged` | 943 | 3542 | 12 | 206 | 893 | 1209 |
+| `export-Forest-31.ged` | 1037 | 1390 | 27 | 19 | 6918 | 10514 |
+| `export-Forest-32.ged` | 587 | 985 | 8 | 8 | 5399 | 9248 |
+| `export-Forest-33.ged` | 1154 | 3826 | 0 | 81 | 303 | 317 |
+| `export-Forest-34.ged` | 763 | 2898 | 10 | 124 | 1801 | 3034 |
 | `export-Forest-35.ged` | 897 | 2473 | 0 | 36 | 2447 | 1715 |
-| `export-Forest-36.ged` | 831 | 2531 | 41 | 15 | 2390 | 4484 |
-| `export-Forest-37.ged` | 1557 | 2252 | 3 | 23 | 2877 | 2589 |
+| `export-Forest-36.ged` | 647 | 2071 | 17 | 9 | 3064 | 7291 |
+| `export-Forest-37.ged` | 1421 | 2006 | 3 | 18 | 3264 | 3558 |
 | `export-Forest-38.ged` | 271 | 448 | 0 | 0 | 5418 | 1187 |
-| `export-Forest-39.ged` | 1126 | 3873 | 1 | 162 | 294 | 369 |
-| `export-Forest-4.ged` | 1527 | 2899 | 3 | 136 | 1793 | 2025 |
-| `export-Forest-7.ged` | 219 | 608 | 0 | 14 | 5358 | 3510 |
+| `export-Forest-39.ged` | 906 | 3096 | 0 | 72 | 1382 | 913 |
+| `export-Forest-4.ged` | 1187 | 2320 | 2 | 94 | 2755 | 3914 |
+| `export-Forest-7.ged` | 219 | 607 | 0 | 13 | 5360 | 3516 |
 | `export-Forest-8.ged` | 669 | 884 | 0 | 11 | 5263 | 448 |
 | `export-Forest-9.ged` | 0 | 7 | 0 | 0 | 6229 | 1357 |
-| `export-Ancestors-6000000087535357291.ged` | 1690 | 2948 | 730 | 137 | 3206 | 13427 |
+| `export-Ancestors-6000000087535357291.ged` | 1133 | 2004 | 430 | 50 | 5094 | 16827 |
 | `export-Ancestors-6000000177921459052.ged` | 0 | 0 | 0 | 0 | 881 | 155 |
-| `export-Ancestors-6000000177921459056.ged` | 215 | 464 | 1191 | 23 | 9238 | 29294 |
-| `export-Ancestors-6000000177921459078.ged` | 664 | 1046 | 4054 | 31 | 8841 | 2510 |
-| `export-Ancestors-6000000177921459114.ged` | 402 | 668 | 1197 | 24 | 15495 | 6773 |
+| `export-Ancestors-6000000177921459056.ged` | 177 | 380 | 620 | 14 | 9940 | 32126 |
+| `export-Ancestors-6000000177921459078.ged` | 626 | 974 | 2978 | 20 | 10038 | 7105 |
+| `export-Ancestors-6000000177921459114.ged` | 320 | 517 | 754 | 13 | 16182 | 8551 |
 | `export-Ancestors-6000000209078072833.ged` | 0 | 0 | 0 | 0 | 1625 | 4106 |
 | `export-Ancestors-6000000220974565012.ged` | 0 | 0 | 0 | 0 | 2010 | 950 |
 | `export-Bio-6000000212213649822.ged` | 33 | 38 | 0 | 0 | 7574 | 7719 |
 | `export-BloodTree-6000000087535357291.ged` | 0 | 0 | 0 | 0 | 5520 | 3861 |
-| `export-BloodTree-6000000177943379826.ged` | 793 | 2319 | 0 | 56 | 221 | 26 |
-| `export-BloodTree-6000000177944025822.ged` | 898 | 2820 | 1 | 80 | 1852 | 2102 |
-| `export-BloodTree-6000000178415387935.ged` | 901 | 2832 | 0 | 140 | 1868 | 615 |
-| `export-BloodTree-6000000178418577840.ged` | 1241 | 3672 | 15 | 182 | 663 | 225 |
-| `export-BloodTree-6000000178420660827.ged` | 75 | 204 | 0 | 7 | 2557 | 201 |
-| `export-BloodTree-6000000209655085851.ged` | 0 | 274 | 2 | 2 | 5989 | 6719 |
+| `export-BloodTree-6000000177943379826.ged` | 793 | 2318 | 0 | 48 | 230 | 27 |
+| `export-BloodTree-6000000177944025822.ged` | 644 | 2121 | 1 | 36 | 2849 | 3082 |
+| `export-BloodTree-6000000178415387935.ged` | 823 | 2549 | 0 | 99 | 2270 | 1318 |
+| `export-BloodTree-6000000178418577840.ged` | 1220 | 3588 | 15 | 145 | 805 | 481 |
+| `export-BloodTree-6000000178420660827.ged` | 75 | 203 | 0 | 6 | 2559 | 202 |
+| `export-BloodTree-6000000209655085851.ged` | 0 | 260 | 0 | 0 | 6007 | 6721 |
 | `export-Descendants-6000000209595340830.ged` | 274 | 378 | 0 | 0 | 6506 | 872 |
 | `export-Descendants-6000000209931920826.ged` | 27 | 44 | 0 | 0 | 6711 | 362 |
-| `export-Descendants-6000000227040600959.ged` | 1054 | 3019 | 2 | 89 | 1756 | 2527 |
+| `export-Descendants-6000000227040600959.ged` | 1054 | 3019 | 2 | 81 | 1764 | 2527 |
 | `export-Descendants-6000000227085797849.ged` | 76 | 139 | 0 | 0 | 5359 | 438 |
 | `export-Descendants-6000000227085828865.ged` | 91 | 127 | 0 | 0 | 6573 | 800 |
 | `export-Descendants-6000000227085871850.ged` | 0 | 0 | 0 | 0 | 938 | 32 |
-| `export-Descendants-6000000227086244080.ged` | 1792 | 3260 | 2973 | 140 | 4053 | 19271 |
-| `export-Descendants-6000000227086432913.ged` | 623 | 1149 | 0 | 41 | 12 | 2 |
+| `export-Descendants-6000000227086244080.ged` | 1396 | 2359 | 1804 | 70 | 6589 | 34509 |
+| `export-Descendants-6000000227086432913.ged` | 623 | 1149 | 0 | 40 | 13 | 2 |
 | `export-Descendants-6000000227086452843.ged` | 1861 | 3384 | 0 | 35 | 1070 | 12 |
-| `export-Descendants-6000000227086455824.ged` | 1631 | 2120 | 1427 | 66 | 9416 | 15477 |
+| `export-Descendants-6000000227086455824.ged` | 1298 | 1551 | 857 | 36 | 10918 | 21568 |
 | `export-Descendants-6000000227086465839.ged` | 2093 | 4076 | 0 | 73 | 10 | 0 |
-| `export-Descendants-6000000227087382828.ged` | 2155 | 4045 | 31 | 271 | 270 | 51 |
-| `export-Descendants-6000000227227041063.ged` | 2205 | 4237 | 126 | 392 | 115 | 169 |
-| `export-Descendants-6000000227227190927.ged` | 1229 | 2544 | 119 | 227 | 2933 | 147 |
-| `export-Descendants-6000000227227194942.ged` | 1326 | 3477 | 16 | 144 | 1311 | 547 |
-| `export-Descendants-6000000227227274837.ged` | 1600 | 3051 | 21 | 138 | 2085 | 678 |
-| `export-Descendants-6000000227227278828.ged` | 889 | 2965 | 36 | 31 | 1975 | 203 |
-| `export-Descendants-6000000227227295846.ged` | 1541 | 3275 | 48 | 87 | 1776 | 389 |
+| `export-Descendants-6000000227087382828.ged` | 2155 | 4045 | 31 | 250 | 291 | 51 |
+| `export-Descendants-6000000227227041063.ged` | 2114 | 4024 | 120 | 270 | 547 | 1463 |
+| `export-Descendants-6000000227227190927.ged` | 1157 | 2404 | 117 | 181 | 3193 | 629 |
+| `export-Descendants-6000000227227194942.ged` | 1315 | 3450 | 16 | 120 | 1373 | 928 |
+| `export-Descendants-6000000227227274837.ged` | 1597 | 3048 | 21 | 121 | 2108 | 682 |
+| `export-Descendants-6000000227227278828.ged` | 885 | 2958 | 36 | 29 | 1988 | 239 |
+| `export-Descendants-6000000227227295846.ged` | 1319 | 2929 | 27 | 55 | 2397 | 1123 |
 | `export-Forest-6000000178918422849.ged` | 0 | 0 | 0 | 0 | 7554 | 9239 |
-| `export-Forest-6000000227086244080.ged` | 752 | 1626 | 1627 | 59 | 13368 | 14392 |
-| `export-Forest-6000000227086380915.ged` | 760 | 2016 | 1289 | 38 | 8595 | 24271 |
+| `export-Forest-6000000227086244080.ged` | 674 | 1376 | 1193 | 37 | 14152 | 16092 |
+| `export-Forest-6000000227086380915.ged` | 613 | 1592 | 688 | 15 | 9790 | 29980 |
 | `export-Forest-6000000227086432913.ged` | 921 | 2098 | 0 | 1 | 3020 | 458 |
 | `export-Forest-6000000227086452843.ged` | 335 | 566 | 0 | 1 | 5380 | 5034 |
-| `export-Forest-6000000227086455824.ged` | 408 | 1048 | 489 | 29 | 13288 | 8001 |
+| `export-Forest-6000000227086455824.ged` | 375 | 904 | 438 | 19 | 13526 | 8320 |
 | `export-Forest-6000000227086465839.ged` | 1038 | 2396 | 0 | 0 | 2512 | 286 |
 | `export-Forest-6000000227086500885.ged` | 251 | 525 | 0 | 0 | 5752 | 616 |
-| `export-Forest-6000000227086506866.ged` | 846 | 1447 | 520 | 21 | 7338 | 15697 |
+| `export-Forest-6000000227086506866.ged` | 844 | 1447 | 520 | 17 | 7344 | 15697 |
 | `export-Forest-6000000227086510841.ged` | 211 | 381 | 0 | 2 | 6245 | 340 |
-| `export-Forest-6000000227086620980.ged` | 298 | 588 | 165 | 6 | 7775 | 14326 |
-| `export-Forest-6000000227086715937.ged` | 1349 | 3284 | 224 | 283 | 1458 | 3570 |
-| `export-Forest-6000000227086717913.ged` | 1613 | 2479 | 252 | 39 | 4077 | 3807 |
-| `export-Forest-6000000227087120840.ged` | 1194 | 2267 | 3 | 80 | 3078 | 2749 |
-| `export-Forest-6000000227225487992.ged` | 1247 | 2099 | 794 | 58 | 9526 | 24822 |
-| `export-Forest-6000000227225628908.ged` | 458 | 841 | 61 | 13 | 8483 | 32004 |
-| `export-Forest-6000000227225654852.ged` | 158 | 347 | 18 | 3 | 6391 | 16171 |
-| `export-Forest-6000000227226552913.ged` | 847 | 4124 | 50 | 135 | 44 | 0 |
-| `export-Forest-6000000227226579873.ged` | 1743 | 4121 | 35 | 181 | 85 | 89 |
-| `export-Forest-6000000227226600829.ged` | 1269 | 4009 | 424 | 235 | 600 | 6301 |
-| `export-Forest-6000000227226720863.ged` | 2525 | 3549 | 1481 | 247 | 2187 | 12400 |
-| `export-Forest-6000000227226792872.ged` | 1408 | 3958 | 29 | 135 | 421 | 112 |
-| `export-Forest-6000000227226796847.ged` | 1490 | 3557 | 31 | 216 | 1049 | 990 |
-| `export-Forest-6000000227226850980.ged` | 155 | 62 | 0 | 0 | 7518 | 4045 |
-| `export-Forest-6000000227227016909.ged` | 1296 | 2801 | 170 | 27 | 3477 | 1522 |
-| `export-Forest-6000000227227035828.ged` | 625 | 972 | 164 | 13 | 8877 | 1565 |
-| `export-Forest-6000000227227039845.ged` | 826 | 1321 | 257 | 23 | 6790 | 7993 |
-| `export-Forest-6000000227227041063.ged` | 1058 | 2001 | 46 | 56 | 4368 | 645 |
-| `export-Forest-6000000227227092862.ged` | 5 | 33 | 1 | 1 | 9174 | 38 |
-| `export-Forest-6000000227227104853.ged` | 222 | 482 | 49 | 4 | 11877 | 6185 |
-| `export-Forest-6000000227227132960.ged` | 812 | 1750 | 17 | 22 | 4032 | 1239 |
-| `export-Forest-6000000227227141848.ged` | 834 | 2525 | 13 | 85 | 2635 | 1218 |
-| `export-Forest-6000000227227142945.ged` | 1235 | 2817 | 12 | 50 | 2680 | 895 |
-| `export-Forest-6000000227227238821.ged` | 1585 | 3443 | 42 | 98 | 1291 | 460 |
+| `export-Forest-6000000227086620980.ged` | 282 | 544 | 141 | 4 | 7861 | 14389 |
+| `export-Forest-6000000227086715937.ged` | 1349 | 3284 | 224 | 253 | 1488 | 3570 |
+| `export-Forest-6000000227086717913.ged` | 1517 | 2335 | 203 | 33 | 4372 | 5421 |
+| `export-Forest-6000000227087120840.ged` | 881 | 1714 | 2 | 47 | 3978 | 3484 |
+| `export-Forest-6000000227225487992.ged` | 1199 | 1992 | 574 | 33 | 9926 | 26738 |
+| `export-Forest-6000000227225628908.ged` | 273 | 465 | 9 | 6 | 9103 | 32676 |
+| `export-Forest-6000000227225654852.ged` | 134 | 255 | 9 | 0 | 6519 | 16911 |
+| `export-Forest-6000000227226552913.ged` | 847 | 4124 | 50 | 123 | 56 | 0 |
+| `export-Forest-6000000227226579873.ged` | 1743 | 4121 | 35 | 164 | 102 | 89 |
+| `export-Forest-6000000227226600829.ged` | 1252 | 3925 | 362 | 175 | 823 | 11426 |
+| `export-Forest-6000000227226720863.ged` | 2210 | 3186 | 881 | 167 | 3545 | 35611 |
+| `export-Forest-6000000227226792872.ged` | 1406 | 3949 | 29 | 126 | 441 | 164 |
+| `export-Forest-6000000227226796847.ged` | 1486 | 3552 | 31 | 204 | 1070 | 1006 |
+| `export-Forest-6000000227226850980.ged` | 115 | 56 | 0 | 0 | 7564 | 4002 |
+| `export-Forest-6000000227227016909.ged` | 1287 | 2781 | 166 | 19 | 3518 | 1604 |
+| `export-Forest-6000000227227035828.ged` | 625 | 954 | 146 | 9 | 8917 | 1752 |
+| `export-Forest-6000000227227039845.ged` | 826 | 1319 | 257 | 20 | 6795 | 8062 |
+| `export-Forest-6000000227227041063.ged` | 1044 | 1924 | 46 | 44 | 4471 | 954 |
+| `export-Forest-6000000227227092862.ged` | 5 | 33 | 1 | 0 | 9175 | 38 |
+| `export-Forest-6000000227227104853.ged` | 143 | 247 | 38 | 1 | 12205 | 6809 |
+| `export-Forest-6000000227227132960.ged` | 803 | 1746 | 17 | 19 | 4048 | 1241 |
+| `export-Forest-6000000227227141848.ged` | 833 | 2524 | 13 | 79 | 2643 | 1218 |
+| `export-Forest-6000000227227142945.ged` | 1223 | 2778 | 12 | 45 | 2736 | 1024 |
+| `export-Forest-6000000227227238821.ged` | 1585 | 3443 | 42 | 90 | 1299 | 460 |
 | `export-Forest-6000000227227320831.ged` | 66 | 179 | 3 | 4 | 6786 | 78 |
 | `export-Forest-6000000210475738822.ged` | 225 | 343 | 0 | 0 | 6266 | 485 |
 | `export-Forest.ged` | 0 | 0 | 0 | 0 | 6259 | 2586 |
 | `export-Forest.ged` | 0 | 0 | 0 | 0 | 6259 | 2586 |
-| `export-Forest-6000000227288930948.ged` | 1679 | 4945 | 457 | 223 | 281 | 189 |
-| `export-Forest-6000000227289463836.ged` | 1848 | 4912 | 57 | 291 | 332 | 959 |
-| `export-Forest-6000000227289547881.ged` | 1258 | 2146 | 204 | 91 | 6574 | 26870 |
-| `export-Forest-6000000227289604840.ged` | 2144 | 4342 | 261 | 174 | 1738 | 1349 |
-| `export-Forest-6000000227289663852.ged` | 793 | 3547 | 8 | 113 | 2468 | 4462 |
-| `export-Forest-6000000227289792822.ged` | 939 | 1946 | 296 | 53 | 8532 | 27471 |
+| `export-Forest-6000000227258314174.ged` | 1951 | 2996 | 1660 | 86 | 8343 | 22255 |
+| `export-Forest-6000000227258622821.ged` | 858 | 1295 | 108 | 16 | 7417 | 11860 |
+| `export-Forest-6000000227288930948.ged` | 1624 | 4779 | 431 | 141 | 610 | 498 |
+| `export-Forest-6000000227289463836.ged` | 1751 | 4715 | 53 | 200 | 721 | 1823 |
+| `export-Forest-6000000227289547881.ged` | 977 | 1673 | 132 | 38 | 7453 | 7837 |
+| `export-Forest-6000000227289604840.ged` | 1188 | 2218 | 80 | 41 | 5132 | 2167 |
+| `export-Forest-6000000227289663852.ged` | 532 | 2444 | 3 | 48 | 3902 | 5819 |
+| `export-Forest-6000000227289792822.ged` | 347 | 920 | 54 | 12 | 10433 | 5826 |
 | `export-Forest.ged` | 0 | 0 | 0 | 0 | 6259 | 2586 |
-| `export-Forest-6000000227147210844.ged` | 1462 | 2956 | 0 | 118 | 1676 | 1485 |
+| `export-Forest-6000000227147210844.ged` | 1337 | 2720 | 0 | 79 | 2076 | 2443 |
 | `export-Ancestors.ged` | 1 | 0 | 0 | 0 | 7720 | 13016 |
 | `export-BloodTree.ged` | 1 | 2 | 0 | 0 | 5291 | 3720 |
-| `export-Forest-6000000226977233850.ged` | 1112 | 1870 | 0 | 39 | 2843 | 1419 |
+| `export-Forest-6000000226977233850.ged` | 938 | 1635 | 0 | 13 | 3278 | 1735 |
 | `export-Forest-6000000226989731860.ged` | 5 | 6 | 0 | 0 | 6328 | 496 |
 | `export-Forest.ged` | 0 | 0 | 0 | 0 | 6259 | 2586 |
 | `export-Ancestors-6000000227241038833.ged` | 0 | 0 | 0 | 0 | 729 | 0 |
@@ -499,69 +713,233 @@ Sources in merge order (later sources win value conflicts):
 | `export-BloodTree-6000000178918541826.ged` | 0 | 0 | 0 | 0 | 8639 | 0 |
 | `export-Forest-6000000178795709821.ged` | 0 | 0 | 0 | 0 | 8951 | 0 |
 | `export-Forest-6000000178918116832.ged` | 0 | 0 | 0 | 0 | 8954 | 0 |
-| `export-Forest-40.ged` | 1634 | 2306 | 90 | 94 | 3804 | 4298 |
-| `export-Forest-41.ged` | 846 | 2516 | 8 | 76 | 2573 | 2918 |
+| `export-Forest-40.ged` | 1233 | 1695 | 59 | 35 | 4906 | 5632 |
+| `export-Forest-41.ged` | 660 | 2042 | 5 | 24 | 3288 | 5068 |
 | `export-Forest-42.ged` | 230 | 382 | 0 | 0 | 6096 | 1133 |
-| `export-Forest-43.ged` | 2108 | 3634 | 104 | 165 | 975 | 527 |
-| `export-Forest-6000000227145774838.ged` | 1977 | 3489 | 20 | 164 | 1099 | 2792 |
-| `export-Forest-6000000227147141927.ged` | 10 | 356 | 0 | 11 | 7197 | 21705 |
-| `export-Descendants-6000000227143930843.ged` | 2266 | 4067 | 118 | 455 | 280 | 34 |
-| `export-Forest-6000000227143930843.ged` | 1480 | 2708 | 346 | 348 | 3102 | 550 |
-| `export-Forest-6000000227145420853.ged` | 1298 | 3628 | 0 | 111 | 738 | 355 |
+| `export-Forest-43.ged` | 1372 | 2387 | 45 | 38 | 3144 | 4729 |
+| `export-Forest-6000000227145774838.ged` | 1915 | 3398 | 20 | 152 | 1264 | 2970 |
+| `export-Forest-6000000227147141927.ged` | 10 | 356 | 0 | 10 | 7198 | 21705 |
+| `export-Descendants-6000000227143930843.ged` | 2266 | 4067 | 118 | 399 | 336 | 34 |
+| `export-Forest-6000000227143930843.ged` | 1477 | 2707 | 346 | 289 | 3165 | 552 |
+| `export-Forest-6000000227145420853.ged` | 1298 | 3628 | 0 | 107 | 742 | 355 |
 
 ## Pointers to records we do not have
 
-**1563** pointers name a record that is not in the merged file, of which **0** are family-structure pointers (`CHIL`, `HUSB`, `WIFE`, `FAMC`, `FAMS`). Only the structural ones would mean a broken tree; the rest are incidental references to submitter or note records the exports did not include.
+**2535** pointers name a record that is not in the merged file, of which **0** are family-structure pointers (`CHIL`, `HUSB`, `WIFE`, `FAMC`, `FAMS`). Only the structural ones would mean a broken tree; the rest are incidental references to submitter or note records the exports did not include.
 
 | pointer | unresolved |
 | --- | ---: |
-| `INDI.SUBM` | 1496 |
-| `NOTE.NOTE` | 32 |
+| `INDI.SUBM` | 2454 |
+| `NOTE.NOTE` | 43 |
 | `INDI.PLAC` | 26 |
-| `INDI.OCCU` | 9 |
+| `INDI.OCCU` | 12 |
 
 ## Conflicts
 
-**939** value disagreements on single-valued paths. The value from the later source was kept; the other is recorded here and is not in the merged file.
+**1368** value disagreements on single-valued paths. The value from the later source was kept; the other is recorded here and is not in the merged file.
 
 By path:
 
 | path | conflicts |
 | --- | ---: |
-| `INDI.CHAN.DATE.TIME` | 418 |
-| `INDI.CHAN.DATE` | 417 |
-| `INDI.BIRT.DATE` | 22 |
-| `INDI.BIRT.ADDR.CTRY` | 13 |
-| `INDI.DEAT.DATE` | 11 |
-| `INDI.BIRT.PLAC` | 11 |
-| `INDI.DEAT.PLAC` | 7 |
-| `INDI.SUBM` | 5 |
-| `FAM.HUSB` | 4 |
-| `FAM.WIFE` | 4 |
-| `INDI.BIRT.ADDR.STAE` | 4 |
-| `INDI.DEAT.ADDR.CITY` | 4 |
+| `INDI.CHAN.DATE.TIME` | 603 |
+| `INDI.CHAN.DATE` | 599 |
+| `INDI.BIRT.DATE` | 43 |
+| `INDI.DEAT.DATE` | 18 |
+| `INDI.BIRT.ADDR.CTRY` | 17 |
+| `INDI.BIRT.PLAC` | 14 |
+| `INDI.DEAT.PLAC` | 10 |
+| `INDI.BIRT.ADDR.STAE` | 9 |
+| `INDI.BURI.DATE` | 8 |
+| `INDI.SUBM` | 7 |
+| `FAM.HUSB` | 5 |
+| `FAM.WIFE` | 5 |
+| `INDI.BIRT.ADDR.CITY` | 5 |
+| `INDI.DEAT.ADDR.CITY` | 5 |
+| `INDI.DEAT.ADDR.CTRY` | 4 |
+| `INDI.BURI.PLAC` | 4 |
+| `INDI.DEAT.ADDR.STAE` | 4 |
 | `INDI.BAPM.ADDR.CTRY` | 4 |
-| `INDI.BIRT.ADDR.CITY` | 3 |
-| `INDI.DEAT.ADDR.STAE` | 3 |
-| `INDI.BURI.DATE` | 3 |
-| `INDI.DEAT.ADDR.CTRY` | 2 |
-| `INDI.BURI.PLAC` | 2 |
-| `INDI.BURI.ADDR.CTRY` | 1 |
+| `INDI.BURI.ADDR.CTRY` | 2 |
+| `INDI.BURI.ADDR.CITY` | 1 |
 | `FAM.MARR.DATE` | 1 |
 
 ### Every conflict
 
 | record | path | kept | from | dropped | from |
 | --- | ---: | ---: | ---: | ---: | ---: |
+| `@I6000000010918684425@` | `INDI.CHAN.DATE` | 10 AUG 2026 | export-BloodTree-6000000227291886826.ged | 29 NOV 2025 | export-Descendants-20.ged |
+| `@I6000000010918684425@` | `INDI.CHAN.DATE.TIME` | 07:11:36 | export-BloodTree-6000000227291886826.ged | 08:44:12 | export-Descendants-20.ged |
+| `@I6000000003883047294@` | `INDI.CHAN.DATE` | 15 AUG 2026 | export-BloodTree-6000000227291886826.ged | 13 JAN 2026 | export-Forest-39.ged |
+| `@I6000000003883047294@` | `INDI.CHAN.DATE.TIME` | 06:47:54 | export-BloodTree-6000000227291886826.ged | 02:20:20 | export-Forest-39.ged |
+| `@I6000000006906853981@` | `INDI.CHAN.DATE` | 12 AUG 2026 | export-Forest-6000000227294770839.ged | 26 APR 2022 | export-Forest-27.ged |
+| `@I6000000006906853981@` | `INDI.CHAN.DATE.TIME` | 14:33:59 | export-Forest-6000000227294770839.ged | 10:58:07 | export-Forest-27.ged |
+| `@I6000000067609999859@` | `INDI.CHAN.DATE` | 12 AUG 2026 | export-Forest-6000000227294770839.ged | 04 AUG 2025 | export-Forest-27.ged |
+| `@I6000000067609999859@` | `INDI.CHAN.DATE.TIME` | 14:34:45 | export-Forest-6000000227294770839.ged | 18:04:41 | export-Forest-27.ged |
+| `@I6000000006862903525@` | `INDI.CHAN.DATE` | 09 AUG 2026 | export-Forest-6000000227295142836.ged | 31 JUL 2026 | export-BloodTree-8.ged |
+| `@I6000000006862903525@` | `INDI.CHAN.DATE.TIME` | 19:30:09 | export-Forest-6000000227295142836.ged | 20:12:02 | export-BloodTree-8.ged |
+| `@I6000000002188050047@` | `INDI.CHAN.DATE.TIME` | 14:59:29 | export-Forest-6000000227295142836.ged | 14:27:37 | export-Forest-6000000227294770839.ged |
+| `@I6000000003828418602@` | `INDI.CHAN.DATE.TIME` | 14:47:56 | export-Forest-6000000227295142836.ged | 14:32:17 | export-Forest-6000000227294770839.ged |
+| `@I6000000018528325436@` | `INDI.CHAN.DATE` | 14 AUG 2026 | export-Forest-6000000227295142836.ged | 17 MAR 2023 | export-BloodTree-8.ged |
+| `@I6000000018528325436@` | `INDI.CHAN.DATE.TIME` | 17:37:54 | export-Forest-6000000227295142836.ged | 18:19:23 | export-BloodTree-8.ged |
+| `@I6000000013029700363@` | `INDI.CHAN.DATE` | 13 AUG 2026 | export-Forest-6000000227295142836.ged | 19 MAR 2026 | export-BloodTree-8.ged |
+| `@I6000000013029700363@` | `INDI.CHAN.DATE.TIME` | 03:11:24 | export-Forest-6000000227295142836.ged | 23:19:23 | export-BloodTree-8.ged |
+| `@I6000000192856888844@` | `INDI.BIRT.DATE` | ABT 1360 | export-Forest-6000000227295142836.ged | ABT 1355 | export-BloodTree-8.ged |
+| `@I6000000192856888844@` | `INDI.CHAN.DATE` | 14 AUG 2026 | export-Forest-6000000227295142836.ged | 29 JUL 2026 | export-BloodTree-8.ged |
+| `@I6000000192856888844@` | `INDI.CHAN.DATE.TIME` | 17:38:26 | export-Forest-6000000227295142836.ged | 12:22:52 | export-BloodTree-8.ged |
+| `@I6000000020220638651@` | `INDI.BIRT.DATE` | ABT 1365 | export-Forest-6000000227295142836.ged | ABT 1395 | export-BloodTree-8.ged |
+| `@I6000000020220638651@` | `INDI.CHAN.DATE` | 14 AUG 2026 | export-Forest-6000000227295142836.ged | 29 JUL 2026 | export-BloodTree-8.ged |
+| `@I6000000020220638651@` | `INDI.CHAN.DATE.TIME` | 17:40:21 | export-Forest-6000000227295142836.ged | 12:24:33 | export-BloodTree-8.ged |
+| `@I6000000014472440132@` | `INDI.BIRT.DATE` | ABT 1415 | export-Forest-6000000227295142836.ged | ABT 1408 | export-BloodTree-8.ged |
+| `@I6000000014472440132@` | `INDI.CHAN.DATE` | 11 AUG 2026 | export-Forest-6000000227295142836.ged | 21 JUL 2026 | export-BloodTree-8.ged |
+| `@I6000000014472440132@` | `INDI.CHAN.DATE.TIME` | 19:06:38 | export-Forest-6000000227295142836.ged | 17:01:56 | export-BloodTree-8.ged |
+| `@I6000000000770043075@` | `INDI.CHAN.DATE` | 05 AUG 2026 | export-Forest-6000000227295719853.ged | 30 JUL 2026 | export-Forest-22.ged |
+| `@I6000000000770043075@` | `INDI.CHAN.DATE.TIME` | 21:00:43 | export-Forest-6000000227295719853.ged | 21:14:45 | export-Forest-22.ged |
+| `@I6000000006906799262@` | `INDI.CHAN.DATE` | 13 AUG 2026 | export-Forest-6000000227295719853.ged | 19 MAY 2026 | export-Forest-22.ged |
+| `@I6000000006906799262@` | `INDI.CHAN.DATE.TIME` | 07:46:53 | export-Forest-6000000227295719853.ged | 08:05:08 | export-Forest-22.ged |
+| `@I6000000020991482706@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Forest-6000000227295719853.ged | 23 MAR 2026 | export-Forest-22.ged |
+| `@I6000000020991482706@` | `INDI.CHAN.DATE.TIME` | 04:58:11 | export-Forest-6000000227295719853.ged | 15:19:46 | export-Forest-22.ged |
+| `@I6000000003243185408@` | `INDI.CHAN.DATE` | 10 AUG 2026 | export-Forest-6000000227295719853.ged | 11 FEB 2023 | export-Forest-23.ged |
+| `@I6000000003243185408@` | `INDI.CHAN.DATE.TIME` | 04:01:18 | export-Forest-6000000227295719853.ged | 13:44:08 | export-Forest-23.ged |
+| `@I6000000000688300441@` | `INDI.CHAN.DATE` | 13 AUG 2026 | export-Forest-6000000227295719853.ged | 30 JUL 2026 | export-Forest-22.ged |
+| `@I6000000000688300441@` | `INDI.CHAN.DATE.TIME` | 09:26:53 | export-Forest-6000000227295719853.ged | 05:32:33 | export-Forest-22.ged |
+| `@I6000000002290062220@` | `INDI.CHAN.DATE` | 17 AUG 2026 | export-Forest-6000000227295719853.ged | 25 JUN 2025 | export-Forest-27.ged |
+| `@I6000000002290062220@` | `INDI.CHAN.DATE.TIME` | 10:10:30 | export-Forest-6000000227295719853.ged | 08:27:21 | export-Forest-27.ged |
+| `@I6000000002187834676@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Forest-6000000227295719853.ged | 19 FEB 2026 | export-Forest-27.ged |
+| `@I6000000002187834676@` | `INDI.CHAN.DATE.TIME` | 04:40:36 | export-Forest-6000000227295719853.ged | 12:21:40 | export-Forest-27.ged |
+| `@I5234818062140033220@` | `INDI.CHAN.DATE` | 15 AUG 2026 | export-Forest-6000000227295719853.ged | 03 APR 2026 | export-Forest-22.ged |
+| `@I5234818062140033220@` | `INDI.CHAN.DATE.TIME` | 05:05:43 | export-Forest-6000000227295719853.ged | 16:01:03 | export-Forest-22.ged |
+| `@I6000000011749043301@` | `INDI.CHAN.DATE` | 05 AUG 2026 | export-Forest-6000000227295719853.ged | 05 MAR 2026 | export-Forest-22.ged |
+| `@I6000000011749043301@` | `INDI.CHAN.DATE.TIME` | 01:28:33 | export-Forest-6000000227295719853.ged | 05:56:49 | export-Forest-22.ged |
+| `@I6000000004533138274@` | `INDI.CHAN.DATE` | 15 AUG 2026 | export-Forest-6000000227295719853.ged | 27 NOV 2025 | export-Forest-22.ged |
+| `@I6000000004533138274@` | `INDI.CHAN.DATE.TIME` | 05:03:37 | export-Forest-6000000227295719853.ged | 17:20:13 | export-Forest-22.ged |
+| `@I6000000000759680351@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Forest-6000000227295719853.ged | 14 JUL 2025 | export-Forest-23.ged |
+| `@I6000000000759680351@` | `INDI.CHAN.DATE.TIME` | 18:02:33 | export-Forest-6000000227295719853.ged | 06:14:51 | export-Forest-23.ged |
+| `@I6000000006101430421@` | `INDI.CHAN.DATE` | 05 AUG 2026 | export-Forest-6000000227297393968.ged | 28 APR 2022 | export-Forest-22.ged |
+| `@I6000000006101430421@` | `INDI.CHAN.DATE.TIME` | 05:59:45 | export-Forest-6000000227297393968.ged | 20:38:07 | export-Forest-22.ged |
+| `@I6000000007818873404@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Forest-6000000227297393968.ged | 19 JUL 2026 | export-Descendants-20.ged |
+| `@I6000000007818873404@` | `INDI.CHAN.DATE.TIME` | 11:22:18 | export-Forest-6000000227297393968.ged | 11:42:46 | export-Descendants-20.ged |
+| `@I6000000000759679062@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Forest-6000000227297393968.ged | 24 OCT 2024 | export-Forest-22.ged |
+| `@I6000000000759679062@` | `INDI.CHAN.DATE.TIME` | 18:00:56 | export-Forest-6000000227297393968.ged | 07:18:47 | export-Forest-22.ged |
+| `@I6000000021614591520@` | `INDI.BIRT.DATE` | 1340 | export-Forest-6000000227297512829.ged | ABT 1340 | export-Forest-2.ged |
+| `@I6000000021614591520@` | `INDI.DEAT.DATE` | 9 NOV 1373 | export-Forest-6000000227297512829.ged | 1407 | export-Forest-2.ged |
+| `@I6000000021614591520@` | `INDI.CHAN.DATE` | 10 AUG 2026 | export-Forest-6000000227297512829.ged | 06 DEC 2016 | export-Forest-2.ged |
+| `@I6000000021614591520@` | `INDI.CHAN.DATE.TIME` | 13:07:59 | export-Forest-6000000227297512829.ged | 15:07:34 | export-Forest-2.ged |
+| `@I6000000010981941618@` | `INDI.CHAN.DATE` | 05 AUG 2026 | export-Forest-6000000227297512829.ged | 27 JUL 2026 | export-BloodTree-8.ged |
+| `@I6000000010981941618@` | `INDI.CHAN.DATE.TIME` | 07:59:22 | export-Forest-6000000227297512829.ged | 09:46:54 | export-BloodTree-8.ged |
+| `@I6000000014472563213@` | `INDI.BIRT.DATE` | 1395 | export-Forest-6000000227297512829.ged | 1425 | export-BloodTree-8.ged |
+| `@I6000000014472563213@` | `INDI.CHAN.DATE` | 10 AUG 2026 | export-Forest-6000000227297512829.ged | 28 APR 2022 | export-BloodTree-8.ged |
+| `@I6000000014472563213@` | `INDI.CHAN.DATE.TIME` | 16:19:49 | export-Forest-6000000227297512829.ged | 09:35:50 | export-BloodTree-8.ged |
+| `@I6000000016309173531@` | `INDI.CHAN.DATE` | 05 AUG 2026 | export-Forest-6000000227297512829.ged | 02 AUG 2026 | export-BloodTree-8.ged |
+| `@I6000000016309173531@` | `INDI.CHAN.DATE.TIME` | 19:56:31 | export-Forest-6000000227297512829.ged | 03:33:38 | export-BloodTree-8.ged |
+| `@I6000000010219805450@` | `INDI.CHAN.DATE` | 13 AUG 2026 | export-Forest-6000000227297512829.ged | 26 APR 2022 | export-Descendants-20.ged |
+| `@I6000000010219805450@` | `INDI.CHAN.DATE.TIME` | 21:07:31 | export-Forest-6000000227297512829.ged | 16:19:34 | export-Descendants-20.ged |
+| `@I6000000004829086571@` | `INDI.BIRT.DATE` | 1460 | export-Forest-6000000227297512829.ged | 1462 | export-Forest-2.ged |
+| `@I6000000224711243827@` | `INDI.CHAN.DATE` | 05 AUG 2026 | export-Forest-6000000227297762830.ged | 02 APR 2026 | export-Descendants-20.ged |
+| `@I6000000224711243827@` | `INDI.CHAN.DATE.TIME` | 20:17:35 | export-Forest-6000000227297762830.ged | 18:55:08 | export-Descendants-20.ged |
+| `@I6000000006092166085@` | `INDI.CHAN.DATE` | 07 AUG 2026 | export-Forest-6000000227297762830.ged | 27 APR 2022 | export-Descendants-20.ged |
+| `@I6000000006092166085@` | `INDI.CHAN.DATE.TIME` | 22:57:29 | export-Forest-6000000227297762830.ged | 07:04:06 | export-Descendants-20.ged |
+| `@I6000000021866140240@` | `INDI.CHAN.DATE` | 09 AUG 2026 | export-Forest-6000000227297762830.ged | 27 APR 2022 | export-Descendants-20.ged |
+| `@I6000000021866140240@` | `INDI.CHAN.DATE.TIME` | 16:20:29 | export-Forest-6000000227297762830.ged | 16:16:38 | export-Descendants-20.ged |
+| `@I6000000015987693539@` | `INDI.CHAN.DATE` | 13 AUG 2026 | export-Forest-6000000227297762830.ged | 23 JUN 2026 | export-BloodTree-8.ged |
+| `@I6000000015987693539@` | `INDI.CHAN.DATE.TIME` | 11:31:55 | export-Forest-6000000227297762830.ged | 02:16:36 | export-BloodTree-8.ged |
+| `@I6000000015411561759@` | `INDI.CHAN.DATE` | 16 AUG 2026 | export-Forest-6000000227297762830.ged | 12 JUN 2026 | export-Descendants-20.ged |
+| `@I6000000015411561759@` | `INDI.CHAN.DATE.TIME` | 13:03:11 | export-Forest-6000000227297762830.ged | 09:04:21 | export-Descendants-20.ged |
+| `@I6000000000401585942@` | `INDI.CHAN.DATE` | 05 AUG 2026 | export-Forest-6000000227297762830.ged | 28 DEC 2024 | export-Forest-39.ged |
+| `@I6000000000401585942@` | `INDI.CHAN.DATE.TIME` | 16:40:00 | export-Forest-6000000227297762830.ged | 14:19:15 | export-Forest-39.ged |
+| `@I6000000004827276873@` | `INDI.CHAN.DATE` | 15 AUG 2026 | export-Forest-6000000227297843999.ged | 27 JUL 2026 | export-Forest-22.ged |
+| `@I6000000004827276873@` | `INDI.CHAN.DATE.TIME` | 08:24:23 | export-Forest-6000000227297843999.ged | 08:19:15 | export-Forest-22.ged |
+| `@I347655337870012697@` | `INDI.CHAN.DATE` | 09 AUG 2026 | export-Forest-6000000227297843999.ged | 15 JUN 2026 | export-Forest-22.ged |
+| `@I347655337870012697@` | `INDI.CHAN.DATE.TIME` | 09:14:17 | export-Forest-6000000227297843999.ged | 07:57:56 | export-Forest-22.ged |
+| `@I6000000006727878330@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Forest-6000000227297843999.ged | 30 AUG 2022 | export-Forest-23.ged |
+| `@I6000000006727878330@` | `INDI.CHAN.DATE.TIME` | 13:04:09 | export-Forest-6000000227297843999.ged | 13:39:53 | export-Forest-23.ged |
+| `@I312422053980007074@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Forest-6000000227297843999.ged | 27 APR 2022 | export-Forest-23.ged |
+| `@I312422053980007074@` | `INDI.CHAN.DATE.TIME` | 13:12:08 | export-Forest-6000000227297843999.ged | 11:45:45 | export-Forest-23.ged |
+| `@I320403124760006354@` | `INDI.BIRT.ADDR.STAE` | Småland | export-Forest-6000000227298012899.ged | Kronoberg | export-Forest-18.ged |
+| `@I320403124760006354@` | `INDI.CHAN.DATE` | 12 AUG 2026 | export-Forest-6000000227298012899.ged | 21 NOV 2025 | export-Forest-18.ged |
+| `@I320403124760006354@` | `INDI.CHAN.DATE.TIME` | 06:28:32 | export-Forest-6000000227298012899.ged | 13:23:15 | export-Forest-18.ged |
+| `@I6000000006451559965@` | `INDI.CHAN.DATE` | 17 AUG 2026 | export-Forest-6000000227298054843.ged | 27 APR 2022 | export-Forest-6000000227294770839.ged |
+| `@I6000000006451559965@` | `INDI.CHAN.DATE.TIME` | 16:31:39 | export-Forest-6000000227298054843.ged | 12:06:19 | export-Forest-6000000227294770839.ged |
+| `@I6000000001306355579@` | `INDI.CHAN.DATE` | 17 AUG 2026 | export-Forest-6000000227298146822.ged | 20 JUN 2026 | export-Forest-12.ged |
+| `@I6000000001306355579@` | `INDI.CHAN.DATE.TIME` | 07:29:41 | export-Forest-6000000227298146822.ged | 11:31:12 | export-Forest-12.ged |
+| `@I6000000001448151252@` | `INDI.CHAN.DATE` | 17 AUG 2026 | export-Forest-6000000227298146822.ged | 16 MAY 2026 | export-Forest-18.ged |
+| `@I6000000001448151252@` | `INDI.CHAN.DATE.TIME` | 07:21:44 | export-Forest-6000000227298146822.ged | 17:44:38 | export-Forest-18.ged |
+| `@I6000000001230037346@` | `INDI.CHAN.DATE` | 17 AUG 2026 | export-Forest-6000000227298146822.ged | 17 MAY 2026 | export-Forest-18.ged |
+| `@I6000000001230037346@` | `INDI.CHAN.DATE.TIME` | 07:10:16 | export-Forest-6000000227298146822.ged | 05:19:42 | export-Forest-18.ged |
+| `@I4117527068020122146@` | `INDI.CHAN.DATE` | 13 AUG 2026 | export-Forest-6000000227298146822.ged | 29 JUN 2026 | export-Forest-18.ged |
+| `@I4117527068020122146@` | `INDI.CHAN.DATE.TIME` | 14:25:51 | export-Forest-6000000227298146822.ged | 02:11:08 | export-Forest-18.ged |
+| `@I6000000010531725554@` | `INDI.CHAN.DATE` | 08 AUG 2026 | export-Forest-6000000227298146822.ged | 04 AUG 2026 | export-Forest-18.ged |
+| `@I6000000010531725554@` | `INDI.CHAN.DATE.TIME` | 10:08:17 | export-Forest-6000000227298146822.ged | 02:45:10 | export-Forest-18.ged |
+| `@I6000000015524791634@` | `INDI.CHAN.DATE` | 07 AUG 2026 | export-Forest-6000000227298146822.ged | 17 NOV 2022 | export-Forest-18.ged |
+| `@I6000000015524791634@` | `INDI.CHAN.DATE.TIME` | 19:49:51 | export-Forest-6000000227298146822.ged | 18:29:08 | export-Forest-18.ged |
+| `@I6000000011893823971@` | `INDI.CHAN.DATE` | 15 AUG 2026 | export-Forest-6000000227298315838.ged | 11 MAR 2025 | export-Forest-27.ged |
+| `@I6000000011893823971@` | `INDI.CHAN.DATE.TIME` | 00:00:36 | export-Forest-6000000227298315838.ged | 07:38:15 | export-Forest-27.ged |
+| `@I4285001@` | `INDI.CHAN.DATE` | 17 AUG 2026 | export-Forest-6000000227298391886.ged | 12 JUN 2026 | export-Forest-18.ged |
+| `@I4285001@` | `INDI.CHAN.DATE.TIME` | 16:56:03 | export-Forest-6000000227298391886.ged | 02:39:06 | export-Forest-18.ged |
+| `@I6000000205427452902@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Forest-6000000227298391886.ged | 30 APR 2024 | export-Forest-22.ged |
+| `@I6000000205427452902@` | `INDI.CHAN.DATE.TIME` | 05:31:22 | export-Forest-6000000227298391886.ged | 07:15:49 | export-Forest-22.ged |
+| `@I6000000007025559649@` | `INDI.CHAN.DATE` | 15 AUG 2026 | export-Forest-6000000227298391886.ged | 09 DEC 2025 | export-Forest-22.ged |
+| `@I6000000007025559649@` | `INDI.CHAN.DATE.TIME` | 05:04:40 | export-Forest-6000000227298391886.ged | 05:54:11 | export-Forest-22.ged |
+| `@I6000000004828721076@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Forest-6000000227298391886.ged | 26 APR 2022 | export-Forest-22.ged |
+| `@I6000000004828721076@` | `INDI.CHAN.DATE.TIME` | 05:28:19 | export-Forest-6000000227298391886.ged | 11:05:08 | export-Forest-22.ged |
+| `@I6000000016273679323@` | `INDI.CHAN.DATE` | 10 AUG 2026 | export-Forest-6000000227299182891.ged | 12 NOV 2023 | export-Forest-22.ged |
+| `@I6000000016273679323@` | `INDI.CHAN.DATE.TIME` | 20:48:23 | export-Forest-6000000227299182891.ged | 11:06:31 | export-Forest-22.ged |
+| `@I5381202464070053447@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Forest-6000000227299182891.ged | 03 JUN 2026 | export-Forest-22.ged |
+| `@I5381202464070053447@` | `INDI.CHAN.DATE.TIME` | 09:21:39 | export-Forest-6000000227299182891.ged | 05:59:02 | export-Forest-22.ged |
+| `@I6000000003111815364@` | `INDI.CHAN.DATE` | 18 AUG 2026 | export-Forest-6000000227306504844.ged | 17 JUL 2025 | export-Forest-6000000227297762830.ged |
+| `@I6000000003111815364@` | `INDI.CHAN.DATE.TIME` | 03:32:47 | export-Forest-6000000227306504844.ged | 13:52:12 | export-Forest-6000000227297762830.ged |
+| `@I6000000014274410101@` | `INDI.CHAN.DATE` | 15 AUG 2026 | export-Forest-6000000227306504844.ged | 01 JUL 2026 | export-Descendants-20.ged |
+| `@I6000000014274410101@` | `INDI.CHAN.DATE.TIME` | 09:02:14 | export-Forest-6000000227306504844.ged | 12:35:59 | export-Descendants-20.ged |
+| `@I6000000014475414061@` | `INDI.CHAN.DATE` | 16 AUG 2026 | export-Forest-6000000227306504844.ged | 03 JUN 2021 | export-Descendants-20.ged |
+| `@I6000000014475414061@` | `INDI.CHAN.DATE.TIME` | 18:36:56 | export-Forest-6000000227306504844.ged | 18:33:55 | export-Descendants-20.ged |
+| `@I6000000012661969333@` | `INDI.CHAN.DATE` | 18 AUG 2026 | export-Forest-6000000227308361821.ged | 03 MAY 2025 | export-Forest-6000000227298012899.ged |
+| `@I6000000012661969333@` | `INDI.CHAN.DATE.TIME` | 04:11:42 | export-Forest-6000000227308361821.ged | 07:30:09 | export-Forest-6000000227298012899.ged |
+| `@I6000000002404247239@` | `INDI.CHAN.DATE` | 11 AUG 2026 | export-Forest-6000000227308361821.ged | 15 DEC 2025 | export-Forest-18.ged |
+| `@I6000000002404247239@` | `INDI.CHAN.DATE.TIME` | 02:12:17 | export-Forest-6000000227308361821.ged | 04:15:39 | export-Forest-18.ged |
+| `@I6000000013254296247@` | `INDI.SUBM` | @S356213449400013374@ | export-Forest-6000000227308361821.ged | @S6000000000032750484@ | export-Forest-6000000227298012899.ged |
+| `@I6000000013254296247@` | `INDI.CHAN.DATE` | 18 AUG 2026 | export-Forest-6000000227308361821.ged | 16 AUG 2026 | export-Forest-6000000227298012899.ged |
+| `@I6000000013254296247@` | `INDI.CHAN.DATE.TIME` | 05:24:48 | export-Forest-6000000227308361821.ged | 05:24:25 | export-Forest-6000000227298012899.ged |
+| `@I6000000007978309515@` | `INDI.CHAN.DATE` | 18 AUG 2026 | export-Forest-6000000227310843862.ged | 16 AUG 2020 | export-Forest-6000000227290969847.ged |
+| `@I6000000007978309515@` | `INDI.CHAN.DATE.TIME` | 10:03:12 | export-Forest-6000000227310843862.ged | 04:09:27 | export-Forest-6000000227290969847.ged |
+| `@I6000000007977942141@` | `INDI.CHAN.DATE` | 18 AUG 2026 | export-Forest-6000000227310843862.ged | 30 DEC 2015 | export-Forest-6000000227290969847.ged |
+| `@I6000000007977942141@` | `INDI.CHAN.DATE.TIME` | 10:03:27 | export-Forest-6000000227310843862.ged | 16:17:06 | export-Forest-6000000227290969847.ged |
+| `@I6000000007977928713@` | `INDI.CHAN.DATE` | 18 AUG 2026 | export-Forest-6000000227310843862.ged | 17 JUN 2023 | export-Forest-6000000227290969847.ged |
+| `@I6000000007977928713@` | `INDI.CHAN.DATE.TIME` | 10:03:44 | export-Forest-6000000227310843862.ged | 02:38:02 | export-Forest-6000000227290969847.ged |
+| `@I6000000007978022868@` | `INDI.CHAN.DATE` | 18 AUG 2026 | export-Forest-6000000227310843862.ged | 17 MAR 2024 | export-Forest-6000000227290969847.ged |
+| `@I6000000007978022868@` | `INDI.CHAN.DATE.TIME` | 10:02:25 | export-Forest-6000000227310843862.ged | 05:10:01 | export-Forest-6000000227290969847.ged |
+| `@I6000000007935831803@` | `INDI.CHAN.DATE` | 18 AUG 2026 | export-Forest-6000000227310843862.ged | 29 JAN 2018 | export-Forest-6000000227290969847.ged |
+| `@I6000000007935831803@` | `INDI.CHAN.DATE.TIME` | 10:02:11 | export-Forest-6000000227310843862.ged | 10:56:59 | export-Forest-6000000227290969847.ged |
+| `@I6000000011035598499@` | `INDI.CHAN.DATE` | 09 JUL 2025 | export-Descendants-6000000177944124971.ged | 15 AUG 2026 | export-Forest-6000000227312306880.ged |
+| `@I6000000011035598499@` | `INDI.CHAN.DATE.TIME` | 10:25:25 | export-Descendants-6000000177944124971.ged | 06:50:57 | export-Forest-6000000227312306880.ged |
+| `@I6000000192985712822@` | `INDI.CHAN.DATE` | 23 MAR 2023 | export-Descendants-6000000177944124971.ged | 15 AUG 2026 | export-Forest-6000000227312306880.ged |
+| `@I6000000192985712822@` | `INDI.CHAN.DATE.TIME` | 09:06:34 | export-Descendants-6000000177944124971.ged | 06:51:58 | export-Forest-6000000227312306880.ged |
+| `@I6000000028732865453@` | `INDI.CHAN.DATE` | 23 MAR 2023 | export-Descendants-6000000177944124971.ged | 15 AUG 2026 | export-Forest-6000000227312306880.ged |
+| `@I6000000028732865453@` | `INDI.CHAN.DATE.TIME` | 09:20:08 | export-Descendants-6000000177944124971.ged | 06:53:30 | export-Forest-6000000227312306880.ged |
 | `@I6000000181107692823@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Descendants-6000000210387665830.ged | 25 NOV 2023 | export-Descendants-20.ged |
 | `@I6000000181107692823@` | `INDI.CHAN.DATE.TIME` | 16:11:33 | export-Descendants-6000000210387665830.ged | 10:25:32 | export-Descendants-20.ged |
+| `@I6000000018528325436@` | `INDI.CHAN.DATE` | 17 MAR 2023 | export-Descendants-6000000210387665830.ged | 14 AUG 2026 | export-Forest-6000000227295142836.ged |
+| `@I6000000018528325436@` | `INDI.CHAN.DATE.TIME` | 18:19:23 | export-Descendants-6000000210387665830.ged | 17:37:54 | export-Forest-6000000227295142836.ged |
 | `@I6000000013883604606@` | `INDI.CHAN.DATE` | 05 AUG 2026 | export-Descendants-6000000210387665830.ged | 26 FEB 2024 | export-BloodTree-8.ged |
 | `@I6000000013883604606@` | `INDI.CHAN.DATE.TIME` | 02:26:01 | export-Descendants-6000000210387665830.ged | 19:07:53 | export-BloodTree-8.ged |
-| `@I6000000007818873404@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Descendants-6000000210387665830.ged | 19 JUL 2026 | export-Descendants-20.ged |
-| `@I6000000007818873404@` | `INDI.CHAN.DATE.TIME` | 11:22:18 | export-Descendants-6000000210387665830.ged | 11:42:46 | export-Descendants-20.ged |
+| `@I6000000006092166085@` | `INDI.CHAN.DATE` | 27 APR 2022 | export-Descendants-6000000210387665830.ged | 07 AUG 2026 | export-Forest-6000000227297762830.ged |
+| `@I6000000006092166085@` | `INDI.CHAN.DATE.TIME` | 07:04:06 | export-Descendants-6000000210387665830.ged | 22:57:29 | export-Forest-6000000227297762830.ged |
+| `@I6000000014475414061@` | `INDI.CHAN.DATE` | 03 JUN 2021 | export-Descendants-6000000210387665830.ged | 16 AUG 2026 | export-Forest-6000000227306504844.ged |
+| `@I6000000014475414061@` | `INDI.CHAN.DATE.TIME` | 18:33:55 | export-Descendants-6000000210387665830.ged | 18:36:56 | export-Forest-6000000227306504844.ged |
 | `@I6000000181106864873@` | `INDI.DEAT.DATE` | ABT 1375 | export-Descendants-6000000210387665830.ged | BET 1325 AND 1367 | export-Descendants-20.ged |
 | `@I6000000181106864873@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Descendants-6000000210387665830.ged | 23 FEB 2026 | export-Descendants-20.ged |
 | `@I6000000181106864873@` | `INDI.CHAN.DATE.TIME` | 15:19:32 | export-Descendants-6000000210387665830.ged | 14:34:34 | export-Descendants-20.ged |
+| `@I6000000014274410101@` | `INDI.CHAN.DATE` | 01 JUL 2026 | export-Descendants-6000000210387665830.ged | 15 AUG 2026 | export-Forest-6000000227306504844.ged |
+| `@I6000000014274410101@` | `INDI.CHAN.DATE.TIME` | 12:35:59 | export-Descendants-6000000210387665830.ged | 09:02:14 | export-Forest-6000000227306504844.ged |
+| `@I6000000014472440132@` | `INDI.BIRT.DATE` | ABT 1408 | export-Descendants-6000000210387665830.ged | ABT 1415 | export-Forest-6000000227295142836.ged |
+| `@I6000000014472440132@` | `INDI.CHAN.DATE` | 21 JUL 2026 | export-Descendants-6000000210387665830.ged | 11 AUG 2026 | export-Forest-6000000227295142836.ged |
+| `@I6000000014472440132@` | `INDI.CHAN.DATE.TIME` | 17:01:56 | export-Descendants-6000000210387665830.ged | 19:06:38 | export-Forest-6000000227295142836.ged |
+| `@I6000000192856888844@` | `INDI.BIRT.DATE` | ABT 1355 | export-Descendants-6000000210387665830.ged | ABT 1360 | export-Forest-6000000227295142836.ged |
+| `@I6000000192856888844@` | `INDI.CHAN.DATE` | 29 JUL 2026 | export-Descendants-6000000210387665830.ged | 14 AUG 2026 | export-Forest-6000000227295142836.ged |
+| `@I6000000192856888844@` | `INDI.CHAN.DATE.TIME` | 12:22:52 | export-Descendants-6000000210387665830.ged | 17:38:26 | export-Forest-6000000227295142836.ged |
+| `@I6000000021866140240@` | `INDI.CHAN.DATE` | 27 APR 2022 | export-Descendants-6000000210387665830.ged | 09 AUG 2026 | export-Forest-6000000227297762830.ged |
+| `@I6000000021866140240@` | `INDI.CHAN.DATE.TIME` | 16:16:38 | export-Descendants-6000000210387665830.ged | 16:20:29 | export-Forest-6000000227297762830.ged |
+| `@I6000000010918684425@` | `INDI.CHAN.DATE` | 29 NOV 2025 | export-Descendants-6000000210387665830.ged | 10 AUG 2026 | export-BloodTree-6000000227291886826.ged |
+| `@I6000000010918684425@` | `INDI.CHAN.DATE.TIME` | 08:44:12 | export-Descendants-6000000210387665830.ged | 07:11:36 | export-BloodTree-6000000227291886826.ged |
 | `@I6000000208593910842@` | `INDI.CHAN.DATE` | 05 AUG 2026 | export-Descendants-6000000210387665830.ged | 01 MAY 2026 | export-Descendants-20.ged |
 | `@I6000000208593910842@` | `INDI.CHAN.DATE.TIME` | 09:12:42 | export-Descendants-6000000210387665830.ged | 16:43:29 | export-Descendants-20.ged |
 | `@I6000000063154623845@` | `INDI.BIRT.DATE` | ABT 1335 | export-Descendants-6000000210387665830.ged | ABT 1310 | export-Descendants-20.ged |
@@ -573,8 +951,10 @@ By path:
 | `@I6000000181105748882@` | `INDI.CHAN.DATE.TIME` | 15:53:58 | export-Descendants-6000000210387665830.ged | 10:31:52 | export-Descendants-20.ged |
 | `@I6000000181108041821@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Descendants-6000000210387665830.ged | 23 NOV 2023 | export-Descendants-20.ged |
 | `@I6000000181108041821@` | `INDI.CHAN.DATE.TIME` | 16:25:21 | export-Descendants-6000000210387665830.ged | 07:48:14 | export-Descendants-20.ged |
-| `@I6000000224711243827@` | `INDI.CHAN.DATE` | 05 AUG 2026 | export-Descendants-6000000210387665830.ged | 02 APR 2026 | export-Descendants-20.ged |
-| `@I6000000224711243827@` | `INDI.CHAN.DATE.TIME` | 20:17:35 | export-Descendants-6000000210387665830.ged | 18:55:08 | export-Descendants-20.ged |
+| `@I6000000010219805450@` | `INDI.CHAN.DATE` | 26 APR 2022 | export-Descendants-6000000210387665830.ged | 13 AUG 2026 | export-Forest-6000000227297512829.ged |
+| `@I6000000010219805450@` | `INDI.CHAN.DATE.TIME` | 16:19:34 | export-Descendants-6000000210387665830.ged | 21:07:31 | export-Forest-6000000227297512829.ged |
+| `@I6000000015411561759@` | `INDI.CHAN.DATE` | 12 JUN 2026 | export-Descendants-6000000210387665830.ged | 16 AUG 2026 | export-Forest-6000000227297762830.ged |
+| `@I6000000015411561759@` | `INDI.CHAN.DATE.TIME` | 09:04:21 | export-Descendants-6000000210387665830.ged | 13:03:11 | export-Forest-6000000227297762830.ged |
 | `@I6000000006240541810@` | `INDI.CHAN.DATE` | 07 AUG 2026 | export-Descendants-6000000210387665830.ged | 15 NOV 2025 | export-Descendants-20.ged |
 | `@I6000000006240541810@` | `INDI.CHAN.DATE.TIME` | 08:28:52 | export-Descendants-6000000210387665830.ged | 09:22:52 | export-Descendants-20.ged |
 | `@I6000000001846936883@` | `INDI.CHAN.DATE` | 04 AUG 2026 | export-Descendants-6000000226989731860.ged | 07 JUN 2019 | export-Forest-14.ged |
@@ -602,14 +982,16 @@ By path:
 | `@I6000000001846508982@` | `INDI.CHAN.DATE` | 04 AUG 2026 | export-Descendants-6000000226989731860.ged | 20 FEB 2023 | export-Forest-14.ged |
 | `@I6000000001846508982@` | `INDI.CHAN.DATE.TIME` | 20:41:37 | export-Descendants-6000000226989731860.ged | 00:58:19 | export-Forest-14.ged |
 | `@F6000000179131721834@` | `FAM.HUSB` | @I6000000001829492981@ | export-Descendants-6000000226989731860.ged | @I6000000179131744821@ | export-Forest-14.ged |
+| `@I6000000139466133793@` | `INDI.CHAN.DATE` | 26 JUN 2026 | export-Descendants-6000000227086506866.ged | 08 AUG 2026 | export-Forest-6000000227296941934.ged |
+| `@I6000000139466133793@` | `INDI.CHAN.DATE.TIME` | 22:16:13 | export-Descendants-6000000227086506866.ged | 14:29:01 | export-Forest-6000000227296941934.ged |
+| `@I6000000001797957481@` | `INDI.CHAN.DATE` | 30 APR 2025 | export-Descendants-6000000227212960823.ged | 15 AUG 2026 | export-Forest-6000000227297029878.ged |
+| `@I6000000001797957481@` | `INDI.CHAN.DATE.TIME` | 22:49:25 | export-Descendants-6000000227212960823.ged | 14:32:03 | export-Forest-6000000227297029878.ged |
 | `@I6000000087535357291@` | `INDI.CHAN.DATE` | 15 AUG 2026 | export-BloodTree-6000000087535357291.ged | 12 AUG 2026 | export-Descendants-6000000177921389824.ged |
 | `@I6000000087535357291@` | `INDI.CHAN.DATE.TIME` | 11:06:49 | export-BloodTree-6000000087535357291.ged | 19:34:41 | export-Descendants-6000000177921389824.ged |
 | `@I6000000028539533798@` | `INDI.CHAN.DATE` | 15 AUG 2026 | export-BloodTree-6000000087535357291.ged | 06 NOV 2025 | export-Descendants-6000000177944088828.ged |
 | `@I6000000028539533798@` | `INDI.CHAN.DATE.TIME` | 06:33:57 | export-BloodTree-6000000087535357291.ged | 08:22:47 | export-Descendants-6000000177944088828.ged |
 | `@I6000000178918116832@` | `INDI.CHAN.DATE` | 14 AUG 2026 | export-BloodTree-6000000178918422849.ged | 01 OCT 2021 | export-Forest-15.ged |
 | `@I6000000178918116832@` | `INDI.CHAN.DATE.TIME` | 15:16:50 | export-BloodTree-6000000178918422849.ged | 12:31:33 | export-Forest-15.ged |
-| `@I6000000006101430421@` | `INDI.CHAN.DATE` | 05 AUG 2026 | export-BloodTree-6000000178918422849.ged | 28 APR 2022 | export-Forest-22.ged |
-| `@I6000000006101430421@` | `INDI.CHAN.DATE.TIME` | 05:59:45 | export-BloodTree-6000000178918422849.ged | 20:38:07 | export-Forest-22.ged |
 | `@I6000000009919273291@` | `INDI.CHAN.DATE` | 05 AUG 2026 | export-BloodTree-6000000178918422849.ged | 20 DEC 2025 | export-Forest-32.ged |
 | `@I6000000009919273291@` | `INDI.CHAN.DATE.TIME` | 11:25:25 | export-BloodTree-6000000178918422849.ged | 15:57:15 | export-Forest-32.ged |
 | `@I6000000189662274863@` | `INDI.CHAN.DATE` | 05 AUG 2026 | export-BloodTree-6000000178918422849.ged | 06 JUN 2026 | export-Forest-32.ged |
@@ -714,8 +1096,6 @@ By path:
 | `@I6000000003199405179@` | `INDI.CHAN.DATE.TIME` | 02:43:13 | export-Forest-6000000209721868822.ged | 11:05:26 | export-Forest-39.ged |
 | `@I6000000012663366262@` | `INDI.CHAN.DATE` | 10 AUG 2026 | export-Forest-6000000209721868822.ged | 26 SEP 2022 | export-Forest-41.ged |
 | `@I6000000012663366262@` | `INDI.CHAN.DATE.TIME` | 07:50:12 | export-Forest-6000000209721868822.ged | 17:15:45 | export-Forest-41.ged |
-| `@I6000000000401585942@` | `INDI.CHAN.DATE` | 05 AUG 2026 | export-Forest-6000000209721868822.ged | 28 DEC 2024 | export-Forest-39.ged |
-| `@I6000000000401585942@` | `INDI.CHAN.DATE.TIME` | 16:40:00 | export-Forest-6000000209721868822.ged | 14:19:15 | export-Forest-39.ged |
 | `@I6000000003265389645@` | `INDI.CHAN.DATE` | 05 AUG 2026 | export-Forest-6000000209721868822.ged | 07 NOV 2025 | export-Forest-39.ged |
 | `@I6000000003265389645@` | `INDI.CHAN.DATE.TIME` | 16:36:38 | export-Forest-6000000209721868822.ged | 03:44:24 | export-Forest-39.ged |
 | `@I6000000067751654858@` | `INDI.CHAN.DATE` | 12 AUG 2026 | export-Forest-6000000209721868822.ged | 24 SEP 2017 | export-Forest-41.ged |
@@ -732,18 +1112,39 @@ By path:
 | `@I6000000000944955419@` | `INDI.BIRT.DATE` | 1378 | export-Forest-6000000227254292875.ged | BET 1370 AND 1378 | export-Forest-12.ged |
 | `@I6000000000944955419@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Forest-6000000227254292875.ged | 04 JUN 2026 | export-Forest-12.ged |
 | `@I6000000000944955419@` | `INDI.CHAN.DATE.TIME` | 10:45:08 | export-Forest-6000000227254292875.ged | 15:10:35 | export-Forest-12.ged |
+| `@I4285001@` | `INDI.CHAN.DATE` | 12 JUN 2026 | export-Forest-6000000227254292875.ged | 17 AUG 2026 | export-Forest-6000000227298391886.ged |
+| `@I4285001@` | `INDI.CHAN.DATE.TIME` | 02:39:06 | export-Forest-6000000227254292875.ged | 16:56:03 | export-Forest-6000000227298391886.ged |
+| `@I6000000001230037346@` | `INDI.CHAN.DATE` | 17 MAY 2026 | export-Forest-6000000227254292875.ged | 17 AUG 2026 | export-Forest-6000000227298146822.ged |
+| `@I6000000001230037346@` | `INDI.CHAN.DATE.TIME` | 05:19:42 | export-Forest-6000000227254292875.ged | 07:10:16 | export-Forest-6000000227298146822.ged |
 | `@I339434941940007770@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Forest-6000000227254306900.ged | 31 OCT 2014 | export-Forest-25.ged |
 | `@I339434941940007770@` | `INDI.CHAN.DATE.TIME` | 07:19:08 | export-Forest-6000000227254306900.ged | 03:01:32 | export-Forest-25.ged |
 | `@I6000000009755643180@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Forest-6000000227254306900.ged | 30 JAN 2015 | export-Forest-25.ged |
 | `@I6000000009755643180@` | `INDI.CHAN.DATE.TIME` | 07:20:50 | export-Forest-6000000227254306900.ged | 02:59:04 | export-Forest-25.ged |
-| `@I6000000006906853981@` | `INDI.CHAN.DATE` | 12 AUG 2026 | export-Forest-6000000227254550821.ged | 26 APR 2022 | export-Forest-27.ged |
-| `@I6000000006906853981@` | `INDI.CHAN.DATE.TIME` | 14:33:59 | export-Forest-6000000227254550821.ged | 10:58:07 | export-Forest-27.ged |
-| `@I6000000067609999859@` | `INDI.CHAN.DATE` | 12 AUG 2026 | export-Forest-6000000227254550821.ged | 04 AUG 2025 | export-Forest-27.ged |
-| `@I6000000067609999859@` | `INDI.CHAN.DATE.TIME` | 14:34:45 | export-Forest-6000000227254550821.ged | 18:04:41 | export-Forest-27.ged |
-| `@I6000000011893823971@` | `INDI.CHAN.DATE` | 15 AUG 2026 | export-Forest-6000000227254550821.ged | 11 MAR 2025 | export-Forest-27.ged |
-| `@I6000000011893823971@` | `INDI.CHAN.DATE.TIME` | 00:00:36 | export-Forest-6000000227254550821.ged | 07:38:15 | export-Forest-27.ged |
+| `@I6000000050344405836@` | `INDI.CHAN.DATE` | 20 FEB 2024 | export-Forest-6000000227254368832.ged | 16 AUG 2026 | export-Forest-6000000227294020862.ged |
+| `@I6000000050344405836@` | `INDI.CHAN.DATE.TIME` | 01:57:15 | export-Forest-6000000227254368832.ged | 20:41:03 | export-Forest-6000000227294020862.ged |
+| `@I6000000003659887082@` | `INDI.CHAN.DATE` | 12 SEP 2025 | export-Forest-6000000227254550821.ged | 17 AUG 2026 | export-Forest-6000000227295719853.ged |
+| `@I6000000003659887082@` | `INDI.CHAN.DATE.TIME` | 18:00:10 | export-Forest-6000000227254550821.ged | 10:15:53 | export-Forest-6000000227295719853.ged |
+| `@I6000000002290062220@` | `INDI.CHAN.DATE` | 25 JUN 2025 | export-Forest-6000000227254550821.ged | 17 AUG 2026 | export-Forest-6000000227295719853.ged |
+| `@I6000000002290062220@` | `INDI.CHAN.DATE.TIME` | 08:27:21 | export-Forest-6000000227254550821.ged | 10:10:30 | export-Forest-6000000227295719853.ged |
+| `@F6000000030605434892@` | `FAM.HUSB` | @I6000000030605434887@ | export-Forest-6000000227256597825.ged | @I6000000002764956528@ | export-Forest-6000000227293218831.ged |
+| `@I6000000007004596217@` | `INDI.CHAN.DATE` | 16 JUL 2026 | export-Forest-6000000227258246190.ged | 18 AUG 2026 | export-Forest-6000000227308361821.ged |
+| `@I6000000007004596217@` | `INDI.CHAN.DATE.TIME` | 08:35:03 | export-Forest-6000000227258246190.ged | 00:08:45 | export-Forest-6000000227308361821.ged |
+| `@I6000000003897396773@` | `INDI.CHAN.DATE` | 14 DEC 2024 | export-Forest-6000000227258452920.ged | 17 AUG 2026 | export-Forest-6000000227298054843.ged |
+| `@I6000000003897396773@` | `INDI.CHAN.DATE.TIME` | 18:24:36 | export-Forest-6000000227258452920.ged | 19:22:01 | export-Forest-6000000227298054843.ged |
 | `@I6000000177921459052@` | `INDI.CHAN.DATE` | 15 AUG 2026 | export-Forest-6000000227258573822.ged | 20 AUG 2021 | export-Descendants-6000000177921389824.ged |
 | `@I6000000177921459052@` | `INDI.CHAN.DATE.TIME` | 15:19:30 | export-Forest-6000000227258573822.ged | 06:33:35 | export-Descendants-6000000177921389824.ged |
+| `@I5550497268050117721@` | `INDI.CHAN.DATE` | 27 APR 2022 | export-Forest-6000000227258573822.ged | 16 AUG 2026 | export-Forest-6000000227298630829.ged |
+| `@I5550497268050117721@` | `INDI.CHAN.DATE.TIME` | 20:38:39 | export-Forest-6000000227258573822.ged | 12:51:42 | export-Forest-6000000227298630829.ged |
+| `@I6000000020991482706@` | `INDI.CHAN.DATE` | 23 MAR 2026 | export-Forest-10.ged | 06 AUG 2026 | export-Forest-6000000227295719853.ged |
+| `@I6000000020991482706@` | `INDI.CHAN.DATE.TIME` | 15:19:46 | export-Forest-10.ged | 04:58:11 | export-Forest-6000000227295719853.ged |
+| `@I6000000000759679062@` | `INDI.CHAN.DATE` | 24 OCT 2024 | export-Forest-10.ged | 06 AUG 2026 | export-Forest-6000000227297393968.ged |
+| `@I6000000000759679062@` | `INDI.CHAN.DATE.TIME` | 07:18:47 | export-Forest-10.ged | 18:00:56 | export-Forest-6000000227297393968.ged |
+| `@I6000000006906799262@` | `INDI.CHAN.DATE` | 19 MAY 2026 | export-Forest-10.ged | 13 AUG 2026 | export-Forest-6000000227295719853.ged |
+| `@I6000000006906799262@` | `INDI.CHAN.DATE.TIME` | 08:05:08 | export-Forest-10.ged | 07:46:53 | export-Forest-6000000227295719853.ged |
+| `@I6000000000770043075@` | `INDI.CHAN.DATE` | 30 JUL 2026 | export-Forest-10.ged | 05 AUG 2026 | export-Forest-6000000227295719853.ged |
+| `@I6000000000770043075@` | `INDI.CHAN.DATE.TIME` | 21:14:45 | export-Forest-10.ged | 21:00:43 | export-Forest-6000000227295719853.ged |
+| `@I6000000003243185408@` | `INDI.CHAN.DATE` | 11 FEB 2023 | export-Forest-10.ged | 10 AUG 2026 | export-Forest-6000000227295719853.ged |
+| `@I6000000003243185408@` | `INDI.CHAN.DATE.TIME` | 13:44:08 | export-Forest-10.ged | 04:01:18 | export-Forest-6000000227295719853.ged |
 | `@I6000000015050680171@` | `INDI.CHAN.DATE` | 30 APR 2022 | export-Forest-11.ged | 08 AUG 2026 | export-Forest-6000000227254292875.ged |
 | `@I6000000015050680171@` | `INDI.CHAN.DATE.TIME` | 12:49:42 | export-Forest-11.ged | 14:33:54 | export-Forest-6000000227254292875.ged |
 | `@I6000000000944955419@` | `INDI.BIRT.DATE` | BET 1370 AND 1378 | export-Forest-11.ged | 1378 | export-Forest-6000000227254292875.ged |
@@ -751,36 +1152,116 @@ By path:
 | `@I6000000000944955419@` | `INDI.CHAN.DATE.TIME` | 15:10:35 | export-Forest-11.ged | 10:45:08 | export-Forest-6000000227254292875.ged |
 | `@I6000000002815256387@` | `INDI.CHAN.DATE` | 28 APR 2022 | export-Forest-11.ged | 11 AUG 2026 | export-Forest-6000000227254292875.ged |
 | `@I6000000002815256387@` | `INDI.CHAN.DATE.TIME` | 01:36:32 | export-Forest-11.ged | 08:50:46 | export-Forest-6000000227254292875.ged |
-| `@I6000000013668671178@` | `INDI.BIRT.ADDR.CITY` | Elmelunde, | export-Forest-11.ged | Elmelunde | export-Descendants-6000000227212960823.ged |
-| `@I6000000013668671178@` | `INDI.BIRT.ADDR.STAE` | Praesto | export-Forest-11.ged | Præstø | export-Descendants-6000000227212960823.ged |
-| `@I6000000013668671178@` | `INDI.BIRT.ADDR.CTRY` | Denmark | export-Forest-11.ged | Danmark | export-Descendants-6000000227212960823.ged |
-| `@I6000000013668671178@` | `INDI.CHAN.DATE` | 15 JUN 2022 | export-Forest-11.ged | 09 AUG 2026 | export-Descendants-6000000227212960823.ged |
-| `@I6000000013668671178@` | `INDI.CHAN.DATE.TIME` | 12:17:01 | export-Forest-11.ged | 10:55:44 | export-Descendants-6000000227212960823.ged |
-| `@I6000000003603733418@` | `INDI.BIRT.PLAC` | Vestud, Borre Sogn, Møn, Præstø Amt, Danmark | export-Forest-11.ged | Vestud, Borre Sogn, Mønbo, Præstø Amt, Danmark | export-Descendants-6000000227212960823.ged |
-| `@I6000000003603733418@` | `INDI.CHAN.DATE` | 30 APR 2022 | export-Forest-11.ged | 09 AUG 2026 | export-Descendants-6000000227212960823.ged |
-| `@I6000000003603733418@` | `INDI.CHAN.DATE.TIME` | 22:06:15 | export-Forest-11.ged | 10:55:00 | export-Descendants-6000000227212960823.ged |
+| `@I6000000013668671178@` | `INDI.BIRT.ADDR.CITY` | Elmelunde, | export-Forest-11.ged | Elmelunde | export-Forest-6000000227297029878.ged |
+| `@I6000000013668671178@` | `INDI.BIRT.ADDR.STAE` | Praesto | export-Forest-11.ged | Præstø | export-Forest-6000000227297029878.ged |
+| `@I6000000013668671178@` | `INDI.BIRT.ADDR.CTRY` | Denmark | export-Forest-11.ged | Danmark | export-Forest-6000000227297029878.ged |
+| `@I6000000013668671178@` | `INDI.CHAN.DATE` | 15 JUN 2022 | export-Forest-11.ged | 09 AUG 2026 | export-Forest-6000000227297029878.ged |
+| `@I6000000013668671178@` | `INDI.CHAN.DATE.TIME` | 12:17:01 | export-Forest-11.ged | 10:55:44 | export-Forest-6000000227297029878.ged |
+| `@I6000000003603733418@` | `INDI.BIRT.PLAC` | Vestud, Borre Sogn, Møn, Præstø Amt, Danmark | export-Forest-11.ged | Vestud, Borre Sogn, Mønbo, Præstø Amt, Danmark | export-Forest-6000000227297029878.ged |
+| `@I6000000003603733418@` | `INDI.CHAN.DATE` | 30 APR 2022 | export-Forest-11.ged | 09 AUG 2026 | export-Forest-6000000227297029878.ged |
+| `@I6000000003603733418@` | `INDI.CHAN.DATE.TIME` | 22:06:15 | export-Forest-11.ged | 10:55:00 | export-Forest-6000000227297029878.ged |
 | `@I6000000005677143001@` | `INDI.CHAN.DATE` | 27 AUG 2023 | export-Forest-11.ged | 11 AUG 2026 | export-Forest-6000000227254292875.ged |
 | `@I6000000005677143001@` | `INDI.CHAN.DATE.TIME` | 02:39:58 | export-Forest-11.ged | 08:54:10 | export-Forest-6000000227254292875.ged |
 | `@I6000000007248243436@` | `INDI.CHAN.DATE` | 22 FEB 2024 | export-Forest-11.ged | 11 AUG 2026 | export-Forest-6000000227254292875.ged |
 | `@I6000000007248243436@` | `INDI.CHAN.DATE.TIME` | 12:38:58 | export-Forest-11.ged | 08:53:57 | export-Forest-6000000227254292875.ged |
+| `@I4117527068020122146@` | `INDI.CHAN.DATE` | 29 JUN 2026 | export-Forest-12.ged | 13 AUG 2026 | export-Forest-6000000227298146822.ged |
+| `@I4117527068020122146@` | `INDI.CHAN.DATE.TIME` | 02:11:08 | export-Forest-12.ged | 14:25:51 | export-Forest-6000000227298146822.ged |
+| `@I6000000006575335754@` | `INDI.CHAN.DATE` | 11 JAN 2026 | export-Forest-12.ged | 11 AUG 2026 | export-Forest-6000000227295848846.ged |
+| `@I6000000006575335754@` | `INDI.CHAN.DATE.TIME` | 05:54:30 | export-Forest-12.ged | 17:23:37 | export-Forest-6000000227295848846.ged |
+| `@I6000000004533823912@` | `INDI.CHAN.DATE` | 30 JAN 2026 | export-Forest-12.ged | 08 AUG 2026 | export-Forest-6000000227297534832.ged |
+| `@I6000000004533823912@` | `INDI.CHAN.DATE.TIME` | 01:50:49 | export-Forest-12.ged | 01:58:07 | export-Forest-6000000227297534832.ged |
+| `@I5381202464070053447@` | `INDI.CHAN.DATE` | 03 JUN 2026 | export-Forest-12.ged | 06 AUG 2026 | export-Forest-6000000227299182891.ged |
+| `@I5381202464070053447@` | `INDI.CHAN.DATE.TIME` | 05:59:02 | export-Forest-12.ged | 09:21:39 | export-Forest-6000000227299182891.ged |
 | `@I6000000176200817886@` | `INDI.CHAN.DATE` | 14 APR 2024 | export-Forest-14.ged | 05 AUG 2026 | export-BloodTree-6000000178918422849.ged |
 | `@I6000000176200817886@` | `INDI.CHAN.DATE.TIME` | 19:44:27 | export-Forest-14.ged | 11:24:29 | export-BloodTree-6000000178918422849.ged |
 | `@I6000000003578079386@` | `INDI.CHAN.DATE` | 20 SEP 2023 | export-Forest-18.ged | 09 AUG 2026 | export-BloodTree-6000000227252355883.ged |
 | `@I6000000003578079386@` | `INDI.CHAN.DATE.TIME` | 08:15:55 | export-Forest-18.ged | 22:32:27 | export-BloodTree-6000000227252355883.ged |
-| `@I6000000007818873404@` | `INDI.CHAN.DATE` | 19 JUL 2026 | export-Forest-20.ged | 06 AUG 2026 | export-Descendants-6000000210387665830.ged |
-| `@I6000000007818873404@` | `INDI.CHAN.DATE.TIME` | 11:42:46 | export-Forest-20.ged | 11:22:18 | export-Descendants-6000000210387665830.ged |
+| `@I6000000007818873404@` | `INDI.CHAN.DATE` | 19 JUL 2026 | export-Forest-20.ged | 06 AUG 2026 | export-Forest-6000000227297393968.ged |
+| `@I6000000007818873404@` | `INDI.CHAN.DATE.TIME` | 11:42:46 | export-Forest-20.ged | 11:22:18 | export-Forest-6000000227297393968.ged |
+| `@I6000000002441590664@` | `INDI.BURI.DATE` | 1079 | export-Forest-20.ged | ABT 1079 | export-Forest-6000000227297393968.ged |
+| `@I6000000002441590664@` | `INDI.CHAN.DATE` | 26 FEB 2025 | export-Forest-20.ged | 15 AUG 2026 | export-Forest-6000000227297393968.ged |
+| `@I6000000002441590664@` | `INDI.CHAN.DATE.TIME` | 00:57:47 | export-Forest-20.ged | 03:55:26 | export-Forest-6000000227297393968.ged |
+| `@I6000000000796891248@` | `INDI.CHAN.DATE` | 25 MAR 2026 | export-Forest-20.ged | 11 AUG 2026 | export-Forest-6000000227295719853.ged |
+| `@I6000000000796891248@` | `INDI.CHAN.DATE.TIME` | 02:36:49 | export-Forest-20.ged | 08:19:38 | export-Forest-6000000227295719853.ged |
+| `@I6000000005016701444@` | `INDI.CHAN.DATE` | 26 APR 2022 | export-Forest-20.ged | 16 AUG 2026 | export-Forest-6000000227297843999.ged |
+| `@I6000000005016701444@` | `INDI.CHAN.DATE.TIME` | 15:33:01 | export-Forest-20.ged | 07:07:59 | export-Forest-6000000227297843999.ged |
+| `@I4258970970100070152@` | `INDI.CHAN.DATE` | 18 MAR 2023 | export-Forest-20.ged | 14 AUG 2026 | export-Forest-6000000227297393968.ged |
+| `@I4258970970100070152@` | `INDI.CHAN.DATE.TIME` | 16:09:59 | export-Forest-20.ged | 16:00:18 | export-Forest-6000000227297393968.ged |
+| `@I6000000009438007527@` | `INDI.BURI.DATE` | AUG 1027 | export-Forest-20.ged | ABT AUG 1027 | export-Forest-6000000227297843999.ged |
+| `@I6000000009438007527@` | `INDI.CHAN.DATE` | 30 SEP 2022 | export-Forest-20.ged | 14 AUG 2026 | export-Forest-6000000227297843999.ged |
+| `@I6000000009438007527@` | `INDI.CHAN.DATE.TIME` | 07:42:51 | export-Forest-20.ged | 14:51:27 | export-Forest-6000000227297843999.ged |
+| `@I6000000000769899870@` | `INDI.BIRT.ADDR.STAE` | Normandy | export-Forest-20.ged | Nord-Pas-de-Calais | export-Forest-6000000227297393968.ged |
+| `@I6000000000769899870@` | `INDI.BURI.DATE` | SEP 1067 | export-Forest-20.ged | ABT SEP 1067 | export-Forest-6000000227297393968.ged |
+| `@I6000000000769899870@` | `INDI.CHAN.DATE` | 26 MAY 2025 | export-Forest-20.ged | 14 AUG 2026 | export-Forest-6000000227297393968.ged |
+| `@I6000000000769899870@` | `INDI.CHAN.DATE.TIME` | 09:39:16 | export-Forest-20.ged | 14:32:49 | export-Forest-6000000227297393968.ged |
+| `@I6000000003645915181@` | `INDI.BIRT.DATE` | 1030 | export-Forest-20.ged | ABT 1030 | export-Forest-6000000227297393968.ged |
+| `@I6000000003645915181@` | `INDI.CHAN.DATE` | 19 APR 2025 | export-Forest-20.ged | 14 AUG 2026 | export-Forest-6000000227297393968.ged |
+| `@I6000000003645915181@` | `INDI.CHAN.DATE.TIME` | 22:11:27 | export-Forest-20.ged | 14:05:09 | export-Forest-6000000227297393968.ged |
+| `@I6000000003827894534@` | `INDI.CHAN.DATE` | 30 APR 2022 | export-Forest-20.ged | 11 AUG 2026 | export-Forest-6000000227297762830.ged |
+| `@I6000000003827894534@` | `INDI.CHAN.DATE.TIME` | 03:37:39 | export-Forest-20.ged | 08:19:02 | export-Forest-6000000227297762830.ged |
+| `@I6000000044039991695@` | `INDI.CHAN.DATE` | 05 OCT 2024 | export-Forest-20.ged | 06 AUG 2026 | export-Forest-6000000227295719853.ged |
+| `@I6000000044039991695@` | `INDI.CHAN.DATE.TIME` | 12:39:30 | export-Forest-20.ged | 18:19:15 | export-Forest-6000000227295719853.ged |
+| `@I4924870419470035934@` | `INDI.BIRT.PLAC` | Beaumont Palace, | export-Forest-20.ged | Beaumont Palace | export-Forest-6000000227297393968.ged |
+| `@I4924870419470035934@` | `INDI.DEAT.PLAC` | Newark Castle, Newark, | export-Forest-20.ged | Newark Castle | export-Forest-6000000227297393968.ged |
+| `@I4924870419470035934@` | `INDI.BURI.PLAC` | Plot: The Quire, Worcester Cathedral, Worcester, Worcestershire, England | export-Forest-20.ged | The Quire, Worcester Cathedral | export-Forest-6000000227297393968.ged |
+| `@I4924870419470035934@` | `INDI.CHAN.DATE` | 30 JUN 2025 | export-Forest-20.ged | 06 AUG 2026 | export-Forest-6000000227297393968.ged |
+| `@I4924870419470035934@` | `INDI.CHAN.DATE.TIME` | 18:52:31 | export-Forest-20.ged | 10:15:45 | export-Forest-6000000227297393968.ged |
+| `@I6000000002198392157@` | `INDI.DEAT.DATE` | 1210 | export-Forest-20.ged | 1 JAN 1209 | export-Forest-6000000227297393968.ged |
+| `@I6000000002198392157@` | `INDI.CHAN.DATE` | 06 APR 2026 | export-Forest-20.ged | 12 AUG 2026 | export-Forest-6000000227297393968.ged |
+| `@I6000000002198392157@` | `INDI.CHAN.DATE.TIME` | 12:17:11 | export-Forest-20.ged | 01:26:45 | export-Forest-6000000227297393968.ged |
+| `@I6000000002187951903@` | `INDI.CHAN.DATE` | 26 APR 2022 | export-Forest-20.ged | 08 AUG 2026 | export-Forest-6000000227297393968.ged |
+| `@I6000000002187951903@` | `INDI.CHAN.DATE.TIME` | 19:35:50 | export-Forest-20.ged | 05:25:22 | export-Forest-6000000227297393968.ged |
+| `@I6000000003827263149@` | `INDI.CHAN.DATE` | 08 SEP 2025 | export-Forest-20.ged | 08 AUG 2026 | export-Forest-6000000227297393968.ged |
+| `@I6000000003827263149@` | `INDI.CHAN.DATE.TIME` | 12:27:52 | export-Forest-20.ged | 01:44:51 | export-Forest-6000000227297393968.ged |
+| `@I6000000002198946285@` | `INDI.BIRT.DATE` | DEC 961 | export-Forest-20.ged | ABT DEC 961 | export-Forest-6000000227297393968.ged |
+| `@I6000000002198946285@` | `INDI.BIRT.PLAC` | Vlaanderen (Flanders) | export-Forest-20.ged | Flanders Nord Nord-Pas-de-Calais France | export-Forest-6000000227297393968.ged |
+| `@I6000000002198946285@` | `INDI.BURI.ADDR.CTRY` | Belgium | export-Forest-20.ged | France | export-Forest-6000000227297393968.ged |
+| `@I6000000002198946285@` | `INDI.DEAT.PLAC` | La Chapelle-Saint-Laurent, Deux-Sèvres, Poitou-Charentes | export-Forest-20.ged | [uncertain]  St Laurent | export-Forest-6000000227297393968.ged |
+| `@I6000000002198946285@` | `INDI.CHAN.DATE` | 05 JAN 2025 | export-Forest-20.ged | 14 AUG 2026 | export-Forest-6000000227297393968.ged |
+| `@I6000000002198946285@` | `INDI.CHAN.DATE.TIME` | 14:05:06 | export-Forest-20.ged | 15:55:55 | export-Forest-6000000227297393968.ged |
+| `@I6000000001412935350@` | `INDI.BIRT.ADDR.CTRY` | Flandres | export-Forest-20.ged | France | export-Forest-6000000227297393968.ged |
+| `@I6000000001412935350@` | `INDI.DEAT.ADDR.CTRY` | Flandres | export-Forest-20.ged | France | export-Forest-6000000227297393968.ged |
+| `@I6000000001412935350@` | `INDI.CHAN.DATE` | 07 MAY 2026 | export-Forest-20.ged | 14 AUG 2026 | export-Forest-6000000227297393968.ged |
+| `@I6000000001412935350@` | `INDI.CHAN.DATE.TIME` | 20:38:50 | export-Forest-20.ged | 14:57:51 | export-Forest-6000000227297393968.ged |
 | `@I6000000000708654659@` | `INDI.CHAN.DATE` | 24 MAR 2025 | export-Forest-21.ged | 09 AUG 2026 | export-BloodTree-6000000227252355883.ged |
 | `@I6000000000708654659@` | `INDI.CHAN.DATE.TIME` | 00:06:32 | export-Forest-21.ged | 22:29:57 | export-BloodTree-6000000227252355883.ged |
-| `@I6000000010981941618@` | `INDI.CHAN.DATE` | 05 AUG 2026 | export-Forest-24.ged | 27 JUL 2026 | export-BloodTree-8.ged |
-| `@I6000000010981941618@` | `INDI.CHAN.DATE.TIME` | 07:59:22 | export-Forest-24.ged | 09:46:54 | export-BloodTree-8.ged |
+| `@I6000000020482991126@` | `INDI.CHAN.DATE` | 03 JUN 2021 | export-Forest-24.ged | 14 AUG 2026 | export-BloodTree-6000000227291886826.ged |
+| `@I6000000020482991126@` | `INDI.CHAN.DATE.TIME` | 18:18:51 | export-Forest-24.ged | 01:54:52 | export-BloodTree-6000000227291886826.ged |
+| `@I6000000014055285214@` | `INDI.CHAN.DATE` | 02 MAY 2022 | export-Forest-24.ged | 13 AUG 2026 | export-Forest-6000000227297762830.ged |
+| `@I6000000014055285214@` | `INDI.CHAN.DATE.TIME` | 00:51:25 | export-Forest-24.ged | 12:39:51 | export-Forest-6000000227297762830.ged |
+| `@I6000000007978011138@` | `INDI.CHAN.DATE` | 19 JUN 2026 | export-Forest-24.ged | 13 AUG 2026 | export-Forest-6000000227297512829.ged |
+| `@I6000000007978011138@` | `INDI.CHAN.DATE.TIME` | 05:46:00 | export-Forest-24.ged | 21:09:38 | export-Forest-6000000227297512829.ged |
+| `@I6000000020483217898@` | `INDI.CHAN.DATE` | 03 JUN 2021 | export-Forest-24.ged | 14 AUG 2026 | export-BloodTree-6000000227291886826.ged |
+| `@I6000000020483217898@` | `INDI.CHAN.DATE.TIME` | 16:43:25 | export-Forest-24.ged | 01:55:16 | export-BloodTree-6000000227291886826.ged |
+| `@I6000000006945477764@` | `INDI.BIRT.DATE` | ABT 1390 | export-Forest-24.ged | ABT 1370 | export-Forest-6000000227297512829.ged |
+| `@I6000000006945477764@` | `INDI.CHAN.DATE` | 28 APR 2022 | export-Forest-24.ged | 10 AUG 2026 | export-Forest-6000000227297512829.ged |
+| `@I6000000006945477764@` | `INDI.CHAN.DATE.TIME` | 09:35:50 | export-Forest-24.ged | 16:20:33 | export-Forest-6000000227297512829.ged |
+| `@I6000000014472563213@` | `INDI.BIRT.DATE` | 1425 | export-Forest-24.ged | 1395 | export-Forest-6000000227297512829.ged |
+| `@I6000000014472563213@` | `INDI.CHAN.DATE` | 28 APR 2022 | export-Forest-24.ged | 10 AUG 2026 | export-Forest-6000000227297512829.ged |
+| `@I6000000014472563213@` | `INDI.CHAN.DATE.TIME` | 09:35:50 | export-Forest-24.ged | 16:19:49 | export-Forest-6000000227297512829.ged |
+| `@I6000000022819729508@` | `INDI.CHAN.DATE.TIME` | 08:15:33 | export-Forest-24.ged | 19:53:44 | export-Forest-6000000227297512829.ged |
+| `@I6000000015987693539@` | `INDI.CHAN.DATE` | 23 JUN 2026 | export-Forest-25.ged | 13 AUG 2026 | export-Forest-6000000227297762830.ged |
+| `@I6000000015987693539@` | `INDI.CHAN.DATE.TIME` | 02:16:36 | export-Forest-25.ged | 11:31:55 | export-Forest-6000000227297762830.ged |
 | `@I6000000006240541810@` | `INDI.CHAN.DATE` | 15 NOV 2025 | export-Forest-25.ged | 07 AUG 2026 | export-Descendants-6000000210387665830.ged |
 | `@I6000000006240541810@` | `INDI.CHAN.DATE.TIME` | 09:22:52 | export-Forest-25.ged | 08:28:52 | export-Descendants-6000000210387665830.ged |
-| `@I6000000006906853981@` | `INDI.CHAN.DATE` | 26 APR 2022 | export-Forest-29.ged | 12 AUG 2026 | export-Forest-6000000227254550821.ged |
-| `@I6000000006906853981@` | `INDI.CHAN.DATE.TIME` | 10:58:07 | export-Forest-29.ged | 14:33:59 | export-Forest-6000000227254550821.ged |
-| `@I6000000067609999859@` | `INDI.CHAN.DATE` | 04 AUG 2025 | export-Forest-29.ged | 12 AUG 2026 | export-Forest-6000000227254550821.ged |
-| `@I6000000067609999859@` | `INDI.CHAN.DATE.TIME` | 18:04:41 | export-Forest-29.ged | 14:34:45 | export-Forest-6000000227254550821.ged |
-| `@I6000000011893823971@` | `INDI.CHAN.DATE` | 11 MAR 2025 | export-Forest-29.ged | 15 AUG 2026 | export-Forest-6000000227254550821.ged |
-| `@I6000000011893823971@` | `INDI.CHAN.DATE.TIME` | 07:38:15 | export-Forest-29.ged | 00:00:36 | export-Forest-6000000227254550821.ged |
+| `@I6000000006727878330@` | `INDI.CHAN.DATE` | 30 AUG 2022 | export-Forest-29.ged | 06 AUG 2026 | export-Forest-6000000227297843999.ged |
+| `@I6000000006727878330@` | `INDI.CHAN.DATE.TIME` | 13:39:53 | export-Forest-29.ged | 13:04:09 | export-Forest-6000000227297843999.ged |
+| `@I6000000000759680351@` | `INDI.CHAN.DATE` | 14 JUL 2025 | export-Forest-29.ged | 06 AUG 2026 | export-Forest-6000000227295719853.ged |
+| `@I6000000000759680351@` | `INDI.CHAN.DATE.TIME` | 06:14:51 | export-Forest-29.ged | 18:02:33 | export-Forest-6000000227295719853.ged |
+| `@I312422053980007074@` | `INDI.CHAN.DATE` | 27 APR 2022 | export-Forest-29.ged | 06 AUG 2026 | export-Forest-6000000227297843999.ged |
+| `@I312422053980007074@` | `INDI.CHAN.DATE.TIME` | 11:45:45 | export-Forest-29.ged | 13:12:08 | export-Forest-6000000227297843999.ged |
+| `@I6000000002187834676@` | `INDI.CHAN.DATE` | 19 FEB 2026 | export-Forest-29.ged | 06 AUG 2026 | export-Forest-6000000227295719853.ged |
+| `@I6000000002187834676@` | `INDI.CHAN.DATE.TIME` | 12:21:40 | export-Forest-29.ged | 04:40:36 | export-Forest-6000000227295719853.ged |
+| `@I6000000006906853981@` | `INDI.CHAN.DATE` | 26 APR 2022 | export-Forest-29.ged | 12 AUG 2026 | export-Forest-6000000227294770839.ged |
+| `@I6000000006906853981@` | `INDI.CHAN.DATE.TIME` | 10:58:07 | export-Forest-29.ged | 14:33:59 | export-Forest-6000000227294770839.ged |
+| `@I6000000067609999859@` | `INDI.CHAN.DATE` | 04 AUG 2025 | export-Forest-29.ged | 12 AUG 2026 | export-Forest-6000000227294770839.ged |
+| `@I6000000067609999859@` | `INDI.CHAN.DATE.TIME` | 18:04:41 | export-Forest-29.ged | 14:34:45 | export-Forest-6000000227294770839.ged |
+| `@I6000000011893823971@` | `INDI.CHAN.DATE` | 11 MAR 2025 | export-Forest-29.ged | 15 AUG 2026 | export-Forest-6000000227298315838.ged |
+| `@I6000000011893823971@` | `INDI.CHAN.DATE.TIME` | 07:38:15 | export-Forest-29.ged | 00:00:36 | export-Forest-6000000227298315838.ged |
+| `@I6000000001065696635@` | `INDI.CHAN.DATE` | 26 APR 2022 | export-Forest-29.ged | 14 AUG 2026 | export-Forest-6000000227294770839.ged |
+| `@I6000000001065696635@` | `INDI.CHAN.DATE.TIME` | 11:16:25 | export-Forest-29.ged | 17:34:19 | export-Forest-6000000227294770839.ged |
+| `@I6000000006910575961@` | `INDI.CHAN.DATE` | 26 APR 2022 | export-Forest-29.ged | 14 AUG 2026 | export-Forest-6000000227294770839.ged |
+| `@I6000000006910575961@` | `INDI.CHAN.DATE.TIME` | 11:16:27 | export-Forest-29.ged | 17:33:48 | export-Forest-6000000227294770839.ged |
 | `@I6000000042197779195@` | `INDI.CHAN.DATE` | 12 MAR 2026 | export-Forest-30.ged | 12 AUG 2026 | export-Descendants-6000000209721822822.ged |
 | `@I6000000042197779195@` | `INDI.CHAN.DATE.TIME` | 13:04:04 | export-Forest-30.ged | 03:43:04 | export-Descendants-6000000209721822822.ged |
 | `@I6000000011147488062@` | `INDI.CHAN.DATE` | 13 MAR 2026 | export-Forest-30.ged | 12 AUG 2026 | export-Descendants-6000000209721822822.ged |
@@ -803,12 +1284,27 @@ By path:
 | `@I6000000073415602148@` | `INDI.CHAN.DATE.TIME` | 08:21:52 | export-Forest-30.ged | 22:17:04 | export-Descendants-6000000209721868822.ged |
 | `@I6000000021939210268@` | `INDI.CHAN.DATE` | 05 FEB 2026 | export-Forest-30.ged | 12 AUG 2026 | export-Descendants-6000000209721822822.ged |
 | `@I6000000021939210268@` | `INDI.CHAN.DATE.TIME` | 02:37:32 | export-Forest-30.ged | 04:10:17 | export-Descendants-6000000209721822822.ged |
-| `@I6000000224711243827@` | `INDI.CHAN.DATE` | 02 APR 2026 | export-Forest-31.ged | 05 AUG 2026 | export-Descendants-6000000210387665830.ged |
-| `@I6000000224711243827@` | `INDI.CHAN.DATE.TIME` | 18:55:08 | export-Forest-31.ged | 20:17:35 | export-Descendants-6000000210387665830.ged |
+| `@I6000000224711243827@` | `INDI.CHAN.DATE` | 02 APR 2026 | export-Forest-31.ged | 05 AUG 2026 | export-Forest-6000000227297762830.ged |
+| `@I6000000224711243827@` | `INDI.CHAN.DATE.TIME` | 18:55:08 | export-Forest-31.ged | 20:17:35 | export-Forest-6000000227297762830.ged |
 | `@I6000000002187820623@` | `INDI.CHAN.DATE` | 26 APR 2022 | export-Forest-31.ged | 12 AUG 2026 | export-Forest-6000000227254550821.ged |
 | `@I6000000002187820623@` | `INDI.CHAN.DATE.TIME` | 10:57:12 | export-Forest-31.ged | 16:04:36 | export-Forest-6000000227254550821.ged |
-| `@I6000000006444493739@` | `INDI.CHAN.DATE` | 05 MAY 2026 | export-Forest-31.ged | 12 AUG 2026 | export-Forest-6000000227254550821.ged |
-| `@I6000000006444493739@` | `INDI.CHAN.DATE.TIME` | 14:25:41 | export-Forest-31.ged | 16:03:37 | export-Forest-6000000227254550821.ged |
+| `@I6000000006444493739@` | `INDI.CHAN.DATE` | 05 MAY 2026 | export-Forest-31.ged | 12 AUG 2026 | export-Forest-6000000227298315838.ged |
+| `@I6000000006444493739@` | `INDI.CHAN.DATE.TIME` | 14:25:41 | export-Forest-31.ged | 16:03:37 | export-Forest-6000000227298315838.ged |
+| `@I5497294077320022708@` | `INDI.CHAN.DATE` | 04 AUG 2026 | export-Forest-31.ged | 09 AUG 2026 | export-Forest-6000000227297762830.ged |
+| `@I5497294077320022708@` | `INDI.CHAN.DATE.TIME` | 14:19:14 | export-Forest-31.ged | 16:21:49 | export-Forest-6000000227297762830.ged |
+| `@I6000000002188166856@` | `INDI.CHAN.DATE` | 01 MAY 2022 | export-Forest-32.ged | 16 AUG 2026 | export-Forest-6000000227298391886.ged |
+| `@I6000000002188166856@` | `INDI.CHAN.DATE.TIME` | 19:35:35 | export-Forest-32.ged | 18:40:44 | export-Forest-6000000227298391886.ged |
+| `@I6000000015005834456@` | `INDI.CHAN.DATE` | 28 MAR 2018 | export-Forest-36.ged | 10 AUG 2026 | export-Forest-6000000227297512829.ged |
+| `@I6000000015005834456@` | `INDI.CHAN.DATE.TIME` | 14:32:45 | export-Forest-36.ged | 11:25:36 | export-Forest-6000000227297512829.ged |
+| `@I6000000006862903525@` | `INDI.CHAN.DATE` | 31 JUL 2026 | export-Forest-36.ged | 09 AUG 2026 | export-Forest-6000000227295142836.ged |
+| `@I6000000006862903525@` | `INDI.CHAN.DATE.TIME` | 20:12:02 | export-Forest-36.ged | 19:30:09 | export-Forest-6000000227295142836.ged |
+| `@I6000000006838878053@` | `INDI.CHAN.DATE` | 31 JUL 2026 | export-Forest-36.ged | 09 AUG 2026 | export-Forest-6000000227295142836.ged |
+| `@I6000000006838878053@` | `INDI.CHAN.DATE.TIME` | 20:13:59 | export-Forest-36.ged | 17:34:04 | export-Forest-6000000227295142836.ged |
+| `@F6000000077284490070@` | `FAM.WIFE` | @I6000000077284490066@ | export-Forest-36.ged | @I6000000015008372595@ | export-Forest-6000000227297762830.ged |
+| `@I6000000011912123052@` | `INDI.CHAN.DATE` | 14 JAN 2026 | export-Forest-37.ged | 14 AUG 2026 | export-Forest-6000000227297762830.ged |
+| `@I6000000011912123052@` | `INDI.CHAN.DATE.TIME` | 13:05:54 | export-Forest-37.ged | 01:41:32 | export-Forest-6000000227297762830.ged |
+| `@I6000000003461319884@` | `INDI.CHAN.DATE` | 07 SEP 2023 | export-Forest-37.ged | 13 AUG 2026 | export-Forest-6000000227306504844.ged |
+| `@I6000000003461319884@` | `INDI.CHAN.DATE.TIME` | 16:46:16 | export-Forest-37.ged | 21:59:33 | export-Forest-6000000227306504844.ged |
 | `@I6000000181108041821@` | `INDI.CHAN.DATE` | 23 NOV 2023 | export-Forest-37.ged | 06 AUG 2026 | export-Descendants-6000000210387665830.ged |
 | `@I6000000181108041821@` | `INDI.CHAN.DATE.TIME` | 07:48:14 | export-Forest-37.ged | 16:25:21 | export-Descendants-6000000210387665830.ged |
 | `@I6000000181106864873@` | `INDI.DEAT.DATE` | BET 1325 AND 1367 | export-Forest-37.ged | ABT 1375 | export-Descendants-6000000210387665830.ged |
@@ -821,10 +1317,12 @@ By path:
 | `@I6000000181105748882@` | `INDI.CHAN.DATE.TIME` | 10:31:52 | export-Forest-37.ged | 15:53:58 | export-Descendants-6000000210387665830.ged |
 | `@I6000000016069871109@` | `INDI.CHAN.DATE` | 03 JUN 2021 | export-Forest-37.ged | 06 AUG 2026 | export-Descendants-6000000210387665830.ged |
 | `@I6000000016069871109@` | `INDI.CHAN.DATE.TIME` | 17:36:28 | export-Forest-37.ged | 15:52:27 | export-Descendants-6000000210387665830.ged |
+| `@I6000000085009782933@` | `INDI.CHAN.DATE` | 26 FEB 2024 | export-Forest-4.ged | 05 AUG 2026 | export-Forest-6000000227296927882.ged |
+| `@I6000000085009782933@` | `INDI.CHAN.DATE.TIME` | 03:00:44 | export-Forest-4.ged | 07:19:28 | export-Forest-6000000227296927882.ged |
 | `@I6000000005608880108@` | `INDI.CHAN.DATE` | 23 MAY 2024 | export-Forest-4.ged | 09 AUG 2026 | export-Descendants-6000000177944124971.ged |
 | `@I6000000005608880108@` | `INDI.CHAN.DATE.TIME` | 04:15:03 | export-Forest-4.ged | 06:55:30 | export-Descendants-6000000177944124971.ged |
-| `@I6000000005609223578@` | `INDI.CHAN.DATE` | 11 JAN 2025 | export-Forest-4.ged | 05 AUG 2026 | export-Descendants-6000000177944124971.ged |
-| `@I6000000005609223578@` | `INDI.CHAN.DATE.TIME` | 09:50:36 | export-Forest-4.ged | 05:23:10 | export-Descendants-6000000177944124971.ged |
+| `@I6000000005609223578@` | `INDI.CHAN.DATE` | 11 JAN 2025 | export-Forest-4.ged | 05 AUG 2026 | export-Forest-6000000227312306880.ged |
+| `@I6000000005609223578@` | `INDI.CHAN.DATE.TIME` | 09:50:36 | export-Forest-4.ged | 05:23:10 | export-Forest-6000000227312306880.ged |
 | `@I6000000020948163263@` | `INDI.CHAN.DATE` | 23 JAN 2019 | export-Forest-7.ged | 11 AUG 2026 | export-Descendants-6000000209721868822.ged |
 | `@I6000000020948163263@` | `INDI.CHAN.DATE.TIME` | 11:59:52 | export-Forest-7.ged | 22:14:42 | export-Descendants-6000000209721868822.ged |
 | `@I6000000011573796060@` | `INDI.CHAN.DATE` | 30 APR 2022 | export-Forest-8.ged | 13 AUG 2026 | export-Forest-6000000209295506839.ged |
@@ -844,12 +1342,46 @@ By path:
 | `@I6000000009234354166@` | `INDI.CHAN.DATE.TIME` | 11:16:48 | export-Ancestors-6000000087535357291.ged | 13:56:30 | export-BloodTree-6000000087535357291.ged |
 | `@I6000000016793999710@` | `INDI.CHAN.DATE` | 13 APR 2025 | export-Ancestors-6000000087535357291.ged | 08 AUG 2026 | export-BloodTree-6000000087535357291.ged |
 | `@I6000000016793999710@` | `INDI.CHAN.DATE.TIME` | 07:15:01 | export-Ancestors-6000000087535357291.ged | 13:55:37 | export-BloodTree-6000000087535357291.ged |
-| `@I6000000011749043301@` | `INDI.CHAN.DATE` | 05 AUG 2026 | export-Ancestors-6000000087535357291.ged | 05 MAR 2026 | export-Forest-22.ged |
-| `@I6000000011749043301@` | `INDI.CHAN.DATE.TIME` | 01:28:33 | export-Ancestors-6000000087535357291.ged | 05:56:49 | export-Forest-22.ged |
-| `@I5234818062140033220@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Ancestors-6000000087535357291.ged | 03 APR 2026 | export-Forest-22.ged |
-| `@I5234818062140033220@` | `INDI.CHAN.DATE.TIME` | 05:26:31 | export-Ancestors-6000000087535357291.ged | 16:01:03 | export-Forest-22.ged |
-| `@I5381202464070053447@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Ancestors-6000000087535357291.ged | 03 JUN 2026 | export-Forest-22.ged |
-| `@I5381202464070053447@` | `INDI.CHAN.DATE.TIME` | 09:21:39 | export-Ancestors-6000000087535357291.ged | 05:59:02 | export-Forest-22.ged |
+| `@I6000000006964530073@` | `INDI.CHAN.DATE` | 11 JAN 2020 | export-Ancestors-6000000087535357291.ged | 08 AUG 2026 | export-Forest-6000000227291028845.ged |
+| `@I6000000006964530073@` | `INDI.CHAN.DATE.TIME` | 08:57:56 | export-Ancestors-6000000087535357291.ged | 10:31:57 | export-Forest-6000000227291028845.ged |
+| `@I6000000002806742588@` | `INDI.CHAN.DATE` | 08 NOV 2025 | export-Ancestors-6000000087535357291.ged | 15 AUG 2026 | export-Forest-6000000227312306880.ged |
+| `@I6000000002806742588@` | `INDI.CHAN.DATE.TIME` | 01:30:56 | export-Ancestors-6000000087535357291.ged | 08:02:07 | export-Forest-6000000227312306880.ged |
+| `@I349440463640013536@` | `INDI.CHAN.DATE` | 01 APR 2026 | export-Ancestors-6000000087535357291.ged | 16 AUG 2026 | export-Forest-6000000227294926845.ged |
+| `@I349440463640013536@` | `INDI.CHAN.DATE.TIME` | 12:45:42 | export-Ancestors-6000000087535357291.ged | 10:41:09 | export-Forest-6000000227294926845.ged |
+| `@I349443968540012643@` | `INDI.CHAN.DATE` | 22 DEC 2025 | export-Ancestors-6000000087535357291.ged | 16 AUG 2026 | export-Forest-6000000227294926845.ged |
+| `@I349443968540012643@` | `INDI.CHAN.DATE.TIME` | 08:32:29 | export-Ancestors-6000000087535357291.ged | 10:40:33 | export-Forest-6000000227294926845.ged |
+| `@I4982922006040030712@` | `INDI.CHAN.DATE` | 07 NOV 2022 | export-Ancestors-6000000087535357291.ged | 16 AUG 2026 | export-Forest-6000000227294926845.ged |
+| `@I4982922006040030712@` | `INDI.CHAN.DATE.TIME` | 07:37:02 | export-Ancestors-6000000087535357291.ged | 09:03:34 | export-Forest-6000000227294926845.ged |
+| `@I4984086862270100347@` | `INDI.CHAN.DATE` | 17 JAN 2026 | export-Ancestors-6000000087535357291.ged | 16 AUG 2026 | export-Forest-6000000227294926845.ged |
+| `@I4984086862270100347@` | `INDI.CHAN.DATE.TIME` | 06:49:52 | export-Ancestors-6000000087535357291.ged | 10:40:52 | export-Forest-6000000227294926845.ged |
+| `@I6000000001506899998@` | `INDI.CHAN.DATE` | 08 DEC 2024 | export-Ancestors-6000000087535357291.ged | 14 AUG 2026 | export-Forest-6000000227297780952.ged |
+| `@I6000000001506899998@` | `INDI.CHAN.DATE.TIME` | 13:09:51 | export-Ancestors-6000000087535357291.ged | 15:47:14 | export-Forest-6000000227297780952.ged |
+| `@I6000000001838588451@` | `INDI.CHAN.DATE` | 12 NOV 2025 | export-Ancestors-6000000087535357291.ged | 07 AUG 2026 | export-Forest-6000000227297780952.ged |
+| `@I6000000001838588451@` | `INDI.CHAN.DATE.TIME` | 10:26:51 | export-Ancestors-6000000087535357291.ged | 13:41:10 | export-Forest-6000000227297780952.ged |
+| `@I6000000028682440318@` | `INDI.CHAN.DATE` | 04 MAY 2022 | export-Ancestors-6000000087535357291.ged | 16 AUG 2026 | export-Forest-6000000227294926845.ged |
+| `@I6000000028682440318@` | `INDI.CHAN.DATE.TIME` | 07:57:50 | export-Ancestors-6000000087535357291.ged | 09:03:17 | export-Forest-6000000227294926845.ged |
+| `@I6000000025474175184@` | `INDI.CHAN.DATE` | 18 OCT 2023 | export-Ancestors-6000000087535357291.ged | 09 AUG 2026 | export-Forest-6000000227297029878.ged |
+| `@I6000000025474175184@` | `INDI.CHAN.DATE.TIME` | 01:27:08 | export-Ancestors-6000000087535357291.ged | 08:38:36 | export-Forest-6000000227297029878.ged |
+| `@I6000000177944541850@` | `INDI.CHAN.DATE` | 30 APR 2022 | export-Ancestors-6000000087535357291.ged | 17 AUG 2026 | export-Forest-6000000227295848846.ged |
+| `@I6000000177944541850@` | `INDI.CHAN.DATE.TIME` | 16:12:04 | export-Ancestors-6000000087535357291.ged | 09:22:34 | export-Forest-6000000227295848846.ged |
+| `@I6000000072179033092@` | `INDI.CHAN.DATE` | 10 FEB 2025 | export-Ancestors-6000000087535357291.ged | 11 AUG 2026 | export-Forest-6000000227295848846.ged |
+| `@I6000000072179033092@` | `INDI.CHAN.DATE.TIME` | 02:17:22 | export-Ancestors-6000000087535357291.ged | 17:18:08 | export-Forest-6000000227295848846.ged |
+| `@I6000000003414711727@` | `INDI.CHAN.DATE` | 22 JAN 2025 | export-Ancestors-6000000087535357291.ged | 11 AUG 2026 | export-Forest-6000000227295848846.ged |
+| `@I6000000003414711727@` | `INDI.CHAN.DATE.TIME` | 08:34:23 | export-Ancestors-6000000087535357291.ged | 17:15:40 | export-Forest-6000000227295848846.ged |
+| `@I6000000005060755108@` | `INDI.CHAN.DATE` | 24 FEB 2024 | export-Ancestors-6000000087535357291.ged | 11 AUG 2026 | export-Forest-6000000227295848846.ged |
+| `@I6000000005060755108@` | `INDI.CHAN.DATE.TIME` | 02:02:48 | export-Ancestors-6000000087535357291.ged | 17:16:43 | export-Forest-6000000227295848846.ged |
+| `@I6000000004533138274@` | `INDI.CHAN.DATE` | 27 NOV 2025 | export-Ancestors-6000000087535357291.ged | 15 AUG 2026 | export-Forest-6000000227295719853.ged |
+| `@I6000000004533138274@` | `INDI.CHAN.DATE.TIME` | 17:20:13 | export-Ancestors-6000000087535357291.ged | 05:03:37 | export-Forest-6000000227295719853.ged |
+| `@I6000000000688300441@` | `INDI.CHAN.DATE` | 30 JUL 2026 | export-Ancestors-6000000087535357291.ged | 13 AUG 2026 | export-Forest-6000000227295719853.ged |
+| `@I6000000000688300441@` | `INDI.CHAN.DATE.TIME` | 05:32:33 | export-Ancestors-6000000087535357291.ged | 09:26:53 | export-Forest-6000000227295719853.ged |
+| `@I5234818062140033220@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Ancestors-6000000087535357291.ged | 15 AUG 2026 | export-Forest-6000000227295719853.ged |
+| `@I5234818062140033220@` | `INDI.CHAN.DATE.TIME` | 05:26:31 | export-Ancestors-6000000087535357291.ged | 05:05:43 | export-Forest-6000000227295719853.ged |
+| `@I5381202464070053447@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Ancestors-6000000087535357291.ged | 03 JUN 2026 | export-Forest-12.ged |
+| `@I5381202464070053447@` | `INDI.CHAN.DATE.TIME` | 09:21:39 | export-Ancestors-6000000087535357291.ged | 05:59:02 | export-Forest-12.ged |
+| `@I6000000003051245269@` | `INDI.BIRT.ADDR.STAE` | Bretagne | export-Ancestors-6000000087535357291.ged | Normandy | export-Forest-6000000227297393968.ged |
+| `@I6000000003051245269@` | `INDI.DEAT.DATE` | 23 DEC 1035 | export-Ancestors-6000000087535357291.ged | ABT 1071 | export-Forest-6000000227297393968.ged |
+| `@I6000000003051245269@` | `INDI.CHAN.DATE` | 20 JAN 2024 | export-Ancestors-6000000087535357291.ged | 14 AUG 2026 | export-Forest-6000000227297393968.ged |
+| `@I6000000003051245269@` | `INDI.CHAN.DATE.TIME` | 12:45:48 | export-Ancestors-6000000087535357291.ged | 15:39:18 | export-Forest-6000000227297393968.ged |
 | `@I6000000009234354166@` | `INDI.CHAN.DATE` | 08 AUG 2026 | export-Ancestors-6000000177921459056.ged | 04 JUN 2023 | export-Ancestors-6000000087535357291.ged |
 | `@I6000000009234354166@` | `INDI.CHAN.DATE.TIME` | 13:56:30 | export-Ancestors-6000000177921459056.ged | 11:16:48 | export-Ancestors-6000000087535357291.ged |
 | `@I6000000016793999710@` | `INDI.CHAN.DATE` | 08 AUG 2026 | export-Ancestors-6000000177921459056.ged | 13 APR 2025 | export-Ancestors-6000000087535357291.ged |
@@ -874,18 +1406,43 @@ By path:
 | `@I6000000005060755108@` | `INDI.CHAN.DATE.TIME` | 17:16:43 | export-Ancestors-6000000177921459056.ged | 02:02:48 | export-Ancestors-6000000087535357291.ged |
 | `@I5381159762450127210@` | `INDI.CHAN.DATE` | 08 AUG 2026 | export-Ancestors-6000000177921459056.ged | 20 MAR 2026 | export-Forest-22.ged |
 | `@I5381159762450127210@` | `INDI.CHAN.DATE.TIME` | 01:35:35 | export-Ancestors-6000000177921459056.ged | 01:23:37 | export-Forest-22.ged |
-| `@I6000000000688300441@` | `INDI.CHAN.DATE` | 13 AUG 2026 | export-Ancestors-6000000177921459056.ged | 30 JUL 2026 | export-Forest-22.ged |
-| `@I6000000000688300441@` | `INDI.CHAN.DATE.TIME` | 09:26:53 | export-Ancestors-6000000177921459056.ged | 05:32:33 | export-Forest-22.ged |
-| `@I6000000003243185408@` | `INDI.CHAN.DATE` | 10 AUG 2026 | export-Ancestors-6000000177921459056.ged | 11 FEB 2023 | export-Forest-23.ged |
-| `@I6000000003243185408@` | `INDI.CHAN.DATE.TIME` | 04:01:18 | export-Ancestors-6000000177921459056.ged | 13:44:08 | export-Forest-23.ged |
+| `@I6000000000688300441@` | `INDI.CHAN.DATE` | 13 AUG 2026 | export-Ancestors-6000000177921459056.ged | 30 JUL 2026 | export-Ancestors-6000000087535357291.ged |
+| `@I6000000000688300441@` | `INDI.CHAN.DATE.TIME` | 09:26:53 | export-Ancestors-6000000177921459056.ged | 05:32:33 | export-Ancestors-6000000087535357291.ged |
+| `@I6000000003243185408@` | `INDI.CHAN.DATE` | 10 AUG 2026 | export-Ancestors-6000000177921459056.ged | 11 FEB 2023 | export-Forest-10.ged |
+| `@I6000000003243185408@` | `INDI.CHAN.DATE.TIME` | 04:01:18 | export-Ancestors-6000000177921459056.ged | 13:44:08 | export-Forest-10.ged |
 | `@I6000000000351011235@` | `INDI.CHAN.DATE` | 09 AUG 2026 | export-Ancestors-6000000177921459056.ged | 08 MAY 2026 | export-Forest-22.ged |
 | `@I6000000000351011235@` | `INDI.CHAN.DATE.TIME` | 09:14:13 | export-Ancestors-6000000177921459056.ged | 04:44:14 | export-Forest-22.ged |
 | `@I6000000002441590664@` | `INDI.CHAN.DATE` | 12 AUG 2026 | export-Ancestors-6000000177921459056.ged | 26 FEB 2025 | export-Forest-20.ged |
 | `@I6000000002441590664@` | `INDI.CHAN.DATE.TIME` | 21:06:22 | export-Ancestors-6000000177921459056.ged | 00:57:47 | export-Forest-20.ged |
 | `@I5233386757510064451@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Ancestors-6000000177921459056.ged | 16 MAY 2026 | export-Forest-13.ged |
 | `@I5233386757510064451@` | `INDI.CHAN.DATE.TIME` | 11:48:12 | export-Ancestors-6000000177921459056.ged | 12:49:49 | export-Forest-13.ged |
-| `@I347655337870012697@` | `INDI.CHAN.DATE` | 09 AUG 2026 | export-Ancestors-6000000177921459056.ged | 15 JUN 2026 | export-Forest-22.ged |
-| `@I347655337870012697@` | `INDI.CHAN.DATE.TIME` | 09:14:17 | export-Ancestors-6000000177921459056.ged | 07:57:56 | export-Forest-22.ged |
+| `@I6000000009432535049@` | `INDI.BIRT.DATE` | 986 | export-Ancestors-6000000177921459056.ged | 4 SEP 995 | export-Forest-6000000227297393968.ged |
+| `@I6000000009432535049@` | `INDI.BIRT.ADDR.CTRY` | Luxembourg | export-Ancestors-6000000177921459056.ged | France | export-Forest-6000000227297393968.ged |
+| `@I6000000009432535049@` | `INDI.CHAN.DATE` | 24 JAN 2025 | export-Ancestors-6000000177921459056.ged | 14 AUG 2026 | export-Forest-6000000227297393968.ged |
+| `@I6000000009432535049@` | `INDI.CHAN.DATE.TIME` | 05:26:27 | export-Ancestors-6000000177921459056.ged | 15:03:42 | export-Forest-6000000227297393968.ged |
+| `@I6000000004827276873@` | `INDI.CHAN.DATE` | 27 JUL 2026 | export-Ancestors-6000000177921459056.ged | 15 AUG 2026 | export-Forest-6000000227297843999.ged |
+| `@I6000000004827276873@` | `INDI.CHAN.DATE.TIME` | 08:19:15 | export-Ancestors-6000000177921459056.ged | 08:24:23 | export-Forest-6000000227297843999.ged |
+| `@I6000000002667382661@` | `INDI.CHAN.DATE` | 09 JAN 2026 | export-Ancestors-6000000177921459056.ged | 17 AUG 2026 | export-Forest-6000000227295719853.ged |
+| `@I6000000002667382661@` | `INDI.CHAN.DATE.TIME` | 20:31:38 | export-Ancestors-6000000177921459056.ged | 13:08:34 | export-Forest-6000000227295719853.ged |
+| `@I6000000005035166996@` | `INDI.BIRT.DATE` | ABT 942 | export-Ancestors-6000000177921459056.ged | ABT 937 | export-Forest-6000000227297843999.ged |
+| `@I6000000005035166996@` | `INDI.CHAN.DATE` | 11 JUL 2026 | export-Ancestors-6000000177921459056.ged | 14 AUG 2026 | export-Forest-6000000227297843999.ged |
+| `@I6000000005035166996@` | `INDI.CHAN.DATE.TIME` | 14:19:46 | export-Ancestors-6000000177921459056.ged | 16:09:26 | export-Forest-6000000227297843999.ged |
+| `@I6000000002214355256@` | `INDI.BIRT.DATE` | 940 | export-Ancestors-6000000177921459056.ged | ABT 940 | export-Forest-6000000227297843999.ged |
+| `@I6000000002214355256@` | `INDI.DEAT.DATE` | 1 NOV 962 | export-Ancestors-6000000177921459056.ged | 1 JAN 962 | export-Forest-6000000227297843999.ged |
+| `@I6000000002214355256@` | `INDI.DEAT.ADDR.CITY` | Saint-Omer | export-Ancestors-6000000177921459056.ged | Lot-et-Garonne | export-Forest-6000000227297843999.ged |
+| `@I6000000002214355256@` | `INDI.DEAT.ADDR.STAE` | Vlaanderen | export-Ancestors-6000000177921459056.ged | Duche d'Aquitaine | export-Forest-6000000227297843999.ged |
+| `@I6000000002214355256@` | `INDI.DEAT.ADDR.CTRY` | France | export-Ancestors-6000000177921459056.ged | Royaume de France | export-Forest-6000000227297843999.ged |
+| `@I6000000002214355256@` | `INDI.CHAN.DATE` | 26 JAN 2025 | export-Ancestors-6000000177921459056.ged | 14 AUG 2026 | export-Forest-6000000227297843999.ged |
+| `@I6000000002214355256@` | `INDI.CHAN.DATE.TIME` | 07:46:12 | export-Ancestors-6000000177921459056.ged | 16:07:14 | export-Forest-6000000227297843999.ged |
+| `@I6000000007369880557@` | `INDI.BIRT.DATE` | BEF 910 | export-Ancestors-6000000177921459078.ged | ABT 917 | export-Forest-6000000227297843999.ged |
+| `@I6000000007369880557@` | `INDI.BURI.DATE` | 960 | export-Ancestors-6000000177921459078.ged | ABT 960 | export-Forest-6000000227297843999.ged |
+| `@I6000000007369880557@` | `INDI.BURI.PLAC` | Abbaye de St Pierre | export-Ancestors-6000000177921459078.ged | Abbey of Saint-Pierre de Gand  | export-Forest-6000000227297843999.ged |
+| `@I6000000007369880557@` | `INDI.BURI.ADDR.CITY` | Ghent | export-Ancestors-6000000177921459078.ged | Bruges | export-Forest-6000000227297843999.ged |
+| `@I6000000007369880557@` | `INDI.CHAN.DATE` | 01 JUL 2025 | export-Ancestors-6000000177921459078.ged | 14 AUG 2026 | export-Forest-6000000227297843999.ged |
+| `@I6000000007369880557@` | `INDI.CHAN.DATE.TIME` | 09:53:51 | export-Ancestors-6000000177921459078.ged | 16:30:48 | export-Forest-6000000227297843999.ged |
+| `@I6000000002213340177@` | `INDI.BURI.DATE` | 965 | export-Ancestors-6000000177921459078.ged | ABT 964 | export-Forest-6000000227297843999.ged |
+| `@I6000000002213340177@` | `INDI.CHAN.DATE` | 17 JAN 2025 | export-Ancestors-6000000177921459078.ged | 14 AUG 2026 | export-Forest-6000000227297843999.ged |
+| `@I6000000002213340177@` | `INDI.CHAN.DATE.TIME` | 14:40:41 | export-Ancestors-6000000177921459078.ged | 16:22:32 | export-Forest-6000000227297843999.ged |
 | `@I6000000000444676198@` | `INDI.CHAN.DATE` | 11 AUG 2026 | export-Ancestors-6000000177921459078.ged | 24 JUL 2026 | export-Forest-20.ged |
 | `@I6000000000444676198@` | `INDI.CHAN.DATE.TIME` | 22:06:19 | export-Ancestors-6000000177921459078.ged | 04:53:20 | export-Forest-20.ged |
 | `@I6000000015432218467@` | `INDI.CHAN.DATE` | 08 AUG 2026 | export-Ancestors-6000000177921459114.ged | 29 APR 2022 | export-Forest-23.ged |
@@ -938,6 +1495,8 @@ By path:
 | `@I6000000087535357291@` | `INDI.CHAN.DATE.TIME` | 19:34:41 | export-BloodTree-6000000178418577840.ged | 15:32:44 | export-BloodTree-6000000178415387935.ged |
 | `@I6000000087535357291@` | `INDI.CHAN.DATE` | 13 AUG 2026 | export-BloodTree-6000000178420660827.ged | 12 AUG 2026 | export-BloodTree-6000000178418577840.ged |
 | `@I6000000087535357291@` | `INDI.CHAN.DATE.TIME` | 15:32:44 | export-BloodTree-6000000178420660827.ged | 19:34:41 | export-BloodTree-6000000178418577840.ged |
+| `@I6000000003883047294@` | `INDI.CHAN.DATE` | 13 JAN 2026 | export-BloodTree-6000000209655085851.ged | 15 AUG 2026 | export-BloodTree-6000000227291886826.ged |
+| `@I6000000003883047294@` | `INDI.CHAN.DATE.TIME` | 02:20:20 | export-BloodTree-6000000209655085851.ged | 06:47:54 | export-BloodTree-6000000227291886826.ged |
 | `@I6000000003199405179@` | `INDI.CHAN.DATE` | 01 DEC 2022 | export-BloodTree-6000000209655085851.ged | 08 AUG 2026 | export-Forest-6000000209721868822.ged |
 | `@I6000000003199405179@` | `INDI.CHAN.DATE.TIME` | 11:05:26 | export-BloodTree-6000000209655085851.ged | 02:43:13 | export-Forest-6000000209721868822.ged |
 | `@I6000000009525551274@` | `INDI.CHAN.DATE` | 25 APR 2024 | export-BloodTree-6000000209655085851.ged | 08 AUG 2026 | export-Forest-6000000209721868822.ged |
@@ -966,14 +1525,31 @@ By path:
 | `@F6000000224451299224@` | `FAM.WIFE` | @I6000000033546780081@ | export-BloodTree-6000000209655085851.ged | @I6000000007462870097@ | export-Descendants-6000000209721868822.ged |
 | `@I6000000078471646873@` | `INDI.CHAN.DATE` | 05 AUG 2026 | export-Descendants-6000000227085828865.ged | 18 MAY 2026 | export-Forest-8.ged |
 | `@I6000000078471646873@` | `INDI.CHAN.DATE.TIME` | 22:13:38 | export-Descendants-6000000227085828865.ged | 18:06:53 | export-Forest-8.ged |
-| `@I6000000000759680351@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Descendants-6000000227086244080.ged | 14 JUL 2025 | export-Forest-23.ged |
-| `@I6000000000759680351@` | `INDI.CHAN.DATE.TIME` | 18:02:33 | export-Descendants-6000000227086244080.ged | 06:14:51 | export-Forest-23.ged |
+| `@I6000000000162318926@` | `INDI.BIRT.DATE` | 1056 | export-Descendants-6000000227086244080.ged | ABT 1056 | export-Forest-6000000227297843999.ged |
+| `@I6000000000162318926@` | `INDI.DEAT.DATE` | 1101 | export-Descendants-6000000227086244080.ged | AFT 8 JUN 1098 | export-Forest-6000000227297843999.ged |
+| `@I6000000000162318926@` | `INDI.CHAN.DATE` | 19 MAR 2026 | export-Descendants-6000000227086244080.ged | 14 AUG 2026 | export-Forest-6000000227297843999.ged |
+| `@I6000000000162318926@` | `INDI.CHAN.DATE.TIME` | 10:02:47 | export-Descendants-6000000227086244080.ged | 23:49:08 | export-Forest-6000000227297843999.ged |
+| `@I6000000003897541752@` | `INDI.CHAN.DATE` | 08 MAR 2024 | export-Descendants-6000000227086244080.ged | 12 AUG 2026 | export-Forest-6000000227297843999.ged |
+| `@I6000000003897541752@` | `INDI.CHAN.DATE.TIME` | 08:17:36 | export-Descendants-6000000227086244080.ged | 18:18:35 | export-Forest-6000000227297843999.ged |
+| `@I6000000006365407973@` | `INDI.CHAN.DATE` | 30 JUL 2026 | export-Descendants-6000000227086244080.ged | 08 AUG 2026 | export-Forest-6000000227297393968.ged |
+| `@I6000000006365407973@` | `INDI.CHAN.DATE.TIME` | 22:35:50 | export-Descendants-6000000227086244080.ged | 10:02:09 | export-Forest-6000000227297393968.ged |
+| `@I6000000006290716901@` | `INDI.CHAN.DATE` | 28 NOV 2023 | export-Descendants-6000000227086244080.ged | 17 AUG 2026 | export-Forest-6000000227297393968.ged |
+| `@I6000000006290716901@` | `INDI.CHAN.DATE.TIME` | 16:57:42 | export-Descendants-6000000227086244080.ged | 16:19:47 | export-Forest-6000000227297393968.ged |
+| `@I6000000000759680351@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Descendants-6000000227086244080.ged | 14 JUL 2025 | export-Forest-29.ged |
+| `@I6000000000759680351@` | `INDI.CHAN.DATE.TIME` | 18:02:33 | export-Descendants-6000000227086244080.ged | 06:14:51 | export-Forest-29.ged |
 | `@I6000000044039991695@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Descendants-6000000227086244080.ged | 05 OCT 2024 | export-Forest-20.ged |
 | `@I6000000044039991695@` | `INDI.CHAN.DATE.TIME` | 18:19:15 | export-Descendants-6000000227086244080.ged | 12:39:30 | export-Forest-20.ged |
+| `@I4321093289530030615@` | `INDI.BIRT.ADDR.CITY` | Avesnes-le-Comte | export-Descendants-6000000227086244080.ged | Avesnes Le Comte | export-Forest-6000000227298391886.ged |
+| `@I4321093289530030615@` | `INDI.CHAN.DATE` | 16 SEP 2022 | export-Descendants-6000000227086244080.ged | 08 AUG 2026 | export-Forest-6000000227298391886.ged |
+| `@I4321093289530030615@` | `INDI.CHAN.DATE.TIME` | 21:38:38 | export-Descendants-6000000227086244080.ged | 05:02:53 | export-Forest-6000000227298391886.ged |
 | `@I6000000003243185408@` | `INDI.CHAN.DATE` | 11 FEB 2023 | export-Descendants-6000000227086244080.ged | 10 AUG 2026 | export-Ancestors-6000000177921459056.ged |
 | `@I6000000003243185408@` | `INDI.CHAN.DATE.TIME` | 13:44:08 | export-Descendants-6000000227086244080.ged | 04:01:18 | export-Ancestors-6000000177921459056.ged |
-| `@I6000000004533221691@` | `INDI.CHAN.DATE` | 30 JUL 2026 | export-Descendants-6000000227086244080.ged | 15 AUG 2026 | export-Forest-6000000227254550821.ged |
-| `@I6000000004533221691@` | `INDI.CHAN.DATE.TIME` | 23:57:10 | export-Descendants-6000000227086244080.ged | 13:04:28 | export-Forest-6000000227254550821.ged |
+| `@I6000000004533274562@` | `INDI.BIRT.DATE` | ABT 1179 | export-Descendants-6000000227086244080.ged | 30 MAY 1180 | export-Forest-6000000227297393968.ged |
+| `@I6000000004533274562@` | `INDI.DEAT.DATE` | ABT 1232 | export-Descendants-6000000227086244080.ged | 24 APR 1232 | export-Forest-6000000227297393968.ged |
+| `@I6000000004533274562@` | `INDI.CHAN.DATE` | 06 APR 2026 | export-Descendants-6000000227086244080.ged | 12 AUG 2026 | export-Forest-6000000227297393968.ged |
+| `@I6000000004533274562@` | `INDI.CHAN.DATE.TIME` | 12:15:09 | export-Descendants-6000000227086244080.ged | 01:40:21 | export-Forest-6000000227297393968.ged |
+| `@I6000000004533221691@` | `INDI.CHAN.DATE` | 30 JUL 2026 | export-Descendants-6000000227086244080.ged | 15 AUG 2026 | export-Forest-6000000227298391886.ged |
+| `@I6000000004533221691@` | `INDI.CHAN.DATE.TIME` | 23:57:10 | export-Descendants-6000000227086244080.ged | 13:04:28 | export-Forest-6000000227298391886.ged |
 | `@I4924870419470035934@` | `INDI.BIRT.PLAC` | Beaumont Palace | export-Descendants-6000000227086244080.ged | Beaumont Palace, | export-Forest-20.ged |
 | `@I4924870419470035934@` | `INDI.DEAT.PLAC` | Newark Castle | export-Descendants-6000000227086244080.ged | Newark Castle, Newark, | export-Forest-20.ged |
 | `@I4924870419470035934@` | `INDI.BURI.PLAC` | The Quire, Worcester Cathedral | export-Descendants-6000000227086244080.ged | Plot: The Quire, Worcester Cathedral, Worcester, Worcestershire, England | export-Forest-20.ged |
@@ -983,14 +1559,27 @@ By path:
 | `@I6000000000444676198@` | `INDI.CHAN.DATE.TIME` | 04:53:20 | export-Descendants-6000000227086455824.ged | 22:06:19 | export-Ancestors-6000000177921459078.ged |
 | `@I6000000011926990323@` | `INDI.CHAN.DATE` | 16 JUN 2025 | export-Descendants-6000000227086455824.ged | 09 AUG 2026 | export-Ancestors-6000000177921459114.ged |
 | `@I6000000011926990323@` | `INDI.CHAN.DATE.TIME` | 23:14:41 | export-Descendants-6000000227086455824.ged | 03:26:39 | export-Ancestors-6000000177921459114.ged |
-| `@I6000000002979969991@` | `INDI.CHAN.DATE` | 21 APR 2026 | export-Descendants-6000000227086455824.ged | 07 AUG 2026 | export-Ancestors-6000000177921459078.ged |
-| `@I6000000002979969991@` | `INDI.CHAN.DATE.TIME` | 07:50:15 | export-Descendants-6000000227086455824.ged | 02:31:20 | export-Ancestors-6000000177921459078.ged |
+| `@I6000000002979969991@` | `INDI.CHAN.DATE` | 21 APR 2026 | export-Descendants-6000000227086455824.ged | 07 AUG 2026 | export-Forest-6000000227297843999.ged |
+| `@I6000000002979969991@` | `INDI.CHAN.DATE.TIME` | 07:50:15 | export-Descendants-6000000227086455824.ged | 02:31:20 | export-Forest-6000000227297843999.ged |
 | `@I6000000009458060257@` | `INDI.CHAN.DATE` | 16 JUN 2025 | export-Descendants-6000000227086455824.ged | 09 AUG 2026 | export-Ancestors-6000000177921459114.ged |
 | `@I6000000009458060257@` | `INDI.CHAN.DATE.TIME` | 23:12:48 | export-Descendants-6000000227086455824.ged | 04:11:14 | export-Ancestors-6000000177921459114.ged |
+| `@I6000000002187818133@` | `INDI.BIRT.ADDR.STAE` | Alsace-Champagne-Ardenne-Lorraine | export-Descendants-6000000227086455824.ged | Lothringen | export-Forest-6000000227299182891.ged |
+| `@I6000000002187818133@` | `INDI.BIRT.ADDR.CTRY` | France | export-Descendants-6000000227086455824.ged | Holy Roman Empire | export-Forest-6000000227299182891.ged |
+| `@I6000000002187818133@` | `INDI.CHAN.DATE` | 06 JUL 2023 | export-Descendants-6000000227086455824.ged | 09 AUG 2026 | export-Forest-6000000227299182891.ged |
+| `@I6000000002187818133@` | `INDI.CHAN.DATE.TIME` | 08:23:45 | export-Descendants-6000000227086455824.ged | 03:20:55 | export-Forest-6000000227299182891.ged |
 | `@I6000000000222222800@` | `INDI.CHAN.DATE` | 19 SEP 2025 | export-Descendants-6000000227086455824.ged | 09 AUG 2026 | export-Ancestors-6000000177921459114.ged |
 | `@I6000000000222222800@` | `INDI.CHAN.DATE.TIME` | 10:45:08 | export-Descendants-6000000227086455824.ged | 04:12:57 | export-Ancestors-6000000177921459114.ged |
+| `@I6000000002247834869@` | `INDI.CHAN.DATE` | 15 DEC 2024 | export-Descendants-6000000227086455824.ged | 12 AUG 2026 | export-Forest-6000000227297843999.ged |
+| `@I6000000002247834869@` | `INDI.CHAN.DATE.TIME` | 06:28:29 | export-Descendants-6000000227086455824.ged | 18:43:35 | export-Forest-6000000227297843999.ged |
 | `@I6000000002441590664@` | `INDI.CHAN.DATE` | 26 FEB 2025 | export-Descendants-6000000227086455824.ged | 12 AUG 2026 | export-Ancestors-6000000177921459056.ged |
 | `@I6000000002441590664@` | `INDI.CHAN.DATE.TIME` | 00:57:47 | export-Descendants-6000000227086455824.ged | 21:06:22 | export-Ancestors-6000000177921459056.ged |
+| `@I6000000027666217048@` | `INDI.CHAN.DATE` | 03 AUG 2026 | export-Descendants-6000000227227190927.ged | 15 AUG 2026 | export-BloodTree-6000000227291886826.ged |
+| `@I6000000027666217048@` | `INDI.CHAN.DATE.TIME` | 02:51:45 | export-Descendants-6000000227227190927.ged | 13:52:44 | export-BloodTree-6000000227291886826.ged |
+| `@I6000000104782607821@` | `INDI.CHAN.DATE` | 13 FEB 2020 | export-Descendants-6000000227227295846.ged | 17 AUG 2026 | export-Forest-6000000227293218831.ged |
+| `@I6000000104782607821@` | `INDI.CHAN.DATE.TIME` | 22:07:09 | export-Descendants-6000000227227295846.ged | 07:27:53 | export-Forest-6000000227293218831.ged |
+| `@I6000000039410047087@` | `INDI.BIRT.DATE` | ABT 1780 | export-Descendants-6000000227227295846.ged | 1781 | export-Forest-6000000227293218831.ged |
+| `@I6000000039410047087@` | `INDI.CHAN.DATE` | 22 JUN 2026 | export-Descendants-6000000227227295846.ged | 15 AUG 2026 | export-Forest-6000000227293218831.ged |
+| `@I6000000039410047087@` | `INDI.CHAN.DATE.TIME` | 15:00:35 | export-Descendants-6000000227227295846.ged | 22:07:24 | export-Forest-6000000227293218831.ged |
 | `@I6000000178918116832@` | `INDI.CHAN.DATE` | 01 OCT 2021 | export-Forest-6000000178918422849.ged | 14 AUG 2026 | export-BloodTree-6000000178918422849.ged |
 | `@I6000000178918116832@` | `INDI.CHAN.DATE.TIME` | 12:31:33 | export-Forest-6000000178918422849.ged | 15:16:50 | export-BloodTree-6000000178918422849.ged |
 | `@I6000000005956039079@` | `INDI.CHAN.DATE` | 14 DEC 2025 | export-Forest-6000000227086244080.ged | 08 AUG 2026 | export-Ancestors-6000000177921459078.ged |
@@ -999,22 +1588,40 @@ By path:
 | `@I6000000006103447029@` | `INDI.CHAN.DATE.TIME` | 06:49:37 | export-Forest-6000000227086244080.ged | 21:11:08 | export-Ancestors-6000000177921459078.ged |
 | `@I6000000001588386554@` | `INDI.CHAN.DATE` | 30 MAR 2024 | export-Forest-6000000227086244080.ged | 09 AUG 2026 | export-Ancestors-6000000177921459078.ged |
 | `@I6000000001588386554@` | `INDI.CHAN.DATE.TIME` | 01:32:32 | export-Forest-6000000227086244080.ged | 03:03:42 | export-Ancestors-6000000177921459078.ged |
-| `@I6000000000945068492@` | `INDI.CHAN.DATE` | 13 NOV 2024 | export-Forest-6000000227086244080.ged | 08 AUG 2026 | export-Ancestors-6000000177921459114.ged |
-| `@I6000000000945068492@` | `INDI.CHAN.DATE.TIME` | 14:54:06 | export-Forest-6000000227086244080.ged | 18:55:04 | export-Ancestors-6000000177921459114.ged |
-| `@I6000000009783557218@` | `INDI.CHAN.DATE` | 22 SEP 2025 | export-Forest-6000000227086244080.ged | 09 AUG 2026 | export-Ancestors-6000000177921459114.ged |
-| `@I6000000009783557218@` | `INDI.CHAN.DATE.TIME` | 07:57:57 | export-Forest-6000000227086244080.ged | 02:08:19 | export-Ancestors-6000000177921459114.ged |
+| `@I6000000000945068492@` | `INDI.CHAN.DATE` | 13 NOV 2024 | export-Forest-6000000227086244080.ged | 08 AUG 2026 | export-Forest-6000000227297393968.ged |
+| `@I6000000000945068492@` | `INDI.CHAN.DATE.TIME` | 14:54:06 | export-Forest-6000000227086244080.ged | 18:55:04 | export-Forest-6000000227297393968.ged |
+| `@I6000000009783557218@` | `INDI.CHAN.DATE` | 22 SEP 2025 | export-Forest-6000000227086244080.ged | 09 AUG 2026 | export-Forest-6000000227297393968.ged |
+| `@I6000000009783557218@` | `INDI.CHAN.DATE.TIME` | 07:57:57 | export-Forest-6000000227086244080.ged | 02:08:19 | export-Forest-6000000227297393968.ged |
 | `@I6000000000656813883@` | `INDI.CHAN.DATE` | 20 MAR 2026 | export-Forest-6000000227086244080.ged | 08 AUG 2026 | export-Ancestors-6000000177921459114.ged |
 | `@I6000000000656813883@` | `INDI.CHAN.DATE.TIME` | 11:06:49 | export-Forest-6000000227086244080.ged | 18:57:13 | export-Ancestors-6000000177921459114.ged |
-| `@I6000000005869553008@` | `INDI.CHAN.DATE` | 26 APR 2022 | export-Forest-6000000227086244080.ged | 06 AUG 2026 | export-Ancestors-6000000177921459056.ged |
-| `@I6000000005869553008@` | `INDI.CHAN.DATE.TIME` | 10:57:26 | export-Forest-6000000227086244080.ged | 23:19:23 | export-Ancestors-6000000177921459056.ged |
-| `@I312422053980007074@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Forest-6000000227086380915.ged | 27 APR 2022 | export-Forest-23.ged |
-| `@I312422053980007074@` | `INDI.CHAN.DATE.TIME` | 13:12:08 | export-Forest-6000000227086380915.ged | 11:45:45 | export-Forest-23.ged |
+| `@I6000000005869553008@` | `INDI.CHAN.DATE` | 26 APR 2022 | export-Forest-6000000227086244080.ged | 06 AUG 2026 | export-Forest-6000000227297843999.ged |
+| `@I6000000005869553008@` | `INDI.CHAN.DATE.TIME` | 10:57:26 | export-Forest-6000000227086244080.ged | 23:19:23 | export-Forest-6000000227297843999.ged |
+| `@I6000000000537043368@` | `INDI.BIRT.DATE` | ABT 1020 | export-Forest-6000000227086244080.ged | ABT 1034 | export-Forest-6000000227297843999.ged |
+| `@I6000000000537043368@` | `INDI.DEAT.PLAC` | Abbaye De Hasnon | export-Forest-6000000227086244080.ged | [uncertain] comte de Hainaut | export-Forest-6000000227297843999.ged |
+| `@I6000000000537043368@` | `INDI.CHAN.DATE` | 30 JUL 2025 | export-Forest-6000000227086244080.ged | 14 AUG 2026 | export-Forest-6000000227297843999.ged |
+| `@I6000000000537043368@` | `INDI.CHAN.DATE.TIME` | 07:32:25 | export-Forest-6000000227086244080.ged | 14:10:59 | export-Forest-6000000227297843999.ged |
+| `@I6000000000542234841@` | `INDI.DEAT.DATE` | ABT OCT 1219 | export-Forest-6000000227086380915.ged | 24 OCT 1219 | export-Forest-6000000227297393968.ged |
+| `@I6000000000542234841@` | `INDI.CHAN.DATE` | 06 APR 2026 | export-Forest-6000000227086380915.ged | 12 AUG 2026 | export-Forest-6000000227297393968.ged |
+| `@I6000000000542234841@` | `INDI.CHAN.DATE.TIME` | 12:15:46 | export-Forest-6000000227086380915.ged | 01:28:30 | export-Forest-6000000227297393968.ged |
+| `@I312422053980007074@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Forest-6000000227086380915.ged | 27 APR 2022 | export-Forest-29.ged |
+| `@I312422053980007074@` | `INDI.CHAN.DATE.TIME` | 13:12:08 | export-Forest-6000000227086380915.ged | 11:45:45 | export-Forest-29.ged |
+| `@I6000000227040994860@` | `INDI.CHAN.DATE` | 04 AUG 2026 | export-Forest-6000000227086380915.ged | 10 AUG 2026 | export-Forest-6000000227296941934.ged |
+| `@I6000000227040994860@` | `INDI.CHAN.DATE.TIME` | 22:04:55 | export-Forest-6000000227086380915.ged | 04:37:30 | export-Forest-6000000227296941934.ged |
+| `@I4815734714150052580@` | `INDI.CHAN.DATE` | 29 APR 2022 | export-Forest-6000000227086455824.ged | 13 AUG 2026 | export-Forest-6000000227297393968.ged |
+| `@I4815734714150052580@` | `INDI.CHAN.DATE.TIME` | 09:10:26 | export-Forest-6000000227086455824.ged | 21:32:26 | export-Forest-6000000227297393968.ged |
+| `@I6000000003828021655@` | `INDI.CHAN.DATE` | 01 MAY 2022 | export-Forest-6000000227086455824.ged | 13 AUG 2026 | export-Forest-6000000227297393968.ged |
+| `@I6000000003828021655@` | `INDI.CHAN.DATE.TIME` | 11:59:54 | export-Forest-6000000227086455824.ged | 21:22:39 | export-Forest-6000000227297393968.ged |
 | `@I6000000004533664521@` | `INDI.CHAN.DATE` | 27 APR 2022 | export-Forest-6000000227086455824.ged | 08 AUG 2026 | export-Ancestors-6000000177921459114.ged |
 | `@I6000000004533664521@` | `INDI.CHAN.DATE.TIME` | 04:19:37 | export-Forest-6000000227086455824.ged | 05:32:06 | export-Ancestors-6000000177921459114.ged |
 | `@I6000000007818873404@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Forest-6000000227086620980.ged | 19 JUL 2026 | export-Forest-20.ged |
 | `@I6000000007818873404@` | `INDI.CHAN.DATE.TIME` | 11:22:18 | export-Forest-6000000227086620980.ged | 11:42:46 | export-Forest-20.ged |
-| `@I6000000192330878824@` | `INDI.CHAN.DATE` | 08 MAY 2026 | export-Forest-6000000227087120840.ged | 12 AUG 2026 | export-Forest-6000000227254397877.ged |
-| `@I6000000192330878824@` | `INDI.CHAN.DATE.TIME` | 10:06:56 | export-Forest-6000000227087120840.ged | 10:17:15 | export-Forest-6000000227254397877.ged |
+| `@I6000000004869097957@` | `INDI.CHAN.DATE` | 30 APR 2022 | export-Forest-6000000227086717913.ged | 14 AUG 2026 | export-Forest-6000000227297512829.ged |
+| `@I6000000004869097957@` | `INDI.CHAN.DATE.TIME` | 21:03:51 | export-Forest-6000000227086717913.ged | 02:09:12 | export-Forest-6000000227297512829.ged |
+| `@I6000000192330878824@` | `INDI.CHAN.DATE` | 08 MAY 2026 | export-Forest-6000000227087120840.ged | 12 AUG 2026 | export-Forest-6000000227310843862.ged |
+| `@I6000000192330878824@` | `INDI.CHAN.DATE.TIME` | 10:06:56 | export-Forest-6000000227087120840.ged | 10:17:15 | export-Forest-6000000227310843862.ged |
+| `@I6000000039402116903@` | `INDI.SUBM` | @S6000000183486648825@ | export-Forest-6000000227087120840.ged | @S6000000003330019930@ | export-Forest-6000000227290969847.ged |
+| `@I6000000039402116903@` | `INDI.CHAN.DATE` | 18 DEC 2022 | export-Forest-6000000227087120840.ged | 07 AUG 2026 | export-Forest-6000000227290969847.ged |
+| `@I6000000039402116903@` | `INDI.CHAN.DATE.TIME` | 10:22:46 | export-Forest-6000000227087120840.ged | 06:55:59 | export-Forest-6000000227290969847.ged |
 | `@I6000000002512264794@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Forest-6000000227225487992.ged | 24 SEP 2024 | export-Forest-23.ged |
 | `@I6000000002512264794@` | `INDI.CHAN.DATE.TIME` | 05:43:27 | export-Forest-6000000227225487992.ged | 00:16:56 | export-Forest-23.ged |
 | `@I6000000002441590664@` | `INDI.CHAN.DATE` | 12 AUG 2026 | export-Forest-6000000227225487992.ged | 26 FEB 2025 | export-Descendants-6000000227086455824.ged |
@@ -1036,20 +1643,20 @@ By path:
 | `@I6000000017591019727@` | `INDI.CHAN.DATE.TIME` | 13:10:22 | export-Forest-6000000227225487992.ged | 16:34:47 | export-Descendants-6000000227086455824.ged |
 | `@I6000000004148977344@` | `INDI.CHAN.DATE` | 12 AUG 2026 | export-Forest-6000000227225487992.ged | 11 AUG 2025 | export-Descendants-6000000227086244080.ged |
 | `@I6000000004148977344@` | `INDI.CHAN.DATE.TIME` | 20:39:01 | export-Forest-6000000227225487992.ged | 00:31:30 | export-Descendants-6000000227086244080.ged |
-| `@I6000000007025559649@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Forest-6000000227225487992.ged | 09 DEC 2025 | export-Forest-22.ged |
-| `@I6000000007025559649@` | `INDI.CHAN.DATE.TIME` | 05:30:55 | export-Forest-6000000227225487992.ged | 05:54:11 | export-Forest-22.ged |
+| `@I6000000007025559649@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Forest-6000000227225487992.ged | 15 AUG 2026 | export-Forest-6000000227298391886.ged |
+| `@I6000000007025559649@` | `INDI.CHAN.DATE.TIME` | 05:30:55 | export-Forest-6000000227225487992.ged | 05:04:40 | export-Forest-6000000227298391886.ged |
 | `@I6000000003243185408@` | `INDI.CHAN.DATE` | 10 AUG 2026 | export-Forest-6000000227225628908.ged | 11 FEB 2023 | export-Descendants-6000000227086244080.ged |
 | `@I6000000003243185408@` | `INDI.CHAN.DATE.TIME` | 04:01:18 | export-Forest-6000000227225628908.ged | 13:44:08 | export-Descendants-6000000227086244080.ged |
-| `@I6000000000759679062@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Forest-6000000227225628908.ged | 24 OCT 2024 | export-Forest-22.ged |
-| `@I6000000000759679062@` | `INDI.CHAN.DATE.TIME` | 18:00:56 | export-Forest-6000000227225628908.ged | 07:18:47 | export-Forest-22.ged |
-| `@I6000000020991482706@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Forest-6000000227225628908.ged | 23 MAR 2026 | export-Forest-22.ged |
-| `@I6000000020991482706@` | `INDI.CHAN.DATE.TIME` | 04:58:11 | export-Forest-6000000227225628908.ged | 15:19:46 | export-Forest-22.ged |
+| `@I6000000000759679062@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Forest-6000000227225628908.ged | 24 OCT 2024 | export-Forest-10.ged |
+| `@I6000000000759679062@` | `INDI.CHAN.DATE.TIME` | 18:00:56 | export-Forest-6000000227225628908.ged | 07:18:47 | export-Forest-10.ged |
+| `@I6000000020991482706@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Forest-6000000227225628908.ged | 23 MAR 2026 | export-Forest-10.ged |
+| `@I6000000020991482706@` | `INDI.CHAN.DATE.TIME` | 04:58:11 | export-Forest-6000000227225628908.ged | 15:19:46 | export-Forest-10.ged |
 | `@I6000000006365407973@` | `INDI.CHAN.DATE` | 08 AUG 2026 | export-Forest-6000000227225628908.ged | 30 JUL 2026 | export-Descendants-6000000227086244080.ged |
 | `@I6000000006365407973@` | `INDI.CHAN.DATE.TIME` | 10:02:09 | export-Forest-6000000227225628908.ged | 22:35:50 | export-Descendants-6000000227086244080.ged |
-| `@I6000000006727878330@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Forest-6000000227225628908.ged | 30 AUG 2022 | export-Forest-23.ged |
-| `@I6000000006727878330@` | `INDI.CHAN.DATE.TIME` | 13:04:09 | export-Forest-6000000227225628908.ged | 13:39:53 | export-Forest-23.ged |
-| `@I6000000006906799262@` | `INDI.CHAN.DATE` | 13 AUG 2026 | export-Forest-6000000227225628908.ged | 19 MAY 2026 | export-Forest-22.ged |
-| `@I6000000006906799262@` | `INDI.CHAN.DATE.TIME` | 07:46:53 | export-Forest-6000000227225628908.ged | 08:05:08 | export-Forest-22.ged |
+| `@I6000000006727878330@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Forest-6000000227225628908.ged | 30 AUG 2022 | export-Forest-29.ged |
+| `@I6000000006727878330@` | `INDI.CHAN.DATE.TIME` | 13:04:09 | export-Forest-6000000227225628908.ged | 13:39:53 | export-Forest-29.ged |
+| `@I6000000006906799262@` | `INDI.CHAN.DATE` | 13 AUG 2026 | export-Forest-6000000227225628908.ged | 19 MAY 2026 | export-Forest-10.ged |
+| `@I6000000006906799262@` | `INDI.CHAN.DATE.TIME` | 07:46:53 | export-Forest-6000000227225628908.ged | 08:05:08 | export-Forest-10.ged |
 | `@I6000000001745028784@` | `INDI.CHAN.DATE` | 08 AUG 2026 | export-Forest-6000000227225628908.ged | 06 AUG 2026 | export-Descendants-6000000227086244080.ged |
 | `@I6000000001745028784@` | `INDI.CHAN.DATE.TIME` | 09:59:22 | export-Forest-6000000227225628908.ged | 04:15:12 | export-Descendants-6000000227086244080.ged |
 | `@I6000000004533221359@` | `INDI.CHAN.DATE` | 11 AUG 2026 | export-Forest-6000000227225628908.ged | 06 AUG 2026 | export-Descendants-6000000227086244080.ged |
@@ -1067,22 +1674,26 @@ By path:
 | `@I6000000007305676917@` | `INDI.CHAN.DATE.TIME` | 08:56:42 | export-Forest-6000000227225654852.ged | 17:44:16 | export-BloodTree-8.ged |
 | `@I6000000004996244962@` | `INDI.CHAN.DATE` | 09 AUG 2026 | export-Forest-6000000227225654852.ged | 10 JUL 2026 | export-BloodTree-8.ged |
 | `@I6000000004996244962@` | `INDI.CHAN.DATE.TIME` | 16:25:25 | export-Forest-6000000227225654852.ged | 15:31:00 | export-BloodTree-8.ged |
-| `@I6000000006092166085@` | `INDI.CHAN.DATE` | 07 AUG 2026 | export-Forest-6000000227225654852.ged | 27 APR 2022 | export-Descendants-20.ged |
-| `@I6000000006092166085@` | `INDI.CHAN.DATE.TIME` | 22:57:29 | export-Forest-6000000227225654852.ged | 07:04:06 | export-Descendants-20.ged |
+| `@I6000000006092166085@` | `INDI.CHAN.DATE` | 07 AUG 2026 | export-Forest-6000000227225654852.ged | 27 APR 2022 | export-Descendants-6000000210387665830.ged |
+| `@I6000000006092166085@` | `INDI.CHAN.DATE.TIME` | 22:57:29 | export-Forest-6000000227225654852.ged | 07:04:06 | export-Descendants-6000000210387665830.ged |
 | `@I6000000017605731312@` | `INDI.CHAN.DATE` | 11 AUG 2026 | export-Forest-6000000227225654852.ged | 01 AUG 2026 | export-BloodTree-8.ged |
 | `@I6000000017605731312@` | `INDI.CHAN.DATE.TIME` | 18:33:45 | export-Forest-6000000227225654852.ged | 13:42:25 | export-BloodTree-8.ged |
 | `@I4703843788720034081@` | `INDI.CHAN.DATE` | 07 AUG 2026 | export-Forest-6000000227225654852.ged | 22 JUN 2026 | export-BloodTree-8.ged |
 | `@I4703843788720034081@` | `INDI.CHAN.DATE.TIME` | 21:04:17 | export-Forest-6000000227225654852.ged | 23:02:18 | export-BloodTree-8.ged |
 | `@I6000000004548680413@` | `INDI.CHAN.DATE` | 07 AUG 2026 | export-Forest-6000000227225654852.ged | 22 JUN 2026 | export-BloodTree-8.ged |
 | `@I6000000004548680413@` | `INDI.CHAN.DATE.TIME` | 21:01:35 | export-Forest-6000000227225654852.ged | 22:53:45 | export-BloodTree-8.ged |
-| `@I6000000021866140240@` | `INDI.CHAN.DATE` | 09 AUG 2026 | export-Forest-6000000227225654852.ged | 27 APR 2022 | export-Descendants-20.ged |
-| `@I6000000021866140240@` | `INDI.CHAN.DATE.TIME` | 16:20:29 | export-Forest-6000000227225654852.ged | 16:16:38 | export-Descendants-20.ged |
+| `@I6000000021866140240@` | `INDI.CHAN.DATE` | 09 AUG 2026 | export-Forest-6000000227225654852.ged | 27 APR 2022 | export-Descendants-6000000210387665830.ged |
+| `@I6000000021866140240@` | `INDI.CHAN.DATE.TIME` | 16:20:29 | export-Forest-6000000227225654852.ged | 16:16:38 | export-Descendants-6000000210387665830.ged |
+| `@I6000000003111815364@` | `INDI.CHAN.DATE` | 17 JUL 2025 | export-Forest-6000000227225654852.ged | 18 AUG 2026 | export-Forest-6000000227306504844.ged |
+| `@I6000000003111815364@` | `INDI.CHAN.DATE.TIME` | 13:52:12 | export-Forest-6000000227225654852.ged | 03:32:47 | export-Forest-6000000227306504844.ged |
 | `@I6000000003637345226@` | `INDI.CHAN.DATE` | 08 AUG 2026 | export-Forest-6000000227225654852.ged | 15 OCT 2018 | export-Descendants-20.ged |
 | `@I6000000003637345226@` | `INDI.CHAN.DATE.TIME` | 08:10:06 | export-Forest-6000000227225654852.ged | 04:09:41 | export-Descendants-20.ged |
 | `@I6000000017806908661@` | `INDI.CHAN.DATE` | 10 AUG 2026 | export-Forest-6000000227225654852.ged | 27 APR 2022 | export-Descendants-20.ged |
 | `@I6000000017806908661@` | `INDI.CHAN.DATE.TIME` | 12:01:24 | export-Forest-6000000227225654852.ged | 16:37:22 | export-Descendants-20.ged |
 | `@I6000000011063051262@` | `INDI.CHAN.DATE` | 07 AUG 2026 | export-Forest-6000000227225654852.ged | 11 JAN 2026 | export-Forest-13.ged |
 | `@I6000000011063051262@` | `INDI.CHAN.DATE.TIME` | 06:30:28 | export-Forest-6000000227225654852.ged | 18:13:01 | export-Forest-13.ged |
+| `@I6000000002486815631@` | `INDI.CHAN.DATE` | 27 JUN 2026 | export-Forest-6000000227225654852.ged | 15 AUG 2026 | export-Forest-6000000227297762830.ged |
+| `@I6000000002486815631@` | `INDI.CHAN.DATE.TIME` | 16:21:20 | export-Forest-6000000227225654852.ged | 09:03:13 | export-Forest-6000000227297762830.ged |
 | `@I6000000097161967981@` | `INDI.CHAN.DATE` | 12 AUG 2026 | export-Forest-6000000227225654852.ged | 21 JUN 2019 | export-BloodTree-8.ged |
 | `@I6000000097161967981@` | `INDI.CHAN.DATE.TIME` | 22:27:58 | export-Forest-6000000227225654852.ged | 17:09:03 | export-BloodTree-8.ged |
 | `@I6000000015422200634@` | `INDI.CHAN.DATE` | 11 AUG 2026 | export-Forest-6000000227225654852.ged | 03 JUN 2021 | export-Forest-36.ged |
@@ -1095,20 +1706,24 @@ By path:
 | `@I6000000009665696585@` | `INDI.CHAN.DATE.TIME` | 21:00:24 | export-Forest-6000000227225654852.ged | 11:38:49 | export-Forest-31.ged |
 | `@I6000000011893849609@` | `INDI.CHAN.DATE` | 08 AUG 2026 | export-Forest-6000000227225654852.ged | 30 JUL 2026 | export-BloodTree-8.ged |
 | `@I6000000011893849609@` | `INDI.CHAN.DATE.TIME` | 08:20:10 | export-Forest-6000000227225654852.ged | 03:16:21 | export-BloodTree-8.ged |
-| `@I6000000014472440132@` | `INDI.BIRT.DATE` | ABT 1415 | export-Forest-6000000227225654852.ged | ABT 1408 | export-BloodTree-8.ged |
-| `@I6000000014472440132@` | `INDI.CHAN.DATE` | 11 AUG 2026 | export-Forest-6000000227225654852.ged | 21 JUL 2026 | export-BloodTree-8.ged |
-| `@I6000000014472440132@` | `INDI.CHAN.DATE.TIME` | 19:06:38 | export-Forest-6000000227225654852.ged | 17:01:56 | export-BloodTree-8.ged |
+| `@I6000000014472440132@` | `INDI.BIRT.DATE` | ABT 1415 | export-Forest-6000000227225654852.ged | ABT 1408 | export-Descendants-6000000210387665830.ged |
+| `@I6000000014472440132@` | `INDI.CHAN.DATE` | 11 AUG 2026 | export-Forest-6000000227225654852.ged | 21 JUL 2026 | export-Descendants-6000000210387665830.ged |
+| `@I6000000014472440132@` | `INDI.CHAN.DATE.TIME` | 19:06:38 | export-Forest-6000000227225654852.ged | 17:01:56 | export-Descendants-6000000210387665830.ged |
 | `@I6000000080619287988@` | `INDI.CHAN.DATE` | 10 AUG 2026 | export-Forest-6000000227225654852.ged | 19 NOV 2022 | export-BloodTree-8.ged |
 | `@I6000000080619287988@` | `INDI.CHAN.DATE.TIME` | 11:37:28 | export-Forest-6000000227225654852.ged | 14:05:23 | export-BloodTree-8.ged |
 | `@I6000000003263226602@` | `INDI.BIRT.ADDR.CITY` | Woodlands | export-Forest-6000000227226600829.ged | Woolaton | export-Descendants-6000000227086380915.ged |
 | `@I6000000003263226602@` | `INDI.CHAN.DATE` | 11 AUG 2026 | export-Forest-6000000227226600829.ged | 30 DEC 2023 | export-Descendants-6000000227086380915.ged |
 | `@I6000000003263226602@` | `INDI.CHAN.DATE.TIME` | 21:17:17 | export-Forest-6000000227226600829.ged | 13:48:14 | export-Descendants-6000000227086380915.ged |
+| `@I6000000000350923273@` | `INDI.CHAN.DATE` | 26 APR 2022 | export-Forest-6000000227226720863.ged | 14 AUG 2026 | export-Forest-6000000227294770839.ged |
+| `@I6000000000350923273@` | `INDI.CHAN.DATE.TIME` | 11:27:23 | export-Forest-6000000227226720863.ged | 17:39:16 | export-Forest-6000000227294770839.ged |
 | `@I6000000021594246509@` | `INDI.CHAN.DATE` | 12 AUG 2026 | export-Forest-6000000227226850980.ged | 08 JUL 2026 | export-BloodTree-8.ged |
 | `@I6000000021594246509@` | `INDI.CHAN.DATE.TIME` | 22:27:23 | export-Forest-6000000227226850980.ged | 12:34:18 | export-BloodTree-8.ged |
 | `@I6000000015539943807@` | `INDI.CHAN.DATE` | 13 AUG 2026 | export-Forest-6000000227226850980.ged | 03 JUN 2021 | export-Descendants-20.ged |
 | `@I6000000015539943807@` | `INDI.CHAN.DATE.TIME` | 00:02:40 | export-Forest-6000000227226850980.ged | 17:00:03 | export-Descendants-20.ged |
-| `@I6000000015987693539@` | `INDI.CHAN.DATE` | 13 AUG 2026 | export-Forest-6000000227226850980.ged | 23 JUN 2026 | export-BloodTree-8.ged |
-| `@I6000000015987693539@` | `INDI.CHAN.DATE.TIME` | 11:31:55 | export-Forest-6000000227226850980.ged | 02:16:36 | export-BloodTree-8.ged |
+| `@I6000000015987693539@` | `INDI.CHAN.DATE` | 13 AUG 2026 | export-Forest-6000000227226850980.ged | 23 JUN 2026 | export-Forest-25.ged |
+| `@I6000000015987693539@` | `INDI.CHAN.DATE.TIME` | 11:31:55 | export-Forest-6000000227226850980.ged | 02:16:36 | export-Forest-25.ged |
+| `@I6000000227212174894@` | `INDI.CHAN.DATE` | 12 AUG 2026 | export-Forest-6000000227226850980.ged | 16 AUG 2026 | export-Forest-6000000227306504844.ged |
+| `@I6000000227212174894@` | `INDI.CHAN.DATE.TIME` | 22:09:06 | export-Forest-6000000227226850980.ged | 18:33:47 | export-Forest-6000000227306504844.ged |
 | `@I6000000000424733510@` | `INDI.CHAN.DATE` | 13 AUG 2026 | export-Forest-6000000227227035828.ged | 28 APR 2022 | export-Forest-6000000227086506866.ged |
 | `@I6000000000424733510@` | `INDI.CHAN.DATE.TIME` | 10:04:20 | export-Forest-6000000227227035828.ged | 06:16:10 | export-Forest-6000000227086506866.ged |
 | `@I6000000002836964568@` | `INDI.CHAN.DATE` | 13 AUG 2026 | export-Forest-6000000227227035828.ged | 15 JUL 2026 | export-Forest-6000000227086506866.ged |
@@ -1136,8 +1751,6 @@ By path:
 | `@I6000000003937168812@` | `INDI.CHAN.DATE.TIME` | 08:58:04 | export-Forest-6000000227227035828.ged | 19:41:08 | export-Forest-6000000227086244080.ged |
 | `@I324782572270006412@` | `INDI.CHAN.DATE` | 13 AUG 2026 | export-Forest-6000000227227035828.ged | 15 JUL 2026 | export-Forest-6000000227086506866.ged |
 | `@I324782572270006412@` | `INDI.CHAN.DATE.TIME` | 13:07:52 | export-Forest-6000000227227035828.ged | 08:54:49 | export-Forest-6000000227086506866.ged |
-| `@I6000000004828721076@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Forest-6000000227227035828.ged | 26 APR 2022 | export-Forest-22.ged |
-| `@I6000000004828721076@` | `INDI.CHAN.DATE.TIME` | 05:28:19 | export-Forest-6000000227227035828.ged | 11:05:08 | export-Forest-22.ged |
 | `@I6000000009437636308@` | `INDI.CHAN.DATE` | 13 AUG 2026 | export-Forest-6000000227227039845.ged | 15 JUL 2026 | export-Forest-6000000227086244080.ged |
 | `@I6000000009437636308@` | `INDI.CHAN.DATE.TIME` | 09:13:45 | export-Forest-6000000227227039845.ged | 18:39:24 | export-Forest-6000000227086244080.ged |
 | `@I6000000010191901928@` | `INDI.CHAN.DATE` | 13 AUG 2026 | export-Forest-6000000227227039845.ged | 15 JUL 2026 | export-Forest-6000000227086244080.ged |
@@ -1190,6 +1803,38 @@ By path:
 | `@I6000000186285688286@` | `INDI.CHAN.DATE.TIME` | 05:03:16 | export-Forest.ged | 15:15:33 | export-Forest-14.ged |
 | `@I6000000186285688253@` | `INDI.CHAN.DATE` | 06 AUG 2022 | export-Forest.ged | 04 AUG 2026 | export-Forest-14.ged |
 | `@I6000000186285688253@` | `INDI.CHAN.DATE.TIME` | 05:03:12 | export-Forest.ged | 15:10:26 | export-Forest-14.ged |
+| `@I6000000002441590664@` | `INDI.BURI.DATE` | ABT 1079 | export-Forest-6000000227258314174.ged | 1079 | export-Forest-20.ged |
+| `@I6000000002441590664@` | `INDI.CHAN.DATE` | 15 AUG 2026 | export-Forest-6000000227258314174.ged | 12 AUG 2026 | export-Forest-6000000227225487992.ged |
+| `@I6000000002441590664@` | `INDI.CHAN.DATE.TIME` | 03:55:26 | export-Forest-6000000227258314174.ged | 21:06:22 | export-Forest-6000000227225487992.ged |
+| `@I6000000015222778756@` | `INDI.CHAN.DATE` | 11 AUG 2026 | export-Forest-6000000227258314174.ged | 25 SEP 2025 | export-Forest-6000000227086380915.ged |
+| `@I6000000015222778756@` | `INDI.CHAN.DATE.TIME` | 18:43:52 | export-Forest-6000000227258314174.ged | 07:27:59 | export-Forest-6000000227086380915.ged |
+| `@I6000000004827276873@` | `INDI.CHAN.DATE` | 15 AUG 2026 | export-Forest-6000000227258314174.ged | 27 JUL 2026 | export-Ancestors-6000000177921459056.ged |
+| `@I6000000004827276873@` | `INDI.CHAN.DATE.TIME` | 08:24:23 | export-Forest-6000000227258314174.ged | 08:19:15 | export-Ancestors-6000000177921459056.ged |
+| `@I4258970970100070152@` | `INDI.CHAN.DATE` | 14 AUG 2026 | export-Forest-6000000227258314174.ged | 18 MAR 2023 | export-Forest-20.ged |
+| `@I4258970970100070152@` | `INDI.CHAN.DATE.TIME` | 16:00:18 | export-Forest-6000000227258314174.ged | 16:09:59 | export-Forest-20.ged |
+| `@I6000000009438007527@` | `INDI.BURI.DATE` | ABT AUG 1027 | export-Forest-6000000227258314174.ged | AUG 1027 | export-Forest-20.ged |
+| `@I6000000009438007527@` | `INDI.CHAN.DATE` | 14 AUG 2026 | export-Forest-6000000227258314174.ged | 30 SEP 2022 | export-Forest-20.ged |
+| `@I6000000009438007527@` | `INDI.CHAN.DATE.TIME` | 14:51:27 | export-Forest-6000000227258314174.ged | 07:42:51 | export-Forest-20.ged |
+| `@I6000000000769899870@` | `INDI.BIRT.ADDR.STAE` | Nord-Pas-de-Calais | export-Forest-6000000227258314174.ged | Normandy | export-Forest-20.ged |
+| `@I6000000000769899870@` | `INDI.BURI.DATE` | ABT SEP 1067 | export-Forest-6000000227258314174.ged | SEP 1067 | export-Forest-20.ged |
+| `@I6000000000769899870@` | `INDI.CHAN.DATE` | 14 AUG 2026 | export-Forest-6000000227258314174.ged | 26 MAY 2025 | export-Forest-20.ged |
+| `@I6000000000769899870@` | `INDI.CHAN.DATE.TIME` | 14:32:49 | export-Forest-6000000227258314174.ged | 09:39:16 | export-Forest-20.ged |
+| `@I6000000003645915181@` | `INDI.BIRT.DATE` | ABT 1030 | export-Forest-6000000227258314174.ged | 1030 | export-Forest-20.ged |
+| `@I6000000003645915181@` | `INDI.CHAN.DATE` | 14 AUG 2026 | export-Forest-6000000227258314174.ged | 12 AUG 2026 | export-Forest-6000000227225487992.ged |
+| `@I6000000003645915181@` | `INDI.CHAN.DATE.TIME` | 14:05:09 | export-Forest-6000000227258314174.ged | 20:40:52 | export-Forest-6000000227225487992.ged |
+| `@I4117527068020122146@` | `INDI.CHAN.DATE` | 13 AUG 2026 | export-Forest-6000000227258622821.ged | 29 JUN 2026 | export-Forest-12.ged |
+| `@I4117527068020122146@` | `INDI.CHAN.DATE.TIME` | 14:25:51 | export-Forest-6000000227258622821.ged | 02:11:08 | export-Forest-12.ged |
+| `@I6000000000735972498@` | `INDI.CHAN.DATE` | 17 AUG 2026 | export-Forest-6000000227258622821.ged | 16 MAY 2026 | export-Forest-18.ged |
+| `@I6000000000735972498@` | `INDI.CHAN.DATE.TIME` | 07:30:54 | export-Forest-6000000227258622821.ged | 17:48:58 | export-Forest-18.ged |
+| `@I6000000001230037346@` | `INDI.CHAN.DATE` | 17 AUG 2026 | export-Forest-6000000227258622821.ged | 17 MAY 2026 | export-Forest-6000000227254292875.ged |
+| `@I6000000001230037346@` | `INDI.CHAN.DATE.TIME` | 07:10:16 | export-Forest-6000000227258622821.ged | 05:19:42 | export-Forest-6000000227254292875.ged |
+| `@I6000000172492341585@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Forest-6000000227258622821.ged | 26 APR 2022 | export-Forest-12.ged |
+| `@I6000000172492341585@` | `INDI.CHAN.DATE.TIME` | 22:41:20 | export-Forest-6000000227258622821.ged | 19:03:57 | export-Forest-12.ged |
+| `@I6000000002602476621@` | `INDI.CHAN.DATE` | 16 AUG 2026 | export-Forest-6000000227258622821.ged | 31 AUG 2021 | export-Forest-12.ged |
+| `@I6000000002602476621@` | `INDI.CHAN.DATE.TIME` | 14:05:37 | export-Forest-6000000227258622821.ged | 01:08:54 | export-Forest-12.ged |
+| `@I6000000000944955419@` | `INDI.BIRT.DATE` | 1378 | export-Forest-6000000227258622821.ged | BET 1370 AND 1378 | export-Forest-11.ged |
+| `@I6000000000944955419@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Forest-6000000227258622821.ged | 04 JUN 2026 | export-Forest-11.ged |
+| `@I6000000000944955419@` | `INDI.CHAN.DATE.TIME` | 10:45:08 | export-Forest-6000000227258622821.ged | 15:10:35 | export-Forest-11.ged |
 | `@I5234818062140033220@` | `INDI.CHAN.DATE` | 15 AUG 2026 | export-Forest-6000000227289547881.ged | 06 AUG 2026 | export-Ancestors-6000000087535357291.ged |
 | `@I5234818062140033220@` | `INDI.CHAN.DATE.TIME` | 05:05:43 | export-Forest-6000000227289547881.ged | 05:26:31 | export-Ancestors-6000000087535357291.ged |
 | `@I6000000004533024126@` | `INDI.DEAT.DATE` | 1463 | export-Forest-6000000227289547881.ged | 1460 | export-Forest-12.ged |
@@ -1213,40 +1858,20 @@ By path:
 | `@I6000000001412935350@` | `INDI.DEAT.ADDR.CTRY` | France | export-Forest-6000000227289547881.ged | Flandres | export-Forest-20.ged |
 | `@I6000000001412935350@` | `INDI.CHAN.DATE` | 14 AUG 2026 | export-Forest-6000000227289547881.ged | 07 MAY 2026 | export-Forest-20.ged |
 | `@I6000000001412935350@` | `INDI.CHAN.DATE.TIME` | 14:57:51 | export-Forest-6000000227289547881.ged | 20:38:50 | export-Forest-20.ged |
-| `@I6000000205427452902@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Forest-6000000227289547881.ged | 30 APR 2024 | export-Forest-22.ged |
-| `@I6000000205427452902@` | `INDI.CHAN.DATE.TIME` | 05:31:22 | export-Forest-6000000227289547881.ged | 07:15:49 | export-Forest-22.ged |
-| `@I6000000004533138274@` | `INDI.CHAN.DATE` | 15 AUG 2026 | export-Forest-6000000227289547881.ged | 27 NOV 2025 | export-Forest-22.ged |
-| `@I6000000004533138274@` | `INDI.CHAN.DATE.TIME` | 05:03:37 | export-Forest-6000000227289547881.ged | 17:20:13 | export-Forest-22.ged |
-| `@I6000000002602476621@` | `INDI.CHAN.DATE` | 16 AUG 2026 | export-Forest-6000000227289547881.ged | 31 AUG 2021 | export-Forest-12.ged |
-| `@I6000000002602476621@` | `INDI.CHAN.DATE.TIME` | 14:05:37 | export-Forest-6000000227289547881.ged | 01:08:54 | export-Forest-12.ged |
-| `@I4117527068020122146@` | `INDI.CHAN.DATE` | 13 AUG 2026 | export-Forest-6000000227289547881.ged | 29 JUN 2026 | export-Forest-18.ged |
-| `@I4117527068020122146@` | `INDI.CHAN.DATE.TIME` | 14:25:51 | export-Forest-6000000227289547881.ged | 02:11:08 | export-Forest-18.ged |
-| `@I6000000002404247239@` | `INDI.CHAN.DATE` | 11 AUG 2026 | export-Forest-6000000227289547881.ged | 15 DEC 2025 | export-Forest-18.ged |
-| `@I6000000002404247239@` | `INDI.CHAN.DATE.TIME` | 02:12:17 | export-Forest-6000000227289547881.ged | 04:15:39 | export-Forest-18.ged |
-| `@I6000000000944955419@` | `INDI.BIRT.DATE` | 1378 | export-Forest-6000000227289547881.ged | BET 1370 AND 1378 | export-Forest-11.ged |
-| `@I6000000000944955419@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Forest-6000000227289547881.ged | 04 JUN 2026 | export-Forest-11.ged |
-| `@I6000000000944955419@` | `INDI.CHAN.DATE.TIME` | 10:45:08 | export-Forest-6000000227289547881.ged | 15:10:35 | export-Forest-11.ged |
-| `@I6000000009438007527@` | `INDI.BURI.DATE` | ABT AUG 1027 | export-Forest-6000000227289547881.ged | AUG 1027 | export-Forest-20.ged |
-| `@I6000000009438007527@` | `INDI.CHAN.DATE` | 14 AUG 2026 | export-Forest-6000000227289547881.ged | 30 SEP 2022 | export-Forest-20.ged |
-| `@I6000000009438007527@` | `INDI.CHAN.DATE.TIME` | 14:51:27 | export-Forest-6000000227289547881.ged | 07:42:51 | export-Forest-20.ged |
+| `@I6000000004533138274@` | `INDI.CHAN.DATE` | 15 AUG 2026 | export-Forest-6000000227289547881.ged | 27 NOV 2025 | export-Ancestors-6000000087535357291.ged |
+| `@I6000000004533138274@` | `INDI.CHAN.DATE.TIME` | 05:03:37 | export-Forest-6000000227289547881.ged | 17:20:13 | export-Ancestors-6000000087535357291.ged |
 | `@I6000000009432535049@` | `INDI.BIRT.DATE` | 4 SEP 995 | export-Forest-6000000227289547881.ged | 986 | export-Ancestors-6000000177921459056.ged |
 | `@I6000000009432535049@` | `INDI.BIRT.ADDR.CTRY` | France | export-Forest-6000000227289547881.ged | Luxembourg | export-Ancestors-6000000177921459056.ged |
 | `@I6000000009432535049@` | `INDI.CHAN.DATE` | 14 AUG 2026 | export-Forest-6000000227289547881.ged | 24 JAN 2025 | export-Ancestors-6000000177921459056.ged |
 | `@I6000000009432535049@` | `INDI.CHAN.DATE.TIME` | 15:03:42 | export-Forest-6000000227289547881.ged | 05:26:27 | export-Ancestors-6000000177921459056.ged |
-| `@I6000000000769899870@` | `INDI.BIRT.ADDR.STAE` | Nord-Pas-de-Calais | export-Forest-6000000227289547881.ged | Normandy | export-Forest-20.ged |
-| `@I6000000000769899870@` | `INDI.BURI.DATE` | ABT SEP 1067 | export-Forest-6000000227289547881.ged | SEP 1067 | export-Forest-20.ged |
-| `@I6000000000769899870@` | `INDI.CHAN.DATE` | 14 AUG 2026 | export-Forest-6000000227289547881.ged | 26 MAY 2025 | export-Forest-20.ged |
-| `@I6000000000769899870@` | `INDI.CHAN.DATE.TIME` | 14:32:49 | export-Forest-6000000227289547881.ged | 09:39:16 | export-Forest-20.ged |
 | `@I6000000002198946285@` | `INDI.BIRT.DATE` | ABT DEC 961 | export-Forest-6000000227289547881.ged | DEC 961 | export-Forest-20.ged |
 | `@I6000000002198946285@` | `INDI.BIRT.PLAC` | Flanders Nord Nord-Pas-de-Calais France | export-Forest-6000000227289547881.ged | Vlaanderen (Flanders) | export-Forest-20.ged |
 | `@I6000000002198946285@` | `INDI.BURI.ADDR.CTRY` | France | export-Forest-6000000227289547881.ged | Belgium | export-Forest-20.ged |
 | `@I6000000002198946285@` | `INDI.DEAT.PLAC` | [uncertain]  St Laurent | export-Forest-6000000227289547881.ged | La Chapelle-Saint-Laurent, Deux-Sèvres, Poitou-Charentes | export-Forest-20.ged |
 | `@I6000000002198946285@` | `INDI.CHAN.DATE` | 14 AUG 2026 | export-Forest-6000000227289547881.ged | 05 JAN 2025 | export-Forest-20.ged |
 | `@I6000000002198946285@` | `INDI.CHAN.DATE.TIME` | 15:55:55 | export-Forest-6000000227289547881.ged | 14:05:06 | export-Forest-20.ged |
-| `@I4258970970100070152@` | `INDI.CHAN.DATE` | 14 AUG 2026 | export-Forest-6000000227289547881.ged | 18 MAR 2023 | export-Forest-20.ged |
-| `@I4258970970100070152@` | `INDI.CHAN.DATE.TIME` | 16:00:18 | export-Forest-6000000227289547881.ged | 16:09:59 | export-Forest-20.ged |
-| `@I6000000172492341585@` | `INDI.CHAN.DATE` | 06 AUG 2026 | export-Forest-6000000227289547881.ged | 26 APR 2022 | export-Forest-12.ged |
-| `@I6000000172492341585@` | `INDI.CHAN.DATE.TIME` | 22:41:20 | export-Forest-6000000227289547881.ged | 19:03:57 | export-Forest-12.ged |
+| `@I6000000054368501994@` | `INDI.CHAN.DATE` | 30 APR 2022 | export-Forest-6000000227289604840.ged | 17 AUG 2026 | export-Forest-6000000227295848846.ged |
+| `@I6000000054368501994@` | `INDI.CHAN.DATE.TIME` | 13:50:15 | export-Forest-6000000227289604840.ged | 12:14:42 | export-Forest-6000000227295848846.ged |
 | `@I6000000026539276311@` | `INDI.CHAN.DATE` | 15 AUG 2026 | export-Forest-6000000227289663852.ged | 25 JUL 2024 | export-Descendants-6000000227224418030.ged |
 | `@I6000000026539276311@` | `INDI.CHAN.DATE.TIME` | 06:12:03 | export-Forest-6000000227289663852.ged | 09:59:04 | export-Descendants-6000000227224418030.ged |
 | `@I6000000035229433153@` | `INDI.CHAN.DATE` | 15 AUG 2026 | export-Forest-6000000227289663852.ged | 04 MAY 2022 | export-Descendants-6000000227224418030.ged |
@@ -1255,19 +1880,15 @@ By path:
 | `@I6000000026669408110@` | `INDI.DEAT.PLAC` | Ytre Birkeland | export-Forest-6000000227289663852.ged | Ytre Birkeland, Sauda, Ryfylke, Rogaland, Norway | export-Descendants-6000000227212960823.ged |
 | `@I6000000026669408110@` | `INDI.CHAN.DATE` | 15 AUG 2026 | export-Forest-6000000227289663852.ged | 05 JUL 2026 | export-Descendants-6000000227212960823.ged |
 | `@I6000000026669408110@` | `INDI.CHAN.DATE.TIME` | 06:12:37 | export-Forest-6000000227289663852.ged | 20:10:08 | export-Descendants-6000000227212960823.ged |
+| `@I6000000005228560681@` | `INDI.CHAN.DATE` | 18 SEP 2025 | export-Forest-6000000227289663852.ged | 17 AUG 2026 | export-Forest-6000000227300121832.ged |
+| `@I6000000005228560681@` | `INDI.CHAN.DATE.TIME` | 20:49:36 | export-Forest-6000000227289663852.ged | 12:26:47 | export-Forest-6000000227300121832.ged |
 | `@I6000000004973008243@` | `INDI.BIRT.PLAC` | Arnön | export-Forest-6000000227289792822.ged | Arnon | export-Forest-18.ged |
 | `@I6000000004973008243@` | `INDI.CHAN.DATE` | 05 AUG 2026 | export-Forest-6000000227289792822.ged | 01 SEP 2025 | export-Forest-18.ged |
 | `@I6000000004973008243@` | `INDI.CHAN.DATE.TIME` | 05:53:47 | export-Forest-6000000227289792822.ged | 05:54:41 | export-Forest-18.ged |
 | `@I6000000006575335754@` | `INDI.CHAN.DATE` | 11 AUG 2026 | export-Forest-6000000227289792822.ged | 11 JAN 2026 | export-Forest-12.ged |
 | `@I6000000006575335754@` | `INDI.CHAN.DATE.TIME` | 17:23:37 | export-Forest-6000000227289792822.ged | 05:54:30 | export-Forest-12.ged |
-| `@I6000000002441590664@` | `INDI.BURI.DATE` | ABT 1079 | export-Forest-6000000227289792822.ged | 1079 | export-Forest-20.ged |
-| `@I6000000002441590664@` | `INDI.CHAN.DATE` | 15 AUG 2026 | export-Forest-6000000227289792822.ged | 12 AUG 2026 | export-Forest-6000000227225487992.ged |
-| `@I6000000002441590664@` | `INDI.CHAN.DATE.TIME` | 03:55:26 | export-Forest-6000000227289792822.ged | 21:06:22 | export-Forest-6000000227225487992.ged |
-| `@I6000000003645915181@` | `INDI.BIRT.DATE` | ABT 1030 | export-Forest-6000000227289792822.ged | 1030 | export-Forest-20.ged |
-| `@I6000000003645915181@` | `INDI.CHAN.DATE` | 14 AUG 2026 | export-Forest-6000000227289792822.ged | 12 AUG 2026 | export-Forest-6000000227225487992.ged |
-| `@I6000000003645915181@` | `INDI.CHAN.DATE.TIME` | 14:05:09 | export-Forest-6000000227289792822.ged | 20:40:52 | export-Forest-6000000227225487992.ged |
-| `@I6000000000770043075@` | `INDI.CHAN.DATE` | 05 AUG 2026 | export-Forest-6000000227289792822.ged | 30 JUL 2026 | export-Forest-22.ged |
-| `@I6000000000770043075@` | `INDI.CHAN.DATE.TIME` | 21:00:43 | export-Forest-6000000227289792822.ged | 21:14:45 | export-Forest-22.ged |
+| `@I6000000000770043075@` | `INDI.CHAN.DATE` | 05 AUG 2026 | export-Forest-6000000227289792822.ged | 30 JUL 2026 | export-Forest-10.ged |
+| `@I6000000000770043075@` | `INDI.CHAN.DATE.TIME` | 21:00:43 | export-Forest-6000000227289792822.ged | 21:14:45 | export-Forest-10.ged |
 | `@I6000000000537043368@` | `INDI.BIRT.DATE` | ABT 1034 | export-Forest-6000000227289792822.ged | ABT 1020 | export-Forest-6000000227086244080.ged |
 | `@I6000000000537043368@` | `INDI.DEAT.PLAC` | [uncertain] comte de Hainaut | export-Forest-6000000227289792822.ged | Abbaye De Hasnon | export-Forest-6000000227086244080.ged |
 | `@I6000000000537043368@` | `INDI.CHAN.DATE` | 14 AUG 2026 | export-Forest-6000000227289792822.ged | 30 JUL 2025 | export-Forest-6000000227086244080.ged |
@@ -1296,33 +1917,29 @@ By path:
 | `@I6000000005035166996@` | `INDI.CHAN.DATE.TIME` | 16:09:26 | export-Forest-6000000227289792822.ged | 14:19:46 | export-Ancestors-6000000177921459056.ged |
 | `@I6000000003897541752@` | `INDI.CHAN.DATE` | 12 AUG 2026 | export-Forest-6000000227289792822.ged | 08 MAR 2024 | export-Descendants-6000000227086244080.ged |
 | `@I6000000003897541752@` | `INDI.CHAN.DATE.TIME` | 18:18:35 | export-Forest-6000000227289792822.ged | 08:17:36 | export-Descendants-6000000227086244080.ged |
-| `@I6000000004827276873@` | `INDI.CHAN.DATE` | 15 AUG 2026 | export-Forest-6000000227289792822.ged | 27 JUL 2026 | export-Forest-22.ged |
-| `@I6000000004827276873@` | `INDI.CHAN.DATE.TIME` | 08:24:23 | export-Forest-6000000227289792822.ged | 08:19:15 | export-Forest-22.ged |
-| `@I6000000001306355579@` | `INDI.CHAN.DATE` | 17 AUG 2026 | export-Forest-6000000227289792822.ged | 20 JUN 2026 | export-Forest-12.ged |
-| `@I6000000001306355579@` | `INDI.CHAN.DATE.TIME` | 07:29:41 | export-Forest-6000000227289792822.ged | 11:31:12 | export-Forest-12.ged |
 | `@F6000000000162318934@` | `FAM.MARR.DATE` | ABT 1084 | export-Forest-6000000227289792822.ged | 1084 | export-Descendants-6000000227086244080.ged |
 | `@I6000000003243185408@` | `INDI.CHAN.DATE` | 11 FEB 2023 | export-Forest.ged | 10 AUG 2026 | export-Forest-6000000227225628908.ged |
 | `@I6000000003243185408@` | `INDI.CHAN.DATE.TIME` | 13:44:08 | export-Forest.ged | 04:01:18 | export-Forest-6000000227225628908.ged |
-| `@I6000000003827368573@` | `INDI.CHAN.DATE` | 03 FEB 2026 | export-Forest.ged | 06 AUG 2026 | export-Descendants-6000000227086244080.ged |
-| `@I6000000003827368573@` | `INDI.CHAN.DATE.TIME` | 16:06:15 | export-Forest.ged | 18:06:31 | export-Descendants-6000000227086244080.ged |
+| `@I6000000003827368573@` | `INDI.CHAN.DATE` | 03 FEB 2026 | export-Forest.ged | 06 AUG 2026 | export-Forest-6000000227295719853.ged |
+| `@I6000000003827368573@` | `INDI.CHAN.DATE.TIME` | 16:06:15 | export-Forest.ged | 18:06:31 | export-Forest-6000000227295719853.ged |
 | `@I6000000020991482706@` | `INDI.CHAN.DATE` | 23 MAR 2026 | export-Forest.ged | 06 AUG 2026 | export-Forest-6000000227225628908.ged |
 | `@I6000000020991482706@` | `INDI.CHAN.DATE.TIME` | 15:19:46 | export-Forest.ged | 04:58:11 | export-Forest-6000000227225628908.ged |
 | `@I6000000006365407973@` | `INDI.CHAN.DATE` | 30 JUL 2026 | export-Forest.ged | 08 AUG 2026 | export-Forest-6000000227225628908.ged |
 | `@I6000000006365407973@` | `INDI.CHAN.DATE.TIME` | 22:35:50 | export-Forest.ged | 10:02:09 | export-Forest-6000000227225628908.ged |
-| `@I6000000014866940617@` | `INDI.CHAN.DATE` | 28 APR 2022 | export-Forest.ged | 07 AUG 2026 | export-Forest-6000000227225628908.ged |
-| `@I6000000014866940617@` | `INDI.CHAN.DATE.TIME` | 08:43:24 | export-Forest.ged | 02:34:38 | export-Forest-6000000227225628908.ged |
+| `@I6000000014866940617@` | `INDI.CHAN.DATE` | 28 APR 2022 | export-Forest.ged | 07 AUG 2026 | export-Forest-6000000227295719853.ged |
+| `@I6000000014866940617@` | `INDI.CHAN.DATE.TIME` | 08:43:24 | export-Forest.ged | 02:34:38 | export-Forest-6000000227295719853.ged |
 | `@I6000000000759680351@` | `INDI.CHAN.DATE` | 14 JUL 2025 | export-Forest.ged | 06 AUG 2026 | export-Descendants-6000000227086244080.ged |
 | `@I6000000000759680351@` | `INDI.CHAN.DATE.TIME` | 06:14:51 | export-Forest.ged | 18:02:33 | export-Descendants-6000000227086244080.ged |
 | `@I6000000000759679062@` | `INDI.CHAN.DATE` | 24 OCT 2024 | export-Forest.ged | 06 AUG 2026 | export-Forest-6000000227225628908.ged |
 | `@I6000000000759679062@` | `INDI.CHAN.DATE.TIME` | 07:18:47 | export-Forest.ged | 18:00:56 | export-Forest-6000000227225628908.ged |
-| `@I6000000008905633109@` | `INDI.CHAN.DATE` | 25 JUN 2026 | export-Forest.ged | 06 AUG 2026 | export-Descendants-6000000227086244080.ged |
-| `@I6000000008905633109@` | `INDI.CHAN.DATE.TIME` | 10:19:22 | export-Forest.ged | 18:15:06 | export-Descendants-6000000227086244080.ged |
-| `@I6000000003051138424@` | `INDI.CHAN.DATE` | 05 JAN 2026 | export-Forest.ged | 06 AUG 2026 | export-Descendants-6000000227086244080.ged |
-| `@I6000000003051138424@` | `INDI.CHAN.DATE.TIME` | 07:22:50 | export-Forest.ged | 18:09:56 | export-Descendants-6000000227086244080.ged |
-| `@I6000000000337439500@` | `INDI.CHAN.DATE` | 26 OCT 2024 | export-Forest.ged | 06 AUG 2026 | export-Descendants-6000000227086244080.ged |
-| `@I6000000000337439500@` | `INDI.CHAN.DATE.TIME` | 11:21:10 | export-Forest.ged | 04:13:39 | export-Descendants-6000000227086244080.ged |
-| `@I6000000001501069226@` | `INDI.CHAN.DATE` | 30 APR 2022 | export-Forest.ged | 07 AUG 2026 | export-Forest-6000000227225628908.ged |
-| `@I6000000001501069226@` | `INDI.CHAN.DATE.TIME` | 02:21:14 | export-Forest.ged | 02:33:53 | export-Forest-6000000227225628908.ged |
+| `@I6000000008905633109@` | `INDI.CHAN.DATE` | 25 JUN 2026 | export-Forest.ged | 06 AUG 2026 | export-Forest-6000000227295719853.ged |
+| `@I6000000008905633109@` | `INDI.CHAN.DATE.TIME` | 10:19:22 | export-Forest.ged | 18:15:06 | export-Forest-6000000227295719853.ged |
+| `@I6000000003051138424@` | `INDI.CHAN.DATE` | 05 JAN 2026 | export-Forest.ged | 06 AUG 2026 | export-Forest-6000000227295719853.ged |
+| `@I6000000003051138424@` | `INDI.CHAN.DATE.TIME` | 07:22:50 | export-Forest.ged | 18:09:56 | export-Forest-6000000227295719853.ged |
+| `@I6000000000337439500@` | `INDI.CHAN.DATE` | 26 OCT 2024 | export-Forest.ged | 06 AUG 2026 | export-Forest-6000000227295719853.ged |
+| `@I6000000000337439500@` | `INDI.CHAN.DATE.TIME` | 11:21:10 | export-Forest.ged | 04:13:39 | export-Forest-6000000227295719853.ged |
+| `@I6000000001501069226@` | `INDI.CHAN.DATE` | 30 APR 2022 | export-Forest.ged | 07 AUG 2026 | export-Forest-6000000227295719853.ged |
+| `@I6000000001501069226@` | `INDI.CHAN.DATE.TIME` | 02:21:14 | export-Forest.ged | 02:33:53 | export-Forest-6000000227295719853.ged |
 | `@I6000000006906799262@` | `INDI.CHAN.DATE` | 19 MAY 2026 | export-Forest.ged | 13 AUG 2026 | export-Forest-6000000227225628908.ged |
 | `@I6000000006906799262@` | `INDI.CHAN.DATE.TIME` | 08:05:08 | export-Forest.ged | 07:46:53 | export-Forest-6000000227225628908.ged |
 | `@I6000000006727878330@` | `INDI.CHAN.DATE` | 30 AUG 2022 | export-Forest.ged | 06 AUG 2026 | export-Forest-6000000227225628908.ged |
@@ -1331,16 +1948,16 @@ By path:
 | `@I6000000008578924985@` | `INDI.CHAN.DATE.TIME` | 11:07:04 | export-Forest.ged | 13:58:49 | export-Forest-6000000227225628908.ged |
 | `@I312422053980007074@` | `INDI.CHAN.DATE` | 27 APR 2022 | export-Forest.ged | 06 AUG 2026 | export-Forest-6000000227086380915.ged |
 | `@I312422053980007074@` | `INDI.CHAN.DATE.TIME` | 11:45:45 | export-Forest.ged | 13:12:08 | export-Forest-6000000227086380915.ged |
-| `@I6000000006906294761@` | `INDI.CHAN.DATE` | 25 JUN 2026 | export-Forest.ged | 06 AUG 2026 | export-Forest-6000000227225628908.ged |
-| `@I6000000006906294761@` | `INDI.CHAN.DATE.TIME` | 10:24:15 | export-Forest.ged | 04:07:41 | export-Forest-6000000227225628908.ged |
+| `@I6000000006906294761@` | `INDI.CHAN.DATE` | 25 JUN 2026 | export-Forest.ged | 06 AUG 2026 | export-Forest-6000000227297843999.ged |
+| `@I6000000006906294761@` | `INDI.CHAN.DATE.TIME` | 10:24:15 | export-Forest.ged | 04:07:41 | export-Forest-6000000227297843999.ged |
 | `@I6000000044039991695@` | `INDI.CHAN.DATE` | 05 OCT 2024 | export-Forest.ged | 06 AUG 2026 | export-Descendants-6000000227086244080.ged |
 | `@I6000000044039991695@` | `INDI.CHAN.DATE.TIME` | 12:39:30 | export-Forest.ged | 18:19:15 | export-Descendants-6000000227086244080.ged |
 | `@I6000000001745028784@` | `INDI.CHAN.DATE` | 13 JUN 2026 | export-Forest.ged | 08 AUG 2026 | export-Forest-6000000227225628908.ged |
 | `@I6000000001745028784@` | `INDI.CHAN.DATE.TIME` | 06:52:04 | export-Forest.ged | 09:59:22 | export-Forest-6000000227225628908.ged |
 | `@I6000000004533221359@` | `INDI.CHAN.DATE` | 25 JUN 2026 | export-Forest.ged | 11 AUG 2026 | export-Forest-6000000227225628908.ged |
 | `@I6000000004533221359@` | `INDI.CHAN.DATE.TIME` | 05:10:29 | export-Forest.ged | 12:13:23 | export-Forest-6000000227225628908.ged |
-| `@I6000000004827276873@` | `INDI.CHAN.DATE` | 27 JUL 2026 | export-Forest.ged | 15 AUG 2026 | export-Forest-6000000227289792822.ged |
-| `@I6000000004827276873@` | `INDI.CHAN.DATE.TIME` | 08:19:15 | export-Forest.ged | 08:24:23 | export-Forest-6000000227289792822.ged |
+| `@I6000000004827276873@` | `INDI.CHAN.DATE` | 27 JUL 2026 | export-Forest.ged | 15 AUG 2026 | export-Forest-6000000227258314174.ged |
+| `@I6000000004827276873@` | `INDI.CHAN.DATE.TIME` | 08:19:15 | export-Forest.ged | 08:24:23 | export-Forest-6000000227258314174.ged |
 | `@I6000000016058345720@` | `INDI.BIRT.DATE` | ABT 1120 | export-Forest.ged | ABT 1130 | export-Forest-6000000227225628908.ged |
 | `@I6000000016058345720@` | `INDI.CHAN.DATE` | 07 JUN 2026 | export-Forest.ged | 12 AUG 2026 | export-Forest-6000000227225628908.ged |
 | `@I6000000016058345720@` | `INDI.CHAN.DATE.TIME` | 21:27:12 | export-Forest.ged | 01:29:11 | export-Forest-6000000227225628908.ged |
@@ -1362,10 +1979,10 @@ By path:
 | `@I6000000001506899998@` | `INDI.CHAN.DATE.TIME` | 13:09:51 | export-Ancestors.ged | 10:03:00 | export-Ancestors-6000000177921459056.ged |
 | `@I6000000001838588451@` | `INDI.CHAN.DATE` | 12 NOV 2025 | export-Ancestors.ged | 07 AUG 2026 | export-Ancestors-6000000177921459056.ged |
 | `@I6000000001838588451@` | `INDI.CHAN.DATE.TIME` | 10:26:51 | export-Ancestors.ged | 13:41:10 | export-Ancestors-6000000177921459056.ged |
-| `@I6000000002301437734@` | `INDI.CHAN.DATE` | 29 JUL 2026 | export-Ancestors.ged | 01 AUG 2026 | export-Ancestors-6000000087535357291.ged |
-| `@I6000000002301437734@` | `INDI.CHAN.DATE.TIME` | 04:55:12 | export-Ancestors.ged | 03:19:36 | export-Ancestors-6000000087535357291.ged |
-| `@I6000000002390825722@` | `INDI.CHAN.DATE` | 29 JUL 2026 | export-Ancestors.ged | 31 JUL 2026 | export-Ancestors-6000000087535357291.ged |
-| `@I6000000002390825722@` | `INDI.CHAN.DATE.TIME` | 03:36:30 | export-Ancestors.ged | 11:43:12 | export-Ancestors-6000000087535357291.ged |
+| `@I6000000002301437734@` | `INDI.CHAN.DATE` | 29 JUL 2026 | export-Ancestors.ged | 01 AUG 2026 | export-Forest-6000000227295848846.ged |
+| `@I6000000002301437734@` | `INDI.CHAN.DATE.TIME` | 04:55:12 | export-Ancestors.ged | 03:19:36 | export-Forest-6000000227295848846.ged |
+| `@I6000000002390825722@` | `INDI.CHAN.DATE` | 29 JUL 2026 | export-Ancestors.ged | 31 JUL 2026 | export-Forest-6000000227295848846.ged |
+| `@I6000000002390825722@` | `INDI.CHAN.DATE.TIME` | 03:36:30 | export-Ancestors.ged | 11:43:12 | export-Forest-6000000227295848846.ged |
 | `@I6000000025474175184@` | `INDI.CHAN.DATE` | 18 OCT 2023 | export-Ancestors.ged | 09 AUG 2026 | export-Ancestors-6000000177921459056.ged |
 | `@I6000000025474175184@` | `INDI.CHAN.DATE.TIME` | 01:27:08 | export-Ancestors.ged | 08:38:36 | export-Ancestors-6000000177921459056.ged |
 | `@I6000000012668590557@` | `INDI.BIRT.PLAC` | Løland farm, Sand Parish, Suldal Prestegjeld, Rogaland, Norway | export-Ancestors.ged | Løland | export-Ancestors-6000000087535357291.ged |
@@ -1389,8 +2006,8 @@ By path:
 | `@I6000000000688300441@` | `INDI.CHAN.DATE.TIME` | 05:32:33 | export-Ancestors.ged | 09:26:53 | export-Ancestors-6000000177921459056.ged |
 | `@I6000000223524555848@` | `INDI.CHAN.DATE` | 25 JAN 2026 | export-Ancestors.ged | 02 AUG 2026 | export-Ancestors-6000000087535357291.ged |
 | `@I6000000223524555848@` | `INDI.CHAN.DATE.TIME` | 14:41:13 | export-Ancestors.ged | 00:27:07 | export-Ancestors-6000000087535357291.ged |
-| `@I6000000011749043301@` | `INDI.CHAN.DATE` | 05 MAR 2026 | export-Ancestors.ged | 05 AUG 2026 | export-Ancestors-6000000087535357291.ged |
-| `@I6000000011749043301@` | `INDI.CHAN.DATE.TIME` | 05:56:49 | export-Ancestors.ged | 01:28:33 | export-Ancestors-6000000087535357291.ged |
+| `@I6000000011749043301@` | `INDI.CHAN.DATE` | 05 MAR 2026 | export-Ancestors.ged | 05 AUG 2026 | export-Forest-6000000227295719853.ged |
+| `@I6000000011749043301@` | `INDI.CHAN.DATE.TIME` | 05:56:49 | export-Ancestors.ged | 01:28:33 | export-Forest-6000000227295719853.ged |
 | `@I5234818062140033220@` | `INDI.CHAN.DATE` | 03 APR 2026 | export-Ancestors.ged | 15 AUG 2026 | export-Forest-6000000227289547881.ged |
 | `@I5234818062140033220@` | `INDI.CHAN.DATE.TIME` | 16:01:03 | export-Ancestors.ged | 05:05:43 | export-Forest-6000000227289547881.ged |
 | `@I5381202464070053447@` | `INDI.CHAN.DATE` | 03 JUN 2026 | export-Ancestors.ged | 06 AUG 2026 | export-Ancestors-6000000087535357291.ged |
@@ -1454,34 +2071,61 @@ By path:
 | `@I6000000001902786893@` | `INDI.CHAN.DATE` | 07 JUN 2019 | export-Forest-6000000226989731860.ged | 04 AUG 2026 | export-Forest-14.ged |
 | `@I6000000001902786893@` | `INDI.CHAN.DATE.TIME` | 13:28:39 | export-Forest-6000000226989731860.ged | 15:04:07 | export-Forest-14.ged |
 | `@F6000000179131721834@` | `FAM.HUSB` | @I6000000179131744821@ | export-Forest-6000000226989731860.ged | @I6000000001829492981@ | export-Descendants-6000000226989731860.ged |
-| `@I6000000212832554822@` | `INDI.CHAN.DATE` | 25 DEC 2024 | export-Forest.ged | 03 AUG 2026 | export-Forest-6000000087535357291.ged |
-| `@I6000000212832554822@` | `INDI.CHAN.DATE.TIME` | 08:02:32 | export-Forest.ged | 02:12:22 | export-Forest-6000000087535357291.ged |
-| `@I6000000039025973103@` | `INDI.CHAN.DATE` | 05 SEP 2023 | export-Forest.ged | 02 AUG 2026 | export-Descendants-6000000227224418030.ged |
-| `@I6000000039025973103@` | `INDI.CHAN.DATE.TIME` | 10:10:47 | export-Forest.ged | 03:56:35 | export-Descendants-6000000227224418030.ged |
+| `@I6000000212832554822@` | `INDI.CHAN.DATE` | 25 DEC 2024 | export-Forest.ged | 03 AUG 2026 | export-Forest-6000000227290969847.ged |
+| `@I6000000212832554822@` | `INDI.CHAN.DATE.TIME` | 08:02:32 | export-Forest.ged | 02:12:22 | export-Forest-6000000227290969847.ged |
+| `@I6000000039025973103@` | `INDI.CHAN.DATE` | 05 SEP 2023 | export-Forest.ged | 02 AUG 2026 | export-Forest-6000000227311010870.ged |
+| `@I6000000039025973103@` | `INDI.CHAN.DATE.TIME` | 10:10:47 | export-Forest.ged | 03:56:35 | export-Forest-6000000227311010870.ged |
 | `@I6000000178918116832@` | `INDI.CHAN.DATE` | 14 AUG 2026 | export-Ancestors-6000000227241038833.ged | 01 OCT 2021 | export-Forest-6000000178918422849.ged |
 | `@I6000000178918116832@` | `INDI.CHAN.DATE.TIME` | 15:16:50 | export-Ancestors-6000000227241038833.ged | 12:31:33 | export-Forest-6000000178918422849.ged |
-| `@I6000000001838708450@` | `INDI.CHAN.DATE` | 06 DEC 2025 | export-Forest-40.ged | 11 AUG 2026 | export-Forest-6000000227289604840.ged |
-| `@I6000000001838708450@` | `INDI.CHAN.DATE.TIME` | 05:18:49 | export-Forest-40.ged | 13:27:10 | export-Forest-6000000227289604840.ged |
-| `@I6000000001838736553@` | `INDI.CHAN.DATE` | 27 AUG 2023 | export-Forest-40.ged | 14 AUG 2026 | export-Forest-6000000227289604840.ged |
-| `@I6000000001838736553@` | `INDI.CHAN.DATE.TIME` | 04:10:09 | export-Forest-40.ged | 15:49:36 | export-Forest-6000000227289604840.ged |
-| `@I6000000001838989849@` | `INDI.CHAN.DATE` | 27 APR 2022 | export-Forest-40.ged | 11 AUG 2026 | export-Descendants-6000000178898487831.ged |
-| `@I6000000001838989849@` | `INDI.CHAN.DATE.TIME` | 10:42:25 | export-Forest-40.ged | 13:32:38 | export-Descendants-6000000178898487831.ged |
-| `@I6000000000574102715@` | `INDI.CHAN.DATE` | 12 APR 2023 | export-Forest-40.ged | 09 AUG 2026 | export-Descendants-6000000178898487831.ged |
-| `@I6000000000574102715@` | `INDI.CHAN.DATE.TIME` | 22:51:02 | export-Forest-40.ged | 05:37:15 | export-Descendants-6000000178898487831.ged |
-| `@I6000000000201242053@` | `INDI.CHAN.DATE` | 28 MAR 2025 | export-Forest-40.ged | 14 AUG 2026 | export-Forest-6000000227289604840.ged |
-| `@I6000000000201242053@` | `INDI.CHAN.DATE.TIME` | 21:51:20 | export-Forest-40.ged | 15:59:15 | export-Forest-6000000227289604840.ged |
-| `@I6000000005609271991@` | `INDI.CHAN.DATE` | 11 JUN 2023 | export-Forest-40.ged | 14 AUG 2026 | export-Forest-6000000227289604840.ged |
-| `@I6000000005609271991@` | `INDI.CHAN.DATE.TIME` | 04:20:54 | export-Forest-40.ged | 16:00:16 | export-Forest-6000000227289604840.ged |
-| `@I6000000012136542059@` | `INDI.CHAN.DATE` | 26 APR 2022 | export-Forest-40.ged | 14 AUG 2026 | export-Forest-6000000227289604840.ged |
-| `@I6000000012136542059@` | `INDI.CHAN.DATE.TIME` | 18:53:39 | export-Forest-40.ged | 15:50:09 | export-Forest-6000000227289604840.ged |
-| `@I6000000001770176153@` | `INDI.CHAN.DATE` | 08 FEB 2026 | export-Forest-40.ged | 11 AUG 2026 | export-Forest-6000000227289604840.ged |
-| `@I6000000001770176153@` | `INDI.CHAN.DATE.TIME` | 02:24:13 | export-Forest-40.ged | 13:28:52 | export-Forest-6000000227289604840.ged |
+| `@I6000000001838708450@` | `INDI.CHAN.DATE` | 06 DEC 2025 | export-Forest-40.ged | 11 AUG 2026 | export-Forest-6000000227297780952.ged |
+| `@I6000000001838708450@` | `INDI.CHAN.DATE.TIME` | 05:18:49 | export-Forest-40.ged | 13:27:10 | export-Forest-6000000227297780952.ged |
+| `@I6000000001838736553@` | `INDI.CHAN.DATE` | 27 AUG 2023 | export-Forest-40.ged | 14 AUG 2026 | export-Forest-6000000227297780952.ged |
+| `@I6000000001838736553@` | `INDI.CHAN.DATE.TIME` | 04:10:09 | export-Forest-40.ged | 15:49:36 | export-Forest-6000000227297780952.ged |
+| `@I6000000001838989849@` | `INDI.CHAN.DATE` | 27 APR 2022 | export-Forest-40.ged | 11 AUG 2026 | export-Forest-6000000227295848846.ged |
+| `@I6000000001838989849@` | `INDI.CHAN.DATE.TIME` | 10:42:25 | export-Forest-40.ged | 13:32:38 | export-Forest-6000000227295848846.ged |
+| `@I6000000000574102715@` | `INDI.CHAN.DATE` | 12 APR 2023 | export-Forest-40.ged | 09 AUG 2026 | export-Forest-6000000227311193823.ged |
+| `@I6000000000574102715@` | `INDI.CHAN.DATE.TIME` | 22:51:02 | export-Forest-40.ged | 05:37:15 | export-Forest-6000000227311193823.ged |
+| `@I6000000000201242053@` | `INDI.CHAN.DATE` | 28 MAR 2025 | export-Forest-40.ged | 14 AUG 2026 | export-Forest-6000000227297780952.ged |
+| `@I6000000000201242053@` | `INDI.CHAN.DATE.TIME` | 21:51:20 | export-Forest-40.ged | 15:59:15 | export-Forest-6000000227297780952.ged |
+| `@I6000000005609271991@` | `INDI.CHAN.DATE` | 11 JUN 2023 | export-Forest-40.ged | 14 AUG 2026 | export-Forest-6000000227297780952.ged |
+| `@I6000000005609271991@` | `INDI.CHAN.DATE.TIME` | 04:20:54 | export-Forest-40.ged | 16:00:16 | export-Forest-6000000227297780952.ged |
+| `@I6000000012136542059@` | `INDI.CHAN.DATE` | 26 APR 2022 | export-Forest-40.ged | 14 AUG 2026 | export-Forest-6000000227297780952.ged |
+| `@I6000000012136542059@` | `INDI.CHAN.DATE.TIME` | 18:53:39 | export-Forest-40.ged | 15:50:09 | export-Forest-6000000227297780952.ged |
+| `@I6000000001770176153@` | `INDI.CHAN.DATE` | 08 FEB 2026 | export-Forest-40.ged | 11 AUG 2026 | export-Forest-6000000227297780952.ged |
+| `@I6000000001770176153@` | `INDI.CHAN.DATE.TIME` | 02:24:13 | export-Forest-40.ged | 13:28:52 | export-Forest-6000000227297780952.ged |
+| `@I6000000010530422143@` | `INDI.CHAN.DATE` | 01 OCT 2022 | export-Forest-41.ged | 08 AUG 2026 | export-Forest-6000000227294050988.ged |
+| `@I6000000010530422143@` | `INDI.CHAN.DATE.TIME` | 20:26:13 | export-Forest-41.ged | 10:09:11 | export-Forest-6000000227294050988.ged |
+| `@I3967892063190122858@` | `INDI.CHAN.DATE` | 21 AUG 2023 | export-Forest-41.ged | 08 AUG 2026 | export-Forest-6000000227294050988.ged |
+| `@I3967892063190122858@` | `INDI.CHAN.DATE.TIME` | 19:27:08 | export-Forest-41.ged | 10:08:46 | export-Forest-6000000227294050988.ged |
+| `@I6000000000527040512@` | `INDI.BIRT.PLAC` | måske Viborg, Gråbrødre | export-Forest-41.ged | Visborggaard gods  | export-Forest-6000000227300008823.ged |
+| `@I6000000000527040512@` | `INDI.BIRT.ADDR.CITY` | Aalborg | export-Forest-41.ged | Visborg sogn | export-Forest-6000000227300008823.ged |
+| `@I6000000000527040512@` | `INDI.BIRT.ADDR.STAE` | Visborg | export-Forest-41.ged | Aalborg Amt | export-Forest-6000000227300008823.ged |
+| `@I6000000000527040512@` | `INDI.BIRT.ADDR.CTRY` | Denmark | export-Forest-41.ged | Danmark | export-Forest-6000000227300008823.ged |
+| `@I6000000000527040512@` | `INDI.CHAN.DATE` | 27 APR 2022 | export-Forest-41.ged | 16 AUG 2026 | export-Forest-6000000227300008823.ged |
+| `@I6000000000527040512@` | `INDI.CHAN.DATE.TIME` | 19:31:33 | export-Forest-41.ged | 03:36:31 | export-Forest-6000000227300008823.ged |
 | `@I6000000002494069423@` | `INDI.CHAN.DATE` | 27 APR 2022 | export-Forest-42.ged | 06 AUG 2026 | export-Forest-6000000227252387856.ged |
 | `@I6000000002494069423@` | `INDI.CHAN.DATE.TIME` | 01:12:11 | export-Forest-42.ged | 20:41:27 | export-Forest-6000000227252387856.ged |
-| `@I6000000011113234299@` | `INDI.BIRT.PLAC` | Östanbäck 9, Skellefteå (AC).  | export-Forest-43.ged | Östanbäck 9 | export-Forest-6000000227254368832.ged |
-| `@I6000000011113234299@` | `INDI.DEAT.PLAC` | Drängsmark 4, Skellefteå (AC).  | export-Forest-43.ged | Drängsmark 4 | export-Forest-6000000227254368832.ged |
-| `@I6000000011113234299@` | `INDI.CHAN.DATE` | 21 JUL 2024 | export-Forest-43.ged | 10 AUG 2026 | export-Forest-6000000227254368832.ged |
-| `@I6000000011113234299@` | `INDI.CHAN.DATE.TIME` | 11:12:15 | export-Forest-43.ged | 10:57:28 | export-Forest-6000000227254368832.ged |
+| `@I6000000012962735766@` | `INDI.CHAN.DATE` | 27 JUL 2025 | export-Forest-43.ged | 06 AUG 2026 | export-Forest-6000000227298012899.ged |
+| `@I6000000012962735766@` | `INDI.CHAN.DATE.TIME` | 13:05:04 | export-Forest-43.ged | 03:34:28 | export-Forest-6000000227298012899.ged |
+| `@I6000000006595813984@` | `INDI.CHAN.DATE` | 15 JUL 2026 | export-Forest-43.ged | 06 AUG 2026 | export-Forest-6000000227298012899.ged |
+| `@I6000000006595813984@` | `INDI.CHAN.DATE.TIME` | 16:18:38 | export-Forest-43.ged | 03:34:55 | export-Forest-6000000227298012899.ged |
+| `@I6000000004044686203@` | `INDI.CHAN.DATE` | 01 MAY 2022 | export-Forest-43.ged | 16 AUG 2026 | export-Forest-6000000227294926845.ged |
+| `@I6000000004044686203@` | `INDI.CHAN.DATE.TIME` | 03:08:06 | export-Forest-43.ged | 10:38:53 | export-Forest-6000000227294926845.ged |
+| `@I4063046@` | `INDI.CHAN.DATE` | 25 JUL 2025 | export-Forest-43.ged | 09 AUG 2026 | export-Forest-6000000227297183865.ged |
+| `@I4063046@` | `INDI.CHAN.DATE.TIME` | 09:50:19 | export-Forest-43.ged | 15:13:12 | export-Forest-6000000227297183865.ged |
+| `@I6000000009118529936@` | `INDI.CHAN.DATE` | 17 JUN 2025 | export-Forest-43.ged | 08 AUG 2026 | export-Forest-6000000227296447963.ged |
+| `@I6000000009118529936@` | `INDI.CHAN.DATE.TIME` | 08:03:43 | export-Forest-43.ged | 08:46:16 | export-Forest-6000000227296447963.ged |
+| `@I6000000000048660656@` | `INDI.BIRT.DATE` | ABT 1604 | export-Forest-43.ged | ABT 1620 | export-Forest-6000000227296447963.ged |
+| `@I6000000000048660656@` | `INDI.CHAN.DATE` | 24 MAY 2026 | export-Forest-43.ged | 08 AUG 2026 | export-Forest-6000000227296447963.ged |
+| `@I6000000000048660656@` | `INDI.CHAN.DATE.TIME` | 15:56:16 | export-Forest-43.ged | 16:34:37 | export-Forest-6000000227296447963.ged |
+| `@I6000000008190142025@` | `INDI.CHAN.DATE` | 21 OCT 2025 | export-Forest-43.ged | 16 AUG 2026 | export-Forest-6000000227294926845.ged |
+| `@I6000000008190142025@` | `INDI.CHAN.DATE.TIME` | 01:22:51 | export-Forest-43.ged | 10:38:23 | export-Forest-6000000227294926845.ged |
+| `@I6000000000649626841@` | `INDI.CHAN.DATE` | 16 APR 2024 | export-Forest-43.ged | 16 AUG 2026 | export-Forest-6000000227295777037.ged |
+| `@I6000000000649626841@` | `INDI.CHAN.DATE.TIME` | 18:30:34 | export-Forest-43.ged | 09:32:45 | export-Forest-6000000227295777037.ged |
+| `@I6000000011113234299@` | `INDI.BIRT.PLAC` | Östanbäck 9, Skellefteå (AC).  | export-Forest-43.ged | Östanbäck 9 | export-Forest-6000000227294926845.ged |
+| `@I6000000011113234299@` | `INDI.DEAT.PLAC` | Drängsmark 4, Skellefteå (AC).  | export-Forest-43.ged | Drängsmark 4 | export-Forest-6000000227294926845.ged |
+| `@I6000000011113234299@` | `INDI.CHAN.DATE` | 21 JUL 2024 | export-Forest-43.ged | 10 AUG 2026 | export-Forest-6000000227294926845.ged |
+| `@I6000000011113234299@` | `INDI.CHAN.DATE.TIME` | 11:12:15 | export-Forest-43.ged | 10:57:28 | export-Forest-6000000227294926845.ged |
 | `@I6000000008199065475@` | `INDI.CHAN.DATE` | 29 APR 2022 | export-Forest-6000000227145774838.ged | 10 AUG 2026 | export-Forest-6000000227227238821.ged |
 | `@I6000000008199065475@` | `INDI.CHAN.DATE.TIME` | 13:02:54 | export-Forest-6000000227145774838.ged | 13:26:19 | export-Forest-6000000227227238821.ged |
 | `@I6000000000350860867@` | `INDI.CHAN.DATE` | 26 FEB 2025 | export-Forest-6000000227147141927.ged | 11 AUG 2026 | export-Forest-6000000227254292863.ged |

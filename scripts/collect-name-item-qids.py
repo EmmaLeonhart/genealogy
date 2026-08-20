@@ -39,6 +39,7 @@ pages so far kept.
 
 from __future__ import annotations
 
+import os
 import json
 import re
 import sys
@@ -53,8 +54,7 @@ sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 OUT = REPO / "reports" / "name-item-qids.tsv"
 ENDPOINT = "https://query.wikidata.org/sparql"
-AGENT = "genimerge/1.0 (emma@topazcomputing.com) name-item enumeration"
-
+AGENT = os.environ.get("BOT_CONTACT", "").strip()
 #: The six name classes, documented in `CLAUDE.md` § *Wikidata properties*.
 CLASSES = {
     "Q110874": "patronymic",

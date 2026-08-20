@@ -34,6 +34,50 @@ sys.path.insert(0, str(REPO_ROOT / "src"))
 
 from genimerge import entities, wikistore  # noqa: E402
 
+sys.path.insert(0, str(REPO_ROOT / "scripts"))
+import labels as _labels  # noqa: E402
+
+# **A marker is not a label, at any of this script's four emission sites.** It had
+# no guard at all: `label_en` went straight into `en` and `mul`, and the first
+# `cjk_names` component straight into `ja` and `zh`. queue.md carried it as a known
+# defect -- *"same defect as the one fixed in walk-structural-merge.py, and it is
+# only harmless today because its output is out/wikidata/edits.json, which is
+# gitignored and fires nothing. Fix it before anything reads that file."*
+#
+# `derived-labels.csv` really does carry markers in those columns: that is what
+# `NN`, `Private` and `未知` are for, and the NN pipeline exists precisely because
+# such a person gets `NN` in `mul` and a *descriptive* label elsewhere, never the
+# marker itself in a local slot.
+is_marker = _labels.is_marker_label
+
+
+def label_slots(lab: dict) -> dict:
+    """The label slots one `derived-labels.csv` row may legitimately fill.
+
+    One function so the guard is applied once and can be tested once. Before this,
+    the same four lines were written out at two emission sites with no guard at
+    either, and `walk-structural-merge.py` had a third copy that did have one --
+    which is how the `ja`/`zh` branch came to emit 22 edits labelled `未知`.
+
+    `mul` carries `label_en`, not a marker. Emma, 2026-08-16: *"NN is always
+    preserved in the multi-language label"* -- but the marker that belongs there is
+    `NN` specifically, written by `build-nn-label-batch.py` from the full model.
+    Copying whatever marker happened to sit in `label_en` -- `Private`, `Ukjent`,
+    `未知` -- is a different thing wearing the same shape. A person dropped here
+    ends up with no label from this script and gets one from the NN pipeline, which
+    is the honest outcome rather than a false one.
+    """
+    out = {}
+    en = (lab.get("label_en") or "").strip()
+    if en and not is_marker(en):
+        out["en"] = en
+        out["mul"] = en
+    cjk = (lab.get("cjk_names") or "").split(" | ")[0].strip()
+    if cjk and not is_marker(cjk):
+        out["ja"] = cjk
+        out["zh"] = cjk
+    return out
+
 LABELS = REPO_ROOT / "reports" / "derived-labels.csv"
 FACTS = REPO_ROOT / "reports" / "derived-facts.csv"
 FAMILY = REPO_ROOT / "reports" / "derived-family.csv"
@@ -163,7 +207,8 @@ def main() -> int:
         lab, fac, fam = labels[geni_id], facts.get(geni_id, {}), family.get(geni_id, {})
 
         # Labels: only where Wikidata has none, never cited.
-        latin = lab["label_en"]
+        slots = label_slots(lab)
+        latin = slots.get("en", "")
         if latin and "en" not in has_label:
             add({
                 "id": f"add_label:{qid}:en",
@@ -174,7 +219,7 @@ def main() -> int:
                 "references": [],
                 "note": "Geni is not the source of labels except where Wikidata has none",
             })
-        cjk = (lab["cjk_names"] or "").split(" | ")[0]
+        cjk = slots.get("ja", "")
         for code in ("ja", "zh"):
             if cjk and code not in has_label:
                 add({
@@ -281,14 +326,7 @@ def main() -> int:
                                    "qualifiers": quals,
                                    "references": geni_ref(geni_id)})
 
-        item_labels = {}
-        if lab["label_en"]:
-            item_labels["en"] = lab["label_en"]
-            item_labels["mul"] = lab["label_en"]
-        cjk_name = (lab["cjk_names"] or "").split(" | ")[0]
-        if cjk_name:
-            item_labels["ja"] = cjk_name
-            item_labels["zh"] = cjk_name
+        item_labels = label_slots(lab)
         if not item_labels:
             continue
 

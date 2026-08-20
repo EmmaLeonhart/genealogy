@@ -29,12 +29,11 @@ from pathlib import Path
 
 __all__ = ["LabelCache", "collect_ids", "PRECISION"]
 
+from genimerge import wikidata as _wd
+
 ENDPOINT = "https://query.wikidata.org/sparql"
 
-USER_AGENT = (
-    "geni-merge/0.1 (https://github.com/EmmaLeonhart/geni; emma@topazcomputing.com) "
-    "python-urllib label lookup"
-)
+USER_AGENT = _wd.USER_AGENT
 
 #: `wd:` resolves properties as entities too, so P-ids and Q-ids go in one query.
 QUERY = """SELECT ?item ?itemLabel WHERE {
@@ -145,7 +144,7 @@ def _fetch(ids: list[str], attempt: int = 1) -> dict[str, str]:
         ENDPOINT,
         data=body,
         headers={
-            "User-Agent": USER_AGENT,
+            "User-Agent": _wd.require_agent(),
             "Accept": "application/sparql-results+json",
             "Content-Type": "application/x-www-form-urlencoded",
         },
