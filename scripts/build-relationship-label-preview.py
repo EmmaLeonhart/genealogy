@@ -36,6 +36,7 @@ Writes `reports/relationship-label-preview.csv` and `.md`.
 from __future__ import annotations
 
 import csv
+import re
 import sys
 from collections import Counter
 from pathlib import Path
@@ -113,6 +114,36 @@ def is_unusable(label: str) -> bool:
     return first in PLACEHOLDER_GIVEN
 
 
+#: Material that is not part of a name. Emma, 2026-08-19: *trim, and fix the English too.*
+#: 2,732 of 12,661 distinct relative names carried a parenthetical, a date range or a
+#: leading list number, so `daughter of Hamengkubuwana VII Raden Mas Murtejo
+#: (22.12.1877-29.1.1921)` was a label nobody could transliterate and nobody should read.
+#:
+#: **It removes brackets, date ranges and a leading number. It does NOT touch titles in
+#: running text** -- `Kandjeng Pangeran` and `SINUHUN PAKU BUWANA XII` survive, because
+#: deciding a Javanese title is not part of a name is a different judgement and was not
+#: the one asked for.
+_BRACKET = re.compile(r"\s*[\(\[][^)\]]*[\)\]]")
+_DATERANGE = re.compile(r"\s*\d{1,2}[./]\d{1,2}[./]\d{3,4}\s*[-–]\s*\d{1,2}[./]\d{1,2}[./]\d{3,4}")
+_YEARRANGE = re.compile(r"\s*\d{3,4}\s*[-–]\s*\d{3,4}")
+_LEADNUM = re.compile(r"^\s*\d+[\.\)]?\s+")
+
+
+def trim_name(s: str) -> str:
+    """The plain name. Returns the original if trimming would leave nothing.
+
+    Two names in this data are *entirely* a parenthetical -- `(Bapaknya RM Surobo)` and
+    `(7th Generation Amangkurat II)`. Trimming those to an empty string would delete the
+    only thing known about the person, so they are left as they are.
+    """
+    t = _BRACKET.sub("", s)
+    t = _DATERANGE.sub("", t)
+    t = _YEARRANGE.sub("", t)
+    t = _LEADNUM.sub("", t)
+    t = re.sub(r"\s+", " ", t).strip(" ,;-–")
+    return t or s
+
+
 def main() -> int:
     for path in (FAMILY, LABELS, NAMES, FACTS):
         if not path.exists():
@@ -128,8 +159,14 @@ def main() -> int:
                             (row.get("surn") or "").strip()))
 
     label_of: dict[str, str] = {}
+    trimmed = 0
     for row in csv.DictReader(LABELS.open(encoding="utf-8", newline="")):
-        label_of[row["geni_id"]] = (row.get("label_en") or "").strip()
+        raw = (row.get("label_en") or "").strip()
+        clean = trim_name(raw) if raw else raw
+        if clean != raw:
+            trimmed += 1
+        label_of[row["geni_id"]] = clean
+    print(f"names trimmed of brackets, dates and leading numbers: {trimmed:,}")
 
     # **A romanised Han name counts as a name here.** 9,285 of the placeholder edits carry
     # no English label because no relative had one, and a relative whose name is written

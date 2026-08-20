@@ -10467,3 +10467,27 @@ fathers, name processing, the NN batch, entity resolution.
 
 Nothing was lost — every deleted section's content is in `devlog.md` under its own date. The
 queue now holds work, and the history is where history goes.
+
+## 2026-08-19 — the name strings trimmed, on her ruling
+
+Emma, 2026-08-19: *trim, and fix the English too.* `trim_name()` in
+`build-relationship-label-preview.py` removes bracketed material, date ranges and a leading
+list number. **12,649 names trimmed**; English labels on the placeholder batch **31,882 →
+32,129**.
+
+`daughter of Hamengkubuwana VII Raden Mas Murtejo (22.12.1877-29.1.1921)` is now `son of
+Hamengkubuwana VII Raden Mas Murtejo`, and `14 R. Kadir Soemawilaga Koesoemah Adinata
+(Asisten Wedana Ciwalen Garut)` is `R. Kadir Soemawilaga Koesoemah Adinata`.
+
+**Titles in running text are untouched, deliberately.** `Kandjeng Pangeran` and `SINUHUN
+PAKU BUWANA XII` survive. Deciding that a Javanese title is not part of a name is a
+different judgement and was not the one she was asked.
+
+**Two names are entirely a parenthetical** — `(Bapaknya RM Surobo)` and `(7th Generation
+Amangkurat II)` — so trimming would leave an empty string and delete the only thing known
+about them. `trim_name` returns the original in that case, which is why 54 labels still
+carry a bracket.
+
+One defect on the way, caught by the output being empty: the helper went in at column 0
+*inside* `main()`, which ended the function early. It compiled cleanly and exited 0 while
+doing nothing at all.
