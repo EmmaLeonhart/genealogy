@@ -86,3 +86,34 @@ point. Taken as **child of Yoritaka 69**, because he carries a Kitajima regnal
 number and Yakura is a cadet house that the chart does not otherwise route the
 headship through. What would settle it: the `{{familytree}}` source line for that
 row, or Emma saying which.
+
+## The Senge headship after 62 leaves the Senge column entirely
+
+Read at full width, generations 61-74. The chart routes the Senge succession out
+through two other houses and back, which is why the numbers in the Senge column
+jump around:
+
+    Hiraoka no Naotaka -> Hiraoka no Naokiyo -> Senge no Naokatsu 63
+    Higashiyasunori    -> Higashianatsuu     -> Senge no Yoshikatsu 64
+    Senge no Yoshikatsu 64
+      Senge no Yoshihiro 65
+      Higashiyoshiakira
+    Higashiyoshiakira -> Higashisadanobu
+    Akatsuka no Nagatoshi -> Senge no Motokatsu 66
+    Senge no Motokatsu 66 -> Senge no Takanou 67 -> Senge no Takamitsu 68
+                          -> Senge no Hiromitsu 72
+    Sakusa no Jisei -> Senge no Munetoshi 71
+    Senge no Munetoshi 71
+      Senge no Toyomasa 73
+      Senge no Toyomi 74
+
+**This contradicts what is on Geni now, and the contradiction is not mine to
+resolve.** `Senge no Naokatsu 63` (`6000000227334689929`) sits on Geni as a child of
+`Senge no Naonobu 59`, alongside Takatoshi 60 and Takakatsu 62. The chart puts him
+under **Hiraoka no Naokiyo**. Takakatsu 62 under Naonobu 59 *is* what the chart
+draws, so only the one edge is in question.
+
+Flagged rather than repaired: correcting it means deleting a parent link, and a
+deleted `FAMC` is the one thing this project's merge cannot express - once any
+export carries the link it survives forever (`CLAUDE.md`, `exports/excluded/`). That
+makes re-parenting Emma's call in the same way a merge is.
