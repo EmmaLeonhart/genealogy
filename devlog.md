@@ -10700,3 +10700,38 @@ The general shape is worth keeping: **a vocabulary change is not local.** Every 
 has ever emitted a label has to be regenerated when the definition of "marker" widens, and
 the only reason that is safe is that the test globs `reports/wikidata-*.json` rather than
 checking a list somebody has to remember to extend.
+
+## 2026-08-20 — I matched people by name when the structure was right there
+
+Emma, mid-run: *"Are you using text similarity instead of relational position?"* Yes, for
+one half of the job, and it was the half that kept failing.
+
+Creating people was fine — every person went onto a parent identified by **Geni id**, in
+the position the chart draws, and every save was verified by re-reading that parent's
+child list. No name chose anything there.
+
+Deciding whether a chart person **already existed** was the problem. I searched Geni by
+name and matched on a sorted token set, so `Kitajima no Yoshitaka` and `Yoshitaka 56
+Kitajima` reduced to one key. Exact-after-normalisation rather than fuzzy, but still name
+matching, which is the thing this repo refuses everywhere else. It also stopped working:
+after about fifty queries Geni returned nothing for `Sadataka Kitajima`, a profile I had
+been editing minutes earlier.
+
+Then: *"YOU CAN MOVE IN DIFFERENT DIRECTIONS THAN DOWN"* — and that is the whole
+correction. I had written in a report that the in-law columns were *structurally
+unreachable* because the walk followed children only. They were never unreachable; the
+walk was. Walking parents, siblings and spouses as well reached `Yoriyasu En'ya` and
+`Kakujitsu-ni En'ya` within forty profiles, and one of those is an identity Emma had had
+to hand me by URL because no search of mine had found it.
+
+`scripts/izumo-align.py` replaces `izumo-join.py`, which is deleted rather than kept,
+because a module that embodies the wrong method invites its reuse. The new one starts
+from anchors whose Geni id is known and propagates one edge at a time: if a chart person
+is a Geni profile, their charted children and that profile's Geni children are the same
+people, so when one is unidentified on each side the pair is **forced** and no name is
+consulted. A name is read only to break a tie among candidates already standing in the
+same position, and those are labelled `position+name` so the two kinds never blur.
+
+The general shape worth keeping: **an exhausted search is not evidence of absence, it is
+evidence about the search.** Both times this went wrong today, the tool was reporting its
+own reach and I read it as a fact about the tree.
