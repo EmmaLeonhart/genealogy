@@ -417,3 +417,58 @@ chart makes him the father of `Toshikatsu 75 Senge` (`6000000227331729823`), who
 already exists on Geni with a parent of his own. Adding a second father is not a
 thing to do quietly, so he stands as a child of Naoharu 70 and the link to 75 is
 Emma's.
+
+## Wikidata links in the About field — all 100, done 2026-08-20
+
+`reports/izumo-kokuso-geni.tsv` is the join that made this possible: regnal number,
+house, chart name, Geni id, QID, for 100 of the roster's 103. It was built by walking
+the Izumo line **by id** — 50 profiles from Yasutaka 52 up to Ameno-hohi 1 — plus one
+hop down to the branch numbers the direct ancestral chain skips (26, 28, 29, 31, 32,
+43, 46), and a walk down the Senge column for 76-80.
+
+The link written is the form Emma already used, so it matches the profiles she did
+herself: `https://wikidata.org/wiki/Special:EntityPage/<QID>#sitelinks-wikipedia`.
+
+**About a third already had it** and were skipped rather than rewritten. Generations
+40-52 were hers to a person; the early Izumo line and the whole Senge/Kitajima columns
+were empty. **Nothing carried a different QID** — the check is `OTHER`, and it never
+fired, so no adjudication was needed anywhere.
+
+Three still have no Geni id and so no link: `Senge no Munetoshi 71`,
+`Senge no Toyomasa 73`, `Senge no Toyomi 74`. The chart routes those three through
+`Sakusa no Jisei`, which is why a walk down the Senge headship misses them.
+
+**How the write is driven.** Geni's About Me is a lightbox at
+`/profile/edit_about_me_lb/<id>`; the form posts to `/profile/edit_about_me/<id>` with
+`authenticity_token` and `page_profile[detail_strings][en-US][about_me]`. Existing text
+is preserved and the link appended after a blank line.
+
+**Hand-clicking that dialog is not reliable and the failure is silent** — of five done
+by real clicks, 5, 6 and 7 saved and 8 and 9 did not, with no error either time. The
+dialog's coordinates move between profiles, and a click landing on the toolbar instead
+of the textarea types into nothing. Every save here was verified by re-reading the
+field, which is the only trustworthy check.
+
+## Created 2026-08-20 — the three people the chart had and Geni lacked
+
+Emma settled the identity question that had held the first one: *"Same person"* —
+the chart's `Nintachikatapinomikoto` is Geni's `Nintachikatahi`.
+
+| person | parent | why there |
+| --- | --- | --- |
+| Izumokusunemino no Mikoto | Kushimikatomi 7 `6000000012789429513` | the chart draws him as Kushida 8's brother, and Geni gives Kushida 8 that father |
+| Inakubinomikoto no Mikoto | Takeyamikiru no Mikoto `6000000227333485851` | chart column 652 |
+| Isonokaya Sukune no Mikoto | Nintachikatahi `6000000227333084907` | chart column 1072 |
+
+## Two more merges for Emma, both mine
+
+| person | keep | duplicate |
+| --- | --- | --- |
+| Sadatsune Higashi, son of Naoharu 70 | `Higashisadatsune Senge` — already had Toshikatsu 75 under him | `6000000227335317878`, created by me 2026-08-20, empty |
+| Shikatahime no Mikoto, sibling of Kushimikasaki 5 | `6000000227336200852` | `6000000227337123821` |
+
+**`Sadatsune Higashi` is why the "second father" worry was wrong.** This file previously
+recorded that joining him to `Toshikatsu 75 Senge` would give Toshikatsu two fathers and
+was therefore Emma's call. It would not: Toshikatsu 75's father on Geni *is* that man,
+written `Higashisadatsune Senge`, and the profile I created is a duplicate of him
+standing beside him as his own brother. The chart edge was already there.
