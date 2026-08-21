@@ -472,3 +472,25 @@ recorded that joining him to `Toshikatsu 75 Senge` would give Toshikatsu two fat
 was therefore Emma's call. It would not: Toshikatsu 75's father on Geni *is* that man,
 written `Higashisadatsune Senge`, and the profile I created is a duplicate of him
 standing beside him as his own brother. The chart edge was already there.
+
+
+## Two junk profiles I created 2026-08-20, both duplicates of people already there
+
+| mine, empty | the real one | parent |
+| --- | --- | --- |
+| `6000000227350446840` Munetoshi 71 Senge | `6000000227331623899` — has Toyomasa 73 and Toyomi 74 under him | Sakusa no Jisei Senge |
+| `6000000227349108826` Inakubinomikoto no Mikoto | `6000000227333964856` Inakubino no Mikoto | Takeyamikiru no Mikoto |
+
+**Same failure as the one already written into `devlog.md` today, hours later.** The
+Senge-column walk did not reach Munetoshi 71, and this file recorded that as *"three
+still have no Geni id"*. It was never a fact about Geni — all three were there, with
+their children, the whole time. `Isonokaya Sukune` `6000000227333988831` was likewise
+listed as *still missing from this region* and already existed under Nintachikatahi.
+
+**The guard is one fetch and it was skipped:** read the intended parent's child list
+immediately before creating, and compare on the given name alone. The earlier Kitajima
+run had exactly that check built into its queue; the three creations today were driven
+by hand and did not.
+
+Of the three people created today, **one was genuinely new** — `Izumokusunemino no
+Mikoto` under Kushimikatomi 7.
