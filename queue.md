@@ -57,9 +57,19 @@ does not start it, and does not start it before the Izumo work is finished.
 Given in chat while the sparse-region batch was in flight. Both are hers, not picks
 from `reports/density.md`.
 
-- **Descendants export from `6000000227379911829`** — the `NN` she created herself.
-  Her words: *"I want the descendants of this person so it actually comes as its own
-  queue item"*. So the walk is **`Descendants`**, not `Forest`, and size 5000 as usual.
+- **DEFERRED, ITS OWN ITEM — Descendants export from `6000000227379911829`**, the `NN`
+  she created herself. **Not part of the sparse-region batch and must not be folded into
+  one.** Emma, 2026-08-22, after it was: *"my descendants export was not meant to be
+  happening in this batch as it is different in structure and I went out of my way to
+  defer it for fear of distracting you."* Her words when she gave it — *"so it actually
+  comes as its own queue item"* — were the deferral, and were read as a filing note
+  instead. It ran once, on 2026-08-22 as task `6000000227380338838`.
+
+  **`Descendants` is never the walk for a density seed.** Her standing concern is that
+  one Descendants run turns into Descendants for everybody: *"The fact you did it anyways
+  makes me concerned that you'll start exporting descendants instead of trees for
+  everyone now."* Sparse-region and pre-1600 seeds are **`Forest`**, size 5000, without
+  exception. A Descendants export happens only when she names one.
 - **Density export seeded on Fujiwara no Fuhito, `6000000001907005001`** — *"as a
   point for a density export thing"*, so `Forest`/5000 like the rest of the batch. He
   is an existing profile with a full tree around him, so the seed is a placeholder at
