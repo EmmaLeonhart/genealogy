@@ -1277,6 +1277,21 @@ words. So the batches are `en` for everybody, then `mul` for everybody, then `ja
   generated label the plain relationship word is the safe form and the specific rank is
   something only the source can supply.
 
+  **STEP 3 PART-BUILT — `ja` where it needs no invention.**
+  `scripts/build-ja-label-batch.py` → `reports/wikidata-ja-labels.json`, **41,952 edits**:
+  37,405 from the name as written (Japanese uses a Han name unchanged) and 4,547 from
+  Wikidata's own `ja` label.
+
+  **TO DO — the hard half, 406,713 people:** English→katakana, plus 5,293 hangul-only names
+  deliberately skipped (a `ja` label must not be the hangul). Emma's method is a hand-built
+  table — *"hand-built tables, except CJK → English"* — and turning `Brodsky` into
+  `ブロツキー` has real failure modes: syllabification, long vowels, and the fact that
+  established Japanese spellings of European names are conventional rather than derivable.
+  Sized, not guessed at.
+
+  **Then `zh`, then the rest.** Middle initials follow
+  `reports/middle-initial-wikidata-practice.md`.
+
 - **`zh` for every individual.** Same string as `ja` for a Han name; the 291 people
   whose name carries **kana** are the ones needing a real Chinese form.
 
