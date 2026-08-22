@@ -98,7 +98,18 @@ ordering. **73 of the 509 seeds carry no date at all**, and undated skews ancien
 corpus. Ranking regions by the age of their *members* is the instrument that would
 actually answer her question; the seed-age ordering above is what exists today.
 
-## Emma's personally written queue stuff at the beginning
+## MANALLY WRITTEN STUFF AT 8-22-2026
+
+I think it is really stupid how the queue already appears to have gotten pretty verbose with a high level of attempt to preserve my writing. Please follow the next section but for go's sake you are makign the queue useless by presering my verbatim words. 
+
+Write out quickstatements for the first iteration of properties and such added around Arne Gaborg. I am planning on writing the quickstatements later today
+
+I want you to write up a report on whether our sparse region exports on the ancient areas actually meaningfully expanded the tree
+
+This one  1488 │ 6000000001048728539 │ Sultan Mahmud Shah ibni imo should absolutely certainly be done, but I do like the others too
+
+
+### Manually written stuff from earlier that for some godforsaken reason exists verbatim now
 
 * Finish the fucking chain completion exports do not try other stuff first
 * run exports to get a good account of the Bure Kinship, see [[Bure Kinship]]. Check to make sure all members of https://sv.wikipedia.org/wiki/Kategori:Bure%C3%A4tten are covered, since I think they are all on geni and can be highly linked up, all of them should have geni exports on them if they are unlinked and we check for those whose wikidata items do not connected geni ids similar to Samaritan high priests
