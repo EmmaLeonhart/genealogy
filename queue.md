@@ -52,61 +52,37 @@ exists but it is comparably straightforward and I will have the other one do a r
 of it too so we queue it after"*. So **another session builds the roster**; this one
 does not start it, and does not start it before the Izumo work is finished.
 
-## Two exports Emma named by hand, 2026-08-22
+## Sparse-region exports — 2026-08-22
 
-Given in chat while the sparse-region batch was in flight. Both are hers, not picks
-from `reports/density.md`.
+**Rule: sparse-region and pre-1600 seeds are `Forest`, size 5000. Never `Descendants`.**
+A Descendants export happens only when Emma names one.
 
-- **DEFERRED, ITS OWN ITEM — Descendants export from `6000000227379911829`**, the `NN`
-  she created herself. **Not part of the sparse-region batch and must not be folded into
-  one.** Emma, 2026-08-22, after it was: *"my descendants export was not meant to be
-  happening in this batch as it is different in structure and I went out of my way to
-  defer it for fear of distracting you."* Her words when she gave it — *"so it actually
-  comes as its own queue item"* — were the deferral, and were read as a filing note
-  instead. It ran once, on 2026-08-22 as task `6000000227380338838`.
+**Geni only exports from a profile the account manages** — `/gedcom/export/<id>` on any
+other profile redirects to `/error`. So every seed needs a placeholder at an open slot
+beside it (`docs/export-seed-rules.md`). Ancient European figures are often locked master
+profiles whose parent slots render grey; find an unlocked profile a hop or two away.
 
-  **`Descendants` is never the walk for a density seed.** Her standing concern is that
-  one Descendants run turns into Descendants for everybody: *"The fact you did it anyways
-  makes me concerned that you'll start exporting descendants instead of trees for
-  everyone now."* Sparse-region and pre-1600 seeds are **`Forest`**, size 5000, without
-  exception. A Descendants export happens only when she names one.
-- **Density export seeded on Fujiwara no Fuhito, `6000000001907005001`** — *"as a
-  point for a density export thing"*, so `Forest`/5000 like the rest of the batch. He
-  is an existing profile with a full tree around him, so the seed is a placeholder at
-  an open slot near him, per `docs/export-seed-rules.md`.
+**Order, from Emma:** queued exports → pre-1100 → 1100s–1400s → possibly the ancient
+spine (undecided, do not pre-empt). Seeds by age: `reports/sparse-seeds-by-age.tsv`.
 
-## Sparse-region exports: chronological order, ANCIENT FIRST — Emma, 2026-08-22
+**Done 2026-08-22** — ten exports, results in
+`reports/sparse-ancient-exports-2026-08-22.md`. Modern seeds average 3,374 new people
+each; ancient seeds average 326 but deliver 314 people born before 1100 against 1 from
+the whole modern set.
 
-**Her correction of what the sparsity work is for**, given after seeing that the density
-seeds come out with a median birth year of **1805**: *"My intention with the sparsity
-exporting stuff was specifically because I was trying to get the stragglers of this
-spine, not so much trying to get the entire tree… the main spine is pretty much already
-there but I think there are likely some interesting neighborhoods that we missed.
-Particularly the Roman ones, Chinese ones, and Japanese ones."*
+**Still open:**
 
-**The order is the instruction:**
+- `6000000001048728539` **Sultan Mahmud Shah ibni** (1488) — Emma: *"should absolutely
+  certainly be done"*.
+- The 1100s–1400s band, twenty seeds.
+- Deferred, its own item: `Descendants` from `6000000227379911829`. Ran once in error on
+  2026-08-22 (task `6000000227380338838`, zip on disk); it was not meant to be in a batch.
 
-- Finish the exports already queued — the five sparse-region seeds and her two by hand.
-- **Then the pre-1100 seeds.** Three of the 509, and two of them are exactly what she
-  named: `5365308074870051638` **Flavius Magnus Maximus Augustus Wledig** (340, Roman),
-  `6000000074749346068` **謹 法順 河東汾陰** (401, Chinese), `6000000007331410656`
-  **Ingina** (680).
-- **Then the 1100s–1400s**, twenty seeds, listed in `reports/sparse-seeds-by-age.tsv`.
-- **Then possibly back to the ancient spine** — *"once you are there I am interested in
-  potentially going back to the ancient spine"*. Not yet decided; do not pre-empt it.
-
-**Why density pointed modern, because it is structural and will recur.** Presence counts
-how many exports contain a person. All 526 balls climb into the same shared ancient spine
-through pedigree collapse, so antiquity has *high* presence and can never be thin; a
-modern person sits on the rim of exactly one ball. Measured over the 509 seeds: median
-birth year **1805**, 203 of 436 dated seeds born in the 1800s, three before 1100.
-
-**The seed's age is a proxy and a weak one.** A region's seed is picked as its
-best-connected doorway, which has nothing to do with when anyone in it lived — so an
-ancient neighbourhood can carry a modern or undated seed and be invisible to this
-ordering. **73 of the 509 seeds carry no date at all**, and undated skews ancient in this
-corpus. Ranking regions by the age of their *members* is the instrument that would
-actually answer her question; the seed-age ordering above is what exists today.
+**Why density picks modern seeds, since it will recur.** Presence counts how many exports
+contain a person. Every ball climbs into the same shared ancient spine, so antiquity has
+high presence and can never look thin. Median seed birth year is 1805. The seed's age is
+also a weak proxy for the region's — a seed is its region's best-connected doorway, and 73
+of 509 carry no date at all.
 
 ## MANALLY WRITTEN STUFF AT 8-22-2026
 
