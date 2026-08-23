@@ -1384,6 +1384,35 @@ The right move was to notice the item was stale and delete it. Instead the
 relationships were walked and reported back to her. They were fine — she had
 created the intervening `NN ben Amram ben Yitzhaq /Cohen/` the week before.
 
+### GREP THE CORPUS BEFORE RUNNING AN EXPORT. Every time
+
+**Two exports were wasted on 2026-08-23, hours apart, for the same reason:** a question
+about *what we already hold* was answered by fetching more instead of by looking at the
+files on disk.
+
+- **Obitake 23** (`export-Forest-6000000227331852896.ged`) — run to fetch Izumo 18–33,
+  reported absent. All sixteen were already in the corpus. **51 new people, 0 rostered.**
+  "Absent" had been measured against **one export file** and reported as a corpus fact.
+- **Yitzhaq I ben Tsedaka** (`export-Forest-6000000227245553985.ged`) — run to test whether
+  Samaritan About Me Wikidata links post-dated our exports. **0 new people, 0 new links.**
+  Fifteen linked Samaritan profiles were already in the corpus; the "0 of 85" that prompted
+  it was about a different population.
+
+**Both were answerable by a grep over `exports/`, in a second, for nothing.** An export
+costs a Geni round trip, a download, a commit of ~90k lines, and — the part that actually
+matters — one of Emma's export slots and her patience.
+
+**So, before every export, run the check and put the number in the commit message:**
+
+- *Are these people already here?* — `grep -l '@I<id>@' exports/**/*.ged`, or
+  `scripts/measure-export-newness.py` for the general question.
+- *Is this property already here?* — `grep -c 'wikidata.org' exports/**/*.ged` and its like.
+- **Never let a single-file measurement stand in for a corpus one.** That is what
+  `match-izumo-export.py --corpus` exists for, and its docstring says why.
+
+An export that turns out redundant is still committed and never deleted — the
+never-delete-a-GEDCOM rule is untouched. The point is not to run it.
+
 ### The job with an export is to integrate it, not to analyse it
 
 **Emma, 2026-08-13, stated flatly after repeated violations.** *"This is not a

@@ -11227,3 +11227,33 @@ looking.
 Aaron is the useful part of it: `Q51676` against `6000000227239142939` is one of the five
 second-`P2600` rows in `reports/wikidata-geni-qid-p2600.qs`, and it is the unmergeable pair
 `CLAUDE.md` documents. The batch stands at **354 statements**, unchanged by this export.
+
+## 2026-08-23 — the check-before-exporting rule, and the first guard on a live-edit batch
+
+Two things this tick, both about not repeating today.
+
+**`CLAUDE.md` § *GREP THE CORPUS BEFORE RUNNING AN EXPORT*.** Two exports were wasted hours
+apart for the same reason — a question about what we already hold, answered by fetching more
+instead of by looking. Obitake 23: 51 new people, 0 rostered, because "absent" had been
+measured against one export file and reported as a corpus fact. Yitzhaq I ben Tsedaka: 0 new
+people, 0 new links, because "Samaritans: 0 of 85" was about a different population. Both
+were a `grep` over `exports/` away. The rule now sits where the export loop reads it, with
+both cases named and the specific greps written out.
+
+**`tests/test_p2600_batches.py` — 15 tests.** From 2026-09-01 the `.qs` files in `reports/`
+run against live Wikidata, and nothing in the suite guarded them. A malformed line there is
+not a failed parse, it is a wrong statement on a real item.
+
+It checks the shape (`Q…<TAB>P2600<TAB>"…"`), that every statement traces back to a pair in
+`reports/geni-qid-links.tsv`, that each Geni id is one `GENI_ID_RE` could parse back out of
+a GEDCOM xref, and that no line repeats. **A QID appearing more than once is deliberately
+not tested against** — `P2600` is multi-valued and a second profile is the correct
+representation.
+
+Seven of the fifteen test the checks rather than the batch, in the shape
+`test_repo_invariants.py` already uses for its trigger reader: a batch that is clean today
+proves nothing about whether the guard would notice. They include the failure that has
+actually happened here — `Stine "Stena"`, an embedded double quote QuickStatements V1 cannot
+escape, which would end the string early and shift every field after it.
+
+All 15 pass; 50 including `test_repo_invariants` and `test_identity`.
