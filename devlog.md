@@ -10831,3 +10831,27 @@ Result: 3 confirmed, 3 single-anchor, 6 rejected, 33 ambiguous, 38 with no reach
 anchor. The gate is knowingly too strict in one place — it rejects `Jacob` against `Jakob`
 — and is being left that way rather than relaxed, because absorbing spelling variants is
 fuzzy name matching returning by the back door.
+
+## 2026-08-23 — Bure kinship closed at the easy seven
+
+Emma: *"just use the easy bure people and skip anyone that's hard and resolve that queue
+stuff"*, and *"I'm not gonna look at those rows just move past this"*. So no review pile
+was left behind.
+
+**Seven resolved**, in `reports/bureatten-resolved.tsv`, with
+`reports/wikidata-bureatten-p2600.qs` ready for after the 2026-09-18 lockout lift:
+
+- Adolf Ludvig Piper, Hedvig Catharina von Fersen, Johan Magnus af Nordin — confirmed by
+  two or more anchors agreeing.
+- Lars Wallenstedt, Olof Wexionius, Samuel Nauclér — single anchor, gate passed.
+- Jacob Nils Tersmeden — the one rejection accepted, `Jacob` against `Jakob`. Taken as a
+  spelling variant by explicit decision and listed as such; **the gate itself was not
+  loosened**, so nothing else slips through with it.
+
+**Seventy-six skipped as hard and not carried forward:** 38 whose anchor is not in our
+tree, 33 whose intersection holds several people, 5 the sanity gate rejected on sex or a
+genuinely different given name.
+
+The Bureätten item is deleted from `queue.md`. Its measurements stay in
+`reports/bureatten.md` — 576 category pages, 147 already connected in one component, 104
+uncovered, 198 unlinked — so the skipped 76 are findable if the question returns.

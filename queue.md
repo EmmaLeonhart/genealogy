@@ -45,34 +45,14 @@ render, say so plainly and stop — do not thrash.
 
 
 
-## Bure kinship — running, 2026-08-23
-
-Measured in `reports/bureatten.md`. **Connectivity is already done** — all 147 Bureätten
-people in the tree are in one component. The gap is coverage, not joining, so this is
-**not** an export-per-target campaign.
-
-- **Emma to eyeball 9 rows** in `reports/bureatten-geni-matches.tsv`: the 6 the sanity
-  gate rejected (one, Jacob/Jakob Tersmeden, is near-certainly a false rejection the gate
-  is deliberately not being loosened to absorb) and the 3 single-anchor matches. Then the
-  3 CONFIRMED can carry a `P2600` once the lockout lifts.
-- **The 33 ambiguous** need more anchors before the intersection cuts to one. Revisit after
-  coverage improves.
-- **The remaining 115 have no anchor**, 84 of them absent from the local store entirely.
-  Google `site:geni.com "<name>"` plus a human eye is the only route, and the top hit is
-  often the wrong person (Adolf Ludvig Piper returns his son Axel), so it confirms a
-  candidate rather than generating one.
-- **The 100 targets still outside the corpus** are a coverage question, not a connection
-  one. Revisit only once the anchor walk is done.
-
 ## MANALLY WRITTEN STUFF AT 8-22-2026
 
 I think it is really stupid how the queue already appears to have gotten pretty verbose with a high level of attempt to preserve my writing. Please follow the next section but for go's sake you are makign the queue useless by presering my verbatim words. 
 
-Write out quickstatements for the first iteration of properties and such added around Arne Gaborg. I am planning on writing the quickstatements later today
-
-I want you to write up a report on whether our sparse region exports on the ancient areas actually meaningfully expanded the tree
-
-This one  1488 │ 6000000001048728539 │ Sultan Mahmud Shah ibni imo should absolutely certainly be done, but I do like the others too
+(All three asks from this section are delivered: the Arne Garborg quickstatements
+(`reports/wikidata-garborg.qs`), the ancient-export report
+(`reports/sparse-ancient-exports-2026-08-22.md`), and the Sultan Mahmud Shah export
+(`exports/sparse_filling/export-Forest-6000000227380708902.ged`).)
 
 
 ### Manually written stuff from earlier that for some godforsaken reason exists verbatim now
