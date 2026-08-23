@@ -67,3 +67,34 @@ The order that follows:
 
 - `reports/izumo-roster.tsv` — 214 people: regnal number, name, qid, lineage, role.
 - `reports/izumo-coverage.tsv` — the same with Geni IDs and status.
+
+
+## The lineage is not in our corpus, and the browser warning has expired
+
+`scripts/walk-izumo-geni.py` walks outward from Emma's own seed
+(`6000000012789160423`, Tsusa-no-mikoto 4), which **is** already in the merged tree — so
+the Geni side did not have to be searched name by name.
+
+**At 25 hops the ball holds 1,312 people and matches only 10 of the 214.** Worse, most of
+those ten are the *emperors* in the genealogy's parallel column — Jimmu, Chūai, Yamato
+Takeru — not Izumo priests. Of the priestly line only Kushidanomikoto (8) and
+Chirinomikoto (9) are present.
+
+So "the clan is already on Geni three times over" and "the clan is in our corpus" are
+different statements, and only the first is true. The profiles exist on Geni; our 548
+exports have never reached them.
+
+**Her 2026-08-19 browser warning no longer holds.** The Izumo tree renders cleanly now —
+Ameno-hohi 1, Takehinatori 2, Kushini 3, Tsusa 4, regnal numbers visible in the node
+labels exactly as she described. Whatever was failing that day was the *"high volume of
+automated traffic"* banner, not something structural.
+
+**Her seed is not exportable directly** — `/gedcom/export/6000000012789160423` redirects to
+`/error`, so she does not manage it despite having built around it. A placeholder was
+created at Kushini-no-mikoto 3's open mother slot: `NN no Mikoto`
+(`6000000227389059850`), keeping Geni's suggested `no Mikoto` surname because that matches
+the `NN no Mikoto` already in her tree rather than the generic tier-3 rule.
+
+**That export is the right instrument here** and it is not the refuted sparse-region work:
+this is a named lineage known to exist on Geni and known to be absent from the corpus,
+which is the Bureätten shape that returned 66% new.
