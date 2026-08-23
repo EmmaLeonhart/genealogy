@@ -83,3 +83,46 @@ will arrive with them.
 
 - `reports/bureatten.csv` — all 576 pages: title, QID, kind, Geni IDs.
 - `reports/bureatten-export-targets.tsv` — the 104, ready to open.
+
+
+## The 198 unlinked: Google works but cannot be automated naively
+
+Searching `site:geni.com "Adolf Ludvig Piper"` returns real Geni profiles with no upsell,
+so the route Emma named does work. **But the top hit is the wrong man.** He is
+*Adolf Ludvig Piper, till Ängsö* on Geni, so his own page does not match the plain name,
+while he appears constantly inside other people's pages as *"son of"* and *"brother of"*.
+The first result is **Axel Adolf Piper**, his son. Taking the first hit would be exactly
+the name matching this repo refuses everywhere else.
+
+So Google is for confirming a candidate a human or a structural walk has already picked,
+not for generating one.
+
+## The structural route reaches 83 of the 198, offline
+
+`scripts/measure-bure-structural-anchors.py`. A person's Wikidata item names their
+parents, spouse, children and siblings. Where one of those relatives already carries a
+`P2600` we hold, the unlinked person sits in a **known position beside a known Geni
+profile** — and the Geni side of that position is the candidate. Structure picks the pair;
+the label only checks it is not absurd. That is `CLAUDE.md` § *Merging the two trees is a
+walk up the relationships*.
+
+| | count |
+| --- | ---: |
+| unlinked non-family articles | 198 |
+| in the local Wikidata store (so their relations are readable offline) | 114 |
+| **have ≥1 relative already carrying a Geni ID** | **83** |
+| of those, anchored by 3+ relatives | 24 |
+
+Adolf Ludvig Piper is the worked example of why this beats the search: his item gives
+`P22` → Carl Fredrik Piper (Geni `6000000001883008064`), `P26` → Sophie Piper
+(`1551393`), `P40` → a son (`6000000002787896786`). Three independent anchors, all
+already in our tree. The Geni person who is *son of that father and husband of that wife*
+is him, and no name was consulted to say so.
+
+**Not yet done:** walking those anchors into our merged tree to name the candidate on the
+Geni side, and deciding what counts as confirmation when two anchors disagree. That is
+the next step, not this measurement.
+
+**The other 115** have no anchor — 84 are absent from the local store entirely, which is
+itself the signal, since the store was seeded from `P2600` holders and their neighbours.
+Those are the genuinely disconnected ones and Google plus a human eye is the only route.

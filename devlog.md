@@ -10791,3 +10791,24 @@ wrong in six ways — most importantly it emitted no name properties at all, whe
 a Geni ID and are in none of our 547 exports — the cleanest export targets the repo has
 had, because nothing is being guessed. 199 more are the Samaritan shape: on Wikidata, no
 `P2600`, nothing joining them.
+
+## 2026-08-23 — Bureätten is a resolution problem, not an export problem
+
+Two measurements redirected the work overnight.
+
+**They are already connected.** All 147 Bureätten people in the merged tree sit in one
+component, the same 1,274,287-person one as everything else
+(`scripts/measure-bure-connectivity.py`). Emma's goal was *"to get them all connected to
+each other on a family tree"* — that is done. The ~26-export sweep being set up was aimed
+at a problem that does not exist; one export had run and the second was abandoned on the
+form unsubmitted.
+
+**Google works but cannot be automated.** `site:geni.com "<name>"` returns real profiles
+with no upsell, but the top hit for Adolf Ludvig Piper is his son Axel, because Geni calls
+him *Adolf Ludvig Piper, till Ängsö* and his own name only appears inside other people's
+pages. First-hit matching would be the name matching this repo refuses.
+
+**The structural route reaches 83 of the 198 unlinked, offline.** Where a person's
+Wikidata item names a relative who already carries a `P2600`, that person stands in a
+known position beside a known Geni profile. Adolf Ludvig Piper has three such anchors —
+father, wife and son — all already in our tree. `scripts/measure-bure-structural-anchors.py`.

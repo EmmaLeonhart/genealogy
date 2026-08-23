@@ -45,26 +45,25 @@ render, say so plainly and stop — do not thrash.
 
 
 
-## Bure kinship — running 2026-08-22
+## Bure kinship — running, 2026-08-23
 
-<https://sv.wikipedia.org/wiki/Kategori:Bure%C3%A4tten>. Measured in
-`reports/bureatten.md`: 576 pages, 575 with a Wikidata item.
+Measured in `reports/bureatten.md`. **Connectivity is already done** — all 147 Bureätten
+people in the tree are in one component. The gap is coverage, not joining, so this is
+**not** an export-per-target campaign.
 
-  147  person, Geni ID, in our corpus
-  104  person, Geni ID, NOT in our corpus   <- the work
-  199  person, Wikidata item, no Geni ID    <- the Samaritan shape
-  126  family / adelsätt articles, not people
-
-**Steps:**
-
-- Export from the 104 in `reports/bureatten-export-targets.tsv`. Each is an existing
-  profile Emma does not manage, so each needs a placeholder at an open slot beside it —
-  `docs/export-seed-rules.md`. `Forest`, 5000, one at a time, filed and committed as it
-  lands.
-- Re-run the join afterwards. Many of the 199 unlinked should arrive as relatives of
-  people we now hold, bringing their Geni IDs with them.
-- Whatever is still unlinked after that has no offline route — Geni search is banned —
-  so it stops there and gets reported, not guessed at.
+- **Walk the 83 structural anchors into the merged tree.** Each of those unlinked people
+  has a Wikidata relative already carrying a Geni ID; the Geni person standing in the
+  matching position is the candidate. `scripts/measure-bure-structural-anchors.py` found
+  them; naming the Geni-side candidate is the work. Decide what counts as confirmation
+  when two anchors disagree.
+- **Write matches to `reports/bureatten-geni-matches.tsv`.** Not `entity_resolution.md` —
+  that is Emma's hand-written scratchpad and machine-found matches do not belong in it.
+- **The remaining 115 have no anchor**, 84 of them absent from the local store entirely.
+  Google `site:geni.com "<name>"` plus a human eye is the only route, and the top hit is
+  often the wrong person (Adolf Ludvig Piper returns his son Axel), so it confirms a
+  candidate rather than generating one.
+- **The 100 targets still outside the corpus** are a coverage question, not a connection
+  one. Revisit only once the anchor walk is done.
 
 ## MANALLY WRITTEN STUFF AT 8-22-2026
 
