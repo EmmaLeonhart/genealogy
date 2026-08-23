@@ -1,0 +1,80 @@
+[
+  {
+    "id": "create_individual:6000000227331629828",
+    "type": "create_individual",
+    "priority": false,
+    "subject": {
+      "qid": null,
+      "geni_id": "6000000227331629828"
+    },
+    "requires": [],
+    "anchor": null,
+    "labels": {
+      "en": "Senge no Takanori",
+      "mul": "Senge no Takanori"
+    },
+    "descriptions": {},
+    "statements": [
+      {
+        "property": "P31",
+        "value": "Q5",
+        "references": [
+          {
+            "property": "P2600",
+            "value": "6000000227331629828"
+          }
+        ]
+      },
+      {
+        "property": "P2600",
+        "value": "6000000227331629828",
+        "references": []
+      },
+      {
+        "property": "P21",
+        "value": "Q6581097",
+        "references": [
+          {
+            "property": "P2600",
+            "value": "6000000227331629828"
+          }
+        ]
+      }
+    ],
+    "links": [
+      {
+        "property": "P22",
+        "value": "Q135579518",
+        "references": [
+          {
+            "property": "P2600",
+            "value": "6000000227331629828"
+          },
+          {
+            "property": "P2600",
+            "value": "6000000227331591841"
+          }
+        ]
+      },
+      {
+        "property": "P3373",
+        "value": "Q11405449",
+        "references": [
+          {
+            "property": "P2600",
+            "value": "6000000227331629828"
+          },
+          {
+            "property": "P2600",
+            "value": "6000000227331651847"
+          }
+        ]
+      }
+    ],
+    "notes": [
+      "Only one of the eleven office-holders past the end of the Shinto-wiki chart lacks a Wikidata item; the other ten already carry one in their Geni About Me and are in reports/wikidata-geni-qid-p2600.qs.",
+      "No dates: the GEDCOM record carries no BIRT or DEAT.",
+      "Label form is a guess following the roster style for this lineage. The regnal ordinal 81 belongs on the given name as P7338, not in the label."
+    ]
+  }
+]

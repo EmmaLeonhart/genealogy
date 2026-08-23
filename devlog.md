@@ -11296,3 +11296,32 @@ deleted** — byte-identical to `…837821.ged` (sha256 `2a7f14ae…`), which `g
 was already dropping. Same call she made for the Delldén duplicate on 08-16, and the same
 reason: identity, not redundancy. `test_the_real_corpus_has_no_byte_identical_duplicates`
 is green for the first time in weeks.
+
+## 2026-08-23 — ten of the eleven "beyond the chart" already had items
+
+Emma, asked whether to create Wikidata items for the office-holders Geni carries past the
+end of the Shinto-wiki chart: *"Yes lol that's the point of why I made it? They are part of
+the geni individual creation pipeline."*
+
+Checked the records before building, which is now the rule. **Ten of the eleven already have
+items and she linked them herself** — Kitajima 69 `Q135579509`, 70 `Q135579512`,
+71 `Q135579516`, 72 `Q135579513`, 73 `Q135579514`, 74 `Q135579517`; Senge 77 `Q135579511`,
+78 `Q135579515`, 79 `Q135579518`, 80 `Q11405449`. All ten are already in
+`reports/wikidata-geni-qid-p2600.qs`. They were invisible to the roster join only because
+the Shinto-wiki chart has no row for them.
+
+**One is genuinely missing: `Takanori 81 /Senge/`, `6000000227331629828`.**
+`scripts/build-izumo-beyond-chart.py` emits his single `create_individual` object into
+`reports/wikidata-izumo-beyond-chart.json`, in the shape the Samaritan file already uses.
+
+**And his family is the counter-example to this morning's deleted script.** That one walked
+the office up the father chain, decrementing the regnal number one generation per step.
+Takanori 81 and Takatomi 80 are **brothers** — both `FAMC @F6000000227331591845@`, the
+family Takasumi 79 heads — so the office passed sideways, and every number that walk
+produced above such a step would have been wrong. The assumption was not merely unchecked;
+it is false in this lineage.
+
+Also fixed: `match-izumo-export.py` and `build-izumo-p2600.py` were both writing
+`reports/izumo-p2600-pairs.tsv`, so a run of the former silently reverted it from the
+111-row About Me join to the 76-row regnal one. Only the latter writes it now; the former
+says why in a comment where the code used to be.

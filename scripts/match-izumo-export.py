@@ -170,24 +170,14 @@ def main():
     for n, s, raw, g in extra:
         print(f'  {n:>3}  {s:<12} {raw:<34} {g}')
 
-    # The pairings, for a P2600 batch once this repo's start date passes. A row
-    # with more than one Geni id is a duplicate set on Geni -- emitted as it is,
-    # because a second P2600 on one item is the correct representation of that
-    # and the merges are Emma's.
-    qid_of = {(r.get('regnal', '').strip(), r.get('name', '')): (r.get('qid') or '').strip()
-              for r in roster}
-    out = 'reports/izumo-p2600-pairs.tsv'
-    with open(out, 'w', encoding='utf-8', newline='') as f:
-        w = csv.writer(f, delimiter='\t')
-        w.writerow(['qid', 'regnal', 'lineage', 'name', 'geni_ids', 'matched_on'])
-        n = 0
-        for r, lin, name, ids, how in hit:
-            q = qid_of.get((r, name), '')
-            if not q:
-                continue
-            w.writerow([q, r, lin, name, ids, how])
-            n += 1
-    print(f'\nwrote {out} -- {n} lineage rows, every one carrying a Wikidata item')
+    # NOTE: this script no longer writes reports/izumo-p2600-pairs.tsv. That file
+    # is built by scripts/build-izumo-p2600.py from the Wikidata URL in each
+    # profile's About Me -- the identifier Emma wrote there herself -- and it holds
+    # 111 rows against the 76 this regnal join can see. Two scripts writing one
+    # file is how a run of THIS one silently reverted that file on 2026-08-23.
+    # What survives here is the reporting above: which rostered people a given
+    # export or the corpus holds, and which numbered office-holders the
+    # Shinto-wiki chart stops short of.
 
 
 if __name__ == '__main__':
