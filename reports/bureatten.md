@@ -25,7 +25,26 @@ The 126 are `(släkt)`, `(adelsätt)`, `(friherrlig ätt)` and bare-surname arti
 (adelsätt), Rosenblad, Sprengtporten and so on. They are houses, not humans, and are not
 work.
 
-## The 104 are the best export targets in the repo right now
+## CONNECTIVITY IS NOT THE PROBLEM — measured 2026-08-22
+
+**All 147 Bureätten people already in the tree sit in ONE connected component**, the same
+1,274,287-person component as everything else. `scripts/measure-bure-connectivity.py`.
+
+Emma's framing was *"we're just trying to connect them to each other... We're not trying
+to run a gigantic export on all of them"*, and the answer is that they already are. The
+work is **coverage**, not joining.
+
+That kills the plan this report originally implied — one export per target, ~26 sweeps —
+which was being set up when the measurement was taken. Two exports had run; the second was
+abandoned unsubmitted.
+
+**The cheap route for the unlinked is Google, not exports.** `site:geni.com "<name>"`
+returns the profile directly, with dates and relatives, and no upsell — confirmed working
+on `Anders Grubb`. `docs/export-seed-rules.md` already names this as the sanctioned
+substitute and only warns it fails for *freshly created* profiles; these are long-standing
+historical ones. Geni's own search stays banned.
+
+## The 104 remain the targets, but for coverage not connection
 
 They have a Wikidata item **and** a Geni profile ID, and the profile is simply not in any
 of our 547 exports. Nothing has to be guessed: the person exists on both sides, the join
