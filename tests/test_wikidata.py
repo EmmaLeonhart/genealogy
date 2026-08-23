@@ -97,9 +97,29 @@ def test_a_query_is_posted_so_a_long_values_clause_still_fits(tmp_path):
     assert body is not None and "query=SELECT" in body
 
 
-def test_requests_identify_the_tool(tmp_path):
-    # Wikimedia asks for a descriptive User-Agent; anonymous scripts get blocked.
-    assert "genimerge" in wikidata.USER_AGENT
+def test_the_user_agent_is_the_contact_address_and_nothing_else(tmp_path):
+    """It used to assert `"genimerge" in USER_AGENT` and had been red since `0483a470`.
+
+    That commit — *"The user agent is the email address and nothing else"* — acted on
+    Emma's 2026-08-18 instruction that **the repository must never be linked from an
+    agent, and neither should a description of what the project does**, both being
+    signposts to where a reader could go looking. The test kept asserting the removed
+    behaviour, so it was demanding the opposite of the rule.
+
+    Pinned here is the current contract, which is a stronger claim than the old one:
+    the agent is exactly `BOT_CONTACT`, and it names nothing about this project.
+    """
+    assert wikidata.USER_AGENT == wikidata.CONTACT
+    lowered = wikidata.USER_AGENT.lower()
+    for leak in ("genimerge", "geni-merge", "github", "gedcom"):
+        assert leak not in lowered, f"the User-Agent points at us: {leak!r}"
+
+
+def test_an_unset_contact_fails_loudly_rather_than_sending_an_empty_agent(monkeypatch):
+    """An empty `User-Agent` is what Wikimedia answers with a bare 403."""
+    monkeypatch.setattr(wikidata, "USER_AGENT", "")
+    with pytest.raises(RuntimeError, match="BOT_CONTACT"):
+        wikidata.require_agent()
 
 
 def test_ids_are_queried_in_batches(tmp_path):

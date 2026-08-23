@@ -10992,3 +10992,24 @@ the first Izumo export landed there because it was taken during that batch, and 
 directory name now misdescribes it, the sparse programme having been refuted on 2026-08-22.
 
 Left: 17 rostered people, one contiguous stretch — Izumo 11 and 18–33.
+
+## 2026-08-23 — a test that had been demanding the opposite of the rule
+
+`tests/test_wikidata.py::test_requests_identify_the_tool` asserted
+`"genimerge" in wikidata.USER_AGENT` and has been red since `0483a470`, *"The user agent is
+the email address and nothing else"* — the commit that acted on Emma's 2026-08-18
+instruction that **the repository must never be linked from an agent, and neither should a
+description of what the project does**. The code changed; the test did not, so it was
+asserting exactly the leak the rule exists to prevent.
+
+Replaced with the current contract, which asserts more rather than less: the agent is
+exactly `BOT_CONTACT`, and carries none of `genimerge`, `github`, `gedcom`. A second test
+pins the other half — an unset `BOT_CONTACT` raises by name rather than sending an empty
+agent into a mystery 403.
+
+Also confirmed not ours, and left alone: `test_the_offline_guard_actually_fires` fails only
+when `BOT_CONTACT` is unset in the shell (it passes with it set), and
+`test_the_real_corpus_has_no_byte_identical_duplicates` is the known `chain-seeds` pair
+awaiting Emma's call on deletion.
+
+Fast lane after the fix: 1043 passed.
