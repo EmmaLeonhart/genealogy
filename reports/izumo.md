@@ -125,3 +125,43 @@ This is a different failure from the refuted sparse-region work. That one seeded
 exhausted neighbourhoods and got nothing anywhere. This one got 2.6% because the ball went
 the *wrong direction* out of a correctly chosen lineage — a fixable aim, not a dead
 premise.
+
+
+## Two errors in the measurement above, both mine, both corrected
+
+The "10 of 214" figure was wrong twice over.
+
+**Word order.** The roster writes `Senge no Takamune` — Japanese order with the `no`
+particle. Geni writes `Takamune Senge`. A normalised string comparison misses every one of
+them, and the tree contained `Takamune Senge`, `Sadataka Kitajima`, `Naokuni Senge` and
+`Kunimaro Senge` the whole time. `variants()` now generates both orders. Nothing about it
+is fuzzy: the tokens must still agree exactly, only their order and the particle move.
+
+**Searching only the ball.** The first run indexed just the 1,312 people within 25 hops of
+Emma's seed. But the Senge and Kitajima profiles are reached through the **modern imperial
+line** — Kunimaro Senge married Princess Noriko in 2014 — not through the founder end, so
+no radius around Tsusa 4 was ever going to contain them. The search now runs over the whole
+tree and the ball is used only to report distance.
+
+**Corrected: 21 of 214 matched, 11 ambiguous, 182 absent.**
+
+And the ones that appeared are the right kind — not more emperors but the office-holders
+themselves:
+
+| regnal | person | Geni |
+| ---: | --- | --- |
+| 39 | Izumo no Yoshitada | `6000000222521205883` |
+| 53 | Izumo no Takatoki | `6000000222507315857` |
+| 55 | Senge no Takamune | `6000000019459773306` |
+| 55 | Kitajima no Sadataka | `6000000019459854230` |
+| 56 | Senge no Naokuni | `6000000019459924115` |
+
+Plus the En'ya and Sasaki figures the genealogy runs beside, and `Hiraoka no Sadataka`.
+
+**Both 55s are there** — Takamune and Sadataka are the two men the 1340 split created, and
+holding both means the fork itself is in our tree even though most of the line between and
+after is not.
+
+**This also revises the earlier export post-mortem.** That export was aimed at the wrong
+end, which stands. But part of what it "failed to find" was material we already held under
+a name the matcher could not see.

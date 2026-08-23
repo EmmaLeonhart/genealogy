@@ -10,6 +10,15 @@ and `Izumo no Ihohiku` have no namesakes. Every match is still reported with the
 graph distance from the seed so a wrong one is visible, and a roster name matching
 more than one profile in the ball is reported as AMBIGUOUS rather than resolved.
 
+**Word order is the whole difficulty and the first run got it wrong.** The roster
+writes `Senge no Takamune`, the Japanese order with the `no` particle; Geni writes
+`Takamune Senge`, given name first. A plain normalised comparison misses every
+one of them, which is why the first run reported 10 of 214 present when
+Takamune Senge, Sadataka Kitajima, Naokuni Senge and Kunimaro Senge were all
+sitting in the tree. `variants()` generates both orders so the match is on the
+same name written two ways, not on a fuzzy similarity -- the tokens must still
+agree exactly.
+
 Writes reports/izumo-geni-candidates.tsv. Creates nothing and edits nothing.
 """
 import sys, re, csv, collections, unicodedata
@@ -22,12 +31,37 @@ HOPS = int(sys.argv[1]) if len(sys.argv) > 1 else 6
 roster = list(csv.DictReader(open('reports/izumo-roster.tsv', encoding='utf-8'), delimiter='\t'))
 print(f'{len(roster)} rostered people')
 
-def norm(t):
+def _clean(t):
     t = unicodedata.normalize('NFKD', t or '')
     t = ''.join(c for c in t if not unicodedata.combining(c))
     t = re.sub(r'\s*\([^)]*\)', '', t)
-    t = re.sub(r'[^0-9a-zA-Z　-鿿]+', '', t)
-    return t.lower()
+    t = re.sub(r'<[^>]*>', ' ', t)
+    return t
+
+def norm(t):
+    return re.sub(r'[^0-9a-zA-Z　-鿿]+', '', _clean(t)).lower()
+
+def variants(t):
+    """Both word orders for a `X no Y` name, plus the bare forms.
+
+    `Senge no Takamune` and `Takamune Senge` are the same man written the
+    Japanese way and the Geni way. Nothing here is fuzzy: the tokens must match
+    exactly, only their order and the `no` particle move.
+    """
+    c = _clean(t).strip()
+    out = {norm(c)}
+    parts = [p for p in re.split(r'\s+', c) if p]
+    low = [p.lower() for p in parts]
+    if 'no' in low:
+        i = low.index('no')
+        head, tail = parts[:i], parts[i + 1:]
+        if head and tail:
+            out.add(norm(' '.join(tail + head)))   # Takamune Senge
+            out.add(norm(' '.join(head + tail)))   # Senge Takamune
+            out.add(norm(' '.join(tail)))          # Takamune
+    if len(parts) >= 2:
+        out.add(norm(' '.join(reversed(parts))))
+    return {v for v in out if v}
 
 fam_par = collections.defaultdict(list); fam_chil = collections.defaultdict(list)
 i_fams = collections.defaultdict(list); i_famc = collections.defaultdict(list)
@@ -63,26 +97,31 @@ for d in range(1, HOPS + 1):
     frontier = nxt
 print(f'{len(dist)} people within {HOPS} hops of the seed')
 
-# index the ball by normalised name
+# Index the WHOLE tree, not just the ball. The ball is only used to report how
+# far a match sits from Emma's seed -- restricting the search to it was the second
+# error of the first run: the Senge and Kitajima profiles are real and present but
+# are reached through the modern imperial line, not through the founder end, so no
+# radius around Tsusa 4 contains them.
 idx = collections.defaultdict(list)
-for x in dist:
+for x in names:
     for nm in names.get(x, ()):
-        k = norm(nm)
-        if k: idx[k].append(x)
+        for k in variants(nm):
+            idx[k].append(x)
 
 gid = lambda x: x.strip('@').lstrip('I')
 rows = []; stats = collections.Counter()
 for r in roster:
-    k = norm(r['name'])
-    hits = sorted(set(idx.get(k, ())))
+    hits = sorted({x for k in variants(r['name']) for x in idx.get(k, ())})
     if not hits:
         stats['not in the ball'] += 1
         rows.append((r['regnal'], r['name'], r['qid'], r['lineage'], '', '', 'not found'))
     elif len(hits) == 1:
         x = hits[0]
         stats['matched'] += 1
+        d = dist.get(x)
         rows.append((r['regnal'], r['name'], r['qid'], r['lineage'],
-                     gid(x), names[x][0], f'match (hop {dist[x]})'))
+                     gid(x), names[x][0],
+                     f'match (hop {d})' if d is not None else 'match (outside the ball)'))
     else:
         stats['ambiguous'] += 1
         rows.append((r['regnal'], r['name'], r['qid'], r['lineage'],

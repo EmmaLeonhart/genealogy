@@ -10906,3 +10906,21 @@ breadth-first ball of 5000 spends itself on the dense side and never walks the t
 Different from the sparse-region refutation: there the premise was wrong, here only the
 aim. Seeding the Senge/Kitajima end — where Emma's own additions attach — is the fix, and
 is now the queue step.
+
+## 2026-08-23 — the Izumo coverage figure was wrong twice; 21, not 10
+
+`scripts/walk-izumo-geni.py` under-reported for two independent reasons, both mine.
+
+**Word order.** The roster writes `Senge no Takamune`; Geni writes `Takamune Senge`. A
+normalised comparison misses all of them. `variants()` now generates both orders — exact
+tokens either way, nothing fuzzy.
+
+**Ball-only search.** The first run indexed only the 1,312 people within 25 hops of Emma's
+seed, but the Senge and Kitajima profiles hang off the modern imperial line — Kunimaro
+Senge married Princess Noriko in 2014 — so no radius around the founder contains them. The
+search now covers the whole tree; the ball only reports distance.
+
+**21 of 214 matched, 11 ambiguous, 182 absent.** The new matches are office-holders rather
+than more emperors: Izumo no Yoshitada 39, Izumo no Takatoki 53, and crucially **both
+55s** — Senge no Takamune and Kitajima no Sadataka, the two men the 1340 split created. The
+fork itself is in the tree.
