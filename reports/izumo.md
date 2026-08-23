@@ -297,3 +297,38 @@ meeting a tree with a different number of generations. `scripts/walk-izumo-succe
 surname -- is unaffected: 76 rows, and the number sits next to a surname that pins it to this
 family. The kokuso are simply not resolved, and matching them is a job for evidence rather
 than for a string.
+
+
+## The 93 unlinked roster items: what they actually are
+
+`reports/izumo-unlinked.tsv` is the residue of the About Me join — rostered Wikidata items
+no Geni profile in the corpus points at. Before treating any as a person to find or create,
+`scripts/classify-izumo-unlinked.py` reads `P31` *instance of* out of the local store.
+
+| verdict | items |
+| --- | ---: |
+| **not in the local store — unclassified** | **54** |
+| human (`Q5`) | 26 |
+| legendary human figure (`Q124710051`) | 12 |
+| solar deity (`Q511056`) | 1 |
+
+**A bare "is it `Q5`?" is the wrong test, and the first run got it wrong.** It reported
+thirteen of these as non-people. Twelve are the legendary emperors — Annei, Itoku, Kaika,
+Kōan, Kōgen, Kōrei, Kōshō, Suinin, Suizei, Sujin, Empress Jingū, Yamato Takeru — which
+Wikidata models as `Q124710051` *legendary human figure*. That is a statement about the
+evidence for them, not about their kind, and they are exactly the people this genealogy is
+about. Only **Amaterasu** (`Q455602`, `Q511056` *solar deity*) is genuinely a different
+kind of thing.
+
+**The 54 are the honest limit.** The local store was seeded from `P2600` holders and their
+neighbours, so an item with no Geni link may never have entered it — their absence from the
+store is circular, not evidence. Some are plainly not people from the roster name alone
+(`Amabe clan`, `Kamo district`, `Aogaki Publishing`, and a row whose name is `2020`), and
+`build-izumo-roster.py` picking those up is expected: it parses every `{{ill|…|qid=…}}` on
+the page, and the page names clans and districts beside the office-holders. That reading is
+by **name**, so it is flagged rather than acted on.
+
+**What this means for the work.** The unlinked residue is not 93 missing office-holders. It
+is at most 38 people the store can see, a tail of ~54 the store cannot, and a handful of
+things that were never people. Nothing here is a candidate for a `P2600` until its kind is
+established.

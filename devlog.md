@@ -11325,3 +11325,33 @@ Also fixed: `match-izumo-export.py` and `build-izumo-p2600.py` were both writing
 `reports/izumo-p2600-pairs.tsv`, so a run of the former silently reverted it from the
 111-row About Me join to the 76-row regnal one. Only the latter writes it now; the former
 says why in a comment where the code used to be.
+
+## 2026-08-23 — the 93 unlinked Izumo items are not 93 missing people
+
+`scripts/classify-izumo-unlinked.py` reads `P31` *instance of* out of the local store for
+the residue of the About Me join. Offline throughout.
+
+| verdict | items |
+| --- | ---: |
+| not in the local store — unclassified | 54 |
+| human (`Q5`) | 26 |
+| legendary human figure (`Q124710051`) | 12 |
+| solar deity (`Q511056`) | 1 |
+
+**A bare "is it `Q5`?" is the wrong test and the first run got it wrong**, reporting thirteen
+of these as non-people. Twelve are the legendary emperors — Annei, Itoku, Kaika, Kōan,
+Kōgen, Kōrei, Kōshō, Suinin, Suizei, Sujin, Jingū, Yamato Takeru — which Wikidata models as
+`Q124710051` *legendary human figure*: a statement about the evidence for them, not about
+their kind, and they are exactly who this genealogy is about. Only Amaterasu is genuinely a
+different kind of thing. The class label came from `reports/wikidata-labels.tsv`, not from a
+guess, per `CLAUDE.md` § *Always write the English label next to a property or item ID* —
+and looking it up is what turned a wrong headline into a right one.
+
+**The 54 are the honest limit and the report says so.** The store was seeded from `P2600`
+holders and their neighbours, so an item with no Geni link may never have entered it: its
+absence is circular, not evidence. Some are plainly clans, districts and a publisher that
+`build-izumo-roster.py` picked up because the page names them beside the office-holders —
+a reading by **name**, flagged rather than acted on.
+
+So the unlinked residue is at most 38 people the store can see plus a tail it cannot, and
+nothing in it is a `P2600` candidate until its kind is established.

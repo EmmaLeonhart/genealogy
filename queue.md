@@ -49,7 +49,12 @@ Full account in `reports/geni-qid-links.md`.
 - **One duplicate to flag, never merge:** `Senge no Naokatsu` (`Q135579476`) on
   `6000000227334350078` and `6000000227335699823`. Both ids are in the pairing, which is
   correct — `P2600` is multi-valued.
-- 93 rostered items link from no Geni profile we hold — `reports/izumo-unlinked.tsv`.
+- **The 93 unlinked are not 93 missing office-holders.** Classified 2026-08-23,
+  `reports/izumo-unlinked-classified.tsv`: 26 human, 12 legendary human figure (the
+  legendary emperors — `Q5` alone is the wrong test), 1 solar deity (Amaterasu), and **54
+  the local store cannot see at all** because it was seeded from `P2600` holders and these
+  have no Geni link. Some of those 54 are plainly clans, districts and a publisher, which
+  the roster picked up from the page. Establish kind before treating any as a person.
 - **Beyond the chart: ten of the eleven were already done.** Kitajima 69-74 and Senge 77-80
   carry Wikidata items in their About Me and are already in the `P2600` batch. Only
   **`Takanori 81 /Senge/`** (`6000000227331629828`) lacks one;
