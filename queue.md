@@ -50,8 +50,12 @@ Full account in `reports/geni-qid-links.md`.
   `6000000227334350078` and `6000000227335699823`. Both ids are in the pairing, which is
   correct — `P2600` is multi-valued.
 - 93 rostered items link from no Geni profile we hold — `reports/izumo-unlinked.tsv`.
-- Eleven office-holders on Geni beyond the Shinto-wiki chart (Kitajima 69-74, Senge 77-81)
-  are items to *create*; waits on the creation decision.
+- **Beyond the chart: ten of the eleven were already done.** Kitajima 69-74 and Senge 77-80
+  carry Wikidata items in their About Me and are already in the `P2600` batch. Only
+  **`Takanori 81 /Senge/`** (`6000000227331629828`) lacks one;
+  `reports/wikidata-izumo-beyond-chart.json` is his `create_individual` object. Two things
+  there want Emma's glance: the label form `Senge no Takanori` is a guess, and the regnal
+  ordinal 81 belongs on the given name as `P7338` *regnal ordinal*, not in the label.
 - **The kokuso 1-17 stay unresolved.** Two matchers were built for them and both were junk;
   do not build a third without asking.
 
