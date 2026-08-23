@@ -46,7 +46,10 @@ Full account in `reports/geni-qid-links.md`.
 
 **Steps left:**
 
-- Run the `P2600` batch from `reports/izumo-p2600-pairs.tsv` on **2026-09-01** — 111 rows.
+- **Run `reports/wikidata-geni-qid-p2600.qs` on 2026-09-01 — 354 statements.** Built from
+  every About Me Wikidata link in the corpus, not just Izumo: 349 items carry no `P2600` at
+  all, 5 get a *second* one (never a conflict — `Q51676` Aaron is the documented unmergeable
+  pair). `scripts/build-qid-link-p2600.py`, account in `reports/geni-qid-links.md`.
 - **Two Kitajima are in the corpus with no About Me link** — `Kitajima no Tokitaka`
   (`Q135579474`), `Kitajima no Yasutaka` (`Q135579480`). Profiles missing the link, not
   missing people. Adding it on Geni is Emma's one-line fix.

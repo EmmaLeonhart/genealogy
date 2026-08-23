@@ -72,3 +72,28 @@ About Me link exactly and 0 disagree**; the other 2 are the Kitajima with no lin
 
 **Reach for this first.** An identifier written into the data on purpose beats any
 reconstruction from names, numbers or positions.
+
+## What that key is worth on Wikidata: 354 statements
+
+`scripts/build-qid-link-p2600.py` compares the 408 pairs against
+`out/wikidata/p2600-all.tsv`:
+
+| | pairs |
+| --- | ---: |
+| already stated on Wikidata | 54 |
+| **item carries no `P2600` at all — a straight addition** | **349** |
+| item has a `P2600` with a different Geni id — a *second* statement | 5 |
+
+**354 statements**, in `reports/wikidata-geni-qid-p2600.qs`, for 2026-09-01.
+
+**None of the 5 is a conflict**, and one of them proves the rule: `Q51676` Aaron against
+`6000000227239142939` (`Aaron I /Samaritan High Priest/`) is exactly the unmergeable pair
+`CLAUDE.md` documents. `P2600` is multi-valued, 2861 stored items already carry more than
+one, and a second statement is the correct representation. Never replaced, never withheld.
+
+The other four: `Q60109288` Olof Nobelius, `Q75446688` Jennette MacKenzie, `Q120564`
+Meishō, `Q87470638` Catharina Elisabet Elfstrand.
+
+**The comparison is against a snapshot taken 2026-08-09**, so an item that gained a `P2600`
+since reads here as an addition. QuickStatements is idempotent for an identical statement,
+so that staleness costs a no-op rather than a wrong edit.

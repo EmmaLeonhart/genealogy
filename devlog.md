@@ -11174,3 +11174,32 @@ one from names, numbers or positions.
 
 `reports/geni-qid-links.md` is the account; `reports/izumo-unlinked.tsv` the 93 rostered
 items no Geni profile we hold links to.
+
+## 2026-08-23 — the About Me links are worth 354 `P2600` statements
+
+`scripts/build-qid-link-p2600.py` compares the 408 (QID, Geni id) pairs from the About Me
+Wikidata URLs against `out/wikidata/p2600-all.tsv`:
+
+| | pairs |
+| --- | ---: |
+| already stated on Wikidata | 54 |
+| **item carries no `P2600` at all** | **349** |
+| item has a `P2600` with a different Geni id — a *second* statement | 5 |
+
+**354 statements in `reports/wikidata-geni-qid-p2600.qs`, for 2026-09-01.** This is the
+whole point of finding the key: an identifier Emma wrote into Geni by hand becomes an edit
+on Wikidata with nothing inferred in between.
+
+**None of the 5 is a conflict, and one of them proves the rule.** `Q51676` Aaron against
+`6000000227239142939` (`Aaron I /Samaritan High Priest/`) is exactly the unmergeable pair
+`CLAUDE.md` documents — Geni's rules against connecting biblical people to living people
+mean users keep creating fresh biblical profiles. `P2600` is multi-valued, 2861 stored items
+already carry more than one, and a second statement is the correct representation. The other
+four are Olof Nobelius, Jennette MacKenzie, Meishō and Catharina Elisabet Elfstrand.
+
+The snapshot is from 2026-08-09, so an item that gained a `P2600` since reads as an addition
+here. QuickStatements is idempotent for an identical statement, so that costs a no-op rather
+than a wrong edit — stated rather than silently relied on.
+
+A `Forest` export from `6000000227245553985` (Yitzhaq I ben Tsedaka) is in flight to settle
+whether the Samaritan profiles carry About Me links that our mid-August exports predate.
