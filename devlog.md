@@ -11355,3 +11355,41 @@ a reading by **name**, flagged rather than acted on.
 
 So the unlinked residue is at most 38 people the store can see plus a tail it cannot, and
 nothing in it is a `P2600` candidate until its kind is established.
+
+## 2026-08-23 — queue.md trimmed: 48 sections to 31, 1,738 lines to 1,141
+
+Emma, 2026-08-22, in the queue itself: *"I think it is really stupid how the queue already
+appears to have gotten pretty verbose with a high level of attempt to preserve my writing…
+you are makign the queue useless by presering my verbatim words."* It had grown to 48
+sections and most of them were not steps.
+
+**Nineteen sections removed, every one a record rather than a step.** Recoverable with
+`git show 6edf302b:queue.md`.
+
+- **Finished, by their own text** — `FOUND BY THE RESUME REVIEW` (*"All three are now
+  done"*), `IN FLIGHT AT SHUTDOWN` (*"Committed and pushed; nothing is half-written"*),
+  `MANALLY WRITTEN STUFF AT 8-22-2026` (all three asks delivered).
+- **Closed by Emma** — the 7 Samaritan father disagreements, Chinese and Japanese
+  genealogy.
+- **Audits and meta** — `AUDIT 2026-08-15`, `The audit method was itself incomplete`,
+  `Fucking bizarre cruddy AI generated shit` (its one real rule became the preamble),
+  `Notes` (Izumo background, now all in `reports/izumo.md`).
+- **Dead crons** — the four cron sections. Crons are session-local and those sessions
+  ended; where the cron carried real work, the work stayed as a line.
+- **Superseded** — `⛔ TOP PRIORITY — the export slowness`. The loop now runs end to end
+  under Chrome automation, which `CLAUDE.md` records.
+- **Measurements** — `Nordic isolates` (Emma called diminishing returns on it),
+  `repo-freshness.csv` (kept as one line: it is still stale).
+- **Built-and-waiting** — Samaritan normalization, NN labels, entity resolution. Folded
+  into one § *Built and waiting on 2026-09-01* with the 354 `P2600` statements and the one
+  `create_individual`, plus the note that `wikidata-garborg.qs` is superseded and must not
+  be run.
+
+**What was deliberately kept, because it is specification and not chatter:** the
+seven-language label gate, `THE EDIT ALGORITHM`, `THREE SEPARATE WIKIDATA OPERATIONS`,
+`LABELS, IN HER ORDER`, the export loop and tail algorithm, the synoptic tree, the
+Charlemagne spine lines and the CI/CD wiring. Those are how pending work is to be done, and
+compressing them would lose the instruction rather than the verbosity.
+
+The preamble now says the rule out loud: a queue item is a step, and her wording belongs in
+`CLAUDE.md`, `devlog.md` or `reports/`.

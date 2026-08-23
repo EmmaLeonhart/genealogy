@@ -1,5 +1,41 @@
 # geni — Work Queue
 
+**This file holds steps not yet taken. Nothing else.** When an item is done, delete it
+and append a dated `devlog.md` entry in the same commit. No checkmarks, no "done"
+markers, no keeping a finished item for context.
+
+**Do not preserve Emma's wording here.** Her instructions belong in `CLAUDE.md` (rules),
+`devlog.md` (what happened) or `reports/` (findings). Emma, 2026-08-22: *"you are makign
+the queue useless by presering my verbatim words."* A queue item is a step, in as few
+lines as say what to do.
+
+**Trimmed 2026-08-23** from 48 sections to these; what went was records of finished work,
+audits, dead crons and superseded priorities. Recover any of it with
+`git show 6edf302b:queue.md`.
+
+## Built and waiting on 2026-09-01 — nothing to do until then
+
+- `reports/wikidata-geni-qid-p2600.qs` — **354** `P2600` *Geni.com profile ID* statements
+  from the Wikidata links in the Geni About Me. Account in `reports/geni-qid-links.md`.
+- `reports/wikidata-izumo-beyond-chart.json` — one `create_individual`, Takanori 81 Senge.
+- `reports/wikidata-nn-labels.json` — 3,525 `NN` label edits, built to her full model.
+- Entity resolution — 10 edits, emitter correct.
+- Samaritan High Priest normalization — built. `P39` *position held* → `Q678510`
+  *Samaritan High Priest* is what separates her well-modelled five from the rest.
+- `reports/wikidata-garborg.qs` — **superseded, do not run**: it cited a reference URL
+  instead of the Geni ID, emitted no name properties and argued against `P3373` *sibling*.
+  Work from `docs/wikidata-item-template.md`.
+
+Emma runs these by hand — 2026-08-23: *"If it's geni id then I'll run manual
+quickstatements."*
+
+## Stale, small, nobody's blocker
+
+- `reports/repo-freshness.csv` still lists `reports/missing-ancestors-check.csv` and
+  `scripts/check-missing-ancestors.py`, neither of which exists. A staleness report that
+  is itself stale sends a review after things already gone. Regenerate it, and prefer
+  checking the filesystem to trusting its rows.
+
 ## Izumo / Senge clan — measured 2026-08-23, `reports/izumo.md`
 
 <https://shinto.miraheze.org/wiki/Izumo_clan>, and the Geni tree at
@@ -63,88 +99,6 @@ Full account in `reports/geni-qid-links.md`.
   ordinal 81 belongs on the given name as `P7338` *regnal ordinal*, not in the label.
 - **The kokuso 1-17 stay unresolved.** Two matchers were built for them and both were junk;
   do not build a third without asking.
-
-## MANALLY WRITTEN STUFF AT 8-22-2026
-
-I think it is really stupid how the queue already appears to have gotten pretty verbose with a high level of attempt to preserve my writing. Please follow the next section but for go's sake you are makign the queue useless by presering my verbatim words. 
-
-(All three asks from this section are delivered: the Arne Garborg quickstatements
-(`reports/wikidata-garborg.qs`), the ancient-export report
-(`reports/sparse-ancient-exports-2026-08-22.md`), and the Sultan Mahmud Shah export
-(`exports/sparse_filling/export-Forest-6000000227380708902.ged`).)
-
-
-### Manually written stuff from earlier that for some godforsaken reason exists verbatim now
-
-* Finish the fucking chain completion exports do not try other stuff first
-* run exports to get a good account of the Bure Kinship, see [[Bure Kinship]]. Check to make sure all members of https://sv.wikipedia.org/wiki/Kategori:Bure%C3%A4tten are covered, since I think they are all on geni and can be highly linked up, all of them should have geni exports on them if they are unlinked and we check for those whose wikidata items do not connected geni ids similar to Samaritan high priests
-* attempt 5 sparse region exports, if the sparse region exports work well then go or it very well
-* clear the [[Fucking bizarre cruddy AI generated shit that probably violates the rules]] section to make stuff clear with it
-* then merge the other branch into here (our queue takes priority generally it is much smaller)
-* Then clarify the queue to only have proper real tasks in it since it has been being abused a lot quite recently
-* Then continue off with the other stuff
-
-
-## Notes
-
-I downloaded a bunch of zip files while this went on please merge them in
-
-https://www.geni.com/people/Tsusa-no-mikoto-no-Mikoto/6000000012789160423
-
-I added a bunch of stuff of the Sengei clan from this page. 
-
-https://shinto.miraheze.org/wiki/Izumo_clan
-
-We are in a situation where it appears that, to some extent, it has been added three different times by me in 2026, based off of this page, which is an AI translation of the Japanese Wikipedia article. The one person who added them in 2008 was in Japanese, and one person who added them in 2011 was in English.
-
-I am planning on fixing this stuff. I am not 100% sure what I can do here, but I am going to just point out that there's been a lot of merges here. We might want to do some level of reading about what's going on, because it's in this weird situation. Also, on Wikidata, it's in a weird situation where the Senge clan has almost nothing on geni, at least in my cursory glance. I created them as ancestors of the spouse of a princess, the spouse of Noriko Senge. I created them as ancestors going up there based off of this, but I found that Wikidata has them already connected to some level. There are also the ones that, on my wiki, ended up coming into existence because of my script as isolated people.
-
-The middle names of them that are numbers are regnal numbers for the people. They are regnal numbers for the Izumo no Kuni no Miyatsuko. 
-
-And so, these are not really middle names. They're regnal numbers, and that page has the Wikidata links. Most of the Wikidata items do exist to some extent.
-
-The job here is to go through that page and unfurl all this stuff, which I believe involves a lot of browser work. I was trying to do the browser work, but I found that whatever you're doing in the browser just doesn't work with it.
-
-I do trust you with the descriptions and the Wikidata links. I trust you with continuing the page from the Shinto wiki. I do want to clarify that there is this pair of repeated rows. I trust you less with doing the merges, but I pretty much 100% trust you with building up the family tree that is visually on here on Geni, on the page on Geni, and then adding the Wikidata things to their descriptions. 
-
-
-
-## Fucking bizarre cruddy AI generated shit that probably violates the rules
-
-**This file holds steps not yet taken. Nothing else.** When an item is done,
-**delete it** and append a dated `devlog.md` entry in the same commit. No
-checkmarks, no "done" markers, no keeping a finished item "for context" — that is
-what bloated this file twice. If an item is here, it is not done.
-
-**AN INSTRUCTION FROM EMMA IN CHAT GOES IN THIS FILE BEFORE IT IS EXECUTED.**
-Added 2026-08-15 after she asked why the queue was being followed so badly. It was
-not the work-loop prompt — that says *"take the top actionable item from queue.md
-and do it"* and the ticks mostly did. **The failure is everything between the
-ticks.** 67 instruction turns that session produced 14 numbered items; the isolates
-analysis, the CBDB finding, five Nordic batches, Rogaland, Japan/China, the bridge
-census and 500+ opened profiles were **never queue items at any point**.
-
-The work-loop rule only covers one direction — promote from `todo.md`, *writing it
-into `queue.md` first*. Nothing covered her chat instructions, so they bypassed the
-queue and the file came to describe only the work nobody was doing. That is also
-why it keeps refilling with finished items: the live work was invisible to it.
-
-**So: write it down first, then do it — even when it takes one line, even when it
-is being done immediately.** The queue is the record of what the project is, not a
-backlog of what is left over.
-
-**Items are flat numbers. No `8a`/`8b` sub-lettering** — Emma, 2026-08-15, after I appended four lettered items under her item 8 and it read as a scheme rather than as me tacking things on: *"I have no idea what 8D is… this is just some sort of imagined code thing that you just added into the queue system."* A new item gets the next plain number at the end.
-
-Longer-horizon, abstract work lives in `todo.md` and is decomposed into steps here
-when it is ready to run. New ideas go at the bottom, never silently into whatever
-is being worked on.
-
-**Three-cron playbook.** Extensive work runs under three session-local crons —
-work-loop `:03`, auto-flush `:15`, status-report `:42`. A fresh session starts
-them; a mid-session queue re-fill kills them first and the pinned tail restarts
-them.
-
----
 
 ## ⛔ THE TAIL ALGORITHM — Emma's method, 2026-08-18. Supersedes how the loop picks
 
@@ -217,175 +171,6 @@ tree is all consistently there."* The deliverable is the chain being connected.
 **Current shape of the problem**, so the routing can be applied: 545 paths, median 8
 missing each, max 33. **24 paths need 1 person, 37 need 2** — those go to page-saving.
 The 4+ paths are where exports go, seeded on the destination.
-
-## ⛔ TOP PRIORITY — the export slowness. NOTHING ELSE RUNS — Emma, 2026-08-18
-
-*"figuring out this download stuff is the top priority of this entire thing. It is THE
-top priority. You should not be doing any other work."*
-
-**Exactly one thing may interrupt it**, in her words: *"downloading an exported GEDCOM,
-then creating a new individual and exporting from there, because that is time-dependent."*
-Everything else in this file waits behind this item, including the name work, the label
-batches and the marker fixes.
-
-### The measurement, and what it is made of
-
-**The data is the session transcripts**, `~/.claude/projects/C--Users-Emma-Documents-GitHub-geni/*.jsonl`.
-Every tool call and every result carries a UTC timestamp, so they *are* the log of when
-each export was requested and when its page was next seen. `scripts/measure-export-build-times.py`
-reads them; `reports/export-build-times.{csv,md}` is the output.
-
-Two earlier attempts were worse and should not be revived: timing from **file mtimes**
-(`measure-export-throughput.py`) is biased because a late download makes the next build
-look short, and matching a page's text to **every** task id in the message attributes one
-poll's state to other open tabs.
-
-| day | exports | Geni build ≥ | cycle | latency here | exports/hour |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| 2026-08-17 | 53 | 4.2 min | 8.0 min | 3.8 min | 7.5 |
-| 2026-08-18 | 8 | 3.5 min | 12.3 min | 8.8 min | 4.9 |
-
-**Geni is not slower. It is slightly faster.** Build times fell 4.2 → 3.5 min median and
-the worst case fell 9.8 → 6.1 min. Size does not explain it either: `r = 0.13` against
-megabytes, and today's files are *smaller*.
-
-**The lost throughput is latency on this side** — 3.8 → 8.8 min per cycle, from running
-multi-gigabyte scans and batch regenerations between polls. That is the whole difference.
-
-### SETTLED by Geni's own emails — it was me, not Geni
-
-109 server-side "export is ready" emails, `reports/export-ready-emails.txt`. Independent
-of every log on this machine, which is why Emma suggested them.
-
-| window | what was being done | median gap | rate |
-| --- | --- | ---: | ---: |
-| 08-17 16:00 - 08-18 06:00 | running the loop | 9.2 min | 6.5/hr |
-| 08-18 06:00 - 09:30 | running the loop | **6.9 min** | **8.7/hr** |
-| 08-18 09:30 - 18:30 | name censuses, marker fixes | **60.2 min** | **1.0/hr** |
-| 08-18 18:30 onward | back on the loop | 12.3 min | 4.9/hr |
-
-Build time itself, submit to ready email, was **3.8-6.4 minutes today** — the same as
-yesterday. **Geni never slowed down.** Throughput fell 8.7/hr to 1.0/hr exactly across
-the window spent on other work and recovered on returning to the loop.
-
-So the cause is not rate limiting, not the server, not file size, and not the power cycle.
-It was doing other work between exports. **Plan B is NOT triggered** and stays unbuilt.
-
-**The operating rule from this: while the loop runs, nothing else runs.** No background
-scans, no batch regeneration, no analysis. Poll, download, seed, export.
-
-### Still to do on this item
-
-- **Corroborate against Geni's own emails.** Her suggestion: *"I get emails saying when
-  the downloads are finished. I might even get emails saying when the export starts."*
-  That is a server-side timestamp, independent of anything measured here, and it settles
-  the question rather than resting on my own logs.
-- **Poll tightly and run nothing heavy in parallel** until throughput is back near 7.5/hour.
-
-### Contingency — Plan B, NOT started, and only if rate limiting turns out real
-
-Her design, recorded because it was dictated and must not be reconstructed from memory.
-A fourth dataset beside Wikidata, Geni, and order.life: **the Geni page scrape**.
-
-- Per individual: open their page, **open the relatives section** — the links are not in
-  the DOM until it is expanded — and whatever else needs clicking, then save the page.
-- Save into **`geni-scraping/`**, *not* `geni_pages/`.
-- Capture: their name, whatever data the page shows, and **every relative shown in the
-  relatives tab — siblings, parents, spouses — with names and Geni IDs**. It also gives
-  sex, which she notes simplifies things.
-- **Once a minute, no concurrency**, *"so it doesn't look bad"*.
-- **Bail immediately on any suspicious behaviour.**
-- Scope: *"use this to complete the missing bridge profiles first"*. If rate limiting is
-  real, the **sparse-region exports and the Descendants work go on hold indefinitely**,
-  moved to the end of the queue after the CI/CD item.
-- Her own estimate of the prize: given how flat the chains already are, *"it's probably
-  relatively on the small side."*
-
-**Trigger:** only if the evidence clearly shows rate limiting or a server problem. It does
-not today. If it ever does: finish the in-flight export, download it, integrate it,
-rebuild the chains, and only then switch.
-
-## FOUND BY THE RESUME REVIEW, 2026-08-17 — three things she asked for and did not get
-
-Her instruction of 2026-08-16 was to review the last few days before doing anything
-else. Done: `reports/audit-resume-2026-08-17.md`, over her **49** messages of
-08-16. Everything else traces to committed work; these three did not, and they run
-ahead of the run order below.
-
-**All three are now done**, and are recorded here only so the fixes are findable:
-
-- The placeholder label batch was two days stale behind its own generator, so
-  **9,988** labels the code already computed were not in the shipped file — 7,001 of
-  them from the long-range relatives she asked for. Re-run: `en` on **30,012 of
-  39,299**, where it was 20,024 of 35,011.
-- The structural correspondences now emit.
-  `scripts/build-structural-correspondence-batch.py` →
-  `reports/wikidata-structural-correspondence.json`, **3,719** `add_geni_id` edits,
-  each adding `P2600` *Geni.com profile ID* to an item the walk paired structurally.
-  **180 are withheld** and listed in
-  `reports/structural-correspondence-disagreements.csv`: our Geni person is already
-  linked to a *different* item, which is a claim about identity rather than an
-  addition — `Eric Jedvardsson of Sweden` came out paired with `Q41864` *Sigurd
-  Snake-in-the-Eye*, so the guard earns its place.
-- A saved page's two paths are two paths. `PathStep.chain`, and **242 of the 586 path
-  files hold more than one**, so the run, the doorway and the bridges were all being
-  computed across a seam for 41% of them.
-
-What follows on from those:
-
-- **806 people have a name only in Han characters, so they have no `mul` and no
-  `en`.** Found while giving the structural placeholders their label set. Their `ja`
-  and `zh` are the kanji as written, which is right and needs no decision; what they
-  lack is any Latin-alphabet label at all, and `emission-spec.md` derives `mul` from
-  the Latin name. This is the romanisation half of the seven-language item and it is
-  **agentic by her instruction** — *"from CJK to English do not remotely try to do any
-  kind of programmatic transliteration because they all suck. But AI almost always
-  knows Japanese to Romaji."* It needs the culture question settled first: 陳 is
-  *Chen*, *Chin* or *Jin* depending on whether the person is Chinese, Japanese or
-  Korean, and *"the tree settles it, via neighbours and which exports they came
-  from"* — never the name.
-
-- **364 structural placeholders end up with no label in any language**, because every
-  relative out to two hops is unnamed too. They still get `P2600` *Geni.com profile
-  ID* and `P31` *instance of* → `Q5` *human*, which is her rule — *"The person is
-  created… the `P2600` is what makes it retrievable"* — but nothing describes them.
-  Long-range relatives beyond two hops are the only untried lever.
-
-## The audit method was itself incomplete — corrected below
-
-**A `type: "user"` record is not the only place her words live.** On 08-16 a
-`role == "user"` scan finds **28** of her **49** messages; the other 21 are
-`{"type": "queue-operation", "operation": "enqueue"}` records, which is what the
-harness writes when she types while a tool call is running. Among the missed ones:
-*"NN is not relabeled"*, *"there is a bot that exists that removes labels"*, the
-structural-merge complaint, and the blood-versus-marriage instruction. All four were
-acted on live, so nothing was lost — but the audit is what runs when the live thread
-is gone, and it would not have found them.
-
-## IN FLIGHT AT SHUTDOWN — `NN` labels, rebuilt to her full model
-
-**Committed and pushed; nothing is half-written.** `scripts/build-nn-label-batch.py`
-now emits `reports/wikidata-nn-labels.json`, **3,525 edits**:
-
-- **1,310** move `NN` into `mul`, which is where the marker lives. These are
-  declared in every other edit's `requires`, so the marker lands first.
-- **2,215** descriptive labels across **10** languages — `en` `nl` `de` `da` `sv`
-  `nb` `es` `pt` `it` `ca` — built from the nearest named relative, searching
-  parent → spouse → child → **sibling → grandparent → grandchild**.
-- **0** `remove_label`. Emma: *"there is a bot that exists that removes labels that
-  match the multi-language label, so we don't need to stretch it that much."* So
-  `cy`, `be`, `pl`, `ru`, `uk` get no edit — once `mul` says `NN` their local `NN`
-  matches it and the bot clears them.
-- **17** have no named relative at any distance and get `mul` only.
-
-**What is NOT done here, deliberately:** `ja` and `zh` phrases, because they would
-come out `Gerard Spencerの娘` with the name untransliterated. That belongs to the
-seven-language item further down.
-
-**Open question worth her eye on resume:** the descriptive labels for `nl`, `de`,
-`da`, `sv`, `nb`, `es`, `pt`, `it`, `ca` were written by me from a hand-built table
-of relationship words. `en` is 1,549 of them and is safe; the other nine total 685
-and nobody has checked the phrasing.
 
 ## Name processing — what is left and needs Emma, 2026-08-18
 
@@ -638,18 +423,6 @@ is `Q110700065` *Chinese given name* and `Q475210` *Spanish*; `Marie` is
 which language a Geni name is, which is the CJK-culture problem from the labels
 item and is not solved.
 
-## The 7 Samaritan father disagreements — CLOSED, we operate off them
-
-**Emma, 2026-08-15:** *"we're just leaving them in here. Just to be clear, we're
-leaving them in here. You're just making up stuff here. I know about the father
-disagreements. I don't think they're exactly the best data modeling, but they're
-there, and we're operating off of it."*
-
-**Not a decision and never was.** I listed them as something she owed an answer
-on across two status reports. She already knew, and the data stands as recorded.
-`reports/samaritan-source-comparison.csv` keeps the seven for reference; nothing
-is blocked on them and nothing is to be resolved.
-
 ## THREE SEPARATE WIKIDATA OPERATIONS — Emma, 2026-08-15, correcting a conflation
 
 *"These are three completely different operations that you conflated with each
@@ -708,19 +481,6 @@ easy-to-resolve name stuff is resolved."*
 build the new tooling."* The existing downloader manages its own queue. Run it,
 measure the queue's decay, and estimate whether there is an end point.
 
-## Scheduled — `e6e0915c` at 13:02, ONE-SHOT · Emma's name-modelling file
-
-She is writing her own file on name modelling into the repo root. *"I have an idea
-of the way the modeling is working, but I feel like you may have not understood
-it."* The job reads it, quotes it back before changing anything, fixes
-**formatting only**, folds her model into `CLAUDE.md` as the authority, and lists
-where the code disagrees **without changing the code**.
-
-Her reference example, Donald John Trump: `P735` *given name* Donald with `P1545` *series ordinal* 1 and
-*reason for preferred rank* = usual forename; `P735` *given name* John with `P1545` *series ordinal* 2 and
-`P3831` *object of statement has role* = middle name; `P734` *family name* Trump. **`P7452` reason for preferred rank is not in
-`CLAUDE.md`'s table** and must be added if her file uses it, confirmed offline.
-
 ## Comprehensive Wikidata re-import — Emma's item, in her words
 
 > It is clear here that the Wikidata data that we were importing over the past
@@ -770,182 +530,6 @@ patronymic attests him, not because any profile exists.
 an item. These have no `P2600` *Geni.com profile ID* at all, so `CLAUDE.md` § *the Geni ID is added
 first* does not apply and the citation cannot be a Geni profile. What the
 statement is sourced to is the open question to settle before emitting anything.
-
-## Daily jobs — queued because a cron only fires while the session is idle
-
-Emma: *"QUEUE UP THE CRON JOB CONTENTS."* Each is a live `CronCreate` id **and** an
-item here, so the work survives whether or not the job fires.
-
-| id | fires | what |
-| --- | --- | --- |
-| `089c2d58` | :03 | work-loop tick |
-| `2fdc3d34` | :15 | auto-flush — commit and push anything pending, no empty commits |
-| `210d3747` | :42 | status-report — reporting only, no code changes |
-
-**The ids above are this session's**, created 2026-08-17 on resume; the previous
-ones died with the shutdown, as every `CronCreate` job does. **The daily jobs listed
-below are NOT running in this session** — they are queue items and only queue items
-until somebody re-creates them, which is why Emma had their contents queued in the
-first place.
-
-**`f3d681e4` 19:07 — re-merge.** Keep `out/merged.ged` as `out/merged-<n>.ged`
-first; the pre-batch tree is the only thing that makes the seed backtests
-answerable. Then `python -m genimerge merge`, regenerate every report with a CLI
-command, re-run `scripts/build-repo-freshness.py` and confirm `behind_by` empties.
-Never overwrite or delete a `.ged`. **Runs at 19:07, five hours ahead of the
-midnight merge, which needs the proper synoptic tree.**
-
-**`43140a93` 21:02 — bloat review.** From `reports/repo-freshness.csv`: closed
-questions, superseded reports, scripts nothing calls, CLI commands with no
-reachable input, duplicated censuses. **Never touch `exports/`, never delete a
-`.ged`, never add a `*.ged`/`*.zip` pattern.** Delete nothing on your own
-judgement — candidates with a reason and evidence, to Emma in batches of four.
-
-~~`d62449e3` 22:01 — seeds.md~~ **This cron is GONE.** It is listed here as live and is not in the running set; it vanished without ever firing. Emma's call, 2026-08-15: make it a queue item instead — item 15 below. *"Crons only fire while the session is idle and keep starving."*
-
-**`9f41a7a4` 23:03 — entity resolution.** `entity_resolution.md` is Emma's
-free-form scratchpad. **Do not reformat it to suit the parser** — teach the
-parser. Show her the entries **raw** and say which are reflected in the data. It
-is her job to be *given* JSONs, not to make them.
-
-**`05926d1d` 00:01 — the structural merge.** Walk **up** the parental lines from
-people holding both identifiers. **The label only confirms a position the
-structure chose; it never searches for a name.** Everything offline. Show cases
-one by one before generalising; do not reformat records.
-
-## Samaritan High Priest normalization — BUILT, one defect found and fixed
-
-**Emma:** *"Please actually start to set up and plan the wikidata normalization
-that I've been constantly asking you to set up and plan for the Samaritan High
-Priests that you've just kind of been fucking off with."*
-
-**Measured what her own labels mean.** Comparing her five *well modelled* against
-her fifteen *badly modelled*, offline:
-
-| property | | well | badly |
-| --- | --- | ---: | ---: |
-| `P39` *position held* | → `Q678510` *Samaritan High Priest* | **5/5** | **0/15** |
-| `P31` *instance of*, `P21` *sex or gender* | | 5/5 | 15/15 |
-| `P2600` *Geni.com profile ID* | | 2/5 | **10/15** |
-| `P40` *child* | | 0/5 | **6/15** |
-
-**"Well modelled" means exactly one thing: the office statement.** Everything else
-is noise, and on two counts the badly-modelled ones score *better*.
-
-**It was already built.** `reports/wikidata-samaritan-succession.json`, 21 edits,
-each adding `P39` → `Q678510` qualified with `P1365` *replaces*, `P1366` *replaced
-by*, `P580` *start time*, `P582` *end time* — the same shape the five carry. It
-covers all 16 she listed, including `Q137394557` *Yitzhaq I ben Tsedaka*, the empty
-one.
-
-**The defect: 9 of the 21 cited a `P2600` the item does not carry.** That breaks
-her own ordering rule — *"The Jenny ID needs to be present before any properties
-derived from Jenny can be taken from it"* — and produces an unusable reference.
-The dependency is now declared (`requires: entity_resolution:<qid>`) rather than
-the reference dropped, because the provenance is real and simply has to land
-second. 12 of 21 already carry a Geni ID and need no dependency.
-
-**Emma's correction, 2026-08-16:** *"the single property for the samaritans is
-highly qualified and many of the poorly modeled ones are inconsistent in other
-ways. Qualifiers are extremely important here."* She is right, and one qualifier
-was missing entirely.
-
-**`P1545` *series ordinal* — the priest's absolute number in the line.** Three of
-her five well-modelled ones carry it (`Q2164896` 130, `Q2031200` 131, `Q13485740`
-132) and the batch emitted none. Now emitted on **18 of 21**, the other three
-already having it.
-
-**The numbering is now READ from Pummer's list**, via the English Wikipedia article
-*Samaritan High Priest*, at Emma's instruction. It was previously *derived* from the
-three ordinals already on Wikidata, which agreed with each other on an offset of 111
-and therefore looked sound.
-
-**They are off by one against the source.** Pummer numbers `Q2164896` **131**,
-`Q2031200` **132**, `Q13485740` **133**; Wikidata states 130, 131, 132. The
-agreement between the three anchors was real and the anchor itself was wrong —
-three consistent readings of the same mistake, which is exactly what a derived
-constant invites. Every number the old code produced was one too low.
-
-**Wikidata's three are left alone.** The project adds rather than corrects, and a
-disagreement over three ordinals is a note. New statements carry Pummer's number;
-the three already stating one are untouched. `P1545` now on **18 of 21**, running
-Tsedaka II 113 → Aabed-El 133 unbroken.
-
-**The article also filled two term gaps** the list had blank: Amram VIII
-1828–1859/60 and Yaacob I 1859/60–1916. `P580` *start time* is now on all 21 and
-`P582` *end time* on 20, the exception being the incumbent.
-
-### The other inconsistencies, since she said there were some
-
-**Emma, 2026-08-16:** *"many of the poorly modeled ones are inconsistent in other
-ways."* Read every property of all 21 out of the store. What is actually there:
-
-**1 · Wikidata carries the Abram generation-skip we removed from Geni — FIXED.**
-Emma, 2026-08-16: *"we are right, and Wikidata is wrong for the father. Deal with
-it."* `scripts/build-abram-father-fix.py` →
-`reports/wikidata-abram-father.json`, 2 edits: a second `P22` *father* on
-`Q135489730` pointing at `Q137394557` *Yitzhaq I*, and the reciprocal `P40` *child*
-on Yitzhaq I. **The existing `P22` → Tsedaka II is left in place** — this project
-adds contradictory information cited to Geni rather than correcting. Both depend on
-Yitzhaq I getting his Geni ID first, since `Q137394557` currently has no claims at
-all.
-
-
-`Q135489730` *Abram ben Yitzhaq* has `P22` *father* → `Q135489731` *Tsedaka II*,
-**and `P155` *follows* → Yitzhaq I**. So the same item says Yitzhaq I preceded him
-in office while Tsedaka II fathered him — which is precisely the skip that existed
-on Geni until she created Yitzhaq I and re-exported. Our corrected tree says the
-father is **Yitzhaq I** (`6000000227245553985`). **Wikidata is wrong here and we
-can prove it**, which makes it an *add a second statement cited to Geni* case
-rather than a correction.
-
-**2 · One father disagreement we cannot adjudicate.** `Q2067443` *Saloum Cohen*:
-Wikidata `P22` → `Q135489963` *Phinehas*; our tree says *Amram ben Yitzhaq*.
-Different men, no basis to prefer either. A note, not a work item —
-`CLAUDE.md`: contradiction resolution is not a priority.
-
-**The other four father-versus-predecessor mismatches are NOT errors.** The
-Samaritan high priesthood does not pass father to son, so a predecessor who is not
-the father is the normal case. Checked all six against our tree: four agree.
-
-**3 · Succession style is a mess, and this is what the batch fixes.** Of 21:
-**8 use `P156` *followed by*, 5 use `P155` *follows*, 7 use neither**, and
-`Q118782320` carries **both an old `P155` and a new `P1366` *replaced by*** on the
-same item.
-
-**Not blocked. Not started.** The batches build now; execution begins 1
-September, which is her own instruction of 2026-08-14 and is a start date, not
-a blocker. Emma, 2026-08-16: *"Waiting until September, until the stuff is
-implemented, that's not blocked at all. It's just waiting to get started."*
-
-## NN on wikidata — BUILT, 1,570 label edits waiting on 1 September
-
-**Emma's item:** *"we also want to be updating the English language name and stuff.
-We also want to be doing the label application stuff for basically all the NN stuff
-on Wikidata."* She listed ~40 examples; one of them, `Q111238834`, already reads
-*"daughter of Fujiwara no Tadaki"*, which is the shape the rest should take.
-
-**Measured, not sampled: 1,588 Wikidata items carry `NN` or an equivalent as their
-English label.** Only **27** carry a `P2600` *Geni.com profile ID*, so this is
-almost entirely Wikidata-side work rather than a Geni join.
-
-`scripts/build-nn-label-batch.py` → `reports/wikidata-nn-labels.json`, **1,570
-`set_label` edits**. **18 get nothing** because every relative they name is itself
-unnamed. **10 of the 11 examples of hers I checked have a proposal** —
-`Q116150736` → *daughter of John Hunyadi*, `Q112898955` → *wife of Roger I of
-Gabarret*.
-
-**Same rule as the Geni placeholder work**, her precedence: parent, then spouse,
-then child. **A relative whose own label is `NN` is skipped rather than used** —
-*"mother of NN"* names nobody — and the fall-through continues to the next
-candidate.
-
-**`NN` is relabelled, never emptied.** `CLAUDE.md`: *"`NN` is nomen nescio, a
-genealogist saying the name is unknown — a real statement about a person, not Geni
-withholding data."* That is the opposite of the `Private` rule, and her instruction
-here is to update the label rather than blank it.
-
-Offline throughout; nothing executed.
 
 ## Wikidata person descriptions
 
@@ -1003,187 +587,6 @@ Same method as the `queue.md` audit — every item checked against what exists i
 the repo, stale ones corrected or closed, and the difference between *stale* and
 *incomplete* stated for each. Four items were found stale rather than incomplete
 last time; that is the expected shape.
-
-## The saved Wikidata-isolate paths — cron `ae339bb3` at 17:03, and queued
-
-**Emma, 2026-08-15:** *"Set up a cron job that will, at 5:00 p.m., commit and push
-all of the saved files in the wiki data isolate HTML things. Then it's gonna do an
-analysis on them because basically of the 200 that you opened, a sizable amount of
-them have real workable paths that I'm saving in there."*
-
-Queued as well as croned, because a cron only fires while the session is idle and
-two have already vanished or starved.
-
-**The two populations came out opposite, and that is the finding so far.**
-
-- **Song dynasty — dismissed, by her.** *"Of the 200 I found none of the
-  individuals there were connected to the World Tree."* Her hypothesis was exact:
-  **100% of the 17,259 carry `P497` CBDB ID**, 99.3% a Shanghai Library ID, and
-  their Geni IDs sit in two adjacent blocks (`6000000074…`/`6000000075…`,
-  17,229 of 17,259). *"The biographical database is great but it makes Geni
-  profiles for people who have no business and are not connected to the World
-  Tree."* `reports/song-dynasty-isolates.csv`.
-- **Academics — the opposite.** *"These ones were extremely reliable and I saved a
-  bunch of paths into a directory."* 5,913 university teachers, Geni IDs scattered
-  from `6000000017…` to `6000000176…` with no bulk signature, VIAF on 97% rather
-  than one database's identifier. `reports/academic-isolates.csv`.
-
-**The steps, in her order:** commit and push the saved pages **first**, then
-extract paths with `path-from-html`, then report **what fraction of the 200
-actually worked** — plainly, and low if it is low. Then re-run
-`scripts/find-export-entry-points.py` against the re-merged tree, since 31 edge
-exports landed on 2026-08-15 and the clusters will have moved.
-
-## Nordic isolates — 92% hit rate, and the country filter is what matters
-
-**Measured 2026-08-15, and it is the strongest result this method has produced.**
-
-| batch | opened | saved | rate |
-| --- | ---: | ---: | ---: |
-| academics, unfiltered by country | 200 | 78 | 39% |
-| academics, unfiltered | 200 | 74 | 37% |
-| academics, unfiltered | 100 | 34 | 34% |
-| **Nordic academics** (55 Norwegian, 44 Swedish, 1 Swedish Pomerania) | **100** | **92** | **92%** |
-
-**The country filter is doing the work, not the occupation filter.** Emma's
-socioeconomic-stability theory about academics predicted the 34–39%; it does not
-predict a jump to 92% when the only thing that changed was nationality. The
-simplest reading is that these people are close to her own tree — Norway and
-Sweden are where she is linked — so a path exists and is short.
-
-**This changes the size of the opportunity.** The academic∩Nordic pool is nearly
-exhausted: **297 unopened**, about three more batches. But dropping the occupation
-filter:
-
-| | academics only | all isolates |
-| --- | ---: | ---: |
-| Sweden | 109 | **3,983** |
-| Norway | 61 | **3,972** |
-| Denmark | 48 | — |
-| Finland | 105 | 3,455 |
-
-**~65× more people**, and if the 92% is driven by country then it should mostly
-hold. **Test it before betting on it:** one batch of 100 Norwegians with no
-occupation filter, compared against these 55. If the rate holds, the pool is
-thousands rather than hundreds.
-
-**Her batch size is 100**, not 200 — a workflow change she made after batch 2 took
-her speed from 2.4 to 4.7 profiles a minute while the hit rate held. Her labour is
-the limiting factor, not compute.
-
-**Ruled out by her:** Canada, the United States, and her maternal grandmother's
-American line — *"I'm struggling to find it too so I'm a bit unsure of it."*
-Finland and Denmark are allowed but not the focus. **Especially Norway.**
-
-## `reports/repo-freshness.csv` is stale and misled a bloat review
-
-Found 2026-08-15 during the 21:00 bloat review. It still lists
-`reports/missing-ancestors-check.csv` and `scripts/check-missing-ancestors.py`,
-**both of which no longer exist**, and it was the basis for proposing the deletion
-of a `genimerge coverage` command that had **already been deleted on 2026-08-15**.
-
-A staleness report that is itself stale sends a review after things that are
-already gone. Regenerate it as part of item 23 step 4, and prefer checking the
-filesystem over trusting its rows.
-
-## Chinese and Japanese genealogy — CLOSED by Emma, 2026-08-15
-
-**Her conclusion, and it is the whole answer:** *"We figured it out, and it's
-pretty simple. These genealogical people are mostly isolates or otherwise are not
-connected. Otherwise, they are like Jenny just doesn't actually record them very
-well. That's just simply what we discovered."*
-
-The measurements agree and are kept only as the evidence for that sentence:
-
-- **30 Japanese isolates exist** in the whole store. Not a small sample — the whole
-  population.
-- **19,467 Chinese isolates**, of which **17,259 are the CBDB import** she dismissed
-  after finding 0 of 200 connectable. 2,208 remain; 47 are researchers, all opened.
-- The Japanese material that *is* in the corpus sits in the Jimmu component, which
-  is connected, so it produces almost no isolates by definition.
-
-**Nothing further is queued for this.** I had written it up as unfinished work
-needing a density pass over the Jimmu component; she has ruled that the question is
-answered, and it is her call what counts as answered.
-
----
-
-## AUDIT 2026-08-15 — what she asked for versus what was done
-
-Run after she said *"I'm a bit concerned that some of my instructions may have just
-never been followed, maybe lost, and maybe important things."* 67 instruction turns
-reviewed against the repo.
-
-**Done and verifiable:** the transcript audit; order.life vendored, its 128-row
-parse explained and its jobs run; the expanded Wikidata download and the 824,358
-name items; Yitzhaq I linked; the cron contents queued; `questions.md`; the Abram
-two-fathers fix and the `exports/excluded/` mechanism; the missing-ancestor census;
-the queue clean-out; the mass name export; patronymic forms, the sex guard and the
-surname prior; the isolate demographics and the CBDB finding; five Nordic batches
-and Rogaland; the bridge census and the midpoint re-ranking; the 560 paths ingested;
-the trunk batch.
-
-**Not done, and already queued:** items 1, 2, 8, 10, 12, 15, 17, 20–24.
-
-**Not done and NOT queued until now:** items 25, 26 and 27 above. All three are
-from instructions that were answered in part, which is how they escaped notice —
-the visible half was done and the rest was never written down.
-
-**Nothing was found that had been lost entirely.** Every instruction traced to
-either completed work, an existing queue item, or one of the three above.
-
-## The decision interview — cron `9e17b300` at 10:07 daily
-
-**Emma asked for this three times on 2026-08-15** and chose a recurring cron when
-asked what shape it should take.
-
-**Why it exists:** decisions piled up silently. The same blockers appeared in three
-consecutive status reports before being put to her as questions. Reporting a
-blocker is not asking about it.
-
-**Its rules, which are the ones she has stated elsewhere:** discard any "blocker"
-that could be settled by reading the repo and settle it instead; every option
-carries its consequence; every property or item ID carries its **English label**;
-and an empty interview is a good outcome — do not invent questions to fill it.
-Answers are applied in the same tick, because an answered question that is not
-applied is worse than an unasked one.
-
-## Entity resolution — LIVE, emitter correct, 10 edits waiting on 1 September
-
-**Emma, 2026-08-15, asked whether this was still a real task and ruled: live, and
-the highest-value thing in the repo.** Format: JSON edit objects, the same as
-everything else.
-
-**Nothing in `entity_resolution.md` has reached Wikidata.** All ten are
-outstanding, and every claim in the batch was verified offline against the store:
-
-| QID | current `en` label | `P2600` *Geni.com profile ID* |
-| --- | --- | --- |
-| `Q11443857` | `Futohime` | **absent** — her *Mononobe no Futohime* is a real replacement |
-| `Q19657284` | *(none)* | absent — *Buyeo Deokjang* is an addition |
-| `Q12598947` | *(none)* | absent — *Buyeo Taebi* is an addition |
-| `Q11596350` | Prince Wakatakehiko | absent |
-| `Q11078587` | Harima no Inabi no Ooiratsume | absent |
-| `Q24890131` | Mononobe no Ikofutsu | absent |
-| `Q140568870` | not in the store | absent |
-
-**The emitter already exists and is correct.**
-`scripts/build-entity-resolution-batch.py` → `reports/wikidata-entity-resolution.json`,
-7 `add_geni_id` + 3 `set_label`. The QuickStatements renderer was deleted on
-2026-08-15 and this replaced it in the format her 08-12 spec asks for.
-
-**The empty `requires` on the label edits is right, not an oversight.** Her rule
-is that the Geni ID must precede anything *derived from Geni*. A label she supplied
-by hand is her own judgement, not Geni-derived, so it needs no dependency and
-correctly cites nothing — citing a Geni profile it did not come from would be the
-broken-reference failure `tests/test_edit_emitters.py` pins.
-
-**`Q140568870`, her own item, is not in the local store.** Consistent with the
-store being a Geni-shaped slice seeded from `P2600` holders: an item with no Geni
-ID cannot be reached by that seed. Not a defect.
-
-**Waiting on 1 September**, which is her own instruction of 2026-08-14 — not an
-external blocker.
 
 ## LABELS, IN HER ORDER — one step per language, every individual at once
 
