@@ -45,23 +45,26 @@ render, say so plainly and stop — do not thrash.
 
 
 
-## Tanba clan — queued AFTER Izumo, Emma 2026-08-20
+## Bure kinship — running 2026-08-22
 
-<https://shinto.miraheze.org/wiki/Tanba_clan>. Her words: *"I guess this one also
-exists but it is comparably straightforward and I will have the other one do a roster
-of it too so we queue it after"*. So **another session builds the roster**; this one
-does not start it, and does not start it before the Izumo work is finished.
+<https://sv.wikipedia.org/wiki/Kategori:Bure%C3%A4tten>. Measured in
+`reports/bureatten.md`: 576 pages, 575 with a Wikidata item.
 
-## Bure kinship — Emma's item, running 2026-08-22
+  147  person, Geni ID, in our corpus
+  104  person, Geni ID, NOT in our corpus   <- the work
+  199  person, Wikidata item, no Geni ID    <- the Samaritan shape
+  126  family / adelsätt articles, not people
 
-<https://sv.wikipedia.org/wiki/Kategori:Bure%C3%A4tten>. Her words: *"run exports to get
-a good account of the Bure Kinship... Check to make sure all members are covered, since I
-think they are all on geni and can be highly linked up, all of them should have geni
-exports on them if they are unlinked and we check for those whose wikidata items do not
-connected geni ids similar to Samaritan high priests"*.
+**Steps:**
 
-The Samaritan shape she is pointing at: people who exist on both Geni and Wikidata but
-whose Wikidata items carry no `P2600`, so nothing joins them. Find those.
+- Export from the 104 in `reports/bureatten-export-targets.tsv`. Each is an existing
+  profile Emma does not manage, so each needs a placeholder at an open slot beside it —
+  `docs/export-seed-rules.md`. `Forest`, 5000, one at a time, filed and committed as it
+  lands.
+- Re-run the join afterwards. Many of the 199 unlinked should arrive as relatives of
+  people we now hold, bringing their Geni IDs with them.
+- Whatever is still unlinked after that has no offline route — Geni search is banned —
+  so it stops there and gets reported, not guessed at.
 
 ## MANALLY WRITTEN STUFF AT 8-22-2026
 

@@ -10750,3 +10750,44 @@ same position, and those are labelled `position+name` so the two kinds never blu
 The general shape worth keeping: **an exhausted search is not evidence of absence, it is
 evidence about the search.** Both times this went wrong today, the tool was reporting its
 own reach and I read it as a fact about the tree.
+
+## 2026-08-22 — Tanba integrated, two seed methods refuted, Bureätten measured
+
+**Tanba clan — closed.** The `Forest` export seeded on Motonori Taki
+(`6000000227351174975`) is in `exports/tanba/`, 5000 people. The roster work itself was
+another session's and is done; the item is deleted from `queue.md`.
+
+**`name-development` merged.** One commit behind, not the tangle it looked like — the
+`ja` label batch, 41,952 edits. Conflicts were only `devlog.md` and `queue.md`, two
+sessions appending in the same place.
+
+**Sixteen exports run and filed**, each on arrival rather than batched: ten sparse-region,
+Sultan Mahmud Shah, Bertha von Vohburg-Andechs, Christine Kid/Hegedal, Rhys Fychan, the
+Rufius Festus probe, and Emma's own deferred `Descendants`. Corpus 547.
+
+**Two seed-choosing methods refuted by measurement, in one day.**
+
+*Sparse-region density.* `reports/sparse-ancient-exports-2026-08-22.md`. Five modern seeds
+returned 16,872 new people and exactly one born before 1100; four ancient seeds returned
+1,305 new and 314 before 1100. So ancient balls are a thirteenth as productive and are the
+only thing that reaches antiquity at all — which is a trade-off, not a failure.
+
+*Presence contrast.* `reports/presence-contrast.md`. Emma's own idea, built as
+`scripts/build-presence-contrast.py`: rank people by how far below their neighbourhood's
+median presence they sit, rather than by absolute thinness. It found 25,839 such people,
+6,067 born before 1600, and the head of the list was Roman — which is exactly where she
+suspected coverage was missing. **The first probe killed it.** Rufius Festus (260,
+contrast 17) returned **35 new people out of 5000, 0.7%**. The premise was backwards: a
+well-covered neighbourhood means the region is exhausted and the low-presence person is a
+leaf, not that the balls stopped short of a doorway. Third method refuted here, second
+proposed on reasoning alone.
+
+**Emma's Wikidata items are now the template.** `docs/wikidata-item-template.md`, read off
+`Q467497` and the five items she built by hand. The generated QuickStatements batch was
+wrong in six ways — most importantly it emitted no name properties at all, where she uses
+`P735`, `P734` and `P5056` and created a patronymic item (`Q141152710`, `Aadnesson`).
+
+**Bureätten measured.** `reports/bureatten.md`. 104 people carry both a Wikidata item and
+a Geni ID and are in none of our 547 exports — the cleanest export targets the repo has
+had, because nothing is being guessed. 199 more are the Samaritan shape: on Wikidata, no
+`P2600`, nothing joining them.
