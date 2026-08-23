@@ -10812,3 +10812,22 @@ pages. First-hit matching would be the name matching this repo refuses.
 Wikidata item names a relative who already carries a `P2600`, that person stands in a
 known position beside a known Geni profile. Adolf Ludvig Piper has three such anchors —
 father, wife and son — all already in our tree. `scripts/measure-bure-structural-anchors.py`.
+
+## 2026-08-23 — the anchor walk, and why intersection alone is not confirmation
+
+`scripts/resolve-bure-anchors.py` walks each Bureätten anchor into the merged tree: their
+`P22` means *child of*, `P40` *parent of*, `P26` *spouse of*, `P3373` *sibling of*, and the
+tree is asked who stands in that position. Confirmation is the intersection across a
+person's anchors.
+
+**Intersection by itself got four of seven wrong** — Olof Kolmodin den yngre came out as
+*Johanna Helena Dahl*, Hans Fredrik Harald Strömfelt as *Brita Lovisa Strömfelt*. A
+position holds several people, siblings especially, and collapsing to one only means the
+rest were already claimed elsewhere. A sanity gate on sex and first given token now
+follows the intersection, which is what CLAUDE.md means by reading the label to check the
+pair is not absurd.
+
+Result: 3 confirmed, 3 single-anchor, 6 rejected, 33 ambiguous, 38 with no reachable
+anchor. The gate is knowingly too strict in one place — it rejects `Jacob` against `Jakob`
+— and is being left that way rather than relaxed, because absorbing spelling variants is
+fuzzy name matching returning by the back door.

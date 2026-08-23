@@ -51,13 +51,12 @@ Measured in `reports/bureatten.md`. **Connectivity is already done** — all 147
 people in the tree are in one component. The gap is coverage, not joining, so this is
 **not** an export-per-target campaign.
 
-- **Walk the 83 structural anchors into the merged tree.** Each of those unlinked people
-  has a Wikidata relative already carrying a Geni ID; the Geni person standing in the
-  matching position is the candidate. `scripts/measure-bure-structural-anchors.py` found
-  them; naming the Geni-side candidate is the work. Decide what counts as confirmation
-  when two anchors disagree.
-- **Write matches to `reports/bureatten-geni-matches.tsv`.** Not `entity_resolution.md` —
-  that is Emma's hand-written scratchpad and machine-found matches do not belong in it.
+- **Emma to eyeball 9 rows** in `reports/bureatten-geni-matches.tsv`: the 6 the sanity
+  gate rejected (one, Jacob/Jakob Tersmeden, is near-certainly a false rejection the gate
+  is deliberately not being loosened to absorb) and the 3 single-anchor matches. Then the
+  3 CONFIRMED can carry a `P2600` once the lockout lifts.
+- **The 33 ambiguous** need more anchors before the intersection cuts to one. Revisit after
+  coverage improves.
 - **The remaining 115 have no anchor**, 84 of them absent from the local store entirely.
   Google `site:geni.com "<name>"` plus a human eye is the only route, and the top hit is
   often the wrong person (Adolf Ludvig Piper returns his son Axel), so it confirms a

@@ -126,3 +126,55 @@ the next step, not this measurement.
 **The other 115** have no anchor — 84 are absent from the local store entirely, which is
 itself the signal, since the store was seeded from `P2600` holders and their neighbours.
 Those are the genuinely disconnected ones and Google plus a human eye is the only route.
+
+
+## The anchor walk, run 2026-08-23 — and what confirmation actually needs
+
+`scripts/resolve-bure-anchors.py`. Each anchor inverts to a position on the Geni side —
+their `P22` means *child of*, their `P40` means *parent of*, `P26` *spouse of*, `P3373`
+*sibling of* — and the tree is asked who stands there. **Confirmation is intersection**:
+one person present in every anchor's candidate set.
+
+**Intersection alone produced four wrong matches out of seven.** It "confirmed" Olof
+Kolmodin den yngre as *Johanna Helena Dahl* and Hans Fredrik Harald Strömfelt as *Brita
+Lovisa Strömfelt*. A position holds several people — siblings above all — and the
+intersection collapsing to one only means the others were already claimed by some other
+Wikidata item, not that the survivor is the right person.
+
+So a **sanity gate** follows: sex must agree and the first given token must match. This is
+what `CLAUDE.md` means by reading the label to check the pair is not absurd — the
+structure still chooses, the gate only rejects.
+
+| verdict | count |
+| --- | ---: |
+| CONFIRMED — two or more anchors agree, gate passed | 3 |
+| single-anchor — one anchor, gate passed, unverified | 3 |
+| **rejected by the gate** | **6** |
+| ambiguous — intersection holds several people | 33 |
+| anchor not reachable in our tree | 38 |
+
+**The three confirmed:** Adolf Ludvig Piper → `6000000006127557407`, Hedvig Catharina von
+Fersen → `6000000001515228463`, Johan Magnus af Nordin → `6000000012734285538`.
+
+### The gate is too strict in one direction, and that is left as it is
+
+`Jacob Nils Tersmeden` was rejected against `Jakob Nils Tersmeden` — *jacob* vs *jakob*.
+That is almost certainly the same man and the gate is wrong about him. It is **not** being
+loosened: relaxing the comparison to absorb c/k is fuzzy name matching arriving by the back
+door, and this repo deleted a whole module for that. Six rejections is a small enough pile
+for Emma to eyeball, and the row keeps its reason so she can see exactly what the machine
+objected to.
+
+`Hedvig Catharina von Fersen` → `Hedvig Catharina Charlotta De la Gardie` passed the gate
+on given name and sex but the surname differs. For a woman that is an ordinary married
+name, and it is recorded as confirmed on the structure — but it is the one of the three
+worth a human glance.
+
+### Where the remaining 71 stand
+
+**33 ambiguous** — the intersection holds more than one person. More anchors would cut
+these; most have only one or two.
+
+**38 with no anchor reachable in our tree** — the related Geni profile carries an ID we do
+not hold, so there is nothing on our side to stand beside. These need coverage first, which
+is what the 100 uncovered targets are for.
