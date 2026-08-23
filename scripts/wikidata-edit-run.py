@@ -125,19 +125,20 @@ def main() -> int:
               f"Re-run with --live to execute.")
         return 0
 
-    # THE WIKIDATA LOCKOUT. Emma, 2026-08-18: "I want a gate to be set up that
-    # there will be no wikidata editing for a month." Checked only on the LIVE
-    # path — a dry run sends nothing, so it stays useful while locked.
+    # THE START DATE. Emma, 2026-08-14: "no wikidata edits until September 1."
+    # Checked only on the LIVE path — a dry run sends nothing, so it stays useful
+    # before the date. FAILS CLOSED: an unreadable date == locked.
     #
-    # The state file is NOT in this repo; it is the single one in the public
-    # shintowiki-scripts repo, read over HTTPS. See scripts/wikidata_lockout.py
-    # for why it is not copied here. FAILS CLOSED: unreadable == locked.
+    # This used to read a lockout state file in another repo. Emma, 2026-08-23:
+    # "Shintowiki scripts and this one are not the same and not really
+    # coordinated" — and she is right that the coordination was invented here
+    # rather than observed. The date is this repo's own.
     allowed, why = wikidata_lockout.editing_allowed()
     if not allowed:
         print("")
-        print(f"WIKIDATA LOCKOUT — no live run. {why}")
-        print("Lift or extend it in shintowiki-scripts/shinto_miraheze/"
-              "wikidata_editing_lockout.state — not here.")
+        print(f"NOT YET — no live run. {why}")
+        print(f"The date is scripts/wikidata_lockout.py START_DATE "
+              f"({wikidata_lockout.START_DATE}).")
         return 0
 
     if rel not in REVIEWED_BATCHES:

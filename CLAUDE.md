@@ -1605,33 +1605,39 @@ gets re-implemented badly.
 
 ## ⛔ WIKIDATA EDITING STARTS 2026-09-01 IN THIS REPO
 
-**Emma, 2026-08-23, correcting what was written here:** *"Shintowiki scripts uses a
-different lockdown period lol. This repo starts at sept 1."*
+**Emma, 2026-08-23:** *"Shintowiki scripts uses a different lockdown period lol. This repo
+starts at sept 1."* Then, on being shown the coupling: *"Shintowiki scripts and this one are
+not the same and not really coordinated"*, and *"I think you hallucinated a coordination
+between them."*
 
-So there are **two separate periods**, and this file previously conflated them:
+**She is right, and the coupling is gone.** `scripts/wikidata_lockout.py` used to fetch a
+lockout state file belonging to `shintowiki-scripts` over HTTPS, and this file used to
+assert there was *"exactly one lockout state file for all of Emma's repos"*. Nothing in
+this repo ever evidenced that. An earlier session inferred it from her 2026-08-18 *"no
+wikidata editing for a month"* instruction and wrote the inference down as fact.
 
-- **`shintowiki-scripts`** has its own lockout with its own dates, governed by
-  `shinto_miraheze/wikidata_editing_lockout.state` in that repo. **Not this repo's
-  schedule.**
-- **This repo starts 2026-09-01**, which is the `START_DATE` in `wikidata-edits.yml` and
-  matches her original *"no wikidata edits until September 1"* (2026-08-14).
+**Why it mattered rather than being merely untidy: the check failed closed.** An unset
+secret, a 404 or a network blip all reported LOCKED. From 2026-09-01 that would have
+silently blocked editing this repo is entitled to do — and a blocked run looks exactly like
+a run with nothing to do.
 
-**What was wrong.** An earlier session recorded the 2026-08-18 *"no wikidata editing for a
-month"* instruction as covering this repo too, and wired `scripts/wikidata_lockout.py` at
-the shintowiki state file on the reasoning that a Sept 1 start would otherwise slip under
-that month. That reasoning produced a gate enforcing **another repo's period** here.
+**What governs now is this repo's own date, written twice and pinned together.**
+`scripts/wikidata_lockout.py` carries `START_DATE = "2026-09-01"`;
+`.github/workflows/wikidata-edits.yml` carries the same in `START_DATE:`. They are two
+copies because the workflow gates before it checks the repo out and cannot import the
+module, so `tests/test_wikidata_start_date.py` fails if they ever disagree. It still fails
+closed on an unreadable date, and it makes **no network request at all** — which is a
+stronger guarantee than the agent-sharing it used to be tested for.
 
-**The live consequence, and it is not urgent yet.** `wikidata_lockout.py` reads
-`LOCKOUT_STATE_URL` and **fails closed** — an unset secret or an unreachable file reports
-LOCKED. From 2026-09-01 that will block editing this repo is entitled to do, for a reason
-belonging to a different repo. Repointing or removing that gate is a change to a safety
-mechanism and is **Emma's call, not one to make unasked** — but it needs making before
-2026-09-01 or the first scheduled run silently does nothing.
+**`P2600` is *Geni.com profile ID*** — Emma asked directly on 2026-08-23, so it is worth
+writing plainly next to the date: every batch this gate guards is of the form *this Wikidata
+item is that Geni profile*.
 
-**Until then nothing is blocked.** Every batch is written to a file for her to run —
-`reports/wikidata-garborg.qs`, `reports/wikidata-bureatten-p2600.qs` — and no edit has ever
-been attempted through the gate. § *A start date is not a blocker* still governs: build,
-review and commit now; do not tag the date with anything from the not-done taxonomy.
+**Nothing is blocked meanwhile, and she may not use the gate at all.** Emma, 2026-08-23:
+*"If it's geni id then I'll run manual quickstatements."* Batches are written to files for
+her — `reports/wikidata-geni-qid-p2600.qs`, `reports/wikidata-garborg.qs` — and no edit has
+ever been attempted through the automated path. § *A start date is not a blocker* still
+governs: build, review and commit now.
 
 ## Long command series run in strict order
 When the user gives a long series of commands, treat it as a long series of commands to be

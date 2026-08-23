@@ -1,96 +1,70 @@
 #!/usr/bin/env python3
-"""Guard: is Wikidata editing currently allowed, or is a lockout in force?
+"""Guard: may this repo edit Wikidata yet?
 
-Emma, 2026-08-18: "I want a gate to be set up that there will be no wikidata
-editing for a month." This repo has its OWN Wikidata editor with its own
-bot-password secrets (`scripts/wikidata-edit-run.py`, `wikidata-edits.yml`), and
-this module was wired at the shintowiki lockout state on the reasoning that this
-repo's `START_DATE` of 2026-09-01 fell inside that month.
+**This repo's own date, and nothing else.** Emma, 2026-08-23: *"Shintowiki scripts
+uses a different lockdown period lol. This repo starts at sept 1"*, and then:
+*"Shintowiki scripts and this one are not the same and not really coordinated."*
 
-**THAT WAS WRONG, and Emma corrected it on 2026-08-23:** "Shintowiki scripts uses
-a different lockdown period lol. This repo starts at sept 1." The two periods are
-separate. This module therefore currently gates this repo on ANOTHER repo's
-schedule, and because it fails closed it will block editing from 2026-09-01 that
-this repo is entitled to do. Repointing or retiring it is a change to a safety
-gate and is Emma's call; it needs making before 2026-09-01 or the first scheduled
-run quietly does nothing. See CLAUDE.md for the full note.
+So the coupling is gone. This module used to fetch a lockout state file belonging
+to `shintowiki-scripts` over HTTPS, wired there by an earlier session on the
+reasoning that this repo's 2026-09-01 start fell inside that repo's month-long
+freeze. Two repos that are not coordinated must not gate each other: that setup
+**failed closed**, so from 2026-09-01 it would have silently blocked editing this
+repo is entitled to do, for a reason belonging to somewhere else — and it would
+have looked exactly like a run with nothing to do.
 
-**There is exactly one lockout state file for all of Emma's repos**, and it is
-NOT in this one. Its location is held in the ``LOCKOUT_STATE_URL`` secret rather than
-written here: Emma, 2026-08-18, *"no fucking github links in it either"* — an agent or a
-source file that names her repositories tells a reader where to look, and that applies to
-a URL in a constant as much as to a User-Agent.
+What replaces it is the date this repo already declares. `wikidata-edits.yml`
+carries ``START_DATE: "2026-09-01"``; this is the same date on the live path, so a
+local run is covered too and neither can drift without the other failing.
 
-That file is public, so this reads it over plain HTTPS with no credentials. It is
-deliberately NOT copied here: the mechanism this replaced was a freeze date pasted
-into two workflow files, and one of them missed a freeze. A local copy would be
-the same mistake across two repos instead of two files. To lift or extend the
-lockout, edit that ONE file.
-
-**Fails CLOSED.** Any error — no network, a 404, unparseable JSON — reports LOCKED.
-A lockout you cannot read is not an absent lockout, and the standing rule on the
-Wikidata side is that being visible is worse than losing data. The cost of failing
-closed is a skipped run; the cost of failing open is editing through a stop order.
+**Still fails CLOSED.** An unparseable or missing date reports LOCKED. The cost of
+failing closed is a skipped run; the cost of failing open is editing through a stop
+order. No network is involved any more, so the failure modes that used to reach
+here — no route, a 404, a truncated body — cannot.
 
     python scripts/wikidata_lockout.py     # exit 0 = allowed, 1 = locked
 """
 
 from __future__ import annotations
 
-from bot_identity import BOT_USER_AGENT
-
 import datetime
 import io
 import os
-import json
 import sys
-import urllib.request
 
-#: From the ``LOCKOUT_STATE_URL`` secret. Empty when unset, and an empty URL is treated
-#: as LOCKED below — the same fail-closed rule the whole module runs on, so a missing
-#: secret stops editing rather than silently allowing it.
-STATE_URL = os.environ.get("LOCKOUT_STATE_URL", "").strip()
+#: The date this repo may begin editing Wikidata. Emma, 2026-08-14: *"no wikidata
+#: edits until September 1"*. It matches ``START_DATE`` in
+#: ``.github/workflows/wikidata-edits.yml``; `tests/test_wikidata_start_date.py`
+#: fails if the two ever disagree, which is the whole reason to write it twice.
+START_DATE = "2026-09-01"
 
-TIMEOUT = 20
+#: Escape hatch for a dry run against a date that has not arrived. Never set in
+#: CI: the workflow gates on its own ``START_DATE`` before this module is reached.
+_OVERRIDE = "WIKIDATA_START_DATE"
 
 
-def editing_allowed(url: str = "") -> tuple[bool, str]:
-    """(allowed, detail). Any failure is LOCKED — see the module docstring."""
-    url = url or STATE_URL
-    if not url:
-        return (False, "LOCKOUT_STATE_URL is not set - locked, because this module "
-                       "fails closed and an unconfigured gate is not an open one")
+def editing_allowed(today: datetime.date | None = None) -> tuple[bool, str]:
+    """(allowed, detail). Anything unreadable is LOCKED — see the module docstring."""
+    raw = os.environ.get(_OVERRIDE, "").strip() or START_DATE
     try:
-        req = urllib.request.Request(
-            url, headers={"User-Agent": BOT_USER_AGENT}
-        )
-        with urllib.request.urlopen(req, timeout=TIMEOUT) as fh:
-            state = json.loads(fh.read().decode("utf-8"))
-    except Exception as e:  # noqa: BLE001 — every failure mode lands here on purpose
-        return False, f"LOCKED (fail-closed): could not read the lockout state — {e}"
-
-    if not state.get("locked"):
-        return True, "wikidata editing not locked"
-
-    locked_until = state.get("locked_until")
-    if not locked_until:
-        return False, "LOCKED (no expiry date recorded)"
-    try:
-        until = datetime.date.fromisoformat(locked_until)
+        start = datetime.date.fromisoformat(raw)
     except ValueError:
-        return False, f"LOCKED (unparseable locked_until={locked_until!r})"
+        return False, f"LOCKED (fail-closed): unparseable start date {raw!r}"
 
-    today = datetime.datetime.now(datetime.timezone.utc).date()
-    if today >= until:
-        return True, f"wikidata lockout expired ({locked_until}) — editing resumed"
-    return False, f"LOCKED until {locked_until} — {state.get('reason', '')}"
+    if today is None:
+        today = datetime.datetime.now(datetime.timezone.utc).date()
+
+    if today >= start:
+        return True, f"editing allowed - {today} is on or after {start}"
+    return False, f"LOCKED until {start} - today is {today}"
 
 
 def main() -> int:
-    # The reason string carries em-dashes; a cp1252 console must not crash on them.
+    # The detail string is ASCII, but a cp1252 console has crashed on this output
+    # before; the wrapper stays.
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
     allowed, detail = editing_allowed()
-    print(("ALLOWED — " if allowed else "LOCKED — ") + detail)
+    print(("ALLOWED - " if allowed else "LOCKED - ") + detail)
     return 0 if allowed else 1
 
 

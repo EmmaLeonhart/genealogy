@@ -11257,3 +11257,42 @@ actually happened here — `Stine "Stena"`, an embedded double quote QuickStatem
 escape, which would end the string early and shift every field after it.
 
 All 15 pass; 50 including `test_repo_invariants` and `test_identity`.
+
+## 2026-08-23 — the shintowiki coupling was invented here, and it is gone
+
+Emma, asked what to do with the gate: *"Why are we even doing shintowiki stuff here? What's
+p2600? If it's geni id then I'll run manual quickstatements."* Then: *"Shintowiki scripts
+and this one are not the same and not really coordinated"*, and *"I think you hallucinated a
+coordination between them."*
+
+**She is right.** `scripts/wikidata_lockout.py` fetched a lockout state file belonging to
+`shintowiki-scripts`, and `CLAUDE.md` asserted there was *"exactly one lockout state file
+for all of Emma's repos"*. Nothing in this repo evidences that. An earlier session inferred
+it from her 2026-08-18 *"no wikidata editing for a month"* and wrote the inference down as
+fact — which is how it survived three sessions as a thing to be "repointed" rather than a
+thing to be doubted.
+
+**It mattered because the check failed closed.** An unset secret, a 404 or a blip all
+reported LOCKED, so from 2026-09-01 it would have silently blocked editing this repo is
+entitled to do, and a blocked run looks exactly like a run with nothing to do.
+
+**Replaced by this repo's own date.** `START_DATE = "2026-09-01"` in the module, matching
+`START_DATE:` in `wikidata-edits.yml`. Two copies because the workflow gates before it
+checks the repo out and cannot import the module; `tests/test_wikidata_start_date.py` fails
+if they diverge. Still fails closed on an unreadable date; makes no request at all.
+
+`test_bot_identity.py` had two tests asserting the gate shared the bot User-Agent. That
+mattered only because it made a request. Rather than delete them, the guarantee was
+**strengthened**: `wikidata_lockout.py` comes out of `BOT_SCRIPTS`, and
+`test_the_start_date_gate_sends_nothing_and_so_needs_no_agent` asserts there is no `urlopen`,
+no `urllib` and no `LOCKOUT_STATE_URL` in it. Not sharing an agent because there is nothing
+to send beats sharing one.
+
+**And the answer to her question: `P2600` is *Geni.com profile ID*.** Every batch this gate
+guards says *this Wikidata item is that Geni profile*. She will run them by hand.
+
+Also this tick, on her call: **`exports/chain-seeds/export-Forest-6000000227320885873.ged`
+deleted** — byte-identical to `…837821.ged` (sha256 `2a7f14ae…`), which `genimerge.sources`
+was already dropping. Same call she made for the Delldén duplicate on 08-16, and the same
+reason: identity, not redundancy. `test_the_real_corpus_has_no_byte_identical_duplicates`
+is green for the first time in weeks.

@@ -30,7 +30,12 @@ import wikidata_lockout  # noqa: E402
 from genimerge import wikidata, wikilabels  # noqa: E402
 
 AGENTS = ("bot_identity", "genimerge.wikidata", "genimerge.wikilabels")
-BOT_SCRIPTS = ["wikidata-edit-run.py", "wikidata_lockout.py"]
+#: Scripts that actually make a request and therefore need the shared agent.
+#: `wikidata_lockout.py` was here until 2026-08-23, when it stopped fetching
+#: another repo's state file and became a local date check. A script that sends
+#: nothing has no agent to share, and asserting it does would pin a property of
+#: something that no longer exists.
+BOT_SCRIPTS = ["wikidata-edit-run.py"]
 
 
 def _agents():
@@ -86,8 +91,21 @@ def test_the_bot_scripts_do_not_hand_write_an_agent():
         assert '"genimerge-bot/0.1 (' not in text, f"{name} hand-writes an agent again"
 
 
-def test_the_lockout_check_uses_the_same_constant():
-    assert wikidata_lockout.BOT_USER_AGENT == bot_identity.BOT_USER_AGENT
+def test_the_start_date_gate_sends_nothing_and_so_needs_no_agent():
+    """This replaces `test_the_lockout_check_uses_the_same_constant`.
+
+    That test asserted `wikidata_lockout` shared the agent, which mattered only
+    because the module fetched a state file belonging to `shintowiki-scripts`.
+    Emma, 2026-08-23: *"Shintowiki scripts and this one are not the same and not
+    really coordinated"* -- the coupling was invented here, and it is gone. The
+    guarantee is now stronger than sharing an agent: there is no request at all.
+    `tests/test_wikidata_start_date.py` pins the same thing from the other side.
+    """
+    text = (SCRIPTS / "wikidata_lockout.py").read_text(encoding="utf-8")
+    body = text.split('"""')[-1]
+    for banned in ("urlopen", "urllib", "LOCKOUT_STATE_URL"):
+        assert banned not in body, f"the start-date gate reaches for {banned!r}"
+    assert not hasattr(wikidata_lockout, "BOT_USER_AGENT")
 
 
 def test_no_source_file_links_a_repository():

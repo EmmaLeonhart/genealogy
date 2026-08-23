@@ -67,13 +67,14 @@ jobs:
         with:
           python-version: "3.11"
 
-      # THE WIKIDATA LOCKOUT (Emma, 2026-08-18: no Wikidata editing for a month).
-      # The state file is the single one in the public shintowiki-scripts repo, read
-      # over HTTPS — deliberately not copied here, because a freeze duplicated per
-      # repo is a freeze one repo can miss. FAILS CLOSED: unreadable == locked.
-      # scripts/wikidata-edit-run.py checks it too, on the live path, so a local run
-      # is covered. Note START_DATE above (2026-09-01) falls inside this lockout.
-      - name: Wikidata lockout guard
+      # THE START DATE, and it is this repo's own. It used to read a lockout state
+      # file belonging to shintowiki-scripts; Emma, 2026-08-23: "Shintowiki scripts
+      # and this one are not the same and not really coordinated." The coordination
+      # was invented by an earlier session, and because the check failed closed it
+      # would have blocked this repo from 2026-09-01 for another repo's reason.
+      # scripts/wikidata-edit-run.py checks the same date on the live path, so a
+      # local run is covered. FAILS CLOSED: an unreadable date == locked.
+      - name: Wikidata start-date guard
         id: lockout
         if: steps.gate.outputs.go == 'true'
         run: |
@@ -81,7 +82,7 @@ jobs:
             echo "open=true" >> "$GITHUB_OUTPUT"
           else
             echo "open=false" >> "$GITHUB_OUTPUT"
-            echo "::notice title=Wikidata lockout::LOCKED — no edits will be sent."
+            echo "::notice title=Wikidata start date::NOT YET — no edits will be sent."
           fi
 
       - name: Check the secrets are present
@@ -91,7 +92,6 @@ jobs:
           BOT_SECRET: ${{ secrets.BOT_NAME }}
           PASS_SECRET: ${{ secrets.BOT_PASSWORD }}
           BOT_CONTACT: ${{ secrets.BOT_CONTACT }}
-          LOCKOUT_STATE_URL: ${{ secrets.LOCKOUT_STATE_URL }}
         run: |
           missing=0
           [[ -z "$USER_SECRET" ]] && { echo "::error::USERNAME is not set"; missing=1; }
@@ -107,7 +107,6 @@ jobs:
           BOT_NAME: ${{ secrets.BOT_NAME }}
           BOT_PASSWORD: ${{ secrets.BOT_PASSWORD }}
           BOT_CONTACT: ${{ secrets.BOT_CONTACT }}
-          LOCKOUT_STATE_URL: ${{ secrets.LOCKOUT_STATE_URL }}
           PYTHONPATH: src
         run: |
           python scripts/wikidata-edit-run.py \
