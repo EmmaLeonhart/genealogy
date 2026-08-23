@@ -10855,3 +10855,21 @@ genuinely different given name.
 The Bureätten item is deleted from `queue.md`. Its measurements stay in
 `reports/bureatten.md` — 576 category pages, 147 already connected in one component, 104
 uncovered, 198 unlinked — so the skipped 76 are findable if the question returns.
+
+## 2026-08-23 — Izumo roster built, and the gap is 202 of 214
+
+`scripts/build-izumo-roster.py` parses the Shinto-wiki page's **wikitext**. The rendered
+page collapses the `{{familytree}}` template into prose where names run together with the
+emperors beside them — that is what the browser attempt kept failing on. The wikitext keeps
+every person in their own `{{ill|…|qid=…}}` cell.
+
+**214 people, 204 with a Wikidata item, 89 with a regnal number** (1–84, the Izumo no Kuni
+no Miyatsuko succession, kept in their own column because Emma flagged they are not middle
+names). Lineages: 137 pre-split trunk and in-laws, 39 Izumo, 22 Senge, 16 Kitajima.
+
+**Only 2 of the 214 carry a Geni ID.** Far more extreme than Bureätten's 251 of 576. The
+Wikidata side was built for this genealogy and is nearly complete; nothing joins it to Geni.
+
+That reorders the item: resolution before creation. Emma's own account is that the clan is
+already on Geni three times over, so creating profiles first would manufacture a fourth
+duplicate set on top of merges she has reserved to herself.
