@@ -10948,3 +10948,47 @@ description-empty. It argued against `P3373` *sibling* as redundant given shared
 she uses it. It emitted no name properties at all; she creates name items, including a new
 one for a patronym. `reports/wikidata-garborg.qs` is superseded on all four counts and
 should not be run.
+
+## 2026-08-23 — Izumo: seeding the far end returned 60 of the 77 office-holders
+
+Work-loop tick. The correction written after the first Izumo export — *seed the far end,
+not the founder* — was tested and holds.
+
+Placeholder `NN` created at **Naokuni Senge's** open mother slot (`6000000227390753876`);
+Naokuni is regnal 56, one generation past the 1340 Senge/Kitajima split and the deepest
+Senge our tree already held. `Forest`, 5000, filed as
+`exports/izumo/export-Forest-6000000227390753876.ged`. Corpus 550.
+
+**60 of the 77 rostered Izumo/Senge/Kitajima people, 48 of them new to the corpus.** The
+whole Senge 57–76 run and the whole Kitajima 56–68 run, with exact Geni IDs. Against the
+founder-end export's 0.
+
+**The newness percentage is the wrong instrument for a targeted export.** This one is 6.3%
+new against the founder-end export's 2.6%, which understates the difference to the point of
+being misleading: what matters is that 48 named office-holders arrived and previously none
+had. `scripts/measure-export-newness.py` answers the general question and
+`scripts/match-izumo-export.py` answers this one, joining on the **regnal number** Geni
+writes inside the name (`Harutaka 64 /Kitajima/`) rather than on romanisation — exact, and
+immune to the 2008 Japanese / 2011 English / 2026 spellings differing.
+
+Neither script needs `out/merged.ged`, which is stale at 248 exports and takes over ten
+minutes to rebuild. Comparing xref sets across the corpus is the same answer for nothing.
+
+**Eight office-holders the Shinto-wiki chart does not list** — Kitajima 69–74, Senge 77–78.
+The chart stops at Senge 76; Geni carries the succession further.
+
+`reports/izumo-p2600-pairs.tsv`: 60 rows, every one carrying a Wikidata item, ready as
+`P2600` *Geni.com profile ID* statements from 2026-09-01. Regnal 36 is ambiguous — two
+roster entries against two profiles — and both ids are left in the row rather than guessed.
+
+**The Google route is refuted for this clan, by its own controls.** The queue's step 2 was
+`site:geni.com "<name>"`. `"Naokuni Senge"` and `"Sadataka Kitajima"` both return nothing,
+and both men have live profiles that were in our tree before this export. Google has not
+indexed these pages — Bureätten worked because Swedish nobility is linked from Wikipedia and
+nothing links to these. The export is the only instrument that reaches this clan.
+
+Filed under `exports/izumo/` rather than beside its sibling in `exports/sparse_filling/`:
+the first Izumo export landed there because it was taken during that batch, and that
+directory name now misdescribes it, the sparse programme having been refuted on 2026-08-22.
+
+Left: 17 rostered people, one contiguous stretch — Izumo 11 and 18–33.

@@ -23,19 +23,26 @@ Emma's constraints on this one:
 - The numeric middle names are **regnal numbers** ordering the Izumo no Kuni no Miyatsuko,
   not names. The roster keeps them in their own column.
 
-**The first export aimed the wrong way — 2.6% new, zero regnal numbers.** Seeded at
-Kushini 3, near the founder, where the lineage is welded to the ancient imperial material
-we already hold. **Seed the far end instead:** the Senge/Kitajima branches after the 1340
-split, which is also where Emma's own additions attach (she built these as ancestors of
-Noriko Senge's spouse).
+**Far-end seeding worked, 2026-08-23.** `exports/izumo/export-Forest-6000000227390753876.ged`,
+seeded on a placeholder at **Naokuni Senge's** open mother slot (regnal 56, one generation past
+the 1340 split), returned **60 of the 77 rostered lineage people with their Geni IDs** — 48 of
+them new to the corpus. The whole Senge 57–76 and Kitajima 56–68 runs came through, plus eight
+office-holders the Shinto-wiki chart does not list. `reports/izumo-p2600-pairs.tsv` is the
+result: 60 rows, every one carrying a Wikidata item.
 
-**Steps, in order:**
+**The Google route is dead for this clan.** `site:geni.com "Naokuni Senge"` and
+`site:geni.com "Sadataka Kitajima"` both return nothing, and both men have live Geni profiles
+that were already in our tree. Google has not indexed these pages. Do not spend more turns on it.
 
-- Export again from the modern Senge/Kitajima end, not the founder end.
-- Find any remaining Geni profiles by Google `site:geni.com "<name>"`. The names are
-  distinctive enough for that to be safe here, unlike the Bureätten case.
-- Record each pairing for a `P2600`, to run from **2026-09-01** — this repo's start date.
-- Only then consider creating anyone genuinely absent.
+**Steps left:**
+
+- 17 rostered people still absent, one contiguous stretch: **Izumo 11 and 18–33**, the ancient
+  middle of the succession. One more export seeded in that stretch should close it — the
+  nearest exportable slot is around Izumo no Toyomochi 34 or Izumo no Tabito 33.
+- Regnal 36 is ambiguous: two roster entries (Tsunesuke, Ujihiro) against two Geni profiles
+  `6000000227331939856` / `6000000227331989821`. Flagged in the pairs file, not guessed.
+- Run the `P2600` batch from `reports/izumo-p2600-pairs.tsv` on **2026-09-01**.
+- Only then consider creating anyone genuinely absent. Duplicate merges stay Emma's.
 
 ## MANALLY WRITTEN STUFF AT 8-22-2026
 

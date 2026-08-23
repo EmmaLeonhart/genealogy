@@ -165,3 +165,51 @@ after is not.
 **This also revises the earlier export post-mortem.** That export was aimed at the wrong
 end, which stands. But part of what it "failed to find" was material we already held under
 a name the matcher could not see.
+
+
+## Seeding the far end worked: 60 of the 77 lineage people, with their Geni IDs
+
+`exports/izumo/export-Forest-6000000227390753876.ged`, seeded on a placeholder created at
+**Naokuni Senge's open mother slot** — Naokuni is regnal 56, one generation past the 1340
+split, and the deepest Senge our tree already held.
+
+| | founder end (Kushini 3) | far end (Naokuni Senge 56) |
+| --- | ---: | ---: |
+| people | 5000 | 5000 |
+| new to the corpus | 131 (2.6%) | 313 (6.3%) |
+| rostered lineage people found | 0 | **60 of 77** |
+| carrying a regnal number | 0 | 57 |
+
+**Judge an export by what it was aimed at, not by its newness percentage.** 6.3% is a poor
+number and this export is a success: of the 70 office-holder profiles it identifies, **48
+were not in any of the other 543 exports**. The other 5000-person ball was spent on
+imperial material we already hold.
+
+The whole Senge line 57–76 and the whole Kitajima line 56–68 came through, plus the two men
+of the 1340 split we already had. Only **17** rostered people are still absent, and they are
+one contiguous stretch — Izumo 11 and 18–33, the ancient middle of the succession.
+
+**Eight numbered office-holders arrived that the Shinto-wiki chart does not list**:
+Kitajima 69, 70, 71, 72, 73, 74 and Senge 77, 78. The chart stops at Senge 76 / Kitajima 68;
+Geni carries the succession further. That is material flowing the other way for once.
+
+`reports/izumo-p2600-pairs.tsv` is the result: **60 rows, every one carrying a Wikidata
+item**, ready as `P2600` *Geni.com profile ID* statements from 2026-09-01.
+
+**One ambiguity, flagged not resolved.** Regnal 36 has two roster entries — Izumo no
+Tsunesuke and Izumo no Ujihiro — and two Geni profiles, `6000000227331939856` and
+`6000000227331989821`. Which is which is not decidable from the number. Both ids are in the
+row for both people so the ambiguity is visible rather than guessed away.
+
+## The Google route does not work for this clan — two controls, both failed
+
+The queue's step 2 was `site:geni.com "<name>"`, on the reasoning that these names are
+distinctive. The reasoning was fine and the route is still dead here:
+
+- `site:geni.com "Naokuni Senge"` → no results. He is `6000000019459924115`.
+- `site:geni.com "Sadataka Kitajima"` → no results. He is `6000000019459854230`.
+
+Both men were in our tree before this export and both have live Geni profiles. Google has
+simply not indexed these pages. It worked for Bureätten because Swedish nobility profiles
+are linked from Wikipedia; nothing links to these. **The export is the only instrument that
+reaches this clan**, which is what the 60 rows above demonstrate.
