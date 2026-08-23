@@ -261,3 +261,59 @@ to ask, and the module docstring says why.
   `6000000227331989821` / `6000000227331939856`. Regnal 71 — Senge no Munetoshi against
   `6000000227331623899` / `6000000227350446840`, which is a duplicate pair on Geni and so
   correctly becomes two `P2600` statements on one item.
+
+
+## The ancient seats resolve by POSITION, and nine of them are contested
+
+"76 of 77, one absent" was again a complete answer to a narrower question. The matcher
+only looked at rows whose Geni surname is `Izumo`, `Senge` or `Kitajima`. **Fifteen of the
+89 numbered roster rows are the kokuso from before those surnames existed** — Geni writes
+them `Mishima 15 /Ashinazu-ni-Mikoto/`, `Kushida-no-mikoto` — and they had never been
+looked at at all.
+
+Adding them raised two problems and settled both.
+
+**Romanisation defeats name matching here, silently.** Three men reported absent were in
+the corpus the whole time under other spellings:
+
+| roster | Geni | seat |
+| --- | --- | ---: |
+| Kushifusakinomikoto | Kushimikasaki-no-mikoto | 5 |
+| Kushitsukinomikoto | Kishitsuki-no-mikoto | 6 |
+| Kushichitoriuminomikoto | Kushimikatomi-no-mikoto | 7 |
+
+**So the join is the seat, not the spelling.** `scripts/walk-izumo-succession.py` anchors on
+the kokuso the regnal-number join already resolved exactly and walks **up** the father
+chain — one father per person, so each step is unambiguous and decrements the number.
+Walking down would have to choose among children, which is a guess.
+
+**All 17 rostered seats 1–18 resolve, including Izumo no Furune (11)** — `Q55533077`, on
+Geni as `Ibe /no Mikoto/`, `6000000227332042822`. The queue's one remaining absent person
+was never absent.
+
+### Nine seats are CONTESTED and are Emma's, not ours
+
+Seats **1–9** land two different people, because two of Geni's three copies of this clan
+disagree by one generation:
+
+| seat | 2011 romaji chain | 2008 kanji chain |
+| ---: | --- | --- |
+| 8 | Kushida-no-mikoto | 櫛知理 |
+| 9 | Chiri-no-mikoto | 世毛呂須 |
+
+The kanji chain sits one seat higher throughout, so `世毛呂須` (Yomorosu, the roster's
+**10**) is where the romaji chain puts Chiri (**9**). Both chains are internally consistent;
+they cannot both be right about the seats.
+
+This is exactly the duplicate-profile situation Emma described — *the clan was added to Geni
+three separate times* — and the merges are hers. The contested seats are **flagged and not
+emitted as pairings**. Seats 10–18 come from a single chain and are clean.
+
+`reports/izumo-succession-chain.tsv` carries all 17 with their status.
+
+### Standing lesson for this clan
+
+Four times now, "absent" has meant "the matcher could not see it": once from a stale merge,
+once from word order, once from measuring one file instead of the corpus, and now from
+romanisation. **An absence claim about this roster is not trustworthy until it has been
+checked structurally** — by seat, by parent chain, by ID — never by how a name is spelled.

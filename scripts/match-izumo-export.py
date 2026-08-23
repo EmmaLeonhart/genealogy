@@ -13,9 +13,23 @@ English and 2026 additions spell these men differently and number them
 identically. Where Geni omits the number (the two men of the 1340 split are
 written bare), the surname plus given name is used, tokens matching exactly.
 
-Reports three populations: rostered people this export holds, rostered people it
-does not, and numbered Izumo/Senge/Kitajima people in the export that the roster
-does not list -- the last being succession the Shinto-wiki chart stops short of.
+Two passes, because the roster holds two shapes of person:
+
+* the **lineage** rows, whose Geni surname is `Izumo`, `Senge` or `Kitajima` --
+  joined on lineage plus number.
+* the **kokuso** rows from before those surnames existed, written
+  `Mishima 15 /Ashinazu-ni-Mikoto/` -- joined on the number plus an exactly
+  matching name token, and where Geni omits the number, on the whole name matching
+  exactly once punctuation and case are normalised away (`Kushidanomikoto` is
+  `Kushida-no-mikoto`). Neither is a similarity judgement, and a name landing on
+  more than `AMBIGUITY_LIMIT` people is reported rather than resolved.
+
+Running only the first pass and reporting its total is how "76 of 77, complete"
+came to be said on 2026-08-23 while fifteen numbered kokuso had never been looked
+at at all.
+
+Also reports numbered Izumo/Senge/Kitajima people the roster does NOT list -- the
+succession the Shinto-wiki chart stops short of.
 """
 import sys
 import re
@@ -26,12 +40,21 @@ sys.stdout.reconfigure(encoding='utf-8')
 
 LINEAGES = ('Senge', 'Kitajima', 'Izumo-kokuso', 'Izumo')
 ASCII_DIGITS = re.compile(r'[0-9]+')
+#: A name landing on more people than this is reported rather than resolved.
+AMBIGUITY_LIMIT = 3
 
 
 def norm(t):
     t = unicodedata.normalize('NFKD', t or '')
     t = ''.join(c for c in t if not unicodedata.combining(c))
     return re.sub(r'[^0-9a-zA-Z]+', '', t).lower()
+
+
+def norm_spaced(t):
+    """Like `norm` but keeps token boundaries, so a name can be split into tokens."""
+    t = unicodedata.normalize('NFKD', t or '')
+    t = ''.join(c for c in t if not unicodedata.combining(c))
+    return re.sub(r'[^0-9a-zA-Z]+', ' ', t).lower()
 
 
 def parse_name(raw):
@@ -111,6 +134,28 @@ def main():
     numbered = sum(len(v) for v in by_num.values())
     print(f'{numbered} of them carry a regnal number in a lineage surname')
 
+    # The kokuso before the lineage surnames existed. Geni writes them
+    # `Mishima 15 /Ashinazu-ni-Mikoto/`, `Ou 16 /Ashinazu-ni-Mikoto/` -- the regnal
+    # number is there but the surname is a divine epithet, not `Izumo`, so the
+    # lineage index above cannot see them. Fifteen of the 89 numbered roster rows
+    # are these, and reporting "76 of 77" while never looking at them is the
+    # single-file mistake in another costume: a complete answer to a narrower
+    # question.
+    #
+    # The join is the number AND an exactly-matching name token. The number alone
+    # would collide across 1.3M people; a token alone is name matching. Both
+    # together are as exact as the lineage join and use no similarity at all.
+    any_num = {}
+    for gid, (g, n, s, raw) in people.items():
+        if n is None:
+            continue
+        toks = {t for t in re.split(r'[^0-9a-zA-Z]+', norm_spaced(raw)) if t and not t.isdigit()}
+        any_num.setdefault(n, []).append((gid, toks, raw))
+
+    whole_name = {}
+    for gid, (g, n, s_, raw) in people.items():
+        whole_name.setdefault(norm(raw.replace('/', ' ')), []).append(gid)
+
     roster = list(csv.DictReader(open('reports/izumo-roster.tsv', encoding='utf-8'),
                                  delimiter='\t'))
     hit, miss = [], []
@@ -154,6 +199,48 @@ def main():
     for n, s, raw, g in extra:
         print(f'  {n:>3}  {s:<12} {raw:<34} {g}')
 
+    # The 15 numbered kokuso whose Geni surname is not a lineage name.
+    khit, kmiss = [], []
+    for row in roster:
+        lin = (row.get('lineage') or '').strip()
+        if lin in ('Senge', 'Kitajima', 'Izumo'):
+            continue
+        regnal = (row.get('regnal') or '').strip()
+        if not regnal.isdigit():
+            continue
+        want = {t for t in norm_spaced(row.get('name') or '').split() if t}
+        ids = [gid for gid, toks, _ in any_num.get(int(regnal), []) if want & toks]
+        how = f'regnal {regnal} + name token'
+
+        if not ids:
+            # Geni often omits the number for the earliest kokuso -- it writes
+            # `Kushida-no-mikoto`, not `Kushida 8 ...`. Fall back to the whole name
+            # matching EXACTLY once punctuation and case are normalised away:
+            # `Kushidanomikoto` and `Kushida-no-mikoto` are the same string written
+            # two ways, which is not a similarity judgement. A name landing on more
+            # than AMBIGUITY_LIMIT people is reported ambiguous rather than resolved,
+            # the rule `genimerge.paths` already applies for the same reason.
+            ids = whole_name.get(norm(row.get('name') or ''), [])
+            how = 'whole name, exact after normalising'
+            if len(ids) > AMBIGUITY_LIMIT:
+                kmiss.append((regnal, row.get('name'), (row.get('qid') or '').strip(),
+                              f'AMBIGUOUS ({len(ids)})'))
+                continue
+
+        if ids:
+            khit.append((regnal, row.get('name'), (row.get('qid') or '').strip(),
+                         ';'.join(ids), how))
+        else:
+            kmiss.append((regnal, row.get('name'), (row.get('qid') or '').strip(), 'absent'))
+
+    print(f'\nnumbered kokuso outside the three lineages: '
+          f'{len(khit)} found, {len(kmiss)} not')
+    for r, name, q, ids, how in khit:
+        print(f'  {r:>3}  {name:<34} {q:<12} {ids}  [{how}]')
+    print('  --- not resolved ---')
+    for r, name, q, why in kmiss:
+        print(f'  {r:>3}  {name:<34} {q:<12} {why}')
+
     # The pairings, for a P2600 batch once this repo's start date passes. A row
     # with more than one Geni id is a duplicate set on Geni -- emitted as it is,
     # because a second P2600 on one item is the correct representation of that
@@ -171,7 +258,13 @@ def main():
                 continue
             w.writerow([q, r, lin, name, ids, how])
             n += 1
-    print(f'\nwrote {out} -- {n} of the {len(hit)} carry a Wikidata item to link')
+        for r, name, q, ids, how in khit:
+            if not q:
+                continue
+            w.writerow([q, r, 'kokuso', name, ids, how])
+            n += 1
+    print(f'\nwrote {out} -- {n} rows ({len(hit)} lineage + {len(khit)} kokuso), '
+          f'every one carrying a Wikidata item')
 
 
 if __name__ == '__main__':

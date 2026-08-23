@@ -39,15 +39,22 @@ already in our tree. Do not spend more turns on it.
 
 **Steps left:**
 
-- **One person absent: Izumo no Furune (11)**, `Q55533077`. Sits above the 18–40 stretch.
-  Worth one targeted look, not a 5000-person ball.
-- Two ambiguous rows to leave alone: regnal 36 (Tsunesuke / Ujihiro against two profiles) and
-  regnal 71 (Senge no Munetoshi against a Geni duplicate pair, which correctly becomes two
-  `P2600` statements on one item).
+- **Nine contested seats — Emma's call, not ours.** Seats 1–9 land two different people
+  because two of Geni's three copies of this clan disagree by one generation: the kanji
+  chain sits a seat higher than the romaji one throughout. `reports/izumo-succession-chain.tsv`
+  marks them CONTESTED and they are **not** emitted as pairings. Duplicate merges are hers.
+- Two ambiguous lineage rows, likewise left alone: regnal 36 (Tsunesuke / Ujihiro against two
+  profiles) and regnal 71 (Senge no Munetoshi against a Geni duplicate pair, which correctly
+  becomes two `P2600` statements on one item).
 - Eleven office-holders exist on Geni beyond the Shinto-wiki chart — Kitajima 69–74, Senge
   77–81. They have Geni IDs and no roster row, so they are Wikidata items to *create* rather
   than link, and that waits on the creation decision.
 - Run the `P2600` batch from `reports/izumo-p2600-pairs.tsv` on **2026-09-01**.
+
+**Nobody rostered is absent any more.** Izumo no Furune (11) was the last name on the missing
+list and he is `6000000227332042822`, on Geni as `Ibe /no Mikoto/`. He was found by walking
+the succession, not by an export. **Do not run another export for this clan** — the last one
+added 51 people and nothing rostered.
 
 ## MANALLY WRITTEN STUFF AT 8-22-2026
 

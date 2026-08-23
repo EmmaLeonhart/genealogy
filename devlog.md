@@ -11058,3 +11058,44 @@ which is correctly two `P2600` statements on one item).
 Also fixed: `parse_name` used `str.isdigit()`, which is true for superscripts and other
 Unicode numerals that `int()` then refuses. The corpus run died at export 100 on one. ASCII
 digits only now — a regnal number is written in plain digits, so nothing is lost.
+
+## 2026-08-23 — the ancient Izumo seats resolve by position, and nine of them are contested
+
+Work-loop tick, no export run.
+
+"76 of 77, one absent" was a complete answer to a narrower question, again. The matcher only
+considered rows whose Geni surname is `Izumo`, `Senge` or `Kitajima`; **fifteen of the 89
+numbered roster rows are the kokuso from before those surnames existed** and had never been
+looked at. `match-izumo-export.py` now runs a second pass over them.
+
+**Romanisation defeats name matching here, and does it silently.** Kushifusakinomikoto is
+Geni's Kushimikasaki-no-mikoto (5); Kushitsukinomikoto is Kishitsuki-no-mikoto (6);
+Kushichitoriuminomikoto is Kushimikatomi-no-mikoto (7). All three were reported absent and
+all three were in the corpus.
+
+**So `scripts/walk-izumo-succession.py` joins on the seat.** It anchors on the kokuso the
+regnal-number join resolved exactly and walks **up** the father chain — one father per
+person, so each step is unambiguous and decrements the number. Downward would have to choose
+among children, which is a guess.
+
+**All 17 rostered seats 1–18 resolve, Izumo no Furune (11) included** — `Q55533077`, on Geni
+as `Ibe /no Mikoto/`, `6000000227332042822`. The one person the queue still listed as missing
+was never missing. **Nobody rostered is absent now**, and no export was needed to establish it.
+
+**Nine seats are CONTESTED and stay Emma's.** Seats 1–9 land two different people, because
+two of Geni's three copies of this clan disagree by one generation — the kanji chain sits a
+seat higher than the romaji one throughout, so 世毛呂須 (the roster's 10) occupies the seat
+the romaji chain gives Chiri (9). Both chains are internally consistent and cannot both be
+right. Flagged, not resolved, and not emitted as pairings.
+
+`reports/izumo-p2600-pairs.tsv` is now 84 rows — 76 lineage plus 9 kokuso, less the one with
+no Wikidata item.
+
+**The standing lesson, written into the module docstrings.** Four times on this roster
+"absent" has meant "the matcher could not see it": a stale merge, then word order, then
+measuring one file instead of the corpus, now romanisation. An absence claim here is not
+trustworthy until checked structurally — by seat, by parent chain, by ID.
+
+Also fixed: `walk-izumo-succession.py` first stripped only the `@` from an xref and left the
+`I`, so every lookup missed and the walk resolved 8 of 17 with blank names. `@I123@` is
+`[2:-1]`.
