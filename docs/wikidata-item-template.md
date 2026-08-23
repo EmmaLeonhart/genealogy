@@ -71,3 +71,28 @@ absence of a property on a given item means *not yet*, not *deliberately omitted
 - **One-directional relationships** — `P22`/`P25` on children only, no `P40` on parents.
 - **Suggested `en` descriptions.** She writes none.
 - **Kept the full Geni string as the label**, rather than the name as used.
+
+
+## The regenerated batch, 2026-08-23
+
+`reports/wikidata-garborg.qs` is rebuilt to this model. What changed, and why the old one
+could not simply be left in place:
+
+- **It opened with `CREATE` for Eivind and Ane Oline.** Both exist now — `Q141152512` and
+  `Q141152523` — so running it would have minted duplicate items for real people. That is
+  the reason this file was regenerated rather than annotated.
+- **Reference is `S2600 "<geni id>"`**, not `S854` + `S813`.
+- **No descriptions**, and `P3373` *sibling* emitted both ways.
+- **The links come earlier now.** The old batch deferred every relationship to a commented
+  second pass because QuickStatements V1 cannot point at a QID a `CREATE` in the same run
+  has just minted. The parents have QIDs today, so each new sibling gets `P22`, `P25` and
+  `P3373` in the first pass. Only what points *at* the six new items is still deferred.
+- **Dates only where they are missing** — Ane Oline, Stena, Jon. Eivind and Arne already
+  carry `P569`/`P570`, and a second birth date with a different reference is noise.
+
+**Name properties are still not emitted, on purpose.** Eivind has `P735`, `P734` and the
+`P5056` patronym item Emma created (`Q141152710` *Aadnesson*). Doing the same for the others
+needs the QID of each given-name item and a new patronymic item per patronym —
+*Jonsdatter*, *Eivindsdatter*, *Eivindsen*, *Eivindson*. Guessing a name-item QID is the
+error this repo keeps paying for, so they are listed in the file's trailer for Emma rather
+than generated.

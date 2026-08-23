@@ -11393,3 +11393,37 @@ compressing them would lose the instruction rather than the verbosity.
 
 The preamble now says the rule out loud: a queue item is a step, and her wording belongs in
 `CLAUDE.md`, `devlog.md` or `reports/`.
+
+## 2026-08-23 — the Garborg batch rebuilt, because the old one would have made duplicates
+
+`reports/wikidata-garborg.qs` was written on 2026-08-22, when nobody around Arne Garborg
+had a Wikidata item. Emma has since created four of them by hand. **The file still opened
+with `CREATE` for Eivind and Ane Oline** — `Q141152512` and `Q141152523` — so running it
+would have minted duplicate items for real people. Marking it "superseded, do not run" in
+the queue was not enough: a `.qs` sitting in `reports/` is exactly what gets pasted into
+QuickStatements.
+
+Rebuilt to the model in `docs/wikidata-item-template.md`, which is read off her own items:
+
+- **Reference is `S2600 "<geni id>"`**, not `S854` *reference URL* + `S813` *retrieved*.
+- **Cited**: `P569`, `P570`, `P22`, `P25`, `P26`, `P40`. **Uncited**: `P31`, `P21`,
+  `P2600`. No descriptions at all.
+- **`P3373` *sibling* both ways.** The old batch argued against it as redundant; she uses it.
+- **No `CREATE` for anything that exists**, and dates only for the three items that lack
+  them — Ane Oline, Stena, Jon. Eivind and Arne already carry `P569`/`P570`, and a second
+  birth date with a different reference is noise.
+
+**The parents existing changes the shape.** The old batch deferred every relationship to a
+commented second pass, because QuickStatements V1 cannot point at a QID a `CREATE` in the
+same run has just minted. `Q141152512` and `Q141152523` are real today, so each of the six
+new siblings gets `P22`, `P25` and three `P3373` in the first pass. Only what points *at*
+the six — the parents' `P40`, the existing siblings' reciprocal `P3373` — is still deferred.
+
+6 creations, 84 statements, 0 occurrences of `S854`.
+
+**Name properties are still not emitted, and that is a decision rather than an omission.**
+Eivind carries `P735`, `P734` and the `P5056` patronym item Emma made (`Q141152710`
+*Aadnesson*). The same for the others needs the QID of each given-name item plus a new
+patronymic item per patronym — *Jonsdatter*, *Eivindsdatter*, *Eivindsen*, *Eivindson*.
+Guessing a name-item QID is the error this repo keeps paying for, so they are listed in the
+file's trailer for her.

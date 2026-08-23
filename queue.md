@@ -22,9 +22,12 @@ audits, dead crons and superseded priorities. Recover any of it with
 - Entity resolution — 10 edits, emitter correct.
 - Samaritan High Priest normalization — built. `P39` *position held* → `Q678510`
   *Samaritan High Priest* is what separates her well-modelled five from the rest.
-- `reports/wikidata-garborg.qs` — **superseded, do not run**: it cited a reference URL
-  instead of the Geni ID, emitted no name properties and argued against `P3373` *sibling*.
-  Work from `docs/wikidata-item-template.md`.
+- `reports/wikidata-garborg.qs` — **rebuilt 2026-08-23** to the model in
+  `docs/wikidata-item-template.md`: `S2600` references, no descriptions, `P3373` *sibling*
+  both ways, and no `CREATE` for the four items Emma has already made. 6 creations, 84
+  statements. Name properties are listed in its trailer rather than emitted — they need
+  a QID per given-name item and a new `P5056` patronym item for *Jonsdatter*,
+  *Eivindsdatter*, *Eivindsen*, *Eivindson*.
 
 Emma runs these by hand — 2026-08-23: *"If it's geni id then I'll run manual
 quickstatements."*
