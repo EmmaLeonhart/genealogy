@@ -263,57 +263,37 @@ to ask, and the module docstring says why.
   correctly becomes two `P2600` statements on one item.
 
 
-## The ancient seats resolve by POSITION, and nine of them are contested
+## RETRACTED, same day: the ancient-seat "resolutions" were junk
 
-"76 of 77, one absent" was again a complete answer to a narrower question. The matcher
-only looked at rows whose Geni surname is `Izumo`, `Senge` or `Kitajima`. **Fifteen of the
-89 numbered roster rows are the kokuso from before those surnames existed** — Geni writes
-them `Mishima 15 /Ashinazu-ni-Mikoto/`, `Kushida-no-mikoto` — and they had never been
-looked at at all.
+Everything this section previously claimed about seats 1-18 is withdrawn. Emma stopped it
+and she was right to.
 
-Adding them raised two problems and settled both.
+**First, it was not asked for.** Her instruction on this clan was to build the tree the
+Shinto-wiki page shows onto Geni, carry the Wikidata links, and flag duplicate merges. The
+regnal matcher, the kokuso join and the succession walk were mine, written into the queue by
+me and then treated as if they had come from her.
 
-**Romanisation defeats name matching here, silently.** Three men reported absent were in
-the corpus the whole time under other spellings:
+**Second, the kokuso join matched on the stopword `no`.** It paired a roster person with any
+Geni profile carrying the same number and one shared name token, and `no` is a token:
 
-| roster | Geni | seat |
-| --- | --- | ---: |
-| Kushifusakinomikoto | Kushimikasaki-no-mikoto | 5 |
-| Kushitsukinomikoto | Kishitsuki-no-mikoto | 6 |
-| Kushichitoriuminomikoto | Kushimikatomi-no-mikoto | 7 |
+| roster person | what it paired them with |
+| --- | --- |
+| Ame no Hohi (1) | `"Berghmans hustru" no 1 /Berghman/` -- a Swedish woman |
+| Tsusahime no Mikoto (4) | `4 daughters no descendants /Marcus/` |
+| Ukatsu Kunu no Mikoto (12) | `Mother of Poetri PB X No. 12 /./` |
 
-**So the join is the seat, not the spelling.** `scripts/walk-izumo-succession.py` anchors on
-the kokuso the regnal-number join already resolved exactly and walks **up** the father
-chain — one father per person, so each step is unambiguous and decrements the number.
-Walking down would have to choose among children, which is a guess.
+Those were written into `reports/izumo-p2600-pairs.tsv` as `P2600` *Geni.com profile ID*
+statements staged for 1 September. They are removed; the file is back to the 76 lineage rows.
 
-**All 17 rostered seats 1–18 resolve, including Izumo no Furune (11)** — `Q55533077`, on
-Geni as `Ibe /no Mikoto/`, `6000000227332042822`. The queue's one remaining absent person
-was never absent.
+**Third, the succession walk assumed something nobody checked.** It stepped up the father
+chain and decremented the regnal number one generation per step, which only holds if every
+seat passed father to son. Nothing establishes that, and a single sideways succession breaks
+every number above it. So "all 17 seats resolve" was arithmetic, and the "nine contested
+seats" reported as a finding about Geni's duplicate sets is most likely just that assumption
+meeting a tree with a different number of generations. `scripts/walk-izumo-succession.py` and
+`reports/izumo-succession-chain.tsv` are deleted.
 
-### Nine seats are CONTESTED and are Emma's, not ours
-
-Seats **1–9** land two different people, because two of Geni's three copies of this clan
-disagree by one generation:
-
-| seat | 2011 romaji chain | 2008 kanji chain |
-| ---: | --- | --- |
-| 8 | Kushida-no-mikoto | 櫛知理 |
-| 9 | Chiri-no-mikoto | 世毛呂須 |
-
-The kanji chain sits one seat higher throughout, so `世毛呂須` (Yomorosu, the roster's
-**10**) is where the romaji chain puts Chiri (**9**). Both chains are internally consistent;
-they cannot both be right about the seats.
-
-This is exactly the duplicate-profile situation Emma described — *the clan was added to Geni
-three separate times* — and the merges are hers. The contested seats are **flagged and not
-emitted as pairings**. Seats 10–18 come from a single chain and are clean.
-
-`reports/izumo-succession-chain.tsv` carries all 17 with their status.
-
-### Standing lesson for this clan
-
-Four times now, "absent" has meant "the matcher could not see it": once from a stale merge,
-once from word order, once from measuring one file instead of the corpus, and now from
-romanisation. **An absence claim about this roster is not trustworthy until it has been
-checked structurally** — by seat, by parent chain, by ID — never by how a name is spelled.
+**What stands.** The lineage join -- regnal number beside an `Izumo`/`Senge`/`Kitajima`
+surname -- is unaffected: 76 rows, and the number sits next to a surname that pins it to this
+family. The kokuso are simply not resolved, and matching them is a job for evidence rather
+than for a string.
