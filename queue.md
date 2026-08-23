@@ -23,26 +23,31 @@ Emma's constraints on this one:
 - The numeric middle names are **regnal numbers** ordering the Izumo no Kuni no Miyatsuko,
   not names. The roster keeps them in their own column.
 
-**Far-end seeding worked, 2026-08-23.** `exports/izumo/export-Forest-6000000227390753876.ged`,
-seeded on a placeholder at **Naokuni Senge's** open mother slot (regnal 56, one generation past
-the 1340 split), returned **60 of the 77 rostered lineage people with their Geni IDs** — 48 of
-them new to the corpus. The whole Senge 57–76 and Kitajima 56–68 runs came through, plus eight
-office-holders the Shinto-wiki chart does not list. `reports/izumo-p2600-pairs.tsv` is the
-result: 60 rows, every one carrying a Wikidata item.
+**76 of the 77 rostered lineage people are in the corpus with their Geni IDs**, measured
+2026-08-23 with `python scripts/match-izumo-export.py --corpus` — 545 exports, joined on the
+regnal number Geni writes inside the name. `reports/izumo-p2600-pairs.tsv` is the result:
+76 rows, every one carrying a Wikidata item.
+
+Two exports did it and they were complementary, not one right and one wrong: the founder-end
+ball (Kushini 3) brought Izumo 18–40, the far-end ball (Naokuni Senge 56) brought Izumo 34–54
+and the whole Senge/Kitajima 55–78. A third, seeded on Obitake 23, added nothing rostered and
+should not have been run — it chased a gap that only existed in a single-file measurement.
 
 **The Google route is dead for this clan.** `site:geni.com "Naokuni Senge"` and
 `site:geni.com "Sadataka Kitajima"` both return nothing, and both men have live Geni profiles
-that were already in our tree. Google has not indexed these pages. Do not spend more turns on it.
+already in our tree. Do not spend more turns on it.
 
 **Steps left:**
 
-- 17 rostered people still absent, one contiguous stretch: **Izumo 11 and 18–33**, the ancient
-  middle of the succession. One more export seeded in that stretch should close it — the
-  nearest exportable slot is around Izumo no Toyomochi 34 or Izumo no Tabito 33.
-- Regnal 36 is ambiguous: two roster entries (Tsunesuke, Ujihiro) against two Geni profiles
-  `6000000227331939856` / `6000000227331989821`. Flagged in the pairs file, not guessed.
+- **One person absent: Izumo no Furune (11)**, `Q55533077`. Sits above the 18–40 stretch.
+  Worth one targeted look, not a 5000-person ball.
+- Two ambiguous rows to leave alone: regnal 36 (Tsunesuke / Ujihiro against two profiles) and
+  regnal 71 (Senge no Munetoshi against a Geni duplicate pair, which correctly becomes two
+  `P2600` statements on one item).
+- Eleven office-holders exist on Geni beyond the Shinto-wiki chart — Kitajima 69–74, Senge
+  77–81. They have Geni IDs and no roster row, so they are Wikidata items to *create* rather
+  than link, and that waits on the creation decision.
 - Run the `P2600` batch from `reports/izumo-p2600-pairs.tsv` on **2026-09-01**.
-- Only then consider creating anyone genuinely absent. Duplicate merges stay Emma's.
 
 ## MANALLY WRITTEN STUFF AT 8-22-2026
 

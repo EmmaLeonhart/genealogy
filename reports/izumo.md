@@ -213,3 +213,51 @@ Both men were in our tree before this export and both have live Geni profiles. G
 simply not indexed these pages. It worked for Bureätten because Swedish nobility profiles
 are linked from Wikipedia; nothing links to these. **The export is the only instrument that
 reaches this clan**, which is what the 60 rows above demonstrate.
+
+
+## CORRECTION, 2026-08-23: the founder-end export did not fail, and I ran one export too many
+
+Everything above about *which end of a lineage you seed* was measured against **one export
+file at a time**, or against a stale `out/merged.ged`. Measured against the corpus, the
+conclusions do not survive.
+
+`python scripts/match-izumo-export.py --corpus` — 545 exports, joined on the regnal number:
+
+| | rostered lineage people |
+| --- | ---: |
+| founder end, Kushini 3 (`…227389059850`) | **23** — Izumo **18 → 40** |
+| far end, Naokuni Senge 56 (`…227390753876`) | **60** — Izumo 34 → 54, Senge/Kitajima 55 → 78 |
+| **the corpus, all 545 exports** | **76 of 77** |
+| still absent | **1** — Izumo no Furune (11) |
+
+**The founder-end export was not a failure.** The post-mortem above says it returned
+*"ZERO carrying a regnal number"*. It returned twenty-three, and they are the exact stretch
+the far-end export could not reach — the ancient middle, 18 to 33. The two balls are
+complementary and between them the lineage is complete. The "zero" came from
+`walk-izumo-geni.py`, which matches romanised names against `out/merged.ged`; the merge is
+stale at 248 exports and the names are spelled three different ways, so it saw nothing.
+
+**And the third export was unnecessary.** `export-Forest-6000000227331852896.ged`, seeded on
+Obitake 23 to fetch the supposedly-missing 18–33, added **51 people and not one rostered
+person** — all 77 profiles were in the corpus before it ran. It is filed and committed
+because a GEDCOM is never discarded, but it bought nothing.
+
+**The error is one question standing in for another.** *What does this file hold* is not
+*what do we hold*, and reporting the first as the second is what sent an export after
+sixteen people we already had. `--corpus` now exists so the right question is the easy one
+to ask, and the module docstring says why.
+
+### Where it actually stands
+
+- **76 of 77** rostered Izumo/Senge/Kitajima people are in the corpus with their Geni IDs.
+- **One absent: Izumo no Furune (11)**, `Q55533077`. He sits above the 18–40 stretch and
+  neither ball reached him.
+- **Eleven numbered office-holders beyond the chart** — Kitajima 69–74, Senge 77–81. The
+  Shinto-wiki roster stops at Senge 76 / Kitajima 68; Geni carries five more Senge and six
+  more Kitajima.
+- `reports/izumo-p2600-pairs.tsv` is now built from the **corpus**, not one file: 76 rows,
+  every one carrying a Wikidata item.
+- **Two ambiguities, flagged not guessed.** Regnal 36 — Tsunesuke and Ujihiro against
+  `6000000227331989821` / `6000000227331939856`. Regnal 71 — Senge no Munetoshi against
+  `6000000227331623899` / `6000000227350446840`, which is a duplicate pair on Geni and so
+  correctly becomes two `P2600` statements on one item.

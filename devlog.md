@@ -11013,3 +11013,48 @@ when `BOT_CONTACT` is unset in the shell (it passes with it set), and
 awaiting Emma's call on deletion.
 
 Fast lane after the fix: 1043 passed.
+
+## 2026-08-23 — the Izumo lineage is complete at 76 of 77, and I ran an export that bought nothing
+
+Work-loop tick. Seeded `Forest`/5000 on **Obitake 23 Izumo** (`6000000227331852896`) to
+fetch the Izumo 18–33 stretch the last tick reported missing. Filed as
+`exports/izumo/export-Forest-6000000227331852896.ged`. Corpus 551.
+
+**It added 51 people and not one rostered person.** All 77 lineage profiles were already in
+the corpus before it ran. The export is kept and committed — a GEDCOM is never discarded —
+but it should not have been taken.
+
+**The cause was measuring one file and reporting it as the corpus.** `match-izumo-export.py`
+took a single GEDCOM; "17 rostered people absent" meant absent *from that export*, not from
+what we hold. `--corpus` now exists so the question that matters is the easy one to ask, and
+the docstring records this as the reason.
+
+**And the earlier post-mortem was wrong too.** The founder-end export was written up as
+returning *"ZERO carrying a regnal number"*. Measured with the regnal join it returned
+**23** — Izumo **18 → 40**, precisely the ancient middle the far-end ball could not reach.
+The two balls are complementary:
+
+| | rostered lineage people |
+| --- | ---: |
+| founder end, Kushini 3 | 23 — Izumo 18 → 40 |
+| far end, Naokuni Senge 56 | 60 — Izumo 34 → 54, Senge/Kitajima 55 → 78 |
+| corpus, 545 exports | **76 of 77** |
+
+The "zero" came from `walk-izumo-geni.py`, which matches romanised names against
+`out/merged.ged` — a merge stale at 248 exports, against names spelled three ways. So *seed
+the far end, not the founder* was a rule drawn from an instrument error. It may still be
+right; this clan is no longer evidence for it.
+
+**One person absent: Izumo no Furune (11)**, `Q55533077`, above the 18–40 stretch.
+
+**Eleven office-holders beyond the chart** — Kitajima 69–74, Senge 77–81. The Shinto-wiki
+roster stops at Senge 76; Geni carries more.
+
+`reports/izumo-p2600-pairs.tsv` is rebuilt from the corpus rather than one file: 76 rows,
+all carrying a Wikidata item, for 2026-09-01. Two rows stay ambiguous and are not guessed —
+regnal 36 (Tsunesuke / Ujihiro against two profiles) and regnal 71 (a Geni duplicate pair,
+which is correctly two `P2600` statements on one item).
+
+Also fixed: `parse_name` used `str.isdigit()`, which is true for superscripts and other
+Unicode numerals that `int()` then refuses. The corpus run died at export 100 on one. ASCII
+digits only now — a regnal number is written in plain digits, so nothing is lost.

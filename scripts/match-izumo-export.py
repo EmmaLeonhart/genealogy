@@ -25,6 +25,7 @@ import unicodedata
 sys.stdout.reconfigure(encoding='utf-8')
 
 LINEAGES = ('Senge', 'Kitajima', 'Izumo-kokuso', 'Izumo')
+ASCII_DIGITS = re.compile(r'[0-9]+')
 
 
 def norm(t):
@@ -40,17 +41,18 @@ def parse_name(raw):
     num = None
     toks = []
     for t in given.split():
-        if t.isdigit():
+        # ASCII digits only. `str.isdigit()` is true for superscripts and other
+        # Unicode numerals that `int()` then refuses -- which crashed the corpus
+        # run at export 100 on a name carrying one. A regnal number is written in
+        # plain digits, so nothing is lost by being strict.
+        if ASCII_DIGITS.fullmatch(t):
             num = int(t)
         else:
             toks.append(t)
     return norm(' '.join(toks)), num, surname.strip()
 
 
-def main():
-    path = sys.argv[1]
-
-    people = {}          # geni id -> (given, regnal, surname, raw)
+def read(path, people):
     cur = None
     with open(path, encoding='utf-8', errors='replace') as f:
         for line in f:
@@ -62,8 +64,36 @@ def main():
                 raw = line[7:].strip()
                 g, n, s = parse_name(raw)
                 people[cur] = (g, n, s, raw)
+    return people
 
-    print(f'{len(people)} people in {path.split("/")[-1]}')
+
+def main():
+    """`--corpus` asks the question that actually matters, and it is not the same one.
+
+    Run against one file, this says what that export holds. Run with `--corpus` it
+    says what **we** hold, across every GEDCOM `genimerge.sources` recognises.
+    Confusing the two cost an export on 2026-08-23: the file view reported Izumo
+    18-33 absent, an export was run to fetch them, and all sixteen were already in
+    the corpus under a different export.
+    """
+    arg = sys.argv[1]
+    people = {}          # geni id -> (given, regnal, surname, raw)
+
+    if arg == '--corpus':
+        from pathlib import Path
+        sys.path.insert(0, str(Path(__file__).resolve().parent.parent / 'src'))
+        from genimerge.sources import find_exports
+        paths = list(find_exports())
+        for i, p in enumerate(paths, 1):
+            read(p, people)
+            if i % 100 == 0:
+                print(f'  ...{i}/{len(paths)}', flush=True)
+        print(f'{len(people)} people across {len(paths)} exports')
+        path = 'the corpus'
+    else:
+        path = arg
+        read(path, people)
+        print(f'{len(people)} people in {path.split("/")[-1]}')
 
     by_num = {}          # (lineage, regnal) -> [ids]
     by_name = {}         # (lineage, given) -> [ids]
@@ -108,18 +138,19 @@ def main():
         else:
             miss.append((regnal, lin, name))
 
-    print(f'\n{len(hit)} rostered lineage people found in this export, {len(miss)} not')
+    where = path if path == 'the corpus' else path.split('/')[-1]
+    print(f'\n{len(hit)} rostered lineage people found in {where}, {len(miss)} not')
     print('\nfound:')
     for r, lin, name, ids, how in hit:
         print(f'  {r or "-":>3}  {lin:<9} {name:<32} {ids}  [{how}]')
-    print('\nnot in this export:')
+    print(f'\nnot in {where}:')
     for r, lin, name in miss:
         print(f'  {r or "-":>3}  {lin:<9} {name}')
 
     extra = sorted(
         (people[g][1], people[g][2], people[g][3], g)
         for k, v in by_num.items() for g in v if g not in used)
-    print(f'\n{len(extra)} numbered lineage people in the export the roster does NOT list:')
+    print(f'\n{len(extra)} numbered lineage people here the roster does NOT list:')
     for n, s, raw, g in extra:
         print(f'  {n:>3}  {s:<12} {raw:<34} {g}')
 
