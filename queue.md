@@ -52,37 +52,16 @@ exists but it is comparably straightforward and I will have the other one do a r
 of it too so we queue it after"*. So **another session builds the roster**; this one
 does not start it, and does not start it before the Izumo work is finished.
 
-## Sparse-region exports — 2026-08-22
+## Bure kinship — Emma's item, running 2026-08-22
 
-**Rule: sparse-region and pre-1600 seeds are `Forest`, size 5000. Never `Descendants`.**
-A Descendants export happens only when Emma names one.
+<https://sv.wikipedia.org/wiki/Kategori:Bure%C3%A4tten>. Her words: *"run exports to get
+a good account of the Bure Kinship... Check to make sure all members are covered, since I
+think they are all on geni and can be highly linked up, all of them should have geni
+exports on them if they are unlinked and we check for those whose wikidata items do not
+connected geni ids similar to Samaritan high priests"*.
 
-**Geni only exports from a profile the account manages** — `/gedcom/export/<id>` on any
-other profile redirects to `/error`. So every seed needs a placeholder at an open slot
-beside it (`docs/export-seed-rules.md`). Ancient European figures are often locked master
-profiles whose parent slots render grey; find an unlocked profile a hop or two away.
-
-**Order, from Emma:** queued exports → pre-1100 → 1100s–1400s → possibly the ancient
-spine (undecided, do not pre-empt). Seeds by age: `reports/sparse-seeds-by-age.tsv`.
-
-**Done 2026-08-22** — ten exports, results in
-`reports/sparse-ancient-exports-2026-08-22.md`. Modern seeds average 3,374 new people
-each; ancient seeds average 326 but deliver 314 people born before 1100 against 1 from
-the whole modern set.
-
-**Still open:**
-
-- `6000000001048728539` **Sultan Mahmud Shah ibni** (1488) — Emma: *"should absolutely
-  certainly be done"*.
-- The 1100s–1400s band, twenty seeds.
-- Deferred, its own item: `Descendants` from `6000000227379911829`. Ran once in error on
-  2026-08-22 (task `6000000227380338838`, zip on disk); it was not meant to be in a batch.
-
-**Why density picks modern seeds, since it will recur.** Presence counts how many exports
-contain a person. Every ball climbs into the same shared ancient spine, so antiquity has
-high presence and can never look thin. Median seed birth year is 1805. The seed's age is
-also a weak proxy for the region's — a seed is its region's best-connected doorway, and 73
-of 509 carry no date at all.
+The Samaritan shape she is pointing at: people who exist on both Geni and Wikidata but
+whose Wikidata items carry no `P2600`, so nothing joins them. Find those.
 
 ## MANALLY WRITTEN STUFF AT 8-22-2026
 

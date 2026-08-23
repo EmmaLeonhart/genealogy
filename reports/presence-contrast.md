@@ -63,9 +63,32 @@ evidence than a contrast of 13 over four. The TSV carries the neighbour count fo
 this reason and the sort prefers more neighbours at equal contrast; the minimum is two,
 because a single edge is not a neighbourhood.
 
-**Whether contrast predicts export yield is untested.** It is a better-motivated question
-than absolute thinness, and `reports/sparse-ancient-exports-2026-08-22.md` established
-that ancient seeds return about a thirteenth of what modern ones do while being the only
-thing that reaches antiquity at all. Contrast picks a different kind of ancient seed —
-one adjacent to well-covered material rather than in a barely-touched region — and that
-is the reason to expect better, not a measurement that it is better.
+## REFUTED, 2026-08-22, by the first probe
+
+**Rufius Festus (260), contrast 17, returned 35 new people out of 5000 — 0.7%.**
+
+That is an order of magnitude worse than the ancient *density* seeds in
+`reports/sparse-ancient-exports-2026-08-22.md`, which ran 85–761, and those were
+themselves thirteen times worse than the modern ones at 1,885–4,230.
+
+**The premise was backwards.** This report argued that a well-covered neighbourhood
+around a barely-covered person meant the balls had stopped just short and there was
+structure behind them. The measurement says the opposite: the neighbourhood is
+well-covered *because it has been exhausted*, and the low-presence person is a leaf
+hanging off it rather than a doorway into anything.
+
+**The instrument did do what it claimed** — all 7 dated new arrivals are ancient, median
+birth −115, none after 100 AD, so contrast really does select ancient material. There is
+simply none of it left in that region to collect.
+
+Emma, on being shown it: *"Great I think this is settled. No more sparse area stuff."*
+
+**This is the third seed-choosing method refuted by measurement**, after "small but
+nonzero descent" and "the rim of a cut-off ball" in
+`reports/descendants-backtest-2026-08-07.md`. It is also the second proposed on
+reasoning alone, which is the thing `CLAUDE.md` warns against after the rim case. Do not
+propose a fourth without a measurement behind it.
+
+`scripts/build-presence-contrast.py` and the CSVs are kept because the measurement is
+sound and the refutation is worth being able to reproduce. Do not seed exports from
+them.
