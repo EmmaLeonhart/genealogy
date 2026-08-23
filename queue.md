@@ -37,21 +37,27 @@ should not have been run — it chased a gap that only existed in a single-file 
 `site:geni.com "Sadataka Kitajima"` both return nothing, and both men have live Geni profiles
 already in our tree. Do not spend more turns on it.
 
+**JOINED ON THE KEY EMMA PUT THERE — 111 of 204, 2026-08-23.** The Geni About Me carries a
+`wikidata.org` URL: `1 NOTE {geni:about_me} https://wikidata.org/wiki/Special:EntityPage/Q…`.
+`scripts/build-geni-qid-links.py` extracts it corpus-wide (405 profiles),
+`scripts/build-izumo-p2600.py` intersects it with the roster.
+`reports/izumo-p2600-pairs.tsv` is 111 rows and uses no name, number or position.
+Full account in `reports/geni-qid-links.md`.
+
 **Steps left:**
 
-- **The 15 numbered kokuso (seats 1-17) are UNRESOLVED and stay that way.** A join on
-  "same number, one shared name token" matched on the stopword `no` and paired Ame no Hohi
-  with a Swedish woman; a walk up the father chain assumed father-to-son succession that
-  nobody checked. Both deleted, retracted in `reports/izumo.md`. **Do not build a third
-  matcher for these people without asking Emma first.**
-- Two ambiguous lineage rows, left alone: regnal 36 (Tsunesuke / Ujihiro against two
-  profiles) and regnal 71 (Senge no Munetoshi against a Geni duplicate pair, which correctly
-  becomes two `P2600` statements on one item).
-- Eleven office-holders exist on Geni beyond the Shinto-wiki chart -- Kitajima 69-74, Senge
-  77-81. Geni IDs, no roster row, so items to *create* rather than link; waits on the
-  creation decision.
-- Run the `P2600` batch from `reports/izumo-p2600-pairs.tsv` on **2026-09-01** -- 76 lineage
-  rows, the join being a regnal number beside an `Izumo`/`Senge`/`Kitajima` surname.
+- Run the `P2600` batch from `reports/izumo-p2600-pairs.tsv` on **2026-09-01** — 111 rows.
+- **Two Kitajima are in the corpus with no About Me link** — `Kitajima no Tokitaka`
+  (`Q135579474`), `Kitajima no Yasutaka` (`Q135579480`). Profiles missing the link, not
+  missing people. Adding it on Geni is Emma's one-line fix.
+- **One duplicate to flag, never merge:** `Senge no Naokatsu` (`Q135579476`) on
+  `6000000227334350078` and `6000000227335699823`. Both ids are in the pairing, which is
+  correct — `P2600` is multi-valued.
+- 93 rostered items link from no Geni profile we hold — `reports/izumo-unlinked.tsv`.
+- Eleven office-holders on Geni beyond the Shinto-wiki chart (Kitajima 69-74, Senge 77-81)
+  are items to *create*; waits on the creation decision.
+- **The kokuso 1-17 stay unresolved.** Two matchers were built for them and both were junk;
+  do not build a third without asking.
 
 ## MANALLY WRITTEN STUFF AT 8-22-2026
 

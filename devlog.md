@@ -11136,3 +11136,41 @@ at all.
 What stands: the lineage join, where the regnal number sits beside an `Izumo`/`Senge`/
 `Kitajima` surname that pins it to this family. 76 rows. The kokuso are unresolved and stay
 unresolved until Emma says otherwise.
+
+## 2026-08-23 — the join key was in the data all along: a Wikidata URL in the Geni About Me
+
+Emma: *"we have intentionally added actual join keys for the Samaritan high priests, Izumo
+clan, and Tanba clan... The wikidata items linked in the descriptions."*
+
+She is right and it is exact. Geni exports it as
+`1 NOTE {geni:about_me} https://wikidata.org/wiki/Special:EntityPage/Q135579415#…`, so the
+profile carries its own Wikidata identity. `scripts/build-geni-qid-links.py` extracts it —
+**405 profiles across 545 exports**, 405 distinct QIDs, 3 of them on more than one profile
+(ordinary duplicates, reported never merged). Only `wikidata.org` URLs count; a bare `Q…` in
+free text is not a claim of identity.
+
+**Izumo: 111 of 204, against 76 for the regnal-number join it replaces.** All 39 Izumo, all
+22 Senge, 14 of 16 Kitajima, and **36 people carrying no regnal number at all** — the En'ya,
+Sasaki, Higashi, Hiraoka figures the number join could never have reached.
+`scripts/build-izumo-p2600.py`, output `reports/izumo-p2600-pairs.tsv`.
+
+Where the two joins overlap they agree: **74 of the regnal join's 76 match exactly, 0
+disagree**, and the other 2 are Kitajima whose profiles carry no About Me link —
+`Kitajima no Tokitaka` (`Q135579474`) and `Kitajima no Yasutaka` (`Q135579480`). Profiles
+missing a link, not missing people.
+
+**Tanba: 179 of 183.** The same key, working just as well.
+
+**Samaritans: 0 of 85, and that is a bound rather than a conclusion.** No Samaritan profile
+in our corpus carries a `wikidata.org` About Me URL, not even the nine whose pairing is
+already recorded by hand. Our exports are a sample of Geni and the Samaritan ones were taken
+in mid-August; if the links went in after that, no export of ours would show them. One fresh
+`Forest` from a Samaritan seed settles it.
+
+**Why this supersedes the regnal matcher.** Wikidata does not carry the regnal numbers, so
+that was never a join *to* Wikidata — it was a join to the Shinto-wiki page's own column,
+treated as if it were Wikidata's key. Reach for a written identifier before reconstructing
+one from names, numbers or positions.
+
+`reports/geni-qid-links.md` is the account; `reports/izumo-unlinked.tsv` the 93 rostered
+items no Geni profile we hold links to.
