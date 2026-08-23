@@ -11203,3 +11203,27 @@ than a wrong edit — stated rather than silently relied on.
 
 A `Forest` export from `6000000227245553985` (Yitzhaq I ben Tsedaka) is in flight to settle
 whether the Samaritan profiles carry About Me links that our mid-August exports predate.
+
+## 2026-08-23 — the Samaritan links were there; the export that checked was unnecessary
+
+Ran `Forest`/5000 from `6000000227245553985` (Yitzhaq I ben Tsedaka) to test whether the
+Samaritan About Me links post-dated our mid-August exports. Filed as
+`exports/samaritans/export-Forest-6000000227245553985.ged`. Corpus 552.
+
+**5000 people, 0 new, 0 new links.** Entirely redundant.
+
+**The premise was a misread of my own number.** I reported "Samaritans: 0 of 85" and then
+treated it as *no Samaritan profile carries the link*. It meant *none of those 85 do* — and
+those 85 are the later priests named in `wikidata-samaritan-priests.json` and
+`-links.json`, a different population. The corpus already held **15 linked Samaritan-side
+profiles**: Aaron I, Phinehas I, Eleazar I, Abishua I, Bakhi, Sashai, Jonathan I, Baba
+Rabba, plus Moses, Amram, Jochebed, Nadab, Abihu, Itamar and Sanballat.
+
+**And the check cost an export when it cost a grep.** `grep -c wikidata.org` over the
+exports already on disk answers it in a second. The same shape as the Obitake export
+earlier today: a question about *what we hold* answered by fetching more instead of by
+looking.
+
+Aaron is the useful part of it: `Q51676` against `6000000227239142939` is one of the five
+second-`P2600` rows in `reports/wikidata-geni-qid-p2600.qs`, and it is the unmergeable pair
+`CLAUDE.md` documents. The batch stands at **354 statements**, unchanged by this export.

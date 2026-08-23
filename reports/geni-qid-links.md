@@ -49,16 +49,29 @@ statement is the correct representation.
 
 93 rostered items are not linked from any Geni profile we hold; `reports/izumo-unlinked.tsv`.
 
-### Samaritans: the key is not in our corpus, and that is a bound not a conclusion
+### Samaritans: the key IS there, and my "0 of 85" was the wrong population
 
-None of the 85 Samaritan profiles in `reports/wikidata-samaritan-priests.json` and
-`reports/wikidata-samaritan-links.json` carries a `wikidata.org` URL in its About Me — not
-even the nine whose QID↔Geni pairing is already recorded by hand.
+**Corrected 2026-08-23, same day.** The line above said no Samaritan profile carries the
+link. That was reading a true number as a false statement.
 
-**Our exports are a sample of Geni, so this cannot mean the links are absent from Geni.**
-The Samaritan exports were taken in mid-August; if the links were added after that, no
-export of ours would show them. One fresh `Forest` export from a Samaritan seed settles it
-and costs one run.
+**15 Samaritan-side profiles in the corpus carry a `wikidata.org` About Me link**, and they
+are the right people:
+
+| | |
+| --- | --- |
+| high priests | Aaron I `Q51676` · Phinehas I `Q128063` · Eleazar I `Q159443` · Abishua I `Q2338482` · Bakhi ben Sashai `Q2836764` · Sashai ben Abishua `Q115804497` · Jonathan I `Q20502598` · Baba Rabba `Q2911644` |
+| Pentateuch figures around them | Moses `Q9077` · Amram `Q477527` · Jochebed `Q594805` · Nadab `Q1941782` · Abihu `Q321166` · Itamar `Q1675214` |
+| and | Sanballat the Horonite `Q751918` |
+
+What carries no link is the **85 profiles named in `reports/wikidata-samaritan-priests.json`
+and `reports/wikidata-samaritan-links.json`** — a different, later set of priests. "0 of 85"
+was true of those 85 and says nothing about Samaritan profiles in general.
+
+**A `Forest` export from `6000000227245553985` (Yitzhaq I ben Tsedaka) was run to test the
+staleness hypothesis and was unnecessary: 5000 people, 0 new, 0 new links.** Every one of
+the 15 was already in the corpus. The hypothesis was reasonable and the check was one grep
+away — `grep -c wikidata.org` on the exports we already had would have answered it without
+spending an export.
 
 ## Why this supersedes the regnal-number matcher
 
