@@ -1,73 +1,73 @@
-# What a person item looks like, taken from what Emma actually built
+# What a person item looks like, taken from what Emma actually builds
 
-**Read off Q467497 and the five items around it on 2026-08-22**, after she created
-Arne Garborg's father, mother and two siblings by hand. She asked for this explicitly:
-the shape those items are in *now* is the template for the expansion programme, not
-whatever a generator would have emitted.
+Read off `Q467497` and everything it links to. First captured 2026-08-22, **re-read
+2026-08-23** — she is working through this by hand and the shape is the template for the
+whole expansion programme, so this file tracks what she is actually doing rather than what
+a generator assumed.
 
-The QuickStatements batch I built that morning (`reports/wikidata-garborg.qs`) got
-several things wrong. They are listed at the bottom, because the corrections are the
-useful part.
+## Where she has got to
 
-## The items she made
+| item | who | state |
+| --- | --- | --- |
+| `Q141152512` | Eivind Aadnesson Garborg — father | full: dates, names, spouse, 3 children |
+| `Q141152523` | Ane Oline Jonsdatter Raugstad — mother | no dates, no name properties yet |
+| `Q141152600` | Stena Eivindsdatter Garborg — sister | parents + sibling link, no dates |
+| `Q141152614` | Jon Eivindson Garborg — brother | parents, no dates |
+| `Q141152710` | **Aadnesson** — a patronymic name item | `P31` → `Q110874` and nothing else |
 
-| item | who |
-| --- | --- |
-| `Q141152512` | Eivind Aadnesson Garborg — father |
-| `Q141152523` | Ane Oline Jonsdatter Raugstad — mother |
-| `Q141152600` | Stena Eivindsdatter Garborg — sister |
-| `Q141152614` | Jon Eivindson Garborg — brother |
-| `Q141152710` | **Aadnesson** — a *patronymic* name item she created |
+**Four of the ten created.** Six siblings still absent: Samuel, Even, Inger Marie, Abel,
+Ole, Ane Oline "Lena".
+
+**Changed since 2026-08-22:** `Q467497` gained `P22`, `P25` and `P3373`; `Q141152614` was
+created and given `P22`/`P25`; `Q141152523` gained its third `P40`. The links the generated
+batch left as a commented second pass are the ones she has been doing by hand.
 
 ## The shape
 
-**Labels: `en` and `mul`, the same string, nothing else.** No other languages, and
-**no descriptions at all** — every one of the five is description-empty.
+**Reference is `P2600` used as a reference snak** — not `P854` + `P813`. A statement reads
+*Geni.com profile ID = 6000000003492005111*.
 
-**The label is the name as used, not the full Geni string.** Geni holds
-`Stine "Stena" Eivindsdatter Garborg`; her label is `Stena Eivindsdatter Garborg`. The
-nickname won and the formal first name was dropped.
+**Only some statements carry it, and the split is consistent.** Referenced: `P569`, `P570`,
+`P22`, `P25`, `P26`, `P40`. Unreferenced: `P31`, `P21`, `P2600`, `P734`, `P735`, `P5056`.
+Genealogical and biographical claims are cited; identity and name scaffolding is not.
 
-**The reference is `P2600` itself, used as a reference snak** — not `P854` *reference
-URL* plus `P813` *retrieved*. A statement's reference reads *Geni.com profile ID =
-6000000003492005111*. This is tighter than a URL and matches the repo's own rule that the
-Geni ID is the primary key.
+**Relationships are reciprocal.** Eivind carries `P40` three times — Arne, Stena, Jon —
+while each child carries `P22` and `P25`. `P26` runs both ways between the parents. And
+`P3373` runs both ways between Arne and Stena.
 
-**Only some statements carry that reference.** Referenced: `P569`, `P570`, `P22`, `P25`,
-`P26`, `P40`. Unreferenced: `P31`, `P21`, `P2600`, `P734`, `P735`, `P5056`. So the
-genealogical and biographical claims are cited and the identity/name scaffolding is not.
+**`P3373` *sibling* IS used**, against the tidiness argument that shared parents make it
+redundant.
 
-**Relationships go on both sides.** Eivind carries `P40` *child* three times — Arne,
-Stena and Jon — while each child carries `P22` and `P25`. The spouse link is reciprocal
-too: Eivind `P26` → Ane Oline and Ane Oline `P26` → Eivind.
+**Labels are `en` and `mul`, the same string. No descriptions at all** — every one of the
+five is description-empty.
 
-**`P3373` *sibling* IS used.** Stena carries `P3373` → Q467497.
+**The label is the name as used.** Geni holds `Stine "Stena" Eivindsdatter Garborg`; her
+label is `Stena Eivindsdatter Garborg`. **This is not a shortening rule** — `Jon Eivindson
+Garborg` keeps his full name. What happened is that Geni wrapped the nickname in quotes and
+she took the nickname; where there is no nickname the name stands.
 
-**Names are modelled, and this is the part a generator would miss entirely.** Eivind has:
+**Names are modelled, and this is the part a generator misses.** Eivind carries:
 
-    P735  given name           Q3358418   Eivind      (an existing item)
-    P734  family name          Q30250555  Garborg     (an existing item)
+    P735  given name           Q3358418   Eivind      (existing item)
+    P734  family name          Q30250555  Garborg     (existing item)
     P5056 patronym or matronym Q141152710 Aadnesson   (SHE CREATED THIS)
 
-`Q141152710` is `Aadnesson`, labelled `en` and `mul`, whose only claim is `P31` →
-`Q110874` *patronymic*. That is `name modelling.txt` being applied: the patronymic gets
-its own property and its own item, parallel to given name and family name.
+The patronymic item is **minimal**: labels `en` and `mul`, `P31` → `Q110874` *patronymic*,
+nothing else. No `P1705`, no `P282`, no `P407` — the measurement in `CLAUDE.md` found those
+on most existing patronymic items, and she does not add them.
+
+**Name modelling is applied incrementally, not uniformly.** Eivind has all three name
+properties; Ane Oline has none yet. Dates likewise — only Eivind has `P569`/`P570`. So the
+absence of a property on a given item means *not yet*, not *deliberately omitted*.
 
 ## Where the generated batch was wrong
 
-- **Reference form.** It emitted `S854` + `S813`; she uses `P2600` as the reference.
-- **No name properties at all.** No `P735`, no `P734`, no `P5056`, and no creation of the
-  patronymic item. This is the largest gap — it is the whole name model.
-- **Siblings.** The batch argued *against* `P3373` on the grounds that shared `P22`/`P25`
-  makes it redundant. She uses it. The argument was about tidiness; hers is about the
-  statement being present.
-- **One-directional relationships.** It put `P22`/`P25` on children only. She also puts
-  `P40` on the parents.
-- **Descriptions.** It suggested `en` descriptions. She writes none.
-- **Labels.** It kept the full Geni string minus quote marks. She uses the short form.
+`reports/wikidata-garborg.qs`, built 2026-08-22, differed on six counts:
 
-## What is still open
-
-She has created four of the ten and is still working. Five siblings have no item yet, and
-the ones that exist carry no dates. The 07:28 cron re-reads these items daily so this file
-tracks what she is actually doing rather than what it assumed on the first pass.
+- **Reference form** — it used `S854` + `S813`; she uses `P2600`.
+- **No name properties at all** — no `P735`, `P734`, `P5056`, and no creation of the
+  patronymic item. The largest gap, and it is the whole of `name modelling.txt`.
+- **Argued against `P3373`** as redundant. She uses it, both ways.
+- **One-directional relationships** — `P22`/`P25` on children only, no `P40` on parents.
+- **Suggested `en` descriptions.** She writes none.
+- **Kept the full Geni string as the label**, rather than the name as used.

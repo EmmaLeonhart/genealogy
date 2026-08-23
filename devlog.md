@@ -10924,3 +10924,27 @@ search now covers the whole tree; the ball only reports distance.
 than more emperors: Izumo no Yoshitada 39, Izumo no Takatoki 53, and crucially **both
 55s** — Senge no Takamune and Kitajima no Sadataka, the two men the 1340 split created. The
 fork itself is in the tree.
+
+## 2026-08-23 — Garborg items re-read; template and artifact updated
+
+The 07:28 review cron. Re-read `Q467497` and every item it links to, one
+`wbgetentities` call per hop, twelve items.
+
+**Four items created, not three.** `Q141152512` Eivind (full — dates, `P734`/`P735`/`P5056`,
+`P26`, three `P40`), `Q141152523` Ane Oline (no dates, no name properties), `Q141152600`
+Stena (parents + `P3373`), `Q141152614` Jon (parents only), plus `Q141152710` **Aadnesson**,
+a patronymic name item carrying `P31` → `Q110874` *patronymic* and nothing else. Since
+08-22, `Q467497` also gained `P22`, `P25` and `P3373` — the commented second pass from the
+generated batch, done by hand.
+
+`docs/wikidata-item-template.md` rewritten off that reading. The artifact at
+`c2430047-…` republished to the same URL: person cards now show what exists and what each
+existing item still lacks, rather than ten people to create.
+
+**Where the page was wrong, and this is what the review was for.** It said the reference
+was `P854` *reference URL* + `P813` *retrieved*; she uses `P2600` *Geni.com profile ID*
+as the reference snak. It suggested English descriptions; all five of her items are
+description-empty. It argued against `P3373` *sibling* as redundant given shared parents;
+she uses it. It emitted no name properties at all; she creates name items, including a new
+one for a patronym. `reports/wikidata-garborg.qs` is superseded on all four counts and
+should not be run.
