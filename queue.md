@@ -23,9 +23,16 @@ Emma's constraints on this one:
 - The numeric middle names are **regnal numbers** ordering the Izumo no Kuni no Miyatsuko,
   not names. The roster keeps them in their own column.
 
+**The first export aimed the wrong way — 2.6% new, zero regnal numbers.** Seeded at
+Kushini 3, near the founder, where the lineage is welded to the ancient imperial material
+we already hold. **Seed the far end instead:** the Senge/Kitajima branches after the 1340
+split, which is also where Emma's own additions attach (she built these as ancestors of
+Noriko Senge's spouse).
+
 **Steps, in order:**
 
-- Find the existing Geni profiles by Google `site:geni.com "<name>"`. The names are
+- Export again from the modern Senge/Kitajima end, not the founder end.
+- Find any remaining Geni profiles by Google `site:geni.com "<name>"`. The names are
   distinctive enough for that to be safe here, unlike the Bureätten case.
 - Record each pairing for a `P2600`, to run from **2026-09-01** — this repo's start date.
 - Only then consider creating anyone genuinely absent.

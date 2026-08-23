@@ -98,3 +98,30 @@ the `NN no Mikoto` already in her tree rather than the generic tier-3 rule.
 **That export is the right instrument here** and it is not the refuted sparse-region work:
 this is a named lineage known to exist on Geni and known to be absent from the corpus,
 which is the Bureätten shape that returned 66% new.
+
+
+## The first export failed, and the reason is about which END of a lineage you seed
+
+`export-Forest-6000000227389059850.ged`, seeded on the placeholder at Kushini-no-mikoto 3's
+mother slot: **5000 people, 131 new (2.6%), 7 of the 214 rostered, and ZERO carrying a
+regnal number.**
+
+The Izumo priestly line is exactly what it did not bring.
+
+**Why.** Kushini 3 sits at the *top* of the lineage, one generation below Ame no Hohi, and
+that end of it is welded to the ancient imperial material — Amaterasu, Ninigi, Jimmu — which
+548 exports already cover thoroughly. A breadth-first ball of 5000 from there spends
+itself on the dense, well-covered side and never travels down the thin 84-generation
+priestly chain.
+
+**The correction: seed at the far end, not the founder.** The lineage runs 1 → 84 and the
+material we lack is the middle and modern end — the Izumo no Kuni no Miyatsuko proper, then
+the Senge and Kitajima branches after the 1340 split. Emma's own account points the same
+way: she built these *"as ancestors of the spouse of Noriko Senge"*, so the modern Senge
+end is where her additions attach and where the chain is reachable without crossing the
+imperial mass first.
+
+This is a different failure from the refuted sparse-region work. That one seeded into
+exhausted neighbourhoods and got nothing anywhere. This one got 2.6% because the ball went
+the *wrong direction* out of a correctly chosen lineage — a fixable aim, not a dead
+premise.

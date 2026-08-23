@@ -10891,3 +10891,18 @@ unasked. It is now a queue item with the date attached.
 
 Nothing has been blocked in practice — every batch so far is a file for her to run, and no
 edit has been attempted through the gate.
+
+## 2026-08-23 — the Izumo export aimed at the wrong end of the lineage
+
+`export-Forest-6000000227389059850.ged` returned 5000 people, **131 new (2.6%), 7 of the
+214 rostered, and zero carrying a regnal number** — precisely the priestly line it was
+meant to fetch.
+
+The seed sat at Kushini-no-mikoto 3, one generation below the founder, and that end of the
+lineage is welded to the ancient imperial material 548 exports already cover. A
+breadth-first ball of 5000 spends itself on the dense side and never walks the thin
+84-generation chain.
+
+Different from the sparse-region refutation: there the premise was wrong, here only the
+aim. Seeding the Senge/Kitajima end — where Emma's own additions attach — is the fix, and
+is now the queue step.
