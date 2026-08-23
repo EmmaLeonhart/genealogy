@@ -4,8 +4,16 @@
 Emma, 2026-08-18: "I want a gate to be set up that there will be no wikidata
 editing for a month." This repo has its OWN Wikidata editor with its own
 bot-password secrets (`scripts/wikidata-edit-run.py`, `wikidata-edits.yml`), and
-its `START_DATE` of 2026-09-01 falls inside that month. A gate that covered only
-the shintowiki bots would have left this path open.
+this module was wired at the shintowiki lockout state on the reasoning that this
+repo's `START_DATE` of 2026-09-01 fell inside that month.
+
+**THAT WAS WRONG, and Emma corrected it on 2026-08-23:** "Shintowiki scripts uses
+a different lockdown period lol. This repo starts at sept 1." The two periods are
+separate. This module therefore currently gates this repo on ANOTHER repo's
+schedule, and because it fails closed it will block editing from 2026-09-01 that
+this repo is entitled to do. Repointing or retiring it is a change to a safety
+gate and is Emma's call; it needs making before 2026-09-01 or the first scheduled
+run quietly does nothing. See CLAUDE.md for the full note.
 
 **There is exactly one lockout state file for all of Emma's repos**, and it is
 NOT in this one. Its location is held in the ``LOCKOUT_STATE_URL`` secret rather than

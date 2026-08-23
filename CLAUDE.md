@@ -1574,24 +1574,35 @@ gets re-implemented badly.
   double-encodes non-ASCII. Use the editing tools, or Python with an explicit
   `encoding="utf-8"`.
 
-## ⛔ WIKIDATA LOCKOUT — no Wikidata editing until 2026-09-18 (Emma, 2026-08-18)
+## ⛔ WIKIDATA EDITING STARTS 2026-09-01 IN THIS REPO
 
-Emma: *"I want a gate to be set up that there will be no wikidata editing for a month."*
-Locked through **2026-09-17**; resumes **2026-09-18**. It applies here: this repo has its
-own Wikidata editor with its own bot-password secrets, and `wikidata-edits.yml`'s
-`START_DATE` of **2026-09-01 falls inside the lockout**.
+**Emma, 2026-08-23, correcting what was written here:** *"Shintowiki scripts uses a
+different lockdown period lol. This repo starts at sept 1."*
 
-- **The state file is NOT in this repo.** There is exactly one, in the public
-  `shintowiki-scripts` repo: `shinto_miraheze/wikidata_editing_lockout.state`. Read it
-  with `python scripts/wikidata_lockout.py` (exit 0 = allowed, 1 = locked).
-- **To lift or extend, edit that ONE file.** Never by editing this repo's script or
-  workflow. The mechanism this replaced was a freeze date pasted into two workflows, and
-  one of them missed a freeze — do not recreate that by copying the date here.
-- **Enforced twice:** `scripts/wikidata-edit-run.py` checks it on the `--live` path (a
-  dry run is unaffected and still useful), and `wikidata-edits.yml` has a guard step that
-  both credentialed steps depend on.
-- **Fails closed.** No network, a 404, unparseable JSON — all report LOCKED. A lockout
-  you cannot read is not an absent lockout.
+So there are **two separate periods**, and this file previously conflated them:
+
+- **`shintowiki-scripts`** has its own lockout with its own dates, governed by
+  `shinto_miraheze/wikidata_editing_lockout.state` in that repo. **Not this repo's
+  schedule.**
+- **This repo starts 2026-09-01**, which is the `START_DATE` in `wikidata-edits.yml` and
+  matches her original *"no wikidata edits until September 1"* (2026-08-14).
+
+**What was wrong.** An earlier session recorded the 2026-08-18 *"no wikidata editing for a
+month"* instruction as covering this repo too, and wired `scripts/wikidata_lockout.py` at
+the shintowiki state file on the reasoning that a Sept 1 start would otherwise slip under
+that month. That reasoning produced a gate enforcing **another repo's period** here.
+
+**The live consequence, and it is not urgent yet.** `wikidata_lockout.py` reads
+`LOCKOUT_STATE_URL` and **fails closed** — an unset secret or an unreachable file reports
+LOCKED. From 2026-09-01 that will block editing this repo is entitled to do, for a reason
+belonging to a different repo. Repointing or removing that gate is a change to a safety
+mechanism and is **Emma's call, not one to make unasked** — but it needs making before
+2026-09-01 or the first scheduled run silently does nothing.
+
+**Until then nothing is blocked.** Every batch is written to a file for her to run —
+`reports/wikidata-garborg.qs`, `reports/wikidata-bureatten-p2600.qs` — and no edit has ever
+been attempted through the gate. § *A start date is not a blocker* still governs: build,
+review and commit now; do not tag the date with anything from the not-done taxonomy.
 
 ## Long command series run in strict order
 When the user gives a long series of commands, treat it as a long series of commands to be

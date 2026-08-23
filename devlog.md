@@ -10873,3 +10873,21 @@ Wikidata side was built for this genealogy and is nearly complete; nothing joins
 That reorders the item: resolution before creation. Emma's own account is that the clan is
 already on Geni three times over, so creating profiles first would manufacture a fourth
 duplicate set on top of merges she has reserved to herself.
+
+## 2026-08-23 — the two lockout periods were conflated, and this repo's is 2026-09-01
+
+Emma: *"Shintowiki scripts uses a different lockdown period lol. This repo starts at sept
+1."*
+
+An earlier session read her 2026-08-18 *"no wikidata editing for a month"* as covering this
+repo, and wired `scripts/wikidata_lockout.py` at `shintowiki-scripts`'s state file — on the
+reasoning that a 2026-09-01 start would otherwise slip under the month. The two periods are
+separate, so the gate enforces another repo's schedule here.
+
+Corrected in `CLAUDE.md` and in the module's own docstring. **The gate itself is not
+changed**: it fails closed, so from 2026-09-01 it will block editing this repo is entitled
+to do, and repointing or retiring a safety gate is Emma's call rather than one to make
+unasked. It is now a queue item with the date attached.
+
+Nothing has been blocked in practice — every batch so far is a file for her to run, and no
+edit has been attempted through the gate.

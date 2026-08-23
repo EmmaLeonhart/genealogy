@@ -1,5 +1,12 @@
 # geni — Work Queue
 
+## Repoint or retire `scripts/wikidata_lockout.py` before 2026-09-01 — Emma's call
+
+It gates this repo on `shintowiki-scripts`'s lockout state, which Emma confirmed on
+2026-08-23 is a **different period**. This repo starts 2026-09-01. The module fails closed,
+so left as-is it will block the first scheduled run for another repo's reason. Changing a
+safety gate is hers to authorise, so this is written down rather than done.
+
 ## Izumo / Senge clan — measured 2026-08-23, `reports/izumo.md`
 
 <https://shinto.miraheze.org/wiki/Izumo_clan>, and the Geni tree at
@@ -20,7 +27,7 @@ Emma's constraints on this one:
 
 - Find the existing Geni profiles by Google `site:geni.com "<name>"`. The names are
   distinctive enough for that to be safe here, unlike the Bureätten case.
-- Record each pairing for a `P2600` once the lockout lifts on 2026-09-18.
+- Record each pairing for a `P2600`, to run from **2026-09-01** — this repo's start date.
 - Only then consider creating anyone genuinely absent.
 
 ## MANALLY WRITTEN STUFF AT 8-22-2026
