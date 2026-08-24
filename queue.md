@@ -32,6 +32,10 @@ audits, dead crons and superseded priorities. Recover any of it with
 Emma runs these by hand — 2026-08-23: *"If it's geni id then I'll run manual
 quickstatements."*
 
+Every `.qs` in `reports/` is guarded by `tests/test_p2600_batches.py` — line shape,
+quoting, `S2600` references, Geni ids, duplicate statements, one `P2600` per `CREATE`,
+and no two batches creating the same person.
+
 ## Stale, small, nobody's blocker
 
 - `reports/repo-freshness.csv` still lists `reports/missing-ancestors-check.csv` and

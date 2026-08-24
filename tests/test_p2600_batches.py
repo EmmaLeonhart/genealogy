@@ -1,26 +1,38 @@
-"""The `P2600` batches are the only files here that will edit Wikidata.
+"""The QuickStatements batches are the only files here that will edit Wikidata.
 
-From 2026-09-01 the QuickStatements files in `reports/` get run against the live
-site, so a malformed line is not a failed parse — it is a wrong statement on a real
-item, or a silent no-op that looks like success. Nothing else in this suite guards
-them, and until now nothing did.
+From 2026-09-01 the `.qs` files in `reports/` get pasted into QuickStatements, so a
+malformed line is not a failed parse — it is a wrong statement on a real item, or a
+silent no-op that looks like success. **Every** batch is guarded here, not just the
+one that happened to be newest: on 2026-08-23 only `wikidata-geni-qid-p2600.qs` was
+covered, and the unguarded `wikidata-garborg.qs` was found by reading to contain
+`CREATE` lines that would have minted duplicate items for two people who already
+existed.
 
-The invariants are deliberately narrow, because the risk is narrow:
+What is checked, and why each one:
 
-* **The shape.** `Q…<TAB>P2600<TAB>"…"`. QuickStatements V1 has no escape for an
-  embedded double quote, which already bit this project once — nine Bureätten
-  labels carried `Stine "Stena"` and would have ended the string early.
-* **Every statement traces to the source.** `reports/wikidata-geni-qid-p2600.qs`
-  is generated from `reports/geni-qid-links.tsv`, and every pair in it must be in
-  that file. A row that cannot be traced is a row nobody can check.
-* **The Geni id is a Geni id.** Digits only, and one this repo could actually parse
-  back out of a GEDCOM xref. `GENI_ID_RE` is the single place that knows the form.
-* **No duplicate lines.** Harmless to run, but a duplicate means the generator
-  double-counted, and the count is what gets reported.
+* **Line shape.** `CREATE`, or `<QID|LAST><TAB><property><TAB><value>` with optional
+  reference pairs. Anything else is a line QuickStatements will reject or, worse,
+  misread.
+* **Balanced quotes.** QuickStatements V1 has no escape for a double quote inside a
+  string, which already bit this project: nine Bureätten labels carried
+  `Stine "Stena"` and would have ended the string early, shifting every field after it.
+* **The reference form is `S2600`.** `docs/wikidata-item-template.md`, read off Emma's
+  own items: the reference is the Geni ID itself, not `S854` *reference URL* plus
+  `S813` *retrieved*. The old Garborg batch used the latter.
+* **Geni ids are Geni ids** — digits, and parseable back out of a GEDCOM xref by
+  `GENI_ID_RE`, the single place that knows the form.
+* **No repeated statement, and no `CREATE` block without exactly one `P2600`.** A
+  creation with no Geni ID is unciteable; one with two is a merge nobody asked for.
+* **No two batches create the same person.** Cross-file, because each generator only
+  sees its own output.
 
-`P2600` is multi-valued on purpose -- two Geni profiles for one person is a
-permanent feature of Geni, per `CLAUDE.md` -- so **a QID appearing more than once
-is correct and is not tested against.**
+**What this cannot catch, stated so nobody trusts it further than it goes.** Whether
+a `CREATE` would duplicate an item that already exists on Wikidata is only decidable
+against a current `P2600` map. Ours (`out/wikidata/p2600-all.tsv`) is a snapshot, it
+is gitignored, and it predates the Garborg items Emma created by hand — so the check
+below **would not have caught the bug that prompted this file to be widened**. It
+catches the ordinary case and skips when the snapshot is absent. The reliable guard
+against that failure remains reading what exists before generating a creation.
 """
 import csv
 import re
@@ -30,106 +42,236 @@ import pytest
 
 from genimerge.identity import GENI_ID_RE
 
-REPORTS = Path(__file__).resolve().parent.parent / "reports"
-BATCH = REPORTS / "wikidata-geni-qid-p2600.qs"
-SOURCE = REPORTS / "geni-qid-links.tsv"
+REPO = Path(__file__).resolve().parent.parent
+REPORTS = REPO / "reports"
+P2600_SNAPSHOT = REPO / "out" / "wikidata" / "p2600-all.tsv"
 
-LINE = re.compile(r'^(Q[1-9][0-9]*)\tP2600\t"([0-9]+)"$')
+BATCHES = sorted(REPORTS.glob("*.qs"))
+NAMES = [p.name for p in BATCHES]
 
-
-def batch_lines():
-    text = BATCH.read_text(encoding="utf-8")
-    return [ln for ln in text.split("\n") if ln.strip()]
-
-
-pytestmark = pytest.mark.skipif(
-    not BATCH.exists(), reason="no P2600 batch generated yet"
+#: `Q123` or `LAST`, a property, a value, then any number of reference pairs.
+STATEMENT = re.compile(
+    r'^(?:Q[1-9][0-9]*|LAST)\t[A-Z][a-z]*[0-9]*\t[^\t]+(?:\t[SPQ][0-9a-z]*\t[^\t]+)*$'
 )
+P2600_LINE = re.compile(r'^(?:Q[1-9][0-9]*|LAST)\tP2600\t"([^"]*)"')
+#: Narrower on purpose: only a `LAST` line belongs to the `CREATE` above it.
+LAST_P2600 = re.compile(r'^LAST\tP2600\t"([^"]*)"')
 
 
-def test_every_line_is_a_well_formed_p2600_statement():
-    bad = [(i, ln) for i, ln in enumerate(batch_lines(), 1) if not LINE.match(ln)]
-    assert not bad, "malformed QuickStatements lines: " + "; ".join(
-        f"line {i}: {ln!r}" for i, ln in bad[:5]
-    )
+def statements(path):
+    """(line number, text) for every line that is not blank or a comment."""
+    out = []
+    for i, raw in enumerate(path.read_text(encoding="utf-8").split("\n"), 1):
+        line = raw.rstrip("\r")
+        if line.strip() and not line.lstrip().startswith("#"):
+            out.append((i, line))
+    return out
 
 
-def test_no_line_carries_a_character_quickstatements_cannot_escape():
-    """A double quote inside the value ends the string early and shifts every field."""
-    offenders = [
-        (i, ln) for i, ln in enumerate(batch_lines(), 1)
-        if ln.count('"') != 2
-    ]
-    assert not offenders, "unbalanced quotes: " + "; ".join(
-        f"line {i}: {ln!r}" for i, ln in offenders[:5]
-    )
+def creations(path):
+    """The P2600 values of each CREATE block, in order."""
+    blocks, current, inside = [], [], False
+    for _i, line in statements(path):
+        if line == "CREATE":
+            if inside:
+                blocks.append(current)
+            current, inside = [], True
+        elif inside:
+            # Only a LAST line belongs to the CREATE above it. Matching a
+            # `Q123<TAB>P2600` line here attributed the next explicit statement to
+            # the previous block — found by
+            # `test_the_creation_reader_finds_the_geni_id_of_each_block`.
+            if not line.startswith("LAST\t"):
+                blocks.append(current)
+                current, inside = [], False
+                continue
+            m = LAST_P2600.match(line)
+            if m:
+                current.append(m.group(1))
+    if inside:
+        blocks.append(current)
+    return blocks
 
 
-def test_the_geni_id_is_one_this_repo_could_parse_back_out_of_a_gedcom():
+pytestmark = pytest.mark.skipif(not BATCHES, reason="no .qs batches in reports/")
+
+
+@pytest.mark.parametrize("name", NAMES)
+def test_every_line_is_a_well_formed_quickstatements_line(name):
+    path = REPORTS / name
+    bad = [(i, ln) for i, ln in statements(path)
+           if ln != "CREATE" and not STATEMENT.match(ln)]
+    assert not bad, f"{name}: malformed lines — " + "; ".join(
+        f"line {i}: {ln!r}" for i, ln in bad[:5])
+
+
+def badly_quoted(line):
+    """A quoted field must open and close and contain no quote of its own.
+
+    Counting parity is not enough and misses the case this exists for:
+    `LAST	Len	"Stine "Stena" Garborg"` has four quotes, an even number, and
+    QuickStatements still ends the string at the second one. Check each field.
+    """
+    for field in line.split("	"):
+        if field.startswith('"') and not re.fullmatch(r'"[^"]*"', field):
+            return True
+        if not field.startswith('"') and '"' in field:
+            return True
+    return False
+
+
+@pytest.mark.parametrize("name", NAMES)
+def test_no_line_carries_an_unescapable_quote(name):
+    path = REPORTS / name
+    bad = [(i, ln) for i, ln in statements(path) if badly_quoted(ln)]
+    assert not bad, f"{name}: unusable quoting — " + "; ".join(
+        f"line {i}: {ln!r}" for i, ln in bad[:5])
+
+
+@pytest.mark.parametrize("name", NAMES)
+def test_references_are_the_geni_id_not_a_url(name):
+    """Her model: the reference is `P2600`. `S854` + `S813` is the old generator."""
+    path = REPORTS / name
+    bad = [(i, ln) for i, ln in statements(path) if "\tS854\t" in ln or "\tS813\t" in ln]
+    assert not bad, (
+        f"{name}: {len(bad)} statements cite a reference URL rather than the Geni id; "
+        f"see docs/wikidata-item-template.md")
+
+
+@pytest.mark.parametrize("name", NAMES)
+def test_every_geni_id_is_one_this_repo_could_parse(name):
+    path = REPORTS / name
     bad = []
-    for i, ln in enumerate(batch_lines(), 1):
-        m = LINE.match(ln)
-        if m and not GENI_ID_RE.match(f"@I{m.group(2)}@"):
-            bad.append((i, m.group(2)))
-    assert not bad, "not parseable as a Geni xref: " + "; ".join(
-        f"line {i}: {g}" for i, g in bad[:5]
-    )
+    for i, ln in statements(path):
+        for value in P2600_LINE.findall(ln):
+            if not GENI_ID_RE.match(f"@I{value}@"):
+                bad.append((i, value))
+        for chunk in re.findall(r'\tS2600\t"([^"]*)"', ln):
+            if not GENI_ID_RE.match(f"@I{chunk}@"):
+                bad.append((i, chunk))
+    assert not bad, f"{name}: not parseable as a Geni xref — " + "; ".join(
+        f"line {i}: {g}" for i, g in bad[:5])
 
 
-def test_every_statement_traces_back_to_the_about_me_links():
-    assert SOURCE.exists(), f"{SOURCE.name} is the source of the batch and is missing"
-    allowed = set()
-    with open(SOURCE, encoding="utf-8") as f:
-        for row in csv.DictReader(f, delimiter="\t"):
-            for qid in row["qids"].split(";"):
-                if qid:
-                    allowed.add((qid, row["geni_id"]))
+@pytest.mark.parametrize("name", NAMES)
+def test_no_statement_is_repeated(name):
+    """`LAST` lines are scoped to their own CREATE block, and that is the whole rule.
 
-    untraceable = []
-    for i, ln in enumerate(batch_lines(), 1):
-        m = LINE.match(ln)
-        if m and (m.group(1), m.group(2)) not in allowed:
-            untraceable.append((i, m.group(1), m.group(2)))
-    assert not untraceable, "statements not in geni-qid-links.tsv: " + "; ".join(
-        f"line {i}: {q} -> {g}" for i, q, g in untraceable[:5]
-    )
-
-
-def test_no_statement_is_repeated():
-    lines = batch_lines()
-    seen, dupes = set(), []
-    for ln in lines:
-        if ln in seen:
+    A first cut compared every line against every other and failed on
+    `wikidata-garborg.qs` for nine `LAST	P31	Q5` and `LAST	P21	Q6581097`
+    lines. Those are not duplicates: `LAST` names whichever item the preceding
+    `CREATE` minted, so identical text is a different subject each time. Repetition
+    is a defect only where the subject is the same — an explicit QID across the file,
+    or a line repeated inside one CREATE block.
+    """
+    path = REPORTS / name
+    explicit, dupes = set(), []
+    block, inside = set(), False
+    for _i, ln in statements(path):
+        if ln == "CREATE":
+            block, inside = set(), True
+            continue
+        if ln.startswith("LAST	"):
+            if inside and ln in block:
+                dupes.append(ln)
+            block.add(ln)
+            continue
+        inside = False
+        if ln in explicit:
             dupes.append(ln)
-        seen.add(ln)
-    assert not dupes, f"{len(dupes)} repeated statements, e.g. {dupes[:3]}"
+        explicit.add(ln)
+    assert not dupes, f"{name}: {len(dupes)} repeated statements, e.g. {dupes[:2]}"
 
 
-def test_the_batch_is_not_empty():
-    """An empty batch passes every check above while doing nothing at all."""
-    assert batch_lines(), "the batch has no statements"
+@pytest.mark.parametrize("name", NAMES)
+def test_every_creation_carries_exactly_one_geni_id(name):
+    """A created item with no `P2600` cannot be cited; with two it is a merge."""
+    path = REPORTS / name
+    bad = [(n, ids) for n, ids in enumerate(creations(path), 1) if len(ids) != 1]
+    assert not bad, f"{name}: CREATE blocks with the wrong number of P2600 — {bad[:5]}"
 
 
-# The checks above only prove the current batch is clean. These prove the checks
-# would notice if it were not -- the same shape as the trigger-reader tests in
-# `test_repo_invariants.py`, and the reason those exist.
+def test_no_two_batches_create_the_same_person():
+    """Each generator sees only its own output, so this is only visible across files."""
+    owner = {}
+    clashes = []
+    for path in BATCHES:
+        for ids in creations(path):
+            for g in ids:
+                if g in owner and owner[g] != path.name:
+                    clashes.append((g, owner[g], path.name))
+                owner[g] = path.name
+    assert not clashes, f"the same person is created in two batches: {clashes[:5]}"
+
+
+@pytest.mark.skipif(not P2600_SNAPSHOT.exists(),
+                    reason="no local P2600 snapshot; this check is best-effort")
+def test_no_creation_is_of_a_person_wikidata_already_links():
+    """Best-effort only — read the module docstring before trusting it.
+
+    The snapshot is not current, so this catches the ordinary case and would NOT
+    have caught the Garborg duplicate, whose items were created after the dump.
+    """
+    known = set()
+    with open(P2600_SNAPSHOT, encoding="utf-8") as f:
+        for row in csv.reader(f, delimiter="\t"):
+            if len(row) >= 2 and row[0].startswith("Q"):
+                known.add(row[1].strip())
+
+    offenders = []
+    for path in BATCHES:
+        for ids in creations(path):
+            for g in ids:
+                if g in known:
+                    offenders.append((path.name, g))
+    assert not offenders, (
+        "CREATE for a Geni id Wikidata already links — this would duplicate an "
+        f"existing item: {offenders[:5]}")
+
+
+# The checks above only prove today's batches are clean. These prove the checks
+# would notice if they were not — the shape `test_repo_invariants.py` uses for its
+# trigger reader, and the reason those exist.
 
 @pytest.mark.parametrize("line", [
     'Q123\tP2600\t"6000000000000000001"',
-    'Q1\tP2600\t"1"',
+    'LAST\tP31\tQ5',
+    'Q467497\tP569\t+1851-01-25T00:00:00Z/11\tS2600\t"6000000003492005116"',
+    'LAST\tLen\t"Samuel Eivindsen Garborg"',
 ])
 def test_the_line_reader_accepts_a_real_statement(line):
-    assert LINE.match(line)
+    assert STATEMENT.match(line)
 
 
 @pytest.mark.parametrize("line,why", [
-    ('Q123\tP2600\t6000000000000000001', "value is not quoted"),
     ('Q123 P2600 "6000000000000000001"', "spaces instead of tabs"),
-    ('Q0123\tP2600\t"6000000000000000001"', "QID with a leading zero"),
-    ('123\tP2600\t"6000000000000000001"', "no Q prefix"),
-    ('Q123\tP2600\t"600000 000"', "space inside the id"),
-    ('Q123\tP735\t"6000000000000000001"', "wrong property"),
-    ('Q123\tP2600\t"Stine "Stena" Garborg"', "embedded quotes -- the Bureatten case"),
+    ('Q0123\tP2600\t"600000"', "QID with a leading zero"),
+    ('123\tP2600\t"600000"', "no Q prefix and not LAST"),
+    ('PREVIOUS\tP31\tQ5', "not a subject QuickStatements understands"),
+    ('Q123\tP2600\t', "empty value"),
 ])
 def test_the_line_reader_rejects_what_would_go_wrong(line, why):
-    assert not LINE.match(line), why
+    assert not STATEMENT.match(line), why
+
+
+def test_the_quote_check_catches_the_bureatten_case(tmp_path):
+    """`Stine "Stena"` ends the string early and shifts every field after it."""
+    bad = tmp_path / "x.qs"
+    bad.write_text('CREATE\nLAST\tLen\t"Stine "Stena" Garborg"\n', encoding="utf-8")
+    offenders = [ln for _i, ln in statements(bad) if badly_quoted(ln)]
+    assert offenders, "an embedded quote leaves an EVEN count; parity misses it"
+
+
+def test_the_creation_reader_finds_the_geni_id_of_each_block(tmp_path):
+    f = tmp_path / "x.qs"
+    f.write_text(
+        'CREATE\nLAST\tP31\tQ5\nLAST\tP2600\t"111"\n\n'
+        'CREATE\nLAST\tP2600\t"222"\n\n'
+        'Q9\tP2600\t"333"\n', encoding="utf-8")
+    assert creations(f) == [["111"], ["222"]], "a non-CREATE P2600 must not be counted"
+
+
+def test_the_creation_reader_notices_a_block_with_no_geni_id(tmp_path):
+    f = tmp_path / "x.qs"
+    f.write_text('CREATE\nLAST\tP31\tQ5\n', encoding="utf-8")
+    assert creations(f) == [[]]

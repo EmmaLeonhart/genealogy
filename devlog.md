@@ -11427,3 +11427,43 @@ Eivind carries `P735`, `P734` and the `P5056` patronym item Emma made (`Q1411527
 patronymic item per patronym — *Jonsdatter*, *Eivindsdatter*, *Eivindsen*, *Eivindson*.
 Guessing a name-item QID is the error this repo keeps paying for, so they are listed in the
 file's trailer for her.
+
+## 2026-08-23 — the batch guard widened to every `.qs`, and it found two defects in itself
+
+`tests/test_p2600_batches.py` guarded exactly one file. There are four `.qs` in `reports/`,
+and the unguarded `wikidata-garborg.qs` was the one with `CREATE` lines in it — the
+highest-consequence kind, and the one whose duplicate-creation bug was found by reading
+rather than by a test. Now every batch is checked: line shape, quoting, reference form,
+Geni ids, repeated statements, exactly one `P2600` per `CREATE`, and no two batches
+creating the same person.
+
+**Three things the widening turned up, all real.**
+
+**The duplicate rule was wrong about `LAST`.** A first cut compared every line against
+every other and failed `wikidata-garborg.qs` on nine `LAST P31 Q5` and `LAST P21 Q6581097`
+lines. Those are not duplicates: `LAST` names whichever item the preceding `CREATE` minted,
+so identical text is a different subject each time. Scoped to explicit-QID lines across the
+file plus repeats inside one `CREATE` block.
+
+**The quote check could not catch the case it existed for.** It tested
+`line.count('"') % 2`, and `LAST Len "Stine "Stena" Garborg"` has **four** quotes — even —
+while QuickStatements still ends the string at the second. Parity is the wrong test. Each
+tab-separated field is now checked to open and close and contain no quote of its own.
+
+**`creations()` attributed a statement to the wrong block.** Its `P2600` pattern matched
+`Q123 P2600 "…"` as well as `LAST P2600 "…"`, so an explicit statement following a `CREATE`
+block was counted as part of it. Narrowed to `LAST`.
+
+All three were found by the guard-the-guard tests — synthetic inputs asserting the checks
+fire — not by the checks passing on today's files. That is the whole reason those exist,
+and it is the second time this week they have earned it.
+
+**What the guard cannot do, said in its docstring so nobody trusts it further.** Whether a
+`CREATE` would duplicate an existing Wikidata item is only decidable against a current
+`P2600` map; ours is a gitignored snapshot from 2026-08-09 and predates the Garborg items
+Emma made by hand. **That check would not have caught the bug that prompted this work.** It
+catches the ordinary case and skips when the snapshot is absent.
+
+**Fast lane: 1,091 passed, 0 failed**, with `BOT_CONTACT` set — green for the first time
+this session. The `chain-seeds` duplicate is gone and `test_the_offline_guard_actually_fires`
+passes once the variable is present.
