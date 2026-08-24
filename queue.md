@@ -41,6 +41,52 @@ and no two batches creating the same person.
 - Nothing outstanding here right now. `reports/repo-freshness.csv` was regenerated
   2026-08-23 and no longer lists the two files that had been deleted under it.
 
+## The derived chain is stale by ~300 exports — regenerating 2026-08-24
+
+`reports/display-names.csv`, `derived-labels.csv`, `derived-facts.csv` and
+`derived-family.csv` were all built on **16-17 August**, when the corpus was around 250
+exports. It is **546** now and `out/merged.ged` was rebuilt on 08-23. Everything
+downstream has been describing a tree less than half the current one — exactly what
+`CLAUDE.md` warns about: *"Running the analysers is not running the generator."*
+
+The chain, in order:
+
+1. `scripts/build-display-names.py` ← `out/merged.ged`
+2. `scripts/derive-labels.py` ← `reports/display-names.csv`
+3. `scripts/derive-family.py` and `scripts/derive-facts.py` ← `out/merged.ged`
+
+- **Re-run every emitter that reads them afterwards.** `build-garborg-hop.py` and
+  `build-garborg-batch.py` both take dates and labels from `derived-facts.csv`, so
+  hops 1 and 2 were generated from the stale derivation and want regenerating once
+  this lands.
+- Then the structural walk: `scripts/walk-structural-merge.py --all` reads
+  `derived-family.csv`, so `reports/structural-correspondence.csv` (08-18, 3,902 rows)
+  is stale by the same margin.
+
+### ⛔ THE DERIVED CHAIN HAS OUTGROWN GITHUB — Emma's call
+
+`reports/derived-family.csv` regenerated from the 546-export merge is **127.7 MiB**.
+**GitHub refuses any file over 100 MiB**, so committing it fails the push. It was 41.4
+MiB at ~250 exports; the corpus roughly doubled and so did the file.
+
+The other three will follow: `display-names.csv` was 67.5 MiB and `derived-facts.csv`
+53.4 MiB **at the old corpus size**. Both are likely over the limit once regenerated.
+
+This is the same shape as `out/merged.ged`, which `CLAUDE.md` exempts *"by necessity,
+Emma's call, 2026-08-07"* — and it collides with the standing rule that `reports/` is
+tracked and *"we don't care about repo size."* Options, none taken:
+
+- **Gitignore the four derived CSVs** as regenerable, the `out/merged.ged` precedent.
+  Costs a clean checkout the ability to run any emitter without a 20-minute rebuild.
+- **Commit them gzipped** and have the readers open `.csv.gz`. Keeps them in git;
+  touches every consumer.
+- **Split by first digit of the Geni id** into ten files under the limit. Keeps plain
+  CSV; touches every consumer.
+
+**Until this is settled the regenerated `derived-family.csv` sits on disk uncommitted**,
+which means a clean checkout still has the 08-17 one. Do not commit it and do not
+regenerate the other three into the same wall without a decision.
+
 ## The daily Garborg hop — the programme, per Emma 2026-08-23
 
 **One hop out from Arne Garborg per day**, a small reviewable batch each time, as
