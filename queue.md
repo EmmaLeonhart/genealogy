@@ -75,15 +75,33 @@ the pair. `CLAUDE.md` § *The four big derived CSVs are committed GZIPPED*.
 **One hop out from Arne Garborg per day**, a small reviewable batch each time, as
 rehearsal for a later Geni bot. `CLAUDE.md` § *The programme is HYPERLOCAL*.
 
-- `scripts/build-garborg-hop.py` is the generator. **Hop 1** is
-  `reports/wikidata-garborg.qs` (6 creations, 84 statements). **Hop 2** is
-  `reports/wikidata-garborg-hop2.qs` — 38 creations, 17 links, 21 deferred: the
-  siblings' spouses and children and Arne's four grandparents. Two of the 40 were
-  skipped because they already have items (`Q11959067`, `Q3143008`).
-- **Hop 3 is not defined in the generator yet** — `frontier()` refuses any hop but 2
-  rather than guessing what the next ring is.
-- **Do not invent batches she has not asked for.** The existing mass batches stay live
-  and will run from 2026-09-01; that is settled and is not this rule.
+**Emma, 2026-08-24: the batches so far are not comprehensive.** *"I gave a big idea of
+what the data modelling should be in the quick statements. Your quick statements that
+you generated for them aren't really there yet... it should be comprehensive so they
+conform to this new model."* Four things she named, in order:
+
+- **Name modelling.** DONE for the item side: `scripts/namemodel.py` classifies a
+  Norwegian name into `P735` given (with `P1545` ordinal, `P7452` *usual forename* on
+  the first, `P3831` → `Q245025` *middle name* after), `P5056` patronym, `P734`
+  family. `scripts/build-garborg-name-items.py` emits the **31 name items** Wikidata
+  lacks — `reports/wikidata-garborg-name-items.qs`, which **runs first**. 8 tokens are
+  ambiguous and are listed, never created.
+- **STILL TO DO: wire the name statements into the person batches.** The items exist
+  now; hops 1 and 2 still carry no `P735`/`P734`/`P5056`.
+- **STILL TO DO: `ja` and `zh` labels.** *"we should also be adding their names in
+  languages that are not English, or at least in Japanese... and Chinese."* Katakana
+  for `ja` is mechanical; **`zh` transliteration of Norwegian names is a judgement**
+  and wants a sample in front of her before 44 people get one.
+- **STILL TO DO: everyone directly linked.** *"For the people that we added in this
+  batch, we're now adding all the people directly linked to them."* Hop 2 took spouses,
+  children and grandparents; siblings-of-spouses and parents-of-spouses were not taken.
+
+**Checked against Wikidata, offline, 2026-08-24.** Arne `Q467497` has **one** `P40`
+child — Arne Olaus `Q11959067` — confirming Emma: *"I don't think Arnie had any
+grandchildren. He just had one child."* Our tree agrees. Arne carries `P735` `Q645757`
+*Arne* and `P734` `Q30250555` *Garborg* but **no `P5056`**, though his Geni name is
+`Aadne Eivindson Garborg`; the patronym is a gap to fill. `Q11959067` has 87 labels and
+**neither `ja` nor `zh`**; `Q467497` and `Q3143008` have both.
 
 ## Ordering is now enforced — `genimerge.editorder`
 

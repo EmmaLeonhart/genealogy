@@ -11765,3 +11765,48 @@ working for whoever regenerated it and a clean checkout gets nothing — the sam
 `6eddadd`, which left a cloud session measuring half the corpus its reports described.
 Freshness is deliberately not asserted: a `.gz` older than its `.csv` is the normal state
 mid-regeneration, and a suite that reddens for that gets ignored.
+
+## 2026-08-24 — name modelling, and 31 name items Wikidata does not have
+
+Emma: *"we should be modelling the names properly, which he didn't do."* She is right —
+both Garborg batches carried labels and **no `P735`, `P734` or `P5056` at all**.
+
+**`scripts/namemodel.py`** classifies a Norwegian name into her model from
+`name modelling.txt`: first token `P735` with `P1545` ordinal 1 and `P7452` → `Q3409033`
+*usual forename*; later given tokens `P735` with `P3831` → `Q245025` *middle name*; a
+`-sen/-son/-datter` token `P5056` *patronym or matronym* as its **own property**, not a
+qualified `P735`; the last token `P734` — **unless that last token is itself patronymic**,
+which is the ordinary case a generation earlier, where `Jon Samuelsen` has no family name
+and `Samuelsen` must not become one.
+
+Two tokeniser bugs found by running it on real names: Geni's quoted nicknames
+(`Stine "Stena"`) and parentheses (`Ingvold (Pinkie)`) were becoming tokens with the
+punctuation attached. Stripped, content kept — `CLAUDE.md` records that Emma took the
+nickname and dropped the quotes.
+
+**`scripts/build-garborg-name-items.py` → `reports/wikidata-garborg-name-items.qs`: 31
+name items**, run first because QuickStatements cannot point at an item a `CREATE` in the
+same batch just minted. 42 tokens already have items and are linked rather than created.
+**8 are ambiguous and are not created** — `Marie`, `Olga`, `Anton` and the rest resolve to
+several items each, and adding one more is the `Maria` failure that would have made a tenth.
+
+**`Eivindsen` is the case that proves the rule.** It has a Wikidata item as a *given* name
+and needs a separate one as a *patronymic* — `CLAUDE.md` § *One name item per USAGE*: *"a
+different object for all three usages."* Four patronymic items are needed for spellings
+that already exist as given names.
+
+**Checked against Wikidata offline first.** Arne `Q467497` has exactly one `P40` child,
+`Q11959067`, confirming Emma's *"he just had one child"* — our tree agrees, so there is
+nothing missing to add there. He carries `P735` *Arne* and `P734` *Garborg* and **no
+`P5056`**, though Geni names him `Aadne Eivindson Garborg`.
+
+**Two guards fired and both were right about me.**
+`test_every_creation_carries_exactly_one_geni_id` failed on the name-item batch — because
+**a name item has no Geni ID, since a name is not a person**. Same mistake as the JSON-side
+rule that demanded a subject identifier on `create_name_item`. Split into a person rule and
+a name rule, plus a new one that every created name item states exactly one `P31` so given
+can be told from family. And `test_the_batch_inventory_names_exactly_the_batches_on_disk`
+caught the new `.qs` missing from `built-batches.tsv` — the drift guard from yesterday
+doing its job on its first real occasion.
+
+**Fast lane: 1,153 passed, 0 failed** after refreshing the inventory.

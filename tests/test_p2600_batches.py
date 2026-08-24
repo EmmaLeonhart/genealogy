@@ -183,12 +183,68 @@ def test_no_statement_is_repeated(name):
     assert not dupes, f"{name}: {len(dupes)} repeated statements, e.g. {dupes[:2]}"
 
 
+#: `P31` values that mean the created item is a NAME, not a person: family name,
+#: given name, patronymic. `CLAUDE.md` § Wikidata properties and items.
+NAME_CLASSES = {"Q101352", "Q202444", "Q110874", "Q12308941", "Q11879590", "Q3409032"}
+
+
+def is_name_item(block_lines):
+    return any(ln.split("	")[-1] in NAME_CLASSES for ln in block_lines
+               if ln.startswith("LAST	P31	"))
+
+
+def create_blocks(path):
+    """Each CREATE block's lines, so a block can be judged on what it creates."""
+    blocks, current, inside = [], [], False
+    for _i, line in statements(path):
+        if line == "CREATE":
+            if inside:
+                blocks.append(current)
+            current, inside = [], True
+        elif inside:
+            if line.startswith("LAST	"):
+                current.append(line)
+            else:
+                blocks.append(current)
+                current, inside = [], False
+    if inside:
+        blocks.append(current)
+    return blocks
+
+
 @pytest.mark.parametrize("name", NAMES)
-def test_every_creation_carries_exactly_one_geni_id(name):
-    """A created item with no `P2600` cannot be cited; with two it is a merge."""
+def test_every_created_person_carries_exactly_one_geni_id(name):
+    """A created person with no `P2600` cannot be cited; with two it is a merge.
+
+    **A created NAME is exempt, and the first version of this test was wrong about
+    that.** It failed `wikidata-garborg-name-items.qs`, where every block is a family
+    name, given name or patronymic — things that have no Geni profile because they are
+    not people. `CLAUDE.md` § *One name item per USAGE* is the reason those items exist
+    at all. The same distinction is `CREATIONS` in `tests/test_edit_graph.py`.
+    """
     path = REPORTS / name
-    bad = [(n, ids) for n, ids in enumerate(creations(path), 1) if len(ids) != 1]
-    assert not bad, f"{name}: CREATE blocks with the wrong number of P2600 — {bad[:5]}"
+    bad = []
+    for n, block in enumerate(create_blocks(path), 1):
+        ids = [m.group(1) for ln in block
+               for m in [LAST_P2600.match(ln)] if m]
+        if is_name_item(block):
+            if ids:
+                bad.append((n, f"name item carrying P2600 {ids}"))
+        elif len(ids) != 1:
+            bad.append((n, f"{len(ids)} P2600 on a created person"))
+    assert not bad, f"{name}: {bad[:5]}"
+
+
+@pytest.mark.parametrize("name", NAMES)
+def test_every_created_name_item_says_what_kind_of_name_it_is(name):
+    """A name item with no `P31` is untyped, and nothing can tell given from family."""
+    path = REPORTS / name
+    bad = []
+    for n, block in enumerate(create_blocks(path), 1):
+        p31 = [ln for ln in block if ln.startswith("LAST	P31	")]
+        if len(p31) != 1:
+            bad.append((n, f"{len(p31)} P31 statements"))
+    assert not bad, f"{name}: every CREATE needs exactly one P31 — {bad[:5]}"
 
 
 def test_no_two_batches_create_the_same_person():
