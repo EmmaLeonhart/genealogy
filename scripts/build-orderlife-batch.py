@@ -653,6 +653,34 @@ def main() -> int:
             batch.append(_rel(q, wqid, "P26", target[0], ref, sp,
                               persons, gaiad))
 
+    # Two order.life people can map to ONE Wikidata item, so the same claim gets
+    # reached twice by different routes: `Q96124 P22 Q161419` arrived once via
+    # Danaus and once via Oceanus, identical in subject and statement and
+    # differing only in the provenance note. Wikidata gets one statement either
+    # way, so the copies are collapsed and both notes kept. Twelve of the 33
+    # duplicate ids `scripts/audit-edit-graph.py` found on 2026-08-23.
+    seen_rel, deduped, collapsed = {}, [], 0
+    for e in batch:
+        if e["type"] != "add_relationship":
+            deduped.append(e)
+            continue
+        prev = seen_rel.get(e["id"])
+        if prev is None:
+            seen_rel[e["id"]] = e
+            deduped.append(e)
+            continue
+        collapsed += 1
+        notes = [n for n in (prev.get("note"), e.get("note")) if n]
+        if notes:
+            prev["note"] = "; ".join(dict.fromkeys(notes))
+        # An unresolved parent sex on either route still needs choosing.
+        if e.get("needs") and not prev.get("needs"):
+            prev["needs"] = e["needs"]
+    batch = deduped
+    if collapsed:
+        print(f"collapsed {collapsed} duplicate add_relationship edits "
+              f"- one claim reached from two order.life people")
+
     for e in batch:
         if e["type"] == "add_relationship":
             summary["add_relationship"] = summary.get("add_relationship", 0) + 1

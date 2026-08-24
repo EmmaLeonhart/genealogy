@@ -144,7 +144,13 @@ def main() -> int:
         second = bool(on_item)
         tally["a second Geni ID on the item" if second else "emit"] += 1
         edits.append({
-            "id": f"structural_correspondence:{qid}",
+            # The Geni id is part of the name because one Wikidata item can
+            # correspond to TWO Geni profiles -- the multi-valued `P2600` case
+            # `CLAUDE.md` describes, where both statements are correct. Keyed on
+            # the QID alone, 20 pairs collided: `structural_correspondence:Q2001541`
+            # named two different edits. Nothing declares a `requires` on this
+            # prefix yet, so widening the key breaks no dependency.
+            "id": f"structural_correspondence:{qid}:{gid}",
             "type": "add_geni_id",
             "source": "structural merge walk",
             "subject": {"qid": qid, "geni_id": gid},

@@ -11,13 +11,14 @@ mention it; 284,125 edit objects declare an ordering that no executor enforces. 
 is recorded in `queue.md` as work, not fixed here — a resolver is a design decision
 about how the batches run, not a test.
 
-What these tests do is make sure the graph would be *usable* by such a resolver.
-Two of them failed when this file was written; **the dangling-dependency one is now
-fixed and its marker is off** — 55,776 became 0 once three scripts stopped naming ids
-nothing emits. The duplicate-id one is still strict `xfail`: the defect is real, the
-number is measured, and fixing it turns the suite red asking for the marker to come
-off. `reports/edit-graph.md` is the full accounting, `scripts/audit-edit-graph.py`
-regenerates it.
+**`genimerge.editorder` now reads `requires`** — Emma's design, a random pick from
+whatever is ready. It orders all 284,146 objects in about a second with no violations.
+
+Two of these tests failed when the file was written and **both markers are now off**:
+55,776 dangling dependencies became 0 once three scripts stopped naming ids nothing
+emits, and 33 duplicate ids became 0 once two id schemes gained the Geni id and one
+emitter deduplicated a claim it reached twice. `reports/edit-graph.md` is the full
+accounting; `scripts/audit-edit-graph.py` regenerates it.
 """
 from __future__ import annotations
 
@@ -130,13 +131,21 @@ def test_the_dependency_graph_has_no_cycles(edits):
     assert not cycles, f"{len(cycles)} cycles, e.g. {cycles[:2]}"
 
 
-@pytest.mark.xfail(strict=True, reason=(
-    "33 duplicate ids, measured 2026-08-23. `add_geni_id:Q694696` collides because "
-    "the id scheme is keyed on the QID alone and that QID has two Geni profiles -- "
-    "the multi-valued P2600 case, so both edits are correct and the NAMING is wrong. "
-    "The other 32 are repeated add_relationship and structural_correspondence rows. "
-    "See reports/edit-graph.md."))
 def test_no_two_edits_claim_the_same_id(edits):
+    """Was strict `xfail` at 33 on 2026-08-23; now zero, and the two causes differed.
+
+    **Twenty-one were two correct statements sharing one name.** One Wikidata item
+    can carry two Geni ids -- the multi-valued `P2600` case -- so
+    `structural_correspondence:<qid>` and `add_geni_id:<qid>` each named two
+    different edits. The Geni id is now part of the id; nothing declared a
+    `requires` on either prefix, so widening the key broke no dependency.
+
+    **Twelve were one claim reached twice.** Two order.life people can map to a
+    single Wikidata item, so `Q96124 P22 Q161419` arrived once via Danaus and once
+    via Oceanus -- identical subject and statement, differing only in the provenance
+    note. Wikidata gets one statement either way, so those are collapsed and both
+    notes kept.
+    """
     seen, dupes = set(), []
     for _n, e in edits:
         if e.get("id") in seen:

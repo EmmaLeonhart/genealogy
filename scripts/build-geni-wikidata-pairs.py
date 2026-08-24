@@ -136,7 +136,10 @@ def main() -> int:
             })
             if status.startswith(("in store", "not in", "additional")):
                 batch.append({
-                    "id": f"add_geni_id:{q}",
+                    # The Geni id is in the name because one QID can carry two
+                    # of them -- `Q694696` does -- and `P2600` is multi-valued, so
+                    # both edits are correct while one name for both is not.
+                    "id": f"add_geni_id:{q}:{g}",
                     "type": "add_geni_id",
                     "priority": False,
                     "subject": {"qid": q, "geni_id": g},

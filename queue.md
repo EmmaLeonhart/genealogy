@@ -41,27 +41,29 @@ and no two batches creating the same person.
 - Nothing outstanding here right now. `reports/repo-freshness.csv` was regenerated
   2026-08-23 and no longer lists the two files that had been deleted under it.
 
-## The edit batches declare an ordering nothing enforces
+## The daily Garborg hop — the programme, per Emma 2026-08-23
 
-`reports/edit-graph.md`, `scripts/audit-edit-graph.py`.
+**One hop out from Arne Garborg per day**, a small reviewable batch each time, as
+rehearsal for a later Geni bot. `CLAUDE.md` § *The programme is HYPERLOCAL*.
 
-**284,125 edit objects carry a `requires` list, and no executor reads it.**
-`scripts/wikidata-edit-run.py` does not mention the field. `CLAUDE.md` leans on that
-ordering in the place it matters most — the `NN` fix is two edits per item, the `mul`
-one declared as a dependency of the `en` one, *"so the marker is written before the slot
-holding it is reused"*. On the **1,271** items whose only `NN` lives in `en`, running the
-`en` batch first erases the marker.
+- **Build the hop generator.** Given the items that exist, emit the next distance out:
+  siblings, then their spouses and children, then the grandparents. Shape from
+  `docs/wikidata-item-template.md`.
+- Hop 1 is done and is `reports/wikidata-garborg.qs` — 6 creations, 84 statements, the
+  six remaining siblings plus dates and `P3373` on the four items she made by hand.
+- **Do not invent batches she has not asked for.** The existing mass batches stay live
+  and will run from 2026-09-01; that is settled and is not this rule.
 
-- **Decide how ordering is enforced** — a resolver in the runner, or emitting batches in
-  dependency order, or splitting them into numbered passes. A design call, and the only
-  part of this still open.
-- **33 duplicate ids.** `add_geni_id:Q694696` collides because the id is keyed on the QID
-  alone and that QID has two Geni profiles — the multi-valued `P2600` case, so both
-  edits are right and the *naming* is wrong. The other 32 are repeated
-  `add_relationship` and `structural_correspondence` rows. Strict `xfail` in
-  `tests/test_edit_graph.py`.
+## Ordering is now enforced — `genimerge.editorder`
 
-**The graph itself now resolves: 0 dangling dependencies, 0 cycles** (was 55,776 dangling).
+Emma's design, verbatim: *"it randomly selects an edit object, sees if its requirements
+are present, if they are then it runs, if no then randomly select and run another one."*
+Implemented, 11 tests, and it orders all **284,146** edit objects in about a second with
+**0 violations, 0 dangling, 0 cycles, 0 duplicate ids**.
+
+- **Wire it into `scripts/wikidata-edit-run.py`.** The module exists and the runner
+  still does not consult it, so the ordering is honoured only by whoever calls the
+  module. That is the last step of this item.
 
 ## Izumo / Senge clan — measured 2026-08-23, `reports/izumo.md`
 
