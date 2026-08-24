@@ -11936,3 +11936,37 @@ reaches the seam it names.
 That also corrects something I reported: the **1,172 passed, 0 failed** figure was
 measured with `BOT_CONTACT` set. Without the secret the lane was never green. It is now
 green either way — **1,175 passed, 0 failed, 3m44s**.
+
+## 2026-08-24 — the structural walk, re-run on the fresh tree
+
+`scripts/walk-structural-merge.py --all`, 3m14s, entirely offline — `derived-family.csv`
+against the downloaded store, no network. It had last run on **2026-08-18**, against a
+derivation built when the corpus was ~250 exports; it is 546 now.
+
+**1,325,436 people, 37,764 carrying a QID, 31,728 anchors** holding both identifiers and
+a recorded parent. Per position:
+
+    130,835  GENI ONLY     we have a parent, Wikidata does not
+     89,500  AGREE         both sides, already the same item
+     35,708  MERGE         both sides, ours has no QID -- the correspondence
+     12,521  WD ONLY
+        187  AMBIGUOUS
+
+**`reports/structural-correspondence.csv`: 3,902 rows → 7,861.** The 35,708 above counts
+*positions*; a person is the parent in many walks, so the file deduplicates to 7,861
+distinct Geni profiles, each against one QID. **46 QIDs appear more than once** — one
+Wikidata item against several Geni profiles, which `CLAUDE.md` § *A second Geni ID on one
+Wikidata item is NOT a conflict* settles as correct and expected, not something to
+adjudicate.
+
+**`reports/wikidata-structural-placeholders.json`: 12,260 → 35,118**, and it verifies:
+35,118 objects, 35,118 distinct ids, **0 dangling `requires`**. 33,450 carry a `mul`
+label, 1,293 a `ja`/`zh` one, 798 none at all.
+
+This is maintenance of a batch that already existed, per Emma 2026-08-23 — *"Keep
+maintaining them they are gonna be run"* — not a new one invented uninvited.
+
+**The rows read the way the method says they should.** `Isabelle de Canouville` on Geni
+against `Isabelle D'Esmalleville` on Wikidata, both the mother of Marguerite Blosset: two
+territorial designations for one woman, paired by *position* with the label doing nothing
+but failing to be absurd. No name was searched.

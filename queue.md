@@ -41,34 +41,15 @@ and no two batches creating the same person.
 - Nothing outstanding here right now. `reports/repo-freshness.csv` was regenerated
   2026-08-23 and no longer lists the two files that had been deleted under it.
 
-## The derived chain is stale by ~300 exports — regenerating 2026-08-24
-
-`reports/display-names.csv`, `derived-labels.csv`, `derived-facts.csv` and
-`derived-family.csv` were all built on **16-17 August**, when the corpus was around 250
-exports. It is **546** now and `out/merged.ged` was rebuilt on 08-23. Everything
-downstream has been describing a tree less than half the current one — exactly what
-`CLAUDE.md` warns about: *"Running the analysers is not running the generator."*
-
-The chain, in order:
-
-1. `scripts/build-display-names.py` ← `out/merged.ged`
-2. `scripts/derive-labels.py` ← `reports/display-names.csv`
-3. `scripts/derive-family.py` and `scripts/derive-facts.py` ← `out/merged.ged`
-
-- **Re-run every emitter that reads them afterwards.** `build-garborg-hop.py` and
-  `build-garborg-batch.py` both take dates and labels from `derived-facts.csv`, so
-  hops 1 and 2 were generated from the stale derivation and want regenerating once
-  this lands.
-- Then the structural walk: `scripts/walk-structural-merge.py --all` reads
-  `derived-family.csv`, so `reports/structural-correspondence.csv` (08-18, 3,902 rows)
-  is stale by the same margin.
-
-### Settled: the derived CSVs are committed gzipped
+## The derived CSVs are committed gzipped
 
 Emma, 2026-08-24: *"Imo gzip because this is long term and we aren't adding any more data
-into our tree. Just processing."* Done — `scripts/pack-derived.py`, four `.csv.gz` in git
+into our tree. Just processing."* `scripts/pack-derived.py`, four `.csv.gz` in git
 (26-43 MiB, 4.1-4.8x), four plain CSVs gitignored, `tests/test_derived_packing.py` pinning
 the pair. `CLAUDE.md` § *The four big derived CSVs are committed GZIPPED*.
+
+**After a clean clone: `python scripts/pack-derived.py --unpack` once.** Forty-four
+scripts open the plain CSV by name.
 
 ## The daily Garborg batch — one QuickStatements run per day
 
