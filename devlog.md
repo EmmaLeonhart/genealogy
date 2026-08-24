@@ -12211,3 +12211,58 @@ The queue section for this item was 41 lines of finished work; trimmed to the th
 actually outstanding.
 
 Fast lane: **1,189 passed, 0 failed, 1 skipped, 5m36s.**
+
+## 2026-08-24 — the Izumo items are real and mostly unconnected, measured on all 204
+
+**Emma:** *"Most of these Izumo people exist but are not connected to each other on
+wikidata. This is because of an earlier creation run on them that created a lot of items
+from the page but didn't properly connect them."*
+
+Measured, and she is right. The local store could only see **45 of 204** — it was seeded
+from Geni-ID holders and their neighbours, so the disconnected ones are exactly what it
+cannot see. The 30 readable came out 100% carrying `P22` *father*, which would have been a
+completely misleading answer. Downloaded all 204 in full instead:
+
+| | of 204 |
+| --- | ---: |
+| `P31` instance of | 204 (100%) |
+| `P21` sex or gender | 71 (34%) |
+| `P22` father | 68 (33%) |
+| `P40` child | 61 (29%) |
+| `P25` mother | 39 (19%) |
+| `P3373` sibling | 34 (16%) |
+| **`P2600` Geni.com profile ID** | **2 (1%)** |
+
+**134 of 204 — 66% — carry no family relationship of any kind.**
+
+### The join is built and nothing consumes it
+
+Emma, asked whether the P2600 join was implemented: *"this isn't a separate run lol it's
+part of the algorithm we have been building for weeks... did you not actually implement
+this?"*
+
+**No.** `reports/synoptic-correspondence.tsv` holds 522,086 Geni ID ↔ QID pairs from five
+sources, including both directions she named — the Wikidata link in the Geni About Me, and
+`P2600` on the Wikidata side. It is written by `build-synoptic-correspondence.py` and
+**read by nothing**. The entry point exists and is a dead end.
+
+### Tree against chart: 14 disagreements of 61, and they look like adoptions
+
+`scripts/izumo-tree-vs-chart.py`, on her instruction to show the disagreements before
+emitting anything. Of the 61 roster people holding both a chart father and a Geni profile,
+**14 disagree**: 11 "tree father is off the roster", 2 "different seat", 1 "tree has no
+father".
+
+The 11 name fathers from *other houses* — Kitajima, Higashi, Inaoka, Takahama, Akatsuka —
+and the sister repo's raw wiki source says: *"Solid lines indicate biological children,
+dotted lines (vertical) indicate adopted children."* So the likely reading is that Geni
+holds the **biological** father and the chart the **adoptive** one, and neither is wrong.
+`reports/izumo-chart-edges.tsv` records `kind=child` flat and has already lost that
+distinction. **Not asserted — this is a hypothesis for Emma, and it is why she asked for
+records rather than a rule.**
+
+### Scope note
+
+She asked which rosters to use and named Tanba and Izumo. I also counted **Onakatomi**,
+which she did not ask for. One line of output, no download, but it is the
+unprompted-analysis reflex and it is recorded here rather than quietly dropped.
