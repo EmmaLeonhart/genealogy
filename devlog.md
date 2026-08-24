@@ -12342,3 +12342,61 @@ That is the roster's gap, not the emitter's, and it is where the About Me links 
 been written.
 
 Fast lane: **1,204 passed, 0 failed, 1 skipped, 5m34s.**
+
+## 2026-08-24 — "same parent, same name" REFUTED as a duplicate signal
+
+Emma: *"Look at actual duplicates"*, then *"I'll get a duplicate because I don't trust
+you"* — and she supplied eight real ones she had merged on Geni herself: Yorihide,
+Yorinobu, Yoritoyo, Munekiyo, Fuyuyasu, Masatoshi Tanba (Sat), Nagatoyo and Yorimoto Tanba
+(Fri).
+
+**`scripts/find-geni-duplicates.py` found none of the eight, and the signal is refuted.**
+
+### It had nothing to find
+
+Each of those eight appears **exactly once** in our corpus. The only Tanba export is dated
+**22 AUG**, and her Friday merges (21 AUG, 11:25–11:26) certainly predate it. We exported
+the survivor, never the pair. `Yorimoto Tanba` does appear four times — with **four
+different fathers**, four men across generations sharing a name, which is the opposite of
+a duplicate.
+
+So there is **no confirmed true positive**, and no basis for claiming the finder works.
+
+### The premise was wrong, and its own output says so
+
+The signal was "two children of one parent bearing the same name", on the reasoning that
+parents do not name two surviving children alike. **That is specifically false for this
+corpus.** Scandinavian families reused a dead child's name for the next child, and the
+tree is heavily Scandinavian: `Lars Larsson` ×5 as children of `Lars Olofsson`,
+`Brita Larsdotter` ×5, `Sven Svensson` ×5.
+
+Split the 9,546 groups by whether the same-named siblings share a birth year:
+
+| | groups |
+| --- | ---: |
+| different birth years — name reuse | **8,101** |
+| only one has a year | 1,055 |
+| no birth year at all | 390 |
+| **same birth year — would indicate a duplicate** | **0** |
+
+**Zero.** The discriminator that would have rescued the signal fires on nothing.
+
+### Two placeholder screens it took to get there, both wrong first
+
+The first run's top fifteen rows were all `<private> SURNAME` — seventeen redacted
+children of one man read as a seventeen-fold duplicate. Widening to `NN Steele`,
+`N.N. Schnelle`, `FNU Seligmann`, `Infant Swartzentruber` cut 12,318 → 9,546. Bare
+surnames (`Tachibana` ×8, `Watanabe` ×5) are the next layer and were not screened, because
+by then the signal was already refuted and tightening it further would only have made a
+wrong answer tidier.
+
+### What this says about finding Geni duplicates at all
+
+A duplicate is only visible to us if **both** profiles were in an export. Emma merges
+promptly, so the corpus is largely a post-merge snapshot — which is the real reason this
+came back empty, and it is not fixable by a better signal. Detecting merges needs Geni
+itself, and the redirect probe earlier today established that `/people/x/<id>` merely fills
+the name slug and keeps the id, so it does not reveal one.
+
+The script and its output stay committed as the record of a refuted method, in the same
+way `reports/descendants-backtest-2026-08-07.md` holds the two refuted seed heuristics.
