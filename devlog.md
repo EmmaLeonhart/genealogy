@@ -12624,3 +12624,47 @@ placeholder. The profile page showed the truth — *"Son of Adakatsu and NN"*.
 
 Next: Aaron III needs his own export, then re-merge, re-derive, and only then the walk and
 the correspondence.
+
+## 2026-08-24 — second post-merge export, and what the Samaritans revealed
+
+Emma: *"why are you not exporting?"* — because I had stopped to report instead of
+continuing. Continued.
+
+**`exports/post-merge/export-Forest-6000000178918141824.ged`** — Aaron III Samaritan High
+Priest, Forest/5000, **5,000 individuals, 3,092 families**. He needed no placeholder:
+**Emma added him herself in 2021**, so *Export GEDCOM* was available directly, which is the
+preferred tier of her design. Checking who added a profile before building a placeholder
+is the cheap step that saved one here.
+
+**The two balls do not overlap at all** — 5,000 of the Aaron III ball's 5,000 people are
+absent from the first. Two seeds, two disjoint neighbourhoods.
+
+### Coverage across both post-merge exports, of 29 duplicate rows
+
+| | rows |
+| --- | ---: |
+| **resolved** — survivor present, twin absent | **18** |
+| both ids still live on Geni | 5 |
+| untouched — survivor not in either ball | 6 |
+
+### The 5 "both present" rows are a finding, not a failure
+
+Both ids are still live on Geni *after* her merges, so those pairs were **not** duplicates
+that a merge removed. Four are Samaritan High Priests and the pattern is visible in the
+fathers: Amram V's twin has father *Aaron III*, and Aaron III's father is *Amram V* — a
+hereditary line where numbered names recur every couple of generations.
+
+**Not investigated further, deliberately.** `CLAUDE.md` § *The Samaritan family
+relationships are DONE. Do not audit them* — and Emma: *"I know that the Samaritans have
+errors in their relationships but my perspective here is it's good enough and we're moving
+on."* Flagged, stopped.
+
+This also vindicates the `weak` grading: four of these five were graded weak precisely
+because their fathers differed, and the export shows the doubt was right.
+
+### Still needing a seed
+
+Isaac Aaron Ettinger, Sadakiyo En'ya, Elias Kemsley — plus Yorimoto Tanba, the known false
+positive (four men across generations sharing a name).
+
+548 corpus exports now, with both post-merge files sorting last.
