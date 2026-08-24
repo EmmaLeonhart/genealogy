@@ -63,42 +63,12 @@ The chain, in order:
   `derived-family.csv`, so `reports/structural-correspondence.csv` (08-18, 3,902 rows)
   is stale by the same margin.
 
-### ⛔ THE DERIVED CHAIN HAS OUTGROWN GITHUB — Emma's call
+### Settled: the derived CSVs are committed gzipped
 
-`reports/derived-family.csv` regenerated from the 546-export merge is **127.7 MiB**.
-**GitHub refuses any file over 100 MiB**, so committing it fails the push. It was 41.4
-MiB at ~250 exports; the corpus roughly doubled and so did the file.
-
-**All four are now regenerated and all four are over the limit.** Measured, not predicted:
-
-| file | 08-17, ~250 exports | 08-24, 546 exports |
-| --- | ---: | ---: |
-| `display-names.csv` | 67.5 MiB | **183.6 MiB** |
-| `derived-facts.csv` | 53.4 MiB | **175.9 MiB** |
-| `derived-family.csv` | 41.4 MiB | **127.7 MiB** |
-| `derived-labels.csv` | 37.2 MiB | **108.6 MiB** |
-
-596 MiB between them, none committable.
-
-**The Garborg batches were unaffected.** Both were generated from the stale chain and
-both are **byte-identical** after regenerating from the fresh one — that family was
-fully covered early, so nothing about them moved between 250 and 546 exports. Checked
-rather than assumed, because they had already been handed over.
-
-This is the same shape as `out/merged.ged`, which `CLAUDE.md` exempts *"by necessity,
-Emma's call, 2026-08-07"* — and it collides with the standing rule that `reports/` is
-tracked and *"we don't care about repo size."* Options, none taken:
-
-- **Gitignore the four derived CSVs** as regenerable, the `out/merged.ged` precedent.
-  Costs a clean checkout the ability to run any emitter without a 20-minute rebuild.
-- **Commit them gzipped** and have the readers open `.csv.gz`. Keeps them in git;
-  touches every consumer.
-- **Split by first digit of the Geni id** into ten files under the limit. Keeps plain
-  CSV; touches every consumer.
-
-**Until this is settled the regenerated `derived-family.csv` sits on disk uncommitted**,
-which means a clean checkout still has the 08-17 one. Do not commit it and do not
-regenerate the other three into the same wall without a decision.
+Emma, 2026-08-24: *"Imo gzip because this is long term and we aren't adding any more data
+into our tree. Just processing."* Done — `scripts/pack-derived.py`, four `.csv.gz` in git
+(26-43 MiB, 4.1-4.8x), four plain CSVs gitignored, `tests/test_derived_packing.py` pinning
+the pair. `CLAUDE.md` § *The four big derived CSVs are committed GZIPPED*.
 
 ## The daily Garborg hop — the programme, per Emma 2026-08-23
 

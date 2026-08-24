@@ -462,3 +462,14 @@ reports/export-provenance.csv
 exports/izumo/export-geni-6000000227390753876.zip
 exports/izumo/export-geni-6000000227331852896.zip
 exports/samaritans/export-geni-6000000227245553985.zip
+
+# The four big derived CSVs. Emma, 2026-08-24: gzip them, "because this is long
+# term and we aren't adding any more data into our tree. Just processing."
+# Regenerated from the 546-export merge they are 108-184 MiB each and GitHub
+# refuses anything over 100 MiB. The .csv.gz IS committed; run
+# `python scripts/pack-derived.py --unpack` after a clean clone. Listed one path
+# per line, never a *.csv pattern -- the same rule the zips follow.
+reports/display-names.csv
+reports/derived-facts.csv
+reports/derived-family.csv
+reports/derived-labels.csv

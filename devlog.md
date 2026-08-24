@@ -11738,3 +11738,30 @@ been wrong.
 
 `reports/facts.md`, `reports/labels.md` and `reports/invented-parents.csv` also refreshed
 and are small enough to commit.
+
+## 2026-08-24 — the derived CSVs are committed gzipped
+
+Emma's call: *"Imo gzip because this is long term and we aren't adding any more data into
+our tree. Just processing."*
+
+`scripts/pack-derived.py` packs the four and `--unpack` restores them:
+
+| file | plain | gzipped | |
+| --- | ---: | ---: | ---: |
+| `display-names.csv` | 183.6 MiB | 40.5 | 4.5× |
+| `derived-facts.csv` | 175.9 MiB | 43.2 | 4.1× |
+| `derived-family.csv` | 127.7 MiB | 26.3 | 4.8× |
+| `derived-labels.csv` | 108.6 MiB | 26.1 | 4.2× |
+
+596 MiB down to 136, every file well under the 100 MiB ceiling.
+
+**The plain `.csv` stays what readers open.** Forty-four scripts take these by name, so the
+`.csv` is gitignored — one explicit path per line, never a `*.csv` pattern — and the `.csv.gz`
+is committed. A clean clone runs `--unpack` once.
+
+`tests/test_derived_packing.py` pins the arrangement against its one silent failure mode: a
+missing or untracked `.gz` while the working tree has a fresh `.csv`. Everything keeps
+working for whoever regenerated it and a clean checkout gets nothing — the same shape as
+`6eddadd`, which left a cloud session measuring half the corpus its reports described.
+Freshness is deliberately not asserted: a `.gz` older than its `.csv` is the normal state
+mid-regeneration, and a suite that reddens for that gets ignored.

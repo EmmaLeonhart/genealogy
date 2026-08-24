@@ -1144,6 +1144,25 @@ Geni profiles do, with the 19th ambiguous. That is checkable — and is **not to
 checked until the 500,000 are downloaded**, at which point it is a local
 computation over stored items and costs nothing. Recorded in `todo.md` § 8b.
 
+### The four big derived CSVs are committed GZIPPED
+
+**Emma, 2026-08-24:** *"Imo gzip because this is long term and we aren't adding any more
+data into our tree. Just processing."*
+
+`reports/display-names.csv`, `derived-facts.csv`, `derived-family.csv` and
+`derived-labels.csv` regenerate from the merge at **108-184 MiB** each, and GitHub refuses
+any file over 100 MiB. They were 37-68 MiB at ~250 exports; the corpus is 546.
+
+**The `.csv` is gitignored one path per line; the `.csv.gz` is committed.** After a clean
+clone run `python scripts/pack-derived.py --unpack` once. Forty-four scripts read these by
+name, so the plain CSV stays what every reader opens rather than churning all of them.
+`tests/test_derived_packing.py` fails if a `.gz` goes missing, if a plain CSV gets tracked,
+or if a `.gz` ever creeps over the limit itself.
+
+**This does not loosen the `.ged` rule.** Every GEDCOM under `exports/` is still committed
+uncompressed, and no `*.csv` pattern was written into `.gitignore` -- four explicit paths,
+the same way the zips are listed.
+
 **The merged GEDCOM is the one `.ged` not in git**, and it is worth saying why
 here because "never gitignore a `.ged`" is a rule two sections up. `out/merged.ged`
 is 409 MB — generated, regenerable by `genimerge merge`, and over GitHub's file
