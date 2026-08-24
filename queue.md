@@ -69,8 +69,21 @@ The chain, in order:
 **GitHub refuses any file over 100 MiB**, so committing it fails the push. It was 41.4
 MiB at ~250 exports; the corpus roughly doubled and so did the file.
 
-The other three will follow: `display-names.csv` was 67.5 MiB and `derived-facts.csv`
-53.4 MiB **at the old corpus size**. Both are likely over the limit once regenerated.
+**All four are now regenerated and all four are over the limit.** Measured, not predicted:
+
+| file | 08-17, ~250 exports | 08-24, 546 exports |
+| --- | ---: | ---: |
+| `display-names.csv` | 67.5 MiB | **183.6 MiB** |
+| `derived-facts.csv` | 53.4 MiB | **175.9 MiB** |
+| `derived-family.csv` | 41.4 MiB | **127.7 MiB** |
+| `derived-labels.csv` | 37.2 MiB | **108.6 MiB** |
+
+596 MiB between them, none committable.
+
+**The Garborg batches were unaffected.** Both were generated from the stale chain and
+both are **byte-identical** after regenerating from the fresh one — that family was
+fully covered early, so nothing about them moved between 250 and 546 exports. Checked
+rather than assumed, because they had already been handed over.
 
 This is the same shape as `out/merged.ged`, which `CLAUDE.md` exempts *"by necessity,
 Emma's call, 2026-08-07"* — and it collides with the standing rule that `reports/` is

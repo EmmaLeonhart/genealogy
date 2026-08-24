@@ -11706,3 +11706,35 @@ and both exit codes were checked — 1 on refusal, 0 on success. Two tests pin t
 because a resolver nothing calls protects nothing.
 
 **Fast lane: 1,128 passed, 0 failed**, 6m28s.
+
+## 2026-08-24 — the derived chain regenerated, and every file of it now exceeds GitHub's limit
+
+`display-names.csv`, `derived-labels.csv`, `derived-facts.csv` and `derived-family.csv`
+were all built on **16–17 August at ~250 exports**. The corpus is 546 and `out/merged.ged`
+was rebuilt on 08-23, so every emitter reading them has been describing a tree less than
+half the current one — `CLAUDE.md`'s own warning that *"running the analysers is not
+running the generator"*.
+
+All four are regenerated. **All four are over GitHub's 100 MiB per-file limit**, measured
+rather than predicted:
+
+| file | 08-17 | 08-24 |
+| --- | ---: | ---: |
+| `display-names.csv` | 67.5 MiB | **183.6** |
+| `derived-facts.csv` | 53.4 MiB | **175.9** |
+| `derived-family.csv` | 41.4 MiB | **127.7** |
+| `derived-labels.csv` | 37.2 MiB | **108.6** |
+
+596 MiB between them. They sit on disk uncommitted, so a clean checkout still has the
+08-17 versions and the working tree has the current ones — a split that must not be left
+standing. Three options are in `queue.md`; the choice is Emma's, because it collides with
+her rule that `reports/` is tracked and *"we don't care about repo size."*
+
+**The Garborg batches were not affected, and I checked rather than assumed.** Both hops had
+been generated from the stale chain and handed over. Regenerated from the fresh one they
+are **byte-identical** — that family was fully covered early, so nothing about it moved
+between 250 and 546 exports. Had they differed, two files already in her hands would have
+been wrong.
+
+`reports/facts.md`, `reports/labels.md` and `reports/invented-parents.csv` also refreshed
+and are small enough to commit.
