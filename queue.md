@@ -218,9 +218,12 @@ Full account in `reports/geni-qid-links.md`.
 - **Two Kitajima are in the corpus with no About Me link** — `Kitajima no Tokitaka`
   (`Q135579474`), `Kitajima no Yasutaka` (`Q135579480`). Profiles missing the link, not
   missing people. Adding it on Geni is Emma's one-line fix.
-- **One duplicate to flag, never merge:** `Senge no Naokatsu` (`Q135579476`) on
-  `6000000227334350078` and `6000000227335699823`. Both ids are in the pairing, which is
-  correct — `P2600` is multi-valued.
+- **The `Senge no Naokatsu` "duplicate" was FALSE and is corrected.** `Q135579476`
+  sits on `6000000227334350078` *Naokiyo Hiraoka* and `6000000227335699823`
+  *Naokatsu 63 Senge*, who are **father and son** — both profiles carry the same
+  About Me link, so the father's page holds the son's QID. Which link is wrong is
+  Emma's call. See `reports/geni-qid-links.md`.
+
 - **The 93 unlinked are not 93 missing office-holders.** Classified 2026-08-23,
   `reports/izumo-unlinked-classified.tsv`: 26 human, 12 legendary human figure (the
   legendary emperors — `Q5` alone is the wrong test), 1 solar deity (Amaterasu), and **54

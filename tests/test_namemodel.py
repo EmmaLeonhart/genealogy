@@ -113,12 +113,29 @@ PLAN = {
 }
 
 
-def test_the_first_given_name_is_marked_the_usual_forename():
+def test_usual_forename_is_emitted_ONLY_where_there_is_a_middle_name():
+    """Emma, 2026-08-24: *"usual forename only applies when there is a middle name"*.
+
+    `P7452` → `Q3409033` exists to say which of several given names is the one actually
+    used. On a person with a single given name it distinguishes nothing and asserts a
+    contrast that does not exist.
+
+    **This test previously asserted the opposite** — that a lone given name carries it —
+    which is exactly what the generator was doing when she corrected it.
+    """
+    # One given name: keeps the ordinal, loses the usual-forename qualifier.
     lines, _notes = statements_for("Samuel Eivindsen Garborg", PLAN, "1")
     given = [ln for ln in lines if ln[0] == GIVEN_NAME][0]
     assert given[1] == "Q629347"
     assert (SERIES_ORDINAL, "1") in given[2]
-    assert (("P7452", USUAL_FORENAME)) in given[2]
+    assert ("P7452", USUAL_FORENAME) not in given[2], (
+        "a lone given name is not a *usual* forename — there is nothing to contrast it "
+        "with")
+
+    # Two given names: the first genuinely is the usual one.
+    lines, _notes = statements_for("Samuel Oline Garborg", PLAN, "1")
+    first = [ln for ln in lines if ln[0] == GIVEN_NAME][0]
+    assert ("P7452", USUAL_FORENAME) in first[2]
 
 
 def test_a_later_given_name_is_marked_a_middle_name():

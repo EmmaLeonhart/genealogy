@@ -12432,3 +12432,79 @@ one man with conflicting parentage or two men, and Emma can tell where the repor
 every survivor traces to the activity feed, and that weak rows survive.
 
 Fast lane: **1,210 passed, 0 failed, 1 skipped, 7m17s.**
+
+## 2026-08-24 — the label model corrected, and the 1pm audit
+
+### The married name is the primary label
+
+Emma, after running the first batch: *"you are treating the married name as an alias,
+apparently aen, but in reality, the married name is the primary label and the birth name
+is amul"*, then *"we move the lmul to amul and the lja to aja and so on"*.
+
+`Amul` is an **alias in `mul`** — that is what made the first reading wrong. The model:
+
+    Len / Lmul   the MARRIED name, primary, in every language
+    Aen / Amul   the BIRTH name, as an alias
+    Lja / Lzh    transliteration of the MARRIED form
+    Aja / Azh    the birth form it replaces, preserved
+
+`reports/wikidata-garborg-label-fixes.qs` corrected the five items she named. The alias is
+written **before** the label, because a label edit replaces and nothing may be lost.
+
+**Two bugs caught before that file went out.** `Samuel Eivindsen Garborg` was read as
+*married* because his `SURN` is empty and `_MARNM` holds *Garborg* — `CLAUDE.md` measured
+that 43% of `_MARNM` values are the only surname on the record. Emitting it would have
+written `mul` = "Samuel Eivindsen" and dropped his surname. And six surnames had no
+transliteration, so their `ja`/`zh` were silently withheld.
+
+### `P7452` usual forename only where there is a middle name
+
+Her rule, same session. `P7452` → `Q3409033` says which of several given names is the one
+used, so on a person with one given name it asserts a contrast that does not exist. The
+test asserted the opposite and was rewritten, not deleted.
+
+**Julia Olette checked rather than assumed:** she carries one `P735` and a `P7452`, which
+looks like the bug. It is not — she has a middle name whose item does not exist yet, so the
+qualifier is right.
+
+### The ledger was stale, which was the real bug
+
+The day batch was still trying to create the 21 people Emma had just made, because
+`reports/garborg-qids.tsv` had not been updated from her contributions. Updated: 13 → 34.
+The frontier grew 55 → 120 as a result, which is the hop expanding correctly.
+
+`--skip-nn` added as a **per-run** flag — *"for this quickstatements run the NN people are
+not worth creating"*. The standing rule that redacted people go in is untouched, and the
+test that pins it skips rather than being deleted when the flag is on.
+
+### `reports/wikidata-garborg-links.qs` — 127 links between existing items
+
+What she actually asked for once she gave up waiting: relationships between Garborg people
+who all already have QIDs. 106 `P3373` *sibling*, 17 `P40` *child*, 2 `P26` *spouse*, 1
+`P22`, 1 `P25`. Siblings dominate because 21 people were created today with nobody to link
+to at the time.
+
+### The 1pm audit
+
+**PART 4 — the semicolon bug.** `izumo-tree-vs-chart.py` called `.split()` on the
+`geni_ids` column, which is `;`-delimited, so a multi-id cell became one bogus id matching
+nobody. Fixed; disagreements 14 → 15, and roster #63 now correctly shows a father
+(*Naokiyo Hiraoka*) where it had read "tree has no father".
+
+**PART 3 — the false duplicate corrected** in `reports/geni-qid-links.md`, `queue.md` and
+`reports/izumo-p2600-pairs.tsv`. `Q135579476` sits on father and son, not on a duplicate.
+
+**PART 2 — `scripts/audit-qid-identities.py`**, 405 links checked offline, 23 findings:
+
+- **3 shared QIDs.** `Q135579476` (father/son — found independently by the audit),
+  `Q135524854` *Tanba no Tadamoto* on two profiles both named *Tadamoto Tanba* with no
+  relationship in the tree, and `Q135524952` *Tanba no Sueyoshi* on *Sueyoshi 2 Tanba* and
+  *Sueyoshi Tanba Sr.*
+- **20 label mismatches**, mostly benign transliteration variance — `Higashitakakage`
+  against `Takakage Azuma` is 東 read two ways. A few look like genuinely different names:
+  `Kushichitoriuminomikoto` against `Kushimikatomi-no-mikoto`.
+
+**PART 1 was already done and the cron's premise was stale** — `find-geni-duplicates.py`
+had been run and refuted, and superseded by her activity-feed method.
+
+Nothing rewrites one of her About Me links. Fast lane: **1,230 passed, 0 failed, 2 skipped.**

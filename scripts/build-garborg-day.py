@@ -34,6 +34,7 @@ Writes `reports/wikidata-garborg-day.qs` and `reports/garborg-carry-forward.tsv`
 """
 from __future__ import annotations
 
+import argparse
 import collections
 import csv
 import sys
@@ -44,7 +45,8 @@ csv.field_size_limit(1 << 30)
 sys.stdout.reconfigure(encoding="utf-8")
 
 from namemodel import (  # noqa: E402
-    NICKNAME, aliases_for, classify, load_plan, statements_for)
+    NICKNAME, aliases_for, classify, classify_fields, load_plan,
+    statements_for)
 
 
 def _load_gaps():
@@ -235,6 +237,15 @@ def name_lines(label, plan, geni_id, father_qid, fields=None):
 
 
 def main():
+    # `--skip-nn` is a per-run choice, not a rule. Emma, 2026-08-24: *"for this
+    # quickstatements run the NN people are not worth creating"* -- for THIS run. The
+    # standing rule in `CLAUDE.md` is that redacted people go in, with the marker in
+    # `mul` and a formulaic description elsewhere, so this must not become the default.
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--skip-nn", action="store_true",
+                    help="omit redacted/NN people from this batch (a per-run choice)")
+    args = ap.parse_args()
+
     have = ledger()
     table = translit()
     plan = load_plan()
@@ -392,6 +403,9 @@ def main():
         # the Geni id, the sex, the parents, the dates all come through.
         low = label.lower()
         redacted = "<private>" in low or low.startswith("private")
+        if redacted and args.skip_nn:
+            carried.append((g, label, "redacted: skipped by --skip-nn for this run"))
+            continue
 
         lines.append("CREATE")
         if redacted or not label:
@@ -413,12 +427,39 @@ def main():
             if not described:
                 carried.append((g, label, "redacted: no named relative to describe by"))
         else:
-            lines.append(f'LAST\tLen\t"{label}"')
-            lines.append(f'LAST\tLmul\t"{label}"')
-            ja, zh = label_in(labels[g], table)
+            # **The MARRIED name is the primary label; the BIRTH name is an alias.**
+            # Emma, 2026-08-24, after running the first batch: *"the married name is
+            # the primary label and the birth name is amul"*, then *"we move the lmul
+            # to amul and the lja to aja and so on"*. The first version had it exactly
+            # backwards -- birth name in `en` and `mul`, married name pushed out as an
+            # `Aen` alias -- and cost her a corrective run over five items.
+            f_ = fields.get(g, {})
+            surn = " ".join((f_.get("surn") or "").split())
+            marnm = " ".join((f_.get("marnm") or "").split())
+            # `SURN` must be populated for `_MARNM` to mean *married*: `CLAUDE.md`
+            # measured 43% of `_MARNM` values as the ONLY surname on the record, where
+            # it is the family name rather than a married one.
+            is_married = bool(marnm and surn and marnm.casefold() != surn.casefold())
+
+            given = [t for t, u, _o in classify_fields(f_.get("givn", ""), "")
+                     if u in ("given", "patronymic")]
+            primary = " ".join(given + marnm.split()) if is_married else label
+            birth = " ".join(given + surn.split()) if is_married else ""
+
+            lines.append(f'LAST\tLen\t"{qs(primary)}"')
+            lines.append(f'LAST\tLmul\t"{qs(primary)}"')
+            if birth and qs(birth) != qs(primary):
+                lines.append(f'LAST\tAen\t"{qs(birth)}"')
+                lines.append(f'LAST\tAmul\t"{qs(birth)}"')
+
+            ja, zh = label_in(primary, table)
             if ja:
                 lines.append(f'LAST\tLja\t"{ja}"')
                 lines.append(f'LAST\tLzh\t"{zh}"')
+                bja, bzh = label_in(birth, table) if birth else (None, None)
+                if bja and bja != ja:
+                    lines.append(f'LAST\tAja\t"{bja}"')
+                    lines.append(f'LAST\tAzh\t"{bzh}"')
             else:
                 carried.append((g, label, "no transliteration for every token"))
         lines.append(f"LAST\tP31\t{HUMAN}")
@@ -461,8 +502,16 @@ def main():
             lines.extend(name_statements)
             # Aliases: the nickname, and the full name under a married surname. Emma
             # asked for these alongside the second `P734` *family name*.
+            # An alias identical to the label is noise. Now that the married name is
+            # the primary label, `aliases_for`'s married-full-name alias often
+            # duplicates it exactly -- `Aen "Inger Kristoffersdatter"` sitting beside
+            # `Len "Inger Kristoffersdatter"`. The birth-name alias is already emitted
+            # with the labels above, so this carries only what those do not.
+            emitted = {qs(primary), qs(birth)}
             for alias in aliases_for(fields.get(g, {})):
-                lines.append(f'LAST	Aen	"{qs(alias)}"')
+                if qs(alias) and qs(alias) not in emitted:
+                    lines.append(f'LAST	Aen	"{qs(alias)}"')
+                    emitted.add(qs(alias))
             for note in unresolved:
                 carried.append((g, label, f"name item missing: {note}"))
 

@@ -67,8 +67,13 @@ def main():
     geni_of = {}
     for p in pairs:
         if p.get("regnal", "").strip():
-            for gid in (p.get("geni_ids") or "").split():
-                geni_of.setdefault(p["regnal"].strip(), set()).add(gid)
+            # **`geni_ids` is SEMICOLON-delimited.** A bare `.split()` turned a
+            # multi-id cell into one bogus id matching nobody, which is why roster #63
+            # read "tree has no father" when the tree records Naokiyo Hiraoka as his
+            # father. Exactly one row carried two ids when this was found.
+            for gid in re.split(r"[;\s]+", (p.get("geni_ids") or "").strip()):
+                if gid:
+                    geni_of.setdefault(p["regnal"].strip(), set()).add(gid)
 
     wanted = {g for ids in geni_of.values() for g in ids}
     father_of, name_of = {}, {}

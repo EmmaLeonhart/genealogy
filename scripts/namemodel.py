@@ -232,12 +232,15 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None):
     """
     lines, notes = [], []
     aliases = []
+    given_count = 0
 
     if fields:
         tokens = classify_fields(fields.get("givn", ""), fields.get("surn", ""),
                                  fields.get("nick", ""), fields.get("marnm", ""))
     else:
         tokens = classify(label)
+
+    given_count = sum(1 for _t, u, _o in tokens if u == "given")
 
     for token, usage, ordinal in tokens:
         # A nickname is free text on the item, so it is emitted regardless of whether
@@ -258,8 +261,16 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None):
 
         if usage == "given":
             quals = [(SERIES_ORDINAL, str(ordinal))]
-            quals.append((PREFERRED_REASON, USUAL_FORENAME) if ordinal == 1
-                         else (HAS_ROLE, MIDDLE_NAME))
+            # **`P7452` -> `Q3409033` *usual forename* only where there IS a middle
+            # name.** Emma, 2026-08-24: *"usual forename only applies when there is a
+            # middle name"*. It exists to say which of several given names is the one
+            # actually used, so on a person with a single given name it distinguishes
+            # nothing and asserts a contrast that does not exist.
+            if ordinal == 1:
+                if given_count > 1:
+                    quals.append((PREFERRED_REASON, USUAL_FORENAME))
+            else:
+                quals.append((HAS_ROLE, MIDDLE_NAME))
             lines.append((GIVEN_NAME, qid, quals))
         elif usage == "patronymic":
             quals = [("P144", father_qid)] if father_qid else []

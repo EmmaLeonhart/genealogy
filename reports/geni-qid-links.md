@@ -43,9 +43,20 @@ number join could never have reached them however well it worked.
 (`Q135579474`) and `Kitajima no Yasutaka` (`Q135579480`). They are not missing people; they
 are profiles missing the link. Adding it on Geni is a one-line fix and Emma's to make.
 
-**One duplicate:** `Senge no Naokatsu` (`Q135579476`) sits on `6000000227334350078` and
-`6000000227335699823`. Both ids go in the pairing — `P2600` is multi-valued and a second
-statement is the correct representation.
+**NOT a duplicate — corrected 2026-08-24.** `Q135579476` *Senge no Naokatsu* was
+recorded here as one item sitting on two Geni profiles. It is not. The two profiles are
+**father and son**:
+
+    FAM F6000000227335699827
+      HUSB @I6000000227334350078@   Naokiyo /Hiraoka/       <- the FATHER
+      CHIL @I6000000227335699823@   Naokatsu 63 /Senge/     <- the son, roster #63
+
+**Both carry the same About Me link** to `Q135579476`, so the *father's* profile carries
+the *son's* QID. Confirmed in `exports/izumo/export-Forest-6000000227331852896.ged` and
+`-6000000227390753876.ged`, and by loading both Geni pages: neither redirected —
+`/people/x/<id>` only fills the name slug and keeps the id, so nothing was learnt about
+merge redirects either. Which of the two links is wrong is Emma's to say; nothing here
+rewrites one of her About Me entries.
 
 93 rostered items are not linked from any Geni profile we hold; `reports/izumo-unlinked.tsv`.
 

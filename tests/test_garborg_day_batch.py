@@ -155,8 +155,15 @@ def test_a_redacted_person_is_created_and_described_not_left_unlabelled():
     if not carried.exists():
         pytest.skip("no carry-forward file")
     with open(carried, encoding="utf-8") as f:
-        redacted = [r for r in csv.DictReader(f, delimiter="\t")
-                    if "redacted" in r["why"]]
+        rows = list(csv.DictReader(f, delimiter="\t"))
+    # `--skip-nn` is a choice Emma made for ONE QuickStatements run: *"for this
+    # quickstatements run the NN people are not worth creating"*. With it on they are
+    # deliberately absent and there is nothing here to check. The standing rule that
+    # redacted people DO go in, marker in `mul` and a description elsewhere, is
+    # untouched — which is why this skips rather than being deleted.
+    if any("--skip-nn" in r["why"] for r in rows):
+        pytest.skip("this batch was built with --skip-nn")
+    redacted = [r for r in rows if "redacted" in r["why"]]
     if not redacted:
         pytest.skip("no redacted people in this frontier")
 
