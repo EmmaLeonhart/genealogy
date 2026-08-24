@@ -272,9 +272,11 @@ def test_the_two_family_names_carry_roles_that_say_which_is_which():
     plan = {("Garborg", "family"): ("Q30250555", "link"),
             ("Jacobson", "family"): ("Q900002", "link"),
             ("Stine", "given"): ("Q900003", "link")}
+    # `sex="F"` because the married-name ROLE is only correct on a woman -- see
+    # `test_a_mans_marnm_family_name_carries_no_married_role`.
     lines, _notes = statements_for("", plan, "1",
                                    fields={"givn": "Stine", "surn": "Garborg",
-                                           "marnm": "Jacobson"})
+                                           "marnm": "Jacobson"}, sex="F")
     families = {value: dict(quals) for prop, value, quals in lines
                 if prop == FAMILY_NAME}
     assert families["Q30250555"][("P3831")] == BIRTH_NAME_ROLE
@@ -301,3 +303,30 @@ def test_aliases_cover_the_nickname_and_the_married_full_name():
                        "marnm": "Jacobson"})
     assert "Stena" in got
     assert "Stine Jacobson" in got
+
+
+def test_a_mans_marnm_family_name_carries_no_married_role():
+    """Emma, 2026-08-24, on seeing a man with `Q28418670` *married name*.
+
+    *"ontologically married name on a man means more like adopted surname. So men's
+    'married names' should not have the role of married name."*
+
+    He still gets the second `P734` — he bore the name — it just carries no `P3831`
+    role. And **not** `Q118383793` *adoptive name* either: in this material the second
+    surname is usually a farm name taken by residence. `Q141169072` is the case, *Ådne
+    Olsen Grøtheim* becoming *Ådne Olsen Garborg* by moving to the Garborg farm.
+    """
+    plan = {("Grøtheim", "family"): ("Q900010", "link"),
+            ("Garborg", "family"): ("Q30250555", "link"),
+            ("Ådne", "given"): ("Q900011", "link")}
+    fields = {"givn": "Ådne", "surn": "Grøtheim", "marnm": "Garborg"}
+
+    lines, _n = statements_for("", plan, "1", fields=fields, sex="M")
+    married = [ln for ln in lines if ln[0] == FAMILY_NAME and ln[1] == "Q30250555"]
+    assert married, "a man still gets the second family name"
+    assert married[0][2] == [], f"a man must carry no role, got {married[0][2]}"
+
+    lines, _n = statements_for("", plan, "1", fields=fields, sex="F")
+    married = [ln for ln in lines if ln[0] == FAMILY_NAME and ln[1] == "Q30250555"]
+    assert ("P3831", MARRIED_NAME_ROLE) in married[0][2], (
+        "a woman's married name keeps the married-name role")

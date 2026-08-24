@@ -12508,3 +12508,37 @@ nobody. Fixed; disagreements 14 → 15, and roster #63 now correctly shows a fat
 had been run and refuted, and superseded by her activity-feed method.
 
 Nothing rewrites one of her About Me links. Fast lane: **1,230 passed, 0 failed, 2 skipped.**
+
+## 2026-08-24 — the married-name role must not sit on a man
+
+**Emma:** *"married name on a man, I think there was an issue. ontologically married name
+on a man means more like adopted surname. So men's 'married names' should not have the
+role of married name."*
+
+`namemodel.statements_for` emitted `P3831` → `Q28418670` *married name* on every `_MARNM`
+family name regardless of sex — **7 men** in the unrun batch, and **`Q141168827` Hans
+Eivind Garborg** already on Wikidata carrying it.
+
+Now a man still gets the second `P734` — he bore the name — but with **no role at all**.
+
+**Not `Q118383793` *adoptive name* either, and this is the part worth keeping.** In this
+material a man's second surname is usually a **farm name taken by residence**, not
+adoption or marriage. `Q141169072` is exactly the case Emma pointed at: *Ådne Olsen
+Grøtheim* became *Ådne Olsen Garborg* by moving to the Garborg farm.
+`reports/garborg-name-transliterations.tsv` already marks Aabø, Fjørtoft, Heigre and
+Raugstad as farm names. Calling that adoption asserts something false; an unqualified
+`P734` says only that he bore the name, which is all we know.
+
+`reports/wikidata-garborg-role-fixes.qs` corrects the one live item, by removing the
+statement and re-adding it without the qualifier — QuickStatements cannot strip a
+qualifier from a statement it did not create.
+
+**Two checkers learnt real syntax rather than being loosened.** `STATEMENT` did not know
+the leading `-` removal prefix, which is the only way to do the above; and earlier the
+same file learnt `en:"…"` monolingual values. Both are matched explicitly.
+
+**Verified live before hand-off**, because Emma is editing continuously: `Q141168827` still
+carried the role at the moment of checking. `CLAUDE.md` § *Emma edits the tree and the
+items BY HAND, continuously* is the rule that earns.
+
+Fast lane: **1,238 passed, 0 failed, 2 skipped.**

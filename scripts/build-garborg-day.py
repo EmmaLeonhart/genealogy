@@ -209,7 +209,7 @@ def label_in(label, table):
     return "・".join(ja), "·".join(zh)
 
 
-def name_lines(label, plan, geni_id, father_qid, fields=None):
+def name_lines(label, plan, geni_id, father_qid, fields=None, sex=""):
     """`P735`/`P734`/`P5056` lines for one person, and what could not be emitted.
 
     **Only tokens whose item already exists.** A name item this run is creating
@@ -221,7 +221,7 @@ def name_lines(label, plan, geni_id, father_qid, fields=None):
     """
     out, notes = [], []
     lines, why = statements_for(label, plan, geni_id, father_qid=father_qid,
-                                fields=fields)
+                                fields=fields, sex=sex)
     for prop, value, quals in lines:
         # `P1449` *nickname* is monolingual TEXT, so QuickStatements wants a language
         # tag and quotes rather than a bare item id.
@@ -498,7 +498,7 @@ def main():
             dad = father.get(g)
             name_statements, unresolved = name_lines(
                 labels[g], plan, g, have.get(dad) if dad else None,
-                fields=fields.get(g))
+                fields=fields.get(g), sex=f["sex"])
             lines.extend(name_statements)
             # Aliases: the nickname, and the full name under a married surname. Emma
             # asked for these alongside the second `P734` *family name*.

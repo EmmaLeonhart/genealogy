@@ -1152,6 +1152,25 @@ closely.
 **References** — P248 stated in, P854 reference URL, P813 retrieved,
 P143 imported from Wikimedia project.
 
+### Emma edits the tree and the items BY HAND, continuously. Snapshots go stale in minutes
+
+**Emma, 2026-08-24:** *"Remember that I've been actively fixing the tree manually."*
+
+A downloaded item file is a photograph, not a mirror. She fixes labels, merges Geni
+profiles and adds relationships while a batch is being built, so:
+
+- **Re-download immediately before emitting a correction**, never from a file fetched
+  earlier in the session. A correction computed against a stale snapshot re-writes work
+  she has already done, which is worse than doing nothing.
+- **Say when a hand-off was verified.** "Checked live at <time>" is the useful claim;
+  "the item has X" without a time is not.
+- **A label she has changed is a decision, not drift.** `Q141168785` had `en` and `mul`
+  hand-corrected to the married form while `ja` still read the birth form — the stale
+  half was ours, not hers.
+- The ledger `reports/garborg-qids.tsv` has the same problem and is refreshed from her
+  Wikidata contributions; a stale ledger is what made a batch try to re-create 21 people
+  she had just made.
+
 ### A SUMMARY of a Wikidata item is not the item. Download the full item
 
 **Emma, 2026-08-24:** *"you're supposed to download the full wikidata items for the

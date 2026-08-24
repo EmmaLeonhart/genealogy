@@ -33,10 +33,17 @@ What positional parsing got wrong, on four real people:
 * `marnm` was never read at all, so Stena's *Jacobson* and Inger Marie's *Ronneberg*
   did not exist to the model.
 
-**Emma's two rulings, 2026-08-24.** A quoted token inside `givn` becomes `P1449`
-*nickname*. A married name becomes a **second** `P734` *family name*, qualified birth
-against married with `P3831` *object of statement has role*, plus an alias — emitted
-only where it differs from `surn`, and **sex is not a screen**.
+**Emma's rulings, 2026-08-24.** A quoted token inside `givn` becomes `P1449`
+*nickname*. A `_MARNM` becomes a **second** `P734` *family name*, emitted only where it
+differs from `surn` and where `surn` is actually populated.
+
+**Sex screens the ROLE, not the statement.** She first said sex was not a screen, then
+corrected on seeing a man carrying `Q28418670` *married name*: *"ontologically married
+name on a man means more like adopted surname. So men's 'married names' should not have
+the role of married name."* So a man still gets the second `P734`; it simply carries no
+`P3831` role. Not `Q118383793` *adoptive name* either — in this material the second
+surname is usually a **farm name** taken by residence, and `Q141169072` is the case:
+*Ådne Olsen Grøtheim* became *Ådne Olsen Garborg* by moving to the Garborg farm.
 
 **CJK stays out of scope and is a known hazard.** `CLAUDE.md` records `SURN` holding a
 place name (`陳郡陽夏`) while `_MARNM` held the real clan name. Reading `surn` as a
@@ -128,8 +135,8 @@ def classify_fields(givn: str, surn: str, nick: str = "",
     name and not a middle name. `Stena` is what `Stine` was called, not her second
     forename.
 
-    The married name carries no ordinal and is *not* a screen on sex — her ruling,
-    against the corpus measurement's suggestion, and it is her data model to set.
+    The married name carries no ordinal. Sex does not decide whether it is emitted --
+    it decides only whether the `P3831` role says *married name*; see `statements_for`.
     """
     out: list[tuple[str, str, int]] = []
 
@@ -213,7 +220,8 @@ def classify(label: str) -> list[tuple[str, str, int]]:
     return out
 
 
-def statements_for(label, plan, geni_id, father_qid=None, fields=None):
+def statements_for(label, plan, geni_id, father_qid=None, fields=None,
+                   sex=""):
     """(statement lines, notes) for one person's name.
 
     Each line is `(property, value, qualifiers)` with qualifiers as
@@ -229,6 +237,9 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None):
 
     A `nickname` becomes `P1449`, which takes **text, not an item**, so it needs no
     entry in the name plan and can never be blocked by a missing one.
+
+    `sex` is `"M"` or `"F"` and decides one thing only: whether a `_MARNM` family name
+    carries `P3831` -> `Q28418670` *married name*. On a man it does not -- see below.
     """
     lines, notes = [], []
     aliases = []
@@ -277,7 +288,23 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None):
             lines.append((PATRONYM, qid, quals))
         elif usage == "married":
             # Emma, 2026-08-24: a SECOND `P734`, qualified married against birth.
-            lines.append((FAMILY_NAME, qid, [(HAS_ROLE, MARRIED_NAME_ROLE)]))
+            # **`Q28418670` *married name* only on a woman.** Emma, 2026-08-24:
+            # *"married name on a man ... ontologically married name on a man means
+            # more like adopted surname. So men's 'married names' should not have the
+            # role of married name."*
+            #
+            # And it gets **no role at all** rather than `Q118383793` *adoptive name*,
+            # because in this material the second surname is usually a **farm name**
+            # taken by residence, not by adoption or marriage. `Q141169072` is the
+            # case: *Ådne Olsen Grøtheim* became *Ådne Olsen Garborg* by moving to the
+            # Garborg farm. Calling that adoption asserts something false, and
+            # `reports/garborg-name-transliterations.tsv` already marks Aabø, Fjørtoft,
+            # Heigre and Raugstad as farm names. An unqualified `P734` says only that
+            # he bore the name, which is all we know.
+            if sex == "F":
+                lines.append((FAMILY_NAME, qid, [(HAS_ROLE, MARRIED_NAME_ROLE)]))
+            else:
+                lines.append((FAMILY_NAME, qid, []))
         else:
             # Only qualify the birth family name when a married one sits beside it;
             # a lone surname needs no role and none of her items carries one.

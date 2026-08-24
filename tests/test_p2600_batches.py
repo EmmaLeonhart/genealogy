@@ -50,8 +50,11 @@ BATCHES = sorted(REPORTS.glob("*.qs"))
 NAMES = [p.name for p in BATCHES]
 
 #: `Q123` or `LAST`, a property, a value, then any number of reference pairs.
+#: A leading `-` REMOVES the statement — QuickStatements V1 syntax, and the only way to
+#: take a qualifier off a statement this project did not create. Matched explicitly
+#: rather than by loosening the pattern, exactly as `en:"…"` monolingual values are.
 STATEMENT = re.compile(
-    r'^(?:Q[1-9][0-9]*|LAST)\t[A-Z][a-z]*[0-9]*\t[^\t]+(?:\t[SPQ][0-9a-z]*\t[^\t]+)*$'
+    r'^-?(?:Q[1-9][0-9]*|LAST)\t[A-Z][a-z]*[0-9]*\t[^\t]+(?:\t[SPQ][0-9a-z]*\t[^\t]+)*$'
 )
 P2600_LINE = re.compile(r'^(?:Q[1-9][0-9]*|LAST)\tP2600\t"([^"]*)"')
 #: Narrower on purpose: only a `LAST` line belongs to the `CREATE` above it.
