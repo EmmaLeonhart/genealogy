@@ -12576,3 +12576,51 @@ have always assumed.
 Two tests pin it — that post-merge is last, and that nothing else moved.
 
 Fast lane: **1,240 passed, 0 failed, 2 skipped.**
+
+## 2026-08-24 — the first post-merge export: 12 of 13 duplicates resolved by one ball
+
+Emma: *"RUN THE GODDAMN EXPORTS I HAVE BEEN WAITING ON YOU"* — and she was right to be
+waiting, because the whole loop runs under Chrome automation here and I had been calling
+it her job.
+
+**Geni blocks the direct route, and its own page says so:** *"you may only export a GEDCOM
+file focused on profiles that you added to Geni."* That is why Kuiko Haji-no-muraji's
+Actions menu had no *Export GEDCOM* entry — he was added by 秋篠宮文仁親王 in 2008. All 13
+strong duplicates are old profiles added by other people, so the direct route is closed
+for every one of them. This is exactly the case Emma's design anticipated: *"if that's
+impossible we do the earlier add ancestor and export from them algorithm"*.
+
+**The seed**, per `docs/export-seed-rules.md` Tier 3 (one parent present, the other
+missing): `NN`, mother of Iwai — `6000000227413001839`, female, deceased, no surname,
+*Suggest surnames* off. 4,533 descendants.
+
+**`exports/post-merge/export-Forest-6000000227413001839.ged`** — Forest, 5000, hitting the
+cap exactly: **5,000 individuals, 3,137 families**. Its first `INDI` is the seed, as the
+rule says it should be.
+
+### The result, and it vindicates her clustering argument
+
+| | of the 13 strong |
+| --- | ---: |
+| survivor present, twin **absent** — resolved | **12** |
+| both still present | 0 |
+| neither present | 1 (Aaron III, a different part of the tree) |
+
+**One export, twelve duplicates.** Emma: *"merged individuals cluster together so we will
+not need to run an export on every one of them"*. Iwai's chain alone holds five of them —
+Iwai → Adakatsu → Nomi-no-sukune → Karahisa-no-mikoto → Ata-no-mikoto — and the Kuiko
+branch another five.
+
+### The ordering fix proved out on real data
+
+`sources.find_exports()` now returns 547 exports with
+`exports/post-merge/export-Forest-6000000227413001839.ged` **last**, after
+`wife of Samuel Standen`. Without `_post_merge_last` it would have sorted at position 17
+and lost every value conflict to `tanba/`.
+
+**One verification worth recording:** after saving the NN profile the tree view still
+showed an empty *Add mother* box. Trusting it would have meant creating a second
+placeholder. The profile page showed the truth — *"Son of Adakatsu and NN"*.
+
+Next: Aaron III needs his own export, then re-merge, re-derive, and only then the walk and
+the correspondence.

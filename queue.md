@@ -82,6 +82,30 @@ post-merge-wins and would not do the job. Do not assume the two rules coincide.
 Depends on `reports/geni-stale-duplicates.tsv` (13 strong, 3 medium, 13 weak) and
 `reports/geni-merges-performed.tsv` (180 survivors from her activity feed).
 
+## First post-merge export is IN — 12 of 13 strong duplicates resolved by one ball
+
+`exports/post-merge/export-Forest-6000000227413001839.ged`, 5,000 individuals, 3,137
+families, taken 2026-08-24 14:32.
+
+**Geni will not export from a profile you did not add** — its own rule on `/gedcom`:
+*"you may only export a GEDCOM file focused on profiles that you added to Geni."* That is
+why Kuiko Haji-no-muraji's Actions menu had no *Export GEDCOM* at all, and it closes the
+direct route for every one of the 13, which are all 2008-era profiles added by others.
+
+So the seed is a Tier 3 placeholder per `docs/export-seed-rules.md`: **`NN`, mother of
+Iwai**, `6000000227413001839`, female, deceased, no surname. 4,533 descendants.
+
+**Result: survivor present, twin absent, on 12 of the 13.** Only Aaron III Samaritan High
+Priest is missing, and he sits in a different part of the tree.
+
+**Still to do on this:**
+
+- **Aaron III** — one more export, seeded the same way in the Samaritan tree.
+- **Re-merge and re-derive**, then the structural walk and the correspondence. The order
+  Emma set: merges, then joins, then the walk.
+- **Check the medium and weak rows** against this export too — only the 13 strong were
+  measured.
+
 ## ⛔ PREREQUISITE ORDER for the synoptic rebuild — merges first, then joins
 
 **Emma, 2026-08-24:** *"you forgot about the geni merge stuff which is an even more
