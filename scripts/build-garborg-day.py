@@ -85,6 +85,33 @@ def translit():
     return out
 
 
+def live_state():
+    """`{qid: (label languages, properties)}` from the 2026-08-24 live read.
+
+    Ground truth, and it outranks the store: the store was downloaded before Emma made
+    most of these items, and the fallback in `absent` assumes an item outside the store
+    was made by our own batch and so carries no name statements. She edits by hand, so
+    that assumption is wrong exactly where it matters most.
+
+    A row marked `no` was **not** re-read and is deliberately omitted from the result,
+    so it falls through to the store and then to the assumption rather than being
+    reported as an item with no properties at all.
+    """
+    out = {}
+    path = ROOT / "reports" / "garborg-live-state.tsv"
+    with open(path, encoding="utf-8") as f:
+        for line in f:
+            if line.startswith("#") or line.startswith("qid\t"):
+                continue
+            parts = line.rstrip("\n").split("\t")
+            if len(parts) < 4 or parts[1] == "no":
+                continue
+            langs = {p.strip() for p in parts[2].replace(",", " ").split()
+                     if p.strip().isalpha()}
+            out[parts[0]] = (langs, set(parts[3].split()))
+    return out
+
+
 def read_tree():
     fam_p = collections.defaultdict(list)
     fam_c = collections.defaultdict(list)
@@ -210,6 +237,11 @@ def main():
     # large part of what "not remotely comprehensive" meant. `Q467497` Arne Garborg
     # had no `P22` father and no `P25` mother while both his parents had QIDs.
     state = existing_state(set(have.values()))
+    # A live read beats both the store and the guess. `reports/garborg-live-state.tsv`
+    # records what each item held on 2026-08-24; the store predates most of them and
+    # the fallback below assumes our own batch made them, which is wrong wherever Emma
+    # edited by hand. Eivind is the case: he carries P735/P734/P5056 she added herself.
+    state.update(live_state())
     lines += [
         "# 1. Everything missing from people who already have items -- the links that",
         "#    yesterday's creations made possible, and the properties never emitted.",

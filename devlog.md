@@ -12014,3 +12014,30 @@ her instruction to add them is outstanding work rather than something already re
 
 `scripts/build-garborg-entry-sheet.py` rebuilds the artifact from this, reusing the page's
 own stylesheet so a redeploy reads as the same document.
+
+## 2026-08-24 — the live read caught a duplicate this morning's fix would have written
+
+The re-read paid for itself immediately. `absent()` in `build-garborg-day.py` falls back,
+for an item the local store does not hold, to *"our own batch made it, so it carries no
+name statements"*. The store predates most of these items and **Emma edits by hand**, so
+the assumption was wrong exactly where it mattered: `Q141152512` Eivind carries a bare
+`P735` → `Q3358418` she added herself, and the batch emitted `P735` → `Q3358418` **with**
+`P1545` and `P7452`. QuickStatements merges an identical statement but records a
+differently-qualified one as a **new** statement — a duplicate given name on her item.
+
+`reports/garborg-live-state.tsv` is the measured answer and now outranks the store.
+Statements to existing items went 114 → **106**; the eight that went were duplicates.
+Arne's `P22`/`P25` survive, because he genuinely lacks them, and `Q467497` correctly gets
+no label lines now that the file records it already has `ja` and `zh`.
+
+**The first version of the guard was too broad and I narrowed it — the exemption is real,
+not convenient.** `P40` *child*, `P3373` *sibling* and `P26` *spouse* are multi-valued, so
+an item carrying `P40` says nothing about whether it carries `P40` → *this* child. Eivind
+has nine children and the batch legitimately links the ones he is missing; there an
+identical value merges, and where ours carries a reference and his does not, merging is
+the point. The guard therefore checks the ten single-valued properties only, and says so.
+
+**Proved the guard bites rather than trusting a green run:** clean against the real batch,
+and it flags `('Q141152512', 'P735')` the moment the pre-fix line is reinserted.
+
+Fast lane: **1,177 passed, 0 failed, 4m01s.**

@@ -1,0 +1,31 @@
+#	What each Garborg item ACTUALLY held when read live on 2026-08-24.
+#
+#	The local Wikidata store was downloaded before Emma made most of these items, so it
+#	cannot answer for them, and the builder's fallback -- "not in the store, therefore
+#	our own batch made it, therefore it has no name statements" -- is WRONG wherever she
+#	has edited by hand. Q141152512 Eivind carries P735, P734 and P5056 that she added
+#	herself; without this file the batch emits a second, qualified P735 beside his bare
+#	one, which QuickStatements records as a new statement rather than merging.
+#
+#	`props` is every property the item carries. `langs` is every label language.
+#	`verified` is the date the item was read, or `no` for one that was not re-read --
+#	those fall back to the store, then to the assumption, and must not be treated as
+#	measured.
+#
+#	Q467497 is a community item of ~120 properties; only the ones this programme touches
+#	are listed, which is why its row is short. Its `mul` entry is an ALIAS, not a label.
+qid	verified	langs	props
+Q467497	2026-08-24	en+44 more, ja, zh (no mul label)	P19 P20 P21 P26 P27 P31 P40 P106 P569 P570 P734 P735 P1477 P2600
+Q141152512	2026-08-24	en mul	P21 P26 P31 P40 P569 P570 P734 P735 P2600 P5056
+Q141152523	2026-08-24	en mul	P21 P26 P31 P40 P569 P570 P2600
+Q141152600	2026-08-24	en mul	P21 P22 P25 P31 P569 P570 P2600 P3373
+Q141162040	2026-08-24	en mul	P21 P22 P25 P31 P569 P570 P2600 P3373
+Q141162043	2026-08-24	en mul	P21 P22 P25 P31 P569 P570 P2600 P3373
+Q141162046	2026-08-24	en mul	P21 P22 P25 P31 P569 P570 P2600 P3373
+Q141152710	2026-08-24	en mul	P31
+Q141152614	no
+Q141162041	no
+Q141162044	no
+Q141162045	no
+Q3143008	no
+Q11959067	no

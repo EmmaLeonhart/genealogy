@@ -198,3 +198,78 @@ def test_an_existing_item_gets_its_parent_links_when_the_parents_have_qids():
     for prop, parent in (("P22", "Q141152512"), ("P25", "Q141152523")):
         assert f"Q467497\t{prop}\t{parent}" in text, (
             f"Arne Garborg is missing his {prop} link to {parent}, which exists")
+
+
+#: Properties where "the item carries this" implies "it carries the value we would emit".
+#: The relationship properties are deliberately absent -- see the test's docstring.
+SINGLE_VALUED = {"P31", "P21", "P2600", "P569", "P570", "P735", "P734", "P5056",
+                 "P22", "P25"}
+
+
+def live_state_rows():
+    path = REPO / "reports" / "garborg-live-state.tsv"
+    if not path.exists():
+        return {}
+    out = {}
+    for line in path.read_text(encoding="utf-8").splitlines():
+        if line.startswith("#") or line.startswith("qid\t"):
+            continue
+        parts = line.split("\t")
+        if len(parts) >= 4 and parts[1] != "no":
+            out[parts[0]] = set(parts[3].split())
+    return out
+
+
+def test_a_property_the_item_already_has_is_not_emitted_again():
+    """QuickStatements merges an identical statement but NOT a differently-qualified one.
+
+    `Q141152512` Eivind carries a bare `P735` → `Q3358418` that Emma added by hand. The
+    batch emitted `P735` → `Q3358418` **with** `P1545` and `P7452`, which QuickStatements
+    records as a second statement rather than merging into the first — a duplicate given
+    name on her item.
+
+    The cause was the fallback in `absent()`: an item outside the local store was assumed
+    to be one of our own creations and therefore to carry no name statements. The store
+    predates most of these items and she edits by hand, so the assumption was wrong
+    exactly where it mattered. `reports/garborg-live-state.tsv` is the measured answer.
+
+    **Only the single-valued properties are checked**, and the exemption is real rather
+    than convenient: `P40` *child*, `P3373` *sibling* and `P26` *spouse* are multi-valued,
+    so an item carrying `P40` says nothing about whether it carries `P40` → *this* child.
+    Eivind has nine children and the batch legitimately emits links for the ones he is
+    missing. For those, an identical value merges in QuickStatements rather than
+    duplicating -- and where our statement carries a reference his does not, merging is
+    the point.
+    """
+    live = live_state_rows()
+    if not live:
+        pytest.skip("no live-state file")
+    bad = []
+    for ln in lines():
+        m = re.match(r"^(Q[1-9][0-9]*)\t(P[0-9]+)\t", ln)
+        if (m and m.group(2) in SINGLE_VALUED
+                and m.group(2) in live.get(m.group(1), set())):
+            bad.append((m.group(1), m.group(2)))
+    assert not bad, (
+        f"re-emitting a property the item already carries: {sorted(set(bad))[:5]}")
+
+
+def test_a_label_language_the_item_already_has_is_not_emitted_again():
+    """`Q467497` has `ja` and `zh` already; re-emitting would overwrite curated labels."""
+    path = REPO / "reports" / "garborg-live-state.tsv"
+    if not path.exists():
+        pytest.skip("no live-state file")
+    langs = {}
+    for line in path.read_text(encoding="utf-8").splitlines():
+        if line.startswith("#") or line.startswith("qid\t"):
+            continue
+        parts = line.split("\t")
+        if len(parts) >= 4 and parts[1] != "no":
+            langs[parts[0]] = {p for p in parts[2].replace(",", " ").split()
+                               if p.isalpha()}
+    bad = []
+    for ln in lines():
+        m = re.match(r"^(Q[1-9][0-9]*)\tL([a-z-]+)\t", ln)
+        if m and m.group(2) in langs.get(m.group(1), set()):
+            bad.append((m.group(1), m.group(2)))
+    assert not bad, f"overwriting an existing label language: {sorted(set(bad))[:5]}"

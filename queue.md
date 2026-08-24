@@ -68,6 +68,12 @@ the new people only to what already exists.
 
 **Outstanding on this item:**
 
+- **What an item already holds comes from `reports/garborg-live-state.tsv`**, the
+  2026-08-24 live read — it outranks the local store, which predates most of these
+  items. Rows marked `no` were not re-read and fall through rather than being treated
+  as empty.
+- **`P5056` is emittable for one token.** *Aadnesson* `Q141152710` exists; the other
+  patronyms still need items.
 - **Properties are now added to items that ALREADY exist, not just links between
   them** — Emma answered yes to this and section 1 had never done it. `Q467497`
   *Arne Garborg* had no `P22` *father* and no `P25` *mother* while both his parents
