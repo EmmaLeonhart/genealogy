@@ -79,6 +79,14 @@ def main():
         ("structural", rows_from(R / "structural-correspondence.csv", "qid", "geni_id")),
         ("geni-wikidata-pairs", rows_from(R / "geni-wikidata-pairs.csv", "qid", "geni_id")),
         ("izumo-roster", rows_from(R / "izumo-p2600-pairs.tsv", "qid", "geni_ids", "\t")),
+        # Emma, 2026-08-24: *"the tanba onakatomi izumo stuff is a prerequisite for the
+        # synoptic rebuild"*. Tanba and the sister repo's fuller Izumo roster had joins
+        # that nothing read, so a whole clan was invisible here despite every one of its
+        # people carrying a Wikidata item. Onakatomi is deliberately absent: 0 of its 97
+        # QIDs has an About Me link yet, so there is nothing to join on.
+        ("tanba-roster", rows_from(R / "tanba-p2600-pairs.tsv", "qid", "geni_ids", "\t")),
+        ("izumo-sister-roster",
+         rows_from(R / "izumo-sister-p2600-pairs.tsv", "qid", "geni_ids", "\t")),
     ]
     for label, stream in sources:
         n = 0

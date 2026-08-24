@@ -82,6 +82,55 @@ post-merge-wins and would not do the job. Do not assume the two rules coincide.
 Depends on `reports/geni-stale-duplicates.tsv` (13 strong, 3 medium, 13 weak) and
 `reports/geni-merges-performed.tsv` (180 survivors from her activity feed).
 
+## ⛔ PREREQUISITE ORDER for the synoptic rebuild — merges first, then joins
+
+**Emma, 2026-08-24:** *"you forgot about the geni merge stuff which is an even more
+important prerequisite to the synoptic rebuild"*.
+
+The order is:
+
+1. **Resolve the Geni merges** — `reports/geni-stale-duplicates.tsv`, 13 strong. Our tree
+   holds **two nodes for one person** where Geni holds one, so the structural walk and
+   the correspondence are both computed over a tree that double-counts those people, and
+   whole parallel lineages sit side by side. Rebuilding before this bakes the duplication
+   in. Her `exports/post-merge/` design is how it gets fixed.
+2. **The clan joins** — done 2026-08-24, `scripts/build-clan-p2600-pairs.py`.
+3. **Then** the structural walk and the correspondence.
+
+**The clan-join result, stated correctly.** Tanba 179/183 (97%) and the sister Izumo
+roster 120/202 joined — and **0 pairs that the About Me extraction had not already
+found**. That is not a null result: two independent paths, the roster join and the
+corpus-wide About Me pass, agree completely. Emma: *"it probably means we did good data
+modelling early on"*. The new fact is **Onakatomi 0 of 97** — that clan has no About Me
+links written yet, so it cannot join at all. Hers to write.
+
+## ⛔ Izumo succession is by SURNAME, and the office splits into three
+
+**Emma's model, 2026-08-24, and it settles how the chart becomes `P39`/`P1365`/`P1366`:**
+
+*"Izumo succession is based on surname so original Izumo would be the Unified Izumo no
+Kuni no Miyatsuko and Senge and Kitajima are different ones all three designated with a
+qualifier on according to which organization: izumo taisha for the unified, izumokyo for
+kitajima and izumo taishakyo for senge. With the last unified one having both
+successors."*
+
+So there are **three offices**, not one succession, distinguished by a qualifier naming
+the organisation:
+
+| holders | office | organisation qualifier |
+| --- | --- | --- |
+| surname *Izumo* | Unified Izumo no Kuni no Miyatsuko | Izumo Taisha |
+| surname *Kitajima* | the Kitajima line | Izumokyo |
+| surname *Senge* | the Senge line | Izumo Taishakyo |
+
+**The last unified holder has TWO successors** — `P1366` *replaced by* to both the first
+Kitajima and the first Senge. That is the fork, and it is why a single `P1365`/`P1366`
+chain through the roster would be wrong.
+
+Before emitting: look the three organisation QIDs up **offline** in the downloaded items
+and `reports/wikidata-labels.tsv`; do not guess them. `CLAUDE.md` § *Always write the
+English label next to a property or item ID*.
+
 ## ⛔ Model the item as it SHOULD be, then diff it against reality
 
 **Emma, 2026-08-24:** *"we are supposed to generate complete models of what the wikidata
