@@ -11538,3 +11538,35 @@ exists. Both are now generated.
 
 The rest of `todo.md` is horizons rather than claims — nothing else in it asserts a number
 that can be checked against the repo.
+
+## 2026-08-23 — the two generated inventories are now pinned by tests
+
+Twice today an inventory was found describing a repo that no longer existed, and both times
+**nothing failed when it drifted** — that is the whole hazard. An inventory is consulted
+exactly when someone wants to know the state of things, which is when being wrong costs
+most. `tests/test_generated_inventories.py` closes the class:
+
+- **`reports/built-batches.tsv` must name exactly the batch files on disk.** A new
+  generator's output appearing without a row is the drift that hid
+  `wikidata-marker-label-fixes.json` — 56,369 edits, the largest batch in the repo — from
+  `todo.md`'s table.
+- **`reports/repo-freshness.csv` must name no deleted file**, and no deleted generator. It
+  had listed `reports/missing-ancestors-check.csv` and `scripts/check-missing-ancestors.py`
+  after both were removed, and sent a bloat review chasing them.
+
+**Entry counts are deliberately not asserted.** A count changes whenever a generator runs,
+which is ordinary mid-work; a suite that goes red for that teaches people to ignore it.
+Names are the invariant.
+
+**Two corrections while writing it, both mine and both instructive.**
+
+The generator column is a **semicolon-separated list** — a report written by several scripts
+names them all — and my first cut treated the whole field as one path, failing five rows
+that were entirely correct. The data was right and the test was wrong about its shape.
+
+And three of the guard-the-guard tests were tautologies: they asserted set arithmetic on
+literals rather than exercising the comparison. The comparison is now a function, `drift()`,
+that both the real check and the synthetic cases call, so a bug in it fails the synthetic
+tests too. A test that cannot fail is worse than no test, because it reports coverage.
+
+**Fast lane: 1,099 passed, 0 failed**, 6m00s, `BOT_CONTACT` set. `CLAUDE.md` updated.
