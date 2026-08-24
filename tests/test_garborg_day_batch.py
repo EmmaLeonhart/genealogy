@@ -52,6 +52,27 @@ def known_qids():
         return {row["qid"] for row in csv.DictReader(f, delimiter="\t")}
 
 
+def known_name_items():
+    """Name items Wikidata ALREADY has, from `reports/name-item-plan.csv`.
+
+    `P735`, `P734` and `P5056` point at name items, and the ones carrying an
+    `existing_qid` were found in the Wikidata download — they exist, so pointing at
+    them is legal under the single-run rule. The ledger tracks Garborg *people* and
+    would never know them, which is why the first version of this check failed on
+    `Q30250555` *Garborg*, an item that has existed for years.
+
+    Items the plan says to **create** are deliberately absent from this set: those
+    live in `reports/wikidata-garborg-name-items.qs` and must not be pointed at until
+    that batch has run.
+    """
+    plan = REPO / "reports" / "name-item-plan.csv"
+    if not plan.exists():
+        return set()
+    with open(plan, encoding="utf-8") as f:
+        return {(row.get("existing_qid") or "").strip()
+                for row in csv.DictReader(f)} - {""}
+
+
 #: Values that are legitimately not people in the ledger: the classes and qualifier
 #: values every person statement carries. Listed rather than pattern-matched so a new
 #: one is a decision.
@@ -69,7 +90,7 @@ VOCABULARY = {
 
 def test_every_qid_the_batch_points_at_already_exists():
     """The single-run rule. A value not in the ledger cannot resolve mid-run."""
-    known = known_qids() | VOCABULARY
+    known = known_qids() | VOCABULARY | known_name_items()
     unknown = []
     for ln in lines():
         m = QID_VALUE.match(ln)

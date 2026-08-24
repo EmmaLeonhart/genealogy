@@ -11870,3 +11870,28 @@ an item is the narrower question, and it is hers.
 
 Still no heavy jobs: the structural walk and hop 3 both want sustained disk on the 1.6 GB
 tree and her laptop was hot.
+
+## 2026-08-24 — the name statements are in the batch, and the fast lane is current again
+
+**Fast lane re-run: 1,172 passed, 0 failed, 4m02s.** One job, nothing alongside it. The
+figure I had been quoting was two commits stale and I had been saying so each tick; it is
+measured now rather than carried.
+
+**The batch carries name statements.** Emma: *"we should be modelling the names properly,
+which he didn't do."* It now emits **51 `P735`** with `P1545` *series ordinal* and either
+`P7452` → `Q3409033` *usual forename* on the first given name or `P3831` → `Q245025`
+*middle name* after it, and **19 `P734`** — every one pointing at a name item Wikidata
+already has. QuickStatements takes qualifiers exactly like references, property then value
+on the same line.
+
+**0 `P5056` yet, and that is right.** Every patronymic in this frontier is an item that
+does not exist — they are the 38 in `reports/wikidata-garborg-name-items.qs`, which is its
+own run. The patronyms join the day after it lands, by the same single-run rule as
+everybody else.
+
+**The guard caught the widening and was right to.** `test_every_qid_the_batch_points_at_already_exists`
+failed on `Q30250555` *Garborg* — an item that has existed for years — because the ledger
+only tracks Garborg *people*. Fixed by widening the known set to the name items
+`reports/name-item-plan.csv` attests exist, and **deliberately not** to the ones it says to
+create: those must not be pointed at until their batch runs. The rule did not loosen; the
+set of things known to exist got more accurate.

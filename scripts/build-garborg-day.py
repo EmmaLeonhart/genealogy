@@ -43,7 +43,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 csv.field_size_limit(1 << 30)
 sys.stdout.reconfigure(encoding="utf-8")
 
-from namemodel import classify  # noqa: E402
+from namemodel import classify, load_plan, statements_for  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 SEX = {"M": "Q6581097", "F": "Q6581072"}
@@ -114,9 +114,33 @@ def label_in(label, table):
     return "・".join(ja), "·".join(zh)
 
 
+def name_lines(label, plan, geni_id, father_qid):
+    """`P735`/`P734`/`P5056` lines for one person, and what could not be emitted.
+
+    **Only tokens whose item already exists.** A name item this run is creating
+    cannot be pointed at, same single-run rule as everybody else, so the rest waits
+    for `reports/wikidata-garborg-name-items.qs` to have been run.
+
+    QuickStatements takes qualifiers exactly like references, property then value on
+    the same line: `LAST<TAB>P735<TAB>Q629347<TAB>P1545<TAB>"1"<TAB>P7452<TAB>Q3409033`.
+    """
+    out, notes = [], []
+    lines, why = statements_for(label, plan, geni_id, father_qid=father_qid)
+    for prop, value, quals in lines:
+        parts = [f"LAST	{prop}	{value}"]
+        for qprop, qvalue in quals:
+            # A series ordinal is a string; everything else here is an item.
+            qv = f'"{qvalue}"' if qprop == "P1545" else qvalue
+            parts.append(f"{qprop}	{qv}")
+        out.append("	".join(parts))
+    notes.extend(why)
+    return out, notes
+
+
 def main():
     have = ledger()
     table = translit()
+    plan = load_plan()
     fam_p, fam_c, fams, famc = read_tree()
     print(f"{len(have)} people already carry a QID; {len(table)} tokens transliterated")
 
@@ -240,6 +264,18 @@ def main():
         for kid in sorted(children.get(g, ())):
             if kid in have:
                 lines.append(f"LAST\tP40\t{have[kid]}{ref(g)}")
+
+        # The name model. Emma, 2026-08-24: *"we should be modelling the names
+        # properly, which he didn't do."* Only tokens whose item ALREADY exists --
+        # the ones still to be made are in reports/wikidata-garborg-name-items.qs and
+        # join the batch the day after that runs, same single-run rule as everyone.
+        dad = father.get(g)
+        name_statements, unresolved = name_lines(
+            labels[g], plan, g, have.get(dad) if dad else None)
+        lines.extend(name_statements)
+        for note in unresolved:
+            carried.append((g, label, f"name item missing: {note}"))
+
         lines.append("")
         created += 1
 

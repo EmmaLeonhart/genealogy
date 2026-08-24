@@ -87,9 +87,14 @@ the new people only to what already exists.
 
 **Outstanding on this item:**
 
-- **Name items must run as their own batch first** — `reports/wikidata-garborg-name-items.qs`,
-  38 items. `P735`/`P734`/`P5056` cannot point at something minted in the same run. Once
-  those QIDs exist, the name statements join the daily batch.
+- **Name statements are in the daily batch as of 2026-08-24** — 51 `P735` *given name*
+  with `P1545` ordinal and `P7452` → `Q3409033` *usual forename* / `P3831` → `Q245025`
+  *middle name*, and 19 `P734` *family name*, all pointing at name items Wikidata
+  **already** has.
+- **0 `P5056` yet, and that is correct.** Every patronymic in this frontier needs an item
+  created first — `reports/wikidata-garborg-name-items.qs`, 38 items, its own run. The
+  patronyms join the daily batch the day after that runs, same single-run rule as
+  everyone else.
 - **7 ambiguous name tokens** are listed and never created — `Marie`, `Olga`, `Anton` and
   the rest resolve to several items each. The person's sex decides; Emma picks.
 - **Three redacted people, and "living" is an inference not a fact.** The batch creates
