@@ -11503,3 +11503,38 @@ between them.
 
 Recorded in `reports/geni-qid-links.md` so it does not have to be re-derived before running
 them.
+
+## 2026-08-23 — the todo.md batch inventory listed 14 of 24, and missed the largest
+
+Emma's item, 2026-08-15: *"I don't know if the to-do is being properly done."* Audited the
+one part of `todo.md` that is checkable rather than a judgement — § *The built batches* — by
+counting the files instead of reading the table.
+
+**14 rows listed; 24 batches exist.** The ten missing include the five largest after
+`wikidata-orderlife.json`:
+
+| missing from the table | entries |
+| --- | ---: |
+| `reports/wikidata-marker-label-fixes.json` | **56,369** — the biggest batch in the repo |
+| `reports/wikidata-ja-labels.json` | 41,952 |
+| `reports/wikidata-en-labels.json` | 22,373 |
+| `reports/wikidata-patronymic-fathers.json` | 21,303 |
+| `reports/wikidata-mul-labels.json` | 14,972 |
+
+plus `wikidata-add-geni-id.qs`, `wikidata-geni-qid-p2600.qs`, `wikidata-garborg.qs`,
+`wikidata-bureatten-p2600.qs` and `wikidata-izumo-beyond-chart.json`. One listed count was
+also wrong: `wikidata-placeholder-labels.json` is 39,691, not 39,299.
+
+**The fix is not a better table, it is not maintaining one by hand.**
+`scripts/audit-built-batches.py` counts every `wikidata-*.json` and every `.qs` in
+`reports/` — JSON by edit objects, QuickStatements by non-comment lines with `CREATE`
+counted separately, because a creation is a different act from a statement. It writes
+`reports/built-batches.tsv` and prints the markdown. The section now says to re-run it
+rather than edit the table, and records that this inventory has now drifted twice.
+
+That is the same failure as `reports/repo-freshness.csv` earlier today: a file describing
+the state of other files, maintained by hand, quietly describing a repo that no longer
+exists. Both are now generated.
+
+The rest of `todo.md` is horizons rather than claims — nothing else in it asserts a number
+that can be checked against the repo.

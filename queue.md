@@ -582,17 +582,6 @@ vanished without firing. Emma, 2026-08-15: put it in the queue instead, because
 and that `seeds.md` *"ranks by doorway count and has never been validated against
 an outcome"*. The question is whether it is kept, regenerated or deleted.
 
-## Audit `todo.md` against what is actually built
-
-**Emma, 2026-08-15:** *"It's on our own recording this in the to-do, not the queue,
-and I don't know if the to-do is being properly done."* Her call: audit it at the
-end of the queue.
-
-Same method as the `queue.md` audit — every item checked against what exists in
-the repo, stale ones corrected or closed, and the difference between *stale* and
-*incomplete* stated for each. Four items were found stale rather than incomplete
-last time; that is the expected shape.
-
 ## LABELS, IN HER ORDER — one step per language, every individual at once
 
 **Emma, 2026-08-17**, after being shown the 364 structural placeholders with no label:

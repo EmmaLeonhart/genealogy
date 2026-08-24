@@ -639,32 +639,48 @@ local store once the pairs are in.
 
 ## The built batches, and the 1 September date
 
-**Moved out of `queue.md` on 2026-08-16.** Emma: *"What the fuck waits on 1
-September? That shouldn't be in the queue?"* Right — it is not work, it is a
-list of what exists, and it was sitting in the work list making the queue look
-longer than it was. The date is her own instruction of 2026-08-14: *"no wikidata
-edits until September 1."*
+**Moved out of `queue.md` on 2026-08-16.** Emma: *"What the fuck waits on 1 September? That
+shouldn't be in the queue?"* Right — it is not work, it is a list of what exists. The date
+is her instruction of 2026-08-14: *"no wikidata edits until September 1."*
 
-Every batch below is generated, committed, and has sent nothing anywhere. Counted
-2026-08-17 by reading the files, not carried forward — four of the ten rows this
-table used to have were out of date and three batches were missing from it entirely.
+Every batch below is generated, committed, and has sent nothing anywhere.
 
-| batch | entries |
-| --- | ---: |
-| `reports/wikidata-orderlife.json` | 54,356 |
-| `reports/wikidata-placeholder-labels.json` | 39,299 — **held** until all seven languages exist |
-| `reports/wikidata-name-items.json` | 13,320 |
-| `reports/wikidata-structural-placeholders.json` | 12,260 — **held**, no label set yet |
-| `reports/wikidata-structural-correspondence.json` | 3,719 |
-| `reports/wikidata-nn-labels.json` | 3,525 |
-| `reports/wikidata-trunk-batch.json` | 118 |
-| `reports/wikidata-samaritan-priests.json` | 76 |
-| `reports/wikidata-add-geni-id.json` | 36 |
-| `reports/wikidata-samaritan-succession.json` | 21 |
-| `reports/wikidata-orderlife-identifiers.json` | 12 |
-| `reports/wikidata-entity-resolution.json` | 10 |
-| `reports/wikidata-samaritan-links.json` | 9 |
-| `reports/wikidata-abram-father.json` | 2 |
+**Counted by `scripts/audit-built-batches.py`, not by hand.** The hand-maintained version of
+this table drifted twice: on 2026-08-17 four of ten rows were out of date and three batches
+were missing, and by **2026-08-23 it listed 14 of the 24 that exist** — including none of
+the five largest-but-one. `reports/wikidata-marker-label-fixes.json`, the biggest batch in
+the repo at 56,369 edits, had never appeared in it. A generated inventory maintained by hand
+goes stale by construction: every generator that runs changes a number nobody updates. Re-run
+the script instead of editing the table.
+
+| `reports/wikidata-marker-label-fixes.json` | 56369 | edit objects |
+| `reports/wikidata-orderlife.json` | 54356 | edit objects |
+| `reports/wikidata-ja-labels.json` | 41952 | edit objects |
+| `reports/wikidata-placeholder-labels.json` | 39691 | edit objects |
+| `reports/wikidata-en-labels.json` | 22373 | edit objects |
+| `reports/wikidata-patronymic-fathers.json` | 21303 | edit objects |
+| `reports/wikidata-mul-labels.json` | 14972 | edit objects |
+| `reports/wikidata-name-items.json` | 13320 | edit objects |
+| `reports/wikidata-structural-placeholders.json` | 12260 | edit objects |
+| `reports/wikidata-structural-correspondence.json` | 3719 | edit objects |
+| `reports/wikidata-nn-labels.json` | 3525 | edit objects |
+| `reports/wikidata-geni-qid-p2600.qs` | 354 | 354 statements |
+| `reports/wikidata-trunk-batch.json` | 118 | edit objects |
+| `reports/wikidata-garborg.qs` | 90 | 6 creations + 84 statements |
+| `reports/wikidata-samaritan-priests.json` | 76 | edit objects |
+| `reports/wikidata-add-geni-id.json` | 36 | edit objects |
+| `reports/wikidata-add-geni-id.qs` | 36 | 36 statements |
+| `reports/wikidata-samaritan-succession.json` | 21 | edit objects |
+| `reports/wikidata-orderlife-identifiers.json` | 12 | edit objects |
+| `reports/wikidata-entity-resolution.json` | 10 | edit objects |
+| `reports/wikidata-samaritan-links.json` | 9 | edit objects |
+| `reports/wikidata-bureatten-p2600.qs` | 7 | 7 statements |
+| `reports/wikidata-abram-father.json` | 2 | edit objects |
+| `reports/wikidata-izumo-beyond-chart.json` | 1 | edit objects |
+
+`reports/built-batches.tsv` is the same data. **Two rows are held rather than ready:**
+`wikidata-placeholder-labels.json` until all seven languages exist, and
+`wikidata-structural-placeholders.json` until it has a label set.
 
 ## 9. Future modelling, folded in from `provisional-todo.md` (2026-08-16)
 
