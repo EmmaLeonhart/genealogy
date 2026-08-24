@@ -11643,3 +11643,37 @@ graph is necessary and not sufficient — the ordering is still declared and une
 that stays in `queue.md` as a design decision.
 
 **Fast lane: 1,105 passed, 1 xfailed, 0 failed**, 5m42s.
+
+## 2026-08-24 — Garborg hop 2, and the correspondence Emma feared was missing
+
+**Hop 2 is built.** `scripts/build-garborg-hop.py`, `reports/wikidata-garborg-hop2.qs`:
+**38 creations, 17 links, 21 deferred** — the spouses and children of Arne's siblings, plus
+his four grandparents. 40 people at that distance; **two were skipped because they already
+have Wikidata items**, `Q11959067` (Arne Olaus Fjørtoft Garborg) and `Q3143008` (Karen Hulda
+Bergersen). That check has now prevented a duplicate three times in two days.
+
+A link is emitted only where its target already has a QID. Twenty-one point at siblings who
+are still hop-1 creations, and QuickStatements V1 cannot name an item minted in the same
+run, so those go to the commented second pass rather than being guessed.
+
+**And the correspondence.** Emma: *"there was a tsv qid correspondence quickstatement thing
+is that represented in our data?… I'm afraid it isn't properly represented in our synoptic
+tree."* **She was right.** Five files held QID↔Geni pairings and nothing joined them —
+which is exactly the artefact `CLAUDE.md` says the synoptic tree is for.
+
+`scripts/build-synoptic-correspondence.py` → `reports/synoptic-correspondence.tsv`:
+**522,086 distinct pairs** across 518,680 QIDs and 521,823 Geni profiles, every pair
+carrying its provenance. Sources: the Wikidata `P2600` snapshot (517,823), the structural
+walk (3,902), the About Me links (405), the Geni–Wikidata pairs (126), the Izumo roster
+(112).
+
+**3,257 QIDs carry more than one Geni id and that is correct** — two profiles for one
+person is permanent in Geni and `P2600` is multi-valued. Not flagged.
+
+**257 Geni profiles claim more than one QID, and that is a contradiction.** 67 are Wikidata
+disagreeing with itself; **190 involve one of our sources, 183 of them the structural walk
+against Wikidata's own `P2600`**. Listed in `reports/synoptic-conflicts.tsv` and **not
+resolved** — identity calls are hers, and a disagreement is a note rather than a work item.
+
+The corpus merge that made this possible finished first: 546 exports, 1,325,436 individuals,
+566,198 families, and `out/merged-pre-synoptic-2026-08-23.ged` kept per the backtest rule.

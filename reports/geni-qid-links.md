@@ -137,3 +137,43 @@ statements belong.
 **So all four still have work to do** — the two older files are not superseded, they carry
 7 pairs each that the About Me links do not reach. Their statements have no `S2600`
 reference at all, which the template permits: `P2600` is in the uncited group.
+
+
+## The synoptic correspondence: five sources, now one file
+
+**Emma, 2026-08-23, and she was right to worry:** *"there was a tsv qid correspondence
+quickstatement thing is that represented in our data?… I'm afraid it isn't properly
+represented in our synoptic tree."*
+
+Five files held QID↔Geni pairings and **nothing joined them**, which is exactly the
+artefact `CLAUDE.md` says the synoptic tree is for. `scripts/build-synoptic-correspondence.py`
+now writes `reports/synoptic-correspondence.tsv`, every pair carrying its provenance.
+
+| source | pairs |
+| --- | ---: |
+| `out/wikidata/p2600-all.tsv` — what Wikidata already states | 517,823 |
+| `reports/structural-correspondence.csv` — found by walking relationships | 3,902 |
+| `reports/geni-qid-links.tsv` — the URL Emma wrote into the Geni About Me | 405 |
+| `reports/geni-wikidata-pairs.csv` | 126 |
+| `reports/izumo-p2600-pairs.tsv` | 112 |
+| **distinct pairs after the join** | **522,086** |
+
+518,680 QIDs against 521,823 Geni profiles.
+
+### Two kinds of multiplicity, and only one is a problem
+
+**3,257 QIDs carry more than one Geni id, and that is correct.** Two Geni profiles for
+one person is a permanent structural feature of Geni, `P2600` is multi-valued, and the
+local store already holds 2,861 items with more than one. Not flagged, not adjudicated.
+
+**257 Geni profiles claim more than one QID, and that is a contradiction** — one person
+cannot be two Wikidata items. `reports/synoptic-conflicts.tsv` lists them with the
+sources that disagree. **67 are Wikidata disagreeing with itself** (both QIDs already
+carry that `P2600`), so they are not ours to have caused. The other **190 involve one of
+our own sources**, and **183 of those are `structural` against `wikidata-p2600`** — the
+relationship walk proposing a pairing for a profile Wikidata already links elsewhere.
+
+**Nothing here is resolved.** Identity calls and merges are Emma's, and a contradiction
+is a note rather than a work item — `CLAUDE.md` § *The purpose is to ADD to Wikidata*.
+What changed is that the disagreements are now visible in one place instead of implicit
+across five.

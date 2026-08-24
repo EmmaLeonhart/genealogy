@@ -1,0 +1,126 @@
+"""One QID↔Geni correspondence, gathered from every place one currently lives.
+
+    python scripts/build-synoptic-correspondence.py
+
+**Emma, 2026-08-23:** *"there was a tsv qid correspondence quickstatement thing is
+that represented in our data?... I'm afraid it isn't properly represented in our
+synoptic tree."*
+
+She was right to be afraid. Five files hold QID↔Geni pairings and **nothing joined
+them**, which is precisely the artefact `CLAUDE.md` says the synoptic tree is for:
+*"we definitely need to… be essentially building up our own correspondence of the
+QIDs and Jenny IDs for these ones."*
+
+| source | what it is |
+| --- | --- |
+| `out/wikidata/p2600-all.tsv` | what **Wikidata already states**, from the bulk download |
+| `reports/geni-qid-links.tsv` | the Wikidata URL **Emma wrote into the Geni About Me** |
+| `reports/structural-correspondence.csv` | found by walking relationships, not names |
+| `reports/geni-wikidata-pairs.csv` | the Geni↔Wikidata pairing pass |
+| `reports/izumo-p2600-pairs.tsv` | the Izumo roster join |
+
+Every pair keeps its provenance, so a row can be read back to why we believe it.
+
+**Two kinds of multiplicity, and only one is a problem.**
+
+*One QID, several Geni ids* is **ordinary and correct** — `CLAUDE.md`: two Geni
+profiles for one person is a permanent structural feature of Geni, `P2600` is
+multi-valued, and 2,861 stored items already carry more than one. Not flagged.
+
+*One Geni id, several QIDs* is a **contradiction**: one person cannot be two Wikidata
+items. Those are counted and listed, never resolved here — merges and identity calls
+are Emma's.
+
+Writes `reports/synoptic-correspondence.tsv` and `reports/synoptic-conflicts.tsv`.
+Offline throughout.
+"""
+from __future__ import annotations
+
+import csv
+import sys
+from collections import defaultdict
+from pathlib import Path
+
+csv.field_size_limit(1 << 30)
+sys.stdout.reconfigure(encoding="utf-8")
+ROOT = Path(__file__).resolve().parent.parent
+
+
+def rows_from(path, qid_col, geni_col, delim=","):
+    if not path.exists():
+        print(f"  (missing: {path.relative_to(ROOT)})")
+        return
+    with open(path, encoding="utf-8") as f:
+        for row in csv.DictReader(f, delimiter=delim):
+            q = (row.get(qid_col) or "").strip()
+            for g in (row.get(geni_col) or "").split(";"):
+                g = g.strip()
+                if q.startswith("Q") and g.isdigit():
+                    yield q, g
+
+
+def wikidata_snapshot(path):
+    if not path.exists():
+        print(f"  (missing: {path.relative_to(ROOT)})")
+        return
+    with open(path, encoding="utf-8") as f:
+        for row in csv.reader(f, delimiter="\t"):
+            if len(row) >= 2 and row[0].startswith("Q") and row[1].strip().isdigit():
+                yield row[0].strip(), row[1].strip()
+
+
+def main():
+    pairs = defaultdict(set)          # (qid, geni) -> {sources}
+    R = ROOT / "reports"
+
+    sources = [
+        ("wikidata-p2600", wikidata_snapshot(ROOT / "out" / "wikidata" / "p2600-all.tsv")),
+        ("geni-about-me", rows_from(R / "geni-qid-links.tsv", "qids", "geni_id", "\t")),
+        ("structural", rows_from(R / "structural-correspondence.csv", "qid", "geni_id")),
+        ("geni-wikidata-pairs", rows_from(R / "geni-wikidata-pairs.csv", "qid", "geni_id")),
+        ("izumo-roster", rows_from(R / "izumo-p2600-pairs.tsv", "qid", "geni_ids", "\t")),
+    ]
+    for label, stream in sources:
+        n = 0
+        for q, g in stream:
+            pairs[(q, g)].add(label)
+            n += 1
+        print(f"{label:<22} {n:>7} pairs")
+
+    print(f"\n{len(pairs)} distinct (qid, geni) pairs")
+
+    by_geni = defaultdict(set)
+    by_qid = defaultdict(set)
+    for q, g in pairs:
+        by_geni[g].add(q)
+        by_qid[q].add(g)
+
+    multi_geni = {q: gs for q, gs in by_qid.items() if len(gs) > 1}
+    conflicts = {g: qs for g, qs in by_geni.items() if len(qs) > 1}
+    print(f"{len(by_qid)} QIDs, {len(by_geni)} Geni profiles")
+    print(f"{len(multi_geni)} QIDs carry more than one Geni id "
+          f"- ordinary, P2600 is multi-valued")
+    print(f"{len(conflicts)} Geni profiles claim more than one QID - CONTRADICTIONS")
+
+    out = R / "synoptic-correspondence.tsv"
+    with open(out, "w", encoding="utf-8", newline="") as f:
+        w = csv.writer(f, delimiter="\t")
+        w.writerow(["qid", "geni_id", "sources", "qid_has_other_geni_ids",
+                    "geni_id_has_other_qids"])
+        for (q, g), src in sorted(pairs.items()):
+            w.writerow([q, g, ";".join(sorted(src)),
+                        len(by_qid[q]) - 1, len(by_geni[g]) - 1])
+    print(f"\nwrote {out.relative_to(ROOT)}")
+
+    conf = R / "synoptic-conflicts.tsv"
+    with open(conf, "w", encoding="utf-8", newline="") as f:
+        w = csv.writer(f, delimiter="\t")
+        w.writerow(["geni_id", "qids", "sources"])
+        for g, qs in sorted(conflicts.items()):
+            src = sorted({s for q in qs for s in pairs[(q, g)]})
+            w.writerow([g, ";".join(sorted(qs)), ";".join(src)])
+    print(f"wrote {conf.relative_to(ROOT)} - {len(conflicts)} rows, Emma's to settle")
+
+
+if __name__ == "__main__":
+    main()

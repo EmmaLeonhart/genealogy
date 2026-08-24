@@ -46,11 +46,13 @@ and no two batches creating the same person.
 **One hop out from Arne Garborg per day**, a small reviewable batch each time, as
 rehearsal for a later Geni bot. `CLAUDE.md` § *The programme is HYPERLOCAL*.
 
-- **Build the hop generator.** Given the items that exist, emit the next distance out:
-  siblings, then their spouses and children, then the grandparents. Shape from
-  `docs/wikidata-item-template.md`.
-- Hop 1 is done and is `reports/wikidata-garborg.qs` — 6 creations, 84 statements, the
-  six remaining siblings plus dates and `P3373` on the four items she made by hand.
+- `scripts/build-garborg-hop.py` is the generator. **Hop 1** is
+  `reports/wikidata-garborg.qs` (6 creations, 84 statements). **Hop 2** is
+  `reports/wikidata-garborg-hop2.qs` — 38 creations, 17 links, 21 deferred: the
+  siblings' spouses and children and Arne's four grandparents. Two of the 40 were
+  skipped because they already have items (`Q11959067`, `Q3143008`).
+- **Hop 3 is not defined in the generator yet** — `frontier()` refuses any hop but 2
+  rather than guessing what the next ring is.
 - **Do not invent batches she has not asked for.** The existing mass batches stay live
   and will run from 2026-09-01; that is settled and is not this rule.
 
