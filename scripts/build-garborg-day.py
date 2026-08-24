@@ -85,6 +85,58 @@ def translit():
     return out
 
 
+def _words():
+    """The per-language relationship table from `build-nn-label-batch.py`.
+
+    Imported rather than restated: it carries decisions that were paid for, notably
+    that Danish and Norwegian take a different preposition depending on which way the
+    relation runs (`datter af` but `mor til`), and that Slavic and Welsh are left out
+    because they inflect the name after the relationship word.
+    """
+    import importlib.util
+    path = Path(__file__).resolve().parent / "build-nn-label-batch.py"
+    spec = importlib.util.spec_from_file_location("build_nn_label_batch", path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module.WORDS
+
+
+WORDS = _words()
+
+
+def describe_all(geni_id, facts, father, mother, labels, table):
+    """`{lang: "daughter of Arne Olaus Fjørtoft Garborg"}` for a redacted person.
+
+    Built from the nearest named parent. `ja` and `zh` are included **here** where
+    `build-nn-label-batch.py` excludes them, and the reason it excludes them is the
+    reason this can: it warns the phrase would come out `Gerard Spencerの娘`, mixing
+    scripts, *because the relative's name has not been transliterated*. In this family
+    it has — `reports/garborg-name-transliterations.tsv` covers every token — so the
+    Japanese and Chinese forms are whole rather than half Latin.
+    """
+    sex = (facts.get(geni_id, {}).get("sex") or "")
+    for parent in (father.get(geni_id), mother.get(geni_id)):
+        if not parent:
+            continue
+        name = (labels.get(parent) or "").strip()
+        if not name or name.lower() in ("nn", "private", "unknown", "?"):
+            continue
+        out = {}
+        for lang, words in WORDS.items():
+            group = words["child_of"]
+            word = group.get(sex) or group[""]
+            joiner = words["of"]
+            if isinstance(joiner, dict):
+                joiner = joiner.get("child_of", joiner[""])
+            out[lang] = f"{word} {joiner} {qs(name)}"
+        ja, zh = label_in(name, table)
+        if ja:
+            out["ja"] = f"{ja}の{'息子' if sex == 'M' else '娘' if sex == 'F' else '子'}"
+            out["zh"] = f"{zh}之{'子' if sex == 'M' else '女' if sex == 'F' else '子女'}"
+        return out
+    return {}
+
+
 def live_state():
     """`{qid: (label languages, properties)}` from the 2026-08-24 live read.
 
@@ -326,7 +378,23 @@ def main():
 
         lines.append("CREATE")
         if redacted or not label:
-            carried.append((g, label, "redacted: created, deliberately unlabelled"))
+            # **NOT unlabelled.** `CLAUDE.md` § *`NN` is PRESERVED in `mul`.
+            # Descriptive labels are ADDED in other languages* -- the marker stays in
+            # `mul` and every local language gets a formulaic description built from
+            # the nearest named relative. Emma, 2026-08-16: *"NN and private are the
+            # same thing here"*. The surname survives redaction and is real data, so
+            # `mul` reads `NN Garborg`, not a bare `NN`.
+            # The surname survives redaction and is real data -- CLAUDE.md measured
+            # 3,605 such profiles. `<private> Garborg` -> `Garborg`.
+            surname = " ".join(t for t in qs(labels.get(g, "")).split()
+                               if not t.lower().startswith("<private")
+                               and t.lower() not in ("private", "nn"))
+            lines.append(f'LAST\tLmul\t"{("NN " + surname).strip()}"')
+            described = describe_all(g, facts, father, mother, labels, table)
+            for code, value in sorted(described.items()):
+                lines.append(f'LAST\tL{code}\t"{value}"')
+            if not described:
+                carried.append((g, label, "redacted: no named relative to describe by"))
         else:
             lines.append(f'LAST\tLen\t"{label}"')
             lines.append(f'LAST\tLmul\t"{label}"')

@@ -12083,3 +12083,56 @@ rather than deleted, and its docstring records why.
 
 `CLAUDE.md` § *A SUMMARY of a Wikidata item is not the item* is the rule this earns.
 Fast lane: **1,177 passed, 0 failed, 3m50s.**
+
+## 2026-08-24 — the NN algorithm applied, and six of seven ambiguous names settled
+
+**I asked whether three redacted people should be created unlabelled. That question
+should never have been asked** — `CLAUDE.md` § *`NN` is PRESERVED in `mul`* documents the
+algorithm, Emma had described it at length, and "no label" is not one of the options. Her
+reply, in full caps and deserved.
+
+The three `<private> Garborg` now come out as:
+
+    mul  NN Garborg
+    en   son of Arne Olaus Fjørtoft Garborg
+    nb   sønn av Arne Olaus Fjørtoft Garborg
+    da   søn af …   sv  son till …   de  Sohn von …   nl  zoon van …
+    ja   アルネ・オーラウス・フョルトフト・ガルボルグの息子
+    zh   阿尔内·奥劳斯·夫约托夫特·加尔博格之子
+
+Twelve languages. The table is **imported** from `scripts/build-nn-label-batch.py`, not
+restated — it carries paid-for decisions like Danish `datter af` against `mor til`. That
+script excludes `ja`/`zh` because the relative's name is usually not transliterated; here
+it is, so they go in whole.
+
+The surname is kept in `mul`: it survives redaction and is real data.
+
+**The test asserting the old rule was renamed and rewritten**, not deleted — it was called
+`test_a_redacted_person_is_created_and_carries_no_label`, and the name encoded the error.
+
+### Ambiguous given names: 7 → 1
+
+Emma's rule is *resolve by the bearer's sex*. It settles **two** — `Marie` (female item
+over unisex) and `Ola` (male over unisex). The other four are two candidates of the **same
+sex**, so sex has nothing to separate.
+
+What separates them is the `mul` label, and it is the rule already in `CLAUDE.md` §
+*A diacritic makes a different name*, one step further:
+
+    Martin   Q118322765  mul = Мартин     the Russian name
+             Q18002399   mul = Martin     the Latin-script name
+
+Cyrillic and Latin are different name items exactly as `María` and `Mária` are, and
+picking the Russian item for a Norwegian farmer would be wrong in the same way. `Anton`,
+`Emil` and `Eliza` resolve identically — and `Eliza`'s loser is a one-language stub
+against a 19-language item.
+
+`scripts/resolve-ambiguous-names.py`, offline, writes
+`reports/ambiguous-names-resolved.tsv`. **`Olga` stays unresolved** — it has no candidates
+recorded at all, so there is nothing to choose between, and it is reported rather than
+guessed.
+
+Linked tokens 46 → **52**, `P735` *given name* statements 51 → **69**, carry-forward
+71 → **65**.
+
+Fast lane: **1,177 passed, 0 failed, 1 skipped, 5m22s.**

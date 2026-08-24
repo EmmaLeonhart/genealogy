@@ -53,7 +53,15 @@ PATRONYMIC = re.compile(r".+(sen|son|sson|datter|sdatter)$", re.I)
 
 
 def load_plan(path: Path | None = None) -> dict:
-    """(token, usage) -> (existing_qid or '', action)."""
+    """(token, usage) -> (existing_qid or '', action).
+
+    `reports/ambiguous-names-resolved.tsv` is overlaid on top, where it has an answer.
+    Those are the tokens the plan marks AMBIGUOUS and therefore refuses to emit;
+    `scripts/resolve-ambiguous-names.py` settles them by the bearer's sex (Emma's rule)
+    and then by which candidate's `mul` label is the token itself, which is what
+    separates the Russian `Мартин` from the Latin `Martin`. A token it cannot settle
+    stays AMBIGUOUS and is still not emitted.
+    """
     path = path or ROOT / "reports" / "name-item-plan.csv"
     out = {}
     with open(path, encoding="utf-8") as f:
@@ -62,6 +70,14 @@ def load_plan(path: Path | None = None) -> dict:
                 (row.get("existing_qid") or "").strip(),
                 (row.get("action") or "").strip(),
             )
+
+    resolved = ROOT / "reports" / "ambiguous-names-resolved.tsv"
+    if resolved.exists():
+        with open(resolved, encoding="utf-8") as f:
+            for row in csv.DictReader(f, delimiter="\t"):
+                qid = (row.get("qid") or "").strip()
+                if qid:
+                    out[(row["token"], "given")] = (qid, "link (ambiguity resolved)")
     return out
 
 

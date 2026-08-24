@@ -15,10 +15,16 @@ because what failed is only discoverable by reading QuickStatements' output line
 contributions rather than a bulk download — her instruction, and the reason this can be
 checked offline at all.
 
-The other rule here is hers too: a **redacted** profile is created and gets **no label**.
-`CLAUDE.md`: *"Private is a redaction marker, not a name, and an item labelled that
-asserts something false while being impossible to find. The P2600 is what makes it
-retrievable."*
+The other rule here is hers too, and this file stated it **wrongly** until 2026-08-24: a
+**redacted** profile is created, the marker is preserved in `mul`, and every local
+language gets a formulaic description. `CLAUDE.md` § *`NN` is PRESERVED in `mul`.
+Descriptive labels are ADDED in other languages*, quoting Emma: *"NN is always preserved
+in the multi-language label. It just has more descriptive labels added in some languages
+for the relationships."* and *"NN and private are the same thing here."*
+
+What must never happen is the marker becoming a label — `Private` asserts a false name —
+and that is a different thing from leaving the item unlabelled, which was the mistake
+made here.
 """
 from __future__ import annotations
 
@@ -65,12 +71,23 @@ def known_name_items():
     live in `reports/wikidata-garborg-name-items.qs` and must not be pointed at until
     that batch has run.
     """
+    out = set()
     plan = REPO / "reports" / "name-item-plan.csv"
-    if not plan.exists():
-        return set()
-    with open(plan, encoding="utf-8") as f:
-        return {(row.get("existing_qid") or "").strip()
-                for row in csv.DictReader(f)} - {""}
+    if plan.exists():
+        with open(plan, encoding="utf-8") as f:
+            out |= {(row.get("existing_qid") or "").strip()
+                    for row in csv.DictReader(f)}
+
+    # The tokens that were AMBIGUOUS and have since been settled by
+    # `scripts/resolve-ambiguous-names.py`. These are candidates that came out of the
+    # Wikidata download, so they exist just as surely as the plan's own -- they are
+    # simply recorded in a second file because choosing between them was a decision.
+    resolved = REPO / "reports" / "ambiguous-names-resolved.tsv"
+    if resolved.exists():
+        with open(resolved, encoding="utf-8") as f:
+            out |= {(row.get("qid") or "").strip()
+                    for row in csv.DictReader(f, delimiter="\t")}
+    return out - {""}
 
 
 #: Values that are legitimately not people in the ledger: the classes and qualifier
@@ -121,8 +138,19 @@ def test_no_statement_is_deferred_or_commented_into_the_batch():
             f"{marker!r} suggests a deferred statement is still in the file")
 
 
-def test_a_redacted_person_is_created_and_carries_no_label():
-    """Emma's rule, and both halves matter: created, and deliberately unlabelled."""
+def test_a_redacted_person_is_created_and_described_not_left_unlabelled():
+    """The marker goes in `mul`; every local language gets a formulaic description.
+
+    **This test used to be called `..._carries_no_label` and that was the wrong rule.**
+    `CLAUDE.md` § *`NN` is PRESERVED in `mul`. Descriptive labels are ADDED in other
+    languages* has the algorithm, and Emma had described it at length before any of this
+    was written. An item with no label at all is the objection she raised against
+    labelling one *Private*: it cannot be read or found either way.
+
+    So a redacted person gets `mul` = `NN <surname>` — the surname survives redaction
+    and is real data — and `en`, `nb`, `da`, `sv`, `nl`, `de`, `es`, `pt`, `it`, `ca`
+    plus `ja` and `zh` describing them by their nearest named parent.
+    """
     carried = REPO / "reports" / "garborg-carry-forward.tsv"
     if not carried.exists():
         pytest.skip("no carry-forward file")
@@ -308,3 +336,32 @@ def test_a_label_language_the_item_already_has_is_not_emitted_again():
         if m and m.group(2) in langs.get(m.group(1), set()):
             bad.append((m.group(1), m.group(2)))
     assert not bad, f"overwriting an existing label language: {sorted(set(bad))[:5]}"
+
+
+def test_a_redacted_person_gets_the_marker_in_mul_and_a_description_elsewhere():
+    """The NN algorithm, applied. Not "no label" — that was the mistake this replaces.
+
+    `CLAUDE.md`, quoting Emma: *"NN is not relabeled... NN is always preserved in the
+    multi-language label. It just has more descriptive labels added in some languages
+    for the relationships."* And: *"NN and private are the same thing here, because if
+    there's a private individual whose name is not exported, it comes out as an NN."*
+    """
+    text = BATCH.read_text(encoding="utf-8")
+    if 'Lmul\t"NN' not in text:
+        pytest.skip("no redacted person in this frontier")
+
+    # The marker keeps the surname: it survives redaction and is real data.
+    assert re.search(r'Lmul\t"NN \w', text), (
+        "the mul label is a bare NN; the surname survives redaction and belongs in it")
+
+    # And the description exists in more than English, in the languages the
+    # relationship table covers.
+    for lang in ("en", "nb", "da", "sv", "de", "nl", "ja", "zh"):
+        assert re.search(rf'L{lang}\t"[^"]+ ', text) or re.search(rf'L{lang}\t"[^"]+"',
+                                                                  text), (
+            f"no {lang} label anywhere; the description is supposed to be formulaic "
+            f"across languages, not English-only")
+
+    # Nothing describes a person by an unnamed relative.
+    assert not re.search(r'L(en|nb|da|sv)\t"[^"]*\b(NN|Private|unknown)\b', text), (
+        "a description names nobody — it should fall through to the next relative")

@@ -426,6 +426,33 @@ period so the ranking can be read one century at a time.
   how far *we* have traced upward, so an untraced person looks shallow whenever
   they lived. No date is ever inferred.
 
+### The NN/Private label algorithm applies to EVERY unnamed person. It is not optional
+
+**Emma, 2026-08-24, when asked whether three redacted people should be created
+unlabelled:** *"THERE IS LITERALLY A SUPER WELL DOCUMENTED ALGORITHM I TALKED ABOUT FOR
+AGES AND ASSUMED THAT EXISTED INVOLVING NN AND FORMULAIC CONSTRUCTION IN MULTIPLE
+LANGUAGES FOR PEOPLE WITH PRIVATE OR NN OR UKJENT OR WHATEVER."*
+
+She is right, it is documented two sections down, and the question should never have been
+asked. **"Create it with no label" is not one of the options.** The algorithm is:
+
+    mul  NN Garborg                                  <- marker + the surname, which survives redaction
+    en   son of Arne Olaus Fjørtoft Garborg          <- formulaic, from the nearest named relative
+    nb   sønn av Arne Olaus Fjørtoft Garborg
+    ja   アルネ・オーラウス・フョルトフト・ガルボルグの息子
+    zh   阿尔内·奥劳斯·夫约托夫特·加尔博格之子
+
+**`scripts/build-nn-label-batch.py` owns the language table** — ten languages with the
+right relationship word per sex and the right preposition per direction (`datter af` but
+`mor til`). Import it; do not restate it. It excludes Slavic and Welsh because they
+inflect the name after the relationship word, and it excludes `ja`/`zh` **only** because
+the relative's name is usually not transliterated — where it is, as in the Garborg family,
+they are emitted.
+
+**`PRIVATE`, `NN`, `UKJENT` and the rest are one population.** Emma: *"NN and private are
+the same thing here, because if there's a private individual whose name is not exported,
+it comes out as an NN."*
+
 ### Redacted people go in. `Private` never becomes a label
 
 **Emma, 2026-08-14:** *"Even if the data is affected by redaction, I'm not really

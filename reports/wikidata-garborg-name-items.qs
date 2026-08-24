@@ -236,10 +236,4 @@ LAST	P31	Q110874
 # NOT created -- the plan says these already resolve to more than
 # one item, and creating another is the Maria failure that would
 # have made a tenth. Emma picks, the person's sex decides.
-#   Anton (given), 1 bearer(s)
-#   Eliza (given), 1 bearer(s)
-#   Emil (given), 1 bearer(s)
-#   Marie (given), 1 bearer(s)
-#   Martin (given), 1 bearer(s)
-#   Ola (given), 1 bearer(s)
 #   Olga (given), 2 bearer(s)
