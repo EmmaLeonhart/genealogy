@@ -70,38 +70,33 @@ into our tree. Just processing."* Done — `scripts/pack-derived.py`, four `.csv
 (26-43 MiB, 4.1-4.8x), four plain CSVs gitignored, `tests/test_derived_packing.py` pinning
 the pair. `CLAUDE.md` § *The four big derived CSVs are committed GZIPPED*.
 
-## The daily Garborg hop — the programme, per Emma 2026-08-23
+## The daily Garborg batch — one QuickStatements run per day
 
-**One hop out from Arne Garborg per day**, a small reviewable batch each time, as
-rehearsal for a later Geni bot. `CLAUDE.md` § *The programme is HYPERLOCAL*.
+`scripts/build-garborg-day.py` → `reports/wikidata-garborg-day.qs`.
+`reports/garborg-qids.tsv` is the ledger of who has a QID, filled from **Emma's Wikidata
+contributions** (account 日巫女), never a bulk download — her instruction, 2026-08-24.
 
-**Emma, 2026-08-24: the batches so far are not comprehensive.** *"I gave a big idea of
-what the data modelling should be in the quick statements. Your quick statements that
-you generated for them aren't really there yet... it should be comprehensive so they
-conform to this new model."* Four things she named, in order:
+**The rule: a statement goes in only if BOTH ends already have a QID.** Emma, after
+running the first file: *"I only ran some of the quick statements because many of them
+required links that couldn't exist... this is going to be the practical limitation of
+what our quick statements can do."* Nothing deferred, nothing commented out. What cannot
+run today is tomorrow's batch, because tomorrow those items exist.
 
-- **Name modelling.** DONE for the item side: `scripts/namemodel.py` classifies a
-  Norwegian name into `P735` given (with `P1545` ordinal, `P7452` *usual forename* on
-  the first, `P3831` → `Q245025` *middle name* after), `P5056` patronym, `P734`
-  family. `scripts/build-garborg-name-items.py` emits the **31 name items** Wikidata
-  lacks — `reports/wikidata-garborg-name-items.qs`, which **runs first**. 8 tokens are
-  ambiguous and are listed, never created.
-- **STILL TO DO: wire the name statements into the person batches.** The items exist
-  now; hops 1 and 2 still carry no `P735`/`P734`/`P5056`.
-- **STILL TO DO: `ja` and `zh` labels.** *"we should also be adding their names in
-  languages that are not English, or at least in Japanese... and Chinese."* Katakana
-  for `ja` is mechanical; **`zh` transliteration of Norwegian names is a judgement**
-  and wants a sample in front of her before 44 people get one.
-- **STILL TO DO: everyone directly linked.** *"For the people that we added in this
-  batch, we're now adding all the people directly linked to them."* Hop 2 took spouses,
-  children and grandparents; siblings-of-spouses and parents-of-spouses were not taken.
+Each day: close the links yesterday's creations made possible, create the next ring, link
+the new people only to what already exists.
 
-**Checked against Wikidata, offline, 2026-08-24.** Arne `Q467497` has **one** `P40`
-child — Arne Olaus `Q11959067` — confirming Emma: *"I don't think Arnie had any
-grandchildren. He just had one child."* Our tree agrees. Arne carries `P735` `Q645757`
-*Arne* and `P734` `Q30250555` *Garborg* but **no `P5056`**, though his Geni name is
-`Aadne Eivindson Garborg`; the patronym is a gap to fill. `Q11959067` has 87 labels and
-**neither `ja` nor `zh`**; `Q467497` and `Q3143008` have both.
+**Outstanding on this item:**
+
+- **Name items must run as their own batch first** — `reports/wikidata-garborg-name-items.qs`,
+  38 items. `P735`/`P734`/`P5056` cannot point at something minted in the same run. Once
+  those QIDs exist, the name statements join the daily batch.
+- **7 ambiguous name tokens** are listed and never created — `Marie`, `Olga`, `Anton` and
+  the rest resolve to several items each. The person's sex decides; Emma picks.
+- **Three living people.** The batch creates three `<private> Garborg`, children of Arne
+  Olaus, unlabelled per `CLAUDE.md` § *Redacted people go in*. They are **living private
+  individuals**, which is a different question from Geni redaction and is Emma's to weigh.
+- **Arne does have grandchildren**, contrary to her guess: Arne Olaus has four children
+  (Hans Eivind plus the three redacted) and two spouses, Aagot and Dagny Nyvold.
 
 ## Ordering is now enforced — `genimerge.editorder`
 

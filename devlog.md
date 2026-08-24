@@ -11810,3 +11810,15 @@ caught the new `.qs` missing from `built-batches.tsv` — the drift guard from y
 doing its job on its first real occasion.
 
 **Fast lane: 1,153 passed, 0 failed** after refreshing the inventory.
+
+## 2026-08-24 — a note on machine load
+
+Emma, mid-session: *"Are you causing the high temperature? Fan is super loud."* Yes. A full
+546-export merge, four derive passes over the 1.6 GB tree, a 596 MiB gzip and repeated fast
+lanes, several of them running **concurrently**. None of that needed to overlap.
+
+Her machine is a laptop and the standing note is to keep CPU low when she is mobile. The
+work was right; running it four-wide was not. From here: one heavy job at a time, and none
+at all when she says the fan is up.
+
+No shutdown was needed — the jobs had finished and no Python process remained.
