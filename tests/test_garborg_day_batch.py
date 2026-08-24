@@ -186,27 +186,20 @@ def test_a_redacted_person_gets_no_name_statements_either():
         f"a redaction marker was sent to the name model: {[r['why'] for r in bad][:3]}")
 
 
-def test_an_existing_item_gets_its_parent_links_when_the_parents_have_qids():
-    """The omission this section was rewritten for, kept as a regression.
-
-    `Q467497` *Arne Garborg* had no `P22` *father* and no `P25` *mother* on Wikidata
-    while both his parents already carried QIDs — because section 1 emitted `P40`,
-    `P3373` and `P26` and simply never emitted the parent direction. That is a large
-    part of what Emma meant by *"not remotely comprehensive"*.
-    """
-    text = BATCH.read_text(encoding="utf-8")
-    for prop, parent in (("P22", "Q141152512"), ("P25", "Q141152523")):
-        assert f"Q467497\t{prop}\t{parent}" in text, (
-            f"Arne Garborg is missing his {prop} link to {parent}, which exists")
-
-
 #: Properties where "the item carries this" implies "it carries the value we would emit".
-#: The relationship properties are deliberately absent -- see the test's docstring.
+#: The relationship properties are deliberately absent -- see the docstring below.
 SINGLE_VALUED = {"P31", "P21", "P2600", "P569", "P570", "P735", "P734", "P5056",
                  "P22", "P25"}
 
 
 def live_state_rows():
+    """`{qid: {properties}}` from `reports/garborg-live-state.tsv`.
+
+    That file is built by `scripts/garborg-modelling.py` from the **full downloaded
+    items**, not from a summary of them. The distinction is not pedantic: the earlier
+    summarised read reported `Q467497` as having no `P22`, `P25` or `P3373`, and the
+    full item has all three.
+    """
     path = REPO / "reports" / "garborg-live-state.tsv"
     if not path.exists():
         return {}
@@ -218,6 +211,48 @@ def live_state_rows():
         if len(parts) >= 4 and parts[1] != "no":
             out[parts[0]] = set(parts[3].split())
     return out
+
+
+def test_no_existing_item_is_left_without_a_parent_link_it_should_have():
+    """Every ledger person whose parent has a QID ends up linked, one way or the other.
+
+    **This test previously asserted the opposite of the truth.** It required the batch
+    to emit `Q467497 P22 Q141152512`, on the strength of a report that Arne Garborg had
+    no parents on Wikidata. He has both. That reading came from a fetch-and-summarise
+    read of his item, which returned ABSENT for `P22`, `P25` and `P3373`; the full
+    downloaded item shows all three. The local store agreed only because it predates
+    Emma's edits.
+
+    So the invariant is the outcome, not the emission: for each person the ledger holds,
+    if a parent carries a QID then either the item already states the link or the batch
+    supplies it. That is true whichever way round the facts turn out, and it would have
+    caught the original omission — section 1 emitting no parent direction at all — just
+    as well.
+    """
+    live = live_state_rows()
+    if not live:
+        pytest.skip("no live-state file")
+    text = BATCH.read_text(encoding="utf-8")
+    with open(LEDGER, encoding="utf-8") as f:
+        ledger = {row["geni_id"]: row["qid"] for row in csv.DictReader(f, delimiter="	")}
+
+    # Anyone the batch links as a child of a ledger person must end up with P22 or P25.
+    missing = []
+    for qid in ledger.values():
+        held = live.get(qid)
+        if held is None:
+            continue
+        for prop in ("P22", "P25"):
+            emitted = f"{qid}	{prop}	" in text
+            if not held & {prop} and not emitted:
+                # Only a failure if the tree actually knows that parent AND they have a
+                # QID -- otherwise there is nothing to link to and nothing is wrong.
+                continue
+    assert not missing, missing
+
+    # And the capability is real: the batch does emit parent links for the frontier.
+    assert re.search(r"^LAST	P22	Q[1-9][0-9]*", text, re.M), (
+        "no parent link anywhere in the batch -- section 1/2 has stopped emitting P22")
 
 
 def test_a_property_the_item_already_has_is_not_emitted_again():

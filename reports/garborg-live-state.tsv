@@ -1,31 +1,24 @@
-#	What each Garborg item ACTUALLY held when read live on 2026-08-24.
+#	What each Garborg item holds, counted from the FULL downloaded items
+#	(out/garborg-full-items.json, fetched 2026-08-24 via full_entities).
 #
-#	The local Wikidata store was downloaded before Emma made most of these items, so it
-#	cannot answer for them, and the builder's fallback -- "not in the store, therefore
-#	our own batch made it, therefore it has no name statements" -- is WRONG wherever she
-#	has edited by hand. Q141152512 Eivind carries P735, P734 and P5056 that she added
-#	herself; without this file the batch emits a second, qualified P735 beside his bare
-#	one, which QuickStatements records as a new statement rather than merging.
+#	This replaces a version built from a summarising read, which truncated
+#	Q467497 and could not see six of the fourteen at all. Every row here is
+#	the complete property and label set.
 #
-#	`props` is every property the item carries. `langs` is every label language.
-#	`verified` is the date the item was read, or `no` for one that was not re-read --
-#	those fall back to the store, then to the assumption, and must not be treated as
-#	measured.
-#
-#	Q467497 is a community item of ~120 properties; only the ones this programme touches
-#	are listed, which is why its row is short. Its `mul` entry is an ALIAS, not a label.
+#	The batch builder consults this because the local store predates most of
+#	these items and Emma edits by hand.
 qid	verified	langs	props
-Q467497	2026-08-24	en+44 more, ja, zh (no mul label)	P19 P20 P21 P26 P27 P31 P40 P106 P569 P570 P734 P735 P1477 P2600
+Q467497	2026-08-24	arz ast bs ca cs cy da de diq ee en eo es eu fa fi fr fy ga hr hu hy ia it ja ka kn ko la nb nl nn pap pl pt pt-br ro ru sh sl sq sr sv tr zh	P18 P19 P20 P21 P22 P25 P26 P27 P31 P40 P106 P140 P213 P214 P227 P244 P268 P269 P271 P345 P373 P396 P409 P434 P463 P569 P570 P646 P648 P691 P723 P734 P735 P839 P906 P910 P949 P1006 P1015 P1142 P1207 P1248 P1280 P1296 P1299 P1315 P1343 P1375 P1411 P1412 P1417 P1472 P1477 P1801 P1938 P1953 P2089 P2163 P2600 P2605 P2924 P2949 P2963 P3154 P3222 P3360 P3365 P3368 P3373 P3630 P3762 P3846 P4223 P4342 P4457 P4574 P4629 P5019 P5080 P5101 P5587 P5617 P6394 P6520 P6821 P6886 P7029 P7212 P7293 P7305 P7466 P7666 P7699 P7847 P7902 P7982 P8189 P8234 P8313 P8349 P8518 P8870 P9037 P9545 P9918 P9964 P10242 P10298 P10387 P10400 P10565 P10832 P11496 P11928 P12385 P12386 P12483 P12614 P13049 P13211 P13455 P13591 P14225 P14536 P14541 P14750
+Q3143008	2026-08-24	as ast bcl ca cs da de en eo es fi fr ga hy it ja ka ko mul nb nl nn pap pl pt pt-br ru sl sq sv ta zh	P18 P19 P20 P21 P26 P27 P31 P40 P102 P106 P166 P213 P214 P227 P244 P268 P269 P373 P396 P434 P463 P569 P570 P646 P648 P734 P735 P906 P949 P1006 P1015 P1207 P1248 P1299 P1343 P1412 P1472 P1801 P2163 P2533 P2600 P3154 P3222 P3368 P4342 P4574 P5019 P5080 P5587 P6722 P7293 P7578 P7847 P7902 P8189 P8313 P9964 P10298 P10608 P10832 P11928 P12386 P13211 P13591 P14536
+Q11959067	2026-08-24	af an ast bar bm br ca co cs cy da de de-at de-ch en en-ca en-gb eo es et eu fi fr frc frp fur ga gd gl gsw hr hu hy ia id ie io it jam ka kab kg lb li lij lt lv mg min ms mul nap nb nds nds-nl nl nn nrm oc pap pcd pl pms prg pt pt-br rgn rm ro sc scn sco sk sl sq sr-el sv sw tr vec vi vls vmf vo wa wo zu	P18 P21 P22 P25 P27 P31 P106 P569 P570 P734 P735 P1449 P2600 P2671 P4574 P6944
 Q141152512	2026-08-24	en mul	P21 P26 P31 P40 P569 P570 P734 P735 P2600 P5056
 Q141152523	2026-08-24	en mul	P21 P26 P31 P40 P569 P570 P2600
 Q141152600	2026-08-24	en mul	P21 P22 P25 P31 P569 P570 P2600 P3373
+Q141152614	2026-08-24	en mul	P21 P22 P25 P31 P569 P570 P2600 P3373
 Q141162040	2026-08-24	en mul	P21 P22 P25 P31 P569 P570 P2600 P3373
+Q141162041	2026-08-24	en mul	P21 P22 P25 P31 P569 P570 P2600 P3373
 Q141162043	2026-08-24	en mul	P21 P22 P25 P31 P569 P570 P2600 P3373
+Q141162044	2026-08-24	en mul	P21 P22 P25 P31 P569 P570 P2600 P3373
+Q141162045	2026-08-24	en mul	P21 P22 P25 P31 P569 P570 P2600 P3373
 Q141162046	2026-08-24	en mul	P21 P22 P25 P31 P569 P570 P2600 P3373
 Q141152710	2026-08-24	en mul	P31
-Q141152614	no
-Q141162041	no
-Q141162044	no
-Q141162045	no
-Q3143008	no
-Q11959067	no

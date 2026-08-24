@@ -1,14 +1,19 @@
-"""Rebuild the Garborg Family Entry Sheet artifact from the live re-read.
+"""Rebuild the Garborg Family Entry Sheet artifact from the FULL downloaded items.
 
     python scripts/build-garborg-entry-sheet.py
 
 The page at claude.ai/code/artifact/c2430047-… is Emma's entry sheet for the Garborg
-items she is building by hand. It was written 2026-08-23 and the items moved under it:
-all ten people exist now, and one thing the page reported as finished is not.
+items she builds by hand.
 
-Content here is what `docs/wikidata-item-template.md` records, in the page's own shape.
-The stylesheet is the one the page already had — the design is unchanged on purpose, so
-a redeploy reads as the same document rather than a new one.
+**Everything here comes from `out/garborg-full-items.json`**, all 14 items fetched via
+`genimerge.wikidata.full_entities`, by way of `scripts/garborg-modelling.py`. A previous
+version of this page was built from a fetch-and-summarise read instead, and it published
+three false claims — chiefly that Arne Garborg had no parents on Wikidata. He has them.
+Emma: *"you're supposed to download the full wikidata items for the people I've edited to
+get the modelling."*
+
+The stylesheet is the one the page already had; the design is unchanged on purpose, so a
+redeploy reads as the same document rather than a new one.
 """
 from __future__ import annotations
 
@@ -21,15 +26,16 @@ OUT = ROOT / "out" / "garborg-entry-sheet.html"
 
 #: (name, role, chip, chip class, qid, years, rows, closing note)
 PEOPLE = [
-    ("Arne Garborg", "child 1 &middot; the anchor", "no parents", "create",
+    ("Arne Garborg", "child 1 &middot; the anchor", "6 sibling links short", "create",
      "Q467497", "1851 &ndash; 1924", [
-         ("read live 24 Aug",
-          "~120 properties, almost all external identifiers. A community item, "
+         ("full item, 24 Aug",
+          "126 properties, almost all external identifiers. A community item, "
           "not a template for anything."),
          ("P22 / P25",
-          "<b>ABSENT.</b> Both parents have items and neither is linked."),
+          "<b>present</b> &mdash; <code>Q141152512</code> &middot; "
+          "<code>Q141152523</code>, both unreferenced"),
          ("P3373 <i>sibling</i>",
-          "<b>ABSENT.</b> Eight siblings have items; none is linked from him."),
+          "<b>2 of 8</b> &mdash; Stena and Jon, both referenced with P2600"),
          ("P2600", "<code>6000000003492005116</code>"),
          ("P1477 <i>birth name</i>",
           "<span class='lit'>Aadne Eivindsson Garborg</span> &middot; <code>mul</code>"),
@@ -37,10 +43,9 @@ PEOPLE = [
           "<code>Q645757</code> Arne &middot; <code>Q30250555</code> Garborg "
           "&mdash; no P5056"),
      ],
-     "<b>This is the outstanding edit on the page.</b> The previous version said his "
-     "parent and sibling links had gone in by hand and that nothing was outstanding on "
-     "him. They have not. A targeted read of his claims object returns ABSENT for P22, "
-     "P25 and P3373."),
+     "<b>An earlier version of this page said he had no parents. That was wrong</b> "
+     "&mdash; it came from a summarised read of the item, and the full download has all "
+     "three links. What he actually lacks is P3373 to six siblings, and P5056."),
 
     ("Eivind Aadnesson Garborg", "father", "the model", "exists",
      "Q141152512", "1822 &ndash; 1870", [
@@ -98,7 +103,8 @@ PEOPLE = [
          ("names",
           "<b>none.</b> Samuel, patronym <i>Eivindsen</i>, family <i>Garborg</i>"),
      ],
-     "P21 <i>sex or gender</i> carries no reference here. On Stena it does."),
+     "Referenced exactly like every sibling: P2600 on the dates, the parents and the "
+     "sibling links, and on nothing else."),
 
     ("Inger Marie Mary Eivindsdatter Garborg", "child 6", "names missing", "create",
      "Q141162043", "1863 &ndash; 1955", [
@@ -117,10 +123,10 @@ PEOPLE = [
           "all tokens kept &mdash; the third nickname case, agreeing with Mary"),
          ("structure", "P2600, P569, P570, P22, P25, P3373 &times; 3"),
          ("uncited",
-          "<b>P31 and P21 carry no reference</b>, unlike Samuel and Inger Marie"),
+          "P31, P21 and P2600 carry no reference — the same on every item"),
      ],
-     "Made in the same sitting as Samuel and Inger Marie and referenced differently, "
-     "which is what settles the citation split as habit rather than rule."),
+     "Identical in shape to Samuel and Inger Marie. The eleven items she made are "
+     "uniform; there is no partial one among them."),
 
     ("Aadnesson", "a patronymic name item", "minimal", "rel",
      "Q141152710", "name item", [
@@ -171,34 +177,35 @@ def main():
 <div class="wrap">
 
 <header>
- <p class="eyebrow">Wikidata &middot; read live &middot; 24 August 2026</p>
+ <p class="eyebrow">Wikidata &middot; full items &middot; 24 August 2026</p>
  <h1>Garborg Family Entry Sheet</h1>
- <p class="standfirst">All ten people have items now &mdash; the six this page listed as
- &ldquo;still to create&rdquo; were created. What is left is <em>names</em>, and one thing
- this page reported as finished and is not: <em>Arne Garborg is still not linked to his
- parents.</em></p>
+ <p class="standfirst">All ten people have items, and the eleven Emma has built are
+ uniform in shape. What is left is <em>names</em>: ten of the eleven carry none.
+ <em>This page previously said Arne Garborg had no parents. That was wrong</em> &mdash; it
+ was built from a summary of his item rather than the item.</p>
 
  <div class="situation">
-  <div class="stat"><span class="n">10</span><span class="k">of 10 people have items</span></div>
-  <div class="stat"><span class="n">1</span><span class="k">of 10 carries name properties</span></div>
-  <div class="stat"><span class="n">0</span><span class="k">carry a ja or zh label</span></div>
-  <div class="stat"><span class="n">1</span><span class="k">patronym item exists &mdash; Aadnesson</span></div>
+  <div class="stat"><span class="n">11</span><span class="k">items Emma has built</span></div>
+  <div class="stat"><span class="n">1</span><span class="k">of them carries name properties</span></div>
+  <div class="stat"><span class="n">0</span><span class="k">of them carry ja or zh</span></div>
+  <div class="stat"><span class="n">6</span><span class="k">sibling links Arne still lacks</span></div>
  </div>
 </header>
 
 <div class="howto">
- <h2>What changed since 23 August</h2>
+ <h2>Read from the full items, 24 August</h2>
  <ol>
   <li><strong>The six siblings exist.</strong> Samuel, Even, Inger Marie, Abel, Ole and
-  Ane Oline &ldquo;Lena&rdquo; were all created. The second half of this page was a
-  to-create list and is now a record.</li>
-  <li><strong>Dates are done.</strong> Ane Oline, Stena and Jon all carry P569 and P570.
-  This page said they were outstanding.</li>
-  <li><strong>Arne still has no parents.</strong> This page said the links went in by hand
-  and that nothing was outstanding on him. A targeted read of his claims object returns
-  <strong>ABSENT</strong> for P22, P25 and P3373.</li>
-  <li><strong>The citation split is not a rule.</strong> This page called it consistent
-  across every item. It is not.</li>
+  Ane Oline &ldquo;Lena&rdquo; were all created, and all carry dates, parents and sibling
+  links.</li>
+  <li><strong>Arne has his parents.</strong> P22 &rarr; Eivind and P25 &rarr; Ane Oline,
+  plus P3373 to Stena and Jon. An earlier version of this page reported all three as
+  ABSENT; that came from a summarised read and was false.</li>
+  <li><strong>The citation split is exactly as first written.</strong> P2600 references
+  the dates and the relationships and nothing else &mdash; counted across all 14 items, it
+  is never a reference on P31 or P21. A middle version of this page called the split
+  inconsistent. It is not.</li>
+  <li><strong>The gap is names.</strong> Only Eivind carries P735, P734 and P5056.</li>
  </ol>
 </div>
 
@@ -206,40 +213,38 @@ def main():
  <h2 class="group">The shape you are using &mdash; read live, 24 August</h2>
 
  <div class="howto" style="border-left-color:var(--exists)">
-  <h2 style="color:var(--exists)">Confirmed unchanged</h2>
+  <h2 style="color:var(--exists)">Counted across all 14 full items</h2>
   <ol>
-   <li><strong>The reference is the Geni ID.</strong> Statements carry P2600 as their
-   reference snak, never P854 or P813. P2600 itself is never referenced &mdash; it
-   <em>is</em> the reference.</li>
+   <li><strong>The reference is the Geni ID, and only on these:</strong> P3373 (&times;24),
+   P569 (&times;10), P570 (&times;10), P22 (&times;8), P25 (&times;8), P40 (&times;5),
+   P26 (&times;4). <strong>Never</strong> on P31, P21, P2600, P735, P734 or P5056. The
+   P248 / P813 / P143 references in the data are all on the three community items.</li>
+   <li><strong>The eleven items are uniform.</strong> Each carries P31, P21, P2600, P569,
+   P570, then P22/P25/P3373 for a child or P26/P40 for a parent. No partial item among
+   them.</li>
    <li><strong>Labels are <code>en</code> and <code>mul</code>, the same string.</strong>
-   No descriptions, no aliases and no sitelinks on any of the ten.</li>
-   <li><strong>P3373 <i>sibling</i> is used</strong>, both ways, three links on each of
-   the newer items.</li>
-   <li><strong>A name item is minimal</strong> &mdash; two labels and a single P31,
-   nothing else.</li>
-   <li><strong>No P19, P20 or P119</strong> on any item, though Geni holds birthplaces,
-   deathplaces and burials.</li>
+   No description, no alias, no sitelink on any of them.</li>
+   <li><strong>No qualifier of hers appears anywhere</strong> &mdash; no P1545, no P7452,
+   no P3831, no P144. The only qualifiers in the 14 items are community-added, on
+   Q467497 and Q3143008.</li>
+   <li><strong>Never used:</strong> P19 place of birth, P20 place of death, P119 place of
+   burial, P1477 birth name &mdash; though Geni holds those values.</li>
+   <li><strong>A name item is minimal</strong> &mdash; two labels and a single P31.</li>
   </ol>
  </div>
 
  <div class="howto" style="border-left-color:var(--create)">
-  <h2 style="color:var(--create)">Corrected by this read</h2>
+  <h2 style="color:var(--create)">What is outstanding</h2>
   <ol>
-   <li><strong>The citation split is habit, not rule.</strong> P31 is referenced on Stena,
-   Samuel and Inger Marie, and not on Eivind or Lena. P21 is referenced on Stena alone.
-   Lena was made in the same sitting as Samuel and Inger Marie and is referenced
-   differently, so it does not track creation order either. What does hold: every date and
-   every relationship is cited, and P2600 never is.</li>
-   <li><strong>The name qualifiers are not in the items.</strong>
-   <i>name modelling.txt</i> prescribes P1545 and P7452 on the given name and P144 on the
-   patronym. Eivind &mdash; the only item with name statements &mdash; carries none of
-   them. He has one given name, so that is weak evidence about ordinals; it is strong
-   evidence about P144, which would name his father Aadne and is simply absent.</li>
-   <li><strong>The nickname label has one exception, not a rule.</strong> Stena drops
-   <i>Stine</i>; Mary and Lena keep every token. Stripping the quote marks and keeping
-   everything is the default and matches two cases of three.</li>
-   <li><strong>P5056 is emittable now.</strong> The daily batch emits zero patronyms
-   because it assumes no patronym item exists. <i>Aadnesson</i> does.</li>
+   <li><strong>Names on ten of the eleven.</strong> This is the whole gap. Each needs a
+   given-name item, a patronym item and a family-name item to point at, and only
+   <i>Aadnesson</i> Q141152710 exists so far.</li>
+   <li><strong>Arne needs P3373 to six more siblings</strong>, and has no P5056.</li>
+   <li><strong>ja and zh labels on all eleven.</strong> None carries either. The three
+   community items already have them.</li>
+   <li><strong>The nickname label is a judgement, not a rule.</strong> Stena drops
+   <i>Stine</i>; Mary and Lena keep every token. Strip the quote marks and keep
+   everything is the default, and matches two cases of three.</li>
   </ol>
  </div>
 </section>
@@ -250,16 +255,15 @@ def main():
 </section>
 
 <footer>
- <p>Eight items were read live on 24 August 2026: <code>Q467497</code>,
- <code>Q141152512</code>, <code>Q141152523</code>, <code>Q141152600</code>,
- <code>Q141162040</code>, <code>Q141162043</code>, <code>Q141162046</code> and the name
- item <code>Q141152710</code>.</p>
- <p><strong>Not re-read, so not reported on here:</strong> <code>Q141152614</code> Jon,
- <code>Q141162041</code> Even, <code>Q141162044</code> Abel, <code>Q141162045</code> Ole,
- <code>Q3143008</code> Hulda and <code>Q11959067</code> Arne Olaus. What this page says
- about them is from the 23 August read and may have moved since.</p>
- <p>The durable version is <code>docs/wikidata-item-template.md</code> in the repo, which
- carries the per-item reference table.</p>
+ <p>Every figure on this page is counted from <code>out/garborg-full-items.json</code>
+ &mdash; all 14 items fetched in one request through
+ <code>genimerge.wikidata.full_entities</code>, then read offline. Nothing here comes
+ from a summary of an item, and nothing from an edit history.</p>
+ <p>An earlier version was built the other way and published three false claims: that
+ Arne Garborg had no parents, that the citation split was inconsistent, and that six of
+ the items could not be seen. All three are corrected above.</p>
+ <p>The durable version is <code>docs/wikidata-item-template.md</code>;
+ <code>scripts/garborg-modelling.py</code> regenerates both from the same file.</p>
 </footer>
 
 </div>

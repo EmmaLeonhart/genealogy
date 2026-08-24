@@ -98,59 +98,67 @@ error this repo keeps paying for, so they are listed in the file's trailer for E
 than generated.
 
 
-## Re-read 2026-08-24 — all ten exist, and two claims above are now wrong
+## Re-read 2026-08-24 from the FULL items — and a retraction
 
-Six items were read live: `Q467497`, `Q141152512`, `Q141152523`, `Q141152600`,
-`Q141162040`, `Q141162043`, plus the name item `Q141152710`. Emma authorised reading
-these specific pages; it was one batched read, not the ad-hoc lookup `CLAUDE.md` forbids.
+**Emma:** *"you're supposed to download the full wikidata items for the people I've
+edited to get the modelling not look at my edit history to see what's in them."*
 
-**All ten people now have items.** The "four of the ten" table above is superseded —
-Samuel `Q141162040`, Even `Q141162041`, Inger Marie `Q141162043`, Abel `Q141162044`,
-Ole `Q141162045` and Ane Oline "Lena" `Q141162046` were all created since the 08-23 read.
+An earlier pass today read each item through a fetch-and-summarise channel and wrote its
+output into this file, the artifact and a commit message. **Three of its findings were
+false.** `out/garborg-full-items.json` — all 14 items, fetched once via
+`genimerge.wikidata.full_entities` — is the real thing, and
+`scripts/garborg-modelling.py` derives everything below from it offline.
 
-**Dates are no longer outstanding.** Ane Oline, Stena and Jon all carry `P569` and `P570`
-now. The 08-23 note that only Eivind had dates is out of date.
+### What the summarised read got wrong
 
-### The citation split is NOT consistent — that claim above was wrong
+- **It reported `Q467497` Arne Garborg as having no `P22`, no `P25` and no `P3373`**,
+  answering ABSENT to a question posed narrowly to be reliable. He has all three:
+  `P22` → `Q141152512`, `P25` → `Q141152523`, `P3373` → Stena and Jon.
+  It was reported as "the single highest-value outstanding edit in the programme". It was
+  not an edit at all.
+- **It invented the claim that the citation split is inconsistent.** It reported `P31`
+  referenced on some items and `P21` on one. Counted over all 14 full items, **`P2600` is
+  never a reference on `P31` or `P21`, anywhere.** The original modelling note — dates
+  and relationships cited, identity and names not — was correct and was "corrected"
+  wrongly.
+- **It could not see six of the fourteen items at all**, and it mislabelled properties
+  freely: `P2600` as "Peruvian NLB", `P1411` as "Nobel Prize recipient".
 
-It was stated as a rule and the live items refute it. Measured per item:
+**The lesson is the instruction:** a summary of an item is not the item. Anything that
+decides what to emit gets read from the downloaded JSON.
 
-| item | referenced | not referenced |
-| --- | --- | --- |
-| `Q141152512` Eivind | `P40` (first three only), `P569`, `P570`, `P26` (two refs) | `P31`, `P21`, `P2600`, `P734`, `P735`, `P5056` |
-| `Q141152600` Stena | `P31`, `P21`, `P22`, `P25`, `P3373`, `P569`, `P570` | `P2600` |
-| `Q141162040` Samuel | `P31`, `P22`, `P25`, `P3373`, `P569`, `P570` | **`P21`**, `P2600` |
-| `Q141162043` Inger Marie | `P31`, `P22`, `P25`, `P3373`, `P569`, `P570` | **`P21`**, `P2600` |
-| `Q141162046` Ane Oline "Lena" | `P22`, `P25`, `P3373`, `P569`, `P570` | **`P31`**, **`P21`**, `P2600` |
+### The modelling, counted from the full items
 
-So `P31` *instance of* is cited on three of the five and `P21` *sex or gender* on one of
-them, in no order that tracks creation date — Lena was made in the same sitting as Samuel
-and Inger Marie and carries neither. What holds across all of them is
-narrower: **`P2600` itself never carries a reference** — it *is* the reference — and every
-date and every relationship does. Treat identity as *usually* uncited rather than as a
-rule, and do not "correct" an item to match the pattern.
+**Every one of the eleven items she created carries exactly:** `P31`, `P21`, `P2600`,
+`P569`, `P570`, and then `P22`/`P25`/`P3373` for a child or `P26`/`P40` for a parent. The
+shape is uniform — there is no partial item among them.
 
-### The name qualifiers in `name modelling.txt` are not in the items
+| | items |
+| --- | --- |
+| `P735` *given name* | `Q141152512` Eivind only |
+| `P734` *family name* | `Q141152512` Eivind only |
+| `P5056` *patronym or matronym* | `Q141152512` Eivind only → `Q141152710` *Aadnesson* |
+| `P19`, `P20`, `P119`, `P1477` | **none of them** |
 
-`Q141152512` is still the **only** one of the ten carrying name statements, and all three
-are bare:
+**References are `P2600` and nothing else, on exactly these properties:** `P3373` (×24),
+`P569` (×10), `P570` (×10), `P22` (×8), `P25` (×8), `P40` (×5), `P26` (×4). Never on
+`P31`, `P21`, `P2600`, `P735`, `P734` or `P5056`. The `P248`/`P813`/`P143` references that
+appear in the data are all on `Q467497`, `Q3143008` and `Q11959067` — community items —
+and are not hers.
 
-    P735  Q3358418   Eivind      -- no P1545, no P7452
-    P5056 Q141152710 Aadnesson   -- no P144
-    P734  Q30250555  Garborg
+**No qualifier she added appears anywhere.** No `P1545` *series ordinal*, no `P7452`
+*reason for preferred rank*, no `P3831`, no `P144` *based on*. The only qualifiers in the
+14 items are on `Q467497` and `Q3143008`: `P580`/`P582`/`P12506` on `P26`, `P17` on
+`P19`/`P20`, and one `P7452` on each of `P569`/`P570` — all community-added.
 
-`name modelling.txt` prescribes `P1545` *series ordinal* and `P7452` → `Q3409033`
-*usual forename* on the given name, and `P144` *based on* → the father on the patronym.
-None is present. **This is weak evidence about the multi-name case** — Eivind has one
-given name, so an ordinal of 1 is the least useful place for it, and no item with two given
-names carries name statements yet. It is strong evidence about `P144`: the patronym
-*Aadnesson* names his father Aadne, and the link is simply not there.
+**Labels: `en` and `mul`, the same string, on all eleven.** No description, no alias, no
+sitelink on any of them. `Q467497` has 45 label languages including `ja` and `zh` and
+**no `mul` label**; `Q3143008` and `Q11959067` do have `mul`.
 
-`docs/` records what she builds; `name modelling.txt` records what she wants. Where they
-disagree the spec is not overruled by the backlog — but a generator should not claim the
-items already look like the spec.
+**The name item is minimal.** `Q141152710` *Aadnesson*: `en` and `mul` labels, `P31` →
+`Q110874` *patronymic*, nothing else.
 
-### The nickname rule does not generalise — two cases, handled differently
+### The nickname label
 
 | Geni | her label |
 | --- | --- |
@@ -158,30 +166,15 @@ items already look like the spec.
 | `Inger Marie "Mary" Eivindsdatter Garborg` | **`Inger Marie Mary Eivindsdatter Garborg`** — all kept |
 | `Ane Oline "Lena" Eivindsdatter Garborg` | **`Ane Oline Lena Eivindsdatter Garborg`** — all kept |
 
-Three cases, and **Stena is the only one that loses a token**. *Stena* is a short form of
-*Stine*, so keeping both would repeat one name; *Mary* and *Lena* sit beside given names
-they are not variants of. So the default is **strip the quote marks and keep every
-token** — exactly what `qs()` does — and Stena is a one-person exception rather than a
-rule the generator is missing. Do not build the exception into the generator; it needs a
-judgement about whether two tokens are the same name.
+Stena is the only one that loses a token, and *Stena* is a short form of *Stine* where
+*Mary* and *Lena* are not variants of the names beside them. So the default is **strip the
+quote marks and keep every token** — what `qs()` already does — with Stena a one-person
+judgement rather than a rule to automate.
 
-### Everything else held
+### What is actually outstanding
 
-- **Labels are `en` and `mul`, the same string.** No item carries `ja` or `zh` yet, so her
-  2026-08-24 instruction to add them is outstanding work, not something already done.
-- **No descriptions, no aliases, no sitelinks** on any of the ten.
-- **The name item is minimal.** `Q141152710` *Aadnesson*: `en` and `mul` labels, `P31` →
-  `Q110874` *patronymic*, and nothing else — no description, no `P144`, no `P407`.
-- **`P3373` runs both ways**, and the later items each carry three sibling links.
-- **Never used on any item:** `P19` *place of birth*, `P20` *place of death*, `P119` *place
-  of burial*, despite Geni holding those values.
-
-### What this changes for the generator
-
-- **`P5056` is emittable now.** `reports/wikidata-garborg-day.qs` emits zero on the
-  grounds that no patronymic item exists. *Aadnesson* does. Only that one — the other
-  patronyms still need items.
-- **Do not emit `P1545`/`P7452`/`P144`** as though matching her items; they match the spec
-  instead, which is a defensible choice but should be a stated one.
-- **`Q467497` is a community item**, ~120 properties, most of them external identifiers.
-  It is not a template for anything and should not be read as one.
+- **Names on ten of the eleven.** Only Eivind has any. This is the whole gap.
+- **`Q467497` needs `P3373` to six more siblings** (he has Stena and Jon) and has no
+  `P5056`.
+- **No item carries `ja` or `zh`** except the three community ones, so her instruction to
+  add them is untouched work.

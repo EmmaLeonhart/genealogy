@@ -1122,6 +1122,36 @@ closely.
 **References** — P248 stated in, P854 reference URL, P813 retrieved,
 P143 imported from Wikimedia project.
 
+### A SUMMARY of a Wikidata item is not the item. Download the full item
+
+**Emma, 2026-08-24:** *"you're supposed to download the full wikidata items for the
+people I've edited to get the modelling not look at my edit history to see what's in
+them."*
+
+Reading an item through a fetch-and-summarise channel produced **three false findings**
+in one session, each published to a report, the artifact and a commit message:
+
+- **`Q467497` Arne Garborg was reported as having no `P22`, no `P25` and no `P3373`** —
+  answering `ABSENT` even to a question posed narrowly to be reliable. The full item has
+  all three. It was written up as *"the single highest-value outstanding edit in the
+  programme"*. There was no edit.
+- **The citation split was reported as inconsistent.** Counted over all 14 full items,
+  `P2600` is **never** a reference on `P31` or `P21`. The modelling note it "corrected"
+  had been right.
+- **Property labels were invented** — `P2600` as "Peruvian NLB", `P1411` as "Nobel Prize
+  recipient" — and `Q467497`'s 126 properties arrived truncated and out of order, which
+  was the visible tell.
+
+**So: anything that decides what to emit is read from downloaded JSON.**
+`genimerge.wikidata.full_entities` fetches whole items in one batched request;
+`scripts/garborg-modelling.py` is the worked example, deriving the whole model offline
+from `out/garborg-full-items.json`. A summariser may be used to *find* something, never
+to establish that a property is absent — absence is exactly what it gets wrong.
+
+**The local store is not a substitute either.** It was downloaded before Emma made most
+of these items, so it agreed that Arne had no parents. An item she has edited since the
+download must be re-fetched, not looked up.
+
 ### Never query Wikidata to check something. Ever.
 
 **Emma's rule, 2026-08-07, stated as flatly as it reads:** *"do not, whatever the

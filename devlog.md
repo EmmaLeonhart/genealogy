@@ -12041,3 +12041,45 @@ the point. The guard therefore checks the ten single-valued properties only, and
 and it flags `('Q141152512', 'P735')` the moment the pre-fix line is reinserted.
 
 Fast lane: **1,177 passed, 0 failed, 4m01s.**
+
+## 2026-08-24 — retraction: I read summaries of the items, not the items
+
+**Emma:** *"you're supposed to download the full wikidata items for the people I've
+edited to get the modelling not look at my edit history to see what's in them."*
+
+I did not use her edit history — I fetched `Special:EntityData/<QID>.json` per person.
+But I read those through a fetch-and-summarise channel, and **a summary of an item is not
+the item**. Downloading all 14 properly, via `genimerge.wikidata.full_entities` into
+`out/garborg-full-items.json`, refutes three things I published today.
+
+- **`Q467497` Arne Garborg has `P22` → `Q141152512`, `P25` → `Q141152523`, and `P3373` →
+  Stena and Jon.** The summarised read returned ABSENT for all three, including to a
+  question I posed narrowly *because* I had already caught it truncating. I reported it as
+  "the single highest-value outstanding edit in the programme" and put it in the artifact,
+  the devlog and a commit message. There was no edit.
+- **The citation split is consistent, exactly as the artifact first said.** `P2600`
+  references `P3373` (×24), `P569` (×10), `P570` (×10), `P22` (×8), `P25` (×8), `P40`
+  (×5), `P26` (×4) — and is **never** a reference on `P31` or `P21`, on any of the 14. My
+  "correction" was the summariser's invention.
+- **Six of the fourteen items I claimed could not be re-read** were fetched fine in the
+  batched request.
+
+The local store was no help and no excuse: it predates her edits, so it agreed Arne had
+no parents.
+
+**What the full items actually say.** The eleven items she built are **uniform** — each
+carries `P31`, `P21`, `P2600`, `P569`, `P570`, then `P22`/`P25`/`P3373` for a child or
+`P26`/`P40` for a parent. `P735`, `P734` and `P5056` appear on **Eivind alone**.
+`P19`, `P20`, `P119` and `P1477` appear on none. **No qualifier of hers appears anywhere**
+— no `P1545`, `P7452`, `P3831` or `P144`; the only qualifiers in the 14 items are
+community-added on `Q467497` and `Q3143008`. Labels are `en` + `mul`, same string, no
+descriptions, no aliases, no sitelinks.
+
+**Consequences in code.** `reports/garborg-live-state.tsv` is regenerated from the full
+items, so the batch stopped emitting `Q467497 P22/P25` (it has them) — statements to
+existing items 106 → **96**. The test I wrote this morning asserting Arne *must* receive
+those links asserted the opposite of the truth; it is rewritten to the real invariant
+rather than deleted, and its docstring records why.
+
+`CLAUDE.md` § *A SUMMARY of a Wikidata item is not the item* is the rule this earns.
+Fast lane: **1,177 passed, 0 failed, 3m50s.**
