@@ -12668,3 +12668,35 @@ Isaac Aaron Ettinger, Sadakiyo En'ya, Elias Kemsley — plus Yorimoto Tanba, the
 positive (four men across generations sharing a name).
 
 548 corpus exports now, with both post-merge files sorting last.
+
+## 2026-08-24 — third post-merge export, and the weak rows are mostly not duplicates
+
+`exports/post-merge/export-Forest-6000000227413445871.ged` — seeded on a Tier 3
+placeholder, `NN` mother of Freida Ornstein (Harif), in the Ettinger rabbinic tree.
+Isaac Aaron Ettinger himself was added by Randy Schoenberg in 2009, so the direct route
+was closed. **5,000 individuals, 1,500 families.**
+
+**It resolved nothing.** Isaac Aaron Ettinger moved from *untouched* to **both ids still
+live** — his supposed twin exists on Geni today, so that pair was never a duplicate.
+
+### Across all three post-merge exports, of 29 duplicate rows
+
+| | rows |
+| --- | ---: |
+| **resolved** — survivor present, twin absent | **18** |
+| both ids still live on Geni | 6 |
+| untouched | 5 |
+
+**The pattern is now clear and it tracks the evidence grading exactly.** Every one of the
+6 "both live" rows is `weak` or was reclassified from a Samaritan line where numbered
+names recur. The `strong` rows resolved almost completely; the `weak` rows are largely
+not duplicates at all.
+
+That is the grading doing its job — `strong` meant *a parent name matches*, and those
+turned out to be real merges Geni had performed. `weak` meant *the parents or dates
+differ*, and those turn out to be different people who happen to share a name.
+
+**So further exports for the weak rows have thin expected value.** The three remaining —
+Elias Kemsley, Sadakiyo En'ya, Yorimoto Tanba — are all weak, and Yorimoto is already a
+known false positive (four men across generations sharing a name). Recorded rather than
+silently stopping: continuing is Emma's call, and the measurement is here to make it.
