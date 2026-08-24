@@ -965,6 +965,9 @@ ran.
 | P3831 | object of statement has role | item — **qualifier** saying *which kind* of name this `P735` is |
 | P144 | based on | item — **qualifier on `P5056`, pointing at the PERSON that link names**: the father, then the grandfather for a chained patronymic. `name modelling.txt` supersedes the earlier reading of this as a name-item-to-name-item link. |
 | P5278 | surname for other gender | item — pairs `Olsson` with `Olsdotter` |
+| P1449 | nickname | monolingual text — **what a quoted token inside `GIVN` becomes.** Emma, 2026-08-24: `Stine "Stena" Eivindsdatter` makes *Stena* a nickname, **not** a given name and **not** a middle name |
+| Q2507958 | birth name | item — the `P3831` role on the `SURN` family name, when a married one sits beside it |
+| Q28418670 | married name | item — the `P3831` role on the `_MARNM` family name |
 | Q245025 | middle name | item — the `P3831` value for a middle given name |
 | Q110874 | patronymic | item — the `P3831` value for a patronymic, which is also what the name item is an *instance of* |
 

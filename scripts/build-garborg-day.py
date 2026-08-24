@@ -43,7 +43,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 csv.field_size_limit(1 << 30)
 sys.stdout.reconfigure(encoding="utf-8")
 
-from namemodel import classify, load_plan, statements_for  # noqa: E402
+from namemodel import (  # noqa: E402
+    NICKNAME, aliases_for, classify, load_plan, statements_for)
 
 
 def _load_gaps():
@@ -206,7 +207,7 @@ def label_in(label, table):
     return "・".join(ja), "·".join(zh)
 
 
-def name_lines(label, plan, geni_id, father_qid):
+def name_lines(label, plan, geni_id, father_qid, fields=None):
     """`P735`/`P734`/`P5056` lines for one person, and what could not be emitted.
 
     **Only tokens whose item already exists.** A name item this run is creating
@@ -217,9 +218,13 @@ def name_lines(label, plan, geni_id, father_qid):
     the same line: `LAST<TAB>P735<TAB>Q629347<TAB>P1545<TAB>"1"<TAB>P7452<TAB>Q3409033`.
     """
     out, notes = [], []
-    lines, why = statements_for(label, plan, geni_id, father_qid=father_qid)
+    lines, why = statements_for(label, plan, geni_id, father_qid=father_qid,
+                                fields=fields)
     for prop, value, quals in lines:
-        parts = [f"LAST	{prop}	{value}"]
+        # `P1449` *nickname* is monolingual TEXT, so QuickStatements wants a language
+        # tag and quotes rather than a bare item id.
+        rendered = f'en:"{value}"' if prop == NICKNAME else value
+        parts = [f"LAST	{prop}	{rendered}"]
         for qprop, qvalue in quals:
             # A series ordinal is a string; everything else here is an item.
             qv = f'"{qvalue}"' if qprop == "P1545" else qvalue
@@ -255,6 +260,18 @@ def main():
         for row in csv.DictReader(f):
             if row["geni_id"] in ids:
                 labels[row["geni_id"]] = row["label_en"] or row["label_mul"]
+
+    # **The GEDCOM name FIELDS, which is where name objects come from.** Emma,
+    # 2026-08-24: *"I thought we were resolving name objects but now we're determining
+    # which name field to use as a source of the label?"* -- catching that the name
+    # model was re-parsing the rendered label. The first NAME record wins; later ones
+    # are alternate forms and `derive-labels.py` already owns those.
+    fields = {}
+    with open(ROOT / "reports" / "display-names.csv", encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            if row["geni_id"] in ids and row["geni_id"] not in fields:
+                fields[row["geni_id"]] = {k: row.get(k, "") for k in
+                                          ("givn", "surn", "nick", "marnm")}
 
     # Relationships, from the tree, in both directions.
     father, mother = {}, {}
@@ -439,8 +456,13 @@ def main():
         if not redacted:
             dad = father.get(g)
             name_statements, unresolved = name_lines(
-                labels[g], plan, g, have.get(dad) if dad else None)
+                labels[g], plan, g, have.get(dad) if dad else None,
+                fields=fields.get(g))
             lines.extend(name_statements)
+            # Aliases: the nickname, and the full name under a married surname. Emma
+            # asked for these alongside the second `P734` *family name*.
+            for alias in aliases_for(fields.get(g, {})):
+                lines.append(f'LAST	Aen	"{qs(alias)}"')
             for note in unresolved:
                 carried.append((g, label, f"name item missing: {note}"))
 

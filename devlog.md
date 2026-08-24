@@ -12136,3 +12136,45 @@ Linked tokens 46 → **52**, `P735` *given name* statements 51 → **69**, carry
 71 → **65**.
 
 Fast lane: **1,177 passed, 0 failed, 1 skipped, 5m22s.**
+
+## 2026-08-24 — name objects come from the fields, not from re-parsing the label
+
+**Emma:** *"I thought we were resolving name objects but now we're determining which name
+field to use as a source of the label?"*
+
+She was right. `namemodel.classify()` took `label_en`, a rendered display string, and
+guessed by whitespace position. The GEDCOM fields were in `reports/display-names.csv` all
+along — `givn`, `surn`, `nick`, `marnm` — and **field-based classifiers already existed**:
+`build-name-classes.py` over 560,432 `NAME` records, `classify-patronymics.py`,
+`build-name-object-report.py`. The label parser duplicated them and did it worse.
+
+| | `givn` | `surn` | `marnm` |
+| --- | --- | --- | --- |
+| Stena | `Stine "Stena" Eivindsdatter` | `Garborg` | `Jacobson` |
+| Inger Marie | `Inger Marie "Mary" Eivindsdatter` | `Garborg` | `Ronneberg` |
+
+- `surn` is recorded; the parser inferred it. It agreed by luck here and cannot on CJK,
+  where `CLAUDE.md` already records `SURN` holding a place name.
+- *Stena* came out a second given name with `P1545` *series ordinal* 2 and `P3831` →
+  `Q245025` *middle name*; *Mary* got ordinal 3. Both are nicknames.
+- `_MARNM` was never read, so two real family names did not exist to the model.
+
+**Emma's rulings, both implemented.** A quoted token inside `GIVN` becomes `P1449`
+*nickname*. A married name becomes a **second** `P734` *family name*, the pair
+distinguished by `P3831` *object of statement has role* → `Q2507958` *birth name* and
+`Q28418670` *married name*, plus an alias — only where it differs from `SURN`, and **sex
+is not a screen**; she overrode the corpus measurement that suggested one.
+
+`classify_fields(givn, surn, nick, marnm)` is the entry point now. `classify(label)`
+survives for callers holding only a display string, and its docstring says it guesses.
+
+The batch emits **8 `P1449` nicknames, 46 aliases and 15 married `P734`**. Nicknames need
+no name item — `P1449` is text — so a missing plan entry can never block one.
+
+**The quoting checker had to learn the monolingual form.** It rejected `en:"Edvard"`
+because the field does not *start* with a quote. That is correct QuickStatements syntax for
+monolingual text, so the checker was taught the form rather than loosened — and it still
+flags `Stine "Stena" Garborg` (four quotes, even parity) and an internal quote inside
+`en:"…"`, both verified directly.
+
+Fast lane: **1,187 passed, 0 failed, 1 skipped, 5m30s.**

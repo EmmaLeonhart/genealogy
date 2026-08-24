@@ -113,6 +113,12 @@ def badly_quoted(line):
     QuickStatements still ends the string at the second one. Check each field.
     """
     for field in line.split("	"):
+        # A monolingual-text value is `en:"..."` -- the form `P1449` *nickname* and
+        # every other monolingual property needs. It does not start with a quote and
+        # is still correct, so it is matched explicitly rather than by loosening the
+        # rule: the value inside must contain no quote at all, exactly as above.
+        if re.fullmatch(r'[a-z]{2,3}(-[a-z]+)?:"[^"]*"', field):
+            continue
         if field.startswith('"') and not re.fullmatch(r'"[^"]*"', field):
             return True
         if not field.startswith('"') and '"' in field:

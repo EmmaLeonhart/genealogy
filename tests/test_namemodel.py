@@ -174,3 +174,113 @@ def test_the_same_spelling_in_two_usages_needs_two_items():
     assert not [ln for ln in lines if ln[1] == "Q111"], (
         "the given-name item must not be used for the patronymic")
     assert any("Eivindsen" in n for n in notes)
+
+
+# --- the FIELDS, which is where name objects actually come from ---------------
+
+from namemodel import (  # noqa: E402
+    BIRTH_NAME_ROLE, MARRIED_NAME_ROLE, NICKNAME, aliases_for, classify_fields,
+)
+
+
+def usages_of(**fields):
+    return [(t, u) for t, u, _o in classify_fields(**fields)]
+
+
+def test_the_surname_is_read_not_inferred():
+    """`SURN` is recorded data. The old parser took the last whitespace token instead.
+
+    Emma, 2026-08-24: *"I thought we were resolving name objects but now we're
+    determining which name field to use as a source of the label?"* Agreeing by luck
+    with a positional guess is not the same as reading the field.
+    """
+    got = usages_of(givn="Eivind Aadnesson", surn="Garborg")
+    assert ("Garborg", "family") in got
+    assert ("Aadnesson", "patronymic") in got
+    assert ("Eivind", "given") in got
+
+
+def test_a_patronym_in_the_SURN_field_is_still_a_patronym():
+    """`name modelling.txt`: check the given names AND the surname for a patronym.
+
+    A positional parser cannot do this — it only ever asks whether the *last* token
+    looks patronymic. Here the field is read and the same test applied to it.
+    """
+    assert ("Samuelsen", "patronymic") in usages_of(givn="Jon", surn="Samuelsen")
+    assert not [t for t, u in usages_of(givn="Jon", surn="Samuelsen") if u == "family"]
+
+
+def test_a_quoted_token_inside_givn_is_a_nickname_not_a_middle_name():
+    """Emma's ruling, 2026-08-24: it becomes `P1449` *nickname*.
+
+    The old parser made `Stena` a second given name carrying `P1545` *series ordinal*
+    2 and `P3831` → `Q245025` *middle name*. She is not called Stena as a middle
+    name; it is what Stine was called.
+    """
+    got = classify_fields(givn='Stine "Stena" Eivindsdatter', surn="Garborg")
+    assert ("Stena", "nickname", 0) in got
+    assert ("Stine", "given", 1) in got
+    assert not [t for t, u, _o in got if u == "given" and t == "Stena"]
+
+
+def test_the_nickname_does_not_consume_an_ordinal():
+    """Stripping it must not leave a hole in the numbering of the real given names."""
+    got = classify_fields(givn='Inger Marie "Mary" Eivindsdatter', surn="Garborg")
+    givens = [(t, o) for t, u, o in got if u == "given"]
+    assert givens == [("Inger", 1), ("Marie", 2)], givens
+
+
+def test_the_married_name_is_a_second_family_name_only_when_it_differs():
+    """Emma, 2026-08-24, and sex is explicitly NOT a screen."""
+    differs = usages_of(givn="Stine", surn="Garborg", marnm="Jacobson")
+    assert ("Jacobson", "married") in differs
+    assert ("Garborg", "family") in differs
+
+    same = usages_of(givn="Eivind", surn="Garborg", marnm="Garborg")
+    assert not [t for t, u in same if u == "married"], (
+        "_MARNM equal to SURN is the 43% case CLAUDE.md measured — not a second name")
+
+
+def test_a_married_man_gets_the_married_name_too():
+    """Her ruling was explicit: *"only when different sex does not matter"*.
+
+    The corpus measurement suggested screening on sex, because 25% of the differing
+    `_MARNM` values are male. She overrode that, and it is her data model.
+    """
+    assert ("Nyvold", "married") in usages_of(
+        givn="Hans", surn="Garborg", marnm="Nyvold")
+
+
+def test_the_two_family_names_carry_roles_that_say_which_is_which():
+    plan = {("Garborg", "family"): ("Q30250555", "link"),
+            ("Jacobson", "family"): ("Q900002", "link"),
+            ("Stine", "given"): ("Q900003", "link")}
+    lines, _notes = statements_for("", plan, "1",
+                                   fields={"givn": "Stine", "surn": "Garborg",
+                                           "marnm": "Jacobson"})
+    families = {value: dict(quals) for prop, value, quals in lines
+                if prop == FAMILY_NAME}
+    assert families["Q30250555"][("P3831")] == BIRTH_NAME_ROLE
+    assert families["Q900002"][("P3831")] == MARRIED_NAME_ROLE
+
+
+def test_a_lone_surname_carries_no_role_qualifier():
+    """None of Emma's eleven items qualifies a family name, so a bare one stays bare."""
+    plan = {("Garborg", "family"): ("Q30250555", "link")}
+    lines, _notes = statements_for("", plan, "1",
+                                   fields={"givn": "Eivind", "surn": "Garborg"})
+    assert [q for p, v, q in lines if p == FAMILY_NAME] == [[]]
+
+
+def test_a_nickname_needs_no_name_item():
+    """`P1449` takes text, so a missing plan entry can never block it."""
+    lines, _notes = statements_for("", {}, "1",
+                                   fields={"givn": 'Stine "Stena"', "surn": "Garborg"})
+    assert (NICKNAME, "Stena", []) in lines
+
+
+def test_aliases_cover_the_nickname_and_the_married_full_name():
+    got = aliases_for({"givn": 'Stine "Stena" Eivindsdatter', "surn": "Garborg",
+                       "marnm": "Jacobson"})
+    assert "Stena" in got
+    assert "Stine Jacobson" in got
