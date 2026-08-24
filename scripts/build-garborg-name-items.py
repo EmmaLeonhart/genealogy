@@ -47,7 +47,11 @@ CLASS_FOR = {
     "given": GIVEN_NAME_CLASS,
 }
 
-BATCHES = ["reports/wikidata-garborg.qs", "reports/wikidata-garborg-hop2.qs"]
+#: The live day batch. The earlier `wikidata-garborg.qs` and `-hop2.qs` were retired
+#: on 2026-08-24: their creations are recorded in `reports/garborg-qids.tsv` and
+#: re-running them would mint duplicates, which
+#: `test_no_two_batches_create_the_same_person` caught.
+BATCHES = ["reports/wikidata-garborg-day.qs"]
 
 
 def people_in_batches():

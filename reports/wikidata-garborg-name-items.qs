@@ -17,29 +17,53 @@ LAST	Len	"Tunheim"
 LAST	Lmul	"Tunheim"
 LAST	P31	Q101352
 
-# Eivindsen -- patronymic, 3 bearer(s) in the batches
+# Bergersen -- patronymic, 4 bearer(s) in the batches
 CREATE
-LAST	Len	"Eivindsen"
-LAST	Lmul	"Eivindsen"
+LAST	Len	"Bergersen"
+LAST	Lmul	"Bergersen"
 LAST	P31	Q110874
 
-# Eivindsdatter -- patronymic, 2 bearer(s) in the batches
+# <private> -- given, 3 bearer(s) in the batches
 CREATE
-LAST	Len	"Eivindsdatter"
-LAST	Lmul	"Eivindsdatter"
+LAST	Len	"<private>"
+LAST	Lmul	"<private>"
+LAST	P31	Q202444
+
+# Raustad -- family, 3 bearer(s) in the batches
+CREATE
+LAST	Len	"Raustad"
+LAST	Lmul	"Raustad"
+LAST	P31	Q101352
+
+# Ådnesdatter -- patronymic, 3 bearer(s) in the batches
+CREATE
+LAST	Len	"Ådnesdatter"
+LAST	Lmul	"Ådnesdatter"
 LAST	P31	Q110874
+
+# Jonsdatter -- patronymic, 2 bearer(s) in the batches
+CREATE
+LAST	Len	"Jonsdatter"
+LAST	Lmul	"Jonsdatter"
+LAST	P31	Q110874
+
+# Jonson -- patronymic, 2 bearer(s) in the batches
+CREATE
+LAST	Len	"Jonson"
+LAST	Lmul	"Jonson"
+LAST	P31	Q110874
+
+# Nyvold -- family, 2 bearer(s) in the batches
+CREATE
+LAST	Len	"Nyvold"
+LAST	Lmul	"Nyvold"
+LAST	P31	Q101352
 
 # Aabø -- family, 1 bearer(s) in the batches
 CREATE
 LAST	Len	"Aabø"
 LAST	Lmul	"Aabø"
 LAST	P31	Q101352
-
-# Eivindson -- patronymic, 1 bearer(s) in the batches
-CREATE
-LAST	Len	"Eivindson"
-LAST	Lmul	"Eivindson"
-LAST	P31	Q110874
 
 # Enokson -- patronymic, 1 bearer(s) in the batches
 CREATE
@@ -64,6 +88,18 @@ CREATE
 LAST	Len	"Grøtheim"
 LAST	Lmul	"Grøtheim"
 LAST	P31	Q101352
+
+# Gurie -- given, 1 bearer(s) in the batches
+CREATE
+LAST	Len	"Gurie"
+LAST	Lmul	"Gurie"
+LAST	P31	Q202444
+
+# Hans -- given, 1 bearer(s) in the batches
+CREATE
+LAST	Len	"Hans"
+LAST	Lmul	"Hans"
+LAST	P31	Q202444
 
 # Heigre -- family, 1 bearer(s) in the batches
 CREATE
@@ -101,17 +137,17 @@ LAST	Len	"Johannessen"
 LAST	Lmul	"Johannessen"
 LAST	P31	Q110874
 
-# Jonson -- patronymic, 1 bearer(s) in the batches
-CREATE
-LAST	Len	"Jonson"
-LAST	Lmul	"Jonson"
-LAST	P31	Q110874
-
 # Kristoffersdatter -- patronymic, 1 bearer(s) in the batches
 CREATE
 LAST	Len	"Kristoffersdatter"
 LAST	Lmul	"Kristoffersdatter"
 LAST	P31	Q110874
+
+# Martha -- given, 1 bearer(s) in the batches
+CREATE
+LAST	Len	"Martha"
+LAST	Lmul	"Martha"
+LAST	P31	Q202444
 
 # Minni -- given, 1 bearer(s) in the batches
 CREATE
@@ -143,12 +179,6 @@ LAST	Len	"Pinkie"
 LAST	Lmul	"Pinkie"
 LAST	P31	Q202444
 
-# Raustad -- family, 1 bearer(s) in the batches
-CREATE
-LAST	Len	"Raustad"
-LAST	Lmul	"Raustad"
-LAST	P31	Q101352
-
 # Remmie -- family, 1 bearer(s) in the batches
 CREATE
 LAST	Len	"Remmie"
@@ -173,6 +203,12 @@ LAST	Len	"Sandsmark"
 LAST	Lmul	"Sandsmark"
 LAST	P31	Q101352
 
+# Simensdatter -- patronymic, 1 bearer(s) in the batches
+CREATE
+LAST	Len	"Simensdatter"
+LAST	Lmul	"Simensdatter"
+LAST	P31	Q110874
+
 # Thoralf -- given, 1 bearer(s) in the batches
 CREATE
 LAST	Len	"Thoralf"
@@ -191,14 +227,19 @@ LAST	Len	"Ådne"
 LAST	Lmul	"Ådne"
 LAST	P31	Q202444
 
+# Ådneson -- patronymic, 1 bearer(s) in the batches
+CREATE
+LAST	Len	"Ådneson"
+LAST	Lmul	"Ådneson"
+LAST	P31	Q110874
+
 # NOT created -- the plan says these already resolve to more than
 # one item, and creating another is the Maria failure that would
 # have made a tenth. Emma picks, the person's sex decides.
 #   Anton (given), 1 bearer(s)
 #   Eliza (given), 1 bearer(s)
 #   Emil (given), 1 bearer(s)
-#   Lena (given), 1 bearer(s)
 #   Marie (given), 1 bearer(s)
 #   Martin (given), 1 bearer(s)
-#   Mary (given), 1 bearer(s)
+#   Ola (given), 1 bearer(s)
 #   Olga (given), 2 bearer(s)
