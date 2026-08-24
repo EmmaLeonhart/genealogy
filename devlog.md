@@ -11677,3 +11677,32 @@ resolved** — identity calls are hers, and a disagreement is a note rather than
 
 The corpus merge that made this possible finished first: 546 exports, 1,325,436 individuals,
 566,198 families, and `out/merged-pre-synoptic-2026-08-23.ged` kept per the backtest rule.
+
+## 2026-08-24 — the runner now honours `requires`, and refuses when it cannot
+
+`genimerge.editorder` existed but nothing called it, so every `requires` in the repo was
+still decorative. `scripts/wikidata-edit-run.py` took **`edits[:limit]` in file order** on
+both the dry and the live path.
+
+**It orders before it slices now.** Verified on a real batch: in
+`wikidata-samaritan-priests.json` the dry run puts Uzzi ben Bakhi before Shashai II ben
+Uzzi, who requires him. In file order he did not.
+
+**And it refuses a batch whose prerequisites live in another file**, rather than running
+the part it can. Three batches are in that position — `wikidata-mul-labels.json` needs
+`wikidata-en-labels.json` **14,972 times**, and `wikidata-samaritan-succession.json` and
+`wikidata-abram-father.json` each need `wikidata-samaritan-links.json`. Refusing is the
+right answer and not a limitation: running the `en` label edit before the `mul` one erases
+the `NN` marker on the 1,271 items whose only copy lives in `en`, which is the exact hazard
+`CLAUDE.md` records.
+
+**The refusal names the file that provides what is missing**, because a refusal you cannot
+act on is just a failure. `--satisfied` takes a list of ids already applied, so a resumed
+run is not blocked by work that is genuinely done, and `--seed` fixes the random order for
+a reproducible dry run.
+
+Measured, not assumed: the cross-file dependency count came from scanning all 20 batches,
+and both exit codes were checked — 1 on refusal, 0 on success. Two tests pin the wiring,
+because a resolver nothing calls protects nothing.
+
+**Fast lane: 1,128 passed, 0 failed**, 6m28s.

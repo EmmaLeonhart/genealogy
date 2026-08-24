@@ -111,3 +111,52 @@ def test_the_order_actually_varies_across_seeds():
     orders = {tuple(e["id"] for e in runnable_order(edits, seed=s))
               for s in range(25)}
     assert len(orders) > 1, "the pick is supposed to be random"
+
+
+# --- the runner actually uses it ------------------------------------------
+#
+# `scripts/wikidata-edit-run.py` took `edits[:limit]` in FILE order until
+# 2026-08-24, so every `requires` in the repo was decorative. These pin that the
+# wiring is present, because a resolver nothing calls protects nothing.
+
+import subprocess
+import sys as _sys
+from pathlib import Path as _Path
+
+REPO = _Path(__file__).resolve().parent.parent
+RUNNER = REPO / "scripts" / "wikidata-edit-run.py"
+
+
+def _run(*args):
+    return subprocess.run([_sys.executable, str(RUNNER), *args],
+                          capture_output=True, text=True, cwd=REPO)
+
+
+def test_the_runner_orders_before_it_slices():
+    """A dry run must say so, or the ordering is not in the path that matters."""
+    batch = REPO / "reports" / "wikidata-samaritan-priests.json"
+    if not batch.exists():
+        import pytest
+        pytest.skip("samaritan batch not generated")
+    out = _run("--batch", "reports/wikidata-samaritan-priests.json",
+               "--limit", "3", "--seed", "1")
+    assert out.returncode == 0, out.stderr
+    assert "ordered by requires" in out.stdout
+
+
+def test_the_runner_refuses_a_batch_whose_prerequisites_are_elsewhere():
+    """`wikidata-mul-labels.json` needs `wikidata-en-labels.json` 14,972 times.
+
+    Refusing is right: running the `en` label edit before the `mul` one erases the
+    `NN` marker on the 1,271 items whose only copy lives in `en`. The message has to
+    name the providing file, or the refusal is not actionable.
+    """
+    batch = REPO / "reports" / "wikidata-mul-labels.json"
+    if not batch.exists():
+        import pytest
+        pytest.skip("mul-labels batch not generated")
+    out = _run("--batch", "reports/wikidata-mul-labels.json", "--limit", "3")
+    assert out.returncode == 1, "a batch that cannot be ordered must not exit 0"
+    assert "REFUSED" in out.stderr
+    assert "wikidata-en-labels.json" in out.stderr, (
+        "the refusal must name the batch that provides what is missing")

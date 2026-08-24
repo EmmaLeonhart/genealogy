@@ -63,9 +63,12 @@ are present, if they are then it runs, if no then randomly select and run anothe
 Implemented, 11 tests, and it orders all **284,146** edit objects in about a second with
 **0 violations, 0 dangling, 0 cycles, 0 duplicate ids**.
 
-- **Wire it into `scripts/wikidata-edit-run.py`.** The module exists and the runner
-  still does not consult it, so the ordering is honoured only by whoever calls the
-  module. That is the last step of this item.
+**Wired into `scripts/wikidata-edit-run.py` on 2026-08-24.** The runner orders before it
+slices — it used to take `edits[:limit]` in file order — and **refuses a batch whose
+prerequisites live in another file**, naming the file that provides them. Three do:
+`wikidata-mul-labels.json` needs `wikidata-en-labels.json` 14,972 times, and the Samaritan
+succession and Abram fix need `wikidata-samaritan-links.json`. `--satisfied` takes a list
+of ids already applied so a resumed run is not blocked by finished work.
 
 ## Izumo / Senge clan — measured 2026-08-23, `reports/izumo.md`
 

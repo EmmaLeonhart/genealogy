@@ -15,6 +15,21 @@ Stdlib only, per CLAUDE.md: `urllib` covers the API.
 
     py scripts/wikidata-edit-run.py --batch out/wikidata/unlinked-items.json --limit 10
     py scripts/wikidata-edit-run.py --batch ... --limit 10 --live
+
+**The batch is ordered before it is sliced.** Until 2026-08-24 this took
+`edits[:limit]` in *file order*, which quietly ignored the `requires` every edit
+object carries. `CLAUDE.md` leans on that ordering where it is most dangerous: the
+`NN` fix is two edits per item, the `mul` one declared as a dependency of the `en`
+one, *"so the marker is written before the slot holding it is reused"* — and on the
+1,271 items whose only `NN` lives in `en`, the wrong order erases the marker.
+`genimerge.editorder` now supplies the order, by Emma's design: a random pick from
+whatever is currently runnable.
+
+**A batch whose prerequisites live in another file refuses rather than half-running.**
+Three do — `wikidata-mul-labels.json` needs `wikidata-en-labels.json` (14,972 times),
+and the Samaritan succession and Abram fix need `wikidata-samaritan-links.json`. The
+refusal names the file that provides what is missing, and `--satisfied` accepts a
+list of ids already applied so a resumed run is not blocked by work that is done.
 """
 
 from __future__ import annotations
@@ -32,6 +47,8 @@ from http.cookiejar import CookieJar
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(REPO / "src"))
+from genimerge.editorder import Blocked, runnable_order  # noqa: E402
 API = os.environ.get("WIKIDATA_API", "https://www.wikidata.org/w/api.php")
 
 #: Emma's stated cadence, CLAUDE.md-adjacent: 10-100 edits a day. A run may never
@@ -99,10 +116,53 @@ def load_batch(path: Path) -> list[dict]:
     return data
 
 
+def _providers(missing: set) -> dict:
+    """Which batch file emits each missing id, so the refusal is actionable."""
+    found = {}
+    for candidate in sorted((REPO / "reports").glob("wikidata-*.json")):
+        try:
+            data = json.loads(candidate.read_text(encoding="utf-8"))
+        except ValueError:
+            continue
+        items = data if isinstance(data, list) else data.get("edits", [])
+        for e in items:
+            if isinstance(e, dict) and e.get("id") in missing:
+                found[e["id"]] = candidate.name
+    return found
+
+
+def _explain(blocked: Blocked, satisfied: set) -> None:
+    """Say what is missing and where it comes from, rather than just refusing."""
+    have = {e.get("id") for e in blocked.remaining} | satisfied
+    missing = {r for e in blocked.remaining for r in (e.get("requires") or [])
+               if r not in have}
+    print("", file=sys.stderr)
+    print(f"REFUSED: {len(blocked.remaining)} edits cannot be ordered.",
+          file=sys.stderr)
+    if not missing:
+        print("  Their requirements form a cycle within this batch.", file=sys.stderr)
+        return
+    where = _providers(missing)
+    by_file: dict = {}
+    for mid in missing:
+        by_file.setdefault(where.get(mid, "(no batch emits it)"), []).append(mid)
+    print(f"  {len(missing)} requirements are not present in this batch:",
+          file=sys.stderr)
+    for name, ids in sorted(by_file.items(), key=lambda kv: -len(kv[1])):
+        print(f"    {len(ids):>6} from {name}   e.g. {sorted(ids)[0]}", file=sys.stderr)
+    print("  Run the providing batch first, or pass --satisfied with the ids "
+          "already applied.", file=sys.stderr)
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--batch", required=True)
     ap.add_argument("--limit", type=int, default=10)
+    ap.add_argument("--satisfied", help="file of edit ids already applied, one per "
+                                        "line, so a resumed run is not blocked by "
+                                        "work that is genuinely done")
+    ap.add_argument("--seed", type=int, default=None,
+                    help="fix the random order, for a reproducible dry run")
     mode = ap.add_mutually_exclusive_group()
     mode.add_argument("--dry-run", action="store_true", default=True)
     mode.add_argument("--live", action="store_true")
@@ -116,6 +176,22 @@ def main() -> int:
     limit = max(0, min(args.limit, MAX_EDITS_PER_RUN))
     edits = load_batch(path)
     print(f"batch {rel}: {len(edits)} edit objects, limit {limit}")
+
+    satisfied = set()
+    if args.satisfied:
+        satisfied = {ln.strip() for ln
+                     in Path(args.satisfied).read_text(encoding="utf-8").splitlines()
+                     if ln.strip()}
+        print(f"{len(satisfied)} ids treated as already applied")
+
+    # Order before slicing. Taking the first N in FILE order ignores `requires`,
+    # which is the whole reason those lists exist.
+    try:
+        edits = runnable_order(edits, seed=args.seed, satisfied=satisfied)
+    except Blocked as blocked:
+        _explain(blocked, satisfied)
+        return 1
+    print("ordered by requires; no edit precedes anything it depends on")
 
     if not args.live:
         print("\nDRY RUN — nothing will be sent. First edits:\n")
