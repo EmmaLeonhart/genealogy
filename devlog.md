@@ -11467,3 +11467,39 @@ catches the ordinary case and skips when the snapshot is absent.
 **Fast lane: 1,091 passed, 0 failed**, with `BOT_CONTACT` set — green for the first time
 this session. The `chain-seeds` duplicate is gone and `test_the_offline_guard_actually_fires`
 passes once the variable is present.
+
+## 2026-08-23 — freshness regenerated, stale test figures corrected, and the four batches checked against each other
+
+**`reports/repo-freshness.csv` regenerated.** It had been listing
+`reports/missing-ancestors-check.csv` and `scripts/check-missing-ancestors.py`, neither of
+which exists — a staleness report that was itself stale, and it had already sent one review
+after things already gone. Both rows are now absent. The queue item is deleted.
+
+**Two present-tense claims in `CLAUDE.md` were wrong and are corrected.** The fast lane is
+**1,091 tests in ~5m47s**, not 932 in ~115s, and `test_merge_real_exports` merges 546
+exports, not 245. Both figures grow with the corpus, so each now carries the date it was
+measured and the value it replaced. The other two stale corpus counts in that file — the
+103 GEDCOMs of 08-06 and the 203 exports behind the isolates measurement — are **dated
+records of a day and were left alone**, which is the doctrine `build-repo-freshness.py`
+states in its own docstring.
+
+**Added to `CLAUDE.md`: `BOT_CONTACT` must be set or one test fails.**
+`test_the_offline_guard_actually_fires` builds a client, and `require_agent` refuses an
+empty User-Agent by design because Wikimedia answers one with a bare 403. With the variable
+exported the fast lane is 0 failures. That has cost a false "1 failure" line in several
+status reports.
+
+**The four `P2600` batches checked against each other — no conflicts.** 364 distinct QIDs
+between them.
+
+- **29 of the 36 statements in `wikidata-add-geni-id.qs` are identical claims** already in
+  the 354-statement batch: the About Me links rediscovered what an earlier pass found by
+  another route, and agreeing is the good outcome. Idempotent, so the overlap costs a no-op.
+- **Neither older file is superseded** — `wikidata-add-geni-id.qs` and
+  `wikidata-bureatten-p2600.qs` each carry **7 pairs the About Me links do not reach**.
+- **No QID is given a different Geni id by two files.** Four QIDs carry two ids and every
+  one is the multi-valued case: one person, two unmergeable Geni profiles. `P2600` is
+  multi-valued and both statements belong.
+
+Recorded in `reports/geni-qid-links.md` so it does not have to be re-derived before running
+them.

@@ -110,3 +110,30 @@ Meishō, `Q87470638` Catharina Elisabet Elfstrand.
 **The comparison is against a snapshot taken 2026-08-09**, so an item that gained a `P2600`
 since reads here as an addition. QuickStatements is idempotent for an identical statement,
 so that staleness costs a no-op rather than a wrong edit.
+
+
+## How the four batches relate — checked 2026-08-23, no conflicts
+
+Four `.qs` files in `reports/` assert `P2600` *Geni.com profile ID*, between them **364
+distinct QIDs**. Running all four is safe; here is why, so nobody has to re-derive it.
+
+| file | statements | not covered by `wikidata-geni-qid-p2600.qs` |
+| --- | ---: | ---: |
+| `wikidata-geni-qid-p2600.qs` | 354 | — |
+| `wikidata-add-geni-id.qs` | 36 | **7** |
+| `wikidata-bureatten-p2600.qs` | 7 | **7** |
+
+**29 of the 36 in `wikidata-add-geni-id.qs` are byte-identical claims** already in the new
+batch — the About Me links rediscovered what an earlier pass had found by other means, and
+agreeing is the good outcome. QuickStatements is idempotent for an identical statement, so
+the overlap costs a no-op.
+
+**No QID is given a different Geni id by two different files.** Four QIDs carry two Geni
+ids, and every one is the multi-valued case `CLAUDE.md` describes rather than a
+disagreement: `Q135524854`, `Q135524952`, `Q135579476` *Senge no Naokatsu* and `Q694696` are
+each one person with two unmergeable Geni profiles. `P2600` is multi-valued; both
+statements belong.
+
+**So all four still have work to do** — the two older files are not superseded, they carry
+7 pairs each that the About Me links do not reach. Their statements have no `S2600`
+reference at all, which the template permits: `P2600` is in the uncited group.

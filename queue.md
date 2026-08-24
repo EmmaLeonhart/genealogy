@@ -38,10 +38,8 @@ and no two batches creating the same person.
 
 ## Stale, small, nobody's blocker
 
-- `reports/repo-freshness.csv` still lists `reports/missing-ancestors-check.csv` and
-  `scripts/check-missing-ancestors.py`, neither of which exists. A staleness report that
-  is itself stale sends a review after things already gone. Regenerate it, and prefer
-  checking the filesystem to trusting its rows.
+- Nothing outstanding here right now. `reports/repo-freshness.csv` was regenerated
+  2026-08-23 and no longer lists the two files that had been deleted under it.
 
 ## Izumo / Senge clan — measured 2026-08-23, `reports/izumo.md`
 

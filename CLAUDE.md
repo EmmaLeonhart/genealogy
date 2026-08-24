@@ -1162,14 +1162,22 @@ GitHub end as well.
 Verification therefore happens **locally, before pushing**: `python -m pytest`.
 
 **The suite has a fast lane, and the full run now needs a real terminal.**
-`pytest -m "not slow"` is **932 tests in ~115 seconds**. A bare `pytest` still runs
-everything — `slow` deselects nothing by default, and a run that has not included
-the slow tests is not a full verification.
+`pytest -m "not slow"` is **1,091 tests in ~5m47s** (2026-08-23; it was 932 in ~115s
+on 08-16, and it grows with the corpus). A bare `pytest` still runs everything —
+`slow` deselects nothing by default, and a run that has not included the slow tests
+is not a full verification.
+
+**`BOT_CONTACT` must be set in the shell or one test fails.**
+`test_cli_wikidata.py::test_the_offline_guard_actually_fires` builds a client, and
+`genimerge.wikidata.require_agent` refuses an empty User-Agent by design — Wikimedia
+answers one with a bare 403, so failing loudly here is the point. Export the contact
+address and the fast lane is **0 failures**.
 
 Six modules carry `slow`, each working over the whole corpus:
 `test_merge_real_exports`, `test_gedcom_real_exports`, `test_density`, `test_paths`
 (its real-merge tests only), `test_wikidata_store_real`, and the real-merge work in
-`test_sources`. `test_merge_real_exports` alone merges all 245 exports in one
+`test_sources`. `test_merge_real_exports` alone merges the whole corpus (546 exports
+on 2026-08-23, 245 when this was written) in one
 module-scoped fixture and **exceeds ten minutes**, which is the agent tooling's
 per-command ceiling — so the full suite became unrunnable from a tool call around
 2026-08-16, purely because the corpus grew. Nothing is wrong with it; it is just
