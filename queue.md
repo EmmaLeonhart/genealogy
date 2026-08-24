@@ -51,6 +51,37 @@ the pair. `CLAUDE.md` § *The four big derived CSVs are committed GZIPPED*.
 **After a clean clone: `python scripts/pack-derived.py --unpack` once.** Forty-four
 scripts open the plain CSV by name.
 
+## ⛔ `exports/post-merge/` — resolving stale duplicates without throwing exports away
+
+**Emma's design, 2026-08-24.** The problem: Geni has merged people our corpus still holds
+twice, and *"we can't just throw out the earlier exports that contain stale individuals"*
+— they carry thousands of people the merge needs.
+
+**Her method, in her order:**
+
+- **Export from the merged individual directly** where she created them, since she can
+  reach the profile.
+- **Where that is impossible, fall back to the earlier add-an-ancestor-then-export-from-them
+  algorithm**, in the browser. That is `docs/export-seed-rules.md`.
+- **The new GEDCOMs go in `exports/post-merge/`**, a directory with special logic: **a
+  Geni record in there overwrites the same Geni ID from any other export** in the synoptic
+  tree. Post-merge is newest and therefore right.
+- **Export until every first-degree relative of every merged individual is present** in
+  that directory. That is the stopping rule, not a count of exports.
+
+**The economy of it is hers and it is the important part:** *"merged individuals cluster
+together so we will not need to run an export on every one of them"* — one ball covers
+many. The 13 `strong` rows bear this out: seven are Haji-no-muraji and three are Sugawara,
+two lineages rather than thirteen scattered people.
+
+**Open question she flagged herself:** *"idk how we resolved geni conflicts in the synoptic
+tree earlier either"*. Establish that before writing the override — `CLAUDE.md` § *Later
+sources win value conflicts* is merge-order-by-filename, which is **not** the same as
+post-merge-wins and would not do the job. Do not assume the two rules coincide.
+
+Depends on `reports/geni-stale-duplicates.tsv` (13 strong, 3 medium, 13 weak) and
+`reports/geni-merges-performed.tsv` (180 survivors from her activity feed).
+
 ## The join emitter exists — `scripts/build-join-batch.py`
 
 Consumes `reports/synoptic-correspondence.tsv`, both directions jointly. Scoped by any

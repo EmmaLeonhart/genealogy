@@ -12400,3 +12400,35 @@ the name slug and keeps the id, so it does not reveal one.
 
 The script and its output stay committed as the record of a refuted method, in the same
 way `reports/descendants-backtest-2026-08-07.md` holds the two refuted seed heuristics.
+
+## 2026-08-24 — the stale-duplicate report compared the wrong thing
+
+`scripts/build-stale-duplicates.py`, replacing the inline code that produced the first
+version. The report's evidence column compared the two profiles' father **ids**, and where
+the father is himself duplicated — the normal case here, because whole lineages were
+re-created — the ids differ and it reported `same_father: no` on all 27 rows.
+
+`Kuiko Haji-no-muraji` is the case: both profiles name a father called *Otori
+Haji-no-muraji*, and **Otori is himself in the report**. Comparing ids was the wrong test
+exactly where the evidence is strongest.
+
+Comparing parent **names** instead, and grading:
+
+| | pairs |
+| --- | ---: |
+| **strong** — a parent name matches | **13** |
+| medium — nothing recorded either side | 3 |
+| weak — parent names or dates differ | 13 |
+
+The 13 strong are two lineages rather than thirteen scattered people: seven
+Haji-no-muraji (Kuiko, Otori, Obito, Ohodo, Yashima, Minomi, Ohusoba) and three Sugawara
+(Michizane, Kiyokimi, Koreyoshi), plus Iwai, Okinaga no Sukune and Aaron III.
+
+**Weak rows are kept, not dropped.** Amram V Samaritan High Priest has *Tsedaka I* as
+father on one profile and *Aaron III* on the other, with a death date on only one. That is
+one man with conflicting parentage or two men, and Emma can tell where the report cannot.
+
+`tests/test_stale_duplicates.py` pins the name-not-id comparison as a regression, that
+every survivor traces to the activity feed, and that weak rows survive.
+
+Fast lane: **1,210 passed, 0 failed, 1 skipped, 7m17s.**
