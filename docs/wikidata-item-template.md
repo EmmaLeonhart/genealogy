@@ -1,7 +1,7 @@
 # What a person item looks like, taken from what Emma actually builds
 
-Read off `Q467497` and everything it links to. First captured 2026-08-22, **re-read
-2026-08-23** — she is working through this by hand and the shape is the template for the
+Read off `Q467497` and everything it links to. First captured 2026-08-22, re-read
+2026-08-23, **re-read again 2026-08-24 against the live items** — she is working through this by hand and the shape is the template for the
 whole expansion programme, so this file tracks what she is actually doing rather than what
 a generator assumed.
 
@@ -96,3 +96,92 @@ needs the QID of each given-name item and a new patronymic item per patronym —
 *Jonsdatter*, *Eivindsdatter*, *Eivindsen*, *Eivindson*. Guessing a name-item QID is the
 error this repo keeps paying for, so they are listed in the file's trailer for Emma rather
 than generated.
+
+
+## Re-read 2026-08-24 — all ten exist, and two claims above are now wrong
+
+Six items were read live: `Q467497`, `Q141152512`, `Q141152523`, `Q141152600`,
+`Q141162040`, `Q141162043`, plus the name item `Q141152710`. Emma authorised reading
+these specific pages; it was one batched read, not the ad-hoc lookup `CLAUDE.md` forbids.
+
+**All ten people now have items.** The "four of the ten" table above is superseded —
+Samuel `Q141162040`, Even `Q141162041`, Inger Marie `Q141162043`, Abel `Q141162044`,
+Ole `Q141162045` and Ane Oline "Lena" `Q141162046` were all created since the 08-23 read.
+
+**Dates are no longer outstanding.** Ane Oline, Stena and Jon all carry `P569` and `P570`
+now. The 08-23 note that only Eivind had dates is out of date.
+
+### The citation split is NOT consistent — that claim above was wrong
+
+It was stated as a rule and the live items refute it. Measured per item:
+
+| item | referenced | not referenced |
+| --- | --- | --- |
+| `Q141152512` Eivind | `P40` (first three only), `P569`, `P570`, `P26` (two refs) | `P31`, `P21`, `P2600`, `P734`, `P735`, `P5056` |
+| `Q141152600` Stena | `P31`, `P21`, `P22`, `P25`, `P3373`, `P569`, `P570` | `P2600` |
+| `Q141162040` Samuel | `P31`, `P22`, `P25`, `P3373`, `P569`, `P570` | **`P21`**, `P2600` |
+| `Q141162043` Inger Marie | `P31`, `P22`, `P25`, `P3373`, `P569`, `P570` | **`P21`**, `P2600` |
+| `Q141162046` Ane Oline "Lena" | `P22`, `P25`, `P3373`, `P569`, `P570` | **`P31`**, **`P21`**, `P2600` |
+
+So `P31` *instance of* is cited on three of the five and `P21` *sex or gender* on one of
+them, in no order that tracks creation date — Lena was made in the same sitting as Samuel
+and Inger Marie and carries neither. What holds across all of them is
+narrower: **`P2600` itself never carries a reference** — it *is* the reference — and every
+date and every relationship does. Treat identity as *usually* uncited rather than as a
+rule, and do not "correct" an item to match the pattern.
+
+### The name qualifiers in `name modelling.txt` are not in the items
+
+`Q141152512` is still the **only** one of the ten carrying name statements, and all three
+are bare:
+
+    P735  Q3358418   Eivind      -- no P1545, no P7452
+    P5056 Q141152710 Aadnesson   -- no P144
+    P734  Q30250555  Garborg
+
+`name modelling.txt` prescribes `P1545` *series ordinal* and `P7452` → `Q3409033`
+*usual forename* on the given name, and `P144` *based on* → the father on the patronym.
+None is present. **This is weak evidence about the multi-name case** — Eivind has one
+given name, so an ordinal of 1 is the least useful place for it, and no item with two given
+names carries name statements yet. It is strong evidence about `P144`: the patronym
+*Aadnesson* names his father Aadne, and the link is simply not there.
+
+`docs/` records what she builds; `name modelling.txt` records what she wants. Where they
+disagree the spec is not overruled by the backlog — but a generator should not claim the
+items already look like the spec.
+
+### The nickname rule does not generalise — two cases, handled differently
+
+| Geni | her label |
+| --- | --- |
+| `Stine "Stena" Eivindsdatter Garborg` | **`Stena Eivindsdatter Garborg`** — `Stine` dropped |
+| `Inger Marie "Mary" Eivindsdatter Garborg` | **`Inger Marie Mary Eivindsdatter Garborg`** — all kept |
+| `Ane Oline "Lena" Eivindsdatter Garborg` | **`Ane Oline Lena Eivindsdatter Garborg`** — all kept |
+
+Three cases, and **Stena is the only one that loses a token**. *Stena* is a short form of
+*Stine*, so keeping both would repeat one name; *Mary* and *Lena* sit beside given names
+they are not variants of. So the default is **strip the quote marks and keep every
+token** — exactly what `qs()` does — and Stena is a one-person exception rather than a
+rule the generator is missing. Do not build the exception into the generator; it needs a
+judgement about whether two tokens are the same name.
+
+### Everything else held
+
+- **Labels are `en` and `mul`, the same string.** No item carries `ja` or `zh` yet, so her
+  2026-08-24 instruction to add them is outstanding work, not something already done.
+- **No descriptions, no aliases, no sitelinks** on any of the ten.
+- **The name item is minimal.** `Q141152710` *Aadnesson*: `en` and `mul` labels, `P31` →
+  `Q110874` *patronymic*, and nothing else — no description, no `P144`, no `P407`.
+- **`P3373` runs both ways**, and the later items each carry three sibling links.
+- **Never used on any item:** `P19` *place of birth*, `P20` *place of death*, `P119` *place
+  of burial*, despite Geni holding those values.
+
+### What this changes for the generator
+
+- **`P5056` is emittable now.** `reports/wikidata-garborg-day.qs` emits zero on the
+  grounds that no patronymic item exists. *Aadnesson* does. Only that one — the other
+  patronyms still need items.
+- **Do not emit `P1545`/`P7452`/`P144`** as though matching her items; they match the spec
+  instead, which is a defensible choice but should be a stated one.
+- **`Q467497` is a community item**, ~120 properties, most of them external identifiers.
+  It is not a template for anything and should not be read as one.

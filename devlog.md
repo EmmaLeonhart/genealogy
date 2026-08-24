@@ -11970,3 +11970,47 @@ maintaining them they are gonna be run"* — not a new one invented uninvited.
 against `Isabelle D'Esmalleville` on Wikidata, both the mother of Marguerite Blosset: two
 territorial designations for one woman, paired by *position* with the label doing nothing
 but failing to be absurd. No name was searched.
+
+## 2026-08-24 — the Garborg items re-read live, and the artifact republished
+
+Eight items read: `Q467497`, `Q141152512`, `Q141152523`, `Q141152600`, `Q141162040`,
+`Q141162043`, `Q141162046`, and the name item `Q141152710`. Emma authorised reading these
+specific pages, so this is not the ad-hoc lookup `CLAUDE.md` forbids.
+
+**All ten people have items now.** The artifact and `docs/wikidata-item-template.md` both
+said four of ten, with six still to create; Samuel, Even, Inger Marie, Abel, Ole and Ane
+Oline "Lena" were all created since the 08-23 read. Dates are done too — Ane Oline, Stena
+and Jon all carry `P569`/`P570`.
+
+**`Q467497` Arne Garborg still has no `P22`, no `P25` and no `P3373`.** The artifact said
+those links had gone in by hand and that nothing was outstanding on him. A targeted read
+of the claims object returns ABSENT for all three. This is the single highest-value
+outstanding edit in the programme — the anchor of the whole thing is unconnected to
+parents who both have items — and today's day batch already emits exactly those two lines.
+
+**Three claims the page made are now corrected:**
+
+- **The citation split is habit, not rule.** It was written down as consistent across
+  every item. `P31` is referenced on Stena, Samuel and Inger Marie and not on Eivind or
+  Lena; `P21` on Stena alone. Lena was made in the same sitting as Samuel and Inger Marie
+  and is referenced differently, so it does not track creation order. What holds is
+  narrower: every date and relationship is cited, and `P2600` never is — it *is* the
+  reference.
+- **The name qualifiers are not in the items.** Eivind is still the only one of the ten
+  with name statements and all three are bare — no `P1545`, no `P7452`, no `P144`. He has
+  one given name, so that is weak evidence about ordinals and strong evidence about
+  `P144`, which would name his father Aadne and is absent.
+- **The nickname label has one exception, not a rule.** Stena drops *Stine*; Mary and Lena
+  keep every token. Strip-the-quotes-keep-everything is the default and is what `qs()`
+  already does.
+
+**`P5056` is emittable now** — the daily batch emits zero patronyms on the grounds that no
+patronym item exists, and *Aadnesson* `Q141152710` does. Only that one.
+
+**Confirmed unchanged:** `en` + `mul` labels of the same string, no descriptions, no
+aliases, no sitelinks, `P3373` both ways, a minimal name item, and no `P19`/`P20`/`P119`
+on anything despite Geni holding those values. **No item carries `ja` or `zh` yet**, so
+her instruction to add them is outstanding work rather than something already refused.
+
+`scripts/build-garborg-entry-sheet.py` rebuilds the artifact from this, reusing the page's
+own stylesheet so a redeploy reads as the same document.
