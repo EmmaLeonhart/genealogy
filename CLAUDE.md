@@ -1162,7 +1162,7 @@ GitHub end as well.
 Verification therefore happens **locally, before pushing**: `python -m pytest`.
 
 **The suite has a fast lane, and the full run now needs a real terminal.**
-`pytest -m "not slow"` is **1,099 tests in ~6m** (2026-08-23; it was 932 in ~115s
+`pytest -m "not slow"` is **1,104 tests + 2 xfail in ~6m** (2026-08-23; it was 932 in ~115s
 on 08-16, and it grows with the corpus). A bare `pytest` still runs everything —
 `slow` deselects nothing by default, and a run that has not included the slow tests
 is not a full verification.

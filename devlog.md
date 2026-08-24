@@ -11570,3 +11570,42 @@ that both the real check and the synthetic cases call, so a bug in it fails the 
 tests too. A test that cannot fail is worse than no test, because it reports coverage.
 
 **Fast lane: 1,099 passed, 0 failed**, 6m00s, `BOT_CONTACT` set. `CLAUDE.md` updated.
+
+## 2026-08-23 — 284,125 edits declare an ordering that nothing enforces
+
+The JSON batches were unguarded as a class: `test_edit_emitters.py` pins six emitters'
+specific rules, and nothing checked the shape they all share. `scripts/audit-edit-graph.py`
+and `tests/test_edit_graph.py` close that, and the audit found three things.
+
+**Nothing reads `requires`.** Every edit object carries a dependency list;
+`scripts/wikidata-edit-run.py` does not mention the field. `CLAUDE.md` leans on that
+ordering exactly where it is most dangerous — the `NN` fix is two edits per item, the `mul`
+one declared as a dependency of the `en` one, *"so the marker is written before the slot
+holding it is reused"*. On the **1,271** items whose only `NN` lives in `en`, running the
+`en` batch first erases the marker. The safety is declared and not enforced. Queued as a
+design decision, not fixed here.
+
+**55,776 dependencies name an id no batch emits.** `build-orderlife-batch.py` writes
+`requires: person:<q>` while emitting its ids as `create_individual:<q>` /
+`add_geni_id:<q>` — one script disagreeing with itself 55,765 times. The other 11 are
+`samaritan-succession` and `abram-father` requiring `entity_resolution:<q>` for QIDs that
+file does not contain.
+
+**33 duplicate ids.** `add_geni_id:Q694696` collides because the id is keyed on the QID
+alone and that QID has two Geni profiles — the multi-valued `P2600` case, so both edits are
+correct and the *naming* is wrong. The other 32 are repeated `add_relationship` and
+`structural_correspondence` rows.
+
+Both are **strict `xfail`**, with the measured number and the cause in the reason string, so
+fixing either turns the suite red asking for the marker to come off. Neither is papered
+over and neither is silently tolerated.
+
+**And one rule of mine was wrong, which is the part worth keeping.** I asserted every
+subject names a `qid` or a `geni_id`; it failed on 41,706 edits that are all correct.
+`create_name_item` has no identifier until the item exists. order.life people carry
+`orderlife_qid` and are not from Geni. And the 9,158 patronymic fathers are Emma's own item
+— *"wiki data items that do not have geni items"* — where having no Geni ID **is the
+point**. The rule now covers non-creations only, and the docstring lists all three
+exceptions so the next person does not re-derive them.
+
+**Fast lane: 1,104 passed, 2 xfailed, 0 failed**, 5m49s.
