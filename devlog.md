@@ -12307,3 +12307,38 @@ parentage only from Geni. The brothers case (Takanori 81, Takatomi 80) and the w
 Her method, recorded in the queue: shared-parent candidates offline, higher scrutiny on
 Japanese items, then the browser extension on the candidates with Izumo first to learn how
 redirects behave. The merges themselves stay hers.
+
+## 2026-08-24 — the correspondence finally has a consumer
+
+`scripts/build-join-batch.py`. Emma asked whether the join algorithm was implemented and
+the answer was no: 522,086 Geni ID ↔ QID pairs sat in `reports/synoptic-correspondence.tsv`
+and nothing read them. Her decision was a generic emitter run scoped to Izumo first, and
+that is what this is — the scope is any file with a `qid` column.
+
+It takes a joined pair and emits **only what Wikidata lacks**, `P2600` *Geni.com profile
+ID* first because *"the Jenny ID needs to be present before any properties derived from
+Jenny can be taken from it"*, and everything after it cited to that ID with `S2600`. It
+creates nothing, so every subject and every target already exists and the whole file runs
+in one pass.
+
+**Izumo: 400 statements across 115 joined people.**
+
+    P2600   114     P21   89     P40   86     P22   81     P3373   30
+
+**Zero dates and zero spouses, and both are correct rather than missing.** Only 6 of the
+116 joined people carry any date on Geni — and all six already have `P569` *date of birth*
+and `P570` *date of death* on Wikidata, checked one by one rather than assumed. 13 have a
+spouse recorded, and none of those spouses is itself a joined roster member.
+
+**Two guards fired and both were right to.**
+`test_every_qid_pointed_at_already_exists` flagged `Q6581097` *male* — vocabulary, not a
+downloaded person, so the known set was widened with an explicit three-item list rather
+than a pattern. And the full lane caught
+`test_the_batch_inventory_names_exactly_the_batches_on_disk`: a new `.qs` existed that
+`reports/built-batches.tsv` did not name. Regenerated.
+
+**89 of the 204 Izumo QIDs are joined to no Geni profile at all** and contribute nothing.
+That is the roster's gap, not the emitter's, and it is where the About Me links have not
+been written.
+
+Fast lane: **1,204 passed, 0 failed, 1 skipped, 5m34s.**

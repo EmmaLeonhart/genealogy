@@ -51,24 +51,24 @@ the pair. `CLAUDE.md` § *The four big derived CSVs are committed GZIPPED*.
 **After a clean clone: `python scripts/pack-derived.py --unpack` once.** Forty-four
 scripts open the plain CSV by name.
 
-## ⛔ The generic join emitter — what consumes the synoptic correspondence
+## The join emitter exists — `scripts/build-join-batch.py`
 
-**Emma, 2026-08-24, asked whether this was implemented. It was not.**
-`reports/synoptic-correspondence.tsv` holds 522,086 Geni ID ↔ QID pairs and is read by
-nothing. Her decision: **a generic emitter, run scoped to Izumo first.**
+Consumes `reports/synoptic-correspondence.tsv`, both directions jointly. Scoped by any
+file with a `qid` column. Adds only what Wikidata lacks; `P2600` *Geni.com profile ID*
+first, everything else cited to it with `S2600`. Creates nothing, so it runs in one pass.
 
-- Takes any joined `(geni_id, qid)` pair and emits what Geni supports and Wikidata lacks:
-  `P2600` *Geni.com profile ID* **first** — her standing rule — then dates, sex, parents,
-  children, siblings, each cited to that Geni ID.
-- **Both join directions, jointly.** Emma, same day: *"geni description qid to wikidata
-  qid is also important and needs to be done jointly in the synoptic tree building."*
-  Confirmed present: `wikidata-p2600` 517,823 and `geni-about-me` 405.
-- Run over the Izumo roster first so the first output is small enough to read. Same code
-  serves Tanba, Onakatomi and Garborg after.
+**Izumo run: 400 statements over 115 joined people** — 114 `P2600`, 89 `P21` *sex or
+gender*, 86 `P40` *child*, 81 `P22` *father*, 30 `P3373` *sibling*.
 
-**Cron `a9ffdec7`, daily 14:07** — rebuild the synoptic tree **no earlier than 2pm**,
-because she runs QuickStatements on Wikidata first and the rebuild must see those edits.
-Session-only, expires after 7 days.
+**Outstanding:**
+
+- **Run it for Tanba and Onakatomi** once their roster QIDs are joined. Both were
+  downloaded (504 items in `out/clan-full-items.json`) but neither roster carries a Geni
+  ID, so the join has to come from the About Me links.
+- **89 of 204 Izumo QIDs are not joined to any Geni profile** and so contribute nothing.
+  That is the roster's own gap, not the emitter's.
+- **Labels are not emitted yet.** The items are Japanese and mostly carry `ja` already;
+  what they lack has not been measured.
 
 ## ⛔ The Izumo chart edges are SUCCESSION, not parentage
 
