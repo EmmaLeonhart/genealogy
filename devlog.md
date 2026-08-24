@@ -11847,3 +11847,26 @@ have surfaced the first time this touched a mononym, and this repo is full of th
 
 No heavy jobs run: Emma's laptop is hot and the structural walk and hop 3 both want minutes
 of sustained disk on the 1.6 GB tree. They wait.
+
+## 2026-08-24 — the single-run rule is now checked, and "living" was an inference
+
+`tests/test_garborg_day_batch.py`, 5 tests, pinning the rule Emma set after running the
+first file: **every QID a statement points at must already exist**. Checked against the
+real batch and the ledger rather than against a fixture, so it is the shipped file that is
+verified. It also refuses a "second pass" comment anywhere in the batch — that appendix is
+exactly what she could not run, and what cannot run today is tomorrow's batch, not a
+footnote.
+
+**And I checked a claim I had made to her rather than leaving it standing.** I reported the
+three `<private> Garborg` as *living private individuals*. The records carry **no birth
+date and no death date at all**. The only ground for "living" is that Geni redacts living
+people — behaviour, not evidence. Their father was born 1888 and died 1968, so his children
+being alive is plausible and unestablished.
+
+The sharper thing for her decision is what the item would contain: **no label, no dates,
+three statements** — `P31` human, `P21`, `P22` → `Q11959067`, and the `P2600` that makes it
+retrievable. Her rule that redacted people go in is settled; whether these three are worth
+an item is the narrower question, and it is hers.
+
+Still no heavy jobs: the structural walk and hop 3 both want sustained disk on the 1.6 GB
+tree and her laptop was hot.

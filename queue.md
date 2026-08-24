@@ -92,9 +92,18 @@ the new people only to what already exists.
   those QIDs exist, the name statements join the daily batch.
 - **7 ambiguous name tokens** are listed and never created — `Marie`, `Olga`, `Anton` and
   the rest resolve to several items each. The person's sex decides; Emma picks.
-- **Three living people.** The batch creates three `<private> Garborg`, children of Arne
-  Olaus, unlabelled per `CLAUDE.md` § *Redacted people go in*. They are **living private
-  individuals**, which is a different question from Geni redaction and is Emma's to weigh.
+- **Three redacted people, and "living" is an inference not a fact.** The batch creates
+  three `<private> Garborg`, children of Arne Olaus, unlabelled per `CLAUDE.md` §
+  *Redacted people go in*. **Checked 2026-08-24: they carry no birth date and no death
+  date at all** — the only reason to think them living is that Geni redacts living
+  people, which is behaviour rather than evidence. Their father was born 1888 and died
+  1968.
+
+  What Emma would actually be creating is an item with **no label, no dates and three
+  statements**: `P31` human, `P21`, `P22` → `Q11959067`, plus the `P2600`. Whether that
+  is worth an item, and whether Wikidata's rules on living private individuals apply, is
+  hers. The rule that *redacted people go in* is settled; this is the narrower question
+  of these three.
 - **Arne does have grandchildren**, contrary to her guess: Arne Olaus has four children
   (Hans Eivind plus the three redacted) and two spouses, Aagot and Dagny Nyvold.
 
