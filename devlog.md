@@ -12266,3 +12266,44 @@ records rather than a rule.**
 She asked which rosters to use and named Tanba and Izumo. I also counted **Onakatomi**,
 which she did not ask for. One line of output, no download, but it is the
 unprompted-analysis reflex and it is recorded here rather than quietly dropped.
+
+## 2026-08-24 — all three clan rosters downloaded; four decisions taken
+
+**Fetched 300 more items** from the sister repo's rosters (`roster-extraction/data_lake/`)
+— Izumo 202 QIDs, Tanba 183, Onakatomi 97, **482 distinct**, 182 already held.
+`out/clan-full-items.json` holds **504**. Emma: *"fetch all of them"*.
+
+The sister rosters carry **no Geni IDs at all** — 0 of 298 Izumo, 0 of 185 Tanba. They
+supply the Wikidata side and cannot supply the join.
+
+### The join has both directions and is consumed by nothing
+
+Emma, mid-turn: *"geni description qid to wikidata qid is also important and needs to be
+done jointly in the synoptic tree building."* Checked — it is joint already:
+
+    wikidata-p2600   517,823    P2600 on the Wikidata side
+    structural         3,902    our walk up the parental lines
+    geni-about-me        405    the QID Emma wrote into the Geni description
+    geni-wikidata-pairs  126
+    izumo-roster         112
+
+`structural` is **stale**: it reads 3,902 while the walk now produces 7,861. That is what
+the rebuild is for.
+
+**Cron `a9ffdec7`, daily at 14:07** — rebuild the synoptic tree **no earlier than 2pm**,
+her instruction, because she runs QuickStatements on Wikidata first and the rebuild has to
+see those edits. Session-only and expires after 7 days, so it needs recreating next
+session.
+
+### Chart edges are succession
+
+Her ruling, and it dissolves the 14 disagreements instead of adjudicating them: model the
+chart as `P1365` *replaces* / `P1366` *replaced by* with `P39` *position held*, and take
+parentage only from Geni. The brothers case (Takanori 81, Takatomi 80) and the wiki's own
+"solid = biological, dotted = adopted" both said the edges were never parentage.
+
+### Geni merge audit
+
+Her method, recorded in the queue: shared-parent candidates offline, higher scrutiny on
+Japanese items, then the browser extension on the candidates with Izumo first to learn how
+redirects behave. The merges themselves stay hers.

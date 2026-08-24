@@ -51,6 +51,54 @@ the pair. `CLAUDE.md` § *The four big derived CSVs are committed GZIPPED*.
 **After a clean clone: `python scripts/pack-derived.py --unpack` once.** Forty-four
 scripts open the plain CSV by name.
 
+## ⛔ The generic join emitter — what consumes the synoptic correspondence
+
+**Emma, 2026-08-24, asked whether this was implemented. It was not.**
+`reports/synoptic-correspondence.tsv` holds 522,086 Geni ID ↔ QID pairs and is read by
+nothing. Her decision: **a generic emitter, run scoped to Izumo first.**
+
+- Takes any joined `(geni_id, qid)` pair and emits what Geni supports and Wikidata lacks:
+  `P2600` *Geni.com profile ID* **first** — her standing rule — then dates, sex, parents,
+  children, siblings, each cited to that Geni ID.
+- **Both join directions, jointly.** Emma, same day: *"geni description qid to wikidata
+  qid is also important and needs to be done jointly in the synoptic tree building."*
+  Confirmed present: `wikidata-p2600` 517,823 and `geni-about-me` 405.
+- Run over the Izumo roster first so the first output is small enough to read. Same code
+  serves Tanba, Onakatomi and Garborg after.
+
+**Cron `a9ffdec7`, daily 14:07** — rebuild the synoptic tree **no earlier than 2pm**,
+because she runs QuickStatements on Wikidata first and the rebuild must see those edits.
+Session-only, expires after 7 days.
+
+## ⛔ The Izumo chart edges are SUCCESSION, not parentage
+
+**Emma's ruling, 2026-08-24.** Two things forced it: Takanori 81 and Takatomi 80 held
+consecutive seats and were **brothers**, and the sister repo's raw wiki says *"solid lines
+indicate biological children, dotted lines indicate adopted children"*.
+`reports/izumo-chart-edges.tsv` flattened all of it to `kind=child`.
+
+- Model the chart as `P1365` *replaces* / `P1366` *replaced by* alongside `P39` *position
+  held*, which 17% of the items already carry.
+- **Parentage comes only from Geni**, where it is actually recorded against a profile ID.
+- This dissolves the 14 tree-vs-chart disagreements rather than adjudicating them: 11 were
+  "tree father is off the roster" naming other houses — Kitajima, Higashi, Inaoka,
+  Takahama, Akatsuka — which is what succession into a priestly house looks like.
+
+## ⛔ Audit of Geni merges — her method, 2026-08-24
+
+*"Find profiles that look similar like shared parents, plus look over basically all
+Japanese items with higher scrutiny, and then use the browser extension to see if they
+merge. Izumo ones are good to explore to see how redirects potentially work."*
+
+Three steps, in her order:
+
+- **Shared-parent candidates, offline.** Within the corpus, Geni IDs sharing a name, dates
+  and parents. No Geni requests. Candidates only — **the merges are hers, never performed
+  here.**
+- **Japanese items get higher scrutiny** — a separate, stricter pass over that population.
+- **Then the browser extension** on the candidates, to see whether Geni merges them.
+  **Izumo first**, because it is where redirect behaviour can be learnt cheaply.
+
 ## The daily Garborg batch — one QuickStatements run per day
 
 `scripts/build-garborg-day.py` → `reports/wikidata-garborg-day.qs`.
