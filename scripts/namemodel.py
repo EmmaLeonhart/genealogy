@@ -85,6 +85,14 @@ def classify(label: str) -> list[tuple[str, str, int]]:
     if not tokens:
         return []
 
+    # A single token is a GIVEN name, not a family name. `Amaterasu`, `Ninigi`,
+    # `NN` -- a mononym is a forename, and calling it a surname would put a personal
+    # name in `P734` and leave the person with no `P735` at all. A family name needs
+    # something in front of it to be the family name OF.
+    if len(tokens) == 1:
+        return [(tokens[0], "patronymic" if PATRONYMIC.match(tokens[0]) else "given",
+                 0 if PATRONYMIC.match(tokens[0]) else 1)]
+
     out: list[tuple[str, str, int]] = []
     last = tokens[-1]
     family = last if not PATRONYMIC.match(last) else None

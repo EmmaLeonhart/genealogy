@@ -11822,3 +11822,28 @@ work was right; running it four-wide was not. From here: one heavy job at a time
 at all when she says the fan is up.
 
 No shutdown was needed — the jobs had finished and no Python process remained.
+
+## 2026-08-24 — tests for the name model, and the mononym bug they caught
+
+`scripts/namemodel.py` decides whether a token becomes `P735` *given name*, `P734`
+*family name* or `P5056` *patronym or matronym* on every person the Garborg programme
+creates, and it shipped with **no tests**. 18 now, pinning Emma's rules rather than the
+implementation: the patronymic is its own property and not a qualified `P735`; a middle
+name is a given name after the first that is *not* patronymic, so the order of the tests
+matters; the last token is the family name **unless it is itself patronymic**, because
+`Jon Samuelsen` had no surname and inventing one is inventing data; the lookup key is
+`(token, usage)` because `Eivindsen` as a given name and as a patronymic are different
+items; and an ambiguous token becomes a note, never a statement.
+
+**One test caught a real bug in the module.** `classify` took the last token as the family
+name unconditionally, so a **mononym** — `Amaterasu`, `Ninigi`, `NN` — came out as `P734`
+*family name* with **no `P735` at all**: a personal name filed as a surname. A family name
+needs something in front of it to be the family name *of*. Fixed, and a single patronymic
+token still classifies as a patronymic.
+
+It changed nothing downstream — the Garborg name-item batch is identical at 38 creations
+and 7 ambiguous — which is what makes it worth writing down: the bug was latent and would
+have surfaced the first time this touched a mononym, and this repo is full of them.
+
+No heavy jobs run: Emma's laptop is hot and the structural walk and hop 3 both want minutes
+of sustained disk on the 1.6 GB tree. They wait.
