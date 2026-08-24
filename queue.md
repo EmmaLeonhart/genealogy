@@ -82,6 +82,59 @@ post-merge-wins and would not do the job. Do not assume the two rules coincide.
 Depends on `reports/geni-stale-duplicates.tsv` (13 strong, 3 medium, 13 weak) and
 `reports/geni-merges-performed.tsv` (180 survivors from her activity feed).
 
+## ⛔ Model the item as it SHOULD be, then diff it against reality
+
+**Emma, 2026-08-24:** *"we are supposed to generate complete models of what the wikidata
+items should be and compare with the reality for the quickstatements modelling stuff."*
+
+Today's method was to emit statements and find out what was wrong when she ran them. That
+cost four corrective rounds in one afternoon — the married name as an alias instead of the
+primary label, `mul` holding the wrong form, `ja` left stale against a label she had fixed
+by hand, `P7452` *usual forename* on people with no middle name, and the married-name role
+on seven men.
+
+**Every one of those would have been visible in a diff before anything was emitted.**
+
+The shape:
+
+- **Build the complete intended item** for a person from the Geni record plus the rules —
+  labels in every language, aliases, `P31`, `P21`, `P2600`, dates, every relationship,
+  and the full name model (`P735` with `P1545`/`P7452`/`P3831`, `P5056` with `P144`,
+  `P734` with its role, `P1449`). Not a batch: a **model**.
+- **Fetch the item as it actually is**, freshly — `CLAUDE.md` § *Emma edits the tree and
+  the items BY HAND, continuously*.
+- **Diff the two**, three ways: *missing* (model has it, item does not — emit), *extra*
+  (item has it, model does not — usually her hand-work, never touch), *conflict* (both
+  have the property with different values — report, this is where a modelling error
+  shows).
+- **The batch becomes a projection of the diff**, not a thing built independently. A
+  statement is emitted because the diff says it is missing, and for no other reason.
+
+**The conflicts column is the point.** A modelling mistake shows up there as a systematic
+pattern — seven men all conflicting on the same qualifier is a rule that is wrong, not
+seven separate errors. That is the signal today's method could only produce by Emma
+running a batch and reading the result.
+
+Start with the 34 Garborg people, where the intended model is best understood, then
+Izumo.
+
+## Analysis work parked while she was editing
+
+These were deferred so the QuickStatements hand-offs came first. Nothing blocks them now.
+
+- **Run the join emitter for Tanba and Onakatomi.** `scripts/build-join-batch.py` is
+  generic and both rosters are downloaded (504 items in `out/clan-full-items.json`).
+  Neither roster carries a Geni ID, so the join has to come from the About Me links.
+- **The Izumo chart as succession**, per her ruling: `P1365` *replaces* / `P1366`
+  *replaced by* with `P39` *position held*, parentage from Geni only.
+- **`exports/post-merge/`** — her design for resolving the 27 stale duplicates without
+  discarding earlier exports. Open question first: how Geni conflicts are resolved in the
+  synoptic tree today, since *later sources win* is merge-order-by-filename and **not**
+  post-merge-wins.
+- **The 20 label mismatches** in `reports/qid-identity-audit.tsv` — mostly benign
+  transliteration variance, a few (`Kushichitoriuminomikoto` against
+  `Kushimikatomi-no-mikoto`) look like different names.
+
 ## The join emitter exists — `scripts/build-join-batch.py`
 
 Consumes `reports/synoptic-correspondence.tsv`, both directions jointly. Scoped by any
