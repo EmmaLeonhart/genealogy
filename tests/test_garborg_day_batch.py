@@ -365,3 +365,82 @@ def test_a_redacted_person_gets_the_marker_in_mul_and_a_description_elsewhere():
     # Nothing describes a person by an unnamed relative.
     assert not re.search(r'L(en|nb|da|sv)\t"[^"]*\b(NN|Private|unknown)\b', text), (
         "a description names nobody — it should fall through to the next relative")
+
+
+NAME_ITEMS = REPO / "reports" / "wikidata-garborg-name-items.qs"
+
+
+def name_item_tokens():
+    """The tokens the gating batch proposes to CREATE, from its comment headers."""
+    if not NAME_ITEMS.exists():
+        return {}
+    out = {}
+    for m in re.finditer(r"^# (\S+) -- (\w+),", NAME_ITEMS.read_text(encoding="utf-8"),
+                         re.M):
+        out[m.group(1)] = m.group(2)
+    return out
+
+
+def test_the_gating_batch_proposes_no_item_for_a_nickname():
+    """`P1449` *nickname* takes TEXT, so a nickname needs no item and must not get one.
+
+    This file gates every other batch — nothing can point at a name item until it has
+    run — so a wrong list costs Emma a run and leaves items nobody needs on Wikidata.
+    It was still using the label parser after the name model moved to the fields, and
+    so proposed creating *Stena*, *Mary*, *Pinkie* and *Lena*.
+    """
+    tokens = name_item_tokens()
+    if not tokens:
+        pytest.skip("no name-items batch generated")
+    bad = [t for t in ("Stena", "Mary", "Pinkie", "Lena") if t in tokens]
+    assert not bad, f"proposing a name item for a nickname: {bad}"
+
+
+def test_every_married_surname_in_the_batch_can_be_linked_or_is_being_created():
+    """The mirror of the nickname rule, and the half that loses data rather than adding.
+
+    Emma's ruling makes `_MARNM` a second `P734` *family name*, so it needs an item like
+    any other family name. The label parser never read the field, so married surnames
+    were invisible to the batch that gates everything.
+
+    **Written against the data rather than against named tokens.** The first version
+    asserted `Jacobson` and `Ronneberg` by name and failed on `Jacobson` — Stena already
+    has a QID, so she is not in the creation set at all, and the `Jacobson` in the file
+    is a different person's `SURN`, classified patronymic by the `-son` rule. Hardcoding
+    a token asserted something about a population it was not in.
+    """
+    import sys
+    sys.path.insert(0, str(REPO / "scripts"))
+    from namemodel import classify_fields, load_plan
+
+    if not NAME_ITEMS.exists():
+        pytest.skip("no name-items batch generated")
+
+    created = set(re.findall(r'^LAST	P2600	"(\d+)"',
+                             BATCH.read_text(encoding="utf-8"), re.M))
+    if not created:
+        pytest.skip("no creations in this batch")
+
+    fields = {}
+    with open(REPO / "reports" / "display-names.csv", encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            if row["geni_id"] in created and row["geni_id"] not in fields:
+                fields[row["geni_id"]] = {k: row.get(k, "")
+                                          for k in ("givn", "surn", "nick", "marnm")}
+
+    plan, proposed = load_plan(), name_item_tokens()
+    missing = []
+    for geni_id, person in fields.items():
+        for token, usage, _ordinal in classify_fields(**person):
+            if usage != "married":
+                continue
+            if plan.get((token, "family"), ("", ""))[0]:
+                continue          # Wikidata already has it
+            if proposed.get(token):
+                continue          # this batch is creating it
+            missing.append((geni_id, token))
+    assert not missing, (
+        "a married surname has no item and none is being created, so the second "
+        f"P734 family name can never be emitted: {missing[:5]}")
+
+

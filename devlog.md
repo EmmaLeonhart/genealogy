@@ -12178,3 +12178,36 @@ flags `Stine "Stena" Garborg` (four quotes, even parity) and an internal quote i
 `en:"…"`, both verified directly.
 
 Fast lane: **1,187 passed, 0 failed, 1 skipped, 5m30s.**
+
+## 2026-08-24 — the gating batch was still using the label parser
+
+`scripts/build-garborg-name-items.py` produces the file that must run **before** any other
+Garborg batch, because nothing can point at a name item until it exists. It was still
+calling `classify(label)` after the name model moved to the GEDCOM fields, and that
+mattered more here than anywhere else: a wrong list costs Emma a QuickStatements run and
+leaves items on Wikidata that nobody needs.
+
+Both directions were wrong:
+
+- **It proposed creating items for nicknames** — *Stena*, *Mary*, *Pinkie*, *Lena*. A
+  nickname is `P1449`, which takes text, so it needs no item at all.
+- **It could not see married surnames**, because it never read `_MARNM`. Those now need a
+  family-name item under Emma's ruling, and there are **41** married-surname tokens among
+  the 55 people this batch creates.
+
+Items to create **38 → 45**; tokens already linked 52 → 57. `Olga` remains the single
+unresolved token.
+
+**The first version of the new guard was wrong and the failure was useful.** It asserted
+`Jacobson` and `Ronneberg` by name; `Jacobson` failed, because Stena already has a QID and
+so is not in the creation set at all — the `Jacobson` in the file is a *different* person's
+`SURN`, classified patronymic by the `-son` rule. Hardcoding a token asserted something
+about a population it was not in. Rewritten against the data: every married surname among
+the created people must either resolve in the plan or be in the create list. **41 cases,
+so it has something to check** — verified, because a data-driven test over an empty set
+proves nothing.
+
+The queue section for this item was 41 lines of finished work; trimmed to the three things
+actually outstanding.
+
+Fast lane: **1,189 passed, 0 failed, 1 skipped, 5m36s.**

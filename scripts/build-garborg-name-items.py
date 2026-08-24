@@ -32,7 +32,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 csv.field_size_limit(1 << 30)
 sys.stdout.reconfigure(encoding="utf-8")
 
-from namemodel import PATRONYMIC_CLASS, classify, load_plan  # noqa: E402
+from namemodel import (  # noqa: E402
+    PATRONYMIC_CLASS, classify_fields, load_plan)
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -68,18 +69,32 @@ def main():
     ids = people_in_batches()
     print(f"{len(ids)} people across {len(BATCHES)} Garborg batches")
 
-    labels = {}
-    with open(ROOT / "reports" / "derived-labels.csv", encoding="utf-8") as f:
+    # **The GEDCOM name FIELDS, not the rendered label.** Emma, 2026-08-24, caught the
+    # name model re-parsing a display string; this file was still doing it after the
+    # model was fixed, which mattered more here than anywhere else. It gates every
+    # other batch, so a wrong list means she creates items nobody needs and lacks ones
+    # that are needed: nicknames stopped needing an item at all (`P1449` takes text)
+    # and married surnames started needing one.
+    fields = {}
+    with open(ROOT / "reports" / "display-names.csv", encoding="utf-8") as f:
         for row in csv.DictReader(f):
-            if row["geni_id"] in ids:
-                labels[row["geni_id"]] = row["label_en"] or row["label_mul"]
+            if row["geni_id"] in ids and row["geni_id"] not in fields:
+                fields[row["geni_id"]] = {k: row.get(k, "") for k in
+                                          ("givn", "surn", "nick", "marnm")}
 
     plan = load_plan()
     need = collections.Counter()
     ambiguous = collections.Counter()
     linked = collections.Counter()
-    for label in labels.values():
-        for token, usage, _ordinal in classify(label):
+    for person in fields.values():
+        for token, usage, _ordinal in classify_fields(**person):
+            # A nickname is monolingual text on the person's own item, so it needs no
+            # name item and must not be proposed as one.
+            if usage == "nickname":
+                continue
+            # A married surname is a family name like any other -- same item kind, same
+            # lookup -- it just reaches the person by a different field.
+            usage = "family" if usage == "married" else usage
             qid, action = plan.get((token, usage), ("", "not in the plan"))
             if qid:
                 linked[(token, usage)] += 1

@@ -68,47 +68,16 @@ the new people only to what already exists.
 
 **Outstanding on this item:**
 
-- **What an item already holds comes from `reports/garborg-live-state.tsv`**, the
-  2026-08-24 live read — it outranks the local store, which predates most of these
-  items. Rows marked `no` were not re-read and fall through rather than being treated
-  as empty.
-- **`P5056` is emittable for one token.** *Aadnesson* `Q141152710` exists; the other
-  patronyms still need items.
-- **Properties are now added to items that ALREADY exist, not just links between
-  them** — Emma answered yes to this and section 1 had never done it. `Q467497`
-  *Arne Garborg* had no `P22` *father* and no `P25` *mother* while both his parents
-  carried QIDs. Section 1 is 114 statements now, was 45.
-- **A label is only ever added in a language the item lacks.** `Len`/`Lmul` replace,
-  and Wikidata labels `Q467497` *Arne Garborg* against our derived *Aadne (Arne)
-  Eivindson Garborg*. `Q11959067` has 87 label languages and neither `ja` nor `zh`,
-  so it gets those two and nothing else.
-- **`reports/garborg-existing-gaps.tsv`** is what the 13 ledger items are missing.
-  Only **3 are readable offline** — the other 10 Emma created after the store was
-  downloaded, so what they hold is known from our own batches, not from the store.
-- **Name statements are in the daily batch as of 2026-08-24** — 51 `P735` *given name*
-  with `P1545` ordinal and `P7452` → `Q3409033` *usual forename* / `P3831` → `Q245025`
-  *middle name*, and 19 `P734` *family name*, all pointing at name items Wikidata
-  **already** has.
-- **0 `P5056` yet, and that is correct.** Every patronymic in this frontier needs an item
-  created first — `reports/wikidata-garborg-name-items.qs`, 38 items, its own run. The
-  patronyms join the daily batch the day after that runs, same single-run rule as
-  everyone else.
-- **7 ambiguous name tokens** are listed and never created — `Marie`, `Olga`, `Anton` and
-  the rest resolve to several items each. The person's sex decides; Emma picks.
-- **Three redacted people, and "living" is an inference not a fact.** The batch creates
-  three `<private> Garborg`, children of Arne Olaus, unlabelled per `CLAUDE.md` §
-  *Redacted people go in*. **Checked 2026-08-24: they carry no birth date and no death
-  date at all** — the only reason to think them living is that Geni redacts living
-  people, which is behaviour rather than evidence. Their father was born 1888 and died
-  1968.
-
-  What Emma would actually be creating is an item with **no label, no dates and three
-  statements**: `P31` human, `P21`, `P22` → `Q11959067`, plus the `P2600`. Whether that
-  is worth an item, and whether Wikidata's rules on living private individuals apply, is
-  hers. The rule that *redacted people go in* is settled; this is the narrower question
-  of these three.
-- **Arne does have grandchildren**, contrary to her guess: Arne Olaus has four children
-  (Hans Eivind plus the three redacted) and two spouses, Aagot and Dagny Nyvold.
+- **BLOCKED-ON-USER-ACTION — `reports/wikidata-garborg-name-items.qs` must run first.**
+  **45** items. Nothing can point at a name item until it exists, so this file gates the
+  `P734` *family name*, `P735` *given name* and `P5056` *patronym or matronym* statements
+  for everybody. Unblock signal: those QIDs appearing on Wikidata.
+- **`Olga` is the last unresolved name token** — no candidate items recorded, so neither
+  the bearer's sex nor the script rule can choose. NEEDS-DECISION, Emma.
+- **CJK `SURN` is unproven and out of scope here.** `CLAUDE.md` records `SURN` holding a
+  *place* while `_MARNM` held the real clan name, so reading `surn` as a surname is right
+  for Norwegian material and not established corpus-wide. Belongs to the corpus-wide name
+  work, not this batch.
 
 ## Ordering is now enforced — `genimerge.editorder`
 
