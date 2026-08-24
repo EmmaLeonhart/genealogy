@@ -472,6 +472,34 @@ def main() -> int:
               + ", ".join(sorted(removed)))
 
 
+    def kind_for(r: dict) -> str:
+        """Which edit, if any, this person gets. Extracted so the id can be named.
+
+        `requires` used to be written as `person:<q>` while the id was
+        `<kind>:<q>`, so **55,765 dependencies pointed at ids this very script
+        never emitted** -- one script disagreeing with itself, found by
+        `scripts/audit-edit-graph.py` on 2026-08-23. Deciding the kind up front
+        lets a dependency name the edit that will actually exist.
+        """
+        gid = (r.get("geni_id") or "").strip()
+        wqid = (r.get("wikidata_qid") or "").strip()
+        if wqid and gid:
+            return NOTHING if gid in qid_to_geni.get(wqid, ()) else "add_geni_id"
+        if wqid:
+            return NOTHING
+        if gid and geni_to_qid.get(gid):
+            return NOTHING
+        return "create_geni_only" if gid else "create_orderlife_only"
+
+    #: order.life qid -> the id of the edit it will get. A person whose kind is
+    #: NOTHING is absent: nothing has to happen for them, so depending on them is
+    #: not a dependency at all and the entry is dropped rather than dangled.
+    edit_id_of = {q: f"{kind_for(r)}:{q}"
+                  for q, r in persons.items() if kind_for(r) != NOTHING}
+
+    def needs(qids) -> list:
+        return [edit_id_of[p] for p in qids if p in edit_id_of]
+
     batch, summary, skipped = [], {}, []
     unresolved: list[dict] = []
     inferred: list[dict] = []
@@ -547,14 +575,16 @@ def main() -> int:
             "source": "order.life",
             "subject": {"qid": wqid or None, "geni_id": gid or None,
                         "orderlife_qid": q},
-            "requires": [f"person:{p}" for p in father.get(q, [])],
+            "requires": needs(father.get(q, [])),
             "labels": labels,
             "statements": statements,
             "links": (
-                [{"property": "P22_or_P25", "value": f"@person:{p}",
-                  "references": ref} for p in father.get(q, [])]
-                + [{"property": "P26", "value": f"@person:{s}", "references": ref}
-                   for s in spouses.get(q, [])]
+                [{"property": "P22_or_P25", "value": f"@{edit_id_of[p]}",
+                  "references": ref}
+                 for p in father.get(q, []) if p in edit_id_of]
+                + [{"property": "P26", "value": f"@{edit_id_of[sp]}",
+                    "references": ref}
+                   for sp in spouses.get(q, []) if sp in edit_id_of]
             ),
             "geni_id_in_our_corpus": bool(gid and gid in ours),
         })

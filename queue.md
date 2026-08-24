@@ -43,29 +43,25 @@ and no two batches creating the same person.
 
 ## The edit batches declare an ordering nothing enforces
 
-`reports/edit-graph.md`, measured 2026-08-23 by `scripts/audit-edit-graph.py`.
+`reports/edit-graph.md`, `scripts/audit-edit-graph.py`.
 
 **284,125 edit objects carry a `requires` list, and no executor reads it.**
 `scripts/wikidata-edit-run.py` does not mention the field. `CLAUDE.md` leans on that
 ordering in the place it matters most — the `NN` fix is two edits per item, the `mul`
 one declared as a dependency of the `en` one, *"so the marker is written before the slot
 holding it is reused"*. On the **1,271** items whose only `NN` lives in `en`, running the
-`en` batch first erases the marker. Declared, not enforced.
+`en` batch first erases the marker.
 
 - **Decide how ordering is enforced** — a resolver in the runner, or emitting batches in
-  dependency order, or splitting them into numbered passes. This is a design call.
-- **55,776 dependencies name an id no batch emits.**
-  `build-orderlife-batch.py` writes `requires: person:<q>` while emitting ids as
-  `create_individual:<q>` / `add_geni_id:<q>` — one script disagreeing with itself,
-  55,765 times. The other 11: `samaritan-succession` and `abram-father` require
-  `entity_resolution:<q>` for QIDs that file does not contain.
+  dependency order, or splitting them into numbered passes. A design call, and the only
+  part of this still open.
 - **33 duplicate ids.** `add_geni_id:Q694696` collides because the id is keyed on the QID
   alone and that QID has two Geni profiles — the multi-valued `P2600` case, so both
   edits are right and the *naming* is wrong. The other 32 are repeated
-  `add_relationship` and `structural_correspondence` rows.
+  `add_relationship` and `structural_correspondence` rows. Strict `xfail` in
+  `tests/test_edit_graph.py`.
 
-Both are strict `xfail` in `tests/test_edit_graph.py`, so fixing either turns the suite red
-until the marker comes off.
+**The graph itself now resolves: 0 dangling dependencies, 0 cycles** (was 55,776 dangling).
 
 ## Izumo / Senge clan — measured 2026-08-23, `reports/izumo.md`
 

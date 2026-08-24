@@ -11,11 +11,13 @@ mention it; 284,125 edit objects declare an ordering that no executor enforces. 
 is recorded in `queue.md` as work, not fixed here — a resolver is a design decision
 about how the batches run, not a test.
 
-What these tests do is make sure the graph would be *usable* by such a resolver, and
-two of them fail today. Both are marked strict `xfail`: the defect is real, the
-number is measured, and when someone fixes it the suite goes red asking for the
-marker to come off. `reports/edit-graph.md` is the full accounting,
-`scripts/audit-edit-graph.py` regenerates it.
+What these tests do is make sure the graph would be *usable* by such a resolver.
+Two of them failed when this file was written; **the dangling-dependency one is now
+fixed and its marker is off** — 55,776 became 0 once three scripts stopped naming ids
+nothing emits. The duplicate-id one is still strict `xfail`: the defect is real, the
+number is measured, and fixing it turns the suite red asking for the marker to come
+off. `reports/edit-graph.md` is the full accounting, `scripts/audit-edit-graph.py`
+regenerates it.
 """
 from __future__ import annotations
 
@@ -143,14 +145,19 @@ def test_no_two_edits_claim_the_same_id(edits):
     assert not dupes, f"{len(dupes)} duplicate ids, e.g. {dupes[:5]}"
 
 
-@pytest.mark.xfail(strict=True, reason=(
-    "55,776 dependencies name an id no batch emits, measured 2026-08-23. "
-    "build-orderlife-batch.py writes `requires: person:<q>` while emitting ids as "
-    "`create_individual:<q>` / `add_geni_id:<q>` -- one script disagreeing with "
-    "itself, 55,765 times. The other 11 are samaritan-succession and abram-father "
-    "requiring `entity_resolution:<q>` for QIDs that file does not contain. "
-    "See reports/edit-graph.md."))
 def test_no_edit_requires_an_id_nothing_emits(edits):
+    """Was strict `xfail` at 55,776 for about an hour on 2026-08-23; now zero.
+
+    Three scripts named dependencies nothing emitted.
+    `build-orderlife-batch.py` wrote `requires: person:<q>` while emitting its ids
+    as `<kind>:<q>` -- one script disagreeing with itself 55,765 times; it now
+    decides each person's kind up front and names the edit that will exist, and
+    drops the entry entirely for a person who needs no edit, because depending on
+    nothing is not a dependency. `build-samaritan-succession.py` and
+    `build-abram-father-fix.py` required `entity_resolution:<q>` for nine QIDs that
+    file covers **none** of -- the Geni ID for those priests is added by
+    `samaritan_priest_link:<q>`.
+    """
     known = ids_of(edits)
     dangling = [(n, e.get("id"), r) for n, e in edits
                 for r in (e.get("requires") or []) if r not in known]

@@ -246,7 +246,12 @@ def main() -> int:
             # broken-reference case `tests/test_edit_emitters.py` pins. The
             # dependency is declared rather than the reference dropped: the
             # provenance is real, it just has to land second.
-            "requires": ([f"entity_resolution:{q}"]
+            # The id is `samaritan_priest_link:<q>`, which is what
+            # `build-samaritan-priest-links.py` emits. It used to say
+            # `entity_resolution:<q>`, an id that exists for other people but for
+            # **none of these nine** -- so the dependency was unsatisfiable, and
+            # `scripts/audit-edit-graph.py` found it dangling on 2026-08-23.
+            "requires": ([f"samaritan_priest_link:{q}"]
                          if geni.get(q) and q not in has_p2600 else []),
             "add": [{
                 "property": POSITION_HELD,

@@ -11609,3 +11609,37 @@ point**. The rule now covers non-creations only, and the docstring lists all thr
 exceptions so the next person does not re-derive them.
 
 **Fast lane: 1,104 passed, 2 xfailed, 0 failed**, 5m49s.
+
+## 2026-08-23 — 55,776 dangling dependencies to zero; three scripts named ids nothing emits
+
+The audit an hour earlier found 55,776 `requires` entries pointing at ids no batch produces.
+All three causes were one script disagreeing with itself, and all three are fixed. The
+graph now resolves completely: **0 dangling, 0 cycles.**
+
+**`build-orderlife-batch.py` — 55,765 of them.** It wrote `requires: person:<q>` while
+emitting its own ids as `<kind>:<q>`, where kind is `add_geni_id`, `create_geni_only` or
+`create_orderlife_only`. The fix decides each person's kind in a first pass (`kind_for`,
+extracted from the loop) and builds `edit_id_of`, so a dependency names the edit that will
+actually exist. **A person whose kind is `NOTHING` is left out of the map deliberately** —
+they already exist on Wikidata, nothing has to happen for them, and depending on nothing is
+not a dependency. The same map now backs the `@<id>` forward references in `links`, which
+had the identical `@person:` bug.
+
+**`build-samaritan-succession.py` (9) and `build-abram-father-fix.py` (2).** Both required
+`entity_resolution:<q>`. That id exists for other people and for **none of these nine** —
+checked before changing anything: 9 of 9 are covered by `samaritan_priest_link:<q>`, 0 by
+`entity_resolution:<q>`. The Geni ID for those priests is added by the priest-links batch,
+so that is what the dependency names now. `build-abram-father-fix.py` had **two**
+occurrences and the first patch caught only one, which the re-audit showed as 1 remaining
+rather than 0.
+
+**The strict `xfail` came off `test_no_edit_requires_an_id_nothing_emits`**, which is the
+mechanism working as designed: the marker made the fix visible and then demanded its own
+removal. Its docstring now records what the three bugs were, so the next person does not
+rediscover them.
+
+**Still open, and it is the part that matters:** nothing reads `requires`. A resolvable
+graph is necessary and not sufficient — the ordering is still declared and unenforced, and
+that stays in `queue.md` as a design decision.
+
+**Fast lane: 1,105 passed, 1 xfailed, 0 failed**, 5m42s.

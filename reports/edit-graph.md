@@ -30,16 +30,6 @@ Two edits claiming one name. A `requires` pointing at it is ambiguous, and a run
 | `structural_correspondence:Q3120397` | 1 | `wikidata-structural-correspondence.json` |
 | … | | 13 more |
 
-## Dependencies nothing emits
-
-A `requires` naming an id no batch produces. Nothing in this repo can ever satisfy it.
-
-| batch | missing prefix | count | example |
-| --- | --- | ---: | --- |
-| `wikidata-orderlife.json` | `person:` | 55765 | `person:Q100068` |
-| `wikidata-samaritan-succession.json` | `entity_resolution:` | 9 | `entity_resolution:Q107534535` |
-| `wikidata-abram-father.json` | `entity_resolution:` | 2 | `entity_resolution:Q137394557` |
-
 ## Cycles
 
 None among the edges that resolve.

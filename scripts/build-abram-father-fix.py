@@ -67,8 +67,10 @@ def main() -> int:
             "source": "corrected Geni tree; Pummer succession 113-114-115",
             "subject": {"qid": ABRAM_QID, "geni_id": ABRAM_GENI},
             # Yitzhaq I must carry his Geni ID before a Geni-derived statement
-            # points at him.
-            "requires": [f"entity_resolution:{YITZHAQ_QID}"],
+            # points at him. The edit that adds it is
+            # `samaritan_priest_link:<qid>`; `entity_resolution:<qid>` was the wrong
+            # prefix and named an id nothing emits for him.
+            "requires": [f"samaritan_priest_link:{YITZHAQ_QID}"],
             "statements": [{
                 "property": FATHER,
                 "value": YITZHAQ_QID,
@@ -89,7 +91,9 @@ def main() -> int:
             "type": "add_statement",
             "source": "corrected Geni tree; Pummer succession 113-114-115",
             "subject": {"qid": YITZHAQ_QID, "geni_id": YITZHAQ_GENI},
-            "requires": [f"entity_resolution:{YITZHAQ_QID}"],
+            # Same correction as above: the Geni ID for Yitzhaq I is added by
+            # `samaritan_priest_link:<qid>`, not by an entity-resolution edit.
+            "requires": [f"samaritan_priest_link:{YITZHAQ_QID}"],
             "statements": [{
                 "property": CHILD,
                 "value": ABRAM_QID,
