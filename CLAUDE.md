@@ -218,6 +218,34 @@ paragraph: an export that reaches somewhere nothing else does will split it
 again, and that is normal rather than wrong. Disjoint components do not
 conflict — they just never meet.
 
+### The question is whether OUR TREE MATCHES GENI — never whether Geni is right
+
+**Emma, 2026-08-24, correcting the whole framing of the duplicate work:** *"I think that
+you are doing some thinking that you shouldn't be doing about whether the merges should
+have been done rather than whether the tree is in a good state... even if the merge isn't
+fixed on Geni, I still want it there. I still want the wrong information from Geni there
+because it is possible to correct it now."*
+
+**Geni is the source. Our corpus is a stale photograph of it.** The only question a
+duplicate, a conflict or an odd relationship raises is: *does our snapshot still match
+what Geni says today?* If Geni holds one profile, we should hold one. If Geni holds two,
+we should hold two — **even when two is wrong**, because a wrong fact that is present can
+be corrected on Geni and flow through, and one we filtered out cannot.
+
+**What this forbids.** Adjudicating whether a merge was justified. Grading a pair as "not
+really a duplicate" and therefore skipping it. Deciding an export has "thin expected
+value" because the pair looks like two different people. All three were done on
+2026-08-24 and all three are the same mistake: answering *is Geni right* when the question
+is *are we current*.
+
+**What the evidence grading in `reports/geni-stale-duplicates.tsv` is actually for:**
+ranking which snapshots are most stale, so the most valuable refresh runs first. It is not
+a filter on which people deserve fixing.
+
+**So a post-merge export is worth running even when the pair turns out not to be a
+duplicate at all** — it refreshes our record of those people to Geni's current state, which
+is the whole job.
+
 ### A small component is IGNORED. Do not report it, do not analyse it
 
 **Emma, 2026-08-17:** *"if there's a cluster of 344 people you fucking ignore it and add
