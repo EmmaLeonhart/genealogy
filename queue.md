@@ -87,6 +87,17 @@ the new people only to what already exists.
 
 **Outstanding on this item:**
 
+- **Properties are now added to items that ALREADY exist, not just links between
+  them** — Emma answered yes to this and section 1 had never done it. `Q467497`
+  *Arne Garborg* had no `P22` *father* and no `P25` *mother* while both his parents
+  carried QIDs. Section 1 is 114 statements now, was 45.
+- **A label is only ever added in a language the item lacks.** `Len`/`Lmul` replace,
+  and Wikidata labels `Q467497` *Arne Garborg* against our derived *Aadne (Arne)
+  Eivindson Garborg*. `Q11959067` has 87 label languages and neither `ja` nor `zh`,
+  so it gets those two and nothing else.
+- **`reports/garborg-existing-gaps.tsv`** is what the 13 ledger items are missing.
+  Only **3 are readable offline** — the other 10 Emma created after the store was
+  downloaded, so what they hold is known from our own batches, not from the store.
 - **Name statements are in the daily batch as of 2026-08-24** — 51 `P735` *given name*
   with `P1545` ordinal and `P7452` → `Q3409033` *usual forename* / `P3831` → `Q245025`
   *middle name*, and 19 `P734` *family name*, all pointing at name items Wikidata

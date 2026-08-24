@@ -11895,3 +11895,44 @@ only tracks Garborg *people*. Fixed by widening the known set to the name items
 `reports/name-item-plan.csv` attests exist, and **deliberately not** to the ones it says to
 create: those must not be pointed at until their batch runs. The rule did not loosen; the
 set of things known to exist got more accurate.
+
+## 2026-08-24 — the batch now fills existing items, and a guard test that never fired
+
+**Emma asked for properties on items that already exist and section 1 had never done
+it.** It closed *links* — `P40`, `P3373`, `P26` — and never asked whether an existing
+item was missing a date, a name statement, a label or **a parent**. `Q467497` *Arne
+Garborg* had no `P22` *father* and no `P25` *mother* on Wikidata while both his parents
+already carried QIDs. Section 1 went 45 statements → **114**.
+
+**Two rules came out of measuring first rather than emitting first**, and the measuring
+is `scripts/garborg-existing-gaps.py` → `reports/garborg-existing-gaps.tsv`:
+
+- **A label only in a language the item does not have.** `Len`/`Lmul` *replace*.
+  Wikidata labels `Q467497` *Arne Garborg*; our derived label is *Aadne (Arne) Eivindson
+  Garborg*, a Geni display string. Emitting ours would overwrite a curated label across
+  every language that falls back to it — the opposite of `CLAUDE.md` § *The purpose is to
+  ADD*. `Q11959067` has **87** label languages and neither `ja` nor `zh`, so it gets
+  exactly those two.
+- **No name statements onto an item that already states one.** `Q467497` carries `P735`
+  *Arne*; our classifier reads the parenthesised `(Arne)` as a **middle name**, so
+  emitting would contradict a curated statement rather than add to it.
+
+**Only 3 of the 13 ledger items are readable offline.** The store was downloaded before
+Emma made the other ten, so their contents are known from our own batches instead. The
+report says which of the two per person rather than reporting an unknown as an empty item.
+
+**A redaction marker was being sent to the name model.** The three `<private> Garborg`
+produced "name item missing: `<private>` (given)" rows that read as outstanding work.
+`<private>` is Geni withholding a name — there is nothing underneath it, exactly as with
+the label. Carry-forward went 77 → 74.
+
+**`test_the_offline_guard_actually_fires` has been failing since `a984ee69` and I had not
+noticed.** `require_agent` was added to `wikidata.py` after that test was written and
+raises *before* the request is built, so on any checkout without `BOT_CONTACT` the test
+failed with a missing-secret `RuntimeError` instead of demonstrating the network seam —
+and this file's other tests rest on that demonstration. Patched `USER_AGENT` so it
+reaches the seam it names.
+
+That also corrects something I reported: the **1,172 passed, 0 failed** figure was
+measured with `BOT_CONTACT` set. Without the secret the lane was never green. It is now
+green either way — **1,175 passed, 0 failed, 3m44s**.

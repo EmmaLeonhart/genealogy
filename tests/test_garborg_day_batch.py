@@ -151,3 +151,50 @@ def test_the_ledger_and_the_batch_do_not_both_claim_a_person():
                              re.M))
     both = sorted(have & created)
     assert not both, f"already on Wikidata and being created again: {both[:5]}"
+
+
+def test_a_label_is_never_written_over_an_item_that_already_has_one():
+    """`Len`/`Lmul` REPLACE. On an existing item that is a downgrade, not an addition.
+
+    `Q467497` is labelled *Arne Garborg* on Wikidata and our derived label reads
+    *Aadne (Arne) Eivindson Garborg* — a Geni display string. Emitting ours would
+    overwrite a curated label across every language that falls back to it.
+    `CLAUDE.md`: the purpose is to ADD to Wikidata, not to correct it.
+
+    A label in a language the item does **not** have is a different thing and is
+    allowed — that is how `Q11959067` gets its `ja` and `zh`.
+    """
+    bad = [ln for ln in lines() if re.match(r"^Q[1-9][0-9]*\tL(en|mul)\t", ln)]
+    assert not bad, f"overwriting the label of an existing item: {bad[:3]}"
+
+
+def test_a_redacted_person_gets_no_name_statements_either():
+    """`<private>` is Geni withholding a name, so there is no name to model.
+
+    The same rule as the label, and it was got wrong first time round: the batch asked
+    the name plan for a `<private>` given-name item and logged three "name item
+    missing" rows, which read as work outstanding when the truth is that there is
+    nothing underneath the marker.
+    """
+    carried = REPO / "reports" / "garborg-carry-forward.tsv"
+    if not carried.exists():
+        pytest.skip("no carry-forward file")
+    with open(carried, encoding="utf-8") as f:
+        rows = list(csv.DictReader(f, delimiter="\t"))
+    bad = [r for r in rows if "<private>" in r["label"] and "name item" in r["why"]]
+    assert not bad, (
+        f"a redaction marker was sent to the name model: {[r['why'] for r in bad][:3]}")
+
+
+def test_an_existing_item_gets_its_parent_links_when_the_parents_have_qids():
+    """The omission this section was rewritten for, kept as a regression.
+
+    `Q467497` *Arne Garborg* had no `P22` *father* and no `P25` *mother* on Wikidata
+    while both his parents already carried QIDs — because section 1 emitted `P40`,
+    `P3373` and `P26` and simply never emitted the parent direction. That is a large
+    part of what Emma meant by *"not remotely comprehensive"*.
+    """
+    text = BATCH.read_text(encoding="utf-8")
+    for prop, parent in (("P22", "Q141152512"), ("P25", "Q141152523")):
+        assert f"Q467497\t{prop}\t{parent}" in text, (
+            f"Arne Garborg is missing his {prop} link to {parent}, which exists")

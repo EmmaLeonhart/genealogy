@@ -361,12 +361,21 @@ def test_name_links_leaves_a_name_with_no_item_alone(ws, tmp_path):
 # -- the seam itself ---------------------------------------------------
 
 
-def test_the_offline_guard_actually_fires(ws):
+def test_the_offline_guard_actually_fires(ws, monkeypatch):
     """Prove the guard is live, so the rest of this file means something.
 
     A client built the ordinary way — the way a command that ignored the seam
     would build one — must hit the patched network and fail.
+
+    **`USER_AGENT` is patched so the test can get far enough to prove that.**
+    `require_agent` was added to `wikidata.py` in `a984ee69`, after this test was
+    written, and it raises before the request is ever built — so on any checkout
+    without `BOT_CONTACT` the test failed with a `RuntimeError` about a missing
+    secret instead of demonstrating the seam. Two different guards, and the one
+    under test here is the *network* one; letting the agent check mask it means
+    this file's other tests rest on something never actually shown.
     """
+    monkeypatch.setattr(wikidata, "USER_AGENT", "test@example.invalid")
     default_client = wikidata.WikidataClient(cache_dir=ws["out"] / "c", delay=0)
 
     with pytest.raises(AssertionError, match="hit the network"):

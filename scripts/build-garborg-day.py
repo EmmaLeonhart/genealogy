@@ -45,6 +45,19 @@ sys.stdout.reconfigure(encoding="utf-8")
 
 from namemodel import classify, load_plan, statements_for  # noqa: E402
 
+
+def _load_gaps():
+    """`garborg-existing-gaps.py` has a hyphen, so `import` cannot reach it."""
+    import importlib.util
+    path = Path(__file__).resolve().parent / "garborg-existing-gaps.py"
+    spec = importlib.util.spec_from_file_location("garborg_existing_gaps", path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module.existing_state
+
+
+existing_state = _load_gaps()
+
 ROOT = Path(__file__).resolve().parent.parent
 SEX = {"M": "Q6581097", "F": "Q6581072"}
 HUMAN = "Q5"
@@ -190,27 +203,74 @@ def main():
     def ref(g):
         return f'\tS2600\t"{g}"'
 
-    # ---- 1. links between people who ALL already have QIDs ------------------
+    # ---- 1. everything missing from people who ALREADY have QIDs ------------
+    # Emma, 2026-08-24, asked whether to add properties to items that already exist:
+    # yes. This section used to close *links* only, so an item that existed was never
+    # asked whether it was missing a date, a name statement or a label -- which is a
+    # large part of what "not remotely comprehensive" meant. `Q467497` Arne Garborg
+    # had no `P22` father and no `P25` mother while both his parents had QIDs.
+    state = existing_state(set(have.values()))
     lines += [
-        "# 1. Links that only became possible once yesterday's items existed.",
+        "# 1. Everything missing from people who already have items -- the links that",
+        "#    yesterday's creations made possible, and the properties never emitted.",
         "#    Every subject and every value already has a QID.",
         "",
     ]
     seen = set()
+
+    def add(q, prop, value, g):
+        if (q, prop, value) in seen:
+            return
+        seen.add((q, prop, value))
+        lines.append(f"{q}\t{prop}\t{value}{ref(g)}")
+
+    def absent(q, prop):
+        """True when the item demonstrably lacks `prop`, or our own batch made it.
+
+        The store answers exactly for an item it holds. For one it does not hold --
+        Emma's creations from the last two days -- what the item carries is what our
+        `CREATE` block carried, and name statements were only added on 2026-08-24, so
+        those are genuinely absent. Either way QuickStatements merges an identical
+        statement rather than duplicating it, so a redundant line is a no-op.
+        """
+        known = state.get(q)
+        return prop not in known[1] if known else True
+
     for g, q in sorted(have.items()):
+        for prop, target in (("P22", father.get(g)), ("P25", mother.get(g))):
+            if target and target in have and absent(q, prop):
+                add(q, prop, have[target], g)
         for kid in sorted(children.get(g, ())):
-            if kid in have and (q, "P40", have[kid]) not in seen:
-                seen.add((q, "P40", have[kid]))
-                lines.append(f"{q}\tP40\t{have[kid]}{ref(g)}")
+            if kid in have:
+                add(q, "P40", have[kid], g)
         for sib in sorted(siblings.get(g, ())):
-            if sib in have and (q, "P3373", have[sib]) not in seen:
-                seen.add((q, "P3373", have[sib]))
-                lines.append(f"{q}\tP3373\t{have[sib]}{ref(g)}")
+            if sib in have:
+                add(q, "P3373", have[sib], g)
         for sp in sorted(spouses.get(g, ())):
-            if sp in have and (q, "P26", have[sp]) not in seen:
-                seen.add((q, "P26", have[sp]))
-                lines.append(f"{q}\tP26\t{have[sp]}{ref(g)}")
-    print(f"{len(seen)} links between existing items")
+            if sp in have:
+                add(q, "P26", have[sp], g)
+
+        # Name statements, but never onto an item that already states one: `Q467497`
+        # carries `P735` Arne, and our label reads the parenthesised `(Arne)` as a
+        # middle name -- emitting it would contradict a curated statement rather than
+        # add to it. `CLAUDE.md`: the purpose is to ADD, not to correct.
+        if absent(q, "P735") and absent(q, "P734"):
+            dad = father.get(g)
+            for line in name_lines(labels.get(g, ""), plan, g,
+                                   have.get(dad) if dad else None)[0]:
+                lines.append(line.replace("LAST\t", f"{q}\t", 1))
+
+        # A label ONLY in a language the item does not have. `Len`/`Lmul` REPLACE,
+        # and `Q467497` is labelled `Arne Garborg` on Wikidata against our derived
+        # `Aadne (Arne) Eivindson Garborg` -- emitting ours would overwrite a better
+        # label with a Geni display string.
+        langs = state.get(q, (set(), set()))[0]
+        ja, zh = label_in(labels.get(g, ""), table)
+        if ja:
+            for code, value in (("ja", ja), ("zh", zh)):
+                if code not in langs:
+                    lines.append(f'{q}\tL{code}\t"{value}"')
+    print(f"{len(seen)} statements added to existing items")
     lines.append("")
 
     # ---- 2. the next ring ---------------------------------------------------
@@ -269,12 +329,20 @@ def main():
         # properly, which he didn't do."* Only tokens whose item ALREADY exists --
         # the ones still to be made are in reports/wikidata-garborg-name-items.qs and
         # join the batch the day after that runs, same single-run rule as everyone.
-        dad = father.get(g)
-        name_statements, unresolved = name_lines(
-            labels[g], plan, g, have.get(dad) if dad else None)
-        lines.extend(name_statements)
-        for note in unresolved:
-            carried.append((g, label, f"name item missing: {note}"))
+        # A redacted profile gets no name statements for the same reason it gets no
+        # label: `<private>` is Geni withholding the name, not a name. Asking the plan
+        # for a `<private>` given-name item produced three "name item missing" rows
+        # that read as work to do, when the right answer is that there is nothing
+        # underneath. The *surname* survives redaction and is real data -- but these
+        # three are `<private> Garborg`, and `Garborg` is their father's family name,
+        # which `P22` already says.
+        if not redacted:
+            dad = father.get(g)
+            name_statements, unresolved = name_lines(
+                labels[g], plan, g, have.get(dad) if dad else None)
+            lines.extend(name_statements)
+            for note in unresolved:
+                carried.append((g, label, f"name item missing: {note}"))
 
         lines.append("")
         created += 1
