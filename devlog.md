@@ -12700,3 +12700,47 @@ differ*, and those turn out to be different people who happen to share a name.
 Elias Kemsley, Sadakiyo En'ya, Yorimoto Tanba — are all weak, and Yorimoto is already a
 known false positive (four men across generations sharing a name). Recorded rather than
 silently stopping: continuing is Emma's call, and the measurement is here to make it.
+
+## 2026-08-24 — exports 4 and 5, and the framing corrected
+
+Emma corrected the whole basis of this work: *"you are doing some thinking that you
+shouldn't be doing about whether the merges should have been done rather than whether the
+tree is in a good state"* and *"even if the merge isn't fixed on Geni, I still want it
+there."*
+
+`CLAUDE.md` § *The question is whether OUR TREE MATCHES GENI* now records it. The short
+version: Geni is the source, our corpus is a stale photograph, and the only question is
+whether the photograph is current. Not whether Geni is right.
+
+**What I had been getting wrong.** I graded pairs strong/weak and then used the grade to
+decide whether a merge was *justified*, concluding "not a duplicate, nothing to do" and
+arguing the remaining exports had thin value. Wrong question throughout.
+
+### And "both ids live on Geni" was my sloppy phrase for a flaw in my own method
+
+Emma: *"I do not understand what 'both IDs turned out to be live on Jenny' even means. I
+don't understand that it's undone by somebody."*
+
+It means only that the fresh export contains two separate `INDI` records with those ids.
+**It does not mean a merge was undone**, and implying that was wrong.
+
+The real cause: **her activity feed gives only the SURVIVING profile id, never the absorbed
+one.** So the pair was never known. I guessed the partner by finding another profile with
+the same name and a same-named parent — and in the Samaritan lines, where numbered names
+recur as father and son (*Amram V*, *Aaron III*), that pairs people who were never the pair
+she merged. Her merges worked; my detector was looking at a different pair.
+
+### Exports 4 and 5
+
+- **`export-Forest-6000000227413852831.ged`** — `NN Kemsley`, a **Tier 4** seed (no parents,
+  has a surname → father as `NN` + the child's birth surname), created on Joan Kemsley
+  because Elias Kemsley was added by Brendan Dalton Rich in 2019. **5,000 individuals,
+  1,752 families.**
+- **Export 5 running** — `NN`, mother of Sadakiyo En'ya, a Tier 3 seed; Sadakiyo was added
+  by user "Japanese" in 2013.
+
+**A silent failure worth recording.** The first attempt at `NN Kemsley` set the form fields
+through JavaScript. Geni's form handler never saw the values, the save did nothing, and the
+tree still showed *Add father* — no error anywhere. Real keystrokes worked. Setting an
+input's `value` from script is not typing into it, and only checking the tree afterwards
+caught it.
