@@ -12542,3 +12542,37 @@ carried the role at the moment of checking. `CLAUDE.md` § *Emma edits the tree 
 items BY HAND, continuously* is the rule that earns.
 
 Fast lane: **1,238 passed, 0 failed, 2 skipped.**
+
+## 2026-08-24 — `exports/post-merge/` would have lost to `tanba/`
+
+Emma raised the open question herself when she designed the directory: *"idk how we
+resolved geni conflicts in the synoptic tree earlier either"*. Established, and the answer
+is a trap.
+
+**How conflicts resolve today.** `merge._merge_into` gives a single-valued conflict to the
+**later** source — `CLAUDE.md` § *Later sources win value conflicts*. "Later" means later
+in `sources.find_exports`, which returned `sorted(root.rglob("*.ged"))`: **path sort
+order**.
+
+**So the directory name decides who wins.** `post-merge` sorts at position **17 of the 22**
+directories under `exports/` — after `originals`, before `samaritans`. Which means a
+post-merge export would have lost every value conflict against `samaritans/`,
+`sparse_filling/`, `stragglers/`, `tanba/` and the three `wife of …` directories.
+
+**Including `tanba/` — the clan carrying the most stale duplicates, and the exact case the
+directory exists to fix.** Naming it `post-merge` would have failed silently precisely
+where it was needed, and the failure would have looked like the merge simply not working.
+
+`sources._post_merge_last` orders it explicitly rather than renaming it `zz-post-merge`,
+so the name stays meaningful and the rule sits where a reader will find it. Everything
+outside `post-merge/` keeps the stable path order the merge report and the density counts
+have always assumed.
+
+**Shown, not assumed:**
+
+    WITH the fix:                ['aaa-first', 'samaritans', 'tanba', 'post-merge']
+    WITHOUT it (raw path sort):  ['aaa-first', 'post-merge', 'samaritans', 'tanba']
+
+Two tests pin it — that post-merge is last, and that nothing else moved.
+
+Fast lane: **1,240 passed, 0 failed, 2 skipped.**

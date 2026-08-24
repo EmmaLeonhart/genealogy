@@ -130,6 +130,39 @@ def _corpus_files(root: Path) -> list[Path]:
     return out
 
 
+#: Exports taken AFTER Emma merged the duplicate profiles they contain. Everything in
+#: here must be merged LAST, because `merge._merge_into` gives a single-valued conflict
+#: to the later source and "later" means later in this list.
+POST_MERGE_DIR = "post-merge"
+
+
+def _post_merge_last(paths: list[Path], root: Path) -> list[Path]:
+    """`exports/post-merge/` sorts to the END, whatever its name would do alphabetically.
+
+    **Emma's design needs this and the obvious implementation does not provide it.**
+    She asked for a directory whose records *"overwrite earlier ones from other repos in
+    the synoptic tree"*. The merge already gives a conflict to the later source — but
+    merge order is **path sort order**, and `post-merge` sorts at position 17 of 22
+    under `exports/`: *before* `samaritans`, `sparse_filling`, `stragglers` and
+    `tanba`.
+
+    So a post-merge export would have lost to `tanba/` — the clan carrying the most
+    stale duplicates, and the exact case the directory exists to fix. Naming it
+    `post-merge` would have failed silently precisely where it was needed.
+
+    Ordering it explicitly rather than renaming it `zz-post-merge` keeps the name
+    meaningful and puts the rule where a reader will find it.
+    """
+    tail, head = [], []
+    for path in paths:
+        try:
+            parts = path.relative_to(root).parts
+        except ValueError:  # pragma: no cover - root is always a parent here
+            parts = path.parts
+        (tail if POST_MERGE_DIR in parts[:-1] else head).append(path)
+    return head + tail
+
+
 def excluded_files(root: Path | None = None) -> list[Path]:
     """The exports deliberately kept out of the merge. Tracked, never read."""
     root = Path(root) if root is not None else EXPORTS_DIR
@@ -147,7 +180,7 @@ def find_exports(root: Path | None = None) -> list[Path]:
     if not root.exists():
         return []
     kept, _ = _distinct(_corpus_files(root))
-    return kept
+    return _post_merge_last(kept, root)
 
 
 def duplicate_groups(root: Path | None = None) -> dict[str, list[Path]]:

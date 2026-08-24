@@ -176,10 +176,13 @@ These were deferred so the QuickStatements hand-offs came first. Nothing blocks 
   Neither roster carries a Geni ID, so the join has to come from the About Me links.
 - **The Izumo chart as succession**, per her ruling: `P1365` *replaces* / `P1366`
   *replaced by* with `P39` *position held*, parentage from Geni only.
-- **`exports/post-merge/`** — her design for resolving the 27 stale duplicates without
-  discarding earlier exports. Open question first: how Geni conflicts are resolved in the
-  synoptic tree today, since *later sources win* is merge-order-by-filename and **not**
-  post-merge-wins.
+- **`exports/post-merge/` — the ordering question is SETTLED and the override is built.**
+  `merge._merge_into` gives a single-valued conflict to the **later** source, and
+  `sources.find_exports` now puts anything under `post-merge/` last, explicitly. It had
+  to: path sort put `post-merge` at position 17 of 22, *before* `samaritans`,
+  `sparse_filling`, `stragglers` and `tanba` — so it would have lost to `tanba/`, the
+  clan with the most stale duplicates. What remains is running the exports themselves,
+  which is hers.
 - **The 20 label mismatches** in `reports/qid-identity-audit.tsv` — mostly benign
   transliteration variance, a few (`Kushichitoriuminomikoto` against
   `Kushimikatomi-no-mikoto`) look like different names.

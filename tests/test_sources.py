@@ -118,3 +118,47 @@ def test_the_real_corpus_has_no_byte_identical_duplicates():
     assert not groups, "byte-identical exports: " + "; ".join(
         ", ".join(str(p) for p in v) for v in groups.values()
     )
+
+
+def test_post_merge_exports_are_merged_last(tmp_path):
+    """`exports/post-merge/` must win a value conflict, and its NAME does not do that.
+
+    Emma's design, 2026-08-24: exports taken after she merged the duplicate profiles
+    they contain, whose records *"overwrite earlier ones from other repos in the
+    synoptic tree"*.
+
+    `merge._merge_into` already gives a single-valued conflict to the **later** source,
+    and "later" means later in `find_exports`. But that was path-sort order, and
+    `post-merge` sorts at position 17 of the 22 directories under `exports/` — before
+    `samaritans`, `sparse_filling`, `stragglers` and `tanba`. A post-merge export would
+    have lost to `tanba/`, the clan with the most stale duplicates and the very case the
+    directory exists for.
+
+    So this is a regression guard against the failure being silent: the ordering is
+    explicit, not alphabetical luck.
+    """
+    for name in ("tanba", "post-merge", "samaritans", "aaa-first"):
+        d = tmp_path / name
+        d.mkdir()
+        # Distinct sizes so `_distinct` keeps them all rather than de-duplicating.
+        (d / f"export-{name}.ged").write_text(
+            "0 HEAD\n" + f"0 @I{name}@ INDI\n" * (len(name) + 1), encoding="utf-8")
+
+    got = sources.find_exports(tmp_path)
+    names = [p.parent.name for p in got]
+    assert names[-1] == "post-merge", (
+        f"post-merge must be merged last so it wins value conflicts; got {names}")
+    assert "tanba" in names[:-1] and "samaritans" in names[:-1]
+
+
+def test_the_order_outside_post_merge_is_still_path_sorted(tmp_path):
+    """Only post-merge moves. Everything else keeps the stable path order the merge
+    report and the density counts have always assumed."""
+    for name in ("bbb", "aaa", "ccc"):
+        d = tmp_path / name
+        d.mkdir()
+        (d / f"export-{name}.ged").write_text(
+            "0 HEAD\n" + f"0 @I{name}@ INDI\n" * (len(name) + len(name[0])),
+            encoding="utf-8")
+    names = [p.parent.name for p in sources.find_exports(tmp_path)]
+    assert names == sorted(names)
