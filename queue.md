@@ -55,13 +55,13 @@ module's logic; what the slow lane adds is the corpus-wide re-measurement.
 ## Decided 2026-08-25 — the multi-Geni-ID work
 
 - Continue opening both Geni pages for the **70** targets in
-  `reports/multi-p2600-targets.tsv`. **14 done, 56 to go, 115 pages.** Screenshots to
+  `reports/multi-p2600-targets.tsv`. **18 done, 52 to go, 107 pages.** Screenshots to
   `Documents\claude-screenshots\`, artifact per batch. Judgements go in
   `reports/multi-p2600-verdicts.tsv`.
   **Order comes from `reports/multi-p2600-triage.tsv`** — a queue order, never a verdict.
   Open `look_first=yes` first: 13 `PLACEHOLDER` pairs where no name test can work, and 6
   `DIFFERENT-PATRONYMIC` where the two names name two different fathers.
-  **14 done: 4 are one person twice, 10 are two real people.** Both outcomes are common, so
+  **18 done: 6 are one person twice, 12 are two real people.** Both outcomes are common, so
   read every pair before judging. **The tell is a title only one person can hold** — same
   office, same death year, or the same name in two languages means one person; genuinely
   different given names mean siblings. **CJK placeholder names (`李氏`) defeat the name test

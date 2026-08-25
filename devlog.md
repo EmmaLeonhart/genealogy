@@ -13345,3 +13345,36 @@ in any case. So the triage does not shrink the browsing job much; it reorders it
 `Q11087518` is the clearest example of why the placeholder bucket matters: Wikidata calls it
 *Princess Shengping*, and the two Geni profiles are `李氏(李豫女)` — "the Li woman, daughter of Li
 Yu" — and `隴西狄道 二`, a **place plus a numeral**. Neither is a name.
+
+### 2026-08-25 — four more, and the patronymic names the father
+
+**18 of 70 opened. 6 one person twice, 12 two real people.** Worked in triage order for the first
+time, which put the pairs no cheap read can touch at the front.
+
+- `Q104755784` — **father and son.** Wolf Rubensson (1796–1860) and Rabbin Ruben Wulff
+  (1748–1828). **The patronymic states the relationship**: `Rubensson` is *son of Ruben*, and the
+  other profile's given name is Ruben. The triage called this `UNCLEAR`; it is the single most
+  decidable shape in the whole set and the tool cannot see it.
+- `Q1121345` — **two men.** Prince Vyachko of Koknese, son of Boris **Davydovich**, against
+  Вячеслав Борисович of Drutsk, son of Борис **Глебович**. Same given name, both "son of Boris",
+  two different Borises.
+- `Q123182145` — **duplicate, and Geni already knows.** Both are Constança Maria Conceição Berquó
+  de Mendoça Rolim de Moura Barreto, born 19 August 1889 at the Palácio da Quinta da Praia, same
+  parents, same husband. Deaths 14 Dec **1965** and 14 Dec **1967** — same day and month, so one
+  year is a typo. **Both profiles carry Review Requested Merge.**
+- `Q11097545` — **brothers.** Li Wei 李緯 and Li Yi 李禕, both sons of Li Kun 李琨, each listing the
+  other, different children.
+
+**A discriminator the triage should have and does not: a patronymic that names the other
+profile's given name.** `Rubensson` against `Ruben`, and the Slavic `-ovich` forms likewise. This
+is *not* name similarity — it is one profile's name asserting a relationship to the other, which
+is structural evidence written in a name field. It is cheap, offline, and it decides
+`father-son` outright rather than ranking. Two of the eighteen would have been settled by it
+(`Q104755784`, and `Q1121345` in the negative, where the two patronymics name two different men).
+
+**Not adding it to `triage-multi-p2600.py` on two cases.** Recorded here so the next batch can
+count how often it appears before it becomes code.
+
+**"Review Requested Merge" on both profiles is now the second such case** (`Q101248370` Edel
+Pedersdatter Saltensee was the first). Both turned out to be genuine duplicates. That is a Geni
+signal visible only on the page, not in any export, and it has been right twice.
