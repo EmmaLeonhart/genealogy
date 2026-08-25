@@ -91,8 +91,13 @@ RELATIONS = ROOT / "out" / "wikidata" / "relations.tsv"
 SLOTS = (("father", "p22", "father"), ("mother", "p25", "mother"),
          ("child", "p40", "children"), ("spouse", "p26", "spouses"))
 
-#: A stop, not a target. Each round is strictly cheaper than the last as the frontier
-#: closes; this only bounds a pathological run.
+#: Emma's call, 2026-08-25: keep rounds 1-3. Error compounds with each round because each
+#: anchors on the last -- 3.9% at round 1, 9.8% at round 3, 27.1% at round 8, measured against
+#: dates. Round 3 is the knee. Later rounds are still written to the file with their round
+#: number so the number can be revisited; the filter is in the consumer.
+ROUND_CAP = 3
+
+#: How far the walk goes. Rounds beyond `ROUND_CAP` are recorded, not consumed.
 MAX_ROUNDS = 8
 
 

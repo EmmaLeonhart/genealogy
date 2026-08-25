@@ -72,6 +72,26 @@ def date_refuted():
                 if r["verdict"] == "conflict"}
 
 
+def zipper_rows(path, cap):
+    """Zipper pairs from rounds 1..cap; later rounds are in the file and skipped."""
+    if not path.exists():
+        print(f"  (missing: {path.relative_to(ROOT)})")
+        return
+    kept = dropped = 0
+    with open(path, encoding="utf-8") as f:
+        for row in csv.DictReader(f, delimiter="\t"):
+            try:
+                rnd = int(row["round"])
+            except (KeyError, ValueError):
+                continue
+            if rnd <= cap:
+                kept += 1
+                yield row["qid"], row["geni_id"]
+            else:
+                dropped += 1
+    print(f"  zipper: kept rounds 1-{cap} ({kept:,}), dropped {dropped:,} beyond")
+
+
 def rows_from(path, qid_col, geni_col, delim=","):
     if not path.exists():
         print(f"  (missing: {path.relative_to(ROOT)})")
@@ -113,6 +133,10 @@ def main():
         ("tanba-roster", rows_from(R / "tanba-p2600-pairs.tsv", "qid", "geni_ids", "\t")),
         ("izumo-sister-roster",
          rows_from(R / "izumo-sister-p2600-pairs.tsv", "qid", "geni_ids", "\t")),
+        # The zipper join, rounds 1-3. Emma's call, 2026-08-25: error compounds with each
+        # round because each anchors on the last, so 3.9% at round 1 and 27.1% at round 8.
+        # Later rounds stay in the file and are filtered here.
+        ("zipper", zipper_rows(R / "zipper-pairs.tsv", 3)),
     ]
     refuted = date_refuted()
     dropped = 0

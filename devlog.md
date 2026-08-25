@@ -13985,3 +13985,34 @@ aliases, and twelve genealogy identifiers per item. That is the instrument for t
 half of the absence question, the half the structural search cannot reach.
 
 **And Emma has merged `Q2183430`.** The duplicate my batch created is resolved.
+
+### 2026-08-25 — zipper capped at round 3 and wired into the synoptic join
+
+Emma picked round 3 from the by-round error table. Error compounds because each round anchors on
+the last: 3.9% at round 1, 9.8% at round 3, 27.1% at round 8, measured against dates. Round 3 is
+the knee — rounds 1–3 add 8,272 pairs over round 1 for 1.6 points of extra error, while round 4
+onward adds fewer pairs for more.
+
+Later rounds stay in `reports/zipper-pairs.tsv` with their round number; the filter lives in
+`build-synoptic-correspondence.py`, so the number can be changed without re-running the walk.
+
+**The synoptic correspondence with the zipper in:**
+
+| source | pairs |
+| --- | ---: |
+| `wikidata-p2600` | 517,823 |
+| **`zipper`** | **17,322** (rounds 1–3; 6,274 beyond dropped) |
+| `structural` | 7,626 |
+| `geni-about-me` | 405 |
+| `tanba-roster` | 181 |
+| `geni-wikidata-pairs` | 126 |
+| `izumo-sister-roster` | 121 |
+| `izumo-roster` | 111 |
+
+**525,807 → 535,826 distinct pairs.** Both directions are present as Emma required —
+`wikidata-p2600` for the Wikidata side and `geni-about-me` for the QID she wrote into the Geni
+description. Conflicts 332 → 356.
+
+**On the writing:** the first version of the cap carried a twenty-line comment justifying the
+number. Emma: *"I feel you taking this as a bigger commitment than it is lol."* Cut to four lines.
+It is a threshold, not a treaty, and it is meant to be revisited.
