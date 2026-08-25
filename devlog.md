@@ -12783,3 +12783,36 @@ Emma, twice: *"I don't want a cycle, but I'm basically willing to accept clutter
 Kept because the measurement already exists and answers "are there any", not because
 anything should act on it. **Do not turn this into work.** Emma: *"don't turn this into
 some gigantic project that I didn't ask for."*
+
+## 2026-08-24 — export 6 proves the mechanism, and exposes an ordering bug
+
+`exports/post-merge/export-Forest-6000000178918141824-refresh.ged` — Aaron III again,
+**5,000 individuals, 3,090 families**, taken *after* Emma merged his duplicate.
+
+**The mechanism is proven end to end, measured rather than argued:**
+
+    duplicate Aaron III 6000000178917247862
+      present in the pre-merge export:   True
+      present in the refresh export:     False
+
+Emma merges on Geni → refresh export → the dead profile is gone → the privileged
+directory wins → our tree carries Geni's current state. No knowledge of which id was
+absorbed is needed anywhere, which is the whole point of her provenance design.
+
+### The refresh would have lost to the file it supersedes
+
+`export-Forest-…141824-refresh.ged` sorts **before** `export-Forest-…141824.ged`, because
+`-` is `0x2D` and `.` is `0x2E`. Path order therefore put the *superseded* file last, so it
+would have won every value conflict against its own replacement — silently, and looking
+exactly like the merge not working.
+
+**Fixed by ordering the privileged directory by mtime, not by name.** That is what the
+directory actually means: most recently exported is most current. Name order is the
+tiebreak so the result stays deterministic. Everything outside `post-merge/` keeps the
+stable path order the merge report and density counts assume.
+
+That is the **second** ordering trap in this directory today — the first was `post-merge`
+sorting 17th of 22 and losing to `tanba/`. Both were silent, and both would have presented
+as "the merge didn't work".
+
+552 corpus exports, six of them post-merge, in export order.

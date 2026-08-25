@@ -162,3 +162,33 @@ def test_the_order_outside_post_merge_is_still_path_sorted(tmp_path):
             encoding="utf-8")
     names = [p.parent.name for p in sources.find_exports(tmp_path)]
     assert names == sorted(names)
+
+
+def test_inside_post_merge_the_newest_export_wins_not_the_name(tmp_path):
+    """A refresh of the same seed must beat the file it supersedes.
+
+    Two exports can share a seed: one taken before Emma merged a duplicate on Geni and
+    one after. The later file carries Geni's current state and must win the value
+    conflict, which means it must be merged LAST.
+
+    **Name order gets this exactly backwards.** `…141824-refresh.ged` sorts *before*
+    `…141824.ged`, because `-` is 0x2D and `.` is 0x2E — so the refresh would have lost
+    to the very file it replaces, silently. Ordering the privileged directory by mtime
+    says what the directory means: most recently exported is most current.
+    """
+    import os
+    d = tmp_path / "post-merge"
+    d.mkdir()
+    older = d / "export-Forest-111.ged"
+    newer = d / "export-Forest-111-refresh.ged"
+    older.write_text("0 HEAD\n0 @I1@ INDI\n", encoding="utf-8")
+    newer.write_text("0 HEAD\n0 @I1@ INDI\n0 @I2@ INDI\n", encoding="utf-8")
+    os.utime(older, (1_000_000, 1_000_000))
+    os.utime(newer, (2_000_000, 2_000_000))
+
+    assert newer.name < older.name, (
+        "the premise of this test: the refresh sorts FIRST by name, which is the bug")
+
+    got = [p.name for p in sources.find_exports(tmp_path)]
+    assert got[-1] == newer.name, (
+        f"the newest post-merge export must be merged last; got {got}")
