@@ -13378,3 +13378,40 @@ count how often it appears before it becomes code.
 **"Review Requested Merge" on both profiles is now the second such case** (`Q101248370` Edel
 Pedersdatter Saltensee was the first). Both turned out to be genuine duplicates. That is a Geni
 signal visible only on the page, not in any export, and it has been right twice.
+
+### 2026-08-25 — a third of the remaining targets are ONE duplicated lineage, and the relatives prove it
+
+**20 of 70 opened. 8 one person twice, 12 two real people.**
+
+`Q13478526` pairs *Vasilko II Bryachislavich of Vitebsk* with *Василий Брячиславич*, and **both
+profiles record the same daughter** — who is herself another target, `Q13478538`, pairing *Lyubava
+Vasilkovna* with *Любовь Васильевна*. Checking the cluster: **17 of the 52 unopened targets are
+one lineage**, the Polotsk / Vitebsk / Smolensk Rurikids, imported into Geni twice — once
+romanised, once in Cyrillic — and joined by Wikidata person by person. That is a third of the
+remaining work and it is a single phenomenon, not seventeen.
+
+**It also gives a proof that uses no names at all.**
+`scripts/corroborate-pairs-by-lineage.py`: for a pair `(A, B)` on one item, look at `A`'s father
+and `B`'s father *in our tree*; if those two profiles are themselves co-carried by a **single**
+Wikidata item, that is an independent assertion that the fathers are one man — and two people with
+one father are one person. Same for mothers and children.
+
+**8 CORROBORATED, 13 CONTRADICTED, 47 NO EVIDENCE.** The corroborations chain down the lineage:
+`Q13478538` via `Q13478526`, `Q13478526` via `Q4097582`, `Q3920891` via `Q2632610`, `Q244852`
+Gediminas via `Q638646` Butvydas, and both `Q2080596` and `Q2621664` via `Q244852`.
+
+**The method was validated against a hand check in the same tick, which is the part that matters.**
+`Q13478526` was judged a duplicate by opening both Geni pages — same father's name, same
+principality, same recorded daughter — and the lineage script independently returned
+`CORROBORATED` for it without ever comparing a name. Agreement between an eyeball and a structural
+computation is worth more than either alone.
+
+**The caveat, stated because the chains invite it:** corroboration inside a duplicated lineage is
+self-consistent whether or not the duplication is real, since each link rests on the next. What
+stops that being circular here is the hand-verified anchor. A chain with no opened pair in it is
+a ranking, not a proof, and `NO EVIDENCE` at 47 means most pairs get nothing from this — it only
+speaks where a lineage was imported twice.
+
+`Q130391088` is the other pair opened: both *prince Dmitry Glebovich of Smolensk*, both sons of a
+Gleb of Smolensk, and **one records Ivan "Shakh" as his brother while the other records him as his
+son**. That contradiction is what a duplicate produces; recorded `likely-duplicate`.
