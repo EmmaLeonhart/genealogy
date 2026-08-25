@@ -13304,3 +13304,44 @@ so; what is new is that the background workaround has now been tried and does no
 
 **Nothing is waiting on it.** The fast lane is green at 1,245 passed and covers every module's
 logic; the slow lane re-measures the whole corpus, which is valuable and is not a gate.
+
+### 2026-08-25 — a triage order for the remaining 56, and an honest account of what it cannot do
+
+Fourteen pairs opened one at a time, and the pattern did not hold still — six two-real-people,
+then four duplicates. Opening the remaining 56 in target order is 115 page loads carrying no
+information, so `scripts/triage-multi-p2600.py` ranks them from what is already on disk:
+`reports/display-names.csv` holds every `NAME` record in the merge plus the Wikidata English
+label.
+
+**It writes a queue order and nothing else.** `reports/multi-p2600-triage.tsv` may not be emitted
+as an edit, and `multi-p2600-verdicts.tsv` is still only written by hand after both pages are
+open. Deciding identity from a name is banned here and stays banned; deciding **which pair to
+open first** from a name costs nothing when it is wrong, because the pair is still opened.
+
+**What it earned:**
+
+| signal | n |
+| --- | ---: |
+| `UNCLEAR` | 34 |
+| `PLACEHOLDER` | 13 |
+| `DIFFERENT-PATRONYMIC` | 6 |
+| `NEAR-TOKENS` | 2 |
+| `SAME-CJK` | 1 |
+
+The two that are worth having are the small ones. **`PLACEHOLDER` — 13 pairs where no name test
+can work at all**, because a side is `NN`, `???`, `李氏` *the Li woman* or `某` *someone*. Those
+must be judged on structure and dates, and knowing that in advance is worth more than a guess.
+**`DIFFERENT-PATRONYMIC` — 6 pairs whose two names name two different fathers**, which is the one
+signal here arguing for two people rather than one.
+
+**And the honest part: `UNCLEAR` at 34 is mostly a limitation, not a finding.** It is dominated by
+Latin-against-Cyrillic renderings of one name — `Vasilko II Bryachislavich of Vitebsk` against
+`Василий Брячиславич`, `Witenes` against `Витень Пройденович`. They share no tokens because they
+share no alphabet, and this corpus is full of Rurikids recorded both ways. Closing that gap needs
+transliteration, which is a dependency this repo does not take and which would be name matching
+in any case. So the triage does not shrink the browsing job much; it reorders it, and it names the
+13 pairs where the cheap read is guaranteed useless.
+
+`Q11087518` is the clearest example of why the placeholder bucket matters: Wikidata calls it
+*Princess Shengping*, and the two Geni profiles are `李氏(李豫女)` — "the Li woman, daughter of Li
+Yu" — and `隴西狄道 二`, a **place plus a numeral**. Neither is a name.
