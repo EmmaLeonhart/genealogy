@@ -13064,3 +13064,50 @@ built off a misread of *"I gave detailed instructions earlier"* -- the instructi
 AskUserQuestion answer about merging on Geni, treating as an export target, then deprecating the
 one that redirects. And the first four screenshots were of Wikidata items from the *opposite*
 population, several items claiming one profile.
+
+### 2026-08-25 — deciding which Geni id is the wrong one, by the parents
+
+Emma: *"the easiest way to do this at scale would be to figure out consistency of relatives on
+WikiData versus Geni. If one has two IDs and then they have a father and a mother that both have
+one Geni ID and the Geni IDs match one but not the other, that zipper join thing helps a lot."*
+
+`scripts/resolve-multi-geni-by-parents.py`. **31 removals over 30 items**, queued to
+`reports/wikidata-remove-wrong-p2600.json`, each carrying the reasoning that produced it. This is
+the zipper join on the half she called easy, and it is not the failing structural walk: nothing
+here *proposes* a pairing. Both candidate ids are already asserted by Wikidata and the parents
+only choose between two of Wikidata's own claims.
+
+**The six browser-checked pairs are the acceptance test, and `--validate` runs against them.**
+That is the whole reason this is trustworthy, and it caught three real defects before any batch
+was written:
+
+- **`Q101248370` was condemned when it is the genuine duplicate.** Both candidates are Edel
+  Pedersdatter Saltensee, and their recorded fathers are **two Geni profiles for the same man**,
+  because the father is duplicated too. **A duplicated person usually has a duplicated parent**,
+  so the parent test reads a duplicate as a contradiction — the exact case it must not delete.
+  Two brakes now withhold: the candidates' parents sitting on one Wikidata item, and the
+  candidates sharing a name. The name check is a **brake on deletion, never a matcher** —
+  `CLAUDE.md` bans name similarity for deciding a merge, and withholding a destructive edit is
+  the direction where being wrong is free.
+- **`Q100327211` — the script was right and my eyeball was wrong.** The artifact said the
+  daughter's id was the interloper. The item is labelled *Ermengarde of Provence*, its `P22` is
+  the daughter's father, and our tree records the queen as the *other candidate's mother*. It is
+  the **queen's** id that does not belong. `HAND_CHECKED` now records the correction and why.
+- **One candidate being the other's PARENT is proof they are two people**, and both brakes fire
+  spuriously on it — a parent-child pair trivially shares a parent item, since the parent *is*
+  the other candidate. The kin test therefore overrides the brakes and is computed before the
+  anchor gate, because such an item is decidable with no anchor at all: 21 items are this shape.
+
+**Where the parents cannot decide but kin proves one id is wrong, dates break the tie** — 2 of
+the 31. `Q102825194` is the case: both its parents exist on Wikidata but neither carries a
+`P2600`, so there is no anchor, while its `P570` is 1527, which is Gilbert Motier's death year
+exactly against his son Antoine's 1531. Dates may never *create* a removal, because two profiles
+for one man carry the same dates.
+
+**Only 30 of 3,220 items are decidable**, and the rest is honest silence rather than guessing:
+1,760 blocked by a candidate with no parent recorded on our side, 1,174 with no usable parent
+anchor, 251 withheld by the brakes.
+
+**A vintage mismatch worth knowing:** the item store's copy of `Q102825194` carries **no `P2600`
+at all**, while `out/wikidata/p2600-all.tsv` gives it two. The two extracts are different
+downloads, which is another reason every emitted edit names its evidence and none is run.
