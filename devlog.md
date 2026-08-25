@@ -12816,3 +12816,27 @@ sorting 17th of 22 and losing to `tanba/`. Both were silent, and both would have
 as "the merge didn't work".
 
 552 corpus exports, six of them post-merge, in export order.
+
+## 2026-08-24 — seven post-merge exports in; corpus re-merge started
+
+`exports/post-merge/export-Forest-6000000227415008926.ged` — `NN`, mother of Yorimoto
+Tanba, a Tier 3 seed. **5,000 individuals, 2,860 families.** Seven post-merge exports now,
+**553 corpus exports** total.
+
+The privileged directory in merge order, which is export order:
+
+    …227413001839   NN, mother of Iwai
+    …178918141824   Aaron III (direct — Emma added him in 2021)
+    …227413445871   NN, mother of Freida Ornstein
+    …227413852831   NN Kemsley (Tier 4)
+    …227414103872   NN, mother of Sadakiyo En'ya
+    …178918141824-refresh   Aaron III again, after Emma merged his duplicate
+    …227415008926   NN, mother of Yorimoto Tanba
+
+**Yorimoto was last for the wrong reason.** I had ranked him bottom because I had decided
+he was a "false positive" — the exact framing Emma corrected. The export refreshes our
+record of him to Geni's current state, which is the point regardless of whether he was ever
+a duplicate. The ordering was mine and it was reasoning she had already ruled out.
+
+The corpus re-merge is now running over all 553, **after** the exports rather than before —
+the mistake she objected to earlier, when I started it unasked and prematurely.
