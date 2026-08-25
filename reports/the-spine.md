@@ -1,72 +1,85 @@
-# The spine: Charlemagne → Bergitte Aukland → Marta Jonsdatter Li → Arne, and → Emma
+# The three lines
 
-**This is the line the whole Garborg programme is building along.** Recorded 2026-08-25 on Emma's
-instruction: *"record somewhere clearly that we have that path from Marta Jonsdatter Li up to that
-common ancestor and then to charlemagne and to me."*
+**Emma, 2026-08-25:** *"Yes it should be three lines lol: Charlemagne to Bergitte, Bergitte to me,
+Bergitte to Arne."* `CLAUDE.md` § *THE THREE LINES* is the rule; this file is the person-by-person
+state.
 
-Everything below is **read off Geni's own relationship panel**, which Emma showed on
-2026-08-25. It is not re-derived from our files, and it should not be: Geni traced it, she
-captured it, and re-computing it has already produced a wrong answer once.
+**Bergitte Gunnbjørnsdatter Aukland** `6000000002481819312`, 1465–1522, is the hinge — an ancestor
+of both Emma and Arne (Arne at depth 11), and the one on both lines who descends from Charlemagne.
+She has **no Wikidata item**; `reports/wikidata-bergitte.qs` creates her.
 
-## Bergitte Aukland → Arne Garborg
+| line | people | have items | to create |
+| --- | ---: | ---: | ---: |
+| 1. Charlemagne → Bergitte | 23 | 9 | **14** |
+| 2. Bergitte → Emma | **not captured** | — | — |
+| 3. Bergitte → Arne | 12 | 3 | **9** |
 
-Geni: **"Arne Garborg is Bergitte Gunnbjørnsdatter Aukland's 9th great grandson."**
+Lines 1 and 3 are one saved path, `paths/charlemagne-to-arne-garborg.tsv`, 34 steps.
 
-| # | person | relation to previous |
+## Line 3 — Bergitte → Arne (steps 12 → 1)
+
+| step | person | state |
 | ---: | --- | --- |
-| 1 | **Bergitte Gunnbjørnsdatter Aukland** `6000000002481819312` | — |
-| 2 | Gunnbjørn Jonson Mjølhus | her son |
-| 3 | Lars Gunnbjørnsen Mjølhus | his son |
-| 4 | Peder Larsen Mjølhus | his son |
-| 5 | Lars Person Nedre Rossavik | his son |
-| 6 | Berit Larsdatter Nedre Rossavik | his daughter |
-| 7 | Lars Tormodsen Mele | her son |
-| 8 | Jon Larson Mæle | his son |
-| 9 | **Marta Jonsdatter Li** `6000000003491988826` — **`Q141178381`** | his daughter |
-| 10 | **Jon Samuelsen Raustad** `6000000003732742137` — **`Q141168955`** | her son |
-| 11 | Ane Oline Jonsdatter Raugstad `6000000003491986946` | his daughter |
-| 12 | **Arne Garborg** `6000000003492005116` — **`Q467497`** | her son |
+| 12 | **Bergitte Gunnbjørnsdatter Aukland** | create |
+| 11 | Gunnbjørn Jonson Mjølhus | create |
+| 10 | Lars Gunnbjørnsen Mjølhus | create |
+| 9 | Peder Larsen Mjølhus | create |
+| 8 | Lars Person Nedre Rossavik | create |
+| 7 | Berit Larsdatter Nedre Rossavik | create |
+| 6 | Lars Tormodsen Mele | create |
+| 5 | Jon Larson Mæle | create |
+| 4 | Marta Jonsdatter Li | create |
+| 3 | Jon Samuelsen Raustad | **`Q141168955`** |
+| 2 | Ane Oline Jonsdatter Raugstad | **`Q141152523`** |
+| 1 | **Arne Garborg** | **`Q467497`** |
 
-**Three of the twelve are on Wikidata**: Marta (made 2026-08-25), Jon Samuelsen Raustad, and Arne.
-The nine between them are not.
+## Line 1 — Charlemagne → Bergitte (steps 34 → 12)
 
-## Bergitte Aukland → Emma
+| step | person | state |
+| ---: | --- | --- |
+| 34 | **Charlemagne** | **`Q3044`** |
+| 33 | Louis I, The Pious | **`Q43974`** |
+| 32 | Giséle of Cysoing | create |
+| 31 | Berengar I, emperor of the Romans | create |
+| 30 | Gisela of Friuli | **`Q3769073`** |
+| 29 | Berengar II of Ivrea, king of Italy | **`Q314521`** |
+| 28 | Rozala of Italy | create |
+| 27 | Baldwin IV the Bearded, count of Flanders | **`Q378177`** |
+| 26 | Judith of Flanders | **`Q273181`** |
+| 25 | Skule Torstigson | **`Q6180419`** |
+| 24 | Åsulv Skulesson | **`Q75291928`** |
+| 23 | **Guttorm Àsulfsson à Rein** | **`Q19061035`** — the deepest existing item |
+| 22 | Ingrid Guttormsdotter | create |
+| 21 | Helena Guttormsdatter | create |
+| 20 | Knut Valdemarsson, Duke of Estland, Blekinge and Lolland | create |
+| 19 | Svantepolk Knutsson Viby, Skarsholmsätten | create |
+| 18 | Ingegerd Svantepolksdotter | create |
+| 17 | Algot Bryniolfsson | create |
+| 16 | Knut Algotsson | create |
+| 15 | Ramborg Knutsdotter Lejon | create |
+| 14 | Knight Tore Gardsson | create |
+| 13 | Lagmann Gunnbjørn Toresson Tengs | create |
+| 12 | **Bergitte Gunnbjørnsdatter Aukland** | create |
 
-Bergitte is on **both** lines between Emma and Arne, which is what makes her the target rather
-than the nearest common ancestor. Geni's second reading on the same page: *"Arne Garborg is
-Bergitte Gunnbjørnsdatter Aukland's third great granddaughter's husband's third great grandson."*
+## Line 2 — Bergitte → Emma
 
-The nearest common ancestor of Emma and Arne is a different person and is **not** Bergitte —
-`queue.md`: *"the first common ancestor of us is Rasmus Ingebretsen Grude
-`6000000003492045766`, and Bergitte is the bigger target one."* Both matter; they do different
-jobs.
+**Missing.** Emma descends from Bergitte by a different line from Arne's, and no saved page covers
+it. Save the Geni relationship page, then
+`python -m genimerge path-from-html <page> -o paths/bergitte-to-emma.tsv`.
 
-## Bergitte Aukland → Charlemagne
+## The shape of the work
 
-The half that makes Bergitte worth reaching. `queue.md`: she is *"the common ancestor in the two
-lines between me and Arne who is a descendant of Charlemagne."*
+**19 of the 22 creations are consecutive** — steps 4–22, the entire Norwegian and Swedish middle:
+Mele, Nedre Rossavik, Mjølhus, Tengs, Lejon, Algotsson, Svantepolksdotter, Guttormsdatter. The
+royal end is already on Wikidata. **Create steps 4–22 and Arne is continuously linked to
+Charlemagne.**
 
-**Bergitte does not appear in `reports/charlemagne-route.csv`.** That file traces a 399-step
-descent from Charlemagne to Emma up a different branch. So the Bergitte→Charlemagne descent is
-**not yet in the repo** and is the outstanding half — Emma's saved page for it goes through
-`python -m genimerge path-from-html` into `paths/` the moment it lands.
+**Two files per batch, always.** `LAST` is only valid as a QuickStatements subject, never as a
+value, so people created in one run cannot cite each other. Creations first, then
+`scripts/build-missing-reciprocals.py` for the relationships once the QIDs exist.
 
-## Why the daily runs matter
+## Do not confuse this with `reports/charlemagne-route.csv`
 
-The daily Garborg batches create people **adjacent to this spine**, so every run shortens the
-distance between what Wikidata holds and this line. That is the point of them, and it is the
-reason the queue's closing item is to build the thing that makes many of these at once rather
-than a hop a day.
-
-## Current state
-
-| | |
-| --- | --- |
-| Bergitte Aukland | **no Wikidata item** — `reports/wikidata-bergitte.qs` creates her |
-| Marta Jonsdatter Li | **`Q141178381`**, made 2026-08-25 |
-| Marta's parents | `reports/wikidata-jon-parents.qs` — wait, that is *Jon's* parents |
-| Jon Samuelsen Raustad | **`Q141168955`** |
-| Jon's parents | Samuel Jonson Raustad + Marta Jonsdatter Li — the latter now exists |
-| Ane Oline Jonsdatter Raugstad | no item |
-| Arne Garborg | **`Q467497`** |
-| steps 2–8 (Mjølhus / Rossavik / Mele) | none on Wikidata |
+That file is a **different** 399-step Emma→Charlemagne descent up another branch, and it does
+**not** contain Bergitte. Treating the two as the same thing produced a wrong junction on
+2026-08-25. `paths/charlemagne-to-arne-garborg.tsv` is the authority for the three lines.
