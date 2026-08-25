@@ -11,6 +11,18 @@ That is the zipper join used on the half she called easy: *"parents are very eas
 zipper join on. Children, however, selecting between children and spouses... is a much, much
 more difficult task."* This module does parents only, on purpose.
 
+## Only ids Wikidata asserts are candidates
+
+A removal deletes a statement, so the candidate set is restricted to `P2600` values sourced
+`wikidata-p2600` -- what the bulk download found Wikidata actually carrying. Pairings our own
+structural walk inferred are excluded, because deleting one is not an edit Wikidata can accept
+and proposing it would assert that Wikidata is wrong about something it never said.
+
+**This was got wrong first and measured afterwards.** The first batch had 31 removals;
+`scripts/check-removal-batch-vintage.py` showed the item store did not hold the value in 22 of
+them, and the split was exact -- 9 corroborated, all `wikidata-p2600`; 22 uncorroborated, all
+`structural`.
+
 ## The test
 
 For a Wikidata item carrying two or more `P2600` *Geni.com profile ID* values:
@@ -201,11 +213,35 @@ def main():
     validate = "--validate" in sys.argv
 
     # --- items carrying several Geni ids ---------------------------------------------------
+    # **Only ids WIKIDATA ITSELF ASSERTS are candidates.** You cannot remove a statement that
+    # does not exist, and this is not a refinement -- it is the difference between a batch that
+    # is right and one that is nonsense.
+    #
+    # The first cut read every candidate in `correspondence-shapes.tsv`, which mixes Wikidata's
+    # own `P2600` with pairings our structural walk *inferred*. It queued 31 removals, and
+    # `check-removal-batch-vintage.py` found the item store did not hold the value in 22 of
+    # them. The split was exact: all 9 corroborated removals were sourced `wikidata-p2600`, all
+    # 22 uncorroborated ones `structural`. The walk had invented the second id, the shape census
+    # counted the item as carrying two, and this script proposed deleting one of them.
+    #
+    # Same contamination `docs/structural-walk.md` records for the tangles, where the walk
+    # manufactured 89%. Here it would have produced a batch telling Wikidata it was wrong about
+    # ids Wikidata never held.
+    WIKIDATA_ASSERTED = "wikidata-p2600"
     multi = collections.defaultdict(set)
+    dropped_inferred = 0
     with open(ROOT / "reports" / "correspondence-shapes.tsv", encoding="utf-8") as f:
         for r in csv.DictReader(f, delimiter="\t"):
-            if r["kind"].startswith("one item"):
+            if not r["kind"].startswith("one item"):
+                continue
+            if WIKIDATA_ASSERTED in r["sources"].split(";"):
                 multi[r["qid"]].add(r["geni_id"])
+            else:
+                dropped_inferred += 1
+    # An item left holding one asserted id is not a multi-id item at all.
+    multi = {q: gs for q, gs in multi.items() if len(gs) > 1}
+    print(f"{dropped_inferred:,} inferred candidates dropped - only Wikidata-asserted ids "
+          f"can be removed")
     if validate:
         multi = {q: v for q, v in multi.items() if q in HAND_CHECKED}
     print(f"{len(multi):,} items carrying several Geni ids")
@@ -381,10 +417,15 @@ def main():
                 })
 
     dest = ROOT / "reports" / "multi-geni-parent-verdicts.tsv"
-    with open(dest, "w", encoding="utf-8", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=list(rows[0]), delimiter="\t")
-        w.writeheader()
-        w.writerows(rows)
+    if rows:
+        with open(dest, "w", encoding="utf-8", newline="") as f:
+            w = csv.DictWriter(f, fieldnames=list(rows[0]), delimiter="\t")
+            w.writeheader()
+            w.writerows(rows)
+    else:
+        # Empty is a real outcome, not a crash: under `--validate` none of the six
+        # hand-checked items has two Wikidata-asserted ids, which is the point being made.
+        print("  (no rows - nothing in scope)")
 
     edits_path = ROOT / "reports" / "wikidata-remove-wrong-p2600.json"
     edits_path.parent.mkdir(parents=True, exist_ok=True)
@@ -398,6 +439,14 @@ def main():
 
     if validate:
         print("\n--- against the six pairs opened in the browser ---")
+        # **Being out of scope is the expected result now, and it is the finding.** Once only
+        # Wikidata-asserted ids count as candidates, an item whose second id came from our
+        # structural walk has ONE `P2600` and is not a multi-id item -- so there is no statement
+        # to remove, whatever the two Geni profiles turn out to be. The browser evidence about
+        # those profiles stands; it was evidence about GENI, and this batch edits WIKIDATA.
+        in_scope = set(multi)
+        for qid in sorted(set(HAND_CHECKED) - in_scope):
+            print(f"   {qid:<12} out of scope - fewer than two Wikidata-asserted P2600 values")
         got = {}
         for e in edits:
             got.setdefault(e["item"], []).append(e["value"])

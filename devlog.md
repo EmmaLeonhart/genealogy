@@ -13111,3 +13111,46 @@ anchor, 251 withheld by the brakes.
 **A vintage mismatch worth knowing:** the item store's copy of `Q102825194` carries **no `P2600`
 at all**, while `out/wikidata/p2600-all.tsv` gives it two. The two extracts are different
 downloads, which is another reason every emitted edit names its evidence and none is run.
+
+### 2026-08-25 — the removal batch was 31 and should have been 3
+
+Investigating the vintage mismatch flagged in the previous status report. `Q102825194` carried no
+`P2600` in the item store while `out/wikidata/p2600-all.tsv` gave it two, and a batch that
+**deletes** statements must not be computed from a stale read.
+
+`scripts/check-removal-batch-vintage.py` checks each removal against the stored claims. **22 of
+31 were not corroborated**, and the split by provenance was exact:
+
+| the removed id came from | store holds it | count |
+| --- | --- | ---: |
+| `wikidata-p2600` | yes | 9 |
+| `structural` | **no** | **22** |
+
+**It was not staleness. Wikidata never carried those ids.** Our structural walk proposed a second
+Geni profile, `correspondence-shapes.tsv` counted the item as carrying two, and the resolver
+queued a deletion of a statement that does not exist. Same contamination
+`docs/structural-walk.md` records for the tangles, in a form that would have produced an edit
+batch telling Wikidata it was wrong about something it never said.
+
+**The fix is a filter, and it is not a refinement.** Only `P2600` values sourced
+`wikidata-p2600` are candidates; an item left holding one asserted id is not a multi-id item.
+**421 inferred candidates dropped, 31 removals become 3**, and
+`check-removal-batch-vintage.py` now reports 3 of 3 corroborated.
+
+**The true population, measured off the dump rather than off our census:** **2,860** items carry
+two or more Geni ids on Wikidata -- which independently corroborates the 2,861 recorded in
+`CLAUDE.md` -- of which **70** have two or more of those profiles in our corpus. Not 3,220 and
+not 196.
+
+**Every one of the six pairs opened in the browser is outside that population**, and the artifact
+said otherwise. Four of the six carry exactly one Geni id on Wikidata; `Q102825194` and
+`Q103775136` carry **none at all**. The page has been corrected in place at the same URL with the
+claim named rather than quietly edited. The Geni evidence stands -- Edel Pedersdatter Saltensee
+really is one woman twice, Gilbert and Antoine Motier really are father and son -- because that
+was read off Geni pages. What was wrong was the claim about what Wikidata holds.
+
+**`--validate` now reports all six as out of scope, which is the right answer and not a
+regression.** The browser evidence was about Geni; this batch edits Wikidata.
+
+The three survivors, all corroborated: `Q4139580` *Gleb Svyatoslavich*, `Q4273436` *Pakubuwono V*,
+`Q778550` *Tezozomoc*.
