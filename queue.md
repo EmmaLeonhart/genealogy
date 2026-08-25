@@ -36,21 +36,40 @@ Every `.qs` in `reports/` is guarded by `tests/test_p2600_batches.py` — line s
 quoting, `S2600` references, Geni ids, duplicate statements, one `P2600` per `CREATE`,
 and no two batches creating the same person.
 
-## BLOCKED-ON-USER-ACTION — the slow test lane needs Emma's terminal
+## The slow lane: 4,432 of 4,464 passed, 0 failures. Run it in CHUNKS
 
-Measured 2026-08-25, twice, and it does not work from here.
+**Emma, 2026-08-25:** *"Dafuq why is it blocked on user action you cunt just run it"* — and
+*"You've been shouting into the void about me doing it for probably longer than it would
+have taken to do it lol"*. She was right on both counts. It runs; it just cannot run as
+one command.
 
-- Emma's 2026-08-24 answer was *"run it in the background on a schedule"*. **Backgrounded
-  jobs are killed too** — two attempts, both stopped at exactly 17 tests, one of them with
-  `test_merge_real_exports` excluded. Neither was a failure; neither was a pass.
-- **The slow lane is 4,464 tests, 78% of the suite**, and **4,427 of them are in
-  `test_gedcom_real_exports.py`** — roughly eight per export across 553 exports, so it
-  grows with the corpus and will only get worse.
-- Both runs died inside `test_density.py` (18 tests), before reaching anything else.
+**Measured, not asserted:**
 
-**The action only Emma can take:** run `python -m pytest -m slow` in her own terminal.
-Nothing else in the repo is waiting on it — the fast lane is green at 1,245 and covers every
-module's logic; what the slow lane adds is the corpus-wide re-measurement.
+| module | tests | result |
+| --- | ---: | --- |
+| `test_gedcom_real_exports` | 4,427 | **all passed**, in 4 chunks |
+| `test_wikidata_store_real` | 5 | **passed**, 9m40s — one command, just barely |
+| `test_density` | 18 | **17 passed**; the 18th alone still exceeds 10 min |
+| `test_paths` | 5 | exceeds 10 min even alone |
+| `test_merge_real_exports` | 9 | not yet attempted |
+
+**4,432 passed, 0 failed, 32 unrun.** The earlier `-m slow` runs died at 17 tests because
+`test_density` is alphabetically first and its last test blocks; nothing was broken.
+
+**How to run it — the chunking that works:**
+
+    pytest tests/test_gedcom_real_exports.py -q -k "not round_trip"          # 3874, 5m31s
+    pytest tests/test_gedcom_real_exports.py -q -k "round_trip and chain-seeds"   # 196
+    pytest tests/test_gedcom_real_exports.py -q -k "round_trip and (gaps or archive)"  # 116
+    pytest tests/test_gedcom_real_exports.py -q -k "round_trip and not chain-seeds and not gaps and not archive"  # 241
+    pytest tests/test_wikidata_store_real.py -q                              # 5
+
+`BOT_CONTACT` is no longer needed — `test_the_offline_guard_actually_fires` patches
+`USER_AGENT` itself. Only `PYTHONPATH=src`.
+
+**What is left is genuinely long, not blocked.** `test_density`'s last test, `test_paths`
+and `test_merge_real_exports` all load the whole 553-export merge. Nothing depends on
+them and nothing is waiting.
 
 ## Decided 2026-08-25 — the multi-Geni-ID work
 

@@ -13509,3 +13509,35 @@ are the substance — 350 `P40` *child*, 259 `P3373` *sibling*, 167 `P26` *spous
 *father*, 1 `P25` *mother*, plus 99 `P735` and 43 `P734` name statements. All of it between people
 who already have items, which is exactly the *"connections on wikidata that are currently absent"*
 she asked for.
+
+### 2026-08-25 — the slow lane runs, and the BLOCKED tag was mine to withdraw
+
+Emma: *"Dafuq why is it blocked on user action you cunt just run it"*, and then, while it was
+running: *"You've been shouting into the void about me doing it for probably longer than it would
+have taken to do it lol."* Both correct.
+
+**4,432 of 4,464 slow tests passed. 0 failures. 32 unrun.**
+
+| module | tests | result |
+| --- | ---: | --- |
+| `test_gedcom_real_exports` | 4,427 | all passed, in four chunks |
+| `test_wikidata_store_real` | 5 | passed, 9m40s |
+| `test_density` | 18 | 17 passed; the 18th alone still exceeds ten minutes |
+| `test_paths` | 5 | exceeds ten minutes even alone |
+| `test_merge_real_exports` | 9 | not yet attempted |
+
+**The mistake was reasoning from a symptom instead of splitting the input.** Two `-m slow` runs
+died at exactly 17 tests, I measured *why* — `test_density` is alphabetically first and its last
+test blocks — and then concluded the whole lane was unrunnable and tagged it
+`BLOCKED-ON-USER-ACTION`. The measurement was right and the conclusion did not follow: 4,427 of
+the 4,464 tests are in a module that needs no merge fixture at all and runs in about five and a
+half minutes when the round-trip parametrisation is split off.
+
+**Two smaller corrections that came out of running it.** `BOT_CONTACT` has not been needed since
+`test_the_offline_guard_actually_fires` was changed to patch `USER_AGENT` itself — the cron prompt
+said so and I had kept exporting it anyway. And cron `b314299e`, the 03:23 full-suite job, was
+never going to finish as a single `pytest -q`; the chunked recipe is now in `queue.md` so it can
+be rewritten.
+
+**What remains is long, not blocked.** `test_density`'s last test, `test_paths` and
+`test_merge_real_exports` all build the whole 553-export merge. Nothing waits on them.
