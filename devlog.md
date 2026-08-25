@@ -13710,3 +13710,40 @@ is 113 hand-typed tokens and these names need others. A rule engine was written 
 against those 113 hand rows**, so it was discarded rather than used — an engine that cannot
 reproduce a table a human checked has no business extending it. `scripts/translit_no.py` keeps the
 attempt and its `--check` score so the next try starts from a measured baseline.
+
+### 2026-08-25 — which "absent" people on the Charlemagne line already have items
+
+Emma: *"which of the supposed absent members are actually just present on wikidata without ids."*
+
+`scripts/find-absent-on-wikidata.py`. The search is **structural, never a name lookup**: for an
+absent person, take the relatives who *do* have a QID and read the reciprocal slot on their item —
+a parent's `P40`, a child's `P22`/`P25`, a spouse's `P26`. Any item there not already matched to
+one of our Geni ids is a candidate.
+
+**2 of the 16 marked `create` on the Charlemagne route already have items.**
+
+- **Step 127, Bengta Ebbesdotter → `Q2183430`** *Benedicta Ebbesdotter of Hvide*, 30 properties,
+  and **corroborated three independent ways**: her father `Q16063657` lists it as a child, a child
+  `Q2709490` names it as mother, and her spouse `Q365072` names it as a spouse. This is the person
+  a batch of mine duplicated. The route had her marked absent purely because `Q2183430` carries no
+  `P2600`.
+- **Step 15, Anna Fartegnsdatter Seim** → two candidates through her child `Q110302785`, which
+  names `Q110302787` as father and `Q110302791` (labelled `NN`) as mother.
+
+The other 14 are genuinely absent.
+
+**Also: `reports/wikidata-bergitte.qs`.** Bergitte Aukland `6000000002481819312`, 1465–1522 —
+`queue.md`: *"the bigger target one"*, the common ancestor on both Emma↔Arne lines who is herself
+descended from Charlemagne. She has no item, and neither do her parents, her husband or her four
+children, so there is nothing to link her to yet. Checked against `p2600-all.tsv` and the
+candidate search before writing: genuinely absent, not hidden like Benedicta.
+
+**And `out/chain-charlemagne-to-arne.html`**, built by `scripts/build-chain-page.py` — every
+person on the 399-step descent plus both Emma↔Arne chains, each with a Geni link and a Wikidata
+link where one exists. **Only Emma and Arne have items; all 22 people between them do not.**
+
+**One correction recorded in the script.** The junction was first *derived* by intersecting the
+route with the blood path, giving Rasmus Wibye Andersson Lea — which is only where two files stop
+agreeing. Emma had written the answer in `queue.md` weeks earlier: *"the first common ancestor of
+us is Rasmus Ingebretsen Grude"*. Her note is the source; the files illustrate it. Deriving what
+is already recorded cost her a turn to say so.
