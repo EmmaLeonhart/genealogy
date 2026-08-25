@@ -13271,3 +13271,36 @@ Not changing the algorithm on four cases; recording it where the next batch will
 **The shared-name brake in `resolve-multi-geni-by-parents.py` would fire on `李氏` vs `李氏` and
 withhold correctly** — but for the wrong reason, reading a placeholder collision as evidence of one
 person. It errs toward not deleting, which is the safe direction, so no change is being made.
+
+### 2026-08-25 — the slow lane cannot be run from here, measured rather than assumed
+
+Two attempts, both **killed**, both at **exactly 17 tests** — and the second excluded
+`test_merge_real_exports` entirely, so the heavy merge module is not the whole story. Neither run
+failed and neither passed; 17 dots is not a result and was not recorded as one.
+
+What the collection actually shows:
+
+| module | slow tests |
+| --- | ---: |
+| `test_gedcom_real_exports.py` | **4,427** |
+| `test_density.py` | 18 |
+| `test_merge_real_exports.py` | 9 |
+| `test_wikidata_store_real.py` | 5 |
+| `test_paths.py` | 5 |
+
+**The slow lane is 4,464 tests — 78% of the 5,711-test suite — and 4,427 of them are one
+module.** `test_gedcom_real_exports` parametrises roughly eight checks per export over 553
+exports, so it scales linearly with the corpus and gets slower every time Emma runs an export.
+`CLAUDE.md` describes the slow lane as "six modules", which is true and hides this.
+
+Both runs died inside `test_density` (18 tests, alphabetically first), so **nothing past the
+seventeenth slow test has been verified in this session at all**.
+
+**This closes the NEEDS-INVESTIGATION as BLOCKED-ON-USER-ACTION.** Emma's 2026-08-24 answer was
+*"run it in the background on a schedule"*, and the measurement says that cannot work: the harness
+kills long-running background jobs the same way it caps foreground ones. The remaining action is
+hers and is one command — `python -m pytest -m slow` in her own terminal. `CLAUDE.md` already says
+so; what is new is that the background workaround has now been tried and does not.
+
+**Nothing is waiting on it.** The fast lane is green at 1,245 passed and covers every module's
+logic; the slow lane re-measures the whole corpus, which is valuable and is not a gate.

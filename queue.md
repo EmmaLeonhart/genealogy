@@ -36,6 +36,22 @@ Every `.qs` in `reports/` is guarded by `tests/test_p2600_batches.py` — line s
 quoting, `S2600` references, Geni ids, duplicate statements, one `P2600` per `CREATE`,
 and no two batches creating the same person.
 
+## BLOCKED-ON-USER-ACTION — the slow test lane needs Emma's terminal
+
+Measured 2026-08-25, twice, and it does not work from here.
+
+- Emma's 2026-08-24 answer was *"run it in the background on a schedule"*. **Backgrounded
+  jobs are killed too** — two attempts, both stopped at exactly 17 tests, one of them with
+  `test_merge_real_exports` excluded. Neither was a failure; neither was a pass.
+- **The slow lane is 4,464 tests, 78% of the suite**, and **4,427 of them are in
+  `test_gedcom_real_exports.py`** — roughly eight per export across 553 exports, so it
+  grows with the corpus and will only get worse.
+- Both runs died inside `test_density.py` (18 tests), before reaching anything else.
+
+**The action only Emma can take:** run `python -m pytest -m slow` in her own terminal.
+Nothing else in the repo is waiting on it — the fast lane is green at 1,245 and covers every
+module's logic; what the slow lane adds is the corpus-wide re-measurement.
+
 ## Decided 2026-08-25 — the multi-Geni-ID work
 
 - Continue opening both Geni pages for the **70** targets in
