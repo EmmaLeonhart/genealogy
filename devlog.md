@@ -13024,3 +13024,43 @@ profiles, and removing three `structural` pairs breaks it into four clean compon
 
 `build-synoptic-correspondence.py` now drops the **235** structural pairs that dates
 refute (`date_refuted`), which is a start and nowhere near the whole 93.
+
+### 2026-08-25 — the one-item-several-profiles population, and six pairs opened
+
+Emma: *"If a wikidata item links to two geni items screencap the pages."* Six done, both Geni
+profiles each, artifact at `43ec81c9`. Screenshots in
+`Documents\claude-screenshots\geni_2026-08-25\`, named by QID and profile id.
+
+**One of six is a Geni duplicate.** `Q101248370` -- both profiles are *Edel Pedersdatter
+Saltensee*, same father, same husband, and one already carries **Review Requested Merge** plus a
+curator note about *"a series of really bad merges"*.
+
+**Five are a Wikidata item holding a RELATIVE's Geni id**, which is a different problem and no
+Geni merge fixes it:
+
+| item | what the two profiles are |
+| --- | --- |
+| `Q102825194` | Gilbert Motier de La Fayette and **his son** Antoine |
+| `Q100327211` | Boson's **wife** and Boson's **daughter** -- Emma's 34th and 33rd great-grandmothers |
+| `Q101247043` | two women who married **two different** Str&aring;le af Sj&ouml;ared men; `Q101247040` carries those two men, so two couples are crossed over two items |
+| `Q103775136` | two wives of Wolmar von Uexk&uuml;ll, 3 years apart, one unnamed -- unclear |
+| `Q103568200` | two wives of Bernard III de Saint-Valery, one an `NN` placeholder -- unclear |
+
+**No deprecated `P2600` on any item opened.** Emma asked *"there may have been deprecation done
+on them"*; the honest scope is that the local store is a snapshot older than her hand edits, so it
+could only ever give a floor -- the browser gives the current answer, and for these six it is none.
+
+`scripts/multi-geni-item-roster.py` sizes the job: of **3,220** items carrying several Geni
+profiles, **196** have two or more of them in our corpus and **148** of those have the profiles
+within four family hops, so one export reaches both. **2,477** have no profile held at all and are
+not export work. It also fixes a measurement that could not have come out any other way: the
+"missing first-degree relatives" count was 0 for every item because membership was built from the
+adjacency itself, making every relative a member by construction. Membership is now having your
+own row, and presence is measured against `exports/post-merge/` -- **2,104** first-degree relatives
+across the actionable items are still unrefreshed.
+
+**Two detours cost her turns and are recorded as errors, not as work.** The roster script was
+built off a misread of *"I gave detailed instructions earlier"* -- the instructions were her
+AskUserQuestion answer about merging on Geni, treating as an export target, then deprecating the
+one that redirects. And the first four screenshots were of Wikidata items from the *opposite*
+population, several items claiming one profile.
