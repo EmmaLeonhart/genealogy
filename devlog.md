@@ -13819,3 +13819,28 @@ Nothing is emitted from this. The rounds are not capped in code yet, because whe
 judgement about acceptable error, not a threshold to pick quietly — round 1 at 3.9% is comparable
 to the rest of this work, round 3 at 9.8% is not obviously acceptable, and round 8 at 27.1% plainly
 is not.
+
+### 2026-08-25 — the queue's closing item, and the spine recorded
+
+Emma: *"record somewhere clearly that we have that path from Marta Jonsdatter Li up to that common
+ancestor and then to charlemagne and to me... make it 100% clear in our queue at the end and no
+other crap no excuses queue says to build the thing that makes a lot of them."*
+
+Two things, both done.
+
+**`reports/the-spine.md`** records the line, **read off Geni's own relationship panel** rather than
+re-derived: *"Arne Garborg is Bergitte Gunnbjørnsdatter Aukland's 9th great grandson"*, twelve
+people from Bergitte down through Gunnbjørn Jonson Mjølhus, Lars Gunnbjørnsen Mjølhus, Peder
+Larsen Mjølhus, Lars Person Nedre Rossavik, Berit Larsdatter Nedre Rossavik, Lars Tormodsen Mele,
+Jon Larson Mæle, **Marta Jonsdatter Li**, **Jon Samuelsen Raustad**, Ane Oline Jonsdatter Raugstad,
+to **Arne**. It is not derived from our files on purpose — re-deriving what she had already
+recorded produced a wrong answer earlier today.
+
+**Three of the twelve have items**: Marta `Q141178381` (made today), Jon `Q141168955`, Arne
+`Q467497`. Nine do not, Bergitte has none, and the Bergitte→Charlemagne half is not in the repo at
+all.
+
+**The queue now ends with one item and nothing else**: build the batch builder that creates
+everyone on the spine at once rather than a hop a day. It names what it must do — both directions
+of every relationship, the duplicate guard on every person without exception, no `--limit` — and
+lists the five pieces that already exist to build it from.

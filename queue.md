@@ -1477,3 +1477,49 @@ scanned, 19,023 carrying an ordinal — 8,093 unambiguous Roman, 5,892 single-le
   100 edits a day chosen at random from the eligible set, service-area gate,
   Geni-IDs-as-sources de-prioritised to 5–25 a day. **Do not normalise away the bias
   toward her neighbourhood** — it is deliberate.
+---
+
+# THE LAST ITEM. BUILD THE THING THAT MAKES A LOT OF THEM.
+
+**Emma, 2026-08-25:** *"record somewhere clearly that we have that path from Marta Jonsdatter Li
+up to that common ancestor and then to charlemagne and to me. And the fact that our daily runs are
+buildin gpeople adjacent to this make it 100% clear in our queue at the end and no other crap no
+excuses queue says to build the thing that makes a lot of them."*
+
+## The thing to build
+
+**A batch builder that creates MANY people along the spine at once, instead of a hop a day.**
+
+The spine is `reports/the-spine.md`, read off Geni's own relationship panel:
+
+> **Charlemagne → Bergitte Aukland → [7 people] → Marta Jonsdatter Li → Jon Samuelsen Raustad →
+> Ane Oline Jonsdatter Raugstad → Arne Garborg**, and Bergitte down to **Emma** on the other side.
+
+Of the twelve from Bergitte to Arne, **three have items**: Marta `Q141178381`, Jon `Q141168955`,
+Arne `Q467497`. **Nine do not.** Bergitte has no item. The whole
+Bergitte→Charlemagne descent is not in the repo at all.
+
+**The daily runs already create people adjacent to this line** — that is what they are for, and it
+is why they matter. But one hop a day against a line this long is the wrong instrument.
+
+## What it must do
+
+- Take the spine as its roster and create **everyone on it who has no item**, in one batch.
+- Emit both directions of every relationship. A `CREATE` block cannot write its own reciprocal —
+  `LAST` is only valid as a subject, never as a value — so the batch must carry a second section
+  that fixes the links, the way `scripts/build-missing-reciprocals.py` does.
+- Run the duplicate guard on every person before creating them: a parent with a `P40` child item
+  we have not matched means **do not create**. This is not optional. It is what `Q2183430` cost.
+- Not stop at ten. The `--limit` was for a hop-a-day cadence; this is the opposite instrument.
+
+## What already exists to build it from
+
+| piece | what it gives |
+| --- | --- |
+| `reports/the-spine.md` | the line itself, from Geni |
+| `scripts/build-garborg-day.py` | the modelling: labels, names, dates, sex, `S2600` refs, the duplicate guard, `--roster` |
+| `scripts/build-missing-reciprocals.py` | the second section that closes one-way links |
+| `out/wikidata/relations.tsv` | `P40`/`P22`/`P25`/`P26` for 1.4M items, for the guard |
+| `reports/absent-but-present.tsv` | who is "absent" but actually already on Wikidata |
+
+**Nothing else goes in this section.**
