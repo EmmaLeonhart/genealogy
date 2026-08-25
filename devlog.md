@@ -13747,3 +13747,75 @@ route with the blood path, giving Rasmus Wibye Andersson Lea — which is only w
 agreeing. Emma had written the answer in `queue.md` weeks earlier: *"the first common ancestor of
 us is Rasmus Ingebretsen Grude"*. Her note is the source; the files illustrate it. Deriving what
 is already recorded cost her a turn to say so.
+
+### 2026-08-25 — the zipper join runs, and its error compounds with every round
+
+**23,596 new correspondences from 37,436 anchors, over 8 rounds.** `scripts/zipper-join.py`, using
+`out/wikidata/relations.tsv` — the extract whose absence was the reason the join had never been
+written.
+
+| round | new pairs | slots compared |
+| ---: | ---: | ---: |
+| 1 | 9,050 | 48,646 |
+| 2 | 4,881 | 16,361 |
+| 3 | 3,391 | 9,158 |
+| 4 | 2,419 | 6,191 |
+| 5 | 1,678 | 4,290 |
+| 6 | 1,121 | 2,788 |
+| 7 | 660 | 1,738 |
+| 8 | 396 | 1,123 |
+
+**It did not converge.** Round 8 still produced 396 pairs and the run stopped at `MAX_ROUNDS`, so
+there are more to be had — which given the next result is not obviously a good thing.
+
+## The validation, and it is a warning rather than a pass
+
+Dates play no part in making a pair, so they can judge one. **The disagreement rate climbs
+monotonically with every round:**
+
+| round | checkable | agree | **disagree** |
+| ---: | ---: | ---: | ---: |
+| 1 | 6,598 | 96.1% | **3.9%** |
+| 2 | 3,043 | 93.6% | **6.4%** |
+| 3 | 1,759 | 90.2% | **9.8%** |
+| 4 | 1,148 | 88.0% | **12.0%** |
+| 5 | 670 | 85.7% | **14.3%** |
+| 6 | 412 | 83.5% | **16.5%** |
+| 7 | 248 | 81.5% | **18.5%** |
+| 8 | 129 | 72.9% | **27.1%** |
+| **all** | **14,007** | **92.8%** | **7.2%** |
+
+**Error compounds roughly sevenfold from round 1 to round 8.** Each round hangs off the previous
+round's inferences, so a wrong pair in round 3 poisons everything it anchors afterwards. The
+headline 92.8% is an average over a distribution that is *not* uniform, and quoting it alone would
+hide the whole finding — the same shape as the add gate earlier today, where reading the success
+rate hid a 3.4x effect.
+
+**9,589 of the 23,596 have no comparable dates and are unchecked.** That is 41% resting on
+position alone with nothing testing it, and the unchecked share is not evenly spread either.
+
+## The hard case Emma named, measured
+
+**615 slots were too ambiguous to call**, and the distribution is exactly where she said it would
+be:
+
+| slot | ambiguous |
+| --- | ---: |
+| spouse | 302 |
+| child | 190 |
+| father | 81 |
+| mother | 42 |
+
+Her words: *"parents are very easy to do a zipper join on. Children, however, selecting between
+children and spouses, and in some cases multiple sets of parents, is a much, much more difficult
+task."* **Spouse and child are 80% of the ambiguity between them**; father and mother are 20%.
+Two-against-two proposes nothing, per her ruling *"lean two people, never merge on a coin flip"*.
+
+**6 proposals were refuted by a recorded `P2600`** and dropped.
+
+## What this does not license
+
+Nothing is emitted from this. The rounds are not capped in code yet, because where to cap is a
+judgement about acceptable error, not a threshold to pick quietly — round 1 at 3.9% is comparable
+to the rest of this work, round 3 at 9.8% is not obviously acceptable, and round 8 at 27.1% plainly
+is not.
