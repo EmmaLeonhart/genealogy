@@ -74,13 +74,15 @@ them and nothing is waiting.
 ## Decided 2026-08-25 — the multi-Geni-ID work
 
 - Continue opening both Geni pages for the **70** targets in
-  `reports/multi-p2600-targets.tsv`. **22 done, 48 to go, 99 pages.** Screenshots to
+  `reports/multi-p2600-targets.tsv`. **24 done, 46 to go, 95 pages.** Screenshots to
   `Documents\claude-screenshots\`, artifact per batch. Judgements go in
   `reports/multi-p2600-verdicts.tsv`.
   **Order comes from `reports/multi-p2600-triage.tsv`** — a queue order, never a verdict.
   Open `look_first=yes` first: 13 `PLACEHOLDER` pairs where no name test can work, and 6
   `DIFFERENT-PATRONYMIC` where the two names name two different fathers.
-  **22 done: 10 are one person twice, 12 are two real people.**
+  **24 done: 12 are one person twice, 12 are two real people.**
+  **The lineage corroboration is 4 for 4 against hand checks** — every pair it called
+  CORROBORATED and that was then opened turned out to be one person.
   **Read `reports/multi-p2600-lineage.tsv` first** — 8 pairs are CORROBORATED by their
   relatives being paired on Wikidata too, which is structural proof needing no names, and
   13 are PARENTS-NOT-JOINED, which is **not** evidence of two people — tested and refuted

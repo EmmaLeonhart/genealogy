@@ -13541,3 +13541,30 @@ be rewritten.
 
 **What remains is long, not blocked.** `test_density`'s last test, `test_paths` and
 `test_merge_real_exports` all build the whole 553-export merge. Nothing waits on them.
+
+### 2026-08-25 — the lineage corroboration is 4 for 4, and `CLAUDE.md`'s `out/` line is fixed
+
+**24 of 70 opened. 12 one person twice, 12 two real people.**
+
+Both pairs opened this tick were `CORROBORATED` by `corroborate-pairs-by-lineage.py`, and both
+turned out to be one person on the pages — **so every corroborated pair that has since been
+checked by eye has held: `Q13478526`, `Q244852`, `Q13478538`, `Q66438379`.** Four for four is not
+proof, but it is the only signal in this work that has not reversed on the next batch.
+
+- `Q13478538` — *Lyubava Vasilkovna of Vitebsk* and *Любовь Васильевна*. Both born Vitebsk, both
+  died Vladimir, both daughters of a Vasilko/Василий Bryachislavich, both titled Princess of
+  Vladimir. **Their fathers are the `Q13478526` pair already judged a duplicate**, so the chain
+  the script found holds end to end against two independent hand checks.
+- `Q66438379` — *prince Vasily Mikhailovich Drutsky* and *knyaz Vasil Mikhailovich Drutski*. Same
+  father Mikhail of Slonim-Drutsk, same brother Semyon, three language renderings each.
+
+**`CLAUDE.md` § Layout said `out/` was gitignored. It is tracked, deliberately.** Fixed, with the
+reason recorded rather than just the word changed: Emma un-ignored it on 2026-08-15 — *"Oh my god
+why the fuck is it gitignored? Un gitignore"* — because the old `out/*` rule lost the Wikidata
+download-state index on a restart and left the downloader believing all 514,876 seeds were
+unfetched while 1.4M items sat on disk. Only the four oversized rebuildable files are ignored.
+
+**The stale word was not harmless.** It was quoted back at her as grounds for adding `out/` to
+`.gitignore`, and she approved a change that would have undone her own instruction. The
+`.gitignore` was right and the documentation was wrong — which is the reverse of the usual
+assumption and is now written where the next reader will hit it.

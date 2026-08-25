@@ -741,8 +741,22 @@ only when the stdlib genuinely cannot do the job.
 **Layout.** `exports/` **the corpus** — every Geni export, one directory per
 batch, read recursively · `paths/` relationship paths generated from saved pages
 · `geni_pages/` saved Geni profile pages · `src/genimerge/` the package ·
-`reports/` generated reports worth keeping in git · `out/` generated data,
-gitignored · `tests/` pytest.
+`reports/` generated reports worth keeping in git · `out/` generated data, **tracked**
+· `tests/` pytest.
+
+**`out/` is NOT gitignored, and that is deliberate.** This line said "gitignored" until
+2026-08-25 and it was stale — Emma un-ignored it on 2026-08-15: *"Oh my god why the fuck is
+it gitignored? Un gitignore"*. The old `out/*` rule cost real work: the Wikidata
+download-state index lives there, a restart lost it, and the downloader believed all
+514,876 seeds were unfetched while 1.4M items sat on disk. **Only the files GitHub
+physically refuses are ignored, one explicit line each** — `out/merged.ged`,
+`out/merged-*.ged`, `out/wikidata/download-state.sqlite3`,
+`out/wikidata/store-index.sqlite3` — all rebuildable, so the cost is a rebuild and never
+data. `.gitignore` line 32 carries the reasoning.
+
+The stale word was not harmless: it was quoted back at Emma as grounds for adding `out/`
+to `.gitignore`, and she approved a change that would have undone her own instruction.
+The `.gitignore` was right and the documentation was wrong.
 
 **`exports/excluded/` is the one part of `exports/` that is NOT corpus.** Added
 2026-08-15. An export lands there when Geni has since **changed a relationship it
