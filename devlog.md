@@ -12984,3 +12984,43 @@ people in a position.
   `Анна Ивановна`, same father `Q210162`, married to `Q7569679` and `Q2033112` — which are
   the two items from the *Dmitry "Bobrok"* conflict. **A duplicated couple**: husband
   twice, wife twice, each copy married to the matching copy.
+
+### The same day, later — FOUR shapes, and 89% of the mess is mine
+
+Emma: *"You conflated wiki data items having two Jenny links on them... Now you're talking
+about wikidata items that link to the same Jenny item. That is a very different
+phenomenon... and there might be some other things that you have here."*
+
+Both halves right. `scripts/census-correspondence-shapes.py` measures the shapes as
+connected components of the QID<->Geni graph rather than asserting how many there are —
+a per-row view **structurally cannot see** a component bigger than a pair, which is how
+two phenomena came to be narrated as one.
+
+| shape | components | fix |
+| --- | ---: | --- |
+| clean `1x1` | 518,451 (99.3%) | — |
+| **one item, several Geni profiles** | 3,220 | none — Emma's Zerubbabel shape |
+| **several items, one Geni profile** | 215 | merge on **Wikidata** |
+| **TANGLE, both at once** | 105 | both merges |
+
+Her cause for the first, which is about how Geni behaves rather than about error: a profile
+gets isolated from the main tree, nobody can edit it, so somebody creates a new one —
+*"Jenny doesn't have the ability to differentiate between multiple different contradictory
+facts."*
+
+**Then the question worth asking: how much of this is the walk's doing?**
+
+| | as built | without structural pairs | mine |
+| --- | ---: | ---: | ---: |
+| tangles | 105 | **12** | **93 (89%)** |
+| several items -> one Geni profile | 215 | **64** | **151 (70%)** |
+| one item -> several Geni profiles | 3,220 | 2,857 | 363 |
+
+**Wikidata's own genuine state is 11 tangles and 59 duplicated profiles.** The rest is the
+walk welding unrelated components together — precisely what pairing on *position alone, no
+name, no date* does in the Rurikid lines, where every prince has cousins of his own name.
+All three largest tangles are Polotsk princes; the `4x8` holds four items and eight
+profiles, and removing three `structural` pairs breaks it into four clean components.
+
+`build-synoptic-correspondence.py` now drops the **235** structural pairs that dates
+refute (`date_refuted`), which is a start and nowhere near the whole 93.

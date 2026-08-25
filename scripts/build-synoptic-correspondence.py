@@ -46,6 +46,32 @@ sys.stdout.reconfigure(encoding="utf-8")
 ROOT = Path(__file__).resolve().parent.parent
 
 
+def date_refuted():
+    """`{(qid, geni_id)}` the structural walk proposed and dates prove impossible.
+
+    **Emma, 2026-08-24, on the walk's date conflicts:** *"All these ones look easy."*
+    They are: `Eufemia von Hirscher` 1166-1229 paired with `Margaret of Nuremberg`
+    1359-1390 is not a judgement call, it is a pairing that cannot be right. So they are
+    dropped here rather than carried into the synoptic tree and left for a human to
+    re-notice.
+
+    **Only `structural` pairs are dropped.** A `wikidata-p2600` pair whose dates disagree
+    is Wikidata stating an identifier we do not get to overrule -- that is a
+    disagreement to record, not a pair to delete. This filter refutes our own inference
+    and nothing else, which is why it keys on the pair rather than on the Geni id.
+
+    Absent validation file -> empty set, so the build still runs.
+    """
+    path = ROOT / "reports" / "structural-walk-validation.tsv"
+    if not path.exists():
+        print("  (no structural-walk-validation.tsv; keeping every structural pair)")
+        return set()
+    with open(path, encoding="utf-8") as f:
+        return {(r["qid"], r["geni_id"])
+                for r in csv.DictReader(f, delimiter="\t")
+                if r["verdict"] == "conflict"}
+
+
 def rows_from(path, qid_col, geni_col, delim=","):
     if not path.exists():
         print(f"  (missing: {path.relative_to(ROOT)})")
@@ -88,12 +114,20 @@ def main():
         ("izumo-sister-roster",
          rows_from(R / "izumo-sister-p2600-pairs.tsv", "qid", "geni_ids", "\t")),
     ]
+    refuted = date_refuted()
+    dropped = 0
     for label, stream in sources:
         n = 0
         for q, g in stream:
+            # Our own inference, and dates say it is impossible. See `date_refuted`.
+            if label == "structural" and (q, g) in refuted:
+                dropped += 1
+                continue
             pairs[(q, g)].add(label)
             n += 1
         print(f"{label:<22} {n:>7} pairs")
+    if refuted:
+        print(f"{'(date-refuted)':<22} {dropped:>7} structural pairs dropped")
 
     print(f"\n{len(pairs)} distinct (qid, geni) pairs")
 
