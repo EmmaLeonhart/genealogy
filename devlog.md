@@ -13599,3 +13599,40 @@ of 7,320, and 95.2% of the rejected ones with comparable dates are date-consiste
 what it throws away is probably fine. That is a deliberate trade — the output writes to Wikidata —
 but it is a trade, not a free win, and whether to loosen it is now a NEEDS-DECISION for Emma
 rather than something to tune quietly.
+
+### 2026-08-25 — the zipper join, actually implemented
+
+Emma: *"The zipper merge kinda half exists and is opaque I thought you meant something more clear
+and substantive than just having never even tried to implement the feature. Implement it."*
+
+**She is right and the diagnosis is precise.** What existed were parent-shaped fragments — three
+separate scripts (`resolve-multi-geni-by-parents`, `corroborate-pairs-by-lineage`,
+`build-add-p2600-batch`) each opening a shard to read **one pair's** `P22`. None walked, none
+looked at children or spouses, and none fed a result back in to reach further. Calling any of
+them a zipper join oversold them, which `docs/structural-walk.md` already said about the walk and
+which I then repeated about their successors.
+
+**The reason it was never written is concrete: nothing extracted relationships from the store.**
+Reading `P22` one item at a time is affordable for a few hundred items and impossible for a join
+that walks outward from half a million anchors asking about four properties.
+`scripts/extract-wikidata-relations.py` reads all 2,248 shards once and writes `P22`, `P25`,
+`P40`, `P26` and `P2600` per item to `out/wikidata/relations.tsv`. Deprecated statements are
+dropped — a retracted parent link must not propose a merge.
+
+**`scripts/zipper-join.py` is the join.** Anchors are the pairs Wikidata already asserts. Each
+round, for every anchor, four slots are compared; **already-closed correspondences are consumed
+first**, which is the zipper's teeth — each closed pair removes a candidate from both sides and
+shrinks the residual. A slot proposes a pair **only when exactly one unpaired person remains on
+each side**. New pairs become anchors and the next round runs.
+
+**Two-against-two proposes nothing, deliberately.** That is Emma's hard case — *"Children,
+however, selecting between children and spouses, and in some cases multiple sets of parents, is a
+much, much more difficult task"* — and her ruling the same day settles it:
+**"Lean two people — never merge on a coin flip."** Those slots are written to
+`reports/zipper-ambiguous.tsv` so the size of the hard case is measured rather than guessed at.
+
+A proposal contradicting a recorded `P2600` is a conflict and never a pair. A person proposed for
+two items, or an item for two people, drops **both** proposals. No name is compared anywhere.
+
+**Not yet run** — Emma asked to hold at this exact point while she runs Arne QuickStatements. The
+relations extract was still building when work stopped.

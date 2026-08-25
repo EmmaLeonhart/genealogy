@@ -73,6 +73,16 @@ them and nothing is waiting.
 
 ## Decided 2026-08-25 — the multi-Geni-ID work
 
+- **Borderline pairs: LEAN TWO PEOPLE.** Emma, 2026-08-25: *"Lean two people — never merge
+  on a coin flip."* A wrong merge destroys a real person from the record; a wrong split
+  only leaves work undone. The duplicate count staying understated is the accepted cost.
+
+- **Run a `Forest` export seeded on `Q122925764`'s pair** — Tomas Stanislaus Sapiega
+  `6000000041241763571` or Stanislovas Sapiega `6000000041241858399`. Emma: *"Needs an
+  export before I judge it."* Both names carry Stanisław so the given-name test cannot
+  separate them. Grep `exports/` for both ids first, per § *GREP THE CORPUS BEFORE
+  RUNNING AN EXPORT*.
+
 - Continue opening both Geni pages for the **70** targets in
   `reports/multi-p2600-targets.tsv`. **24 done, 46 to go, 95 pages.** Screenshots to
   `Documents\claude-screenshots\`, artifact per batch. Judgements go in
