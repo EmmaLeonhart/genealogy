@@ -13178,3 +13178,38 @@ explicitly forbids reintroducing a standing question of that shape.
 **The slow-lane cron was already wired** — `b314299e`, daily 03:23 — and two status reports called
 it unwired. It most likely starved, which is the known failure mode: a cron only fires while the
 session is idle, and 03:23 was mid-query.
+
+### 2026-08-25 — six of the 70 opened, and none of them is a duplicate
+
+`reports/multi-p2600-targets.tsv` is the corrected target list: **70** items, **143 pages**, built
+from `p2600-all.tsv` so every candidate is a `P2600` Wikidata actually asserts. The earlier
+`multi-geni-items.tsv` was built on the contaminated population and its 196 is not a real number.
+
+**Six opened, both Geni pages each. Six for six the two profiles are two real people.**
+
+| item | what they are |
+| --- | --- |
+| `Q961910` | **brothers** — Jean Arrighi de Casanova, duc de Padoue, and Jean Toussaint ARRIGHI; each page lists the other |
+| `Q96985053` | **father and son** — two Deacon John Loomis, 1622–1688 and 1649–1715, both Master Profiles |
+| `Q121643089` | **half-sisters, and Geni forbids the merge** — curator note: *"Locked to prevent merge with any of Håkon's daughters until documentation is found"* |
+| `Q104717485` | **brothers** — Fryderyk and Fiodor/Teodor Sapieha-Koden |
+| `Q122925422` | **sisters** — Raina/Regina and Wasylisa Sapieha, both c.1560, married two Dembińskis |
+| `Q47306394` | **unrelated namesakes** — daughters of *Pavel* and *Bohdan* Sapieha; both render `Sofija Sapiegaitė` in Lithuanian |
+
+**This inverts the premise the work started from.** `CLAUDE.md` § *A second Geni ID on one
+Wikidata item is NOT a conflict* explains the shape as **Geni** duplication — profiles isolated
+from the tree, so somebody makes a new one, as with Aaron and Zerubbabel. That is right about
+those cases and **wrong about this sample**: here it is **Wikidata** joining two relatives who
+share a name. The fix is therefore on the Wikidata side, removing a wrong `P2600`, and no Geni
+merge is called for. Six is not 70 and this is not yet a rule — but it is six for six, and the
+ranking heuristic should be read accordingly.
+
+**`shares_father` is a SIBLING detector, not a duplicate one.** It was put in the ranking as
+evidence two profiles are one person; three of the six top-ranked pairs are siblings *because*
+they share a father. It still ranks the right items to the top — a shared father does mean the
+pair is worth opening — but its sign was backwards.
+
+`Q121643089` is the strongest single case: a Geni curator explicitly locked one profile against
+merging with any of Håkon's daughters, and Wikidata has joined exactly that pair.
+
+Artifact: <https://claude.ai/code/artifact/cc43d8f3-2821-4c0a-a906-8bb4d6fccb82>

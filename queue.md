@@ -38,12 +38,12 @@ and no two batches creating the same person.
 
 ## Decided 2026-08-25 — the multi-Geni-ID work
 
-- Open both Geni pages for each of the **70** items that genuinely carry two or more
-  Geni ids AND have two or more of those profiles in our corpus. ~150 pages, in
-  batches, screenshots to `Documents\claude-screenshots\`, artifact after each batch.
-  The list is the `p2600-all.tsv` intersection, not `multi-geni-items.tsv`, which was
-  built on the contaminated population. Emma chose browsing over resolving-first:
-  the six opened so far are the only method that has produced a verdict worth trusting.
+- Continue opening both Geni pages for the **70** targets in
+  `reports/multi-p2600-targets.tsv`. **6 done, 64 to go, 131 pages.** Screenshots to
+  `Documents\claude-screenshots\`, artifact per batch. Judgements go in
+  `reports/multi-p2600-verdicts.tsv`.
+  **All 6 so far are relatives, not duplicates** — rank the rest expecting the same, and
+  read the sibling lists on the pages first, since each page names the other profile.
 
 - Build the **add**-`P2600` batch and generalise it beyond the two verified items.
   Emma, 2026-08-25: *"Yes, and generalise it to the whole store"* — any item our
