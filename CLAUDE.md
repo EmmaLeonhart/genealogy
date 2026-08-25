@@ -1479,7 +1479,7 @@ is what `queue.md` meant by *"Bergitte is the bigger target one"*.
 | line | source | people | have items | **to create** |
 | --- | --- | ---: | ---: | ---: |
 | **1. Charlemagne → Bergitte** | `paths/charlemagne-to-arne-garborg.tsv` steps 12–34 | 23 | 9 | **14** |
-| **2. Bergitte → Emma** | **NOT CAPTURED** | ? | ? | ? |
+| **2. Bergitte → Emma** | Geni: *13th great grandmother*; steps not yet captured | ~15 | ? | ? |
 | **3. Bergitte → Arne** | `paths/charlemagne-to-arne-garborg.tsv` steps 1–12 | 12 | 3 | **9** |
 
 **Lines 1 and 3 are one saved Geni path**, `paths/charlemagne-to-arne-garborg.tsv` — 34 steps,

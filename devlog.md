@@ -13957,3 +13957,31 @@ are most well documented."*
 **One more thing worth carrying**: `Q127427192` *Ragnhild Skulesdatter*, Skule's other daughter,
 is on Wikidata with **no Geni id at all**. The pattern Emma described is real and there will be
 more of it.
+
+### 2026-08-25 — line 2 established: Bergitte is Emma's 13th great grandmother
+
+Emma: *"if you really need to save a geni page you can open it up and save it yourself"*, then
+*"Navigate on geni lol why aren't your doing it"*. Fair — so I did.
+
+**Geni states it plainly: "Bergitte Gunnbjørnsdatter Aukland is your 13th great grandmother."**
+Against Arne's 9th great grandmother, so **line 2 is the longer of the two** — roughly 15 steps to
+his 11.
+
+**The `?through=` URL is the way to get this**, and it is worth writing down because the push-pin
+control cost three attempts and two frozen renderers before I gave up on it:
+
+    https://www.geni.com/people/Bergitte-Aukland/6000000002481819312?through=6000000087535357291
+
+The pin had been left set to Bergitte, so every profile was showing its relationship *to her*
+rather than to Emma, and clicking it to reset did nothing. `?through=<geni id>` pins the
+relationship to a chosen profile directly.
+
+**The step-by-step path is still not captured.** Expanding the panel froze the renderer three
+times, so the remaining work is to save the page and run `genimerge path-from-html` on it.
+Stopping there rather than hammering a frozen tab.
+
+**Also: `out/wikidata/labels.tsv` finished** — 2,246,980 rows carrying labels in six languages,
+aliases, and twelve genealogy identifiers per item. That is the instrument for the name-variant
+half of the absence question, the half the structural search cannot reach.
+
+**And Emma has merged `Q2183430`.** The duplicate my batch created is resolved.

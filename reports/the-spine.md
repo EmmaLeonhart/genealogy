@@ -63,9 +63,17 @@ Lines 1 and 3 are one saved path, `paths/charlemagne-to-arne-garborg.tsv`, 34 st
 
 ## Line 2 — Bergitte → Emma
 
-**Missing.** Emma descends from Bergitte by a different line from Arne's, and no saved page covers
-it. Save the Geni relationship page, then
-`python -m genimerge path-from-html <page> -o paths/bergitte-to-emma.tsv`.
+**Geni states it: "Bergitte Gunnbjørnsdatter Aukland is your 13th great grandmother."** Read from
+<https://www.geni.com/people/Bergitte-Aukland/6000000002481819312?through=6000000087535357291> on
+2026-08-25 — the `?through=` form pins the relationship to a chosen profile, which is how this
+page is obtained without fighting the push-pin control.
+
+**13 great-grandmother generations means roughly 15 steps**, against Arne's 11 (his 9th great
+grandmother). So line 2 is the longer of the two.
+
+**The step-by-step path is not yet captured.** Expanding the panel needs the page saved and run
+through `python -m genimerge path-from-html <page> -o paths/bergitte-to-emma.tsv`; three attempts
+to expand it in the browser ended with the renderer timing out.
 
 ## The shape of the work
 
