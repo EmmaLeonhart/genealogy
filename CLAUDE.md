@@ -1401,6 +1401,61 @@ merging the trees more for situations where the Jenny and the wiki data are not
 there. The Jenny ID is added first, and then all the Jenny-derived stuff is
 added after."*
 
+### The ONE place a name may choose: inside a zipper slot, dates first
+
+**Emma, 2026-08-25:** *"Dates first then names but also bruh providence of zipper merges should be
+recorded."*
+
+This is a narrow, deliberate exception to *no name similarity, ever*, and the boundary is what
+makes it safe. `scripts/zipper-join.py` resolves a family slot in three steps:
+
+1. **solo** — one unpaired person on each side. Position is the whole evidence.
+2. **date** — birth years within `matching.YEAR_TOLERANCE`, unique from **both** directions.
+3. **name** — a shared identifying word, unique from **both** directions.
+
+**Why this is not the deleted `reconcile` matcher.** That searched Wikidata *for* a name. This
+never leaves the slot: the parent is already an established correspondence, so the candidate set
+is closed and usually two people. `CLAUDE.md`'s own wording is *"Labels confirm a position; they
+never choose one"* — position has already chosen the set; the label only orders within it. An
+assignment that is not unique both ways proposes nothing, which is the coin-flip rule holding.
+
+**The inherited-name guard, and why it exists.** In a child slot, every word of the *parent's* own
+name is discarded before matching. The first run without it proposed `Carl Edvard Hansson
+Wachtmeister` → `Hans Wachtmeister` on the shared token *wachtmeister* — a child of a Wachtmeister
+matched to a child of a Wachtmeister. It passed uniqueness only because the other siblings had no
+surname recorded, so the evidence was an artefact of missing data on the candidates it beat.
+Removing the surname made the step **more** productive, not less: 3,309 → 10,862 proposals, because
+the shared family name had been blocking ties that a given name then settles.
+
+**The name step is measurably no worse than the position-only step it supplements.** Of proposals
+where both sides carry a birth year, those reached by name disagree by more than ten years **9.2%**
+of the time, against **11.8%** for `solo` and **0.0%** for `date` (which selects on the year). So
+adding names did not lower the join's standard.
+
+**Provenance is mandatory.** `reports/zipper-pairs.tsv` carries
+`round, geni_id, qid, slot, method, from_geni, from_qid, evidence`. It previously carried round,
+geni id and qid alone — the slot was assigned into the tuple as `""` and never emitted — so no pair
+could be audited. A zipper pair with no method recorded is a defect, not a pair.
+
+### Our side could never have two children — check the separator before believing a distribution
+
+**`reports/derived-family.csv` separates multi-valued cells with ` | `, spaces included.** Every
+consumer must split on it. `zipper-join.py` handled `,` and `;` only, so a five-child cell parsed
+as the single token `"1050090 | 1050271 | ..."`, matched nothing, and the person reached the join
+**childless**. 379,251 people have two or more children and every one of them arrived with none.
+
+**The tell was a distribution that was too clean.** `reports/zipper-ambiguous.tsv` held 615 rows
+and not one was `2 × 2` — read at the time as "two-against-two is rare", when the truth was that
+our side could not *have* two. Emma spotted it from the outside: *"I feel the zipper merge still
+isn't hitting the hard points lol."*
+
+**And there were two bugs stacked.** Splitting on `|` alone yields `"1050090 "` with whitespace,
+which still missed the index — the first fix moved the pair count by **exactly zero**, which is how
+the second was found. A fix that changes nothing is evidence, not reassurance.
+
+This is the same shape as the date-parser failures recorded above: **a parser that silently narrows
+its input instead of failing**, with downstream counts that stay plausible while the data shrinks.
+
 ### Merging the two trees is a walk up the relationships, not a name search
 
 **Emma, 2026-08-15, and she is clear this has not actually been done yet:**

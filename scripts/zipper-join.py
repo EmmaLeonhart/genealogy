@@ -40,8 +40,9 @@ partner is already paired, and whose partner appears on their side, is struck fr
 the zipper's teeth — each closed pair removes a candidate from both sides and makes the residual
 smaller.
 
-**What is left is proposed only when it is unambiguous: exactly one unpaired person on our side
-and exactly one on theirs.** Two-against-two proposes nothing. This is the honest answer to the
+**What is left is proposed when it is unambiguous: exactly one unpaired person on our side and
+exactly one on theirs.** Where more remain, a cascade runs -- **dates first, then names** -- and
+each step proposes only assignments that are unique from **both** directions. This is the honest answer to the
 hard case she named: with two unmatched children on each side there is no evidence which is
 which, and guessing would be the coin flip she ruled against on 2026-08-25 — *"Lean two people —
 never merge on a coin flip."*
@@ -85,8 +86,22 @@ from pathlib import Path
 sys.stdout.reconfigure(encoding="utf-8")
 csv.field_size_limit(1 << 30)
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
+from genimerge.matching import YEAR_TOLERANCE  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 RELATIONS = ROOT / "out" / "wikidata" / "relations.tsv"
+DATES = ROOT / "out" / "wikidata" / "dates.tsv"
+
+#: Tokens with no identifying force. Titles, particles, and the redaction markers -- `NN` must
+#: never match `NN`, which would pair two unrelated unnamed children.
+NOISE = {
+    "of", "de", "von", "van", "der", "den", "di", "da", "du", "la", "le", "el",
+    "af", "och", "the", "til", "till", "zu", "zur", "sir", "lord", "lady", "count",
+    "countess", "graf", "grafin", "gräfin", "duke", "duchess", "king", "queen",
+    "baron", "baroness", "earl", "prince", "princess", "herr", "fru", "nn",
+    "unknown", "private", "ukjent", "i", "ii", "iii", "iv", "v", "vi", "vii", "viii",
+}
 
 #: Their property for each slot, and the column of ours it faces.
 SLOTS = (("father", "p22", "father"), ("mother", "p25", "mother"),
@@ -129,6 +144,76 @@ def split(cell):
     return [x.strip() for x in re.split(r"[,;|]", cell or "") if x.strip()]
 
 
+def words(name):
+    """Identifying tokens of a name, lowercased.
+
+    **Diacritics are kept.** `CLAUDE.md` is explicit that folding them invents ambiguity -- 525
+    genuinely ambiguous names became 1,312 when a previous pass folded them. They are only
+    normalised out for the `NOISE` lookup, never for matching.
+    """
+    out = set()
+    for w in re.split(r"[^0-9A-Za-zÀ-ſ]+", (name or "").lower()):
+        if len(w) > 2 and w not in NOISE:
+            out.add(w)
+    return out
+
+
+def mutually_unique(edges):
+    """`[(a, b, evidence)]` -> only those where `a` and `b` each appear exactly once.
+
+    This is what keeps the cascade honest. An edge set where one of our children matches both of
+    theirs, or where both of ours match one of theirs, resolves nothing and contributes nothing --
+    picking from it would be the coin flip Emma ruled out.
+    """
+    la = collections.Counter(a for a, _b, _e in edges)
+    lb = collections.Counter(b for _a, b, _e in edges)
+    return [(a, b, e) for a, b, e in edges if la[a] == 1 and lb[b] == 1]
+
+
+def by_date(left, right, our_year, their_year):
+    """Sibling assignments that birth years settle. Unique both ways or nothing."""
+    edges = []
+    for a in left:
+        ya = our_year.get(a)
+        if ya is None:
+            continue
+        for b in right:
+            yb = their_year.get(b)
+            if yb is None:
+                continue
+            if abs(ya - yb) <= YEAR_TOLERANCE:
+                edges.append((a, b, f"born {ya} vs {yb}"))
+    return mutually_unique(edges)
+
+
+def by_name(left, right, our_name, their_name, inherited=frozenset()):
+    """Sibling assignments that a shared word settles, WITHIN the closed slot. Unique both ways.
+
+    Reached only after dates fail. See the module docstring for why this is not the name matching
+    `CLAUDE.md` forbids: the candidate set is fixed by position before this is called, and nothing
+    here searches outside it.
+
+    **`inherited` is every word in the anchoring person's own name, and it is discarded.** In a
+    child slot that is the family name, which every sibling carries and which therefore cannot
+    tell one from another. The first run without this guard proposed
+    `Carl Edvard Hansson Wachtmeister` -> `Hans Wachtmeister` on the shared token *wachtmeister*,
+    a child of a Wachtmeister matched to a child of a Wachtmeister. It passed the uniqueness test
+    only because the *other* siblings had no surname recorded -- so the evidence was an artefact
+    of missing data on the candidates it beat, which is the worst kind of match: confident,
+    unique, and meaningless.
+    """
+    edges = []
+    for a in left:
+        wa = words(our_name.get(a)) - inherited
+        if not wa:
+            continue
+        for b in right:
+            shared = wa & (words(their_name.get(b)) - inherited)
+            if shared:
+                edges.append((a, b, "shared: " + ",".join(sorted(shared))))
+    return mutually_unique(edges)
+
+
 def main():
     if not RELATIONS.exists():
         sys.exit(f"missing {RELATIONS} - run scripts/extract-wikidata-relations.py first")
@@ -146,6 +231,33 @@ def main():
             ours[row["geni_id"]] = row
     print(f"{len(ours):,} people in our tree")
 
+    # Names and dates feed the cascade ONLY. Nothing here is consulted for a solo proposal.
+    our_name, their_name, our_year, their_year = {}, {}, {}, {}
+    with open(ROOT / "reports" / "derived-labels.csv", encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            our_name[row["geni_id"]] = row["label_en"] or row["label_mul"]
+    with open(ROOT / "out" / "wikidata" / "labels.tsv", encoding="utf-8") as f:
+        for row in csv.DictReader(f, delimiter="\t"):
+            their_name[row["qid"]] = (row["en"] or row["mul"] or row["no"]
+                                      or row["nb"] or row["sv"] or row["da"])
+    with open(ROOT / "reports" / "derived-facts.csv", encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            y = row.get("birth_date_year")
+            if y:
+                try:
+                    our_year[row["geni_id"]] = int(y)
+                except ValueError:
+                    pass
+    if DATES.exists():
+        with open(DATES, encoding="utf-8") as f:
+            for row in csv.DictReader(f, delimiter="\t"):
+                if row["birth_year"]:
+                    their_year[row["qid"]] = int(row["birth_year"])
+    else:
+        print(f"  (no {DATES.name}; the date step of the cascade will be skipped - "
+              f"run scripts/extract-wikidata-dates.py)")
+    print(f"{len(our_year):,} of ours dated, {len(their_year):,} of theirs dated")
+
     # --- anchors: what Wikidata itself asserts ------------------------------------------
     g2q, q2g = {}, {}
     stated_g, stated_q = collections.defaultdict(set), collections.defaultdict(set)
@@ -160,7 +272,8 @@ def main():
                 g2q[g], q2g[q] = q, g
     print(f"{len(g2q):,} anchors - one Geni id, one item, both sides agree")
 
-    pairs = {}          # geni -> (qid, slot, round)
+    pairs = {}          # geni -> (qid, round)
+    provenance = {}     # (geni, qid) -> (slot, method, from_geni, from_qid, evidence)
     conflicts, ambiguous = [], []
     frontier = set(g2q)
 
@@ -188,8 +301,28 @@ def main():
                 used = {g2q[x] for x in us if g2q.get(x) in them}
                 left = [x for x in us if x not in g2q]
                 right = [x for x in them if x not in used and x not in q2g]
+                if not (left and right):
+                    continue
+                # The cascade. Solo first, then dates, then names within the closed slot.
                 if len(left) == 1 and len(right) == 1:
-                    a, b = left[0], right[0]
+                    found = [(left[0], right[0], "position")]
+                    method = "solo"
+                else:
+                    found = by_date(left, right, our_year, their_year)
+                    method = "date"
+                    if not found:
+                        # A family name inherited from this very anchor cannot separate its own
+                        # children. Spouses inherit nothing, so the guard is child-slot only.
+                        inherited = (words(our_name.get(g)) | words(their_name.get(q))
+                                     if slot == "child" else frozenset())
+                        found = by_name(left, right, our_name, their_name, inherited)
+                        method = "name"
+                if not found:
+                    ambiguous.append({"round": rnd, "slot": slot, "from_geni": g,
+                                      "from_qid": q, "ours_unmatched": ";".join(left),
+                                      "theirs_unmatched": ";".join(right)})
+                    continue
+                for a, b, evidence in found:
                     if a in g2q or b in q2g:
                         continue
                     if stated_g.get(a) and b not in stated_g[a]:
@@ -200,10 +333,17 @@ def main():
                         continue
                     proposed[a].add(b)
                     reverse[b].add(a)
-                elif left and right:
+                    provenance[(a, b)] = (slot, method, g, q, evidence)
+                # Anyone the cascade could not place is still an open slot, and saying so is the
+                # difference between "resolved" and "partly resolved".
+                placed_a = {a for a, _b, _e in found}
+                placed_b = {b for _a, b, _e in found}
+                rest_a = [x for x in left if x not in placed_a]
+                rest_b = [x for x in right if x not in placed_b]
+                if rest_a and rest_b:
                     ambiguous.append({"round": rnd, "slot": slot, "from_geni": g,
-                                      "from_qid": q, "ours_unmatched": ";".join(left),
-                                      "theirs_unmatched": ";".join(right)})
+                                      "from_qid": q, "ours_unmatched": ";".join(rest_a),
+                                      "theirs_unmatched": ";".join(rest_b)})
 
         # Ambiguity is dropped on BOTH sides, never resolved by picking.
         fresh = {}
@@ -219,10 +359,7 @@ def main():
             break
         for g, q in fresh.items():
             g2q[g], q2g[q] = q, g
-            pairs[g] = (q, "", rnd)
-        # record which slot produced each, for the report
-        for g in fresh:
-            pairs[g] = (fresh[g], pairs[g][1], rnd)
+            pairs[g] = (q, rnd)
         print(f"round {rnd}: {seen_slots:,} slots compared, "
               f"{len(fresh):,} new pairs, {len(g2q):,} total")
         frontier = set(fresh)
@@ -230,9 +367,11 @@ def main():
     out = ROOT / "reports" / "zipper-pairs.tsv"
     with open(out, "w", encoding="utf-8", newline="") as f:
         w = csv.writer(f, delimiter="\t")
-        w.writerow(["round", "geni_id", "qid"])
-        for g, (q, _s, rnd) in sorted(pairs.items(), key=lambda kv: (kv[1][2], kv[0])):
-            w.writerow([rnd, g, q])
+        w.writerow(["round", "geni_id", "qid", "slot", "method", "from_geni", "from_qid",
+                    "evidence"])
+        for g, (q, rnd) in sorted(pairs.items(), key=lambda kv: (kv[1][1], kv[0])):
+            slot, method, fg, fq, ev = provenance.get((g, q), ("", "", "", "", ""))
+            w.writerow([rnd, g, q, slot, method, fg, fq, ev])
 
     for name, rows, cols in (
             ("zipper-conflicts.tsv", conflicts,
@@ -250,6 +389,12 @@ def main():
     print(f"\n{len(pairs):,} NEW correspondences -> reports/zipper-pairs.tsv")
     print(f"{len(conflicts):,} refuted by a recorded P2600 -> reports/zipper-conflicts.tsv")
     print(f"{len(ambiguous):,} slots too ambiguous to call -> reports/zipper-ambiguous.tsv")
+    methods = collections.Counter(provenance[(g, q)][1] for g, (q, _r) in pairs.items()
+                                  if (g, q) in provenance)
+    print("\nhow each pair was reached - Emma, 2026-08-25: "
+          "provenance of zipper merges should be recorded:")
+    for m, n in methods.most_common():
+        print(f"   {n:>7,}  {m}")
     by_slot = collections.Counter(a["slot"] for a in ambiguous)
     if by_slot:
         print("\nwhere the ambiguity is - the hard case Emma named:")
