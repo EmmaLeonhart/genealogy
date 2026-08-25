@@ -120,14 +120,38 @@ def main():
                         len(by_qid[q]) - 1, len(by_geni[g]) - 1])
     print(f"\nwrote {out.relative_to(ROOT)}")
 
+    # **One row per competing QID, so each carries its OWN provenance.**
+    #
+    # This used to write one row per Geni profile with the sources of every candidate
+    # flattened into a single set: `structural;wikidata-p2600` told you the conflict
+    # involved both, but not *which* source proposed *which* QID. That is the whole
+    # question, because `wikidata-p2600` is a statement Wikidata carries while
+    # `structural` is our own inference from tree position, and where they disagree
+    # the recorded identifier wins.
+    #
+    # It misled twice on 2026-08-24 alone. Katharina von Braunschweig-Wolfenbüttel was
+    # reported as the structural walk pairing a woman with `Q567039` *Henry IV, Duke of
+    # Brunswick* -- a man. The walk never touched her: `P2600` supplied the correct
+    # `Q434771` and the wrong candidate came from `geni-wikidata-pairs`. The flattened
+    # column made an ordinary aggregate look like per-candidate provenance.
     conf = R / "synoptic-conflicts.tsv"
     with open(conf, "w", encoding="utf-8", newline="") as f:
         w = csv.writer(f, delimiter="\t")
-        w.writerow(["geni_id", "qids", "sources"])
+        w.writerow(["geni_id", "qid", "sources", "competing_qids", "shape"])
         for g, qs in sorted(conflicts.items()):
-            src = sorted({s for q in qs for s in pairs[(q, g)]})
-            w.writerow([g, ";".join(sorted(qs)), ";".join(src)])
-    print(f"wrote {conf.relative_to(ROOT)} - {len(conflicts)} rows, Emma's to settle")
+            per = {q: sorted(pairs[(q, g)]) for q in qs}
+            # Name the common case so it can be filtered without re-deriving it: our
+            # inference standing against Wikidata's own identifier.
+            flat = {s for src in per.values() for s in src}
+            shape = ("inference vs recorded id"
+                     if {"structural", "wikidata-p2600"} <= flat
+                     else "both from Wikidata" if flat == {"wikidata-p2600"}
+                     else "other")
+            for q in sorted(qs):
+                w.writerow([g, q, ";".join(per[q]),
+                            ";".join(sorted(qs - {q})), shape])
+    print(f"wrote {conf.relative_to(ROOT)} - {len(conflicts)} conflicts, "
+          f"one row per candidate, Emma's to settle")
 
 
 if __name__ == "__main__":

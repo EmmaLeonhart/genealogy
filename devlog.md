@@ -12893,3 +12893,44 @@ Geni profiles claim more than one QID; those are hers to settle and are in
 `reports/synoptic-conflicts.tsv`.
 
 Fast lane: **1,241 passed, 0 failed, 2 skipped.**
+
+## 2026-08-24 — the conflicts report destroyed provenance, and it misled me twice
+
+Emma, on the conflict examples: *"Uhh how did your walk even hit these?"*
+
+It mostly did not, and the report was why. `synoptic-conflicts.tsv` wrote one row per Geni
+profile with the sources of **every** candidate flattened into one set:
+
+    geni_id   qids                  sources
+    3602282   Q434771;Q567039       geni-wikidata-pairs;wikidata-p2600
+
+That tells you the conflict involved both sources. It does **not** tell you which source
+proposed which QID — and that is the entire question, because `wikidata-p2600` is a
+statement Wikidata carries while `structural` is our own inference from tree position.
+
+**Katharina von Braunschweig-Wolfenbüttel is the case.** I told Emma the structural walk
+had paired a woman with `Q567039` *Henry IV, Duke of Brunswick*, a man. **It never touched
+her.** `P2600` supplied the correct `Q434771`; the wrong candidate came from
+`geni-wikidata-pairs`. I had read an aggregate as per-candidate provenance — the same
+misreading I had already made and corrected earlier the same day on the 180/70 split.
+
+**Now one row per candidate**, each with its own `sources`, its rivals in
+`competing_qids`, and a `shape` column naming the common case:
+
+| shape | rows |
+| --- | ---: |
+| **inference vs recorded id** — our walk against Wikidata's `P2600` | **620** |
+| **both from Wikidata** — two items each asserting `P2600` on one profile | **135** |
+| other | 17 |
+
+772 candidate rows over 383 conflicted profiles.
+
+**That changes what is actually Emma's to settle.** The 620 are 310 profiles where our
+inference stands against a recorded identifier, and a recorded identifier wins — those are
+ours to drop, not hers to adjudicate. The genuine ambiguities are the **135 rows** where
+two Wikidata items both claim the same Geni profile, which is Wikidata's own contradiction.
+
+`tests/test_synoptic_conflicts.py` pins it: one row per candidate, sources not shared
+across a profile's candidates, and the shape column separating inference from recorded id.
+
+Fast lane: **1,245 passed, 0 failed, 2 skipped.**
