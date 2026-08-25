@@ -271,6 +271,8 @@ def main():
     # when the spine is done.
     ap.add_argument("--in-laws", action="store_true",
                     help="also include spouses of roster members")
+    ap.add_argument("--limit", type=int, default=0, metavar="N",
+                    help="create only the N people closest to Arne (0 = no limit)")
     args = ap.parse_args()
 
     have = ledger()
@@ -396,6 +398,105 @@ def main():
                     siblings[a].add(b)
 
     lines, carried = [], []
+    # ---- THE DUPLICATE GUARD -------------------------------------------------------
+    # **Emma, 2026-08-25, after running a batch:** *"you also kinda immediately just fucked
+    # up with making a person who has an item see here
+    # https://www.wikidata.org/wiki/Q2183430"*.
+    #
+    # `Q2183430` is *Benedicta Ebbesdotter of Hvide*, b.1165 d.1199, father `Q16063657`. The
+    # batch created a second item for her -- same father, same death year, and it even wrote
+    # `Benedicta` as her nickname, which is that item's own label. She was in our local store
+    # the whole time with 30 properties on her.
+    #
+    # **Why nothing caught it.** The builder knew about existing items two ways only:
+    # `garborg-qids.tsv`, the 41 people Emma had made, and `p2600-all.tsv`, items carrying a
+    # `P2600`. `Q2183430` has no `P2600`, so it was invisible to both.
+    #
+    # **The check that does catch it is the parent's own child list.** `Q16063657`'s `P40` is
+    # `Q2183430; Q12320052; Q116150300` -- the duplicate was sitting in a list the batch
+    # already had a QID for. So: before creating anyone, look at every parent of theirs that
+    # has a QID, and if that parent has a `P40` child item **not already matched to one of
+    # our people**, refuse. The person being created may BE that item.
+    #
+    # This is conservative on purpose and will hold back people who really are new, whenever
+    # a sibling of theirs has an unmatched item. Holding a real person back costs a day;
+    # creating a duplicate costs Emma a manual merge on a public database.
+    #
+    # `out/wikidata/relations.tsv` (scripts/extract-wikidata-relations.py) carries `P40` for
+    # every item in the store, so this is a dict lookup rather than a shard read.
+    kids_of = {}
+    rel = ROOT / "out" / "wikidata" / "relations.tsv"
+    if rel.exists():
+        with open(rel, encoding="utf-8") as f:
+            for row in csv.DictReader(f, delimiter="	"):
+                if row.get("p40"):
+                    kids_of[row["qid"]] = [x for x in row["p40"].split(";") if x]
+        print(f"{len(kids_of):,} items with a P40 child list, for the duplicate guard")
+    else:
+        print("WARNING: out/wikidata/relations.tsv missing - duplicate guard is OFF")
+
+    claimed = set(have.values())
+    blocked = {}
+    for g in list(frontier):
+        for parent in (father.get(g), mother.get(g)):
+            pq = have.get(parent) if parent else None
+            if not pq:
+                continue
+            loose = [k for k in kids_of.get(pq, []) if k not in claimed]
+            if loose:
+                blocked[g] = (pq, loose)
+                break
+    if blocked:
+        for g, (pq, loose) in blocked.items():
+            carried.append((g, labels.get(g, ""),
+                            f"HELD by the duplicate guard: parent {pq} has unmatched child "
+                            f"item(s) {';'.join(loose[:4])} - this person may already be one"))
+            frontier.pop(g, None)
+        print(f"duplicate guard held {len(blocked)} people whose parent has an "
+              f"unmatched child item on Wikidata")
+
+    # `--skip-nn` must bite BEFORE `--limit`, or the limit spends slots on people the run
+    # is about to drop: asking for 10 named people returned 7, because 3 of the 10 closest
+    # were redacted and were removed afterwards.
+    if args.skip_nn:
+        dropped = [g for g in frontier
+                   if (labels.get(g, "").strip().lower().startswith(("nn", "private", "<private"))
+                       or not labels.get(g, "").strip())]
+        for g in dropped:
+            frontier.pop(g, None)
+            carried.append((g, labels.get(g, ""), "redacted: skipped by --skip-nn for this run"))
+        if dropped:
+            print(f"--skip-nn: {len(dropped)} redacted people held for a later run")
+
+    # ---- order the ring by CLOSENESS TO ARNE ---------------------------------------
+    # Emma: *"I want to build more connected Arne Garborg individuals"* and
+    # *"we maybe make 10 people connected to Arne Garborg"*. The ring was emitted in label
+    # order, which is alphabetical and meaningless. Distance is measured over the same
+    # parent/child/spouse edges the tree records.
+    ARNE = "6000000003492005116"
+    dist, seen_d = {ARNE: 0}, [ARNE]
+    while seen_d:
+        nxt = []
+        for x in seen_d:
+            for y in (list(children.get(x, ())) + list(spouses.get(x, ()))
+                      + [father.get(x), mother.get(x)]):
+                if y and y not in dist:
+                    dist[y] = dist[x] + 1
+                    nxt.append(y)
+        seen_d = nxt
+    ring_order = sorted(frontier, key=lambda g: (dist.get(g, 10**6), labels.get(g, "")))
+    if args.limit:
+        keep = set(ring_order[:args.limit])
+        for g in list(frontier):
+            if g not in keep:
+                carried.append((g, labels.get(g, ""),
+                                f"beyond --limit {args.limit}; "
+                                f"{dist.get(g, '?')} steps from Arne"))
+                frontier.pop(g, None)
+        ring_order = [g for g in ring_order if g in keep]
+        print(f"--limit {args.limit}: keeping the {len(ring_order)} closest to Arne "
+              f"({dist.get(ring_order[0], '?')}-{dist.get(ring_order[-1], '?')} steps)")
+
 
     def ref(g):
         return f'\tS2600\t"{g}"'

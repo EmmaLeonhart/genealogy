@@ -13669,3 +13669,44 @@ was read as CSV and every row came back as one uncut string. Both printed `0 ids
 to zero. It now finds ids by pattern and prints the count per file, so an unread roster is loud.
 
 **Today's file: 83 creations, 244 links, everyone born 1751–1878.**
+
+### 2026-08-25 — a duplicate reached Wikidata, and the guard that would have stopped it
+
+**Emma: *"you also kinda immediately just fucked up with making a person who has an item see here
+https://www.wikidata.org/wiki/Q2183430"*.** She is right and this is the worst failure of the
+session: a batch I built created a second Wikidata item for a person who already had one, on a
+public database, and she has to merge it by hand.
+
+**`Q2183430` is *Benedicta Ebbesdotter of Hvide*, b.1165 d.1199, father `Q16063657`, thirty
+properties.** The batch created *Bengta Ebbesdotter Ebbesdatter Hvide*, b.1170 d.1199, `P22`
+`Q16063657` — **the same father** — and wrote `Benedicta` as her `P1449` nickname, which is that
+item's own English label.
+
+**Why nothing caught it.** The builder knew about existing items exactly two ways:
+`reports/garborg-qids.tsv`, the 41 people Emma had made, and `out/wikidata/p2600-all.tsv`, items
+carrying a `P2600`. `Q2183430` has no `P2600`. It was invisible to both — while sitting in our own
+local store with a full set of claims.
+
+**The check that catches it is the parent's own child list**, and the data was already on disk:
+`Q16063657`'s `P40` is `Q2183430; Q12320052; Q116150300`. The duplicate was in a list belonging to
+a QID the batch was itself citing.
+
+So: **before creating anyone, every parent of theirs that has a QID is checked, and if that parent
+has a `P40` child item not already matched to one of our people, the creation is refused.**
+`out/wikidata/relations.tsv` carries `P40` for **735,609** items, so it is a dict lookup.
+Verified against the real case — the guard fires on `Q16063657`.
+
+**It is conservative on purpose**: it will hold back genuinely new people whenever a sibling of
+theirs has an unmatched item. Holding a real person back costs a day. Creating a duplicate costs
+Emma a manual merge on Wikidata.
+
+**Also fixed this round**, all from her: the ring is now ordered by **graph distance from Arne**
+rather than alphabetically, `--limit N` takes the N closest, and `--skip-nn` bites **before** the
+limit — asking for 10 named people had returned 7 because three of the ten closest were redacted
+and were dropped afterwards.
+
+**Not fixed, and stated rather than buried: `ja`/`zh` reaches 4 of 10.** The transliteration table
+is 113 hand-typed tokens and these names need others. A rule engine was written and **scored 30%
+against those 113 hand rows**, so it was discarded rather than used — an engine that cannot
+reproduce a table a human checked has no business extending it. `scripts/translit_no.py` keeps the
+attempt and its `--check` score so the next try starts from a measured baseline.
