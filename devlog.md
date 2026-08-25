@@ -12744,3 +12744,42 @@ through JavaScript. Geni's form handler never saw the values, the save did nothi
 tree still showed *Add father* — no error anywhere. Real keystrokes worked. Setting an
 input's `value` from script is not typing into it, and only checking the tree afterwards
 caught it.
+
+## 2026-08-24 — export 5 filed; the Aaron III loop resolved on Geni
+
+`exports/post-merge/export-Forest-6000000227414103872.ged` — `NN`, mother of Sadakiyo
+En'ya, a Tier 3 seed since Sadakiyo was added by user "Japanese" in 2013. **5,000
+individuals, 2,929 families.** Five post-merge exports now.
+
+### The Samaritan tangle was a Geni-side duplicate, and Emma fixed it
+
+The thing I had reported as a father–son cycle was **two separate `Aaron III` profiles**
+with an `Amram V` between them — son of one, father of the other. Not a cycle, and not a
+relationship error: an unmerged duplicate. Emma merged them, then resolved what the merge
+exposed — two duplicate mothers, two duplicate `Amram V` parents, and `Amram V` sitting in
+the children list as well as the parents.
+
+Verified on Geni afterwards rather than assumed:
+
+    Aaron III (6000000178918141824)
+      Son of    Amram V Samaritan High Priest
+      Father of Amram VII and Amram VI Samaritan High Priest
+
+That matches the succession exactly — 95 Tsedaka I, 96 Amram V, **97 Aaron III**, 98 Amram
+VI — from the Wikipedia list of Samaritan High Priests, which is what settled the
+direction.
+
+**Our corpus still holds the pre-merge state for these people**, so a refresh export seeded
+on Aaron III is running. That is the whole point of the privileged directory: not to decide
+who was a duplicate, but to carry Geni's current state and win.
+
+### Cycles are NOT a defect to fix
+
+Emma, twice: *"I don't want a cycle, but I'm basically willing to accept clutter"*, then
+**"Cycles are not actually a thing that needs to be fixed, just to be clear."**
+
+`scripts/find-ancestry-cycles.py` and `reports/ancestry-cycles.tsv` are committed as a
+**measurement only** — 20 cycles over 66 people, 19 with a named member, none Samaritan.
+Kept because the measurement already exists and answers "are there any", not because
+anything should act on it. **Do not turn this into work.** Emma: *"don't turn this into
+some gigantic project that I didn't ask for."*
