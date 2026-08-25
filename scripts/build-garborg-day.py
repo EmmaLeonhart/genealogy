@@ -244,9 +244,47 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--skip-nn", action="store_true",
                     help="omit redacted/NN people from this batch (a per-run choice)")
+    # **Emma, 2026-08-25:** *"Since it is clear that there are way too many people to do
+    # everything, we focus on ancestry and in-laws that get to my item."* Without this the
+    # frontier is every edge out of every item that has a QID -- 138 creations in all
+    # directions on the day this was added -- and most of them lead away from her rather
+    # than toward Charlemagne or toward Arne.
+    #
+    # The roster is a file of Geni ids, one per line or in a `geni_id` column;
+    # `reports/charlemagne-route.csv` is the 399-step Emma-to-Charlemagne spine and
+    # `paths/isolate-geni-aadne-eivindson-garborg-1851-1924.tsv` is the Emma-to-Arne pair
+    # of paths. Spouses of roster members are kept too -- those are the in-laws she named.
+    ap.add_argument("--roster", action="append", default=[], metavar="FILE",
+                    help="restrict the ring to these Geni ids (repeatable)")
+    # **The ledger is only who EMMA created.** `reports/charlemagne-route.csv` carries 383
+    # people who already had a Wikidata item long before this programme, with their QIDs in
+    # a `qid` column — and the "both ends must exist" rule needs those to count as existing,
+    # or the ring around them is empty and the route can never be worked. Without this the
+    # roster filter cut the ring to zero: the 41 items she has made are Arne's family, and
+    # the route is her own ancestry, which touches them only at the far end.
+    ap.add_argument("--known", action="append", default=[], metavar="FILE",
+                    help="CSV/TSV with geni_id and qid columns of items that already exist")
+    # **In-laws are opt-in, because they are the bulk.** With the Charlemagne route as the
+    # roster, the spine itself needs 16 creations and adding spouses took that to 510 --
+    # far past the "up to 4 people a day" the queue asks for. The spine first, the in-laws
+    # when the spine is done.
+    ap.add_argument("--in-laws", action="store_true",
+                    help="also include spouses of roster members")
     args = ap.parse_args()
 
     have = ledger()
+    for path in args.known:
+        with open(path, encoding="utf-8") as f:
+            head = f.readline()
+            f.seek(0)
+            rd = csv.DictReader(f, delimiter="\t" if "\t" in head else ",")
+            n = 0
+            for row in rd:
+                g, q = (row.get("geni_id") or "").strip(), (row.get("qid") or "").strip()
+                if g.isdigit() and q.startswith("Q") and g not in have:
+                    have[g] = q
+                    n += 1
+        print(f"{n} already-existing items read from {path}")
     table = translit()
     plan = load_plan()
     fam_p, fam_c, fams, famc = read_tree()
@@ -260,6 +298,37 @@ def main():
                 if other not in have:
                     frontier.setdefault(other, fam)
     print(f"{len(frontier)} people one edge away and not yet on Wikidata")
+
+    if args.roster:
+        wanted = set()
+        for path in args.roster:
+            with open(path, encoding="utf-8") as f:
+                head = f.readline()
+                delim = "\t" if "\t" in head else ","
+                f.seek(0)
+                for row in csv.reader(f, delimiter=delim):
+                    for cell in row:
+                        cell = cell.strip()
+                        if cell.isdigit() and len(cell) >= 10:
+                            wanted.add(cell)
+        # Spouses of roster members are the in-laws. A spouse shares a `FAM` with them as
+        # the other parent, so they are already in `frontier` keyed on that family --
+        # keeping any frontier person who shares a family with a roster member keeps the
+        # in-laws without needing a second pass over the tree.
+        # **In-laws means SPOUSES, not everyone in the family.** The first cut unioned
+        # every parent and child of every family a roster member appears in, which took the
+        # ring from 138 to 2569 -- it pulled in whole sibling sets and their descendants,
+        # which is the sprawl the roster exists to stop. A spouse is the *other parent* of
+        # a family the roster member parents, and that is all this adds.
+        near = set(wanted)
+        if args.in_laws:
+            for person in wanted:
+                for fam in fams.get(person, []):
+                    near |= set(fam_p.get(fam, []))
+        before = len(frontier)
+        frontier = {g: f for g, f in frontier.items() if g in near}
+        print(f"roster: {len(wanted)} ids from {len(args.roster)} file(s); "
+              f"ring cut {before} -> {len(frontier)} (roster members and their in-laws)")
 
     ids = set(frontier) | set(have)
     facts, labels = {}, {}
@@ -408,6 +477,13 @@ def main():
             continue
 
         lines.append("CREATE")
+        # **Both branches must leave these bound.** The alias block below reads them after
+        # the branch, and the redacted branch never set them -- so creating a redacted
+        # person crashed with `UnboundLocalError`. It went unseen because the unfiltered
+        # ring happened to contain no redacted people; restricting the ring to Emma's own
+        # ancestry surfaced it immediately. A redacted person has no married-name alias to
+        # emit, so empty strings are the right values, not a guard around the block.
+        primary, birth = label, ""
         if redacted or not label:
             # **NOT unlabelled.** `CLAUDE.md` § *`NN` is PRESERVED in `mul`.
             # Descriptive labels are ADDED in other languages* -- the marker stays in

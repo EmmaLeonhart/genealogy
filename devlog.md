@@ -13472,3 +13472,40 @@ outside the repo, so the built page is the only copy of them that version contro
 actually getting results."*
 
 <https://claude.ai/code/artifact/cc43d8f3-2821-4c0a-a906-8bb4d6fccb82>
+
+### 2026-08-25 — today's batch, restricted to the chain that reaches Emma
+
+Emma: *"Since it is clear that there are way too many people to do everything, we focus on
+ancestry and in-laws that get to my item"*, and *"we had at one point the chains to my nearest
+common ancestor with him and the nearest common ancestor descended from Charlemagne"*.
+
+**Those chains were never cleared — `reports/charlemagne-route.csv` is still there, 399 steps from
+Emma to Charlemagne, and 383 of them already have Wikidata items. Only 16 need creating.**
+
+**The ledger was refreshed properly first.** `reports/garborg-qids.tsv` was from 12:57 yesterday
+and she created items until 20:03. The first attempt matched her contributions to yesterday's
+batch **by label** and got 7 of 108 — because the labels she ended up with differ from the ones
+proposed. `CLAUDE.md` § *A SUMMARY of a Wikidata item is not the item* says to download the full
+items instead, so all 38 were fetched via `WikidataClient.full_entities` and their `P2600` read
+directly: **38 of 38 carry one**, exact mapping, no guessing. Ledger 34 → 41.
+
+**Three new options on `build-garborg-day.py`, each forced by a measurement:**
+
+- `--roster FILE` — the unrestricted ring was **138 creations in every direction**, mostly leading
+  away from her. Restricted to the route plus the Emma↔Arne paths.
+- `--known FILE` — with the roster alone the ring cut to **zero**, because the ledger holds only
+  the 41 items *she* created, which are Arne's family, while the route is her own ancestry whose
+  383 items long predate this programme. Their QIDs have to count as existing or the ring around
+  them is empty.
+- `--in-laws` — opt-in, because spouses took the ring from 16 to **510**, far past the
+  *"up to 4 people"* a day the queue asks for. Spine first.
+
+**A real crash fixed on the way.** The redacted branch never bound `primary`/`birth`, which the
+alias block after it reads — `UnboundLocalError` the moment a redacted person entered the ring.
+Invisible until now because the unfiltered ring happened to contain none.
+
+**Today's file: 3 creations, 787 links**, every statement carrying an `S2600` reference. The links
+are the substance — 350 `P40` *child*, 259 `P3373` *sibling*, 167 `P26` *spouse*, 15 `P22`
+*father*, 1 `P25` *mother*, plus 99 `P735` and 43 `P734` name statements. All of it between people
+who already have items, which is exactly the *"connections on wikidata that are currently absent"*
+she asked for.
