@@ -13844,3 +13844,37 @@ all.
 everyone on the spine at once rather than a hop a day. It names what it must do — both directions
 of every relationship, the duplicate guard on every person without exception, no `--limit` — and
 lists the five pieces that already exist to build it from.
+
+### 2026-08-25 — `P3373` sibling capped at 10 a day
+
+**Emma:** *"siblin relationships are too numerous and imo come off as spammy. We limit sibling
+relationship adding to 10 quickstatements a day."*
+
+**The numbers that provoked it.** `wikidata-reciprocals.qs` was **257 statements, 160 of them
+`P3373`** — 62% siblings. The daily Garborg batch was **162** `P3373` in one file.
+
+**Why siblings dominate: they grow as the SQUARE of a family.** Every child is a sibling of every
+other, so nine children is 72 `P3373` statements on its own, while parents grow linearly. A batch
+that looks balanced counted by people is overwhelmingly sibling links counted by statement.
+
+**The cap is per DAY across every batch**, not per file, and it is a presentation rule rather than
+a correctness one — the links are right, there are simply too many arriving at once for a
+watchlist to read as anything but noise.
+
+| batch | before | after |
+| --- | ---: | ---: |
+| `wikidata-reciprocals.qs` | 257 (160 sibling) | **107 (10 sibling)** |
+| `wikidata-garborg-day.qs` | 244 links (162 sibling) | **92 links (10 sibling)** |
+
+**Held, never dropped.** 150 go to `reports/wikidata-reciprocals-siblings-held.qs` and 152 to the
+Garborg carry-forward, to go out ten a day — the same mechanism the daily cadence already uses.
+
+**Nothing else is capped.** `P22`, `P25`, `P40` and `P26` stay uncapped: few per person and each
+structurally load-bearing.
+
+Recorded in `CLAUDE.md` as a standing rule, since it governs every future batch and not just these
+two.
+
+**Also: the 2:07pm synoptic rebuild is rescheduled to 16:01** (`9c96578d`) at her request. Step 1
+already ran and produced a byte-identical file, so the new job does steps 2 and 3 only and is told
+not to re-run the walk.

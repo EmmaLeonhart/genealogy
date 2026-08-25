@@ -909,6 +909,27 @@ two counts.
 do not exist yet, so a pattern broad enough to swallow the *next* batch fails now
 rather than after it arrives.
 
+### `P3373` sibling is capped at 10 a day. It reads as spam
+
+**Emma, 2026-08-25:** *"siblin relationships are too numerous and imo come off as spammy. We limit
+sibling relationship adding to 10 quickstatements a day."*
+
+**The number that provoked it:** `reports/wikidata-reciprocals.qs` came out **257 statements, 160
+of them `P3373`** — 62% of a batch, all siblings. Sibling links grow as the *square* of a family's
+size, because every child is a sibling of every other: one family of nine children is 72 `P3373`
+statements on its own. Parents grow linearly. So a batch that looks balanced by people is
+overwhelmingly sibling links by statement.
+
+**The cap is 10 `P3373` statements per day, across every batch**, not per file. A builder emitting
+siblings must count them and stop.
+
+**It is a presentation rule, not a correctness one.** The links are right; there are simply too
+many of them arriving at once for a watchlist to read as anything but noise. The rest stay in the
+carry-forward and go out on later days, which is the same mechanism the daily cadence already uses.
+
+**Nothing else is capped.** `P22` *father*, `P25` *mother*, `P40` *child* and `P26` *spouse* are
+uncapped — they are few per person and each one is structurally load-bearing.
+
 ### Always write the English label next to a property or item ID
 
 **Emma, 2026-08-15:** *"I have no fucking clue what any property or Q ID property

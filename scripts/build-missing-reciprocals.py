@@ -64,6 +64,13 @@ os.environ.setdefault("BOT_CONTACT", "emma@topazcomputing.com")
 
 FATHER, MOTHER, CHILD, SPOUSE, SIBLING = "P22", "P25", "P40", "P26", "P3373"
 
+#: **Emma, 2026-08-25:** *"siblin relationships are too numerous and imo come off as spammy.
+#: We limit sibling relationship adding to 10 quickstatements a day."* This file came out at
+#: 257 statements of which **160 were `P3373`** -- 62% siblings -- which is what provoked it.
+#: Sibling links grow as the SQUARE of a family: nine children is 72 statements on its own,
+#: while parents grow linearly. The rest are carried, not dropped.
+SIBLING_CAP = 10
+
 
 def main():
     # Everyone we know to have an item: Emma's ledger plus anything Wikidata states.
@@ -120,6 +127,7 @@ def main():
     print(f"{len(touched)} people touched")
 
     lines, seen, tally = [], set(), collections.Counter()
+    held = []
 
     def add(subj_g, prop, obj_g, why):
         sq, oq = qid.get(subj_g), qid.get(obj_g)
@@ -129,8 +137,12 @@ def main():
         if key in seen:
             return
         seen.add(key)
+        line = f'{sq}\t{prop}\t{oq}\tS2600\t"{subj_g}"'
+        if prop == SIBLING and tally[why] >= SIBLING_CAP:
+            held.append(line)
+            return
         tally[why] += 1
-        lines.append(f'{sq}\t{prop}\t{oq}\tS2600\t"{subj_g}"')
+        lines.append(line)
 
     for g in sorted(touched):
         f_, m_ = father.get(g), mother.get(g)
@@ -157,9 +169,23 @@ def main():
         out.write("# Additions only. Nothing is created and nothing is removed.\n\n")
         out.write("\n".join(lines) + ("\n" if lines else ""))
 
+    # **Held, never dropped.** The capped siblings are correct statements; there are simply
+    # too many to send at once. They go out on later days, ten at a time, which is the same
+    # carry-forward mechanism the daily Garborg cadence already uses.
+    if held:
+        (ROOT / "reports" / "wikidata-reciprocals-siblings-held.qs").write_text(
+            "# P3373 sibling statements over the 10-a-day cap.\n"
+            "# Emma, 2026-08-25: \"siblin relationships are too numerous and imo come off as\n"
+            "# spammy. We limit sibling relationship adding to 10 quickstatements a day.\"\n"
+            "# These are correct and merely too many at once. Run ten a day.\n\n"
+            + "\n".join(held) + "\n", encoding="utf-8", newline="\n")
+
     print(f"\nwrote {dest.relative_to(ROOT)} - {len(lines)} statements")
     for k, n in tally.most_common():
         print(f"   {n:>5}  {k}")
+    if held:
+        print(f"\n{len(held)} sibling statements held over the {SIBLING_CAP}-a-day cap")
+        print("   -> reports/wikidata-reciprocals-siblings-held.qs")
 
 
 if __name__ == "__main__":

@@ -63,7 +63,22 @@ def _load_gaps():
 existing_state = _load_gaps()
 
 ROOT = Path(__file__).resolve().parent.parent
+
+#: **Emma, 2026-08-25:** *"siblin relationships are too numerous and imo come off as spammy.
+#: We limit sibling relationship adding to 10 quickstatements a day."* This builder was
+#: emitting **162** `P3373` in one file. Siblings grow as the SQUARE of a family -- nine
+#: children is 72 statements by itself -- while parents grow linearly, so a batch that looks
+#: balanced by people is mostly sibling links by statement. The cap is per DAY across every
+#: batch, so it is shared with `build-missing-reciprocals.py`, and the overflow is carried
+#: rather than dropped: the statements are correct, there are just too many at once.
+SIBLING_CAP = 10
+_siblings_emitted = []
+
 SEX = {"M": "Q6581097", "F": "Q6581072"}
+
+
+def sibling_budget_left():
+    return SIBLING_CAP - len(_siblings_emitted)
 HUMAN = "Q5"
 
 
@@ -548,6 +563,12 @@ def main():
                 add(q, "P40", have[kid], g)
         for sib in sorted(siblings.get(g, ())):
             if sib in have:
+                if sibling_budget_left() <= 0:
+                    carried.append((g, labels.get(g, ""),
+                                    f"P3373 sibling {have[sib]} held: over the "
+                                    f"{SIBLING_CAP}-a-day cap"))
+                    continue
+                _siblings_emitted.append((q, have[sib]))
                 add(q, "P3373", have[sib], g)
         for sp in sorted(spouses.get(g, ())):
             if sp in have:
