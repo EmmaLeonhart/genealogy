@@ -78,6 +78,7 @@ from __future__ import annotations
 
 import collections
 import csv
+import re
 import sys
 from pathlib import Path
 
@@ -102,7 +103,30 @@ MAX_ROUNDS = 8
 
 
 def split(cell):
-    return [x for x in (cell or "").replace(",", ";").split(";") if x.strip()]
+    """Multi-valued cell -> list.
+
+    **The separator in `reports/derived-family.csv` is ` | `, and this function did not know it.**
+    Found 2026-08-25 when Emma said *"I feel the zipper merge still isn't hitting the hard points
+    lol."* She was right and the reason was mechanical: with only `,` and `;` handled, a five-child
+    cell parsed as the single token `"1050090 | 1050271 | ..."`, which is in nobody's index, so it
+    was filtered out by `if x in ours` and the person presented as **childless**.
+
+    **379,251 people have two or more children and every one of them reached the join with none.**
+    That is why `zipper-ambiguous.tsv` held no `2 x 2` rows at all -- not because two-against-two
+    is rare, but because our side could never *have* two. The whole hard case Emma named in the
+    design -- *"selecting between children and spouses ... is a much, much more difficult task"* --
+    was invisible.
+
+    This is the same shape as the date-parser failures in `CLAUDE.md`: a parser that silently
+    narrows its input rather than failing. Nothing raised, the counts looked plausible, and the
+    join quietly restricted itself to one-child families.
+
+    **Two bugs, not one.** The separator is ` | ` *with spaces*, so splitting on `|` alone yields
+    `"1050090 "` and every token then missed the `x in ours` index -- the same silent narrowing one
+    layer down, and it hid the first fix completely: the pair count did not move at all until the
+    tokens were stripped. 191,991 child ids and 19,404 spouse ids were being dropped this way.
+    """
+    return [x.strip() for x in re.split(r"[,;|]", cell or "") if x.strip()]
 
 
 def main():
@@ -157,8 +181,12 @@ def main():
                 seen_slots += 1
                 # Consume the teeth already closed: anyone of ours already paired to an
                 # item that appears on their side matches, and both are struck.
-                left = [x for x in us if g2q.get(x) not in them]
+                # Consume the teeth, then drop anyone already spoken for on EITHER side.
+                # `left` used to keep our already-paired people (they were rejected later by the
+                # `a in g2q` guard), so a slot with one paired and one free child of ours counted
+                # as two unmatched and was filed ambiguous instead of proposing the free one.
                 used = {g2q[x] for x in us if g2q.get(x) in them}
+                left = [x for x in us if x not in g2q]
                 right = [x for x in them if x not in used and x not in q2g]
                 if len(left) == 1 and len(right) == 1:
                     a, b = left[0], right[0]
