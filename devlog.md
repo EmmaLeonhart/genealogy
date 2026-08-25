@@ -13241,3 +13241,33 @@ somehow, and sibling is what people reach for. Three of the four duplicates have
 
 Artifact retitled *Duplicates and Namesakes* and extended to ten cases, same URL — the previous
 title claimed all of them were relatives, which stopped being true this tick.
+
+### 2026-08-25 — four more, and `李氏` is the CJK `NN`
+
+**14 of 70 opened. 4 duplicates, 10 two real people.**
+
+- `Q122925808` — **sisters.** Anna Sapiega (1579–1615, m. Stanisław Jan Lasocki) and Aleksandra
+  Gostomska née Sapieha (1570–1608, m. Hieronymus Gostomski), both daughters of Andrzej Sapieha.
+  **This closes a question Emma raised directly**: she was shown this pair earlier as *"the death
+  year matches the second, the name matches the first"* and asked what to make of it. Two sisters.
+- `Q122925764` — siblings, **flagged uncertain**. Tomas Stanislaus and Stanislovas Sapiega, same
+  parents, each listing the other — but *both names carry Stanisław*, so the given-name test that
+  separates siblings from duplicates is weak precisely here. Recorded as `siblings-uncertain`
+  rather than silently counted.
+- `Q10721233`, `Q10721524` — **sisters**, daughters of Li Longji, Emperor Xuanzong of Tang, all
+  four profiles loaded from CBDB (China Biographical Database).
+
+**`李氏` is not a name. It is the CJK `NN`, and it breaks the discriminator.** It reads *"the Li
+woman"* — a placeholder exactly like `NN` or `<private>`, and Xuanzong had dozens of daughters
+recorded that way. So `Q10721524` joins `李公主` (*Princess Li*, d.784) to `李氏` (d.771): two
+placeholders, two different women, and **no amount of name comparison can tell them apart** — only
+the death years and the sibling lists do.
+
+This matters past these two items. `CLAUDE.md`'s NN/Private algorithm treats the marker population
+as `Private`, `NN`, `UKJENT` and blanks; **`李氏` and `李公主` belong in it and are not currently
+listed**, and they are numerous — every one of these four profiles came from a bulk CBDB import.
+Not changing the algorithm on four cases; recording it where the next batch will find it.
+
+**The shared-name brake in `resolve-multi-geni-by-parents.py` would fire on `李氏` vs `李氏` and
+withhold correctly** — but for the wrong reason, reading a placeholder collision as evidence of one
+person. It errs toward not deleting, which is the safe direction, so no change is being made.

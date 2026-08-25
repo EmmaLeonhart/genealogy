@@ -39,13 +39,14 @@ and no two batches creating the same person.
 ## Decided 2026-08-25 — the multi-Geni-ID work
 
 - Continue opening both Geni pages for the **70** targets in
-  `reports/multi-p2600-targets.tsv`. **10 done, 60 to go, 123 pages.** Screenshots to
+  `reports/multi-p2600-targets.tsv`. **14 done, 56 to go, 115 pages.** Screenshots to
   `Documents\claude-screenshots\`, artifact per batch. Judgements go in
   `reports/multi-p2600-verdicts.tsv`.
-  **10 done: 4 are one person twice, 6 are two real people.** Both outcomes are common, so
+  **14 done: 4 are one person twice, 10 are two real people.** Both outcomes are common, so
   read every pair before judging. **The tell is a title only one person can hold** — same
   office, same death year, or the same name in two languages means one person; genuinely
-  different given names mean siblings.
+  different given names mean siblings. **CJK placeholder names (`李氏`) defeat the name test
+  entirely** — see the devlog for 2026-08-25.
 
 - Build the **add**-`P2600` batch and generalise it beyond the two verified items.
   Emma, 2026-08-25: *"Yes, and generalise it to the whole store"* — any item our
