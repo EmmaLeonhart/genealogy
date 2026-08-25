@@ -36,6 +36,32 @@ Every `.qs` in `reports/` is guarded by `tests/test_p2600_batches.py` — line s
 quoting, `S2600` references, Geni ids, duplicate statements, one `P2600` per `CREATE`,
 and no two batches creating the same person.
 
+## Decided 2026-08-25 — the multi-Geni-ID work
+
+- Open both Geni pages for each of the **70** items that genuinely carry two or more
+  Geni ids AND have two or more of those profiles in our corpus. ~150 pages, in
+  batches, screenshots to `Documents\claude-screenshots\`, artifact after each batch.
+  The list is the `p2600-all.tsv` intersection, not `multi-geni-items.tsv`, which was
+  built on the contaminated population. Emma chose browsing over resolving-first:
+  the six opened so far are the only method that has produced a verdict worth trusting.
+
+- Build the **add**-`P2600` batch and generalise it beyond the two verified items.
+  Emma, 2026-08-25: *"Yes, and generalise it to the whole store"* — any item our
+  structural walk pairs with a Geni profile and that carries no `P2600` is a candidate.
+  **Gate it with the parent test first.** The walk manufactured 89% of the tangles and
+  invented 22 of 31 removals, so an ungated add batch built on it would be the same
+  error pointed the other way. `resolve-multi-geni-by-parents.py` already has the
+  machinery: anchor on a parent carrying exactly one `P2600`, confirm against our tree.
+  `Q102825194` Gilbert Motier and `Q103775136` are the two already verified by eye.
+
+- Fix `CLAUDE.md` § Layout: it says `out/` is *"generated data, gitignored"*. It is
+  **tracked**, deliberately, per `.gitignore` line 32 and Emma's 2026-08-15 instruction;
+  only three oversized rebuildable files are ignored. One stale word, and it caused a
+  question to be put to her on a false premise.
+
+- Delete the three scratch JSONs under `out/` left from the conflict-inspection work:
+  `conflict-pairs-to-open.json`, `geni-pages-to-open.json`, `nine-conflicts.json`.
+
 ## Stale, small, nobody's blocker
 
 - Nothing outstanding here right now. `reports/repo-freshness.csv` was regenerated

@@ -13154,3 +13154,27 @@ regression.** The browser evidence was about Geni; this batch edits Wikidata.
 
 The three survivors, all corroborated: `Q4139580` *Gleb Svyatoslavich*, `Q4273436` *Pakubuwono V*,
 `Q778550` *Tezozomoc*.
+
+### 2026-08-25 — four decisions, and one question that should not have been asked
+
+Emma answered an `AskUserQuestion` on the multi-Geni-id work. Three answers are now queue items.
+The fourth is recorded here because **the question was mis-framed and her answer must not be
+acted on**.
+
+**`out/` in `.gitignore` — NOT doing it.** The question said `CLAUDE.md` calls `out/` gitignored,
+so adding the line would make the repo match its own documentation. Backwards. `.gitignore` line
+32 records Emma's own instruction of 2026-08-15 — *"Oh my god why the fuck is it gitignored? Un
+gitignore"* — and the cost of the old `out/*` rule was concrete: the Wikidata download-state index
+lives there, a restart lost it, and the downloader believed all 514,876 seeds were unfetched while
+1.4M items sat on disk. Only the three files GitHub physically refuses are ignored, one line each.
+**The stale thing is `CLAUDE.md` § Layout**, which still says *"`out/` generated data,
+gitignored"*. That word is the defect and it is now a queue item.
+
+**The status-report cron asked for Bureätten's yield-per-export every hour** for a campaign that
+is closed and from which **no export was ever run**, so three consecutive reports carried the same
+non-answer. Replaced (`53aac558` → `68bf4ac6`) with a prompt that reports current work and
+explicitly forbids reintroducing a standing question of that shape.
+
+**The slow-lane cron was already wired** — `b314299e`, daily 03:23 — and two status reports called
+it unwired. It most likely starved, which is the known failure mode: a cron only fires while the
+session is idle, and 03:23 was mid-query.
