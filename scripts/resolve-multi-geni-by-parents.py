@@ -362,7 +362,15 @@ def main():
         if decisive:
             for g in contradicted:
                 edits.append({
-                    "item": qid, "property": GENI_ID, "value": g, "action": "remove",
+                    # The repo's edit-object shape, which `tests/test_edit_graph.py` enforces:
+                    # a unique `id`, a `type` in `KNOWN_TYPES`, and a `subject` naming the item
+                    # to act on. The first cut of this batch had none of them and reddened five
+                    # tests, which is exactly what that suite is for.
+                    "id": f"remove-p2600-{qid}-{g}",
+                    "type": "remove_statement",
+                    "subject": {"qid": qid, "geni_id": g},
+                    "requires": [],
+                    "property": GENI_ID, "value": g,
                     "because": (f"our tree gives {g} the parent(s) "
                                 f"{ours[g]}, and this item's P22/P25 carry "
                                 f"{sorted(anchors.values())}; "

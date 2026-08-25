@@ -34,6 +34,12 @@ REPORTS = REPO / "reports"
 KNOWN_TYPES = {
     "set_labels", "set_label", "create_individual", "add_relationship",
     "create_name_item", "add_geni_id", "normalise_office", "add_statement",
+    # Added 2026-08-25 for `reports/wikidata-remove-wrong-p2600.json`. The only DESTRUCTIVE
+    # type in the repo: it deletes a `P2600` *Geni.com profile ID* an item should never have
+    # carried, as against the merged-away case, which is a rank change to deprecated and is
+    # not this. `scripts/resolve-multi-geni-by-parents.py` explains what may and may not
+    # produce one.
+    "remove_statement",
 }
 
 
