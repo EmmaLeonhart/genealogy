@@ -13913,3 +13913,47 @@ the lookup and then said she was not in the sequence. **She is step 22 of this s
 father at step 23 is the item the whole line hangs from.
 
 **Line 2 is the missing piece** and needs a saved Geni page.
+
+### 2026-08-25 — the chain's absences investigated, and it is 18 not 22
+
+Emma: *"we didn't actually establish in any meaningful sense that the people are absent in that
+chain... We might basically find that that one single daughter is the only person absent in the
+line in Wikidata, but it's just that the Wikidata ones are not genealogically linked."*
+
+**She was right, and the number lands on the one she named.**
+
+**First, the Geni-id cross-reference IS conclusive.** Checked against two independently produced
+extracts — the bulk `p2600-all.tsv` dump and the `p2600` column of `relations.tsv`, pulled from the
+item store. **Both found the same 10 of 34, with zero disagreement.** So nothing on the chain is
+hidden behind a Geni id we failed to look up.
+
+**Second, the chain members that ARE on Wikidata are densely cross-referenced.** 9 of the 10 carry
+**Genealogics, Geneanet, Geni, The Peerage and WeRelate** — including the obscure ones, Guttorm
+Àsulfsson, Åsulv Skulesson, Skule Torstigson. These are not thinly-documented people.
+
+**Third — the actual finding. Four of the 22 already have items and carry no Geni id.** Found
+**structurally**, by a parent's `P40` or a child's `P22`/`P25` pointing at an unmatched item, not
+by searching names:
+
+| step | ours | item | evidence |
+| ---: | --- | --- | --- |
+| 28 | Rozala of Italy | **`Q466257`** *Rozala of Italy* | father `Q314521` lists as child **and** child `Q378177` names as mother — plus the label is identical |
+| 20 | Knut Valdemarsson, Duke of Estland | **`Q3743799`** *Canute, Duke of Estonia* | father `Q157799` lists as child; same title, English form |
+| 31 | Berengar I, emperor of the Romans | **`Q274606`** *Berengar I of Italy* | child `Q3769073` names as father |
+| 32 | Giséle of Cysoing | **`Q284400`** *Gisela* | father `Q43974` and mother `Q169547` both list as child |
+
+`reports/wikidata-spine-add-p2600.qs` adds the four `P2600`s. **Additions to existing items, not
+creations.**
+
+**So the spine is 18 creations and 4 additions, not 22 creations** — which is exactly the 18 runs
+Emma budgeted.
+
+**And the break is where she predicted.** Steps 23–25 — Guttorm Àsulfsson, Åsulv Skulesson, Skule
+Torstigson — are all present. Step 22, **Guttorm's daughter Ingrid**, is not, and Wikidata records
+Guttorm as having two children, `Q1019325` Bård and `Q75292005` Rangrid, **neither of whom is
+her**. Her words: *"random daughters of somewhat obscure noblemen tend not to be the people who
+are most well documented."*
+
+**One more thing worth carrying**: `Q127427192` *Ragnhild Skulesdatter*, Skule's other daughter,
+is on Wikidata with **no Geni id at all**. The pattern Emma described is real and there will be
+more of it.
