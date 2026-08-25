@@ -39,11 +39,13 @@ and no two batches creating the same person.
 ## Decided 2026-08-25 — the multi-Geni-ID work
 
 - Continue opening both Geni pages for the **70** targets in
-  `reports/multi-p2600-targets.tsv`. **6 done, 64 to go, 131 pages.** Screenshots to
+  `reports/multi-p2600-targets.tsv`. **10 done, 60 to go, 123 pages.** Screenshots to
   `Documents\claude-screenshots\`, artifact per batch. Judgements go in
   `reports/multi-p2600-verdicts.tsv`.
-  **All 6 so far are relatives, not duplicates** — rank the rest expecting the same, and
-  read the sibling lists on the pages first, since each page names the other profile.
+  **10 done: 4 are one person twice, 6 are two real people.** Both outcomes are common, so
+  read every pair before judging. **The tell is a title only one person can hold** — same
+  office, same death year, or the same name in two languages means one person; genuinely
+  different given names mean siblings.
 
 - Build the **add**-`P2600` batch and generalise it beyond the two verified items.
   Emma, 2026-08-25: *"Yes, and generalise it to the whole store"* — any item our
@@ -58,9 +60,6 @@ and no two batches creating the same person.
   **tracked**, deliberately, per `.gitignore` line 32 and Emma's 2026-08-15 instruction;
   only three oversized rebuildable files are ignored. One stale word, and it caused a
   question to be put to her on a false premise.
-
-- Delete the three scratch JSONs under `out/` left from the conflict-inspection work:
-  `conflict-pairs-to-open.json`, `geni-pages-to-open.json`, `nine-conflicts.json`.
 
 ## Stale, small, nobody's blocker
 

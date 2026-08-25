@@ -13213,3 +13213,31 @@ pair is worth opening — but its sign was backwards.
 merging with any of Håkon's daughters, and Wikidata has joined exactly that pair.
 
 Artifact: <https://claude.ai/code/artifact/cc43d8f3-2821-4c0a-a906-8bb4d6fccb82>
+
+### 2026-08-25 — four more of the 70, and the "six for six" pattern breaks
+
+Four opened this tick and **all four are one person recorded twice** — the exact opposite of the
+previous batch, which was six for six two-real-people. Running total: **10 opened, 4 duplicates,
+6 two real people.** Both shapes are common; neither generalises, and it was right to write down
+that six is not seventy.
+
+| item | why it is one person |
+| --- | --- |
+| `Q17045022` | both *prince Vsevolod Glebovich of Iziaslavl*, same parents, **one lists the other as his brother**; the spelling differs by one letter |
+| `Q886894` | both Ptolemy Apion King of Cyrene, same parents, each the other's "brother" — one office, one holder |
+| `Q2607489` | **Voytek = Wojciech = Albertas is one name in three languages**, stated on the profile itself; same parents, both died 1475, and the two wives are one woman rendered twice |
+| `Q20101126` | Smassmann and Sassmann von Rappoltstein, same father Bruno I, **both died 1451**; "half-brothers" only because two different mothers are held |
+
+**The discriminator that came out of the cases: a title only one person can hold.** Ptolemy Apion
+was King of Cyrene once; Vsevolod Glebovich held Iziaslavl once. Same office, same death year, or
+the same name under two languages means one person. Where the *given names genuinely differ* —
+Fryderyk against Fiodor, Raina against Wasylisa — they are siblings. That is a rule derived from
+cases rather than assumed, which is what `CLAUDE.md` § *Rules come out of cases* asks for, and it
+is still only ten cases.
+
+**"Recorded as his own brother" is the strongest single signal so far** and it is structural
+rather than onomastic: Geni cannot hold two profiles for one person without wiring them together
+somehow, and sibling is what people reach for. Three of the four duplicates have it.
+
+Artifact retitled *Duplicates and Namesakes* and extended to ten cases, same URL — the previous
+title claimed all of them were relatives, which stopped being true this tick.
