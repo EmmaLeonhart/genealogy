@@ -12934,3 +12934,53 @@ two Wikidata items both claim the same Geni profile, which is Wikidata's own con
 across a profile's candidates, and the shape column separating inference from recorded id.
 
 Fast lane: **1,245 passed, 0 failed, 2 skipped.**
+
+## 2026-08-24 — the walk documented and validated, and TWO problems untangled
+
+Emma: *"it really feels like you just said there was one problem, and then you start
+talking about the opposite problem."* She is right. `synoptic-conflicts.tsv` is defined as
+*one Geni profile claiming several QIDs*, and **two completely unrelated causes produce
+that**:
+
+1. **Wikidata duplication.** Two Wikidata items each carry `P2600` for the same Geni
+   profile. Nothing to do with our walk; visible to us only because we read `P2600`.
+2. **Our structural walk guessing wrong.** `Eric Jedvardsson of Sweden IX` paired with
+   `Sigurd Snake-in-the-Eye`. Entirely ours.
+
+They need opposite treatments and I narrated them as one stream.
+
+### `docs/structural-walk.md` — the algorithm, finally written down
+
+Emma: *"you never really explain how it is that you're doing it."* It is a **single-line
+upward walk**, not a zipper join:
+
+* it never touches children (`P40`) or spouses (`P26`) — those properties appear nowhere
+  in the script, so the hard cases she named are not done badly, they are **not done**;
+* `father or mother` means a person with both parents has only the father's line walked;
+* `MERGE` asserts identity from **position alone** — no name, no date — so a source
+  disagreement about who someone's father was reads as two names for one person.
+
+The one careful part: `len(theirs) == 1` declines to guess when Wikidata names several
+people in a position.
+
+### Validating it: two measurements that lie, one that does not
+
+* **`P2600` as ground truth is biased by construction** — 4 agree, 306 contradict, an
+  apparent 1.3%. The walk only proposes a pair when our QID is missing or mismatched, so
+  the checkable cases are *selected for disagreement*. **Never quote that number.**
+* **Name-token overlap measures orthography** — `Siemomysł` ↔ `Siemomysl` differs by `ł`.
+* **Dates are independent of how a pairing was made**, so they can judge one.
+  `scripts/validate-structural-walk.py`: **3,964 agree, 235 conflict, 3,662 unknown.**
+  **94% of the 4,199 judgeable pairs agree**, and 3,662 — 47% — cannot be judged at all.
+
+### Two display bugs of mine that misled her
+
+* I reported the nine in-corpus conflicts as "genuinely unclear, needs you". They are not.
+  Each pair holds **half the facts** — `Constantine Koriat` is `b.1335` on one item and
+  `d.1390` on the other, against Geni's 1340–1389. That is one person split across two
+  items, which is the signature of a duplicate, not of ambiguity.
+* I called `Lubov Ivanovna`'s two items **unlabelled**. They carry **6 and 15 labels** —
+  none in `en` or `mul`, which is all my display read. They are `Любовь Ивановна` and
+  `Анна Ивановна`, same father `Q210162`, married to `Q7569679` and `Q2033112` — which are
+  the two items from the *Dmitry "Bobrok"* conflict. **A duplicated couple**: husband
+  twice, wife twice, each copy married to the matching copy.
