@@ -93,14 +93,13 @@ them and nothing is waiting.
   different given names mean siblings. **CJK placeholder names (`李氏`) defeat the name test
   entirely** — see the devlog for 2026-08-25.
 
-- Build the **add**-`P2600` batch and generalise it beyond the two verified items.
-  Emma, 2026-08-25: *"Yes, and generalise it to the whole store"* — any item our
-  structural walk pairs with a Geni profile and that carries no `P2600` is a candidate.
-  **Gate it with the parent test first.** The walk manufactured 89% of the tangles and
-  invented 22 of 31 removals, so an ungated add batch built on it would be the same
-  error pointed the other way. `resolve-multi-geni-by-parents.py` already has the
-  machinery: anchor on a parent carrying exactly one `P2600`, confirm against our tree.
-  `Q102825194` Gilbert Motier and `Q103775136` are the two already verified by eye.
+- **Lower the add gate, or leave it.** NEEDS-DECISION, Emma's.
+  `reports/wikidata-add-p2600.qs` is built — **1,662 additions, 471 anchored on both
+  parents** — from 7,320 proposals. The gate rejects 5,654, and **95.2% of the rejected
+  ones with comparable dates are date-consistent**, so most of what it discards is
+  probably fine. It cuts date-impossible pairs 4.8% → 1.4%, a 3.4x reduction, at the cost
+  of 77% of the volume. Loosening it is a call about how much wrong is acceptable in an
+  additive batch, which is hers and not a tuning exercise.
 
 - Fix `CLAUDE.md` § Layout: it says `out/` is *"generated data, gitignored"*. It is
   **tracked**, deliberately, per `.gitignore` line 32 and Emma's 2026-08-15 instruction;

@@ -13568,3 +13568,34 @@ unfetched while 1.4M items sat on disk. Only the four oversized rebuildable file
 `.gitignore`, and she approved a change that would have undone her own instruction. The
 `.gitignore` was right and the documentation was wrong — which is the reverse of the usual
 assumption and is now written where the next reader will hit it.
+
+### 2026-08-25 — the add-`P2600` batch, gated, and an honest account of how much the gate buys
+
+Emma approved generalising the add batch to the whole store *with* the condition attached:
+**gate it with the parent test first.** `scripts/build-add-p2600-batch.py`.
+
+**The gate.** For a proposed `(qid, geni_id)` where the item carries **no `P2600` at all**: read
+the item's `P22`/`P25`, require a parent item carrying **exactly one** `P2600`, and require that
+id to be **exactly** our tree's father or mother of the candidate. That is stronger than what the
+walk itself asked — the walk needed only *"Wikidata names one person in that position"*; this
+needs *"Wikidata's father and our father are the same recorded profile"*. No name is compared.
+
+**7,320 proposals → 1,662 pass, 471 of them anchored on both parents.**
+
+**Two validations, and the first one failed.** Both use signals the gate never touches.
+
+- **Names do not discriminate.** Label-and-name token overlap: 92.0% both-parent, 88.8%
+  one-parent, 86.4% rejected. A 5.6-point spread on an 86% floor is close to no information,
+  because the walk pairs people in the same *family position*, who share names whether or not the
+  pairing is right. Run first expecting it to validate the gate; it did not. Recorded in the
+  module so nobody runs it again hoping for a better answer.
+- **Dates do, once the ERROR rate is read instead of the success rate.** Agreement within fifteen
+  years is 98.8% / 98.5% / 95.2% — which looks like nothing. The *disagreement* rates are
+  **1.2% / 1.5% / 4.8%**, so the gate cuts date-impossible pairs by about **3.4x**. Same numbers,
+  and only one framing shows the effect.
+
+**The cost, stated because it is the part that could be quietly omitted: the gate rejects 5,654
+of 7,320, and 95.2% of the rejected ones with comparable dates are date-consistent.** Most of
+what it throws away is probably fine. That is a deliberate trade — the output writes to Wikidata —
+but it is a trade, not a free win, and whether to loosen it is now a NEEDS-DECISION for Emma
+rather than something to tune quietly.
