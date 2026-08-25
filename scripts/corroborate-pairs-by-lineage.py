@@ -26,8 +26,19 @@ identity is in question rather than to a pair being proposed.
 
 * **`CORROBORATED`** — at least one relative pair is co-carried. The two profiles are one person,
   and the wrong `P2600` is a removal candidate for `resolve-multi-geni-by-parents.py`.
-* **`CONTRADICTED`** — a relative slot is filled on both sides and the two relatives are on
-  **different** Wikidata items which are not the same item. That argues the pair is two people.
+* **`PARENTS-NOT-JOINED`** — a relative slot is filled on both sides and the two relatives sit on
+  **different** Wikidata items. **This is NOT evidence that the pair is two people**, and the
+  first version of this module called it `CONTRADICTED`, which asserted more than the data does.
+
+  **Refuted by opening the pages, 2026-08-25.** `Q13478569` was labelled `CONTRADICTED` because
+  the two profiles' fathers are `6000000013765885870` *Bryachislav, prince of Polotsk and
+  Vitebsk* and `6000000080795286877` *Брячислав Васильевич*, on different items. The pages show
+  **one woman**: Alexandra Bryachislavna, born Polotsk, died Vladimir, titled *Княгиня
+  Владимирская* on both, the wife of Alexander Nevsky. The two fathers are themselves an
+  unjoined duplicate pair — Wikidata had joined the daughters and not the fathers.
+
+  So the label means only what it now says: the parents are not co-carried. In a lineage
+  imported twice, that is the *normal* state for every generation Wikidata has not got to yet.
 * **`NO EVIDENCE`** — the relatives are absent from our tree, or absent from Wikidata, or present
   but never co-carried. **Silence, not a verdict**: most pairs will land here and it means only
   that the lineage was not imported twice.
@@ -117,19 +128,21 @@ def main():
             if support and support[-1].startswith("children"):
                 break
 
+        # `support` wins outright. A parent pair that IS co-carried is a positive assertion;
+        # a parent pair that is not merely reflects how far Wikidata has got.
         verdict = ("CORROBORATED" if support else
-                   "CONTRADICTED" if against else "NO EVIDENCE")
+                   "PARENTS-NOT-JOINED" if against else "NO EVIDENCE")
         tally[verdict] += 1
         rows.append({
             "verdict": verdict, "qid": r["qid"],
             "geni_a": a, "geni_b": b,
             "supporting": " | ".join(support),
-            "against": " | ".join(against),
+            "parents_on_different_items": " | ".join(against),
             "names": r["names"][:90],
         })
 
-    rows.sort(key=lambda r: ({"CORROBORATED": 0, "CONTRADICTED": 1, "NO EVIDENCE": 2}[r["verdict"]],
-                             r["qid"]))
+    rows.sort(key=lambda r: ({"CORROBORATED": 0, "PARENTS-NOT-JOINED": 1,
+                              "NO EVIDENCE": 2}[r["verdict"]], r["qid"]))
     dest = ROOT / "reports" / "multi-p2600-lineage.tsv"
     with open(dest, "w", encoding="utf-8", newline="") as f:
         w = csv.DictWriter(f, fieldnames=list(rows[0]), delimiter="\t")
@@ -137,7 +150,7 @@ def main():
         w.writerows(rows)
 
     print(f"\nwrote {dest.relative_to(ROOT)}  -- ranks pairs, never emits an edit\n")
-    for k in ("CORROBORATED", "CONTRADICTED", "NO EVIDENCE"):
+    for k in ("CORROBORATED", "PARENTS-NOT-JOINED", "NO EVIDENCE"):
         print(f"   {tally[k]:>3}  {k}")
 
     print("\ncorroborated pairs -- the relatives are paired too, so these are one person:")

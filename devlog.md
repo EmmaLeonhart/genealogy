@@ -13415,3 +13415,30 @@ speaks where a lineage was imported twice.
 `Q130391088` is the other pair opened: both *prince Dmitry Glebovich of Smolensk*, both sons of a
 Gleb of Smolensk, and **one records Ivan "Shakh" as his brother while the other records him as his
 son**. That contradiction is what a duplicate produces; recorded `likely-duplicate`.
+
+### 2026-08-25 — the lineage method tested in both directions; one label was wrong
+
+**22 of 70 opened. 10 one person twice, 12 two real people.** Two pairs opened specifically to
+test yesterday's lineage corroboration — one it called `CORROBORATED`, one `CONTRADICTED`.
+
+**`CORROBORATED` held.** `Q244852` is Gediminas, Grand Duke of Lithuania, twice: the Master
+Profile (c.1255–1341, curator note about his three wives) and *Giedymin - Gediminas* (c.1275, son
+of Butvydas Pukuveras). One man. The script had reached that via the fathers being co-carried by
+`Q638646`, without comparing a name. Two for two now, with `Q13478526` yesterday.
+
+**`CONTRADICTED` was wrong, and the label has been renamed.** `Q13478569` was called
+`CONTRADICTED` because the two profiles' fathers sit on different Wikidata items. The pages show
+**one woman**: Alexandra Bryachislavna, born Polotsk, died Vladimir, titled *Княгиня Владимирская*
+on both — Alexander Nevsky's wife. The two fathers are themselves an **unjoined duplicate pair**;
+Wikidata had joined the daughters and not the fathers.
+
+So the signal means only *"the parents are not co-carried"*, which in a lineage imported twice is
+the normal state of every generation Wikidata has not reached. Calling that `CONTRADICTED`
+asserted two people from an absence. Renamed **`PARENTS-NOT-JOINED`**, with the refutation written
+into the module docstring so it cannot be re-derived as evidence.
+
+**This is the second time in two days that an absence has been read as a finding here** — the
+first was the structural walk's `P2600` "precision" of 1.3%, which measured the selection rather
+than the walk. Both were caught by testing against records rather than by reasoning.
+
+`CORROBORATED` remains 8 pairs and is now the only column of that report worth acting on.
