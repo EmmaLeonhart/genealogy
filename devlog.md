@@ -12840,3 +12840,56 @@ a duplicate. The ordering was mine and it was reasoning she had already ruled ou
 
 The corpus re-merge is now running over all 553, **after** the exports rather than before —
 the mistake she objected to earlier, when I started it unasked and prematurely.
+
+## 2026-08-24 — the synoptic tree is built
+
+The whole chain ran in the order Emma set — merges, then joins, then the walk.
+
+### Merge, over 553 exports including all seven post-merge
+
+    1,329,328 individuals   (was 1,325,436)
+      567,134 families
+        2,858 conflicts
+            6 components: 1,324,229 · 5,000 · 96 · 1 · 1 · 1
+
+The 5,000 is one of the new post-merge balls sitting apart from the main tree. Components
+do not conflict, they just never meet; not chased.
+
+### Derive, all four passes
+
+`display-names.csv` 184.2 MiB · `derived-facts.csv` 176.4 · `derived-family.csv` 128.1 ·
+`derived-labels.csv` 108.9, then packed to `.csv.gz` at 4.1–4.8x. 1,327,295 people carry a
+sex, 914,715 a birth date, 728,683 a death date. **29 unreadable date values** out of the
+whole corpus, which is the date parser refusing to guess rather than a gap.
+
+### Structural walk
+
+**37,787 people carry a QID** (was 37,764); 31,742 anchors hold both identifiers and a
+recorded parent.
+
+    130,906  GENI ONLY     we have a parent, Wikidata does not
+     89,507  AGREE         both sides, already the same item
+     35,708  MERGE         both sides, ours has no QID
+     12,522  WD ONLY
+        187  AMBIGUOUS
+
+7,861 correspondences; `wikidata-structural-placeholders.json` 35,161 creations.
+
+### The synoptic correspondence
+
+    wikidata-p2600        517,823     P2600 on the Wikidata side
+    structural              7,861     our walk up the parental lines
+    geni-about-me             405     the QID Emma wrote into the Geni description
+    tanba-roster              181
+    izumo-sister-roster       121
+    geni-wikidata-pairs       126
+    izumo-roster              111
+
+**526,042 distinct (QID, Geni) pairs — 522,491 QIDs against 525,653 Geni profiles.** Both
+join directions present and joined, which was her requirement.
+
+3,398 QIDs carry more than one Geni id, which is ordinary — `P2600` is multi-valued. 383
+Geni profiles claim more than one QID; those are hers to settle and are in
+`reports/synoptic-conflicts.tsv`.
+
+Fast lane: **1,241 passed, 0 failed, 2 skipped.**

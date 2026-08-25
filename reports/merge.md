@@ -550,15 +550,22 @@ Sources in merge order (later sources win value conflicts):
 544. `export-Descendants-6000000227143930843.ged`
 545. `export-Forest-6000000227143930843.ged`
 546. `export-Forest-6000000227145420853.ged`
+547. `export-Forest-6000000227413001839.ged`
+548. `export-Forest-6000000178918141824.ged`
+549. `export-Forest-6000000227413445871.ged`
+550. `export-Forest-6000000227413852831.ged`
+551. `export-Forest-6000000227414103872.ged`
+552. `export-Forest-6000000178918141824-refresh.ged`
+553. `export-Forest-6000000227415008926.ged`
 
 ## Merged totals
 
 | record | count |
 | --- | ---: |
-| FAM | 566198 |
-| INDI | 1325436 |
-| NOTE | 58130 |
-| SUBM | 48875 |
+| FAM | 567134 |
+| INDI | 1329328 |
+| NOTE | 58187 |
+| SUBM | 49083 |
 
 ## What each source contributed
 
@@ -1110,35 +1117,42 @@ Sources in merge order (later sources win value conflicts):
 | `export-Descendants-6000000227143930843.ged` | 2262 | 4052 | 112 | 355 | 405 | 234 |
 | `export-Forest-6000000227143930843.ged` | 1466 | 2686 | 343 | 234 | 3255 | 911 |
 | `export-Forest-6000000227145420853.ged` | 1298 | 3628 | 0 | 103 | 746 | 355 |
+| `export-Forest-6000000227413001839.ged` | 11 | 14 | 0 | 0 | 8133 | 595 |
+| `export-Forest-6000000178918141824.ged` | 0 | 0 | 0 | 0 | 9126 | 11880 |
+| `export-Forest-6000000227413445871.ged` | 917 | 2998 | 53 | 168 | 3192 | 9051 |
+| `export-Forest-6000000227413852831.ged` | 8 | 877 | 4 | 40 | 6167 | 5362 |
+| `export-Forest-6000000227414103872.ged` | 0 | 1 | 0 | 0 | 7942 | 73 |
+| `export-Forest-6000000178918141824-refresh.ged` | 0 | 0 | 0 | 0 | 9124 | 4 |
+| `export-Forest-6000000227415008926.ged` | 0 | 2 | 0 | 0 | 7881 | 304 |
 
 ## Pointers to records we do not have
 
-**3360** pointers name a record that is not in the merged file, of which **0** are family-structure pointers (`CHIL`, `HUSB`, `WIFE`, `FAMC`, `FAMS`). Only the structural ones would mean a broken tree; the rest are incidental references to submitter or note records the exports did not include.
+**3361** pointers name a record that is not in the merged file, of which **0** are family-structure pointers (`CHIL`, `HUSB`, `WIFE`, `FAMC`, `FAMS`). Only the structural ones would mean a broken tree; the rest are incidental references to submitter or note records the exports did not include.
 
 | pointer | unresolved |
 | --- | ---: |
-| `INDI.SUBM` | 3200 |
+| `INDI.SUBM` | 3201 |
 | `NOTE.NOTE` | 120 |
 | `INDI.PLAC` | 26 |
 | `INDI.OCCU` | 14 |
 
 ## Conflicts
 
-**2777** value disagreements on single-valued paths. The value from the later source was kept; the other is recorded here and is not in the merged file.
+**2858** value disagreements on single-valued paths. The value from the later source was kept; the other is recorded here and is not in the merged file.
 
 By path:
 
 | path | conflicts |
 | --- | ---: |
-| `INDI.CHAN.DATE.TIME` | 1249 |
-| `INDI.CHAN.DATE` | 1240 |
-| `INDI.BIRT.DATE` | 77 |
-| `INDI.SUBM` | 50 |
-| `INDI.DEAT.DATE` | 30 |
+| `INDI.CHAN.DATE.TIME` | 1281 |
+| `INDI.CHAN.DATE` | 1272 |
+| `INDI.BIRT.DATE` | 83 |
+| `INDI.SUBM` | 55 |
+| `INDI.DEAT.DATE` | 32 |
 | `INDI.BIRT.ADDR.CTRY` | 19 |
 | `INDI.BIRT.PLAC` | 16 |
+| `FAM.HUSB` | 13 |
 | `INDI.BIRT.ADDR.STAE` | 13 |
-| `FAM.HUSB` | 12 |
 | `INDI.DEAT.ADDR.STAE` | 11 |
 | `INDI.DEAT.PLAC` | 11 |
 | `INDI.BURI.DATE` | 10 |
@@ -1146,9 +1160,9 @@ By path:
 | `INDI.DEAT.ADDR.CITY` | 7 |
 | `INDI.DEAT.ADDR.CTRY` | 6 |
 | `INDI.BURI.PLAC` | 6 |
+| `INDI.TITL` | 5 |
 | `INDI.BAPM.ADDR.CTRY` | 4 |
 | `INDI.SEX` | 2 |
-| `INDI.TITL` | 2 |
 | `INDI.BURI.ADDR.CTRY` | 2 |
 | `INDI.BURI.ADDR.CITY` | 2 |
 | `FAM.MARR.DATE` | 1 |
