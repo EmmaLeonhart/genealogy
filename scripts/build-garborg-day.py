@@ -37,6 +37,7 @@ from __future__ import annotations
 import argparse
 import collections
 import csv
+import re
 import sys
 from pathlib import Path
 
@@ -299,22 +300,42 @@ def main():
                     frontier.setdefault(other, fam)
     print(f"{len(frontier)} people one edge away and not yet on Wikidata")
 
+    # **Emma's own recent family is never created.** Emma, 2026-08-25, looking at a batch:
+    # *"no we are no fuckin gmaking my father as a wikidata item right now lol"*. Her father
+    # Richard Wade Borsheim (b.1963) sits at step 2 of the Arne path, so any roster built
+    # from that path reaches him, and living people are not this programme's business.
+    #
+    # Five people on that path are 1880 or later: Emma herself (1996), her father (1963),
+    # her grandfather Randolph (1926), Reinhert Borsheim (1891) and Selma Pedersdtr.
+    # Borsheim (1890). The cut is at **1880** rather than at a name list, so a path that
+    # reaches a different modern relative is caught too. "Right now" is hers to lift.
+    MODERN_CUTOFF = 1880
+    modern = set()
+    with open(ROOT / "reports" / "derived-facts.csv", encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            b = (row.get("birth_date_year") or "").strip()
+            if b.lstrip("-").isdigit() and int(b) >= MODERN_CUTOFF:
+                modern.add(row["geni_id"])
+    before = len(frontier)
+    frontier = {g: fam for g, fam in frontier.items() if g not in modern}
+    if before != len(frontier):
+        print(f"born {MODERN_CUTOFF} or later: {before - len(frontier)} dropped, "
+              f"never created")
+
     if args.roster:
+        # **Find the ids by pattern, not by parsing the file's shape.** Two attempts
+        # failed before this one, both silently: the first accepted only bare digits and
+        # missed `geni:6000000003492005116`; the second sniffed the delimiter from line
+        # one, which in a path file is a `#` comment with no tab, so a TSV was read as
+        # CSV and every row came back as one uncut string. Both reported "0 ids" and cut
+        # the ring to nothing, which looks exactly like "there is no work to do".
         wanted = set()
         for path in args.roster:
-            with open(path, encoding="utf-8") as f:
-                head = f.readline()
-                delim = "\t" if "\t" in head else ","
-                f.seek(0)
-                for row in csv.reader(f, delimiter=delim):
-                    for cell in row:
-                        cell = cell.strip()
-                        if cell.isdigit() and len(cell) >= 10:
-                            wanted.add(cell)
-        # Spouses of roster members are the in-laws. A spouse shares a `FAM` with them as
-        # the other parent, so they are already in `frontier` keyed on that family --
-        # keeping any frontier person who shares a family with a roster member keeps the
-        # in-laws without needing a second pass over the tree.
+            text = Path(path).read_text(encoding="utf-8")
+            found = set(re.findall(r"(?:geni:)?(\d{10,})", text))
+            print(f"  {len(found)} Geni ids in {path}")
+            wanted |= found
+
         # **In-laws means SPOUSES, not everyone in the family.** The first cut unioned
         # every parent and child of every family a roster member appears in, which took the
         # ring from 138 to 2569 -- it pulled in whole sibling sets and their descendants,
@@ -583,10 +604,18 @@ def main():
             # duplicates it exactly -- `Aen "Inger Kristoffersdatter"` sitting beside
             # `Len "Inger Kristoffersdatter"`. The birth-name alias is already emitted
             # with the labels above, so this carries only what those do not.
+            # **Every alias gets BOTH `Aen` and `Amul`.** Emma, 2026-08-24: *"the married
+            # name is the primary label and the birth name is amul"*, and on 2026-08-25,
+            # looking at a built file: *"you seem to be getting Aen and Amul confused
+            # again"*. She was right — this block wrote `Aen` alone, so the birth-name
+            # alias reached `en` and never `mul`. The file she was looking at had **4
+            # `Aen` and 1 `Amul`**. `mul` is the language-neutral label and an alias that
+            # exists only in `en` is invisible to every other language.
             emitted = {qs(primary), qs(birth)}
             for alias in aliases_for(fields.get(g, {})):
                 if qs(alias) and qs(alias) not in emitted:
                     lines.append(f'LAST	Aen	"{qs(alias)}"')
+                    lines.append(f'LAST	Amul	"{qs(alias)}"')
                     emitted.add(qs(alias))
             for note in unresolved:
                 carried.append((g, label, f"name item missing: {note}"))

@@ -13636,3 +13636,36 @@ two items, or an item for two people, drops **both** proposals. No name is compa
 
 **Not yet run** — Emma asked to hold at this exact point while she runs Arne QuickStatements. The
 relations extract was still building when work stopped.
+
+### 2026-08-25 — three errors in the Garborg batch, all Emma's catches
+
+She looked at the built file and found three things.
+
+**1. The roster was the wrong path entirely.** *"we only right now create individuals in the path
+from Arne to me, not from me to Arne, not from Charlemagne to Arne/me."* The batch had been built
+from `reports/charlemagne-route.csv` — her ancestry toward Charlemagne, which is the case she
+explicitly excluded. That is why its first creation was *Anna Fartegnsdatter Seim* (b.1510), who
+is not on Arne's path at all. The roster is now the Arne path, and the default build is the ring
+one hop out from the 41 items she has already made — which *is* "Arne's relatives", the thing
+`queue.md` asks for a hop of per day.
+
+**2. `Aen` and `Amul` again.** *"you seem to be getting Aen and Amul confused again."* The
+married name reached `Len`+`Lmul` correctly, but the birth-name alias came through the generic
+alias block, which wrote **`Aen` alone**. The file she was looking at had **4 `Aen` and 1
+`Amul`**. `mul` is the language-neutral label, so an alias living only in `en` is invisible
+everywhere else. Every alias now gets both; the rebuilt file is 59 and 59.
+
+**3. Her father was reachable.** *"no we are no fuckin gmaking my father as a wikidata item right
+now lol."* Richard Wade Borsheim (b.1963) is step 2 of the Arne path, so any roster drawn from
+that path reaches him. There is now a hard guard at **birth year 1880**, dropping **55 people**
+including Emma (1996), her father (1963), her grandfather Randolph (1926), Reinhert Borsheim
+(1891) and Selma Pedersdtr. Borsheim (1890). A year cut rather than a name list, so a path that
+reaches some other modern relative is caught too. "Right now" is hers to lift.
+
+**And two silent parser failures worth recording, because both looked like "no work to do".** The
+`--roster` reader first accepted only bare digits and missed `geni:6000000003492005116`; then it
+sniffed the delimiter from line one, which in a path file is a `#` comment with no tab, so a TSV
+was read as CSV and every row came back as one uncut string. Both printed `0 ids` and cut the ring
+to zero. It now finds ids by pattern and prints the count per file, so an unread roster is loud.
+
+**Today's file: 83 creations, 244 links, everyone born 1751–1878.**
