@@ -13442,3 +13442,33 @@ first was the structural walk's `P2600` "precision" of 1.3%, which measured the 
 than the walk. Both were caught by testing against records rather than by reasoning.
 
 `CORROBORATED` remains 8 pairs and is now the only column of that report worth acting on.
+
+### 2026-08-25 — the artifact saved into the repo, and rebuilt with all 28 pairs
+
+Emma: *"probably should fucking save this thing ... as it is pretty good"*, then *"Make something
+that has all of them"*.
+
+**It was only ever in the session scratchpad**, under `%LOCALAPPDATA%\Temp` — which her own
+`CLAUDE.md` rule says Storage Sense deletes on Windows' schedule, not ours. The generator is now
+`scripts/build-duplicates-artifact.py` and is **data-driven**: it reads
+`reports/multi-p2600-verdicts.tsv` and pairs each row with the screenshots by filename, so the
+next batch updates the page by re-running it rather than by editing prose. Twelve of the
+twenty-eight cards had no hand-written copy before this; they have their recorded evidence
+instead, which is what the TSV was for.
+
+**28 cards: 22 judged verdicts plus the 6 opened first.** Grouped by verdict — 7 duplicate, 2
+likely-duplicate, 2 father-son, 1 half-sisters, 7 siblings, 1 siblings-uncertain, 2
+different-people.
+
+**The two populations stay in separate sections.** The six opened first sit in a tail section
+saying plainly that Wikidata carries **one Geni id or none** for those items and the second id came
+from our own structural walk. Folding them into the main sequence would re-make the exact error the
+first version of this page had to be corrected for.
+
+**The `.html` is committed, not just the generator.** It is 5.74 MB because every screenshot is
+inlined as a data URI — and that is the point: the images live in `Documents\claude-screenshots\`,
+outside the repo, so the built page is the only copy of them that version control holds. Emma,
+2026-08-11: *"We're not trying to make the repo small. We don't care about repo size. We care about
+actually getting results."*
+
+<https://claude.ai/code/artifact/cc43d8f3-2821-4c0a-a906-8bb4d6fccb82>
