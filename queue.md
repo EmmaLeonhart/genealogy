@@ -1582,7 +1582,13 @@ Wikidata."* A slot with nothing on their side is a **creation opportunity**, whi
 
 ---
 
-# THE LAST ITEM — BUILT 2026-08-26. `reports/wikidata-spine-batch.qs`
+# THE LAST ITEM — BUILT 2026-08-26. `reports/wikidata-garborg-day.qs`
+
+**There is exactly ONE live batch file and that is deliberate.** A second copy under a spine-y
+name was made and immediately deleted: `tests/test_p2600_batches.py` failed on it, correctly,
+because two files creating the same people is precisely how somebody runs both and duplicates
+everybody. `reports/wikidata-garborg-day.qs` is the batch; what it contains depends on the flags
+it was built with.
 
 **Emma, 2026-08-25:** *"make it 100% clear in our queue at the end and no other crap no excuses
 queue says to build the thing that makes a lot of them."*

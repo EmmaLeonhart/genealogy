@@ -14431,7 +14431,7 @@ spine's middle sits many edges from anybody holding a QID — which is the whole
 building — so filtering a ring those people are not in returned nothing, and that reads exactly
 like "no work to do".
 
-**21 creations, 148 links**, `reports/wikidata-spine-batch.qs`. Every guard applied and each one
+**21 creations, 148 links**, `reports/wikidata-garborg-day.qs`. Every guard applied and each one
 bit: 49 people across the three lines, minus 5 in the ledger, 8 already judged to have items, 4
 born after 1880, 9 already carrying a `P2600` elsewhere, and 2 held by the duplicate guard.
 
@@ -14448,3 +14448,23 @@ Lejon's parent has unmatched children `Q4955715` *Ingegerd Knutsdotter* and `Q16
 Knutsdotter* — her sisters. Algot Bryniolfsson's is `Q101247439` *NN Bryn**olvsdotter***, a
 daughter where he is a son. Both could be released on the closed-sibling-set rule, but the guard's
 own reasoning stands: holding a real person costs a day, a duplicate costs a manual merge.
+
+**Four test failures followed, all real, and they exposed an ordering dependency I had not
+stated.** The spine batch emits `Q4953376 P40 LAST` and the like, pointing at the seven items
+judged as already existing — whose `P2600` has not been added yet, so the ledger did not know
+them and `test_every_qid_the_batch_points_at_already_exists` failed correctly.
+
+The fix is not to loosen the test. **The ledger records OUR correspondence, not Wikidata's
+`P2600`** — Marta Jonsdatter Li was added to it the same way before her `P2600` existed — so the
+eight judged spine people belong in it, each carrying a note that the identifier is still pending
+in `reports/wikidata-spine-add-p2600.qs`. That file must run first; the dependency is now written
+down instead of implicit.
+
+**`reports/wikidata-bergitte.qs` deleted.** It created Bergitte standalone and so does the spine
+batch. Running both would have duplicated the one person all three lines hinge on.
+
+**And a second copy of the batch was made and immediately deleted.** Saving it under a spine-y
+name failed the same test, correctly: two files creating the same people is exactly how somebody
+runs both. There is one live batch file.
+
+**1,309 passed, 0 failed.**

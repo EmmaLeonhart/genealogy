@@ -6,7 +6,7 @@ state.
 
 **Bergitte Gunnbjørnsdatter Aukland** `6000000002481819312`, 1465–1522, is the hinge — an ancestor
 of both Emma and Arne (Arne at depth 11), and the one on both lines who descends from Charlemagne.
-She has **no Wikidata item**; `reports/wikidata-bergitte.qs` creates her.
+She has **no Wikidata item**. `reports/wikidata-garborg-day.qs` creates her — the standalone `wikidata-bergitte.qs` was deleted on 2026-08-26 because both created her and running both would have duplicated the one person all three lines hinge on.
 
 | line | people | have items | to create |
 | --- | ---: | ---: | ---: |

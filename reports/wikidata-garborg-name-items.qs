@@ -5,16 +5,142 @@
 # name: CLAUDE.md, one name item per USAGE. Emma's Q141152710 Aadnesson is
 # the pattern -- labels, P31, nothing else.
 
-# Andersdotter -- family, 1 bearer(s) in the batches
+# Larsen -- patronymic, 3 bearer(s) in the batches
 CREATE
-LAST	Len	"Andersdotter"
-LAST	Lmul	"Andersdotter"
+LAST	Len	"Larsen"
+LAST	Lmul	"Larsen"
+LAST	P31	Q110874
+
+# Mjølhus -- family, 3 bearer(s) in the batches
+CREATE
+LAST	Len	"Mjølhus"
+LAST	Lmul	"Mjølhus"
 LAST	P31	Q101352
 
-# Ivarsdatter -- patronymic, 1 bearer(s) in the batches
+# Raunes -- family, 3 bearer(s) in the batches
 CREATE
-LAST	Len	"Ivarsdatter"
-LAST	Lmul	"Ivarsdatter"
+LAST	Len	"Raunes"
+LAST	Lmul	"Raunes"
+LAST	P31	Q101352
+
+# Rossavik -- family, 3 bearer(s) in the batches
+CREATE
+LAST	Len	"Rossavik"
+LAST	Lmul	"Rossavik"
+LAST	P31	Q101352
+
+# Gunnbjørn -- given, 2 bearer(s) in the batches
+CREATE
+LAST	Len	"Gunnbjørn"
+LAST	Lmul	"Gunnbjørn"
+LAST	P31	Q202444
+
+# Nedre -- family, 2 bearer(s) in the batches
+CREATE
+LAST	Len	"Nedre"
+LAST	Lmul	"Nedre"
+LAST	P31	Q101352
+
+# Nese -- family, 2 bearer(s) in the batches
+CREATE
+LAST	Len	"Nese"
+LAST	Lmul	"Nese"
+LAST	P31	Q101352
+
+# Tengs -- family, 2 bearer(s) in the batches
+CREATE
+LAST	Len	"Tengs"
+LAST	Lmul	"Tengs"
+LAST	P31	Q101352
+
+# Bergitte -- given, 1 bearer(s) in the batches
+CREATE
+LAST	Len	"Bergitte"
+LAST	Lmul	"Bergitte"
+LAST	P31	Q202444
+
+# Berita -- given, 1 bearer(s) in the batches
+CREATE
+LAST	Len	"Berita"
+LAST	Lmul	"Berita"
+LAST	P31	Q202444
+
+# Borsheim -- family, 1 bearer(s) in the batches
+CREATE
+LAST	Len	"Borsheim"
+LAST	Lmul	"Borsheim"
+LAST	P31	Q101352
+
+# Foss-Eikeland -- family, 1 bearer(s) in the batches
+CREATE
+LAST	Len	"Foss-Eikeland"
+LAST	Lmul	"Foss-Eikeland"
+LAST	P31	Q101352
+
+# Gardson -- patronymic, 1 bearer(s) in the batches
+CREATE
+LAST	Len	"Gardson"
+LAST	Lmul	"Gardson"
+LAST	P31	Q110874
+
+# Gardsson -- patronymic, 1 bearer(s) in the batches
+CREATE
+LAST	Len	"Gardsson"
+LAST	Lmul	"Gardsson"
+LAST	P31	Q110874
+
+# Gunnbjørnsdatter -- patronymic, 1 bearer(s) in the batches
+CREATE
+LAST	Len	"Gunnbjørnsdatter"
+LAST	Lmul	"Gunnbjørnsdatter"
+LAST	P31	Q110874
+
+# Gunnbjørnsen -- patronymic, 1 bearer(s) in the batches
+CREATE
+LAST	Len	"Gunnbjørnsen"
+LAST	Lmul	"Gunnbjørnsen"
+LAST	P31	Q110874
+
+# Guttormsdotter -- family, 1 bearer(s) in the batches
+CREATE
+LAST	Len	"Guttormsdotter"
+LAST	Lmul	"Guttormsdotter"
+LAST	P31	Q101352
+
+# Håland -- family, 1 bearer(s) in the batches
+CREATE
+LAST	Len	"Håland"
+LAST	Lmul	"Håland"
+LAST	P31	Q101352
+
+# Jonsdatter -- patronymic, 1 bearer(s) in the batches
+CREATE
+LAST	Len	"Jonsdatter"
+LAST	Lmul	"Jonsdatter"
+LAST	P31	Q110874
+
+# Jonson -- patronymic, 1 bearer(s) in the batches
+CREATE
+LAST	Len	"Jonson"
+LAST	Lmul	"Jonson"
+LAST	P31	Q110874
+
+# Landsnes -- family, 1 bearer(s) in the batches
+CREATE
+LAST	Len	"Landsnes"
+LAST	Lmul	"Landsnes"
+LAST	P31	Q101352
+
+# Larsdatter -- patronymic, 1 bearer(s) in the batches
+CREATE
+LAST	Len	"Larsdatter"
+LAST	Lmul	"Larsdatter"
+LAST	P31	Q110874
+
+# Larsson -- patronymic, 1 bearer(s) in the batches
+CREATE
+LAST	Len	"Larsson"
+LAST	Lmul	"Larsson"
 LAST	P31	Q110874
 
 # Mele -- family, 1 bearer(s) in the batches
@@ -23,34 +149,76 @@ LAST	Len	"Mele"
 LAST	Lmul	"Mele"
 LAST	P31	Q101352
 
-# Olai -- family, 1 bearer(s) in the batches
+# Nilsen -- patronymic, 1 bearer(s) in the batches
 CREATE
-LAST	Len	"Olai"
-LAST	Lmul	"Olai"
-LAST	P31	Q101352
-
-# Olofsson -- patronymic, 1 bearer(s) in the batches
-CREATE
-LAST	Len	"Olofsson"
-LAST	Lmul	"Olofsson"
+LAST	Len	"Nilsen"
+LAST	Lmul	"Nilsen"
 LAST	P31	Q110874
 
-# Sandsmark -- family, 1 bearer(s) in the batches
+# Nord-Talgje -- family, 1 bearer(s) in the batches
 CREATE
-LAST	Len	"Sandsmark"
-LAST	Lmul	"Sandsmark"
+LAST	Len	"Nord-Talgje"
+LAST	Lmul	"Nord-Talgje"
 LAST	P31	Q101352
 
-# Time -- family, 1 bearer(s) in the batches
+# Osmundsdatter -- patronymic, 1 bearer(s) in the batches
 CREATE
-LAST	Len	"Time"
-LAST	Lmul	"Time"
+LAST	Len	"Osmundsdatter"
+LAST	Lmul	"Osmundsdatter"
+LAST	P31	Q110874
+
+# Osmundsen -- patronymic, 1 bearer(s) in the batches
+CREATE
+LAST	Len	"Osmundsen"
+LAST	Lmul	"Osmundsen"
+LAST	P31	Q110874
+
+# Pedersdatter -- patronymic, 1 bearer(s) in the batches
+CREATE
+LAST	Len	"Pedersdatter"
+LAST	Lmul	"Pedersdatter"
+LAST	P31	Q110874
+
+# Person -- patronymic, 1 bearer(s) in the batches
+CREATE
+LAST	Len	"Person"
+LAST	Lmul	"Person"
+LAST	P31	Q110874
+
+# Rasmusdottir -- given, 1 bearer(s) in the batches
+CREATE
+LAST	Len	"Rasmusdottir"
+LAST	Lmul	"Rasmusdottir"
+LAST	P31	Q202444
+
+# Skiftun -- family, 1 bearer(s) in the batches
+CREATE
+LAST	Len	"Skiftun"
+LAST	Lmul	"Skiftun"
 LAST	P31	Q101352
 
-# Torchelsdatter -- patronymic, 1 bearer(s) in the batches
+# Sæbjørnsdatter -- patronymic, 1 bearer(s) in the batches
 CREATE
-LAST	Len	"Torchelsdatter"
-LAST	Lmul	"Torchelsdatter"
+LAST	Len	"Sæbjørnsdatter"
+LAST	Lmul	"Sæbjørnsdatter"
+LAST	P31	Q110874
+
+# Talgje -- family, 1 bearer(s) in the batches
+CREATE
+LAST	Len	"Talgje"
+LAST	Lmul	"Talgje"
+LAST	P31	Q101352
+
+# Talje -- family, 1 bearer(s) in the batches
+CREATE
+LAST	Len	"Talje"
+LAST	Lmul	"Talje"
+LAST	P31	Q101352
+
+# Toresson -- patronymic, 1 bearer(s) in the batches
+CREATE
+LAST	Len	"Toresson"
+LAST	Lmul	"Toresson"
 LAST	P31	Q110874
 
 # Tormodsen -- patronymic, 1 bearer(s) in the batches
@@ -59,14 +227,13 @@ LAST	Len	"Tormodsen"
 LAST	Lmul	"Tormodsen"
 LAST	P31	Q110874
 
-# Øvre -- family, 1 bearer(s) in the batches
+# Trevland -- family, 1 bearer(s) in the batches
 CREATE
-LAST	Len	"Øvre"
-LAST	Lmul	"Øvre"
+LAST	Len	"Trevland"
+LAST	Lmul	"Trevland"
 LAST	P31	Q101352
 
 # NOT created -- the plan says these already resolve to more than
 # one item, and creating another is the Maria failure that would
 # have made a tenth. Emma picks, the person's sex decides.
-#   Andreas (given), 1 bearer(s)
-#   Anna (given), 1 bearer(s)
+#   Anne (given), 1 bearer(s)
