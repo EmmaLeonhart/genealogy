@@ -1530,35 +1530,6 @@ So the artefact is a provenance **graph** that can be walked in both directions,
 RIGHT/WRONG verdicts as first-class nodes, and a report of which inferred chains an independently
 recorded `P2600` confirms or refutes.
 
-## Solo children: synoptic tree vs Wikidata — Emma, 2026-08-25
-
-*"solo child gives a bit of support but it's not gospel I'm gonna ask for a queued up analysis on
-synoptic tree vs wikidata solo children situations like this."*
-
-The first pass is in `reports/zipper-reliability.md`: `child`+`solo` disagrees with independent
-sources **14.9%** of the time against **0.7%** for `father`+`solo`. It is the worst cell in the
-join. What that pass cannot say is *why*, and the sample behind it is 67 checked pairs.
-
-Build the CSV of every solo-child slot — parent pair, our one child, their one child, both
-labels, both dates, both sexes, whether either side records further children elsewhere. Then:
-
-- **How often is our "only child" only-child because Geni recorded one, versus because the export
-  cut the family off?** A ball that hit its size bound truncates sibships, and a truncated sibship
-  presents as a solo child that is not one.
-- **Same on their side.** A Wikidata item with one `P40` *child* is rarely a claim of an only
-  child; it is one child somebody happened to add.
-- **Does sex agreement change the rate?** Free evidence the join ignores entirely — `P21` *sex
-  or gender* against our `sex` column — and a solo-child pair whose sexes differ is refutable
-  with no name at all.
-- **Does the parent's own provenance predict it?** A solo child hanging off a Wikidata-stated
-  `P2600` anchor is a different proposition from one hanging off five inferences.
-
-**Decided 2026-08-25: they stay, flagged as weakest.** Emma, given the 14.9%: *keep them, flagged
-as weakest*. So this analysis is no longer about whether to drop them — it is about whether
-anything can raise them. **Sex agreement is the first thing to try**: `P21` *sex or gender* against
-our `sex` column is free evidence the join ignores entirely, and a solo-child pair whose sexes
-differ is refutable with no name at all.
-
 ## Link reliability order — parents, spouses, children, siblings
 
 **Emma, 2026-08-25, ranking them least messy first:**

@@ -426,6 +426,33 @@ def main():
                     continue
                 # The cascade. Solo first, then dates, then names within the closed slot.
                 if len(left) == 1 and len(right) == 1:
+                    # **A solo CHILD slot is refused when the sibship is lopsided.**
+                    #
+                    # Emma, before any of it was measured: *"Solo child says nothing unless
+                    # there's some reason to match them lol."* `reports/solo-children.csv`
+                    # says which solo children, and the answer is asymmetry:
+                    #
+                    #     one side records MORE children      41.2% / 39.4% refuted by sex
+                    #     both sides record more              11.1%
+                    #     both sides record ONE child          7.6%
+                    #
+                    # Sex refutes roughly half of arbitrary pairs by chance, so **~40% is
+                    # indistinguishable from random pairing**. Those slots are truncated
+                    # sibships: one side lists a single child and the other lists several, so
+                    # the leftover is matched to whoever happens to remain. That is the same
+                    # coin flip the join already refuses for two-against-two, wearing a
+                    # `1 x 1` disguise because the teeth consumed the difference.
+                    #
+                    # 85 proposals of 3,442, and the band with no information in it.
+                    if slot == "child":
+                        ours_all = len([x for x in split(mine.get(column)) if x in ours])
+                        theirs_all = len(them)
+                        if (ours_all > 1) != (theirs_all > 1):
+                            ambiguous.append({"round": rnd, "slot": slot, "from_geni": g,
+                                              "from_qid": q,
+                                              "ours_unmatched": ";".join(left),
+                                              "theirs_unmatched": ";".join(right)})
+                            continue
                     found = [(left[0], right[0], "position")]
                     method = "solo"
                 else:

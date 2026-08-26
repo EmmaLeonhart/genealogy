@@ -14468,3 +14468,34 @@ name failed the same test, correctly: two files creating the same people is exac
 runs both. There is one live batch file.
 
 **1,309 passed, 0 failed.**
+
+## 2026-08-26 — the solo-children analysis, and what it found is asymmetry
+
+Emma queued this: *"solo child gives a bit of support but it's not gospel I'm gonna ask for a
+queued up analysis on synoptic tree vs wikidata solo children situations like this."*
+
+`scripts/census-solo-children.py` builds `reports/solo-children.csv`, one row per solo-child
+proposal, and asks the question no earlier pass could: **why was the slot `1 × 1`?**
+
+| why | proposals | refuted by sex |
+| --- | ---: | ---: |
+| **our side records more children** | 51 | **41.2%** |
+| **their side records more** | 33 | **39.4%** |
+| both sides record more | 1,699 | 11.1% |
+| both sides record ONE child | 1,592 | **7.6%** |
+
+**Sex refutes roughly half of arbitrary pairs by chance, so ~40% is indistinguishable from random
+pairing.** Those slots are truncated sibships: one side lists a single child, the other lists
+several, and the leftover gets matched to whoever happens to remain. It is the same coin flip the
+join already refuses for two-against-two, wearing a `1 × 1` disguise because the teeth consumed
+the difference.
+
+`scripts/zipper-join.py` now refuses a solo child slot when the sibship is lopsided. **45,960 →
+45,898 pairs, and sex refutations 885 → 848** — 62 pairs given up to remove the band that carried
+no information. The asymmetric shapes no longer appear in the census at all.
+
+**One methodological trap, and it is the third of its kind.** The first version measured sex
+disagreement over `zipper-pairs.tsv` and got **0.0% for every shape** — because the join already
+drops sex-refuted proposals, so that file holds only survivors. It was describing the filter, not
+the join. `CLAUDE.md` already records two of these: a date curve tracking date *coverage*, and one
+tracking date *softness*. The census now reads the refused file alongside the kept one.

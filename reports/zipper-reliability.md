@@ -8,115 +8,32 @@ Two independent checks, neither of which asks Wikidata anything: whether the two
 
 | slot | method | pairs | dated | dates >10y apart | independently checked | agree | disagree |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| father | solo | 11,679 | 4,491 | 13.9% | 3,167 | 99.4% | 0.6% |
-| mother | solo | 9,494 | 2,896 | 10.7% | 3,051 | 99.4% | 0.6% |
-| child | date | 8,227 | 8,227 | -- | 372 | 95.7% | 4.3% |
-| child | name | 6,444 | 1,342 | 22.8% | 104 | 88.5% | 11.5% |
-| spouse | solo | 5,111 | 2,290 | 11.3% | 498 | 97.0% | 3.0% |
-| child | solo | 3,099 | 1,001 | 8.0% | 58 | 87.9% | 12.1% |
-| spouse | name | 1,154 | 232 | 23.3% | 70 | 91.4% | 8.6% |
-| spouse | date | 698 | 698 | -- | 92 | 97.8% | 2.2% |
-| father | name | 20 | 1 | 0.0% | 0 | -- | -- |
-| father | date | 16 | 16 | -- | 0 | -- | -- |
-| mother | name | 16 | 3 | 66.7% | 1 | 100.0% | 0.0% |
+| father | solo | 11,677 | 4,500 | 13.7% | 3,179 | 99.4% | 0.6% |
+| mother | solo | 9,442 | 2,881 | 10.7% | 3,029 | 99.4% | 0.6% |
+| child | date | 8,210 | 8,210 | -- | 365 | 96.4% | 3.6% |
+| child | name | 6,466 | 1,348 | 22.9% | 108 | 89.8% | 10.2% |
+| spouse | solo | 5,106 | 2,295 | 11.4% | 497 | 96.8% | 3.2% |
+| child | solo | 3,078 | 999 | 8.1% | 63 | 90.5% | 9.5% |
+| spouse | name | 1,171 | 230 | 22.2% | 84 | 92.9% | 7.1% |
+| spouse | date | 694 | 694 | -- | 85 | 96.5% | 3.5% |
+| father | name | 21 | 2 | 0.0% | 0 | -- | -- |
+| mother | name | 16 | 4 | 50.0% | 0 | -- | -- |
+| father | date | 15 | 15 | -- | 1 | 100.0% | 0.0% |
 | mother | date | 2 | 2 | -- | 0 | -- | -- |
 
 ## By slot
 
 | slot | pairs | dates >10y apart | independently checked | disagree |
 | --- | ---: | ---: | ---: | ---: |
-| child | 17,770 | 3.7% | 534 | 6.6% |
-| father | 11,715 | 13.9% | 3,167 | 0.6% |
-| mother | 9,512 | 10.7% | 3,052 | 0.6% |
-| spouse | 6,963 | 9.7% | 660 | 3.5% |
+| child | 17,754 | 3.7% | 536 | 5.6% |
+| father | 11,713 | 13.7% | 3,180 | 0.6% |
+| mother | 9,460 | 10.7% | 3,029 | 0.6% |
+| spouse | 6,971 | 9.7% | 666 | 3.8% |
 
 ## By method
 
 | method | pairs | dates >10y apart | independently checked | disagree |
 | --- | ---: | ---: | ---: | ---: |
-| solo | 29,383 | 11.9% | 6,774 | 0.9% |
-| date | 8,943 | -- | 464 | 3.9% |
-| name | 7,634 | 22.9% | 175 | 10.3% |
-
-## Error by round — and why `ROUND_CAP` went from 3 to 8
-
-**Check the coverage before reading any margin.** That rule was written into this file after the
-per-method margins turned out to be parent-shaped, and applying it at the per-round level
-disqualifies two of the three checks outright:
-
-| round | pairs | dated | sexed | independently checked |
-| ---: | ---: | ---: | ---: | ---: |
-| 1 | 16,093 | 65% | 100% | 45% |
-| 2 | 10,303 | 49% | 100% | 1% |
-| 3 | 7,079 | 36% | 100% | 0% |
-| 4 | 4,942 | 29% | 100% | 0% |
-| 5 | 3,382 | 24% | 94% | 0% |
-| 6 | 2,178 | 21% | 86% | 0% |
-| 7 | 1,254 | 21% | 91% | 0% |
-| 8 | 729 | 20% | 90% | 0% |
-
-**Independent sources are unusable past round 1** — 7,185 checks at round 1, 29 at round 3, none
-at round 8. The 30.8% and 41.4% "error rates" they give for rounds 2 and 3 rest on 146 and 29
-samples.
-
-**The date column falls with its own coverage.** It reads 3.9% → 18.4% while the share of dated
-pairs falls 65% → 20%. **That is the curve `ROUND_CAP = 3` was set from**, and it describes who
-carries a birth year, not who is paired correctly.
-
-**Sex has coverage at depth — and a confound of its own, which was corrected before deciding.**
-Sex can never refute a `father` or `mother` pairing: both are same-sex by construction. Those
-slots grow from **38.6%** of round 1 to **57.7%** of round 6, so measuring over everything
-flattens the curve artificially. Restricted to `child` and `spouse`, where a refutation is
-possible:
-
-| round | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| refuted | 2.8% | 4.0% | 3.2% | 3.8% | 3.8% | 4.8% | 4.2% | 4.8% |
-
-**Error rises by about 1.7× over eight rounds, and there is no knee at 3.** Capping there
-discarded **12,485 pairs** to avoid a rise from ~3.2% to ~4.8%.
-
-**The deciding comparison is one Emma already made.** She kept `child`+`solo` — which this same
-check puts at **10.0%** — saying *"keep them, flagged as weakest"*. A round-8 pair at 4.8% is
-better evidenced than a cell she chose to keep, so excluding it by round contradicts her own
-standard, and her bar for stopping the join is *"we need a pretty damn good reason to stop it."*
-
-**Round is the wrong axis. Method and slot are the right ones.** At every round, `date` is the
-worst method (3.4–7.9%) against `name` (0.4–2.1%) and `solo` (0.8–2.2%) — a wider spread than the
-whole round-1-to-round-8 range. She asked whether to cap by method as well; the data says method
-matters more than round, but it is already handled where it belongs rather than by a cap:
-`SLOT_YEAR_TOLERANCE` cuts the child date tolerance to 0, and sex-refuted pairs are dropped
-outright. **No method cap is proposed.**
-
-## Why solo PARENTS had the worst date disagreement — resolved
-
-Recorded as NEEDS-INVESTIGATION: `father`+`solo` was simultaneously the most independently
-corroborated cell (0.7% disagreement) and the worst by dates (13.2% more than ten years apart).
-Both cannot describe the same pairs unless one check is measuring something other than the join.
-
-**It was measuring date softness, and the split shows it twice over.**
-
-| our birth century | dated pairs | >10y apart |
-| ---: | ---: | ---: |
-| 900s | 154 | **29.9%** |
-| 1000s | 407 | 22.9% |
-| 1200s | 987 | 16.2% |
-| 1400s | 851 | 14.1% |
-| 1600s | 768 | 3.8% |
-| 1800s | 538 | **2.2%** |
-
-| GEDCOM modifier on our date | dated pairs | >10y apart |
-| --- | ---: | ---: |
-| exact | 4,544 | **7.4%** |
-| about (`ABT`) | 2,655 | **20.8%** |
-| between (`BET`) | 117 | 18.8% |
-| before (`BEF`) | 70 | 28.6% |
-
-**Parent slots skew medieval, medieval dates are approximations, and a ten-year gap between two
-approximations refutes nothing.** An `ABT 1180` against a `1192` is not a contradiction; it is two
-guesses. The date check is a floor on wrongness for exact dates and close to noise for soft ones.
-
-**This is the second time in two days a date-based error curve turned out to measure the
-instrument rather than the join** — the first being `ROUND_CAP`, where the curve tracked the
-collapse of date coverage with depth. The lesson generalises: *before reading a date-based rate,
-ask what fraction of the population carries a real date and how many of those are `ABT`.*
+| solo | 29,303 | 11.9% | 6,768 | 0.9% |
+| date | 8,921 | -- | 451 | 3.5% |
+| name | 7,674 | 22.9% | 192 | 8.9% |
