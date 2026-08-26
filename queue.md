@@ -1549,17 +1549,6 @@ anything can raise them. **Sex agreement is the first thing to try**: `P21` *sex
 our `sex` column is free evidence the join ignores entirely, and a solo-child pair whose sexes
 differ is refutable with no name at all.
 
-## Why solo PARENTS have the worst date disagreement — NEEDS-INVESTIGATION
-
-`father`+`solo` is the most independently corroborated cell (0.7%) and simultaneously has the
-worst date disagreement in the table (13.2% more than ten years apart). Both cannot be a property
-of the same pairs unless one check is measuring something else.
-
-The standing guess is that parent pairs skew medieval, both sides carry soft years, and a ten-year
-gap between two guesses refutes nothing. **Nothing tests that yet.** Split the date disagreement
-by century and by whether either date carries a GEDCOM `ABT`/`EST`/`CAL` modifier
-(`genimerge.dates` parses these already) before believing it.
-
 ## Link reliability order — parents, spouses, children, siblings
 
 **Emma, 2026-08-25, ranking them least messy first:**

@@ -14301,3 +14301,31 @@ Both zero-anchor rows now say so in their confidence, and the `.qs` carries the 
 with what it means. Nothing was removed: a self-corroborating chain is not thereby wrong, and
 `CLAUDE.md` is explicit that Emma's bar for discarding is *"a pretty damn good reason"*. It is a
 reading made visible, which is the same standard `zipper-provenance.py` applies with `POISONED`.
+
+## 2026-08-26 — three of Emma's decisions applied, and the date paradox resolved
+
+**The `P2600` gate is loosened: 1,665 → 7,168 additions.** Shown what it was actually doing, she
+said *"Loosen it — emit the ~7,000."* It required a parent anchor and rejected 5,651 of 7,320, of
+which **5,540 had no disagreement anywhere** — they were simply uncheckable. It refuses
+contradiction now and not silence: 148 rejected, every one a case where a parent is recorded on
+both sides and the two are different people.
+
+**A correction I owed her**: I had told her only 16 rejects were real disagreements. The honest
+number is **111** — my classifier assigned each row to its *first* matching reason, so a row with
+one uncheckable parent and one disagreeing parent was filed as uncheckable. The decision stands at
+111 of 5,651, but the number I gave was wrong.
+
+**Spine 18 accepted** — Ingegerd `Q101247444`, knowingly on the closed-slot name rule, since the
+parents cannot separate three sisters. **Spine 19 accepted and flagged self-corroborating** — six
+relatives agree and none carries a recorded `P2600`, so the six agreements are the chain agreeing
+with itself. Her instruction: take it, mark it, so a later contradiction can unwind it.
+
+**The solo-parent date paradox is resolved.** Parent slots skew medieval and medieval dates are
+approximations. By century the disagreement runs 29.9% in the 900s down to 2.2% in the 1800s; by
+GEDCOM modifier it is 7.4% for exact dates against 20.8% for `ABT` and 28.6% for `BEF`. A ten-year
+gap between two guesses refutes nothing.
+
+That is the **second date-based error curve in two days that measured the instrument rather than
+the join**, after `ROUND_CAP`. The generalised lesson is in `reports/zipper-reliability.md`: before
+reading a date-based rate, ask what fraction of the population carries a real date and how many of
+those are `ABT`.

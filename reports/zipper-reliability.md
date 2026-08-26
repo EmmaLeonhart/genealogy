@@ -87,3 +87,36 @@ whole round-1-to-round-8 range. She asked whether to cap by method as well; the 
 matters more than round, but it is already handled where it belongs rather than by a cap:
 `SLOT_YEAR_TOLERANCE` cuts the child date tolerance to 0, and sex-refuted pairs are dropped
 outright. **No method cap is proposed.**
+
+## Why solo PARENTS had the worst date disagreement — resolved
+
+Recorded as NEEDS-INVESTIGATION: `father`+`solo` was simultaneously the most independently
+corroborated cell (0.7% disagreement) and the worst by dates (13.2% more than ten years apart).
+Both cannot describe the same pairs unless one check is measuring something other than the join.
+
+**It was measuring date softness, and the split shows it twice over.**
+
+| our birth century | dated pairs | >10y apart |
+| ---: | ---: | ---: |
+| 900s | 154 | **29.9%** |
+| 1000s | 407 | 22.9% |
+| 1200s | 987 | 16.2% |
+| 1400s | 851 | 14.1% |
+| 1600s | 768 | 3.8% |
+| 1800s | 538 | **2.2%** |
+
+| GEDCOM modifier on our date | dated pairs | >10y apart |
+| --- | ---: | ---: |
+| exact | 4,544 | **7.4%** |
+| about (`ABT`) | 2,655 | **20.8%** |
+| between (`BET`) | 117 | 18.8% |
+| before (`BEF`) | 70 | 28.6% |
+
+**Parent slots skew medieval, medieval dates are approximations, and a ten-year gap between two
+approximations refutes nothing.** An `ABT 1180` against a `1192` is not a contradiction; it is two
+guesses. The date check is a floor on wrongness for exact dates and close to noise for soft ones.
+
+**This is the second time in two days a date-based error curve turned out to measure the
+instrument rather than the join** — the first being `ROUND_CAP`, where the curve tracked the
+collapse of date coverage with depth. The lesson generalises: *before reading a date-based rate,
+ask what fraction of the population carries a real date and how many of those are `ABT`.*

@@ -200,26 +200,48 @@ def main():
                 only = next(iter(theirs))
                 if only == mine[slot]:
                     anchors.append(f"{word}: {pq} carries {only}, and so does our tree")
-        if not anchors:
-            tally["no parent anchor agrees"] += 1
-            # Why it failed, in the terms a human can check: did we have a parent at all,
-            # did the item, and did their parent carry a Geni id we could compare?
-            why = []
-            for prop, slot, word in ((FATHER, 0, "father"), (MOTHER, 1, "mother")):
-                if not mine[slot]:
-                    why.append(f"{word}: none in our tree")
-                elif not item[prop]:
-                    why.append(f"{word}: none on the item")
-                else:
-                    for pq in item[prop]:
-                        theirs = carried.get(pq, set())
-                        if not theirs:
-                            why.append(f"{word}: their {pq} carries no Geni id")
-                        elif len(theirs) != 1:
-                            why.append(f"{word}: their {pq} carries {len(theirs)} Geni ids")
-                        else:
-                            why.append(f"{word}: their {pq} carries "
-                                       f"{next(iter(theirs))}, ours is {mine[slot]}")
+        # Why each comparable parent did or did not agree, in terms a human can check.
+        why, conflicts = [], []
+        for prop, slot, word in ((FATHER, 0, "father"), (MOTHER, 1, "mother")):
+            if not mine[slot]:
+                why.append(f"{word}: none in our tree")
+            elif not item[prop]:
+                why.append(f"{word}: none on the item")
+            else:
+                for pq in item[prop]:
+                    theirs = carried.get(pq, set())
+                    if not theirs:
+                        why.append(f"{word}: their {pq} carries no Geni id")
+                    elif len(theirs) != 1:
+                        why.append(f"{word}: their {pq} carries {len(theirs)} Geni ids")
+                    elif next(iter(theirs)) == mine[slot]:
+                        pass                       # already recorded as an anchor
+                    else:
+                        note = (f"{word}: their {pq} carries {next(iter(theirs))}, "
+                                f"ours is {mine[slot]}")
+                        why.append(note)
+                        conflicts.append(note)
+
+        # **CONTRADICTION is refused. SILENCE is not.** Emma, 2026-08-26, shown what the old
+        # gate was actually doing: *"Loosen it -- emit the ~7,000."*
+        #
+        # It used to require a parent anchor and rejected 5,651 of 7,320. Writing the rejects
+        # out showed the shape:
+        #
+        #     5,540  no disagreement anywhere -- simply nothing to check against
+        #        64  one parent disagrees, another is uncheckable
+        #        47  every comparable parent disagrees
+        #
+        # So it was never a correctness filter. It was a CHECKABILITY filter throwing away the
+        # unverifiable along with the wrong, and `CLAUDE.md` says everywhere else that absence
+        # never refutes -- the same principle that renamed `CONTRADICTED` to
+        # `PARENTS-NOT-JOINED`.
+        #
+        # What makes loosening safe is `CLAUDE.md`'s own asymmetry: `P2600` is multi-valued and
+        # additive, so a wrong one is a statement to correct rather than a deletion to recover
+        # from, and *"the entire purpose of this is to add"*.
+        if conflicts:
+            tally["REFUSED - a parent is recorded on both sides and they differ"] += 1
             rejected.append({"qid": qid, "geni_id": geni,
                              "wikidata_label": item["label"], "geni_name": name,
                              "our_father": mine[0], "our_mother": mine[1],
@@ -228,10 +250,13 @@ def main():
                              "why": " | ".join(why)})
             continue
 
-        tally["BOTH parents anchor" if len(anchors) > 1 else "one parent anchors"] += 1
+        tally["BOTH parents anchor" if len(anchors) > 1
+              else "one parent anchors" if anchors
+              else "no anchor, but nothing contradicts either"] += 1
         rows.append({"anchors": len(anchors), "qid": qid, "geni_id": geni,
                      "wikidata_label": item["label"], "geni_name": name,
-                     "evidence": " | ".join(anchors)})
+                     "evidence": " | ".join(anchors) if anchors
+                     else "no parent anchor; nothing contradicts - " + " | ".join(why)})
 
     rej = ROOT / "reports" / "add-p2600-rejected.tsv"
     with open(rej, "w", encoding="utf-8", newline="") as f:
