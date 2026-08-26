@@ -175,29 +175,31 @@ post-merge-wins and would not do the job. Do not assume the two rules coincide.
 Depends on `reports/geni-stale-duplicates.tsv` (13 strong, 3 medium, 13 weak) and
 `reports/geni-merges-performed.tsv` (180 survivors from her activity feed).
 
-## First post-merge export is IN — 12 of 13 strong duplicates resolved by one ball
+## Post-merge resolution is MEASURED — 20 of 29, and no export is outstanding
 
-`exports/post-merge/export-Forest-6000000227413001839.ged`, 5,000 individuals, 3,137
-families, taken 2026-08-24 14:32.
+`scripts/check-post-merge-resolution.py` → `reports/post-merge-resolution.tsv`, over all
+**seven** exports in `exports/post-merge/` (23,373 distinct people) and all 29 duplicate pairs,
+not the one export and 13 strong rows the earlier note described.
 
-**Geni will not export from a profile you did not add** — its own rule on `/gedcom`:
-*"you may only export a GEDCOM file focused on profiles that you added to Geni."* That is
-why Kuiko Haji-no-muraji's Actions menu had no *Export GEDCOM* at all, and it closes the
-direct route for every one of the 13, which are all 2008-era profiles added by others.
+| evidence | resolved | both still present |
+| --- | ---: | ---: |
+| strong (13) | **13** | 0 |
+| medium (3) | **3** | 0 |
+| weak (13) | 4 | 9 |
 
-So the seed is a Tier 3 placeholder per `docs/export-seed-rules.md`: **`NN`, mother of
-Iwai**, `6000000227413001839`, female, deceased, no surname. 4,533 descendants.
+**Aaron III needed no export — two had already been run on his own survivor**,
+`export-Forest-6000000178918141824.ged` and its `-refresh`. The refresh holds the survivor
+without the twin, which is the resolution condition. The queue said one was outstanding because
+the count was taken against a single file on the day it landed.
 
-**Result: survivor present, twin absent, on 12 of the 13.** Only Aaron III Samaritan High
-Priest is missing, and he sits in a different part of the tree.
+**The 9 open rows are all `weak`, and "both present" there is the expected outcome rather than a
+failure.** `CLAUDE.md`: if Geni holds two, we should hold two. `weak` is the grade for pairs
+least likely to be one person. Three of the nine are the same survivor,
+`6000000227350557852` *Yorimoto Tanba*, who carries three stale twins — which is also why 29
+pairs sit over 27 distinct survivors.
 
-**Still to do on this:**
-
-- **Aaron III** — one more export, seeded the same way in the Samaritan tree.
-- **Re-merge and re-derive**, then the structural walk and the correspondence. The order
-  Emma set: merges, then joins, then the walk.
-- **Check the medium and weak rows** against this export too — only the 13 strong were
-  measured.
+**Still to do here: re-merge and re-derive**, then the structural walk and the correspondence, in
+the order § *PREREQUISITE ORDER* sets.
 
 ## ⛔ PREREQUISITE ORDER for the synoptic rebuild — merges first, then joins
 

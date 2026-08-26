@@ -14949,3 +14949,37 @@ invented limits are on record — `LAST`-as-value, this one, and exports "needin
 one had machinery built around it before anybody tried the thing.
 
 **1,358 passed, 0 failed.**
+
+## 2026-08-26 — the Aaron III export had already been run, twice
+
+The queue said *"Aaron III — one more export, seeded the same way in the Samaritan tree"*, and
+Emma authorised running it under Chrome automation. The mandatory pre-export grep found it was
+not needed: `exports/post-merge/` holds **seven** exports, not the one the queue describes, and
+**two of them are seeded on Aaron III's own survivor** `6000000178918141824`. The later
+`-refresh` holds the survivor **without** the stale twin, which is the resolution condition.
+
+`CLAUDE.md` § *GREP THE CORPUS BEFORE RUNNING AN EXPORT* exists for exactly this, and it has now
+paid for itself a third time.
+
+`scripts/check-post-merge-resolution.py` → `reports/post-merge-resolution.tsv`, over all seven
+files (23,373 distinct people) and all 29 pairs rather than one file and the 13 `strong` rows:
+
+| evidence | resolved | both still present |
+| --- | ---: | ---: |
+| strong (13) | **13** | 0 |
+| medium (3) | **3** | 0 |
+| weak (13) | 4 | 9 |
+
+**Every `strong` and `medium` row is resolved.** The 9 open rows are all `weak`, and "both still
+present" there is the expected outcome rather than a failure: `CLAUDE.md` says if Geni holds two
+we should hold two, and `weak` is the grade for pairs least likely to be one person.
+
+**Resolution is judged per FILE, not over the union of the directory.** One ball holding the
+survivor while a different ball holds the twin has resolved nothing; the pair is resolved when
+some single export reached the survivor without the twin.
+
+**29 pairs sit over 27 distinct survivors** — `6000000227350557852` *Yorimoto Tanba* carries
+three stale twins. The script prints both numbers with the reason, because two counts that
+differ by two and are never reconciled are how a report gets mistrusted later.
+
+**1,358 passed, 0 failed.**
