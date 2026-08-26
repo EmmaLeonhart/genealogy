@@ -18,6 +18,9 @@ audits, dead crons and superseded priorities. Recover any of it with
 - `reports/wikidata-geni-qid-p2600.qs` — **354** `P2600` *Geni.com profile ID* statements
   from the Wikidata links in the Geni About Me. Account in `reports/geni-qid-links.md`.
 - `reports/wikidata-izumo-beyond-chart.json` — one `create_individual`, Takanori 81 Senge.
+- `reports/wikidata-izumo-succession.json` — **105** `P39` *position held* statements,
+  the three Izumo offices with `P2389` naming the organisation and `P1365`/`P1366`
+  chaining each line. Built 2026-08-26 to Emma's three-office model.
 - `reports/wikidata-nn-labels.json` — 3,525 `NN` label edits, built to her full model.
 - Entity resolution — 10 edits, emitter correct.
 - Samaritan High Priest normalization — built. `P39` *position held* → `Q678510`
@@ -217,33 +220,6 @@ found**. That is not a null result: two independent paths, the roster join and t
 corpus-wide About Me pass, agree completely. Emma: *"it probably means we did good data
 modelling early on"*. The new fact is **Onakatomi 0 of 97** — that clan has no About Me
 links written yet, so it cannot join at all. Hers to write.
-
-## ⛔ Izumo succession is by SURNAME, and the office splits into three
-
-**Emma's model, 2026-08-24, and it settles how the chart becomes `P39`/`P1365`/`P1366`:**
-
-*"Izumo succession is based on surname so original Izumo would be the Unified Izumo no
-Kuni no Miyatsuko and Senge and Kitajima are different ones all three designated with a
-qualifier on according to which organization: izumo taisha for the unified, izumokyo for
-kitajima and izumo taishakyo for senge. With the last unified one having both
-successors."*
-
-So there are **three offices**, not one succession, distinguished by a qualifier naming
-the organisation:
-
-| holders | office | organisation qualifier |
-| --- | --- | --- |
-| surname *Izumo* | Unified Izumo no Kuni no Miyatsuko | Izumo Taisha |
-| surname *Kitajima* | the Kitajima line | Izumokyo |
-| surname *Senge* | the Senge line | Izumo Taishakyo |
-
-**The last unified holder has TWO successors** — `P1366` *replaced by* to both the first
-Kitajima and the first Senge. That is the fork, and it is why a single `P1365`/`P1366`
-chain through the roster would be wrong.
-
-Before emitting: look the three organisation QIDs up **offline** in the downloaded items
-and `reports/wikidata-labels.tsv`; do not guess them. `CLAUDE.md` § *Always write the
-English label next to a property or item ID*.
 
 ## Model-vs-reality is BUILT — `scripts/model-vs-reality.py`
 

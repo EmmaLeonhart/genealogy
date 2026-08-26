@@ -14763,3 +14763,53 @@ correcting**, and **13 wrong `Aen` aliases are removable** that were invisible b
 loudly rather than emitting nothing when the join yields no `P2600` at all.
 
 **1,347 passed, 0 failed.**
+
+## 2026-08-26 — the Izumo chart becomes three offices, and the surname screen was wrong
+
+`scripts/build-izumo-succession.py` → `reports/wikidata-izumo-succession.json`, **105 `P39`
+*position held* statements**. Emma's model, 2026-08-24: three offices distinguished by the
+organisation, not one succession.
+
+| holders | seats | organisation |
+| --- | --- | --- |
+| 出雲 *Izumo* | 1–54 | `Q696362` *Izumo Taisha* |
+| 北島 *Kitajima* | 55–79 | `Q11395891` *Izumo-kyō* |
+| 千家 *Senge* | 55–84 | `Q6102386` *Izumo-taishakyo* |
+
+**The fork is emitted and is the shape of the whole thing.** `Q135579414` *Izumo no Kiyotaka*,
+seat 54, carries two `P1366` *replaced by* — `Q135579415` *Senge no Takamune* and `Q135579416`
+*Kitajima no Sadataka*, both seat 55, each pointing back at him with `P1365` *replaces*. Nobody
+else has two successors and a test says so.
+
+**Every QID was reached by walking links, never by searching.** None of the three organisations
+is in the local store — it is a Geni-shaped slice of *people* — so each came from an item
+already held: the office `Q11395856` *Izumo no Kuni no Miyatsuko* (the `P53` *family* value on
+95 of the 111 fetched Izumo items) has `P2389` → *Izumo Taisha*; Izumo Taisha's `P140` is
+*Izumo-taishakyo*, whose `P1889` *different from* is *Izumo-kyō*. The two sects name each other.
+**A corroboration nobody arranged**: *Izumo-taishakyo* has `P112` *founded by* → `Q11405449`
+*Senge Takatomi*, who is seat 80 of the Senge line on this roster.
+
+**The Latin-name surname screen was wrong and the first version of the test did not catch it.**
+`Kitashima no Naotaka` (北島脩孝, 75) and a row whose `english` column is literally
+`Q48763085` (北島斉孝, 76) fall into the *unified* line when screened on `english` alone — so the
+office that ended at 54 ran to 76 with a twenty-seat hole. Screening on the **kanji** fixes it.
+The seven original assertions all passed the buggy build: the counts were plausible, all three
+organisations were populated, and 75→76 are adjacent to each other so even the adjacency check
+was satisfied. The eighth test asserts each line's own seat range and was written by
+reintroducing the bug until something failed.
+
+**Seat 36 has two holders and seat 37 has none.** `Q135579384` *Tsunesuke* and `Q135579385`
+*Ujihiro*. Ujihiro is probably 37 and the chart is off by one, but *probably* cannot order an
+office: both get `P39` with ordinal 36 and **no ordering link is emitted across 35 → 36 → 38**.
+A seat whose holder has no item likewise drops its neighbours' links rather than bridging them,
+which would assert an adjacency the chart denies.
+
+**The reference is `P854` the chart URL, not `S2600`.** The seat numbering comes from the Shinto
+Wiki, and a Geni profile says nothing about which seat a man held. Every other batch here cites
+`P2600` because every other batch emits a Geni-derived fact.
+
+`P2389` *organization directed by the office or position* as the organisation qualifier is a
+reading of her *"a qualifier on according to which organization"* — she named no property.
+Rejected: `P1416` *affiliation*, which describes a person rather than a position.
+
+**1,356 passed, 0 failed.**
