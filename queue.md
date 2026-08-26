@@ -77,16 +77,20 @@ them and nothing is waiting.
   on a coin flip."* A wrong merge destroys a real person from the record; a wrong split
   only leaves work undone. The duplicate count staying understated is the accepted cost.
 
-- **Run a `Forest` export seeded on `Q122925764`'s pair** — Tomas Stanislaus Sapiega
-  `6000000041241763571` or Stanislovas Sapiega `6000000041241858399`. Emma: *"Needs an
-  export before I judge it."* Both names carry Stanisław so the given-name test cannot
-  separate them.
-  **Grep done 2026-08-25 — both ARE in the corpus**, in
-  `exports/descendants/export-Descendants-6000000227039926826.ged`, and our records hold
-  nothing but the father for either: both sons of Andrius Sapiega `6000000020070622231`,
-  one born ABT 1575 d. BEF 1616, one with no dates at all. No spouses, no children, no
-  other siblings recorded. So the export is genuinely warranted here, unlike Obitake 23.
-  It needs Emma's live browser — do not seize it while she is mid-QuickStatements.
+- **`Q122925764` is SETTLED, 2026-08-26, and needed no export.** The item is
+  **Станіслаў Томаш Сапега** — *Stanisław Tomasz Sapieha*, one man whose name is **both**
+  given names — carrying `P2600` for `6000000041241763571` *Tomas Stanislaus Sapiega* and
+  `6000000041241858399` *Stanislovas Sapiega*. Its father `Q958111` is our Andrzej Sapieha
+  for both. **Geni records the two as BROTHERS** (each other's siblings on the profile page,
+  same father in our corpus). So Wikidata holds one man where Geni holds two, and one item
+  carrying two Geni ids is the shape `CLAUDE.md` § *A second Geni ID on one Wikidata item is
+  NOT a conflict* calls ordinary and correct. Nothing to remove, nothing to merge.
+
+  **The export could not have been run anyway**: Geni offers *Export GEDCOM* only on
+  profiles the account manages, and this one belongs to Algirdas Tamulis. `/gedcom/export`
+  exports from Emma's own profile and rejects `?id=`. Reaching a stranger's family needs a
+  placeholder created there first, per `docs/export-seed-rules.md` — which was not worth
+  doing for a question already answered from data on disk plus one profile page.
 
 - Continue opening both Geni pages for the **70** targets in
   `reports/multi-p2600-targets.tsv`. **24 done, 46 to go, 95 pages.** Screenshots to

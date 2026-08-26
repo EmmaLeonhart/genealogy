@@ -14329,3 +14329,29 @@ That is the **second date-based error curve in two days that measured the instru
 the join**, after `ROUND_CAP`. The generalised lesson is in `reports/zipper-reliability.md`: before
 reading a date-based rate, ask what fraction of the population carries a real date and how many of
 those are `ABT`.
+
+## 2026-08-26 — `Q122925764` settled without the export it was waiting on
+
+Emma had said *"Needs an export before I judge it."* The export turns out to be both impossible
+and unnecessary.
+
+**Impossible**: Geni offers *Export GEDCOM* only on profiles the account manages, and
+`6000000041241763571` belongs to Algirdas Tamulis. `/gedcom/export` exports from her own profile
+and rejects `?id=`. Reaching a stranger's family means creating a placeholder there first, per
+`docs/export-seed-rules.md`.
+
+**Unnecessary**: the answer was already on disk. `Q122925764` is **Станіслаў Томаш Сапега** —
+*Stanisław Tomasz Sapieha*, one man whose name is **both** given names — carrying `P2600` for both
+`6000000041241763571` *Tomas Stanislaus* and `6000000041241858399` *Stanislovas*, with father
+`Q958111` matching our Andrzej Sapieha for both. And Geni records the two profiles as **brothers**:
+each is listed among the other's siblings, and both carry the same father in our corpus.
+
+So Wikidata holds one man where Geni holds two brothers. One item carrying two Geni ids is exactly
+what `CLAUDE.md` § *A second Geni ID on one Wikidata item is NOT a conflict* calls ordinary. Emma's
+standing rule applies unchanged — *"Lean two people"* — and our snapshot already matches Geni, which
+is the only question that matters.
+
+**One thing the browser did surface that the corpus does not have**: the profile page lists seven
+siblings for Tomas where `derived-family.csv` records none, because our sibling relation is derived
+from shared parents and only the father is recorded on our side. The staleness is real but it is
+not what this item was about.
