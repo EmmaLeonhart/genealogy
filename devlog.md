@@ -14220,3 +14220,25 @@ row is a candidate ranked by how much *besides* the name agrees.
   `reports/wikidata-garborg-day-2026-08-25-run.qs`; the live file is rebuilt at spine step 6.
 
 **1,310 passed, 0 failed.**
+
+## 2026-08-25 (23:00) — three spine "absences" confirmed present, and they chain
+
+The name search produced candidates; this checked them the way `CLAUDE.md` demands — structurally,
+against `P22`/`P25`/`P26`/`P40`, with the name only ever having supplied the candidate.
+
+All three hold, and not marginally:
+
+- **Helena Guttormsdatter → `Q4953376`** — identical label, father Guttorm on both sides, spouse
+  **Esbern Snare** on both, and two children matching: **Canute, Duke of Estonia** and **Ingeborg
+  of Kalundborg**.
+- **Svantepolk Knutsson Viby → `Q6197518` *Svantepolk of Viby*** — father Canute Duke of Estonia,
+  mother Hedvig Svantepolksdotter, spouse Benedicta of Bjelbo, four children matching by name.
+- **Ingegerd Svantepolksdotter → `Q101247444`** — both parents match.
+
+**They chain.** Helena's son is Svantepolk's father is Ingegerd's grandfather, and step 20 was
+already matched to `Q3743799`. Steps 18–21 are a contiguous run that exists on Wikidata in full,
+linked to each other there, invisible to us only because no `P2600` names them — which is exactly
+the shape Emma predicted.
+
+The spine now reads **14 hold a `P2600`, 7 are existing items, 13 to create**. The creation count
+has fallen from 22 to 13 without a single edit being made.

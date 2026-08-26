@@ -75,6 +75,35 @@ grandmother). So line 2 is the longer of the two.
 through `python -m genimerge path-from-html <page> -o paths/bergitte-to-emma.tsv`; three attempts
 to expand it in the browser ended with the renderer timing out.
 
+## The absences were never established — and three more just fell
+
+**Emma, 2026-08-25:** *"we didn't actually establish in any meaningful sense that the people are
+absent in that chain... We might basically find that that one single daughter is the only person
+absent in the line in Wikidata, but it's just that the Wikidata ones are not genealogically
+linked."*
+
+She was right twice over. Of the 34 chain steps: **14 hold a `P2600`, 7 are existing Wikidata
+items we had called absent, and 13 remain to create.** The count of people to make has fallen from
+22 to 13 without a single edit.
+
+Four were found by the structural search. **Three more were found by name and then confirmed
+structurally**, which is the order that matters — the name only produced the candidate:
+
+| step | ours | item | what agrees |
+| ---: | --- | --- | --- |
+| 21 | Helena Guttormsdatter | `Q4953376` | identical label · father Guttorm · spouse **Esbern Snare** · children **Canute, Duke of Estonia** and **Ingeborg of Kalundborg** |
+| 19 | Svantepolk Knutsson Viby | `Q6197518` *Svantepolk of Viby* | father **Canute, Duke of Estonia** · mother **Hedvig Svantepolksdotter** · spouse **Benedicta of Bjelbo** · four children match |
+| 18 | Ingegerd Svantepolksdotter | `Q101247444` *…of Viby, lady of Händelöö* | **both** parents match |
+
+**They chain, which is stronger than any of them alone.** Helena's son is Svantepolk's father is
+Ingegerd's grandfather, and step 20 — Knut Valdemarsson — was already matched to `Q3743799`
+*Canute, Duke of Estonia*. So **steps 18, 19, 20 and 21 are a contiguous run that exists on
+Wikidata in full**, joined to each other there, and unlinked to Geni only because no `P2600` names
+them.
+
+`reports/wikidata-spine-add-p2600.qs` adds the identifier to all seven. Nobody is created.
+
+
 ## The shape of the work
 
 **19 of the 22 creations are consecutive** — steps 4–22, the entire Norwegian and Swedish middle:
