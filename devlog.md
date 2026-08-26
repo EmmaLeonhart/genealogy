@@ -14560,3 +14560,30 @@ and *Gisela von Verona* looked like the classifier mistaking name particles for 
 `reports/display-names.csv` shows them in Geni's own `NICK` field. Not a modelling bug.
 
 **1,316 passed, 0 failed.**
+
+## 2026-08-26 — the Izumo diff, and it found a rule rather than rows
+
+`scripts/model-vs-reality.py` now takes `--roster`, `--items` and `--out`, so it runs over any
+qid↔geni_id roster. Garborg reproduces identically at 483/77/4; Izumo inverts the picture.
+
+| | Garborg | Izumo |
+| --- | ---: | ---: |
+| missing | 77 | **351** |
+| extra | 483 | 178 |
+| CONFLICT | 4 | 8 |
+
+All 111 Izumo people lack `P2600`, 89 lack `P21`, 80 lack `P22`. The 95 `extra` `P53` *family*
+rows are clan membership Wikidata records and our model does not.
+
+**The conflicts column did the job it exists for.** Two are `P31` *instance of*: our model asserts
+`Q5` *human* where Wikidata says **`Q524158` *kami***. Kushiyatama `Q86734749` and Raihita
+`Q123511663` are classified as Shinto deities. That is one rule wrong, not two rows — the model
+asserts `Q5` for everybody, and the Izumo line is a divine descent.
+
+**The projection withheld both**, because a `CONFLICT` is never emitted. The design held without
+anybody noticing the problem, which is the argument for the design.
+
+`Q524158`'s label was in no offline source, so it was fetched with the ten other QIDs the conflicts
+name — `CLAUDE.md` forbids writing a bare ID and equally forbids guessing one.
+
+**No Izumo batch emitted.** 351 statements is a mass batch nobody asked for.

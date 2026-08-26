@@ -141,7 +141,7 @@ def same_time(a, b):
     return True if p <= 10 else da == db
 
 
-def fetch(qids):
+def fetch(qids, dest=None):
     from genimerge.wikidata import WikidataClient
     if not os.environ.get("BOT_CONTACT", "").strip():
         sys.exit("BOT_CONTACT is not set; Wikimedia answers an empty User-Agent with a bare 403")
@@ -155,32 +155,51 @@ def fetch(qids):
         # which reads like a network problem rather than a bug two lines up.
         out.update(client.full_entities(batch))
         print(f"  fetched {min(i + 50, len(ids))}/{len(ids)}", flush=True)
-    ITEMS.parent.mkdir(parents=True, exist_ok=True)
-    json.dump(out, open(ITEMS, "w", encoding="utf-8"), ensure_ascii=False)
+    dest = Path(dest or ITEMS)
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    json.dump(out, open(dest, "w", encoding="utf-8"), ensure_ascii=False)
     return out
 
 
 def main():
     ap = argparse.ArgumentParser()
+    ap.add_argument("--roster", default=str(R / "garborg-qids.tsv"), metavar="TSV",
+                    help="the qid<->geni_id roster to diff. Defaults to the Garborg ledger. "
+                         "Accepts either column naming: `qid`+`geni_id` as the ledger has it, "
+                         "or `qid`+`geni_ids` as the Izumo and Tanba roster files do.")
+    ap.add_argument("--items", default=str(ITEMS), metavar="JSON",
+                    help="where the fetched items live. Give a different path per roster, so "
+                         "one roster's snapshot is never read as another's.")
+    ap.add_argument("--out", default=str(R / "model-vs-reality.tsv"), metavar="TSV",
+                    help="where the diff goes.")
     ap.add_argument("--refetch", action="store_true",
                     help="pull every ledger item again. Without it the cached snapshot is used "
                          "and its age is printed -- a stale one produces a diff that proposes "
                          "undoing Emma's hand-work.")
     args = ap.parse_args()
 
+    items_path = Path(args.items)
     ledger = {}
-    with open(R / "garborg-qids.tsv", encoding="utf-8") as f:
+    with open(args.roster, encoding="utf-8") as f:
         for row in csv.DictReader(f, delimiter="\t"):
-            if row["qid"].startswith("Q"):
-                ledger[row["geni_id"]] = row["qid"]
-    print(f"{len(ledger)} people in the ledger")
+            qid = (row.get("qid") or "").strip()
+            if not qid.startswith("Q"):
+                continue
+            # `geni_id` on the Garborg ledger, `geni_ids` (semicolon-joined) on the roster
+            # files. One item may carry several profiles; each gets its own diff row, because
+            # `CLAUDE.md` says a second Geni id on one item is ordinary rather than a conflict
+            # and both are equally the subject of the same statements.
+            for g in re.split(r"[;,| ]+", row.get("geni_id") or row.get("geni_ids") or ""):
+                if g.strip().isdigit():
+                    ledger[g.strip()] = qid
+    print(f"{len(ledger)} people in {Path(args.roster).name}")
 
-    if args.refetch or not ITEMS.exists():
+    if args.refetch or not items_path.exists():
         print("fetching full items through genimerge.wikidata.full_entities ...")
-        items = fetch(ledger.values())
+        items = fetch(ledger.values(), items_path)
     else:
-        items = json.load(open(ITEMS, encoding="utf-8"))
-        age = (time.time() - ITEMS.stat().st_mtime) / 3600
+        items = json.load(open(items_path, encoding="utf-8"))
+        age = (time.time() - items_path.stat().st_mtime) / 3600
         print(f"using the cached snapshot, {age:.1f} hours old -- pass --refetch to renew. "
               f"Emma edits by hand continuously, so an old one can propose undoing her work.")
     print(f"{len(items)} items held")
@@ -281,7 +300,7 @@ def main():
                          "model": ";".join(sorted(m - x)) or ";".join(sorted(m)),
                          "reality": ";".join(sorted(x - m)) or ";".join(sorted(x))})
 
-    with open(R / "model-vs-reality.tsv", "w", encoding="utf-8", newline="") as f:
+    with open(args.out, "w", encoding="utf-8", newline="") as f:
         w = csv.DictWriter(f, fieldnames=list(rows[0]), delimiter="\t")
         w.writeheader()
         w.writerows(rows)
@@ -299,7 +318,7 @@ def main():
     for p in props:
         print(f"   {p:<10}{patterns[(p,'missing')]:>9,}{patterns[(p,'extra')]:>8,}"
               f"{patterns[(p,'CONFLICT')]:>10,}")
-    print("\nwrote reports/model-vs-reality.tsv")
+    print(f"\nwrote {Path(args.out).relative_to(ROOT)}")
     print("NOTHING IS EMITTED. A batch is a projection of the `missing` column and of "
           "nothing else.")
 

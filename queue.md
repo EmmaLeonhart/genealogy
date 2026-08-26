@@ -275,8 +275,37 @@ no other reason. `extra` is never touched, `CONFLICT` is never emitted, labels a
 never projected because they replace. The 8 missing `P2600` are skipped: the spine batch already
 carries them, which the diff rediscovered independently.
 
-**Still to do, not blocked:** run the same diff over Izumo, where the modelling is less well
-understood and the conflicts column should therefore say more.
+**The Izumo diff is run** — `reports/model-vs-reality-izumo.tsv`, 111 people, and it inverts the
+Garborg picture:
+
+| | Garborg | Izumo |
+| --- | ---: | ---: |
+| missing | 77 | **351** |
+| extra | 483 | 178 |
+| CONFLICT | 4 | 8 |
+
+**All 111 lack `P2600`**, which matches what was already known — 204 of the clan have items and
+almost none carry a Geni id. 89 lack `P21` *sex or gender* and 80 lack `P22` *father*. The 95
+`extra` `P53` *family* rows are the clan membership Wikidata records and our model does not.
+
+**The conflicts said what they were built to say.** Two are `P31` *instance of*: our model asserts
+`Q5` *human* where Wikidata says **`Q524158` *kami***. Kushiyatama `Q86734749` and Raihita
+`Q123511663` are classified as Shinto deities there. The projection withheld both — a `CONFLICT`
+is never emitted — so the design held, but **the model is asserting `Q5` for a divine-descent
+lineage and that is a rule, not two rows.**
+
+## NEEDS-DECISION — how should the Izumo ancestral figures be classified?
+
+`P31` *instance of* → `Q5` *human* is what our model emits for everyone. Wikidata classifies at
+least two of the Izumo line as `Q524158` *kami*. The line is a divine descent and where it stops
+being divine is a judgement, not a lookup. **Emma's call**; until then the model keeps asserting
+`Q5` and the projection keeps withholding it, which is safe but silent.
+
+Four more conflicts are `P22` *father* — and `queue.md` § *The Izumo chart edges are SUCCESSION,
+not parentage* already names that trap. Worth checking those four against it before anything else.
+
+**No Izumo batch was emitted.** 351 missing statements is a mass batch nobody asked for, and
+`CLAUDE.md` is explicit that producing one uninvited presents work as ready that nobody sanctioned.
 
 ## Analysis work parked while she was editing
 
