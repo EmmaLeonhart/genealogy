@@ -14166,3 +14166,38 @@ A spine batch therefore needs a second file only for links **between two people 
 not for all relationships.
 
 **1,302 passed, 0 failed.**
+
+## 2026-08-25 (22:00) — the four deferred decisions
+
+Emma deferred four to a 10pm cron rather than answering live. Each was measurable, so each was
+measured and decided rather than handed back.
+
+**1. `ROUND_CAP` 3 → 8.** The 3 came from a date-based curve (3.9% → 27.1%) read as error
+compounding. It was a **coverage artefact**: the share of pairs dated on both sides falls 65% →
+20% with depth, and the "error" tracked that. Independent sources are unusable past round 1 (7,185
+checks → 29 → 0). `P21` *sex or gender* has 86–100% coverage at every round — and carried a
+confound of its own, found before deciding: sex can never refute a `father`/`mother` pairing, and
+those slots grow 38.6% → 57.7% with depth. On `child`/`spouse` only, error goes **2.8% → 4.8%**
+across eight rounds. A 1.7× rise, no knee at 3, and 12,485 pairs were being discarded for it. The
+deciding comparison is Emma's own: she kept `child`+`solo` at 10.0%. **No method cap proposed** —
+method matters more than round, but it is handled by `SLOT_YEAR_TOLERANCE` and the sex filter
+rather than by a cap.
+
+**2. Cadence — today's run is complete and consumed.** Refreshing the ledger from her account
+added nine rows and showed **all four creations in today's batch now exist**: Ingeborg
+Gyntesdotter `Q141180406`, Magdalena Andersdotter `Q141180409`, Margareta Mårtensdotter Bång
+`Q141180410`, Thomas Matthiæ `Q141180413`. She ran it while this was being worked. No batch
+generated for tomorrow.
+
+**3. Bure roster, both definitions.** Wikidata-side 258 with a Geni id; Geni-side 5,470 within 3
+hops, of which **1,595 carry a Wikidata item** — six times as many. Residue: 5,312 only Geni-side,
+100 only Wikidata-side. Of the linked ones, 82% already have `P22`, 73% `P40`, 57% `P25`, 54%
+`P26`, and only 5% have nothing. That ratio is what makes it a different algorithm: the items
+exist, so the work is linking two QIDs and `LAST` never enters it.
+
+**4. The name search — three of sixteen look present after all.** Exactly the shape she predicted.
+`Helena Guttormsdatter` → `Q4953376` (**identical label**, plus Genealogics/Rodovid/Geneanet);
+`Svantepolk Knutsson Viby` → `Q6197518` *Svantepolk of Viby*; `Ingegerd Svantepolksdotter` →
+`Q101247444` *…of Viby*. The last two are father and daughter and both candidates carry *of Viby*,
+so they corroborate each other structurally rather than only by name. Nothing is matched — every
+row is a candidate ranked by how much *besides* the name agrees.

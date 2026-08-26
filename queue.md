@@ -1520,35 +1520,6 @@ So the artefact is a provenance **graph** that can be walked in both directions,
 RIGHT/WRONG verdicts as first-class nodes, and a report of which inferred chains an independently
 recorded `P2600` confirms or refutes.
 
-## The name and variant search over Wikidata labels — Emma asked for this and it is not done
-
-**Emma, 2026-08-25:** *"we didn't actually establish in any meaningful sense that the people are
-absent in that chain... I want you to actually at least make some effort in trying to do text
-searches on the names or variants of the names on Wikidata... We might basically find that that
-one single daughter is the only person absent in the line in Wikidata, but it's just that the
-Wikidata ones are not genealogically linked."*
-
-**Half of it was done and half was not, and the half that ran proved her point.**
-`scripts/find-absent-on-wikidata.py` searched *structurally* — walking Wikidata's own
-`P22`/`P25`/`P40` around the chain — and found **4 of the 22 "absent" spine people already have
-items**: Rozala of Italy `Q466257`, Knut Valdemarsson → `Q3743799` *Canute, Duke of Estonia*,
-Berengar I → `Q274606`, Gisele of Cysoing → `Q284400`.
-`reports/wikidata-spine-add-p2600.qs` adds their `P2600` rather than creating them.
-
-**The text search over names and variants was never run.** `out/wikidata/labels.tsv` was built for
-exactly this — 2,246,980 items with labels in `en`/`mul`/`no`/`nb`/`sv`/`da` plus aliases plus
-twelve genealogy identifiers — and then not searched. So the remaining 18 are called absent on
-structural evidence alone, which is weaker than what she asked for.
-
-Run it over the 18: every label field and every alias, for each person's name and its plausible
-variants (`Gunnbjørn Toresson Tengs` → `Gunnbjørn Toresson`, `Gunnbjørn på Tengs`; Swedish against
-Norwegian against Latin forms, which the twenty hand verdicts show is where the real variation
-lives). **Output is candidates for a human to judge, never a match** — `CLAUDE.md` deleted a module
-for using names to decide identity and it stays deleted.
-
-Also check the twelve identifiers: an item carrying a Genealogics `P1819` or Rodovid `P1185` id for
-a person the chain names is the same evidence a `P2600` would be, arriving by another route.
-
 ## Solo children: synoptic tree vs Wikidata — Emma, 2026-08-25
 
 *"solo child gives a bit of support but it's not gospel I'm gonna ask for a queued up analysis on
