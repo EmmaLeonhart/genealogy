@@ -14242,3 +14242,29 @@ the shape Emma predicted.
 
 The spine now reads **14 hold a `P2600`, 7 are existing items, 13 to create**. The creation count
 has fallen from 22 to 13 without a single edit being made.
+
+## 2026-08-25 (23:30) — the structural check generalised, and it corrected me
+
+`scripts/verify-spine-candidates.py` does over all 128 name candidates what was done by hand for
+three: compare the item's `P22`/`P25`/`P26`/`P40` against our tree's relatives, matching relatives
+**only by identifier** — `P2600`, the chain's own known QIDs, or the synoptic correspondence. The
+name that produced a candidate contributes nothing to its score.
+
+**One new find.** Step 16 **Knut Algotsson → `Q5915800`**: father *Algot Brynolfsson* `Q19842232`
+and spouse *Märta Ulfsdotter* `Q4968637`, two independent relatives, neither reached by name.
+
+**One correction to yesterday's own claim, which matters more.** Step 18 was recorded as
+near-certain on the grounds that *"both parents match"*. Running the check over everything shows
+**three sisters** — Ingeborg `Q86458153`, Ingegerd `Q101247444`, Ingrid `Q4955768` — each matching
+both parents. Parents cannot separate sisters, so that evidence never supported the conclusion.
+
+What actually discriminates is the given name **inside a closed sibling set**, which is precisely
+the narrow exception `CLAUDE.md` carves for the zipper: position fixes the candidate set, and the
+label only orders within it. Ours is *Ingegerd* and exactly one candidate is; *of Viby* is her
+father's own byname. The row now says that, and its confidence reads *"likely — name within a
+closed sibling set, not parents"* instead of *near-certain*.
+
+**Step 17 Algot Bryniolfsson has a correspondence too** — `Q19842232` — but it comes from the
+zipper rather than a recorded `P2600`, so it is inference and is not promoted to the judged file.
+
+Eight rows now in `reports/spine-already-on-wikidata.tsv`. Nothing is written there by script.
