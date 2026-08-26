@@ -25,6 +25,23 @@ day skipped. What it must not be is one big batch that does the lot.
 > intended as having roughly a similar form, but there are some notable characteristic
 > differences."*
 
+## The subgraph is Arne's component ON WIKIDATA — clarified 2026-08-25
+
+Asked what radius over our Geni tree should bound the random draws, Emma: *"Uhh what the fuck. You
+misunderstand it completely if you're even asking the question."* The bound is not a radius over
+our tree at all. It is **Arne's connected component on Wikidata, as it currently stands** — 42
+items today, larger after every run, because the runs are what build it. Each batch draws its
+random work from what exists and enlarges the pool the next batch draws from.
+
+That is what makes the programme self-bootstrapping, and it is why it takes ~18 runs rather than
+one: the pool has to grow before there is more to draw from.
+
+**And it is why Bure needs its own algorithm rather than a bigger radius.** Emma: *"bure is a bunch
+of unlinked people with entity resolutions to geni, so it isn't dense it's a different kind of area
+though which needs its own algorithm."* There the items already exist and carry `P2600`, so the
+work is linking QIDs that both exist — which has no `LAST` constraint and therefore does not need
+this pacing at all. `queue.md` § *Bure kinship as random-walk start points*.
+
 ## What goes in one batch
 
 **Always both parents.** *"We always make both parents, if both parents exist, as a part of the
@@ -32,11 +49,28 @@ generation."* A couple goes in together or not at all.
 
 | # | content |
 | ---: | --- |
-| 1 | **The spine couple** — the two parents of one individual on the line, working up from Arne toward Bergitte, then Bergitte toward Charlemagne |
-| 2 | **One couple on Arne's side** — the two parents of an individual at the bottom end |
-| 3 | **10 mutual sibling links** — chosen at random across the data. Reciprocal, so **20 statements** |
-| 4 | **4 random sets of parents** — anywhere in the subgraph |
-| 5 | **4 random families** — a solitary individual gets their spouse and all their children added |
+| 1 | **The spine couple** — the next chain person **and their spouse**, working up from Arne toward Bergitte, then Bergitte toward Charlemagne |
+| 2 | **4 random sets of parents** — drawn from the ball |
+| 3 | **4 random families** — a solitary individual gets their spouse and all their children added |
+| 4 | **1 random existing couple** — all of their children, properly linked |
+| 5 | **≤10 mutual sibling links** — reciprocal, so **20 statements** |
+
+**Three readings settled by Emma on 2026-08-25, each of which the first draft had wrong:**
+
+- **The spine couple is the chain person plus their spouse**, not the two parents of the chain
+  person. One run advances the line by exactly one step and brings the off-chain partner with it.
+- **"One couple on Arne's side" is not its own component.** Her words: *"this is just part of the
+  add 4 sets of parents randomly in the neighborhood not its own thing. But one thing that is
+  worth doing imo is randomly choose an existing couple and add all the children. Properly linked
+  and everything."* So it was replaced by the existing-couple component above.
+- **Solitary means an item with no `P26` spouse and no `P40` child** — *"Has an item and no SPOUSE
+  or CHILD specifically"* — and it **counts the people our own earlier runs created**, since a
+  fresh `CREATE` starts with neither. Without that this component starves: almost nothing in the
+  ball has family statements yet.
+
+`scripts/build-garborg-day.py --compose` implements exactly this. Every component reduces to
+*which people go in the frontier*, because the emitter already owns labels, names, dates, sex,
+`S2600` references and the duplicate guard. `--seed` makes a run reproducible.
 
 Emma on the sibling arithmetic: *"we are actually mixing together 10 sibling links. Each sibling
 link here is actually 20 fixed statements, but it's 10 being linked together."* That is the same

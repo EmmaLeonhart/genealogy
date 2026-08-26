@@ -37,6 +37,7 @@ from __future__ import annotations
 import argparse
 import collections
 import csv
+import random
 import re
 import sys
 from pathlib import Path
@@ -252,6 +253,158 @@ def name_lines(label, plan, geni_id, father_qid, fields=None, sex=""):
     return out, notes
 
 
+
+# ---------------------------------------------------------------------------------
+# THE BATCH COMPOSITION -- `docs/batch-rules.md`, dictated by Emma 2026-08-25 and
+# clarified by her the same day.
+#
+# **The subgraph is Arne's component ON WIKIDATA, as it currently stands.** Not a radius
+# over our Geni tree. Emma: *"Everyone within n hops of Arne as his family exists on
+# wikidata."* Asked what `n` should be over our tree she said *"you misunderstand it
+# completely if you're even asking the question"* -- and she is right: the ball is what
+# the programme is building, so it is 42 items today and larger after every run. Each
+# run draws its random work from what exists and enlarges the pool the next run draws
+# from. That is what makes the thing self-bootstrapping and why it takes ~18 runs.
+#
+# This is also why Bure needs its own algorithm rather than a bigger `n`. Emma:
+# *"bure is a bunch of unlinked people with entity resolutions to geni, so it isn't
+# dense it's a different kind of area though which needs its own algorithm."* There the
+# items already exist and carry `P2600`; the work is linking, not creating.
+#
+# One run is:
+#
+#   1. the spine couple  -- the next chain person and their spouse
+#   2. 4 random sets of parents, drawn from the ball
+#   3. 4 random families -- a solitary individual gets their spouse and children
+#   4. 1 random existing couple -- all their children, properly linked
+#   5. <=10 mutual sibling links, which the additions pass emits under SIBLING_CAP
+#
+# Every component reduces to *which people go in `frontier`*, because the emitter below
+# already does labels, names, dates, sex, `S2600` references and the duplicate guard.
+# Components 2-4 differ only in how the people are chosen.
+#
+# **Emma's own reading of component 4, replacing what the spec called "Arne's side":**
+# *"this is just part of the add 4 sets of parents randomly in the neighborhood not its
+# own thing. But one thing that is worth doing imo is randomly choose an existing couple
+# and add all the children."*
+#
+# **Solitary means an item with no `P26` spouse and no `P40` child** -- her wording,
+# *"Has an item and no SPOUSE or CHILD specifically"* -- and it explicitly counts the
+# people our own earlier runs created, since a fresh `CREATE` starts with neither.
+
+SPINE_PATH = "paths/charlemagne-to-arne-garborg.tsv"
+RANDOM_PARENT_SETS = 4
+RANDOM_FAMILIES = 4
+RANDOM_COUPLES = 1
+
+
+def spine_chain():
+    """`[(step, geni_id, name)]` up the saved Geni relationship path, Arne first.
+
+    `paths/charlemagne-to-arne-garborg.tsv` is the authority -- `CLAUDE.md` is explicit
+    that `reports/charlemagne-route.csv` is a *different* descent that does not contain
+    Bergitte, and that treating the two as one produced a wrong junction.
+    """
+    rows = [l.rstrip("\n").split("\t") for l in
+            open(ROOT / SPINE_PATH, encoding="utf-8")
+            if not l.startswith("#") and l.strip()]
+    header, out = rows[0], []
+    for r in rows[1:]:
+        d = dict(zip(header, r))
+        gid = re.sub(r"\D", "", d.get("note", ""))
+        if gid:
+            out.append((int(d["step"]), gid, d["name"]))
+    return out
+
+
+def compose(have, fam, rng):
+    """`{geni_id: why}` -- the people this run creates, per `docs/batch-rules.md`.
+
+    `have` is the ball: every Geni id we can already point at a Wikidata item.
+    `fam` is `reports/derived-family.csv` keyed by Geni id.
+    """
+    def kin(g, col):
+        return [x for x in re.split(r"[,;|]", (fam.get(g) or {}).get(col) or "")
+                if x.strip() and x.strip() in fam]
+
+    picked, why = {}, []
+
+    # --- 1. the spine couple ------------------------------------------------------
+    # Emma chose "the chain person plus their spouse" over "both parents of the chain
+    # person", so one run advances the line by exactly one step and brings the
+    # off-chain partner with it.
+    for step, gid, name in spine_chain():
+        if gid in have:
+            continue
+        picked[gid] = f"spine step {step}"
+        for sp in kin(gid, "spouses"):
+            if sp not in have:
+                picked.setdefault(sp, f"spouse of spine step {step}")
+        why.append(f"1. spine step {step}: {name} + {len(kin(gid, 'spouses'))} spouse(s)")
+        break
+    else:
+        why.append("1. spine: every step already has an item")
+
+    # --- 2. four random sets of parents, drawn from the ball ----------------------
+    # "We always make both parents, if both parents exist, as a part of the generation."
+    # A candidate is somebody in the ball at least one of whose parents we could create.
+    cands = sorted(g for g in have
+                   if any(p not in have for p in kin(g, "father") + kin(g, "mother")))
+    rng.shuffle(cands)
+    n = 0
+    for g in cands:
+        if n >= RANDOM_PARENT_SETS:
+            break
+        new = [p for p in kin(g, "father") + kin(g, "mother") if p not in have]
+        if not new:
+            continue
+        for p in new:
+            picked.setdefault(p, f"parent of {g}")
+        n += 1
+    why.append(f"2. {n}/{RANDOM_PARENT_SETS} random parent sets")
+
+    # --- 3. four random families off a SOLITARY individual ------------------------
+    # An item with no spouse and no child on it. Our own creations qualify, which is
+    # her instruction and also the only reason this component is not starved: almost
+    # nothing in the ball has family statements yet.
+    solo = sorted(g for g in have
+                  if not any(x in have for x in kin(g, "spouses") + kin(g, "children"))
+                  and (kin(g, "spouses") or kin(g, "children")))
+    rng.shuffle(solo)
+    n = 0
+    for g in solo:
+        if n >= RANDOM_FAMILIES:
+            break
+        new = [x for x in kin(g, "spouses") + kin(g, "children") if x not in have]
+        if not new:
+            continue
+        for x in new:
+            picked.setdefault(x, f"family of solitary {g}")
+        n += 1
+    why.append(f"3. {n}/{RANDOM_FAMILIES} random families off a solitary individual")
+
+    # --- 4. one random existing couple, all their children ------------------------
+    couples = sorted({(g, sp) for g in have for sp in kin(g, "spouses")
+                      if sp in have and g < sp})
+    rng.shuffle(couples)
+    n = 0
+    for a, b in couples:
+        if n >= RANDOM_COUPLES:
+            break
+        kids = [k for k in set(kin(a, "children")) | set(kin(b, "children"))
+                if k not in have]
+        if not kids:
+            continue
+        for k in kids:
+            picked.setdefault(k, f"child of existing couple {a}+{b}")
+        n += 1
+        why.append(f"4. couple {a}+{b}: {len(kids)} children")
+    if not n:
+        why.append("4. no existing couple in the ball has an uncreated child")
+
+    return picked, why
+
+
 def main():
     # `--skip-nn` is a per-run choice, not a rule. Emma, 2026-08-24: *"for this
     # quickstatements run the NN people are not worth creating"* -- for THIS run. The
@@ -286,6 +439,13 @@ def main():
     # when the spine is done.
     ap.add_argument("--in-laws", action="store_true",
                     help="also include spouses of roster members")
+    ap.add_argument("--compose", action="store_true",
+                    help="build the batch to docs/batch-rules.md instead of taking the "
+                         "whole one-edge ring: spine couple, 4 random parent sets, 4 "
+                         "random families off a solitary individual, 1 existing couple's "
+                         "children, and the sibling links the additions pass emits.")
+    ap.add_argument("--seed", type=int, default=0, metavar="N",
+                    help="seed for --compose, so a run is reproducible.")
     ap.add_argument("--limit", type=int, default=0, metavar="N",
                     help="create only the N people closest to Arne (0 = no limit)")
     args = ap.parse_args()
@@ -367,6 +527,27 @@ def main():
         frontier = {g: f for g, f in frontier.items() if g in near}
         print(f"roster: {len(wanted)} ids from {len(args.roster)} file(s); "
               f"ring cut {before} -> {len(frontier)} (roster members and their in-laws)")
+
+    # ---- THE COMPOSITION replaces the ring entirely, when asked for -------------
+    if args.compose:
+        fam_rows = {}
+        with open(ROOT / "reports" / "derived-family.csv", encoding="utf-8") as f:
+            for row in csv.DictReader(f):
+                fam_rows[row["geni_id"]] = row
+        # Seeded so a run is reproducible and reviewable. `Math.random`-style
+        # irreproducibility would make a batch impossible to explain after the fact.
+        rng = random.Random(args.seed)
+        picked, why = compose(have, fam_rows, rng)
+        print("\ncomposition, per docs/batch-rules.md:")
+        for line in why:
+            print("   " + line)
+        before = len(frontier)
+        frontier = {g: frontier.get(g, "") for g in picked}
+        compose_why = picked
+        print(f"composed batch: {len(frontier)} people to create "
+              f"(the unrestricted ring would have been {before})")
+    else:
+        compose_why = {}
 
     ids = set(frontier) | set(have)
     facts, labels = {}, {}
