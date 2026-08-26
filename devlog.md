@@ -14419,3 +14419,32 @@ Wulff* also claimed his son Wolf Rubensson, 48 years and a different family apar
 since both ends of every statement exist and `LAST` never appears, but a few hundred at once reads
 as spam the way siblings did. Sliced by *subject*, so one person's statements always arrive
 together.
+
+## 2026-08-26 — the pinned last queue item is built: the whole spine in one batch
+
+**Emma, 2026-08-25:** *"queue says to build the thing that makes a lot of them."* It only became
+buildable once line 2 was captured an hour ago, because until then a third of the spine did not
+exist as data.
+
+`--roster-is-frontier` was the missing piece. `--roster` *filters* the one-edge ring, and the
+spine's middle sits many edges from anybody holding a QID — which is the whole reason it needs
+building — so filtering a ring those people are not in returned nothing, and that reads exactly
+like "no work to do".
+
+**21 creations, 148 links**, `reports/wikidata-spine-batch.qs`. Every guard applied and each one
+bit: 49 people across the three lines, minus 5 in the ledger, 8 already judged to have items, 4
+born after 1880, 9 already carrying a `P2600` elsewhere, and 2 held by the duplicate guard.
+
+**21 + 2 held + Emma is 24** — the spine count in `reports/the-spine.md`, reached independently
+from the other direction, which is the closest thing to a check this had.
+
+**One defect the run exposed.** `--known` read only a `qid` column, and
+`reports/spine-already-on-wikidata.tsv` — the canonical judged list — calls it `candidate_qid`. It
+therefore read as having no QIDs at all, and the first run offered to **create seven people known
+to exist**: the `Q2183430` failure, on the exact population most carefully checked against it.
+
+**The two held people are false positives and are recorded, not overridden.** Ramborg Knutsdotter
+Lejon's parent has unmatched children `Q4955715` *Ingegerd Knutsdotter* and `Q16595443` *Katarina
+Knutsdotter* — her sisters. Algot Bryniolfsson's is `Q101247439` *NN Bryn**olvsdotter***, a
+daughter where he is a son. Both could be released on the closed-sibling-set rule, but the guard's
+own reasoning stands: holding a real person costs a day, a duplicate costs a manual merge.

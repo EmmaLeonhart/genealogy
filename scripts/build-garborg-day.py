@@ -480,6 +480,10 @@ def main():
                          "this batch. Two runs on the same day both see a ledger that has "
                          "not caught up yet, so without this the second run re-creates "
                          "people the first one already makes -- 4 of 9 on the first attempt.")
+    ap.add_argument("--roster-is-frontier", action="store_true",
+                    help="take the roster AS the people to create, instead of using it to "
+                         "filter the one-edge ring. Needed for the spine, whose middle sits "
+                         "many edges from anyone holding a QID. Every guard still applies.")
     ap.add_argument("--seed", type=int, default=0, metavar="N",
                     help="seed for --compose, so a run is reproducible.")
     ap.add_argument("--limit", type=int, default=0, metavar="N",
@@ -522,7 +526,13 @@ def main():
             rd = csv.DictReader(f, delimiter="\t" if "\t" in head else ",")
             n = 0
             for row in rd:
-                g, q = (row.get("geni_id") or "").strip(), (row.get("qid") or "").strip()
+                # `candidate_qid` is what `reports/spine-already-on-wikidata.tsv` calls the
+                # column, and that file is the canonical list of spine people who already have
+                # an item. Without this it reads as having no QIDs at all and the batch offers
+                # to CREATE seven people who exist -- the Q2183430 failure, on the exact
+                # population most carefully checked against it.
+                g = (row.get("geni_id") or "").strip()
+                q = (row.get("qid") or row.get("candidate_qid") or "").strip()
                 if g.isdigit() and q.startswith("Q") and g not in have:
                     have[g] = q
                     n += 1
@@ -534,12 +544,30 @@ def main():
 
     # Everyone one edge away from somebody who has a QID.
     frontier = {}
-    for person in have:
-        for fam in fams.get(person, []) + famc.get(person, []):
-            for other in set(fam_p.get(fam, [])) | set(fam_c.get(fam, [])):
-                if other not in have:
-                    frontier.setdefault(other, fam)
-    print(f"{len(frontier)} people one edge away and not yet on Wikidata")
+    if args.roster_is_frontier:
+        # **The roster IS the frontier.** `--roster` alone cannot build the spine: it FILTERS
+        # the one-edge ring, and steps 4-22 sit many edges away from anybody holding a QID --
+        # that distance is the whole reason the spine needs building. Filtering a ring they are
+        # not in returns nothing, which reads as "no work to do".
+        #
+        # This is the mode `queue.md`'s pinned last item asks for: *"queue says to build the
+        # thing that makes a lot of them"*. Every other guard still applies -- the modern
+        # cutoff, the duplicate guard, `linked`, `--exclude` -- so it is a different way of
+        # CHOOSING people, not a way of skipping checks.
+        for path in args.roster:
+            text = Path(path).read_text(encoding="utf-8")
+            for gid in re.findall(r"(?:geni:)?(\d{10,})", text):
+                if gid not in have:
+                    frontier.setdefault(gid, "")
+        print(f"--roster-is-frontier: {len(frontier)} people taken straight from "
+              f"{len(args.roster)} roster file(s), not from the one-edge ring")
+    else:
+        for person in have:
+            for fam in fams.get(person, []) + famc.get(person, []):
+                for other in set(fam_p.get(fam, [])) | set(fam_c.get(fam, [])):
+                    if other not in have:
+                        frontier.setdefault(other, fam)
+        print(f"{len(frontier)} people one edge away and not yet on Wikidata")
 
     # **Emma's own recent family is never created.** Emma, 2026-08-25, looking at a batch:
     # *"no we are no fuckin gmaking my father as a wikidata item right now lol"*. Her father

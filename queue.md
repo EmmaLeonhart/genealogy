@@ -1582,52 +1582,48 @@ Wikidata."* A slot with nothing on their side is a **creation opportunity**, whi
 
 ---
 
-# THE LAST ITEM. BUILD THE THING THAT MAKES A LOT OF THEM.
+# THE LAST ITEM — BUILT 2026-08-26. `reports/wikidata-spine-batch.qs`
 
-**Emma, 2026-08-25:** *"record somewhere clearly that we have that path from Marta Jonsdatter Li
-up to that common ancestor and then to charlemagne and to me. And the fact that our daily runs are
-buildin gpeople adjacent to this make it 100% clear in our queue at the end and no other crap no
-excuses queue says to build the thing that makes a lot of them."*
+**Emma, 2026-08-25:** *"make it 100% clear in our queue at the end and no other crap no excuses
+queue says to build the thing that makes a lot of them."*
 
-## The thing to build
+**It exists.** `scripts/build-garborg-day.py --roster out/roster-spine.txt --roster-is-frontier
+--known reports/spine-already-on-wikidata.tsv` → **21 creations, 148 links**, the whole spine in
+one file instead of a hop a day.
 
-**A batch builder that creates MANY people along the spine at once, instead of a hop a day.**
+`--roster-is-frontier` is what was missing. `--roster` *filters* the one-edge ring, and the spine's
+middle sits many edges from anybody holding a QID — which is the entire reason it needs building —
+so filtering a ring they are not in returned nothing and read as "no work to do".
 
-The spine is `reports/the-spine.md`, read off Geni's own relationship panel:
+**Every guard still applies**, and each one bit:
 
-> **Charlemagne → Bergitte Aukland → [7 people] → Marta Jonsdatter Li → Jon Samuelsen Raustad →
-> Ane Oline Jonsdatter Raugstad → Arne Garborg**, and Bergitte down to **Emma** on the other side.
+| | |
+| --- | ---: |
+| people across all three lines | 49 |
+| already in the ledger | 5 |
+| already judged to have an item (`--known`) | 8 |
+| born 1880 or later | 4 |
+| already carry a `P2600` elsewhere | 9 |
+| held by the duplicate guard | 2 |
+| **created** | **21** |
 
-Of the twelve from Bergitte to Arne, **three have items**: Marta `Q141178381`, Jon `Q141168955`,
-Arne `Q467497`. **Nine do not.** Bergitte has no item. The whole
-Bergitte→Charlemagne descent is not in the repo at all.
+21 + 2 held + Emma, who has `Q140568870` and needs an id rather than a creation, is **24** — the
+spine count in `reports/the-spine.md`, arrived at independently.
 
-**The daily runs already create people adjacent to this line** — that is what they are for, and it
-is why they matter. But one hop a day against a line this long is the wrong instrument.
+**The two held are false positives, and are recorded rather than overridden.** Ramborg
+Knutsdotter Lejon is held because her parent `Q5915800` has unmatched children `Q4955715`
+*Ingegerd Knutsdotter* and `Q16595443` *Katarina Knutsdotter* — her **sisters**, neither of them
+Ramborg. Algot Bryniolfsson is held because `Q101247444` has an unmatched child `Q101247439`
+*NN Bryn**olvsdotter*** — a daughter, where Algot is *Bryniolfs**son***. Both could be released on
+the closed-sibling-set rule Emma approved for spine step 18, but the guard's own reasoning stands:
+holding a real person costs a day, creating a duplicate costs her a manual merge on a public
+database.
 
-## What it must do
-
-- Take the spine as its roster and create **everyone on it who has no item**, in one batch.
-- Emit both directions of every relationship. A `CREATE` block cannot write its own reciprocal —
-  `LAST` names only the most recently created item, so two people created in the same run cannot
-  cite each other — **but `Q… P… LAST` is fine and every link to an existing item goes out both
-  ways in the same run.** So the batch carries a second section
-  that fixes the links, the way `scripts/build-missing-reciprocals.py` does.
-- Run the duplicate guard on every person before creating them: a parent with a `P40` child item
-  we have not matched means **do not create**. This is not optional. It is what `Q2183430` cost.
-- Not stop at ten. The `--limit` was for a hop-a-day cadence; this is the opposite instrument.
-
-## What already exists to build it from
-
-| piece | what it gives |
-| --- | --- |
-| `reports/the-spine.md` | the line itself, from Geni |
-| `scripts/build-garborg-day.py` | the modelling: labels, names, dates, sex, `S2600` refs, the duplicate guard, `--roster` |
-| `scripts/build-missing-reciprocals.py` | the second section that closes one-way links |
-| `out/wikidata/relations.tsv` | `P40`/`P22`/`P25`/`P26` for 1.4M items, for the guard |
-| `reports/absent-but-present.tsv` | who is "absent" but actually already on Wikidata |
-
-**Nothing else goes in this section.**
+**Still needed, and it is not optional:** the 21 cannot link to *each other* in one run, because
+`LAST` names only the most recent item. Everything joining them to an item that already exists is
+emitted both ways in this file; the new-to-new links wait for
+`scripts/build-missing-reciprocals.py` once the QIDs exist. That is the one place the two-file
+shape genuinely applies.
 
 ---
 
