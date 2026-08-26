@@ -461,3 +461,43 @@ def test_every_married_surname_in_the_batch_can_be_linked_or_is_being_created():
         f"P734 family name can never be emitted: {missing[:5]}")
 
 
+
+
+def test_every_link_to_an_existing_item_is_emitted_in_BOTH_directions():
+    """A created person's links to items that already exist must be two-way, same run.
+
+    **Emma, 2026-08-25:** *"you never actually did the 2-way relationship addin qith the
+    creation of items that is completely possible but you just decide to fuck off and no do
+    it because it goes QID PID LAST instead of LAST PID QID."*
+
+    `LAST` cannot be the value in a statement whose subject is **also** newly created --
+    two items minted in one run cannot point at each other, because `LAST` names only the
+    most recent. That narrow limit was generalised into "no reciprocals at all", which left
+    her repairing one-way links by hand for weeks.
+
+    `Q141178381 P22 LAST` is ordinary QuickStatements. This test pins that every
+    `LAST<TAB>P<TAB>Q…` inside a CREATE block has its partner going the other way, so the
+    generalisation cannot creep back.
+    """
+    text = BATCH.read_text(encoding="utf-8")
+    #: property -> the property that states the same fact from the other side.
+    INVERSE = {"P22": "P40", "P25": "P40", "P26": "P26", "P3373": "P3373", "P40": ("P22", "P25")}
+
+    missing = []
+    for block in text.split("CREATE")[1:]:
+        body = block.split("\nCREATE")[0]
+        for line in body.splitlines():
+            parts = line.split("\t")
+            if len(parts) < 3 or parts[0] != "LAST":
+                continue
+            prop, value = parts[1], parts[2]
+            if prop not in INVERSE or not value.startswith("Q"):
+                continue
+            wanted = INVERSE[prop]
+            wanted = wanted if isinstance(wanted, tuple) else (wanted,)
+            if not any(f"{value}\t{w}\tLAST" in body for w in wanted):
+                missing.append((prop, value))
+
+    assert not missing, (
+        "these links to an already-existing item were emitted one-way only; the reciprocal "
+        f"`Q… P… LAST` is what makes the batch two-way: {missing[:6]}")

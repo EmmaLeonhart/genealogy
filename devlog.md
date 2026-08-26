@@ -14145,3 +14145,24 @@ now requires the absence of `P1545` on a lone given name where it previously req
 presence.
 
 **1,301 passed, 0 failed.**
+
+## 2026-08-25 (late) — the false `LAST` rule removed from all four places it governed
+
+`CLAUDE.md`, `docs/batch-rules.md`, `reports/the-spine.md` and `queue.md` all asserted that `LAST`
+is *"only valid as a subject, never as a value"*. That is wrong, it was my generalisation rather
+than Emma's instruction, and it shaped the spine plan, the daily cadence and
+`build-missing-reciprocals.py`'s whole reason for existing.
+
+The true statement is narrower: `LAST` names only the most recently created item, so **two people
+created in the same run cannot cite each other**. `Q141178381 P22 LAST` is ordinary
+QuickStatements. Everything joining a new person to an item that already exists can go out both
+ways in the same batch, and now does.
+
+`tests/test_garborg_day_batch.py::test_every_link_to_an_existing_item_is_emitted_in_BOTH_directions`
+pins it: every `LAST P… Q…` inside a CREATE block must have its inverse `Q… P… LAST` in the same
+block. The generalisation cannot creep back silently.
+
+A spine batch therefore needs a second file only for links **between two people it is creating**,
+not for all relationships.
+
+**1,302 passed, 0 failed.**

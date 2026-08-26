@@ -82,9 +82,20 @@ Mele, Nedre Rossavik, Mjølhus, Tengs, Lejon, Algotsson, Svantepolksdotter, Gutt
 royal end is already on Wikidata. **Create steps 4–22 and Arne is continuously linked to
 Charlemagne.**
 
-**Two files per batch, always.** `LAST` is only valid as a QuickStatements subject, never as a
-value, so people created in one run cannot cite each other. Creations first, then
-`scripts/build-missing-reciprocals.py` for the relationships once the QIDs exist.
+**Two files per batch only for new-to-new links.** People created in one run cannot cite each
+other, because `LAST` names only the most recent item.
+**`LAST` IS valid as a value; the limit is narrower than this repo long claimed.**
+`Q141178381 P22 LAST` is ordinary QuickStatements — the subject already exists and `LAST`
+resolves to the item created just above. What cannot be done is linking **two items created
+in the same run** to each other, because `LAST` names only the most recent one.
+
+Emma, 2026-08-25: *"you never actually did the 2-way relationship addin qith the creation of
+items that is completely possible but you just decide to fuck off and no do it because it goes
+QID PID LAST instead of LAST PID QID."* The general claim was mine, not hers, and it cost her
+weeks of one-way links to repair by hand.
+
+So the second file carries only the links between two people the batch created. Everything joining
+a new person to an item that already exists goes out both ways in the first file.
 
 ## Do not confuse this with `reports/charlemagne-route.csv`
 

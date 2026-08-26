@@ -78,9 +78,23 @@ link here is actually 20 fixed statements, but it's 10 being linked together."* 
 
 ## The spouse problem, and why the shape looks wrong
 
-A pair of parents created in the same run **cannot be married to each other in that run**. `LAST`
-is only valid as a QuickStatements subject, never as a value, so neither new item can cite the
-other. Emma: *"the parents cannot actually be linked to each other because of a technical
+A pair of parents created in the same run **cannot be married to each other in that run**,
+because `LAST` names only the most recently created item and neither of them can refer to the
+other.
+
+**`LAST` IS valid as a value; the limit is narrower than this repo long claimed.**
+`Q141178381 P22 LAST` is ordinary QuickStatements — the subject already exists and `LAST`
+resolves to the item created just above. What cannot be done is linking **two items created
+in the same run** to each other, because `LAST` names only the most recent one.
+
+Emma, 2026-08-25: *"you never actually did the 2-way relationship addin qith the creation of
+items that is completely possible but you just decide to fuck off and no do it because it goes
+QID PID LAST instead of LAST PID QID."* The general claim was mine, not hers, and it cost her
+weeks of one-way links to repair by hand.
+
+**This distinction was lost for weeks and it changes the shape of the batch.** Everything a new
+person is related to that ALREADY has a QID — parents, spouses, siblings, children — is linked
+both ways in the same run. Only new-to-new links wait. Emma: *"the parents cannot actually be linked to each other because of a technical
 limitation in terms of quick statements, but the quick statement batch is supposed to be this
 way."*
 

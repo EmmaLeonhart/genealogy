@@ -1639,7 +1639,9 @@ is why they matter. But one hop a day against a line this long is the wrong inst
 
 - Take the spine as its roster and create **everyone on it who has no item**, in one batch.
 - Emit both directions of every relationship. A `CREATE` block cannot write its own reciprocal —
-  `LAST` is only valid as a subject, never as a value — so the batch must carry a second section
+  `LAST` names only the most recently created item, so two people created in the same run cannot
+  cite each other — **but `Q… P… LAST` is fine and every link to an existing item goes out both
+  ways in the same run.** So the batch carries a second section
   that fixes the links, the way `scripts/build-missing-reciprocals.py` does.
 - Run the duplicate guard on every person before creating them: a parent with a `P40` child item
   we have not matched means **do not create**. This is not optional. It is what `Q2183430` cost.

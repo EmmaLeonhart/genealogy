@@ -1601,11 +1601,21 @@ gaps up there — Rozala of Italy, Berengar I, Giséle of Cysoing.
 So the line closes at **step 23, Guttorm Àsulfsson à Rein**, the deepest person who already has an
 item. Create steps 4–22 and Arne is continuously linked to Charlemagne.
 
-**Nineteen consecutive creations cannot link to each other in one batch.** `LAST` is only valid as
-the subject of a QuickStatements line, never as a value, so a person created in a run cannot be
-cited by another person created in the same run. Every spine batch is therefore **two files**: the
-creations, then the relationships, once the QIDs exist. `scripts/build-missing-reciprocals.py` is
-the second half.
+**Nineteen consecutive creations cannot link TO EACH OTHER in one batch** — but each of them can
+be linked to anybody who already has a QID, in both directions, in that same batch.
+**`LAST` IS valid as a value; the limit is narrower than this repo long claimed.**
+`Q141178381 P22 LAST` is ordinary QuickStatements — the subject already exists and `LAST`
+resolves to the item created just above. What cannot be done is linking **two items created
+in the same run** to each other, because `LAST` names only the most recent one.
+
+Emma, 2026-08-25: *"you never actually did the 2-way relationship addin qith the creation of
+items that is completely possible but you just decide to fuck off and no do it because it goes
+QID PID LAST instead of LAST PID QID."* The general claim was mine, not hers, and it cost her
+weeks of one-way links to repair by hand.
+
+So a spine batch needs a second file only for the links **between two people it is creating**.
+`scripts/build-missing-reciprocals.py` is that second half, and it is much smaller than it was:
+`scripts/build-garborg-day.py` now emits `Q… P… LAST` for every relationship to an existing item.
 
 `reports/the-spine.md` carries the person-by-person state. The closing item of `queue.md` is to
 build the batch builder that does all of this at once rather than a hop a day.
