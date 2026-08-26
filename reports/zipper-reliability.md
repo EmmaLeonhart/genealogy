@@ -37,3 +37,53 @@ Two independent checks, neither of which asks Wikidata anything: whether the two
 | solo | 29,383 | 11.9% | 6,774 | 0.9% |
 | date | 8,943 | -- | 464 | 3.9% |
 | name | 7,634 | 22.9% | 175 | 10.3% |
+
+## Error by round — and why `ROUND_CAP` went from 3 to 8
+
+**Check the coverage before reading any margin.** That rule was written into this file after the
+per-method margins turned out to be parent-shaped, and applying it at the per-round level
+disqualifies two of the three checks outright:
+
+| round | pairs | dated | sexed | independently checked |
+| ---: | ---: | ---: | ---: | ---: |
+| 1 | 16,093 | 65% | 100% | 45% |
+| 2 | 10,303 | 49% | 100% | 1% |
+| 3 | 7,079 | 36% | 100% | 0% |
+| 4 | 4,942 | 29% | 100% | 0% |
+| 5 | 3,382 | 24% | 94% | 0% |
+| 6 | 2,178 | 21% | 86% | 0% |
+| 7 | 1,254 | 21% | 91% | 0% |
+| 8 | 729 | 20% | 90% | 0% |
+
+**Independent sources are unusable past round 1** — 7,185 checks at round 1, 29 at round 3, none
+at round 8. The 30.8% and 41.4% "error rates" they give for rounds 2 and 3 rest on 146 and 29
+samples.
+
+**The date column falls with its own coverage.** It reads 3.9% → 18.4% while the share of dated
+pairs falls 65% → 20%. **That is the curve `ROUND_CAP = 3` was set from**, and it describes who
+carries a birth year, not who is paired correctly.
+
+**Sex has coverage at depth — and a confound of its own, which was corrected before deciding.**
+Sex can never refute a `father` or `mother` pairing: both are same-sex by construction. Those
+slots grow from **38.6%** of round 1 to **57.7%** of round 6, so measuring over everything
+flattens the curve artificially. Restricted to `child` and `spouse`, where a refutation is
+possible:
+
+| round | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| refuted | 2.8% | 4.0% | 3.2% | 3.8% | 3.8% | 4.8% | 4.2% | 4.8% |
+
+**Error rises by about 1.7× over eight rounds, and there is no knee at 3.** Capping there
+discarded **12,485 pairs** to avoid a rise from ~3.2% to ~4.8%.
+
+**The deciding comparison is one Emma already made.** She kept `child`+`solo` — which this same
+check puts at **10.0%** — saying *"keep them, flagged as weakest"*. A round-8 pair at 4.8% is
+better evidenced than a cell she chose to keep, so excluding it by round contradicts her own
+standard, and her bar for stopping the join is *"we need a pretty damn good reason to stop it."*
+
+**Round is the wrong axis. Method and slot are the right ones.** At every round, `date` is the
+worst method (3.4–7.9%) against `name` (0.4–2.1%) and `solo` (0.8–2.2%) — a wider spread than the
+whole round-1-to-round-8 range. She asked whether to cap by method as well; the data says method
+matters more than round, but it is already handled where it belongs rather than by a cap:
+`SLOT_YEAR_TOLERANCE` cuts the child date tolerance to 0, and sex-refuted pairs are dropped
+outright. **No method cap is proposed.**

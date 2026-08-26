@@ -133,10 +133,15 @@ def main():
         ("tanba-roster", rows_from(R / "tanba-p2600-pairs.tsv", "qid", "geni_ids", "\t")),
         ("izumo-sister-roster",
          rows_from(R / "izumo-sister-p2600-pairs.tsv", "qid", "geni_ids", "\t")),
-        # The zipper join, rounds 1-3. Emma's call, 2026-08-25: error compounds with each
-        # round because each anchors on the last, so 3.9% at round 1 and 27.1% at round 8.
-        # Later rounds stay in the file and are filtered here.
-        ("zipper", zipper_rows(R / "zipper-pairs.tsv", 3)),
+        # The zipper join, ALL EIGHT ROUNDS as of 2026-08-25. The 3 came from a date-based
+        # error curve -- 3.9% at round 1 to 27.1% at round 8 -- that turned out to be a
+        # COVERAGE ARTEFACT: the share of pairs carrying a birth year on both sides falls
+        # 65% -> 20% with depth, and the "error" tracked that decline rather than the join.
+        # Measured instead against `P21` *sex or gender* (86-100% coverage at every round,
+        # and corrected for the father/mother slots where sex can never refute), the real
+        # rise is 2.8% -> 4.8% across eight rounds. `scripts/zipper-join.py` § ROUND_CAP
+        # carries the full working.
+        ("zipper", zipper_rows(R / "zipper-pairs.tsv", 8)),
     ]
     refuted = date_refuted()
     dropped = 0

@@ -125,11 +125,44 @@ NOISE = {
 SLOTS = (("father", "p22", "father"), ("mother", "p25", "mother"),
          ("spouse", "p26", "spouses"), ("child", "p40", "children"))
 
-#: Emma's call, 2026-08-25: keep rounds 1-3. Error compounds with each round because each
-#: anchors on the last -- 3.9% at round 1, 9.8% at round 3, 27.1% at round 8, measured against
-#: dates. Round 3 is the knee. Later rounds are still written to the file with their round
-#: number so the number can be revisited; the filter is in the consumer.
-ROUND_CAP = 3
+#: **Rounds 1-8 all count. Raised from 3 on 2026-08-25 after re-measuring.**
+#:
+#: The 3 came from a date-based curve -- 3.9% at round 1 rising to 27.1% at round 8 -- read as
+#: error compounding because each round anchors on the last. **That curve was a coverage
+#: artefact.** The share of pairs carrying a birth year on both sides falls 65% -> 20% between
+#: round 1 and round 8, and the "error" tracked that decline rather than the join.
+#:
+#: `P21` *sex or gender* is the only check with coverage at depth -- 86-100% of pairs at every
+#: round, against 45% -> 0% for independent sources, which are unreadable past round 1 (7,185
+#: checks at round 1, 29 at round 3, none at round 8).
+#:
+#: **The confound in the sex check itself was found and corrected before this decision.** Sex
+#: cannot refute a `father` or `mother` pairing, which is male-male or female-female by
+#: construction, and those slots grow from 38.6% of round 1 to 57.7% of round 6. Measuring over
+#: the whole population therefore flattens the curve artificially. On `child` and `spouse` slots,
+#: where a refutation is possible:
+#:
+#:     round   1     2     3     4     5     6     7     8
+#:     rate  2.8%  4.0%  3.2%  3.8%  3.8%  4.8%  4.2%  4.8%
+#:
+#: Error does rise with depth, by a factor of about **1.7 across eight rounds** -- not the 7x the
+#: old curve implied, and there is no knee at 3. Capping at 3 discarded **12,485 pairs** to avoid
+#: a rise from ~3.2% to ~4.8%.
+#:
+#: The deciding comparison is one Emma already made: she kept `child`+`solo`, which the same
+#: check puts at **10.0%**, saying *"keep them, flagged as weakest"*. A round-8 pair at 4.8% is
+#: better evidenced than a cell she chose to keep, so excluding it by round is not consistent with
+#: her own standard -- and her bar for stopping the join is *"we need a pretty damn good reason"*.
+#:
+#: **Round is the wrong axis; method and slot are the right ones.** At every round, `date` is the
+#: worst method (3.4-7.9%) against `name` (0.4-2.1%) and `solo` (0.8-2.2%) -- a bigger spread
+#: than the entire round-1-to-round-8 range. That is already handled where it belongs:
+#: `SLOT_YEAR_TOLERANCE` cuts the child date tolerance to 0, and the sex filter drops refuted
+#: pairs outright.
+#:
+#: Recorded in `reports/zipper-reliability.md` § *Error by round*. Revisit by re-running
+#: `scripts/measure-zipper-reliability.py`; do not revisit from the date column alone.
+ROUND_CAP = 8
 
 #: How far the walk goes. Rounds beyond `ROUND_CAP` are recorded, not consumed.
 MAX_ROUNDS = 8
