@@ -321,72 +321,27 @@ Izumo-Furune both have Geni father *Ada no Mikoto* `Q135579362` against Wikidata
 *Yomorosunomikoto* `Q135579361`, and Tsusa has Geni *Kushiyatama* against `伊佐我命`. Two children
 disagreeing the same way is one generation disputed, not a succession artefact. Emma's to settle.
 
-## Check the 20 consecutive-seat sibling pairs for succession-as-parentage on Wikidata
+## Checked: succession-as-parentage on Wikidata is ONE case, not a pattern
 
-Twenty pairs of Izumo brothers hold adjacent seat numbers. One of them, Hiroshima 25 / Otoyama 26,
-is already known to be recorded on Wikidata as father and son. The other nineteen have not been
-checked.
+`scripts/check-izumo-succession-as-parentage.py`, over every consecutive-seat sibling pair on the
+chart:
 
-The check is exact and offline once the items are held: for each pair, does Wikidata's `P22` on the
-later one name the earlier one, where `reports/izumo-chart-edges.tsv` says they share a parent?
-**Report, never correct** — `CLAUDE.md` says the purpose is to add, and a disagreement is a note.
-The value is knowing how far the error runs before any Izumo parentage is trusted.
+| | |
+| --- | ---: |
+| no `P22` on the later brother at all | 7 |
+| one of the pair has no item held | 2 |
+| **brother recorded as father** | **1** |
 
-**No Izumo batch was emitted.** 351 missing statements is a mass batch nobody asked for, and
-`CLAUDE.md` is explicit that producing one uninvited presents work as ready that nobody sanctioned.
+The one is Hiroshima 25 → Otoyama 26, already known. **The error does not run wide**, and that
+matters as much as finding it would have: Wikidata's Izumo parentage is thin rather than wrong —
+seven of ten pairs simply have no father recorded.
 
-## Analysis work parked while she was editing
+**So the 80 missing `P22` rows in `reports/model-vs-reality-izumo.tsv` are the real story**, not
+the four conflicts. There is little there to contradict.
 
-These were deferred so the QuickStatements hand-offs came first. Nothing blocks them now.
-
-- **Run the join emitter for Tanba and Onakatomi.** `scripts/build-join-batch.py` is
-  generic and both rosters are downloaded (504 items in `out/clan-full-items.json`).
-  Neither roster carries a Geni ID, so the join has to come from the About Me links.
-- **The Izumo chart as succession**, per her ruling: `P1365` *replaces* / `P1366`
-  *replaced by* with `P39` *position held*, parentage from Geni only.
-- **`exports/post-merge/` — the ordering question is SETTLED and the override is built.**
-  `merge._merge_into` gives a single-valued conflict to the **later** source, and
-  `sources.find_exports` now puts anything under `post-merge/` last, explicitly. It had
-  to: path sort put `post-merge` at position 17 of 22, *before* `samaritans`,
-  `sparse_filling`, `stragglers` and `tanba` — so it would have lost to `tanba/`, the
-  clan with the most stale duplicates. What remains is running the exports themselves,
-  which is hers.
-- **The 20 label mismatches** in `reports/qid-identity-audit.tsv` — mostly benign
-  transliteration variance, a few (`Kushichitoriuminomikoto` against
-  `Kushimikatomi-no-mikoto`) look like different names.
-
-## The join emitter exists — `scripts/build-join-batch.py`
-
-Consumes `reports/synoptic-correspondence.tsv`, both directions jointly. Scoped by any
-file with a `qid` column. Adds only what Wikidata lacks; `P2600` *Geni.com profile ID*
-first, everything else cited to it with `S2600`. Creates nothing, so it runs in one pass.
-
-**Izumo run: 400 statements over 115 joined people** — 114 `P2600`, 89 `P21` *sex or
-gender*, 86 `P40` *child*, 81 `P22` *father*, 30 `P3373` *sibling*.
-
-**Outstanding:**
-
-- **Run it for Tanba and Onakatomi** once their roster QIDs are joined. Both were
-  downloaded (504 items in `out/clan-full-items.json`) but neither roster carries a Geni
-  ID, so the join has to come from the About Me links.
-- **89 of 204 Izumo QIDs are not joined to any Geni profile** and so contribute nothing.
-  That is the roster's own gap, not the emitter's.
-- **Labels are not emitted yet.** The items are Japanese and mostly carry `ja` already;
-  what they lack has not been measured.
-
-## ⛔ The Izumo chart edges are SUCCESSION, not parentage
-
-**Emma's ruling, 2026-08-24.** Two things forced it: Takanori 81 and Takatomi 80 held
-consecutive seats and were **brothers**, and the sister repo's raw wiki says *"solid lines
-indicate biological children, dotted lines indicate adopted children"*.
-`reports/izumo-chart-edges.tsv` flattened all of it to `kind=child`.
-
-- Model the chart as `P1365` *replaces* / `P1366` *replaced by* alongside `P39` *position
-  held*, which 17% of the items already carry.
-- **Parentage comes only from Geni**, where it is actually recorded against a profile ID.
-- This dissolves the 14 tree-vs-chart disagreements rather than adjudicating them: 11 were
-  "tree father is off the roster" naming other houses — Kitajima, Higashi, Inaoka,
-  Takahama, Akatsuka — which is what succession into a priestly house looks like.
+**The count in this item said twenty and it was wrong.** 88 *ordered* sibling pairs contain **10**
+unordered consecutive-seat pairs; twenty counted each from both ends. Corrected here rather than
+left as a number somebody would later try to reconcile.
 
 ## ⛔ Audit of Geni merges — her method, 2026-08-24
 

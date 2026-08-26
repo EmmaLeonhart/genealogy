@@ -14613,3 +14613,29 @@ no Mikoto* against Wikidata's *Yomorosunomikoto*; Tsusa has *Kushiyatama* agains
 children disagreeing the same way is one disputed generation, not a succession artefact.
 
 Nothing corrected. `CLAUDE.md`: the purpose is to add, and a disagreement is a note.
+
+## 2026-08-26 — succession-as-parentage is one case, and the checker took three tries
+
+`scripts/check-izumo-succession-as-parentage.py` over every consecutive-seat sibling pair:
+**7 have no `P22` at all, 2 have no item held, 1 is the brother-as-father error** already known
+(Hiroshima 25 → Otoyama 26).
+
+**The error does not run wide, and that is the finding.** Wikidata's Izumo parentage is *thin*
+rather than *wrong* — so the 80 missing `P22` rows in the Izumo diff are the real story and the
+four conflicts are not.
+
+**Three wrong counts before the right one, each plausible:**
+
+- The queue item said **20** pairs. That was 88 *ordered* sibling pairs yielding 20 ordered
+  consecutive ones — **10** unordered. Corrected in the queue rather than left to be reconciled.
+- The first checker joined on a `chart_name` column that does not exist; `izumo-chart-roster.tsv`
+  calls it `english` and keeps the seat in `succession`. Every pair came back *"no item held"* —
+  **an empty join reads exactly like an absence of data**, which is the failure this whole file is
+  about.
+- The second used `zip(numbered, numbered[1:])`, comparing only neighbours in the sorted list, and
+  silently dropped `Kiyotaka#54 / Takamune#55`: 9 of 10. Replacing it with a nested loop but
+  leaving the body at the outer indentation then produced **98** rows including self-pairs like
+  `Takatoki#53 → Takatoki#53`.
+
+Building the pair list first and judging it after makes all three impossible to write. The number
+now agrees with an independently computed one, which is the only reason to believe it.
