@@ -14355,3 +14355,33 @@ is the only question that matters.
 siblings for Tomas where `derived-family.csv` records none, because our sibling relation is derived
 from shared parents and only the father is recorded on our side. The staleness is real but it is
 not what this item was about.
+
+## 2026-08-26 — the multi-`P2600` browser backlog collapses from 95 pages to 2
+
+`Q122925764` was settled yesterday with no browser at all: the item is one man whose name is both
+given names, and our corpus gives its two Geni ids the same father — so Geni holds two brothers
+where Wikidata holds one person, which `CLAUDE.md` calls ordinary. **That check generalises and
+costs nothing.**
+
+`scripts/classify-multi-p2600-by-tree.py` asks, for every item stating more than one Geni id, what
+relationship our own tree already records between the profiles:
+
+| | items | |
+| --- | ---: | --- |
+| neither profile in our corpus | 1,831 | nothing can be said |
+| only one in our corpus | 209 | nothing can be said |
+| **no relationship recorded** | **41** | the Zerubbabel shape — unmergeable duplicates. Ordinary. |
+| **siblings, sharing a parent** | **27** | the Sapiega shape. Our snapshot matches Geni. Nothing to do. |
+| **one is the other's PARENT** | **2** | a generation collapsed into one item. The residue. |
+
+The two: `Q104755784` *Ruben Wulff* claims Ruben Wulff **and** Wolf *Rubensson*, whose patronymic
+says he is Ruben's son. `Q96985053` *John Loomis* claims two John Loomises, one the parent of the
+other. Those are worth opening; the other 68 are shapes already understood.
+
+**A number in `CLAUDE.md` needed correcting.** It says the store counts 2,861 items with more than
+one Geni id. That is `p2600-all.tsv`, which keeps deprecated statements; `relations.tsv` drops them
+and counts **2,110**. So **751 of those second ids are already retracted on Wikidata**. Both
+numbers are right for what they measure and the difference is worth knowing before quoting either.
+
+Nothing resolved: duplicate merges are Emma's, and the only question is whether our snapshot
+matches Geni.

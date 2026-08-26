@@ -622,7 +622,17 @@ Known pairs, both unmergeable:
 **So: emit the second ID as an additional `P2600` statement. Never replace the
 first, never hold it back as a conflict, never build machinery to adjudicate
 it.** `P2600` is multi-valued and the local store already counts **2861 items
-carrying more than one Geni ID** — this is ordinary. It is also the general rule
+carrying more than one Geni ID** — this is ordinary. **751 of those second ids are already
+DEPRECATED on Wikidata**, so the live count is **2,110**; `out/wikidata/relations.tsv` drops
+deprecated statements and `out/wikidata/p2600-all.tsv` does not, which is the whole difference
+between the two numbers and is worth knowing before quoting either.
+
+**Of the 2,110, only 70 have both profiles in our corpus** — everything else we can say nothing
+about. `scripts/classify-multi-p2600-by-tree.py` sorts those 70 by what our own tree records
+between the pair, and it needs no browser: **41 have no relationship recorded** (the Zerubbabel
+shape), **27 are siblings** (the Sapiega shape — Geni holds two people, Wikidata holds one, and
+our snapshot matches Geni so there is nothing to do), and **2 are parent-child**, which is a
+generation collapsed into one item and the only residue worth opening a page for. It is also the general rule
 one section down: *prefer adding a second statement cited to Geni over editing
 the existing one*.
 

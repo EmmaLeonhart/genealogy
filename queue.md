@@ -92,33 +92,39 @@ them and nothing is waiting.
   placeholder created there first, per `docs/export-seed-rules.md` — which was not worth
   doing for a question already answered from data on disk plus one profile page.
 
-- Continue opening both Geni pages for the **70** targets in
-  `reports/multi-p2600-targets.tsv`. **24 done, 46 to go, 95 pages.** Screenshots to
-  `Documents\claude-screenshots\`, artifact per batch. Judgements go in
-  `reports/multi-p2600-verdicts.tsv`.
-  **Order comes from `reports/multi-p2600-triage.tsv`** — a queue order, never a verdict.
-  Open `look_first=yes` first: 13 `PLACEHOLDER` pairs where no name test can work, and 6
-  `DIFFERENT-PATRONYMIC` where the two names name two different fathers.
-  **24 done: 12 are one person twice, 12 are two real people.**
-  **The lineage corroboration is 4 for 4 against hand checks** — every pair it called
-  CORROBORATED and that was then opened turned out to be one person.
-  **Read `reports/multi-p2600-lineage.tsv` first** — 8 pairs are CORROBORATED by their
-  relatives being paired on Wikidata too, which is structural proof needing no names, and
-  13 are PARENTS-NOT-JOINED, which is **not** evidence of two people — tested and refuted
-  on `Q13478569`. **17 of the remaining targets are ONE duplicated lineage**, the
-  Polotsk/Vitebsk/Smolensk Rurikids, imported romanised and in Cyrillic. Both outcomes are common, so
-  read every pair before judging. **The tell is a title only one person can hold** — same
-  office, same death year, or the same name in two languages means one person; genuinely
-  different given names mean siblings. **CJK placeholder names (`李氏`) defeat the name test
-  entirely** — see the devlog for 2026-08-25.
+- **The 70 targets are classified from our own tree, 2026-08-26 — 2 need a page opened, not 95.**
+  `scripts/classify-multi-p2600-by-tree.py` asks what relationship our corpus already records
+  between the two profiles one item claims. Of 2,110 items stating more than one Geni id, 1,831
+  have neither profile in our corpus and 209 have only one, so nothing can be said about them.
+  The **70** with both are:
 
-- **Lower the add gate, or leave it.** NEEDS-DECISION, Emma's.
-  `reports/wikidata-add-p2600.qs` is built — **1,662 additions, 471 anchored on both
-  parents** — from 7,320 proposals. The gate rejects 5,654, and **95.2% of the rejected
-  ones with comparable dates are date-consistent**, so most of what it discards is
-  probably fine. It cuts date-impossible pairs 4.8% → 1.4%, a 3.4x reduction, at the cost
-  of 77% of the volume. Loosening it is a call about how much wrong is acceptable in an
-  additive batch, which is hers and not a tuning exercise.
+  | our tree says | n | reading |
+  | --- | ---: | --- |
+  | no relationship recorded | 41 | the Zerubbabel shape — unmergeable duplicates. Ordinary. |
+  | siblings, sharing a parent | 27 | the Sapiega shape — Geni holds two, Wikidata holds one. Our snapshot matches Geni, so nothing to do. |
+  | **one is the other's PARENT** | **2** | a generation collapsed into one item. The residue. |
+
+  **The two:** `Q104755784` *Ruben Wulff* claims Ruben Wulff **and** Wolf *Rubensson*, whose
+  patronymic says he is Ruben's son. `Q96985053` *John Loomis* claims two John Loomises, one the
+  parent of the other — father and son sharing a name.
+
+  Those two are worth opening. The other 68 are shapes `CLAUDE.md` already calls ordinary.
+
+- **The add gate is DECIDED, 2026-08-26: loosened.** Emma, shown that 5,540 of its 5,651
+  rejects had no disagreement anywhere: *"Loosen it — emit the ~7,000."*
+  `reports/wikidata-add-p2600.qs` is **7,168 additions**. It now refuses contradiction and
+  not silence — 148 refused, each a case where a parent is recorded on both sides and the
+  two are different people.
+
+- **Classify the 70 multi-`P2600` targets by what our own tree says about the pair.**
+  `Q122925764` was settled on 2026-08-26 with no browser at all: the item is one man whose
+  name is both given names, and our corpus gives its two Geni ids **the same father** — so
+  Geni holds two brothers where Wikidata holds one person, which `CLAUDE.md` calls ordinary
+  rather than a conflict. That check generalises. For each of the 70, ask what relationship
+  our tree records between the two profiles: same parents (siblings), one the parent of the
+  other, spouses, or no relationship at all. Each answer means something different, and
+  none of them needs a page opened. Whatever is left after that is the genuinely thorny
+  residue and only that needs the browser.
 
 ## Stale, small, nobody's blocker
 
