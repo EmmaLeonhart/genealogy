@@ -14268,3 +14268,36 @@ closed sibling set, not parents"* instead of *near-certain*.
 zipper rather than a recorded `P2600`, so it is inference and is not promoted to the judged file.
 
 Eight rows now in `reports/spine-already-on-wikidata.tsv`. Nothing is written there by script.
+
+## 2026-08-26 (00:15) — auditing the judged spine rows inverted their ranking
+
+Step 18's bad justification prompted the obvious question: **have the other seven ever been tested
+the same way?** They had not. Two checks, and the second matters more.
+
+**Does the evidence discriminate?** A neighbour's `P40` listing our candidate among six children
+does not — the label picks within the list, which is exactly step 18's failure. A neighbour's
+`P22`/`P25` pointing *at* the candidate does, those being single-valued. All eight pass this.
+
+**Is the pointer independent, or part of the same inference?** This is the provenance principle
+applied to a judged file, and it inverts the apparent ranking:
+
+| step | relatives cited | independent anchors |
+| ---: | ---: | ---: |
+| 28 Rozala | 2 | **2** |
+| 32 Gisele | 2 | **2** |
+| 31 Berengar I | 1 | 1 |
+| 20 Knut Valdemarsson | 1 | 1 |
+| 21 Helena | 4 | 1 |
+| 16 Knut Algotsson | 2 | 1 |
+| **19 Svantepolk** | **6** | **0** |
+| 18 Ingegerd | 2 | 0 |
+
+**Step 19 has the most corroborating relatives and the least independent support.** All six are
+chain-mates — `Q3743799` is step 20's candidate, `Q101247444` is step 18's, and two are the
+sisters step 18 must be told apart from — or carry no recorded `P2600` at all. Six relatives reads
+as the strongest row in the file and is the weakest by anchoring.
+
+Both zero-anchor rows now say so in their confidence, and the `.qs` carries the count per line
+with what it means. Nothing was removed: a self-corroborating chain is not thereby wrong, and
+`CLAUDE.md` is explicit that Emma's bar for discarding is *"a pretty damn good reason"*. It is a
+reading made visible, which is the same standard `zipper-provenance.py` applies with `POISONED`.

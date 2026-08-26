@@ -132,6 +132,29 @@ def main():
             "shared_words": c["shared_words"],
         })
 
+    # ---- IS THE WINNER ALONE AT ITS SCORE? -------------------------------------------
+    # **The check that step 18 needed and did not get.** It was recorded as near-certain on
+    # "both parents match" -- and three sisters, Ingeborg `Q86458153`, Ingegerd `Q101247444`
+    # and Ingrid `Q4955768`, each matched both parents. Evidence that every candidate shares
+    # cannot choose between them, however convincing the row reads.
+    #
+    # This is the zipper's own rule, `mutually_unique`, applied to a judged file: an
+    # assignment that is not unique proposes nothing. A candidate that ties on structure is
+    # not thereby wrong -- it means the STRUCTURE did not decide, and whatever did (usually
+    # the given name inside a closed sibling set) has to be named as the real evidence.
+    best = {}
+    for r in out:
+        b = best.get(r["geni_id"], 0)
+        best[r["geni_id"]] = max(b, r["corroborating_relatives"])
+    at_best = collections.Counter(r["geni_id"] for r in out
+                                  if r["corroborating_relatives"] == best[r["geni_id"]])
+    for r in out:
+        tied = at_best[r["geni_id"]]
+        r["alone_at_this_score"] = ("yes" if tied == 1
+                                    and r["corroborating_relatives"] == best[r["geni_id"]]
+                                    else "")
+        r["candidates_tied_at_top"] = tied if r["corroborating_relatives"] == best[r["geni_id"]] else ""
+
     out.sort(key=lambda r: (-r["corroborating_relatives"], int(r["step"])))
     with open(R / "spine-candidate-evidence.tsv", "w", encoding="utf-8", newline="") as f:
         if out:
@@ -142,6 +165,20 @@ def main():
             f.write("(no candidate has a single corroborating relative)\n")
 
     strong = [r for r in out if r["corroborating_relatives"] >= WORTH_A_LOOK]
+    tied_top = sorted({r["geni_id"] for r in out
+                       if r["corroborating_relatives"] == best[r["geni_id"]]
+                       and at_best[r["geni_id"]] > 1})
+    if tied_top:
+        print("\nSTRUCTURE DID NOT DECIDE for these -- more than one candidate ties at the "
+              "top score, so anything claiming otherwise is claiming more than it has:")
+        for g in tied_top:
+            rs = [r for r in out if r["geni_id"] == g
+                  and r["corroborating_relatives"] == best[g]]
+            print(f"   step {rs[0]['step']:>2}  {rs[0]['our_name'][:38]:<38} "
+                  f"{len(rs)} candidates tied at {best[g]} relatives")
+            for r in rs:
+                print(f"        {r['candidate_label'][:52]:<52} {r['candidate_qid']}")
+
     print(f"\n{len(out)} candidates have at least one corroborating relative")
     print(f"{len(strong)} have {WORTH_A_LOOK} or more -- worth a human glance\n")
     for r in strong:
