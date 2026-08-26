@@ -173,6 +173,12 @@ def main():
     print(f"{len(ours):,} of the proposed people are in our tree")
 
     rows, tally = [], collections.Counter()
+    # **The rejects are written out too.** Emma, 2026-08-25, asked to decide the gate's
+    # tightness: *"Show me the rejected ones first"* -- and they had never been emitted, so
+    # the only thing anyone could look at was the percentage. A gate whose discards are
+    # invisible cannot be argued about from records, which is what `CLAUDE.md` § *How this
+    # project works now* requires: *"Show records, not statistics."*
+    rejected = []
     for qid, geni, name in proposals:
         item = items.get(qid)
         if not item:
@@ -196,12 +202,46 @@ def main():
                     anchors.append(f"{word}: {pq} carries {only}, and so does our tree")
         if not anchors:
             tally["no parent anchor agrees"] += 1
+            # Why it failed, in the terms a human can check: did we have a parent at all,
+            # did the item, and did their parent carry a Geni id we could compare?
+            why = []
+            for prop, slot, word in ((FATHER, 0, "father"), (MOTHER, 1, "mother")):
+                if not mine[slot]:
+                    why.append(f"{word}: none in our tree")
+                elif not item[prop]:
+                    why.append(f"{word}: none on the item")
+                else:
+                    for pq in item[prop]:
+                        theirs = carried.get(pq, set())
+                        if not theirs:
+                            why.append(f"{word}: their {pq} carries no Geni id")
+                        elif len(theirs) != 1:
+                            why.append(f"{word}: their {pq} carries {len(theirs)} Geni ids")
+                        else:
+                            why.append(f"{word}: their {pq} carries "
+                                       f"{next(iter(theirs))}, ours is {mine[slot]}")
+            rejected.append({"qid": qid, "geni_id": geni,
+                             "wikidata_label": item["label"], "geni_name": name,
+                             "our_father": mine[0], "our_mother": mine[1],
+                             "their_father": ";".join(item[FATHER]),
+                             "their_mother": ";".join(item[MOTHER]),
+                             "why": " | ".join(why)})
             continue
 
         tally["BOTH parents anchor" if len(anchors) > 1 else "one parent anchors"] += 1
         rows.append({"anchors": len(anchors), "qid": qid, "geni_id": geni,
                      "wikidata_label": item["label"], "geni_name": name,
                      "evidence": " | ".join(anchors)})
+
+    rej = ROOT / "reports" / "add-p2600-rejected.tsv"
+    with open(rej, "w", encoding="utf-8", newline="") as f:
+        if rejected:
+            w = csv.DictWriter(f, fieldnames=list(rejected[0]), delimiter="\t")
+            w.writeheader()
+            w.writerows(rejected)
+        else:
+            f.write("(none)\n")
+    print(f"wrote {rej.relative_to(ROOT)}: {len(rejected):,} rejected, with the reason")
 
     rows.sort(key=lambda r: (-r["anchors"], r["qid"]))
     gate = ROOT / "reports" / "add-p2600-gate.tsv"

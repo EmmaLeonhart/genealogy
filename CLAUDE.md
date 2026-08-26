@@ -1422,6 +1422,13 @@ right**: `child`+`solo` disagrees with independent sources **14.9%** of the time
 for `father`+`solo` — twenty times. Solo *parents* are fine; solo *children* are not, which is
 exactly the distinction she drew.
 
+**Solo child STAYS, flagged as the weakest thing in the join.** Her call, 2026-08-25, given the
+14.9%: *keep them, flagged as weakest*. All 3,326 remain in `reports/zipper-pairs.tsv` carrying
+`method=solo` and `slot=child`, so any consumer can exclude them in one filter — and the queued
+solo-children analysis may yet rescue them, since sex agreement (`P21` against our `sex` column)
+is free evidence the join ignores entirely. **Do not silently drop them and do not silently trust
+them.**
+
 **The standard for every rule here:** *"a lot of these rules are empirical and we need to
 empirically study our data to figure out what to make of it. Don't jump to conclusions based on
 what sounds like it might be true. Even parents isn't certain."* The slot ordering in

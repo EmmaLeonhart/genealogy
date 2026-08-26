@@ -1606,8 +1606,11 @@ labels, both dates, both sexes, whether either side records further children els
 - **Does the parent's own provenance predict it?** A solo child hanging off a Wikidata-stated
   `P2600` anchor is a different proposition from one hanging off five inferences.
 
-**Then decide what solo-child is worth**, rather than keeping it because it produces pairs. It is
-3,326 of 44,725.
+**Decided 2026-08-25: they stay, flagged as weakest.** Emma, given the 14.9%: *keep them, flagged
+as weakest*. So this analysis is no longer about whether to drop them — it is about whether
+anything can raise them. **Sex agreement is the first thing to try**: `P21` *sex or gender* against
+our `sex` column is free evidence the join ignores entirely, and a solo-child pair whose sexes
+differ is refutable with no name at all.
 
 ## Why solo PARENTS have the worst date disagreement — NEEDS-INVESTIGATION
 
