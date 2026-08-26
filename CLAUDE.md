@@ -751,8 +751,11 @@ download-state index lives there, a restart lost it, and the downloader believed
 514,876 seeds were unfetched while 1.4M items sat on disk. **Only the files GitHub
 physically refuses are ignored, one explicit line each** — `out/merged.ged`,
 `out/merged-*.ged`, `out/wikidata/download-state.sqlite3`,
-`out/wikidata/store-index.sqlite3` — all rebuildable, so the cost is a rebuild and never
-data. `.gitignore` line 32 carries the reasoning.
+`out/wikidata/store-index.sqlite3` and `out/wikidata/labels.tsv` (187 MB, rebuilt by
+`scripts/extract-wikidata-labels.py` in ~10 min) — all rebuildable, so the cost is a rebuild and
+never data. `out/wikidata/relations.tsv` (65 MB) and `dates.tsv` (18 MB) are under the limit and
+stay tracked, so a clean clone can run the zipper after one labels rebuild.
+`.gitignore` line 32 carries the reasoning.
 
 The stale word was not harmless: it was quoted back at Emma as grounds for adding `out/`
 to `.gitignore`, and she approved a change that would have undone her own instruction.
