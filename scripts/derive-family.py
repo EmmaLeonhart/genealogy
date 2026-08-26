@@ -114,8 +114,28 @@ def main() -> int:
 
     print(f"{len(people):,} people, {len(families):,} families", flush=True)
 
+    # **A person can have more than one recorded father or mother, and 1,663 do.**
+    # These were plain `dict[str, str]` and a second parent silently OVERWROTE the first,
+    # so `derived-family.csv` could not represent the case at all -- it showed one parent,
+    # chosen by family-iteration order, with nothing saying another existed. Measured over
+    # `out/merged.ged` on 2026-08-25: 1,061 people with two or more fathers, 1,022 with two
+    # or more mothers, 1,663 distinct people.
+    #
+    # `CLAUDE.md` documents exactly why this happens and that it is structural rather than
+    # an error: the merge unions `FAMC`/`CHIL` and never drops one, so a parent link Geni
+    # has since DELETED survives forever once any export carries it. The Samaritan case is
+    # the worked example -- Geni rewrote a family in place and merging old with new gave
+    # Abram two fathers, one of them the other's father. `exports/excluded/` exists because
+    # nothing else can remove such a link.
+    #
+    # **`father`/`mother` keep their meaning** -- one id, the primary -- because 44 scripts
+    # read them and a joined string would be a garbage id to every one of them. The full
+    # set goes in NEW `fathers`/`mothers` columns, ` | `-separated like `children` and
+    # `spouses` already are, so a consumer that cares can ask and the rest are untouched.
     father: dict[str, str] = {}
     mother: dict[str, str] = {}
+    fathers: dict[str, list[str]] = defaultdict(list)
+    mothers: dict[str, list[str]] = defaultdict(list)
     spouses: dict[str, list[str]] = defaultdict(list)
     children: dict[str, list[str]] = defaultdict(list)
 
@@ -133,11 +153,15 @@ def main() -> int:
 
         for child in chil:
             if husb:
-                father[child] = husb
+                father.setdefault(child, husb)
+                if husb not in fathers[child]:
+                    fathers[child].append(husb)
                 if child not in children[husb]:
                     children[husb].append(child)
             if wife:
-                mother[child] = wife
+                mother.setdefault(child, wife)
+                if wife not in mothers[child]:
+                    mothers[child].append(wife)
                 if child not in children[wife]:
                     children[wife].append(child)
 
@@ -164,7 +188,8 @@ def main() -> int:
     with open(OUT_PEOPLE, "w", encoding="utf-8", newline="") as handle:
         writer = csv.writer(handle)
         writer.writerow(["geni_id", "qid", "father", "father_qid", "mother", "mother_qid",
-                         "spouses", "spouse_qids", "children", "child_count"])
+                         "spouses", "spouse_qids", "children", "child_count",
+                         "fathers", "mothers"])
         for person in sorted(people):
             f, m = father.get(person, ""), mother.get(person, "")
             sp = spouses.get(person, [])
@@ -175,6 +200,8 @@ def main() -> int:
                 m, qids.get(m, "") if m else "",
                 " | ".join(sp), " | ".join(qids.get(s, "") for s in sp),
                 " | ".join(ch), len(ch),
+                " | ".join(fathers.get(person, [])),
+                " | ".join(mothers.get(person, [])),
             ])
 
     def name_of(geni_id: str) -> str:

@@ -14070,3 +14070,37 @@ both corpora, how the synoptic tree is actually made, the provenance-chain desig
 link-reliability order including `P1038` *relative* / `P1039` *kinship to subject*.
 
 Cleared: `CLAUDE.md` § Layout already reads *"generated data, **tracked**"*.
+
+## 2026-08-25 — a second parent was silently dropped, so the census read zero
+
+The queued multiple-parents survey reported **0** on our side. That is the same too-clean
+distribution that had already cost a morning, so it got checked rather than believed:
+`scripts/derive-family.py` held parents in a plain `dict[str, str]` and did
+`father[child] = husb`, so a second father **overwrote** the first.
+`reports/derived-family.csv` could not express the case at all — it showed one parent,
+chosen by family-iteration order, with nothing recording that another existed. All 44
+scripts reading that file, the zipper join included, have been seeing a single parent that
+may be the wrong one.
+
+Measured straight off `out/merged.ged`, independently of the generator: **1,061** people
+with two or more fathers, **1,022** with two or more mothers, **1,663** distinct people.
+
+The fix adds `fathers`/`mothers` columns, ` | `-separated like `children` and `spouses`
+already are. `father`/`mother` keep their single-value meaning, because 44 consumers read
+them positionally and a joined string would be a garbage id to every one. Regenerated and
+repacked; round-trips at 1,061 / 1,017. The five-mother gap is children in a family's
+`CHIL` whose own `INDI` carries no matching `FAMC` — an asymmetry in the merged file, not
+a parsing loss.
+
+| | slots | note |
+| --- | ---: | --- |
+| ours | 2,078 | 1,663 people, 0.12% of the tree |
+| theirs | 2,710 | 1,987 father, 723 mother |
+| **crossed** | **783** | where the join had to choose — **489 are zipper pairs** |
+
+Nothing resolved, and nothing should be: this is the survey Emma asked for, and the 783
+are now enumerable in `reports/multi-parents-crossed.tsv`.
+
+Also recorded so it is not repeated: both Sapiega profiles behind `Q122925764` are already
+in the corpus, and our records hold **nothing but the father** for either. The `Forest`
+export she asked for is genuinely warranted here, unlike Obitake 23.
