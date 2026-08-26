@@ -111,11 +111,6 @@ them and nothing is waiting.
   of 77% of the volume. Loosening it is a call about how much wrong is acceptable in an
   additive batch, which is hers and not a tuning exercise.
 
-- Fix `CLAUDE.md` § Layout: it says `out/` is *"generated data, gitignored"*. It is
-  **tracked**, deliberately, per `.gitignore` line 32 and Emma's 2026-08-15 instruction;
-  only three oversized rebuildable files are ignored. One stale word, and it caused a
-  question to be put to her on a false premise.
-
 ## Stale, small, nobody's blocker
 
 - Nothing outstanding here right now. `reports/repo-freshness.csv` was regenerated

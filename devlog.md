@@ -14016,3 +14016,57 @@ description. Conflicts 332 → 356.
 **On the writing:** the first version of the cap carried a twenty-line comment justifying the
 number. Emma: *"I feel you taking this as a bigger commitment than it is lol."* Cut to four lines.
 It is a threshold, not a treaty, and it is meant to be revisited.
+
+## 2026-08-25 — the zipper join actually reaches the hard cases
+
+**Emma: *"I feel the zipper merge still isn't hitting the hard points lol."*** She was
+right, and the cause was a parser rather than a design choice. `reports/derived-family.csv`
+separates multi-valued cells with ` | ` and `zipper-join.py`'s `split()` knew only `,` and
+`;`, so a five-child cell parsed as one token, missed the index, and the person reached the
+join **childless**. 379,251 people have two or more children and every one arrived with
+none. The tell was a distribution that was too clean: `zipper-ambiguous.tsv` held 615 rows
+and not one was `2 × 2` — read at the time as "two-against-two is rare" when our side could
+not *have* two. Two bugs stacked; splitting on `|` without stripping the spaces moved the
+pair count by **exactly zero**, which is how the second was found.
+
+**The cascade, per her ruling *"Dates first then names"*** — solo, then birth years within
+`matching.YEAR_TOLERANCE`, then a shared word inside the closed slot, each requiring an
+assignment unique from both directions. `scripts/extract-wikidata-dates.py` was the missing
+prerequisite: nothing had ever pulled `P569` *date of birth*, so "dates first" was not a
+policy the join could have followed. 1,003,229 items now carry a year.
+
+| | pairs | ambiguous | solo | date | name |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| before | 23,596 | 615 | — | — | — |
+| after | **44,725** | 15,567 | 29,519 | 4,376 | 10,811 |
+
+Measured rather than argued: where both sides carry a birth year, name-reached pairs
+disagree by more than ten years **9.2%** of the time against **11.8%** for position-only.
+
+**Provenance is a chain now.** `scripts/zipper-provenance.py` — max depth 8, mean 2.7,
+walked to a stated `P2600` or one of her hand verdicts, with support and contradiction both
+propagating as she specified. 25,570 corroborated, 18,949 inferred, 187 poisoned; poisoned
+is a reading, never a deletion. It earned itself immediately, catching a name match of
+`shared: 7th` — an **ordinal**, which inside a sibling slot is a position in that family's
+own succession and matches brother to brother. Same class as the `Wachtmeister →
+Wachtmeister` surname match caught an hour earlier: evidence unique only because the
+candidates it beat had missing data.
+
+**Slot order is her reliability ranking** — parents, spouses, children — and it is
+load-bearing, since the first slot to claim a person in a round removes them from every
+later slot's candidates. It ran children ahead of spouses before.
+
+**`reports/emma-judgments.md` and `.tsv`** — twenty verdicts she gave by hand, kept
+deliberately separate from anything generated at her instruction. 17 Right, 1 Wrong, 2 for
+browser resolution. Every kind of name variation put to her was accepted; the single
+rejection turned on the people, not the strings.
+
+**`reports/creation-opportunities.tsv`** — 94,664 people absent from Wikidata whose parent
+already has an item, ranked by hops from Arne Garborg. Her framing: no ancestors on their
+side is not a stop point, it is the moment you stop zipping and start adding.
+
+Queued at the end, before the pinned spine item: the multiple-fathers/mothers survey on
+both corpora, how the synoptic tree is actually made, the provenance-chain design, and the
+link-reliability order including `P1038` *relative* / `P1039` *kinship to subject*.
+
+Cleared: `CLAUDE.md` § Layout already reads *"generated data, **tracked**"*.
