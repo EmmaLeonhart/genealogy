@@ -405,6 +405,7 @@ def compose(have, fam, rng):
     return picked, why
 
 
+
 def main():
     # `--skip-nn` is a per-run choice, not a rule. Emma, 2026-08-24: *"for this
     # quickstatements run the NN people are not worth creating"* -- for THIS run. The
