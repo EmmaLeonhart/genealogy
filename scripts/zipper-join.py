@@ -92,6 +92,7 @@ from genimerge.matching import YEAR_TOLERANCE  # noqa: E402
 ROOT = Path(__file__).resolve().parent.parent
 RELATIONS = ROOT / "out" / "wikidata" / "relations.tsv"
 DATES = ROOT / "out" / "wikidata" / "dates.tsv"
+SEXES = ROOT / "out" / "wikidata" / "sex.tsv"
 
 #: `7th`, `2nd`, `1066`. An ordinal is a *position in a succession*, and in a sibling slot the
 #: succession is usually the family's own -- so it matches brother to brother. Found 2026-08-25
@@ -275,6 +276,49 @@ def main():
               f"run scripts/extract-wikidata-dates.py)")
     print(f"{len(our_year):,} of ours dated, {len(their_year):,} of theirs dated")
 
+    # **Sex REFUTES a pairing; it never supports one.** Roughly half of random pairs agree by
+    # chance, so agreement is worth almost nothing -- but a disagreement is unambiguous in a
+    # way a ten-year date gap is not. Two soft medieval dates can differ by a decade and still
+    # be one person; `Q6581097` *male* against an `F` cannot.
+    #
+    # **It is the only check here with near-total coverage.** Our `sex` column is populated for
+    # 99.85% of the tree where birth years reach 69%, and 44,002 of 44,706 pairs carry a sex on
+    # both sides. That matters because `reports/zipper-reliability.md` records that the
+    # independent-source check is parent-shaped and so its per-method margins cannot be read as
+    # a ranking. This one has no such confound.
+    #
+    # Measured before it was wired in, on the 44,706 pairs it now filters:
+    #
+    #     child  date   8.9% refuted      father solo   0.0%
+    #     child  solo   9.1%              mother solo   0.0%
+    #     child  name   0.7%              spouse solo   1.3%
+    #
+    # `child`+`date` being as bad as `child`+`solo` is the finding: siblings born within
+    # `YEAR_TOLERANCE` of each other match on date, and the join cannot tell them apart. The
+    # date step is safe for spouses and not for children.
+    #
+    # Non-binary `P21` values are carried as raw QIDs by the extractor and are deliberately NOT
+    # compared -- our `M`/`F` means something narrower, and treating `Q1052281` as a mismatch
+    # would manufacture refutations against real people.
+    our_sex, their_sex = {}, {}
+    with open(ROOT / "reports" / "derived-facts.csv", encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            if row["sex"] in ("M", "F"):
+                our_sex[row["geni_id"]] = row["sex"]
+    if SEXES.exists():
+        with open(SEXES, encoding="utf-8") as f:
+            for row in csv.DictReader(f, delimiter="	"):
+                if row["sex"] in ("M", "F"):
+                    their_sex[row["qid"]] = row["sex"]
+    else:
+        print(f"  (no {SEXES.name}; sex refutation OFF - "
+              f"run scripts/extract-wikidata-sex.py)")
+    print(f"{len(our_sex):,} of ours sexed, {len(their_sex):,} of theirs sexed")
+
+    def sex_refutes(g, q):
+        a, b = our_sex.get(g), their_sex.get(q)
+        return bool(a and b and a != b)
+
     # --- anchors: what Wikidata itself asserts ------------------------------------------
     g2q, q2g = {}, {}
     stated_g, stated_q = collections.defaultdict(set), collections.defaultdict(set)
@@ -291,7 +335,7 @@ def main():
 
     pairs = {}          # geni -> (qid, round)
     provenance = {}     # (geni, qid) -> (slot, method, from_geni, from_qid, evidence)
-    conflicts, ambiguous = [], []
+    conflicts, ambiguous, refuted_by_sex = [], [], []
     frontier = set(g2q)
 
     for rnd in range(1, MAX_ROUNDS + 1):
@@ -341,6 +385,11 @@ def main():
                     continue
                 for a, b, evidence in found:
                     if a in g2q or b in q2g:
+                        continue
+                    if sex_refutes(a, b):
+                        refuted_by_sex.append({"round": rnd, "slot": slot, "method": method,
+                                               "geni_id": a, "qid": b, "from_geni": g,
+                                               "from_qid": q, "evidence": evidence})
                         continue
                     if stated_g.get(a) and b not in stated_g[a]:
                         conflicts.append({"round": rnd, "slot": slot, "geni_id": a,
@@ -394,6 +443,9 @@ def main():
             ("zipper-conflicts.tsv", conflicts,
              ["round", "slot", "geni_id", "proposed_qid", "recorded_qid", "from_geni",
               "from_qid"]),
+            ("zipper-sex-refuted.tsv", refuted_by_sex,
+             ["round", "slot", "method", "geni_id", "qid", "from_geni", "from_qid",
+              "evidence"]),
             ("zipper-ambiguous.tsv", ambiguous,
              ["round", "slot", "from_geni", "from_qid", "ours_unmatched",
               "theirs_unmatched"])):
@@ -405,6 +457,8 @@ def main():
 
     print(f"\n{len(pairs):,} NEW correspondences -> reports/zipper-pairs.tsv")
     print(f"{len(conflicts):,} refuted by a recorded P2600 -> reports/zipper-conflicts.tsv")
+    print(f"{len(refuted_by_sex):,} refuted by P21 sex or gender -> "
+          f"reports/zipper-sex-refuted.tsv")
     print(f"{len(ambiguous):,} slots too ambiguous to call -> reports/zipper-ambiguous.tsv")
     methods = collections.Counter(provenance[(g, q)][1] for g, (q, _r) in pairs.items()
                                   if (g, q) in provenance)

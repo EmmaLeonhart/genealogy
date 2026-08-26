@@ -1520,40 +1520,6 @@ So the artefact is a provenance **graph** that can be walked in both directions,
 RIGHT/WRONG verdicts as first-class nodes, and a report of which inferred chains an independently
 recorded `P2600` confirms or refutes.
 
-## Bure kinship as random-walk start points — its own algorithm
-
-**Emma, 2026-08-25:** *"put at the end of the queue a thing that adds bure kinship people (all of
-them) as random walk add start points and points where things can come off from."*
-
-**It is not a bigger `n` on the Garborg batch and must not be built as one.** Her reason:
-*"bure is a bunch of unlinked people with entity resolutions to geni, so it isn't dense it's a
-different kind of area though which needs its own algorithm"*, and *"as so many people there have
-wikidata items already the types of quickstatements will be different and potentially more
-challenging."*
-
-**The difference that drives the algorithm.** The Garborg ball is items we are *creating*: almost
-every statement is part of a `CREATE`, and the constraint is that `LAST` cannot be a value. The
-Bure region is the opposite — the items exist and already carry `P2600` *Geni.com profile ID*,
-so nearly nothing needs creating and nearly everything needs **linking**: `P22`, `P25`, `P26`,
-`P40` between two QIDs that both already exist. Those have no `LAST` problem at all and can be
-emitted in any order, which means the one-hop-a-day pacing that exists to work around `LAST` does
-not apply for the same reason.
-
-What to build:
-
-- **Roster every Bure-kinship person**, all of them, with their QID and Geni id. Start from the
-  existing Bure work in the repo and from `P2600` holders in that region.
-- **Use them as random-walk start points**, and as points work can come off from — so the walk
-  is seeded from many places at once rather than expanding one ball from Arne.
-- **Johannes Bureus as a second anchor.** Her proposal in the same breath: the neighbourhood
-  becomes "within n steps of Arne **or** within n steps of Johannes Bureus". That is a
-  modification to the composition and belongs here, not in the Garborg batch.
-- **Different statement mix, so measure it before assuming.** Count how many of the roster
-  already have each of `P22`/`P25`/`P26`/`P40` before deciding what a day's batch looks like.
-
-**Bureätten the export campaign stays closed** — 7 resolved, 76 dropped, 0 exports. This is a
-different thing: linking people already on both sides, not finding new ones.
-
 ## The name and variant search over Wikidata labels — Emma asked for this and it is not done
 
 **Emma, 2026-08-25:** *"we didn't actually establish in any meaningful sense that the people are
@@ -1690,3 +1656,49 @@ is why they matter. But one hop a day against a line this long is the wrong inst
 | `reports/absent-but-present.tsv` | who is "absent" but actually already on Wikidata |
 
 **Nothing else goes in this section.**
+
+---
+
+## Bure kinship as random-walk start points — LAST. Postponed by Emma 2026-08-25
+
+**She moved this to the tail herself:** *"Postpone the bure stuff to the end of the queue."* It sits
+after the spine item deliberately. Do not promote it.
+
+**Her open question, for whenever it is picked up:** *"What is the topology of them? Like of the
+bure people what percentage of the wikidata linked ones are just directly connected through geni
+even though they are absent on wikidata?"* That is the first measurement to run — take the
+Wikidata-linked Bure people, walk our Geni tree between them, and report what fraction are joined
+by a path whose intermediate people have no Wikidata item. It says how much of the cluster could be
+connected by creating the people in between.
+
+**Emma, 2026-08-25:** *"put at the end of the queue a thing that adds bure kinship people (all of
+them) as random walk add start points and points where things can come off from."*
+
+**It is not a bigger `n` on the Garborg batch and must not be built as one.** Her reason:
+*"bure is a bunch of unlinked people with entity resolutions to geni, so it isn't dense it's a
+different kind of area though which needs its own algorithm"*, and *"as so many people there have
+wikidata items already the types of quickstatements will be different and potentially more
+challenging."*
+
+**The difference that drives the algorithm.** The Garborg ball is items we are *creating*: almost
+every statement is part of a `CREATE`, and the constraint is that `LAST` cannot be a value. The
+Bure region is the opposite — the items exist and already carry `P2600` *Geni.com profile ID*,
+so nearly nothing needs creating and nearly everything needs **linking**: `P22`, `P25`, `P26`,
+`P40` between two QIDs that both already exist. Those have no `LAST` problem at all and can be
+emitted in any order, which means the one-hop-a-day pacing that exists to work around `LAST` does
+not apply for the same reason.
+
+What to build:
+
+- **Roster every Bure-kinship person**, all of them, with their QID and Geni id. Start from the
+  existing Bure work in the repo and from `P2600` holders in that region.
+- **Use them as random-walk start points**, and as points work can come off from — so the walk
+  is seeded from many places at once rather than expanding one ball from Arne.
+- **Johannes Bureus as a second anchor.** Her proposal in the same breath: the neighbourhood
+  becomes "within n steps of Arne **or** within n steps of Johannes Bureus". That is a
+  modification to the composition and belongs here, not in the Garborg batch.
+- **Different statement mix, so measure it before assuming.** Count how many of the roster
+  already have each of `P22`/`P25`/`P26`/`P40` before deciding what a day's batch looks like.
+
+**Bureätten the export campaign stays closed** — 7 resolved, 76 dropped, 0 exports. This is a
+different thing: linking people already on both sides, not finding new ones.

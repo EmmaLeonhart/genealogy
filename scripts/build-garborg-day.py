@@ -444,6 +444,11 @@ def main():
                          "whole one-edge ring: spine couple, 4 random parent sets, 4 "
                          "random families off a solitary individual, 1 existing couple's "
                          "children, and the sibling links the additions pass emits.")
+    ap.add_argument("--exclude", action="append", default=[], metavar="QS",
+                    help="a .qs already produced today; everyone it CREATES is held out of "
+                         "this batch. Two runs on the same day both see a ledger that has "
+                         "not caught up yet, so without this the second run re-creates "
+                         "people the first one already makes -- 4 of 9 on the first attempt.")
     ap.add_argument("--seed", type=int, default=0, metavar="N",
                     help="seed for --compose, so a run is reproducible.")
     ap.add_argument("--limit", type=int, default=0, metavar="N",
@@ -538,6 +543,19 @@ def main():
         # irreproducibility would make a batch impossible to explain after the fact.
         rng = random.Random(args.seed)
         picked, why = compose(have, fam_rows, rng)
+        # Everyone an earlier batch TODAY already creates. The ledger only catches up once
+        # Emma has run the file, so within a single day this is the only thing that keeps
+        # two batches disjoint.
+        already = set()
+        for path in args.exclude:
+            text = Path(path).read_text(encoding="utf-8")
+            already |= set(re.findall(r'P2600	"(\d+)"', text))
+        if already:
+            drop = [g for g in picked if g in already]
+            for g in drop:
+                picked.pop(g)
+            print(f"--exclude: {len(already)} already created by an earlier batch today, "
+                  f"{len(drop)} of them dropped from this one")
         print("\ncomposition, per docs/batch-rules.md:")
         for line in why:
             print("   " + line)
