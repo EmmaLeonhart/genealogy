@@ -14983,3 +14983,64 @@ three stale twins. The script prints both numbers with the reason, because two c
 differ by two and are never reconciled are how a report gets mistrusted later.
 
 **1,358 passed, 0 failed.**
+
+## 2026-08-26 — her daily algorithm, built into the scripts that already exist
+
+`docs/dictation/2026-08-26-daily-algorithm.md` is her spec. It is a **revision of
+`compose()`**, not a new program — the counts, the shuffle and the order changed:
+
+| | before | after |
+| --- | ---: | ---: |
+| random parent pairs | 4 | 4 |
+| ancestral pair, from the spine | 1, always emitted **first** | 1, **shuffled among the five** |
+| people whose spouse and children are filled in | 4 | 4 |
+| couples filled with their **entire** children | **1** | **5** |
+| name items a run | all 120 | **10**, rest carried and listed |
+| section order | relationships, then individuals | **individuals, then relationships** |
+
+*"The ancestral pair is shuffled in, so there are five pairs generated"* — `picked` is a dict
+walked in insertion order, so building the ancestral pair first put it at the head of every
+batch. The five pairs are now collected and shuffled before insertion.
+
+*"Creation of individuals comes first, then creation of names, then the relationships"* — both
+sections are still built in whatever order the code finds convenient and are **concatenated in
+her order at write time**, so neither section's construction had to change.
+
+## The strip bug again, and this time wearing the one disguise that survives a careful read
+
+`compose()`'s `kin()` read:
+
+    if x.strip() and x.strip() in fam      # the test: stripped
+    return [x for x in ...]                # the value: NOT stripped
+
+`reports/derived-family.csv` separates with ` | `, spaces included, so every id it yielded
+carried whitespace — ` 6000000000437684735 ` — and passed its own guard because the guard
+stripped. Everything downstream looked the id up raw and missed. **59 people a run** were picked
+as candidates and dropped with the reason *"no derived facts"*, which reads as a hole in the data
+rather than a bug in the caller.
+
+**One run went from 5 creations to 50.**
+
+`CLAUDE.md` § *Our side could never have two children* records this exact bug in
+`zipper-join.py`, including that the pipe-aware fix without the strip *"moved the pair count by
+exactly zero"*. The strip was present here — on the test rather than on the value — which is why
+reading the line does not catch it. `tests/test_join_sanity.py` now feeds `compose` a two-parent
+` | ` cell and asserts the ids come back stripped; verified by reverting the fix and watching it
+fail.
+
+## A test's invariant changed and got stronger, not weaker
+
+Capping names at 10 a run means a married surname may legitimately have no item today and get one
+in three days. `test_every_married_surname_in_the_batch_can_be_linked_or_is_being_created` asserted
+that every one either has an item or is being created, which is no longer true and is no longer
+the right claim.
+
+It now asserts the stronger thing: **a surname that cannot be linked today must be RECORDED in
+`reports/garborg-carry-forward.tsv`**, never silently dropped. Deferring is fine; deferring
+without a record is the failure.
+
+It also caught something real while being rewritten — the `.qs` and its carry-forward were out of
+sync, because I had restored one from a backup and left the other from a different run. Rebuilding
+both from one invocation is the fix, and the test is what noticed.
+
+**1,359 passed, 0 failed.**

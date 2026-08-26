@@ -454,11 +454,27 @@ def test_every_married_surname_in_the_batch_can_be_linked_or_is_being_created():
             if plan.get((token, "family"), ("", ""))[0]:
                 continue          # Wikidata already has it
             if proposed.get(token):
-                continue          # this batch is creating it
+                continue          # this run is creating it
             missing.append((geni_id, token))
-    assert not missing, (
-        "a married surname has no item and none is being created, so the second "
-        f"P734 family name can never be emitted: {missing[:5]}")
+
+    # **Since 2026-08-26 the name batch is capped at 10 items a run**, so a married
+    # surname may legitimately have no item today and get one in three days -- Emma's
+    # spec, `docs/daily-algorithm.md`. The claim this test makes is therefore not
+    # "every surname has an item" but the stronger and still-checkable one: **a surname
+    # that cannot be linked today must be RECORDED as carried, never silently dropped.**
+    # Carrying without recording is what the assertion below would let through if it
+    # simply stopped asserting.
+    carried = set()
+    cf = REPO / "reports" / "garborg-carry-forward.tsv"
+    if cf.exists():
+        for row in csv.reader(open(cf, encoding="utf-8"), delimiter="	"):
+            if row and "name item missing" in row[-1]:
+                carried.add(row[-1].split("name item missing:")[1].split("(")[0].strip())
+    unrecorded = [(g, t) for g, t in missing if t not in carried]
+    assert not unrecorded, (
+        "a married surname has no item, none is being created, and the drop is NOT in "
+        f"reports/garborg-carry-forward.tsv -- so the second P734 family name is lost "
+        f"rather than deferred: {unrecorded[:5]}")
 
 
 

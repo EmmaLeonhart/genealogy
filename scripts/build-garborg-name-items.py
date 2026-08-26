@@ -65,6 +65,14 @@ INSTANCE_OF = "P31"
 FAMILY_NAME_CLASS = "Q101352"     # family name
 GIVEN_NAME_CLASS = "Q202444"      # given name
 
+#: **10 name items a run.** Emma, 2026-08-26: *"generating 10 name items based upon the
+#: missing name items from the ideal state, with the links as a thing that specifically is
+#: made."* The cap is hers; WHICH ten is not specified, so the most-borne tokens go first --
+#: that maximises the links each created item earns in the same run. Rejected: taking them at
+#: random, which would leave a nine-bearer surname waiting behind a one-bearer one for no
+#: reason. Falsified if she says the choice should be random, as the parent pairs are.
+NAME_ITEMS_PER_RUN = 10
+
 CLASS_FOR = {
     "patronymic": PATRONYMIC_CLASS,
     "family": FAMILY_NAME_CLASS,
@@ -176,9 +184,10 @@ def main():
         "# the pattern -- labels, P31, nothing else.",
         "",
     ]
+    ranked = sorted(need.items(), key=lambda kv: (-kv[1], kv[0]))
+    held_back = ranked[NAME_ITEMS_PER_RUN:]
     linked_now = 0
-    for (token, usage), bearers in sorted(need.items(),
-                                          key=lambda kv: (-kv[1], kv[0])):
+    for (token, usage), bearers in ranked[:NAME_ITEMS_PER_RUN]:
         lines.append(f"# {token} -- {usage}, {bearers} bearer(s) in the batches")
         lines.append("CREATE")
         lines.append(f'LAST\tLen\t"{token}"')
@@ -223,6 +232,15 @@ def main():
                 linked_now += 1
         lines.append("")
 
+    if held_back:
+        lines.append(f"# {len(held_back)} more name items are needed and wait for a later")
+        lines.append(f"# run -- {NAME_ITEMS_PER_RUN} a day is her cap, not a limit of the data:")
+        for (token, usage), n in held_back[:12]:
+            lines.append(f"#   {token} ({usage}), {n} bearer(s)")
+        if len(held_back) > 12:
+            lines.append(f"#   ... and {len(held_back) - 12} more")
+        lines.append("")
+
     if ambiguous:
         lines.append("# NOT created -- the plan says these already resolve to more than")
         lines.append("# one item, and creating another is the Maria failure that would")
@@ -232,7 +250,8 @@ def main():
 
     out = ROOT / "reports" / "wikidata-garborg-name-items.qs"
     out.write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")
-    print(f"\nwrote {out.relative_to(ROOT)}: {lines.count('CREATE')} name items, "
+    print(f"\nwrote {out.relative_to(ROOT)}: {lines.count('CREATE')} name items "
+          f"(cap {NAME_ITEMS_PER_RUN}, {len(held_back)} carried to a later run), "
           f"{linked_now} statements linking an EXISTING person to one, in the same run")
     for (token, usage), n in sorted(need.items(), key=lambda kv: (-kv[1], kv[0])):
         print(f"  create  {token:<20} {usage:<12} {n}")

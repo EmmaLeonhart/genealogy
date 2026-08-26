@@ -357,28 +357,39 @@ the surname.
 `docs/daily-algorithm.md` is the reading. **The order is structurally rigid and the weirdness is
 intentional** — *"the weirdness isn't something to be sanded off"*.
 
-Build `scripts/build-daily-batch.py` emitting, in exactly this order:
+**Steps 1, 1b, 2 and 3 are BUILT into the existing scripts**, 2026-08-26 — she said the
+existing generation should do this, not that a new script should:
 
-- **Step 0** — refresh the ledger from `Special:Contributions/日巫女`, subtract what she has
-  edited, diff the remainder against the ideal state (the union of the synoptic tree and the Geni
-  tree) via `scripts/model-vs-reality.py`.
-- **Step 1, individuals** — 4 random parent pairs + 1 ancestral pair from the high up-going
-  ancestry, **shuffled together** into 5; plus 4 people whose spouse and children are filled in at
-  random.
-- **Step 1b, descendants** — 5 random parent pairs filled in with their **entire** set of
-  children. May sit in the same pass as the descendant chain.
-- **Step 2, names** — 10 name items from those missing in the ideal state, each linked in the same
-  run. `scripts/build-garborg-name-items.py` already does the linking half.
-- **Step 3, relationships between existing items** — 10 `P3373` *sibling* pairs, and **all**
-  `P26` *spouse* / `P22` *father* / `P25` *mother* / `P40` *child*.
+- **Step 1, individuals** — `compose()` in `scripts/build-garborg-day.py`. 4 random parent
+  pairs + 1 ancestral pair from the spine, **shuffled together** so the ancestral one is not
+  always first; plus 4 people whose spouse and children are filled in. Run with `--compose`.
+- **Step 1b** — `RANDOM_COUPLES` 1 → **5**, each filled with their **entire** uncreated children.
+- **Step 2, names** — `NAME_ITEMS_PER_RUN = 10` in `scripts/build-garborg-name-items.py`, the
+  rest carried and listed in the file's own trailer.
+- **Step 3** — already right: `P3373` *sibling* capped at 10, every other relationship uncapped.
+- **The section order is now hers** — individuals, then relationships, concatenated at write
+  time. The file emitted relationships first until today.
+
+**Still to do:**
+
+- **Step 0** — refresh the ledger from `Special:Contributions/日巫女` as part of the run, then
+  diff the remainder against the ideal state. `scripts/model-vs-reality.py` is the diff; the
+  ledger refresh is currently a separate manual step.
+- **Wire the three into one invocation** so a day is one command in her order, rather than
+  `--compose`, then the name items, then reading both.
+- **The ideal state is still the Geni tree alone.** Her spec says the **union of the synoptic
+  tree and the Geni tree**; the synoptic half does not exist yet, which is the § *PREREQUISITE
+  ORDER* item.
 
 **Do not "fix" the artefacts.** Spouses unlinked to their partner's children, and parents not
 linked to each other as spouses, are intentional consequences of the order and are closed by later
 days.
 
-**Open, and mine to settle by a recorded guess rather than by asking:** what "once we get to a
-certain point" means as a testable condition for step 1b, and how the ancestral pair is picked out
-of the high up-going ancestry — the spine path is the obvious source.
+**Two readings taken rather than asked, both recorded where the code is:** which 10 name items —
+most-borne first, so each earns the most links; and step 1b runs every time rather than behind a
+gate for *"once we get to a certain point"*, because she said it *"could be in the same line as
+the descendants one"* and a gate I invent that never opens is the failure mode § *The batches are
+a SEQUENCE* is written against.
 
 ## The daily Garborg batch — one QuickStatements run per day
 

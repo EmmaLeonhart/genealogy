@@ -340,9 +340,16 @@ def name_lines(label, plan, geni_id, father_qid, fields=None, sex=""):
 # people our own earlier runs created, since a fresh `CREATE` starts with neither.
 
 SPINE_PATH = "paths/charlemagne-to-arne-garborg.tsv"
+#: `docs/daily-algorithm.md`, from her dictation of 2026-08-26. Four random parent pairs
+#: plus one ancestral pair, **shuffled together** so the batch is not ordered by importance:
+#: *"The ancestral pair is shuffled in, so there are five pairs generated."*
 RANDOM_PARENT_SETS = 4
+#: *"four people whose spouse and children are randomly filled in"*.
 RANDOM_FAMILIES = 4
-RANDOM_COUPLES = 1
+#: *"we are randomly finding five parent pairs and then filling them in with their entire
+#: children"* -- was **1** couple until 2026-08-26, and "entire" is the operative word: every
+#: child of the pair, never a sample.
+RANDOM_COUPLES = 5
 
 
 def spine_chain():
@@ -371,26 +378,59 @@ def compose(have, fam, rng):
     `fam` is `reports/derived-family.csv` keyed by Geni id.
     """
     def kin(g, col):
-        return [x for x in re.split(r"[,;|]", (fam.get(g) or {}).get(col) or "")
+        """The people in one multi-valued column of `derived-family.csv`, STRIPPED.
+
+        **It tested the stripped id and returned the raw one.** `derived-family.csv`
+        separates with ` | `, spaces included, so every id this yielded carried
+        whitespace -- ` 6000000000437684735 ` -- and passed the `in fam` guard only
+        because the guard stripped. Everything downstream looked the id up unstripped
+        and missed: **59 people per run** were picked as candidates and then dropped
+        with the reason *"no derived facts"*, which reads as a hole in the data rather
+        than as a bug in the caller.
+
+        `CLAUDE.md` § *Our side could never have two children* records this exact
+        failure in `zipper-join.py`, including that the pipe-aware fix without the
+        strip *"moved the pair count by exactly zero"*. This is the same bug wearing
+        the one disguise that survives a careful reading: the strip IS here, on the
+        test, just not on the value.
+        """
+        return [x.strip() for x in re.split(r"[,;|]", (fam.get(g) or {}).get(col) or "")
                 if x.strip() and x.strip() in fam]
 
+    # **The five pairs are built separately and shuffled.** Emma, 2026-08-26: *"It creates
+    # four parent pairs plus one person who is a part of the high-upgoing ancestry, like one
+    # ancestral pair and four random pairs. The ancestral pair is shuffled in, so there are
+    # five pairs generated."* `picked` is a dict and the emitter walks it in insertion order,
+    # so building the ancestral pair first and the random ones after would put the ancestral
+    # one at the head of every batch. The shuffle is the instruction, not a nicety.
+    pairs = []
     picked, why = {}, []
+
+    def take(pair):
+        """One pair of people to create, held back until the five are shuffled."""
+        pairs.append(pair)
 
     # --- 1. the spine couple ------------------------------------------------------
     # Emma chose "the chain person plus their spouse" over "both parents of the chain
     # person", so one run advances the line by exactly one step and brings the
     # off-chain partner with it.
+    # **This is her "ancestral pair", and the spine is where the high up-going ancestry
+    # lives** -- `paths/charlemagne-to-arne-garborg.tsv`, Arne up to Charlemagne. Taking the
+    # chain person plus their spouse rather than both parents of the chain person is her own
+    # earlier explicit choice (`docs/batch-rules.md`), so it is kept rather than re-decided.
     for step, gid, name in spine_chain():
         if gid in have:
             continue
-        picked[gid] = f"spine step {step}"
+        pair = [(gid, f"ancestral pair: spine step {step}")]
         for sp in kin(gid, "spouses"):
             if sp not in have:
-                picked.setdefault(sp, f"spouse of spine step {step}")
-        why.append(f"1. spine step {step}: {name} + {len(kin(gid, 'spouses'))} spouse(s)")
+                pair.append((sp, f"ancestral pair: spouse of spine step {step}"))
+        take(pair)
+        why.append(f"1. ancestral pair, spine step {step}: {name} "
+                   f"+ {len(kin(gid, 'spouses'))} spouse(s)")
         break
     else:
-        why.append("1. spine: every step already has an item")
+        why.append("1. ancestral pair: every spine step already has an item")
 
     # --- 2. four random sets of parents, drawn from the ball ----------------------
     # "We always make both parents, if both parents exist, as a part of the generation."
@@ -405,10 +445,17 @@ def compose(have, fam, rng):
         new = [p for p in kin(g, "father") + kin(g, "mother") if p not in have]
         if not new:
             continue
-        for p in new:
-            picked.setdefault(p, f"parent of {g}")
+        take([(p, f"parent of {g}") for p in new])
         n += 1
-    why.append(f"2. {n}/{RANDOM_PARENT_SETS} random parent sets")
+    why.append(f"2. {n}/{RANDOM_PARENT_SETS} random parent pairs")
+
+    # The ancestral pair and the random pairs are now five entries in `pairs`; shuffling
+    # them here is what puts the ancestral one somewhere other than first.
+    rng.shuffle(pairs)
+    for pair in pairs:
+        for gid, reason in pair:
+            picked.setdefault(gid, reason)
+    why.append(f"   ({len(pairs)} pairs shuffled together, ancestral one among them)")
 
     # --- 3. four random families off a SOLITARY individual ------------------------
     # An item with no spouse and no child on it. Our own creations qualify, which is
@@ -431,6 +478,9 @@ def compose(have, fam, rng):
     why.append(f"3. {n}/{RANDOM_FAMILIES} random families off a solitary individual")
 
     # --- 4. one random existing couple, all their children ------------------------
+    # **Their ENTIRE children, and five pairs rather than one.** Emma, 2026-08-26:
+    # *"we are randomly finding five parent pairs and then filling them in with their entire
+    # children"*. Not a sample of the children -- the union of both parents' child lists.
     couples = sorted({(g, sp) for g in have for sp in kin(g, "spouses")
                       if sp in have and g < sp})
     rng.shuffle(couples)
@@ -445,7 +495,7 @@ def compose(have, fam, rng):
         for k in kids:
             picked.setdefault(k, f"child of existing couple {a}+{b}")
         n += 1
-        why.append(f"4. couple {a}+{b}: {len(kids)} children")
+        why.append(f"4. couple {a}+{b}: all {len(kids)} uncreated children")
     if not n:
         why.append("4. no existing couple in the ball has an uncreated child")
 
@@ -856,12 +906,22 @@ def main():
     # the fallback below assumes our own batch made them, which is wrong wherever Emma
     # edited by hand. Eivind is the case: he carries P735/P734/P5056 she added herself.
     state.update(live_state())
+    # **The order of the two sections is her spec and it is structurally rigid.** Emma,
+    # 2026-08-26: *"Creation of individuals comes first, then creation of names, then the
+    # relationships between the individuals... The order itself is structurally rigid because
+    # it depends on certain things being capable of being referenced in certain situations."*
+    # This file emitted relationships first until 2026-08-26. Both sections are built in the
+    # order the code finds convenient and CONCATENATED in her order at the end -- see
+    # `preamble`, `rel_from` and `create_from` below.
+    preamble = len(lines)
     lines += [
-        "# 1. Everything missing from people who already have items -- the links that",
-        "#    yesterday's creations made possible, and the properties never emitted.",
-        "#    Every subject and every value already has a QID.",
+        "# RELATIONSHIPS between items that already exist -- the links yesterday's",
+        "#    creations made possible, and the properties never emitted. Every subject",
+        "#    and every value already has a QID, so this section depends on nothing above",
+        "#    it. It is emitted LAST, per her order: individuals, names, relationships.",
         "",
     ]
+    rel_from = preamble
     seen = set()
 
     def add(q, prop, value, g):
@@ -926,8 +986,10 @@ def main():
     lines.append("")
 
     # ---- 2. the next ring ---------------------------------------------------
-    lines += ["# 2. The next ring. Each is linked only to items that already exist;",
-              "#    links between two of these wait for tomorrow, when they have QIDs.",
+    create_from = len(lines)
+    lines += ["# INDIVIDUALS. Each is linked only to items that already exist; links",
+              "#    between two people created here wait for tomorrow, when they have",
+              "#    QIDs -- two items minted in one batch cannot point at each other.",
               ""]
     created = 0
     for g in sorted(frontier, key=lambda x: labels.get(x, "")):
@@ -1104,6 +1166,12 @@ def main():
 
         lines.append("")
         created += 1
+
+    # Her order, applied at the last moment so neither section's construction has to
+    # care: preamble, then the INDIVIDUALS this run creates, then the RELATIONSHIPS
+    # between items that already existed. Names are the middle step and live in
+    # `reports/wikidata-garborg-name-items.qs`, run between the two.
+    lines = lines[:preamble] + lines[create_from:] + lines[rel_from:create_from]
 
     out = ROOT / "reports" / "wikidata-garborg-day.qs"
     out.write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")

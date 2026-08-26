@@ -249,3 +249,45 @@ def test_no_candidate_group_is_a_shared_surname_with_no_given_name():
     assert not suspicious, (
         "groups that are one shared surname across a whole sibship: "
         + "; ".join(f"{r['name']}x{r['count']}" for r in suspicious[:5]))
+
+
+def test_compose_returns_stripped_geni_ids():
+    """`compose`'s `kin()` tested the stripped id and returned the raw one.
+
+    `reports/derived-family.csv` separates multi-values with ` | `, spaces included. The
+    filter read `if x.strip() and x.strip() in fam` and the value read `x` — so every id
+    it yielded carried whitespace while passing its own guard. Everything downstream
+    looked the id up unstripped and missed: **59 people per run** were picked as
+    candidates and dropped with the reason *"no derived facts"*, which reads as a hole in
+    the data rather than a bug in the caller. Fixing it took one run from **5 creations to
+    50**.
+
+    `CLAUDE.md` § *Our side could never have two children* records the same bug in
+    `zipper-join.py`, including that the pipe-aware fix without the strip *"moved the pair
+    count by exactly zero"*. This is that bug in the one disguise that survives a careful
+    reading — the strip is present, on the test rather than on the value.
+
+    Verified by reverting the `.strip()`: every id comes back with a space and the
+    assertion fires.
+    """
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(
+        "bgd", ROOT / "scripts" / "build-garborg-day.py")
+    bgd = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(bgd)
+
+    import random
+    fam = {
+        "100": {"father": "200 | 300", "mother": "", "spouses": "", "children": "400"},
+        "200": {"father": "", "mother": "", "spouses": "", "children": "100"},
+        "300": {"father": "", "mother": "", "spouses": "", "children": "100"},
+        "400": {"father": "100", "mother": "", "spouses": "", "children": ""},
+    }
+    picked, _why = bgd.compose({"100"}, fam, random.Random(0))
+    assert picked, "compose returned nobody from a tree that has two uncreated parents"
+    bad = [g for g in picked if g != g.strip()]
+    assert not bad, (
+        f"compose returned ids carrying whitespace: {bad!r} — the ` | ` split is not "
+        f"stripping its values, so every downstream lookup will miss")
+    assert {"200", "300"} <= set(picked), (
+        f"both parents behind a ` | ` should be picked; got {sorted(picked)}")
