@@ -197,3 +197,55 @@ def test_the_model_vs_reality_snapshot_is_a_dict_of_items():
     assert all(k.startswith("Q") for k in list(items)[:20]), (
         "the snapshot's keys are not QIDs -- it is probably the raw API envelope rather than "
         "its `entities` value.")
+
+
+def test_the_duplicate_report_actually_contains_japanese_profiles():
+    """Emma asked for higher scrutiny on the Japanese profiles. The column said `Latin`.
+
+    `scripts/find-geni-duplicates.py` carried a `script` column and a sort key putting
+    `Han`/`Kana`/`mixed` first — and for the whole life of the report it classified
+    **every one of 1,329,328 people as Latin, and none as Han**. It matched on
+    `label_en` falling back to `label_mul`, which are the romanised forms; the kanji live
+    in `cjk_names`, a column it never read. The higher-scrutiny pass had nothing in it.
+
+    Nothing crashed and no file was empty. The report had the right shape, the right
+    column and a plausible 9,546 rows — the population it was built to surface simply was
+    not in it. That is the same failure as the ` | ` separator and the `chart_name` join.
+
+    Verified by reverting `find-geni-duplicates.py` to match on the label: this drops to 0.
+    """
+    path = R / "geni-duplicate-candidates.tsv"
+    if not path.exists():
+        pytest.skip("duplicate candidates not built")
+    rows = list(_rows(path, "\t"))
+    assert rows, "the report is empty"
+    cjk = [r for r in rows if r["script"] in ("Han", "Kana", "mixed")]
+    assert len(cjk) > 50, (
+        f"only {len(cjk)} CJK-scripted candidate groups of {len(rows)} — the script "
+        f"classification is reading the romanised label again")
+    named = [r for r in cjk if r["cjk_name"].strip()]
+    assert len(named) == len(cjk), "a CJK-scripted row with no kanji recorded"
+
+
+def test_no_candidate_group_is_a_shared_surname_with_no_given_name():
+    """A sibship where nobody has a given name is not a set of duplicates.
+
+    Their "name" is then whatever string the family shares, so the signal fires on every
+    child at once: 22 children of Emperor Xuanzong of Tang, each with `SURN 隴西狄道`
+    — Longxi Didao, a **place** — `_MARNM 李` and `GIVN` empty, reported as 22 duplicates
+    of each other. `Tachibana ×8` was the same thing in Latin, at rank 7 of the report.
+
+    The guard is that every member of a group must have a given name recorded. It is
+    checked here through the group's size against its name: a group of eight people
+    sharing a bare one-token surname is the signature.
+    """
+    path = R / "geni-duplicate-candidates.tsv"
+    if not path.exists():
+        pytest.skip("duplicate candidates not built")
+    strong = [r for r in _rows(path, "\t") if r["signal"] == "same parent, same name"]
+    suspicious = [r for r in strong
+                  if int(r["count"]) >= 6 and len((r["name"] or r["cjk_name"]).split()) == 1
+                  and (r["father_name"] or "").endswith(r["name"] or "\x00")]
+    assert not suspicious, (
+        "groups that are one shared surname across a whole sibship: "
+        + "; ".join(f"{r['name']}x{r['count']}" for r in suspicious[:5]))

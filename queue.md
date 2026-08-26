@@ -332,12 +332,22 @@ merge. Izumo ones are good to explore to see how redirects potentially work."*
 
 Three steps, in her order:
 
-- **Shared-parent candidates, offline.** Within the corpus, Geni IDs sharing a name, dates
-  and parents. No Geni requests. Candidates only — **the merges are hers, never performed
-  here.**
-- **Japanese items get higher scrutiny** — a separate, stricter pass over that population.
-- **Then the browser extension** on the candidates, to see whether Geni merges them.
-  **Izumo first**, because it is where redirect behaviour can be learnt cheaply.
+**Steps 1 and 2 are built** — `scripts/find-geni-duplicates.py` →
+`reports/geni-duplicate-candidates.tsv`, **9,744 same-parent-same-name groups** over 20,191
+profiles, plus 367 unparented same-name-same-year ones. Nothing merged, nothing rewritten.
+
+The Japanese pass exists now and did not before: the `script` column read `Latin` for all
+1,329,328 people because the finder matched the romanised `label_en`, while the kanji sit in
+`cjk_names`. It now classifies and matches on both, giving **119 CJK-scripted groups** where
+there were 0, sorted first. `tests/test_join_sanity.py` fails if that returns to 0.
+
+**Still to do: the browser extension on the candidates, Izumo first**, to see whether Geni
+merges them and how redirects behave. **The merges are hers, never performed here.**
+
+Read the top of the CJK section knowing what it holds: `Yasuji Tanba ×6` and the other Tanba
+groups are the real signal; a residue of bare one-token surnames (`杨`, `黄`, `邱`) survives
+because those people have a given name recorded somewhere but their `cjk_names` carries only
+the surname.
 
 ## The daily Garborg batch — one QuickStatements run per day
 

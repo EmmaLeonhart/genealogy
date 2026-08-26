@@ -14813,3 +14813,46 @@ reading of her *"a qualifier on according to which organization"* — she named 
 Rejected: `P1416` *affiliation*, which describes a person rather than a position.
 
 **1,356 passed, 0 failed.**
+
+## 2026-08-26 — the Japanese duplicate pass had no Japanese in it
+
+Emma, 2026-08-24: *"Find profiles that look similar like shared parents, plus look over
+basically all Japanese items with higher scrutiny."* `scripts/find-geni-duplicates.py` had a
+`script` column and a sort key putting `Han`/`Kana`/`mixed` first.
+
+**It classified every one of 1,329,328 people as `Latin` and none as `Han`.** It matched on
+`label_en` falling back to `label_mul` — the romanised forms — while the kanji live in
+`cjk_names`, a column it never opened. 40,722 people carry a Han name there. The report had the
+right shape, the right column and a plausible 9,546 rows; the population it existed to surface
+simply was not in it.
+
+Now grouped **twice**, on the romanised label and on the kanji, with `matched_on` saying which
+found each row and a `cjk_name` column carrying the characters:
+
+| | before | after |
+| --- | ---: | ---: |
+| same-parent-same-name groups | 9,546 | **9,744** |
+| CJK-scripted groups | **0** | **119** |
+| found on the kanji alone | — | 262 |
+| dropped by the given-name guard | — | 64 |
+
+**The first kanji run's top hit was a place, not a person.** `隴西狄道` ×22 — twenty-two children
+of Emperor Xuanzong of Tang, every one with `SURN 隴西狄道` (Longxi Didao, a **place**),
+`_MARNM 李` (the Li clan, the real surname) and `GIVN` **empty**. Twenty-two people with no
+recorded given name, reported as twenty-two duplicates of each other. `CLAUDE.md` §
+*`SURN` is not reliably a surname* records that exact inversion for `陳郡陽夏`.
+
+**So a group is only a candidate if every member has a given name recorded**, and that is not a
+CJK-only problem: `Tachibana ×8`, children of Yasunaga Tachibana, had been sitting at **rank 7**
+of this report for the same reason, along with `Pepoli ×2`, `Cole ×2` and 61 others.
+
+What is at the top now reads like the real signal — `Yasuji Tanba ×6` child of Motoyasu Tanba,
+`Tokinaga Tanba ×4`, `Yoriyasu Tanba ×4`, `譚 ×6` child of `朱`. A residue of bare one-token
+surnames survives (`杨`, `黄`, `邱`) where the person has a given name somewhere but their
+`cjk_names` holds only the surname; recorded rather than silently filtered.
+
+Two guards in `tests/test_join_sanity.py`, both verified by reintroducing their bug: the report
+must hold more than 50 CJK-scripted groups, and no group may be one shared surname across a whole
+sibship.
+
+**1,358 passed, 0 failed.**
