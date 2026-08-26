@@ -14587,3 +14587,29 @@ anybody noticing the problem, which is the argument for the design.
 name — `CLAUDE.md` forbids writing a bare ID and equally forbids guessing one.
 
 **No Izumo batch emitted.** 351 statements is a mass batch nobody asked for.
+
+## 2026-08-26 — Wikidata has Izumo succession recorded as parentage
+
+The Izumo diff's four `P22` conflicts were flagged as *probably* the succession-vs-parentage trap
+`queue.md` already names. One of them is now confirmed, and the confirmation runs against
+Wikidata rather than against us.
+
+**Otoyama 26** `Q95161949`: Geni gives his father as **Izumo no Hatayasu** `Q95161958`, and
+`reports/izumo-chart-edges.tsv` agrees — Hatayasu#24 → Hiroshima#25 **and** Hatayasu#24 →
+Otoyama#26, so Hiroshima and Otoyama are **brothers**. Wikidata gives Otoyama's father as
+**Hiroshima**: his brother, and his immediate predecessor in the succession.
+
+That is exactly the shape Emma's 2026-08-24 ruling was made from — *"Takanori 81 and Takatomi 80
+held consecutive seats and were brothers"* — recurring at seats 25/26, and this time it is
+Wikidata that has flattened it.
+
+**20 of the chart's 88 ordered sibling pairs hold consecutive seat numbers.** Twenty places where
+the confusion is possible; one confirmed. Queued as its own pass, because it changes what the 80
+*missing* `P22` rows are worth: Wikidata's Izumo parentage is demonstrably unreliable precisely
+where it exists.
+
+**The other three conflicts are not this.** Karahisa and Izumo-Furune both have Geni father *Ada
+no Mikoto* against Wikidata's *Yomorosunomikoto*; Tsusa has *Kushiyatama* against `伊佐我命`. Two
+children disagreeing the same way is one disputed generation, not a succession artefact.
+
+Nothing corrected. `CLAUDE.md`: the purpose is to add, and a disagreement is a note.

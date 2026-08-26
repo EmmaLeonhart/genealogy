@@ -301,8 +301,36 @@ least two of the Izumo line as `Q524158` *kami*. The line is a divine descent an
 being divine is a judgement, not a lookup. **Emma's call**; until then the model keeps asserting
 `Q5` and the projection keeps withholding it, which is safe but silent.
 
-Four more conflicts are `P22` *father* — and `queue.md` § *The Izumo chart edges are SUCCESSION,
-not parentage* already names that trap. Worth checking those four against it before anything else.
+**Four more conflicts are `P22` *father*, and one of them is now settled — against Wikidata.**
+Otoyama 26 `Q95161949`: Geni gives his father as Izumo no Hatayasu `Q95161958`, and the chart
+agrees — Hatayasu#24 → Hiroshima#25 **and** Hatayasu#24 → Otoyama#26, so the two are **brothers**.
+Wikidata gives Otoyama's father as **Hiroshima**, who is his brother and his immediate
+predecessor in the succession, 25 → 26.
+
+**That is succession encoded as parentage, on Wikidata's side**, and it is the same shape Emma's
+ruling was made from: *"Takanori 81 and Takatomi 80 held consecutive seats and were brothers."*
+It recurs at 25/26.
+
+**20 of the chart's 88 sibling pairs hold consecutive seat numbers**, so there are twenty places
+where this confusion is possible and at least one where it happened. That is worth a pass of its
+own — see below — and it also raises what the 80 *missing* `P22` rows are worth: Wikidata's Izumo
+parentage is demonstrably unreliable exactly where it exists.
+
+**The remaining three conflicts are a different thing** and are not succession: Karahisa and
+Izumo-Furune both have Geni father *Ada no Mikoto* `Q135579362` against Wikidata's
+*Yomorosunomikoto* `Q135579361`, and Tsusa has Geni *Kushiyatama* against `伊佐我命`. Two children
+disagreeing the same way is one generation disputed, not a succession artefact. Emma's to settle.
+
+## Check the 20 consecutive-seat sibling pairs for succession-as-parentage on Wikidata
+
+Twenty pairs of Izumo brothers hold adjacent seat numbers. One of them, Hiroshima 25 / Otoyama 26,
+is already known to be recorded on Wikidata as father and son. The other nineteen have not been
+checked.
+
+The check is exact and offline once the items are held: for each pair, does Wikidata's `P22` on the
+later one name the earlier one, where `reports/izumo-chart-edges.tsv` says they share a parent?
+**Report, never correct** — `CLAUDE.md` says the purpose is to add, and a disagreement is a note.
+The value is knowing how far the error runs before any Izumo parentage is trusted.
 
 **No Izumo batch was emitted.** 351 missing statements is a mass batch nobody asked for, and
 `CLAUDE.md` is explicit that producing one uninvited presents work as ready that nobody sanctioned.
