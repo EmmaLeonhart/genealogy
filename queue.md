@@ -376,12 +376,20 @@ position. Step 0 is off by default because it is the day's one network call.
 
 **Still to do:**
 
-- **NEEDS-DECISION, Emma — the parenthesised name tokens.** 5,868 wholly-parenthesised
-  `SURN`/`_MARNM` tokens across 1,697,887 name records, and they are two populations:
-  `(Bielke)`, `(Ulv)`, `(Banner)`, `(Vasa)`, `(Sparre)`, `(Hvide)` are real noble houses;
-  `(?)`, `(D.)`, `(de)`, `(hjorthorn)` are not names. Treating them all as names makes false
-  name items; dropping them all discards real family names. `name modelling.txt` reserves
-  edge cases for her. Excluded from the married-surname test meanwhile, with the count stated.
+- **DECIDED 2026-08-26, not yet implemented — the parenthesised name tokens.** Her four
+  rulings are in `CLAUDE.md` § *A parenthesised token in `SURN`/`_MARNM` is FOUR different
+  things*. To build in `scripts/namemodel.py`:
+  - a **vocabulary** of particles (`de`, `D.`, and whatever the census turns up) that go into
+    the `mul` label rather than becoming items — *"integral parts of what the people are
+    called"*;
+  - a **vocabulary** of unknown markers (`anonyma`, `incognita`, `?`) routed to the NN
+    population, which `scripts/labels.py` already owns;
+  - name-shaped tokens → `P734` *family name* with the parens stripped when the bare form is
+    well attested unparenthesised, else an `Amul` alias on the person. **The threshold is a
+    reading of her two answers**, not her words: `Bielke` 311 / `Vasa` 122 / `Sparre` 1,109
+    against `Weyerman` 2. Record it where it is applied.
+  - Census the particle vocabulary first — she asked to see more of those before ruling on the
+    general case, and only `(de)` and `(D.)` have been shown to her.
 - **Diff the remainder against the ideal state as part of the run** — `model-vs-reality.py`
   is the diff and is not yet wired into the daily command.
 - **The ideal state is still the Geni tree alone.** Her spec says the **union of the synoptic

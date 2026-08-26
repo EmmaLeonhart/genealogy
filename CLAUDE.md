@@ -532,6 +532,37 @@ that export's 4,820 people are `Private` at all, so an export seeded on a living
 person is **not** substantially redacted; assuming otherwise was wrong when it
 was assumed here.
 
+### A parenthesised token in `SURN`/`_MARNM` is FOUR different things
+
+**Emma ruled on these case by case, 2026-08-26**, shown the raw records rather than a summary.
+5,866 occurrences over 2,495 distinct tokens, across 1,697,887 name records.
+
+| shape | example | ruling |
+| --- | --- | --- |
+| **noble house beside a patronymic** | `Turesson (Bielke)`, `Karlsdotter (Vasa)`, `Gudmarsson (Ulvåsa)` | **`P734` *family name*, parens stripped** — the same item as an unparenthesised `Bielke` |
+| **particle or honorific** | `(de) Worms`, `Henriques (D.)` | **into the `mul` label**, never a name item |
+| **unknown-name marker** | `(anonyma)`, `(incognita)`, `(?)` | **an NN marker** — joins `Private`/`NN`/`Ukjent` |
+| **variant spelling** | `Weirman (Weyerman)` | **`Amul` alias on the person**, not a name item |
+
+**On the particles, her words:** *"These should be parts of the mul labels because they are
+integral parts of what the people are called."* So `de` is not dropped and is not an item — it
+belongs in the label the person is read by. `(de)` occurs 97 times and bare `de` 125,328, so this
+governs a large population beyond the parenthesised ones.
+
+**The two name-shaped cases are structurally identical and need a discriminator.**
+`Turesson (Bielke)` and `Weirman (Weyerman)` have the same shape, and she ruled them
+differently — `P734` for the first, alias for the second. The evidence she was shown is what
+separates them: **how often the bare token appears unparenthesised in the corpus.** `Bielke` 311,
+`Vasa` 122, `Sparre` 1,109 against `Weyerman` **2**. A house is attested on its own; a variant
+spelling is not. That threshold is a reading of her two answers, not something she stated, so it
+is recorded where the code applies it and is falsified the moment a real house turns up that only
+ever appears in parentheses.
+
+**`(Liljesparre)` is the caution.** It was shown to her under *variant spellings* and it is
+almost certainly a house — lily-and-chevron, heraldic — with a bare count of 13. The example was
+mine and it was badly chosen; the ruling on variants stands, and this token is a house by the
+rule above.
+
 ### The MARRIED name is the real name. `mul` carries it, and no batch adds an `Aen`
 
 **Emma, 2026-08-26:** *"married name is always the 'real' name and applied as the primary
