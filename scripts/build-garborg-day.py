@@ -996,8 +996,12 @@ def main():
 
             lines.append(f'LAST\tLen\t"{qs(primary)}"')
             lines.append(f'LAST\tLmul\t"{qs(primary)}"')
+            # **No `Aen`. Ever.** Emma, 2026-08-26: *"No aen are ever supposed to be
+            # added lol only ones in non-latin scripts get aliases for their birth names
+            # that are not in amul"*. The birth name is an `Amul` and nothing else; the
+            # `Aja`/`Azh` below are the one exception, and only because a non-Latin form
+            # cannot live in `mul`.
             if birth and qs(birth) != qs(primary):
-                lines.append(f'LAST\tAen\t"{qs(birth)}"')
                 lines.append(f'LAST\tAmul\t"{qs(birth)}"')
 
             ja, zh = label_in(primary, table)
@@ -1085,17 +1089,14 @@ def main():
             # duplicates it exactly -- `Aen "Inger Kristoffersdatter"` sitting beside
             # `Len "Inger Kristoffersdatter"`. The birth-name alias is already emitted
             # with the labels above, so this carries only what those do not.
-            # **Every alias gets BOTH `Aen` and `Amul`.** Emma, 2026-08-24: *"the married
-            # name is the primary label and the birth name is amul"*, and on 2026-08-25,
-            # looking at a built file: *"you seem to be getting Aen and Amul confused
-            # again"*. She was right — this block wrote `Aen` alone, so the birth-name
-            # alias reached `en` and never `mul`. The file she was looking at had **4
-            # `Aen` and 1 `Amul`**. `mul` is the language-neutral label and an alias that
-            # exists only in `en` is invisible to every other language.
+            # **An alias is an `Amul` and nothing else.** Emma, 2026-08-26: *"No aen are
+            # ever supposed to be added"*. This block wrote both, and before 2026-08-25 it
+            # wrote `Aen` alone — an alias that exists only in `en` is invisible to every
+            # other language, which is why `mul` is the one that matters and `en` is the
+            # one that never applies.
             emitted = {qs(primary), qs(birth)}
             for alias in aliases_for(fields.get(g, {})):
                 if qs(alias) and qs(alias) not in emitted:
-                    lines.append(f'LAST	Aen	"{qs(alias)}"')
                     lines.append(f'LAST	Amul	"{qs(alias)}"')
                     emitted.add(qs(alias))
             for note in unresolved:

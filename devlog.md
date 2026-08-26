@@ -14718,3 +14718,48 @@ proposed, so her second `P734` *family name* could never have been emitted.
 traceback arrived after the work was done and read like a failure that was not one.
 
 **1,328 passed, 0 failed.**
+
+## 2026-08-26 — the married name is the real name, and no batch adds an `Aen`
+
+**Emma:** *"married name is always the 'real' name and applied as the primary mul label (first
+amul added if applicable) and then the birth name is next as an amul. No aen are ever supposed to
+be added lol only ones in non-latin scripts get aliases for their birth names that are not in
+amul."*
+
+**Two emitters held two different models and nothing had noticed.** `build-garborg-day.py` made
+the married name both labels and the birth name an `Amul`; `build-label-corrections.py` made the
+married name `Len` and the **birth** name `Lmul` — a label, not an alias. Her message settles it
+in favour of the first, and the second was rewritten.
+
+    en    Aagot Garborg      <- married, primary
+    mul   Aagot Garborg      <- married again. `mul` is the real label.
+    Amul  Aagot Nyvold       <- birth name, an ALIAS
+    ja/zh transliterations of the primary form; Aja/Azh for the birth form
+
+**`(first amul added if applicable)` is a preservation step.** A label REPLACES, so whatever the
+item currently reads in `mul` is emitted as an `Amul` on the line above the `Lmul` that overwrites
+it. Some of those are her own hand-edits — `Q141152600` holds *Stena Eivindsdatter Garborg*, which
+nothing in this repo could reconstruct — and they would have been destroyed silently.
+
+**No `Aen`, ever.** Dropped from both emission sites in `build-garborg-day.py`; the day batch goes
+from 35 `Aen` + 35 `Amul` to **0 and 35**. `tests/test_p2600_batches.py` now fails any batch that
+adds one, verified by reintroducing the line and watching it fire. The emitters got this wrong
+twice in opposite directions — `Aen` alone, then `Aen` *and* `Amul` — and every other guard in
+that file passed both times.
+
+Two spent files are exempt, named one at a time rather than by pattern: `wikidata-garborg-day-1.qs`
+and `wikidata-garborg-day-2026-08-25-run.qs` are records of batches already run, 12 and 3 `Aen`
+between them. Rewriting a record of what went out would falsify it, and a `*-run.qs` pattern would
+exempt whatever a future run is called.
+
+**`build-label-corrections.py` had been reading a SUMMARY and emitting nothing.**
+`out/garborg-new-items.json` carries `geni`, `label`, `props` per item and no `claims`, `labels` or
+`aliases` at all, so the `P2600` join returned **0 of 38**, every `current` label read empty, and
+the script printed *"0 items need correcting"*. That is the empty-join failure this week's
+`tests/test_join_sanity.py` was written for, wearing the costume of finished work — and it is also
+`CLAUDE.md` § *A SUMMARY of a Wikidata item is not the item*. Pointed at
+`out/model-vs-reality-items.json`, which is full entities and covers all 38: **45 items need
+correcting**, and **13 wrong `Aen` aliases are removable** that were invisible before. It now exits
+loudly rather than emitting nothing when the join yields no `P2600` at all.
+
+**1,347 passed, 0 failed.**

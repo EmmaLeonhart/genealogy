@@ -46,6 +46,13 @@ REPO = Path(__file__).resolve().parent.parent
 REPORTS = REPO / "reports"
 P2600_SNAPSHOT = REPO / "out" / "wikidata" / "p2600-all.tsv"
 
+#: Archived records of batches Emma has already run. They are history, not proposals, and
+#: are never rewritten to satisfy a rule made after they went out.
+SPENT_BATCHES = {
+    "wikidata-garborg-day-1.qs": "the first day batch, 9 creations + 362 statements",
+    "wikidata-garborg-day-2026-08-25-run.qs": "archived 2026-08-25 when the live file was rebuilt",
+}
+
 BATCHES = sorted(REPORTS.glob("*.qs"))
 NAMES = [p.name for p in BATCHES]
 
@@ -340,3 +347,41 @@ def test_the_creation_reader_notices_a_block_with_no_geni_id(tmp_path):
     f = tmp_path / "x.qs"
     f.write_text('CREATE\nLAST\tP31\tQ5\n', encoding="utf-8")
     assert creations(f) == [[]]
+
+
+@pytest.mark.parametrize("name", NAMES)
+def test_no_batch_ever_adds_an_english_alias(name):
+    """`Aen` is never emitted. Emma, 2026-08-26.
+
+    Her rule: *"married name is always the 'real' name and applied as the primary mul
+    label (first amul added if applicable) and then the birth name is next as an amul.
+    No aen are ever supposed to be added lol only ones in non-latin scripts get aliases
+    for their birth names that are not in amul."*
+
+    `mul` is the language-neutral label; an alias that exists only in `en` is invisible
+    to every other language, which is the whole reason it never applies. The one
+    exception is a **non-Latin** script -- `Aja`/`Azh` for a birth name that cannot live
+    in `mul` -- and that is a different language code, so this test does not touch it.
+
+    **The emitters got this wrong twice**, in opposite directions: `Aen` alone (so the
+    birth-name alias reached `en` and never `mul`), then `Aen` *and* `Amul` together.
+    Both passed every other guard in this file.
+
+    A REMOVAL (`-Q123 Aen "..."`) is allowed and is how the wrong ones already on
+    Wikidata come off: `reports/wikidata-garborg-label-fixes.qs` carries 13.
+
+    **Two SPENT files are exempt and are named one at a time, never matched by a
+    pattern.** They are archived records of batches Emma has already run -- 12 `Aen` in
+    one, 3 in the other -- and rewriting a record of what was run would falsify it. The
+    corrective batch removes those aliases from Wikidata instead. A pattern like
+    `*-run.qs` would also exempt whatever a future run is named, which is the opposite
+    of what this guard is for.
+    """
+    if name in SPENT_BATCHES:
+        pytest.skip(f"{name} is a record of a batch already run; {SPENT_BATCHES[name]}")
+    path = REPORTS / name
+    bad = [(i, ln) for i, ln in statements(path)
+           if not ln.startswith("-") and re.search(r"(?:^|\t)Aen\t", ln)]
+    assert not bad, (
+        f"{name}: adds an English alias, which no batch ever does — " + "; ".join(
+            f"line {i}: {ln!r}" for i, ln in bad[:5]))

@@ -1,4 +1,4 @@
-"""Corrective QuickStatements: the married name is the PRIMARY label, the birth name is `mul`.
+"""Corrective QuickStatements: the married name is the PRIMARY label in `en` AND in `mul`.
 
     python scripts/build-label-corrections.py
 
@@ -9,13 +9,26 @@ present for Chinese and Japanese."*
 
 So the model is:
 
-    en   Aagot Garborg          <- the MARRIED name, primary
-    mul  Aagot Nyvold           <- the BIRTH name
-    ja   オーゴット・ガルボルグ      <- transliteration of the PRIMARY (married) form
-    zh   奥高特·加尔博格
+    en    Aagot Garborg          <- the MARRIED name, primary
+    mul   Aagot Garborg          <- the MARRIED name again. `mul` is the real label.
+    Amul  Aagot Nyvold           <- the BIRTH name, an ALIAS
+    ja    オーゴット・ガルボルグ      <- transliteration of the PRIMARY (married) form
+    zh    奥高特·加尔博格
 
-What the emitted batch did instead: `en` and `mul` both carried the **birth** name, and the
-married name went out as an `Aen` alias. That is wrong in three places at once — wrong
+**The married name is the "real" name.** Emma, 2026-08-26: *"married name is always the
+'real' name and applied as the primary mul label (first amul added if applicable) and then
+the birth name is next as an amul. No aen are ever supposed to be added."* This file had the
+birth name as `Lmul` — a **label**, not an alias — which disagreed with
+`build-garborg-day.py`, where the married name is both labels and the birth name is `Amul`.
+Two emitters, two models; her message settles it in favour of the second.
+
+**`(first amul added if applicable)`** is why the existing `mul` is preserved: a label
+REPLACES, so whatever the item currently reads in `mul` is emitted as an `Amul` before the
+new label overwrites it. Usually that is the birth name this batch would add anyway; where
+she has hand-edited it, it is something neither side would have reconstructed.
+
+What the very first batch did instead: `en` and `mul` both carried the **birth** name, and
+the married name went out as an `Aen` alias. That is wrong in three places at once — wrong
 primary label, wrong `mul`, and an alias that should not exist.
 
 **This corrects items that are already on Wikidata**, so it is written against what they
@@ -41,7 +54,13 @@ sys.stdout.reconfigure(encoding="utf-8")
 csv.field_size_limit(1 << 30)
 
 ROOT = Path(__file__).resolve().parent.parent
-ITEMS = ROOT / "out" / "garborg-new-items.json"
+#: **Full items, never a summary.** `out/garborg-new-items.json` is a SUMMARY -- `geni`,
+#: `label`, `props` per item and no `labels`/`aliases`/`claims` at all -- so this script read
+#: `0 carry a Geni ID`, found every `current` label empty, and emitted nothing. It printed
+#: that as *"0 items need correcting"*, which is the empty-join failure `tests/test_join_sanity.py`
+#: exists for, wearing the costume of finished work. `out/model-vs-reality-items.json` is the
+#: full-entity snapshot and covers all 38.
+ITEMS = ROOT / "out" / "model-vs-reality-items.json"
 
 
 def qs(text):
@@ -83,6 +102,10 @@ def main():
         for st in item.get("claims", {}).get("P2600", []):
             geni_of[st["mainsnak"]["datavalue"]["value"]] = qid
     print(f"{len(items)} items downloaded, {len(geni_of)} carry a Geni ID")
+    if not geni_of:
+        sys.exit(f"{ITEMS.name} yielded no P2600 at all -- that is an unreadable snapshot, "
+                 f"not an item with no Geni id. A summary file has no `claims` key and this "
+                 f"join silently returns nothing. Re-fetch through full_entities.")
 
     fields = {}
     with open(ROOT / "reports" / "display-names.csv", encoding="utf-8") as f:
@@ -91,11 +114,13 @@ def main():
                 fields[row["geni_id"]] = row
 
     lines = [
-        "# Label corrections. Emma, 2026-08-24: the MARRIED name is the primary label",
-        "# and the BIRTH name is `mul`; the transliterations follow the primary form.",
+        "# Label corrections. Emma, 2026-08-26: the MARRIED name is the \"real\" name and is",
+        "# the primary label in `en` AND in `mul`; the BIRTH name is an `Amul` ALIAS; the",
+        "# transliterations follow the primary form. No `Aen` is ever added.",
         "#",
-        "# The first batch had both `en` and `mul` carrying the birth name and pushed",
-        "# the married name out as an `Aen` alias. All three were wrong.",
+        "# A label REPLACES, so whatever `mul` currently holds is emitted as an `Amul`",
+        "# FIRST, on the line above the `Lmul` that overwrites it. Some of those are her",
+        "# own hand-edits and nothing else in this repo could reconstruct them.",
         "#",
         "# A label edit REPLACES, so only differences are emitted.",
         "",
@@ -138,11 +163,22 @@ def main():
         labels = items[qid].get("labels", {})
         current = {k: v.get("value", "") for k, v in labels.items()}
 
+        current_aliases = {a.get("value") for a in
+                           items[qid].get("aliases", {}).get("mul", [])}
+
         block = []
         if qs(primary) and current.get("en") != qs(primary):
             block.append(f'{qid}\tLen\t"{qs(primary)}"')
-        if qs(secondary) and current.get("mul") != qs(secondary):
-            block.append(f'{qid}\tLmul\t"{qs(secondary)}"')
+        if qs(primary) and current.get("mul") != qs(primary):
+            # Preserve what `mul` holds before replacing it -- a label REPLACES.
+            held = qs(current.get("mul", ""))
+            if held and held != qs(primary) and held not in current_aliases:
+                block.append(f'{qid}\tAmul\t"{held}"')
+                current_aliases.add(held)
+            block.append(f'{qid}\tLmul\t"{qs(primary)}"')
+        if (qs(secondary) and qs(secondary) != qs(primary)
+                and qs(secondary) not in current_aliases):
+            block.append(f'{qid}\tAmul\t"{qs(secondary)}"')
 
         ja, zh = render(married_tokens if has_married else birth_tokens, table)
         if ja:

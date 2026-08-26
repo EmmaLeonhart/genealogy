@@ -532,6 +532,35 @@ that export's 4,820 people are `Private` at all, so an export seeded on a living
 person is **not** substantially redacted; assuming otherwise was wrong when it
 was assumed here.
 
+### The MARRIED name is the real name. `mul` carries it, and no batch adds an `Aen`
+
+**Emma, 2026-08-26:** *"married name is always the 'real' name and applied as the primary
+mul label (first amul added if applicable) and then the birth name is next as an amul. No
+aen are ever supposed to be added lol only ones in non-latin scripts get aliases for their
+birth names that are not in amul."*
+
+    en    Aagot Garborg      <- married, primary
+    mul   Aagot Garborg      <- married again. `mul` is the real label.
+    Amul  Aagot Nyvold       <- the BIRTH name, an ALIAS
+    ja    オーゴット・ガルボルグ    <- transliteration of the PRIMARY form
+    Aja   (birth form, where it differs)
+
+**`(first amul added if applicable)` is a preservation step, not an ordering quirk.** A label
+REPLACES, so whatever the item currently reads in `mul` goes out as an `Amul` on the line
+*above* the `Lmul` that overwrites it. Some of those are her hand-edits — `Q141152600` holds
+*Stena Eivindsdatter Garborg*, which nothing in this repo could reconstruct.
+
+**`Aen` is never emitted.** `mul` is the language-neutral label and an alias living only in
+`en` is invisible to every other language. The one exception is a **non-Latin** birth form,
+which cannot live in `mul` and gets `Aja`/`Azh` — a different language code, not an `en` one.
+A *removal* (`-Q123 Aen "..."`) is fine and is how the wrong ones already on Wikidata come
+off. `tests/test_p2600_batches.py` fails any batch that adds one.
+
+**Two emitters disagreed on this until 2026-08-26** — `build-garborg-day.py` had the married
+name in both labels, `build-label-corrections.py` had the **birth** name as `Lmul`. Neither
+was tested against the other, and the alias half was got wrong twice in opposite directions:
+`Aen` alone, then `Aen` *and* `Amul`.
+
 ### `NN` is PRESERVED in `mul`. Descriptive labels are ADDED in other languages
 
 **Emma, 2026-08-16:** *"NN is not relabeled. Why are you thinking that I'm saying
