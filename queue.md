@@ -80,8 +80,13 @@ them and nothing is waiting.
 - **Run a `Forest` export seeded on `Q122925764`'s pair** — Tomas Stanislaus Sapiega
   `6000000041241763571` or Stanislovas Sapiega `6000000041241858399`. Emma: *"Needs an
   export before I judge it."* Both names carry Stanisław so the given-name test cannot
-  separate them. Grep `exports/` for both ids first, per § *GREP THE CORPUS BEFORE
-  RUNNING AN EXPORT*.
+  separate them.
+  **Grep done 2026-08-25 — both ARE in the corpus**, in
+  `exports/descendants/export-Descendants-6000000227039926826.ged`, and our records hold
+  nothing but the father for either: both sons of Andrius Sapiega `6000000020070622231`,
+  one born ABT 1575 d. BEF 1616, one with no dates at all. No spouses, no children, no
+  other siblings recorded. So the export is genuinely warranted here, unlike Obitake 23.
+  It needs Emma's live browser — do not seize it while she is mid-QuickStatements.
 
 - Continue opening both Geni pages for the **70** targets in
   `reports/multi-p2600-targets.tsv`. **24 done, 46 to go, 95 pages.** Screenshots to
@@ -1473,27 +1478,6 @@ scanned, 19,023 carrying an ordinal — 8,093 unambiguous Roman, 5,892 single-le
   Geni-IDs-as-sources de-prioritised to 5–25 a day. **Do not normalise away the bias
   toward her neighbourhood** — it is deliberate.
 ---
-
-## Multiple fathers and multiple mothers, on BOTH sides — Emma, 2026-08-25
-
-**Her words:** *"Put into the queue an analysis on both corpuses of people with multiple mothers
-or multiple fathers."*
-
-The zipper assumes one father and one mother per person and that assumption is currently
-unmeasured. It is not merely a tidiness question: a person with two recorded fathers makes the
-`P22` slot a set rather than a value, and the whole teeth-consuming step in
-`scripts/zipper-join.py` is written as if it were a value.
-
-- **Our side** — `reports/derived-family.csv`, where the separator is ` | `. Count people whose
-  `father` or `mother` cell holds more than one id. (`CLAUDE.md` records that the merge unions
-  `FAMC`/`CHIL` and never drops one, so a parent link Geni has since deleted survives forever —
-  that is one expected source of these.)
-- **Their side** — `out/wikidata/relations.tsv`, `P22`/`P25` with more than one value.
-- **Cross the two**: a person with two fathers on one side and one on the other is exactly where
-  the zipper will silently pick.
-
-Build the CSV of every instance, per `CLAUDE.md` § *"Analyse this" means build a CSV*, commit it,
-then analyse it. It is a survey, not a fix.
 
 ## How the synoptic tree is actually made — Emma, 2026-08-25
 
