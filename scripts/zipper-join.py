@@ -93,6 +93,13 @@ ROOT = Path(__file__).resolve().parent.parent
 RELATIONS = ROOT / "out" / "wikidata" / "relations.tsv"
 DATES = ROOT / "out" / "wikidata" / "dates.tsv"
 
+#: `7th`, `2nd`, `1066`. An ordinal is a *position in a succession*, and in a sibling slot the
+#: succession is usually the family's own -- so it matches brother to brother. Found 2026-08-25
+#: in the deepest provenance chain, where `David Bruce 7th Baron Of Clackmannan` was matched to
+#: a Wikidata item on the shared token `7th` alone. Wikidata models this properly as `P7338`
+#: *regnal ordinal*; a bare token in a label is not evidence of anything.
+ORDINAL = re.compile(r"^\d+(st|nd|rd|th)?$")
+
 #: Tokens with no identifying force. Titles, particles, and the redaction markers -- `NN` must
 #: never match `NN`, which would pair two unrelated unnamed children.
 NOISE = {
@@ -104,8 +111,18 @@ NOISE = {
 }
 
 #: Their property for each slot, and the column of ours it faces.
+#:
+#: **The ORDER is Emma's reliability ranking, 2026-08-25, least messy first:** parents, spouses,
+#: children, siblings. *"parents are always most reliable"*; spouses *"can be a bit messy because
+#: sometimes people have multiple spouses"*; children have *"a lot of comparison stuff"*; and
+#: sibling links *"are not very common"* on Wikidata, so there is no sibling slot at all yet.
+#:
+#: Order is load-bearing, not cosmetic: within a round the first slot to claim a person removes
+#: them from every later slot's candidate set, so a messy slot placed early can spend a person a
+#: reliable slot would have placed correctly. It used to run father, mother, child, spouse --
+#: children ahead of spouses, which is backwards on her ranking.
 SLOTS = (("father", "p22", "father"), ("mother", "p25", "mother"),
-         ("child", "p40", "children"), ("spouse", "p26", "spouses"))
+         ("spouse", "p26", "spouses"), ("child", "p40", "children"))
 
 #: Emma's call, 2026-08-25: keep rounds 1-3. Error compounds with each round because each
 #: anchors on the last -- 3.9% at round 1, 9.8% at round 3, 27.1% at round 8, measured against
@@ -153,7 +170,7 @@ def words(name):
     """
     out = set()
     for w in re.split(r"[^0-9A-Za-zÀ-ſ]+", (name or "").lower()):
-        if len(w) > 2 and w not in NOISE:
+        if len(w) > 2 and w not in NOISE and not ORDINAL.match(w):
             out.add(w)
     return out
 

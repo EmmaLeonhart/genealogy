@@ -1432,10 +1432,25 @@ where both sides carry a birth year, those reached by name disagree by more than
 of the time, against **11.8%** for `solo` and **0.0%** for `date` (which selects on the year). So
 adding names did not lower the join's standard.
 
-**Provenance is mandatory.** `reports/zipper-pairs.tsv` carries
-`round, geni_id, qid, slot, method, from_geni, from_qid, evidence`. It previously carried round,
-geni id and qid alone — the slot was assigned into the tuple as `""` and never emitted — so no pair
-could be audited. A zipper pair with no method recorded is a defect, not a pair.
+**Provenance is mandatory, and it is a CHAIN.** Emma, 2026-08-25: *"ideally, a zipper merge will
+almost always be done with there being a relatively large chain of providence, not just a simple
+'this was the justification,' but a potentially very large series of justifications."*
+`reports/zipper-pairs.tsv` carries one step —
+`round, geni_id, qid, slot, method, from_geni, from_qid, evidence`; it previously carried round,
+geni id and qid alone, because the slot was assigned into the tuple as `""` and never emitted, so
+no pair could be audited at all. `scripts/zipper-provenance.py` walks the steps into chains (max
+depth 8, mean 2.7) and checks each against every *independent* correspondence in the repo.
+
+**Support and contradiction both propagate along the chain** — her words, *"it goes both ways"*.
+An independent resolution agreeing with an inferred step corroborates everything above it; one
+disagreeing poisons everything above it. **Her own hand verdicts in
+`reports/emma-judgments.tsv` are nodes in that graph** — that is what she said they are for:
+*"That is the actual reason why I asked you to record my manual decisions, because of the fact
+that they entered into the province too."* 25,570 of 44,725 pairs are corroborated somewhere in
+their chain; 187 are poisoned.
+
+**Poisoned is a reading, never a deletion.** Her bar for stopping the join is high — *"we need a
+pretty damn good reason to stop it... This reasoning requires something pretty good."*
 
 ### Our side could never have two children — check the separator before believing a distribution
 

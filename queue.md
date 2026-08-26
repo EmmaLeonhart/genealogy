@@ -1479,6 +1479,91 @@ scanned, 19,023 carrying an ordinal — 8,093 unambiguous Roman, 5,892 single-le
   toward her neighbourhood** — it is deliberate.
 ---
 
+## Multiple fathers and multiple mothers, on BOTH sides — Emma, 2026-08-25
+
+**Her words:** *"Put into the queue an analysis on both corpuses of people with multiple mothers
+or multiple fathers."*
+
+The zipper assumes one father and one mother per person and that assumption is currently
+unmeasured. It is not merely a tidiness question: a person with two recorded fathers makes the
+`P22` slot a set rather than a value, and the whole teeth-consuming step in
+`scripts/zipper-join.py` is written as if it were a value.
+
+- **Our side** — `reports/derived-family.csv`, where the separator is ` | `. Count people whose
+  `father` or `mother` cell holds more than one id. (`CLAUDE.md` records that the merge unions
+  `FAMC`/`CHIL` and never drops one, so a parent link Geni has since deleted survives forever —
+  that is one expected source of these.)
+- **Their side** — `out/wikidata/relations.tsv`, `P22`/`P25` with more than one value.
+- **Cross the two**: a person with two fathers on one side and one on the other is exactly where
+  the zipper will silently pick.
+
+Build the CSV of every instance, per `CLAUDE.md` § *"Analyse this" means build a CSV*, commit it,
+then analyse it. It is a survey, not a fix.
+
+## How the synoptic tree is actually made — Emma, 2026-08-25
+
+**Her words:** *"Put into the queue also an analysis of how the synoptic tree is actually made."*
+And the framing that makes this a survey rather than a blocker: *"I feel like we may not have gone
+over the synoptic tree stuff sufficiently, but I'm going to treat it as though it's all good. I'm
+going to treat the synoptic tree as though it is perfect, and we are going to address whether the
+synoptic tree is well functioning later."*
+
+So **nothing waits on this.** Write down what `scripts/build-synoptic-correspondence.py` actually
+does: the eight sources it unions, what each one's evidence is worth, the `date_refuted` filter,
+the `ROUND_CAP = 3` cut on the zipper, which multiplicities it tolerates and which it calls
+conflicts. Then say where it is doing something nobody chose.
+
+## The chain of provenance — Emma, 2026-08-25
+
+**Her words:** *"providence is important in this, and ideally, a zipper merge will almost always
+be done with there being a relatively large chain of providence, not just a simple 'this was the
+justification,' but a potentially very large series of justifications."* And why the manual
+verdicts exist at all: *"That is the actual reason why I asked you to record my manual decisions,
+because of the fact that they entered into the province too."*
+
+`reports/zipper-pairs.tsv` now records one step — slot, method, the pair it came from, and the
+evidence. That is a link, not a chain. What she is describing is the **transitive closure**: a
+round-5 pair's justification is its own step *plus* every step beneath it, down to an anchor or to
+one of her own verdicts in `reports/emma-judgments.tsv`.
+
+Two things follow, and she stated both:
+
+- **Support propagates upward.** *"If you have a group of 100 people in one generation, all of
+  their ancestors are all consistent. It's a really good sign... suddenly you go into the ancestors
+  and you notice that somebody connected one of the ancestors. There's an entity resolution on one
+  of the ancestors from our side. This supports it extremely well, and it actually supports it
+  down the entire chain."*
+- **Contradiction propagates the same way.** *"if you end up in a situation where there's an entity
+  resolution that clearly contradicts it, this indicates a clear contradiction... it goes both
+  ways."*
+
+So the artefact is a provenance **graph** that can be walked in both directions, with her manual
+RIGHT/WRONG verdicts as first-class nodes, and a report of which inferred chains an independently
+recorded `P2600` confirms or refutes.
+
+## Link reliability order — parents, spouses, children, siblings
+
+**Emma, 2026-08-25, ranking them least messy first:**
+
+1. **parents** — *"parents are always most reliable"*
+2. **spouses** — *"can be a bit messy because sometimes people have multiple spouses"*
+3. **children** — *"there's a lot of comparison stuff"*
+4. **siblings** — *"sibling links are not very common"* on Wikidata
+
+`scripts/zipper-join.py` now runs its slots in this order, which matters because the first slot to
+claim a person in a round wins. Siblings are **not** a slot yet and should be added last, if at
+all. She also names a fifth kind worth surveying: *"there are other relationships there that are
+sometimes reported on Wikidata, like the relative role"* — `P1038` *relative* with `P1039` *kinship
+to subject*. Measure how much of it exists before building anything on it.
+
+**And the point that stops a whole category of wrong stopping:** *"no ancestors isn't a point to
+stop... It doesn't mean that the ancestors aren't on Wikidata. That's not what it means... at this
+point, you're not really doing the zipper anymore. We'll just be adding new individuals on
+Wikidata."* A slot with nothing on their side is a **creation opportunity**, which
+`reports/creation-opportunities.tsv` now counts, not a failure of the join.
+
+---
+
 # THE LAST ITEM. BUILD THE THING THAT MAKES A LOT OF THEM.
 
 **Emma, 2026-08-25:** *"record somewhere clearly that we have that path from Marta Jonsdatter Li
