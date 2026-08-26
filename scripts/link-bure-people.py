@@ -69,6 +69,12 @@ MALE, FEMALE = "Q6581097", "Q6581072"
 #: the short bridges, where creating one or two people closes a real join.
 MAX_BRIDGE = 4
 
+#: Statements per day for the link batch. Nothing technical requires slicing -- both ends of
+#: every statement already exist -- but Emma asked for it anyway, on the reasoning that capped
+#: `P3373` *sibling* at ten a day: volume arriving at once reads as noise on a watchlist.
+#: Forty is about the size of a day's Garborg batch, so the two look alike to a watcher.
+BURE_PER_DAY = 40
+
 
 def split(cell):
     return [x.strip() for x in re.split(r"[,;|]", cell or "") if x.strip()]
@@ -223,14 +229,42 @@ def main():
         else:
             f.write("(none)\n")
 
+    # **Sliced into days, though nothing technical requires it.** Emma, 2026-08-26, chose
+    # *"Run the 592 in daily slices too"*. There is no `LAST` constraint here -- both ends of
+    # every statement already exist -- so the pacing is purely about how a watchlist reads it,
+    # the same objection that capped `P3373` *sibling* at ten a day: *"too numerous and imo
+    # come off as spammy"*.
+    #
+    # Sliced by SUBJECT, not by row, so one person's statements always arrive together and
+    # nobody sees one parent added today and the other next week.
+    by_subject = collections.OrderedDict()
+    for row in gaps:
+        by_subject.setdefault(row["subject_qid"], []).append(row)
+    per_day, day, count = collections.defaultdict(list), 1, 0
+    for subject, rows_ in by_subject.items():
+        if count and count + len(rows_) > BURE_PER_DAY:
+            day, count = day + 1, 0
+        per_day[day].extend(rows_)
+        count += len(rows_)
+
     qs = R / "wikidata-bure-links.qs"
+    days = max(per_day) if per_day else 0
     with open(qs, "w", encoding="utf-8", newline="\n") as f:
         f.write("# Bure people who ALREADY have items, linked to each other from what Geni\n"
-                "# records. Nothing is created; both ends of every statement already exist.\n"
-                "# QUEUED, NEVER RUN. Wikidata editing in this repo starts 2026-09-01.\n\n")
-        for row in gaps:
-            f.write(f'{row["subject_qid"]}\t{row["property"]}\t{row["object_qid"]}'
-                    f'\tS2600\t"{row["subject_geni"]}"\n')
+                "# records. Nothing is created; both ends of every statement already exist,\n"
+                "# so `LAST` never appears and nothing technical paces this.\n"
+                "#\n"
+                f"# SLICED INTO {days} DAYS of about {BURE_PER_DAY} statements -- Emma's call\n"
+                "# on 2026-08-26, because a few hundred link statements at once read as spam\n"
+                "# the way siblings did. Sliced by SUBJECT so one person's arrive together.\n"
+                "#\n"
+                "# QUEUED, NEVER RUN. Wikidata editing in this repo starts 2026-09-01.\n")
+        for d in sorted(per_day):
+            f.write(f"\n# ---- day {d} ---- {len(per_day[d])} statements\n")
+            for row in per_day[d]:
+                f.write(f'{row["subject_qid"]}\t{row["property"]}\t{row["object_qid"]}'
+                        f'\tS2600\t"{row["subject_geni"]}"\n')
+    print(f"sliced into {days} days of ~{BURE_PER_DAY} statements")
 
     direct_both = len(wd_edges)
     direct_geni = len(gen_edges)

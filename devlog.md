@@ -14385,3 +14385,37 @@ numbers are right for what they measure and the difference is worth knowing befo
 
 Nothing resolved: duplicate merges are Emma's, and the only question is whether our snapshot
 matches Geni.
+
+## 2026-08-26 — LINE 2 EXISTS. The third of the three lines is captured
+
+`reports/the-spine.md` had said *"The step-by-step path is not yet captured"* since the three
+lines were named, because three attempts to expand the relationship panel in a browser ended with
+the renderer timing out.
+
+**Saving the page turned out to be unnecessary.** The panel's `span.segment > span.name` nodes
+carry the name and the sibling `a[href*="/people/"]` carries the Geni id — the same scoping
+`genimerge.genipage` applies to a saved file. Reading it straight out of the live DOM produced all
+16 steps in one call. Two attempts to serialise the whole page were blocked as base64/cookie-shaped
+data, which is what prompted looking at what was actually needed.
+
+`paths/bergitte-to-emma.tsv`, and **`python -m genimerge path` reports 16 of 16 steps held** —
+every person is already in our corpus, so **line 2 needs no exports**, unlike lines 1 and 3 which
+took two.
+
+**It is 12 creations, not 16.** Emma is step 1 and `Q140568870` already exists for her carrying no
+`P2600` — an id to add, not a person to create. Steps 2–4 are all past the 1880 cutoff: her father
+b.1963 (whom she has separately forbidden creating), his father b.1926, and Reinhert Borsheim
+b.1891. The first creatable step is Rakel Rasmusdottir Borsheim, b.1866. Step 6 is an **adoptive**
+mother, the one non-blood link on the line.
+
+**The whole spine is now 24 people**, Bergitte counted once across the three lines she is the hinge
+of.
+
+**Two `P2600` removals**, per Emma: *"Remove the son's P2600 from the item."* `Q104755784` *Ruben
+Wulff* also claimed his son Wolf Rubensson, 48 years and a different family apart; `Q96985053`
+*John Loomis* also claimed his son of the same name. `reports/wikidata-remove-collapsed-generation-p2600.qs`.
+
+**The Bure link batch is sliced into 16 days of ~40**, her call — nothing technical requires it,
+since both ends of every statement exist and `LAST` never appears, but a few hundred at once reads
+as spam the way siblings did. Sliced by *subject*, so one person's statements always arrive
+together.

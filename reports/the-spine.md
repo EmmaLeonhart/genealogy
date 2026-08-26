@@ -61,48 +61,48 @@ Lines 1 and 3 are one saved path, `paths/charlemagne-to-arne-garborg.tsv`, 34 st
 | 13 | Lagmann Gunnbjørn Toresson Tengs | create |
 | 12 | **Bergitte Gunnbjørnsdatter Aukland** | create |
 
-## Line 2 — Bergitte → Emma
+## Line 2 — Bergitte → Emma — CAPTURED 2026-08-26
 
-**Geni states it: "Bergitte Gunnbjørnsdatter Aukland is your 13th great grandmother."** Read from
-<https://www.geni.com/people/Bergitte-Aukland/6000000002481819312?through=6000000087535357291> on
-2026-08-25 — the `?through=` form pins the relationship to a chosen profile, which is how this
-page is obtained without fighting the push-pin control.
+**It exists now.** `paths/bergitte-to-emma.tsv`, 16 steps, read straight out of the live
+relationship panel rather than from a saved page — three earlier attempts to expand it in a
+browser had ended with the renderer timing out, and saving the page turned out to be unnecessary:
+the panel's `span.segment > span.name` nodes carry the name and the sibling `a[href*="/people/"]`
+carries the Geni id, which is the same scoping `genimerge.genipage` applies to a file.
 
-**13 great-grandmother generations means roughly 15 steps**, against Arne's 11 (his 9th great
-grandmother). So line 2 is the longer of the two.
+**`python -m genimerge path` reports 16 of 16 steps held.** Every person on line 2 is already in
+our corpus, so **line 2 needs no exports at all** — unlike lines 1 and 3, which took two.
 
-**The step-by-step path is not yet captured.** Expanding the panel needs the page saved and run
-through `python -m genimerge path-from-html <page> -o paths/bergitte-to-emma.tsv`; three attempts
-to expand it in the browser ended with the renderer timing out.
+| step | person | state |
+| ---: | --- | --- |
+| 1 | **Emma Leonhart** | `Q140568870` exists and carries **no** `P2600` — add the id, do not create |
+| 2 | Richard Wade Borsheim, b.1963 | **her father — explicitly not to be created**, and past the cutoff besides |
+| 3 | Randolph Paulus Borsheim, b.1926 | past the 1880 cutoff |
+| 4 | Reinhert Borsheim, b.1891 | past the 1880 cutoff |
+| 5 | Rakel Rasmusdottir Borsheim, b.1866 | create — the first creatable step |
+| 6 | Anne Berta Osmundsdatter Nese | create — **adoptive** mother, the one non-blood link on the line |
+| 7 | Osmund Larsson Nese | create |
+| 8 | Lars Osmundsen Foss-Eikeland, d. y. | create |
+| 9 | Osmund Larsen Raunes | create |
+| 10 | Lars Nilsen Raunes | create |
+| 11 | Nils Larsen Raunes | create |
+| 12 | Guri Pedersdatter Foss | create |
+| 13 | Cecilie Olsdatter Håland | create |
+| 14 | Gudrun Sæbjørnsdatter Talgje | create |
+| 15 | Sissel Jonsdatter Talje | create |
+| 16 | **Bergitte Gunnbjørnsdatter Aukland** | create — the hinge, shared with lines 1 and 3 |
 
-## The absences were never established — and three more just fell
+**Geni states "your 13th great grandmother"**, and 13 great-grandmother generations against 15
+steps is consistent: two of the steps are the adoptive-mother link and Emma's own father.
 
-**Emma, 2026-08-25:** *"we didn't actually establish in any meaningful sense that the people are
-absent in that chain... We might basically find that that one single daughter is the only person
-absent in the line in Wikidata, but it's just that the Wikidata ones are not genealogically
-linked."*
+**So line 2 is 12 creations, not 16**: Emma gets a `P2600` on an item that already exists, and
+steps 2–4 are all born after the 1880 modern cutoff — her father b.1963, his father b.1926, and
+Reinhert b.1891. The first creatable step is Rakel Rasmusdottir Borsheim, b.1866.
 
-She was right twice over. Of the 34 chain steps: **14 hold a `P2600`, 7 are existing Wikidata
-items we had called absent, and 13 remain to create.** The count of people to make has fallen from
-22 to 13 without a single edit.
+**Bergitte appears on all three lines**, so creating her once serves every one of them.
 
-Four were found by the structural search. **Three more were found by name and then confirmed
-structurally**, which is the order that matters — the name only produced the candidate:
-
-| step | ours | item | what agrees |
-| ---: | --- | --- | --- |
-| 21 | Helena Guttormsdatter | `Q4953376` | identical label · father Guttorm · spouse **Esbern Snare** · children **Canute, Duke of Estonia** and **Ingeborg of Kalundborg** |
-| 19 | Svantepolk Knutsson Viby | `Q6197518` *Svantepolk of Viby* | father **Canute, Duke of Estonia** · mother **Hedvig Svantepolksdotter** · spouse **Benedicta of Bjelbo** · four children match |
-| 18 | Ingegerd Svantepolksdotter | `Q101247444` *…of Viby, lady of Händelöö* | **both** parents match |
-
-**They chain, which is stronger than any of them alone.** Helena's son is Svantepolk's father is
-Ingegerd's grandfather, and step 20 — Knut Valdemarsson — was already matched to `Q3743799`
-*Canute, Duke of Estonia*. So **steps 18, 19, 20 and 21 are a contiguous run that exists on
-Wikidata in full**, joined to each other there, and unlinked to Geni only because no `P2600` names
-them.
-
-`reports/wikidata-spine-add-p2600.qs` adds the identifier to all seven. Nobody is created.
-
+**The whole spine, now that all three lines exist:** 13 to create on lines 1 and 3, plus 12 on
+line 2, minus Bergitte counted twice — **24 people**, of whom 7 are the already-existing items in
+`reports/wikidata-spine-add-p2600.qs` and Emma is an eighth.
 
 ## The shape of the work
 
