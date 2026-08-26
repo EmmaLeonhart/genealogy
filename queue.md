@@ -351,6 +351,35 @@ groups are the real signal; a residue of bare one-token surnames (`杨`, `黄`, 
 because those people have a given name recorded somewhere but their `cjk_names` carries only
 the surname.
 
+## ⛔ THE DAILY ALGORITHM — her full spec, 2026-08-26. Supersedes the one-hop ring
+
+`docs/dictation/2026-08-26-daily-algorithm.md` is her dictation verbatim;
+`docs/daily-algorithm.md` is the reading. **The order is structurally rigid and the weirdness is
+intentional** — *"the weirdness isn't something to be sanded off"*.
+
+Build `scripts/build-daily-batch.py` emitting, in exactly this order:
+
+- **Step 0** — refresh the ledger from `Special:Contributions/日巫女`, subtract what she has
+  edited, diff the remainder against the ideal state (the union of the synoptic tree and the Geni
+  tree) via `scripts/model-vs-reality.py`.
+- **Step 1, individuals** — 4 random parent pairs + 1 ancestral pair from the high up-going
+  ancestry, **shuffled together** into 5; plus 4 people whose spouse and children are filled in at
+  random.
+- **Step 1b, descendants** — 5 random parent pairs filled in with their **entire** set of
+  children. May sit in the same pass as the descendant chain.
+- **Step 2, names** — 10 name items from those missing in the ideal state, each linked in the same
+  run. `scripts/build-garborg-name-items.py` already does the linking half.
+- **Step 3, relationships between existing items** — 10 `P3373` *sibling* pairs, and **all**
+  `P26` *spouse* / `P22` *father* / `P25` *mother* / `P40` *child*.
+
+**Do not "fix" the artefacts.** Spouses unlinked to their partner's children, and parents not
+linked to each other as spouses, are intentional consequences of the order and are closed by later
+days.
+
+**Open, and mine to settle by a recorded guess rather than by asking:** what "once we get to a
+certain point" means as a testable condition for step 1b, and how the ancestral pair is picked out
+of the high up-going ancestry — the spine path is the obvious source.
+
 ## The daily Garborg batch — one QuickStatements run per day
 
 `scripts/build-garborg-day.py` → `reports/wikidata-garborg-day.qs`.
