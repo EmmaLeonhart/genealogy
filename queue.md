@@ -245,41 +245,33 @@ Before emitting: look the three organisation QIDs up **offline** in the download
 and `reports/wikidata-labels.tsv`; do not guess them. `CLAUDE.md` § *Always write the
 English label next to a property or item ID*.
 
-## ⛔ Model the item as it SHOULD be, then diff it against reality
+## Model-vs-reality is BUILT — `scripts/model-vs-reality.py`
 
-**Emma, 2026-08-24:** *"we are supposed to generate complete models of what the wikidata
-items should be and compare with the reality for the quickstatements modelling stuff."*
+Emma, 2026-08-24: *"we are supposed to generate complete models of what the wikidata items should
+be and compare with the reality for the quickstatements modelling stuff."*
 
-Today's method was to emit statements and find out what was wrong when she ran them. That
-cost four corrective rounds in one afternoon — the married name as an alias instead of the
-primary label, `mul` holding the wrong form, `ja` left stale against a label she had fixed
-by hand, `P7452` *usual forename* on people with no middle name, and the married-name role
-on seven men.
+Over the 71 ledger people, freshly fetched through `genimerge.wikidata.full_entities`:
 
-**Every one of those would have been visible in a diff before anything was emitted.**
+| | |
+| --- | ---: |
+| **extra** — the item has it, the model does not. Her hand-work. Never touched. | 483 |
+| **missing** — emittable, and the only column a batch may project from | 77 |
+| **CONFLICT** — both hold it, values differ | **4** |
 
-The shape:
+The four are genuine and are hers to settle: Rozala d'Ivrea died 13 Dec or 7 Feb 1003; Knut
+Valdemarsson 15 or 5 Oct 1260; Arne Olaus Fjørtoft Garborg 12 or 10 Oct 1968; Helena
+Guttormsdatter born 1167 or 1170.
 
-- **Build the complete intended item** for a person from the Geni record plus the rules —
-  labels in every language, aliases, `P31`, `P21`, `P2600`, dates, every relationship,
-  and the full name model (`P735` with `P1545`/`P7452`/`P3831`, `P5056` with `P144`,
-  `P734` with its role, `P1449`). Not a batch: a **model**.
-- **Fetch the item as it actually is**, freshly — `CLAUDE.md` § *Emma edits the tree and
-  the items BY HAND, continuously*.
-- **Diff the two**, three ways: *missing* (model has it, item does not — emit), *extra*
-  (item has it, model does not — usually her hand-work, never touch), *conflict* (both
-  have the property with different values — report, this is where a modelling error
-  shows).
-- **The batch becomes a projection of the diff**, not a thing built independently. A
-  statement is emitted because the diff says it is missing, and for no other reason.
+**It found twelve more conflicts that were the comparator, not the model** — and that is worth
+keeping in mind before trusting any diff's first output. Five `P1449` *nickname* rows compared
+a bare string against the raw `{"language": ..., "text": ...}` blob. Seven date rows compared ISO
+strings while ignoring Wikidata's precision field: `+0874-07-01` against `+0874-00-00` is not a
+disagreement but a difference in what is known, and precision **7 is a CENTURY**, so `+0952/9`
+against `+1000/7` is one century agreeing with itself.
 
-**The conflicts column is the point.** A modelling mistake shows up there as a systematic
-pattern — seven men all conflicting on the same qualifier is a rule that is wrong, not
-seven separate errors. That is the signal today's method could only produce by Emma
-running a batch and reading the result.
-
-Start with the 34 Garborg people, where the intended model is best understood, then
-Izumo.
+**Still to do, and neither is blocked:** project a batch from the `missing` column only, and run
+the same diff over Izumo, where the modelling is less well understood and the conflicts column
+should therefore say more.
 
 ## Analysis work parked while she was editing
 

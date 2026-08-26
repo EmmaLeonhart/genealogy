@@ -14499,3 +14499,37 @@ disagreement over `zipper-pairs.tsv` and got **0.0% for every shape** — becaus
 drops sex-refuted proposals, so that file holds only survivors. It was describing the filter, not
 the join. `CLAUDE.md` already records two of these: a date curve tracking date *coverage*, and one
 tracking date *softness*. The census now reads the refused file alongside the kept one.
+
+## 2026-08-26 — model-vs-reality, and a diff whose first findings were about itself
+
+Emma queued this after four corrective rounds in one afternoon: *"we are supposed to generate
+complete models of what the wikidata items should be and compare with the reality."*
+
+`scripts/model-vs-reality.py` builds the intended item from the Geni record plus the rules —
+`P31`, `P21`, `P2600`, dates, the four relationships, and the full name model through
+`scripts/namemodel.py` — fetches the real item through `genimerge.wikidata.full_entities`, and
+diffs three ways. Over the 71 ledger people: **483 extra** (her hand-work, never touched), **77
+missing** (the only column a batch may project from), **4 CONFLICT**.
+
+The four are real and hers to settle — Rozala d'Ivrea died 13 Dec or 7 Feb 1003; Knut Valdemarsson
+15 or 5 Oct 1260; Arne Olaus Fjørtoft Garborg 12 or 10 Oct 1968; Helena Guttormsdatter born 1167
+or 1170.
+
+**It first reported 16, and twelve were the comparator.** That is worth recording because the
+whole promise of this file is that a repeated conflict means one rule is wrong — and the first
+repeated conflict meant *my rule for comparing* was wrong:
+
+- Five `P1449` *nickname* rows compared a bare string against the raw
+  `{"language": ..., "text": ...}` blob. Monolingual text needs unwrapping.
+- Seven date rows compared ISO strings and ignored Wikidata's precision field. `+0874-07-01`
+  against `+0874-00-00` is not a disagreement, it is a difference in what is known. And
+  **precision 7 is a CENTURY**, so `+0952/9` against `+1000/7` is one century agreeing with
+  itself — that alone accounted for two.
+
+`CLAUDE.md` says a date parser that quietly narrows is how this project loses data. A date
+*comparator* that quietly widens is the same error pointing the other way, and it manufactures
+findings instead of losing them.
+
+**One more instance of the session's recurring shape**: the very first run printed `0 items held`
+because `full_entities` already unwraps `entities` and I unwrapped it twice, so every person came
+back as `ITEM NOT FETCHED` — which reads like a network failure rather than a bug two lines up.
