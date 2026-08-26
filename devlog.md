@@ -14639,3 +14639,31 @@ four conflicts are not.
 
 Building the pair list first and judging it after makes all three impossible to write. The number
 now agrees with an independently computed one, which is the only reason to believe it.
+
+## 2026-08-26 — a guard against the week's dominant failure, and it needed guarding itself
+
+Five findings this week were about the instrument rather than the data, each printing a plausible
+number: the ` | ` separator, the unstripped split, `father[child] = husb`, a rate measured over a
+filtered file, and a join on a column that does not exist. **The shape is always the same — an
+empty or narrowed join cannot be told apart from an absence of data**, and absence is what these
+reports exist to detect.
+
+`tests/test_join_sanity.py` asserts that each join the repo depends on matches a non-trivial share
+of its input: the derived-family multi-value columns, the `fathers`/`mothers` columns existing at
+all, the Izumo chart-roster join, the Garborg ledger, the spine paths, both zipper files, and the
+shape of the fetched-items snapshot.
+
+**The first version did not guard.** It asserted >50% of multi-value tokens resolve to a person,
+and both historical bugs passed: **58.5%** for the unstripped split, **86.3%** for the pipe-blind
+one. Single-valued cells have no separator, resolve either way, and are the large majority — so
+the measurement was diluted by the population that cannot fail. Restricted to cells that actually
+hold several values: **100.0% correct against 0.0% for both bugs.**
+
+That is the same error the file was written against, committed inside the fix for it, and it was
+caught only by deliberately reintroducing each bug and watching the assertion. Every guard here
+was checked that way — the Izumo one scores 196 names on `english` and **0** on the `chart_name`
+that does not exist; the snapshot one fires on the `{}` that double-unwrapping produces.
+
+**A guard that has not been seen to fail is not known to guard.**
+
+**1,321 passed, 0 failed.**

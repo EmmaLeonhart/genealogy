@@ -343,6 +343,37 @@ the four conflicts. There is little there to contradict.
 unordered consecutive-seat pairs; twenty counted each from both ends. Corrected here rather than
 left as a number somebody would later try to reconcile.
 
+## A join that matches NOTHING must fail loudly — it has cost five findings this week
+
+Every one of these produced a plausible number that was about the instrument rather than the data,
+and each was caught by luck or by a second opinion rather than by anything structural:
+
+| what | what it printed | what was true |
+| --- | --- | --- |
+| `split()` unaware of ` \| ` | 615 ambiguous slots, no `2×2` | 379,251 people arrived childless |
+| `\|` split without `.strip()` | pair count moved by **exactly zero** | every token missed the index |
+| `father[child] = husb` | census read **0** multi-parent people | 1,663 of them |
+| sex rate over `zipper-pairs.tsv` | **0.0%** for all four shapes | measured the filter, not the join |
+| `chart_name` column that does not exist | all 10 pairs *"no item held"* | 196 names carry a QID |
+
+**The shape is always the same: an empty or narrowed join is indistinguishable from an absence of
+data**, and absence is exactly what these reports are built to detect. `CLAUDE.md` already records
+the same lesson for the date parser — *"a wrong date parser does not raise, it just quietly
+narrows the data"* — and it has now recurred five times in a week outside dates.
+
+**BUILT 2026-08-26** — `tests/test_join_sanity.py`, seven guards over the real files, each
+verified to *fail* when its bug is reintroduced rather than merely to pass now.
+
+**The first version did not guard.** It asserted that >50% of multi-value tokens in
+`derived-family.csv` resolve to a person — and **both historical bugs passed it**, 58.5% for the
+unstripped split and 86.3% for the pipe-blind one, because single-valued cells have no separator
+and resolve either way while being the large majority. Restricted to cells that actually hold
+several values the separation is total: **100.0% correct against 0.0% for both**.
+
+That is the same mistake in miniature as the five it was written against — a plausible number
+measured over the wrong population — and it was caught only by deliberately reintroducing the
+bugs. **A guard that has not been seen to fail is not known to guard.**
+
 ## ⛔ Audit of Geni merges — her method, 2026-08-24
 
 *"Find profiles that look similar like shared parents, plus look over basically all
