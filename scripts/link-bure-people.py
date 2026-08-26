@@ -76,8 +76,21 @@ def split(cell):
 
 def main():
     # ---- the roster, and its correspondence -----------------------------------------
+    # **The roster is the GENI-SIDE one now, not the 576 Wikidata entries.**
+    # `scripts/build-bure-roster.py` measured both definitions on Emma's instruction, and the
+    # Geni-side neighbourhood carries **1,595** people with a Wikidata item against the
+    # Wikidata roster's 258 -- six times as many, every one already on both sides. Running
+    # this over 258 measured a sixth of the population and reported 97.6% of direct edges as
+    # already stated; that number described a small, well-tended core, not the cluster.
     q2g = collections.defaultdict(set)
     kind = {}
+    roster_file = R / "bure-roster.tsv"
+    if roster_file.exists():
+        with open(roster_file, encoding="utf-8") as f:
+            for row in csv.DictReader(f, delimiter="\t"):
+                if row["qid"]:
+                    q2g[row["qid"]].add(row["geni_id"])
+                    kind.setdefault(row["qid"], "person")
     with open(R / "bureatten.csv", encoding="utf-8") as f:
         for row in csv.DictReader(f):
             kind[row["qid"]] = row["kind"]
