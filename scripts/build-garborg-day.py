@@ -124,7 +124,8 @@ def _words():
 WORDS = _words()
 
 
-def describe_all(geni_id, facts, father, mother, labels, table):
+def describe_all(geni_id, facts, father, mother, labels, table,
+                 children=None, spouses=None, siblings=None):
     """`{lang: "daughter of Arne Olaus Fjørtoft Garborg"}` for a redacted person.
 
     Built from the nearest named parent. `ja` and `zh` are included **here** where
@@ -134,26 +135,55 @@ def describe_all(geni_id, facts, father, mother, labels, table):
     it has — `reports/garborg-name-transliterations.tsv` covers every token — so the
     Japanese and Chinese forms are whole rather than half Latin.
     """
+    children = children or {}
+    spouses = spouses or {}
+    siblings = siblings or {}
     sex = (facts.get(geni_id, {}).get("sex") or "")
-    for parent in (father.get(geni_id), mother.get(geni_id)):
-        if not parent:
-            continue
-        name = (labels.get(parent) or "").strip()
-        if not name or name.lower() in ("nn", "private", "unknown", "?"):
-            continue
-        out = {}
-        for lang, words in WORDS.items():
-            group = words["child_of"]
-            word = group.get(sex) or group[""]
-            joiner = words["of"]
-            if isinstance(joiner, dict):
-                joiner = joiner.get("child_of", joiner[""])
-            out[lang] = f"{word} {joiner} {qs(name)}"
-        ja, zh = label_in(name, table)
-        if ja:
-            out["ja"] = f"{ja}の{'息子' if sex == 'M' else '娘' if sex == 'F' else '子'}"
-            out["zh"] = f"{zh}之{'子' if sex == 'M' else '女' if sex == 'F' else '子女'}"
-        return out
+
+    def named(gid):
+        n = (labels.get(gid) or "").strip()
+        return "" if not n or n.lower() in ("nn", "private", "unknown", "?") else n
+
+    #: Which relative to describe by, nearest first, and the `WORDS` group naming the
+    #: relationship FROM this person TO them.
+    #:
+    #: **Only `child_of` was ever used, and that left people undescribed.** A redacted person
+    #: with no recorded parent got `Lmul "NN Skårland"` and nothing else -- while carrying a
+    #: named CHILD, which `CLAUDE.md` covers: the description is built *"from the nearest named
+    #: relative"*, and a child is one. The `WORDS` table already carried `parent_of`,
+    #: `spouse_of` and `sibling_of` with the right word per sex and the right preposition per
+    #: direction (`datter af` but `mor til`); nothing consulted them.
+    BY = (("child_of", (father.get(geni_id), mother.get(geni_id))),
+          ("parent_of", tuple(children.get(geni_id, ()))),
+          ("spouse_of", tuple(spouses.get(geni_id, ()))),
+          ("sibling_of", tuple(siblings.get(geni_id, ()))))
+
+    for group_name, relatives in BY:
+        for rel in relatives:
+            name = named(rel) if rel else ""
+            if not name:
+                continue
+            out = {}
+            for lang, words in WORDS.items():
+                group = words[group_name]
+                word = group.get(sex) or group[""]
+                joiner = words["of"]
+                if isinstance(joiner, dict):
+                    joiner = joiner.get(group_name, joiner[""])
+                out[lang] = f"{word} {joiner} {qs(name)}"
+            ja, zh = label_in(name, table)
+            if ja:
+                JA = {"child_of": {"M": "息子", "F": "娘", "": "子"},
+                      "parent_of": {"M": "父", "F": "母", "": "親"},
+                      "spouse_of": {"M": "夫", "F": "妻", "": "配偶者"},
+                      "sibling_of": {"M": "兄弟", "F": "姉妹", "": "きょうだい"}}
+                ZH = {"child_of": {"M": "子", "F": "女", "": "子女"},
+                      "parent_of": {"M": "父", "F": "母", "": "父母"},
+                      "spouse_of": {"M": "夫", "F": "妻", "": "配偶"},
+                      "sibling_of": {"M": "兄弟", "F": "姐妹", "": "同胞"}}
+                out["ja"] = f"{ja}の{JA[group_name].get(sex) or JA[group_name]['']}"
+                out["zh"] = f"{zh}之{ZH[group_name].get(sex) or ZH[group_name]['']}"
+            return out
     return {}
 
 
@@ -457,6 +487,34 @@ def main():
     args = ap.parse_args()
 
     have = ledger()
+
+    # **`linked` is every Geni id Wikidata already carries a `P2600` for. `have` is not.**
+    #
+    # These are two different questions and conflating them cost a run: `have` seeds the
+    # FRONTIER ("everyone one edge from somebody with a QID"), so folding 517,750 ids into it
+    # made the frontier most of the tree and the build never finished. `linked` answers only
+    # "would creating this person duplicate an item", which is a set lookup.
+    #
+    # The gap this closes was caught by `tests/test_p2600_batches.py` on `5101295410550070399`,
+    # whose item exists and was about to be duplicated. The parent-`P40` duplicate guard does
+    # not cover it: that fires when a PARENT has an unmatched child item, and here the person
+    # themselves is already present.
+    #
+    # This is the offline half of the check Emma rejected in its live form -- *"we are noy gonna
+    # do a fuckin glive P2600 check"* -- and it costs nothing, because the file is on disk. It
+    # is a floor, not the whole answer: the map predates every item she has made, which is why
+    # `scripts/refresh-garborg-ledger.py` reads her contributions separately.
+    linked = {}
+    p2600_all = ROOT / "out" / "wikidata" / "p2600-all.tsv"
+    if p2600_all.exists():
+        with open(p2600_all, encoding="utf-8") as f:
+            for row in csv.reader(f, delimiter="\t"):
+                if len(row) >= 2 and row[0].startswith("Q") and row[1].strip().isdigit():
+                    linked.setdefault(row[1].strip(), row[0])
+        print(f"{len(linked):,} Geni ids already carry a P2600 somewhere on Wikidata")
+    else:
+        print("WARNING: out/wikidata/p2600-all.tsv missing - a person whose item nobody here "
+              "made is invisible and could be created twice")
     for path in args.known:
         with open(path, encoding="utf-8") as f:
             head = f.readline()
@@ -564,6 +622,19 @@ def main():
     #
     # The ledger only catches up once she has actually run a file, so within a single day this
     # is the only thing keeping two batches disjoint.
+    # `carried` collects everyone held back, with the reason. Defined here rather than beside
+    # `lines` because the exclusion and duplicate checks below both append to it.
+    carried = []
+
+    # Anyone Wikidata already links is never created, whatever the batch shape asked for.
+    dup = [g for g in frontier if g in linked and g not in have]
+    for g in dup:
+        frontier.pop(g, None)
+        carried.append((g, "", f"Wikidata already links this profile as {linked[g]} "
+                               f"(out/wikidata/p2600-all.tsv) - creating it would duplicate"))
+    if dup:
+        print(f"{len(dup)} dropped: Wikidata already carries a P2600 for them")
+
     already = set()
     for path in args.exclude:
         already |= set(re.findall('P2600\\t"(\\d+)"',
@@ -620,7 +691,7 @@ def main():
                 if a != b:
                     siblings[a].add(b)
 
-    lines, carried = [], []
+    lines = []
     # ---- THE DUPLICATE GUARD -------------------------------------------------------
     # **Emma, 2026-08-25, after running a batch:** *"you also kinda immediately just fucked
     # up with making a person who has an item see here
@@ -848,7 +919,8 @@ def main():
                                if not t.lower().startswith("<private")
                                and t.lower() not in ("private", "nn"))
             lines.append(f'LAST\tLmul\t"{("NN " + surname).strip()}"')
-            described = describe_all(g, facts, father, mother, labels, table)
+            described = describe_all(g, facts, father, mother, labels, table,
+                                     children, spouses, siblings)
             for code, value in sorted(described.items()):
                 lines.append(f'LAST\tL{code}\t"{value}"')
             if not described:

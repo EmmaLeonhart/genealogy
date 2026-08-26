@@ -5,49 +5,68 @@
 # name: CLAUDE.md, one name item per USAGE. Emma's Q141152710 Aadnesson is
 # the pattern -- labels, P31, nothing else.
 
-# Andersdotter -- family, 2 bearer(s) in the batches
+# Andersdotter -- family, 1 bearer(s) in the batches
 CREATE
 LAST	Len	"Andersdotter"
 LAST	Lmul	"Andersdotter"
 LAST	P31	Q101352
 
-# Bång -- family, 1 bearer(s) in the batches
+# Ivarsdatter -- patronymic, 1 bearer(s) in the batches
 CREATE
-LAST	Len	"Bång"
-LAST	Lmul	"Bång"
-LAST	P31	Q101352
-
-# Gyntesdotter -- family, 1 bearer(s) in the batches
-CREATE
-LAST	Len	"Gyntesdotter"
-LAST	Lmul	"Gyntesdotter"
-LAST	P31	Q101352
-
-# Matthiæ -- family, 1 bearer(s) in the batches
-CREATE
-LAST	Len	"Matthiæ"
-LAST	Lmul	"Matthiæ"
-LAST	P31	Q101352
-
-# Mattsson -- patronymic, 1 bearer(s) in the batches
-CREATE
-LAST	Len	"Mattsson"
-LAST	Lmul	"Mattsson"
+LAST	Len	"Ivarsdatter"
+LAST	Lmul	"Ivarsdatter"
 LAST	P31	Q110874
 
-# Mårtensdotter -- family, 1 bearer(s) in the batches
+# Mele -- family, 1 bearer(s) in the batches
 CREATE
-LAST	Len	"Mårtensdotter"
-LAST	Lmul	"Mårtensdotter"
+LAST	Len	"Mele"
+LAST	Lmul	"Mele"
 LAST	P31	Q101352
 
-# Thomas -- given, 1 bearer(s) in the batches
+# Olai -- family, 1 bearer(s) in the batches
 CREATE
-LAST	Len	"Thomas"
-LAST	Lmul	"Thomas"
-LAST	P31	Q202444
+LAST	Len	"Olai"
+LAST	Lmul	"Olai"
+LAST	P31	Q101352
+
+# Olofsson -- patronymic, 1 bearer(s) in the batches
+CREATE
+LAST	Len	"Olofsson"
+LAST	Lmul	"Olofsson"
+LAST	P31	Q110874
+
+# Sandsmark -- family, 1 bearer(s) in the batches
+CREATE
+LAST	Len	"Sandsmark"
+LAST	Lmul	"Sandsmark"
+LAST	P31	Q101352
+
+# Time -- family, 1 bearer(s) in the batches
+CREATE
+LAST	Len	"Time"
+LAST	Lmul	"Time"
+LAST	P31	Q101352
+
+# Torchelsdatter -- patronymic, 1 bearer(s) in the batches
+CREATE
+LAST	Len	"Torchelsdatter"
+LAST	Lmul	"Torchelsdatter"
+LAST	P31	Q110874
+
+# Tormodsen -- patronymic, 1 bearer(s) in the batches
+CREATE
+LAST	Len	"Tormodsen"
+LAST	Lmul	"Tormodsen"
+LAST	P31	Q110874
+
+# Øvre -- family, 1 bearer(s) in the batches
+CREATE
+LAST	Len	"Øvre"
+LAST	Lmul	"Øvre"
+LAST	P31	Q101352
 
 # NOT created -- the plan says these already resolve to more than
 # one item, and creating another is the Maria failure that would
 # have made a tenth. Emma picks, the person's sex decides.
-#   Bure (family), 1 bearer(s)
+#   Andreas (given), 1 bearer(s)
+#   Anna (given), 1 bearer(s)

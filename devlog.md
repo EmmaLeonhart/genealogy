@@ -14201,3 +14201,22 @@ exist, so the work is linking two QIDs and `LAST` never enters it.
 `Q101247444` *…of Viby*. The last two are father and daughter and both candidates carry *of Viby*,
 so they corroborate each other structurally rather than only by name. Nothing is matched — every
 row is a candidate ranked by how much *besides* the name agrees.
+
+**Three defects the suite caught while clearing the deferred four**, none of them cosmetic:
+
+- **`build-garborg-day.py` could create a person Wikidata already links.** `have` was the
+  hand-maintained ledger alone, so a Geni id carrying a `P2600` on an item nobody here made was
+  invisible. Caught on `5101295410550070399`, about to be duplicated. `linked` now reads
+  `out/wikidata/p2600-all.tsv` — 517,750 ids — and is kept **separate from `have`**, because
+  folding it in made the frontier most of the tree and the build never finished. This is the
+  offline half of the check Emma rejected in its live form, and it costs nothing.
+- **The NN description only ever looked at parents.** A redacted person with no recorded parent
+  got `Lmul "NN Skårland"` and nothing else, while carrying a named *child*. `CLAUDE.md` says the
+  description comes from *"the nearest named relative"*, and the `WORDS` table already held
+  `parent_of`, `spouse_of` and `sibling_of` with the right word per sex and preposition per
+  direction — nothing consulted them. Now falls back parent → child → spouse → sibling, and that
+  person gets twelve languages including `far til Inger Kristoffersdatter` (not `far af`).
+- **A spent batch file still claimed to create four people who now exist.** Archived as
+  `reports/wikidata-garborg-day-2026-08-25-run.qs`; the live file is rebuilt at spine step 6.
+
+**1,310 passed, 0 failed.**
