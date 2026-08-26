@@ -547,11 +547,6 @@ needs a ruling rather than a measurement. `devlog.md` has the numbers.
   other languages."* An initial is not a name and has no katakana, so the three options
   — drop it, transliterate the letter, keep it Latin inside a non-Latin label — are a
   presentation decision, not a derivation.
-- **`scripts/build-edit-objects.py` writes labels with no marker guard**, at both of its
-  emission sites: `ja`/`zh` from `cjk_names` and `en`/`mul` from `label_en`. Same defect
-  as the one fixed in `walk-structural-merge.py`, and it is only harmless today because
-  its output is `out/wikidata/edits.json`, which is gitignored and fires nothing. Fix it
-  before anything reads that file.
 
 
 ## RUN ORDER — Emma's call, 2026-08-15
@@ -1541,9 +1536,11 @@ recorded `P2600` confirms or refutes.
 
 `scripts/zipper-join.py` now runs its slots in this order, which matters because the first slot to
 claim a person in a round wins. Siblings are **not** a slot yet and should be added last, if at
-all. She also names a fifth kind worth surveying: *"there are other relationships there that are
-sometimes reported on Wikidata, like the relative role"* — `P1038` *relative* with `P1039` *kinship
-to subject*. Measure how much of it exists before building anything on it.
+all. **The fifth kind is surveyed** — `P1038` *relative* with `P1039` *kinship to subject*,
+`reports/p1038-relative-survey.md`, 2026-08-26. 26,724 of 2,246,827 stored items carry it,
+49,974 statements, 93% qualified. **71% of the kinships are ones a walk over our own parent and
+child edges already produces** (uncle, grandfather, nephew, cousin); the **29%** that are not —
+in-law, step, adoptive, foster, godparent — are the only part worth building on. Nothing built.
 
 **And the point that stops a whole category of wrong stopping:** *"no ancestors isn't a point to
 stop... It doesn't mean that the ancestors aren't on Wikidata. That's not what it means... at this

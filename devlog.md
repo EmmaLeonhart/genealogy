@@ -14856,3 +14856,45 @@ must hold more than 50 CJK-scripted groups, and no group may be one shared surna
 sibship.
 
 **1,358 passed, 0 failed.**
+
+## 2026-08-26 — `P1038` *relative* surveyed, and 71% of it is already in our tree
+
+Emma, 2026-08-25, after ranking parents / spouses / children / siblings, named a fifth:
+*"there are other relationships there that are sometimes reported on Wikidata, like the relative
+role"*. The instruction was to **measure before building anything on it**.
+`scripts/survey-p1038-relative.py` → `reports/p1038-relative-survey.md` and
+`reports/p1038-relative.tsv` (49,974 rows, one per statement). Nothing built.
+
+| | |
+| --- | ---: |
+| items scanned | 2,247,041 |
+| carrying `P1038` *relative* | **26,724** (1.2%) |
+| statements | 49,974 |
+| with no `P1039` *kinship to subject* | 3,651 (7%) |
+
+**The headline is the split, not the total.** Of the 46,646 qualified statements, **71% record a
+kinship a walk over our own `P22`/`P25`/`P40` edges already produces** — *uncle*, *grandfather*,
+*nephew*, *grandson*, *cousin*. Recording those adds nothing. The **29%** that do not follow from
+any GEDCOM edge are the slice with information in it: *son-in-law* 2,090, *brother-in-law* 1,916,
+*adoptive father* 1,716, *adopted son* 1,590, *father-in-law* 1,320, and 300-odd rarer kinds down
+to *stepfather-in-law* at 1. That split is a keyword rule over the English label and the report
+says so; it answers *is there anything here* and should not carry more weight than that.
+
+**Cheap by construction**: a byte test for `"P1038"` on each raw line, with a JSON parse only of
+the lines that hold one. 2,248 shards in **91 seconds**.
+
+**Cross-checked rather than trusted.** The scan read 2,247,041 lines against the store index's
+2,246,827 distinct QIDs — a difference of 214. A scan that had silently stopped early would have
+looked exactly like a property that is rarer than it is, which is this week's recurring failure.
+Two smaller mismatches were chased rather than left: 26,724 items carry the property but only
+26,706 appear in the TSV, because 15 have nothing but deprecated statements; the report now
+carries that row.
+
+**`CLAUDE.md` was quoting a stale store size** — 1,408,402 items, in the § *"Is X present?"*
+paragraph that exists to state the bound on an absence. It is 2,246,827.
+
+Also drained from `queue.md`: the `scripts/build-edit-objects.py` marker-guard defect, which is
+already fixed — `label_slots()` applies `labels.is_marker_label` at both emission sites and
+`tests/test_edit_object_labels.py` pins it. The queue item was describing work that had been done.
+
+**1,358 passed, 0 failed.**

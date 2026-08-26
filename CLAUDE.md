@@ -684,8 +684,8 @@ material this project works with, not which container it sits in. So:
   `exports/gaps/export-Bio-…`. On Wikidata: none of the 35 carry an item."
 - **Say when the absence is bounded.** Our exports are a sample of Geni, so
   absent-from-corpus never means absent-from-Geni. The Wikidata store is a
-  *Geni-shaped slice* — 1,408,402 items seeded from P2600 holders and their
-  neighbours — so absent-from-store never means absent-from-Wikidata. Both
+  *Geni-shaped slice* — **2,246,827** items as of 2026-08-26, seeded from P2600
+  holders and their neighbours — so absent-from-store never means absent-from-Wikidata. Both
   limits get stated, not implied.
 
 **How it went wrong, because the shape recurs.** Asked whether the pre-1600s
