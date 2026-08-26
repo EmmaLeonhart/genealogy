@@ -71,6 +71,12 @@ LAST	Len	"Borsheim"
 LAST	Lmul	"Borsheim"
 LAST	P31	Q101352
 
+# Bryniolfsson -- patronymic, 1 bearer(s) in the batches
+CREATE
+LAST	Len	"Bryniolfsson"
+LAST	Lmul	"Bryniolfsson"
+LAST	P31	Q110874
+
 # Foss-Eikeland -- family, 1 bearer(s) in the batches
 CREATE
 LAST	Len	"Foss-Eikeland"
@@ -125,6 +131,12 @@ LAST	Len	"Jonson"
 LAST	Lmul	"Jonson"
 LAST	P31	Q110874
 
+# Knutsdotter -- given, 1 bearer(s) in the batches
+CREATE
+LAST	Len	"Knutsdotter"
+LAST	Lmul	"Knutsdotter"
+LAST	P31	Q202444
+
 # Landsnes -- family, 1 bearer(s) in the batches
 CREATE
 LAST	Len	"Landsnes"
@@ -142,6 +154,12 @@ CREATE
 LAST	Len	"Larsson"
 LAST	Lmul	"Larsson"
 LAST	P31	Q110874
+
+# Lejon -- family, 1 bearer(s) in the batches
+CREATE
+LAST	Len	"Lejon"
+LAST	Lmul	"Lejon"
+LAST	P31	Q101352
 
 # Mele -- family, 1 bearer(s) in the batches
 CREATE
@@ -184,6 +202,12 @@ CREATE
 LAST	Len	"Person"
 LAST	Lmul	"Person"
 LAST	P31	Q110874
+
+# Ramborg -- given, 1 bearer(s) in the batches
+CREATE
+LAST	Len	"Ramborg"
+LAST	Lmul	"Ramborg"
+LAST	P31	Q202444
 
 # Rasmusdottir -- given, 1 bearer(s) in the batches
 CREATE

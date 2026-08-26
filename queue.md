@@ -258,9 +258,10 @@ Over the 71 ledger people, freshly fetched through `genimerge.wikidata.full_enti
 | **missing** — emittable, and the only column a batch may project from | 77 |
 | **CONFLICT** — both hold it, values differ | **4** |
 
-The four are genuine and are hers to settle: Rozala d'Ivrea died 13 Dec or 7 Feb 1003; Knut
-Valdemarsson 15 or 5 Oct 1260; Arne Olaus Fjørtoft Garborg 12 or 10 Oct 1968; Helena
-Guttormsdatter born 1167 or 1170.
+The four are genuine and **go out as second statements cited to Geni**, decided 2026-08-26:
+Rozala d'Ivrea died 13 Dec or 7 Feb 1003; Knut Valdemarsson 15 or 5 Oct 1260; Arne Olaus
+Fjørtoft Garborg 12 or 10 Oct 1968; Helena Guttormsdatter born 1167 or 1170. Nothing on
+Wikidata is replaced; ours goes in beside it and the item records both.
 
 **It found twelve more conflicts that were the comparator, not the model** — and that is worth
 keeping in mind before trusting any diff's first output. Five `P1449` *nickname* rows compared
@@ -293,33 +294,6 @@ almost none carry a Geni id. 89 lack `P21` *sex or gender* and 80 lack `P22` *fa
 `Q123511663` are classified as Shinto deities there. The projection withheld both — a `CONFLICT`
 is never emitted — so the design held, but **the model is asserting `Q5` for a divine-descent
 lineage and that is a rule, not two rows.**
-
-## NEEDS-DECISION — how should the Izumo ancestral figures be classified?
-
-`P31` *instance of* → `Q5` *human* is what our model emits for everyone. Wikidata classifies at
-least two of the Izumo line as `Q524158` *kami*. The line is a divine descent and where it stops
-being divine is a judgement, not a lookup. **Emma's call**; until then the model keeps asserting
-`Q5` and the projection keeps withholding it, which is safe but silent.
-
-**Four more conflicts are `P22` *father*, and one of them is now settled — against Wikidata.**
-Otoyama 26 `Q95161949`: Geni gives his father as Izumo no Hatayasu `Q95161958`, and the chart
-agrees — Hatayasu#24 → Hiroshima#25 **and** Hatayasu#24 → Otoyama#26, so the two are **brothers**.
-Wikidata gives Otoyama's father as **Hiroshima**, who is his brother and his immediate
-predecessor in the succession, 25 → 26.
-
-**That is succession encoded as parentage, on Wikidata's side**, and it is the same shape Emma's
-ruling was made from: *"Takanori 81 and Takatomi 80 held consecutive seats and were brothers."*
-It recurs at 25/26.
-
-**20 of the chart's 88 sibling pairs hold consecutive seat numbers**, so there are twenty places
-where this confusion is possible and at least one where it happened. That is worth a pass of its
-own — see below — and it also raises what the 80 *missing* `P22` rows are worth: Wikidata's Izumo
-parentage is demonstrably unreliable exactly where it exists.
-
-**The remaining three conflicts are a different thing** and are not succession: Karahisa and
-Izumo-Furune both have Geni father *Ada no Mikoto* `Q135579362` against Wikidata's
-*Yomorosunomikoto* `Q135579361`, and Tsusa has Geni *Kushiyatama* against `伊佐我命`. Two children
-disagreeing the same way is one generation disputed, not a succession artefact. Emma's to settle.
 
 ## Checked: succession-as-parentage on Wikidata is ONE case, not a pattern
 
@@ -1621,22 +1595,22 @@ so filtering a ring they are not in returned nothing and read as "no work to do"
 | already judged to have an item (`--known`) | 8 |
 | born 1880 or later | 4 |
 | already carry a `P2600` elsewhere | 9 |
-| held by the duplicate guard | 2 |
-| **created** | **21** |
+| held by the duplicate guard | 0 |
+| **created** | **23** |
 
-21 + 2 held + Emma, who has `Q140568870` and needs an id rather than a creation, is **24** — the
-spine count in `reports/the-spine.md`, arrived at independently.
+23 + Emma, who has `Q140568870` and needs an id rather than a creation, is **24** — the spine
+count in `reports/the-spine.md`, arrived at independently.
 
-**The two held are false positives, and are recorded rather than overridden.** Ramborg
-Knutsdotter Lejon is held because her parent `Q5915800` has unmatched children `Q4955715`
-*Ingegerd Knutsdotter* and `Q16595443` *Katarina Knutsdotter* — her **sisters**, neither of them
-Ramborg. Algot Bryniolfsson is held because `Q101247444` has an unmatched child `Q101247439`
-*NN Bryn**olvsdotter*** — a daughter, where Algot is *Bryniolfs**son***. Both could be released on
-the closed-sibling-set rule Emma approved for spine step 18, but the guard's own reasoning stands:
-holding a real person costs a day, creating a duplicate costs her a manual merge on a public
-database.
+**The two the guard held were false positives and Emma released them, 2026-08-26.** The unmatched
+item is a *named other person* in both cases, which the guard cannot see because it compares QIDs
+and not labels: Ramborg Knutsdotter Lejon's parent `Q5915800` has `Q4955715` *Ingegerd
+Knutsdotter* and `Q16595443` *Katarina Knutsdotter* — her sisters — and Algot Bryniolfsson's
+`Q101247444` has `Q101247439` *NN Brynolvsdotter*, a **-dotter** where Algot is a **-son**.
+`RELEASED_FROM_DUPLICATE_GUARD` in `scripts/build-garborg-day.py` carries both with their reason.
+Releasing Ramborg pulled her married surname *Lejon* into `wikidata-garborg-name-items.qs`, which
+went 41 → 42 creations; `tests/test_garborg_day_batch.py` caught that before the run did.
 
-**Still needed, and it is not optional:** the 21 cannot link to *each other* in one run, because
+**Still needed, and it is not optional:** the 23 cannot link to *each other* in one run, because
 `LAST` names only the most recent item. Everything joining them to an item that already exists is
 emitted both ways in this file; the new-to-new links wait for
 `scripts/build-missing-reciprocals.py` once the QIDs exist. That is the one place the two-file

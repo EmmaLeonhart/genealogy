@@ -8,8 +8,6 @@ geni_id	label	why
 6000000008592343633		Wikidata already links this profile as Q3769073 (out/wikidata/p2600-all.tsv) - creating it would duplicate
 6000000001266578142		Wikidata already links this profile as Q43974 (out/wikidata/p2600-all.tsv) - creating it would duplicate
 6000000002457013227		Wikidata already links this profile as Q3044 (out/wikidata/p2600-all.tsv) - creating it would duplicate
-6000000004870648136	Ramborg Knutsdotter Lejon	HELD by the duplicate guard: parent Q5915800 has unmatched child item(s) Q4955715;Q16595443 - this person may already be one
-6000000005795638082	Algot Bryniolfsson	HELD by the duplicate guard: parent Q101247444 has unmatched child item(s) Q101247439 - this person may already be one
 6000000003492005116	Aadne Eivindson Garborg	P3373 sibling Q141162043 held: over the 10-a-day cap
 6000000003492005116	Aadne Eivindson Garborg	P3373 sibling Q141162044 held: over the 10-a-day cap
 6000000003492005116	Aadne Eivindson Garborg	P3373 sibling Q141162045 held: over the 10-a-day cap
@@ -164,6 +162,8 @@ geni_id	label	why
 6000000037693739967	Arne Garborg Tunheim	P3373 sibling Q141168809 held: over the 10-a-day cap
 6000000037693739967	Arne Garborg Tunheim	P3373 sibling Q141168787 held: over the 10-a-day cap
 6000000037693739967	Arne Garborg Tunheim	P3373 sibling Q141169041 held: over the 10-a-day cap
+6000000005795638082	Algot Bryniolfsson	no transliteration for every token
+6000000005795638082	Algot Bryniolfsson	name item missing: Bryniolfsson (patronymic): not in the plan
 6000000005609547544	Anne Berta Osmundsdatter Nese	no transliteration for every token
 6000000005609547544	Anne Berta Osmundsdatter Nese	name item missing: Anne (given): AMBIGUOUS - review, do not create
 6000000005609547544	Anne Berta Osmundsdatter Nese	name item missing: Osmundsdatter (patronymic): create
@@ -230,6 +230,10 @@ geni_id	label	why
 6000000020344732085	Rakel Rasmusdottir Lea	no transliteration for every token
 6000000020344732085	Rakel Rasmusdottir Lea	name item missing: Rasmusdottir (given): not in the plan
 6000000020344732085	Rakel Rasmusdottir Lea	name item missing: Borsheim (married): create
+6000000004870648136	Ramborg Knutsdotter Lejon	no transliteration for every token
+6000000004870648136	Ramborg Knutsdotter Lejon	name item missing: Ramborg (given): not in the plan
+6000000004870648136	Ramborg Knutsdotter Lejon	name item missing: Knutsdotter (given): not in the plan
+6000000004870648136	Ramborg Knutsdotter Lejon	name item missing: Lejon (married): not in the plan
 6000000003043806217	Sissel Jonsdatter Aukland	no transliteration for every token
 6000000003043806217	Sissel Jonsdatter Aukland	name item missing: Jonsdatter (patronymic): create
 6000000003043806217	Sissel Jonsdatter Aukland	name item missing: Talje (married): not in the plan

@@ -1693,6 +1693,15 @@ Practical consequences:
   statement cited to Geni** over editing the existing one.
 - The measurement that matters for any field is *how many people have it in Geni
   and lack it on Wikidata*, not *how often the two disagree*.
+- **A conflict is never routed to Emma for a ruling.** The pipeline emits the Geni
+  value beside the existing statement, cited `S2600`, and moves on;
+  `scripts/build-from-diff.py` does this for every `CONFLICT` row of every diff.
+  Twelve conflicts were put to her as decisions on 2026-08-26 and her answer was that
+  the question should not have been asked: *"those seemed like simple data issues that
+  by design were supposed to get pushed onto wikidata"*, *"it's not your job to make
+  the tree correct it's your job to set up a pipeline that gets the exported geni data
+  onto wikidata"*, and — the reason it can never be per-case — ***"we are doing over a
+  million people here."***
 
 `reports/model.md` holds the field-by-field version of that table;
 `reports/names-spec.md` is the first spec written against it.

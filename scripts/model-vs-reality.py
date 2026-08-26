@@ -65,6 +65,9 @@ R = ROOT / "reports"
 ITEMS = ROOT / "out" / "model-vs-reality-items.json"
 
 HUMAN = "Q5"
+#: `Q524158` *kami*: where the item already says so, the model says so too rather than
+#: asserting `Q5` *human* at a divine descent. Emma, 2026-08-26.
+KAMI = "Q524158"
 SEX = {"M": "Q6581097", "F": "Q6581072"}
 #: Relationship properties, and the column of ours each faces.
 RELS = (("P22", "father"), ("P25", "mother"), ("P26", "spouses"), ("P40", "children"))
@@ -234,10 +237,12 @@ def main():
             continue
         f_ = facts.get(geni, {})
         claims = item.get("claims", {})
+        live_p31 = {value_of(st.get("mainsnak", {})) for st in claims.get("P31", [])
+                    if st.get("rank") != "deprecated"}
 
         # ---- the model ---------------------------------------------------------------
         model = collections.defaultdict(set)
-        model["P31"].add(HUMAN)
+        model["P31"].add(KAMI if KAMI in live_p31 else HUMAN)
         if f_.get("sex") in SEX:
             model["P21"].add(SEX[f_["sex"]])
         model["P2600"].add(geni)
@@ -318,7 +323,7 @@ def main():
     for p in props:
         print(f"   {p:<10}{patterns[(p,'missing')]:>9,}{patterns[(p,'extra')]:>8,}"
               f"{patterns[(p,'CONFLICT')]:>10,}")
-    print(f"\nwrote {Path(args.out).relative_to(ROOT)}")
+    print(f"\nwrote {Path(args.out).resolve().relative_to(ROOT)}")
     print("NOTHING IS EMITTED. A batch is a projection of the `missing` column and of "
           "nothing else.")
 

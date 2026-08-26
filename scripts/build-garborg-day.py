@@ -77,6 +77,23 @@ _siblings_emitted = []
 
 SEX = {"M": "Q6581097", "F": "Q6581072"}
 
+#: Geni ids released from the duplicate guard by hand, with the unmatched item that held them.
+#: The guard refuses to create anybody whose parent has a `P40` child item we have not matched,
+#: because the person may BE that item. It is conservative on purpose and these two are false
+#: positives: the unmatched item is a NAMED OTHER PERSON, which the guard cannot see because it
+#: compares QIDs and not labels.
+#:
+#: Emma released both on 2026-08-26 when they were put to her.
+RELEASED_FROM_DUPLICATE_GUARD = {
+    # Ramborg Knutsdotter Lejon. Her parent `Q5915800` has unmatched children `Q4955715`
+    # *Ingegerd Knutsdotter* and `Q16595443` *Katarina Knutsdotter* -- her sisters, both named,
+    # neither of them Ramborg.
+    "6000000004870648136": "the two unmatched children are her named sisters",
+    # Algot Bryniolfsson. `Q101247444` has unmatched child `Q101247439` *NN Brynolvsdotter* --
+    # a daughter, where Algot is a son. The patronymic settles it.
+    "6000000005795638082": "the unmatched child is a -dotter and Algot is a -son",
+}
+
 
 def sibling_budget_left():
     return SIBLING_CAP - len(_siblings_emitted)
@@ -760,6 +777,10 @@ def main():
     claimed = set(have.values())
     blocked = {}
     for g in list(frontier):
+        if g in RELEASED_FROM_DUPLICATE_GUARD:
+            print(f"   released from the duplicate guard: {labels.get(g, g)} -- "
+                  f"{RELEASED_FROM_DUPLICATE_GUARD[g]}")
+            continue
         for parent in (father.get(g), mother.get(g)):
             pq = have.get(parent) if parent else None
             if not pq:

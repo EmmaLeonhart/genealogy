@@ -14667,3 +14667,54 @@ that does not exist; the snapshot one fires on the `{}` that double-unwrapping p
 **A guard that has not been seen to fail is not known to guard.**
 
 **1,321 passed, 0 failed.**
+
+## 2026-08-26 — five blockers put to Emma, and four of them should not have been questions
+
+The status report's blocker list was three `NEEDS-DECISION` bullets holding five decisions. She
+asked for an `AskUserQuestion` on each; she answered all five, and then said what the exercise was
+worth: *"those seemed like simple data issues that by design were supposed to get pushed onto
+wikidata"*, *"it's not your job to make the tree correct it's your job to set up a pipeline that
+gets the exported geni data onto wikidata"*, and ***"we are doing over a million people here."***
+
+**Twelve conflicts is a rounding error against the corpus, and three of the five bullets were
+twelve conflicts.** They are now handled by one rule with no allowlist and no case work.
+
+| decision | outcome |
+| --- | --- |
+| Izumo `P31` — `Q5` *human* vs `Q524158` *kami* | the model adopts *kami* where the item already says so |
+| 21 live `P1545` *series ordinal* on lone given names | left alone |
+| 4 Garborg date conflicts | emitted beside the existing statement, cited `S2600` |
+| 3 Izumo `P22` *father* disagreements | same |
+| Ramborg and Algot held by the duplicate guard | both released, both created |
+
+**`CONFLICT` is no longer refused by `scripts/build-from-diff.py`.** It emits the Geni value as a
+**second** statement; nothing on Wikidata is replaced and the item ends up recording both readings.
+That is `CLAUDE.md` § *The purpose is to ADD to Wikidata, not to correct it* — *"prefer adding a
+second statement cited to Geni over editing the existing one"* — which was already the written rule
+and was being applied by hand, one conflict at a time, to a corpus of 546 exports.
+`reports/wikidata-from-diff.qs` goes 74 → **78 statements**; the new
+`reports/wikidata-from-diff-izumo.qs` is **6**, built with `--conflicts-only` because that diff's
+`missing` column is 351 statements and nobody asked for those.
+
+**The `kami` rule removed two conflicts by fixing one thing.** Kushiyatama `Q86734749` and Raihita
+`Q123511663` are `Q524158` *kami* on Wikidata and the model was asserting `Q5` *human* at a divine
+descent. Izumo conflicts 8 → 6. The alternative she rejected was naming a seat in the Izumo no Kuni
+no Miyatsuko succession above which the line is divine — a judgement, where this is a lookup. It is
+deliberately narrow: only that one class is adopted, never whatever `P31` an item happens to carry.
+
+**Releasing the two guarded people cost a name item, which a test found and the run would not
+have.** The duplicate guard refuses anyone whose parent has an unmatched `P40` child item, because
+they may BE it. It compares QIDs and not labels, so it cannot see that `Q4955715` *Ingegerd
+Knutsdotter* and `Q16595443` *Katarina Knutsdotter* are Ramborg's **named sisters**, or that
+`Q101247439` *NN Brynolvsdotter* is a **-dotter** where Algot Bryniolfsson is a **-son**.
+`RELEASED_FROM_DUPLICATE_GUARD` carries both with the reason. The spine batch goes 21 → **23
+creations**; Ramborg brought her married surname *Lejon*, which had no Wikidata item and none
+proposed, so her second `P734` *family name* could never have been emitted.
+`tests/test_garborg_day_batch.py` failed on exactly that, and
+`reports/wikidata-garborg-name-items.qs` went 41 → 42.
+
+**Two cosmetic crashes fixed on the way**: both scripts printed their output path through
+`Path.relative_to(ROOT)`, which raises on a relative `--out`. The file was written first, so the
+traceback arrived after the work was done and read like a failure that was not one.
+
+**1,328 passed, 0 failed.**

@@ -1,11 +1,13 @@
-# A PROJECTION OF THE DIFF, and nothing else.
+# A PROJECTION OF model-vs-reality.tsv, and nothing else.
 #
-# Every line below exists because reports/model-vs-reality.tsv says the item
+# Every line below exists because model-vs-reality.tsv says the item
 # does not hold it. No statement is here because a rule produced it.
 #
 # NOT emitted: `extra` (the item holds it and the model does not -- her hand
-# work), `CONFLICT` (both hold it with different values -- hers to settle),
-# labels and aliases (they REPLACE, and hers are better).
+# work), labels and aliases (they REPLACE, and hers are better).
+#
+# A CONFLICT IS emitted, as a SECOND statement BESIDE the existing one and never
+# in place of it. The item ends up recording both readings, ours cited to Geni.
 #
 # QUEUED, NEVER RUN. Wikidata editing in this repo starts 2026-09-01.
 
@@ -18,6 +20,8 @@ Q116150300	P735	Q16275183	S2600	"305332989800002467"
 
 # Rozala d'Ivrea  Q466257  <- geni:4258970970100070152
 Q466257	P1449	en:"de Flandre"	S2600	"4258970970100070152"
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q466257	P570	+1003-12-13T00:00:00Z/11	S2600	"4258970970100070152"
 
 # Giséle de Cysoing  Q284400  <- geni:6000000000424624719
 Q284400	P1449	en:"Gisela von Verona"	S2600	"6000000000424624719"
@@ -28,6 +32,10 @@ Q274606	P1449	en:"Perngarius"	S2600	"6000000001669654269"
 # Knut Algotsson  Q5915800  <- geni:6000000002572699392
 Q5915800	P569	+1330-00-00T00:00:00Z/9	S2600	"6000000002572699392"
 Q5915800	P570	+1393-00-00T00:00:00Z/9	S2600	"6000000002572699392"
+
+# Knut Valdemarsson Duke of Estland, Blekinge and Lolland  Q3743799  <- geni:6000000003076221220
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q3743799	P570	+1260-10-15T00:00:00Z/11	S2600	"6000000003076221220"
 
 # Svantepolk Knutsson Viby Skarsholmsätten  Q6197518  <- geni:6000000003418900347
 Q6197518	P1449	en:"Skarsholm"	S2600	"6000000003418900347"
@@ -123,6 +131,8 @@ Q141178149	P1449	en:"Anna Farteignsdotter Galte"	S2600	"6000000005264351012"
 Q3143008	P25	Q141178201	S2600	"6000000005606976813"
 
 # Arne Olaus Fjørtoft Garborg  Q11959067  <- geni:6000000005607426327
+# P570 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q11959067	P570	+1968-10-12T00:00:00Z/11	S2600	"6000000005607426327"
 Q11959067	P735	Q10608165	S2600	"6000000005607426327"
 
 # Jon Larsson Li  Q141180408  <- geni:6000000005609534542
@@ -166,3 +176,7 @@ Q141178197	P26	Q138474188	S2600	"6000000021198042859"
 
 # Thoralf Tunheim  Q141169062  <- geni:6000000033773881611
 Q141169062	P1449	en:"Torolf Tunheim"	S2600	"6000000033773881611"
+
+# Helena Guttormsdatter  Q4953376  <- geni:6000000034013672054
+# P569 disagrees with what the item already states, which STAYS. This goes in beside it.
+Q4953376	P569	+1167-00-00T00:00:00Z/9	S2600	"6000000034013672054"
