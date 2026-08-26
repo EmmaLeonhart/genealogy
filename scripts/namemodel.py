@@ -271,7 +271,16 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None,
             continue
 
         if usage == "given":
-            quals = [(SERIES_ORDINAL, str(ordinal))]
+            # **`P1545` *series ordinal* only where there is more than one given name.**
+            # Emma, 2026-08-25, on why she has been running batches only in part:
+            # *"they have consistently included things I did not want, such as the series
+            # orginal 1 on peoples given names when there is only one given name"*.
+            #
+            # It orders a person's several given names against each other. On somebody with
+            # one, there is nothing to order and the qualifier asserts a sequence that does
+            # not exist -- the same objection that already restricts `P7452` *reason for
+            # preferred rank* to people who have a middle name.
+            quals = [(SERIES_ORDINAL, str(ordinal))] if given_count > 1 else []
             # **`P7452` -> `Q3409033` *usual forename* only where there IS a middle
             # name.** Emma, 2026-08-24: *"usual forename only applies when there is a
             # middle name"*. It exists to say which of several given names is the one

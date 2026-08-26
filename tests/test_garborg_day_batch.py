@@ -286,8 +286,18 @@ def test_no_existing_item_is_left_without_a_parent_link_it_should_have():
     assert not missing, missing
 
     # And the capability is real: the batch does emit parent links for the frontier.
-    assert re.search(r"^LAST	P22	Q[1-9][0-9]*", text, re.M), (
-        "no parent link anywhere in the batch -- section 1/2 has stopped emitting P22")
+    #
+    # **Either direction counts.** This asserted `LAST<TAB>P22<TAB>Q…` only, which was the
+    # sole form that existed when it was written. Since 2026-08-25 a created person's
+    # relationships are emitted BOTH ways in the same run -- `Q… P22 LAST` names the new item
+    # as the parent of somebody who already exists -- and a roster batch can legitimately
+    # produce only the reciprocal form, when none of the created people have a parent who
+    # already carries a QID. Requiring the subject form alone made a correctly two-way batch
+    # look like a regression.
+    assert (re.search(r"^LAST	P22	Q[1-9][0-9]*", text, re.M)
+            or re.search(r"^Q[1-9][0-9]*	P22	LAST", text, re.M)), (
+        "no parent link anywhere in the batch, in either direction -- "
+        "section 1/2 has stopped emitting P22")
 
 
 def test_a_property_the_item_already_has_is_not_emitted_again():

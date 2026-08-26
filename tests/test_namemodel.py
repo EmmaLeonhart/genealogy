@@ -123,11 +123,20 @@ def test_usual_forename_is_emitted_ONLY_where_there_is_a_middle_name():
     **This test previously asserted the opposite** — that a lone given name carries it —
     which is exactly what the generator was doing when she corrected it.
     """
-    # One given name: keeps the ordinal, loses the usual-forename qualifier.
+    # One given name: NO ordinal and no usual-forename qualifier.
+    #
+    # **The ordinal half of this changed on 2026-08-25**, and the test previously required
+    # the opposite. Emma, on why she had been running the generated batches only in part:
+    # *"they have consistently included things I did not want, such as the series orginal 1
+    # on peoples given names when there is only one given name"*. `P1545` *series ordinal*
+    # orders a person's several given names against each other; with one there is nothing to
+    # order, and the qualifier asserts a sequence that does not exist. Same objection as the
+    # usual-forename one directly below it.
     lines, _notes = statements_for("Samuel Eivindsen Garborg", PLAN, "1")
     given = [ln for ln in lines if ln[0] == GIVEN_NAME][0]
     assert given[1] == "Q629347"
-    assert (SERIES_ORDINAL, "1") in given[2]
+    assert not any(q[0] == SERIES_ORDINAL for q in given[2]), (
+        "a lone given name has nothing to be ordinal 1 OF")
     assert ("P7452", USUAL_FORENAME) not in given[2], (
         "a lone given name is not a *usual* forename — there is nothing to contrast it "
         "with")

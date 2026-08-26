@@ -188,8 +188,35 @@ def mutually_unique(edges):
     return [(a, b, e) for a, b, e in edges if la[a] == 1 and lb[b] == 1]
 
 
-def by_date(left, right, our_year, their_year):
+#: How far apart two birth years may be and still be one person, PER SLOT.
+#:
+#: **The child slot gets 0, and that is measured rather than cautious.** A three-year window is
+#: exactly the gap between siblings, so inside a sibship it does not identify anybody -- it picks
+#: whichever brother happens to be nearest in age. Checked against `P21` *sex or gender*, which
+#: refutes about half of arbitrary pairs by chance and so gives a scale to read against:
+#:
+#:     |year gap|   refuted   kept    refute rate
+#:            0        127   2,661           4.6%
+#:            1        122     285          30.0%
+#:            2        154     211          42.2%
+#:            3        149     161          48.1%
+#:
+#: **At three years the rate is 48.1%, which is indistinguishable from random pairing.** Those
+#: pairs carry no information at all. At an exact year it is 4.6%, comparable to the strongest
+#: cells in the join. The signal is entirely in the exact match: 2,661 of the 3,318 child pairs
+#: the date step produced had identical years, and dropping the other 657 costs 1.5% of the join
+#: to remove its worst-evidenced band.
+#:
+#: Parents and spouses keep `YEAR_TOLERANCE`, because there the candidate set is not a sibship
+#: and a soft medieval date genuinely wants slack. This is the same shape as the whole
+#: date-parser lesson in `CLAUDE.md`: a tolerance wide enough to swallow the answer is not
+#: leniency, it is a silent wrong answer.
+SLOT_YEAR_TOLERANCE = {"child": 0}
+
+
+def by_date(left, right, our_year, their_year, slot=""):
     """Sibling assignments that birth years settle. Unique both ways or nothing."""
+    tolerance = SLOT_YEAR_TOLERANCE.get(slot, YEAR_TOLERANCE)
     edges = []
     for a in left:
         ya = our_year.get(a)
@@ -199,7 +226,7 @@ def by_date(left, right, our_year, their_year):
             yb = their_year.get(b)
             if yb is None:
                 continue
-            if abs(ya - yb) <= YEAR_TOLERANCE:
+            if abs(ya - yb) <= tolerance:
                 edges.append((a, b, f"born {ya} vs {yb}"))
     return mutually_unique(edges)
 
@@ -369,7 +396,7 @@ def main():
                     found = [(left[0], right[0], "position")]
                     method = "solo"
                 else:
-                    found = by_date(left, right, our_year, their_year)
+                    found = by_date(left, right, our_year, their_year, slot)
                     method = "date"
                     if not found:
                         # A family name inherited from this very anchor cannot separate its own

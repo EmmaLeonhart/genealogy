@@ -14104,3 +14104,44 @@ are now enumerable in `reports/multi-parents-crossed.tsv`.
 Also recorded so it is not repeated: both Sapiega profiles behind `Q122925764` are already
 in the corpus, and our records hold **nothing but the father** for either. The `Forest`
 export she asked for is genuinely warranted here, unlike Obitake 23.
+
+## 2026-08-25 (late) — `LAST` works as a value, and the dictation is saved verbatim
+
+**Emma:** *"you never actually did the 2-way relationship addin qith the creation of items that
+is completely possible but you just decide to fuck off and no do it because it goes QID PID LAST
+instead of LAST PID QID."*
+
+She is right. `LAST` cannot be the value in a statement whose subject is *also* newly created —
+two items minted in one run cannot point at each other. That is a real limit and the one she
+described in her batch dictation. **It says nothing about a subject that already exists**:
+`Q141178381 P22 LAST` is ordinary QuickStatements. I generalised the narrow limit into "no
+reciprocals at all", built a day-late carry-forward around it, and left her fixing one-way links
+by hand. Every relationship to somebody who already holds a QID is now emitted both ways in the
+same run.
+
+**`P1545` on a lone given name is gone**, which is part of why she has been running batches only
+in part: *"they have consistently included things I did not want, such as the series orginal 1 on
+peoples given names when there is only one given name."* The ordinal orders several given names
+against each other; with one there is nothing to order. Same objection that already restricted
+`P7452`.
+
+**`docs/dictation/2026-08-25-batch-rules.md` holds her dictation verbatim**, at her instruction:
+*"Really save my dictation somewhere verbatim so you can't summarize it and have to use it
+directly."* `docs/batch-rules.md` is a reading of it and loses in any disagreement. The summary
+had reversed *"We create two parents, link them together"* into the opposite claim.
+
+**`--exclude` silently did nothing for `--roster` runs** — it lived inside the `--compose` branch.
+That is how a roster batch came out re-creating two people an earlier batch the same day had
+already given her. A guard that does not run is worse than none, because it gets reported as
+protection.
+
+**The ledger is rebuilt from her account**, `Special:Contributions/日巫女`, not from git history —
+git records what a batch *offered*, not what exists. It found 11 missing rows, including both
+people the previous batch would have duplicated.
+
+Two tests updated to match instructions she gave today, neither weakened: the `P22` assertion now
+accepts the reciprocal direction that did not exist when it was written, and the namemodel test
+now requires the absence of `P1545` on a lone given name where it previously required its
+presence.
+
+**1,301 passed, 0 failed.**

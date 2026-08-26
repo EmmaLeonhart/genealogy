@@ -8,62 +8,32 @@ Two independent checks, neither of which asks Wikidata anything: whether the two
 
 | slot | method | pairs | dated | dates >10y apart | independently checked | agree | disagree |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| father | solo | 11,600 | 4,574 | 13.2% | 3,193 | 99.3% | 0.7% |
-| child | name | 9,637 | 3,974 | 8.6% | 251 | 96.8% | 3.2% |
-| mother | solo | 9,418 | 2,964 | 10.7% | 3,096 | 99.5% | 0.5% |
-| spouse | solo | 5,175 | 2,386 | 10.7% | 501 | 96.0% | 4.0% |
-| child | date | 3,632 | 3,632 | -- | 130 | 93.1% | 6.9% |
-| child | solo | 3,326 | 1,098 | 11.1% | 67 | 85.1% | 14.9% |
-| spouse | name | 1,134 | 230 | 18.3% | 75 | 93.3% | 6.7% |
-| spouse | date | 732 | 732 | -- | 95 | 98.9% | 1.1% |
+| father | solo | 11,679 | 4,491 | 13.9% | 3,167 | 99.4% | 0.6% |
+| mother | solo | 9,494 | 2,896 | 10.7% | 3,051 | 99.4% | 0.6% |
+| child | date | 8,227 | 8,227 | -- | 372 | 95.7% | 4.3% |
+| child | name | 6,444 | 1,342 | 22.8% | 104 | 88.5% | 11.5% |
+| spouse | solo | 5,111 | 2,290 | 11.3% | 498 | 97.0% | 3.0% |
+| child | solo | 3,099 | 1,001 | 8.0% | 58 | 87.9% | 12.1% |
+| spouse | name | 1,154 | 232 | 23.3% | 70 | 91.4% | 8.6% |
+| spouse | date | 698 | 698 | -- | 92 | 97.8% | 2.2% |
 | father | name | 20 | 1 | 0.0% | 0 | -- | -- |
-| mother | name | 20 | 5 | 40.0% | 1 | 100.0% | 0.0% |
-| father | date | 10 | 10 | -- | 1 | 100.0% | 0.0% |
+| father | date | 16 | 16 | -- | 0 | -- | -- |
+| mother | name | 16 | 3 | 66.7% | 1 | 100.0% | 0.0% |
 | mother | date | 2 | 2 | -- | 0 | -- | -- |
 
 ## By slot
 
 | slot | pairs | dates >10y apart | independently checked | disagree |
 | --- | ---: | ---: | ---: | ---: |
-| child | 16,595 | 5.3% | 448 | 6.0% |
-| father | 11,630 | 13.2% | 3,194 | 0.7% |
-| mother | 9,440 | 10.8% | 3,097 | 0.5% |
-| spouse | 7,041 | 8.9% | 671 | 3.9% |
+| child | 17,770 | 3.7% | 534 | 6.6% |
+| father | 11,715 | 13.9% | 3,167 | 0.6% |
+| mother | 9,512 | 10.7% | 3,052 | 0.6% |
+| spouse | 6,963 | 9.7% | 660 | 3.5% |
 
 ## By method
 
 | method | pairs | dates >10y apart | independently checked | disagree |
 | --- | ---: | ---: | ---: | ---: |
-| solo | 29,519 | 11.8% | 6,857 | 1.0% |
-| name | 10,811 | 9.1% | 327 | 4.0% |
-| date | 4,376 | -- | 226 | 4.4% |
-
-## What this does and does not establish
-
-**Solo child is the weakest cell in the join, by a long way.** 14.9% independent disagreement
-against 0.7% for solo father and 0.5% for solo mother — twenty to thirty times. Emma called this
-before it was measured: *"Solo child says nothing unless there's some reason to match them lol."*
-A single unmatched person on each side is *trivially* unique, and uniqueness is not evidence when
-the set has one element. For parents that still lands right; for children it does not.
-
-**Why the two checks disagree about `solo`, and why the answer is a confound rather than a
-finding.** By independent check `solo` is the *best* method (1.0% disagreement); by dates it is
-the *worst* (11.8%). Those cannot both be a property of the method, and the reason is coverage:
-the independent sources are overwhelmingly parent-shaped — the structural walk alone supplies
-7,861 of them and works by walking `P22`/`P25` — so 3,194 of 11,630 father pairs get checked
-against only **448 of 16,595** child pairs. `solo` looks reliable largely because the pairs anyone
-can check are parents.
-
-**So the per-method margin is not readable as a ranking.** The per-cell table is; the margin is
-not. Do not quote "solo 1.0%" as the reliability of position-only matching.
-
-**The date column has its own bias and it points the other way.** Solo *parents* have the worst
-date disagreement in the table (13.2% father, 10.7% mother) while being the most independently
-corroborated. The likeliest reading is that parent pairs skew medieval, where both sides carry
-soft years, and a ten-year gap between two guesses is not a refutation. That is a hypothesis;
-nothing here tests it. **NEEDS-INVESTIGATION**, and it is a queue item rather than a conclusion.
-
-**What is NOT measured here.** Whether a pair is right. Both checks are proxies: dates can only
-say a pair is impossible, and independent agreement can only say two of our own methods concur.
-Emma's twenty hand verdicts in `reports/emma-judgments.tsv` are the only ground truth in the repo
-and there are twenty of them.
+| solo | 29,383 | 11.9% | 6,774 | 0.9% |
+| date | 8,943 | -- | 464 | 3.9% |
+| name | 7,634 | 22.9% | 175 | 10.3% |

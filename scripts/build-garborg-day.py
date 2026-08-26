@@ -544,19 +544,6 @@ def main():
         # irreproducibility would make a batch impossible to explain after the fact.
         rng = random.Random(args.seed)
         picked, why = compose(have, fam_rows, rng)
-        # Everyone an earlier batch TODAY already creates. The ledger only catches up once
-        # Emma has run the file, so within a single day this is the only thing that keeps
-        # two batches disjoint.
-        already = set()
-        for path in args.exclude:
-            text = Path(path).read_text(encoding="utf-8")
-            already |= set(re.findall(r'P2600	"(\d+)"', text))
-        if already:
-            drop = [g for g in picked if g in already]
-            for g in drop:
-                picked.pop(g)
-            print(f"--exclude: {len(already)} already created by an earlier batch today, "
-                  f"{len(drop)} of them dropped from this one")
         print("\ncomposition, per docs/batch-rules.md:")
         for line in why:
             print("   " + line)
@@ -567,6 +554,27 @@ def main():
               f"(the unrestricted ring would have been {before})")
     else:
         compose_why = {}
+
+    # **`--exclude` applies to EVERY batch shape, not only `--compose`.** It lived inside the
+    # compose branch, so a `--roster` run ignored it completely -- which is how a roster batch
+    # came out re-creating two people an earlier batch the same day had already given Emma.
+    # A guard that silently does not run is worse than none, because it gets reported as
+    # protection. Her verdict on exactly that: *"you even said you deduplicated and then you
+    # just didn't."*
+    #
+    # The ledger only catches up once she has actually run a file, so within a single day this
+    # is the only thing keeping two batches disjoint.
+    already = set()
+    for path in args.exclude:
+        already |= set(re.findall('P2600\\t"(\\d+)"',
+                                  Path(path).read_text(encoding="utf-8")))
+    if already:
+        drop = [g for g in frontier if g in already]
+        for g in drop:
+            frontier.pop(g, None)
+        print(f"--exclude: {len(already)} created by an earlier batch today, "
+              f"{len(drop)} of them dropped from this one")
+
 
     ids = set(frontier) | set(have)
     facts, labels = {}, {}
@@ -889,18 +897,48 @@ def main():
                                 ("P570", f["death_date_iso"], f["death_date_precision"])):
             if iso and prec:
                 lines.append(f"LAST\t{prop}\t{iso}/{prec}{ref(g)}")
-        for prop, target in (("P22", father.get(g)), ("P25", mother.get(g))):
+        # **`LAST` IS valid as a VALUE, and this batch never used it.**
+        #
+        # Emma, 2026-08-25: *"you never actually did the 2-way relationship addin qith the
+        # creation of items that is completely possible but you just decide to fuck off and
+        # no do it because it goes QID PID LAST instead of LAST PID QID"*.
+        #
+        # She is right and the error was mine. `LAST` cannot be the value in a statement
+        # whose subject is *also* newly created -- two items minted in one run cannot point
+        # at each other, because `LAST` names only the most recent. That is a real limit and
+        # it is the one she described in the batch-rules dictation. **It says nothing about a
+        # statement whose subject already exists**: `Q467497 P40 LAST` is ordinary
+        # QuickStatements and resolves to the item this block just made.
+        #
+        # Generalising the narrow limit into "no reciprocals at all" is what produced the
+        # one-way links she has been having to fix by hand, and `build-missing-reciprocals.py`
+        # exists only because of it. Every relationship to somebody who ALREADY has a QID is
+        # now emitted in both directions in the same run.
+        reciprocal = []
+        for prop, target, back in (("P22", father.get(g), "P40"),
+                                   ("P25", mother.get(g), "P40")):
             if target and target in have:
                 lines.append(f"LAST\t{prop}\t{have[target]}{ref(g)}")
+                reciprocal.append((have[target], back, g))
         for sp in sorted(spouses.get(g, ())):
             if sp in have:
                 lines.append(f"LAST\tP26\t{have[sp]}{ref(g)}")
+                reciprocal.append((have[sp], "P26", g))
         for sib in sorted(siblings.get(g, ())):
             if sib in have:
                 lines.append(f"LAST\tP3373\t{have[sib]}{ref(g)}")
+                reciprocal.append((have[sib], "P3373", g))
         for kid in sorted(children.get(g, ())):
             if kid in have:
                 lines.append(f"LAST\tP40\t{have[kid]}{ref(g)}")
+                sex_of = (facts.get(g, {}) or {}).get("sex", "")
+                reciprocal.append((have[kid], "P22" if sex_of == "M" else "P25", g))
+
+        # **The other direction, in the SAME run.** `Q… P… LAST` -- the subject already
+        # exists, so QuickStatements resolves `LAST` to the item created just above.
+        # This is what makes the batch two-way instead of leaving one-way links behind.
+        for subject, prop, source in reciprocal:
+            lines.append(f"{subject}\t{prop}\tLAST{ref(source)}")
 
         # The name model. Emma, 2026-08-24: *"we should be modelling the names
         # properly, which he didn't do."* Only tokens whose item ALREADY exists --
