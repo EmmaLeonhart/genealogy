@@ -366,10 +366,13 @@ the new people only to what already exists.
 
 **Outstanding on this item:**
 
-- **BLOCKED-ON-USER-ACTION — `reports/wikidata-garborg-name-items.qs` must run first.**
-  **45** items. Nothing can point at a name item until it exists, so this file gates the
-  `P734` *family name*, `P735` *given name* and `P5056` *patronym or matronym* statements
-  for everybody. Unblock signal: those QIDs appearing on Wikidata.
+- **NOT a blocker, and never was — `reports/wikidata-garborg-name-items.qs`.** It said it
+  had to run first because *"QuickStatements cannot point at an item a `CREATE` in the same
+  batch just minted"*, which is false: that is what `LAST` does. It now creates each name
+  item and, in the same run, emits `Qperson Pprop LAST` for every bearer who already holds a
+  QID — **112 name items and 106 statements**, where it was 42 items and nothing. Emma,
+  2026-08-26: *"in the generation run add it to the existing ones too."* People this run is
+  also creating still wait for the next one, which is the sequence working, not a gate.
 - **`Olga` is the last unresolved name token** — no candidate items recorded, so neither
   the bearer's sex nor the script rule can choose. NEEDS-DECISION, Emma.
 - **CJK `SURN` is unproven and out of scope here.** `CLAUDE.md` records `SURN` holding a

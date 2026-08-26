@@ -14898,3 +14898,54 @@ already fixed — `label_slots()` applies `labels.is_marker_label` at both emiss
 `tests/test_edit_object_labels.py` pins it. The queue item was describing work that had been done.
 
 **1,358 passed, 0 failed.**
+
+## 2026-08-26 — a name item is CREATED and USED in the same run, and the gate was imaginary
+
+`scripts/build-garborg-name-items.py` carried this in its own docstring: *"Runs first, on its
+own, because QuickStatements V1 cannot point at an item a `CREATE` in the same batch has just
+minted."* That is false. Pointing at what was just created is precisely what `LAST` is for.
+
+**Emma, 2026-08-26:** *"For every missing name the daily quickstatements generation should
+generate the ones for existing items and in the generation run add it to the existing ones too
+lol. Just like with people being linked on their relatives through QID PID LAST inverted of the
+creation property setting LAST PID QID."* And the real limit, in her words: *"two things created
+in the same batch can't point at each other"* — *"You can point an existing item to a new one or
+a new one to an existing one."*
+
+So each `CREATE` is now followed by the statements that use it:
+
+    CREATE
+    LAST         Len   "Tunheim"
+    LAST         P31   Q101352
+    Q141162046   P734  LAST  P3831 Q28418670  S2600 "6000000003492005156"
+    Q141169062   P734  LAST                   S2600 "6000000033773881611"
+
+| | before | after |
+| --- | ---: | ---: |
+| name items created | 42 | **112** |
+| statements linking a person to one, same run | **0** | **106** |
+
+The bearer scan was over the people the day batch **creates** — who have no QIDs, so nothing
+could have been linked to anything. It now covers the 71 ledger people who already hold one,
+which is where the 70 extra items and all 106 statements come from. A person this run is *also*
+creating still waits for the next run; that is the sequence working.
+
+**Qualifiers survive because the name model does the work.** For each created token the model is
+re-run with that one token pointed at `LAST` and every other left at its real QID, so only the
+statement about the item just minted comes back — carrying `P3831` *married name* / *birth name*,
+`P1545` *series ordinal* and `P144` *based on* as it should.
+
+**One guard had to learn something and was not weakened doing it.**
+`tests/test_p2600_batches.py::test_no_statement_is_repeated` failed on three identical
+`Q141168787 P734 LAST` lines — one man, three family names, under the `CREATE`s for *Tunheim*,
+*Bring* and *Iverson*. Identical text, three different items. The test already knew `LAST` as a
+**subject** is scoped to its block and did not know the same of `LAST` as a **value**. It still
+fails on a line genuinely repeated inside one block, checked by injecting one.
+
+**And this is a pattern, now written into `CLAUDE.md` § *The batches are a SEQUENCE*.** Emma:
+*"You are often not respecting the fact that I do invariance-based algorithms. You just end up
+going towards a learned helplessness that we cannot do certain things, which we can."* Three
+invented limits are on record — `LAST`-as-value, this one, and exports "needing" her — and each
+one had machinery built around it before anybody tried the thing.
+
+**1,358 passed, 0 failed.**

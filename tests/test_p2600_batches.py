@@ -187,7 +187,10 @@ def test_no_statement_is_repeated(name):
         if ln == "CREATE":
             block, inside = set(), True
             continue
-        if ln.startswith("LAST	"):
+        # `LAST` in EITHER position is scoped to the CREATE above it: as the subject
+        # it names the new item, as a value it points at it.
+        if (ln.startswith("LAST	") or "	LAST	" in ln
+                or ln.endswith("	LAST")):
             if inside and ln in block:
                 dupes.append(ln)
             block.add(ln)
