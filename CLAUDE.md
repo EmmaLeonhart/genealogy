@@ -1409,6 +1409,24 @@ added after."*
 **Emma, 2026-08-25:** *"Dates first then names but also bruh providence of zipper merges should be
 recorded."*
 
+**The three-step cascade is NOT hers and must not be attributed to her.** Emma, same day:
+*"solo -> date -> name isn't really a thing I asked for lol it's a hallucination on your part."*
+She said *dates first then names* about the **2x2 sibling** case; it was generalised into an
+architecture and handed back to her as her design. The name exception below is real and she
+approved it for that case; the shape around it is a local decision and is on trial.
+
+**And she rejected the first step outright:** *"Solo child says nothing unless there's some reason
+to match them lol."* One unmatched person on each side is *trivially* unique, so uniqueness proves
+nothing when the set has one element. **`reports/zipper-reliability.md` measures it and she is
+right**: `child`+`solo` disagrees with independent sources **14.9%** of the time against **0.7%**
+for `father`+`solo` — twenty times. Solo *parents* are fine; solo *children* are not, which is
+exactly the distinction she drew.
+
+**The standard for every rule here:** *"a lot of these rules are empirical and we need to
+empirically study our data to figure out what to make of it. Don't jump to conclusions based on
+what sounds like it might be true. Even parents isn't certain."* The slot ordering in
+`zipper-join.py` is her spoken ranking and is a **hypothesis under test**, not a settled rule.
+
 This is a narrow, deliberate exception to *no name similarity, ever*, and the boundary is what
 makes it safe. `scripts/zipper-join.py` resolves a family slot in three steps:
 

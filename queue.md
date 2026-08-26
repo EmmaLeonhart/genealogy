@@ -1536,6 +1536,43 @@ So the artefact is a provenance **graph** that can be walked in both directions,
 RIGHT/WRONG verdicts as first-class nodes, and a report of which inferred chains an independently
 recorded `P2600` confirms or refutes.
 
+## Solo children: synoptic tree vs Wikidata — Emma, 2026-08-25
+
+*"solo child gives a bit of support but it's not gospel I'm gonna ask for a queued up analysis on
+synoptic tree vs wikidata solo children situations like this."*
+
+The first pass is in `reports/zipper-reliability.md`: `child`+`solo` disagrees with independent
+sources **14.9%** of the time against **0.7%** for `father`+`solo`. It is the worst cell in the
+join. What that pass cannot say is *why*, and the sample behind it is 67 checked pairs.
+
+Build the CSV of every solo-child slot — parent pair, our one child, their one child, both
+labels, both dates, both sexes, whether either side records further children elsewhere. Then:
+
+- **How often is our "only child" only-child because Geni recorded one, versus because the export
+  cut the family off?** A ball that hit its size bound truncates sibships, and a truncated sibship
+  presents as a solo child that is not one.
+- **Same on their side.** A Wikidata item with one `P40` *child* is rarely a claim of an only
+  child; it is one child somebody happened to add.
+- **Does sex agreement change the rate?** Free evidence the join ignores entirely — `P21` *sex
+  or gender* against our `sex` column — and a solo-child pair whose sexes differ is refutable
+  with no name at all.
+- **Does the parent's own provenance predict it?** A solo child hanging off a Wikidata-stated
+  `P2600` anchor is a different proposition from one hanging off five inferences.
+
+**Then decide what solo-child is worth**, rather than keeping it because it produces pairs. It is
+3,326 of 44,725.
+
+## Why solo PARENTS have the worst date disagreement — NEEDS-INVESTIGATION
+
+`father`+`solo` is the most independently corroborated cell (0.7%) and simultaneously has the
+worst date disagreement in the table (13.2% more than ten years apart). Both cannot be a property
+of the same pairs unless one check is measuring something else.
+
+The standing guess is that parent pairs skew medieval, both sides carry soft years, and a ten-year
+gap between two guesses refutes nothing. **Nothing tests that yet.** Split the date disagreement
+by century and by whether either date carries a GEDCOM `ABT`/`EST`/`CAL` modifier
+(`genimerge.dates` parses these already) before believing it.
+
 ## Link reliability order — parents, spouses, children, siblings
 
 **Emma, 2026-08-25, ranking them least messy first:**
