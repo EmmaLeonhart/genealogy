@@ -267,10 +267,28 @@ def test_every_created_name_item_says_what_kind_of_name_it_is(name):
 
 
 def test_no_two_batches_create_the_same_person():
-    """Each generator sees only its own output, so this is only visible across files."""
+    """Each generator sees only its own output, so this is only visible across files.
+
+    **Spent records are excluded, by name, for the reason they exist.** `SPENT_BATCHES`
+    holds archived records of runs already made; nobody runs them again, so a person they
+    name is not a person about to be created twice. Comparing them against a live batch
+    asks the wrong question and answers it wrongly: on 2026-08-26 the live batch and
+    `wikidata-garborg-day-1.qs` shared `6000000019384841547` *Martin Tollefson Tunheim*,
+    and the ledger — refreshed from `Special:Contributions/日巫女` that minute, 0 rows
+    added, so current — says he has **no item at all**. Day-1 was only partly run, which
+    Emma said at the time: *"I only ran some of the quick statements because many of them
+    required links that couldn't exist."*
+
+    **What actually protects against a duplicate creation is the ledger**, plus
+    `out/wikidata/p2600-all.tsv`, both consulted live inside `build-garborg-day.py`. This
+    test protects against something narrower: two files a person could run today, both
+    minting the same person.
+    """
     owner = {}
     clashes = []
     for path in BATCHES:
+        if path.name in SPENT_BATCHES:
+            continue
         for ids in creations(path):
             for g in ids:
                 if g in owner and owner[g] != path.name:

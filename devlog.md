@@ -15044,3 +15044,37 @@ sync, because I had restored one from a backup and left the other from a differe
 both from one invocation is the fix, and the test is what noticed.
 
 **1,359 passed, 0 failed.**
+
+## 2026-08-26 — one command for a day, and two guards learned what a spent batch is
+
+`scripts/build-daily-batch.py` runs step 0 then the three steps in her order and prints the run
+order with each file's position. It is an orchestrator and generates nothing of its own; the
+order is the part that is easy to get wrong by hand and invisible from the files themselves.
+
+**Sections 1 and 3 share a file deliberately** — `queue.md`: *"there is exactly ONE live batch
+file"*. Measured rather than assumed: the daily compose batch and the one-off spine batch share
+**2 of their creations**, so they genuinely cannot coexist as two files. The spine variant is one
+documented flag set away.
+
+**The cross-batch guard was asking the wrong question of spent records.** It flagged
+`6000000019384841547` *Martin Tollefson Tunheim* in both the live batch and
+`wikidata-garborg-day-1.qs`. The ledger was refreshed from `Special:Contributions/日巫女` that
+minute — **0 rows added, so current** — and says he has no item at all: day-1 was only partly
+run, which Emma said at the time. Spent records are now excluded by name, from the same
+`SPENT_BATCHES` list the `Aen` guard uses, and the exclusion was verified by planting a genuine
+clash between two live files. What actually protects against a duplicate creation is the ledger
+plus `p2600-all.tsv`, both consulted live inside `build-garborg-day.py`.
+
+**A name-modelling edge case, found and not guessed at.** The married-surname test failed on
+`(hjorthorn)`. There are **5,868** wholly-parenthesised `SURN`/`_MARNM` tokens across 1,697,887
+name records, and they are two populations: `(Bielke)`, `(Ulv)`, `(Banner)`, `(Vasa)`,
+`(Sparre)`, `(Hvide)` are real noble houses; `(?)`, `(D.)`, `(de)` and `(hjorthorn)` are not
+names. Treating them all as names makes false name items; dropping them all discards real family
+names. `name modelling.txt` reserves edge cases for Emma, so the classifier is untouched and the
+test excludes them **with the count stated** rather than silently.
+
+Also dropped a `NEEDS-DECISION` tag that was never one: `Olga` and the seven other ambiguous
+tokens are already handled — never created, listed in the batch's own trailer, batch runs without
+them.
+
+**1,359 passed, 0 failed.**

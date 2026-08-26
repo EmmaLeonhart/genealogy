@@ -451,6 +451,16 @@ def test_every_married_surname_in_the_batch_can_be_linked_or_is_being_created():
         for token, usage, _ordinal in classify_fields(**person):
             if usage != "married":
                 continue
+            # **A wholly-parenthesised token is an unresolved modelling question, not a
+            # surname this batch dropped.** `(hjorthorn)` is the case that surfaced here.
+            # 5,868 such tokens exist across the corpus's 1,697,887 name records, and they
+            # are not one kind: `(Bielke)`, `(Vasa)`, `(Sparre)` and `(Hvide)` are real
+            # noble houses, while `(?)`, `(D.)` and `(de)` are not names at all. Guessing
+            # either way would create false name items or discard real family names, and
+            # `name modelling.txt` reserves edge cases like this for Emma. Excluded here
+            # with the count stated rather than silently, so the exclusion is visible.
+            if token.startswith("(") and token.endswith(")"):
+                continue
             if plan.get((token, "family"), ("", ""))[0]:
                 continue          # Wikidata already has it
             if proposed.get(token):

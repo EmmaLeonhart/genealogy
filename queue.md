@@ -370,13 +370,20 @@ existing generation should do this, not that a new script should:
 - **The section order is now hers** — individuals, then relationships, concatenated at write
   time. The file emitted relationships first until today.
 
+**One command, 2026-08-26**: `python scripts/build-daily-batch.py [--refresh-ledger]`
+runs step 0, then the three steps in her order, and prints the run order with each file's
+position. Step 0 is off by default because it is the day's one network call.
+
 **Still to do:**
 
-- **Step 0** — refresh the ledger from `Special:Contributions/日巫女` as part of the run, then
-  diff the remainder against the ideal state. `scripts/model-vs-reality.py` is the diff; the
-  ledger refresh is currently a separate manual step.
-- **Wire the three into one invocation** so a day is one command in her order, rather than
-  `--compose`, then the name items, then reading both.
+- **NEEDS-DECISION, Emma — the parenthesised name tokens.** 5,868 wholly-parenthesised
+  `SURN`/`_MARNM` tokens across 1,697,887 name records, and they are two populations:
+  `(Bielke)`, `(Ulv)`, `(Banner)`, `(Vasa)`, `(Sparre)`, `(Hvide)` are real noble houses;
+  `(?)`, `(D.)`, `(de)`, `(hjorthorn)` are not names. Treating them all as names makes false
+  name items; dropping them all discards real family names. `name modelling.txt` reserves
+  edge cases for her. Excluded from the married-surname test meanwhile, with the count stated.
+- **Diff the remainder against the ideal state as part of the run** — `model-vs-reality.py`
+  is the diff and is not yet wired into the daily command.
 - **The ideal state is still the Geni tree alone.** Her spec says the **union of the synoptic
   tree and the Geni tree**; the synoptic half does not exist yet, which is the § *PREREQUISITE
   ORDER* item.
@@ -415,8 +422,10 @@ the new people only to what already exists.
   QID — **112 name items and 106 statements**, where it was 42 items and nothing. Emma,
   2026-08-26: *"in the generation run add it to the existing ones too."* People this run is
   also creating still wait for the next one, which is the sequence working, not a gate.
-- **`Olga` is the last unresolved name token** — no candidate items recorded, so neither
-  the bearer's sex nor the script rule can choose. NEEDS-DECISION, Emma.
+- **`Olga` and the seven other ambiguous tokens are handled, not blocked.** A token the
+  plan says resolves to several items is never created — that is the `Maria` rule — and is
+  listed in the batch's own trailer for Emma. The batch runs without them, so nothing waits;
+  the NEEDS-DECISION tag this carried was wrong.
 - **CJK `SURN` is unproven and out of scope here.** `CLAUDE.md` records `SURN` holding a
   *place* while `_MARNM` held the real clan name, so reading `surn` as a surname is right
   for Norwegian material and not established corpus-wide. Belongs to the corpus-wide name
