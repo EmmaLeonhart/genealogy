@@ -1,402 +1,149 @@
 <title>Garborg Family Entry Sheet</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Libre+Franklin:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Libre+Franklin:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-
-:root{
-  --ground:#F6F7F9;
-  --panel:#FFFFFF;
-  --panel-2:#EEF1F4;
-  --ink:#171A1F;
-  --ink-2:#4A525C;
-  --muted:#79828D;
-  --rule:#DCE1E7;
-  --accent:#2F4858;
-  --accent-soft:#E2EAEF;
-  --create:#8C5334;
-  --create-soft:#F4E8E0;
-  --exists:#3A6550;
-  --exists-soft:#E2EDE7;
-  --shadow:0 1px 2px rgba(23,26,31,.06),0 8px 24px -16px rgba(23,26,31,.28);
-}
-@media (prefers-color-scheme:dark){
-  :root:not([data-theme="light"]){
-    --ground:#12151A;
-    --panel:#191D23;
-    --panel-2:#212730;
-    --ink:#E7EBF0;
-    --ink-2:#B2BBC6;
-    --muted:#828D9A;
-    --rule:#2B323B;
-    --accent:#8FB4C9;
-    --accent-soft:#1E2A33;
-    --create:#D39A72;
-    --create-soft:#2E2119;
-    --exists:#7FBA9C;
-    --exists-soft:#17251E;
-    --shadow:0 1px 2px rgba(0,0,0,.5),0 8px 24px -16px rgba(0,0,0,.8);
-  }
-}
-:root[data-theme="dark"]{
-  --ground:#12151A;
-  --panel:#191D23;
-  --panel-2:#212730;
-  --ink:#E7EBF0;
-  --ink-2:#B2BBC6;
-  --muted:#828D9A;
-  --rule:#2B323B;
-  --accent:#8FB4C9;
-  --accent-soft:#1E2A33;
-  --create:#D39A72;
-  --create-soft:#2E2119;
-  --exists:#7FBA9C;
-  --exists-soft:#17251E;
-  --shadow:0 1px 2px rgba(0,0,0,.5),0 8px 24px -16px rgba(0,0,0,.8);
-}
-
+:root{--ground:#F6F7F9;--panel:#FFFFFF;--panel-2:#EEF1F4;--ink:#171A1F;--ink-2:#4A525C;
+--muted:#79828D;--rule:#DCE1E7;--accent:#2F4858;--accent-soft:#E2EAEF;--was:#8C5334;
+--was-soft:#F4E8E0;--now:#3A6550;--now-soft:#E2EDE7;
+--shadow:0 1px 2px rgba(23,26,31,.06),0 8px 24px -16px rgba(23,26,31,.28);}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ground:#12151A;
+--panel:#191D23;--panel-2:#212730;--ink:#E7EBF0;--ink-2:#B2BBC6;--muted:#828D9A;
+--rule:#2B323B;--accent:#8FB4C9;--accent-soft:#1E2A33;--was:#D39A72;--was-soft:#2E2119;
+--now:#7FBA9C;--now-soft:#17251E;
+--shadow:0 1px 2px rgba(0,0,0,.5),0 8px 24px -16px rgba(0,0,0,.8);}}
+:root[data-theme="dark"]{--ground:#12151A;--panel:#191D23;--panel-2:#212730;--ink:#E7EBF0;
+--ink-2:#B2BBC6;--muted:#828D9A;--rule:#2B323B;--accent:#8FB4C9;--accent-soft:#1E2A33;
+--was:#D39A72;--was-soft:#2E2119;--now:#7FBA9C;--now-soft:#17251E;
+--shadow:0 1px 2px rgba(0,0,0,.5),0 8px 24px -16px rgba(0,0,0,.8);}
 *{box-sizing:border-box}
-body{
-  background:var(--ground);
-  color:var(--ink);
-  font-family:"Libre Franklin",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  font-size:15px;
-  line-height:1.55;
-  margin:0;
-  padding:0 20px 96px;
-  -webkit-font-smoothing:antialiased;
-}
+body{background:var(--ground);color:var(--ink);font-family:"Libre Franklin",
+-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;font-size:15px;line-height:1.55;
+margin:0;padding:0 20px 96px;-webkit-font-smoothing:antialiased}
 .wrap{max-width:900px;margin:0 auto}
-
-/* ---- masthead ---- */
 header{padding:56px 0 32px;border-bottom:1px solid var(--rule)}
-.eyebrow{
-  font-family:"JetBrains Mono",ui-monospace,monospace;
-  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--muted);margin:0 0 14px;
-}
-h1{
-  font-family:Newsreader,Georgia,serif;
-  font-weight:500;font-size:clamp(30px,5vw,44px);line-height:1.1;
-  letter-spacing:-.015em;margin:0 0 16px;text-wrap:balance;
-}
-.standfirst{
-  font-family:Newsreader,Georgia,serif;
-  font-size:clamp(16px,2.1vw,19px);line-height:1.5;color:var(--ink-2);
-  max-width:62ch;margin:0;
-}
+.eyebrow{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11px;
+letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 14px}
+h1{font-family:Newsreader,Georgia,serif;font-weight:500;font-size:clamp(30px,5vw,44px);
+line-height:1.1;letter-spacing:-.015em;margin:0 0 16px;text-wrap:balance}
+.standfirst{font-family:Newsreader,Georgia,serif;font-size:clamp(16px,2.1vw,19px);
+line-height:1.5;color:var(--ink-2);max-width:62ch;margin:0}
 .standfirst em{font-style:italic;color:var(--ink)}
-
-/* ---- the situation ---- */
-.situation{
-  display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:1px;background:var(--rule);border:1px solid var(--rule);
-  border-radius:3px;overflow:hidden;margin:32px 0 0;
-}
+.situation{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;
+background:var(--rule);border:1px solid var(--rule);border-radius:3px;overflow:hidden;
+margin:32px 0 0}
 .stat{background:var(--panel);padding:16px 18px}
-.stat .n{
-  font-family:"JetBrains Mono",monospace;font-variant-numeric:tabular-nums;
-  font-size:26px;font-weight:500;color:var(--accent);display:block;line-height:1.1;
-}
+.stat .n{font-family:"JetBrains Mono",monospace;font-variant-numeric:tabular-nums;
+font-size:26px;font-weight:500;color:var(--accent);display:block;line-height:1.1}
 .stat .k{font-size:12.5px;color:var(--muted);margin-top:5px;display:block}
-
-/* ---- how-to ---- */
-.howto{
-  margin:36px 0 0;padding:20px 22px;background:var(--panel);
-  border:1px solid var(--rule);border-left:2px solid var(--accent);border-radius:3px;
-}
-.howto h2{
-  font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--accent);margin:0 0 12px;font-weight:500;
-}
-.howto ol{margin:0;padding-left:20px}
-.howto li{margin:0 0 7px;color:var(--ink-2);max-width:64ch}
-.howto li:last-child{margin-bottom:0}
-.howto strong{color:var(--ink);font-weight:600}
-
-section h2.group{
-  font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--muted);font-weight:500;
-  margin:52px 0 16px;padding-bottom:9px;border-bottom:1px solid var(--rule);
-}
-
-/* ---- person card ---- */
-.person{
-  background:var(--panel);border:1px solid var(--rule);border-radius:4px;
-  box-shadow:var(--shadow);margin:0 0 14px;overflow:hidden;
-}
-.phead{
-  display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 14px;
-  padding:17px 20px 15px;border-bottom:1px solid var(--rule);
-  background:var(--panel-2);
-}
-.pname{
-  font-family:Newsreader,Georgia,serif;font-weight:600;font-size:20px;
-  letter-spacing:-.01em;margin:0;flex:1 1 auto;min-width:12ch;
-}
-.pyears{
-  font-family:"JetBrains Mono",monospace;font-variant-numeric:tabular-nums;
-  font-size:13px;color:var(--muted);white-space:nowrap;
-}
-.chip{
-  font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.08em;
-  text-transform:uppercase;padding:3px 8px;border-radius:2px;white-space:nowrap;
-}
-.chip.create{background:var(--create-soft);color:var(--create)}
-.chip.exists{background:var(--exists-soft);color:var(--exists)}
-.chip.rel{background:var(--accent-soft);color:var(--accent)}
-
-.pbody{padding:4px 0 6px}
-.row{
-  display:grid;grid-template-columns:200px 1fr;gap:0 18px;
-  padding:8px 20px;align-items:baseline;
-}
-.row + .row{border-top:1px dashed var(--rule)}
-.prop{
-  font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--muted);
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
-}
-.prop b{color:var(--ink-2);font-weight:500}
-.val{font-size:14.5px;word-break:break-word}
-.val code{
-  font-family:"JetBrains Mono",monospace;font-size:13px;
-  background:var(--panel-2);padding:1px 5px;border-radius:2px;
-  font-variant-numeric:tabular-nums;
-}
-.val .lit{font-family:Newsreader,Georgia,serif;font-size:16px}
-.val a{color:var(--accent);text-decoration-thickness:1px;text-underline-offset:2px}
-.val a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}
-.note{color:var(--muted);font-size:13px;font-style:italic}
-
-.pending{
-  padding:9px 20px 12px;font-size:13px;color:var(--muted);
-  border-top:1px dashed var(--rule);
-}
-.pending b{color:var(--create);font-weight:500;font-style:normal}
-
-footer{
-  margin-top:56px;padding-top:22px;border-top:1px solid var(--rule);
-  font-size:13px;color:var(--muted);max-width:64ch;
-}
-footer p{margin:0 0 9px}
-footer code{font-family:"JetBrains Mono",monospace;font-size:12px}
-
-@media (max-width:620px){
-  .row{grid-template-columns:1fr;gap:2px}
-  .prop{white-space:normal}
-}
-
+h2{font-family:Newsreader,Georgia,serif;font-weight:500;font-size:26px;letter-spacing:-.01em;
+margin:52px 0 6px}
+.sub{color:var(--muted);font-size:13.5px;margin:0 0 20px}
+p{max-width:64ch}
+.tw{overflow-x:auto;margin:18px 0 0}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th{text-align:left;font-family:"JetBrains Mono",monospace;font-size:10.5px;
+text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:500;
+padding:0 12px 8px 0;border-bottom:1px solid var(--rule)}
+td{padding:9px 12px 9px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+td.n{font-family:"JetBrains Mono",monospace;font-variant-numeric:tabular-nums;
+text-align:right;white-space:nowrap}
+code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.85em;
+background:var(--panel-2);border-radius:2px;padding:.1em .35em}
+.was{color:var(--was)}.now{color:var(--now);font-weight:500}
+.card{background:var(--panel);border:1px solid var(--rule);border-radius:3px;
+padding:18px 20px;margin:14px 0;box-shadow:var(--shadow)}
+.card h3{margin:0 0 6px;font-size:15px;font-family:"Libre Franklin",sans-serif;font-weight:600}
+.card p{margin:0;color:var(--ink-2);font-size:14px}
+.flag{border-left:2px solid var(--was);background:var(--was-soft)}
+.keep{border-left:2px solid var(--now);background:var(--now-soft)}
+footer{margin-top:56px;padding-top:18px;border-top:1px solid var(--rule);
+color:var(--muted);font-size:13px}
 </style>
-
 <div class="wrap">
-
 <header>
- <p class="eyebrow">Wikidata &middot; full items &middot; 24 August 2026</p>
- <h1>Garborg Family Entry Sheet</h1>
- <p class="standfirst">All ten people have items, and the eleven Emma has built are
- uniform in shape. What is left is <em>names</em>: ten of the eleven carry none.
- <em>This page previously said Arne Garborg had no parents. That was wrong</em> &mdash; it
- was built from a summary of his item rather than the item.</p>
-
- <div class="situation">
-  <div class="stat"><span class="n">11</span><span class="k">items Emma has built</span></div>
-  <div class="stat"><span class="n">1</span><span class="k">of them carries name properties</span></div>
-  <div class="stat"><span class="n">0</span><span class="k">of them carry ja or zh</span></div>
-  <div class="stat"><span class="n">6</span><span class="k">sibling links Arne still lacks</span></div>
- </div>
+<p class="eyebrow">Wikidata &middot; full items &middot; 26 August 2026</p>
+<h1>Garborg Family Entry Sheet</h1>
+<p class="standfirst">Emma has built <em>48 items</em> now, up from eleven when this page was
+last written. The shape has changed with them &mdash; three things this page asserted on 24
+August are no longer true, and one still is.</p>
+<div class="situation">
+  <div class="stat"><span class="n">48</span><span class="k">items she has built</span></div>
+  <div class="stat"><span class="n">35</span><span class="k">carry <code>P735</code> given name &mdash; was 1</span></div>
+  <div class="stat"><span class="n">34</span><span class="k">carry ja and zh labels &mdash; was 0</span></div>
+  <div class="stat"><span class="n">54</span><span class="k">qualifier uses &mdash; was 0</span></div>
+</div>
 </header>
 
-<div class="howto">
- <h2>Read from the full items, 24 August</h2>
- <ol>
-  <li><strong>The six siblings exist.</strong> Samuel, Even, Inger Marie, Abel, Ole and
-  Ane Oline &ldquo;Lena&rdquo; were all created, and all carry dates, parents and sibling
-  links.</li>
-  <li><strong>Arne has his parents.</strong> P22 &rarr; Eivind and P25 &rarr; Ane Oline,
-  plus P3373 to Stena and Jon. An earlier version of this page reported all three as
-  ABSENT; that came from a summarised read and was false.</li>
-  <li><strong>The citation split is exactly as first written.</strong> P2600 references
-  the dates and the relationships and nothing else &mdash; counted across all 14 items, it
-  is never a reference on P31 or P21. A middle version of this page called the split
-  inconsistent. It is not.</li>
-  <li><strong>The gap is names.</strong> Only Eivind carries P735, P734 and P5056.</li>
- </ol>
+<h2>What changed since 24 August</h2>
+<p class="sub">Read from the full items, not a summary. Every row measured, not recalled.</p>
+<div class="tw"><table>
+<thead><tr><th>this page said, 24 Aug</th><th>26 Aug</th><th class="n">then</th><th class="n">now</th></tr></thead>
+<tbody>
+<tr><td>&ldquo;1 of them carries name properties&rdquo;</td><td class="now">35 carry <code>P735</code>, 17 carry <code>P734</code></td><td class="n was">1</td><td class="n now">35</td></tr>
+<tr><td>&ldquo;0 of them carry ja or zh&rdquo;</td><td class="now">ja and zh on 34 of 48</td><td class="n was">0</td><td class="n now">34</td></tr>
+<tr><td>&ldquo;no alias &hellip; on any of them&rdquo;</td><td class="now"><code>mul</code> aliases on 24, en on 8, ja on 6</td><td class="n was">0</td><td class="n now">24</td></tr>
+<tr><td>&ldquo;No qualifier of hers appears anywhere&rdquo;</td><td class="now">54 qualifier uses across four pairings</td><td class="n was">0</td><td class="n now">54</td></tr>
+<tr><td>&ldquo;No description &hellip; on any of them&rdquo;</td><td>still true &mdash; <strong>zero</strong> descriptions on all 48</td><td class="n">0</td><td class="n">0</td></tr>
+</tbody></table></div>
+
+<h2>The template, as she actually builds it</h2>
+<p class="sub">Share of her 48 items carrying each property.</p>
+<div class="tw"><table>
+<thead><tr><th>property</th><th class="n">items</th><th class="n">share</th><th>reading</th></tr></thead>
+<tbody>
+<tr><td><code>P31</code> instance of &middot; <code>P21</code> sex or gender &middot; <code>P2600</code> Geni ID</td><td class="n">48</td><td class="n now">100%</td><td>never omitted</td></tr>
+<tr><td><code>P569</code> date of birth</td><td class="n">48</td><td class="n now">100%</td><td>never omitted</td></tr>
+<tr><td><code>P570</code> date of death</td><td class="n">47</td><td class="n">98%</td><td>omitted only where Geni has none</td></tr>
+<tr><td><code>P735</code> given name</td><td class="n">35</td><td class="n">73%</td><td>the name model, now routine</td></tr>
+<tr><td><code>P25</code> mother &middot; <code>P22</code> father</td><td class="n">28 &middot; 25</td><td class="n">58% &middot; 52%</td><td>only where the parent has an item</td></tr>
+<tr><td><code>P40</code> child &middot; <code>P26</code> spouse &middot; <code>P3373</code> sibling</td><td class="n">18 &middot; 13 &middot; 13</td><td class="n">38% &middot; 27% &middot; 27%</td><td>sibling capped at ten a day by rule</td></tr>
+<tr><td><code>P734</code> family name</td><td class="n">17</td><td class="n">35%</td><td>needs a name item to point at</td></tr>
+<tr><td><code>P1449</code> nickname &middot; <code>P5056</code> patronym</td><td class="n">2 &middot; 1</td><td class="n was">4% &middot; 2%</td><td>rare in practice, whatever the model allows</td></tr>
+<tr><td><code>P19</code> <code>P20</code> <code>P119</code> <code>P1477</code> <code>P106</code> <code>P27</code></td><td class="n">0</td><td class="n">0%</td><td>still never used, though Geni holds the values</td></tr>
+</tbody></table></div>
+
+<h2>Qualifiers &mdash; new since this page was written</h2>
+<div class="tw"><table>
+<thead><tr><th>pairing</th><th class="n">uses</th><th>what it says</th></tr></thead>
+<tbody>
+<tr><td><code>P735</code> + <code>P1545</code> series ordinal</td><td class="n">33</td><td>orders several given names</td></tr>
+<tr><td><code>P734</code> + <code>P3831</code> object has role</td><td class="n">10</td><td>birth name against married name</td></tr>
+<tr><td><code>P735</code> + <code>P3831</code></td><td class="n">8</td><td>marks a middle name</td></tr>
+<tr><td><code>P735</code> + <code>P7452</code> reason for preferred rank</td><td class="n">3</td><td>usual forename, only where a middle name exists</td></tr>
+</tbody></table></div>
+
+<div class="card flag">
+<h3>21 of those <code>P1545</code> qualifiers are on people with one given name</h3>
+<p>Emma, 25 August, on why she runs generated batches only in part: <em>&ldquo;they have
+consistently included things I did not want, such as the series orginal 1 on peoples given names
+when there is only one given name.&rdquo;</em> The generator stopped emitting them on 26 August,
+but 21 are already live. Removing a qualifier alone is awkward in QuickStatements &mdash; a
+leading <code>-</code> removes the whole statement &mdash; so this needs her call rather than a
+batch.</p>
 </div>
 
-<section>
- <h2 class="group">The shape you are using &mdash; read live, 24 August</h2>
+<div class="card keep">
+<h3>The citation split is unchanged and still exact</h3>
+<p>The Geni ID references the dates and the relationships and nothing else:
+<code>P40</code> &times;55, <code>P569</code> &times;48,
+<code>P570</code> &times;47, <code>P3373</code> &times;28,
+<code>P25</code> &times;24, <code>P22</code> &times;21,
+<code>P26</code> &times;17. Never on <code>P31</code>, <code>P21</code> or
+<code>P2600</code>. A middle version of this page once called the split inconsistent; it never
+was, and two days of new items have not moved it.</p>
+</div>
 
- <div class="howto" style="border-left-color:var(--exists)">
-  <h2 style="color:var(--exists)">Counted across all 14 full items</h2>
-  <ol>
-   <li><strong>The reference is the Geni ID, and only on these:</strong> P3373 (&times;24),
-   P569 (&times;10), P570 (&times;10), P22 (&times;8), P25 (&times;8), P40 (&times;5),
-   P26 (&times;4). <strong>Never</strong> on P31, P21, P2600, P735, P734 or P5056. The
-   P248 / P813 / P143 references in the data are all on the three community items.</li>
-   <li><strong>The eleven items are uniform.</strong> Each carries P31, P21, P2600, P569,
-   P570, then P22/P25/P3373 for a child or P26/P40 for a parent. No partial item among
-   them.</li>
-   <li><strong>Labels are <code>en</code> and <code>mul</code>, the same string.</strong>
-   No description, no alias, no sitelink on any of them.</li>
-   <li><strong>No qualifier of hers appears anywhere</strong> &mdash; no P1545, no P7452,
-   no P3831, no P144. The only qualifiers in the 14 items are community-added, on
-   Q467497 and Q3143008.</li>
-   <li><strong>Never used:</strong> P19 place of birth, P20 place of death, P119 place of
-   burial, P1477 birth name &mdash; though Geni holds those values.</li>
-   <li><strong>A name item is minimal</strong> &mdash; two labels and a single P31.</li>
-  </ol>
- </div>
+<h2>Arne himself</h2>
+<p><code>Q467497</code> now carries <code>P22</code> &rarr; Eivind, <code>P25</code> &rarr; Ane
+Oline, <code>P26</code> &rarr; Hulda, <code>P40</code> &rarr; his son, and <code>P3373</code> to
+<strong>two</strong> siblings. Six of his eight remain unlinked, unchanged since 24 August &mdash;
+the ten-a-day sibling cap means they arrive slowly by design. He still has no <code>P5056</code>
+patronym, and his <code>P1477</code> birth name <em>Aadne Eivindsson Garborg</em> is
+community-added rather than hers.</p>
 
- <div class="howto" style="border-left-color:var(--create)">
-  <h2 style="color:var(--create)">What is outstanding</h2>
-  <ol>
-   <li><strong>Names on ten of the eleven.</strong> This is the whole gap. Each needs a
-   given-name item, a patronym item and a family-name item to point at, and only
-   <i>Aadnesson</i> Q141152710 exists so far.</li>
-   <li><strong>Arne needs P3373 to six more siblings</strong>, and has no P5056.</li>
-   <li><strong>ja and zh labels on all eleven.</strong> None carries either. The three
-   community items already have them.</li>
-   <li><strong>The nickname label is a judgement, not a rule.</strong> Stena drops
-   <i>Stine</i>; Mary and Lena keep every token. Strip the quote marks and keep
-   everything is the default, and matches two cases of three.</li>
-  </ol>
- </div>
-</section>
-
-<section>
- <h2 class="group">The items, as they stand</h2>
-  <article class="person">
-   <div class="phead">
-    <h3 class="pname">Arne Garborg</h3>
-    <span class="chip rel">child 1 &middot; the anchor</span>
-    <span class="chip create">6 sibling links short</span>
-    <span class="pyears">1851 &ndash; 1924 &middot; Q467497</span>
-   </div>
-   <div class="pbody">
-    <div class="row"><div class="prop">full item, 24 Aug</div><div class="val">126 properties, almost all external identifiers. A community item, not a template for anything.</div></div>
-    <div class="row"><div class="prop">P22 / P25</div><div class="val"><b>present</b> &mdash; <code>Q141152512</code> &middot; <code>Q141152523</code>, both unreferenced</div></div>
-    <div class="row"><div class="prop">P3373 <i>sibling</i></div><div class="val"><b>2 of 8</b> &mdash; Stena and Jon, both referenced with P2600</div></div>
-    <div class="row"><div class="prop">P2600</div><div class="val"><code>6000000003492005116</code></div></div>
-    <div class="row"><div class="prop">P1477 <i>birth name</i></div><div class="val"><span class='lit'>Aadne Eivindsson Garborg</span> &middot; <code>mul</code></div></div>
-    <div class="row"><div class="prop">P735 / P734</div><div class="val"><code>Q645757</code> Arne &middot; <code>Q30250555</code> Garborg &mdash; no P5056</div></div>
-   </div>
-   <p class="pending"><b>An earlier version of this page said he had no parents. That was wrong</b> &mdash; it came from a summarised read of the item, and the full download has all three links. What he actually lacks is P3373 to six siblings, and P5056.</p>
-  </article>
-  <article class="person">
-   <div class="phead">
-    <h3 class="pname">Eivind Aadnesson Garborg</h3>
-    <span class="chip rel">father</span>
-    <span class="chip exists">the model</span>
-    <span class="pyears">1822 &ndash; 1870 &middot; Q141152512</span>
-   </div>
-   <div class="pbody">
-    <div class="row"><div class="prop">labels</div><div class="val"><code>en</code> + <code>mul</code> &middot; <span class='lit'>Eivind Aadnesson Garborg</span></div></div>
-    <div class="row"><div class="prop">P735 <i>given name</i></div><div class="val"><code>Q3358418</code> Eivind &mdash; <span class='note'>no P1545, no P7452</span></div></div>
-    <div class="row"><div class="prop">P5056 <i>patronym</i></div><div class="val"><code>Q141152710</code> Aadnesson &mdash; <span class='note'>no P144</span></div></div>
-    <div class="row"><div class="prop">P734 <i>family name</i></div><div class="val"><code>Q30250555</code> Garborg</div></div>
-    <div class="row"><div class="prop">P40 <i>child</i> &times; 9</div><div class="val">all nine &mdash; the first three referenced, the last six not</div></div>
-    <div class="row"><div class="prop">P26 / P569 / P570</div><div class="val">Ane Oline &middot; 26 Jul 1822 &ndash; 13 Feb 1870</div></div>
-   </div>
-   <p class="pending"><b>Still the only one of the ten carrying name properties.</b> All three are bare: the qualifiers <i>name modelling.txt</i> prescribes are not on them.</p>
-  </article>
-  <article class="person">
-   <div class="phead">
-    <h3 class="pname">Ane Oline Jonsdatter Raugstad</h3>
-    <span class="chip rel">mother</span>
-    <span class="chip create">names missing</span>
-    <span class="pyears">1832 &ndash; 1908 &middot; Q141152523</span>
-   </div>
-   <div class="pbody">
-    <div class="row"><div class="prop">dates</div><div class="val"><b>done since 23 Aug</b> &mdash; 23 Feb 1832 &ndash; 28 Apr 1908</div></div>
-    <div class="row"><div class="prop">P40 <i>child</i> &times; 9</div><div class="val">all nine &middot; P26 &rarr; Eivind</div></div>
-    <div class="row"><div class="prop">names</div><div class="val"><b>none.</b> Ane, Oline, patronym <i>Jonsdatter</i>, family <i>Raugstad</i></div></div>
-   </div>
-   <p class="pending">Her patronym names her father Jon, a further person to create. <i>Jonsdatter</i> has no item yet.</p>
-  </article>
-  <article class="person">
-   <div class="phead">
-    <h3 class="pname">Stena Eivindsdatter Garborg</h3>
-    <span class="chip rel">child 2 &middot; the label exception</span>
-    <span class="chip create">names missing</span>
-    <span class="pyears">1852 &ndash; 1877 &middot; Q141152600</span>
-   </div>
-   <div class="pbody">
-    <div class="row"><div class="prop">label</div><div class="val"><span class='lit'>Stena Eivindsdatter Garborg</span> &mdash; Geni holds <span class='lit'>Stine &ldquo;Stena&rdquo;&hellip;</span></div></div>
-    <div class="row"><div class="prop">dates</div><div class="val"><b>done since 23 Aug</b> &mdash; 12 Dec 1852 &ndash; 4 Oct 1877</div></div>
-    <div class="row"><div class="prop">P22 / P25 / P3373</div><div class="val">Eivind &middot; Ane Oline &middot; Arne, Jon</div></div>
-    <div class="row"><div class="prop">names</div><div class="val"><b>none.</b> Stena, patronym <i>Eivindsdatter</i>, family <i>Garborg</i></div></div>
-   </div>
-   <p class="pending"><b>The one label that drops a token.</b> Mary and Lena keep theirs, so this is a judgement that <i>Stena</i> is a short form of <i>Stine</i> &mdash; not a rule a generator can apply.</p>
-  </article>
-  <article class="person">
-   <div class="phead">
-    <h3 class="pname">Samuel Eivindsen Garborg</h3>
-    <span class="chip rel">child 4</span>
-    <span class="chip create">names missing</span>
-    <span class="pyears">1857 &ndash; 1943 &middot; Q141162040</span>
-   </div>
-   <div class="pbody">
-    <div class="row"><div class="prop">created since 23 Aug</div><div class="val">this page previously listed him as still to create</div></div>
-    <div class="row"><div class="prop">structure</div><div class="val">P31, P21, P2600, P569, P570, P22, P25, P3373 &times; 3</div></div>
-    <div class="row"><div class="prop">names</div><div class="val"><b>none.</b> Samuel, patronym <i>Eivindsen</i>, family <i>Garborg</i></div></div>
-   </div>
-   <p class="pending">Referenced exactly like every sibling: P2600 on the dates, the parents and the sibling links, and on nothing else.</p>
-  </article>
-  <article class="person">
-   <div class="phead">
-    <h3 class="pname">Inger Marie Mary Eivindsdatter Garborg</h3>
-    <span class="chip rel">child 6</span>
-    <span class="chip create">names missing</span>
-    <span class="pyears">1863 &ndash; 1955 &middot; Q141162043</span>
-   </div>
-   <div class="pbody">
-    <div class="row"><div class="prop">label</div><div class="val">all three given tokens kept, quote marks dropped</div></div>
-    <div class="row"><div class="prop">structure</div><div class="val">P31, P21, P2600, P569, P570, P22, P25, P3373 &times; 3</div></div>
-    <div class="row"><div class="prop">names</div><div class="val"><b>none.</b> Two given names &mdash; the first case that would need P1545</div></div>
-   </div>
-   <p class="pending">Buried at Eagle Hill Cemetery, so she emigrated. Geni holds that; P119 is on no item.</p>
-  </article>
-  <article class="person">
-   <div class="phead">
-    <h3 class="pname">Ane Oline Lena Eivindsdatter Garborg</h3>
-    <span class="chip rel">child 9</span>
-    <span class="chip create">names missing</span>
-    <span class="pyears">1870 &ndash; 1916 &middot; Q141162046</span>
-   </div>
-   <div class="pbody">
-    <div class="row"><div class="prop">label</div><div class="val">all tokens kept &mdash; the third nickname case, agreeing with Mary</div></div>
-    <div class="row"><div class="prop">structure</div><div class="val">P2600, P569, P570, P22, P25, P3373 &times; 3</div></div>
-    <div class="row"><div class="prop">uncited</div><div class="val">P31, P21 and P2600 carry no reference — the same on every item</div></div>
-   </div>
-   <p class="pending">Identical in shape to Samuel and Inger Marie. The eleven items she made are uniform; there is no partial one among them.</p>
-  </article>
-  <article class="person">
-   <div class="phead">
-    <h3 class="pname">Aadnesson</h3>
-    <span class="chip rel">a patronymic name item</span>
-    <span class="chip rel">minimal</span>
-    <span class="pyears">name item &middot; Q141152710</span>
-   </div>
-   <div class="pbody">
-    <div class="row"><div class="prop">labels</div><div class="val"><code>en</code> + <code>mul</code> &middot; <span class='lit'>Aadnesson</span></div></div>
-    <div class="row"><div class="prop">P31</div><div class="val"><code>Q110874</code> <i>patronymic</i></div></div>
-    <div class="row"><div class="prop">everything else</div><div class="val">nothing &mdash; no description, no P144, no P407, no P282</div></div>
-   </div>
-   <p class="pending">This is the whole template for a name item, and <code>build-garborg-name-items.py</code> already matches it.</p>
-  </article>
-</section>
-
-<footer>
- <p>Every figure on this page is counted from <code>out/garborg-full-items.json</code>
- &mdash; all 14 items fetched in one request through
- <code>genimerge.wikidata.full_entities</code>, then read offline. Nothing here comes
- from a summary of an item, and nothing from an edit history.</p>
- <p>An earlier version was built the other way and published three false claims: that
- Arne Garborg had no parents, that the citation split was inconsistent, and that six of
- the items could not be seen. All three are corrected above.</p>
- <p>The durable version is <code>docs/wikidata-item-template.md</code>;
- <code>scripts/garborg-modelling.py</code> regenerates both from the same file.</p>
-</footer>
-
+<footer>Generated from <code>out/model-vs-reality-items.json</code>, 48 items fetched whole
+through <code>full_entities</code> on 26 August 2026, plus
+<code>Special:Contributions/日巫女</code> to separate the items she created from those that
+already existed. Counts are computed, not recalled.</footer>
 </div>

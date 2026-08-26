@@ -178,3 +178,49 @@ judgement rather than a rule to automate.
   `P5056`.
 - **No item carries `ja` or `zh`** except the three community ones, so her instruction to
   add them is untouched work.
+
+## Measured again on 2026-08-26, over 48 items she has built
+
+The first version of this file was read off eleven items on 24 August. There are **48** now, and
+four things changed. Every figure below is counted from `out/model-vs-reality-items.json` —
+whole items through `full_entities`, with `Special:Contributions/日巫女` separating what she
+created from what already existed.
+
+| | 24 Aug (11 items) | 26 Aug (48 items) |
+| --- | ---: | ---: |
+| carry `P735` *given name* | 1 | **35** |
+| carry `ja` and `zh` labels | 0 | **34** |
+| carry an alias | 0 | **24** `mul`, 8 `en`, 6 `ja`, 6 `zh` |
+| qualifier uses | 0 | **54** |
+| carry a **description** | 0 | **0** |
+
+**Descriptions are the one thing that has not moved, and it is not an oversight.** Zero of 48.
+Anything that proposes writing one is proposing something she has never once done.
+
+**Always, on all 48:** `P31` *instance of*, `P21` *sex or gender*, `P2600` *Geni.com profile ID*,
+`P569` *date of birth*. `P570` on 47 — omitted only where Geni has no death date.
+
+**Sometimes, and the share is the point:** `P735` 73%, `P25` 58%, `P22` 52%, `P40` 38%,
+`P734` 35%, `P26` 27%, `P3373` 27%. Relationship properties appear only where the other end has
+an item, so their share measures the neighbourhood's coverage rather than her intent.
+
+**Rare in practice whatever the model permits:** `P1449` *nickname* on 2, `P5056` *patronym or
+matronym* on 1. `name modelling.txt` gives the patronymic elaborate treatment and it has been
+used once.
+
+**Never, on any of the 48:** `P19` *place of birth*, `P20` *place of death*, `P119` *place of
+burial*, `P1477` *birth name*, `P106` *occupation*, `P27` *country of citizenship* — although
+Geni holds values for several of them.
+
+**Qualifiers, all four pairings:** `P735`+`P1545` ×33, `P734`+`P3831` ×10, `P735`+`P3831` ×8,
+`P735`+`P7452` ×3.
+
+**21 of the 33 `P1545` are on people with a single given name** — which she has said she does not
+want: *"they have consistently included things I did not want, such as the series orginal 1 on
+peoples given names when there is only one given name."* `scripts/namemodel.py` stopped emitting
+them on 2026-08-26; the 21 already live are **NEEDS-DECISION**, because QuickStatements removes a
+whole statement with a leading `-` and cannot drop a qualifier on its own.
+
+**The citation split is unchanged and exact.** `S2600` references `P40` ×55, `P569` ×48,
+`P570` ×47, `P3373` ×28, `P25` ×24, `P22` ×21, `P26` ×17 — and never `P31`, `P21` or `P2600`.
+Two days and 37 new items have not moved it.
