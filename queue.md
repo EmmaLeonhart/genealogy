@@ -269,9 +269,14 @@ strings while ignoring Wikidata's precision field: `+0874-07-01` against `+0874-
 disagreement but a difference in what is known, and precision **7 is a CENTURY**, so `+0952/9`
 against `+1000/7` is one century agreeing with itself.
 
-**Still to do, and neither is blocked:** project a batch from the `missing` column only, and run
-the same diff over Izumo, where the modelling is less well understood and the conflicts column
-should therefore say more.
+**The projection is built too** — `scripts/build-from-diff.py` → `reports/wikidata-from-diff.qs`,
+**74 statements over 42 items**, every one present because the diff says the item lacks it and for
+no other reason. `extra` is never touched, `CONFLICT` is never emitted, labels and aliases are
+never projected because they replace. The 8 missing `P2600` are skipped: the spine batch already
+carries them, which the diff rediscovered independently.
+
+**Still to do, not blocked:** run the same diff over Izumo, where the modelling is less well
+understood and the conflicts column should therefore say more.
 
 ## Analysis work parked while she was editing
 

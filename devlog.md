@@ -14533,3 +14533,30 @@ findings instead of losing them.
 **One more instance of the session's recurring shape**: the very first run printed `0 items held`
 because `full_entities` already unwraps `entities` and I unwrapped it twice, so every person came
 back as `ITEM NOT FETCHED` — which reads like a network failure rather than a bug two lines up.
+
+## 2026-08-26 — the batch is now a projection of the diff
+
+`scripts/build-from-diff.py` → `reports/wikidata-from-diff.qs`: **74 statements over 42 items**,
+each present because `reports/model-vs-reality.tsv` says the item lacks it, and for no other
+reason. That is the second half of Emma's instruction, and it makes a whole class of error
+impossible: a projection cannot emit a statement the item already holds, because such a statement
+is not in the `missing` column by construction.
+
+Refused, each for a recorded reason: `extra` (her hand-work), `CONFLICT` (hers to settle), labels
+and aliases (they *replace*, and `Q467497` is better labelled on Wikidata than our derived string).
+The 8 missing `P2600` are skipped because `reports/wikidata-spine-add-p2600.qs` already carries
+them — **the diff rediscovered exactly that set of eight independently**, which is a real
+cross-check on both.
+
+**Two format defects, caught by looking at the file rather than the counts.** The diff stores a
+time as `+1157-00-00/9`, which is the right shape for comparing against Wikidata's precision field
+and *invalid* QuickStatements — it needs `+1157-00-00T00:00:00Z/9`. And `P1449` *nickname* is
+monolingual text, so a bare `Cecilia` is rejected where `en:"Cecilia"` is accepted. Both would
+have failed on paste. The comparison form and the emission form are genuinely different, and
+conflating them is how a diff-projected batch stops being runnable.
+
+**One thing checked and found innocent**: 21 of the 74 are `P1449`, and values like *de Flandre*
+and *Gisela von Verona* looked like the classifier mistaking name particles for nicknames.
+`reports/display-names.csv` shows them in Geni's own `NICK` field. Not a modelling bug.
+
+**1,316 passed, 0 failed.**
