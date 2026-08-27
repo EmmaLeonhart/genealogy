@@ -15078,3 +15078,35 @@ tokens are already handled — never created, listed in the batch's own trailer,
 them.
 
 **1,359 passed, 0 failed.**
+
+## 2026-08-26 — the parenthesised-token census, and her answer deleted the hard part
+
+`scripts/census-paren-tokens.py` → `reports/paren-tokens.tsv` and `reports/paren-tokens.md`.
+2,495 distinct tokens, 5,866 occurrences.
+
+| shape | tokens | occurrences |
+| --- | ---: | ---: |
+| name-shaped | 2,478 | 5,553 |
+| particle | 9 | 205 |
+| unknown marker | 8 | 108 |
+
+The two vocabularies come to **17 tokens between them** — `(de)`, `(D.)`, `(du)`, `(von)`,
+`(Von)`, `(De)`, `(af)`, `(di)`, `(ben)`; `(anonyma)`, `(?)`, `(unknown)`, `(Ukjent)`,
+`(Unknown)`, `(NN)`, `(??)`, `(ukjent)`. That is the list she asked to see.
+
+**Two discriminators were built and both are gone.** Her earlier answers ruled `Turesson
+(Bielke)` a family name and `Weirman (Weyerman)` an alias, and the shapes are identical:
+
+- **Bare-form frequency** — refuted by the census written for it. `Voehl` occurs 20 times
+  unparenthesised and `Loewenberg` 292, so `Vöhl (Voehl)` and `Levi (Loewenberg)` came out as
+  family names when they are plainly spelling variants. Frequency measures how common a name is,
+  not whether two strings are the same name.
+- **String similarity to the neighbouring token** — it separated every ruled case, houses at
+  0.14–0.38 against variants at 0.80–1.00, and it was a similarity heuristic in a repo that bans
+  them.
+
+Then: *"nvm they get both family names and the alias lol"*. The question is **deleted rather
+than settled**, the same shape as § *One name item per USAGE*. Both attempts stay recorded in the
+script, because the first being refuted by its own census is the part worth keeping.
+
+**1,359 passed, 0 failed.**

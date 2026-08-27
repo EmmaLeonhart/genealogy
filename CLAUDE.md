@@ -537,31 +537,30 @@ was assumed here.
 **Emma ruled on these case by case, 2026-08-26**, shown the raw records rather than a summary.
 5,866 occurrences over 2,495 distinct tokens, across 1,697,887 name records.
 
-| shape | example | ruling |
-| --- | --- | --- |
-| **noble house beside a patronymic** | `Turesson (Bielke)`, `Karlsdotter (Vasa)`, `Gudmarsson (Ulvåsa)` | **`P734` *family name*, parens stripped** — the same item as an unparenthesised `Bielke` |
-| **particle or honorific** | `(de) Worms`, `Henriques (D.)` | **into the `mul` label**, never a name item |
-| **unknown-name marker** | `(anonyma)`, `(incognita)`, `(?)` | **an NN marker** — joins `Private`/`NN`/`Ukjent` |
-| **variant spelling** | `Weirman (Weyerman)` | **`Amul` alias on the person**, not a name item |
+| shape | example | tokens / occurrences | ruling |
+| --- | --- | ---: | --- |
+| **any name-shaped token** | `Turesson (Bielke)`, `Weirman (Weyerman)` | 2,478 / 5,553 | **BOTH** — a second `P734` *family name* with the parens stripped, **and** an `Amul` alias carrying the bracketed form |
+| **particle or honorific** | `(de) Worms`, `Henriques (D.)` | 9 / 205 | **into the `mul` label**, never a name item |
+| **unknown-name marker** | `(anonyma)`, `(incognita)`, `(?)` | 8 / 108 | **an NN marker** — joins `Private`/`NN`/`Ukjent` |
 
 **On the particles, her words:** *"These should be parts of the mul labels because they are
 integral parts of what the people are called."* So `de` is not dropped and is not an item — it
 belongs in the label the person is read by. `(de)` occurs 97 times and bare `de` 125,328, so this
 governs a large population beyond the parenthesised ones.
 
-**The two name-shaped cases are structurally identical and need a discriminator.**
-`Turesson (Bielke)` and `Weirman (Weyerman)` have the same shape, and she ruled them
-differently — `P734` for the first, alias for the second. The evidence she was shown is what
-separates them: **how often the bare token appears unparenthesised in the corpus.** `Bielke` 311,
-`Vasa` 122, `Sparre` 1,109 against `Weyerman` **2**. A house is attested on its own; a variant
-spelling is not. That threshold is a reading of her two answers, not something she stated, so it
-is recorded where the code applies it and is falsified the moment a real house turns up that only
-ever appears in parentheses.
+**Nothing tells a noble house from a spelling variant, and nothing needs to.** Emma, shown that
+the two shapes are identical: *"nvm they get both family names and the alias lol"*, then
+*"Amul for the brackets and two assigned family names, brackets one gets a qualifier of some
+sort lets do it for noble houses too if needed"*. So `Weirman (Weyerman)` yields **two `P734`
+statements** plus the alias, and the bracketed one carries a qualifier saying which it is. This
+is § *One name item per USAGE* again: a token in two roles is not an ambiguity to resolve.
 
-**`(Liljesparre)` is the caution.** It was shown to her under *variant spellings* and it is
-almost certainly a house — lily-and-chevron, heraldic — with a bare count of 13. The example was
-mine and it was badly chosen; the ruling on variants stands, and this token is a house by the
-rule above.
+**Two discriminators were built and both are gone.** Bare-form frequency was refuted by the
+census written for it — `Voehl` occurs 20 times unparenthesised and `Loewenberg` 292, so
+`Vöhl (Voehl)` and `Levi (Loewenberg)` came out as houses when they are plainly spellings.
+String similarity to the neighbouring token did separate every ruled case, and was a similarity
+heuristic in a repo that bans them. **Her answer removed the question instead of settling it**,
+which is worth remembering the next time a rule appears to need a threshold.
 
 ### The MARRIED name is the real name. `mul` carries it, and no batch adds an `Aen`
 
