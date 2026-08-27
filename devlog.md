@@ -16161,3 +16161,25 @@ SEQUENCE* is exactly this: a label fix reaches the batch on the next legitimate 
 re-running today.
 
 **1,397 passed, 24 skipped, 0 failed** in 6m06s.
+
+## 2026-08-27 — the argument-free day build is refused
+
+Yesterday's finding turned into a guard. `scripts/build-garborg-day.py` with no arguments now
+exits non-zero, writes nothing, and prints the two ways to invoke it properly.
+
+The hazard was not subtlety, it was silence: **bare it emits 272 creations, `--compose` emits
+34**, and both write `reports/wikidata-garborg-day.qs`. So a bare run replaced a committed day —
+one Emma may already have pasted into QuickStatements — with an uncapped batch eight times the
+size, and said nothing about it. I did exactly that yesterday and only noticed from the creation
+count.
+
+`--roster` remains a real second mode and is untouched. Only the argument-free invocation is
+refused, since it has no purpose except the mistake.
+
+**Verified in both directions rather than one:** the bare run exits 1 and leaves the batch file
+byte-identical; `--compose` still runs and still produces 34 creations and 48 links. That second
+run rewrote the carry-forward, so both files were restored from git afterwards — which is the
+same care the guard exists to enforce, and is why `--compose` itself is deliberately *not*
+guarded. Advancing the sequence is what it is for.
+
+**1,398 passed, 24 skipped, 0 failed** in 5m57s.

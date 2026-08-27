@@ -652,6 +652,27 @@ def main():
                     help="create only the N people closest to Arne (0 = no limit)")
     args = ap.parse_args()
 
+    # **A bare run is a DIFFERENT PROGRAM, and it overwrites a committed day.**
+    #
+    # Measured 2026-08-27 by doing it: bare, this emits **272 creations**; with `--compose` --
+    # the flag `build-daily-batch.py` passes, and where `CHILDREN_PER_RUN`, `PARENTS_PER_RUN`,
+    # `FREE_PARENTS_FREE` and `SIBLING_CAP` all live -- it emits **34**. The bare path is not a
+    # smaller daily algorithm; it skips the algorithm.
+    #
+    # Both write `reports/wikidata-garborg-day.qs`, so a bare run silently replaces a batch Emma
+    # may already have run, and `--compose` itself ADVANCES the sequence: it consumes and
+    # rewrites `reports/garborg-carry-forward.tsv`, so re-running it on the same day produced a
+    # batch differing by 19 people out and 17 in -- the next hop, not today's.
+    #
+    # `--roster` runs are a real second mode and stay allowed. What is refused is the
+    # argument-free invocation, which has no purpose except the mistake.
+    if not args.compose and not args.roster:
+        sys.exit(
+            "refusing an argument-free run: it skips the daily caps (272 creations against 34) "
+            "and overwrites reports/wikidata-garborg-day.qs, which may be a day already run.\n"
+            "  the daily batch:  python scripts/build-daily-batch.py\n"
+            "  this script only: --compose (the daily algorithm) or --roster FILE")
+
     have = ledger()
 
     # **`linked` is every Geni id Wikidata already carries a `P2600` for. `have` is not.**

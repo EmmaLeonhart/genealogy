@@ -118,21 +118,22 @@ idempotence test holds two** — run nothing beside it.
   none of them needs a page opened. Whatever is left after that is the genuinely thorny
   residue and only that needs the browser.
 
-## `build-garborg-day.py` must be run with `--compose`. A bare run is a different program
+## The bare day-build is now REFUSED — guard shipped 2026-08-27
 
-**Measured 2026-08-27, by running it wrong.** Bare, it emits **272 creations**; with `--compose`
-— the flag `build-daily-batch.py` passes, and where her caps live — it emits **34**. The bare
-path is not a smaller version of the daily algorithm, it is a different one.
+`scripts/build-garborg-day.py` with no arguments exits non-zero, writes nothing, and names the
+flag it wants. **Bare it emitted 272 creations; `--compose` emits 34** — that flag carries
+`CHILDREN_PER_RUN`, `PARENTS_PER_RUN`, `FREE_PARENTS_FREE` and `SIBLING_CAP`, so the bare path
+was not a smaller daily algorithm, it skipped the algorithm. Both wrote the same file, so a bare
+run silently replaced a day Emma may already have run.
 
-**And `--compose` ADVANCES the sequence rather than reproducing a day.** It consumes and rewrites
-`reports/garborg-carry-forward.tsv`, so a second run on the same day produced a batch differing
-by **19 people out and 17 in** — the next hop, not today's. Both files were restored from git;
-nothing was shipped.
+`--roster` stays a legitimate second mode; only the argument-free call is refused, because it has
+no purpose except the mistake. `tests/test_join_sanity.py` asserts the exit code, the message and
+that the batch file is byte-identical afterwards.
 
-So: never re-run the day builder to "refresh" a committed batch. A code change that affects
-labels reaches the batch on the **next** legitimate daily run, which is what
-§ *The batches are a SEQUENCE* means in practice. Run it through `build-daily-batch.py`, which
-also refreshes the ledger and the live values first.
+**`--compose` still ADVANCES the sequence and that is not guarded**, because it should not be:
+it consumes and rewrites `reports/garborg-carry-forward.tsv`, so running it twice in a day gives
+the next hop rather than today's. Run the daily batch through `build-daily-batch.py` and never to
+"refresh" a committed day — a code change reaches the batch on the next legitimate run.
 
 ## Drift between stages — the recent tier is CLEAR; 69 deep-history rows stay flagged
 

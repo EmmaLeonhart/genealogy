@@ -511,3 +511,30 @@ def test_a_lowercase_norwegian_particle_is_not_an_initial():
     assert transliterate_token("I", table) == ("I", "I")
     assert transliterate_token("i.", table) == ("i", "i"), "case is never changed"
     assert transliterate_token("F.", table) == ("F", "F")
+
+
+def test_an_argument_free_day_build_is_refused():
+    """`build-garborg-day.py` with no arguments must exit non-zero and write nothing.
+
+    **Bare it emits 272 creations; with `--compose` it emits 34** — the flag carries
+    `CHILDREN_PER_RUN`, `PARENTS_PER_RUN`, `FREE_PARENTS_FREE` and `SIBLING_CAP`, so the bare
+    path is not a smaller daily algorithm, it skips the algorithm. Both write the same file, so
+    a bare run silently replaces a day Emma may already have run.
+
+    `--roster` is a real second mode and stays allowed; only the argument-free call is refused,
+    because it has no purpose except the mistake.
+    """
+    import subprocess
+    import sys as _sys
+
+    batch = R / "wikidata-garborg-day.qs"
+    before = batch.read_bytes() if batch.exists() else None
+    env = {**__import__("os").environ, "PYTHONPATH": str(ROOT / "src")}
+    r = subprocess.run([_sys.executable, str(ROOT / "scripts" / "build-garborg-day.py")],
+                       cwd=ROOT, capture_output=True, text=True,
+                       encoding="utf-8", errors="replace", env=env)
+    assert r.returncode != 0, "an argument-free day build must refuse, not run"
+    assert "--compose" in (r.stdout + r.stderr), "the refusal must name the flag that is missing"
+    if before is not None:
+        assert batch.read_bytes() == before, (
+            "the refused run still touched reports/wikidata-garborg-day.qs")
