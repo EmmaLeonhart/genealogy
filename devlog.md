@@ -15568,3 +15568,33 @@ there was no git copy. Rewritten from scratch. Slicing a source file between two
 is not an edit, it is a deletion with a survivor.
 
 **1,381 passed, 1 xfailed, 0 failed.**
+
+## 2026-08-26 — her `-sen` test, and the naive reading of it is 91% wrong
+
+*"If father has -son or -sen then it's a surname lol that's the test same with other patronymic
+surnames."*
+
+**Taken literally that calls 91% of them surnames**, and the examples show it cannot be right:
+`Einar **Jonsen** Vestad`'s father is `**John** Kristiansen Jevne`, and `Maria Christina
+**Jakobsdotter**`'s father is `**Jakob** Jakobsson`. Both are textbook patronymics. In a
+patronymic-naming society the father almost always carries one too, so "father has a `-sen`" is
+true of nearly everybody and discriminates nothing.
+
+**The discriminating version is the SAME token**, and it works:
+
+| | tokens | share |
+| --- | ---: | ---: |
+| father has the same token → inherited **surname** | 40,872 | 14% |
+| stem = father's **given name** → **patronymic** | 213,898 | 75% |
+| neither → undecided | 31,766 | 11% |
+
+`James Slawson` son of `James Slawson`, with all his children `Slawson`, is the surname case.
+`John Kristiansen` son of `Kristian` is the patronymic case. The undecided 11% are mostly
+spelling variants — `Jonsen`/`John`, `Jakobsdotter`/`Jacob`.
+
+Measuring it before implementing is what caught the 91%. Queued with the implementation shape.
+
+**And the `mul` blocker was my misreading.** She reported the bot's behaviour; I read it as a
+warning against `Lmul` and put it on the blocker list for three status reports. Her answer:
+*"you completely misunderstood and lmul is extremely important on everything lol."* Nothing
+changes; the item is gone.

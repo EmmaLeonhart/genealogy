@@ -417,75 +417,31 @@ gate for *"once we get to a certain point"*, because she said it *"could be in t
 the descendants one"* and a gate I invent that never opens is the failure mode § *The batches are
 a SEQUENCE* is written against.
 
-## ⛔ NEEDS-DECISION, Emma — `-sen`/`-son`, and 31,259 people get no name statement
+## ⛔ `-sen`/`-son` is DECIDED — her test, measured. Implement it
 
-Found 2026-08-26 from her own observation that `Q141189052` *Anna Carine Gundersen* came out
-with no `P735` or `P734`. `tests/test_namemodel.py` carries it as a **strict xfail** so it
-fails loudly when fixed.
+**Emma, 2026-08-26:** *"If father has -son or -sen then it's a surname lol that's the test same
+with other patronymic surnames."*
 
-**Two components define *patronymic* differently, and both did it deliberately.**
-`namemodel.PATRONYMIC` matches `sen|son|sson|datter|sdatter`;
-`scripts/build-name-item-batch.py`'s `RELIABLE_PATRONYMIC` **excludes** `-son`/`-sen` with its
-own reason — *"they also end ordinary inherited surnames and a few real given names
-(`Jefferson`, 30 bearers)"*.
+**Read naively that classifies 91% as surnames and is wrong** — in a patronymic society the
+father almost always has one too. `Einar **Jonsen** Vestad`'s father is `**John** Kristiansen
+Jevne`; that is a textbook patronymic, and so is `Jakobsdotter` whose father is `**Jakob**
+Jakobsson`. The discriminating version is whether the father carries the **same token**:
 
-So the plan files `Gundersen` as `given` (63) and `family` (19, `Q656767`), the classifier asks
-for `(Gundersen, patronymic)`, and the lookup misses an item that exists. The person gets **no
-name statement at all**.
+| test | tokens | share |
+| --- | ---: | ---: |
+| father has the **same** token → inherited **surname** | 40,872 | 14% |
+| stem = father's **given name** → **patronymic** | 213,898 | 75% |
+| neither → undecided | 31,766 | 11% |
 
-| | |
-| --- | ---: |
-| tokens with no patronymic row the classifier asks for | **1,051** |
-| bearers behind them | **31,259** |
-| of those, tokens that already have an item under given/family | 330 (12,798 bearers) |
+`James Slawson` son of `James Slawson` is the surname case; `John Kristiansen` son of `Kristian`
+is the patronymic case. **The 11% undecided are mostly spelling variants** — `Jonsen`/`John`,
+`Jakobsdotter`/`Jacob` — that a better stem comparison would catch.
 
-By suffix: `-sen` 16,296 bearers, `-son` 7,581, `-sson` 7,382.
-
-**Neither fix is mine to pick.** Widening the plan mints a patronymic item for `Jefferson`;
-falling back to the family item contradicts § *One name item per USAGE*, under which the
-patronymic is a different object from the surname. `name modelling.txt` reserves edge cases
-for her.
-
-## ⛔ Labels in other languages — three things, measured 2026-08-26
-
-- **The transliteration table is extended: 113 → 218 tokens, and `ja`/`zh` go from 4 of 36
-  creations to 21.** She pointed out the Chinese was never a decision — the table already had
-  113 rows with both columns filled, so the method was settled and this was authoring.
-  `scripts/census-missing-transliterations.py` ranks what is missing by **people unblocked**,
-  not token frequency.
-
-  **What is left is not a table gap.** Blocked people 58 → 17, and **0 of the 32 remaining
-  tokens is a name**: 11 places from titles (`Blekinge`, `Lolland`, `Tuscany`), 8 title words
-  (`of`, `Queen`, `margrave`), 5 punctuation artefacts (`Estland,`, `(Hafridssons`, `ätt)`),
-  3 quoted nicknames, 3 particles, 2 clan words. Those reach the transliterator because **the
-  labels themselves carry titles and quoted nicknames** — a labelling problem, and the fix is
-  upstream in what gets handed over, not more rows.
-
-- **NEEDS-DECISION, Emma — `mul` may be actively harmful.** Her report: *"Mul labels cause
-  massive numbers of labels across languages on an item to be removed by a bot, which might be
-  desired behaviour on certain items."* Every creation currently gets `Lmul`. If that triggers
-  a bot to strip per-language labels, the `ja`/`zh` work above is being deleted behind us.
-  **Establish what the bot actually does before emitting more `Lmul`.** Nothing here can
-  answer it offline; it is a question about live Wikidata behaviour.
-
-- **The census is DONE, 2026-08-26** — `scripts/census-name-scripts.py` →
-  `reports/name-scripts.md` and `.tsv`. **22 scripts** over 1,329,328 people. It censuses
-  SCRIPT, not language, because a string cannot say whether `Иван` is Russian or Bulgarian.
-
-  | script | people | **no Latin label** | implies |
-  | --- | ---: | ---: | --- |
-  | Latin | 1,271,353 | 19,746 | en, no, sv, da, … |
-  | **Han** | 47,296 | **44,858** | zh, ja, ko |
-  | Cyrillic | 9,411 | 4,548 | ru, uk, be, bg, sr, mk |
-  | Hebrew | 6,086 | 1,015 | he, yi |
-  | **Hangul** | 5,355 | **4,928** | ko |
-  | Arabic | 4,283 | 182 | ar, fa, ur |
-  | Greek | 445 | 45 | el |
-  | Kana | 331 | 260 | ja |
-
-  **Korean is the surprise.** 5,355 people, 4,928 of them with no Latin label at all, and
-  nothing in the pipeline has ever mentioned `ko`. Next step is hers: which of these scripts
-  get labels emitted, given the `mul`/bot question above is unresolved.
+**To build:** `classify_fields` needs the father's name to apply this, so it takes an optional
+`father_name` and keeps today's morphology-only behaviour without one. Then the name plan emits
+a `patronymic` row wherever the test says patronymic, which is what unblocks the **31,259
+bearers** currently resolving to nothing. `tests/test_namemodel.py` carries the strict `xfail`
+that fails when this lands.
 
 ## The daily Garborg batch — one QuickStatements run per day
 
