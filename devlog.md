@@ -15855,3 +15855,38 @@ correspondence was actually computed. That is true, and it keeps a rebuild from 
 deterministic, which is presumably what the hardcoded value was protecting.
 
 **1,388 passed, 0 failed.**
+
+## 2026-08-27 — the repo's failure mode is drift between stages, so measure it
+
+Three consecutive findings today were the same shape, and each was found by hand: the structural
+walk two days older than `reports/derived-family.csv`; `garborg-live-state.tsv` frozen at
+2026-08-24 while the ledger rebuilt daily, making **three-quarters of a batch duplicates**; the
+correspondence batch four days behind the walk. None was a defect inside a stage. All three were
+a stage built from something older than itself.
+
+**`reports/repo-freshness.csv` already existed and could not see any of them.** It measures
+git-commit age and the export count a report claims — and every one of those files had been
+committed recently, just built from something older.
+
+It now carries **`stale_against_input`**: for each generated file, find the script that writes
+it, the `reports/`/`out/` files that script *reads*, and flag any output older than one of them.
+
+**The first version flagged twelve and four were noise** — `0h newer`, outputs written minutes
+apart by one script, which would flag each other forever. A column that cries wolf is one nobody
+reads, so anything under an hour is treated as same-run ordering. Eight remain and they are
+real:
+
+| file | behind |
+| --- | --- |
+| `reports/izumo-chart-edges.tsv` | `derived-family.csv` by **124h** |
+| `reports/izumo-roster.tsv` | by 62h |
+| `reports/samaritan-marriages.csv`, `samaritan-people.csv` | `samaritan-priests.json` by 39h |
+| `reports/izumo-p2600-pairs.tsv`, `izumo-tree-vs-chart.tsv` | by 29h |
+| `reports/izumo-geni-anchors.tsv` | `izumo-chart-edges.tsv` by 12h |
+| `reports/patronymic-items.csv` | `name-classes.csv` by 8h |
+
+**The guard asserts the column finds generators at all**, not that the list is empty. Input
+detection is a heuristic over path literals in the generator, so the likely way it breaks is
+matching nothing — which would read exactly like a clean repo.
+
+**1,389 passed, 0 failed.**

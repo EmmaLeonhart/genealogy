@@ -294,3 +294,34 @@ def test_compose_returns_stripped_geni_ids():
     # a parent behind the ` | ` is reachable at all, which is what the strip governs.
     assert {"200", "300"} & set(picked), (
         f"neither parent behind a ` | ` was reachable; got {sorted(picked)}")
+
+
+def test_the_freshness_census_can_see_output_older_than_input():
+    """`repo-freshness.csv` must carry the drift column, and it must find things.
+
+    **Drift between stages is this repo's actual failure mode**, not defects inside one.
+    Three consecutive findings on 2026-08-27 were all drift: the structural walk two days
+    older than `reports/derived-family.csv`; `garborg-live-state.tsv` frozen at 2026-08-24
+    while the ledger rebuilt daily, making three-quarters of a batch duplicates; the
+    correspondence batch four days behind the walk. Each was found by hand, one at a time.
+
+    **Git-commit age cannot see any of them** — every one of those files was committed
+    recently, just built from something older. That is what the rest of that census measures,
+    which is why it never caught them.
+
+    An all-empty column would mean the input detection had stopped matching, which reads
+    exactly like a clean repo. Since it is a heuristic over path literals in the generator,
+    that is the likely way it breaks.
+    """
+    path = R / "repo-freshness.csv"
+    if not path.exists():
+        pytest.skip("repo-freshness.csv not built")
+    rows = list(_rows(path))
+    assert rows, "the census is empty"
+    assert "stale_against_input" in rows[0], (
+        "the drift column is gone — git-commit age alone cannot see a file built from "
+        "something newer than itself")
+    with_generator = [r for r in rows if r.get("generator")]
+    assert len(with_generator) > 100, (
+        f"only {len(with_generator)} files resolved to a generator; the source scan that "
+        f"finds them has stopped matching, so the drift column cannot fire")

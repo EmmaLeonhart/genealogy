@@ -129,10 +129,28 @@ them and nothing is waiting.
   none of them needs a page opened. Whatever is left after that is the genuinely thorny
   residue and only that needs the browser.
 
-## Stale, small, nobody's blocker
+## Drift between stages is the repo's failure mode — now measured
 
-- Nothing outstanding here right now. `reports/repo-freshness.csv` was regenerated
-  2026-08-23 and no longer lists the two files that had been deleted under it.
+`reports/repo-freshness.csv` gained a **`stale_against_input`** column, 2026-08-27. For each
+generated file it finds the script that writes it, the `reports/`/`out/` files that script
+*reads*, and flags any output older than one of them by an hour or more. Under an hour is
+same-run ordering, not drift.
+
+**Git-commit age cannot see this**, which is why the census never caught it: every one of the
+recent findings was a recently-committed file built from something older.
+
+**Eight are behind right now**, and they are a to-do list rather than a defect list:
+
+| file | behind |
+| --- | --- |
+| `reports/izumo-chart-edges.tsv` | `derived-family.csv` by **124h** |
+| `reports/izumo-roster.tsv` | `derived-family.csv` by 62h |
+| `reports/samaritan-marriages.csv`, `samaritan-people.csv` | `out/wikidata/samaritan-priests.json` by 39h |
+| `reports/izumo-p2600-pairs.tsv`, `izumo-tree-vs-chart.tsv` | `derived-family.csv` by 29h |
+| `reports/izumo-geni-anchors.tsv` | `izumo-chart-edges.tsv` by 12h |
+| `reports/patronymic-items.csv` | `name-classes.csv` by 8h |
+
+Re-running each is cheap; the Izumo chain has an order (`chart-edges` feeds `geni-anchors`).
 
 ## The derived CSVs are committed gzipped
 

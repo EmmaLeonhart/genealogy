@@ -76,6 +76,63 @@ def source_index() -> dict[str, str]:
     return {k: ";".join(sorted(set(v))[:3]) for k, v in index.items()}
 
 
+#: Below this, an output being older than its input is same-run ordering, not staleness.
+MIN_DRIFT_HOURS = 1.0
+
+
+def inputs_of(script_rel: str) -> list[str]:
+    """The `reports/` and `out/` files a generator READS, by the paths it names.
+
+    Crude on purpose: every `reports/x` or `out/x` literal in the script, minus whatever it
+    writes. A file it both reads and writes is not a dependency of itself.
+    """
+    path = REPO / script_rel
+    if not path.exists():
+        return []
+    try:
+        text = path.read_text(encoding="utf-8", errors="replace")
+    except OSError:
+        return []
+    named = set(re.findall(r'["\']((?:reports|out)/[\w./-]+\.(?:md|csv|tsv|json|ged))["\']',
+                           text))
+    written = set(re.findall(r'(?:open|write_text|to_csv)\([^)]*?["\']'
+                             r'((?:reports|out)/[\w./-]+)', text))
+    return sorted(named - written)
+
+
+def stale_against_inputs(rel: str, generators: str) -> str:
+    """`"<input> is Nh newer"` when a generated file is older than something it reads.
+
+    **This is the failure mode the repo actually has.** Three consecutive findings on
+    2026-08-27 were drift between stages, not defects inside one: the structural walk was
+    two days older than `reports/derived-family.csv`; `garborg-live-state.tsv` sat frozen at
+    2026-08-24 while the ledger was rebuilt daily, making three-quarters of a batch
+    duplicates; the correspondence batch was four days behind the walk. Each was found by
+    hand, one at a time.
+
+    Git-commit age -- what the rest of this file measures -- cannot see any of them: every
+    one of those files was committed recently, just built from something older.
+    """
+    out = REPO / rel
+    if not out.exists() or not generators:
+        return ""
+    newer = []
+    for script in generators.split(";"):
+        for dep in inputs_of(script):
+            d = REPO / dep
+            if d.exists() and d.stat().st_mtime > out.stat().st_mtime:
+                hours = (d.stat().st_mtime - out.stat().st_mtime) / 3600
+                # **Under an hour is one run, not drift.** Several outputs are written
+                # minutes apart by the same script and would otherwise flag each other
+                # forever -- and a column that cries wolf is one nobody reads.
+                if hours >= MIN_DRIFT_HOURS:
+                    newer.append((hours, dep))
+    if not newer:
+        return ""
+    hours, dep = max(newer)
+    return f"{dep} is {hours:.0f}h newer"
+
+
 def main() -> None:
     live_exports = len(list((REPO / "exports").rglob("*.ged")))
     gens = source_index()
@@ -102,9 +159,14 @@ def main() -> None:
             "behind_by": (live_exports - claim) if claim else "",
             "dated_name": "yes" if DATED_RE.search(Path(rel).name) else "",
             "generator": gens.get(Path(rel).name, ""),
+            "stale_against_input": stale_against_inputs(
+                rel, gens.get(Path(rel).name, "")),
         })
 
-    rows.sort(key=lambda r: (-(r["behind_by"] or 0), -(r["days_stale"] or 0)))
+    # Output-older-than-input first: it is the only column here that means something is
+    # WRONG right now rather than merely old.
+    rows.sort(key=lambda r: (not r["stale_against_input"],
+                             -(r["behind_by"] or 0), -(r["days_stale"] or 0)))
     out = REPO / "reports" / "repo-freshness.csv"
     with out.open("w", encoding="utf-8", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=list(rows[0]))
