@@ -89,31 +89,37 @@ SUFFIXES = [
 
 
 def by_rule(token):
-    """Read a token through the orthography table. Returns `(ja, zh)`."""
-    low = token.casefold()
-    ja, zh, i = [], [], 0
-    while i < len(low):
-        for d, j, z in DIGRAPHS:
-            if low.startswith(d, i):
-                ja.append(j)
-                zh.append(z)
-                i += len(d)
-                break
-        else:
-            ch = low[i]
-            if ch in LETTERS:
-                j, z = LETTERS[ch]
-                ja.append(j)
-                zh.append(z)
-            elif ch in "-'’.":
-                pass
-            else:
-                return None, None      # unreadable: leave it out, do not guess
-            i += 1
-    return "".join(ja), "".join(zh)
+    """`(ja, zh)` for one token, through `scripts/translit_no.py`.
+
+    **This delegates now, and the version it replaced is why.** This file carried its own
+    inline letter-by-letter reader that produced `Algot` -> `アルグオト`, `Benedicta` ->
+    `ブエンエドイクトア` and `Bertila` -> `ブエルトイルア`. That is a spelling-out, not a
+    transliteration, and it is the exact failure `translit_no.py` was written to replace on
+    2026-08-25 after Emma asked *"did you kinda bullshit these instead of selecting from an
+    actual pipeline?"*. The good engine was written and then never wired in: this module
+    never imported it. `translit_no.translit` gives `アルゴト`, `ベネディクタ`, `ベルティラ`.
+
+    **Nothing bad ever shipped.** The table was hand-maintained throughout -- 113 rows on
+    2026-08-24, 218 on 2026-08-26 -- and 41 of the 71 items on Wikidata carry `ja`/`zh` that
+    read correctly. This engine was only ever reachable by running the script, which nobody
+    did between it landing and being fixed.
+    """
+    from translit_no import translit
+    return translit(token)
 
 
 def main():
+    # **Unknown flags are an error, and this file taught me why.** It took no arguments at
+    # all, so `--check` -- a flag I assumed existed -- was silently ignored and the script
+    # ran its normal course, REWRITING the hand-maintained table with rule output: 113
+    # tokens became 193 while I believed I was scoring it. Twice. A script that overwrites a
+    # checked-in file must not accept an argument it does not understand.
+    import argparse
+    ap = argparse.ArgumentParser(description="extend the transliteration table by rule")
+    ap.add_argument("--dry-run", action="store_true",
+                    help="print what would be added and write nothing.")
+    args = ap.parse_args()
+
     rows = list(csv.DictReader(open(TABLE, encoding="utf-8"), delimiter="\t"))
     have = {r["token"]: r for r in rows}
     print(f"{len(have)} tokens in the hand table - preserved untouched")
@@ -162,6 +168,11 @@ def main():
 
     rows.extend(added)
     rows.sort(key=lambda r: r["token"].casefold())
+    if args.dry_run:
+        print(f"\n--dry-run: {len(added)} rows would be added, table untouched")
+        for r in added[:15]:
+            print(f"   {r['token']:<20}{r['ja']:<22}{r['zh']:<18}{r['note']}")
+        return
     with open(TABLE, "w", encoding="utf-8", newline="") as f:
         w = csv.DictWriter(f, fieldnames=["token", "ja", "zh", "note"], delimiter="\t")
         w.writeheader()

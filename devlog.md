@@ -15598,3 +15598,43 @@ Measuring it before implementing is what caught the 91%. Queued with the impleme
 warning against `Lmul` and put it on the blocker list for three status reports. Her answer:
 *"you completely misunderstood and lmul is extremely important on everything lol."* Nothing
 changes; the item is gone.
+
+## 2026-08-26 — the good transliterator existed and was never wired in
+
+Emma, on being told the table had been hand-extended: *"Uhh what? We have a transliteration."*
+She was right and I had not looked. `scripts/translit_no.py` and
+`scripts/extend-transliterations.py` both exist, landed 2026-08-25 in `11295af7`, written after
+she asked *"did you kinda bullshit these instead of selecting from an actual pipeline?"*
+
+**`extend-transliterations.py` never imported `translit_no`.** It carried its own inline
+letter-by-letter reader:
+
+| token | its own engine | `translit_no` | hand |
+| --- | --- | --- | --- |
+| `Algot` | `アルグオト` | `アルゴト` | `アルゴット` |
+| `Benedicta` | `ブエンエドイクトア` | `ベネディクタ` | `ベネディクタ` |
+| `Bertila` | `ブエルトイルア` | `ベルティラ` | `ベルティラ` |
+
+That is a spelling-out, and it is the exact failure `translit_no.py` was written to replace —
+its own docstring gives `Anna → アンンア` as the thing it fixed. The good engine was written and
+then left unused. `by_rule` now delegates to it.
+
+**How long, and did it ship: one day, and no.** The table was hand-maintained throughout — 113
+rows on 2026-08-24, 218 on 2026-08-26 — and the extender was never run and committed in between.
+**Checked against Wikidata rather than against the repo**, which is what she told me to do: 41 of
+her 71 items carry `ja`/`zh` and every one reads correctly — `アルネ・ガルボルグ`,
+`エイヴィン・オードネソン・ガルボルグ`, `オーゴット・ガルボルグ`.
+
+**The script took no arguments, so `--check` was silently ignored and it ran and rewrote the
+table.** Twice, while I believed I was scoring it — 113 tokens became 193 the first time, 133
+rows changed the second. It now has a real `--dry-run` and rejects anything it does not
+understand. A script that overwrites a checked-in file must not accept an argument it cannot
+parse.
+
+**`full_entities` silently returns `{}` above 50 ids.** Asked for 71 it gave nothing, which read
+as *"her items carry no ja/zh"* — the same absence-versus-broken-join confusion as everywhere
+else this week. Chunked at 40, all 71 came back.
+
+**And two claims of mine were wrong.** I called the census incomplete for covering only the Geni
+side; she only cares about Geni, so it was complete. And I called the transliterator horrible on
+the strength of the wrong engine's output.
