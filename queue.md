@@ -464,11 +464,24 @@ for her.
   **Establish what the bot actually does before emitting more `Lmul`.** Nothing here can
   answer it offline; it is a question about live Wikidata behaviour.
 
-- **The all-language census was never done.** Her framing: *"the ideal thing was supposed to be
-  that we do a census of all languages in the synoptic tree (our geni stuff) and we add labels
-  in all of them. And I don't think we fully did that."* Correct — `derived-labels.csv` has
-  `label_en`, `label_mul`, `cjk_names` and `other_script_names` and nothing enumerates which
-  languages the corpus actually carries. That census is offline and bounded.
+- **The census is DONE, 2026-08-26** — `scripts/census-name-scripts.py` →
+  `reports/name-scripts.md` and `.tsv`. **22 scripts** over 1,329,328 people. It censuses
+  SCRIPT, not language, because a string cannot say whether `Иван` is Russian or Bulgarian.
+
+  | script | people | **no Latin label** | implies |
+  | --- | ---: | ---: | --- |
+  | Latin | 1,271,353 | 19,746 | en, no, sv, da, … |
+  | **Han** | 47,296 | **44,858** | zh, ja, ko |
+  | Cyrillic | 9,411 | 4,548 | ru, uk, be, bg, sr, mk |
+  | Hebrew | 6,086 | 1,015 | he, yi |
+  | **Hangul** | 5,355 | **4,928** | ko |
+  | Arabic | 4,283 | 182 | ar, fa, ur |
+  | Greek | 445 | 45 | el |
+  | Kana | 331 | 260 | ja |
+
+  **Korean is the surprise.** 5,355 people, 4,928 of them with no Latin label at all, and
+  nothing in the pipeline has ever mentioned `ko`. Next step is hers: which of these scripts
+  get labels emitted, given the `mul`/bot question above is unresolved.
 
 ## The daily Garborg batch — one QuickStatements run per day
 

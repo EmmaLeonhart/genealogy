@@ -15493,3 +15493,38 @@ including that `mul` may cause a bot to strip per-language labels — which woul
 work behind us, and cannot be established offline.
 
 **1,381 passed, 1 xfailed, 0 failed.**
+
+## 2026-08-26 — the language census she asked for, and Korean was the surprise
+
+*"The ideal thing was supposed to be that we do a census of all languages in the synoptic tree…
+And I don't think we fully did that."* Nothing had. `scripts/census-name-scripts.py` →
+`reports/name-scripts.md` and `.tsv`: **22 scripts** over 1,329,328 people.
+
+| script | people | **no Latin label** | implies |
+| --- | ---: | ---: | --- |
+| Latin | 1,271,353 | 19,746 | en, no, sv, da, de, nl, fr, es, it |
+| **Han** | 47,296 | **44,858** | zh, ja, ko (hanja) |
+| Cyrillic | 9,411 | 4,548 | ru, uk, be, bg, sr, mk |
+| Hebrew | 6,086 | 1,015 | he, yi |
+| **Hangul** | 5,355 | **4,928** | ko |
+| Arabic | 4,283 | 182 | ar, fa, ur |
+| Greek | 445 | 45 | el |
+| Kana | 331 | 260 | ja |
+
+**It censuses SCRIPT, not language, and that is the point.** `Иван` is Russian, Ukrainian,
+Bulgarian or Serbian and the string cannot say which; `李` is Chinese, Japanese or Korean. The
+`implies` column is a suggestion for whoever writes the label. `CLAUDE.md` records what guessing
+costs here — `Q28513` written down as *Empire of Japan* when it is **Austria-Hungary**, which
+produced 1,406 fake Japanese isolates.
+
+**Korean is the finding.** 5,355 people carry Hangul, **4,928 of them with no Latin label at
+all**, and nothing in this pipeline has ever mentioned `ko`. Cyrillic is the next largest at
+4,548 unlabelled.
+
+**The first run invented five scripts that do not exist.** `other (Masculine)` for 1,287 people
+is `º`, the ordinal indicator in `Afonso de Bragança 1º conde`; `other (Feminine)` is `ª`.
+`unicodedata.name()` blocks those separately from `LATIN`, and reporting them as writing systems
+would have been the same error as the Austria-Hungary one, with more rows. Folded into Latin,
+22 scripts rather than 27.
+
+**1,381 passed, 1 xfailed, 0 failed.**
