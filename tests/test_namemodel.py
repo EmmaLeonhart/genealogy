@@ -31,7 +31,7 @@ import pytest
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
 
 from namemodel import (  # noqa: E402
-    FAMILY_NAME, GIVEN_NAME, MIDDLE_NAME, PATRONYM, SERIES_ORDINAL,
+    FAMILY_NAME, GIVEN_NAME, MIDDLE_NAME, PATRONYM, PATRONYMIC, SERIES_ORDINAL,
     USUAL_FORENAME, classify, statements_for,
 )
 
@@ -357,10 +357,6 @@ def test_a_mans_marnm_family_name_carries_no_married_role():
         "a woman's married name keeps the married-name role")
 
 
-@pytest.mark.xfail(strict=True, reason=(
-    "KNOWN DEFECT, measured 2026-08-26: the name plan and the classifier disagree about "
-    "-sen/-son, so 1,051 tokens over 31,259 bearers resolve to nothing. Needs Emma's "
-    "ruling; see queue.md. Strict, so it fails loudly the moment it is fixed."))
 def test_the_plan_covers_every_usage_the_classifier_asks_for():
     """A token the classifier calls `patronymic` must have a `patronymic` row in the plan.
 
@@ -381,11 +377,19 @@ def test_the_plan_covers_every_usage_the_classifier_asks_for():
     bearers — and per `CLAUDE.md` § *One name item per USAGE* a patronymic is a **different**
     item, so those cannot simply be linked.
 
-    **Not fixed here, because either fix decides something that is hers.** Widening the plan
-    mints patronymic items for `Jefferson`; falling back to the family item contradicts
-    one-item-per-usage. `name modelling.txt` reserves edge cases like this for Emma.
+    **FIXED 2026-08-27.** `scripts/build-name-item-batch.py` now emits a patronymic row for a
+    `-sen`/`-son` token **as well as** its given/family rows, rather than instead of them.
+    That is `CLAUDE.md` § *One name item per USAGE*: a token used two ways gets two items, and
+    it is not an ambiguity to resolve. Emma's father test then decides per person which of the
+    two that person links to. Patronymic rows in the plan: 623 -> 1,677.
+
+    **This assertion was a strict `xfail` for a day and never tested anything.** It failed with
+    `NameError: name 'REPO' is not defined` -- a constant that file does not define -- so the
+    marker was satisfied by a typo rather than by the defect. Exactly the failure the repo has
+    been recording all week: a guard not seen to fail *for the right reason* is not known to
+    guard.
     """
-    plan_path = REPO / "reports" / "name-item-plan.csv"
+    plan_path = Path(__file__).resolve().parent.parent / "reports" / "name-item-plan.csv"
     if not plan_path.exists():
         pytest.skip("no name plan built")
     import csv as _csv

@@ -84,8 +84,8 @@ LAST	P40	Q101247444	S2600	"6000000002601672538"
 Q6197518	P26	LAST	S2600	"6000000002601672538"
 #   Q101247444 Ingegerd Svantepolksdotter: P25 mother = the item just created
 Q101247444	P25	LAST	S2600	"6000000002601672538"
-#   the item just created: P735 given name = Q21147545 Benedicta, qualified series ordinal 1, reason for preferred rank Q3409033 usual forename
-LAST	P735	Q21147545	P1545	"1"	P7452	Q3409033
+#   the item just created: P735 given name = Q21147545 Benedicta
+LAST	P735	Q21147545
 #   P1449 nickname = en:"Bjälbo"
 LAST	P1449	en:"Bjälbo"
 #   add a mul alias "Bjälbo Folkungaätten"
@@ -511,8 +511,8 @@ LAST	P570	+1330-00-00T00:00:00Z/9	S2600	"340342479380013975"
 LAST	P40	Q5915800	S2600	"340342479380013975"
 #   Q5915800 Knut Algotsson: P25 mother = the item just created
 Q5915800	P25	LAST	S2600	"340342479380013975"
-#   the item just created: P735 given name = Q19798802 Kristina, qualified series ordinal 1, reason for preferred rank Q3409033 usual forename
-LAST	P735	Q19798802	P1545	"1"	P7452	Q3409033
+#   the item just created: P735 given name = Q19798802 Kristina
+LAST	P735	Q19798802
 #   P1449 nickname = en:"Tolveætten"
 LAST	P1449	en:"Tolveætten"
 #   add a mul alias "Tolveætten Näs"
@@ -1529,8 +1529,8 @@ Q141180412	Lzh	"玛尔塔·拉斯穆斯达特·赫勒"
 Q141180409	P40	Q633094	S2600	"6000000006127859575"
 #   P26 spouse = Q141180413 Thomas Mattsson
 Q141180409	P26	Q141180413	S2600	"6000000006127859575"
-#   P735 given name = Q842544 Magdalena, qualified series ordinal 1, reason for preferred rank Q3409033 usual forename
-Q141180409	P735	Q842544	P1545	"1"	P7452	Q3409033
+#   P735 given name = Q842544 Magdalena
+Q141180409	P735	Q842544
 #   set the ja label to "マグダレーナ・アンデシュドッテル・ブーレ"
 Q141180409	Lja	"マグダレーナ・アンデシュドッテル・ブーレ"
 #   set the zh label to "玛格达莱娜·安德斯多特·布雷"
@@ -1619,8 +1619,8 @@ Q101247444	Lja	"インゲゲルド・スヴァンテポルクスドッテル"
 Q101247444	Lzh	"英格格德·斯万特波尔克斯多特"
 #   Q141180410 Margareta Mårtensdotter Bång: P26 spouse = Q633094 Johannes Tomasson
 Q141180410	P26	Q633094	S2600	"6000000012566410426"
-#   P735 given name = Q8274988 Margareta, qualified series ordinal 1, reason for preferred rank Q3409033 usual forename
-Q141180410	P735	Q8274988	P1545	"1"	P7452	Q3409033
+#   P735 given name = Q8274988 Margareta
+Q141180410	P735	Q8274988
 #   set the ja label to "マルガレータ・モーテンスドッテル・ボング"
 Q141180410	Lja	"マルガレータ・モーテンスドッテル・ボング"
 #   set the zh label to "玛格丽塔·莫滕斯多特·邦格"

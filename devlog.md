@@ -15669,3 +15669,37 @@ the `-sen`/`-son` split that is still open.
 a good way to find a gap neither would have shown alone.
 
 **1,384 passed, 1 xfailed, 0 failed.**
+
+## 2026-08-27 — the `-sen` plan half, and my own xfail never tested anything
+
+`scripts/build-name-item-batch.py` now emits a patronymic row for a `-sen`/`-son` token **as
+well as** its given/family rows. `RELIABLE_PATRONYMIC` leaves those suffixes out on purpose —
+`Jefferson` — and that was read as *therefore not a patronymic*, so the plan held
+`(Gundersen, given)` and `(Gundersen, family)` while the classifier asked for
+`(Gundersen, patronymic)` and missed an item that exists.
+
+The token really is both, and `CLAUDE.md` § *One name item per USAGE* settles it: two usages,
+two items. Emma's father test then decides per person which one to link. This file is
+token-level and **cannot** make that call — it has no fathers, and a token's usage varies by
+bearer, which is exactly why both items are needed.
+
+**Patronymic rows 623 → 1,677.** The 18 patronymic tokens the daily batch needs moved from
+*"not in the plan"* to *"create"* — visible to the name-item builder instead of invisible.
+
+## The strict xfail I wrote yesterday was satisfied by a typo
+
+`test_the_plan_covers_every_usage_the_classifier_asks_for` failed with **`NameError: name
+'REPO' is not defined`** — a constant that file does not define. Then, once fixed, with
+`NameError: name 'PATRONYMIC' is not defined`, which it never imported. **Two undefined names.**
+So for a day it reported the defect as reproduced while executing none of its assertions.
+
+That is precisely what this repo has been recording all week and what I wrote down myself on
+2026-08-26 — *"a guard that has not been seen to fail is not known to guard"* — with the part I
+got wrong being the second half: it must be seen to fail **for the right reason**. A strict
+xfail is worse than an ordinary test here, because failing is its success condition, so any
+error at all looks like confirmation.
+
+Fixed, marker removed, and verified the honest way: deleting the 1,054 patronymic rows makes it
+fail, restoring them makes it pass.
+
+**1,385 passed, 0 failed.**

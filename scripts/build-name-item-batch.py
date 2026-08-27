@@ -85,6 +85,11 @@ INSTANCE_OF, BASED_ON = "P31", "P144"
 #: Reliable patronymic morphology. `-son`/`-sen` are deliberately absent: they
 #: also end ordinary inherited surnames and a few real given names (`Jefferson`,
 #: 30 bearers). `reports/name-classes.md` has the per-suffix measurement.
+#: The suffixes that are patronymic on SOME bearers and an inherited surname on others, so
+#: the token needs both items. `RELIABLE_PATRONYMIC` below is the stricter set where the
+#: morphology alone settles it.
+PATRONYMIC_ALSO = re.compile(r"(sen|son|sson)$", re.I)
+
 RELIABLE_PATRONYMIC = ("sdottir", "sdóttir", "sdatter", "sdotter", "dottir",
                        "dóttir", "datter", "dotter", "ovich", "evich", "ovna",
                        "evna", "ivna", "ovych", "yevich")
@@ -188,6 +193,24 @@ def main() -> int:
                 usages.append(("given", GIVEN_NAME_ITEM, int(r["as_given"])))
             if int(r["as_surname"]):
                 usages.append(("family", FAMILY_NAME_ITEM, int(r["as_surname"])))
+            # **A `-sen`/`-son` token needs a patronymic item AS WELL**, not instead.
+            #
+            # `RELIABLE_PATRONYMIC` leaves `-son`/`-sen` out on purpose, because they also end
+            # inherited surnames -- `Jefferson`. That was read as *therefore not a patronymic*,
+            # and the effect was that `classify_fields` asked for `(Gundersen, patronymic)`
+            # while the plan held only `(Gundersen, given)` and `(Gundersen, family)`. The
+            # lookup missed an item that exists and the person got **no name statement at
+            # all**: 1,051 tokens over **31,259 bearers**.
+            #
+            # The token really is both, and `CLAUDE.md` § *One name item per USAGE* says what
+            # to do about that: *"If something is a surname and a given name, then it gets a
+            # surname and a given name object… They're two completely different things with
+            # completely different objects."* Emma's father test then decides, PER PERSON,
+            # which of the two that person links to -- `namemodel.patronymic_or_surname`.
+            # This file is token-level and cannot make that call: it has no fathers, and a
+            # token's usage varies by bearer, which is the whole reason both items are needed.
+            if PATRONYMIC_ALSO.search(token) and int(r["bearers"]):
+                usages.append(("patronymic", PATRONYMIC_ITEM, int(r["bearers"])))
 
         for usage, type_qid, bearers in usages:
             if bearers < MIN_BEARERS:

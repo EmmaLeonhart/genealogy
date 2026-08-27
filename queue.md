@@ -417,40 +417,22 @@ gate for *"once we get to a certain point"*, because she said it *"could be in t
 the descendants one"* and a gate I invent that never opens is the failure mode § *The batches are
 a SEQUENCE* is written against.
 
-## ⛔ `-sen`/`-son` is DECIDED — her test, measured. Implement it
+## `-sen`/`-son` is BUILT — both halves, 2026-08-27
 
-**Emma, 2026-08-26:** *"If father has -son or -sen then it's a surname lol that's the test same
-with other patronymic surnames."*
+**The plan emits a patronymic row for a `-sen`/`-son` token AS WELL AS its given/family rows**,
+not instead of them. `CLAUDE.md` § *One name item per USAGE*: a token used two ways gets two
+items and that is not an ambiguity to resolve. Patronymic rows 623 → **1,677**; the 18
+patronymic tokens the daily batch needs moved from *"not in the plan"* to *"create"*.
 
-**Read naively that classifies 91% as surnames and is wrong** — in a patronymic society the
-father almost always has one too. `Einar **Jonsen** Vestad`'s father is `**John** Kristiansen
-Jevne`; that is a textbook patronymic, and so is `Jakobsdotter` whose father is `**Jakob**
-Jakobsson`. The discriminating version is whether the father carries the **same token**:
+**`classify_fields` takes an optional `father_name`** and `patronymic_or_surname()` applies her
+test per person — same token as the father → inherited surname; stem matches the father's given
+name → patronymic. Without a father it keeps the morphological answer, which all nine callers
+rely on.
 
-| test | tokens | share |
-| --- | ---: | ---: |
-| father has the **same** token → inherited **surname** | 40,872 | 14% |
-| stem = father's **given name** → **patronymic** | 213,898 | 75% |
-| neither → undecided | 31,766 | 11% |
-
-`James Slawson` son of `James Slawson` is the surname case; `John Kristiansen` son of `Kristian`
-is the patronymic case. **The 11% undecided are mostly spelling variants** — `Jonsen`/`John`,
-`Jakobsdotter`/`Jacob` — that a better stem comparison would catch.
-
-**The classifier half is BUILT, 2026-08-26.** `classify_fields` takes an optional
-`father_name`; without one it keeps today's morphology-only answer, which is what all nine
-existing callers rely on. `patronymic_or_surname()` applies her test.
-
-**Still to build:** the name plan must emit a `patronymic` row wherever the test says
-patronymic — that is what unblocks the **31,259 bearers** resolving to nothing, and the strict
-`xfail` in `tests/test_namemodel.py` fails when it lands. The plan builder needs the father,
-which it does not currently load.
-
-**Found on the way: `PATRONYMIC` had `datter` and not `dotter`.** The Swedish form. **60,085
-people** were classified as carrying a family name — `Johansdotter` 5,612, `Andersdotter`
-5,472, `Olofsdotter` 3,157 — when every one is a patronymic. `build-name-item-batch.py`'s
-`RELIABLE_PATRONYMIC` has listed `dotter` all along, so the two modules read the same token two
-different ways. Fixed and guarded.
+**Still to do:** the plan's patronymic rows are `create`, so the items must be minted before
+anybody links to them — 10 a run through `build-garborg-name-items.py`. And the daily builders
+do not yet pass `father_name` into `classify_fields`, so the per-person test is available and
+unused.
 
 ## The daily Garborg batch — one QuickStatements run per day
 

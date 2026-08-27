@@ -185,10 +185,9 @@ Q141152523	P5056	LAST	P144	Q141168955	S2600	"6000000003491986946"
 #   Q141178381 Marta Jonsdatter Li: P5056 patronym or matronym = the item just created, qualified based on Q141180408 Jon Larsson Li
 Q141178381	P5056	LAST	P144	Q141180408	S2600	"6000000003491988826"
 
-# 114 more name items are needed and wait for a later
+# 115 more name items are needed and wait for a later
 # run -- 10 a day is her cap, not a limit of the data:
 #   Raustad (family), 3 bearer(s)
-#   Andersdotter (family), 2 bearer(s)
 #   Ebbesdatter (patronymic), 2 bearer(s)
 #   Hans (given), 2 bearer(s)
 #   Sør-Reime (family), 2 bearer(s)
@@ -199,7 +198,8 @@ Q141178381	P5056	LAST	P144	Q141180408	S2600	"6000000003491988826"
 #   Aadne (given), 1 bearer(s)
 #   Aadnesson (patronymic), 1 bearer(s)
 #   Agrivillensis (family), 1 bearer(s)
-#   ... and 102 more
+#   Algotsson (family), 1 bearer(s)
+#   ... and 103 more
 
 # NOT created -- the plan says these already resolve to more than
 # one item, and creating another is the Maria failure that would
