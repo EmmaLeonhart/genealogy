@@ -441,8 +441,14 @@ def label_for(gedcom_name: str) -> str:
 
 
 
-#: A middle initial: one Latin letter, optionally with a full stop. `John F. Smith`.
-INITIAL_RE = re.compile(r"^[A-Za-z]\.?$")
+#: A middle initial: an UPPERCASE Latin letter, or any single letter carrying a full stop.
+#:
+#: **A bare lowercase letter is a word, not an initial.** `^[A-Za-z]\.?$` was the first version
+#: and it turned `Ragnhild Toresdatter Håland i Gjesdal` into
+#: `ラグンヒル・トーレスダッテル・ホーランド・I・イェスダール` — Norwegian `i` means *in*, so a
+#: preposition was upper-cased into somebody's initial and planted in a Japanese label. Found by
+#: reading the emitted batch, not by reasoning about the rule.
+INITIAL_RE = re.compile(r"^(?:[A-Z]|[A-Za-z]\.)$")
 
 
 def transliterate_token(token, table):
@@ -463,6 +469,9 @@ def transliterate_token(token, table):
     if pair:
         return pair[0], pair[1]
     if INITIAL_RE.match(token or ""):
-        letter = token.rstrip(".").upper()
+        # **Never change case.** `.upper()` was here and it is what made Norwegian `i` read as
+        # an initial `I`; an initial that is already capitalised needs no help, and one that is
+        # not is not an initial.
+        letter = token.rstrip(".")
         return letter, letter
     return None, None

@@ -118,6 +118,22 @@ idempotence test holds two** — run nothing beside it.
   none of them needs a page opened. Whatever is left after that is the genuinely thorny
   residue and only that needs the browser.
 
+## `build-garborg-day.py` must be run with `--compose`. A bare run is a different program
+
+**Measured 2026-08-27, by running it wrong.** Bare, it emits **272 creations**; with `--compose`
+— the flag `build-daily-batch.py` passes, and where her caps live — it emits **34**. The bare
+path is not a smaller version of the daily algorithm, it is a different one.
+
+**And `--compose` ADVANCES the sequence rather than reproducing a day.** It consumes and rewrites
+`reports/garborg-carry-forward.tsv`, so a second run on the same day produced a batch differing
+by **19 people out and 17 in** — the next hop, not today's. Both files were restored from git;
+nothing was shipped.
+
+So: never re-run the day builder to "refresh" a committed batch. A code change that affects
+labels reaches the batch on the **next** legitimate daily run, which is what
+§ *The batches are a SEQUENCE* means in practice. Run it through `build-daily-batch.py`, which
+also refreshes the ledger and the live values first.
+
 ## Drift between stages — the recent tier is CLEAR; 69 deep-history rows stay flagged
 
 `scripts/refresh-drift.py` walks the `generator -> input` graph the freshness census already

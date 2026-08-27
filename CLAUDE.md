@@ -508,6 +508,12 @@ shape as § *Emma not replying means she is content*, which is what that rule is
 shown four readings and took this one; dropping the initial loses what the Latin label carries,
 and rendering it エフ invents a reading nobody uses.
 
+**A bare lowercase letter is a WORD, not an initial.** The first rule was
+`^[A-Za-z]\.?$` with an `.upper()`, and it turned `Ragnhild Toresdatter Håland i Gjesdal` into
+`ラグンヒル・トーレスダッテル・ホーランド・I・イェスダール` — Norwegian `i` means *in*. An
+initial is capitalised, or carries a full stop; case is never changed. Found by reading the
+emitted batch, which is the only thing that would have found it.
+
 `scripts/labels.transliterate_token` is the single place that does it, and both emitters call it.
 **It is the one exception to *partial is worse than absent*, and it is barely one** — an initial
 is not a name being half-rendered, it is a letter that is the same letter in every script. An

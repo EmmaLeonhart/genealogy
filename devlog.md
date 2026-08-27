@@ -16134,3 +16134,30 @@ splitting, because only it pays the 837s merge more than once.
 
 `test_gedcom_real_exports` (4,427) and `test_wikidata_store_real` (5) were green on 2026-08-25
 and were not re-run today; that is stated rather than folded into a fresh-sounding total.
+
+## 2026-08-27 — the initial rule met real data and was wrong; and a bare day-build is a different program
+
+Two defects, both found by **running the thing and reading its output** rather than by reasoning
+about the code.
+
+**Norwegian `i` is not an initial.** `INITIAL_RE` was `^[A-Za-z]\.?$` with an `.upper()`, so
+`Ragnhild Toresdatter Håland i Gjesdal` — where `i` is the preposition *in* — came out as
+`ラグンヒル・トーレスダッテル・ホーランド・I・イェスダール`, a Norwegian preposition upper-cased
+into somebody's initial and planted in a Japanese label. The rule is now: capitalised, **or**
+carrying a full stop, and case is never changed. A bare lowercase letter blocks the label like
+any other untransliterated word. Pinned by a test carrying that exact name.
+
+**`build-garborg-day.py` bare emits 272 creations; with `--compose` it emits 34.** `--compose`
+is the flag `build-daily-batch.py` passes and it is where her caps live — the bare path is not a
+smaller daily algorithm, it is a different one. I ran it bare, which is the `--check`-was-not-a-
+flag mistake inverted: omitting the flag that carries the algorithm rather than inventing one
+that does not exist.
+
+**Worse, `--compose` advances the sequence rather than reproducing a day.** It consumes and
+rewrites `reports/garborg-carry-forward.tsv`, so the second run gave a batch differing by **19
+people out and 17 in** — tomorrow's hop, not today's. `reports/wikidata-garborg-day.qs` and the
+carry-forward were both restored from git and **nothing was shipped**. § *The batches are a
+SEQUENCE* is exactly this: a label fix reaches the batch on the next legitimate daily run, not by
+re-running today.
+
+**1,397 passed, 24 skipped, 0 failed** in 6m06s.

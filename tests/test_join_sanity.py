@@ -488,3 +488,26 @@ def test_the_two_phrases_emma_ruled_on_are_in_the_marker_vocabulary():
 
     for phrase in ("name not known", "unknown wife", "ukjent", "未知", "某"):
         assert phrase in WORDS_MEANING_UNKNOWN, f"{phrase!r} fell out of the marker vocabulary"
+
+
+def test_a_lowercase_norwegian_particle_is_not_an_initial():
+    r"""`Ragnhild Toresdatter Håland i Gjesdal` — that `i` is Norwegian for *in*.
+
+    The first version of the initial rule was `^[A-Za-z]\.?$` with an `.upper()`, so the
+    preposition became an initial `I` and was planted in a Japanese label:
+    `ラグンヒル・トーレスダッテル・ホーランド・I・イェスダール`. Found by reading the emitted
+    batch rather than by reasoning about the rule.
+
+    An initial is capitalised, or carries a full stop. A bare lowercase letter is a word.
+    """
+    import sys as _sys
+    _sys.path.insert(0, str(ROOT / "scripts"))
+    from labels import transliterate_token
+
+    table = {}
+    assert transliterate_token("i", table) == (None, None), (
+        "bare lowercase `i` is Norwegian *in*, not an initial — it must block the label the "
+        "way any other untransliterated word does")
+    assert transliterate_token("I", table) == ("I", "I")
+    assert transliterate_token("i.", table) == ("i", "i"), "case is never changed"
+    assert transliterate_token("F.", table) == ("F", "F")
