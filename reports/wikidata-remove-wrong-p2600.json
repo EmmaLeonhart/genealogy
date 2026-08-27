@@ -1,1 +1,47 @@
-[]
+[
+ {
+  "id": "remove-p2600-Q4139580-6000000018197588373",
+  "type": "remove_statement",
+  "subject": {
+   "qid": "Q4139580",
+   "geni_id": "6000000018197588373"
+  },
+  "requires": [],
+  "property": "P2600",
+  "value": "6000000018197588373",
+  "because": "our tree gives 6000000018197588373 the parent(s) ('6000000017971990158', ''), and this item's P22/P25 carry ['6000000173972113940']; 4913735229900074272 matches and 6000000018197588373 does not",
+  "keeps": "4913735229900074272",
+  "decided_by": "parents",
+  "evidence": "local Wikidata store + reports/derived-family.csv"
+ },
+ {
+  "id": "remove-p2600-Q4273436-6000000002003837593",
+  "type": "remove_statement",
+  "subject": {
+   "qid": "Q4273436",
+   "geni_id": "6000000002003837593"
+  },
+  "requires": [],
+  "property": "P2600",
+  "value": "6000000002003837593",
+  "because": "our tree gives 6000000002003837593 the parent(s) ('6000000017695098287', '6000000062841478167'), and this item's P22/P25 carry ['6000000017693128850']; 6000000017687692040 matches and 6000000002003837593 does not",
+  "keeps": "6000000017687692040",
+  "decided_by": "parents",
+  "evidence": "local Wikidata store + reports/derived-family.csv"
+ },
+ {
+  "id": "remove-p2600-Q778550-6000000007456333287",
+  "type": "remove_statement",
+  "subject": {
+   "qid": "Q778550",
+   "geni_id": "6000000007456333287"
+  },
+  "requires": [],
+  "property": "P2600",
+  "value": "6000000007456333287",
+  "because": "our tree gives 6000000007456333287 the parent(s) ('6000000007453720795', '6000000027345611750'), and this item's P22/P25 carry ['6000000027346165415']; 6000000038650093974 matches and 6000000007456333287 does not",
+  "keeps": "6000000038650093974",
+  "decided_by": "parents",
+  "evidence": "local Wikidata store + reports/derived-family.csv"
+ }
+]

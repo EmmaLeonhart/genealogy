@@ -129,29 +129,28 @@ them and nothing is waiting.
   none of them needs a page opened. Whatever is left after that is the genuinely thorny
   residue and only that needs the browser.
 
-## Drift between stages is the repo's failure mode — 95 outputs are behind their inputs
+## Drift between stages — 80 outputs behind their inputs, and it CASCADES
 
-`reports/repo-freshness.csv` carries a **`stale_against_input`** column: for each generated
-file it finds the script that writes it, the `reports/`/`out/` files that script *reads*, and
-flags any output older than one of them by an hour or more. Git-commit age cannot see this,
-which is why the census never caught it — every recent finding was a recently-committed file
-built from something older.
+`reports/repo-freshness.csv` § `stale_against_input`: for each generated file, the script that
+writes it, the `reports/`/`out/` files that script reads, and any output older than one of them
+by an hour or more. Git-commit age cannot see this — every recent finding was a
+recently-committed file built from something older.
 
-**The number went 8 → 13 → 95 over two days and every move was a detector fix, not new drift.**
-Input detection first matched `reports/x.csv` literals when the repo joins paths; then
-`written` counted any `open(...)` mentioning a filename, so a plain read registered as a write
-and deleted the file from the reader's inputs. Both narrowed the input set silently, which is
-this repo's signature failure.
+**The thirteen live-chain scripts have all been re-run, 95 → 80 — and eleven NEW rows appeared
+downstream of them.** `bure-bridges.tsv`, `bure-links.tsv` and `bure-topology.md` are now behind
+the fresh `bure-roster.tsv`; `removal-batch-vintage.tsv` behind the fresh
+`wikidata-remove-wrong-p2600.json`; `multi-geni-items.tsv` behind the fresh
+`correspondence-shapes.tsv`. Re-running a stage makes its consumers stale, which is obvious in
+hindsight and was not planned for.
 
-**The 95 are two different things and only one is a to-do list:**
+**So a hand-listed chain is the wrong instrument.** The census already knows every
+generator→input edge; what it does not do is order them. The next step is to walk that graph
+topologically and re-run in dependency order until the column is empty, rather than picking
+scripts by eye and discovering a second layer afterwards.
 
-- **~70 are one-off analyses from weeks ago**, 150–360h behind `out/merged.ged`,
-  `derived-family.csv` or `display-names.csv` — the corpus has grown under them. They are
-  records of a day in everything but the filename, and re-running them is a choice, not a fix.
-- **~25 are the live chain**, under 72h: the synoptic / zipper / multi-`P2600` /
-  spine-candidate reports, whose inputs moved this week. These get re-run in dependency order.
-
-Re-run the live chain, worst first, and leave the deep-history ones flagged.
+**The ~69 remaining deep-history rows are not that.** They sit 150-360h behind `out/merged.ged`,
+`derived-family.csv` or `display-names.csv` — one-off analyses the corpus grew under, records of
+a day in all but the filename. They stay flagged and unqueued.
 
 ## The derived CSVs are committed gzipped
 

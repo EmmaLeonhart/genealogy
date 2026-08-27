@@ -15995,3 +15995,33 @@ reported as their input.
 
 **1,389 passed, 24 skipped, 0 failed** in 4m06s, measured against `ac863e57`; the three new
 tests take it to 1,392, and `test_join_sanity.py` is 14 passed.
+
+## 2026-08-27 — the live drift chain, re-run; and drift cascades
+
+All thirteen live-chain scripts have now run, eleven of them this tick, every one exit 0 and
+every one offline (checked for `WikidataClient`/`urllib` before the first run). Thirteen reports
+changed.
+
+What came out of them:
+
+- **`zipper-provenance.tsv`** — 45,898 inferred pairs, **7,302 corroborated by an independent
+  source**: the structural walk 7,841, the About Me 405, Tanba 181, Izumo 111,
+  `geni-wikidata-pairs` 126, and **17 of Emma's own hand verdicts**, which are nodes in the
+  provenance graph exactly as she said they were.
+- **`add-p2600-gate.tsv`** — 148 rejected with a reason, 139 of them `WITHHELD` because the
+  candidates share a name and may be one person; **1,017 inferred candidates dropped because only
+  a Wikidata-asserted id can be removed**.
+- **`creation-opportunities.tsv`** — 563,442 people we can already point at an item, and
+  **94,701 absent from Wikidata whose parent already has one**. By hops from Arne Garborg:
+  4 at one hop, 583 within twelve, 94,118 beyond. The hyperlocal programme is a rounding error
+  against the tail, which is the point of it being hyperlocal.
+- **`spine-name-candidates`** — 34 chain steps, 10 still absent, 80 candidate rows, and **0 worth
+  looking at**: one candidate has a corroborating relative and that is all. The zero is real
+  rather than an empty join — the join produced 80 rows before the threshold.
+
+**The count went 95 → 80, not 95 → 82, because re-running a stage restales its consumers.**
+Eleven new rows appeared downstream: the three Bure topology reports behind the fresh roster,
+`removal-batch-vintage.tsv` behind the fresh removal batch, `multi-geni-items.tsv` behind the
+fresh shapes census. Obvious in hindsight, unplanned for, and it means picking scripts by eye is
+the wrong instrument — the census already holds every generator→input edge, so the fix is to
+walk it topologically and re-run in dependency order. Queued.
