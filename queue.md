@@ -167,10 +167,27 @@ together so we will not need to run an export on every one of them"* — one bal
 many. The 13 `strong` rows bear this out: seven are Haji-no-muraji and three are Sugawara,
 two lineages rather than thirteen scattered people.
 
-**Open question she flagged herself:** *"idk how we resolved geni conflicts in the synoptic
-tree earlier either"*. Establish that before writing the override — `CLAUDE.md` § *Later
-sources win value conflicts* is merge-order-by-filename, which is **not** the same as
-post-merge-wins and would not do the job. Do not assume the two rules coincide.
+**MEASURED 2026-08-26, and the answer is: do not write the relationship override.**
+`scripts/measure-post-merge-override.py` → `reports/post-merge-override.tsv`.
+
+Half the design already works: `genimerge.sources._post_merge_last` sorts the directory last,
+so post-merge has the final word on every **single-valued** path. The other half — overriding
+**relationships**, which are unioned and never dropped — was measured before being written:
+
+| | parents | spouses | children | total |
+| --- | ---: | ---: | ---: | ---: |
+| would be **dropped** | 1,701 | 1,126 | 2,710 | **5,537** |
+| of those, pointing at somebody **no post-merge ball reached** | 1,541 | 1,034 | 2,550 | **5,125 (93%)** |
+| **only in post-merge** — what the override would gain | 0 | 0 | 0 | **0** |
+
+**It subtracts 5,537 and adds nothing.** A post-merge ball stops at 5,000 people, so a relative
+outside it is absent because the ball ended, not because Geni deleted the link. Applying the
+override literally would delete 5,125 real relationships to buy nothing.
+
+**412 drops are falsifiable** — both ends inside a post-merge ball, 362 people, 160 parent /
+160 child / 92 spouse. Those are the genuine *Geni deleted this link* candidates and the only
+population an override should ever touch. Next step is to look at a handful of them as records,
+not to write the override wholesale.
 
 Depends on `reports/geni-stale-duplicates.tsv` (13 strong, 3 medium, 13 weak) and
 `reports/geni-merges-performed.tsv` (180 survivors from her activity feed).

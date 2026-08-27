@@ -15201,3 +15201,44 @@ One count in the first check was my own error rather than the batch's: `grep -c 
 name file returned 11 because a comment line contains the word.
 
 **1,360 passed, 0 failed.**
+
+## 2026-08-26 — the post-merge override would subtract 5,537 relationships and add none
+
+The `⛔ PREREQUISITE ORDER` item's step 1 turned out to rest on a piece of merge logic nobody
+had written, and Emma had flagged the open question herself: *"idk how we resolved geni
+conflicts in the synoptic tree earlier either"*. So it was measured before being written.
+
+**Half the design already works.** `genimerge.sources._post_merge_last` sorts
+`exports/post-merge/` to the end of the merge order, so § *Later sources win value conflicts*
+gives it the final word on any single-valued path. **The other half cannot be got by ordering**:
+`FAMC`, `FAMS` and `CHIL` are repeatable and are unioned, which is exactly why
+`exports/excluded/` had to be invented for a parent link Geni deleted.
+
+`scripts/measure-post-merge-override.py`, over 7 post-merge exports and 559 others, reducing
+each file to per-person **Geni ids** of parents / spouses / children through its own `FAM`
+records — `F…` xrefs are per-file and mean nothing across exports:
+
+| | parents | spouses | children | total |
+| --- | ---: | ---: | ---: | ---: |
+| would be dropped | 1,701 | 1,126 | 2,710 | **5,537** |
+| of those, to somebody no post-merge ball reached | 1,541 | 1,034 | 2,550 | **5,125 (93%)** |
+| only in post-merge — what the override gains | 0 | 0 | 0 | **0** |
+
+**So the override as specified subtracts and never adds.** A ball stops at 5,000 people, so a
+relative outside it is absent because the ball ended, not because Geni deleted the link.
+
+**The zero was checked rather than believed.** A column of exact zeros is the shape this repo
+has been burned by all week, so `read_export` was run against one file on its own: 5,000 people,
+4,999 carrying a relationship, spot-checked against a real record. The parser works; the older
+559 exports genuinely already assert everything post-merge asserts about these 23,373 people.
+
+**412 drops are falsifiable** — both ends inside a post-merge ball, 362 people. Those are the
+real *Geni deleted this* candidates, and they are the only population an override should touch.
+
+**My own bug, caught by the guard written for it.** `read_export` sliced the xref `[2:-1]`,
+stripping `@I` instead of `@`, so every `startswith("I")` test failed and the scan returned
+**0 people** — reported by the empty-join guard as a broken join rather than as an absence of
+data. That guard existed because of five such failures this week; this is the sixth, and the
+first to be caught at the moment it happened.
+
+**1,360 passed, 0 failed.**
