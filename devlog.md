@@ -15163,3 +15163,41 @@ skipping wholly-parenthesised tokens as an unresolved modelling question. They a
 `Tunheim`. The exclusion was removed, not left as harmless dead weight.
 
 **1,359 passed, 0 failed.**
+
+## 2026-08-26 — today's batch, and the sibling cap had a hole in it
+
+Asked for today's QuickStatements against the algorithm she dictated at ~1pm, the compliance
+check was run before handing anything over rather than after. It found a real violation.
+
+**`P3373` *sibling* came out at 38 against a cap of 10.** `build-garborg-day.py` has **two**
+sibling emission sites: the additions pass, which drew on `sibling_budget_left()`, and the block
+that emits relationships onto people being **created**, which did not. 10 capped, **28
+uncapped**. `CLAUDE.md` is explicit — *"The cap is 10 `P3373` statements per day, across every
+batch, not per file. A builder emitting siblings must count them and stop"* — and the whole
+reason for the cap is that Emma finds sibling links spammy on a watchlist, so 38 in one file is
+the exact failure it exists to prevent. Nothing caught it because every other guard on these
+files is about line shape, not volume.
+
+Now 10, all in the relationships section, with 14 more carried forward.
+
+**`tests/test_p2600_batches.py` gained the volume guard**, verified by removing the cap and
+watching it fire. It is scoped to the two files one day's run produces: the cap is *per day*,
+and `reports/` also holds older batches and an explicit overflow file
+(`wikidata-reciprocals-siblings-held.qs`, 155 parked statements). Their counts are listed in the
+test's docstring so the exclusion is visible rather than silent.
+
+**Compliance against `docs/dictation/2026-08-26-daily-algorithm.md`, measured not asserted:**
+
+| | |
+| --- | --- |
+| order: individuals → names → relationships | OK |
+| individuals created | 50 |
+| name items, cap 10 | 10, with 33 statements linking them in the same run |
+| `P3373` *sibling*, cap 10 | 10 |
+| `P22`/`P25`/`P26`/`P40`, uncapped | 56 / 60 / 46 / 146 |
+| no `Aen` anywhere | OK |
+
+One count in the first check was my own error rather than the batch's: `grep -c CREATE` on the
+name file returned 11 because a comment line contains the word.
+
+**1,360 passed, 0 failed.**

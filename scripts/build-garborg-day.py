@@ -1111,8 +1111,20 @@ def main():
             if sp in have:
                 lines.append(f"LAST\tP26\t{have[sp]}{ref(g)}")
                 reciprocal.append((have[sp], "P26", g))
+        # **The cap is 10 a day ACROSS EVERY BATCH, and this site was escaping it.**
+        # `CLAUDE.md` § *`P3373` sibling is capped at 10 a day*: *"A builder emitting
+        # siblings must count them and stop."* The additions pass counted; this one, on the
+        # people being CREATED, did not -- so a run came out with 10 capped statements and
+        # **28 uncapped**, 38 in a file whose whole reason for the cap is that Emma finds
+        # sibling links spammy on a watchlist. `_siblings_emitted` is shared module state
+        # precisely so both sites draw on one budget.
         for sib in sorted(siblings.get(g, ())):
             if sib in have:
+                if sibling_budget_left() <= 0:
+                    carried.append((g, label, f"P3373 sibling {have[sib]} held: over the "
+                                    f"{SIBLING_CAP}-a-day cap"))
+                    continue
+                _siblings_emitted.append(("LAST", have[sib]))
                 lines.append(f"LAST\tP3373\t{have[sib]}{ref(g)}")
                 reciprocal.append((have[sib], "P3373", g))
         for kid in sorted(children.get(g, ())):

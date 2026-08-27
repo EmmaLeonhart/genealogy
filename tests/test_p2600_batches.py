@@ -48,6 +48,10 @@ P2600_SNAPSHOT = REPO / "out" / "wikidata" / "p2600-all.tsv"
 
 #: Archived records of batches Emma has already run. They are history, not proposals, and
 #: are never rewritten to satisfy a rule made after they went out.
+#: `CLAUDE.md` § *`P3373` sibling is capped at 10 a day*. Mirrored rather than imported so
+#: the guard does not pass merely because the builder lowered its own constant.
+SIBLING_CAP = 10
+
 SPENT_BATCHES = {
     "wikidata-garborg-day-1.qs": "the first day batch, 9 creations + 362 statements",
     "wikidata-garborg-day-2026-08-25-run.qs": "archived 2026-08-25 when the live file was rebuilt",
@@ -406,3 +410,43 @@ def test_no_batch_ever_adds_an_english_alias(name):
     assert not bad, (
         f"{name}: adds an English alias, which no batch ever does — " + "; ".join(
             f"line {i}: {ln!r}" for i, ln in bad[:5]))
+
+
+def test_the_sibling_cap_holds_across_every_live_batch():
+    """`P3373` *sibling* is capped at 10 a day ACROSS BATCHES, not per file or per pass.
+
+    `CLAUDE.md` § *`P3373` sibling is capped at 10 a day*: *"The cap is 10 `P3373` statements
+    per day, across every batch, not per file. A builder emitting siblings must count them and
+    stop."* Emma's reason is presentation, not correctness — *"siblin relationships are too
+    numerous and imo come off as spammy"* — and sibling links grow as the SQUARE of a family,
+    so one family of nine children is 72 statements on its own.
+
+    **`build-garborg-day.py` had two emission sites and only one counted.** The additions pass
+    drew on `sibling_budget_left()`; the block that emits relationships onto people being
+    CREATED did not, so a run came out with 10 capped statements and **28 uncapped** — 38 in
+    the file, in a batch whose entire reason for a cap is that 38 is too many. Nothing caught
+    it because every other guard here is about line shape, not about volume.
+
+    **Scope: the files one day's run produces.** The cap is *per day*, and `reports/` also
+    holds batches built on other days plus one explicit overflow file
+    (`wikidata-reciprocals-siblings-held.qs`, 155 statements deliberately parked). Asserting
+    over every `.qs` on disk would either fail forever or force rewriting committed history,
+    and neither is the rule. Scoped here to what `scripts/build-daily-batch.py` writes, which
+    is exactly where the two-emission-sites bug lived.
+
+    The others, so the exclusion is visible rather than silent: `wikidata-garborg-links.qs`
+    106, `wikidata-reciprocals-siblings-held.qs` 155, `wikidata-join-izumo.qs` 30,
+    `wikidata-reciprocals.qs` 10.
+    """
+    daily = {"wikidata-garborg-day.qs", "wikidata-garborg-name-items.qs"}
+    total, per_file = 0, {}
+    for path in BATCHES:
+        if path.name not in daily:
+            continue
+        n = sum(1 for _i, ln in statements(path) if re.search(r"(?:^|\t)P3373\t", ln))
+        if n:
+            per_file[path.name] = n
+        total += n
+    assert total <= SIBLING_CAP, (
+        f"{total} P3373 sibling statements in one day's run, cap is {SIBLING_CAP}: "
+        f"{per_file}")
