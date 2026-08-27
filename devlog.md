@@ -15638,3 +15638,34 @@ else this week. Chunked at 40, all 71 came back.
 **And two claims of mine were wrong.** I called the census incomplete for covering only the Geni
 side; she only cares about Geni, so it was complete. And I called the transliterator horrible on
 the strength of the wrong engine's output.
+
+## 2026-08-26 — her father test is in, and it found a missing Swedish suffix
+
+`classify_fields` takes an optional `father_name`; `patronymic_or_surname()` applies Emma's
+test. Without a father it keeps today's morphological answer, which all nine existing callers
+depend on, and two tests pin that.
+
+**The literal reading of her rule is 91% wrong and the measurement is what caught it.** *"If
+father has -son or -sen then it's a surname"* — but in a patronymic society the father almost
+always has one too: `Einar Jonsen Vestad`'s father is `John Kristiansen Jevne`. What
+discriminates is the **same token**: 14% inherited surname, 75% patronymic by matching the
+father's given name, 11% undecided and left at the morphological answer.
+
+## `PATRONYMIC` had `datter` and not `dotter`
+
+`-datter` is Norwegian and Danish; **`-dotter` is Swedish** and means the same thing. It was
+missing, so **60,085 people** were classified as carrying a *family name*: `Johansdotter` 5,612
+bearers, `Andersdotter` 5,472, `Olofsdotter` 3,157, `Nilsdotter` 2,868, `Eriksdotter` 2,742,
+across 1,650 distinct tokens.
+
+**The repo already disagreed with itself about it.** `scripts/build-name-item-batch.py`'s
+`RELIABLE_PATRONYMIC` has listed `dotter` and `sdotter` from the start, so the plan builder and
+the classifier have been reading the same token two different ways — which is the same shape as
+the `-sen`/`-son` split that is still open.
+
+**It surfaced by accident**: the father test's own `PATRONYMIC_PARTS` included `dotter`, so
+`patronymic_or_surname('Jakobsdotter', 'Jakob Jakobsson')` returned `patronymic` while
+`classify_fields` returned `family`. A function disagreeing with the function that calls it is
+a good way to find a gap neither would have shown alone.
+
+**1,384 passed, 1 xfailed, 0 failed.**

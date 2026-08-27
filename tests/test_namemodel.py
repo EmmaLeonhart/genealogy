@@ -400,3 +400,68 @@ def test_the_plan_covers_every_usage_the_classifier_asks_for():
         f"{len(missing)} tokens the classifier calls patronymic have no patronymic row "
         f"in the plan, covering {bearers:,} bearers, e.g. "
         + ", ".join(f"{r['token']}({r['bearers']})" for r in missing[:5]))
+
+
+def test_the_father_decides_patronymic_from_inherited_surname():
+    """Emma's test, 2026-08-26, and the literal reading of it is 91% wrong.
+
+    *"If father has -son or -sen then it's a surname lol that's the test same with other
+    patronymic surnames."* Taken literally that calls 91% of these tokens surnames — because
+    in a patronymic-naming society the father almost always carries one too. `Einar Jonsen
+    Vestad`'s father is `John Kristiansen Jevne`; `Maria Christina Jakobsdotter`'s father is
+    `Jakob Jakobsson`. Both are textbook patronymics.
+
+    **What discriminates is the SAME token.** Measured over the 286,536 people with such a
+    token and a known father: same token → surname 40,872 (14%); stem matches the father's
+    given name → patronymic 213,898 (75%); neither → undecided 31,766 (11%), which keep the
+    morphological answer rather than being guessed the other way.
+    """
+    # Father carries the SAME token -> inherited surname.
+    got = dict((t, u) for t, u, _o in classify_fields(
+        "Susannah", "Slawson", father_name="James Slawson"))
+    assert got["Slawson"] == "family", got
+
+    # Stem is the father's given name -> patronymic.
+    got = dict((t, u) for t, u, _o in classify_fields(
+        "John", "Kristiansen Jevne", father_name="Kristian Eriksen Jevne"))
+    assert got["Kristiansen"] == "patronymic", got
+    assert got["Jevne"] == "family", got
+
+    # A `-datter` works the same way.
+    got = dict((t, u) for t, u, _o in classify_fields(
+        "Maria", "Jakobsdotter", father_name="Jakob Jakobsson"))
+    assert got["Jakobsdotter"] == "patronymic", got
+
+
+def test_without_a_father_the_classifier_is_unchanged():
+    """Every existing caller passes no father, and must keep today's answer.
+
+    The father test is additive: `father_name` defaults to empty and the morphological rule
+    stands. Nine call sites rely on that, and a silent change to any of them would move name
+    statements for people nobody was looking at.
+    """
+    got = dict((t, u) for t, u, _o in classify_fields("John", "Kristiansen Jevne"))
+    assert got["Kristiansen"] == "patronymic"
+    got = dict((t, u) for t, u, _o in classify_fields("Susannah", "Slawson"))
+    assert got["Slawson"] == "patronymic", "morphology alone still says patronymic"
+
+
+def test_the_swedish_dotter_is_a_patronymic_like_the_danish_datter():
+    """`-dotter` is Swedish, `-datter` is Norwegian and Danish, and both mean daughter of.
+
+    `PATRONYMIC` listed `datter` and not `dotter`, so **60,085 people** were classified as
+    carrying a family name — `Johansdotter` 5,612 bearers, `Andersdotter` 5,472, `Olofsdotter`
+    3,157, `Nilsdotter` 2,868 — when every one of them is a patronymic.
+
+    **The repo already disagreed with itself.** `scripts/build-name-item-batch.py`'s
+    `RELIABLE_PATRONYMIC` has listed `dotter` and `sdotter` from the start, so the plan builder
+    and the classifier read the same token two different ways. It surfaced because the father
+    test's own `PATRONYMIC_PARTS` included `dotter` while `PATRONYMIC` did not, and the two
+    then disagreed on `Jakobsdotter`.
+    """
+    for token in ("Andersdotter", "Johansdotter", "Olofsdotter", "Jakobsdotter"):
+        got = dict((t, u) for t, u, _o in classify_fields("Maria", token))
+        assert got[token] == "patronymic", f"{token} -> {got[token]}"
+    # The Norwegian form must not have regressed.
+    got = dict((t, u) for t, u, _o in classify_fields("Ane", "Eivindsdatter"))
+    assert got["Eivindsdatter"] == "patronymic"

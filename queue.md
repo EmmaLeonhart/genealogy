@@ -437,11 +437,20 @@ Jakobsson`. The discriminating version is whether the father carries the **same 
 is the patronymic case. **The 11% undecided are mostly spelling variants** — `Jonsen`/`John`,
 `Jakobsdotter`/`Jacob` — that a better stem comparison would catch.
 
-**To build:** `classify_fields` needs the father's name to apply this, so it takes an optional
-`father_name` and keeps today's morphology-only behaviour without one. Then the name plan emits
-a `patronymic` row wherever the test says patronymic, which is what unblocks the **31,259
-bearers** currently resolving to nothing. `tests/test_namemodel.py` carries the strict `xfail`
-that fails when this lands.
+**The classifier half is BUILT, 2026-08-26.** `classify_fields` takes an optional
+`father_name`; without one it keeps today's morphology-only answer, which is what all nine
+existing callers rely on. `patronymic_or_surname()` applies her test.
+
+**Still to build:** the name plan must emit a `patronymic` row wherever the test says
+patronymic — that is what unblocks the **31,259 bearers** resolving to nothing, and the strict
+`xfail` in `tests/test_namemodel.py` fails when it lands. The plan builder needs the father,
+which it does not currently load.
+
+**Found on the way: `PATRONYMIC` had `datter` and not `dotter`.** The Swedish form. **60,085
+people** were classified as carrying a family name — `Johansdotter` 5,612, `Andersdotter`
+5,472, `Olofsdotter` 3,157 — when every one is a patronymic. `build-name-item-batch.py`'s
+`RELIABLE_PATRONYMIC` has listed `dotter` all along, so the two modules read the same token two
+different ways. Fixed and guarded.
 
 ## The daily Garborg batch — one QuickStatements run per day
 

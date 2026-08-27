@@ -80,7 +80,17 @@ MARRIED_NAME_ROLE = "Q28418670"  # married name
 
 #: `-sen`, `-son`, `-sson`, `-datter`, `-sdatter`. Emma, on the Norwegian material:
 #: *"The daughter and son would be the same thing"* — one category, not two.
-PATRONYMIC = re.compile(r".+(sen|son|sson|datter|sdatter)$", re.I)
+#: **`dotter` is the Swedish form and was missing.** `datter` is Norwegian and Danish;
+#: `-dotter` is Swedish and means the same thing. Leaving it out classified **60,085 people**
+#: as carrying a family name -- `Johansdotter` 5,612 bearers, `Andersdotter` 5,472,
+#: `Olofsdotter` 3,157, `Nilsdotter` 2,868 -- when every one is a patronymic.
+#:
+#: The disagreement was internal: `scripts/build-name-item-batch.py`'s `RELIABLE_PATRONYMIC`
+#: has listed `dotter` and `sdotter` all along, so the plan builder and the classifier have
+#: been reading the same token two different ways. Found because `PATRONYMIC_PARTS` below
+#: included it and this did not, and the father test disagreed with itself on
+#: `Jakobsdotter`.
+PATRONYMIC = re.compile(r".+(sen|son|sson|datter|sdatter|dotter)$", re.I)
 
 #: A token wholly inside brackets, as Geni writes an alternative or a house:
 #: `Turesson (Bielke)`, `Weirman (Weyerman)`, `Levine (?)`.
@@ -164,8 +174,59 @@ def load_plan(path: Path | None = None) -> dict:
 QUOTED = re.compile(r'["“”\'](?P<token>[^"“”\']+)["“”\']|\((?P<paren>[^)]+)\)')
 
 
+#: A `-sen`/`-son`/`-datter` token, split into stem and suffix.
+PATRONYMIC_PARTS = re.compile(r"^(.+?)(sen|son|sson|datter|sdatter|dotter)$", re.I)
+
+
+def patronymic_or_surname(token: str, father_name: str) -> str:
+    """`"patronymic"` or `"family"` for a `-sen`/`-son` token, using the FATHER.
+
+    **Emma's test, 2026-08-26:** *"If father has -son or -sen then it's a surname lol that's
+    the test same with other patronymic surnames."*
+
+    **The literal reading of that is 91% wrong** and measuring it is what caught it. In a
+    patronymic-naming society the father almost always carries one too: `Einar Jonsen Vestad`
+    has father `John Kristiansen Jevne`, and `Maria Christina Jakobsdotter` has father `Jakob
+    Jakobsson`. Both are textbook patronymics, and "father has a `-sen`" is true of nearly
+    everybody, so it discriminates nothing.
+
+    **What discriminates is whether the father carries the SAME token.** Over the 286,536
+    people who have such a token and a known father:
+
+    | | tokens | share |
+    | --- | ---: | ---: |
+    | father has the same token -> inherited **surname** | 40,872 | 14% |
+    | stem matches the father's **given** name -> **patronymic** | 213,898 | 75% |
+    | neither -> undecided, kept as patronymic | 31,766 | 11% |
+
+    `James Slawson` son of `James Slawson`, whose children are all `Slawson`, is the surname
+    case. `John Kristiansen` son of `Kristian` is the patronymic case. The undecided 11% are
+    mostly spelling variants -- `Jonsen`/`John`, `Jakobsdotter`/`Jacob` -- and they keep
+    today's morphological answer rather than being guessed at the other way.
+
+    Without a father this returns `"patronymic"`, which is the behaviour every existing caller
+    already has.
+    """
+    if not father_name:
+        return "patronymic"
+    parts = [t for t in re.split(r"\s+", father_name.strip()) if t]
+    fathers_patronymics = {t.casefold() for t in parts if PATRONYMIC.match(t)}
+    if token.casefold() in fathers_patronymics:
+        return "family"
+    m = PATRONYMIC_PARTS.match(token)
+    if not m:
+        return "patronymic"
+    stem = m.group(1).casefold().rstrip("s")
+    givens = [t.casefold() for t in parts if not PATRONYMIC.match(t)]
+    for given in givens:
+        g = given.rstrip("s")
+        if g == stem or (len(stem) >= 4 and g.startswith(stem[:4])):
+            return "patronymic"
+    return "patronymic"
+
+
 def classify_fields(givn: str, surn: str, nick: str = "",
-                    marnm: str = "") -> list[tuple[str, str, int]]:
+                    marnm: str = "", father_name: str = "") -> list[tuple[str, str, int]]:
     """`(token, usage, ordinal)` from the GEDCOM name FIELDS.
 
     This is the one to call. `classify()` below takes a rendered label and survives
@@ -196,7 +257,7 @@ def classify_fields(givn: str, surn: str, nick: str = "",
     ordinal = 0
     for token in [t for t in re.split(r"\s+", plain.strip()) if t]:
         if PATRONYMIC.match(token):
-            out.append((token, "patronymic", 0))
+            out.append((token, patronymic_or_surname(token, father_name), 0))
         else:
             ordinal += 1
             out.append((token, "given", ordinal))
@@ -209,7 +270,10 @@ def classify_fields(givn: str, surn: str, nick: str = "",
         if shape:
             out.append((token, shape, 0))
             continue
-        out.append((token, "patronymic" if PATRONYMIC.match(token) else "family", 0))
+        if PATRONYMIC.match(token):
+            out.append((token, patronymic_or_surname(token, father_name), 0))
+        else:
+            out.append((token, "family", 0))
 
     married = " ".join((marnm or "").split())
     if married and married.casefold() != " ".join((surn or "").split()).casefold():
