@@ -46,31 +46,44 @@ real API limit is that **two items created in the same batch cannot point at eac
 existing item may point at a new one and a new one at an existing one. Everything in this order
 follows from that.
 
-## Step 1 — creation of individuals
+## Step 1 — creation of individuals. REVISED 2026-08-26, after she stopped a run
 
-| what | how many |
+**She terminated a 50-creation run partway through**: *"I had to terminate that round early
+because of the unbounded behaviour."* The cause was the old step 1b — five couples with their
+**entire** children, one of which had eleven — which supplied 28 of the 50.
+*"Creating individuals with all of their children is just crazy talk."*
+
+| | per run |
 | --- | ---: |
-| parent pairs, chosen at random from the ideal state | 4 |
-| an **ancestral** pair, from the high up-going ancestry | 1 |
-| **shuffled together**, so the batch shows five pairs and the ancestral one is not first | **5 pairs** |
-| people whose spouse and children are filled in at random | 4 |
+| **children** — a random person gets **ONE** child | **10** |
+| **spouse instead**, where the couple has no child left to add | inside the 10 |
+| **parents** — a random person missing one gets **ONE** | **10** |
+| **free parents** — half-attached people, `10 + half the remainder` | uncapped by design |
+| **the spine**, one step on EACH of the two paths | outside every cap |
 
-*"It creates four parent pairs plus one person who is a part of the high-upgoing ancestry, like
-one ancestral pair and four random pairs. The ancestral pair is shuffled in, so there are five
-pairs generated. There are also four people whose spouse and children are randomly filled in."*
+**Spouses have no bucket of their own.** Her first version said *"10 parents, 10 spouses, 10
+children"*; she revised it in the same message — *"spouses are only added through the 10
+parents and 10 children"*. They arrive two ways, both subordinate to children: as the **free
+parent** of a child just added (which is that child's other parent, i.e. somebody's spouse), and
+as the **substitution** when a picked person's marriage has no child left. Her words: *"spouses
+are going to be added at the same rate as children, but they're added in a way that is, in a
+sense, subordinate to the adding of children. The only reason we substitute in childless
+marriages is just because, without substituting in childless marriages, there's no way to access
+spouses from childless marriages."*
 
-**The shuffle is load-bearing**, not cosmetic: the ancestral pair is mixed into the five so the
-batch is not ordered by importance.
+**The free-parent budget is a formula, not a cap**: *"10 free parents plus half of the
+remaining."* Of the eligible half-attached people, the first ten come free and half of whatever
+is left beyond ten comes too. Two earlier readings were wrong — a flat ceiling of 40 (mine), and
+scoping it to this run's children alone, which gave 5 and under-served the backlog.
 
-## Step 1b — the descendant chain, once far enough along
+**The spine advances on BOTH paths, one step each.** `paths/charlemagne-to-arne-garborg.tsv` and
+`paths/bergitte-to-emma.tsv`. Walking a concatenation advances only the first, which is how the
+line down to her stayed at **0 of 16 steps** — the *"critical path going to me"* she doubted the
+last run produced. It had not.
 
-*"Once we get to a certain point, the descendant chain that we're actually trying to put in gets
-built. From there, we're doing a bit of a step further: we are randomly finding five parent pairs
-and then filling them in with their entire children. This is an additional step, although it could
-be in the same line as the descendants one."*
-
-So: **5 parent pairs picked at random, each filled in with their ENTIRE set of children** — not a
-sample of the children. This may be emitted alongside the descendant chain rather than after it.
+**`entity_resolution.md` is folded into the ledger**, because it is the only record of an item
+that carries no `P2600` yet. Without it the spine walk hit step 1 of the Bergitte path — **Emma
+herself** — and emitted a `CREATE` that would have minted her a second item beside `Q140568870`.
 
 ## Step 2 — creation of names
 
@@ -97,9 +110,10 @@ many arriving at once for a watchlist to read as anything but noise.
 
 ## What this supersedes
 
-The one-hop-a-day ring in `scripts/build-garborg-day.py` is not this algorithm. It picks by
-distance from Arne; this picks **five parent pairs, four spouse-and-children fills, ten names and
-ten sibling pairs** from the model-vs-ideal diff, in a fixed order, with the ancestral pair
-shuffled in. The hyperlocal target is unchanged — `CLAUDE.md` § *The programme is HYPERLOCAL* —
-and *"in the arnie area, it's really clear"* is where the ideal state is well enough known to run
-this.
+The one-hop-a-day ring in `scripts/build-garborg-day.py` is not this algorithm, and neither is
+the first version of this file. That one had **five parent pairs with their entire children**;
+she stopped a run over it and it is gone. What stands is above: ten children, ten parents, free
+parents at `10 + half the remainder`, one spine step per path, spouses only as a consequence.
+
+The hyperlocal target is unchanged — `CLAUDE.md` § *The programme is HYPERLOCAL* — and *"in the
+arnie area, it's really clear"* is where the ideal state is well enough known to run this.

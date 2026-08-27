@@ -15363,3 +15363,49 @@ Also fixed: the comment annotator stripped quotes off monolingual values, so a l
 `# P1449 nickname = en:"Sally` with the closing quote eaten.
 
 **1,362 passed, 1 xfailed, 0 failed.**
+
+## 2026-08-26 — the daily algorithm rebuilt to her caps, after she stopped a run
+
+*"I had to terminate that round early because of the unbounded behaviour."* The 50-creation run
+drew 28 from one component: five couples with their **entire** children, one with eleven.
+*"Creating individuals with all of their children is just crazy talk."*
+
+| | per run |
+| --- | ---: |
+| children — a random person gets ONE child | 10 |
+| parents — a random person missing one gets ONE | 10 |
+| free parents — `10 + half the remainder` of the half-attached | 16 of 23 eligible |
+| the spine, one step on EACH path | outside every cap |
+
+**Spouses have no bucket.** Her first version said 10 of them; she revised it in the same
+message. They arrive subordinate to children — as the free parent of a child just added, and as
+the substitution when a picked person's marriage has no child left, which is *"the only reason we
+substitute in childless marriages"*.
+
+**Three readings of the free-parent rule before the right one**, two of them mine: a flat ceiling
+of 40; then scoping it to this run's children, which gave 5. Her formula is *"10 free parents
+plus half of the remaining."*
+
+**Two defects found by running it rather than by reading it.**
+
+*The spine advanced on one path only.* Walking a concatenation of both saved paths takes the
+first uncreated step overall, so `bergitte-to-emma` never moved — which is why the *"critical
+path going to me"* stood at **0 of 16 steps**. One step per path now.
+
+*And then it tried to create Emma.* Step 1 of that path is her. `Q140568870` is in neither
+`garborg-qids.tsv` nor `p2600-all.tsv` — her item has no `P2600`, which is the whole point — so
+every guard was blind and the batch emitted a `CREATE` for a **second item beside her own**.
+`ledger()` now folds in `entity_resolution.md`, the only record of a hand-asserted item.
+
+**Result: 50 creations → 36, and 1,029 statement lines → 916.** The creations fell by 28% and
+the lines by 11%, because the free-parent budget now supplies the volume the entire-children step
+used to.
+
+**Four tests moved and none was loosened.** Two read a narrower ledger than the builder and
+called six real items non-existent; they now share the builder's definition. One asserted both
+parents behind a ` | ` get picked, which the one-parent-per-run rule ends. One asserted every `NN`
+label keeps a surname — false for `6000000186285688241`, whose `label_en` and `label_mul` are
+both empty and whose name lives only in `cjk_names`. **That last one hid a real defect, now
+queued: a CJK-only person is created as `NN` and their recorded name is never consulted.**
+
+**1,362 passed, 1 xfailed, 0 failed.**

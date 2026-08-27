@@ -289,5 +289,8 @@ def test_compose_returns_stripped_geni_ids():
     assert not bad, (
         f"compose returned ids carrying whitespace: {bad!r} — the ` | ` split is not "
         f"stripping its values, so every downstream lookup will miss")
-    assert {"200", "300"} <= set(picked), (
-        f"both parents behind a ` | ` should be picked; got {sorted(picked)}")
+    # **One parent, not both.** Her revised algorithm takes a single parent per person per
+    # run — `PARENTS_PER_RUN` is a count of parents, not of pairs — so the assertion is that
+    # a parent behind the ` | ` is reachable at all, which is what the strip governs.
+    assert {"200", "300"} & set(picked), (
+        f"neither parent behind a ` | ` was reachable; got {sorted(picked)}")

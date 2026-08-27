@@ -106,10 +106,29 @@ def qs(text):
 
 
 def ledger():
+    """Geni id -> QID for everybody we can already point at an item.
+
+    **`entity_resolution.md` is folded in, and it has to be.** That file is where a
+    correspondence recognised BY HAND lives, and it is the only place that knows about an
+    item carrying no `P2600` yet -- which is exactly Emma's own `Q140568870`. Without it
+    the spine walk reached step 1 of `paths/bergitte-to-emma.tsv`, which is HER, found her
+    in neither `garborg-qids.tsv` nor `p2600-all.tsv`, and emitted a `CREATE` that would
+    have minted her a SECOND item. `CLAUDE.md` says it plainly: she *"has `Q140568870` and
+    needs an id rather than a creation"*.
+    """
     out = {}
     with open(ROOT / "reports" / "garborg-qids.tsv", encoding="utf-8") as f:
         for row in csv.DictReader(f, delimiter="\t"):
             out[row["geni_id"]] = row["qid"]
+    try:
+        sys.path.insert(0, str(ROOT / "src"))
+        from genimerge import entities
+        for r in entities.read_file(ROOT / "entity_resolution.md").resolutions:
+            if r.geni_id and r.qid:
+                out.setdefault(r.geni_id, r.qid)
+    except Exception as exc:                                        # noqa: BLE001
+        print(f"WARNING: entity_resolution.md not folded into the ledger ({exc}) -- "
+              f"a hand-asserted item could be created a second time")
     return out
 
 
@@ -339,17 +358,51 @@ def name_lines(label, plan, geni_id, father_qid, fields=None, sex=""):
 # *"Has an item and no SPOUSE or CHILD specifically"* -- and it explicitly counts the
 # people our own earlier runs created, since a fresh `CREATE` starts with neither.
 
-SPINE_PATH = "paths/charlemagne-to-arne-garborg.tsv"
-#: `docs/daily-algorithm.md`, from her dictation of 2026-08-26. Four random parent pairs
-#: plus one ancestral pair, **shuffled together** so the batch is not ordered by importance:
-#: *"The ancestral pair is shuffled in, so there are five pairs generated."*
-RANDOM_PARENT_SETS = 4
-#: *"four people whose spouse and children are randomly filled in"*.
-RANDOM_FAMILIES = 4
-#: *"we are randomly finding five parent pairs and then filling them in with their entire
-#: children"* -- was **1** couple until 2026-08-26, and "entire" is the operative word: every
-#: child of the pair, never a sample.
-RANDOM_COUPLES = 5
+#: The two saved relationship paths that make up the spine, walked in order. Emma,
+#: 2026-08-26: *"The ancestral couples between Bergitte, going from Arne to Bergitte to
+#: Charlemagne, are always getting made."* Line 2 -- Bergitte down to her -- exists as a
+#: saved path and holds **16 steps, none of which had a QID** when this was written, which
+#: is the *"critical path going to me"* she doubted the last run produced. It did not.
+SPINE_PATHS = ("paths/charlemagne-to-arne-garborg.tsv", "paths/bergitte-to-emma.tsv")
+SPINE_PATH = SPINE_PATHS[0]
+
+#: **Her revised caps, 2026-08-26**, after stopping a run of 50 creations partway:
+#: *"creating individuals with all of their children is just crazy talk... we essentially do
+#: 10 parents, 10 spouses, and 10 children."* Then, revising in the same message, she folded
+#: spouses into the children step -- *"spouses are only added through the 10 parents and 10
+#: children... you go to a person, and then it adds a child... If the person has a childless
+#: marriage, then it can generate their spouse instead. Otherwise, it generates their child,
+#: and then the next run it generates the child's parent."*
+#:
+#: So there is **no independent spouse bucket**. The later revision wins over the earlier
+#: "10 spouses", and the shape is two caps plus a substitution.
+CHILDREN_PER_RUN = 10
+PARENTS_PER_RUN = 10
+
+#: **Free parents, and they do not count against `PARENTS_PER_RUN`.** Her rolling rule:
+#: *"if a child is present and it appears like they have a single mother or single father,
+#: then the next time they get their parents for free. Parents that are added for this reason
+#: do not count towards the total parents that we're adding."*
+#:
+#: A half-attached child is the structural wart the old algorithm left behind -- one parent
+#: linked, the other never created -- so this closes them as it goes rather than accumulating
+#: them. Capped anyway at a number far above what the corpus produces per run, because
+#: "uncapped" is what she stopped the last run for; the cap is reported when it bites.
+#: **Her formula, 2026-08-26: "10 free parents plus half of the remaining."** So of the
+#: half-attached people eligible for one, the first ten are free and half of whatever is
+#: left beyond ten comes too. It bounds the step without stalling the backlog: 17 eligible
+#: gives 10 + 3 = 13, and the rest wait for the next run.
+#:
+#: Two earlier readings, both wrong and both hers to correct. A flat ceiling of 40 was mine.
+#: Scoping it to this run's children alone gave 5, which under-serves a backlog she wants
+#: worked down.
+FREE_PARENTS_FREE = 10
+
+
+def free_parent_budget(eligible):
+    """`10 + (n - 10) // 2` -- ten free, then half the remainder."""
+    return eligible if eligible <= FREE_PARENTS_FREE else (
+        FREE_PARENTS_FREE + (eligible - FREE_PARENTS_FREE) // 2)
 
 
 def spine_chain():
@@ -374,136 +427,152 @@ def spine_chain():
 from qscomment import annotate  # noqa: E402
 
 
+def spine_steps():
+    """`{path: [(label, geni_id, name)]}` -- BOTH spine paths, kept apart.
+
+    **Kept apart deliberately.** Concatenating them and taking the first uncreated step
+    advances only whichever path is listed first, so `bergitte-to-emma` never moved and the
+    *"critical path going to me"* stayed at zero of sixteen. One step per path per run.
+    """
+    out = {}
+    for rel in SPINE_PATHS:
+        path = ROOT / rel
+        if not path.exists():
+            continue
+        rows = [l.rstrip(chr(10)).split(chr(9)) for l in
+                open(path, encoding="utf-8") if not l.startswith("#") and l.strip()]
+        header = rows[0]
+        steps = []
+        for r in rows[1:]:
+            d = dict(zip(header, r))
+            gid = re.sub(r"\D", "", d.get("note", "") or "")
+            if gid:
+                steps.append((f"{Path(rel).stem} step {d.get('step')}", gid,
+                              d.get("name", "")))
+        out[rel] = steps
+    return out
+
+
 def compose(have, fam, rng):
-    """`{geni_id: why}` -- the people this run creates, per `docs/batch-rules.md`.
+    """`{geni_id: why}` -- the people this run creates, per `docs/daily-algorithm.md`.
+
+    **Emma's revised algorithm, 2026-08-26**, written after she stopped a run of 50
+    creations partway through: *"creating individuals with all of their children is just
+    crazy talk."* The old shape drew 28 of its 50 from one component -- five couples with
+    their *entire* children, one of which had eleven.
+
+    The new shape is two caps, one substitution and one free rule:
+
+    1. **The spine, always, outside the caps.** *"The ancestral couples between Bergitte,
+       going from Arne to Bergitte to Charlemagne, are always getting made."* Both saved
+       paths are walked, so the line down to her advances every run as well as the line up
+       to Charlemagne -- she doubted the last run produced the *"critical path going to
+       me"*, and it did not: all 16 steps of `paths/bergitte-to-emma.tsv` were uncreated.
+    2. **Ten children.** A random person who has an uncreated child gets **one** child.
+       *"you go to a person, and then it adds a child."*
+    3. **The substitution.** *"If the person has a childless marriage, then it can generate
+       their spouse instead."* So a person picked in step 2 who has a spouse we lack and no
+       child to add contributes the spouse. There is **no independent spouse bucket** --
+       her earlier *"10 spouses"* was revised away in the same message.
+    4. **Ten parents.** A random person missing a parent gets one. *"then the next run it
+       generates the child's parent."*
+    5. **Free parents, not counted against the ten.** *"if a child is present and it appears
+       like they have a single mother or single father, then the next time they get their
+       parents for free."*
 
     `have` is the ball: every Geni id we can already point at a Wikidata item.
     `fam` is `reports/derived-family.csv` keyed by Geni id.
     """
     def kin(g, col):
-        """The people in one multi-valued column of `derived-family.csv`, STRIPPED.
-
-        **It tested the stripped id and returned the raw one.** `derived-family.csv`
-        separates with ` | `, spaces included, so every id this yielded carried
-        whitespace -- ` 6000000000437684735 ` -- and passed the `in fam` guard only
-        because the guard stripped. Everything downstream looked the id up unstripped
-        and missed: **59 people per run** were picked as candidates and then dropped
-        with the reason *"no derived facts"*, which reads as a hole in the data rather
-        than as a bug in the caller.
-
-        `CLAUDE.md` § *Our side could never have two children* records this exact
-        failure in `zipper-join.py`, including that the pipe-aware fix without the
-        strip *"moved the pair count by exactly zero"*. This is the same bug wearing
-        the one disguise that survives a careful reading: the strip IS here, on the
-        test, just not on the value.
-        """
+        # The strip is load-bearing: `derived-family.csv` separates with ` | `, and
+        # returning the raw token made 59 people a run resolve to nothing.
         return [x.strip() for x in re.split(r"[,;|]", (fam.get(g) or {}).get(col) or "")
                 if x.strip() and x.strip() in fam]
 
-    # **The five pairs are built separately and shuffled.** Emma, 2026-08-26: *"It creates
-    # four parent pairs plus one person who is a part of the high-upgoing ancestry, like one
-    # ancestral pair and four random pairs. The ancestral pair is shuffled in, so there are
-    # five pairs generated."* `picked` is a dict and the emitter walks it in insertion order,
-    # so building the ancestral pair first and the random ones after would put the ancestral
-    # one at the head of every batch. The shuffle is the instruction, not a nicety.
-    pairs = []
     picked, why = {}, []
 
-    def take(pair):
-        """One pair of people to create, held back until the five are shuffled."""
-        pairs.append(pair)
+    def take(gid, reason):
+        if gid and gid not in have and gid not in picked:
+            picked[gid] = reason
+            return True
+        return False
 
-    # --- 1. the spine couple ------------------------------------------------------
-    # Emma chose "the chain person plus their spouse" over "both parents of the chain
-    # person", so one run advances the line by exactly one step and brings the
-    # off-chain partner with it.
-    # **This is her "ancestral pair", and the spine is where the high up-going ancestry
-    # lives** -- `paths/charlemagne-to-arne-garborg.tsv`, Arne up to Charlemagne. Taking the
-    # chain person plus their spouse rather than both parents of the chain person is her own
-    # earlier explicit choice (`docs/batch-rules.md`), so it is kept rather than re-decided.
-    for step, gid, name in spine_chain():
-        if gid in have:
-            continue
-        pair = [(gid, f"ancestral pair: spine step {step}")]
-        for sp in kin(gid, "spouses"):
-            if sp not in have:
-                pair.append((sp, f"ancestral pair: spouse of spine step {step}"))
-        take(pair)
-        why.append(f"1. ancestral pair, spine step {step}: {name} "
-                   f"+ {len(kin(gid, 'spouses'))} spouse(s)")
-        break
-    else:
-        why.append("1. ancestral pair: every spine step already has an item")
+    # --- 1. the spine, both directions, outside every cap ------------------------
+    # One step per PATH, so the line down to her advances every run as well as the line up
+    # to Charlemagne. Her words: *"The ancestral couples ... are always getting made."*
+    spine_added = 0
+    for rel, steps in spine_steps().items():
+        for label, gid, name in steps:
+            if take(gid, f"spine: {label}"):
+                spine_added += 1
+                why.append(f"1. spine {label}: {name}")
+                for sp in kin(gid, "spouses"):
+                    if take(sp, f"spouse of spine {label}"):
+                        spine_added += 1
+                break
+        else:
+            why.append(f"1. spine {Path(rel).stem}: every step already has an item")
 
-    # --- 2. four random sets of parents, drawn from the ball ----------------------
-    # "We always make both parents, if both parents exist, as a part of the generation."
-    # A candidate is somebody in the ball at least one of whose parents we could create.
-    cands = sorted(g for g in have
-                   if any(p not in have for p in kin(g, "father") + kin(g, "mother")))
-    rng.shuffle(cands)
-    n = 0
-    for g in cands:
-        if n >= RANDOM_PARENT_SETS:
+    # --- 2 & 3. ten children, or a spouse where the marriage is childless --------
+    pool = sorted(have)
+    rng.shuffle(pool)
+    kids = spouses_instead = 0
+    for g in pool:
+        if kids + spouses_instead >= CHILDREN_PER_RUN:
             break
-        new = [p for p in kin(g, "father") + kin(g, "mother") if p not in have]
-        if not new:
+        new_kids = [k for k in kin(g, "children") if k not in have and k not in picked]
+        if new_kids:
+            # ONE child, not all of them. This is the change.
+            if take(rng.choice(new_kids), f"child of {g}"):
+                kids += 1
             continue
-        take([(p, f"parent of {g}") for p in new])
-        n += 1
-    why.append(f"2. {n}/{RANDOM_PARENT_SETS} random parent pairs")
+        new_spouses = [x for x in kin(g, "spouses")
+                       if x not in have and x not in picked]
+        if new_spouses and take(rng.choice(new_spouses), f"spouse of childless couple {g}"):
+            spouses_instead += 1
+    why.append(f"2. {kids}/{CHILDREN_PER_RUN} children, one per person")
+    why.append(f"3. {spouses_instead} spouses instead, where the marriage had no child "
+               f"left to add")
 
-    # The ancestral pair and the random pairs are now five entries in `pairs`; shuffling
-    # them here is what puts the ancestral one somewhere other than first.
-    rng.shuffle(pairs)
-    for pair in pairs:
-        for gid, reason in pair:
-            picked.setdefault(gid, reason)
-    why.append(f"   ({len(pairs)} pairs shuffled together, ancestral one among them)")
-
-    # --- 3. four random families off a SOLITARY individual ------------------------
-    # An item with no spouse and no child on it. Our own creations qualify, which is
-    # her instruction and also the only reason this component is not starved: almost
-    # nothing in the ball has family statements yet.
-    solo = sorted(g for g in have
-                  if not any(x in have for x in kin(g, "spouses") + kin(g, "children"))
-                  and (kin(g, "spouses") or kin(g, "children")))
-    rng.shuffle(solo)
-    n = 0
-    for g in solo:
-        if n >= RANDOM_FAMILIES:
+    # --- 4. ten parents ----------------------------------------------------------
+    rng.shuffle(pool)
+    parents = 0
+    for g in pool:
+        if parents >= PARENTS_PER_RUN:
             break
-        new = [x for x in kin(g, "spouses") + kin(g, "children") if x not in have]
-        if not new:
-            continue
-        for x in new:
-            picked.setdefault(x, f"family of solitary {g}")
-        n += 1
-    why.append(f"3. {n}/{RANDOM_FAMILIES} random families off a solitary individual")
+        missing = [p for p in kin(g, "father") + kin(g, "mother")
+                   if p not in have and p not in picked]
+        if missing and take(rng.choice(missing), f"parent of {g}"):
+            parents += 1
+    why.append(f"4. {parents}/{PARENTS_PER_RUN} parents, one per person")
 
-    # --- 4. one random existing couple, all their children ------------------------
-    # **Their ENTIRE children, and five pairs rather than one.** Emma, 2026-08-26:
-    # *"we are randomly finding five parent pairs and then filling them in with their entire
-    # children"*. Not a sample of the children -- the union of both parents' child lists.
-    couples = sorted({(g, sp) for g in have for sp in kin(g, "spouses")
-                      if sp in have and g < sp})
-    rng.shuffle(couples)
-    n = 0
-    for a, b in couples:
-        if n >= RANDOM_COUPLES:
-            break
-        kids = [k for k in set(kin(a, "children")) | set(kin(b, "children"))
-                if k not in have]
-        if not kids:
+    # --- 5. free parents for anyone half-attached --------------------------------
+    # Her rolling rule. A person with one parent linked and the other never created is
+    # the structural wart the old algorithm left behind; this closes them as it goes.
+    # **Every half-attached person is eligible; the budget is `10 + half the rest`.**
+    # Her formula. The eligible set is counted first and the budget derived from it, so the
+    # number is a function of the backlog rather than of iteration order.
+    eligible = []
+    for g in sorted(set(have) | set(picked)):
+        father, mother = kin(g, "father"), kin(g, "mother")
+        if not father or not mother:
             continue
-        for k in kids:
-            picked.setdefault(k, f"child of existing couple {a}+{b}")
-        n += 1
-        why.append(f"4. couple {a}+{b}: all {len(kids)} uncreated children")
-    if not n:
-        why.append("4. no existing couple in the ball has an uncreated child")
+        known = [x for x in father + mother if x in have or x in picked]
+        absent = [x for x in father + mother if x not in have and x not in picked]
+        if known and absent:
+            eligible.append((g, absent[0]))
+    budget = free_parent_budget(len(eligible))
+    rng.shuffle(eligible)
+    free = 0
+    for g, missing in eligible:
+        if free >= budget:
+            break
+        if take(missing, f"free parent: {g} had only one"):
+            free += 1
+    why.append(f"5. {free} free parents of {len(eligible)} eligible "
+               f"(10 free + half the remaining = {budget}), outside the cap")
 
     return picked, why
-
 
 
 def main():
