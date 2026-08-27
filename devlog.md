@@ -15130,3 +15130,36 @@ the qualifier became nothing. The lesson worth keeping is that every version I p
 elaborate than the one she wanted.
 
 **1,359 passed, 0 failed.**
+
+## 2026-08-26 — her parenthesised-token rulings, implemented, and a particle is not a surname
+
+`scripts/namemodel.py` now carries `PARTICLES`, `UNKNOWN_MARKERS` and `name_shape()`.
+`classify_fields` strips the brackets and names the shape; `statements_for` skips particles and
+markers before they reach the name plan; `aliases_for` emits the bracketed form as an alias.
+
+    GIVN 'Nicholas'  SURN 'Weirman (Weyerman)'
+      -> Weirman  family     P734, coequal
+      -> Weyerman family     P734, coequal, no qualifier
+      -> alias    "Nicholas Weirman (Weyerman)"
+
+**The particle rule is far bigger than the brackets it came from: 257,030 tokens** stop being
+`P734` *family name* lookups — `de` **125,425**, `von` 60,959, `van` 13,836, `la` 7,481, `af`
+7,189, `ap` 6,574, `da` 4,834. Every one was being proposed as a family-name item. Her ruling was
+about nine *bracketed* particles; the same nine words unbracketed are two orders of magnitude
+more common, and the rule is the same one — *"integral parts of what the people are called"*, so
+they belong in the label and not in an item.
+
+**3,909 tokens become unknown markers** — `NN` 1,467, `?` 620, `N.N.` 510, `Unknown` 407, `???`
+373 — joining the population `scripts/labels.py` already owns.
+
+**Two defects in my own change, both caught before they shipped.** `ben` was missing from
+`PARTICLES` while the comment beside it claimed it was there — it is the Samaritan patronymic
+particle, `Abisha III ben Phinhas`, and would have gone on minting a family-name item for `ben`.
+And `aliases_for` was left with a dead `if … pass` branch.
+
+**A test's exclusion is gone rather than kept.** `test_every_married_surname_…` had been
+skipping wholly-parenthesised tokens as an unresolved modelling question. They are resolved:
+`hjorthorn` is an ordinary coequal family name and is now subject to the assertion exactly like
+`Tunheim`. The exclusion was removed, not left as harmless dead weight.
+
+**1,359 passed, 0 failed.**

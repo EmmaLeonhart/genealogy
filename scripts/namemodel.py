@@ -82,6 +82,54 @@ MARRIED_NAME_ROLE = "Q28418670"  # married name
 #: *"The daughter and son would be the same thing"* — one category, not two.
 PATRONYMIC = re.compile(r".+(sen|son|sson|datter|sdatter)$", re.I)
 
+#: A token wholly inside brackets, as Geni writes an alternative or a house:
+#: `Turesson (Bielke)`, `Weirman (Weyerman)`, `Levine (?)`.
+PAREN = re.compile(r"^\((.+)\)$")
+
+#: **Particles and honorifics go into the LABEL and never become items.** Emma, 2026-08-26:
+#: *"These should be parts of the mul labels because they are integral parts of what the
+#: people are called."* The nine bracketed ones are the whole bracketed population measured in
+#: `reports/paren-tokens.md`; the unbracketed forms are far commoner -- bare `de` occurs
+#: **125,328** times and bare `von` 60,951 -- and until now every one of them became a `P734`
+#: *family name* lookup of its own.
+PARTICLES = {
+    "de", "d.", "du", "des", "del", "della", "di", "da", "das", "dos", "van", "von",
+    "vander", "le", "la", "el", "af", "av", "ap", "ben", "ibn", "bin", "mac", "mc",
+    "st.", "san", "santa", "dom", "don",
+}
+
+#: **Words meaning the name is not known.** They join `Private`/`NN`/`Ukjent`, which
+#: `scripts/labels.py` owns -- `CLAUDE.md` § *`NN` is PRESERVED in `mul`*. Emma, 2026-08-26,
+#: shown `(anonyma)`, `(incognita)` and `(?)`: *"Treat as NN markers."*
+#:
+#: **`ben` is in `PARTICLES`, not here.** It is the Samaritan patronymic particle --
+#: `Abisha III ben Phinhas` -- so it belongs in the label and must never become a `P734`
+#: *family name* item of its own, which is what it used to do.
+UNKNOWN_MARKERS = {
+    "?", "??", "???", "anonyma", "anonymus", "anonym", "incognita", "incognito",
+    "okänd", "ukjent", "ukendt", "unknown", "n.n.", "nn", "no name", "namn okänt",
+}
+
+
+def name_shape(token):
+    """`(bare_token, usage_or_None)` -- brackets stripped, particles and markers named.
+
+    Emma's rulings of 2026-08-26, `CLAUDE.md` § *A parenthesised token in `SURN`/`_MARNM` is
+    THREE different things*. A `usage` of `None` means "an ordinary name token, carry on";
+    `particle` and `unknown` are terminal and never reach the name plan.
+
+    The brackets are stripped whether or not the token is a particle, because
+    `(de) Worms` and `de Worms` are the same name written twice.
+    """
+    m = PAREN.match(token)
+    bare = m.group(1) if m else token
+    low = bare.casefold()
+    if low in UNKNOWN_MARKERS:
+        return bare, "unknown"
+    if low in PARTICLES:
+        return bare, "particle"
+    return bare, None
+
 
 def load_plan(path: Path | None = None) -> dict:
     """(token, usage) -> (existing_qid or '', action).
@@ -156,13 +204,18 @@ def classify_fields(givn: str, surn: str, nick: str = "",
     # `SURN` is data, not the last whitespace token of anything. It can still hold a
     # patronym -- `name modelling.txt`: *"We have to check in the given names and in
     # the surname whether it is a patronym"* -- so the same test runs on it.
-    for token in [t for t in re.split(r"\s+", (surn or "").strip()) if t]:
+    for raw in [t for t in re.split(r"\s+", (surn or "").strip()) if t]:
+        token, shape = name_shape(raw)
+        if shape:
+            out.append((token, shape, 0))
+            continue
         out.append((token, "patronymic" if PATRONYMIC.match(token) else "family", 0))
 
     married = " ".join((marnm or "").split())
     if married and married.casefold() != " ".join((surn or "").split()).casefold():
-        for token in married.split():
-            out.append((token, "married", 0))
+        for raw in married.split():
+            token, shape = name_shape(raw)
+            out.append((token, shape or "married", 0))
 
     for token in nicknames + [t for t in [" ".join((nick or "").split())] if t]:
         out.append((token, "nickname", 0))
@@ -254,6 +307,14 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None,
     given_count = sum(1 for _t, u, _o in tokens if u == "given")
 
     for token, usage, ordinal in tokens:
+        # **A particle and an unknown marker never reach the name plan.** Emma, 2026-08-26:
+        # a particle is *"integral parts of what the people are called"* and so belongs in
+        # the LABEL, and a marker joins the `NN` population `scripts/labels.py` owns. Looking
+        # either up would find nothing and file a spurious "not in the plan" note; emitting
+        # either would mint an item for `de` or for `?`.
+        if usage in ("particle", "unknown"):
+            continue
+
         # A nickname is free text on the item, so it is emitted regardless of whether
         # any name item exists for it.
         if usage == "nickname":
@@ -343,4 +404,15 @@ def aliases_for(fields):
             (fields.get("surn") or "").split()).casefold():
         if given:
             out.append(f"{' '.join(given)} {married}")
+
+    # **The bracketed form itself is an alias.** Emma, 2026-08-26: *"Amul for the brackets"*.
+    # The two `P734` *family name* statements are coequal and unqualified, so nothing in the
+    # statements records how Geni actually writes the name; the alias does, and it is what
+    # makes the person findable by what is on their profile page.
+    for field in ("surn", "marnm"):
+        raw = " ".join((fields.get(field) or "").split())
+        if raw and any(PAREN.match(t) for t in raw.split()):
+            full = f"{' '.join(given)} {raw}".strip() if given else raw
+            if full not in out:
+                out.append(full)
     return out

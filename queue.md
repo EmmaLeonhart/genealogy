@@ -376,17 +376,14 @@ position. Step 0 is off by default because it is the day's one network call.
 
 **Still to do:**
 
-- **DECIDED and CENSUSED 2026-08-26, not yet implemented — the parenthesised name tokens.**
-  Rulings in `CLAUDE.md` § *A parenthesised token in `SURN`/`_MARNM` is THREE different
-  things*; census in `reports/paren-tokens.md` and `.tsv`. To build in `scripts/namemodel.py`,
-  and it is now entirely mechanical — no threshold, no discriminator, no qualifier:
-  - **9 particles** (`de`, `D.`, `du`, `von`, `Von`, `De`, `af`, `di`, `ben`) go into the `mul`
-    label rather than becoming items — *"integral parts of what the people are called"*.
-  - **8 unknown markers** (`anonyma`, `?`, `unknown`, `Ukjent`, `Unknown`, `NN`, `??`,
-    `ukjent`) route to the NN population, which `scripts/labels.py` already owns.
-  - **Everything else** — 2,478 tokens, 5,553 occurrences — becomes a second `P734` *family
-    name* with the parens stripped, **coequal with the first and carrying no qualifier**, plus
-    an `Amul` alias holding the bracketed form.
+- **BUILT 2026-08-26 — the parenthesised name tokens.** `scripts/namemodel.py` carries
+  `PARTICLES`, `UNKNOWN_MARKERS` and `name_shape()`; `classify_fields` strips the brackets,
+  `statements_for` skips particles and markers, `aliases_for` emits the bracketed form.
+  Rulings in `CLAUDE.md`, census in `reports/paren-tokens.md`.
+
+  **The particle rule reaches far beyond the brackets: 257,030 tokens** stop being `P734`
+  *family name* lookups — `de` 125,425, `von` 60,959, `van` 13,836, `la` 7,481, `af` 7,189,
+  `ap` 6,574. Every one of them was being proposed as a family-name item.
 - **Diff the remainder against the ideal state as part of the run** — `model-vs-reality.py`
   is the diff and is not yet wired into the daily command.
 - **The ideal state is still the Geni tree alone.** Her spec says the **union of the synoptic
