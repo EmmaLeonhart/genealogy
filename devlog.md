@@ -15952,3 +15952,24 @@ reader-is-not-a-generator skip could not fire while the read looked like a write
 **The 95 are not 95 to-dos.** About 70 are one-off analyses 150–360h behind `out/merged.ged` or
 `derived-family.csv` — the corpus grew under them, and they are records of a day. About 25 are
 the live chain, under 72h. The queue now says so.
+
+## 2026-08-27 — the synoptic correspondence, re-run against the current walk
+
+`reports/synoptic-correspondence.tsv` was 29h behind `reports/structural-correspondence.csv`,
+which the drift census flagged. Re-run: **564,329** distinct (QID, Geni) pairs over 560,180
+QIDs and 563,938 Geni profiles, from seven sources — `wikidata-p2600` 517,823, `zipper` 45,898,
+`structural` 7,606, plus the About Me, Izumo, Tanba and Izumo-sister rosters. 235 structural
+pairs were dropped as date-refuted.
+
+**4,005 QIDs carry more than one Geni ID and that is ordinary** — `P2600` *Geni.com profile ID*
+is multi-valued, per `CLAUDE.md` § *A second Geni ID on one Wikidata item is NOT a conflict*.
+The other direction is the interesting one: **385 Geni profiles claim more than one QID**, down
+from 393.
+
+`reports/correspondence-shapes.tsv` grew 7,357 → 8,732 rows on the same input: 559,789
+components, **555,598 a clean 1×1 (99.3%)**, 4,191 carrying multiplicity — 3,819 of them one
+item against several Geni profiles, 201 several items against one profile, and **171 tangles
+needing a merge on both sides**. 145 are 2×2.
+
+Two of the thirteen chain scripts finished before the run was stopped; the third had written
+nothing, so no output is truncated. The remaining eleven are still behind.
