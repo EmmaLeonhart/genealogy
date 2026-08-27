@@ -448,14 +448,18 @@ for her.
 
 ## ⛔ Labels in other languages — three things, measured 2026-08-26
 
-- **`ja`/`zh` reach only 4 of 36 creations, and she wants them mandatory.**
-  `label_in()` is all-or-nothing by design — `CLAUDE.md`: *"Partial is worse than absent: half
-  a name in katakana and half in Latin is not a Japanese label, it is a broken one"* — and
-  `reports/garborg-name-transliterations.tsv` holds **114 tokens**, built for the original
-  Garborg family. The algorithm now reaches far past it, so **32 of 36** are carried with
-  *"no transliteration for every token"*. The fix is to extend the table, not to loosen the
-  rule. Katakana from Norwegian is mechanical; the Chinese characters are a judgement per
-  name and are the part worth checking with her.
+- **The transliteration table is extended: 113 → 218 tokens, and `ja`/`zh` go from 4 of 36
+  creations to 21.** She pointed out the Chinese was never a decision — the table already had
+  113 rows with both columns filled, so the method was settled and this was authoring.
+  `scripts/census-missing-transliterations.py` ranks what is missing by **people unblocked**,
+  not token frequency.
+
+  **What is left is not a table gap.** Blocked people 58 → 17, and **0 of the 32 remaining
+  tokens is a name**: 11 places from titles (`Blekinge`, `Lolland`, `Tuscany`), 8 title words
+  (`of`, `Queen`, `margrave`), 5 punctuation artefacts (`Estland,`, `(Hafridssons`, `ätt)`),
+  3 quoted nicknames, 3 particles, 2 clan words. Those reach the transliterator because **the
+  labels themselves carry titles and quoted nicknames** — a labelling problem, and the fix is
+  upstream in what gets handed over, not more rows.
 
 - **NEEDS-DECISION, Emma — `mul` may be actively harmful.** Her report: *"Mul labels cause
   massive numbers of labels across languages on an item to be removed by a bot, which might be

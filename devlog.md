@@ -15528,3 +15528,43 @@ would have been the same error as the Austria-Hungary one, with more rows. Folde
 22 scripts rather than 27.
 
 **1,381 passed, 1 xfailed, 0 failed.**
+
+## 2026-08-26 — the transliteration table, and the Chinese was never a decision
+
+I had put "the Chinese characters are a judgement per name" on the blocker list. Emma: *"Chinese
+transliteration is already done lol btw so why do I need to make a decision"* — and she is right.
+`reports/garborg-name-transliterations.tsv` already held **113 tokens with both columns filled**,
+so the method was settled and what remained was authoring, not a ruling. It came off the list.
+
+`scripts/census-missing-transliterations.py` ranks the gap by **people unblocked, not token
+frequency** — a token borne by fifty people who each carry three *other* unknown tokens unblocks
+nobody, so the useful measure is how many people become fully covered when it is added.
+
+**113 → 218 tokens. `ja`/`zh` on creations: 4 of 36 → 21 of 36. Blocked people: 58 → 17.**
+
+**And the remaining 17 are not a table gap: 0 of the 32 blocking tokens is a name.**
+
+| kind | tokens |
+| --- | ---: |
+| place from a title — `Blekinge`, `Lolland`, `Tuscany`, `Friuli` | 11 |
+| title word — `of`, `Queen`, `Duke`, `margrave` | 8 |
+| punctuation artefact — `Estland,`, `(Hafridssons`, `ätt)` | 5 |
+| quoted nickname — `"Stena"`, `"Mary"`, `"Lena"` | 3 |
+| particle or initial | 3 |
+| clan word — `Folkungaätten` | 2 |
+
+They reach the transliterator because **the labels themselves carry titles and quoted
+nicknames** — `Knut Valdemarsson Duke of Estland, Blekinge and Lolland`,
+`Stine "Stena" Eivindsdatter Garborg`. Authoring katakana for the English word *of* would close a
+gap that should not exist. The fix is upstream, in what is handed to the transliterator, and that
+is a labelling decision rather than a table one.
+
+**The classifier took two passes.** The first marked only quoted nicknames and title words and
+still offered `Estland,`, `(Hafridssons`, `Blekinge` and `ätt)` as names to transliterate.
+
+**And I destroyed the middle of the census script with a bad slice-based edit** — replacing from
+the first `print(` to a later line wiped out everything between, and the file was untracked so
+there was no git copy. Rewritten from scratch. Slicing a source file between two matched strings
+is not an edit, it is a deletion with a survivor.
+
+**1,381 passed, 1 xfailed, 0 failed.**

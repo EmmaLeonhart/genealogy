@@ -8,6 +8,10 @@ CREATE
 LAST	Len	"Algot Bryniolfsson"
 #   set the mul label to "Algot Bryniolfsson"
 LAST	Lmul	"Algot Bryniolfsson"
+#   set the ja label to "アルゴット・ブリニオルフソン"
+LAST	Lja	"アルゴット・ブリニオルフソン"
+#   set the zh label to "阿尔戈特·布吕尼奥尔夫松"
+LAST	Lzh	"阿尔戈特·布吕尼奥尔夫松"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
@@ -39,6 +43,10 @@ CREATE
 LAST	Len	"Astri Torkelsdatter Gilja"
 #   set the mul label to "Astri Torkelsdatter Gilja"
 LAST	Lmul	"Astri Torkelsdatter Gilja"
+#   set the ja label to "アストリ・トルケルスダッテル・ギリヤ"
+LAST	Lja	"アストリ・トルケルスダッテル・ギリヤ"
+#   set the zh label to "阿斯特丽·托克尔斯达特·吉利亚"
+LAST	Lzh	"阿斯特丽·托克尔斯达特·吉利亚"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -89,6 +97,10 @@ CREATE
 LAST	Len	"Bertila"
 #   set the mul label to "Bertila"
 LAST	Lmul	"Bertila"
+#   set the ja label to "ベルティラ"
+LAST	Lja	"ベルティラ"
+#   set the zh label to "贝尔蒂拉"
+LAST	Lzh	"贝尔蒂拉"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -164,6 +176,14 @@ LAST	Len	"Fartegn Matsson Matsson"
 LAST	Lmul	"Fartegn Matsson Matsson"
 #   add a mul alias "Fartegn Matsson Æne"
 LAST	Amul	"Fartegn Matsson Æne"
+#   set the ja label to "ファルテグン・マットソン・マットソン"
+LAST	Lja	"ファルテグン・マットソン・マットソン"
+#   set the zh label to "法尔特格恩·马特松·马特松"
+LAST	Lzh	"法尔特格恩·马特松·马特松"
+#   add a ja alias "ファルテグン・マットソン・エーネ"
+LAST	Aja	"ファルテグン・マットソン・エーネ"
+#   add a zh alias "法尔特格恩·马特松·埃内"
+LAST	Azh	"法尔特格恩·马特松·埃内"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
@@ -224,6 +244,10 @@ CREATE
 LAST	Len	"Helen Frisk"
 #   set the mul label to "Helen Frisk"
 LAST	Lmul	"Helen Frisk"
+#   set the ja label to "ヘレン・フリスク"
+LAST	Lja	"ヘレン・フリスク"
+#   set the zh label to "海伦·弗里斯克"
+LAST	Lzh	"海伦·弗里斯克"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -286,6 +310,10 @@ CREATE
 LAST	Len	"Jon Olson Raustad"
 #   set the mul label to "Jon Olson Raustad"
 LAST	Lmul	"Jon Olson Raustad"
+#   set the ja label to "ヨン・オルソン・ラウスタード"
+LAST	Lja	"ヨン・オルソン・ラウスタード"
+#   set the zh label to "永·奥尔松·劳斯塔"
+LAST	Lzh	"永·奥尔松·劳斯塔"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
@@ -309,6 +337,10 @@ CREATE
 LAST	Len	"Joren Jonsdatter Espedal"
 #   set the mul label to "Joren Jonsdatter Espedal"
 LAST	Lmul	"Joren Jonsdatter Espedal"
+#   set the ja label to "ヨーレン・ヨンスダッテル・エスペダール"
+LAST	Lja	"ヨーレン・ヨンスダッテル・エスペダール"
+#   set the zh label to "约伦·永斯达特·埃斯佩达尔"
+LAST	Lzh	"约伦·永斯达特·埃斯佩达尔"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -334,6 +366,10 @@ CREATE
 LAST	Len	"Karen Sophie Pedersdatter"
 #   set the mul label to "Karen Sophie Pedersdatter"
 LAST	Lmul	"Karen Sophie Pedersdatter"
+#   set the ja label to "カーレン・ソフィー・ペーデシュダッテル"
+LAST	Lja	"カーレン・ソフィー・ペーデシュダッテル"
+#   set the zh label to "卡伦·索菲·佩德斯达特"
+LAST	Lzh	"卡伦·索菲·佩德斯达特"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -353,6 +389,10 @@ CREATE
 LAST	Len	"Karen Toresdatter Kold"
 #   set the mul label to "Karen Toresdatter Kold"
 LAST	Lmul	"Karen Toresdatter Kold"
+#   set the ja label to "カーレン・トーレスダッテル・コル"
+LAST	Lja	"カーレン・トーレスダッテル・コル"
+#   set the zh label to "卡伦·托雷斯达特·科尔德"
+LAST	Lzh	"卡伦·托雷斯达特·科尔德"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -424,6 +464,14 @@ LAST	Len	"Kristian Larsen Sør-Reime"
 LAST	Lmul	"Kristian Larsen Sør-Reime"
 #   add a mul alias "Kristian Larsen Nord-Varhaug"
 LAST	Amul	"Kristian Larsen Nord-Varhaug"
+#   set the ja label to "クリスティアン・ラーシェン・セール・レイメ"
+LAST	Lja	"クリスティアン・ラーシェン・セール・レイメ"
+#   set the zh label to "克里斯蒂安·拉尔森·瑟尔·雷梅"
+LAST	Lzh	"克里斯蒂安·拉尔森·瑟尔·雷梅"
+#   add a ja alias "クリスティアン・ラーシェン・ノール・ヴァールハウグ"
+LAST	Aja	"クリスティアン・ラーシェン・ノール・ヴァールハウグ"
+#   add a zh alias "克里斯蒂安·拉尔森·诺尔·瓦尔豪格"
+LAST	Azh	"克里斯蒂安·拉尔森·诺尔·瓦尔豪格"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
@@ -476,6 +524,10 @@ CREATE
 LAST	Len	"Lars Kristiansen Sør-Reime"
 #   set the mul label to "Lars Kristiansen Sør-Reime"
 LAST	Lmul	"Lars Kristiansen Sør-Reime"
+#   set the ja label to "ラーシュ・クリスティアンセン・セール・レイメ"
+LAST	Lja	"ラーシュ・クリスティアンセン・セール・レイメ"
+#   set the zh label to "拉尔斯·克里斯蒂安森·瑟尔·雷梅"
+LAST	Lzh	"拉尔斯·克里斯蒂安森·瑟尔·雷梅"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
@@ -499,6 +551,10 @@ CREATE
 LAST	Len	"Lars Tormodsen Mele"
 #   set the mul label to "Lars Tormodsen Mele"
 LAST	Lmul	"Lars Tormodsen Mele"
+#   set the ja label to "ラーシュ・トルモドセン・メーレ"
+LAST	Lja	"ラーシュ・トルモドセン・メーレ"
+#   set the zh label to "拉尔斯·托尔莫德森·梅勒"
+LAST	Lzh	"拉尔斯·托尔莫德森·梅勒"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
@@ -528,6 +584,10 @@ CREATE
 LAST	Len	"Lave"
 #   set the mul label to "Lave"
 LAST	Lmul	"Lave"
+#   set the ja label to "ラーヴェ"
+LAST	Lja	"ラーヴェ"
+#   set the zh label to "拉弗"
+LAST	Lzh	"拉弗"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
@@ -631,6 +691,10 @@ CREATE
 LAST	Len	"Ola Jonson Li"
 #   set the mul label to "Ola Jonson Li"
 LAST	Lmul	"Ola Jonson Li"
+#   set the ja label to "オーラ・ヨンソン・リ"
+LAST	Lja	"オーラ・ヨンソン・リ"
+#   set the zh label to "乌拉·永松·李"
+LAST	Lzh	"乌拉·永松·李"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
@@ -704,6 +768,10 @@ CREATE
 LAST	Len	"Richard Wade Borsheim"
 #   set the mul label to "Richard Wade Borsheim"
 LAST	Lmul	"Richard Wade Borsheim"
+#   set the ja label to "リチャード・ウェイド・ボルスハイム"
+LAST	Lja	"リチャード・ウェイド・ボルスハイム"
+#   set the zh label to "理查德·韦德·博尔斯海姆"
+LAST	Lzh	"理查德·韦德·博尔斯海姆"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
@@ -727,6 +795,10 @@ CREATE
 LAST	Len	"Simen Olsen"
 #   set the mul label to "Simen Olsen"
 LAST	Lmul	"Simen Olsen"
+#   set the ja label to "シーメン・オルセン"
+LAST	Lja	"シーメン・オルセン"
+#   set the zh label to "西门·奥尔森"
+LAST	Lzh	"西门·奥尔森"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
@@ -965,6 +1037,10 @@ CREATE
 LAST	Len	"Yung Buyeo"
 #   set the mul label to "Yung Buyeo"
 LAST	Lmul	"Yung Buyeo"
+#   set the ja label to "ユン・プヨ"
+LAST	Lja	"ユン・プヨ"
+#   set the zh label to "隆·扶余"
+LAST	Lzh	"隆·扶余"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
@@ -1021,12 +1097,20 @@ Q116150300	P3373	Q2183430	S2600	"305332989800002467"
 Q116150300	P735	Q16275183
 #   P734 family name = Q55222347 Hvide
 Q116150300	P734	Q55222347
+#   set the ja label to "セシリエ・エッベスダッテル・ヴィーデ"
+Q116150300	Lja	"セシリエ・エッベスダッテル・ヴィーデ"
+#   set the zh label to "塞西莉厄·埃贝斯达特·维德"
+Q116150300	Lzh	"塞西莉厄·埃贝斯达特·维德"
 #   Q2183430 Bengta Ebbesdotter Ebbesdatter Galen Queen of Sweden: P3373 sibling = Q116150300 Cecilie Ebbesdatter Hvide
 Q2183430	P3373	Q116150300	S2600	"4947248545210089938"
 #   Q284400 Giséle de Cysoing: P40 child = Q274606 Berengar I margrave of Friuli, king of Italy
 Q284400	P40	Q274606	S2600	"6000000000424624719"
 #   Q11596350 Wakatakehiko: P40 child = Q11078587 Harima no Inabi no Ōiratsume
 Q11596350	P40	Q11078587	S2600	"6000000001835522164"
+#   Q5915800 Knut Algotsson: set the ja label to "クヌート・アルゴットソン"
+Q5915800	Lja	"クヌート・アルゴットソン"
+#   set the zh label to "克努特·阿尔戈特松"
+Q5915800	Lzh	"克努特·阿尔戈特松"
 #   Q3743799 Knut Valdemarsson Duke of Estland, Blekinge and Lolland: P40 child = Q6197518 Svantepolk Knutsson Viby Skarsholmsätten
 Q3743799	P40	Q6197518	S2600	"6000000003076221220"
 #   Q6197518 Svantepolk Knutsson Viby Skarsholmsätten: P40 child = Q101247444 Ingegerd Svantepolksdotter
@@ -1053,6 +1137,10 @@ Q141178196	P735	Q16423275	P1545	"1"	P7452	Q3409033
 Q141178196	P735	Q11980788	P1545	"2"	P3831	Q245025
 #   P734 family name = Q21452049 Stangeland
 Q141178196	P734	Q21452049
+#   set the ja label to "エリサベート・シシュティーネ・エリクスダッテル・スタンゲラン"
+Q141178196	Lja	"エリサベート・シシュティーネ・エリクスダッテル・スタンゲラン"
+#   set the zh label to "伊丽莎白·谢什蒂内·埃里克斯达特·斯坦格兰"
+Q141178196	Lzh	"伊丽莎白·谢什蒂内·埃里克斯达特·斯坦格兰"
 #   Q141152523 Ane Oline Jonsdatter Raugstad: P22 father = Q141168955 Jon Samuelsen Raustad
 Q141152523	P22	Q141168955	S2600	"6000000003491986946"
 #   P25 mother = Q141178200 Inger Kristoffersdatter
@@ -1095,6 +1183,10 @@ Q141178198	P22	Q141168957	S2600	"6000000003491986956"
 Q141178198	P25	Q141178196	S2600	"6000000003491986956"
 #   P735 given name = Q111085860 Enevald
 Q141178198	P735	Q111085860
+#   set the ja label to "エーネヴァル・ヨナソン・ヘイグレ"
+Q141178198	Lja	"エーネヴァル・ヨナソン・ヘイグレ"
+#   set the zh label to "埃内瓦尔德·约纳松·海格勒"
+Q141178198	Lzh	"埃内瓦尔德·约纳松·海格勒"
 #   Q141169046 Samuel Jonson: P22 father = Q141168955 Jon Samuelsen Raustad
 Q141169046	P22	Q141168955	S2600	"6000000003491988821"
 #   P25 mother = Q141178200 Inger Kristoffersdatter
@@ -1117,6 +1209,10 @@ Q141178381	P40	Q141168955	S2600	"6000000003491988826"
 Q141178381	P26	Q141178380	S2600	"6000000003491988826"
 #   P735 given name = Q846741 Marta
 Q141178381	P735	Q846741
+#   set the ja label to "マルタ・ヨンスダッテル・リ"
+Q141178381	Lja	"マルタ・ヨンスダッテル・リ"
+#   set the zh label to "玛尔塔·永斯达特·李"
+Q141178381	Lzh	"玛尔塔·永斯达特·李"
 #   Q141178380 Samuel Jonson Raustad: P40 child = Q141168955 Jon Samuelsen Raustad
 Q141178380	P40	Q141168955	S2600	"6000000003491988831"
 #   P26 spouse = Q141178381 Marta Jonsdatter Li
@@ -1351,12 +1447,22 @@ Q633094	P25	Q141180409	S2600	"6000000004334763223"
 Q633094	P26	Q141180410	S2600	"6000000004334763223"
 #   P26 spouse = Q141180406 Ingeborg Gyntesdotter
 Q633094	P26	Q141180406	S2600	"6000000004334763223"
+#   set the zh label to "约翰内斯·托马松"
+Q633094	Lzh	"约翰内斯·托马松"
 #   Q141180413 Thomas Mattsson: P40 child = Q633094 Johannes Tomasson
 Q141180413	P40	Q633094	S2600	"6000000004334768506"
 #   P26 spouse = Q141180409 Magdalena Andersdotter Bure
 Q141180413	P26	Q141180409	S2600	"6000000004334768506"
+#   set the ja label to "トーマス・マットソン"
+Q141180413	Lja	"トーマス・マットソン"
+#   set the zh label to "托马斯·马特松"
+Q141180413	Lzh	"托马斯·马特松"
 #   Q141178149 Anna Fartegnsdatter Seim: P734 family name = Q30088373 Seim
 Q141178149	P734	Q30088373
+#   set the ja label to "アンナ・ファルテグンスダッテル・セイム"
+Q141178149	Lja	"アンナ・ファルテグンスダッテル・セイム"
+#   set the zh label to "安娜·法尔特格恩斯达特·塞姆"
+Q141178149	Lzh	"安娜·法尔特格恩斯达特·塞姆"
 #   Q3143008 Karen Hulda Bergersen: P22 father = Q141168797 Christian Frederik Bergersen
 Q3143008	P22	Q141168797	S2600	"6000000005606976813"
 #   P25 mother = Q141178201 Marie Petrine Simensdatter Bergersen
@@ -1405,18 +1511,30 @@ Q141180408	P40	Q141178381	S2600	"6000000005609534542"
 Q141180408	P26	Q141180412	S2600	"6000000005609534542"
 #   P735 given name = Q13501137 Jon
 Q141180408	P735	Q13501137
+#   set the ja label to "ヨン・ラーション・リ"
+Q141180408	Lja	"ヨン・ラーション・リ"
+#   set the zh label to "永·拉尔松·李"
+Q141180408	Lzh	"永·拉尔松·李"
 #   Q141180412 Marta Rasmusdatter Høle: P40 child = Q141178381 Marta Jonsdatter Li
 Q141180412	P40	Q141178381	S2600	"6000000005609534550"
 #   P26 spouse = Q141180408 Jon Larsson Li
 Q141180412	P26	Q141180408	S2600	"6000000005609534550"
 #   P735 given name = Q846741 Marta
 Q141180412	P735	Q846741
+#   set the ja label to "マルタ・ラスムスダッテル・ヘーレ"
+Q141180412	Lja	"マルタ・ラスムスダッテル・ヘーレ"
+#   set the zh label to "玛尔塔·拉斯穆斯达特·赫勒"
+Q141180412	Lzh	"玛尔塔·拉斯穆斯达特·赫勒"
 #   Q141180409 Magdalena Andersdotter Bure: P40 child = Q633094 Johannes Tomasson
 Q141180409	P40	Q633094	S2600	"6000000006127859575"
 #   P26 spouse = Q141180413 Thomas Mattsson
 Q141180409	P26	Q141180413	S2600	"6000000006127859575"
 #   P735 given name = Q842544 Magdalena, qualified series ordinal 1, reason for preferred rank Q3409033 usual forename
 Q141180409	P735	Q842544	P1545	"1"	P7452	Q3409033
+#   set the ja label to "マグダレーナ・アンデシュドッテル・ブーレ"
+Q141180409	Lja	"マグダレーナ・アンデシュドッテル・ブーレ"
+#   set the zh label to "玛格达莱娜·安德斯多特·布雷"
+Q141180409	Lzh	"玛格达莱娜·安德斯多特·布雷"
 #   Q141168811 Eivind Garborg: P22 father = Q141152614 Jon Eivindson Garborg
 Q141168811	P22	Q141152614	S2600	"6000000006570861816"
 #   P735 given name = Q3358418 Eivind
@@ -1495,22 +1613,38 @@ Q141168797	P735	Q17539077	P1545	"2"	P3831	Q245025
 Q141168797	Lja	"クリスチャン・フレデリク・ベルゲルセン"
 #   set the zh label to "克里斯蒂安·弗雷德里克·贝格尔森"
 Q141168797	Lzh	"克里斯蒂安·弗雷德里克·贝格尔森"
+#   Q101247444 Ingegerd Svantepolksdotter: set the ja label to "インゲゲルド・スヴァンテポルクスドッテル"
+Q101247444	Lja	"インゲゲルド・スヴァンテポルクスドッテル"
+#   set the zh label to "英格格德·斯万特波尔克斯多特"
+Q101247444	Lzh	"英格格德·斯万特波尔克斯多特"
 #   Q141180410 Margareta Mårtensdotter Bång: P26 spouse = Q633094 Johannes Tomasson
 Q141180410	P26	Q633094	S2600	"6000000012566410426"
 #   P735 given name = Q8274988 Margareta, qualified series ordinal 1, reason for preferred rank Q3409033 usual forename
 Q141180410	P735	Q8274988	P1545	"1"	P7452	Q3409033
+#   set the ja label to "マルガレータ・モーテンスドッテル・ボング"
+Q141180410	Lja	"マルガレータ・モーテンスドッテル・ボング"
+#   set the zh label to "玛格丽塔·莫滕斯多特·邦格"
+Q141180410	Lzh	"玛格丽塔·莫滕斯多特·邦格"
 #   Q141178199 Gunder Bergersen: P40 child = Q141168797 Christian Frederik Bergersen
 Q141178199	P40	Q141168797	S2600	"6000000016756402733"
 #   P26 spouse = Q141180395 Maren Gulbrandsdatter Ommestad
 Q141178199	P26	Q141180395	S2600	"6000000016756402733"
 #   P735 given name = Q989832 Gunder
 Q141178199	P735	Q989832
+#   set the ja label to "グンデル・ベルゲルセン"
+Q141178199	Lja	"グンデル・ベルゲルセン"
+#   set the zh label to "贡德尔·贝格尔森"
+Q141178199	Lzh	"贡德尔·贝格尔森"
 #   Q141180395 Maren Gulbrandsdatter Ommestad: P40 child = Q141168797 Christian Frederik Bergersen
 Q141180395	P40	Q141168797	S2600	"6000000020221673906"
 #   P26 spouse = Q141178199 Gunder Bergersen
 Q141180395	P26	Q141178199	S2600	"6000000020221673906"
 #   P735 given name = Q1666203 Maren
 Q141180395	P735	Q1666203
+#   set the ja label to "マーレン・グルブランスダッテル・オンメスタード"
+Q141180395	Lja	"マーレン・グルブランスダッテル・オンメスタード"
+#   set the zh label to "马伦·古尔布兰斯达特·翁梅斯塔德"
+Q141180395	Lzh	"马伦·古尔布兰斯达特·翁梅斯塔德"
 #   Q141168784 Aagot Garborg: P22 father = Q141152614 Jon Eivindson Garborg
 Q141168784	P22	Q141152614	S2600	"6000000021079935250"
 #   P735 given name = Q3482557 Aagot
@@ -1527,6 +1661,10 @@ Q138474188	P40	Q141168785	S2600	"6000000021197598122"
 Q138474188	P40	Q141168803	S2600	"6000000021197598122"
 #   P26 spouse = Q141178197 Elisabeth Johannesen
 Q138474188	P26	Q141178197	S2600	"6000000021197598122"
+#   set the ja label to "ハンス・シーヴェシェン・ニーヴォル"
+Q138474188	Lja	"ハンス・シーヴェシェン・ニーヴォル"
+#   set the zh label to "汉斯·西韦特森·尼沃尔"
+Q138474188	Lzh	"汉斯·西韦特森·尼沃尔"
 #   Q141168785 Aagot Nyvold: P22 father = Q138474188 Hans Syvertsen Nyvold
 Q141168785	P22	Q138474188	S2600	"6000000021197722738"
 #   P25 mother = Q141178197 Elisabeth Johannesen
@@ -1561,10 +1699,18 @@ Q141178197	P40	Q141168803	S2600	"6000000021198042859"
 Q141178197	P26	Q138474188	S2600	"6000000021198042859"
 #   P735 given name = Q63611044 Elisabeth
 Q141178197	P735	Q63611044
+#   set the ja label to "エリーサベト・ヨハンネセン"
+Q141178197	Lja	"エリーサベト・ヨハンネセン"
+#   set the zh label to "伊丽莎白·约翰内森"
+Q141178197	Lzh	"伊丽莎白·约翰内森"
 #   Q141180406 Ingeborg Gyntesdotter: P26 spouse = Q633094 Johannes Tomasson
 Q141180406	P26	Q633094	S2600	"6000000027324391291"
 #   P735 given name = Q656590 Ingeborg
 Q141180406	P735	Q656590
+#   set the ja label to "インゲボルグ・ギュンテスドッテル"
+Q141180406	Lja	"インゲボルグ・ギュンテスドッテル"
+#   set the zh label to "英厄堡·金特斯多特"
+Q141180406	Lzh	"英厄堡·金特斯多特"
 #   Q141169062 Thoralf Tunheim: P25 mother = Q141162046 Ane Oline Lena Eivindsdatter Garborg
 Q141169062	P25	Q141162046	S2600	"6000000033773881611"
 #   set the ja label to "トーラルフ・トゥンヘイム"
@@ -1609,6 +1755,10 @@ Q141169041	Lja	"オーラフ・トゥンヘイム"
 Q141169041	Lzh	"奥拉夫·通海姆"
 #   Q4953376 Helena Guttormsdatter: P40 child = Q3743799 Knut Valdemarsson Duke of Estland, Blekinge and Lolland
 Q4953376	P40	Q3743799	S2600	"6000000034013672054"
+#   set the ja label to "ヘレナ・グットルムスダッテル"
+Q4953376	Lja	"ヘレナ・グットルムスダッテル"
+#   set the zh label to "海伦娜·古托尔姆斯达特"
+Q4953376	Lzh	"海伦娜·古托尔姆斯达特"
 #   Q141168820 Eliza Ronneberg: P25 mother = Q141162043 Inger Marie Mary Eivindsdatter Garborg
 Q141168820	P25	Q141162043	S2600	"6000000035698428095"
 #   P735 given name = Q858305 Eliza
@@ -1661,6 +1811,10 @@ Q141168788	Lzh	"阿尔内·加尔博格·通海姆"
 Q141180396	P26	Q141168794	S2600	"6000000037737683245"
 #   P735 given name = Q12006598 Tollef
 Q141180396	P735	Q12006598
+#   set the ja label to "トッレヴ・トレフソン・トゥンヘイム"
+Q141180396	Lja	"トッレヴ・トレフソン・トゥンヘイム"
+#   set the zh label to "托勒夫·托勒夫松·通海姆"
+Q141180396	Lzh	"托勒夫·托勒夫松·通海姆"
 #   Q141168794 Betsy Jacobson: P25 mother = Q141152600 Stine Stena Eivindsdatter Garborg
 Q141168794	P25	Q141152600	S2600	"6000000037737979829"
 #   P26 spouse = Q141180396 Tollef Tollefson Tunheim
