@@ -325,3 +325,80 @@ def test_the_freshness_census_can_see_output_older_than_input():
     assert len(with_generator) > 100, (
         f"only {len(with_generator)} files resolved to a generator; the source scan that "
         f"finds them has stopped matching, so the drift column cannot fire")
+
+
+def _freshness():
+    """`scripts/build-repo-freshness.py`, loaded by path — the name is hyphenated."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(
+        "_freshness", ROOT / "scripts" / "build-repo-freshness.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+def test_a_read_is_not_a_write():
+    """`open(P / "x.tsv", encoding=...)` must not register as writing `x.tsv`.
+
+    **This was the bug, and it hid 82 drift rows.** The census works out a generator's
+    *inputs* by subtracting what it writes from what it names, and `written` matched any
+    `open(` followed by a filename literal. So every file a script opened for READING was
+    classified as its output and deleted from its inputs — which both hid real drift and
+    defeated the reader-is-not-a-generator skip, reporting Emma's hand-written
+    `reports/emma-judgments.tsv` as 35h behind an input it does not have.
+
+    The distinction is the mode. A synthetic source is used rather than a real script so the
+    test keeps meaning something when the scripts change.
+    """
+    writes_in = _freshness().writes_in
+    # **The literal must sit INSIDE the `open(` call.** The old detector only ever matched
+    # that shape, so a synthetic source that binds the path to a constant first would pass
+    # against the broken version too and pin nothing — the `xfail`-that-never-ran mistake in
+    # a new costume. Checked: the old pattern calls both of these writes.
+    source = (
+        'with open(ROOT / "reports" / "read-only.tsv", encoding="utf-8") as f:\n'
+        '    rows = list(f)\n'
+        'with open(ROOT / "reports" / "written.csv", "w", encoding="utf-8") as f:\n'
+        '    f.write("x")\n'
+    )
+    found = writes_in(source)
+    assert "written.csv" in found, (
+        f"a constant opened with mode 'w' is a write and was missed: {sorted(found)}")
+    assert "read-only.tsv" not in found, (
+        f"a read-mode open registered as a write: {sorted(found)} — this is the defect that "
+        f"took the drift count from 95 down to 13")
+
+
+def test_the_other_write_spellings_are_all_recognised():
+    """`write_text`, `.open("w")` and an inline literal are all writes.
+
+    A false NEGATIVE here is the opposite failure and just as bad: a genuine output that is
+    not recognised stays in its own generator's input list, so the script is skipped as a
+    reader of its own file and its drift never fires.
+    """
+    writes_in = _freshness().writes_in
+    assert "a.md" in writes_in('A = ROOT / "a.md"\nA.write_text("x")\n')
+    assert "b.csv" in writes_in('B = ROOT / "b.csv"\nwith B.open("w") as f:\n    pass\n')
+    assert "c.json" in writes_in('open("out/c.json", "w").write("{}")\n')
+    assert "d.tsv" in writes_in('D = ROOT / "d.tsv"\nD.write_bytes(b"x")\n')
+
+
+def test_emma_s_hand_written_files_are_not_claimed_as_generated():
+    """The real case: `reports/emma-judgments.tsv` has no generator and must not gain one.
+
+    It is her hand-verdict file — `CLAUDE.md` § *The chain of provenance* — and nothing in
+    `scripts/` writes it. Two scripts READ it, and while a read looked like a write they were
+    named its writers.
+    """
+    freshness = _freshness()
+    for script in ("zipper-provenance.py", "measure-zipper-reliability.py"):
+        path = ROOT / "scripts" / script
+        if not path.exists():
+            continue
+        text = path.read_text(encoding="utf-8", errors="replace")
+        assert "emma-judgments.tsv" not in freshness.writes_in(text), (
+            f"scripts/{script} is claimed to WRITE emma-judgments.tsv; it reads it, and "
+            f"Emma maintains it by hand")
+        assert "reports/emma-judgments.tsv" in freshness.inputs_of(f"scripts/{script}"), (
+            f"scripts/{script} no longer reports emma-judgments.tsv as an input — the "
+            f"filename scan has stopped matching")

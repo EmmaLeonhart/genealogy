@@ -15973,3 +15973,25 @@ needing a merge on both sides**. 145 are 2×2.
 
 Two of the thirteen chain scripts finished before the run was stopped; the third had written
 nothing, so no output is truncated. The remaining eleven are still behind.
+
+## 2026-08-27 — the write-mode fix now has tests, and the first one did not bite
+
+Three tests on `writes_in`, the function that decides whether a script writing a filename or
+merely reading it. It was changed yesterday with nothing pinning it.
+
+**The first version of the test passed against the broken code.** It built a synthetic source
+that bound the path to a constant — `IN = ROOT / "reports" / "read-only.tsv"` — and the old
+detector never matched that shape anyway, so the test asserted something both versions
+satisfied. Checked rather than assumed, by running the old regex over the synthetic source: it
+returned nothing at all. Rewritten to put the literal **inside** the `open(` call, which is the
+shape the old pattern did match, the old logic calls `read-only.tsv` a write and the new logic
+does not. That is the `xfail`-that-never-ran mistake from last week, caught this time before it
+was committed rather than after being cited in three status reports.
+
+The three: a read-mode `open` is not a write; `write_text`, `.open("w")`, `write_bytes` and an
+inline literal all are; and `reports/emma-judgments.tsv` — Emma's hand-verdict file, which
+nothing generates — is not claimed as an output by the two scripts that read it, and *is* still
+reported as their input.
+
+**1,389 passed, 24 skipped, 0 failed** in 4m06s, measured against `ac863e57`; the three new
+tests take it to 1,392, and `test_join_sanity.py` is 14 passed.
