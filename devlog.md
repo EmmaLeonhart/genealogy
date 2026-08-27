@@ -16025,3 +16025,35 @@ Eleven new rows appeared downstream: the three Bure topology reports behind the 
 fresh shapes census. Obvious in hindsight, unplanned for, and it means picking scripts by eye is
 the wrong instrument — the census already holds every generator→input edge, so the fix is to
 walk it topologically and re-run in dependency order. Queued.
+
+## 2026-08-27 — `refresh-drift.py`: walk the graph instead of typing the chain
+
+The census already holds every `generator -> input` edge. It never ordered them, so drift was
+being cleared by picking scripts by eye — which cannot see its own cascade, and yesterday's
+thirteen re-runs created eleven new stale rows downstream of themselves.
+
+`scripts/refresh-drift.py` orders the stale generators topologically, runs them, rebuilds the
+census and repeats. **Three rounds: 9 scripts, then 2, then 3, then 0.** The `--rounds` loop was
+written on the suspicion that one pass would not be enough; it took three.
+
+**The recent tier is now clear — 0 rows at or under 72h, down from 25.** 69 remain, every one
+150-360h behind `out/merged.ged`, `derived-family.csv` or `display-names.csv`: one-off analyses
+the corpus grew under, and re-running them is a choice about what to measure rather than a fix.
+
+Four things it deliberately will not do. It skips and reports any script naming
+`WikidataClient`, `full_entities`, `urllib.request` or `requests.` — a topological sort is not
+something to trust with § *Never query Wikidata to check something*, and nobody reads the list
+before it runs. It reports a cycle instead of breaking it. It defaults to 72h. And it confirms
+the `generator` column with `writes_in` before running anything, because that column names any
+script that *mentions* a file: without the check it would have re-run
+`build-synoptic-correspondence.py`, a whole-corpus job, for a file it only reads.
+
+**One real bug, caught by running it: `text=True` decodes as cp1252 on this machine.** The first
+run raised `UnicodeDecodeError: 'charmap' codec can't decode byte 0x81` from a subprocess reader
+thread — this process failing to read a child that was fine. The reports are full of kana and
+Han, so that is the common case, and it is the same trap as `CLAUDE.md` § *Working on Windows
+here*. Fixed with an explicit `encoding="utf-8", errors="replace"`, and pinned by a test that
+pushes カナ 黄 through the same kwargs rather than asserting the dict looks right.
+
+Two tests added: the offline screen refuses `refresh-live-values.py` and a missing path, and
+accepts `build-repo-freshness.py`. `test_join_sanity.py` is 16 passed.

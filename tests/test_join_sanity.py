@@ -402,3 +402,50 @@ def test_emma_s_hand_written_files_are_not_claimed_as_generated():
         assert "reports/emma-judgments.tsv" in freshness.inputs_of(f"scripts/{script}"), (
             f"scripts/{script} no longer reports emma-judgments.tsv as an input — the "
             f"filename scan has stopped matching")
+
+
+def _refresher():
+    """`scripts/refresh-drift.py`, loaded by path."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(
+        "_refresh_drift", ROOT / "scripts" / "refresh-drift.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod
+
+
+def test_the_refresher_never_runs_a_script_that_talks_to_wikidata():
+    """A topological sort must not be trusted to respect the one rail that matters.
+
+    `CLAUDE.md` § *Never query Wikidata to check something* — one bulk downloader, nothing else.
+    The refresher picks its scripts from a generated CSV, so nobody reads the list before it
+    runs; the offline screen is the only thing standing between that and a 429.
+    """
+    offline = _refresher().offline
+    real = "scripts/genimerge-noop-that-does-not-exist.py"
+    assert offline(real) is False, "a missing script must not count as safe to run"
+    for script in ("scripts/refresh-live-values.py",):
+        if (ROOT / script).exists():
+            assert not offline(script), (
+                f"{script} builds a WikidataClient and must never be auto-run")
+    for script in ("scripts/build-repo-freshness.py",):
+        assert offline(script), f"{script} makes no request and should be runnable"
+
+
+def test_the_refresher_decodes_subprocess_output_as_utf8():
+    """`text=True` alone decodes as cp1252 here and dies on the first Japanese name.
+
+    The real run raised `UnicodeDecodeError: 'charmap' codec can't decode byte 0x81` out of a
+    subprocess reader thread — this process failing to read a child that was perfectly fine.
+    The reports are full of kana and Han, so it is the common case.
+    """
+    import subprocess
+    import sys as _sys
+    run = _refresher().RUN
+    assert run.get("encoding") == "utf-8", "explicit utf-8 is what stops the cp1252 default"
+    r = subprocess.run(
+        [_sys.executable, "-c",
+         'import sys;sys.stdout.reconfigure(encoding="utf-8");print("\u30ab\u30ca \u9ec4")'],
+        **run)
+    assert r.returncode == 0 and "カナ" in r.stdout, (
+        f"non-ASCII child output did not survive capture: {r.stdout!r}")

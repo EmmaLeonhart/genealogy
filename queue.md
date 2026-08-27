@@ -129,28 +129,27 @@ them and nothing is waiting.
   none of them needs a page opened. Whatever is left after that is the genuinely thorny
   residue and only that needs the browser.
 
-## Drift between stages — 80 outputs behind their inputs, and it CASCADES
+## Drift between stages — the recent tier is CLEAR; 69 deep-history rows stay flagged
 
-`reports/repo-freshness.csv` § `stale_against_input`: for each generated file, the script that
-writes it, the `reports/`/`out/` files that script reads, and any output older than one of them
-by an hour or more. Git-commit age cannot see this — every recent finding was a
-recently-committed file built from something older.
+`scripts/refresh-drift.py` walks the `generator -> input` graph the freshness census already
+holds, orders the stale generators topologically, runs them, rebuilds the census and repeats.
+It replaced a hand-typed chain that could not see its own cascade.
 
-**The thirteen live-chain scripts have all been re-run, 95 → 80 — and eleven NEW rows appeared
-downstream of them.** `bure-bridges.tsv`, `bure-links.tsv` and `bure-topology.md` are now behind
-the fresh `bure-roster.tsv`; `removal-batch-vintage.tsv` behind the fresh
-`wikidata-remove-wrong-p2600.json`; `multi-geni-items.tsv` behind the fresh
-`correspondence-shapes.tsv`. Re-running a stage makes its consumers stale, which is obvious in
-hindsight and was not planned for.
+**Three rounds to converge: 9 scripts, then 2, then 3, then 0.** Refreshing a stage restales its
+consumers, so a single pass was never going to be enough — the `--rounds` loop was written on
+suspicion and the suspicion was right.
 
-**So a hand-listed chain is the wrong instrument.** The census already knows every
-generator→input edge; what it does not do is order them. The next step is to walk that graph
-topologically and re-run in dependency order until the column is empty, rather than picking
-scripts by eye and discovering a second layer afterwards.
+Guards that matter more than the sort: a script naming `WikidataClient`, `full_entities`,
+`urllib.request` or `requests.` is **skipped and reported**, never ordered; a cycle is reported
+rather than broken; `--max-age-hours` defaults to 72 so the deep-history rows stay out; and the
+`generator` column is confirmed with `writes_in` before a script is run, because that column
+names any script that *mentions* a file and a reader landing there would have re-run
+`build-synoptic-correspondence.py` — a whole-corpus job — for a file it does not produce.
 
-**The ~69 remaining deep-history rows are not that.** They sit 150-360h behind `out/merged.ged`,
-`derived-family.csv` or `display-names.csv` — one-off analyses the corpus grew under, records of
-a day in all but the filename. They stay flagged and unqueued.
+**69 rows remain, all 150-360h behind `out/merged.ged`, `derived-family.csv` or
+`display-names.csv`.** They are one-off analyses the corpus grew under. Re-running them is a
+choice about what to measure, not a fix, so they are not queued. `--max-age-hours 400` does it
+if that choice is ever made.
 
 ## The derived CSVs are committed gzipped
 
