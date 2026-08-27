@@ -15890,3 +15890,39 @@ detection is a heuristic over path literals in the generator, so the likely way 
 matching nothing — which would read exactly like a clean repo.
 
 **1,389 passed, 0 failed.**
+
+## 2026-08-27 — the drift detector was reading its own stale output, three times
+
+The `stale_against_input` column shipped yesterday had two defects, and finding them cost more
+than building it.
+
+**Input detection was blind to most inputs.** It matched `reports/x.csv` literals, and this repo
+builds paths by joining — `REPO / "reports" / "patronymic-items.csv"` — so the joined string
+never appears in the source. It saw only the minority of scripts that write a path in one piece.
+The same empty-join trap the repo keeps recording, in the tool built to catch drift. Matching
+bare filenames and resolving them against `reports/` and `out/` fixes it: the flagged set went
+from 8 to **13**, and it is a different 13.
+
+**And a false positive: a reader called a generator.** `scripts/build-name-item-batch.py` was
+named the writer of `reports/patronymic-items.csv`, which it only reads — the constant is
+`PATRONYMICS`, an input — so the file was reported 8h behind `name-classes.csv`, an input it
+does not have. Settled by reusing what was already computed: if the file appears in the
+generator's own inputs, that script reads it and is skipped. One mechanism, not a second
+heuristic.
+
+**I read a stale CSV three times while fixing it.** A block replacement deleted `writers_only`
+while leaving its call, so the census crashed on every run — and I was running it as
+`>/dev/null 2>&1`, so three "re-runs" silently left the previous file in place and I drew
+conclusions from it each time. Suppressing stderr on a rebuild is how you read yesterday's
+answer and believe it is today's.
+
+**`TODAY` was `dt.date(2026, 8, 15)`, a literal.** Every `days_stale` in the census was
+understated by however long had passed — twelve days by now. A staleness report that is itself
+stale, and the same class as `--retrieved` defaulting to a typed-once date, fixed hours earlier
+in another file.
+
+The 13 now flagged, worst first: `name-ambiguity-resolved.csv` 199h behind, `izumo-chart-edges.tsv`
+136h, `bureatten.csv` 79h, `geni-qid-links.tsv` 46h, `emma-judgments.tsv` 35h,
+`izumo-roster.tsv` 33h, then eight under a day and a half.
+
+**1,389 passed, 0 failed.**

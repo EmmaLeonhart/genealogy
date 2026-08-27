@@ -30,7 +30,12 @@ import subprocess
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
-TODAY = dt.date(2026, 8, 15)
+#: **Not a literal.** It was `dt.date(2026, 8, 15)`, so from the 16th onward every
+#: `days_stale` in this census was understated by however long had passed -- twelve days by
+#: 2026-08-27, and a report about staleness that is itself stale is the joke writing itself.
+#: Same class as `--retrieved` defaulting to a typed-once date in
+#: `build-structural-correspondence-batch.py`, fixed the same day.
+TODAY = dt.date.today()
 
 #: "94 exports", "103 GEDCOMs". Two digits minimum -- "3 exports" is prose.
 CLAIM_RE = re.compile(r"\b(\d{2,4})\s+(?:exports|GEDCOMs|gedcoms|\.ged files)\b")
@@ -71,8 +76,11 @@ def source_index() -> dict[str, str]:
                 continue
             for m in re.finditer(r'["\']([\w./-]+\.(?:md|csv|tsv|json|html))["\']',
                                  text):
+                # A script that merely NAMES the file is indexed here; whether it reads
+                # rather than writes it is settled in `stale_against_inputs`, which skips a
+                # generator whose own inputs include the file. One mechanism, not two.
                 index.setdefault(Path(m.group(1)).name, []).append(
-                    str(p.relative_to(REPO)).replace("\\", "/"))
+                    str(p.relative_to(REPO)).replace(chr(92)*2, '/'))
     return {k: ";".join(sorted(set(v))[:3]) for k, v in index.items()}
 
 
@@ -81,10 +89,17 @@ MIN_DRIFT_HOURS = 1.0
 
 
 def inputs_of(script_rel: str) -> list[str]:
-    """The `reports/` and `out/` files a generator READS, by the paths it names.
+    """The `reports/` and `out/` files a generator READS.
 
-    Crude on purpose: every `reports/x` or `out/x` literal in the script, minus whatever it
-    writes. A file it both reads and writes is not a dependency of itself.
+    **Match bare filenames, not `reports/x.csv` literals.** This repo builds paths by
+    joining -- `REPO / "reports" / "patronymic-items.csv"` -- so the joined string never
+    appears in the source and a pattern looking for it finds only the minority of scripts
+    that write the path in one piece. That is the same empty-join trap the rest of this repo
+    keeps recording: the detector looked like it was working and was simply blind to most
+    inputs.
+
+    So: every `"<something>.csv|tsv|json|md|ged"` literal, resolved against `reports/` and
+    `out/` by existence, minus whatever the script writes.
     """
     path = REPO / script_rel
     if not path.exists():
@@ -93,10 +108,18 @@ def inputs_of(script_rel: str) -> list[str]:
         text = path.read_text(encoding="utf-8", errors="replace")
     except OSError:
         return []
-    named = set(re.findall(r'["\']((?:reports|out)/[\w./-]+\.(?:md|csv|tsv|json|ged))["\']',
-                           text))
-    written = set(re.findall(r'(?:open|write_text|to_csv)\([^)]*?["\']'
-                             r'((?:reports|out)/[\w./-]+)', text))
+    named = set()
+    for m in re.finditer(r'["\']([\w.-]+\.(?:md|csv|tsv|json|ged))["\']', text):
+        for folder in ("reports", "out", "out/wikidata"):
+            if (REPO / folder / m.group(1)).exists():
+                named.add(f"{folder}/{m.group(1)}")
+                break
+    written = {f"{folder}/{Path(m).name}"
+               for folder in ("reports", "out", "out/wikidata")
+               for m in re.findall(r'(?:write_text|DictWriter|json\.dump|open)\('
+                                   r'[^)]*?["\']([\w./-]+\.(?:md|csv|tsv|json|ged))["\']',
+                                   text)
+               if (REPO / folder / Path(m).name).exists()}
     return sorted(named - written)
 
 
@@ -118,7 +141,16 @@ def stale_against_inputs(rel: str, generators: str) -> str:
         return ""
     newer = []
     for script in generators.split(";"):
-        for dep in inputs_of(script):
+        deps = inputs_of(script)
+        # **If the file is among the script's own inputs, that script READS it and is not
+        # its generator.** `source_index` maps a name to any script that mentions it, so
+        # `build-name-item-batch.py` -- which reads `patronymic-items.csv` as `PATRONYMICS`
+        # -- was called its writer, and the file was then reported 8h behind
+        # `name-classes.csv`, an input it does not have. Reusing `inputs_of` costs nothing
+        # and needs no second heuristic.
+        if rel in deps:
+            continue
+        for dep in deps:
             d = REPO / dep
             if d.exists() and d.stat().st_mtime > out.stat().st_mtime:
                 hours = (d.stat().st_mtime - out.stat().st_mtime) / 3600
