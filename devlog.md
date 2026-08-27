@@ -15791,3 +15791,36 @@ That rise is the system working rather than regressing: the duplicate filter onl
 what already exists, so a growing ledger means more real links, not more noise.
 
 **1,388 passed, 0 failed.**
+
+## 2026-08-27 — the structural walk was stale against its own input
+
+Step 3 of the prerequisite order. The merged tree is current — no export under `exports/` is
+newer than `out/merged.ged` — but `reports/derived-family.csv` was rebuilt on **25 Aug 18:10**,
+three and a half hours *after* the walk last ran at **14:42**. Its output had been stale against
+its own input for two days.
+
+**The bare invocation prints sample lines and writes nothing**, which is how the first attempt
+looked like a successful no-op: the timestamps did not move and I nearly concluded the walk was
+already current. `--all` is the flag that walks every anchor and writes.
+
+| | |
+| --- | ---: |
+| AGREE | 89,486 |
+| MERGE | 35,737 |
+| GENI ONLY | 131,366 |
+| WD ONLY | 12,512 |
+| AMBIGUOUS | 237 |
+
+`reports/structural-correspondence.csv` **7,841 rows**, `reports/wikidata-structural-placeholders.json`
+**35,162**.
+
+**The diff looks enormous and is not.** 12,321 changed lines on the JSON, against a net change
+of one entry — so I checked rather than reported it. Ordering is stable (same first three ids),
+and the real change is **34,943 identical, 218 gone, 219 new**, about 1.2%. The file is
+pretty-printed at ~28 lines an entry.
+
+**`CLAUDE.md` was quoting 3,902 and 12,260** from when the walk first ran on 2026-08-15. Both
+numbers are now recorded with the date they belong to, rather than replaced as though the old
+ones had been wrong.
+
+**1,388 passed, 0 failed.**

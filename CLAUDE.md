@@ -734,8 +734,9 @@ then keep going. If she disagrees she says so, loudly and immediately; that is t
 one thing this project can rely on.
 
 **The failure this is written against.** `scripts/walk-structural-merge.py` ran and
-wrote `reports/structural-correspondence.csv` (3,902 rows) and
-`reports/wikidata-structural-placeholders.json` (12,260). Eight sample rows were
+wrote `reports/structural-correspondence.csv` and
+`reports/wikidata-structural-placeholders.json`. Those figures were 3,902 and 12,260 when this
+was written; re-run on 2026-08-27 against the current tree they are **7,841** and **35,162**. Eight sample rows were
 printed for her to eyeball. She did not reply, and **six consecutive status reports
 carried "8 structural merge cases unanswered — 3,902 correspondences and 12,260
 placeholders blocked behind it"** as the largest blocker in the repo. Nothing was

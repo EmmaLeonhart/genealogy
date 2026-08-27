@@ -231,7 +231,25 @@ The order is:
    whole parallel lineages sit side by side. Rebuilding before this bakes the duplication
    in. Her `exports/post-merge/` design is how it gets fixed.
 2. **The clan joins** — done 2026-08-24, `scripts/build-clan-p2600-pairs.py`.
-3. **Then** the structural walk and the correspondence.
+3. **The structural walk and the correspondence — RE-RUN 2026-08-27.** Its input
+   `reports/derived-family.csv` was rebuilt on 25 Aug at 18:10, three and a half hours *after*
+   the walk last ran at 14:42, so the output had been stale against its own input.
+
+   `python scripts/walk-structural-merge.py --all` — the bare invocation only prints sample
+   lines, which is why an earlier attempt looked like it had run and changed nothing.
+
+   | | |
+   | --- | ---: |
+   | AGREE | 89,486 |
+   | MERGE | 35,737 |
+   | GENI ONLY | 131,366 |
+   | WD ONLY | 12,512 |
+   | AMBIGUOUS | 237 |
+
+   `structural-correspondence.csv` **7,841 rows**, `wikidata-structural-placeholders.json`
+   **35,162**. The change from the stale version is small and real: 34,943 entries identical,
+   218 gone, 219 new. It reads as a 12,321-line diff only because the JSON is pretty-printed at
+   ~28 lines an entry.
 
 **The clan-join result, stated correctly.** Tanba 179/183 (97%) and the sister Izumo
 roster 120/202 joined — and **0 pairs that the About Me extraction had not already
