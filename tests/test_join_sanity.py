@@ -449,3 +449,42 @@ def test_the_refresher_decodes_subprocess_output_as_utf8():
         **run)
     assert r.returncode == 0 and "カナ" in r.stdout, (
         f"non-ASCII child output did not survive capture: {r.stdout!r}")
+
+
+def test_a_middle_initial_stays_latin_in_a_japanese_label():
+    """`John F. Smith` -> ジョン・F・スミス, not "no label at all".
+
+    **Emma, 2026-08-27**, choosing between four readings: keep the initial Latin inside the
+    label. Dropping it loses what the Latin label carries; rendering it エフ invents a reading
+    nobody uses. 12,805 tokens sit in the middle-initial position across the corpus and every
+    name containing one was getting no `ja`/`zh` label at all, because the transliteration rule
+    is all-or-nothing.
+
+    The all-or-nothing rule itself is untouched — an unknown NAME still blocks the whole label.
+    """
+    import sys as _sys
+    _sys.path.insert(0, str(ROOT / "scripts"))
+    from labels import transliterate_token
+
+    table = {"John": ("ジョン", "约翰"), "Smith": ("スミス", "史密斯")}
+    assert transliterate_token("F.", table) == ("F", "F")
+    assert transliterate_token("F", table) == ("F", "F")
+    assert transliterate_token("John", table) == ("ジョン", "约翰")
+    assert transliterate_token("Zzz", table) == (None, None), (
+        "an unknown NAME must still block the label — the initial rule is the one exception, "
+        "not a licence to render half a name")
+
+
+def test_the_two_phrases_emma_ruled_on_are_in_the_marker_vocabulary():
+    """`Name Not Known` (45 people) and `Unknown Wife` (37) — "Both are markers".
+
+    Held out of the vocabulary until she ruled, because widening it is her call. Pinned here
+    because a queue item claimed for nine days that they were still waiting while they were
+    already in `labels.py`.
+    """
+    import sys as _sys
+    _sys.path.insert(0, str(ROOT / "scripts"))
+    from labels import WORDS_MEANING_UNKNOWN
+
+    for phrase in ("name not known", "unknown wife", "ukjent", "未知", "某"):
+        assert phrase in WORDS_MEANING_UNKNOWN, f"{phrase!r} fell out of the marker vocabulary"

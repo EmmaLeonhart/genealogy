@@ -16057,3 +16057,34 @@ pushes カナ 黄 through the same kwargs rather than asserting the dict looks r
 
 Two tests added: the offline screen refuses `refresh-live-values.py` and a missing path, and
 accepts `build-repo-freshness.py`. `test_join_sanity.py` is 16 passed.
+
+## 2026-08-27 — two rulings, and one of them was already implemented nine days ago
+
+Blocker interrogation put two items to Emma. Both were "her call" by her own prior words rather
+than mine, and both had been sitting since 2026-08-18.
+
+**`Name Not Known` (45 people) and `Unknown Wife` (37): "Both are markers — stop asking."**
+They were already in `scripts/labels.WORDS_MEANING_UNKNOWN`, added on **2026-08-18 with those
+exact words in the comment**. The queue item saying they were held awaiting her ruling was stale
+for nine days, and asking again spent one of her turns on something finished. That is § *Emma
+not replying means she is content* wearing a new costume — the check is the code, not the queue.
+
+The half that is new is the standing authorisation: an obvious unknown-word marker now goes
+straight into the vocabulary with its corpus count, no question. Her 2026-08-17 boundary is the
+only line left — **words yes, punctuation no**. `NOT_A_NAME` is untouched; detection is not
+suppression.
+
+**A middle initial keeps its Latin letter in every language.** `John F. Smith` →
+**ジョン・F・スミス**, **约翰·F·史密斯**. Shown four readings, she took this one over dropping the
+initial (loses what the Latin label carries) and rendering it エフ (invents a reading nobody
+uses).
+
+`scripts/labels.transliterate_token` is the single place that does it and both emitters —
+`build-garborg-day.py` and `build-label-corrections.py`, which each carried their own copy of
+the all-or-nothing loop — now call it. **The exception is narrow and stays narrow**: an unknown
+*name* still blocks the whole label, which is what the test asserts alongside the initial.
+
+**12,805 tokens sit in the middle-initial position** and every name containing one was getting
+no `ja`/`zh` label at all.
+
+**1,396 passed, 24 skipped, 0 failed** in 6m14s.

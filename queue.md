@@ -711,25 +711,6 @@ tree is all consistently there."* The deliverable is the chain being connected.
 missing each, max 33. **24 paths need 1 person, 37 need 2** — those go to page-saving.
 The 4+ paths are where exports go, seeded on the destination.
 
-## Name processing — what is left and needs Emma, 2026-08-18
-
-The censuses she asked for are built and committed; this is only the residue that
-needs a ruling rather than a measurement. `devlog.md` has the numbers.
-
-- **Two marker phrases found by the mononym census and NOT added to the vocabulary.**
-  `Name Not Known` (45 people) and `Unknown Wife` (37). The first is a marker by her own
-  *"words meaning unknown"* rule and slips through only because matching is whole-label
-  and exact, so the listed `not known` never fires on the longer phrase. The second is a
-  description rather than a name — the `NN` in `mul` plus a descriptive label case. Both
-  are held because she has twice said widening that vocabulary is her call.
-- **Middle initials in non-Latin languages.** `reports/middle-initials.md` — 12,805
-  tokens in the middle-initial position across the corpus. Her words: *"As far as the
-  middle initial people, I'm not really sure what to do with them, at least going into
-  other languages."* An initial is not a name and has no katakana, so the three options
-  — drop it, transliterate the letter, keep it Latin inside a non-Latin label — are a
-  presentation decision, not a derivation.
-
-
 ## RUN ORDER — Emma's call, 2026-08-15
 
 **Imports first, labels last.** She asked why the seven-language labels were in

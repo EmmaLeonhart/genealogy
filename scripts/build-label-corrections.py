@@ -81,15 +81,18 @@ def render(tokens, table):
     """(ja, zh) for a list of name tokens, or (None, None) if any is unknown.
 
     Partial is worse than absent: half a name in katakana and half in Latin is not a
-    Japanese label, it is a broken one.
+    Japanese label, it is a broken one. **A middle initial is the one exception** —
+    `labels.transliterate_token` keeps `F` as `F` in every script, per Emma 2026-08-27.
     """
+    from labels import transliterate_token
+
     ja, zh = [], []
     for token in tokens:
-        pair = table.get(token)
-        if not pair:
+        a, b = transliterate_token(token, table)
+        if a is None:
             return None, None
-        ja.append(pair[0])
-        zh.append(pair[1])
+        ja.append(a)
+        zh.append(b)
     return "・".join(ja), "·".join(zh)
 
 

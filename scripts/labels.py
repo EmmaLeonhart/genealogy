@@ -58,6 +58,8 @@ structure, so there is nothing to create. A `Private` profile has both.
 
 from __future__ import annotations
 
+import re
+
 #: **Only Geni's redaction markers, and only because Emma named them.**
 #:
 #: An earlier version of this set also held `nn`, `n n`, `unknown` and `?`. Emma,
@@ -437,3 +439,30 @@ def label_for(gedcom_name: str) -> str:
     return "" if name.strip().lower() in NOT_A_NAME else name
 
 
+
+
+#: A middle initial: one Latin letter, optionally with a full stop. `John F. Smith`.
+INITIAL_RE = re.compile(r"^[A-Za-z]\.?$")
+
+
+def transliterate_token(token, table):
+    """`(ja, zh)` for one name token, or `(None, None)` if it cannot be rendered.
+
+    **An initial keeps its Latin letter in every language.** Emma, 2026-08-27, asked what
+    `John F. Smith` should become in Japanese and Chinese: *keep it Latin inside the label* —
+    ジョン・F・スミス, 约翰·F·史密斯. The alternatives she was shown and did not take were
+    dropping it (loses information the Latin label carries) and transliterating the letter as
+    エフ (invents a reading nobody uses).
+
+    This is the ONE exception to *partial is worse than absent*, and it is not really a
+    partial: the initial is not a name being half-rendered, it is a letter that is the same
+    letter in every script. 12,805 tokens sit in the middle-initial position across the
+    corpus, and every name containing one was getting no `ja`/`zh` label at all.
+    """
+    pair = table.get(token)
+    if pair:
+        return pair[0], pair[1]
+    if INITIAL_RE.match(token or ""):
+        letter = token.rstrip(".").upper()
+        return letter, letter
+    return None, None

@@ -481,6 +481,41 @@ they are emitted.
 the same thing here, because if there's a private individual whose name is not exported,
 it comes out as an NN."*
 
+### An obvious unknown-word marker goes straight in. Stop asking
+
+**Emma, 2026-08-27**, asked whether `Name Not Known` (45 people) and `Unknown Wife` (37) were
+markers: **"Both are markers — stop asking."** Widening `WORDS_MEANING_UNKNOWN` used to be
+reserved to her; it is not any more, for the obvious cases.
+
+**A word or phrase meaning *the name is unknown* is a marker.** Add it to
+`scripts/labels.WORDS_MEANING_UNKNOWN` with its corpus count in the comment, and move on. Her
+2026-08-17 boundary still holds and is the only line: **words yes, punctuation no** — a label
+that is nothing but punctuation is handled separately, and `Nechama (?) Heller` is a name with a
+bracketed hole, not a marker.
+
+**This does not widen `NOT_A_NAME`.** Detection and suppression are different questions, as that
+module already says: an `unknown Bloomfield` is detected and still keeps a label — it becomes
+`NN Bloomfield`. `label_for()` still empties `Private` and `<private>` and nothing else.
+
+**And the item was stale for nine days.** `queue.md` carried both phrases as awaiting her ruling
+while she had already ruled on 2026-08-18 and both were sitting in `labels.py` with her words in
+the comment. Asking again cost her a turn to answer something already implemented — the same
+shape as § *Emma not replying means she is content*, which is what that rule is for.
+
+### A middle initial keeps its Latin letter in every language
+
+**Emma, 2026-08-27:** `John F. Smith` becomes **ジョン・F・スミス** and **约翰·F·史密斯**. She was
+shown four readings and took this one; dropping the initial loses what the Latin label carries,
+and rendering it エフ invents a reading nobody uses.
+
+`scripts/labels.transliterate_token` is the single place that does it, and both emitters call it.
+**It is the one exception to *partial is worse than absent*, and it is barely one** — an initial
+is not a name being half-rendered, it is a letter that is the same letter in every script. An
+unknown *name* still blocks the whole label, which `tests/test_join_sanity.py` pins.
+
+**12,805 tokens sit in the middle-initial position**, and every name containing one was getting
+no `ja`/`zh` label at all.
+
 ### Redacted people go in. `Private` never becomes a label
 
 **Emma, 2026-08-14:** *"Even if the data is affected by redaction, I'm not really

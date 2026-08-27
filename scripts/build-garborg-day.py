@@ -299,15 +299,18 @@ def label_in(label, table):
     """(ja, zh) for a whole name, or (None, None) if any token is unknown.
 
     Partial is worse than absent: half a name in katakana and half in Latin is not a
-    Japanese label, it is a broken one.
+    Japanese label, it is a broken one. **A middle initial is the one exception** —
+    `labels.transliterate_token` keeps `F` as `F` in every script, per Emma 2026-08-27.
     """
+    from labels import transliterate_token
+
     ja, zh = [], []
     for token, _usage, _o in classify(label):
-        pair = table.get(token)
-        if not pair:
+        a, b = transliterate_token(token, table)
+        if a is None:
             return None, None
-        ja.append(pair[0])
-        zh.append(pair[1])
+        ja.append(a)
+        zh.append(b)
     return "・".join(ja), "·".join(zh)
 
 
