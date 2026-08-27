@@ -15409,3 +15409,40 @@ both empty and whose name lives only in `cjk_names`. **That last one hid a real 
 queued: a CJK-only person is created as `NN` and their recorded name is never consulted.**
 
 **1,362 passed, 1 xfailed, 0 failed.**
+
+## 2026-08-26 — Arne to Bureus, walked over our own tree with no browser at all
+
+Emma: *"Do the Arne -> Bureus thing, I think me and Bureus path is already there."* Her guess
+about the shape was right: *"both of them are going to be relatively clear-ish and likely not
+traverse over individuals that we don't have yet."* **Every person on all three paths is already
+in the corpus.**
+
+`scripts/path-between.py` — breadth-first over `reports/derived-family.csv` on parent, child and
+spouse edges, reporting per step whether that person holds a Wikidata item. `genimerge
+path-from-html` exists because a saved Geni page names people **no export has reached**; when
+both ends and everything between are already here, a saved page buys nothing.
+
+| path | steps | with no item |
+| --- | ---: | ---: |
+| Arne → `Q633094` *Johannes Bureus*, the antiquarian | 21 | 15 |
+| Arne → Johannes Jacobi Bureus | 19 | 12 |
+| Emma → Johannes Jacobi Bureus | 21 | 17 |
+
+**There are two Bureuses and they are not the same man.** `Q633094` *Johannes Bureus* already
+carries `P2600` for `6000000004334763223` — *Johannes Tomasson*, matching its own alias
+*Johannes Thomae Bureus Agrivillensis*. The `6000000008798323789` I first walked to is
+*Johannes **Jacobi** Bureus*, `Q5590208`, which carries no `P2600`. Patronymics apart, so is the
+person; not adjudicated here.
+
+**The Arne and Emma paths converge.** Both reach Jacobi Bureus through `Johannes Larsson`
+`Q16649637` and `Jacobus Johannis Zebrozynthius` `Q6251491` — a shared tail of three steps, so
+the two lines are one line below that junction.
+
+**And the Bure end is already partly built by her.** Step 20 of the antiquarian path is
+`Q141180409` *Magdalena Andersdotter Bure*, one of her own creations.
+
+No export was run and no page was saved. `paths/arne-to-bureus.tsv`,
+`paths/arne-to-bureus-q633094.tsv` and `paths/emma-to-bureus.tsv` are in the shape
+`genimerge path` consumes.
+
+**1,362 passed, 1 xfailed, 0 failed.**
