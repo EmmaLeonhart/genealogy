@@ -15926,3 +15926,29 @@ The 13 now flagged, worst first: `name-ambiguity-resolved.csv` 199h behind, `izu
 `izumo-roster.tsv` 33h, then eight under a day and a half.
 
 **1,389 passed, 0 failed.**
+
+## 2026-08-27 — `open(` is not a write, and the drift count was 95 all along
+
+The freshness census decides a script's *inputs* by subtracting what it *writes* from what it
+names. `written` matched `(?:write_text|DictWriter|json\.dump|open)\(` followed by a filename
+literal — and `open(R / "emma-judgments.tsv", encoding="utf-8")` is a plain **read**. So every
+file a script opens for reading was classified as its output, removed from its inputs, and
+became invisible to the drift check.
+
+That is why the count was 13. With writes judged by **mode** — an inline `open("x", "w")`, or a
+path constant later used as `OUT.open("w")`, `OUT.write_text(...)` or `open(OUT, "w")` — it is
+**95**. Nothing drifted overnight; the detector was blind.
+
+Two knock-on corrections. `reports/emma-judgments.tsv` is Emma's hand-written verdict file and
+was reported 35h behind `structural-correspondence.csv`, an input it does not have — the
+reader-is-not-a-generator skip could not fire while the read looked like a write. Same for
+`garborg-name-transliterations.tsv`, a hand-maintained table `build-garborg-day.py` reads.
+
+**Verified against six known cases** rather than eyeballed: `build-repo-freshness.py` writes
+`repo-freshness.csv` (yes), `census-name-scripts.py` writes both its outputs (yes),
+`zipper-provenance.py` and `measure-zipper-reliability.py` write `emma-judgments.tsv` (no),
+`build-garborg-day.py` writes the transliteration table (no).
+
+**The 95 are not 95 to-dos.** About 70 are one-off analyses 150–360h behind `out/merged.ged` or
+`derived-family.csv` — the corpus grew under them, and they are records of a day. About 25 are
+the live chain, under 72h. The queue now says so.

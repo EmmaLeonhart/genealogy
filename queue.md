@@ -129,28 +129,29 @@ them and nothing is waiting.
   none of them needs a page opened. Whatever is left after that is the genuinely thorny
   residue and only that needs the browser.
 
-## Drift between stages is the repo's failure mode — now measured
+## Drift between stages is the repo's failure mode — 95 outputs are behind their inputs
 
-`reports/repo-freshness.csv` gained a **`stale_against_input`** column, 2026-08-27. For each
-generated file it finds the script that writes it, the `reports/`/`out/` files that script
-*reads*, and flags any output older than one of them by an hour or more. Under an hour is
-same-run ordering, not drift.
+`reports/repo-freshness.csv` carries a **`stale_against_input`** column: for each generated
+file it finds the script that writes it, the `reports/`/`out/` files that script *reads*, and
+flags any output older than one of them by an hour or more. Git-commit age cannot see this,
+which is why the census never caught it — every recent finding was a recently-committed file
+built from something older.
 
-**Git-commit age cannot see this**, which is why the census never caught it: every one of the
-recent findings was a recently-committed file built from something older.
+**The number went 8 → 13 → 95 over two days and every move was a detector fix, not new drift.**
+Input detection first matched `reports/x.csv` literals when the repo joins paths; then
+`written` counted any `open(...)` mentioning a filename, so a plain read registered as a write
+and deleted the file from the reader's inputs. Both narrowed the input set silently, which is
+this repo's signature failure.
 
-**Eight are behind right now**, and they are a to-do list rather than a defect list:
+**The 95 are two different things and only one is a to-do list:**
 
-| file | behind |
-| --- | --- |
-| `reports/izumo-chart-edges.tsv` | `derived-family.csv` by **124h** |
-| `reports/izumo-roster.tsv` | `derived-family.csv` by 62h |
-| `reports/samaritan-marriages.csv`, `samaritan-people.csv` | `out/wikidata/samaritan-priests.json` by 39h |
-| `reports/izumo-p2600-pairs.tsv`, `izumo-tree-vs-chart.tsv` | `derived-family.csv` by 29h |
-| `reports/izumo-geni-anchors.tsv` | `izumo-chart-edges.tsv` by 12h |
-| `reports/patronymic-items.csv` | `name-classes.csv` by 8h |
+- **~70 are one-off analyses from weeks ago**, 150–360h behind `out/merged.ged`,
+  `derived-family.csv` or `display-names.csv` — the corpus has grown under them. They are
+  records of a day in everything but the filename, and re-running them is a choice, not a fix.
+- **~25 are the live chain**, under 72h: the synoptic / zipper / multi-`P2600` /
+  spine-candidate reports, whose inputs moved this week. These get re-run in dependency order.
 
-Re-running each is cheap; the Izumo chain has an order (`chart-edges` feeds `geni-anchors`).
+Re-run the live chain, worst first, and leave the deep-history ones flagged.
 
 ## The derived CSVs are committed gzipped
 

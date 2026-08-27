@@ -88,6 +88,41 @@ def source_index() -> dict[str, str]:
 MIN_DRIFT_HOURS = 1.0
 
 
+#: `X = ... "name.csv" ...` — the constant a generator builds once at module level and then
+#: opens. Almost nothing here writes the literal path a second time.
+_ASSIGN_RE = re.compile(
+    r'^[ \t]*([A-Za-z_]\w*)[ \t]*=[^\n]*?["\']([\w./-]+\.(?:md|csv|tsv|json|ged|qs|html))["\']',
+    re.M)
+#: A filename literal opened inline with an explicit write or append mode.
+_DIRECT_WRITE_RE = re.compile(
+    r'open\(\s*[^)]*?["\']([\w./-]+\.(?:md|csv|tsv|json|ged|qs|html))["\'][^)]*?,\s*["\'][wax]')
+
+
+def writes_in(text: str) -> set[str]:
+    """The filenames a script WRITES, judged by mode — not the ones it merely mentions.
+
+    **`open(` alone was the bug.** The previous test counted any `open(...)` call containing a
+    filename literal as a write, so `open(R / "emma-judgments.tsv", encoding="utf-8")` — a
+    plain READ of a file Emma maintains by hand — registered as an output. That deleted it from
+    the script's inputs, which in turn defeated the reader-is-not-a-generator skip in
+    `stale_against_inputs`, and her hand verdicts were reported as 35h behind
+    `reports/structural-correspondence.csv`, an input they do not have.
+
+    A write is an inline `open("x.csv", "w")`, or a name bound to a path constant
+    (`OUT = ROOT / "reports" / "x.tsv"`) later used as `OUT.open("w")`, `OUT.write_text(...)`,
+    `OUT.write_bytes(...)` or `open(OUT, "w")`. A read-mode open of that same constant does not
+    count, and that distinction is the entire fix.
+    """
+    found = {Path(m).name for m in _DIRECT_WRITE_RE.findall(text)}
+    for var, name in _ASSIGN_RE.findall(text):
+        v = re.escape(var)
+        if (re.search(v + r'\.open\(\s*["\'][wax]', text)
+                or re.search(v + r'\.write_(?:text|bytes)\(', text)
+                or re.search(r'open\(\s*' + v + r'\s*,\s*["\'][wax]', text)):
+            found.add(Path(name).name)
+    return found
+
+
 def inputs_of(script_rel: str) -> list[str]:
     """The `reports/` and `out/` files a generator READS.
 
@@ -114,12 +149,10 @@ def inputs_of(script_rel: str) -> list[str]:
             if (REPO / folder / m.group(1)).exists():
                 named.add(f"{folder}/{m.group(1)}")
                 break
-    written = {f"{folder}/{Path(m).name}"
+    written = {f"{folder}/{name}"
                for folder in ("reports", "out", "out/wikidata")
-               for m in re.findall(r'(?:write_text|DictWriter|json\.dump|open)\('
-                                   r'[^)]*?["\']([\w./-]+\.(?:md|csv|tsv|json|ged))["\']',
-                                   text)
-               if (REPO / folder / Path(m).name).exists()}
+               for name in writes_in(text)
+               if (REPO / folder / name).exists()}
     return sorted(named - written)
 
 
