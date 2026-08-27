@@ -339,3 +339,48 @@ def test_a_mans_marnm_family_name_carries_no_married_role():
     married = [ln for ln in lines if ln[0] == FAMILY_NAME and ln[1] == "Q30250555"]
     assert ("P3831", MARRIED_NAME_ROLE) in married[0][2], (
         "a woman's married name keeps the married-name role")
+
+
+@pytest.mark.xfail(strict=True, reason=(
+    "KNOWN DEFECT, measured 2026-08-26: the name plan and the classifier disagree about "
+    "-sen/-son, so 1,051 tokens over 31,259 bearers resolve to nothing. Needs Emma's "
+    "ruling; see queue.md. Strict, so it fails loudly the moment it is fixed."))
+def test_the_plan_covers_every_usage_the_classifier_asks_for():
+    """A token the classifier calls `patronymic` must have a `patronymic` row in the plan.
+
+    **The two components define patronymic differently, and both did it on purpose.**
+    `namemodel.PATRONYMIC` matches `sen|son|sson|datter|sdatter`.
+    `scripts/build-name-item-batch.py`'s `RELIABLE_PATRONYMIC` deliberately **excludes**
+    `-son`/`-sen`, with its own stated reason: *"they also end ordinary inherited surnames
+    and a few real given names (`Jefferson`, 30 bearers)"*.
+
+    So the plan files `Gundersen` as `given` (63 bearers) and `family` (19, with `Q656767`),
+    the classifier looks up `(Gundersen, patronymic)`, and the lookup misses an item that
+    exists. The person then gets **no name statement at all** — which is what Emma saw on
+    `Q141189052` Anna Carine Gundersen, whose three tokens all failed.
+
+    Measured over `reports/name-item-plan.csv`: **1,051 tokens, 31,259 bearers**, led by
+    `Olsen` 1,147, `Pedersen` 678, `Olson` 511, `Hansen` 503, `Andersen` 476, `Larsen` 442.
+    **330 of them already carry a Wikidata item** under given/family, covering 12,798
+    bearers — and per `CLAUDE.md` § *One name item per USAGE* a patronymic is a **different**
+    item, so those cannot simply be linked.
+
+    **Not fixed here, because either fix decides something that is hers.** Widening the plan
+    mints patronymic items for `Jefferson`; falling back to the family item contradicts
+    one-item-per-usage. `name modelling.txt` reserves edge cases like this for Emma.
+    """
+    plan_path = REPO / "reports" / "name-item-plan.csv"
+    if not plan_path.exists():
+        pytest.skip("no name plan built")
+    import csv as _csv
+    rows = list(_csv.DictReader(open(plan_path, encoding="utf-8")))
+    have_patronymic = {r["token"] for r in rows if r["usage"] == "patronymic"}
+    missing = [r for r in rows
+               if r["usage"] in ("given", "family")
+               and PATRONYMIC.match(r["token"])
+               and r["token"] not in have_patronymic]
+    bearers = sum(int(r["bearers"]) for r in missing)
+    assert not missing, (
+        f"{len(missing)} tokens the classifier calls patronymic have no patronymic row "
+        f"in the plan, covering {bearers:,} bearers, e.g. "
+        + ", ".join(f"{r['token']}({r['bearers']})" for r in missing[:5]))

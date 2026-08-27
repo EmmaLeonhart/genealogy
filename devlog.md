@@ -15292,3 +15292,39 @@ postponed to the tail of the queue herself.
 and says it is too much long-term. Left to her, since every count in it is hers.
 
 **1,362 passed, 0 failed.**
+
+## 2026-08-26 — `-sen`/`-son`: two components, two definitions, 31,259 people with no name
+
+Chasing Emma's observation that `Q141189052` *Anna Carine Gundersen* came out with no `P735`
+or `P734`, the cause is not a missing item. It is that **two components define *patronymic*
+differently, and both did it on purpose**:
+
+* `namemodel.PATRONYMIC` matches `sen|son|sson|datter|sdatter`.
+* `scripts/build-name-item-batch.py`'s `RELIABLE_PATRONYMIC` **excludes** `-son`/`-sen`, with
+  its own stated reason: *"they also end ordinary inherited surnames and a few real given names
+  (`Jefferson`, 30 bearers)"*.
+
+So the plan files `Gundersen` as `given` (63 bearers) and `family` (19, carrying `Q656767`),
+the classifier asks for `(Gundersen, patronymic)`, and the lookup misses an item that exists.
+The person gets no name statement at all.
+
+| | |
+| --- | ---: |
+| tokens the classifier calls patronymic with no patronymic row | **1,051** |
+| bearers behind them | **31,259** |
+| already carrying an item under given/family | 330 (12,798 bearers) |
+
+`-sen` 16,296 bearers, `-son` 7,581, `-sson` 7,382. Led by `Olsen` 1,147, `Pedersen` 678,
+`Olson` 511, `Hansen` 503, `Andersen` 476, `Larsen` 442.
+
+**Not fixed, because both fixes decide something that is hers.** Widening the plan mints a
+patronymic item for `Jefferson`; falling back to the family item contradicts § *One name item
+per USAGE*, under which a patronymic is a different object from a surname with the same
+spelling. `name modelling.txt` reserves edge cases for Emma.
+
+**Recorded as a strict `xfail`** in `tests/test_namemodel.py` rather than as a comment — so it
+is measured on every run, and fails loudly the moment somebody fixes it without updating the
+test. `CLAUDE.md`'s own prescription: a real defect becomes a strict xfail or a named blocker,
+never a loosened assertion.
+
+**1,362 passed, 1 xfailed, 0 failed.**
