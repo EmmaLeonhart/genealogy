@@ -123,7 +123,8 @@ def main():
             shape, ruling = "particle", "into the mul LABEL; never an item"
         else:
             shape = "name"
-            ruling = "P734 family name (parens stripped) AND an Amul alias on the person"
+            ruling = ("a coequal, unqualified P734 family name with the parens "
+                      "stripped, AND an Amul alias carrying the bracketed form)")
         ex = example[tok]
         rows.append({
             "token": tok, "occurrences": n,

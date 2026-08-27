@@ -532,14 +532,14 @@ that export's 4,820 people are `Private` at all, so an export seeded on a living
 person is **not** substantially redacted; assuming otherwise was wrong when it
 was assumed here.
 
-### A parenthesised token in `SURN`/`_MARNM` is FOUR different things
+### A parenthesised token in `SURN`/`_MARNM` is THREE different things
 
 **Emma ruled on these case by case, 2026-08-26**, shown the raw records rather than a summary.
 5,866 occurrences over 2,495 distinct tokens, across 1,697,887 name records.
 
 | shape | example | tokens / occurrences | ruling |
 | --- | --- | ---: | --- |
-| **any name-shaped token** | `Turesson (Bielke)`, `Weirman (Weyerman)` | 2,478 / 5,553 | **BOTH** — a second `P734` *family name* with the parens stripped, **and** an `Amul` alias carrying the bracketed form |
+| **any name-shaped token** | `Turesson (Bielke)`, `Weirman (Weyerman)` | 2,478 / 5,553 | **BOTH** — a second `P734` *family name* with the parens stripped, **coequal and unqualified**, plus an `Amul` alias carrying the bracketed form |
 | **particle or honorific** | `(de) Worms`, `Henriques (D.)` | 9 / 205 | **into the `mul` label**, never a name item |
 | **unknown-name marker** | `(anonyma)`, `(incognita)`, `(?)` | 8 / 108 | **an NN marker** — joins `Private`/`NN`/`Ukjent` |
 
@@ -550,10 +550,15 @@ governs a large population beyond the parenthesised ones.
 
 **Nothing tells a noble house from a spelling variant, and nothing needs to.** Emma, shown that
 the two shapes are identical: *"nvm they get both family names and the alias lol"*, then
-*"Amul for the brackets and two assigned family names, brackets one gets a qualifier of some
-sort lets do it for noble houses too if needed"*. So `Weirman (Weyerman)` yields **two `P734`
-statements** plus the alias, and the bracketed one carries a qualifier saying which it is. This
-is § *One name item per USAGE* again: a token in two roles is not an ambiguity to resolve.
+*"Amul for the brackets and two assigned family names"*. So `Weirman (Weyerman)` yields **two
+`P734` statements** plus the alias. This is § *One name item per USAGE* again: a token in two
+roles is not an ambiguity to resolve.
+
+**And no qualifier on either.** She first said the bracketed one should carry *"a qualifier of
+some sort"*; asked which, from four options confirmed offline, she dropped it: *"Ehh both
+surnames are coequal properties and nvm about a qualifier just drop that. Both are coequal
+properties for the surname."* Nothing marks one as primary, because nothing in the data says one
+is.
 
 **Two discriminators were built and both are gone.** Bare-form frequency was refuted by the
 census written for it — `Voehl` occurs 20 times unparenthesised and `Loewenberg` 292, so

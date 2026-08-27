@@ -376,20 +376,17 @@ position. Step 0 is off by default because it is the day's one network call.
 
 **Still to do:**
 
-- **DECIDED 2026-08-26, not yet implemented — the parenthesised name tokens.** Her four
-  rulings are in `CLAUDE.md` § *A parenthesised token in `SURN`/`_MARNM` is FOUR different
-  things*. To build in `scripts/namemodel.py`:
-  - a **vocabulary** of particles (`de`, `D.`, and whatever the census turns up) that go into
-    the `mul` label rather than becoming items — *"integral parts of what the people are
-    called"*;
-  - a **vocabulary** of unknown markers (`anonyma`, `incognita`, `?`) routed to the NN
-    population, which `scripts/labels.py` already owns;
-  - name-shaped tokens → `P734` *family name* with the parens stripped when the bare form is
-    well attested unparenthesised, else an `Amul` alias on the person. **The threshold is a
-    reading of her two answers**, not her words: `Bielke` 311 / `Vasa` 122 / `Sparre` 1,109
-    against `Weyerman` 2. Record it where it is applied.
-  - Census the particle vocabulary first — she asked to see more of those before ruling on the
-    general case, and only `(de)` and `(D.)` have been shown to her.
+- **DECIDED and CENSUSED 2026-08-26, not yet implemented — the parenthesised name tokens.**
+  Rulings in `CLAUDE.md` § *A parenthesised token in `SURN`/`_MARNM` is THREE different
+  things*; census in `reports/paren-tokens.md` and `.tsv`. To build in `scripts/namemodel.py`,
+  and it is now entirely mechanical — no threshold, no discriminator, no qualifier:
+  - **9 particles** (`de`, `D.`, `du`, `von`, `Von`, `De`, `af`, `di`, `ben`) go into the `mul`
+    label rather than becoming items — *"integral parts of what the people are called"*.
+  - **8 unknown markers** (`anonyma`, `?`, `unknown`, `Ukjent`, `Unknown`, `NN`, `??`,
+    `ukjent`) route to the NN population, which `scripts/labels.py` already owns.
+  - **Everything else** — 2,478 tokens, 5,553 occurrences — becomes a second `P734` *family
+    name* with the parens stripped, **coequal with the first and carrying no qualifier**, plus
+    an `Amul` alias holding the bracketed form.
 - **Diff the remainder against the ideal state as part of the run** — `model-vs-reality.py`
   is the diff and is not yet wired into the daily command.
 - **The ideal state is still the Geni tree alone.** Her spec says the **union of the synoptic

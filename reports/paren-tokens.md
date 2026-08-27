@@ -4,7 +4,7 @@
 
 | shape | tokens | occurrences | ruling |
 | --- | ---: | ---: | --- |
-| name | 2,478 | 5,553 | P734 family name (parens stripped) AND an Amul alias on the person |
+| name | 2,478 | 5,553 | a coequal, unqualified P734 family name with the parens stripped, AND an Amul alias carrying the bracketed form) |
 | particle | 9 | 205 | into the mul LABEL; never an item |
 | unknown marker | 8 | 108 | NN marker; never a label, never an item |
 

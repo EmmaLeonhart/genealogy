@@ -15110,3 +15110,23 @@ than settled**, the same shape as § *One name item per USAGE*. Both attempts st
 script, because the first being refuted by its own census is the part worth keeping.
 
 **1,359 passed, 0 failed.**
+
+## 2026-08-26 (later) — and then the qualifier went too
+
+Asked which qualifier the bracketed `P734` should carry, from four options confirmed offline —
+`P1932` *object named as*, `P3831` *object of statement has role* with `Q13417114` *noble
+family* or `Q212807` *Alias*, or both — Emma dropped it: *"Ehh both surnames are coequal
+properties and nvm about a qualifier just drop that. Both are coequal properties for the
+surname."*
+
+So the final rule has no threshold, no discriminator and no qualifier. A bracketed name-shaped
+token becomes a second `P734` *family name*, parens stripped, **coequal and unqualified**, plus
+an `Amul` alias carrying the bracketed form. Nothing marks one as primary because nothing in the
+data says one is.
+
+Three questions asked about this seam in one afternoon and each answer made the model **smaller**
+than the one before: four shapes became three, the house-versus-variant split became "both", and
+the qualifier became nothing. The lesson worth keeping is that every version I proposed was more
+elaborate than the one she wanted.
+
+**1,359 passed, 0 failed.**
