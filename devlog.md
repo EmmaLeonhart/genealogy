@@ -15446,3 +15446,50 @@ No export was run and no page was saved. `paths/arne-to-bureus.tsv`,
 `genimerge path` consumes.
 
 **1,362 passed, 1 xfailed, 0 failed.**
+
+## 2026-08-26 — 55,547 people were about to be created as `NN` with a name in the record
+
+`build-garborg-day.py` read a person's label as `label_en or label_mul` and treated an empty
+result as redacted. **55,547 people have both empty while carrying a name**: 44,028 in
+`cjk_names`, 11,519 in `other_script_names`. Only 22,174 of the 77,721 are genuinely nameless.
+`CLAUDE.md` § *Do not confuse redacted with unnamed* is exactly this: *"the test is never 'is
+the label bad', it is 'is there anything real underneath it'"*.
+
+The non-Latin name is now the fallback. `6000000186285688241` — the case Emma's own batch
+surfaced — goes from `Lmul "NN"` to `Lmul "부여융 무명"`.
+
+**And then it landed in `Len` too, which is wrong twice over**: it is not English, and Wikidata's
+`Help:Default values for labels and aliases` says a name not in Latin script should not be a
+default label. `Len` now requires a Latin letter; `mul` takes it alone.
+`tests/test_p2600_batches.py` guards that, verified by removing the guard and watching it fail.
+
+## Why the batch only shrank 11%, measured
+
+Her question. Creations fell 50 → 36 (−28%) but the file fell 986 → 818 (−17%), and the reason
+is a clean split:
+
+| | old | new | |
+| --- | ---: | ---: | ---: |
+| lines on NEW items (`LAST`) | 533 | 390 | **−27%** |
+| lines on EXISTING items (`Q…`) | 403 | 392 | **−3%** |
+
+**The creation caps worked exactly as specified** — the new-item half fell in proportion. What
+did not move is the relationship section, which is **uncapped by her own spec**: *"all of the
+spouse, parent, etc., relationships between existing items"*. It is 48% of the file and shrinks
+only when the ledger stops growing.
+
+Second-order: lines per creation went **up**, 19.7 → 22.7. The people now created are spine
+ancestors and free parents, who carry dates and names; the *entire children* bulk that was
+removed were sparse records costing little each.
+
+**So the remaining lever is the relationship section, not the creation counts.**
+
+## `ja`/`zh` reach 4 of 36 creations
+
+`reports/garborg-name-transliterations.tsv` holds **114 tokens**, built for the original Garborg
+family, and `label_in()` is all-or-nothing on purpose. **32 of 36** creations are carried with
+*"no transliteration for every token"*. Queued with the two other language items she raised,
+including that `mul` may cause a bot to strip per-language labels — which would be deleting this
+work behind us, and cannot be established offline.
+
+**1,381 passed, 1 xfailed, 0 failed.**

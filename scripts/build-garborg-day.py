@@ -823,7 +823,22 @@ def main():
     with open(ROOT / "reports" / "derived-labels.csv", encoding="utf-8") as f:
         for row in csv.DictReader(f):
             if row["geni_id"] in ids:
-                labels[row["geni_id"]] = row["label_en"] or row["label_mul"]
+                # **Fall back to the NON-LATIN name before calling somebody unnamed.**
+                # 55,547 people in `derived-labels.csv` have `label_en` and `label_mul`
+                # both empty while carrying a name in `cjk_names` (44,028) or
+                # `other_script_names` (11,519); only 22,174 are genuinely nameless.
+                # Without this they reach the redacted branch and are created as a bare
+                # `NN`, losing a name Geni actually recorded --
+                # `6000000186285688241`, whose name is `부여융 무명`, is the case Emma's
+                # batch surfaced.
+                #
+                # `CLAUDE.md` § *Do not confuse redacted with unnamed* is exactly this
+                # distinction: the test is never "is the label bad", it is "is there
+                # anything real underneath it".
+                labels[row["geni_id"]] = (
+                    row["label_en"] or row["label_mul"]
+                    or (row.get("cjk_names") or "").split(" | ")[0].strip()
+                    or (row.get("other_script_names") or "").split(" | ")[0].strip())
 
     # **The GEDCOM name FIELDS, which is where name objects come from.** Emma,
     # 2026-08-24: *"I thought we were resolving name objects but now we're determining
@@ -1128,7 +1143,14 @@ def main():
             primary = " ".join(given + marnm.split()) if is_married else label
             birth = " ".join(given + surn.split()) if is_married else ""
 
-            lines.append(f'LAST\tLen\t"{qs(primary)}"')
+            # **`en` only for a name written in Latin script.** The non-Latin fallback
+            # above rescues 55,547 people from being created as a bare `NN`, but their
+            # name is Korean or Chinese and an ENGLISH label holding it is wrong twice
+            # over -- it is not English, and `Help:Default values for labels and aliases`
+            # says a name not in Latin script should not be a default label. `mul` is the
+            # language-neutral slot and takes it.
+            if re.search(r"[A-Za-z]", primary):
+                lines.append(f'LAST\tLen\t"{qs(primary)}"')
             lines.append(f'LAST\tLmul\t"{qs(primary)}"')
             # **No `Aen`. Ever.** Emma, 2026-08-26: *"No aen are ever supposed to be
             # added lol only ones in non-latin scripts get aliases for their birth names

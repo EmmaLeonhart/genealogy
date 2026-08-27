@@ -4,80 +4,6 @@
 
 # create a new item
 CREATE
-#   the item just created: set the mul label to "NN"
-LAST	Lmul	"NN"
-#   set the ca label to "mare de Buyeo Deokjang"
-LAST	Lca	"mare de Buyeo Deokjang"
-#   set the da label to "mor til Buyeo Deokjang"
-LAST	Lda	"mor til Buyeo Deokjang"
-#   set the de label to "Mutter von Buyeo Deokjang"
-LAST	Lde	"Mutter von Buyeo Deokjang"
-#   set the en label to "mother of Buyeo Deokjang"
-LAST	Len	"mother of Buyeo Deokjang"
-#   set the es label to "madre de Buyeo Deokjang"
-LAST	Les	"madre de Buyeo Deokjang"
-#   set the it label to "madre di Buyeo Deokjang"
-LAST	Lit	"madre di Buyeo Deokjang"
-#   set the nb label to "mor til Buyeo Deokjang"
-LAST	Lnb	"mor til Buyeo Deokjang"
-#   set the nl label to "moeder van Buyeo Deokjang"
-LAST	Lnl	"moeder van Buyeo Deokjang"
-#   set the pt label to "mãe de Buyeo Deokjang"
-LAST	Lpt	"mãe de Buyeo Deokjang"
-#   set the sv label to "mor till Buyeo Deokjang"
-LAST	Lsv	"mor till Buyeo Deokjang"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581072 female
-LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000186285688241
-LAST	P2600	"6000000186285688241"
-#   P40 child = Q19657284 Buyeo Deokjang
-LAST	P40	Q19657284	S2600	"6000000186285688241"
-#   Q19657284 Buyeo Deokjang: P25 mother = the item just created
-Q19657284	P25	LAST	S2600	"6000000186285688241"
-
-# create a new item
-CREATE
-#   the item just created: set the mul label to "NN"
-LAST	Lmul	"NN"
-#   set the ca label to "mare de Taebi Buyeo"
-LAST	Lca	"mare de Taebi Buyeo"
-#   set the da label to "mor til Taebi Buyeo"
-LAST	Lda	"mor til Taebi Buyeo"
-#   set the de label to "Mutter von Taebi Buyeo"
-LAST	Lde	"Mutter von Taebi Buyeo"
-#   set the en label to "mother of Taebi Buyeo"
-LAST	Len	"mother of Taebi Buyeo"
-#   set the es label to "madre de Taebi Buyeo"
-LAST	Les	"madre de Taebi Buyeo"
-#   set the it label to "madre di Taebi Buyeo"
-LAST	Lit	"madre di Taebi Buyeo"
-#   set the nb label to "mor til Taebi Buyeo"
-LAST	Lnb	"mor til Taebi Buyeo"
-#   set the nl label to "moeder van Taebi Buyeo"
-LAST	Lnl	"moeder van Taebi Buyeo"
-#   set the pt label to "mãe de Taebi Buyeo"
-LAST	Lpt	"mãe de Taebi Buyeo"
-#   set the sv label to "mor till Taebi Buyeo"
-LAST	Lsv	"mor till Taebi Buyeo"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581072 female
-LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000186285688269
-LAST	P2600	"6000000186285688269"
-#   P26 spouse = Q19657284 Buyeo Deokjang
-LAST	P26	Q19657284	S2600	"6000000186285688269"
-#   P40 child = Q12598947 Taebi Buyeo
-LAST	P40	Q12598947	S2600	"6000000186285688269"
-#   Q19657284 Buyeo Deokjang: P26 spouse = the item just created
-Q19657284	P26	LAST	S2600	"6000000186285688269"
-#   Q12598947 Taebi Buyeo: P25 mother = the item just created
-Q12598947	P25	LAST	S2600	"6000000186285688269"
-
-# create a new item
-CREATE
 #   the item just created: set the en label to "Algot Bryniolfsson"
 LAST	Len	"Algot Bryniolfsson"
 #   set the mul label to "Algot Bryniolfsson"
@@ -1049,6 +975,40 @@ LAST	P2600	"6000000012925092093"
 LAST	P40	Q19657284	S2600	"6000000012925092093"
 #   Q19657284 Buyeo Deokjang: P22 father = the item just created
 Q19657284	P22	LAST	S2600	"6000000012925092093"
+
+# create a new item
+CREATE
+#   the item just created: set the mul label to "덕장 부여"
+LAST	Lmul	"덕장 부여"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581072 female
+LAST	P21	Q6581072
+#   P2600 Geni.com profile ID = 6000000186285688269 덕장 부여
+LAST	P2600	"6000000186285688269"
+#   P26 spouse = Q19657284 Buyeo Deokjang
+LAST	P26	Q19657284	S2600	"6000000186285688269"
+#   P40 child = Q12598947 Taebi Buyeo
+LAST	P40	Q12598947	S2600	"6000000186285688269"
+#   Q19657284 Buyeo Deokjang: P26 spouse = the item just created
+Q19657284	P26	LAST	S2600	"6000000186285688269"
+#   Q12598947 Taebi Buyeo: P25 mother = the item just created
+Q12598947	P25	LAST	S2600	"6000000186285688269"
+
+# create a new item
+CREATE
+#   the item just created: set the mul label to "부여융 무명"
+LAST	Lmul	"부여융 무명"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581072 female
+LAST	P21	Q6581072
+#   P2600 Geni.com profile ID = 6000000186285688241 부여융 무명
+LAST	P2600	"6000000186285688241"
+#   P40 child = Q19657284 Buyeo Deokjang
+LAST	P40	Q19657284	S2600	"6000000186285688241"
+#   Q19657284 Buyeo Deokjang: P25 mother = the item just created
+Q19657284	P25	LAST	S2600	"6000000186285688241"
 
 # RELATIONSHIPS between items that already exist -- the links yesterday's
 #    creations made possible, and the properties never emitted. Every subject

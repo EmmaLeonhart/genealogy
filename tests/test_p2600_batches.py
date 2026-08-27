@@ -479,3 +479,34 @@ def test_every_statement_has_a_comment_above_it(name):
     assert not bare, (
         f"{name}: {len(bare)} statement lines with no comment above them — "
         + "; ".join(f"line {i}: {ln!r}" for i, ln in bare[:4]))
+
+
+@pytest.mark.parametrize("name", NAMES)
+def test_no_english_label_is_written_in_a_non_latin_script(name):
+    """An `Len` value must contain a Latin letter. It is the ENGLISH label.
+
+    The non-Latin fallback added 2026-08-26 rescues **55,547 people** whose `label_en` and
+    `label_mul` are both empty while they carry a name in `cjk_names` (44,028) or
+    `other_script_names` (11,519) — without it they hit the redacted branch and were created
+    as a bare `NN`, losing a name Geni actually recorded. `6000000186285688241` is the case
+    Emma's own batch surfaced: their name is `부여융 무명`.
+
+    But that name then landed in `Len` as well as `Lmul`, and an English label holding a
+    Korean string is wrong twice over: it is not English, and Wikidata's `Help:Default values
+    for labels and aliases` says outright that a name not in Latin script should not be a
+    default label. `mul` is the language-neutral slot and takes it alone.
+
+    Verified by removing the guard and watching this fail.
+    """
+    if name in SPENT_BATCHES:
+        pytest.skip(f"{name} is a record of a batch already run")
+    bad = []
+    for i, ln in statements(REPORTS / name):
+        parts = ln.split("	")
+        if len(parts) > 2 and parts[1] == "Len":
+            value = parts[2].strip('"')
+            if value and not re.search(r"[A-Za-z]", value):
+                bad.append((i, value))
+    assert not bad, (
+        f"{name}: English labels with no Latin letter — "
+        + "; ".join(f"line {i}: {v!r}" for i, v in bad[:4]))

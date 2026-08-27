@@ -446,6 +446,30 @@ falling back to the family item contradicts § *One name item per USAGE*, under 
 patronymic is a different object from the surname. `name modelling.txt` reserves edge cases
 for her.
 
+## ⛔ Labels in other languages — three things, measured 2026-08-26
+
+- **`ja`/`zh` reach only 4 of 36 creations, and she wants them mandatory.**
+  `label_in()` is all-or-nothing by design — `CLAUDE.md`: *"Partial is worse than absent: half
+  a name in katakana and half in Latin is not a Japanese label, it is a broken one"* — and
+  `reports/garborg-name-transliterations.tsv` holds **114 tokens**, built for the original
+  Garborg family. The algorithm now reaches far past it, so **32 of 36** are carried with
+  *"no transliteration for every token"*. The fix is to extend the table, not to loosen the
+  rule. Katakana from Norwegian is mechanical; the Chinese characters are a judgement per
+  name and are the part worth checking with her.
+
+- **NEEDS-DECISION, Emma — `mul` may be actively harmful.** Her report: *"Mul labels cause
+  massive numbers of labels across languages on an item to be removed by a bot, which might be
+  desired behaviour on certain items."* Every creation currently gets `Lmul`. If that triggers
+  a bot to strip per-language labels, the `ja`/`zh` work above is being deleted behind us.
+  **Establish what the bot actually does before emitting more `Lmul`.** Nothing here can
+  answer it offline; it is a question about live Wikidata behaviour.
+
+- **The all-language census was never done.** Her framing: *"the ideal thing was supposed to be
+  that we do a census of all languages in the synoptic tree (our geni stuff) and we add labels
+  in all of them. And I don't think we fully did that."* Correct — `derived-labels.csv` has
+  `label_en`, `label_mul`, `cjk_names` and `other_script_names` and nothing enumerates which
+  languages the corpus actually carries. That census is offline and bounded.
+
 ## The daily Garborg batch — one QuickStatements run per day
 
 `scripts/build-garborg-day.py` → `reports/wikidata-garborg-day.qs`.
