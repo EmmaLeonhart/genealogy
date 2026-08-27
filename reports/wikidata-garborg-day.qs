@@ -55,10 +55,10 @@ Q101247444	P40	LAST	S2600	"6000000005795638082"
 Q5915800	P22	LAST	S2600	"6000000005795638082"
 #   the item just created: P735 given name = Q10405157 Algot
 LAST	P735	Q10405157
-#   P1449 nickname = en:"Algot Brynolfsson
+#   P1449 nickname = en:"Algot Brynolfsson"
 LAST	P1449	en:"Algot Brynolfsson"
-#   add a mul alias "Algot Brynolfsson"
-LAST	Amul	"Algot Brynolfsson"
+#   add a mul alias "Algot Brynolfsson Bryniolfsson"
+LAST	Amul	"Algot Brynolfsson Bryniolfsson"
 
 # create a new item
 CREATE
@@ -303,10 +303,10 @@ Q141180395	P40	LAST	S2600	"6000000020220377527"
 LAST	P735	Q1985538	P1545	"1"	P7452	Q3409033
 #   P735 given name = Q370731 August, qualified series ordinal 2, object of statement has role Q245025 middle name
 LAST	P735	Q370731	P1545	"2"	P3831	Q245025
-#   P1449 nickname = en:"Jørgen
+#   P1449 nickname = en:"Jørgen"
 LAST	P1449	en:"Jørgen"
-#   add a mul alias "Jørgen"
-LAST	Amul	"Jørgen"
+#   add a mul alias "Jørgen Bergersen"
+LAST	Amul	"Jørgen Bergersen"
 
 # create a new item
 CREATE
@@ -338,10 +338,10 @@ Q141180395	P40	LAST	S2600	"6000000020220981823"
 LAST	P735	Q18145837	P1545	"2"	P3831	Q245025
 #   P734 family name = Q656767 Gundersen
 LAST	P734	Q656767
-#   P1449 nickname = en:"Bergersen
+#   P1449 nickname = en:"Bergersen"
 LAST	P1449	en:"Bergersen"
-#   add a mul alias "Bergersen"
-LAST	Amul	"Bergersen"
+#   add a mul alias "Bergersen Gundersen"
+LAST	Amul	"Bergersen Gundersen"
 
 # create a new item
 CREATE
@@ -486,10 +486,10 @@ LAST	P570	+1757-00-00T00:00:00Z/9	S2600	"6000000005609425388"
 LAST	P40	Q141180408	S2600	"6000000005609425388"
 #   Q141180408 Jon Larsson Li: P25 mother = the item just created
 Q141180408	P25	LAST	S2600	"6000000005609425388"
-#   the item just created: P1449 nickname = en:"Joren J Mæle
+#   the item just created: P1449 nickname = en:"Joren J Mæle"
 LAST	P1449	en:"Joren J Mæle"
-#   add a mul alias "Joren J Mæle"
-LAST	Amul	"Joren J Mæle"
+#   add a mul alias "Joren J Mæle Espedal"
+LAST	Amul	"Joren J Mæle Espedal"
 #   add a mul alias "Joren Espedal"
 LAST	Amul	"Joren Espedal"
 
@@ -615,10 +615,10 @@ LAST	P40	Q141180408	S2600	"6000000005609425379"
 Q141180408	P22	LAST	S2600	"6000000005609425379"
 #   the item just created: P735 given name = Q15635262 Lars
 LAST	P735	Q15635262
-#   P1449 nickname = en:"Mæle
+#   P1449 nickname = en:"Mæle"
 LAST	P1449	en:"Mæle"
-#   add a mul alias "Mæle"
-LAST	Amul	"Mæle"
+#   add a mul alias "Mæle Mele"
+LAST	Amul	"Mæle Mele"
 #   add a mul alias "Lars Mele"
 LAST	Amul	"Lars Mele"
 
@@ -826,10 +826,10 @@ Q141168797	P40	LAST	S2600	"6000000021122102578"
 LAST	P735	Q2097883	P1545	"1"	P7452	Q3409033
 #   P734 family name = Q11963736 Christiansen
 LAST	P734	Q11963736
-#   P1449 nickname = en:"Ole Christoffer Bergersen
+#   P1449 nickname = en:"Ole Christoffer Bergersen"
 LAST	P1449	en:"Ole Christoffer Bergersen"
-#   add a mul alias "Ole Christoffer Bergersen"
-LAST	Amul	"Ole Christoffer Bergersen"
+#   add a mul alias "Ole Christoffer Bergersen Christiansen"
+LAST	Amul	"Ole Christoffer Bergersen Christiansen"
 
 # create a new item
 CREATE
@@ -884,10 +884,10 @@ LAST	P735	Q11993741	P1545	"1"	P7452	Q3409033
 LAST	P735	Q19810278	P1545	"2"	P3831	Q245025
 #   P734 family name = Q12042571 Olsen, qualified object of statement has role Q28418670 married name
 LAST	P734	Q12042571	P3831	Q28418670
-#   P1449 nickname = en:"Gundersdatter
+#   P1449 nickname = en:"Gundersdatter"
 LAST	P1449	en:"Gundersdatter"
-#   add a mul alias "Gundersdatter"
-LAST	Amul	"Gundersdatter"
+#   add a mul alias "Gundersdatter Olsen"
+LAST	Amul	"Gundersdatter Olsen"
 
 # create a new item
 CREATE
@@ -1100,10 +1100,10 @@ Q141180396	P40	LAST	S2600	"6000000039507820846"
 Q141168794	P40	LAST	S2600	"6000000039507820846"
 #   the item just created: P735 given name = Q634916 Sigrid, qualified series ordinal 1, reason for preferred rank Q3409033 usual forename
 LAST	P735	Q634916	P1545	"1"	P7452	Q3409033
-#   P1449 nickname = en:"Sally
+#   P1449 nickname = en:"Sally"
 LAST	P1449	en:"Sally"
-#   add a mul alias "Sally"
-LAST	Amul	"Sally"
+#   add a mul alias "Sally Ekman"
+LAST	Amul	"Sally Ekman"
 
 # create a new item
 CREATE
@@ -1219,10 +1219,10 @@ Q141180396	P40	LAST	S2600	"6000000039507759313"
 Q141168794	P40	LAST	S2600	"6000000039507759313"
 #   the item just created: P735 given name = Q15875484 Theodore, qualified series ordinal 1, reason for preferred rank Q3409033 usual forename
 LAST	P735	Q15875484	P1545	"1"	P7452	Q3409033
-#   P1449 nickname = en:"Ted Tunheim
+#   P1449 nickname = en:"Ted Tunheim"
 LAST	P1449	en:"Ted Tunheim"
-#   add a mul alias "Ted Tunheim"
-LAST	Amul	"Ted Tunheim"
+#   add a mul alias "Ted Tunheim Tunheim"
+LAST	Amul	"Ted Tunheim Tunheim"
 
 # create a new item
 CREATE
@@ -1281,10 +1281,10 @@ Q141180396	P40	LAST	S2600	"6000000039510907240"
 Q141168794	P40	LAST	S2600	"6000000039510907240"
 #   the item just created: P735 given name = Q12006598 Tollef
 LAST	P735	Q12006598
-#   P1449 nickname = en:"Bud
+#   P1449 nickname = en:"Bud"
 LAST	P1449	en:"Bud"
-#   add a mul alias "Bud"
-LAST	Amul	"Bud"
+#   add a mul alias "Bud Tunheim"
+LAST	Amul	"Bud Tunheim"
 #   add a mul alias "Tollef Tunheim"
 LAST	Amul	"Tollef Tunheim"
 

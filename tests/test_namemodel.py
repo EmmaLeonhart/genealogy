@@ -308,10 +308,26 @@ def test_a_nickname_needs_no_name_item():
 
 
 def test_aliases_cover_the_nickname_and_the_married_full_name():
+    """The nickname alias carries the SURNAME. Emma, 2026-08-26.
+
+    It used to assert the bare `"Stena"`, and she overruled that on seeing `Q141189102`
+    *Sigrid "Sally" Manilva Tunheim* get an alias of `Sally`: *"this person was given an
+    alias of 'Sally' instead of 'Sally Ekman'"*. A bare given-name token is not something
+    anybody can look a person up by, and `Help:Aliases` says the purpose of an alias is
+    only to find the entity in searches — so a form nobody would search is no alias at all.
+
+    The surname used is the **married** one, because § *The MARRIED name is the real name*
+    makes that the form the primary label takes; the alias is then the same person's name
+    with the nickname swapped in rather than a different person's.
+
+    `P1449` *nickname* still carries the bare token, and must: `Stena` IS the nickname.
+    That is asserted in `test_a_quoted_given_token_is_a_nickname`.
+    """
     got = aliases_for({"givn": 'Stine "Stena" Eivindsdatter', "surn": "Garborg",
                        "marnm": "Jacobson"})
-    assert "Stena" in got
+    assert "Stena Jacobson" in got, f"nickname alias lost its surname: {got}"
     assert "Stine Jacobson" in got
+    assert "Stena" not in got, f"the bare nickname is not an alias: {got}"
 
 
 def test_a_mans_marnm_family_name_carries_no_married_role():

@@ -385,7 +385,7 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None,
     return lines, notes
 
 
-def aliases_for(fields):
+def aliases_for(fields, surn="", marnm=""):
     """Alias strings for an item: the nicknames, and the married full name.
 
     Emma asked for aliases alongside the second `P734` *family name*. A married
@@ -395,10 +395,27 @@ def aliases_for(fields):
     out = []
     tokens = classify_fields(fields.get("givn", ""), fields.get("surn", ""),
                              fields.get("nick", ""), fields.get("marnm", ""))
+    surn = surn or fields.get("surn", "")
+    marnm = marnm or fields.get("marnm", "")
     given = [t for t, u, _o in tokens if u == "given"]
+
+    # **A nickname alias carries the SURNAME, or it finds nobody.** Emma, 2026-08-26, on
+    # `Q141189102`: *"this person was given an alias of 'Sally' instead of 'Sally Ekman'"*.
+    # Her record is `GIVN 'Sigrid "Sally" Manilva'`, `SURN Tunheim`, `_MARNM Ekman`, and a
+    # bare `Sally` is not a name anybody could look her up by.
+    #
+    # The surname used is the **married** one where there is one, because § *The MARRIED
+    # name is the real name* makes that the form her primary label takes -- so the alias is
+    # the same person's name with the nickname swapped in, not a different person's.
+    #
+    # `P1449` *nickname* keeps the BARE token, and must: `Sally` is the nickname. It is the
+    # alias, whose job is retrieval, that needs the full form.
+    surname = " ".join((marnm or surn or "").split())
     for token, usage, _ordinal in tokens:
         if usage == "nickname":
-            out.append(token)
+            full = f"{token} {surname}".strip()
+            if full not in out:
+                out.append(full)
     married = " ".join((fields.get("marnm") or "").split())
     if married and married.casefold() != " ".join(
             (fields.get("surn") or "").split()).casefold():

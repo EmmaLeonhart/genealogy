@@ -80,6 +80,10 @@ def annotate(lines, name_of):
     out, last_subject = [], None
 
     def human(token):
+        # A monolingual value is `en:"Sally"` and stripping quotes off it ate the closing
+        # one, so the comment read `= en:"Sally`. Leave anything language-tagged alone.
+        if re.match(r'^[a-z]{2,3}(-[a-z]+)?:"', token):
+            return token
         token = token.strip('"')
         if token == "LAST":
             return "the item just created"

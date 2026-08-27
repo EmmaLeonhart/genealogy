@@ -15328,3 +15328,38 @@ test. `CLAUDE.md`'s own prescription: a real defect becomes a strict xfail or a 
 never a loosened assertion.
 
 **1,362 passed, 1 xfailed, 0 failed.**
+
+## 2026-08-26 — a nickname alias without a surname finds nobody
+
+Emma, on `Q141189102` *Sigrid "Sally" Manilva Tunheim*: *"this person was given an alias of
+'Sally' instead of 'Sally Ekman'."* Her record is `GIVN 'Sigrid "Sally" Manilva'`,
+`SURN Tunheim`, `_MARNM Ekman`.
+
+`aliases_for` emitted the bare nickname token. It now emits **nickname + married surname**, and
+`P1449` *nickname* keeps the bare token — `Sally` is the nickname; it is the alias, whose job is
+retrieval, that needs the full form.
+
+**She asked for the label question to be looked up rather than guessed**, offering two
+alternatives: nickname-as-label with the full name as alias, or the quotes staying inside the
+label. Checked against Wikidata's own help pages:
+
+* `Help:Label` — the label is *"the most common name the item would be known by"*, and for
+  nickname cases *"the nickname as the label and the full name as an alias (Xavi … Xavier
+  Hernández i Creus)"*. That is conditional on the nickname genuinely BEING the common name.
+* `Help:Default values for labels and aliases` — the default label is the native full name in
+  Latin script; *"the purpose of aliases is only to find entities in searches"*.
+* **Quotation marks inside a label have no support on any of the three pages.** They appear only
+  in disambiguation aliases for Help-page titles.
+
+So the full name stays the label: nothing sourced says a 19th-century farm woman was commonly
+known as Sally, only that Geni records she was called it. The nickname form lives where
+`Help:Aliases` says it belongs.
+
+**A test's invariant changed on her instruction and is recorded as such**, not quietly relaxed:
+`test_aliases_cover_the_nickname_and_the_married_full_name` asserted the bare `"Stena"`. It now
+asserts `Stena Jacobson` is present **and** that the bare `Stena` is not.
+
+Also fixed: the comment annotator stripped quotes off monolingual values, so a line read
+`# P1449 nickname = en:"Sally` with the closing quote eaten.
+
+**1,362 passed, 1 xfailed, 0 failed.**

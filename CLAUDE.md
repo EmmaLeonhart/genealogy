@@ -567,6 +567,31 @@ String similarity to the neighbouring token did separate every ruled case, and w
 heuristic in a repo that bans them. **Her answer removed the question instead of settling it**,
 which is worth remembering the next time a rule appears to need a threshold.
 
+### A nickname alias carries the SURNAME. `P1449` carries the bare token
+
+**Emma, 2026-08-26**, on `Q141189102` *Sigrid "Sally" Manilva Tunheim*: *"this person was given
+an alias of 'Sally' instead of 'Sally Ekman'."*
+
+    P1449 nickname   Sally              <- the bare token. This IS the nickname.
+    Amul  alias      Sally Ekman        <- nickname + the MARRIED surname
+    Amul  alias      Sigrid Manilva Ekman
+
+The married surname is used because § *The MARRIED name is the real name* makes it the form the
+primary label takes, so the alias is the same person's name with the nickname swapped in.
+
+**Wikidata's own rule is why the bare form is useless**, checked 2026-08-26 against
+`Help:Aliases`: *"the purpose of aliases is only to find entities in searches"*. A bare `Sally`
+is not something anybody would search.
+
+**The label stays the FULL name, and quotes never go in a label.** She raised two alternatives
+— nickname-as-label with the full name as alias, or keeping the quotes inside the label — and
+asked for them to be looked up rather than guessed. `Help:Label` supports nickname-as-label only
+where the nickname genuinely IS the common name (*Xavi* against *Xavier Hernández i Creus*);
+`Help:Default values for labels and aliases` makes the default label the native full name in
+Latin script. **Nothing on any of the three help pages puts quotation marks inside a label.**
+For a 19th-century farm woman there is no source saying she was commonly known as Sally — Geni
+records only that she was called it — so the full name stays the label.
+
 ### The MARRIED name is the real name. `mul` carries it, and no batch adds an `Aen`
 
 **Emma, 2026-08-26:** *"married name is always the 'real' name and applied as the primary
