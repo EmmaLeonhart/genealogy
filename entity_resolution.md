@@ -35,3 +35,11 @@ https://www.geni.com/people/Emma-Leonhart/6000000087535357291
 https://www.wikidata.org/wiki/Q140568870
 
 the name on that one is "Emma Leonhart", Emma /Leonhart/
+
+Kitajima no Tokitaka (北島時孝)
+https://www.geni.com/people/x/6000000227335393824
+https://www.wikidata.org/wiki/Q135579474
+
+Kitajima no Yasutaka (北島安孝)
+https://www.geni.com/people/x/6000000227335224861
+https://www.wikidata.org/wiki/Q135579480

@@ -57,6 +57,7 @@ sys.stdout.reconfigure(encoding="utf-8")
 
 from namemodel import (  # noqa: E402
     PATRONYMIC_CLASS, classify_fields, load_plan, statements_for)
+from qscomment import annotate  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 
@@ -247,6 +248,13 @@ def main():
         lines.append("# have made a tenth. Emma picks, the person's sex decides.")
         for (token, usage), bearers in sorted(ambiguous.items()):
             lines.append(f"#   {token} ({usage}), {bearers} bearer(s)")
+
+    # A comment above every line, the same post-pass the day batch uses. Emma, 2026-08-26:
+    # *"Every line has a comment the line above it saying what change is happening."*
+    # `name_of` turns a QID back into the person it belongs to, so a link reads as a
+    # sentence rather than as two numbers.
+    qid_to_geni = {q: g for g, q in have.items()}
+    lines = annotate(lines, lambda t: labels_of.get(qid_to_geni.get(t, t), ""))
 
     out = ROOT / "reports" / "wikidata-garborg-name-items.qs"
     out.write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")

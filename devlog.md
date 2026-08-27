@@ -15242,3 +15242,53 @@ data. That guard existed because of five such failures this week; this is the si
 first to be caught at the moment it happened.
 
 **1,360 passed, 0 failed.**
+
+## 2026-08-26 — a comment above every line, and three things Emma spotted in the output
+
+**Her format, adopted:** *"With comments as headings and comments. Every line has a comment the
+line above it saying what change is happening."* `scripts/qscomment.py` is the shared post-pass:
+
+    # create a new item
+    CREATE
+    #   the item just created: set the en label to "Alfred Tunheim"
+    LAST	Len	"Alfred Tunheim"
+    #   P31 instance of = Q5 human
+    LAST	P31	Q5
+    #   P22 father = Q141180396 Tollef Tollefson Tunheim
+    LAST	P22	Q141180396	S2600	"6000000039510214027"
+
+**A post-pass, not a rule at each `lines.append`.** These builders emit from a dozen sites and
+a rule applied at every call site is one that will be missed at the thirteenth. Here it is
+structural — anything not blank and not a comment gets one — and
+`tests/test_p2600_batches.py` asserts exactly that property.
+
+Every QID in a comment carries its English label, resolved from `reports/wikidata-labels.tsv`
+in one pass over the ids actually present. An id the export does not hold stays bare rather
+than being invented.
+
+## What she found in the batch, all three confirmed
+
+**1. `Q141189052` Anna Carine Gundersen got no name statements.** Traced: all three of her
+tokens fail. `Anna` is AMBIGUOUS with 4,029 bearers and is never created; `Carine` and
+`Gundersen` come back *"not in the plan"*.
+
+**And `Gundersen` is not missing — it is misfiled.** `reports/name-item-plan.csv` holds
+`Gundersen given 63` and `Gundersen family 19` with `Q656767`, but **no patronymic row**, while
+`classify_fields` calls any `-sen`/`-son`/`-datter` token a patronymic. So the lookup
+`(Gundersen, patronymic)` misses an item that exists.
+
+**1,051 tokens and 31,259 bearers are in that state** — `Olsen` 1,147 bearers, `Pedersen` 678,
+`Olson` 511, `Hansen` 503, `Andersen` 476, `Larsen` 442. 330 of them (12,798 bearers) already
+carry a Wikidata item under given/family. Per § *One name item per USAGE* the patronymic is a
+**different** item, so those cannot simply be linked — the plan builder must emit patronymic
+rows so they can be created. Queued.
+
+**2. Bure was not covered today, and that is by design.** Zero Bure people in the batch; the
+five `grep` hits are comment text. `compose` draws the ring around people who already hold a
+QID, which is the Garborg neighbourhood; Bure is her mother's side, a separate campaign she
+postponed to the tail of the queue herself.
+
+**3. Volume.** 50 creations, 154 links, 10 name items, 33 name links. She is running it today
+and says it is too much long-term. Left to her, since every count in it is hers.
+
+**1,362 passed, 0 failed.**

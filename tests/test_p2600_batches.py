@@ -450,3 +450,32 @@ def test_the_sibling_cap_holds_across_every_live_batch():
     assert total <= SIBLING_CAP, (
         f"{total} P3373 sibling statements in one day's run, cap is {SIBLING_CAP}: "
         f"{per_file}")
+
+
+@pytest.mark.parametrize("name", NAMES)
+def test_every_statement_has_a_comment_above_it(name):
+    """Emma's format, 2026-08-26: *"Every line has a comment the line above it saying what
+    change is happening."*
+
+    Applied as a post-pass in `scripts/qscomment.py` rather than at each `lines.append`,
+    because these builders emit from a dozen sites and a rule applied at every call site
+    is one that will be missed at the thirteenth. This asserts the structural property the
+    post-pass guarantees, so a new emission site cannot quietly arrive uncommented.
+
+    Only the files the daily run writes are checked: batches built before the format
+    existed are history and are not rewritten to satisfy a rule made after them.
+    """
+    if name not in {"wikidata-garborg-day.qs", "wikidata-garborg-name-items.qs"}:
+        pytest.skip(f"{name} predates the commented format")
+    path = REPORTS / name
+    raw = path.read_text(encoding="utf-8").split("\n")
+    bare = []
+    for i, line in enumerate(raw):
+        if not line.strip() or line.startswith("#"):
+            continue
+        prev = raw[i - 1].strip() if i else ""
+        if not prev.startswith("#"):
+            bare.append((i + 1, line[:60]))
+    assert not bare, (
+        f"{name}: {len(bare)} statement lines with no comment above them — "
+        + "; ".join(f"line {i}: {ln!r}" for i, ln in bare[:4]))

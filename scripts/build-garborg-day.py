@@ -371,6 +371,9 @@ def spine_chain():
     return out
 
 
+from qscomment import annotate  # noqa: E402
+
+
 def compose(have, fam, rng):
     """`{geni_id: why}` -- the people this run creates, per `docs/batch-rules.md`.
 
@@ -1184,6 +1187,17 @@ def main():
     # between items that already existed. Names are the middle step and live in
     # `reports/wikidata-garborg-name-items.qs`, run between the two.
     lines = lines[:preamble] + lines[create_from:] + lines[rel_from:create_from]
+
+    # **A comment above every line.** Her format, 2026-08-26. `name_of` resolves either a
+    # QID or a Geni id to a person, so the comments read as sentences rather than as pairs
+    # of numbers; `qid_to_geni` inverts the ledger for that.
+    qid_to_geni = {q: g for g, q in have.items()}
+
+    def name_of(token):
+        geni = qid_to_geni.get(token, token)
+        return qs(labels.get(geni, ""))
+
+    lines = annotate(lines, name_of)
 
     out = ROOT / "reports" / "wikidata-garborg-day.qs"
     out.write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")
