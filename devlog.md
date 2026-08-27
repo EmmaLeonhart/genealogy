@@ -16115,3 +16115,22 @@ They were simply longer than whatever stops a job here at 40-60 minutes.
 `CLAUDE.md`'s "exceeds ten minutes" is replaced with the measured figures, and the chunking rule
 is written beside it. **Still unrun: `test_paths` (5) and `test_density`'s last test — 23 tests**,
 which get the same `--durations=0`-first treatment.
+
+## 2026-08-27 — the slow lane is green end to end, and two of its facts were wrong
+
+`test_paths`: **24 passed, 16m52**. `test_density`: **18 passed, 17m28**. With
+`test_merge_real_exports` earlier today that is every never-completed module, **4,467 slow tests,
+0 failures**.
+
+**Both entries in the queue were wrong, and wrong the same way.** `test_paths` was recorded as
+*5 tests, exceeds 10 min even alone* — it is **24 tests** and runs unchunked in 17 minutes, the
+whole cost being one 1,012s fixture with every test under 5ms. `test_density` was recorded as
+*17 passed, the 18th alone still exceeds 10 min* — all 18 pass and that test is **991.60s**, not
+unbounded. Both figures came from watching a run get killed and inferring what it would have
+done, which is exactly the "twenty minutes per test" error from this morning.
+
+So the chunking rule applies to **one** module, not three: only `test_merge_real_exports` needs
+splitting, because only it pays the 837s merge more than once.
+
+`test_gedcom_real_exports` (4,427) and `test_wikidata_store_real` (5) were green on 2026-08-25
+and were not re-run today; that is stated rather than folded into a fresh-sounding total.

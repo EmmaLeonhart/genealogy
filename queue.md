@@ -39,28 +39,29 @@ Every `.qs` in `reports/` is guarded by `tests/test_p2600_batches.py` — line s
 quoting, `S2600` references, Geni ids, duplicate statements, one `P2600` per `CREATE`,
 and no two batches creating the same person.
 
-## The slow lane: `test_merge_real_exports` is GREEN, 9 of 9. Chunk by COST, not by count
+## The slow lane: every module has now been RUN and is GREEN
 
-**4,441 of 4,464 passed, 0 failures.** `test_merge_real_exports` was the last never-attempted
-module and it now runs, in three chunks, 90 minutes of wall clock:
+**4,467 slow tests, 0 failures.** The three that had never completed were run on 2026-08-27:
 
-| chunk | tests | wall | what dominates |
+| module | tests | wall | where the time goes |
 | --- | ---: | ---: | --- |
-| fixture-only | 4 | 15m28 | the merge itself, 837s; the tests are 26s, 26s, 26s, 3s |
-| corpus-streaming | 2 | 32m07 | `no_line_is_lost` 694s, `no_record_is_lost` 403s |
-| re-merge and write | 3 | 42m34 | `is_idempotent` 1,196s — a second full merge — then 282s, 241s |
+| `test_merge_real_exports` | 9 | 90m over 3 chunks | the merge, 837s per process; `is_idempotent` merges twice |
+| `test_paths` | **24** | 16m52 | one 1,012s fixture; every test is under 5ms |
+| `test_density` | 18 | 17m28 | `every_listed_region_gets_a_seed` 992s, `presence_never_exceeds` 57s |
 
-**The unit of cost is the fixture, not the test.** Merging 546 exports is **837 seconds and
-16.8 GB**, paid once per process; `test_the_merge_is_idempotent` pays it twice and peaks at
-**23.6 GB**. So a chunk is bounded by how many corpus passes it makes, and four cheap tests
-sharing one merge is a 15-minute job while three expensive ones is 43.
+`test_gedcom_real_exports` (4,427, in 4 chunks) and `test_wikidata_store_real` (5) were green on
+2026-08-25 and have not been re-run since.
 
-**Whole-module runs kept being killed at 40-60 minutes** — not hung, and the earlier reading of
-"twenty minutes per test" was wrong: it was one 14-minute fixture plus two heavy tests. Chunked,
-every part finishes and reports.
+**The old figures in this section were wrong in both directions.** `test_paths` was recorded as
+5 tests that "exceed 10 min even alone" — it is 24 tests and finishes in 17 minutes unchunked.
+`test_density` was recorded as 17 passed with the 18th blocking; all 18 pass, and the slow one is
+992 seconds rather than unbounded. Both readings came from watching a run get killed and
+inferring, which is the same mistake as "twenty minutes per test".
 
-Still unrun: **`test_paths`** (5) and **`test_density`**'s last test — 23 tests. Same treatment,
-`--durations=0` first to find where the cost sits.
+**Only `test_merge_real_exports` actually needs chunking**, and the unit is the fixture: four
+fixture-only tests share one merge (15m28), two corpus-streaming ones take 32m07, three that
+re-merge or write the 409 MB file take 42m34. **16.8 GB for one merged tree, 23.6 GB while the
+idempotence test holds two** — run nothing beside it.
 
 ## Decided 2026-08-25 — the multi-Geni-ID work
 
