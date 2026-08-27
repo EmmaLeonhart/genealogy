@@ -32,7 +32,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
 
 from namemodel import (  # noqa: E402
     FAMILY_NAME, GIVEN_NAME, MIDDLE_NAME, PATRONYM, PATRONYMIC, SERIES_ORDINAL,
-    USUAL_FORENAME, classify, statements_for,
+    USUAL_FORENAME, classify, load_plan, statements_for,
 )
 
 
@@ -469,3 +469,40 @@ def test_the_swedish_dotter_is_a_patronymic_like_the_danish_datter():
     # The Norwegian form must not have regressed.
     got = dict((t, u) for t, u, _o in classify_fields("Ane", "Eivindsdatter"))
     assert got["Eivindsdatter"] == "patronymic"
+
+
+def test_the_father_name_reaches_statements_for_and_changes_the_property():
+    """End to end: the father decides whether a `-sen` token becomes `P734` or `P5056`.
+
+    Passing `father_name` was the missing half. `classify_fields` gained the test on
+    2026-08-26 and nothing handed it a father, so it was built and unused for a day.
+
+    `Gundersen` is the worked case, and it shows the rule recovering a statement that was
+    otherwise lost. The plan holds `(Gundersen, family) -> Q656767 link` and
+    `(Gundersen, patronymic) -> create`:
+
+    * **no father** — morphology says patronymic, whose item does not exist yet, so nothing
+      is emitted. This is what every caller did before, and what still happens when the
+      father is unknown.
+    * **father `Gunder Olsen`** — the stem matches his given name, so it really is a
+      patronymic. Still nothing, correctly: that item is waiting to be minted.
+    * **father `Hans Gundersen`** — he carries the same token, so this is an inherited
+      surname and `P734` -> `Q656767` goes out.
+
+    The third case is the point: `Anna Gundersen` daughter of `Hans Gundersen` used to get no
+    name statement at all.
+    """
+    plan = load_plan()
+    if plan.get(("Gundersen", "family"), ("", ""))[0] != "Q656767":
+        pytest.skip("the name plan no longer links Gundersen as a family name")
+    fields = {"givn": "Anna", "surn": "Gundersen", "nick": "", "marnm": ""}
+
+    def props(father_name):
+        lines, _notes = statements_for("Anna Gundersen", plan, "1", fields=fields,
+                                       father_name=father_name)
+        return [(p, v) for p, v, _q in lines]
+
+    assert props("") == [], "with no father the morphological patronymic has no item yet"
+    assert props("Gunder Olsen") == [], "stem matches his given name, so still a patronymic"
+    assert props("Hans Gundersen") == [(FAMILY_NAME, "Q656767")], (
+        "the father carries the same token, so it is an inherited surname")

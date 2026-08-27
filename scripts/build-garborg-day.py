@@ -292,7 +292,8 @@ def label_in(label, table):
     return "・".join(ja), "·".join(zh)
 
 
-def name_lines(label, plan, geni_id, father_qid, fields=None, sex=""):
+def name_lines(label, plan, geni_id, father_qid, fields=None, sex="",
+               father_name=""):
     """`P735`/`P734`/`P5056` lines for one person, and what could not be emitted.
 
     **Only tokens whose item already exists.** A name item this run is creating
@@ -304,7 +305,7 @@ def name_lines(label, plan, geni_id, father_qid, fields=None, sex=""):
     """
     out, notes = [], []
     lines, why = statements_for(label, plan, geni_id, father_qid=father_qid,
-                                fields=fields, sex=sex)
+                                fields=fields, sex=sex, father_name=father_name)
     for prop, value, quals in lines:
         # `P1449` *nickname* is monolingual TEXT, so QuickStatements wants a language
         # tag and quotes rather than a bare item id.
@@ -1055,8 +1056,11 @@ def main():
         # add to it. `CLAUDE.md`: the purpose is to ADD, not to correct.
         if absent(q, "P735") and absent(q, "P734"):
             dad = father.get(g)
+            # The father's NAME, not just his QID: Emma's test reads his given name and
+            # his own patronymic to decide whether this token is inherited or derived.
             for line in name_lines(labels.get(g, ""), plan, g,
-                                   have.get(dad) if dad else None)[0]:
+                                   have.get(dad) if dad else None,
+                                   father_name=labels.get(dad, "") if dad else "")[0]:
                 lines.append(line.replace("LAST\t", f"{q}\t", 1))
 
         # A label ONLY in a language the item does not have. `Len`/`Lmul` REPLACE,
@@ -1248,7 +1252,8 @@ def main():
             dad = father.get(g)
             name_statements, unresolved = name_lines(
                 labels[g], plan, g, have.get(dad) if dad else None,
-                fields=fields.get(g), sex=f["sex"])
+                fields=fields.get(g), sex=f["sex"],
+                father_name=labels.get(dad, "") if dad else "")
             lines.extend(name_statements)
             # Aliases: the nickname, and the full name under a married surname. Emma
             # asked for these alongside the second `P734` *family name*.

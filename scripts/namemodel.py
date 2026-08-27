@@ -338,7 +338,7 @@ def classify(label: str) -> list[tuple[str, str, int]]:
 
 
 def statements_for(label, plan, geni_id, father_qid=None, fields=None,
-                   sex=""):
+                   sex="", father_name=""):
     """(statement lines, notes) for one person's name.
 
     Each line is `(property, value, qualifiers)` with qualifiers as
@@ -363,8 +363,14 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None,
     given_count = 0
 
     if fields:
+        # **`father_name` is what turns a `-sen` token into the right kind of statement.**
+        # Emma's test: the same token as the father means an inherited surname (`P734`), a
+        # stem matching the father's GIVEN name means a patronymic (`P5056`). Without it the
+        # morphology alone decides, which is what every caller did until 2026-08-27 and is
+        # still the answer when the father is unknown.
         tokens = classify_fields(fields.get("givn", ""), fields.get("surn", ""),
-                                 fields.get("nick", ""), fields.get("marnm", ""))
+                                 fields.get("nick", ""), fields.get("marnm", ""),
+                                 father_name=father_name)
     else:
         tokens = classify(label)
 

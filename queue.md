@@ -429,10 +429,16 @@ test per person — same token as the father → inherited surname; stem matches
 name → patronymic. Without a father it keeps the morphological answer, which all nine callers
 rely on.
 
-**Still to do:** the plan's patronymic rows are `create`, so the items must be minted before
-anybody links to them — 10 a run through `build-garborg-name-items.py`. And the daily builders
-do not yet pass `father_name` into `classify_fields`, so the per-person test is available and
-unused.
+**The father reaches the emitter, 2026-08-27.** `statements_for` and `name_lines` take
+`father_name` and both call sites in `build-garborg-day.py` pass the father's label. Worked
+case, `Anna Gundersen`: no father → patronymic, item not minted, nothing emitted; father
+`Gunder Olsen` → stem matches his given name, still a patronymic; father `Hans Gundersen` →
+same token, so an inherited surname and **`P734` → `Q656767` goes out**. That third case used
+to produce no name statement at all.
+
+**Still to do:** the plan's patronymic rows are all `create`, so those items must be minted
+before anybody links to them — 10 a run through `build-garborg-name-items.py`. That is cadence,
+not work.
 
 ## The daily Garborg batch — one QuickStatements run per day
 

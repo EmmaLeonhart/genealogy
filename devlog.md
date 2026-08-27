@@ -15703,3 +15703,32 @@ Fixed, marker removed, and verified the honest way: deleting the 1,054 patronymi
 fail, restoring them makes it pass.
 
 **1,385 passed, 0 failed.**
+
+## 2026-08-27 — the father reaches the emitter, and it recovers lost statements
+
+`classify_fields` gained Emma's father test yesterday and **nothing handed it a father**, so it
+was built and unused for a day. `statements_for` and `name_lines` now take `father_name`, and
+both call sites in `build-garborg-day.py` pass the father's label.
+
+`Anna Gundersen` is the worked case. The plan holds `(Gundersen, family) → Q656767 link` and
+`(Gundersen, patronymic) → create`:
+
+| father | reading | emitted |
+| --- | --- | --- |
+| none | patronymic by morphology | nothing — that item is not minted yet |
+| `Gunder Olsen` | stem matches his given name → patronymic | nothing, correctly |
+| `Hans Gundersen` | same token → **inherited surname** | **`P734` → `Q656767`** |
+
+The third row is the point: a daughter of `Hans Gundersen` used to get **no name statement at
+all**, because the lookup asked for a patronymic item that does not exist while a family-name
+item sat there unused.
+
+**Verified by removing the father again** — passing `father_name=""` inside `statements_for`
+makes the test fail — rather than by reading the diff. Yesterday's lesson: a guard has to be
+seen to fail *for the right reason*.
+
+**Today's batch is unchanged by it**, and that is honest rather than disappointing: no person in
+the current 36 creations has a father carrying the same token. The rule fires where the data has
+the shape, and this neighbourhood does not yet.
+
+**1,386 passed, 0 failed.**
