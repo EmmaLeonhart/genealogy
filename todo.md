@@ -177,8 +177,14 @@ time, not seed choice. Ranking still earns its place for the *targeted* exports
 it on the assumption it is on the critical path.
 
 Still open: **taking the next export**, from the sequence in `reports/seeds.md`.
-Only the user can do the export itself — **BLOCKED-ON-USER-ACTION**, unblock
-signal is a new `.ged` under `exports/`.
+**This is NOT blocked on Emma and the tag saying so was wrong.** `CLAUDE.md`
+§ *The batches are a SEQUENCE* lists "the merges/exports must wait on her" as one
+of three invented limits, refuted on 2026-08-17: Chrome automation runs the whole
+loop end to end — create the placeholder in the tree view, Actions → Export
+GEDCOM, poll the download page, click through. Her words: *"we've managed to use
+Chrome automation to actually completely run my old workflow… all of my human
+labor involved with the exports."* An export tagged BLOCKED-ON-USER-ACTION here is
+a thing nothing is blocking.
 
 **Confirmed 2026-08-01.** The rest of that sentence used to predict that
 `genimerge merge` would absorb a new export without changes and that the seed
@@ -298,10 +304,14 @@ Three slices of this are built, each writing a reviewable batch to
   also have a Wikidata item, **46,802 are already stated** and **12** are
   addable. order.life took them *from* Wikidata.
 
-What is left under item 6 is **re-running reconciliation after a batch is
-accepted**, since each new P2600 makes the exact join reach further. That is
-**BLOCKED-ON-USER-ACTION**: no batch has been accepted, and running one at
-QuickStatements is the user's call, not this repo's.
+What is left under item 6 is **re-running the joins after a batch is accepted**,
+since each new `P2600` *Geni.com profile ID* makes the exact join reach further.
+**Not a blocker, and "reconciliation" is the wrong word for it** — `genimerge
+reconcile` was deleted on 2026-08-15 and name matching does not come back. What
+re-runs is the offline chain: `scripts/build-synoptic-correspondence.py` and the
+zipper, which `scripts/refresh-drift.py` already re-runs in dependency order. It
+simply has nothing new to consume until edits land, and editing starts
+2026-09-01 — a date, per § *A start date is not a blocker*, not an obstacle.
 
 ## 7. Ingest more sources
 
@@ -376,9 +386,11 @@ list, not the source file per field.
 
 **`order.life` is the last thing to touch, and not before everything else is
 settled.** It is a separate repo on this machine holding similar material that
-behaves differently again. **Another agent is editing it right now and it is in
-flux**, so reading it for anything load-bearing would be reading a moving
-target. BLOCKED-ON-EXTERNAL until Emma says it has settled.
+behaves differently again. **Another agent was editing it when this was written and it was in
+flux**, so reading it for anything load-bearing would be reading a moving target.
+**This blocks nothing**: order.life is explicitly the last source to touch and
+everything ahead of it is unfinished, so "don't read it yet" is an ordering note
+rather than a stalled item. Ask Emma when it is actually next.
 
 **Emma's 2026-08-07 framing of order.life and the phase ordering.** order.life
 is **a third source**, alongside Geni and Wikidata, feeding the Phase-4 queue of

@@ -16183,3 +16183,25 @@ same care the guard exists to enforce, and is why `--compose` itself is delibera
 guarded. Advancing the sequence is what it is for.
 
 **1,398 passed, 24 skipped, 0 failed** in 5m57s.
+
+## 2026-08-27 — three blocker tags in `todo.md`, none of them blocking anything
+
+Blocker interrogation. All three collapsed on *what would I do if nobody ever answered this*, so
+none went to Emma.
+
+- **"Taking the next export — BLOCKED-ON-USER-ACTION."** Directly contradicted by `CLAUDE.md`
+  § *The batches are a SEQUENCE*, which lists "the merges/exports must wait on her" as one of
+  three **invented** limits, refuted on 2026-08-17: Chrome automation runs the loop end to end.
+  Her words are in that section. The tag was wrong when written.
+- **"Re-running reconciliation after a batch is accepted — BLOCKED-ON-USER-ACTION."** Stale twice
+  over. `genimerge reconcile` was deleted on 2026-08-15; what actually re-runs is the offline
+  correspondence and zipper chain, which `scripts/refresh-drift.py` now walks in dependency
+  order. It has nothing new to consume until edits land, and editing starting 2026-09-01 is a
+  date, not an obstacle — § *A start date is not a blocker*.
+- **"order.life — BLOCKED-ON-EXTERNAL until Emma says it has settled."** True as written and
+  blocking nothing: order.life is explicitly the last source to touch and everything ahead of it
+  is unfinished, so it is an ordering note rather than a stalled item.
+
+That is the third interrogation running where every tag collapsed on contact, and this time two
+of them contradicted rules already written down in this repo. **The check that finds these is
+reading `CLAUDE.md` against the tag, not re-reading the tag.**
