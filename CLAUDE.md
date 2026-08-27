@@ -1516,7 +1516,28 @@ on 2026-08-23, 245 when this was written) in one
 module-scoped fixture and **exceeds ten minutes**, which is the agent tooling's
 per-command ceiling — so the full suite became unrunnable from a tool call around
 2026-08-16, purely because the corpus grew. Nothing is wrong with it; it is just
-long. **Run it in your own terminal.**
+long.
+
+### A ten-minute ceiling is not a wall. Run it in the BACKGROUND, do not hand it back
+
+**Emma, 2026-08-27:** *"My god you cunt just run that shit instead of acting like you need
+me."*
+
+This paragraph used to end *"run it in your own terminal"*, and that sentence was quoted in
+status report after status report as though the slow lane were something only she could do.
+It is not. The **foreground** tool call has a ten-minute ceiling; a **backgrounded** one does
+not, and the slow modules run there perfectly well — sequentially in one command, so the
+whole-corpus merges do not thrash each other.
+
+**This is the same failure as every other invented limit in this file** — `LAST` as a value,
+QuickStatements pointing at a fresh `CREATE`, the exports "waiting on her". A real constraint
+on one *mechanism* got written down as a constraint on the *task*, and then reported to her as
+a blocker. § *The batches are a SEQUENCE* names the pattern: **learned helplessness about
+something we can straightforwardly do.**
+
+**So: run it, in the background, and report the numbers.** Never write "needs your terminal",
+"run this yourself", or a slow-lane figure carried forward from a previous measurement, unless
+the thing genuinely cannot execute here — and a long runtime is not that.
 
 **A second `pytestmark` assignment silently overwrites the first.** That is how the
 marker looked applied and was not: `test_merge_real_exports.py` had
