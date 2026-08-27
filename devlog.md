@@ -16088,3 +16088,30 @@ the all-or-nothing loop — now call it. **The exception is narrow and stays nar
 no `ja`/`zh` label at all.
 
 **1,396 passed, 24 skipped, 0 failed** in 6m14s.
+
+## 2026-08-27 — `test_merge_real_exports` is green, 9 of 9, after chunking by cost
+
+The module had been "not yet attempted" since 2026-08-25 and had been killed mid-run four times.
+It passes: **4 + 2 + 3 tests over three chunks, 0 failures, 90 minutes**.
+
+**What made it runnable was measuring where the time goes rather than guessing.** `--durations=0`
+on the four fixture-only tests: `setup` **836.92s**, then 26s, 26s, 26s, 3s. So the cost is the
+*merge*, paid once per process — not the tests, and not twenty minutes each as the last reading
+had it. That reading came from watching two dots appear in forty minutes and dividing.
+
+| chunk | tests | wall | dominated by |
+| --- | ---: | ---: | --- |
+| fixture-only | 4 | 15m28 | the merge, 837s |
+| corpus-streaming | 2 | 32m07 | `no_line_is_lost` 694s, `no_record_is_lost` 403s |
+| re-merge and write | 3 | 42m34 | `is_idempotent` 1,196s (a second full merge), 282s, 241s |
+
+**Memory is the other axis: 16.8 GB for one merged tree, 23.6 GB while the idempotence test
+holds two.** That is why nothing else was run beside it, and it is worth knowing before anyone
+adds a test that merges a third time.
+
+The whole-module runs were never hung — CPU accumulated throughout, checked rather than assumed.
+They were simply longer than whatever stops a job here at 40-60 minutes.
+
+`CLAUDE.md`'s "exceeds ten minutes" is replaced with the measured figures, and the chunking rule
+is written beside it. **Still unrun: `test_paths` (5) and `test_density`'s last test — 23 tests**,
+which get the same `--durations=0`-first treatment.

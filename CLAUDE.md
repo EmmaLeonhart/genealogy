@@ -1547,11 +1547,10 @@ Six modules carry `slow`, each working over the whole corpus:
 `test_merge_real_exports`, `test_gedcom_real_exports`, `test_density`, `test_paths`
 (its real-merge tests only), `test_wikidata_store_real`, and the real-merge work in
 `test_sources`. `test_merge_real_exports` alone merges the whole corpus (546 exports
-on 2026-08-23, 245 when this was written) in one
-module-scoped fixture and **exceeds ten minutes**, which is the agent tooling's
-per-command ceiling — so the full suite became unrunnable from a tool call around
-2026-08-16, purely because the corpus grew. Nothing is wrong with it; it is just
-long.
+on 2026-08-23, 245 when this was written) in one module-scoped fixture. **Measured
+2026-08-27: that merge is 837 seconds and 16.8 GB**, and the module end to end is about
+90 minutes — `test_the_merge_is_idempotent` merges a second time and peaks at **23.6 GB**.
+Nothing is wrong with it; it is just long.
 
 ### A ten-minute ceiling is not a wall. Run it in the BACKGROUND, do not hand it back
 
@@ -1573,6 +1572,17 @@ something we can straightforwardly do.**
 **So: run it, in the background, and report the numbers.** Never write "needs your terminal",
 "run this yourself", or a slow-lane figure carried forward from a previous measurement, unless
 the thing genuinely cannot execute here — and a long runtime is not that.
+
+**Chunk the slow lane by COST, not by test count.** The unit of cost is the *fixture*: four
+tests that only read the merged tree share one 837s merge and finish in 15m28; the two that
+re-stream all 546 exports take 32m07; the three that re-merge or write the 409 MB file take
+42m34. Splitting `-k` along those lines is what took `test_merge_real_exports` from "killed at
+2 of 9, repeatedly" to **9 of 9 passed**.
+
+**A whole-module run kept dying around 40-60 minutes and it was never hung** — CPU was
+accumulating the whole time. The reading that each test took twenty minutes was wrong: it was
+one 14-minute fixture followed by two heavy tests. Run `--durations=0` before concluding
+anything about where a slow module spends itself.
 
 **A second `pytestmark` assignment silently overwrites the first.** That is how the
 marker looked applied and was not: `test_merge_real_exports.py` had
