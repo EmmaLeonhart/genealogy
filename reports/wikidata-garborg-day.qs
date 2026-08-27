@@ -1091,509 +1091,163 @@ Q19657284	P25	LAST	S2600	"6000000186285688241"
 #    and every value already has a QID, so this section depends on nothing above
 #    it. It is emitted LAST, per her order: individuals, names, relationships.
 
-#   Q116150300 Cecilie Ebbesdatter Hvide: P3373 sibling = Q2183430 Bengta Ebbesdotter Ebbesdatter Galen Queen of Sweden
-Q116150300	P3373	Q2183430	S2600	"305332989800002467"
-#   P735 given name = Q16275183 Cecilie
-Q116150300	P735	Q16275183
-#   P734 family name = Q55222347 Hvide
-Q116150300	P734	Q55222347
-#   set the ja label to "セシリエ・エッベスダッテル・ヴィーデ"
+#   Q116150300 Cecilie Ebbesdatter Hvide: set the ja label to "セシリエ・エッベスダッテル・ヴィーデ"
 Q116150300	Lja	"セシリエ・エッベスダッテル・ヴィーデ"
 #   set the zh label to "塞西莉厄·埃贝斯达特·维德"
 Q116150300	Lzh	"塞西莉厄·埃贝斯达特·维德"
-#   Q2183430 Bengta Ebbesdotter Ebbesdatter Galen Queen of Sweden: P3373 sibling = Q116150300 Cecilie Ebbesdatter Hvide
-Q2183430	P3373	Q116150300	S2600	"4947248545210089938"
-#   Q284400 Giséle de Cysoing: P40 child = Q274606 Berengar I margrave of Friuli, king of Italy
-Q284400	P40	Q274606	S2600	"6000000000424624719"
-#   Q11596350 Wakatakehiko: P40 child = Q11078587 Harima no Inabi no Ōiratsume
-Q11596350	P40	Q11078587	S2600	"6000000001835522164"
 #   Q5915800 Knut Algotsson: set the ja label to "クヌート・アルゴットソン"
 Q5915800	Lja	"クヌート・アルゴットソン"
 #   set the zh label to "克努特·阿尔戈特松"
 Q5915800	Lzh	"克努特·阿尔戈特松"
-#   Q3743799 Knut Valdemarsson Duke of Estland, Blekinge and Lolland: P40 child = Q6197518 Svantepolk Knutsson Viby Skarsholmsätten
-Q3743799	P40	Q6197518	S2600	"6000000003076221220"
-#   Q6197518 Svantepolk Knutsson Viby Skarsholmsätten: P40 child = Q101247444 Ingegerd Svantepolksdotter
-Q6197518	P40	Q101247444	S2600	"6000000003418900347"
-#   Q141168957 Jonas Jonson Heigre: P40 child = Q141178198 Enevald Jonasson Heigre
-Q141168957	P40	Q141178198	S2600	"6000000003491986771"
-#   P26 spouse = Q141178196 Elisabet Kirstine Eriksdatter Stangeland
-Q141168957	P26	Q141178196	S2600	"6000000003491986771"
-#   P26 spouse = Q141152523 Ane Oline Jonsdatter Raugstad
-Q141168957	P26	Q141152523	S2600	"6000000003491986771"
-#   P735 given name = Q16646115 Jonas
-Q141168957	P735	Q16646115
-#   set the ja label to "ヨナス・ヨンソン・ヘイグレ"
+#   Q141168957 Jonas Jonson Heigre: set the ja label to "ヨナス・ヨンソン・ヘイグレ"
 Q141168957	Lja	"ヨナス・ヨンソン・ヘイグレ"
 #   set the zh label to "约纳斯·永松·海格勒"
 Q141168957	Lzh	"约纳斯·永松·海格勒"
-#   Q141178196 Elisabet Kirstine Eriksdatter Stangeland: P40 child = Q141178198 Enevald Jonasson Heigre
-Q141178196	P40	Q141178198	S2600	"6000000003491986941"
-#   P26 spouse = Q141168957 Jonas Jonson Heigre
-Q141178196	P26	Q141168957	S2600	"6000000003491986941"
-#   P735 given name = Q16423275 Elisabet, qualified series ordinal 1, reason for preferred rank Q3409033 usual forename
-Q141178196	P735	Q16423275	P1545	"1"	P7452	Q3409033
-#   P735 given name = Q11980788 Kirstine, qualified series ordinal 2, object of statement has role Q245025 middle name
-Q141178196	P735	Q11980788	P1545	"2"	P3831	Q245025
-#   P734 family name = Q21452049 Stangeland
-Q141178196	P734	Q21452049
-#   set the ja label to "エリサベート・シシュティーネ・エリクスダッテル・スタンゲラン"
+#   Q141178196 Elisabet Kirstine Eriksdatter Stangeland: set the ja label to "エリサベート・シシュティーネ・エリクスダッテル・スタンゲラン"
 Q141178196	Lja	"エリサベート・シシュティーネ・エリクスダッテル・スタンゲラン"
 #   set the zh label to "伊丽莎白·谢什蒂内·埃里克斯达特·斯坦格兰"
 Q141178196	Lzh	"伊丽莎白·谢什蒂内·埃里克斯达特·斯坦格兰"
-#   Q141152523 Ane Oline Jonsdatter Raugstad: P22 father = Q141168955 Jon Samuelsen Raustad
-Q141152523	P22	Q141168955	S2600	"6000000003491986946"
-#   P25 mother = Q141178200 Inger Kristoffersdatter
-Q141152523	P25	Q141178200	S2600	"6000000003491986946"
-#   P40 child = Q467497 Aadne Eivindson Garborg
-Q141152523	P40	Q467497	S2600	"6000000003491986946"
-#   P40 child = Q141152600 Stine Stena Eivindsdatter Garborg
-Q141152523	P40	Q141152600	S2600	"6000000003491986946"
-#   P40 child = Q141152614 Jon Eivindson Garborg
-Q141152523	P40	Q141152614	S2600	"6000000003491986946"
-#   P40 child = Q141162040 Samuel Eivindsen Garborg
-Q141152523	P40	Q141162040	S2600	"6000000003491986946"
-#   P40 child = Q141162041 Even Eivindson Garborg
-Q141152523	P40	Q141162041	S2600	"6000000003491986946"
-#   P40 child = Q141162043 Inger Marie Mary Eivindsdatter Garborg
-Q141152523	P40	Q141162043	S2600	"6000000003491986946"
-#   P40 child = Q141162044 Abel Eivindsen Garborg
-Q141152523	P40	Q141162044	S2600	"6000000003491986946"
-#   P40 child = Q141162045 Ole Eivindsen Garborg
-Q141152523	P40	Q141162045	S2600	"6000000003491986946"
-#   P40 child = Q141162046 Ane Oline Lena Eivindsdatter Garborg
-Q141152523	P40	Q141162046	S2600	"6000000003491986946"
-#   P3373 sibling = Q141169046 Samuel Jonson
-Q141152523	P3373	Q141169046	S2600	"6000000003491986946"
-#   P26 spouse = Q141168957 Jonas Jonson Heigre
-Q141152523	P26	Q141168957	S2600	"6000000003491986946"
-#   P26 spouse = Q141152512 Eivind Aadnesson Garborg
-Q141152523	P26	Q141152512	S2600	"6000000003491986946"
-#   P735 given name = Q11958077 Ane, qualified series ordinal 1, reason for preferred rank Q3409033 usual forename
-Q141152523	P735	Q11958077	P1545	"1"	P7452	Q3409033
-#   P735 given name = Q11993741 Oline, qualified series ordinal 2, object of statement has role Q245025 middle name
-Q141152523	P735	Q11993741	P1545	"2"	P3831	Q245025
-#   set the ja label to "アーネ・オリーネ・ヨンスダッテル・ラウグスタード"
+#   Q141152523 Ane Oline Jonsdatter Raugstad: set the ja label to "アーネ・オリーネ・ヨンスダッテル・ラウグスタード"
 Q141152523	Lja	"アーネ・オリーネ・ヨンスダッテル・ラウグスタード"
 #   set the zh label to "安内·奥利内·永斯达特·劳格斯塔"
 Q141152523	Lzh	"安内·奥利内·永斯达特·劳格斯塔"
-#   Q141178198 Enevald Jonasson Heigre: P22 father = Q141168957 Jonas Jonson Heigre
-Q141178198	P22	Q141168957	S2600	"6000000003491986956"
-#   P25 mother = Q141178196 Elisabet Kirstine Eriksdatter Stangeland
-Q141178198	P25	Q141178196	S2600	"6000000003491986956"
-#   P735 given name = Q111085860 Enevald
-Q141178198	P735	Q111085860
-#   set the ja label to "エーネヴァル・ヨナソン・ヘイグレ"
+#   Q141178198 Enevald Jonasson Heigre: set the ja label to "エーネヴァル・ヨナソン・ヘイグレ"
 Q141178198	Lja	"エーネヴァル・ヨナソン・ヘイグレ"
 #   set the zh label to "埃内瓦尔德·约纳松·海格勒"
 Q141178198	Lzh	"埃内瓦尔德·约纳松·海格勒"
-#   Q141169046 Samuel Jonson: P22 father = Q141168955 Jon Samuelsen Raustad
-Q141169046	P22	Q141168955	S2600	"6000000003491988821"
-#   P25 mother = Q141178200 Inger Kristoffersdatter
-Q141169046	P25	Q141178200	S2600	"6000000003491988821"
-#   P3373 sibling = Q141152523 Ane Oline Jonsdatter Raugstad
-Q141169046	P3373	Q141152523	S2600	"6000000003491988821"
-#   P735 given name = Q629347 Samuel
-Q141169046	P735	Q629347
-#   set the ja label to "サムエル・ヨンソン"
+#   Q141169046 Samuel Jonson: set the ja label to "サムエル・ヨンソン"
 Q141169046	Lja	"サムエル・ヨンソン"
 #   set the zh label to "萨穆埃尔·永松"
 Q141169046	Lzh	"萨穆埃尔·永松"
-#   Q141178381 Marta Jonsdatter Li: P22 father = Q141180408 Jon Larsson Li
-Q141178381	P22	Q141180408	S2600	"6000000003491988826"
-#   P25 mother = Q141180412 Marta Rasmusdatter Høle
-Q141178381	P25	Q141180412	S2600	"6000000003491988826"
-#   P40 child = Q141168955 Jon Samuelsen Raustad
-Q141178381	P40	Q141168955	S2600	"6000000003491988826"
-#   P26 spouse = Q141178380 Samuel Jonson Raustad
-Q141178381	P26	Q141178380	S2600	"6000000003491988826"
-#   P735 given name = Q846741 Marta
-Q141178381	P735	Q846741
-#   set the ja label to "マルタ・ヨンスダッテル・リ"
+#   Q141178381 Marta Jonsdatter Li: set the ja label to "マルタ・ヨンスダッテル・リ"
 Q141178381	Lja	"マルタ・ヨンスダッテル・リ"
 #   set the zh label to "玛尔塔·永斯达特·李"
 Q141178381	Lzh	"玛尔塔·永斯达特·李"
-#   Q141178380 Samuel Jonson Raustad: P40 child = Q141168955 Jon Samuelsen Raustad
-Q141178380	P40	Q141168955	S2600	"6000000003491988831"
-#   P26 spouse = Q141178381 Marta Jonsdatter Li
-Q141178380	P26	Q141178381	S2600	"6000000003491988831"
-#   P735 given name = Q629347 Samuel
-Q141178380	P735	Q629347
-#   set the ja label to "サムエル・ヨンソン・ラウスタード"
+#   Q141178380 Samuel Jonson Raustad: set the ja label to "サムエル・ヨンソン・ラウスタード"
 Q141178380	Lja	"サムエル・ヨンソン・ラウスタード"
 #   set the zh label to "萨穆埃尔·永松·劳斯塔"
 Q141178380	Lzh	"萨穆埃尔·永松·劳斯塔"
-#   Q141152512 Eivind Aadnesson Garborg: P22 father = Q141169072 Ådne Olsen Grøtheim
-Q141152512	P22	Q141169072	S2600	"6000000003492005111"
-#   P25 mother = Q141178202 Stine Persdatter Øksnevad
-Q141152512	P25	Q141178202	S2600	"6000000003492005111"
-#   P40 child = Q467497 Aadne Eivindson Garborg
-Q141152512	P40	Q467497	S2600	"6000000003492005111"
-#   P40 child = Q141152600 Stine Stena Eivindsdatter Garborg
-Q141152512	P40	Q141152600	S2600	"6000000003492005111"
-#   P40 child = Q141152614 Jon Eivindson Garborg
-Q141152512	P40	Q141152614	S2600	"6000000003492005111"
-#   P40 child = Q141162040 Samuel Eivindsen Garborg
-Q141152512	P40	Q141162040	S2600	"6000000003492005111"
-#   P40 child = Q141162041 Even Eivindson Garborg
-Q141152512	P40	Q141162041	S2600	"6000000003492005111"
-#   P40 child = Q141162043 Inger Marie Mary Eivindsdatter Garborg
-Q141152512	P40	Q141162043	S2600	"6000000003492005111"
-#   P40 child = Q141162044 Abel Eivindsen Garborg
-Q141152512	P40	Q141162044	S2600	"6000000003492005111"
-#   P40 child = Q141162045 Ole Eivindsen Garborg
-Q141152512	P40	Q141162045	S2600	"6000000003492005111"
-#   P40 child = Q141162046 Ane Oline Lena Eivindsdatter Garborg
-Q141152512	P40	Q141162046	S2600	"6000000003492005111"
-#   P3373 sibling = Q141168833 Ingeborg Gurie Ådnesdatter Garborg
-Q141152512	P3373	Q141168833	S2600	"6000000003492005111"
-#   P3373 sibling = Q141168816 Elisabet Ådnesdatter Garborg
-Q141152512	P3373	Q141168816	S2600	"6000000003492005111"
-#   P26 spouse = Q141152523 Ane Oline Jonsdatter Raugstad
-Q141152512	P26	Q141152523	S2600	"6000000003492005111"
-#   set the ja label to "エイヴィン・オードネソン・ガルボルグ"
+#   Q141152512 Eivind Aadnesson Garborg: set the ja label to "エイヴィン・オードネソン・ガルボルグ"
 Q141152512	Lja	"エイヴィン・オードネソン・ガルボルグ"
 #   set the zh label to "埃温·奥德内松·加尔博格"
 Q141152512	Lzh	"埃温·奥德内松·加尔博格"
-#   Q467497 Aadne Eivindson Garborg: P40 child = Q11959067 Arne Olaus Fjørtoft Garborg
-Q467497	P40	Q11959067	S2600	"6000000003492005116"
-#   P3373 sibling = Q141152600 Stine Stena Eivindsdatter Garborg
-Q467497	P3373	Q141152600	S2600	"6000000003492005116"
-#   P3373 sibling = Q141152614 Jon Eivindson Garborg
-Q467497	P3373	Q141152614	S2600	"6000000003492005116"
-#   P3373 sibling = Q141162040 Samuel Eivindsen Garborg
-Q467497	P3373	Q141162040	S2600	"6000000003492005116"
-#   P3373 sibling = Q141162041 Even Eivindson Garborg
-Q467497	P3373	Q141162041	S2600	"6000000003492005116"
-#   P26 spouse = Q3143008 Karen Hulda Bergersen
-Q467497	P26	Q3143008	S2600	"6000000003492005116"
-#   Q141152600 Stine Stena Eivindsdatter Garborg: P40 child = Q141168794 Betsy Jacobson
-Q141152600	P40	Q141168794	S2600	"6000000003492005121"
-#   P735 given name = Q20022872 Stine, qualified series ordinal 1, reason for preferred rank Q3409033 usual forename
-Q141152600	P735	Q20022872	P1545	"1"	P7452	Q3409033
-#   P734 family name = Q30250555 Garborg
-Q141152600	P734	Q30250555
-#   set the ja label to "スティーネ・ステーナ・エイヴィンスダッテル・ガルボルグ"
+#   Q141152600 Stine Stena Eivindsdatter Garborg: set the ja label to "スティーネ・ステーナ・エイヴィンスダッテル・ガルボルグ"
 Q141152600	Lja	"スティーネ・ステーナ・エイヴィンスダッテル・ガルボルグ"
 #   set the zh label to "斯蒂内·斯泰娜·埃温斯达特·加尔博格"
 Q141152600	Lzh	"斯蒂内·斯泰娜·埃温斯达特·加尔博格"
-#   Q141152614 Jon Eivindson Garborg: P40 child = Q141168811 Eivind Garborg
-Q141152614	P40	Q141168811	S2600	"6000000003492005126"
-#   P40 child = Q141168792 Astrid Garborg
-Q141152614	P40	Q141168792	S2600	"6000000003492005126"
-#   P40 child = Q141168837 Ingebret Garborg
-Q141152614	P40	Q141168837	S2600	"6000000003492005126"
-#   P40 child = Q141168830 Ingeborg Garborg
-Q141152614	P40	Q141168830	S2600	"6000000003492005126"
-#   P40 child = Q141168954 Jon Garborg
-Q141152614	P40	Q141168954	S2600	"6000000003492005126"
-#   P40 child = Q141168784 Aagot Garborg
-Q141152614	P40	Q141168784	S2600	"6000000003492005126"
-#   P735 given name = Q13501137 Jon
-Q141152614	P735	Q13501137
-#   P734 family name = Q30250555 Garborg
-Q141152614	P734	Q30250555
-#   set the ja label to "ヨン・エイヴィンソン・ガルボルグ"
+#   Q141152614 Jon Eivindson Garborg: set the ja label to "ヨン・エイヴィンソン・ガルボルグ"
 Q141152614	Lja	"ヨン・エイヴィンソン・ガルボルグ"
 #   set the zh label to "永·埃温松·加尔博格"
 Q141152614	Lzh	"永·埃温松·加尔博格"
-#   Q141162040 Samuel Eivindsen Garborg: P735 given name = Q629347 Samuel
-Q141162040	P735	Q629347
-#   P734 family name = Q30250555 Garborg
-Q141162040	P734	Q30250555
-#   set the ja label to "サムエル・エイヴィンセン・ガルボルグ"
+#   Q141162040 Samuel Eivindsen Garborg: set the ja label to "サムエル・エイヴィンセン・ガルボルグ"
 Q141162040	Lja	"サムエル・エイヴィンセン・ガルボルグ"
 #   set the zh label to "萨穆埃尔·埃温森·加尔博格"
 Q141162040	Lzh	"萨穆埃尔·埃温森·加尔博格"
-#   Q141162041 Even Eivindson Garborg: P735 given name = Q4567129 Even
-Q141162041	P735	Q4567129
-#   P734 family name = Q30250555 Garborg
-Q141162041	P734	Q30250555
-#   set the ja label to "エーヴェン・エイヴィンソン・ガルボルグ"
+#   Q141162041 Even Eivindson Garborg: set the ja label to "エーヴェン・エイヴィンソン・ガルボルグ"
 Q141162041	Lja	"エーヴェン・エイヴィンソン・ガルボルグ"
 #   set the zh label to "埃文·埃温松·加尔博格"
 Q141162041	Lzh	"埃文·埃温松·加尔博格"
-#   Q141162043 Inger Marie Mary Eivindsdatter Garborg: P40 child = Q141168820 Eliza Ronneberg
-Q141162043	P40	Q141168820	S2600	"6000000003492005141"
-#   P40 child = Q141168789 Arnold Ronneberg
-Q141162043	P40	Q141168789	S2600	"6000000003492005141"
-#   P40 child = Q141168805 Edward Ronneberg
-Q141162043	P40	Q141168805	S2600	"6000000003492005141"
-#   P40 child = Q141168786 Alice Ronneberg
-Q141162043	P40	Q141168786	S2600	"6000000003492005141"
-#   P40 child = Q141168824 Ernest Anton Ronneberg
-Q141162043	P40	Q141168824	S2600	"6000000003492005141"
-#   P735 given name = Q3358452 Inger, qualified series ordinal 1, reason for preferred rank Q3409033 usual forename
-Q141162043	P735	Q3358452	P1545	"1"	P7452	Q3409033
-#   P735 given name = Q106674406 Marie, qualified series ordinal 2, object of statement has role Q245025 middle name
-Q141162043	P735	Q106674406	P1545	"2"	P3831	Q245025
-#   P734 family name = Q30250555 Garborg
-Q141162043	P734	Q30250555
-#   set the ja label to "インゲル・マリー・メアリー・エイヴィンスダッテル・ガルボルグ"
+#   Q141162043 Inger Marie Mary Eivindsdatter Garborg: set the ja label to "インゲル・マリー・メアリー・エイヴィンスダッテル・ガルボルグ"
 Q141162043	Lja	"インゲル・マリー・メアリー・エイヴィンスダッテル・ガルボルグ"
 #   set the zh label to "英厄尔·玛丽·玛丽·埃温斯达特·加尔博格"
 Q141162043	Lzh	"英厄尔·玛丽·玛丽·埃温斯达特·加尔博格"
-#   Q141162044 Abel Eivindsen Garborg: P735 given name = Q318375 Abel
-Q141162044	P735	Q318375
-#   P734 family name = Q30250555 Garborg
-Q141162044	P734	Q30250555
-#   set the ja label to "アーベル・エイヴィンセン・ガルボルグ"
+#   Q141162044 Abel Eivindsen Garborg: set the ja label to "アーベル・エイヴィンセン・ガルボルグ"
 Q141162044	Lja	"アーベル・エイヴィンセン・ガルボルグ"
 #   set the zh label to "阿贝尔·埃温森·加尔博格"
 Q141162044	Lzh	"阿贝尔·埃温森·加尔博格"
-#   Q141162045 Ole Eivindsen Garborg: P735 given name = Q2097883 Ole
-Q141162045	P735	Q2097883
-#   P734 family name = Q30250555 Garborg
-Q141162045	P734	Q30250555
-#   set the ja label to "オーレ・エイヴィンセン・ガルボルグ"
+#   Q141162045 Ole Eivindsen Garborg: set the ja label to "オーレ・エイヴィンセン・ガルボルグ"
 Q141162045	Lja	"オーレ・エイヴィンセン・ガルボルグ"
 #   set the zh label to "奥勒·埃温森·加尔博格"
 Q141162045	Lzh	"奥勒·埃温森·加尔博格"
-#   Q141162046 Ane Oline Lena Eivindsdatter Garborg: P40 child = Q141169062 Thoralf Tunheim
-Q141162046	P40	Q141169062	S2600	"6000000003492005156"
-#   P40 child = Q141168801 Cora Estelle Tunheim
-Q141162046	P40	Q141168801	S2600	"6000000003492005156"
-#   P40 child = Q141168809 Edward Tunheim
-Q141162046	P40	Q141168809	S2600	"6000000003492005156"
-#   P40 child = Q141168787 Alma Matilda Tunheim
-Q141162046	P40	Q141168787	S2600	"6000000003492005156"
-#   P40 child = Q141169041 Olaf Tunheim
-Q141162046	P40	Q141169041	S2600	"6000000003492005156"
-#   P40 child = Q141168788 Arne Garborg Tunheim
-Q141162046	P40	Q141168788	S2600	"6000000003492005156"
-#   P735 given name = Q11958077 Ane, qualified series ordinal 1, reason for preferred rank Q3409033 usual forename
-Q141162046	P735	Q11958077	P1545	"1"	P7452	Q3409033
-#   P735 given name = Q11993741 Oline, qualified series ordinal 2, object of statement has role Q245025 middle name
-Q141162046	P735	Q11993741	P1545	"2"	P3831	Q245025
-#   P734 family name = Q30250555 Garborg
-Q141162046	P734	Q30250555
-#   set the ja label to "アーネ・オリーネ・レーナ・エイヴィンスダッテル・ガルボルグ"
+#   Q141162046 Ane Oline Lena Eivindsdatter Garborg: set the ja label to "アーネ・オリーネ・レーナ・エイヴィンスダッテル・ガルボルグ"
 Q141162046	Lja	"アーネ・オリーネ・レーナ・エイヴィンスダッテル・ガルボルグ"
 #   set the zh label to "安内·奥利内·莱娜·埃温斯达特·加尔博格"
 Q141162046	Lzh	"安内·奥利内·莱娜·埃温斯达特·加尔博格"
-#   Q141169072 Ådne Olsen Grøtheim: P40 child = Q141152512 Eivind Aadnesson Garborg
-Q141169072	P40	Q141152512	S2600	"6000000003492005161"
-#   P40 child = Q141168833 Ingeborg Gurie Ådnesdatter Garborg
-Q141169072	P40	Q141168833	S2600	"6000000003492005161"
-#   P40 child = Q141168816 Elisabet Ådnesdatter Garborg
-Q141169072	P40	Q141168816	S2600	"6000000003492005161"
-#   P26 spouse = Q141178202 Stine Persdatter Øksnevad
-Q141169072	P26	Q141178202	S2600	"6000000003492005161"
-#   set the ja label to "オードネ・オルセン・グレートヘイム"
+#   Q141169072 Ådne Olsen Grøtheim: set the ja label to "オードネ・オルセン・グレートヘイム"
 Q141169072	Lja	"オードネ・オルセン・グレートヘイム"
 #   set the zh label to "奥德内·奥尔森·格勒特海姆"
 Q141169072	Lzh	"奥德内·奥尔森·格勒特海姆"
-#   Q141178202 Stine Persdatter Øksnevad: P40 child = Q141152512 Eivind Aadnesson Garborg
-Q141178202	P40	Q141152512	S2600	"6000000003492005166"
-#   P40 child = Q141168833 Ingeborg Gurie Ådnesdatter Garborg
-Q141178202	P40	Q141168833	S2600	"6000000003492005166"
-#   P40 child = Q141168816 Elisabet Ådnesdatter Garborg
-Q141178202	P40	Q141168816	S2600	"6000000003492005166"
-#   P26 spouse = Q141169072 Ådne Olsen Grøtheim
-Q141178202	P26	Q141169072	S2600	"6000000003492005166"
-#   P735 given name = Q20022872 Stine
-Q141178202	P735	Q20022872
-#   P734 family name = Q30583490 Øksnevad
-Q141178202	P734	Q30583490
-#   set the ja label to "スティーネ・ペシュダッテル・エクスネヴァード"
+#   Q141178202 Stine Persdatter Øksnevad: set the ja label to "スティーネ・ペシュダッテル・エクスネヴァード"
 Q141178202	Lja	"スティーネ・ペシュダッテル・エクスネヴァード"
 #   set the zh label to "斯蒂内·佩斯达特·厄克斯内瓦"
 Q141178202	Lzh	"斯蒂内·佩斯达特·厄克斯内瓦"
-#   Q141168833 Ingeborg Gurie Ådnesdatter Garborg: P22 father = Q141169072 Ådne Olsen Grøtheim
-Q141168833	P22	Q141169072	S2600	"6000000003492005171"
-#   P25 mother = Q141178202 Stine Persdatter Øksnevad
-Q141168833	P25	Q141178202	S2600	"6000000003492005171"
-#   P735 given name = Q656590 Ingeborg, qualified series ordinal 1, reason for preferred rank Q3409033 usual forename
-Q141168833	P735	Q656590	P1545	"1"	P7452	Q3409033
-#   P734 family name = Q30250555 Garborg
-Q141168833	P734	Q30250555
-#   set the ja label to "インゲボルグ・グーリエ・オードネスダッテル・ガルボルグ"
+#   Q141168833 Ingeborg Gurie Ådnesdatter Garborg: set the ja label to "インゲボルグ・グーリエ・オードネスダッテル・ガルボルグ"
 Q141168833	Lja	"インゲボルグ・グーリエ・オードネスダッテル・ガルボルグ"
 #   set the zh label to "英厄堡·古里·奥德内斯达特·加尔博格"
 Q141168833	Lzh	"英厄堡·古里·奥德内斯达特·加尔博格"
-#   Q141168816 Elisabet Ådnesdatter Garborg: P22 father = Q141169072 Ådne Olsen Grøtheim
-Q141168816	P22	Q141169072	S2600	"6000000003492005176"
-#   P25 mother = Q141178202 Stine Persdatter Øksnevad
-Q141168816	P25	Q141178202	S2600	"6000000003492005176"
-#   P735 given name = Q16423275 Elisabet
-Q141168816	P735	Q16423275
-#   P734 family name = Q30250555 Garborg
-Q141168816	P734	Q30250555
-#   set the ja label to "エリサベート・オードネスダッテル・ガルボルグ"
+#   Q141168816 Elisabet Ådnesdatter Garborg: set the ja label to "エリサベート・オードネスダッテル・ガルボルグ"
 Q141168816	Lja	"エリサベート・オードネスダッテル・ガルボルグ"
 #   set the zh label to "伊丽莎白·奥德内斯达特·加尔博格"
 Q141168816	Lzh	"伊丽莎白·奥德内斯达特·加尔博格"
-#   Q141168955 Jon Samuelsen Raustad: P22 father = Q141178380 Samuel Jonson Raustad
-Q141168955	P22	Q141178380	S2600	"6000000003732742137"
-#   P25 mother = Q141178381 Marta Jonsdatter Li
-Q141168955	P25	Q141178381	S2600	"6000000003732742137"
-#   P40 child = Q141152523 Ane Oline Jonsdatter Raugstad
-Q141168955	P40	Q141152523	S2600	"6000000003732742137"
-#   P40 child = Q141169046 Samuel Jonson
-Q141168955	P40	Q141169046	S2600	"6000000003732742137"
-#   P26 spouse = Q141178200 Inger Kristoffersdatter
+#   Q141168955 Jon Samuelsen Raustad: P26 spouse = Q141178200 Inger Kristoffersdatter
 Q141168955	P26	Q141178200	S2600	"6000000003732742137"
-#   P735 given name = Q13501137 Jon
-Q141168955	P735	Q13501137
 #   set the ja label to "ヨン・サムエルセン・ラウスタード"
 Q141168955	Lja	"ヨン・サムエルセン・ラウスタード"
 #   set the zh label to "永·萨穆埃尔森·劳斯塔"
 Q141168955	Lzh	"永·萨穆埃尔森·劳斯塔"
-#   Q633094 Johannes Tomasson: P22 father = Q141180413 Thomas Mattsson
-Q633094	P22	Q141180413	S2600	"6000000004334763223"
-#   P25 mother = Q141180409 Magdalena Andersdotter Bure
-Q633094	P25	Q141180409	S2600	"6000000004334763223"
-#   P26 spouse = Q141180410 Margareta Mårtensdotter Bång
+#   Q633094 Johannes Tomasson: P26 spouse = Q141180410 Margareta Mårtensdotter Bång
 Q633094	P26	Q141180410	S2600	"6000000004334763223"
-#   P26 spouse = Q141180406 Ingeborg Gyntesdotter
-Q633094	P26	Q141180406	S2600	"6000000004334763223"
 #   set the zh label to "约翰内斯·托马松"
 Q633094	Lzh	"约翰内斯·托马松"
-#   Q141180413 Thomas Mattsson: P40 child = Q633094 Johannes Tomasson
-Q141180413	P40	Q633094	S2600	"6000000004334768506"
-#   P26 spouse = Q141180409 Magdalena Andersdotter Bure
-Q141180413	P26	Q141180409	S2600	"6000000004334768506"
-#   set the ja label to "トーマス・マットソン"
+#   Q141180413 Thomas Mattsson: set the ja label to "トーマス・マットソン"
 Q141180413	Lja	"トーマス・マットソン"
 #   set the zh label to "托马斯·马特松"
 Q141180413	Lzh	"托马斯·马特松"
-#   Q141178149 Anna Fartegnsdatter Seim: P734 family name = Q30088373 Seim
-Q141178149	P734	Q30088373
-#   set the ja label to "アンナ・ファルテグンスダッテル・セイム"
+#   Q141178149 Anna Fartegnsdatter Seim: set the ja label to "アンナ・ファルテグンスダッテル・セイム"
 Q141178149	Lja	"アンナ・ファルテグンスダッテル・セイム"
 #   set the zh label to "安娜·法尔特格恩斯达特·塞姆"
 Q141178149	Lzh	"安娜·法尔特格恩斯达特·塞姆"
-#   Q3143008 Karen Hulda Bergersen: P22 father = Q141168797 Christian Frederik Bergersen
-Q3143008	P22	Q141168797	S2600	"6000000005606976813"
-#   P25 mother = Q141178201 Marie Petrine Simensdatter Bergersen
+#   Q3143008 Karen Hulda Bergersen: P25 mother = Q141178201 Marie Petrine Simensdatter Bergersen
 Q3143008	P25	Q141178201	S2600	"6000000005606976813"
-#   P40 child = Q11959067 Arne Olaus Fjørtoft Garborg
-Q3143008	P40	Q11959067	S2600	"6000000005606976813"
-#   P26 spouse = Q467497 Aadne Eivindson Garborg
-Q3143008	P26	Q467497	S2600	"6000000005606976813"
-#   Q11959067 Arne Olaus Fjørtoft Garborg: P40 child = Q141168827 Hans Eivind Garborg
-Q11959067	P40	Q141168827	S2600	"6000000005607426327"
-#   P26 spouse = Q141168785 Aagot Nyvold
-Q11959067	P26	Q141168785	S2600	"6000000005607426327"
-#   P26 spouse = Q141168803 Dagny Nyvold
-Q11959067	P26	Q141168803	S2600	"6000000005607426327"
-#   set the ja label to "アルネ・オーラウス・フョルトフト・ガルボルグ"
+#   Q11959067 Arne Olaus Fjørtoft Garborg: set the ja label to "アルネ・オーラウス・フョルトフト・ガルボルグ"
 Q11959067	Lja	"アルネ・オーラウス・フョルトフト・ガルボルグ"
 #   set the zh label to "阿尔内·奥劳斯·夫约托夫特·加尔博格"
 Q11959067	Lzh	"阿尔内·奥劳斯·夫约托夫特·加尔博格"
-#   Q141168827 Hans Eivind Garborg: P22 father = Q11959067 Arne Olaus Fjørtoft Garborg
-Q141168827	P22	Q11959067	S2600	"6000000005607426344"
-#   P25 mother = Q141168785 Aagot Nyvold
-Q141168827	P25	Q141168785	S2600	"6000000005607426344"
-#   P735 given name = Q3358418 Eivind, qualified series ordinal 2, object of statement has role Q245025 middle name
-Q141168827	P735	Q3358418	P1545	"2"	P3831	Q245025
-#   P734 family name = Q30250555 Garborg
-Q141168827	P734	Q30250555
-#   set the ja label to "ハンス・エイヴィン・ガルボルグ"
+#   Q141168827 Hans Eivind Garborg: set the ja label to "ハンス・エイヴィン・ガルボルグ"
 Q141168827	Lja	"ハンス・エイヴィン・ガルボルグ"
 #   set the zh label to "汉斯·埃温·加尔博格"
 Q141168827	Lzh	"汉斯·埃温·加尔博格"
-#   Q141178200 Inger Kristoffersdatter: P40 child = Q141152523 Ane Oline Jonsdatter Raugstad
-Q141178200	P40	Q141152523	S2600	"6000000005609534511"
-#   P40 child = Q141169046 Samuel Jonson
-Q141178200	P40	Q141169046	S2600	"6000000005609534511"
-#   P26 spouse = Q141168955 Jon Samuelsen Raustad
-Q141178200	P26	Q141168955	S2600	"6000000005609534511"
-#   P735 given name = Q3358452 Inger
-Q141178200	P735	Q3358452
-#   set the ja label to "インゲル・クリストッフェシュダッテル"
+#   Q141178200 Inger Kristoffersdatter: set the ja label to "インゲル・クリストッフェシュダッテル"
 Q141178200	Lja	"インゲル・クリストッフェシュダッテル"
 #   set the zh label to "英厄尔·克里斯托弗斯达特"
 Q141178200	Lzh	"英厄尔·克里斯托弗斯达特"
-#   Q141180408 Jon Larsson Li: P40 child = Q141178381 Marta Jonsdatter Li
-Q141180408	P40	Q141178381	S2600	"6000000005609534542"
-#   P26 spouse = Q141180412 Marta Rasmusdatter Høle
+#   Q141180408 Jon Larsson Li: P26 spouse = Q141180412 Marta Rasmusdatter Høle
 Q141180408	P26	Q141180412	S2600	"6000000005609534542"
-#   P735 given name = Q13501137 Jon
-Q141180408	P735	Q13501137
 #   set the ja label to "ヨン・ラーション・リ"
 Q141180408	Lja	"ヨン・ラーション・リ"
 #   set the zh label to "永·拉尔松·李"
 Q141180408	Lzh	"永·拉尔松·李"
-#   Q141180412 Marta Rasmusdatter Høle: P40 child = Q141178381 Marta Jonsdatter Li
-Q141180412	P40	Q141178381	S2600	"6000000005609534550"
-#   P26 spouse = Q141180408 Jon Larsson Li
+#   Q141180412 Marta Rasmusdatter Høle: P26 spouse = Q141180408 Jon Larsson Li
 Q141180412	P26	Q141180408	S2600	"6000000005609534550"
-#   P735 given name = Q846741 Marta
-Q141180412	P735	Q846741
 #   set the ja label to "マルタ・ラスムスダッテル・ヘーレ"
 Q141180412	Lja	"マルタ・ラスムスダッテル・ヘーレ"
 #   set the zh label to "玛尔塔·拉斯穆斯达特·赫勒"
 Q141180412	Lzh	"玛尔塔·拉斯穆斯达特·赫勒"
-#   Q141180409 Magdalena Andersdotter Bure: P40 child = Q633094 Johannes Tomasson
-Q141180409	P40	Q633094	S2600	"6000000006127859575"
-#   P26 spouse = Q141180413 Thomas Mattsson
-Q141180409	P26	Q141180413	S2600	"6000000006127859575"
-#   P735 given name = Q842544 Magdalena
-Q141180409	P735	Q842544
-#   set the ja label to "マグダレーナ・アンデシュドッテル・ブーレ"
+#   Q141180409 Magdalena Andersdotter Bure: set the ja label to "マグダレーナ・アンデシュドッテル・ブーレ"
 Q141180409	Lja	"マグダレーナ・アンデシュドッテル・ブーレ"
 #   set the zh label to "玛格达莱娜·安德斯多特·布雷"
 Q141180409	Lzh	"玛格达莱娜·安德斯多特·布雷"
-#   Q141168811 Eivind Garborg: P22 father = Q141152614 Jon Eivindson Garborg
-Q141168811	P22	Q141152614	S2600	"6000000006570861816"
-#   P735 given name = Q3358418 Eivind
-Q141168811	P735	Q3358418
-#   P734 family name = Q30250555 Garborg
-Q141168811	P734	Q30250555
-#   set the ja label to "エイヴィン・ガルボルグ"
+#   Q141168811 Eivind Garborg: set the ja label to "エイヴィン・ガルボルグ"
 Q141168811	Lja	"エイヴィン・ガルボルグ"
 #   set the zh label to "埃温·加尔博格"
 Q141168811	Lzh	"埃温·加尔博格"
-#   Q141168792 Astrid Garborg: P22 father = Q141152614 Jon Eivindson Garborg
-Q141168792	P22	Q141152614	S2600	"6000000006572523374"
-#   P735 given name = Q167755 Astrid
-Q141168792	P735	Q167755
-#   P734 family name = Q30250555 Garborg
-Q141168792	P734	Q30250555
-#   set the ja label to "アストリッド・ガルボルグ"
+#   Q141168792 Astrid Garborg: set the ja label to "アストリッド・ガルボルグ"
 Q141168792	Lja	"アストリッド・ガルボルグ"
 #   set the zh label to "阿斯特丽德·加尔博格"
 Q141168792	Lzh	"阿斯特丽德·加尔博格"
-#   Q141168837 Ingebret Garborg: P22 father = Q141152614 Jon Eivindson Garborg
-Q141168837	P22	Q141152614	S2600	"6000000006572799149"
-#   P735 given name = Q30229695 Ingebret
-Q141168837	P735	Q30229695
-#   P734 family name = Q30250555 Garborg
-Q141168837	P734	Q30250555
-#   set the ja label to "インゲブレート・ガルボルグ"
+#   Q141168837 Ingebret Garborg: set the ja label to "インゲブレート・ガルボルグ"
 Q141168837	Lja	"インゲブレート・ガルボルグ"
 #   set the zh label to "英厄布雷特·加尔博格"
 Q141168837	Lzh	"英厄布雷特·加尔博格"
-#   Q141168830 Ingeborg Garborg: P22 father = Q141152614 Jon Eivindson Garborg
-Q141168830	P22	Q141152614	S2600	"6000000006573130134"
-#   P735 given name = Q656590 Ingeborg
-Q141168830	P735	Q656590
-#   P734 family name = Q30250555 Garborg
-Q141168830	P734	Q30250555
-#   set the ja label to "インゲボルグ・ガルボルグ"
+#   Q141168830 Ingeborg Garborg: set the ja label to "インゲボルグ・ガルボルグ"
 Q141168830	Lja	"インゲボルグ・ガルボルグ"
 #   set the zh label to "英厄堡·加尔博格"
 Q141168830	Lzh	"英厄堡·加尔博格"
-#   Q141168954 Jon Garborg: P22 father = Q141152614 Jon Eivindson Garborg
-Q141168954	P22	Q141152614	S2600	"6000000006573294012"
-#   P735 given name = Q13501137 Jon
-Q141168954	P735	Q13501137
-#   P734 family name = Q30250555 Garborg
-Q141168954	P734	Q30250555
-#   set the ja label to "ヨン・ガルボルグ"
+#   Q141168954 Jon Garborg: set the ja label to "ヨン・ガルボルグ"
 Q141168954	Lja	"ヨン・ガルボルグ"
 #   set the zh label to "永·加尔博格"
 Q141168954	Lzh	"永·加尔博格"
-#   Q141178201 Marie Petrine Simensdatter Bergersen: P40 child = Q3143008 Karen Hulda Bergersen
-Q141178201	P40	Q3143008	S2600	"6000000009126235990"
-#   P26 spouse = Q141168797 Christian Frederik Bergersen
-Q141178201	P26	Q141168797	S2600	"6000000009126235990"
-#   P735 given name = Q106674406 Marie, qualified series ordinal 1, reason for preferred rank Q3409033 usual forename
-Q141178201	P735	Q106674406	P1545	"1"	P7452	Q3409033
-#   P735 given name = Q107227465 Petrine, qualified series ordinal 2, object of statement has role Q245025 middle name
-Q141178201	P735	Q107227465	P1545	"2"	P3831	Q245025
-#   set the ja label to "マリー・ペトリーネ・シメンスダッテル・ベルゲルセン"
+#   Q141178201 Marie Petrine Simensdatter Bergersen: set the ja label to "マリー・ペトリーネ・シメンスダッテル・ベルゲルセン"
 Q141178201	Lja	"マリー・ペトリーネ・シメンスダッテル・ベルゲルセン"
 #   set the zh label to "玛丽·佩特里内·西门斯达特·贝格尔森"
 Q141178201	Lzh	"玛丽·佩特里内·西门斯达特·贝格尔森"
@@ -1601,14 +1255,8 @@ Q141178201	Lzh	"玛丽·佩特里内·西门斯达特·贝格尔森"
 Q141168797	P22	Q141178199	S2600	"6000000009126453497"
 #   P25 mother = Q141180395 Maren Gulbrandsdatter Ommestad
 Q141168797	P25	Q141180395	S2600	"6000000009126453497"
-#   P40 child = Q3143008 Karen Hulda Bergersen
-Q141168797	P40	Q3143008	S2600	"6000000009126453497"
 #   P26 spouse = Q141178201 Marie Petrine Simensdatter Bergersen
 Q141168797	P26	Q141178201	S2600	"6000000009126453497"
-#   P735 given name = Q18001597 Christian, qualified series ordinal 1, reason for preferred rank Q3409033 usual forename
-Q141168797	P735	Q18001597	P1545	"1"	P7452	Q3409033
-#   P735 given name = Q17539077 Frederik, qualified series ordinal 2, object of statement has role Q245025 middle name
-Q141168797	P735	Q17539077	P1545	"2"	P3831	Q245025
 #   set the ja label to "クリスチャン・フレデリク・ベルゲルセン"
 Q141168797	Lja	"クリスチャン・フレデリク・ベルゲルセン"
 #   set the zh label to "克里斯蒂安·弗雷德里克·贝格尔森"
@@ -1617,218 +1265,112 @@ Q141168797	Lzh	"克里斯蒂安·弗雷德里克·贝格尔森"
 Q101247444	Lja	"インゲゲルド・スヴァンテポルクスドッテル"
 #   set the zh label to "英格格德·斯万特波尔克斯多特"
 Q101247444	Lzh	"英格格德·斯万特波尔克斯多特"
-#   Q141180410 Margareta Mårtensdotter Bång: P26 spouse = Q633094 Johannes Tomasson
-Q141180410	P26	Q633094	S2600	"6000000012566410426"
-#   P735 given name = Q8274988 Margareta
-Q141180410	P735	Q8274988
-#   set the ja label to "マルガレータ・モーテンスドッテル・ボング"
+#   Q141180410 Margareta Mårtensdotter Bång: set the ja label to "マルガレータ・モーテンスドッテル・ボング"
 Q141180410	Lja	"マルガレータ・モーテンスドッテル・ボング"
 #   set the zh label to "玛格丽塔·莫滕斯多特·邦格"
 Q141180410	Lzh	"玛格丽塔·莫滕斯多特·邦格"
-#   Q141178199 Gunder Bergersen: P40 child = Q141168797 Christian Frederik Bergersen
-Q141178199	P40	Q141168797	S2600	"6000000016756402733"
-#   P26 spouse = Q141180395 Maren Gulbrandsdatter Ommestad
+#   Q141178199 Gunder Bergersen: P26 spouse = Q141180395 Maren Gulbrandsdatter Ommestad
 Q141178199	P26	Q141180395	S2600	"6000000016756402733"
-#   P735 given name = Q989832 Gunder
-Q141178199	P735	Q989832
 #   set the ja label to "グンデル・ベルゲルセン"
 Q141178199	Lja	"グンデル・ベルゲルセン"
 #   set the zh label to "贡德尔·贝格尔森"
 Q141178199	Lzh	"贡德尔·贝格尔森"
-#   Q141180395 Maren Gulbrandsdatter Ommestad: P40 child = Q141168797 Christian Frederik Bergersen
-Q141180395	P40	Q141168797	S2600	"6000000020221673906"
-#   P26 spouse = Q141178199 Gunder Bergersen
+#   Q141180395 Maren Gulbrandsdatter Ommestad: P26 spouse = Q141178199 Gunder Bergersen
 Q141180395	P26	Q141178199	S2600	"6000000020221673906"
-#   P735 given name = Q1666203 Maren
-Q141180395	P735	Q1666203
 #   set the ja label to "マーレン・グルブランスダッテル・オンメスタード"
 Q141180395	Lja	"マーレン・グルブランスダッテル・オンメスタード"
 #   set the zh label to "马伦·古尔布兰斯达特·翁梅斯塔德"
 Q141180395	Lzh	"马伦·古尔布兰斯达特·翁梅斯塔德"
-#   Q141168784 Aagot Garborg: P22 father = Q141152614 Jon Eivindson Garborg
-Q141168784	P22	Q141152614	S2600	"6000000021079935250"
-#   P735 given name = Q3482557 Aagot
-Q141168784	P735	Q3482557
-#   P734 family name = Q30250555 Garborg
-Q141168784	P734	Q30250555
-#   set the ja label to "オーゴット・ガルボルグ"
+#   Q141168784 Aagot Garborg: set the ja label to "オーゴット・ガルボルグ"
 Q141168784	Lja	"オーゴット・ガルボルグ"
 #   set the zh label to "奥高特·加尔博格"
 Q141168784	Lzh	"奥高特·加尔博格"
-#   Q138474188 Hans Syvertsen Nyvold: P40 child = Q141168785 Aagot Nyvold
-Q138474188	P40	Q141168785	S2600	"6000000021197598122"
-#   P40 child = Q141168803 Dagny Nyvold
-Q138474188	P40	Q141168803	S2600	"6000000021197598122"
-#   P26 spouse = Q141178197 Elisabeth Johannesen
+#   Q138474188 Hans Syvertsen Nyvold: P26 spouse = Q141178197 Elisabeth Johannesen
 Q138474188	P26	Q141178197	S2600	"6000000021197598122"
 #   set the ja label to "ハンス・シーヴェシェン・ニーヴォル"
 Q138474188	Lja	"ハンス・シーヴェシェン・ニーヴォル"
 #   set the zh label to "汉斯·西韦特森·尼沃尔"
 Q138474188	Lzh	"汉斯·西韦特森·尼沃尔"
-#   Q141168785 Aagot Nyvold: P22 father = Q138474188 Hans Syvertsen Nyvold
-Q141168785	P22	Q138474188	S2600	"6000000021197722738"
-#   P25 mother = Q141178197 Elisabeth Johannesen
+#   Q141168785 Aagot Nyvold: P25 mother = Q141178197 Elisabeth Johannesen
 Q141168785	P25	Q141178197	S2600	"6000000021197722738"
-#   P40 child = Q141168827 Hans Eivind Garborg
-Q141168785	P40	Q141168827	S2600	"6000000021197722738"
-#   P26 spouse = Q11959067 Arne Olaus Fjørtoft Garborg
-Q141168785	P26	Q11959067	S2600	"6000000021197722738"
-#   P735 given name = Q3482557 Aagot
-Q141168785	P735	Q3482557
 #   set the ja label to "オーゴット・ニーヴォル"
 Q141168785	Lja	"オーゴット・ニーヴォル"
 #   set the zh label to "奥高特·尼沃尔"
 Q141168785	Lzh	"奥高特·尼沃尔"
-#   Q141168803 Dagny Nyvold: P22 father = Q138474188 Hans Syvertsen Nyvold
-Q141168803	P22	Q138474188	S2600	"6000000021197841042"
-#   P25 mother = Q141178197 Elisabeth Johannesen
+#   Q141168803 Dagny Nyvold: P25 mother = Q141178197 Elisabeth Johannesen
 Q141168803	P25	Q141178197	S2600	"6000000021197841042"
-#   P26 spouse = Q11959067 Arne Olaus Fjørtoft Garborg
-Q141168803	P26	Q11959067	S2600	"6000000021197841042"
-#   P735 given name = Q1157346 Dagny
-Q141168803	P735	Q1157346
 #   set the ja label to "ダグニー・ニーヴォル"
 Q141168803	Lja	"ダグニー・ニーヴォル"
 #   set the zh label to "达格妮·尼沃尔"
 Q141168803	Lzh	"达格妮·尼沃尔"
-#   Q141178197 Elisabeth Johannesen: P40 child = Q141168785 Aagot Nyvold
-Q141178197	P40	Q141168785	S2600	"6000000021198042859"
-#   P40 child = Q141168803 Dagny Nyvold
-Q141178197	P40	Q141168803	S2600	"6000000021198042859"
-#   P26 spouse = Q138474188 Hans Syvertsen Nyvold
+#   Q141178197 Elisabeth Johannesen: P26 spouse = Q138474188 Hans Syvertsen Nyvold
 Q141178197	P26	Q138474188	S2600	"6000000021198042859"
-#   P735 given name = Q63611044 Elisabeth
-Q141178197	P735	Q63611044
 #   set the ja label to "エリーサベト・ヨハンネセン"
 Q141178197	Lja	"エリーサベト・ヨハンネセン"
 #   set the zh label to "伊丽莎白·约翰内森"
 Q141178197	Lzh	"伊丽莎白·约翰内森"
-#   Q141180406 Ingeborg Gyntesdotter: P26 spouse = Q633094 Johannes Tomasson
-Q141180406	P26	Q633094	S2600	"6000000027324391291"
-#   P735 given name = Q656590 Ingeborg
-Q141180406	P735	Q656590
-#   set the ja label to "インゲボルグ・ギュンテスドッテル"
+#   Q141180406 Ingeborg Gyntesdotter: set the ja label to "インゲボルグ・ギュンテスドッテル"
 Q141180406	Lja	"インゲボルグ・ギュンテスドッテル"
 #   set the zh label to "英厄堡·金特斯多特"
 Q141180406	Lzh	"英厄堡·金特斯多特"
-#   Q141169062 Thoralf Tunheim: P25 mother = Q141162046 Ane Oline Lena Eivindsdatter Garborg
-Q141169062	P25	Q141162046	S2600	"6000000033773881611"
-#   set the ja label to "トーラルフ・トゥンヘイム"
+#   Q141169062 Thoralf Tunheim: set the ja label to "トーラルフ・トゥンヘイム"
 Q141169062	Lja	"トーラルフ・トゥンヘイム"
 #   set the zh label to "托拉尔夫·通海姆"
 Q141169062	Lzh	"托拉尔夫·通海姆"
-#   Q141168801 Cora Estelle Tunheim: P25 mother = Q141162046 Ane Oline Lena Eivindsdatter Garborg
-Q141168801	P25	Q141162046	S2600	"6000000033773908408"
-#   P735 given name = Q714938 Cora, qualified series ordinal 1, reason for preferred rank Q3409033 usual forename
-Q141168801	P735	Q714938	P1545	"1"	P7452	Q3409033
-#   P735 given name = Q744012 Estelle, qualified series ordinal 2, object of statement has role Q245025 middle name
-Q141168801	P735	Q744012	P1545	"2"	P3831	Q245025
-#   set the ja label to "コーラ・エステル・トゥンヘイム"
+#   Q141168801 Cora Estelle Tunheim: set the ja label to "コーラ・エステル・トゥンヘイム"
 Q141168801	Lja	"コーラ・エステル・トゥンヘイム"
 #   set the zh label to "科拉·埃斯特尔·通海姆"
 Q141168801	Lzh	"科拉·埃斯特尔·通海姆"
-#   Q141168809 Edward Tunheim: P25 mother = Q141162046 Ane Oline Lena Eivindsdatter Garborg
-Q141168809	P25	Q141162046	S2600	"6000000033773925586"
-#   P735 given name = Q278835 Edward
-Q141168809	P735	Q278835
-#   set the ja label to "エドワード・トゥンヘイム"
+#   Q141168809 Edward Tunheim: set the ja label to "エドワード・トゥンヘイム"
 Q141168809	Lja	"エドワード・トゥンヘイム"
 #   set the zh label to "爱德华·通海姆"
 Q141168809	Lzh	"爱德华·通海姆"
-#   Q141168787 Alma Matilda Tunheim: P25 mother = Q141162046 Ane Oline Lena Eivindsdatter Garborg
-Q141168787	P25	Q141162046	S2600	"6000000033774070464"
-#   P735 given name = Q656870 Alma, qualified series ordinal 1, reason for preferred rank Q3409033 usual forename
-Q141168787	P735	Q656870	P1545	"1"	P7452	Q3409033
-#   P735 given name = Q2054021 Matilda, qualified series ordinal 2, object of statement has role Q245025 middle name
-Q141168787	P735	Q2054021	P1545	"2"	P3831	Q245025
-#   set the ja label to "アルマ・マチルダ・トゥンヘイム"
+#   Q141168787 Alma Matilda Tunheim: set the ja label to "アルマ・マチルダ・トゥンヘイム"
 Q141168787	Lja	"アルマ・マチルダ・トゥンヘイム"
 #   set the zh label to "阿尔玛·玛蒂尔达·通海姆"
 Q141168787	Lzh	"阿尔玛·玛蒂尔达·通海姆"
-#   Q141169041 Olaf Tunheim: P25 mother = Q141162046 Ane Oline Lena Eivindsdatter Garborg
-Q141169041	P25	Q141162046	S2600	"6000000033774204088"
-#   P735 given name = Q3881452 Olaf
-Q141169041	P735	Q3881452
-#   set the ja label to "オーラフ・トゥンヘイム"
+#   Q141169041 Olaf Tunheim: set the ja label to "オーラフ・トゥンヘイム"
 Q141169041	Lja	"オーラフ・トゥンヘイム"
 #   set the zh label to "奥拉夫·通海姆"
 Q141169041	Lzh	"奥拉夫·通海姆"
-#   Q4953376 Helena Guttormsdatter: P40 child = Q3743799 Knut Valdemarsson Duke of Estland, Blekinge and Lolland
-Q4953376	P40	Q3743799	S2600	"6000000034013672054"
-#   set the ja label to "ヘレナ・グットルムスダッテル"
+#   Q4953376 Helena Guttormsdatter: set the ja label to "ヘレナ・グットルムスダッテル"
 Q4953376	Lja	"ヘレナ・グットルムスダッテル"
 #   set the zh label to "海伦娜·古托尔姆斯达特"
 Q4953376	Lzh	"海伦娜·古托尔姆斯达特"
-#   Q141168820 Eliza Ronneberg: P25 mother = Q141162043 Inger Marie Mary Eivindsdatter Garborg
-Q141168820	P25	Q141162043	S2600	"6000000035698428095"
-#   P735 given name = Q858305 Eliza
-Q141168820	P735	Q858305
-#   set the ja label to "エリザ・ロンネベルグ"
+#   Q141168820 Eliza Ronneberg: set the ja label to "エリザ・ロンネベルグ"
 Q141168820	Lja	"エリザ・ロンネベルグ"
 #   set the zh label to "伊莱扎·龙内贝格"
 Q141168820	Lzh	"伊莱扎·龙内贝格"
-#   Q141168789 Arnold Ronneberg: P25 mother = Q141162043 Inger Marie Mary Eivindsdatter Garborg
-Q141168789	P25	Q141162043	S2600	"6000000035698494074"
-#   P735 given name = Q3623461 Arnold
-Q141168789	P735	Q3623461
-#   set the ja label to "アルノルド・ロンネベルグ"
+#   Q141168789 Arnold Ronneberg: set the ja label to "アルノルド・ロンネベルグ"
 Q141168789	Lja	"アルノルド・ロンネベルグ"
 #   set the zh label to "阿诺德·龙内贝格"
 Q141168789	Lzh	"阿诺德·龙内贝格"
-#   Q141168805 Edward Ronneberg: P25 mother = Q141162043 Inger Marie Mary Eivindsdatter Garborg
-Q141168805	P25	Q141162043	S2600	"6000000035698546990"
-#   P735 given name = Q278835 Edward
-Q141168805	P735	Q278835
-#   set the ja label to "エドワード・ロンネベルグ"
+#   Q141168805 Edward Ronneberg: set the ja label to "エドワード・ロンネベルグ"
 Q141168805	Lja	"エドワード・ロンネベルグ"
 #   set the zh label to "爱德华·龙内贝格"
 Q141168805	Lzh	"爱德华·龙内贝格"
-#   Q141168786 Alice Ronneberg: P25 mother = Q141162043 Inger Marie Mary Eivindsdatter Garborg
-Q141168786	P25	Q141162043	S2600	"6000000035698611873"
-#   P735 given name = Q650689 Alice
-Q141168786	P735	Q650689
-#   set the ja label to "アリス・ロンネベルグ"
+#   Q141168786 Alice Ronneberg: set the ja label to "アリス・ロンネベルグ"
 Q141168786	Lja	"アリス・ロンネベルグ"
 #   set the zh label to "艾丽丝·龙内贝格"
 Q141168786	Lzh	"艾丽丝·龙内贝格"
-#   Q141168824 Ernest Anton Ronneberg: P25 mother = Q141162043 Inger Marie Mary Eivindsdatter Garborg
-Q141168824	P25	Q141162043	S2600	"6000000035698619913"
-#   P735 given name = Q5401576 Anton, qualified series ordinal 2, object of statement has role Q245025 middle name
-Q141168824	P735	Q5401576	P1545	"2"	P3831	Q245025
-#   set the ja label to "アーネスト・アントン・ロンネベルグ"
+#   Q141168824 Ernest Anton Ronneberg: set the ja label to "アーネスト・アントン・ロンネベルグ"
 Q141168824	Lja	"アーネスト・アントン・ロンネベルグ"
 #   set the zh label to "欧内斯特·安东·龙内贝格"
 Q141168824	Lzh	"欧内斯特·安东·龙内贝格"
-#   Q141168788 Arne Garborg Tunheim: P25 mother = Q141162046 Ane Oline Lena Eivindsdatter Garborg
-Q141168788	P25	Q141162046	S2600	"6000000037693739967"
-#   P735 given name = Q645757 Arne, qualified series ordinal 1, reason for preferred rank Q3409033 usual forename
-Q141168788	P735	Q645757	P1545	"1"	P7452	Q3409033
-#   set the ja label to "アルネ・ガルボルグ・トゥンヘイム"
+#   Q141168788 Arne Garborg Tunheim: set the ja label to "アルネ・ガルボルグ・トゥンヘイム"
 Q141168788	Lja	"アルネ・ガルボルグ・トゥンヘイム"
 #   set the zh label to "阿尔内·加尔博格·通海姆"
 Q141168788	Lzh	"阿尔内·加尔博格·通海姆"
-#   Q141180396 Tollef Tollefson Tunheim: P26 spouse = Q141168794 Betsy Jacobson
-Q141180396	P26	Q141168794	S2600	"6000000037737683245"
-#   P735 given name = Q12006598 Tollef
-Q141180396	P735	Q12006598
-#   set the ja label to "トッレヴ・トレフソン・トゥンヘイム"
+#   Q141180396 Tollef Tollefson Tunheim: set the ja label to "トッレヴ・トレフソン・トゥンヘイム"
 Q141180396	Lja	"トッレヴ・トレフソン・トゥンヘイム"
 #   set the zh label to "托勒夫·托勒夫松·通海姆"
 Q141180396	Lzh	"托勒夫·托勒夫松·通海姆"
-#   Q141168794 Betsy Jacobson: P25 mother = Q141152600 Stine Stena Eivindsdatter Garborg
-Q141168794	P25	Q141152600	S2600	"6000000037737979829"
-#   P26 spouse = Q141180396 Tollef Tollefson Tunheim
-Q141168794	P26	Q141180396	S2600	"6000000037737979829"
-#   P735 given name = Q832242 Betsy
-Q141168794	P735	Q832242
-#   set the ja label to "ベッツィ・ヤコブソン"
+#   Q141168794 Betsy Jacobson: set the ja label to "ベッツィ・ヤコブソン"
 Q141168794	Lja	"ベッツィ・ヤコブソン"
 #   set the zh label to "贝齐·雅各布松"
 Q141168794	Lzh	"贝齐·雅各布松"
 #   Q140568870 Emma Leonhart: P735 given name = Q541194 Emma
 Q140568870	P735	Q541194
-#   Q19657284 Buyeo Deokjang: P40 child = Q12598947 Taebi Buyeo
-Q19657284	P40	Q12598947	S2600	"6000000186285688253"
 #   Q135579480 Yasutaka Kitajima: P22 father = Q135579474 Tokitaka Kitajima
 Q135579480	P22	Q135579474	S2600	"6000000227335224861"
 #   Q135579474 Tokitaka Kitajima: P40 child = Q135579480 Yasutaka Kitajima

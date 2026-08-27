@@ -15732,3 +15732,43 @@ the current 36 creations has a father carrying the same token. The rule fires wh
 the shape, and this neighbourhood does not yet.
 
 **1,386 passed, 0 failed.**
+
+## 2026-08-27 — the relationship section was three-quarters duplicates
+
+Emma: *"the relationship one is questionable that it's always gonna be so huge and growing."*
+She was right, and the cause was not that there is a lot of work. **229 of 306** statements on
+existing items in that day's batch were **already on Wikidata**. 77 were new.
+
+**Two causes, and the stale file was only one.**
+
+* `P40` *child*, `P26` *spouse* and `P3373` *sibling* consulted **no check at all**. The
+  additions loop tests `absent()` for `P22` *father* and `P25` *mother* and nothing else, so
+  every child, spouse and sibling link the ledger implies went out on every single run.
+* `absent()` is **property-level** and reads `reports/garborg-live-state.tsv`, frozen at
+  **2026-08-24**. Property level cannot tell a second father from an existing one; a frozen file
+  cannot know yesterday's batch was run.
+
+**QuickStatements merges a duplicate rather than failing, which is why it went unnoticed.**
+Nothing ever broke. The batches were simply three-quarters things she had already done — and
+every one of those lines was hers to read past.
+
+`scripts/refresh-live-values.py` reads whole items through `full_entities` and writes
+`reports/garborg-live-values.tsv`: 1,409 statements over 80 items, one row per
+`qid`/`property`/`value`.
+
+| | before | after |
+| --- | ---: | ---: |
+| statement lines | 895 | **666** |
+| links on existing items | 164 | **16** |
+| duplicates remaining | 229 | **0** |
+
+**The filter is a post-pass, and it had to be.** Put inside `add()` it caught 148 and left 81,
+because the name-statement block appends to `lines` directly. This file emits from a dozen
+places; a rule applied at each call site is one missed at the thirteenth — the same reason the
+per-line comments are a post-pass. `LAST` is exempt by construction, labels because they
+replace.
+
+**And it must be refreshed before each run** or it goes stale exactly the way the file it
+replaces did. That is the failure being fixed, so it would be a poor joke to reintroduce it.
+
+**1,387 passed, 0 failed.**

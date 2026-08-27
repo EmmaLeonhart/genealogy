@@ -223,6 +223,25 @@ def describe_all(geni_id, facts, father, mother, labels, table,
     return {}
 
 
+def read_live_values():
+    """`{(qid, property, value)}` -- every statement the ledger items already hold.
+
+    Built by `scripts/refresh-live-values.py` from whole items. Missing file means an empty
+    set and today's behaviour, which is the safe direction: a redundant statement is a no-op
+    in QuickStatements, a suppressed one would be a loss.
+    """
+    out = set()
+    path = ROOT / "reports" / "garborg-live-values.tsv"
+    if not path.exists():
+        print("WARNING: reports/garborg-live-values.tsv missing - the batch will re-emit "
+              "statements the items already hold. Run scripts/refresh-live-values.py")
+        return out
+    with open(path, encoding="utf-8") as f:
+        for row in csv.DictReader(f, delimiter="	"):
+            out.add((row["qid"], row["property"], row["value"]))
+    return out
+
+
 def live_state():
     """`{qid: (label languages, properties)}` from the 2026-08-24 live read.
 
@@ -994,6 +1013,7 @@ def main():
     # the fallback below assumes our own batch made them, which is wrong wherever Emma
     # edited by hand. Eivind is the case: he carries P735/P734/P5056 she added herself.
     state.update(live_state())
+    live_values = read_live_values()
     # **The order of the two sections is her spec and it is structurally rigid.** Emma,
     # 2026-08-26: *"Creation of individuals comes first, then creation of names, then the
     # relationships between the individuals... The order itself is structurally rigid because
@@ -1014,6 +1034,18 @@ def main():
 
     def add(q, prop, value, g):
         if (q, prop, value) in seen:
+            return
+        # **Never re-emit a statement the item already states.** Emma, 2026-08-27, on the
+        # relationship section never shrinking: *"the relationship one is questionable that
+        # it's always gonna be so huge and growing."* Measured that day: **229 of 306**
+        # statements on existing items were already on Wikidata, 75% of the section.
+        #
+        # `absent()` could not have caught them. It is property-level -- it knows an item has
+        # SOME `P40`, not which children -- and it reads a file frozen at 2026-08-24. And
+        # `P40`, `P26` and `P3373` never consulted it at all, so every child, spouse and
+        # sibling link went out on every run. QuickStatements merges a duplicate rather than
+        # failing, which is why nothing ever broke.
+        if (q, prop, value.strip('"')) in live_values:
             return
         seen.add((q, prop, value))
         lines.append(f"{q}\t{prop}\t{value}{ref(g)}")
@@ -1283,6 +1315,28 @@ def main():
     # between items that already existed. Names are the middle step and live in
     # `reports/wikidata-garborg-name-items.qs`, run between the two.
     lines = lines[:preamble] + lines[create_from:] + lines[rel_from:create_from]
+
+    # **Drop every statement the item already holds, as a POST-PASS.** The check inside
+    # `add()` caught only what `add()` emitted; the name-statement block appends to `lines`
+    # directly, so 81 of 98 concrete-valued statements survived it. This file emits from a
+    # dozen places and a rule applied at each call site is a rule missed at the thirteenth --
+    # the same reason the per-line comments are a post-pass.
+    #
+    # `LAST` is never dropped: it names an item being created in this run, so the statement
+    # cannot already exist. Labels and aliases are never dropped either -- they REPLACE, and
+    # whether to send one is a different question from whether a claim is present.
+    if live_values:
+        kept, dropped = [], 0
+        for line in lines:
+            parts = line.split(chr(9))
+            if (len(parts) >= 3 and parts[0].startswith("Q") and parts[1].startswith("P")
+                    and parts[2] != "LAST"
+                    and (parts[0], parts[1], parts[2].strip('"')) in live_values):
+                dropped += 1
+                continue
+            kept.append(line)
+        lines = kept
+        print(f"{dropped} statements dropped: the item already holds them")
 
     # **A comment above every line.** Her format, 2026-08-26. `name_of` resolves either a
     # QID or a Geni id to a person, so the comments read as sentences rather than as pairs

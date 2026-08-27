@@ -440,6 +440,31 @@ to produce no name statement at all.
 before anybody links to them — 10 a run through `build-garborg-name-items.py`. That is cadence,
 not work.
 
+## The relationship section was 75% duplicates — fixed 2026-08-27
+
+**Emma:** *"the relationship one is questionable that it's always gonna be so huge and
+growing."* She was right and the cause was not workload. Measured: **229 of 306** statements on
+existing items were **already on Wikidata**. The section was three-quarters noise.
+
+Two causes:
+
+- **`P40` *child*, `P26` *spouse* and `P3373` *sibling* consulted no check at all.** Only `P22`
+  *father* and `P25` *mother* tested `absent()`, so every child, spouse and sibling link went
+  out on every run.
+- **`absent()` is property-level against a snapshot frozen at 2026-08-24.** It knows an item has
+  *some* `P40`, not which children, and it could not know Emma had run yesterday's batch.
+
+`scripts/refresh-live-values.py` reads whole items and writes
+`reports/garborg-live-values.tsv` — 1,409 statements over 80 items, `qid`/`property`/`value`.
+The builder drops any statement already present, as a **post-pass**: the check inside `add()`
+caught 148 and missed 81, because the name-statement block appends to `lines` directly.
+
+**Statement lines 895 → 666, links 164 → 16, duplicates remaining 0.**
+`tests/test_p2600_batches.py` guards it, verified by disabling the filter.
+
+**Run `scripts/refresh-live-values.py` before each day's batch**, or it goes stale exactly the
+way the file it replaces did. It needs `BOT_CONTACT`.
+
 ## The daily Garborg batch — one QuickStatements run per day
 
 `scripts/build-garborg-day.py` → `reports/wikidata-garborg-day.qs`.

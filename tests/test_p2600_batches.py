@@ -510,3 +510,42 @@ def test_no_english_label_is_written_in_a_non_latin_script(name):
     assert not bad, (
         f"{name}: English labels with no Latin letter — "
         + "; ".join(f"line {i}: {v!r}" for i, v in bad[:4]))
+
+
+def test_the_daily_batch_never_restates_what_the_item_already_holds():
+    """A statement already on the item must not be emitted again.
+
+    **Emma, 2026-08-27**, on the relationship section never shrinking: *"the relationship one
+    is questionable that it's always gonna be so huge and growing."* Measured that day: **229
+    of 306** statements on existing items were already on Wikidata — 75% of the section.
+
+    Two causes, and the stale file was only one. `P40` *child*, `P26` *spouse* and `P3373`
+    *sibling* consulted **no** check at all, so every such link went out on every run; and
+    `absent()` is property-level against a snapshot frozen at 2026-08-24, which cannot tell a
+    second father from an existing one nor that yesterday's batch was run.
+
+    QuickStatements merges a duplicate rather than failing, which is exactly why it went
+    unnoticed for days: nothing broke, the batches were simply three-quarters things she had
+    already done.
+
+    `LAST` is exempt — it names an item created in this run, so the statement cannot already
+    exist. Labels and aliases are exempt because they REPLACE rather than add.
+    """
+    values = REPORTS / "garborg-live-values.tsv"
+    batch = REPORTS / "wikidata-garborg-day.qs"
+    if not values.exists() or not batch.exists():
+        pytest.skip("live values or the daily batch not built")
+    live = {(r["qid"], r["property"], r["value"]) for r in
+            csv.DictReader(open(values, encoding="utf-8"), delimiter="\t")}
+    assert len(live) > 500, f"only {len(live)} live statements — that is a broken read"
+
+    repeats = []
+    for i, ln in statements(batch):
+        p = ln.split("\t")
+        if (len(p) >= 3 and p[0].startswith("Q") and p[1].startswith("P")
+                and p[2] != "LAST"
+                and (p[0], p[1], p[2].strip('"')) in live):
+            repeats.append((i, ln[:60]))
+    assert not repeats, (
+        f"{len(repeats)} statements the item already holds — "
+        + "; ".join(f"line {i}: {ln!r}" for i, ln in repeats[:4]))
