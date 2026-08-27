@@ -258,6 +258,29 @@ corpus-wide About Me pass, agree completely. Emma: *"it probably means we did go
 modelling early on"*. The new fact is **Onakatomi 0 of 97** — that clan has no About Me
 links written yet, so it cannot join at all. Hers to write.
 
+## The correspondence batch is current again — 3,719 → 7,535, 2026-08-27
+
+`scripts/build-structural-correspondence-batch.py` was last built **2026-08-23** against a
+correspondence file that has since doubled. Rebuilt against the current walk:
+
+| | |
+| --- | ---: |
+| structural correspondences read | 7,841 |
+| **emit** — the item states no Geni ID and our person is linked nowhere else | 7,134 |
+| a **second** Geni ID on the item — emitted and flagged, never held back | 401 |
+| our person is already linked elsewhere — **not emitted**, written to `structural-correspondence-disagreements.csv` | 302 |
+| already stated on the item | 4 |
+
+**7,535 `add_geni_id` edits over 7,514 items** — 21 items take a second `P2600`, which
+`CLAUDE.md` calls the correct representation of two unmergeable Geni profiles rather than a
+conflict. 1,371 share no name token with their Wikidata label and are **flagged for reading,
+not filtered out**.
+
+**`P813` *retrieved* was stamping a false date.** The flag defaulted to a literal
+`2026-08-17`, so every rebuild after that day claimed the source was consulted on the 17th. It
+now defaults to when `reports/structural-correspondence.csv` was written, which is both true
+and deterministic for a given input.
+
 ## Model-vs-reality is BUILT — `scripts/model-vs-reality.py`
 
 Emma, 2026-08-24: *"we are supposed to generate complete models of what the wikidata items should

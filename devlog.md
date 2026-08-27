@@ -15824,3 +15824,34 @@ numbers are now recorded with the date they belong to, rather than replaced as t
 ones had been wrong.
 
 **1,388 passed, 0 failed.**
+
+## 2026-08-27 — the correspondence batch was four days behind its input
+
+`scripts/build-structural-correspondence-batch.py` last ran on **2026-08-23**; the
+correspondence file it reads was rebuilt on the 25th and again this morning. Rebuilt:
+
+| | before | after |
+| --- | ---: | ---: |
+| `add_geni_id` edits | 3,719 | **7,535** |
+
+Over 7,841 correspondences: **7,134 emit**, **401 carry a second Geni ID on the item** (emitted
+and flagged — `CLAUDE.md` calls that the correct representation of two unmergeable Geni
+profiles, never a conflict), **302 where our person is already linked to a different item** and
+so are *not* emitted but written to `structural-correspondence-disagreements.csv`, and 4 already
+stated.
+
+7,514 distinct items for 7,535 Geni ids, so 21 items take a second `P2600`. 1,371 share no name
+token with their Wikidata label and are flagged for reading rather than filtered — the walk
+picks the pair structurally and the label only confirms it.
+
+## `P813` *retrieved* was stamping a date ten days old
+
+`--retrieved` defaulted to a literal `2026-08-17`. Every rebuild after that day put a **false
+retrieval date** on all 7,535 references — this one would have claimed the 17th while running on
+the 27th. It is a factual claim about when the source was consulted, not a formatting detail.
+
+It now defaults to the mtime of `reports/structural-correspondence.csv` — when the
+correspondence was actually computed. That is true, and it keeps a rebuild from the same input
+deterministic, which is presumably what the hardcoded value was protecting.
+
+**1,388 passed, 0 failed.**

@@ -49,6 +49,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import datetime as _dt
 import json
 import sys
 from collections import Counter
@@ -94,8 +95,17 @@ def shared_name_tokens(geni_name: str, label: str) -> int:
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--retrieved", default="2026-08-17",
-                    help="the P813 retrieved date on every reference")
+    # **Default to when the correspondence was actually computed, not to a date typed
+    # once.** `P813` *retrieved* is a factual claim about when the source was consulted,
+    # and a literal `2026-08-17` meant every rebuild after that day stamped a false one --
+    # this batch was rebuilt on 2026-08-27 and would have said the 17th. The input file's
+    # mtime is the honest answer and keeps a rebuild from the same input deterministic,
+    # which is what the hardcoded value was presumably protecting.
+    _computed = _dt.date.fromtimestamp(
+        CORR.stat().st_mtime) if CORR.exists() else _dt.date.today()
+    ap.add_argument("--retrieved", default=_computed.isoformat(),
+                    help="the P813 retrieved date on every reference. Defaults to when "
+                         "reports/structural-correspondence.csv was written.")
     args = ap.parse_args()
 
     if not CORR.exists():
