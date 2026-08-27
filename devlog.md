@@ -15772,3 +15772,22 @@ replace.
 replaces did. That is the failure being fixed, so it would be a poor joke to reintroduce it.
 
 **1,387 passed, 0 failed.**
+
+## 2026-08-27 — the live values are step 0b, so they cannot go stale unnoticed
+
+`scripts/refresh-live-values.py` is now part of `build-daily-batch.py --refresh-ledger`. The two
+halves of *what is on Wikidata right now* run together: **0a** the ledger, who holds an item;
+**0b** the live values, what each item already states. Refreshing one and not the other is
+exactly how the batch became three-quarters duplicates — `garborg-live-state.tsv` sat frozen at
+2026-08-24 while the ledger was rebuilt daily. A run without the flag now prints the age of both
+files and what the second one is for.
+
+**The first full run of it shows Emma has been busy.** The ledger went **80 → 121 items** and
+the live values **1,409 → 1,798 statements over 130 items** — she has run batches since
+yesterday. Today's build: 36 creations, **48 links** (up from 16, because more people now hold a
+QID and so more links are genuinely new), 704 statement lines, **0 duplicates**.
+
+That rise is the system working rather than regressing: the duplicate filter only suppresses
+what already exists, so a growing ledger means more real links, not more noise.
+
+**1,388 passed, 0 failed.**

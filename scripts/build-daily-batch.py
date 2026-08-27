@@ -101,10 +101,23 @@ def main():
     args = ap.parse_args()
 
     if args.refresh_ledger:
-        print("STEP 0  ledger <- Special:Contributions/日巫女")
+        print("STEP 0a ledger <- Special:Contributions/日巫女")
         print(run("refresh-garborg-ledger.py", []).strip()[-600:])
+        # **Both halves of "what is on Wikidata now", together.** The ledger says WHO has an
+        # item; the live values say WHAT each item already states. Refreshing one and not the
+        # other is how the batch came to be three-quarters duplicates: `garborg-live-state.tsv`
+        # sat frozen at 2026-08-24 while the ledger was rebuilt daily.
+        print("\nSTEP 0b live values <- full_entities over the ledger")
+        print(run("refresh-live-values.py", []).strip()[-300:])
     else:
         age = (time.time() - LEDGER.stat().st_mtime) / 3600 if LEDGER.exists() else None
+        values = ROOT / "reports" / "garborg-live-values.tsv"
+        vage = ((time.time() - values.stat().st_mtime) / 3600
+                if values.exists() else None)
+        print(f"        reports/garborg-live-values.tsv is "
+              f"{'MISSING' if vage is None else f'{vage:.1f} hours old'} -- it is what stops "
+              f"the batch restating what an item already holds, and 229 of 306 statements "
+              f"were duplicates before it existed.")
         print(f"STEP 0  SKIPPED. reports/garborg-qids.tsv is "
               f"{'missing' if age is None else f'{age:.1f} hours old'} -- pass "
               f"--refresh-ledger to rebuild it from her contributions. A stale ledger is "

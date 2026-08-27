@@ -462,8 +462,10 @@ caught 148 and missed 81, because the name-statement block appends to `lines` di
 **Statement lines 895 → 666, links 164 → 16, duplicates remaining 0.**
 `tests/test_p2600_batches.py` guards it, verified by disabling the filter.
 
-**Run `scripts/refresh-live-values.py` before each day's batch**, or it goes stale exactly the
-way the file it replaces did. It needs `BOT_CONTACT`.
+**It is step 0b of the daily run, 2026-08-27** — `build-daily-batch.py --refresh-ledger` does
+both halves: the ledger says WHO has an item, the live values say WHAT each already states.
+Refreshing one and not the other is precisely how the batch became three-quarters duplicates.
+A run without `--refresh-ledger` prints the age of both files and why it matters.
 
 ## The daily Garborg batch — one QuickStatements run per day
 
