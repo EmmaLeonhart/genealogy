@@ -16831,3 +16831,55 @@ does.
 
 So the identification is *made* and the identifier is *unreachable*. Recorded that way in
 `reports/mass-export-log.tsv` rather than left as a dates problem, because it is not one.
+
+## 2026-08-28 — the Bureätten campaign converges: one export, twenty people
+
+**Emma's ruling reshaped the campaign.** *"the bure people here we don't need to export from all
+of them we just need to get all of them in exports"*, and then the stopping rule: *"once everyone
+is covered the campaign is over. Because these people are quite linked as they are a family
+relationship to each other."*
+
+So the target is coverage of the 251 sv.wikipedia Category:Bureätten people carrying a Geni id,
+not one export each. `scripts/bure-coverage.py` is the re-measure, run after every export: the
+merged tree from `reports/derived-labels.csv`, plus a raw scan of every `.ged` modified more
+recently than that file — which is the set the merge has not seen, wherever it was filed. A
+hardcoded directory list was the first version and was a silent narrowing; under-reported
+coverage looks identical to somebody still needing an export.
+
+**Measured, and it converges fast.**
+
+| export | seed | closed | absent after |
+| --- | --- | ---: | ---: |
+| Andreas Olai `Forest` | `NN` 6000000227468650841 | 2 | 98 |
+| Elof Steuch `Forest` | `NN` 6000000227469177824 | 20 | 78 |
+
+The Andreas export was not aimed at the network at all — neither he nor his brother is in
+`bureatten.csv` — and it still picked up Pehr Kalling and Johan Otto Nauckhoff. The Elof export
+closed twenty, including **Axel Gustaf Gyllenkrok**, who was the next name on the list and now
+needs no export of his own.
+
+**Group 2 closed the same evening.** Emma supplied Andreas Olai's profile URL after Geni's
+Pro-gated search dead-ended, and it confirms structurally: the About prose reads *"Andreas Olai,
+född 1521 i Örebro, död 1560, var en svensk ämbetsman"*, matching `Q10411463`'s `P569` *date of
+birth* 1521, `P570` *date of death* 1560 and its description *Swedish civil servant*; *"Brother of
+Kerstin Olofsdotter and Benedictus Olai"* matches `P3373` *sibling* → `Q4355463`. The item's
+structured Birth field says *"estimated between 1450 and 1570"* and is the trap — the real dates
+are only in the prose. `P1889` *different from* separates him from the better-known namesake, so
+the name alone could never have settled it.
+
+That pairing is now in `build-garborg-day.py`'s hard-coded `P2600` *Geni.com profile ID* block, on
+her instruction: *"we add this qid geni id add thing to the quickstatements block that always gets
+added in"*. The block's header now separates the eight Charlemagne-chain pairings from campaign
+identifications, since more of the latter will arrive.
+
+**All three exports needed a placeholder seed**, because Export GEDCOM is absent from the Actions
+menu on a profile Emma does not manage. She authorised them: *"And yes I'm authorizing new seed
+people on all of these people lol"*. All three were tier 3 per `docs/export-seed-rules.md` — a
+person with a father and no mother, so `NN`, given name only, no surname, *Suggest surnames* left
+unchecked because it would have offered the child's.
+
+Two family-tree canvas quirks worth having written down, both of which cost minutes on the first
+seed: a click **pans** the tree rather than opening the *Add mother* box, so the box needs
+clicking again at its new position; and clicking a node opens a tab that reports an **empty URL
+for several seconds** before the id appears. Waiting is right; re-clicking is not, and searching
+for the person just created is banned outright.
