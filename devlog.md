@@ -17097,3 +17097,23 @@ arrowless node on a page saturated to the fourth generation. ~4 minutes, 5000 at
 
 Eleven exports collected today: **100 absent → 40**. Closures per export: 2, 20, 2, 4, 2, 6, 6, 1,
 4, 3, 5, 2, 1, 2.
+
+## 2026-08-28 — export 14: the Swedenborg page offered three tiers at once
+
+Group 4, export 14. Target Emanuel Swedenborg `6000000006713354346` (`Q185832`). His page is the
+first where the tier list did real work rather than describing whatever single slot existed:
+
+* **tier 1** — Eggert Eggertsson Giöding, parentless, live patronymic `Eggertsson` *and* surname
+  `Giöding`
+* **tier 2** — Karin Isaksdotter, patronymic with no other surname
+* **tier 3** — Isak Nilsson Stierna, father recorded, mother absent
+
+Took the tier 1: seed `6000000227473183849` **`Eggert /Giöding/`**, both halves named by the data.
+The patronymic names a father of the same given name, which is ordinary and not a reason to doubt
+the reading.
+
+~4 minutes, 5000 at the cap. **Closed five — 40 absent → 35**: Swedenborg, Carl Jesper Benzelius,
+Georg Brandt, Lars Benzelstierna and Samuel af Ugglas.
+
+Twelve exports collected today: **100 absent → 35**. Closures per export: 2, 20, 2, 4, 2, 6, 6, 1,
+4, 3, 5, 2, 1, 2, 5.
