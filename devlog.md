@@ -16303,3 +16303,20 @@ contributions refresh — so the next run still sees him missing. Helen Frisk ha
 problem.
 
 **1,399 passed, 24 skipped, 0 failed** in 5m58s.
+
+## 2026-08-28 — correcting myself: Richard was never created, and the algorithm is in CLAUDE.md now
+
+**The defect I reported last tick does not exist.** I said `bergitte-to-emma` was stuck because
+Richard Wade Borsheim gets created and never enters the ledger. Checked against her actual
+contributions: **there is no Borsheim or Frisk item under her account at all**, across 1,187
+edits and 181 distinct items. They were never created, or no longer exist. The refresh is not
+losing them and the spine re-creating step 2 is correct behaviour.
+
+Two things ruled out on the way, so they are not re-suspected: the 50-id `wbgetentities` chunk
+returns everything (181 of 181, no empty chunks — this is the boundary that silently returns
+`{}` elsewhere, so it was worth checking), and the 24 items she touched carrying no `P2600` are
+all *name* items — `Tunheim`, `Bergersen`, `Ronneberg` — which correctly have none.
+
+`CLAUDE.md` gains § *The seed set is the WIKIDATA SUBGRAPH from Arne* and § *The ledger refresh
+is PART OF THE RUN*. Both were decided today and lived only in a docstring, which is where the
+last architecture drifted from.

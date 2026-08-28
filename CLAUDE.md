@@ -1863,6 +1863,59 @@ So a spine batch needs a second file only for the links **between two people it 
 `reports/the-spine.md` carries the person-by-person state. The closing item of `queue.md` is to
 build the batch builder that does all of this at once rather than a hop a day.
 
+### The seed set is the WIKIDATA SUBGRAPH from Arne. Not the ledger, and never a hop count
+
+**Emma, 2026-08-28:** *"You understand my algorithm is entirely based on anyone on the
+continuous subgraph currently on wikidata from Arne right? Like no counting hops it literally
+should do a billion hops under the constraints if that's possible."*
+
+**A person may seed a ring when Wikidata already connects them to Arne** by any chain of `P22`
+*father*, `P25` *mother*, `P26` *spouse*, `P40` *child* or `P3373` *sibling*, however long.
+`build-garborg-day.wikidata_subgraph()` walks it from `Q11959067` *Arne Olaus Fjørtoft
+Garborg*. Measured 2026-08-28: **97 items, containing 96 of 171 ledger people.**
+
+**The ledger is a different question and both are needed.** `reports/garborg-qids.tsv` answers
+*does this person already have an item* — it must stay whole, or the batch re-creates things.
+The subgraph answers *may the ring grow from them*. Conflating the two is what put a
+7th-century Baekje royal, Carolingian Friuli, `Okoshi Mononobe` and `Saburou Kitashima` in a
+Garborg batch of 36: the ledger is **every item Emma has ever made**, including her Izumo and
+Kitajima work, and the ring grew around all of it.
+
+**This is what makes the spine self-limiting, with no special case.** Her words:
+*"the spine people shouldn't play a role because they aren't part of the subgraph. The subgraph
+is stored and added to with my contributions."* A medieval couple the spine created yesterday
+has no path to Arne on Wikidata yet, so it seeds nothing. It needs no exclusion, no flag and no
+list.
+
+**Exclusion lists are a smell here.** Emma: *"why are we even having exclusions? If you just
+followed the algorithm then exclusions wouldn't be needed."* She is right — under the subgraph
+she is not a seed and neither are the Kitajima people, because nothing on Wikidata connects
+either to Arne.
+
+**Two things that are NOT the algorithm and were invented here, both now deleted.** A
+*distance-from-Arne radius*: it appears nowhere in her specification, and bounding the pool to
+her immediate ring cut a batch from ~30 people to **7** because the caps stopped binding — 2 of
+10 children, 0 of 10 parents. And *ordering the ring by closeness to Arne*, which `11295af7`
+did over **our Geni tree**; that is the closest thing that ever existed, and it is not this.
+
+### The ledger refresh is PART OF THE RUN. A separate step is a stale ledger
+
+**Emma, 2026-08-28:** *"this is worrying since it seems to indicate that you might be building
+the ledger as a separate part from the script, when in reality the script is supposed to go
+through my contributions and update the ledger every time."*
+
+`build-garborg-day.py --compose` now runs `scripts/refresh-garborg-ledger.py` first and **exits
+if it fails**. `--no-refresh` exists for offline work and is the wrong thing to reach for.
+
+**The cost of it having been separate, measured the same day:** a batch built at 17:33 used a
+ledger refreshed hours earlier, so `Q141198835` **Bergitte Gunnbjørnsdatter Aukland** — the
+hinge of all three lines, which Emma had just created — read as missing, and the Charlemagne
+spine reported itself stuck at step 8. With the refresh inside the run it went **step 8 → step
+13 in one build**, walking past her.
+
+**A stale ledger does not look like an error. It looks like work to do** — and the work it
+invents is re-creating items she has already made.
+
 ### The programme is HYPERLOCAL: one hop out from Arne Garborg, per day
 
 **Emma, 2026-08-23, correcting an assumption that had been running for days:**
