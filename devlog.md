@@ -17036,3 +17036,23 @@ and the rules file's own example seeds include `Øystein father of Berta`, so it
 Törnebladh. Picking a target whose neighbour is also on the list paid exactly as expected.
 
 Closures per export in group 4: 2, 20, 2, 4, 2, 6, 6, 1, 4, 3.
+
+## 2026-08-28 — the cleanest seed of the campaign, and a usable proximity tell
+
+Group 4, export 10. Target Aron Gustaf Silfversparre `6000000006127570851` (`Q6175928`). Seed
+**`Erik /Welt/`** `6000000227472598906` — **tier 1, and the cleanest instance of it yet**: Lars
+Eriksson Welt (1581–1650) is parentless (checked on the relative menu, not inferred), carries a
+live patronymic `Eriksson` *and* a separate surname `Welt`, so both halves of the created person's
+name come from the data. Three other arrowless people on the page ranked lower — Cecilia
+Israelsdotter is tier 2, having a patronymic and no other surname.
+
+~4 minutes, 5000 at the cap. **Closed five — 50 absent → 45**: Silfversparre, three Silfverstolpes
+and Mårten Bunge.
+
+**A tell worth keeping: Anna Jonsdotter Bure was visible on the target's own page.** A page
+carrying a `Bure`-surnamed person means the seed is landing inside the kinship network rather than
+at its rim, and this export closed five where the previous tier-1 seed — in a Finnish clerical
+line — closed one. That is a *positional* signal, the same thing the Elof Steuch export
+demonstrated at twenty, and it is cheap to read off the page before committing to a seed.
+
+Closures per export in group 4: 2, 20, 2, 4, 2, 6, 6, 1, 4, 3, 5.
