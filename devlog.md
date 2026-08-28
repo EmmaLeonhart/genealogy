@@ -17087,3 +17087,13 @@ green page. ~4 minutes, 5000 at the cap. **Closed one, the target alone. 43 abse
 
 Every export has come back at exactly 5000 and in four to five minutes once the queue was clear —
 the ~13, ~18 and ~40 minute builds were all in the first three, before the run settled.
+
+## 2026-08-28 — export 13: 42 absent → 40
+
+Group 4, export 13. Target Gustaf de Laval `6000000006429643351` (`Q364270`), whom Geni holds as
+*Carl Gustaf Patrik de Laval*. Seed `6000000227473113833` `NN /Schwinger/` — tier 4, the one
+arrowless node on a page saturated to the fourth generation. ~4 minutes, 5000 at the cap.
+**Closed two: de Laval and Roland Martin (jurist). 42 absent → 40.**
+
+Eleven exports collected today: **100 absent → 40**. Closures per export: 2, 20, 2, 4, 2, 6, 6, 1,
+4, 3, 5, 2, 1, 2.
