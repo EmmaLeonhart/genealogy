@@ -22,6 +22,10 @@ audits, dead crons and superseded priorities. Recover any of it with
 
 These are supposed to be manually added to the queue and worked on, do no just paraphrase during the rebase keep this part entirely intact. We are approaching usage limit for now.
 
+### Please do an explicit AskUserQuestion on whether I have acknowledged whether the chains have been advanced with today
+
+Basically idk if I am actually gettin ganythin gon the chain here so do an askuserquestion asking me to confirm that I have acknowledged the result for whatever this thing may be. Did we get the paths to work or not
+
 ### Wording issues and queue crud
 
 Yeah it is a bit contradictory it seems because the specicic thing is that you were trying to preserve what I said even aftet it was completed
