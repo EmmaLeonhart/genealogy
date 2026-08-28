@@ -40,6 +40,14 @@ That's the thing I potentially want to do as a campaign to make Jenny readable t
 
 I think this person https://www.wikidata.org/wiki/Q141189080 should be corrected to "Lave Jonsen" in all languages and on geni. Just havin a first name is weird and has no rationale, they should be given the patronymic "Jonsen" too
 
+### labels at creation time
+
+I noticed that in our recent creation batch only Simen Olsen (6000000016756376445) even had a cjk name. So that is extremely confusing since in my eyes it indicates the pipeline has a source for cjk labels, but that source is somehow inconsistent or absent. 
+
+## Applying labels to existing items
+
+We are way too gung ho about adding cjk labels to existing items. You may have noticed that I am constantly removing them from the quickstatements. I consider them to be disruptive and suspicion raising. imo any label changes should occur at the beginning of the batch and be limited to a count of 15 labels added per batch. I do no know what you are doing with this, but understand that a label added after item creation is a risk and a label added during item creation is good. 
+
 ## 1. THE MASS EXPORT CAMPAIGN — front task, RUNNING
 
 **`docs/mass-export-run.md` is the run sheet** — the four groups in her order, every Geni id, the
