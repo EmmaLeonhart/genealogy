@@ -16974,3 +16974,23 @@ same tree URL fixed it again each time. It is a rendering failure with a known r
 kind of weirdness `docs/export-seed-rules.md` says to bail on.
 
 Closures per export in group 4: 2, 20, 2, 4, 2, 6, 6.
+
+## 2026-08-28 — the first tier-1 seed, and it closed the fewest
+
+Group 4, export 7. Target Vilhelm Hisinger `6000000004138124294` (`Q900478`). Seed
+`6000000227472434852` **`Brynolf /Fabrin/`** — the campaign's **first tier-1 seed**. Johannes
+Brynolphi Fabrin (Brynolfsson), c.1657–1717, is fatherless and carries a live patronymic, so
+`docs/export-seed-rules.md` names the father from the patronymic rather than inventing an `NN`:
+given name from `-sson`, surname the child's with the patronymic stripped. The Swedish `Brynolfsson`
+and the Latin genitive `Brynolphi` agree independently on `Brynolf`.
+
+Two lower slots on the same page were passed over — Ingemar Frodbom (tier 4) and Anna Maria Bruhn
+(tier 3, father recorded, mother absent).
+
+**It closed one: the target alone. 58 absent → 57**, the thinnest of the group.
+
+**That is not a mark against tier 1, and the distinction is worth keeping straight.** The tier
+governs whether the *created person* is attested or invented; it says nothing about yield. Yield
+comes from where the seed sits — Brynolf Fabrin is in a Finnish clerical line at the edge of the
+Bureätten network, so the ball grown from him mostly leaves it, exactly as the Elof Steuch seed
+deep inside the network returned twenty. Closures per export now read 2, 20, 2, 4, 2, 6, 6, 1.
