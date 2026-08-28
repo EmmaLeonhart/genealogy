@@ -16800,3 +16800,34 @@ else, still fails.
 **What is lost, and it is worth her seeing:** the English label she designed the formula for is
 the one language it cannot be written to, because every one of the 177 already has an `en`. For
 Wanshou that existing label is a real name.
+
+## 2026-08-28 — Andreas Olai: identified structurally, then blocked by Geni Pro
+
+Second item of the campaign. `Q10411463` is **not** a spine person — Emma created the
+`P1889` *different from* link on it because there is a better-known Andreas Olai she did not
+want merged with hers.
+
+**The `P1889` target turned out to be the opposite of what I assumed.** `Q141199704`, the item
+her `different from` points AT, is the one carrying a Geni id — `6000000004334566448`, born 1512,
+died 1569. So the item with the identifier is hers; `Q10411463` is the other man, a Swedish civil
+servant born **1521**, died **1560**.
+
+**Not in our corpus, checked two ways.** By name: 42 candidates, every one a Norwegian *Andreas
+Olai <patronymic>*, which is the noise `CLAUDE.md` § *Join on the Geni ID; do not search by name*
+exists about. By date: 59 people born 1520–1522 and dead 1559–1561, none of them an Olai. A
+four-year window over 1.3M people identifies nobody.
+
+**Found on Geni through his brother, which is structural rather than nominal.** Wikidata gives
+`P3373` *sibling* → `Q4355463` **Benedictus Olai**, a Swedish physician born 1523/4. Searching
+Geni for him returned seven people, six of them 17th-century *Olai Something* clerics — and one
+reading **"Benedictus Olai · Son of Olof · Brother of Kerstin Olofsdotter and Andreas Olai"**.
+Same sibling pair, sons of Olof, which is what *Olai* means.
+
+**And there it stops: every search-result link on Geni is Pro-gated.** The person's name and the
+"View Profile" link both resolve to `geni.com/pro/signup`, and the only ungated `/people/` href on
+the results page is Emma's own profile. A profile found by search that is not already in her tree
+cannot be opened without a paid account. Entering payment details is not something this session
+does.
+
+So the identification is *made* and the identifier is *unreachable*. Recorded that way in
+`reports/mass-export-log.tsv` rather than left as a dates problem, because it is not one.
