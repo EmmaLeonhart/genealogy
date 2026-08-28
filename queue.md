@@ -48,37 +48,6 @@ I think this person https://www.wikidata.org/wiki/Q141189080 should be corrected
 
 I noticed that in our recent creation batch only Simen Olsen (6000000016756376445) even had a cjk name. So that is extremely confusing since in my eyes it indicates the pipeline has a source for cjk labels, but that source is somehow inconsistent or absent. 
 
-**Answered 2026-08-28, and you are right that something is wrong — but it is starvation, not
-inconsistency.** Both paths call the same `label_in()` against the same table, so the source is
-one source. The table is `reports/garborg-name-transliterations.tsv` and it holds **219 tokens**.
-It was built for the inner Garborg ring and has never been extended.
-
-`label_in` returns nothing unless **every** token in a name is known — *partial is worse than
-absent*, which is the right rule. The 41 people created today are the next ring outward, and
-their names use **74 tokens the table has never seen**, including entirely ordinary ones:
-`Olav`, `Olof`, `Andreas`, `Agnes`, `Maria`, `Rasmus`, `Erik`, `Daniel`, `Bergitte`, `Randa`.
-So 40 of 41 were blocked, and Simen Olsen passed only because both his tokens happened to be in.
-
-**This gets worse every ring, not better.** Each hop out is further from the tokens the table was
-seeded with. Today it was 1 of 41; the next ring will be 0.
-
-**And the pipeline has your rule exactly backwards.** You said a label at creation is good and a
-label after creation is a risk. Measured on today's file:
-
-| | label lines |
-| --- | ---: |
-| at creation (good) | **2** |
-| after creation (risk) | **1,580** |
-
-You then hand-deleted 1,579 of those 1,580 — the whole 177-item CJK clan block plus 79 of the
-ja/zh edits on existing items — and moved the 22 you kept to the top of the file. Every structural
-statement you left alone: all 41 creations, every `P22`/`P25`/`P26`/`P40`/`P3373`/`P2600`/`P569`/
-`P570`/`P735`/`P734`/`P1449`/`P5056`. Zero dropped. So the deletions are entirely a label problem.
-
-**The fix is two changes, not one:** grow the transliteration table so creations can carry
-`ja`/`zh` (the good kind), and cap the post-creation label edits at 15, emitted at the top of the
-batch, per your rule above.
-
 ## Applying labels to existing items
 
 We are way too gung ho about adding cjk labels to existing items. You may have noticed that I am constantly removing them from the quickstatements. I consider them to be disruptive and suspicion raising. imo any label changes should occur at the beginning of the batch and be limited to a count of 15 labels added per batch. I do no know what you are doing with this, but understand that a label added after item creation is a risk and a label added during item creation is good. 
