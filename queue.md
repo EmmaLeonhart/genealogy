@@ -2050,3 +2050,42 @@ different thing: linking people already on both sides, not finding new ones.
   to preserve and normalise them to `NN`. The deleting version shipped and touched a batch. Check
   nothing carries a label it produced.
 - **Uncommitted at the time of writing:** the `strip_markers` rewrite and the regenerated ledger.
+
+## THE VERY LAST ITEM — review the algorithm once we are connected to the World Tree
+
+**Emma, 2026-08-27:** *"eventually we will reach a point where we are actually connected to the
+world tree. Once we are actually connected to the World Tree on Wikidata, this raises some more
+concerns... the last queue item should be a sort of review. You should be putting it at the very
+end of the queue once we connect to the World Tree."*
+
+**Her proposal, in her words:** *"a sort of stateful feature ledger that expands by about one hop
+each day, plus all the people that we create to the eligible people. It still very much focuses
+its creation around this particular neighbourhood, but I'm not even sure whether that would be
+needed because I don't know enough about what's going to happen once the World Tree is
+connected. This might be assuming a scenario where once the World Tree is connected, the eligible
+people explode, but that might not be the case."*
+
+**Two things established 2026-08-27 that this review should start from rather than rediscover.**
+
+- **The eligible set probably does NOT explode, and the reason is `universe`.**
+  `wikidata_subgraph(universe=set(have.values()))` counts an edge only when **both ends are items
+  we hold**. Connecting Arne to Charlemagne therefore cannot pull the world tree in; the walk
+  still cannot leave the ledger. That restriction exists because without it, adding Bureus
+  `Q633094` as a root took the group from 97 items to **1,339,336** in one step.
+- **What she describes is close to what the code already does.** Creations land in her
+  contributions, the refresh pulls them into `have`, and the subgraph grows to whatever they
+  newly connect. The daily hop is the ring; the "plus all the people that we create" is the
+  refresh. What is *not* there is any explicit statefulness — no history, no record of what was
+  eligible yesterday.
+
+**The world-tree-agnostic algorithm she half-remembers was never written.** Emma: *"We did have a
+world tree-based, agnostic algorithm earlier, but that one's not the most clear about what it was
+supposed to be doing. I don't know if the spatially agnostic algorithm is one that was actually
+written."* Checked against the whole history: the only match is `a901fd59` (2026-08-12), *"Save
+the world-tree route as an ordered priority chain: 17 edits"* — a route and a priority list, not
+a selection algorithm. Nothing has ever selected people world-tree-agnostically.
+
+**Trigger:** when a person in `have` is connected on Wikidata to the 1,339,227-item component
+containing Charlemagne. That is checkable offline against `out/wikidata/relations.tsv` and should
+be measured, not waited for by eye.
+
