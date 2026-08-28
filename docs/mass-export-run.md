@@ -1,6 +1,6 @@
 # The mass export campaign — the run sheet
 
-**Status, 2026-08-28: BLOCKED ON A CAPTCHA, and nothing else.** Geni served an Imperva/Incapsula
+**Status, 2026-08-28: group 1 DONE. Groups 2 and 3 dropped. Group 4 needs a decision.** Geni served an Imperva/Incapsula
 hCaptcha ("I am human") on the very first profile. Completing or bypassing a bot-detection
 challenge is not something this session will do, so the campaign stops at that box and resumes
 the moment Emma ticks it. Everything below is staged and needs no further preparation.
@@ -101,3 +101,38 @@ other stuff."*
 
 Both kinds of move are the "weird stuff" Emma expects to find, and the point of writing them down
 is that a redirect silently followed looks exactly like a profile that was always there.
+
+
+---
+
+## What the first hour of running it established
+
+**Group 1 is complete.** `export-Forest-6000000227464556886.ged` 5,000 people (the cap exactly)
+and `export-Ancestors-6000000227464556886.ged` 4,309 (matching the profile's own "Ancestors
+4,308"). Both in `exports/bure-campaign/`, seed present in each.
+
+**Timing: Forest ~6 minutes, Ancestors ~9.** Geni's form says *"A Forest export may take several
+days to complete."* It is not a useful estimate. Emma: *"Forests take on average 6 minutes lol."*
+
+**Clicking the download link by accessibility ref silently fails.** It reports success and no file
+lands. Click it by coordinate.
+
+**Group 2 (Andreas Olai) is blocked and it is not a dates problem.** He was identified
+structurally — a Geni profile reading *"Benedictus Olai, Son of Olof, Brother of Kerstin
+Olofsdotter and Andreas Olai"* matches Wikidata's `P3373` sibling `Q4355463` exactly. But **every
+search-result link on Geni is Pro-gated**: the name and "View Profile" both resolve to
+`geni.com/pro/signup`, and the only ungated `/people/` href on a results page is Emma's own
+profile. Emma: *"geni search is a trap designed to upsell."* So search can confirm a person
+exists and can never yield their id.
+
+**Group 3 is dropped.** All eight are already in the corpus **3 to 15 times over**, and the export
+existed to capture a Wikidata link in their Geni bio — which she withdrew when she moved that
+injection into the synoptic tree build. Both the novelty and the purpose are gone.
+
+**Group 4 needs a decision before it starts.** A direct profile URL works without Pro —
+`geni.com/people/x/<id>` opened Nils Adolf Erik Nordenskiöld fine. But **Export GEDCOM is absent
+from the Actions menu on a profile Emma does not manage**; that menu offers Ancestor Report,
+Descendant Report and Merge This Profile and no export. So each of the 100 requires the
+placeholder-seed technique: create a profile she manages in the target's neighbourhood, export
+from it, and count success when the target appears in the result. **That is 100 new Geni
+profiles** — an outward-facing change at a scale that is hers to authorise, not a default.
