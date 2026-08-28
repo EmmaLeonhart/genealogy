@@ -17230,3 +17230,29 @@ Olofsen** (c.1591–1668), so the seed is `Olof father of Christen` `60000002274
 Closures per export across group 4: 2, 20, 2, 4, 2, 6, 6, 1, 4, 3, 5, 2, 1, 2, 5, 4, 2, 1, 3, 1.
 The twenty came from the one seed placed deep inside the network; everything since has been at its
 edges, which is where the remaining names live.
+
+## 2026-08-28 — export 21, and a prediction that was wrong
+
+Group 4, export 21. Target Edvard Fredrik von Saltza `6000000012942583482` (`Q10480021`). His tree
+is saturated, so the smallest arrow was expanded — David Sinclair `+10` — which opened an **Orkney
+Scottish** branch: Sinclairs of Toab and Skaill, Stewarts, Halcros. No patronymics on it, so tier
+4 was the ceiling: seed `6000000227474784871` `NN /Halcro/`.
+
+**Emma asked whether these were Bureätten people at all**, the Scotland having no obvious business
+in a Swedish kinship network. The answer is that the *target* is always from `bureatten.csv` and
+the *seed* is scaffolding — Geni will not export from a profile she does not manage, so a
+placeholder has to be created somewhere in the target's tree. All 23 people outstanding at that
+moment were Swedish.
+
+**But the seed choice was still worth questioning, and I answered it wrongly.** I said the ball
+would likely close von Saltza alone, reasoning from today's own evidence that a seed deep in the
+network closed twenty and one in a Finnish clerical line closed one. **It closed three** — von
+Saltza, Jonas Carl Linnerhielm and Gustaf von Essen — which is the campaign median.
+
+The reasoning was wrong because a `Forest` ball is 5000 people and the Orkney branch is nowhere
+near that size; the ball exhausts it and spends the rest back on the Swedish side whatever edge
+the seed sits on. Seed position does matter — that part stands — but it is not read off the seed's
+nationality, and "the smallest arrow led somewhere foreign" is not a reason to expect a thin
+export.
+
+**Eighteen exports collected today: 100 absent → 20.**
