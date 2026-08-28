@@ -16994,3 +16994,24 @@ governs whether the *created person* is attested or invented; it says nothing ab
 comes from where the seed sits — Brynolf Fabrin is in a Finnish clerical line at the edge of the
 Bureätten network, so the ball grown from him mostly leaves it, exactly as the Elof Steuch seed
 deep inside the network returned twenty. Closures per export now read 2, 20, 2, 4, 2, 6, 6, 1.
+
+## 2026-08-28 — the saturated-tree case, worked for the first time
+
+Group 4, export 8. Target Arvid Nils Stenbock `6000000004594967673` (`Q6188777`) — high Swedish
+nobility, and the first tree in this campaign with **no open slot anywhere on the page**: every
+node four generations deep carries a green arrow, most of them `+28` to `+30`.
+
+`docs/export-seed-rules.md` covers this — *expand a `+N` button and the frontier appears*. Clicked
+the smallest arrow on the page, **Bernhard von Gertten `+11`**, which re-rooted the view on him
+and exposed four open slots one generation up. Took the highest tier of the four: **Margareta de
+Rees (Derris), av Ruis** (c.1505–1556) has her father Peter Derris and no mother, so tier 3, plain
+`NN`, no surname. Two tier-4 slots on the same view were passed over.
+
+Seed `6000000227472483865`, ~4 minutes, 5000 at the cap. **Closed four — 57 absent → 53**:
+Stenbock and three von Rosens.
+
+**The seed sits two generations further out than any previous one and still reached its target**,
+which is the thing this export was really testing. A saturated page is not a reason to skip a
+target.
+
+Closures per export in group 4: 2, 20, 2, 4, 2, 6, 6, 1, 4.
