@@ -35,45 +35,141 @@ Look over all of the items that I have edited but did no create. These are a bit
 Look over this item it just piques my curiosity whether we can identify it on geni and potentially add a mul label https://www.wikidata.org/wiki/Q4411612
 
 
-## Tonight's cron jobs — SESSION-ONLY, so they are written here to survive
+## The queued tasks, IN HER EXACT WORDS — the times are ORDERING, not schedule
 
-Emma, 2026-08-27: *"For all of the cron jobs that I set up in the session. They are good and
-continue on with them, but also add them into the queue as actual items with the specification
-they are the cron jobs so they get crossed off if the cron job finishes, but are a bit more
-stable."*
+Emma, 2026-08-27: *"just look over the chatlog and remake all of them as queue items over this
+bullshit. The queue items all need my exact words the times were meant as ordering."*
 
-**They die with the session.** If it ends before one fires, the item below is all that is left
-and is the thing to work from. Delete an item when its job has finished the work.
+**These were cron jobs. Cron text lives only in memory and three of them were destroyed by being
+re-typed from memory, on the evening she said the exact wording is the most important thing.**
+That is why they are here. **Do not paraphrase these. Do not summarise them. Do not append
+"where to look" hints** — one of the destroyed prompts was her message alone, and the replacement
+bolted on a hypothesis that would have biased the analysis before it looked at anything.
 
-- **20:50 `082e986a`** — `Q141198538` has `nn` as a first name though it was not produced as an
-  NN person. Why, and stop it recurring.
-- **21:20 `e01a1bff`** — two saved Geni pages, in
-  `C:\Users\Emma\.claude\uploads\dbec586f-7705-4f0e-8652-03df7c6b73e5\`, named
-  `a8b40e73-Geni__Caroline_Signe_Borsheim_Hoknes_19322007.mhtml` and
-  `1ef99cd3-Geni__Randolph_Paulus_Borsheim_19262015_Penticton.mhtml`. Through
-  `genimerge path-from-html`. The `?through=6000000177921459078` chain runs via Randolph Paulus
-  Borsheim, and she notes the closest relationship is a **marriage** one, which decides the
-  export style that would follow it.
-- **21:55 `aea9cf19`** — the `Sara /NN/` census: every person whose name carries an NN marker in
-  only ONE of the given/surname fields, as a CSV, then the decision stated explicitly.
-- **22:00 `a5676be8`** — why `6000000021223635839` was emitted as bare `Garborg` rather than the
-  labels she set by hand on `Q141199845`. Likely `labels.strip_markers()`, added the same day.
-- **22:30 `5e093107`** — why `Q141199868` came out as brackets. `CLAUDE.md` § *A parenthesised
-  token in `SURN`/`_MARNM` is THREE different things* already rules this; the label builder
-  appears never to have applied it.
-- **23:00 `0fbd27ed`** — script universality. Every individual gets a Latin `mul` label
-  (`Q12598947` and `Q19657284` did not) and every script the tree records for them. Her rule:
-  **if a script is the only script a name appears in anywhere in the tree, it belongs in the
-  default label set on every item.**
-- **23:30 `52d05831`** — whether to make the repo public and have Actions email her a batch every
-  day. An analysis, not a decision; the decision is hers.
-- **00:30 `0a2b3635`** — compliance audit of every individual created from this repo's batches
-  against the original specifications, as a CSV with per-rule counts.
-- **01:00 `18a633d0`** — `Forest` and `Ancestors` exports on `6000000227464556886`, integrate,
-  re-merge, rebuild the derived layer, then run the daily batch and attach it.
-- **02:00 `40c4c8e1`** — the ledger-with-history idea: resolve redirects, keep past Geni ids,
-  compare both directions. **She asked for a question on every part, each carrying an "I do not
-  know what this means contextually" option**, and no implementation until she answers.
+Work them **in this order**. The clock times are how she expressed the order and nothing more.
+
+---
+
+**1.**
+
+> The item https://www.wikidata.org/wiki/Q141198538 clearly has 'nn' as its first name however it was not produced as an NN person, so what happened, can you please fix the algorithm so it does no do this in the future?
+
+---
+
+**2.** Two saved Geni pages, single-file MHTML:
+`C:\Users\Emma\.claude\uploads\dbec586f-7705-4f0e-8652-03df7c6b73e5\a8b40e73-Geni__Caroline_Signe_Borsheim_Hoknes_19322007.mhtml`
+and `…\1ef99cd3-Geni__Randolph_Paulus_Borsheim_19262015_Penticton.mhtml`
+
+> Yeah so I guess egenerate the alorithm and run for this reason
+>
+> And for other things: So here are additional paths I put as html single file things.
+>
+> Especially since the closest relationship is actually a marriage onehttps://www.geni.com/people/Arne-Garborg/6000000003492005116?through=6000000177921459078 https://www.geni.com/people/Ane-Oline-Raugstad/6000000003491986946?through=6000000177921459078 https://www.geni.com/people/Marta-Kristine-Raustad/6000000003491988489?through=6000000177921459078 https://www.geni.com/people/Peder-Raugstad/6000000003491988509?through=6000000177921459078 https://www.geni.com/people/Selma-Borsheim/6000000003491988619?through=6000000177921459078 https://www.geni.com/people/Reinhert-Borsheim/6000000032068841409?through=6000000177921459078 https://www.geni.com/people/Randolph-Borsheim/6000000177921459078 https://www.geni.com/people/Richard/6000000177921459056
+> https://www.geni.com/people/%E9%96%BB%E9%AD%94%E7%8D%85%E5%BF%83/6000000087535357291
+>
+> Now I do see this one as a potentially lower priority one and with the bergitte wikidata item already existing less important. But these things were kinda dropped. The idea again with the alorithmic stuff is we make as many paths etween these people as possible so it grows into a more dense area of the wikidata tree
+
+---
+
+**3.**
+
+> Ignore the fucking NN thing. "Sara /NN/" can wait until a cron job at 9pm fires to analyze this problem then, right now the important thin here is o actually fix the algorithm and rerun it adnd attach the quickstatement thing
+
+---
+
+**4.**
+
+> do a cron job at 10pm to analyze why https://www.geni.com/people/private/6000000021223635839 was added as "Garborg" instead of the current labels on wikidata that I manually added https://www.wikidata.org/wiki/Q141199845
+
+---
+
+**5.**
+
+> do a cron job at 10:30 PM to analyze https://www.wikidata.org/wiki/Q141199868 and why it came out as brackets instead of what it is supposed to be too
+
+---
+
+**6.**
+
+> analyze why new items are not being created with Japanese and Chinese labels already pesent, and to go over the census and build infrastructure so that every indiviual is created with a latin alphabet mul label (a few like Buyeo Taebi (Q12598947) and Buyeo Deokjang (Q19657284) were not), and every individual is at least made with all of the cjk names and others. Since remember that every individual is supposed to have the relative script universality beforehand and it is absolutely essential to cover all cjk, if any script is the only present script for the name of somethin in he geni synopic tree then it must be part of the default lablels we make on every item
+
+---
+
+**7.**
+
+> cron job at 11:30 PM that does an analysis of whether we could set this repo as public, and use github actions to have it periodically email me a quickstatements file every day at 9am, I am contemplating this as a way to get more efficiency, but mostly because I do not think the security issue is that bad (people who are digging can find stuff), and because making this 100% programmatic i gonna allow for more reliability since I am no gonna need you to constantly opaquely generate stuff for me where I do not know the degree that somethin is your discretion or part of the algorithm. Biggest barrier imo is the synoptic tree file stuff. But I think this is a genuine strategy for solvin a genuine problem with our workflow
+
+and, immediately after:
+
+> also email is easier to just get all the time
+
+---
+
+**8.**
+
+> And a cron job at 12:30 AM that will do an analysis of the existing individuals that I have added using this, to see how compliant they are withthe original specifications and visions.
+
+---
+
+**9.**
+
+> without analysis do a cron job that will at 1am do a forest export and ancestor export on https://www.geni.com/profile/index/6000000227464556886 and incorporate them into the synoptic tree and then rebuild the synoptic tree, and then generate the quickstaements with the algorithm
+
+---
+
+**10.** She asked, for this one specifically, that a question be put to her about every part of it,
+each carrying an option meaning *I do not know what this means contextually*, with a re-explanation
+when she picks it. Screenshot she was replying to:
+`C:\Users\Emma\.claude\uploads\dbec586f-7705-4f0e-8652-03df7c6b73e5\6e755957-image.jpg`
+
+> I also do have one additional thing I think would be good to do, but I'm quite afraid that implementing this particular feature is going to cause more harm than good. Specifically, I think that this feature may cause more harm than good because I suspect that you may encounter this. I think it's unambiguously a good thing to do, but I think it may cause more harm than good if you misunderstand it.
+>
+> The idea here is that I think you should keep an active ledger, like a ledger from a few times ago, with some level of history. It is going to check each QID that I have edited:
+> - It's going to check whether this QID is a redirect, because it should be resolving redirects.
+> - It should check the Genny IDs of the QIDs that I've edited.
+> - It should compare the Genny IDs with the QIDs.
+> - The Genny IDs should be saved.
+> - If anything occurs, it will run a query to find the wiki data mapping of the Genny IDs of the QIDs and figure things out.
+>
+> This is a potential concern. When I say this is a potential concern, I do genuinely mean I consider this to be a potential concern. I consider this to be potentially useful because of weird stuff going on, potential merges, and other stuff like that. I'm going to say, honestly, this particular idea that I'm talking about is too much of a tangent. I'd like you to queue it up.
+
+---
+
+**11.** Screenshot she was replying to:
+`C:\Users\Emma\.claude\uploads\dbec586f-7705-4f0e-8652-03df7c6b73e5\16d7e7ae-image.jpg`
+
+> Okay, I think I actually understand what's going on with these hand-asserted pairs. I think I remember what's going on with them, but the interesting thing I'm noticing is that, aside from the one for me, all of these are Asian people. I think I know what the actual explanation for this is, and it's a bit of a weird one.
+>
+> What it is specifically here is that these identities were actually significant identities that I put a lot of effort into creating identification with. What I was doing was so for a completely different algorithmic purpose. This was related to the synoptic tree. For all of these individuals, it was related to the synoptic tree, and it was put in pretty simply: I should not be listed in this hand-crafted thing at all.
+>
+> As for the other people in this hand-crafted thing, I shouldn't be there at all. My QID being recorded is actually kind of a problem, or the identification of me and this ID thing is actually a bit of a problem. Removing it is actually pretty impractical. Me being included in it is actually a significant problem because including me in this just adds noise and makes it so that the earlier algorithm wanted to start stuff coming from me, which is not something that is desired.
+>
+> As for the other individual, you just straightened me out of this, but for these other individuals, it's also a bit outdated because I actually have an updated way of doing these things. Go on to Jenny using the browser extension thing, and essentially, in all their BIOS, add the link to the wiki data item. Doing that establishes the identity resolution in a way that does not harm our algorithm. You do that. Now, however, this does add a bit of a complication because now there is a newer version on Jenny that we are needing to do with these.
+>
+> After we've added them, go on each of them immediately, except for me. Go on each of them immediately and paste the Wikidata link into their bios, and then save using the browser. On each one of them, you then run an export. You run an export on them. You run a forest export, either on the individual if allowed or based off of a seed, based off of producing a seed individual. Based off of producing a seed individual in the way that we've been doing earlier, assuming that the individual ends up coming into the export, it's considered a success.
+>
+> We are putting these into a new directory of the Synoptic tree, which is the overwrite thing. As I understand the Synoptic tree building algorithm, it first joins all of the trees regularly, but then it overwrites them with the merge with the post-merge thing. The overwrite thing is really a post-merge thing, and we are keeping that in mind here, obviously, because this is important. If one of these IDs redirects to another thing, you just treat that as being the thing.
+>
+> Essentially, by having this new overwrite Jenny export for these individuals, you have to do it in the step of changing all their bios first and then doing all the exports because I want all the bios in already. I'm going to guess a lot of these people have the link in already. Although I'm going to say, for safety, we're still going to do the forest exports on these people, I want to queue this task up for 3am because of the fact that there's other stuff to deal with.
+
+The nine pairs the message is about, from `entity_resolution.md`:
+`6000000001835522164`→`Q11596350` Wakatakehiko · `6000000001844033355`→`Q11078587` Harima no Inabi
+no Ōiratsume · `6000000001902786893`→`Q11443857` Futohime Mononobe ·
+`6000000002039751362`→`Q24890131` Ikofutsu Mononobe · `6000000087535357291`→`Q140568870` **Emma
+herself, the one to remove** · `6000000186285688253`→`Q19657284` Buyeo Deokjang ·
+`6000000186285688286`→`Q12598947` Taebi Buyeo · `6000000227335224861`→`Q135579480` Yasutaka
+Kitajima · `6000000227335393824`→`Q135579474` Tokitaka Kitajima
+
+---
+
+**12.** Screenshot she was replying to:
+`C:\Users\Emma\.claude\uploads\dbec586f-7705-4f0e-8652-03df7c6b73e5\160fbcc5-image.jpg`
+
+> Yes, this person appears to be correct. This person is not actually a spying person at all, because I actually put this specifically in place for this person. They're just a person with a similar name that I was concerned there might be a merge done on, but the person themselves is relatively clear.
+>
+> I'd be potentially open to you doing some sort of research on this person to find the person's geniID, matching their date of birth, by doing a web search of them on Genie. Keep in mind there's a more famous individual, and I specifically put in the different then property to differentiate them. Doing this, having a separate geniID for this person, would be useful. Of course, once we did that, we'd need to run an export. We need to run a forest export on this individual and their locations and stuff, so keep that in mind. Keep that in mind for 3:30 am tomorrow for this.
+
+The person is `Q10411463` Andreas Olai.
 
 ## The spine's `P2600` statements were never written to Wikidata
 

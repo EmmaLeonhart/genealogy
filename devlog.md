@@ -16476,3 +16476,24 @@ clock. `date` was two keystrokes away.
 
 Rescheduled tonight: `082e986a` 20:50, `e01a1bff` 21:20, `aea9cf19` 21:55. The other nine keep
 their original wording and are still dated 28/29 August.
+
+## 2026-08-27 — the twelve queued tasks, in her words, in the queue
+
+Emma: *"just look over the chatlog and remake all of them as queue items over this bullshit. The
+queue items all need my exact words the times were meant as ordering."*
+
+**The clock times were never a schedule.** They were how she expressed the order, and I built
+twelve cron jobs out of them — a system whose text lives only in memory, which is how three of
+those prompts came to be destroyed and re-typed from memory a few hours later. Her point:
+*"the entire point of the rebase stuff was so that we would escape the horrible cron system but
+then you burned it down before we could get them into the queue."*
+
+`queue.md` § *The queued tasks, IN HER EXACT WORDS* now holds all twelve as block quotes,
+verbatim including her typos, numbered in order, with the file paths and screenshot paths she
+attached and the nine `entity_resolution.md` pairs item 11 is about. The section opens by saying
+not to paraphrase them, not to summarise them, and not to append "where to look" hints — the
+worst of the three destroyed prompts was her message alone, and my replacement bolted on a
+hypothesis that would have biased the analysis before it looked at anything.
+
+My own summaries of these tasks are gone from the queue. They were a description of the cron
+system, not an escape from it.
