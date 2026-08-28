@@ -1922,12 +1922,18 @@ outside the group. Cecilie's father in our tree is `6000000003166417414` **Ebbe 
 who is **step 22 of `paths/charlemagne-to-arne-garborg.tsv`**. When the spine reaches him, one
 `P40` joins that whole island to the contiguous group in a single edit.
 
-**This is why the exclusion list still exists, and it revises what was said earlier.** Emma:
+**Why the exclusion list still exists — for HER, and not for the Kitajima family.** Emma:
 *"why are we even having exclusions? If you just followed the algorithm then exclusions wouldn't
-be needed."* True of **creations** — she is not in the subgraph, so she is never a seed. Not true
-of **additions**, which are ledger-wide: her `Q140568870` and the Kitajima items are in the
-ledger, so without the exclusion the fill-in pass would edit them. Do not remove the exclusions
-on the strength of the subgraph alone.
+be needed."* True of **creations**: she is not in the subgraph, so she is never a seed. Not true
+of **additions**, which are ledger-wide — her `Q140568870` reaches `have` through
+`entity_resolution.md`, so without the exclusion the fill-in pass would edit her item.
+
+**The Kitajima half of that was wrong and is corrected here.** Checked by id, 2026-08-28:
+**none of the 24 Kitajima/Kitashima people is in the ledger**, so neither the fill-in pass nor
+any batch scoped to the ledger could ever reach them. `Saburou Kitashima` was created by the
+**ring** — one hop out from a ledger person in our Geni tree — before the subgraph gate existed,
+and the subgraph gate is what stops that recurring. Their entry in `NEVER_TOUCH_*` is belt and
+braces, not the thing holding the line.
 
 ### The ledger refresh is PART OF THE RUN. A separate step is a stale ledger
 

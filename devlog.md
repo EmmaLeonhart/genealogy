@@ -16396,3 +16396,27 @@ Three things worth knowing about it, and only one is a caution:
   the ledger, so the exclusion list is the only thing keeping the fill-in pass off them.
 
 Recorded in `CLAUDE.md`; no behaviour changed, because she endorsed the behaviour.
+
+## 2026-08-28 — the one-off sibling batch, and the Kitajima half of yesterday's note was wrong
+
+**Emma:** *"at this point I want to do an unbound sibling link generation of quickstatements, a
+one time thing due to a technical issue I am trying to resolve."* Asked which population — the
+answer changes the size by orders of magnitude, since sibling links grow as the square of family
+size — she chose the **ledger**.
+
+`scripts/build-sibling-batch.py`: **454 sibling pairs among the 164 ledger people, 34 already on
+Wikidata and dropped, 420 statements**. Both directions, `S2600` on each, no `CREATE` and no
+`LAST`, so nothing in it can duplicate a person. 16 are one-way only because the reverse already
+exists. It is a separate script rather than a flag on the daily builder, deliberately: the
+10-a-day `SIBLING_CAP` is a presentation rule for the **daily cadence**, and a one-off she asked
+for by name is not the daily batch.
+
+**And a correction to `8d532cef`, made a few hours earlier.** It said the exclusion list was
+load-bearing because *"her `Q140568870` and the Kitajima items are in the ledger"*. Checked by
+id: **none of the 24 Kitajima/Kitashima people is in the ledger** — 107 of its rows are "from
+日巫女 contributions" and none of them is Kitajima. So the fill-in pass could never have reached
+them. Her own item does reach `have`, through `entity_resolution.md`, so that half stands.
+
+`Saburou Kitashima` was created by the **ring** — one hop from a ledger person in our Geni tree —
+back before the subgraph gate existed. The gate is what stops that recurring; the `NEVER_TOUCH_*`
+entry for the family is belt and braces.
