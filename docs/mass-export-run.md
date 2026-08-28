@@ -1,9 +1,9 @@
 # The mass export campaign — the run sheet
 
-**Status, 2026-08-28: group 1 DONE. Groups 2 and 3 dropped. Group 4 needs a decision.** Geni served an Imperva/Incapsula
-hCaptcha ("I am human") on the very first profile. Completing or bypassing a bot-detection
-challenge is not something this session will do, so the campaign stops at that box and resumes
-the moment Emma ticks it. Everything below is staged and needs no further preparation.
+**Status, 2026-08-28: group 1 DONE, group 2 RUNNING, group 3 dropped, group 4 AUTHORISED.**
+The captcha that stopped the first attempt has not reappeared. Emma authorised the placeholder
+seeds group 4 needs -- *"And yes I'm authorizing new seed people on all of these people lol"* --
+so the campaign runs end to end from here.
 
 Emma, 2026-08-28: *"Mass export these using our export protocol. Export from them and if their ids
 were merged or moved record it each time and the other stuff. Do the earlier queued exports first
@@ -33,13 +33,25 @@ algorithm."*
   only script that reads the merged tree, and `derive-labels.py` reads its output without
   building it), then `build-daily-batch.py`.
 
-### 2. `Q10411463` Andreas Olai — `Forest`, once the Geni id is known
+### 2. `Q10411463` Andreas Olai — `Forest` — **id found, export running**
 
-The Geni id is **not known**. Find it first, and the constraint matters: there is a better-known
-Andreas Olai, and Emma put `P1889` *different from* on the item to separate them. Read that
-statement first — it names the person to reject. Match on `P569` *date of birth*, never on the
-name; `CLAUDE.md` § *Join on the Geni ID; do not search by name* records what name matching has
-cost here. If the dates do not settle it, **stop and say so**; a wrong Geni id is worse than none.
+**Geni `6000000040951562251`.** Emma supplied the profile URL after the search route dead-ended,
+and it confirms structurally: the About text reads *"Andreas Olai, född 1521 i Örebro, död 1560,
+var en svensk ämbetsman"*, matching the item's `P569` 1521, `P570` 1560 and its description
+*Swedish civil servant*; *"Son of Olof, Brother of Kerstin Olofsdotter and Benedictus Olai"*
+matches `P3373` *sibling* → `Q4355463`. The `P1889` *different from* separates him from the
+better-known Andreas Olai, so the name alone could never have settled it.
+
+**The trap worth writing down: the structured Birth field says "estimated between 1450 and
+1570".** The real dates are only in the prose. Anything matching on the structured field
+would have called this person unmatchable, which is exactly what happened.
+
+The pairing is now in `build-garborg-day.py`'s hard-coded `P2600` block, on Emma's instruction:
+*"we add this qid geni id add thing to the quickstatements block that always gets added in"*.
+
+Neither he (0 exports) nor his brother `6000000040951399522` (0) is in the corpus, so
+**Export GEDCOM is not offered** on either — Emma manages neither profile. Seeded instead, tier 3:
+`NN` **`6000000227468650841`**, his mother, at the open *Add mother* slot beside his father Olof.
 
 ### 3. The eight `entity_resolution.md` people — `Forest` each
 
@@ -129,10 +141,19 @@ exists and can never yield their id.
 existed to capture a Wikidata link in their Geni bio — which she withdrew when she moved that
 injection into the synoptic tree build. Both the novelty and the purpose are gone.
 
-**Group 4 needs a decision before it starts.** A direct profile URL works without Pro —
-`geni.com/people/x/<id>` opened Nils Adolf Erik Nordenskiöld fine. But **Export GEDCOM is absent
-from the Actions menu on a profile Emma does not manage**; that menu offers Ancestor Report,
-Descendant Report and Merge This Profile and no export. So each of the 100 requires the
-placeholder-seed technique: create a profile she manages in the target's neighbourhood, export
-from it, and count success when the target appears in the result. **That is 100 new Geni
-profiles** — an outward-facing change at a scale that is hers to authorise, not a default.
+**Group 4 needs 100 placeholder seeds, and Emma authorised them.** A direct profile URL works
+without Pro — `geni.com/people/x/<id>` opened Nils Adolf Erik Nordenskiöld fine. But **Export
+GEDCOM is absent from the Actions menu on a profile Emma does not manage**; that menu offers
+Ancestor Report, Descendant Report and Merge This Profile and no export. So each of the 100 needs
+the placeholder-seed technique: create a profile she manages in the target's neighbourhood, export
+from it, and count success when the target appears in the result. That is 100 new Geni profiles,
+which is hers to authorise and she did: *"And yes I'm authorizing new seed people on all of these
+people lol"*.
+
+**The seed is made in the family-tree view, not on the profile page** — `geni.com/family-tree/
+index/<id>` shows the open slots as *Add father* / *Add mother* boxes, which is the whole method.
+Two quirks of that canvas, both cost minutes on the first one: a click **pans the tree** rather
+than opening the box, so the same box has to be clicked twice at its new position; and clicking a
+node opens the profile in a **new tab that reports an empty URL for several seconds** before the
+id appears. Neither is an error. Wait, do not re-click, and never search for the person you just
+created.
