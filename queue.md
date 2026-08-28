@@ -13,6 +13,21 @@ lines as say what to do.
 audits, dead crons and superseded priorities. Recover any of it with
 `git show 6edf302b:queue.md`.
 
+## Stuff here (semi-confusing) 8-27
+
+Okay so idk what is going on since a lot of contradictory thins are happening. idk if the section below is the next step and the queue is not in use or if it is awkwardly set up
+
+Analyze https://www.wikidata.org/wiki/Q141180412 because it appears that it has Japanese and presumably Chinese label that are no derived from the mul label like we wanted. Remember that the mul lable takes priority
+
+Also any abbreviations like -dtr (i.e. "Rasmusdtr." instead of "Rasmusdatter" should be fixd since wikidata mul labels ae supposed to have the full form. This is a part of the compliance stuff I mentioned earlier)
+
+Organize the queue to make it usable again, currently it does no appear to be usable
+
+For all of the cron jobs that I set up in the session. They are good and continue on with them, but also add them into the queue as actual items with he specification they are the cron jobs so they cget crossed off if he cron job finishes, but are a bit more stable.
+
+Look over all of the items that I have edited but did no create. These are a bit of a weak point for me since they are potentially items that are no in my watchlist and might cause me issues. Create a batch of quickstatements that does some kind of minor edit on all of them if possible preferable settin their mul labels or something
+
+
 ## Built and waiting on 2026-09-01 — nothing to do until then
 
 - `reports/wikidata-geni-qid-p2600.qs` — **354** `P2600` *Geni.com profile ID* statements
