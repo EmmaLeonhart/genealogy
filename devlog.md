@@ -17302,3 +17302,44 @@ edge ratio made concrete. The export is still worth having: he is a real person 
 Wikidata, so it is material for the synoptic tree even though it is not coverage.
 
 **Remaining: Falkengréen, Melanderhjelm, Frondin, Broman, Djurberg.**
+
+## 2026-08-28 — the Bureätten campaign is complete: 251 of 251
+
+`reports/bure-to-export.tsv` is empty. Every person in sv.wikipedia's
+`Category:Bureätten` carrying a Geni id is now in `exports/`. Emma's stopping rule —
+*"once everyone is covered the campaign is over"* — is met.
+
+**Group 4 went 100 absent → 0 in one day**, across roughly 30 exports.
+
+**The last five were closed by her method, not mine.** Asked to seed against the five
+remaining, she said: *"open and look at all of their trees and if any individuals are
+shared then seed off the shared individual."* Doing that found that **Melanderhjelm's own
+grandparents are Christina Frondin and Daniel Djurberg** — three of the five were one
+neighbourhood, not three targets. A single tier-2 seed on **Kerstin Persdotter**
+(Djurberg's grandmother, two generations above the junction) closed all three at once.
+Falkengréen and Broman then needed one seed each.
+
+**That method beats everything I derived today.** The surname test — read the seed's
+child's surname against the absent list — worked well (it predicted the Svedelius trio
+exactly) but needs the target's name to appear somewhere. Reading the trees for a shared
+person works off the structure and does not care what anyone is called.
+
+**Two heuristics of mine died on measurement, both recorded with the reasoning that
+produced them:**
+
+* **Descendant count predicts nothing, in either direction.** The Lampa wife has 6,029
+  descendants and closed nothing; the Erling wife has 25 and closed both Berwalds. A
+  `Forest` ball is 5000 people regardless — only where they fall matters.
+* **The `+N` count does not indicate an open parent slot.** Five small counts on the
+  Bielke page all had both parents; the four people with *no* arrow were the frontier.
+
+**Emma's connectivity hypothesis was right and my first answer was wrong.** She said the
+family is well connected outside itself but not within. I measured paths, found 64% within
+two hops, and called it half-refuted. The edge measurement settles it: **68 edges to other
+Bureätten against 891 outward, and 100 of 151 with no Bureätten neighbour at all.** Two
+hops is exactly "out through a stranger and back". All 151 sit in the giant component, so
+connection to the World Tree was never in question — connection to each other was.
+
+**Also confirmed:** Bishop Jacobus Johannis, Falkengréen's ancestor, is in the corpus —
+Geni `6000000004032942523`, in 9 exports. Geni files him as **Zebrozynthius**, not Bure,
+which is why a grep for "Bure" misses him.
