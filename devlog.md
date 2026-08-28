@@ -17075,3 +17075,15 @@ recorded four generations deep with no gaps, so its frontier people are reached 
 an arrow, and they carry house names rather than patronymics. Gentry and clergy trees run out
 sooner and their frontier is full of `-sson`/`-dotter` names, which is exactly the material tier 1
 and tier 2 need. Nothing was changed to cause this; it is a property of who is left on the list.
+
+## 2026-08-28 — export 12, and ten exports collected today
+
+Group 4, export 12. Target Baltzar von Platen `6000000006127899214` (`Q805827`). Seed
+`6000000227472825938` `NN /von Braun/` — tier 4, the only arrowless node on an otherwise fully
+green page. ~4 minutes, 5000 at the cap. **Closed one, the target alone. 43 absent → 42.**
+
+**Ten exports collected today: 100 absent → 42.** Closures per export: 2, 20, 2, 4, 2, 6, 6, 1, 4,
+3, 5, 2, 1.
+
+Every export has come back at exactly 5000 and in four to five minutes once the queue was clear —
+the ~13, ~18 and ~40 minute builds were all in the first three, before the run settled.
