@@ -17343,3 +17343,48 @@ connection to the World Tree was never in question — connection to each other 
 **Also confirmed:** Bishop Jacobus Johannis, Falkengréen's ancestor, is in the corpus —
 Geni `6000000004032942523`, in 9 exports. Geni files him as **Zebrozynthius**, not Bure,
 which is why a grep for "Bure" misses him.
+
+## 2026-08-29 — the queue was write-only; and the CJK table is starving, not inconsistent
+
+**Rebased queue.md from remote** — three of Emma's commits, her Aug 28 manual adds, kept intact.
+
+**She said the queue had become garbage and she was right, measurably.** 2,380 lines, 68 sections,
+**+626 lines in two days** — the largest growth since the file was first dictated. The last commit
+that removed a completed item was 2026-08-27. Meanwhile **33 devlog entries landed on 2026-08-28
+and not one of them deleted its queue item.** The `queue-driven-workflow` contract is *finish an
+item, delete it, devlog it, same commit*; the devlog half kept running and the delete half stopped,
+so the queue became a write-only log of work that was already done.
+
+**Pruned on her ruling — "delete the archival sections outright".** 20 sections, **589 lines**,
+all records of finished work (`DECIDED`, `BUILT`, `MEASURED`, `is GREEN`, `fixed 2026-08-27`).
+Recoverable from git. Six sections matched the same pattern and were **kept** because they hold
+live content rather than a record: the spine `P2600` gap (16 statements in the batch file against
+9 hard-coded), the 769 still-ambiguous name strings, the tier-2 surname worklist, the one-live-batch
+invariant, her postponed Bure random-walk item and its open topology question, and the `universe`
+bridging risk that nothing currently checks.
+
+**Her CJK question, answered.** She noticed only Simen Olsen got a `ja`/`zh` label out of 41
+creations and read it as the source being inconsistent. It is one source — both emission paths call
+`label_in()` against `reports/garborg-name-transliterations.tsv` — and the file holds **219 tokens**,
+seeded for the inner ring and never extended. `label_in` refuses a partial name, correctly, and the
+41 new people use **74 tokens it has never seen**: `Olav`, `Olof`, `Andreas`, `Agnes`, `Maria`,
+`Rasmus`, `Erik`, `Daniel`. So it starves further with every ring outward — 1 of 41 today, 0 next.
+
+**And the pipeline inverts her rule.** She said a label at creation is good and a label after
+creation is a risk. Today's file: **2 label lines at creation, 1,580 after.** Diffed against the
+`.qs` she actually ran — every statement she ran was in the generated file, she added nothing, and
+she hand-deleted **1,579 label lines** (the whole 177-item CJK clan block, plus 79 ja/zh edits on
+existing items), moved the 22 she kept to the top, and touched **not one structural statement**.
+All 41 creations and every `P22`/`P25`/`P26`/`P40`/`P3373`/`P2600`/`P569`/`P570`/`P735`/`P734`/
+`P1449`/`P5056` survived intact.
+
+**The chain advanced, and `reports/the-spine.md` is two days stale in a way that hides it.** That
+report is from Aug 26 02:43 and still lists steps 4-12 as `create`. Joining
+`paths/charlemagne-to-arne-garborg.tsv` against the live ledger: **steps 1-13 are unbroken** —
+Arne Garborg `Q467497` up through Bergitte Gunnbjørnsdatter Aukland `Q141198835` to Gunnbjørn
+Toresson Tengs `Q141199851`. Line 3, Bergitte to Arne, is **complete**. Emma acknowledged it.
+
+**The join key is in the `note` column, not a column of its own.** 694 of 697 path files have
+headers `step / name / relation_to_previous / note`, and `genimerge.genipage` writes the profile id
+into `note` as `geni:<id>`. A first join on a `geni_id` column returned 0 of 34 and looked exactly
+like a spine that had not moved. Only 3 path files carry an explicit `qid` column.

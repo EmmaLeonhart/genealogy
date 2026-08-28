@@ -48,6 +48,37 @@ I think this person https://www.wikidata.org/wiki/Q141189080 should be corrected
 
 I noticed that in our recent creation batch only Simen Olsen (6000000016756376445) even had a cjk name. So that is extremely confusing since in my eyes it indicates the pipeline has a source for cjk labels, but that source is somehow inconsistent or absent. 
 
+**Answered 2026-08-28, and you are right that something is wrong — but it is starvation, not
+inconsistency.** Both paths call the same `label_in()` against the same table, so the source is
+one source. The table is `reports/garborg-name-transliterations.tsv` and it holds **219 tokens**.
+It was built for the inner Garborg ring and has never been extended.
+
+`label_in` returns nothing unless **every** token in a name is known — *partial is worse than
+absent*, which is the right rule. The 41 people created today are the next ring outward, and
+their names use **74 tokens the table has never seen**, including entirely ordinary ones:
+`Olav`, `Olof`, `Andreas`, `Agnes`, `Maria`, `Rasmus`, `Erik`, `Daniel`, `Bergitte`, `Randa`.
+So 40 of 41 were blocked, and Simen Olsen passed only because both his tokens happened to be in.
+
+**This gets worse every ring, not better.** Each hop out is further from the tokens the table was
+seeded with. Today it was 1 of 41; the next ring will be 0.
+
+**And the pipeline has your rule exactly backwards.** You said a label at creation is good and a
+label after creation is a risk. Measured on today's file:
+
+| | label lines |
+| --- | ---: |
+| at creation (good) | **2** |
+| after creation (risk) | **1,580** |
+
+You then hand-deleted 1,579 of those 1,580 — the whole 177-item CJK clan block plus 79 of the
+ja/zh edits on existing items — and moved the 22 you kept to the top of the file. Every structural
+statement you left alone: all 41 creations, every `P22`/`P25`/`P26`/`P40`/`P3373`/`P2600`/`P569`/
+`P570`/`P735`/`P734`/`P1449`/`P5056`. Zero dropped. So the deletions are entirely a label problem.
+
+**The fix is two changes, not one:** grow the transliteration table so creations can carry
+`ja`/`zh` (the good kind), and cap the post-creation label edits at 15, emitted at the top of the
+batch, per your rule above.
+
 ## Applying labels to existing items
 
 We are way too gung ho about adding cjk labels to existing items. You may have noticed that I am constantly removing them from the quickstatements. I consider them to be disruptive and suspicion raising. imo any label changes should occur at the beginning of the batch and be limited to a count of 15 labels added per batch. I do no know what you are doing with this, but understand that a label added after item creation is a risk and a label added during item creation is good. 
@@ -125,189 +156,6 @@ link to be injected into bios **during the synoptic tree build**, with Geni neve
 **Do not act on `entity_resolution.md` yet.** Emma: *"this entity resolution stuff is important,
 but I think you may have been presenting it as being more important than it is. It's important,
 but just don't do stuff on it right now."*
-
-## DECIDED in review — every Bureätten person with a Geni id becomes eligible
-
-**Her definition, 2026-08-27, given after I invented a hop threshold instead of asking:**
-*"Every bure kinship person means every item whose swedish wikipedia item is in
-category:bureatten and which has a geni id. It doesn't mean anything related to that retarded
-logic you did just then."*
-
-**The population is `reports/bureatten.csv` and nothing else.** It is the Swedish Wikipedia
-Category:Bureätten listing, columns `sv_title, qid, kind, geni_ids`. 576 rows — 365 people, 126
-families, 85 unknown; 575 carry a QID, **251 carry a Geni id**, and that is the eligibility test.
-**2** of the 251 are in the ledger today, so this is **+249**.
-
-No hop count, no roster, no threshold. The category is the boundary, which is the point of using
-it.
-
-**What I did instead, so it is not repeated:** reached for `reports/bure-roster.tsv`, found it
-graded people by hops from a core (158 / 805 / 1,477 / 3,030), and offered her three readings of
-her own instruction — 158, 1,593 or 5,470 — rather than asking. Her standing correction:
-*"If something is ambiguous do AskUserQuestion instead of bullshitting yourself into retarded
-harmful algorithms."*
-
-**Confirmed 2026-08-27: BOTH — fill-in and seeding.** They go into `have`, so their existing
-items get statements added, *and* they seed rings, so new people are created around them. Bureus
-`Q633094` is already a subgraph root, so the ones Wikidata connects to him seed on their own; the
-rest need to be admitted to the seed set deliberately.
-
-**Expect the batch to grow.** The seed set is 104 today. Whether the caps absorb 249 more seeds
-or the daily batch jumps in size is something to measure on the first run, not to guess at.
-
-## DECIDED — the ledger is REBUILT every run, from two sources, and nothing else
-
-**Emma, 2026-08-27:** *"never deleting rows is a horrible idea. Simple as that... This seems to
-explain why it is that it was this giant grab bag of some stuff that was actually generated and
-some random garbage that got thrown in. The ledger should be everything I've edited. In addition
-to everything I've edited, it would include all of the Bure clan people. Nobody else needs to be
-in the ledger. Refusing to delete it is the reason why it is that I got filled up with garbage
-that wasn't supposed to be there."*
-
-**The two sources, and there is no third:**
-
-1. **Her Wikidata contributions** — every item she created or touched, resolved to a Geni id
-   through its `P2600` *Geni.com profile ID*.
-2. **The Bureätten people** — `reports/bureatten.csv`, the sv.wikipedia Category:Bureätten
-   listing; the **251** rows carrying both a QID and a Geni id.
-
-Anything not in one of those two does not survive a run. `entity_resolution.md` is not a source.
-Hand-typed rows are not a source.
-
-**The defect: `refresh-garborg-ledger.py` has merged rather than rebuilt since its first commit**,
-`30943703` on 2026-08-25 — titled *"rebuild the Garborg ledger from Emma's account"*, while the
-code loads the existing file and only ever adds. That is the accumulation mechanism, and on
-2026-08-27 it was described to her as reassuring (*"nothing is being lost"*) rather than as the
-problem.
-
-**What a rebuild costs today, stated so it is not a surprise.** Seven spine people vanish:
-`Q5915800` Knut Algotsson, `Q101247444` Ingegerd Svantepolksdotter, `Q6197518` Svantepolk
-Knutsson Viby, `Q3743799` Knut Valdemarsson, `Q4953376` Helena Guttormsdatter, `Q274606`
-Berengar I, `Q284400` Gisele of Cysoing. She has edited all seven, so they are in her
-contributions — but their items carry **no `P2600`**, so nothing can resolve them to a Geni id.
-They exist in the ledger only because they were typed there.
-
-**The fix for that is not to keep merging.** `reports/wikidata-spine-add-p2600.qs` holds the 16
-`P2600` statements for exactly these people, two of them accepted by her on 2026-08-26, and has
-never been run. Once it runs they resolve on their own. Until then a rebuild loses Charlemagne
-spine steps 16–21 and 31–32.
-
-## DECIDED — when the algorithm links to a person, it writes their `P2600` too
-
-**Emma, 2026-08-27:** *"Don't we have the ability to actively add a Geni ID to a person who is
-linked? Yes, we should have a thing that allows the algorithm to, when it's attaching people
-together, add in a Geni ID... It should be able to say, 'Link a person to their parent who's an
-actual person in the tree,' and add onto the parent the parent's geni ID, as well as any other
-properties that we would be adding to them."*
-
-**We do not have it.** `LAST P2600 "…"` is emitted only inside a `CREATE` (line 1473). The fill-in
-pass emits `P22` *father*, `P25` *mother*, `P40` *child*, `P3373` *sibling*, `P26` *spouse*,
-`P735` *given name* and `P734` *family name* — **never `P2600`**. So an item we can already pair
-with a Geni profile never gets the id written unless we minted the item ourselves.
-
-**The population is small and load-bearing.** Measured live 2026-08-27 over the 26 items she has
-edited but did not create: **8 humans carry no `P2600`** — the seven Charlemagne spine people
-(`Q5915800`, `Q101247444`, `Q6197518`, `Q3743799`, `Q4953376`, `Q274606`, `Q284400`) and
-`Q10411463` Andreas Olai. These are exactly the people the ledger can pair and Wikidata cannot,
-which is why the rebuild-from-contributions ruling would drop them. Writing the `P2600` closes
-that for good: afterwards they resolve on their own.
-
-**Do not size this from `out/wikidata/p2600-all.tsv`.** It is a bulk download predating her recent
-creations, so 202 of 209 ledger pairs look unlinked in it while their items really do carry the
-id. Absent-from-export is not absent-from-Wikidata. The live check is
-`genimerge.wikidata.full_entities`.
-
-**Bureätten needs nothing here:** 0 of the 251 lack a `P2600` in the export — though that column
-may itself have been built from `p2600-all.tsv`, in which case the zero is circular rather than
-independent.
-
-## PIN THE TERM — "synoptic tree" means the COMBINED tree, not the Geni export
-
-**Emma, 2026-08-27:** *"Our total combined tree that we have here is the synoptic tree. I called
-it the synoptic tree, but then the synoptic tree kind of turned into just the whole Geni export
-rather than it. Our combined tree has the entity resolution within it."*
-
-The term drifted and `CLAUDE.md` now uses it both ways in different sections. **The synoptic tree
-is the combined Geni + Wikidata thing, which carries the entity resolution.** The merged GEDCOM
-alone is the *corpus* or the *merged tree*, and it carries no correspondences at all. Statements
-like "the synoptic tree has the entity resolution in it" are only true of the first.
-
-## FOUND IN REVIEW — the daily algorithm never reads the combined tree
-
-**Emma, 2026-08-27, asking directly:** *"Are we not actually ever using the combined tree of
-Wikidata and Geni, and are just using the Geni stuff alone for this algorithm?... that raises some
-additional concerns about what's going on with the actual combined tree, and I guess I'd say, to
-some extent, how it is that we know that these are the right individuals."*
-
-**She is right. Every file `build-garborg-day.py` opens, listed:** `entity_resolution.md`,
-`out/merged.ged`, `out/wikidata/p2600-all.tsv`, `out/wikidata/relations.tsv`,
-`reports/derived-facts.csv`, `derived-family.csv`, `derived-labels.csv`, `display-names.csv`,
-`garborg-carry-forward.tsv`, `garborg-live-state.tsv`, `garborg-live-values.tsv`,
-`garborg-name-transliterations.tsv`, `garborg-qids.tsv`.
-
-**`reports/synoptic-correspondence.tsv` is not among them.** Neither is `zipper-pairs.tsv`,
-`structural-correspondence.csv`, `emma-judgments.tsv` or `bureatten.csv`.
-
-So:
-
-* **Relationships come from `derived-family.csv` — Geni only.** Every parent, child and spouse
-  the algorithm reasons about is Geni's.
-* **Correspondences are `garborg-qids.tsv` (209, all her own edits) plus `entity_resolution.md`
-  (9 by hand).** That is the whole set of people it can point at an item.
-* **`p2600-all.tsv` is loaded but used once** — to refuse creating somebody who already has an
-  item. Never as pairs to work *from*.
-* **`relations.tsv`** serves the subgraph walk and the duplicate guard.
-
-**So "how do we know these are the right individuals" has a good answer and a bad implication.**
-The answer: she asserted all 209 herself, which is the strongest evidence available. The
-implication: the **564,329-pair** synoptic correspondence, the **45,898** zipper pairs with their
-provenance chains, the **7,841** structural correspondences and her own hand verdicts in
-`emma-judgments.tsv` all feed **nothing**.
-
-**This also explains the Bure symptom she noticed** — people in Category:Bureätten with items and
-Geni ids who never got links added. They are not in the 209, and the machinery that does know
-about them is not connected to the batch.
-
-**And it makes the "0 of 251 lack a `P2600`" figure doubly weak**: `bureatten.csv` is not an input
-to anything the batch does, and its `geni_ids` column may itself derive from `p2600-all.tsv`.
-
-**Not a defect to fix blind.** Wiring 564,329 inferred pairs into a batch builder that currently
-works from 209 hand-verified ones is a change of kind, and the zipper's own reliability report
-puts `child`+`solo` disagreement at **14.9%**. Decide deliberately.
-
-## DECIDED 2026-08-27 — the implementation order, and four rulings
-
-**Her order, given as a numbered list:**
-
-1. **Remove `MODERN_CUTOFF`** — the 1880 birth filter, dead under `--compose` and ruled
-   *"totally undesired"*.
-2. **The renames** — `have` → `our_items`, `linked` → `any_wikidata_item`, `subgraph` →
-   `our_wikidata_subgraph`, `seeds` → `ring_seeds`, `frontier` → `to_create`, and *"our Geni
-   tree"* → `synoptic_tree` in prose. Pure renaming, no behaviour change.
-3. **`P2600` on link** — when the algorithm links to a person who already has an item, write
-   their `P2600` *Geni.com profile ID* too.
-4. **Rebuild the ledger** from contributions + Bureätten, deleting anything else.
-
-**The synoptic correspondence: ALL of it, from Monday 2026-09-07.** Not just the corroborated
-subset. Her reasoning, and it corrects something I had wrong: *"I think you're misunderstanding
-the degree that this is self-limiting. Because in its current form, it runs in a highly
-observable structure. Its current form runs on highly observable branches that only go one
-person in."* The ring only ever reaches one person past a seed, and every batch is read before it
-is run, so a wrong pairing surfaces as one visible bad creation rather than propagating. She set
-the date deliberately — *"the Monday after next Monday would be the first day that it actually
-triggers like this"* — to give about a week of the current shape first.
-
-**The partial-NN sweep: a correction batch appended to the daily QuickStatements, exactly like
-`SPINE_P2600_BLOCK`.** Her words: *"the correction batch is going to be something that is a part
-of our quick statements that we generate and append at the end of the daily quick statements. No
-complexity of stuff. It is appended at the end of the daily quick statements in the exact same
-way that the QID entity resolution is."* Same mechanism, same reasoning: it repeats, duplicates
-merge away, and it is deleted when done. **Not** a separate script, not conditional, not
-generated per-run.
-
-**Abbreviations expand EVERYWHERE a name is emitted** — `mul`, `en`, aliases, and the `P734`
-*family name* / `P5056` *patronym or matronym* items. `Rasmusdtr.` → `Rasmusdatter` with no
-exceptions.
 
 ## Stuff here (semi-confusing) 8-27
 
@@ -476,160 +324,6 @@ it and there is none — but it also **never deletes rows**, so they survive eve
 being lost today; the correspondence is simply local rather than on Wikidata, and only a rebuild
 of the ledger from scratch would fail to recover it.
 
-## Built and waiting on 2026-09-01 — nothing to do until then
-
-- `reports/wikidata-geni-qid-p2600.qs` — **354** `P2600` *Geni.com profile ID* statements
-  from the Wikidata links in the Geni About Me. Account in `reports/geni-qid-links.md`.
-- `reports/wikidata-izumo-beyond-chart.json` — one `create_individual`, Takanori 81 Senge.
-- `reports/wikidata-izumo-succession.json` — **105** `P39` *position held* statements,
-  the three Izumo offices with `P2389` naming the organisation and `P1365`/`P1366`
-  chaining each line. Built 2026-08-26 to Emma's three-office model.
-- `reports/wikidata-nn-labels.json` — 3,525 `NN` label edits, built to her full model.
-- Entity resolution — 10 edits, emitter correct.
-- Samaritan High Priest normalization — built. `P39` *position held* → `Q678510`
-  *Samaritan High Priest* is what separates her well-modelled five from the rest.
-- `reports/wikidata-garborg.qs` — **rebuilt 2026-08-23** to the model in
-  `docs/wikidata-item-template.md`: `S2600` references, no descriptions, `P3373` *sibling*
-  both ways, and no `CREATE` for the four items Emma has already made. 6 creations, 84
-  statements. Name properties are listed in its trailer rather than emitted — they need
-  a QID per given-name item and a new `P5056` patronym item for *Jonsdatter*,
-  *Eivindsdatter*, *Eivindsen*, *Eivindson*.
-
-Emma runs these by hand — 2026-08-23: *"If it's geni id then I'll run manual
-quickstatements."*
-
-Every `.qs` in `reports/` is guarded by `tests/test_p2600_batches.py` — line shape,
-quoting, `S2600` references, Geni ids, duplicate statements, one `P2600` per `CREATE`,
-and no two batches creating the same person.
-
-## The slow lane: every module has now been RUN and is GREEN
-
-**4,467 slow tests, 0 failures.** The three that had never completed were run on 2026-08-27:
-
-| module | tests | wall | where the time goes |
-| --- | ---: | ---: | --- |
-| `test_merge_real_exports` | 9 | 90m over 3 chunks | the merge, 837s per process; `is_idempotent` merges twice |
-| `test_paths` | **24** | 16m52 | one 1,012s fixture; every test is under 5ms |
-| `test_density` | 18 | 17m28 | `every_listed_region_gets_a_seed` 992s, `presence_never_exceeds` 57s |
-
-`test_gedcom_real_exports` (4,427, in 4 chunks) and `test_wikidata_store_real` (5) were green on
-2026-08-25 and have not been re-run since.
-
-**The old figures in this section were wrong in both directions.** `test_paths` was recorded as
-5 tests that "exceed 10 min even alone" — it is 24 tests and finishes in 17 minutes unchunked.
-`test_density` was recorded as 17 passed with the 18th blocking; all 18 pass, and the slow one is
-992 seconds rather than unbounded. Both readings came from watching a run get killed and
-inferring, which is the same mistake as "twenty minutes per test".
-
-**Only `test_merge_real_exports` actually needs chunking**, and the unit is the fixture: four
-fixture-only tests share one merge (15m28), two corpus-streaming ones take 32m07, three that
-re-merge or write the 409 MB file take 42m34. **16.8 GB for one merged tree, 23.6 GB while the
-idempotence test holds two** — run nothing beside it.
-
-## Decided 2026-08-25 — the multi-Geni-ID work
-
-- **Borderline pairs: LEAN TWO PEOPLE.** Emma, 2026-08-25: *"Lean two people — never merge
-  on a coin flip."* A wrong merge destroys a real person from the record; a wrong split
-  only leaves work undone. The duplicate count staying understated is the accepted cost.
-
-- **`Q122925764` is SETTLED, 2026-08-26, and needed no export.** The item is
-  **Станіслаў Томаш Сапега** — *Stanisław Tomasz Sapieha*, one man whose name is **both**
-  given names — carrying `P2600` for `6000000041241763571` *Tomas Stanislaus Sapiega* and
-  `6000000041241858399` *Stanislovas Sapiega*. Its father `Q958111` is our Andrzej Sapieha
-  for both. **Geni records the two as BROTHERS** (each other's siblings on the profile page,
-  same father in our corpus). So Wikidata holds one man where Geni holds two, and one item
-  carrying two Geni ids is the shape `CLAUDE.md` § *A second Geni ID on one Wikidata item is
-  NOT a conflict* calls ordinary and correct. Nothing to remove, nothing to merge.
-
-  **The export could not have been run anyway**: Geni offers *Export GEDCOM* only on
-  profiles the account manages, and this one belongs to Algirdas Tamulis. `/gedcom/export`
-  exports from Emma's own profile and rejects `?id=`. Reaching a stranger's family needs a
-  placeholder created there first, per `docs/export-seed-rules.md` — which was not worth
-  doing for a question already answered from data on disk plus one profile page.
-
-- **The 70 targets are classified from our own tree, 2026-08-26 — 2 need a page opened, not 95.**
-  `scripts/classify-multi-p2600-by-tree.py` asks what relationship our corpus already records
-  between the two profiles one item claims. Of 2,110 items stating more than one Geni id, 1,831
-  have neither profile in our corpus and 209 have only one, so nothing can be said about them.
-  The **70** with both are:
-
-  | our tree says | n | reading |
-  | --- | ---: | --- |
-  | no relationship recorded | 41 | the Zerubbabel shape — unmergeable duplicates. Ordinary. |
-  | siblings, sharing a parent | 27 | the Sapiega shape — Geni holds two, Wikidata holds one. Our snapshot matches Geni, so nothing to do. |
-  | **one is the other's PARENT** | **2** | a generation collapsed into one item. The residue. |
-
-  **The two:** `Q104755784` *Ruben Wulff* claims Ruben Wulff **and** Wolf *Rubensson*, whose
-  patronymic says he is Ruben's son. `Q96985053` *John Loomis* claims two John Loomises, one the
-  parent of the other — father and son sharing a name.
-
-  Those two are worth opening. The other 68 are shapes `CLAUDE.md` already calls ordinary.
-
-- **The add gate is DECIDED, 2026-08-26: loosened.** Emma, shown that 5,540 of its 5,651
-  rejects had no disagreement anywhere: *"Loosen it — emit the ~7,000."*
-  `reports/wikidata-add-p2600.qs` is **7,168 additions**. It now refuses contradiction and
-  not silence — 148 refused, each a case where a parent is recorded on both sides and the
-  two are different people.
-
-- **Classify the 70 multi-`P2600` targets by what our own tree says about the pair.**
-  `Q122925764` was settled on 2026-08-26 with no browser at all: the item is one man whose
-  name is both given names, and our corpus gives its two Geni ids **the same father** — so
-  Geni holds two brothers where Wikidata holds one person, which `CLAUDE.md` calls ordinary
-  rather than a conflict. That check generalises. For each of the 70, ask what relationship
-  our tree records between the two profiles: same parents (siblings), one the parent of the
-  other, spouses, or no relationship at all. Each answer means something different, and
-  none of them needs a page opened. Whatever is left after that is the genuinely thorny
-  residue and only that needs the browser.
-
-## The bare day-build is now REFUSED — guard shipped 2026-08-27
-
-`scripts/build-garborg-day.py` with no arguments exits non-zero, writes nothing, and names the
-flag it wants. **Bare it emitted 272 creations; `--compose` emits 34** — that flag carries
-`CHILDREN_PER_RUN`, `PARENTS_PER_RUN`, `FREE_PARENTS_FREE` and `SIBLING_CAP`, so the bare path
-was not a smaller daily algorithm, it skipped the algorithm. Both wrote the same file, so a bare
-run silently replaced a day Emma may already have run.
-
-`--roster` stays a legitimate second mode; only the argument-free call is refused, because it has
-no purpose except the mistake. `tests/test_join_sanity.py` asserts the exit code, the message and
-that the batch file is byte-identical afterwards.
-
-**`--compose` still ADVANCES the sequence and that is not guarded**, because it should not be:
-it consumes and rewrites `reports/garborg-carry-forward.tsv`, so running it twice in a day gives
-the next hop rather than today's. Run the daily batch through `build-daily-batch.py` and never to
-"refresh" a committed day — a code change reaches the batch on the next legitimate run.
-
-## Drift between stages — the recent tier is CLEAR; 69 deep-history rows stay flagged
-
-`scripts/refresh-drift.py` walks the `generator -> input` graph the freshness census already
-holds, orders the stale generators topologically, runs them, rebuilds the census and repeats.
-It replaced a hand-typed chain that could not see its own cascade.
-
-**Three rounds to converge: 9 scripts, then 2, then 3, then 0.** Refreshing a stage restales its
-consumers, so a single pass was never going to be enough — the `--rounds` loop was written on
-suspicion and the suspicion was right.
-
-Guards that matter more than the sort: a script naming `WikidataClient`, `full_entities`,
-`urllib.request` or `requests.` is **skipped and reported**, never ordered; a cycle is reported
-rather than broken; `--max-age-hours` defaults to 72 so the deep-history rows stay out; and the
-`generator` column is confirmed with `writes_in` before a script is run, because that column
-names any script that *mentions* a file and a reader landing there would have re-run
-`build-synoptic-correspondence.py` — a whole-corpus job — for a file it does not produce.
-
-**69 rows remain, all 150-360h behind `out/merged.ged`, `derived-family.csv` or
-`display-names.csv`.** They are one-off analyses the corpus grew under. Re-running them is a
-choice about what to measure, not a fix, so they are not queued. `--max-age-hours 400` does it
-if that choice is ever made.
-
-## The derived CSVs are committed gzipped
-
-Emma, 2026-08-24: *"Imo gzip because this is long term and we aren't adding any more data
-into our tree. Just processing."* `scripts/pack-derived.py`, four `.csv.gz` in git
-(26-43 MiB, 4.1-4.8x), four plain CSVs gitignored, `tests/test_derived_packing.py` pinning
-the pair. `CLAUDE.md` § *The four big derived CSVs are committed GZIPPED*.
-
-**After a clean clone: `python scripts/pack-derived.py --unpack` once.** Forty-four
-scripts open the plain CSV by name.
-
 ## ⛔ `exports/post-merge/` — resolving stale duplicates without throwing exports away
 
 **Emma's design, 2026-08-24.** The problem: Geni has merged people our corpus still holds
@@ -678,32 +372,6 @@ not to write the override wholesale.
 Depends on `reports/geni-stale-duplicates.tsv` (13 strong, 3 medium, 13 weak) and
 `reports/geni-merges-performed.tsv` (180 survivors from her activity feed).
 
-## Post-merge resolution is MEASURED — 20 of 29, and no export is outstanding
-
-`scripts/check-post-merge-resolution.py` → `reports/post-merge-resolution.tsv`, over all
-**seven** exports in `exports/post-merge/` (23,373 distinct people) and all 29 duplicate pairs,
-not the one export and 13 strong rows the earlier note described.
-
-| evidence | resolved | both still present |
-| --- | ---: | ---: |
-| strong (13) | **13** | 0 |
-| medium (3) | **3** | 0 |
-| weak (13) | 4 | 9 |
-
-**Aaron III needed no export — two had already been run on his own survivor**,
-`export-Forest-6000000178918141824.ged` and its `-refresh`. The refresh holds the survivor
-without the twin, which is the resolution condition. The queue said one was outstanding because
-the count was taken against a single file on the day it landed.
-
-**The 9 open rows are all `weak`, and "both present" there is the expected outcome rather than a
-failure.** `CLAUDE.md`: if Geni holds two, we should hold two. `weak` is the grade for pairs
-least likely to be one person. Three of the nine are the same survivor,
-`6000000227350557852` *Yorimoto Tanba*, who carries three stale twins — which is also why 29
-pairs sit over 27 distinct survivors.
-
-**Still to do here: re-merge and re-derive**, then the structural walk and the correspondence, in
-the order § *PREREQUISITE ORDER* sets.
-
 ## ⛔ PREREQUISITE ORDER for the synoptic rebuild — merges first, then joins
 
 **Emma, 2026-08-24:** *"you forgot about the geni merge stuff which is an even more
@@ -743,101 +411,6 @@ found**. That is not a null result: two independent paths, the roster join and t
 corpus-wide About Me pass, agree completely. Emma: *"it probably means we did good data
 modelling early on"*. The new fact is **Onakatomi 0 of 97** — that clan has no About Me
 links written yet, so it cannot join at all. Hers to write.
-
-## The correspondence batch is current again — 3,719 → 7,535, 2026-08-27
-
-`scripts/build-structural-correspondence-batch.py` was last built **2026-08-23** against a
-correspondence file that has since doubled. Rebuilt against the current walk:
-
-| | |
-| --- | ---: |
-| structural correspondences read | 7,841 |
-| **emit** — the item states no Geni ID and our person is linked nowhere else | 7,134 |
-| a **second** Geni ID on the item — emitted and flagged, never held back | 401 |
-| our person is already linked elsewhere — **not emitted**, written to `structural-correspondence-disagreements.csv` | 302 |
-| already stated on the item | 4 |
-
-**7,535 `add_geni_id` edits over 7,514 items** — 21 items take a second `P2600`, which
-`CLAUDE.md` calls the correct representation of two unmergeable Geni profiles rather than a
-conflict. 1,371 share no name token with their Wikidata label and are **flagged for reading,
-not filtered out**.
-
-**`P813` *retrieved* was stamping a false date.** The flag defaulted to a literal
-`2026-08-17`, so every rebuild after that day claimed the source was consulted on the 17th. It
-now defaults to when `reports/structural-correspondence.csv` was written, which is both true
-and deterministic for a given input.
-
-## Model-vs-reality is BUILT — `scripts/model-vs-reality.py`
-
-Emma, 2026-08-24: *"we are supposed to generate complete models of what the wikidata items should
-be and compare with the reality for the quickstatements modelling stuff."*
-
-Over the 71 ledger people, freshly fetched through `genimerge.wikidata.full_entities`:
-
-| | |
-| --- | ---: |
-| **extra** — the item has it, the model does not. Her hand-work. Never touched. | 483 |
-| **missing** — emittable, and the only column a batch may project from | 77 |
-| **CONFLICT** — both hold it, values differ | **4** |
-
-The four are genuine and **go out as second statements cited to Geni**, decided 2026-08-26:
-Rozala d'Ivrea died 13 Dec or 7 Feb 1003; Knut Valdemarsson 15 or 5 Oct 1260; Arne Olaus
-Fjørtoft Garborg 12 or 10 Oct 1968; Helena Guttormsdatter born 1167 or 1170. Nothing on
-Wikidata is replaced; ours goes in beside it and the item records both.
-
-**It found twelve more conflicts that were the comparator, not the model** — and that is worth
-keeping in mind before trusting any diff's first output. Five `P1449` *nickname* rows compared
-a bare string against the raw `{"language": ..., "text": ...}` blob. Seven date rows compared ISO
-strings while ignoring Wikidata's precision field: `+0874-07-01` against `+0874-00-00` is not a
-disagreement but a difference in what is known, and precision **7 is a CENTURY**, so `+0952/9`
-against `+1000/7` is one century agreeing with itself.
-
-**The projection is built too** — `scripts/build-from-diff.py` → `reports/wikidata-from-diff.qs`,
-**74 statements over 42 items**, every one present because the diff says the item lacks it and for
-no other reason. `extra` is never touched, `CONFLICT` is never emitted, labels and aliases are
-never projected because they replace. The 8 missing `P2600` are skipped: the spine batch already
-carries them, which the diff rediscovered independently.
-
-**The Izumo diff is run** — `reports/model-vs-reality-izumo.tsv`, 111 people, and it inverts the
-Garborg picture:
-
-| | Garborg | Izumo |
-| --- | ---: | ---: |
-| missing | 77 | **351** |
-| extra | 483 | 178 |
-| CONFLICT | 4 | 8 |
-
-**All 111 lack `P2600`**, which matches what was already known — 204 of the clan have items and
-almost none carry a Geni id. 89 lack `P21` *sex or gender* and 80 lack `P22` *father*. The 95
-`extra` `P53` *family* rows are the clan membership Wikidata records and our model does not.
-
-**The conflicts said what they were built to say.** Two are `P31` *instance of*: our model asserts
-`Q5` *human* where Wikidata says **`Q524158` *kami***. Kushiyatama `Q86734749` and Raihita
-`Q123511663` are classified as Shinto deities there. The projection withheld both — a `CONFLICT`
-is never emitted — so the design held, but **the model is asserting `Q5` for a divine-descent
-lineage and that is a rule, not two rows.**
-
-## Checked: succession-as-parentage on Wikidata is ONE case, not a pattern
-
-`scripts/check-izumo-succession-as-parentage.py`, over every consecutive-seat sibling pair on the
-chart:
-
-| | |
-| --- | ---: |
-| no `P22` on the later brother at all | 7 |
-| one of the pair has no item held | 2 |
-| **brother recorded as father** | **1** |
-
-The one is Hiroshima 25 → Otoyama 26, already known. **The error does not run wide**, and that
-matters as much as finding it would have: Wikidata's Izumo parentage is thin rather than wrong —
-seven of ten pairs simply have no father recorded.
-
-**So the 80 missing `P22` rows in `reports/model-vs-reality-izumo.tsv` are the real story**, not
-the four conflicts. There is little there to contradict.
-
-**The count in this item said twenty and it was wrong.** 88 *ordered* sibling pairs contain **10**
-unordered consecutive-seat pairs; twenty counted each from both ends. Corrected here rather than
-left as a number somebody would later try to reconcile.
 
 ## A join that matches NOTHING must fail loudly — it has cost five findings this week
 
@@ -944,56 +517,6 @@ gate for *"once we get to a certain point"*, because she said it *"could be in t
 the descendants one"* and a gate I invent that never opens is the failure mode § *The batches are
 a SEQUENCE* is written against.
 
-## `-sen`/`-son` is BUILT — both halves, 2026-08-27
-
-**The plan emits a patronymic row for a `-sen`/`-son` token AS WELL AS its given/family rows**,
-not instead of them. `CLAUDE.md` § *One name item per USAGE*: a token used two ways gets two
-items and that is not an ambiguity to resolve. Patronymic rows 623 → **1,677**; the 18
-patronymic tokens the daily batch needs moved from *"not in the plan"* to *"create"*.
-
-**`classify_fields` takes an optional `father_name`** and `patronymic_or_surname()` applies her
-test per person — same token as the father → inherited surname; stem matches the father's given
-name → patronymic. Without a father it keeps the morphological answer, which all nine callers
-rely on.
-
-**The father reaches the emitter, 2026-08-27.** `statements_for` and `name_lines` take
-`father_name` and both call sites in `build-garborg-day.py` pass the father's label. Worked
-case, `Anna Gundersen`: no father → patronymic, item not minted, nothing emitted; father
-`Gunder Olsen` → stem matches his given name, still a patronymic; father `Hans Gundersen` →
-same token, so an inherited surname and **`P734` → `Q656767` goes out**. That third case used
-to produce no name statement at all.
-
-**Still to do:** the plan's patronymic rows are all `create`, so those items must be minted
-before anybody links to them — 10 a run through `build-garborg-name-items.py`. That is cadence,
-not work.
-
-## The relationship section was 75% duplicates — fixed 2026-08-27
-
-**Emma:** *"the relationship one is questionable that it's always gonna be so huge and
-growing."* She was right and the cause was not workload. Measured: **229 of 306** statements on
-existing items were **already on Wikidata**. The section was three-quarters noise.
-
-Two causes:
-
-- **`P40` *child*, `P26` *spouse* and `P3373` *sibling* consulted no check at all.** Only `P22`
-  *father* and `P25` *mother* tested `absent()`, so every child, spouse and sibling link went
-  out on every run.
-- **`absent()` is property-level against a snapshot frozen at 2026-08-24.** It knows an item has
-  *some* `P40`, not which children, and it could not know Emma had run yesterday's batch.
-
-`scripts/refresh-live-values.py` reads whole items and writes
-`reports/garborg-live-values.tsv` — 1,409 statements over 80 items, `qid`/`property`/`value`.
-The builder drops any statement already present, as a **post-pass**: the check inside `add()`
-caught 148 and missed 81, because the name-statement block appends to `lines` directly.
-
-**Statement lines 895 → 666, links 164 → 16, duplicates remaining 0.**
-`tests/test_p2600_batches.py` guards it, verified by disabling the filter.
-
-**It is step 0b of the daily run, 2026-08-27** — `build-daily-batch.py --refresh-ledger` does
-both halves: the ledger says WHO has an item, the live values say WHAT each already states.
-Refreshing one and not the other is precisely how the batch became three-quarters duplicates.
-A run without `--refresh-ledger` prints the age of both files and why it matters.
-
 ## The daily Garborg batch — one QuickStatements run per day
 
 `scripts/build-garborg-day.py` → `reports/wikidata-garborg-day.qs`.
@@ -1026,87 +549,6 @@ the new people only to what already exists.
   *place* while `_MARNM` held the real clan name, so reading `surn` as a surname is right
   for Norwegian material and not established corpus-wide. Belongs to the corpus-wide name
   work, not this batch.
-
-## Ordering is now enforced — `genimerge.editorder`
-
-Emma's design, verbatim: *"it randomly selects an edit object, sees if its requirements
-are present, if they are then it runs, if no then randomly select and run another one."*
-Implemented, 11 tests, and it orders all **284,146** edit objects in about a second with
-**0 violations, 0 dangling, 0 cycles, 0 duplicate ids**.
-
-**Wired into `scripts/wikidata-edit-run.py` on 2026-08-24.** The runner orders before it
-slices — it used to take `edits[:limit]` in file order — and **refuses a batch whose
-prerequisites live in another file**, naming the file that provides them. Three do:
-`wikidata-mul-labels.json` needs `wikidata-en-labels.json` 14,972 times, and the Samaritan
-succession and Abram fix need `wikidata-samaritan-links.json`. `--satisfied` takes a list
-of ids already applied so a resumed run is not blocked by finished work.
-
-## Izumo / Senge clan — measured 2026-08-23, `reports/izumo.md`
-
-<https://shinto.miraheze.org/wiki/Izumo_clan>, and the Geni tree at
-<https://www.geni.com/people/Tsusa-no-mikoto-no-Mikoto/6000000012789160423>.
-
-**214 people rostered, 204 with a Wikidata item, and only 2 carry a Geni ID.** The
-Wikidata side is nearly complete; the Geni side is joined to almost none of it.
-
-Emma's constraints on this one:
-- She trusts the tree-building from what the page shows, and the descriptions and Wikidata
-  links. **The duplicate-profile merges are hers — flag, never perform.**
-- The clan was added to Geni three separate times (2008 Japanese, 2011 English, her own in
-  2026), so duplicates are expected and creating people blindly would make a fourth set.
-- The numeric middle names are **regnal numbers** ordering the Izumo no Kuni no Miyatsuko,
-  not names. The roster keeps them in their own column.
-
-**76 of the 77 rostered lineage people are in the corpus with their Geni IDs**, measured
-2026-08-23 with `python scripts/match-izumo-export.py --corpus` — 545 exports, joined on the
-regnal number Geni writes inside the name. `reports/izumo-p2600-pairs.tsv` is the result:
-76 rows, every one carrying a Wikidata item.
-
-Two exports did it and they were complementary, not one right and one wrong: the founder-end
-ball (Kushini 3) brought Izumo 18–40, the far-end ball (Naokuni Senge 56) brought Izumo 34–54
-and the whole Senge/Kitajima 55–78. A third, seeded on Obitake 23, added nothing rostered and
-should not have been run — it chased a gap that only existed in a single-file measurement.
-
-**The Google route is dead for this clan.** `site:geni.com "Naokuni Senge"` and
-`site:geni.com "Sadataka Kitajima"` both return nothing, and both men have live Geni profiles
-already in our tree. Do not spend more turns on it.
-
-**JOINED ON THE KEY EMMA PUT THERE — 111 of 204, 2026-08-23.** The Geni About Me carries a
-`wikidata.org` URL: `1 NOTE {geni:about_me} https://wikidata.org/wiki/Special:EntityPage/Q…`.
-`scripts/build-geni-qid-links.py` extracts it corpus-wide (405 profiles),
-`scripts/build-izumo-p2600.py` intersects it with the roster.
-`reports/izumo-p2600-pairs.tsv` is 111 rows and uses no name, number or position.
-Full account in `reports/geni-qid-links.md`.
-
-**Steps left:**
-
-- **Run `reports/wikidata-geni-qid-p2600.qs` on 2026-09-01 — 354 statements.** Built from
-  every About Me Wikidata link in the corpus, not just Izumo: 349 items carry no `P2600` at
-  all, 5 get a *second* one (never a conflict — `Q51676` Aaron is the documented unmergeable
-  pair). `scripts/build-qid-link-p2600.py`, account in `reports/geni-qid-links.md`.
-- **Two Kitajima are in the corpus with no About Me link** — `Kitajima no Tokitaka`
-  (`Q135579474`), `Kitajima no Yasutaka` (`Q135579480`). Profiles missing the link, not
-  missing people. Adding it on Geni is Emma's one-line fix.
-- **The `Senge no Naokatsu` "duplicate" was FALSE and is corrected.** `Q135579476`
-  sits on `6000000227334350078` *Naokiyo Hiraoka* and `6000000227335699823`
-  *Naokatsu 63 Senge*, who are **father and son** — both profiles carry the same
-  About Me link, so the father's page holds the son's QID. Which link is wrong is
-  Emma's call. See `reports/geni-qid-links.md`.
-
-- **The 93 unlinked are not 93 missing office-holders.** Classified 2026-08-23,
-  `reports/izumo-unlinked-classified.tsv`: 26 human, 12 legendary human figure (the
-  legendary emperors — `Q5` alone is the wrong test), 1 solar deity (Amaterasu), and **54
-  the local store cannot see at all** because it was seeded from `P2600` holders and these
-  have no Geni link. Some of those 54 are plainly clans, districts and a publisher, which
-  the roster picked up from the page. Establish kind before treating any as a person.
-- **Beyond the chart: ten of the eleven were already done.** Kitajima 69-74 and Senge 77-80
-  carry Wikidata items in their About Me and are already in the `P2600` batch. Only
-  **`Takanori 81 /Senge/`** (`6000000227331629828`) lacks one;
-  `reports/wikidata-izumo-beyond-chart.json` is his `create_individual` object. Two things
-  there want Emma's glance: the label form `Senge no Takanori` is a guess, and the regnal
-  ordinal 81 belongs on the given name as `P7338` *regnal ordinal*, not in the label.
-- **The kokuso 1-17 stay unresolved.** Two matchers were built for them and both were junk;
-  do not build a third without asking.
 
 ## ⛔ THE TAIL ALGORITHM — Emma's method, 2026-08-18. Supersedes how the loop picks
 
