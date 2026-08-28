@@ -18,22 +18,23 @@ audits, dead crons and superseded priorities. Recover any of it with
      important thing. Recovered from `git show 07600faf:queue.md`. Do not rewrite
      her text; add underneath it. -->
 
-## 1. THE MASS EXPORT CAMPAIGN — front task, but PAUSED ON A CAPTCHA
+## 1. THE MASS EXPORT CAMPAIGN — front task, RUNNING
 
 **`docs/mass-export-run.md` is the run sheet** — the four groups in her order, every Geni id, the
 protocol, and the record format. Read that rather than reconstructing it here.
 
-**Geni served an Imperva hCaptcha on the first profile.** Completing or bypassing bot-detection
-is not something this session does, so the campaign waits at that box. The tab is open at
-`https://www.geni.com/people/Eva-Walaas/6000000227464556886`; one tick and it resumes.
+Group 1 (Eva Walaas, `Forest` + `Ancestors`) is done. Group 2 is Andreas Olai, whose Geni id Emma
+supplied — `6000000040951562251`, now in the hard-coded `P2600` block — seeded tier 3 as `NN`
+`6000000227468650841` and exporting. Group 3 is dropped: all eight are already in the corpus 3 to
+15 times and the Geni-bio half of the item was withdrawn.
 
-Emma, 2026-08-28: *"work on later queue items while I take the bus home."* So the rest of the
-queue proceeds meanwhile, and this is the first thing back when the captcha clears.
+**Next: the 100 in `reports/bure-to-export.tsv`.** Each needs a placeholder seed, which Emma
+authorised — *"And yes I'm authorizing new seed people on all of these people lol"*. Method per
+`docs/export-seed-rules.md`: open `geni.com/family-tree/index/<id>`, take the highest tier the
+page offers, read the seed's id off the tab its node opens, export `Forest`/5000 from the seed,
+and count success when the target appears in the file.
 
-Staged and needing nothing further: `reports/bure-to-export.tsv` (the 100),
-`reports/mass-export-log.tsv` (the record, with `redirected_to` and `new_geni_id` columns so
-merges and moves are written down rather than silently followed), and the corpus check on Eva
-Walaas — **0 of 558 exports contain her**, so that export is worth running.
+Record every attempt in `reports/mass-export-log.tsv`, including seeds.
 
 ## The original campaign detail, kept for the ids
 
