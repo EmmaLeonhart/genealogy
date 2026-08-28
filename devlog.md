@@ -17216,3 +17216,17 @@ That is Emma's convergence argument at the smallest scale: the ball does not clo
 closes a neighbourhood.
 
 **Sixteen exports collected today: 100 absent → 24.**
+
+## 2026-08-28 — export 20, and the day's totals
+
+Group 4, export 20. Target Carl Lagerbring `6000000012597002570` (`Q5930909`). Four arrowless
+people on the first screen, three of them tier 2; took the deepest on the male line, **Christen
+Olofsen** (c.1591–1668), so the seed is `Olof father of Christen` `6000000227474827821`.
+**Closed one. 24 absent → 23.**
+
+**Seventeen exports collected today: 100 absent → 23**, with two per-attempt bails outstanding
+(Klinckowström, Falkengréen).
+
+Closures per export across group 4: 2, 20, 2, 4, 2, 6, 6, 1, 4, 3, 5, 2, 1, 2, 5, 4, 2, 1, 3, 1.
+The twenty came from the one seed placed deep inside the network; everything since has been at its
+edges, which is where the remaining names live.
