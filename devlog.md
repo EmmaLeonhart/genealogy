@@ -17143,3 +17143,26 @@ ornamental Swedish surname, not one of the live patronymic endings the rules nam
 **A new failure mode with the same fix as the blank renderer:** the download page came back with
 no CSS and its link would not fire. A plain reload of the same URL restored the styled page and
 the button worked.
+
+## 2026-08-28 — export 16, two bails, and a form that silently lost its setting
+
+Group 4, export 16. Target Magnus Brahe `6000000009718220062` (`Q5584506`). Saturated, so the
+smallest arrow was expanded — Otto Johan Koskull `+9` — exposing a Baltic-German frontier. Tier 3:
+Anders Koskull (b.–1573) has his father Brand Koskull V and no mother, so a plain `NN`. Seed
+`6000000227474099822`. **Closed two — 31 absent → 29**: Brahe and Fredrik Boije.
+
+**Two bails preceded it, and the check that separated them from a real outage.** Klinckowström and
+Falkengréen both came back with a styled page and an empty tree canvas, the tab title stuck in the
+pre-load `…'s Family Tree` form. Two consecutive failures look like Geni being down — so rather
+than assume either way, a small tree loaded in between rendered normally in one go. The fault is
+per-profile. No cause is claimed for it; both stay on the list, and Sten Carl Bielke's case an hour
+earlier shows what that is worth.
+
+**The export form lost its Forest setting without saying so.** That load rendered at a wider
+viewport, so the radio click landed on empty space; the form still read *Blood Relatives*. Caught
+by screenshotting the form before submitting. Had it gone through, the export would have returned
+a differently-shaped ball of exactly 5000 people and nothing downstream would have noticed —
+the file would still be the right size, still contain the seed, and still be filed as a `Forest`.
+**Verify the radio on the form, every time, not when convenient.**
+
+Thirteen exports collected today: **100 absent → 29**.
