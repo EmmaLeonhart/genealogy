@@ -140,9 +140,27 @@ def test_every_qid_the_batch_points_at_already_exists():
         f"half-run: {unknown[:5]}")
 
 
+#: The eight items `SPINE_P2600_BLOCK` edits. They are **deliberately not in the ledger**: their
+#: items carry no `P2600` *Geni.com profile ID*, so the contributions refresh cannot resolve
+#: them, and the 2026-08-27 rebuild-not-merge ruling therefore drops them. The block exists to
+#: put that `P2600` on Wikidata, after which they resolve on their own and this list can go with
+#: it. Evidence for each pairing is in `reports/wikidata-spine-add-p2600.qs`; two were accepted
+#: by Emma on 2026-08-26.
+SPINE_BLOCK_QIDS = {"Q5915800", "Q101247444", "Q6197518", "Q3743799",
+                    "Q4953376", "Q466257", "Q274606", "Q284400"}
+
+
 def test_every_explicit_subject_already_exists():
-    """A statement on `Q…` edits an existing item; on `LAST` it edits the new one."""
-    known = known_qids()
+    """A statement on `Q…` edits an existing item; on `LAST` it edits the new one.
+
+    **The spine block is the one exemption and it is named rather than pattern-matched.** Every
+    other `Q…` subject must be a ledger member — that is the guard against editing an item we
+    cannot vouch for. These eight are vouched for by `wikidata-spine-add-p2600.qs`, and the only
+    reason they are outside the ledger is that the pairing is not yet on Wikidata, which is the
+    thing the block fixes. When the block is deleted this set goes with it, and if it is ever
+    emptied the assertion tightens back to what it always was.
+    """
+    known = known_qids() | SPINE_BLOCK_QIDS
     unknown = sorted({m.group(1) for ln in lines()
                       if (m := QID_SUBJECT.match(ln)) and m.group(1) not in known})
     assert not unknown, f"editing items not in the ledger: {unknown[:5]}"

@@ -110,23 +110,69 @@ def main():
             for g in [g for g in gs if isinstance(g, str)]:
                 found[g] = (qid, label, qid in created)
 
-    rows = {}
+    # **REBUILT, not merged. Two sources, and nothing else survives.**
+    #
+    # Emma, 2026-08-27: *"never deleting rows is a horrible idea. Simple as that... This seems to
+    # explain why it is that it was this giant grab bag of some stuff that was actually generated
+    # and some random garbage that got thrown in. The ledger should be everything I've edited. In
+    # addition to everything I've edited, it would include all of the Bure clan people. Nobody
+    # else needs to be in the ledger. Refusing to delete it is the reason why it is that I got
+    # filled up with garbage that wasn't supposed to be there."*
+    #
+    # This file merged from its first commit, `30943703` on 2026-08-25 — titled *"rebuild the
+    # Garborg ledger from Emma's account"* while the code loaded the existing file and only ever
+    # added. That is the accumulation mechanism, and on 2026-08-27 it was described to her as
+    # reassuring (*"nothing is being lost"*) rather than as the problem.
+    #
+    # **Nothing logs the drops beyond git, deliberately.** Her answer when asked: *"I thought the
+    # ledger was git tracked so everything is logged."* It is — the file is committed every run,
+    # so a removed row is in the diff, which outlives any print or side file.
+    previous = {}
     if LEDGER.exists():
         with open(LEDGER, encoding="utf-8") as f:
             for row in csv.DictReader(f, delimiter="\t"):
-                rows[row["geni_id"]] = row
+                previous[row["geni_id"]] = row
 
+    rows = {}
     added, changed = [], []
     for g, (qid, label, was_created) in sorted(found.items()):
-        old = rows.get(g)
+        rows[g] = {"geni_id": g, "qid": qid, "label": label,
+                   "created": "2026-08-25",
+                   "note": f"from {ACCOUNT} contributions"
+                           + ("" if was_created else " (P2600 added to an existing item)")}
+        old = previous.get(g)
         if old is None:
-            rows[g] = {"geni_id": g, "qid": qid, "label": label,
-                       "created": "2026-08-25",
-                       "note": f"from {ACCOUNT} contributions"
-                               + ("" if was_created else " (P2600 added to an existing item)")}
             added.append((g, qid, label))
         elif old["qid"] != qid:
             changed.append((g, old["qid"], qid))
+
+    # **Source two: the Bureätten people.** Emma, 2026-08-27, defining them exactly after I had
+    # invented a hop threshold instead of asking: *"every item whose swedish wikipedia item is in
+    # category:bureatten and which has a geni id."* That is `reports/bureatten.csv`, the
+    # sv.wikipedia Category:Bureätten listing. No roster, no hops, no threshold.
+    bure_file = ROOT / "reports" / "bureatten.csv"
+    n_bure = 0
+    if bure_file.exists():
+        with open(bure_file, encoding="utf-8") as f:
+            for row in csv.DictReader(f):
+                bqid = (row.get("qid") or "").strip()
+                if not bqid.startswith("Q"):
+                    continue
+                raw = (row.get("geni_ids") or "").replace(";", " ").replace(",", " ")
+                for g in raw.split():
+                    if g.isdigit() and g not in rows:
+                        rows[g] = {"geni_id": g, "qid": bqid,
+                                   "label": (row.get("sv_title") or "").strip(),
+                                   "created": "", "note": "Category:Bureätten (bureatten.csv)"}
+                        n_bure += 1
+    print(f"{n_bure} Bureätten people added as the second source")
+
+    dropped = sorted(set(previous) - set(rows))
+    if dropped:
+        print(f"{len(dropped)} rows dropped -- they resolve from neither source. "
+              f"The diff of {LEDGER.name} is the record:")
+        for g in dropped[:20]:
+            print(f"   {previous[g]['qid']:<12} {g:<21} {previous[g].get('label', '')[:34]}")
 
     with open(LEDGER, "w", encoding="utf-8", newline="") as f:
         w = csv.DictWriter(f, fieldnames=["geni_id", "qid", "label", "created", "note"],

@@ -16656,3 +16656,45 @@ missed:** *"I thought the ledger was git tracked so everything is logged."* It i
 `ledger-dropped.tsv`, no print.
 
 **1,418 passed, 26 skipped, 0 failed.**
+
+## 2026-08-28 — step 4: the ledger is rebuilt from two sources, and the Bure clan is in
+
+**Her ruling:** *"never deleting rows is a horrible idea... The ledger should be everything I've
+edited. In addition to everything I've edited, it would include all of the Bure clan people.
+Nobody else needs to be in the ledger."*
+
+`refresh-garborg-ledger.py` now **rebuilds**. Source one is her contributions; source two is
+`reports/bureatten.csv`, on her definition — *"every item whose swedish wikipedia item is in
+category:bureatten and which has a geni id"*. Nothing else survives a run. The drops are not
+logged anywhere, because she pointed out they already are: *"I thought the ledger was git tracked
+so everything is logged."*
+
+**209 → 450 rows.** 249 Bureätten people added; **8 dropped**, and they are exactly the ones
+predicted — Knut Algotsson, Ingegerd Svantepolksdotter, Svantepolk Knutsson Viby, Knut
+Valdemarsson, Helena Guttormsdatter, Rozala of Italy, Berengar I, Gisele of Cysoing. Their items
+carry no `P2600`, so the contributions refresh cannot resolve them; they were in the ledger only
+because they were typed there. `SPINE_P2600_BLOCK` writes exactly those eight, so once it runs
+they come back on their own.
+
+**Effect on the batch:** contiguous group 105 → 178 items, unrestricted ring 706 → 1,797, caps
+still binding at 41 creations, and all three spine lines advanced.
+
+**Two tests failed and both were assumptions her rulings had invalidated, so both were updated
+rather than loosened.**
+
+`test_every_explicit_subject_already_exists` asserts every `Q…` subject is a ledger member. The
+hard-coded block edits eight items that are deliberately *not* ledger members — that is its
+purpose. The eight are now named in `SPINE_BLOCK_QIDS` and exempted **by name, not by pattern**,
+so the assertion tightens back automatically when the block is deleted.
+
+`test_the_garborg_ledger_joins_to_the_derived_tree` broke at 349 of 450. The cause is a real
+finding: **about 101 Bureätten people have Geni ids that are not in our exports at all**, so the
+batch cannot name them. That is not a broken join — which is what the test exists to catch — so
+it now covers the contributions rows, where a miss really would mean the tree and the ledger had
+come apart.
+
+**One consequence flagged rather than papered over:** with the eight dropped, the Charlemagne walk
+sees steps 16–21 as uncreated. It is at step 14, so two steps from trying to *create* people who
+already have items. The fix is the block, not a keep-forever rule.
+
+**1,418 passed, 26 skipped, 0 failed.**

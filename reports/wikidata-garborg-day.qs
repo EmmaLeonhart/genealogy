@@ -1158,32 +1158,28 @@ LAST	Amul	"Garå Gardsson"
 Q116150300	Lja	"セシリエ・エッベスダッテル・ヴィーデ"
 #   set the zh label to "塞西莉厄·埃贝斯达特·维德"
 Q116150300	Lzh	"塞西莉厄·埃贝斯达特·维德"
+#   Q5975022 Lars August Mannerheim: P3373 sibling = Q1814297 Carl Erik Mannerheim
+Q5975022	P3373	Q1814297	S2600	"6000000000047190401"
+#   Q1814297 Carl Erik Mannerheim: P3373 sibling = Q5975022 Lars August Mannerheim
+Q1814297	P3373	Q5975022	S2600	"6000000000047267273"
 #   Q141199899 Jon Tollakson Aukland IV: P40 child = Q141200101 Sissel Jonsdatter Aukland
 Q141199899	P40	Q141200101	S2600	"6000000002391120029"
 #   Q141199891 Ivar Valheim: P26 spouse = Q141200101 Sissel Jonsdatter Aukland
 Q141199891	P26	Q141200101	S2600	"6000000002452595429"
 #   Q141199851 Gunnbjørn Toresson Tengs: P26 spouse = Q141199862 Helga Bjørnsdatter Bjørnsdatter
 Q141199851	P26	Q141199862	S2600	"6000000002463510938"
-#   Q5915800 Knut Algotsson: set the ja label to "クヌート・アルゴットソン"
-Q5915800	Lja	"クヌート・アルゴットソン"
-#   set the zh label to "克努特·阿尔戈特松"
-Q5915800	Lzh	"克努特·阿尔戈特松"
 #   Q141189104 Siri Kristine Ivarsdatter Sandsmark: set the ja label to "シーリ・クリスティーネ・イーヴァシュダッテル・サンスマルク"
 Q141189104	Lja	"シーリ・クリスティーネ・イーヴァシュダッテル・サンスマルク"
 #   set the zh label to "西丽·克丽丝汀·伊瓦斯达特·桑斯马克"
 Q141189104	Lzh	"西丽·克丽丝汀·伊瓦斯达特·桑斯马克"
 #   Q141200019 Ola Olsen Grøtheim: P25 mother = Q141199830 Anna Rasmusdatter Årsland
 Q141200019	P25	Q141199830	S2600	"6000000002989071216"
-#   P3373 sibling = Q141200074 Rasmus Olsen Grøtheim
-Q141200019	P3373	Q141200074	S2600	"6000000002989071216"
 #   set the ja label to "オーラ・オルセン・グレートヘイム"
 Q141200019	Lja	"オーラ・オルセン・グレートヘイム"
 #   set the zh label to "乌拉·奥尔森·格勒特海姆"
 Q141200019	Lzh	"乌拉·奥尔森·格勒特海姆"
 #   Q141200101 Sissel Jonsdatter Aukland: P22 father = Q141199899 Jon Tollakson Aukland IV
 Q141200101	P22	Q141199899	S2600	"6000000003043806217"
-#   P3373 sibling = Q141198834 Gunnbjørn Jonson Aukland
-Q141200101	P3373	Q141198834	S2600	"6000000003043806217"
 #   P26 spouse = Q141199891 Ivar Valheim
 Q141200101	P26	Q141199891	S2600	"6000000003043806217"
 #   P26 spouse = Q141200111 Sæbjørn Toresson Talgje
@@ -1196,6 +1192,8 @@ Q141189055	Lzh	"阿斯特丽·托克尔斯达特·吉利亚"
 Q141200067	P26	Q141200094	S2600	"6000000003095034915"
 #   Q141200094 Siri Rasmusdtr. Erevik: P26 spouse = Q141200067 Rasmus Kjetilson Kjetilsen Høle
 Q141200094	P26	Q141200067	S2600	"6000000003095172404"
+#   Q10608167 Olaus Persson: P40 child = Q16650154 Ericus Olai Plantin
+Q10608167	P40	Q16650154	S2600	"6000000003110778492"
 #   Q141199819 Anna Andersdotter: P40 child = Q141200016 Nils Andersson
 Q141199819	P40	Q141200016	S2600	"6000000003125438035"
 #   P26 spouse = Q141199808 Andreas Olofsson
@@ -1204,6 +1202,8 @@ Q141199819	P26	Q141199808	S2600	"6000000003125438035"
 Q141199819	Lja	"アンナ・アンデシュドッテル"
 #   set the zh label to "安娜·安德斯多特"
 Q141199819	Lzh	"安娜·安德斯多特"
+#   Q16650154 Ericus Olai Plantin: P22 father = Q10608167 Olaus Persson
+Q16650154	P22	Q10608167	S2600	"6000000003374922780"
 #   Q141199892 Jon Olsen Heigre: P26 spouse = Q141200054 Rakel Jonsdatter Jonsdotter Vatne
 Q141199892	P26	Q141200054	S2600	"6000000003491986736"
 #   set the ja label to "ヨン・オルセン・ヘイグレ"
@@ -1438,10 +1438,6 @@ Q141178201	Lzh	"玛丽·佩特里内·西门斯达特·贝格尔森"
 Q141168797	Lja	"クリスチャン・フレデリク・ベルゲルセン"
 #   set the zh label to "克里斯蒂安·弗雷德里克·贝格尔森"
 Q141168797	Lzh	"克里斯蒂安·弗雷德里克·贝格尔森"
-#   Q101247444 Ingegerd Svantepolksdotter: set the ja label to "インゲゲルド・スヴァンテポルクスドッテル"
-Q101247444	Lja	"インゲゲルド・スヴァンテポルクスドッテル"
-#   set the zh label to "英格格德·斯万特波尔克斯多特"
-Q101247444	Lzh	"英格格德·斯万特波尔克斯多特"
 #   Q141189059 Bryniolf Bengtsson (Hafridssons ätt): P22 father = Q141198381 Bengt Hafridsson Lejon
 Q141189059	P22	Q141198381	S2600	"6000000011239545575"
 #   P40 child = Q141189050 Algot Bryniolfsson
@@ -1548,10 +1544,6 @@ Q141168787	Lzh	"阿尔玛·玛蒂尔达·通海姆"
 Q141169041	Lja	"オーラフ・トゥンヘイム"
 #   set the zh label to "奥拉夫·通海姆"
 Q141169041	Lzh	"奥拉夫·通海姆"
-#   Q4953376 Helena Guttormsdatter: set the ja label to "ヘレナ・グットルムスダッテル"
-Q4953376	Lja	"ヘレナ・グットルムスダッテル"
-#   set the zh label to "海伦娜·古托尔姆斯达特"
-Q4953376	Lzh	"海伦娜·古托尔姆斯达特"
 #   Q141199868 Ingvold (Pinkie) Remmie: set the ja label to "イングヴォル・ピンキー・レミー"
 Q141199868	Lja	"イングヴォル・ピンキー・レミー"
 #   set the zh label to "英瓦尔·平基·雷米"
