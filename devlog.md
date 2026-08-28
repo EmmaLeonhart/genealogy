@@ -17256,3 +17256,49 @@ nationality, and "the smallest arrow led somewhere foreign" is not a reason to e
 export.
 
 **Eighteen exports collected today: 100 absent → 20.**
+
+## 2026-08-28 — Emma's twelve seeds, and two failed predictions about seed quality
+
+Emma placed twelve seeds by hand and asked whether her own exports would close the
+remaining Bureätten people without further seeding from me. They largely did:
+**19 absent → 5.**
+
+| her seed | closed |
+| --- | --- |
+| Hans father of Beata | Johan Martin Reftelius |
+| NN (Artedi line) | Peter Artedi |
+| NN | **Anders Erik, Olof Andersson and Gustaf Knös** |
+| NN (Linder line) | Johan Anders Linder |
+| NN | nothing new — same neighbourhood as the Knös seed |
+| father of Maria Gyllenhöök | Israel Hwasser |
+| NN Grönhagen | Helena Maria Ehrenstråhle, August von Hartmansdorff |
+| Friedrich Wilhelm von Borcke | nothing — his ball holds no Bureätten person at all |
+| NN, wife of Per Svedelius | **all three Svedeliuses** |
+| NN, wife of Daniel Lampa | nothing new |
+| NN, wife of Jakob Erling | **Franz and August Berwald** |
+| Anders father of Elisabeth | nothing new |
+
+**The one signal that worked: the surname of the seed's child.** The Svedelius wife's
+child was a Svedelius and three Svedeliuses were absent; the ball took all three. It is
+a direct read on whether the ball lands where the remaining targets are, and it beat
+every structural heuristic used earlier in the day — smallest `+N`, tier rank, position
+in the network.
+
+**Two predictions I made and got wrong, in opposite directions.** Both are recorded in
+`reports/mass-export-log.tsv` next to the reasoning that produced them:
+
+* The **Lampa** wife has **6,029 descendants**; I said the ball would be full and
+  therefore productive. It was full — of people already held.
+* The **Erling** wife has **25**; I said the ball would be mostly strangers and
+  unproductive. It closed the Berwald pair.
+
+Descendant count measures how much sits *below* a seed, not whether any of it is still
+*missing*. A Forest ball is 5000 people either way; only where those 5000 fall matters.
+
+**Von Borcke** deserves its own line because Emma flagged it as the important one. Its
+ball contains no Bureätten person at all — Borcke is Pomeranian and enters the Swedish
+network by marriage, so the ball spends itself in Germany. That is the 13-to-1 outward
+edge ratio made concrete. The export is still worth having: he is a real person carrying
+Wikidata, so it is material for the synoptic tree even though it is not coverage.
+
+**Remaining: Falkengréen, Melanderhjelm, Frondin, Broman, Djurberg.**
