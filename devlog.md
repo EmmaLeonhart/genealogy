@@ -17180,3 +17180,25 @@ husband's. **Closed one. 29 absent → 28.**
 
 Two bails, both per-attempt and both still on the list: Klinckowström and Falkengréen, whose tree
 pages return a styled shell with an empty canvas.
+
+## 2026-08-28 — export 18, and three UI faults now have known fixes
+
+Group 4, export 18. Target Christopher Jacob Boström `6000000010837141342` (`Q821990`). Tier 3 —
+Anna Nilsdotter Ruth (b.–1772) has her father Nils and no mother. Seed `6000000227474245905`,
+~9 minutes, 5000 at the cap. **Closed one. 28 absent → 27.**
+
+**Fifteen exports collected today: 100 absent → 27.**
+
+**Three ways the Geni UI fails silently, all met today, all with cheap fixes** — worth having in
+one place because each one first presented as the kind of thing
+`docs/export-seed-rules.md` says to bail on:
+
+| symptom | what it is | fix |
+| --- | --- | --- |
+| tree canvas blank after saving a seed | renderer drops the canvas | reload the same URL |
+| page renders with no CSS, links inert | stylesheet failed to load | reload the same URL |
+| new node swallows clicks, will not open | it is under Geni's floating print/chart icons | pan the tree so the node clears them |
+
+A genuine bail looks different: the two profiles that failed today returned a *styled* page with an
+empty canvas that survived a reload, and a small tree loaded normally in between, which is what
+established the fault was per-profile rather than a Geni outage.
