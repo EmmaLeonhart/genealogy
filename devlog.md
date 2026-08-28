@@ -16883,3 +16883,22 @@ seed: a click **pans** the tree rather than opening the *Add mother* box, so the
 clicking again at its new position; and clicking a node opens a tab that reports an **empty URL
 for several seconds** before the id appears. Waiting is right; re-clicking is not, and searching
 for the person just created is banned outright.
+
+## 2026-08-28 — the Nordenskiöld export was built at 03:30 and sat uncollected until 06:57
+
+Group 4, export 3. Seed `6000000227469461989` `NN /Bruun/`, target Nils Gustaf Nordenskiöld
+`6000000000446956140` (`Q593706`). The previous session submitted it and stopped; the file's own
+`HEAD` reads **28 AUG 2026, 03:30:50**, so Geni had it ready within minutes and the three and a
+half hours were entirely ours.
+
+**5000 people, the cap exactly. Seed present, target present.** The tier-4 reading held where it
+had to: Katarina Bruun (1646–1722) took an `NN /Bruun/` father off the relative menu, and the ball
+grown from him reaches Nordenskiöld, which is the only thing the seed existed to do.
+
+**It closed four, not one.** Nils Nordenskiöld himself, his son **Adolf Erik Nordenskiöld**
+`6000000000839941745` — the next name on the list, now needing no export of its own — plus
+Fredrik Johan Cederschiöld and Ulrika Strömfelt. **76 absent → 72.**
+
+Four exports into group 4 the closures per export read 2, 20, 2, 4. The twenty was Elof Steuch's,
+seeded inside the densest part of the network; the small ones are seeded at its edges. That is the
+convergence argument behaving as Emma stated it rather than as a constant rate.
