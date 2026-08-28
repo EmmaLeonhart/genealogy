@@ -14,14 +14,27 @@ So the loop is: seed one absent person, export, **re-measure**, and only seed fo
 still missing. This script is the re-measure step, and the reason it exists as a script rather
 than a grep is that it has to run after every single export.
 
+**The campaign ends when the list is empty, and that is her stopping rule.** Emma, same day:
+*"we can search through all of the people as we add more since we want all these bureatten
+people in the geni synoptic tree and once everyone is covered the campaign is over. Because
+these people are quite linked as they are a family relationship to each other."*
+
 ## The measurement, and why it is two sources
 
 `reports/derived-labels.csv` carries one row per person in the **merged** tree, so it is the
 baseline -- but a freshly downloaded `.ged` is not in it until the merge is re-run, which is
-the better part of an hour. Scanning the raw `.ged` files under `NEW_DIRS` closes that gap.
+the better part of an hour.
 
-Reading every export would be ~13 GB, so only the directories the campaign writes to are
-scanned. Anything filed elsewhere gets picked up at the next merge instead.
+The gap is closed by scanning every `.ged` **modified more recently than `derived-labels.csv`**,
+wherever it sits under `exports/`. That is exactly the set the merge has not seen, and it is
+right by construction rather than by naming directories: an export filed into
+`exports/fleshing-out/` counts the same as one filed into `exports/bure-campaign/`. A
+directory list was the first version and it was a silent narrowing -- coverage would have
+been under-reported for anything filed elsewhere, which looks like people still needing an
+export.
+
+Rereading the whole corpus would be ~13 GB; this reads only what is new, which is usually one
+file.
 
 Writes `reports/bure-coverage.tsv` (all 251, with where each was found) and rewrites
 `reports/bure-to-export.tsv` (the still-absent ones, which is what the loop consumes).
@@ -41,9 +54,6 @@ DERIVED = ROOT / "reports" / "derived-labels.csv"
 COVERAGE = ROOT / "reports" / "bure-coverage.tsv"
 TO_EXPORT = ROOT / "reports" / "bure-to-export.tsv"
 
-#: Directories the campaign downloads into, scanned raw so an export counts the moment it is
-#: filed rather than only after the next merge.
-NEW_DIRS = ("bure-campaign",)
 
 INDI = re.compile(r"^0 @I(\d+)@ INDI", re.M)
 
@@ -75,12 +85,16 @@ def main() -> None:
             if gid in wanted:
                 where.setdefault(gid, "merged tree")
 
-    for sub in NEW_DIRS:
-        for ged in sorted((ROOT / "exports" / sub).glob("*.ged")):
-            text = ged.read_text(encoding="utf-8", errors="replace")
-            for gid in INDI.findall(text):
-                if gid in wanted:
-                    where.setdefault(gid, f"exports/{sub}/{ged.name}")
+    # Every export the merge has not seen yet, wherever it was filed.
+    merged_at = DERIVED.stat().st_mtime
+    fresh = [g for g in sorted((ROOT / "exports").rglob("*.ged"))
+             if g.stat().st_mtime > merged_at and "excluded" not in g.relative_to(ROOT).parts]
+    for ged in fresh:
+        text = ged.read_text(encoding="utf-8", errors="replace")
+        rel = ged.relative_to(ROOT).as_posix()
+        for gid in INDI.findall(text):
+            if gid in wanted:
+                where.setdefault(gid, rel)
 
     rows = [{"geni_id": g, "qid": q, "sv_title": t,
              "in_corpus": "yes" if g in where else "no", "found_in": where.get(g, "")}
@@ -100,6 +114,7 @@ def main() -> None:
         w.writerows([{k: r[k] for k in ("geni_id", "qid", "sv_title")} for r in absent])
 
     held = len(rows) - len(absent)
+    print(f"{len(fresh)} export(s) newer than the merge were scanned raw")
     print(f"{len(rows)} Bureatten people carrying both a Geni id and a QID")
     print(f"   {held} in the corpus, {len(absent)} still absent")
     for r in rows:

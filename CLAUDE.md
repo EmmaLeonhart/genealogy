@@ -2185,6 +2185,34 @@ The right move was to notice the item was stale and delete it. Instead the
 relationships were walked and reported back to her. They were fine — she had
 created the intervening `NN ben Amram ben Yitzhaq /Cohen/` the week before.
 
+### The Bureätten campaign ends on COVERAGE. Re-measure after every export
+
+**Emma, 2026-08-28**, twice in one evening: *"the bure people here we don't need to export from
+all of them we just need to get all of them in exports"*, and then *"we can search through all of
+the people as we add more since we want all these bureatten people in the geni synoptic tree and
+once everyone is covered the campaign is over. Because these people are quite linked as they are
+a family relationship to each other."*
+
+**The target is that all 251 sv.wikipedia Category:Bureätten people carrying a Geni id are
+somewhere in `exports/`.** Not one export each — the number of exports it takes is whatever it
+takes, and the campaign is over the moment the absent list is empty.
+
+**The reason it converges is the one she gives: they are a family.** A `Forest` export returns up
+to 5000 people, so one seeded anywhere inside the network sweeps in many of them at once. Seeding
+each absent person in turn would be mostly redundant work.
+
+`scripts/bure-coverage.py` is the re-measure and **runs after every export**. It writes
+`reports/bure-coverage.tsv` (all 251, with where each was found) and rewrites
+`reports/bure-to-export.tsv` to the still-absent ones, which is what the loop consumes. It reads
+`reports/derived-labels.csv` for the merged tree plus a raw scan of every `.ged` **modified more
+recently than that file** — exactly the set the merge has not seen, wherever it was filed. Naming
+directories instead was the first version and it silently under-reported coverage for anything
+filed elsewhere, which looks identical to somebody still needing an export.
+
+**It worked on its first run and from an export not aimed at the network at all**: the Andreas
+Olai `Forest` swept in Pehr Kalling and Johan Otto Nauckhoff, taking the list 100 → 98, and
+neither Andreas nor his brother is in `bureatten.csv`.
+
 ### GREP THE CORPUS BEFORE RUNNING AN EXPORT. Every time
 
 **Two exports were wasted on 2026-08-23, hours apart, for the same reason:** a question
