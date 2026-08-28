@@ -16568,3 +16568,36 @@ all 14,765 as partial.
 
 **Not done:** the 396 partials already on Wikidata carry whatever the earlier code wrote,
 including lowercase `nn` on `Q141198538`. Nothing has swept them.
+
+## 2026-08-27 — the hard-coded spine block, and two regressions it exposed
+
+**Emma asked for a kludge and was explicit about why, and about what she expected me to do to
+it:** *"there is a block of text with the quick statements hard-coded into the end of it. They
+stay in forever, adding the QIDs every single time... My fear with asking you to do this thing is
+that you are going to decide to over-engineer this... If you get any clever ideas about making it
+more scalable, then it's going to get shot down."*
+
+`SPINE_P2600_BLOCK` is a literal string appended to every batch. Eight `P2600` *Geni.com profile
+ID* statements for the Charlemagne-chain people whose items exist but carry no Geni id. It repeats
+every run: the first run that reaches an item adds the statement, every later run adds a duplicate
+that QuickStatements merges away. No state, no check, no conditional. When the eight are on
+Wikidata, delete it. European only — she ruled the Asian identifications out.
+
+**Two regressions, both mine, both from this afternoon's `strip_markers` work.**
+
+`labels[geni_id]` was being normalised at the build site, so `<private> Garborg` became
+`NN Garborg` **before** the redaction test ran. `"<private>" in low` then failed, three redacted
+people took the ordinary-name path, and none of the ten formulaic descriptions were emitted —
+the batch went from twelve label languages to four. The normalisation belongs where a label is
+emitted for a person who is *not* redacted. Moved.
+
+And the redaction test only ever looked for `<private>`/`Private`, so **`NN Jonsdotter`** — whose
+Geni name is literally that — took the ordinary path and `NN` went into her `en` label with no
+description. `_carries_marker()` now widens it to any marker in `scripts/labels`' vocabulary,
+which is what `reports/partial-nn.csv` says it should be: **9,539 people** have a marker in one
+name field and a real name in the other.
+
+`reports/built-batches.tsv` refreshed for the two `.qs` files added today.
+
+**1,418 passed, 26 skipped, 0 failed.** The two failures carried at the back of the queue are both
+gone — the ledger/batch overlap resolved itself once the ledger was regenerated from Wikidata.

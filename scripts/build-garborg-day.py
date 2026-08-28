@@ -603,10 +603,85 @@ def wikidata_subgraph(roots=SUBGRAPH_ROOTS, universe=None):
     return seen
 
 
+def _carries_marker(label):
+    """True when any token of the label is an unknown-name marker.
+
+    Shares `scripts/labels`' vocabulary, so a marker added there is detected here with no
+    second list to keep in step. Case-folded, because Geni writes `nn`, `Nn` and `NN`.
+    """
+    from labels import NARROW_MARKERS, WORDS_MEANING_UNKNOWN
+    markers = NARROW_MARKERS | WORDS_MEANING_UNKNOWN
+    return any(tok.casefold().strip(".,") in markers for tok in (label or "").split())
+
+
 def _strip_markers(label):
     """`labels.strip_markers`, imported lazily — `scripts/` is on the path only at runtime."""
     from labels import strip_markers
     return strip_markers(label)
+
+
+#: **Appended verbatim to the end of every batch. Hard-coded on purpose. Do not generalise it.**
+#:
+#: Emma, 2026-08-27, asking for exactly this and warning against what would otherwise happen to
+#: it: *"I have the biggest kludge of a solution: every quickstatement batch just adds these qids
+#: at the end... literally, there is a block of text with the quick statements hard-coded into
+#: the end of it. They stay in forever, adding the QIDs every single time."*
+#:
+#: **These are manual zipper merges.** Each line says *this Wikidata item is that Geni person*.
+#: The daily algorithm needs those eight pairings to exist on Wikidata for the Charlemagne chain
+#: to link up, and the work depending on it is due within about a week. Until the statement is on
+#: the item, the pairing lives only in `reports/garborg-qids.tsv`, where nothing outside this
+#: repo can see it and a ledger rebuild would lose it.
+#:
+#: **It is self-healing by being stupid.** The first run that reaches an item adds the statement;
+#: every run after that adds a duplicate, which QuickStatements merges away. Eight no-op lines a
+#: day, no state, no check, no dated logic. When the eight are done, delete the block.
+#:
+#: **Her explicit fear, recorded because it is the likely failure:** *"My fear with asking you to
+#: do this thing is that you are going to decide to over-engineer this into something that takes
+#: a gazillion years to make and has a high likelihood of later on being repurposed into
+#: something that's actively harmful... If you get any clever ideas about making it more
+#: scalable, then it's going to get shot down."* So: no lookup, no filtering, no *only emit if
+#: absent*, no reading it from a file. A literal string.
+#:
+#: **European only.** She ruled the Asian identifications out: *"for the Asian people I'm going
+#: to say no... the Asian people are long-term and there are potential concerns."*
+SPINE_P2600_BLOCK = """
+# ---------------------------------------------------------------------------
+# MANUAL ZIPPER MERGES -- hard-coded, appended to every batch, on purpose.
+#
+# Each line asserts that an existing Wikidata item IS a particular Geni person.
+# These eight are on the Arne -> Charlemagne chain. Their items exist and are
+# well documented, but carry no P2600 Geni.com profile ID, so nothing outside
+# this repo records the correspondence and the chain cannot be followed on
+# Wikidata. The daily algorithm depends on these pairings.
+#
+# They repeat every run by design. The first run that reaches an item adds the
+# statement; every later run adds a duplicate, which QuickStatements merges away.
+# That is the whole mechanism -- no state, no checking, no cleverness. When all
+# eight are on Wikidata, delete this block.
+#
+# Evidence for each is in reports/wikidata-spine-add-p2600.qs: every one is
+# anchored on a DIFFERENT relative that already carries a recorded P2600, never
+# on a name match. Two were accepted by Emma on 2026-08-26.
+# ---------------------------------------------------------------------------
+#   Q5915800 Knut Algotsson: P2600 Geni.com profile ID
+Q5915800\tP2600\t"6000000002572699392"
+#   Q101247444 Ingegerd Svantepolksdotter: P2600 Geni.com profile ID
+Q101247444\tP2600\t"6000000011239201122"
+#   Q6197518 Svantepolk Knutsson Viby: P2600 Geni.com profile ID
+Q6197518\tP2600\t"6000000003418900347"
+#   Q3743799 Knut Valdemarsson, Duke of Estland: P2600 Geni.com profile ID
+Q3743799\tP2600\t"6000000003076221220"
+#   Q4953376 Helena Guttormsdatter: P2600 Geni.com profile ID
+Q4953376\tP2600\t"6000000034013672054"
+#   Q466257 Rozala of Italy: P2600 Geni.com profile ID
+Q466257\tP2600\t"4258970970100070152"
+#   Q274606 Berengar I, emperor of the Romans: P2600 Geni.com profile ID
+Q274606\tP2600\t"6000000001669654269"
+#   Q284400 Gisele of Cysoing: P2600 Geni.com profile ID
+Q284400\tP2600\t"6000000000424624719"
+"""
 
 
 def spine_created():
@@ -1119,7 +1194,13 @@ def main():
                 # Only stripped when a real name survives. A label that is nothing but markers
                 # is left exactly as it is, so the NN treatment below still fires and
                 # § *`NN` is PRESERVED in `mul`* holds.
-                labels[row["geni_id"]] = _strip_markers(raw_label) or raw_label
+                # **Stored RAW.** Normalising the marker here destroys the signal the
+                # redacted branch keys on: `<private> Garborg` became `NN Garborg`, the
+                # `"<private>" in low` test then failed, and three redacted people took the
+                # ordinary-name path — so they got `Len "NN Garborg"` and none of the ten
+                # formulaic descriptions. `strip_markers` belongs where a label is emitted
+                # for a person who is NOT redacted, which is the `Sara NN` case.
+                labels[row["geni_id"]] = raw_label
 
     # **The GEDCOM name FIELDS, which is where name objects come from.** Emma,
     # 2026-08-24: *"I thought we were resolving name objects but now we're determining
@@ -1388,7 +1469,13 @@ def main():
         # retrievable."* The person is real and none of the structure is redacted —
         # the Geni id, the sex, the parents, the dates all come through.
         low = label.lower()
-        redacted = "<private>" in low or low.startswith("private")
+        # **An unknown-name marker of ANY kind takes the NN treatment, not just `<private>`.**
+        # This tested for Geni's redaction markers only, so `NN Jonsdotter` — whose Geni name
+        # is literally that — took the ordinary-name path and `NN` went out in her `en` label
+        # with no description. `reports/partial-nn.csv` counts **9,539** people with a marker
+        # in one name field and a real name in the other; every one of them belongs here.
+        redacted = ("<private>" in low or low.startswith("private")
+                    or _carries_marker(label))
         if redacted and args.skip_nn:
             carried.append((g, label, "redacted: skipped by --skip-nn for this run"))
             continue
@@ -1400,7 +1487,7 @@ def main():
         # ring happened to contain no redacted people; restricting the ring to Emma's own
         # ancestry surfaced it immediately. A redacted person has no married-name alias to
         # emit, so empty strings are the right values, not a guard around the block.
-        primary, birth = label, ""
+        primary, birth = _strip_markers(label) or label, ""
         if redacted or not label:
             # **NOT unlabelled.** `CLAUDE.md` § *`NN` is PRESERVED in `mul`.
             # Descriptive labels are ADDED in other languages* -- the marker stays in
@@ -1659,6 +1746,10 @@ def main():
         print(f"excluded ids: {dropped} statement line(s) dropped "
               f"({', '.join(sorted(excluded))}) — never emitted, in any position")
     lines = kept
+
+    # The hard-coded manual zipper merges, last, every run. See `SPINE_P2600_BLOCK` — it is a
+    # literal string on purpose and is not to be made conditional, filtered or generated.
+    lines.append(SPINE_P2600_BLOCK)
 
     out = ROOT / "reports" / "wikidata-garborg-day.qs"
     out.write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")

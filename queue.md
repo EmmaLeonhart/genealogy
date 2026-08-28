@@ -109,6 +109,89 @@ They exist in the ledger only because they were typed there.
 never been run. Once it runs they resolve on their own. Until then a rebuild loses Charlemagne
 spine steps 16–21 and 31–32.
 
+## DECIDED — when the algorithm links to a person, it writes their `P2600` too
+
+**Emma, 2026-08-27:** *"Don't we have the ability to actively add a Geni ID to a person who is
+linked? Yes, we should have a thing that allows the algorithm to, when it's attaching people
+together, add in a Geni ID... It should be able to say, 'Link a person to their parent who's an
+actual person in the tree,' and add onto the parent the parent's geni ID, as well as any other
+properties that we would be adding to them."*
+
+**We do not have it.** `LAST P2600 "…"` is emitted only inside a `CREATE` (line 1473). The fill-in
+pass emits `P22` *father*, `P25` *mother*, `P40` *child*, `P3373` *sibling*, `P26` *spouse*,
+`P735` *given name* and `P734` *family name* — **never `P2600`**. So an item we can already pair
+with a Geni profile never gets the id written unless we minted the item ourselves.
+
+**The population is small and load-bearing.** Measured live 2026-08-27 over the 26 items she has
+edited but did not create: **8 humans carry no `P2600`** — the seven Charlemagne spine people
+(`Q5915800`, `Q101247444`, `Q6197518`, `Q3743799`, `Q4953376`, `Q274606`, `Q284400`) and
+`Q10411463` Andreas Olai. These are exactly the people the ledger can pair and Wikidata cannot,
+which is why the rebuild-from-contributions ruling would drop them. Writing the `P2600` closes
+that for good: afterwards they resolve on their own.
+
+**Do not size this from `out/wikidata/p2600-all.tsv`.** It is a bulk download predating her recent
+creations, so 202 of 209 ledger pairs look unlinked in it while their items really do carry the
+id. Absent-from-export is not absent-from-Wikidata. The live check is
+`genimerge.wikidata.full_entities`.
+
+**Bureätten needs nothing here:** 0 of the 251 lack a `P2600` in the export — though that column
+may itself have been built from `p2600-all.tsv`, in which case the zero is circular rather than
+independent.
+
+## PIN THE TERM — "synoptic tree" means the COMBINED tree, not the Geni export
+
+**Emma, 2026-08-27:** *"Our total combined tree that we have here is the synoptic tree. I called
+it the synoptic tree, but then the synoptic tree kind of turned into just the whole Geni export
+rather than it. Our combined tree has the entity resolution within it."*
+
+The term drifted and `CLAUDE.md` now uses it both ways in different sections. **The synoptic tree
+is the combined Geni + Wikidata thing, which carries the entity resolution.** The merged GEDCOM
+alone is the *corpus* or the *merged tree*, and it carries no correspondences at all. Statements
+like "the synoptic tree has the entity resolution in it" are only true of the first.
+
+## FOUND IN REVIEW — the daily algorithm never reads the combined tree
+
+**Emma, 2026-08-27, asking directly:** *"Are we not actually ever using the combined tree of
+Wikidata and Geni, and are just using the Geni stuff alone for this algorithm?... that raises some
+additional concerns about what's going on with the actual combined tree, and I guess I'd say, to
+some extent, how it is that we know that these are the right individuals."*
+
+**She is right. Every file `build-garborg-day.py` opens, listed:** `entity_resolution.md`,
+`out/merged.ged`, `out/wikidata/p2600-all.tsv`, `out/wikidata/relations.tsv`,
+`reports/derived-facts.csv`, `derived-family.csv`, `derived-labels.csv`, `display-names.csv`,
+`garborg-carry-forward.tsv`, `garborg-live-state.tsv`, `garborg-live-values.tsv`,
+`garborg-name-transliterations.tsv`, `garborg-qids.tsv`.
+
+**`reports/synoptic-correspondence.tsv` is not among them.** Neither is `zipper-pairs.tsv`,
+`structural-correspondence.csv`, `emma-judgments.tsv` or `bureatten.csv`.
+
+So:
+
+* **Relationships come from `derived-family.csv` — Geni only.** Every parent, child and spouse
+  the algorithm reasons about is Geni's.
+* **Correspondences are `garborg-qids.tsv` (209, all her own edits) plus `entity_resolution.md`
+  (9 by hand).** That is the whole set of people it can point at an item.
+* **`p2600-all.tsv` is loaded but used once** — to refuse creating somebody who already has an
+  item. Never as pairs to work *from*.
+* **`relations.tsv`** serves the subgraph walk and the duplicate guard.
+
+**So "how do we know these are the right individuals" has a good answer and a bad implication.**
+The answer: she asserted all 209 herself, which is the strongest evidence available. The
+implication: the **564,329-pair** synoptic correspondence, the **45,898** zipper pairs with their
+provenance chains, the **7,841** structural correspondences and her own hand verdicts in
+`emma-judgments.tsv` all feed **nothing**.
+
+**This also explains the Bure symptom she noticed** — people in Category:Bureätten with items and
+Geni ids who never got links added. They are not in the 209, and the machinery that does know
+about them is not connected to the batch.
+
+**And it makes the "0 of 251 lack a `P2600`" figure doubly weak**: `bureatten.csv` is not an input
+to anything the batch does, and its `geni_ids` column may itself derive from `p2600-all.tsv`.
+
+**Not a defect to fix blind.** Wiring 564,329 inferred pairs into a batch builder that currently
+works from 209 hand-verified ones is a change of kind, and the zipper's own reliability report
+puts `child`+`solo` disagreement at **14.9%**. Decide deliberately.
+
 ## Stuff here (semi-confusing) 8-27
 
 Okay so idk what is going on since a lot of contradictory thins are happening. idk if the section below is the next step and the queue is not in use or if it is awkwardly set up
