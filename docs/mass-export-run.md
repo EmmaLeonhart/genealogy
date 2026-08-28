@@ -1,0 +1,103 @@
+# The mass export campaign — the run sheet
+
+**Status, 2026-08-28: BLOCKED ON A CAPTCHA, and nothing else.** Geni served an Imperva/Incapsula
+hCaptcha ("I am human") on the very first profile. Completing or bypassing a bot-detection
+challenge is not something this session will do, so the campaign stops at that box and resumes
+the moment Emma ticks it. Everything below is staged and needs no further preparation.
+
+Emma, 2026-08-28: *"Mass export these using our export protocol. Export from them and if their ids
+were merged or moved record it each time and the other stuff. Do the earlier queued exports first
+and then these — the big export thing is the current front queue task now, all of the other geni
+exports in the queue first and then the bure people until we have all the ids."*
+
+And, on the block: *"work on later queue items while I take the bus home."* So the rest of the
+queue proceeds; this resumes when the captcha is cleared.
+
+---
+
+## The order
+
+### 1. `6000000227464556886` — Eva Walaas — `Forest` **and** `Ancestors`
+
+Her 1am item, in her words: *"do a forest export and ancestor export on
+https://www.geni.com/profile/index/6000000227464556886 and incorporate them into the synoptic
+tree and then rebuild the synoptic tree, and then generate the quickstatements with the
+algorithm."*
+
+- Ledger already pairs the profile with `Q109660986`.
+- **Corpus check done 2026-08-28: 0 of 558 exports contain `@I6000000227464556886@`.** Worth
+  running.
+- Two styles, so two files: `export-Forest-6000000227464556886.ged` and
+  `export-Ancestors-6000000227464556886.ged`.
+- Afterwards: re-merge, rebuild the derived layer (**`build-display-names.py` first** — it is the
+  only script that reads the merged tree, and `derive-labels.py` reads its output without
+  building it), then `build-daily-batch.py`.
+
+### 2. `Q10411463` Andreas Olai — `Forest`, once the Geni id is known
+
+The Geni id is **not known**. Find it first, and the constraint matters: there is a better-known
+Andreas Olai, and Emma put `P1889` *different from* on the item to separate them. Read that
+statement first — it names the person to reject. Match on `P569` *date of birth*, never on the
+name; `CLAUDE.md` § *Join on the Geni ID; do not search by name* records what name matching has
+cost here. If the dates do not settle it, **stop and say so**; a wrong Geni id is worse than none.
+
+### 3. The eight `entity_resolution.md` people — `Forest` each
+
+Everyone in that file **except Emma**. She withdrew the Geni-bio-editing half of this item on
+2026-08-27 — *"we don't actually need to edit your geni at all for this"* — so only the exports
+remain.
+
+| Geni id | QID | who |
+| --- | --- | --- |
+| 6000000001835522164 | `Q11596350` | Wakatakehiko |
+| 6000000001844033355 | `Q11078587` | Harima no Inabi no Ōiratsume |
+| 6000000001902786893 | `Q11443857` | Futohime Mononobe |
+| 6000000002039751362 | `Q24890131` | Ikofutsu Mononobe |
+| 6000000186285688253 | `Q19657284` | Buyeo Deokjang |
+| 6000000186285688286 | `Q12598947` | Taebi Buyeo |
+| 6000000227335224861 | `Q135579480` | Yasutaka Kitajima |
+| 6000000227335393824 | `Q135579474` | Tokitaka Kitajima |
+
+`6000000087535357291` → `Q140568870` is **Emma and is skipped**.
+
+### 4. The 100 Bureätten people — `reports/bure-to-export.tsv`
+
+Every person in sv.wikipedia Category:Bureätten who carries a Geni id **and is not in our
+corpus**. Derived 2026-08-28 from `reports/bureatten.csv` (251 with both a QID and a Geni id)
+minus everyone present in `reports/derived-labels.csv`. Run until we have all the ids.
+
+They are the reason this matters: the batch resolves names through `derived-labels.csv`, so a
+Bureätten person we do not hold gets no label and cannot be linked.
+
+---
+
+## Protocol — `docs/export-seed-rules.md` and `CLAUDE.md`, not restated loosely
+
+- **Size 5000. Strictly one export at a time.** Zips filed into `exports/` in bulk only once every
+  one of them is down.
+- **Grep the corpus before each export and put the number in the commit message.** Two exports
+  were wasted on 2026-08-23 by skipping this. `grep -l '@I<id>@' exports/**/*.ged`.
+- **Never overwrite an existing `.ged`.** An export is named for its *style*, so filenames
+  collide: append the seed id. If the destination path exists, **STOP** — where it goes is Emma's
+  call, not a default to guess.
+- **Do not analyse or diff an export.** Place it, commit, move on.
+- Every `.ged` is committed. Every zip gets its own explicit `.gitignore` line — never a pattern,
+  because an unignored zip in `git status` is how a download announces itself.
+- Where Geni will not export from a profile directly, create a placeholder seed per
+  `docs/export-seed-rules.md` and export from there; success is the target person appearing in
+  the result.
+
+## The record — `reports/mass-export-log.tsv`
+
+Emma asked for this specifically: *"if their ids were merged or moved record it each time and the
+other stuff."*
+
+`geni_id · qid · style · outcome · redirected_to · new_geni_id · ged_file · people · notes`
+
+- A **Geni profile that redirects** means the profiles were merged — record the id landed on in
+  `new_geni_id` rather than quietly following it.
+- A **QID that redirects** means the items were merged — record it in `redirected_to`.
+- `outcome` is one of `exported`, `no-export-offered`, `seed-created`, `redirect`, `failed`.
+
+Both kinds of move are the "weird stuff" Emma expects to find, and the point of writing them down
+is that a redirect silently followed looks exactly like a profile that was always there.

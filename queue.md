@@ -18,6 +18,54 @@ audits, dead crons and superseded priorities. Recover any of it with
      important thing. Recovered from `git show 07600faf:queue.md`. Do not rewrite
      her text; add underneath it. -->
 
+## 1. THE MASS EXPORT CAMPAIGN — front task, but PAUSED ON A CAPTCHA
+
+**`docs/mass-export-run.md` is the run sheet** — the four groups in her order, every Geni id, the
+protocol, and the record format. Read that rather than reconstructing it here.
+
+**Geni served an Imperva hCaptcha on the first profile.** Completing or bypassing bot-detection
+is not something this session does, so the campaign waits at that box. The tab is open at
+`https://www.geni.com/people/Eva-Walaas/6000000227464556886`; one tick and it resumes.
+
+Emma, 2026-08-28: *"work on later queue items while I take the bus home."* So the rest of the
+queue proceeds meanwhile, and this is the first thing back when the captcha clears.
+
+Staged and needing nothing further: `reports/bure-to-export.tsv` (the 100),
+`reports/mass-export-log.tsv` (the record, with `redirected_to` and `new_geni_id` columns so
+merges and moves are written down rather than silently followed), and the corpus check on Eva
+Walaas — **0 of 558 exports contain her**, so that export is worth running.
+
+## The original campaign detail, kept for the ids
+
+**Emma:** *"Mass export these using our export protocol. Export from them and if their ids were
+merged or moved record it each time and the other stuff. Do the earlier queued exports first and
+then these — the big export thing is the current front queue task now, all of the other geni
+exports in the queue first and then the bure people until we have all the ids."*
+
+**Order, and it is hers:**
+
+1. **`6000000227464556886`** — `Forest` **and** `Ancestors`. This is her 1am item; the profile is
+   Eva Walaas, and the ledger already pairs it with `Q109660986`.
+2. **`Q10411463` Andreas Olai** — find the Geni id first (dates, not name; `P1889` *different
+   from* names the famous namesake to reject), then `Forest`.
+3. **The eight `entity_resolution.md` people**, `Forest` each — *except her*. Note she has since
+   withdrawn the Geni-bio-editing half of that item; only the exports remain.
+4. **The 100 Bureätten people in `reports/bure-to-export.tsv`** — every Category:Bureätten person
+   with a Geni id who is **not in our corpus**, so the batch currently cannot name them. Run
+   until we have all the ids.
+
+**Protocol, per `docs/export-seed-rules.md` and `CLAUDE.md`:** size 5000, **strictly one export at
+a time**, zips filed in bulk only when every one is down. Grep the corpus before each and put the
+number in the commit message. Never overwrite an existing `.ged` — a colliding filename gets the
+seed id appended, and if the destination exists, STOP. Do not analyse or diff an export; place it,
+commit, move on. Every `.ged` committed, every zip gitignored one line at a time.
+
+**Record every attempt in `reports/mass-export-log.tsv`** — she asked for this specifically:
+*"if their ids were merged or moved record it each time and the other stuff."* Columns:
+`geni_id, qid, style, outcome, redirected_to, new_geni_id, ged_file, people, notes`. A Geni
+profile that redirects to another means the profiles were merged; a QID that redirects means the
+items were. Both get recorded rather than silently followed.
+
 ## 1. FINISH THE ALGORITHM REVIEW CONVERSATION WITH EMMA — before anything else
 
 She is walking through `scripts/build-garborg-day.py --compose` **step by step**, one numbered
