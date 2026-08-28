@@ -17015,3 +17015,24 @@ which is the thing this export was really testing. A saturated page is not a rea
 target.
 
 Closures per export in group 4: 2, 20, 2, 4, 2, 6, 6, 1, 4.
+
+## 2026-08-28 — the Klingspor page hit both awkward cases at once
+
+Group 4, export 9. Targets Otto Reinhold Klingspor `6000000006127120304` (`Q5914181`) and, next
+on the list and adjacent in the tree, Fredric Philip Klingspor `6000000006127120320` (`Q5914160`).
+
+**Two documented awkward cases on one page.** The tree is saturated, and the only node without a
+green arrow is **`NN, wife 1`** — the degenerate case `docs/export-seed-rules.md` records under
+*father of NN*: tier 5 would name her father `NN /father of NN/`, which names nobody. The file's
+own resolution is to take a different slot in the same tree, so the smallest arrow got expanded
+instead — Per Jönsson Stålhammar `+2`, which re-rooted and exposed his parents **Jöns Gudmunsson**
+(1580–) and **Karin Pedersdotter**, both parentless and both carrying a live patronymic with no
+other surname. Tier 2 either way; took Jöns, so the seed is **`Gudmund father of Jöns`**.
+
+Geni objected — *"It looks like you're entering a non-English name"* — on the ö. Advisory only,
+and the rules file's own example seeds include `Øystein father of Berta`, so it was saved as typed.
+
+~4 minutes, 5000 at the cap. **Closed three — 53 absent → 50**: both Klingspors and Carl Petter
+Törnebladh. Picking a target whose neighbour is also on the list paid exactly as expected.
+
+Closures per export in group 4: 2, 20, 2, 4, 2, 6, 6, 1, 4, 3.
