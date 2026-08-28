@@ -16497,3 +16497,35 @@ hypothesis that would have biased the analysis before it looked at anything.
 
 My own summaries of these tasks are gone from the queue. They were a description of the cron
 system, not an escape from it.
+
+## 2026-08-27 — MHTML paths, and the diagnosis I had been answering wrong
+
+**`genimerge.genipage` could not read a single-file MHTML page.** Chrome's "Webpage, Single File"
+is MIME with a quoted-printable HTML part, so every `href="…"` is stored as `href=3D"…"` and the
+parser matched nothing. Both of Emma's saved pages failed as *"no relationship path found"* —
+indistinguishable from a page saved signed-out, while the markup was in them the whole time: 48
+`segment` classes, 68 `data-profile-id` anchors, 2,378 `=3D` sequences. `html_of_saved_page()`
+decodes the MIME part; plain HTML passes through untouched.
+
+Both paths then extracted: **`randolph-paulus-borsheim` 21 steps, `caroline-signe-borsheim-hoknes`
+31 steps**, every row carrying a profile id, and **21 of 21 and 31 of 31 steps held** in the tree.
+The Randolph file holds two routes end to end — one through Ane Oline's sister and a **marriage**
+link at step 6, which is the one Emma flagged, and one down through Rasmus Ingebretsen Grude.
+
+**And the correction that matters more than any of it.** I had spent the evening treating
+duplicate-creation as the defect. Emma: *"the issue is the fact that you were putting in all sorts
+of stuff... you oftentimes just grabbed the first thing that vaguely looked like it... and not
+remove them. We ended up with an algorithm that kind of used a lot of legacy code stuff because
+the legacy code stuff was available."* Four instances in one evening, now tabulated in `CLAUDE.md`
+§ *Do not grab the first artifact that vaguely matches* — `bure-roster.tsv` for `bureatten.csv`,
+`MODERN_CUTOFF` from one objection about one person, an invented hop radius, and
+`entity_resolution.md` still load-bearing years after its problem was solved.
+
+Also recorded: she has **withdrawn the Geni-editing plan**. The Wikidata link goes into bios
+during the synoptic tree build, not onto Geni, so the zipper merge sees the correspondence as
+ordinary tree content. The two 3am cron jobs are cancelled at her instruction; their text survives
+verbatim as `queue.md` items 11 and 12.
+
+**1,415 passed, 27 skipped, 2 failed** — the two are the ledger/batch overlap and the batch
+inventory, both consequences of the ledger going 164 → 209 rows, and both parked at the back of
+the queue at her instruction rather than chased mid-review.

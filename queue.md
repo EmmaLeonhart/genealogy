@@ -18,6 +18,60 @@ audits, dead crons and superseded priorities. Recover any of it with
      important thing. Recovered from `git show 07600faf:queue.md`. Do not rewrite
      her text; add underneath it. -->
 
+## 1. FINISH THE ALGORITHM REVIEW CONVERSATION WITH EMMA — before anything else
+
+She is walking through `scripts/build-garborg-day.py --compose` **step by step**, one numbered
+step at a time, raising what is wrong with each. This is a review, not a work queue. Emma,
+2026-08-27: *"My god what the fuck are you doing? Are you just executing on the queue instead of
+following the conversation? First queue item is to finish this conversation with me."*
+
+**While the review is running: do not go off and execute, and do not flag incidental problems at
+her.** Findings go to the back of this file. Her words: *"don't flag those things throw reviewing
+them at the back of the queue."*
+
+**She has asked for a comprehensive step-by-step review of the whole algorithm.** Steps covered:
+1 the ledger refresh, 2 `have`, 4 the provisional ring, 5 the 1880 cutoff, 6 the subgraph, 7
+`compose`, 9 the duplicate guard, 11 the fill-in pass. Not yet: 3 `linked`, 8, 10, 12, 13, 14.
+
+Rulings so far — the 34 unlabelled ledger rows dropped and regenerated from Wikidata; her own
+`entity_resolution.md` entry to go, **by her hand, not now**; the Bureätten people eligible for
+both fill-in and seeding; `MODERN_CUTOFF = 1880` "totally undesired" and to be removed with
+nothing in its place; steps 4–5 dead under `--compose`; her duplicates deliberate; the Wikidata
+link to be injected into bios **during the synoptic tree build**, with Geni never edited.
+
+**Do not act on `entity_resolution.md` yet.** Emma: *"this entity resolution stuff is important,
+but I think you may have been presenting it as being more important than it is. It's important,
+but just don't do stuff on it right now."*
+
+## DECIDED in review — every Bureätten person with a Geni id becomes eligible
+
+**Her definition, 2026-08-27, given after I invented a hop threshold instead of asking:**
+*"Every bure kinship person means every item whose swedish wikipedia item is in
+category:bureatten and which has a geni id. It doesn't mean anything related to that retarded
+logic you did just then."*
+
+**The population is `reports/bureatten.csv` and nothing else.** It is the Swedish Wikipedia
+Category:Bureätten listing, columns `sv_title, qid, kind, geni_ids`. 576 rows — 365 people, 126
+families, 85 unknown; 575 carry a QID, **251 carry a Geni id**, and that is the eligibility test.
+**2** of the 251 are in the ledger today, so this is **+249**.
+
+No hop count, no roster, no threshold. The category is the boundary, which is the point of using
+it.
+
+**What I did instead, so it is not repeated:** reached for `reports/bure-roster.tsv`, found it
+graded people by hops from a core (158 / 805 / 1,477 / 3,030), and offered her three readings of
+her own instruction — 158, 1,593 or 5,470 — rather than asking. Her standing correction:
+*"If something is ambiguous do AskUserQuestion instead of bullshitting yourself into retarded
+harmful algorithms."*
+
+**Confirmed 2026-08-27: BOTH — fill-in and seeding.** They go into `have`, so their existing
+items get statements added, *and* they seed rings, so new people are created around them. Bureus
+`Q633094` is already a subgraph root, so the ones Wikidata connects to him seed on their own; the
+rest need to be admitted to the seed set deliberately.
+
+**Expect the batch to grow.** The seed set is 104 today. Whether the caps absorb 249 more seeds
+or the daily batch jumps in size is something to measure on the first run, not to guess at.
+
 ## Stuff here (semi-confusing) 8-27
 
 Okay so idk what is going on since a lot of contradictory thins are happening. idk if the section below is the next step and the queue is not in use or if it is awkwardly set up
@@ -1984,3 +2038,15 @@ What to build:
 
 **Bureätten the export campaign stays closed** — 7 resolved, 76 dropped, 0 exports. This is a
 different thing: linking people already on both sides, not finding new ones.
+
+## LAST — incidental findings from the review, to look at when it is over
+
+- **Two tests fail after the ledger regeneration** (2026-08-27, 1,415 passed / 2 failed):
+  `test_garborg_day_batch.py::test_the_ledger_and_the_batch_do_not_both_claim_a_person` and
+  `test_generated_inventories.py::test_the_batch_inventory_names_exactly_the_batches_on_disk`.
+  The ledger went 164 -> 130 -> 209 rows, so the batch and the ledger now overlap where they did
+  not before, and a new `.qs` exists that the inventory does not list. Neither is urgent.
+- **`labels.strip_markers()` was rewritten twice on 2026-08-27** — first to delete markers, then
+  to preserve and normalise them to `NN`. The deleting version shipped and touched a batch. Check
+  nothing carries a label it produced.
+- **Uncommitted at the time of writing:** the `strip_markers` rewrite and the regenerated ledger.

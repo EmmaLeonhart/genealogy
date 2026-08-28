@@ -478,25 +478,46 @@ def transliterate_token(token, table):
 
 
 def strip_markers(label: str) -> str:
-    """Drop unknown-name markers from a label that still has a real name in it.
+    """Normalise an unknown-name marker to `NN`. **Never delete it.**
 
-    **`Sara /NN/` is the case.** Geni records her given name as *Sara* and her surname as the
-    marker `NN` — *nomen nescio*, the genealogist saying the surname is unknown. `display_name`
-    concatenates the fields, so the label reached a batch as **`Sara NN`** and would have been
-    written to Wikidata as her name. `NN` is a statement that a name is missing; it is not part
-    of anybody's name.
+    **Emma, 2026-08-27**, on `Q141198538`: *"clearly has 'nn' as its first name however it was
+    not produced as an NN person, so what happened, can you please fix the algorithm so it does
+    no do this in the future?"* Geni records her as `nn Gunnarsdatter /Frafjord/` — the marker
+    sits inside `GIVN`, in front of a real patronymic — and the label went out as
+    `nn Gunnarsdatter Frafjord`, reading as a name.
 
-    **Only when something real survives.** A person whose whole label is a marker keeps it:
-    that is § *`NN` is PRESERVED in `mul`* and the NN algorithm adds descriptive labels in the
-    other languages. Emptying those was ruled out explicitly — *"I didn't tell you to avoid the
-    NN people."* So this returns `''` for a label that is nothing but markers, and the caller
-    then does the NN treatment rather than substituting a bare surname.
+    **The marker stays.** `CLAUDE.md` § *`NN` is PRESERVED in `mul`* is explicit — *"NN is always
+    preserved in the multi-language label. It just has more descriptive labels added in some
+    languages for the relationships"* — and its worked example is exactly this shape:
 
-    Case-folded against the same vocabulary the rest of this module uses, so a marker added
-    there is handled here with no second list to keep in step.
+        mul  NN Garborg                              <- marker where the unknown part is
+        en   son of Arne Olaus Fjørtoft Garborg      <- formulaic, from the nearest relative
+
+    So `nn Gunnarsdatter Frafjord` becomes **`NN Gunnarsdatter Frafjord`**, and `Sara NN` — given
+    name known, surname unknown — is already right and is left alone but for the case.
+
+    **This replaces a deletion that ran for part of 2026-08-27 and was wrong both ways.** It
+    turned `nn Gunnarsdatter Frafjord` into `Gunnarsdatter Frafjord` and `Sara NN` into `Sara`,
+    each of which asserts a name the person is not recorded as having, and each of which erases
+    the one thing the record actually says: that part of the name is unknown. A bare surname is
+    explicitly not a label — § *Redacted people go in. `Private` never becomes a label*.
+
+    A label that is nothing but markers collapses to the bare marker `NN`.
     """
     tokens = (label or "").split()
-    kept = [tok for tok in tokens
-            if tok.casefold().strip(".,") not in (NARROW_MARKERS | WORDS_MEANING_UNKNOWN)]
-    return " ".join(kept) if kept and len(kept) != len(tokens) else (
-        "" if tokens and not kept else label)
+    if not tokens:
+        return label
+    markers = NARROW_MARKERS | WORDS_MEANING_UNKNOWN
+    out, seen_marker = [], False
+    for tok in tokens:
+        if tok.casefold().strip(".,") in markers:
+            # Collapse a run of markers to one, so `NN NN Garborg` is not a thing.
+            if not seen_marker or out:
+                out.append(UNNAMED_MARKER)
+            seen_marker = True
+        else:
+            out.append(tok)
+    if all(x == UNNAMED_MARKER for x in out):
+        return UNNAMED_MARKER
+    return " ".join(out)
+

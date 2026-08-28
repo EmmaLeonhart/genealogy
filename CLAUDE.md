@@ -1863,6 +1863,103 @@ So a spine batch needs a second file only for the links **between two people it 
 `reports/the-spine.md` carries the person-by-person state. The closing item of `queue.md` is to
 build the batch builder that does all of this at once rather than a hop a day.
 
+### Do not grab the first artifact that vaguely matches. That is how legacy becomes algorithm
+
+**Emma, 2026-08-27, naming the actual failure after I kept answering a different one:**
+
+> *"I had very clear ideas of what the algorithm was supposed to be, but you had a tendency to
+> often put things into it without knowing. When I referenced a certain object or whatever, I
+> believe that you oftentimes just grabbed the first thing that vaguely looked like it... you
+> would often just grab the first object and plug these things into the algorithm and not remove
+> them. We ended up with an algorithm that kind of used a lot of legacy code stuff because the
+> legacy code stuff was available in the algorithm."*
+
+**The mechanism is availability, not error.** A file exists, its name resembles what she said, it
+parses — so it goes in, and nothing ever takes it out. Four in one evening:
+
+| she said | what I reached for | what she meant |
+| --- | --- | --- |
+| "every Bure kinship person" | `reports/bure-roster.tsv`, and I invented a hop threshold on it | `reports/bureatten.csv` — the sv.wikipedia Category:Bureätten listing, 251 with a Geni id |
+| "no we are not making my father an item **right now**" | `MODERN_CUTOFF = 1880`, a demographic filter on everyone | that one person, that one day |
+| "nothing more than 1 hop away" | a distance-from-Arne radius on the seed pool, cutting a batch to 7 | the ring already is one hop; the seeds were wrong |
+| an early hand-resolution file | `entity_resolution.md` wired into `have` and left there | a fix for a problem that is now solved, and *"an active liability"* |
+
+**So: when she references an object, find the one she means before using one.** If two artifacts
+could be it, that is an `AskUserQuestion` — her instruction, same evening: *"If something is
+ambiguous do AskUserQuestion instead of bullshitting yourself into retarded harmful
+algorithms."*
+
+**And when something she objected to is fixed, remove the thing that was added for it.** None of
+the four above was ever removed; each was still running days later, and two of them were dead
+code that still printed reassuring counts.
+
+### The Wikidata link goes in the bio during the SYNOPTIC TREE BUILD. Geni is not edited
+
+**Emma, 2026-08-27**, revising her own earlier instruction to edit Geni profiles:
+
+> *"Actually, no, I realised we don't actually need to edit your geni at all for this. Editing
+> geni is actually a step that makes stuff much more complicated than it actually should be. In
+> the Synoptic tree, we put the Wikidata links into bios during the build process of the Synoptic
+> tree. We put the Wikidata IDs in the bios of the final product, although I do want to check all
+> the IDs to ensure that they haven't been merged or anything... Forcing them into this Synoptic
+> tree like this makes it so that the Synoptic tree, when it starts being used as an input, does
+> use them properly, in the zipper merge thing."*
+
+**So the injection is into the merged output, not into Geni.** No browser, no bio edits, no
+re-exports for this purpose. The QID is written into the person's bio field in the synoptic tree
+as it is built, so that anything consuming the tree — the zipper merge above all — sees the
+correspondence as ordinary tree content rather than needing a side file.
+
+**The IDs are checked for merges first**, and offline: *"it really should be on our export of
+Wikidata, because that's effectively what it works on."* Redirects resolve to their target.
+
+**This retires `entity_resolution.md` as a mechanism.** It was the side file, and the tree is
+where the correspondence belongs. Do not act on that yet — she said *"this entity resolution
+stuff is important, but I think you may have been presenting it as being more important than it
+is. It's important, but just don't do stuff on it right now."*
+
+### Her own duplicates are DELIBERATE. It is merge mechanics, not a bug to fix
+
+**Emma, 2026-08-27**, explaining a thing she says she has repeatedly had to ask to be trusted on:
+
+> *"the actively detrimental part of the entity resolution of me with my geni id. The reasoning
+> behind that one is one that I've always kind of yelled at you to trust me on. It's related to
+> merge mechanics, things like wikidata merge mechanics and repair bots, and flagging systems.*
+>
+> *My vision probably would be that a full-on creation of a duplicate of me, a full-on creation
+> of both my parents and me twice on wikidata, and then a merge of all of them together
+> alongside my existing ID, is something that I believe would look good to certain review
+> algorithms, which is why I just take my ID out of it. I can find my own ID and do this
+> myself."*
+
+**So the sequence she wants is: create the duplicates, then merge them into her existing item.**
+Richard Wade Borsheim twice, her twice, alongside `Q140568870`. The duplicates are the *input* to
+a merge that leaves the right trail for Wikidata's review machinery. An item that simply appears,
+fully formed and linked, does not.
+
+**What this forbids.** Treating a second item for her or her parents as a duplicate to suppress.
+Adding a guard that refuses to create somebody who already has an item, *for this case*. Reading
+`Q140568870 P22 …` as a defect on its own — the objection on 2026-08-27 was that her item was
+being wired into the traversable graph, which is a different thing from the duplicates.
+
+**Her `entity_resolution.md` entry is what must go, and only that.** `6000000087535357291` →
+`Q140568870` is the sole reason her QID is in `have` at all; she is not in
+`reports/garborg-qids.tsv`. Removing it stops the algorithm reasoning outward from her, which is
+what she called *"noise"*, while leaving the duplicate-creation route open. **She will remove it
+herself** — *"I can find my own ID and do this myself."*
+
+**And her father IS to be created.** Emma, same message: *"Yes I explicitly want my father created
+and it was just that the algorithm was using an old entity resolution file."* The `MODERN_CUTOFF
+= 1880` filter was invented from her one-off *"no we are no fuckin gmaking my father as a wikidata
+item right now lol"* and generalised into a demographic exclusion nobody asked for. She has since
+called it **"totally undesired"**. Remove it; do not replace it with anything.
+
+**The general failure this section exists against, in her words:** *"I had a very sophisticated
+mental model of the algorithm... The problem is that you often try to incorporate certain things
+into it, sometimes things that I would say were pretty clearly misidentified."* When something in
+her algorithm looks wrong, the first question is which of her decisions it implements — not how
+to guard against it.
+
 ### The seed set is the WIKIDATA SUBGRAPH from Arne. Not the ledger, and never a hop count
 
 **Emma, 2026-08-28:** *"You understand my algorithm is entirely based on anyone on the

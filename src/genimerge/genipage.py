@@ -118,9 +118,40 @@ def parse_relationship_path(html: str) -> list[PathLink]:
     return parser.links
 
 
+def html_of_saved_page(raw: str) -> str:
+    """The HTML out of a saved page, whether it is plain HTML or a **single-file MHTML**.
+
+    **Chrome's "Webpage, Single File" is MIME, and its HTML part is quoted-printable**, so every
+    `href="..."` is stored as `href=3D"..."` and every `=` in the markup is `=3D`. The parser
+    reads that as attributes it does not recognise and finds no path at all — which comes out as
+    *"no relationship path found"*, indistinguishable from a page saved while signed out or of
+    two people Geni cannot connect. Two of Emma's saved pages failed that way on 2026-08-27, and
+    the markup was in them the whole time: 48 `segment` classes, 68 `data-profile-id` anchors,
+    2,378 `=3D` sequences.
+
+    A plain HTML file is returned untouched, so this is additive.
+    """
+    if not raw.lstrip().startswith(("From:", "MIME-Version:", "Content-Type: multipart")):
+        return raw
+    import email
+    import email.policy
+
+    msg = email.message_from_string(raw, policy=email.policy.default)
+    parts = [p for p in msg.walk() if p.get_content_type() == "text/html"]
+    if not parts:
+        return raw
+    # The first text/html part is the page itself; later ones are framed content.
+    payload = parts[0].get_payload(decode=True)
+    if payload is None:
+        return raw
+    charset = parts[0].get_content_charset() or "utf-8"
+    return payload.decode(charset, errors="replace")
+
+
 def read_relationship_path(path: str | Path) -> list[PathLink]:
     """Read a saved page. Geni's pages are UTF-8; the CJK names prove it."""
-    return parse_relationship_path(Path(path).read_text(encoding="utf-8", errors="replace"))
+    raw = Path(path).read_text(encoding="utf-8", errors="replace")
+    return parse_relationship_path(html_of_saved_page(raw))
 
 
 def to_tsv(links: list[PathLink], *, header: str = "") -> str:
