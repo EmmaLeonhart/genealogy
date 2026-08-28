@@ -72,11 +72,28 @@ remain.
 
 `6000000087535357291` → `Q140568870` is **Emma and is skipped**.
 
-### 4. The 100 Bureätten people — `reports/bure-to-export.tsv`
+### 4. The Bureätten people — COVERAGE of 251, not an export each
 
-Every person in sv.wikipedia Category:Bureätten who carries a Geni id **and is not in our
-corpus**. Derived 2026-08-28 from `reports/bureatten.csv` (251 with both a QID and a Geni id)
-minus everyone present in `reports/derived-labels.csv`. Run until we have all the ids.
+**Emma, 2026-08-28:** *"the bure people here we don't need to export from all of them we just
+need to get all of them in exports"*.
+
+So the target is that all 251 sv.wikipedia Category:Bureätten people carrying a Geni id end up
+**somewhere in `exports/`**, and the number of exports that takes is whatever it takes. A
+`Forest` export returns up to 5000 people and the Bureätten are one kinship network, so one
+export seeded inside it can sweep in many of them at once. Seeding all 100 absent people would
+be mostly redundant.
+
+**The loop, therefore:**
+
+1. `python scripts/bure-coverage.py` — writes `reports/bure-coverage.tsv` (all 251, with where
+   each was found) and rewrites `reports/bure-to-export.tsv` (the still-absent ones).
+2. Take an absent person, seed per `docs/export-seed-rules.md`, export `Forest`/5000.
+3. File the `.ged`, then **run the coverage script again**. Whoever the export swept in drops
+   off the list without an export of their own.
+4. Repeat until `bure-to-export.tsv` is empty.
+
+**State as of 2026-08-28: 151 of 251 held, 100 absent** — which independently reproduces the
+number the first derivation got, by a different route.
 
 They are the reason this matters: the batch resolves names through `derived-labels.csv`, so a
 Bureätten person we do not hold gets no label and cannot be linked.
