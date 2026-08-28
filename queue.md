@@ -18,11 +18,17 @@ audits, dead crons and superseded priorities. Recover any of it with
      important thing. Recovered from `git show 07600faf:queue.md`. Do not rewrite
      her text; add underneath it. -->
 
-## 0. Wording
+## 0. Aug 28, 2026 manual adds
+
+These are supposed to be manually added to the queue and worked on, do no just paraphrase during the rebase keep this part entirely intact. We are approaching usage limit for now.
+
+### Wording issues and queue crud
 
 Yeah it is a bit contradictory it seems because the specicic thing is that you were trying to preserve what I said even aftet it was completed
 
 No clue at this point if the large series of tasks I added was even preserved at all since the queue appears to habve already become complete garbage 
+
+### subject named as 
 
 But I want an additional thing: I want us to have the properyy https://www.wikidata.org/wiki/Property:P1810 with the specific name geni gives them 
 
@@ -30,6 +36,9 @@ As an addendum to this property, though, we are going to do an additional rule, 
 
 That's the thing I potentially want to do as a campaign to make Jenny readable to everybody. For now, we're sticking to this being a primary Wikidata-based project, so we just do not add a label. 
 
+### correcting "Lave"
+
+I think this person https://www.wikidata.org/wiki/Q141189080 should be corrected to "Lave Jonsen" in all languages and on geni. Just havin a first name is weird and has no rationale, they should be given the patronymic "Jonsen" too
 
 ## 1. THE MASS EXPORT CAMPAIGN — front task, RUNNING
 
