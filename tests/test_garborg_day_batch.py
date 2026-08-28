@@ -555,3 +555,46 @@ def test_every_link_to_an_existing_item_is_emitted_in_BOTH_directions():
     assert not missing, (
         "these links to an already-existing item were emitted one-way only; the reciprocal "
         f"`Q… P… LAST` is what makes the batch two-way: {missing[:6]}")
+
+
+def test_the_contiguous_group_matches_what_emma_says_is_outside_it():
+    """Her own knowledge, 2026-08-28, used as the fixture.
+
+    She listed the humans she has edited that are **not** in the contiguous group. The
+    unrestricted walk — following Wikidata relationships wherever they lead — put four of the
+    seven *inside* it, because Johannes Bureus `Q633094` sits in the 1,339,227-item world tree
+    and one edge into that swallows everything. Restricting the walk to items she has edited
+    (*"the subgraph is stored and added to with my contributions"*) reproduces her list exactly.
+
+    A test that only checked the roots were in would pass on the 1.34-million version too.
+    """
+    import importlib.util
+    import pathlib
+    root = pathlib.Path(__file__).resolve().parent.parent
+    spec = importlib.util.spec_from_file_location(
+        "_gday", root / "scripts" / "build-garborg-day.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+
+    have = mod.ledger()
+    group = mod.wikidata_subgraph(universe=set(have.values()))
+
+    inside = {"Q11959067": "Arne Olaus Fjørtoft Garborg",
+              "Q633094": "Johannes Bureus",
+              "Q141180409": "Magdalena Andersdotter"}
+    outside = {"Q140568870": "Emma Leonhart",
+               "Q12598947": "Buyeo Taebi",
+               "Q116150300": "Cecilie Ebbesdatter",
+               "Q19657284": "Buyeo Deokjang",
+               "Q116150298": "Jon Jonsen",
+               "Q141189062": "Cecilie Jonsdatter",
+               "Q141189110": "Tøre Jonsen",
+               "Q141189080": "Lave"}
+    for qid, who in inside.items():
+        assert qid in group, f"{qid} {who} must be in the contiguous group"
+    for qid, who in outside.items():
+        assert qid not in group, (
+            f"{qid} {who} is in the group and Emma says it is not — the walk has escaped her "
+            f"own items, most likely through Bureus into the world tree")
+    assert len(group) < 10_000, (
+        f"the group is {len(group):,} items; that is the world tree, not her neighbourhood")

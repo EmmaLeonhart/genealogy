@@ -387,7 +387,17 @@ def name_lines(label, plan, geni_id, father_qid, fields=None, sex="",
 #: Charlemagne, are always getting made."* Line 2 -- Bergitte down to her -- exists as a
 #: saved path and holds **16 steps, none of which had a QID** when this was written, which
 #: is the *"critical path going to me"* she doubted the last run produced. It did not.
-SPINE_PATHS = ("paths/charlemagne-to-arne-garborg.tsv", "paths/bergitte-to-emma.tsv")
+#: **Three lines, and each is stored ANCESTOR-FIRST.** Emma, 2026-08-28: *"You understand that
+#: we are supposed to be building a path from Bergitte to me, not from me to Bergitte? That is
+#: a pretty significant difference."* The spine takes the first uncreated step of each path per
+#: run, so the stored order decides which end it grows from. `bergitte-to-emma.tsv` is stored
+#: Emma-first and is therefore REVERSED here; it had been walking outward from her, which is
+#: why it took `Richard Wade Borsheim` every single run.
+SPINE_PATHS = ("paths/charlemagne-to-arne-garborg.tsv", "paths/bergitte-to-emma.tsv",
+               "paths/bureus-to-emma.tsv")
+
+#: Paths whose file runs Emma-first and must be walked from the far end.
+SPINE_REVERSED = ("paths/bergitte-to-emma.tsv",)
 SPINE_PATH = SPINE_PATHS[0]
 
 #: **Her revised caps, 2026-08-26**, after stopping a run of 50 creations partway:
@@ -519,56 +529,72 @@ from qscomment import annotate  # noqa: E402
 #: Arne Olaus Fjørtoft Garborg. The subgraph is measured from here.
 ARNE_QID = "Q11959067"
 
+#: **Johannes Bureus — the second root.** Emma, 2026-08-28: *"it is supposed to do this from
+#: Johannes Bureus and Arne Garborg, subgraphs coming from both of them."* Her line to Bureus
+#: runs through her mother's side and is captured in `paths/bureus-to-emma.tsv`; her line to
+#: Arne runs through her father's. Two roots, one subgraph — the union of what each reaches.
+BUREUS_QID = "Q633094"
+
+SUBGRAPH_ROOTS = (ARNE_QID, BUREUS_QID)
+
 #: The relationship properties that make two Wikidata items neighbours in the subgraph.
 #: P22 father, P25 mother, P26 spouse, P40 child, P3373 sibling.
 SUBGRAPH_PROPS = ("P22", "P25", "P26", "P40", "P3373")
 
 
-def wikidata_subgraph(start=ARNE_QID):
-    """Every QID connected to Arne by relationship statements ON WIKIDATA.
+def wikidata_subgraph(roots=SUBGRAPH_ROOTS, universe=None):
+    """The connected group reachable from Arne and Bureus **through items Emma has edited**.
 
-    **This is the algorithm, in Emma's words, 2026-08-28:** *"my algorithm is entirely based
-    on anyone on the continuous subgraph currently on wikidata from Arne... no counting hops
-    it literally should do a billion hops under the constraints if that's possible"*, and
-    *"the spine people shouldn't play a role because they aren't part of the subgraph. The
-    subgraph is stored and added to with my contributions."*
+    **Emma, 2026-08-28:** *"my algorithm is entirely based on anyone on the continuous subgraph
+    currently on wikidata from Arne"*, then *"it is supposed to do this from Johannes Bureus and
+    Arne Garborg, subgraphs coming from both of them"*, and — the sentence that decides the
+    shape — *"The subgraph is stored and added to with my contributions."*
 
-    So the seed set is a **connected component**, not a ledger and not a radius. A person
-    seeds a ring when Wikidata already links them to Arne through some chain of `P22`/`P25`/
-    `P26`/`P40`/`P3373`, however long. Distance never enters it.
+    **The walk is restricted to her own items.** Unrestricted it is not a neighbourhood: Bureus
+    `Q633094` sits in Wikidata's 1,339,227-item genealogical component, so following every
+    `P22`/`P25`/`P26`/`P40`/`P3373` from him reaches **1.34 million** people and the ring becomes
+    the whole world tree. She listed the humans she has edited that are *outside* the contiguous
+    group — Buyeo Taebi `Q12598947`, Cecilie Ebbesdatter `Q116150300`, Buyeo Deokjang
+    `Q19657284`, Jon Jonsen `Q116150298`, Cecilie Jonsdatter `Q141189062`, Tøre Jonsen
+    `Q141189110`, Lave `Q141189080` — and the unrestricted walk puts four of those seven *inside*
+    it, which is how the mistake was caught.
 
-    **This is what makes the spine self-limiting without a special case.** A medieval couple
-    the spine just created has no path to Arne on Wikidata yet, so it is not in the subgraph
-    and grows no ring. The same is true of the Izumo and Kitajima items — they are hers, they
-    are in the ledger, and nothing on Wikidata connects them to Arne. The ledger answers *does
-    this person have an item*; the subgraph answers *may the ring grow from them*. Conflating
-    the two is what put a 7th-century Baekje royal and `Saburou Kitashima` in a Garborg batch.
+    So `universe` is the ledger: her items, plus the two roots. An edge counts only when both
+    ends are hers. That is what makes the group grow *with her contributions* rather than
+    swallow Wikidata the moment one of her items touches the world tree.
 
-    Two sources, because neither is current alone: the bulk `relations.tsv`, which predates
-    most of her edits, and `garborg-live-values.tsv`, which is refreshed per run and holds
-    what her own items state today.
+    Two edge sources, because neither is current alone: the bulk `out/wikidata/relations.tsv`,
+    which predates most of her edits, and `reports/garborg-live-values.tsv`, refreshed each run.
     """
+    universe = set(universe or ()) | set(roots)
     adj = collections.defaultdict(set)
+
+    def link(a, b):
+        if a in universe and b in universe:
+            adj[a].add(b)
+            adj[b].add(a)
+
     rel = ROOT / "out" / "wikidata" / "relations.tsv"
     if rel.exists():
         with open(rel, encoding="utf-8") as fh:
             for row in csv.DictReader(fh, delimiter="	"):
                 q = row["qid"]
+                if q not in universe:
+                    continue
                 for col in ("p22", "p25", "p40", "p26"):
                     for v in (row.get(col) or "").split("|"):
                         v = v.strip()
                         if v.startswith("Q"):
-                            adj[q].add(v)
-                            adj[v].add(q)
+                            link(q, v)
     live = ROOT / "reports" / "garborg-live-values.tsv"
     if live.exists():
         with open(live, encoding="utf-8") as fh:
             for row in csv.DictReader(fh, delimiter="	"):
                 if row["property"] in SUBGRAPH_PROPS and row["value"].startswith("Q"):
-                    adj[row["qid"]].add(row["value"])
-                    adj[row["value"]].add(row["qid"])
+                    link(row["qid"], row["value"])
 
-    seen, stack = {start}, [start]
+    seen = set(roots)
+    stack = list(seen)
     while stack:
         for other in adj[stack.pop()]:
             if other not in seen:
@@ -577,51 +603,10 @@ def wikidata_subgraph(start=ARNE_QID):
     return seen
 
 
-def spine_created():
-    """Every Geni id that sits on a spine path — these never seed a ring of their own.
-
-    **The defect this closes.** Emma's spine rule is right and stays: the ancestral couples
-    from Arne through Bergitte to Charlemagne are made every run, outside the caps. But each
-    one then entered the ledger, and the next run drew on it like any other seed and grew a
-    ring around it. After several days the ball had lobes at the far end of a 34-step medieval
-    path, and a batch of 36 held a 7th-century Baekje royal, Carolingian Friuli and
-    20th-century Iowa alongside Rogaland farmers. Emma: *"there are tons of completely random
-    people that were created."*
-
-    They stay in `have`, so nothing re-creates them. They are simply not somewhere the ring
-    grows from. The spine advances along the path, one step per path per run, which is what she
-    asked for and all she asked for.
-    """
-    ids = set()
-    for steps in spine_steps().values():
-        ids.update(gid for _label, gid, _name in steps)
-    return ids
-
-
-def spine_steps():
-    """`{path: [(label, geni_id, name)]}` -- BOTH spine paths, kept apart.
-
-    **Kept apart deliberately.** Concatenating them and taking the first uncreated step
-    advances only whichever path is listed first, so `bergitte-to-emma` never moved and the
-    *"critical path going to me"* stayed at zero of sixteen. One step per path per run.
-    """
-    out = {}
-    for rel in SPINE_PATHS:
-        path = ROOT / rel
-        if not path.exists():
-            continue
-        rows = [l.rstrip(chr(10)).split(chr(9)) for l in
-                open(path, encoding="utf-8") if not l.startswith("#") and l.strip()]
-        header = rows[0]
-        steps = []
-        for r in rows[1:]:
-            d = dict(zip(header, r))
-            gid = re.sub(r"\D", "", d.get("note", "") or "")
-            if gid:
-                steps.append((f"{Path(rel).stem} step {d.get('step')}", gid,
-                              d.get("name", "")))
-        out[rel] = steps
-    return out
+def _strip_markers(label):
+    """`labels.strip_markers`, imported lazily — `scripts/` is on the path only at runtime."""
+    from labels import strip_markers
+    return strip_markers(label)
 
 
 def spine_created():
@@ -667,7 +652,7 @@ def spine_steps():
             if gid:
                 steps.append((f"{Path(rel).stem} step {d.get('step')}", gid,
                               d.get("name", "")))
-        out[rel] = steps
+        out[rel] = list(reversed(steps)) if rel in SPINE_REVERSED else steps
     return out
 
 
@@ -1046,14 +1031,14 @@ def main():
         # and Kitajima work; not a hop radius, which was my invention and cut a batch to 7.
         # A person seeds a ring when Wikidata already connects them to Arne by any chain of
         # relationship statements, however long.
-        subgraph = wikidata_subgraph()
+        subgraph = wikidata_subgraph(universe=set(have.values()))
         seeds = {g for g, q in have.items() if q in subgraph}
-        print(f"Wikidata subgraph from Arne ({ARNE_QID}): {len(subgraph):,} items; "
-              f"{len(seeds)} of {len(have)} ledger people are in it and may seed a ring")
+        print(f"contiguous group from Arne {ARNE_QID} and Bureus {BUREUS_QID}, through her own "
+              f"items: {len(subgraph)} items; {len(seeds)} of {len(have)} ledger people seed")
         if not seeds:
-            sys.exit(f"no ledger person is in the subgraph reachable from {ARNE_QID} — that "
-                     f"is a broken join over relations.tsv/garborg-live-values.tsv, not an "
-                     f"unconnected Arne")
+            sys.exit(f"no ledger person is in the group reachable from {ARNE_QID}/{BUREUS_QID} "
+                     f"— that is a broken join over relations.tsv/garborg-live-values.tsv, not "
+                     f"an unconnected Arne")
         picked, why = compose(have, fam_rows, rng, seeds=seeds)
         print("\ncomposition, per docs/batch-rules.md:")
         for line in why:
@@ -1121,10 +1106,20 @@ def main():
                 # `CLAUDE.md` § *Do not confuse redacted with unnamed* is exactly this
                 # distinction: the test is never "is the label bad", it is "is there
                 # anything real underneath it".
-                labels[row["geni_id"]] = (
+                raw_label = (
                     row["label_en"] or row["label_mul"]
                     or (row.get("cjk_names") or "").split(" | ")[0].strip()
                     or (row.get("other_script_names") or "").split(" | ")[0].strip())
+                # **An unknown-name marker never becomes part of a name.** Geni records
+                # `Sara /NN/` — given name Sara, surname field the marker `NN`, meaning the
+                # surname is unknown — and `display_name` concatenates the fields, so the label
+                # reached this batch as `Sara NN` and would have been written to Wikidata as
+                # what she is called. `NN` is a statement that a name is missing.
+                #
+                # Only stripped when a real name survives. A label that is nothing but markers
+                # is left exactly as it is, so the NN treatment below still fires and
+                # § *`NN` is PRESERVED in `mul`* holds.
+                labels[row["geni_id"]] = _strip_markers(raw_label) or raw_label
 
     # **The GEDCOM name FIELDS, which is where name objects come from.** Emma,
     # 2026-08-24: *"I thought we were resolving name objects but now we're determining

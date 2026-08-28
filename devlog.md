@@ -16320,3 +16320,52 @@ all *name* items — `Tunheim`, `Bergersen`, `Ronneberg` — which correctly hav
 `CLAUDE.md` gains § *The seed set is the WIKIDATA SUBGRAPH from Arne* and § *The ledger refresh
 is PART OF THE RUN*. Both were decided today and lived only in a docstring, which is where the
 last architecture drifted from.
+
+## 2026-08-28 — two roots, her own items as the universe, and all three lines walking downward
+
+Three corrections from Emma, each of which changed the shape rather than a value.
+
+**Two roots.** *"it is supposed to do this from Johannes Bureus and Arne Garborg, subgraphs
+coming from both of them."* `SUBGRAPH_ROOTS = (Q11959067, Q633094)`.
+
+**The walk stays inside her own items, and this is the one that was nearly missed.**
+Unrestricted, adding Bureus took the group from 97 items to **1,339,336** — he sits in
+Wikidata's world tree, so a single edge into it swallows all of genealogy and the "ring" becomes
+everything. The sentence that settles it was in her message the whole time: *"The subgraph is
+stored and added to with my contributions."* Restricted to the ledger, the group is **104
+items**.
+
+**Her own knowledge caught the error and is now the test.** She listed the humans she has edited
+that are *not* in the contiguous group — Buyeo Taebi `Q12598947`, Cecilie Ebbesdatter
+`Q116150300`, Buyeo Deokjang `Q19657284`, Jon Jonsen `Q116150298`, Cecilie Jonsdatter
+`Q141189062`, Tøre Jonsen `Q141189110`, Lave `Q141189080`. The unrestricted walk put **four of
+those seven inside** it. The restricted walk reproduces her list exactly, and
+`test_the_contiguous_group_matches_what_emma_says_is_outside_it` pins both directions plus a
+ceiling, because a test that only checked the roots were in would have passed on the 1.34-million
+version too.
+
+**Direction.** *"You understand that we are supposed to be building a path from Bergitte to me,
+not from me to Bergitte? That is a pretty significant difference."* The spine takes the first
+uncreated step, so the file's stored order decides which end it grows from.
+`paths/bergitte-to-emma.tsv` is stored Emma-first and had been taking **Richard Wade Borsheim
+every single run** — zero of sixteen steps in weeks. Reversed via `SPINE_REVERSED`, it now takes
+**step 15, Sissel Jonsdatter Talje**, coming down from Bergitte.
+
+**`paths/bureus-to-emma.tsv` is new**, 16 steps, dictated by her and checked step by step against
+`reports/derived-family.csv` before being written: every name she gave matched the person our
+tree reaches by the relation she named, with two shorter forms (`Per Persson Hagman` is `Per
+Persson`, `Christina` is `Christina, Sofia Carlsdotter`). Johannes Bureus is
+`6000000004334763223` *Johannes Tomasson*; Magdalena Andersdotter Bure is `6000000006127859575`.
+Her note that it needs no ancient half: *"As Bureus does not have a well known ancient ancestry
+just directly working this one step by step from him to me is okay."*
+
+**Also fixed, and deferred for the rest:** `Sara /NN/` — given name Sara, surname field the
+marker `NN` — was being written as the label `Sara NN`. `labels.strip_markers()` drops marker
+tokens when a real name survives and leaves an all-marker label alone so § *`NN` is PRESERVED in
+`mul`* still holds. The residue, and what the right model is for a known given name with an
+unknown surname, is deferred to a 21:00 census at her instruction.
+
+**Batch: 41 creations, 196 links.** The exclusion list is down to 3 lines from 7 and should
+reach zero once the Emma-ward walk is dealt with properly.
+
+**1,399 passed, 25 skipped, 0 failed** in 6m01s.

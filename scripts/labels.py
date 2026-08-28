@@ -475,3 +475,28 @@ def transliterate_token(token, table):
         letter = token.rstrip(".")
         return letter, letter
     return None, None
+
+
+def strip_markers(label: str) -> str:
+    """Drop unknown-name markers from a label that still has a real name in it.
+
+    **`Sara /NN/` is the case.** Geni records her given name as *Sara* and her surname as the
+    marker `NN` — *nomen nescio*, the genealogist saying the surname is unknown. `display_name`
+    concatenates the fields, so the label reached a batch as **`Sara NN`** and would have been
+    written to Wikidata as her name. `NN` is a statement that a name is missing; it is not part
+    of anybody's name.
+
+    **Only when something real survives.** A person whose whole label is a marker keeps it:
+    that is § *`NN` is PRESERVED in `mul`* and the NN algorithm adds descriptive labels in the
+    other languages. Emptying those was ruled out explicitly — *"I didn't tell you to avoid the
+    NN people."* So this returns `''` for a label that is nothing but markers, and the caller
+    then does the NN treatment rather than substituting a bare surname.
+
+    Case-folded against the same vocabulary the rest of this module uses, so a marker added
+    there is handled here with no second list to keep in step.
+    """
+    tokens = (label or "").split()
+    kept = [tok for tok in tokens
+            if tok.casefold().strip(".,") not in (NARROW_MARKERS | WORDS_MEANING_UNKNOWN)]
+    return " ".join(kept) if kept and len(kept) != len(tokens) else (
+        "" if tokens and not kept else label)
