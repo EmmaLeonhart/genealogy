@@ -192,6 +192,40 @@ to anything the batch does, and its `geni_ids` column may itself derive from `p2
 works from 209 hand-verified ones is a change of kind, and the zipper's own reliability report
 puts `child`+`solo` disagreement at **14.9%**. Decide deliberately.
 
+## DECIDED 2026-08-27 — the implementation order, and four rulings
+
+**Her order, given as a numbered list:**
+
+1. **Remove `MODERN_CUTOFF`** — the 1880 birth filter, dead under `--compose` and ruled
+   *"totally undesired"*.
+2. **The renames** — `have` → `our_items`, `linked` → `any_wikidata_item`, `subgraph` →
+   `our_wikidata_subgraph`, `seeds` → `ring_seeds`, `frontier` → `to_create`, and *"our Geni
+   tree"* → `synoptic_tree` in prose. Pure renaming, no behaviour change.
+3. **`P2600` on link** — when the algorithm links to a person who already has an item, write
+   their `P2600` *Geni.com profile ID* too.
+4. **Rebuild the ledger** from contributions + Bureätten, deleting anything else.
+
+**The synoptic correspondence: ALL of it, from Monday 2026-09-07.** Not just the corroborated
+subset. Her reasoning, and it corrects something I had wrong: *"I think you're misunderstanding
+the degree that this is self-limiting. Because in its current form, it runs in a highly
+observable structure. Its current form runs on highly observable branches that only go one
+person in."* The ring only ever reaches one person past a seed, and every batch is read before it
+is run, so a wrong pairing surfaces as one visible bad creation rather than propagating. She set
+the date deliberately — *"the Monday after next Monday would be the first day that it actually
+triggers like this"* — to give about a week of the current shape first.
+
+**The partial-NN sweep: a correction batch appended to the daily QuickStatements, exactly like
+`SPINE_P2600_BLOCK`.** Her words: *"the correction batch is going to be something that is a part
+of our quick statements that we generate and append at the end of the daily quick statements. No
+complexity of stuff. It is appended at the end of the daily quick statements in the exact same
+way that the QID entity resolution is."* Same mechanism, same reasoning: it repeats, duplicates
+merge away, and it is deleted when done. **Not** a separate script, not conditional, not
+generated per-run.
+
+**Abbreviations expand EVERYWHERE a name is emitted** — `mul`, `en`, aliases, and the `P734`
+*family name* / `P5056` *patronym or matronym* items. `Rasmusdtr.` → `Rasmusdatter` with no
+exceptions.
+
 ## Stuff here (semi-confusing) 8-27
 
 Okay so idk what is going on since a lot of contradictory thins are happening. idk if the section below is the next step and the queue is not in use or if it is awkwardly set up

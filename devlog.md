@@ -16601,3 +16601,31 @@ name field and a real name in the other.
 
 **1,418 passed, 26 skipped, 0 failed.** The two failures carried at the back of the queue are both
 gone — the ledger/batch overlap resolved itself once the ledger was regenerated from Wikidata.
+
+## 2026-08-27 — steps 1 and 2 of her order: the 1880 cutoff is gone, and the names are unambiguous
+
+**Emma gave the implementation order as a numbered list**, and these are the first two.
+
+**`MODERN_CUTOFF = 1880` deleted, twenty-one lines.** It came from one objection to one person on
+2026-08-25 — *"no we are no fuckin gmaking my father as a wikidata item right now lol"* —
+generalised into a demographic exclusion, and it was dead under `--compose` for its entire life:
+it filtered a ring that `compose()` then replaced wholesale, while printing "112 dropped, never
+created" about people who were never candidates. Her ruling: **"totally undesired"**, and *"Yes I
+explicitly want my father created."* A comment stands where it was saying not to reintroduce it.
+
+**Proof it was inert: the batch is byte-identical after removal.** 26 creations before, 26 after.
+The only visible change is the unrestricted-ring figure, 594 → 706, which is the 112 returning to
+the candidate pool.
+
+**The renames, by tokenizer so only identifiers moved and no prose was touched** — 97
+occurrences: `have` → `our_items`, `linked` → `any_wikidata_item`, `subgraph` →
+`our_wikidata_subgraph`, `seeds` → `ring_seeds`, `frontier` → `to_create`. Her complaint was
+specific and right: *"'have in our Geni tree' and 'have'. These are very critical things that
+likely need very unambiguous names, but they are very confusing right now."* `have` and `linked`
+both meant "has a Wikidata item" and only the name distinguished *ours* from *all of Wikidata*.
+The batch is byte-identical after this too.
+
+**1,418 passed, 26 skipped, 0 failed.**
+
+Still to come, in her order: `P2600` written when the algorithm links to an existing item, then
+the ledger rebuilt from contributions + Bureätten.

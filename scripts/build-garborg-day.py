@@ -731,7 +731,7 @@ def spine_steps():
     return out
 
 
-def compose(have, fam, rng, seeds=None):
+def compose(our_items, fam, rng, ring_seeds=None):
     """`{geni_id: why}` -- the people this run creates, per `docs/daily-algorithm.md`.
 
     **Emma's revised algorithm, 2026-08-26**, written after she stopped a run of 50
@@ -761,7 +761,7 @@ def compose(have, fam, rng, seeds=None):
     `have` is the ball: every Geni id we can already point at a Wikidata item.
     `fam` is `reports/derived-family.csv` keyed by Geni id.
     """
-    seeds = have if seeds is None else seeds
+    ring_seeds = our_items if ring_seeds is None else ring_seeds
 
     def kin(g, col):
         # The strip is load-bearing: `derived-family.csv` separates with ` | `, and
@@ -772,7 +772,7 @@ def compose(have, fam, rng, seeds=None):
     picked, why = {}, []
 
     def take(gid, reason):
-        if gid and gid not in have and gid not in picked:
+        if gid and gid not in our_items and gid not in picked:
             picked[gid] = reason
             return True
         return False
@@ -795,20 +795,20 @@ def compose(have, fam, rng, seeds=None):
 
     # --- 2 & 3. ten children, or a spouse where the marriage is childless --------
     # The seed pool, not the whole ledger: spine steps are excluded upstream.
-    pool = sorted(seeds)
+    pool = sorted(ring_seeds)
     rng.shuffle(pool)
     kids = spouses_instead = 0
     for g in pool:
         if kids + spouses_instead >= CHILDREN_PER_RUN:
             break
-        new_kids = [k for k in kin(g, "children") if k not in have and k not in picked]
+        new_kids = [k for k in kin(g, "children") if k not in our_items and k not in picked]
         if new_kids:
             # ONE child, not all of them. This is the change.
             if take(rng.choice(new_kids), f"child of {g}"):
                 kids += 1
             continue
         new_spouses = [x for x in kin(g, "spouses")
-                       if x not in have and x not in picked]
+                       if x not in our_items and x not in picked]
         if new_spouses and take(rng.choice(new_spouses), f"spouse of childless couple {g}"):
             spouses_instead += 1
     why.append(f"2. {kids}/{CHILDREN_PER_RUN} children, one per person")
@@ -822,7 +822,7 @@ def compose(have, fam, rng, seeds=None):
         if parents >= PARENTS_PER_RUN:
             break
         missing = [p for p in kin(g, "father") + kin(g, "mother")
-                   if p not in have and p not in picked]
+                   if p not in our_items and p not in picked]
         if missing and take(rng.choice(missing), f"parent of {g}"):
             parents += 1
     why.append(f"4. {parents}/{PARENTS_PER_RUN} parents, one per person")
@@ -836,12 +836,12 @@ def compose(have, fam, rng, seeds=None):
     eligible = []
     # Bounded the same way: a half-attached person 40 hops out is still a real wart,
     # but repairing it is not what 'one hop a day from Arne' means.
-    for g in sorted(set(seeds) | set(picked)):
+    for g in sorted(set(ring_seeds) | set(picked)):
         father, mother = kin(g, "father"), kin(g, "mother")
         if not father or not mother:
             continue
-        known = [x for x in father + mother if x in have or x in picked]
-        absent = [x for x in father + mother if x not in have and x not in picked]
+        known = [x for x in father + mother if x in our_items or x in picked]
+        absent = [x for x in father + mother if x not in our_items and x not in picked]
         if known and absent:
             eligible.append((g, absent[0]))
     budget = free_parent_budget(len(eligible))
@@ -961,7 +961,7 @@ def main():
         print((r.stdout or "").strip().splitlines()[-1] if r.stdout.strip() else
               "ledger refreshed")
 
-    have = ledger()
+    our_items = ledger()
 
     # **`linked` is every Geni id Wikidata already carries a `P2600` for. `have` is not.**
     #
@@ -979,14 +979,14 @@ def main():
     # do a fuckin glive P2600 check"* -- and it costs nothing, because the file is on disk. It
     # is a floor, not the whole answer: the map predates every item she has made, which is why
     # `scripts/refresh-garborg-ledger.py` reads her contributions separately.
-    linked = {}
+    any_wikidata_item = {}
     p2600_all = ROOT / "out" / "wikidata" / "p2600-all.tsv"
     if p2600_all.exists():
         with open(p2600_all, encoding="utf-8") as f:
             for row in csv.reader(f, delimiter="\t"):
                 if len(row) >= 2 and row[0].startswith("Q") and row[1].strip().isdigit():
-                    linked.setdefault(row[1].strip(), row[0])
-        print(f"{len(linked):,} Geni ids already carry a P2600 somewhere on Wikidata")
+                    any_wikidata_item.setdefault(row[1].strip(), row[0])
+        print(f"{len(any_wikidata_item):,} Geni ids already carry a P2600 somewhere on Wikidata")
     else:
         print("WARNING: out/wikidata/p2600-all.tsv missing - a person whose item nobody here "
               "made is invisible and could be created twice")
@@ -1004,17 +1004,17 @@ def main():
                 # population most carefully checked against it.
                 g = (row.get("geni_id") or "").strip()
                 q = (row.get("qid") or row.get("candidate_qid") or "").strip()
-                if g.isdigit() and q.startswith("Q") and g not in have:
-                    have[g] = q
+                if g.isdigit() and q.startswith("Q") and g not in our_items:
+                    our_items[g] = q
                     n += 1
         print(f"{n} already-existing items read from {path}")
     table = translit()
     plan = load_plan()
     fam_p, fam_c, fams, famc = read_tree()
-    print(f"{len(have)} people already carry a QID; {len(table)} tokens transliterated")
+    print(f"{len(our_items)} people already carry a QID; {len(table)} tokens transliterated")
 
     # Everyone one edge away from somebody who has a QID.
-    frontier = {}
+    to_create = {}
     if args.roster_is_frontier:
         # **The roster IS the frontier.** `--roster` alone cannot build the spine: it FILTERS
         # the one-edge ring, and steps 4-22 sit many edges away from anybody holding a QID --
@@ -1028,39 +1028,25 @@ def main():
         for path in args.roster:
             text = Path(path).read_text(encoding="utf-8")
             for gid in re.findall(r"(?:geni:)?(\d{10,})", text):
-                if gid not in have:
-                    frontier.setdefault(gid, "")
-        print(f"--roster-is-frontier: {len(frontier)} people taken straight from "
+                if gid not in our_items:
+                    to_create.setdefault(gid, "")
+        print(f"--roster-is-frontier: {len(to_create)} people taken straight from "
               f"{len(args.roster)} roster file(s), not from the one-edge ring")
     else:
-        for person in have:
+        for person in our_items:
             for fam in fams.get(person, []) + famc.get(person, []):
                 for other in set(fam_p.get(fam, [])) | set(fam_c.get(fam, [])):
-                    if other not in have:
-                        frontier.setdefault(other, fam)
-        print(f"{len(frontier)} people one edge away and not yet on Wikidata")
+                    if other not in our_items:
+                        to_create.setdefault(other, fam)
+        print(f"{len(to_create)} people one edge away and not yet on Wikidata")
 
-    # **Emma's own recent family is never created.** Emma, 2026-08-25, looking at a batch:
-    # *"no we are no fuckin gmaking my father as a wikidata item right now lol"*. Her father
-    # Richard Wade Borsheim (b.1963) sits at step 2 of the Arne path, so any roster built
-    # from that path reaches him, and living people are not this programme's business.
-    #
-    # Five people on that path are 1880 or later: Emma herself (1996), her father (1963),
-    # her grandfather Randolph (1926), Reinhert Borsheim (1891) and Selma Pedersdtr.
-    # Borsheim (1890). The cut is at **1880** rather than at a name list, so a path that
-    # reaches a different modern relative is caught too. "Right now" is hers to lift.
-    MODERN_CUTOFF = 1880
-    modern = set()
-    with open(ROOT / "reports" / "derived-facts.csv", encoding="utf-8") as f:
-        for row in csv.DictReader(f):
-            b = (row.get("birth_date_year") or "").strip()
-            if b.lstrip("-").isdigit() and int(b) >= MODERN_CUTOFF:
-                modern.add(row["geni_id"])
-    before = len(frontier)
-    frontier = {g: fam for g, fam in frontier.items() if g not in modern}
-    if before != len(frontier):
-        print(f"born {MODERN_CUTOFF} or later: {before - len(frontier)} dropped, "
-              f"never created")
+    # **There is no birth-year filter, deliberately.** `MODERN_CUTOFF = 1880` lived here
+    # from 2026-08-25 to 2026-08-27. It came from one objection to one person -- *"no we
+    # are no fuckin gmaking my father as a wikidata item right now lol"* -- generalised
+    # into a demographic exclusion nobody asked for, and it was dead code under
+    # `--compose` the whole time, filtering a ring that `compose()` then replaced while
+    # printing a reassuring "112 dropped". Emma, 2026-08-27: **"totally undesired"**, and
+    # *"Yes I explicitly want my father created"*. Do not reintroduce it in any form.
 
     if args.roster:
         # **Find the ids by pattern, not by parsing the file's shape.** Two attempts
@@ -1086,10 +1072,10 @@ def main():
             for person in wanted:
                 for fam in fams.get(person, []):
                     near |= set(fam_p.get(fam, []))
-        before = len(frontier)
-        frontier = {g: f for g, f in frontier.items() if g in near}
+        before = len(to_create)
+        to_create = {g: f for g, f in to_create.items() if g in near}
         print(f"roster: {len(wanted)} ids from {len(args.roster)} file(s); "
-              f"ring cut {before} -> {len(frontier)} (roster members and their in-laws)")
+              f"ring cut {before} -> {len(to_create)} (roster members and their in-laws)")
 
     # ---- THE COMPOSITION replaces the ring entirely, when asked for -------------
     if args.compose:
@@ -1106,22 +1092,22 @@ def main():
         # and Kitajima work; not a hop radius, which was my invention and cut a batch to 7.
         # A person seeds a ring when Wikidata already connects them to Arne by any chain of
         # relationship statements, however long.
-        subgraph = wikidata_subgraph(universe=set(have.values()))
-        seeds = {g for g, q in have.items() if q in subgraph}
+        our_wikidata_subgraph = wikidata_subgraph(universe=set(our_items.values()))
+        ring_seeds = {g for g, q in our_items.items() if q in our_wikidata_subgraph}
         print(f"contiguous group from Arne {ARNE_QID} and Bureus {BUREUS_QID}, through her own "
-              f"items: {len(subgraph)} items; {len(seeds)} of {len(have)} ledger people seed")
-        if not seeds:
+              f"items: {len(our_wikidata_subgraph)} items; {len(ring_seeds)} of {len(our_items)} ledger people seed")
+        if not ring_seeds:
             sys.exit(f"no ledger person is in the group reachable from {ARNE_QID}/{BUREUS_QID} "
                      f"— that is a broken join over relations.tsv/garborg-live-values.tsv, not "
                      f"an unconnected Arne")
-        picked, why = compose(have, fam_rows, rng, seeds=seeds)
+        picked, why = compose(our_items, fam_rows, rng, ring_seeds=ring_seeds)
         print("\ncomposition, per docs/batch-rules.md:")
         for line in why:
             print("   " + line)
-        before = len(frontier)
-        frontier = {g: frontier.get(g, "") for g in picked}
+        before = len(to_create)
+        to_create = {g: to_create.get(g, "") for g in picked}
         compose_why = picked
-        print(f"composed batch: {len(frontier)} people to create "
+        print(f"composed batch: {len(to_create)} people to create "
               f"(the unrestricted ring would have been {before})")
     else:
         compose_why = {}
@@ -1140,10 +1126,10 @@ def main():
     carried = []
 
     # Anyone Wikidata already links is never created, whatever the batch shape asked for.
-    dup = [g for g in frontier if g in linked and g not in have]
+    dup = [g for g in to_create if g in any_wikidata_item and g not in our_items]
     for g in dup:
-        frontier.pop(g, None)
-        carried.append((g, "", f"Wikidata already links this profile as {linked[g]} "
+        to_create.pop(g, None)
+        carried.append((g, "", f"Wikidata already links this profile as {any_wikidata_item[g]} "
                                f"(out/wikidata/p2600-all.tsv) - creating it would duplicate"))
     if dup:
         print(f"{len(dup)} dropped: Wikidata already carries a P2600 for them")
@@ -1153,14 +1139,14 @@ def main():
         already |= set(re.findall('P2600\\t"(\\d+)"',
                                   Path(path).read_text(encoding="utf-8")))
     if already:
-        drop = [g for g in frontier if g in already]
+        drop = [g for g in to_create if g in already]
         for g in drop:
-            frontier.pop(g, None)
+            to_create.pop(g, None)
         print(f"--exclude: {len(already)} created by an earlier batch today, "
               f"{len(drop)} of them dropped from this one")
 
 
-    ids = set(frontier) | set(have)
+    ids = set(to_create) | set(our_items)
     facts, labels = {}, {}
     with open(ROOT / "reports" / "derived-facts.csv", encoding="utf-8") as f:
         for row in csv.DictReader(f):
@@ -1273,15 +1259,15 @@ def main():
     else:
         print("WARNING: out/wikidata/relations.tsv missing - duplicate guard is OFF")
 
-    claimed = set(have.values())
+    claimed = set(our_items.values())
     blocked = {}
-    for g in list(frontier):
+    for g in list(to_create):
         if g in RELEASED_FROM_DUPLICATE_GUARD:
             print(f"   released from the duplicate guard: {labels.get(g, g)} -- "
                   f"{RELEASED_FROM_DUPLICATE_GUARD[g]}")
             continue
         for parent in (father.get(g), mother.get(g)):
-            pq = have.get(parent) if parent else None
+            pq = our_items.get(parent) if parent else None
             if not pq:
                 continue
             loose = [k for k in kids_of.get(pq, []) if k not in claimed]
@@ -1293,7 +1279,7 @@ def main():
             carried.append((g, labels.get(g, ""),
                             f"HELD by the duplicate guard: parent {pq} has unmatched child "
                             f"item(s) {';'.join(loose[:4])} - this person may already be one"))
-            frontier.pop(g, None)
+            to_create.pop(g, None)
         print(f"duplicate guard held {len(blocked)} people whose parent has an "
               f"unmatched child item on Wikidata")
 
@@ -1301,11 +1287,11 @@ def main():
     # is about to drop: asking for 10 named people returned 7, because 3 of the 10 closest
     # were redacted and were removed afterwards.
     if args.skip_nn:
-        dropped = [g for g in frontier
+        dropped = [g for g in to_create
                    if (labels.get(g, "").strip().lower().startswith(("nn", "private", "<private"))
                        or not labels.get(g, "").strip())]
         for g in dropped:
-            frontier.pop(g, None)
+            to_create.pop(g, None)
             carried.append((g, labels.get(g, ""), "redacted: skipped by --skip-nn for this run"))
         if dropped:
             print(f"--skip-nn: {len(dropped)} redacted people held for a later run")
@@ -1326,15 +1312,15 @@ def main():
                     dist[y] = dist[x] + 1
                     nxt.append(y)
         seen_d = nxt
-    ring_order = sorted(frontier, key=lambda g: (dist.get(g, 10**6), labels.get(g, "")))
+    ring_order = sorted(to_create, key=lambda g: (dist.get(g, 10**6), labels.get(g, "")))
     if args.limit:
         keep = set(ring_order[:args.limit])
-        for g in list(frontier):
+        for g in list(to_create):
             if g not in keep:
                 carried.append((g, labels.get(g, ""),
                                 f"beyond --limit {args.limit}; "
                                 f"{dist.get(g, '?')} steps from Arne"))
-                frontier.pop(g, None)
+                to_create.pop(g, None)
         ring_order = [g for g in ring_order if g in keep]
         print(f"--limit {args.limit}: keeping the {len(ring_order)} closest to Arne "
               f"({dist.get(ring_order[0], '?')}-{dist.get(ring_order[-1], '?')} steps)")
@@ -1349,7 +1335,7 @@ def main():
     # asked whether it was missing a date, a name statement or a label -- which is a
     # large part of what "not remotely comprehensive" meant. `Q467497` Arne Garborg
     # had no `P22` father and no `P25` mother while both his parents had QIDs.
-    state = existing_state(set(have.values()))
+    state = existing_state(set(our_items.values()))
     # A live read beats both the store and the guess. `reports/garborg-live-state.tsv`
     # records what each item held on 2026-08-24; the store predates most of them and
     # the fallback below assumes our own batch made them, which is wrong wherever Emma
@@ -1404,25 +1390,25 @@ def main():
         known = state.get(q)
         return prop not in known[1] if known else True
 
-    for g, q in sorted(have.items()):
+    for g, q in sorted(our_items.items()):
         for prop, target in (("P22", father.get(g)), ("P25", mother.get(g))):
-            if target and target in have and absent(q, prop):
-                add(q, prop, have[target], g)
+            if target and target in our_items and absent(q, prop):
+                add(q, prop, our_items[target], g)
         for kid in sorted(children.get(g, ())):
-            if kid in have:
-                add(q, "P40", have[kid], g)
+            if kid in our_items:
+                add(q, "P40", our_items[kid], g)
         for sib in sorted(siblings.get(g, ())):
-            if sib in have:
+            if sib in our_items:
                 if sibling_budget_left() <= 0:
                     carried.append((g, labels.get(g, ""),
-                                    f"P3373 sibling {have[sib]} held: over the "
+                                    f"P3373 sibling {our_items[sib]} held: over the "
                                     f"{SIBLING_CAP}-a-day cap"))
                     continue
-                _siblings_emitted.append((q, have[sib]))
-                add(q, "P3373", have[sib], g)
+                _siblings_emitted.append((q, our_items[sib]))
+                add(q, "P3373", our_items[sib], g)
         for sp in sorted(spouses.get(g, ())):
-            if sp in have:
-                add(q, "P26", have[sp], g)
+            if sp in our_items:
+                add(q, "P26", our_items[sp], g)
 
         # Name statements, but never onto an item that already states one: `Q467497`
         # carries `P735` Arne, and our label reads the parenthesised `(Arne)` as a
@@ -1433,7 +1419,7 @@ def main():
             # The father's NAME, not just his QID: Emma's test reads his given name and
             # his own patronymic to decide whether this token is inherited or derived.
             for line in name_lines(labels.get(g, ""), plan, g,
-                                   have.get(dad) if dad else None,
+                                   our_items.get(dad) if dad else None,
                                    father_name=labels.get(dad, "") if dad else "")[0]:
                 lines.append(line.replace("LAST\t", f"{q}\t", 1))
 
@@ -1457,7 +1443,7 @@ def main():
               "#    QIDs -- two items minted in one batch cannot point at each other.",
               ""]
     created = 0
-    for g in sorted(frontier, key=lambda x: labels.get(x, "")):
+    for g in sorted(to_create, key=lambda x: labels.get(x, "")):
         f, label = facts.get(g), qs(labels.get(g, ""))
         if not f:
             carried.append((g, label, "no derived facts"))
@@ -1582,13 +1568,13 @@ def main():
         reciprocal = []
         for prop, target, back in (("P22", father.get(g), "P40"),
                                    ("P25", mother.get(g), "P40")):
-            if target and target in have:
-                lines.append(f"LAST\t{prop}\t{have[target]}{ref(g)}")
-                reciprocal.append((have[target], back, g))
+            if target and target in our_items:
+                lines.append(f"LAST\t{prop}\t{our_items[target]}{ref(g)}")
+                reciprocal.append((our_items[target], back, g))
         for sp in sorted(spouses.get(g, ())):
-            if sp in have:
-                lines.append(f"LAST\tP26\t{have[sp]}{ref(g)}")
-                reciprocal.append((have[sp], "P26", g))
+            if sp in our_items:
+                lines.append(f"LAST\tP26\t{our_items[sp]}{ref(g)}")
+                reciprocal.append((our_items[sp], "P26", g))
         # **The cap is 10 a day ACROSS EVERY BATCH, and this site was escaping it.**
         # `CLAUDE.md` § *`P3373` sibling is capped at 10 a day*: *"A builder emitting
         # siblings must count them and stop."* The additions pass counted; this one, on the
@@ -1597,19 +1583,19 @@ def main():
         # sibling links spammy on a watchlist. `_siblings_emitted` is shared module state
         # precisely so both sites draw on one budget.
         for sib in sorted(siblings.get(g, ())):
-            if sib in have:
+            if sib in our_items:
                 if sibling_budget_left() <= 0:
-                    carried.append((g, label, f"P3373 sibling {have[sib]} held: over the "
+                    carried.append((g, label, f"P3373 sibling {our_items[sib]} held: over the "
                                     f"{SIBLING_CAP}-a-day cap"))
                     continue
-                _siblings_emitted.append(("LAST", have[sib]))
-                lines.append(f"LAST\tP3373\t{have[sib]}{ref(g)}")
-                reciprocal.append((have[sib], "P3373", g))
+                _siblings_emitted.append(("LAST", our_items[sib]))
+                lines.append(f"LAST\tP3373\t{our_items[sib]}{ref(g)}")
+                reciprocal.append((our_items[sib], "P3373", g))
         for kid in sorted(children.get(g, ())):
-            if kid in have:
-                lines.append(f"LAST\tP40\t{have[kid]}{ref(g)}")
+            if kid in our_items:
+                lines.append(f"LAST\tP40\t{our_items[kid]}{ref(g)}")
                 sex_of = (facts.get(g, {}) or {}).get("sex", "")
-                reciprocal.append((have[kid], "P22" if sex_of == "M" else "P25", g))
+                reciprocal.append((our_items[kid], "P22" if sex_of == "M" else "P25", g))
 
         # **The other direction, in the SAME run.** `Q… P… LAST` -- the subject already
         # exists, so QuickStatements resolves `LAST` to the item created just above.
@@ -1631,7 +1617,7 @@ def main():
         if not redacted:
             dad = father.get(g)
             name_statements, unresolved = name_lines(
-                labels[g], plan, g, have.get(dad) if dad else None,
+                labels[g], plan, g, our_items.get(dad) if dad else None,
                 fields=fields.get(g), sex=f["sex"],
                 father_name=labels.get(dad, "") if dad else "")
             lines.extend(name_statements)
@@ -1689,7 +1675,7 @@ def main():
     # **A comment above every line.** Her format, 2026-08-26. `name_of` resolves either a
     # QID or a Geni id to a person, so the comments read as sentences rather than as pairs
     # of numbers; `qid_to_geni` inverts the ledger for that.
-    qid_to_geni = {q: g for g, q in have.items()}
+    qid_to_geni = {q: g for g, q in our_items.items()}
 
     def name_of(token):
         # **A redaction marker never reaches the file, not even as prose.** `qscomment` names
