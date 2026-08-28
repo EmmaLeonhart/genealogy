@@ -16726,3 +16726,38 @@ grab the first artifact that vaguely matches* was written about this same week.
 it returned `Foss`, `Huss`, `Ross`, `Strauss`, `Countess`, `Princess` and `Bass` as abbreviated
 patronymics — 764 `Foss` at the top of the list. Caught by reading the output rather than the
 count.
+
+## 2026-08-28 — the CJK clan formula, worked out from one case and then measured
+
+Emma, on `Q10864996`: *"I think this formulation should be 'woman of the Li clan, from Longxi
+Didao' as the English label and all languages have a similar thing but NN is the right mul."*
+Then: *"How much does this generalize as a formula in cjk ones?"*
+
+**Almost perfectly. 348 of 354 records have exactly that shape** — marker in `GIVN`, place in
+`SURN`, clan in `_MARNM` — and **every `_MARNM` is one character**, 351 of 351. That is what
+settles it: a one-character CJK value in the married-name field is a clan surname, never a farm
+or a married name. `CLAUDE.md` § *`SURN` is not reliably a surname* in its second instance, after
+`陳郡陽夏` / `謝`. The `SURN` values are all commandery-plus-county place names of one
+construction: `河東解縣`, `京兆長安`, `弘農華陰`, `隴西狄道`.
+
+`reports/cjk-clan-place-transliterations.tsv` — **20 clans and 39 places**, pinyin, written out
+because that is the whole population and it needs no dependency at that size.
+
+`scripts/build-cjk-clan-labels.py` → `reports/cjk-clan-labels.tsv`: **177 people, descriptions in
+ten languages**, `mul` bare `NN` per her ruling. It exits rather than emitting if any token is
+untransliterated, so a half-Han label cannot escape.
+
+**I would have got the sex badly wrong.** I printed the first ten rows, saw women, and wrote
+"every sample so far is female" into the code. Measured: **338 of 354 records are male**, and
+Wanshou — the case the formula was designed on — is one of only sixteen women. Emma, asked
+whether the men take the same formula: *"Yes — same formula, sex word from the data."* The sex now
+comes from `derived-facts.csv` and a person with none gets no description at all, because
+`man`/`woman` is not something to default.
+
+**`ja` and `zh` are deliberately absent.** The Han is right there and `京兆長安李氏` would be easy
+to assemble, but the idiomatic form of *"a man of the Li clan, of Jingzhao Chang'an"* is a
+question about Chinese rather than about this data, and a half-right label is worse than none.
+
+**No batch generated.** Her instruction was that the correction rides along with the daily
+QuickStatements like `SPINE_P2600_BLOCK` — but that block is eight lines and this would be about
+1,950 appended to every run, so the size goes to her before it is wired in.
