@@ -16698,3 +16698,31 @@ sees steps 16–21 as uncreated. It is at step 14, so two steps from trying to *
 already have items. The fix is the block, not a keep-forever rule.
 
 **1,418 passed, 26 skipped, 0 failed.**
+
+## 2026-08-28 — the abbreviation census, and why `-dtr` cannot be expanded from the string
+
+Emma's queue item: *"any abbreviations like -dtr (i.e. 'Rasmusdtr.' instead of 'Rasmusdatter')
+should be fixed since wikidata mul labels are supposed to have the full form."* Asked how far it
+goes, she chose **everywhere a name is emitted** — labels, aliases and the `P734` *family name* /
+`P5056` *patronym or matronym* items alike.
+
+`reports/abbreviated-patronymics.csv`: **16,103 abbreviated tokens over 12,731 people.** By
+suffix: `-dtr` 15,341, `-sdr` 462, `-dr` 208, `-dat` 73, `-sn` 14, `-ssn` 4, `-dtt` 1. **44 sit on
+people who already have a Wikidata item.**
+
+**The expansion cannot be read off the string, and the corpus says so directly.** Over the stems
+that appear both abbreviated and expanded, the corpus writes `-datter` **95,893** times and
+`-dotter` **75,981** times, and it flips per stem: `Olsdatter` leads 8,659 to 1,508 while
+`Andersdotter` leads 8,056 to 4,130. **14,514 of the 16,103 tokens sit on a stem the corpus
+expands both ways.** That is Norwegian against Swedish, and it is a property of the person, not of
+the letters. Frequency would settle nothing — picking the majority form would rewrite thousands of
+Swedish women as Norwegian and thousands of Norwegians as Swedish.
+
+So the census is committed and the expansion is not implemented. Choosing per person needs a
+discriminator this repo does not yet have, and inventing one is the failure `CLAUDE.md` § *Do not
+grab the first artifact that vaguely matches* was written about this same week.
+
+**A first census attempt produced garbage and is worth recording.** The pattern included `ss`, so
+it returned `Foss`, `Huss`, `Ross`, `Strauss`, `Countess`, `Princess` and `Bass` as abbreviated
+patronymics — 764 `Foss` at the top of the list. Caught by reading the output rather than the
+count.
