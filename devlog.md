@@ -16902,3 +16902,29 @@ Fredrik Johan Cederschiöld and Ulrika Strömfelt. **76 absent → 72.**
 Four exports into group 4 the closures per export read 2, 20, 2, 4. The twenty was Elof Steuch's,
 seeded inside the densest part of the network; the small ones are seeded at its edges. That is the
 convergence argument behaving as Emma stated it rather than as a constant rate.
+
+## 2026-08-28 — a tier-3 seed for Rehbinder, and the campaign's fastest export
+
+Group 4, export 4. Target Robert Henrik Rehbinder `6000000000909345046` (`Q2575818`).
+
+**The seed is tier 3, which is the first time this campaign has managed better than tier 4.** His
+own ancestry is filled to the fourth generation, so the seed came off the relative menu again —
+but the panel for **Anna Magnusdotter Meijer** (c.1647–1722) listed her father Magnus Meijer and
+still offered *Add mother*. Father present, mother absent is exactly `docs/export-seed-rules.md`
+tier 3: `NN`, given name only, no surname, *Suggest surnames* unchecked. Nothing about her is
+invented beyond her existence, where the last two seeds rested on a reading of a parenthesised
+surname.
+
+Seed `6000000227472057910`, `Forest`/5000, task `6000000227472256825`. **5000 people at the cap,
+about four minutes from submit to ready** — against ~6, ~13, ~18 and ~40 for the earlier ones.
+Seed and target both present. **Closed 2: Rehbinder and Henrik Gabriel Porthan. 72 absent → 70.**
+
+**The tree renderer went blank after the save and that is not a bail.** The canvas cleared, the
+recentre button did nothing, and a plain reload of the same family-tree URL brought it back with
+Anna's badge already stepped `+1` → `+2` — which is Geni saying the parent exists. What the rules
+forbid is inventing a *second route* to the person; reloading the page you are already on is the
+first route, retried. The id then came off the node in the ordinary way, and the profile tab again
+reported an empty URL for several seconds before it appeared.
+
+Closures per export across group 4 now read 2, 20, 2, 4, 2. The twenty came from the seed placed
+deepest inside the network; every small one has been seeded at its edge.
