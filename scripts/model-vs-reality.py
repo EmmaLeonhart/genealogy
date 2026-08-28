@@ -51,10 +51,14 @@ import collections
 import csv
 import json
 import os
+import pathlib
 import re
 import sys
 import time
 from pathlib import Path
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from bot_identity import agent as _bot_agent  # noqa: E402
 
 sys.stdout.reconfigure(encoding="utf-8")
 csv.field_size_limit(1 << 30)
@@ -146,7 +150,7 @@ def same_time(a, b):
 
 def fetch(qids, dest=None):
     from genimerge.wikidata import WikidataClient
-    if not os.environ.get("BOT_CONTACT", "").strip():
+    if not _bot_agent():
         sys.exit("BOT_CONTACT is not set; Wikimedia answers an empty User-Agent with a bare 403")
     client = WikidataClient(ROOT / "out" / "wikidata" / "livecache")
     out = {}

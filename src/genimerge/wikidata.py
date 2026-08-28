@@ -24,6 +24,7 @@ from __future__ import annotations
 import gzip
 import hashlib
 import os
+import pathlib
 import json
 import time
 import urllib.error
@@ -53,7 +54,24 @@ API_ENDPOINT = "https://www.wikidata.org/w/api.php"
 #: The User-Agent is the contact address and nothing else. Emma, 2026-08-18: the
 #: repository must never be linked from an agent, and neither should a description
 #: of what the project does -- both tell a reader where to look. From BOT_CONTACT.
-CONTACT = os.environ.get("BOT_CONTACT", "").strip()
+#: Environment first, then ``.bot-contact`` at the repo root -- gitignored, so the
+#: address is still not in source, but a script no longer needs the caller to export
+#: anything. **The file fallback is why this matters rather than being a convenience:**
+#: an unset variable pushed callers onto ``build-garborg-day.py --no-refresh``, which
+#: skips reading Emma's Wikidata contributions and produces a batch off a stale ledger
+#: that is indistinguishable from a real one. It did exactly that on 2026-08-29.
+def _contact() -> str:
+    env = os.environ.get("BOT_CONTACT", "").strip()
+    if env:
+        return env
+    try:
+        root = pathlib.Path(__file__).resolve().parents[2]
+        return (root / ".bot-contact").read_text(encoding="utf-8").strip()
+    except OSError:
+        return ""
+
+
+CONTACT = _contact()
 
 USER_AGENT = CONTACT
 

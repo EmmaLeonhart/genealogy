@@ -40,6 +40,7 @@ pages so far kept.
 from __future__ import annotations
 
 import os
+import pathlib
 import json
 import re
 import sys
@@ -49,12 +50,15 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from bot_identity import agent as _bot_agent  # noqa: E402
+
 REPO = Path(__file__).resolve().parent.parent
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 OUT = REPO / "reports" / "name-item-qids.tsv"
 ENDPOINT = "https://query.wikidata.org/sparql"
-AGENT = os.environ.get("BOT_CONTACT", "").strip()
+AGENT = _bot_agent()
 #: The six name classes, documented in `CLAUDE.md` § *Wikidata properties*.
 CLASSES = {
     "Q110874": "patronymic",

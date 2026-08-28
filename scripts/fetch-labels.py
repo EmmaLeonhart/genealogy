@@ -22,11 +22,15 @@ caller needs 400 labels that is still one request, not 400.
 from __future__ import annotations
 
 import os
+import pathlib
 import json
 import sys
 import time
 import urllib.parse
 import urllib.request
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from bot_identity import agent as _bot_agent  # noqa: E402
 
 if hasattr(sys.stdout, "reconfigure"):
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
@@ -35,7 +39,7 @@ ENDPOINT = "https://query.wikidata.org/sparql"
 
 #: Descriptive, with contact and purpose, per Wikidata's user-agent policy and
 #: `todo.md` 8a: "Wikidata is hostile - design for 429s from line one."
-USER_AGENT = os.environ.get("BOT_CONTACT", "").strip()
+USER_AGENT = _bot_agent()
 
 #: One query per run. VALUES takes thousands of QIDs comfortably.
 QUERY = """SELECT ?item ?itemLabel ?itemDescription WHERE {

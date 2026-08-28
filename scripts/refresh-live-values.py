@@ -30,8 +30,12 @@ from __future__ import annotations
 
 import csv
 import os
+import pathlib
 import sys
 from pathlib import Path
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from bot_identity import agent as _bot_agent  # noqa: E402
 
 sys.stdout.reconfigure(encoding="utf-8")
 ROOT = Path(__file__).resolve().parent.parent
@@ -45,7 +49,7 @@ CHUNK = 40
 
 
 def main():
-    if not os.environ.get("BOT_CONTACT", "").strip():
+    if not _bot_agent():
         sys.exit("BOT_CONTACT is not set; Wikimedia answers an empty User-Agent with a 403")
     from genimerge.wikidata import WikidataClient
 

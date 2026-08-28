@@ -44,10 +44,14 @@ from __future__ import annotations
 import csv
 import json
 import os
+import pathlib
 import sys
 import urllib.parse
 import urllib.request
 from pathlib import Path
+
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from bot_identity import agent as _bot_agent  # noqa: E402
 
 sys.stdout.reconfigure(encoding="utf-8")
 ROOT = Path(__file__).resolve().parent.parent
@@ -57,11 +61,13 @@ LEDGER = ROOT / "reports" / "garborg-qids.tsv"
 
 
 def agent():
-    contact = os.environ.get("BOT_CONTACT", "").strip()
+    contact = _bot_agent()
     if not contact:
         sys.exit("BOT_CONTACT is not set. Wikimedia answers an empty User-Agent with a bare "
                  "403, so this fails loudly rather than mysteriously.")
-    return f"geni-merge/1.0 ({contact})"
+    # Emma, 2026-08-18: the agent is the address and NOTHING else -- no tool name,
+    # no version, no repository. "geni-merge/1.0" was exactly the leak she named.
+    return contact
 
 
 def get(params, ua):

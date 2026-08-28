@@ -524,3 +524,8 @@ exports/bure-campaign/export-geni (66).zip
 exports/bure-campaign/export-geni (67).zip
 exports/bure-campaign/export-geni (68).zip
 exports/bure-campaign/export-geni (69).zip
+
+# The Wikimedia User-Agent, which is one email address and nothing else
+# (scripts/bot_identity.py). Local only -- it is the secret, so it stays out
+# of git, and every script reads it from here when BOT_CONTACT is unset.
+.bot-contact
