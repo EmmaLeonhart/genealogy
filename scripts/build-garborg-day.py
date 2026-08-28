@@ -399,6 +399,50 @@ SPINE_PATH = SPINE_PATHS[0]
 #:
 #: So there is **no independent spouse bucket**. The later revision wins over the earlier
 #: "10 spouses", and the shape is two caps plus a substitution.
+#: Arne Olaus Fjørtoft Garborg — the centre the whole programme is measured from.
+ARNE_GENI = "6000000005607426327"
+
+#: **How far from Arne a person may sit and still SEED the daily ring.**
+#:
+#: Emma, 2026-08-28: *"Why is there a ring that is any more than 1 hop lol?"* There is not —
+#: `compose` takes exactly one hop. The defect was where it hopped *from*: `pool = sorted(have)`
+#: was the entire ledger, so the run took one hop from each of 156 different places. Measured
+#: the same day, those 156 sit at hop distances from Arne of 1 to **46**, and one hop out from
+#: the 46 is how a 7th-century Baekje royal (덕장 부여) landed in a batch beside Rogaland
+#: farmers, along with Carolingian Friuli and 20th-century Iowa.
+#:
+#: **The spine is what puts them there.** Her rule that the Arne→Bergitte→Charlemagne couples
+#: are always made, outside the caps, is right — but each one then entered the ledger and the
+#: *next* run treated it as an ordinary seed and grew a ring around it. The ball sprouted a new
+#: lobe at the far end every day. Nobody chose that; it is the spine rule and the seeding rule
+#: composing.
+#:
+#: So the ledger stays whole for *"does this person already have an item"*, and only the seed
+#: pool is bounded. `--max-hops` moves it; it is not a cap on how far the programme ever
+#: reaches, it is what makes "one hop a day" mean one hop *from Arne*.
+#:
+#: **One, because she said one.** Emma, 2026-08-28: *"literally nothing in the algorithm as I
+#: specified it has any business knowing about anything more than 1 hop away."* This was first
+#: written as 6, which was me picking a number that looked reasonable against the measured
+#: spread — exactly the kind of invented threshold this repo keeps having to delete. Her
+#: specification is hyperlocal and says one.
+RING_MAX_HOPS = 1
+
+#: **Never emitted, in any position, ever.** Emma, 2026-08-27: *"I should not be in the
+#: traversable graph and neither should any kitajima people."*
+#:
+#: The batch of 2026-08-27 created her parents and wrote `Q140568870 P22 LAST` and
+#: `Q140568870 P25 LAST`, which attached her item to the 1,339,227-person component that
+#: contains Charlemagne. Her Geni id reaches the builder through `paths/bergitte-to-emma.tsv`,
+#: whose step 1 is her, so excluding her at one call site is not enough — this set is enforced
+#: at source *and* asserted over the finished file before it is written.
+NEVER_TOUCH_GENI = {
+    "6000000087535357291",          # Emma Leonhart herself
+}
+NEVER_TOUCH_QID = {
+    "Q140568870",                   # Emma Leonhart
+}
+
 CHILDREN_PER_RUN = 10
 PARENTS_PER_RUN = 10
 
@@ -476,7 +520,32 @@ def spine_steps():
     return out
 
 
-def compose(have, fam, rng):
+def hops_from(start, fam, limit):
+    """Geni ids within `limit` hops of `start` over parent/child/spouse edges.
+
+    Breadth-first over `reports/derived-family.csv`. The separator is ` | ` with spaces and
+    the strip is load-bearing — `CLAUDE.md` records 379,251 people reading as childless when
+    it was missed, so this splits the same way `kin` does rather than inventing a second rule.
+    """
+    seen = {start: 0}
+    frontier = [start]
+    for depth in range(1, limit + 1):
+        nxt = []
+        for g in frontier:
+            row = fam.get(g) or {}
+            for col in ("fathers", "mothers", "children", "spouses", "father", "mother"):
+                for raw in re.split(r"[,;|]", row.get(col) or ""):
+                    other = raw.strip()
+                    if other and other not in seen:
+                        seen[other] = depth
+                        nxt.append(other)
+        frontier = nxt
+        if not frontier:
+            break
+    return seen
+
+
+def compose(have, fam, rng, seeds=None):
     """`{geni_id: why}` -- the people this run creates, per `docs/daily-algorithm.md`.
 
     **Emma's revised algorithm, 2026-08-26**, written after she stopped a run of 50
@@ -506,6 +575,8 @@ def compose(have, fam, rng):
     `have` is the ball: every Geni id we can already point at a Wikidata item.
     `fam` is `reports/derived-family.csv` keyed by Geni id.
     """
+    seeds = have if seeds is None else seeds
+
     def kin(g, col):
         # The strip is load-bearing: `derived-family.csv` separates with ` | `, and
         # returning the raw token made 59 people a run resolve to nothing.
@@ -537,7 +608,9 @@ def compose(have, fam, rng):
             why.append(f"1. spine {Path(rel).stem}: every step already has an item")
 
     # --- 2 & 3. ten children, or a spouse where the marriage is childless --------
-    pool = sorted(have)
+    # **The seed pool, not the ledger.** One hop from Arne's ball, never one hop from
+    # everything that happens to hold a QID -- see `RING_MAX_HOPS`.
+    pool = sorted(seeds)
     rng.shuffle(pool)
     kids = spouses_instead = 0
     for g in pool:
@@ -576,7 +649,9 @@ def compose(have, fam, rng):
     # Her formula. The eligible set is counted first and the budget derived from it, so the
     # number is a function of the backlog rather than of iteration order.
     eligible = []
-    for g in sorted(set(have) | set(picked)):
+    # Bounded the same way: a half-attached person 40 hops out is still a real wart,
+    # but repairing it is not what 'one hop a day from Arne' means.
+    for g in sorted(set(seeds) | set(picked)):
         father, mother = kin(g, "father"), kin(g, "mother")
         if not father or not mother:
             continue
@@ -648,6 +723,10 @@ def main():
                          "many edges from anyone holding a QID. Every guard still applies.")
     ap.add_argument("--seed", type=int, default=0, metavar="N",
                     help="seed for --compose, so a run is reproducible.")
+    ap.add_argument("--max-hops", type=int, default=RING_MAX_HOPS, metavar="N",
+                    help=f"how far from Arne a ledger person may sit and still seed the "
+                         f"daily ring (default {RING_MAX_HOPS}). The ledger itself is never "
+                         f"shrunk by this — only the seed pool.")
     ap.add_argument("--limit", type=int, default=0, metavar="N",
                     help="create only the N people closest to Arne (0 = no limit)")
     args = ap.parse_args()
@@ -812,7 +891,19 @@ def main():
         # Seeded so a run is reproducible and reviewable. `Math.random`-style
         # irreproducibility would make a batch impossible to explain after the fact.
         rng = random.Random(args.seed)
-        picked, why = compose(have, fam_rows, rng)
+        # **The ball, measured from Arne.** `have` stays whole — it answers "does this person
+        # already have an item" and must not shrink — while `seeds` answers "who may the ring
+        # grow from", which is the question that was never asked.
+        within = hops_from(ARNE_GENI, fam_rows, args.max_hops)
+        seeds = {g for g in have if g in within}
+        far = len(have) - len(seeds)
+        print(f"seed pool: {len(seeds)} of {len(have)} ledger people are within "
+              f"{args.max_hops} hops of Arne; {far} further out do NOT seed a ring")
+        if not seeds:
+            sys.exit(f"no ledger person is within {args.max_hops} hops of Arne "
+                     f"({ARNE_GENI}) — that is a broken join over derived-family.csv, not an "
+                     f"empty neighbourhood")
+        picked, why = compose(have, fam_rows, rng, seeds=seeds)
         print("\ncomposition, per docs/batch-rules.md:")
         for line in why:
             print("   " + line)
@@ -1372,6 +1463,45 @@ def main():
         return qs(labels.get(geni, ""))
 
     lines = annotate(lines, name_of)
+
+    # **The last gate: nothing Emma has excluded may reach the file, in any position.**
+    #
+    # Enforced here rather than only where statements are built, for the reason `qscomment`
+    # gives about comments: this file emits from a dozen sites and a rule applied at each one
+    # is a rule that will be missed at the thirteenth. It was — the batch of 2026-08-27 wrote
+    # `Q140568870 P22 LAST` and `Q140568870 P25 LAST`, attaching her item to the
+    # 1,339,227-person component containing Charlemagne, because her Geni id arrives through
+    # `paths/bergitte-to-emma.tsv` whose step 1 is her.
+    #
+    # **A statement line is DROPPED; a `CREATE` for an excluded person REFUSES the run.**
+    # Dropping a statement cannot change which item a later `LAST` resolves to — only a
+    # dropped `CREATE` could do that — so the two cases are not the same risk and are not
+    # treated the same way. The preceding comment goes with the line it describes.
+    excluded = NEVER_TOUCH_GENI | NEVER_TOUCH_QID
+
+    def names_excluded(line):
+        return any(tok in line for tok in excluded)
+
+    for i, ln in enumerate(lines):
+        if ln.strip() == "CREATE":
+            block = "\n".join(lines[i:i + 40])
+            if any(f'P2600\t"{g}"' in block for g in NEVER_TOUCH_GENI):
+                sys.exit(f"REFUSING to write: a CREATE at line {i + 1} would mint a new item "
+                         f"for an excluded person. Emma, 2026-08-27: \"I should not be in the "
+                         f"traversable graph.\"")
+
+    kept, dropped = [], 0
+    for ln in lines:
+        if not ln.lstrip().startswith("#") and names_excluded(ln):
+            while kept and kept[-1].lstrip().startswith("#"):
+                kept.pop()
+            dropped += 1
+            continue
+        kept.append(ln)
+    if dropped:
+        print(f"excluded ids: {dropped} statement line(s) dropped "
+              f"({', '.join(sorted(excluded))}) — never emitted, in any position")
+    lines = kept
 
     out = ROOT / "reports" / "wikidata-garborg-day.qs"
     out.write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")

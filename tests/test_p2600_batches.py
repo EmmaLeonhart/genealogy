@@ -549,3 +549,31 @@ def test_the_daily_batch_never_restates_what_the_item_already_holds():
     assert not repeats, (
         f"{len(repeats)} statements the item already holds — "
         + "; ".join(f"line {i}: {ln!r}" for i, ln in repeats[:4]))
+
+
+def test_no_batch_names_an_excluded_id():
+    """Emma's own QID and Geni id must appear in no batch, in any position.
+
+    **Emma, 2026-08-27:** *"I should not be in the traversable graph and neither should any
+    kitajima people."* The batch of that date wrote `Q140568870 P22 LAST` and
+    `Q140568870 P25 LAST`, attaching her item to the 1,339,227-person component containing
+    Charlemagne. Her Geni id reaches the builder through `paths/bergitte-to-emma.tsv`, whose
+    step 1 is her, so no single call site owns the problem.
+
+    Comments are exempt: `qscomment` names the people a line concerns, and a comment asserts
+    nothing on Wikidata.
+    """
+    import pathlib
+    root = pathlib.Path(__file__).resolve().parent.parent
+    banned = {"Q140568870", "6000000087535357291"}
+    bad = []
+    for path in sorted((root / "reports").glob("*.qs")):
+        for n, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+            if line.lstrip().startswith("#") or not line.strip():
+                continue
+            for token in banned:
+                if token in line:
+                    bad.append(f"{path.name}:{n}: {line[:80]}")
+    assert not bad, (
+        "a batch names an excluded id — she must not be in the traversable graph:\n  "
+        + "\n  ".join(bad[:10]))

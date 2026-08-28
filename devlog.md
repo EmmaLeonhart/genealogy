@@ -16205,3 +16205,52 @@ none went to Emma.
 That is the third interrogation running where every tag collapsed on contact, and this time two
 of them contradicted rules already written down in this repo. **The check that finds these is
 reading `CLAUDE.md` against the tag, not re-reading the tag.**
+
+## 2026-08-28 — the ring was one hop from 156 places, not one hop from Arne
+
+Emma, on the batch of 2026-08-27: *"there are tons of completely random people that were
+created"*, then *"Why is there a ring that is any more than 1 hop lol?"*, then *"literally
+nothing in the algorithm as I specified it has any business knowing about anything more than 1
+hop away."*
+
+**There was no multi-hop ring. `compose()` takes exactly one hop — from every ledger member.**
+`pool = sorted(have)` was the whole ledger, and its 156 people sit at hop distances from Arne
+of 1 to **46**. One hop out from the 46 is how a 7th-century Baekje royal, Carolingian Friuli
+and 20th-century Iowa arrived in one batch of 36 beside Rogaland farmers.
+
+**The mechanism is her spine rule composing with the seeding rule.** *"The ancestral couples
+between Bergitte, going from Arne to Bergitte to Charlemagne, are always getting made"* — right,
+and outside the caps. But each one then entered the ledger, and the next run treated it as an
+ordinary seed and grew a ring around **it**. The ball sprouted a new lobe at the far end daily.
+Nobody chose that.
+
+`have` now stays whole — it answers *does this person already have an item* and must not shrink
+— and only the **seed pool** is bounded, by `hops_from(ARNE_GENI, …)`. `RING_MAX_HOPS = 1`. It
+was first written as **6**, a number I picked against the measured spread, which is the invented
+threshold this repo keeps deleting; her specification says one.
+
+**Result: 36 creations → 7**, and the unrestricted ring would have been 437.
+
+## The same day — a hard exclusion, because one call site was never going to be enough
+
+That batch also wrote `Q140568870 P22 LAST` and `Q140568870 P25 LAST`, attaching **Emma's own
+item** to the 1,339,227-person component that contains Charlemagne — the opposite of *"I should
+not be in the traversable graph"*. Her Geni id arrives through `paths/bergitte-to-emma.tsv`,
+whose step 1 is her.
+
+`NEVER_TOUCH_GENI` / `NEVER_TOUCH_QID` are enforced as a **post-pass over the assembled file**,
+for the reason `qscomment` gives about comments: this builder emits from a dozen sites and a
+rule applied at each is one that will be missed at the thirteenth. A **statement** line naming
+an excluded id is dropped with its comment; a **`CREATE`** for an excluded person refuses the
+run outright. The two are not the same risk — only a dropped `CREATE` can change what a later
+`LAST` resolves to. Five lines were dropped on the first run under the gate.
+
+`tests/test_p2600_batches.py` now asserts it across **every** `.qs` in `reports/`, not just the
+one the builder happens to write.
+
+**Still open and stated rather than fixed:** the refreshed ledger does not contain Helen Frisk
+(`6000000177921459052`) or Richard Wade Borsheim (`6000000177921459056`), although both were
+created by the batch she ran and the refresh captured later items from that same batch up to
+`Q141198548`. So the next run would create them a second time. Not investigated yet.
+
+**1,399 passed, 24 skipped, 0 failed** in 5m55s.
