@@ -2332,3 +2332,28 @@ there's an additional hop', is something that would conceivably make it lighter.
 statefulness on the strength of this note. It could bound the growth or accelerate it, and which
 one is an empirical question.
 
+
+## LAST — ingest the saved pages and paths into the tree
+
+**Emma, 2026-08-28, and she guessed it before it was checked:** *"you never actually
+bothered with any of the actual ingestion logic of the paths... The saved pages had their
+names, plus all their immediate relatives, siblings, spouses, children, and those people's
+names and display names, and Geni links."*
+
+**Confirmed.** `genimerge.sources.find_exports()` globs `*.ged` and nothing else, so the
+merged tree is built from GEDCOM exports alone. Everything below is read only by reports
+and seed-picking scripts, never by the merge:
+
+| source | count | holds |
+| --- | ---: | --- |
+| `geni-scraping/` | 1,556 pages | name, Geni id, immediate relatives with their names and ids |
+| `paths/` | 697 TSVs | relationship chains, one person per step, with ids |
+| `geni_pages/` | 28 saved pages | the same, plus the relationship panel |
+
+**Why it matters:** these are the only evidence in the repo that comes from *outside* the
+exports — they name people whether or not any export reached them. `CLAUDE.md` already
+says so of relationship paths. Ingesting them would add people and edges the GEDCOMs do
+not have.
+
+**Not urgent, per her:** *"while it is important, it is not worth messing with stuff right
+now."* Hence the tail of the queue.
