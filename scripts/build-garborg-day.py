@@ -961,6 +961,23 @@ def main():
         print((r.stdout or "").strip().splitlines()[-1] if r.stdout.strip() else
               "ledger refreshed")
 
+        # **And the live values, for the same reason.** `add()` drops a statement the item
+        # already holds by checking `reports/garborg-live-values.tsv`; if that file is stale the
+        # check silently passes and the batch re-emits things she has already done. Measured
+        # 2026-08-27: the file was 21 hours old and covered 131 of 209 ledger items, so 78
+        # people had no dedupe at all. This is the same defect as the ledger being refreshed
+        # separately, which she ruled on the same day — *"the script is supposed to go through
+        # my contributions and update the ledger every time."*
+        r = subprocess.run([sys.executable, str(ROOT / "scripts" / "refresh-live-values.py")],
+                           cwd=ROOT, capture_output=True, text=True,
+                           encoding="utf-8", errors="replace")
+        if r.returncode != 0:
+            sys.exit("the live-values refresh failed, so every duplicate check would silently "
+                     "pass and the batch would re-emit statements already on Wikidata:\n"
+                     + (r.stderr or r.stdout)[-800:])
+        print((r.stdout or "").strip().splitlines()[-1] if r.stdout.strip() else
+              "live values refreshed")
+
     our_items = ledger()
 
     # **`linked` is every Geni id Wikidata already carries a `P2600` for. `have` is not.**
@@ -1391,6 +1408,7 @@ def main():
         return prop not in known[1] if known else True
 
     for g, q in sorted(our_items.items()):
+        before_this_person = len(seen)
         for prop, target in (("P22", father.get(g)), ("P25", mother.get(g))):
             if target and target in our_items and absent(q, prop):
                 add(q, prop, our_items[target], g)
@@ -1409,6 +1427,22 @@ def main():
         for sp in sorted(spouses.get(g, ())):
             if sp in our_items:
                 add(q, "P26", our_items[sp], g)
+
+        # **If we linked this person to anybody, write their Geni id too.**
+        #
+        # Emma, 2026-08-27: *"we should have a thing that allows the algorithm to, when it's
+        # attaching people together, add in a Geni ID... Link a person to their parent who's an
+        # actual person in the tree, and add onto the parent the parent's geni ID."* Asked which
+        # people should get it, she chose **only when actually linked in that batch** rather
+        # than every ledger member — so it is self-limiting: an item gets its `P2600` at the
+        # moment the algorithm asserts a relationship about it, and never otherwise.
+        #
+        # Why it matters beyond tidiness: a pairing that exists only in
+        # `reports/garborg-qids.tsv` is invisible to Wikidata, so a ledger rebuilt from her
+        # contributions cannot recover it. Writing the statement makes the pairing resolvable
+        # by anyone, including the next rebuild. `add()` drops it if the item already has it.
+        if len(seen) > before_this_person:
+            add(q, "P2600", f'"{g}"', g)
 
         # Name statements, but never onto an item that already states one: `Q467497`
         # carries `P735` Arne, and our label reads the parenthesised `(Arne)` as a

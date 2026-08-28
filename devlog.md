@@ -16629,3 +16629,30 @@ The batch is byte-identical after this too.
 
 Still to come, in her order: `P2600` written when the algorithm links to an existing item, then
 the ledger rebuilt from contributions + Bureätten.
+
+## 2026-08-27 — step 3: `P2600` when the algorithm links someone, and the live values go stale no more
+
+**Emma's scope, chosen from four options: only when actually linked in that batch.** So an item
+gets its Geni id at the moment the algorithm asserts a relationship about it, and never
+otherwise. Self-limiting by construction.
+
+**The first run emitted 91 of them, and every one was redundant.** `add()` drops a statement the
+item already holds by checking `reports/garborg-live-values.tsv` — and that file was **21 hours
+old and covered 131 of 209 ledger items**, so 78 people had no duplicate check at all. Same
+defect as the ledger being refreshed separately, which she ruled on this morning:
+*"the script is supposed to go through my contributions and update the ledger every time."*
+
+`--compose` now refreshes the live values as well, and **exits the run if that fails** — a failed
+refresh is worse than no refresh, because every duplicate check then silently passes.
+
+With it fresh (217 items, 2,699 statements) the same batch drops **230 statements it already
+holds**, links fall **427 → 56**, and the only `P2600` lines left are the eight hard-coded ones.
+Step 3 therefore emits nothing today, correctly: every person this batch links already carries
+their Geni id. It fires when it is actually needed.
+
+**On the ledger rebuild, her answer settled the logging question by pointing at something I had
+missed:** *"I thought the ledger was git tracked so everything is logged."* It is —
+`reports/garborg-qids.tsv` is committed every run, so a dropped row is in the diff. No
+`ledger-dropped.tsv`, no print.
+
+**1,418 passed, 26 skipped, 0 failed.**
