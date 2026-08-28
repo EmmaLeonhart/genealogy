@@ -39,6 +39,7 @@ import collections
 import csv
 import random
 import re
+import subprocess
 import sys
 from pathlib import Path
 
@@ -402,32 +403,6 @@ SPINE_PATH = SPINE_PATHS[0]
 #: Arne Olaus Fjørtoft Garborg — the centre the whole programme is measured from.
 ARNE_GENI = "6000000005607426327"
 
-#: **How far from Arne a person may sit and still SEED the daily ring.**
-#:
-#: Emma, 2026-08-28: *"Why is there a ring that is any more than 1 hop lol?"* There is not —
-#: `compose` takes exactly one hop. The defect was where it hopped *from*: `pool = sorted(have)`
-#: was the entire ledger, so the run took one hop from each of 156 different places. Measured
-#: the same day, those 156 sit at hop distances from Arne of 1 to **46**, and one hop out from
-#: the 46 is how a 7th-century Baekje royal (덕장 부여) landed in a batch beside Rogaland
-#: farmers, along with Carolingian Friuli and 20th-century Iowa.
-#:
-#: **The spine is what puts them there.** Her rule that the Arne→Bergitte→Charlemagne couples
-#: are always made, outside the caps, is right — but each one then entered the ledger and the
-#: *next* run treated it as an ordinary seed and grew a ring around it. The ball sprouted a new
-#: lobe at the far end every day. Nobody chose that; it is the spine rule and the seeding rule
-#: composing.
-#:
-#: So the ledger stays whole for *"does this person already have an item"*, and only the seed
-#: pool is bounded. `--max-hops` moves it; it is not a cap on how far the programme ever
-#: reaches, it is what makes "one hop a day" mean one hop *from Arne*.
-#:
-#: **One, because she said one.** Emma, 2026-08-28: *"literally nothing in the algorithm as I
-#: specified it has any business knowing about anything more than 1 hop away."* This was first
-#: written as 6, which was me picking a number that looked reasonable against the measured
-#: spread — exactly the kind of invented threshold this repo keeps having to delete. Her
-#: specification is hyperlocal and says one.
-RING_MAX_HOPS = 1
-
 #: **Never emitted, in any position, ever.** Emma, 2026-08-27: *"I should not be in the
 #: traversable graph and neither should any kitajima people."*
 #:
@@ -438,9 +413,56 @@ RING_MAX_HOPS = 1
 #: at source *and* asserted over the finished file before it is written.
 NEVER_TOUCH_GENI = {
     "6000000087535357291",          # Emma Leonhart herself
+    # The Kitajima/Kitashima family -- 22 people. Emma, 2026-08-27: *"neither should any
+    # kitajima people"*.  was created anyway on 2026-08-28, because the
+    # exclusion covered her and nobody else.
+    "6000000019459854230",
+    "6000000227335008051",
+    "6000000227335094894",
+    "6000000227335131944",
+    "6000000227335155963",
+    "6000000227335224861",
+    "6000000227335233864",
+    "6000000227335299879",
+    "6000000227335301867",
+    "6000000227335324856",
+    "6000000227335337887",
+    "6000000227335339873",
+    "6000000227335344839",
+    "6000000227335360837",
+    "6000000227335365856",
+    "6000000227335365861",
+    "6000000227335366839",
+    "6000000227335376843",
+    "6000000227335378827",
+    "6000000227335393824",
+    "6000000227335397826",
+    "6000000227335402830",
+    "6000000227335430822",
+    "6000000227335430827",
 }
 NEVER_TOUCH_QID = {
     "Q140568870",                   # Emma Leonhart
+    "Q135579416",
+    "Q135579421",
+    "Q135579425",
+    "Q135579447",
+    "Q135579457",
+    "Q135579466",
+    "Q135579475",
+    "Q135579485",
+    "Q135579488",
+    "Q135579492",
+    "Q135579497",
+    "Q135579502",
+    "Q135579503",
+    "Q135579506",
+    "Q135579509",
+    "Q135579512",
+    "Q135579513",
+    "Q135579514",
+    "Q135579516",
+    "Q135579517",
 }
 
 CHILDREN_PER_RUN = 10
@@ -494,6 +516,88 @@ def spine_chain():
 from qscomment import annotate  # noqa: E402
 
 
+#: Arne Olaus Fjørtoft Garborg. The subgraph is measured from here.
+ARNE_QID = "Q11959067"
+
+#: The relationship properties that make two Wikidata items neighbours in the subgraph.
+#: P22 father, P25 mother, P26 spouse, P40 child, P3373 sibling.
+SUBGRAPH_PROPS = ("P22", "P25", "P26", "P40", "P3373")
+
+
+def wikidata_subgraph(start=ARNE_QID):
+    """Every QID connected to Arne by relationship statements ON WIKIDATA.
+
+    **This is the algorithm, in Emma's words, 2026-08-28:** *"my algorithm is entirely based
+    on anyone on the continuous subgraph currently on wikidata from Arne... no counting hops
+    it literally should do a billion hops under the constraints if that's possible"*, and
+    *"the spine people shouldn't play a role because they aren't part of the subgraph. The
+    subgraph is stored and added to with my contributions."*
+
+    So the seed set is a **connected component**, not a ledger and not a radius. A person
+    seeds a ring when Wikidata already links them to Arne through some chain of `P22`/`P25`/
+    `P26`/`P40`/`P3373`, however long. Distance never enters it.
+
+    **This is what makes the spine self-limiting without a special case.** A medieval couple
+    the spine just created has no path to Arne on Wikidata yet, so it is not in the subgraph
+    and grows no ring. The same is true of the Izumo and Kitajima items — they are hers, they
+    are in the ledger, and nothing on Wikidata connects them to Arne. The ledger answers *does
+    this person have an item*; the subgraph answers *may the ring grow from them*. Conflating
+    the two is what put a 7th-century Baekje royal and `Saburou Kitashima` in a Garborg batch.
+
+    Two sources, because neither is current alone: the bulk `relations.tsv`, which predates
+    most of her edits, and `garborg-live-values.tsv`, which is refreshed per run and holds
+    what her own items state today.
+    """
+    adj = collections.defaultdict(set)
+    rel = ROOT / "out" / "wikidata" / "relations.tsv"
+    if rel.exists():
+        with open(rel, encoding="utf-8") as fh:
+            for row in csv.DictReader(fh, delimiter="	"):
+                q = row["qid"]
+                for col in ("p22", "p25", "p40", "p26"):
+                    for v in (row.get(col) or "").split("|"):
+                        v = v.strip()
+                        if v.startswith("Q"):
+                            adj[q].add(v)
+                            adj[v].add(q)
+    live = ROOT / "reports" / "garborg-live-values.tsv"
+    if live.exists():
+        with open(live, encoding="utf-8") as fh:
+            for row in csv.DictReader(fh, delimiter="	"):
+                if row["property"] in SUBGRAPH_PROPS and row["value"].startswith("Q"):
+                    adj[row["qid"]].add(row["value"])
+                    adj[row["value"]].add(row["qid"])
+
+    seen, stack = {start}, [start]
+    while stack:
+        for other in adj[stack.pop()]:
+            if other not in seen:
+                seen.add(other)
+                stack.append(other)
+    return seen
+
+
+def spine_created():
+    """Every Geni id that sits on a spine path — these never seed a ring of their own.
+
+    **The defect this closes.** Emma's spine rule is right and stays: the ancestral couples
+    from Arne through Bergitte to Charlemagne are made every run, outside the caps. But each
+    one then entered the ledger, and the next run drew on it like any other seed and grew a
+    ring around it. After several days the ball had lobes at the far end of a 34-step medieval
+    path, and a batch of 36 held a 7th-century Baekje royal, Carolingian Friuli and
+    20th-century Iowa alongside Rogaland farmers. Emma: *"there are tons of completely random
+    people that were created."*
+
+    They stay in `have`, so nothing re-creates them. They are simply not somewhere the ring
+    grows from. The spine advances along the path, one step per path per run, which is what she
+    asked for and all she asked for.
+    """
+    ids = set()
+    for steps in spine_steps().values():
+        ids.update(gid for _label, gid, _name in steps)
+    return ids
+
+
 def spine_steps():
     """`{path: [(label, geni_id, name)]}` -- BOTH spine paths, kept apart.
 
@@ -520,29 +624,51 @@ def spine_steps():
     return out
 
 
-def hops_from(start, fam, limit):
-    """Geni ids within `limit` hops of `start` over parent/child/spouse edges.
+def spine_created():
+    """Every Geni id that sits on a spine path — these never seed a ring of their own.
 
-    Breadth-first over `reports/derived-family.csv`. The separator is ` | ` with spaces and
-    the strip is load-bearing — `CLAUDE.md` records 379,251 people reading as childless when
-    it was missed, so this splits the same way `kin` does rather than inventing a second rule.
+    **The defect this closes.** Emma's spine rule is right and stays: the ancestral couples
+    from Arne through Bergitte to Charlemagne are made every run, outside the caps. But each
+    one then entered the ledger, and the next run drew on it like any other seed and grew a
+    ring around it. After several days the ball had lobes at the far end of a 34-step medieval
+    path, and a batch of 36 held a 7th-century Baekje royal, Carolingian Friuli and
+    20th-century Iowa alongside Rogaland farmers. Emma: *"there are tons of completely random
+    people that were created."*
+
+    They stay in `have`, so nothing re-creates them. They are simply not somewhere the ring
+    grows from. The spine advances along the path, one step per path per run, which is what she
+    asked for and all she asked for.
     """
-    seen = {start: 0}
-    frontier = [start]
-    for depth in range(1, limit + 1):
-        nxt = []
-        for g in frontier:
-            row = fam.get(g) or {}
-            for col in ("fathers", "mothers", "children", "spouses", "father", "mother"):
-                for raw in re.split(r"[,;|]", row.get(col) or ""):
-                    other = raw.strip()
-                    if other and other not in seen:
-                        seen[other] = depth
-                        nxt.append(other)
-        frontier = nxt
-        if not frontier:
-            break
-    return seen
+    ids = set()
+    for steps in spine_steps().values():
+        ids.update(gid for _label, gid, _name in steps)
+    return ids
+
+
+def spine_steps():
+    """`{path: [(label, geni_id, name)]}` -- BOTH spine paths, kept apart.
+
+    **Kept apart deliberately.** Concatenating them and taking the first uncreated step
+    advances only whichever path is listed first, so `bergitte-to-emma` never moved and the
+    *"critical path going to me"* stayed at zero of sixteen. One step per path per run.
+    """
+    out = {}
+    for rel in SPINE_PATHS:
+        path = ROOT / rel
+        if not path.exists():
+            continue
+        rows = [l.rstrip(chr(10)).split(chr(9)) for l in
+                open(path, encoding="utf-8") if not l.startswith("#") and l.strip()]
+        header = rows[0]
+        steps = []
+        for r in rows[1:]:
+            d = dict(zip(header, r))
+            gid = re.sub(r"\D", "", d.get("note", "") or "")
+            if gid:
+                steps.append((f"{Path(rel).stem} step {d.get('step')}", gid,
+                              d.get("name", "")))
+        out[rel] = steps
+    return out
 
 
 def compose(have, fam, rng, seeds=None):
@@ -608,8 +734,7 @@ def compose(have, fam, rng, seeds=None):
             why.append(f"1. spine {Path(rel).stem}: every step already has an item")
 
     # --- 2 & 3. ten children, or a spouse where the marriage is childless --------
-    # **The seed pool, not the ledger.** One hop from Arne's ball, never one hop from
-    # everything that happens to hold a QID -- see `RING_MAX_HOPS`.
+    # The seed pool, not the whole ledger: spine steps are excluded upstream.
     pool = sorted(seeds)
     rng.shuffle(pool)
     kids = spouses_instead = 0
@@ -723,10 +848,10 @@ def main():
                          "many edges from anyone holding a QID. Every guard still applies.")
     ap.add_argument("--seed", type=int, default=0, metavar="N",
                     help="seed for --compose, so a run is reproducible.")
-    ap.add_argument("--max-hops", type=int, default=RING_MAX_HOPS, metavar="N",
-                    help=f"how far from Arne a ledger person may sit and still seed the "
-                         f"daily ring (default {RING_MAX_HOPS}). The ledger itself is never "
-                         f"shrunk by this — only the seed pool.")
+    ap.add_argument("--no-refresh", action="store_true",
+                    help="do NOT read her Wikidata contributions first. Only for offline "
+                         "work: the batch is then built against whatever the ledger last "
+                         "recorded, which is how items she has already made get re-created.")
     ap.add_argument("--limit", type=int, default=0, metavar="N",
                     help="create only the N people closest to Arne (0 = no limit)")
     args = ap.parse_args()
@@ -751,6 +876,30 @@ def main():
             "and overwrites reports/wikidata-garborg-day.qs, which may be a day already run.\n"
             "  the daily batch:  python scripts/build-daily-batch.py\n"
             "  this script only: --compose (the daily algorithm) or --roster FILE")
+
+    # **Her contributions are read EVERY run, before anything else.**
+    #
+    # Emma, 2026-08-28: *"this is worrying since it seems to indicate that you might be
+    # building the ledger as a separate part from the script, when in reality the script is
+    # supposed to go through my contributions and update the ledger every time."* It was
+    # separate, and it cost exactly what she predicted: a batch built at 17:33 used a ledger
+    # refreshed hours earlier, so `Q141198835` Bergitte Gunnbjørnsdatter Aukland — the hinge of
+    # all three lines, which she had just created — read as missing, and the spine reported the
+    # Charlemagne path as unable to reach her.
+    #
+    # It **fails the run** rather than falling back to the file on disk. A stale ledger does not
+    # look like an error, it looks like work to do, and the work it invents is re-creating items
+    # she already made.
+    if args.compose and not args.no_refresh:
+        r = subprocess.run([sys.executable, str(ROOT / "scripts" / "refresh-garborg-ledger.py")],
+                           cwd=ROOT, capture_output=True, text=True,
+                           encoding="utf-8", errors="replace")
+        if r.returncode != 0:
+            sys.exit("the ledger refresh failed, so the batch would be built against a stale "
+                     "picture of what Emma has already created:\n"
+                     + (r.stderr or r.stdout)[-800:])
+        print((r.stdout or "").strip().splitlines()[-1] if r.stdout.strip() else
+              "ledger refreshed")
 
     have = ledger()
 
@@ -891,18 +1040,20 @@ def main():
         # Seeded so a run is reproducible and reviewable. `Math.random`-style
         # irreproducibility would make a batch impossible to explain after the fact.
         rng = random.Random(args.seed)
-        # **The ball, measured from Arne.** `have` stays whole — it answers "does this person
-        # already have an item" and must not shrink — while `seeds` answers "who may the ring
-        # grow from", which is the question that was never asked.
-        within = hops_from(ARNE_GENI, fam_rows, args.max_hops)
-        seeds = {g for g in have if g in within}
-        far = len(have) - len(seeds)
-        print(f"seed pool: {len(seeds)} of {len(have)} ledger people are within "
-              f"{args.max_hops} hops of Arne; {far} further out do NOT seed a ring")
+        # **The seed pool is the Wikidata subgraph reachable from Arne — her algorithm.**
+        #
+        # Not the ledger, which is "every item Emma has made" and therefore includes her Izumo
+        # and Kitajima work; not a hop radius, which was my invention and cut a batch to 7.
+        # A person seeds a ring when Wikidata already connects them to Arne by any chain of
+        # relationship statements, however long.
+        subgraph = wikidata_subgraph()
+        seeds = {g for g, q in have.items() if q in subgraph}
+        print(f"Wikidata subgraph from Arne ({ARNE_QID}): {len(subgraph):,} items; "
+              f"{len(seeds)} of {len(have)} ledger people are in it and may seed a ring")
         if not seeds:
-            sys.exit(f"no ledger person is within {args.max_hops} hops of Arne "
-                     f"({ARNE_GENI}) — that is a broken join over derived-family.csv, not an "
-                     f"empty neighbourhood")
+            sys.exit(f"no ledger person is in the subgraph reachable from {ARNE_QID} — that "
+                     f"is a broken join over relations.tsv/garborg-live-values.tsv, not an "
+                     f"unconnected Arne")
         picked, why = compose(have, fam_rows, rng, seeds=seeds)
         print("\ncomposition, per docs/batch-rules.md:")
         for line in why:
@@ -1459,8 +1610,19 @@ def main():
     qid_to_geni = {q: g for g, q in have.items()}
 
     def name_of(token):
+        # **A redaction marker never reaches the file, not even as prose.** `qscomment` names
+        # people from the raw display label, so `<private> Skårland` was appearing in comment
+        # lines — asserting nothing on Wikidata, but writing out the marker `CLAUDE.md`
+        # § *Redacted people go in. `Private` never becomes a label* exists to keep out. The
+        # person is still named by whatever survives redaction, which for `<private> /Surname/`
+        # is the surname — the part that is real data.
         geni = qid_to_geni.get(token, token)
-        return qs(labels.get(geni, ""))
+        raw = labels.get(geni, "")
+        low = raw.lower()
+        if "<private>" in low or low.strip() == "private":
+            raw = re.sub(r"(?i)<private>\s*", "", raw).strip() or "NN"
+            raw = f"NN {raw}" if not raw.startswith("NN") else raw
+        return qs(raw)
 
     lines = annotate(lines, name_of)
 

@@ -16254,3 +16254,52 @@ created by the batch she ran and the refresh captured later items from that same
 `Q141198548`. So the next run would create them a second time. Not investigated yet.
 
 **1,399 passed, 24 skipped, 0 failed** in 5m55s.
+
+## 2026-08-28 — the seed set is the Wikidata subgraph from Arne, and the ledger refresh is part of the run
+
+Two corrections from Emma, and both were architectural rather than a bug in a line.
+
+**"My algorithm is entirely based on anyone on the continuous subgraph currently on wikidata
+from Arne... no counting hops it literally should do a billion hops."** The seed set was the
+*ledger* — every item she has made, including her Izumo, Kitajima and Baekje work — so the ring
+grew around all of it. `wikidata_subgraph()` now walks `P22`/`P25`/`P26`/`P40`/`P3373` outward
+from `Q11959067` and the seed set is what that reaches: **97 items, 96 of 171 ledger people**.
+The other 75 keep their entry in `have` — the ledger still answers *does this person have an
+item* — they simply do not seed. **This is what makes the spine self-limiting with no special
+case**, in her words: *"the spine people shouldn't play a role because they aren't part of the
+subgraph."* A medieval couple created yesterday has no path to Arne on Wikidata yet.
+
+Two of my inventions went in the bin on the way here. A **distance-from-Arne radius**, which
+appears nowhere in her spec and cut a batch from ~30 people to **7** because the caps stopped
+binding — 2 of 10 children, 0 of 10 parents. And an **exclusion list**, which she called
+correctly: *"If you just followed the algorithm then exclusions wouldn't be needed."* Under the
+subgraph she is not a seed and neither are the Kitajima people; the list now catches only 7
+statement lines from the `bergitte-to-emma` spine walk, which is a question about where that
+walk stops, not about exclusions.
+
+**Asked whether this algorithm had ever existed, the answer is no.** `11295af7` (2026-08-25)
+computes distance from Arne over *our Geni tree* and uses it only to order the ring and cap it
+with `--limit`. There has never been a Wikidata-connectivity walk here.
+
+**The ledger refresh now runs inside every `--compose` build, and fails the run if it fails.**
+Emma: *"the script is supposed to go through my contributions and update the ledger every
+time."* It was a separate step, and the cost was immediate: a batch built at 17:33 used a ledger
+refreshed hours earlier, so `Q141198835` **Bergitte Gunnbjørnsdatter Aukland** — the hinge of all
+three lines, which she had just created — read as missing. With the refresh inside the run the
+Charlemagne spine went from **step 8 to step 13 in one build**, walking past Bergitte. A stale
+ledger does not look like an error; it looks like work to do, and the work it invents is
+re-creating items she already made.
+
+**A redaction marker was reaching the file as prose.** `test_a_redacted_person_is_created…`
+failed on `#   Q141198370 <private> Skårland: P40 child = …` — a comment, so nothing was
+asserted on Wikidata, but the marker was still written out. Latent, and surfaced only because
+the refreshed ledger pulled that person into the batch. Fixed at `name_of` rather than by
+narrowing the assertion: the comment now names them `NN Skårland`, keeping the surname, which is
+the half of `<private> /Surname/` that is real data.
+
+**Still open:** `bergitte-to-emma` has advanced **zero of sixteen steps**. It takes step 2,
+Richard Wade Borsheim, every run, because he is created and then never appears in her
+contributions refresh — so the next run still sees him missing. Helen Frisk has the same
+problem.
+
+**1,399 passed, 24 skipped, 0 failed** in 5m58s.
