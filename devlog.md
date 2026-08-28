@@ -17166,3 +17166,17 @@ the file would still be the right size, still contain the seed, and still be fil
 **Verify the radio on the form, every time, not when convenient.**
 
 Thirteen exports collected today: **100 absent → 29**.
+
+## 2026-08-28 — export 17, and where the day ends
+
+Group 4, export 17. Target Henning Mankell the composer `6000000010039794573` (`Q329253`), whom
+Geni holds as *Ivar Henning Mankell*. Four open slots on the first screen and **no patronymic
+anywhere on the frontier**, so tier 4 was the best on offer: seed `6000000227474303863`
+`NN /Lettermann/`, Elisabeth Lettermann having both parents absent and a surname distinct from her
+husband's. **Closed one. 29 absent → 28.**
+
+**Fourteen exports collected today: 100 absent → 28.** Closures per export: 2, 20, 2, 4, 2, 6, 6,
+1, 4, 3, 5, 2, 1, 2, 5, 4, 2, 1.
+
+Two bails, both per-attempt and both still on the list: Klinckowström and Falkengréen, whose tree
+pages return a styled shell with an empty canvas.
