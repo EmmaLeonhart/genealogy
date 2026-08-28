@@ -17056,3 +17056,22 @@ line — closed one. That is a *positional* signal, the same thing the Elof Steu
 demonstrated at twenty, and it is cheap to read off the page before committing to a seed.
 
 Closures per export in group 4: 2, 20, 2, 4, 2, 6, 6, 1, 4, 3, 5.
+
+## 2026-08-28 — export 11, and where the campaign stands
+
+Group 4, export 11. Target Johan Adelswärd `6000000006127732217` (`Q5542622`). Seed
+`6000000227472646979` **`Hemming father of Lars`** — tier 2. Two open parent pairs sat on the
+first screen, Lars Hemmingsson (c.1610–1688) and Maria Hansdotter (b.–1684), each carrying a live
+patronymic and no other surname; neither reaches tier 1 because there is no separate surname for
+the created father to take. ~4 minutes, 5000 at the cap. **Closed two — 45 absent → 43**:
+Adelswärd and Samuel Gustaf Hermelin.
+
+**Nine exports collected today take the group from 100 absent to 43.** Closures per export: 2, 20,
+2, 4, 2, 6, 6, 1, 4, 3, 5, 2.
+
+**The seed tier has been climbing as the trees get less aristocratic** — the last five are tier 1,
+2, 1, 2 rather than the tier-4 `NN` placeholders the campaign opened with. High nobility is
+recorded four generations deep with no gaps, so its frontier people are reached only by expanding
+an arrow, and they carry house names rather than patronymics. Gentry and clergy trees run out
+sooner and their frontier is full of `-sson`/`-dotter` names, which is exactly the material tier 1
+and tier 2 need. Nothing was changed to cause this; it is a property of who is left on the list.
