@@ -13,15 +13,27 @@ lines as say what to do.
 audits, dead crons and superseded priorities. Recover any of it with
 `git show 6edf302b:queue.md`.
 
-## Emma's items, 2026-08-27/28 — the live list
+<!-- HER OWN WORDS, RESTORED 2026-08-27. I had replaced this section with a
+     paraphrase of it, on the same evening she said the exact wording is the most
+     important thing. Recovered from `git show 07600faf:queue.md`. Do not rewrite
+     her text; add underneath it. -->
 
-- **`Q141180412`: its `ja`/`zh` labels are not derived from the `mul` label.** Her words: *"the
-  mul label takes priority"*. Analyse where those labels came from and make the transliteration
-  read from `mul` rather than from whatever it is using now.
-- **Abbreviations must be expanded in `mul`.** `Rasmusdtr.` → `Rasmusdatter`, and every other
-  `-dtr`/`-dr`/`-sn` short form. Her framing: *"wikidata mul labels are supposed to have the full
-  form. This is a part of the compliance stuff."*
-- **`Q4411612`** — curiosity: can it be identified on Geni, and can it take a `mul` label?
+## Stuff here (semi-confusing) 8-27
+
+Okay so idk what is going on since a lot of contradictory thins are happening. idk if the section below is the next step and the queue is not in use or if it is awkwardly set up
+
+Analyze https://www.wikidata.org/wiki/Q141180412 because it appears that it has Japanese and presumably Chinese label that are no derived from the mul label like we wanted. Remember that the mul lable takes priority
+
+Also any abbreviations like -dtr (i.e. "Rasmusdtr." instead of "Rasmusdatter" should be fixd since wikidata mul labels ae supposed to have the full form. This is a part of the compliance stuff I mentioned earlier)
+
+Organize the queue to make it usable again, currently it does no appear to be usable
+
+For all of the cron jobs that I set up in the session. They are good and continue on with them, but also add them into the queue as actual items with he specification they are the cron jobs so they cget crossed off if he cron job finishes, but are a bit more stable.
+
+Look over all of the items that I have edited but did no create. These are a bit of a weak point for me since they are potentially items that are no in my watchlist and might cause me issues. Create a batch of quickstatements that does some kind of minor edit on all of them if possible preferable settin their mul labels or something
+
+Look over this item it just piques my curiosity whether we can identify it on geni and potentially add a mul label https://www.wikidata.org/wiki/Q4411612
+
 
 ## Tonight's cron jobs — SESSION-ONLY, so they are written here to survive
 
@@ -33,16 +45,16 @@ stable."*
 **They die with the session.** If it ends before one fires, the item below is all that is left
 and is the thing to work from. Delete an item when its job has finished the work.
 
-- **20:00 `3b0f95ed`** — `Q141198538` has `nn` as a first name though it was not produced as an
+- **20:50 `082e986a`** — `Q141198538` has `nn` as a first name though it was not produced as an
   NN person. Why, and stop it recurring.
-- **20:30 `ae9d6faa`** — two saved Geni pages, in
+- **21:20 `e01a1bff`** — two saved Geni pages, in
   `C:\Users\Emma\.claude\uploads\dbec586f-7705-4f0e-8652-03df7c6b73e5\`, named
   `a8b40e73-Geni__Caroline_Signe_Borsheim_Hoknes_19322007.mhtml` and
   `1ef99cd3-Geni__Randolph_Paulus_Borsheim_19262015_Penticton.mhtml`. Through
   `genimerge path-from-html`. The `?through=6000000177921459078` chain runs via Randolph Paulus
   Borsheim, and she notes the closest relationship is a **marriage** one, which decides the
   export style that would follow it.
-- **21:00 `699f39d8`** — the `Sara /NN/` census: every person whose name carries an NN marker in
+- **21:55 `aea9cf19`** — the `Sara /NN/` census: every person whose name carries an NN marker in
   only ONE of the given/surname fields, as a CSV, then the decision stated explicitly.
 - **22:00 `a5676be8`** — why `6000000021223635839` was emitted as bare `Garborg` rather than the
   labels she set by hand on `Q141199845`. Likely `labels.strip_markers()`, added the same day.
