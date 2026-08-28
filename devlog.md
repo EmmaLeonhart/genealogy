@@ -16420,3 +16420,30 @@ them. Her own item does reach `have`, through `entity_resolution.md`, so that ha
 `Saburou Kitashima` was created by the **ring** — one hop from a ledger person in our Geni tree —
 back before the subgraph gate existed. The gate is what stops that recurring; the `NEVER_TOUCH_*`
 entry for the family is belt and braces.
+
+## 2026-08-29 — the queue is usable again, and the cron jobs are in it
+
+Emma pushed her own queue section on 2026-08-27 opening *"idk what is going on since a lot of
+contradictory things are happening... Organize the queue to make it usable again, currently it
+does not appear to be usable."* Fair.
+
+Three of her six items are now done or written down properly:
+
+- **"Look over all of the items that I have edited but did not create"** — delivered:
+  `reports/wikidata-touched-not-created.qs`, 15 additive edits over the 26 such items. 8 `mul`
+  labels where the item had none, 5 `mul` aliases where our Geni name differs and is not already
+  one, and `P2600` on the two Buyeo items. The 6 non-humans she edited — a church, a school, a
+  mill, two papers and a gene — are left alone. Item deleted from the queue.
+- **"Add the cron jobs into the queue as actual items"** — done, and it matters more than it
+  sounds: **all ten are session-only and die with the session.** The queue entry is now the only
+  durable record of what each was asked to do, with its id and its subject.
+- **The rest of her items are restated as a live list** rather than left in the paragraph they
+  arrived in: `Q141180412`'s `ja`/`zh` labels not deriving from `mul`, expanding `-dtr`
+  abbreviations in `mul`, and `Q4411612`.
+
+**And a correction I owed her.** I had said the seven spine people were at risk because the
+refresh "drops" them. It does not: `refresh-garborg-ledger.py` loads the existing ledger first
+and only ever adds, so a row written by hand survives every run. What is true is narrower and now
+recorded as its own section: `reports/wikidata-spine-add-p2600.qs` has never been run, so those
+`P2600` statements exist only locally and only a from-scratch rebuild of the ledger would fail to
+recover them. Nothing is being lost today.
