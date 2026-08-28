@@ -17117,3 +17117,29 @@ Georg Brandt, Lars Benzelstierna and Samuel af Ugglas.
 
 Twelve exports collected today: **100 absent → 35**. Closures per export: 2, 20, 2, 4, 2, 6, 6, 1,
 4, 3, 5, 2, 1, 2, 5.
+
+## 2026-08-28 — the bail rule pays off inside one export
+
+Group 4, export 15. Targets the two Mikael von Törnes, `6000000008605117809` (`Q16650516`) and
+`6000000008605294394` (`Q16650517`) — adjacent on the list and adjacent in the tree. Seed
+`6000000227473603827` **`Nils father of Rangela`**, tier 2: Rangela Nilsdotter (b.–1663) is
+parentless with a live patronymic and no other surname.
+
+**Closed four — 35 absent → 31**: both von Törnes, Gustaf Harmens, and **Sten Carl Bielke**.
+
+**Bielke is the one that matters.** Twenty minutes earlier his own tree was the session's first
+bail: saturated to four generations, and expanding its smallest arrow reached Nils Larsson and
+Ingrid NN, both parentless and one of them tier 2 — but neither relative menu offers a Parents row
+at all, which is how a locked master profile presents. Nothing on that page was addable.
+`docs/export-seed-rules.md` says a bail is per-attempt, never per-person, and that the ranking is
+the state; **an unrelated export three targets later swept him in**. That is the self-healing
+claim measured rather than asserted.
+
+**A tier judgement, recorded because it could have gone the other way.** Tomas Andersén is
+parentless and reads like a patronymic plus a surname, which would be tier 1. But `-én` is an
+ornamental Swedish surname, not one of the live patronymic endings the rules name — so he is tier
+4, and Rangela's genuine `-dotter` won.
+
+**A new failure mode with the same fix as the blank renderer:** the download page came back with
+no CSS and its link would not fire. A plain reload of the same URL restored the styled page and
+the button worked.
