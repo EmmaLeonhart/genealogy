@@ -72,6 +72,43 @@ rest need to be admitted to the seed set deliberately.
 **Expect the batch to grow.** The seed set is 104 today. Whether the caps absorb 249 more seeds
 or the daily batch jumps in size is something to measure on the first run, not to guess at.
 
+## DECIDED — the ledger is REBUILT every run, from two sources, and nothing else
+
+**Emma, 2026-08-27:** *"never deleting rows is a horrible idea. Simple as that... This seems to
+explain why it is that it was this giant grab bag of some stuff that was actually generated and
+some random garbage that got thrown in. The ledger should be everything I've edited. In addition
+to everything I've edited, it would include all of the Bure clan people. Nobody else needs to be
+in the ledger. Refusing to delete it is the reason why it is that I got filled up with garbage
+that wasn't supposed to be there."*
+
+**The two sources, and there is no third:**
+
+1. **Her Wikidata contributions** — every item she created or touched, resolved to a Geni id
+   through its `P2600` *Geni.com profile ID*.
+2. **The Bureätten people** — `reports/bureatten.csv`, the sv.wikipedia Category:Bureätten
+   listing; the **251** rows carrying both a QID and a Geni id.
+
+Anything not in one of those two does not survive a run. `entity_resolution.md` is not a source.
+Hand-typed rows are not a source.
+
+**The defect: `refresh-garborg-ledger.py` has merged rather than rebuilt since its first commit**,
+`30943703` on 2026-08-25 — titled *"rebuild the Garborg ledger from Emma's account"*, while the
+code loads the existing file and only ever adds. That is the accumulation mechanism, and on
+2026-08-27 it was described to her as reassuring (*"nothing is being lost"*) rather than as the
+problem.
+
+**What a rebuild costs today, stated so it is not a surprise.** Seven spine people vanish:
+`Q5915800` Knut Algotsson, `Q101247444` Ingegerd Svantepolksdotter, `Q6197518` Svantepolk
+Knutsson Viby, `Q3743799` Knut Valdemarsson, `Q4953376` Helena Guttormsdatter, `Q274606`
+Berengar I, `Q284400` Gisele of Cysoing. She has edited all seven, so they are in her
+contributions — but their items carry **no `P2600`**, so nothing can resolve them to a Geni id.
+They exist in the ledger only because they were typed there.
+
+**The fix for that is not to keep merging.** `reports/wikidata-spine-add-p2600.qs` holds the 16
+`P2600` statements for exactly these people, two of them accepted by her on 2026-08-26, and has
+never been run. Once it runs they resolve on their own. Until then a rebuild loses Charlemagne
+spine steps 16–21 and 31–32.
+
 ## Stuff here (semi-confusing) 8-27
 
 Okay so idk what is going on since a lot of contradictory thins are happening. idk if the section below is the next step and the queue is not in use or if it is awkwardly set up
@@ -2088,4 +2125,31 @@ a selection algorithm. Nothing has ever selected people world-tree-agnostically.
 **Trigger:** when a person in `have` is connected on Wikidata to the 1,339,227-item component
 containing Charlemagne. That is checkable offline against `out/wikidata/relations.tsv` and should
 be measured, not waited for by eye.
+
+## NOTE from the review — what `universe` actually means, and the bridging risk it creates
+
+**Her restatement, 2026-08-27, after the `universe` restriction was explained:** *"having
+explained the universe thing to me better and how it needs to be a path between my items. As I
+understand it, a path between my items can be filled in, or one hop off of any of my items, with
+that thing in mind."*
+
+That is exactly right, and it is worth keeping in her words because it is the clearest statement
+of the design anywhere: **the subgraph is the set of paths between her own items**, and **the ring
+is one hop off any of them**.
+
+**The risk she then identified, which nothing currently checks.** *"it means that we could
+potentially start to see some of the European-to-Asian street stuff behaving weird, because in my
+items most of them are Scandinavian, but there are those Korean things and a couple more remote
+answers and some more remote people."* Her items are overwhelmingly Norwegian and Swedish with a
+few Korean, Japanese and Samaritan outliers. If a chain of edits ever connects those clusters
+through her own items, the subgraph joins them and the ring starts growing at both ends of a
+bridge nobody intended. Worth measuring before it happens: which of her items sit outside the
+Scandinavian mass, and what would have to be linked for the walk to cross.
+
+**And a caution against fixing it prematurely.** *"I don't want to over-engineer statefulness into
+the system when it's not needed. A statefulness of one person, like a statefulness of 'every day
+there's an additional hop', is something that would conceivably make it lighter. I'm also not even
+100% sure, because that might make it explode quite fast too."* So: do not build daily-hop
+statefulness on the strength of this note. It could bound the growth or accelerate it, and which
+one is an empirical question.
 

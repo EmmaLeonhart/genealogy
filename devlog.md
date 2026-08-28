@@ -16529,3 +16529,42 @@ verbatim as `queue.md` items 11 and 12.
 **1,415 passed, 27 skipped, 2 failed** — the two are the ledger/batch overlap and the batch
 inventory, both consequences of the ledger going 164 → 209 rows, and both parked at the back of
 the queue at her instruction rather than chased mid-review.
+
+## 2026-08-27 — the partial-NN census: 9,539 people have half a name
+
+Emma deferred this from the batch work: what is the right model for `Sara /NN/`, where `GIVN` is
+a real name and the surname field is the literal marker `NN`?
+
+**`scripts/census-partial-nn.py`, over 1,697,887 name records:**
+
+| shape | records |
+| --- | ---: |
+| marker in `GIVN`, family name known — `NN /Oskarsson/` | **8,133** |
+| nothing survives — both marked, or one marked and the other empty | 5,226 |
+| marker in the family name, given name known — `Sara /NN/` | **1,406** |
+
+**9,539 partial, 396 of them already on Wikidata.** The two shapes are not symmetric — the
+given-name-unknown case outnumbers the surname-unknown one nearly six to one — and the vocabulary
+is wider than `NN` in practice: `Elizabeth Frances /unknown/`, `Unknown /Dickson/`,
+`Nn /de Cseklész/`.
+
+**Decision: the marker is preserved and normalised to `NN`, in the position the unknown part
+occupies.** `NN Oskarsson`, `Sara NN`, `NN Gunnarsdatter Frafjord`.
+
+The strongest argument is that `CLAUDE.md` already said so and nobody noticed it applied here.
+§ *`NN` is PRESERVED in `mul`* quotes her — *"NN is always preserved in the multi-language
+label"* — and its worked example, `mul NN Garborg` with `en son of Arne Olaus Fjørtoft Garborg`,
+**is** a partial case. Beyond that: deleting the marker asserts something false (`Sara NN` →
+`Sara` claims a recorded mononym; `NN Oskarsson` → `Oskarsson` is a bare surname, which
+§ *Redacted people go in* forbids as a label), and the side the marker sits on is the only thing
+distinguishing the two 4-figure populations. Descriptive labels in other languages are unchanged
+— they key on having no usable name in that language, not on being fully unnamed.
+
+**Two of my own errors inside the census, both the absent-versus-empty trap, both caught before
+reporting.** `NN` with no surname was first classed as "family name known", because `marked("")`
+is False — a field must be non-empty *and* unmarked to count as known, which moved 5,226 records
+out of the partial count. Then the `partial` filter still tested the old shape string and reported
+all 14,765 as partial.
+
+**Not done:** the 396 partials already on Wikidata carry whatever the earlier code wrote,
+including lowercase `nn` on `Q141198538`. Nothing has swept them.
