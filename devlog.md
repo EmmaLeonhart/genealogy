@@ -17202,3 +17202,17 @@ one place because each one first presented as the kind of thing
 A genuine bail looks different: the two profiles that failed today returned a *styled* page with an
 empty canvas that survived a reload, and a small tree loaded normally in between, which is what
 established the fault was per-profile rather than a Geni outage.
+
+## 2026-08-28 — export 19 takes the whole Sandels family
+
+Group 4, export 19. Target August Sandels `6000000011634551625` (`Q6092404`), Geni's *Samuel August
+Sandels*. Saturated page, so the smallest arrow was expanded — Georg Jürgen Brandt `+1` — which
+exposed exactly one frontier person, **Jochen Brandt**, parentless with a surname and no
+patronymic. Tier 4, seed `6000000227474621825` `NN /Brandt/`.
+
+**Closed three, all Sandels — 27 absent → 24**: August, Gösta Sandels the painter, and Karl
+Sandels. Three separate entries on the Bureätten list that are one family, closed by one export.
+That is Emma's convergence argument at the smallest scale: the ball does not close a target, it
+closes a neighbourhood.
+
+**Sixteen exports collected today: 100 absent → 24.**
