@@ -16928,3 +16928,28 @@ reported an empty URL for several seconds before it appeared.
 
 Closures per export across group 4 now read 2, 20, 2, 4, 2. The twenty came from the seed placed
 deepest inside the network; every small one has been seeded at its edge.
+
+## 2026-08-28 — the green arrow, not the count, is what says "parentless"
+
+Group 4, export 5. Target Gustaf Thure Bielke `6000000001801796027` (`Q5575580`). Seed
+`6000000227471944047` `NN /van Ruyven/`, `Forest`/5000, ~5 minutes, 5000 at the cap.
+**Closed six — 70 absent → 64**: Bielke, Nils Gyldenstolpe, Charlotta Aurora De Geer, Carl Georg
+Sparre, Hans Henric von Essen and Gustaf Fredrik Åkerhielm.
+
+**Finding a slot took five wrong guesses, and the thing that was wrong is worth writing down.** I
+ranked the fourth generation by its green `+N` count on the theory that a small count means few
+relatives means an open parent slot. Margareta Andersén `+6`, Julius Fredrik Friedenreich `+7`,
+Gustaf Düben d.ä. `+10`, Ingrid Charlotta Ekenbom `+14`, Emerentia Standaert `+13` — **every one
+of them had both parents.** The count is relatives-not-shown of every kind, mostly siblings and
+children, and it says nothing about parents.
+
+**What does say it is the absence of the arrow entirely.** Four people on the page carry no green
+button at all — Reinier Temminck, Johanna Walburg van Hachten, Hendrik van Wouw and Catharina van
+Ruyven, the Dutch branch that arrived through Catharina Eleonora Temminck. No arrow means nothing
+further up, which is what parentless looks like. Catharina van Ruyven had neither parent and a
+surname distinct from her husband's and her children's, so `van Ruyven` is a birth surname and the
+seed is tier 4: `NN /van Ruyven/`.
+
+**The seed is Dutch and all six closures are Swedish**, which is the convergence argument again:
+the `Forest` walked back through Bielke into the Bureätten network rather than outward into
+Holland. Closures per export in group 4 now read 2, 20, 2, 4, 2, 6.
