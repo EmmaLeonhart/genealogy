@@ -651,7 +651,8 @@ SPINE_P2600_BLOCK = """
 # MANUAL ZIPPER MERGES -- hard-coded, appended to every batch, on purpose.
 #
 # Each line asserts that an existing Wikidata item IS a particular Geni person.
-# These eight are on the Arne -> Charlemagne chain. Their items exist and are
+#
+# Eight are on the Arne -> Charlemagne chain. Their items exist and are
 # well documented, but carry no P2600 Geni.com profile ID, so nothing outside
 # this repo records the correspondence and the chain cannot be followed on
 # Wikidata. The daily algorithm depends on these pairings.
@@ -681,6 +682,19 @@ Q466257\tP2600\t"4258970970100070152"
 Q274606\tP2600\t"6000000001669654269"
 #   Q284400 Gisele of Cysoing: P2600 Geni.com profile ID
 Q284400\tP2600\t"6000000000424624719"
+#
+#   Q10411463 Andreas Olai: P2600 Geni.com profile ID.  Emma, 2026-08-28:
+#   "we add this qid geni id add thing to the quickstatements block that
+#   always gets added in".  Identified during the mass export campaign by
+#   STRUCTURE, never by name: the Geni profile reads "Son of Olof, Brother of
+#   Kerstin Olofsdotter and Benedictus Olai", and the item carries P3373
+#   sibling -> Q4355463 Benedictus Olai.  Its About text gives 1521-1560,
+#   matching the item's P569 date of birth and P570 date of death exactly.
+#   The structured Birth field is the trap -- it says "estimated between 1450
+#   and 1570", which is why the pairing looked unmakeable.  Emma put P1889
+#   different from on the item to separate him from the better-known
+#   Andreas Olai, so the name alone could never have settled this.
+Q10411463\tP2600\t"6000000040951562251"
 """
 
 
