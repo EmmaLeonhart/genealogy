@@ -27,6 +27,8 @@ For all of the cron jobs that I set up in the session. They are good and continu
 
 Look over all of the items that I have edited but did no create. These are a bit of a weak point for me since they are potentially items that are no in my watchlist and might cause me issues. Create a batch of quickstatements that does some kind of minor edit on all of them if possible preferable settin their mul labels or something
 
+Look over this item it just piques my curiosity whether we can identify it on geni and potentially add a mul label https://www.wikidata.org/wiki/Q4411612
+
 
 ## Built and waiting on 2026-09-01 — nothing to do until then
 
