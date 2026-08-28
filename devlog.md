@@ -16953,3 +16953,24 @@ seed is tier 4: `NN /van Ruyven/`.
 **The seed is Dutch and all six closures are Swedish**, which is the convergence argument again:
 the `Forest` walked back through Bielke into the Bureätten network rather than outward into
 Holland. Closures per export in group 4 now read 2, 20, 2, 4, 2, 6.
+
+## 2026-08-28 — export 6, and the no-arrow rule pays for itself immediately
+
+Group 4, export 6. Target Adolf Fredrik Munck `6000000003748326674` (`Q2478781`). Seed
+`6000000227472157986` `NN /Wright/`, `Forest`/5000, ~5 minutes, 5000 at the cap. **Closed six —
+64 absent → 58**: Munck, three Adelswärds and two Heijkenskjölds.
+
+**The slot was found on the first look.** The rule the Bielke page taught — ignore the green `+N`
+count, look for a node carrying no green button at all — put George Wright (c.1630–1694) straight
+away: he displays bare *Add father* and *Add mother* boxes. Tier 4, surname `Wright`, no
+patronymic, so `NN /Wright/`. The previous tree cost five relative-menu clicks to learn this.
+
+**A tier-1 slot was visible on the same page and was not usable.** Anna Danielsdotter Walding
+carries a live patronymic, which would name her father `Daniel` — but both her parents are already
+recorded, so there is no slot to take. The tier order ranks *available* slots, not people.
+
+**Blank-renderer-after-save happened again**, third time in three seeds, and a plain reload of the
+same tree URL fixed it again each time. It is a rendering failure with a known recovery, not the
+kind of weirdness `docs/export-seed-rules.md` says to bail on.
+
+Closures per export in group 4: 2, 20, 2, 4, 2, 6, 6.
