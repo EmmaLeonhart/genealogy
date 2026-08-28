@@ -18,6 +18,19 @@ audits, dead crons and superseded priorities. Recover any of it with
      important thing. Recovered from `git show 07600faf:queue.md`. Do not rewrite
      her text; add underneath it. -->
 
+## 0. Wording
+
+Yeah it is a bit contradictory it seems because the specicic thing is that you were trying to preserve what I said even aftet it was completed
+
+No clue at this point if the large series of tasks I added was even preserved at all since the queue appears to habve already become complete garbage 
+
+But I want an additional thing: I want us to have the properyy https://www.wikidata.org/wiki/Property:P1810 with the specific name geni gives them 
+
+As an addendum to this property, though, we are going to do an additional rule, which is that we are always adding the English name of the person on Geni. https://www.wikidata.org/wiki/Q64636596 I got the idea for this person, although it was their Genealogics. There was their Genealogics ID, but my rule would be that we add the English-language name, and we have to add an English-language name. In the event that their name is not present on Jenny in English, then we have to use the browser automation to add the name of the person onto their Jenny profile before we can add it there. It could be their Wikidata name, or it could be something else.
+
+That's the thing I potentially want to do as a campaign to make Jenny readable to everybody. For now, we're sticking to this being a primary Wikidata-based project, so we just do not add a label. 
+
+
 ## 1. THE MASS EXPORT CAMPAIGN — front task, RUNNING
 
 **`docs/mass-export-run.md` is the run sheet** — the four groups in her order, every Geni id, the
