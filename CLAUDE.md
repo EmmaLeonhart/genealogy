@@ -1898,6 +1898,37 @@ her immediate ring cut a batch from ~30 people to **7** because the caps stopped
 10 children, 0 of 10 parents. And *ordering the ring by closeness to Arne*, which `11295af7`
 did over **our Geni tree**; that is the closest thing that ever existed, and it is not this.
 
+### The subgraph gates CREATIONS only. Filling in existing items is ledger-wide, and that is fine
+
+**Emma, 2026-08-28**, shown that the batch had added `P26` *spouse* and `P40` *child* statements
+to `Q116150299` *Jon Reimatsen* and `Q116150300` *Cecilie Ebbesdatter*, both of whom she had
+listed as outside the contiguous group: *"It is literally fine if the guard does not apply here,
+It is fine to add these things to people we are not creating, a bit of activity not centered on
+the subgraph is a-okay especially when it improves the state of items we already created."*
+
+**Two passes, two populations, and the split was never designed** — it is where the filter
+happened to go. `build-garborg-day.py` line ~1035 gates the **seed pool** by the subgraph, which
+is what `compose()` grows the ring from. The additions pass 300 lines later iterates
+`sorted(have.items())` — the whole ledger — and every inner test is `in have`, never `in seeds`.
+
+**It is bounded, which is why it is cheap.** Additions can only touch items already in the
+ledger; they cannot pull a new person in. Expansion is the ring's job and stays subgraph-gated.
+The only thing that grows with the ledger is the count of fill-in statements — 178 on 2026-08-28
+— and `P3373` *sibling* is capped at 10 a day regardless.
+
+**And it pre-builds bridges rather than wandering.** The six people it was knitting together are
+Jon Reimatsen, Cecilie Ebbesdatter and their four children — six of the seven she named as
+outside the group. Cecilie's father in our tree is `6000000003166417414` **Ebbe Sunesen Hvide**,
+who is **step 22 of `paths/charlemagne-to-arne-garborg.tsv`**. When the spine reaches him, one
+`P40` joins that whole island to the contiguous group in a single edit.
+
+**This is why the exclusion list still exists, and it revises what was said earlier.** Emma:
+*"why are we even having exclusions? If you just followed the algorithm then exclusions wouldn't
+be needed."* True of **creations** — she is not in the subgraph, so she is never a seed. Not true
+of **additions**, which are ledger-wide: her `Q140568870` and the Kitajima items are in the
+ledger, so without the exclusion the fill-in pass would edit them. Do not remove the exclusions
+on the strength of the subgraph alone.
+
 ### The ledger refresh is PART OF THE RUN. A separate step is a stale ledger
 
 **Emma, 2026-08-28:** *"this is worrying since it seems to indicate that you might be building

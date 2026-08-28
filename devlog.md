@@ -16369,3 +16369,30 @@ unknown surname, is deferred to a 21:00 census at her instruction.
 reach zero once the Emma-ward walk is dealt with properly.
 
 **1,399 passed, 25 skipped, 0 failed** in 6m01s.
+
+## 2026-08-28 — the subgraph gates creations, not fill-ins, and Emma has ruled that acceptable
+
+She saw the batch adding `P26` *spouse* and `P40` *child* to `Q116150299` Jon Reimatsen and
+`Q116150300` Cecilie Ebbesdatter, both on her own list of people outside the contiguous group,
+and ruled: *"It is literally fine if the guard does not apply here... a bit of activity not
+centered on the subgraph is a-okay especially when it improves the state of items we already
+created."*
+
+Traced before answering: the subgraph filter is at the **seed pool** (line ~1035), and the
+additions pass at line ~1326 iterates `sorted(have.items())` with every inner test `in have`,
+never `in seeds`. The split was never designed — it is where the filter happened to land.
+
+Three things worth knowing about it, and only one is a caution:
+
+- **Bounded.** Additions touch only items already in the ledger and cannot pull a new person in.
+  Expansion is the ring's job and stays gated.
+- **It pre-builds a bridge.** The six being knitted together are Jon Reimatsen, Cecilie
+  Ebbesdatter and their four children — six of the seven she named as outside. Cecilie's father
+  is `6000000003166417414` Ebbe Sunesen Hvide, **step 22 of the Charlemagne path**; the spine is
+  at 13. When it reaches him, one `P40` joins the island to the group in a single edit.
+- **The exclusions are load-bearing here, which revises what I told her earlier.** Her point that
+  following the algorithm removes the need for exclusions holds for creations — she is never a
+  seed — and **not** for additions, which are ledger-wide. Her item and the Kitajima items are in
+  the ledger, so the exclusion list is the only thing keeping the fill-in pass off them.
+
+Recorded in `CLAUDE.md`; no behaviour changed, because she endorsed the behaviour.
