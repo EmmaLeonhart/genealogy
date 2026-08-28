@@ -149,6 +149,17 @@ def test_every_qid_the_batch_points_at_already_exists():
 SPINE_BLOCK_QIDS = {"Q5915800", "Q101247444", "Q6197518", "Q3743799",
                     "Q4953376", "Q466257", "Q274606", "Q284400"}
 
+#: The 177 items `CJK_CLAN_BLOCK` labels. Same situation as the spine block and the same
+#: reasoning: they are not ledger members, the block exists to give them a `mul` label and
+#: formulaic descriptions, and the list is **read from a file rather than pattern-matched**, so
+#: an item that quietly appeared in the batch by some other route would still fail this test.
+#: `reports/cjk-clan-block-qids.txt` is regenerated whenever the block is.
+def _cjk_block_qids():
+    path = REPO / "reports" / "cjk-clan-block-qids.txt"
+    if not path.exists():
+        return set()
+    return {ln.strip() for ln in path.read_text(encoding="utf-8").splitlines() if ln.strip()}
+
 
 def test_every_explicit_subject_already_exists():
     """A statement on `Q…` edits an existing item; on `LAST` it edits the new one.
@@ -160,7 +171,7 @@ def test_every_explicit_subject_already_exists():
     thing the block fixes. When the block is deleted this set goes with it, and if it is ever
     emptied the assertion tightens back to what it always was.
     """
-    known = known_qids() | SPINE_BLOCK_QIDS
+    known = known_qids() | SPINE_BLOCK_QIDS | _cjk_block_qids()
     unknown = sorted({m.group(1) for ln in lines()
                       if (m := QID_SUBJECT.match(ln)) and m.group(1) not in known})
     assert not unknown, f"editing items not in the ledger: {unknown[:5]}"
@@ -239,7 +250,21 @@ def test_a_label_is_never_written_over_an_item_that_already_has_one():
     A label in a language the item does **not** have is a different thing and is
     allowed — that is how `Q11959067` gets its `ja` and `zh`.
     """
-    bad = [ln for ln in lines() if re.match(r"^Q[1-9][0-9]*\tL(en|mul)\t", ln)]
+    # **`CJK_CLAN_BLOCK` sets `mul` on 177 items that have none, which this rule allows and the
+    # blanket regex cannot see.** Checked live on 2026-08-28 via `full_entities`: `mul` is empty
+    # on all 177, and `en` is occupied on all 177 — which is why the block writes no `en` for
+    # them at all. The exemption is `Lmul` only, and only for ids the block actually names, read
+    # from `reports/cjk-clan-block-qids.txt`. An `Len` on one of them, or an `Lmul` on anybody
+    # else, still fails.
+    cjk = _cjk_block_qids()
+    bad = []
+    for ln in lines():
+        m = re.match(r"^(Q[1-9][0-9]*)\tL(en|mul)\t", ln)
+        if not m:
+            continue
+        if m.group(2) == "mul" and m.group(1) in cjk:
+            continue
+        bad.append(ln)
     assert not bad, f"overwriting the label of an existing item: {bad[:3]}"
 
 

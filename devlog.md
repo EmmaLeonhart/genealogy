@@ -16761,3 +16761,42 @@ question about Chinese rather than about this data, and a half-right label is wo
 **No batch generated.** Her instruction was that the correction rides along with the daily
 QuickStatements like `SPINE_P2600_BLOCK` — but that block is eight lines and this would be about
 1,950 appended to every run, so the size goes to her before it is wired in.
+
+## 2026-08-28 — the CJK clan block is wired in, writing only empty label slots
+
+Emma: *"Fucking wire it in"*. `CJK_CLAN_BLOCK` is now a literal string in
+`build-garborg-day.py`, appended to every batch beside `SPINE_P2600_BLOCK`. Batch 1,398 → 4,684
+lines.
+
+**It writes only into label slots that are empty, and that came out of a test rather than
+foresight.** The first wiring emitted all 1,947 statements and
+`test_a_label_is_never_written_over_an_item_that_already_has_one` caught it: `Q10864996` already
+reads **"Wanshou"** in `en`, and the block would have replaced it with *"woman of the Li clan,
+from Longxi Didao"*. That is the situation she had already ruled on for `Q107337800`
+Joan Chaworth — *"Wikidata wins — never overwrite with NN"*.
+
+Checked live over all 177 rather than sampled:
+
+| | already set | free |
+| --- | ---: | ---: |
+| `mul` | **0** | 177 |
+| `en` | **177** | 0 |
+| `nl` | **177** | 0 |
+| `es` | 93 | 84 |
+| `nb da sv de it pt ca` | 0 | 177 each |
+
+So `mul` gets its `NN` on all 177, seven languages get the formula, `es` gets it on 84, and `en`
+and `nl` are not touched at all. **1,947 → 1,500 statements.**
+
+**The two tests were made sharper, not looser.** The subject test reads the block's ids from
+`reports/cjk-clan-block-qids.txt` rather than matching a pattern, so an item appearing by some
+other route still fails. The overwrite guard was blanket — any `Q… Lmul` line failed, though its
+own docstring says a language the item lacks is allowed — and now distinguishes the two: `Lmul`
+is permitted only for ids the block names, so an `Len` on one of them, or an `Lmul` on anyone
+else, still fails.
+
+**1,418 passed, 26 skipped, 0 failed.**
+
+**What is lost, and it is worth her seeing:** the English label she designed the formula for is
+the one language it cannot be written to, because every one of the 177 already has an `en`. For
+Wanshou that existing label is a real name.

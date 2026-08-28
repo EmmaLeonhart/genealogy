@@ -684,6 +684,3046 @@ Q284400\tP2600\t"6000000000424624719"
 """
 
 
+#: **The CJK clan labels, hard-coded and appended to every batch, exactly like
+#: `SPINE_P2600_BLOCK`.** Emma, 2026-08-28: *"Fucking wire it in"*, after the formula was
+#: worked out on `Q10864996` and measured across the population.
+#:
+#: 177 people, 1,947 statement lines. Larger than the `P2600` block by two orders of
+#: magnitude, and the same mechanism for the same reason: the first run that reaches an
+#: item sets the labels, every run after that sets them to what they already say, and
+#: QuickStatements makes that a no-op. No state, no check, no conditional. Delete the
+#: block when the 177 are done.
+#:
+#: Built by `scripts/build-cjk-clan-labels.py` from `reports/cjk-clan-labels.tsv` and
+#: pasted here as a literal. It is not read from the file at run time on purpose — the
+#: same reason the `P2600` block is a literal.
+CJK_CLAN_BLOCK = """
+# -------------------------------------------------------------------------
+# CJK CLAN LABELS -- hard-coded, appended to every batch, on purpose.
+#
+# Geni records these people as a marker, a place and a clan:
+#   GIVN 某 (unknown-name marker) / SURN 隴西狄道 (a PLACE) / _MARNM 李 (the clan).
+# 348 of 354 records have that shape and every _MARNM is one character, so the
+# married-name field holds the real surname and the surname field holds a place.
+#
+# Emma, 2026-08-28: "this formulation should be 'woman of the Li clan, from Longxi
+# Didao' as the English label and all languages have a similar thing but NN is the
+# right mul". Sex comes from the data -- 169 of these 177 are men.
+#
+# ONLY EMPTY LABEL SLOTS ARE WRITTEN. A label REPLACES, and her other ruling is that
+# Wikidata wins where it already knows a name: `en` is occupied on all 177 (Q10864996
+# reads "Wanshou") and `nl` on all 177, so neither is touched here. mul is empty on
+# all 177; es on 84 of them.
+#
+# ja and zh are absent on purpose -- the idiomatic Chinese form is a question about
+# Chinese rather than about this data.
+#
+# Repeats every run: setting a label to what it already says is a no-op. Delete when
+# the 177 are done.
+# -------------------------------------------------------------------------
+#   Q10864996 (李 of 隴西狄道): mul label = NN
+Q10864996	Lmul	"NN"
+#   Q10864996: set the nb label
+Q10864996	Lnb	"kvinne av Li-slekten, fra Longxi Didao"
+#   Q10864996: set the da label
+Q10864996	Lda	"kvinde af Li-slægten, fra Longxi Didao"
+#   Q10864996: set the sv label
+Q10864996	Lsv	"kvinna av Li-ätten, från Longxi Didao"
+#   Q10864996: set the de label
+Q10864996	Lde	"Frau des Klans Li, aus Longxi Didao"
+#   Q10864996: set the it label
+Q10864996	Lit	"donna del clan Li, da Longxi Didao"
+#   Q10864996: set the pt label
+Q10864996	Lpt	"mulher do clã Li, de Longxi Didao"
+#   Q10864996: set the ca label
+Q10864996	Lca	"dona del clan Li, de Longxi Didao"
+#   Q10881168 (李 of 隴西狄道): mul label = NN
+Q10881168	Lmul	"NN"
+#   Q10881168: set the nb label
+Q10881168	Lnb	"kvinne av Li-slekten, fra Longxi Didao"
+#   Q10881168: set the da label
+Q10881168	Lda	"kvinde af Li-slægten, fra Longxi Didao"
+#   Q10881168: set the sv label
+Q10881168	Lsv	"kvinna av Li-ätten, från Longxi Didao"
+#   Q10881168: set the de label
+Q10881168	Lde	"Frau des Klans Li, aus Longxi Didao"
+#   Q10881168: set the it label
+Q10881168	Lit	"donna del clan Li, da Longxi Didao"
+#   Q10881168: set the pt label
+Q10881168	Lpt	"mulher do clã Li, de Longxi Didao"
+#   Q10881168: set the ca label
+Q10881168	Lca	"dona del clan Li, de Longxi Didao"
+#   Q11064679 (李 of 隴西狄道): mul label = NN
+Q11064679	Lmul	"NN"
+#   Q11064679: set the nb label
+Q11064679	Lnb	"kvinne av Li-slekten, fra Longxi Didao"
+#   Q11064679: set the da label
+Q11064679	Lda	"kvinde af Li-slægten, fra Longxi Didao"
+#   Q11064679: set the sv label
+Q11064679	Lsv	"kvinna av Li-ätten, från Longxi Didao"
+#   Q11064679: set the de label
+Q11064679	Lde	"Frau des Klans Li, aus Longxi Didao"
+#   Q11064679: set the it label
+Q11064679	Lit	"donna del clan Li, da Longxi Didao"
+#   Q11064679: set the pt label
+Q11064679	Lpt	"mulher do clã Li, de Longxi Didao"
+#   Q11064679: set the ca label
+Q11064679	Lca	"dona del clan Li, de Longxi Didao"
+#   Q11098137 (李 of 河南府): mul label = NN
+Q11098137	Lmul	"NN"
+#   Q11098137: set the nb label
+Q11098137	Lnb	"mann av Li-slekten, fra Henan Prefecture"
+#   Q11098137: set the da label
+Q11098137	Lda	"mand af Li-slægten, fra Henan Prefecture"
+#   Q11098137: set the sv label
+Q11098137	Lsv	"man av Li-ätten, från Henan Prefecture"
+#   Q11098137: set the de label
+Q11098137	Lde	"Mann des Klans Li, aus Henan Prefecture"
+#   Q11098137: set the es label
+Q11098137	Les	"hombre del clan Li, de Henan Prefecture"
+#   Q11098137: set the it label
+Q11098137	Lit	"uomo del clan Li, da Henan Prefecture"
+#   Q11098137: set the pt label
+Q11098137	Lpt	"homem do clã Li, de Henan Prefecture"
+#   Q11098137: set the ca label
+Q11098137	Lca	"home del clan Li, de Henan Prefecture"
+#   Q11110062 (柳 of 河東解縣): mul label = NN
+Q11110062	Lmul	"NN"
+#   Q11110062: set the nb label
+Q11110062	Lnb	"mann av Liu-slekten, fra Hedong Jiexian"
+#   Q11110062: set the da label
+Q11110062	Lda	"mand af Liu-slægten, fra Hedong Jiexian"
+#   Q11110062: set the sv label
+Q11110062	Lsv	"man av Liu-ätten, från Hedong Jiexian"
+#   Q11110062: set the de label
+Q11110062	Lde	"Mann des Klans Liu, aus Hedong Jiexian"
+#   Q11110062: set the it label
+Q11110062	Lit	"uomo del clan Liu, da Hedong Jiexian"
+#   Q11110062: set the pt label
+Q11110062	Lpt	"homem do clã Liu, de Hedong Jiexian"
+#   Q11110062: set the ca label
+Q11110062	Lca	"home del clan Liu, de Hedong Jiexian"
+#   Q11180129 (李 of 隴西狄道): mul label = NN
+Q11180129	Lmul	"NN"
+#   Q11180129: set the nb label
+Q11180129	Lnb	"kvinne av Li-slekten, fra Longxi Didao"
+#   Q11180129: set the da label
+Q11180129	Lda	"kvinde af Li-slægten, fra Longxi Didao"
+#   Q11180129: set the sv label
+Q11180129	Lsv	"kvinna av Li-ätten, från Longxi Didao"
+#   Q11180129: set the de label
+Q11180129	Lde	"Frau des Klans Li, aus Longxi Didao"
+#   Q11180129: set the es label
+Q11180129	Les	"mujer del clan Li, de Longxi Didao"
+#   Q11180129: set the it label
+Q11180129	Lit	"donna del clan Li, da Longxi Didao"
+#   Q11180129: set the pt label
+Q11180129	Lpt	"mulher do clã Li, de Longxi Didao"
+#   Q11180129: set the ca label
+Q11180129	Lca	"dona del clan Li, de Longxi Didao"
+#   Q15954845 (李 of ): mul label = NN
+Q15954845	Lmul	"NN"
+#   Q15954845: set the nb label
+Q15954845	Lnb	"kvinne av Li-slekten"
+#   Q15954845: set the da label
+Q15954845	Lda	"kvinde af Li-slægten"
+#   Q15954845: set the sv label
+Q15954845	Lsv	"kvinna av Li-ätten"
+#   Q15954845: set the de label
+Q15954845	Lde	"Frau des Klans Li"
+#   Q15954845: set the es label
+Q15954845	Les	"mujer del clan Li"
+#   Q15954845: set the it label
+Q15954845	Lit	"donna del clan Li"
+#   Q15954845: set the pt label
+Q15954845	Lpt	"mulher do clã Li"
+#   Q15954845: set the ca label
+Q15954845	Lca	"dona del clan Li"
+#   Q16603665 (李 of 隴西狄道): mul label = NN
+Q16603665	Lmul	"NN"
+#   Q16603665: set the nb label
+Q16603665	Lnb	"kvinne av Li-slekten, fra Longxi Didao"
+#   Q16603665: set the da label
+Q16603665	Lda	"kvinde af Li-slægten, fra Longxi Didao"
+#   Q16603665: set the sv label
+Q16603665	Lsv	"kvinna av Li-ätten, från Longxi Didao"
+#   Q16603665: set the de label
+Q16603665	Lde	"Frau des Klans Li, aus Longxi Didao"
+#   Q16603665: set the es label
+Q16603665	Les	"mujer del clan Li, de Longxi Didao"
+#   Q16603665: set the it label
+Q16603665	Lit	"donna del clan Li, da Longxi Didao"
+#   Q16603665: set the pt label
+Q16603665	Lpt	"mulher do clã Li, de Longxi Didao"
+#   Q16603665: set the ca label
+Q16603665	Lca	"dona del clan Li, de Longxi Didao"
+#   Q18908886 (韋 of 京兆杜陵): mul label = NN
+Q18908886	Lmul	"NN"
+#   Q18908886: set the nb label
+Q18908886	Lnb	"mann av Wei-slekten, fra Jingzhao Duling"
+#   Q18908886: set the da label
+Q18908886	Lda	"mand af Wei-slægten, fra Jingzhao Duling"
+#   Q18908886: set the sv label
+Q18908886	Lsv	"man av Wei-ätten, från Jingzhao Duling"
+#   Q18908886: set the de label
+Q18908886	Lde	"Mann des Klans Wei, aus Jingzhao Duling"
+#   Q18908886: set the it label
+Q18908886	Lit	"uomo del clan Wei, da Jingzhao Duling"
+#   Q18908886: set the pt label
+Q18908886	Lpt	"homem do clã Wei, de Jingzhao Duling"
+#   Q18908886: set the ca label
+Q18908886	Lca	"home del clan Wei, de Jingzhao Duling"
+#   Q45420125 (權 of 秦州清水): mul label = NN
+Q45420125	Lmul	"NN"
+#   Q45420125: set the nb label
+Q45420125	Lnb	"mann av Quan-slekten, fra Qinzhou Qingshui"
+#   Q45420125: set the da label
+Q45420125	Lda	"mand af Quan-slægten, fra Qinzhou Qingshui"
+#   Q45420125: set the sv label
+Q45420125	Lsv	"man av Quan-ätten, från Qinzhou Qingshui"
+#   Q45420125: set the de label
+Q45420125	Lde	"Mann des Klans Quan, aus Qinzhou Qingshui"
+#   Q45420125: set the it label
+Q45420125	Lit	"uomo del clan Quan, da Qinzhou Qingshui"
+#   Q45420125: set the pt label
+Q45420125	Lpt	"homem do clã Quan, de Qinzhou Qingshui"
+#   Q45420125: set the ca label
+Q45420125	Lca	"home del clan Quan, de Qinzhou Qingshui"
+#   Q45421489 (崔 of 深州安平): mul label = NN
+Q45421489	Lmul	"NN"
+#   Q45421489: set the nb label
+Q45421489	Lnb	"mann av Cui-slekten, fra Shenzhou Anping"
+#   Q45421489: set the da label
+Q45421489	Lda	"mand af Cui-slægten, fra Shenzhou Anping"
+#   Q45421489: set the sv label
+Q45421489	Lsv	"man av Cui-ätten, från Shenzhou Anping"
+#   Q45421489: set the de label
+Q45421489	Lde	"Mann des Klans Cui, aus Shenzhou Anping"
+#   Q45421489: set the it label
+Q45421489	Lit	"uomo del clan Cui, da Shenzhou Anping"
+#   Q45421489: set the pt label
+Q45421489	Lpt	"homem do clã Cui, de Shenzhou Anping"
+#   Q45421489: set the ca label
+Q45421489	Lca	"home del clan Cui, de Shenzhou Anping"
+#   Q45422231 (柳 of 河東解縣): mul label = NN
+Q45422231	Lmul	"NN"
+#   Q45422231: set the nb label
+Q45422231	Lnb	"mann av Liu-slekten, fra Hedong Jiexian"
+#   Q45422231: set the da label
+Q45422231	Lda	"mand af Liu-slægten, fra Hedong Jiexian"
+#   Q45422231: set the sv label
+Q45422231	Lsv	"man av Liu-ätten, från Hedong Jiexian"
+#   Q45422231: set the de label
+Q45422231	Lde	"Mann des Klans Liu, aus Hedong Jiexian"
+#   Q45422231: set the it label
+Q45422231	Lit	"uomo del clan Liu, da Hedong Jiexian"
+#   Q45422231: set the pt label
+Q45422231	Lpt	"homem do clã Liu, de Hedong Jiexian"
+#   Q45422231: set the ca label
+Q45422231	Lca	"home del clan Liu, de Hedong Jiexian"
+#   Q45429773 (韋 of 襄州穀城): mul label = NN
+Q45429773	Lmul	"NN"
+#   Q45429773: set the nb label
+Q45429773	Lnb	"mann av Wei-slekten, fra Xiangzhou Gucheng"
+#   Q45429773: set the da label
+Q45429773	Lda	"mand af Wei-slægten, fra Xiangzhou Gucheng"
+#   Q45429773: set the sv label
+Q45429773	Lsv	"man av Wei-ätten, från Xiangzhou Gucheng"
+#   Q45429773: set the de label
+Q45429773	Lde	"Mann des Klans Wei, aus Xiangzhou Gucheng"
+#   Q45429773: set the it label
+Q45429773	Lit	"uomo del clan Wei, da Xiangzhou Gucheng"
+#   Q45429773: set the pt label
+Q45429773	Lpt	"homem do clã Wei, de Xiangzhou Gucheng"
+#   Q45429773: set the ca label
+Q45429773	Lca	"home del clan Wei, de Xiangzhou Gucheng"
+#   Q45448943 (蕭 of 蘭陵): mul label = NN
+Q45448943	Lmul	"NN"
+#   Q45448943: set the nb label
+Q45448943	Lnb	"mann av Xiao-slekten, fra Lanling"
+#   Q45448943: set the da label
+Q45448943	Lda	"mand af Xiao-slægten, fra Lanling"
+#   Q45448943: set the sv label
+Q45448943	Lsv	"man av Xiao-ätten, från Lanling"
+#   Q45448943: set the de label
+Q45448943	Lde	"Mann des Klans Xiao, aus Lanling"
+#   Q45448943: set the it label
+Q45448943	Lit	"uomo del clan Xiao, da Lanling"
+#   Q45448943: set the pt label
+Q45448943	Lpt	"homem do clã Xiao, de Lanling"
+#   Q45448943: set the ca label
+Q45448943	Lca	"home del clan Xiao, de Lanling"
+#   Q45449130 (蕭 of 蘭陵): mul label = NN
+Q45449130	Lmul	"NN"
+#   Q45449130: set the nb label
+Q45449130	Lnb	"mann av Xiao-slekten, fra Lanling"
+#   Q45449130: set the da label
+Q45449130	Lda	"mand af Xiao-slægten, fra Lanling"
+#   Q45449130: set the sv label
+Q45449130	Lsv	"man av Xiao-ätten, från Lanling"
+#   Q45449130: set the de label
+Q45449130	Lde	"Mann des Klans Xiao, aus Lanling"
+#   Q45449130: set the it label
+Q45449130	Lit	"uomo del clan Xiao, da Lanling"
+#   Q45449130: set the pt label
+Q45449130	Lpt	"homem do clã Xiao, de Lanling"
+#   Q45449130: set the ca label
+Q45449130	Lca	"home del clan Xiao, de Lanling"
+#   Q45450462 (韋 of 京兆萬年): mul label = NN
+Q45450462	Lmul	"NN"
+#   Q45450462: set the nb label
+Q45450462	Lnb	"mann av Wei-slekten, fra Jingzhao Wannian"
+#   Q45450462: set the da label
+Q45450462	Lda	"mand af Wei-slægten, fra Jingzhao Wannian"
+#   Q45450462: set the sv label
+Q45450462	Lsv	"man av Wei-ätten, från Jingzhao Wannian"
+#   Q45450462: set the de label
+Q45450462	Lde	"Mann des Klans Wei, aus Jingzhao Wannian"
+#   Q45450462: set the it label
+Q45450462	Lit	"uomo del clan Wei, da Jingzhao Wannian"
+#   Q45450462: set the pt label
+Q45450462	Lpt	"homem do clã Wei, de Jingzhao Wannian"
+#   Q45450462: set the ca label
+Q45450462	Lca	"home del clan Wei, de Jingzhao Wannian"
+#   Q45450834 (蕭 of 蘭陵): mul label = NN
+Q45450834	Lmul	"NN"
+#   Q45450834: set the nb label
+Q45450834	Lnb	"mann av Xiao-slekten, fra Lanling"
+#   Q45450834: set the da label
+Q45450834	Lda	"mand af Xiao-slægten, fra Lanling"
+#   Q45450834: set the sv label
+Q45450834	Lsv	"man av Xiao-ätten, från Lanling"
+#   Q45450834: set the de label
+Q45450834	Lde	"Mann des Klans Xiao, aus Lanling"
+#   Q45450834: set the it label
+Q45450834	Lit	"uomo del clan Xiao, da Lanling"
+#   Q45450834: set the pt label
+Q45450834	Lpt	"homem do clã Xiao, de Lanling"
+#   Q45450834: set the ca label
+Q45450834	Lca	"home del clan Xiao, de Lanling"
+#   Q45453968 (韋 of 京兆杜陵): mul label = NN
+Q45453968	Lmul	"NN"
+#   Q45453968: set the nb label
+Q45453968	Lnb	"mann av Wei-slekten, fra Jingzhao Duling"
+#   Q45453968: set the da label
+Q45453968	Lda	"mand af Wei-slægten, fra Jingzhao Duling"
+#   Q45453968: set the sv label
+Q45453968	Lsv	"man av Wei-ätten, från Jingzhao Duling"
+#   Q45453968: set the de label
+Q45453968	Lde	"Mann des Klans Wei, aus Jingzhao Duling"
+#   Q45453968: set the it label
+Q45453968	Lit	"uomo del clan Wei, da Jingzhao Duling"
+#   Q45453968: set the pt label
+Q45453968	Lpt	"homem do clã Wei, de Jingzhao Duling"
+#   Q45453968: set the ca label
+Q45453968	Lca	"home del clan Wei, de Jingzhao Duling"
+#   Q45461450 (崔 of 清河東武城): mul label = NN
+Q45461450	Lmul	"NN"
+#   Q45461450: set the nb label
+Q45461450	Lnb	"mann av Cui-slekten, fra Qinghe Dongwucheng"
+#   Q45461450: set the da label
+Q45461450	Lda	"mand af Cui-slægten, fra Qinghe Dongwucheng"
+#   Q45461450: set the sv label
+Q45461450	Lsv	"man av Cui-ätten, från Qinghe Dongwucheng"
+#   Q45461450: set the de label
+Q45461450	Lde	"Mann des Klans Cui, aus Qinghe Dongwucheng"
+#   Q45461450: set the it label
+Q45461450	Lit	"uomo del clan Cui, da Qinghe Dongwucheng"
+#   Q45461450: set the pt label
+Q45461450	Lpt	"homem do clã Cui, de Qinghe Dongwucheng"
+#   Q45461450: set the ca label
+Q45461450	Lca	"home del clan Cui, de Qinghe Dongwucheng"
+#   Q45469083 (李 of 隴西狄道): mul label = NN
+Q45469083	Lmul	"NN"
+#   Q45469083: set the nb label
+Q45469083	Lnb	"mann av Li-slekten, fra Longxi Didao"
+#   Q45469083: set the da label
+Q45469083	Lda	"mand af Li-slægten, fra Longxi Didao"
+#   Q45469083: set the sv label
+Q45469083	Lsv	"man av Li-ätten, från Longxi Didao"
+#   Q45469083: set the de label
+Q45469083	Lde	"Mann des Klans Li, aus Longxi Didao"
+#   Q45469083: set the it label
+Q45469083	Lit	"uomo del clan Li, da Longxi Didao"
+#   Q45469083: set the pt label
+Q45469083	Lpt	"homem do clã Li, de Longxi Didao"
+#   Q45469083: set the ca label
+Q45469083	Lca	"home del clan Li, de Longxi Didao"
+#   Q45471981 (李 of 隴西狄道): mul label = NN
+Q45471981	Lmul	"NN"
+#   Q45471981: set the nb label
+Q45471981	Lnb	"mann av Li-slekten, fra Longxi Didao"
+#   Q45471981: set the da label
+Q45471981	Lda	"mand af Li-slægten, fra Longxi Didao"
+#   Q45471981: set the sv label
+Q45471981	Lsv	"man av Li-ätten, från Longxi Didao"
+#   Q45471981: set the de label
+Q45471981	Lde	"Mann des Klans Li, aus Longxi Didao"
+#   Q45471981: set the es label
+Q45471981	Les	"hombre del clan Li, de Longxi Didao"
+#   Q45471981: set the it label
+Q45471981	Lit	"uomo del clan Li, da Longxi Didao"
+#   Q45471981: set the pt label
+Q45471981	Lpt	"homem do clã Li, de Longxi Didao"
+#   Q45471981: set the ca label
+Q45471981	Lca	"home del clan Li, de Longxi Didao"
+#   Q45472107 (李 of 隴西狄道): mul label = NN
+Q45472107	Lmul	"NN"
+#   Q45472107: set the nb label
+Q45472107	Lnb	"mann av Li-slekten, fra Longxi Didao"
+#   Q45472107: set the da label
+Q45472107	Lda	"mand af Li-slægten, fra Longxi Didao"
+#   Q45472107: set the sv label
+Q45472107	Lsv	"man av Li-ätten, från Longxi Didao"
+#   Q45472107: set the de label
+Q45472107	Lde	"Mann des Klans Li, aus Longxi Didao"
+#   Q45472107: set the es label
+Q45472107	Les	"hombre del clan Li, de Longxi Didao"
+#   Q45472107: set the it label
+Q45472107	Lit	"uomo del clan Li, da Longxi Didao"
+#   Q45472107: set the pt label
+Q45472107	Lpt	"homem do clã Li, de Longxi Didao"
+#   Q45472107: set the ca label
+Q45472107	Lca	"home del clan Li, de Longxi Didao"
+#   Q45473385 (李 of 隴西狄道): mul label = NN
+Q45473385	Lmul	"NN"
+#   Q45473385: set the nb label
+Q45473385	Lnb	"mann av Li-slekten, fra Longxi Didao"
+#   Q45473385: set the da label
+Q45473385	Lda	"mand af Li-slægten, fra Longxi Didao"
+#   Q45473385: set the sv label
+Q45473385	Lsv	"man av Li-ätten, från Longxi Didao"
+#   Q45473385: set the de label
+Q45473385	Lde	"Mann des Klans Li, aus Longxi Didao"
+#   Q45473385: set the es label
+Q45473385	Les	"hombre del clan Li, de Longxi Didao"
+#   Q45473385: set the it label
+Q45473385	Lit	"uomo del clan Li, da Longxi Didao"
+#   Q45473385: set the pt label
+Q45473385	Lpt	"homem do clã Li, de Longxi Didao"
+#   Q45473385: set the ca label
+Q45473385	Lca	"home del clan Li, de Longxi Didao"
+#   Q45474359 (李 of 隴西狄道): mul label = NN
+Q45474359	Lmul	"NN"
+#   Q45474359: set the nb label
+Q45474359	Lnb	"mann av Li-slekten, fra Longxi Didao"
+#   Q45474359: set the da label
+Q45474359	Lda	"mand af Li-slægten, fra Longxi Didao"
+#   Q45474359: set the sv label
+Q45474359	Lsv	"man av Li-ätten, från Longxi Didao"
+#   Q45474359: set the de label
+Q45474359	Lde	"Mann des Klans Li, aus Longxi Didao"
+#   Q45474359: set the es label
+Q45474359	Les	"hombre del clan Li, de Longxi Didao"
+#   Q45474359: set the it label
+Q45474359	Lit	"uomo del clan Li, da Longxi Didao"
+#   Q45474359: set the pt label
+Q45474359	Lpt	"homem do clã Li, de Longxi Didao"
+#   Q45474359: set the ca label
+Q45474359	Lca	"home del clan Li, de Longxi Didao"
+#   Q45481279 (李 of 隴西狄道): mul label = NN
+Q45481279	Lmul	"NN"
+#   Q45481279: set the nb label
+Q45481279	Lnb	"mann av Li-slekten, fra Longxi Didao"
+#   Q45481279: set the da label
+Q45481279	Lda	"mand af Li-slægten, fra Longxi Didao"
+#   Q45481279: set the sv label
+Q45481279	Lsv	"man av Li-ätten, från Longxi Didao"
+#   Q45481279: set the de label
+Q45481279	Lde	"Mann des Klans Li, aus Longxi Didao"
+#   Q45481279: set the es label
+Q45481279	Les	"hombre del clan Li, de Longxi Didao"
+#   Q45481279: set the it label
+Q45481279	Lit	"uomo del clan Li, da Longxi Didao"
+#   Q45481279: set the pt label
+Q45481279	Lpt	"homem do clã Li, de Longxi Didao"
+#   Q45481279: set the ca label
+Q45481279	Lca	"home del clan Li, de Longxi Didao"
+#   Q45484623 (崔 of 河南): mul label = NN
+Q45484623	Lmul	"NN"
+#   Q45484623: set the nb label
+Q45484623	Lnb	"mann av Cui-slekten, fra Henan"
+#   Q45484623: set the da label
+Q45484623	Lda	"mand af Cui-slægten, fra Henan"
+#   Q45484623: set the sv label
+Q45484623	Lsv	"man av Cui-ätten, från Henan"
+#   Q45484623: set the de label
+Q45484623	Lde	"Mann des Klans Cui, aus Henan"
+#   Q45484623: set the it label
+Q45484623	Lit	"uomo del clan Cui, da Henan"
+#   Q45484623: set the pt label
+Q45484623	Lpt	"homem do clã Cui, de Henan"
+#   Q45484623: set the ca label
+Q45484623	Lca	"home del clan Cui, de Henan"
+#   Q45484673 (陳 of 吳興長城): mul label = NN
+Q45484673	Lmul	"NN"
+#   Q45484673: set the nb label
+Q45484673	Lnb	"mann av Chen-slekten, fra Wuxing Changcheng"
+#   Q45484673: set the da label
+Q45484673	Lda	"mand af Chen-slægten, fra Wuxing Changcheng"
+#   Q45484673: set the sv label
+Q45484673	Lsv	"man av Chen-ätten, från Wuxing Changcheng"
+#   Q45484673: set the de label
+Q45484673	Lde	"Mann des Klans Chen, aus Wuxing Changcheng"
+#   Q45484673: set the it label
+Q45484673	Lit	"uomo del clan Chen, da Wuxing Changcheng"
+#   Q45484673: set the pt label
+Q45484673	Lpt	"homem do clã Chen, de Wuxing Changcheng"
+#   Q45484673: set the ca label
+Q45484673	Lca	"home del clan Chen, de Wuxing Changcheng"
+#   Q45484869 (陳 of 昇州江寧): mul label = NN
+Q45484869	Lmul	"NN"
+#   Q45484869: set the nb label
+Q45484869	Lnb	"mann av Chen-slekten, fra Shengzhou Jiangning"
+#   Q45484869: set the da label
+Q45484869	Lda	"mand af Chen-slægten, fra Shengzhou Jiangning"
+#   Q45484869: set the sv label
+Q45484869	Lsv	"man av Chen-ätten, från Shengzhou Jiangning"
+#   Q45484869: set the de label
+Q45484869	Lde	"Mann des Klans Chen, aus Shengzhou Jiangning"
+#   Q45484869: set the it label
+Q45484869	Lit	"uomo del clan Chen, da Shengzhou Jiangning"
+#   Q45484869: set the pt label
+Q45484869	Lpt	"homem do clã Chen, de Shengzhou Jiangning"
+#   Q45484869: set the ca label
+Q45484869	Lca	"home del clan Chen, de Shengzhou Jiangning"
+#   Q45484932 (陳 of 昇州江寧): mul label = NN
+Q45484932	Lmul	"NN"
+#   Q45484932: set the nb label
+Q45484932	Lnb	"mann av Chen-slekten, fra Shengzhou Jiangning"
+#   Q45484932: set the da label
+Q45484932	Lda	"mand af Chen-slægten, fra Shengzhou Jiangning"
+#   Q45484932: set the sv label
+Q45484932	Lsv	"man av Chen-ätten, från Shengzhou Jiangning"
+#   Q45484932: set the de label
+Q45484932	Lde	"Mann des Klans Chen, aus Shengzhou Jiangning"
+#   Q45484932: set the it label
+Q45484932	Lit	"uomo del clan Chen, da Shengzhou Jiangning"
+#   Q45484932: set the pt label
+Q45484932	Lpt	"homem do clã Chen, de Shengzhou Jiangning"
+#   Q45484932: set the ca label
+Q45484932	Lca	"home del clan Chen, de Shengzhou Jiangning"
+#   Q45484995 (陳 of 昇州江寧): mul label = NN
+Q45484995	Lmul	"NN"
+#   Q45484995: set the nb label
+Q45484995	Lnb	"mann av Chen-slekten, fra Shengzhou Jiangning"
+#   Q45484995: set the da label
+Q45484995	Lda	"mand af Chen-slægten, fra Shengzhou Jiangning"
+#   Q45484995: set the sv label
+Q45484995	Lsv	"man av Chen-ätten, från Shengzhou Jiangning"
+#   Q45484995: set the de label
+Q45484995	Lde	"Mann des Klans Chen, aus Shengzhou Jiangning"
+#   Q45484995: set the it label
+Q45484995	Lit	"uomo del clan Chen, da Shengzhou Jiangning"
+#   Q45484995: set the pt label
+Q45484995	Lpt	"homem do clã Chen, de Shengzhou Jiangning"
+#   Q45484995: set the ca label
+Q45484995	Lca	"home del clan Chen, de Shengzhou Jiangning"
+#   Q45485126 (陳 of 京兆長安): mul label = NN
+Q45485126	Lmul	"NN"
+#   Q45485126: set the nb label
+Q45485126	Lnb	"mann av Chen-slekten, fra Jingzhao Chang'an"
+#   Q45485126: set the da label
+Q45485126	Lda	"mand af Chen-slægten, fra Jingzhao Chang'an"
+#   Q45485126: set the sv label
+Q45485126	Lsv	"man av Chen-ätten, från Jingzhao Chang'an"
+#   Q45485126: set the de label
+Q45485126	Lde	"Mann des Klans Chen, aus Jingzhao Chang'an"
+#   Q45485126: set the it label
+Q45485126	Lit	"uomo del clan Chen, da Jingzhao Chang'an"
+#   Q45485126: set the pt label
+Q45485126	Lpt	"homem do clã Chen, de Jingzhao Chang'an"
+#   Q45485126: set the ca label
+Q45485126	Lca	"home del clan Chen, de Jingzhao Chang'an"
+#   Q45485317 (陳 of 京兆長安): mul label = NN
+Q45485317	Lmul	"NN"
+#   Q45485317: set the nb label
+Q45485317	Lnb	"mann av Chen-slekten, fra Jingzhao Chang'an"
+#   Q45485317: set the da label
+Q45485317	Lda	"mand af Chen-slægten, fra Jingzhao Chang'an"
+#   Q45485317: set the sv label
+Q45485317	Lsv	"man av Chen-ätten, från Jingzhao Chang'an"
+#   Q45485317: set the de label
+Q45485317	Lde	"Mann des Klans Chen, aus Jingzhao Chang'an"
+#   Q45485317: set the it label
+Q45485317	Lit	"uomo del clan Chen, da Jingzhao Chang'an"
+#   Q45485317: set the pt label
+Q45485317	Lpt	"homem do clã Chen, de Jingzhao Chang'an"
+#   Q45485317: set the ca label
+Q45485317	Lca	"home del clan Chen, de Jingzhao Chang'an"
+#   Q45485382 (陳 of 京兆長安): mul label = NN
+Q45485382	Lmul	"NN"
+#   Q45485382: set the nb label
+Q45485382	Lnb	"mann av Chen-slekten, fra Jingzhao Chang'an"
+#   Q45485382: set the da label
+Q45485382	Lda	"mand af Chen-slægten, fra Jingzhao Chang'an"
+#   Q45485382: set the sv label
+Q45485382	Lsv	"man av Chen-ätten, från Jingzhao Chang'an"
+#   Q45485382: set the de label
+Q45485382	Lde	"Mann des Klans Chen, aus Jingzhao Chang'an"
+#   Q45485382: set the it label
+Q45485382	Lit	"uomo del clan Chen, da Jingzhao Chang'an"
+#   Q45485382: set the pt label
+Q45485382	Lpt	"homem do clã Chen, de Jingzhao Chang'an"
+#   Q45485382: set the ca label
+Q45485382	Lca	"home del clan Chen, de Jingzhao Chang'an"
+#   Q45485462 (李 of 隴西狄道): mul label = NN
+Q45485462	Lmul	"NN"
+#   Q45485462: set the nb label
+Q45485462	Lnb	"mann av Li-slekten, fra Longxi Didao"
+#   Q45485462: set the da label
+Q45485462	Lda	"mand af Li-slægten, fra Longxi Didao"
+#   Q45485462: set the sv label
+Q45485462	Lsv	"man av Li-ätten, från Longxi Didao"
+#   Q45485462: set the de label
+Q45485462	Lde	"Mann des Klans Li, aus Longxi Didao"
+#   Q45485462: set the es label
+Q45485462	Les	"hombre del clan Li, de Longxi Didao"
+#   Q45485462: set the it label
+Q45485462	Lit	"uomo del clan Li, da Longxi Didao"
+#   Q45485462: set the pt label
+Q45485462	Lpt	"homem do clã Li, de Longxi Didao"
+#   Q45485462: set the ca label
+Q45485462	Lca	"home del clan Li, de Longxi Didao"
+#   Q45485716 (裴 of 河東聞喜): mul label = NN
+Q45485716	Lmul	"NN"
+#   Q45485716: set the nb label
+Q45485716	Lnb	"mann av Pei-slekten, fra Hedong Wenxi"
+#   Q45485716: set the da label
+Q45485716	Lda	"mand af Pei-slægten, fra Hedong Wenxi"
+#   Q45485716: set the sv label
+Q45485716	Lsv	"man av Pei-ätten, från Hedong Wenxi"
+#   Q45485716: set the de label
+Q45485716	Lde	"Mann des Klans Pei, aus Hedong Wenxi"
+#   Q45485716: set the it label
+Q45485716	Lit	"uomo del clan Pei, da Hedong Wenxi"
+#   Q45485716: set the pt label
+Q45485716	Lpt	"homem do clã Pei, de Hedong Wenxi"
+#   Q45485716: set the ca label
+Q45485716	Lca	"home del clan Pei, de Hedong Wenxi"
+#   Q45486474 (蕭 of ): mul label = NN
+Q45486474	Lmul	"NN"
+#   Q45486474: set the nb label
+Q45486474	Lnb	"mann av Xiao-slekten"
+#   Q45486474: set the da label
+Q45486474	Lda	"mand af Xiao-slægten"
+#   Q45486474: set the sv label
+Q45486474	Lsv	"man av Xiao-ätten"
+#   Q45486474: set the de label
+Q45486474	Lde	"Mann des Klans Xiao"
+#   Q45486474: set the it label
+Q45486474	Lit	"uomo del clan Xiao"
+#   Q45486474: set the pt label
+Q45486474	Lpt	"homem do clã Xiao"
+#   Q45486474: set the ca label
+Q45486474	Lca	"home del clan Xiao"
+#   Q45486525 (陳 of 湖州長城): mul label = NN
+Q45486525	Lmul	"NN"
+#   Q45486525: set the nb label
+Q45486525	Lnb	"mann av Chen-slekten, fra Huzhou Changcheng"
+#   Q45486525: set the da label
+Q45486525	Lda	"mand af Chen-slægten, fra Huzhou Changcheng"
+#   Q45486525: set the sv label
+Q45486525	Lsv	"man av Chen-ätten, från Huzhou Changcheng"
+#   Q45486525: set the de label
+Q45486525	Lde	"Mann des Klans Chen, aus Huzhou Changcheng"
+#   Q45486525: set the it label
+Q45486525	Lit	"uomo del clan Chen, da Huzhou Changcheng"
+#   Q45486525: set the pt label
+Q45486525	Lpt	"homem do clã Chen, de Huzhou Changcheng"
+#   Q45486525: set the ca label
+Q45486525	Lca	"home del clan Chen, de Huzhou Changcheng"
+#   Q45486588 (陳 of 湖州長城): mul label = NN
+Q45486588	Lmul	"NN"
+#   Q45486588: set the nb label
+Q45486588	Lnb	"mann av Chen-slekten, fra Huzhou Changcheng"
+#   Q45486588: set the da label
+Q45486588	Lda	"mand af Chen-slægten, fra Huzhou Changcheng"
+#   Q45486588: set the sv label
+Q45486588	Lsv	"man av Chen-ätten, från Huzhou Changcheng"
+#   Q45486588: set the de label
+Q45486588	Lde	"Mann des Klans Chen, aus Huzhou Changcheng"
+#   Q45486588: set the it label
+Q45486588	Lit	"uomo del clan Chen, da Huzhou Changcheng"
+#   Q45486588: set the pt label
+Q45486588	Lpt	"homem do clã Chen, de Huzhou Changcheng"
+#   Q45486588: set the ca label
+Q45486588	Lca	"home del clan Chen, de Huzhou Changcheng"
+#   Q45486909 (陳 of 湖州長城): mul label = NN
+Q45486909	Lmul	"NN"
+#   Q45486909: set the nb label
+Q45486909	Lnb	"mann av Chen-slekten, fra Huzhou Changcheng"
+#   Q45486909: set the da label
+Q45486909	Lda	"mand af Chen-slægten, fra Huzhou Changcheng"
+#   Q45486909: set the sv label
+Q45486909	Lsv	"man av Chen-ätten, från Huzhou Changcheng"
+#   Q45486909: set the de label
+Q45486909	Lde	"Mann des Klans Chen, aus Huzhou Changcheng"
+#   Q45486909: set the it label
+Q45486909	Lit	"uomo del clan Chen, da Huzhou Changcheng"
+#   Q45486909: set the pt label
+Q45486909	Lpt	"homem do clã Chen, de Huzhou Changcheng"
+#   Q45486909: set the ca label
+Q45486909	Lca	"home del clan Chen, de Huzhou Changcheng"
+#   Q45497731 (盧 of 潤州丹陽): mul label = NN
+Q45497731	Lmul	"NN"
+#   Q45497731: set the nb label
+Q45497731	Lnb	"mann av Lu-slekten, fra Runzhou Danyang"
+#   Q45497731: set the da label
+Q45497731	Lda	"mand af Lu-slægten, fra Runzhou Danyang"
+#   Q45497731: set the sv label
+Q45497731	Lsv	"man av Lu-ätten, från Runzhou Danyang"
+#   Q45497731: set the de label
+Q45497731	Lde	"Mann des Klans Lu, aus Runzhou Danyang"
+#   Q45497731: set the es label
+Q45497731	Les	"hombre del clan Lu, de Runzhou Danyang"
+#   Q45497731: set the it label
+Q45497731	Lit	"uomo del clan Lu, da Runzhou Danyang"
+#   Q45497731: set the pt label
+Q45497731	Lpt	"homem do clã Lu, de Runzhou Danyang"
+#   Q45497731: set the ca label
+Q45497731	Lca	"home del clan Lu, de Runzhou Danyang"
+#   Q45501359 (楊 of 弘農華陰): mul label = NN
+Q45501359	Lmul	"NN"
+#   Q45501359: set the nb label
+Q45501359	Lnb	"mann av Yang-slekten, fra Hongnong Huayin"
+#   Q45501359: set the da label
+Q45501359	Lda	"mand af Yang-slægten, fra Hongnong Huayin"
+#   Q45501359: set the sv label
+Q45501359	Lsv	"man av Yang-ätten, från Hongnong Huayin"
+#   Q45501359: set the de label
+Q45501359	Lde	"Mann des Klans Yang, aus Hongnong Huayin"
+#   Q45501359: set the it label
+Q45501359	Lit	"uomo del clan Yang, da Hongnong Huayin"
+#   Q45501359: set the pt label
+Q45501359	Lpt	"homem do clã Yang, de Hongnong Huayin"
+#   Q45501359: set the ca label
+Q45501359	Lca	"home del clan Yang, de Hongnong Huayin"
+#   Q45501424 (楊 of 弘農華陰): mul label = NN
+Q45501424	Lmul	"NN"
+#   Q45501424: set the nb label
+Q45501424	Lnb	"mann av Yang-slekten, fra Hongnong Huayin"
+#   Q45501424: set the da label
+Q45501424	Lda	"mand af Yang-slægten, fra Hongnong Huayin"
+#   Q45501424: set the sv label
+Q45501424	Lsv	"man av Yang-ätten, från Hongnong Huayin"
+#   Q45501424: set the de label
+Q45501424	Lde	"Mann des Klans Yang, aus Hongnong Huayin"
+#   Q45501424: set the it label
+Q45501424	Lit	"uomo del clan Yang, da Hongnong Huayin"
+#   Q45501424: set the pt label
+Q45501424	Lpt	"homem do clã Yang, de Hongnong Huayin"
+#   Q45501424: set the ca label
+Q45501424	Lca	"home del clan Yang, de Hongnong Huayin"
+#   Q45502571 (李 of 隴西狄道): mul label = NN
+Q45502571	Lmul	"NN"
+#   Q45502571: set the nb label
+Q45502571	Lnb	"mann av Li-slekten, fra Longxi Didao"
+#   Q45502571: set the da label
+Q45502571	Lda	"mand af Li-slægten, fra Longxi Didao"
+#   Q45502571: set the sv label
+Q45502571	Lsv	"man av Li-ätten, från Longxi Didao"
+#   Q45502571: set the de label
+Q45502571	Lde	"Mann des Klans Li, aus Longxi Didao"
+#   Q45502571: set the es label
+Q45502571	Les	"hombre del clan Li, de Longxi Didao"
+#   Q45502571: set the it label
+Q45502571	Lit	"uomo del clan Li, da Longxi Didao"
+#   Q45502571: set the pt label
+Q45502571	Lpt	"homem do clã Li, de Longxi Didao"
+#   Q45502571: set the ca label
+Q45502571	Lca	"home del clan Li, de Longxi Didao"
+#   Q45502705 (楊 of 弘農華陰): mul label = NN
+Q45502705	Lmul	"NN"
+#   Q45502705: set the nb label
+Q45502705	Lnb	"mann av Yang-slekten, fra Hongnong Huayin"
+#   Q45502705: set the da label
+Q45502705	Lda	"mand af Yang-slægten, fra Hongnong Huayin"
+#   Q45502705: set the sv label
+Q45502705	Lsv	"man av Yang-ätten, från Hongnong Huayin"
+#   Q45502705: set the de label
+Q45502705	Lde	"Mann des Klans Yang, aus Hongnong Huayin"
+#   Q45502705: set the it label
+Q45502705	Lit	"uomo del clan Yang, da Hongnong Huayin"
+#   Q45502705: set the pt label
+Q45502705	Lpt	"homem do clã Yang, de Hongnong Huayin"
+#   Q45502705: set the ca label
+Q45502705	Lca	"home del clan Yang, de Hongnong Huayin"
+#   Q45503478 (楊 of 弘農華陰): mul label = NN
+Q45503478	Lmul	"NN"
+#   Q45503478: set the nb label
+Q45503478	Lnb	"mann av Yang-slekten, fra Hongnong Huayin"
+#   Q45503478: set the da label
+Q45503478	Lda	"mand af Yang-slægten, fra Hongnong Huayin"
+#   Q45503478: set the sv label
+Q45503478	Lsv	"man av Yang-ätten, från Hongnong Huayin"
+#   Q45503478: set the de label
+Q45503478	Lde	"Mann des Klans Yang, aus Hongnong Huayin"
+#   Q45503478: set the it label
+Q45503478	Lit	"uomo del clan Yang, da Hongnong Huayin"
+#   Q45503478: set the pt label
+Q45503478	Lpt	"homem do clã Yang, de Hongnong Huayin"
+#   Q45503478: set the ca label
+Q45503478	Lca	"home del clan Yang, de Hongnong Huayin"
+#   Q45503541 (楊 of 弘農華陰): mul label = NN
+Q45503541	Lmul	"NN"
+#   Q45503541: set the nb label
+Q45503541	Lnb	"mann av Yang-slekten, fra Hongnong Huayin"
+#   Q45503541: set the da label
+Q45503541	Lda	"mand af Yang-slægten, fra Hongnong Huayin"
+#   Q45503541: set the sv label
+Q45503541	Lsv	"man av Yang-ätten, från Hongnong Huayin"
+#   Q45503541: set the de label
+Q45503541	Lde	"Mann des Klans Yang, aus Hongnong Huayin"
+#   Q45503541: set the it label
+Q45503541	Lit	"uomo del clan Yang, da Hongnong Huayin"
+#   Q45503541: set the pt label
+Q45503541	Lpt	"homem do clã Yang, de Hongnong Huayin"
+#   Q45503541: set the ca label
+Q45503541	Lca	"home del clan Yang, de Hongnong Huayin"
+#   Q45507781 (柳 of 河東解縣): mul label = NN
+Q45507781	Lmul	"NN"
+#   Q45507781: set the nb label
+Q45507781	Lnb	"mann av Liu-slekten, fra Hedong Jiexian"
+#   Q45507781: set the da label
+Q45507781	Lda	"mand af Liu-slægten, fra Hedong Jiexian"
+#   Q45507781: set the sv label
+Q45507781	Lsv	"man av Liu-ätten, från Hedong Jiexian"
+#   Q45507781: set the de label
+Q45507781	Lde	"Mann des Klans Liu, aus Hedong Jiexian"
+#   Q45507781: set the it label
+Q45507781	Lit	"uomo del clan Liu, da Hedong Jiexian"
+#   Q45507781: set the pt label
+Q45507781	Lpt	"homem do clã Liu, de Hedong Jiexian"
+#   Q45507781: set the ca label
+Q45507781	Lca	"home del clan Liu, de Hedong Jiexian"
+#   Q45508685 (楊 of 弘農華陰): mul label = NN
+Q45508685	Lmul	"NN"
+#   Q45508685: set the nb label
+Q45508685	Lnb	"mann av Yang-slekten, fra Hongnong Huayin"
+#   Q45508685: set the da label
+Q45508685	Lda	"mand af Yang-slægten, fra Hongnong Huayin"
+#   Q45508685: set the sv label
+Q45508685	Lsv	"man av Yang-ätten, från Hongnong Huayin"
+#   Q45508685: set the de label
+Q45508685	Lde	"Mann des Klans Yang, aus Hongnong Huayin"
+#   Q45508685: set the it label
+Q45508685	Lit	"uomo del clan Yang, da Hongnong Huayin"
+#   Q45508685: set the pt label
+Q45508685	Lpt	"homem do clã Yang, de Hongnong Huayin"
+#   Q45508685: set the ca label
+Q45508685	Lca	"home del clan Yang, de Hongnong Huayin"
+#   Q45508942 (楊 of 弘農華陰): mul label = NN
+Q45508942	Lmul	"NN"
+#   Q45508942: set the nb label
+Q45508942	Lnb	"mann av Yang-slekten, fra Hongnong Huayin"
+#   Q45508942: set the da label
+Q45508942	Lda	"mand af Yang-slægten, fra Hongnong Huayin"
+#   Q45508942: set the sv label
+Q45508942	Lsv	"man av Yang-ätten, från Hongnong Huayin"
+#   Q45508942: set the de label
+Q45508942	Lde	"Mann des Klans Yang, aus Hongnong Huayin"
+#   Q45508942: set the it label
+Q45508942	Lit	"uomo del clan Yang, da Hongnong Huayin"
+#   Q45508942: set the pt label
+Q45508942	Lpt	"homem do clã Yang, de Hongnong Huayin"
+#   Q45508942: set the ca label
+Q45508942	Lca	"home del clan Yang, de Hongnong Huayin"
+#   Q45509891 (楊 of 弘農華陰): mul label = NN
+Q45509891	Lmul	"NN"
+#   Q45509891: set the nb label
+Q45509891	Lnb	"mann av Yang-slekten, fra Hongnong Huayin"
+#   Q45509891: set the da label
+Q45509891	Lda	"mand af Yang-slægten, fra Hongnong Huayin"
+#   Q45509891: set the sv label
+Q45509891	Lsv	"man av Yang-ätten, från Hongnong Huayin"
+#   Q45509891: set the de label
+Q45509891	Lde	"Mann des Klans Yang, aus Hongnong Huayin"
+#   Q45509891: set the it label
+Q45509891	Lit	"uomo del clan Yang, da Hongnong Huayin"
+#   Q45509891: set the pt label
+Q45509891	Lpt	"homem do clã Yang, de Hongnong Huayin"
+#   Q45509891: set the ca label
+Q45509891	Lca	"home del clan Yang, de Hongnong Huayin"
+#   Q45510761 (柳 of 河東解縣): mul label = NN
+Q45510761	Lmul	"NN"
+#   Q45510761: set the nb label
+Q45510761	Lnb	"mann av Liu-slekten, fra Hedong Jiexian"
+#   Q45510761: set the da label
+Q45510761	Lda	"mand af Liu-slægten, fra Hedong Jiexian"
+#   Q45510761: set the sv label
+Q45510761	Lsv	"man av Liu-ätten, från Hedong Jiexian"
+#   Q45510761: set the de label
+Q45510761	Lde	"Mann des Klans Liu, aus Hedong Jiexian"
+#   Q45510761: set the it label
+Q45510761	Lit	"uomo del clan Liu, da Hedong Jiexian"
+#   Q45510761: set the pt label
+Q45510761	Lpt	"homem do clã Liu, de Hedong Jiexian"
+#   Q45510761: set the ca label
+Q45510761	Lca	"home del clan Liu, de Hedong Jiexian"
+#   Q45510826 (柳 of 河東解縣): mul label = NN
+Q45510826	Lmul	"NN"
+#   Q45510826: set the nb label
+Q45510826	Lnb	"mann av Liu-slekten, fra Hedong Jiexian"
+#   Q45510826: set the da label
+Q45510826	Lda	"mand af Liu-slægten, fra Hedong Jiexian"
+#   Q45510826: set the sv label
+Q45510826	Lsv	"man av Liu-ätten, från Hedong Jiexian"
+#   Q45510826: set the de label
+Q45510826	Lde	"Mann des Klans Liu, aus Hedong Jiexian"
+#   Q45510826: set the it label
+Q45510826	Lit	"uomo del clan Liu, da Hedong Jiexian"
+#   Q45510826: set the pt label
+Q45510826	Lpt	"homem do clã Liu, de Hedong Jiexian"
+#   Q45510826: set the ca label
+Q45510826	Lca	"home del clan Liu, de Hedong Jiexian"
+#   Q45510888 (柳 of 河東解縣): mul label = NN
+Q45510888	Lmul	"NN"
+#   Q45510888: set the nb label
+Q45510888	Lnb	"mann av Liu-slekten, fra Hedong Jiexian"
+#   Q45510888: set the da label
+Q45510888	Lda	"mand af Liu-slægten, fra Hedong Jiexian"
+#   Q45510888: set the sv label
+Q45510888	Lsv	"man av Liu-ätten, från Hedong Jiexian"
+#   Q45510888: set the de label
+Q45510888	Lde	"Mann des Klans Liu, aus Hedong Jiexian"
+#   Q45510888: set the it label
+Q45510888	Lit	"uomo del clan Liu, da Hedong Jiexian"
+#   Q45510888: set the pt label
+Q45510888	Lpt	"homem do clã Liu, de Hedong Jiexian"
+#   Q45510888: set the ca label
+Q45510888	Lca	"home del clan Liu, de Hedong Jiexian"
+#   Q45511272 (柳 of 河東解縣): mul label = NN
+Q45511272	Lmul	"NN"
+#   Q45511272: set the nb label
+Q45511272	Lnb	"mann av Liu-slekten, fra Hedong Jiexian"
+#   Q45511272: set the da label
+Q45511272	Lda	"mand af Liu-slægten, fra Hedong Jiexian"
+#   Q45511272: set the sv label
+Q45511272	Lsv	"man av Liu-ätten, från Hedong Jiexian"
+#   Q45511272: set the de label
+Q45511272	Lde	"Mann des Klans Liu, aus Hedong Jiexian"
+#   Q45511272: set the it label
+Q45511272	Lit	"uomo del clan Liu, da Hedong Jiexian"
+#   Q45511272: set the pt label
+Q45511272	Lpt	"homem do clã Liu, de Hedong Jiexian"
+#   Q45511272: set the ca label
+Q45511272	Lca	"home del clan Liu, de Hedong Jiexian"
+#   Q45511461 (柳 of 河東解縣): mul label = NN
+Q45511461	Lmul	"NN"
+#   Q45511461: set the nb label
+Q45511461	Lnb	"mann av Liu-slekten, fra Hedong Jiexian"
+#   Q45511461: set the da label
+Q45511461	Lda	"mand af Liu-slægten, fra Hedong Jiexian"
+#   Q45511461: set the sv label
+Q45511461	Lsv	"man av Liu-ätten, från Hedong Jiexian"
+#   Q45511461: set the de label
+Q45511461	Lde	"Mann des Klans Liu, aus Hedong Jiexian"
+#   Q45511461: set the it label
+Q45511461	Lit	"uomo del clan Liu, da Hedong Jiexian"
+#   Q45511461: set the pt label
+Q45511461	Lpt	"homem do clã Liu, de Hedong Jiexian"
+#   Q45511461: set the ca label
+Q45511461	Lca	"home del clan Liu, de Hedong Jiexian"
+#   Q45511905 (柳 of 河東解縣): mul label = NN
+Q45511905	Lmul	"NN"
+#   Q45511905: set the nb label
+Q45511905	Lnb	"mann av Liu-slekten, fra Hedong Jiexian"
+#   Q45511905: set the da label
+Q45511905	Lda	"mand af Liu-slægten, fra Hedong Jiexian"
+#   Q45511905: set the sv label
+Q45511905	Lsv	"man av Liu-ätten, från Hedong Jiexian"
+#   Q45511905: set the de label
+Q45511905	Lde	"Mann des Klans Liu, aus Hedong Jiexian"
+#   Q45511905: set the it label
+Q45511905	Lit	"uomo del clan Liu, da Hedong Jiexian"
+#   Q45511905: set the pt label
+Q45511905	Lpt	"homem do clã Liu, de Hedong Jiexian"
+#   Q45511905: set the ca label
+Q45511905	Lca	"home del clan Liu, de Hedong Jiexian"
+#   Q45512915 (柳 of 河東解縣): mul label = NN
+Q45512915	Lmul	"NN"
+#   Q45512915: set the nb label
+Q45512915	Lnb	"mann av Liu-slekten, fra Hedong Jiexian"
+#   Q45512915: set the da label
+Q45512915	Lda	"mand af Liu-slægten, fra Hedong Jiexian"
+#   Q45512915: set the sv label
+Q45512915	Lsv	"man av Liu-ätten, från Hedong Jiexian"
+#   Q45512915: set the de label
+Q45512915	Lde	"Mann des Klans Liu, aus Hedong Jiexian"
+#   Q45512915: set the it label
+Q45512915	Lit	"uomo del clan Liu, da Hedong Jiexian"
+#   Q45512915: set the pt label
+Q45512915	Lpt	"homem do clã Liu, de Hedong Jiexian"
+#   Q45512915: set the ca label
+Q45512915	Lca	"home del clan Liu, de Hedong Jiexian"
+#   Q45513489 (柳 of 河東解縣): mul label = NN
+Q45513489	Lmul	"NN"
+#   Q45513489: set the nb label
+Q45513489	Lnb	"mann av Liu-slekten, fra Hedong Jiexian"
+#   Q45513489: set the da label
+Q45513489	Lda	"mand af Liu-slægten, fra Hedong Jiexian"
+#   Q45513489: set the sv label
+Q45513489	Lsv	"man av Liu-ätten, från Hedong Jiexian"
+#   Q45513489: set the de label
+Q45513489	Lde	"Mann des Klans Liu, aus Hedong Jiexian"
+#   Q45513489: set the it label
+Q45513489	Lit	"uomo del clan Liu, da Hedong Jiexian"
+#   Q45513489: set the pt label
+Q45513489	Lpt	"homem do clã Liu, de Hedong Jiexian"
+#   Q45513489: set the ca label
+Q45513489	Lca	"home del clan Liu, de Hedong Jiexian"
+#   Q45513552 (柳 of 河東解縣): mul label = NN
+Q45513552	Lmul	"NN"
+#   Q45513552: set the nb label
+Q45513552	Lnb	"mann av Liu-slekten, fra Hedong Jiexian"
+#   Q45513552: set the da label
+Q45513552	Lda	"mand af Liu-slægten, fra Hedong Jiexian"
+#   Q45513552: set the sv label
+Q45513552	Lsv	"man av Liu-ätten, från Hedong Jiexian"
+#   Q45513552: set the de label
+Q45513552	Lde	"Mann des Klans Liu, aus Hedong Jiexian"
+#   Q45513552: set the it label
+Q45513552	Lit	"uomo del clan Liu, da Hedong Jiexian"
+#   Q45513552: set the pt label
+Q45513552	Lpt	"homem do clã Liu, de Hedong Jiexian"
+#   Q45513552: set the ca label
+Q45513552	Lca	"home del clan Liu, de Hedong Jiexian"
+#   Q45517450 (房 of 齊州臨淄): mul label = NN
+Q45517450	Lmul	"NN"
+#   Q45517450: set the nb label
+Q45517450	Lnb	"mann av Fang-slekten, fra Qizhou Linzi"
+#   Q45517450: set the da label
+Q45517450	Lda	"mand af Fang-slægten, fra Qizhou Linzi"
+#   Q45517450: set the sv label
+Q45517450	Lsv	"man av Fang-ätten, från Qizhou Linzi"
+#   Q45517450: set the de label
+Q45517450	Lde	"Mann des Klans Fang, aus Qizhou Linzi"
+#   Q45517450: set the it label
+Q45517450	Lit	"uomo del clan Fang, da Qizhou Linzi"
+#   Q45517450: set the pt label
+Q45517450	Lpt	"homem do clã Fang, de Qizhou Linzi"
+#   Q45517450: set the ca label
+Q45517450	Lca	"home del clan Fang, de Qizhou Linzi"
+#   Q45517515 (房 of 齊州臨淄): mul label = NN
+Q45517515	Lmul	"NN"
+#   Q45517515: set the nb label
+Q45517515	Lnb	"mann av Fang-slekten, fra Qizhou Linzi"
+#   Q45517515: set the da label
+Q45517515	Lda	"mand af Fang-slægten, fra Qizhou Linzi"
+#   Q45517515: set the sv label
+Q45517515	Lsv	"man av Fang-ätten, från Qizhou Linzi"
+#   Q45517515: set the de label
+Q45517515	Lde	"Mann des Klans Fang, aus Qizhou Linzi"
+#   Q45517515: set the it label
+Q45517515	Lit	"uomo del clan Fang, da Qizhou Linzi"
+#   Q45517515: set the pt label
+Q45517515	Lpt	"homem do clã Fang, de Qizhou Linzi"
+#   Q45517515: set the ca label
+Q45517515	Lca	"home del clan Fang, de Qizhou Linzi"
+#   Q45517579 (房 of 齊州臨淄): mul label = NN
+Q45517579	Lmul	"NN"
+#   Q45517579: set the nb label
+Q45517579	Lnb	"mann av Fang-slekten, fra Qizhou Linzi"
+#   Q45517579: set the da label
+Q45517579	Lda	"mand af Fang-slægten, fra Qizhou Linzi"
+#   Q45517579: set the sv label
+Q45517579	Lsv	"man av Fang-ätten, från Qizhou Linzi"
+#   Q45517579: set the de label
+Q45517579	Lde	"Mann des Klans Fang, aus Qizhou Linzi"
+#   Q45517579: set the it label
+Q45517579	Lit	"uomo del clan Fang, da Qizhou Linzi"
+#   Q45517579: set the pt label
+Q45517579	Lpt	"homem do clã Fang, de Qizhou Linzi"
+#   Q45517579: set the ca label
+Q45517579	Lca	"home del clan Fang, de Qizhou Linzi"
+#   Q45517644 (房 of 齊州臨淄): mul label = NN
+Q45517644	Lmul	"NN"
+#   Q45517644: set the nb label
+Q45517644	Lnb	"mann av Fang-slekten, fra Qizhou Linzi"
+#   Q45517644: set the da label
+Q45517644	Lda	"mand af Fang-slægten, fra Qizhou Linzi"
+#   Q45517644: set the sv label
+Q45517644	Lsv	"man av Fang-ätten, från Qizhou Linzi"
+#   Q45517644: set the de label
+Q45517644	Lde	"Mann des Klans Fang, aus Qizhou Linzi"
+#   Q45517644: set the it label
+Q45517644	Lit	"uomo del clan Fang, da Qizhou Linzi"
+#   Q45517644: set the pt label
+Q45517644	Lpt	"homem do clã Fang, de Qizhou Linzi"
+#   Q45517644: set the ca label
+Q45517644	Lca	"home del clan Fang, de Qizhou Linzi"
+#   Q45517670 (李 of 隴西狄道): mul label = NN
+Q45517670	Lmul	"NN"
+#   Q45517670: set the nb label
+Q45517670	Lnb	"kvinne av Li-slekten, fra Longxi Didao"
+#   Q45517670: set the da label
+Q45517670	Lda	"kvinde af Li-slægten, fra Longxi Didao"
+#   Q45517670: set the sv label
+Q45517670	Lsv	"kvinna av Li-ätten, från Longxi Didao"
+#   Q45517670: set the de label
+Q45517670	Lde	"Frau des Klans Li, aus Longxi Didao"
+#   Q45517670: set the es label
+Q45517670	Les	"mujer del clan Li, de Longxi Didao"
+#   Q45517670: set the it label
+Q45517670	Lit	"donna del clan Li, da Longxi Didao"
+#   Q45517670: set the pt label
+Q45517670	Lpt	"mulher do clã Li, de Longxi Didao"
+#   Q45517670: set the ca label
+Q45517670	Lca	"dona del clan Li, de Longxi Didao"
+#   Q45518351 (房 of 齊州臨淄): mul label = NN
+Q45518351	Lmul	"NN"
+#   Q45518351: set the nb label
+Q45518351	Lnb	"mann av Fang-slekten, fra Qizhou Linzi"
+#   Q45518351: set the da label
+Q45518351	Lda	"mand af Fang-slægten, fra Qizhou Linzi"
+#   Q45518351: set the sv label
+Q45518351	Lsv	"man av Fang-ätten, från Qizhou Linzi"
+#   Q45518351: set the de label
+Q45518351	Lde	"Mann des Klans Fang, aus Qizhou Linzi"
+#   Q45518351: set the it label
+Q45518351	Lit	"uomo del clan Fang, da Qizhou Linzi"
+#   Q45518351: set the pt label
+Q45518351	Lpt	"homem do clã Fang, de Qizhou Linzi"
+#   Q45518351: set the ca label
+Q45518351	Lca	"home del clan Fang, de Qizhou Linzi"
+#   Q45518415 (房 of 齊州臨淄): mul label = NN
+Q45518415	Lmul	"NN"
+#   Q45518415: set the nb label
+Q45518415	Lnb	"mann av Fang-slekten, fra Qizhou Linzi"
+#   Q45518415: set the da label
+Q45518415	Lda	"mand af Fang-slægten, fra Qizhou Linzi"
+#   Q45518415: set the sv label
+Q45518415	Lsv	"man av Fang-ätten, från Qizhou Linzi"
+#   Q45518415: set the de label
+Q45518415	Lde	"Mann des Klans Fang, aus Qizhou Linzi"
+#   Q45518415: set the it label
+Q45518415	Lit	"uomo del clan Fang, da Qizhou Linzi"
+#   Q45518415: set the pt label
+Q45518415	Lpt	"homem do clã Fang, de Qizhou Linzi"
+#   Q45518415: set the ca label
+Q45518415	Lca	"home del clan Fang, de Qizhou Linzi"
+#   Q45521650 (李 of 隴西狄道): mul label = NN
+Q45521650	Lmul	"NN"
+#   Q45521650: set the nb label
+Q45521650	Lnb	"mann av Li-slekten, fra Longxi Didao"
+#   Q45521650: set the da label
+Q45521650	Lda	"mand af Li-slægten, fra Longxi Didao"
+#   Q45521650: set the sv label
+Q45521650	Lsv	"man av Li-ätten, från Longxi Didao"
+#   Q45521650: set the de label
+Q45521650	Lde	"Mann des Klans Li, aus Longxi Didao"
+#   Q45521650: set the es label
+Q45521650	Les	"hombre del clan Li, de Longxi Didao"
+#   Q45521650: set the it label
+Q45521650	Lit	"uomo del clan Li, da Longxi Didao"
+#   Q45521650: set the pt label
+Q45521650	Lpt	"homem do clã Li, de Longxi Didao"
+#   Q45521650: set the ca label
+Q45521650	Lca	"home del clan Li, de Longxi Didao"
+#   Q45534434 (李 of 隴西狄道): mul label = NN
+Q45534434	Lmul	"NN"
+#   Q45534434: set the nb label
+Q45534434	Lnb	"mann av Li-slekten, fra Longxi Didao"
+#   Q45534434: set the da label
+Q45534434	Lda	"mand af Li-slægten, fra Longxi Didao"
+#   Q45534434: set the sv label
+Q45534434	Lsv	"man av Li-ätten, från Longxi Didao"
+#   Q45534434: set the de label
+Q45534434	Lde	"Mann des Klans Li, aus Longxi Didao"
+#   Q45534434: set the es label
+Q45534434	Les	"hombre del clan Li, de Longxi Didao"
+#   Q45534434: set the it label
+Q45534434	Lit	"uomo del clan Li, da Longxi Didao"
+#   Q45534434: set the pt label
+Q45534434	Lpt	"homem do clã Li, de Longxi Didao"
+#   Q45534434: set the ca label
+Q45534434	Lca	"home del clan Li, de Longxi Didao"
+#   Q45534750 (鄭 of 鄭州榮澤): mul label = NN
+Q45534750	Lmul	"NN"
+#   Q45534750: set the nb label
+Q45534750	Lnb	"mann av Zheng-slekten, fra Zhengzhou Rongze"
+#   Q45534750: set the da label
+Q45534750	Lda	"mand af Zheng-slægten, fra Zhengzhou Rongze"
+#   Q45534750: set the sv label
+Q45534750	Lsv	"man av Zheng-ätten, från Zhengzhou Rongze"
+#   Q45534750: set the de label
+Q45534750	Lde	"Mann des Klans Zheng, aus Zhengzhou Rongze"
+#   Q45534750: set the it label
+Q45534750	Lit	"uomo del clan Zheng, da Zhengzhou Rongze"
+#   Q45534750: set the pt label
+Q45534750	Lpt	"homem do clã Zheng, de Zhengzhou Rongze"
+#   Q45534750: set the ca label
+Q45534750	Lca	"home del clan Zheng, de Zhengzhou Rongze"
+#   Q45536767 (杜 of 京兆杜陵): mul label = NN
+Q45536767	Lmul	"NN"
+#   Q45536767: set the nb label
+Q45536767	Lnb	"mann av Du-slekten, fra Jingzhao Duling"
+#   Q45536767: set the da label
+Q45536767	Lda	"mand af Du-slægten, fra Jingzhao Duling"
+#   Q45536767: set the sv label
+Q45536767	Lsv	"man av Du-ätten, från Jingzhao Duling"
+#   Q45536767: set the de label
+Q45536767	Lde	"Mann des Klans Du, aus Jingzhao Duling"
+#   Q45536767: set the es label
+Q45536767	Les	"hombre del clan Du, de Jingzhao Duling"
+#   Q45536767: set the it label
+Q45536767	Lit	"uomo del clan Du, da Jingzhao Duling"
+#   Q45536767: set the pt label
+Q45536767	Lpt	"homem do clã Du, de Jingzhao Duling"
+#   Q45536767: set the ca label
+Q45536767	Lca	"home del clan Du, de Jingzhao Duling"
+#   Q45536832 (杜 of 京兆杜陵): mul label = NN
+Q45536832	Lmul	"NN"
+#   Q45536832: set the nb label
+Q45536832	Lnb	"mann av Du-slekten, fra Jingzhao Duling"
+#   Q45536832: set the da label
+Q45536832	Lda	"mand af Du-slægten, fra Jingzhao Duling"
+#   Q45536832: set the sv label
+Q45536832	Lsv	"man av Du-ätten, från Jingzhao Duling"
+#   Q45536832: set the de label
+Q45536832	Lde	"Mann des Klans Du, aus Jingzhao Duling"
+#   Q45536832: set the es label
+Q45536832	Les	"hombre del clan Du, de Jingzhao Duling"
+#   Q45536832: set the it label
+Q45536832	Lit	"uomo del clan Du, da Jingzhao Duling"
+#   Q45536832: set the pt label
+Q45536832	Lpt	"homem do clã Du, de Jingzhao Duling"
+#   Q45536832: set the ca label
+Q45536832	Lca	"home del clan Du, de Jingzhao Duling"
+#   Q45541151 (李 of 隴西狄道): mul label = NN
+Q45541151	Lmul	"NN"
+#   Q45541151: set the nb label
+Q45541151	Lnb	"mann av Li-slekten, fra Longxi Didao"
+#   Q45541151: set the da label
+Q45541151	Lda	"mand af Li-slægten, fra Longxi Didao"
+#   Q45541151: set the sv label
+Q45541151	Lsv	"man av Li-ätten, från Longxi Didao"
+#   Q45541151: set the de label
+Q45541151	Lde	"Mann des Klans Li, aus Longxi Didao"
+#   Q45541151: set the es label
+Q45541151	Les	"hombre del clan Li, de Longxi Didao"
+#   Q45541151: set the it label
+Q45541151	Lit	"uomo del clan Li, da Longxi Didao"
+#   Q45541151: set the pt label
+Q45541151	Lpt	"homem do clã Li, de Longxi Didao"
+#   Q45541151: set the ca label
+Q45541151	Lca	"home del clan Li, de Longxi Didao"
+#   Q45542682 (李 of 隴西狄道): mul label = NN
+Q45542682	Lmul	"NN"
+#   Q45542682: set the nb label
+Q45542682	Lnb	"mann av Li-slekten, fra Longxi Didao"
+#   Q45542682: set the da label
+Q45542682	Lda	"mand af Li-slægten, fra Longxi Didao"
+#   Q45542682: set the sv label
+Q45542682	Lsv	"man av Li-ätten, från Longxi Didao"
+#   Q45542682: set the de label
+Q45542682	Lde	"Mann des Klans Li, aus Longxi Didao"
+#   Q45542682: set the es label
+Q45542682	Les	"hombre del clan Li, de Longxi Didao"
+#   Q45542682: set the it label
+Q45542682	Lit	"uomo del clan Li, da Longxi Didao"
+#   Q45542682: set the pt label
+Q45542682	Lpt	"homem do clã Li, de Longxi Didao"
+#   Q45542682: set the ca label
+Q45542682	Lca	"home del clan Li, de Longxi Didao"
+#   Q45544329 (李 of 隴西狄道): mul label = NN
+Q45544329	Lmul	"NN"
+#   Q45544329: set the nb label
+Q45544329	Lnb	"mann av Li-slekten, fra Longxi Didao"
+#   Q45544329: set the da label
+Q45544329	Lda	"mand af Li-slægten, fra Longxi Didao"
+#   Q45544329: set the sv label
+Q45544329	Lsv	"man av Li-ätten, från Longxi Didao"
+#   Q45544329: set the de label
+Q45544329	Lde	"Mann des Klans Li, aus Longxi Didao"
+#   Q45544329: set the es label
+Q45544329	Les	"hombre del clan Li, de Longxi Didao"
+#   Q45544329: set the it label
+Q45544329	Lit	"uomo del clan Li, da Longxi Didao"
+#   Q45544329: set the pt label
+Q45544329	Lpt	"homem do clã Li, de Longxi Didao"
+#   Q45544329: set the ca label
+Q45544329	Lca	"home del clan Li, de Longxi Didao"
+#   Q45553927 (李 of 京兆長安): mul label = NN
+Q45553927	Lmul	"NN"
+#   Q45553927: set the nb label
+Q45553927	Lnb	"mann av Li-slekten, fra Jingzhao Chang'an"
+#   Q45553927: set the da label
+Q45553927	Lda	"mand af Li-slægten, fra Jingzhao Chang'an"
+#   Q45553927: set the sv label
+Q45553927	Lsv	"man av Li-ätten, från Jingzhao Chang'an"
+#   Q45553927: set the de label
+Q45553927	Lde	"Mann des Klans Li, aus Jingzhao Chang'an"
+#   Q45553927: set the es label
+Q45553927	Les	"hombre del clan Li, de Jingzhao Chang'an"
+#   Q45553927: set the it label
+Q45553927	Lit	"uomo del clan Li, da Jingzhao Chang'an"
+#   Q45553927: set the pt label
+Q45553927	Lpt	"homem do clã Li, de Jingzhao Chang'an"
+#   Q45553927: set the ca label
+Q45553927	Lca	"home del clan Li, de Jingzhao Chang'an"
+#   Q45556055 (李 of 河南洛陽): mul label = NN
+Q45556055	Lmul	"NN"
+#   Q45556055: set the nb label
+Q45556055	Lnb	"mann av Li-slekten, fra Henan Luoyang"
+#   Q45556055: set the da label
+Q45556055	Lda	"mand af Li-slægten, fra Henan Luoyang"
+#   Q45556055: set the sv label
+Q45556055	Lsv	"man av Li-ätten, från Henan Luoyang"
+#   Q45556055: set the de label
+Q45556055	Lde	"Mann des Klans Li, aus Henan Luoyang"
+#   Q45556055: set the es label
+Q45556055	Les	"hombre del clan Li, de Henan Luoyang"
+#   Q45556055: set the it label
+Q45556055	Lit	"uomo del clan Li, da Henan Luoyang"
+#   Q45556055: set the pt label
+Q45556055	Lpt	"homem do clã Li, de Henan Luoyang"
+#   Q45556055: set the ca label
+Q45556055	Lca	"home del clan Li, de Henan Luoyang"
+#   Q45557842 (崔 of 貝州清河): mul label = NN
+Q45557842	Lmul	"NN"
+#   Q45557842: set the nb label
+Q45557842	Lnb	"mann av Cui-slekten, fra Beizhou Qinghe"
+#   Q45557842: set the da label
+Q45557842	Lda	"mand af Cui-slægten, fra Beizhou Qinghe"
+#   Q45557842: set the sv label
+Q45557842	Lsv	"man av Cui-ätten, från Beizhou Qinghe"
+#   Q45557842: set the de label
+Q45557842	Lde	"Mann des Klans Cui, aus Beizhou Qinghe"
+#   Q45557842: set the it label
+Q45557842	Lit	"uomo del clan Cui, da Beizhou Qinghe"
+#   Q45557842: set the pt label
+Q45557842	Lpt	"homem do clã Cui, de Beizhou Qinghe"
+#   Q45557842: set the ca label
+Q45557842	Lca	"home del clan Cui, de Beizhou Qinghe"
+#   Q45562647 (裴 of 京兆萬年): mul label = NN
+Q45562647	Lmul	"NN"
+#   Q45562647: set the nb label
+Q45562647	Lnb	"mann av Pei-slekten, fra Jingzhao Wannian"
+#   Q45562647: set the da label
+Q45562647	Lda	"mand af Pei-slægten, fra Jingzhao Wannian"
+#   Q45562647: set the sv label
+Q45562647	Lsv	"man av Pei-ätten, från Jingzhao Wannian"
+#   Q45562647: set the de label
+Q45562647	Lde	"Mann des Klans Pei, aus Jingzhao Wannian"
+#   Q45562647: set the it label
+Q45562647	Lit	"uomo del clan Pei, da Jingzhao Wannian"
+#   Q45562647: set the pt label
+Q45562647	Lpt	"homem do clã Pei, de Jingzhao Wannian"
+#   Q45562647: set the ca label
+Q45562647	Lca	"home del clan Pei, de Jingzhao Wannian"
+#   Q45562711 (裴 of 河東聞喜): mul label = NN
+Q45562711	Lmul	"NN"
+#   Q45562711: set the nb label
+Q45562711	Lnb	"mann av Pei-slekten, fra Hedong Wenxi"
+#   Q45562711: set the da label
+Q45562711	Lda	"mand af Pei-slægten, fra Hedong Wenxi"
+#   Q45562711: set the sv label
+Q45562711	Lsv	"man av Pei-ätten, från Hedong Wenxi"
+#   Q45562711: set the de label
+Q45562711	Lde	"Mann des Klans Pei, aus Hedong Wenxi"
+#   Q45562711: set the it label
+Q45562711	Lit	"uomo del clan Pei, da Hedong Wenxi"
+#   Q45562711: set the pt label
+Q45562711	Lpt	"homem do clã Pei, de Hedong Wenxi"
+#   Q45562711: set the ca label
+Q45562711	Lca	"home del clan Pei, de Hedong Wenxi"
+#   Q45562775 (裴 of 河東聞喜): mul label = NN
+Q45562775	Lmul	"NN"
+#   Q45562775: set the nb label
+Q45562775	Lnb	"mann av Pei-slekten, fra Hedong Wenxi"
+#   Q45562775: set the da label
+Q45562775	Lda	"mand af Pei-slægten, fra Hedong Wenxi"
+#   Q45562775: set the sv label
+Q45562775	Lsv	"man av Pei-ätten, från Hedong Wenxi"
+#   Q45562775: set the de label
+Q45562775	Lde	"Mann des Klans Pei, aus Hedong Wenxi"
+#   Q45562775: set the it label
+Q45562775	Lit	"uomo del clan Pei, da Hedong Wenxi"
+#   Q45562775: set the pt label
+Q45562775	Lpt	"homem do clã Pei, de Hedong Wenxi"
+#   Q45562775: set the ca label
+Q45562775	Lca	"home del clan Pei, de Hedong Wenxi"
+#   Q45570419 (李 of 京兆萬年): mul label = NN
+Q45570419	Lmul	"NN"
+#   Q45570419: set the nb label
+Q45570419	Lnb	"mann av Li-slekten, fra Jingzhao Wannian"
+#   Q45570419: set the da label
+Q45570419	Lda	"mand af Li-slægten, fra Jingzhao Wannian"
+#   Q45570419: set the sv label
+Q45570419	Lsv	"man av Li-ätten, från Jingzhao Wannian"
+#   Q45570419: set the de label
+Q45570419	Lde	"Mann des Klans Li, aus Jingzhao Wannian"
+#   Q45570419: set the es label
+Q45570419	Les	"hombre del clan Li, de Jingzhao Wannian"
+#   Q45570419: set the it label
+Q45570419	Lit	"uomo del clan Li, da Jingzhao Wannian"
+#   Q45570419: set the pt label
+Q45570419	Lpt	"homem do clã Li, de Jingzhao Wannian"
+#   Q45570419: set the ca label
+Q45570419	Lca	"home del clan Li, de Jingzhao Wannian"
+#   Q45570482 (李 of 京兆萬年): mul label = NN
+Q45570482	Lmul	"NN"
+#   Q45570482: set the nb label
+Q45570482	Lnb	"mann av Li-slekten, fra Jingzhao Wannian"
+#   Q45570482: set the da label
+Q45570482	Lda	"mand af Li-slægten, fra Jingzhao Wannian"
+#   Q45570482: set the sv label
+Q45570482	Lsv	"man av Li-ätten, från Jingzhao Wannian"
+#   Q45570482: set the de label
+Q45570482	Lde	"Mann des Klans Li, aus Jingzhao Wannian"
+#   Q45570482: set the es label
+Q45570482	Les	"hombre del clan Li, de Jingzhao Wannian"
+#   Q45570482: set the it label
+Q45570482	Lit	"uomo del clan Li, da Jingzhao Wannian"
+#   Q45570482: set the pt label
+Q45570482	Lpt	"homem do clã Li, de Jingzhao Wannian"
+#   Q45570482: set the ca label
+Q45570482	Lca	"home del clan Li, de Jingzhao Wannian"
+#   Q45574741 (李 of 趙州贊皇): mul label = NN
+Q45574741	Lmul	"NN"
+#   Q45574741: set the nb label
+Q45574741	Lnb	"mann av Li-slekten, fra Zhaozhou Zanhuang"
+#   Q45574741: set the da label
+Q45574741	Lda	"mand af Li-slægten, fra Zhaozhou Zanhuang"
+#   Q45574741: set the sv label
+Q45574741	Lsv	"man av Li-ätten, från Zhaozhou Zanhuang"
+#   Q45574741: set the de label
+Q45574741	Lde	"Mann des Klans Li, aus Zhaozhou Zanhuang"
+#   Q45574741: set the es label
+Q45574741	Les	"hombre del clan Li, de Zhaozhou Zanhuang"
+#   Q45574741: set the it label
+Q45574741	Lit	"uomo del clan Li, da Zhaozhou Zanhuang"
+#   Q45574741: set the pt label
+Q45574741	Lpt	"homem do clã Li, de Zhaozhou Zanhuang"
+#   Q45574741: set the ca label
+Q45574741	Lca	"home del clan Li, de Zhaozhou Zanhuang"
+#   Q45574802 (李 of 趙州贊皇): mul label = NN
+Q45574802	Lmul	"NN"
+#   Q45574802: set the nb label
+Q45574802	Lnb	"mann av Li-slekten, fra Zhaozhou Zanhuang"
+#   Q45574802: set the da label
+Q45574802	Lda	"mand af Li-slægten, fra Zhaozhou Zanhuang"
+#   Q45574802: set the sv label
+Q45574802	Lsv	"man av Li-ätten, från Zhaozhou Zanhuang"
+#   Q45574802: set the de label
+Q45574802	Lde	"Mann des Klans Li, aus Zhaozhou Zanhuang"
+#   Q45574802: set the es label
+Q45574802	Les	"hombre del clan Li, de Zhaozhou Zanhuang"
+#   Q45574802: set the it label
+Q45574802	Lit	"uomo del clan Li, da Zhaozhou Zanhuang"
+#   Q45574802: set the pt label
+Q45574802	Lpt	"homem do clã Li, de Zhaozhou Zanhuang"
+#   Q45574802: set the ca label
+Q45574802	Lca	"home del clan Li, de Zhaozhou Zanhuang"
+#   Q45583513 (鄭 of 滎陽開封): mul label = NN
+Q45583513	Lmul	"NN"
+#   Q45583513: set the nb label
+Q45583513	Lnb	"mann av Zheng-slekten, fra Xingyang Kaifeng"
+#   Q45583513: set the da label
+Q45583513	Lda	"mand af Zheng-slægten, fra Xingyang Kaifeng"
+#   Q45583513: set the sv label
+Q45583513	Lsv	"man av Zheng-ätten, från Xingyang Kaifeng"
+#   Q45583513: set the de label
+Q45583513	Lde	"Mann des Klans Zheng, aus Xingyang Kaifeng"
+#   Q45583513: set the it label
+Q45583513	Lit	"uomo del clan Zheng, da Xingyang Kaifeng"
+#   Q45583513: set the pt label
+Q45583513	Lpt	"homem do clã Zheng, de Xingyang Kaifeng"
+#   Q45583513: set the ca label
+Q45583513	Lca	"home del clan Zheng, de Xingyang Kaifeng"
+#   Q45600896 (陸 of 吳郡吳縣): mul label = NN
+Q45600896	Lmul	"NN"
+#   Q45600896: set the nb label
+Q45600896	Lnb	"mann av Lu-slekten, fra Wujun Wuxian"
+#   Q45600896: set the da label
+Q45600896	Lda	"mand af Lu-slægten, fra Wujun Wuxian"
+#   Q45600896: set the sv label
+Q45600896	Lsv	"man av Lu-ätten, från Wujun Wuxian"
+#   Q45600896: set the de label
+Q45600896	Lde	"Mann des Klans Lu, aus Wujun Wuxian"
+#   Q45600896: set the es label
+Q45600896	Les	"hombre del clan Lu, de Wujun Wuxian"
+#   Q45600896: set the it label
+Q45600896	Lit	"uomo del clan Lu, da Wujun Wuxian"
+#   Q45600896: set the pt label
+Q45600896	Lpt	"homem do clã Lu, de Wujun Wuxian"
+#   Q45600896: set the ca label
+Q45600896	Lca	"home del clan Lu, de Wujun Wuxian"
+#   Q45602475 (李 of 京兆長安): mul label = NN
+Q45602475	Lmul	"NN"
+#   Q45602475: set the nb label
+Q45602475	Lnb	"mann av Li-slekten, fra Jingzhao Chang'an"
+#   Q45602475: set the da label
+Q45602475	Lda	"mand af Li-slægten, fra Jingzhao Chang'an"
+#   Q45602475: set the sv label
+Q45602475	Lsv	"man av Li-ätten, från Jingzhao Chang'an"
+#   Q45602475: set the de label
+Q45602475	Lde	"Mann des Klans Li, aus Jingzhao Chang'an"
+#   Q45602475: set the es label
+Q45602475	Les	"hombre del clan Li, de Jingzhao Chang'an"
+#   Q45602475: set the it label
+Q45602475	Lit	"uomo del clan Li, da Jingzhao Chang'an"
+#   Q45602475: set the pt label
+Q45602475	Lpt	"homem do clã Li, de Jingzhao Chang'an"
+#   Q45602475: set the ca label
+Q45602475	Lca	"home del clan Li, de Jingzhao Chang'an"
+#   Q45611337 (鄭 of 鄭州榮澤): mul label = NN
+Q45611337	Lmul	"NN"
+#   Q45611337: set the nb label
+Q45611337	Lnb	"mann av Zheng-slekten, fra Zhengzhou Rongze"
+#   Q45611337: set the da label
+Q45611337	Lda	"mand af Zheng-slægten, fra Zhengzhou Rongze"
+#   Q45611337: set the sv label
+Q45611337	Lsv	"man av Zheng-ätten, från Zhengzhou Rongze"
+#   Q45611337: set the de label
+Q45611337	Lde	"Mann des Klans Zheng, aus Zhengzhou Rongze"
+#   Q45611337: set the it label
+Q45611337	Lit	"uomo del clan Zheng, da Zhengzhou Rongze"
+#   Q45611337: set the pt label
+Q45611337	Lpt	"homem do clã Zheng, de Zhengzhou Rongze"
+#   Q45611337: set the ca label
+Q45611337	Lca	"home del clan Zheng, de Zhengzhou Rongze"
+#   Q45620545 (楊 of ): mul label = NN
+Q45620545	Lmul	"NN"
+#   Q45620545: set the nb label
+Q45620545	Lnb	"mann av Yang-slekten"
+#   Q45620545: set the da label
+Q45620545	Lda	"mand af Yang-slægten"
+#   Q45620545: set the sv label
+Q45620545	Lsv	"man av Yang-ätten"
+#   Q45620545: set the de label
+Q45620545	Lde	"Mann des Klans Yang"
+#   Q45620545: set the it label
+Q45620545	Lit	"uomo del clan Yang"
+#   Q45620545: set the pt label
+Q45620545	Lpt	"homem do clã Yang"
+#   Q45620545: set the ca label
+Q45620545	Lca	"home del clan Yang"
+#   Q45621550 (李 of 趙州贊皇): mul label = NN
+Q45621550	Lmul	"NN"
+#   Q45621550: set the nb label
+Q45621550	Lnb	"mann av Li-slekten, fra Zhaozhou Zanhuang"
+#   Q45621550: set the da label
+Q45621550	Lda	"mand af Li-slægten, fra Zhaozhou Zanhuang"
+#   Q45621550: set the sv label
+Q45621550	Lsv	"man av Li-ätten, från Zhaozhou Zanhuang"
+#   Q45621550: set the de label
+Q45621550	Lde	"Mann des Klans Li, aus Zhaozhou Zanhuang"
+#   Q45621550: set the es label
+Q45621550	Les	"hombre del clan Li, de Zhaozhou Zanhuang"
+#   Q45621550: set the it label
+Q45621550	Lit	"uomo del clan Li, da Zhaozhou Zanhuang"
+#   Q45621550: set the pt label
+Q45621550	Lpt	"homem do clã Li, de Zhaozhou Zanhuang"
+#   Q45621550: set the ca label
+Q45621550	Lca	"home del clan Li, de Zhaozhou Zanhuang"
+#   Q45621738 (李 of 趙州贊皇): mul label = NN
+Q45621738	Lmul	"NN"
+#   Q45621738: set the nb label
+Q45621738	Lnb	"mann av Li-slekten, fra Zhaozhou Zanhuang"
+#   Q45621738: set the da label
+Q45621738	Lda	"mand af Li-slægten, fra Zhaozhou Zanhuang"
+#   Q45621738: set the sv label
+Q45621738	Lsv	"man av Li-ätten, från Zhaozhou Zanhuang"
+#   Q45621738: set the de label
+Q45621738	Lde	"Mann des Klans Li, aus Zhaozhou Zanhuang"
+#   Q45621738: set the es label
+Q45621738	Les	"hombre del clan Li, de Zhaozhou Zanhuang"
+#   Q45621738: set the it label
+Q45621738	Lit	"uomo del clan Li, da Zhaozhou Zanhuang"
+#   Q45621738: set the pt label
+Q45621738	Lpt	"homem do clã Li, de Zhaozhou Zanhuang"
+#   Q45621738: set the ca label
+Q45621738	Lca	"home del clan Li, de Zhaozhou Zanhuang"
+#   Q45622685 (唐 of 晉昌冥安): mul label = NN
+Q45622685	Lmul	"NN"
+#   Q45622685: set the nb label
+Q45622685	Lnb	"mann av Tang-slekten, fra Jinchang Ming'an"
+#   Q45622685: set the da label
+Q45622685	Lda	"mand af Tang-slægten, fra Jinchang Ming'an"
+#   Q45622685: set the sv label
+Q45622685	Lsv	"man av Tang-ätten, från Jinchang Ming'an"
+#   Q45622685: set the de label
+Q45622685	Lde	"Mann des Klans Tang, aus Jinchang Ming'an"
+#   Q45622685: set the it label
+Q45622685	Lit	"uomo del clan Tang, da Jinchang Ming'an"
+#   Q45622685: set the pt label
+Q45622685	Lpt	"homem do clã Tang, de Jinchang Ming'an"
+#   Q45622685: set the ca label
+Q45622685	Lca	"home del clan Tang, de Jinchang Ming'an"
+#   Q45628948 (薛 of 蒲州寶鼎): mul label = NN
+Q45628948	Lmul	"NN"
+#   Q45628948: set the nb label
+Q45628948	Lnb	"mann av Xue-slekten, fra Puzhou Baoding"
+#   Q45628948: set the da label
+Q45628948	Lda	"mand af Xue-slægten, fra Puzhou Baoding"
+#   Q45628948: set the sv label
+Q45628948	Lsv	"man av Xue-ätten, från Puzhou Baoding"
+#   Q45628948: set the de label
+Q45628948	Lde	"Mann des Klans Xue, aus Puzhou Baoding"
+#   Q45628948: set the it label
+Q45628948	Lit	"uomo del clan Xue, da Puzhou Baoding"
+#   Q45628948: set the pt label
+Q45628948	Lpt	"homem do clã Xue, de Puzhou Baoding"
+#   Q45628948: set the ca label
+Q45628948	Lca	"home del clan Xue, de Puzhou Baoding"
+#   Q45632756 (裴 of 河東聞喜): mul label = NN
+Q45632756	Lmul	"NN"
+#   Q45632756: set the nb label
+Q45632756	Lnb	"mann av Pei-slekten, fra Hedong Wenxi"
+#   Q45632756: set the da label
+Q45632756	Lda	"mand af Pei-slægten, fra Hedong Wenxi"
+#   Q45632756: set the sv label
+Q45632756	Lsv	"man av Pei-ätten, från Hedong Wenxi"
+#   Q45632756: set the de label
+Q45632756	Lde	"Mann des Klans Pei, aus Hedong Wenxi"
+#   Q45632756: set the it label
+Q45632756	Lit	"uomo del clan Pei, da Hedong Wenxi"
+#   Q45632756: set the pt label
+Q45632756	Lpt	"homem do clã Pei, de Hedong Wenxi"
+#   Q45632756: set the ca label
+Q45632756	Lca	"home del clan Pei, de Hedong Wenxi"
+#   Q45635644 (蕭 of 蘭陵): mul label = NN
+Q45635644	Lmul	"NN"
+#   Q45635644: set the nb label
+Q45635644	Lnb	"mann av Xiao-slekten, fra Lanling"
+#   Q45635644: set the da label
+Q45635644	Lda	"mand af Xiao-slægten, fra Lanling"
+#   Q45635644: set the sv label
+Q45635644	Lsv	"man av Xiao-ätten, från Lanling"
+#   Q45635644: set the de label
+Q45635644	Lde	"Mann des Klans Xiao, aus Lanling"
+#   Q45635644: set the it label
+Q45635644	Lit	"uomo del clan Xiao, da Lanling"
+#   Q45635644: set the pt label
+Q45635644	Lpt	"homem do clã Xiao, de Lanling"
+#   Q45635644: set the ca label
+Q45635644	Lca	"home del clan Xiao, de Lanling"
+#   Q45639455 (薛 of 蒲州寶鼎): mul label = NN
+Q45639455	Lmul	"NN"
+#   Q45639455: set the nb label
+Q45639455	Lnb	"mann av Xue-slekten, fra Puzhou Baoding"
+#   Q45639455: set the da label
+Q45639455	Lda	"mand af Xue-slægten, fra Puzhou Baoding"
+#   Q45639455: set the sv label
+Q45639455	Lsv	"man av Xue-ätten, från Puzhou Baoding"
+#   Q45639455: set the de label
+Q45639455	Lde	"Mann des Klans Xue, aus Puzhou Baoding"
+#   Q45639455: set the it label
+Q45639455	Lit	"uomo del clan Xue, da Puzhou Baoding"
+#   Q45639455: set the pt label
+Q45639455	Lpt	"homem do clã Xue, de Puzhou Baoding"
+#   Q45639455: set the ca label
+Q45639455	Lca	"home del clan Xue, de Puzhou Baoding"
+#   Q45642399 (裴 of 河東聞喜): mul label = NN
+Q45642399	Lmul	"NN"
+#   Q45642399: set the nb label
+Q45642399	Lnb	"mann av Pei-slekten, fra Hedong Wenxi"
+#   Q45642399: set the da label
+Q45642399	Lda	"mand af Pei-slægten, fra Hedong Wenxi"
+#   Q45642399: set the sv label
+Q45642399	Lsv	"man av Pei-ätten, från Hedong Wenxi"
+#   Q45642399: set the de label
+Q45642399	Lde	"Mann des Klans Pei, aus Hedong Wenxi"
+#   Q45642399: set the it label
+Q45642399	Lit	"uomo del clan Pei, da Hedong Wenxi"
+#   Q45642399: set the pt label
+Q45642399	Lpt	"homem do clã Pei, de Hedong Wenxi"
+#   Q45642399: set the ca label
+Q45642399	Lca	"home del clan Pei, de Hedong Wenxi"
+#   Q45642460 (裴 of 河東聞喜): mul label = NN
+Q45642460	Lmul	"NN"
+#   Q45642460: set the nb label
+Q45642460	Lnb	"mann av Pei-slekten, fra Hedong Wenxi"
+#   Q45642460: set the da label
+Q45642460	Lda	"mand af Pei-slægten, fra Hedong Wenxi"
+#   Q45642460: set the sv label
+Q45642460	Lsv	"man av Pei-ätten, från Hedong Wenxi"
+#   Q45642460: set the de label
+Q45642460	Lde	"Mann des Klans Pei, aus Hedong Wenxi"
+#   Q45642460: set the it label
+Q45642460	Lit	"uomo del clan Pei, da Hedong Wenxi"
+#   Q45642460: set the pt label
+Q45642460	Lpt	"homem do clã Pei, de Hedong Wenxi"
+#   Q45642460: set the ca label
+Q45642460	Lca	"home del clan Pei, de Hedong Wenxi"
+#   Q45642520 (裴 of 河東聞喜): mul label = NN
+Q45642520	Lmul	"NN"
+#   Q45642520: set the nb label
+Q45642520	Lnb	"mann av Pei-slekten, fra Hedong Wenxi"
+#   Q45642520: set the da label
+Q45642520	Lda	"mand af Pei-slægten, fra Hedong Wenxi"
+#   Q45642520: set the sv label
+Q45642520	Lsv	"man av Pei-ätten, från Hedong Wenxi"
+#   Q45642520: set the de label
+Q45642520	Lde	"Mann des Klans Pei, aus Hedong Wenxi"
+#   Q45642520: set the it label
+Q45642520	Lit	"uomo del clan Pei, da Hedong Wenxi"
+#   Q45642520: set the pt label
+Q45642520	Lpt	"homem do clã Pei, de Hedong Wenxi"
+#   Q45642520: set the ca label
+Q45642520	Lca	"home del clan Pei, de Hedong Wenxi"
+#   Q45642643 (裴 of 河東聞喜): mul label = NN
+Q45642643	Lmul	"NN"
+#   Q45642643: set the nb label
+Q45642643	Lnb	"mann av Pei-slekten, fra Hedong Wenxi"
+#   Q45642643: set the da label
+Q45642643	Lda	"mand af Pei-slægten, fra Hedong Wenxi"
+#   Q45642643: set the sv label
+Q45642643	Lsv	"man av Pei-ätten, från Hedong Wenxi"
+#   Q45642643: set the de label
+Q45642643	Lde	"Mann des Klans Pei, aus Hedong Wenxi"
+#   Q45642643: set the it label
+Q45642643	Lit	"uomo del clan Pei, da Hedong Wenxi"
+#   Q45642643: set the pt label
+Q45642643	Lpt	"homem do clã Pei, de Hedong Wenxi"
+#   Q45642643: set the ca label
+Q45642643	Lca	"home del clan Pei, de Hedong Wenxi"
+#   Q45642829 (裴 of 河東聞喜): mul label = NN
+Q45642829	Lmul	"NN"
+#   Q45642829: set the nb label
+Q45642829	Lnb	"mann av Pei-slekten, fra Hedong Wenxi"
+#   Q45642829: set the da label
+Q45642829	Lda	"mand af Pei-slægten, fra Hedong Wenxi"
+#   Q45642829: set the sv label
+Q45642829	Lsv	"man av Pei-ätten, från Hedong Wenxi"
+#   Q45642829: set the de label
+Q45642829	Lde	"Mann des Klans Pei, aus Hedong Wenxi"
+#   Q45642829: set the it label
+Q45642829	Lit	"uomo del clan Pei, da Hedong Wenxi"
+#   Q45642829: set the pt label
+Q45642829	Lpt	"homem do clã Pei, de Hedong Wenxi"
+#   Q45642829: set the ca label
+Q45642829	Lca	"home del clan Pei, de Hedong Wenxi"
+#   Q45644430 (李 of 趙州平棘): mul label = NN
+Q45644430	Lmul	"NN"
+#   Q45644430: set the nb label
+Q45644430	Lnb	"mann av Li-slekten, fra Zhaozhou Pingji"
+#   Q45644430: set the da label
+Q45644430	Lda	"mand af Li-slægten, fra Zhaozhou Pingji"
+#   Q45644430: set the sv label
+Q45644430	Lsv	"man av Li-ätten, från Zhaozhou Pingji"
+#   Q45644430: set the de label
+Q45644430	Lde	"Mann des Klans Li, aus Zhaozhou Pingji"
+#   Q45644430: set the es label
+Q45644430	Les	"hombre del clan Li, de Zhaozhou Pingji"
+#   Q45644430: set the it label
+Q45644430	Lit	"uomo del clan Li, da Zhaozhou Pingji"
+#   Q45644430: set the pt label
+Q45644430	Lpt	"homem do clã Li, de Zhaozhou Pingji"
+#   Q45644430: set the ca label
+Q45644430	Lca	"home del clan Li, de Zhaozhou Pingji"
+#   Q45644491 (李 of 趙州平棘): mul label = NN
+Q45644491	Lmul	"NN"
+#   Q45644491: set the nb label
+Q45644491	Lnb	"mann av Li-slekten, fra Zhaozhou Pingji"
+#   Q45644491: set the da label
+Q45644491	Lda	"mand af Li-slægten, fra Zhaozhou Pingji"
+#   Q45644491: set the sv label
+Q45644491	Lsv	"man av Li-ätten, från Zhaozhou Pingji"
+#   Q45644491: set the de label
+Q45644491	Lde	"Mann des Klans Li, aus Zhaozhou Pingji"
+#   Q45644491: set the es label
+Q45644491	Les	"hombre del clan Li, de Zhaozhou Pingji"
+#   Q45644491: set the it label
+Q45644491	Lit	"uomo del clan Li, da Zhaozhou Pingji"
+#   Q45644491: set the pt label
+Q45644491	Lpt	"homem do clã Li, de Zhaozhou Pingji"
+#   Q45644491: set the ca label
+Q45644491	Lca	"home del clan Li, de Zhaozhou Pingji"
+#   Q45644550 (李 of 趙州平棘): mul label = NN
+Q45644550	Lmul	"NN"
+#   Q45644550: set the nb label
+Q45644550	Lnb	"mann av Li-slekten, fra Zhaozhou Pingji"
+#   Q45644550: set the da label
+Q45644550	Lda	"mand af Li-slægten, fra Zhaozhou Pingji"
+#   Q45644550: set the sv label
+Q45644550	Lsv	"man av Li-ätten, från Zhaozhou Pingji"
+#   Q45644550: set the de label
+Q45644550	Lde	"Mann des Klans Li, aus Zhaozhou Pingji"
+#   Q45644550: set the es label
+Q45644550	Les	"hombre del clan Li, de Zhaozhou Pingji"
+#   Q45644550: set the it label
+Q45644550	Lit	"uomo del clan Li, da Zhaozhou Pingji"
+#   Q45644550: set the pt label
+Q45644550	Lpt	"homem do clã Li, de Zhaozhou Pingji"
+#   Q45644550: set the ca label
+Q45644550	Lca	"home del clan Li, de Zhaozhou Pingji"
+#   Q45645832 (李 of 河南): mul label = NN
+Q45645832	Lmul	"NN"
+#   Q45645832: set the nb label
+Q45645832	Lnb	"mann av Li-slekten, fra Henan"
+#   Q45645832: set the da label
+Q45645832	Lda	"mand af Li-slægten, fra Henan"
+#   Q45645832: set the sv label
+Q45645832	Lsv	"man av Li-ätten, från Henan"
+#   Q45645832: set the de label
+Q45645832	Lde	"Mann des Klans Li, aus Henan"
+#   Q45645832: set the es label
+Q45645832	Les	"hombre del clan Li, de Henan"
+#   Q45645832: set the it label
+Q45645832	Lit	"uomo del clan Li, da Henan"
+#   Q45645832: set the pt label
+Q45645832	Lpt	"homem do clã Li, de Henan"
+#   Q45645832: set the ca label
+Q45645832	Lca	"home del clan Li, de Henan"
+#   Q45645892 (李 of 河南): mul label = NN
+Q45645892	Lmul	"NN"
+#   Q45645892: set the nb label
+Q45645892	Lnb	"mann av Li-slekten, fra Henan"
+#   Q45645892: set the da label
+Q45645892	Lda	"mand af Li-slægten, fra Henan"
+#   Q45645892: set the sv label
+Q45645892	Lsv	"man av Li-ätten, från Henan"
+#   Q45645892: set the de label
+Q45645892	Lde	"Mann des Klans Li, aus Henan"
+#   Q45645892: set the es label
+Q45645892	Les	"hombre del clan Li, de Henan"
+#   Q45645892: set the it label
+Q45645892	Lit	"uomo del clan Li, da Henan"
+#   Q45645892: set the pt label
+Q45645892	Lpt	"homem do clã Li, de Henan"
+#   Q45645892: set the ca label
+Q45645892	Lca	"home del clan Li, de Henan"
+#   Q45645904 (裴 of 河東聞喜): mul label = NN
+Q45645904	Lmul	"NN"
+#   Q45645904: set the nb label
+Q45645904	Lnb	"mann av Pei-slekten, fra Hedong Wenxi"
+#   Q45645904: set the da label
+Q45645904	Lda	"mand af Pei-slægten, fra Hedong Wenxi"
+#   Q45645904: set the sv label
+Q45645904	Lsv	"man av Pei-ätten, från Hedong Wenxi"
+#   Q45645904: set the de label
+Q45645904	Lde	"Mann des Klans Pei, aus Hedong Wenxi"
+#   Q45645904: set the it label
+Q45645904	Lit	"uomo del clan Pei, da Hedong Wenxi"
+#   Q45645904: set the pt label
+Q45645904	Lpt	"homem do clã Pei, de Hedong Wenxi"
+#   Q45645904: set the ca label
+Q45645904	Lca	"home del clan Pei, de Hedong Wenxi"
+#   Q45645953 (李 of 河南): mul label = NN
+Q45645953	Lmul	"NN"
+#   Q45645953: set the nb label
+Q45645953	Lnb	"mann av Li-slekten, fra Henan"
+#   Q45645953: set the da label
+Q45645953	Lda	"mand af Li-slægten, fra Henan"
+#   Q45645953: set the sv label
+Q45645953	Lsv	"man av Li-ätten, från Henan"
+#   Q45645953: set the de label
+Q45645953	Lde	"Mann des Klans Li, aus Henan"
+#   Q45645953: set the es label
+Q45645953	Les	"hombre del clan Li, de Henan"
+#   Q45645953: set the it label
+Q45645953	Lit	"uomo del clan Li, da Henan"
+#   Q45645953: set the pt label
+Q45645953	Lpt	"homem do clã Li, de Henan"
+#   Q45645953: set the ca label
+Q45645953	Lca	"home del clan Li, de Henan"
+#   Q45646012 (李 of 河南): mul label = NN
+Q45646012	Lmul	"NN"
+#   Q45646012: set the nb label
+Q45646012	Lnb	"mann av Li-slekten, fra Henan"
+#   Q45646012: set the da label
+Q45646012	Lda	"mand af Li-slægten, fra Henan"
+#   Q45646012: set the sv label
+Q45646012	Lsv	"man av Li-ätten, från Henan"
+#   Q45646012: set the de label
+Q45646012	Lde	"Mann des Klans Li, aus Henan"
+#   Q45646012: set the es label
+Q45646012	Les	"hombre del clan Li, de Henan"
+#   Q45646012: set the it label
+Q45646012	Lit	"uomo del clan Li, da Henan"
+#   Q45646012: set the pt label
+Q45646012	Lpt	"homem do clã Li, de Henan"
+#   Q45646012: set the ca label
+Q45646012	Lca	"home del clan Li, de Henan"
+#   Q45646435 (李 of 趙州平棘): mul label = NN
+Q45646435	Lmul	"NN"
+#   Q45646435: set the nb label
+Q45646435	Lnb	"mann av Li-slekten, fra Zhaozhou Pingji"
+#   Q45646435: set the da label
+Q45646435	Lda	"mand af Li-slægten, fra Zhaozhou Pingji"
+#   Q45646435: set the sv label
+Q45646435	Lsv	"man av Li-ätten, från Zhaozhou Pingji"
+#   Q45646435: set the de label
+Q45646435	Lde	"Mann des Klans Li, aus Zhaozhou Pingji"
+#   Q45646435: set the es label
+Q45646435	Les	"hombre del clan Li, de Zhaozhou Pingji"
+#   Q45646435: set the it label
+Q45646435	Lit	"uomo del clan Li, da Zhaozhou Pingji"
+#   Q45646435: set the pt label
+Q45646435	Lpt	"homem do clã Li, de Zhaozhou Pingji"
+#   Q45646435: set the ca label
+Q45646435	Lca	"home del clan Li, de Zhaozhou Pingji"
+#   Q45646493 (李 of 趙州平棘): mul label = NN
+Q45646493	Lmul	"NN"
+#   Q45646493: set the nb label
+Q45646493	Lnb	"mann av Li-slekten, fra Zhaozhou Pingji"
+#   Q45646493: set the da label
+Q45646493	Lda	"mand af Li-slægten, fra Zhaozhou Pingji"
+#   Q45646493: set the sv label
+Q45646493	Lsv	"man av Li-ätten, från Zhaozhou Pingji"
+#   Q45646493: set the de label
+Q45646493	Lde	"Mann des Klans Li, aus Zhaozhou Pingji"
+#   Q45646493: set the es label
+Q45646493	Les	"hombre del clan Li, de Zhaozhou Pingji"
+#   Q45646493: set the it label
+Q45646493	Lit	"uomo del clan Li, da Zhaozhou Pingji"
+#   Q45646493: set the pt label
+Q45646493	Lpt	"homem do clã Li, de Zhaozhou Pingji"
+#   Q45646493: set the ca label
+Q45646493	Lca	"home del clan Li, de Zhaozhou Pingji"
+#   Q45646554 (李 of 趙州平棘): mul label = NN
+Q45646554	Lmul	"NN"
+#   Q45646554: set the nb label
+Q45646554	Lnb	"mann av Li-slekten, fra Zhaozhou Pingji"
+#   Q45646554: set the da label
+Q45646554	Lda	"mand af Li-slægten, fra Zhaozhou Pingji"
+#   Q45646554: set the sv label
+Q45646554	Lsv	"man av Li-ätten, från Zhaozhou Pingji"
+#   Q45646554: set the de label
+Q45646554	Lde	"Mann des Klans Li, aus Zhaozhou Pingji"
+#   Q45646554: set the es label
+Q45646554	Les	"hombre del clan Li, de Zhaozhou Pingji"
+#   Q45646554: set the it label
+Q45646554	Lit	"uomo del clan Li, da Zhaozhou Pingji"
+#   Q45646554: set the pt label
+Q45646554	Lpt	"homem do clã Li, de Zhaozhou Pingji"
+#   Q45646554: set the ca label
+Q45646554	Lca	"home del clan Li, de Zhaozhou Pingji"
+#   Q45646854 (李 of 滑州匡城): mul label = NN
+Q45646854	Lmul	"NN"
+#   Q45646854: set the nb label
+Q45646854	Lnb	"mann av Li-slekten, fra Huazhou Kuangcheng"
+#   Q45646854: set the da label
+Q45646854	Lda	"mand af Li-slægten, fra Huazhou Kuangcheng"
+#   Q45646854: set the sv label
+Q45646854	Lsv	"man av Li-ätten, från Huazhou Kuangcheng"
+#   Q45646854: set the de label
+Q45646854	Lde	"Mann des Klans Li, aus Huazhou Kuangcheng"
+#   Q45646854: set the es label
+Q45646854	Les	"hombre del clan Li, de Huazhou Kuangcheng"
+#   Q45646854: set the it label
+Q45646854	Lit	"uomo del clan Li, da Huazhou Kuangcheng"
+#   Q45646854: set the pt label
+Q45646854	Lpt	"homem do clã Li, de Huazhou Kuangcheng"
+#   Q45646854: set the ca label
+Q45646854	Lca	"home del clan Li, de Huazhou Kuangcheng"
+#   Q45646912 (李 of 滑州匡城): mul label = NN
+Q45646912	Lmul	"NN"
+#   Q45646912: set the nb label
+Q45646912	Lnb	"mann av Li-slekten, fra Huazhou Kuangcheng"
+#   Q45646912: set the da label
+Q45646912	Lda	"mand af Li-slægten, fra Huazhou Kuangcheng"
+#   Q45646912: set the sv label
+Q45646912	Lsv	"man av Li-ätten, från Huazhou Kuangcheng"
+#   Q45646912: set the de label
+Q45646912	Lde	"Mann des Klans Li, aus Huazhou Kuangcheng"
+#   Q45646912: set the es label
+Q45646912	Les	"hombre del clan Li, de Huazhou Kuangcheng"
+#   Q45646912: set the it label
+Q45646912	Lit	"uomo del clan Li, da Huazhou Kuangcheng"
+#   Q45646912: set the pt label
+Q45646912	Lpt	"homem do clã Li, de Huazhou Kuangcheng"
+#   Q45646912: set the ca label
+Q45646912	Lca	"home del clan Li, de Huazhou Kuangcheng"
+#   Q45646972 (李 of 滑州匡城): mul label = NN
+Q45646972	Lmul	"NN"
+#   Q45646972: set the nb label
+Q45646972	Lnb	"mann av Li-slekten, fra Huazhou Kuangcheng"
+#   Q45646972: set the da label
+Q45646972	Lda	"mand af Li-slægten, fra Huazhou Kuangcheng"
+#   Q45646972: set the sv label
+Q45646972	Lsv	"man av Li-ätten, från Huazhou Kuangcheng"
+#   Q45646972: set the de label
+Q45646972	Lde	"Mann des Klans Li, aus Huazhou Kuangcheng"
+#   Q45646972: set the es label
+Q45646972	Les	"hombre del clan Li, de Huazhou Kuangcheng"
+#   Q45646972: set the it label
+Q45646972	Lit	"uomo del clan Li, da Huazhou Kuangcheng"
+#   Q45646972: set the pt label
+Q45646972	Lpt	"homem do clã Li, de Huazhou Kuangcheng"
+#   Q45646972: set the ca label
+Q45646972	Lca	"home del clan Li, de Huazhou Kuangcheng"
+#   Q45647031 (李 of 滑州匡城): mul label = NN
+Q45647031	Lmul	"NN"
+#   Q45647031: set the nb label
+Q45647031	Lnb	"mann av Li-slekten, fra Huazhou Kuangcheng"
+#   Q45647031: set the da label
+Q45647031	Lda	"mand af Li-slægten, fra Huazhou Kuangcheng"
+#   Q45647031: set the sv label
+Q45647031	Lsv	"man av Li-ätten, från Huazhou Kuangcheng"
+#   Q45647031: set the de label
+Q45647031	Lde	"Mann des Klans Li, aus Huazhou Kuangcheng"
+#   Q45647031: set the es label
+Q45647031	Les	"hombre del clan Li, de Huazhou Kuangcheng"
+#   Q45647031: set the it label
+Q45647031	Lit	"uomo del clan Li, da Huazhou Kuangcheng"
+#   Q45647031: set the pt label
+Q45647031	Lpt	"homem do clã Li, de Huazhou Kuangcheng"
+#   Q45647031: set the ca label
+Q45647031	Lca	"home del clan Li, de Huazhou Kuangcheng"
+#   Q45647089 (李 of 滑州匡城): mul label = NN
+Q45647089	Lmul	"NN"
+#   Q45647089: set the nb label
+Q45647089	Lnb	"mann av Li-slekten, fra Huazhou Kuangcheng"
+#   Q45647089: set the da label
+Q45647089	Lda	"mand af Li-slægten, fra Huazhou Kuangcheng"
+#   Q45647089: set the sv label
+Q45647089	Lsv	"man av Li-ätten, från Huazhou Kuangcheng"
+#   Q45647089: set the de label
+Q45647089	Lde	"Mann des Klans Li, aus Huazhou Kuangcheng"
+#   Q45647089: set the es label
+Q45647089	Les	"hombre del clan Li, de Huazhou Kuangcheng"
+#   Q45647089: set the it label
+Q45647089	Lit	"uomo del clan Li, da Huazhou Kuangcheng"
+#   Q45647089: set the pt label
+Q45647089	Lpt	"homem do clã Li, de Huazhou Kuangcheng"
+#   Q45647089: set the ca label
+Q45647089	Lca	"home del clan Li, de Huazhou Kuangcheng"
+#   Q45647334 (李 of 滑州匡城): mul label = NN
+Q45647334	Lmul	"NN"
+#   Q45647334: set the nb label
+Q45647334	Lnb	"mann av Li-slekten, fra Huazhou Kuangcheng"
+#   Q45647334: set the da label
+Q45647334	Lda	"mand af Li-slægten, fra Huazhou Kuangcheng"
+#   Q45647334: set the sv label
+Q45647334	Lsv	"man av Li-ätten, från Huazhou Kuangcheng"
+#   Q45647334: set the de label
+Q45647334	Lde	"Mann des Klans Li, aus Huazhou Kuangcheng"
+#   Q45647334: set the es label
+Q45647334	Les	"hombre del clan Li, de Huazhou Kuangcheng"
+#   Q45647334: set the it label
+Q45647334	Lit	"uomo del clan Li, da Huazhou Kuangcheng"
+#   Q45647334: set the pt label
+Q45647334	Lpt	"homem do clã Li, de Huazhou Kuangcheng"
+#   Q45647334: set the ca label
+Q45647334	Lca	"home del clan Li, de Huazhou Kuangcheng"
+#   Q45647512 (李 of 滑州匡城): mul label = NN
+Q45647512	Lmul	"NN"
+#   Q45647512: set the nb label
+Q45647512	Lnb	"mann av Li-slekten, fra Huazhou Kuangcheng"
+#   Q45647512: set the da label
+Q45647512	Lda	"mand af Li-slægten, fra Huazhou Kuangcheng"
+#   Q45647512: set the sv label
+Q45647512	Lsv	"man av Li-ätten, från Huazhou Kuangcheng"
+#   Q45647512: set the de label
+Q45647512	Lde	"Mann des Klans Li, aus Huazhou Kuangcheng"
+#   Q45647512: set the es label
+Q45647512	Les	"hombre del clan Li, de Huazhou Kuangcheng"
+#   Q45647512: set the it label
+Q45647512	Lit	"uomo del clan Li, da Huazhou Kuangcheng"
+#   Q45647512: set the pt label
+Q45647512	Lpt	"homem do clã Li, de Huazhou Kuangcheng"
+#   Q45647512: set the ca label
+Q45647512	Lca	"home del clan Li, de Huazhou Kuangcheng"
+#   Q45647926 (李 of 河南): mul label = NN
+Q45647926	Lmul	"NN"
+#   Q45647926: set the nb label
+Q45647926	Lnb	"mann av Li-slekten, fra Henan"
+#   Q45647926: set the da label
+Q45647926	Lda	"mand af Li-slægten, fra Henan"
+#   Q45647926: set the sv label
+Q45647926	Lsv	"man av Li-ätten, från Henan"
+#   Q45647926: set the de label
+Q45647926	Lde	"Mann des Klans Li, aus Henan"
+#   Q45647926: set the es label
+Q45647926	Les	"hombre del clan Li, de Henan"
+#   Q45647926: set the it label
+Q45647926	Lit	"uomo del clan Li, da Henan"
+#   Q45647926: set the pt label
+Q45647926	Lpt	"homem do clã Li, de Henan"
+#   Q45647926: set the ca label
+Q45647926	Lca	"home del clan Li, de Henan"
+#   Q45648222 (李 of 河南洛陽): mul label = NN
+Q45648222	Lmul	"NN"
+#   Q45648222: set the nb label
+Q45648222	Lnb	"mann av Li-slekten, fra Henan Luoyang"
+#   Q45648222: set the da label
+Q45648222	Lda	"mand af Li-slægten, fra Henan Luoyang"
+#   Q45648222: set the sv label
+Q45648222	Lsv	"man av Li-ätten, från Henan Luoyang"
+#   Q45648222: set the de label
+Q45648222	Lde	"Mann des Klans Li, aus Henan Luoyang"
+#   Q45648222: set the es label
+Q45648222	Les	"hombre del clan Li, de Henan Luoyang"
+#   Q45648222: set the it label
+Q45648222	Lit	"uomo del clan Li, da Henan Luoyang"
+#   Q45648222: set the pt label
+Q45648222	Lpt	"homem do clã Li, de Henan Luoyang"
+#   Q45648222: set the ca label
+Q45648222	Lca	"home del clan Li, de Henan Luoyang"
+#   Q45648878 (薛 of 蒲州寶鼎): mul label = NN
+Q45648878	Lmul	"NN"
+#   Q45648878: set the nb label
+Q45648878	Lnb	"mann av Xue-slekten, fra Puzhou Baoding"
+#   Q45648878: set the da label
+Q45648878	Lda	"mand af Xue-slægten, fra Puzhou Baoding"
+#   Q45648878: set the sv label
+Q45648878	Lsv	"man av Xue-ätten, från Puzhou Baoding"
+#   Q45648878: set the de label
+Q45648878	Lde	"Mann des Klans Xue, aus Puzhou Baoding"
+#   Q45648878: set the it label
+Q45648878	Lit	"uomo del clan Xue, da Puzhou Baoding"
+#   Q45648878: set the pt label
+Q45648878	Lpt	"homem do clã Xue, de Puzhou Baoding"
+#   Q45648878: set the ca label
+Q45648878	Lca	"home del clan Xue, de Puzhou Baoding"
+#   Q45648938 (薛 of 蒲州寶鼎): mul label = NN
+Q45648938	Lmul	"NN"
+#   Q45648938: set the nb label
+Q45648938	Lnb	"mann av Xue-slekten, fra Puzhou Baoding"
+#   Q45648938: set the da label
+Q45648938	Lda	"mand af Xue-slægten, fra Puzhou Baoding"
+#   Q45648938: set the sv label
+Q45648938	Lsv	"man av Xue-ätten, från Puzhou Baoding"
+#   Q45648938: set the de label
+Q45648938	Lde	"Mann des Klans Xue, aus Puzhou Baoding"
+#   Q45648938: set the it label
+Q45648938	Lit	"uomo del clan Xue, da Puzhou Baoding"
+#   Q45648938: set the pt label
+Q45648938	Lpt	"homem do clã Xue, de Puzhou Baoding"
+#   Q45648938: set the ca label
+Q45648938	Lca	"home del clan Xue, de Puzhou Baoding"
+#   Q45649066 (李 of 河南): mul label = NN
+Q45649066	Lmul	"NN"
+#   Q45649066: set the nb label
+Q45649066	Lnb	"mann av Li-slekten, fra Henan"
+#   Q45649066: set the da label
+Q45649066	Lda	"mand af Li-slægten, fra Henan"
+#   Q45649066: set the sv label
+Q45649066	Lsv	"man av Li-ätten, från Henan"
+#   Q45649066: set the de label
+Q45649066	Lde	"Mann des Klans Li, aus Henan"
+#   Q45649066: set the es label
+Q45649066	Les	"hombre del clan Li, de Henan"
+#   Q45649066: set the it label
+Q45649066	Lit	"uomo del clan Li, da Henan"
+#   Q45649066: set the pt label
+Q45649066	Lpt	"homem do clã Li, de Henan"
+#   Q45649066: set the ca label
+Q45649066	Lca	"home del clan Li, de Henan"
+#   Q45649184 (李 of 趙州平棘): mul label = NN
+Q45649184	Lmul	"NN"
+#   Q45649184: set the nb label
+Q45649184	Lnb	"mann av Li-slekten, fra Zhaozhou Pingji"
+#   Q45649184: set the da label
+Q45649184	Lda	"mand af Li-slægten, fra Zhaozhou Pingji"
+#   Q45649184: set the sv label
+Q45649184	Lsv	"man av Li-ätten, från Zhaozhou Pingji"
+#   Q45649184: set the de label
+Q45649184	Lde	"Mann des Klans Li, aus Zhaozhou Pingji"
+#   Q45649184: set the es label
+Q45649184	Les	"hombre del clan Li, de Zhaozhou Pingji"
+#   Q45649184: set the it label
+Q45649184	Lit	"uomo del clan Li, da Zhaozhou Pingji"
+#   Q45649184: set the pt label
+Q45649184	Lpt	"homem do clã Li, de Zhaozhou Pingji"
+#   Q45649184: set the ca label
+Q45649184	Lca	"home del clan Li, de Zhaozhou Pingji"
+#   Q45650019 (李 of 趙州平棘): mul label = NN
+Q45650019	Lmul	"NN"
+#   Q45650019: set the nb label
+Q45650019	Lnb	"mann av Li-slekten, fra Zhaozhou Pingji"
+#   Q45650019: set the da label
+Q45650019	Lda	"mand af Li-slægten, fra Zhaozhou Pingji"
+#   Q45650019: set the sv label
+Q45650019	Lsv	"man av Li-ätten, från Zhaozhou Pingji"
+#   Q45650019: set the de label
+Q45650019	Lde	"Mann des Klans Li, aus Zhaozhou Pingji"
+#   Q45650019: set the es label
+Q45650019	Les	"hombre del clan Li, de Zhaozhou Pingji"
+#   Q45650019: set the it label
+Q45650019	Lit	"uomo del clan Li, da Zhaozhou Pingji"
+#   Q45650019: set the pt label
+Q45650019	Lpt	"homem do clã Li, de Zhaozhou Pingji"
+#   Q45650019: set the ca label
+Q45650019	Lca	"home del clan Li, de Zhaozhou Pingji"
+#   Q45651316 (薛 of 河南洛陽): mul label = NN
+Q45651316	Lmul	"NN"
+#   Q45651316: set the nb label
+Q45651316	Lnb	"mann av Xue-slekten, fra Henan Luoyang"
+#   Q45651316: set the da label
+Q45651316	Lda	"mand af Xue-slægten, fra Henan Luoyang"
+#   Q45651316: set the sv label
+Q45651316	Lsv	"man av Xue-ätten, från Henan Luoyang"
+#   Q45651316: set the de label
+Q45651316	Lde	"Mann des Klans Xue, aus Henan Luoyang"
+#   Q45651316: set the it label
+Q45651316	Lit	"uomo del clan Xue, da Henan Luoyang"
+#   Q45651316: set the pt label
+Q45651316	Lpt	"homem do clã Xue, de Henan Luoyang"
+#   Q45651316: set the ca label
+Q45651316	Lca	"home del clan Xue, de Henan Luoyang"
+#   Q45651377 (薛 of 河南洛陽): mul label = NN
+Q45651377	Lmul	"NN"
+#   Q45651377: set the nb label
+Q45651377	Lnb	"mann av Xue-slekten, fra Henan Luoyang"
+#   Q45651377: set the da label
+Q45651377	Lda	"mand af Xue-slægten, fra Henan Luoyang"
+#   Q45651377: set the sv label
+Q45651377	Lsv	"man av Xue-ätten, från Henan Luoyang"
+#   Q45651377: set the de label
+Q45651377	Lde	"Mann des Klans Xue, aus Henan Luoyang"
+#   Q45651377: set the it label
+Q45651377	Lit	"uomo del clan Xue, da Henan Luoyang"
+#   Q45651377: set the pt label
+Q45651377	Lpt	"homem do clã Xue, de Henan Luoyang"
+#   Q45651377: set the ca label
+Q45651377	Lca	"home del clan Xue, de Henan Luoyang"
+#   Q45655203 (鄭 of 河南府): mul label = NN
+Q45655203	Lmul	"NN"
+#   Q45655203: set the nb label
+Q45655203	Lnb	"mann av Zheng-slekten, fra Henan Prefecture"
+#   Q45655203: set the da label
+Q45655203	Lda	"mand af Zheng-slægten, fra Henan Prefecture"
+#   Q45655203: set the sv label
+Q45655203	Lsv	"man av Zheng-ätten, från Henan Prefecture"
+#   Q45655203: set the de label
+Q45655203	Lde	"Mann des Klans Zheng, aus Henan Prefecture"
+#   Q45655203: set the it label
+Q45655203	Lit	"uomo del clan Zheng, da Henan Prefecture"
+#   Q45655203: set the pt label
+Q45655203	Lpt	"homem do clã Zheng, de Henan Prefecture"
+#   Q45655203: set the ca label
+Q45655203	Lca	"home del clan Zheng, de Henan Prefecture"
+#   Q45655848 (李 of 京兆府): mul label = NN
+Q45655848	Lmul	"NN"
+#   Q45655848: set the nb label
+Q45655848	Lnb	"mann av Li-slekten, fra Jingzhao Prefecture"
+#   Q45655848: set the da label
+Q45655848	Lda	"mand af Li-slægten, fra Jingzhao Prefecture"
+#   Q45655848: set the sv label
+Q45655848	Lsv	"man av Li-ätten, från Jingzhao Prefecture"
+#   Q45655848: set the de label
+Q45655848	Lde	"Mann des Klans Li, aus Jingzhao Prefecture"
+#   Q45655848: set the es label
+Q45655848	Les	"hombre del clan Li, de Jingzhao Prefecture"
+#   Q45655848: set the it label
+Q45655848	Lit	"uomo del clan Li, da Jingzhao Prefecture"
+#   Q45655848: set the pt label
+Q45655848	Lpt	"homem do clã Li, de Jingzhao Prefecture"
+#   Q45655848: set the ca label
+Q45655848	Lca	"home del clan Li, de Jingzhao Prefecture"
+#   Q45657616 (韋 of 京兆杜陵): mul label = NN
+Q45657616	Lmul	"NN"
+#   Q45657616: set the nb label
+Q45657616	Lnb	"mann av Wei-slekten, fra Jingzhao Duling"
+#   Q45657616: set the da label
+Q45657616	Lda	"mand af Wei-slægten, fra Jingzhao Duling"
+#   Q45657616: set the sv label
+Q45657616	Lsv	"man av Wei-ätten, från Jingzhao Duling"
+#   Q45657616: set the de label
+Q45657616	Lde	"Mann des Klans Wei, aus Jingzhao Duling"
+#   Q45657616: set the it label
+Q45657616	Lit	"uomo del clan Wei, da Jingzhao Duling"
+#   Q45657616: set the pt label
+Q45657616	Lpt	"homem do clã Wei, de Jingzhao Duling"
+#   Q45657616: set the ca label
+Q45657616	Lca	"home del clan Wei, de Jingzhao Duling"
+#   Q45657676 (韋 of 京兆杜陵): mul label = NN
+Q45657676	Lmul	"NN"
+#   Q45657676: set the nb label
+Q45657676	Lnb	"mann av Wei-slekten, fra Jingzhao Duling"
+#   Q45657676: set the da label
+Q45657676	Lda	"mand af Wei-slægten, fra Jingzhao Duling"
+#   Q45657676: set the sv label
+Q45657676	Lsv	"man av Wei-ätten, från Jingzhao Duling"
+#   Q45657676: set the de label
+Q45657676	Lde	"Mann des Klans Wei, aus Jingzhao Duling"
+#   Q45657676: set the it label
+Q45657676	Lit	"uomo del clan Wei, da Jingzhao Duling"
+#   Q45657676: set the pt label
+Q45657676	Lpt	"homem do clã Wei, de Jingzhao Duling"
+#   Q45657676: set the ca label
+Q45657676	Lca	"home del clan Wei, de Jingzhao Duling"
+#   Q45659526 (韋 of 京兆杜陵): mul label = NN
+Q45659526	Lmul	"NN"
+#   Q45659526: set the nb label
+Q45659526	Lnb	"mann av Wei-slekten, fra Jingzhao Duling"
+#   Q45659526: set the da label
+Q45659526	Lda	"mand af Wei-slægten, fra Jingzhao Duling"
+#   Q45659526: set the sv label
+Q45659526	Lsv	"man av Wei-ätten, från Jingzhao Duling"
+#   Q45659526: set the de label
+Q45659526	Lde	"Mann des Klans Wei, aus Jingzhao Duling"
+#   Q45659526: set the it label
+Q45659526	Lit	"uomo del clan Wei, da Jingzhao Duling"
+#   Q45659526: set the pt label
+Q45659526	Lpt	"homem do clã Wei, de Jingzhao Duling"
+#   Q45659526: set the ca label
+Q45659526	Lca	"home del clan Wei, de Jingzhao Duling"
+#   Q45659585 (韋 of 京兆杜陵): mul label = NN
+Q45659585	Lmul	"NN"
+#   Q45659585: set the nb label
+Q45659585	Lnb	"mann av Wei-slekten, fra Jingzhao Duling"
+#   Q45659585: set the da label
+Q45659585	Lda	"mand af Wei-slægten, fra Jingzhao Duling"
+#   Q45659585: set the sv label
+Q45659585	Lsv	"man av Wei-ätten, från Jingzhao Duling"
+#   Q45659585: set the de label
+Q45659585	Lde	"Mann des Klans Wei, aus Jingzhao Duling"
+#   Q45659585: set the it label
+Q45659585	Lit	"uomo del clan Wei, da Jingzhao Duling"
+#   Q45659585: set the pt label
+Q45659585	Lpt	"homem do clã Wei, de Jingzhao Duling"
+#   Q45659585: set the ca label
+Q45659585	Lca	"home del clan Wei, de Jingzhao Duling"
+#   Q45659766 (韋 of 京兆杜陵): mul label = NN
+Q45659766	Lmul	"NN"
+#   Q45659766: set the nb label
+Q45659766	Lnb	"mann av Wei-slekten, fra Jingzhao Duling"
+#   Q45659766: set the da label
+Q45659766	Lda	"mand af Wei-slægten, fra Jingzhao Duling"
+#   Q45659766: set the sv label
+Q45659766	Lsv	"man av Wei-ätten, från Jingzhao Duling"
+#   Q45659766: set the de label
+Q45659766	Lde	"Mann des Klans Wei, aus Jingzhao Duling"
+#   Q45659766: set the it label
+Q45659766	Lit	"uomo del clan Wei, da Jingzhao Duling"
+#   Q45659766: set the pt label
+Q45659766	Lpt	"homem do clã Wei, de Jingzhao Duling"
+#   Q45659766: set the ca label
+Q45659766	Lca	"home del clan Wei, de Jingzhao Duling"
+#   Q45660005 (韋 of 京兆杜陵): mul label = NN
+Q45660005	Lmul	"NN"
+#   Q45660005: set the nb label
+Q45660005	Lnb	"mann av Wei-slekten, fra Jingzhao Duling"
+#   Q45660005: set the da label
+Q45660005	Lda	"mand af Wei-slægten, fra Jingzhao Duling"
+#   Q45660005: set the sv label
+Q45660005	Lsv	"man av Wei-ätten, från Jingzhao Duling"
+#   Q45660005: set the de label
+Q45660005	Lde	"Mann des Klans Wei, aus Jingzhao Duling"
+#   Q45660005: set the it label
+Q45660005	Lit	"uomo del clan Wei, da Jingzhao Duling"
+#   Q45660005: set the pt label
+Q45660005	Lpt	"homem do clã Wei, de Jingzhao Duling"
+#   Q45660005: set the ca label
+Q45660005	Lca	"home del clan Wei, de Jingzhao Duling"
+#   Q45660063 (韋 of 京兆杜陵): mul label = NN
+Q45660063	Lmul	"NN"
+#   Q45660063: set the nb label
+Q45660063	Lnb	"mann av Wei-slekten, fra Jingzhao Duling"
+#   Q45660063: set the da label
+Q45660063	Lda	"mand af Wei-slægten, fra Jingzhao Duling"
+#   Q45660063: set the sv label
+Q45660063	Lsv	"man av Wei-ätten, från Jingzhao Duling"
+#   Q45660063: set the de label
+Q45660063	Lde	"Mann des Klans Wei, aus Jingzhao Duling"
+#   Q45660063: set the it label
+Q45660063	Lit	"uomo del clan Wei, da Jingzhao Duling"
+#   Q45660063: set the pt label
+Q45660063	Lpt	"homem do clã Wei, de Jingzhao Duling"
+#   Q45660063: set the ca label
+Q45660063	Lca	"home del clan Wei, de Jingzhao Duling"
+#   Q45660721 (韋 of 京兆杜陵): mul label = NN
+Q45660721	Lmul	"NN"
+#   Q45660721: set the nb label
+Q45660721	Lnb	"mann av Wei-slekten, fra Jingzhao Duling"
+#   Q45660721: set the da label
+Q45660721	Lda	"mand af Wei-slægten, fra Jingzhao Duling"
+#   Q45660721: set the sv label
+Q45660721	Lsv	"man av Wei-ätten, från Jingzhao Duling"
+#   Q45660721: set the de label
+Q45660721	Lde	"Mann des Klans Wei, aus Jingzhao Duling"
+#   Q45660721: set the it label
+Q45660721	Lit	"uomo del clan Wei, da Jingzhao Duling"
+#   Q45660721: set the pt label
+Q45660721	Lpt	"homem do clã Wei, de Jingzhao Duling"
+#   Q45660721: set the ca label
+Q45660721	Lca	"home del clan Wei, de Jingzhao Duling"
+#   Q45660780 (韋 of 京兆杜陵): mul label = NN
+Q45660780	Lmul	"NN"
+#   Q45660780: set the nb label
+Q45660780	Lnb	"mann av Wei-slekten, fra Jingzhao Duling"
+#   Q45660780: set the da label
+Q45660780	Lda	"mand af Wei-slægten, fra Jingzhao Duling"
+#   Q45660780: set the sv label
+Q45660780	Lsv	"man av Wei-ätten, från Jingzhao Duling"
+#   Q45660780: set the de label
+Q45660780	Lde	"Mann des Klans Wei, aus Jingzhao Duling"
+#   Q45660780: set the it label
+Q45660780	Lit	"uomo del clan Wei, da Jingzhao Duling"
+#   Q45660780: set the pt label
+Q45660780	Lpt	"homem do clã Wei, de Jingzhao Duling"
+#   Q45660780: set the ca label
+Q45660780	Lca	"home del clan Wei, de Jingzhao Duling"
+#   Q45660841 (韋 of 京兆杜陵): mul label = NN
+Q45660841	Lmul	"NN"
+#   Q45660841: set the nb label
+Q45660841	Lnb	"mann av Wei-slekten, fra Jingzhao Duling"
+#   Q45660841: set the da label
+Q45660841	Lda	"mand af Wei-slægten, fra Jingzhao Duling"
+#   Q45660841: set the sv label
+Q45660841	Lsv	"man av Wei-ätten, från Jingzhao Duling"
+#   Q45660841: set the de label
+Q45660841	Lde	"Mann des Klans Wei, aus Jingzhao Duling"
+#   Q45660841: set the it label
+Q45660841	Lit	"uomo del clan Wei, da Jingzhao Duling"
+#   Q45660841: set the pt label
+Q45660841	Lpt	"homem do clã Wei, de Jingzhao Duling"
+#   Q45660841: set the ca label
+Q45660841	Lca	"home del clan Wei, de Jingzhao Duling"
+#   Q45664697 (韋 of 京兆杜陵): mul label = NN
+Q45664697	Lmul	"NN"
+#   Q45664697: set the nb label
+Q45664697	Lnb	"mann av Wei-slekten, fra Jingzhao Duling"
+#   Q45664697: set the da label
+Q45664697	Lda	"mand af Wei-slægten, fra Jingzhao Duling"
+#   Q45664697: set the sv label
+Q45664697	Lsv	"man av Wei-ätten, från Jingzhao Duling"
+#   Q45664697: set the de label
+Q45664697	Lde	"Mann des Klans Wei, aus Jingzhao Duling"
+#   Q45664697: set the it label
+Q45664697	Lit	"uomo del clan Wei, da Jingzhao Duling"
+#   Q45664697: set the pt label
+Q45664697	Lpt	"homem do clã Wei, de Jingzhao Duling"
+#   Q45664697: set the ca label
+Q45664697	Lca	"home del clan Wei, de Jingzhao Duling"
+#   Q45664752 (韋 of 京兆杜陵): mul label = NN
+Q45664752	Lmul	"NN"
+#   Q45664752: set the nb label
+Q45664752	Lnb	"mann av Wei-slekten, fra Jingzhao Duling"
+#   Q45664752: set the da label
+Q45664752	Lda	"mand af Wei-slægten, fra Jingzhao Duling"
+#   Q45664752: set the sv label
+Q45664752	Lsv	"man av Wei-ätten, från Jingzhao Duling"
+#   Q45664752: set the de label
+Q45664752	Lde	"Mann des Klans Wei, aus Jingzhao Duling"
+#   Q45664752: set the it label
+Q45664752	Lit	"uomo del clan Wei, da Jingzhao Duling"
+#   Q45664752: set the pt label
+Q45664752	Lpt	"homem do clã Wei, de Jingzhao Duling"
+#   Q45664752: set the ca label
+Q45664752	Lca	"home del clan Wei, de Jingzhao Duling"
+#   Q45678944 (郭 of 太原): mul label = NN
+Q45678944	Lmul	"NN"
+#   Q45678944: set the nb label
+Q45678944	Lnb	"mann av Guo-slekten, fra Taiyuan"
+#   Q45678944: set the da label
+Q45678944	Lda	"mand af Guo-slægten, fra Taiyuan"
+#   Q45678944: set the sv label
+Q45678944	Lsv	"man av Guo-ätten, från Taiyuan"
+#   Q45678944: set the de label
+Q45678944	Lde	"Mann des Klans Guo, aus Taiyuan"
+#   Q45678944: set the it label
+Q45678944	Lit	"uomo del clan Guo, da Taiyuan"
+#   Q45678944: set the pt label
+Q45678944	Lpt	"homem do clã Guo, de Taiyuan"
+#   Q45678944: set the ca label
+Q45678944	Lca	"home del clan Guo, de Taiyuan"
+#   Q45682618 (武 of 太原文水): mul label = NN
+Q45682618	Lmul	"NN"
+#   Q45682618: set the nb label
+Q45682618	Lnb	"mann av Wu-slekten, fra Taiyuan Wenshui"
+#   Q45682618: set the da label
+Q45682618	Lda	"mand af Wu-slægten, fra Taiyuan Wenshui"
+#   Q45682618: set the sv label
+Q45682618	Lsv	"man av Wu-ätten, från Taiyuan Wenshui"
+#   Q45682618: set the de label
+Q45682618	Lde	"Mann des Klans Wu, aus Taiyuan Wenshui"
+#   Q45682618: set the it label
+Q45682618	Lit	"uomo del clan Wu, da Taiyuan Wenshui"
+#   Q45682618: set the pt label
+Q45682618	Lpt	"homem do clã Wu, de Taiyuan Wenshui"
+#   Q45682618: set the ca label
+Q45682618	Lca	"home del clan Wu, de Taiyuan Wenshui"
+#   Q45684235 (蘇 of 京兆萬年): mul label = NN
+Q45684235	Lmul	"NN"
+#   Q45684235: set the nb label
+Q45684235	Lnb	"mann av Su-slekten, fra Jingzhao Wannian"
+#   Q45684235: set the da label
+Q45684235	Lda	"mand af Su-slægten, fra Jingzhao Wannian"
+#   Q45684235: set the sv label
+Q45684235	Lsv	"man av Su-ätten, från Jingzhao Wannian"
+#   Q45684235: set the de label
+Q45684235	Lde	"Mann des Klans Su, aus Jingzhao Wannian"
+#   Q45684235: set the es label
+Q45684235	Les	"hombre del clan Su, de Jingzhao Wannian"
+#   Q45684235: set the it label
+Q45684235	Lit	"uomo del clan Su, da Jingzhao Wannian"
+#   Q45684235: set the pt label
+Q45684235	Lpt	"homem do clã Su, de Jingzhao Wannian"
+#   Q45684235: set the ca label
+Q45684235	Lca	"home del clan Su, de Jingzhao Wannian"
+#   Q45685725 (張 of 襄州襄陽): mul label = NN
+Q45685725	Lmul	"NN"
+#   Q45685725: set the nb label
+Q45685725	Lnb	"mann av Zhang-slekten, fra Xiangzhou Xiangyang"
+#   Q45685725: set the da label
+Q45685725	Lda	"mand af Zhang-slægten, fra Xiangzhou Xiangyang"
+#   Q45685725: set the sv label
+Q45685725	Lsv	"man av Zhang-ätten, från Xiangzhou Xiangyang"
+#   Q45685725: set the de label
+Q45685725	Lde	"Mann des Klans Zhang, aus Xiangzhou Xiangyang"
+#   Q45685725: set the it label
+Q45685725	Lit	"uomo del clan Zhang, da Xiangzhou Xiangyang"
+#   Q45685725: set the pt label
+Q45685725	Lpt	"homem do clã Zhang, de Xiangzhou Xiangyang"
+#   Q45685725: set the ca label
+Q45685725	Lca	"home del clan Zhang, de Xiangzhou Xiangyang"
+#   Q45685758 (張 of 襄州襄陽): mul label = NN
+Q45685758	Lmul	"NN"
+#   Q45685758: set the nb label
+Q45685758	Lnb	"mann av Zhang-slekten, fra Xiangzhou Xiangyang"
+#   Q45685758: set the da label
+Q45685758	Lda	"mand af Zhang-slægten, fra Xiangzhou Xiangyang"
+#   Q45685758: set the sv label
+Q45685758	Lsv	"man av Zhang-ätten, från Xiangzhou Xiangyang"
+#   Q45685758: set the de label
+Q45685758	Lde	"Mann des Klans Zhang, aus Xiangzhou Xiangyang"
+#   Q45685758: set the it label
+Q45685758	Lit	"uomo del clan Zhang, da Xiangzhou Xiangyang"
+#   Q45685758: set the pt label
+Q45685758	Lpt	"homem do clã Zhang, de Xiangzhou Xiangyang"
+#   Q45685758: set the ca label
+Q45685758	Lca	"home del clan Zhang, de Xiangzhou Xiangyang"
+#   Q45686328 (李 of 隴西狄道): mul label = NN
+Q45686328	Lmul	"NN"
+#   Q45686328: set the nb label
+Q45686328	Lnb	"kvinne av Li-slekten, fra Longxi Didao"
+#   Q45686328: set the da label
+Q45686328	Lda	"kvinde af Li-slægten, fra Longxi Didao"
+#   Q45686328: set the sv label
+Q45686328	Lsv	"kvinna av Li-ätten, från Longxi Didao"
+#   Q45686328: set the de label
+Q45686328	Lde	"Frau des Klans Li, aus Longxi Didao"
+#   Q45686328: set the es label
+Q45686328	Les	"mujer del clan Li, de Longxi Didao"
+#   Q45686328: set the it label
+Q45686328	Lit	"donna del clan Li, da Longxi Didao"
+#   Q45686328: set the pt label
+Q45686328	Lpt	"mulher do clã Li, de Longxi Didao"
+#   Q45686328: set the ca label
+Q45686328	Lca	"dona del clan Li, de Longxi Didao"
+#   Q45691897 (李 of 隴西狄道): mul label = NN
+Q45691897	Lmul	"NN"
+#   Q45691897: set the nb label
+Q45691897	Lnb	"mann av Li-slekten, fra Longxi Didao"
+#   Q45691897: set the da label
+Q45691897	Lda	"mand af Li-slægten, fra Longxi Didao"
+#   Q45691897: set the sv label
+Q45691897	Lsv	"man av Li-ätten, från Longxi Didao"
+#   Q45691897: set the de label
+Q45691897	Lde	"Mann des Klans Li, aus Longxi Didao"
+#   Q45691897: set the es label
+Q45691897	Les	"hombre del clan Li, de Longxi Didao"
+#   Q45691897: set the it label
+Q45691897	Lit	"uomo del clan Li, da Longxi Didao"
+#   Q45691897: set the pt label
+Q45691897	Lpt	"homem do clã Li, de Longxi Didao"
+#   Q45691897: set the ca label
+Q45691897	Lca	"home del clan Li, de Longxi Didao"
+#   Q45692090 (李 of 隴西狄道): mul label = NN
+Q45692090	Lmul	"NN"
+#   Q45692090: set the nb label
+Q45692090	Lnb	"mann av Li-slekten, fra Longxi Didao"
+#   Q45692090: set the da label
+Q45692090	Lda	"mand af Li-slægten, fra Longxi Didao"
+#   Q45692090: set the sv label
+Q45692090	Lsv	"man av Li-ätten, från Longxi Didao"
+#   Q45692090: set the de label
+Q45692090	Lde	"Mann des Klans Li, aus Longxi Didao"
+#   Q45692090: set the es label
+Q45692090	Les	"hombre del clan Li, de Longxi Didao"
+#   Q45692090: set the it label
+Q45692090	Lit	"uomo del clan Li, da Longxi Didao"
+#   Q45692090: set the pt label
+Q45692090	Lpt	"homem do clã Li, de Longxi Didao"
+#   Q45692090: set the ca label
+Q45692090	Lca	"home del clan Li, de Longxi Didao"
+#   Q45692318 (李 of 隴西狄道): mul label = NN
+Q45692318	Lmul	"NN"
+#   Q45692318: set the nb label
+Q45692318	Lnb	"mann av Li-slekten, fra Longxi Didao"
+#   Q45692318: set the da label
+Q45692318	Lda	"mand af Li-slægten, fra Longxi Didao"
+#   Q45692318: set the sv label
+Q45692318	Lsv	"man av Li-ätten, från Longxi Didao"
+#   Q45692318: set the de label
+Q45692318	Lde	"Mann des Klans Li, aus Longxi Didao"
+#   Q45692318: set the es label
+Q45692318	Les	"hombre del clan Li, de Longxi Didao"
+#   Q45692318: set the it label
+Q45692318	Lit	"uomo del clan Li, da Longxi Didao"
+#   Q45692318: set the pt label
+Q45692318	Lpt	"homem do clã Li, de Longxi Didao"
+#   Q45692318: set the ca label
+Q45692318	Lca	"home del clan Li, de Longxi Didao"
+#   Q45692515 (李 of 隴西狄道): mul label = NN
+Q45692515	Lmul	"NN"
+#   Q45692515: set the nb label
+Q45692515	Lnb	"mann av Li-slekten, fra Longxi Didao"
+#   Q45692515: set the da label
+Q45692515	Lda	"mand af Li-slægten, fra Longxi Didao"
+#   Q45692515: set the sv label
+Q45692515	Lsv	"man av Li-ätten, från Longxi Didao"
+#   Q45692515: set the de label
+Q45692515	Lde	"Mann des Klans Li, aus Longxi Didao"
+#   Q45692515: set the es label
+Q45692515	Les	"hombre del clan Li, de Longxi Didao"
+#   Q45692515: set the it label
+Q45692515	Lit	"uomo del clan Li, da Longxi Didao"
+#   Q45692515: set the pt label
+Q45692515	Lpt	"homem do clã Li, de Longxi Didao"
+#   Q45692515: set the ca label
+Q45692515	Lca	"home del clan Li, de Longxi Didao"
+#   Q45692573 (李 of 隴西狄道): mul label = NN
+Q45692573	Lmul	"NN"
+#   Q45692573: set the nb label
+Q45692573	Lnb	"mann av Li-slekten, fra Longxi Didao"
+#   Q45692573: set the da label
+Q45692573	Lda	"mand af Li-slægten, fra Longxi Didao"
+#   Q45692573: set the sv label
+Q45692573	Lsv	"man av Li-ätten, från Longxi Didao"
+#   Q45692573: set the de label
+Q45692573	Lde	"Mann des Klans Li, aus Longxi Didao"
+#   Q45692573: set the es label
+Q45692573	Les	"hombre del clan Li, de Longxi Didao"
+#   Q45692573: set the it label
+Q45692573	Lit	"uomo del clan Li, da Longxi Didao"
+#   Q45692573: set the pt label
+Q45692573	Lpt	"homem do clã Li, de Longxi Didao"
+#   Q45692573: set the ca label
+Q45692573	Lca	"home del clan Li, de Longxi Didao"
+#   Q45692881 (李 of 隴西狄道): mul label = NN
+Q45692881	Lmul	"NN"
+#   Q45692881: set the nb label
+Q45692881	Lnb	"mann av Li-slekten, fra Longxi Didao"
+#   Q45692881: set the da label
+Q45692881	Lda	"mand af Li-slægten, fra Longxi Didao"
+#   Q45692881: set the sv label
+Q45692881	Lsv	"man av Li-ätten, från Longxi Didao"
+#   Q45692881: set the de label
+Q45692881	Lde	"Mann des Klans Li, aus Longxi Didao"
+#   Q45692881: set the es label
+Q45692881	Les	"hombre del clan Li, de Longxi Didao"
+#   Q45692881: set the it label
+Q45692881	Lit	"uomo del clan Li, da Longxi Didao"
+#   Q45692881: set the pt label
+Q45692881	Lpt	"homem do clã Li, de Longxi Didao"
+#   Q45692881: set the ca label
+Q45692881	Lca	"home del clan Li, de Longxi Didao"
+#   Q45692909 (李 of 隴西狄道): mul label = NN
+Q45692909	Lmul	"NN"
+#   Q45692909: set the nb label
+Q45692909	Lnb	"mann av Li-slekten, fra Longxi Didao"
+#   Q45692909: set the da label
+Q45692909	Lda	"mand af Li-slægten, fra Longxi Didao"
+#   Q45692909: set the sv label
+Q45692909	Lsv	"man av Li-ätten, från Longxi Didao"
+#   Q45692909: set the de label
+Q45692909	Lde	"Mann des Klans Li, aus Longxi Didao"
+#   Q45692909: set the es label
+Q45692909	Les	"hombre del clan Li, de Longxi Didao"
+#   Q45692909: set the it label
+Q45692909	Lit	"uomo del clan Li, da Longxi Didao"
+#   Q45692909: set the pt label
+Q45692909	Lpt	"homem do clã Li, de Longxi Didao"
+#   Q45692909: set the ca label
+Q45692909	Lca	"home del clan Li, de Longxi Didao"
+#   Q45692937 (李 of 秦州成紀): mul label = NN
+Q45692937	Lmul	"NN"
+#   Q45692937: set the nb label
+Q45692937	Lnb	"mann av Li-slekten, fra Qinzhou Chengji"
+#   Q45692937: set the da label
+Q45692937	Lda	"mand af Li-slægten, fra Qinzhou Chengji"
+#   Q45692937: set the sv label
+Q45692937	Lsv	"man av Li-ätten, från Qinzhou Chengji"
+#   Q45692937: set the de label
+Q45692937	Lde	"Mann des Klans Li, aus Qinzhou Chengji"
+#   Q45692937: set the es label
+Q45692937	Les	"hombre del clan Li, de Qinzhou Chengji"
+#   Q45692937: set the it label
+Q45692937	Lit	"uomo del clan Li, da Qinzhou Chengji"
+#   Q45692937: set the pt label
+Q45692937	Lpt	"homem do clã Li, de Qinzhou Chengji"
+#   Q45692937: set the ca label
+Q45692937	Lca	"home del clan Li, de Qinzhou Chengji"
+#   Q45692964 (李 of 揚州): mul label = NN
+Q45692964	Lmul	"NN"
+#   Q45692964: set the nb label
+Q45692964	Lnb	"mann av Li-slekten, fra Yangzhou"
+#   Q45692964: set the da label
+Q45692964	Lda	"mand af Li-slægten, fra Yangzhou"
+#   Q45692964: set the sv label
+Q45692964	Lsv	"man av Li-ätten, från Yangzhou"
+#   Q45692964: set the de label
+Q45692964	Lde	"Mann des Klans Li, aus Yangzhou"
+#   Q45692964: set the es label
+Q45692964	Les	"hombre del clan Li, de Yangzhou"
+#   Q45692964: set the it label
+Q45692964	Lit	"uomo del clan Li, da Yangzhou"
+#   Q45692964: set the pt label
+Q45692964	Lpt	"homem do clã Li, de Yangzhou"
+#   Q45692964: set the ca label
+Q45692964	Lca	"home del clan Li, de Yangzhou"
+#   Q45692991 (李 of 隴西狄道): mul label = NN
+Q45692991	Lmul	"NN"
+#   Q45692991: set the nb label
+Q45692991	Lnb	"mann av Li-slekten, fra Longxi Didao"
+#   Q45692991: set the da label
+Q45692991	Lda	"mand af Li-slægten, fra Longxi Didao"
+#   Q45692991: set the sv label
+Q45692991	Lsv	"man av Li-ätten, från Longxi Didao"
+#   Q45692991: set the de label
+Q45692991	Lde	"Mann des Klans Li, aus Longxi Didao"
+#   Q45692991: set the es label
+Q45692991	Les	"hombre del clan Li, de Longxi Didao"
+#   Q45692991: set the it label
+Q45692991	Lit	"uomo del clan Li, da Longxi Didao"
+#   Q45692991: set the pt label
+Q45692991	Lpt	"homem do clã Li, de Longxi Didao"
+#   Q45692991: set the ca label
+Q45692991	Lca	"home del clan Li, de Longxi Didao"
+#   Q45693019 (李 of 隴西狄道): mul label = NN
+Q45693019	Lmul	"NN"
+#   Q45693019: set the nb label
+Q45693019	Lnb	"mann av Li-slekten, fra Longxi Didao"
+#   Q45693019: set the da label
+Q45693019	Lda	"mand af Li-slægten, fra Longxi Didao"
+#   Q45693019: set the sv label
+Q45693019	Lsv	"man av Li-ätten, från Longxi Didao"
+#   Q45693019: set the de label
+Q45693019	Lde	"Mann des Klans Li, aus Longxi Didao"
+#   Q45693019: set the es label
+Q45693019	Les	"hombre del clan Li, de Longxi Didao"
+#   Q45693019: set the it label
+Q45693019	Lit	"uomo del clan Li, da Longxi Didao"
+#   Q45693019: set the pt label
+Q45693019	Lpt	"homem do clã Li, de Longxi Didao"
+#   Q45693019: set the ca label
+Q45693019	Lca	"home del clan Li, de Longxi Didao"
+#   Q45693047 (李 of 隴西狄道): mul label = NN
+Q45693047	Lmul	"NN"
+#   Q45693047: set the nb label
+Q45693047	Lnb	"mann av Li-slekten, fra Longxi Didao"
+#   Q45693047: set the da label
+Q45693047	Lda	"mand af Li-slægten, fra Longxi Didao"
+#   Q45693047: set the sv label
+Q45693047	Lsv	"man av Li-ätten, från Longxi Didao"
+#   Q45693047: set the de label
+Q45693047	Lde	"Mann des Klans Li, aus Longxi Didao"
+#   Q45693047: set the es label
+Q45693047	Les	"hombre del clan Li, de Longxi Didao"
+#   Q45693047: set the it label
+Q45693047	Lit	"uomo del clan Li, da Longxi Didao"
+#   Q45693047: set the pt label
+Q45693047	Lpt	"homem do clã Li, de Longxi Didao"
+#   Q45693047: set the ca label
+Q45693047	Lca	"home del clan Li, de Longxi Didao"
+#   Q45697303 (李 of 隴西狄道): mul label = NN
+Q45697303	Lmul	"NN"
+#   Q45697303: set the nb label
+Q45697303	Lnb	"mann av Li-slekten, fra Longxi Didao"
+#   Q45697303: set the da label
+Q45697303	Lda	"mand af Li-slægten, fra Longxi Didao"
+#   Q45697303: set the sv label
+Q45697303	Lsv	"man av Li-ätten, från Longxi Didao"
+#   Q45697303: set the de label
+Q45697303	Lde	"Mann des Klans Li, aus Longxi Didao"
+#   Q45697303: set the es label
+Q45697303	Les	"hombre del clan Li, de Longxi Didao"
+#   Q45697303: set the it label
+Q45697303	Lit	"uomo del clan Li, da Longxi Didao"
+#   Q45697303: set the pt label
+Q45697303	Lpt	"homem do clã Li, de Longxi Didao"
+#   Q45697303: set the ca label
+Q45697303	Lca	"home del clan Li, de Longxi Didao"
+#   Q45698977 (李 of 隴西狄道): mul label = NN
+Q45698977	Lmul	"NN"
+#   Q45698977: set the nb label
+Q45698977	Lnb	"mann av Li-slekten, fra Longxi Didao"
+#   Q45698977: set the da label
+Q45698977	Lda	"mand af Li-slægten, fra Longxi Didao"
+#   Q45698977: set the sv label
+Q45698977	Lsv	"man av Li-ätten, från Longxi Didao"
+#   Q45698977: set the de label
+Q45698977	Lde	"Mann des Klans Li, aus Longxi Didao"
+#   Q45698977: set the es label
+Q45698977	Les	"hombre del clan Li, de Longxi Didao"
+#   Q45698977: set the it label
+Q45698977	Lit	"uomo del clan Li, da Longxi Didao"
+#   Q45698977: set the pt label
+Q45698977	Lpt	"homem do clã Li, de Longxi Didao"
+#   Q45698977: set the ca label
+Q45698977	Lca	"home del clan Li, de Longxi Didao"
+#   Q45699052 (李 of 隴西狄道): mul label = NN
+Q45699052	Lmul	"NN"
+#   Q45699052: set the nb label
+Q45699052	Lnb	"mann av Li-slekten, fra Longxi Didao"
+#   Q45699052: set the da label
+Q45699052	Lda	"mand af Li-slægten, fra Longxi Didao"
+#   Q45699052: set the sv label
+Q45699052	Lsv	"man av Li-ätten, från Longxi Didao"
+#   Q45699052: set the de label
+Q45699052	Lde	"Mann des Klans Li, aus Longxi Didao"
+#   Q45699052: set the es label
+Q45699052	Les	"hombre del clan Li, de Longxi Didao"
+#   Q45699052: set the it label
+Q45699052	Lit	"uomo del clan Li, da Longxi Didao"
+#   Q45699052: set the pt label
+Q45699052	Lpt	"homem do clã Li, de Longxi Didao"
+#   Q45699052: set the ca label
+Q45699052	Lca	"home del clan Li, de Longxi Didao"
+#   Q45699104 (李 of 隴西狄道): mul label = NN
+Q45699104	Lmul	"NN"
+#   Q45699104: set the nb label
+Q45699104	Lnb	"mann av Li-slekten, fra Longxi Didao"
+#   Q45699104: set the da label
+Q45699104	Lda	"mand af Li-slægten, fra Longxi Didao"
+#   Q45699104: set the sv label
+Q45699104	Lsv	"man av Li-ätten, från Longxi Didao"
+#   Q45699104: set the de label
+Q45699104	Lde	"Mann des Klans Li, aus Longxi Didao"
+#   Q45699104: set the es label
+Q45699104	Les	"hombre del clan Li, de Longxi Didao"
+#   Q45699104: set the it label
+Q45699104	Lit	"uomo del clan Li, da Longxi Didao"
+#   Q45699104: set the pt label
+Q45699104	Lpt	"homem do clã Li, de Longxi Didao"
+#   Q45699104: set the ca label
+Q45699104	Lca	"home del clan Li, de Longxi Didao"
+#   Q45699589 (李 of 潤州): mul label = NN
+Q45699589	Lmul	"NN"
+#   Q45699589: set the nb label
+Q45699589	Lnb	"mann av Li-slekten, fra Runzhou"
+#   Q45699589: set the da label
+Q45699589	Lda	"mand af Li-slægten, fra Runzhou"
+#   Q45699589: set the sv label
+Q45699589	Lsv	"man av Li-ätten, från Runzhou"
+#   Q45699589: set the de label
+Q45699589	Lde	"Mann des Klans Li, aus Runzhou"
+#   Q45699589: set the es label
+Q45699589	Les	"hombre del clan Li, de Runzhou"
+#   Q45699589: set the it label
+Q45699589	Lit	"uomo del clan Li, da Runzhou"
+#   Q45699589: set the pt label
+Q45699589	Lpt	"homem do clã Li, de Runzhou"
+#   Q45699589: set the ca label
+Q45699589	Lca	"home del clan Li, de Runzhou"
+#   Q45699613 (李 of 潤州): mul label = NN
+Q45699613	Lmul	"NN"
+#   Q45699613: set the nb label
+Q45699613	Lnb	"mann av Li-slekten, fra Runzhou"
+#   Q45699613: set the da label
+Q45699613	Lda	"mand af Li-slægten, fra Runzhou"
+#   Q45699613: set the sv label
+Q45699613	Lsv	"man av Li-ätten, från Runzhou"
+#   Q45699613: set the de label
+Q45699613	Lde	"Mann des Klans Li, aus Runzhou"
+#   Q45699613: set the es label
+Q45699613	Les	"hombre del clan Li, de Runzhou"
+#   Q45699613: set the it label
+Q45699613	Lit	"uomo del clan Li, da Runzhou"
+#   Q45699613: set the pt label
+Q45699613	Lpt	"homem do clã Li, de Runzhou"
+#   Q45699613: set the ca label
+Q45699613	Lca	"home del clan Li, de Runzhou"
+#   Q45699639 (李 of 潤州): mul label = NN
+Q45699639	Lmul	"NN"
+#   Q45699639: set the nb label
+Q45699639	Lnb	"mann av Li-slekten, fra Runzhou"
+#   Q45699639: set the da label
+Q45699639	Lda	"mand af Li-slægten, fra Runzhou"
+#   Q45699639: set the sv label
+Q45699639	Lsv	"man av Li-ätten, från Runzhou"
+#   Q45699639: set the de label
+Q45699639	Lde	"Mann des Klans Li, aus Runzhou"
+#   Q45699639: set the es label
+Q45699639	Les	"hombre del clan Li, de Runzhou"
+#   Q45699639: set the it label
+Q45699639	Lit	"uomo del clan Li, da Runzhou"
+#   Q45699639: set the pt label
+Q45699639	Lpt	"homem do clã Li, de Runzhou"
+#   Q45699639: set the ca label
+Q45699639	Lca	"home del clan Li, de Runzhou"
+#   Q45699665 (李 of 潤州): mul label = NN
+Q45699665	Lmul	"NN"
+#   Q45699665: set the nb label
+Q45699665	Lnb	"mann av Li-slekten, fra Runzhou"
+#   Q45699665: set the da label
+Q45699665	Lda	"mand af Li-slægten, fra Runzhou"
+#   Q45699665: set the sv label
+Q45699665	Lsv	"man av Li-ätten, från Runzhou"
+#   Q45699665: set the de label
+Q45699665	Lde	"Mann des Klans Li, aus Runzhou"
+#   Q45699665: set the es label
+Q45699665	Les	"hombre del clan Li, de Runzhou"
+#   Q45699665: set the it label
+Q45699665	Lit	"uomo del clan Li, da Runzhou"
+#   Q45699665: set the pt label
+Q45699665	Lpt	"homem do clã Li, de Runzhou"
+#   Q45699665: set the ca label
+Q45699665	Lca	"home del clan Li, de Runzhou"
+#   Q45699690 (李 of 潤州): mul label = NN
+Q45699690	Lmul	"NN"
+#   Q45699690: set the nb label
+Q45699690	Lnb	"mann av Li-slekten, fra Runzhou"
+#   Q45699690: set the da label
+Q45699690	Lda	"mand af Li-slægten, fra Runzhou"
+#   Q45699690: set the sv label
+Q45699690	Lsv	"man av Li-ätten, från Runzhou"
+#   Q45699690: set the de label
+Q45699690	Lde	"Mann des Klans Li, aus Runzhou"
+#   Q45699690: set the es label
+Q45699690	Les	"hombre del clan Li, de Runzhou"
+#   Q45699690: set the it label
+Q45699690	Lit	"uomo del clan Li, da Runzhou"
+#   Q45699690: set the pt label
+Q45699690	Lpt	"homem do clã Li, de Runzhou"
+#   Q45699690: set the ca label
+Q45699690	Lca	"home del clan Li, de Runzhou"
+#   Q45699766 (李 of 隴西狄道): mul label = NN
+Q45699766	Lmul	"NN"
+#   Q45699766: set the nb label
+Q45699766	Lnb	"mann av Li-slekten, fra Longxi Didao"
+#   Q45699766: set the da label
+Q45699766	Lda	"mand af Li-slægten, fra Longxi Didao"
+#   Q45699766: set the sv label
+Q45699766	Lsv	"man av Li-ätten, från Longxi Didao"
+#   Q45699766: set the de label
+Q45699766	Lde	"Mann des Klans Li, aus Longxi Didao"
+#   Q45699766: set the es label
+Q45699766	Les	"hombre del clan Li, de Longxi Didao"
+#   Q45699766: set the it label
+Q45699766	Lit	"uomo del clan Li, da Longxi Didao"
+#   Q45699766: set the pt label
+Q45699766	Lpt	"homem do clã Li, de Longxi Didao"
+#   Q45699766: set the ca label
+Q45699766	Lca	"home del clan Li, de Longxi Didao"
+#   Q45699789 (李 of 隴西狄道): mul label = NN
+Q45699789	Lmul	"NN"
+#   Q45699789: set the nb label
+Q45699789	Lnb	"mann av Li-slekten, fra Longxi Didao"
+#   Q45699789: set the da label
+Q45699789	Lda	"mand af Li-slægten, fra Longxi Didao"
+#   Q45699789: set the sv label
+Q45699789	Lsv	"man av Li-ätten, från Longxi Didao"
+#   Q45699789: set the de label
+Q45699789	Lde	"Mann des Klans Li, aus Longxi Didao"
+#   Q45699789: set the es label
+Q45699789	Les	"hombre del clan Li, de Longxi Didao"
+#   Q45699789: set the it label
+Q45699789	Lit	"uomo del clan Li, da Longxi Didao"
+#   Q45699789: set the pt label
+Q45699789	Lpt	"homem do clã Li, de Longxi Didao"
+#   Q45699789: set the ca label
+Q45699789	Lca	"home del clan Li, de Longxi Didao"
+#   Q45699816 (李 of 隴西狄道): mul label = NN
+Q45699816	Lmul	"NN"
+#   Q45699816: set the nb label
+Q45699816	Lnb	"mann av Li-slekten, fra Longxi Didao"
+#   Q45699816: set the da label
+Q45699816	Lda	"mand af Li-slægten, fra Longxi Didao"
+#   Q45699816: set the sv label
+Q45699816	Lsv	"man av Li-ätten, från Longxi Didao"
+#   Q45699816: set the de label
+Q45699816	Lde	"Mann des Klans Li, aus Longxi Didao"
+#   Q45699816: set the es label
+Q45699816	Les	"hombre del clan Li, de Longxi Didao"
+#   Q45699816: set the it label
+Q45699816	Lit	"uomo del clan Li, da Longxi Didao"
+#   Q45699816: set the pt label
+Q45699816	Lpt	"homem do clã Li, de Longxi Didao"
+#   Q45699816: set the ca label
+Q45699816	Lca	"home del clan Li, de Longxi Didao"
+#   Q45699868 (李 of 隴西狄道): mul label = NN
+Q45699868	Lmul	"NN"
+#   Q45699868: set the nb label
+Q45699868	Lnb	"mann av Li-slekten, fra Longxi Didao"
+#   Q45699868: set the da label
+Q45699868	Lda	"mand af Li-slægten, fra Longxi Didao"
+#   Q45699868: set the sv label
+Q45699868	Lsv	"man av Li-ätten, från Longxi Didao"
+#   Q45699868: set the de label
+Q45699868	Lde	"Mann des Klans Li, aus Longxi Didao"
+#   Q45699868: set the es label
+Q45699868	Les	"hombre del clan Li, de Longxi Didao"
+#   Q45699868: set the it label
+Q45699868	Lit	"uomo del clan Li, da Longxi Didao"
+#   Q45699868: set the pt label
+Q45699868	Lpt	"homem do clã Li, de Longxi Didao"
+#   Q45699868: set the ca label
+Q45699868	Lca	"home del clan Li, de Longxi Didao"
+#   Q45700460 (李 of 秦州成紀): mul label = NN
+Q45700460	Lmul	"NN"
+#   Q45700460: set the nb label
+Q45700460	Lnb	"mann av Li-slekten, fra Qinzhou Chengji"
+#   Q45700460: set the da label
+Q45700460	Lda	"mand af Li-slægten, fra Qinzhou Chengji"
+#   Q45700460: set the sv label
+Q45700460	Lsv	"man av Li-ätten, från Qinzhou Chengji"
+#   Q45700460: set the de label
+Q45700460	Lde	"Mann des Klans Li, aus Qinzhou Chengji"
+#   Q45700460: set the es label
+Q45700460	Les	"hombre del clan Li, de Qinzhou Chengji"
+#   Q45700460: set the it label
+Q45700460	Lit	"uomo del clan Li, da Qinzhou Chengji"
+#   Q45700460: set the pt label
+Q45700460	Lpt	"homem do clã Li, de Qinzhou Chengji"
+#   Q45700460: set the ca label
+Q45700460	Lca	"home del clan Li, de Qinzhou Chengji"
+#   Q45700483 (李 of 秦州成紀): mul label = NN
+Q45700483	Lmul	"NN"
+#   Q45700483: set the nb label
+Q45700483	Lnb	"mann av Li-slekten, fra Qinzhou Chengji"
+#   Q45700483: set the da label
+Q45700483	Lda	"mand af Li-slægten, fra Qinzhou Chengji"
+#   Q45700483: set the sv label
+Q45700483	Lsv	"man av Li-ätten, från Qinzhou Chengji"
+#   Q45700483: set the de label
+Q45700483	Lde	"Mann des Klans Li, aus Qinzhou Chengji"
+#   Q45700483: set the es label
+Q45700483	Les	"hombre del clan Li, de Qinzhou Chengji"
+#   Q45700483: set the it label
+Q45700483	Lit	"uomo del clan Li, da Qinzhou Chengji"
+#   Q45700483: set the pt label
+Q45700483	Lpt	"homem do clã Li, de Qinzhou Chengji"
+#   Q45700483: set the ca label
+Q45700483	Lca	"home del clan Li, de Qinzhou Chengji"
+#   Q45700509 (李 of 秦州成紀): mul label = NN
+Q45700509	Lmul	"NN"
+#   Q45700509: set the nb label
+Q45700509	Lnb	"mann av Li-slekten, fra Qinzhou Chengji"
+#   Q45700509: set the da label
+Q45700509	Lda	"mand af Li-slægten, fra Qinzhou Chengji"
+#   Q45700509: set the sv label
+Q45700509	Lsv	"man av Li-ätten, från Qinzhou Chengji"
+#   Q45700509: set the de label
+Q45700509	Lde	"Mann des Klans Li, aus Qinzhou Chengji"
+#   Q45700509: set the es label
+Q45700509	Les	"hombre del clan Li, de Qinzhou Chengji"
+#   Q45700509: set the it label
+Q45700509	Lit	"uomo del clan Li, da Qinzhou Chengji"
+#   Q45700509: set the pt label
+Q45700509	Lpt	"homem do clã Li, de Qinzhou Chengji"
+#   Q45700509: set the ca label
+Q45700509	Lca	"home del clan Li, de Qinzhou Chengji"
+#   Q45700685 (李 of 秦州成紀): mul label = NN
+Q45700685	Lmul	"NN"
+#   Q45700685: set the nb label
+Q45700685	Lnb	"mann av Li-slekten, fra Qinzhou Chengji"
+#   Q45700685: set the da label
+Q45700685	Lda	"mand af Li-slægten, fra Qinzhou Chengji"
+#   Q45700685: set the sv label
+Q45700685	Lsv	"man av Li-ätten, från Qinzhou Chengji"
+#   Q45700685: set the de label
+Q45700685	Lde	"Mann des Klans Li, aus Qinzhou Chengji"
+#   Q45700685: set the es label
+Q45700685	Les	"hombre del clan Li, de Qinzhou Chengji"
+#   Q45700685: set the it label
+Q45700685	Lit	"uomo del clan Li, da Qinzhou Chengji"
+#   Q45700685: set the pt label
+Q45700685	Lpt	"homem do clã Li, de Qinzhou Chengji"
+#   Q45700685: set the ca label
+Q45700685	Lca	"home del clan Li, de Qinzhou Chengji"
+"""
+
+
 def spine_created():
     """Every Geni id that sits on a spine path — these never seed a ring of their own.
 
@@ -1770,6 +4810,8 @@ def main():
     # The hard-coded manual zipper merges, last, every run. See `SPINE_P2600_BLOCK` — it is a
     # literal string on purpose and is not to be made conditional, filtered or generated.
     lines.append(SPINE_P2600_BLOCK)
+    # The CJK clan labels, same mechanism. See `CJK_CLAN_BLOCK`.
+    lines.append(CJK_CLAN_BLOCK)
 
     out = ROOT / "reports" / "wikidata-garborg-day.qs"
     out.write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")
