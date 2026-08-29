@@ -337,7 +337,9 @@ def main() -> int:
             # The anchors must exist before this person can be linked to them.
             "requires": sorted({q for _, q, _ in anchors}),
             "labels": item_labels,
-            "aliases": {"en": [a for a in (lab["aliases_from_married_name"] or "").split(" | ") if a]},
+            # The column holds the BIRTH name now: `label_mul` took the married form as
+            # primary on 2026-08-29, so what is left over as an alias is the birth one.
+            "aliases": {"en": [a for a in (lab["alias_names"] or "").split(" | ") if a]},
             "statements": statements,
             "links": [{"property": prop, "value": q,
                        "references": geni_ref(geni_id, g)} for prop, q, g in anchors],

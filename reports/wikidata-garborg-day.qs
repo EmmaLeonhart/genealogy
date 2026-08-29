@@ -38,11 +38,11 @@ LAST	P21	Q6581072
 LAST	P2600	"6000000021223364767"
 #   P22 father = Q11959067 Arne Olaus Fjørtoft Garborg
 LAST	P22	Q11959067	S2600	"6000000021223364767"
-#   P25 mother = Q141168785 Aagot Nyvold
+#   P25 mother = Q141168785 Aagot Garborg
 LAST	P25	Q141168785	S2600	"6000000021223364767"
 #   Q11959067 Arne Olaus Fjørtoft Garborg: P40 child = the item just created
 Q11959067	P40	LAST	S2600	"6000000021223364767"
-#   Q141168785 Aagot Nyvold: P40 child = the item just created
+#   Q141168785 Aagot Garborg: P40 child = the item just created
 Q141168785	P40	LAST	S2600	"6000000021223364767"
 
 # create a new item
@@ -96,7 +96,7 @@ LAST	Amul	"Aagot Engebretsen"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
 LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000036746925255 Aagot Engebretsen
+#   P2600 Geni.com profile ID = 6000000036746925255 Aagot Garborg Koloboff
 LAST	P2600	"6000000036746925255"
 #   P569 date of birth = +1892-08-19T00:00:00Z/11
 LAST	P569	+1892-08-19T00:00:00Z/11	S2600	"6000000036746925255"
@@ -146,19 +146,19 @@ LAST	Amul	"Andrew J. Iverson Bakke"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
 LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000053155754864 Andrew J. Iverson Bakke
+#   P2600 Geni.com profile ID = 6000000053155754864 Andrew J. Bakke
 LAST	P2600	"6000000053155754864"
 #   P569 date of birth = +1862-04-23T00:00:00Z/11
 LAST	P569	+1862-04-23T00:00:00Z/11	S2600	"6000000053155754864"
 #   P570 date of death = +1955-02-23T00:00:00Z/11
 LAST	P570	+1955-02-23T00:00:00Z/11	S2600	"6000000053155754864"
-#   P26 spouse = Q141206058 Bertha Betsy Pedersdatter
+#   P26 spouse = Q141206058 Bertha Betsy Bakke
 LAST	P26	Q141206058	S2600	"6000000053155754864"
-#   P40 child = Q141205894 Agnes Bakke
+#   P40 child = Q141205894 Agnes Tunheim
 LAST	P40	Q141205894	S2600	"6000000053155754864"
-#   Q141206058 Bertha Betsy Pedersdatter: P26 spouse = the item just created
+#   Q141206058 Bertha Betsy Bakke: P26 spouse = the item just created
 Q141206058	P26	LAST	S2600	"6000000053155754864"
-#   Q141205894 Agnes Bakke: P22 father = the item just created
+#   Q141205894 Agnes Tunheim: P22 father = the item just created
 Q141205894	P22	LAST	S2600	"6000000053155754864"
 #   the item just created: P735 given name = Q18042461 Andrew, qualified series ordinal 1, reason for preferred rank Q3409033 usual forename
 LAST	P735	Q18042461	P1545	"1"	P7452	Q3409033
@@ -181,15 +181,15 @@ LAST	Amul	"Anne Govertsdtr. Årsvoll"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
 LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000169074443823 Anne Govertsdtr. Årsvoll
+#   P2600 Geni.com profile ID = 6000000169074443823 Anne Govertsdtr. Bratland
 LAST	P2600	"6000000169074443823"
 #   P569 date of birth = +1825-02-09T00:00:00Z/11
 LAST	P569	+1825-02-09T00:00:00Z/11	S2600	"6000000169074443823"
 #   P570 date of death = +1901-10-06T00:00:00Z/11
 LAST	P570	+1901-10-06T00:00:00Z/11	S2600	"6000000169074443823"
-#   P40 child = Q141205912 Herborg Johannesdatter Obrestad
+#   P40 child = Q141205912 Herborg Johannesdatter Sør-Reime
 LAST	P40	Q141205912	S2600	"6000000169074443823"
-#   Q141205912 Herborg Johannesdatter Obrestad: P25 mother = the item just created
+#   Q141205912 Herborg Johannesdatter Sør-Reime: P25 mother = the item just created
 Q141205912	P25	LAST	S2600	"6000000169074443823"
 #   the item just created: P734 family name = Q27892819 Bratland, qualified object of statement has role Q28418670 married name
 LAST	P734	Q27892819	P3831	Q28418670
@@ -210,9 +210,9 @@ LAST	P2600	"6000000180011287821"
 LAST	P569	+1927-06-24T00:00:00Z/11	S2600	"6000000180011287821"
 #   P570 date of death = +1984-03-17T00:00:00Z/11
 LAST	P570	+1984-03-17T00:00:00Z/11	S2600	"6000000180011287821"
-#   P26 spouse = Q141199966 Mildred Lorraine Tunheim
+#   P26 spouse = Q141199966 Mildred Lorraine Schantzen
 LAST	P26	Q141199966	S2600	"6000000180011287821"
-#   Q141199966 Mildred Lorraine Tunheim: P26 spouse = the item just created
+#   Q141199966 Mildred Lorraine Schantzen: P26 spouse = the item just created
 Q141199966	P26	LAST	S2600	"6000000180011287821"
 #   the item just created: P735 given name = Q13422248 Donald, qualified series ordinal 1, reason for preferred rank Q3409033 usual forename
 LAST	P735	Q13422248	P1545	"1"	P7452	Q3409033
@@ -231,15 +231,15 @@ LAST	Amul	"Gard Toresson Garaa"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
 LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000002572728015 Gard Toresson Garaa
+#   P2600 Geni.com profile ID = 6000000002572728015 Gard Toresson Talgje
 LAST	P2600	"6000000002572728015"
 #   P569 date of birth = +1373-00-00T00:00:00Z/9
 LAST	P569	+1373-00-00T00:00:00Z/9	S2600	"6000000002572728015"
 #   P570 date of death = +1427-00-00T00:00:00Z/9
 LAST	P570	+1427-00-00T00:00:00Z/9	S2600	"6000000002572728015"
-#   P40 child = Q141205942 Tore Gardson Gardsson
+#   P40 child = Q141205942 Tore II Gardson Gard
 LAST	P40	Q141205942	S2600	"6000000002572728015"
-#   Q141205942 Tore Gardson Gardsson: P22 father = the item just created
+#   Q141205942 Tore II Gardson Gard: P22 father = the item just created
 Q141205942	P22	LAST	S2600	"6000000002572728015"
 #   the item just created: P735 given name = Q12717105 Gard
 LAST	P735	Q12717105
@@ -268,11 +268,11 @@ LAST	P569	+1620-00-00T00:00:00Z/9	S2600	"6000000002482084257"
 LAST	P570	+1667-00-00T00:00:00Z/9	S2600	"6000000002482084257"
 #   P22 father = Q141206080 Peder Tormodson Foss
 LAST	P22	Q141206080	S2600	"6000000002482084257"
-#   P25 mother = Q141206061 Cecilie Olsdatter Skiftun
+#   P25 mother = Q141206061 Cecilie Olsdatter Håland
 LAST	P25	Q141206061	S2600	"6000000002482084257"
 #   Q141206080 Peder Tormodson Foss: P40 child = the item just created
 Q141206080	P40	LAST	S2600	"6000000002482084257"
-#   Q141206061 Cecilie Olsdatter Skiftun: P40 child = the item just created
+#   Q141206061 Cecilie Olsdatter Håland: P40 child = the item just created
 Q141206061	P40	LAST	S2600	"6000000002482084257"
 #   the item just created: P735 given name = Q11973376 Guri
 LAST	P735	Q11973376
@@ -299,9 +299,9 @@ LAST	P2600	"6000000225229552897"
 LAST	P569	+1663-00-00T00:00:00Z/9	S2600	"6000000225229552897"
 #   P570 date of death = +1739-09-01T00:00:00Z/11
 LAST	P570	+1739-09-01T00:00:00Z/11	S2600	"6000000225229552897"
-#   P26 spouse = Q141199918 Kirsten Hansdatter Låge-Håland
+#   P26 spouse = Q141199918 Kirsten Hansdatter Grøtheim
 LAST	P26	Q141199918	S2600	"6000000225229552897"
-#   Q141199918 Kirsten Hansdatter Låge-Håland: P26 spouse = the item just created
+#   Q141199918 Kirsten Hansdatter Grøtheim: P26 spouse = the item just created
 Q141199918	P26	LAST	S2600	"6000000225229552897"
 #   the item just created: P735 given name = Q18002157 Halvard
 LAST	P735	Q18002157
@@ -320,7 +320,7 @@ LAST	Amul	"Hanna Sofie Helmer"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
 LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000005441361475 Hanna Sofie Helmer
+#   P2600 Geni.com profile ID = 6000000005441361475 Hanna Sofie Wendt
 LAST	P2600	"6000000005441361475"
 #   P569 date of birth = +1865-01-05T00:00:00Z/11
 LAST	P569	+1865-01-05T00:00:00Z/11	S2600	"6000000005441361475"
@@ -347,9 +347,9 @@ LAST	P21	Q6581097
 LAST	P2600	"6000000224130977838"
 #   P569 date of birth = +1736-00-00T00:00:00Z/9
 LAST	P569	+1736-00-00T00:00:00Z/9	S2600	"6000000224130977838"
-#   P25 mother = Q141199918 Kirsten Hansdatter Låge-Håland
+#   P25 mother = Q141199918 Kirsten Hansdatter Grøtheim
 LAST	P25	Q141199918	S2600	"6000000224130977838"
-#   Q141199918 Kirsten Hansdatter Låge-Håland: P40 child = the item just created
+#   Q141199918 Kirsten Hansdatter Grøtheim: P40 child = the item just created
 Q141199918	P40	LAST	S2600	"6000000224130977838"
 
 # create a new item
@@ -372,13 +372,13 @@ LAST	P2600	"6000000008176954243"
 LAST	P569	+1790-02-07T00:00:00Z/11	S2600	"6000000008176954243"
 #   P570 date of death = +1801-00-00T00:00:00Z/9
 LAST	P570	+1801-00-00T00:00:00Z/9	S2600	"6000000008176954243"
-#   P22 father = Q141189088 Ola Knutsen Garborg
+#   P22 father = Q141189088 Ola Knutsen Grøtheim
 LAST	P22	Q141189088	S2600	"6000000008176954243"
-#   P25 mother = Q141199830 Anna Rasmusdatter Årsland
+#   P25 mother = Q141199830 Anna Rasmusdatter Grøtheim
 LAST	P25	Q141199830	S2600	"6000000008176954243"
-#   Q141189088 Ola Knutsen Garborg: P40 child = the item just created
+#   Q141189088 Ola Knutsen Grøtheim: P40 child = the item just created
 Q141189088	P40	LAST	S2600	"6000000008176954243"
-#   Q141199830 Anna Rasmusdatter Årsland: P40 child = the item just created
+#   Q141199830 Anna Rasmusdatter Grøtheim: P40 child = the item just created
 Q141199830	P40	LAST	S2600	"6000000008176954243"
 
 # create a new item
@@ -393,15 +393,15 @@ LAST	Amul	"Hans Rasmussen Tvihaug"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
 LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000009127934231 Hans Rasmussen Tvihaug
+#   P2600 Geni.com profile ID = 6000000009127934231 Hans Rasmussen Låge-Håland
 LAST	P2600	"6000000009127934231"
 #   P569 date of birth = +1656-00-00T00:00:00Z/9
 LAST	P569	+1656-00-00T00:00:00Z/9	S2600	"6000000009127934231"
 #   P570 date of death = +1712-00-00T00:00:00Z/9
 LAST	P570	+1712-00-00T00:00:00Z/9	S2600	"6000000009127934231"
-#   P40 child = Q141199918 Kirsten Hansdatter Låge-Håland
+#   P40 child = Q141199918 Kirsten Hansdatter Grøtheim
 LAST	P40	Q141199918	S2600	"6000000009127934231"
-#   Q141199918 Kirsten Hansdatter Låge-Håland: P22 father = the item just created
+#   Q141199918 Kirsten Hansdatter Grøtheim: P22 father = the item just created
 Q141199918	P22	LAST	S2600	"6000000009127934231"
 #   the item just created: add a mul alias "Hans Låge-Håland"
 LAST	Amul	"Hans Låge-Håland"
@@ -422,13 +422,13 @@ LAST	P2600	"6000000008309908854"
 LAST	P569	+1755-00-00T00:00:00Z/9	S2600	"6000000008309908854"
 #   P570 date of death = +1823-06-07T00:00:00Z/11
 LAST	P570	+1823-06-07T00:00:00Z/11	S2600	"6000000008309908854"
-#   P26 spouse = Q141205919 Malena Hansdatter Risa
+#   P26 spouse = Q141205919 Malena Hansdatter Bø
 LAST	P26	Q141205919	S2600	"6000000008309908854"
 #   P40 child = Q141199809 Ane Marie Helgesdatter Bø
 LAST	P40	Q141199809	S2600	"6000000008309908854"
 #   P40 child = Q141206056 Asbjørn Helgesen Bø
 LAST	P40	Q141206056	S2600	"6000000008309908854"
-#   Q141205919 Malena Hansdatter Risa: P26 spouse = the item just created
+#   Q141205919 Malena Hansdatter Bø: P26 spouse = the item just created
 Q141205919	P26	LAST	S2600	"6000000008309908854"
 #   Q141199809 Ane Marie Helgesdatter Bø: P22 father = the item just created
 Q141199809	P22	LAST	S2600	"6000000008309908854"
@@ -453,9 +453,9 @@ LAST	P2600	"6000000014100949863"
 LAST	P569	+1680-00-00T00:00:00Z/9	S2600	"6000000014100949863"
 #   P570 date of death = +1751-10-11T00:00:00Z/11
 LAST	P570	+1751-10-11T00:00:00Z/11	S2600	"6000000014100949863"
-#   P40 child = Q141199918 Kirsten Hansdatter Låge-Håland
+#   P40 child = Q141199918 Kirsten Hansdatter Grøtheim
 LAST	P40	Q141199918	S2600	"6000000014100949863"
-#   Q141199918 Kirsten Hansdatter Låge-Håland: P25 mother = the item just created
+#   Q141199918 Kirsten Hansdatter Grøtheim: P25 mother = the item just created
 Q141199918	P25	LAST	S2600	"6000000014100949863"
 #   the item just created: P735 given name = Q656590 Ingeborg
 LAST	P735	Q656590
@@ -472,17 +472,17 @@ LAST	Amul	"Ingeborg Eriksdatter Netland"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
 LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000005607411844 Ingeborg Eriksdatter Netland
+#   P2600 Geni.com profile ID = 6000000005607411844 Ingeborg Eriksdatter Time
 LAST	P2600	"6000000005607411844"
 #   P569 date of birth = +1765-00-00T00:00:00Z/9
 LAST	P569	+1765-00-00T00:00:00Z/9	S2600	"6000000005607411844"
-#   P26 spouse = Q141205904 Erik Tollefson Fotland
+#   P26 spouse = Q141205904 Erik Tollefson Foss-Eikeland
 LAST	P26	Q141205904	S2600	"6000000005607411844"
-#   P40 child = Q141198393 Erik Erikson Time
+#   P40 child = Q141198393 Erik Erikson Stangeland
 LAST	P40	Q141198393	S2600	"6000000005607411844"
-#   Q141205904 Erik Tollefson Fotland: P26 spouse = the item just created
+#   Q141205904 Erik Tollefson Foss-Eikeland: P26 spouse = the item just created
 Q141205904	P26	LAST	S2600	"6000000005607411844"
-#   Q141198393 Erik Erikson Time: P25 mother = the item just created
+#   Q141198393 Erik Erikson Stangeland: P25 mother = the item just created
 Q141198393	P25	LAST	S2600	"6000000005607411844"
 #   the item just created: P735 given name = Q656590 Ingeborg
 LAST	P735	Q656590
@@ -524,15 +524,15 @@ LAST	Amul	"Johannes Svensen Bratland"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
 LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000003491978246 Johannes Svensen Bratland
+#   P2600 Geni.com profile ID = 6000000003491978246 Johannes Svensen Obrestad
 LAST	P2600	"6000000003491978246"
 #   P569 date of birth = +1798-09-09T00:00:00Z/11
 LAST	P569	+1798-09-09T00:00:00Z/11	S2600	"6000000003491978246"
 #   P570 date of death = +1876-08-27T00:00:00Z/11
 LAST	P570	+1876-08-27T00:00:00Z/11	S2600	"6000000003491978246"
-#   P40 child = Q141205912 Herborg Johannesdatter Obrestad
+#   P40 child = Q141205912 Herborg Johannesdatter Sør-Reime
 LAST	P40	Q141205912	S2600	"6000000003491978246"
-#   Q141205912 Herborg Johannesdatter Obrestad: P22 father = the item just created
+#   Q141205912 Herborg Johannesdatter Sør-Reime: P22 father = the item just created
 Q141205912	P22	LAST	S2600	"6000000003491978246"
 #   the item just created: P735 given name = Q2117521 Johannes
 LAST	P735	Q2117521
@@ -561,13 +561,13 @@ LAST	P570	+1828-00-00T00:00:00Z/9	S2600	"6000000005608892743"
 LAST	P26	Q141206057	S2600	"6000000005608892743"
 #   P40 child = Q141200054 Rakel Jonsdatter Jonsdotter Vatne
 LAST	P40	Q141200054	S2600	"6000000005608892743"
-#   P40 child = Q141205921 Maria Jonsdatter Vatne
+#   P40 child = Q141205921 Maria Jonsdatter Lura
 LAST	P40	Q141205921	S2600	"6000000005608892743"
 #   Q141206057 Berte Tørresdotter Austrått: P26 spouse = the item just created
 Q141206057	P26	LAST	S2600	"6000000005608892743"
 #   Q141200054 Rakel Jonsdatter Jonsdotter Vatne: P22 father = the item just created
 Q141200054	P22	LAST	S2600	"6000000005608892743"
-#   Q141205921 Maria Jonsdatter Vatne: P22 father = the item just created
+#   Q141205921 Maria Jonsdatter Lura: P22 father = the item just created
 Q141205921	P22	LAST	S2600	"6000000005608892743"
 #   the item just created: P735 given name = Q13501137 Jon
 LAST	P735	Q13501137
@@ -644,9 +644,9 @@ LAST	P2600	"6000000018935761194"
 LAST	P569	+1846-10-06T00:00:00Z/11	S2600	"6000000018935761194"
 #   P570 date of death = +1921-08-21T00:00:00Z/11
 LAST	P570	+1921-08-21T00:00:00Z/11	S2600	"6000000018935761194"
-#   P40 child = Q141205896 Ane Marie Konstanse Amanda Kristine Christiansdatter
+#   P40 child = Q141205896 Ane Marie Konstanse Amanda Kristine Hegre
 LAST	P40	Q141205896	S2600	"6000000018935761194"
-#   Q141205896 Ane Marie Konstanse Amanda Kristine Christiansdatter: P22 father = the item just created
+#   Q141205896 Ane Marie Konstanse Amanda Kristine Hegre: P22 father = the item just created
 Q141205896	P22	LAST	S2600	"6000000018935761194"
 #   the item just created: P735 given name = Q12794332 Kristian
 LAST	P735	Q12794332
@@ -665,15 +665,15 @@ LAST	Amul	"Lisbet Olavsdatter Olavsdatter"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
 LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000005607268895 Lisbet Olavsdatter Olavsdatter
+#   P2600 Geni.com profile ID = 6000000005607268895 Lisbet Olavsdatter Håland
 LAST	P2600	"6000000005607268895"
 #   P569 date of birth = +1560-00-00T00:00:00Z/9
 LAST	P569	+1560-00-00T00:00:00Z/9	S2600	"6000000005607268895"
 #   P570 date of death = +1620-00-00T00:00:00Z/9
 LAST	P570	+1620-00-00T00:00:00Z/9	S2600	"6000000005607268895"
-#   P22 father = Q141205930 Olav Knutson Randa Randa
+#   P22 father = Q141205930 Olav Knutson Randa Håland
 LAST	P22	Q141205930	S2600	"6000000005607268895"
-#   Q141205930 Olav Knutson Randa Randa: P40 child = the item just created
+#   Q141205930 Olav Knutson Randa Håland: P40 child = the item just created
 Q141205930	P40	LAST	S2600	"6000000005607268895"
 #   the item just created: P735 given name = Q19869334 Lisbet
 LAST	P735	Q19869334
@@ -864,9 +864,9 @@ LAST	P31	Q5
 LAST	P21	Q6581097
 #   P2600 Geni.com profile ID = 6000000177688399821 NN Private
 LAST	P2600	"6000000177688399821"
-#   P25 mother = Q141168830 Ingeborg Garborg
+#   P25 mother = Q141168830 Ingeborg Talle
 LAST	P25	Q141168830	S2600	"6000000177688399821"
-#   Q141168830 Ingeborg Garborg: P40 child = the item just created
+#   Q141168830 Ingeborg Talle: P40 child = the item just created
 Q141168830	P40	LAST	S2600	"6000000177688399821"
 
 # create a new item
@@ -887,11 +887,11 @@ LAST	P569	+1360-00-00T00:00:00Z/9	S2600	"6000000004870648136"
 LAST	P570	+1408-00-00T00:00:00Z/9	S2600	"6000000004870648136"
 #   P22 father = Q5915800 Knut Algotsson
 LAST	P22	Q5915800	S2600	"6000000004870648136"
-#   P40 child = Q141205942 Tore Gardson Gardsson
+#   P40 child = Q141205942 Tore II Gardson Gard
 LAST	P40	Q141205942	S2600	"6000000004870648136"
 #   Q5915800 Knut Algotsson: P40 child = the item just created
 Q5915800	P40	LAST	S2600	"6000000004870648136"
-#   Q141205942 Tore Gardson Gardsson: P25 mother = the item just created
+#   Q141205942 Tore II Gardson Gard: P25 mother = the item just created
 Q141205942	P25	LAST	S2600	"6000000004870648136"
 #   the item just created: add a mul alias "Ramborg Lejon"
 LAST	Amul	"Ramborg Lejon"
@@ -912,9 +912,9 @@ LAST	P2600	"6000000107274277935"
 LAST	P569	+1891-05-25T00:00:00Z/11	S2600	"6000000107274277935"
 #   P570 date of death = +1964-07-28T00:00:00Z/11
 LAST	P570	+1964-07-28T00:00:00Z/11	S2600	"6000000107274277935"
-#   P26 spouse = Q141168830 Ingeborg Garborg
+#   P26 spouse = Q141168830 Ingeborg Talle
 LAST	P26	Q141168830	S2600	"6000000107274277935"
-#   Q141168830 Ingeborg Garborg: P26 spouse = the item just created
+#   Q141168830 Ingeborg Talle: P26 spouse = the item just created
 Q141168830	P26	LAST	S2600	"6000000107274277935"
 #   the item just created: P735 given name = Q1315397 Sigurd, qualified series ordinal 1, reason for preferred rank Q3409033 usual forename
 LAST	P735	Q1315397	P1545	"1"	P7452	Q3409033
@@ -937,11 +937,11 @@ LAST	P2600	"6000000037735915741"
 LAST	P569	+1855-00-00T00:00:00Z/9	S2600	"6000000037735915741"
 #   P570 date of death = +1855-00-00T00:00:00Z/9
 LAST	P570	+1855-00-00T00:00:00Z/9	S2600	"6000000037735915741"
-#   P22 father = Q141200112 Tollef Pederson Hetland
+#   P22 father = Q141200112 Tollef Pederson Tunheim
 LAST	P22	Q141200112	S2600	"6000000037735915741"
 #   P25 mother = Q141199826 Anna Maria Samuelsdtr. Tunheim
 LAST	P25	Q141199826	S2600	"6000000037735915741"
-#   Q141200112 Tollef Pederson Hetland: P40 child = the item just created
+#   Q141200112 Tollef Pederson Tunheim: P40 child = the item just created
 Q141200112	P40	LAST	S2600	"6000000037735915741"
 #   Q141199826 Anna Maria Samuelsdtr. Tunheim: P40 child = the item just created
 Q141199826	P40	LAST	S2600	"6000000037735915741"
@@ -960,17 +960,17 @@ LAST	Amul	"Tabitha Tollefsdatter Tunheim"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
 LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000008262061116 Tabitha Tollefsdatter Tunheim
+#   P2600 Geni.com profile ID = 6000000008262061116 Tabitha Tollefsdatter Johnson
 LAST	P2600	"6000000008262061116"
 #   P569 date of birth = +1856-05-17T00:00:00Z/11
 LAST	P569	+1856-05-17T00:00:00Z/11	S2600	"6000000008262061116"
 #   P570 date of death = +1917-04-15T00:00:00Z/11
 LAST	P570	+1917-04-15T00:00:00Z/11	S2600	"6000000008262061116"
-#   P22 father = Q141200112 Tollef Pederson Hetland
+#   P22 father = Q141200112 Tollef Pederson Tunheim
 LAST	P22	Q141200112	S2600	"6000000008262061116"
 #   P25 mother = Q141199826 Anna Maria Samuelsdtr. Tunheim
 LAST	P25	Q141199826	S2600	"6000000008262061116"
-#   Q141200112 Tollef Pederson Hetland: P40 child = the item just created
+#   Q141200112 Tollef Pederson Tunheim: P40 child = the item just created
 Q141200112	P40	LAST	S2600	"6000000008262061116"
 #   Q141199826 Anna Maria Samuelsdtr. Tunheim: P40 child = the item just created
 Q141199826	P40	LAST	S2600	"6000000008262061116"
@@ -1022,7 +1022,7 @@ LAST	Amul	"Unn Garborg"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
 LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000116938744834 Unn (Bitten) Garborg
+#   P2600 Geni.com profile ID = 6000000116938744834 Unn (Bitten) Mørck
 LAST	P2600	"6000000116938744834"
 #   P569 date of birth = +1917-03-19T00:00:00Z/11
 LAST	P569	+1917-03-19T00:00:00Z/11	S2600	"6000000116938744834"
@@ -1052,25 +1052,23 @@ Q116150300	Lja	"セシリエ・エッベスダッテル・ヴィーデ"
 Q116150300	Lzh	"塞西莉厄·埃贝斯达特·维德"
 #   Q141198447 Kristina Tolvesdotter Näs: P26 spouse = Q19842232 Algot Bryniolfsson
 Q141198447	P26	Q19842232	S2600	"340342479380013975"
+#   Q141198835 Bergitte Gunnbjørnsdatter Aukland: P734 family name = Q4821650 Aukland
+Q141198835	P734	Q4821650
 #   Q5915800 Knut Algotsson: set the ja label to "クヌート・アルゴットソン"
 Q5915800	Lja	"クヌート・アルゴットソン"
 #   set the zh label to "克努特·阿尔戈特松"
 Q5915800	Lzh	"克努特·阿尔戈特松"
-#   Q141189104 Siri Kristine Ivarsdatter Sandsmark: set the ja label to "シーリ・クリスティーネ・イーヴァシュダッテル・サンスマルク"
-Q141189104	Lja	"シーリ・クリスティーネ・イーヴァシュダッテル・サンスマルク"
-#   set the zh label to "西丽·克丽丝汀·伊瓦斯达特·桑斯马克"
-Q141189104	Lzh	"西丽·克丽丝汀·伊瓦斯达特·桑斯马克"
-#   Q141200019 Ola Olsen Grøtheim: set the ja label to "オーラ・オルセン・グレートヘイム"
-Q141200019	Lja	"オーラ・オルセン・グレートヘイム"
-#   set the zh label to "乌拉·奥尔森·格勒特海姆"
-Q141200019	Lzh	"乌拉·奥尔森·格勒特海姆"
+#   Q141189104 Siri Kristine Ivarsdatter Garborg: set the ja label to "シーリ・クリスティーネ・イーヴァシュダッテル・ガルボルグ"
+Q141189104	Lja	"シーリ・クリスティーネ・イーヴァシュダッテル・ガルボルグ"
+#   set the zh label to "西丽·克丽丝汀·伊瓦斯达特·加尔博格"
+Q141189104	Lzh	"西丽·克丽丝汀·伊瓦斯达特·加尔博格"
 #   Q141189055 Astri Torkelsdatter Gilja: set the ja label to "アストリ・トルケルスダッテル・ギリヤ"
 Q141189055	Lja	"アストリ・トルケルスダッテル・ギリヤ"
 #   set the zh label to "阿斯特丽·托克尔斯达特·吉利亚"
 Q141189055	Lzh	"阿斯特丽·托克尔斯达特·吉利亚"
-#   Q141205932 Olof Timmerman: P40 child = Q141199704 Andreas Olofsson
+#   Q141205932 Olof Timmerman: P40 child = Q141199704 Andreas Olai
 Q141205932	P40	Q141199704	S2600	"6000000003125391522"
-#   Q141199819 Anna Andersdotter: P26 spouse = Q141199704 Andreas Olofsson
+#   Q141199819 Anna Andersdotter: P26 spouse = Q141199704 Andreas Olai
 Q141199819	P26	Q141199704	S2600	"6000000003125438035"
 #   set the ja label to "アンナ・アンデシュドッテル"
 Q141199819	Lja	"アンナ・アンデシュドッテル"
@@ -1112,18 +1110,18 @@ Q141178380	Lzh	"萨穆埃尔·永松·劳斯塔"
 Q141206082	Lja	"ヨン・オルソン・ラウスタード"
 #   set the zh label to "永·奥尔松·劳斯塔"
 Q141206082	Lzh	"永·奥尔松·劳斯塔"
-#   Q141198510 Tønnes Emil Enokson Rønneberg: set the ja label to "テンネス・エミール・エノクソン・レンネベルグ"
-Q141198510	Lja	"テンネス・エミール・エノクソン・レンネベルグ"
-#   set the zh label to "滕内斯·埃米尔·埃诺克松·伦内贝格"
-Q141198510	Lzh	"滕内斯·埃米尔·埃诺克松·伦内贝格"
+#   Q141198510 Tønnes Emil Enokson Ronneberg: set the ja label to "テンネス・エミール・エノクソン・ロンネベルグ"
+Q141198510	Lja	"テンネス・エミール・エノクソン・ロンネベルグ"
+#   set the zh label to "滕内斯·埃米尔·埃诺克松·龙内贝格"
+Q141198510	Lzh	"滕内斯·埃米尔·埃诺克松·龙内贝格"
 #   Q141152512 Eivind Aadnesson Garborg: set the ja label to "エイヴィン・オードネソン・ガルボルグ"
 Q141152512	Lja	"エイヴィン・オードネソン・ガルボルグ"
 #   set the zh label to "埃温·奥德内松·加尔博格"
 Q141152512	Lzh	"埃温·奥德内松·加尔博格"
-#   Q141152600 Stine Stena Eivindsdatter Garborg: set the ja label to "スティーネ・ステーナ・エイヴィンスダッテル・ガルボルグ"
-Q141152600	Lja	"スティーネ・ステーナ・エイヴィンスダッテル・ガルボルグ"
-#   set the zh label to "斯蒂内·斯泰娜·埃温斯达特·加尔博格"
-Q141152600	Lzh	"斯蒂内·斯泰娜·埃温斯达特·加尔博格"
+#   Q141152600 Stine Stena Eivindsdatter Jacobson: set the ja label to "スティーネ・ステーナ・エイヴィンスダッテル・ヤコブソン"
+Q141152600	Lja	"スティーネ・ステーナ・エイヴィンスダッテル・ヤコブソン"
+#   set the zh label to "斯蒂内·斯泰娜·埃温斯达特·雅各布松"
+Q141152600	Lzh	"斯蒂内·斯泰娜·埃温斯达特·雅各布松"
 #   Q141152614 Jon Eivindson Garborg: set the ja label to "ヨン・エイヴィンソン・ガルボルグ"
 Q141152614	Lja	"ヨン・エイヴィンソン・ガルボルグ"
 #   set the zh label to "永·埃温松·加尔博格"
@@ -1136,10 +1134,10 @@ Q141162040	Lzh	"萨穆埃尔·埃温森·加尔博格"
 Q141162041	Lja	"エーヴェン・エイヴィンソン・ガルボルグ"
 #   set the zh label to "埃文·埃温松·加尔博格"
 Q141162041	Lzh	"埃文·埃温松·加尔博格"
-#   Q141162043 Inger Marie Mary Eivindsdatter Garborg: set the ja label to "インゲル・マリー・メアリー・エイヴィンスダッテル・ガルボルグ"
-Q141162043	Lja	"インゲル・マリー・メアリー・エイヴィンスダッテル・ガルボルグ"
-#   set the zh label to "英厄尔·玛丽·玛丽·埃温斯达特·加尔博格"
-Q141162043	Lzh	"英厄尔·玛丽·玛丽·埃温斯达特·加尔博格"
+#   Q141162043 Inger Marie Mary Eivindsdatter Ronneberg: set the ja label to "インゲル・マリー・メアリー・エイヴィンスダッテル・ロンネベルグ"
+Q141162043	Lja	"インゲル・マリー・メアリー・エイヴィンスダッテル・ロンネベルグ"
+#   set the zh label to "英厄尔·玛丽·玛丽·埃温斯达特·龙内贝格"
+Q141162043	Lzh	"英厄尔·玛丽·玛丽·埃温斯达特·龙内贝格"
 #   Q141162044 Abel Eivindsen Garborg: set the ja label to "アーベル・エイヴィンセン・ガルボルグ"
 Q141162044	Lja	"アーベル・エイヴィンセン・ガルボルグ"
 #   set the zh label to "阿贝尔·埃温森·加尔博格"
@@ -1148,14 +1146,14 @@ Q141162044	Lzh	"阿贝尔·埃温森·加尔博格"
 Q141162045	Lja	"オーレ・エイヴィンセン・ガルボルグ"
 #   set the zh label to "奥勒·埃温森·加尔博格"
 Q141162045	Lzh	"奥勒·埃温森·加尔博格"
-#   Q141162046 Ane Oline Lena Eivindsdatter Garborg: set the ja label to "アーネ・オリーネ・レーナ・エイヴィンスダッテル・ガルボルグ"
-Q141162046	Lja	"アーネ・オリーネ・レーナ・エイヴィンスダッテル・ガルボルグ"
-#   set the zh label to "安内·奥利内·莱娜·埃温斯达特·加尔博格"
-Q141162046	Lzh	"安内·奥利内·莱娜·埃温斯达特·加尔博格"
-#   Q141169072 Ådne Olsen Grøtheim: set the ja label to "オードネ・オルセン・グレートヘイム"
-Q141169072	Lja	"オードネ・オルセン・グレートヘイム"
-#   set the zh label to "奥德内·奥尔森·格勒特海姆"
-Q141169072	Lzh	"奥德内·奥尔森·格勒特海姆"
+#   Q141162046 Ane Oline Lena Eivindsdatter Tunheim: set the ja label to "アーネ・オリーネ・レーナ・エイヴィンスダッテル・トゥンヘイム"
+Q141162046	Lja	"アーネ・オリーネ・レーナ・エイヴィンスダッテル・トゥンヘイム"
+#   set the zh label to "安内·奥利内·莱娜·埃温斯达特·通海姆"
+Q141162046	Lzh	"安内·奥利内·莱娜·埃温斯达特·通海姆"
+#   Q141169072 Ådne Olsen Garborg: set the ja label to "オードネ・オルセン・ガルボルグ"
+Q141169072	Lja	"オードネ・オルセン・ガルボルグ"
+#   set the zh label to "奥德内·奥尔森·加尔博格"
+Q141169072	Lzh	"奥德内·奥尔森·加尔博格"
 #   Q141178202 Stine Persdatter Øksnevad: set the ja label to "スティーネ・ペシュダッテル・エクスネヴァード"
 Q141178202	Lja	"スティーネ・ペシュダッテル・エクスネヴァード"
 #   set the zh label to "斯蒂内·佩斯达特·厄克斯内瓦"
@@ -1164,15 +1162,15 @@ Q141178202	Lzh	"斯蒂内·佩斯达特·厄克斯内瓦"
 Q141168833	Lja	"インゲボルグ・グーリエ・オードネスダッテル・ガルボルグ"
 #   set the zh label to "英厄堡·古里·奥德内斯达特·加尔博格"
 Q141168833	Lzh	"英厄堡·古里·奥德内斯达特·加尔博格"
-#   Q141168816 Elisabet Ådnesdatter Garborg: set the ja label to "エリサベート・オードネスダッテル・ガルボルグ"
-Q141168816	Lja	"エリサベート・オードネスダッテル・ガルボルグ"
-#   set the zh label to "伊丽莎白·奥德内斯达特·加尔博格"
-Q141168816	Lzh	"伊丽莎白·奥德内斯达特·加尔博格"
+#   Q141168816 Elisabet Ådnesdatter Bø: set the ja label to "エリサベート・オードネスダッテル・ベー"
+Q141168816	Lja	"エリサベート・オードネスダッテル・ベー"
+#   set the zh label to "伊丽莎白·奥德内斯达特·贝"
+Q141168816	Lzh	"伊丽莎白·奥德内斯达特·贝"
 #   Q141168955 Jon Samuelsen Raustad: set the ja label to "ヨン・サムエルセン・ラウスタード"
 Q141168955	Lja	"ヨン・サムエルセン・ラウスタード"
 #   set the zh label to "永·萨穆埃尔森·劳斯塔"
 Q141168955	Lzh	"永·萨穆埃尔森·劳斯塔"
-#   Q141199704 Andreas Olofsson: P22 father = Q141205932 Olof Timmerman
+#   Q141199704 Andreas Olai: P22 father = Q141205932 Olof Timmerman
 Q141199704	P22	Q141205932	S2600	"6000000004334566448"
 #   P25 mother = Q141205926 NN
 Q141199704	P25	Q141205926	S2600	"6000000004334566448"
@@ -1180,12 +1178,6 @@ Q141199704	P25	Q141205926	S2600	"6000000004334566448"
 Q141199704	P40	Q141200016	S2600	"6000000004334566448"
 #   P26 spouse = Q141199819 Anna Andersdotter
 Q141199704	P26	Q141199819	S2600	"6000000004334566448"
-#   Q633094 Johannes Tomasson: set the zh label to "约翰内斯·托马松"
-Q633094	Lzh	"约翰内斯·托马松"
-#   Q141180413 Thomas Mattsson: set the ja label to "トーマス・マットソン"
-Q141180413	Lja	"トーマス・マットソン"
-#   set the zh label to "托马斯·马特松"
-Q141180413	Lzh	"托马斯·马特松"
 #   Q110302791 Anna Fartegnsdatter Seim: set the ja label to "アンナ・ファルテグンスダッテル・セイム"
 Q110302791	Lja	"アンナ・ファルテグンスダッテル・セイム"
 #   set the zh label to "安娜·法尔特格恩斯达特·塞姆"
@@ -1210,14 +1202,10 @@ Q141189071	Lzh	"约伦·永斯达特·埃斯佩达尔"
 Q141178200	Lja	"インゲル・クリストッフェシュダッテル"
 #   set the zh label to "英厄尔·克里斯托弗斯达特"
 Q141178200	Lzh	"英厄尔·克里斯托弗斯达特"
-#   Q141180408 Jon Larsson Li: set the ja label to "ヨン・ラーション・リ"
-Q141180408	Lja	"ヨン・ラーション・リ"
-#   set the zh label to "永·拉尔松·李"
-Q141180408	Lzh	"永·拉尔松·李"
-#   Q141180412 Marta Rasmusdatter Høle: set the ja label to "マルタ・ラスムスダッテル・ヘーレ"
-Q141180412	Lja	"マルタ・ラスムスダッテル・ヘーレ"
-#   set the zh label to "玛尔塔·拉斯穆斯达特·赫勒"
-Q141180412	Lzh	"玛尔塔·拉斯穆斯达特·赫勒"
+#   Q141180412 Marta Rasmusdatter Li: set the ja label to "マルタ・ラスムスダッテル・リ"
+Q141180412	Lja	"マルタ・ラスムスダッテル・リ"
+#   set the zh label to "玛尔塔·拉斯穆斯达特·李"
+Q141180412	Lzh	"玛尔塔·拉斯穆斯达特·李"
 #   Q19842232 Algot Bryniolfsson: P26 spouse = Q141198447 Kristina Tolvesdotter Näs
 Q19842232	P26	Q141198447	S2600	"6000000005795638082"
 #   set the ja label to "アルゴット・ブリニオルフソン"
@@ -1226,11 +1214,11 @@ Q19842232	Lja	"アルゴット・ブリニオルフソン"
 Q19842232	Lzh	"阿尔戈特·布吕尼奥尔夫松"
 #   Q141198381 Bengt Hafridsson Lejon: P40 child = Q5588874 Bryniolf Bengtsson (Hafridssons ätt)
 Q141198381	P40	Q5588874	S2600	"6000000005795638104"
-#   Q141180409 Magdalena Andersdotter Bure: set the ja label to "マグダレーナ・アンデシュドッテル・ブーレ"
-Q141180409	Lja	"マグダレーナ・アンデシュドッテル・ブーレ"
-#   set the zh label to "玛格达莱娜·安德斯多特·布雷"
-Q141180409	Lzh	"玛格达莱娜·安德斯多特·布雷"
-#   Q141200016 Nils Andersson: P22 father = Q141199704 Andreas Olofsson
+#   Q141180409 Magdalena Andersdotter: set the ja label to "マグダレーナ・アンデシュドッテル"
+Q141180409	Lja	"マグダレーナ・アンデシュドッテル"
+#   set the zh label to "玛格达莱娜·安德斯多特"
+Q141180409	Lzh	"玛格达莱娜·安德斯多特"
+#   Q141200016 Nils Andersson: P22 father = Q141199704 Andreas Olai
 Q141200016	P22	Q141199704	S2600	"6000000006127859612"
 #   Q141168811 Eivind Garborg: set the ja label to "エイヴィン・ガルボルグ"
 Q141168811	Lja	"エイヴィン・ガルボルグ"
@@ -1240,10 +1228,10 @@ Q141168811	Lzh	"埃温·加尔博格"
 Q141198499	Lja	"ソルヴェイグ・ガルボルグ"
 #   set the zh label to "索尔维格·加尔博格"
 Q141198499	Lzh	"索尔维格·加尔博格"
-#   Q141199881 Ivar Garborg: set the ja label to "イーヴァル・ガルボルグ"
-Q141199881	Lja	"イーヴァル・ガルボルグ"
-#   set the zh label to "伊瓦尔·加尔博格"
-Q141199881	Lzh	"伊瓦尔·加尔博格"
+#   Q141199881 Ivar Sandsmark Garborg: set the ja label to "イーヴァル・サンスマルク・ガルボルグ"
+Q141199881	Lja	"イーヴァル・サンスマルク・ガルボルグ"
+#   set the zh label to "伊瓦尔·桑斯马克·加尔博格"
+Q141199881	Lzh	"伊瓦尔·桑斯马克·加尔博格"
 #   Q141198489 Sigrid Garborg: set the ja label to "シーグリ・ガルボルグ"
 Q141198489	Lja	"シーグリ・ガルボルグ"
 #   set the zh label to "西格丽·加尔博格"
@@ -1256,24 +1244,24 @@ Q141168792	Lzh	"阿斯特丽德·加尔博格"
 Q141168837	Lja	"インゲブレート・ガルボルグ"
 #   set the zh label to "英厄布雷特·加尔博格"
 Q141168837	Lzh	"英厄布雷特·加尔博格"
-#   Q141168830 Ingeborg Garborg: set the ja label to "インゲボルグ・ガルボルグ"
-Q141168830	Lja	"インゲボルグ・ガルボルグ"
-#   set the zh label to "英厄堡·加尔博格"
-Q141168830	Lzh	"英厄堡·加尔博格"
+#   Q141168830 Ingeborg Talle: set the ja label to "インゲボルグ・タッレ"
+Q141168830	Lja	"インゲボルグ・タッレ"
+#   set the zh label to "英厄堡·塔勒"
+Q141168830	Lzh	"英厄堡·塔勒"
 #   Q141168954 Jon Garborg: set the ja label to "ヨン・ガルボルグ"
 Q141168954	Lja	"ヨン・ガルボルグ"
 #   set the zh label to "永·加尔博格"
 Q141168954	Lzh	"永·加尔博格"
-#   Q141205926 NN: P40 child = Q141199704 Andreas Olofsson
+#   Q141205926 NN: P40 child = Q141199704 Andreas Olai
 Q141205926	P40	Q141199704	S2600	"6000000006828575883"
 #   Q141189069 Ingeborg Ådnesdatter Grøtheim: set the ja label to "インゲボルグ・オードネスダッテル・グレートヘイム"
 Q141189069	Lja	"インゲボルグ・オードネスダッテル・グレートヘイム"
 #   set the zh label to "英厄堡·奥德内斯达特·格勒特海姆"
 Q141189069	Lzh	"英厄堡·奥德内斯达特·格勒特海姆"
-#   Q141189108 Tillie Betsy Tunheim: set the ja label to "ティリー・ベッツィ・トゥンヘイム"
-Q141189108	Lja	"ティリー・ベッツィ・トゥンヘイム"
-#   set the zh label to "蒂莉·贝齐·通海姆"
-Q141189108	Lzh	"蒂莉·贝齐·通海姆"
+#   Q141199830 Anna Rasmusdatter Grøtheim: set the ja label to "アンナ・ラスムスダッテル・グレートヘイム"
+Q141199830	Lja	"アンナ・ラスムスダッテル・グレートヘイム"
+#   set the zh label to "安娜·拉斯穆斯达特·格勒特海姆"
+Q141199830	Lzh	"安娜·拉斯穆斯达特·格勒特海姆"
 #   Q141178201 Marie Petrine Simensdatter Bergersen: set the ja label to "マリー・ペトリーネ・シメンスダッテル・ベルゲルセン"
 Q141178201	Lja	"マリー・ペトリーネ・シメンスダッテル・ベルゲルセン"
 #   set the zh label to "玛丽·佩特里内·西门斯达特·贝格尔森"
@@ -1290,18 +1278,12 @@ Q101247444	P26	Q5588874	S2600	"6000000011239201122"
 Q101247444	Lja	"インゲゲルド・スヴァンテポルクスドッテル"
 #   set the zh label to "英格格德·斯万特波尔克斯多特"
 Q101247444	Lzh	"英格格德·斯万特波尔克斯多特"
+#   Q141205924 N.N. Aukland: P734 family name = Q4821650 Aukland
+Q141205924	P734	Q4821650
 #   Q141180410 Margareta Mårtensdotter Bång: set the ja label to "マルガレータ・モーテンスドッテル・ボング"
 Q141180410	Lja	"マルガレータ・モーテンスドッテル・ボング"
 #   set the zh label to "玛格丽塔·莫滕斯多特·邦格"
 Q141180410	Lzh	"玛格丽塔·莫滕斯多特·邦格"
-#   Q141189112 Wilhelmine Sophie Bergersen: set the ja label to "ヴィルヘルミーネ・ソフィー・ベルゲルセン"
-Q141189112	Lja	"ヴィルヘルミーネ・ソフィー・ベルゲルセン"
-#   set the zh label to "威廉明妮·索菲·贝格尔森"
-Q141189112	Lzh	"威廉明妮·索菲·贝格尔森"
-#   Q141189083 Martha Elida Bergersen: set the ja label to "マルタ・エリーダ・ベルゲルセン"
-Q141189083	Lja	"マルタ・エリーダ・ベルゲルセン"
-#   set the zh label to "玛尔塔·埃利达·贝格尔森"
-Q141189083	Lzh	"玛尔塔·埃利达·贝格尔森"
 #   Q141205940 Simen Olsen: set the ja label to "シーメン・オルセン"
 Q141205940	Lja	"シーメン・オルセン"
 #   set the zh label to "西门·奥尔森"
@@ -1310,26 +1292,22 @@ Q141205940	Lzh	"西门·奥尔森"
 Q141178199	Lja	"グンデル・ベルゲルセン"
 #   set the zh label to "贡德尔·贝格尔森"
 Q141178199	Lzh	"贡德尔·贝格尔森"
-#   Q141198428 Jacob Johannessen Aabø: set the ja label to "ヤコブ・ヨハンネセン・オーベー"
-Q141198428	Lja	"ヤコブ・ヨハンネセン・オーベー"
-#   set the zh label to "雅各布·约翰内森·奥贝"
-Q141198428	Lzh	"雅各布·约翰内森·奥贝"
+#   Q141198428 Jacob Johannessen Jacobson: set the ja label to "ヤコブ・ヨハンネセン・ヤコブソン"
+Q141198428	Lja	"ヤコブ・ヨハンネセン・ヤコブソン"
+#   set the zh label to "雅各布·约翰内森·雅各布松"
+Q141198428	Lzh	"雅各布·约翰内森·雅各布松"
 #   Q141189084 Martin Tollefson Tunheim: set the ja label to "マルティン・トレフソン・トゥンヘイム"
 Q141189084	Lja	"マルティン・トレフソン・トゥンヘイム"
 #   set the zh label to "马丁·托勒夫松·通海姆"
 Q141189084	Lzh	"马丁·托勒夫松·通海姆"
-#   Q141199930 Knut Olsen Grøtheim: set the ja label to "クヌート・オルセン・グレートヘイム"
-Q141199930	Lja	"クヌート・オルセン・グレートヘイム"
-#   set the zh label to "克努特·奥尔森·格勒特海姆"
-Q141199930	Lzh	"克努特·奥尔森·格勒特海姆"
 #   Q141180395 Maren Gulbrandsdatter Ommestad: set the ja label to "マーレン・グルブランスダッテル・オンメスタード"
 Q141180395	Lja	"マーレン・グルブランスダッテル・オンメスタード"
 #   set the zh label to "马伦·古尔布兰斯达特·翁梅斯塔德"
 Q141180395	Lzh	"马伦·古尔布兰斯达特·翁梅斯塔德"
-#   Q141168784 Aagot Garborg: set the ja label to "オーゴット・ガルボルグ"
-Q141168784	Lja	"オーゴット・ガルボルグ"
-#   set the zh label to "奥高特·加尔博格"
-Q141168784	Lzh	"奥高特·加尔博格"
+#   Q141168784 Aagot Wendt: set the ja label to "オーゴット・ヴェント"
+Q141168784	Lja	"オーゴット・ヴェント"
+#   set the zh label to "奥高特·温特"
+Q141168784	Lzh	"奥高特·温特"
 #   Q141199909 Karen Sophie Pedersdatter: set the ja label to "カーレン・ソフィー・ペーデシュダッテル"
 Q141199909	Lja	"カーレン・ソフィー・ペーデシュダッテル"
 #   set the zh label to "卡伦·索菲·佩德斯达特"
@@ -1338,50 +1316,42 @@ Q141199909	Lzh	"卡伦·索菲·佩德斯达特"
 Q138474188	Lja	"ハンス・シーヴェシェン・ニーヴォル"
 #   set the zh label to "汉斯·西韦特森·尼沃尔"
 Q138474188	Lzh	"汉斯·西韦特森·尼沃尔"
-#   Q141168785 Aagot Nyvold: set the ja label to "オーゴット・ニーヴォル"
-Q141168785	Lja	"オーゴット・ニーヴォル"
-#   set the zh label to "奥高特·尼沃尔"
-Q141168785	Lzh	"奥高特·尼沃尔"
-#   Q141168803 Dagny Nyvold: set the ja label to "ダグニー・ニーヴォル"
-Q141168803	Lja	"ダグニー・ニーヴォル"
-#   set the zh label to "达格妮·尼沃尔"
-Q141168803	Lzh	"达格妮·尼沃尔"
-#   Q141178197 Elisabeth Johannesen: set the ja label to "エリーサベト・ヨハンネセン"
-Q141178197	Lja	"エリーサベト・ヨハンネセン"
-#   set the zh label to "伊丽莎白·约翰内森"
-Q141178197	Lzh	"伊丽莎白·约翰内森"
-#   Q141189081 Lotte Birgithe Gustava Jonasdatter Heigre: set the ja label to "ロッテ・ビルギーテ・グスタヴァ・ヨナスダッテル・ヘイグレ"
-Q141189081	Lja	"ロッテ・ビルギーテ・グスタヴァ・ヨナスダッテル・ヘイグレ"
-#   set the zh label to "洛特·比尔吉特·古斯塔娃·约纳斯达特·海格勒"
-Q141189081	Lzh	"洛特·比尔吉特·古斯塔娃·约纳斯达特·海格勒"
+#   Q141168785 Aagot Garborg: set the ja label to "オーゴット・ガルボルグ"
+Q141168785	Lja	"オーゴット・ガルボルグ"
+#   set the zh label to "奥高特·加尔博格"
+Q141168785	Lzh	"奥高特·加尔博格"
+#   Q141168803 Dagny Garborg: set the ja label to "ダグニー・ガルボルグ"
+Q141168803	Lja	"ダグニー・ガルボルグ"
+#   set the zh label to "达格妮·加尔博格"
+Q141168803	Lzh	"达格妮·加尔博格"
+#   Q141178197 Elisabeth Nyvold: set the ja label to "エリーサベト・ニーヴォル"
+Q141178197	Lja	"エリーサベト・ニーヴォル"
+#   set the zh label to "伊丽莎白·尼沃尔"
+Q141178197	Lzh	"伊丽莎白·尼沃尔"
 #   Q141180406 Ingeborg Gyntesdotter: set the ja label to "インゲボルグ・ギュンテスドッテル"
 Q141180406	Lja	"インゲボルグ・ギュンテスドッテル"
 #   set the zh label to "英厄堡·金特斯多特"
 Q141180406	Lzh	"英厄堡·金特斯多特"
-#   Q141189076 Kristian Larsen Nord-Varhaug: set the ja label to "クリスティアン・ラーシェン・ノール・ヴァールハウグ"
-Q141189076	Lja	"クリスティアン・ラーシェン・ノール・ヴァールハウグ"
-#   set the zh label to "克里斯蒂安·拉尔森·诺尔·瓦尔豪格"
-Q141189076	Lzh	"克里斯蒂安·拉尔森·诺尔·瓦尔豪格"
-#   Q141198472 Olga E. Tunheim: set the ja label to "オルガ・E.・トゥンヘイム"
-Q141198472	Lja	"オルガ・E.・トゥンヘイム"
-#   set the zh label to "奥尔加·E.·通海姆"
-Q141198472	Lzh	"奥尔加·E.·通海姆"
+#   Q141189076 Kristian Larsen Sør-Reime: set the ja label to "クリスティアン・ラーシェン・セール・レイメ"
+Q141189076	Lja	"クリスティアン・ラーシェン・セール・レイメ"
+#   set the zh label to "克里斯蒂安·拉尔森·瑟尔·雷梅"
+Q141189076	Lzh	"克里斯蒂安·拉尔森·瑟尔·雷梅"
 #   Q141169062 Thoralf Tunheim: set the ja label to "トーラルフ・トゥンヘイム"
 Q141169062	Lja	"トーラルフ・トゥンヘイム"
 #   set the zh label to "托拉尔夫·通海姆"
 Q141169062	Lzh	"托拉尔夫·通海姆"
-#   Q141168801 Cora Estelle Tunheim: set the ja label to "コーラ・エステル・トゥンヘイム"
-Q141168801	Lja	"コーラ・エステル・トゥンヘイム"
-#   set the zh label to "科拉·埃斯特尔·通海姆"
-Q141168801	Lzh	"科拉·埃斯特尔·通海姆"
+#   Q141168801 Cora Estelle Pierson: set the ja label to "コーラ・エステル・ピアソン"
+Q141168801	Lja	"コーラ・エステル・ピアソン"
+#   set the zh label to "科拉·埃斯特尔·皮尔森"
+Q141168801	Lzh	"科拉·埃斯特尔·皮尔森"
 #   Q141168809 Edward Tunheim: set the ja label to "エドワード・トゥンヘイム"
 Q141168809	Lja	"エドワード・トゥンヘイム"
 #   set the zh label to "爱德华·通海姆"
 Q141168809	Lzh	"爱德华·通海姆"
-#   Q141168787 Alma Matilda Tunheim: set the ja label to "アルマ・マチルダ・トゥンヘイム"
-Q141168787	Lja	"アルマ・マチルダ・トゥンヘイム"
-#   set the zh label to "阿尔玛·玛蒂尔达·通海姆"
-Q141168787	Lzh	"阿尔玛·玛蒂尔达·通海姆"
+#   Q141168787 Alma Matilda Bring Iverson: set the ja label to "アルマ・マチルダ・ブリング・イーヴェション"
+Q141168787	Lja	"アルマ・マチルダ・ブリング・イーヴェション"
+#   set the zh label to "阿尔玛·玛蒂尔达·布林·艾弗森"
+Q141168787	Lzh	"阿尔玛·玛蒂尔达·布林·艾弗森"
 #   Q141169041 Olaf Tunheim: set the ja label to "オーラフ・トゥンヘイム"
 Q141169041	Lja	"オーラフ・トゥンヘイム"
 #   set the zh label to "奥拉夫·通海姆"
@@ -1426,14 +1396,18 @@ Q141168788	Lzh	"阿尔内·加尔博格·通海姆"
 Q141180396	Lja	"トッレヴ・トレフソン・トゥンヘイム"
 #   set the zh label to "托勒夫·托勒夫松·通海姆"
 Q141180396	Lzh	"托勒夫·托勒夫松·通海姆"
-#   Q141168794 Betsy Jacobson: set the ja label to "ベッツィ・ヤコブソン"
-Q141168794	Lja	"ベッツィ・ヤコブソン"
-#   set the zh label to "贝齐·雅各布松"
-Q141168794	Lzh	"贝齐·雅各布松"
+#   Q141168794 Betsy Tunheim: set the ja label to "ベッツィ・トゥンヘイム"
+Q141168794	Lja	"ベッツィ・トゥンヘイム"
+#   set the zh label to "贝齐·通海姆"
+Q141168794	Lzh	"贝齐·通海姆"
 #   Q141189101 Samuel Tunheim: set the ja label to "サムエル・トゥンヘイム"
 Q141189101	Lja	"サムエル・トゥンヘイム"
 #   set the zh label to "萨穆埃尔·通海姆"
 Q141189101	Lzh	"萨穆埃尔·通海姆"
+#   Q141199952 Marie Garborg: set the ja label to "マリー・ガルボルグ"
+Q141199952	Lja	"マリー・ガルボルグ"
+#   set the zh label to "玛丽·加尔博格"
+Q141199952	Lzh	"玛丽·加尔博格"
 #   Q141189062 Cecilie Jonsdatter: set the ja label to "セシリエ・ヨンスダッテル"
 Q141189062	Lja	"セシリエ・ヨンスダッテル"
 #   set the zh label to "塞西莉厄·永斯达特"

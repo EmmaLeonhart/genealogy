@@ -4282,8 +4282,13 @@ def main():
                 # `P734` statements carrying different `P3831` roles (`Q2507958` birth name,
                 # `Q28418670` married name). Overwriting it there would put the married form
                 # into both slots and lose the distinction the name model is built on.
-                _married = (row.get("aliases_from_married_name") or "").split(" | ")[0].strip()
-                referred_to_as[row["geni_id"]] = _married or raw_label
+                # `derive-labels.py` now emits the MARRIED form as `label_en`/`label_mul`,
+                # so `raw_label` already is the name a relative should be called by. The
+                # dict stays as the seam: it is what `describe_all` reads, and keeping it
+                # separate from `labels` is still right, because `labels` feeds
+                # `name_lines` where birth and married surnames are two DIFFERENT `P734`
+                # statements (`Q2507958` birth name, `Q28418670` married name).
+                referred_to_as[row["geni_id"]] = raw_label
 
     # **The GEDCOM name FIELDS, which is where name objects come from.** Emma,
     # 2026-08-24: *"I thought we were resolving name objects but now we're determining

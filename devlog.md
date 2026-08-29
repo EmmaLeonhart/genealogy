@@ -17477,3 +17477,42 @@ different `P3831` roles -- `Q2507958` *birth name* and `Q28418670` *married name
 `labels` would have collapsed both into the married form and destroyed the distinction the whole
 name model rests on. Verified: 0 descriptive labels now name a birth form that has a married
 variant.
+
+## 2026-08-29 — the married name is now the primary label, everywhere at once
+
+Emma, ruling on whether `derived-labels.csv` should be inverted: *"absolutely, definitively,
+without a doubt, yes... I don't know what I actually even want to use the birth names of the women
+here. I feel like the only thing that I think has any business actually using the birth name is
+the alias thing and certain things specifically related to attaching names, like attaching the
+birth name vs. the surname."* And: *"the pipeline is so broken with married names right now that
+it's kind of worth just doing any of this stuff."*
+
+**The audit she asked for first.** 57 scripts read `derived-labels.csv`, not the 44 she remembered.
+**48 read `label_en`/`label_mul`** — so flipping at the source reaches all of them in one change.
+**Only 4 read `aliases_from_married_name` at all**: `derive-labels.py`, `build-garborg-day.py`,
+`build-edit-objects.py`, `build-charlemagne-ancestry.py`. The other 53 had never seen a married
+name. Her instinct that too many things read this file is well founded and is a separate refactor.
+
+**The change.** `derive-labels.py` now emits the married form as `label_en`/`label_mul` and puts
+the birth form in the alias column, which is renamed `alias_names` because
+`aliases_from_married_name` became a lie about its own contents. **251,707 labels changed.**
+A hand correction from `entity_resolution.md` still outranks both.
+
+**It fixes the CJK complaint as a side effect, and that is the whole point of fixing it at source.**
+`ja`/`zh` are transliterated from `label_mul`, so every married woman was being rendered into
+Japanese and Chinese under her birth name. Nothing about the transliterator was wrong — it was
+handed the wrong string. Her words: *"the CJK names are being put in the birth name form, which is
+just basically a matter of you kind of refusing to."*
+
+**Verified against the two cases she raised.** `Mona Beth Tunheim` → **`Mona Beth Carney Castro`**,
+which is the correction she had already made by hand on `Q141205933`'s label. `Thelma Geraldine
+Ekman` → **`Thelma Geraldine Bagby`**, which is what the creation path had been emitting all along —
+so the two halves of the pipeline now agree.
+
+**One thing she should know before it runs, stated rather than quietly hedged.** Of the 251,707,
+**185,426 are women and 66,235 are men**. `CLAUDE.md` § *`SURN` is not reliably a surname* measured
+53% of differing `_MARNM` values as male, and the male cases are visibly not marriages —
+`Trond Eriksen Lunde` → `Steinde-Brekke`, `Agust* Waldemar Widerberg` → `Wiberg`, and
+`Jeanne LeBaveux` → `La Baveuse` is a spelling variant rather than a marriage at all. The flip was
+applied to everyone because that is what she asked for; restricting it to `sex=F` is a one-line
+change if she wants it.

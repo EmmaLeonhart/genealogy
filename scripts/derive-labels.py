@@ -186,20 +186,53 @@ def main() -> int:
         else:
             coverage["no usable name at all"] += 1
 
+        # **THE MARRIED NAME IS THE PRIMARY LABEL. The birth name is an alias.**
+        #
+        # Emma, 2026-08-29: *"I don't know what I actually even want to use the birth names
+        # of the women here. I feel like the only thing that I think has any business
+        # actually using the birth name is the alias thing and certain things specifically
+        # related to attaching names, like attaching the birth name vs. the surname."*
+        # And: *"the pipeline is so broken with married names right now that it's kind of
+        # worth just doing any of this stuff."*
+        #
+        # This file used to emit the BIRTH form as `label_en`/`label_mul` and push the
+        # married form into an alias column -- 251,707 people, 185,426 of them women. That
+        # is backwards from `CLAUDE.md` § *The MARRIED name is the real name*, and it made
+        # this file disagree with `build-garborg-day.py`, which recomputes from raw
+        # `SURN`/`_MARNM` and had it right: one run created a woman as
+        # `Thelma Geraldine Bagby` while calling a man "husband of Mona Beth Tunheim".
+        #
+        # **It also fixes the CJK complaint, which was the same bug wearing a hat.** The
+        # `ja`/`zh` labels are transliterated from `label_mul`, so every woman was being
+        # rendered into Japanese and Chinese under her BIRTH name. Nothing about the
+        # transliterator was wrong; it was handed the wrong string.
+        #
+        # **A hand correction still outranks everything.** `entity_resolution.md` carries
+        # names nothing here could reconstruct, and § *Emma edits the tree BY HAND* makes
+        # those decisions rather than drift -- so a corrected name stays primary and the
+        # married form, if any, stays an alias beside it.
+        birth = latin[0] if latin else ""
+        married = aliases[0] if aliases else ""
+        if correction or not married:
+            primary, alias_out = birth, list(aliases)
+        else:
+            primary = married
+            alias_out = ([birth] if birth else []) + aliases[1:]
+
         rows.append([
             geni_id,
             qid,
-            # en and mul both come from the Latin name, suffix included.
-            latin[0] if latin else "",
-            latin[0] if latin else "",
+            # en and mul are the same string: the married form where there is one.
+            primary,
+            primary,
             " | ".join(latin[1:]),
             " | ".join(cjk),
             " | ".join(other + mixed),
-            " | ".join(aliases),
+            " | ".join(alias_out),
             len(records),
             wd_en,
             wd_mul,
-            "yes" if (wd_en and latin and wd_en == latin[0]) else "no",
+            "yes" if (wd_en and primary and wd_en == primary) else "no",
         ])
 
     OUT_CSV.parent.mkdir(parents=True, exist_ok=True)
@@ -207,7 +240,7 @@ def main() -> int:
         writer = csv.writer(handle)
         writer.writerow([
             "geni_id", "qid", "label_en", "label_mul", "further_latin_names",
-            "cjk_names", "other_script_names", "aliases_from_married_name",
+            "cjk_names", "other_script_names", "alias_names",
             "name_records", "wikidata_en", "wikidata_mul", "matches_wikidata_en",
         ])
         writer.writerows(rows)

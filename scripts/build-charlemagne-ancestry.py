@@ -21,7 +21,7 @@ consequences, both handled explicitly rather than papered over:
 2. **The married name is why the lookup needs every rendering.** Geni's panel
    renders a woman under her husband's surname: Reinhert's mother is
    `Rakel Rasmusdottir Borsheim` there and `Rakel Rasmusdottir Lea` in the
-   export, with `Borsheim` in `aliases_from_married_name`. Comparing `label_en`
+   export, with `Borsheim` in `alias_names`. Comparing `label_en`
    alone declared the whole line absent at step 4 with 33 further steps sitting
    right there.
 
@@ -111,7 +111,7 @@ def renderings_of(row: dict) -> list[str]:
     """Every name this repo holds for a person, married names included."""
     out: list[str] = []
     for field in ("label_en", "label_mul", "further_latin_names",
-                  "aliases_from_married_name"):
+                  "alias_names"):
         for part in (row.get(field) or "").split(" | "):
             if part.strip():
                 out.append(part.strip())
