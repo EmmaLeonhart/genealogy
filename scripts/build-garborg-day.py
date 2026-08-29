@@ -878,6 +878,9 @@ NEVER_TOUCH_GENI = {
     "6000000227335430822",
     "6000000227335430827",
 }
+#: Her own Wikidata item. Named so the kluge can exclude it by meaning.
+EMMA_QID = "Q140568870"
+
 NEVER_TOUCH_QID = {
     "Q140568870",                   # Emma Leonhart
     "Q135579416",
@@ -999,7 +1002,21 @@ def kluge_blocked_from_universe():
     drift apart -- there is one list of these people in this file, not two.
     """
     clan = set(re.findall(r"^(Q\d+)", CJK_CLAN_BLOCK, re.M))
-    return set(KLUGE_UNIVERSE_BLOCK) | clan
+
+    # **Emma, 2026-08-29:** *"just add every single kitajima person into the klug too. It's
+    # better to include more people in it."*  So the Kitajima/Kitashima family joins, taken
+    # from `NEVER_TOUCH_QID` rather than restated.
+    #
+    # **Her own item is deliberately NOT here.** `NEVER_TOUCH_QID` holds `Q140568870` alongside
+    # them, and she is not a Kitajima -- blocking her from the universe is a separate decision
+    # about her own duplicates, which is hers to make and not implied by this instruction.
+    #
+    # The 25 ids in `NEVER_TOUCH_GENI` add nothing: **0 of them resolve to a QID** in
+    # `out/wikidata/p2600-all.tsv`, because these items carry no `P2600` at all -- which is
+    # the same blind spot that let them be created in the first place.
+    kitajima = {q for q in NEVER_TOUCH_QID if q != EMMA_QID}
+
+    return set(KLUGE_UNIVERSE_BLOCK) | clan | kitajima
 
 #: The date the block above stops applying. After this, `wikidata_subgraph` ignores it.
 KLUGE_UNIVERSE_BLOCK_EXPIRES = datetime.date(2026, 10, 1)

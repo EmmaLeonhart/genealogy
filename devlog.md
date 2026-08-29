@@ -18940,3 +18940,23 @@ labelling proceeds as planned. Verified after the change: block 181 people, subg
 `NEVER_TOUCH_GENI`'s Kitajima/Kitashima family. It is not: `CJK_CLAN_BLOCK` holds 178 real
 people labelled *"woman of the Li clan, from Longxi Didao"*, and they are the ones whose
 *labelling* is scheduled for September -- which is the half of her sentence that picks the set.
+
+## 2026-08-29 — the Kitajima family joins the kluge. 201 people blocked
+
+**Emma:** *"just add every single kitajima person into the klug too. It's better to include more
+people in it."* So `kluge_blocked_from_universe()` is now **201**: 3 Buyeo + 178 CJK clan + the
+**20** Kitajima/Kitashima QIDs, taken from `NEVER_TOUCH_QID` rather than restated.
+
+**The 25 ids in `NEVER_TOUCH_GENI` add nothing, and the reason is the point.** 0 of them resolve
+to a QID in `out/wikidata/p2600-all.tsv` -- these items carry no `P2600` at all. That is the
+same blind spot that let them be created: a duplicate guard keyed on `P2600` cannot see an item
+that has none. So the Geni half of the never-touch list has no reachable Wikidata identity to
+block, and the 20 QIDs are the whole of what can be.
+
+**Her own `Q140568870` is deliberately excluded**, and `EMMA_QID` now names it so the exclusion
+reads as meaning rather than as a bare string. It sits in `NEVER_TOUCH_QID` beside the Kitajima
+people, but she is not one of them, and blocking her item from the universe is a separate
+decision about her own duplicates -- hers to make, not implied by this instruction.
+
+Verified: 201 blocked, subgraph **316** (unchanged), 0 blocked people inside it, roots intact,
+clan label block still 3,051 lines so September labelling is untouched.
