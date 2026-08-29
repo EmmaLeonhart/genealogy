@@ -18487,3 +18487,26 @@ and says to resubmit from the same seed if not — the seed is hers and still ex
 placeholder is needed.
 
 Moving on to the queue, as she asked.
+
+## 2026-08-29 — Lave is Lave Jonsen on Geni
+
+The open half of her 2026-08-28 item: *"I think this person
+https://www.wikidata.org/wiki/Q141189080 should be corrected to 'Lave Jonsen' in all languages and
+on geni. Just havin a first name is weird and has no rationale."* Wikidata was done that morning;
+this is Geni, unblocked once she connected the Chrome extension and said *"Open geni in browser to
+edit it lol"*.
+
+`6000000181444356836` now reads **Lave Jonsen** — title, URL slug and the relationship banner all
+show it. `Jonsen` went in the Last Name field, leaving Birth Surname empty.
+
+**The patronymic is corroborated twice over, which is worth recording because the whole point was
+that a bare given name has no rationale.** His father is `Jon Reinmodsen`, and his three siblings on
+the same page are **Jon Jonsen Lille**, **Cecilie Jonsdatter** and **Tøre Jonsen** — so `Jonsen` is
+not inferred from the father alone, it is the form his own siblings already carry.
+
+**Note the profile is managed by Flemming Riis, not her**, and Geni allowed the edit anyway because
+the profile is public. Worth knowing: the earlier export failure on Swentepolk was a *manager*
+restriction on exporting, not on editing, and the two permissions are separate.
+
+This changes nothing in our tree until an export reaches him and the merge is re-run —
+`CLAUDE.md` § *Correcting her own record in an export does nothing until the tree is re-merged*.

@@ -88,15 +88,6 @@ item is the record of what the campaign would be.
 
 That's the thing I potentially want to do as a campaign to make Jenny readable to everybody. For now, we're sticking to this being a primary Wikidata-based project, so we just do not add a label.
 
-### correcting "Lave" — the GENI half
-
-Wikidata is done: `reports/wikidata-lave-jonsen.qs` sets `mul`, `en`, `ja` and `zh` to
-*Lave Jonsen* and keeps *Lave* as an `Amul`. Patronymic checked against the live item — his
-father `Q116150299` is *Jon Reimatsen*.
-
-Still to do, her instruction: rename him on **Geni** too, profile `6000000181444356836`, so the
-next export carries it and our tree stops saying *Lave*.
-
 ## 1. THE MASS EXPORT CAMPAIGN — front task, RUNNING
 
 **`docs/mass-export-run.md` is the run sheet** — the four groups in her order, every Geni id, the
