@@ -18799,3 +18799,38 @@ whole point of refreshing the ledger inside the run rather than beside it.
 
 Also queued at the tail, without investigation: why `Q141205924`, *mother of Lars Gunnbjørnsen
 Mjølhus*, carries a non-normalised NN-style name in its `mul` label.
+
+## 2026-08-29 — `Q141198548` is Deokjang's wife, and I nearly called her a duplicate
+
+Emma stopped before running `Q141198548|Lko|"부여덕장"` because the item looked like a near-duplicate
+of `Q19657284` *Buyeo Deokjang*. She was right to stop, and I was wrong first: I told her it looked
+like one person entered twice on Geni and married to themselves. That was inferred from the names
+being similar, which is the reasoning this repo bans everywhere else.
+
+**Three rows of `derived-family.csv` settle it:**
+
+    …253  Buyeo Deokjang   father + mother, spouse …269, 3 children
+    …269  덕장 부여          spouse …253, THE SAME 3 children, NO parents
+    …286  Buyeo Taebi      father …253, mother …269
+
+Husband and wife with three shared children. She is the mother of Buyeo Taebi. Not a duplicate.
+
+**She carries his name because she has none of her own** — no parents, no separate name, an unnamed
+wife entered to hold the marriage with the husband's name written on her. That is the `NN`
+population, and `CLAUDE.md`'s algorithm covers it exactly: marker in `mul`, formulaic descriptions
+elsewhere from the nearest named relative.
+
+`reports/wikidata-q141198548-nn.qs`, sent: **`mul` = `NN Buyeo`** — Emma's call, the marker plus the
+house she married into, since 덕장 is his given name and 부여 is the part that is hers — and *wife of
+Buyeo Deokjang* in thirteen languages. The ten Latin ones come from
+`scripts/build-nn-label-batch.py`'s own table, imported rather than restated.
+
+**`ja`, `zh` and `ko` are emitted, which that table normally omits**, and the condition is the one
+`CLAUDE.md` states: they are excluded *"only because the relative's name is usually not
+transliterated — where it is, they are emitted."* Here it is. Emma supplied his labels herself —
+`ja`/`zh` 扶餘德璋, `ko` 부여덕장 — so 부여덕장의 아내 is the corrected form of the exact statement she
+was about to run.
+
+The general case is queued at the tail as a count, not a rule: how many people carry their spouse's
+name and have no parents. `_carries_marker` cannot see them, because the name contains no marker
+word.
