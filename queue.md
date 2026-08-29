@@ -1984,3 +1984,52 @@ Futohime label is handled — she asked for it in the clan block on 2026-08-29 a
 The three `P2600` statements were **not** written, and that is deliberate rather than pending: the
 nine pairs belong to her dictated item 11, whose method is to put the Wikidata link in each Geni
 bio and then run a `Forest` export per person, not to write `P2600` from here.
+
+## The 3am task, RECOVERED — the eight Asian identities: Geni bio links, then `Forest` exports
+
+**This was a cron scheduled for 03:00 on 2026-08-29 and it died with the crash.** Crons are
+session-only; the session ended 18:52 on 08-28 and the job never fired. Her own instruction
+already anticipated exactly this — *"For all of the cron jobs that I set up in the session... also
+add them into the queue as actual items... so they get crossed off if the cron job finishes, but
+are a bit more stable."* Recovered from the transcript, not reconstructed from memory.
+
+**Her ruling, and it answers "are these in other logic?" — yes.** Every one of the nine pairs
+except herself is an Asian identity she *"put a lot of effort into creating identification with"*,
+for a different algorithmic purpose related to the synoptic tree. So the `P2600` statements are
+**not** to be hand-written from `entity_resolution.md`; this method supersedes it for these people:
+*"I actually have an updated way of doing these things. Go on to Geni using the browser extension
+thing, and essentially, in all their BIOS, add the link to the wikidata item. Doing that
+establishes the identity resolution in a way that does not harm our algorithm."*
+
+**The eight** (everyone but her): `Q11596350` Wakatakehiko · `Q11078587` Harima no Inabi no
+Ōiratsume · `Q11443857` Futohime Mononobe · `Q24890131` Ikofutsu Mononobe · `Q19657284` Buyeo
+Deokjang · `Q12598947` Taebi Buyeo · `Q135579480` Yasutaka Kitajima · `Q135579474` Tokitaka
+Kitajima.
+
+**Order is hers and is not an optimisation:** *"you have to do it in the step of changing all the
+bios first and then doing all the exports because I want all the bios in already."*
+
+- **Bios first, all eight.** Open each Geni profile with Chrome automation, paste the Wikidata item
+  URL into the bio, save. Several probably have it already — *"I'm going to guess a lot of these
+  people have the link in already"* — so check before editing. Report exactly which profiles were
+  edited; this is an outward change to her own data, authorised here and nowhere wider.
+- **Then a `Forest` export each**, on the individual if Geni allows it, otherwise from a seed
+  profile per `docs/export-seed-rules.md`. Success is the individual appearing in the file. Even
+  where the bio link was already present: *"for safety, we're still going to do the forest exports
+  on these people."*
+- **File them for the post-merge/overwrite stage.** Her framing: the synoptic build joins the trees
+  and then overwrites with the post-merge thing. `exports/post-merge/` exists and is probably the
+  home — confirm rather than assume, and § *Never overwrite an existing `.ged`* applies.
+- **A redirected id is simply the thing it redirects to** — *"If one of these IDs redirects to
+  another thing, you just treat that as being the thing."*
+
+**Half one of the same ruling: her own entry comes out of `entity_resolution.md`.** That pair is
+the only reason `Q140568870` is in `have` — she is not in `reports/garborg-qids.tsv` — and it is the
+mechanism behind the 2026-08-27 batch that wrote `Q140568870 P22 LAST` and attached her to the world
+tree. **She said she will do it herself** (§ *Her own duplicates are DELIBERATE*), so do not. What
+*is* ours: after it goes, confirm `paths/bergitte-to-emma.tsv` step 1 does not become a `CREATE` —
+`NEVER_TOUCH_*` should refuse it — and verify by running `--compose` and reading the output rather
+than by reasoning about it.
+
+Rails: grep the corpus before each export and put the number in the commit message; one export at a
+time; do not analyse or diff them; every `.ged` committed, zips gitignored one line each.
