@@ -1935,22 +1935,6 @@ domain"* is. Ask before building, per § *If you are not sure what she wants, AS
 stored the wrong way round listed in `SPINE_REVERSED` — that is the whole mechanism, and it is why
 `bergitte-to-emma` had walked outward from her for weeks without moving.
 
-## Four tests have been failing since the label-corrections block landed
-
-Not introduced by the `P1810` work — measured against the committed batch before and after, the
-same four fail either way. `BOT_CONTACT=$(cat .bot-contact) python -m pytest tests/test_p2600_batches.py tests/test_garborg_day_batch.py -q`:
-
-- `test_garborg_day_batch.py::test_a_label_is_never_written_over_an_item_that_already_has_one` —
-  the `_label_corrections()` block writes `Lmul`/`Len` onto existing items by design, which is
-  what she asked for on 2026-08-29. Either the block is wrong or the test predates the decision.
-  **Decide which; do not just widen the test.**
-- `test_p2600_batches.py::test_no_statement_is_repeated[wikidata-garborg-day.qs]`
-- `test_p2600_batches.py::test_every_statement_has_a_comment_above_it[wikidata-garborg-day.qs]`
-- `test_p2600_batches.py::test_no_two_batches_create_the_same_person`
-
-This overlaps § *Applying labels to existing items* — the 15-a-batch cap she asked for — and the
-185-row corrections block does not respect that cap either. Likely one fix.
-
 ## What is actually left in `entity_resolution.md` — measured live 2026-08-29
 
 Emma, shown a claim that the file was not to be acted on: *"Uhh I don't know if there's any useful

@@ -18250,3 +18250,29 @@ is only to find entities in searches"*.
 
 `Guri Pedersdtr.Foss Foss` — surname doubled — is a real defect in `aliases_for`, from a `P1449`
 nickname that is itself a whole name. Queued, not fixed here.
+
+## 2026-08-29 — "If I added the label we can overwrite it"
+
+Put to her as an `AskUserQuestion`, because the test and her instruction were in direct conflict
+and narrowing a correct test to fit the code is the one move the rails forbid outright. Her answer:
+*"If I added the label we can overwrite it lol"*.
+
+**So the rule was never "never" — it is "never somebody else's".** And the condition she names is
+already the one `_label_corrections` enforces: it fires only where the live label matches a
+**birth-name alias from our own tree**, which is to say a string our pipeline generated.
+
+**What encodes it in the test is the `Amul`, not a list of exempt QIDs.** The corrections block
+emits `Amul "<what Wikidata holds>"` immediately above its `Lmul`, rescuing the outgoing value. So
+the test now allows an `Lmul`/`Len` on an existing item **only when this same file carries an
+`Amul` for that QID**. Self-evidencing: delete the `Amul` and the overwrite fails again.
+
+**Verified it still has teeth rather than assuming.** Injecting the original case —
+`Q467497 Lmul "Aadne (Arne) Eivindson Garborg"` over Wikidata's curated *Arne Garborg* — is still
+caught, because nothing in the batch preserves that label. That was the case the test was written
+for and it is exactly what must keep failing.
+
+An exempt-QID list would have passed the suite and protected nothing: it would have granted the
+exemption to the *item* rather than to the *behaviour*, and the next block to overwrite a label
+without preserving it would have inherited the pass.
+
+`tests/test_garborg_day_batch.py`: **23 passed, 1 skipped.**

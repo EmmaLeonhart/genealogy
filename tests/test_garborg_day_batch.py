@@ -264,6 +264,22 @@ def test_a_label_is_never_written_over_an_item_that_already_has_one():
     # them at all. The exemption is `Lmul` only, and only for ids the block actually names, read
     # from `reports/cjk-clan-block-qids.txt`. An `Len` on one of them, or an `Lmul` on anybody
     # else, still fails.
+    # **A label WE put there may be overwritten. Emma, 2026-08-29:** *"If I added the label we
+    # can overwrite it lol"* — asked to choose between this test and the corrections she ordered
+    # on the same day. So the rule is not "never"; it is "never somebody else's".
+    #
+    # **What proves we added it: the batch preserves the outgoing value as an `Amul` first.**
+    # `_label_corrections` emits `Amul "<what Wikidata holds>"` immediately above its `Lmul`, and
+    # it only fires where that outgoing value matches a **birth-name alias from our own tree** —
+    # i.e. a string our pipeline generated. A curated label nobody here wrote can never satisfy
+    # that, so `Q467497` *Arne Garborg* is still protected and the original case of this test
+    # still fails.
+    #
+    # The exemption is therefore narrow and self-evidencing: an `Lmul`/`Len` is allowed only when
+    # this same file carries an `Amul` for that QID rescuing the value being replaced. Drop the
+    # `Amul` and the overwrite fails again, which is the property worth having.
+    preserved = {m.group(1) for m in
+                 (re.match(r"^(Q[1-9][0-9]*)\tAmul\t", ln) for ln in lines()) if m}
     cjk = _cjk_block_qids()
     bad = []
     for ln in lines():
@@ -272,8 +288,12 @@ def test_a_label_is_never_written_over_an_item_that_already_has_one():
             continue
         if m.group(2) == "mul" and m.group(1) in cjk:
             continue
+        if m.group(1) in preserved:
+            continue
         bad.append(ln)
-    assert not bad, f"overwriting the label of an existing item: {bad[:3]}"
+    assert not bad, (
+        "overwriting the label of an existing item with nothing preserving the old value: "
+        f"{bad[:3]}")
 
 
 def test_a_redacted_person_gets_no_name_statements_either():
