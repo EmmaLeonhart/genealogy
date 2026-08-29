@@ -17724,3 +17724,31 @@ The Geni half of her instruction is still open and stays a queue item.
 
 Also re-ran `scripts/audit-built-batches.py`, which had gone stale against the two new `.qs` files
 and was failing `test_generated_inventories.py`.
+
+## 2026-08-29 — Futohime gets the clan prefix, in the block that repeats until it lands
+
+Emma: *"Put Futohime in the queued up clan block and just make sure we are implementing the idea
+in question, I think it's in the queue."*
+
+**The idea is the clan prefix, and it turns out to be already implemented everywhere else.**
+Checked live: `Q24890131` reads *Mononobe no Ikofutsu*, `Q135579474` *Kitajima no Tokitaka*,
+`Q135579480` *Kitajima no Yasutaka*. Every CJK person in `entity_resolution.md` carries their clan
+prefix except `Q11443857`, which still read a bare *Futohime* — so this was one straggler, not a
+convention to build.
+
+`CJK_CLAN_BLOCK` is the right home because of what that block *is*: a hard-coded literal appended
+to every batch, where the first run that reaches an item sets the labels and every later run sets
+them to what they already say, which QuickStatements makes a no-op. No state, no check. She gets
+the edit on the next batch she runs and it stops mattering after that.
+
+**Three deliberate limits on it.** The outgoing *Futohime* is kept as an `Amul` — `mul` was empty,
+so nothing of hers is overwritten and the bare given name stays searchable. `ja` and `zh` are left
+alone for the same reason the 177 above leave them alone: her Geni name is 太媛 so 物部太媛 is the
+obvious Japanese form, and obvious is not the standard here. And `build-cjk-clan-labels.py` gained
+a note in its docstring saying the block now has a hand-written tail it does not generate —
+regenerating and pasting over the literal would silently drop her.
+
+**The rest of `entity_resolution.md` was left alone on purpose.** Its residue is three `P2600`
+statements, and those are not pending work: the nine pairs are her dictated item 11, whose method
+is a Wikidata link in each Geni bio followed by a `Forest` export per person — not a `P2600`
+written from here.

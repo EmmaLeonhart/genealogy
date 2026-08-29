@@ -5583,6 +5583,33 @@ Q45700685	Lit	"uomo del clan Li, da Qinzhou Chengji"
 Q45700685	Lpt	"homem do clã Li, de Qinzhou Chengji"
 #   Q45700685: set the ca label
 Q45700685	Lca	"home del clan Li, de Qinzhou Chengji"
+#
+# -------------------------------------------------------------------------
+# THE CLAN PREFIX, on a NAMED person. Not one of the 177 above.
+#
+# Emma, 2026-08-29: "Put Futohime in the queued up clan block and just make sure
+# we are implementing the idea in question". The idea is the clan prefix, and it
+# is already carried by every other CJK person in entity_resolution.md -- checked
+# live that day: Q24890131 reads "Mononobe no Ikofutsu", Q135579474 "Kitajima no
+# Tokitaka", Q135579480 "Kitajima no Yasutaka". Futohime is the one straggler.
+#
+# Her instruction in entity_resolution.md is older and unambiguous: "change her
+# name to 'Mononobe no Futohime'". Live 2026-08-29 the item read en "Futohime",
+# with mul, ja and zh all empty and no aliases.
+#
+# The outgoing "Futohime" is kept as an Amul rather than lost: mul was empty, so
+# nothing of hers is overwritten and the bare given name stays searchable.
+#
+# ja and zh are left alone for the same reason the block above leaves them alone.
+# Her Geni name is 太媛, so 物部太媛 is the obvious Japanese form -- and "obvious"
+# is not the standard here, and she has not been asked.
+# -------------------------------------------------------------------------
+#   Q11443857: keep the outgoing label as an alias before replacing it
+Q11443857	Amul	"Futohime"
+#   Q11443857 Futohime: mul label = Mononobe no Futohime
+Q11443857	Lmul	"Mononobe no Futohime"
+#   Q11443857: set the en label
+Q11443857	Len	"Mononobe no Futohime"
 
 
 # ------------------------------------------------------------------------

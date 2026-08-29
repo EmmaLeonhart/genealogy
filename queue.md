@@ -1970,7 +1970,7 @@ eight items the file names. **There is, and it is small.**
 | --- | --- | --- |
 | `Q19657284` | `en` *Buyeo Deokjang* | done — `mul` *Buyeo Deokjang* |
 | `Q12598947` | `en` *Buyeo Taebi* | done — `mul` *Buyeo Taebi* |
-| `Q11443857` | *"change her name to Mononobe no Futohime"* | **not done — `en` is still `Futohime`** |
+| `Q11443857` | *"change her name to Mononobe no Futohime"* | was **not** done; now in `CJK_CLAN_BLOCK`, so every batch carries it until it lands |
 
 **Six of the eight items carry no `P2600` at all**, so the Geni pairings the file records exist
 nowhere Wikidata can see: `Q11596350` *Prince Wakatakehiko*, `Q11078587` *Harima no Inabi no
@@ -1980,6 +1980,9 @@ items have one.
 **Three of those six are out of scope and stay so.** The two Kitajima items are in
 `NEVER_TOUCH_QID`, and her own `Q140568870` entry is the one she said she will remove herself.
 
-**So the residue is four edits**: the Futohime label, and `P2600` on `Q11596350`, `Q11078587` and
-`Q24890131`. Nothing was done to any of them — § *The Wikidata link goes in the bio* carries her
-*"just don't do stuff on it right now"*, and this item is the record, not the action.
+**So the residue is three edits**: `P2600` on `Q11596350`, `Q11078587` and `Q24890131`. The
+Futohime label is handled — she asked for it in the clan block on 2026-08-29 and it is there.
+
+The three `P2600` statements were **not** written, and that is deliberate rather than pending: the
+nine pairs belong to her dictated item 11, whose method is to put the Wikidata link in each Geni
+bio and then run a `Forest` export per person, not to write `P2600` from here.
