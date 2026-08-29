@@ -2239,3 +2239,15 @@ covers lettering for the same reason it covers numbering, and she said so again 
 
 - **Run the status-report action once more** — an end-of-session summary of everything that
   happened this session.
+
+### `P2600` constraint violations report — analysis AT THAT TIME, no pre-analysis
+
+<https://www.wikidata.org/wiki/Wikidata:Database_reports/Constraint_violations/P2600>
+
+Emma, 2026-08-29: *"we are gonna do analysis at that time (no pre-analysis) of how to
+potentially elp wih wikidata genealogy with this stuff, it overlaps with some of our
+entity resolution stuff do no think on it"*
+
+So: nothing is to be investigated, measured or fetched about this before the item is
+reached. The analysis is of how the constraint-violations report could help Wikidata
+genealogy, and it overlaps the entity-resolution work.
