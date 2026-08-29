@@ -17,9 +17,18 @@ audits, dead crons and superseded priorities. Recover any of it with
 
 These are supposed to be manually added to the queue and worked on, do no just paraphrase during the rebase keep this part entirely intact. We are approaching usage limit for now.
 
-### Please do an explicit AskUserQuestion on whether I have acknowledged whether the chains have been advanced with today
+### Put `reports/wikidata-spine-completion.qs` at the beginning of the next daily batch
 
-Basically idk if I am actually gettin ganythin gon the chain here so do an askuserquestion asking me to confirm that I have acknowledged the result for whatever this thing may be. Did we get the paths to work or not
+Two hard-coded creations — Ramborg Knutsdotter Lejon `6000000004870648136` (step 15) and Ingrid
+Guttormsdotter `6000000000771986019` (step 22). They are the only two people on
+`paths/charlemagne-to-arne-garborg.tsv` with no Wikidata item, and `reports/spine-bonds.tsv`
+shows the other 29 consecutive pairs are already bonded, so these two close the line end to end.
+
+**Re-check both against the ledger before running** — the file was written 2026-08-29 and she
+may have created either by hand since. If the ledger has them, drop the block.
+
+They carry no `P735`/`P734`; the name items are their own queue item and the people do not wait
+on them.
 
 ### Wording issues and queue crud
 

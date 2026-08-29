@@ -17550,3 +17550,42 @@ Also recovered, and already covered by existing queue items rather than duplicat
 that only Simen Olsen got a CJK name in the last creation batch (fixed by the two-hop table — 1 of
 41 became 36 of 37), and the cap of 15 label changes per batch on existing items, which the
 185-row corrections block does not yet respect.
+
+## 2026-08-29 — the Charlemagne line is two people from end to end, and the bonds hold
+
+Her queue item was to put the chain state to her as an `AskUserQuestion`: *"idk if I am actually
+gettin ganythin gon the chain here... Did we get the paths to work or not"*. Joined
+`paths/charlemagne-to-arne-garborg.tsv` against the current ledger and the bulk `P2600` store:
+**32 of 34 steps already have a Wikidata item** — 23 in her ledger, 9 long-standing (`Q3044`
+*Charlemagne*, `Q43974` *Louis the Pious*, `Q273181` *Judith of Flanders*, `Q378177` *Baldwin IV*,
+`Q314521` *Berengar II*, `Q3769073` *Gisela of Friuli*, `Q19061035` *Guttorm Àsulfsson*,
+`Q75291928` *Åsulv Skulesson*, `Q6180419` *Skule Torstigson*). Only **step 15 Ramborg
+Knutsdotter Lejon** and **step 22 Ingrid Guttormsdotter** have none.
+
+**She did not take that at face value** — *"is it really only 2 people missing connecting Arne to
+Charlemagne? Look over this because it doesn't feel right... if it is the case check with the
+bonds."* She was right that the question was underspecified: item existence and chain continuity
+are different things, and only the first had been measured.
+
+**`scripts/check-spine-bonds.py` answers the second.** One batched `wbgetentities` request, 35
+items, no per-item lookups. Of the **33 consecutive pairs on that path, 29 are joined by a
+`P22`/`P25`/`P40`/`P26` statement on Wikidata today**, and all four breaks are the pairs touching
+those two people. `reports/spine-bonds.tsv` is the row-by-row record. `out/wikidata/relations.tsv`
+could not have answered it — it was downloaded 2026-08-25 and 20 of these items postdate it.
+
+`paths/bergitte-to-emma.tsv` is the thin one: 4 of 16, bonded 3 of 15 pairs, everything from her
+back to Guri Pedersdatter Foss still to create.
+
+**`reports/wikidata-spine-completion.qs` is the block, and the first attempt at it was wrong.** I
+started by adding a `spine_closers()` helper to `build-garborg-day.py` — a general rule for
+"isolated hole on a spine path", wired into `compose` and the emitter. Emma: *"Building the helper
+is over engineering a solution to a problem that will likely only exist today."* Reverted whole.
+The block is now two hard-coded creations in a file, the same shape as `SPINE_P2600_BLOCK` and
+`CJK_CLAN_BLOCK`, to go at the head of the next batch.
+
+**What it deliberately omits:** `P735` *given name* and `P734` *family name*. Ramborg, Knutsdotter,
+Lejon and Guttormsdotter would each need a name item resolved or minted, and her complaint the same
+day was that our name items are being merged away by other editors because the existence check
+misses ones that already exist. That is its own queue item; the people and the links do not wait on
+it. Dates go in with no `ABT`/`AFT` qualifier because the daily pipeline emits none — matching it
+rather than diverging in a hand-written file.
