@@ -4219,6 +4219,10 @@ def main():
 
     ids = set(to_create) | set(our_items)
     facts, labels = {}, {}
+    #: How a person is named when SOMEBODY ELSE's label refers to them -- the married
+    #: form where there is one. Separate from `labels` on purpose; see the comment at
+    #: the assignment below.
+    referred_to_as = {}
     with open(ROOT / "reports" / "derived-facts.csv", encoding="utf-8") as f:
         for row in csv.DictReader(f):
             if row["geni_id"] in ids:
@@ -4258,6 +4262,28 @@ def main():
                 # formulaic descriptions. `strip_markers` belongs where a label is emitted
                 # for a person who is NOT redacted, which is the `Sara NN` case.
                 labels[row["geni_id"]] = raw_label
+                # **How a person is named when somebody ELSE's label refers to them.**
+                #
+                # Emma, 2026-08-29, on `Q141205933`: *"it appears that it uses the birth name
+                # of the wife. This is concerning and it may mean that a lot of places
+                # primarily use the birth names of women and this causes inconsistency"*.
+                #
+                # It was an inconsistency between two layers of this one file.
+                # `derived-labels.csv` puts the BIRTH name in `label_mul` and the married one
+                # in `aliases_from_married_name` -- 185,426 women. The CREATION path never
+                # reads those columns; it recomputes primary-vs-birth from raw `SURN`/`_MARNM`
+                # and correctly makes the married name primary, per § *The MARRIED name is the
+                # real name*. `describe_all` read `labels`, so one run created a woman as
+                # `Thelma Geraldine Bagby` while calling a man "husband of Mona Beth Tunheim",
+                # her BIRTH name -- two readings of one rule in a single file.
+                #
+                # A SEPARATE dict rather than changing `labels`, because `labels` also feeds
+                # `name_lines`, where the birth surname and the married surname are DIFFERENT
+                # `P734` statements carrying different `P3831` roles (`Q2507958` birth name,
+                # `Q28418670` married name). Overwriting it there would put the married form
+                # into both slots and lose the distinction the name model is built on.
+                _married = (row.get("aliases_from_married_name") or "").split(" | ")[0].strip()
+                referred_to_as[row["geni_id"]] = _married or raw_label
 
     # **The GEDCOM name FIELDS, which is where name objects come from.** Emma,
     # 2026-08-24: *"I thought we were resolving name objects but now we're determining
@@ -4576,7 +4602,7 @@ def main():
                                if not t.lower().startswith("<private")
                                and t.lower() not in ("private", "nn"))
             lines.append(f'LAST\tLmul\t"{("NN " + surname).strip()}"')
-            described = describe_all(g, facts, father, mother, labels, table,
+            described = describe_all(g, facts, father, mother, referred_to_as, table,
                                      children, spouses, siblings)
             for code, value in sorted(described.items()):
                 lines.append(f'LAST\tL{code}\t"{value}"')

@@ -17444,3 +17444,36 @@ converges each run: refresh reverts, resolver repoints, batch is clean. Verified
 **And the "DISAGREE" lines invert once it works**, which is worth knowing before someone reads them
 as a regression. The refresh now reports `ledger=Q19842232 live=Q141189050` — our ledger holding the
 survivor and the live lookup still offering the redirect. That is the correct state, not drift.
+
+## 2026-08-29 — Q141205933: two layers of one file disagreed on which name is a woman's name
+
+Emma: *"investigate Q141205933 as it appears that it uses the birth name of the wife. This is
+concerning and it may mean that a lot of places primarily use the birth names of women and this
+causes inconsistency"*. She is right about the inconsistency and right about where it points.
+
+`Q141205933` was emitted as **"husband of Mona Beth Tunheim"**. `Tunheim` is her father's surname;
+her married form is `Carney Castro`, and Emma had already corrected the item by hand before this
+ran.
+
+**The cause is one file disagreeing with itself.** `reports/derived-labels.csv` puts the BIRTH name
+in `label_mul` and the married one in `aliases_from_married_name` -- **251,707 people, 185,426 of
+them women**. The CREATION path in `build-garborg-day.py` never reads those columns: it recomputes
+primary-vs-birth from raw `SURN`/`_MARNM` and correctly makes the married name primary, per
+`CLAUDE.md` § *The MARRIED name is the real name*. `describe_all` read `labels`. So a single run
+created a woman as `Thelma Geraldine Bagby` (married, right) and in the same file called a man
+"husband of Mona Beth Tunheim" (birth, wrong).
+
+**Blast radius today is small, and it is worth saying so rather than implying 185,426 bad edits.**
+Ten descriptive labels exist on live items. One was genuinely wrong -- hers, already fixed. Two
+others name **men** (`Andreas Olofsson`, `Daniel Olofsson`) where `_MARNM` is not a married name at
+all; `CLAUDE.md` § *`SURN` is not reliably a surname* measured 53% of differing `_MARNM` values as
+male. **Those must not be "corrected"**, and a naive fix keyed on "a married variant exists" would
+have rewritten both. The 251,707 figure is the size of the population, not a count of errors.
+
+**Fix: a separate `referred_to_as` dict**, the married form where there is one, passed to
+`describe_all`. Deliberately *not* a change to `labels`, because `labels` also feeds `name_lines`,
+where the birth surname and the married surname are two DIFFERENT `P734` statements carrying
+different `P3831` roles -- `Q2507958` *birth name* and `Q28418670` *married name*. Overwriting
+`labels` would have collapsed both into the married form and destroyed the distinction the whole
+name model rests on. Verified: 0 descriptive labels now name a birth form that has a married
+variant.
