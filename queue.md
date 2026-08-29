@@ -1985,51 +1985,34 @@ The three `P2600` statements were **not** written, and that is deliberate rather
 nine pairs belong to her dictated item 11, whose method is to put the Wikidata link in each Geni
 bio and then run a `Forest` export per person, not to write `P2600` from here.
 
-## The 3am task, RECOVERED — the eight Asian identities: Geni bio links, then `Forest` exports
+## The eight Asian identities — bios get their QID links AT SYNOPTIC-MERGE TIME, not now
 
-**This was a cron scheduled for 03:00 on 2026-08-29 and it died with the crash.** Crons are
-session-only; the session ended 18:52 on 08-28 and the job never fired. Her own instruction
-already anticipated exactly this — *"For all of the cron jobs that I set up in the session... also
-add them into the queue as actual items... so they get crossed off if the cron job finishes, but
-are a bit more stable."* Recovered from the transcript, not reconstructed from memory.
+**Emma, 2026-08-29, correcting a recovered plan that a later discussion had already replaced:**
+*"No fuck you you didn't get the later discussion. When the synoptic tree is merged we change all
+of their bios to links to their qids so that the next step in with the wikidata union (which isn't
+really implemented yet) they get joined with those wikidata items lol."*
 
-**Her ruling, and it answers "are these in other logic?" — yes.** Every one of the nine pairs
-except herself is an Asian identity she *"put a lot of effort into creating identification with"*,
-for a different algorithmic purpose related to the synoptic tree. So the `P2600` statements are
-**not** to be hand-written from `entity_resolution.md`; this method supersedes it for these people:
-*"I actually have an updated way of doing these things. Go on to Geni using the browser extension
-thing, and essentially, in all their BIOS, add the link to the wikidata item. Doing that
-establishes the identity resolution in a way that does not harm our algorithm."*
+**So there is no standalone Geni-editing task here, and no export campaign for these eight.** The
+bio link is a *step inside the synoptic tree build*, and its purpose is to feed the **Wikidata
+union**, which is not implemented yet. Nothing about these people is actionable until that build
+runs.
 
-**The eight** (everyone but her): `Q11596350` Wakatakehiko · `Q11078587` Harima no Inabi no
-Ōiratsume · `Q11443857` Futohime Mononobe · `Q24890131` Ikofutsu Mononobe · `Q19657284` Buyeo
-Deokjang · `Q12598947` Taebi Buyeo · `Q135579480` Yasutaka Kitajima · `Q135579474` Tokitaka
-Kitajima.
+**The eight** (everyone in `entity_resolution.md` but her): `Q11596350` Wakatakehiko · `Q11078587`
+Harima no Inabi no Ōiratsume · `Q11443857` Futohime Mononobe · `Q24890131` Ikofutsu Mononobe ·
+`Q19657284` Buyeo Deokjang · `Q12598947` Taebi Buyeo · `Q135579480` Yasutaka Kitajima ·
+`Q135579474` Tokitaka Kitajima. Every one is an Asian identity she *"put a lot of effort into
+creating identification with"*, for this purpose. That is why their `P2600` statements are not
+loose ends to write by hand.
 
-**Order is hers and is not an optimisation:** *"you have to do it in the step of changing all the
-bios first and then doing all the exports because I want all the bios in already."*
+**What was actually lost in the crash, and it is worth keeping straight from what was superseded.**
+A cron for 03:00 on 2026-08-29 held the *older* plan — edit the eight bios now, then a `Forest`
+export each, file them for the post-merge stage. Crons are session-only, the session died at 18:52
+on 08-28, and it never fired. Recovering it was right; presenting it as live work was not, because
+§ *The Wikidata link goes in the bio during the SYNOPTIC TREE BUILD* already recorded the
+replacement. **The transcript is not the authority when `CLAUDE.md` has a later ruling on the same
+thing.**
 
-- **Bios first, all eight.** Open each Geni profile with Chrome automation, paste the Wikidata item
-  URL into the bio, save. Several probably have it already — *"I'm going to guess a lot of these
-  people have the link in already"* — so check before editing. Report exactly which profiles were
-  edited; this is an outward change to her own data, authorised here and nowhere wider.
-- **Then a `Forest` export each**, on the individual if Geni allows it, otherwise from a seed
-  profile per `docs/export-seed-rules.md`. Success is the individual appearing in the file. Even
-  where the bio link was already present: *"for safety, we're still going to do the forest exports
-  on these people."*
-- **File them for the post-merge/overwrite stage.** Her framing: the synoptic build joins the trees
-  and then overwrites with the post-merge thing. `exports/post-merge/` exists and is probably the
-  home — confirm rather than assume, and § *Never overwrite an existing `.ged`* applies.
-- **A redirected id is simply the thing it redirects to** — *"If one of these IDs redirects to
-  another thing, you just treat that as being the thing."*
+**Her own entry leaving `entity_resolution.md` still stands and is still hers.** After it goes,
+confirm `paths/bergitte-to-emma.tsv` step 1 does not become a `CREATE` — by running `--compose` and
+reading the output, not by reasoning about `NEVER_TOUCH_*`.
 
-**Half one of the same ruling: her own entry comes out of `entity_resolution.md`.** That pair is
-the only reason `Q140568870` is in `have` — she is not in `reports/garborg-qids.tsv` — and it is the
-mechanism behind the 2026-08-27 batch that wrote `Q140568870 P22 LAST` and attached her to the world
-tree. **She said she will do it herself** (§ *Her own duplicates are DELIBERATE*), so do not. What
-*is* ours: after it goes, confirm `paths/bergitte-to-emma.tsv` step 1 does not become a `CREATE` —
-`NEVER_TOUCH_*` should refuse it — and verify by running `--compose` and reading the output rather
-than by reasoning about it.
-
-Rails: grep the corpus before each export and put the number in the commit message; one export at a
-time; do not analyse or diff them; every `.ged` committed, zips gitignored one line each.

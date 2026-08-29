@@ -17775,3 +17775,35 @@ reports/garborg-carry-forward.tsv` is 0. The carry-forward is now 571 sibling li
 
 So the item is deleted rather than carried. Simen Olsen was not special; he was the one person
 whose every token the 218-token table happened to cover.
+
+## 2026-08-29 — recovered a superseded plan and presented it as live work
+
+Emma asked what the three `entity_resolution.md` Geni items were, and whether they were *"in other
+logic right or at least should be"*, saying she feared an explosive discussion had been lost.
+
+**Half of that was right and I acted on the wrong half.** Something *was* lost: a cron scheduled for
+03:00 on 2026-08-29 carrying a plan for the eight Asian identities. Crons are session-only, the
+session died at 18:52 on 08-28, `CronList` is empty, and it never fired. Recovering it from the
+transcript was the right instinct.
+
+**Presenting it as work to start was not.** That plan — edit the eight Geni bios now, then a
+`Forest` export each — had already been replaced, and the replacement was sitting in `CLAUDE.md`
+§ *The Wikidata link goes in the bio during the SYNOPTIC TREE BUILD. Geni is not edited*. I went to
+the transcript and did not check the file that exists to hold the current ruling. Her reply: *"No
+fuck you you didn't get the later discussion."*
+
+**What is actually true, in her words:** *"When the synoptic tree is merged we change all of their
+bios to links to their qids so that the next step in with the wikidata union (which isn't really
+implemented yet) they get joined with those wikidata items."* The bio link is a step **inside** the
+synoptic build, feeding a **Wikidata union that does not exist yet**. There is no standalone Geni
+editing task and no export campaign for these eight. I had also asked her whether to start the
+eight bios now, which was offering to do the superseded thing.
+
+`CLAUDE.md` gains her sentence about what the link is for, plus the rule the episode actually
+teaches: **a transcript is not the authority when `CLAUDE.md` holds a later ruling on the same
+thing.** This is § *Do not grab the first artifact that vaguely matches* in a new costume — the
+artifact was a dead cron, it looked exactly like the missing plan, and nothing checked whether it
+had been superseded.
+
+The queue item is rewritten to say what is true rather than deleted, because the eight people and
+the reason their `P2600` statements are not loose ends both still need recording.

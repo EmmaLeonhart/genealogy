@@ -1934,6 +1934,19 @@ correspondence as ordinary tree content rather than needing a side file.
 **The IDs are checked for merges first**, and offline: *"it really should be on our export of
 Wikidata, because that's effectively what it works on."* Redirects resolve to their target.
 
+**What the bio link is FOR, in her words, 2026-08-29:** *"When the synoptic tree is merged we
+change all of their bios to links to their qids so that the next step in with the wikidata union
+(which isn't really implemented yet) they get joined with those wikidata items."* So it is a step
+*inside* the build, feeding the **Wikidata union**, which does not exist yet. It is not a Geni
+editing task that can be run early, and there is no export campaign attached to it.
+
+**This supersedes an earlier plan that is still in the transcripts**, which had the eight
+`entity_resolution.md` people getting their bios edited immediately and a `Forest` export each. A
+cron carrying that plan died in the 2026-08-28 crash; it was recovered on 08-29 and handed back to
+her as live work, and her reply was *"No fuck you you didn't get the later discussion."*
+**A transcript is not the authority when this file holds a later ruling on the same thing** — the
+replacement was already written down two paragraphs up, and reading it would have been enough.
+
 **This retires `entity_resolution.md` as a mechanism.** It was the side file, and the tree is
 where the correspondence belongs. Do not act on that yet — she said *"this entity resolution
 stuff is important, but I think you may have been presenting it as being more important than it
