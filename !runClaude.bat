@@ -26,6 +26,24 @@ echo  Context:     CLAUDE.md in this folder
 echo ===============================================================
 echo.
 
+REM %USERPROFILE% is NOT guaranteed to be set. PowerShell's
+REM Start-Process -UseNewEnvironment rebuilds the block from the registry, and
+REM on this machine that block is DEGENERATE: USERPROFILE empty, SystemDrive
+REM empty, USERNAME=SYSTEM, and System32 off PATH (even findstr is missing).
+REM Measured 2026-08-28. Do NOT start this script that way. Use explorer.exe,
+REM which also strips the CLAUDE_CODE_* child-session vars but keeps the real
+REM logon environment:   Start-Process explorer.exe '"<full path to this .bat>"'
+if not defined USERPROFILE (
+    if defined HOMEDRIVE if defined HOMEPATH set "USERPROFILE=%HOMEDRIVE%%HOMEPATH%"
+)
+if not defined USERPROFILE if defined SystemDrive set "USERPROFILE=%SystemDrive%\Users\%USERNAME%"
+if not exist "%USERPROFILE%\" (
+    echo ERROR: degenerate environment - USERPROFILE could not be resolved.
+    echo Start this from the Startup shortcut, Explorer, or a normal console.
+    pause
+    exit /b 1
+)
+
 set "CLAUDE_EXE="
 where claude >nul 2>&1
 if %errorlevel% equ 0 (
