@@ -2050,6 +2050,46 @@ placeholder is needed. If Geni has lost the task, submit fresh from
 **Do not silently drop it.** `Q4411612` is identified and its `.qs` is written, but neither he nor
 his father is in the tree, so the correspondence exists only in a file until an export lands.
 
+## ABSOLUTE PREREQUISITE — no individual is created without their CJK labels
+
+**Emma, 2026-08-29:** *"There should be an absolute prerequisite that nothing is created until you
+add in the CJK labels... It should be an absolute prerequisite for the creation of any individual:
+that we have their CJK labels."*
+
+**Apply this at the END of the queue, not now** — her explicit instruction: *"Apply it at the end of
+the queue because I don't want to interrupt whatever pipeline we're running right now."*
+
+**The rule:** a `CREATE` is refused unless that person has `ja` and `zh`. Today the builder emits
+them when every token resolves and creates the person anyway when they do not; under this rule the
+person is carried forward instead. It currently bites rarely — 37 of 38 creations in the last batch
+already carry both — but rarely is not never, and she wants it absolute rather than usual.
+
+**The order she wants, and the reason:** *"All of the items that I have created, especially the ones
+that I have edited, need the CJK stuff first on them."* So the shared 15-a-batch cap stays as built,
+clan block last — she confirmed it: *"keep the shared 15 with the clan left. That is the best thing
+to do because the most important thing is to fix up the CJK labels on our existing items first."*
+Existing people drain first, then the 177 clan people. *"The clan people also extend the range of
+the quick statement stuff by a lot, so this is worth leaving at the end."*
+
+## Systematic review for legacy code — find it and delete it
+
+**Emma, 2026-08-29, and it is the last item by her instruction:** *"That is the last item of the
+queue to do a systematic review to find this kind of legacy code thing."* `CLAUDE.md` § *LEGACY CODE
+IS DELETED* is the rule; this is the sweep.
+
+**Three scripts are orphaned as of `12f3134a` and are the obvious start** — all three read
+`entity_resolution.md`, which no longer exists:
+
+- `scripts/build-entity-resolution-batch.py` — its entire purpose was that file
+- `scripts/build-charlemagne-route.py`
+- `scripts/build-edit-objects.py`
+
+**218 scripts are in `scripts/`.** The test is *does the pipeline read this*, not *might it be
+useful*. A defensible sweep: every script not referenced by another script, by a test, by
+`CLAUDE.md`, or by a queue item, and whose outputs nothing reads. Report the list before deleting
+in bulk — but do not preserve something merely because deleting feels irreversible, since git has
+it and a stale file in the tree is the thing that actually costs.
+
 ## Always last — pinned to the very end of the file
 
 **Bullets, not letters.** These were `A.` and `B.`; `CLAUDE.md` § *Queue items are BULLET POINTS*

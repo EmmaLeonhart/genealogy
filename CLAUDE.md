@@ -1884,6 +1884,29 @@ So a spine batch needs a second file only for the links **between two people it 
 `reports/the-spine.md` carries the person-by-person state. The closing item of `queue.md` is to
 build the batch builder that does all of this at once rather than a hop a day.
 
+### LEGACY CODE IS DELETED. Not kept, not ignored — deleted
+
+**Emma, 2026-08-29, stating it as a hard rule:** *"Nothing should exist in this repo. This is a hard
+rule. If something's in this repo that is legacy code or something, it should be removed. Legacy
+code should be removed from this repo because legacy code is all this random crap that isn't
+actually used in the pipeline. It is something that just comes up and causes you to get confused
+and confused and write in bullshit."*
+
+**The cost is not hypothetical and it is not tidiness.** `entity_resolution.md` was superseded the
+moment its three live pairings went into `exports/post-merge/wikidata-qid-links.ged` as bio links —
+and on 2026-08-29 I read the stale file, told her deleting it would lose those three, and put a
+question to her whose answer was a GEDCOM I had built four hours earlier. Her reply: *"Oh my god
+did we not put them in that gedcom?"* We had.
+
+**So the test is "does the pipeline read this?", not "might this be useful?"** A file nothing runs
+against is not a record, it is a second answer waiting to be found by whoever looks first — which
+is the same failure as § *Do not grab the first artifact that vaguely matches*, one layer up: that
+section is about picking the wrong artifact, this one is about the wrong artifact existing at all.
+
+**Deleting is safe here and that is why the bar is low.** Everything is in git, so a deletion is
+recoverable by anyone who wants it; a stale file in the working tree is not recoverable from the
+confusion it causes.
+
 ### Do not grab the first artifact that vaguely matches. That is how legacy becomes algorithm
 
 **Emma, 2026-08-27, naming the actual failure after I kept answering a different one:**

@@ -18572,3 +18572,36 @@ doubling, not ours, and § *The question is whether OUR TREE MATCHES GENI* says 
 as it behaved before my own change, in a message whose whole purpose was to say what it does now.
 Measured: 15 label edits emitted, **1,503 clan-block lines held, 0 ever emitted**, because the block
 sits last in the cap's priority order behind ~670 corrections.
+
+## 2026-08-29 — legacy code is deleted, and the CJK prerequisite
+
+**Her hard rule, now in `CLAUDE.md`:** *"Nothing should exist in this repo. This is a hard rule. If
+something's in this repo that is legacy code or something, it should be removed... it is something
+that just comes up and causes you to get confused and confused and write in bullshit."*
+
+The evidence is from an hour earlier and it is mine: `entity_resolution.md` had been superseded the
+moment its three live pairings went into `exports/post-merge/wikidata-qid-links.ged`, and I read the
+stale file, told her deleting it would lose those three, and asked her a question whose answer was a
+GEDCOM I had built that morning. The test is therefore **"does the pipeline read this?"**, never
+"might this be useful?" — a file nothing runs against is a second answer waiting to be found by
+whoever looks first.
+
+**The sweep is queued as the last item**, per her: *"That is the last item of the queue to do a
+systematic review to find this kind of legacy code thing."* Three scripts are already orphaned by
+`12f3134a` and named there — `build-entity-resolution-batch.py`, `build-charlemagne-route.py`,
+`build-edit-objects.py`, all reading a file that no longer exists. 218 scripts in `scripts/` to
+sweep.
+
+**And the cap question is settled, in the shape it was already built.** Asked whether the clan
+labels should drip 15 of their own, she chose to keep the single shared 15 with the clan last:
+*"the most important thing is to fix up the CJK labels on our existing items first. All of the items
+that I have created, especially the ones that I have edited, need the CJK stuff first on them."* So
+existing people drain first and the 177 clan people follow — *"The clan people also extend the range
+of the quick statement stuff by a lot, so this is worth leaving at the end."*
+
+**A new absolute prerequisite comes out of that, queued at the tail at her instruction:** no
+individual is created without their CJK labels. Today the builder emits `ja`/`zh` when every token
+resolves and creates the person regardless when they do not; under the new rule that person is
+carried forward instead. It would bite rarely — 37 of 38 in the last batch already carry both — but
+she wants it absolute, not usual. Deliberately **not** applied now: *"Apply it at the end of the
+queue because I don't want to interrupt whatever pipeline we're running right now."*
