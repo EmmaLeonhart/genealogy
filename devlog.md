@@ -17942,3 +17942,33 @@ creates her has been run.
 `<INGRID>` placeholder, which is not valid QuickStatements, and
 `test_every_line_is_a_well_formed_quickstatements_line` said so. The test is right; a queue item is
 where a step-not-yet-takeable belongs.
+
+## 2026-08-29 — her dictated series is intact, and item 1 is done
+
+Her queue note: *"No clue at this point if the large series of tasks I added was even preserved at
+all since the queue appears to habve already become complete garbage."*
+
+**It was preserved, exactly.** The section in `queue.md` and the scratchpad extraction it came from
+are **byte-identical at 12,035 characters**, all 12 items present, all 30 quoted lines matching.
+Nothing was lost or paraphrased.
+
+**The contradiction she named is real and is about deletion, not preservation:** *"you were trying
+to preserve what I said even after it was completed."* Verbatim is right while an item is pending;
+once done the item goes, words and all. A missing number now means done, and the survivors keep
+their numbers because the numbers are her ordering.
+
+**Item 1 — `Q141198538`, the `nn` first name.** Her Geni record is `nn Gunnarsdatter /Frafjord/`:
+lowercase, and only the **first token** is the marker. The old test looked for Geni's redaction
+markers alone, so a label that merely *began* with one took the ordinary-name path and `nn` went
+out as part of her label; she fixed the item by hand to *Daughter of Gunnar Torsteinson Frafjord*.
+
+The code fix already existed — `_carries_marker` tests every token against
+`labels.NARROW_MARKERS | WORDS_MEANING_UNKNOWN`, and `_carries_marker("nn Gunnarsdatter Frafjord")`
+is `True` today. **What did not exist was anything stopping it regressing**, and *"fix the algorithm
+so it does no do this in the future"* is a request for both halves. Added
+`test_a_marker_beside_a_real_name_still_takes_the_nn_path` over six spellings of the case, plus
+`test_an_ordinary_name_is_not_read_as_a_marker` for the other direction — `Ann Gunnarsdatter` must
+keep the ordinary path, because widening a marker test to substrings is how that breaks.
+
+`reports/partial-nn.csv` counts **9,539** people with a marker in one name field and a real name in
+the other, so this is a population rather than a curiosity.

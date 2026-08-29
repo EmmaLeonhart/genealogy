@@ -649,3 +649,60 @@ def test_the_contiguous_group_matches_what_emma_says_is_outside_it():
             f"own items, most likely through Bureus into the world tree")
     assert len(group) < 10_000, (
         f"the group is {len(group):,} items; that is the world tree, not her neighbourhood")
+
+
+def _carries_marker():
+    """`build-garborg-day._carries_marker`, loaded by path — the script is not importable."""
+    import importlib.util
+    import sys
+    sys.path.insert(0, str(REPO / "scripts"))
+    spec = importlib.util.spec_from_file_location(
+        "_bgd", REPO / "scripts" / "build-garborg-day.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return mod._carries_marker
+
+
+@pytest.mark.parametrize("label", [
+    "nn Gunnarsdatter Frafjord",   # Q141198538 -- the one Emma caught
+    "NN Gunnarsdatter Frafjord",
+    "Nn Gunnarsdatter Frafjord",
+    "NN Jonsdotter",
+    "unknown Bloomfield",
+    "Ukjent Garborg",
+])
+def test_a_marker_beside_a_real_name_still_takes_the_nn_path(label):
+    """A marker plus a surname is an NN person, whatever the marker's case.
+
+    **Emma, 2026-08-27, on `Q141198538`:** *"clearly has 'nn' as its first name however it was
+    not produced as an NN person, so what happened, can you please fix the algorithm so it does
+    no do this in the future?"*
+
+    Her Geni name is `nn Gunnarsdatter /Frafjord/` — lowercase, and only the **first token** is
+    the marker. The test that decided this once looked for Geni's redaction markers alone, so a
+    label that merely *began* with one took the ordinary-name path and `nn` went out as part of
+    her label. She then fixed the item by hand to *Daughter of Gunnar Torsteinson Frafjord*.
+
+    `reports/partial-nn.csv` counts **9,539** people with a marker in one name field and a real
+    name in the other, so this is a population rather than a curiosity. The fix landed in
+    `_carries_marker`; this is what stops it regressing, which is the half of her instruction a
+    code change alone does not satisfy.
+    """
+    assert _carries_marker()(label), (
+        f"{label!r} contains an unknown-name marker and must take the NN path: "
+        f"marker in mul, formulaic descriptions in the other languages")
+
+
+@pytest.mark.parametrize("label", [
+    "Ann Gunnarsdatter",      # 'Ann' merely starts with the letters of a marker
+    "Nils Larsen Raunes",
+    "Bergitte Gunnbjørnsdatter Aukland",
+])
+def test_an_ordinary_name_is_not_read_as_a_marker(label):
+    """The other half: matching is on whole tokens, never on a prefix of one.
+
+    `Ann` is the case that would break first — it starts with `nn`'s letters reversed and shares
+    a prefix with nothing, but a substring test on markers is exactly the kind of widening that
+    would swallow it. Real names must keep the ordinary path.
+    """
+    assert not _carries_marker()(label)

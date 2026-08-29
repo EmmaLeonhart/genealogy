@@ -208,11 +208,11 @@ bolted on a hypothesis that would have biased the analysis before it looked at a
 
 Work them **in this order**. The clock times are how she expressed the order and nothing more.
 
----
-
-**1.**
-
-> The item https://www.wikidata.org/wiki/Q141198538 clearly has 'nn' as its first name however it was not produced as an NN person, so what happened, can you please fix the algorithm so it does no do this in the future?
+**A missing number means that one is DONE and was deleted**, which is the queue's own rule and the
+contradiction she named on 2026-08-28: *"you were trying to preserve what I said even after it was
+completed."* The numbers are her ordering, so the survivors keep theirs rather than being
+renumbered. Gone so far: **1** (`Q141198538`, the `nn` first name — fixed in `_carries_marker`,
+pinned by `tests/test_garborg_day_batch.py::test_a_marker_beside_a_real_name_still_takes_the_nn_path`).
 
 ---
 
