@@ -18960,3 +18960,31 @@ decision about her own duplicates -- hers to make, not implied by this instructi
 
 Verified: 201 blocked, subgraph **316** (unchanged), 0 blocked people inside it, roots intact,
 clan label block still 3,051 lines so September labelling is untouched.
+
+## 2026-08-29 — the entity-resolution Asian people and Ame no Hohi. 205 blocked
+
+**Emma:** *"It's best to overinclude all the Asian people from the entity_resolution.md file that
+were discussed earlier... The main thing would be Ame no Houhi and some other stuff."* Her reason:
+*"the idea is nothing is supposed to even know that I exist, but I'm a bit concerned that the
+existence is going to be figured out by other things."*
+
+**The list was read back out of git, not reconstructed.** `entity_resolution.md` was deleted this
+morning; `git show 12f3134a^:entity_resolution.md` gives it whole. It held **nine** Wikidata items:
+
+- already blocked -- `Q19657284` Buyeo Deokjang, `Q12598947` Buyeo Taebi, and `Q135579474`
+  Kitajima no Tokitaka / `Q135579480` Kitajima no Yasutaka via `NEVER_TOUCH_QID`
+- **her own `Q140568870`, left out on her instruction** *"except for me"*
+- the four now added: `Q11596350` 稚武彦命, `Q11078587` 播磨稲日大郎姫, `Q24890131` 物部伊莒弗,
+  `Q11443857` 太媛 Futohime
+
+**Ame no Hohi is `Q10940685`** 天穂日命, and he is *not* in that file by QID -- she named him aloud.
+Resolved offline against `out/wikidata/labels.tsv` (aliases 天菩比神 / 天之菩卑能命 / アメノホヒ),
+never by a live query. He matters because the Izumo line descends from him, so he is the doorway
+the Kitajima people would be reached through -- which is precisely the reachability she is afraid
+of.
+
+The first three are also the entire content of `exports/post-merge/wikidata-qid-links.ged`.
+
+Verified: **205 blocked**, her item excluded, subgraph **316** (unchanged), 0 blocked people
+inside it, roots intact. None of the five is in the ledger, so this is prophylactic rather than
+corrective -- which is what she asked for.

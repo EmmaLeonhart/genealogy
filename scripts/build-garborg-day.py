@@ -985,6 +985,35 @@ SUBGRAPH_ROOTS = (ARNE_QID, BUREUS_QID)
 #: not their seeding.
 KLUGE_UNIVERSE_BLOCK = ("Q19657284", "Q12598947", "Q141198548")
 
+#: **The Asian people from the deleted `entity_resolution.md`, plus Ame no Hohi.**
+#:
+#: **Emma, 2026-08-29:** *"It's best to overinclude all the Asian people from the
+#: entity_resolution.md file that were discussed earlier... The main thing would be Ame no
+#: Houhi and some other stuff."* Her reason, in her words: *"the idea is nothing is supposed
+#: to even know that I exist, but I'm a bit concerned that the existence is going to be
+#: figured out by other things."*
+#:
+#: `entity_resolution.md` was deleted on 2026-08-29; this list was read back out of git
+#: (`12f3134a^`) rather than reconstructed from memory. It held nine Wikidata items. Four are
+#: already blocked -- Buyeo Deokjang and Buyeo Taebi above, Kitajima no Tokitaka `Q135579474`
+#: and Kitajima no Yasutaka `Q135579480` through `NEVER_TOUCH_QID`. One is **her own item and
+#: is deliberately left out**, on her instruction *"except for me"*. These are the remaining
+#: four, plus Ame no Hohi.
+#:
+#: The first three are also the whole content of `exports/post-merge/wikidata-qid-links.ged`,
+#: the bio-link GEDCOM, which is the other place these pairings live.
+KLUGE_ENTITY_RESOLUTION_ASIA = (
+    "Q11596350",    # 稚武彦命, geni 6000000001835522164
+    "Q11078587",    # 播磨稲日大郎姫, geni 6000000001844033355
+    "Q24890131",    # 物部伊莒弗 Mononobe, geni 6000000002039751362
+    "Q11443857",    # 太媛 Futohime, geni 6000000001902786893
+    # Ame no Hohi 天穂日命 -- the one she named aloud, and he is not in that file by QID.
+    # Resolved offline against out/wikidata/labels.tsv, which carries him with the aliases
+    # 天菩比神 / 天之菩卑能命 / 天穂日神 / アメノホヒ. He is the ancestor the Izumo line
+    # descends from, so he is the doorway the Kitajima people would be reached through.
+    "Q10940685",
+)
+
 
 def kluge_blocked_from_universe():
     """The kluge's full set: the three Buyeo people **and the 178 CJK clan individuals**.
@@ -1016,7 +1045,8 @@ def kluge_blocked_from_universe():
     # the same blind spot that let them be created in the first place.
     kitajima = {q for q in NEVER_TOUCH_QID if q != EMMA_QID}
 
-    return set(KLUGE_UNIVERSE_BLOCK) | clan | kitajima
+    return (set(KLUGE_UNIVERSE_BLOCK) | set(KLUGE_ENTITY_RESOLUTION_ASIA)
+            | clan | kitajima)
 
 #: The date the block above stops applying. After this, `wikidata_subgraph` ignores it.
 KLUGE_UNIVERSE_BLOCK_EXPIRES = datetime.date(2026, 10, 1)
