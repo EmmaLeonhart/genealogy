@@ -51,9 +51,14 @@ item is the record of what the campaign would be.
 
 That's the thing I potentially want to do as a campaign to make Jenny readable to everybody. For now, we're sticking to this being a primary Wikidata-based project, so we just do not add a label. 
 
-### correcting "Lave"
+### correcting "Lave" — the GENI half
 
-I think this person https://www.wikidata.org/wiki/Q141189080 should be corrected to "Lave Jonsen" in all languages and on geni. Just havin a first name is weird and has no rationale, they should be given the patronymic "Jonsen" too
+Wikidata is done: `reports/wikidata-lave-jonsen.qs` sets `mul`, `en`, `ja` and `zh` to
+*Lave Jonsen* and keeps *Lave* as an `Amul`. Patronymic checked against the live item — his
+father `Q116150299` is *Jon Reimatsen*.
+
+Still to do, her instruction: rename him on **Geni** too, profile `6000000181444356836`, so the
+next export carries it and our tree stops saying *Lave*.
 
 ### labels at creation time
 

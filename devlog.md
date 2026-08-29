@@ -17696,3 +17696,31 @@ property was written. Now `qualified P1810 subject named as ...`, for every qual
 emits.
 
 The four pre-existing failures from the label-corrections block are unchanged and still queued.
+
+## 2026-08-29 — Lave becomes Lave Jonsen
+
+Her queue item: *"I think this person https://www.wikidata.org/wiki/Q141189080 should be corrected
+to 'Lave Jonsen' in all languages and on geni. Just havin a first name is weird and has no
+rationale."*
+
+**The patronymic was checked rather than assumed.** His father in `derived-family.csv` is
+`5101295410550070399` → `Q116150299`, whose live label is *Jon Reimatsen*. Son of Jon is Jonsen.
+
+**Fetched live before writing the correction**, one batched `full_entities` request, per
+§ *Emma edits the tree and the items BY HAND* — a correction built on a snapshot rewrites work she
+has already done. The item held `en`/`mul` *Lave*, `ja` ラーヴェ, `zh` 拉弗, no aliases, no
+descriptions. All four change.
+
+`reports/wikidata-lave-jonsen.qs` writes the `Amul` first so the outgoing label is kept — *Lave*
+alone is a plausible search term. The CJK forms are the existing label plus the existing
+patronymic token from `garborg-name-transliterations.tsv` (`Jonsen` → ヨンセン / 永森, composed
+`Jon` + `-sen`), not a fresh rendering.
+
+**`entity_resolution.md` was the other candidate home for this and was left alone.** It is her
+scratchpad, `CLAUDE.md` says not to reformat it, and § *The Wikidata link goes in the bio* says of
+that file: *"just don't do stuff on it right now."*
+
+The Geni half of her instruction is still open and stays a queue item.
+
+Also re-ran `scripts/audit-built-batches.py`, which had gone stale against the two new `.qs` files
+and was failing `test_generated_inventories.py`.
