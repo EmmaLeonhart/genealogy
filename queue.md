@@ -245,18 +245,6 @@ pinned by `tests/test_garborg_day_batch.py::test_a_marker_beside_a_real_name_sti
 
 - 
 
-> do a cron job at 10pm to analyze why https://www.geni.com/people/private/6000000021223635839 was added as "Garborg" instead of the current labels on wikidata that I manually added https://www.wikidata.org/wiki/Q141199845
-
----
-
-- 
-
-> do a cron job at 10:30 PM to analyze https://www.wikidata.org/wiki/Q141199868 and why it came out as brackets instead of what it is supposed to be too
-
----
-
-- 
-
 > analyze why new items are not being created with Japanese and Chinese labels already pesent, and to go over the census and build infrastructure so that every indiviual is created with a latin alphabet mul label (a few like Buyeo Taebi (Q12598947) and Buyeo Deokjang (Q19657284) were not), and every individual is at least made with all of the cjk names and others. Since remember that every individual is supposed to have the relative script universality beforehand and it is absolutely essential to cover all cjk, if any script is the only present script for the name of somethin in he geni synopic tree then it must be part of the default lablels we make on every item
 
 ---
@@ -2067,3 +2055,38 @@ wall*. Keep the pre-merge tree.
 **Widening this beyond the three is her call and is one constant.** The machinery handles any
 number; the first version emitted 83,988 people off `reports/synoptic-correspondence.tsv` and that
 was a generalisation she had not asked for.
+
+## THE TAIL — two she moved here herself, 2026-08-29
+
+*"Just add both of these to the end of the queue."* Both were cron jobs she scheduled by clock
+time on 2026-08-27; every cron died in the 08-28 crash, so neither will fire on its own. Her words
+are kept because these are unstarted.
+
+- **`Sara /NN/`** — the case she set aside at the time: *"Ignore the fucking NN thing. 'Sara /NN/'
+  can wait until a cron job at 9pm fires to analyze this problem then."* The name is
+  `Sara` with `NN` in the surname slot, which is the inverse of the shape
+  `_carries_marker` was fixed for — there the marker was the *given* token and the surname real.
+
+- **Why a redacted profile came out labelled `Garborg`** — *"do a cron job at 10pm to analyze why
+  https://www.geni.com/people/private/6000000021223635839 was added as "Garborg" instead of the
+  current labels on wikidata that I manually added https://www.wikidata.org/wiki/Q141199845"*.
+  Note this is a `<private>` profile, so § *The NN/Private label algorithm* governs what it should
+  have been, and she had already hand-corrected the item — so the question is also why our label
+  overrode hers.
+
+## The nickname strip belongs in `derive-labels.py`, not only in the daily batch
+
+`without_nickname` in `build-garborg-day.py` fixes the label the batch emits — Emma's
+`Q141199868` case, `Ingvold (Pinkie) Remmie` → `Ingvold Remmie`. It is applied at the point of
+emission, so `reports/derived-labels.csv` still holds the bracketed form and **every other reader
+of that file still sees it**. 57 scripts read it; 48 read `label_en`/`label_mul`.
+
+**The population is 22,707 nickname tokens inside `GIVN`** — 16,742 parenthesised, 5,965 quoted —
+so this is the same shape as the married-name flip, which was fixed at source precisely because
+fixing it there reached all 48 readers in one change.
+
+**And `namemodel.QUOTED` treats an ASCII apostrophe as a quote delimiter.** On
+`Jean d'O Seigneur d'O & de Maillebois` it matches `'O Seigneur d'`, so that name yields a
+`P1449` *nickname* of `O Seigneur d`. `without_nickname` skips apostrophe matches for the label;
+the name statements are **not** fixed. Narrowing `QUOTED` moves every `P1449` in the repo, so
+measure the affected population before changing it.

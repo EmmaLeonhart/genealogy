@@ -399,6 +399,48 @@ def _label_corrections(our_items, labels, table, state):
     return out
 
 
+def without_nickname(label, fields):
+    """`Ingvold (Pinkie) Remmie` → `Ingvold Remmie`. The nickname is a statement, not a label.
+
+    **Emma, 2026-08-27, on `Q141199868`:** *"analyze https://www.wikidata.org/wiki/Q141199868 and
+    why it came out as brackets instead of what it is supposed to be too"*. Geni records her as
+    `Ingvold (Pinkie) /Remmie/` and the brackets went straight into `mul` and `en`.
+
+    `CLAUDE.md` § *A nickname alias carries the SURNAME* is the rule and it is hers: a quoted token
+    inside `GIVN` is `P1449` *nickname*, **not** a given name and not part of the label, and
+    *"quotes never go in a label"*. `namemodel.QUOTED` already recognised both the quoted and the
+    parenthesised form — but it is applied to the `GIVN` **field**, and the label is rendered
+    separately, so the name statements were right while the label was wrong.
+
+    **Read off the FIELD, never off the rendered label**, which is the trap `namemodel` records
+    Emma catching once already: *"I thought we were resolving name objects but now we're determining
+    which name field to use as a source of the label?"* Regexing the label directly matches the
+    apostrophe in `Jean d'O Seigneur d'O` and would mangle French names — 27,211 labels match that
+    way against **22,707** genuine nickname tokens in `GIVN` (16,742 parenthesised, 5,965 quoted).
+
+    **Only spans that are in the label verbatim are removed.** The label may carry a married
+    surname the `GIVN` field knows nothing about, so this deletes what it can find and leaves
+    everything else alone rather than rebuilding the name.
+
+    **An ASCII apostrophe is NOT a quote here.** `QUOTED` accepts `'` as a delimiter, so on
+    `Jean d'O Seigneur d'O & de Maillebois` it matches `'O Seigneur d'` and this returned
+    `Jean d O & de Maillebois` — a French name destroyed to strip a nickname that was never
+    there. Only `"` and the curly pair delimit a nickname for the purposes of the label.
+    `namemodel` has the same exposure on the same pattern and it is queued rather than changed
+    here, because widening or narrowing `QUOTED` moves every `P1449` in the repo.
+    """
+    if not label or not fields:
+        return label
+    from namemodel import QUOTED
+    out = label
+    for m in QUOTED.finditer(fields.get("givn") or ""):
+        if m.group("paren") is None and not m.group(0).startswith(('"', "“", "”")):
+            continue
+        if m.group(0) in out:
+            out = out.replace(m.group(0), " ")
+    return " ".join(out.split())
+
+
 def nn_form(raw):
     """`<private> Skårland` → `NN Skårland`; anything else is returned untouched.
 
@@ -4797,7 +4839,7 @@ def main():
     # ORDER is special; they are emitted by the same loop as everyone else, so nothing about how
     # they are built can drift from the rest.
     for g in sorted(to_create, key=lambda x: (x not in SPINE_COMPLETE_NOW, labels.get(x, ""))):
-        f, label = facts.get(g), qs(labels.get(g, ""))
+        f, label = facts.get(g), qs(without_nickname(labels.get(g, ""), fields.get(g)))
         if not f:
             carried.append((g, label, "no derived facts"))
             continue

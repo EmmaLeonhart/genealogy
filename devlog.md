@@ -18077,3 +18077,41 @@ as*.
 in the crash along with every other cron. That is not a reason to do it now — she said ignore it —
 but it is a reason it will never fire on its own, which is the same failure her own standing item
 about mirroring crons into the queue exists to prevent.
+
+## 2026-08-29 — the brackets in `Q141199868`, and why the name statements were right
+
+Her item: *"analyze https://www.wikidata.org/wiki/Q141199868 and why it came out as brackets
+instead of what it is supposed to be too"*.
+
+**Geni records her as `Ingvold (Pinkie) /Remmie/`** — the nickname is in parentheses — and the
+brackets went into `mul` and `en` unchanged. She hand-corrected the item to
+`Ingvold "Pinkie" Remmie`.
+
+**The cause is a split between two paths, and only one of them was wrong.** `namemodel.QUOTED`
+already recognised the parenthesised form as well as the quoted one, so the *name statements* were
+correct — `P1449` *nickname* got `Pinkie`, and it was never emitted as a given name. But `QUOTED`
+is applied to the `GIVN` **field**, and the label is rendered from `derived-labels.csv` separately,
+which no nickname logic touches. Right statements, wrong label.
+
+**`without_nickname` reads the field, never the rendered label**, which is the trap `namemodel`
+records Emma catching once before: *"I thought we were resolving name objects but now we're
+determining which name field to use as a source of the label?"* Regexing the label directly matches
+27,211 rows against **22,707** genuine nickname tokens in `GIVN` (16,742 parenthesised, 5,965
+quoted) — the excess is apostrophes in French names.
+
+**Which is a bug in `QUOTED` itself.** It accepts `'` as a delimiter, so
+`Jean d'O Seigneur d'O & de Maillebois` matches `'O Seigneur d'` — my first version returned
+`Jean d O & de Maillebois`, destroying a name to strip a nickname that was not there. The label
+path now ignores apostrophe matches. **The name-statement path still has it**, and that name
+currently yields a `P1449` of `O Seigneur d`; narrowing `QUOTED` moves every `P1449` in the repo,
+so it is queued with the instruction to measure first rather than changed blind.
+
+Verified on six cases: `Ingvold (Pinkie) Remmie` → `Ingvold Remmie`, `Per (Pelle) Olof Levan` →
+`Per Olof Levan`, `Elizabeth "Eliza" "Betty" Moore Holmes` → `Elizabeth Moore Holmes`,
+`Óláfr "the Black" Guðrøðarson` → `Óláfr Guðrøðarson`, and both `Jean d'O …` and
+`Katarina Magnusdotter (Aspenäs)` — a parenthesis in the *surname* slot, which
+§ *A parenthesised token in `SURN`/`_MARNM` is THREE different things* governs — left untouched.
+Zero bracketed creation labels in the rebuilt batch.
+
+**Fixed at the emitter, not at source, and that is a compromise**: `derived-labels.csv` still holds
+the bracketed form and 48 scripts read it. Queued.
