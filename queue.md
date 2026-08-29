@@ -60,9 +60,7 @@ father `Q116150299` is *Jon Reimatsen*.
 Still to do, her instruction: rename him on **Geni** too, profile `6000000181444356836`, so the
 next export carries it and our tree stops saying *Lave*.
 
-### labels at creation time
-
-I noticed that in our recent creation batch only Simen Olsen (6000000016756376445) even had a cjk name. So that is extremely confusing since in my eyes it indicates the pipeline has a source for cjk labels, but that source is somehow inconsistent or absent. 
+ 
 
 ## Applying labels to existing items
 

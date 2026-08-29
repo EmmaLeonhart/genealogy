@@ -17752,3 +17752,26 @@ regenerating and pasting over the literal would silently drop her.
 statements, and those are not pending work: the nine pairs are her dictated item 11, whose method
 is a Wikidata link in each Geni bio followed by a `Forest` export per person — not a `P2600`
 written from here.
+
+## 2026-08-29 — the CJK-at-creation-time complaint is closed, and her diagnosis was right
+
+Her item: *"only Simen Olsen (6000000016756376445) even had a cjk name... it indicates the pipeline
+has a source for cjk labels, but that source is somehow inconsistent or absent."*
+
+**She had the diagnosis exactly right.** The source is `reports/garborg-name-transliterations.tsv`,
+a token table, and `label_in()` refuses a label unless **every** token in the name resolves —
+partial is worse than absent. The table had been built scoped to a single day's batch and held
+**218 tokens**, so almost every name contained at least one token it did not know and the whole
+`ja`/`zh` label was dropped. Nothing was wrong with the transliterator; it was being asked about
+words it had never been given.
+
+`extend-transliterations.py --two-hops` — every ledger person plus everyone within two
+parent/child/spouse hops, which is the scope she named — took the table to **3,261 tokens**.
+
+**Measured on the current batch: 37 of 37 creations carry `Lmul`, `Len`, `Lja` and `Lzh`.** Not
+one is held back for a missing transliteration — `grep -c transliteration
+reports/garborg-carry-forward.tsv` is 0. The carry-forward is now 571 sibling links over her
+10-a-day cap and 20-odd missing name items, which are different problems.
+
+So the item is deleted rather than carried. Simen Olsen was not special; he was the one person
+whose every token the 218-token table happened to cover.
