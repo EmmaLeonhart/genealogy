@@ -5463,7 +5463,24 @@ def main():
     # Dropping a statement cannot change which item a later `LAST` resolves to — only a
     # dropped `CREATE` could do that — so the two cases are not the same risk and are not
     # treated the same way. The preceding comment goes with the line it describes.
-    excluded = NEVER_TOUCH_GENI | NEVER_TOUCH_QID
+    # **The kluge is enforced HERE too, not only in the subgraph walk.**
+    #
+    # **Emma, 2026-08-29:** *"im not assuming anything wrongly about the algorithm im assuming
+    # you fucked the algorithm up at some point and it might try to do something with these
+    # people."* That is the right premise, and removing them from the `universe` does not meet
+    # it: `universe` only governs the subgraph walk, so it gates CREATIONS. The additions pass
+    # iterates the whole ledger, and the three Buyeo people ARE in the ledger -- so a bug
+    # anywhere upstream could still emit a statement about them.
+    #
+    # This filter is the last thing that touches the file, so it holds whatever the rest of the
+    # algorithm did.
+    #
+    # **The 178 clan individuals are deliberately NOT here.** Her line, same day: *"we probably
+    # are going to be changing their labelling in September, but being in the universe is not
+    # going to happen until October."* They are blocked from the universe and their labels still
+    # go out; excluding them here would silently drop the 15-a-day label drip.
+    excluded = (NEVER_TOUCH_GENI | NEVER_TOUCH_QID
+                | set(KLUGE_UNIVERSE_BLOCK) | set(KLUGE_ENTITY_RESOLUTION_ASIA))
 
     def names_excluded(line):
         return any(tok in line for tok in excluded)

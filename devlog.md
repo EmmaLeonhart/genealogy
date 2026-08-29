@@ -19012,3 +19012,25 @@ Knutsdotter (parent `Q5915800`, unmatched `Q4955715`/`Q16595443`) and Ingrid Sva
 (parent `Q6197518`, unmatched `Q4958315`/`Q4955768`/`Q86458153`). That is the rival-parent shape,
 caught before creation, and it means the queue item's premise -- that the guard is `P2600`-only --
 is incomplete.
+
+## 2026-08-29 — the kluge is enforced at OUTPUT time, not only in the walk
+
+**Emma:** *"im not assuming anything wrongly about the algorithm im assuming you fucked the
+algorithm up at some point and it might try to do something with these people."*
+
+That premise found a real gap. Removing them from `universe` does **not** meet it: `universe`
+governs the subgraph walk only, so it gates *creations*. The additions pass iterates the whole
+ledger, and the three Buyeo people **are in the ledger** -- so a bug anywhere upstream could
+still have emitted a statement about them, and the kluge would not have stopped it.
+
+The block now also joins `excluded`, the filter that runs last over the finished file. It holds
+whatever the rest of the algorithm did, which is the only form of guarantee that answers her
+premise.
+
+**The 178 clan individuals are deliberately excluded from THIS half.** They stay out of the
+universe and their labels still go out; adding them here would have silently dropped the
+15-a-day label drip she wants running through September. Verified: 2 clan items in today's
+budget, 137 label lines in the batch.
+
+Verified after recompose: 31 creations, **0 occurrences** of any blocked QID, clan labels
+present, 289 passed / 32 skipped.
