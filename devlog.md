@@ -18637,3 +18637,28 @@ morning that nothing else would have noticed. Regenerated the report; the fix wa
 the test. **279 passed, 0 failed** after.
 
 Sent to her with `SendUserFile` rather than left in the repo, since she said she would run it later.
+
+## 2026-08-29 — I deferred a live item by misreading one sentence
+
+Her item had three parts: `P1810` carrying Geni's exact name; always adding an English label; and,
+where Geni has no English name, writing one onto Geni first. She ended it *"For now, we're sticking
+to this being a primary Wikidata-based project, so we just do not add a label."*
+
+**I read that as deferring all three. It deferred the third.** Her correction: *"Only the
+Geni-editing part."* So the English-label rule has been live and I had it parked for a day.
+
+**And the qualifier was already right, which is the part I had overblown.** `P1810` carries what
+Geni literally says — `<private> Garborg`, `Private`, `Unn (Bitten) Garborg` — while the label
+beside it is the normalised `NN Garborg`. Her rule exactly: *"we do it with whatever's on Geni, not
+whatever is all in Wikidata. This is a qualifier thing. It is something that I feel like you might
+have overblown to a certain extent."*
+
+**What the campaign actually is, once it runs:** the name written onto Geni is *"whatever our
+pipeline puts as the multilingual label on Wikidata"* — our `mul`, not a per-person judgement. And
+its target population is narrow: people whose Geni name exists only in CJK script.
+
+**Queued at the tail, her instruction:** count them. *"I don't know the degree of people that we
+have that only have CJK labels, because that is an important thing for analysing with this."*
+
+Her closing line is the one worth keeping: *"This is a relatively well-defined task that you decided
+to transform into something crazy."*

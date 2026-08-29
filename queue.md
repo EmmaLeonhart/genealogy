@@ -73,20 +73,27 @@ for `6000000001200156499` — the duplicate guard knows him and prints so — bu
 ledger, which is built from her contributions plus a targeted `P2600` lookup. Making `have` wider
 is a change to the algorithm she is mid-review of, so it is not being done here.
 
-### The English-name-on-Geni campaign — the half of `P1810` that is NOT done
+### English names ON GENI — the deferred half, and it is narrow
 
-`P1810` *subject named as* now rides on every `P2600` in the daily batch. This is the addendum,
-which is a separate campaign and is **not** started: always add an English-language name, and
-where Geni has none, use browser automation to put one on the Geni profile first (from Wikidata
-or elsewhere) before it can be cited.
+**Only the Geni-editing part was deferred**, not the English-label rule. Emma, 2026-08-29,
+correcting my reading of her *"we just do not add a label"*: that sentence parked writing names
+**onto Geni**, and nothing else.
 
-Her model case is `Q64636596`, which she found through its Genealogics ID.
+**What the value is, when it happens:** *"the entire thing is whatever our pipeline puts as the
+multilingual label on Wikidata. That is what our pipeline should be putting as the name, as in
+Geni."* So the Geni name comes from our `mul`, not invented per-person and not taken from a
+Wikipedia title.
 
-**Deferred by her own last sentence on it:** *"For now, we're sticking to this being a primary
-Wikidata-based project, so we just do not add a label."* So nothing is written to Geni yet; this
-item is the record of what the campaign would be.
+**Her actual concern is CJK-only labels** — people whose Geni name exists only in Han/kana/hangul
+and who therefore have no English form anywhere. Those are the ones this campaign is for.
 
-That's the thing I potentially want to do as a campaign to make Jenny readable to everybody. For now, we're sticking to this being a primary Wikidata-based project, so we just do not add a label.
+**Already done and not part of this:** the `P1810` qualifier. It carries **what Geni literally
+says** — `<private> Garborg`, `Private`, `Unn (Bitten) Garborg` — while the label beside it is the
+normalised `NN Garborg`. Her rule: *"we do it with whatever's on Geni, not whatever is all in
+Wikidata. This is a qualifier thing."*
+
+Her closing note on how I handled this, kept because it is the correction: *"This is a relatively
+well-defined task that you decided to transform into something crazy."*
 
 ## Stuff here (semi-confusing) 8-27
 
@@ -2049,6 +2056,23 @@ approved.
 - Her duplicate items are **deliberate**: create the duplicates, then merge them, because that
   leaves the trail Wikidata's review machinery expects.
 - The Wikidata link goes into bios **during the synoptic tree build**; Geni is never edited for it.
+
+## How many Geni labels actually need changing? Count them
+
+**Emma, 2026-08-29:** *"Put at the end of the queue: a specific thing, doing an analysis on the
+amount of people whose Geni labels are made to be changed and stuff like that."*
+
+**The number she wants first:** *"I don't know the degree of people that we have that only have CJK
+labels, because that is an important thing for analysing with this."* So: how many people in the
+corpus carry a name **only** in Han, kana or hangul, with no Latin form anywhere on the record?
+Those are the ones who would need an English name written onto Geni.
+
+`reports/derived-labels.csv` has `cjk_names`, `other_script_names` and `further_latin_names`, and
+`display-names.csv` has the raw fields and a `scripts` column, so this is offline and cheap.
+
+**Report the count before proposing any edit.** The campaign's value is whatever our pipeline puts
+in `mul`, so the second number worth having is how many of those people our pipeline can currently
+produce a `mul` for at all — a person we cannot label is not a person we can fix.
 
 ## ABSOLUTE PREREQUISITE — no individual is created without their CJK labels
 
