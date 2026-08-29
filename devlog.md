@@ -18748,3 +18748,32 @@ queue's own header says does not belong there.
 
 Deleted rather than annotated, per the queue's rule and § *LEGACY CODE IS DELETED*: a finished item
 left in place is another stale artifact for the next reader to trip over. Git has it.
+
+## 2026-08-29 — Arne to Charlemagne is one statement pair from continuous
+
+She ran the daily batch, then: *"Do this stuff to fix it up and then generate the quickstatements so
+I am able to get charlemagne properly connected."*
+
+**Her run created both missing people** — Ramborg Knutsdotter Lejon `Q141216350` (step 15) and
+Ingrid Guttormsdotter `Q141216349` (step 22) — picked up by the ledger refresh from her
+contributions, so no QID had to be asked for.
+
+**Re-measured rather than assumed.** `check-spine-bonds.py` over all 34 items in one batched
+request: **32 of 33 consecutive pairs bonded**, one break, exactly where predicted — steps 22–23,
+`Q141216349` and `Q19061035` stating nothing about each other.
+
+`reports/wikidata-charlemagne-last-bond.qs` is the two statements, sent to her.
+
+**And a correction I owe on my own framing.** I first told her the two creations would close the
+line *"end to end"*. They close **three of four** breaks. I found the fourth when building the batch
+and reported it then, but the first version is the one that stuck, and she asked directly whether
+she had been misled. She had been, by that sentence.
+
+**Why the fourth needed a hand-written file** — not sequencing, which is what it looks like.
+`LAST P22 Q19061035` would have worked inside her batch; Guttorm has existed for years. The builder
+only emits a link when the far end is in `have`, and `have` is the ledger. Guttorm carries `P2600`
+`6000000001200156499` on Wikidata but is not in her ledger, so the pipeline never knew it could
+point at him. Widening `have` to anyone with a known `P2600` is the general fix and is queued, not
+taken here.
+
+`SPINE_COMPLETE_NOW` is now dead — both people exist — and the queue item says to delete it.

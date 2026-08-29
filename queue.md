@@ -40,38 +40,27 @@ ones above them: `THE EDIT ALGORITHM`, `THE DAILY ALGORITHM`, `THE TAIL ALGORITH
 
 These are supposed to be manually added to the queue and worked on, do no just paraphrase during the rebase keep this part entirely intact. We are approaching usage limit for now.
 
-### The Charlemagne line: one bond left, after the next batch runs
+### Run `reports/wikidata-charlemagne-last-bond.qs` — two statements, then the line is closed
 
-The daily batch now creates both people the Charlemagne line was missing — Ramborg Knutsdotter
-Lejon (step 15) and Ingrid Guttormsdotter (step 22) — and they lead the file, per her *"a custom
-block at the beginning of the batch"*. `SPINE_COMPLETE_NOW` in `build-garborg-day.py` is the named
-pair; **delete that constant once they exist.**
+Her batch of 2026-08-29 created both missing people — **Ramborg Knutsdotter Lejon `Q141216350`**
+(step 15) and **Ingrid Guttormsdotter `Q141216349`** (step 22) — and closed three of the four
+breaks by itself.
 
-That closes three of the four broken bonds:
+**Measured after her run, not assumed:** `scripts/check-spine-bonds.py` over the whole path, one
+batched request for all 34 items — **32 of 33 consecutive pairs bonded**, the single break being
+steps 22–23, where `Q141216349` and `Q19061035` state nothing about each other.
 
-| steps | bond | where |
-| --- | --- | --- |
-| 14–15 | Tore II Gardson Gard `Q141205942` ↔ Ramborg | `P40`/`P25`, in the batch |
-| 15–16 | Ramborg ↔ Knut Algotsson `Q5915800` | `P22`/`P40`, in the batch |
-| 21–22 | Helena Guttormsdatter `Q4953376` ↔ Ingrid | `P40`/`P25`, in the batch |
-| 22–23 | Ingrid ↔ Guttorm Àsulfsson `Q19061035` | **here, after the batch** |
+The two statements that close it are in the file. After they run, **Arne Garborg is continuously
+linked to Charlemagne**.
 
-**The fourth, once Ingrid has a QID** — both directions name her, so it cannot go in the run that
-creates her:
+**Then delete `SPINE_COMPLETE_NOW` from `build-garborg-day.py`** — it named those two people and
+they now exist, so it is dead weight that reads like policy.
 
-    <INGRID>	P22	Q19061035	S2600	"6000000000771986019"
-    Q19061035	P40	<INGRID>	S2600	"6000000000771986019"
-
-Kept here rather than as a `.qs`: a batch file carrying a `<INGRID>` placeholder is not runnable
-QuickStatements, and `tests/test_p2600_batches.py` says so correctly.
-`reports/wikidata-spine-completion.qs` was deleted for that reason — it also duplicated Ramborg,
-who the batch already creates, and two `CREATE`s cannot be merged.
-
-**Why the fourth is not in the batch, and it is not a bug.** The builder only links to items in
-`have`, which is the ledger. Guttorm already exists on Wikidata *and* already carries the `P2600`
-for `6000000001200156499` — the duplicate guard knows him and prints so — but he is not in the
-ledger, which is built from her contributions plus a targeted `P2600` lookup. Making `have` wider
-is a change to the algorithm she is mid-review of, so it is not being done here.
+**The reason this needed a hand-written file at all**, worth keeping because it will recur: the
+builder only emits a link when the far end is in `have`, and `have` is the ledger. Guttorm has been
+on Wikidata for years carrying `P2600` `6000000001200156499`, but he is not in her ledger, so the
+pipeline never knew it was allowed to point at him. Widening `have` to include anyone with a known
+`P2600` is the general fix and is not made here.
 
 ### English names ON GENI — the deferred half, and it is narrow
 
