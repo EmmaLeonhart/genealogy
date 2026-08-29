@@ -19195,3 +19195,19 @@ a trailing token which is a marker in its own right, guarded so a name is never 
 
 Result: **0** label or alias lines ending in a marker. Segrid is `mul` *Segrid* with *mother of
 Malin Olofsdotter* in ten languages. 309 passed, 32 skipped.
+
+## 2026-08-29 — `SPINE_COMPLETE_NOW` deleted; both people exist
+
+Ramborg Knutsdotter Lejon `Q141216350` and Ingrid Guttormsdotter `Q141216349` are both in the
+ledger, so the constant that named them is dead. Its own comment said to delete it once they
+existed, and the reason it was a named pair rather than a rule is Emma's: *"Building the helper is
+over engineering a solution to a problem that will likely only exist today."*
+
+Three sites went, not one: the constant, the `take()` loop that pushed them into every batch, and
+the sort key that ordered them first. The orphaned 13-line comment block explaining why the pair
+was hard-coded went too -- leaving it would have been the § *LEGACY CODE IS DELETED* failure in
+miniature, a comment describing machinery that no longer exists.
+
+The spine still advances a step per path with the ordinary walk: Charlemagne 24 Åsulv Skulesson,
+Bergitte 8 Lars Osmundsen Foss-Eikeland, Bureus 10 Ulrika Persdotter, Signe 9 Søren Sørenson
+Gjesdal. 14 creations, 112 links. 289 passed, 32 skipped.

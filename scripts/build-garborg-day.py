@@ -793,15 +793,6 @@ def name_lines(label, plan, geni_id, father_qid, fields=None, sex="",
 #: run, so the stored order decides which end it grows from. `bergitte-to-emma.tsv` is stored
 #: Emma-first and is therefore REVERSED here; it had been walking outward from her, which is
 #: why it took `Richard Wade Borsheim` every single run.
-#: The only two people on `paths/charlemagne-to-arne-garborg.tsv` with no Wikidata item at all —
-#: steps 15 and 22, Ramborg Knutsdotter Lejon and Ingrid Guttormsdotter. Creating both in one run
-#: closes the line from Arne to Charlemagne end to end, which the ordinary one-step-per-run spine
-#: walk would take two runs to do. **A list, not a rule** — see the comment at its use site.
-#: **Delete this once they exist**; after that it is dead weight that reads like policy.
-SPINE_COMPLETE_NOW = (
-    "6000000004870648136",   # step 15, Ramborg Knutsdotter Lejon
-    "6000000000771986019",   # step 22, Ingrid Guttormsdotter
-)
 
 SPINE_PATHS = ("paths/charlemagne-to-arne-garborg.tsv", "paths/bergitte-to-emma.tsv",
                "paths/bureus-to-emma.tsv",
@@ -4409,23 +4400,6 @@ def compose(our_items, fam, rng, ring_seeds=None):
     # One step per PATH, so the line down to her advances every run as well as the line up
     # to Charlemagne. Her words: *"The ancestral couples ... are always getting made."*
     spine_added = 0
-    # **These two, this batch, at her instruction.** Emma, 2026-08-29, told that the Charlemagne
-    # line has only two people with no Wikidata item anywhere: *"just do quickstatements to fully
-    # complete the chain next session as a custom block at the beginning of the batch."*
-    #
-    # Naming them rather than deriving a rule is the point -- an earlier attempt generalised this
-    # into a `spine_closers()` helper and she was right about it: *"Building the helper is over
-    # engineering a solution to a problem that will likely only exist today."* Once these two are
-    # created the set is empty and the constant goes.
-    #
-    # They are steps 15 and 22 of `paths/charlemagne-to-arne-garborg.tsv`, seven apart, so neither
-    # is the other's neighbour and the same-batch limit never bites. Every person they link to
-    # already has an item: `reports/spine-bonds.tsv` shows 29 of the 33 consecutive pairs on that
-    # path bonded on Wikidata today, with all four breaks touching exactly these two.
-    for gid in SPINE_COMPLETE_NOW:
-        if take(gid, "spine completion, at her instruction"):
-            spine_added += 1
-            why.append(f"1. spine completion: {gid}")
     for rel, steps in spine_steps().items():
         for label, gid, name in steps:
             if take(gid, f"spine: {label}"):
@@ -5251,10 +5225,7 @@ def main():
               "#    QIDs -- two items minted in one batch cannot point at each other.",
               ""]
     created = 0
-    # `SPINE_COMPLETE_NOW` first — *"as a custom block at the beginning of the batch"*. Only the
-    # ORDER is special; they are emitted by the same loop as everyone else, so nothing about how
-    # they are built can drift from the rest.
-    for g in sorted(to_create, key=lambda x: (x not in SPINE_COMPLETE_NOW, labels.get(x, ""))):
+    for g in sorted(to_create, key=lambda x: labels.get(x, "")):
         f, label = facts.get(g), qs(expand_abbreviations(
             without_nickname(labels.get(g, ""), fields.get(g)), g))
         if not f:

@@ -40,20 +40,6 @@ ones above them: `THE EDIT ALGORITHM`, `THE DAILY ALGORITHM`, `THE TAIL ALGORITH
 
 These are supposed to be manually added to the queue and worked on, do no just paraphrase during the rebase keep this part entirely intact. We are approaching usage limit for now.
 
-### Delete `SPINE_COMPLETE_NOW` — the Charlemagne line is CLOSED
-
-**Arne Garborg is continuously linked to Charlemagne as of 2026-08-29.** Measured, not assumed:
-`scripts/check-spine-bonds.py` over all 34 items in one batched request — **33 of 33 consecutive
-pairs bonded**, up from 29 this morning.
-
-Her batch created **Ramborg Knutsdotter Lejon `Q141216350`** and **Ingrid Guttormsdotter
-`Q141216349`**, closing three of the four breaks; `reports/wikidata-charlemagne-last-bond.qs` closed
-the fourth, Ingrid → Guttorm `Q19061035`.
-
-**What is left is one deletion:** `SPINE_COMPLETE_NOW` in `build-garborg-day.py` names those two
-people and they now exist, so it is dead weight that reads like policy. Its own comment says to
-delete it once they exist.
-
 ### English names ON GENI — the deferred half, and it is narrow
 
 **Only the Geni-editing part was deferred**, not the English-label rule. Emma, 2026-08-29,

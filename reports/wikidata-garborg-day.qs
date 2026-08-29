@@ -4,38 +4,38 @@
 #   batch and be limited to a count of 15 labels added per batch". A label set
 #   at CREATION time is neither counted nor capped -- "a label added during item
 #   creation is good".
-#   2127 more are held for a later run; a repeat is a no-op, so nothing is lost.
+#   2112 more are held for a later run; a repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
-#   Q45471981: set the es label
-Q45471981	Les	"hombre del clan Li, de Longxi Didao"
-#   Q45471981: set the it label
-Q45471981	Lit	"uomo del clan Li, da Longxi Didao"
-#   Q45471981: set the pt label
-Q45471981	Lpt	"homem do clã Li, de Longxi Didao"
-#   Q45471981: set the ca label
-Q45471981	Lca	"home del clan Li, de Longxi Didao"
-#   Q45472107 (李 of 隴西狄道): mul label = NN
-Q45472107	Lmul	"NN"
-#   Q45472107: set the nb label
-Q45472107	Lnb	"mann av Li-slekten, fra Longxi Didao"
-#   Q45472107: set the da label
-Q45472107	Lda	"mand af Li-slægten, fra Longxi Didao"
-#   Q45472107: set the sv label
-Q45472107	Lsv	"man av Li-ätten, från Longxi Didao"
-#   Q45472107: set the de label
-Q45472107	Lde	"Mann des Klans Li, aus Longxi Didao"
-#   Q45472107: set the es label
-Q45472107	Les	"hombre del clan Li, de Longxi Didao"
-#   Q45472107: set the it label
-Q45472107	Lit	"uomo del clan Li, da Longxi Didao"
-#   Q45472107: set the pt label
-Q45472107	Lpt	"homem do clã Li, de Longxi Didao"
-#   Q45472107: set the ca label
-Q45472107	Lca	"home del clan Li, de Longxi Didao"
-#   Q45473385 (李 of 隴西狄道): mul label = NN
-Q45473385	Lmul	"NN"
-#   Q45473385: set the nb label
-Q45473385	Lnb	"mann av Li-slekten, fra Longxi Didao"
+#   Q45473385: set the da label
+Q45473385	Lda	"mand af Li-slægten, fra Longxi Didao"
+#   Q45473385: set the sv label
+Q45473385	Lsv	"man av Li-ätten, från Longxi Didao"
+#   Q45473385: set the de label
+Q45473385	Lde	"Mann des Klans Li, aus Longxi Didao"
+#   Q45473385: set the es label
+Q45473385	Les	"hombre del clan Li, de Longxi Didao"
+#   Q45473385: set the it label
+Q45473385	Lit	"uomo del clan Li, da Longxi Didao"
+#   Q45473385: set the pt label
+Q45473385	Lpt	"homem do clã Li, de Longxi Didao"
+#   Q45473385: set the ca label
+Q45473385	Lca	"home del clan Li, de Longxi Didao"
+#   Q45474359 (李 of 隴西狄道): mul label = NN
+Q45474359	Lmul	"NN"
+#   Q45474359: set the nb label
+Q45474359	Lnb	"mann av Li-slekten, fra Longxi Didao"
+#   Q45474359: set the da label
+Q45474359	Lda	"mand af Li-slægten, fra Longxi Didao"
+#   Q45474359: set the sv label
+Q45474359	Lsv	"man av Li-ätten, från Longxi Didao"
+#   Q45474359: set the de label
+Q45474359	Lde	"Mann des Klans Li, aus Longxi Didao"
+#   Q45474359: set the es label
+Q45474359	Les	"hombre del clan Li, de Longxi Didao"
+#   Q45474359: set the it label
+Q45474359	Lit	"uomo del clan Li, da Longxi Didao"
+#   Q45474359: set the pt label
+Q45474359	Lpt	"homem do clã Li, de Longxi Didao"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
