@@ -13,10 +13,6 @@ lines as say what to do.
 audits, dead crons and superseded priorities. Recover any of it with
 `git show 6edf302b:queue.md`.
 
-## 00. Restart stuff
-
-We need to recover whatever the earlier session was doing using the transcript since that will give context for what it was doing and whether there were any important interrupted tasks it was doing. Session unexpectedly ended due to a computer crash so look at most recent transcript for it.
-
 ## 0. Aug 28, 2026 manual adds
 
 These are supposed to be manually added to the queue and worked on, do no just paraphrase during the rebase keep this part entirely intact. We are approaching usage limit for now.
@@ -50,6 +46,26 @@ I noticed that in our recent creation batch only Simen Olsen (600000001675637644
 ## Applying labels to existing items
 
 We are way too gung ho about adding cjk labels to existing items. You may have noticed that I am constantly removing them from the quickstatements. I consider them to be disruptive and suspicion raising. imo any label changes should occur at the beginning of the batch and be limited to a count of 15 labels added per batch. I do no know what you are doing with this, but understand that a label added after item creation is a risk and a label added during item creation is good. 
+
+## Audit the names of every item Emma has edited, and every item they were merged into
+
+**Recovered from the transcript of the session that crashed 2026-08-28 18:52**, where it was her
+last instruction and never reached this file. Emma: *"All the individuals that I've worked on and
+any individuals that they've been merged into should basically always be all the individuals that
+I've worked on, pretty much all of them. All the people that they've been merged into should have
+audits done on their names to figure out the degree that we've messed them up."*
+
+The prompt for it is the married-name flip of 2026-08-29 (`derive-labels.py`, 251,707 labels) and
+the two-hop transliteration table (218 → 3,261 tokens). Both landed **after** most of her items
+were created, so anything made before them carries the birth name in `mul`, `en`, `ja` and `zh`.
+`_label_corrections()` in `build-garborg-day.py` emits the fix for the subset whose live label
+matches a known birth-name alias; the audit is the wider question of how far the damage goes,
+including the items hers were merged into, which the ledger only learns of through the redirect
+resolution in the contributions refresh.
+
+Build the CSV first — one row per item per language, what Wikidata holds against what our tree now
+says — then decide. `reports/garborg-qids.tsv` carries the live labels, `reports/derived-labels.csv`
+carries ours.
 
 ## 1. THE MASS EXPORT CAMPAIGN — front task, RUNNING
 
@@ -1697,6 +1713,46 @@ different thing: linking people already on both sides, not finding new ones.
   to preserve and normalise them to `NN`. The deleting version shipped and touched a batch. Check
   nothing carries a label it produced.
 - **Uncommitted at the time of writing:** the `strip_markers` rewrite and the regenerated ledger.
+
+## LAST — name items are being MERGED by other editors. Stop preferring creation over reuse
+
+**Recovered from the same crashed session; she asked for it at the end of the queue.** Emma,
+2026-08-29: *"I've noticed that certain names, for example Tunheim, I've noticed that some of these
+names got merged in with an existing item. I'm extremely confused how this happened, and it seems
+to me to indicate maybe you're not actually checking the existence of the names correctly in our
+data. Having a strong preference for creating new name objects versus using the existing ones is a
+very wrong move here. Creating the name objects and having them merged by somebody else (and this
+is important) is a thing that gets attention in a bad way."*
+
+Two things, in order:
+
+- **Find out how the existence check missed them.** Start from the name items the batches have
+  created, find which have since been merged away by another editor, and work back to what the
+  lookup did at the time. A diacritic is *not* the first explanation to reach for — `CLAUDE.md`
+  records that folding them invents ambiguity — so measure before theorising.
+- **Then invert the default.** Reuse an existing name item unless there is positive evidence the
+  usage differs. § *One name item per USAGE* still holds: a given name and a family name spelled
+  alike are genuinely two items; two spellings of one family name are not.
+
+## LAST — a comprehensive CJK fallback so nothing is ever emitted untransliterated
+
+**Recovered from the crashed session; she put it at the very end.** Emma, 2026-08-29: *"setting up
+a comprehensive fallback... probably using external libraries for doing katakana, so that it is
+very consistent. If anything even remotely wants to generate without having katakana or Chinese
+characters, it goes through this thing and then adds the token to the library, and then continues
+on."*
+
+So the shape is a **funnel, not a table lookup**: an unknown token is transliterated on the spot,
+written into `reports/garborg-name-transliterations.tsv`, and the caller carries on — rather than
+`label_in()` returning `(None, None)` and the whole label being dropped.
+
+**Her standard, and it should not be softened:** *"Incorrect romanization or incorrect
+representations in katakana are totally acceptable. An incorrect name is not, because half these
+words, nobody knows how they're pronounced anyway."* That relaxes *partial is worse than absent*
+for the **rendering** of a token and for nothing else — a wrong *name* stays forbidden.
+
+**This is the one place an external dependency is sanctioned.** `CLAUDE.md` § *Stdlib only* allows
+one where the stdlib genuinely cannot do the job, and she has named this as such a case.
 
 ## THE VERY LAST ITEM — review the algorithm once we are connected to the World Tree
 

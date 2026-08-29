@@ -17516,3 +17516,37 @@ so the two halves of the pipeline now agree.
 `Jeanne LeBaveux` → `La Baveuse` is a spelling variant rather than a marriage at all. The flip was
 applied to everyone because that is what she asked for; restricting it to `sex=F` is a one-line
 change if she wants it.
+
+## 2026-08-29 — recovering the session that crashed, and the three instructions it never wrote down
+
+The queue's first item was to work out what the session that ended in the 2026-08-28 crash had
+been doing and whether anything was left interrupted. Transcript
+`9ecc4b2b-0ada-4185-9671-a26cfda7080d.jsonl`, 7,479 lines, last entry 18:52 local.
+
+**Nothing was interrupted.** Its final unit of work committed cleanly as `c04b99f9` and is
+pushed: the CJK clan block restored, `SPINE_P2600_BLOCK` no longer emitted, `_label_corrections()`
+narrowed to items literally holding a birth-name alias, the transliteration table taken from 218
+to 3,261 tokens by `extend-transliterations.py --two-hops`, and `CLAUDE.md` § *If you are not sure
+what she wants, ASK*. The working tree is clean apart from two `.bat` launchers, and
+`origin/main` is level with `HEAD`. So the crash cost no work — it cost the *capture* of what she
+said last.
+
+**Three instructions from her 01:38 message had no queue item.** They are now sections of
+`queue.md`, in the places she named:
+
+- **Audit the names of every item she has edited, and every item they were merged into.** The
+  married-name flip and the two-hop table both landed after most of her items were created, so
+  those items hold the birth name in `mul`, `en`, `ja` and `zh`. `_label_corrections()` fixes the
+  subset whose live label matches a known alias; how far the damage actually goes is unmeasured.
+- **Name items are being merged away by other editors** — `Tunheim` is her example. The existence
+  check is missing items that exist, and the standing preference for creating over reusing is
+  wrong. At the end of the queue, per her.
+- **A comprehensive CJK fallback**, the very last item: a funnel that transliterates an unknown
+  token on the spot and writes it into the table, rather than `label_in()` returning nothing and
+  the label being dropped. Her standard for it is that a wrong *romanisation* is acceptable and a
+  wrong *name* is not, and it is the one place she has sanctioned an external dependency.
+
+Also recovered, and already covered by existing queue items rather than duplicated: her complaint
+that only Simen Olsen got a CJK name in the last creation batch (fixed by the two-hop table — 1 of
+41 became 36 of 37), and the cap of 15 label changes per batch on existing items, which the
+185-row corrections block does not yet respect.
