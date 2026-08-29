@@ -25,13 +25,25 @@ these people are quite linked as they are a family relationship to each other."*
 baseline -- but a freshly downloaded `.ged` is not in it until the merge is re-run, which is
 the better part of an hour.
 
-The gap is closed by scanning every `.ged` **modified more recently than `derived-labels.csv`**,
-wherever it sits under `exports/`. That is exactly the set the merge has not seen, and it is
-right by construction rather than by naming directories: an export filed into
-`exports/fleshing-out/` counts the same as one filed into `exports/bure-campaign/`. A
-directory list was the first version and it was a silent narrowing -- coverage would have
-been under-reported for anything filed elsewhere, which looks like people still needing an
-export.
+The gap is closed by scanning every `.ged` **modified more recently than the MERGE**, wherever it
+sits under `exports/`. Naming directories was the first version and silently under-reported
+anything filed elsewhere.
+
+**The freshness mark is `out/merged.ged`, not `reports/derived-labels.csv`, and getting that wrong
+cost a day.** `derived-labels.csv` is *derived from* the merge, so regenerating it stamps it with
+today's date while the tree behind it may be days old. On 2026-08-29 the merge was **Aug 24 18:20**
+and `derived-labels.csv` was **Aug 28 18:24** -- so all 40 campaign exports, run on Aug 28 between
+01:25 and 14:00, fell in the gap: too old to be scanned raw, too new to be in the tree. Every one
+was invisible, and this script reported **100 of 251 still absent** for a campaign whose own log
+ends *"CAMPAIGN COMPLETE: all 251 Bureatten people with a Geni id are now in exports/"*. The true
+number was 0, confirmed by scanning every `.ged` directly.
+
+That is `CLAUDE.md` § *Correcting her own record in an export does nothing until the tree is
+re-merged* in a new place: **running the analysers is not running the generator**, and a file's
+mtime says when it was written, never how fresh its inputs were.
+
+If the merge is missing the script falls back to `derived-labels.csv` and says so, because a
+checkout without `out/merged.ged` should still measure something rather than crash.
 
 Rereading the whole corpus would be ~13 GB; this reads only what is new, which is usually one
 file.
@@ -86,7 +98,15 @@ def main() -> None:
                 where.setdefault(gid, "merged tree")
 
     # Every export the merge has not seen yet, wherever it was filed.
-    merged_at = DERIVED.stat().st_mtime
+    # The MERGE's own timestamp -- see the docstring. `derived-labels.csv` is derived from it and
+    # can be far newer than the tree it describes, which is how 40 exports went unseen.
+    merged_ged = ROOT / "out" / "merged.ged"
+    if merged_ged.exists():
+        merged_at = merged_ged.stat().st_mtime
+    else:
+        merged_at = DERIVED.stat().st_mtime
+        print("out/merged.ged is absent; falling back to derived-labels.csv as the freshness "
+              "mark, which UNDER-reports coverage if the merge is older than it")
     fresh = [g for g in sorted((ROOT / "exports").rglob("*.ged"))
              if g.stat().st_mtime > merged_at and "excluded" not in g.relative_to(ROOT).parts]
     for ged in fresh:

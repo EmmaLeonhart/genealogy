@@ -107,11 +107,15 @@ supplied — `6000000040951562251`, now in the hard-coded `P2600` block — seed
 `6000000227468650841` and exporting. Group 3 is dropped: all eight are already in the corpus 3 to
 15 times and the Geni-bio half of the item was withdrawn.
 
-**Next: the 100 in `reports/bure-to-export.tsv`.** Each needs a placeholder seed, which Emma
-authorised — *"And yes I'm authorizing new seed people on all of these people lol"*. Method per
-`docs/export-seed-rules.md`: open `geni.com/family-tree/index/<id>`, take the highest tier the
-page offers, read the seed's id off the tab its node opens, export `Forest`/5000 from the seed,
-and count success when the target appears in the file.
+**Group 4 is DONE — all 251 Bureätten people are in `exports/`, 0 absent.** 40 exports on
+2026-08-28 between 01:25 and 14:00 Pacific closed it, and the log's last line says so:
+*"CAMPAIGN COMPLETE."* `reports/bure-to-export.tsv` is now empty.
+
+**It was reported as "100 still absent" for a day and that was a measurement bug, not a setback.**
+`bure-coverage.py` took its freshness mark from `reports/derived-labels.csv` (Aug 28 18:24) instead
+of `out/merged.ged` (Aug 24 18:20), so every campaign export was too old to be scanned raw and too
+new to be in the tree — all 40 invisible. Fixed 2026-08-29; the script now marks off `merged.ged`
+and scans 41 exports where it scanned 1.
 
 Record every attempt in `reports/mass-export-log.tsv`, including seeds.
 

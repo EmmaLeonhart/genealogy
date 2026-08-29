@@ -18431,3 +18431,34 @@ vocabularies for one group, and I used a third.
 
 Neither man is in our corpus — zero exports hold either — so the pairing lives in the `.qs` and the
 tree learns it only when an export reaches them.
+
+## 2026-08-29 — the Bureätten campaign was finished a day ago and I kept reporting it open
+
+Emma: *"I thought the Bureatten people were done lol were they not?"* They were. She was right from
+memory and I had been wrong from a script for a day.
+
+**All 251 are in `exports/`, 0 absent** — 40 exports on 2026-08-28 between roughly 01:25 and 14:00
+Pacific, and `reports/mass-export-log.tsv` ends *"CAMPAIGN COMPLETE: all 251 Bureatten people with a
+Geni id are now in exports/."* Confirmed independently by scanning every `.ged` for each id rather
+than by trusting the script again.
+
+**The bug.** `scripts/bure-coverage.py` scans exports *newer than the merge* to cover what the
+merged tree has not seen — but it took the merge's date from `reports/derived-labels.csv` instead of
+`out/merged.ged`. `derived-labels.csv` is **derived from** the merge, so regenerating it stamps it
+with today while the tree behind it stays old: **Aug 28 18:24 against a merge of Aug 24 18:20**.
+Every campaign export, run on Aug 28, landed in that gap — too old to be scanned raw, too new to be
+in the tree. All 40 invisible, and the script confidently reported **100 of 251 absent**.
+
+Fixed: the freshness mark is `out/merged.ged`, with a fallback to `derived-labels.csv` that says out
+loud that it under-reports. Raw-scanned exports went **1 → 41**, and the count went **100 absent →
+0**.
+
+**The lesson is not new, which is the annoying part.** `CLAUDE.md` already says *"Correcting her own
+record in an export does nothing until the tree is re-merged"* and *"running the analysers is not
+running the generator"*. This is the same shape one layer down: a file's mtime says when it was
+written, never how fresh its inputs were.
+
+**And I repeated the number twice in status reports without checking it.** The rail says never claim
+verified without running it; quoting a script's output is not the same as verifying its premise.
+`queue.md` and `docs/mass-export-run.md` both said "next: the 100 in bure-to-export.tsv" and are now
+corrected, with the caution recorded in the run sheet rather than only here.

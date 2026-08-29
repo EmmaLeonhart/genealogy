@@ -1,6 +1,19 @@
 # The mass export campaign — the run sheet
 
-**Status, 2026-08-28: group 1 DONE, group 2 RUNNING, group 3 dropped, group 4 AUTHORISED.**
+**Status, 2026-08-29: ALL FOUR GROUPS DONE.** Group 4 finished 2026-08-28 at about 14:00 Pacific
+after 40 exports — **all 251 Bureätten people with a Geni id are in `exports/`, 0 absent**.
+
+**A caution for whoever reads this next.** For a day afterwards `bure-coverage.py` reported *100
+still absent*, and it was believed and repeated in two status reports. The script marked freshness
+off `reports/derived-labels.csv` rather than `out/merged.ged`; the former is derived from the
+latter, so regenerating it stamped it Aug 28 18:24 while the tree behind it was Aug 24 18:20, and
+every campaign export fell in the gap. **Check what a coverage number is measured against before
+trusting it** — Emma spotted this from memory alone, asking why a campaign she thought was finished
+was being reported as outstanding.
+
+---
+
+**Status, 2026-08-28 (historical): group 1 DONE, group 2 RUNNING, group 3 dropped, group 4 AUTHORISED.**
 The captcha that stopped the first attempt has not reappeared. Emma authorised the placeholder
 seeds group 4 needs -- *"And yes I'm authorizing new seed people on all of these people lol"* --
 so the campaign runs end to end from here.
