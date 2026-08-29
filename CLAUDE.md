@@ -1291,6 +1291,23 @@ So position alone does not make a middle name — the second given token is a mi
 name **only** if it is not patronymic. `Q245025` and `Q110874` are decided by what
 the token *is*, and `P1545` numbers them either way.
 
+### She answers `AskUserQuestion`. A question in prose usually gets no reply
+
+**Emma, 2026-08-29:** *"Again I'll only regularly answer if you use AskUserQuestion add that to
+claude.md"*.
+
+So a question that matters goes through the **tool**, with real options, not buried in a paragraph
+of report. A question in prose is not a question she has been asked — it is a sentence she can
+scroll past, and § *Emma not replying means she is content* then reads that silence as approval.
+
+**This is the mechanism behind the two-hourly blocker rule**, § *EVERY TWO HOURS, PUT THE BLOCKERS
+TO HER AS AN AskUserQuestion*, and the reason it says *the actual tool, with real options*.
+
+**Every option must be one she could actually pick.** On 2026-08-29 the export-timeout question
+offered *"kill and resubmit now"*; Geni has no cancel, so that option was fiction. Her reply: *"you
+think you can kill a geni export read the fucking docs you can't."* An impossible option is worse
+than a missing one, because it invites a decision that cannot be carried out.
+
 ### If you are not sure what she wants, ASK. `AskUserQuestion`, not a guess
 
 **Emma, 2026-08-29:** *"Add to claude.md that if you aren't sure what I want do

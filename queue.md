@@ -2074,6 +2074,49 @@ Those are the ones who would need an English name written onto Geni.
 in `mul`, so the second number worth having is how many of those people our pipeline can currently
 produce a `mul` for at all — a person we cannot label is not a person we can fix.
 
+## "Synoptic tree" means two different things — resolve it usage by usage
+
+**Emma, 2026-08-29, asked what it concretely is:** *"it is consistently conflated between the union
+of all the geni gedcoms and the union of that tree with all data sources."*
+
+So the term carries two meanings and the repo does not distinguish them:
+
+- **the Geni union** — every `.ged` under `exports/` merged, i.e. `out/merged.ged`
+- **the full union** — that tree joined to every other source, Wikidata above all
+
+**Her instruction: `AskUserQuestion` on every specific usage** — *"Add to the end of the queue a
+task to run AskUserQuestion on every specific usage as the full version geni union idk or custom"*.
+So go through every place the phrase appears in `CLAUDE.md`, `queue.md`, `docs/` and the scripts,
+and put each one to her as *Geni union / full union / something else*, rather than picking a
+definition and applying it everywhere.
+
+**She also considers the immediate question moot:** *"I'm pretty sure the gedcom we added as a
+workaround makes this question obsolete"* — `exports/post-merge/wikidata-qid-links.ged` puts the
+Wikidata links into the corpus, so they arrive in the merge either way and nothing waits on the
+definition being settled.
+
+## Census: how the four labels derive from each other, and how many people lack each
+
+**Emma, 2026-08-29, on where each label comes from:** *"Mul is transcribed lol and Japanese and
+Chinese are the characters and korean is a rendering derived from the Chinese ir Japanese and
+English is from the mul lol, add a count cebsus thing to the end of the queue."*
+
+The chain she describes:
+
+- **`mul`** — transcribed; the base everything else derives from
+- **`ja` / `zh`** — the characters themselves
+- **`ko`** — a rendering derived from the Chinese or Japanese, not from `mul` directly
+- **`en`** — from `mul`
+
+**What to count**, one row per person per language as `CLAUDE.md` § *"Analyse this" means build a
+CSV* requires: who has each label today, who could have one under this chain, and who could not and
+why. The number that matters most is the people whose Geni name is CJK-only, since the emitter
+currently gates `en` on a Latin character being present and so gives them none.
+
+**No `ko` is emitted anywhere today.** Worth stating plainly rather than discovering: this is the
+first mention of Korean in the label model, so the census should say how many people it would apply
+to before anything emits it.
+
 ## ABSOLUTE PREREQUISITE — no individual is created without their CJK labels
 
 **Emma, 2026-08-29:** *"There should be an absolute prerequisite that nothing is created until you

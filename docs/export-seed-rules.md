@@ -296,6 +296,12 @@ Once the individual exists, export from **their** profile:
 3. Submit, leave the page open — it refreshes itself when the file is built — then
    click **Download My GEDCOM File**.
 
+**A SUBMITTED EXPORT CANNOT BE CANCELLED.** Emma, 2026-08-29: *"you think you can kill a geni
+export read the fucking docs you can't."* Geni offers no cancel, no abort and no queue management —
+once submitted, the only options are wait or abandon. So "kill it and resubmit" is not a choice
+anyone can make, and offering it as one is offering fiction. A slow export is waited out or written
+off; it is never killed.
+
 **One at a time is GENI's limit, not a preference.** Emma, 2026-08-18: *"There's no
 way that you can do an export concurrently. That isn't my decision thats geni."* So
 there is no throughput dial here and nothing to trade off — a second export cannot be

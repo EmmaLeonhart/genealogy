@@ -18662,3 +18662,29 @@ have that only have CJK labels, because that is an important thing for analysing
 
 Her closing line is the one worth keeping: *"This is a relatively well-defined task that you decided
 to transform into something crazy."*
+
+## 2026-08-29 — four rulings from one AskUserQuestion, and a rule about asking
+
+**She answers the tool, not prose.** *"Again I'll only regularly answer if you use AskUserQuestion
+add that to claude.md"*. Now a `CLAUDE.md` section: a question in a paragraph is not a question she
+has been asked, and § *Emma not replying means she is content* then reads that silence as approval.
+
+**And an option she cannot pick is worse than no option.** My export-timeout question offered *"kill
+and resubmit now"*. Geni has no cancel — `docs/export-seed-rules.md` only ever said one-at-a-time,
+and I extrapolated a stop button that does not exist. Her reply: *"you think you can kill a geni
+export read the fucking docs you can't."* The no-cancel fact is now in that file, so the same
+fiction cannot be offered twice. Her ruling on the export itself: keep the four hours.
+
+**"Synoptic tree" means two things and the repo never says which.** *"it is consistently conflated
+between the union of all the geni gedcoms and the union of that tree with all data sources."* Queued
+at the tail, and deliberately **not** resolved by me picking one: her instruction is to
+`AskUserQuestion` on **every specific usage**. She also called the immediate question moot, because
+`exports/post-merge/wikidata-qid-links.ged` puts the links in the corpus and the merge picks them up
+whichever definition applies.
+
+**The label chain, in her words:** *"Mul is transcribed lol and Japanese and Chinese are the
+characters and korean is a rendering derived from the Chinese ir Japanese and English is from the
+mul lol."* So `mul` is the base, `ja`/`zh` are the characters, **`ko` derives from those rather than
+from `mul`**, and `en` comes from `mul`. Queued as a census — and worth flagging that **nothing
+emits `ko` today**, so this is the first appearance of Korean in the label model and the count
+should exist before any statement does.
