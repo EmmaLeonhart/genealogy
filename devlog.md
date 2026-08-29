@@ -18307,3 +18307,39 @@ but are a bit more stable."* Cron text lives only in memory — every cron died 
 none was recreated, which is why nothing ran between 00:03 and 06:00 today. All three are now
 written out in the queue with their schedules and their rails, so the next session can rebuild them
 from the file rather than from memory.
+
+## 2026-08-29 — the 27 items she edited but did not create
+
+Her item: *"Look over all of the items that I have edited but did no create. These are a bit of a
+weak point for me since they are potentially items that are no in my watchlist and might cause me
+issues. Create a batch of quickstatements that does some kind of minor edit on all of them if
+possible preferable settin their mul labels or something."*
+
+**The 27 came from the ledger, not from a guess.** `refresh-garborg-ledger.py` already reads the
+`new` flag on her contributions and marks everything else *"(P2600 added to an existing item)"*.
+Those rows are exactly the population.
+
+**"Preferably setting their mul labels" turns out to be possible for 6 of the 27**, and the split
+is the finding:
+
+| | | |
+| ---: | --- | --- |
+| **6** | no `mul` at all | `Lmul`, additive — done |
+| **10** | `mul` differs from ours | **not touched** — somebody else's label |
+| **9** | `mul` already matches | setting it again is a **no-op**, so no edit and no watchlist entry |
+| **2** | we hold no label | nothing to offer |
+
+**The 10 are the ones worth arguing about, and they settle themselves on inspection.** They include
+`Q467497` — Wikidata's *Arne Garborg* against our *Aadne Eivindson Garborg*, the exact case
+`CLAUDE.md` names as the thing not to do — and `Q12598947` *Buyeo Taebi*, which is **her own word
+ordering** from `entity_resolution.md`. Her ruling this morning was *"If I added the label we can
+overwrite it"*; nobody here added these.
+
+**So the 10 get an `Amul` instead.** An alias is additive, never destructive, is a real edit — hence
+a watchlist entry, which is the whole point of her item — and is independently useful: `Help:Aliases`
+says aliases exist to find entities in searches, and somebody looking for *Aadne Eivindson Garborg*
+currently cannot find him.
+
+`reports/wikidata-edited-not-created.qs`: **16 items get an edit**, the 6 label additions first so
+the file can be split at her 15-a-batch line if she wants. The 11 this batch cannot help are listed
+in the file as comments, so nobody goes looking for them later and concludes they were missed.

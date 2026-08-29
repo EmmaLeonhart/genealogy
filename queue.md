@@ -190,8 +190,6 @@ row carrying the expansion and the *basis* for it. The abbreviated form is delib
 doubled, built by `aliases_for` from a `P1449` nickname that is itself a whole name. Small, and its
 own problem.
 
-Look over all of the items that I have edited but did no create. These are a bit of a weak point for me since they are potentially items that are no in my watchlist and might cause me issues. Create a batch of quickstatements that does some kind of minor edit on all of them if possible preferable settin their mul labels or something
-
 Look over this item it just piques my curiosity whether we can identify it on geni and potentially add a mul label https://www.wikidata.org/wiki/Q4411612
 
 ## The queued tasks, IN HER EXACT WORDS — the times are ORDERING, not schedule
