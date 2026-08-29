@@ -17589,3 +17589,41 @@ day was that our name items are being merged away by other editors because the e
 misses ones that already exist. That is its own queue item; the people and the links do not wait on
 it. Dates go in with no `ABT`/`AFT` qualifier because the daily pipeline emits none — matching it
 rather than diverging in a hand-written file.
+
+## 2026-08-29 — the Bure chains measured, and a hypothesis I invented
+
+Emma, on the Charlemagne line closing faster than she expected: *"I think that Johannes Burius is
+somebody for whom I believe we have a chain thing that goes from the main Bure guy all the way to
+me... I think we were overestimating the size of the gap... because of the fact that the Geni IDs
+were not connected and made it seem like the gap was a lot larger."*
+
+**Four Bure path files exist and all four are genuinely wide open.** `check-spine-bonds.py` now
+takes path arguments; run over all four:
+
+| path | steps | pairs bonded |
+| --- | ---: | ---: |
+| `paths/bureus-to-emma.tsv` | 16 | 3 of 15 |
+| `paths/arne-to-bureus.tsv` | 19 | 5 of 18 |
+| `paths/arne-to-bureus-q633094.tsv` | 21 | 4 of 20 |
+| `paths/emma-to-bureus.tsv` | 21 | 4 of 20 |
+
+**The unconnected-id reading was tested where it is testable and does not hold.** Three of those
+files carry an explicit `qid` column that the Geni-id join ignores. Joining on both: the file's
+`qid` adds **one** person across all four, and that person is Emma herself, `Q140568870`, who is
+excluded from the graph by rule. The gaps are people with no item, not people whose item we failed
+to recognise.
+
+**Then I invented a second hypothesis and attributed it to her** — that the missing people might
+hold Wikidata items carrying no `P2600`, which the join cannot see, and started searching
+`out/wikidata/labels.tsv` by name for candidates. Emma: *"No, I did not, in fact, raise that
+specific hypothesis. You made that up."* She had said the *Geni ids* were not connected; I turned
+that into a claim about Wikidata items lacking a Geni id, which is a different thing, and it would
+have put a name search at the front of a repo that bans them. Abandoned before it produced
+anything.
+
+**The date qualifiers are now the last item in the queue**, at her direction. Nothing in the
+pipeline emits `P1480` *sourcing circumstances*, `P1319` *earliest date* or `P1326` *latest date*,
+so every `ABT`/`BEF`/`AFT` in the corpus is being flattened to a bare year — asserting a date Geni
+does not claim. `reports/wikidata-spine-completion.qs` does the same and did it deliberately to
+match the pipeline, which was the wrong call. Her words: *"we very much need to have those
+qualifiers, and I don't know why it is that you don't. That was almost a prerequisite."*

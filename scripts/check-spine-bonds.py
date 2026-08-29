@@ -33,7 +33,9 @@ from genimerge.wikidata import WikidataClient  # noqa: E402
 
 sys.stdout.reconfigure(encoding="utf-8")
 
-PATHS = ("paths/charlemagne-to-arne-garborg.tsv", "paths/bergitte-to-emma.tsv")
+#: Default to the two spine paths; any path file may be named on the command line instead.
+PATHS = tuple(sys.argv[1:]) or ("paths/charlemagne-to-arne-garborg.tsv",
+                                "paths/bergitte-to-emma.tsv")
 #: The five that join two people. `P3373` sibling is here because a spine step can be a
 #: sibling hop -- the path's `relation_to_previous` column says which, and we do not assume.
 BONDS = ("P22", "P25", "P40", "P26", "P3373")
