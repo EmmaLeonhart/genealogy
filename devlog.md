@@ -18849,3 +18849,36 @@ line, and **296 passed, 0 failed**.
 
 The compose overran the two-minute foreground limit and was backgrounded — the ledger refresh is
 inside the run and talks to Wikidata, so that is expected rather than a fault.
+
+## 2026-08-29 — rival profiles: the repair half, and why a snapshot cannot do the safeguard
+
+`scripts/find-rival-profiles.py` (new) answers the half of Emma's front-of-queue item that needed
+no decision from her: *"especially finding items to correct so no harm occurs."* Fully offline
+against `out/wikidata/`; no live query.
+
+**It found 0, and the report says why that is close to vacuous.** Of 550 people this programme
+minted, 303 are genuinely new and 287 have a parent or child recorded — but **only 15 of them have
+a neighbour that exists in the 2026-08-25 store snapshot**. The sweep needs a shared neighbour to
+anchor a comparison, and almost everyone our new items attach to was minted by the same batches,
+days after the download. A zero here is not "no rivals exist".
+
+That is the finding worth having: **the `P2600` blind spot has a second, compounding half.** The
+guard cannot see a person who has an item without a Geni id; the store cannot see the
+neighbourhood our own creations live in. Both say the screen has to run live at compose time,
+against the specific parents a batch is about to create.
+
+Two things ruled out along the way. We are **not** duplicating within a batch — 109 parents carry
+two or more of our items as children and **0** of those sibling sets share a label. And an earlier
+pass that failed to distinguish minted items from ones Emma merely added a `P2600` to returned 5
+pairs, all pre-existing ancestor/descendant namesakes (Mannerheim, Mankell, von Rosen, Piper,
+Burensköld) — none ours, none a defect.
+
+Getting there took three real bugs in the script, all of the same family and worth recording
+because CLAUDE.md already names the shape: **a parser that silently narrows its input.** The label
+column was never parsed (the whole tab-joined tail of the line was compared against a clean
+label), which first reported 0 pairs; the repair then iterated a string instead of a list, so the
+comparison intersected single *characters* and reported 1045 nonsense pairs. Both looked like
+results. The known merge Emma showed me — `Q110302791` — is what exposed the first one.
+
+The safeguard half stays open; she deferred its design, and `reports/rival-profiles.md` carries
+her three hand-merges as the ground truth any screen must retrodict.

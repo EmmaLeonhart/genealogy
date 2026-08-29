@@ -49,8 +49,21 @@ no harm occurs."*
 
 **Two jobs, and the second is urgent because harm already on Wikidata keeps costing her merges:**
 
-- **Safeguard**: stop the daily batch creating a person who already has an item.
-- **Repair**: find the ones already created and list them so they can be merged or corrected.
+- **Safeguard**: stop the daily batch creating a person who already has an item. STILL OPEN.
+- **Repair**: ~~find the ones already created and list them~~ **DONE 2026-08-29** --
+  `scripts/find-rival-profiles.py`, `reports/rival-profiles.md`. It found **0**, and the report
+  says plainly why that is close to vacuous: only 15 of the 287 minted people with kin have a
+  neighbour that exists in the 2026-08-25 store snapshot, so there is almost nothing to compare
+  against. It also rules out two things -- we are not duplicating *within* a batch (0 same-label
+  sibling sets under 109 shared parents), and the 5 namesake pairs an earlier pass surfaced are
+  all pre-existing items, none ours.
+
+**What the repair pass established for the safeguard.** The blind spot has TWO halves, not one.
+The guard cannot see a person who has an item but no `P2600`; and the offline store cannot see the
+neighbourhood our own recent creations live in, because it predates them. So a snapshot-based
+screen cannot work: it has to run against live Wikidata at compose time, on the specific parents a
+batch is about to create. `reports/rival-profiles.md` carries the three merges Emma has already
+made as ground truth for any screen.
 
 **The likely mechanism, to be confirmed rather than assumed.** `any_wikidata_item` — the duplicate
 guard — keys on `P2600`. It refuses to create anyone whose Geni id already carries a `P2600`
