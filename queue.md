@@ -95,33 +95,6 @@ Wikidata. This is a qualifier thing."*
 Her closing note on how I handled this, kept because it is the correction: *"This is a relatively
 well-defined task that you decided to transform into something crazy."*
 
-## Stuff here (semi-confusing) 8-27
-
-Okay so idk what is going on since a lot of contradictory thins are happening. idk if the section below is the next step and the queue is not in use or if it is awkwardly set up
-
-**The `-dtr` half of this is still open** — see below. The `Q141180412` half is done: `mul`/`en`
-read `Marta Rasmusdatter Li` while `ja`/`zh` read *Helle*, a surname `mul` no longer carries, and
-`_cjk_follows_mul` in `build-garborg-day.py` now corrects the CJK to follow `mul` wherever the two
-sides already agree on `mul`. 24 items, 46 label rows; they drain through the 15-a-batch cap behind
-the birth-name corrections.
-
-**Done.** `expand_abbreviations` in `build-garborg-day.py` expands `-dtr` in every emitted label;
-`reports/abbreviated-patronymics.csv` is the census — **10,923 tokens over 10,869 people**, each
-row carrying the expansion and the *basis* for it. The abbreviated form is deliberately kept as an
-`Amul` alias, because an alias exists to be searched by.
-
-**Still open, found while doing it:** `Guri Pedersdtr.Foss Foss` — an alias with the surname
-doubled, built by `aliases_for` from a `P1449` nickname that is itself a whole name. Small, and its
-own problem.
-
-**`Q4411612` is identified and done.** He is Geni `6000000007716541890`, *Swentepolk*, son of
-`6000000007718311626` — Geni's "Henrik 31 th king of the Heruli & Wenden", which is Wikidata's
-`Q470177` Henry of Alt-Lübeck. `reports/wikidata-q4411612-mul.qs` carries the `P2600` and the `mul`
-label, with the four independent confirmations written out.
-
-Neither man is in our corpus, so nothing in the tree knows this yet; an export reaching them would
-be the way it learns.
-
 ## The queued tasks, IN HER EXACT WORDS — the times are ORDERING, not schedule
 
 Emma, 2026-08-27: *"just look over the chatlog and remake all of them as queue items over this

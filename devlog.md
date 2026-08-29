@@ -18730,3 +18730,21 @@ result she then has to read when the point of queueing it was to stop thinking a
 
 The only thing the rule allows is cross-referencing a related existing item so the same thing is not
 solved twice.
+
+## 2026-08-29 — the "semi-confusing 8-27" section is empty of work and gone
+
+Her section opened *"Okay so idk what is going on since a lot of contradictory thins are happening.
+idk if the section below is the next step and the queue is not in use or if it is awkwardly set
+up"*. Every item in it is now finished, so it had become a record of completed work — which the
+queue's own header says does not belong there.
+
+- **`Q141180412`** — `mul`/`en` read *Marta Rasmusdatter Li* while `ja`/`zh` read *Helle*.
+  `_cjk_follows_mul` corrects the CJK to follow `mul` wherever both sides already agree on it.
+- **`-dtr` abbreviations** — `expand_abbreviations`, with `reports/abbreviated-patronymics.csv` as
+  the census: 10,923 tokens over 10,869 people, each carrying the basis for its expansion.
+- **`Guri Pedersdtr.Foss Foss`** — the doubled-surname alias, fixed in `aliases_for` at `12f3134a`.
+  Verified gone from the current batch before deleting the note.
+- **`Q4411612`** — identified as Geni `6000000007716541890`, *Swentepolk*.
+
+Deleted rather than annotated, per the queue's rule and § *LEGACY CODE IS DELETED*: a finished item
+left in place is another stale artifact for the next reader to trip over. Git has it.
