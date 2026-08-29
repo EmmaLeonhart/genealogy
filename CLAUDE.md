@@ -1244,6 +1244,7 @@ ran.
 | P3831 | object of statement has role | item — **qualifier** saying *which kind* of name this `P735` is |
 | P144 | based on | item — **qualifier on `P5056`, pointing at the PERSON that link names**: the father, then the grandfather for a chained patronymic. `name modelling.txt` supersedes the earlier reading of this as a name-item-to-name-item link. |
 | P5278 | surname for other gender | item — pairs `Olsson` with `Olsdotter` |
+| P1814 | name in kana | monolingual text — the Japanese reading of a name written in Han characters. **Nothing emits it yet**; queued 2026-08-29 with the `ko` label as a research task, because a kana reading is not derivable by rule from the characters. |
 | P1449 | nickname | monolingual text — **what a quoted token inside `GIVN` becomes.** Emma, 2026-08-24: `Stine "Stena" Eivindsdatter` makes *Stena* a nickname, **not** a given name and **not** a middle name |
 | Q2507958 | birth name | item — the `P3831` role on the `SURN` family name, when a married one sits beside it |
 | Q28418670 | married name | item — the `P3831` role on the `_MARNM` family name |

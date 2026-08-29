@@ -2117,6 +2117,37 @@ currently gates `en` on a Latin character being present and so gives them none.
 first mention of Korean in the label model, so the census should say how many people it would apply
 to before anything emits it.
 
+## CJK label conversion — fill in Korean and `P1814` *name in kana*, with research
+
+**Emma, 2026-08-29:** *"do a cjk label conversion thing with research to fill in the korean and name
+in kana properties using among other things stuff from the shintowiki-scripts repo"*.
+
+**Two things are missing, and they are different in kind.**
+
+- **`P1814` *name in kana*** — a real Wikidata property, confirmed offline in
+  `reports/wikidata-labels.tsv`. **Nothing in this repo emits it.** The two scripts that mention a
+  property in that family, `build-garborg-name-items.py` and `build-orderlife-identifiers.py`,
+  reference it once each and neither writes one.
+- **Korean** — the `ko` **label**, not a property. Her chain, 2026-08-29: *"korean is a rendering
+  derived from the Chinese ir Japanese"*, so it comes off `ja`/`zh` rather than off `mul`. Nothing
+  emits `ko` today either.
+
+**"With research" is the load-bearing half.** Kana for a Han name is not derivable by rule — the
+same characters take different readings per person, which is why `P1814` exists as a property at
+all rather than being computed. This is the case `CLAUDE.md` § *The one hard problem: which culture
+a CJK name is* already names. So the work is: find the readings, do not generate them.
+
+**`shintowiki-scripts` is a SEPARATE repo and the coupling has burned this repo once.** `CLAUDE.md`
+§ *WIKIDATA EDITING STARTS 2026-09-01* records that a previous session invented a shared lockout
+between the two and it *"failed closed"*, blocking edits this repo was entitled to make. Emma:
+*"Shintowiki scripts and this one are not the same and not really coordinated"* and *"I think you
+hallucinated a coordination between them."*
+
+**So: take material from it, do not couple to it.** Copy or vendor what is useful — reading tables,
+transliteration data, whatever it holds — into this repo, and add no runtime dependency, no shared
+state file, and no network call to it. It is not checked out beside `geni`, so the first step is
+asking her where it is.
+
 ## ABSOLUTE PREREQUISITE — no individual is created without their CJK labels
 
 **Emma, 2026-08-29:** *"There should be an absolute prerequisite that nothing is created until you

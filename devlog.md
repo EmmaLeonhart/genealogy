@@ -18688,3 +18688,26 @@ mul lol."* So `mul` is the base, `ja`/`zh` are the characters, **`ko` derives fr
 from `mul`**, and `en` comes from `mul`. Queued as a census — and worth flagging that **nothing
 emits `ko` today**, so this is the first appearance of Korean in the label model and the count
 should exist before any statement does.
+
+## 2026-08-29 — the CJK conversion task: kana and Korean, queued with its trap named
+
+Her item: *"do a cjk label conversion thing with research to fill in the korean and name in kana
+properties using among other things stuff from the shintowiki-scripts repo"*.
+
+**Two gaps, different in kind.** `P1814` *name in kana* is a real Wikidata property — confirmed
+offline against `reports/wikidata-labels.tsv`, and now in `CLAUDE.md`'s table — and **nothing here
+emits it**. Korean is not a property at all but the `ko` **label**, and by her own chain it derives
+from `ja`/`zh` rather than from `mul`: *"korean is a rendering derived from the Chinese ir
+Japanese"*. Nothing emits that either.
+
+**"With research" is the whole of it.** A kana reading is not derivable from Han characters by rule
+— the same characters take different readings per person, which is why `P1814` exists as a property
+rather than a computation. Generating one would be the *"partial is worse than absent"* failure with
+a confident face on it.
+
+**And `shintowiki-scripts` has burned this repo once, so the item says how to use it.** `CLAUDE.md`
+records a previous session inventing a shared lockout between the two repos that *"failed closed"*
+and would have blocked editing this repo is entitled to do. Her words then: *"I think you
+hallucinated a coordination between them."* So the queue item is explicit: **take material from it,
+do not couple to it** — vendor the data, add no runtime dependency, no shared state, no network call.
+It is not checked out beside `geni`, so step one is asking her where it is.
