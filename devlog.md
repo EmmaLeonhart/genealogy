@@ -18920,3 +18920,23 @@ live module because its name resembled the deleted artifact -- the exact failure
 records as *do not grab the first artifact that vaguely matches*.
 
 So: one function removed, 14 kept. `tests/test_entities.py` is 16 passed, 1 skipped.
+
+## 2026-08-29 — the kluge extends to the 178 clan individuals. Labelling is NOT touched
+
+**Emma:** *"every single one of those clan individuals will mechanically not go into the universe
+until October"*, and the line she drew herself: *"we probably are going to be changing their
+labelling in September, but being in the universe is not going to happen until October."*
+
+`kluge_blocked_from_universe()` is now the three Buyeo people **plus the 178 CJK clan
+individuals**, read out of `CJK_CLAN_BLOCK` rather than restated, so there is one list of these
+people in the file and not two that can drift.
+
+**It blocks universe membership only.** `CJK_CLAN_BLOCK` is emitted through `_cap_label_edits`,
+which never consults the subgraph, so the 15-a-day label drip is untouched and September's
+labelling proceeds as planned. Verified after the change: block 181 people, subgraph **316**
+(unchanged), 0 blocked people inside it, both roots intact, clan label block still 3,051 lines.
+
+**Identifying the right set mattered.** "Clan individuals" could have been read as
+`NEVER_TOUCH_GENI`'s Kitajima/Kitashima family. It is not: `CJK_CLAN_BLOCK` holds 178 real
+people labelled *"woman of the Li clan, from Longxi Didao"*, and they are the ones whose
+*labelling* is scheduled for September -- which is the half of her sentence that picks the set.

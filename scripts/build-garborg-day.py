@@ -982,6 +982,25 @@ SUBGRAPH_ROOTS = (ARNE_QID, BUREUS_QID)
 #: not their seeding.
 KLUGE_UNIVERSE_BLOCK = ("Q19657284", "Q12598947", "Q141198548")
 
+
+def kluge_blocked_from_universe():
+    """The kluge's full set: the three Buyeo people **and the 178 CJK clan individuals**.
+
+    **Emma, 2026-08-29**, extending it: *"every single one of those clan individuals will
+    mechanically not go into the universe until October"*, and, drawing the line herself,
+    *"we probably are going to be changing their labelling in September, but being in the
+    universe is not going to happen until October."*
+
+    So this blocks **universe membership only**. It does not touch labelling: `CJK_CLAN_BLOCK`
+    is emitted through `_cap_label_edits` and never consults the subgraph, so the 15-a-day
+    label drip is unaffected and September's labelling can proceed exactly as planned.
+
+    The clan QIDs are read out of `CJK_CLAN_BLOCK` rather than restated, so the two cannot
+    drift apart -- there is one list of these people in this file, not two.
+    """
+    clan = set(re.findall(r"^(Q\d+)", CJK_CLAN_BLOCK, re.M))
+    return set(KLUGE_UNIVERSE_BLOCK) | clan
+
 #: The date the block above stops applying. After this, `wikidata_subgraph` ignores it.
 KLUGE_UNIVERSE_BLOCK_EXPIRES = datetime.date(2026, 10, 1)
 
@@ -1016,7 +1035,7 @@ def wikidata_subgraph(roots=SUBGRAPH_ROOTS, universe=None):
     """
     universe = set(universe or ()) | set(roots)
     if datetime.date.today() < KLUGE_UNIVERSE_BLOCK_EXPIRES:
-        universe -= set(KLUGE_UNIVERSE_BLOCK)
+        universe -= kluge_blocked_from_universe()
     adj = collections.defaultdict(set)
 
     def link(a, b):
