@@ -1957,3 +1957,29 @@ same four fail either way. `BOT_CONTACT=$(cat .bot-contact) python -m pytest tes
 
 This overlaps § *Applying labels to existing items* — the 15-a-batch cap she asked for — and the
 185-row corrections block does not respect that cap either. Likely one fix.
+
+## What is actually left in `entity_resolution.md` — measured live 2026-08-29
+
+Emma, shown a claim that the file was not to be acted on: *"Uhh I don't know if there's any useful
+info in this lol."* Checked rather than guessed — one batched `full_entities` request over all
+eight items the file names. **There is, and it is small.**
+
+**One of her three label edits never landed:**
+
+| item | she wrote | live 2026-08-29 |
+| --- | --- | --- |
+| `Q19657284` | `en` *Buyeo Deokjang* | done — `mul` *Buyeo Deokjang* |
+| `Q12598947` | `en` *Buyeo Taebi* | done — `mul` *Buyeo Taebi* |
+| `Q11443857` | *"change her name to Mononobe no Futohime"* | **not done — `en` is still `Futohime`** |
+
+**Six of the eight items carry no `P2600` at all**, so the Geni pairings the file records exist
+nowhere Wikidata can see: `Q11596350` *Prince Wakatakehiko*, `Q11078587` *Harima no Inabi no
+Ooiratsume*, `Q24890131` *Mononobe no Ikofutsu*, and the two Kitajima items. Only the two Buyeo
+items have one.
+
+**Three of those six are out of scope and stay so.** The two Kitajima items are in
+`NEVER_TOUCH_QID`, and her own `Q140568870` entry is the one she said she will remove herself.
+
+**So the residue is four edits**: the Futohime label, and `P2600` on `Q11596350`, `Q11078587` and
+`Q24890131`. Nothing was done to any of them — § *The Wikidata link goes in the bio* carries her
+*"just don't do stuff on it right now"*, and this item is the record, not the action.
