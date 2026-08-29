@@ -2122,6 +2122,10 @@ Analysis only. Do not change the existence check before reporting what actually 
 Related and probably the same root cause: § *LAST — name items are being MERGED by other editors.
 Stop preferring creation over reuse*.
 
+## Why does `Q141205924` have a non-normalised NN-style name in its `mul` label?
+
+**Emma, 2026-08-29.** `Q141205924` — *mother of Lars Gunnbjørnsen Mjølhus*. Analysis only.
+
 ## ABSOLUTE PREREQUISITE — no individual is created without their CJK labels
 
 **Emma, 2026-08-29:** *"There should be an absolute prerequisite that nothing is created until you
