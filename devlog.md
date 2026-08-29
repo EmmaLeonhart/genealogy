@@ -19152,3 +19152,46 @@ carries anyone whose every relative lacks a QID, because the alternative is an i
 at all. This person is carried for **both** reasons -- *"no named relative to describe by"* and
 *"no relationship could be emitted"* -- so creating them yields an item reading `NN` and attached
 to nothing. Which rule wins is Emma's call, not a test to loosen.
+
+## 2026-08-29 — a marker in the SURNAME slot was never tested. 2,167 people
+
+**Emma**, pointing at `Q141217396` labelled *Maria No name*: *"this one is a clear example where
+the generation caused problems with no recognizing a clear placeholder noname thing... I'm not
+sure how it is that no name didn't get through our detection thing, because that seems like such
+an obvious one."*
+
+**The vocabulary was never the problem.** `no name` has been in `WORDS_MEANING_UNKNOWN` all along.
+`is_marker_label` tests the **whole label, or a LEADING marker**:
+
+| label | detected |
+| --- | --- |
+| `No name` | True |
+| `unknown Bloomfield` -- marker first | True |
+| `Bloomfield unknown` -- marker last | **False** |
+| `Maria No name` | **False** |
+
+Geni writes the marker into `SURN`, which is always the trailing position -- the one never tested.
+
+**The audit she asked for.** `scripts/audit-marker-surname-labels.py`,
+`reports/marker-surname-audit.tsv`: **2,167** corpus people carry this shape; exactly **1** had
+reached Wikidata (`Q141217396`), ours, and she had already hand-corrected its label to *Maria*.
+So the damage is one item, self-repaired -- but the pending batch was about to emit
+`Lmul "Maria No name"` again, and 2,167 arrive at the rate the ring reaches them.
+
+**Her ruling on the label form:** *"I would say I just use it by its first name."* Plus the
+descriptions -- *"Sarah, wife of something, and the multi language in English"*. So `mul` is the
+given name alone and the local languages carry the formulaic line, which is the NN algorithm
+already in place.
+
+`labels.drop_marker_surname` does it, and only the trailing position: `Maria No name` -> `Maria`,
+`Segrid NN` -> `Segrid`, while `NN Garborg` -- marker LEADING, a genuinely redacted person -- is
+untouched. That asymmetry is what lets the redacted branch and this share one code path.
+
+**Two emission sites, and finding the second took a failed verification.** The first patch fixed
+`primary`/`birth` and `Segrid NN` still came out, because redacted people are emitted 50 lines
+earlier through `nn_form`. `Segrid /NN/` also reaches the batch with **empty `SURN` and
+`_MARNM`**, so matching against the surname string found nothing -- hence the fallback that strips
+a trailing token which is a marker in its own right, guarded so a name is never reduced to nothing.
+
+Result: **0** label or alias lines ending in a marker. Segrid is `mul` *Segrid* with *mother of
+Malin Olofsdotter* in ten languages. 309 passed, 32 skipped.

@@ -5296,7 +5296,8 @@ def main():
             # `mul` reads `NN Garborg`, not a bare `NN`.
             # The surname survives redaction and is real data -- CLAUDE.md measured
             # 3,605 such profiles. `<private> Garborg` -> `Garborg`.
-            lines.append(f'LAST\tLmul\t"{nn_form(qs(labels.get(g, "")))}"')
+            from labels import drop_marker_surname as _dms
+            lines.append(f'LAST	Lmul	"{_dms(nn_form(qs(labels.get(g, ""))))}"')
             described = describe_all(g, facts, father, mother, referred_to_as, table,
                                      children, spouses, siblings)
             for code, value in sorted(described.items()):
@@ -5330,6 +5331,15 @@ def main():
                 " ".join(given + marnm.split()), g) if is_married else label
             birth = expand_abbreviations(
                 " ".join(given + surn.split()), g) if is_married else ""
+
+            # **A marker in the SURNAME slot never reaches a label.** Emma, 2026-08-29, on
+            # `Q141217396` coming out *Maria No name*: *"I would say I just use it by its
+            # first name."* `is_marker_label` tests the whole label or a LEADING marker, so
+            # `unknown Bloomfield` was caught and `Maria No name` was not -- and Geni puts
+            # the marker in `SURN`, which is always the trailing position.
+            from labels import drop_marker_surname
+            primary = drop_marker_surname(primary, marnm, surn)
+            birth = drop_marker_surname(birth, surn) if birth else birth
 
             # **`en` only for a name written in Latin script.** The non-Latin fallback
             # above rescues 55,547 people from being created as a bare `NN`, but their

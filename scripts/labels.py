@@ -521,3 +521,48 @@ def strip_markers(label: str) -> str:
         return UNNAMED_MARKER
     return " ".join(out)
 
+
+
+def drop_marker_surname(label: str, *surnames: str) -> str:
+    """Strip a trailing unknown-name marker that Geni put in the SURNAME field.
+
+    **Emma, 2026-08-29**, shown `Q141217396` labelled *Maria No name*:
+    *"I would say I just use it by its first name."* So `Maria /No name/` is labelled
+    **Maria** -- the given name alone -- and the marker never reaches a label, which is the
+    same rule as `Private`.
+
+    **Why `is_marker_label` did not already catch it, because the gap is specific.**
+    That predicate tests the WHOLE label, or a LEADING marker: `unknown Bloomfield` is
+    `True`, `Bloomfield unknown` is `False`. Geni writes the marker into `SURN`, which lands
+    at the END, and that position was never tested. The vocabulary was never the problem --
+    `no name` has been in `WORDS_MEANING_UNKNOWN` all along. Emma: *"I'm not sure how it is
+    that no name didn't get through our detection thing, because that seems like such an
+    obvious one."*
+
+    **2,167 people in the corpus carry this shape**, and exactly one of them had reached
+    Wikidata when it was found (`reports/marker-surname-audit.tsv`).
+
+    This does not empty the label the way a fully-redacted person's is emptied -- the given
+    name is real and survives. A person left with nothing after the strip keeps their label
+    unchanged, so the caller's existing marker handling still decides that case.
+    """
+    if not label:
+        return label
+    tokens = label.split()
+    for surname in surnames:
+        surname = (surname or "").strip()
+        if not surname or not is_marker_label(surname):
+            continue
+        tail = surname.split()
+        if len(tokens) > len(tail) and [t.casefold() for t in tokens[-len(tail):]] == [
+                t.casefold() for t in tail]:
+            tokens = tokens[:-len(tail)]
+    # **The surname fields are not always populated**, and the marker is still there.
+    # `Segrid /NN/` reaches the batch with an empty `SURN` and `_MARNM`, so there was no
+    # string to match against and the marker survived into `Lmul "Segrid NN"`. So: failing a
+    # field match, strip trailing tokens that are markers in their own right. A name is never
+    # only its last token, so the guard is simply that something real must remain.
+    while len(tokens) > 1 and is_marker_label(tokens[-1]):
+        tokens = tokens[:-1]
+
+    return " ".join(tokens) if tokens else label
