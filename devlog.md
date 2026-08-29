@@ -18777,3 +18777,25 @@ point at him. Widening `have` to anyone with a known `P2600` is the general fix 
 taken here.
 
 `SPINE_COMPLETE_NOW` is now dead — both people exist — and the queue item says to delete it.
+
+## 2026-08-29 — Arne Garborg is continuously linked to Charlemagne
+
+**33 of 33 consecutive pairs bonded**, measured over all 34 items in one batched request after she
+ran both files. It was 29 of 33 this morning.
+
+Her daily batch created the two missing people — Ramborg Knutsdotter Lejon `Q141216350` and Ingrid
+Guttormsdotter `Q141216349` — and closed three breaks; the two-statement file closed the fourth,
+Ingrid → Guttorm `Q19061035`.
+
+**The second-generation batch is built and sent: 34 creations, 19 links, 15 label edits**, 44
+composed, 681 carried forward. Verified before sending: exactly 15 label edits on existing items,
+34 of 34 `P2600` carrying `P1810`, no redaction marker outside a `P1810` line, and **287 passed, 0
+failed**.
+
+**The duplicate guard is visibly working now that a run has landed.** Ramborg and Ingrid are not
+re-created; the only mention of either Geni id in the new batch is
+`Q141216350 P26 Q141216369` — a spouse statement added to Ramborg's existing item. That is the
+whole point of refreshing the ledger inside the run rather than beside it.
+
+Also queued at the tail, without investigation: why `Q141205924`, *mother of Lars Gunnbjørnsen
+Mjølhus*, carries a non-normalised NN-style name in its `mul` label.

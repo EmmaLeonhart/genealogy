@@ -40,27 +40,19 @@ ones above them: `THE EDIT ALGORITHM`, `THE DAILY ALGORITHM`, `THE TAIL ALGORITH
 
 These are supposed to be manually added to the queue and worked on, do no just paraphrase during the rebase keep this part entirely intact. We are approaching usage limit for now.
 
-### Run `reports/wikidata-charlemagne-last-bond.qs` — two statements, then the line is closed
+### Delete `SPINE_COMPLETE_NOW` — the Charlemagne line is CLOSED
 
-Her batch of 2026-08-29 created both missing people — **Ramborg Knutsdotter Lejon `Q141216350`**
-(step 15) and **Ingrid Guttormsdotter `Q141216349`** (step 22) — and closed three of the four
-breaks by itself.
+**Arne Garborg is continuously linked to Charlemagne as of 2026-08-29.** Measured, not assumed:
+`scripts/check-spine-bonds.py` over all 34 items in one batched request — **33 of 33 consecutive
+pairs bonded**, up from 29 this morning.
 
-**Measured after her run, not assumed:** `scripts/check-spine-bonds.py` over the whole path, one
-batched request for all 34 items — **32 of 33 consecutive pairs bonded**, the single break being
-steps 22–23, where `Q141216349` and `Q19061035` state nothing about each other.
+Her batch created **Ramborg Knutsdotter Lejon `Q141216350`** and **Ingrid Guttormsdotter
+`Q141216349`**, closing three of the four breaks; `reports/wikidata-charlemagne-last-bond.qs` closed
+the fourth, Ingrid → Guttorm `Q19061035`.
 
-The two statements that close it are in the file. After they run, **Arne Garborg is continuously
-linked to Charlemagne**.
-
-**Then delete `SPINE_COMPLETE_NOW` from `build-garborg-day.py`** — it named those two people and
-they now exist, so it is dead weight that reads like policy.
-
-**The reason this needed a hand-written file at all**, worth keeping because it will recur: the
-builder only emits a link when the far end is in `have`, and `have` is the ledger. Guttorm has been
-on Wikidata for years carrying `P2600` `6000000001200156499`, but he is not in her ledger, so the
-pipeline never knew it was allowed to point at him. Widening `have` to include anyone with a known
-`P2600` is the general fix and is not made here.
+**What is left is one deletion:** `SPINE_COMPLETE_NOW` in `build-garborg-day.py` names those two
+people and they now exist, so it is dead weight that reads like policy. Its own comment says to
+delete it once they exist.
 
 ### English names ON GENI — the deferred half, and it is narrow
 
