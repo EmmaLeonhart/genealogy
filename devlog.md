@@ -18988,3 +18988,27 @@ The first three are also the entire content of `exports/post-merge/wikidata-qid-
 Verified: **205 blocked**, her item excluded, subgraph **316** (unchanged), 0 blocked people
 inside it, roots intact. None of the five is in the ledger, so this is prophylactic rather than
 corrective -- which is what she asked for.
+
+## 2026-08-29 — batch regenerated after the kluge: 31 creations, 21 links
+
+Composed with all 205 people blocked from the universe. **All four spines advanced a step** in
+one batch: Charlemagne 24 Åsulv Skulesson, Bergitte 9 Osmund Larsen Raunes, Bureus 9 Per Persson
+Hagman, Signe 8 Kristine Sørensdatter Gjesdal.
+
+31 creations, 21 links, 15 label edits (2,248 held, 105 already done), 719 carried forward. The
+unrestricted ring would have been 2,212; the composed batch is 43 people.
+
+Verified: 62 `P2600` lines and 62 `P1810` qualifiers, 0 `Aen` added, 0 blocked people anywhere in
+the file. The only `NN` strings outside a `P1810` are three `Lmul "NN"` lines, which is the rule
+rather than a breach.
+
+**`test_the_ledger_and_the_batch_do_not_both_claim_a_person` passes again**, which confirms the
+earlier failure was staleness from her run rather than a real re-creation: the committed batch
+still held `CREATE`s for people the refreshed ledger had caught up with. 289 passed, 32 skipped.
+
+**Worth noting for the front-of-queue item: a structural duplicate guard already exists and
+fired.** It held 2 people whose parent has an unmatched child item on Wikidata -- Katarina
+Knutsdotter (parent `Q5915800`, unmatched `Q4955715`/`Q16595443`) and Ingrid Svantepolksdotter
+(parent `Q6197518`, unmatched `Q4958315`/`Q4955768`/`Q86458153`). That is the rival-parent shape,
+caught before creation, and it means the queue item's premise -- that the guard is `P2600`-only --
+is incomplete.
