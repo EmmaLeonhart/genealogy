@@ -245,12 +245,6 @@ pinned by `tests/test_garborg_day_batch.py::test_a_marker_beside_a_real_name_sti
 
 - 
 
-> Ignore the fucking NN thing. "Sara /NN/" can wait until a cron job at 9pm fires to analyze this problem then, right now the important thin here is o actually fix the algorithm and rerun it adnd attach the quickstatement thing
-
----
-
-- 
-
 > do a cron job at 10pm to analyze why https://www.geni.com/people/private/6000000021223635839 was added as "Garborg" instead of the current labels on wikidata that I manually added https://www.wikidata.org/wiki/Q141199845
 
 ---

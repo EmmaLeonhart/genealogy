@@ -18061,3 +18061,19 @@ line needs either way.
 is not a 31-step chain: it holds **two** paths end to end, steps 1–13 and 14–31, the `nn-basse.tsv`
 shape `CLAUDE.md` warns about. My "5 of 30 pairs bonded" counted a non-existent edge between step 13
 and step 14. Noted in `the-spine.md` so the next measurement does not repeat it.
+
+## 2026-08-29 — the batch rerun and delivered
+
+Her bullet: *"Ignore the fucking NN thing. 'Sara /NN/' can wait until a cron job at 9pm fires to
+analyze this problem then, right now the important thin here is o actually fix the algorithm and
+rerun it adnd attach the quickstatement thing"*.
+
+Rerun with the ledger refresh and sent: **38 creations, 17 links**. It leads with the two
+spine-completion people, then advances one step on each of the four spine paths — Charlemagne 23,
+Bergitte→Emma 12, Bureus→Emma 6, Arne→Signe 5. Every `P2600` now carries its `P1810` *subject named
+as*.
+
+**The `Sara /NN/` half stays deferred, by her own words**, and the 9pm cron she deferred it to died
+in the crash along with every other cron. That is not a reason to do it now — she said ignore it —
+but it is a reason it will never fire on its own, which is the same failure her own standing item
+about mirroring crons into the queue exists to prevent.
