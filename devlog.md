@@ -18834,3 +18834,18 @@ was about to run.
 The general case is queued at the tail as a count, not a rule: how many people carry their spouse's
 name and have no parents. `_carries_marker` cannot see them, because the name contains no marker
 word.
+
+## 2026-08-29 — standard pipeline run, for examination rather than execution
+
+Her instruction: queue the `Q141198548` question, then *"generate the quickstatements again with the
+standard pipeline I am probably no gonna run them bu I want to examine them"*.
+
+**34 creations, 19 links, 15 label edits.** 43 composed, 721 carried forward, 2,203 label edits held
+and 90 already drained — the drip record is working through the backlog at the rate she set.
+
+Verified before sending, on the same four checks as every batch she might run: exactly 15 label
+edits on existing items, 34 of 34 `P2600` carrying `P1810`, no redaction marker outside a `P1810`
+line, and **296 passed, 0 failed**.
+
+The compose overran the two-minute foreground limit and was backgrounded — the ledger refresh is
+inside the run and talks to Wikidata, so that is expected rather than a fault.
