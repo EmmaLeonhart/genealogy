@@ -18002,3 +18002,33 @@ shorter than the Bergitte line. Worth knowing before anyone assumes Bergitte is 
 repeating your pattern."* She was right that it was mine — `CLAUDE.md` § *Queue items are BULLET
 POINTS* has said since 2026-08-15 that a number is a promise the item will still be there, which
 makes deletion feel like renumbering everything else. 11 numbered items converted to bullets.
+
+## 2026-08-29 — Arne to Signe, avoiding every Borsheim
+
+Emma: *"I want a path to be added from Arne to Signe (adding from Arne to Signe) that does not go
+through any Borsheim."*
+
+`paths/arne-to-signe-no-borsheim.tsv` — **15 steps**, Aadne Eivindson Garborg `Q467497` to Caroline
+Signe Borsheim `6000000177921459072`, with **no Borsheim anywhere between them**. It runs Arne →
+his mother Ane Oline → her husband Jonas Jonson Heigre → the Stokka, Gjesdal, Lima and Kyllingstad
+line → Sophia Borgit Hoknes → Signe.
+
+**Sixteen steps shorter than the saved page.** `paths/caroline-signe-borsheim-hoknes.tsv`, extracted
+from her MHTML, reaches the same person in 31. Both cross the same marriage at step 3; the walk over
+our own tree simply finds a tighter route through it.
+
+**Four of the 15 already hold items** — steps 1–4, Arne, Ane Oline `Q141152523`, Jonas
+`Q141168957`, Jon Olsen Heigre `Q141199892`. The other **11 are the creations that would make the
+line continuous**.
+
+`scripts/path-between.py` gained `--avoid WORD`, repeatable, matching on the label. **It is a
+routing constraint, not a filter on the answer** — breadth-first returns *a* shortest path and there
+is usually more than one, so excluding people up front makes the walk find a different route rather
+than report failure on the route it happened to pick first. 167 people carry `Borsheim` in a label
+and were removed from the graph before the walk, endpoints excepted.
+
+**It is a name test, which this repo refuses almost everywhere, and the reason it is safe here is
+narrow:** nothing is being *identified* by name. A name only decides which edges the walk may use,
+and every step is then reported with its own Geni id and checked against the tree. A wrong exclusion
+loses a route; it can never merge two people. That is the same boundary the zipper's name step
+holds.

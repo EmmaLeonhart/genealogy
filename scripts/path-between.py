@@ -80,7 +80,34 @@ def main():
     ap.add_argument("a")
     ap.add_argument("b")
     ap.add_argument("-o", "--out", default="", metavar="TSV")
+    ap.add_argument("--avoid", action="append", default=[], metavar="WORD",
+                    help="skip anyone whose label contains WORD, case-insensitively; "
+                         "repeatable. The endpoints are always kept.")
     args = ap.parse_args()
+
+    # **`--avoid` is a routing constraint, not a filter on the answer.** Emma, 2026-08-29:
+    # *"I want a path to be added from Arne to Signe (adding from Arne to Signe) that does not
+    # go through any Borsheim"*. Breadth-first returns *a* shortest path and there is usually
+    # more than one; excluding people up front makes the walk find a different route rather
+    # than reporting failure on the route it happened to pick first.
+    #
+    # It matches on the LABEL, which is a name test — the one thing this repo refuses almost
+    # everywhere. It is safe here for the same reason the zipper's name step is: nothing is
+    # being *identified* by name. A name only decides which edges the walk may use, and the
+    # result is then checked step by step against the tree. A wrong exclusion loses a route;
+    # it can never merge two people.
+    avoid_words = [w.casefold() for w in args.avoid]
+    avoided = set()
+    if avoid_words:
+        with open(LABELS, encoding="utf-8") as f:
+            for row in csv.DictReader(f):
+                lab = ((row.get("label_en") or "") + " "
+                       + (row.get("label_mul") or "")).casefold()
+                if any(w in lab for w in avoid_words):
+                    avoided.add(row["geni_id"])
+        avoided -= {args.a, args.b}
+        print(f"avoiding {len(avoided):,} people whose label carries "
+              f"{' or '.join(args.avoid)}")
 
     adj = collections.defaultdict(set)
     with open(FAMILY, encoding="utf-8") as f:
@@ -97,7 +124,7 @@ def main():
                      f"that is an absent person, not an absent path")
 
     # Breadth-first, so the first path found is a shortest one.
-    prev, seen = {}, {args.a}
+    prev, seen = {}, {args.a} | avoided
     queue = collections.deque([args.a])
     while queue and args.b not in seen:
         cur = queue.popleft()
@@ -107,8 +134,9 @@ def main():
                 prev[nxt] = cur
                 queue.append(nxt)
     if args.b not in seen:
-        sys.exit(f"no path between {args.a} and {args.b} over parent/child/spouse edges. "
-                 f"{len(seen):,} people were reachable from the first, so the walk ran -- "
+        sys.exit(f"no path between {args.a} and {args.b} over parent/child/spouse edges"
+                 + (f" avoiding {' or '.join(args.avoid)}" if args.avoid else "")
+                 + f". {len(seen):,} people were reachable from the first, so the walk ran -- "
                  f"they are in different components.")
 
     chain = [args.b]
