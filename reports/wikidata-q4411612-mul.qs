@@ -63,3 +63,10 @@
 Q4411612	P2600	"6000000007716541890"	P1810	"Swentepolk"
 #   Q4411612: set the mul label; the item has none, and nb and da both say this
 Q4411612	Lmul	"Svantepolk"
+#   Q4411612: set the en label from the GENI form. Emma, 2026-08-29: "make an
+#     english label from geni stuff". Geni spells him Swentepolk, one letter from
+#     the mul above, which is nb/da Svantepolk. Both are kept and sourced rather
+#     than one being flattened into the other: mul is the cross-language
+#     consensus, en is what our own source calls him. Collapse them if you would
+#     rather they agreed.
+Q4411612	Len	"Swentepolk"
