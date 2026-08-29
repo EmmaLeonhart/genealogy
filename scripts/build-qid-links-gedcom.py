@@ -11,6 +11,24 @@ the fuck up in making the thing do the synoptic tree always gets these things."*
 tree silently loses every link. A GEDCOM in `exports/` is corpus: `genimerge.sources.find_exports`
 globs it, so *every* merge from now on includes the links whether or not anybody thought about it.
 
+## THREE people, not the whole correspondence
+
+**Emma, 2026-08-29:** *"it was supposed to be to three individuals lol."* The first version of
+this script emitted every pairing in `reports/synoptic-correspondence.tsv` that landed on somebody
+in our tree -- **83,988 individuals**. That was a generalisation of a specific instruction and she
+never asked for it.
+
+The three are the residue of `entity_resolution.md`: identities she *"put a lot of effort into
+creating identification with"*, whose Wikidata items carry **no `P2600`**, so the pairing exists
+nowhere outside that scratchpad. Checked live 2026-08-29. The rest of the file's nine pairs are
+already handled and are deliberately absent here -- `Q11443857` Futohime is in `CJK_CLAN_BLOCK`,
+`Q19657284` and `Q12598947` already carry their `P2600`, the two Kitajima items are in
+`NEVER_TOUCH_QID`, and the ninth is Emma herself, who must never enter the traversable graph.
+
+**Widening this to the full correspondence is a decision, not a default.** It is one constant
+below and the filtering already works, but 84,000 links is a different act from three and wants
+her word first.
+
 ## Where it goes, and why that directory
 
 `exports/post-merge/`. `sources._post_merge_last` sorts that directory to the **end** of merge
@@ -27,20 +45,22 @@ and its `NOTE` joins theirs. `merge.ALWAYS_REPEATABLE` holds `NOTE`, so nothing 
 repeatable paths with a value are matched on that value, an identical line collapses, a different
 one is kept alongside. Re-generating and re-merging is therefore idempotent.
 
-## Only people we actually have
+## The source is `entity_resolution.md`, and the first attempt got that wrong too
 
-**The correspondence covers 563,938 Geni ids and most of them are not in our tree.**
-`out/wikidata/p2600-all.tsv` is a slice of Wikidata, not of our corpus, so emitting an `INDI` for
-every row would *create* several hundred thousand people who exist nowhere in the genealogy —
-the merge would happily mint them, because a record with an unseen xref is a new person. Filtered
-against `reports/derived-labels.csv`, which is one row per person actually in the merged tree.
+Reading `reports/synoptic-correspondence.tsv` and filtering it to the three returned **0 of 3** —
+which is not a bug, it is the point restated. That report joins five places a pairing can live
+and `entity_resolution.md` is not one of them, so these three are invisible to it. They exist in
+her scratchpad and nowhere else, which is exactly why writing them into the tree is worth doing.
 
-## A person with several QIDs gets several `NOTE`s
+`genimerge.entities.read_file` parses it, and `tests/test_entities.py` already pins that the real
+file parses with zero unparsed entries.
 
-Never a choice between them. 772 such cases are in `reports/synoptic-conflicts.tsv`, and picking
-one would be an entity resolution this script has no standing to make — the mirror of `CLAUDE.md`
-§ *A second Geni ID on one Wikidata item is NOT a conflict*: multiplicity is recorded, not
-adjudicated.
+## Every record must already exist in the tree
+
+An `INDI` whose xref the merge has not seen is a **new person**, so an unfiltered emit would mint
+people rather than annotate them. Checked against `reports/derived-labels.csv`, one row per person
+in the merged tree, and an id that fails the check is printed as a finding rather than skipped
+quietly.
 """
 from __future__ import annotations
 
@@ -50,12 +70,26 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "src"))
+
+from genimerge.entities import read_file  # noqa: E402
+
 sys.stdout.reconfigure(encoding="utf-8")
 csv.field_size_limit(1 << 30)
 
-PAIRS = ROOT / "reports" / "synoptic-correspondence.tsv"
+ENTITIES = ROOT / "entity_resolution.md"
 IN_TREE = ROOT / "reports" / "derived-labels.csv"
 OUT = ROOT / "exports" / "post-merge" / "wikidata-qid-links.ged"
+
+#: The three, by Geni id. Named explicitly rather than derived: they are the ones whose Wikidata
+#: item carries no `P2600`, and that is a live fact about Wikidata which will stop being true the
+#: moment these links are acted on -- so a rule that recomputed it would empty this file and look
+#: like success. An explicit list says what was decided and when.
+ONLY = {
+    "6000000001835522164",   # Q11596350  稚武彦命 Wakatakehiko
+    "6000000001844033355",   # Q11078587  播磨稲日大郎姫 Harima no Inabi no Ooiratsume, his daughter
+    "6000000002039751362",   # Q24890131  物部伊莒弗 Mononobe no Ikofutsu
+}
 
 LINK = "https://www.wikidata.org/wiki/{qid}"
 
@@ -69,12 +103,20 @@ def main():
     print(f"{len(in_tree):,} people in the merged tree")
 
     pairs = collections.defaultdict(set)
-    with PAIRS.open(encoding="utf-8") as fh:
-        for row in csv.DictReader(fh, delimiter="\t"):
-            g, q = (row.get("geni_id") or "").strip(), (row.get("qid") or "").strip()
-            if g in in_tree and q:
-                pairs[g].add(q)
-    print(f"{len(pairs):,} of them carry at least one QID")
+    for res in read_file(ENTITIES).resolutions:
+        if res.geni_id in ONLY and res.qid:
+            pairs[res.geni_id].add(res.qid)
+    print(f"{len(pairs)} of the {len(ONLY)} named people found in {ENTITIES.name}")
+
+    absent = sorted(g for g in pairs if g not in in_tree)
+    if absent:
+        # Never silently: emitting one of these would CREATE the person rather than annotate
+        # them, which is the failure the tree filter exists to stop.
+        print(f"REFUSING -- not in the merged tree, would be minted as new people: {absent}")
+        for g in absent:
+            pairs.pop(g)
+    for g in sorted(ONLY - set(pairs)):
+        print(f"not emitted: {g}")
 
     multi = sum(1 for qs in pairs.values() if len(qs) > 1)
     OUT.parent.mkdir(parents=True, exist_ok=True)

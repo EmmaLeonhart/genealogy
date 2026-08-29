@@ -17849,3 +17849,33 @@ into a single file. It is not part of the normal path.
 rebuilding the synoptic tree to test this thing so that we can quickly move onto other work."* It
 parses and nothing more. The last queue item names the three things a rebuild has to confirm —
 links arrive, nobody is invented, idempotent.
+
+## 2026-08-29 — the link GEDCOM was supposed to be three people, and I built it for 83,988
+
+Emma: *"it was supposed to be to three individuals lol."*
+
+**The instruction was specific and I generalised it.** She said the synoptic tree should carry
+QID links in *their* bios — "their" being the `entity_resolution.md` people we had been talking
+about for the whole exchange. I built a file covering every pairing in
+`reports/synoptic-correspondence.tsv` that landed on somebody in our tree: **83,988 individuals,
+84,317 links, 6.5 MB**, committed and pushed. Now three individuals, three links, 358 bytes.
+
+**This is the same failure as the `spine_closers` helper earlier today** — *"Building the helper
+is over engineering a solution to a problem that will likely only exist today"* — and the same as
+§ *Do not grab the first artifact that vaguely matches*. A specific instruction about named people
+became a general mechanism nobody asked for, twice in one session.
+
+**Restricting it surfaced a second error underneath.** Filtering
+`reports/synoptic-correspondence.tsv` to the three returned **0 of 3**. That report joins five
+places a pairing can live and `entity_resolution.md` is not one of them — which is precisely why
+these three are loose in the first place. So the wide version had been sourcing from a file that
+structurally could not contain the people the task was about. Now sourced through
+`genimerge.entities.read_file`, which `tests/test_entities.py` already pins.
+
+The tree filter stays and is the one piece worth keeping: all three xrefs are checked against
+`reports/derived-labels.csv`, and an id that fails is refused loudly, because an `INDI` with an
+unseen xref is minted as a **new person** rather than annotated.
+
+`scripts/inject-qid-into-bios.py` is deleted. It was the other half she offered — an in-place pass
+over a merged `.ged` — and keeping it "in case" is the accretion § *Do not grab the first artifact*
+warns about.

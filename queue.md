@@ -2022,25 +2022,24 @@ reading the output, not by reasoning about `NEVER_TOUCH_*`.
 **Emma, 2026-08-29:** *"don't test it now but make the last queue item rebuilding the synoptic
 tree to test this thing so that we can quickly move onto other work."*
 
-`exports/post-merge/wikidata-qid-links.ged` is built and committed — 83,988 individuals, 84,317
-`NOTE` links — but it has **never been through a merge**. It parses (83,988 `INDI`, one `NOTE`
-each, xrefs resolving to Geni ids) and that is all that has been checked.
+`exports/post-merge/wikidata-qid-links.ged` is **three individuals, three `NOTE` links, 358
+bytes** — Wakatakehiko `Q11596350`, Harima no Inabi no Ōiratsume `Q11078587`, Mononobe no Ikofutsu
+`Q24890131`. It has never been through a merge.
 
-**Re-merge the corpus and confirm three things**, none of which is safe to assume:
+**Re-merge and confirm three things:**
 
-- **The links arrive.** A person in both a real export and this file ends up holding the
-  `1 NOTE https://www.wikidata.org/wiki/Q…` line. The mechanism is that `NOTE` is in
-  `merge.ALWAYS_REPEATABLE`, so repeatable-with-a-value matching keeps it beside the existing
-  About Me rather than replacing it.
-- **Nobody is invented.** Every xref in the file was filtered against `reports/derived-labels.csv`
-  so it should only ever land on people we already have — the individual count must not rise.
-  This is the one that would be expensive to get wrong: unfiltered, the correspondence would have
-  minted **~480,000** people who exist nowhere in the genealogy.
-- **It is idempotent.** Re-generating and re-merging changes nothing, because the line written is
-  byte-identical to the one already there.
+- **The links arrive** — each of the three ends up holding
+  `1 NOTE https://www.wikidata.org/wiki/Q…` beside their existing About Me, because `NOTE` is in
+  `merge.ALWAYS_REPEATABLE` and repeatable-with-a-value matching keeps both.
+- **Nobody is invented.** All three xrefs were checked against `reports/derived-labels.csv`, so the
+  individual count must not rise. An `INDI` with an unseen xref is a *new person*.
+- **It is idempotent** — regenerating and re-merging changes nothing.
 
-`_post_merge_last` puts `exports/post-merge/` at the end of merge order, so this is applied last,
-which is what an overlay wants.
+`_post_merge_last` puts `exports/post-merge/` at the end of merge order, so this applies last.
 
 **The merge is 837 seconds and 16.8 GB** — background it, per § *A ten-minute ceiling is not a
-wall*. Keep the pre-merge tree, per the backtest rule.
+wall*. Keep the pre-merge tree.
+
+**Widening this beyond the three is her call and is one constant.** The machinery handles any
+number; the first version emitted 83,988 people off `reports/synoptic-correspondence.tsv` and that
+was a generalisation she had not asked for.
