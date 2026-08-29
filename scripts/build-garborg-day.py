@@ -5590,18 +5590,21 @@ def main():
     # This sits beside the creation guard rather than replacing it. The guard holds the
     # PERSON before they are minted; this holds the LINE whatever produced it, including the
     # ledger-wide additions pass, which the guard never sees.
-    kept, second_parent = [], []
+    # NB: iterate the PREVIOUS result under its own name. Rebinding `kept` before the loop
+    # empties the very list being iterated, which silently drops the whole file.
+    survivors, second_parent = [], []
     for ln in kept:
         m = re.match(r"^(Q\d+)	(P22|P25)	(\S+)", ln)
         if m:
             subject, prop, value = m.groups()
             held = (wd_fathers if prop == "P22" else wd_mothers).get(subject, set())
             if held and value not in held:
-                while kept and kept[-1].lstrip().startswith("#"):
-                    kept.pop()
+                while survivors and survivors[-1].lstrip().startswith("#"):
+                    survivors.pop()
                 second_parent.append((subject, prop, value, sorted(held)))
                 continue
-        kept.append(ln)
+        survivors.append(ln)
+    kept = survivors
     if second_parent:
         print(f"single-value guard: {len(second_parent)} P22/P25 line(s) dropped -- the item "
               f"already has one, and a second trips the constraint")

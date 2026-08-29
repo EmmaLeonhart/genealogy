@@ -19094,3 +19094,26 @@ who was the only case. Those counts print on every run so a silently-empty looku
 **Her other point, recorded rather than acted on:** *"these are the easiest people to do a zipper
 join on."* A person held because their child already names a parent item is a ready-made
 correspondence -- the held line in `reports/garborg-carry-forward.tsv` names both QIDs.
+
+## 2026-08-29 — the single-value guard emptied the whole batch. Fixed
+
+`2f23831a` shipped broken and it is worth writing down because the bug is a classic:
+
+    kept, second_parent = [], []
+    for ln in kept:
+
+Rebinding `kept` before the loop empties the very list being iterated, so the loop body never
+ran and every line was discarded. **The batch went out with 0 `CREATE`s.**
+
+The tell was there and I published before reading it: the run printed `CREATEs: 0` and
+`test_no_existing_item_is_left_without_a_parent_link_it_should_have` failed, both in the same
+output as the commit. I committed on the strength of the guard's own silence -- and a guard that
+cannot fire is silent in exactly the same way as a guard with nothing to do, which is the trap
+this repo already records under *a fix that changes nothing is evidence, not reassurance*.
+
+Fixed by iterating the previous list under its own name (`survivors`), with a comment saying why.
+Now: 30 creations, 21 links, 289 passed / 32 skipped.
+
+**And the guard is verified to FIRE, not merely to be quiet.** Fed a real subject that already
+holds a `P22` -- `Q100029`, whose father is `Q55090998` -- and a line proposing a different one,
+the predicate returns `True`. That is the check that was missing the first time.
