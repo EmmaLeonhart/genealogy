@@ -18882,3 +18882,26 @@ results. The known merge Emma showed me — `Q110302791` — is what exposed the
 
 The safeguard half stays open; she deferred its design, and `reports/rival-profiles.md` carries
 her three hand-merges as the ground truth any screen must retrodict.
+
+## 2026-08-29 — the Korean princess, diagnosed; and a dated kluge
+
+**Why `Q141198548` "wife of Buyeo Deokjang" was created at all.** She entered the ledger at
+**08-27 17:41**. The subgraph gate landed at **08-27 18:22** (`ebf88d64`) and grew its second
+root at **18:52** (`5ddf8560`). She predates the fix by 41 minutes. Before it, the ring expanded
+one hop out from any ledger person in our *Geni* tree, and Buyeo Deokjang is in the ledger
+because Emma added a `P2600` to his already-existing item during her own Korean work. The ring
+stepped from him to his wife and minted her. Identical mechanism to Saburou Kitashima, which is
+the case the gate was built for.
+
+So it is **not** a leak through the new Charlemagne connection. Charlemagne `Q3044` is not in her
+ledger, so he is not in the `universe`, and the walk only traverses edges whose **both** ends are
+her items -- he is a wall, not a bridge. None of the three Buyeo people is in the subgraph today.
+
+**The kluge, and it is labelled one.** Emma, 2026-08-29: *"it blocks all three of those people
+from being considered part of the universe until, let's say, October."* `KLUGE_UNIVERSE_BLOCK`
+removes `Q19657284`, `Q12598947` and `Q141198548` from the **universe** -- not merely from the
+roots, so no walk may pass *through* them either, which is the actual worry. It expires
+2026-10-01 by date check.
+
+Measured: subgraph is **316 items before and after**, so the block changes nothing today. That is
+expected and is the point -- it is belt and braces over a mechanism the gate already fixed.

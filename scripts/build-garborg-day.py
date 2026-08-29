@@ -964,6 +964,27 @@ BUREUS_QID = "Q633094"
 
 SUBGRAPH_ROOTS = (ARNE_QID, BUREUS_QID)
 
+#: **A KLUGE, and it is labelled one on purpose. Expires 2026-10-01.**
+#:
+#: **Emma, 2026-08-29:** *"A kluge is a specific programming thing which is designed to be an
+#: unscalable fix to a problem that's meant to be operating temporarily. Simply, it blocks all
+#: three of those people from being considered part of the universe until, let's say, October."*
+#:
+#: These three are her own Korean work -- Buyeo Deokjang and Buyeo Taebi are items she added a
+#: `P2600` to, and the wife was minted by the ring on 2026-08-27 at 17:41, **41 minutes before
+#: the subgraph gate landed** (`ebf88d64` 18:22, `5ddf8560` 18:52). The gate already stops that
+#: recurring and none of the three is in the subgraph today. This is belt and braces over a
+#: mechanism that is already fixed, which is exactly why it is a kluge and not a rule: it does
+#: not scale, it names three people, and it is dated.
+#:
+#: It removes them from the **universe**, not merely from the roots -- so no walk may pass
+#: *through* them either. That is the whole point: the worry is Korean princes being reached,
+#: not their seeding.
+KLUGE_UNIVERSE_BLOCK = ("Q19657284", "Q12598947", "Q141198548")
+
+#: The date the block above stops applying. After this, `wikidata_subgraph` ignores it.
+KLUGE_UNIVERSE_BLOCK_EXPIRES = datetime.date(2026, 10, 1)
+
 #: The relationship properties that make two Wikidata items neighbours in the subgraph.
 #: P22 father, P25 mother, P26 spouse, P40 child, P3373 sibling.
 SUBGRAPH_PROPS = ("P22", "P25", "P26", "P40", "P3373")
@@ -994,6 +1015,8 @@ def wikidata_subgraph(roots=SUBGRAPH_ROOTS, universe=None):
     which predates most of her edits, and `reports/garborg-live-values.tsv`, refreshed each run.
     """
     universe = set(universe or ()) | set(roots)
+    if datetime.date.today() < KLUGE_UNIVERSE_BLOCK_EXPIRES:
+        universe -= set(KLUGE_UNIVERSE_BLOCK)
     adj = collections.defaultdict(set)
 
     def link(a, b):
