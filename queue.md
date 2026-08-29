@@ -2224,3 +2224,12 @@ entity resolution stuff do no think on it"*
 So: nothing is to be investigated, measured or fetched about this before the item is
 reached. The analysis is of how the constraint-violations report could help Wikidata
 genealogy, and it overlaps the entity-resolution work.
+
+### The clan labels may be much worse than we think — `Q45449130`
+
+<https://www.wikidata.org/wiki/Q45449130>
+
+Emma, 2026-08-29: *"I think that our clan things are much worse than you think, which is why I
+never acually ran them adn I think I am seein at least some evidence."*
+
+An analysis. Nothing was investigated when this was written.
