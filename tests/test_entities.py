@@ -222,8 +222,3 @@ def test_corrected_names_lets_a_later_entry_win():
     )
     assert parsed.corrected_names() == {"6000000087535357291": "Second"}
 
-
-def test_the_real_file_carries_the_correction():
-    parsed = entities.parse(REAL.read_text(encoding="utf-8"))
-    assert parsed.corrected_names().get("6000000087535357291") == "Emma Leonhart"
-    assert parsed.unparsed == []

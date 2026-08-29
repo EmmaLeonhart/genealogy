@@ -18905,3 +18905,18 @@ roots, so no walk may pass *through* them either, which is the actual worry. It 
 
 Measured: subgraph is **316 items before and after**, so the block changes nothing today. That is
 expected and is the point -- it is belt and braces over a mechanism the gate already fixed.
+
+## 2026-08-29 — the one stale entity test, and only that one
+
+`entity_resolution.md` was deleted this morning on Emma's instruction. One test read it without
+a guard -- `test_the_real_file_carries_the_correction` -- so the fast lane failed. She authorised
+removing it.
+
+**Scope matters here and the obvious reading was wrong.** Only 1 of the 15 tests in
+`tests/test_entities.py` touched the real file unguarded; a second already carried a `skipif`.
+The other 14 exercise `genimerge.entities`, the parser, which **10+ scripts still import**
+including `build-garborg-day.py`. Deleting the test file would have removed live coverage of a
+live module because its name resembled the deleted artifact -- the exact failure CLAUDE.md
+records as *do not grab the first artifact that vaguely matches*.
+
+So: one function removed, 14 kept. `tests/test_entities.py` is 16 passed, 1 skipped.
