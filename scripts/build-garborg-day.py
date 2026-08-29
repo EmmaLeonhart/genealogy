@@ -965,7 +965,38 @@ ARNE_QID = "Q11959067"
 #: Arne runs through her father's. Two roots, one subgraph — the union of what each reaches.
 BUREUS_QID = "Q633094"
 
-SUBGRAPH_ROOTS = (ARNE_QID, BUREUS_QID)
+def subgraph_roots():
+    """**Arne, Bureus, and EVERY Bureätten person. 252 entry points, not 2.**
+
+    **Emma, 2026-08-29:** *"My idea was that there would be 252 entry points into the graph,
+    which would be all of the Bure people plus Arnie"*, and then, when told it was still two:
+    *"YES THE BURE PEOPLE ARE ALL ENTRY POINS."*
+
+    They were in the `universe` -- walkable *through* -- but not roots, so they only joined the
+    subgraph if a walk from Arne or Bureus happened to land on them. **113 of the 251 are islands
+    of exactly one person**, so they were unreachable by construction, and 2 of 251 were inside.
+
+    **Her prediction was right and it is measured, not argued.** Two roots gave 284 Arne-side
+    against 36 Bureus-side. All 252 gives 284 against 281 -- **50/50**, which is what she said
+    it would be, for the reason she gave: the Bure people have far more entry points but each
+    reaches almost nothing, so the extra 250 roots buy only ~245 people. Subgraph 316 -> 565,
+    and 565 of 614 ledger people seed instead of 316.
+
+    Read from `reports/bureatten.csv`, the sv.wikipedia Category:Bureätten listing, taking only
+    rows that carry a Geni id -- the same 251 the coverage campaign used. Reading the file rather
+    than pasting the ids keeps one list of these people in the repo.
+    """
+    roots = [ARNE_QID, BUREUS_QID]
+    roster = ROOT / "reports" / "bureatten.csv"
+    if roster.exists():
+        with open(roster, encoding="utf-8") as f:
+            for row in csv.DictReader(f):
+                if (row.get("geni_ids") or "").strip() and row.get("qid"):
+                    roots.append(row["qid"])
+    return tuple(dict.fromkeys(roots))
+
+
+SUBGRAPH_ROOTS = subgraph_roots()
 
 #: **A KLUGE, and it is labelled one on purpose. Expires 2026-10-01.**
 #:

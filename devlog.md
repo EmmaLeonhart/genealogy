@@ -19117,3 +19117,38 @@ Now: 30 creations, 21 links, 289 passed / 32 skipped.
 **And the guard is verified to FIRE, not merely to be quiet.** Fed a real subject that already
 holds a `P22` -- `Q100029`, whose father is `Q55090998` -- and a line proposing a different one,
 the predicate returns `True`. That is the check that was missing the first time.
+
+## 2026-08-29 — 252 entry points. The Bure people are roots, as she specified
+
+**Emma:** *"YES THE BURE PEOPLE ARE ALL ENTRY POINS."* They were in the `universe` -- walkable
+*through* -- but not in `roots`, so they joined the subgraph only if a walk from Arne or Bureus
+happened to reach them. **113 of the 251 are islands of exactly one person**, so they were
+unreachable by construction, and 2 of 251 were inside.
+
+`subgraph_roots()` reads `reports/bureatten.csv` and returns **252** roots: Arne, Bureus, and every
+Bureätten person carrying a Geni id. Reading the file rather than pasting ids keeps one list of
+these people in the repo.
+
+**Her prediction was right, and it is measured.** Two roots gave 284 Arne-side against 36
+Bureus-side. 252 gives **314 against 285** -- the 50/50 she called, for the reason she gave: the
+Bure people have vastly more entry points but each reaches almost nothing, so 250 extra roots buy
+about 249 people. Subgraph **316 → 599**, and **599 of 614** ledger people now seed.
+
+**The batch changes shape immediately.** 59 people composed (was 43), but only **21 creations**
+(was 30), because the duplicate guard held **14** (was 3) -- and **8 of those are the new
+parent-direction guard**. That is the guard earning its place: the Bureätten people are
+well-connected on Wikidata already, so their relatives frequently have items, and without the
+mirror those 8 would have been rival parents.
+
+**11 Bureätten roster people are edited** -- Samuel Troilius, Jacob Benzelius, three Aurivillius,
+Albrecht Ihre, Johan Ihre, two Liljencrantz, Thure Gustaf Rudbeck. That number was 0 in every
+previous batch.
+
+**One test fails and it is NOT being touched.**
+`test_a_redacted_person_is_created_and_described_not_left_unlabelled` fails on
+`6000000117764720856`. Two rules collide, and the enlarged ring is what brought them together:
+`CLAUDE.md` says a redacted person is created with the marker in `mul`, while the batch rule
+carries anyone whose every relative lacks a QID, because the alternative is an item with no links
+at all. This person is carried for **both** reasons -- *"no named relative to describe by"* and
+*"no relationship could be emitted"* -- so creating them yields an item reading `NN` and attached
+to nothing. Which rule wins is Emma's call, not a test to loosen.
