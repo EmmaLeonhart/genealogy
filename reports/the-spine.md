@@ -131,3 +131,49 @@ a new person to an item that already exists goes out both ways in the first file
 That file is a **different** 399-step Emma→Charlemagne descent up another branch, and it does
 **not** contain Bergitte. Treating the two as the same thing produced a wrong junction on
 2026-08-25. `paths/charlemagne-to-arne-garborg.tsv` is the authority for the three lines.
+
+## A fourth line — Arne → Signe, no Borsheim
+
+**Emma, 2026-08-29:** *"your path gets added starting at Arne and moving to Signe. Record this as
+another spine and wire it in."* And, when asked which of the two: *"Your path not genis"*.
+
+`paths/arne-to-signe-no-borsheim.tsv`, **15 steps**, in `SPINE_PATHS` since 2026-08-29. Built by
+`scripts/path-between.py 6000000003492005116 6000000177921459072 --avoid Borsheim` over our own
+tree, not from a saved page.
+
+**Why it excludes Borsheims.** Signe's own surname is Borsheim by marriage, so the family the
+endpoint is named for is not a family the path may travel through — she asked for a route that
+*"does not go through any Borsheim"*. 167 people carry the name in a label and were removed from
+the graph before the walk, endpoints excepted.
+
+| step | person | state |
+| ---: | --- | --- |
+| 1 | Aadne Eivindson Garborg | **`Q467497`** |
+| 2 | Ane Oline Jonsdatter Raugstad | **`Q141152523`** |
+| 3 | Jonas Jonson Heigre | **`Q141168957`** — her husband, the marriage the route turns on |
+| 4 | Jon Olsen Heigre | **`Q141199892`** |
+| 5 | Berte Karine Jonsdatter Stokka | create |
+| 6 | Torger Torgerson Stokka | create |
+| 7 | Berta Guria Davidsdatter Stokka | create |
+| 8 | Kristine Sørensdatter Gjesdal | create |
+| 9 | Søren Sørenson Gjesdal | create |
+| 10 | Inger Sørensdatter Lima | create |
+| 11 | Ola Helgeson Lima | create |
+| 12 | Ådne Olsson Lima Kyllingstad. Lima | create |
+| 13 | Inger Serine Lerma Gunderson | create |
+| 14 | Sophia Borgit Hoknes | create |
+| 15 | **Caroline Signe Borsheim** | create |
+
+**Four of 15 held items when it went in**, so the walk starts at step 5 and eleven creations close
+the line.
+
+**It is two steps longer than the route on her saved page, deliberately.**
+`paths/caroline-signe-borsheim-hoknes.tsv` reaches Signe in 13 by hopping `his sister` and
+`her sister` directly. `path-between.py` walks parent, child and spouse edges only, so it routes
+through the shared parent instead and names **Jon Olsen Heigre** and **Søren Sørenson Gjesdal** —
+two real people who have to exist for the line to be continuous either way. She chose this one over
+Geni's.
+
+**That saved file holds TWO paths end to end**, steps 1–13 and 14–31, which is the `nn-basse.tsv`
+shape `CLAUDE.md` warns about. Any measurement treating it as a single 31-step chain counts a
+non-existent edge between step 13 and step 14.

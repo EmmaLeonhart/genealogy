@@ -253,6 +253,47 @@ LAST	P734	Q27892819	P3831	Q28418670
 
 # create a new item
 CREATE
+#   set the en label to "Berte Karine Jonsdatter Stokka"
+LAST	Len	"Berte Karine Jonsdatter Stokka"
+#   set the mul label to "Berte Karine Jonsdatter Stokka"
+LAST	Lmul	"Berte Karine Jonsdatter Stokka"
+#   add a mul alias "Berte Karine Jonsdatter Heigre"
+LAST	Amul	"Berte Karine Jonsdatter Heigre"
+#   set the ja label to "ベルテ・カリネ・ヨンスダッテル・ストカ"
+LAST	Lja	"ベルテ・カリネ・ヨンスダッテル・ストカ"
+#   set the zh label to "贝尔特·卡里内·永斯达特·斯托卡"
+LAST	Lzh	"贝尔特·卡里内·永斯达特·斯托卡"
+#   add a ja alias "ベルテ・カリネ・ヨンスダッテル・ヘイグレ"
+LAST	Aja	"ベルテ・カリネ・ヨンスダッテル・ヘイグレ"
+#   add a zh alias "贝尔特·卡里内·永斯达特·海格勒"
+LAST	Azh	"贝尔特·卡里内·永斯达特·海格勒"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581072 female
+LAST	P21	Q6581072
+#   P2600 Geni.com profile ID = 6000000003491986786 Berte Karine Jonsdatter Stokka, qualified P1810 subject named as Berte Karine Jonsdatter Heigre
+LAST	P2600	"6000000003491986786"	P1810	"Berte Karine Jonsdatter Heigre"
+#   P569 date of birth = +1839-01-27T00:00:00Z/11
+LAST	P569	+1839-01-27T00:00:00Z/11	S2600	"6000000003491986786"
+#   P570 date of death = +1869-01-03T00:00:00Z/11
+LAST	P570	+1869-01-03T00:00:00Z/11	S2600	"6000000003491986786"
+#   P22 father = Q141199892 Jon Olsen Heigre
+LAST	P22	Q141199892	S2600	"6000000003491986786"
+#   P25 mother = Q141200054 Rakel Jonsdatter Jonsdotter Vatne
+LAST	P25	Q141200054	S2600	"6000000003491986786"
+#   Q141199892 Jon Olsen Heigre: P40 child = the item just created
+Q141199892	P40	LAST	S2600	"6000000003491986786"
+#   Q141200054 Rakel Jonsdatter Jonsdotter Vatne: P40 child = the item just created
+Q141200054	P40	LAST	S2600	"6000000003491986786"
+#   the item just created: P735 given name = Q11960827 Berte, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
+LAST	P735	Q11960827	P1545	"1"	P7452	Q3409033
+#   P735 given name = Q13365966 Karine, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
+LAST	P735	Q13365966	P1545	"2"	P3831	Q245025
+#   add a mul alias "Berte Karine Stokka"
+LAST	Amul	"Berte Karine Stokka"
+
+# create a new item
+CREATE
 #   set the en label to "Donald V. Schantzen"
 LAST	Len	"Donald V. Schantzen"
 #   set the mul label to "Donald V. Schantzen"

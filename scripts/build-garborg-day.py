@@ -530,7 +530,24 @@ SPINE_COMPLETE_NOW = (
 )
 
 SPINE_PATHS = ("paths/charlemagne-to-arne-garborg.tsv", "paths/bergitte-to-emma.tsv",
-               "paths/bureus-to-emma.tsv")
+               "paths/bureus-to-emma.tsv",
+               #: **Arne → Signe, and Emma added it herself.** 2026-08-29: *"your path gets added
+               #: starting at Arne and moving to Signe. Record this as another spine and wire it
+               #: in."* 15 steps, built by `scripts/path-between.py --avoid Borsheim` because she
+               #: asked for a route to Signe with **no Borsheim on it** — her married name is
+               #: Borsheim, so the family it names is not the family the path may travel.
+               #:
+               #: Stored **Arne-first**, which is the direction she named, so it is NOT in
+               #: `SPINE_REVERSED`: the walk takes the first uncreated step and grows outward from
+               #: Arne toward Signe. Steps 1–4 already hold items, so it starts at step 5.
+               #:
+               #: **It is two steps longer than the route on her saved page and that is deliberate.**
+               #: `paths/caroline-signe-borsheim-hoknes.tsv` reaches Signe in 13 by hopping
+               #: `his sister` and `her sister` directly; `path-between.py` walks parent, child and
+               #: spouse only, so it routes through the shared parent instead and names
+               #: `Jon Olsen Heigre` and `Søren Sørenson Gjesdal`. Those two are real people who
+               #: have to exist for the line to be continuous either way.
+               "paths/arne-to-signe-no-borsheim.tsv")
 
 #: Paths whose file runs Emma-first and must be walked from the far end.
 SPINE_REVERSED = ("paths/bergitte-to-emma.tsv",)

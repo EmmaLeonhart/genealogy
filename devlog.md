@@ -18032,3 +18032,32 @@ narrow:** nothing is being *identified* by name. A name only decides which edges
 and every step is then reported with its own Geni id and checked against the tree. A wrong exclusion
 loses a route; it can never merge two people. That is the same boundary the zipper's name step
 holds.
+
+## 2026-08-29 — a fourth spine: Arne → Signe, no Borsheim
+
+Emma: *"your path gets added starting at Arne and moving to Signe. Record this as another spine and
+wire it in."* And, asked which of the two routes: *"Your path not genis"* — so
+`paths/arne-to-signe-no-borsheim.tsv`, the 15-step walk over our own tree, not the 13-step route on
+her saved page.
+
+**Wired in.** `SPINE_PATHS` gains it, stored **Arne-first**, which is the direction she named, so it
+is not in `SPINE_REVERSED` — the walk takes the first uncreated step and grows outward from Arne
+toward Signe. Steps 1–4 already hold items, so it opens at **step 5, Berte Karine Jonsdatter
+Stokka**, and she is in today's batch. 37 creations → 38.
+
+**Recorded** as a fourth section of `reports/the-spine.md`, person by person, with the eleven
+creations that would close the line.
+
+**Why it avoids Borsheims at all**, since the endpoint is one: Signe's surname is Borsheim by
+marriage, so the family she is named for is not a family the route may travel through. 167 people
+carry the name in a label and left the graph before the walk.
+
+**Two steps longer than Geni's route, and she chose it knowing that.** Geni hops `his sister` and
+`her sister` directly; `path-between.py` walks parent, child and spouse only, so it routes through
+the shared parent and names `Jon Olsen Heigre` and `Søren Sørenson Gjesdal` — two real people the
+line needs either way.
+
+**One correction to something I reported earlier today.** `paths/caroline-signe-borsheim-hoknes.tsv`
+is not a 31-step chain: it holds **two** paths end to end, steps 1–13 and 14–31, the `nn-basse.tsv`
+shape `CLAUDE.md` warns about. My "5 of 30 pairs bonded" counted a non-existent edge between step 13
+and step 14. Noted in `the-spine.md` so the next measurement does not repeat it.
