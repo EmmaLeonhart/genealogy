@@ -17388,3 +17388,32 @@ Toresson Tengs `Q141199851`. Line 3, Bergitte to Arne, is **complete**. Emma ack
 headers `step / name / relation_to_previous / note`, and `genimerge.genipage` writes the profile id
 into `note` as `geni:<id>`. A first join on a `geni_id` column returned 0 of 34 and looked exactly
 like a spine that had not moved. Only 3 path files carry an explicit `qid` column.
+
+## 2026-08-29 — a creation with no relationship is held, not shipped
+
+Emma, on `Anders Persson` `375734886370012680` arriving as a bare item: *"where the fuck is this
+in the tree? why no relationships... relationships on creation is the thin that keeps items from
+being deleted"*. She is right on both counts.
+
+**She was wrong about the cause and it is worth recording, because the emitter was fine.** Her
+read was that the reciprocal block at the end of the file had been taken as licence to skip
+relationships at creation. It had not — 37 of 39 creations in that run carried links, in both
+directions, `LAST P22 Q…` and `Q… P40 LAST`. The two bare ones came from a **composition** bug.
+
+Anders Persson has six relationships in our tree — father, mother, spouse, three children. Every
+one of those six lacks a QID, and the single relative that mattered, his spouse Mariet
+Danielsdotter, **is being created in the same batch**. Rule 3 picked him *for* that marriage, and
+the one real single-run limit — `LAST` names only the most recent item — then stripped the only
+link he was chosen for. `Peder Tormodson Foss` arrived identically: 16 relatives, none with a
+QID, one spouse in the same file.
+
+So the batch was selecting people for a relationship it could not emit, and shipping the residue
+as `instance of human` + `P2600` and nothing else, which is exactly the shape that gets nominated
+for deletion.
+
+**Guard added at the end of each `CREATE` block**: if no `P22`/`P25`/`P26`/`P40`/`P3373` line was
+emitted in either direction, the whole block is deleted and the person goes to the carry-forward
+with the reason. Holding costs nothing — tomorrow the spouse has a QID and the link is ordinary.
+
+Rebuild: **0 of 34 creations bare**, against 2 of 39 before. Three people held —
+Anders Persson, Peder Tormodson Foss, Sigrid Jonsdotter Rudbera.

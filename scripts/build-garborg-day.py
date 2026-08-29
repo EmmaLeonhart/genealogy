@@ -4554,6 +4554,7 @@ def main():
             carried.append((g, label, "redacted: skipped by --skip-nn for this run"))
             continue
 
+        block_start = len(lines)
         lines.append("CREATE")
         # **Both branches must leave these bound.** The alias block below reads them after
         # the branch, and the redacted branch never set them -- so creating a redacted
@@ -4728,6 +4729,28 @@ def main():
                     emitted.add(qs(alias))
             for note in unresolved:
                 carried.append((g, label, f"name item missing: {note}"))
+
+        # **A creation with NO relationship is not shipped. It is carried.**
+        #
+        # Emma, 2026-08-29, on `Anders Persson`: *"where the fuck is this in the tree? why
+        # no relationships... relationships on creation is the thin that keeps items from
+        # being deleted"*. She is right, and a bare `instance of human` with a `P2600` and
+        # nothing else is exactly what gets nominated for deletion.
+        #
+        # The cause was a composition bug, not an emission one. Rule 3 picks a person **for**
+        # a spouse — and when that spouse is also being created today, the same-run limit
+        # (`LAST` names only the most recent item) strips the one link they were chosen for.
+        # Anders Persson and Peder Tormodson Foss both arrived this way: every other relative
+        # of theirs has no QID, and the single relative that mattered was in the same file.
+        #
+        # Holding them costs nothing. Tomorrow the spouse has a QID and the link is ordinary.
+        if not any(re.match(r"^(LAST|Q[0-9]+)	(P22|P25|P26|P40|P3373)	", ln)
+                   for ln in lines[block_start:]):
+            del lines[block_start:]
+            carried.append((g, label,
+                            "no relationship could be emitted: every relative either has no "
+                            "QID or is being created in this same batch"))
+            continue
 
         lines.append("")
         created += 1
