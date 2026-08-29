@@ -18276,3 +18276,34 @@ exemption to the *item* rather than to the *behaviour*, and the next block to ov
 without preserving it would have inherited the pass.
 
 `tests/test_garborg_day_batch.py`: **23 passed, 1 skipped.**
+
+## 2026-08-29 — the queue reorganised, and why it was unusable
+
+Her item: *"Organize the queue to make it usable again, currently it does no appear to be usable."*
+
+**The problem was structural, not volume.** 73 sections over 2,059 lines, and **five of them
+declared themselves the front** — the mass export campaign, the algorithm review, `THE EXPORT LOOP`
+(*"it is the top of this file"*), `THE AGENDA` (*"everything else is secondary"*) and `RUN ORDER` —
+while **ten declared themselves the tail**, scattered through the middle. With both ends contested
+there was no order to work in, which is exactly what "does not appear to be usable" describes.
+
+**What changed, and nothing else did.** A `How to read this file` header stating that order is
+position and nothing else; the twelve self-declared-last sections physically collected into one
+block at the end, after her own dictated `# THE TAIL OF THE QUEUE` from 08-18; and a note marking
+the seven sections that are **specifications rather than steps** — `THE EDIT ALGORITHM`,
+`THE DAILY ALGORITHM`, `Link reliability order` and the rest describe how a thing is done rather
+than asking for it to be done, which is why they never get "finished" and never leave.
+
+**Not one word was reworded and nothing was deleted.** The rewrite asserted that every one of the
+73 original section bodies appears verbatim in the output before writing the file, and it does.
+
+**`Always last` was lettered `A.` / `B.`** — the same thing she objected to in the numbering, and
+`CLAUDE.md` § *Queue items are BULLET POINTS* gives the reason for both. Now bullets, and physically
+last.
+
+**The crons are now durable queue items**, her other bullet: *"add them into the queue as actual
+items with he specification they are the cron jobs so they cget crossed off if he cron job finishes,
+but are a bit more stable."* Cron text lives only in memory — every cron died in the 08-28 crash and
+none was recreated, which is why nothing ran between 00:03 and 06:00 today. All three are now
+written out in the queue with their schedules and their rails, so the next session can rebuild them
+from the file rather than from memory.

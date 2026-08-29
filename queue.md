@@ -13,6 +13,29 @@ lines as say what to do.
 audits, dead crons and superseded priorities. Recover any of it with
 `git show 6edf302b:queue.md`.
 
+## How to read this file
+
+**Emma, 2026-08-27:** *"Organize the queue to make it usable again, currently it does no appear to
+be usable."* It was not, and the reason was structural rather than volume: **five sections declared
+themselves the front** — the mass export campaign, the algorithm review, `THE EXPORT LOOP` (*"it is
+the top of this file"*), `THE AGENDA` (*"everything else is secondary"*) and `RUN ORDER` — while
+**ten declared themselves the tail**. With both ends contested there was no order to work in.
+
+**The order is now position, and nothing else.** Top to bottom. Two conventions, both hers:
+
+- **Bullets, never numbers** — `CLAUDE.md` § *Queue items are BULLET POINTS*. A number is a promise
+  the item will still be there.
+- **An item is deleted when it is done**, in the same commit as its `devlog.md` entry. A section
+  still here is a step not yet taken.
+
+**Everything titled `LAST` / `THE LAST ITEM` / `THE TAIL` is now physically at the end**, in one
+run, so "last" means last. Nothing was reworded and nothing was dropped — only moved.
+
+**Some sections are SPECIFICATIONS, not steps**, and are worth knowing about before working the
+ones above them: `THE EDIT ALGORITHM`, `THE DAILY ALGORITHM`, `THE TAIL ALGORITHM`,
+`Link reliability order`, `The chain of provenance`, `How the synoptic tree is actually made`,
+`PREREQUISITE ORDER`. They describe how a thing is done rather than asking for it to be done.
+
 ## 0. Aug 28, 2026 manual adds
 
 These are supposed to be manually added to the queue and worked on, do no just paraphrase during the rebase keep this part entirely intact. We are approaching usage limit for now.
@@ -63,7 +86,7 @@ Her model case is `Q64636596`, which she found through its Genealogics ID.
 Wikidata-based project, so we just do not add a label."* So nothing is written to Geni yet; this
 item is the record of what the campaign would be.
 
-That's the thing I potentially want to do as a campaign to make Jenny readable to everybody. For now, we're sticking to this being a primary Wikidata-based project, so we just do not add a label. 
+That's the thing I potentially want to do as a campaign to make Jenny readable to everybody. For now, we're sticking to this being a primary Wikidata-based project, so we just do not add a label.
 
 ### correcting "Lave" — the GENI half
 
@@ -73,8 +96,6 @@ father `Q116150299` is *Jon Reimatsen*.
 
 Still to do, her instruction: rename him on **Geni** too, profile `6000000181444356836`, so the
 next export carries it and our tree stops saying *Lave*.
-
- 
 
 ## 1. THE MASS EXPORT CAMPAIGN — front task, RUNNING
 
@@ -169,14 +190,9 @@ row carrying the expansion and the *basis* for it. The abbreviated form is delib
 doubled, built by `aliases_for` from a `P1449` nickname that is itself a whole name. Small, and its
 own problem.
 
-Organize the queue to make it usable again, currently it does no appear to be usable
-
-For all of the cron jobs that I set up in the session. They are good and continue on with them, but also add them into the queue as actual items with he specification they are the cron jobs so they cget crossed off if he cron job finishes, but are a bit more stable.
-
 Look over all of the items that I have edited but did no create. These are a bit of a weak point for me since they are potentially items that are no in my watchlist and might cause me issues. Create a batch of quickstatements that does some kind of minor edit on all of them if possible preferable settin their mul labels or something
 
 Look over this item it just piques my curiosity whether we can identify it on geni and potentially add a mul label https://www.wikidata.org/wiki/Q4411612
-
 
 ## The queued tasks, IN HER EXACT WORDS — the times are ORDERING, not schedule
 
@@ -1193,14 +1209,6 @@ don't think this is true anymore."* Slot counts run 10 down to 1, so they are no
 6,632, 7,174 unfilled slots** over 251 exports. Her framing: *"I think I can get those
 paths cleared soon."*
 
-## Always last — pinned to the tail
-
-A. **Ensure the three crons are running** — work-loop `3 * * * *`, auto-flush
-`15 * * * *`, status-report `42 * * * *`.
-B. **Run the status-report action once more** — an end-of-session summary.
-
----
-
 ## Pointers
 
 - Abstract backlog: `todo.md` · Completed work: `devlog.md` · History: `git log`
@@ -1307,8 +1315,6 @@ Two of the three objectives set today come out of this loop running to completio
 and it runs unattended.
 
 ---
-
-
 
 ## Fix the surnames of the tier-2 placeholders before the synoptic tree is built
 
@@ -1672,6 +1678,93 @@ shape genuinely applies.
 
 ---
 
+## What is actually left in `entity_resolution.md` — measured live 2026-08-29
+
+Emma, shown a claim that the file was not to be acted on: *"Uhh I don't know if there's any useful
+info in this lol."* Checked rather than guessed — one batched `full_entities` request over all
+eight items the file names. **There is, and it is small.**
+
+**One of her three label edits never landed:**
+
+| item | she wrote | live 2026-08-29 |
+| --- | --- | --- |
+| `Q19657284` | `en` *Buyeo Deokjang* | done — `mul` *Buyeo Deokjang* |
+| `Q12598947` | `en` *Buyeo Taebi* | done — `mul` *Buyeo Taebi* |
+| `Q11443857` | *"change her name to Mononobe no Futohime"* | was **not** done; now in `CJK_CLAN_BLOCK`, so every batch carries it until it lands |
+
+**Six of the eight items carry no `P2600` at all**, so the Geni pairings the file records exist
+nowhere Wikidata can see: `Q11596350` *Prince Wakatakehiko*, `Q11078587` *Harima no Inabi no
+Ooiratsume*, `Q24890131` *Mononobe no Ikofutsu*, and the two Kitajima items. Only the two Buyeo
+items have one.
+
+**Three of those six are out of scope and stay so.** The two Kitajima items are in
+`NEVER_TOUCH_QID`, and her own `Q140568870` entry is the one she said she will remove herself.
+
+**So the residue is three edits**: `P2600` on `Q11596350`, `Q11078587` and `Q24890131`. The
+Futohime label is handled — she asked for it in the clan block on 2026-08-29 and it is there.
+
+The three `P2600` statements were **not** written, and that is deliberate rather than pending: the
+nine pairs belong to her dictated item 11, whose method is to put the Wikidata link in each Geni
+bio and then run a `Forest` export per person, not to write `P2600` from here.
+
+## The eight Asian identities — bios get their QID links AT SYNOPTIC-MERGE TIME, not now
+
+**Emma, 2026-08-29, correcting a recovered plan that a later discussion had already replaced:**
+*"No fuck you you didn't get the later discussion. When the synoptic tree is merged we change all
+of their bios to links to their qids so that the next step in with the wikidata union (which isn't
+really implemented yet) they get joined with those wikidata items lol."*
+
+**So there is no standalone Geni-editing task here, and no export campaign for these eight.** The
+bio link is a *step inside the synoptic tree build*, and its purpose is to feed the **Wikidata
+union**, which is not implemented yet. Nothing about these people is actionable until that build
+runs.
+
+**The eight** (everyone in `entity_resolution.md` but her): `Q11596350` Wakatakehiko · `Q11078587`
+Harima no Inabi no Ōiratsume · `Q11443857` Futohime Mononobe · `Q24890131` Ikofutsu Mononobe ·
+`Q19657284` Buyeo Deokjang · `Q12598947` Taebi Buyeo · `Q135579480` Yasutaka Kitajima ·
+`Q135579474` Tokitaka Kitajima. Every one is an Asian identity she *"put a lot of effort into
+creating identification with"*, for this purpose. That is why their `P2600` statements are not
+loose ends to write by hand.
+
+**What was actually lost in the crash, and it is worth keeping straight from what was superseded.**
+A cron for 03:00 on 2026-08-29 held the *older* plan — edit the eight bios now, then a `Forest`
+export each, file them for the post-merge stage. Crons are session-only, the session died at 18:52
+on 08-28, and it never fired. Recovering it was right; presenting it as live work was not, because
+§ *The Wikidata link goes in the bio during the SYNOPTIC TREE BUILD* already recorded the
+replacement. **The transcript is not the authority when `CLAUDE.md` has a later ruling on the same
+thing.**
+
+**Her own entry leaving `entity_resolution.md` still stands and is still hers.** After it goes,
+confirm `paths/bergitte-to-emma.tsv` step 1 does not become a `CREATE` — by running `--compose` and
+reading the output, not by reasoning about `NEVER_TOUCH_*`.
+
+## The nickname strip belongs in `derive-labels.py`, not only in the daily batch
+
+`without_nickname` in `build-garborg-day.py` fixes the label the batch emits — Emma's
+`Q141199868` case, `Ingvold (Pinkie) Remmie` → `Ingvold Remmie`. It is applied at the point of
+emission, so `reports/derived-labels.csv` still holds the bracketed form and **every other reader
+of that file still sees it**. 57 scripts read it; 48 read `label_en`/`label_mul`.
+
+**The population is 22,707 nickname tokens inside `GIVN`** — 16,742 parenthesised, 5,965 quoted —
+so this is the same shape as the married-name flip, which was fixed at source precisely because
+fixing it there reached all 48 readers in one change.
+
+**And `namemodel.QUOTED` treats an ASCII apostrophe as a quote delimiter.** On
+`Jean d'O Seigneur d'O & de Maillebois` it matches `'O Seigneur d'`, so that name yields a
+`P1449` *nickname* of `O Seigneur d`. `without_nickname` skips apostrophe matches for the label;
+the name statements are **not** fixed. Narrowing `QUOTED` moves every `P1449` in the repo, so
+measure the affected population before changing it.
+
+---
+
+# THE TAIL, PART TWO — the sections that each called themselves "last"
+
+Her own dictated tail block is above, from `# THE TAIL OF THE QUEUE — Emma, 2026-08-18`. This
+second block is the ten-odd sections that had each independently titled themselves `LAST`,
+`THE LAST ITEM` or `THE VERY LAST ITEM` and were scattered through the file. They are collected
+here so the word means something. Nothing was reworded; only moved.
+
+
 ## Bure kinship as random-walk start points — LAST. Postponed by Emma 2026-08-25
 
 **She moved this to the tail herself:** *"Postpone the bure stuff to the end of the queue."* It sits
@@ -1833,7 +1926,6 @@ there's an additional hop', is something that would conceivably make it lighter.
 statefulness on the strength of this note. It could bound the growth or accelerate it, and which
 one is an empirical question.
 
-
 ## LAST — ingest the saved pages and paths into the tree
 
 **Emma, 2026-08-28, and she guessed it before it was checked:** *"you never actually
@@ -1935,67 +2027,6 @@ domain"* is. Ask before building, per § *If you are not sure what she wants, AS
 stored the wrong way round listed in `SPINE_REVERSED` — that is the whole mechanism, and it is why
 `bergitte-to-emma` had walked outward from her for weeks without moving.
 
-## What is actually left in `entity_resolution.md` — measured live 2026-08-29
-
-Emma, shown a claim that the file was not to be acted on: *"Uhh I don't know if there's any useful
-info in this lol."* Checked rather than guessed — one batched `full_entities` request over all
-eight items the file names. **There is, and it is small.**
-
-**One of her three label edits never landed:**
-
-| item | she wrote | live 2026-08-29 |
-| --- | --- | --- |
-| `Q19657284` | `en` *Buyeo Deokjang* | done — `mul` *Buyeo Deokjang* |
-| `Q12598947` | `en` *Buyeo Taebi* | done — `mul` *Buyeo Taebi* |
-| `Q11443857` | *"change her name to Mononobe no Futohime"* | was **not** done; now in `CJK_CLAN_BLOCK`, so every batch carries it until it lands |
-
-**Six of the eight items carry no `P2600` at all**, so the Geni pairings the file records exist
-nowhere Wikidata can see: `Q11596350` *Prince Wakatakehiko*, `Q11078587` *Harima no Inabi no
-Ooiratsume*, `Q24890131` *Mononobe no Ikofutsu*, and the two Kitajima items. Only the two Buyeo
-items have one.
-
-**Three of those six are out of scope and stay so.** The two Kitajima items are in
-`NEVER_TOUCH_QID`, and her own `Q140568870` entry is the one she said she will remove herself.
-
-**So the residue is three edits**: `P2600` on `Q11596350`, `Q11078587` and `Q24890131`. The
-Futohime label is handled — she asked for it in the clan block on 2026-08-29 and it is there.
-
-The three `P2600` statements were **not** written, and that is deliberate rather than pending: the
-nine pairs belong to her dictated item 11, whose method is to put the Wikidata link in each Geni
-bio and then run a `Forest` export per person, not to write `P2600` from here.
-
-## The eight Asian identities — bios get their QID links AT SYNOPTIC-MERGE TIME, not now
-
-**Emma, 2026-08-29, correcting a recovered plan that a later discussion had already replaced:**
-*"No fuck you you didn't get the later discussion. When the synoptic tree is merged we change all
-of their bios to links to their qids so that the next step in with the wikidata union (which isn't
-really implemented yet) they get joined with those wikidata items lol."*
-
-**So there is no standalone Geni-editing task here, and no export campaign for these eight.** The
-bio link is a *step inside the synoptic tree build*, and its purpose is to feed the **Wikidata
-union**, which is not implemented yet. Nothing about these people is actionable until that build
-runs.
-
-**The eight** (everyone in `entity_resolution.md` but her): `Q11596350` Wakatakehiko · `Q11078587`
-Harima no Inabi no Ōiratsume · `Q11443857` Futohime Mononobe · `Q24890131` Ikofutsu Mononobe ·
-`Q19657284` Buyeo Deokjang · `Q12598947` Taebi Buyeo · `Q135579480` Yasutaka Kitajima ·
-`Q135579474` Tokitaka Kitajima. Every one is an Asian identity she *"put a lot of effort into
-creating identification with"*, for this purpose. That is why their `P2600` statements are not
-loose ends to write by hand.
-
-**What was actually lost in the crash, and it is worth keeping straight from what was superseded.**
-A cron for 03:00 on 2026-08-29 held the *older* plan — edit the eight bios now, then a `Forest`
-export each, file them for the post-merge stage. Crons are session-only, the session died at 18:52
-on 08-28, and it never fired. Recovering it was right; presenting it as live work was not, because
-§ *The Wikidata link goes in the bio during the SYNOPTIC TREE BUILD* already recorded the
-replacement. **The transcript is not the authority when `CLAUDE.md` has a later ruling on the same
-thing.**
-
-**Her own entry leaving `entity_resolution.md` still stands and is still hers.** After it goes,
-confirm `paths/bergitte-to-emma.tsv` step 1 does not become a `CREATE` — by running `--compose` and
-reading the output, not by reasoning about `NEVER_TOUCH_*`.
-
-
 ## THE LAST ITEM — rebuild the synoptic tree, which is how the QID-link GEDCOM gets tested
 
 **Emma, 2026-08-29:** *"don't test it now but make the last queue item rebuilding the synoptic
@@ -2041,19 +2072,33 @@ are kept because these are unstarted.
   have been, and she had already hand-corrected the item — so the question is also why our label
   overrode hers.
 
-## The nickname strip belongs in `derive-labels.py`, not only in the daily batch
 
-`without_nickname` in `build-garborg-day.py` fixes the label the batch emits — Emma's
-`Q141199868` case, `Ingvold (Pinkie) Remmie` → `Ingvold Remmie`. It is applied at the point of
-emission, so `reports/derived-labels.csv` still holds the bracketed form and **every other reader
-of that file still sees it**. 57 scripts read it; 48 read `label_en`/`label_mul`.
+## Always last — pinned to the very end of the file
 
-**The population is 22,707 nickname tokens inside `GIVN`** — 16,742 parenthesised, 5,965 quoted —
-so this is the same shape as the married-name flip, which was fixed at source precisely because
-fixing it there reached all 48 readers in one change.
+**Bullets, not letters.** These were `A.` and `B.`; `CLAUDE.md` § *Queue items are BULLET POINTS*
+covers lettering for the same reason it covers numbering, and she said so again on 2026-08-29.
 
-**And `namemodel.QUOTED` treats an ASCII apostrophe as a quote delimiter.** On
-`Jean d'O Seigneur d'O & de Maillebois` it matches `'O Seigneur d'`, so that name yields a
-`P1449` *nickname* of `O Seigneur d`. `without_nickname` skips apostrophe matches for the label;
-the name statements are **not** fixed. Narrowing `QUOTED` moves every `P1449` in the repo, so
-measure the affected population before changing it.
+- **Ensure the three crons are running** — work-loop `3 * * * *`, auto-flush `15 * * * *`,
+  status-report `42 * * * *`. They are **session-only**: they die when the session ends and must be
+  recreated at the start of the next one. This is not theoretical — every cron died in the
+  2026-08-28 crash and none was recreated, which is why nothing ran between 00:03 and 06:00 on
+  2026-08-29. Confirmed live this session as `82923e5b`, `0d208cfd`, `31df9ff8`.
+
+- **The three crons, as durable queue items.** Her instruction, 2026-08-27: *"For all of the cron
+  jobs that I set up in the session. They are good and continue on with them, but also add them
+  into the queue as actual items with he specification they are the cron jobs so they cget crossed
+  off if he cron job finishes, but are a bit more stable."* Cron text lives only in memory, so the
+  queue is the durable copy:
+
+  - **Work-loop, hourly at :03** — sync, take the top actionable item, do it, commit with a
+    `devlog.md` entry, push, report one line. Rails: never loosen a test, never claim verified
+    without running it, no live Wikidata beyond the ledger refresh and `full_entities` before a
+    correction, never generalise a named instruction into a mechanism, never invent a `.qs` she did
+    not ask for.
+  - **Auto-flush, hourly at :15** — commit and push anything pending, or report nothing pending.
+    Never an empty commit.
+  - **Status-report, hourly at :42** — reporting only. What advanced, queue state, whether the
+    rails held, blockers each under exactly one not-done tag, and real test numbers from a run.
+
+- **Run the status-report action once more** — an end-of-session summary of everything that
+  happened this session.
