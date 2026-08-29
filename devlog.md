@@ -18510,3 +18510,27 @@ restriction on exporting, not on editing, and the two permissions are separate.
 
 This changes nothing in our tree until an export reaches him and the merge is re-run —
 `CLAUDE.md` § *Correcting her own record in an export does nothing until the tree is re-merged*.
+
+## 2026-08-29 — the mass export campaign is closed, all four groups
+
+The front queue task since 2026-08-28, now finished and deleted from `queue.md` along with its
+companion "original campaign detail" section. Verified by grep against the corpus rather than by
+reading the log's own claims:
+
+- **Group 1** — Eva Walaas `6000000227464556886`, `Forest` **and** `Ancestors`. Both files present.
+- **Group 2** — Andreas Olai `6000000040951562251`, in
+  `exports/bure-campaign/export-Forest-6000000227468650841.ged`. He needed a tier-3 seed because
+  Geni will not export a profile you do not manage.
+- **Group 3** — dropped by her: all eight were already in the corpus 3 to 15 times, and she
+  withdrew the Geni-bio half.
+- **Group 4** — all **251** Bureätten people with a Geni id, **0 absent**.
+
+`reports/mass-export-log.tsv` totals: **40 exported, 3 bailed, 1 id-found, 1 submitted** — the
+submitted one being Swentepolk, which is its own queue item and cron.
+
+**The three bails are not failures and stay recorded as attempts**, per the rule in
+`docs/export-seed-rules.md`: a bail is per-attempt, not per-person, and a later export may sweep the
+target in. Sten Carl Bielke is the worked case — a locked master profile with no addable slot
+anywhere on the page.
+
+Fast lane at close: **1,454 passed, 29 skipped, 0 failed.**

@@ -88,59 +88,6 @@ item is the record of what the campaign would be.
 
 That's the thing I potentially want to do as a campaign to make Jenny readable to everybody. For now, we're sticking to this being a primary Wikidata-based project, so we just do not add a label.
 
-## 1. THE MASS EXPORT CAMPAIGN — front task, RUNNING
-
-**`docs/mass-export-run.md` is the run sheet** — the four groups in her order, every Geni id, the
-protocol, and the record format. Read that rather than reconstructing it here.
-
-Group 1 (Eva Walaas, `Forest` + `Ancestors`) is done. Group 2 is Andreas Olai, whose Geni id Emma
-supplied — `6000000040951562251`, now in the hard-coded `P2600` block — seeded tier 3 as `NN`
-`6000000227468650841` and exporting. Group 3 is dropped: all eight are already in the corpus 3 to
-15 times and the Geni-bio half of the item was withdrawn.
-
-**Group 4 is DONE — all 251 Bureätten people are in `exports/`, 0 absent.** 40 exports on
-2026-08-28 between 01:25 and 14:00 Pacific closed it, and the log's last line says so:
-*"CAMPAIGN COMPLETE."* `reports/bure-to-export.tsv` is now empty.
-
-**It was reported as "100 still absent" for a day and that was a measurement bug, not a setback.**
-`bure-coverage.py` took its freshness mark from `reports/derived-labels.csv` (Aug 28 18:24) instead
-of `out/merged.ged` (Aug 24 18:20), so every campaign export was too old to be scanned raw and too
-new to be in the tree — all 40 invisible. Fixed 2026-08-29; the script now marks off `merged.ged`
-and scans 41 exports where it scanned 1.
-
-Record every attempt in `reports/mass-export-log.tsv`, including seeds.
-
-## The original campaign detail, kept for the ids
-
-**Emma:** *"Mass export these using our export protocol. Export from them and if their ids were
-merged or moved record it each time and the other stuff. Do the earlier queued exports first and
-then these — the big export thing is the current front queue task now, all of the other geni
-exports in the queue first and then the bure people until we have all the ids."*
-
-**Order, and it is hers:**
-
-1. **`6000000227464556886`** — `Forest` **and** `Ancestors`. This is her 1am item; the profile is
-   Eva Walaas, and the ledger already pairs it with `Q109660986`.
-2. **`Q10411463` Andreas Olai** — find the Geni id first (dates, not name; `P1889` *different
-   from* names the famous namesake to reject), then `Forest`.
-3. **The eight `entity_resolution.md` people**, `Forest` each — *except her*. Note she has since
-   withdrawn the Geni-bio-editing half of that item; only the exports remain.
-4. **The 100 Bureätten people in `reports/bure-to-export.tsv`** — every Category:Bureätten person
-   with a Geni id who is **not in our corpus**, so the batch currently cannot name them. Run
-   until we have all the ids.
-
-**Protocol, per `docs/export-seed-rules.md` and `CLAUDE.md`:** size 5000, **strictly one export at
-a time**, zips filed in bulk only when every one is down. Grep the corpus before each and put the
-number in the commit message. Never overwrite an existing `.ged` — a colliding filename gets the
-seed id appended, and if the destination exists, STOP. Do not analyse or diff an export; place it,
-commit, move on. Every `.ged` committed, every zip gitignored one line at a time.
-
-**Record every attempt in `reports/mass-export-log.tsv`** — she asked for this specifically:
-*"if their ids were merged or moved record it each time and the other stuff."* Columns:
-`geni_id, qid, style, outcome, redirected_to, new_geni_id, ged_file, people, notes`. A Geni
-profile that redirects to another means the profiles were merged; a QID that redirects means the
-items were. Both get recorded rather than silently followed.
-
 ## 1. FINISH THE ALGORITHM REVIEW CONVERSATION WITH EMMA — before anything else
 
 She is walking through `scripts/build-garborg-day.py --compose` **step by step**, one numbered
