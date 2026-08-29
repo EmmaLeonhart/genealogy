@@ -17807,3 +17807,45 @@ had been superseded.
 
 The queue item is rewritten to say what is true rather than deleted, because the eight people and
 the reason their `P2600` statements are not loose ends both still need recording.
+
+## 2026-08-29 — the synoptic tree always carries the QID links, because they are corpus
+
+Emma: *"Overwrite the bio in every one of the gedcoms or make a gedcom that's just a thing that
+gives gedcom notes with the links like this... just please hurry the fuck up in making the thing
+do the synoptic tree always gets these things."*
+
+**Built the second option, and `always` is the whole reason.** A post-processing pass over
+`out/merged.ged` is a step someone has to remember; the first time it is forgotten the tree
+silently loses every link. `exports/post-merge/wikidata-qid-links.ged` is **corpus** —
+`sources.find_exports` globs it, so every merge from here includes the links whether or not
+anyone thinks about it.
+
+**83,988 individuals, 84,317 `NOTE` links, 6.5 MB.** Records are keyed on the xref, which is the
+Geni profile id, so each one *is* that person's existing record and its `NOTE` joins theirs.
+`merge.ALWAYS_REPEATABLE` holds `NOTE`, so nothing is overwritten — a repeatable path with a value
+matches on the value, an identical line collapses, a different one is kept alongside. That answers
+the question she actually asked earlier: **the joiner unions bios, it does not overwrite them.**
+
+**The filter is the part that mattered.** The correspondence covers **563,938** Geni ids and most
+are not in our tree — `out/wikidata/p2600-all.tsv` is a slice of Wikidata, not of our corpus. An
+`INDI` with an unseen xref is a *new person*, so emitting every row would have minted roughly
+**480,000** people who exist nowhere in the genealogy. Filtered against
+`reports/derived-labels.csv`: 563,938 → 83,988.
+
+**`exports/post-merge/` is the right home and not by accident.** `sources._post_merge_last` sorts
+that directory to the end of merge order explicitly, because Emma asked for a directory whose
+records overwrite earlier ones and alphabetical order would have put `post-merge` before
+`samaritans` and `tanba`.
+
+**326 people carry more than one QID and get one `NOTE` each, never a choice.** Picking one would
+be an entity resolution this script has no standing to make — the mirror of § *A second Geni ID on
+one Wikidata item is NOT a conflict*.
+
+`scripts/inject-qid-into-bios.py` is the other half she offered — the in-place pass over a merged
+`.ged` — kept because it is the thing to reach for if the overlay ever needs to be materialised
+into a single file. It is not part of the normal path.
+
+**Untested on purpose, at her direction:** *"don't test it now but make the last queue item
+rebuilding the synoptic tree to test this thing so that we can quickly move onto other work."* It
+parses and nothing more. The last queue item names the three things a rebuild has to confirm —
+links arrive, nobody is invented, idempotent.

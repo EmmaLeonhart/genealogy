@@ -2016,3 +2016,31 @@ thing.**
 confirm `paths/bergitte-to-emma.tsv` step 1 does not become a `CREATE` — by running `--compose` and
 reading the output, not by reasoning about `NEVER_TOUCH_*`.
 
+
+## THE LAST ITEM — rebuild the synoptic tree, which is how the QID-link GEDCOM gets tested
+
+**Emma, 2026-08-29:** *"don't test it now but make the last queue item rebuilding the synoptic
+tree to test this thing so that we can quickly move onto other work."*
+
+`exports/post-merge/wikidata-qid-links.ged` is built and committed — 83,988 individuals, 84,317
+`NOTE` links — but it has **never been through a merge**. It parses (83,988 `INDI`, one `NOTE`
+each, xrefs resolving to Geni ids) and that is all that has been checked.
+
+**Re-merge the corpus and confirm three things**, none of which is safe to assume:
+
+- **The links arrive.** A person in both a real export and this file ends up holding the
+  `1 NOTE https://www.wikidata.org/wiki/Q…` line. The mechanism is that `NOTE` is in
+  `merge.ALWAYS_REPEATABLE`, so repeatable-with-a-value matching keeps it beside the existing
+  About Me rather than replacing it.
+- **Nobody is invented.** Every xref in the file was filtered against `reports/derived-labels.csv`
+  so it should only ever land on people we already have — the individual count must not rise.
+  This is the one that would be expensive to get wrong: unfiltered, the correspondence would have
+  minted **~480,000** people who exist nowhere in the genealogy.
+- **It is idempotent.** Re-generating and re-merging changes nothing, because the line written is
+  byte-identical to the one already there.
+
+`_post_merge_last` puts `exports/post-merge/` at the end of merge order, so this is applied last,
+which is what an overlay wants.
+
+**The merge is 837 seconds and 16.8 GB** — background it, per § *A ten-minute ceiling is not a
+wall*. Keep the pre-merge tree, per the backtest rule.
