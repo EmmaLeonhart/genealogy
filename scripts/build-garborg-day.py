@@ -595,6 +595,63 @@ def nn_form(raw):
     return ("NN " + surname).strip()
 
 
+def _cjk_follows_mul(table):
+    """`Lja`/`Lzh` for items whose CJK label was transliterated from a SUPERSEDED `mul`.
+
+    **Emma, 2026-08-27, on `Q141180412`:** *"it appears that it has Japanese and presumably Chinese
+    label that are no derived from the mul label like we wanted. Remember that the mul lable takes
+    priority."*
+
+    She is exactly right and the item shows it: `mul` and `en` read `Marta Rasmusdatter Li` while
+    `ja` reads `マルタ・ラスムスダッテル・ヘーレ` and `zh` `玛尔塔·拉斯穆斯达特·赫勒` — **Helle**,
+    a different surname. The CJK was derived when `mul` held the other form, `mul` later changed,
+    and nothing brought the CJK with it.
+
+    **`_label_corrections` cannot see this**, and that is the gap rather than a second opinion about
+    it: that block fires only when the live `mul` differs from ours. Here `mul` *agrees*. So an item
+    can be right in the two languages anyone reads and wrong in the two nobody checks.
+
+    **The population is small and unambiguous: 24 items, 46 label rows**, measured over
+    `reports/name-audit.csv` on 2026-08-29. Unambiguous because `mul` is agreed by *both* sides, so
+    the CJK is not a judgement call — it follows from a string neither of us disputes. `CLAUDE.md`
+    already records one of them, `Q141168785`, and rules on it: *"the stale half was ours, not
+    hers."*
+
+    **Reads the audit rather than re-fetching.** `scripts/audit-ledger-names.py` fetched all 508
+    items live; doing it again inside every daily build would be eleven more requests a run for a
+    number that moves slowly. The cost is that this is a **snapshot** — re-run the audit before
+    trusting it after she has been editing.
+
+    Everything here is a label edit on an existing item, so `LABEL_EDIT_CAP` governs how many
+    actually go out; at 15 a batch these 46 drain in four runs.
+    """
+    audit = ROOT / "reports" / "name-audit.csv"
+    if not audit.exists():
+        return []
+    out = []
+    rows = {}
+    for row in csv.DictReader(audit.open(encoding="utf-8")):
+        rows.setdefault(row["qid"], {})[row["lang"]] = row
+    for qid, by_lang in sorted(rows.items()):
+        if (by_lang.get("mul") or {}).get("state") != "match":
+            continue
+        for lang in ("ja", "zh"):
+            r = by_lang.get(lang)
+            if not r or r["state"] != "differs" or not r["ours"]:
+                continue
+            out.append(f"#   {qid}: {lang} was transliterated from a superseded mul "
+                       f"({r['wikidata']!r}); mul now says {by_lang['mul']['ours']!r}")
+            out.append(f'{qid}	L{lang}	"{r["ours"]}"')
+    if out:
+        out = ["", "# " + "-" * 72,
+               "# CJK FOLLOWS mul -- items whose ja/zh came from a mul that has since changed.",
+               "#   Emma: \"the mul lable takes priority\". These are ours: mul is agreed by both",
+               "#   sides, so the CJK is not a judgement call, it follows from it.",
+               "#   Snapshot from reports/name-audit.csv -- re-run the audit after she edits.",
+               "# " + "-" * 72] + out
+    return out
+
+
 def label_in(label, table):
     """(ja, zh) for a whole name, or (None, None) if any token is unknown.
 
@@ -5300,8 +5357,9 @@ def main():
     # put straight back** -- I read *"remove that particular section"* as this block when she
     # meant the spine P2600 one. Emma: *"What the fuck the clan block is gone? Bring it the
     # fuck back"*.
-    lines = _cap_label_edits(lines, CJK_CLAN_BLOCK,
-                             _label_corrections(our_items, labels, table, state))
+    lines = _cap_label_edits(
+        lines, CJK_CLAN_BLOCK,
+        _label_corrections(our_items, labels, table, state) + _cjk_follows_mul(table))
 
     out = ROOT / "reports" / "wikidata-garborg-day.qs"
     out.write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")

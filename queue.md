@@ -154,7 +154,11 @@ but just don't do stuff on it right now."*
 
 Okay so idk what is going on since a lot of contradictory thins are happening. idk if the section below is the next step and the queue is not in use or if it is awkwardly set up
 
-Analyze https://www.wikidata.org/wiki/Q141180412 because it appears that it has Japanese and presumably Chinese label that are no derived from the mul label like we wanted. Remember that the mul lable takes priority
+**The `-dtr` half of this is still open** — see below. The `Q141180412` half is done: `mul`/`en`
+read `Marta Rasmusdatter Li` while `ja`/`zh` read *Helle*, a surname `mul` no longer carries, and
+`_cjk_follows_mul` in `build-garborg-day.py` now corrects the CJK to follow `mul` wherever the two
+sides already agree on `mul`. 24 items, 46 label rows; they drain through the 15-a-batch cap behind
+the birth-name corrections.
 
 Also any abbreviations like -dtr (i.e. "Rasmusdtr." instead of "Rasmusdatter" should be fixd since wikidata mul labels ae supposed to have the full form. This is a part of the compliance stuff I mentioned earlier)
 

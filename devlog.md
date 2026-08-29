@@ -18185,3 +18185,34 @@ the second half of her instruction has no members today. And **102 of the 508 ar
 at all**: they are in the ledger and not in `derived-labels.csv`, which is the whole of the
 `we_have_none` count in `en`. Those are Bureätten people and the medieval end of the spine, and only
 an export changes it.
+
+## 2026-08-29 — `Q141180412`: the CJK label was derived from a `mul` that has since changed
+
+Her item: *"it appears that it has Japanese and presumably Chinese label that are no derived from
+the mul label like we wanted. Remember that the mul lable takes priority."*
+
+**She is right and the item shows it exactly.** `mul` and `en` read `Marta Rasmusdatter Li`; `ja`
+reads `マルタ・ラスムスダッテル・ヘーレ` and `zh` `玛尔塔·拉斯穆斯达特·赫勒` — **Helle**, a
+different surname. The CJK was transliterated when `mul` held the other form, `mul` later changed,
+and nothing brought the CJK with it.
+
+**`_label_corrections` structurally could not see it.** That block fires only where the live `mul`
+differs from ours; here `mul` *agrees*. So an item can be right in the two languages anyone reads
+and wrong in the two nobody checks. `_cjk_follows_mul` closes that.
+
+**24 items, 46 label rows**, and unambiguous because `mul` is agreed by both sides — the CJK is not
+a judgement call, it follows from a string neither side disputes. `CLAUDE.md` already records one
+of them, `Q141168785`, and rules on it: *"the stale half was ours, not hers."*
+
+**Found without a single new query.** `reports/name-audit.csv`, built an hour earlier for a
+different instruction, already held live `ja`/`zh` for all 508 items; the answer was a filter over
+it. The block reads that file rather than re-fetching, which makes it a **snapshot** — re-run the
+audit after she edits.
+
+**Not in today's batch, and that is the cap working.** The 46 sit behind the birth-name corrections,
+which take the 15 first; the held count moved 2,171 → 2,217 by exactly 46, which is how the block
+was verified. Fixing `mul`/`en` before `ja`/`zh` is the right order — those are the languages
+someone reading the item actually sees.
+
+Also re-ran `scripts/bure-coverage.py`, which the export campaign requires before each export:
+**151 of 251 in the corpus, 100 still absent** — unchanged, no drift.

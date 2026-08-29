@@ -4,7 +4,7 @@
 #   batch and be limited to a count of 15 labels added per batch". A label set
 #   at CREATION time is neither counted nor capped -- "a label added during item
 #   creation is good".
-#   2171 more are held for a later run; a repeat is a no-op, so nothing is lost.
+#   2217 more are held for a later run; a repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
 
 # ------------------------------------------------------------------------
