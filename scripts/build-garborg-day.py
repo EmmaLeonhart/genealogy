@@ -530,6 +530,49 @@ def _cap_label_edits(lines, clan_block, corrections):
     return head + lines
 
 
+_ABBREV_EXPANSIONS = None
+
+
+def expand_abbreviations(label, geni_id):
+    """`Guri Pedersdtr. Foss` -> `Guri Pedersdatter Foss`.
+
+    **Emma, 2026-08-27:** *"any abbreviations like -dtr (i.e. "Rasmusdtr." instead of
+    "Rasmusdatter") should be fixd since wikidata mul labels ae supposed to have the full form.
+    This is a part of the compliance stuff I mentioned earlier"*.
+
+    **The expansion is per person, not per abbreviation**, and the corpus is what says so:
+    `-dtr` is Norwegian `-datter` or Swedish `-dotter`, 81,530 against 57,085 overall, and the
+    split reverses by stem — `Olsdtr` is `Olsdatter` 6,981 to 1,058 while `Andersdtr` is
+    `Andersdotter` 5,172 to 3,126. A single global rule would be wrong several thousand times.
+
+    `scripts/census-abbreviated-patronymics.py` decides each one and records **why** in a `basis`
+    column: this person's own other `NAME` records first (588 of 10,923), the stem's corpus
+    majority second (10,100), and her own example where the corpus knows nothing (235). This
+    function only looks the answer up — the reasoning is in the CSV, where it can be read and
+    disagreed with.
+
+    Only **11** of the 10,923 are on people who already hold a Wikidata item, so this changes
+    almost nothing today and everything about what future creations look like.
+    """
+    global _ABBREV_EXPANSIONS
+    if _ABBREV_EXPANSIONS is None:
+        _ABBREV_EXPANSIONS = {}
+        path = ROOT / "reports" / "abbreviated-patronymics.csv"
+        if path.exists():
+            for row in csv.DictReader(path.open(encoding="utf-8")):
+                _ABBREV_EXPANSIONS.setdefault(row["geni_id"], []).append(
+                    (row["token"], row["expansion"]))
+    out = label
+    for token, expansion in _ABBREV_EXPANSIONS.get(geni_id, ()):
+        # The census records the token without a trailing stop; the label may carry one, and
+        # `Pedersdtr.Foss` -- no space -- occurs too, so replace the longest form first.
+        for form in (token + ".", token):
+            if form in out:
+                out = out.replace(form, expansion)
+                break
+    return " ".join(out.split())
+
+
 def without_nickname(label, fields):
     """`Ingvold (Pinkie) Remmie` → `Ingvold Remmie`. The nickname is a statement, not a label.
 
@@ -5027,7 +5070,8 @@ def main():
     # ORDER is special; they are emitted by the same loop as everyone else, so nothing about how
     # they are built can drift from the rest.
     for g in sorted(to_create, key=lambda x: (x not in SPINE_COMPLETE_NOW, labels.get(x, ""))):
-        f, label = facts.get(g), qs(without_nickname(labels.get(g, ""), fields.get(g)))
+        f, label = facts.get(g), qs(expand_abbreviations(
+            without_nickname(labels.get(g, ""), fields.get(g)), g))
         if not f:
             carried.append((g, label, "no derived facts"))
             continue
@@ -5091,8 +5135,16 @@ def main():
 
             given = [t for t, u, _o in classify_fields(f_.get("givn", ""), "")
                      if u in ("given", "patronymic")]
-            primary = " ".join(given + marnm.split()) if is_married else label
-            birth = " ".join(given + surn.split()) if is_married else ""
+            # **The expansion has to happen HERE, not on `label`.** For a married person
+            # `primary` is rebuilt out of the raw `GIVN` and `_MARNM` fields, so an expansion
+            # applied to `label` upstream is thrown away -- which is exactly how
+            # `Anne Govertsdtr. Bratland` kept its abbreviation through two rebuilds while
+            # `expand_abbreviations` tested correct in isolation. Married people are the
+            # majority of the batch, so the upstream call alone fixed almost nobody.
+            primary = expand_abbreviations(
+                " ".join(given + marnm.split()), g) if is_married else label
+            birth = expand_abbreviations(
+                " ".join(given + surn.split()), g) if is_married else ""
 
             # **`en` only for a name written in Latin script.** The non-Latin fallback
             # above rescues 55,547 people from being created as a bare `NN`, but their

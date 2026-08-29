@@ -18216,3 +18216,37 @@ someone reading the item actually sees.
 
 Also re-ran `scripts/bure-coverage.py`, which the export campaign requires before each export:
 **151 of 251 in the corpus, 100 still absent** — unchanged, no drift.
+
+## 2026-08-29 — `-dtr` expanded, and the expansion had to move to survive
+
+Her item: *"any abbreviations like -dtr (i.e. "Rasmusdtr." instead of "Rasmusdatter") should be
+fixd since wikidata mul labels ae supposed to have the full form."*
+
+**It is not one rule, and the corpus is what says so.** `-dtr` expands to Norwegian `-datter` or
+Swedish `-dotter` — **81,530** against **57,085** overall — and the split reverses by stem:
+`Olsdtr` is `Olsdatter` 6,981 to 1,058, while `Andersdtr` is `Andersdotter` 5,172 to 3,126. A
+global "always `-datter`" would have been wrong thousands of times, and her own example
+(`Rasmusdtr.`) happens to sit on a stem where `-datter` wins 10:1.
+
+**`scripts/census-abbreviated-patronymics.py` decides each one and records why.**
+`reports/abbreviated-patronymics.csv`: **10,923 abbreviated tokens over 10,869 people**, each row
+carrying a `basis` — the person's own other `NAME` records first (**588**), the stem's corpus
+majority second (**10,100**), her example where the corpus knows nothing (**235**). Only **11** are
+on people who already hold a Wikidata item, so this changes little today and everything about what
+future creations look like.
+
+**The bug worth recording is where the expansion had to go.** Applied to `label`, it fixed almost
+nobody: for a **married** person the emitter rebuilds `primary` out of the raw `GIVN` and `_MARNM`
+fields — `primary = " ".join(given + marnm.split())` — and throws the upstream label away. So
+`Anne Govertsdtr. Bratland` kept her abbreviation through two full rebuilds while
+`expand_abbreviations` tested correct in isolation. Married people are most of the batch. The
+expansion now wraps `primary` and `birth` at the point they are built.
+
+**The two abbreviations left in the batch are aliases, and they stay.** `Amul
+"Anne Govertsdtr. Bratland"` and `Amul "Guri Pedersdtr.Foss Foss"`. Her instruction was about the
+**mul label**; an alias carrying the abbreviated spelling is what lets somebody searching
+`Govertsdtr.` find her, which `CLAUDE.md` quotes Wikidata's own rule for: *"the purpose of aliases
+is only to find entities in searches"*.
+
+`Guri Pedersdtr.Foss Foss` — surname doubled — is a real defect in `aliases_for`, from a `P1449`
+nickname that is itself a whole name. Queued, not fixed here.

@@ -270,20 +270,12 @@ LAST	P734	Q27887927
 
 # create a new item
 CREATE
-#   set the en label to "Anne Govertsdtr. Bratland"
-LAST	Len	"Anne Govertsdtr. Bratland"
-#   set the mul label to "Anne Govertsdtr. Bratland"
-LAST	Lmul	"Anne Govertsdtr. Bratland"
-#   add a mul alias "Anne Govertsdtr. Årsvoll"
-LAST	Amul	"Anne Govertsdtr. Årsvoll"
-#   set the ja label to "アネ・ゴヴェルトスダッテル・ブラトランド"
-LAST	Lja	"アネ・ゴヴェルトスダッテル・ブラトランド"
-#   set the zh label to "阿内·戈韦尔特斯达特·布拉特拉恩德"
-LAST	Lzh	"阿内·戈韦尔特斯达特·布拉特拉恩德"
-#   add a ja alias "アネ・ゴヴェルトスダッテル・オールスヴォル"
-LAST	Aja	"アネ・ゴヴェルトスダッテル・オールスヴォル"
-#   add a zh alias "阿内·戈韦尔特斯达特·奥尔斯沃尔"
-LAST	Azh	"阿内·戈韦尔特斯达特·奥尔斯沃尔"
+#   set the en label to "Anne Govertsdatter Bratland"
+LAST	Len	"Anne Govertsdatter Bratland"
+#   set the mul label to "Anne Govertsdatter Bratland"
+LAST	Lmul	"Anne Govertsdatter Bratland"
+#   add a mul alias "Anne Govertsdatter Årsvoll"
+LAST	Amul	"Anne Govertsdatter Årsvoll"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -300,6 +292,8 @@ LAST	P40	Q141205912	S2600	"6000000169074443823"
 Q141205912	P25	LAST	S2600	"6000000169074443823"
 #   the item just created: P734 family name = Q27892819 Bratland, qualified P3831 object of statement has role Q28418670 married name
 LAST	P734	Q27892819	P3831	Q28418670
+#   add a mul alias "Anne Govertsdtr. Bratland"
+LAST	Amul	"Anne Govertsdtr. Bratland"
 
 # create a new item
 CREATE

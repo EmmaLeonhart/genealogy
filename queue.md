@@ -160,7 +160,14 @@ read `Marta Rasmusdatter Li` while `ja`/`zh` read *Helle*, a surname `mul` no lo
 sides already agree on `mul`. 24 items, 46 label rows; they drain through the 15-a-batch cap behind
 the birth-name corrections.
 
-Also any abbreviations like -dtr (i.e. "Rasmusdtr." instead of "Rasmusdatter" should be fixd since wikidata mul labels ae supposed to have the full form. This is a part of the compliance stuff I mentioned earlier)
+**Done.** `expand_abbreviations` in `build-garborg-day.py` expands `-dtr` in every emitted label;
+`reports/abbreviated-patronymics.csv` is the census — **10,923 tokens over 10,869 people**, each
+row carrying the expansion and the *basis* for it. The abbreviated form is deliberately kept as an
+`Amul` alias, because an alias exists to be searched by.
+
+**Still open, found while doing it:** `Guri Pedersdtr.Foss Foss` — an alias with the surname
+doubled, built by `aliases_for` from a `P1449` nickname that is itself a whole name. Small, and its
+own problem.
 
 Organize the queue to make it usable again, currently it does no appear to be usable
 
