@@ -18343,3 +18343,31 @@ currently cannot find him.
 `reports/wikidata-edited-not-created.qs`: **16 items get an edit**, the 6 label additions first so
 the file can be split at her 15-a-batch line if she wants. The 11 this batch cannot help are listed
 in the file as comments, so nobody goes looking for them later and concludes they were missed.
+
+## 2026-08-29 — `Q4411612`: the label yes, the Geni identity one export away
+
+Her item: *"Look over this item it just piques my curiosity whether we can identify it on geni and
+potentially add a mul label."* Two questions with different answers.
+
+**The `mul` label: yes, and uncontroversial.** The item has no `mul` and no `en`. `nb` and `da` both
+read *Svantepolk*; `sv` reads *Sviatopolk av obotriterna*, which is a name plus a disambiguator
+rather than a name. Two languages agreeing on the bare form is what `mul` is for, and nothing is
+overwritten because nothing is there. `reports/wikidata-q4411612-mul.qs`, one line.
+
+**Identifying him on Geni: no, and the reason is the interesting part.** Searching our tree for the
+name returns **19** people — Sviatopolk of Kiev, Swantepolk II of Pomerania, several
+Svantepolksdotters — and not one of them is *of the Obotrites*. Picking from that list would be
+precisely the name matching this repo refuses.
+
+**The structural route exists and stops exactly one step short.** Wikidata records his father as
+`Q470177` *Henry of Alt-Lübeck*, and that item **already carries `P2600` `6000000007718311626`** —
+so his father's Geni profile is known by id, with no name matching involved. But
+`6000000007718311626` is not in our corpus, so the sibling set is invisible and we cannot say which
+profile is this son.
+
+**Which makes it an export question rather than a matching question**, and that is a better answer
+than a guess: a `Forest` export seeded on `6000000007718311626` brings the family in and settles it
+by structure. Recorded in `queue.md`; not run, because the Chrome extension is not connected.
+
+Answered entirely offline — `out/wikidata/labels.tsv`, `relations.tsv` and `p2600-all.tsv`. No live
+query.
