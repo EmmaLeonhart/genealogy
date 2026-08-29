@@ -17972,3 +17972,33 @@ keep the ordinary path, because widening a marker test to substrings is how that
 
 `reports/partial-nn.csv` counts **9,539** people with a marker in one name field and a real name in
 the other, so this is a population rather than a curiosity.
+
+## 2026-08-29 — the Borsheim paths were never dropped; nothing was walking them
+
+Her item said two saved Geni pages needed the algorithm run on them, and that *"these things were
+kinda dropped."*
+
+**The extraction had already been done.** `paths/randolph-paulus-borsheim.tsv` and
+`paths/caroline-signe-borsheim-hoknes.tsv` both exist, and re-running `genimerge path-from-html`
+over her MHTML reproduces the first exactly — 21 steps, Arne Garborg → Randolph Paulus Borsheim,
+all with profile IDs.
+
+**What is dropped is that neither path is in `SPINE_PATHS`**, so the daily builder never advances
+them. `scripts/check-spine-bonds.py` over both: **4 of 20** and **5 of 30** consecutive pairs
+bonded on Wikidata. That is the finding, and it is a different thing from the extraction not having
+run.
+
+**I did not wire them in.** Membership of `SPINE_PATHS` is the question already sitting at the tail
+under § *the chains should be a SYSTEM*, she called this path *"potentially lower priority"*, and
+adding one raises the daily creation volume. Guessing that is the mistake I made twice already
+today.
+
+**Her URL chain runs two steps past the file.** It ends at Randolph `6000000177921459078`; she
+listed Richard `6000000177921459056` and then herself. Both links are in `derived-family.csv` —
+Randolph is Richard's father, Richard is hers — so the Arne→Emma path by marriage is **23 steps**,
+shorter than the Bergitte line. Worth knowing before anyone assumes Bergitte is the near route.
+
+**And the numbering is gone.** Emma: *"no numbering the queue isn't really what I want I was just
+repeating your pattern."* She was right that it was mine — `CLAUDE.md` § *Queue items are BULLET
+POINTS* has said since 2026-08-15 that a number is a promise the item will still be there, which
+makes deletion feel like renumbering everything else. 11 numbered items converted to bullets.

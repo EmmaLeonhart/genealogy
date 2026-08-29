@@ -208,54 +208,66 @@ bolted on a hypothesis that would have biased the analysis before it looked at a
 
 Work them **in this order**. The clock times are how she expressed the order and nothing more.
 
-**A missing number means that one is DONE and was deleted**, which is the queue's own rule and the
-contradiction she named on 2026-08-28: *"you were trying to preserve what I said even after it was
-completed."* The numbers are her ordering, so the survivors keep theirs rather than being
-renumbered. Gone so far: **1** (`Q141198538`, the `nn` first name — fixed in `_carries_marker`,
-pinned by `tests/test_garborg_day_batch.py::test_a_marker_beside_a_real_name_still_takes_the_nn_path`).
+**Bullets, never numbers.** Emma, 2026-08-29: *"no numbering the queue isn't really what I want I
+was just repeating your pattern"* — the numbering here was mine and she was echoing it back.
+`CLAUDE.md` § *Queue items are BULLET POINTS* already said so and gives her reason: a number is a
+promise the item will still be there, so deletion feels like renumbering everything else and items
+accumulate instead of being blasted through. Order is position; nothing else is needed.
+
+**Done and deleted so far:** the `Q141198538` `nn`-first-name item — fixed in `_carries_marker`,
+pinned by `tests/test_garborg_day_batch.py::test_a_marker_beside_a_real_name_still_takes_the_nn_path`.
 
 ---
 
-**2.** Two saved Geni pages, single-file MHTML:
-`C:\Users\Emma\.claude\uploads\dbec586f-7705-4f0e-8652-03df7c6b73e5\a8b40e73-Geni__Caroline_Signe_Borsheim_Hoknes_19322007.mhtml`
-and `…\1ef99cd3-Geni__Randolph_Paulus_Borsheim_19262015_Penticton.mhtml`
+- **The two Borsheim paths are extracted already; what was dropped is that nothing ADVANCES them.**
+  `paths/randolph-paulus-borsheim.tsv` (21 steps, Arne Garborg → Randolph Paulus Borsheim) and
+  `paths/caroline-signe-borsheim-hoknes.tsv` (31 steps) both exist and both parse — re-running
+  `genimerge path-from-html` on her MHTML reproduces the first exactly. Measured 2026-08-29 with
+  `scripts/check-spine-bonds.py`: **4 of 20** and **5 of 30** consecutive pairs bonded on Wikidata.
 
-> Yeah so I guess egenerate the alorithm and run for this reason
->
-> And for other things: So here are additional paths I put as html single file things.
->
-> Especially since the closest relationship is actually a marriage onehttps://www.geni.com/people/Arne-Garborg/6000000003492005116?through=6000000177921459078 https://www.geni.com/people/Ane-Oline-Raugstad/6000000003491986946?through=6000000177921459078 https://www.geni.com/people/Marta-Kristine-Raustad/6000000003491988489?through=6000000177921459078 https://www.geni.com/people/Peder-Raugstad/6000000003491988509?through=6000000177921459078 https://www.geni.com/people/Selma-Borsheim/6000000003491988619?through=6000000177921459078 https://www.geni.com/people/Reinhert-Borsheim/6000000032068841409?through=6000000177921459078 https://www.geni.com/people/Randolph-Borsheim/6000000177921459078 https://www.geni.com/people/Richard/6000000177921459056
-> https://www.geni.com/people/%E9%96%BB%E9%AD%94%E7%8D%85%E5%BF%83/6000000087535357291
->
-> Now I do see this one as a potentially lower priority one and with the bergitte wikidata item already existing less important. But these things were kinda dropped. The idea again with the alorithmic stuff is we make as many paths etween these people as possible so it grows into a more dense area of the wikidata tree
+  **Neither is in `SPINE_PATHS`**, so the daily builder never walks them — that is the whole of
+  *"these things were kinda dropped"*. Whether they go in is the membership question already at the
+  tail under § *the chains should be a SYSTEM*, and it needs her word rather than a guess: she
+  called this one *"potentially lower priority... with the bergitte wikidata item already existing
+  less important"*, and adding a path raises the daily creation volume.
 
----
+  **Her URL chain runs two steps further than the file does.** The path ends at Randolph
+  `6000000177921459078`; she listed Richard `6000000177921459056` and then herself. Both links are
+  in our tree — Randolph is Richard's father, Richard is hers — so an Arne→Emma path via the
+  marriage link is 23 steps and is *shorter than the Bergitte line*. Her framing is
+  *"the closest relationship is actually a marriage one"*, and the goal is
+  *"as many paths between these people as possible so it grows into a more dense area of the
+  wikidata tree"*.
 
-**3.**
+  Emma herself is `NEVER_TOUCH` and must not enter the traversable graph, so a path ending at her
+  is a measurement, never a creation target. Her father Richard **is** to be created —
+  `CLAUDE.md` § *Her own duplicates are DELIBERATE*.
+
+- 
 
 > Ignore the fucking NN thing. "Sara /NN/" can wait until a cron job at 9pm fires to analyze this problem then, right now the important thin here is o actually fix the algorithm and rerun it adnd attach the quickstatement thing
 
 ---
 
-**4.**
+- 
 
 > do a cron job at 10pm to analyze why https://www.geni.com/people/private/6000000021223635839 was added as "Garborg" instead of the current labels on wikidata that I manually added https://www.wikidata.org/wiki/Q141199845
 
 ---
 
-**5.**
+- 
 
 > do a cron job at 10:30 PM to analyze https://www.wikidata.org/wiki/Q141199868 and why it came out as brackets instead of what it is supposed to be too
 
 ---
 
-**6.**
+- 
 
 > analyze why new items are not being created with Japanese and Chinese labels already pesent, and to go over the census and build infrastructure so that every indiviual is created with a latin alphabet mul label (a few like Buyeo Taebi (Q12598947) and Buyeo Deokjang (Q19657284) were not), and every individual is at least made with all of the cjk names and others. Since remember that every individual is supposed to have the relative script universality beforehand and it is absolutely essential to cover all cjk, if any script is the only present script for the name of somethin in he geni synopic tree then it must be part of the default lablels we make on every item
 
 ---
 
-**7.**
+- 
 
 > cron job at 11:30 PM that does an analysis of whether we could set this repo as public, and use github actions to have it periodically email me a quickstatements file every day at 9am, I am contemplating this as a way to get more efficiency, but mostly because I do not think the security issue is that bad (people who are digging can find stuff), and because making this 100% programmatic i gonna allow for more reliability since I am no gonna need you to constantly opaquely generate stuff for me where I do not know the degree that somethin is your discretion or part of the algorithm. Biggest barrier imo is the synoptic tree file stuff. But I think this is a genuine strategy for solvin a genuine problem with our workflow
 
@@ -265,19 +277,19 @@ and, immediately after:
 
 ---
 
-**8.**
+- 
 
 > And a cron job at 12:30 AM that will do an analysis of the existing individuals that I have added using this, to see how compliant they are withthe original specifications and visions.
 
 ---
 
-**9.**
+- 
 
 > without analysis do a cron job that will at 1am do a forest export and ancestor export on https://www.geni.com/profile/index/6000000227464556886 and incorporate them into the synoptic tree and then rebuild the synoptic tree, and then generate the quickstaements with the algorithm
 
 ---
 
-**10.** She asked, for this one specifically, that a question be put to her about every part of it,
+- She asked, for this one specifically, that a question be put to her about every part of it,
 each carrying an option meaning *I do not know what this means contextually*, with a re-explanation
 when she picks it. Screenshot she was replying to:
 `C:\Users\Emma\.claude\uploads\dbec586f-7705-4f0e-8652-03df7c6b73e5\6e755957-image.jpg`
@@ -295,7 +307,7 @@ when she picks it. Screenshot she was replying to:
 
 ---
 
-**11.** Screenshot she was replying to:
+- Screenshot she was replying to:
 `C:\Users\Emma\.claude\uploads\dbec586f-7705-4f0e-8652-03df7c6b73e5\16d7e7ae-image.jpg`
 
 > Okay, I think I actually understand what's going on with these hand-asserted pairs. I think I remember what's going on with them, but the interesting thing I'm noticing is that, aside from the one for me, all of these are Asian people. I think I know what the actual explanation for this is, and it's a bit of a weird one.
@@ -322,7 +334,7 @@ Kitajima · `6000000227335393824`→`Q135579474` Tokitaka Kitajima
 
 ---
 
-**12.** Screenshot she was replying to:
+- Screenshot she was replying to:
 `C:\Users\Emma\.claude\uploads\dbec586f-7705-4f0e-8652-03df7c6b73e5\160fbcc5-image.jpg`
 
 > Yes, this person appears to be correct. This person is not actually a spying person at all, because I actually put this specifically in place for this person. They're just a person with a similar name that I was concerned there might be a merge done on, but the person themselves is relatively clear.
