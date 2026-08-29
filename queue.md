@@ -2118,6 +2118,13 @@ Stop preferring creation over reuse*.
 
 **Emma, 2026-08-29.** `Q141205924` — *mother of Lars Gunnbjørnsen Mjølhus*. Analysis only.
 
+## A system for fixing romanisation errors
+
+**Emma, 2026-08-29:** *"we want to introduce a system to try to fix romanizaion errors."*
+
+**First case:** `Q141216408` came out as **ウン・モルクク**; she hand-corrected it to
+**ウン・モルク**.
+
 ## ABSOLUTE PREREQUISITE — no individual is created without their CJK labels
 
 **Emma, 2026-08-29:** *"There should be an absolute prerequisite that nothing is created until you
