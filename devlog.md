@@ -18371,3 +18371,31 @@ by structure. Recorded in `queue.md`; not run, because the Chrome extension is n
 
 Answered entirely offline — `out/wikidata/labels.tsv`, `relations.tsv` and `p2600-all.tsv`. No live
 query.
+
+## 2026-08-29 — `QUOTED`: the apostrophe branch was nearly deleted, and it is load-bearing
+
+`Jean d'O Seigneur d'O & de Maillebois` was producing `P1449` *nickname* = `O Seigneur d`, and my
+plan was to stop treating `'` as a delimiter. **Measuring first is what stopped that.** Over
+`reports/display-names.csv`: **963 apostrophe-delimited spans inside `GIVN`, and most are genuine
+bynames** — `Illugi svarte i Gilsbakki 'svarti'`, `Thurid 'dylla'`, `Ivan II Ivanovich 'the Fair'`,
+`Hanna Jørgine 'Gina'`, `Philip I 'The handsome'`. Geni really does use single quotes for bynames.
+Deleting the branch would have destroyed some nine hundred real nicknames to fix a handful of
+French names.
+
+**Emma named the discriminator:** *"d' can be an escaped substring lol"* — an apostrophe bound into
+a word is elision, not a delimiter. So a quoted span now requires the opening `'` at a word
+boundary and the closing `'` after a non-space and before whitespace or end.
+
+- rejects `d'O`, `O'Brien`, `l'Enfant` — the opening quote has a letter before it
+- rejects `Sultan 'Omar 'Ali Saifuddin`, where the transliterated ayn opens twice and never closes,
+  so the span `'Omar '` was an artefact of pairing two openers
+
+**963 → 811 kept, 152 rejected.** Double-quote and parenthesis are untouched at 6,266 and 16,748,
+which is the number that makes this narrow rather than the nine cases I checked by hand.
+
+**It also let a workaround be deleted.** `without_nickname` had been ignoring apostrophe matches in
+the label path since this morning — wrong in the opposite direction, since it stripped nothing that
+should have been stripped. Gone now that `QUOTED` itself distinguishes the two.
+
+Verified before committing rather than after: **314 passed** over every name and batch test, then
+the full fast lane **1,454 passed, 29 skipped, 0 failed**.

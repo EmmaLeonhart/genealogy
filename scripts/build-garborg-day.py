@@ -596,20 +596,21 @@ def without_nickname(label, fields):
     surname the `GIVN` field knows nothing about, so this deletes what it can find and leaves
     everything else alone rather than rebuilding the name.
 
-    **An ASCII apostrophe is NOT a quote here.** `QUOTED` accepts `'` as a delimiter, so on
-    `Jean d'O Seigneur d'O & de Maillebois` it matches `'O Seigneur d'` and this returned
-    `Jean d O & de Maillebois` — a French name destroyed to strip a nickname that was never
-    there. Only `"` and the curly pair delimit a nickname for the purposes of the label.
-    `namemodel` has the same exposure on the same pattern and it is queued rather than changed
-    here, because widening or narrowing `QUOTED` moves every `P1449` in the repo.
+    **The apostrophe guard here is gone, because `QUOTED` itself was fixed.** It used to accept
+    any `'` as a delimiter, so `Jean d'O Seigneur d'O & de Maillebois` matched `'O Seigneur d'`
+    and this returned `Jean d O & de Maillebois` — a French name destroyed to strip a nickname
+    that was never there. The workaround was to ignore apostrophe matches in the label path only.
+    That was wrong in the other direction: measured over `display-names.csv`, **963** apostrophe
+    spans exist and most are real bynames — `Illugi svarte i Gilsbakki 'svarti'`,
+    `Ivan II Ivanovich 'the Fair'` — so ignoring them stripped nothing that should have been
+    stripped. `QUOTED` now distinguishes a delimiter from an elision, per Emma: *"d' can be an
+    escaped substring lol"*, and every branch of it is trustworthy here.
     """
     if not label or not fields:
         return label
     from namemodel import QUOTED
     out = label
     for m in QUOTED.finditer(fields.get("givn") or ""):
-        if m.group("paren") is None and not m.group(0).startswith(('"', "“", "”")):
-            continue
         if m.group(0) in out:
             out = out.replace(m.group(0), " ")
     return " ".join(out.split())

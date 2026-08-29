@@ -171,7 +171,31 @@ def load_plan(path: Path | None = None) -> dict:
 
 
 #: A token Geni wrapped in quotes inside `GIVN` — `Stine "Stena" Eivindsdatter`.
-QUOTED = re.compile(r'["“”\'](?P<token>[^"“”\']+)["“”\']|\((?P<paren>[^)]+)\)')
+#:
+#: **The apostrophe branch is load-bearing and was nearly deleted.** `Jean d'O Seigneur d'O`
+#: matched `'O Seigneur d'` and produced a `P1449` *nickname* of `O Seigneur d`, which looked
+#: like grounds for dropping `'` as a delimiter altogether. Measured first, over
+#: `reports/display-names.csv`: **963 apostrophe-delimited spans**, and most are genuine —
+#: `Illugi svarte i Gilsbakki 'svarti'`, `Ivan II Ivanovich 'the Fair'`,
+#: `Hanna Jørgine 'Gina'`, `Philip I 'The handsome'`. Geni really does use single quotes for
+#: bynames, so removing the branch would have destroyed 900-odd real nicknames to fix a handful
+#: of French names.
+#:
+#: **Emma, 2026-08-29, named the actual discriminator:** *"d' can be an escaped substring lol"* —
+#: an apostrophe bound into a word is elision, not a delimiter. So a quoted span now requires:
+#:
+#: * the opening `'` at a word boundary — start of string or after whitespace. This rejects
+#:   `d'O`, `O'Brien`, `l'Enfant`.
+#: * the closing `'` preceded by a non-space and followed by whitespace or end. This rejects
+#:   `Sultan 'Omar 'Ali Saifuddin`, where the transliterated ayn opens twice and closes never,
+#:   and the span `'Omar '` is an artefact of pairing two openers.
+#:
+#: The double-quote and parenthesis branches are unchanged: they are unambiguous and carry the
+#: other 23,005 matches.
+QUOTED = re.compile(
+    r'["“”](?P<token>[^"“”]+)["“”]'
+    r"|(?<![^\s])'(?P<apos>[^'\n]*[^\s'])'(?![^\s])"
+    r"|\((?P<paren>[^)]+)\)")
 
 
 #: A `-sen`/`-son`/`-datter` token, split into stem and suffix.
@@ -250,7 +274,10 @@ def classify_fields(givn: str, surn: str, nick: str = "",
     out: list[tuple[str, str, int]] = []
 
     raw_givn = givn or ""
-    nicknames = [m.group("token") or m.group("paren")
+    # Three branches now -- double quote, apostrophe, parenthesis -- because the apostrophe
+    # one had to be narrowed to exclude elision (`d'O`) without losing the 963 real bynames
+    # Geni writes as `Illugi 'svarti'`. See `QUOTED`.
+    nicknames = [m.group("token") or m.group("apos") or m.group("paren")
                  for m in QUOTED.finditer(raw_givn)]
     plain = QUOTED.sub(" ", raw_givn)
 
