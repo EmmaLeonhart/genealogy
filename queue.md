@@ -13,10 +13,9 @@ lines as say what to do.
 audits, dead crons and superseded priorities. Recover any of it with
 `git show 6edf302b:queue.md`.
 
-<!-- HER OWN WORDS, RESTORED 2026-08-27. I had replaced this section with a
-     paraphrase of it, on the same evening she said the exact wording is the most
-     important thing. Recovered from `git show 07600faf:queue.md`. Do not rewrite
-     her text; add underneath it. -->
+## 00. Restart stuff
+
+We need to recover whatever the earlier session was doing using the transcript since that will give context for what it was doing and whether there were any important interrupted tasks it was doing. Session unexpectedly ended due to a computer crash so look at most recent transcript for it.
 
 ## 0. Aug 28, 2026 manual adds
 
