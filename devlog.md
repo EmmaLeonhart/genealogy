@@ -18605,3 +18605,35 @@ resolves and creates the person regardless when they do not; under the new rule 
 carried forward instead. It would bite rarely — 37 of 38 in the last batch already carry both — but
 she wants it absolute, not usual. Deliberately **not** applied now: *"Apply it at the end of the
 queue because I don't want to interrupt whatever pipeline we're running right now."*
+
+## 2026-08-29 — the algorithm review is closed, and the batch she will run
+
+Her instruction at 12:12 PST, via a one-shot cron 30 minutes later: *"consider the review over and
+then generate the quickstatements, and then after that is finished then continue with the queue, I
+am going to be going to run the quickstatements later."*
+
+**The review is closed but its unfinished half is not deleted with it.** It pinned the queue from
+2026-08-27. She walked through and ruled on steps 1, 2, 4, 5, 6, 7, 9 and 11 of
+`build-garborg-day.py --compose`; **steps 3 (`linked`), 8, 10, 12, 13 and 14 were never reached.**
+Those are now their own tail item saying so, because closing a review is not the same as finishing
+it and nothing in those six has her sign-off. Her rulings on the covered steps are recorded
+alongside — including the note that her `entity_resolution.md` entry was overtaken the same day,
+since deleting the whole file removed `Q140568870` from `have` anyway.
+
+**The batch: 38 creations, 13 links.** 47 people composed, 672 carried forward, 15 label edits on
+existing items with 2,143 held and 45 already drained.
+
+**Four checks before it was sent, because she runs this file by hand:**
+
+- **15** label edits on existing items — exactly the cap.
+- **38 of 38** `P2600` statements carry their `P1810`.
+- Redaction markers on **four lines, every one a `P1810` or its comment** — none in a label.
+- The spine completions lead the file: Ingrid Guttormsdotter at line 59, Ramborg at 88.
+
+**One test failed and it was right.**
+`test_the_freshness_report_names_no_file_that_has_been_deleted` caught that
+`reports/repo-freshness.csv` still listed `entity_resolution.md` — a loose end from deleting it this
+morning that nothing else would have noticed. Regenerated the report; the fix was the artifact, not
+the test. **279 passed, 0 failed** after.
+
+Sent to her with `SendUserFile` rather than left in the repo, since she said she would run it later.

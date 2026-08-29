@@ -4,47 +4,38 @@
 #   batch and be limited to a count of 15 labels added per batch". A label set
 #   at CREATION time is neither counted nor capped -- "a label added during item
 #   creation is good".
-#   2173 more are held for a later run; a repeat is a no-op, so nothing is lost.
+#   2143 more are held for a later run; a repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
-#   Q2075113: holds 'Hedvig Ulrika De la Gardie'; ours is 'Hedvig Ulrika Armfelt'
-#   Q2075113: keep the outgoing label as an alias before it is replaced
-Q2075113	Amul	"Hedvig Ulrika De la Gardie"
-#   Q2075113: set the mul label to 'Hedvig Ulrika Armfelt'
-Q2075113	Lmul	"Hedvig Ulrika Armfelt"
-#   Q2075113: set the en label to 'Hedvig Ulrika Armfelt'
-Q2075113	Len	"Hedvig Ulrika Armfelt"
-#   Q2075113: set the ja label
-Q2075113	Lja	"ヘドヴィグ・ウルリカ・アルムフェルト"
-#   Q2075113: set the zh label
-Q2075113	Lzh	"海德维格·乌尔里卡·阿尔姆费尔特"
-#   Q5735890: holds 'Arvid Forbus'; ours is 'Arvid Ernaldsson Forbus till Kumo'
-#   Q5735890: keep the outgoing label as an alias before it is replaced
-Q5735890	Amul	"Arvid Forbus"
-#   Q5735890: set the mul label to 'Arvid Ernaldsson Forbus till Kumo'
-Q5735890	Lmul	"Arvid Ernaldsson Forbus till Kumo"
-#   Q5735890: set the en label to 'Arvid Ernaldsson Forbus till Kumo'
-Q5735890	Len	"Arvid Ernaldsson Forbus till Kumo"
-#   Q5735890: set the ja label
-Q5735890	Lja	"アルヴィド・エルナルドソン・フォルブス・ティル・クモ"
-#   Q5735890: set the zh label
-Q5735890	Lzh	"阿尔维德·埃尔纳尔德松·福尔布斯·蒂尔·库莫"
-
-# ------------------------------------------------------------------------
-# CJK FOLLOWS mul -- items whose ja/zh came from a mul that has since changed.
-#   Emma: "the mul lable takes priority". These are ours: mul is agreed by both
-#   sides, so the CJK is not a judgement call, it follows from it.
-#   Snapshot from reports/name-audit.csv -- re-run the audit after she edits.
-# ------------------------------------------------------------------------
-#   Q141168785: ja was transliterated from a superseded mul ('オーゴット・ニーヴォル'); mul now says 'Aagot Garborg'
-Q141168785	Lja	"オーゴット・ガルボルグ"
-#   Q141168785: zh was transliterated from a superseded mul ('奥高特·尼沃尔'); mul now says 'Aagot Garborg'
-Q141168785	Lzh	"奥高特·加尔博格"
-#   Q141168787: ja was transliterated from a superseded mul ('アルマ・マチルダ・トゥンヘイム'); mul now says 'Alma Matilda Bring Iverson'
-Q141168787	Lja	"アルマ・マチルダ・ブリング・イーヴェション"
-#   Q141168787: zh was transliterated from a superseded mul ('阿尔玛·玛蒂尔达·通海姆'); mul now says 'Alma Matilda Bring Iverson'
-Q141168787	Lzh	"阿尔玛·玛蒂尔达·布林·艾弗森"
-#   Q141168794: ja was transliterated from a superseded mul ('ベッツィ・ヤコブソン'); mul now says 'Betsy Tunheim'
-Q141168794	Lja	"ベッツィ・トゥンヘイム"
+#   Q141168794: zh was transliterated from a superseded mul ('贝齐·雅各布松'); mul now says 'Betsy Tunheim'
+Q141168794	Lzh	"贝齐·通海姆"
+#   Q141168801: ja was transliterated from a superseded mul ('コーラ・エステル・トゥンヘイム'); mul now says 'Cora Estelle Pierson'
+Q141168801	Lja	"コーラ・エステル・ピアソン"
+#   Q141168801: zh was transliterated from a superseded mul ('科拉·埃斯特尔·通海姆'); mul now says 'Cora Estelle Pierson'
+Q141168801	Lzh	"科拉·埃斯特尔·皮尔森"
+#   Q141168803: ja was transliterated from a superseded mul ('ダグニー・ニーヴォル'); mul now says 'Dagny Garborg'
+Q141168803	Lja	"ダグニー・ガルボルグ"
+#   Q141168803: zh was transliterated from a superseded mul ('达格妮·尼沃尔'); mul now says 'Dagny Garborg'
+Q141168803	Lzh	"达格妮·加尔博格"
+#   Q141168816: ja was transliterated from a superseded mul ('エリサベート・オードネスダッテル・ガルボルグ'); mul now says 'Elisabet Ådnesdatter Bø'
+Q141168816	Lja	"エリサベート・オードネスダッテル・ベー"
+#   Q141168816: zh was transliterated from a superseded mul ('伊丽莎白·奥德内斯达特·加尔博格'); mul now says 'Elisabet Ådnesdatter Bø'
+Q141168816	Lzh	"伊丽莎白·奥德内斯达特·贝"
+#   Q141169072: ja was transliterated from a superseded mul ('オードネ・オルセン・グレートヘイム'); mul now says 'Ådne Olsen Garborg'
+Q141169072	Lja	"オードネ・オルセン・ガルボルグ"
+#   Q141169072: zh was transliterated from a superseded mul ('奥德内·奥尔森·格勒特海姆'); mul now says 'Ådne Olsen Garborg'
+Q141169072	Lzh	"奥德内·奥尔森·加尔博格"
+#   Q141178197: ja was transliterated from a superseded mul ('エリーサベト・ヨハンネセン'); mul now says 'Elisabeth Nyvold'
+Q141178197	Lja	"エリーサベト・ニーヴォル"
+#   Q141178197: zh was transliterated from a superseded mul ('伊丽莎白·约翰内森'); mul now says 'Elisabeth Nyvold'
+Q141178197	Lzh	"伊丽莎白·尼沃尔"
+#   Q141180408: ja was transliterated from a superseded mul ('ヨン・ラーション・リ'); mul now says 'Jon Larsson Mæle'
+Q141180408	Lja	"ヨン・ラーション・メレ"
+#   Q141180408: zh was transliterated from a superseded mul ('永·拉尔松·李'); mul now says 'Jon Larsson Mæle'
+Q141180408	Lzh	"永·拉尔松·梅莱"
+#   Q141180409: ja was transliterated from a superseded mul ('マグダレーナ・アンデシュドッテル・ブーレ'); mul now says 'Magdalena Andersdotter'
+Q141180409	Lja	"マグダレーナ・アンデシュドッテル"
+#   Q141180409: zh was transliterated from a superseded mul ('玛格达莱娜·安德斯多特·布雷'); mul now says 'Magdalena Andersdotter'
+Q141180409	Lzh	"玛格达莱娜·安德斯多特"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have

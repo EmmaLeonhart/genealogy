@@ -88,31 +88,6 @@ item is the record of what the campaign would be.
 
 That's the thing I potentially want to do as a campaign to make Jenny readable to everybody. For now, we're sticking to this being a primary Wikidata-based project, so we just do not add a label.
 
-## 1. FINISH THE ALGORITHM REVIEW CONVERSATION WITH EMMA — before anything else
-
-She is walking through `scripts/build-garborg-day.py --compose` **step by step**, one numbered
-step at a time, raising what is wrong with each. This is a review, not a work queue. Emma,
-2026-08-27: *"My god what the fuck are you doing? Are you just executing on the queue instead of
-following the conversation? First queue item is to finish this conversation with me."*
-
-**While the review is running: do not go off and execute, and do not flag incidental problems at
-her.** Findings go to the back of this file. Her words: *"don't flag those things throw reviewing
-them at the back of the queue."*
-
-**She has asked for a comprehensive step-by-step review of the whole algorithm.** Steps covered:
-1 the ledger refresh, 2 `have`, 4 the provisional ring, 5 the 1880 cutoff, 6 the subgraph, 7
-`compose`, 9 the duplicate guard, 11 the fill-in pass. Not yet: 3 `linked`, 8, 10, 12, 13, 14.
-
-Rulings so far — the 34 unlabelled ledger rows dropped and regenerated from Wikidata; her own
-`entity_resolution.md` entry to go, **by her hand, not now**; the Bureätten people eligible for
-both fill-in and seeding; `MODERN_CUTOFF = 1880` "totally undesired" and to be removed with
-nothing in its place; steps 4–5 dead under `--compose`; her duplicates deliberate; the Wikidata
-link to be injected into bios **during the synoptic tree build**, with Geni never edited.
-
-**Do not act on `entity_resolution.md` yet.** Emma: *"this entity resolution stuff is important,
-but I think you may have been presenting it as being more important than it is. It's important,
-but just don't do stuff on it right now."*
-
 ## Stuff here (semi-confusing) 8-27
 
 Okay so idk what is going on since a lot of contradictory thins are happening. idk if the section below is the next step and the queue is not in use or if it is awkwardly set up
@@ -2049,6 +2024,31 @@ placeholder is needed. If Geni has lost the task, submit fresh from
 
 **Do not silently drop it.** `Q4411612` is identified and its `.qs` is written, but neither he nor
 his father is in the tree, so the correspondence exists only in a file until an export lands.
+
+## The algorithm review ended before six of its steps — what was never walked through
+
+**Closed 2026-08-29 at her instruction** — *"consider the review over"* — after pinning the queue
+since 2026-08-27. This records the unfinished half so closing it is not the same as pretending it
+finished.
+
+**She walked through, and ruled on:** step 1 the ledger refresh, 2 `have`, 4 the provisional ring,
+5 the 1880 cutoff, 6 the subgraph, 7 `compose`, 9 the duplicate guard, 11 the fill-in pass.
+
+**Never reached: steps 3 (`linked`), 8, 10, 12, 13, 14.** Nobody has told me what is wrong with
+them, so nothing in them has her sign-off — treat any behaviour there as unreviewed rather than
+approved.
+
+**Her rulings on the covered steps, which stand:**
+
+- The 34 unlabelled ledger rows dropped and regenerated from Wikidata.
+- Her own `entity_resolution.md` entry to go **by her hand, not mine** — since overtaken: she had
+  the whole file deleted on 2026-08-29, which removed her `Q140568870` from `have` anyway.
+- Bureätten people eligible for **both** fill-in and seeding.
+- `MODERN_CUTOFF = 1880` *"totally undesired"* — removed, with nothing in its place.
+- Steps 4–5 are dead code under `--compose`.
+- Her duplicate items are **deliberate**: create the duplicates, then merge them, because that
+  leaves the trail Wikidata's review machinery expects.
+- The Wikidata link goes into bios **during the synoptic tree build**; Geni is never edited for it.
 
 ## ABSOLUTE PREREQUISITE — no individual is created without their CJK labels
 
