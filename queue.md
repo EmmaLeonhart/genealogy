@@ -17,7 +17,7 @@ audits, dead crons and superseded priorities. Recover any of it with
 
 These are supposed to be manually added to the queue and worked on, do no just paraphrase during the rebase keep this part entirely intact. We are approaching usage limit for now.
 
-### Run `reports/wikidata-spine-completion.qs` AFTER the next daily batch
+### The Charlemagne line: one bond left, after the next batch runs
 
 The daily batch now creates both people the Charlemagne line was missing — Ramborg Knutsdotter
 Lejon (step 15) and Ingrid Guttormsdotter (step 22) — and they lead the file, per her *"a custom
@@ -41,18 +41,14 @@ creates her:
 
 Kept here rather than as a `.qs`: a batch file carrying a `<INGRID>` placeholder is not runnable
 QuickStatements, and `tests/test_p2600_batches.py` says so correctly.
+`reports/wikidata-spine-completion.qs` was deleted for that reason — it also duplicated Ramborg,
+who the batch already creates, and two `CREATE`s cannot be merged.
 
 **Why the fourth is not in the batch, and it is not a bug.** The builder only links to items in
 `have`, which is the ledger. Guttorm already exists on Wikidata *and* already carries the `P2600`
 for `6000000001200156499` — the duplicate guard knows him and prints so — but he is not in the
 ledger, which is built from her contributions plus a targeted `P2600` lookup. Making `have` wider
 is a change to the algorithm she is mid-review of, so it is not being done here.
-
-### Wording issues and queue crud
-
-Yeah it is a bit contradictory it seems because the specicic thing is that you were trying to preserve what I said even aftet it was completed
-
-No clue at this point if the large series of tasks I added was even preserved at all since the queue appears to habve already become complete garbage 
 
 ### The English-name-on-Geni campaign — the half of `P1810` that is NOT done
 
@@ -79,10 +75,6 @@ Still to do, her instruction: rename him on **Geni** too, profile `6000000181444
 next export carries it and our tree stops saying *Lave*.
 
  
-
-## Applying labels to existing items
-
-We are way too gung ho about adding cjk labels to existing items. You may have noticed that I am constantly removing them from the quickstatements. I consider them to be disruptive and suspicion raising. imo any label changes should occur at the beginning of the batch and be limited to a count of 15 labels added per batch. I do no know what you are doing with this, but understand that a label added after item creation is a risk and a label added during item creation is good. 
 
 ## Audit the names of every item Emma has edited, and every item they were merged into
 

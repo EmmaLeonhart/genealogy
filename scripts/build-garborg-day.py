@@ -36,6 +36,7 @@ from __future__ import annotations
 
 import argparse
 import collections
+import datetime
 import csv
 import random
 import re
@@ -380,13 +381,22 @@ def _label_corrections(our_items, labels, table, state):
         # a correction of our own 2026-08-29 flip and nothing else.
         if have not in aliases_of.get(geni_id, ()):
             continue
+        # **A comment above EVERY line, not just the first.** `tests/test_p2600_batches.py`
+        # asserts it and was right to: these are five separate edits to a live item, and a
+        # reader scanning the batch to approve or delete one of them needs each to say what it
+        # does. One comment over a five-line group leaves four unexplained.
         out.append(f"#   {qid}: holds {have!r}; ours is {want!r}")
+        out.append(f"#   {qid}: keep the outgoing label as an alias before it is replaced")
         out.append(f'{qid}	Amul	"{have}"')
+        out.append(f"#   {qid}: set the mul label to {want!r}")
         out.append(f'{qid}	Lmul	"{want}"')
+        out.append(f"#   {qid}: set the en label to {want!r}")
         out.append(f'{qid}	Len	"{want}"')
         ja, zh = label_in(want, table)
         if ja:
+            out.append(f"#   {qid}: set the ja label")
             out.append(f'{qid}	Lja	"{ja}"')
+            out.append(f"#   {qid}: set the zh label")
             out.append(f'{qid}	Lzh	"{zh}"')
     if out:
         out = ["", "# " + "-" * 72,
@@ -397,6 +407,127 @@ def _label_corrections(our_items, labels, table, state):
                "#   lost. This block SHRINKS as it is run -- it is not the clan block.",
                "# " + "-" * 72] + out
     return out
+
+
+#: **Labels written onto items that ALREADY EXIST, per batch.** Emma, 2026-08-28: *"We are way
+#: too gung ho about adding cjk labels to existing items. You may have noticed that I am
+#: constantly removing them from the quickstatements. I consider them to be disruptive and
+#: suspicion raising. imo any label changes should occur at the beginning of the batch and be
+#: limited to a count of 15 labels added per batch."*
+#:
+#: **A label at CREATION time is not capped and is not counted.** Her distinction, same message:
+#: *"a label added after item creation is a risk and a label added during item creation is good."*
+#: So this counts only `Q… L…`/`Q… A…` lines, never `LAST L…`.
+LABEL_EDIT_CAP = 15
+
+
+def _cap_label_edits(lines, clan_block, corrections):
+    """Move label edits on existing items to the FRONT and cut them to `LABEL_EDIT_CAP`.
+
+    Both halves are hers. *"any label changes should occur at the beginning of the batch"* — so
+    they lead the file rather than trailing 5,000 lines below, where she was scrolling to find
+    them. *"limited to a count of 15 labels added per batch"* — so the rest wait for another day.
+
+    **What this bites on, and the number is why it matters.** The batch was writing **2,192**
+    label and alias lines onto **508** existing items; 1,947 of them are `CJK_CLAN_BLOCK`, which
+    she hand-deleted from the last run in its entirety. At 15 a batch the clan block drains over
+    many runs instead of arriving as a wall — which is what she asked for, not a compromise on it.
+
+    **The block stays in the source, in full.** She restored it herself on 2026-08-29 — *"What the
+    fuck the clan block is gone? Bring it the fuck back"* — after I deleted it by mistake. What is
+    capped is how much of it goes out per run, not whether it exists. A repeat is a no-op, so the
+    ones held back are simply emitted on a later day; nothing is lost and no state is needed.
+
+    **Corrections go first within the cap.** `_label_corrections` fixes items whose label is still
+    the birth name, which is a defect in what we already published; the clan block adds a label to
+    an item that has none. Fixing something wrong outranks adding something missing.
+    """
+    # **What has already gone out, so the cap DRAINS instead of repeating.** Emma, 2026-08-29:
+    # *"So I guess the clans thing will be saved and check which ones it was implemented on so
+    # that it can limit it to 15 like this and same with other label edits."* Without this the
+    # same first 15 lines are emitted every run and the remaining 2,177 never are.
+    #
+    # Keyed on `(qid, slot)` -- `Q10864996` + `Lnb` -- not on the value, so a re-worded label for
+    # an item already done does not sneak past. `reports/label-edits-emitted.tsv` is tracked, one
+    # row per edit, with the date it first went out.
+    #
+    # **It records what was EMITTED, not what Wikidata accepted.** If she does not run a batch,
+    # those 15 do not come back on their own. That is the honest cost of a stateless cap becoming
+    # a stateful one, and the recovery is to delete their rows from the file.
+    done_path = ROOT / "reports" / "label-edits-emitted.tsv"
+    done = set()
+    if done_path.exists():
+        for row in csv.DictReader(done_path.open(encoding="utf-8"), delimiter="	"):
+            done.add((row["qid"], row["slot"]))
+    newly = []
+
+    def is_label_edit(ln):
+        return bool(re.match(r"^Q[1-9][0-9]*	[LAD][a-z-]+	", ln))
+
+    def take(source, budget, head, held):
+        """Move this source's label edits into `head` while budget lasts; return what is left.
+
+        Non-label lines pass through to `rest` untouched -- the additions pass emits `P22`,
+        `P40` and the like beside its labels, and those are relationships, not labels, and are
+        not capped by anything.
+        """
+        rest, pending = [], []
+        for ln in source:
+            if not ln.strip() or ln.lstrip().startswith("#"):
+                pending.append(ln)
+                continue
+            if is_label_edit(ln):
+                qid, slot = ln.split("	")[0], ln.split("	")[1]
+                if (qid, slot) in done:
+                    pending = []
+                    continue
+                if budget[0] <= 0:
+                    held[0] += 1
+                    pending = []
+                    continue
+                budget[0] -= 1
+                done.add((qid, slot))
+                newly.append((qid, slot, ln.split("	")[2].strip('"')))
+                head.extend(pending)
+                head.append(ln)
+            else:
+                rest.extend(pending)
+                rest.append(ln)
+            pending = []
+        rest.extend(pending)
+        return rest
+
+    budget, held, head = [LABEL_EDIT_CAP], [0], []
+    # Corrections first, then the clan block, then anything the rest of the batch emits onto an
+    # existing item -- the additions pass writes `ja`/`zh` labels too, and capping only the two
+    # hard-coded blocks left 664 label edits in the file when the cap is 15.
+    take(corrections, budget, head, held)
+    take(clan_block.splitlines(), budget, head, held)
+    lines = take(lines, budget, head, held)
+
+    if head:
+        head = ["# " + "-" * 72,
+                "# LABEL EDITS ON EXISTING ITEMS -- at the head of the batch and capped at "
+                f"{LABEL_EDIT_CAP}, both",
+                "#   her instruction: \"any label changes should occur at the beginning of the",
+                "#   batch and be limited to a count of 15 labels added per batch\". A label set",
+                "#   at CREATION time is neither counted nor capped -- \"a label added during item",
+                "#   creation is good\".",
+                f"#   {held[0]} more are held for a later run; a repeat is a no-op, so nothing is lost.",
+                "# " + "-" * 72] + head + [""]
+    if newly:
+        today = datetime.date.today().isoformat()
+        fresh = not done_path.exists()
+        with done_path.open("a", encoding="utf-8", newline="") as fh:
+            w = csv.writer(fh, delimiter="\t", lineterminator="\n")
+            if fresh:
+                w.writerow(["qid", "slot", "value", "first_emitted"])
+            for qid, slot, value in newly:
+                w.writerow([qid, slot, value, today])
+    print(f"label edits on existing items: {LABEL_EDIT_CAP - budget[0]} emitted, {held[0]} held "
+          f"for a later batch (cap {LABEL_EDIT_CAP}); "
+          f"{len(done) - len(newly):,} already done in earlier batches")
+    return head + lines
 
 
 def without_nickname(label, fields):
@@ -5169,8 +5300,8 @@ def main():
     # put straight back** -- I read *"remove that particular section"* as this block when she
     # meant the spine P2600 one. Emma: *"What the fuck the clan block is gone? Bring it the
     # fuck back"*.
-    lines.append(CJK_CLAN_BLOCK)
-    lines += _label_corrections(our_items, labels, table, state)
+    lines = _cap_label_edits(lines, CJK_CLAN_BLOCK,
+                             _label_corrections(our_items, labels, table, state))
 
     out = ROOT / "reports" / "wikidata-garborg-day.qs"
     out.write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")

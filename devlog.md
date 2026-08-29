@@ -18115,3 +18115,39 @@ Zero bracketed creation labels in the rebuilt batch.
 
 **Fixed at the emitter, not at source, and that is a compromise**: `derived-labels.csv` still holds
 the bracketed form and 48 scripts read it. Queued.
+
+## 2026-08-29 — 15 label edits a batch, at the head, and a record so it drains
+
+Her item: *"any label changes should occur at the beginning of the batch and be limited to a count
+of 15 labels added per batch"*, and then, on seeing it work: *"So I guess the clans thing will be
+saved and check which ones it was implemented on so that it can limit it to 15 like this and same
+with other label edits."*
+
+**What it was doing before: 2,192 label and alias lines onto 508 existing items**, 1,947 of them
+`CJK_CLAN_BLOCK`, which she hand-deleted from the last run in its entirety. Now **15**, at the top
+of the file. The batch went 5,700 lines to 1,323.
+
+**Creation-time labels are neither counted nor capped**, which is her distinction: *"a label added
+after item creation is a risk and a label added during item creation is good."* 232 of them in this
+batch, untouched. Relationship statements on existing items are not labels and are not capped —
+70 of those, also untouched.
+
+**The cap had to cover the whole file, not the two hard-coded blocks.** Capping only
+`CJK_CLAN_BLOCK` and `_label_corrections` left **664** label edits in the batch, because the
+additions pass emits `ja`/`zh` onto existing items too.
+
+**`reports/label-edits-emitted.tsv` is the second half she asked for.** Without it the same first
+15 go out every run and the remaining 2,171 never do. Keyed on `(qid, slot)` so a re-worded label
+for an item already done cannot sneak past. Verified by running twice: the second run took the
+*next* 15 and reported `15 already done in earlier batches`. The record was then reset and a single
+clean run made, because those first 15 had been emitted into a file that the second run overwrote —
+marking an edit done that was never delivered is the one way this file can lie.
+
+**It records what was emitted, not what Wikidata accepted.** If she does not run a batch, those 15
+do not come back on their own; the recovery is to delete their rows. Stated in the code rather than
+left to be discovered.
+
+**Test failures went 3 → 1.** `test_no_statement_is_repeated` passes now — the duplicate label
+lines were the cause. `test_every_statement_has_a_comment_above_it` passes because
+`_label_corrections` now writes a comment above *every* line rather than one above a five-line
+group; the test was right that four of five edits to a live item were unexplained.
