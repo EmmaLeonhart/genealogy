@@ -4376,8 +4376,13 @@ def main():
     with open(ROOT / "reports" / "display-names.csv", encoding="utf-8") as f:
         for row in csv.DictReader(f):
             if row["geni_id"] in ids and row["geni_id"] not in fields:
+                # `display_name` is the name GENI renders, untouched by our married-name
+                # flip -- it is what `P1810` *subject named as* must carry. Emma, 2026-08-28:
+                # *"I want us to have the property P1810 with the specific name geni gives
+                # them."* Taking it from the same first row is the point: `derived-labels.csv`
+                # holds our derived label, which is a different claim.
                 fields[row["geni_id"]] = {k: row.get(k, "") for k in
-                                          ("givn", "surn", "nick", "marnm")}
+                                          ("givn", "surn", "nick", "marnm", "display_name")}
 
     # Relationships, from the tree, in both directions.
     father, mother = {}, {}
@@ -4539,7 +4544,34 @@ def main():
     rel_from = preamble
     seen = set()
 
-    def add(q, prop, value, g):
+    def named_as(g):
+        """The `\\tP1810\\t"..."` qualifier for this person, or `""` where there is nothing to say.
+
+        **Emma, 2026-08-28:** *"I want us to have the property P1810 with the specific name geni
+        gives them."* So the value is `display_name` from `display-names.csv` — the name GENI
+        renders — and never our own label, which since 2026-08-29 is the married form we chose.
+        `P1810` is a plain `string` qualifier and it belongs on an external identifier: confirmed
+        offline against `wikidata/items/`, where every `P1810` sits on one (`P396`, `P1280`,
+        `P8034`, `P12458`). Hanging it on `P2600` is that shape, not an invention.
+
+        **A redaction marker returns `""`.** The first run emitted
+        `P1810 "<private> Garborg"` and `"<private> Undheim"`. `CLAUDE.md` is explicit that a
+        marker must not reach the file *"not even as prose"*, and § *`Private` never becomes a
+        label* is the same rule: `<private>` is Geni withholding a name, so there is no name for
+        this property to carry. Normalising it to `NN Garborg` would be worse — it would assert
+        that Geni calls her that, which it does not. The `P2600` still goes out, which is what
+        makes the person findable.
+        """
+        raw = (fields.get(g) or {}).get("display_name", "")
+        low = raw.lower()
+        if not raw or "<private>" in low or low.strip() == "private":
+            return ""
+        return f'\tP1810\t"{qs(raw)}"'
+
+    def add(q, prop, value, g, qual=""):
+        # `qual` is a ready-made qualifier fragment, tab-prefixed, and is deliberately NOT
+        # part of the dedupe key: a statement is the same statement whether or not we also
+        # say what the source database called the person.
         if (q, prop, value) in seen:
             return
         # **Never re-emit a statement the item already states.** Emma, 2026-08-27, on the
@@ -4555,7 +4587,7 @@ def main():
         if (q, prop, value.strip('"')) in live_values:
             return
         seen.add((q, prop, value))
-        lines.append(f"{q}\t{prop}\t{value}{ref(g)}")
+        lines.append(f"{q}\t{prop}\t{value}{qual}{ref(g)}")
 
     def absent(q, prop):
         """True when the item demonstrably lacks `prop`, or our own batch made it.
@@ -4604,7 +4636,9 @@ def main():
         # contributions cannot recover it. Writing the statement makes the pairing resolvable
         # by anyone, including the next rebuild. `add()` drops it if the item already has it.
         if len(seen) > before_this_person:
-            add(q, "P2600", f'"{g}"', g)
+            # Same `P1810` *subject named as* qualifier as the creation path, so an item
+            # that gets its Geni id late is not modelled differently from one created with it.
+            add(q, "P2600", f'"{g}"', g, named_as(g))
 
         # Name statements, but never onto an item that already states one: `Q467497`
         # carries `P735` Arne, and our label reads the parenthesised `(Arne)` as a
@@ -4740,7 +4774,18 @@ def main():
         lines.append(f"LAST\tP31\t{HUMAN}")
         if f["sex"] in SEX:
             lines.append(f"LAST\tP21\t{SEX[f['sex']]}")
-        lines.append(f'LAST\tP2600\t"{g}"')
+        # **`P1810` *subject named as*, qualifying the Geni id with the name Geni renders.**
+        # Emma, 2026-08-28: *"I want us to have the property P1810 with the specific name geni
+        # gives them."* Datatype confirmed OFFLINE against the downloaded item store rather
+        # than guessed: every `P1810` in `wikidata/items/` is a plain `string` qualifier and
+        # every one of them sits on an external identifier -- `P396`, `P1280`, `P8034`,
+        # `P12458` -- so hanging it on `P2600` is the established shape, not an invention.
+        #
+        # The value is `display_name` from `display-names.csv`, NOT our label: the point of
+        # the property is what the source database calls the person, and our label is the
+        # married form we chose on 2026-08-29. They differ for exactly the people it matters
+        # for.
+        lines.append(f'LAST\tP2600\t"{g}"{named_as(g)}')
         for prop, iso, prec in (("P569", f["birth_date_iso"], f["birth_date_precision"]),
                                 ("P570", f["death_date_iso"], f["death_date_precision"])):
             if iso and prec:

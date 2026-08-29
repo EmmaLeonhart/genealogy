@@ -17627,3 +17627,36 @@ so every `ABT`/`BEF`/`AFT` in the corpus is being flattened to a bare year — a
 does not claim. `reports/wikidata-spine-completion.qs` does the same and did it deliberately to
 match the pipeline, which was the wrong call. Her words: *"we very much need to have those
 qualifiers, and I don't know why it is that you don't. That was almost a prerequisite."*
+
+## 2026-08-29 — `P1810` subject named as, on every Geni id the batch writes
+
+Her queue item: *"I want us to have the property P1810 with the specific name geni gives them."*
+
+**Placement and datatype were established offline, not guessed.** `wikidata/items/` holds the bulk
+download; every `P1810` in it is a plain `string` **qualifier**, and every one sits on an external
+identifier — `P396`, `P1280`, `P8034`, `P12458`. So hanging it on `P2600` *Geni.com profile ID* is
+the established shape. `reports/wikidata-labels.tsv` confirmed the label. No live query.
+
+**The value is `display_name` from `reports/display-names.csv`, and that choice is the whole
+point.** `derived-labels.csv` holds *our* label, which since the 2026-08-29 flip is the married
+form we chose; `P1810` is supposed to say what the source database calls the person. They differ
+for exactly the people it matters for. The builder already streamed `display-names.csv` and kept
+the first row per person — name index 0, the primary Geni name — so this is one more key off a
+read that was already happening.
+
+Both emission sites carry it: the `CREATE` path and the additions pass, where `add()` gained an
+optional qualifier fragment that is deliberately not part of the dedupe key. 34 of the 37 `P2600`
+statements in the rebuilt batch have one.
+
+**The other three are the bug the first run had.** It emitted `P1810 "<private> Garborg"`,
+`"<private> Undheim"` and `"Private"`. `CLAUDE.md` says a redaction marker must not reach the file
+*"not even as prose"*, and § *`Private` never becomes a label* is the same rule. `named_as()` now
+returns nothing for them. Normalising to `NN Garborg` was the tempting alternative and is worse: it
+would assert that Geni calls her that, which it does not. The `P2600` still goes out, which is what
+makes the person findable at all. Verified those three are the only omissions.
+
+**Four tests were already failing before this change and still are** — checked by running them
+against the committed batch with mine stashed, same four either way. They are the
+`_label_corrections()` block from yesterday writing labels onto existing items, which is what she
+asked for, against a test that predates the decision. Queued rather than folded in here, because
+it overlaps her 15-labels-a-batch cap and is probably one fix.

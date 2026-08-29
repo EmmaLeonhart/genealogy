@@ -104,8 +104,8 @@ LAST	Azh	"奥高特·埃恩盖布雷特森"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
 LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000036746925255 Aagot Garborg Koloboff
-LAST	P2600	"6000000036746925255"
+#   P2600 Geni.com profile ID = 6000000036746925255 Aagot Garborg Koloboff, qualified subject named as Aagot Engebretsen
+LAST	P2600	"6000000036746925255"	P1810	"Aagot Engebretsen"
 #   P569 date of birth = +1892-08-19T00:00:00Z/11
 LAST	P569	+1892-08-19T00:00:00Z/11	S2600	"6000000036746925255"
 #   P570 date of death = +1948-01-21T00:00:00Z/11
@@ -133,8 +133,8 @@ LAST	Lzh	"阿恩德尔斯·雅各布松"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
 LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000001138735296 Anders Jacobsson
-LAST	P2600	"6000000001138735296"
+#   P2600 Geni.com profile ID = 6000000001138735296 Anders Jacobsson, qualified subject named as Anders Jacobsson
+LAST	P2600	"6000000001138735296"	P1810	"Anders Jacobsson"
 #   P569 date of birth = +1488-00-00T00:00:00Z/9
 LAST	P569	+1488-00-00T00:00:00Z/9	S2600	"6000000001138735296"
 #   P570 date of death = +1539-00-00T00:00:00Z/9
@@ -166,8 +166,8 @@ LAST	Azh	"阿恩德雷夫·伊·艾弗森·巴凯"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
 LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000053155754864 Andrew J. Bakke
-LAST	P2600	"6000000053155754864"
+#   P2600 Geni.com profile ID = 6000000053155754864 Andrew J. Bakke, qualified subject named as Andrew J. Iverson Bakke
+LAST	P2600	"6000000053155754864"	P1810	"Andrew J. Iverson Bakke"
 #   P569 date of birth = +1862-04-23T00:00:00Z/11
 LAST	P569	+1862-04-23T00:00:00Z/11	S2600	"6000000053155754864"
 #   P570 date of death = +1955-02-23T00:00:00Z/11
@@ -209,8 +209,8 @@ LAST	Azh	"阿内·戈韦尔特斯达特·奥尔斯沃尔"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
 LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000169074443823 Anne Govertsdtr. Bratland
-LAST	P2600	"6000000169074443823"
+#   P2600 Geni.com profile ID = 6000000169074443823 Anne Govertsdtr. Bratland, qualified subject named as Anne Govertsdtr. Årsvoll
+LAST	P2600	"6000000169074443823"	P1810	"Anne Govertsdtr. Årsvoll"
 #   P569 date of birth = +1825-02-09T00:00:00Z/11
 LAST	P569	+1825-02-09T00:00:00Z/11	S2600	"6000000169074443823"
 #   P570 date of death = +1901-10-06T00:00:00Z/11
@@ -236,8 +236,8 @@ LAST	Lzh	"多纳尔德·夫·沙恩特泽恩"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
 LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000180011287821 Donald V. Schantzen
-LAST	P2600	"6000000180011287821"
+#   P2600 Geni.com profile ID = 6000000180011287821 Donald V. Schantzen, qualified subject named as Donald V. Schantzen
+LAST	P2600	"6000000180011287821"	P1810	"Donald V. Schantzen"
 #   P569 date of birth = +1927-06-24T00:00:00Z/11
 LAST	P569	+1927-06-24T00:00:00Z/11	S2600	"6000000180011287821"
 #   P570 date of death = +1984-03-17T00:00:00Z/11
@@ -271,8 +271,8 @@ LAST	Azh	"加尔德·托雷松·加罗"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
 LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000002572728015 Gard Toresson Talgje
-LAST	P2600	"6000000002572728015"
+#   P2600 Geni.com profile ID = 6000000002572728015 Gard Toresson Talgje, qualified subject named as Gard Toresson Garaa
+LAST	P2600	"6000000002572728015"	P1810	"Gard Toresson Garaa"
 #   P569 date of birth = +1373-00-00T00:00:00Z/9
 LAST	P569	+1373-00-00T00:00:00Z/9	S2600	"6000000002572728015"
 #   P570 date of death = +1427-00-00T00:00:00Z/9
@@ -304,8 +304,8 @@ LAST	Lzh	"古里·佩德斯达特·福斯"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
 LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000002482084257 Guri Pedersdatter Foss
-LAST	P2600	"6000000002482084257"
+#   P2600 Geni.com profile ID = 6000000002482084257 Guri Pedersdatter Foss, qualified subject named as Guri Pedersdatter Foss
+LAST	P2600	"6000000002482084257"	P1810	"Guri Pedersdatter Foss"
 #   P569 date of birth = +1620-00-00T00:00:00Z/9
 LAST	P569	+1620-00-00T00:00:00Z/9	S2600	"6000000002482084257"
 #   P570 date of death = +1667-00-00T00:00:00Z/9
@@ -341,8 +341,8 @@ LAST	Lzh	"哈尔瓦尔德·阿塞尔森·格勒特海姆"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
 LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000225229552897 Halvard Assersen Grøtheim
-LAST	P2600	"6000000225229552897"
+#   P2600 Geni.com profile ID = 6000000225229552897 Halvard Assersen Grøtheim, qualified subject named as Halvard Assersen Grøtheim
+LAST	P2600	"6000000225229552897"	P1810	"Halvard Assersen Grøtheim"
 #   P569 date of birth = +1663-00-00T00:00:00Z/9
 LAST	P569	+1663-00-00T00:00:00Z/9	S2600	"6000000225229552897"
 #   P570 date of death = +1739-09-01T00:00:00Z/11
@@ -376,8 +376,8 @@ LAST	Azh	"哈纳·索菲埃·赫尔梅尔"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
 LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000005441361475 Hanna Sofie Wendt
-LAST	P2600	"6000000005441361475"
+#   P2600 Geni.com profile ID = 6000000005441361475 Hanna Sofie Wendt, qualified subject named as Hanna Sofie Helmer
+LAST	P2600	"6000000005441361475"	P1810	"Hanna Sofie Helmer"
 #   P569 date of birth = +1865-01-05T00:00:00Z/11
 LAST	P569	+1865-01-05T00:00:00Z/11	S2600	"6000000005441361475"
 #   P570 date of death = +1951-08-27T00:00:00Z/11
@@ -403,8 +403,8 @@ LAST	Lzh	"汉斯·哈尔瓦尔德森·格勒特海姆"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
 LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000224130977838 Hans Halvardsen Grøtheim
-LAST	P2600	"6000000224130977838"
+#   P2600 Geni.com profile ID = 6000000224130977838 Hans Halvardsen Grøtheim, qualified subject named as Hans Halvardsen Grøtheim
+LAST	P2600	"6000000224130977838"	P1810	"Hans Halvardsen Grøtheim"
 #   P569 date of birth = +1736-00-00T00:00:00Z/9
 LAST	P569	+1736-00-00T00:00:00Z/9	S2600	"6000000224130977838"
 #   P25 mother = Q141199918 Kirsten Hansdatter Grøtheim
@@ -426,8 +426,8 @@ LAST	Lzh	"汉斯·奥尔森·格勒特海姆"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
 LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000008176954243 Hans Olsen Grøtheim
-LAST	P2600	"6000000008176954243"
+#   P2600 Geni.com profile ID = 6000000008176954243 Hans Olsen Grøtheim, qualified subject named as Hans Olsen Grøtheim
+LAST	P2600	"6000000008176954243"	P1810	"Hans Olsen Grøtheim"
 #   P569 date of birth = +1790-02-07T00:00:00Z/11
 LAST	P569	+1790-02-07T00:00:00Z/11	S2600	"6000000008176954243"
 #   P570 date of death = +1801-00-00T00:00:00Z/9
@@ -461,8 +461,8 @@ LAST	Azh	"汉斯·拉斯穆森·特维哈乌格"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
 LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000009127934231 Hans Rasmussen Låge-Håland
-LAST	P2600	"6000000009127934231"
+#   P2600 Geni.com profile ID = 6000000009127934231 Hans Rasmussen Låge-Håland, qualified subject named as Hans Rasmussen Tvihaug
+LAST	P2600	"6000000009127934231"	P1810	"Hans Rasmussen Tvihaug"
 #   P569 date of birth = +1656-00-00T00:00:00Z/9
 LAST	P569	+1656-00-00T00:00:00Z/9	S2600	"6000000009127934231"
 #   P570 date of death = +1712-00-00T00:00:00Z/9
@@ -488,8 +488,8 @@ LAST	Lzh	"赫尔盖·阿斯布永尔恩森·贝"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
 LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000008309908854 Helge Asbjørnsen Bø
-LAST	P2600	"6000000008309908854"
+#   P2600 Geni.com profile ID = 6000000008309908854 Helge Asbjørnsen Bø, qualified subject named as Helge Asbjørnsen Bø
+LAST	P2600	"6000000008309908854"	P1810	"Helge Asbjørnsen Bø"
 #   P569 date of birth = +1755-00-00T00:00:00Z/9
 LAST	P569	+1755-00-00T00:00:00Z/9	S2600	"6000000008309908854"
 #   P570 date of death = +1823-06-07T00:00:00Z/11
@@ -523,8 +523,8 @@ LAST	Lzh	"英厄堡·埃里克斯达特·布永尔拉恩德"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
 LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000014100949863 Ingeborg Eriksdatter Bjorland
-LAST	P2600	"6000000014100949863"
+#   P2600 Geni.com profile ID = 6000000014100949863 Ingeborg Eriksdatter Bjorland, qualified subject named as Ingeborg Eriksdatter Bjorland
+LAST	P2600	"6000000014100949863"	P1810	"Ingeborg Eriksdatter Bjorland"
 #   P569 date of birth = +1680-00-00T00:00:00Z/9
 LAST	P569	+1680-00-00T00:00:00Z/9	S2600	"6000000014100949863"
 #   P570 date of death = +1751-10-11T00:00:00Z/11
@@ -556,8 +556,8 @@ LAST	Azh	"英厄堡·埃里克斯达特·内特拉恩德"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
 LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000005607411844 Ingeborg Eriksdatter Time
-LAST	P2600	"6000000005607411844"
+#   P2600 Geni.com profile ID = 6000000005607411844 Ingeborg Eriksdatter Time, qualified subject named as Ingeborg Eriksdatter Netland
+LAST	P2600	"6000000005607411844"	P1810	"Ingeborg Eriksdatter Netland"
 #   P569 date of birth = +1765-00-00T00:00:00Z/9
 LAST	P569	+1765-00-00T00:00:00Z/9	S2600	"6000000005607411844"
 #   P26 spouse = Q141205904 Erik Tollefson Foss-Eikeland
@@ -587,8 +587,8 @@ LAST	Lzh	"耶恩斯·维尔赫尔姆·温特"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
 LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000021079642735 Jens Wilhelm Wendt
-LAST	P2600	"6000000021079642735"
+#   P2600 Geni.com profile ID = 6000000021079642735 Jens Wilhelm Wendt, qualified subject named as Jens Wilhelm Wendt
+LAST	P2600	"6000000021079642735"	P1810	"Jens Wilhelm Wendt"
 #   P569 date of birth = +1861-12-29T00:00:00Z/11
 LAST	P569	+1861-12-29T00:00:00Z/11	S2600	"6000000021079642735"
 #   P570 date of death = +1922-05-12T00:00:00Z/11
@@ -620,8 +620,8 @@ LAST	Azh	"约翰内斯·斯韦恩森·布拉特拉恩德"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
 LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000003491978246 Johannes Svensen Obrestad
-LAST	P2600	"6000000003491978246"
+#   P2600 Geni.com profile ID = 6000000003491978246 Johannes Svensen Obrestad, qualified subject named as Johannes Svensen Bratland
+LAST	P2600	"6000000003491978246"	P1810	"Johannes Svensen Bratland"
 #   P569 date of birth = +1798-09-09T00:00:00Z/11
 LAST	P569	+1798-09-09T00:00:00Z/11	S2600	"6000000003491978246"
 #   P570 date of death = +1876-08-27T00:00:00Z/11
@@ -651,8 +651,8 @@ LAST	Lzh	"永·哈恩松·斯特·瓦特内"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
 LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000005608892743 Jon Hansson St. Vatne
-LAST	P2600	"6000000005608892743"
+#   P2600 Geni.com profile ID = 6000000005608892743 Jon Hansson St. Vatne, qualified subject named as Jon Hansson St. Vatne
+LAST	P2600	"6000000005608892743"	P1810	"Jon Hansson St. Vatne"
 #   P569 date of birth = +1773-00-00T00:00:00Z/9
 LAST	P569	+1773-00-00T00:00:00Z/9	S2600	"6000000005608892743"
 #   P570 date of death = +1828-00-00T00:00:00Z/9
@@ -690,8 +690,8 @@ LAST	Lzh	"永·永松"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
 LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000013354249769 Jon Jonsson
-LAST	P2600	"6000000013354249769"
+#   P2600 Geni.com profile ID = 6000000013354249769 Jon Jonsson, qualified subject named as Jon Jonsson
+LAST	P2600	"6000000013354249769"	P1810	"Jon Jonsson"
 #   P569 date of birth = +1580-00-00T00:00:00Z/9
 LAST	P569	+1580-00-00T00:00:00Z/9	S2600	"6000000013354249769"
 #   P570 date of death = +1636-00-00T00:00:00Z/9
@@ -719,8 +719,8 @@ LAST	Lzh	"谢什滕·加布里埃尔斯达特·奥斯特罗特"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
 LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000003491988841 Kirsten Gabrielsdatter Austråt
-LAST	P2600	"6000000003491988841"
+#   P2600 Geni.com profile ID = 6000000003491988841 Kirsten Gabrielsdatter Austråt, qualified subject named as Kirsten Gabrielsdatter Austråt
+LAST	P2600	"6000000003491988841"	P1810	"Kirsten Gabrielsdatter Austråt"
 #   P569 date of birth = +1712-03-05T00:00:00Z/11
 LAST	P569	+1712-03-05T00:00:00Z/11	S2600	"6000000003491988841"
 #   P570 date of death = +1778-03-08T00:00:00Z/11
@@ -750,8 +750,8 @@ LAST	Lzh	"克里斯蒂安·莫恩森·斯坦格兰"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
 LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000018935761194 Kristian Monsen Stangeland
-LAST	P2600	"6000000018935761194"
+#   P2600 Geni.com profile ID = 6000000018935761194 Kristian Monsen Stangeland, qualified subject named as Kristian Monsen Stangeland
+LAST	P2600	"6000000018935761194"	P1810	"Kristian Monsen Stangeland"
 #   P569 date of birth = +1846-10-06T00:00:00Z/11
 LAST	P569	+1846-10-06T00:00:00Z/11	S2600	"6000000018935761194"
 #   P570 date of death = +1921-08-21T00:00:00Z/11
@@ -785,8 +785,8 @@ LAST	Azh	"利斯贝特·奥拉夫斯达特·奥拉夫斯达特"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
 LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000005607268895 Lisbet Olavsdatter Håland
-LAST	P2600	"6000000005607268895"
+#   P2600 Geni.com profile ID = 6000000005607268895 Lisbet Olavsdatter Håland, qualified subject named as Lisbet Olavsdatter Olavsdatter
+LAST	P2600	"6000000005607268895"	P1810	"Lisbet Olavsdatter Olavsdatter"
 #   P569 date of birth = +1560-00-00T00:00:00Z/9
 LAST	P569	+1560-00-00T00:00:00Z/9	S2600	"6000000005607268895"
 #   P570 date of death = +1620-00-00T00:00:00Z/9
@@ -814,8 +814,8 @@ LAST	Lzh	"马利恩·安德斯多特"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
 LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000000305413766 Malin Andersdotter
-LAST	P2600	"6000000000305413766"
+#   P2600 Geni.com profile ID = 6000000000305413766 Malin Andersdotter, qualified subject named as Malin Andersdotter
+LAST	P2600	"6000000000305413766"	P1810	"Malin Andersdotter"
 #   P569 date of birth = +1481-00-00T00:00:00Z/9
 LAST	P569	+1481-00-00T00:00:00Z/9	S2600	"6000000000305413766"
 #   P570 date of death = +1552-00-00T00:00:00Z/9
@@ -843,8 +843,8 @@ LAST	Lzh	"马利恩·奥洛夫斯多特"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
 LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 4982890984490082253 Malin Olofsdotter
-LAST	P2600	"4982890984490082253"
+#   P2600 Geni.com profile ID = 4982890984490082253 Malin Olofsdotter, qualified subject named as Malin Olofsdotter
+LAST	P2600	"4982890984490082253"	P1810	"Malin Olofsdotter"
 #   P569 date of birth = +1533-00-00T00:00:00Z/9
 LAST	P569	+1533-00-00T00:00:00Z/9	S2600	"4982890984490082253"
 #   P570 date of death = +1627-00-00T00:00:00Z/9
@@ -870,8 +870,8 @@ LAST	Lzh	"玛格丽塔·尼尔斯多特"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
 LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000017799612472 Margareta Nilsdotter
-LAST	P2600	"6000000017799612472"
+#   P2600 Geni.com profile ID = 6000000017799612472 Margareta Nilsdotter, qualified subject named as Margareta Nilsdotter
+LAST	P2600	"6000000017799612472"	P1810	"Margareta Nilsdotter"
 #   P569 date of birth = +1585-00-00T00:00:00Z/9
 LAST	P569	+1585-00-00T00:00:00Z/9	S2600	"6000000017799612472"
 #   P40 child = Q141205928 NN Jonsdotter
@@ -895,8 +895,8 @@ LAST	Lzh	"马里埃特·达尼埃尔斯多特"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
 LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000017535961052 Mariet Danielsdotter
-LAST	P2600	"6000000017535961052"
+#   P2600 Geni.com profile ID = 6000000017535961052 Mariet Danielsdotter, qualified subject named as Mariet Danielsdotter
+LAST	P2600	"6000000017535961052"	P1810	"Mariet Danielsdotter"
 #   P569 date of birth = +1640-00-00T00:00:00Z/9
 LAST	P569	+1640-00-00T00:00:00Z/9	S2600	"6000000017535961052"
 #   P570 date of death = +1684-00-00T00:00:00Z/9
@@ -942,8 +942,8 @@ LAST	Lzh	"拉姆博尔格·克努特斯多特·莱永恩之母"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
 LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000004645401302 NN (Frille)
-LAST	P2600	"6000000004645401302"
+#   P2600 Geni.com profile ID = 6000000004645401302 NN (Frille), qualified subject named as NN (Frille)
+LAST	P2600	"6000000004645401302"	P1810	"NN (Frille)"
 #   P26 spouse = Q5915800 Knut Algotsson
 LAST	P26	Q5915800	S2600	"6000000004645401302"
 #   Q5915800 Knut Algotsson: P26 spouse = the item just created
@@ -963,8 +963,8 @@ LAST	Lzh	"奥洛夫·尼尔松"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
 LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 375729629520007230 Olof Nilsson
-LAST	P2600	"375729629520007230"
+#   P2600 Geni.com profile ID = 375729629520007230 Olof Nilsson, qualified subject named as Olof Nilsson
+LAST	P2600	"375729629520007230"	P1810	"Olof Nilsson"
 #   P569 date of birth = +1539-00-00T00:00:00Z/9
 LAST	P569	+1539-00-00T00:00:00Z/9	S2600	"375729629520007230"
 #   P570 date of death = +1627-00-00T00:00:00Z/9
@@ -1031,8 +1031,8 @@ LAST	Lzh	"拉姆博尔格·克努特斯多特·莱永恩"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
 LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000004870648136 Ramborg Knutsdotter Lejon
-LAST	P2600	"6000000004870648136"
+#   P2600 Geni.com profile ID = 6000000004870648136 Ramborg Knutsdotter Lejon, qualified subject named as Ramborg Knutsdotter Lejon
+LAST	P2600	"6000000004870648136"	P1810	"Ramborg Knutsdotter Lejon"
 #   P569 date of birth = +1360-00-00T00:00:00Z/9
 LAST	P569	+1360-00-00T00:00:00Z/9	S2600	"6000000004870648136"
 #   P570 date of death = +1408-00-00T00:00:00Z/9
@@ -1062,8 +1062,8 @@ LAST	Lzh	"西古尔德·斯韦雷·拉夫恩·塔勒"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
 LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000107274277935 Sigurd Sverre Ravn Talle
-LAST	P2600	"6000000107274277935"
+#   P2600 Geni.com profile ID = 6000000107274277935 Sigurd Sverre Ravn Talle, qualified subject named as Sigurd Sverre Ravn Talle
+LAST	P2600	"6000000107274277935"	P1810	"Sigurd Sverre Ravn Talle"
 #   P569 date of birth = +1891-05-25T00:00:00Z/11
 LAST	P569	+1891-05-25T00:00:00Z/11	S2600	"6000000107274277935"
 #   P570 date of death = +1964-07-28T00:00:00Z/11
@@ -1091,8 +1091,8 @@ LAST	Lzh	"塔比特·托莱夫斯多特·通海姆"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
 LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000037735915741 Tabite Tollefsdotter Tunheim
-LAST	P2600	"6000000037735915741"
+#   P2600 Geni.com profile ID = 6000000037735915741 Tabite Tollefsdotter Tunheim, qualified subject named as Tabite Tollefsdotter Tunheim
+LAST	P2600	"6000000037735915741"	P1810	"Tabite Tollefsdotter Tunheim"
 #   P569 date of birth = +1855-00-00T00:00:00Z/9
 LAST	P569	+1855-00-00T00:00:00Z/9	S2600	"6000000037735915741"
 #   P570 date of death = +1855-00-00T00:00:00Z/9
@@ -1128,8 +1128,8 @@ LAST	Azh	"塔比塔·托莱夫斯达特·通海姆"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
 LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000008262061116 Tabitha Tollefsdatter Johnson
-LAST	P2600	"6000000008262061116"
+#   P2600 Geni.com profile ID = 6000000008262061116 Tabitha Tollefsdatter Johnson, qualified subject named as Tabitha Tollefsdatter Tunheim
+LAST	P2600	"6000000008262061116"	P1810	"Tabitha Tollefsdatter Tunheim"
 #   P569 date of birth = +1856-05-17T00:00:00Z/11
 LAST	P569	+1856-05-17T00:00:00Z/11	S2600	"6000000008262061116"
 #   P570 date of death = +1917-04-15T00:00:00Z/11
@@ -1163,8 +1163,8 @@ LAST	Lzh	"托尔凯尔·托尔布永尔恩松·霍伊拉恩德"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
 LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000003492072756 Torkel Torbjørnson Høyland
-LAST	P2600	"6000000003492072756"
+#   P2600 Geni.com profile ID = 6000000003492072756 Torkel Torbjørnson Høyland, qualified subject named as Torkel Torbjørnson Høyland
+LAST	P2600	"6000000003492072756"	P1810	"Torkel Torbjørnson Høyland"
 #   P569 date of birth = +1731-00-00T00:00:00Z/9
 LAST	P569	+1731-00-00T00:00:00Z/9	S2600	"6000000003492072756"
 #   P570 date of death = +1791-00-00T00:00:00Z/9
@@ -1202,8 +1202,8 @@ LAST	Azh	"乌恩·加尔博格"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
 LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000116938744834 Unn (Bitten) Mørck
-LAST	P2600	"6000000116938744834"
+#   P2600 Geni.com profile ID = 6000000116938744834 Unn (Bitten) Mørck, qualified subject named as Unn (Bitten) Garborg
+LAST	P2600	"6000000116938744834"	P1810	"Unn (Bitten) Garborg"
 #   P569 date of birth = +1917-03-19T00:00:00Z/11
 LAST	P569	+1917-03-19T00:00:00Z/11	S2600	"6000000116938744834"
 #   P570 date of death = +1988-08-26T00:00:00Z/11

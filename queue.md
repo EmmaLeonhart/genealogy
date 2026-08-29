@@ -36,11 +36,18 @@ Yeah it is a bit contradictory it seems because the specicic thing is that you w
 
 No clue at this point if the large series of tasks I added was even preserved at all since the queue appears to habve already become complete garbage 
 
-### subject named as 
+### The English-name-on-Geni campaign — the half of `P1810` that is NOT done
 
-But I want an additional thing: I want us to have the properyy https://www.wikidata.org/wiki/Property:P1810 with the specific name geni gives them 
+`P1810` *subject named as* now rides on every `P2600` in the daily batch. This is the addendum,
+which is a separate campaign and is **not** started: always add an English-language name, and
+where Geni has none, use browser automation to put one on the Geni profile first (from Wikidata
+or elsewhere) before it can be cited.
 
-As an addendum to this property, though, we are going to do an additional rule, which is that we are always adding the English name of the person on Geni. https://www.wikidata.org/wiki/Q64636596 I got the idea for this person, although it was their Genealogics. There was their Genealogics ID, but my rule would be that we add the English-language name, and we have to add an English-language name. In the event that their name is not present on Jenny in English, then we have to use the browser automation to add the name of the person onto their Jenny profile before we can add it there. It could be their Wikidata name, or it could be something else.
+Her model case is `Q64636596`, which she found through its Genealogics ID.
+
+**Deferred by her own last sentence on it:** *"For now, we're sticking to this being a primary
+Wikidata-based project, so we just do not add a label."* So nothing is written to Geni yet; this
+item is the record of what the campaign would be.
 
 That's the thing I potentially want to do as a campaign to make Jenny readable to everybody. For now, we're sticking to this being a primary Wikidata-based project, so we just do not add a label. 
 
@@ -1929,3 +1936,19 @@ domain"* is. Ask before building, per § *If you are not sure what she wants, AS
 **Once the set is settled, the ones that should advance go in `SPINE_PATHS`**, with any that are
 stored the wrong way round listed in `SPINE_REVERSED` — that is the whole mechanism, and it is why
 `bergitte-to-emma` had walked outward from her for weeks without moving.
+
+## Four tests have been failing since the label-corrections block landed
+
+Not introduced by the `P1810` work — measured against the committed batch before and after, the
+same four fail either way. `BOT_CONTACT=$(cat .bot-contact) python -m pytest tests/test_p2600_batches.py tests/test_garborg_day_batch.py -q`:
+
+- `test_garborg_day_batch.py::test_a_label_is_never_written_over_an_item_that_already_has_one` —
+  the `_label_corrections()` block writes `Lmul`/`Len` onto existing items by design, which is
+  what she asked for on 2026-08-29. Either the block is wrong or the test predates the decision.
+  **Decide which; do not just widen the test.**
+- `test_p2600_batches.py::test_no_statement_is_repeated[wikidata-garborg-day.qs]`
+- `test_p2600_batches.py::test_every_statement_has_a_comment_above_it[wikidata-garborg-day.qs]`
+- `test_p2600_batches.py::test_no_two_batches_create_the_same_person`
+
+This overlaps § *Applying labels to existing items* — the 15-a-batch cap she asked for — and the
+185-row corrections block does not respect that cap either. Likely one fix.
