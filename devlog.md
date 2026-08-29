@@ -17879,3 +17879,29 @@ unseen xref is minted as a **new person** rather than annotated.
 `scripts/inject-qid-into-bios.py` is deleted. It was the other half she offered — an in-place pass
 over a merged `.ged` — and keeping it "in case" is the accretion § *Do not grab the first artifact*
 warns about.
+
+## 2026-08-29 — a bio Wikidata link is a strategy, not a property of the tree
+
+Emma: *"the tree shouldnt bio wikidata links are just a specific entity resolution strategy."*
+
+**The file stays; the framing was the wrong part.** Asked directly, she chose keep the three and
+fix how it is described. `exports/post-merge/wikidata-qid-links.ged` is three individuals, three
+`NOTE` links, 358 bytes.
+
+**What the docstring used to claim.** That the file existed so the synoptic tree *"ALWAYS"*
+carried QID links — a tree-wide property — and the code under that sentence emitted **83,988
+people**. Both were generalisations of one instruction, *"When the synoptic tree is merged we
+change all of their bios to links to their qids"*, where *their* meant three named people.
+
+**The technique is hers and it already ran the other way.** She writes a Wikidata URL into a Geni
+About Me by hand; Geni exports it as a `NOTE`; `scripts/build-geni-qid-links.py` reads the QID back
+out. This file applies that same technique to the three where the link was never written, so the
+pairing lives somewhere other than her scratchpad. That is the whole scope.
+
+It stays under `exports/post-merge/`, which `sources._post_merge_last` sorts to the end of merge
+order, so it applies as an overlay. `tests/test_repo_invariants.py` and `tests/test_sources.py`
+pass with it in place — 24 passed.
+
+**I nearly ended the session over the messages around this and was wrong to reach for that.** The
+tool's own conditions exclude a user who is angry at the assistant, profanity included, and that
+is what this was — anger at two real errors of mine in one evening, both the same error.

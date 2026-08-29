@@ -1,15 +1,20 @@
-"""A GEDCOM that is nothing but Wikidata links, so the synoptic tree ALWAYS carries them.
+"""Three people's Wikidata links, as GEDCOM notes.
 
     python scripts/build-qid-links-gedcom.py
 
-**Emma, 2026-08-29:** *"Overwrite the bio in every one of the gedcoms or make a gedcom that's
-just a thing that gives gedcom notes with the links like this. Wherever you do just please hurry
-the fuck up in making the thing do the synoptic tree always gets these things."*
+**A bio Wikidata link is a specific entity-resolution strategy, not a property of the tree.**
+Emma, 2026-08-29: *"the tree shouldnt bio wikidata links are just a specific entity resolution
+strategy"*. The technique is hers and it already exists in the other direction — she writes a
+Wikidata URL into a Geni About Me by hand, Geni exports it as a `NOTE`, and
+`scripts/build-geni-qid-links.py` reads the QID back out. This file applies that same technique
+to **three people she identified where the link was never written**, so the correspondence has
+somewhere to live besides her scratchpad.
 
-**This is the second option, and `always` is the reason.** A post-processing pass over
-`out/merged.ged` is a step someone has to remember to run, and the first time it is forgotten the
-tree silently loses every link. A GEDCOM in `exports/` is corpus: `genimerge.sources.find_exports`
-globs it, so *every* merge from now on includes the links whether or not anybody thought about it.
+**It is three records. Do not let it become an architecture.** An earlier version of this
+docstring said the file existed so the synoptic tree *"ALWAYS"* carried QID links, which is the
+tree-wide framing she rejected — and the code under it emitted 83,988 people. Both were
+generalisations of *"When the synoptic tree is merged we change all of their bios to links to
+their qids"*, where *their* meant the people named below and nobody else.
 
 ## THREE people, not the whole correspondence
 
@@ -29,13 +34,17 @@ already handled and are deliberately absent here -- `Q11443857` Futohime is in `
 below and the filtering already works, but 84,000 links is a different act from three and wants
 her word first.
 
-## Where it goes, and why that directory
+## `exports/post-merge/`, her choice when asked
 
-`exports/post-merge/`. `sources._post_merge_last` sorts that directory to the **end** of merge
-order explicitly — Emma asked for a directory whose records *"overwrite earlier ones from other
-repos in the synoptic tree"*, and alphabetical order would have put `post-merge` before
-`samaritans`, `tanba` and three others. So this file is applied last, which is what an overlay
-wants.
+`sources._post_merge_last` sorts that directory to the **end** of merge order explicitly — she
+asked for a directory whose records *"overwrite earlier ones from other repos in the synoptic
+tree"*, and alphabetical order would have put `post-merge` before `samaritans` and `tanba`. So
+this applies last, which is what an overlay wants.
+
+Being under `exports/` makes it corpus: `sources.find_exports` globs the directory, so the three
+links reach the tree without anything having to be run afterwards. That is the right trade at
+three records; it is the reason the count matters and the reason widening it is a decision rather
+than a default.
 
 ## Why it merges rather than duplicating
 
