@@ -18399,3 +18399,35 @@ should have been stripped. Gone now that `QUOTED` itself distinguishes the two.
 
 Verified before committing rather than after: **314 passed** over every name and batch test, then
 the full fast lane **1,454 passed, 29 skipped, 0 failed**.
+
+## 2026-08-29 — `Q4411612` identified: Geni `6000000007716541890`
+
+Emma, when the captcha cleared: *"Get the fucking Obotrite thing right the fuck now."*
+
+**`Q4411612` = Geni `6000000007716541890`, "Swentepolk".** Four independent confirmations and not
+one of them a name match:
+
+1. **The father, by identifier.** Wikidata gives his father as `Q470177`, and that item already
+   carries `P2600` `6000000007718311626` — asserted by Wikidata, not by us. That Geni page is
+   *"Henrik 31 th king of the Heruli & Wenden"* (1059–1126), son of Gottschalk and Sigrid Estridsen,
+   which is Henry of Alt-Lübeck.
+2. **Position in a closed set.** Wikidata records exactly two sons of `Q470177`: `Q4411612`
+   Svantepolk and `Q28045690` Canute. Geni's Henrik lists *Swentepolk, Knud, Mistue, Waldemar*, and
+   Swentepolk's own page reads *"Brother of Knud"*.
+3. **Death year** — Wikidata 1129, Geni 1128.
+4. **Dynasty** — father and son both carry `P53` family `Q467599`, the Nakonids, and both `P97`
+   noble title `Q273613`.
+
+**No export was needed after all.** I had queued a `Forest` on the father as the way to settle it;
+the profile page itself lists his children with their ids, which is cheaper and exact. The export
+would have cost one of her slots for something a page read answered.
+
+**Why she could not Google him, which is worth recording because I caused the confusion.**
+`Q4411612` has **no English label and no English Wikipedia** — labels only in ru/pl/nl/uk/nb/fr/da/
+it/sv/cs, sitelinks only on it, pl, ru, sv, uk. And *"Obotrite"* was **my** word, taken from the
+Swedish label, not from anything either source shows her: the Obotrites are a **people**, a West
+Slavic confederation on the Baltic, and Geni calls them *"Heruli & Wenden"* instead. Two
+vocabularies for one group, and I used a third.
+
+Neither man is in our corpus — zero exports hold either — so the pairing lives in the `.qs` and the
+tree learns it only when an export reaches them.

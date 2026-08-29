@@ -190,14 +190,13 @@ row carrying the expansion and the *basis* for it. The abbreviated form is delib
 doubled, built by `aliases_for` from a `P1449` nickname that is itself a whole name. Small, and its
 own problem.
 
-**`Q4411612` — the mul label is done** (`reports/wikidata-q4411612-mul.qs`); identifying him on
-Geni is **one export away** and is the open half.
+**`Q4411612` is identified and done.** He is Geni `6000000007716541890`, *Swentepolk*, son of
+`6000000007718311626` — Geni's "Henrik 31 th king of the Heruli & Wenden", which is Wikidata's
+`Q470177` Henry of Alt-Lübeck. `reports/wikidata-q4411612-mul.qs` carries the `P2600` and the `mul`
+label, with the four independent confirmations written out.
 
-Wikidata gives his father as `Q470177` Henry of Alt-Lübeck, and that item already carries
-`P2600` `6000000007718311626` — but that profile is **not in our corpus**, so we cannot see the
-sibling set and cannot say which Geni profile is this son. A `Forest` export seeded on
-`6000000007718311626` settles it by structure. Do not settle it by name: our tree holds 19 people
-whose label contains *Svantepolk* or *Sviatopolk* and none of them is *of the Obotrites*.
+Neither man is in our corpus, so nothing in the tree knows this yet; an export reaching them would
+be the way it learns.
 
 ## The queued tasks, IN HER EXACT WORDS — the times are ORDERING, not schedule
 
