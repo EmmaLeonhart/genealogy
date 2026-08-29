@@ -2081,6 +2081,37 @@ are kept because these are unstarted.
   overrode hers.
 
 
+## Did the Swentepolk export ever actually happen? Review it, and re-run if not
+
+**Emma, 2026-08-29:** *"have, at the end of the queue, an item to review whether this thing
+actually happened and was implemented, and to run the export again and stuff like that if it
+didn't."*
+
+She is right to want this written down rather than trusted to a cron: **cron text lives only in
+memory and dies with the session**, which is exactly how every job was lost in the 08-28 crash and
+why nothing ran between 00:03 and 06:00 on 08-29.
+
+**The state at the time this was written:** submitted, `task_id 6000000227491938853`, seed
+`6000000227491932881`, `Forest`/5000. Sat at about **8%** for hours, which is why she called it
+blocked. Cron `9499a8c8` checks it hourly at `:30`.
+
+**What "it happened" means, concretely — check all four:**
+
+- A `.ged` exists under `exports/obotrite/` and is **committed**, with its zip gitignored on its own
+  explicit line.
+- **`grep '@I6000000007716541890@'`** finds Swentepolk in it. That is the success condition; a file
+  that arrived without him did not do its job.
+- `reports/mass-export-log.tsv` has an outcome line, not just the `submitted` row.
+- `bure-coverage.py`-style check: his father `6000000007718311626` too, if the Forest reached him.
+
+**If it did not happen**, resubmit from the same seed — it still exists and is hers, so no new
+placeholder is needed. If Geni has lost the task, submit fresh from
+`https://www.geni.com/gedcom/export/6000000227491932881`, `Forest`, size 5000, and record the new
+`task_id`.
+
+**Do not silently drop it.** `Q4411612` is identified and its `.qs` is written, but neither he nor
+his father is in the tree, so the correspondence exists only in a file until an export lands.
+
 ## Always last — pinned to the very end of the file
 
 **Bullets, not letters.** These were `A.` and `B.`; `CLAUDE.md` § *Queue items are BULLET POINTS*

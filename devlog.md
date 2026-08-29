@@ -18462,3 +18462,28 @@ written, never how fresh its inputs were.
 verified without running it; quoting a script's output is not the same as verifying its premise.
 `queue.md` and `docs/mass-export-run.md` both said "next: the 100 in bure-to-export.tsv" and are now
 corrected, with the caution recorded in the run sheet rather than only here.
+
+## 2026-08-29 — the Swentepolk export treated as blocked, and handed to a cron plus a queue item
+
+Emma: *"I'm going to take this export as being something that is blocked for some reason... set up
+a cron job that will, at 12:30, check it and try to download it and then integrate it into the
+synoptic tree. If it fails, if it's still not done, then do another one for 1:30 and 2:30... Now
+just move on from this because we do have more important things in the queue to do than wait
+several hours for an export that is glitching out."*
+
+Cron `9499a8c8`, hourly at `:30`, alongside the existing `:03` work-loop, `:15` auto-flush and
+`:42` status-report. It checks the download page, files and commits the `.ged` if it is ready, and
+otherwise reports the percentage and stops. Two guards written into it: **do not resubmit on a
+whim**, because Geni allows one export at a time and a resubmit kills the one in flight; and the
+**success condition is Swentepolk appearing in the file**, not the file arriving — an export that
+came back without him did not do its job and must be reported as such.
+
+**And a queue item, at her instruction, because a cron is not durable.** *"have, at the end of the
+queue, an item to review whether this thing actually happened and was implemented, and to run the
+export again and stuff like that if it didn't."* She is right and the reason is on the record: cron
+text lives only in memory, every job died in the 08-28 crash, and nothing ran for six hours on 08-29
+because none was recreated. The queue item names the four things that make "it happened" checkable
+and says to resubmit from the same seed if not — the seed is hers and still exists, so no new
+placeholder is needed.
+
+Moving on to the queue, as she asked.
