@@ -76,26 +76,6 @@ next export carries it and our tree stops saying *Lave*.
 
  
 
-## Audit the names of every item Emma has edited, and every item they were merged into
-
-**Recovered from the transcript of the session that crashed 2026-08-28 18:52**, where it was her
-last instruction and never reached this file. Emma: *"All the individuals that I've worked on and
-any individuals that they've been merged into should basically always be all the individuals that
-I've worked on, pretty much all of them. All the people that they've been merged into should have
-audits done on their names to figure out the degree that we've messed them up."*
-
-The prompt for it is the married-name flip of 2026-08-29 (`derive-labels.py`, 251,707 labels) and
-the two-hop transliteration table (218 → 3,261 tokens). Both landed **after** most of her items
-were created, so anything made before them carries the birth name in `mul`, `en`, `ja` and `zh`.
-`_label_corrections()` in `build-garborg-day.py` emits the fix for the subset whose live label
-matches a known birth-name alias; the audit is the wider question of how far the damage goes,
-including the items hers were merged into, which the ledger only learns of through the redirect
-resolution in the contributions refresh.
-
-Build the CSV first — one row per item per language, what Wikidata holds against what our tree now
-says — then decide. `reports/garborg-qids.tsv` carries the live labels, `reports/derived-labels.csv`
-carries ours.
-
 ## 1. THE MASS EXPORT CAMPAIGN — front task, RUNNING
 
 **`docs/mass-export-run.md` is the run sheet** — the four groups in her order, every Geni id, the

@@ -18151,3 +18151,37 @@ left to be discovered.
 lines were the cause. `test_every_statement_has_a_comment_above_it` passes because
 `_label_corrections` now writes a comment above *every* line rather than one above a five-line
 group; the test was right that four of five edits to a live item were unexplained.
+
+## 2026-08-29 — the name audit: 14 of 256 differences are ours
+
+Her last instruction before the crash, recovered and now done. `scripts/audit-ledger-names.py`
+fetched all **508** ledger items live with `full_entities` — the local store is 2026-08-25 and most
+of these postdate it — and wrote `reports/name-audit.csv`, one row per item per language, **1,657
+rows**. `reports/name-audit.md` is the reading.
+
+**"How badly did we mess them up" has a small answer: 14 items.** 640 rows match, 256 differ, and
+only **14** of those differences are the live label being a string our own tree records as an
+*alias* — the birth name left behind by the 2026-08-29 married-name flip. `_label_corrections()`
+fires on exactly that condition, so its guard was right.
+
+**The other 242 are Wikidata being better, and reading them is what shows it.**
+`Ingegerd Svantepolksdotter of Viby, heiress, lady of Händelöö` against our bare
+`Ingegerd Svantepolksdotter`; `Magdalena Bureus` against `Magdalena Johansdotter Bure`;
+`Samuel Troilius` against `Samuel Olofsson Troilius`. And `Q12598947` `Buyeo Taebi` against our
+`Taebi Buyeo` — **her own word ordering**, set through `entity_resolution.md`. Overwriting any of
+these is precisely what § *The purpose is to ADD to Wikidata, not to correct it* forbids, and it
+names the Ingegerd case itself.
+
+`Q116150299` *Jon Reimatsen* against our *Jon Reinmodsen* is the one plain spelling disagreement.
+A note, not a work item.
+
+**The real opportunity is additive: 575 missing labels** — `ja` 229, `zh` 230, `mul` 116 — on items
+that already exist, derivable only since the transliteration table went 218 → 3,261 tokens. Not
+damage; new reach. They drain through her 15-a-batch cap, about 38 batches.
+
+**Two things the audit establishes that were previously assumed.** **No ledger item has been merged
+away** — `redirected items: 0`, checked by seeing which QID `wbgetentities` actually returns, so
+the second half of her instruction has no members today. And **102 of the 508 are not in our tree
+at all**: they are in the ledger and not in `derived-labels.csv`, which is the whole of the
+`we_have_none` count in `en`. Those are Bureätten people and the medieval end of the spine, and only
+an export changes it.
