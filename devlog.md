@@ -17417,3 +17417,30 @@ with the reason. Holding costs nothing — tomorrow the spouse has a QID and the
 
 Rebuild: **0 of 34 creations bare**, against 2 of 39 before. Three people held —
 Anders Persson, Peder Tormodson Foss, Sigrid Jonsdotter Rudbera.
+
+## 2026-08-29 — merged items: the ledger named the redirect, so every link built from it did too
+
+Emma: *"a lot of the items were merged and this is a problem. since it means a lot of relationship
+statements consistently use the wrong thing"*.
+
+When two Wikidata items merge, the loser becomes a redirect. `reports/garborg-qids.tsv` keeps
+whichever QID it recorded first, so a merged-away row poisons every `P22`/`P25`/`P26`/`P40`/`P3373`
+the daily batch builds from it — and the *"does the item already hold this"* check then compares
+against the wrong item and re-emits what is already there.
+
+`scripts/resolve-merged-qids.py` checks every ledger QID through `wbgetentities&props=info`, one
+request per 50, and repoints the row at the merge target. **4 of 505**, and the count understates
+it: three of the four are load-bearing — `Q141189050` Algot Brynolfsson → `Q19842232` and
+`Q141189059` Brynolf Bengtsson → `Q5588874` are on the Charlemagne spine, `Q141199808` Andreas Olai
+→ `Q141199704` is the Bureätten pairing. **17 statements in that day's batch named a merged-away
+item**; after the fix 28 statements name the survivors and none name a redirect.
+
+**It had to go inside the refresh, not beside it.** The refresh's live `P2600` source returns the
+**pre-merge** QID — Wikidata still answers the identifier lookup with the redirected item — so the
+refresh reverts the repointing on every run. Running the resolver as a separate command left the
+ledger correct only until the next build. Called from inside `refresh-garborg-ledger.py` the pair
+converges each run: refresh reverts, resolver repoints, batch is clean. Verified: 4 → 0 redirects.
+
+**And the "DISAGREE" lines invert once it works**, which is worth knowing before someone reads them
+as a regression. The refresh now reports `ledger=Q19842232 live=Q141189050` — our ledger holding the
+survivor and the live lookup still offering the redirect. That is the correct state, not drift.

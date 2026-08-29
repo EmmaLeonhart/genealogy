@@ -198,6 +198,29 @@ def main():
             print(f"   {g}  ledger={a}  live={b}")
     print(f"\n{len(rows)} rows in {LEDGER.relative_to(ROOT)}")
 
+    # **Resolve merges, every run, for the same reason the refresh itself runs every run.**
+    #
+    # Emma, 2026-08-29: *"a lot of the items were merged and this is a problem. since it
+    # means a lot of relationship statements consistently use the wrong thing"*. When two
+    # items merge, the loser becomes a redirect; a ledger row still naming the loser makes
+    # every P22/P25/P26/P40/P3373 the daily batch emits point at a redirect rather than at
+    # the surviving item -- and the "does it already hold this" check then compares against
+    # the wrong item and re-emits.
+    #
+    # Four of 505 on the first run, and three of the four were load-bearing: Algot
+    # Brynolfsson and Brynolf Bengtsson sit on the Charlemagne spine, and Andreas Olai is
+    # the Bureatten pairing. 17 statements in that day's batch named a merged-away item.
+    #
+    # In-process rather than a second command, so it cannot be the step somebody forgets --
+    # the same argument CLAUDE.md makes for the refresh itself being part of the run.
+    import subprocess
+    try:
+        subprocess.run([sys.executable, str(ROOT / "scripts" / "resolve-merged-qids.py"),
+                        "--write"], check=True)
+    except Exception as exc:                                        # noqa: BLE001
+        print(f"WARNING: merge resolution did not run ({exc}) -- ledger QIDs may name "
+              f"redirects, and every relationship statement built from them would too")
+
 
 if __name__ == "__main__":
     main()
