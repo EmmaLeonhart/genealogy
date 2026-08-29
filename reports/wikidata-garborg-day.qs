@@ -4,49 +4,47 @@
 #   batch and be limited to a count of 15 labels added per batch". A label set
 #   at CREATION time is neither counted nor capped -- "a label added during item
 #   creation is good".
-#   2217 more are held for a later run; a repeat is a no-op, so nothing is lost.
+#   2173 more are held for a later run; a repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
+#   Q2075113: holds 'Hedvig Ulrika De la Gardie'; ours is 'Hedvig Ulrika Armfelt'
+#   Q2075113: keep the outgoing label as an alias before it is replaced
+Q2075113	Amul	"Hedvig Ulrika De la Gardie"
+#   Q2075113: set the mul label to 'Hedvig Ulrika Armfelt'
+Q2075113	Lmul	"Hedvig Ulrika Armfelt"
+#   Q2075113: set the en label to 'Hedvig Ulrika Armfelt'
+Q2075113	Len	"Hedvig Ulrika Armfelt"
+#   Q2075113: set the ja label
+Q2075113	Lja	"ヘドヴィグ・ウルリカ・アルムフェルト"
+#   Q2075113: set the zh label
+Q2075113	Lzh	"海德维格·乌尔里卡·阿尔姆费尔特"
+#   Q5735890: holds 'Arvid Forbus'; ours is 'Arvid Ernaldsson Forbus till Kumo'
+#   Q5735890: keep the outgoing label as an alias before it is replaced
+Q5735890	Amul	"Arvid Forbus"
+#   Q5735890: set the mul label to 'Arvid Ernaldsson Forbus till Kumo'
+Q5735890	Lmul	"Arvid Ernaldsson Forbus till Kumo"
+#   Q5735890: set the en label to 'Arvid Ernaldsson Forbus till Kumo'
+Q5735890	Len	"Arvid Ernaldsson Forbus till Kumo"
+#   Q5735890: set the ja label
+Q5735890	Lja	"アルヴィド・エルナルドソン・フォルブス・ティル・クモ"
+#   Q5735890: set the zh label
+Q5735890	Lzh	"阿尔维德·埃尔纳尔德松·福尔布斯·蒂尔·库莫"
 
 # ------------------------------------------------------------------------
-# LABEL CORRECTIONS -- existing items whose label is not what our tree now
-#   says. derive-labels.py made the married form primary on 2026-08-29 and
-#   these items predate it. The outgoing label is preserved as an Amul on
-#   the line above the Lmul that replaces it, so nothing hand-written is
-#   lost. This block SHRINKS as it is run -- it is not the clan block.
+# CJK FOLLOWS mul -- items whose ja/zh came from a mul that has since changed.
+#   Emma: "the mul lable takes priority". These are ours: mul is agreed by both
+#   sides, so the CJK is not a judgement call, it follows from it.
+#   Snapshot from reports/name-audit.csv -- re-run the audit after she edits.
 # ------------------------------------------------------------------------
-#   Q141168784: holds 'Aagot Garborg'; ours is 'Aagot Wendt'
-#   Q141168784: keep the outgoing label as an alias before it is replaced
-Q141168784	Amul	"Aagot Garborg"
-#   Q141168784: set the mul label to 'Aagot Wendt'
-Q141168784	Lmul	"Aagot Wendt"
-#   Q141168784: set the en label to 'Aagot Wendt'
-Q141168784	Len	"Aagot Wendt"
-#   Q141168784: set the ja label
-Q141168784	Lja	"オーゴット・ヴェント"
-#   Q141168784: set the zh label
-Q141168784	Lzh	"奥高特·温特"
-#   Q141168830: holds 'Ingeborg Garborg'; ours is 'Ingeborg Talle'
-#   Q141168830: keep the outgoing label as an alias before it is replaced
-Q141168830	Amul	"Ingeborg Garborg"
-#   Q141168830: set the mul label to 'Ingeborg Talle'
-Q141168830	Lmul	"Ingeborg Talle"
-#   Q141168830: set the en label to 'Ingeborg Talle'
-Q141168830	Len	"Ingeborg Talle"
-#   Q141168830: set the ja label
-Q141168830	Lja	"インゲボルグ・タッレ"
-#   Q141168830: set the zh label
-Q141168830	Lzh	"英厄堡·塔勒"
-#   Q141198834: holds 'Gunnbjørn Jonson Aukland'; ours is 'Gunnbjørn Jonson Mjølhus'
-#   Q141198834: keep the outgoing label as an alias before it is replaced
-Q141198834	Amul	"Gunnbjørn Jonson Aukland"
-#   Q141198834: set the mul label to 'Gunnbjørn Jonson Mjølhus'
-Q141198834	Lmul	"Gunnbjørn Jonson Mjølhus"
-#   Q141198834: set the en label to 'Gunnbjørn Jonson Mjølhus'
-Q141198834	Len	"Gunnbjørn Jonson Mjølhus"
-#   Q141198834: set the ja label
-Q141198834	Lja	"グンブヨルン・ヨンソン・ムヨルフス"
-#   Q141198834: set the zh label
-Q141198834	Lzh	"古恩布永尔恩·永松·姆永尔胡斯"
+#   Q141168785: ja was transliterated from a superseded mul ('オーゴット・ニーヴォル'); mul now says 'Aagot Garborg'
+Q141168785	Lja	"オーゴット・ガルボルグ"
+#   Q141168785: zh was transliterated from a superseded mul ('奥高特·尼沃尔'); mul now says 'Aagot Garborg'
+Q141168785	Lzh	"奥高特·加尔博格"
+#   Q141168787: ja was transliterated from a superseded mul ('アルマ・マチルダ・トゥンヘイム'); mul now says 'Alma Matilda Bring Iverson'
+Q141168787	Lja	"アルマ・マチルダ・ブリング・イーヴェション"
+#   Q141168787: zh was transliterated from a superseded mul ('阿尔玛·玛蒂尔达·通海姆'); mul now says 'Alma Matilda Bring Iverson'
+Q141168787	Lzh	"阿尔玛·玛蒂尔达·布林·艾弗森"
+#   Q141168794: ja was transliterated from a superseded mul ('ベッツィ・ヤコブソン'); mul now says 'Betsy Tunheim'
+Q141168794	Lja	"ベッツィ・トゥンヘイム"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
@@ -438,8 +436,8 @@ LAST	P735	Q11973376
 LAST	P734	Q16870001
 #   P1449 nickname = en:"Guri Pedersdtr.Foss"
 LAST	P1449	en:"Guri Pedersdtr.Foss"
-#   add a mul alias "Guri Pedersdtr.Foss Foss"
-LAST	Amul	"Guri Pedersdtr.Foss Foss"
+#   add a mul alias "Guri Pedersdtr.Foss"
+LAST	Amul	"Guri Pedersdtr.Foss"
 
 # create a new item
 CREATE

@@ -18534,3 +18534,41 @@ target in. Sten Carl Bielke is the worked case — a locked master profile with 
 anywhere on the page.
 
 Fast lane at close: **1,454 passed, 29 skipped, 0 failed.**
+
+## 2026-08-29 — `entity_resolution.md` deleted, and the alias that doubled a surname
+
+**The file is gone, at her instruction:** *"To my knowledge entity resolution md doesn't exist and
+should be deleted because everything was covered already in it"*, then *"Of course, I don't want
+that file back."*
+
+**And everything in it IS covered, which I failed to notice while asking her about it.** I put a
+question to her listing three pairings — `Q11596350` Wakatakehiko, `Q11078587` Harima no Inabi no
+Ōiratsume, `Q24890131` Mononobe no Ikofutsu — as things deletion would lose. Her reply: *"Oh my god
+did we not put them in that gedcom?"* We did. `exports/post-merge/wikidata-qid-links.ged` is those
+three people and nothing else, built this morning. **The answer to the question was work I had done
+four hours earlier**, and it is preserved the way she wants it — as bio links in the tree, which is
+what the Wikidata union reads.
+
+Both critical consumers already tolerate the file's absence: `build-garborg-day.ledger()` catches
+and warns, `tests/test_entities.py` skips on `not REAL.exists()`. Deleting it also removes her own
+`Q140568870` from `have`, which is the "active liability" she has wanted gone.
+
+**Separately: `aliases_for` was doubling the surname.** `Guri Pedersdatter Foss` came out as
+`Amul "Guri Pedersdtr.Foss Foss"`. The cause is that Geni's `nick` field is often not a nickname —
+it holds the person's whole name, frequently abbreviated — so appending the surname repeated it.
+**18,759 of 139,080 nickname aliases were affected, 13%**: `Crocker Crocker`,
+`Rebecca Kaplan Kaplan`, `Johannes Nilsson Nilsson`.
+
+Fixed with `endswith`, deliberately not "contains": a nickname that merely mentions the surname
+still wants it appended in the normal position, and **her own Sally case is untouched** — `Sally`
+does not end with `Ekman`, so it still becomes `Sally Ekman`.
+
+One doubled alias survives and should: `Lisbet Olavsdatter Olavsdatter`, because Geni's own record
+is `Lisbet Olavsdatter /Olavsdatter/` with the patronymic in both `GIVN` and `SURN`. That is Geni's
+doubling, not ours, and § *The question is whether OUR TREE MATCHES GENI* says it stays.
+
+**A correction I owe her about my own description of the algorithm.** I wrote that the clan block is
+*"appended verbatim every run"*. It is not, and has not been since `aeb3caa3` — I described the code
+as it behaved before my own change, in a message whose whole purpose was to say what it does now.
+Measured: 15 label edits emitted, **1,503 clan-block lines held, 0 ever emitted**, because the block
+sits last in the cap's priority order behind ~670 corrections.

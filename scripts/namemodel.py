@@ -507,10 +507,27 @@ def aliases_for(fields, surn="", marnm=""):
     #
     # `P1449` *nickname* keeps the BARE token, and must: `Sally` is the nickname. It is the
     # alias, whose job is retrieval, that needs the full form.
+    # **Unless the nickname ALREADY carries the surname.** Geni's `nick` field is not always a
+    # nickname: it frequently holds the person's whole name, often in an abbreviated spelling.
+    # `Guri Pedersdatter Foss` has `nick` = `Guri Pedersdtr.Foss`, and appending her surname
+    # produced the alias `Guri Pedersdtr.Foss Foss`.
+    #
+    # **18,759 of 139,080 nickname aliases had the surname doubled** -- 13% -- measured over
+    # `reports/display-names.csv`. `Crocker Crocker`, `Rebecca Kaplan Kaplan`,
+    # `Johannes Nilsson Nilsson`, `Thorbjørn Lekve Magelssen Magelssen`.
+    #
+    # The test is `endswith`, not "contains": a nickname that merely mentions the surname
+    # somewhere still wants it appended in the ordinary position, and Emma's own case is
+    # untouched -- `Sally` does not end with `Ekman`, so it still becomes `Sally Ekman`, which
+    # is the whole point of the alias.
     surname = " ".join((marnm or surn or "").split())
     for token, usage, _ordinal in tokens:
         if usage == "nickname":
-            full = f"{token} {surname}".strip()
+            bare = token.strip()
+            if surname and bare.casefold().endswith(surname.casefold()):
+                full = bare
+            else:
+                full = f"{bare} {surname}".strip()
             if full not in out:
                 out.append(full)
     married = " ".join((fields.get("marnm") or "").split())
