@@ -40,46 +40,6 @@ ones above them: `THE EDIT ALGORITHM`, `THE DAILY ALGORITHM`, `THE TAIL ALGORITH
 
 These are supposed to be manually added to the queue and worked on, do no just paraphrase during the rebase keep this part entirely intact. We are approaching usage limit for now.
 
-### FRONT OF THE QUEUE — we are creating RIVAL PARENT PROFILES and she is merging them by hand
-
-**Emma, 2026-08-29:** *"you appear to be actively creating rival parent profiles in a way that is
-harmful... This should be easy to put safeguards into the data for and I am surprised they do no
-exist already. This is actually at the front of the queue... especially finding items to correct so
-no harm occurs."*
-
-**Two jobs, and the second is urgent because harm already on Wikidata keeps costing her merges:**
-
-- **Safeguard**: stop the daily batch creating a person who already has an item. STILL OPEN.
-- **Repair**: ~~find the ones already created and list them~~ **DONE 2026-08-29** --
-  `scripts/find-rival-profiles.py`, `reports/rival-profiles.md`. It found **0**, and the report
-  says plainly why that is close to vacuous: only 15 of the 287 minted people with kin have a
-  neighbour that exists in the 2026-08-25 store snapshot, so there is almost nothing to compare
-  against. It also rules out two things -- we are not duplicating *within* a batch (0 same-label
-  sibling sets under 109 shared parents), and the 5 namesake pairs an earlier pass surfaced are
-  all pre-existing items, none ours.
-
-**What the repair pass established for the safeguard.** The blind spot has TWO halves, not one.
-The guard cannot see a person who has an item but no `P2600`; and the offline store cannot see the
-neighbourhood our own recent creations live in, because it predates them. So a snapshot-based
-screen cannot work: it has to run against live Wikidata at compose time, on the specific parents a
-batch is about to create. `reports/rival-profiles.md` carries the three merges Emma has already
-made as ground truth for any screen.
-
-**The likely mechanism, to be confirmed rather than assumed.** `any_wikidata_item` — the duplicate
-guard — keys on `P2600`. It refuses to create anyone whose Geni id already carries a `P2600`
-somewhere on Wikidata. **It cannot see a person who exists on Wikidata with no `P2600`**, which is
-most of Wikidata. So a parent who has an item but no Geni link is invisible to the guard and gets a
-rival created.
-
-That is the same blind spot as Guttorm Àsulfsson in the other direction: he could not be *linked to*
-because he was not in `have`; these people cannot be *screened out* because they are not in
-`P2600`.
-
-**Evidence already in hand:** the ledger refresh of 2026-08-29 reported three rows where the ledger
-held one QID and Wikidata now returns another — `6000000004334566448` `Q141199704`→`Q141199808`,
-`6000000005264351012` `Q110302791`→`Q141178149`, `6000000011239545575` `Q5588874`→`Q141189059`.
-A QID that redirects is a merged item. Start there.
-
 ### Delete `SPINE_COMPLETE_NOW` — the Charlemagne line is CLOSED
 
 **Arne Garborg is continuously linked to Charlemagne as of 2026-08-29.** Measured, not assumed:

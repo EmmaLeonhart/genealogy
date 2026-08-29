@@ -4915,14 +4915,47 @@ def main():
     #
     # `out/wikidata/relations.tsv` (scripts/extract-wikidata-relations.py) carries `P40` for
     # every item in the store, so this is a dict lookup rather than a shard read.
+    #
+    # **THE MIRROR, and it is the half Emma actually complained about.** 2026-08-29:
+    # *"you appear to be actively creating rival parent profiles in a way that is harmful. For
+    # eample this one had to be mered."*
+    #
+    # The `P40` check above is the CHILD direction: it holds a person whose parent already has
+    # unclaimed children. It says nothing about the PARENT direction -- creating a father for a
+    # child who, on Wikidata, already declares one. Only `p40` was ever loaded here, so
+    # `P22`/`P25` were never consulted and a rival parent could not be seen.
+    #
+    # So: before creating anyone, look at every CHILD of theirs that has a QID, and if that
+    # child already declares a `P22`/`P25` parent item **not matched to one of our people**,
+    # refuse. The person being created may BE that item.
+    #
+    # Same conservatism and same trade as the child direction: holding a real person back costs
+    # a day, creating a rival costs Emma a manual merge on a public database.
     kids_of = {}
+    parents_of = {}
     rel = ROOT / "out" / "wikidata" / "relations.tsv"
     if rel.exists():
         with open(rel, encoding="utf-8") as f:
             for row in csv.DictReader(f, delimiter="	"):
                 if row.get("p40"):
                     kids_of[row["qid"]] = [x for x in row["p40"].split(";") if x]
+                ps = [x for c in ("p22", "p25") for x in (row.get(c) or "").split(";") if x]
+                if ps:
+                    parents_of[row["qid"]] = ps
         print(f"{len(kids_of):,} items with a P40 child list, for the duplicate guard")
+        print(f"{len(parents_of):,} items with a P22/P25 parent, for the rival-parent guard")
+
+    # The store predates most of the ledger, so a person Emma created this week has no row in
+    # it. `reports/garborg-live-values.tsv` is refreshed every run and carries the current
+    # statements for exactly those people, which is where a fresh rival would show up.
+    live = ROOT / "reports" / "garborg-live-values.tsv"
+    if live.exists():
+        with open(live, encoding="utf-8") as f:
+            for row in csv.DictReader(f, delimiter="	"):
+                if row.get("property") in ("P22", "P25") and row.get("value", "").startswith("Q"):
+                    parents_of.setdefault(row["qid"], [])
+                    if row["value"] not in parents_of[row["qid"]]:
+                        parents_of[row["qid"]].append(row["value"])
     else:
         print("WARNING: out/wikidata/relations.tsv missing - duplicate guard is OFF")
 
@@ -4933,22 +4966,43 @@ def main():
             print(f"   released from the duplicate guard: {labels.get(g, g)} -- "
                   f"{RELEASED_FROM_DUPLICATE_GUARD[g]}")
             continue
+        hit = None
         for parent in (father.get(g), mother.get(g)):
             pq = our_items.get(parent) if parent else None
             if not pq:
                 continue
             loose = [k for k in kids_of.get(pq, []) if k not in claimed]
             if loose:
-                blocked[g] = (pq, loose)
+                hit = (pq, loose, "child")
                 break
+
+        # The mirror: a child of theirs already names a parent item we do not hold.
+        if hit is None:
+            for c in children.get(g, ()):
+                cq = our_items.get(c)
+                if not cq:
+                    continue
+                loose = [x for x in parents_of.get(cq, []) if x not in claimed]
+                if loose:
+                    hit = (cq, loose, "parent")
+                    break
+
+        if hit is not None:
+            blocked[g] = hit
     if blocked:
-        for g, (pq, loose) in blocked.items():
+        kinds = collections.Counter()
+        for g, (other, loose, kind) in blocked.items():
+            kinds[kind] += 1
+            what = ("parent {0} has unmatched child item(s) {1} - this person may already be one"
+                    if kind == "child" else
+                    "child {0} already names parent item(s) {1} - this person may already be one")
             carried.append((g, labels.get(g, ""),
-                            f"HELD by the duplicate guard: parent {pq} has unmatched child "
-                            f"item(s) {';'.join(loose[:4])} - this person may already be one"))
+                            "HELD by the duplicate guard: "
+                            + what.format(other, ";".join(loose[:4]))))
             to_create.pop(g, None)
-        print(f"duplicate guard held {len(blocked)} people whose parent has an "
-              f"unmatched child item on Wikidata")
+        print(f"duplicate guard held {len(blocked)} people "
+              f"({kinds['child']} whose parent has an unmatched child item, "
+              f"{kinds['parent']} whose child already names a parent item)")
 
     # `--skip-nn` must bite BEFORE `--limit`, or the limit spends slots on people the run
     # is about to drop: asking for 10 named people returned 7, because 3 of the 10 closest

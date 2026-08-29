@@ -19034,3 +19034,35 @@ budget, 137 label lines in the batch.
 
 Verified after recompose: 31 creations, **0 occurrences** of any blocked QID, clan labels
 present, 289 passed / 32 skipped.
+
+## 2026-08-29 — the rival-parent guard: the mirror that was never there
+
+**Emma:** *"you appear to be actively creating rival parent profiles in a way that is harmful. For
+eample this one had to be mered... This should be easy to put safeguards into the data for and I am
+surprised they do no exist already."*
+
+**She was right that it should have existed, and right that it did not.** A duplicate guard was
+already in `build-garborg-day.py`, but it runs in one direction only: it holds a person whose
+**parent** has unmatched `P40` children. Nothing looked the other way. Only `p40` was ever read out
+of `relations.tsv`, so `P22`/`P25` were never consulted and a rival **parent** was invisible.
+
+The mirror is now there: before creating anyone, look at every **child** of theirs that has a QID,
+and if that child already declares a `P22`/`P25` parent item we have not matched, hold them.
+
+**It caught a real one on its first run.** The batch was about to create **Sune Folkesson
+Folkunga** (`4293217`). His child Benedicta of Bjelbo `Q4981287` already names `Q2366364`
+**Sune Folkesson** as her father -- the same man, the same name. Also `Q2709490` Helena
+Sverkersdotter as her mother. That is exactly the merge Emma has been doing by hand.
+
+**Two sources, because neither is current alone.** `out/wikidata/relations.tsv` gives 910,282 items
+with a `P22`/`P25`, but it predates most of the ledger; `reports/garborg-live-values.tsv` is
+refreshed every run and carries the current statements for the people Emma made this week, which is
+where a *fresh* rival would appear.
+
+Batch after the change: 30 creations (was 31), 21 links, 3 held by the duplicate guard -- 2 in the
+child direction, 1 in the new parent direction. 289 passed, 32 skipped.
+
+**What this does not fix.** The guard sees a rival only when the *child* is already linked to it.
+A parent whose children are all unlinked is still invisible, and `reports/rival-profiles.md`
+records the other half of that: the offline store cannot see the neighbourhood our own recent
+creations live in.

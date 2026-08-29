@@ -4,38 +4,38 @@
 #   batch and be limited to a count of 15 labels added per batch". A label set
 #   at CREATION time is neither counted nor capped -- "a label added during item
 #   creation is good".
-#   2232 more are held for a later run; a repeat is a no-op, so nothing is lost.
+#   2217 more are held for a later run; a repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
-#   Q11110062: set the nb label
-Q11110062	Lnb	"mann av Liu-slekten, fra Hedong Jiexian"
-#   Q11110062: set the da label
-Q11110062	Lda	"mand af Liu-slægten, fra Hedong Jiexian"
-#   Q11110062: set the sv label
-Q11110062	Lsv	"man av Liu-ätten, från Hedong Jiexian"
-#   Q11110062: set the de label
-Q11110062	Lde	"Mann des Klans Liu, aus Hedong Jiexian"
-#   Q11110062: set the it label
-Q11110062	Lit	"uomo del clan Liu, da Hedong Jiexian"
-#   Q11110062: set the pt label
-Q11110062	Lpt	"homem do clã Liu, de Hedong Jiexian"
-#   Q11110062: set the ca label
-Q11110062	Lca	"home del clan Liu, de Hedong Jiexian"
-#   Q11180129 (李 of 隴西狄道): mul label = NN
-Q11180129	Lmul	"NN"
-#   Q11180129: set the nb label
-Q11180129	Lnb	"kvinne av Li-slekten, fra Longxi Didao"
-#   Q11180129: set the da label
-Q11180129	Lda	"kvinde af Li-slægten, fra Longxi Didao"
-#   Q11180129: set the sv label
-Q11180129	Lsv	"kvinna av Li-ätten, från Longxi Didao"
-#   Q11180129: set the de label
-Q11180129	Lde	"Frau des Klans Li, aus Longxi Didao"
-#   Q11180129: set the es label
-Q11180129	Les	"mujer del clan Li, de Longxi Didao"
-#   Q11180129: set the it label
-Q11180129	Lit	"donna del clan Li, da Longxi Didao"
-#   Q11180129: set the pt label
-Q11180129	Lpt	"mulher do clã Li, de Longxi Didao"
+#   Q11180129: set the ca label
+Q11180129	Lca	"dona del clan Li, de Longxi Didao"
+#   Q15954845 (李 of ): mul label = NN
+Q15954845	Lmul	"NN"
+#   Q15954845: set the nb label
+Q15954845	Lnb	"kvinne av Li-slekten"
+#   Q15954845: set the da label
+Q15954845	Lda	"kvinde af Li-slægten"
+#   Q15954845: set the sv label
+Q15954845	Lsv	"kvinna av Li-ätten"
+#   Q15954845: set the de label
+Q15954845	Lde	"Frau des Klans Li"
+#   Q15954845: set the es label
+Q15954845	Les	"mujer del clan Li"
+#   Q15954845: set the it label
+Q15954845	Lit	"donna del clan Li"
+#   Q15954845: set the pt label
+Q15954845	Lpt	"mulher do clã Li"
+#   Q15954845: set the ca label
+Q15954845	Lca	"dona del clan Li"
+#   Q16603665 (李 of 隴西狄道): mul label = NN
+Q16603665	Lmul	"NN"
+#   Q16603665: set the nb label
+Q16603665	Lnb	"kvinne av Li-slekten, fra Longxi Didao"
+#   Q16603665: set the da label
+Q16603665	Lda	"kvinde af Li-slægten, fra Longxi Didao"
+#   Q16603665: set the sv label
+Q16603665	Lsv	"kvinna av Li-ätten, från Longxi Didao"
+#   Q16603665: set the de label
+Q16603665	Lde	"Frau des Klans Li, aus Longxi Didao"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
@@ -794,37 +794,6 @@ Q141216458	P40	LAST	S2600	"6000000222520233004"
 Q141216456	P40	LAST	S2600	"6000000222520233004"
 #   the item just created: P735 given name = Q833345 Sara
 LAST	P735	Q833345
-
-# create a new item
-CREATE
-#   set the en label to "Sune Folkesson Folkunga"
-LAST	Len	"Sune Folkesson Folkunga"
-#   set the mul label to "Sune Folkesson Folkunga"
-LAST	Lmul	"Sune Folkesson Folkunga"
-#   set the ja label to "スネ・フォルケソン・フォルクンガ"
-LAST	Lja	"スネ・フォルケソン・フォルクンガ"
-#   set the zh label to "苏内·福尔凯松·福尔库恩加"
-LAST	Lzh	"苏内·福尔凯松·福尔库恩加"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581097 male
-LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 4293217 Sune Folkesson Folkunga, qualified P1810 subject named as Sune Folkesson Folkunga
-LAST	P2600	"4293217"	P1810	"Sune Folkesson Folkunga"
-#   P569 date of birth = +1195-00-00T00:00:00Z/9
-LAST	P569	+1195-00-00T00:00:00Z/9	S2600	"4293217"
-#   P570 date of death = +1247-00-00T00:00:00Z/9
-LAST	P570	+1247-00-00T00:00:00Z/9	S2600	"4293217"
-#   P40 child = Q4981287 Benedicta Sunesdotter Folkungaätten
-LAST	P40	Q4981287	S2600	"4293217"
-#   Q4981287 Benedicta Sunesdotter Folkungaätten: P22 father = the item just created
-Q4981287	P22	LAST	S2600	"4293217"
-#   the item just created: P735 given name = Q920329 Sune
-LAST	P735	Q920329
-#   P1449 nickname = en:"Bjälbo"
-LAST	P1449	en:"Bjälbo"
-#   add a mul alias "Bjälbo Folkunga"
-LAST	Amul	"Bjälbo Folkunga"
 
 # create a new item
 CREATE
