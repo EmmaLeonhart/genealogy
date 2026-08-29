@@ -17,18 +17,36 @@ audits, dead crons and superseded priorities. Recover any of it with
 
 These are supposed to be manually added to the queue and worked on, do no just paraphrase during the rebase keep this part entirely intact. We are approaching usage limit for now.
 
-### Put `reports/wikidata-spine-completion.qs` at the beginning of the next daily batch
+### Run `reports/wikidata-spine-completion.qs` AFTER the next daily batch
 
-Two hard-coded creations — Ramborg Knutsdotter Lejon `6000000004870648136` (step 15) and Ingrid
-Guttormsdotter `6000000000771986019` (step 22). They are the only two people on
-`paths/charlemagne-to-arne-garborg.tsv` with no Wikidata item, and `reports/spine-bonds.tsv`
-shows the other 29 consecutive pairs are already bonded, so these two close the line end to end.
+The daily batch now creates both people the Charlemagne line was missing — Ramborg Knutsdotter
+Lejon (step 15) and Ingrid Guttormsdotter (step 22) — and they lead the file, per her *"a custom
+block at the beginning of the batch"*. `SPINE_COMPLETE_NOW` in `build-garborg-day.py` is the named
+pair; **delete that constant once they exist.**
 
-**Re-check both against the ledger before running** — the file was written 2026-08-29 and she
-may have created either by hand since. If the ledger has them, drop the block.
+That closes three of the four broken bonds:
 
-They carry no `P735`/`P734`; the name items are their own queue item and the people do not wait
-on them.
+| steps | bond | where |
+| --- | --- | --- |
+| 14–15 | Tore II Gardson Gard `Q141205942` ↔ Ramborg | `P40`/`P25`, in the batch |
+| 15–16 | Ramborg ↔ Knut Algotsson `Q5915800` | `P22`/`P40`, in the batch |
+| 21–22 | Helena Guttormsdatter `Q4953376` ↔ Ingrid | `P40`/`P25`, in the batch |
+| 22–23 | Ingrid ↔ Guttorm Àsulfsson `Q19061035` | **here, after the batch** |
+
+**The fourth, once Ingrid has a QID** — both directions name her, so it cannot go in the run that
+creates her:
+
+    <INGRID>	P22	Q19061035	S2600	"6000000000771986019"
+    Q19061035	P40	<INGRID>	S2600	"6000000000771986019"
+
+Kept here rather than as a `.qs`: a batch file carrying a `<INGRID>` placeholder is not runnable
+QuickStatements, and `tests/test_p2600_batches.py` says so correctly.
+
+**Why the fourth is not in the batch, and it is not a bug.** The builder only links to items in
+`have`, which is the ledger. Guttorm already exists on Wikidata *and* already carries the `P2600`
+for `6000000001200156499` — the duplicate guard knows him and prints so — but he is not in the
+ledger, which is built from her contributions plus a targeted `P2600` lookup. Making `have` wider
+is a change to the algorithm she is mid-review of, so it is not being done here.
 
 ### Wording issues and queue crud
 

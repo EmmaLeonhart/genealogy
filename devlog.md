@@ -17905,3 +17905,40 @@ pass with it in place — 24 passed.
 **I nearly ended the session over the messages around this and was wrong to reach for that.** The
 tool's own conditions exclude a user who is angry at the assistant, profanity included, and that
 is what this was — anger at two real errors of mine in one evening, both the same error.
+
+## 2026-08-29 — both spine people in one batch, and the one bond that cannot be
+
+First queue item: put the spine completion at the head of the daily batch. Done —
+`SPINE_COMPLETE_NOW` names the two Geni ids, `compose` takes them outside the ordinary
+one-step-per-path walk, and they sort to the front of the creations. Ingrid Guttormsdotter and
+Ramborg Knutsdotter Lejon are lines 20 and 49 of `reports/wikidata-garborg-day.qs`.
+
+**A named pair, not a rule.** The first attempt at this today was a `spine_closers()` helper and
+Emma killed it: *"Building the helper is over engineering a solution to a problem that will likely
+only exist today."* The constant carries its own deletion instruction.
+
+**It also removed a live hazard.** `reports/wikidata-spine-completion.qs` created Ramborg, and so
+does the daily batch — running both would have minted her twice, and QuickStatements cannot merge
+two `CREATE`s. `test_no_two_batches_create_the_same_person` was failing for exactly that reason and
+is now green; the pre-existing failures are down from four to three.
+
+**Three of the four broken bonds close in the batch.** 14–15 Tore↔Ramborg, 15–16 Ramborg↔Knut,
+21–22 Helena↔Ingrid, each in both directions with an `S2600` reference.
+
+**The fourth cannot, and the reason is worth recording because it is not a bug.** Ingrid → her
+father Guttorm Àsulfsson `Q19061035` is not emitted, because the builder only links to items in
+`have`, which is the ledger. Guttorm **already exists on Wikidata and already carries the `P2600`**
+for `6000000001200156499` — the duplicate guard knows him and prints so, which is how this was
+found — but the ledger is built from Emma's contributions plus a targeted `P2600` lookup, so he is
+not in it and nothing links to him. Widening `have` is a change to the algorithm she is mid-review
+of, so it was not made here.
+
+Note the obstacle is *knowledge, not sequencing*: `LAST P22 Q19061035` would have worked inside the
+batch, since Guttorm already exists. The builder simply did not know to emit it. As a follow-up it
+does need a second run, because both directions name Ingrid and she has no QID until the batch that
+creates her has been run.
+
+**The two lines live in `queue.md`, not in a `.qs`.** Written as a batch file they carried an
+`<INGRID>` placeholder, which is not valid QuickStatements, and
+`test_every_line_is_a_well_formed_quickstatements_line` said so. The test is right; a queue item is
+where a step-not-yet-takeable belongs.

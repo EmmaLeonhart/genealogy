@@ -4,7 +4,67 @@
 
 # create a new item
 CREATE
-#   the item just created: set the mul label to "NN Garborg"
+#   the item just created: set the en label to "Ingrid Guttormsdotter"
+LAST	Len	"Ingrid Guttormsdotter"
+#   set the mul label to "Ingrid Guttormsdotter"
+LAST	Lmul	"Ingrid Guttormsdotter"
+#   set the ja label to "イングリド・グトルムスドッテル"
+LAST	Lja	"イングリド・グトルムスドッテル"
+#   set the zh label to "伊恩格里德·古托尔姆斯多特"
+LAST	Lzh	"伊恩格里德·古托尔姆斯多特"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581072 female
+LAST	P21	Q6581072
+#   P2600 Geni.com profile ID = 6000000000771986019 Ingrid Guttormsdotter, qualified P1810 subject named as Ingrid Guttormsdotter
+LAST	P2600	"6000000000771986019"	P1810	"Ingrid Guttormsdotter"
+#   P569 date of birth = +1135-00-00T00:00:00Z/9
+LAST	P569	+1135-00-00T00:00:00Z/9	S2600	"6000000000771986019"
+#   P40 child = Q4953376 Helena Guttormsdatter
+LAST	P40	Q4953376	S2600	"6000000000771986019"
+#   Q4953376 Helena Guttormsdatter: P25 mother = the item just created
+Q4953376	P25	LAST	S2600	"6000000000771986019"
+#   the item just created: P735 given name = Q903741 Ingrid
+LAST	P735	Q903741
+#   P1449 nickname = en:"Ingridr Guðþormsdóttir Rein"
+LAST	P1449	en:"Ingridr Guðþormsdóttir Rein"
+#   add a mul alias "Ingridr Guðþormsdóttir Rein Guttormsdotter"
+LAST	Amul	"Ingridr Guðþormsdóttir Rein Guttormsdotter"
+
+# create a new item
+CREATE
+#   set the en label to "Ramborg Knutsdotter Lejon"
+LAST	Len	"Ramborg Knutsdotter Lejon"
+#   set the mul label to "Ramborg Knutsdotter Lejon"
+LAST	Lmul	"Ramborg Knutsdotter Lejon"
+#   set the ja label to "ラムボルグ・クヌトスドッテル・レヨン"
+LAST	Lja	"ラムボルグ・クヌトスドッテル・レヨン"
+#   set the zh label to "拉姆博尔格·克努特斯多特·莱永恩"
+LAST	Lzh	"拉姆博尔格·克努特斯多特·莱永恩"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581072 female
+LAST	P21	Q6581072
+#   P2600 Geni.com profile ID = 6000000004870648136 Ramborg Knutsdotter Lejon, qualified P1810 subject named as Ramborg Knutsdotter Lejon
+LAST	P2600	"6000000004870648136"	P1810	"Ramborg Knutsdotter Lejon"
+#   P569 date of birth = +1360-00-00T00:00:00Z/9
+LAST	P569	+1360-00-00T00:00:00Z/9	S2600	"6000000004870648136"
+#   P570 date of death = +1408-00-00T00:00:00Z/9
+LAST	P570	+1408-00-00T00:00:00Z/9	S2600	"6000000004870648136"
+#   P22 father = Q5915800 Knut Algotsson
+LAST	P22	Q5915800	S2600	"6000000004870648136"
+#   P40 child = Q141205942 Tore II Gardson Gard
+LAST	P40	Q141205942	S2600	"6000000004870648136"
+#   Q5915800 Knut Algotsson: P40 child = the item just created
+Q5915800	P40	LAST	S2600	"6000000004870648136"
+#   Q141205942 Tore II Gardson Gard: P25 mother = the item just created
+Q141205942	P25	LAST	S2600	"6000000004870648136"
+#   the item just created: add a mul alias "Ramborg Lejon"
+LAST	Amul	"Ramborg Lejon"
+
+# create a new item
+CREATE
+#   set the mul label to "NN Garborg"
 LAST	Lmul	"NN Garborg"
 #   set the ca label to "filla de Arne Olaus Fjørtoft Garborg"
 LAST	Lca	"filla de Arne Olaus Fjørtoft Garborg"
@@ -90,42 +150,7 @@ Q141198375	P40	LAST	S2600	"6000000003731955050"
 
 # create a new item
 CREATE
-#   the item just created: set the en label to "Aagot Garborg Koloboff"
-LAST	Len	"Aagot Garborg Koloboff"
-#   set the mul label to "Aagot Garborg Koloboff"
-LAST	Lmul	"Aagot Garborg Koloboff"
-#   add a mul alias "Aagot Engebretsen"
-LAST	Amul	"Aagot Engebretsen"
-#   set the ja label to "オーゴット・ガルボルグ・コロボフ"
-LAST	Lja	"オーゴット・ガルボルグ・コロボフ"
-#   set the zh label to "奥高特·加尔博格·科洛博夫"
-LAST	Lzh	"奥高特·加尔博格·科洛博夫"
-#   add a ja alias "オーゴット・エンゲブレトセン"
-LAST	Aja	"オーゴット・エンゲブレトセン"
-#   add a zh alias "奥高特·埃恩盖布雷特森"
-LAST	Azh	"奥高特·埃恩盖布雷特森"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581072 female
-LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000036746925255 Aagot Garborg Koloboff, qualified P1810 subject named as Aagot Engebretsen
-LAST	P2600	"6000000036746925255"	P1810	"Aagot Engebretsen"
-#   P569 date of birth = +1892-08-19T00:00:00Z/11
-LAST	P569	+1892-08-19T00:00:00Z/11	S2600	"6000000036746925255"
-#   P570 date of death = +1948-01-21T00:00:00Z/11
-LAST	P570	+1948-01-21T00:00:00Z/11	S2600	"6000000036746925255"
-#   P26 spouse = Q141168837 Ingebret Garborg
-LAST	P26	Q141168837	S2600	"6000000036746925255"
-#   Q141168837 Ingebret Garborg: P26 spouse = the item just created
-Q141168837	P26	LAST	S2600	"6000000036746925255"
-#   the item just created: P735 given name = Q3482557 Aagot
-LAST	P735	Q3482557
-#   P734 family name = Q30250555 Garborg, qualified P3831 object of statement has role Q28418670 married name
-LAST	P734	Q30250555	P3831	Q28418670
-
-# create a new item
-CREATE
-#   set the en label to "Anders Jacobsson"
+#   the item just created: set the en label to "Anders Jacobsson"
 LAST	Len	"Anders Jacobsson"
 #   set the mul label to "Anders Jacobsson"
 LAST	Lmul	"Anders Jacobsson"
@@ -887,6 +912,41 @@ LAST	P735	Q8274988
 
 # create a new item
 CREATE
+#   set the en label to "Margreta Lauritsdatter Øvre Bjørheim"
+LAST	Len	"Margreta Lauritsdatter Øvre Bjørheim"
+#   set the mul label to "Margreta Lauritsdatter Øvre Bjørheim"
+LAST	Lmul	"Margreta Lauritsdatter Øvre Bjørheim"
+#   add a mul alias "Margreta Lauritsdatter Leivsen Øvre Bjørheim"
+LAST	Amul	"Margreta Lauritsdatter Leivsen Øvre Bjørheim"
+#   set the ja label to "マルグレタ・ラウリトスダッテル・オヴレ・ブヨルヘイム"
+LAST	Lja	"マルグレタ・ラウリトスダッテル・オヴレ・ブヨルヘイム"
+#   set the zh label to "马尔格雷塔·拉乌里特斯达特·奥夫雷·布永尔赫伊姆"
+LAST	Lzh	"马尔格雷塔·拉乌里特斯达特·奥夫雷·布永尔赫伊姆"
+#   add a ja alias "マルグレタ・ラウリトスダッテル・レイヴセン・オヴレ・ブヨルヘイム"
+LAST	Aja	"マルグレタ・ラウリトスダッテル・レイヴセン・オヴレ・ブヨルヘイム"
+#   add a zh alias "马尔格雷塔·拉乌里特斯达特·莱伊夫森·奥夫雷·布永尔赫伊姆"
+LAST	Azh	"马尔格雷塔·拉乌里特斯达特·莱伊夫森·奥夫雷·布永尔赫伊姆"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581072 female
+LAST	P21	Q6581072
+#   P2600 Geni.com profile ID = 6000000016246443406 Margreta Lauritsdatter Øvre Bjørheim, qualified P1810 subject named as Margreta Lauritsdatter Leivsen Øvre Bjørheim
+LAST	P2600	"6000000016246443406"	P1810	"Margreta Lauritsdatter Leivsen Øvre Bjørheim"
+#   P569 date of birth = +1540-00-00T00:00:00Z/9
+LAST	P569	+1540-00-00T00:00:00Z/9	S2600	"6000000016246443406"
+#   P570 date of death = +1578-00-00T00:00:00Z/9
+LAST	P570	+1578-00-00T00:00:00Z/9	S2600	"6000000016246443406"
+#   P26 spouse = Q141205930 Olav Knutson Randa Håland
+LAST	P26	Q141205930	S2600	"6000000016246443406"
+#   Q141205930 Olav Knutson Randa Håland: P26 spouse = the item just created
+Q141205930	P26	LAST	S2600	"6000000016246443406"
+#   the item just created: P735 given name = Q21143359 Margreta
+LAST	P735	Q21143359
+#   add a mul alias "Margreta Øvre Bjørheim"
+LAST	Amul	"Margreta Øvre Bjørheim"
+
+# create a new item
+CREATE
 #   set the en label to "Mariet Danielsdotter"
 LAST	Len	"Mariet Danielsdotter"
 #   set the mul label to "Mariet Danielsdotter"
@@ -913,45 +973,6 @@ LAST	P25	Q141205928	S2600	"6000000017535961052"
 Q141205902	P40	LAST	S2600	"6000000017535961052"
 #   Q141205928 NN Jonsdotter: P40 child = the item just created
 Q141205928	P40	LAST	S2600	"6000000017535961052"
-
-# create a new item
-CREATE
-#   the item just created: set the mul label to "NN (Frille)"
-LAST	Lmul	"NN (Frille)"
-#   set the ca label to "mare de Ramborg Knutsdotter Lejon"
-LAST	Lca	"mare de Ramborg Knutsdotter Lejon"
-#   set the da label to "mor til Ramborg Knutsdotter Lejon"
-LAST	Lda	"mor til Ramborg Knutsdotter Lejon"
-#   set the de label to "Mutter von Ramborg Knutsdotter Lejon"
-LAST	Lde	"Mutter von Ramborg Knutsdotter Lejon"
-#   set the en label to "mother of Ramborg Knutsdotter Lejon"
-LAST	Len	"mother of Ramborg Knutsdotter Lejon"
-#   set the es label to "madre de Ramborg Knutsdotter Lejon"
-LAST	Les	"madre de Ramborg Knutsdotter Lejon"
-#   set the it label to "madre di Ramborg Knutsdotter Lejon"
-LAST	Lit	"madre di Ramborg Knutsdotter Lejon"
-#   set the ja label to "ラムボルグ・クヌトスドッテル・レヨンの母"
-LAST	Lja	"ラムボルグ・クヌトスドッテル・レヨンの母"
-#   set the nb label to "mor til Ramborg Knutsdotter Lejon"
-LAST	Lnb	"mor til Ramborg Knutsdotter Lejon"
-#   set the nl label to "moeder van Ramborg Knutsdotter Lejon"
-LAST	Lnl	"moeder van Ramborg Knutsdotter Lejon"
-#   set the pt label to "mãe de Ramborg Knutsdotter Lejon"
-LAST	Lpt	"mãe de Ramborg Knutsdotter Lejon"
-#   set the sv label to "mor till Ramborg Knutsdotter Lejon"
-LAST	Lsv	"mor till Ramborg Knutsdotter Lejon"
-#   set the zh label to "拉姆博尔格·克努特斯多特·莱永恩之母"
-LAST	Lzh	"拉姆博尔格·克努特斯多特·莱永恩之母"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581072 female
-LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000004645401302 NN (Frille), qualified P1810 subject named as NN (Frille)
-LAST	P2600	"6000000004645401302"	P1810	"NN (Frille)"
-#   P26 spouse = Q5915800 Knut Algotsson
-LAST	P26	Q5915800	S2600	"6000000004645401302"
-#   Q5915800 Knut Algotsson: P26 spouse = the item just created
-Q5915800	P26	LAST	S2600	"6000000004645401302"
 
 # create a new item
 CREATE
@@ -1023,38 +1044,7 @@ Q141168830	P40	LAST	S2600	"6000000177688399821"
 
 # create a new item
 CREATE
-#   the item just created: set the en label to "Ramborg Knutsdotter Lejon"
-LAST	Len	"Ramborg Knutsdotter Lejon"
-#   set the mul label to "Ramborg Knutsdotter Lejon"
-LAST	Lmul	"Ramborg Knutsdotter Lejon"
-#   set the ja label to "ラムボルグ・クヌトスドッテル・レヨン"
-LAST	Lja	"ラムボルグ・クヌトスドッテル・レヨン"
-#   set the zh label to "拉姆博尔格·克努特斯多特·莱永恩"
-LAST	Lzh	"拉姆博尔格·克努特斯多特·莱永恩"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581072 female
-LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000004870648136 Ramborg Knutsdotter Lejon, qualified P1810 subject named as Ramborg Knutsdotter Lejon
-LAST	P2600	"6000000004870648136"	P1810	"Ramborg Knutsdotter Lejon"
-#   P569 date of birth = +1360-00-00T00:00:00Z/9
-LAST	P569	+1360-00-00T00:00:00Z/9	S2600	"6000000004870648136"
-#   P570 date of death = +1408-00-00T00:00:00Z/9
-LAST	P570	+1408-00-00T00:00:00Z/9	S2600	"6000000004870648136"
-#   P22 father = Q5915800 Knut Algotsson
-LAST	P22	Q5915800	S2600	"6000000004870648136"
-#   P40 child = Q141205942 Tore II Gardson Gard
-LAST	P40	Q141205942	S2600	"6000000004870648136"
-#   Q5915800 Knut Algotsson: P40 child = the item just created
-Q5915800	P40	LAST	S2600	"6000000004870648136"
-#   Q141205942 Tore II Gardson Gard: P25 mother = the item just created
-Q141205942	P25	LAST	S2600	"6000000004870648136"
-#   the item just created: add a mul alias "Ramborg Lejon"
-LAST	Amul	"Ramborg Lejon"
-
-# create a new item
-CREATE
-#   set the en label to "Sigurd Sverre Ravn Talle"
+#   the item just created: set the en label to "Sigurd Sverre Ravn Talle"
 LAST	Len	"Sigurd Sverre Ravn Talle"
 #   set the mul label to "Sigurd Sverre Ravn Talle"
 LAST	Lmul	"Sigurd Sverre Ravn Talle"
