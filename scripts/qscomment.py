@@ -107,7 +107,13 @@ def annotate(lines, name_of):
             label = props.get(prop, "")
             named = f"{prop} {label}".strip()
             what = f"{named} = {human(value)}"
-            extra = [f"{props.get(parts[i], parts[i])} {human(parts[i + 1])}"
+            # **The qualifier keeps its property ID too.** It used to render the label alone
+            # -- `qualified subject named as ...` -- while the statement above it read
+            # `P2600 Geni.com profile ID`. `CLAUDE.md` § *Always write the English label next
+            # to a property or item ID* cuts both ways: Emma, 2026-08-15, *"I have no fucking
+            # clue what any property or Q ID property name is"*, and a bare label is the same
+            # problem in reverse, since nothing says which property was written.
+            extra = [f"{parts[i]} {props.get(parts[i], '')}".strip() + f" {human(parts[i + 1])}"
                      for i in range(3, len(parts) - 1, 2)
                      if parts[i].startswith("P")]
             if extra:

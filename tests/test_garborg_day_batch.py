@@ -223,10 +223,18 @@ def test_a_redacted_person_is_created_and_described_not_left_unlabelled():
         assert f'P2600\t"{row["geni_id"]}"' in text, (
             f"{row['geni_id']} is redacted but was not created at all — "
             f"CLAUDE.md says the person is created, only the label is withheld")
-    # And no label line anywhere carries the marker.
-    assert "<private>" not in text.lower(), (
-        "a redaction marker reached a label; it asserts something false and is "
-        "impossible to search for")
+    # And no LABEL line anywhere carries the marker -- but `P1810` *subject named as* may,
+    # and must. Emma ruled on 2026-08-29 that the qualifier carries the literal Geni string:
+    # a label asserts what the person is called, `P1810` asserts what the source displays,
+    # and only the first is falsified by `<private> Garborg`. Her `mul` stays `NN Garborg`.
+    #
+    # This was a blanket ban on the string until then, which is why it is worth being exact:
+    # the ban is on labels and aliases, not on the file.
+    leaked = [ln for ln in text.splitlines()
+              if "<private>" in ln.lower() and "P1810" not in ln]
+    assert not leaked, (
+        f"a redaction marker reached a label; it asserts something false and is "
+        f"impossible to search for: {leaked[:3]}")
 
 
 def test_the_ledger_and_the_batch_do_not_both_claim_a_person():

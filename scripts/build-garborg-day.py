@@ -178,8 +178,34 @@ def describe_all(geni_id, facts, father, mother, labels, table,
     sex = (facts.get(geni_id, {}).get("sex") or "")
 
     def named(gid):
+        """The relative's name, or `""` when it names nobody and the walk must fall through.
+
+        **A marker plus a surname names nobody either**, and only the bare forms were being
+        caught. `<private> Skårland` passed, so a redacted *parent* put the marker into ten
+        descriptive labels at once -- `filla de <private> Skårland`, `datter af <private>
+        Skårland`, down the whole language table -- on a person whose own `mul` correctly read
+        `NN Undheim`. The rule was enforced on a person's own label and not on their child's.
+
+        **Falling through is the fix, not reconstructing.** Rewriting the relative to
+        `NN Skårland` was tried first and is wrong for the reason
+        `test_a_redacted_person_gets_the_marker_in_mul_and_a_description_elsewhere` already
+        states: a description built on an unnamed relative describes nobody, so the walk should
+        move to the next relative -- the other parent, then a child, spouse or sibling -- which
+        `BY` exists to do.
+
+        `WORDS_MEANING_UNKNOWN` is imported rather than restated; `CLAUDE.md` names
+        `scripts/labels` as the one place that owns which words mean the name is unknown.
+        """
+        from labels import WORDS_MEANING_UNKNOWN
         n = (labels.get(gid) or "").strip()
-        return "" if not n or n.lower() in ("nn", "private", "unknown", "?") else n
+        low = n.lower()
+        if not n or low in ("nn", "private", "unknown", "?") or "<private>" in low:
+            return ""
+        # A PREFIX test, not a head-token one: the set holds multi-word phrases
+        # (`name not known`, `no name`) as well as single words, so splitting on space
+        # would miss exactly the longest and most obvious markers.
+        markers = {w.lower() for w in WORDS_MEANING_UNKNOWN} | {"nn", "unknown", "ukjent"}
+        return "" if any(low == w or low.startswith(w + " ") for w in markers) else n
 
     #: Which relative to describe by, nearest first, and the `WORDS` group naming the
     #: relationship FROM this person TO them.
@@ -371,6 +397,29 @@ def _label_corrections(our_items, labels, table, state):
                "#   lost. This block SHRINKS as it is run -- it is not the clan block.",
                "# " + "-" * 72] + out
     return out
+
+
+def nn_form(raw):
+    """`<private> Skårland` → `NN Skårland`; anything else is returned untouched.
+
+    The reconstruction `CLAUDE.md` § *The NN/Private label algorithm applies to EVERY unnamed
+    person* specifies: the marker goes, **the surname stays** because it survives redaction and
+    is real data, and `NN` marks that the given name is withheld.
+
+    **Extracted so the two callers cannot drift, which they had.** The `mul` line built this
+    inline and was right — `NN Garborg`. `referred_to_as`, which is what `describe_all` names a
+    relative by, did not, so a redacted *parent* leaked the marker into ten descriptive labels
+    at once: `filla de <private> Skårland`, `datter af <private> Skårland`, and so on down the
+    language table. The rule that a marker must not reach a label was being enforced on the
+    person's own label and not on their child's.
+    """
+    low = (raw or "").lower()
+    if "<private>" not in low and low.strip() not in ("private", "nn"):
+        return raw
+    surname = " ".join(t for t in (raw or "").split()
+                       if not t.lower().startswith("<private")
+                       and t.lower() not in ("private", "nn"))
+    return ("NN " + surname).strip()
 
 
 def label_in(label, table):
@@ -4554,19 +4603,19 @@ def main():
         offline against `wikidata/items/`, where every `P1810` sits on one (`P396`, `P1280`,
         `P8034`, `P12458`). Hanging it on `P2600` is that shape, not an invention.
 
-        **A redaction marker returns `""`.** The first run emitted
-        `P1810 "<private> Garborg"` and `"<private> Undheim"`. `CLAUDE.md` is explicit that a
-        marker must not reach the file *"not even as prose"*, and § *`Private` never becomes a
-        label* is the same rule: `<private>` is Geni withholding a name, so there is no name for
-        this property to carry. Normalising it to `NN Garborg` would be worse — it would assert
-        that Geni calls her that, which it does not. The `P2600` still goes out, which is what
-        makes the person findable.
+        **A redaction marker goes in VERBATIM here, and only here.** Emma ruled on this
+        2026-08-29, choosing the literal string over both the reconstructed `NN Garborg` and
+        omitting the qualifier: `P1810` documents what the source database literally shows, so
+        `<private> Garborg` is the true and useful value. That is a **narrow exception** to
+        § *Redacted people go in. `Private` never becomes a label*, and the reason the two do
+        not conflict is that they are different claims — a *label* asserts what the person is
+        called, and this asserts what Geni displays. Her `mul` label stays `NN Garborg`.
+
+        So the marker is barred from every label and permitted in exactly one qualifier;
+        `tests/test_garborg_day_batch.py` enforces the line rather than leaving it to memory.
         """
         raw = (fields.get(g) or {}).get("display_name", "")
-        low = raw.lower()
-        if not raw or "<private>" in low or low.strip() == "private":
-            return ""
-        return f'\tP1810\t"{qs(raw)}"'
+        return f'\tP1810\t"{qs(raw)}"' if raw else ""
 
     def add(q, prop, value, g, qual=""):
         # `qual` is a ready-made qualifier fragment, tab-prefixed, and is deliberately NOT
@@ -4714,10 +4763,7 @@ def main():
             # `mul` reads `NN Garborg`, not a bare `NN`.
             # The surname survives redaction and is real data -- CLAUDE.md measured
             # 3,605 such profiles. `<private> Garborg` -> `Garborg`.
-            surname = " ".join(t for t in qs(labels.get(g, "")).split()
-                               if not t.lower().startswith("<private")
-                               and t.lower() not in ("private", "nn"))
-            lines.append(f'LAST\tLmul\t"{("NN " + surname).strip()}"')
+            lines.append(f'LAST\tLmul\t"{nn_form(qs(labels.get(g, "")))}"')
             described = describe_all(g, facts, father, mother, referred_to_as, table,
                                      children, spouses, siblings)
             for code, value in sorted(described.items()):

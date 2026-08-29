@@ -17660,3 +17660,39 @@ against the committed batch with mine stashed, same four either way. They are th
 `_label_corrections()` block from yesterday writing labels onto existing items, which is what she
 asked for, against a test that predates the decision. Queued rather than folded in here, because
 it overlaps her 15-labels-a-batch cap and is probably one fix.
+
+## 2026-08-29 — the redaction marker goes in `P1810`, and the descriptions stopped naming nobody
+
+Emma, on being told the qualifier was omitted for redacted people: *"Uhh lol mul should be NN
+Garborg lol."* It already was — line 8 of the batch reads `Lmul "NN Garborg"` with ten descriptive
+labels under it. My sentence had conflated the label with the qualifier.
+
+**Her ruling on `P1810` itself: the literal Geni string.** So `<private> Garborg`, `<private>
+Undheim` and `Private` now go out verbatim, and all 37 `P2600` statements carry a qualifier where
+34 did. The reasoning is that `P1810` *subject named as* records what the source database
+displays, which is a different claim from what a person is called — a marker falsifies a label and
+does not falsify this. `CLAUDE.md` gains the exception written narrowly, and
+`test_garborg_day_batch.py` now permits the marker on a `P1810` line and nowhere else instead of
+banning the string outright.
+
+**Chasing that surfaced a real leak, and my first fix for it was wrong.** `describe_all`'s
+`named()` rejected only the bare forms `nn`, `private`, `unknown`, `?`, so `<private> Skårland`
+passed and a redacted *parent* put the marker into **ten descriptive labels at once** — `filla de
+<private> Skårland`, `datter af <private> Skårland`, down the whole language table. The rule was
+being enforced on a person's own label and not on their child's.
+
+I first rewrote the relative to `NN Skårland`, and a test that already existed said why that is
+wrong: *"a description names nobody — it should fall through to the next relative"*. `BY` exists
+to do exactly that. `named()` now returns empty for any name **beginning** with a marker — a
+prefix test, not a head-token one, because `WORDS_MEANING_UNKNOWN` holds phrases like *name not
+known*. The result is the right one: that person is now described as **daughter of Astri
+Torchelsdatter Øvre Time**, her named mother, in all ten languages, instead of by her redacted
+father.
+
+**And `qscomment` was dropping property IDs from qualifiers** — `qualified subject named as ...`
+against `P2600 Geni.com profile ID` on the line above. `CLAUDE.md` § *Always write the English
+label next to a property or item ID* cuts both ways; a bare label leaves nothing saying which
+property was written. Now `qualified P1810 subject named as ...`, for every qualifier the file
+emits.
+
+The four pre-existing failures from the label-corrections block are unchanged and still queued.
