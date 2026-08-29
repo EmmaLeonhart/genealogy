@@ -1290,6 +1290,26 @@ So position alone does not make a middle name — the second given token is a mi
 name **only** if it is not patronymic. `Q245025` and `Q110874` are decided by what
 the token *is*, and `P1545` numbers them either way.
 
+### If you are not sure what she wants, ASK. `AskUserQuestion`, not a guess
+
+**Emma, 2026-08-29:** *"Add to claude.md that if you aren't sure what I want do
+AskUserQuestion"* — said immediately after two guesses in one turn went wrong. She asked for
+*"that particular section"* to be removed from the generated QuickStatements; I removed the
+**CJK clan block**, which she had never mentioned, when she meant the **spine `P2600`
+entity-resolution block**. Her replies: *"What the fuck the clan block is gone? Bring it the
+fuck back"* and *"I wanted the spine entity resolution geni id adding statements gone"*.
+
+**The tell was there and was ignored: two blocks in that file are hard-coded and appended
+every run.** When a referent has two candidates, that is not a thing to resolve by picking the
+likelier one — it is the ambiguity `AskUserQuestion` exists for. § *Do not grab the first
+artifact that vaguely matches* is the same rule and names the same failure; this is that rule
+extended from artifacts to instructions.
+
+**This does not repeal § *Working the queue: GUESS. Do not ask*.** That governs ambiguities
+*inside* a queue item already specified — how to render an edge case, which of two readings of
+a name model. This governs **which thing she is pointing at**. Guessing the referent wrong
+destroys work; guessing an edge case wrong produces a row to fix.
+
 ### Working the queue: GUESS. Do not ask
 
 **Emma, 2026-08-18:** *"as for everything in the queue, I'm gonna say don't do an

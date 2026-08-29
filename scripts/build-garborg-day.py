@@ -296,6 +296,83 @@ def read_tree():
     return fam_p, fam_c, fams, famc
 
 
+
+def _label_corrections(our_items, labels, table, state):
+    """`Lmul`/`Len`/`Lja`/`Lzh` for existing items whose label is still the BIRTH name.
+
+    **Emma, 2026-08-29:** *"You should be adding into the generated quick statements a block
+    that's just all of these corrections. Need all of these corrections on the existing
+    items."*
+
+    `derive-labels.py` flipped 251,707 labels to the married form on 2026-08-29. Every item
+    created before that carries the birth name in `mul` and `en` -- and, because `ja`/`zh`
+    are transliterated from `label_mul`, in Japanese and Chinese too. Her words: *"the CJK
+    names are being put in the birth name form"*.
+
+    **The live label comes from `reports/garborg-qids.tsv`**, whose `label` column is written
+    by the contributions refresh at the top of every run, so it is what Wikidata says today.
+    `state` was the obvious-looking source and is the wrong one: it records which *languages*
+    an item has, not what they say.
+
+    **Only where it actually differs**, so the block empties itself as it is run rather than
+    repeating unconditionally the way the clan block did. A label REPLACES, so the outgoing
+    value goes out as an `Amul` on the line above -- § *The MARRIED name is the real name*,
+    *"first amul added if applicable"* -- which is what stops a hand correction of hers being
+    silently overwritten.
+    """
+    # The birth forms, so a correction can be recognised as one rather than guessed at.
+    aliases_of = {}
+    dl = ROOT / "reports" / "derived-labels.csv"
+    if dl.exists():
+        csv.field_size_limit(10 ** 8)
+        want_ids = set(our_items)
+        for row in csv.DictReader(dl.open(encoding="utf-8")):
+            if row["geni_id"] in want_ids:
+                aliases_of[row["geni_id"]] = {
+                    a.strip() for a in (row.get("alias_names") or "").split(" | ") if a.strip()}
+
+    live = {}
+    ledger = ROOT / "reports" / "garborg-qids.tsv"
+    if ledger.exists():
+        for row in csv.DictReader(ledger.open(encoding="utf-8"), delimiter="	"):
+            lab = (row.get("label") or "").strip()
+            if row.get("qid") and lab:
+                live[row["qid"]] = lab
+
+    out = []
+    for geni_id, qid in sorted(our_items.items(), key=lambda kv: kv[1]):
+        want = qs(labels.get(geni_id, ""))
+        have = live.get(qid, "")
+        if not want or not have or have == want:
+            continue
+        # **Only where the item literally holds the BIRTH name.** The first version corrected
+        # every difference, and its own output showed why that is wrong: it offered to rewrite
+        # `Carl August Ehrensvärd (1745-1800)` to `Carl August Ehrensvärd` and to strip
+        # `of Viby, heiress, lady of Händelöö` off Ingegerd Svantepolksdotter -- Wikidata's
+        # labels being BETTER than ours, and § *The purpose is to ADD to Wikidata, not to
+        # correct it* forbids exactly that. Matching against the birth-name alias makes this
+        # a correction of our own 2026-08-29 flip and nothing else.
+        if have not in aliases_of.get(geni_id, ()):
+            continue
+        out.append(f"#   {qid}: holds {have!r}; ours is {want!r}")
+        out.append(f'{qid}	Amul	"{have}"')
+        out.append(f'{qid}	Lmul	"{want}"')
+        out.append(f'{qid}	Len	"{want}"')
+        ja, zh = label_in(want, table)
+        if ja:
+            out.append(f'{qid}	Lja	"{ja}"')
+            out.append(f'{qid}	Lzh	"{zh}"')
+    if out:
+        out = ["", "# " + "-" * 72,
+               "# LABEL CORRECTIONS -- existing items whose label is not what our tree now",
+               "#   says. derive-labels.py made the married form primary on 2026-08-29 and",
+               "#   these items predate it. The outgoing label is preserved as an Amul on",
+               "#   the line above the Lmul that replaces it, so nothing hand-written is",
+               "#   lost. This block SHRINKS as it is run -- it is not the clan block.",
+               "# " + "-" * 72] + out
+    return out
+
+
 def label_in(label, table):
     """(ja, zh) for a whole name, or (None, None) if any token is unknown.
 
@@ -4875,11 +4952,18 @@ def main():
               f"({', '.join(sorted(excluded))}) — never emitted, in any position")
     lines = kept
 
-    # The hard-coded manual zipper merges, last, every run. See `SPINE_P2600_BLOCK` — it is a
-    # literal string on purpose and is not to be made conditional, filtered or generated.
-    lines.append(SPINE_P2600_BLOCK)
-    # The CJK clan labels, same mechanism. See `CJK_CLAN_BLOCK`.
+    # **The SPINE P2600 block is NOT emitted.** Emma, 2026-08-29: *"I wanted the spine entity
+    # resolution geni id adding statements gone"*. `SPINE_P2600_BLOCK` stays defined -- it is
+    # the record of nine pairings anchored on structure rather than on names, and
+    # `reports/wikidata-spine-add-p2600.qs` carries the evidence -- but it no longer rides
+    # along with every daily batch.
+
+    # The CJK clan labels, same mechanism. See `CJK_CLAN_BLOCK`. **Removed on 2026-08-29 and
+    # put straight back** -- I read *"remove that particular section"* as this block when she
+    # meant the spine P2600 one. Emma: *"What the fuck the clan block is gone? Bring it the
+    # fuck back"*.
     lines.append(CJK_CLAN_BLOCK)
+    lines += _label_corrections(our_items, labels, table, state)
 
     out = ROOT / "reports" / "wikidata-garborg-day.qs"
     out.write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")
