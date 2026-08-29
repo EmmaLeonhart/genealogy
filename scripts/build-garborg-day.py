@@ -4933,6 +4933,8 @@ def main():
     # a day, creating a rival costs Emma a manual merge on a public database.
     kids_of = {}
     parents_of = {}
+    #: `P22`/`P25` kept apart, for the single-value guard at the end of the run.
+    wd_fathers, wd_mothers = {}, {}
     rel = ROOT / "out" / "wikidata" / "relations.tsv"
     if rel.exists():
         with open(rel, encoding="utf-8") as f:
@@ -4942,8 +4944,14 @@ def main():
                 ps = [x for c in ("p22", "p25") for x in (row.get(c) or "").split(";") if x]
                 if ps:
                     parents_of[row["qid"]] = ps
+                for c, into in (("p22", wd_fathers), ("p25", wd_mothers)):
+                    for x in (row.get(c) or "").split(";"):
+                        if x:
+                            into.setdefault(row["qid"], set()).add(x)
         print(f"{len(kids_of):,} items with a P40 child list, for the duplicate guard")
-        print(f"{len(parents_of):,} items with a P22/P25 parent, for the rival-parent guard")
+        print(f"{len(parents_of):,} items with a P22/P25 parent, for the rival-parent "
+              f"guard ({len(wd_fathers):,} with a father, {len(wd_mothers):,} with a "
+              f"mother, for the single-value guard)")
 
     # The store predates most of the ledger, so a person Emma created this week has no row in
     # it. `reports/garborg-live-values.tsv` is refreshed every run and carries the current
@@ -4956,6 +4964,8 @@ def main():
                     parents_of.setdefault(row["qid"], [])
                     if row["value"] not in parents_of[row["qid"]]:
                         parents_of[row["qid"]].append(row["value"])
+                    into = wd_fathers if row["property"] == "P22" else wd_mothers
+                    into.setdefault(row["qid"], set()).add(row["value"])
     else:
         print("WARNING: out/wikidata/relations.tsv missing - duplicate guard is OFF")
 
@@ -5558,6 +5568,45 @@ def main():
     if dropped:
         print(f"excluded ids: {dropped} statement line(s) dropped "
               f"({', '.join(sorted(excluded))}) — never emitted, in any position")
+
+    # ---- NEVER give an item a SECOND father or mother -------------------------------
+    #
+    # **Emma, 2026-08-29, and her rule is narrower than "no duplicates":** *"my rule is not
+    # explicitly a rule saying that we can't create duplicates. It's a more specific one...
+    # We should not be adding the father property on something that already has a father
+    # linked, or the mother property, because the father property being duplicated or the
+    # mother property being duplicated gets flagged... this is the situation where it is
+    # intended to be flagged, and then the flagging can cause potential issues."*
+    #
+    # So the thing to stop is the STATEMENT, not the person. `P22` and `P25` carry a
+    # single-value constraint on Wikidata; a second one is what trips it, and a tripped
+    # constraint is what gets our work noticed.
+    #
+    # **No exception is built for two fathers.** She raised it and dismissed it herself --
+    # *"I think there's probably some exception for, I don't know, gay parents or something.
+    # This isn't it."* Adding an exception nobody asked for is the over-engineering this repo
+    # keeps having to undo.
+    #
+    # This sits beside the creation guard rather than replacing it. The guard holds the
+    # PERSON before they are minted; this holds the LINE whatever produced it, including the
+    # ledger-wide additions pass, which the guard never sees.
+    kept, second_parent = [], []
+    for ln in kept:
+        m = re.match(r"^(Q\d+)	(P22|P25)	(\S+)", ln)
+        if m:
+            subject, prop, value = m.groups()
+            held = (wd_fathers if prop == "P22" else wd_mothers).get(subject, set())
+            if held and value not in held:
+                while kept and kept[-1].lstrip().startswith("#"):
+                    kept.pop()
+                second_parent.append((subject, prop, value, sorted(held)))
+                continue
+        kept.append(ln)
+    if second_parent:
+        print(f"single-value guard: {len(second_parent)} P22/P25 line(s) dropped -- the item "
+              f"already has one, and a second trips the constraint")
+        for subject, prop, value, held in second_parent[:6]:
+            print(f"   {subject} {prop} -> {value}; already has {';'.join(held)}")
     lines = kept
 
     # **The SPINE P2600 block is NOT emitted.** Emma, 2026-08-29: *"I wanted the spine entity

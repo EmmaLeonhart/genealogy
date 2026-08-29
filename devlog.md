@@ -19066,3 +19066,31 @@ child direction, 1 in the new parent direction. 289 passed, 32 skipped.
 A parent whose children are all unlinked is still invisible, and `reports/rival-profiles.md`
 records the other half of that: the offline store cannot see the neighbourhood our own recent
 creations live in.
+
+## 2026-08-29 — her rule is about the STATEMENT, not the person
+
+**Emma, correcting the guard I had just built:** *"my rule is not explicitly a rule saying that we
+can't create duplicates. It's a more specific one... We should not be adding the father property on
+something that already has a father linked, or the mother property, because the father property
+being duplicated or the mother property being duplicated gets flagged... this is the situation where
+it is intended to be flagged, and then the flagging can cause potential issues."*
+
+`P22` and `P25` carry a single-value constraint. A second one trips it, and a tripped constraint is
+how the work gets noticed. So the thing to stop is the **line**, not the person.
+
+The single-value guard now runs last over the finished file: any `Q… P22 <v>` or `Q… P25 <v>` where
+the subject already holds a *different* value is dropped with its comment. It sits **beside** the
+creation guard rather than replacing it -- the creation guard holds a person before minting, this
+holds a line whatever produced it, including the ledger-wide additions pass the guard never sees.
+
+**No exception for two fathers.** She raised it and dismissed it in the same breath -- *"I think
+there's probably some exception for, I don't know, gay parents or something. This isn't it."*
+
+**It drops 0 today, and that is measured rather than assumed.** The lookups load **893,134** items
+with a father and **630,514** with a mother, so the guard is armed rather than vacuous; the batch
+simply has nothing to drop, because the creation guard had already held Sune Folkesson Folkunga,
+who was the only case. Those counts print on every run so a silently-empty lookup cannot hide.
+
+**Her other point, recorded rather than acted on:** *"these are the easiest people to do a zipper
+join on."* A person held because their child already names a parent item is a ready-made
+correspondence -- the held line in `reports/garborg-carry-forward.tsv` names both QIDs.
