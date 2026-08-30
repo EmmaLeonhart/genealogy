@@ -20219,3 +20219,32 @@ is the correct outcome under one-item-per-usage and is what her own five survivo
   `P25` reciprocal the single-value guard had dropped. The drops are now **recorded** in
   `reports/single-value-drops.tsv` and the test exempts exactly those subjects — a list of
   specific pairs, so the exemption cannot widen into "one-way links are fine".
+
+## 2026-08-30 — the three exports are filed; Bureätten coverage is complete at 251/251
+
+Her instruction: download the finished export and run the two that were blocked behind it.
+Geni allows one in flight and has no cancel, so they went in sequence.
+
+| download | style | seed | people |
+| --- | --- | --- | ---: |
+| `export-geni (70)` | Forest | `6000000227491932881` | 5,000 |
+| `export-geni (71)` | Forest | `6000000227464556886` Eva Walaas | 5,000 |
+| `export-geni (72)` | Ancestors | `6000000227464556886` Eva Walaas | 4,314 |
+
+**Two of them collide with files that already exist** — `bure-campaign/` holds a Forest and an
+Ancestors of that seed from 28 Aug. `CLAUDE.md` § *Never overwrite an existing `.ged`* makes
+that a filing question rather than a default, so it went to Emma; she chose
+`exports/fleshing-out/`, the precedent the same section names for a re-export of an already
+exported seed. They are date-suffixed and the 28 Aug originals are untouched. The placement
+loop refuses rather than overwrites if a destination exists.
+
+The re-take is not redundant: the Ancestors export returns **4,314** where 28 Aug returned
+4,309. Five people appeared in two days, which is the point of a refresh —
+`CLAUDE.md` § *The question is whether OUR TREE MATCHES GENI*.
+
+**Corpus: 599 GEDCOMs.** Zips filed beside them with one `.gitignore` line each, per the rule
+that an unlisted zip in `git status` is how a download announces itself.
+
+**`bure-coverage.py` re-run, as it must be after every export: 251 of 251 in the corpus, 0
+absent.** The Bureätten campaign's ending condition — *"once everyone is covered the campaign is
+over"* — is met.
