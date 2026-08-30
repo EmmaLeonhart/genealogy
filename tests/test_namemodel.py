@@ -502,7 +502,18 @@ def test_the_father_name_reaches_statements_for_and_changes_the_property():
                                        father_name=father_name)
         return [(p, v) for p, v, _q in lines]
 
-    assert props("") == [], "with no father the morphological patronymic has no item yet"
-    assert props("Gunder Olsen") == [], "stem matches his given name, so still a patronymic"
-    assert props("Hans Gundersen") == [(FAMILY_NAME, "Q656767")], (
+    # **Scoped to the GUNDERSEN token, which is what this test is about.** It asserted the
+    # whole statement list was empty, and that rested on `Anna` having no given-name item --
+    # incidental, and it stopped being true on 2026-08-30 when the name lookup started
+    # answering from the 823,907 name items in the local store rather than from the plan
+    # alone. `Anna` is `Q666578`, `Q11879590` *female given name*, and emitting it is a
+    # statement we were previously missing, not a regression.
+    def gundersen(father_name):
+        """Only the statements the GUNDERSEN token produces: its family item, or a patronym."""
+        return [(prop, value) for prop, value in props(father_name)
+                if value == "Q656767" or prop == PATRONYM]
+
+    assert gundersen("") == [], "with no father the morphological patronymic has no item yet"
+    assert gundersen("Gunder Olsen") == [], "stem matches his given name, so still a patronymic"
+    assert gundersen("Hans Gundersen") == [(FAMILY_NAME, "Q656767")], (
         "the father carries the same token, so it is an inherited surname")
