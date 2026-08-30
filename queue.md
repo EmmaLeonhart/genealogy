@@ -2264,30 +2264,29 @@ statements and the spines. Redacting content while keeping structure is the like
 **The memory ceiling is untouched by any of this** — the merge peaks at 16.8 GB against a 16 GB
 runner, so the synoptic tree still cannot be rebuilt in Actions without a larger runner.
 
-### Rebuild the tree, then build the QuickStatements and attach the file
+### LAST ITEM — run `scripts/rebuild-everything.py`, then attach the batch
 
 **Emma, 2026-08-29:** *"end of the queue is a rebuild of the tree and then after it is to build the
-quickstatements and attach the file"*
+quickstatements and attach the file"*, and then, on being shown it was five scripts in a fixed
+order: *"this explains why it's so hard: because it's not one script it's a bunch of scripts that
+you need to remember to run in the right order. Nope make it one script that always ends by calling
+the script that regenerates the quickstatements. This script is called as the last queue item."*
 
-**Why it matters more than a rebuild usually does.** `out/merged.ged` is **0 bytes** — two rebuild
-attempts were killed partway — and every derived CSV is from **24 Aug 18:28**. The whole Bure
-campaign landed *after* that, so its people are invisible to the batch generator:
+    python scripts/rebuild-everything.py
 
-- **Israel Hwasser** `Q5818420` / `6000000019777574162` is in
-  `exports/bure-campaign/export-Forest-6000000227475095829.ged` (28 Aug 11:35) with a full record,
-  and has **0 rows** in `derived-family.csv` and `display-names.csv`.
-- `Q141219067` carries `P1810 "Private"` where Geni now shows `<private> Dokken`, for the same
-  reason — three older exports say `Private`, the 28 Aug one says `<private> /Dokken/`.
+That is the whole item. It runs merge → display-names → derived family → derived facts → derived
+labels → pack → `--compose`, stops at the first failure rather than continuing on stale inputs, and
+ends with the batch. Then attach `reports/wikidata-garborg-day.qs`.
 
-So this is not cosmetic: until the rebuild runs, every person from the Bure campaign is missing
-from the ring, and the compliance audit's *"no relationship at all"* on 15 roster people cannot be
-acted on because their relatives are not in the derived tree.
+**Why it matters right now.** `out/merged.ged` is **0 bytes** (two rebuilds were killed) and every
+derived CSV is from **24 Aug 18:28**, while the Bure campaign landed **28 Aug**. So:
 
-**The order, and it is hers:**
+- **Israel Hwasser** `Q5818420` is in `exports/bure-campaign/export-Forest-6000000227475095829.ged`
+  with a full record and has **0 rows** in `derived-family.csv`. The whole campaign is invisible to
+  the batch generator.
+- `Q141219067` carries `P1810 "Private"` where Geni shows `<private> Dokken`, because three older
+  exports say `Private` and only the 28 Aug one says `<private> /Dokken/`.
+- The compliance audit's 15 relationship-less roster people cannot be acted on, because their
+  relatives are not in the derived tree.
 
-- `python -m genimerge merge -o out/merged.ged` — **run it alone**, it peaks near 17 GB.
-- `python scripts/build-display-names.py`, then `python scripts/derive-labels.py`. Running the
-  analysers is not running the generator: `derive-labels.py` READS `display-names.csv` and does not
-  build it, which is how a correction once survived two regenerations.
-- `python scripts/build-garborg-day.py --compose`
-- attach `reports/wikidata-garborg-day.qs` to the chat.
+**Run it alone.** Step 1 peaks near 17 GB and has been killed twice when something else was running.

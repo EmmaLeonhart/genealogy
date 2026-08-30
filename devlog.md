@@ -19706,3 +19706,24 @@ whether an item carries `P22` were both called blocked this session.
 **What survives:** the offline store is still the first place to look, because it is faster and
 costs Wikidata nothing — not because a query is forbidden. And batch where the API batches:
 `wbgetentities` takes 50 ids.
+
+## 2026-08-29 — one script for the whole rebuild chain
+
+**Emma, on being shown the rebuild was five scripts in a fixed order:** *"this explains why it's so
+hard: because it's not one script it's a bunch of scripts that you need to remember to run in the
+right order. Nope make it one script that always ends by calling the script that regenerates the
+quickstatements."*
+
+`scripts/rebuild-everything.py`: merge → display-names → derived family → derived facts → derived
+labels → pack → `build-garborg-day.py --compose`.
+
+**The ordering is the point, and getting it wrong fails silently.** `derive-labels.py` reads
+`display-names.csv` and does **not** build it — `CLAUDE.md` records a correction that survived two
+regenerations for exactly that reason. Holding that in a human's head is what she is objecting to.
+
+**It stops at the first failure** rather than running the rest against stale inputs, which is how a
+half-rebuilt chain produced `P1810 "Private"` for a man Geni now calls `<private> Dokken`.
+
+**`--skip-merge` refuses when `out/merged.ged` is missing or empty** — verified, it fires today.
+Rebuilding the derived layer from an empty tree yields empty CSVs that look entirely valid, which
+is the worst available failure.
