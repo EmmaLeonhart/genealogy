@@ -19294,3 +19294,24 @@ So the infrastructure is small and bounded, not a research project: 45 tokens st
 current pipeline and full `ja`/`zh` coverage of everyone queued. **Readings are never invented** --
 `reports/cjk-romanisation.md` is built by reading each form off a Wikidata name item that carries
 both scripts, and any table growth has to come the same way.
+
+## 2026-08-29 — the romanisation rebuild: +2,112 people, +715 romanised
+
+Re-ran `build-cjk-romanisation.py` after the *"no Latin label", not "no label"* fix.
+
+| | before | after |
+| --- | ---: | ---: |
+| people with a CJK name and no Latin label | 36,625 | **38,737** |
+| culture settled | 35,661 | **37,751** |
+| zh romanised | 12,695 | **13,410** |
+| ja romanised | 228 | 226 |
+
+**+2,112 people entered the input and +715 were romanised.** Worth stating plainly: I had measured
+**13,872** people whose `label_en` holds the CJK string, and the input grew by far less than that.
+The reason is that this script needs a value in the `cjk_names` column, not merely a CJK `label_mul`
+-- only 2,112 of the 13,872 have one. The other ~11,700 carry a CJK label with no separate CJK name
+recorded, and they remain outside this campaign. That is a second gap, not the one just closed, and
+it is not being fixed on a guess.
+
+`ja` went 228 -> 226, which is noise from whole-name item matching rather than a regression worth
+chasing.
