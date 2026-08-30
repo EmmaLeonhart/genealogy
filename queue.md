@@ -1885,6 +1885,21 @@ transliteration data, whatever it holds — into this repo, and add no runtime d
 state file, and no network call to it. It is not checked out beside `geni`, so the first step is
 asking her where it is.
 
+## Resolve names against the STORE'S name items, not against the ones our people already use
+
+`measure-name-resolution.py` asks *which name items do people in our store already point at*
+(132,569) and its answer is used as *which name items exist*. The store actually holds
+**823,907** name items — `out/wikidata/name-items-in-store.tsv.gz`,
+`scripts/extract-name-items.py`.
+
+**5,212 of the 14,351 tokens `reports/name-item-plan.csv` would create already have an item of
+the right kind on our own disk** — 36.3%, including `Thomas`, `Hans`, `Sarah`, `Henry`, `陳`,
+`藤原`. Every one is a duplicate waiting to be made, and `Tunheim` is the one that already was.
+
+Point the resolver at the new index, keeping `CLAUDE.md` § *One name item per USAGE* (kind is
+never collapsed) and the diacritic rule (case folds, nothing else). Then re-run the plan and
+report how `create` / `link` / ambiguous move.
+
 ## The NN path drops the birth-name alias the named path emits
 
 Found while answering the `Q141205924` label question. The named branch of

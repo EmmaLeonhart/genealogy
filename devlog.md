@@ -19927,3 +19927,33 @@ Vilarinho. The population is **4,655**.
 
 `scripts/check-name-items-live.py` is the census that turns the sample into the list. It is
 committed unrun. Analysis only, per the item: the existence check is unchanged.
+
+## 2026-08-30 — we had 823,907 name items on disk and were resolving against 132,569 of them
+
+Her question on Tunheim: *"So did we have that name item downloaded and just decided not to use
+it because nobody in our store pointed to it?"* Yes.
+
+`Q36927172` *Tunheim* is in `wikidata/items/items-01552.jsonl.gz` with `P31 Q101352` *family
+name* stated. `measure-name-resolution.py` builds its universe from `reports/name-items.csv`,
+which is name items **some person in our store already links to** — so an item nobody links to
+is invisible however completely we hold it.
+
+`scripts/extract-name-items.py` asks the store the other question. One pass, 294 seconds, no
+network: **2,247,041 items scanned, 823,907 name items found** — 907,709 distinct family-name
+labels, 199,041 given, 1,871 patronymic.
+
+Joined against `reports/name-item-plan.csv`:
+
+| | tokens |
+| --- | ---: |
+| the plan would `create` | 14,351 |
+| **already have an item of the right kind in our own store** | **5,212 (36.3%)** |
+| family | 3,090 of 6,040 |
+| given | 2,119 of 6,692 |
+| patronymic | 3 of 1,619 |
+
+The top of the duplicate list is not obscure: `Thomas` (2,015 bearers), `Hans` (1,587),
+`Sarah` (1,358), `Henry` (1,284), `陳` (3,247), `曾` (2,263), `藤原` (1,128).
+
+Kind is not collapsed, per § *One name item per USAGE*, and labels fold on case only, per the
+`María`/`Mária`/`Marià` rule. Nothing is changed in the resolver yet — that is the queued step.
