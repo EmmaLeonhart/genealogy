@@ -1944,6 +1944,13 @@ So the `P144` *based on* pointed at a father whose own given name does not gener
 patronymic, and whose patronymic it actually was — which is evidence the father test either did
 not run or did not decide.
 
+## `Q141223488` and the item merged into it were both completely erroneous
+
+Emma, 2026-08-30, adding to the patronymic complaint above: *"https://www.wikidata.org/wiki/Q141223488
+and the one merged into it were both just completely erroneous too"*.
+
+Two items, both wrong, one merged into the other. Not investigated.
+
 ## Always last — pinned to the very end of the file
 
 **Bullets, not letters.** These were `A.` and `B.`; `CLAUDE.md` § *Queue items are BULLET POINTS*
