@@ -19563,3 +19563,40 @@ folds accented **vowels** to their base (`á í ó ú è â ã ë`, ~51,700 occu
 and deliberately refuses accented **consonants** (`ñ ç ł ć š č`), where the diacritic changes the
 sound and folding would invent a reading. Table 3,262 → 4,018; people in the carry-forward with no
 `ja`/`zh` went 47 → 16.
+
+## 2026-08-29 — the CJK label item: 185 → 247 of 257 people get `ja`/`zh`
+
+Her item asked three things: analyse why new items get no Japanese or Chinese label, give every
+individual a Latin `mul` label, and give every individual all their CJK names.
+
+**Latin `mul`: already satisfied.** All 24 creations in the current batch carry `Lmul` and `Len`,
+and **0** have a `mul` without a Latin character.
+
+**The analysis.** A name is rendered only if **every** token is in the table — *partial is worse
+than absent* — so one unlisted token costs a person both labels. The table was 3,262 entries.
+
+**The infrastructure, in three steps, each measured:**
+
+| | pool with `ja`/`zh` | blocked |
+| --- | ---: | ---: |
+| start | 185 | 47 |
+| `extend-transliterations.py --two-hops` | 218 | 39 |
+| Swedish `ö`/`ä` taught to `translit_no.py` | 241 | 16 |
+| accented vowels folded + punctuation stripped for lookup | **247** | **10** |
+
+Table 3,262 → 4,018.
+
+- **`translit_no.py` is a Norwegian reader and had no rule for `ö`/`ä`**, so every Swedish name
+  silently lost both labels — Mörner, Köhler, Törnflycht, Gennäs.
+- **Accented vowels fold to their base** (~51,700 occurrences); accented **consonants** do not,
+  because `ñ`, `ł`, `š` change the sound and folding would invent a reading.
+- **`Christina,` killed a whole label on a trailing comma.** Stripped for the lookup only; the
+  label itself is untouched.
+
+**The remaining 10 are not transliteration gaps** and are left: `<private>`/`Private` (markers,
+which the pipeline `nn_form`s before this point, so these are likely an artefact of measuring the
+raw `label_mul`), quoted nicknames and epithets (`"The`, `Victorious"`, `"Sally"`), and one
+genuinely non-Latin `Карлов`.
+
+**Also: `Q12598947` Buyeo Taebi and `Q19657284` Buyeo Deokjang, which she named in the item, are
+inside the October kluge** and cannot be touched until then.

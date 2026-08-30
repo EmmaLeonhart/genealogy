@@ -705,9 +705,14 @@ def label_in(label, table):
     """
     from labels import transliterate_token
 
+    # **Punctuation stuck to a token is not part of the name.** `Christina, Sofia Carlsdotter`
+    # tokenised to `Christina,` with the comma attached, which is in no table and therefore
+    # killed the whole label -- one stray comma costing a person both their `ja` and `zh`.
+    # Stripped for the LOOKUP only; the label itself is untouched, so a name that genuinely
+    # carries punctuation still reads as it does.
     ja, zh = [], []
     for token, _usage, _o in classify(label):
-        a, b = transliterate_token(token, table)
+        a, b = transliterate_token(token.strip(",;:"), table)
         if a is None:
             return None, None
         ja.append(a)

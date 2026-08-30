@@ -64,11 +64,6 @@ pinned by `tests/test_garborg_day_batch.py::test_a_marker_beside_a_real_name_sti
 
 ---
 
-- 
-
-> analyze why new items are not being created with Japanese and Chinese labels already pesent, and to go over the census and build infrastructure so that every indiviual is created with a latin alphabet mul label (a few like Buyeo Taebi (Q12598947) and Buyeo Deokjang (Q19657284) were not), and every individual is at least made with all of the cjk names and others. Since remember that every individual is supposed to have the relative script universality beforehand and it is absolutely essential to cover all cjk, if any script is the only present script for the name of somethin in he geni synopic tree then it must be part of the default lablels we make on every item
-
----
 
 - 
 
