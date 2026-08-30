@@ -294,14 +294,31 @@ def test_a_label_is_never_written_over_an_item_that_already_has_one():
     preserved = {m.group(1) for m in
                  (re.match(r"^(Q[1-9][0-9]*)\tAmul\t", ln) for ln in lines()) if m}
     cjk = _cjk_block_qids()
+
+    # **Setting a label an item does NOT have overwrites nothing, and that is now much of the
+    # batch.** Emma's `mul` specification of 2026-08-30 assigns the consensus Latin label to
+    # `mul`, and most of these items carry no `mul` at all — `Q1036858`, `Q5975022`,
+    # `Q1814297`. Read from `reports/garborg-live-labels.tsv`, written by the same fetch as the
+    # live statements, so this is evidence and not an exemption list. An item that DOES hold
+    # the language still needs its `Amul` rescue, which is the property being pinned.
+    held = {}
+    live = REPO / "reports" / "garborg-live-labels.tsv"
+    if live.exists():
+        with open(live, encoding="utf-8") as f:
+            for row in csv.DictReader(f, delimiter="\t"):
+                held.setdefault(row["qid"], set()).add(row["lang"])
+
     bad = []
     for ln in lines():
         m = re.match(r"^(Q[1-9][0-9]*)\tL(en|mul)\t", ln)
         if not m:
             continue
-        if m.group(2) == "mul" and m.group(1) in cjk:
+        qid, lang = m.group(1), m.group(2)
+        if lang == "mul" and qid in cjk:
             continue
-        if m.group(1) in preserved:
+        if qid in preserved:
+            continue
+        if qid in held and lang not in held[qid]:
             continue
         bad.append(ln)
     assert not bad, (
@@ -778,3 +795,37 @@ def test_no_redaction_marker_reaches_the_P1810_qualifier():
     assert not bad, f"a redaction marker reached P1810: {bad[:4]}"
     assert any("\tP1810\t" in ln for ln in lines()), (
         "P1810 vanished entirely -- named people must still carry what Geni renders")
+
+
+def test_no_label_line_is_ever_empty():
+    """`LAST Lmul ""` creates an item nobody can find. `NN` is the floor.
+
+    `6000000184732963823` is recorded on Geni as a bare `1 NAME` with nothing after it, so the
+    label chain produced `""` and the batch carried an empty `Lmul` on a CREATE. `CLAUDE.md`
+    § *`NN` is PRESERVED in `mul`*: *"NN is always preserved in the multi-language label."*
+    An unnamed person gets the marker, never nothing.
+    """
+    empty = [ln for ln in lines() if re.search(r'\t[LAD][a-z][a-z-]*\t""\s*$', ln)]
+    assert not empty, f"empty label/alias lines: {empty[:5]}"
+
+
+def test_the_mul_consensus_puts_the_geni_form_in_an_alias_not_the_label():
+    """Emma's specification, 2026-08-30: the consensus Latin label becomes `mul`, and Geni's
+    rendering becomes an `Amul` alias -- *"the Geni one would have been added as the Geni
+    display name, the Geni display name qualifier subject named as, and it would have been
+    added as a mul alias."*
+
+    `Q6330080` is the worked case in the batch this was written against: `Lmul "Elof Steuch"`
+    with `Amul "Elof Steuchius till Duveke"`, so the territorial form is findable and is not
+    the name.
+
+    **And never a CJK alias** -- her answer when asked: *"No ja/zh alias at all."*
+    """
+    cjk_alias = [ln for ln in lines() if re.match(r'^(?:LAST|Q\d+)\tA(?:ja|zh|ko)\t', ln)]
+    assert not cjk_alias, f"the Geni form must not become a ja/zh alias: {cjk_alias[:4]}"
+
+    # Where a `mul` label is set on an existing item, it is a real name, not a marker.
+    for ln in lines():
+        m = re.match(r'^Q\d+\tLmul\t"([^"]*)"', ln)
+        if m:
+            assert m.group(1).strip(), f"empty mul on an existing item: {ln}"

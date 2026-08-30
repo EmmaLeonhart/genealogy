@@ -4,61 +4,42 @@
 #   batch and be limited to a count of 15 labels added per batch". A label set
 #   at CREATION time is neither counted nor capped -- "a label added during item
 #   creation is good".
-#   729 more are held for a later run; a repeat is a no-op, so nothing is lost.
+#   1172 more are held for a later run; a repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
-#   set the zh label to "拉斯穆斯·谢蒂尔松·赫勒"
-Q141200067	Lzh	"拉斯穆斯·谢蒂尔松·赫勒"
-#   Q141198831 Peder Larsen Mjølhus: set the ja label to "ペーダー・ラーセン・ムヨルフス"
-Q141198831	Lja	"ペーダー・ラーセン・ムヨルフス"
-#   set the zh label to "彼泽·拉森·姆约尔胡斯"
-Q141198831	Lzh	"彼泽·拉森·姆约尔胡斯"
-#   Q141219069 Søren Sørenson Gjesdal: set the ja label to "セーレン・ソレンソン・イェスダール"
-Q141219069	Lja	"セーレン・ソレンソン・イェスダール"
-#   set the zh label to "索伦·索雷恩松·耶斯达尔"
-Q141219069	Lzh	"索伦·索雷恩松·耶斯达尔"
-#   Q141216471 Gunnbjørn Gunnbjørnson Rossavik: set the ja label to "グンンブヨルン・グンンブヨルンソン・ロサヴィク"
-Q141216471	Lja	"グンンブヨルン・グンンブヨルンソン・ロサヴィク"
-#   set the zh label to "贡布约尔恩·贡布约尔恩松·罗萨维克"
-Q141216471	Lzh	"贡布约尔恩·贡布约尔恩松·罗萨维克"
-#   Q141198435 Jon Nilsson Espedal: set the ja label to "ジョン・ニルソン・エスペダール"
-Q141198435	Lja	"ジョン・ニルソン・エスペダール"
-#   set the zh label to "乔恩·尼尔松·埃斯佩达尔"
-Q141198435	Lzh	"乔恩·尼尔松·埃斯佩达尔"
-#   Q141198503 Tore Erikson Håland: set the ja label to "トーレ・エリクソン・ホーランド"
-Q141198503	Lja	"トーレ・エリクソン・ホーランド"
-#   set the zh label to "托雷·埃里克松·霍兰"
-Q141198503	Lzh	"托雷·埃里克松·霍兰"
-#   Q10608167 Olaus Petri Niurenius: set the ja label to "オラウス・ペトリ・ニウレニウス"
-Q10608167	Lja	"オラウス・ペトリ・ニウレニウス"
-#   set the zh label to "奥劳斯·佩特里·尼乌雷尼乌斯"
-Q10608167	Lzh	"奥劳斯·佩特里·尼乌雷尼乌斯"
-#   Q141205932 Olof Timmerman: set the ja label to "オロフ・ティメルマン"
-Q141205932	Lja	"オロフ・ティメルマン"
-#   set the zh label to "奥洛夫·蒂梅尔曼"
-Q141205932	Lzh	"奥洛夫·蒂梅尔曼"
+#   Q141206080 Peder Tormodsen Foss: add a mul alias "Peder Tormodsen Foss"
+Q141206080	Amul	"Peder Tormodsen Foss"
+#   Q1345250 Petrus Königsson Kenicius: set the mul label to "Petrus Kenicius"
+Q1345250	Lmul	"Petrus Kenicius"
+#   add a mul alias "Petrus Königsson Königsson"
+Q1345250	Amul	"Petrus Königsson Königsson"
+#   Q141216369 Gard Toresson Talgje: add a mul alias "Alderman Gard Talgje"
+Q141216369	Amul	"Alderman Gard Talgje"
+#   Q4981287 Benedicta Sunesdotter Folkungaätten: add a mul alias "Benedicta Sunesdotter Folkungaätten"
+Q4981287	Amul	"Benedicta Sunesdotter Folkungaätten"
+#   set the mul label to "Benedicta of Bjelbo"
+Q4981287	Lmul	"Benedicta of Bjelbo"
+#   Q141216653 Torger Torgerson Stokka: add a mul alias "Torger Torgerson Skorve"
+Q141216653	Amul	"Torger Torgerson Skorve"
+#   Q456456 Matthias Petri Steuchius: set the mul label to "Mathias Steuchius"
+Q456456	Lmul	"Mathias Steuchius"
+#   add a mul alias "Archbishop Matthias Petri Steuchius"
+Q456456	Amul	"Archbishop Matthias Petri Steuchius"
+#   Q943803 Uno von Troil: set the mul label to "Uno von Troil"
+Q943803	Lmul	"Uno von Troil"
+#   add a mul alias "Uno Troilius"
+Q943803	Amul	"Uno Troilius"
+#   Q6218214 Michaël Törnflycht till Hässelbyholm: add a mul alias "Michaël Törne till Hässelbyholm"
+Q6218214	Amul	"Michaël Törne till Hässelbyholm"
+#   Q141198414 Ingeborg Olsdatter Sandsmark: add a mul alias "Ingeborg Olsdatter Ueland"
+Q141198414	Amul	"Ingeborg Olsdatter Ueland"
+#   Q141200019 Ola Olsen Vaule: add a mul alias "Ola Olsen Grøtheim"
+Q141200019	Amul	"Ola Olsen Grøtheim"
+#   Q141219336 Tore Sebjørnsson Talgje, d.y: add a mul alias "Tore Sebjørnsson Talgje, d.y"
+Q141219336	Amul	"Tore Sebjørnsson Talgje, d.y"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
 #    QIDs -- two items minted in one batch cannot point at each other.
-
-# create a new item
-CREATE
-#   the item just created: set the mul label to ""
-LAST	Lmul	""
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581072 female
-LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000184732963823
-LAST	P2600	"6000000184732963823"
-#   P26 spouse = Q141216500 NN Private
-LAST	P26	Q141216500	S2600	"6000000184732963823"
-#   P40 child = Q141223549 NN Private
-LAST	P40	Q141223549	S2600	"6000000184732963823"
-#   Q141216500 NN Private: P26 spouse = the item just created
-Q141216500	P26	LAST	S2600	"6000000184732963823"
-#   Q141223549 NN Private: P25 mother = the item just created
-Q141223549	P25	LAST	S2600	"6000000184732963823"
 
 # create a new item
 CREATE
@@ -441,10 +422,6 @@ LAST	Amul	"Pernel Velaine Shern"
 LAST	Lja	"ペルネル・ヴェライネ・トゥンヘイム"
 #   set the zh label to "佩尔内尔·韦拉伊内·通海姆"
 LAST	Lzh	"佩尔内尔·韦拉伊内·通海姆"
-#   add a ja alias "ペルネル・ヴェライネ・スヘルン"
-LAST	Aja	"ペルネル・ヴェライネ・スヘルン"
-#   add a zh alias "佩尔内尔·韦拉伊内·斯赫尔恩"
-LAST	Azh	"佩尔内尔·韦拉伊内·斯赫尔恩"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -511,31 +488,6 @@ LAST	P570	+1880-03-27T00:00:00Z/11	S2600	"6000000005609547535"
 LAST	P26	Q141223503	S2600	"6000000005609547535"
 #   Q141223503 Anne Berta Osmundsdatter Nese: P26 spouse = the item just created
 Q141223503	P26	LAST	S2600	"6000000005609547535"
-
-# create a new item
-CREATE
-#   the item just created: set the en label to "Thomas Linder"
-LAST	Len	"Thomas Linder"
-#   set the mul label to "Thomas Linder"
-LAST	Lmul	"Thomas Linder"
-#   add a mul alias "Thomas Johansson"
-LAST	Amul	"Thomas Johansson"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581097 male
-LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000012501208346 Thomas Linder, qualified P1810 subject named as Thomas Johansson
-LAST	P2600	"6000000012501208346"	P1810	"Thomas Johansson"
-#   P569 date of birth = +1754-07-05T00:00:00Z/11
-LAST	P569	+1754-07-05T00:00:00Z/11	S2600	"6000000012501208346"
-#   P570 date of death = +1785-01-15T00:00:00Z/11
-LAST	P570	+1785-01-15T00:00:00Z/11	S2600	"6000000012501208346"
-#   P40 child = Q5955392 Johan Anders Johansson Linder
-LAST	P40	Q5955392	S2600	"6000000012501208346"
-#   Q5955392 Johan Anders Johansson Linder: P22 father = the item just created
-Q5955392	P22	LAST	S2600	"6000000012501208346"
-#   the item just created: P735 given name = Q16428906
-LAST	P735	Q16428906
 #   Q141223503 Anne Berta Osmundsdatter Nese: P25 mother = Q141223553 Ragnhild Kristine Øystensdatter Nese
 Q141223503	P25	Q141223553	S2600	"6000000005609547544"
 #   P735 given name = Q564684 Anne, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
@@ -566,8 +518,6 @@ Q141223502	P26	Q141223518	S2600	"6000000018604581410"
 Q141223548	P26	Q141223547	S2600	"6000000019178738670"
 #   P5056 patronym or matronym = Q130233015 Nilsson
 Q141223548	P5056	Q130233015
-#   Q138474188 Hans Syvertsen Nyvold: P735 given name = Q632842
-Q138474188	P735	Q632842
 #   Q141223523 Johan Fredrik Wedberg: P40 child = Q141223506 Beda Elvira Wedberg
 Q141223523	P40	Q141223506	S2600	"6000000021652410546"
 #   P735 given name = Q10989273 Johan, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
@@ -576,34 +526,6 @@ Q141223523	P735	Q10989273	P1545	"1"	P7452	Q3409033
 Q141223523	P735	Q4926491	P1545	"2"	P3831	Q245025
 #   P734 family name = Q54444784
 Q141223523	P734	Q54444784
-#   Q141189111 Tørres Jonasson Hegre: P735 given name = Q12008164
-Q141189111	P735	Q12008164
-#   P734 family name = Q36955626
-Q141189111	P734	Q36955626
-#   Q141223411 Anna Mårtensdotter: P735 given name = Q666578 Anna
-Q141223411	P735	Q666578
-#   Q141217398 Måns Moge: P734 family name = Q12796950
-Q141217398	P734	Q12796950
-#   Q141217396 Maria No name: P735 given name = Q325872 Maria, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
-Q141217396	P735	Q325872	P1545	"1"	P7452	Q3409033
-#   P735 given name = Q21148356, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q141217396	P735	Q21148356	P1545	"2"	P3831	Q245025
-#   Q141199822 Anna Jönsdotter: P735 given name = Q666578 Anna
-Q141199822	P735	Q666578
-#   Q141189058 Brita Thomasdotter: P735 given name = Q918013
-Q141189058	P735	Q918013
-#   Q141199826 Anna Maria Samuelsdtr. Tunheim: P735 given name = Q666578 Anna, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
-Q141199826	P735	Q666578	P1545	"1"	P7452	Q3409033
-#   P735 given name = Q325872 Maria, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-Q141199826	P735	Q325872	P1545	"2"	P3831	Q245025
-#   P734 family name = Q36927172
-Q141199826	P734	Q36927172
-#   Q141200112 Tollef Pederson Tunheim: P734 family name = Q36927172
-Q141200112	P734	Q36927172
-#   Q141223417 Elen Malena Halvorsdtr Tunheim: P26 spouse = Q141223434 Samuel Aslakson Tunheim
-Q141223417	P26	Q141223434	S2600	"6000000029983713844"
-#   P734 family name = Q36927172
-Q141223417	P734	Q36927172
 #   Q141216494 N.N. Jacobsdtr. Koll: P734 family name = Q21510541
 Q141216494	P734	Q21510541
 #   Q141189105 Sophia Birgitta Gundersen: P735 given name = Q2302787 Sophia, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename

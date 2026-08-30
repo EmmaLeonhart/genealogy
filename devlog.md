@@ -20358,3 +20358,43 @@ qualifier altogether.
 
 **Also settled, from the same exchange:** the Geni display name goes to `P1810` and an `Amul`
 alias, and **never to a `ja`/`zh` alias** — her answer, *"No ja/zh alias at all"*.
+
+## 2026-08-30 — the `mul` consensus, wired
+
+Emma's specification: observe whether the person *"has an English-language label that is in
+Latin characters, or they have a consistent Latin label across two or more languages"*, assign
+that as `mul`, give it to `en` if `en` lacks it, derive `ja`/`zh` **from the `mul`**, and put the
+Geni rendering in `P1810` and an `Amul` alias. And explicitly: *"The transliteration of the Geni
+display name does not go into Japanese or Chinese aliases"* — asked directly, *"No ja/zh alias
+at all."*
+
+`consensus_latin_label()` implements it: `en` in Latin script first, else the Latin string **two
+or more** languages agree on. One language is not a consensus, and a non-Latin `en` does not
+qualify; both are pinned.
+
+**It works and the batch shows it.** `Q6330080` gets `Lmul "Elof Steuch"` with
+`Amul "Elof Steuchius till Duveke"` — the territorial form becomes findable instead of becoming
+the name. `Q469962`: `Lmul "Sophie Piper"`, `Amul "Eva Sophia Sofia von Fersen"`.
+
+**And she was right that this needs no network.** `Q6161733` is in the store with 18 labels,
+`en` and `sv` both `Carl Fredrik Piper`. Only items she created after the download — like
+`Q141223549` — are absent from it, which is what the live refresh is for. My claim that I
+lacked all-language labels was wrong.
+
+**Three defects the run exposed, none of them cosmetic:**
+
+* `LAST Lmul ""`. `6000000184732963823` is recorded on Geni as a bare `1 NAME` with nothing
+  after it, so the chain produced an empty label and would have created an item nobody can
+  find. `NN` is the floor — `CLAUDE.md` § *`NN` is PRESERVED in `mul`*.
+* **`Aja`/`Azh` carrying our own transliteration** — `ペルネル・ヴェライネ・スヘルン`. The rule
+  always permitted the alias only for a **non-Latin birth form** *"which cannot live in `mul`"*;
+  this was emitting a reading we invented for a Latin name. Now it fires only where the birth
+  name is genuinely non-Latin, and then it is the name itself.
+* `test_a_label_is_never_written_over_an_item_that_already_has_one` fired on the new `Lmul`
+  lines. Correctly, on its own terms — and the reason they are safe is that those items hold no
+  `mul` at all, which the test now reads from `reports/garborg-live-labels.tsv` rather than
+  being told. An item that does hold the language still needs its `Amul` rescue.
+
+**The collision hold is in.** Two creations would have been refused for a taken
+label+empty-description pair — a bare `NN` and `Thomas Linder` — so they are carried, not
+described. The batch now pre-flights at **0 collisions over 16 creations**.

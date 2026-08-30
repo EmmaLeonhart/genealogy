@@ -33,28 +33,6 @@ Q141189093	P5056	LAST	P144	Q141178199	S2600	"6000000022418305015"
 #   Q141189091 Ole Nicolai Bergersen: P5056 patronym or matronym = the item just created, qualified P144 based on Q141168797 Christian Frederik Bergersen
 Q141189091	P5056	LAST	P144	Q141168797	S2600	"6000000055822412855"
 
-# Olsen -- patronymic, 7 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Olsen"
-LAST	Len	"Olsen"
-#   set the mul label to "Olsen"
-LAST	Lmul	"Olsen"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   Q141200019 Ola Olsen Vaule: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189088 Ola Knutsen Grøtheim
-Q141200019	P5056	LAST	P144	Q141189088	S2600	"6000000002989071216"
-#   Q141169072 Ådne Olsen Garborg: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189088 Ola Knutsen Grøtheim
-Q141169072	P5056	LAST	P144	Q141189088	S2600	"6000000003492005161"
-#   Q141205900 Bertrand Olav Olsen Vigdel: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189070 John Jonassen Hegre
-Q141205900	P5056	LAST	P144	Q141189070	S2600	"6000000006146870818"
-#   Q141200074 Rasmus Olsen Bø: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189088 Ola Knutsen Grøtheim
-Q141200074	P5056	LAST	P144	Q141189088	S2600	"6000000007744183945"
-#   Q141216380 Hans Olsen Grøtheim: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189088 Ola Knutsen Grøtheim
-Q141216380	P5056	LAST	P144	Q141189088	S2600	"6000000008176954243"
-#   Q141199930 Knut Olsen Gudmestad: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189088 Ola Knutsen Grøtheim
-Q141199930	P5056	LAST	P144	Q141189088	S2600	"6000000019668338861"
-
 # Jonsdatter -- patronymic, 6 bearer(s) in the batches
 # create a new item
 CREATE
@@ -76,6 +54,28 @@ Q141189071	P5056	LAST	P144	Q141198435	S2600	"6000000005609425388"
 Q141223533	P5056	LAST	P144	Q141180408	S2600	"6000000038211894304"
 #   Q141189062 Cecilie Jonsdatter: P5056 patronym or matronym = the item just created, qualified P144 based on Q116150299 Jon Reinmodsen
 Q141189062	P5056	LAST	P144	Q116150299	S2600	"6000000180296055830"
+
+# Olsen -- patronymic, 6 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Olsen"
+LAST	Len	"Olsen"
+#   set the mul label to "Olsen"
+LAST	Lmul	"Olsen"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   Q141200019 Ola Olsen Vaule: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189088 Ola Knutsen Grøtheim
+Q141200019	P5056	LAST	P144	Q141189088	S2600	"6000000002989071216"
+#   Q141169072 Ådne Olsen Garborg: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189088 Ola Knutsen Grøtheim
+Q141169072	P5056	LAST	P144	Q141189088	S2600	"6000000003492005161"
+#   Q141205900 Bertrand Olav Olsen Vigdel: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189070 John Jonassen Hegre
+Q141205900	P5056	LAST	P144	Q141189070	S2600	"6000000006146870818"
+#   Q141200074 Rasmus Olsen Bø: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189088 Ola Knutsen Grøtheim
+Q141200074	P5056	LAST	P144	Q141189088	S2600	"6000000007744183945"
+#   Q141216380 Hans Olsen Grøtheim: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189088 Ola Knutsen Grøtheim
+Q141216380	P5056	LAST	P144	Q141189088	S2600	"6000000008176954243"
+#   Q141199930 Knut Olsen Gudmestad: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189088 Ola Knutsen Grøtheim
+Q141199930	P5056	LAST	P144	Q141189088	S2600	"6000000019668338861"
 
 # Rasmusdatter -- patronymic, 6 bearer(s) in the batches
 # create a new item
@@ -121,24 +121,6 @@ Q141189078	P734	LAST	S2600	"6000000224702528843"
 #   Q141189077 Lars Bernhard Kristiansen Sør-Reime: P734 family name = the item just created
 Q141189077	P734	LAST	S2600	"6000000224702710821"
 
-# Gennäs -- family, 5 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Gennäs"
-LAST	Len	"Gennäs"
-#   set the mul label to "Gennäs"
-LAST	Lmul	"Gennäs"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   Q5580888 Erik Gustaf Boije af Gennäs: P734 family name = the item just created
-Q5580888	P734	LAST	S2600	"6000000006127120913"
-#   Q5580881 Carl Gustaf Boije af Gennäs: P734 family name = the item just created
-Q5580881	P734	LAST	S2600	"6000000011536457635"
-#   Q141219062 Hedvig Ulrika Boije af Gennäs: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
-Q141219062	P734	LAST	P3831	Q28418670	S2600	"6000000012888307497"
-#   Q5580892 Fredrik Carl Boije af Gennäs: P734 family name = the item just created
-Q5580892	P734	LAST	S2600	"6000000020865415341"
-
 # Hansdatter -- patronymic, 5 bearer(s) in the batches
 # create a new item
 CREATE
@@ -158,22 +140,6 @@ Q141199856	P5056	LAST	P144	Q141205911	S2600	"6000000007896387570"
 Q141216634	P5056	LAST	P144	Q141216381	S2600	"6000000009127909254"
 #   Q141199918 Kirsten Hansdatter Grøtheim: P5056 patronym or matronym = the item just created, qualified P144 based on Q141216381 Hans Rasmussen Låge-Håland
 Q141199918	P5056	LAST	P144	Q141216381	S2600	"6000000087451897836"
-
-# Høle -- family, 5 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Høle"
-LAST	Len	"Høle"
-#   set the mul label to "Høle"
-LAST	Lmul	"Høle"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   Q141200067 Rasmus Kjetilson Høle: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
-Q141200067	P734	LAST	P3831	Q2507958	S2600	"6000000003095034915"
-#   P734 family name = the item just created
-Q141200067	P734	LAST	S2600	"6000000003095034915"
-#   Q141180412 Marta Rasmusdatter Li: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
-Q141180412	P734	LAST	P3831	Q2507958	S2600	"6000000005609534550"
 
 # Morlanda -- family, 5 bearer(s) in the batches
 # create a new item
@@ -213,19 +179,55 @@ Q141216383	P5056	LAST	S2600	"6000000014100949863"
 #   Q141217392 Larine Eriksdatter Heigre: P5056 patronym or matronym = the item just created, qualified P144 based on Q141198393 Erik Erikson Stangeland
 Q141217392	P5056	LAST	P144	Q141198393	S2600	"6000000201256773828"
 
-# 233 more name items are needed and wait for a later
+# Fersen -- patronymic, 4 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Fersen"
+LAST	Len	"Fersen"
+#   set the mul label to "Fersen"
+LAST	Lmul	"Fersen"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   Q469962 Eva Sophia Sofia von Fersen: P5056 patronym or matronym = the item just created
+Q469962	P5056	LAST	S2600	"1551393"
+#   Q455071 Hans Axel "Den Yngre" von Fersen: P5056 patronym or matronym = the item just created
+Q455071	P5056	LAST	S2600	"6000000001515418125"
+#   Q3129338 Hedvig Eleonora von Fersen: P5056 patronym or matronym = the item just created
+Q3129338	P5056	LAST	S2600	"6000000008778922864"
+#   Q19312912 Fabian Reinhold von Fersen: P5056 patronym or matronym = the item just created
+Q19312912	P5056	LAST	S2600	"6000000008778928032"
+
+# Gennäs -- family, 4 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Gennäs"
+LAST	Len	"Gennäs"
+#   set the mul label to "Gennäs"
+LAST	Lmul	"Gennäs"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   Q5580888 Erik Gustaf Boije af Gennäs: P734 family name = the item just created
+Q5580888	P734	LAST	S2600	"6000000006127120913"
+#   Q5580881 Carl Gustaf Boije af Gennäs: P734 family name = the item just created
+Q5580881	P734	LAST	S2600	"6000000011536457635"
+#   Q141219062 Hedvig Ulrika Boije af Gennäs: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
+Q141219062	P734	LAST	P3831	Q28418670	S2600	"6000000012888307497"
+#   Q5580892 Fredrik Carl Boije af Gennäs: P734 family name = the item just created
+Q5580892	P734	LAST	S2600	"6000000020865415341"
+
+# 226 more name items are needed and wait for a later
 # run -- 10 a day is her cap, not a limit of the data:
-#   Fersen (patronymic), 4 bearer(s)
 #   Andersson (patronymic), 3 bearer(s)
 #   Erikson (patronymic), 3 bearer(s)
 #   Hansson (patronymic), 3 bearer(s)
 #   Helgesen (patronymic), 3 bearer(s)
+#   Høle (family), 3 bearer(s)
 #   Jonson (patronymic), 3 bearer(s)
 #   Jonsson (patronymic), 3 bearer(s)
 #   Kristiansen (patronymic), 3 bearer(s)
 #   Låge-Håland (family), 3 bearer(s)
 #   Osmundsdatter (patronymic), 3 bearer(s)
+#   Voster (family), 3 bearer(s)
 #   Ådnesdatter (patronymic), 3 bearer(s)
-#   Asbjørnson (patronymic), 2 bearer(s)
-#   ... and 221 more
+#   ... and 214 more
 

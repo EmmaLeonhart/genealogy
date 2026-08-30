@@ -824,6 +824,20 @@ def consensus_latin_label(labels):
     return value if n >= 2 else ""
 
 
+
+def _label_collisions():
+    """Geni ids whose creation would duplicate an existing label+empty-description pair.
+
+    From `reports/label-collisions.tsv`, written by `scripts/check-label-collisions.py`. A
+    missing file yields an empty set and today's behaviour, which is the safe direction: the
+    batch is no worse than it was, and the check is a pre-flight rather than a dependency.
+    """
+    path = ROOT / "reports" / "label-collisions.tsv"
+    if not path.exists():
+        return set()
+    with open(path, encoding="utf-8") as f:
+        return {row["geni_id"] for row in csv.DictReader(f, delimiter="	") if row["geni_id"]}
+
 def label_in(label, table):
     """(ja, zh) for a whole name, or (None, None) if any token is unknown.
 
@@ -5152,8 +5166,45 @@ def main():
         #
         # A creation has no item yet, so there ours is all there is; that path keeps
         # `_drop_territorial`.
-        source = live_labels.get((q, "en")) or live_labels.get((q, "mul")) \
-            or labels.get(g, "")
+        #
+        # **The `mul` label is chosen by CONSENSUS across the item's own languages**, and
+        # everything else follows from it. Emma's specification, 2026-08-30:
+        #
+        # > *"it would have observed that the person either has an English-language label that
+        # > is in Latin characters, or they have a consistent Latin label across two or more
+        # > languages. It would have assigned that one, whichever one is the most common, as
+        # > the multi-language label… and it would have also been assigned to the English
+        # > language if English language lacked it. The Chinese and Japanese would have been
+        # > derived from the multi-language label. The real multi-language label will be
+        # > assigned, and then the Geni one would have been added as the Geni display name, the
+        # > Geni display name qualifier subject named as, and it would have been added as a mul
+        # > alias."*
+        #
+        # And the one she closed explicitly: *"The transliteration of the Geni display name
+        # does not go into Japanese or Chinese aliases."* No `Aja`, no `Azh`.
+        mine = {lang: value for (qq, lang), value in live_labels.items() if qq == q}
+        mul = consensus_latin_label(mine)
+        source = mul or labels.get(g, "")
+
+        if mul:
+            # A label REPLACES, so whatever `mul` currently reads goes out as an alias FIRST --
+            # `CLAUDE.md` § *The MARRIED name is the real name*, where some of those values are
+            # Emma's own hand-edits and nothing else records them.
+            current = mine.get("mul")
+            if current and current != mul:
+                lines.append(f'{q}\tAmul\t"{qs(current)}"')
+            if current != mul:
+                lines.append(f'{q}\tLmul\t"{qs(mul)}"')
+            if not mine.get("en"):
+                lines.append(f'{q}\tLen\t"{qs(mul)}"')
+            # The Geni rendering is an ALIAS on `mul`, never a label and never a CJK alias.
+            # A redaction marker is not a name and does not become one here either.
+            geni_name = (fields.get(g) or {}).get("display_name", "")
+            if (geni_name and geni_name != mul and not _carries_marker(geni_name)
+                    and "<private>" not in geni_name.casefold()
+                    and geni_name not in {v for (qq, _l), v in live_labels.items() if qq == q}):
+                lines.append(f'{q}\tAmul\t"{qs(geni_name)}"')
+
         ja, zh = label_in(source, table)
         if ja and q not in CJK_LABELS_NOT_OURS:
             for code, value in (("ja", ja), ("zh", zh)):
@@ -5180,6 +5231,15 @@ def main():
             without_nickname(labels.get(g, ""), fields.get(g)), g))
         if not f:
             carried.append((g, label, "no derived facts"))
+            continue
+
+        # **A creation whose label+empty-description pair is already taken is REFUSED by
+        # Wikidata**, and a refusal lands mid-batch. `CLAUDE.md` § *NO descriptions and NO edit
+        # summaries*: the resolution is to hold the person, never to add a description.
+        # `scripts/check-label-collisions.py` writes the list; it is data, so the hold cannot
+        # drift into a hand-maintained exclusion.
+        if g in _label_collisions():
+            carried.append((g, label, "label+empty-description pair already taken on Wikidata"))
             continue
 
         # A redacted profile is created and gets NO label. `CLAUDE.md`: *"Private is
@@ -5217,8 +5277,15 @@ def main():
             # `mul` reads `NN Garborg`, not a bare `NN`.
             # The surname survives redaction and is real data -- CLAUDE.md measured
             # 3,605 such profiles. `<private> Garborg` -> `Garborg`.
-            from labels import drop_marker_surname as _dms
-            lines.append(f'LAST	Lmul	"{_dms(nn_form(qs(labels.get(g, ""))))}"')
+            from labels import drop_marker_surname as _dms, UNNAMED_MARKER
+            # **An empty label is never emitted, and `NN` is what an unnamed person gets.**
+            # `6000000184732963823` is recorded on Geni as a bare `1 NAME` with nothing after
+            # it, so the whole chain produced `""` and the batch carried `LAST Lmul ""` --
+            # creating an item with no label at all, which is not a person anyone can find and
+            # is not what `CLAUDE.md` § *`NN` is PRESERVED in `mul`* asks for. The marker is
+            # the floor: *"NN is always preserved in the multi-language label."*
+            mul_value = _dms(nn_form(qs(labels.get(g, "")))) or UNNAMED_MARKER
+            lines.append(f'LAST\tLmul\t"{mul_value}"')
             described = describe_all(g, facts, father, mother, referred_to_as, table,
                                      children, spouses, siblings)
             for code, value in sorted(described.items()):
@@ -5283,10 +5350,21 @@ def main():
             if ja:
                 lines.append(f'LAST\tLja\t"{ja}"')
                 lines.append(f'LAST\tLzh\t"{zh}"')
-                bja, bzh = label_in(birth, table) if birth else (None, None)
-                if bja and bja != ja:
-                    lines.append(f'LAST\tAja\t"{bja}"')
-                    lines.append(f'LAST\tAzh\t"{bzh}"')
+                # **A TRANSLITERATED birth name is not a `ja`/`zh` alias.** Emma, 2026-08-30:
+                # *"The transliteration of the Geni display name does not go into Japanese or
+                # Chinese aliases"*, and asked directly: *"No ja/zh alias at all."*
+                #
+                # The rule above was already narrower than what this did. `CLAUDE.md`
+                # § *The MARRIED name is the real name* allows `Aja`/`Azh` for **a non-Latin
+                # birth form**, *"which cannot live in `mul`"* -- a name already written in
+                # CJK. This emitted `ペルネル・ヴェライネ・スヘルン`, our own transliteration of
+                # a Latin name, which is a reading we invented rather than a form she has.
+                #
+                # So the alias survives only where the birth name is genuinely non-Latin, and
+                # then it is the name itself, not a transliteration of it.
+                if birth and not re.search(r"[A-Za-zÀ-ÿ]", birth):
+                    lines.append(f'LAST\tAja\t"{qs(birth)}"')
+                    lines.append(f'LAST\tAzh\t"{qs(birth)}"')
             else:
                 carried.append((g, label, "no transliteration for every token"))
         lines.append(f"LAST\tP31\t{HUMAN}")
