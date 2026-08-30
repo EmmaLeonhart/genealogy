@@ -1542,9 +1542,28 @@ to establish that a property is absent — absence is exactly what it gets wrong
 of these items, so it agreed that Arne had no parents. An item she has edited since the
 download must be re-fetched, not looked up.
 
-### Never query Wikidata to check something. Ever.
+### Querying Wikidata is ALLOWED. Be polite about the rate
 
-**Emma's rule, 2026-08-07, stated as flatly as it reads:** *"do not, whatever the
+**Emma, 2026-08-29, lifting the ban outright:** *"Why do you not have the ability to access
+Wikidata? What, are you getting 429s on Wikidata? You are completely 100% allowed to access wiki
+data to do basically any task. You just need to do so with reasonable API policies. Just don't
+decide to run 5 million requests in a minute because of the fact that you decided that you think
+that it would be so cool to get the task done quickly."*
+
+**So: query it.** Resolving a redirect, checking whether an item really carries `P22`, reading a
+label — all of that is ordinary work now, not a rule violation. The constraint that remains is
+**rate**, and it is about courtesy to Wikidata rather than about permission: batch where an API
+offers batching (`wbgetentities` takes 50 ids), do not fan out one request per item when one
+request would do, and do not hammer to finish faster.
+
+**What survives from the old rule, because the reasoning was never wrong:** the offline store under
+`wikidata/items/` with its index is still the right first place to look — it is faster, it costs
+Wikidata nothing, and a question answerable there needs no request at all. Reach for the network
+when the store cannot answer, not before.
+
+**The rule this replaces, kept because the history explains the store's existence.**
+
+**Emma's rule of 2026-08-07, now superseded:** *"do not, whatever the
 fuck you do, check it, except with our Wikidata export, because checking it is
 the way that you get a 429."* One bulk job — `genimerge wikidata-download` — is
 the only thing in this repo permitted to talk to Wikidata, and even it is
