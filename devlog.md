@@ -20482,3 +20482,44 @@ The three the subgraph cannot reach were appended by hand at her request: Sophia
 `P25` → `Q141224204` and its reciprocal, Signe with labels and identity only (her mother, father
 and husband are all uncreated or created in this same run), and Richard with `P26` → Helen and
 `P40` → Emma, both reciprocated.
+
+## 2026-08-30 — the name-item generator was recreating its own output, eleven times over
+
+Emma spotted `OBender12` correcting her edits and asked whether the family-name work was still
+broken. It was, and not in the way she had reported — this is a duplicate-creation bug, mine.
+
+**What he was doing.** Merging duplicate name items and stripping the `P734` links to the loser:
+`Q141223707` → `Q141223480` (`Sør-Reime`), `Q141223719` → `Q141223490` (`Gennäs`),
+`Q141223712` → `Q141223484` (`Morlanda`), and six more. He is also filling in the `en` labels and
+`family name` descriptions we leave blank.
+
+**The mechanism.** `store_name_item` resolved a token against
+`out/wikidata/name-items-in-store.tsv.gz` — the offline download. An item created *today* is not
+in it, and the ledger tracks **people**, keyed on `P2600`, which a name item does not have. So a
+token created in one run was invisible to the next, and `CREATE` always mints a new item. Emma
+ran the same regenerated file three times because I kept handing it to her.
+
+**Measured over all 584 of her creations: 29 name items, 18 distinct labels, 10 created more than
+once** — `Jonsdatter` three times, at 08-27 02:13, 08-30 17:59 and 08-30 19:13. Not only
+patronymics: `Gennäs`, `Morlanda` and `Sør-Reime` are family names. All eleven duplicates had
+already been merged away by `OBender12`.
+
+**I got the count wrong first and had to correct it.** Grouping by the *resolved* QID hid every
+duplicate he had already merged — they collapse onto their survivor — so the first answer was six
+labels. Keyed on the created ids it is ten.
+
+**The people were safe, and the reason is instructive.** A created person carries a `P2600`, so
+the ledger refresh finds them and the batch never re-proposes them. Checked all 549 anyway:
+**exactly one** genuine duplicate, `Q141199706` and `Q141199819`, both `P2600
+6000000003125438035`, ten minutes apart — and the first is a strict subset of the second, so it
+merges cleanly. Five other label collisions are different people with different Geni ids, and the
+thirteen items labelled `NN` are thirteen distinct unnamed people.
+
+**The fix.** `scripts/refresh-created-name-items.py` reads her page creations, keeps the ones that
+are `instance of` a name class, follows redirects so a merged duplicate resolves to its survivor,
+and writes `reports/created-name-items.tsv`. `namemodel._load_store_index` reads that **first**,
+then the store with `setdefault` so it can never be overwritten. All ten previously duplicated
+tokens now resolve, and the regenerated batch proposes ten entirely different ones.
+
+Two things nearly undid it and are worth noting: the loader's `return {}` on a missing store
+would have discarded her creations, and its `index = {}` a few lines later wiped them.

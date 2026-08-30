@@ -222,15 +222,42 @@ def store_name_item(token, usage):
 
 
 def _load_store_index():
-    """`{(folded label, kind): qid}` over every name item in the local store."""
+    """`{(folded label, kind): qid}` — name items Emma has CREATED, then the local store.
+
+    **Her own creations come first, and leaving them out cost eleven duplicate items.** The
+    store is the offline Wikidata download, so an item created *today* is not in it, and the
+    Garborg ledger tracks people (keyed on `P2600`, which a name item does not have). A token
+    created in one run was therefore invisible to the next, and `CREATE` always mints a new
+    item rather than checking — so running the same regenerated file three times made three
+    `Jonsdatter`s. Measured over her 581 creations: 29 name items, 18 distinct labels, **10
+    labels created more than once**, all eleven duplicates merged away by another editor.
+
+    Not only patronymics — `Gennäs`, `Morlanda` and `Sør-Reime` are family names.
+
+    `scripts/refresh-created-name-items.py` writes the file and follows redirects, so a merged
+    duplicate resolves to its survivor and the survivor is what a future run links to.
+    """
+    index = {}
+    created = ROOT / "reports" / "created-name-items.tsv"
+    if created.exists():
+        with open(created, encoding="utf-8") as fh:
+            for row in csv.DictReader(fh, delimiter="\t"):
+                if row["label"] and row["qid"]:
+                    index[(row["label"].casefold(), row["kind"])] = row["qid"]
+    else:
+        print("WARNING: reports/created-name-items.tsv missing -- the generator cannot see "
+              "name items already created and will propose them again. "
+              "Run scripts/refresh-created-name-items.py", file=sys.stderr)
+
     import gzip
     path = ROOT / "out" / "wikidata" / "name-items-in-store.tsv.gz"
     if not path.exists():
         print(f"WARNING: {path.name} missing -- the name plan cannot see the name items "
               f"already on disk and will propose duplicates. "
               f"Run scripts/extract-name-items.py", file=sys.stderr)
-        return {}
-    index = {}
+        return index          # her creations still apply; do not discard them
+    # `setdefault` below, so a label she has already created is never overwritten by the
+    # store's answer for the same label.
     with gzip.open(path, "rt", encoding="utf-8") as fh:
         next(fh, None)
         for line in fh:

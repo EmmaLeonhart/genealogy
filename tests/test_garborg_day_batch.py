@@ -100,6 +100,15 @@ def known_name_items():
     # was created a second time, and was merged away by another editor. Since 2026-08-30 the
     # generator resolves against every name item in the local store, so this must too, or a
     # correct link reads here as a dangling pointer.
+    # **Name items Emma has CREATED.** They exist and are the survivors of the merges
+    # `OBender12` performed on 2026-08-30, so a `P5056`/`P734` pointing at one is a correct
+    # link, not a dangling pointer. The offline store cannot know them -- it predates them --
+    # which is the same gap that let the generator create eleven duplicates in the first place.
+    created = REPO / "reports" / "created-name-items.tsv"
+    if created.exists():
+        with open(created, encoding="utf-8") as f:
+            out |= {row["qid"] for row in csv.DictReader(f, delimiter="	") if row["qid"]}
+
     store = REPO / "out" / "wikidata" / "name-items-in-store.tsv.gz"
     if store.exists():
         import gzip
