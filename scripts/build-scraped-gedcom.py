@@ -44,22 +44,84 @@ sys.path.insert(0, os.path.dirname(__file__))
 from genimerge.genipage import html_of_saved_page   # noqa: E402
 from scraped_pages import parse_family              # noqa: E402
 
-OUT_DIR = "gedcom/scraped"
+#: **Sorts FIRST under `exports/`, on purpose.** Merge order is path sort order and the LATER
+#: source wins a single-valued conflict, so a scraped `1 NAME <string>` must never overwrite a
+#: real export's structured `NAME`. A leading digit puts this ahead of every existing directory
+#: (`8-19 exports` is the earliest real one).
+OUT_DIR = "exports/0-scraped"
+
+#: **Synthetic ids, in ranges Geni demonstrably does not use.** `genimerge.identity` requires a
+#: numeric xref, so `@FS1@` is not legal and would break the four-prefix invariant
+#: `tests/test_gedcom_real_exports.py` asserts. Measured over the 567,135 distinct family xrefs
+#: and 1,329,329 individual xrefs in `out/merged.ged`: 20,000 ids from each base are free.
+SYNTHETIC_FAM_BASE = 9990000000000000000
+SYNTHETIC_INDI_BASE = 9995000000000000000
 PAGES = "geni-scraping/*.html"
 
 
-def emit(people, families, path, note):
+class Placeholders:
+    """Two `NN` parents per sibling group, on Emma's ruling of 2026-08-29.
+
+    *"Both parents are 'NN' placeholders. Pipeline generates names for them. However we may
+    attempt to gain the information of the parents. Imo this is too large to do right now, but at
+    the end of the queue we will have a task that goes to one of the siblings and save their page
+    so the parent names and potentially other people are added. If half siblings we go to both
+    siblings to clarify."*
+
+    **Why this is needed at all.** GEDCOM cannot say *siblings* without a family, and sibling hops
+    are not marginal: **2,124 rows, 7.0% of all path rows, present in 662 of the 698 paths (95%)**.
+    Dropping them, which the first build did, puts a hole in almost every path.
+
+    **The parents are labelled `NN` and carry no `RFN`.** `NN` is *nomen nescio* -- the genealogist
+    saying the name is unknown -- which is exactly true here, and `CLAUDE.md` § *`NN` is PRESERVED
+    in `mul`* already has the label pipeline for it. Omitting the `RFN` matters more: an
+    `RFN geni:<id>` for an id Geni does not have would be a false claim on this repo's primary key.
+
+    A group is keyed on its full membership, so the same pair of siblings met twice gets one set of
+    parents rather than two.
+    """
+
+    def __init__(self):
+        self._by_group = {}
+        self.people = {}
+        self.sexes = {}
+        self._next = 0
+
+    def parents_for(self, members):
+        key = tuple(sorted(members))
+        if key not in self._by_group:
+            father = str(SYNTHETIC_INDI_BASE + self._next)
+            mother = str(SYNTHETIC_INDI_BASE + self._next + 1)
+            self._next += 2
+            self.people[father] = "NN"
+            self.people[mother] = "NN"
+            self.sexes[father] = "M"
+            self.sexes[mother] = "F"
+            self._by_group[key] = (father, mother)
+        return self._by_group[key]
+
+
+def emit(people, families, path, note, sexes=None):
+    sexes = sexes or {}
     os.makedirs(OUT_DIR, exist_ok=True)
     with io.open(path, "w", encoding="utf-8", newline="\n") as fh:
         fh.write("0 HEAD\n1 SOUR genimerge-scraped\n1 CHAR UTF-8\n")
         fh.write("1 NOTE %s\n" % note)
-        fh.write("0 @SUB1@ SUBM\n1 NAME genimerge\n")
+        # The SUBM xref must be `S` + digits like every other Geni xref, or it breaks the
+        # four-prefix invariant tests/test_gedcom_real_exports.py asserts over the corpus.
+        fh.write("0 @S%d@ SUBM" % SYNTHETIC_FAM_BASE + chr(10) + "1 NAME genimerge" + chr(10))
         for gid, name in sorted(people.items()):
             fh.write("0 @I%s@ INDI\n" % gid)
             fh.write("1 NAME %s\n" % name)
-            fh.write("1 RFN geni:%s\n" % gid)
+            if gid in sexes:
+                fh.write("1 SEX %s" % sexes[gid] + chr(10))
+            # A placeholder has no Geni profile, so it gets no RFN -- claiming
+            # `RFN geni:<id>` for an id Geni does not have would be a false identity
+            # assertion on this repo's primary key.
+            if not gid.startswith(str(SYNTHETIC_INDI_BASE)[:6]):
+                fh.write("1 RFN geni:%s" % gid + chr(10))
         for i, (husb, wife, kids) in enumerate(families, 1):
-            fh.write("0 @FS%d@ FAM\n" % i)
+            fh.write("0 @F%d@ FAM" % (SYNTHETIC_FAM_BASE + i) + chr(10))
             if husb:
                 fh.write("1 HUSB @I%s@\n" % husb)
             if wife:
@@ -69,7 +131,7 @@ def emit(people, families, path, note):
         fh.write("0 TRLR\n")
 
 
-def from_pages():
+def from_pages(ph):
     people, fams = {}, []
     seen = set()
     bad = 0
@@ -111,8 +173,21 @@ def from_pages():
                     husb = subject if phrase == "husband of" else other
                     wife = other if phrase == "husband of" else subject
                     fams.append((husb, wife, set()))
-            # siblings are deliberately dropped: without the shared parents there is no
-            # FAM to express them in, and inventing one would assert parents we do not have
+            elif phrase.endswith("brother of") or phrase.endswith("sister of"):
+                # **Half siblings are NOT given shared parents.** Geni distinguishes them, and
+                # two half siblings share exactly ONE parent -- giving them both would assert a
+                # marriage that did not happen. Emma's ruling covers this: *"If half siblings we
+                # go to both siblings to clarify"*, so they wait for the page-saving task rather
+                # than being guessed at here.
+                if phrase.startswith("half"):
+                    continue
+                group = {subject} | set(ids)
+                key = ("SIB", tuple(sorted(group)))
+                if key in seen:
+                    continue
+                seen.add(key)
+                father, mother = ph.parents_for(group)
+                fams.append((father, mother, group))
     people = {g: n for g, n in people.items() if n}
     return people, fams, bad
 
@@ -128,7 +203,7 @@ PATH_REL = {
 }
 
 
-def from_paths():
+def from_paths(ph):
     """Family edges from consecutive rows of every `paths/*.tsv`.
 
     A path row names the relation of THIS person to the PREVIOUS one, so each adjacent pair is
@@ -169,6 +244,14 @@ def from_paths():
                     continue
                 seen.add(key)
                 fams.append((prev_id, None, {pid}))
+            elif word in ("brother", "sister"):
+                group = {pid, prev_id}
+                key = ("SIB", tuple(sorted(group)))
+                if key in seen:
+                    continue
+                seen.add(key)
+                father, mother = ph.parents_for(group)
+                fams.append((father, mother, group))
             elif kind == "spouse":
                 pair = tuple(sorted((pid, prev_id)))
                 if ("S", pair) in seen:
@@ -180,22 +263,30 @@ def from_paths():
 
 
 def main():
-    people, fams, bad = from_pages()
+    ph = Placeholders()
+    people, fams, bad = from_pages(ph)
+    people.update(ph.people)
     out = os.path.join(OUT_DIR, "scraped-pages.ged")
     emit(people, fams, out,
-         "built by scripts/build-scraped-gedcom.py from geni-scraping/ saved profile pages")
+         "built by scripts/build-scraped-gedcom.py from geni-scraping/ saved profile pages",
+         sexes=ph.sexes)
     print(f"saved pages: {len(glob.glob(PAGES))} read, {bad} unreadable")
     print(f"  people with a name : {len(people):,}")
     print(f"  families           : {len(fams):,}")
+    print(f"  NN placeholder parents minted : {len(ph.people):,}")
     print(f"  wrote {out} ({os.path.getsize(out):,} bytes)")
 
-    ppl, pf = from_paths()
+    ph2 = Placeholders()
+    ppl, pf = from_paths(ph2)
+    ppl.update(ph2.people)
     out2 = os.path.join(OUT_DIR, "scraped-paths.ged")
     emit(ppl, pf, out2,
-         "built by scripts/build-scraped-gedcom.py from paths/*.tsv relationship paths")
+         "built by scripts/build-scraped-gedcom.py from paths/*.tsv relationship paths",
+         sexes=ph2.sexes)
     print(f"paths: {len(glob.glob('paths/*.tsv'))} files")
     print(f"  people with a name : {len(ppl):,}")
     print(f"  families           : {len(pf):,}")
+    print(f"  NN placeholder parents minted : {len(ph2.people):,}")
     print(f"  wrote {out2} ({os.path.getsize(out2):,} bytes)")
     return 0
 

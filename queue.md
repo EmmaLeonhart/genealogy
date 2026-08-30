@@ -2214,3 +2214,23 @@ Wikidata. This is a qualifier thing."*
 
 Her closing note on how I handled this, kept because it is the correction: *"This is a relatively
 well-defined task that you decided to transform into something crazy."*
+
+### Get the REAL parents behind the NN placeholders — save a sibling's page
+
+**Emma, 2026-08-29**, ruling on how sibling hops are represented: *"Both parents are 'NN'
+placeholders. Pipeline generates names for them. However we may attempt to gain the information of
+the parents. Imo this is too large to do right now, but at the end of the queue we will have a task
+that goes to one of the siblings and save their page so the parent names and potentially other
+people are added. If half siblings we go to both siblings to clarify."*
+
+**4,924 placeholder parents exist** — 2,284 from the saved pages and 2,640 from the paths — one
+pair per sibling group. Each pair is `NN` with a `SEX` and **no `RFN`**, because they have no Geni
+profile and claiming one would be a false identity assertion.
+
+The work: for each sibling group, open **one** sibling's Geni profile, save the page into
+`geni-scraping/`, and re-run `scripts/build-scraped-gedcom.py` — the saved page carries
+*"Son of A and B"*, which replaces the placeholders with real people.
+
+**Half siblings need BOTH pages**, per her instruction, because they share only one parent and
+which one is not recoverable from a single page. Half siblings are currently **skipped entirely**
+rather than given placeholders, for that reason.
