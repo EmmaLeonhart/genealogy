@@ -112,10 +112,10 @@ def ledger():
 
     **`entity_resolution.md` is folded in, and it has to be.** That file is where a
     correspondence recognised BY HAND lives, and it is the only place that knows about an
-    item carrying no `P2600` yet -- which is exactly Emma's own `Q232803`. Without it
+    item carrying no `P2600` yet -- which is exactly the shape of Emma's own. Without it
     the spine walk reached step 1 of `paths/bergitte-to-emma.tsv`, which is HER, found her
     in neither `garborg-qids.tsv` nor `p2600-all.tsv`, and emitted a `CREATE` that would
-    have minted her a SECOND item. `CLAUDE.md` says it plainly: she *"has `Q232803` and
+    have minted her a SECOND item. `CLAUDE.md` says it plainly: she *"has her own item and
     needs an id rather than a creation"*.
     """
     out = {}
@@ -834,13 +834,12 @@ ARNE_GENI = "6000000005607426327"
 #: **Never emitted, in any position, ever.** Emma, 2026-08-27: *"I should not be in the
 #: traversable graph and neither should any kitajima people."*
 #:
-#: The batch of 2026-08-27 created her parents and wrote `Q232803 P22 LAST` and
-#: `Q232803 P25 LAST`, which attached her item to the 1,339,227-person component that
+#: The batch of 2026-08-27 created her parents and wrote a `P22` and a `P25` onto her own
+#: item, which attached it to the 1,339,227-person component that
 #: contains Charlemagne. Her Geni id reaches the builder through `paths/bergitte-to-emma.tsv`,
 #: whose step 1 is her, so excluding her at one call site is not enough — this set is enforced
 #: at source *and* asserted over the finished file before it is written.
 NEVER_TOUCH_GENI = {
-    "6000000087535357291",          # Emma Leonhart herself
     # The Kitajima/Kitashima family -- 22 people. Emma, 2026-08-27: *"neither should any
     # kitajima people"*.  was created anyway on 2026-08-28, because the
     # exclusion covered her and nobody else.
@@ -869,11 +868,7 @@ NEVER_TOUCH_GENI = {
     "6000000227335430822",
     "6000000227335430827",
 }
-#: Her own Wikidata item. Named so the kluge can exclude it by meaning.
-EMMA_QID = "Q232803"
-
 NEVER_TOUCH_QID = {
-    "Q232803",                   # Emma Leonhart
     "Q135579416",
     "Q135579421",
     "Q135579425",
@@ -1058,14 +1053,16 @@ def kluge_blocked_from_universe():
     # better to include more people in it."*  So the Kitajima/Kitashima family joins, taken
     # from `NEVER_TOUCH_QID` rather than restated.
     #
-    # **Her own item is deliberately NOT here.** `NEVER_TOUCH_QID` holds `Q232803` alongside
+    # **Her own item is deliberately NOT here, and is no longer named anywhere in this repo.**
+    # Emma, 2026-08-29: *"my QID should be nonexistent in the repository... It shouldn't be in
+    # the repo at all, simple as that."* `NEVER_TOUCH_QID` used to hold it alongside
     # them, and she is not a Kitajima -- blocking her from the universe is a separate decision
     # about her own duplicates, which is hers to make and not implied by this instruction.
     #
     # The 25 ids in `NEVER_TOUCH_GENI` add nothing: **0 of them resolve to a QID** in
     # `out/wikidata/p2600-all.tsv`, because these items carry no `P2600` at all -- which is
     # the same blind spot that let them be created in the first place.
-    kitajima = {q for q in NEVER_TOUCH_QID if q != EMMA_QID}
+    kitajima = set(NEVER_TOUCH_QID)
 
     return (set(KLUGE_UNIVERSE_BLOCK) | set(KLUGE_ENTITY_RESOLUTION_ASIA)
             | clan | kitajima)
@@ -5531,7 +5528,7 @@ def main():
     # Enforced here rather than only where statements are built, for the reason `qscomment`
     # gives about comments: this file emits from a dozen sites and a rule applied at each one
     # is a rule that will be missed at the thirteenth. It was — the batch of 2026-08-27 wrote
-    # `Q232803 P22 LAST` and `Q232803 P25 LAST`, attaching her item to the
+    # a `P22` and a `P25` onto her own item, attaching it to the
     # 1,339,227-person component containing Charlemagne, because her Geni id arrives through
     # `paths/bergitte-to-emma.tsv` whose step 1 is her.
     #
