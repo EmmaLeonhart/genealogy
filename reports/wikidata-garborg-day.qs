@@ -4,38 +4,38 @@
 #   batch and be limited to a count of 15 labels added per batch". A label set
 #   at CREATION time is neither counted nor capped -- "a label added during item
 #   creation is good".
-#   1006 more are held for a later run; a repeat is a no-op, so nothing is lost.
+#   991 more are held for a later run; a repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
-#   Q141219065 Marta Torbjørnsdotter Gjesdal: set the zh label to "玛尔塔·托尔布约尔恩斯多特·耶斯达尔"
-Q141219065	Lzh	"玛尔塔·托尔布约尔恩斯多特·耶斯达尔"
-#   Q141216460 Bjørnsdatter Tau: set the zh label to "布约尔恩斯达特·塔乌"
-Q141216460	Lzh	"布约尔恩斯达特·塔乌"
-#   Q141216613 Karen Henriksdotter Raunes Våga: set the ja label to "カレン・ヘンリクスドッテル・ラウネス・ヴォーガ"
-Q141216613	Lja	"カレン・ヘンリクスドッテル・ラウネス・ヴォーガ"
-#   set the zh label to "凯伦·亨里克斯多特·拉乌内斯·沃加"
-Q141216613	Lzh	"凯伦·亨里克斯多特·拉乌内斯·沃加"
-#   Q141216384 Ingeborg Eriksdatter Time: set the zh label to "英格堡·埃里克斯达特·蒂梅"
-Q141216384	Lzh	"英格堡·埃里克斯达特·蒂梅"
-#   Q11959067 Arne Olaus Fjørtoft Garborg: set the ja label to "アルネ・オラウス・フョルトフト・ガルボルグ"
-Q11959067	Lja	"アルネ・オラウス・フョルトフト・ガルボルグ"
-#   set the zh label to "阿恩·奥劳斯·夫约托夫特·加尔博格"
-Q11959067	Lzh	"阿恩·奥劳斯·夫约托夫特·加尔博格"
-#   Q141219291 Maria Hansdatter Austrått: set the zh label to "玛丽亚·汉斯达特·奥斯特罗特"
-Q141219291	Lzh	"玛丽亚·汉斯达特·奥斯特罗特"
-#   Q141223436 Tore Underberge III: add a mul alias "Tore Underberge, III"
-Q141223436	Amul	"Tore Underberge, III"
-#   Q141205919 Malena Hansdatter Bø: add a mul alias "Malena Hansdatter Risa"
-Q141205919	Amul	"Malena Hansdatter Risa"
-#   set the ja label to "マレーナ・ハンスダッテル・ベー"
-Q141205919	Lja	"マレーナ・ハンスダッテル・ベー"
-#   set the zh label to "马莱纳·汉斯达特·鲍伊"
-Q141205919	Lzh	"马莱纳·汉斯达特·鲍伊"
-#   Q141216388 Jon Hansson St. Vatne: set the ja label to "ジョン・ハンソン・スト・ヴァトネ"
-Q141216388	Lja	"ジョン・ハンソン・スト・ヴァトネ"
-#   set the zh label to "乔恩·汉松·斯特·瓦特内"
-Q141216388	Lzh	"乔恩·汉松·斯特·瓦特内"
-#   Q141198832 Lars Gunnbjørnsen Mjølhus: set the ja label to "ラース・グンンブヨルンセン・ムヨルフス"
-Q141198832	Lja	"ラース・グンンブヨルンセン・ムヨルフス"
+#   set the zh label to "拉尔斯·贡布约尔恩森·姆约尔胡斯"
+Q141198832	Lzh	"拉尔斯·贡布约尔恩森·姆约尔胡斯"
+#   Q141205898 Anna Tormodsdatter Mele: set the ja label to "アンナ・トルモドスダッテル・メーレ"
+Q141205898	Lja	"アンナ・トルモドスダッテル・メーレ"
+#   set the zh label to "安娜·托尔莫德斯达特·梅勒"
+Q141205898	Lzh	"安娜·托尔莫德斯达特·梅勒"
+#   Q141219060 Halvor Johannesson Hobberstad: set the zh label to "哈尔沃尔·约哈内松·霍贝尔斯塔德"
+Q141219060	Lzh	"哈尔沃尔·约哈内松·霍贝尔斯塔德"
+#   Q141216627 Lars Nilsen Raunes: set the ja label to "ラース・ニルセン・ラウネス"
+Q141216627	Lja	"ラース・ニルセン・ラウネス"
+#   Q141217369 Anna Osmundsd Stokka: set the ja label to "アンナ・オスムンドスド・ストカ"
+Q141217369	Lja	"アンナ・オスムンドスド・ストカ"
+#   set the zh label to "安娜·奥斯蒙德斯德·斯托卡"
+Q141217369	Lzh	"安娜·奥斯蒙德斯德·斯托卡"
+#   Q141198538 nn Gunnarsdatter Frafjord: add a mul alias "nn Gunnarsdatter Frafjord"
+Q141198538	Amul	"nn Gunnarsdatter Frafjord"
+#   set the mul label to "Daughter of Gunnar Torsteinson Frafjord"
+Q141198538	Lmul	"Daughter of Gunnar Torsteinson Frafjord"
+#   Q141198371 Anna Belestdatter Lauvsnes: set the ja label to "アンナ・ベレストダッテル・ラウヴスネス"
+Q141198371	Lja	"アンナ・ベレストダッテル・ラウヴスネス"
+#   set the zh label to "安娜·贝莱斯特达特·拉乌夫斯内斯"
+Q141198371	Lzh	"安娜·贝莱斯特达特·拉乌夫斯内斯"
+#   Q141189079 Lars Tormodsen Mele: set the ja label to "ラース・トルモドセン・メーレ"
+Q141189079	Lja	"ラース・トルモドセン・メーレ"
+#   Q141189097 Ragnhild Toresdatter Håland i Gjesdal: set the ja label to "ラグンヒル・トーレスダッテル・ホーランド"
+Q141189097	Lja	"ラグンヒル・トーレスダッテル・ホーランド"
+#   set the zh label to "拉格希尔德·托雷斯达特·霍兰"
+Q141189097	Lzh	"拉格希尔德·托雷斯达特·霍兰"
+#   Q141224009 Gunnar Torsteinson Frafjord I: add a mul alias "Gunnar Torsteinson Torsteinson I"
+Q141224009	Amul	"Gunnar Torsteinson Torsteinson I"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
@@ -627,77 +627,3 @@ Q141223972	P735	Q67609267	P1545	"2"	P3831	Q245025
 #   P734 family name = Q11255517 Lima
 Q141223972	P734	Q11255517
 
-# create a new item
-CREATE
-#   set the en label to "Sophia Borgit Hoknes"
-LAST	Len	"Sophia Borgit Hoknes"
-#   set the mul label to "Sophia Borgit Hoknes"
-LAST	Lmul	"Sophia Borgit Hoknes"
-#   set the ja label to "ソフィア・ボルギト・ホクネス"
-LAST	Lja	"ソフィア・ボルギト・ホクネス"
-#   set the zh label to "索菲娅·博尔吉特·霍克内斯"
-LAST	Lzh	"索菲娅·博尔吉特·霍克内斯"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581072
-LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000177921459094 Sophia Borgit Hoknes, qualified P1810 subject named as Sophia Borgit Hoknes
-LAST	P2600	"6000000177921459094"	P1810	"Sophia Borgit Hoknes"
-#   P569 date of birth = +1912-06-30T00:00:00Z/11
-LAST	P569	+1912-06-30T00:00:00Z/11	S2600	"6000000177921459094"
-#   P570 date of death = +1993-05-30T00:00:00Z/11
-LAST	P570	+1993-05-30T00:00:00Z/11	S2600	"6000000177921459094"
-#   P25 mother = Q141224204 Inger Serine Lerma Gunderson
-LAST	P25	Q141224204	S2600	"6000000177921459094"
-#   Q141224204 Inger Serine Lerma Gunderson: P40 child = the item just created
-Q141224204	P40	LAST	S2600	"6000000177921459094"
-
-
-# create a new item
-CREATE
-#   set the en label to "Caroline Signe Borsheim"
-LAST	Len	"Caroline Signe Borsheim"
-#   set the mul label to "Caroline Signe Borsheim"
-LAST	Lmul	"Caroline Signe Borsheim"
-#   set the ja label to "キャロライン・シグネ・ボルスハイム"
-LAST	Lja	"キャロライン・シグネ・ボルスハイム"
-#   set the zh label to "卡罗琳·西格内·博尔斯海姆"
-LAST	Lzh	"卡罗琳·西格内·博尔斯海姆"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581072
-LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000177921459072 Caroline Signe Borsheim, qualified P1810 subject named as Caroline Signe Borsheim
-LAST	P2600	"6000000177921459072"	P1810	"Caroline Signe Borsheim"
-#   P569 date of birth = +1932-11-06T00:00:00Z/11
-LAST	P569	+1932-11-06T00:00:00Z/11	S2600	"6000000177921459072"
-#   P570 date of death = +2007-12-04T00:00:00Z/11
-LAST	P570	+2007-12-04T00:00:00Z/11	S2600	"6000000177921459072"
-
-
-# create a new item
-CREATE
-#   set the en label to "Richard Wade Borsheim"
-LAST	Len	"Richard Wade Borsheim"
-#   set the mul label to "Richard Wade Borsheim"
-LAST	Lmul	"Richard Wade Borsheim"
-#   set the ja label to "リチャード・ウェイド・ボルスハイム"
-LAST	Lja	"リチャード・ウェイド・ボルスハイム"
-#   set the zh label to "理查德·韦德·博尔斯海姆"
-LAST	Lzh	"理查德·韦德·博尔斯海姆"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581097
-LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000177921459056 Richard Wade Borsheim, qualified P1810 subject named as Richard Wade Borsheim
-LAST	P2600	"6000000177921459056"	P1810	"Richard Wade Borsheim"
-#   P569 date of birth = +1963-10-20T00:00:00Z/11
-LAST	P569	+1963-10-20T00:00:00Z/11	S2600	"6000000177921459056"
-#   P26 spouse = Q141223923 Helen Frisk
-LAST	P26	Q141223923	S2600	"6000000177921459056"
-#   P40 child = Q140568870 Emma Himiko Leonhart
-LAST	P40	Q140568870	S2600	"6000000177921459056"
-#   Q141223923 Helen Frisk: P26 spouse = the item just created
-Q141223923	P26	LAST	S2600	"6000000177921459056"
-#   Q140568870 Emma Himiko Leonhart: P22 father = the item just created
-Q140568870	P22	LAST	S2600	"6000000177921459056"
