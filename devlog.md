@@ -19750,3 +19750,31 @@ So what remained of this item is the rebuild and the batch, which is the tail it
 **Worth noting:** this is the export whose Forest half carries `<private> /Dokken/`, the record the
 derived CSVs cannot see because they predate it by four days. The item was queued to fetch data we
 already had and could not read.
+
+## 2026-08-29 — the ledger history, and the redirects run the other way
+
+Her queued item: *"keep an active ledger... with some level of history. It is going to check each
+QID that I have edited: whether this QID is a redirect... check the Genny IDs... compare... If
+anything occurs, it will run a query to find the wiki data mapping."*
+
+**Most of it was already built.** `refresh-garborg-ledger.py` rebuilds the ledger from her
+contributions and calls `resolve-merged-qids.py` **in-process**, so redirects are resolved every
+run. `scripts/ledger-history.py` adds only the two halves that were missing:
+
+- **History** — a dated snapshot of all 657 `geni_id → qid` pairs appended to
+  `reports/ledger-history.tsv`, so a pairing that changes can be traced rather than inferred.
+- **The query on disagreement** — asks Wikidata who currently holds the disputed `P2600` and
+  whether either QID redirects. This is what her *"run a query to find the wiki data mapping"*
+  meant, and it is only possible because she lifted the query ban today.
+
+**The query path was tested rather than assumed, because the first snapshot has nothing to compare
+against and the branch would never have run.** Asked directly about the two known pairs:
+
+    Q141199704   id=Q141199704   P2600=6000000004334566448   Andreas Olai
+    Q141199808   id=Q141199704   P2600=6000000004334566448   Andreas Olai
+
+**`Q141199808` resolves to `Q141199704` — the redirect runs from her contribution list TO the
+ledger.** Same for `Q141178149` → `Q110302791`. So the ledger holds the **survivor** and her
+contributions name the merged-away item, which is the opposite of what
+`queue.md` recorded (*"the ledger held one QID and Wikidata now returns another"*). The refresh is
+right to keep its own value and say so rather than overwrite.

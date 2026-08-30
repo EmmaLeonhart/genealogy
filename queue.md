@@ -68,23 +68,6 @@ pinned by `tests/test_garborg_day_batch.py::test_a_marker_beside_a_real_name_sti
 
 
 
-- She asked, for this one specifically, that a question be put to her about every part of it,
-each carrying an option meaning *I do not know what this means contextually*, with a re-explanation
-when she picks it. Screenshot she was replying to:
-`C:\Users\Emma\.claude\uploads\dbec586f-7705-4f0e-8652-03df7c6b73e5\6e755957-image.jpg`
-
-> I also do have one additional thing I think would be good to do, but I'm quite afraid that implementing this particular feature is going to cause more harm than good. Specifically, I think that this feature may cause more harm than good because I suspect that you may encounter this. I think it's unambiguously a good thing to do, but I think it may cause more harm than good if you misunderstand it.
->
-> The idea here is that I think you should keep an active ledger, like a ledger from a few times ago, with some level of history. It is going to check each QID that I have edited:
-> - It's going to check whether this QID is a redirect, because it should be resolving redirects.
-> - It should check the Genny IDs of the QIDs that I've edited.
-> - It should compare the Genny IDs with the QIDs.
-> - The Genny IDs should be saved.
-> - If anything occurs, it will run a query to find the wiki data mapping of the Genny IDs of the QIDs and figure things out.
->
-> This is a potential concern. When I say this is a potential concern, I do genuinely mean I consider this to be a potential concern. I consider this to be potentially useful because of weird stuff going on, potential merges, and other stuff like that. I'm going to say, honestly, this particular idea that I'm talking about is too much of a tangent. I'd like you to queue it up.
-
----
 
 - Screenshot she was replying to:
 `C:\Users\Emma\.claude\uploads\dbec586f-7705-4f0e-8652-03df7c6b73e5\16d7e7ae-image.jpg`
