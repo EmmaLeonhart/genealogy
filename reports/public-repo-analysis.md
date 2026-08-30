@@ -9,21 +9,27 @@ part of the algorithm. Biggest barrier imo is the synoptic tree file stuff."*
 
 Measured 2026-08-29. **She named the barrier correctly, and it is worse than a file-size problem.**
 
-## The size, first
+## The size, and a correction
 
 | | |
 | --- | ---: |
 | tracked files | 46,360 |
-| tracked content | **12.2 GB** |
-| `.git` on disk | 6.3 GB |
+| working tree | 12.2 GB |
+| packed history (`size-pack`) | **6.15 GB** |
 
-By extension: `.gz` 4,448 MB, `.ged` 4,244 MB, `.download` 1,243 MB, `.css` 701 MB, `.csv` 539 MB,
-`.html` 372 MB.
+By extension: `.gz` 4,448 MB, `.ged` 4,244 MB, `.download` 1,243 MB, `.css` 701 MB, `.csv` 539 MB.
+The `.css` and `.download` are saved-page furniture under `geni-scraping/`, not genealogy.
 
-**GitHub's soft limit for a repository is 5 GB and it warns above 1 GB.** This is over that whether
-it is public or private, so "make it public" and "keep pushing this repo" are already in tension.
-The `.css` and `.download` figures are saved Geni pages under `geni-scraping/`, which are page
-furniture rather than genealogy.
+**An earlier draft of this said the 5 GB figure blocked CI. It does not, and Emma caught it:**
+*"the repo size can be larger as history isn't in it?"* — correct.
+
+- GitHub's 5 GB is a **soft limit on the hosted git database**, i.e. the 6.15 GB pack. It produces a
+  warning, not a refusal.
+- **CI never downloads that.** `actions/checkout` defaults to `fetch-depth: 1`, so a run fetches one
+  commit's tree. A hosted runner has ~75 GB free disk, so even the full 12.2 GB working tree fits.
+
+So size costs **checkout time**, not feasibility. It is not a barrier to either going public or
+running a scheduled job.
 
 ## The barrier she named: the synoptic tree cannot be built in Actions
 

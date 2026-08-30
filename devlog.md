@@ -19642,3 +19642,18 @@ Recorded as hers to decide, not flagged as a technical blocker.
 **And the billing point runs in favour of going public.** `ci.yml` is `workflow_dispatch:` only
 because Actions minutes are billable on private repos and free on public ones — so the change
 *removes* the constraint that made CI manual.
+
+## 2026-08-29 — correction: repo size does not block CI, and she caught it
+
+*"Uhh 16GB memory but the repo size can be larger as history isn't in it?"* — right on both counts,
+and `reports/public-repo-analysis.md` is corrected.
+
+I had applied GitHub's **5 GB soft limit** as though it blocked CI. It does not: that limit is on
+the hosted git database — the **6.15 GB** pack here — and produces a warning rather than a refusal.
+And CI never downloads it, because `actions/checkout` defaults to `fetch-depth: 1`, so a run fetches
+a single commit's tree onto a runner with ~75 GB free disk. Size costs checkout time, nothing else.
+
+**The memory barrier is unaffected and is the whole finding:** the merge peaks at 16.8 GB against a
+16 GB `ubuntu-latest` runner. That is the reason a daily job cannot rebuild the synoptic tree, and
+it was already the reason before the size paragraph was written — the size claim was decoration on
+a conclusion that did not need it, and wrong decoration at that.
