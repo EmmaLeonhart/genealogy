@@ -33,6 +33,28 @@ Q141189093	P5056	LAST	P144	Q141178199	S2600	"6000000022418305015"
 #   Q141189091 Ole Nicolai Bergersen: P5056 patronym or matronym = the item just created, qualified P144 based on Q141168797 Christian Frederik Bergersen
 Q141189091	P5056	LAST	P144	Q141168797	S2600	"6000000055822412855"
 
+# Olsen -- patronymic, 7 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Olsen"
+LAST	Len	"Olsen"
+#   set the mul label to "Olsen"
+LAST	Lmul	"Olsen"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   Q141200019 Ola Olsen Vaule: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189088 Ola Knutsen Grøtheim
+Q141200019	P5056	LAST	P144	Q141189088	S2600	"6000000002989071216"
+#   Q141169072 Ådne Olsen Garborg: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189088 Ola Knutsen Grøtheim
+Q141169072	P5056	LAST	P144	Q141189088	S2600	"6000000003492005161"
+#   Q141205900 Bertrand Olav Olsen Vigdel: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189070 John Jonassen Hegre
+Q141205900	P5056	LAST	P144	Q141189070	S2600	"6000000006146870818"
+#   Q141200074 Rasmus Olsen Bø: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189088 Ola Knutsen Grøtheim
+Q141200074	P5056	LAST	P144	Q141189088	S2600	"6000000007744183945"
+#   Q141216380 Hans Olsen Grøtheim: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189088 Ola Knutsen Grøtheim
+Q141216380	P5056	LAST	P144	Q141189088	S2600	"6000000008176954243"
+#   Q141199930 Knut Olsen Gudmestad: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189088 Ola Knutsen Grøtheim
+Q141199930	P5056	LAST	P144	Q141189088	S2600	"6000000019668338861"
+
 # Jonsdatter -- patronymic, 6 bearer(s) in the batches
 # create a new item
 CREATE
@@ -54,28 +76,6 @@ Q141189071	P5056	LAST	P144	Q141198435	S2600	"6000000005609425388"
 Q141223533	P5056	LAST	P144	Q141180408	S2600	"6000000038211894304"
 #   Q141189062 Cecilie Jonsdatter: P5056 patronym or matronym = the item just created, qualified P144 based on Q116150299 Jon Reinmodsen
 Q141189062	P5056	LAST	P144	Q116150299	S2600	"6000000180296055830"
-
-# Olsen -- patronymic, 6 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Olsen"
-LAST	Len	"Olsen"
-#   set the mul label to "Olsen"
-LAST	Lmul	"Olsen"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   Q141200019 Ola Olsen Vaule: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189088 Ola Knutsen Grøtheim
-Q141200019	P5056	LAST	P144	Q141189088	S2600	"6000000002989071216"
-#   Q141169072 Ådne Olsen Garborg: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189088 Ola Knutsen Grøtheim
-Q141169072	P5056	LAST	P144	Q141189088	S2600	"6000000003492005161"
-#   Q141205900 Bertrand Olav Olsen Vigdel: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189070 John Jonassen Hegre
-Q141205900	P5056	LAST	P144	Q141189070	S2600	"6000000006146870818"
-#   Q141200074 Rasmus Olsen Bø: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189088 Ola Knutsen Grøtheim
-Q141200074	P5056	LAST	P144	Q141189088	S2600	"6000000007744183945"
-#   Q141216380 Hans Olsen Grøtheim: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189088 Ola Knutsen Grøtheim
-Q141216380	P5056	LAST	P144	Q141189088	S2600	"6000000008176954243"
-#   Q141199930 Knut Olsen Gudmestad: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189088 Ola Knutsen Grøtheim
-Q141199930	P5056	LAST	P144	Q141189088	S2600	"6000000019668338861"
 
 # Rasmusdatter -- patronymic, 6 bearer(s) in the batches
 # create a new item
@@ -215,19 +215,19 @@ Q141219062	P734	LAST	P3831	Q28418670	S2600	"6000000012888307497"
 #   Q5580892 Fredrik Carl Boije af Gennäs: P734 family name = the item just created
 Q5580892	P734	LAST	S2600	"6000000020865415341"
 
-# 234 more name items are needed and wait for a later
+# 256 more name items are needed and wait for a later
 # run -- 10 a day is her cap, not a limit of the data:
+#   Jonsson (patronymic), 4 bearer(s)
 #   Andersson (patronymic), 3 bearer(s)
 #   Erikson (patronymic), 3 bearer(s)
+#   Garfve (family), 3 bearer(s)
 #   Hansson (patronymic), 3 bearer(s)
 #   Helgesen (patronymic), 3 bearer(s)
 #   Høle (family), 3 bearer(s)
 #   Jonsen (patronymic), 3 bearer(s)
 #   Jonson (patronymic), 3 bearer(s)
-#   Jonsson (patronymic), 3 bearer(s)
 #   Kristiansen (patronymic), 3 bearer(s)
 #   Låge-Håland (family), 3 bearer(s)
-#   Olofsson (patronymic), 3 bearer(s)
-#   Osmundsdatter (patronymic), 3 bearer(s)
-#   ... and 222 more
+#   Magnusson (patronymic), 3 bearer(s)
+#   ... and 244 more
 

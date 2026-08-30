@@ -20447,3 +20447,38 @@ recorded **nowhere else**, so they went to `reports/clan-join-and-structural-wal
 
 Her framing went with the section because it governed items that no longer exist; `git show` has
 it, and `CLAUDE.md` already carries the rule it was protecting.
+
+## 2026-08-30 — the Signe line is two people from closing, and both are now in the batch
+
+Emma asked how the Signe path was going. `paths/arne-to-signe-no-borsheim.tsv` has gone from
+**4 of 15 held to 13 of 15**: steps 5 through 13 — three Stokkas, two Gjesdals, three Limas and
+Inger Serine Lerma Gunderson — have all been created since 08-29, and the first gap has moved
+from step 5 to **step 14**.
+
+    14  Sophia Borgit Hoknes      missing
+    15  Caroline Signe Borsheim   missing
+
+**The two lines converge.** Step 15 is Richard Wade Borsheim's mother, so creating those two
+closes the fourth spine line *and* gives Richard his `P25`.
+
+**Why none of the three was generated, and it is not a bug.** `wikidata_subgraph()` from
+`Q11959067` holds **252 items**, and neither Helen Frisk `Q141223923` nor Emma `Q140568870` is in
+it — both have QIDs, but nothing on Wikidata yet links them to Arne, so they cannot seed a ring
+and Richard is one hop from people outside the pool. `CLAUDE.md` § *The seed set is the WIKIDATA
+SUBGRAPH from Arne* working exactly as written. It is self-correcting: one `P26` or `P40` joining
+Helen or Emma to that component makes all three reachable with no special case.
+
+I first told her the reason was that no relative held a QID. That was wrong — two of them do.
+
+**A real defect fell out of it.** `Sophia Borgit Hoknes` had no `ja`/`zh` at all because `Borgit`
+and `Hoknes` were missing from `reports/garborg-name-transliterations.tsv` — and so were
+`Randolph`, `Paulus`, `Theoline` and `Henrika`, which is why **Randolph Paulus Borsheim** and
+**Theoline Henrika Borsheim** were sitting in the carry-forward under *"no transliteration for
+every token"*. The engine renders all six. They are in the table now, attested-first per the
+precedence: `Randolph` `ランドルフ` (28 items) and `Paulus` `パウルス` (8) came from the corpus,
+the other four by rule. Both Borsheims now generate normally instead of being held.
+
+The three the subgraph cannot reach were appended by hand at her request: Sophia with
+`P25` → `Q141224204` and its reciprocal, Signe with labels and identity only (her mother, father
+and husband are all uncreated or created in this same run), and Richard with `P26` → Helen and
+`P40` → Emma, both reciprocated.
