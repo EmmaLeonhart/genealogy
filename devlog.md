@@ -19727,3 +19727,26 @@ half-rebuilt chain produced `P1810 "Private"` for a man Geni now calls `<private
 **`--skip-merge` refuses when `out/merged.ged` is missing or empty** — verified, it fires today.
 Rebuilding the derived layer from an empty tree yields empty CSVs that look entirely valid, which
 is the worst available failure.
+
+## 2026-08-29 — the `6000000227464556886` exports were already taken
+
+Her item: *"without analysis do a cron job that will at 1am do a forest export and ancestor export
+on https://www.geni.com/profile/index/6000000227464556886 and incorporate them into the synoptic
+tree and then rebuild the synoptic tree, and then generate the quickstaements with the algorithm"*
+
+**Both exports exist and are committed**, taken during the Bure campaign:
+
+| file | people | commit |
+| --- | ---: | --- |
+| `exports/bure-campaign/export-Forest-6000000227464556886.ged` | 5,000 | `fcba6d66` |
+| `exports/bure-campaign/export-Ancestors-6000000227464556886.ged` | 4,309 | `53d61acd` |
+
+**Incorporation needs nothing** — `genimerge.sources` reads `exports/` recursively, so a file is
+corpus the moment it is extracted. There is no ingest step to run.
+
+So what remained of this item is the rebuild and the batch, which is the tail item
+`scripts/rebuild-everything.py`. Closed rather than left open to duplicate it.
+
+**Worth noting:** this is the export whose Forest half carries `<private> /Dokken/`, the record the
+derived CSVs cannot see because they predate it by four days. The item was queued to fetch data we
+already had and could not read.

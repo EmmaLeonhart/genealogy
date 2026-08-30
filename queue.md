@@ -67,11 +67,6 @@ pinned by `tests/test_garborg_day_batch.py::test_a_marker_beside_a_real_name_sti
 
 
 
-- 
-
-> without analysis do a cron job that will at 1am do a forest export and ancestor export on https://www.geni.com/profile/index/6000000227464556886 and incorporate them into the synoptic tree and then rebuild the synoptic tree, and then generate the quickstaements with the algorithm
-
----
 
 - She asked, for this one specifically, that a question be put to her about every part of it,
 each carrying an option meaning *I do not know what this means contextually*, with a re-explanation
