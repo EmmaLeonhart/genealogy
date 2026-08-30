@@ -19616,3 +19616,29 @@ being relabelled.
 **Nothing is lost.** The same batch already carries `LAST Amul "Byre"` beside `LAST Amul "Eivind
 Byre"` — the nickname reaches Wikidata as an alias, which is the *"just lmul vs amul"* she asked
 for. Verified: 0 `P1449` lines on a fresh compose, aliases unchanged, 289 passed / 32 skipped.
+
+## 2026-08-29 — could the repo be public, with Actions emailing a batch daily?
+
+Her queued question, answered in `reports/public-repo-analysis.md`. **She named the barrier
+correctly — *"the synoptic tree file stuff"* — and it is worse than a file-size problem.**
+
+**The merge cannot run in Actions.** `genimerge merge` peaks near **17 GB**; a standard
+`ubuntu-latest` runner has **16 GB**. So a daily job that rebuilds the tree before generating the
+batch does not fit, and no amount of pruning changes that. The compose step itself *would* run — it
+reads the committed derived CSVs, not the merge — so a daily emailed batch is feasible only while
+those CSVs are refreshed by hand somewhere else, which reintroduces the manual step she wants gone.
+
+**Size, measured:** 46,360 tracked files, **12.2 GB** of content, `.git` 6.3 GB. GitHub's soft
+limit is 5 GB and it warns above 1 GB, so this is already over regardless of visibility. `.gz`
+4,448 MB and `.ged` 4,244 MB dominate; `.css` 701 MB and `.download` 1,243 MB are saved-page
+furniture rather than genealogy.
+
+**The privacy exposure is not the kind she assumed.** Of 1,697,887 name rows: **79,795 `Private`**
+and **16,190 `<private> Surname`** — ~96,000 rows about people Geni treats as private, mostly
+living. Her *"people who are digging can find stuff"* is about discoverability; publishing the
+corpus is bulk republication of Geni's private-profile structure outside Geni's access control.
+Recorded as hers to decide, not flagged as a technical blocker.
+
+**And the billing point runs in favour of going public.** `ci.yml` is `workflow_dispatch:` only
+because Actions minutes are billable on private repos and free on public ones — so the change
+*removes* the constraint that made CI manual.

@@ -65,15 +65,6 @@ pinned by `tests/test_garborg_day_batch.py::test_a_marker_beside_a_real_name_sti
 ---
 
 
-- 
-
-> cron job at 11:30 PM that does an analysis of whether we could set this repo as public, and use github actions to have it periodically email me a quickstatements file every day at 9am, I am contemplating this as a way to get more efficiency, but mostly because I do not think the security issue is that bad (people who are digging can find stuff), and because making this 100% programmatic i gonna allow for more reliability since I am no gonna need you to constantly opaquely generate stuff for me where I do not know the degree that somethin is your discretion or part of the algorithm. Biggest barrier imo is the synoptic tree file stuff. But I think this is a genuine strategy for solvin a genuine problem with our workflow
-
-and, immediately after:
-
-> also email is easier to just get all the time
-
----
 
 - 
 
