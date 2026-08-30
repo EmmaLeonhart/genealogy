@@ -20108,3 +20108,22 @@ that was the 86%/75% figure, and it was circular.
 
 **Still wrong, and visible in the gospel item:** `Johannes` comes out `永哈内斯` where Bureus's
 own label says `约翰内斯`. The `j` onset row and `han` are both off. Not touched today.
+
+## 2026-08-30 — `jo` is 约, and the same reasoning applied to `jon` is wrong
+
+`Johannes` came out `永哈内斯` against the `约翰内斯` our own table already held by hand. The
+cause is one cell: `ROWS["j"]`'s `o` column was `永`, which is the *yong* syllable, so every
+`jo-` name was built on it — `Johan` `永汉`, `Johanne` `永哈内`, `Jon` `永`.
+
+`永` -> `约` takes zh agreement over the 318 rows the engine did not write from **148 to 152**.
+
+**The same reasoning applied one step further is refuted, and that is the part worth keeping.**
+`NASAL_FINAL["j"]`'s `on` column is also `永`; changing it to `约恩` by the identical argument
+takes zh from **152 to 145**. It is left alone, with the failed experiment written next to the
+successful one, because nothing in the reasoning distinguished them beforehand.
+
+138 cached rows re-derived. Running total against those 318 rows today: zh **11.7% -> 48%**,
+ja 38.8% -> 46%.
+
+`Johan` is now `约汉` where the conventional form is `约翰`; `翰` appears only in that fixed
+rendering and is not a rule this engine can carry. Not touched.

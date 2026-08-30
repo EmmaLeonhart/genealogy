@@ -66,8 +66,15 @@ ROWS = {
     "v":  (("ヴァ", "ヴィ", "ヴ", "ヴェ", "ヴォ"), ("瓦", "维", "武", "韦", "沃")),
     "w":  (("ヴァ", "ヴィ", "ヴ", "ヴェ", "ヴォ"), ("瓦", "维", "武", "韦", "沃")),
     "f":  (("ファ", "フィ", "フ", "フェ", "フォ"), ("法", "菲", "富", "费", "福")),
-    "j":  (("ヤ", "イ", "ユ", "イェ", "ヨ"), ("雅", "伊", "尤", "耶", "永")),
-    "y":  (("ヤ", "イ", "ユ", "イェ", "ヨ"), ("雅", "伊", "尤", "耶", "永")),
+    # `jo` is 约, not 永. 永 is the *yong* syllable, and using it for `jo` gave `Johan` 永汉
+    # against the standard 约翰, `Johanne` 永哈内, `Jon` 永. Measured over the 318 rows this
+    # engine did not write: zh 148 -> 152.
+    #
+    # **The same change to the nasal final was tried and REFUTED**: `jon` 永 -> 约恩 took zh
+    # 152 -> 145, so `NASAL_FINAL["j"]` keeps 永 in the `on` column. Recorded because the
+    # reasoning that produced the good change predicts the bad one just as confidently.
+    "j":  (("ヤ", "イ", "ユ", "イェ", "ヨ"), ("雅", "伊", "尤", "耶", "约")),
+    "y":  (("ヤ", "イ", "ユ", "イェ", "ヨ"), ("雅", "伊", "尤", "耶", "约")),
     "c":  (("カ", "シ", "ク", "セ", "コ"), ("卡", "西", "库", "塞", "科")),
     "kj": (("ヒャ", "ヒ", "ヒュ", "ヒェ", "ヒョ"), ("希", "希", "休", "谢", "肖")),
     "sj": (("シャ", "シ", "シュ", "シェ", "ショ"), ("沙", "西", "舒", "谢", "肖")),
