@@ -56,10 +56,12 @@ OUT = ROOT / "reports" / "garborg-live-values.tsv"
 #: were being thrown away.
 LABELS_OUT = ROOT / "reports" / "garborg-live-labels.tsv"
 
-#: The languages this project writes. Anything else on the item is somebody else's and is not
-#: our business to compare against.
-LABEL_LANGS = ("en", "mul", "ja", "zh", "ko", "nb", "no", "sv", "da", "de", "nl", "es", "it",
-               "pt", "ca")
+#: **EVERY language, not the ones we write.** Emma, 2026-08-30, specifying how `mul` should be
+#: chosen: *"they have a consistent Latin label across two or more languages… whichever one is
+#: the most common"*. That is a count over all the item's labels, so restricting the capture to
+#: the fifteen languages this project emits would make the consensus a measure of our own
+#: output. `None` means no filter.
+LABEL_LANGS = None
 
 #: `full_entities` returns `{}` above this many ids rather than erroring, which reads as
 #: "these items hold nothing" -- the absence-versus-broken-join trap. Chunked well under it.
@@ -120,8 +122,9 @@ def main():
     # The labels, from the same fetch. See `LABELS_OUT`.
     label_rows = []
     for qid, item in sorted(items.items()):
-        for lang in LABEL_LANGS:
-            value = (item.get("labels", {}).get(lang) or {}).get("value")
+        labels = item.get("labels", {})
+        for lang in (LABEL_LANGS or sorted(labels)):
+            value = (labels.get(lang) or {}).get("value")
             if value:
                 label_rows.append({"qid": qid, "lang": lang, "label": value})
     with open(LABELS_OUT, "w", encoding="utf-8", newline="") as f:

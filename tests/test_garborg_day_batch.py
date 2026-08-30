@@ -755,3 +755,26 @@ def test_an_ordinary_name_is_not_read_as_a_marker(label):
     would swallow it. Real names must keep the ordinary path.
     """
     assert not _carries_marker()(label)
+
+
+def test_no_redaction_marker_reaches_the_P1810_qualifier():
+    """Neither form of private gets a `subject named as`. Emma, 2026-08-30.
+
+    She had ruled on 08-29 that the marker went in verbatim, because `P1810` records what the
+    source *displays*. `Q141223549` broke that: it carried `P1810 "Private"` while Geni's site
+    shows `<private> Paulson` — a surname in none of the five exports holding her.
+
+    > *"there are two different kinds of private on Jenny… this is some weird-ass backend
+    > difference that affects the Gedcom export, but they display identically… so neither form
+    > of private should be present as the qualifier."*
+
+    Both forms are in the corpus — `<private> /Surname/` 19,945 and bare `Private` 99,645 — so
+    which one a profile exports as is a backend artefact, and a qualifier built from it records
+    our export rather than the display. `P1810` on a named person is untouched, which the
+    second assertion pins so this cannot turn into "drop the qualifier".
+    """
+    marker = re.compile(r'\tP1810\t"(?:<private>|Private|NN|Ukjent|Unknown)\b', re.I)
+    bad = [ln for ln in lines() if marker.search(ln)]
+    assert not bad, f"a redaction marker reached P1810: {bad[:4]}"
+    assert any("\tP1810\t" in ln for ln in lines()), (
+        "P1810 vanished entirely -- named people must still carry what Geni renders")

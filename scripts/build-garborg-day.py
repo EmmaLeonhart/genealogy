@@ -786,6 +786,44 @@ def _drop_territorial(label):
     return label
 
 
+#: A label written in Latin script -- letters, marks, spaces and the punctuation names carry.
+_LATIN_LABEL = re.compile(r"^[A-Za-zÀ-ÿĀ-ſĲ-ŉŊ-ž'’.,()\-\s]+$")
+
+
+def consensus_latin_label(labels):
+    """The Latin name an item is called by, across its own languages. `''` when there is none.
+
+    **Emma's specification, 2026-08-30**, on `Q6161733` coming out
+    `カール・フレドリク・パイパー・ティル・クラゲホルム`:
+
+    > *"if the pipeline was working correctly, it would have observed the fact that the person
+    > has over two labels. It would have observed that the person either has an English-language
+    > label that is in Latin characters, or they have a consistent Latin label across two or
+    > more languages. It would have assigned that one, whichever one is the most common, as the
+    > multi-language label… The Chinese and Japanese would have been derived from the
+    > multi-language label."*
+
+    So there are two grounds and English is the first: an `en` label in Latin script is the
+    answer. Failing that, the Latin string that the most languages agree on, and **at least two
+    must agree** -- one language saying something is not a consensus, it is that language.
+
+    `Q6161733` is the worked case: `en` and `sv` both read `Carl Fredrik Piper`, so that is the
+    `mul` label and what `ja`/`zh` are built from. Our own Geni string,
+    `Carl Fredrik Piper till Krageholm`, is not a candidate here at all -- it goes to `P1810`
+    *subject named as* and to an `Amul` alias, per her same message.
+    """
+    en = (labels.get("en") or "").strip()
+    if en and _LATIN_LABEL.match(en):
+        return en
+    counts = collections.Counter(
+        value.strip() for lang, value in labels.items()
+        if lang != "mul" and value and _LATIN_LABEL.match(value.strip()))
+    if not counts:
+        return ""
+    value, n = counts.most_common(1)[0]
+    return value if n >= 2 else ""
+
+
 def label_in(label, table):
     """(ja, zh) for a whole name, or (None, None) if any token is unknown.
 
@@ -4969,19 +5007,29 @@ def main():
         offline against `wikidata/items/`, where every `P1810` sits on one (`P396`, `P1280`,
         `P8034`, `P12458`). Hanging it on `P2600` is that shape, not an invention.
 
-        **A redaction marker goes in VERBATIM here, and only here.** Emma ruled on this
-        2026-08-29, choosing the literal string over both the reconstructed `NN Garborg` and
-        omitting the qualifier: `P1810` documents what the source database literally shows, so
-        `<private> Garborg` is the true and useful value. That is a **narrow exception** to
-        § *Redacted people go in. `Private` never becomes a label*, and the reason the two do
-        not conflict is that they are different claims — a *label* asserts what the person is
-        called, and this asserts what Geni displays. Her `mul` label stays `NN Garborg`.
+        **NEITHER form of private gets a qualifier.** Emma, 2026-08-30, shown that
+        `Q141223549` carried `P1810 "Private"` while Geni's site displays `<private> Paulson`:
 
-        So the marker is barred from every label and permitted in exactly one qualifier;
-        `tests/test_garborg_day_batch.py` enforces the line rather than leaving it to memory.
+        > *"there are two different kinds of private on Jenny… this is some weird-ass backend
+        > difference that affects the Gedcom export, but they display identically. If this is
+        > the case, there's no way to get a consistent subject name as a thing from the Gedcom
+        > thing for these individuals, so neither form of private should be present as the
+        > qualifier."*
+
+        **This reverses her 2026-08-29 ruling that the marker went in verbatim**, and why that
+        one failed is the part worth keeping: it assumed the export and the web display agree.
+        They do not. Both forms are in the corpus — `<private> /Surname/` **19,945** times and
+        bare `Private` **99,645** — and Geni shows the same thing for both, so which one a
+        profile exports as is a backend artefact rather than a fact about the person. A
+        qualifier built from it records our export, not what the source displays, which is the
+        entire justification for the property.
+
+        `P1810` on a NAMED person is unchanged and still carries what Geni renders.
         """
         raw = (fields.get(g) or {}).get("display_name", "")
-        return f'\tP1810\t"{qs(raw)}"' if raw else ""
+        if not raw or _carries_marker(raw) or "<private>" in raw.casefold():
+            return ""
+        return f'\tP1810\t"{qs(raw)}"'
 
     def add(q, prop, value, g, qual=""):
         # `qual` is a ready-made qualifier fragment, tab-prefixed, and is deliberately NOT

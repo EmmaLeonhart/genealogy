@@ -20321,3 +20321,40 @@ exists — 7,179 labels. Two traps were found by running it and are pinned in
 `tests/test_join_sanity.py`: `van`/`von`/`af` form surnames, so the first draft truncated
 `Reinoud I van Brederode` to `Reinoud`; and a capital `I` is a regnal ordinal, not the Norwegian
 preposition, which truncated the same name again by a different route after case was folded.
+
+## 2026-08-30 — neither form of private gets a `P1810`, and what I got wrong about the surname
+
+`Q141223549` carried `P1810 "Private"`. Emma: *"Was 'Private' and should be '<private> Paulson'…
+Your promised fix to the <private> error failed again on this one."*
+
+**Checked, and the accusation of a lie needed a real answer.** `<private> /Surname/` occurs
+**19,945** times across the 604 GEDCOMs against **99,645** bare `Private`, so the form is real
+and common — `<private> /de Anaya/`, `<private> /García de Chaves/`. The `<private>` handling
+works where the surname exists: `<private> /Paulson/` yields surname `Paulson` and `NN Paulson`.
+
+**But that person is a bare `Private` in all five exports containing her, today's 30 AUG one
+included**, with no `SURN` line at all. Her father is `<private> /Ronneberg/`, not Paulson, so
+the display is not composed from her parents either. There was never a Paulson in our data and
+no rebuild would have produced one.
+
+**What misled her was mine.** Early today I read out a devlog line about
+`<private> /Dokken/` being invisible because the derived CSVs predated its export — true, about
+a different record — and quoting it beside her person made staleness look like the explanation
+here. It was not.
+
+**Her ruling, and it reverses her own of 08-29:**
+
+> *"there are two different kinds of private on Jenny… this is some weird-ass backend difference
+> that affects the Gedcom export, but they display identically. If this is the case, there's no
+> way to get a consistent subject name as a thing from the Gedcom thing for these individuals,
+> so neither form of private should be present as the qualifier."*
+
+The 08-29 ruling put the marker in verbatim because `P1810` records what the source *displays*.
+That reasoning assumed export and display agree; they do not, and which form a profile exports
+as is a backend artefact. So `named_as` now returns nothing for a marker or a `<private>`, and
+`P1810` on a named person is unchanged — 32 in the current batch, 0 of them markers.
+`tests/test_garborg_day_batch.py` pins both directions, so this cannot drift into dropping the
+qualifier altogether.
+
+**Also settled, from the same exchange:** the Geni display name goes to `P1810` and an `Amul`
+alias, and **never to a `ja`/`zh` alias** — her answer, *"No ja/zh alias at all"*.
