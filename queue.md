@@ -1909,13 +1909,6 @@ recorded surnames. `NN Gjøa` would be her alias under the current rule and is n
 
 Analysis first: count the NN people carrying both a `SURN` and a different `_MARNM`.
 
-## A system for fixing romanisation errors
-
-**Emma, 2026-08-29:** *"we want to introduce a system to try to fix romanizaion errors."*
-
-**First case:** `Q141216408` came out as **ウン・モルクク**; she hand-corrected it to
-**ウン・モルク**.
-
 ## Count the spouses whose only name is their partner's name
 
 **Emma, 2026-08-29**, after `Q141198548` turned out to be Deokjang's wife carrying his name rather

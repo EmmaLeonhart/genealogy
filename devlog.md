@@ -19957,3 +19957,32 @@ The top of the duplicate list is not obscure: `Thomas` (2,015 bearers), `Hans` (
 
 Kind is not collapsed, per § *One name item per USAGE*, and labels fold on case only, per the
 `María`/`Mária`/`Marià` rule. Nothing is changed in the resolver yet — that is the queued step.
+
+## 2026-08-30 — the romanisation system: a rule fix has to reach the rows it already wrote
+
+Her item was *"we want to introduce a system to try to fix romanizaion errors"*, with one case:
+`Q141216408` came out **ウン・モルクク** and she corrected it to **ウン・モルク**.
+
+**It was never one name.** `translit_no.translit` walks letter by letter and has a geminate rule
+for *identical* adjacent letters — `nn` in `Anna` — but none for a digraph of *different* letters
+spelling one phoneme. So `Mørck` read `m`+`ø` モ, `r` ル, `c` ク, `k` ク. **47 tokens carried the
+doubling**: `Falck` ファルクク, `Munck` ムンクク, `Rudbeck` ルドベクク, `Sack` サクク — and in
+onset position it invented a syllable, `Sacken` → サクケン.
+
+`ck` now normalises to `k` before the walk, the way `aa` already normalises to `å`. That gives
+her correction exactly, `Mørck` → `モルク` / `莫尔克`, and fixes onset and coda in one place.
+
+**The system half is that a rule fix must reach what the rule already wrote.**
+`extend-transliterations.py` only ADDS — *"the hand table always wins, every existing row is
+preserved untouched"* — which is right for hand rows and wrong for rule rows, because those are
+a cache of an engine that changes. Without a refresh the table keeps serving `モルクク` forever
+and the correction she made on one item never reaches the other 46.
+
+`scripts/refresh-rule-transliterations.py` re-derives exactly the cached rows and nothing else.
+The split is the `note` column: `by rule` and `composed by rule: …` are recomputed; every other
+note means a person checked the reading and is untouched. This run: **4,017 rows — 317
+hand-checked and untouched, 47 re-derived, 0 unreadable.** The engine's score against the table
+is unchanged at 86% ja / 75% zh, which is the point — both sides moved together.
+
+`tests/test_join_sanity.py` pins her correction in both positions and fails if the doubling
+returns to any row.

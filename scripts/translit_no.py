@@ -132,7 +132,14 @@ BARE_VOWEL = str.maketrans({
 
 def translit(token):
     """`(katakana, chinese)` for one Norwegian name token, or `(None, None)`."""
-    s = token.casefold().translate(BARE_VOWEL).replace("aa", "å")
+    # **`ck` is ONE sound spelled with two letters.** The geminate rule below handles
+    # *identical* adjacent letters (`nn` in `Anna`); it cannot see a digraph of *different*
+    # letters spelling one phoneme, so `Mørck` walked m-ø, r, c, k and produced `モルクク`.
+    # Emma hand-corrected that item to `モルク` on 2026-08-29. Normalising here, the same way
+    # `aa` normalises to `å`, fixes the coda (`Falck`, `Munck`) and the onset (`Sacken`
+    # `サクケン` -> `サケン`) in one place. 47 tokens were affected.
+    s = (token.casefold().translate(BARE_VOWEL).replace("aa", "å")
+         .replace("ck", "k"))
     if not s or any(c not in VOWELS + "bcdfghjklmnpqrstvwxz-'’." for c in s):
         return None, None
     ja, zh, i = [], [], 0

@@ -552,3 +552,42 @@ def test_an_argument_free_day_build_is_refused():
     if before is not None:
         assert batch.read_bytes() == before, (
             "the refused run still touched reports/wikidata-garborg-day.qs")
+
+
+def test_the_ck_digraph_is_one_sound_not_two():
+    """Emma hand-corrected `Q141216408` from **ウン・モルクク** to **ウン・モルク**, 2026-08-29.
+
+    `translit_no` walks letter by letter with a geminate rule for *identical* adjacent letters
+    (`nn` in `Anna`), and had none for a digraph of *different* letters spelling one phoneme.
+    So `Mørck` came out `m`+`ø` モ, `r` ル, `c` ク, `k` ク — a `ク` too many, and the same on the
+    Chinese side. 47 tokens in `reports/garborg-name-transliterations.tsv` carried the doubling.
+
+    Pinned in both positions, because the bug showed differently in each: in the coda it doubled
+    the kana, and in an onset (`Sacken`) it produced a spurious extra syllable `サクケン`.
+    """
+    import sys as _sys
+    _sys.path.insert(0, str(ROOT / "scripts"))
+    from translit_no import translit
+
+    assert translit("Mørck") == ("モルク", "莫尔克"), "her correction, exactly"
+    assert translit("Sacken") == ("サケン", "萨凯恩"), "ck in onset position"
+    assert translit("Anna") == ("アナ", "阿纳"), "the geminate rule for identical letters stands"
+
+
+def test_the_rule_refresh_never_rewrites_a_hand_checked_row():
+    """`refresh-rule-transliterations.py` re-derives cache and nothing else.
+
+    The `note` column is the whole safety story: `by rule` and `composed by rule: …` are a
+    cached function of an engine that changes, and every other note means a person checked the
+    reading. `CLAUDE.md` § *the purpose is to ADD* — a rule does not overwrite a human.
+    """
+    import csv as _csv
+    table = ROOT / "reports" / "garborg-name-transliterations.tsv"
+    rows = list(_csv.DictReader(table.open(encoding="utf-8"), delimiter="\t"))
+    derived = [r for r in rows if (r["note"] or "").startswith(("by rule", "composed by rule:"))]
+    hand = [r for r in rows if r not in derived]
+    assert hand, "the hand rows are the test set; losing them would make the score meaningless"
+
+    # No row of either kind may still carry the doubled digraph.
+    doubled = [r["token"] for r in rows if "クク" in r["ja"] and "ck" in r["token"].lower()]
+    assert not doubled, f"the ck doubling came back on: {doubled[:10]}"
