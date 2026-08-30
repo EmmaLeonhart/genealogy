@@ -1959,6 +1959,12 @@ was English only and I do not understand why"*.
 
 Not investigated.
 
+## An item was created as "En dödfödd son Bielke", which is just wrong
+
+Emma, 2026-08-30: *"an item was created as 'En dödfödd son Bielke' which is just wrong."*
+
+Not investigated.
+
 ## Always last — pinned to the very end of the file
 
 **Bullets, not letters.** These were `A.` and `B.`; `CLAUDE.md` § *Queue items are BULLET POINTS*
