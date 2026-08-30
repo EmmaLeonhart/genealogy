@@ -801,6 +801,24 @@ BLOCKED-ON-EXTERNAL, BLOCKED-ON-USER-ACTION, or anything else from the not-done
 taxonomy — it is not a not-done item, and calling it one made a plan of hers look
 like something outside anyone's control.
 
+### A duplicate parent value is SELF-HEALING. Do not report it, do not fix it
+
+**Emma, 2026-08-30:** *"duplicate parent pairs are self healing. A bot does it and that was an
+intention."*
+
+After a merge, an item can carry the same parent twice — the survivor and the redirect. On
+`Q141180409` and `Q141199734` that reads as `P22 Q141199704, Q141199808` and
+`P25 Q141199706, Q141199819`, where the second of each pair redirects to the first.
+
+**This is intended and a bot clears it.** It is not a defect, not a conflict, and not something
+to emit a correction for. Traversal is unaffected: both values resolve to the same person, so a
+path through them is connected.
+
+**What this forbids:** flagging it in a status report, adding a de-duplication pass, or reading
+it as evidence that a spine is broken. It sits in the same family as § *A second Geni ID on one
+Wikidata item is NOT a conflict* — an artefact of how Wikidata merges, which the ecosystem
+resolves on its own.
+
 ### A second Geni ID on one Wikidata item is NOT a conflict
 
 **Emma, 2026-08-14: *"it is impossible to merge these geni profiles, simple as
