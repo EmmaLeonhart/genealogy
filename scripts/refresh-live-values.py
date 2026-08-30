@@ -43,6 +43,24 @@ sys.path.insert(0, str(ROOT / "src"))
 LEDGER = ROOT / "reports" / "garborg-qids.tsv"
 OUT = ROOT / "reports" / "garborg-live-values.tsv"
 
+#: **The live LABEL of each ledger item, in the languages we write.**
+#:
+#: **Emma, 2026-08-30:** *"Every single label gets redone and if they disagree then they go
+#: onto the quickstatements that are generated."* A disagreement can only be seen against the
+#: value, and until now nothing recorded it: `garborg-existing-gaps.existing_state` reads the
+#: offline store and yields the label *languages* an item has, not what they say, and the store
+#: predates every item Emma has made. So the batch could only ever ask "is `ja` missing", never
+#: "is `ja` right".
+#:
+#: Same fetch, same items, no extra requests -- `full_entities` already returns labels and they
+#: were being thrown away.
+LABELS_OUT = ROOT / "reports" / "garborg-live-labels.tsv"
+
+#: The languages this project writes. Anything else on the item is somebody else's and is not
+#: our business to compare against.
+LABEL_LANGS = ("en", "mul", "ja", "zh", "ko", "nb", "no", "sv", "da", "de", "nl", "es", "it",
+               "pt", "ca")
+
 #: `full_entities` returns `{}` above this many ids rather than erroring, which reads as
 #: "these items hold nothing" -- the absence-versus-broken-join trap. Chunked well under it.
 CHUNK = 40
@@ -98,6 +116,20 @@ def main():
         w.writerows(rows)
     print(f"\n{len(rows):,} statements over {len(items)} items "
           f"-> {OUT.resolve().relative_to(ROOT)}")
+
+    # The labels, from the same fetch. See `LABELS_OUT`.
+    label_rows = []
+    for qid, item in sorted(items.items()):
+        for lang in LABEL_LANGS:
+            value = (item.get("labels", {}).get(lang) or {}).get("value")
+            if value:
+                label_rows.append({"qid": qid, "lang": lang, "label": value})
+    with open(LABELS_OUT, "w", encoding="utf-8", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=["qid", "lang", "label"], delimiter="\t")
+        w.writeheader()
+        w.writerows(label_rows)
+    print(f"{len(label_rows):,} labels over {len(items)} items "
+          f"-> {LABELS_OUT.resolve().relative_to(ROOT)}")
 
 
 if __name__ == "__main__":

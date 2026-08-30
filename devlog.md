@@ -20058,3 +20058,53 @@ consequence rather than a design, and it is written down in the code as such.
 length the engine does not produce — `Anna` アンナ against `アナ`, `Aagot` オーゴット against
 `オーゴト`, `Abel` アーベル against `アベル`. That is a convention decision rather than a bug,
 so it is queued rather than guessed at over 3,700 rows.
+
+## 2026-08-30 — every label is redone now, and the Chinese engine was structurally wrong
+
+Emma's rule: *"Every single label gets redone and if they disagree then they go onto the
+quickstatements that are generated. Arne Garborg and Johannes Bureus are the only people with
+cjk labels not added by us. So only those ones are to be taken as gospel. And my correction of
+Minnie is to be used."*
+
+**Four things had to change for that to be safe.**
+
+**1. The batch could not see a disagreement.** It emitted a label only into a language the item
+did not have, and it learned which languages those were from the offline store — which predates
+every item Emma has made. `refresh-live-values.py` now writes
+`reports/garborg-live-labels.tsv` from the same fetch as the statements, no extra requests, and
+the batch compares values.
+
+**2. The gospel pair.** `CJK_LABELS_NOT_OURS = {Q467497, Q633094}`. Checked live: Arne Garborg
+is `アルネ・ガルボルグ` / `阿尔内·嘉宝` and Johannes Bureus `ヨーハン・ブーレ` /
+`约翰内斯·托马松`. Neither is anything this pipeline would produce — `嘉宝` is the established
+rendering of *Garbo* against our `加尔博格` — which is the check on her claim, not just the
+claim.
+
+**3. Her Minnie correction.** `Minnie` was `ミニエ` / `米尼埃` by rule; it is now `ミニー` /
+`米妮`, noted as hers, and the engine still produces the old value — so a test fails the moment
+a refresh treats her row as cache.
+
+**4. The Chinese engine was wrong for every name with a syllable-final nasal**, which she caught
+on sight: *"is 塞恩 right for sen? Sounds like you made coda -n its own character instead of
+merging them which sounds sussy for Chinese."* It was. `translit_no` gave every coda its own
+character, so `sen` came out 塞 + 恩 rather than 森. **1,701 rows had the shape, 1,201 carried a
+standalone 恩** — `Absalon` 阿布萨洛恩, `Aanenson` 奥内恩松.
+
+I proposed gating the Chinese half instead. Her answer: *"don't gate it, fucking fix it and then
+do the overwrite."* `NASAL_FINAL` is the fix — the nasal fuses into the syllable, `-ng` read as
+the same final, declared as a simplification rather than hidden. Japanese is untouched, because
+`ン` is a real mora and `アブサロン` was always right.
+
+**Agreement with the 318 rows the engine did not write:**
+
+| | ja | zh |
+| --- | ---: | ---: |
+| before today | 38.8% | 11.7% |
+| suffix table shared with the composer | 46.1% | 41.3% |
+| nasal finals | 46.1% | **46.5%** |
+
+1,078 cached rows re-derived. `check()` no longer scores the engine against its own output —
+that was the 86%/75% figure, and it was circular.
+
+**Still wrong, and visible in the gospel item:** `Johannes` comes out `永哈内斯` where Bureus's
+own label says `约翰内斯`. The `j` onset row and `han` are both off. Not touched today.

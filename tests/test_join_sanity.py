@@ -570,7 +570,9 @@ def test_the_ck_digraph_is_one_sound_not_two():
     from translit_no import translit
 
     assert translit("Mørck") == ("モルク", "莫尔克"), "her correction, exactly"
-    assert translit("Sacken") == ("サケン", "萨凯恩"), "ck in onset position"
+    assert translit("Sacken") == ("サケン", "萨肯"), (
+        "ck in onset position. The Chinese was 萨凯恩 when this test was written, which "
+        "encoded the coda-nasal bug Emma caught on 2026-08-30: ken is 肯, one syllable.")
     assert translit("Anna") == ("アナ", "阿纳"), "the geminate rule for identical letters stands"
 
 
@@ -591,3 +593,58 @@ def test_the_rule_refresh_never_rewrites_a_hand_checked_row():
     # No row of either kind may still carry the doubled digraph.
     doubled = [r["token"] for r in rows if "クク" in r["ja"] and "ck" in r["token"].lower()]
     assert not doubled, f"the ck doubling came back on: {doubled[:10]}"
+
+
+def test_a_syllable_final_nasal_is_inside_the_chinese_syllable():
+    """Emma, 2026-08-30: *"is 塞恩 right for sen? … sounds sussy for Chinese"*. It was not.
+
+    `translit_no` gave every coda consonant its own character, so a syllable-final nasal became
+    a separate 恩: `sen` as 塞 + 恩 rather than 森. **1,701 rows of the table carried the shape
+    and 1,201 a standalone 恩.** Agreement with the rows the engine did not write went
+    11.7% -> 46.5% when `NASAL_FINAL` landed.
+
+    Japanese is asserted alongside on purpose: `ン` is a real mora and was always right, so a
+    change that "fixes" the katakana here is a regression, not an improvement.
+    """
+    import sys as _sys
+    _sys.path.insert(0, str(ROOT / "scripts"))
+    from translit_no import translit
+
+    assert translit("Arnesen")[1] == "阿尔内森", "sen is 森, not 塞恩"
+    assert translit("Absalon") == ("アブサロン", "阿布萨隆")
+    assert translit("Hansen") == ("ハンセン", "汉森")
+    assert translit("Bing")[1] == "宾", "-ng is a nasal final too"
+    # A nasal with a vowel after it is not final: `Anna` is `an` + `na`.
+    assert translit("Anna") == ("アナ", "阿纳")
+
+
+def test_emmas_own_corrections_are_in_the_table():
+    """Her hand corrections outrank the engine and must survive every re-derivation.
+
+    `Mørck` -> `モルク` (2026-08-29, on `Q141216408`) and `Minnie` -> `ミニー` / `米妮`
+    (2026-08-30, on `Q141216493`). The `Minnie` row was `ミニエ` / `米尼埃` by rule, and the
+    engine still produces that — so this fails the moment a refresh treats her row as cache.
+    """
+    import csv as _csv
+    rows = {r["token"]: r for r in _csv.DictReader(
+        (ROOT / "reports" / "garborg-name-transliterations.tsv").open(encoding="utf-8"),
+        delimiter="\t")}
+    assert (rows["Minnie"]["ja"], rows["Minnie"]["zh"]) == ("ミニー", "米妮")
+    assert rows["Mørck"]["ja"] == "モルク"
+
+
+def test_the_two_items_whose_cjk_labels_are_not_ours_are_never_overwritten():
+    """Emma, 2026-08-30: *"Arne Garborg and Johannes Bureus are the only people with cjk labels
+    not added by us. So only those ones are to be taken as gospel."*
+
+    Everything else in the ledger got its `ja`/`zh` from this pipeline, which is what makes
+    redoing them safe — and makes these two the one place where redoing them is not.
+    """
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(
+        "build_garborg_day", ROOT / "scripts" / "build-garborg-day.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    assert module.CJK_LABELS_NOT_OURS == {"Q467497", "Q633094"}
+    assert module.ZH_OVERWRITE is True, (
+        "she said fix it and do the overwrite, not gate it")

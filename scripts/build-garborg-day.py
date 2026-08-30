@@ -79,6 +79,36 @@ _siblings_emitted = []
 
 SEX = {"M": "Q6581097", "F": "Q6581072"}
 
+#: **The only two people whose CJK labels were not written by us.** Emma, 2026-08-30:
+#: *"Arne Garborg and Johannes Bureus are the only people with cjk labels not added by us. So
+#: only those ones are to be taken as gospel."*
+#:
+#: Checked live the same day, and both readings are visibly not ours -- our own transliterator
+#: would never produce either:
+#:
+#:     Q467497  Arne Garborg     ja アルネ・ガルボルグ   zh 阿尔内·嘉宝
+#:     Q633094  Johannes Bureus  ja ヨーハン・ブーレ     zh 约翰内斯·托马松
+#:
+#: `嘉宝` is the established Chinese rendering of *Garbo*, against our `加尔博格`; `ヨーハン・
+#: ブーレ` is the Swedish reading, against our letter-by-letter one. Every other `ja`/`zh` on a
+#: ledger item came from this pipeline, which is what makes redoing them safe.
+CJK_LABELS_NOT_OURS = {"Q467497", "Q633094"}
+
+#: **The Chinese overwrite is ON because the reason not to do it was fixed.** Emma,
+#: 2026-08-30: *"is 塞恩 right for sen? Sounds like you made coda -n its own character instead
+#: of merging them which sounds sussy for Chinese."* It was not right, and she named the cause:
+#: `translit_no` gave every coda consonant its own character, so a syllable-final nasal came
+#: out as a separate 恩 -- `sen` as 塞 + 恩 rather than 森. **1,701 rows carried the shape and
+#: 1,201 a standalone 恩.**
+#:
+#: Her instruction on being shown a proposal to gate the Chinese half instead:
+#: *"don't gate it, fucking fix it and then do the overwrite."* `translit_no.NASAL_FINAL` is
+#: the fix; agreement with the rows the engine did not write went **11.7% -> 46.5%**, and
+#: 1,078 cached rows were re-derived by `refresh-rule-transliterations.py`.
+#:
+#: Japanese was never affected: `ン` is a real mora, so `アブサロン` was always right.
+ZH_OVERWRITE = True
+
 #: Geni ids released from the duplicate guard by hand, with the unmatched item that held them.
 #: The guard refuses to create anybody whose parent has a `P40` child item we have not matched,
 #: because the person may BE that item. It is conservative on purpose and these two are false
@@ -267,6 +297,29 @@ def read_live_values():
     with open(path, encoding="utf-8") as f:
         for row in csv.DictReader(f, delimiter="	"):
             out.add((row["qid"], row["property"], row["value"]))
+    return out
+
+
+def read_live_labels():
+    """`{(qid, lang): label}` -- what each ledger item's label actually SAYS, live.
+
+    Emma, 2026-08-30: *"Every single label gets redone and if they disagree then they go onto
+    the quickstatements that are generated."* A disagreement needs the value, and
+    `live_state()` gives only which languages exist, from a store that predates her items.
+
+    Written by `refresh-live-values.py` off the same fetch as the statements. A missing file
+    yields an empty map, which makes every label look absent -- so callers must treat "no live
+    value" as "do not know", never as "the item has nothing".
+    """
+    out = {}
+    path = ROOT / "reports" / "garborg-live-labels.tsv"
+    if not path.exists():
+        print("WARNING: reports/garborg-live-labels.tsv missing - label disagreements cannot "
+              "be seen. Run scripts/refresh-live-values.py")
+        return out
+    with open(path, encoding="utf-8") as f:
+        for row in csv.DictReader(f, delimiter="	"):
+            out[(row["qid"], row["lang"])] = row["label"]
     return out
 
 
@@ -4823,6 +4876,9 @@ def main():
     # large part of what "not remotely comprehensive" meant. `Q467497` Arne Garborg
     # had no `P22` father and no `P25` mother while both his parents had QIDs.
     state = existing_state(set(our_items.values()))
+    # What the labels actually SAY, live, so a disagreement can be seen. See
+    # `read_live_labels` and Emma's rule of 2026-08-30.
+    live_labels = read_live_labels()
     # A live read beats both the store and the guess. `reports/garborg-live-state.tsv`
     # records what each item held on 2026-08-24; the store predates most of them and
     # the fallback below assumes our own batch made them, which is wrong wherever Emma
@@ -4956,15 +5012,32 @@ def main():
                                    father_name=labels.get(dad, "") if dad else "")[0]:
                 lines.append(line.replace("LAST\t", f"{q}\t", 1))
 
-        # A label ONLY in a language the item does not have. `Len`/`Lmul` REPLACE,
-        # and `Q467497` is labelled `Arne Garborg` on Wikidata against our derived
-        # `Aadne (Arne) Eivindson Garborg` -- emitting ours would overwrite a better
-        # label with a Geni display string.
+        # **Every CJK label is redone, and a DISAGREEMENT is emitted.** Emma, 2026-08-30:
+        # *"Every single label gets redone and if they disagree then they go onto the
+        # quickstatements that are generated."*
+        #
+        # This used to emit only into a language the item did not have, on the reasoning that
+        # `Lja`/`Lzh` REPLACE and overwriting is dangerous. That reasoning was right about
+        # `en`/`mul`, which can hold a curated Norwegian label, and wrong about `ja`/`zh`:
+        # **we wrote essentially all of them**, so declining to overwrite meant a rule fix
+        # never reached the items the old rule had already labelled. The `ck` doubling
+        # (`モルクク`) would have sat on every affected item forever.
+        #
+        # The absence check also could not work: `langs` comes from the offline store, which
+        # predates every item Emma has made, so an item she created yesterday looks label-less
+        # whatever it holds. `reports/garborg-live-labels.tsv` is the live value, from the same
+        # fetch as the live statements.
         langs = state.get(q, (set(), set()))[0]
         ja, zh = label_in(labels.get(g, ""), table)
-        if ja:
+        if ja and q not in CJK_LABELS_NOT_OURS:
             for code, value in (("ja", ja), ("zh", zh)):
-                if code not in langs:
+                live = live_labels.get((q, code))
+                if live is None and code in langs:
+                    # The store says the language exists but we do not know its value, and a
+                    # blind overwrite is what this branch used to refuse to do. Leave it: the
+                    # next live refresh gives the value and the disagreement is emitted then.
+                    continue
+                if live != value:
                     lines.append(f'{q}\tL{code}\t"{value}"')
     print(f"{len(seen)} statements added to existing items")
     lines.append("")

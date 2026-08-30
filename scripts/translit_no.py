@@ -97,6 +97,63 @@ CODA = {
 DIPHTHONGS = {"ei": ("エイ", "艾"), "ai": ("アイ", "艾"), "au": ("アウ", "奥"),
               "øy": ("オイ", "奥伊"), "oy": ("オイ", "奥伊"), "eu": ("エウ", "厄")}
 
+#: **A syllable-final nasal is part of the syllable in Chinese. It is not its own character.**
+#:
+#: Emma, 2026-08-30: *"is 塞恩 right for sen? Sounds like you made coda -n its own character
+#: instead of merging them which sounds sussy for Chinese."* It is not right, and that is
+#: exactly what `CODA` did: onset+vowel gave one character and the `n` gave another, so `sen`
+#: came out 塞 + 恩 instead of **森**. Measured before the fix: **1,701 rows of
+#: `garborg-name-transliterations.tsv` carry a vowel + nasal coda and 1,201 carry a standalone
+#: 恩** — `Absalon` 阿布萨洛恩, `Aanenson` 奥内恩松.
+#:
+#: `{onset: (an, en, in, on, un)}`, matching `ROWS`' column order for a/i/u/e/o reordered to
+#: the finals' own order. These are the standard transcription characters, and the whole table
+#: is **validated against the rows this engine did not write and against real `zh` labels in
+#: `out/wikidata/labels.tsv`** rather than trusted — `python scripts/translit_no.py` prints the
+#: score, and it is the only reason to believe any cell of it.
+#:
+#: **`-ng` is read as the same final as `-n`.** Norwegian and Swedish names in this corpus end
+#: `-ing`, `-ung`, `-ong` where the transcription tables give the same character as the plain
+#: nasal often enough that a separate table would be inventing a distinction to no measured
+#: gain. Declared here rather than hidden: if a later measurement separates them, this is the
+#: line to change.
+NASAL_FINAL = {
+    "":  ("安", "恩", "因", "翁", "温"),
+    "b": ("班", "本", "宾", "邦", "本"),
+    "p": ("潘", "彭", "平", "蓬", "蓬"),
+    "m": ("曼", "门", "明", "蒙", "蒙"),
+    "f": ("凡", "芬", "芬", "丰", "丰"),
+    "v": ("万", "文", "文", "翁", "文"),
+    "w": ("万", "文", "文", "翁", "文"),
+    "d": ("丹", "登", "丁", "东", "敦"),
+    "t": ("坦", "滕", "廷", "通", "通"),
+    "n": ("南", "嫩", "宁", "农", "农"),
+    "l": ("兰", "伦", "林", "隆", "伦"),
+    "r": ("兰", "伦", "林", "龙", "伦"),
+    "g": ("甘", "根", "金", "贡", "贡"),
+    "k": ("坎", "肯", "金", "孔", "昆"),
+    "h": ("汉", "亨", "欣", "洪", "洪"),
+    "s": ("桑", "森", "辛", "松", "孙"),
+    "z": ("赞", "曾", "津", "宗", "尊"),
+    "j": ("扬", "延", "因", "永", "云"),
+    "y": ("扬", "延", "因", "永", "云"),
+    "c": ("坎", "森", "辛", "孔", "昆"),
+    "sk": ("斯坎", "斯肯", "斯金", "斯孔", "斯昆"),
+    "th": ("坦", "滕", "廷", "通", "通"),
+    "ch": ("坎", "肯", "金", "孔", "昆"),
+    "kj": ("希安", "希恩", "希因", "希翁", "希温"),
+    "sj": ("尚", "申", "辛", "雄", "顺"),
+    "skj": ("尚", "申", "辛", "雄", "顺"),
+    "gj": ("扬", "延", "因", "永", "云"),
+    "hj": ("扬", "延", "因", "永", "云"),
+    "sch": ("尚", "申", "辛", "雄", "顺"),
+}
+
+#: vowel -> its column in `NASAL_FINAL`. Norwegian `æ`/`ä` follow `e`, `ø`/`ö`/`å` follow `o`,
+#: `y`/`ü` follow `i` — the same folding `VOWEL_COL` already does, in the finals' order.
+NASAL_COL = {"a": 0, "e": 1, "i": 2, "o": 3, "u": 4, "y": 2, "æ": 1, "ø": 3, "å": 3,
+             "ö": 3, "ä": 1, "ü": 2, "é": 1}
+
 
 def _onsets():
     return sorted((o for o in ROWS if o), key=len, reverse=True)
@@ -221,11 +278,43 @@ def translit(token):
             col = VOWEL_COL[v]
             kana, hans = ROWS.get(onset, ROWS[""])
             ja.append(kana[col])
-            zh.append(hans[col])
             if v == "å":
                 ja.append("ー")
             i += 1
+
+            # **The nasal belongs INSIDE the Chinese syllable.** See `NASAL_FINAL`. A nasal
+            # here is a coda only if no vowel follows it -- `Anna` is `an` + `na`, not a
+            # nasal final, and `Anders` is. `ng` is consumed with the `n`; katakana takes
+            # `ン` (and `ング`) as it always did, because a mora nasal is correct there and
+            # only the Chinese side was wrong.
+            nasal = _nasal_coda_len(s, i)
+            if nasal and onset in NASAL_FINAL and v in NASAL_COL:
+                zh.append(NASAL_FINAL[onset][NASAL_COL[v]])
+                for ch in s[i:i + nasal]:
+                    ja.append(CODA[ch][0])
+                i += nasal
+            else:
+                zh.append(hans[col])
     return "".join(ja), "".join(zh)
+
+
+def _nasal_coda_len(s, i):
+    """How many characters of a syllable-final nasal start at `i`: 0, 1 (`n`) or 2 (`ng`).
+
+    A nasal is *final* only when no vowel follows it. `Anna` -> `an` + `na` has a vowel after
+    the second `n`, so the first is a geminate and not a final; `Anders` has a consonant after
+    it and is. A doubled `nn` is one nasal, matching the geminate rule below the coda branch.
+    """
+    if i >= len(s) or s[i] != "n":
+        return 0
+    end = i + 1
+    if end < len(s) and s[end] == "n":       # `nn` is one nasal, not two
+        end += 1
+    if end < len(s) and s[end] == "g" and (end + 1 >= len(s) or s[end + 1] not in VOWELS):
+        end += 1
+    if end < len(s) and s[end] in VOWELS:
+        return 0
+    return end - i
 
 
 def _wrote_by_engine(row):
