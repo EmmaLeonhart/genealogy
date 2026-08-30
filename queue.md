@@ -1951,6 +1951,14 @@ and the one merged into it were both just completely erroneous too"*.
 
 Two items, both wrong, one merged into the other. Not investigated.
 
+## Audit `Q6197518` — the `mul` label was "corrected" to an English-only one
+
+Emma, 2026-08-30: *"add to the end of the queue an audit of what happened here on this one
+https://www.wikidata.org/wiki/Q6197518 the multi language label was 'corrected' to one that
+was English only and I do not understand why"*.
+
+Not investigated.
+
 ## Always last — pinned to the very end of the file
 
 **Bullets, not letters.** These were `A.` and `B.`; `CLAUDE.md` § *Queue items are BULLET POINTS*
