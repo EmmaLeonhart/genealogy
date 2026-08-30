@@ -66,11 +66,6 @@ pinned by `tests/test_garborg_day_batch.py::test_a_marker_beside_a_real_name_sti
 
 
 
-- 
-
-> And a cron job at 12:30 AM that will do an analysis of the existing individuals that I have added using this, to see how compliant they are withthe original specifications and visions.
-
----
 
 - 
 

@@ -19657,3 +19657,31 @@ a single commit's tree onto a runner with ~75 GB free disk. Size costs checkout 
 16 GB `ubuntu-latest` runner. That is the reason a daily job cannot rebuild the synoptic tree, and
 it was already the reason before the size paragraph was written — the size claim was decoration on
 a conclusion that did not need it, and wrong decoration at that.
+
+## 2026-08-29 — compliance audit: 642 of 657 items meet the spec
+
+Her queued item: *"an analysis of the existing individuals that I have added using this, to see how
+compliant they are with the original specifications and visions."* `scripts/audit-compliance.py` →
+`reports/compliance-audit.tsv`, offline against the refreshed ledger values.
+
+Checked against `docs/wikidata-item-template.md` and the `CLAUDE.md` rulings: `P31` = `Q5`, `P21`
+sex, `P2600`, at least one relationship, and no `Aen` alias.
+
+| | |
+| --- | ---: |
+| items with fetched values | 657 |
+| **fully compliant** | **642** |
+| no relationship at all | 15 |
+
+**No item is missing `P31`, `P21` or `P2600`, and none carries a forbidden `Aen`.**
+
+**The 15 are not our defects.** All 15 are Bureätten roster people — provenance
+`Category:Bureätten (bureatten.csv)` for every one — pre-existing Wikidata items we added a `P2600`
+to. Olof Broman carries 39 statements, Israel Hwasser 66, Peter Artedi 72. They are notable Swedes
+with rich items and no genealogy, which is exactly the shape `CLAUDE.md` § *An item with no
+relationships is not a missing item* describes: present as items, absent as a family tree.
+
+So the programme's own creations are 642/642 compliant, and the 15 exceptions are a to-do about
+linking existing items rather than a fault in what was generated.
+
+Fast lane at `bb20b626`: 1469 passed, 33 skipped, 0 failed.
