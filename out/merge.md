@@ -433,182 +433,185 @@ Sources in merge order (later sources win value conflicts):
 427. `export-Forest-6000000227258452920.ged`
 428. `export-Forest-6000000227258532866.ged`
 429. `export-Forest-6000000227258573822.ged`
-430. `export-BloodTree-16.ged`
-431. `export-Descendants-21.ged`
-432. `export-Forest-0.ged`
-433. `export-Forest-1.ged`
-434. `export-Forest-10.ged`
-435. `export-Forest-11.ged`
-436. `export-Forest-12.ged`
-437. `export-Forest-13.ged`
-438. `export-Forest-14.ged`
-439. `export-Forest-15.ged`
-440. `export-Forest-18.ged`
-441. `export-Forest-19.ged`
-442. `export-Forest-2.ged`
-443. `export-Forest-20.ged`
-444. `export-Forest-21.ged`
-445. `export-Forest-22.ged`
-446. `export-Forest-23.ged`
-447. `export-Forest-24.ged`
-448. `export-Forest-25.ged`
-449. `export-Forest-26.ged`
-450. `export-Forest-27.ged`
-451. `export-Forest-28.ged`
-452. `export-Forest-29.ged`
-453. `export-Forest-3.ged`
-454. `export-Forest-30.ged`
-455. `export-Forest-31.ged`
-456. `export-Forest-32.ged`
-457. `export-Forest-33.ged`
-458. `export-Forest-34.ged`
-459. `export-Forest-35.ged`
-460. `export-Forest-36.ged`
-461. `export-Forest-37.ged`
-462. `export-Forest-38.ged`
-463. `export-Forest-39.ged`
-464. `export-Forest-4.ged`
-465. `export-Forest-7.ged`
-466. `export-Forest-8.ged`
-467. `export-Forest-9.ged`
-468. `export-Ancestors-6000000087535357291.ged`
-469. `export-Ancestors-6000000177921459052.ged`
-470. `export-Ancestors-6000000177921459056.ged`
-471. `export-Ancestors-6000000177921459078.ged`
-472. `export-Ancestors-6000000177921459114.ged`
-473. `export-Ancestors-6000000209078072833.ged`
-474. `export-Ancestors-6000000220974565012.ged`
-475. `export-Bio-6000000212213649822.ged`
-476. `export-BloodTree-6000000087535357291.ged`
-477. `export-BloodTree-6000000177943379826.ged`
-478. `export-BloodTree-6000000177944025822.ged`
-479. `export-BloodTree-6000000178415387935.ged`
-480. `export-BloodTree-6000000178418577840.ged`
-481. `export-BloodTree-6000000178420660827.ged`
-482. `export-BloodTree-6000000209655085851.ged`
-483. `export-Descendants-6000000209595340830.ged`
-484. `export-Descendants-6000000209931920826.ged`
-485. `export-Descendants-6000000227040600959.ged`
-486. `export-Descendants-6000000227085797849.ged`
-487. `export-Descendants-6000000227085828865.ged`
-488. `export-Descendants-6000000227085871850.ged`
-489. `export-Descendants-6000000227086244080.ged`
-490. `export-Descendants-6000000227086432913.ged`
-491. `export-Descendants-6000000227086452843.ged`
-492. `export-Descendants-6000000227086455824.ged`
-493. `export-Descendants-6000000227086465839.ged`
-494. `export-Descendants-6000000227087382828.ged`
-495. `export-Descendants-6000000227227041063.ged`
-496. `export-Descendants-6000000227227190927.ged`
-497. `export-Descendants-6000000227227194942.ged`
-498. `export-Descendants-6000000227227274837.ged`
-499. `export-Descendants-6000000227227278828.ged`
-500. `export-Descendants-6000000227227295846.ged`
-501. `export-Forest-6000000178918422849.ged`
-502. `export-Forest-6000000227086244080.ged`
-503. `export-Forest-6000000227086380915.ged`
-504. `export-Forest-6000000227086432913.ged`
-505. `export-Forest-6000000227086452843.ged`
-506. `export-Forest-6000000227086455824.ged`
-507. `export-Forest-6000000227086465839.ged`
-508. `export-Forest-6000000227086500885.ged`
-509. `export-Forest-6000000227086506866.ged`
-510. `export-Forest-6000000227086510841.ged`
-511. `export-Forest-6000000227086620980.ged`
-512. `export-Forest-6000000227086715937.ged`
-513. `export-Forest-6000000227086717913.ged`
-514. `export-Forest-6000000227087120840.ged`
-515. `export-Forest-6000000227225487992.ged`
-516. `export-Forest-6000000227225628908.ged`
-517. `export-Forest-6000000227225654852.ged`
-518. `export-Forest-6000000227226552913.ged`
-519. `export-Forest-6000000227226579873.ged`
-520. `export-Forest-6000000227226600829.ged`
-521. `export-Forest-6000000227226720863.ged`
-522. `export-Forest-6000000227226792872.ged`
-523. `export-Forest-6000000227226796847.ged`
-524. `export-Forest-6000000227226850980.ged`
-525. `export-Forest-6000000227227016909.ged`
-526. `export-Forest-6000000227227035828.ged`
-527. `export-Forest-6000000227227039845.ged`
-528. `export-Forest-6000000227227041063.ged`
-529. `export-Forest-6000000227227092862.ged`
-530. `export-Forest-6000000227227104853.ged`
-531. `export-Forest-6000000227227132960.ged`
-532. `export-Forest-6000000227227141848.ged`
-533. `export-Forest-6000000227227142945.ged`
-534. `export-Forest-6000000227227238821.ged`
-535. `export-Forest-6000000227227320831.ged`
-536. `export-Forest-6000000210475738822.ged`
-537. `export-Forest-6000000227331852896.ged`
-538. `export-Forest-6000000227390753876.ged`
-539. `export-Forest.ged`
-540. `export-Forest.ged`
-541. `export-Forest-6000000227258314174.ged`
-542. `export-Forest-6000000227258622821.ged`
-543. `export-Forest-6000000227288930948.ged`
-544. `export-Forest-6000000227289463836.ged`
-545. `export-Forest-6000000227289547881.ged`
-546. `export-Forest-6000000227289604840.ged`
-547. `export-Forest-6000000227289663852.ged`
-548. `export-Forest-6000000227289792822.ged`
-549. `export-Forest.ged`
-550. `export-Forest-6000000227147210844.ged`
-551. `export-Ancestors.ged`
-552. `export-BloodTree.ged`
-553. `export-Forest-6000000226977233850.ged`
-554. `export-Forest-6000000226989731860.ged`
-555. `export-Forest.ged`
-556. `export-Ancestors-6000000227241038833.ged`
-557. `export-BloodTree-6000000178794141887.ged`
-558. `export-BloodTree-6000000178918541826.ged`
-559. `export-Forest-6000000178795709821.ged`
-560. `export-Forest-6000000178918116832.ged`
-561. `export-Forest-6000000227245553985.ged`
-562. `export-Descendants-6000000227379911829.ged`
-563. `export-Forest-6000000227379071377.ged`
-564. `export-Forest-6000000227379766879.ged`
-565. `export-Forest-6000000227379786890.ged`
-566. `export-Forest-6000000227379962841.ged`
-567. `export-Forest-6000000227379997855.ged`
-568. `export-Forest-6000000227380028855.ged`
-569. `export-Forest-6000000227380070821.ged`
-570. `export-Forest-6000000227380109838.ged`
-571. `export-Forest-6000000227380247996.ged`
-572. `export-Forest-6000000227380708902.ged`
-573. `export-Forest-6000000227380718910.ged`
-574. `export-Forest-6000000227381358911.ged`
-575. `export-Forest-6000000227381399852.ged`
-576. `export-Forest-6000000227381400057.ged`
-577. `export-Forest-6000000227382054896.ged`
-578. `export-Forest-6000000227389059850.ged`
-579. `export-Forest-40.ged`
-580. `export-Forest-41.ged`
-581. `export-Forest-42.ged`
-582. `export-Forest-43.ged`
-583. `export-Forest-6000000227351174975.ged`
-584. `export-Forest-6000000227145774838.ged`
-585. `export-Forest-6000000227147141927.ged`
-586. `export-Descendants-6000000227143930843.ged`
-587. `export-Forest-6000000227143930843.ged`
-588. `export-Forest-6000000227145420853.ged`
-589. `export-Forest-6000000227413001839.ged`
-590. `export-Forest-6000000178918141824.ged`
-591. `export-Forest-6000000227413445871.ged`
-592. `export-Forest-6000000227413852831.ged`
-593. `export-Forest-6000000227414103872.ged`
-594. `export-Forest-6000000178918141824-refresh.ged`
-595. `export-Forest-6000000227415008926.ged`
-596. `wikidata-qid-links.ged`
+430. `export-Ancestors-6000000227464556886-2026-08-30.ged`
+431. `export-Forest-6000000227464556886-2026-08-30.ged`
+432. `export-Forest-6000000227491932881.ged`
+433. `export-BloodTree-16.ged`
+434. `export-Descendants-21.ged`
+435. `export-Forest-0.ged`
+436. `export-Forest-1.ged`
+437. `export-Forest-10.ged`
+438. `export-Forest-11.ged`
+439. `export-Forest-12.ged`
+440. `export-Forest-13.ged`
+441. `export-Forest-14.ged`
+442. `export-Forest-15.ged`
+443. `export-Forest-18.ged`
+444. `export-Forest-19.ged`
+445. `export-Forest-2.ged`
+446. `export-Forest-20.ged`
+447. `export-Forest-21.ged`
+448. `export-Forest-22.ged`
+449. `export-Forest-23.ged`
+450. `export-Forest-24.ged`
+451. `export-Forest-25.ged`
+452. `export-Forest-26.ged`
+453. `export-Forest-27.ged`
+454. `export-Forest-28.ged`
+455. `export-Forest-29.ged`
+456. `export-Forest-3.ged`
+457. `export-Forest-30.ged`
+458. `export-Forest-31.ged`
+459. `export-Forest-32.ged`
+460. `export-Forest-33.ged`
+461. `export-Forest-34.ged`
+462. `export-Forest-35.ged`
+463. `export-Forest-36.ged`
+464. `export-Forest-37.ged`
+465. `export-Forest-38.ged`
+466. `export-Forest-39.ged`
+467. `export-Forest-4.ged`
+468. `export-Forest-7.ged`
+469. `export-Forest-8.ged`
+470. `export-Forest-9.ged`
+471. `export-Ancestors-6000000087535357291.ged`
+472. `export-Ancestors-6000000177921459052.ged`
+473. `export-Ancestors-6000000177921459056.ged`
+474. `export-Ancestors-6000000177921459078.ged`
+475. `export-Ancestors-6000000177921459114.ged`
+476. `export-Ancestors-6000000209078072833.ged`
+477. `export-Ancestors-6000000220974565012.ged`
+478. `export-Bio-6000000212213649822.ged`
+479. `export-BloodTree-6000000087535357291.ged`
+480. `export-BloodTree-6000000177943379826.ged`
+481. `export-BloodTree-6000000177944025822.ged`
+482. `export-BloodTree-6000000178415387935.ged`
+483. `export-BloodTree-6000000178418577840.ged`
+484. `export-BloodTree-6000000178420660827.ged`
+485. `export-BloodTree-6000000209655085851.ged`
+486. `export-Descendants-6000000209595340830.ged`
+487. `export-Descendants-6000000209931920826.ged`
+488. `export-Descendants-6000000227040600959.ged`
+489. `export-Descendants-6000000227085797849.ged`
+490. `export-Descendants-6000000227085828865.ged`
+491. `export-Descendants-6000000227085871850.ged`
+492. `export-Descendants-6000000227086244080.ged`
+493. `export-Descendants-6000000227086432913.ged`
+494. `export-Descendants-6000000227086452843.ged`
+495. `export-Descendants-6000000227086455824.ged`
+496. `export-Descendants-6000000227086465839.ged`
+497. `export-Descendants-6000000227087382828.ged`
+498. `export-Descendants-6000000227227041063.ged`
+499. `export-Descendants-6000000227227190927.ged`
+500. `export-Descendants-6000000227227194942.ged`
+501. `export-Descendants-6000000227227274837.ged`
+502. `export-Descendants-6000000227227278828.ged`
+503. `export-Descendants-6000000227227295846.ged`
+504. `export-Forest-6000000178918422849.ged`
+505. `export-Forest-6000000227086244080.ged`
+506. `export-Forest-6000000227086380915.ged`
+507. `export-Forest-6000000227086432913.ged`
+508. `export-Forest-6000000227086452843.ged`
+509. `export-Forest-6000000227086455824.ged`
+510. `export-Forest-6000000227086465839.ged`
+511. `export-Forest-6000000227086500885.ged`
+512. `export-Forest-6000000227086506866.ged`
+513. `export-Forest-6000000227086510841.ged`
+514. `export-Forest-6000000227086620980.ged`
+515. `export-Forest-6000000227086715937.ged`
+516. `export-Forest-6000000227086717913.ged`
+517. `export-Forest-6000000227087120840.ged`
+518. `export-Forest-6000000227225487992.ged`
+519. `export-Forest-6000000227225628908.ged`
+520. `export-Forest-6000000227225654852.ged`
+521. `export-Forest-6000000227226552913.ged`
+522. `export-Forest-6000000227226579873.ged`
+523. `export-Forest-6000000227226600829.ged`
+524. `export-Forest-6000000227226720863.ged`
+525. `export-Forest-6000000227226792872.ged`
+526. `export-Forest-6000000227226796847.ged`
+527. `export-Forest-6000000227226850980.ged`
+528. `export-Forest-6000000227227016909.ged`
+529. `export-Forest-6000000227227035828.ged`
+530. `export-Forest-6000000227227039845.ged`
+531. `export-Forest-6000000227227041063.ged`
+532. `export-Forest-6000000227227092862.ged`
+533. `export-Forest-6000000227227104853.ged`
+534. `export-Forest-6000000227227132960.ged`
+535. `export-Forest-6000000227227141848.ged`
+536. `export-Forest-6000000227227142945.ged`
+537. `export-Forest-6000000227227238821.ged`
+538. `export-Forest-6000000227227320831.ged`
+539. `export-Forest-6000000210475738822.ged`
+540. `export-Forest-6000000227331852896.ged`
+541. `export-Forest-6000000227390753876.ged`
+542. `export-Forest.ged`
+543. `export-Forest.ged`
+544. `export-Forest-6000000227258314174.ged`
+545. `export-Forest-6000000227258622821.ged`
+546. `export-Forest-6000000227288930948.ged`
+547. `export-Forest-6000000227289463836.ged`
+548. `export-Forest-6000000227289547881.ged`
+549. `export-Forest-6000000227289604840.ged`
+550. `export-Forest-6000000227289663852.ged`
+551. `export-Forest-6000000227289792822.ged`
+552. `export-Forest.ged`
+553. `export-Forest-6000000227147210844.ged`
+554. `export-Ancestors.ged`
+555. `export-BloodTree.ged`
+556. `export-Forest-6000000226977233850.ged`
+557. `export-Forest-6000000226989731860.ged`
+558. `export-Forest.ged`
+559. `export-Ancestors-6000000227241038833.ged`
+560. `export-BloodTree-6000000178794141887.ged`
+561. `export-BloodTree-6000000178918541826.ged`
+562. `export-Forest-6000000178795709821.ged`
+563. `export-Forest-6000000178918116832.ged`
+564. `export-Forest-6000000227245553985.ged`
+565. `export-Descendants-6000000227379911829.ged`
+566. `export-Forest-6000000227379071377.ged`
+567. `export-Forest-6000000227379766879.ged`
+568. `export-Forest-6000000227379786890.ged`
+569. `export-Forest-6000000227379962841.ged`
+570. `export-Forest-6000000227379997855.ged`
+571. `export-Forest-6000000227380028855.ged`
+572. `export-Forest-6000000227380070821.ged`
+573. `export-Forest-6000000227380109838.ged`
+574. `export-Forest-6000000227380247996.ged`
+575. `export-Forest-6000000227380708902.ged`
+576. `export-Forest-6000000227380718910.ged`
+577. `export-Forest-6000000227381358911.ged`
+578. `export-Forest-6000000227381399852.ged`
+579. `export-Forest-6000000227381400057.ged`
+580. `export-Forest-6000000227382054896.ged`
+581. `export-Forest-6000000227389059850.ged`
+582. `export-Forest-40.ged`
+583. `export-Forest-41.ged`
+584. `export-Forest-42.ged`
+585. `export-Forest-43.ged`
+586. `export-Forest-6000000227351174975.ged`
+587. `export-Forest-6000000227145774838.ged`
+588. `export-Forest-6000000227147141927.ged`
+589. `export-Descendants-6000000227143930843.ged`
+590. `export-Forest-6000000227143930843.ged`
+591. `export-Forest-6000000227145420853.ged`
+592. `export-Forest-6000000227413001839.ged`
+593. `export-Forest-6000000178918141824.ged`
+594. `export-Forest-6000000227413445871.ged`
+595. `export-Forest-6000000227413852831.ged`
+596. `export-Forest-6000000227414103872.ged`
+597. `export-Forest-6000000178918141824-refresh.ged`
+598. `export-Forest-6000000227415008926.ged`
+599. `wikidata-qid-links.ged`
 
 ## Merged totals
 
 | record | count |
 | --- | ---: |
-| FAM | 627841 |
-| INDI | 1448856 |
-| NOTE | 59728 |
-| SUBM | 51037 |
+| FAM | 627977 |
+| INDI | 1449096 |
+| NOTE | 59736 |
+| SUBM | 51040 |
 
 ## What each source contributed
 
@@ -705,9 +708,9 @@ Sources in merge order (later sources win value conflicts):
 | `export-Descendants-33.ged` | 1693 | 3323 | 0 | 99 | 1080 | 257 |
 | `export-Descendants-45.ged` | 2103 | 3837 | 3 | 186 | 255 | 81 |
 | `export-Descendants-7.ged` | 1063 | 1829 | 0 | 31 | 3256 | 21 |
-| `export-Forest-10.ged` | 146 | 262 | 12 | 6 | 6774 | 36879 |
+| `export-Forest-10.ged` | 145 | 261 | 12 | 6 | 6776 | 36888 |
 | `export-Forest-11.ged` | 0 | 0 | 0 | 0 | 6879 | 22036 |
-| `export-Forest-12.ged` | 727 | 1326 | 111 | 13 | 5170 | 13282 |
+| `export-Forest-12.ged` | 674 | 1213 | 101 | 11 | 5348 | 13959 |
 | `export-Forest-13.ged` | 1035 | 2155 | 1 | 2 | 2928 | 7210 |
 | `export-Forest-14.ged` | 960 | 2100 | 0 | 27 | 2928 | 2293 |
 | `export-Forest-15.ged` | 2325 | 3928 | 221 | 351 | 582 | 167 |
@@ -727,7 +730,7 @@ Sources in merge order (later sources win value conflicts):
 | `export-Forest-29.ged` | 1 | 113 | 0 | 0 | 8171 | 31545 |
 | `export-Forest-30.ged` | 750 | 1603 | 0 | 23 | 3601 | 4060 |
 | `export-Forest-31.ged` | 755 | 996 | 11 | 8 | 7621 | 12031 |
-| `export-Forest-32.ged` | 353 | 662 | 5 | 5 | 5962 | 10413 |
+| `export-Forest-32.ged` | 320 | 593 | 5 | 4 | 6065 | 10615 |
 | `export-Forest-34.ged` | 742 | 2721 | 10 | 106 | 2017 | 4121 |
 | `export-Forest-35.ged` | 896 | 2473 | 0 | 35 | 2449 | 1716 |
 | `export-Forest-36.ged` | 267 | 996 | 13 | 2 | 4530 | 11251 |
@@ -1043,20 +1046,23 @@ Sources in merge order (later sources win value conflicts):
 | `export-Forest-6000000227258452920.ged` | 1186 | 2913 | 28 | 42 | 3407 | 6818 |
 | `export-Forest-6000000227258532866.ged` | 1680 | 3169 | 0 | 51 | 3364 | 12835 |
 | `export-Forest-6000000227258573822.ged` | 1819 | 3798 | 0 | 139 | 1983 | 9354 |
+| `export-Ancestors-6000000227464556886-2026-08-30.ged` | 4 | 6 | 0 | 0 | 15328 | 49407 |
+| `export-Forest-6000000227464556886-2026-08-30.ged` | 0 | 0 | 0 | 0 | 8679 | 15410 |
+| `export-Forest-6000000227491932881.ged` | 569 | 939 | 141 | 16 | 8880 | 31141 |
 | `export-BloodTree-16.ged` | 112 | 391 | 0 | 2 | 124 | 218 |
 | `export-Descendants-21.ged` | 0 | 0 | 0 | 0 | 6637 | 605 |
 | `export-Forest-0.ged` | 664 | 2452 | 36 | 33 | 1852 | 484 |
 | `export-Forest-1.ged` | 807 | 1525 | 0 | 0 | 3698 | 2854 |
-| `export-Forest-10.ged` | 146 | 262 | 12 | 6 | 6774 | 36879 |
+| `export-Forest-10.ged` | 145 | 261 | 12 | 6 | 6776 | 36888 |
 | `export-Forest-11.ged` | 0 | 0 | 0 | 0 | 6879 | 22036 |
-| `export-Forest-12.ged` | 727 | 1326 | 111 | 13 | 5170 | 13282 |
+| `export-Forest-12.ged` | 674 | 1213 | 101 | 11 | 5348 | 13959 |
 | `export-Forest-13.ged` | 1035 | 2155 | 1 | 2 | 2928 | 7210 |
 | `export-Forest-14.ged` | 960 | 2100 | 0 | 27 | 2928 | 2293 |
 | `export-Forest-15.ged` | 2325 | 3928 | 221 | 351 | 582 | 167 |
 | `export-Forest-18.ged` | 457 | 1123 | 0 | 24 | 4314 | 1979 |
 | `export-Forest-19.ged` | 1183 | 3816 | 0 | 19 | 319 | 552 |
 | `export-Forest-2.ged` | 222 | 444 | 0 | 10 | 1662 | 333 |
-| `export-Forest-20.ged` | 865 | 1375 | 743 | 8 | 8931 | 39379 |
+| `export-Forest-20.ged` | 864 | 1374 | 743 | 8 | 8933 | 39384 |
 | `export-Forest-21.ged` | 573 | 1403 | 0 | 6 | 3854 | 1082 |
 | `export-Forest-22.ged` | 413 | 1733 | 0 | 43 | 3360 | 1223 |
 | `export-Forest-23.ged` | 676 | 1309 | 0 | 2 | 4080 | 4750 |
@@ -1069,7 +1075,7 @@ Sources in merge order (later sources win value conflicts):
 | `export-Forest-3.ged` | 1671 | 3642 | 2 | 108 | 544 | 163 |
 | `export-Forest-30.ged` | 750 | 1603 | 0 | 23 | 3601 | 4060 |
 | `export-Forest-31.ged` | 755 | 996 | 11 | 8 | 7621 | 12031 |
-| `export-Forest-32.ged` | 353 | 662 | 5 | 5 | 5962 | 10413 |
+| `export-Forest-32.ged` | 320 | 593 | 5 | 4 | 6065 | 10615 |
 | `export-Forest-33.ged` | 1153 | 3819 | 0 | 70 | 322 | 378 |
 | `export-Forest-34.ged` | 742 | 2721 | 10 | 106 | 2017 | 4121 |
 | `export-Forest-35.ged` | 896 | 2473 | 0 | 35 | 2449 | 1716 |
@@ -1081,11 +1087,11 @@ Sources in merge order (later sources win value conflicts):
 | `export-Forest-7.ged` | 219 | 606 | 0 | 13 | 5361 | 3517 |
 | `export-Forest-8.ged` | 27 | 26 | 0 | 0 | 6774 | 658 |
 | `export-Forest-9.ged` | 0 | 7 | 0 | 0 | 6229 | 1357 |
-| `export-Ancestors-6000000087535357291.ged` | 659 | 1159 | 79 | 18 | 6796 | 22218 |
+| `export-Ancestors-6000000087535357291.ged` | 654 | 1152 | 76 | 18 | 6811 | 22329 |
 | `export-Ancestors-6000000177921459052.ged` | 0 | 0 | 0 | 0 | 881 | 155 |
-| `export-Ancestors-6000000177921459056.ged` | 13 | 24 | 14 | 1 | 11079 | 36851 |
+| `export-Ancestors-6000000177921459056.ged` | 11 | 22 | 14 | 1 | 11083 | 36848 |
 | `export-Ancestors-6000000177921459078.ged` | 4 | 6 | 4 | 0 | 14622 | 18934 |
-| `export-Ancestors-6000000177921459114.ged` | 306 | 490 | 721 | 9 | 16260 | 9381 |
+| `export-Ancestors-6000000177921459114.ged` | 305 | 490 | 721 | 9 | 16261 | 9382 |
 | `export-Ancestors-6000000209078072833.ged` | 0 | 0 | 0 | 0 | 1625 | 4106 |
 | `export-Ancestors-6000000220974565012.ged` | 0 | 0 | 0 | 0 | 2010 | 950 |
 | `export-Bio-6000000212213649822.ged` | 33 | 38 | 0 | 0 | 7574 | 7719 |
@@ -1102,10 +1108,10 @@ Sources in merge order (later sources win value conflicts):
 | `export-Descendants-6000000227085797849.ged` | 76 | 132 | 0 | 0 | 5366 | 430 |
 | `export-Descendants-6000000227085828865.ged` | 36 | 46 | 0 | 0 | 6709 | 822 |
 | `export-Descendants-6000000227085871850.ged` | 0 | 0 | 0 | 0 | 938 | 32 |
-| `export-Descendants-6000000227086244080.ged` | 1308 | 2184 | 1510 | 54 | 7162 | 39178 |
+| `export-Descendants-6000000227086244080.ged` | 1299 | 2173 | 1510 | 54 | 7182 | 39191 |
 | `export-Descendants-6000000227086432913.ged` | 623 | 1136 | 0 | 40 | 26 | 191 |
 | `export-Descendants-6000000227086452843.ged` | 1861 | 3382 | 0 | 35 | 1072 | 48 |
-| `export-Descendants-6000000227086455824.ged` | 1237 | 1423 | 786 | 24 | 11190 | 23235 |
+| `export-Descendants-6000000227086455824.ged` | 1229 | 1420 | 784 | 24 | 11203 | 23256 |
 | `export-Descendants-6000000227086465839.ged` | 225 | 434 | 0 | 16 | 5577 | 1282 |
 | `export-Descendants-6000000227087382828.ged` | 2150 | 4029 | 31 | 206 | 356 | 254 |
 | `export-Descendants-6000000227227041063.ged` | 2114 | 4001 | 120 | 261 | 579 | 2659 |
@@ -1115,11 +1121,11 @@ Sources in merge order (later sources win value conflicts):
 | `export-Descendants-6000000227227278828.ged` | 885 | 2958 | 36 | 29 | 1988 | 239 |
 | `export-Descendants-6000000227227295846.ged` | 1319 | 2929 | 27 | 51 | 2401 | 1123 |
 | `export-Forest-6000000178918422849.ged` | 0 | 0 | 0 | 0 | 7554 | 9239 |
-| `export-Forest-6000000227086244080.ged` | 653 | 1340 | 983 | 29 | 14427 | 17434 |
-| `export-Forest-6000000227086380915.ged` | 459 | 1242 | 353 | 15 | 10629 | 33502 |
+| `export-Forest-6000000227086244080.ged` | 638 | 1318 | 966 | 29 | 14481 | 17784 |
+| `export-Forest-6000000227086380915.ged` | 459 | 1239 | 353 | 15 | 10632 | 33513 |
 | `export-Forest-6000000227086432913.ged` | 921 | 2095 | 0 | 1 | 3023 | 500 |
 | `export-Forest-6000000227086452843.ged` | 335 | 566 | 0 | 1 | 5380 | 5034 |
-| `export-Forest-6000000227086455824.ged` | 369 | 891 | 421 | 18 | 13563 | 8398 |
+| `export-Forest-6000000227086455824.ged` | 366 | 879 | 399 | 18 | 13600 | 8582 |
 | `export-Forest-6000000227086465839.ged` | 962 | 1985 | 0 | 0 | 2999 | 232 |
 | `export-Forest-6000000227086500885.ged` | 246 | 489 | 0 | 0 | 5793 | 612 |
 | `export-Forest-6000000227086506866.ged` | 832 | 1419 | 475 | 14 | 7432 | 16089 |
@@ -1128,8 +1134,8 @@ Sources in merge order (later sources win value conflicts):
 | `export-Forest-6000000227086715937.ged` | 1348 | 3244 | 224 | 204 | 1578 | 5783 |
 | `export-Forest-6000000227086717913.ged` | 1375 | 2199 | 185 | 23 | 4678 | 6209 |
 | `export-Forest-6000000227087120840.ged` | 860 | 1672 | 2 | 45 | 4043 | 4106 |
-| `export-Forest-6000000227225487992.ged` | 1085 | 1792 | 434 | 28 | 10385 | 28189 |
-| `export-Forest-6000000227225628908.ged` | 240 | 435 | 3 | 4 | 9174 | 32698 |
+| `export-Forest-6000000227225487992.ged` | 1063 | 1772 | 419 | 28 | 10442 | 28327 |
+| `export-Forest-6000000227225628908.ged` | 218 | 377 | 3 | 2 | 9256 | 32806 |
 | `export-Forest-6000000227225654852.ged` | 122 | 209 | 9 | 0 | 6577 | 16886 |
 | `export-Forest-6000000227226552913.ged` | 847 | 4124 | 50 | 105 | 74 | 0 |
 | `export-Forest-6000000227226579873.ged` | 1742 | 4121 | 35 | 154 | 113 | 90 |
@@ -1138,12 +1144,12 @@ Sources in merge order (later sources win value conflicts):
 | `export-Forest-6000000227226792872.ged` | 1406 | 3944 | 29 | 123 | 449 | 287 |
 | `export-Forest-6000000227226796847.ged` | 1486 | 3551 | 31 | 199 | 1076 | 1031 |
 | `export-Forest-6000000227226850980.ged` | 88 | 51 | 0 | 0 | 7596 | 3963 |
-| `export-Forest-6000000227227016909.ged` | 1260 | 2719 | 158 | 18 | 3616 | 1969 |
-| `export-Forest-6000000227227035828.ged` | 593 | 919 | 136 | 8 | 8995 | 1793 |
-| `export-Forest-6000000227227039845.ged` | 809 | 1291 | 255 | 16 | 6846 | 8130 |
+| `export-Forest-6000000227227016909.ged` | 1233 | 2693 | 156 | 18 | 3671 | 1940 |
+| `export-Forest-6000000227227035828.ged` | 548 | 867 | 94 | 6 | 9136 | 2024 |
+| `export-Forest-6000000227227039845.ged` | 805 | 1286 | 255 | 16 | 6855 | 8133 |
 | `export-Forest-6000000227227041063.ged` | 1044 | 1924 | 46 | 44 | 4471 | 954 |
 | `export-Forest-6000000227227092862.ged` | 4 | 32 | 1 | 0 | 9177 | 37 |
-| `export-Forest-6000000227227104853.ged` | 139 | 227 | 38 | 1 | 12229 | 6882 |
+| `export-Forest-6000000227227104853.ged` | 123 | 192 | 38 | 1 | 12280 | 6919 |
 | `export-Forest-6000000227227132960.ged` | 803 | 1746 | 17 | 17 | 4050 | 1241 |
 | `export-Forest-6000000227227141848.ged` | 833 | 2524 | 13 | 77 | 2645 | 1218 |
 | `export-Forest-6000000227227142945.ged` | 1223 | 2778 | 12 | 43 | 2738 | 1024 |
@@ -1155,13 +1161,13 @@ Sources in merge order (later sources win value conflicts):
 | `export-Forest.ged` | 0 | 0 | 0 | 0 | 6259 | 2586 |
 | `export-Forest.ged` | 0 | 0 | 0 | 0 | 6259 | 2586 |
 | `export-Forest-6000000227258314174.ged` | 1084 | 1813 | 979 | 33 | 11127 | 20874 |
-| `export-Forest-6000000227258622821.ged` | 732 | 1055 | 93 | 8 | 7806 | 12921 |
+| `export-Forest-6000000227258622821.ged` | 703 | 1021 | 87 | 7 | 7876 | 13146 |
 | `export-Forest-6000000227288930948.ged` | 1575 | 4516 | 420 | 101 | 973 | 3708 |
 | `export-Forest-6000000227289463836.ged` | 1526 | 4378 | 43 | 152 | 1341 | 2765 |
-| `export-Forest-6000000227289547881.ged` | 771 | 1294 | 92 | 23 | 8093 | 10275 |
+| `export-Forest-6000000227289547881.ged` | 729 | 1258 | 90 | 20 | 8176 | 10227 |
 | `export-Forest-6000000227289604840.ged` | 1126 | 2069 | 65 | 29 | 5370 | 3515 |
 | `export-Forest-6000000227289663852.ged` | 486 | 2294 | 1 | 42 | 4106 | 6405 |
-| `export-Forest-6000000227289792822.ged` | 299 | 715 | 46 | 7 | 10699 | 6229 |
+| `export-Forest-6000000227289792822.ged` | 208 | 542 | 34 | 5 | 10977 | 6635 |
 | `export-Forest.ged` | 0 | 0 | 0 | 0 | 6259 | 2586 |
 | `export-Forest-6000000227147210844.ged` | 1326 | 2690 | 0 | 71 | 2125 | 2462 |
 | `export-Ancestors.ged` | 1 | 0 | 0 | 0 | 7720 | 13016 |
@@ -1186,8 +1192,8 @@ Sources in merge order (later sources win value conflicts):
 | `export-Forest-6000000227380109838.ged` | 77 | 235 | 93 | 1 | 17302 | 55751 |
 | `export-Forest-6000000227380247996.ged` | 137 | 215 | 77 | 6 | 12315 | 36767 |
 | `export-Forest-6000000227380708902.ged` | 2250 | 4269 | 61 | 247 | 1278 | 1343 |
-| `export-Forest-6000000227380718910.ged` | 363 | 824 | 11 | 2 | 9286 | 33491 |
-| `export-Forest-6000000227381358911.ged` | 150 | 532 | 5 | 6 | 8173 | 24537 |
+| `export-Forest-6000000227380718910.ged` | 360 | 808 | 11 | 2 | 9305 | 33486 |
+| `export-Forest-6000000227381358911.ged` | 145 | 526 | 5 | 6 | 8184 | 24531 |
 | `export-Forest-6000000227381399852.ged` | 2200 | 2955 | 354 | 42 | 5938 | 33220 |
 | `export-Forest-6000000227381400057.ged` | 19 | 35 | 1 | 0 | 10214 | 14364 |
 | `export-Forest-6000000227382054896.ged` | 1010 | 2418 | 3 | 66 | 4085 | 4720 |
@@ -1224,28 +1230,28 @@ Sources in merge order (later sources win value conflicts):
 
 ## Conflicts
 
-**3677** value disagreements on single-valued paths. The value from the later source was kept; the other is recorded here and is not in the merged file.
+**4690** value disagreements on single-valued paths. The value from the later source was kept; the other is recorded here and is not in the merged file.
 
 By path:
 
 | path | conflicts |
 | --- | ---: |
-| `INDI.CHAN.DATE.TIME` | 1619 |
-| `INDI.CHAN.DATE` | 1608 |
-| `INDI.BIRT.DATE` | 98 |
+| `INDI.CHAN.DATE.TIME` | 2104 |
+| `INDI.CHAN.DATE` | 2093 |
+| `INDI.BIRT.DATE` | 113 |
 | `INDI.SUBM` | 58 |
-| `INDI.DEAT.DATE` | 45 |
-| `INDI.BIRT.ADDR.STAE` | 39 |
-| `INDI.BIRT.ADDR.CTRY` | 37 |
+| `INDI.DEAT.DATE` | 51 |
+| `INDI.BIRT.ADDR.STAE` | 41 |
+| `INDI.BIRT.ADDR.CTRY` | 41 |
 | `INDI.DEAT.ADDR.STAE` | 32 |
 | `INDI.BIRT.PLAC` | 25 |
-| `INDI.DEAT.PLAC` | 18 |
-| `INDI.DEAT.ADDR.CITY` | 16 |
-| `INDI.DEAT.ADDR.CTRY` | 14 |
-| `FAM.HUSB` | 13 |
-| `INDI.BIRT.ADDR.CITY` | 13 |
+| `INDI.DEAT.ADDR.CTRY` | 20 |
+| `INDI.DEAT.PLAC` | 20 |
+| `INDI.DEAT.ADDR.CITY` | 18 |
+| `FAM.HUSB` | 15 |
+| `INDI.BIRT.ADDR.CITY` | 15 |
+| `INDI.BURI.PLAC` | 11 |
 | `INDI.BURI.DATE` | 10 |
-| `INDI.BURI.PLAC` | 9 |
 | `INDI.BURI.ADDR.CITY` | 5 |
 | `INDI.TITL` | 5 |
 | `INDI.BAPM.ADDR.CTRY` | 4 |

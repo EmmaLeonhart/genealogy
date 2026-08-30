@@ -5,15 +5,15 @@ Something that's very easy."* And: *"Every individual needs an English,
 Japanese, and Chinese label but really we gotta catalogue these things a bit
 better too as a bulk operation."*
 
-One row per person in `reports/derived-labels.csv` — **1,448,856 people**.
+One row per person in `reports/derived-labels.csv` — **1,449,096 people**.
 
 ## What each person has to build a label from
 
 | | people | share |
 | --- | ---: | ---: |
-| Latin only | 1,368,036 | 94.4% |
+| Latin only | 1,368,275 | 94.4% |
 | CJK only — needs translation for en | 44,029 | 3.0% |
-| no usable name at all | 22,604 | 1.6% |
+| no usable name at all | 22,605 | 1.6% |
 | mixed-script only — no clean Latin label | 7,927 | 0.5% |
 | other script only — needs translation for en | 3,837 | 0.3% |
 | Latin and CJK | 2,423 | 0.2% |
@@ -27,11 +27,11 @@ other script, we have to do a translation"* applies to, sized.
 
 | script group | name records |
 | --- | ---: |
-| Latin | 1,646,562 |
+| Latin | 1,646,849 |
 | CJK | 111,649 |
 | mixed | 28,257 |
 | other | 26,466 |
-| none | 453 |
+| none | 454 |
 
 Grouped by **script, never language** — her rule. `CJK` deliberately holds Han,
 Hiragana, Katakana and Hangul together: **the Japanese/Chinese split is not
@@ -39,7 +39,7 @@ attempted here**, because Han characters are shared and a codepoint test would
 mis-assign them. That split is what the cataloguing is *for*, and it needs a
 decision rather than a rule.
 
-## Aliases from married names — 269,950 people
+## Aliases from married names — 269,980 people
 
 Emma: *"Married name plugs into name to produce an alias."*
 
@@ -55,7 +55,7 @@ them.
 
 ## Against Wikidata, where both exist
 
-40,803 people have both a derived Latin label and a Wikidata English
+40,809 people have both a derived Latin label and a Wikidata English
 label. **11,004 match exactly (27.0%).**
 
 `reports/display-names.md` has the breakdown of the rest: the failures
