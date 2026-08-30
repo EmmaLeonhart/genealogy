@@ -20012,3 +20012,49 @@ of whitespace collapse, nothing else. Multi-value cells split on ` | ` per `CLAU
 § *Our side could never have two children*.
 
 Nothing is proposed and `labels.py` is untouched, per the item.
+
+## 2026-08-30 — correction: "317 hand-checked" was wrong, and the 86% was the engine grading itself
+
+Emma, on the entry above: *"Idk what the 317 hand chrcked rows vs the 47 rederived are but this
+seems really fucking sus"*. It was. Two things in that entry are wrong.
+
+**"317 hand-checked" describes a mixed set.** By `note`:
+
+| | rows |
+| --- | ---: |
+| `by rule` | 2,970 |
+| `composed by rule: …` | 730 |
+| no note at all — the original hand table | 118 |
+| hand-annotated (`farm name`, `patronymic`, `French`, …) | 100 |
+| `composed: …` — machine-composed off a hand stem | 99 |
+
+So about 100 rows carry a human annotation, not 317. The refresh's *behaviour* was right — it
+re-derived only what the engine wrote — but the label on it was not.
+
+**"the score is unchanged at 86% ja / 75% zh, which is the point" was circular.** 3,700 of the
+4,017 rows *are* engine output, so the engine was being scored against itself. Against the 317
+rows it did not write: **ja 38.8%, zh 11.7%, both 3.5%**. `translit_no.check()` scored all 4,017
+while its own docstring said it scored "the 113 hand-written rows"; it now scores the rows the
+engine did not write and prints how many it excluded.
+
+**The largest single cause, and it was our own pipeline disagreeing with itself.**
+`extend-transliterations.py` composed `Arnesen` as stem + `-sen` → `阿尔内森`, while the letter
+walk spelled the coda out → `阿尔内塞恩`. The suffix table now lives in `translit_no.py`, where
+the phonology is, and `extend-transliterations.py` imports it. Agreement with the 317:
+
+    ja  38.8% -> 46.1%      zh  11.7% -> 41.3%      both  3.5% -> 25.9%
+
+**What this did NOT do is change the emitted labels, and that matters more than the score.**
+Re-deriving moved **one row** (`Samsonson`), because `extend-transliterations.py` runs its
+compose rule first, so every suffix-ending token in the table was already composed correctly.
+The engine was wrong only where it was called directly on a token the composer had not caught.
+So this is a fix to the instrument and to future tokens, not a correction of published readings.
+
+`Samsonson` is also the one place the new recursion bites: it splits to `Samson` + `-son` and
+again to `Sam` + `-son`. A patronymic on a patronymic read twice is defensible, but it is a
+consequence rather than a design, and it is written down in the code as such.
+
+**The 39%/12% is now the honest baseline, and it is bad.** The hand rows carry gemination and
+length the engine does not produce — `Anna` アンナ against `アナ`, `Aagot` オーゴット against
+`オーゴト`, `Abel` アーベル against `アベル`. That is a convention decision rather than a bug,
+so it is queued rather than guessed at over 3,700 rows.

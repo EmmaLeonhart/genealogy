@@ -130,8 +130,46 @@ BARE_VOWEL = str.maketrans({
 })
 
 
+#: **Patronymic and married-name suffixes, with their conventional readings.** Longest first,
+#: so `sson` is not read as `son` and `datter` not as `dtr`.
+#:
+#: **This lives here because it is a READING RULE, and it lived in two places until
+#: 2026-08-30.** `extend-transliterations.py` composed `Arnesen` as *stem + `-sen`* and got
+#: `アルネセン` / `阿尔内森`; this engine walked the same token letter by letter and got
+#: `阿尔内塞恩`, spelling the coda `n` out as `恩`. Both paths are in one pipeline and they
+#: disagreed on 99 of the table's rows.
+#:
+#: Applying it here moved the engine's agreement with rows it did not write from
+#: **ja 38.8% -> 46.1% and zh 11.7% -> 41.3%**, measured over those 317 rows. The Chinese
+#: figure more than tripled, because `-sen`/`-son` are the commonest endings in this corpus and
+#: `森`/`松` are the standard characters for them.
+SUFFIXES = [
+    ("datter", "ダッテル", "达特"), ("dotter", "ドッテル", "多特"),
+    ("dtr.", "ダッテル", "达特"), ("dtr", "ダッテル", "达特"),
+    ("sson", "ソン", "松"), ("ssen", "セン", "森"),
+    ("sen", "セン", "森"), ("son", "ソン", "松"),
+]
+
+
 def translit(token):
     """`(katakana, chinese)` for one Norwegian name token, or `(None, None)`."""
+    # **A patronymic suffix is read as a unit, not spelled out.** See `SUFFIXES` above: the
+    # composer already did this and the letter walk did not, so one pipeline gave two answers.
+    #
+    # **The stem CAN itself end in a suffix, and one row in the table does.** `Samsonson`
+    # splits to `Samson` + `-son` and then `Sam` + `-son`, giving `萨姆松松` where the letter
+    # walk gave `萨姆索恩松`. That is a patronymic built on a patronymic and reading it twice
+    # is defensible, but it is a consequence rather than a design, so it is written down here
+    # rather than guarded against. Recursion terminates because each step removes at least
+    # three characters.
+    low = (token or "").casefold()
+    for suf, sja, szh in SUFFIXES:
+        if low.endswith(suf) and len(token) > len(suf) + 1:
+            stem_ja, stem_zh = translit(token[: len(token) - len(suf)])
+            if stem_ja is None:
+                return None, None
+            return stem_ja + sja, stem_zh + szh
+
     # **`ck` is ONE sound spelled with two letters.** The geminate rule below handles
     # *identical* adjacent letters (`nn` in `Anna`); it cannot see a digraph of *different*
     # letters spelling one phoneme, so `Mørck` walked m-ø, r, c, k and produced `モルクク`.
@@ -190,11 +228,30 @@ def translit(token):
     return "".join(ja), "".join(zh)
 
 
+def _wrote_by_engine(row):
+    """Did this engine write the row? Then scoring against it is scoring against itself."""
+    note = (row.get("note") or "").strip()
+    return note == "by rule" or note.startswith("composed by rule:")
+
+
 def check():
-    """Score the rules against the 113 hand-written rows."""
+    """Score the rules against the rows this engine did NOT write.
+
+    **The docstring said "the 113 hand-written rows" and the loop scored all 4,017.** By
+    2026-08-30, 3,700 of those were this engine's own output, so the headline read
+    *86% katakana, 75% chinese* — the engine agreeing with itself. Against the 317 rows a
+    person wrote, or that were composed off a hand stem, it is **38.8% and 11.7%**.
+
+    That is the failure `queue.md` § *A join that matches NOTHING must fail loudly* is written
+    against: a plausible number measured over the wrong population, indistinguishable from a
+    good result. Both are printed now, and the honest one leads.
+    """
     sys.stdout.reconfigure(encoding="utf-8")
     path = Path(__file__).resolve().parent.parent / "reports" / "garborg-name-transliterations.tsv"
-    rows = list(csv.DictReader(open(path, encoding="utf-8"), delimiter="\t"))
+    every = list(csv.DictReader(open(path, encoding="utf-8"), delimiter="\t"))
+    rows = [r for r in every if not _wrote_by_engine(r)]
+    print(f"{len(every):,} rows in the table; {len(every) - len(rows):,} were written by this "
+          f"engine and are not evidence about it. Scoring against the other {len(rows):,}:\n")
     ja_ok = zh_ok = both = n = 0
     misses = []
     for r in rows:
@@ -209,7 +266,7 @@ def check():
         both += gj == r["ja"] and gz == r["zh"]
         if gj != r["ja"]:
             misses.append((r["token"], gj, r["ja"]))
-    print(f"{n} hand-written rows")
+    print(f"{n} rows this engine did not write")
     print(f"  katakana matches exactly : {ja_ok:>3}  ({100*ja_ok/n:.0f}%)")
     print(f"  chinese  matches exactly : {zh_ok:>3}  ({100*zh_ok/n:.0f}%)")
     print(f"  both                     : {both:>3}  ({100*both/n:.0f}%)")

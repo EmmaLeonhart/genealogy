@@ -80,12 +80,10 @@ LETTERS = {
     "å": ("オー", "奥"), "ä": ("エ", "埃"), "ö": ("オ", "奥"), "ü": ("ウ", "乌"),
 }
 
-SUFFIXES = [
-    ("datter", "ダッテル", "达特"), ("dotter", "ドッテル", "多特"),
-    ("dtr.", "ダッテル", "达特"), ("dtr", "ダッテル", "达特"),
-    ("sson", "ソン", "松"), ("ssen", "セン", "森"),
-    ("sen", "セン", "森"), ("son", "ソン", "松"),
-]
+#: **The suffix table lives in `translit_no.py` now**, because it is a reading rule and this
+#: module and that one disagreed on 99 rows while both were in one pipeline. Imported, not
+#: restated -- one fact, one place.
+from translit_no import SUFFIXES  # noqa: E402
 
 
 def by_rule(token):

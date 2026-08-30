@@ -1909,6 +1909,20 @@ recorded surnames. `NN Gjøa` would be her alias under the current rule and is n
 
 Analysis first: count the NN people carrying both a `SURN` and a different `_MARNM`.
 
+## The transliteration engine agrees with human readings 46% (ja) and 41% (zh)
+
+Measured 2026-08-30 against the 317 rows of `reports/garborg-name-transliterations.tsv` the
+engine did not itself write — `python scripts/translit_no.py` prints it and now excludes its own
+output from the score. The remaining gap is **gemination and vowel length**, which the engine
+does not produce at all:
+
+    Anna    engine アナ      hand アンナ
+    Aagot   engine オーゴト   hand オーゴット
+    Abel    engine アベル     hand アーベル
+
+That is a convention decision, not a bug, and it governs 3,700 cached rows plus every future
+token. Decide the rule, then `scripts/refresh-rule-transliterations.py` re-derives.
+
 ## ABSOLUTE PREREQUISITE — no individual is created without their CJK labels
 
 **Emma, 2026-08-29:** *"There should be an absolute prerequisite that nothing is created until you
