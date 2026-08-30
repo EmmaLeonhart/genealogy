@@ -19824,3 +19824,34 @@ is in the corpus and invisible to every emitter until `rebuild-everything.py` ru
 
 No web search was needed. Checking what we already held answered it, which is the *grep the corpus
 before running an export* rule holding in a case where the export had also already been run.
+
+## 2026-08-30 — step 0's second half is wired into the daily command
+
+`docs/daily-algorithm.md` § *Step 0* is two halves — read her Wikidata contributions into the
+ledger, then **take those out and check what remains against the ideal state**. Only the first
+half ran. `scripts/build-daily-batch.py` now runs `model-vs-reality.py` as **step 0c**, before
+the three generators, because a diff read after them is a post-mortem of the day rather than a
+check on it. It emits nothing and no generator reads it.
+
+`--refetch` is bound to `--refresh-ledger`: one flag, one network day. That coupling is the
+point rather than a convenience — a refreshed ledger against a frozen snapshot is what the
+first run showed.
+
+**The cached snapshot was 89 hours old and held 71 items against a ledger of 657.** So the diff
+it had been producing was over a ninth of the population, and said so in a way nobody was
+reading: **587 of 1,230 differences were the literal row `ITEM NOT FETCHED`**. Refetched, the
+same command reports **9,376 differences over 657 people — 127 `missing`, 51 `CONFLICT`,
+9,198 `extra`**.
+
+`diff_summary()` trims the 90-odd-row property table to the rows that move. Everything dropped
+is `extra` alone, which is Emma's hand-work and the column this project never touches; `missing`
+and `CONFLICT` survive, and so does any count, which is how `ITEM NOT FETCHED` stays visible.
+
+**What the first honest diff shows, unacted on:** `P1449` *nickname* has 66 `missing`, and
+`d97e92c2` dropped `P1449` from the emitter yesterday — a Norwegian nickname cannot be tagged
+`en`. The model and the emitter disagree, so the diff is asking for a statement that nothing
+will ever produce. Queued rather than resolved here; the wrong fix is to filter the column.
+
+`tests/test_daily_batch_order.py` pins the ordering, the `--refetch` coupling and the trim. The
+ordering guard was **seen to fail** — moving the call after the generators fails it with
+`assert 2 < 0` — because a guard that has only been seen to pass is not known to guard.

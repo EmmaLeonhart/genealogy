@@ -178,8 +178,10 @@ position. Step 0 is off by default because it is the day's one network call.
   **The particle rule reaches far beyond the brackets: 257,030 tokens** stop being `P734`
   *family name* lookups — `de` 125,425, `von` 60,959, `van` 13,836, `la` 7,481, `af` 7,189,
   `ap` 6,574. Every one of them was being proposed as a family-name item.
-- **Diff the remainder against the ideal state as part of the run** — `model-vs-reality.py`
-  is the diff and is not yet wired into the daily command.
+- **`P1449` *nickname* is modelled and no longer emitted** — `d97e92c2` dropped it from
+  `build-garborg-day.py` (a Norwegian nickname tagged `en`), `model-vs-reality.py` still models
+  it, so the diff reports **66 `missing`** that nothing will ever emit. Decide which side is
+  right; do not silence it by filtering the column.
 - **The ideal state is still the Geni tree alone.** Her spec says the **union of the synoptic
   tree and the Geni tree**; the synoptic half does not exist yet, which is the § *PREREQUISITE
   ORDER* item.

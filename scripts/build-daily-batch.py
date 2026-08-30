@@ -32,7 +32,12 @@ name statements tomorrow, because `LAST` names the name item and the new person'
 known. Her order is the general rule, not a per-day dependency graph, and following it is what
 keeps the general rule true.
 
-## Step 0 — the ledger
+## Step 0 — the ledger, then the diff against the ideal state
+
+`docs/daily-algorithm.md` § *Step 0* is two halves and only the first was ever run here:
+
+1. **Check her Wikidata profile for everything she has edited**, and add it to the ledger.
+2. **Take those out, and check what remains against the ideal state.**
 
 `--refresh-ledger` runs `scripts/refresh-garborg-ledger.py` first: *"Check my wiki data profile
 for all the things that I've edited. Grab the things that I've been editing and add them to a
@@ -40,6 +45,18 @@ thing."* It is **off by default** because it is the one network call in the day 
 `BOT_CONTACT`; a run without it uses `reports/garborg-qids.tsv` as it stands and says how old
 that is, because a stale ledger is what made a batch try to re-create 21 people she had just
 made.
+
+**Step 0c is the second half** — `scripts/model-vs-reality.py`, which builds what each item
+*should* hold and diffs it against what the item does hold. Its `missing` column is the
+emittable set; its `CONFLICT` column is a modelling rule that is wrong, repeated across people
+rather than N separate errors. It runs **before** the three generators because that is what
+makes it a check on the day rather than a post-mortem of it, and it **emits nothing** — the
+generators are unchanged and do not read it.
+
+Freshness is the reason it is bound to the same flag as the ledger. Without `--refetch` the
+cached `out/model-vs-reality-items.json` is used, and a snapshot older than the ledger reports
+its own gap as `ITEM NOT FETCHED` — 587 of 657 people on 2026-08-30, because the ledger grew
+from 71 items while the snapshot sat still. A diff over 71 people is not a diff over the day.
 
 ## One file, and the spine variant is one flag away
 
@@ -90,6 +107,39 @@ def run(script, args):
     return proc.stdout
 
 
+def diff_summary(out):
+    """The headline of a `model-vs-reality.py` run: freshness, the four totals, and the
+    properties that actually move.
+
+    Its full output tabulates every property any ledger item carries -- 90-odd rows, most of
+    them a single `extra` from Emma's hand-work, which is the column this project never
+    touches. What belongs in a summary whose job is to make the ORDER legible is `missing`
+    (the emittable set) and `CONFLICT` (one modelling rule that is wrong, repeated).
+    """
+    keep, in_table = [], False
+    for line in out.splitlines():
+        line = line.rstrip()
+        if not line:
+            continue
+        if line.startswith("   property"):
+            in_table = True
+            keep.append(line)
+            continue
+        if in_table:
+            cols = line.split()
+            if len(cols) == 4 and cols[1] == "0" and cols[3] == "0":
+                continue
+            if line.startswith("   "):
+                keep.append(line)
+                continue
+            in_table = False
+        first = line.lstrip().split(" ", 1)[0].replace(",", "")
+        if (line.startswith(("using the cached snapshot", "fetching full items", "wrote"))
+                or "differences over" in line or first.isdigit()):
+            keep.append(line if line.startswith(" ") else "        " + line)
+    return "\n".join(keep)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--refresh-ledger", action="store_true",
@@ -122,6 +172,15 @@ def main():
               f"{'missing' if age is None else f'{age:.1f} hours old'} -- pass "
               f"--refresh-ledger to rebuild it from her contributions. A stale ledger is "
               f"what made a batch try to re-create 21 people she had just made.")
+
+    # **Step 0's second half**, `docs/daily-algorithm.md`: read her contributions, take those
+    # out, then check what remains against the ideal state. It runs BEFORE the three
+    # generators, because a diff read afterwards is a post-mortem of the day rather than a
+    # check on it. It emits nothing and the generators do not read it.
+    print(f"\nSTEP 0c diff vs the ideal state  (model-vs-reality.py"
+          f"{' --refetch' if args.refresh_ledger else ''})")
+    print(diff_summary(run("model-vs-reality.py",
+                           ["--refetch"] if args.refresh_ledger else [])))
 
     for pos, what, script, extra, output in STEPS:
         if script is None:
