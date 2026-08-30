@@ -1967,6 +1967,15 @@ useful*. A defensible sweep: every script not referenced by another script, by a
 in bulk — but do not preserve something merely because deleting feels irreversible, since git has
 it and a stale file in the tree is the thing that actually costs.
 
+## One batch file, names first, and a created person is linked to their names
+
+Emma, 2026-08-30. Two changes to how the QuickStatements are generated:
+
+- **One file, not two.** Names first, then everything else. Today it is
+  `wikidata-garborg-day.qs` plus `wikidata-garborg-name-items.qs` and a run order to remember.
+- **A person created in the run gets linked to their name items in that same run.** Today the
+  name statements only reach people who already held a QID, so a new person waits a day.
+
 ## Always last — pinned to the very end of the file
 
 **Bullets, not letters.** These were `A.` and `B.`; `CLAUDE.md` § *Queue items are BULLET POINTS*
