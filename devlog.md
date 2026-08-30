@@ -19348,3 +19348,31 @@ begin with), so the test can return something other than *link-gone*.
 
 **Nothing was applied.** No override is written, no tree changed. This is evidence for a decision
 that is hers.
+
+## 2026-08-29 — the post-merge item goes to the tail; the Borsheim numbers were wrong
+
+**Her ruling on the 408**, given the grading: *"For now leave these things and still run them, but
+put them at the end of the queue, I lean on the idea of saving them but do not have bandwidth to
+process this now."* The `exports/post-merge/` section is moved to the tail with that recorded.
+Nothing applied, no override written, and `scripts/grade-post-merge-drops.py` stays as the
+standing measurement.
+
+**The Borsheim item is corrected, and the correction is the point.** It said *"21 steps"* and
+*"31 steps"*, which are **total path length**, and I quoted them to her as work remaining — twice.
+Each file holds **two complete paths to the same endpoint**, the `paths/nn-basse.tsv` shape, so
+rows double-count: Reinhert, Randolph, Ola Helgeson Lima, Ådne, Sophia and Caroline each appear
+twice. Parsed rather than recalled: **13** and **15** distinct people without an item.
+
+**The framing was worse than the arithmetic.** Calling both paths *"inert"* implied the Signe
+destination was stalled. `arne-to-signe-no-borsheim.tsv` **is** in `SPINE_PATHS` and advances every
+run — step 8, then step 9, on consecutive batches — and **6 of the Caroline path's 15 missing are
+people it is already walking toward**. Caroline Signe Borsheim is reached either way. Only 9 are
+unique to that file, all on its long blood detour.
+
+`randolph-paulus-borsheim.tsv` is the one genuinely unwalked path: 13 missing, **zero** overlap
+with the Signe spine, carrying the Selma Borsheim marriage link that makes Arne → Emma 23 steps.
+
+**Why this happened, because it is the second time today.** I wrote that queue paragraph myself and
+then read it back as a source. `CLAUDE.md` § *The batches are a SEQUENCE* already names it --
+*"relied on weird summaries"* -- and the Charlemagne "8 missing" earlier today was the same shape:
+a number from our own notes, presented as a fact about Wikidata.

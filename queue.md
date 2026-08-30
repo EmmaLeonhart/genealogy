@@ -86,11 +86,32 @@ pinned by `tests/test_garborg_day_batch.py::test_a_marker_beside_a_real_name_sti
 
 ---
 
-- **The two Borsheim paths are extracted already; what was dropped is that nothing ADVANCES them.**
-  `paths/randolph-paulus-borsheim.tsv` (21 steps, Arne Garborg → Randolph Paulus Borsheim) and
-  `paths/caroline-signe-borsheim-hoknes.tsv` (31 steps) both exist and both parse — re-running
-  `genimerge path-from-html` on her MHTML reproduces the first exactly. Measured 2026-08-29 with
-  `scripts/check-spine-bonds.py`: **4 of 20** and **5 of 30** consecutive pairs bonded on Wikidata.
+- **The two Borsheim paths are extracted already; neither is in `SPINE_PATHS`.**
+
+  **CORRECTED 2026-08-29 — the earlier figures in this item were wrong and were quoted back at
+  her as fact.** *"21 steps"* and *"31 steps"* are **total path length**, not work remaining, and
+  they were repeated to her as though they were the gap. **Each file holds TWO complete paths to
+  the same endpoint**, the `paths/nn-basse.tsv` shape, so the row counts double-count people:
+  Reinhert, Randolph, Ola Helgeson Lima, Ådne, Sophia and Caroline each appear twice.
+
+  Measured by parsing the files, not by reading this item:
+
+  | path | rows | distinct people | **distinct without an item** |
+  | --- | ---: | ---: | ---: |
+  | `randolph-paulus-borsheim.tsv` | 21 | 18 | **13** |
+  | `caroline-signe-borsheim-hoknes.tsv` | 31 | 25 | **15** |
+
+  **And the framing was worse than the numbers.** Calling both *"inert"* made the Signe
+  destination sound stalled. It is not: **`arne-to-signe-no-borsheim.tsv` IS in `SPINE_PATHS` and
+  advances every run** — step 8, then step 9, on consecutive batches — and **6 of the Caroline
+  path's 15 missing people are the same people it is already walking toward**. Caroline Signe
+  Borsheim is reached either way, by the no-Borsheim route Emma specified. Only **9** of that
+  file's missing are unique to it, all on its long blood detour: Kydland, Kyllingstad, Auestad,
+  Storhaug, Ytre Lima.
+
+  **`randolph-paulus-borsheim.tsv` is the genuinely unwalked one** — 13 missing, **zero** overlap
+  with the Signe spine, and it carries the marriage link through Selma Borsheim that makes
+  Arne → Emma 23 steps.
 
   **Neither is in `SPINE_PATHS`**, so the daily builder never walks them — that is the whole of
   *"these things were kinda dropped"*. Whether they go in is the membership question already at the
@@ -205,54 +226,6 @@ by hand. The contributions refresh cannot find them — it resolves an item by r
 it and there is none — but it also **never deletes rows**, so they survive every run. Nothing is
 being lost today; the correspondence is simply local rather than on Wikidata, and only a rebuild
 of the ledger from scratch would fail to recover it.
-
-## ⛔ `exports/post-merge/` — resolving stale duplicates without throwing exports away
-
-**Emma's design, 2026-08-24.** The problem: Geni has merged people our corpus still holds
-twice, and *"we can't just throw out the earlier exports that contain stale individuals"*
-— they carry thousands of people the merge needs.
-
-**Her method, in her order:**
-
-- **Export from the merged individual directly** where she created them, since she can
-  reach the profile.
-- **Where that is impossible, fall back to the earlier add-an-ancestor-then-export-from-them
-  algorithm**, in the browser. That is `docs/export-seed-rules.md`.
-- **The new GEDCOMs go in `exports/post-merge/`**, a directory with special logic: **a
-  Geni record in there overwrites the same Geni ID from any other export** in the synoptic
-  tree. Post-merge is newest and therefore right.
-- **Export until every first-degree relative of every merged individual is present** in
-  that directory. That is the stopping rule, not a count of exports.
-
-**The economy of it is hers and it is the important part:** *"merged individuals cluster
-together so we will not need to run an export on every one of them"* — one ball covers
-many. The 13 `strong` rows bear this out: seven are Haji-no-muraji and three are Sugawara,
-two lineages rather than thirteen scattered people.
-
-**MEASURED 2026-08-26, and the answer is: do not write the relationship override.**
-`scripts/measure-post-merge-override.py` → `reports/post-merge-override.tsv`.
-
-Half the design already works: `genimerge.sources._post_merge_last` sorts the directory last,
-so post-merge has the final word on every **single-valued** path. The other half — overriding
-**relationships**, which are unioned and never dropped — was measured before being written:
-
-| | parents | spouses | children | total |
-| --- | ---: | ---: | ---: | ---: |
-| would be **dropped** | 1,701 | 1,126 | 2,710 | **5,537** |
-| of those, pointing at somebody **no post-merge ball reached** | 1,541 | 1,034 | 2,550 | **5,125 (93%)** |
-| **only in post-merge** — what the override would gain | 0 | 0 | 0 | **0** |
-
-**It subtracts 5,537 and adds nothing.** A post-merge ball stops at 5,000 people, so a relative
-outside it is absent because the ball ended, not because Geni deleted the link. Applying the
-override literally would delete 5,125 real relationships to buy nothing.
-
-**412 drops are falsifiable** — both ends inside a post-merge ball, 362 people, 160 parent /
-160 child / 92 spouse. Those are the genuine *Geni deleted this link* candidates and the only
-population an override should ever touch. Next step is to look at a handful of them as records,
-not to write the override wholesale.
-
-Depends on `reports/geni-stale-duplicates.tsv` (13 strong, 3 medium, 13 weak) and
-`reports/geni-merges-performed.tsv` (180 survivors from her activity feed).
 
 ## ⛔ PREREQUISITE ORDER for the synoptic rebuild — merges first, then joins
 
@@ -2219,3 +2192,64 @@ Emma, 2026-08-29: *"I think that our clan things are much worse than you think, 
 never acually ran them adn I think I am seein at least some evidence."*
 
 An analysis. Nothing was investigated when this was written.
+
+## ⛔ `exports/post-merge/` — MOVED TO THE TAIL, 2026-08-29, her call
+
+**Emma, 2026-08-29**, shown that 408 of the 412 falsifiable drops are real deletions:
+*"For now leave these things and still run them, but put them at the end of the queue, I lean on
+the idea of saving them but do not have bandwidth to process this now."*
+
+So: **leave them in the tree, keep running the measurement, decide later.** She leans toward
+saving the 408 rather than dropping them. Nothing is applied and no override is written.
+
+`scripts/grade-post-merge-drops.py` → `reports/post-merge-falsifiable.tsv` is the standing
+measurement — 408 `link-gone`, 2 still linked, 2 with no shared family, over 159 parents,
+159 children and 90 spouses.
+
+## ⛔ `exports/post-merge/` — resolving stale duplicates without throwing exports away
+
+**Emma's design, 2026-08-24.** The problem: Geni has merged people our corpus still holds
+twice, and *"we can't just throw out the earlier exports that contain stale individuals"*
+— they carry thousands of people the merge needs.
+
+**Her method, in her order:**
+
+- **Export from the merged individual directly** where she created them, since she can
+  reach the profile.
+- **Where that is impossible, fall back to the earlier add-an-ancestor-then-export-from-them
+  algorithm**, in the browser. That is `docs/export-seed-rules.md`.
+- **The new GEDCOMs go in `exports/post-merge/`**, a directory with special logic: **a
+  Geni record in there overwrites the same Geni ID from any other export** in the synoptic
+  tree. Post-merge is newest and therefore right.
+- **Export until every first-degree relative of every merged individual is present** in
+  that directory. That is the stopping rule, not a count of exports.
+
+**The economy of it is hers and it is the important part:** *"merged individuals cluster
+together so we will not need to run an export on every one of them"* — one ball covers
+many. The 13 `strong` rows bear this out: seven are Haji-no-muraji and three are Sugawara,
+two lineages rather than thirteen scattered people.
+
+**MEASURED 2026-08-26, and the answer is: do not write the relationship override.**
+`scripts/measure-post-merge-override.py` → `reports/post-merge-override.tsv`.
+
+Half the design already works: `genimerge.sources._post_merge_last` sorts the directory last,
+so post-merge has the final word on every **single-valued** path. The other half — overriding
+**relationships**, which are unioned and never dropped — was measured before being written:
+
+| | parents | spouses | children | total |
+| --- | ---: | ---: | ---: | ---: |
+| would be **dropped** | 1,701 | 1,126 | 2,710 | **5,537** |
+| of those, pointing at somebody **no post-merge ball reached** | 1,541 | 1,034 | 2,550 | **5,125 (93%)** |
+| **only in post-merge** — what the override would gain | 0 | 0 | 0 | **0** |
+
+**It subtracts 5,537 and adds nothing.** A post-merge ball stops at 5,000 people, so a relative
+outside it is absent because the ball ended, not because Geni deleted the link. Applying the
+override literally would delete 5,125 real relationships to buy nothing.
+
+**412 drops are falsifiable** — both ends inside a post-merge ball, 362 people, 160 parent /
+160 child / 92 spouse. Those are the genuine *Geni deleted this link* candidates and the only
+population an override should ever touch. Next step is to look at a handful of them as records,
+not to write the override wholesale.
+
+Depends on `reports/geni-stale-duplicates.tsv` (13 strong, 3 medium, 13 weak) and
+`reports/geni-merges-performed.tsv` (180 survivors from her activity feed).
