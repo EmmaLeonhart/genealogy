@@ -19315,3 +19315,36 @@ it is not being fixed on a guess.
 
 `ja` went 228 -> 226, which is noise from whole-name item matching rather than a regression worth
 chasing.
+
+## 2026-08-29 — grading the 412 falsifiable post-merge drops: 408 are real
+
+queue.md § *`exports/post-merge/`* left this at *"next step is to look at a handful of them as
+records, not to write the override wholesale."* Done, and the records are unambiguous.
+
+**`scripts/grade-post-merge-drops.py` → `reports/post-merge-falsifiable.tsv`.** Of the 412 drops
+where both ends sit inside a post-merge ball:
+
+| verdict | n |
+| --- | ---: |
+| **link-gone** — a shared family in `merged.ged`, none in post-merge | **408** |
+| link still present | 2 |
+| no shared family in merged.ged | 2 |
+
+159 parents, 159 children, 90 spouses.
+
+**The worked record, and it is clean.** `out/merged.ged` family `F6000000007256007791` has
+**HUSB** Nachman הכהן Rappaport `6000000003370390443` and **CHIL** Simcha HaKohen Rappaport
+`6000000000061317252`. In `exports/post-merge/export-Forest-6000000227413445871.ged` **both men are
+present with full records**, and Simcha carries *no `FAMC` at all* while Nachman carries *no
+`FAMS`*. The family that joined them is on neither record. A spouse case behaves the same way:
+`4074595931200021871` and `6000000136639783966` share `FAMS @F6000000136675555887@` in the merge and
+each keeps only their own `FAMC` in post-merge.
+
+**408 of 412 is high enough to be suspicious of, and it was checked rather than trusted.** The
+worry is the one that killed the other 5,125: a ball that ends truncates family links, so absence
+can be an artefact. It is not here -- being in the ball was already required, and the two
+disconfirming shapes both appear in the data (2 links still present, 2 with no shared family to
+begin with), so the test can return something other than *link-gone*.
+
+**Nothing was applied.** No override is written, no tree changed. This is evidence for a decision
+that is hers.
