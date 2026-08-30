@@ -19261,3 +19261,36 @@ still takes the CJK form, which is the language-neutral slot and the right home 
 The **Geni-writing** half of the queue item stays parked -- that is the part she deferred.
 
 151 passed, 4 skipped over the tests covering both scripts.
+
+## 2026-08-29 — why new items get no Japanese or Chinese label
+
+Her queue item, verbatim: *"analyze why new items are not being created with Japanese and Chinese
+labels already pesent... every indiviual is created with a latin alphabet mul label... and every
+individual is at least made with all of the cjk names."*
+
+**The Latin half is already satisfied.** All 14 creations in today's batch carry `Lmul` and `Len`,
+and **0** have a `mul` without a Latin character.
+
+**The CJK half fails on ONE missing token at a time.** 11 of 14 get `ja`/`zh`. The transliteration
+table holds **3,261** entries and a name is rendered only if **every** token is in it -- the
+*partial is worse than absent* rule. The three that failed:
+
+| name | the token that blocked it |
+| --- | --- |
+| Guri Torkjellsdatter Foss-Eikeland | `Torkjellsdatter`, `Eikeland` |
+| Lars Osmundsen Nese | `Nese` |
+| Søren Sørenson Gjesdal | `Sørenson` -- while `Osmundsen` **is** in the table |
+
+That last row is the shape of the whole problem: the table is per-token, so every spelling of a
+patronymic needs its own entry and `-sen` being present says nothing about `-son`.
+
+**Sized over the 232 people actually queued for creation:** 185 would get `ja`/`zh` today, **47 are
+blocked**, by **45 distinct tokens** -- and the *whole* backlog is those 45. Commonest are `Mörner`
+(4), `Sør` (4), `Reime` (4), `Köhler`, `Törnflycht`, `Nese` (2 each). Two of them are `<private>`
+and `Private`, which are markers that should never have reached a transliteration attempt at all,
+and two more are `"The` and `Victorious"` -- an epithet split on whitespace.
+
+So the infrastructure is small and bounded, not a research project: 45 tokens stand between the
+current pipeline and full `ja`/`zh` coverage of everyone queued. **Readings are never invented** --
+`reports/cjk-romanisation.md` is built by reading each form off a Wikidata name item that carries
+both scripts, and any table growth has to come the same way.
