@@ -1897,9 +1897,14 @@ Analysis only. Do not change the existence check before reporting what actually 
 Related and probably the same root cause: § *LAST — name items are being MERGED by other editors.
 Stop preferring creation over reuse*.
 
-## Why does `Q141205924` have a non-normalised NN-style name in its `mul` label?
+## The NN path drops the birth-name alias the named path emits
 
-**Emma, 2026-08-29.** `Q141205924` — *mother of Lars Gunnbjørnsen Mjølhus*. Analysis only.
+Found while answering the `Q141205924` label question. The named branch of
+`build-garborg-day.py` emits `Lmul <married>` **and** `Amul <birth>`; the redacted/NN branch
+sets `birth = ""` and emits the `mul` alone. So a married NN woman keeps only one of her two
+recorded surnames. `NN Gjøa` would be her alias under the current rule and is not emitted.
+
+Analysis first: count the NN people carrying both a `SURN` and a different `_MARNM`.
 
 ## A system for fixing romanisation errors
 

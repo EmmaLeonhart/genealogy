@@ -19880,3 +19880,31 @@ is not a seed, because nothing on Wikidata connects Buyeo Deokjang to Arne Garbo
 Who she *is* was settled on 2026-08-29 in `e1e1a928` and `reports/wikidata-q141198548-nn.qs`:
 Deokjang's wife, three shared children, no parents, carrying his name because she has none of
 her own. Nothing here revisits that.
+
+## 2026-08-30 — `Q141205924` reads `NN Gjøa` because it predates the married-name flip
+
+Her Geni record, `6000000012242894384`, read straight from
+`exports/8-19 exports/export-BloodTree-6000000227289508960.ged`:
+
+    1 NAME N.N. /Gjøa/
+    2 GIVN N.N.
+    2 SURN Gjøa
+    2 _MARNM Aukland
+
+So there are two surnames on the record and the item took the wrong one. Live on Wikidata her
+`mul` is `NN Gjøa` — the **birth** form — with the ten descriptive labels
+*mother of Lars Gunnbjørnsen Mjølhus* beside it.
+
+**The marker is normalised; the surname is not the one the rule now picks.** `N.N.` → `NN` is
+`nn_form` working. What chose `Gjøa` is the date: the ledger has her from **2026-08-25**, and
+`derive-labels.py` did not emit the married form as `label_mul` until **2026-08-29** — the run
+that flipped 251,707 labels. The NN branch labels from `labels[g]`, which on 08-25 was the
+birth form. Built today she is `NN Aukland`.
+
+**A second thing falls out of it, and it is not fixed by the flip.** The named branch emits the
+married form as `Lmul` and the birth form as `Amul`; the NN branch sets `birth = ""` and emits
+the `mul` alone. So a married NN woman keeps one of her two recorded surnames and `NN Gjøa`
+becomes nothing rather than an alias. Queued as its own item, to be counted before anything is
+changed.
+
+Analysis only, per the item. No code touched, no correction emitted.
