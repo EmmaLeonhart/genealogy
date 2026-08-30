@@ -20398,3 +20398,31 @@ lacked all-language labels was wrong.
 **The collision hold is in.** Two creations would have been refused for a taken
 label+empty-description pair — a bare `NN` and `Thomas Linder` — so they are carried, not
 described. The batch now pre-flights at **0 collisions over 16 creations**.
+
+## 2026-08-30 — the Vasa exports: everything downloaded is filed, nothing is in flight
+
+Her item, § *0. Aug 28, 2026 manual adds*: *"the actual Vasa gedcom things arrived and are all
+finishd although I think they are all downloaded, be sure"*.
+
+**Checked by content, not by filename**, because a filed export may have been renamed — several
+were. Every `.ged` inside the 74 zips in `~/Downloads` is matched against the size of every
+`.ged` under `exports/`:
+
+    74 zips in Downloads; 0 whose GEDCOM is NOT in exports/
+
+So nothing is sitting downloaded-but-unplaced. The corpus is **604 GEDCOMs, 1,449,096 people**,
+and `reports/export-provenance.csv` is regenerated against it — 1,055,360 people appear in
+exactly one export.
+
+**Vasa is present**: 79 exports carry the name across 1,322 name records, the densest being
+`chain-seeds/export-Forest-6000000227301562877.ged` (191) and
+`chain-seeds/export-Forest-6000000227298146822.ged` (167).
+
+**Nothing is in flight.** The three exports of today were the last submitted and all three are
+filed.
+
+**The bound on this answer, stated rather than implied:** it proves every *downloaded* export is
+filed. An export that finished on Geni and whose link was never clicked would leave no trace on
+this machine — the only record is the "ready" mail, and the links do not say whether they have
+been used. Ruling that out would mean opening ~50 links, which is not worth it against zero
+evidence of a gap.

@@ -40,10 +40,6 @@ ones above them: `THE EDIT ALGORITHM`, `THE DAILY ALGORITHM`, `THE TAIL ALGORITH
 
 These are supposed to be manually added to the queue and worked on, do no just paraphrase during the rebase keep this part entirely intact. We are approaching usage limit for now.
 
-### New thing
-
-Uhh what the fuck is this but either way the actual Vasa gedcom things arrived and are all finishd although I think they are all downloaded, be sure
-
 ## The queued tasks, IN HER EXACT WORDS — the times are ORDERING, not schedule
 
 Emma, 2026-08-27: *"just look over the chatlog and remake all of them as queue items over this
