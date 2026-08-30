@@ -33,6 +33,26 @@ Q141189093	P5056	LAST	P144	Q141178199	S2600	"6000000022418305015"
 #   Q141189091 Ole Nicolai Bergersen: P5056 patronym or matronym = the item just created, qualified P144 based on Q141168797 Christian Frederik Bergersen
 Q141189091	P5056	LAST	P144	Q141168797	S2600	"6000000055822412855"
 
+# Jonsdatter -- patronymic, 6 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Jonsdatter"
+LAST	Len	"Jonsdatter"
+#   set the mul label to "Jonsdatter"
+LAST	Lmul	"Jonsdatter"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   Q141216638 Olaug Jonsdatter Heigre: P5056 patronym or matronym = the item just created
+Q141216638	P5056	LAST	S2600	"6000000003491933401"
+#   Q141200054 Rakel Jonsdatter Jonsdotter Vatne: P5056 patronym or matronym = the item just created, qualified P144 based on Q141216388 Jon Hansson St. Vatne
+Q141200054	P5056	LAST	P144	Q141216388	S2600	"6000000003491986761"
+#   Q141205921 Maria Jonsdatter Lura: P5056 patronym or matronym = the item just created, qualified P144 based on Q141216388 Jon Hansson St. Vatne
+Q141205921	P5056	LAST	P144	Q141216388	S2600	"6000000003491995109"
+#   Q141189071 Joren Jonsdatter Espedal: P5056 patronym or matronym = the item just created, qualified P144 based on Q141198435 Jon Nilsson Espedal
+Q141189071	P5056	LAST	P144	Q141198435	S2600	"6000000005609425388"
+#   Q141189062 Cecilie Jonsdatter: P5056 patronym or matronym = the item just created, qualified P144 based on Q116150299 Jon Reinmodsen
+Q141189062	P5056	LAST	P144	Q116150299	S2600	"6000000180296055830"
+
 # Olsen -- patronymic, 6 bearer(s) in the batches
 # create a new item
 CREATE
@@ -119,26 +139,6 @@ Q141216634	P5056	LAST	P144	Q141216381	S2600	"6000000009127909254"
 #   Q141199918 Kirsten Hansdatter Grøtheim: P5056 patronym or matronym = the item just created, qualified P144 based on Q141216381 Hans Rasmussen Låge-Håland
 Q141199918	P5056	LAST	P144	Q141216381	S2600	"6000000087451897836"
 
-# Jonsdatter -- patronymic, 5 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Jonsdatter"
-LAST	Len	"Jonsdatter"
-#   set the mul label to "Jonsdatter"
-LAST	Lmul	"Jonsdatter"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   Q141216638 Olaug Jonsdatter Heigre: P5056 patronym or matronym = the item just created
-Q141216638	P5056	LAST	S2600	"6000000003491933401"
-#   Q141200054 Rakel Jonsdatter Jonsdotter Vatne: P5056 patronym or matronym = the item just created, qualified P144 based on Q141216388 Jon Hansson St. Vatne
-Q141200054	P5056	LAST	P144	Q141216388	S2600	"6000000003491986761"
-#   Q141205921 Maria Jonsdatter Lura: P5056 patronym or matronym = the item just created, qualified P144 based on Q141216388 Jon Hansson St. Vatne
-Q141205921	P5056	LAST	P144	Q141216388	S2600	"6000000003491995109"
-#   Q141189071 Joren Jonsdatter Espedal: P5056 patronym or matronym = the item just created, qualified P144 based on Q141198435 Jon Nilsson Espedal
-Q141189071	P5056	LAST	P144	Q141198435	S2600	"6000000005609425388"
-#   Q141189062 Cecilie Jonsdatter: P5056 patronym or matronym = the item just created, qualified P144 based on Q116150299 Jon Reinmodsen
-Q141189062	P5056	LAST	P144	Q116150299	S2600	"6000000180296055830"
-
 # Morlanda -- family, 5 bearer(s) in the batches
 # create a new item
 CREATE
@@ -213,7 +213,7 @@ Q141219062	P734	LAST	P3831	Q28418670	S2600	"6000000012888307497"
 #   Q5580892 Fredrik Carl Boije af Gennäs: P734 family name = the item just created
 Q5580892	P734	LAST	S2600	"6000000020865415341"
 
-# 222 more name items are needed and wait for a later
+# 223 more name items are needed and wait for a later
 # run -- 10 a day is her cap, not a limit of the data:
 #   Andersson (patronymic), 3 bearer(s)
 #   Erikson (patronymic), 3 bearer(s)
@@ -225,7 +225,7 @@ Q5580892	P734	LAST	S2600	"6000000020865415341"
 #   Kristiansen (patronymic), 3 bearer(s)
 #   Låge-Håland (family), 3 bearer(s)
 #   Osmundsdatter (patronymic), 3 bearer(s)
+#   Voster (family), 3 bearer(s)
 #   Ådnesdatter (patronymic), 3 bearer(s)
-#   Asbjørnson (patronymic), 2 bearer(s)
-#   ... and 210 more
+#   ... and 211 more
 
