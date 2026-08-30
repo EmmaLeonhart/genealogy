@@ -940,13 +940,6 @@ modules still need moved to `genimerge.matching` — two year tolerances,
 `year_of` for **Wikidata** time literals, and `distance_from_matched`. Nothing
 in `matching` makes a request and nothing in it compares names.
 
-`out/wikidata/matched_p2600.csv`, `matched_all.csv` and `candidates.csv` were
-its outputs and nothing writes them now; `coverage`, and the online branches of
-`crosscheck`, `name-links` and `quickstatements`, read them and therefore have
-no input. The offline replacement is the P2600 map, `out/wikidata/p2600-all.tsv`,
-plus the downloaded item store — which is what `crosscheck --offline` already
-uses.
-
 **Stdlib only.** `urllib` covers the Wikidata SPARQL endpoint. Add a dependency
 only when the stdlib genuinely cannot do the job.
 
@@ -1054,13 +1047,9 @@ many exports contain a person. Order is by path, which is deterministic but is
 **not** export order — the same caveat that has always applied to "later sources
 win".
 
-**There was a `data_lake/` and it is gone (2026-08-05).** It was scaffolding
-from the first session for sorting a pile of dropped zips, and it accreted a
-naming scheme, an ingest ritual and a rule that the merge read from it and
-nowhere else — none of it ever decided, all of it meaning a freshly downloaded
-export was invisible until copied to a second place under a third name. Its five
-unique files are in `exports/originals/`; the other 49 were duplicates of files
-already under `exports/`. Do not reintroduce a second store.
+**There is ONE store and it is `exports/`. Do not reintroduce a second.** `data_lake/`
+was that second store and was deleted 2026-08-05; its unique files are in
+`exports/originals/`.
 
 **Two exports can share a style *and* a seed, and then the name collides.**
 Seen on 2026-08-05: two `Forest` exports of `6000000227040338177` taken seven
@@ -1560,28 +1549,6 @@ request would do, and do not hammer to finish faster.
 `wikidata/items/` with its index is still the right first place to look — it is faster, it costs
 Wikidata nothing, and a question answerable there needs no request at all. Reach for the network
 when the store cannot answer, not before.
-
-**The rule this replaces, kept because the history explains the store's existence.**
-
-**Emma's rule of 2026-08-07, now superseded:** *"do not, whatever the
-fuck you do, check it, except with our Wikidata export, because checking it is
-the way that you get a 429."* One bulk job — `genimerge wikidata-download` — is
-the only thing in this repo permitted to talk to Wikidata, and even it is
-confirmed before a live run. There is no such thing as a harmless one-off lookup:
-the download needs the whole rate-limit budget, and a side-query that trips
-throttling costs hours of a run that was going fine.
-
-**Every question about Wikidata's contents is answered offline, against the local
-store**, after the download. That includes the ones that feel too small to
-matter — does this item really carry P22, is this QID a redirect, what does this
-label say. Write the question down as a check to run over `wikidata/items/`
-rather than answering it live.
-
-**A worked example of the shape, deferred on purpose:** Emma's guess is that the
-Geni-linked items on Wikidata skew to the 20th and 21st centuries much as the
-Geni profiles do, with the 19th ambiguous. That is checkable — and is **not to be
-checked until the 500,000 are downloaded**, at which point it is a local
-computation over stored items and costs nothing. Recorded in `todo.md` § 8b.
 
 ### The four big derived CSVs are committed GZIPPED
 
@@ -2557,18 +2524,9 @@ starts at sept 1."* Then, on being shown the coupling: *"Shintowiki scripts and 
 not the same and not really coordinated"*, and *"I think you hallucinated a coordination
 between them."*
 
-**She is right, and the coupling is gone.** `scripts/wikidata_lockout.py` used to fetch a
-lockout state file belonging to `shintowiki-scripts` over HTTPS, and this file used to
-assert there was *"exactly one lockout state file for all of Emma's repos"*. Nothing in
-this repo ever evidenced that. An earlier session inferred it from her 2026-08-18 *"no
-wikidata editing for a month"* instruction and wrote the inference down as fact.
+**There is no coupling to `shintowiki-scripts`** and nothing here may reintroduce one.
 
-**Why it mattered rather than being merely untidy: the check failed closed.** An unset
-secret, a 404 or a network blip all reported LOCKED. From 2026-09-01 that would have
-silently blocked editing this repo is entitled to do — and a blocked run looks exactly like
-a run with nothing to do.
-
-**What governs now is this repo's own date, written twice and pinned together.**
+**What governs is this repo's own date, written twice and pinned together.**
 `scripts/wikidata_lockout.py` carries `START_DATE = "2026-09-01"`;
 `.github/workflows/wikidata-edits.yml` carries the same in `START_DATE:`. They are two
 copies because the workflow gates before it checks the repo out and cannot import the
