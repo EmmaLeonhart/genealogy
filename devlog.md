@@ -19778,3 +19778,25 @@ ledger.** Same for `Q141178149` → `Q110302791`. So the ledger holds the **surv
 contributions name the merged-away item, which is the opposite of what
 `queue.md` recorded (*"the ledger held one QID and Wikidata now returns another"*). The refresh is
 right to keep its own value and say so rather than overwrite.
+
+## 2026-08-30 — the Geni-bio item is superseded, and closing it is the point
+
+The next queue bullet was her 2026-08-27 plan for the hand-asserted pairs: edit each person's Geni
+bio to carry their Wikidata link, then run a Forest export on each, then file the results in the
+post-merge directory.
+
+**`CLAUDE.md` § *The Wikidata link goes in the bio during the SYNOPTIC TREE BUILD. Geni is not
+edited* supersedes it**, in her words the same day: *"Actually, no, I realised we don't actually
+need to edit your geni at all for this. Editing geni is actually a step that makes stuff much more
+complicated than it actually should be. In the Synoptic tree, we put the Wikidata links into bios
+during the build process."*
+
+**And the replacement is already built.** `exports/post-merge/wikidata-qid-links.ged`, 358 bytes,
+three individuals — `6000000001835522164` → `Q11596350`, `6000000001844033355` → `Q11078587`,
+`6000000002039751362` → `Q24890131` — sitting in the post-merge directory so the merge injects the
+links as ordinary tree content. No browser, no bio edits, no exports.
+
+**This is the second time this item has come up as live work.** A cron carrying the same plan was
+recovered after the 2026-08-28 crash and handed back to her, and her answer was *"No fuck you you
+didn't get the later discussion."* `CLAUDE.md` already recorded that, which is what made it
+recognisable this time rather than actionable. Deleted rather than left to surface a third time.
