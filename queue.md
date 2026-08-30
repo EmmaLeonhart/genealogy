@@ -2215,22 +2215,49 @@ Wikidata. This is a qualifier thing."*
 Her closing note on how I handled this, kept because it is the correction: *"This is a relatively
 well-defined task that you decided to transform into something crazy."*
 
-### Get the REAL parents behind the NN placeholders — save a sibling's page
+### Get the REAL parents behind the NN placeholders — and FIRST, cost it
 
-**Emma, 2026-08-29**, ruling on how sibling hops are represented: *"Both parents are 'NN'
-placeholders. Pipeline generates names for them. However we may attempt to gain the information of
-the parents. Imo this is too large to do right now, but at the end of the queue we will have a task
-that goes to one of the siblings and save their page so the parent names and potentially other
-people are added. If half siblings we go to both siblings to clarify."*
+**Emma, 2026-08-29.** Two rulings, and the second governs whether the first ever runs.
 
-**4,924 placeholder parents exist** — 2,284 from the saved pages and 2,640 from the paths — one
-pair per sibling group. Each pair is `NN` with a `SEX` and **no `RFN`**, because they have no Geni
-profile and claiming one would be a false identity assertion.
+**The representation.** *"Both parents are 'NN' placeholders. Pipeline generates names for them.
+However we may attempt to gain the information of the parents. Imo this is too large to do right
+now, but at the end of the queue we will have a task that goes to one of the siblings and save
+their page so the parent names and potentially other people are added. If half siblings we go to
+both siblings to clarify."*
 
-The work: for each sibling group, open **one** sibling's Geni profile, save the page into
-`geni-scraping/`, and re-run `scripts/build-scraped-gedcom.py` — the saved page carries
-*"Son of A and B"*, which replaces the placeholders with real people.
+**Page-saving was ABANDONED once, and the reasons are hers.** *"I gave up on the page-saving system
+for a reason, because it was taking far too long. Part of this was due to extreme inefficiency and
+frustration about your behaviour with it. Part of it was due to extreme inefficiency in terms of
+lack of compliance from you on doing it at a reasonable rate. Part of it was that the actual site
+itself was way too slow."*
 
-**Half siblings need BOTH pages**, per her instruction, because they share only one parent and
-which one is not recoverable from a single page. Half siblings are currently **skipped entirely**
-rather than given placeholders, for that reason.
+**What is different now is SELECTIVITY, and that is the whole bet.** *"we're only saving pages in a
+very selective way... selective enough that it's not going to be harmful... only to ones that are
+important at a significant level."* The old campaign saved everything; this one saves only the
+sibling groups that matter.
+
+**So the FIRST deliverable is a time estimate, not pages.** *"My expectation still is this is going
+to occur within a reasonable time frame, or it's not going to occur. By extension, as an extension
+of this thing, I want you to actually measure how long it takes. Make predictions about how long it
+takes."* Measure the real per-page rate, predict the total, and put that to her before saving a
+single page beyond the sample the measurement needs.
+
+**The half-sibling question decides how big the job is, and it is OPEN.** *"I don't believe we have
+half-sibling information. We might have it, or we might not... I'm not the most clear on whether
+half-siblings versus full-siblings are properly recorded like this or are accessible within the
+actual chain information itself. I don't think it is, but I think it might be. If it is, then we'd
+be able to preemptively do the calculation. If it was not within it already, we'd have to do
+something much more exploratory."*
+
+- If the chain data marks half siblings, the count is computable up front and one page per group
+  suffices for the rest.
+- If it does not, every group is potentially a half-sibling group, which means **two** pages each
+  and a much larger, exploratory job.
+
+**4,924 placeholder parents exist today** — 2,284 from the saved pages, 2,640 from the paths, one
+pair per sibling group. Half siblings found on saved pages are currently skipped entirely rather
+than given placeholders, because they share one parent and giving them two would assert a marriage
+that did not happen.
+
+**NOT NOW.** Emma, same message: *"This is an edit to the cube item. Do not do any fucking
+calculations right now!"*
