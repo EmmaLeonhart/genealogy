@@ -2263,3 +2263,31 @@ statements and the spines. Redacting content while keeping structure is the like
 
 **The memory ceiling is untouched by any of this** — the merge peaks at 16.8 GB against a 16 GB
 runner, so the synoptic tree still cannot be rebuilt in Actions without a larger runner.
+
+### Rebuild the tree, then build the QuickStatements and attach the file
+
+**Emma, 2026-08-29:** *"end of the queue is a rebuild of the tree and then after it is to build the
+quickstatements and attach the file"*
+
+**Why it matters more than a rebuild usually does.** `out/merged.ged` is **0 bytes** — two rebuild
+attempts were killed partway — and every derived CSV is from **24 Aug 18:28**. The whole Bure
+campaign landed *after* that, so its people are invisible to the batch generator:
+
+- **Israel Hwasser** `Q5818420` / `6000000019777574162` is in
+  `exports/bure-campaign/export-Forest-6000000227475095829.ged` (28 Aug 11:35) with a full record,
+  and has **0 rows** in `derived-family.csv` and `display-names.csv`.
+- `Q141219067` carries `P1810 "Private"` where Geni now shows `<private> Dokken`, for the same
+  reason — three older exports say `Private`, the 28 Aug one says `<private> /Dokken/`.
+
+So this is not cosmetic: until the rebuild runs, every person from the Bure campaign is missing
+from the ring, and the compliance audit's *"no relationship at all"* on 15 roster people cannot be
+acted on because their relatives are not in the derived tree.
+
+**The order, and it is hers:**
+
+- `python -m genimerge merge -o out/merged.ged` — **run it alone**, it peaks near 17 GB.
+- `python scripts/build-display-names.py`, then `python scripts/derive-labels.py`. Running the
+  analysers is not running the generator: `derive-labels.py` READS `display-names.csv` and does not
+  build it, which is how a correction once survived two regenerations.
+- `python scripts/build-garborg-day.py --compose`
+- attach `reports/wikidata-garborg-day.qs` to the chat.
