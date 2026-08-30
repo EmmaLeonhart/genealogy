@@ -80,3 +80,20 @@ one thing the change straightforwardly improves.
 - **Her stated motive is sound.** A scheduled job would remove the *"I do not know the degree that
   somethin is your discretion or part of the algorithm"* problem, because the run would be a log
   rather than a conversation.
+
+## Her direction, 2026-08-29
+
+*"we will optimize the cicd revisions to be small and do other things to optimize filesizes for the
+runners but can 100% do all this stuff if we anonymize it properly"*
+
+So the plan is: **shrink what CI checks out, and gate going public on anonymisation.** Both are
+sound — the memory ceiling is the only hard stop, and it is marginal (16.8 GB against 16 GB).
+
+**One constraint worth knowing before designing the anonymisation, because it is not obvious.**
+The Geni profile ID *is* the identifier, and it is also this repo's primary key — every join, the
+`P2600` statements, the ledger, the spines. So anonymisation cannot simply hash or drop the IDs
+without breaking the thing the repo exists to do. The likely shape is therefore **redacting the
+private people's content while keeping the structure**, which is close to what Geni already does and
+what `CLAUDE.md` § *Redacted people go in* already assumes for Wikidata.
+
+Not designed here. Flagged so the design starts from the right constraint.

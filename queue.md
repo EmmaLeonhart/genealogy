@@ -2247,3 +2247,24 @@ that did not happen.
 
 **NOT NOW.** Emma, same message: *"This is an edit to the cube item. Do not do any fucking
 calculations right now!"*
+
+### Anonymise, shrink the CI checkout, then go public
+
+**Emma, 2026-08-29**, on `reports/public-repo-analysis.md`: *"we will optimize the cicd revisions to
+be small and do other things to optimize filesizes for the runners but can 100% do all this stuff if
+we anonymize it properly"*
+
+Three pieces, in her order:
+
+- **Shrink what CI checks out.** A run does not need the 12.2 GB working tree — `.css` and
+  `.download` under `geni-scraping/` are 1.9 GB of page furniture, and the compose step reads only
+  the derived CSVs.
+- **Anonymise.** The gate on going public. ~96,000 rows concern people Geni treats as private.
+- **Then public**, which makes Actions minutes free and lets the daily emailed batch run.
+
+**The constraint the design must start from:** the Geni profile ID is both the identifier and this
+repo's primary key, so it cannot be hashed or dropped without breaking every join, the `P2600`
+statements and the spines. Redacting content while keeping structure is the likely shape.
+
+**The memory ceiling is untouched by any of this** — the merge peaks at 16.8 GB against a 16 GB
+runner, so the synoptic tree still cannot be rebuilt in Actions without a larger runner.
