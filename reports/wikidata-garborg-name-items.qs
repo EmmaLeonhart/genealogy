@@ -215,7 +215,7 @@ Q141219062	P734	LAST	P3831	Q28418670	S2600	"6000000012888307497"
 #   Q5580892 Fredrik Carl Boije af Gennäs: P734 family name = the item just created
 Q5580892	P734	LAST	S2600	"6000000020865415341"
 
-# 226 more name items are needed and wait for a later
+# 230 more name items are needed and wait for a later
 # run -- 10 a day is her cap, not a limit of the data:
 #   Andersson (patronymic), 3 bearer(s)
 #   Erikson (patronymic), 3 bearer(s)
@@ -226,8 +226,8 @@ Q5580892	P734	LAST	S2600	"6000000020865415341"
 #   Jonsson (patronymic), 3 bearer(s)
 #   Kristiansen (patronymic), 3 bearer(s)
 #   Låge-Håland (family), 3 bearer(s)
+#   Olofsson (patronymic), 3 bearer(s)
 #   Osmundsdatter (patronymic), 3 bearer(s)
 #   Voster (family), 3 bearer(s)
-#   Ådnesdatter (patronymic), 3 bearer(s)
-#   ... and 214 more
+#   ... and 218 more
 
