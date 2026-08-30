@@ -20284,3 +20284,40 @@ a run did and never leaves the disk. Matching it would have made the guard noisy
 switched off, which is how a categorical rule quietly stops being enforced. Both halves were
 checked by feeding them a real violation and confirming they fail, per *a guard that has not
 been seen to fail is not known to guard*.
+
+## 2026-08-30 — the CJK label was transliterating Geni's display string, not the item's label
+
+Emma, on `Q6161733`: *"why was the japanese label we added so weird? I fixed it but we added a
+weird one."* We had emitted `カール・フレドリク・パイパー・ティル・クラゲホルム`; she corrected it
+to `カール・フレドリク・パイパー`.
+
+**My first diagnosis was the narrow one and she corrected it.** I read `till Krageholm` as a
+territorial designation to strip. Her answer: *"The wikidata label doesn't have that in it lol…
+I do not think it's a glitch… I think it's the geni display name."* The item reads
+`Carl Fredrik Piper` in both `en` and `sv`. The estate is in **our** derived label, and we hand
+that to the transliterator.
+
+**Her framing of the pipeline, which is the actual rule:** the label we build from Geni *"always
+goes as the subject named as a qualifier on the Geni ID"* — `P1810` on `P2600` — and pushing it
+into the CJK labels as well manufactures a consistency that *"is gonna just cause more harm"*.
+The old behaviour was internally correct; the harm was that it propagated Geni's rendering into
+languages where it reads as name syllables.
+
+So `label_in` is now given **the item's own `en`/`mul` label** where it has one, and ours only
+for a creation, which has no item yet. `CLAUDE.md` already said this for the Latin label on
+`Q467497` — *"emitting ours would overwrite a better label with a Geni display string"* — and the
+CJK label is derived from a label, so it always applied one step earlier.
+
+**It is not only estates.** Of 701 ledger items with a live label, **41 differ from ours**, and
+every difference is a Geni artefact: `(1745–1800)`, `(jurist)`, `Erik Benzelius den yngre`
+against `the Younger`, `Gustaf von Essen (1803–1874)`. All of it was being transliterated.
+
+**The check that it worked:** our `ja` from the Wikidata label is now
+`カール・フレドリク・パイパー`, identical to her correction, so no `ja` edit is emitted for him at
+all. `P1810` is untouched and still carries the Geni string verbatim, including `3 barn?`.
+
+**The territorial rule I wrote first survives, scoped to creations only**, where no item label
+exists — 7,179 labels. Two traps were found by running it and are pinned in
+`tests/test_join_sanity.py`: `van`/`von`/`af` form surnames, so the first draft truncated
+`Reinoud I van Brederode` to `Reinoud`; and a capital `I` is a regnal ordinal, not the Norwegian
+preposition, which truncated the same name again by a different route after case was folded.

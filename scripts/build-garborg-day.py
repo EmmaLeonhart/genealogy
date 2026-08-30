@@ -749,6 +749,43 @@ def _cjk_follows_mul(table):
     return out
 
 
+#: Words that introduce a place a person was *of*, rather than a further name token.
+#:
+#: **`van`, `von`, `af` and `av` are deliberately NOT here, and the first draft had them.** They
+#: form surnames rather than designations -- `Reinoud I van Brederode` truncated to `Reinoud`,
+#: losing the family name, and `CLAUDE.md` § *A parenthesised token* records Emma's ruling that
+#: particles are *"integral parts of what the people are called"* and belong in the label.
+#: `Hård af Segerstad` is a family in this corpus, not a man of Segerstad.
+#:
+#: What is left is the Scandinavian locative, which is never a surname: `till Krageholm`,
+#: `til Gundestrup`, `i Gjesdal`, `på Berg`. That is 10,898 of the 11,873 affected people;
+#: giving up the `av`/`af` 727 is the price of not destroying a surname.
+TERRITORIAL = {"till", "til", "i", "på", "paa"}
+
+
+def _drop_territorial(label):
+    """Everything from the first territorial word onward, removed. See `label_in`.
+
+    Only when something FOLLOWS it: a trailing `i` with nothing after it is a name token that
+    happens to look like the preposition, and truncating there would delete a real name. And
+    never when it is the first token, which would empty the label entirely.
+    """
+    tokens = (label or "").split()
+    for n, token in enumerate(tokens):
+        if not n or n + 1 >= len(tokens):
+            continue
+        bare = token.strip(",")
+        # **`i` is the preposition ONLY in lower case.** A capital `I` is a regnal ordinal or
+        # an initial -- `Reinoud I van Brederode` truncated to `Reinoud` while this folded
+        # case, losing the whole name. `CLAUDE.md` § *A middle initial keeps its Latin letter*
+        # records the mirror image of the same trap: `Ragnhild … i Gjesdal` read the Norwegian
+        # `i` as an initial because `.upper()` was applied. Case separates them and is never
+        # changed in either direction.
+        if bare == "i" or (bare != "I" and bare.casefold() in TERRITORIAL):
+            return " ".join(tokens[:n])
+    return label
+
+
 def label_in(label, table):
     """(ja, zh) for a whole name, or (None, None) if any token is unknown.
 
@@ -757,6 +794,25 @@ def label_in(label, table):
     `labels.transliterate_token` keeps `F` as `F` in every script, per Emma 2026-08-27.
     """
     from labels import transliterate_token
+
+    # **A territorial designation is not part of the name, and transliterating it is how
+    # `Q6161733` got `カール・フレドリク・パイパー・ティル・クラゲホルム`.** Emma spotted it and
+    # corrected the item to `カール・フレドリク・パイパー`: *"why was the japanese label we added
+    # so weird?"*
+    #
+    # `till Krageholm` is Swedish for *of Krageholm*, an estate he held. Read token by token it
+    # becomes two more name syllables, so the label reads as a five-part personal name. The
+    # same shape is `til Gundestrup`, `i Gjesdal`, `av Norge`, `på Berg` -- and `CLAUDE.md`
+    # already records the Norwegian `i` biting once before, on
+    # `Ragnhild Toresdatter Håland i Gjesdal`.
+    #
+    # **11,873 people in `derived-labels.csv` carry one**: `i` 5,428, `til` 3,592, `till`
+    # 1,878, `av` 695, `på` 248, `paa` 32. Every one of them would get the estate rendered as
+    # part of their name.
+    #
+    # The Latin label keeps it -- that is how Geni renders the person and it is real
+    # information -- and only the CJK label truncates, which is exactly the edit Emma made.
+    label = _drop_territorial(label)
 
     # **Punctuation stuck to a token is not part of the name.** `Christina, Sofia Carlsdotter`
     # tokenised to `Christina,` with the comma attached, which is in no table and therefore
@@ -5028,7 +5084,29 @@ def main():
         # whatever it holds. `reports/garborg-live-labels.tsv` is the live value, from the same
         # fetch as the live statements.
         langs = state.get(q, (set(), set()))[0]
-        ja, zh = label_in(labels.get(g, ""), table)
+        # **Transliterate the item's OWN Latin label, not our Geni display string.**
+        #
+        # Emma, 2026-08-30, on `Q6161733`: *"why was the japanese label we added so weird?"*
+        # then, cutting to it: *"The wikidata label doesn't have that in it… I think it's the
+        # geni display name."* She is right. The item reads `Carl Fredrik Piper` in both `en`
+        # and `sv`; our derived label reads `Carl Fredrik Piper till Krageholm`, and reading
+        # that token by token produced `カール・フレドリク・パイパー・ティル・クラゲホルム`.
+        #
+        # `CLAUDE.md` already states this for the Latin label -- *"emitting ours would
+        # overwrite a better label with a Geni display string"*, on `Q467497` -- and the CJK
+        # label is derived from a label, so the same reasoning applies one step earlier and was
+        # simply never applied there.
+        #
+        # It is not only estates. Of 701 ledger items with a live label, **41 differ from
+        # ours**, and the differences are Geni disambiguators: `(1745–1800)`, `(jurist)`,
+        # `Erik Benzelius den yngre` against `the Younger`. Every one of those would have been
+        # transliterated as part of the name.
+        #
+        # A creation has no item yet, so there ours is all there is; that path keeps
+        # `_drop_territorial`.
+        source = live_labels.get((q, "en")) or live_labels.get((q, "mul")) \
+            or labels.get(g, "")
+        ja, zh = label_in(source, table)
         if ja and q not in CJK_LABELS_NOT_OURS:
             for code, value in (("ja", ja), ("zh", zh)):
                 live = live_labels.get((q, code))

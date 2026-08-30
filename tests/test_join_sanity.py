@@ -648,3 +648,38 @@ def test_the_two_items_whose_cjk_labels_are_not_ours_are_never_overwritten():
     assert module.CJK_LABELS_NOT_OURS == {"Q467497", "Q633094"}
     assert module.ZH_OVERWRITE is True, (
         "she said fix it and do the overwrite, not gate it")
+
+
+def test_a_territorial_designation_is_not_transliterated_as_a_name():
+    """`Q6161733` came out `カール・フレドリク・パイパー・ティル・クラゲホルム`. Emma fixed it.
+
+    *"why was the japanese label we added so weird? I fixed it but we added a weird one"* --
+    `till Krageholm` is Swedish for *of Krageholm*, an estate, and reading it token by token
+    turns two more syllables into part of his name. **11,873 people carry a territorial word**;
+    7,179 labels are truncated once the case rule below is applied.
+
+    Two things this must NOT do, both found by running it:
+
+    * `van`, `von`, `af`, `av` form SURNAMES. The first draft included them and truncated
+      `Reinoud I van Brederode` to `Reinoud`. `CLAUDE.md`: particles are *"integral parts of
+      what the people are called"*, and `Hård af Segerstad` is a family.
+    * a capital `I` is a regnal ordinal, not the Norwegian preposition. Folding case truncated
+      `Reinoud I …` to `Reinoud` a second time, by a different route.
+    """
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(
+        "build_garborg_day", ROOT / "scripts" / "build-garborg-day.py")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    drop = module._drop_territorial
+
+    assert drop("Carl Fredrik Piper till Krageholm") == "Carl Fredrik Piper"
+    assert drop("Mogens Pedersen Baden til Gundestrup") == "Mogens Pedersen Baden"
+    assert drop("Ragnhild Toresdatter Håland i Gjesdal") == "Ragnhild Toresdatter Håland"
+    # Surnames survive.
+    assert drop("Hård af Segerstad") == "Hård af Segerstad"
+    assert drop("Reinoud I van Brederode") == "Reinoud I van Brederode"
+    # A regnal ordinal is not a preposition.
+    assert drop("Abisha III ben Phinhas") == "Abisha III ben Phinhas"
+    # A trailing preposition with nothing after it is a name token, not a designation.
+    assert drop("Ole Olsen i") == "Ole Olsen i"
