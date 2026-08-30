@@ -70,51 +70,7 @@ pinned by `tests/test_garborg_day_batch.py::test_a_marker_beside_a_real_name_sti
 
 
 
-- Screenshot she was replying to:
-`C:\Users\Emma\.claude\uploads\dbec586f-7705-4f0e-8652-03df7c6b73e5\160fbcc5-image.jpg`
-
-> Yes, this person appears to be correct. This person is not actually a spying person at all, because I actually put this specifically in place for this person. They're just a person with a similar name that I was concerned there might be a merge done on, but the person themselves is relatively clear.
->
-> I'd be potentially open to you doing some sort of research on this person to find the person's geniID, matching their date of birth, by doing a web search of them on Genie. Keep in mind there's a more famous individual, and I specifically put in the different then property to differentiate them. Doing this, having a separate geniID for this person, would be useful. Of course, once we did that, we'd need to run an export. We need to run a forest export on this individual and their locations and stuff, so keep that in mind. Keep that in mind for 3:30 am tomorrow for this.
-
-The person is `Q10411463` Andreas Olai.
-
-## The spine's `P2600` statements were never written to Wikidata
-
-`reports/wikidata-spine-add-p2600.qs` holds **16 `P2600` *Geni.com profile ID* statements** for
-spine people whose items already existed — `Q5915800` Knut Algotsson, `Q101247444` Ingegerd
-Svantepolksdotter, `Q6197518` Svantepolk Knutsson Viby, `Q3743799` Knut Valdemarsson, `Q4953376`
-Helena Guttormsdatter, `Q274606` Berengar I and `Q284400` Gisele of Cysoing among them. Two were
-**accepted by Emma on 2026-08-26**.
-
-**Until it runs, those correspondences exist only in `reports/garborg-qids.tsv`**, written there
-by hand. The contributions refresh cannot find them — it resolves an item by reading `P2600` off
-it and there is none — but it also **never deletes rows**, so they survive every run. Nothing is
-being lost today; the correspondence is simply local rather than on Wikidata, and only a rebuild
-of the ledger from scratch would fail to recover it.
-
-## ⛔ PREREQUISITE ORDER for the synoptic rebuild — merges first, then joins
-
-**Emma, 2026-08-24:** *"you forgot about the geni merge stuff which is an even more
-important prerequisite to the synoptic rebuild"*.
-
-The order is:
-
-1. **Resolve the Geni merges** — `reports/geni-stale-duplicates.tsv`, 13 strong. Our tree
-   holds **two nodes for one person** where Geni holds one, so the structural walk and
-   the correspondence are both computed over a tree that double-counts those people, and
-   whole parallel lineages sit side by side. Rebuilding before this bakes the duplication
-   in. Her `exports/post-merge/` design is how it gets fixed.
-2. **The clan joins** — done 2026-08-24, `scripts/build-clan-p2600-pairs.py`.
-3. **The structural walk and the correspondence — RE-RUN 2026-08-27.** Its input
-   `reports/derived-family.csv` was rebuilt on 25 Aug at 18:10, three and a half hours *after*
-   the walk last ran at 14:42, so the output had been stale against its own input.
-
-   `python scripts/walk-structural-merge.py --all` — the bare invocation only prints sample
-   lines, which is why an earlier attempt looked like it had run and changed nothing.
-
-   | | |
-   | --- | ---: |
+| ---: |
    | AGREE | 89,486 |
    | MERGE | 35,737 |
    | GENI ONLY | 131,366 |

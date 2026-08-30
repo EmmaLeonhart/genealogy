@@ -19800,3 +19800,27 @@ links as ordinary tree content. No browser, no bio edits, no exports.
 recovered after the 2026-08-28 crash and handed back to her, and her answer was *"No fuck you you
 didn't get the later discussion."* `CLAUDE.md` already recorded that, which is what made it
 recognisable this time rather than actionable. Deleted rather than left to surface a third time.
+
+## 2026-08-30 — Andreas Olai `Q10411463`: already identified, already exported
+
+Her item: *"I'd be potentially open to you doing some sort of research on this person to find the
+person's geniID, matching their date of birth, by doing a web search of them on Genie... having a
+separate geniID for this person would be useful. Of course, once we did that, we'd need to run an
+export."*
+
+**Both halves are already done, and she did the first one herself.**
+
+- `Q10411463` carries **`P2600 = 6000000040951562251`**, in the ledger since 2026-08-25 with note
+  *"from 日巫女 contributions (P2600 added to an existing item)"*.
+- The identification checks out on the date she named: the Geni profile's bio opens *"Andreas Olai,
+  född 1521 i Örebro, död 1560"*, against Wikidata's `P569` 1521 and `P570` 1560.
+- Her `P1889` *different from* points at `Q141199704`, the other Andreas Olai — the Bureätten one —
+  so the disambiguation she was worried about is recorded on the item.
+- The Forest export exists: `exports/bure-campaign/export-Forest-6000000227468650841.ged`.
+
+**What is not done is the same thing that is not done for everyone else.** He has **0 rows** in
+`display-names.csv`, because that export landed 28 Aug and the derived CSVs are from 24 Aug. So he
+is in the corpus and invisible to every emitter until `rebuild-everything.py` runs.
+
+No web search was needed. Checking what we already held answered it, which is the *grep the corpus
+before running an export* rule holding in a case where the export had also already been run.
