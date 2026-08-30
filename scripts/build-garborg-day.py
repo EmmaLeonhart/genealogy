@@ -735,10 +735,22 @@ def name_lines(label, plan, geni_id, father_qid, fields=None, sex="",
     lines, why = statements_for(label, plan, geni_id, father_qid=father_qid,
                                 fields=fields, sex=sex, father_name=father_name)
     for prop, value, quals in lines:
-        # `P1449` *nickname* is monolingual TEXT, so QuickStatements wants a language
-        # tag and quotes rather than a bare item id.
-        rendered = f'en:"{value}"' if prop == NICKNAME else value
-        parts = [f"LAST	{prop}	{rendered}"]
+        # **`P1449` *nickname* is DROPPED. Emma, 2026-08-29:** *"the nicknames (listed in
+        # English????) are not something that's good. Just drop the nickname functionality
+        # because the nicknames being listed in English is unacceptable. Just lmul vs amul."*
+        #
+        # It is monolingual text, so it needs a language tag, and the tag being emitted was
+        # `en` -- declaring `Byre` and `Christophersdatter` to be English words, which they are
+        # not. There is no right tag available either: the nickname is Norwegian on a person
+        # whose label is language-neutral `mul`, and guessing a language per person is the kind
+        # of inference this repo refuses. So the property goes rather than being relabelled.
+        #
+        # **The nickname is not lost.** It still reaches Wikidata through the alias — the `Amul`
+        # carrying the nickname form beside the `Lmul` carrying the primary name, which is
+        # exactly the *"just lmul vs amul"* she asked for.
+        if prop == NICKNAME:
+            continue
+        parts = [f"LAST	{prop}	{value}"]
         for qprop, qvalue in quals:
             # A series ordinal is a string; everything else here is an item.
             qv = f'"{qvalue}"' if qprop == "P1545" else qvalue

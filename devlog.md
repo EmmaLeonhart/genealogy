@@ -19600,3 +19600,19 @@ genuinely non-Latin `Карлов`.
 
 **Also: `Q12598947` Buyeo Taebi and `Q19657284` Buyeo Deokjang, which she named in the item, are
 inside the October kluge** and cannot be touched until then.
+
+## 2026-08-29 — `P1449` nickname dropped; the nickname lives in the alias
+
+**Emma:** *"the nicknames (listed in English????) are not something that's good. Just drop the
+nickname functionality because the nicknames being listed in English is unacceptable. Just lmul vs
+amul."*
+
+The batch was emitting `LAST P1449 en:"Byre"` and `en:"Christophersdatter"` — declaring Norwegian
+words to be English. `P1449` is monolingual text so it needs *some* tag, and there is no right one:
+the nickname is Norwegian on a person whose label is language-neutral `mul`, and picking a language
+per person is the inference this repo refuses everywhere else. So the property goes rather than
+being relabelled.
+
+**Nothing is lost.** The same batch already carries `LAST Amul "Byre"` beside `LAST Amul "Eivind
+Byre"` — the nickname reaches Wikidata as an alias, which is the *"just lmul vs amul"* she asked
+for. Verified: 0 `P1449` lines on a fresh compose, aliases unchanged, 289 passed / 32 skipped.
