@@ -5441,11 +5441,23 @@ def main():
                 continue
         survivors.append(ln)
     kept = survivors
+    # **The drops are RECORDED, not just logged.** A `P22`/`P25` suppressed here leaves its
+    # `P40` partner one-way, which is deliberate -- `P40` is multi-valued and states the same
+    # fact from the side that permits it -- but it looks identical to the one-way links Emma
+    # spent weeks repairing by hand. `test_every_link_to_an_existing_item_is_emitted_in_BOTH
+    # _directions` exempts exactly the pairs in this file and nothing else, so the exemption
+    # cannot quietly widen into "one-way links are fine".
+    drops = ROOT / "reports" / "single-value-drops.tsv"
+    with open(drops, "w", encoding="utf-8", newline="") as f:
+        f.write("subject\tproperty\tdropped_value\talready_holds\n")
+        for subject, prop, value, held in second_parent:
+            f.write(f"{subject}\t{prop}\t{value}\t{';'.join(held)}\n")
     if second_parent:
         print(f"single-value guard: {len(second_parent)} P22/P25 line(s) dropped -- the item "
               f"already has one, and a second trips the constraint")
         for subject, prop, value, held in second_parent[:6]:
             print(f"   {subject} {prop} -> {value}; already has {';'.join(held)}")
+        print(f"   recorded in {drops.relative_to(ROOT)}")
     lines = kept
 
     # **The SPINE P2600 block is NOT emitted.** Emma, 2026-08-29: *"I wanted the spine entity

@@ -20167,3 +20167,55 @@ would have been invisible in the totals:
 **And the honest measure of the engine got worse, correctly.** Scored against the 978 rows it did
 not write — now including everything the corpus attests — it agrees **26% (ja) and 43% (zh)**. It
 is wrong about roughly three-quarters of the names Wikidata has actually written down.
+
+## 2026-08-30 — the name-item duplicates: she created 10, five were merged away
+
+Emma: *"You cunt I did create name items and they got merged because they were duplicates."*
+She is right and I had said the opposite twice — first that none existed, then after checking
+her QIDs against the local store, which **cannot see a merged item** because it resolves to a
+redirect. That is the instrument failure `queue.md` § *A join that matches NOTHING must fail
+loudly* is written against, committed twice in five minutes.
+
+Asked Wikidata for the pages `日巫女` has created — 422 items, of which **10 are name items**:
+
+| created | label | outcome |
+| --- | --- | --- |
+| `Q141189029` | Tunheim | merged into `Q36927172` |
+| `Q141189031` | Ronneberg | merged into `Q37504456` |
+| `Q141189033` | Bø | merged into `Q30253098` |
+| `Q141189034` | Heigre | merged into `Q45305861` |
+| `Q141189038` | Nyvold | merged into `Q33868252` |
+| `Q141189030` `Q141189036` `Q141189042` `Q141189045` | Bergersen, Jonsdatter, Eivindsdatter, Eivindsen | patronymics, stand |
+| `Q141189041` | Sør-Reime | farm name, stands |
+
+**Every one merged away is a family name; every one that stood is a patronymic or a farm name.**
+That is `CLAUDE.md` § *One name item per USAGE* showing up in the outcome: ordinary surnames
+already had items, patronymics genuinely did not.
+
+**And the file would have done it again.** The regenerated batch proposed all five a second
+time. Two causes, both fixed:
+
+* `load_plan` answered from `reports/name-item-plan.csv`, whose `existing_qid` comes from a
+  resolver whose universe is *name items one of our own people already links to*. `Tunheim`
+  `Q36927172` is in our store with nobody in our corpus pointing at it, so it read as absent.
+* **`Ronneberg` is not in the plan at all**, so it never reached that lookup either way. The
+  first fix only answered planned tokens and walked straight past it — caught because the
+  regenerated file still created it.
+
+`namemodel.store_name_item(token, usage)` now answers **any** token from the 823,907 name items
+on disk, and `build-garborg-name-items.py` asks it before every `CREATE`. The five are now
+links. What still gets created is `Bergersen`, `Olsen`, `Hansdatter`, `Eriksdatter`,
+`Jonsdatter` — every one a **patronymic**, where Wikidata has only the family-name item, which
+is the correct outcome under one-item-per-usage and is what her own five survivors demonstrate.
+
+**Two other things fell out of the run, neither of them cosmetic:**
+
+* A `particle` reached the create path and raised `KeyError: 'particle'`. `de`, `von`, `af`
+  belong in the `mul` label and are never items; `CLASS_FOR` has no entry for one, so it failed
+  loudly rather than creating a `P734` item for `af`.
+* `test_every_qid_the_batch_points_at_already_exists` failed on `Q36927172` — the same
+  "our known set is not Wikidata" mistake, one layer up, in the test. It now reads the store.
+* `test_every_link_to_an_existing_item_is_emitted_in_BOTH_directions` failed on one `P40` whose
+  `P25` reciprocal the single-value guard had dropped. The drops are now **recorded** in
+  `reports/single-value-drops.tsv` and the test exempts exactly those subjects — a list of
+  specific pairs, so the exemption cannot widen into "one-way links are fine".

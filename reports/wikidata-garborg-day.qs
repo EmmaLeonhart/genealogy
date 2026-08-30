@@ -4,38 +4,38 @@
 #   batch and be limited to a count of 15 labels added per batch". A label set
 #   at CREATION time is neither counted nor capped -- "a label added during item
 #   creation is good".
-#   837 more are held for a later run; a repeat is a no-op, so nothing is lost.
+#   822 more are held for a later run; a repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
-#   Q141216455 Anders Persson: set the ja label to "アンデルス・パーソン"
-Q141216455	Lja	"アンデルス・パーソン"
-#   Q141219059 Gustava Maria Sofia Mannerheim: set the ja label to "グスタヴァ・マリア・ソフィア・マンネルヘイム"
-Q141219059	Lja	"グスタヴァ・マリア・ソフィア・マンネルヘイム"
-#   set the zh label to "古斯塔娃·玛丽亚·索菲娅·曼纳海姆"
-Q141219059	Lzh	"古斯塔娃·玛丽亚·索菲娅·曼纳海姆"
-#   set the ja label to "ソフィア・マリア・マンネルヘイム"
-Q141219324	Lja	"ソフィア・マリア・マンネルヘイム"
-#   set the zh label to "索菲娅·玛丽亚·曼纳海姆"
-Q141219324	Lzh	"索菲娅·玛丽亚·曼纳海姆"
-#   Q4972997 Christina Piper: set the ja label to "クリスティーナ・パイパー"
-Q4972997	Lja	"クリスティーナ・パイパー"
-#   set the zh label to "克里斯蒂娜·派珀"
-Q4972997	Lzh	"克里斯蒂娜·派珀"
-#   Q593706 Nils Gustaf Nordenskiöld: set the zh label to "尼尔斯·古斯塔夫·诺尔登斯基奥尔德"
-Q593706	Lzh	"尼尔斯·古斯塔夫·诺尔登斯基奥尔德"
-#   set the zh label to "雷伊阿尔·艾纳尔森·基德兰德"
-Q141219316	Lzh	"雷伊阿尔·艾纳尔森·基德兰德"
-#   Q141216349 Ingrid Guttormsdotter: set the ja label to "イングリッド・グトルムスドッテル"
-Q141216349	Lja	"イングリッド・グトルムスドッテル"
-#   set the zh label to "英格丽·古托尔姆斯多特"
-Q141216349	Lzh	"英格丽·古托尔姆斯多特"
-#   Q156749 Nils Adolf Erik Nordenskiöld: set the ja label to "ニルス・アドルフ・エリック・ノルデンショルド"
-Q156749	Lja	"ニルス・アドルフ・エリック・ノルデンショルド"
-#   set the zh label to "尼尔斯·阿道夫·埃里克·诺尔登斯基奥尔德"
-Q156749	Lzh	"尼尔斯·阿道夫·埃里克·诺尔登斯基奥尔德"
-#   Q333297 Frans Michael Zachrichsson Franzén: set the ja label to "フランス・マイケル・ザクリクソン・フランツェーン"
-Q333297	Lja	"フランス・マイケル・ザクリクソン・フランツェーン"
-#   set the zh label to "弗兰斯·迈克尔·扎克里克松·夫兰曾"
-Q333297	Lzh	"弗兰斯·迈克尔·扎克里克松·夫兰曾"
+#   Q141216357 Anders Jacobsson: set the zh label to "安德斯·雅各布松"
+Q141216357	Lzh	"安德斯·雅各布松"
+#   Q141205902 Daniel Olofsson: set the ja label to "ダニエル・オロフソン"
+Q141205902	Lja	"ダニエル・オロフソン"
+#   set the zh label to "丹尼尔·奥洛夫松"
+Q141205902	Lzh	"丹尼尔·奥洛夫松"
+#   Q141216611 Jon Villumson Raunes: set the ja label to "ジョン・ヴィルムソン・ラウネス"
+Q141216611	Lja	"ジョン・ヴィルムソン・ラウネス"
+#   set the zh label to "乔恩·维卢姆松·拉乌内斯"
+Q141216611	Lzh	"乔恩·维卢姆松·拉乌内斯"
+#   Q141205909 Gudrun Sæbjørnsdatter Talgje: set the ja label to "グドルーン・セブヨルンスダッテル・タルイェ"
+Q141205909	Lja	"グドルーン・セブヨルンスダッテル・タルイェ"
+#   set the zh label to "古德龙·塞布约尔恩斯达特·塔尔耶"
+Q141205909	Lzh	"古德龙·塞布约尔恩斯达特·塔尔耶"
+#   Q19061035 Guttorm Àsulfsson à Rein: set the ja label to "グットルム・アスルフソン・ア・レイン"
+Q19061035	Lja	"グットルム・アスルフソン・ア・レイン"
+#   set the zh label to "古托尔姆·阿苏尔夫松·阿·赖因"
+Q19061035	Lzh	"古托尔姆·阿苏尔夫松·阿·赖因"
+#   Q6057321 Olof Andersson Pryss: set the ja label to "オロフ・アンデション・プリス"
+Q6057321	Lja	"オロフ・アンデション・プリス"
+#   set the zh label to "奥洛夫·安德松·普里斯"
+Q6057321	Lzh	"奥洛夫·安德松·普里斯"
+#   Q26405863 Olof Engelbertsson Bure: set the ja label to "オロフ・エンゲルベルトソン・ブレ"
+Q26405863	Lja	"オロフ・エンゲルベルトソン・ブレ"
+#   set the zh label to "奥洛夫·恩盖尔贝尔特松·布雷"
+Q26405863	Lzh	"奥洛夫·恩盖尔贝尔特松·布雷"
+#   Q5548897 Gregorius Aminoff: set the ja label to "グレゴリウス・アミノフ"
+Q5548897	Lja	"グレゴリウス・アミノフ"
+#   set the zh label to "格雷戈里乌斯·阿米诺夫"
+Q5548897	Lzh	"格雷戈里乌斯·阿米诺夫"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
@@ -65,10 +65,12 @@ LAST	P25	Q141199822	S2600	"6000000027467541000"
 Q141199959	P40	LAST	S2600	"6000000027467541000"
 #   Q141199822 Anna Jönsdotter: P40 child = the item just created
 Q141199822	P40	LAST	S2600	"6000000027467541000"
+#   the item just created: P735 given name = Q666578 Anna
+LAST	P735	Q666578
 
 # create a new item
 CREATE
-#   the item just created: set the en label to "Augusta Ulrika Mannerheim"
+#   set the en label to "Augusta Ulrika Mannerheim"
 LAST	Len	"Augusta Ulrika Mannerheim"
 #   set the mul label to "Augusta Ulrika Mannerheim"
 LAST	Lmul	"Augusta Ulrika Mannerheim"
@@ -164,6 +166,10 @@ Q141199826	P25	LAST	S2600	"6000000029983713844"
 LAST	P735	Q11967041	P1545	"1"	P7452	Q3409033
 #   P735 given name = Q5990536 Malena, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
 LAST	P735	Q5990536	P1545	"2"	P3831	Q245025
+#   P734 family name = Q30229737, qualified P3831 object of statement has role Q2507958 birth name
+LAST	P734	Q30229737	P3831	Q2507958
+#   P734 family name = Q36927172, qualified P3831 object of statement has role Q28418670 married name
+LAST	P734	Q36927172	P3831	Q28418670
 #   add a mul alias "Elen Malena Halvorsdtr Tunheim"
 LAST	Amul	"Elen Malena Halvorsdtr Tunheim"
 
@@ -288,6 +294,8 @@ LAST	P735	Q5486209
 LAST	P734	Q12785738	P3831	Q2507958
 #   P734 family name = Q2754726 Lane, qualified P3831 object of statement has role Q28418670 married name
 LAST	P734	Q2754726	P3831	Q28418670
+#   P734 family name = Q36927172, qualified P3831 object of statement has role Q28418670 married name
+LAST	P734	Q36927172	P3831	Q28418670
 
 # create a new item
 CREATE
@@ -454,6 +462,8 @@ LAST	P26	Q5931099	S2600	"6000000008889736689"
 Q5931099	P26	LAST	S2600	"6000000008889736689"
 #   the item just created: P735 given name = Q842544 Magdalena, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
 LAST	P735	Q842544	P1545	"1"	P7452	Q3409033
+#   P735 given name = Q18201520 Sofia, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
+LAST	P735	Q18201520	P1545	"2"	P3831	Q245025
 #   P734 family name = Q16869887 Falkenberg, qualified P3831 object of statement has role Q2507958 birth name
 LAST	P734	Q16869887	P3831	Q2507958
 #   P734 family name = Q16869887 Falkenberg, qualified P3831 object of statement has role Q28418670 married name
@@ -539,6 +549,8 @@ LAST	P40	Q141199826	S2600	"6000000011971496046"
 Q141199826	P22	LAST	S2600	"6000000011971496046"
 #   the item just created: P735 given name = Q629347 Samuel
 LAST	P735	Q629347
+#   P734 family name = Q36927172
+LAST	P734	Q36927172
 #   add a mul alias "Samuel Tunheim"
 LAST	Amul	"Samuel Tunheim"
 
@@ -620,46 +632,440 @@ Q5797554	P26	LAST	S2600	"6000000006198882015"
 LAST	P735	Q18924998	P1545	"1"	P7452	Q3409033
 #   P735 given name = Q10570000 Lovisa, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
 LAST	P735	Q10570000	P1545	"2"	P3831	Q245025
+#   Q141219059 Gustava Maria Sofia Mannerheim: P735 given name = Q325872 Maria, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
+Q141219059	P735	Q325872	P1545	"2"	P3831	Q245025
+#   P735 given name = Q18201520 Sofia, qualified P1545 series ordinal 3, P3831 object of statement has role Q245025 middle name
+Q141219059	P735	Q18201520	P1545	"3"	P3831	Q245025
 #   Q141219324 Sofia Maria Mannerheim: P25 mother = Q141219332 Sofia Wadenstierna
 Q141219324	P25	Q141219332	S2600	"6000000000047205391"
+#   P735 given name = Q18201520 Sofia, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
+Q141219324	P735	Q18201520	P1545	"1"	P7452	Q3409033
+#   P735 given name = Q325872 Maria, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
+Q141219324	P735	Q325872	P1545	"2"	P3831	Q245025
 #   Q141219332 Sofia Wadenstierna: P40 child = Q141219324 Sofia Maria Mannerheim
 Q141219332	P40	Q141219324	S2600	"6000000000047255126"
+#   P735 given name = Q18201520 Sofia
+Q141219332	P735	Q18201520
 #   Q141219316 Reiar Einarsen Kydland: P26 spouse = Q141219269 Kari Tollaksdatter Kartevoll
 Q141219316	P26	Q141219269	S2600	"6000000000496970049"
+#   P734 family name = Q30514142
+Q141219316	P734	Q30514142
+#   Q141205922 Marit Ormsd Byre: P734 family name = Q37515983
+Q141205922	P734	Q37515983
+#   Q141199851 Lagmann Gunnbjørn Toresson Tengs: P735 given name = Q136849653, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
+Q141199851	P735	Q136849653	P1545	"2"	P3831	Q245025
+#   P734 family name = Q55233230
+Q141199851	P734	Q55233230
+#   Q141206061 Cecilie Olsdatter Håland: P734 family name = Q30580079
+Q141206061	P734	Q30580079
+#   Q141205942 Tore II Gardson Gard: P734 family name = Q37475140
+Q141205942	P734	Q37475140
+#   Q141217384 David Tjølson Edland: P734 family name = Q31454737
+Q141217384	P734	Q31454737
+#   Q141216602 Berta Guria Davidsdatter Stokka: P734 family name = Q37033285
+Q141216602	P734	Q37033285
+#   Q141216653 Torger Torgerson Stokka: P734 family name = Q37033285
+Q141216653	P734	Q37033285
+#   Q141198422 Iver Pedersen Sandsmark: P734 family name = Q37541803
+Q141198422	P734	Q37541803
+#   Q141198414 Ingeborg Olsdatter Sandsmark: P734 family name = Q37541803
+Q141198414	P734	Q37541803
 #   Q141189104 Siri Kristine Ivarsdatter Garborg: P40 child = Q139651594 Sigrid Garborg
 Q141189104	P40	Q139651594	S2600	"6000000002954315535"
+#   Q141198396 Erling Juel Wendt: P735 given name = Q123820113, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
+Q141198396	P735	Q123820113	P1545	"2"	P3831	Q245025
 #   Q141219336 Tore Sebjørnsson Talgje, d.y: P25 mother = Q141200101 Sissel Jonsdatter Talje
 Q141219336	P25	Q141200101	S2600	"6000000003043756033"
 #   Q141200101 Sissel Jonsdatter Talje: P40 child = Q141219336 Tore Sebjørnsson Talgje, d.y
 Q141200101	P40	Q141219336	S2600	"6000000003043806217"
+#   Q141198382 Berita Larsdatter Rossavik: P734 family name = Q122838342
+Q141198382	P734	Q122838342
+#   Q141189055 Astri Torkelsdatter Gilja: P734 family name = Q122836259
+Q141189055	P734	Q122836259
+#   Q141216471 Gunnbjørn Gunnbjørnson Rossavik: P735 given name = Q136849653
+Q141216471	P735	Q136849653
+#   P734 family name = Q122838342
+Q141216471	P734	Q122838342
+#   Q141198435 Jon Nilsson Espedal: P734 family name = Q27892902
+Q141198435	P734	Q27892902
+#   Q141198503 Tore Erikson Håland: P734 family name = Q30580079
+Q141198503	P734	Q30580079
+#   Q141200094 Siri Rasmusdtr. Erevik: P734 family name = Q35855266
+Q141200094	P734	Q35855266
+#   Q141199819 Anna Andersdotter: P735 given name = Q666578 Anna
+Q141199819	P735	Q666578
+#   Q141216644 Rasmus Asbjørnson Nedre Rossavik: P734 family name = Q122838342
+Q141216644	P734	Q122838342
+#   Q141205930 Olav Knutson Randa Håland: P734 family name = Q30580079
+Q141205930	P734	Q30580079
+#   Q141216487 Knut Johanson Håland: P734 family name = Q30580079
+Q141216487	P734	Q30580079
+#   Q141216489 Laurits Leivson Bjørheim: P734 family name = Q30834379
+Q141216489	P734	Q30834379
+#   Q141216638 Olaug Jonsdatter Heigre: P734 family name = Q45305861
+Q141216638	P734	Q45305861
+#   Q141219299 Per Asbjørnson Stokka: P734 family name = Q37033285
+Q141219299	P734	Q37033285
+#   Q141216637 Ola Person Persson Heigre: P734 family name = Q45305861
+Q141216637	P734	Q45305861
 #   Q141219227 Gitlaug Knutsdatter Garborg: P26 spouse = Q141219189 Eivind Svenson Sveinsen Garborg
 Q141219227	P26	Q141219189	S2600	"6000000003491951383"
+#   Q141205914 Inger (Ingrid) Osmundsdatter Risa: P734 family name = Q36931214
+Q141205914	P734	Q36931214
+#   Q141216387 Johannes Svensen Obrestad: P734 family name = Q40353802
+Q141216387	P734	Q40353802
+#   Q141199892 Jon Olsen Heigre: P734 family name = Q45305861
+Q141199892	P734	Q45305861
+#   Q141216365 Berte Karine Jonsdatter Stokka: P734 family name = Q37033285
+Q141216365	P734	Q37033285
+#   Q141216510 Torger Torgerson Stokka: P734 family name = Q37033285
+Q141216510	P734	Q37033285
+#   Q141189070 John Jonassen Hegre: P735 given name = Q4925477 John
+Q141189070	P735	Q4925477
+#   P734 family name = Q36955626
+Q141189070	P734	Q36955626
+#   Q141189098 Rakel Jonasdatter Heigre: P734 family name = Q45305861
+Q141189098	P734	Q45305861
+#   Q141216635 Martha Eivindsdatter Heigre: P735 given name = Q16279062
+Q141216635	P735	Q16279062
+#   P734 family name = Q45305861
+Q141216635	P734	Q45305861
+#   Q141216643 Ragna Enevaldsdatter Heigre: P734 family name = Q45305861
+Q141216643	P734	Q45305861
+#   Q141178381 Marta Jonsdatter Li: P734 family name = Q686223 Li
+Q141178381	P734	Q686223
+#   Q141205921 Maria Jonsdatter Lura: P735 given name = Q325872 Maria
+Q141205921	P735	Q325872
+#   P734 family name = Q37303374
+Q141205921	P734	Q37303374
+#   Q141216594 Ane Maria Olsdatter Vestre Stangaland: P735 given name = Q325872 Maria, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
+Q141216594	P735	Q325872	P1545	"2"	P3831	Q245025
 #   Q141152614 Jon Eivindson Garborg: P40 child = Q139651594 Sigrid Garborg
 Q141152614	P40	Q139651594	S2600	"6000000003492005126"
+#   Q141162043 Inger Marie Mary Eivindsdatter Ronneberg: P735 given name = Q734578 Mary, qualified P1545 series ordinal 3, P3831 object of statement has role Q245025 middle name
+Q141162043	P735	Q734578	P1545	"3"	P3831	Q245025
+#   Q141162046 Ane Oline Lena Eivindsdatter Tunheim: P735 given name = Q654581 Lena, qualified P1545 series ordinal 3, P3831 object of statement has role Q245025 middle name
+Q141162046	P735	Q654581	P1545	"3"	P3831	Q245025
+#   Q141169072 Ådne Olsen Garborg: P735 given name = Q12011446
+Q141169072	P735	Q12011446
+#   Q141189066 Helge Rasmusson Bø: P734 family name = Q30253098
+Q141189066	P734	Q30253098
+#   Q141216407 Torkel Torbjørnson Høyland: P734 family name = Q27888882
+Q141216407	P734	Q27888882
 #   Q141219189 Eivind Svenson Sveinsen Garborg: P26 spouse = Q141219227 Gitlaug Knutsdatter Garborg
 Q141219189	P26	Q141219227	S2600	"6000000003492077372"
+#   Q141198370 NN Skårland: P734 family name = Q40480033
+Q141198370	P734	Q40480033
+#   Q141198375 Astri Torchelsdatter Øvre Time: P734 family name = Q37494555
+Q141198375	P734	Q37494555
+#   Q141216356 NN Undheim: P734 family name = Q27888846
+Q141216356	P734	Q27888846
+#   Q141216598 Anna Ivarsd Stokka: P735 given name = Q666578 Anna, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
+Q141216598	P735	Q666578	P1545	"1"	P7452	Q3409033
+#   P734 family name = Q37033285
+Q141216598	P734	Q37033285
+#   Q141199704 Andreas Olai: P735 given name = Q4926263 Andreas
+Q141199704	P735	Q4926263
+#   Q141180413 Thomas Matthiæ: P735 given name = Q16428906
+Q141180413	P735	Q16428906
+#   Q141216495 NN (Frille): P734 family name = Q54366191
+Q141216495	P734	Q54366191
+#   Q141199862 Helga Bjørnsdatter Tengs: P734 family name = Q55233230
+Q141199862	P734	Q55233230
+#   Q141219176 Eivind Ogmundsson Byre på Høyland: P734 family name = Q27888882
+Q141219176	P734	Q27888882
+#   Q141216377 Hanna Sofie Wendt: P735 given name = Q1554377 Hannah, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
+Q141216377	P735	Q1554377	P1545	"1"	P7452	Q3409033
 #   Q141219269 Kari Tollaksdatter Kartevoll: P26 spouse = Q141219316 Reiar Einarsen Kydland
 Q141219269	P26	Q141219316	S2600	"6000000005606851268"
+#   Q141216488 Lars Jonsen Landsnes: P734 family name = Q122837341
+Q141216488	P734	Q122837341
+#   Q141216632 Magdalena Lauritsd Hogganvik: P734 family name = Q55240992
+Q141216632	P734	Q55240992
+#   Q141216396 Lisbet Olavsdatter Håland: P734 family name = Q30580079
+Q141216396	P734	Q30580079
 #   Q141219065 Marta Torbjørnsdotter Gjesdal: P40 child = Q141219250 Inger Sørensdatter Lima
 Q141219065	P40	Q141219250	S2600	"6000000005607335640"
+#   Q141198834 Gunnbjørn Jonson Mjølhus: P735 given name = Q136849653
+Q141198834	P735	Q136849653
+#   Q141216613 Karen Henriksdotter Raunes Våga: P735 given name = Q1221747 Karen, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
+Q141216613	P735	Q1221747	P1545	"1"	P7452	Q3409033
+#   P734 family name = Q40306448
+Q141216613	P734	Q40306448
+#   Q141216384 Ingeborg Eriksdatter Time: P734 family name = Q37494555
+Q141216384	P734	Q37494555
+#   Q141168827 Hans Eivind Garborg: P735 given name = Q632842, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
+Q141168827	P735	Q632842	P1545	"1"	P7452	Q3409033
 #   Q141219291 Maria Hansdatter Austrått: P26 spouse = Q141219349 Tørres Jonson Grannes
 Q141219291	P26	Q141219349	S2600	"6000000005607475201"
+#   P735 given name = Q325872 Maria
+Q141219291	P735	Q325872
+#   Q141205919 Malena Hansdatter Bø: P734 family name = Q30253098
+Q141205919	P734	Q30253098
 #   Q141219349 Tørres Jonson Grannes: P26 spouse = Q141219291 Maria Hansdatter Austrått
 Q141219349	P26	Q141219291	S2600	"6000000005608892520"
+#   P735 given name = Q12008164
+Q141219349	P735	Q12008164
+#   Q141205898 Anna Tormodsdatter Mele: P735 given name = Q666578 Anna
+Q141205898	P735	Q666578
+#   Q141219060 Halvor Johannesson Hobberstad: P734 family name = Q40703807
+Q141219060	P734	Q40703807
+#   Q141217369 Anna Osmundsd Stokka: P735 given name = Q666578 Anna, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
+Q141217369	P735	Q666578	P1545	"1"	P7452	Q3409033
+#   P734 family name = Q37033285
+Q141217369	P734	Q37033285
+#   Q141198371 Anna Belestdatter Lauvsnes: P735 given name = Q666578 Anna
+Q141198371	P735	Q666578
+#   Q141189071 Joren Jonsdatter Espedal: P735 given name = Q2554259
+Q141189071	P735	Q2554259
+#   P734 family name = Q27892902
+Q141189071	P734	Q27892902
+#   Q141180408 Jon Larsson Mæle: P734 family name = Q34190986
+Q141180408	P734	Q34190986
+#   Q141180412 Marta Rasmusdatter Li: P734 family name = Q686223 Li
+Q141180412	P734	Q686223
+#   Q141216645 Reiar Reiersen Kydland: P734 family name = Q30514142
+Q141216645	P734	Q30514142
+#   Q141216609 Inger Kristoffersdatter Skårland: P734 family name = Q40480033
+Q141216609	P734	Q40480033
+#   Q141219051 Anna Börjesdotter Bothniensis: P735 given name = Q666578 Anna
+Q141219051	P735	Q666578
+#   Q141205900 Bertrand Olav Olsen Vigdel: P735 given name = Q3637880, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
+Q141205900	P735	Q3637880	P1545	"1"	P7452	Q3409033
+#   Q141205938 Ranveig Olsd Trevland: P735 given name = Q30836047, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
+Q141205938	P735	Q30836047	P1545	"1"	P7452	Q3409033
 #   Q141168837 Ingebret Inge Garborg: P735 given name = Q8085241 Inge, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
 Q141168837	P735	Q8085241	P1545	"2"	P3831	Q245025
+#   Q141205911 Hans Svensen Risa I: P735 given name = Q632842, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
+Q141205911	P735	Q632842	P1545	"1"	P7452	Q3409033
+#   Q141200074 Rasmus Olsen Bø: P734 family name = Q30253098
+Q141200074	P734	Q30253098
+#   Q141189088 Ola Knutsen Grøtheim: P734 family name = Q122836435
+Q141189088	P734	Q122836435
+#   Q141199809 Ane Marie Helgesdatter Bø: P734 family name = Q30253098
+Q141199809	P734	Q30253098
+#   Q141217387 Ivar Stokka: P734 family name = Q37033285
+Q141217387	P734	Q37033285
+#   Q141198755 Anna Ingebretsdatter Voster: P735 given name = Q666578 Anna
+Q141198755	P735	Q666578
+#   Q141198751 Lars Person Nedre Rossavik: P734 family name = Q122838342
+Q141198751	P734	Q122838342
+#   Q141216483 Karen Malena Rasmusdatter Tjelta: P735 given name = Q1221747 Karen, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
+Q141216483	P735	Q1221747	P1545	"1"	P7452	Q3409033
+#   P734 family name = Q38898383
+Q141216483	P734	Q38898383
+#   Q141189069 Ingeborg Ådnesdatter Grøtheim: P734 family name = Q122836435
+Q141189069	P734	Q122836435
+#   Q141199830 Anna Rasmusdatter Grøtheim: P735 given name = Q666578 Anna
+Q141199830	P735	Q666578
+#   P734 family name = Q122836435
+Q141199830	P734	Q122836435
+#   Q141216600 Astrid Omundsdatter Grøtheim: P734 family name = Q122836435
+Q141216600	P734	Q122836435
+#   Q141216380 Hans Olsen Grøtheim: P735 given name = Q632842
+Q141216380	P735	Q632842
+#   P734 family name = Q122836435
+Q141216380	P734	Q122836435
+#   Q141216382 Helge Asbjørnsen Bø: P734 family name = Q30253098
+Q141216382	P734	Q30253098
+#   Q141217394 Margareta Christina von Numers: P735 given name = Q1083457 Christina, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
+Q141217394	P735	Q1083457	P1545	"2"	P3831	Q245025
+#   Q141216599 Anna Rasmusdatter Nedre Rossavik: P735 given name = Q666578 Anna, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
+Q141216599	P735	Q666578	P1545	"1"	P7452	Q3409033
+#   P734 family name = Q122838342
+Q141216599	P734	Q122838342
+#   Q141216381 Hans Rasmussen Låge-Håland: P735 given name = Q632842
+Q141216381	P735	Q632842
+#   Q141216607 Hans Erikson Øvre Håland: P735 given name = Q632842, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
+Q141216607	P735	Q632842	P1545	"1"	P7452	Q3409033
+#   P734 family name = Q30580079
+Q141216607	P734	Q30580079
+#   Q141216498 Norman Charles Tunheim: P734 family name = Q36927172
+Q141216498	P734	Q36927172
+#   Q141219284 Maria Benjaminsdotter: P735 given name = Q325872 Maria
+Q141219284	P735	Q325872
+#   Q141216595 Anna Danielsdotter: P735 given name = Q666578 Anna
+Q141216595	P735	Q666578
+#   Q141219202 Elen Kristoffersdotter Nese: P734 family name = Q37543374
+Q141219202	P734	Q37543374
+#   Q141217359 Anna Elisabet Angerstein: P735 given name = Q666578 Anna, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
+Q141217359	P735	Q666578	P1545	"1"	P7452	Q3409033
+#   Q141189083 Martha Elida Frenning: P735 given name = Q16279062, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
+Q141189083	P735	Q16279062	P1545	"1"	P7452	Q3409033
+#   Q141216383 Ingeborg Eriksdatter Bjorland: P734 family name = Q123200450
+Q141216383	P734	Q123200450
+#   Q141216490 Malli Svensdatter Lura: P735 given name = Q106145589
+Q141216490	P735	Q106145589
+#   P734 family name = Q37303374
+Q141216490	P734	Q37303374
+#   Q141216481 Jon Tørresson Soma: P734 family name = Q37104818
+Q141216481	P734	Q37104818
+#   Q141219070 Tørres Jonsson Vatne: P735 given name = Q12008164
+Q141219070	P735	Q12008164
+#   Q141216400 Margreta Lauritsdatter Øvre Bjørheim: P734 family name = Q30834379
+Q141216400	P734	Q30834379
+#   Q141205895 Andreas Christiansen: P735 given name = Q4926263 Andreas
+Q141205895	P735	Q4926263
+#   Q141216401 Mariet Danielsdotter: P735 given name = Q117599926
+Q141216401	P735	Q117599926
+#   Q141205896 Ane Marie Konstanse Amanda Kristine Hegre: P735 given name = Q19572240, qualified P1545 series ordinal 3, P3831 object of statement has role Q245025 middle name
+Q141205896	P735	Q19572240	P1545	"3"	P3831	Q245025
+#   P734 family name = Q36955626
+Q141205896	P734	Q36955626
 #   Q141219136 Amalia Charlotta Ehrenpreus: P40 child = Q141219155 Christina Maria Adelheim
 Q141219136	P40	Q141219155	S2600	"6000000019041477898"
 #   Q141219356 Ulrika Charlotta Klingenstierna: P40 child = Q141219214 Erik Samuel Fant
 Q141219356	P40	Q141219214	S2600	"6000000019344079214"
+#   Q141189084 Martin Tollefson Tunheim: P734 family name = Q36927172
+Q141189084	P734	Q36927172
 #   Q141219155 Christina Maria Adelheim: P25 mother = Q141219136 Amalia Charlotta Ehrenpreus
 Q141219155	P25	Q141219136	S2600	"6000000019413110402"
+#   P735 given name = Q1083457 Christina, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
+Q141219155	P735	Q1083457	P1545	"1"	P7452	Q3409033
+#   P735 given name = Q325872 Maria, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
+Q141219155	P735	Q325872	P1545	"2"	P3831	Q245025
+#   Q141199930 Knut Olsen Gudmestad: P734 family name = Q37015437
+Q141199930	P734	Q37015437
+#   Q141198441 Kirsten Olsdatter Grøtheim: P734 family name = Q122836435
+Q141198441	P734	Q122836435
+#   Q141189065 Gustav Adolf Gundersen: P735 given name = Q746076, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
+Q141189065	P735	Q746076	P1545	"1"	P7452	Q3409033
+#   Q141216386 Jens Wilhelm Wendt: P735 given name = Q11027623, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
+Q141216386	P735	Q11027623	P1545	"2"	P3831	Q245025
+#   Q141189090 Ole Christopher Christiansen: P735 given name = Q1084472 Christopher, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
+Q141189090	P735	Q1084472	P1545	"2"	P3831	Q245025
+#   Q141189099 Rasmus Helgesen Bø: P734 family name = Q30253098
+Q141189099	P734	Q30253098
+#   Q141219050 Ane Olsdatter Bø: P734 family name = Q30253098
+Q141219050	P734	Q30253098
+#   Q141199909 Karen Sophie Pedersdatter: P735 given name = Q1221747 Karen, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
+Q141199909	P735	Q1221747	P1545	"1"	P7452	Q3409033
+#   Q138474188 Hans Syvertsen Nyvold: P735 given name = Q632842
+Q138474188	P735	Q632842
+#   Q141216505 Thekla Cecilie Dybo: P735 given name = Q21147318 Thekla, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
+Q141216505	P735	Q21147318	P1545	"1"	P7452	Q3409033
+#   Q141189111 Tørres Jonasson Hegre: P735 given name = Q12008164
+Q141189111	P735	Q12008164
+#   P734 family name = Q36955626
+Q141189111	P734	Q36955626
+#   Q141217398 Måns Moge: P734 family name = Q12796950
+Q141217398	P734	Q12796950
+#   Q141217396 Maria No name: P735 given name = Q325872 Maria, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
+Q141217396	P735	Q325872	P1545	"1"	P7452	Q3409033
+#   P735 given name = Q21148356, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
+Q141217396	P735	Q21148356	P1545	"2"	P3831	Q245025
+#   Q141199822 Anna Jönsdotter: P735 given name = Q666578 Anna
+Q141199822	P735	Q666578
+#   Q141189058 Brita Thomasdotter: P735 given name = Q918013
+Q141189058	P735	Q918013
+#   Q141199826 Anna Maria Samuelsdtr. Tunheim: P735 given name = Q666578 Anna, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
+Q141199826	P735	Q666578	P1545	"1"	P7452	Q3409033
+#   P735 given name = Q325872 Maria, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
+Q141199826	P735	Q325872	P1545	"2"	P3831	Q245025
+#   P734 family name = Q36927172
+Q141199826	P734	Q36927172
+#   Q141200112 Tollef Pederson Tunheim: P734 family name = Q36927172
+Q141200112	P734	Q36927172
+#   Q141216494 N.N. Jacobsdtr. Koll: P734 family name = Q21510541
+Q141216494	P734	Q21510541
+#   Q141189105 Sophia Birgitta Gundersen: P735 given name = Q2302787 Sophia, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
+Q141189105	P735	Q2302787	P1545	"1"	P7452	Q3409033
+#   Q141189052 Anna Carine Gundersen: P735 given name = Q666578 Anna, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
+Q141189052	P735	Q666578	P1545	"1"	P7452	Q3409033
+#   Q141198472 Olga E. Garborg Oswald: P735 given name = Q20187, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
+Q141198472	P735	Q20187	P1545	"1"	P7452	Q3409033
+#   Q141219052 Anna Olsdatter Heigre: P735 given name = Q666578 Anna
+Q141219052	P735	Q666578
+#   P734 family name = Q45305861
+Q141219052	P734	Q45305861
+#   Q141199992 Myrtle Lenora Tunheim: P734 family name = Q36927172
+Q141199992	P734	Q36927172
+#   Q141216405 Tabite Tollefsdotter Tunheim: P734 family name = Q36927172
+Q141216405	P734	Q36927172
+#   Q141205918 Mabel Tunheim: P734 family name = Q36927172
+Q141205918	P734	Q36927172
+#   Q141199833 Bertha Ingeborg Tunheim: P734 family name = Q36927172
+Q141199833	P734	Q36927172
+#   Q141189107 Theodore Roosevelt Tunheim: P734 family name = Q36927172
+Q141189107	P734	Q36927172
+#   Q141189102 Sigrid Sally Manilva Ekman: P735 given name = Q19816532 Sally, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
+Q141189102	P735	Q19816532	P1545	"2"	P3831	Q245025
+#   Q141189074 Joseph Tunheim: P734 family name = Q36927172
+Q141189074	P734	Q36927172
+#   Q141189049 Alfred Tunheim: P734 family name = Q36927172
+Q141189049	P734	Q36927172
+#   Q141200084 Selma Johanna Tunheim: P734 family name = Q36927172
+Q141200084	P734	Q36927172
+#   Q141189101 Samuel Tunheim: P734 family name = Q36927172
+Q141189101	P734	Q36927172
+#   Q141189095 Peter Tunheim: P734 family name = Q36927172
+Q141189095	P734	Q36927172
+#   Q141189109 Tollef Bud Tunheim: P734 family name = Q36927172
+Q141189109	P734	Q36927172
+#   Q141199836 Florence June Tunheim Cosman: P735 given name = Q1152453 June, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
+Q141199836	P735	Q1152453	P1545	"2"	P3831	Q245025
+#   Q141205894 Agnes Tunheim: P734 family name = Q36927172
+Q141205894	P734	Q36927172
+#   Q141216458 Asbjørn Gunnarson Bø: P734 family name = Q30253098
+Q141216458	P734	Q30253098
+#   Q141216456 Anna Helgesdotter Opstad: P735 given name = Q666578 Anna
+Q141216456	P735	Q666578
+#   Q141216468 Erik Hansson Gausland: P734 family name = Q132192515
+Q141216468	P734	Q132192515
+#   Q141219063 Lars Osmundsen Nese: P734 family name = Q37543374
+Q141219063	P734	Q37543374
+#   Q141199918 Kirsten Hansdatter Grøtheim: P734 family name = Q122836435
+Q141199918	P734	Q122836435
 #   Q141219214 Erik Samuel Fant: P25 mother = Q141219356 Ulrika Charlotta Klingenstierna
 Q141219214	P25	Q141219356	S2600	"6000000166407230823"
+#   Q141216363 Anne Govertsdtr. Bratland: P735 given name = Q564684 Anne, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
+Q141216363	P735	Q564684	P1545	"1"	P7452	Q3409033
 #   Q141219148 Carl Ersson: P40 child = Q141219160 Christina, Sofia Carlsdotter
 Q141219148	P40	Q141219160	S2600	"6000000177920129826"
 #   Q141219160 Christina, Sofia Carlsdotter: P22 father = Q141219148 Carl Ersson
 Q141219160	P22	Q141219148	S2600	"6000000177921459033"
+#   P735 given name = Q18201520 Sofia, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
+Q141219160	P735	Q18201520	P1545	"2"	P3831	Q245025
+#   Q141198399 Eugene LeRoy Tunheim: P735 given name = Q545971, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
+Q141198399	P735	Q545971	P1545	"1"	P7452	Q3409033
+#   P735 given name = Q19839067 Leroy, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
+Q141198399	P735	Q19839067	P1545	"2"	P3831	Q245025
+#   P734 family name = Q36927172
+Q141198399	P734	Q36927172
+#   Q141219164 David Robert Tunheim: P735 given name = Q4927937 Robert, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
+Q141219164	P735	Q4927937	P1545	"2"	P3831	Q245025
+#   P734 family name = Q36927172
+Q141219164	P734	Q36927172
+#   Q141189054 Anna Maria Helgesdatter Bø: P735 given name = Q666578 Anna, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
+Q141189054	P735	Q666578	P1545	"1"	P7452	Q3409033
+#   P735 given name = Q325872 Maria, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
+Q141189054	P735	Q325872	P1545	"2"	P3831	Q245025
+#   P734 family name = Q30253098
+Q141189054	P734	Q30253098
+#   Q141189113 Ådne Helgesen Bø: P735 given name = Q12011446
+Q141189113	P735	Q12011446
+#   P734 family name = Q30253098
+Q141189113	P734	Q30253098
+#   Q141217392 Larine Eriksdatter Heigre: P734 family name = Q45305861
+Q141217392	P734	Q45305861
+#   Q141217390 Johan Johannessen Obrestad: P734 family name = Q40353802
+Q141217390	P734	Q40353802
+#   Q141206056 Asbjørn Helgesen Bø: P734 family name = Q30253098
+Q141206056	P734	Q30253098
+#   Q141216379 Hans Halvardsen Grøtheim: P735 given name = Q632842
+Q141216379	P735	Q632842
+#   P734 family name = Q122836435
+Q141216379	P734	Q122836435
+#   Q141216374 Halvard Assersen Grøtheim: P734 family name = Q122836435
+Q141216374	P734	Q122836435
+#   Q141200127 Ådne Hansen Grøtheim: P735 given name = Q12011446
+Q141200127	P735	Q12011446
+#   P734 family name = Q122836435
+Q141200127	P734	Q122836435
+#   Q141216608 Hans Ådnesen Grøtheim: P735 given name = Q632842
+Q141216608	P735	Q632842
+#   P734 family name = Q122836435
+Q141216608	P734	Q122836435
 #   Q109660986 Eva Walaas: P735 given name = Q64412279 Eva
 Q109660986	P735	Q64412279
 

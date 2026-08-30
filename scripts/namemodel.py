@@ -59,6 +59,7 @@ from __future__ import annotations
 
 import csv
 import re
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -167,7 +168,86 @@ def load_plan(path: Path | None = None) -> dict:
                 qid = (row.get("qid") or "").strip()
                 if qid:
                     out[(row["token"], "given")] = (qid, "link (ambiguity resolved)")
+
+    # **Does WIKIDATA have this name item -- not, does one of OUR people already link to one.**
+    #
+    # Emma, 2026-08-29 on Tunheim: *"some of these names got merged in with an existing item.
+    # I'm extremely confused how this happened, and it seems to me to indicate maybe you're not
+    # actually checking the existence of the names correctly in our data."* She was right, and
+    # it is measurable: of the **10 name items she has created**, `Tunheim`, `Ronneberg`, `Bø`,
+    # `Heigre` and `Nyvold` were all merged away by other editors as duplicates. The five that
+    # stood are patronymics and a farm name -- names that genuinely did not exist.
+    #
+    # The plan's `existing_qid` comes from `measure-name-resolution.py`, whose universe is
+    # `reports/name-items.csv`: name items **some person in our own store already points at**,
+    # 132,569 of them. `Q36927172` *Tunheim* is in our store and nobody in our corpus links to
+    # it, so it was invisible and the plan said `create`.
+    #
+    # `out/wikidata/name-items-in-store.tsv.gz` is the other question asked directly --
+    # **823,907** name items, every one on disk, built by `scripts/extract-name-items.py`.
+    # Joined against the plan it turns **5,212 of 14,351 planned creations (36%) into links**.
+    #
+    # Kind is never collapsed, per `CLAUDE.md` § *One name item per USAGE*: a `Q202444` given
+    # name sharing a label does not make a family-name creation a duplicate. Labels fold on
+    # case only, per the `María`/`Mária`/`Marià` rule.
+    # Only entries with no QID yet: a hand resolution and Emma's ambiguity rulings still win.
+    out.update(_store_name_items({k for k, (qid, _a) in out.items() if not qid}))
     return out
+
+
+#: `P31` value -> the usage a person links to it with, for the store lookup below.
+_NAME_ITEM_CLASS = {"Q101352": "family", "Q202444": "given", "Q12308941": "given",
+                    "Q11879590": "given", "Q3409032": "given", "Q110874": "patronymic"}
+
+
+_STORE_INDEX = None
+
+
+def store_name_item(token, usage):
+    """The QID of a name item Wikidata already has for `(token, usage)`, or `''`.
+
+    **This must answer ANY token, not only one the plan holds.** The first version filtered to
+    plan entries and `Ronneberg` walked straight past it -- it is not in
+    `reports/name-item-plan.csv` at all, so `load_plan` returned nothing and the generator
+    created a duplicate of `Q37504456` for the second time. Emma had already created it once
+    and another editor had already merged it away.
+
+    Kind is never collapsed (`CLAUDE.md` § *One name item per USAGE*) and labels fold on case
+    only (the `María`/`Mária`/`Marià` rule).
+    """
+    global _STORE_INDEX
+    if _STORE_INDEX is None:
+        _STORE_INDEX = _load_store_index()
+    return _STORE_INDEX.get((token.casefold(), usage), "")
+
+
+def _load_store_index():
+    """`{(folded label, kind): qid}` over every name item in the local store."""
+    import gzip
+    path = ROOT / "out" / "wikidata" / "name-items-in-store.tsv.gz"
+    if not path.exists():
+        print(f"WARNING: {path.name} missing -- the name plan cannot see the name items "
+              f"already on disk and will propose duplicates. "
+              f"Run scripts/extract-name-items.py", file=sys.stderr)
+        return {}
+    index = {}
+    with gzip.open(path, "rt", encoding="utf-8") as fh:
+        next(fh, None)
+        for line in fh:
+            parts = line.rstrip("\n").split("\t")
+            if len(parts) != 4:
+                continue
+            qid, kinds, _p31, labels = parts
+            for kind in kinds.split("|"):
+                for label in labels.split("|"):
+                    index.setdefault((label.casefold(), kind), qid)
+    return index
+
+
+def _store_name_items(planned):
+    """`{(token, usage): (qid, action)}` for plan entries the store can already satisfy."""
+    return {(t, u): (store_name_item(t, u), "link (already on Wikidata)")
+            for (t, u) in planned if store_name_item(t, u)}
 
 
 #: A token Geni wrapped in quotes inside `GIVN` — `Stine "Stena" Eivindsdatter`.

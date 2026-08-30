@@ -56,7 +56,7 @@ csv.field_size_limit(1 << 30)
 sys.stdout.reconfigure(encoding="utf-8")
 
 from namemodel import (  # noqa: E402
-    PATRONYMIC_CLASS, classify_fields, load_plan, statements_for)
+    PATRONYMIC_CLASS, classify_fields, load_plan, statements_for, store_name_item)
 from qscomment import annotate  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -158,10 +158,26 @@ def main():
             # name item and must not be proposed as one.
             if usage == "nickname":
                 continue
+            # **A particle and an unknown-name marker are never items.** `CLAUDE.md`
+            # § *A parenthesised token in `SURN`/`_MARNM`*: `de`, `von`, `af` belong in the
+            # `mul` label, and `(anonyma)` is an NN marker. `CLASS_FOR` has no entry for
+            # either, so one reaching the emit loop is a `KeyError` -- which is how this was
+            # found, rather than by a wrong item being created.
+            if usage in ("particle", "unknown"):
+                continue
             # A married surname is a family name like any other -- same item kind, same
             # lookup -- it just reaches the person by a different field.
             usage = "family" if usage == "married" else usage
             qid, action = plan.get((token, usage), ("", "not in the plan"))
+            # **Ask the store before creating anything.** A token missing from the plan used
+            # to fall straight through to `need`, and `Ronneberg` is exactly that: not in
+            # `name-item-plan.csv`, already `Q37504456` on Wikidata, created by Emma once and
+            # merged away by another editor. Five of the ten name items she has ever created
+            # went the same way -- Tunheim, Ronneberg, Bø, Heigre, Nyvold.
+            if not qid:
+                qid = store_name_item(token, usage)
+                if qid:
+                    action = "link (already on Wikidata)"
             if qid:
                 linked[(token, usage)] += 1
             elif "AMBIG" in action.upper():

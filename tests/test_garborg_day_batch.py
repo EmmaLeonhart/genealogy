@@ -94,6 +94,19 @@ def known_name_items():
     that batch has run.
     """
     out = set()
+    # **Name items already ON WIKIDATA, whether or not our plan knows them.** The plan's
+    # universe came from `measure-name-resolution.py`, whose own universe is name items some
+    # person in our store already links to -- so `Q36927172` *Tunheim* was invisible to it,
+    # was created a second time, and was merged away by another editor. Since 2026-08-30 the
+    # generator resolves against every name item in the local store, so this must too, or a
+    # correct link reads here as a dangling pointer.
+    store = REPO / "out" / "wikidata" / "name-items-in-store.tsv.gz"
+    if store.exists():
+        import gzip
+        with gzip.open(store, "rt", encoding="utf-8") as fh:
+            next(fh, None)
+            out |= {line.split("	", 1)[0] for line in fh}
+
     plan = REPO / "reports" / "name-item-plan.csv"
     if plan.exists():
         with open(plan, encoding="utf-8") as f:
@@ -608,6 +621,20 @@ def test_every_link_to_an_existing_item_is_emitted_in_BOTH_directions():
     #: property -> the property that states the same fact from the other side.
     INVERSE = {"P22": "P40", "P25": "P40", "P26": "P26", "P3373": "P3373", "P40": ("P22", "P25")}
 
+    # **The one exemption, and it is a list of specific pairs rather than a rule.** The
+    # single-value guard drops a `Q… P22/P25 LAST` when that item already declares a parent:
+    # `P25` is single-valued and a second trips the constraint. Its `LAST P40 Q…` partner
+    # stays, deliberately, because `P40` is multi-valued and states the same fact from the
+    # side that permits it. `build-garborg-day.py` records every such drop in
+    # `reports/single-value-drops.tsv`, and only those subjects are exempt here -- so this
+    # cannot widen into "one-way links are acceptable", which is the thing being pinned.
+    exempt = set()
+    drops = REPO / "reports" / "single-value-drops.tsv"
+    if drops.exists():
+        import csv as _csv
+        for row in _csv.DictReader(drops.open(encoding="utf-8"), delimiter="\t"):
+            exempt.add(row["subject"])
+
     missing = []
     for block in text.split("CREATE")[1:]:
         body = block.split("\nCREATE")[0]
@@ -620,6 +647,8 @@ def test_every_link_to_an_existing_item_is_emitted_in_BOTH_directions():
                 continue
             wanted = INVERSE[prop]
             wanted = wanted if isinstance(wanted, tuple) else (wanted,)
+            if value in exempt:
+                continue
             if not any(f"{value}\t{w}\tLAST" in body for w in wanted):
                 missing.append((prop, value))
 
