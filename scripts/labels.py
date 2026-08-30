@@ -124,7 +124,27 @@ NARROW_MARKERS = _NN_FORMS | {"private", "<private>"}
 #: the corpus by how many *different* people carry it, where a real name repeats a
 #: little and a placeholder repeats hundreds of times. Bulgarian `Без име` sat
 #: above most genuine names at 52 people. Counts are in the corpus.
+#: A stillborn description, removed as a phrase by `strip_markers`. The optional article and
+#: the optional kinship word after it are part of the description, not part of a name:
+#: `En dödfödd son`, `Dødfødt`, `Stillborn daughter 2`, `Stillborn Twins`.
+#:
+#: **The stillborn word itself is required**, which is what keeps `En Olsen` a real name.
+_STILLBORN_PHRASE = re.compile(
+    r"\b(?:en|ett|et|a|the)\s+(?=\S*(?:d[öo]df|d[øo]df|stillborn))"
+    r"|\b(?:d[öo]df[öo]dd?t?|d[øo]df[øo]dt?|stillborn)"
+    r"(?:\s+(?:son|s[øo]nn|sen|datter|dotter|daughter|child|barn|twins?|infant|baby))?"
+    r"(?:\s+\d+)?\b", re.I)
+
 WORDS_MEANING_UNKNOWN = {
+    # **Stillborn is a DESCRIPTION, not a name.** Emma, 2026-08-30, on `Q141224141`:
+    # *"please stop trying to assign names to this person who does not in fact have any names
+    # at all."* Geni records him as `En dödfödd son Bielke` -- Swedish for *a stillborn son* --
+    # and the batch emitted `P735` given name `En` with `P7452` *usual forename*, so the
+    # indefinite article became his first name.
+    #
+    # **505 people in `display-names.csv` carry one of these**: `dødfødt` 216, `stillborn` 148,
+    # `dödfödd` 116, `dödfött` 21, `dødfød` 4. Her standing rule -- § *An obvious unknown-word
+    # marker goes straight in* -- covers this without asking.
     "unknown",        # 2,127
     "ukjent",         #   188  Norwegian
     "no name",        #    92
@@ -503,7 +523,27 @@ def strip_markers(label: str) -> str:
     explicitly not a label — § *Redacted people go in. `Private` never becomes a label*.
 
     A label that is nothing but markers collapses to the bare marker `NN`.
+
+    **A stillborn DESCRIPTION is removed whole, article and kinship word included.** Emma,
+    2026-08-30, on `Q141224141`: *"please stop trying to assign names to this person who does
+    not in fact have any names at all."* Geni records him `En dödfödd son Bielke` — Swedish for
+    *a stillborn son* — and the batch emitted `P735` given name `En`, the indefinite article,
+    carrying `P7452` *usual forename*.
+
+    Word-by-word marking cannot fix that: it gives `NN NN son Bielke`, because `son` sits
+    between the two markers and survives. And putting a bare `en` in the marker set turns
+    `En Olsen` into `NN Olsen`, swallowing a real name. So the phrase goes as a phrase, and
+    only where a stillborn word actually appears.
     """
+    # The phrase becomes the MARKER, not nothing: a person with no name still gets `NN`,
+    # and `CLAUDE.md` is explicit that a bare surname is not a label. `En dodfodd son
+    # Bielke` -> `NN Bielke`. The collapse below folds a run of markers into one.
+    label = _STILLBORN_PHRASE.sub(" " + UNNAMED_MARKER + " ", label or "").strip() or label
+    # The pattern can match twice on one phrase -- the article, then the word -- giving
+    # `NN NN Bielke`. A run of markers is one marker.
+    _t = label.split()
+    label = " ".join(t for i, t in enumerate(_t)
+                     if not (t == UNNAMED_MARKER and i and _t[i - 1] == UNNAMED_MARKER))
     tokens = (label or "").split()
     if not tokens:
         return label

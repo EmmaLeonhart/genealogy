@@ -34,6 +34,7 @@ not collide with our undescribed one.
 from __future__ import annotations
 
 import argparse
+import csv
 import json
 import re
 import sys
@@ -100,12 +101,22 @@ def main():
     # **The generator reads this, so the hold is data rather than a hand-maintained list.**
     # `CLAUDE.md` § *An item is NEVER created with a description*: a collision is resolved by
     # holding the creation, and holding it needs the Geni id, not the label.
+    # **CUMULATIVE, and it has to be.** `--compose` draws a fresh set of people each run, so
+    # rewriting this file would release everybody held by the previous draw the moment a new
+    # one appeared -- the batch would oscillate and never reach zero collisions. Measured:
+    # 5 collisions, regenerate, 4 collisions, none of them the original five.
     out = ROOT / "reports" / "label-collisions.tsv"
+    rows = {}
+    if out.exists():
+        for row in csv.DictReader(out.open(encoding="utf-8"), delimiter="\t"):
+            rows[row["geni_id"]] = (row["label"], row["lang"], row["collides_with"])
+    for label, lang, geni, ids, _described in collisions:
+        rows[geni] = (label, lang, ";".join(ids))
     with out.open("w", encoding="utf-8", newline="") as fh:
         fh.write("geni_id\tlabel\tlang\tcollides_with\n")
-        for label, lang, geni, ids, _described in collisions:
-            fh.write(f"{geni}\t{label}\t{lang}\t{';'.join(ids)}\n")
-    print(f"wrote {out.relative_to(ROOT)}\n")
+        for geni, (label, lang, ids) in sorted(rows.items()):
+            fh.write(f"{geni}\t{label}\t{lang}\t{ids}\n")
+    print(f"wrote {out.relative_to(ROOT)} -- {len(rows)} held in total\n")
 
     print(f"{clear} creations have no colliding item")
     print(f"{len(collisions)} would duplicate an existing label+empty-description pair\n")

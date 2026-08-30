@@ -838,6 +838,28 @@ def _label_collisions():
     with open(path, encoding="utf-8") as f:
         return {row["geni_id"] for row in csv.DictReader(f, delimiter="	") if row["geni_id"]}
 
+
+def _has_given_name(fields):
+    """Does this person have a GIVEN name, once a stillborn description is removed?
+
+    **Emma, 2026-08-30, on `Q141224141`:** *"please stop trying to assign names to this person
+    who does not in fact have any names at all."* Geni records him `En dodfodd son Bielke` --
+    Swedish for *a stillborn son* -- and the batch emitted `P735` given name `En`, the
+    indefinite article, carrying `P7452` *usual forename*.
+
+    **Testing the whole label is not enough and that was the first fix.** Stripped, he reads
+    `NN Bielke`, so "does this person have a name" answers yes -- on the strength of a surname.
+    The defect is on the given-name side, so that is what has to be asked. `Bielke` still
+    reaches `P734` through the ordinary path.
+
+    505 people in the corpus carry a stillborn word.
+    """
+    from labels import _STILLBORN_PHRASE, NARROW_MARKERS, WORDS_MEANING_UNKNOWN
+    givn = _STILLBORN_PHRASE.sub(" ", (fields or {}).get("givn", "") or "")
+    markers = NARROW_MARKERS | WORDS_MEANING_UNKNOWN
+    return any(t for t in givn.split() if t.casefold().strip(".,") not in markers)
+
+
 def label_in(label, table):
     """(ja, zh) for a whole name, or (None, None) if any token is unknown.
 
@@ -5121,7 +5143,16 @@ def main():
         # carries `P735` Arne, and our label reads the parenthesised `(Arne)` as a
         # middle name -- emitting it would contradict a curated statement rather than
         # add to it. `CLAUDE.md`: the purpose is to ADD, not to correct.
-        if absent(q, "P735") and absent(q, "P734"):
+        # **A person with no name gets no name statements.** Emma, 2026-08-30, on
+        # `Q141224141`: *"please stop trying to assign names to this person who does not in
+        # fact have any names at all."* Geni records him `En dodfodd son Bielke` -- Swedish for
+        # *a stillborn son* -- and this emitted `P735` given name `En`, the indefinite article,
+        # carrying `P7452` *usual forename*. 505 people in the corpus carry a stillborn word.
+        #
+        # The label fix in `labels.strip_markers` is not enough on its own, because the name
+        # model reads the raw `GIVN`/`SURN` fields rather than the label, which is exactly the
+        # separation `namemodel` was built for. So the gate goes here as well.
+        if absent(q, "P735") and absent(q, "P734") and _has_given_name(fields.get(g)):
             dad = father.get(g)
             # The father's NAME, not just his QID: Emma's test reads his given name and
             # his own patronymic to decide whether this token is inherited or derived.
@@ -5183,7 +5214,12 @@ def main():
         # And the one she closed explicitly: *"The transliteration of the Geni display name
         # does not go into Japanese or Chinese aliases."* No `Aja`, no `Azh`.
         mine = {lang: value for (qq, lang), value in live_labels.items() if qq == q}
-        mul = consensus_latin_label(mine)
+        # **No live labels means we do not know what the item says, and a `Lmul` REPLACES.**
+        # `Q19842232` got `Lmul "Algot Brynolfsson"` written over whatever it held, because an
+        # item outside the ledger is never fetched, so `mine` was empty, so the consensus read
+        # as "it has no `mul`" rather than "we have not looked". Absence of evidence was being
+        # treated as evidence of absence -- the same shape as every other bug today.
+        mul = consensus_latin_label(mine) if mine else ""
         source = mul or labels.get(g, "")
 
         if mul:
@@ -5452,7 +5488,12 @@ def main():
         # underneath. The *surname* survives redaction and is real data -- but these
         # three are `<private> Garborg`, and `Garborg` is their father's family name,
         # which `P22` already says.
-        if not redacted:
+        # **The same no-name gate as the existing-items path.** A stillborn description is not
+        # a name: `En dodfodd son Bielke` produced `P735` given name `En`, the Swedish
+        # indefinite article, on `Q141224141`. Emma, 2026-08-30: *"please stop trying to assign
+        # names to this person who does not in fact have any names at all."* Gating only the
+        # existing-item path would fix the item she saw and keep making new ones.
+        if not redacted and _has_given_name(fields.get(g)):
             dad = father.get(g)
             name_statements, unresolved = name_lines(
                 labels[g], plan, g, our_items.get(dad) if dad else None,
