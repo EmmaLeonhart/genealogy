@@ -1972,6 +1972,27 @@ Emma, 2026-08-30. Two changes to how the QuickStatements are generated:
 - **A person created in the run gets linked to their name items in that same run.** Today the
   name statements only reach people who already held a QID, so a new person waits a day.
 
+## The patronymic application is badly wrong — patronyms and patronymic SURNAMES are confused
+
+Emma, 2026-08-30, and she reads it as near-zero testing:
+
+> *"I am seeing a lot of issues with the patronymic application that seem to indicate you were
+> not taking it seriously. Patronymic surnames and Patronyms were extremely aggressively
+> confused in a way that suggested possibly nearly no testing at all."*
+
+Her cases:
+
+- `Q141223548` — **`Nilsson` on both the patronym and the surname.**
+- `Q141168797` ([history](https://www.wikidata.org/w/index.php?title=Q141168797&action=history))
+  and `Q141189064` — she had to **remove a surname that was incorrectly read as a patronymic**.
+
+> *"worst part is that it explicitly linked to the father who demonstrably had a different given
+> name and had that patronymic."*
+
+So the `P144` *based on* pointed at a father whose own given name does not generate that
+patronymic, and whose patronymic it actually was — which is evidence the father test either did
+not run or did not decide.
+
 ## Always last — pinned to the very end of the file
 
 **Bullets, not letters.** These were `A.` and `B.`; `CLAUDE.md` § *Queue items are BULLET POINTS*
