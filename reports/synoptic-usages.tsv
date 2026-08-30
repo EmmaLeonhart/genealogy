@@ -1,0 +1,193 @@
+file	line	verdict	text
+CLAUDE.md	1800	unclear	**The method is structural.** *"For the synoptic tree, we're supposed to be
+CLAUDE.md	1803	unclear	relationships. That is a critical part of building up this synoptic tree."* Start
+CLAUDE.md	1968	full	### The Wikidata link goes in the bio during the SYNOPTIC TREE BUILD. Geni is not edited
+CLAUDE.md	1974	full	> the Synoptic tree, we put the Wikidata links into bios during the build process of the Synoptic
+CLAUDE.md	1976	unclear	> the IDs to ensure that they haven't been merged or anything... Forcing them into this Synoptic
+CLAUDE.md	1977	unclear	> tree like this makes it so that the Synoptic tree, when it starts being used as an input, does
+CLAUDE.md	1981	full	re-exports for this purpose. The QID is written into the person's bio field in the synoptic tree
+CLAUDE.md	1988	unclear	**What the bio link is FOR, in her words, 2026-08-29:** *"When the synoptic tree is merged we
+CLAUDE.md	2277	unclear	the people as we add more since we want all these bureatten people in the geni synoptic tree and
+devlog.md	1254	unclear	The user stated the project's purpose plainly this tick: one growing **synoptic**
+devlog.md	1255	geni	tree. What makes it synoptic is that the graph is connected, and the merge step
+devlog.md	2916	geni	The synoptic GEDCOM is `out/merged.ged`, 262 MB, gitignored, rebuilt with
+devlog.md	3701	unclear	and it was still wrong: this repo exists to build one synoptic tree, and a
+devlog.md	4287	unclear	## 2026-08-09 — the branch lands, and the synoptic tree at 145
+devlog.md	4493	unclear	It is **synoptic — a duplicated tree, not a fused one** — and *"intended to be
+devlog.md	4502	unclear	synoptic. Then I turned the 4,491 Geni-ID-less parents into a NEEDS-DECISION
+devlog.md	7395	unclear	exports in, measure what they cleared, gaps analysis, then a full synoptic
+devlog.md	7781	unclear	stuff, and not the Synoptic Tree."* I had measured long-range reach against the
+devlog.md	7789	unclear	this set — it is not a reason to skip the synoptic check next time, which is the
+devlog.md	8513	unclear	synoptic tree. You just did that on your own… rebuilding the synoptic tree right now is
+devlog.md	9065	unclear	## 2026-08-18 — the synoptic tree, rebuilt on the name-development branch
+devlog.md	11390	unclear	`LABELS, IN HER ORDER`, the export loop and tail algorithm, the synoptic tree, the
+devlog.md	11660	unclear	is that represented in our data?… I'm afraid it isn't properly represented in our synoptic
+devlog.md	11662	unclear	which is exactly the artefact `CLAUDE.md` says the synoptic tree is for.
+devlog.md	11664	unclear	`scripts/build-synoptic-correspondence.py` → `reports/synoptic-correspondence.tsv`:
+devlog.md	11675	full	against Wikidata's own `P2600`**. Listed in `reports/synoptic-conflicts.tsv` and **not
+devlog.md	11679	geni	566,198 families, and `out/merged-pre-synoptic-2026-08-23.ged` kept per the backtest rule.
+devlog.md	12244	full	**No.** `reports/synoptic-correspondence.tsv` holds 522,086 Geni ID ↔ QID pairs from five
+devlog.md	12246	full	`P2600` on the Wikidata side. It is written by `build-synoptic-correspondence.py` and
+devlog.md	12282	unclear	done jointly in the synoptic tree building."* Checked — it is joint already:
+devlog.md	12293	unclear	**Cron `a9ffdec7`, daily at 14:07** — rebuild the synoptic tree **no earlier than 2pm**,
+devlog.md	12314	full	the answer was no: 522,086 Geni ID ↔ QID pairs sat in `reports/synoptic-correspondence.tsv`
+devlog.md	12549	unclear	resolved geni conflicts in the synoptic tree earlier either"*. Established, and the answer
+devlog.md	12844	unclear	## 2026-08-24 — the synoptic tree is built
+devlog.md	12878	unclear	### The synoptic correspondence
+devlog.md	12893	unclear	`reports/synoptic-conflicts.tsv`.
+devlog.md	12901	unclear	It mostly did not, and the report was why. `synoptic-conflicts.tsv` wrote one row per Geni
+devlog.md	12933	unclear	`tests/test_synoptic_conflicts.py` pins it: one row per candidate, sources not shared
+devlog.md	12941	unclear	talking about the opposite problem."* She is right. `synoptic-conflicts.tsv` is defined as
+devlog.md	13025	unclear	`build-synoptic-correspondence.py` now drops the **235** structural pairs that dates
+devlog.md	13878	unclear	**Also: the 2:07pm synoptic rebuild is rescheduled to 16:01** (`9c96578d`) at her request. Step 1
+devlog.md	13989	full	### 2026-08-25 — zipper capped at round 3 and wired into the synoptic join
+devlog.md	13997	unclear	`build-synoptic-correspondence.py`, so the number can be changed without re-running the walk.
+devlog.md	13999	full	**The synoptic correspondence with the zipper in:**
+devlog.md	14069	unclear	both corpora, how the synoptic tree is actually made, the provenance-chain design, and the
+devlog.md	14250	full	**only by identifier** — `P2600`, the chain's own known QIDs, or the synoptic correspondence. The
+devlog.md	14475	full	queued up analysis on synoptic tree vs wikidata solo children situations like this."*
+devlog.md	15209	unclear	conflicts in the synoptic tree earlier either"*. So it was measured before being written.
+devlog.md	15499	unclear	*"The ideal thing was supposed to be that we do a census of all languages in the synoptic tree…
+devlog.md	15956	unclear	## 2026-08-27 — the synoptic correspondence, re-run against the current walk
+devlog.md	15958	unclear	`reports/synoptic-correspondence.tsv` was 29h behind `reports/structural-correspondence.csv`,
+devlog.md	16049	unclear	`build-synoptic-correspondence.py`, a whole-corpus job, for a file it only reads.
+devlog.md	16525	full	during the synoptic tree build, not onto Geni, so the zipper merge sees the correspondence as
+devlog.md	17302	full	Wikidata, so it is material for the synoptic tree even though it is not coverage.
+devlog.md	17791	full	§ *The Wikidata link goes in the bio during the SYNOPTIC TREE BUILD. Geni is not edited*. I went to
+devlog.md	17795	unclear	**What is actually true, in her words:** *"When the synoptic tree is merged we change all of their
+devlog.md	17798	full	synoptic build, feeding a **Wikidata union that does not exist yet**. There is no standalone Geni
+devlog.md	17811	full	## 2026-08-29 — the synoptic tree always carries the QID links, because they are corpus
+devlog.md	17815	unclear	do the synoptic tree always gets these things."*
+devlog.md	17849	unclear	rebuilding the synoptic tree to test this thing so that we can quickly move onto other work."* It
+devlog.md	17857	unclear	**The instruction was specific and I generalised it.** She said the synoptic tree should carry
+devlog.md	17860	unclear	`reports/synoptic-correspondence.tsv` that landed on somebody in our tree: **83,988 individuals,
+devlog.md	17869	unclear	`reports/synoptic-correspondence.tsv` to the three returned **0 of 3**. That report joins five
+devlog.md	17891	unclear	**What the docstring used to claim.** That the file existed so the synoptic tree *"ALWAYS"*
+devlog.md	17893	unclear	people**. Both were generalisations of one instruction, *"When the synoptic tree is merged we
+devlog.md	18470	unclear	synoptic tree. If it fails, if it's still not done, then do another one for 1:30 and 2:30... Now
+devlog.md	18678	unclear	**"Synoptic tree" means two things and the repo never says which.** *"it is consistently conflated
+devlog.md	19554	unclear	synoptic tree.
+devlog.md	19623	unclear	correctly — *"the synoptic tree file stuff"* — and it is worse than a file-size problem.**
+devlog.md	19657	unclear	16 GB `ubuntu-latest` runner. That is the reason a daily job cannot rebuild the synoptic tree, and
+devlog.md	19734	unclear	on https://www.geni.com/profile/index/6000000227464556886 and incorporate them into the synoptic
+devlog.md	19735	unclear	tree and then rebuild the synoptic tree, and then generate the quickstaements with the algorithm"*
+devlog.md	19788	full	**`CLAUDE.md` § *The Wikidata link goes in the bio during the SYNOPTIC TREE BUILD. Geni is not
+devlog.md	19791	full	complicated than it actually should be. In the Synoptic tree, we put the Wikidata links into bios
+docs/daily-algorithm.md	32	unclear	**The ideal state is the union of the synoptic tree and the Geni tree.** Not the Geni tree alone
+docs/dictation/2026-08-26-daily-algorithm.md	18	unclear	the synoptic tree and the janny tree. In the arnie area, it's really clear. It finds, within this
+docs/mass-export-run.md	36	unclear	https://www.geni.com/profile/index/6000000227464556886 and incorporate them into the synoptic
+docs/mass-export-run.md	37	unclear	tree and then rebuild the synoptic tree, and then generate the quickstatements with the
+docs/mass-export-run.md	172	unclear	injection into the synoptic tree build. Both the novelty and the purpose are gone.
+edit-objects.md	23	full	We hold a synoptic tree — Wikidata items with their whole JSON, Geni people with
+orderlife/analysis/cycle_policy.md	13	unclear	device for linking people across time and space, and it is building a **synoptic
+orderlife/analysis/shadow_audit.md	36	unclear	right is a per-record judgement, and this dump is a synoptic mythology where
+queue.md	36	unclear	`Link reliability order`, `The chain of provenance`, `How the synoptic tree is actually made`,
+queue.md	189	unclear	- **The ideal state is still the Geni tree alone.** Her spec says the **union of the synoptic
+queue.md	190	unclear	tree and the Geni tree**; the synoptic half does not exist yet, which is the § *PREREQUISITE
+queue.md	931	unclear	export alone. If it does then that'll be great. We'll have a synoptically
+queue.md	988	unclear	## Fix the surnames of the tier-2 placeholders before the synoptic tree is built
+queue.md	1047	unclear	**Emma, 2026-08-18. Do this BEFORE the synoptic tree is built. Not an investigation
+queue.md	1135	unclear	thing so that we can deal with more important stuff."* Read as the synoptic-tree build
+queue.md	1157	unclear	## Build the synoptic tree
+queue.md	1233	unclear	## How the synoptic tree is actually made — Emma, 2026-08-25
+queue.md	1235	unclear	**Her words:** *"Put into the queue also an analysis of how the synoptic tree is actually made."*
+queue.md	1237	unclear	over the synoptic tree stuff sufficiently, but I'm going to treat it as though it's all good. I'm
+queue.md	1238	unclear	going to treat the synoptic tree as though it is perfect, and we are going to address whether the
+queue.md	1239	unclear	synoptic tree is well functioning later."*
+queue.md	1241	unclear	So **nothing waits on this.** Write down what `scripts/build-synoptic-correspondence.py` actually
+queue.md	1379	full	## The eight Asian identities — bios get their QID links AT SYNOPTIC-MERGE TIME, not now
+queue.md	1382	unclear	*"No fuck you you didn't get the later discussion. When the synoptic tree is merged we change all
+queue.md	1387	full	bio link is a *step inside the synoptic tree build*, and its purpose is to feed the **Wikidata
+queue.md	1402	full	§ *The Wikidata link goes in the bio during the SYNOPTIC TREE BUILD* already recorded the
+queue.md	1699	both named	## THE LAST ITEM — rebuild the synoptic tree, which is how the QID-link GEDCOM gets tested
+queue.md	1701	unclear	**Emma, 2026-08-29:** *"don't test it now but make the last queue item rebuilding the synoptic
+queue.md	1723	unclear	number; the first version emitted 83,988 people off `reports/synoptic-correspondence.tsv` and that
+queue.md	1799	full	- The Wikidata link goes into bios **during the synoptic tree build**; Geni is never edited for it.
+queue.md	1818	unclear	## "Synoptic tree" means two different things — resolve it usage by usage
+queue.md	2047	unclear	Geni record in there overwrites the same Geni ID from any other export** in the synoptic
+queue.md	2176	unclear	runner, so the synoptic tree still cannot be rebuilt in Actions without a larger runner.
+reports/audit-transcripts-2026-08-15.md	60	full	| J | **Descent-from-antiquity people with neither a Geni nor a Wikidata link** — *"I want to include everything here in the synoptic tree… flagging whether an individual is a [DFA] individual"* | 08-
+reports/farmname-seed-fixes.md	3	unclear	Emma, 2026-08-18: *"uhh farm names are surnames here lol"* --- and *"add a task in the queue to fix the surnames of these people before the synoptic tree is built. I will do the editing on geni for th
+reports/geni-qid-links.md	153	unclear	## The synoptic correspondence: five sources, now one file
+reports/geni-qid-links.md	157	unclear	represented in our synoptic tree."*
+reports/geni-qid-links.md	160	unclear	artefact `CLAUDE.md` says the synoptic tree is for. `scripts/build-synoptic-correspondence.py`
+reports/geni-qid-links.md	161	unclear	now writes `reports/synoptic-correspondence.tsv`, every pair carrying its provenance.
+reports/geni-qid-links.md	181	full	cannot be two Wikidata items. `reports/synoptic-conflicts.tsv` lists them with the
+reports/ingest-2026-08-05.md	8	geni	synoptic GEDCOM is regenerated with plain:
+reports/mass-export-log.tsv	42	both named	6000000227474866003 Forest exported exports/bure-campaign/export-Forest-6000000227474866003.ged 5000 SUBMITTED Forest/5000, task_id 6000000227475765830. Emma flagged this one as the important export o
+reports/public-repo-analysis.md	8	unclear	part of the algorithm. Biggest barrier imo is the synoptic tree file stuff."*
+reports/public-repo-analysis.md	34	unclear	## The barrier she named: the synoptic tree cannot be built in Actions
+reports/synoptic-conflicts.md	4	unclear	`reports/synoptic-conflicts-labelled.tsv` — every row with **names on both sides**, since
+reports/synoptic-conflicts.md	48	unclear	- `reports/synoptic-conflicts-labelled.tsv` — all 257 with names on both sides.
+reports/synoptic-conflicts.md	49	unclear	- `reports/synoptic-conflicts.tsv` — the raw pairs.
+reports/wikidata-labels.tsv	51777	full	Q106046 synoptic gospels
+reports/wikidata-labels.tsv	613770	full	Q51515725 Our native ferns and their allies; with synoptical descriptions of the American Pteridophyta north of Mexico
+reports/wikidata-labels.tsv	613771	full	Q51515726 Our native ferns and their allies; with synoptical descriptions of the American Pteridophyta north of Mexico
+scripts/audit-farmname-seeds.py	5	unclear	the synoptic tree is built. I will do the editing on geni for this."*
+scripts/audit-farmname-seeds.py	90	unclear	"task in the queue to fix the surnames of these people before the synoptic tree "
+scripts/build-clan-p2600-pairs.py	5	unclear	**Emma, 2026-08-24:** *"the tanba onakatomi izumo stuff is a prerequisite for the synoptic
+scripts/build-clan-p2600-pairs.py	6	unclear	rebuild"* — these joins are **inputs** to `reports/synoptic-correspondence.tsv`, so
+scripts/build-clan-p2600-pairs.py	10	unclear	rosters but no join, so their people were invisible to the synoptic tree even though they
+scripts/build-join-batch.py	1	unclear	"""The thing that consumes the synoptic correspondence: Geni facts onto joined items.
+scripts/build-join-batch.py	6	full	`reports/synoptic-correspondence.tsv` holds 522,086 Geni ID ↔ QID pairs from five
+scripts/build-join-batch.py	11	full	wikidata qid is also important and needs to be done jointly in the synoptic tree
+scripts/build-join-batch.py	91	unclear	with open(ROOT / "reports" / "synoptic-correspondence.tsv", encoding="utf-8") as f:
+scripts/build-name-classes.py	4	unclear	*"running an analysis of this [synoptic] tree, all the different names inside…
+scripts/build-nn-label-batch.py	41	unclear	**And the reach was measured on the synoptic tree, not on one store.** Emma named
+scripts/build-nn-label-batch.py	43	unclear	Jenny stuff, and not the Synoptic Tree… I'm pretty sure that long-range
+scripts/build-nn-label-batch.py	57	unclear	skip the synoptic check next time.
+scripts/build-orderlife-batch.py	1	unclear	"""Turn `order.life` into the third source of the synoptic tree, as edit objects.
+scripts/build-orderlife-batch.py	4	full	without a Wikidata ID can still be merged into the synoptic tree because we have
+scripts/build-orderlife-diff.py	3	unclear	**Not a merge, and not a synoptic tree.** Emma, 2026-08-14: the synoptic tree is
+scripts/build-qid-links-gedcom.py	14	full	docstring said the file existed so the synoptic tree *"ALWAYS"* carried QID links, which is the
+scripts/build-qid-links-gedcom.py	16	unclear	generalisations of *"When the synoptic tree is merged we change all of their bios to links to
+scripts/build-qid-links-gedcom.py	22	unclear	this script emitted every pairing in `reports/synoptic-correspondence.tsv` that landed on somebody
+scripts/build-qid-links-gedcom.py	40	unclear	asked for a directory whose records *"overwrite earlier ones from other repos in the synoptic
+scripts/build-qid-links-gedcom.py	59	unclear	Reading `reports/synoptic-correspondence.tsv` and filtering it to the three returned **0 of 3** —
+scripts/build-scraped-gedcom.py	6	geni	turns them into things that are usable and would be merged into the synoptic tree as GEDCOM
+scripts/build-synoptic-correspondence.py	3	unclear	python scripts/build-synoptic-correspondence.py
+scripts/build-synoptic-correspondence.py	7	unclear	synoptic tree."*
+scripts/build-synoptic-correspondence.py	10	unclear	them**, which is precisely the artefact `CLAUDE.md` says the synoptic tree is for:
+scripts/build-synoptic-correspondence.py	34	unclear	Writes `reports/synoptic-correspondence.tsv` and `reports/synoptic-conflicts.tsv`.
+scripts/build-synoptic-correspondence.py	55	unclear	dropped here rather than carried into the synoptic tree and left for a human to
+scripts/build-synoptic-correspondence.py	129	unclear	# synoptic rebuild"*. Tanba and the sister repo's fuller Izumo roster had joins
+scripts/build-synoptic-correspondence.py	176	unclear	out = R / "synoptic-correspondence.tsv"
+scripts/build-synoptic-correspondence.py	200	unclear	conf = R / "synoptic-conflicts.tsv"
+scripts/bure-coverage.py	19	unclear	people in the geni synoptic tree and once everyone is covered the campaign is over. Because
+scripts/census-correspondence-shapes.py	35	unclear	Reads `reports/synoptic-correspondence.tsv`. Offline.
+scripts/census-correspondence-shapes.py	56	unclear	src = ROOT / "reports" / "synoptic-correspondence.tsv"
+scripts/census-name-scripts.py	6	unclear	all languages in the synoptic tree (our geni stuff) and we add labels in all of them. And I don't
+scripts/census-solo-children.py	6	full	queued up analysis on synoptic tree vs wikidata solo children situations like this."* And, before
+scripts/census-synoptic-usages.py	1	unclear	"""Every place the repo says "synoptic tree", and which of the two things it means.
+scripts/census-synoptic-usages.py	3	unclear	python scripts/census-synoptic-usages.py
+scripts/census-synoptic-usages.py	27	unclear	Writes `reports/synoptic-usages.tsv` — file, line, verdict, the line itself.
+scripts/census-synoptic-usages.py	37	unclear	OUT = ROOT / "reports" / "synoptic-usages.tsv"
+scripts/census-synoptic-usages.py	62	unclear	if "synoptic" not in text.lower():
+scripts/census-synoptic-usages.py	65	unclear	if "synoptic" not in line.lower():
+scripts/census-synoptic-usages.py	81	unclear	print(f"{len(rows)} usages of 'synoptic' across "
+scripts/find-chain-gaps.py	4	unclear	*"I didn't request that you rebuild the synoptic tree. You just did that on your own,
+scripts/find-chain-gaps.py	5	unclear	and I think that's kind of stupid… rebuilding the synoptic tree right now is just going
+scripts/measure-orderlife-pairs.py	14	unclear	column — so it answers exactly the question `reports/synoptic-correspondence.tsv` answers, from
+scripts/measure-orderlife-pairs.py	45	unclear	OURS = ROOT / "reports" / "synoptic-correspondence.tsv"
+scripts/measure-post-merge-override.py	19	unclear	synoptic tree earlier either"* — with the queue noting that later-wins is not post-merge-wins
+scripts/multi-geni-item-roster.py	17	unclear	really removing the merged profile from the synoptic tree... We're just linking everything
+scripts/rebuild-everything.py	1	unclear	"""Rebuild the synoptic tree and everything derived from it, ending with the batch.
+scripts/refresh-drift.py	108	unclear	# `build-synoptic-correspondence.py` reads `structural-walk-validation.tsv` and is a
+scripts/resolve-multi-geni-by-parents.py	143	unclear	with open(ROOT / "reports" / "synoptic-correspondence.tsv", encoding="utf-8") as f:
+scripts/scraped_pages.py	6	unclear	are different. It turns them into things that are usable and would be merged into the synoptic
+scripts/verify-spine-candidates.py	24	unclear	* the relative appears in `reports/synoptic-correspondence.tsv` against our relative.
+scripts/verify-spine-candidates.py	85	unclear	syn = R / "synoptic-correspondence.tsv"
+scripts/walk-structural-merge.py	3	unclear	Emma, 2026-08-15: *"For the synoptic tree, we're supposed to be specifically
+scripts/walk-structural-merge.py	6	unclear	That is a critical part of building up this synoptic tree."*
+scripts/zipper-join.py	15	unclear	*"For the synoptic tree, we're supposed to be specifically going up the parental lines and stuff
+scripts/zipper-join.py	62	unclear	* **It emits no edit.** The output is a correspondence for the synoptic tree.
+src/genimerge/frontier.py	116	unclear	synoptic tree, and what makes it synoptic is that the graph is connected —
+src/genimerge/sources.py	163	geni	the synoptic tree"*. The merge already gives a conflict to the later source — but
+tests/test_chain_gaps.py	3	geni	Emma, 2026-08-17, on the merge I ran unasked: *"rebuilding the synoptic tree right now
+tests/test_join_batch.py	1	unclear	"""`scripts/build-join-batch.py` — the thing that consumes the synoptic correspondence.
+tests/test_sources.py	128	unclear	synoptic tree"*.
+tests/test_synoptic_conflicts.py	1	full	"""`reports/synoptic-conflicts.tsv` must attribute each candidate QID separately.
+tests/test_synoptic_conflicts.py	23	unclear	CONFLICTS = REPO / "reports" / "synoptic-conflicts.tsv"
+todo.md	101	unclear	**Phase 3 — synoptic density, then targeted breadth (after phase 2).** With ~50
+todo.md	311	unclear	re-runs is the offline chain: `scripts/build-synoptic-correspondence.py` and the
+todo.md	646	unclear	antiquity material she wants to **include in the synoptic tree**, and she asked
