@@ -19855,3 +19855,28 @@ will ever produce. Queued rather than resolved here; the wrong fix is to filter 
 `tests/test_daily_batch_order.py` pins the ordering, the `--refetch` coupling and the trim. The
 ordering guard was **seen to fail** — moving the call after the generators fails it with
 `assert 2 < 0` — because a guard that has only been seen to pass is not known to guard.
+
+## 2026-08-30 — `Q141198548`: no batch in this repo ever created her
+
+Her queue item was *"I am concerned over why she was created on wikidata at all."*
+
+**This repo did not create her.** Checked every commit of `reports/wikidata-garborg-day.qs`
+on 2026-08-25 — ten of them — and every other file under `reports/` at those commits: her Geni
+id `6000000186285688269` appears in the derived censuses and in nothing that emits a `CREATE`.
+The ledger has her from 2026-08-25 because that day's refresh found the item already live under
+her account.
+
+**What this repo did do is offer to create her a second time**, the next day. `3c9cfb16`
+(2026-08-26) carries a full `CREATE` block for her — `mother of Taebi Buyeo` in ten languages,
+`P31`, `P21`, `P2600`, and both directions of the spouse and child links — and its own commit
+title records the catch: *"it nearly created her a second item"*.
+
+**Why the ring reached 7th-century Baekje at all is already written down** — `CLAUDE.md`
+§ *The seed set is the WIKIDATA SUBGRAPH from Arne*: the ring grew one hop from **every ledger
+person**, and the ledger is every item Emma has ever made, her Korean and Izumo work included.
+`697fcd70` (2026-08-27) replaced that with the subgraph walk from `Q11959067`, and under it she
+is not a seed, because nothing on Wikidata connects Buyeo Deokjang to Arne Garborg.
+
+Who she *is* was settled on 2026-08-29 in `e1e1a928` and `reports/wikidata-q141198548-nn.qs`:
+Deokjang's wife, three shared children, no parents, carrying his name because she has none of
+her own. Nothing here revisits that.

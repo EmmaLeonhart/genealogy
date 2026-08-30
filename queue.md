@@ -1922,10 +1922,6 @@ none.
 or near-identical to their spouse's *and* have no parents of their own? Report the number; do not
 fold it into the NN detection until she has seen it.
 
-## Why was `Q141198548` created on Wikidata at all?
-
-**Emma, 2026-08-29:** *"I am concerned over why she was created on wikidata at all."* Analysis only.
-
 ## ABSOLUTE PREREQUISITE — no individual is created without their CJK labels
 
 **Emma, 2026-08-29:** *"There should be an absolute prerequisite that nothing is created until you
