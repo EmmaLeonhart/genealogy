@@ -19406,3 +19406,22 @@ thing had replaced the token with a phrase and produced `EMMA_QID = "her own ite
 QIDs; that was reverted too.
 
 289 passed, 32 skipped.
+
+## 2026-08-29 — the Borsheim paths item closes on her ruling
+
+**Emma, 2026-08-29:** *"imo do not wire it in, it will come in on its own. Arne -> Signe is going
+fine right?"*
+
+So neither Borsheim path joins `SPINE_PATHS`, and the item is deleted rather than left open. Her
+reasoning is borne out by the measurement: **6 of the Caroline path's 15 missing people are already
+on `arne-to-signe-no-borsheim.tsv`**, which is in `SPINE_PATHS` and advances every run, so Caroline
+Signe Borsheim is reached without the file being wired in at all.
+
+**Arne → Signe checked, since she asked:** 8 of 15 held, contiguous from Arne down to step 8
+Kristine Sørensdatter Gjesdal `Q141217391`; step 9 Søren Sørenson Gjesdal is in the batch on disk.
+It is the only unfinished spine that **can** complete -- the other two terminate at Emma, and while
+her Geni id is no longer excluded, they need her created before they close.
+
+`randolph-paulus-borsheim.tsv` stays unwalked: 13 missing, zero overlap with the Signe spine.
+5 of its 18 people hold items, and its short route is only 5 people from Ane Oline `Q141152523`
+to Randolph. Recorded, not acted on.
