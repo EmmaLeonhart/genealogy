@@ -65,8 +65,29 @@ SEP = re.compile(r"[·・･=＝\-–—\s.]+")
 #: Below this many attestations a rendering is one editor's choice, not a convention.
 MIN_COUNT = 2
 
-#: Chinese label languages, best first: the Simplified variants are what this project writes.
-ZH_LANGS = ("zh-hans", "zh-cn", "zh")
+#: A plain-`zh` attestation is the weaker source, so it needs more of them. See `hans_freq`.
+MIN_COUNT_FALLBACK = 4
+
+
+def IS_A_NAME(token):                                               # noqa: N802
+    """Is this token a NAME, rather than a particle the alignment should not learn from?
+
+    The first run learned `af` -> `ディ`: a Scandinavian nobiliary particle that lined up
+    against whatever sat in that position on the other side. `CLAUDE.md` § *A parenthesised
+    token in `SURN`/`_MARNM`* already rules that particles belong in the `mul` label and are
+    never name items, so they have no business in a rendering table either.
+
+    A lowercase first letter is the test, because that is what every one of them has -- `af`,
+    `de`, `von`, `van`, `la`, `ap` -- and no name token in this corpus does.
+    """
+    return bool(token) and token[0].isupper()
+
+#: **Simplified and plain `zh` are counted SEPARATELY, and Simplified wins.** Collapsing them
+#: put `Absalon` in as `阿布薩隆` -- Traditional `薩` -- because the only item carrying that name
+#: labels it in Traditional under the bare `zh` code. This project writes Simplified, so a
+#: `zh-hans`/`zh-cn` attestation outranks a `zh` one however many items carry the latter.
+ZH_HANS_LANGS = ("zh-hans", "zh-cn", "zh-sg", "zh-my")
+ZH_ANY_LANGS = ("zh",)
 
 
 def extract():
@@ -74,7 +95,7 @@ def extract():
     PAIRS.parent.mkdir(parents=True, exist_ok=True)
     n = 0
     with PAIRS.open("w", encoding="utf-8", newline="") as out:
-        out.write("qid\tlatin\tja\tzh\n")
+        out.write("qid\tlatin\tja\tzh_hans\tzh\n")
         for path in sorted(glob.glob(str(ROOT / "wikidata" / "items" / "items-*.jsonl.gz"))):
             with gzip.open(path, "rt", encoding="utf-8") as fh:
                 for line in fh:
@@ -91,14 +112,18 @@ def extract():
                     if not latin:
                         continue
                     ja = (labels.get("ja") or {}).get("value", "")
-                    zh = ""
-                    for lang in ZH_LANGS:
-                        zh = (labels.get(lang) or {}).get("value", "")
-                        if zh:
+                    hans = plain = ""
+                    for lang in ZH_HANS_LANGS:
+                        hans = (labels.get(lang) or {}).get("value", "")
+                        if hans:
                             break
-                    if not (ja or zh):
+                    for lang in ZH_ANY_LANGS:
+                        plain = (labels.get(lang) or {}).get("value", "")
+                        if plain:
+                            break
+                    if not (ja or hans or plain):
                         continue
-                    out.write(f"{item['id']}\t{latin}\t{ja}\t{zh}\n")
+                    out.write(f"{item['id']}\t{latin}\t{ja}\t{hans}\t{plain}\n")
                     n += 1
     print(f"{n:,} aligned label triples -> {PAIRS.relative_to(ROOT)}")
     return n
@@ -108,17 +133,19 @@ def main():
     if not PAIRS.exists():
         extract()
 
-    ja_map, zh_map = defaultdict(Counter), defaultdict(Counter)
+    ja_map = defaultdict(Counter)
+    hans_map, plain_map = defaultdict(Counter), defaultdict(Counter)
     pairs = aligned = 0
     with PAIRS.open(encoding="utf-8") as fh:
         next(fh)
         for line in fh:
             parts = line.rstrip("\n").split("\t")
-            if len(parts) != 4:
+            if len(parts) != 5:
                 continue
             pairs += 1
             latin = [t for t in SEP.split(parts[1]) if t]
-            for target, table in ((parts[2], ja_map), (parts[3], zh_map)):
+            for target, table in ((parts[2], ja_map), (parts[3], hans_map),
+                                  (parts[4], plain_map)):
                 if not target:
                     continue
                 cjk = [t for t in SEP.split(target) if t]
@@ -127,13 +154,47 @@ def main():
                 if len(cjk) == len(latin):
                     aligned += 1
                     for a, b in zip(latin, cjk):
+                        if not IS_A_NAME(a):
+                            continue
                         table[a][b] += 1
 
-    tokens = sorted(set(ja_map) | set(zh_map))
+    # **How often is each character used in Simplified labels?** Falling back to a plain `zh`
+    # label brought Traditional forms in -- `Absalon` as `阿布薩隆`, `薩` where this project
+    # writes `萨`.
+    #
+    # **A character INVENTORY does not work, and the measurement says so:** `薩` and `爾` both
+    # appear inside `zh-hans`/`zh-cn` labels, because editors file Traditional text under a
+    # Simplified code. 5,466 distinct characters over 105,848 such items, and the set is
+    # contaminated. So membership proves nothing and frequency has to do the work.
+    #
+    # Two guards, both from the data and neither from a character list I would be typing from
+    # memory -- which is the thing this whole file exists to stop:
+    #
+    #   * a plain-`zh` fallback must clear `MIN_COUNT_FALLBACK`, a higher bar than a `zh-hans`
+    #     attestation, because it is the weaker source;
+    #   * among competing candidates, the one whose characters are commonest in Simplified
+    #     labels wins, which prefers `萨` (frequent) over `薩` (rare) without either being named.
+    hans_freq = Counter()
+    for counter in hans_map.values():
+        for value, count in counter.items():
+            for ch in value:
+                hans_freq[ch] += count
+    print(f"{len(hans_freq):,} characters seen in zh-hans/zh-cn labels")
+
+    tokens = sorted(set(ja_map) | set(hans_map) | set(plain_map))
     rows = []
     for token in tokens:
         ja = ja_map[token].most_common(1)
-        zh = zh_map[token].most_common(1)
+        # Simplified first, whatever the counts: see ZH_HANS_LANGS.
+        zh = hans_map[token].most_common(1)
+        if not zh or zh[0][1] < MIN_COUNT:
+            # See `hans_freq`: the weaker source needs more attestations, and among candidates
+            # the one written in the commoner characters wins.
+            candidates = [(v, c) for v, c in plain_map[token].most_common()
+                          if c >= MIN_COUNT_FALLBACK]
+            candidates.sort(key=lambda vc: (-vc[1],
+                                            -min((hans_freq[ch] for ch in vc[0]), default=0)))
+            zh = candidates[:1]
         ja_v, ja_c = (ja[0] if ja else ("", 0))
         zh_v, zh_c = (zh[0] if zh else ("", 0))
         if ja_c < MIN_COUNT:

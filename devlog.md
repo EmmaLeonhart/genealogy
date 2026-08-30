@@ -20127,3 +20127,43 @@ ja 38.8% -> 46%.
 
 `Johan` is now `约汉` where the conventional form is `约翰`; `翰` appears only in that fixed
 rendering and is not a rule this engine can carry. Not touched.
+
+## 2026-08-30 — stop guessing: 20,302 name renderings taken from what Wikidata actually writes
+
+Emma: *"Are you not using an actual library for this, but just kind of guessing at everything?
+… This is a solved problem. You understand that, right? There isn't really an excuse."*
+
+She is right and there is no defence. `translit_no.py` is a hand-rolled letter walk over tables
+somebody typed in from memory. `ROWS["j"]`'s `o` cell held `永` — the *yong* syllable — because a
+plausible character was put in a cell. `Alexander` came out `アレクスアンデル` / `阿莱克斯安德尔`.
+
+**The data was already on this disk.** 323,685 items in the local store carry a Latin label and
+a Japanese or Chinese one. Aligned token by token — and only where both sides have the same
+number of tokens, so `Bud Greenspan` / `B. 格林斯潘` is dropped rather than guessed at — that is
+**308,327 aligned labels** and an attested vocabulary of **20,302 tokens** with counts.
+
+`Alexander` is `アレクサンダー` (245 items) and `亚历山大` (114). `Johan` is `约翰` (29), not our
+`约汉`. **It also confirms Emma's Minnie correction independently** — `ミニー` 14×, `米妮` — which
+is a check on the corpus as much as on her.
+
+**Precedence is now: her corrections, then the attested rendering, then the rule engine.**
+`apply-attested-renderings.py` corrected **713 rows**, left 256 that already agreed, kept her one
+hand row, and left 3,047 tokens the corpus has never written to the engine.
+
+**Two defects were caught in the dry run and fixed before anything was written**, both of which
+would have been invisible in the totals:
+
+* `af` → `ディ`. A Scandinavian particle aligned against whatever sat opposite it. Tokens with a
+  lowercase first letter are no longer learned from — `CLAUDE.md` already rules that particles
+  belong in the `mul` label and are never name items.
+* `Absalon` → `阿布薩隆`, Traditional `薩`. **A character inventory does not fix this and the
+  measurement says why:** `薩` and `爾` both appear inside `zh-hans` labels, because editors file
+  Traditional text under a Simplified code — 5,466 distinct characters over 105,848 such items,
+  contaminated. So `zh-hans` outranks plain `zh` outright, a plain-`zh` fallback needs four
+  attestations rather than two, and candidates are ordered by how common their characters are in
+  Simplified labels. `Absalon` now falls through to the engine, which gives the correct
+  `阿布萨隆`. The threshold costs ~4,600 weaker tokens, which is the trade taken.
+
+**And the honest measure of the engine got worse, correctly.** Scored against the 978 rows it did
+not write — now including everything the corpus attests — it agrees **26% (ja) and 43% (zh)**. It
+is wrong about roughly three-quarters of the names Wikidata has actually written down.
