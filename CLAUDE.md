@@ -1113,6 +1113,47 @@ two counts.
 do not exist yet, so a pattern broad enough to swallow the *next* batch fails now
 rather than after it arrives.
 
+### NO descriptions and NO edit summaries. Categorical, and it is about being caught
+
+**Emma, 2026-08-30, twice:** *"It's a hard rule that we never create items with descriptions."*
+Then, widening it: *"edit summaries and descriptions are the easiest ways to get caught we
+categorically never use them."*
+
+**Both, always, everywhere.** Not a default to override, not a per-batch decision:
+
+* **No `D<lang>` line in any batch**, in any language, on a creation or on an existing item.
+* **No edit summary.** No `summary=` on an API call, no custom summary in QuickStatements, no
+  free text attached to an edit anywhere. Checked 2026-08-30: nothing in `scripts/`,
+  `src/genimerge/` or the workflows sets one, and nothing may start.
+
+**Her reason is detection, and it is the same concern as § *Her own duplicates are DELIBERATE*:**
+an edit that carries our own prose reads as automated to a reviewer or a bot, where the same
+edit without it reads as ordinary. A `#` comment inside a `.qs` file is not an edit summary --
+it never reaches Wikidata -- and those stay.
+
+A `CREATE` block carries labels and statements. It carries **no `D<lang>` line**, in any
+language, ever. `queue.md` § *Wikidata person descriptions* is her longer statement of the
+order: *"a person always gets labeled before they have a description added to them… We create
+the individual with their multi-language label, their English language label, their Japanese
+… but no descriptions are added to any of the people."*
+
+**The reason is Wikidata's uniqueness rule, and it cuts both ways.** A label and description
+pair must be unique per language, so:
+
+* an existing item with a description **and no label** cannot be given the label if that pair is
+  taken -- her words, *"by far the worst trap"*;
+* and two items sharing a label with **no** description are also the same pair, so the second
+  `CREATE` is refused.
+
+**Measured 2026-08-30 on a live batch: 3 of 22 creations would have been refused** --
+`Anna Martens`, `Per Nilsson`, and a bare `NN`, each colliding with existing undescribed items.
+`scripts/check-label-collisions.py` is the pre-flight check; it reads Wikidata and writes
+nothing.
+
+**So a collision is resolved by HOLDING the creation, never by adding a description.** The
+carry-forward already exists for exactly this shape of "not today", and using it keeps the hard
+rule intact.
+
 ### `P3373` sibling is capped at 10 a day. It reads as spam
 
 **Emma, 2026-08-25:** *"siblin relationships are too numerous and imo come off as spammy. We limit
