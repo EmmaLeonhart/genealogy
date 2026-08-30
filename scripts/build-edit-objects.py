@@ -25,6 +25,7 @@ from __future__ import annotations
 
 import csv
 import json
+import re
 import sys
 from collections import Counter
 from pathlib import Path
@@ -70,7 +71,16 @@ def label_slots(lab: dict) -> dict:
     out = {}
     en = (lab.get("label_en") or "").strip()
     if en and not is_marker(en):
-        out["en"] = en
+        # **`en` only for a name written in Latin script.** The marker guard above was
+        # added here; the SCRIPT guard never was, and `build-garborg-day.py` has had it
+        # all along -- the disagreement this module's own docstring warns about, that
+        # "a predicate copied per caller is a predicate that will disagree with itself".
+        # `derive-labels.py` sets `label_en` to the CJK string for 13,872 people, so
+        # without this a Han name goes into the ENGLISH label. `Help:Default values for
+        # labels and aliases` says a name not in Latin script is not a default label;
+        # `mul` is the language-neutral slot and still takes it.
+        if re.search(r"[A-Za-z]", en):
+            out["en"] = en
         out["mul"] = en
     cjk = (lab.get("cjk_names") or "").split(" | ")[0].strip()
     if cjk and not is_marker(cjk):

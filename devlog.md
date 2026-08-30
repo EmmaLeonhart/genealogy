@@ -19235,3 +19235,29 @@ load, 289 passed / 32 skipped.
 `6000000087535357291` is still in `NEVER_TOUCH_GENI`, and that is what the creation refusal keys
 on -- so the batch still will not mint an item for her. The QID replace was the whole of what she
 asked for here; removing the Geni id is a separate change and is hers to call.
+
+## 2026-08-29 — "no Latin label", not "no label": 13,872 people were invisible
+
+Working the *English names ON GENI* queue item, whose subject in Emma's words is *"people whose
+Geni name exists only in Han/kana/hangul and who therefore have no English form anywhere."*
+
+**There are two such groups and only one was being served.**
+
+- **36,625** with a CJK name and an **empty** `label_en`. `build-cjk-romanisation.py` finds these
+  and has romanised 12,923 of them, every reading read off a Wikidata name item.
+- **13,872** whose `label_en` is set to **the CJK string itself**, by `derive-labels.py`. The
+  romanisation script tested `not (label_en or "").strip()` -- an emptiness test -- so every one
+  of them was skipped. A label made of Han characters is not an English form, and must not count
+  as one. The test is now for a Latin character.
+
+**The same fact left a latent defect in a second script.** `build-edit-objects.py` guards its
+label emission against *markers* and never got the *script* guard `build-garborg-day.py` has
+always had, so for those 13,872 it would put Han characters into the **English** label.
+Measured: **0** such edits in `out/wikidata/edits.json` today, because that population is not
+reaching it -- luck rather than design. This is exactly the failure that module's own docstring
+names: *"a predicate copied per caller is a predicate that will disagree with itself."* `mul`
+still takes the CJK form, which is the language-neutral slot and the right home for it.
+
+The **Geni-writing** half of the queue item stays parked -- that is the part she deferred.
+
+151 passed, 4 skipped over the tests covering both scripts.

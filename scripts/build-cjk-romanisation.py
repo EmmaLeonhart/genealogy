@@ -221,7 +221,14 @@ def main() -> int:
             if not cjk:
                 continue
             scripts[r["geni_id"]] = cjk
-            if not (r.get("label_en") or "").strip() and HAN.search(cjk):
+            # **"No Latin label", not "no label".** `derive-labels.py` sets `label_en` to
+            # the CJK string itself for **13,872** people, so an emptiness test skipped every
+            # one of them -- the exact population this campaign is for. Emma's framing of it,
+            # 2026-08-29: *"people whose Geni name exists only in Han/kana/hangul and who
+            # therefore have no English form anywhere."* A label that is Han characters is not
+            # an English form, so it must not count as one.
+            en_ = (r.get("label_en") or "").strip()
+            if not re.search(r"[A-Za-z]", en_) and HAN.search(cjk):
                 need[r["geni_id"]] = cjk
     print(f"people with a CJK name and no Latin label: {len(need):,}")
 
