@@ -69,32 +69,6 @@ pinned by `tests/test_garborg_day_batch.py::test_a_marker_beside_a_real_name_sti
 
 
 
-- Screenshot she was replying to:
-`C:\Users\Emma\.claude\uploads\dbec586f-7705-4f0e-8652-03df7c6b73e5\16d7e7ae-image.jpg`
-
-> Okay, I think I actually understand what's going on with these hand-asserted pairs. I think I remember what's going on with them, but the interesting thing I'm noticing is that, aside from the one for me, all of these are Asian people. I think I know what the actual explanation for this is, and it's a bit of a weird one.
->
-> What it is specifically here is that these identities were actually significant identities that I put a lot of effort into creating identification with. What I was doing was so for a completely different algorithmic purpose. This was related to the synoptic tree. For all of these individuals, it was related to the synoptic tree, and it was put in pretty simply: I should not be listed in this hand-crafted thing at all.
->
-> As for the other people in this hand-crafted thing, I shouldn't be there at all. My QID being recorded is actually kind of a problem, or the identification of me and this ID thing is actually a bit of a problem. Removing it is actually pretty impractical. Me being included in it is actually a significant problem because including me in this just adds noise and makes it so that the earlier algorithm wanted to start stuff coming from me, which is not something that is desired.
->
-> As for the other individual, you just straightened me out of this, but for these other individuals, it's also a bit outdated because I actually have an updated way of doing these things. Go on to Jenny using the browser extension thing, and essentially, in all their BIOS, add the link to the wiki data item. Doing that establishes the identity resolution in a way that does not harm our algorithm. You do that. Now, however, this does add a bit of a complication because now there is a newer version on Jenny that we are needing to do with these.
->
-> After we've added them, go on each of them immediately, except for me. Go on each of them immediately and paste the Wikidata link into their bios, and then save using the browser. On each one of them, you then run an export. You run an export on them. You run a forest export, either on the individual if allowed or based off of a seed, based off of producing a seed individual. Based off of producing a seed individual in the way that we've been doing earlier, assuming that the individual ends up coming into the export, it's considered a success.
->
-> We are putting these into a new directory of the Synoptic tree, which is the overwrite thing. As I understand the Synoptic tree building algorithm, it first joins all of the trees regularly, but then it overwrites them with the merge with the post-merge thing. The overwrite thing is really a post-merge thing, and we are keeping that in mind here, obviously, because this is important. If one of these IDs redirects to another thing, you just treat that as being the thing.
->
-> Essentially, by having this new overwrite Jenny export for these individuals, you have to do it in the step of changing all their bios first and then doing all the exports because I want all the bios in already. I'm going to guess a lot of these people have the link in already. Although I'm going to say, for safety, we're still going to do the forest exports on these people, I want to queue this task up for 3am because of the fact that there's other stuff to deal with.
-
-The nine pairs the message is about, from `entity_resolution.md`:
-`6000000001835522164`→`Q11596350` Wakatakehiko · `6000000001844033355`→`Q11078587` Harima no Inabi
-no Ōiratsume · `6000000001902786893`→`Q11443857` Futohime Mononobe ·
-`6000000002039751362`→`Q24890131` Ikofutsu Mononobe · `6000000087535357291`→`Q232803` **Emma
-herself, the one to remove** · `6000000186285688253`→`Q19657284` Buyeo Deokjang ·
-`6000000186285688286`→`Q12598947` Taebi Buyeo · `6000000227335224861`→`Q135579480` Yasutaka
-Kitajima · `6000000227335393824`→`Q135579474` Tokitaka Kitajima
-
----
 
 - Screenshot she was replying to:
 `C:\Users\Emma\.claude\uploads\dbec586f-7705-4f0e-8652-03df7c6b73e5\160fbcc5-image.jpg`
