@@ -19440,3 +19440,40 @@ dead, it just stops being the first thing every work tick looks at and skips.
 
 The label half stays where it is and is not parked; the 45 blocking transliteration tokens measured
 earlier today are the live piece of it.
+
+## 2026-08-29 — the saved pages and the paths become GEDCOM
+
+**Emma:** *"convert these things into GEDCOM files that would go into a special GEDCOM directory...
+it builds from the saved pages, both the paths and the saved individuals proper, so that it will
+save both the paths and the saved pages because they are different."*
+
+`scripts/scraped_pages.py` (the page parser) and `scripts/build-scraped-gedcom.py` (the converter):
+
+| source | files | people | families | **people not already in the tree** |
+| --- | ---: | ---: | ---: | ---: |
+| `geni-scraping/*.html` | 1,555 read, 0 unreadable | 10,179 | 4,759 | **1,440** |
+| `paths/*.tsv` | 698 | 11,481 | 10,329 | **3,841** |
+
+**Scoping was the whole difficulty, exactly as `genimerge.genipage` warns.** A saved page carries
+hovercards for dozens of other people, each with its own *"Wife of ... Mother of ..."* prose. Two
+attempts read edges from the document at large and both were wrong: the first gave Rebecka Berg's
+page Brita Henriksdotter Uddman's family, the second handed the same three edges to a third person
+as well. The answer is `tr#family_handprint`, which is the subject's own block; inside it the
+subject is **the person whose page it is**, never an anchor.
+
+**Parents are emitted father-first, and that is MEASURED.** GEDCOM needs `HUSB`/`WIFE` and the
+pages do not state sex. Over 120 pages, of the two-parent blocks where both sexes are known from
+`reports/derived-facts.csv`, **100 resolve as (M, F) and none as (F, M)**; the other 16 have an
+unknown sex on one side. So the ordering is evidence rather than a convention assumed.
+
+**Names stay whole strings**, per her own warning that splitting on spacing *"would work in most
+cases, but not all"*. No `GIVN`/`SURN` is invented.
+
+**Siblings are dropped** from both sources: without the shared parents there is no `FAM` to express
+them in, and minting one would assert parents we do not have.
+
+**Output is `gedcom/scraped/`, NOT `exports/`, and nothing merges it yet.** `exports/` is read
+recursively, so writing there changes every merge silently. The open question is **family xrefs**:
+a Geni `FAM` xref is a Geni id and these families have none, so the file uses `@FS1@`, `@FS2@`…
+Whether that is right -- and whether it duplicates families the corpus already holds for the same
+couples -- wants deciding before this is wired into the merge.
