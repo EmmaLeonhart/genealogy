@@ -19986,3 +19986,29 @@ is unchanged at 86% ja / 75% zh, which is the point — both sides moved togethe
 
 `tests/test_join_sanity.py` pins her correction in both positions and fails if the doubling
 returns to any row.
+
+## 2026-08-30 — 2,785 people carry their spouse's name and have no parents of their own
+
+Her item, queued after `Q141198548` turned out to be Buyeo Deokjang's wife wearing his name:
+count the general population, report the number, propose nothing.
+
+`scripts/count-borrowed-spouse-names.py`, over `derived-family.csv` and `derived-labels.csv`
+(1,329,328 labelled people). Three bands, reported separately because they are different claims:
+
+| band | no parents | has parents | total |
+| --- | ---: | ---: | ---: |
+| **identical** — same label after case-fold | **2,387** | 5,637 | 8,024 |
+| **surname only** — whole label is the trailing part of the spouse's | **398** | 287 | 685 |
+| shares a token — *not* counted as borrowed | 43,881 | 95,196 | 139,077 |
+
+**The population Emma named — name taken from the spouse AND no parents recorded: 2,785.**
+
+The third band is reported for scale and deliberately excluded: two people sharing a given name
+is a coincidence, and counting it would turn 2,785 into 46,666 by including every couple with a
+name in common. `reports/borrowed-spouse-names.csv` has all 8,709 rows of the two real bands.
+
+No fuzzy matching — a borrowed name is a copied string, not a similar one; case folds and runs
+of whitespace collapse, nothing else. Multi-value cells split on ` | ` per `CLAUDE.md`
+§ *Our side could never have two children*.
+
+Nothing is proposed and `labels.py` is untouched, per the item.

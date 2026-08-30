@@ -1909,20 +1909,6 @@ recorded surnames. `NN Gjøa` would be her alias under the current rule and is n
 
 Analysis first: count the NN people carrying both a `SURN` and a different `_MARNM`.
 
-## Count the spouses whose only name is their partner's name
-
-**Emma, 2026-08-29**, after `Q141198548` turned out to be Deokjang's wife carrying his name rather
-than a duplicate of him: queue the general detection.
-
-**The shape:** a person whose name equals their spouse's, who has **no parents recorded**, and who
-exists on Geni only to hold the marriage. They are the `NN` population wearing a borrowed name, and
-nothing currently detects them — `_carries_marker` looks for marker words, and this name contains
-none.
-
-**Count them before proposing any treatment.** How many people in the corpus carry a name identical
-or near-identical to their spouse's *and* have no parents of their own? Report the number; do not
-fold it into the NN detection until she has seen it.
-
 ## ABSOLUTE PREREQUISITE — no individual is created without their CJK labels
 
 **Emma, 2026-08-29:** *"There should be an absolute prerequisite that nothing is created until you
