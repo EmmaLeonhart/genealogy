@@ -19425,3 +19425,18 @@ her Geni id is no longer excluded, they need her created before they close.
 `randolph-paulus-borsheim.tsv` stays unwalked: 13 missing, zero overlap with the Signe spine.
 5 of its 18 people hold items, and its short route is only 5 people from Ane Oline `Q141152523`
 to Randolph. Recorded, not acted on.
+
+## 2026-08-29 — the Geni-name-writing item goes to the tail
+
+She asked what *"half parked"* meant, which was my phrase and a poor one. The item is about
+typing English names **onto Geni profiles**, and it splits: the label rule (our `mul`, the CJK-only
+people) is live work already in progress, while writing those names onto Geni is the part her
+*"we just do not add a label"* deferred.
+
+Raised with her because `CLAUDE.md` carries a later ruling that might kill it outright --
+*"we don't actually need to edit your geni at all for this. Editing geni is actually a step that
+makes stuff much more complicated."* Her answer: **keep it but move it to the tail.** So it is not
+dead, it just stops being the first thing every work tick looks at and skips.
+
+The label half stays where it is and is not parked; the 45 blocking transliteration tokens measured
+earlier today are the live piece of it.

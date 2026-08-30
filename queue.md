@@ -40,28 +40,6 @@ ones above them: `THE EDIT ALGORITHM`, `THE DAILY ALGORITHM`, `THE TAIL ALGORITH
 
 These are supposed to be manually added to the queue and worked on, do no just paraphrase during the rebase keep this part entirely intact. We are approaching usage limit for now.
 
-### English names ON GENI — the deferred half, and it is narrow
-
-**Only the Geni-editing part was deferred**, not the English-label rule. Emma, 2026-08-29,
-correcting my reading of her *"we just do not add a label"*: that sentence parked writing names
-**onto Geni**, and nothing else.
-
-**What the value is, when it happens:** *"the entire thing is whatever our pipeline puts as the
-multilingual label on Wikidata. That is what our pipeline should be putting as the name, as in
-Geni."* So the Geni name comes from our `mul`, not invented per-person and not taken from a
-Wikipedia title.
-
-**Her actual concern is CJK-only labels** — people whose Geni name exists only in Han/kana/hangul
-and who therefore have no English form anywhere. Those are the ones this campaign is for.
-
-**Already done and not part of this:** the `P1810` qualifier. It carries **what Geni literally
-says** — `<private> Garborg`, `Private`, `Unn (Bitten) Garborg` — while the label beside it is the
-normalised `NN Garborg`. Her rule: *"we do it with whatever's on Geni, not whatever is all in
-Wikidata. This is a qualifier thing."*
-
-Her closing note on how I handled this, kept because it is the correction: *"This is a relatively
-well-defined task that you decided to transform into something crazy."*
-
 ## The queued tasks, IN HER EXACT WORDS — the times are ORDERING, not schedule
 
 Emma, 2026-08-27: *"just look over the chatlog and remake all of them as queue items over this
@@ -2208,3 +2186,31 @@ not to write the override wholesale.
 
 Depends on `reports/geni-stale-duplicates.tsv` (13 strong, 3 medium, 13 weak) and
 `reports/geni-merges-performed.tsv` (180 survivors from her activity feed).
+
+### English names ON GENI — MOVED TO THE TAIL, 2026-08-29, her call
+
+**Emma, 2026-08-29**, asked whether her *"we don't actually need to edit your geni at all"* ruling kills this: *keep it but move it to the tail.* Still wanted, but it should stop being the first thing every work tick looks at and skips.
+
+**The label half is NOT here and is not parked** — our `mul` and the CJK-only people are live work; see the analysis of 2026-08-29 (45 transliteration tokens block every remaining `ja`/`zh` label). What is at the tail is only the part that writes names **onto Geni**.
+
+### English names ON GENI — the deferred half, and it is narrow
+
+**Only the Geni-editing part was deferred**, not the English-label rule. Emma, 2026-08-29,
+correcting my reading of her *"we just do not add a label"*: that sentence parked writing names
+**onto Geni**, and nothing else.
+
+**What the value is, when it happens:** *"the entire thing is whatever our pipeline puts as the
+multilingual label on Wikidata. That is what our pipeline should be putting as the name, as in
+Geni."* So the Geni name comes from our `mul`, not invented per-person and not taken from a
+Wikipedia title.
+
+**Her actual concern is CJK-only labels** — people whose Geni name exists only in Han/kana/hangul
+and who therefore have no English form anywhere. Those are the ones this campaign is for.
+
+**Already done and not part of this:** the `P1810` qualifier. It carries **what Geni literally
+says** — `<private> Garborg`, `Private`, `Unn (Bitten) Garborg` — while the label beside it is the
+normalised `NN Garborg`. Her rule: *"we do it with whatever's on Geni, not whatever is all in
+Wikidata. This is a qualifier thing."*
+
+Her closing note on how I handled this, kept because it is the correction: *"This is a relatively
+well-defined task that you decided to transform into something crazy."*
