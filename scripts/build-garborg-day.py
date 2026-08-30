@@ -1070,6 +1070,9 @@ def kluge_blocked_from_universe():
 #: The date the block above stops applying. After this, `wikidata_subgraph` ignores it.
 KLUGE_UNIVERSE_BLOCK_EXPIRES = datetime.date(2026, 10, 1)
 
+#: The clan labels do not go out before this date. See the gate at its use site.
+CLAN_BLOCK_GATE = datetime.date(2026, 10, 1)
+
 #: The relationship properties that make two Wikidata items neighbours in the subgraph.
 #: P22 father, P25 mother, P26 spouse, P40 child, P3373 sibling.
 SUBGRAPH_PROPS = ("P22", "P25", "P26", "P40", "P3373")
@@ -1247,46 +1250,23 @@ Q10411463\tP2600\t"6000000040951562251"
 #: pasted here as a literal. It is not read from the file at run time on purpose — the
 #: same reason the `P2600` block is a literal.
 CJK_CLAN_BLOCK = """
-# -------------------------------------------------------------------------
-# CJK CLAN LABELS -- hard-coded, appended to every batch, on purpose.
+# **15 of these people are NOT unnamed, and they are removed from this block.**
+# Emma, 2026-08-29: *"the entire idea of them having unknown names should not be part of the
+# pipeline at all if these names are remotely real, even if there are potentially errors."*
 #
-# Geni records these people as a marker, a place and a clan:
-#   GIVN 某 (unknown-name marker) / SURN 隴西狄道 (a PLACE) / _MARNM 李 (the clan).
-# 348 of 354 records have that shape and every _MARNM is one character, so the
-# married-name field holds the real surname and the surname field holds a place.
+# Measured by joining each item's P2600 to its Geni record. Three shapes, not one:
+#   162  BOTH say unknown -- Wikidata's `Li Mou` is the marker transliterated, since 李某 is
+#        literally "Li so-and-so". Calling these people unnamed is correct.
+#    11  BOTH have a real name. Geni carries the given name in front of the marker and the
+#        pipeline was reading the whole GIVN as a marker: `道古 某` -> Li Daogu, `鎮 某` ->
+#        Liu Zhen, `渠牟 某` -> Wei Qumou, `杲之 某` -> Cui Gaozhi.
+#     4  WIKIDATA has a name and Geni does not -- Wanshou, Guangde, Liu Yushi, Li Ru. Exactly
+#        the case she predicted: *"there might be instances where the Geni has an unknown name
+#        and the wikidata has a known name"*.
 #
-# Emma, 2026-08-28: "this formulation should be 'woman of the Li clan, from Longxi
-# Didao' as the English label and all languages have a similar thing but NN is the
-# right mul". Sex comes from the data -- 169 of these 177 are men.
-#
-# ONLY EMPTY LABEL SLOTS ARE WRITTEN. A label REPLACES, and her other ruling is that
-# Wikidata wins where it already knows a name: `en` is occupied on all 177 (Q10864996
-# reads "Wanshou") and `nl` on all 177, so neither is touched here. mul is empty on
-# all 177; es on 84 of them.
-#
-# ja and zh are absent on purpose -- the idiomatic Chinese form is a question about
-# Chinese rather than about this data.
-#
-# Repeats every run: setting a label to what it already says is a no-op. Delete when
-# the 177 are done.
-# -------------------------------------------------------------------------
-#   Q10864996 (李 of 隴西狄道): mul label = NN
-Q10864996	Lmul	"NN"
-#   Q10864996: set the nb label
-Q10864996	Lnb	"kvinne av Li-slekten, fra Longxi Didao"
-#   Q10864996: set the da label
-Q10864996	Lda	"kvinde af Li-slægten, fra Longxi Didao"
-#   Q10864996: set the sv label
-Q10864996	Lsv	"kvinna av Li-ätten, från Longxi Didao"
-#   Q10864996: set the de label
-Q10864996	Lde	"Frau des Klans Li, aus Longxi Didao"
-#   Q10864996: set the it label
-Q10864996	Lit	"donna del clan Li, da Longxi Didao"
-#   Q10864996: set the pt label
-Q10864996	Lpt	"mulher do clã Li, de Longxi Didao"
-#   Q10864996: set the ca label
-Q10864996	Lca	"dona del clan Li, de Longxi Didao"
-#   Q10881168 (李 of 隴西狄道): mul label = NN
+# Writing `Lmul "NN"` on the 15 would assert something one or both databases contradict, on an
+# item that already reads with a real name in English. Removed here rather than filtered at the
+# use site, so the block itself never carries a false claim.
 Q10881168	Lmul	"NN"
 #   Q10881168: set the nb label
 Q10881168	Lnb	"kvinne av Li-slekten, fra Longxi Didao"
@@ -1302,57 +1282,6 @@ Q10881168	Lit	"donna del clan Li, da Longxi Didao"
 Q10881168	Lpt	"mulher do clã Li, de Longxi Didao"
 #   Q10881168: set the ca label
 Q10881168	Lca	"dona del clan Li, de Longxi Didao"
-#   Q11064679 (李 of 隴西狄道): mul label = NN
-Q11064679	Lmul	"NN"
-#   Q11064679: set the nb label
-Q11064679	Lnb	"kvinne av Li-slekten, fra Longxi Didao"
-#   Q11064679: set the da label
-Q11064679	Lda	"kvinde af Li-slægten, fra Longxi Didao"
-#   Q11064679: set the sv label
-Q11064679	Lsv	"kvinna av Li-ätten, från Longxi Didao"
-#   Q11064679: set the de label
-Q11064679	Lde	"Frau des Klans Li, aus Longxi Didao"
-#   Q11064679: set the it label
-Q11064679	Lit	"donna del clan Li, da Longxi Didao"
-#   Q11064679: set the pt label
-Q11064679	Lpt	"mulher do clã Li, de Longxi Didao"
-#   Q11064679: set the ca label
-Q11064679	Lca	"dona del clan Li, de Longxi Didao"
-#   Q11098137 (李 of 河南府): mul label = NN
-Q11098137	Lmul	"NN"
-#   Q11098137: set the nb label
-Q11098137	Lnb	"mann av Li-slekten, fra Henan Prefecture"
-#   Q11098137: set the da label
-Q11098137	Lda	"mand af Li-slægten, fra Henan Prefecture"
-#   Q11098137: set the sv label
-Q11098137	Lsv	"man av Li-ätten, från Henan Prefecture"
-#   Q11098137: set the de label
-Q11098137	Lde	"Mann des Klans Li, aus Henan Prefecture"
-#   Q11098137: set the es label
-Q11098137	Les	"hombre del clan Li, de Henan Prefecture"
-#   Q11098137: set the it label
-Q11098137	Lit	"uomo del clan Li, da Henan Prefecture"
-#   Q11098137: set the pt label
-Q11098137	Lpt	"homem do clã Li, de Henan Prefecture"
-#   Q11098137: set the ca label
-Q11098137	Lca	"home del clan Li, de Henan Prefecture"
-#   Q11110062 (柳 of 河東解縣): mul label = NN
-Q11110062	Lmul	"NN"
-#   Q11110062: set the nb label
-Q11110062	Lnb	"mann av Liu-slekten, fra Hedong Jiexian"
-#   Q11110062: set the da label
-Q11110062	Lda	"mand af Liu-slægten, fra Hedong Jiexian"
-#   Q11110062: set the sv label
-Q11110062	Lsv	"man av Liu-ätten, från Hedong Jiexian"
-#   Q11110062: set the de label
-Q11110062	Lde	"Mann des Klans Liu, aus Hedong Jiexian"
-#   Q11110062: set the it label
-Q11110062	Lit	"uomo del clan Liu, da Hedong Jiexian"
-#   Q11110062: set the pt label
-Q11110062	Lpt	"homem do clã Liu, de Hedong Jiexian"
-#   Q11110062: set the ca label
-Q11110062	Lca	"home del clan Liu, de Hedong Jiexian"
-#   Q11180129 (李 of 隴西狄道): mul label = NN
 Q11180129	Lmul	"NN"
 #   Q11180129: set the nb label
 Q11180129	Lnb	"kvinne av Li-slekten, fra Longxi Didao"
@@ -1406,71 +1335,6 @@ Q16603665	Lit	"donna del clan Li, da Longxi Didao"
 Q16603665	Lpt	"mulher do clã Li, de Longxi Didao"
 #   Q16603665: set the ca label
 Q16603665	Lca	"dona del clan Li, de Longxi Didao"
-#   Q18908886 (韋 of 京兆杜陵): mul label = NN
-Q18908886	Lmul	"NN"
-#   Q18908886: set the nb label
-Q18908886	Lnb	"mann av Wei-slekten, fra Jingzhao Duling"
-#   Q18908886: set the da label
-Q18908886	Lda	"mand af Wei-slægten, fra Jingzhao Duling"
-#   Q18908886: set the sv label
-Q18908886	Lsv	"man av Wei-ätten, från Jingzhao Duling"
-#   Q18908886: set the de label
-Q18908886	Lde	"Mann des Klans Wei, aus Jingzhao Duling"
-#   Q18908886: set the it label
-Q18908886	Lit	"uomo del clan Wei, da Jingzhao Duling"
-#   Q18908886: set the pt label
-Q18908886	Lpt	"homem do clã Wei, de Jingzhao Duling"
-#   Q18908886: set the ca label
-Q18908886	Lca	"home del clan Wei, de Jingzhao Duling"
-#   Q45420125 (權 of 秦州清水): mul label = NN
-Q45420125	Lmul	"NN"
-#   Q45420125: set the nb label
-Q45420125	Lnb	"mann av Quan-slekten, fra Qinzhou Qingshui"
-#   Q45420125: set the da label
-Q45420125	Lda	"mand af Quan-slægten, fra Qinzhou Qingshui"
-#   Q45420125: set the sv label
-Q45420125	Lsv	"man av Quan-ätten, från Qinzhou Qingshui"
-#   Q45420125: set the de label
-Q45420125	Lde	"Mann des Klans Quan, aus Qinzhou Qingshui"
-#   Q45420125: set the it label
-Q45420125	Lit	"uomo del clan Quan, da Qinzhou Qingshui"
-#   Q45420125: set the pt label
-Q45420125	Lpt	"homem do clã Quan, de Qinzhou Qingshui"
-#   Q45420125: set the ca label
-Q45420125	Lca	"home del clan Quan, de Qinzhou Qingshui"
-#   Q45421489 (崔 of 深州安平): mul label = NN
-Q45421489	Lmul	"NN"
-#   Q45421489: set the nb label
-Q45421489	Lnb	"mann av Cui-slekten, fra Shenzhou Anping"
-#   Q45421489: set the da label
-Q45421489	Lda	"mand af Cui-slægten, fra Shenzhou Anping"
-#   Q45421489: set the sv label
-Q45421489	Lsv	"man av Cui-ätten, från Shenzhou Anping"
-#   Q45421489: set the de label
-Q45421489	Lde	"Mann des Klans Cui, aus Shenzhou Anping"
-#   Q45421489: set the it label
-Q45421489	Lit	"uomo del clan Cui, da Shenzhou Anping"
-#   Q45421489: set the pt label
-Q45421489	Lpt	"homem do clã Cui, de Shenzhou Anping"
-#   Q45421489: set the ca label
-Q45421489	Lca	"home del clan Cui, de Shenzhou Anping"
-#   Q45422231 (柳 of 河東解縣): mul label = NN
-Q45422231	Lmul	"NN"
-#   Q45422231: set the nb label
-Q45422231	Lnb	"mann av Liu-slekten, fra Hedong Jiexian"
-#   Q45422231: set the da label
-Q45422231	Lda	"mand af Liu-slægten, fra Hedong Jiexian"
-#   Q45422231: set the sv label
-Q45422231	Lsv	"man av Liu-ätten, från Hedong Jiexian"
-#   Q45422231: set the de label
-Q45422231	Lde	"Mann des Klans Liu, aus Hedong Jiexian"
-#   Q45422231: set the it label
-Q45422231	Lit	"uomo del clan Liu, da Hedong Jiexian"
-#   Q45422231: set the pt label
-Q45422231	Lpt	"homem do clã Liu, de Hedong Jiexian"
-#   Q45422231: set the ca label
-Q45422231	Lca	"home del clan Liu, de Hedong Jiexian"
-#   Q45429773 (韋 of 襄州穀城): mul label = NN
 Q45429773	Lmul	"NN"
 #   Q45429773: set the nb label
 Q45429773	Lnb	"mann av Wei-slekten, fra Xiangzhou Gucheng"
@@ -1518,23 +1382,6 @@ Q45449130	Lit	"uomo del clan Xiao, da Lanling"
 Q45449130	Lpt	"homem do clã Xiao, de Lanling"
 #   Q45449130: set the ca label
 Q45449130	Lca	"home del clan Xiao, de Lanling"
-#   Q45450462 (韋 of 京兆萬年): mul label = NN
-Q45450462	Lmul	"NN"
-#   Q45450462: set the nb label
-Q45450462	Lnb	"mann av Wei-slekten, fra Jingzhao Wannian"
-#   Q45450462: set the da label
-Q45450462	Lda	"mand af Wei-slægten, fra Jingzhao Wannian"
-#   Q45450462: set the sv label
-Q45450462	Lsv	"man av Wei-ätten, från Jingzhao Wannian"
-#   Q45450462: set the de label
-Q45450462	Lde	"Mann des Klans Wei, aus Jingzhao Wannian"
-#   Q45450462: set the it label
-Q45450462	Lit	"uomo del clan Wei, da Jingzhao Wannian"
-#   Q45450462: set the pt label
-Q45450462	Lpt	"homem do clã Wei, de Jingzhao Wannian"
-#   Q45450462: set the ca label
-Q45450462	Lca	"home del clan Wei, de Jingzhao Wannian"
-#   Q45450834 (蕭 of 蘭陵): mul label = NN
 Q45450834	Lmul	"NN"
 #   Q45450834: set the nb label
 Q45450834	Lnb	"mann av Xiao-slekten, fra Lanling"
@@ -1582,23 +1429,6 @@ Q45461450	Lit	"uomo del clan Cui, da Qinghe Dongwucheng"
 Q45461450	Lpt	"homem do clã Cui, de Qinghe Dongwucheng"
 #   Q45461450: set the ca label
 Q45461450	Lca	"home del clan Cui, de Qinghe Dongwucheng"
-#   Q45469083 (李 of 隴西狄道): mul label = NN
-Q45469083	Lmul	"NN"
-#   Q45469083: set the nb label
-Q45469083	Lnb	"mann av Li-slekten, fra Longxi Didao"
-#   Q45469083: set the da label
-Q45469083	Lda	"mand af Li-slægten, fra Longxi Didao"
-#   Q45469083: set the sv label
-Q45469083	Lsv	"man av Li-ätten, från Longxi Didao"
-#   Q45469083: set the de label
-Q45469083	Lde	"Mann des Klans Li, aus Longxi Didao"
-#   Q45469083: set the it label
-Q45469083	Lit	"uomo del clan Li, da Longxi Didao"
-#   Q45469083: set the pt label
-Q45469083	Lpt	"homem do clã Li, de Longxi Didao"
-#   Q45469083: set the ca label
-Q45469083	Lca	"home del clan Li, de Longxi Didao"
-#   Q45471981 (李 of 隴西狄道): mul label = NN
 Q45471981	Lmul	"NN"
 #   Q45471981: set the nb label
 Q45471981	Lnb	"mann av Li-slekten, fra Longxi Didao"
@@ -1688,23 +1518,6 @@ Q45481279	Lit	"uomo del clan Li, da Longxi Didao"
 Q45481279	Lpt	"homem do clã Li, de Longxi Didao"
 #   Q45481279: set the ca label
 Q45481279	Lca	"home del clan Li, de Longxi Didao"
-#   Q45484623 (崔 of 河南): mul label = NN
-Q45484623	Lmul	"NN"
-#   Q45484623: set the nb label
-Q45484623	Lnb	"mann av Cui-slekten, fra Henan"
-#   Q45484623: set the da label
-Q45484623	Lda	"mand af Cui-slægten, fra Henan"
-#   Q45484623: set the sv label
-Q45484623	Lsv	"man av Cui-ätten, från Henan"
-#   Q45484623: set the de label
-Q45484623	Lde	"Mann des Klans Cui, aus Henan"
-#   Q45484623: set the it label
-Q45484623	Lit	"uomo del clan Cui, da Henan"
-#   Q45484623: set the pt label
-Q45484623	Lpt	"homem do clã Cui, de Henan"
-#   Q45484623: set the ca label
-Q45484623	Lca	"home del clan Cui, de Henan"
-#   Q45484673 (陳 of 吳興長城): mul label = NN
 Q45484673	Lmul	"NN"
 #   Q45484673: set the nb label
 Q45484673	Lnb	"mann av Chen-slekten, fra Wuxing Changcheng"
@@ -1816,25 +1629,6 @@ Q45485382	Lit	"uomo del clan Chen, da Jingzhao Chang'an"
 Q45485382	Lpt	"homem do clã Chen, de Jingzhao Chang'an"
 #   Q45485382: set the ca label
 Q45485382	Lca	"home del clan Chen, de Jingzhao Chang'an"
-#   Q45485462 (李 of 隴西狄道): mul label = NN
-Q45485462	Lmul	"NN"
-#   Q45485462: set the nb label
-Q45485462	Lnb	"mann av Li-slekten, fra Longxi Didao"
-#   Q45485462: set the da label
-Q45485462	Lda	"mand af Li-slægten, fra Longxi Didao"
-#   Q45485462: set the sv label
-Q45485462	Lsv	"man av Li-ätten, från Longxi Didao"
-#   Q45485462: set the de label
-Q45485462	Lde	"Mann des Klans Li, aus Longxi Didao"
-#   Q45485462: set the es label
-Q45485462	Les	"hombre del clan Li, de Longxi Didao"
-#   Q45485462: set the it label
-Q45485462	Lit	"uomo del clan Li, da Longxi Didao"
-#   Q45485462: set the pt label
-Q45485462	Lpt	"homem do clã Li, de Longxi Didao"
-#   Q45485462: set the ca label
-Q45485462	Lca	"home del clan Li, de Longxi Didao"
-#   Q45485716 (裴 of 河東聞喜): mul label = NN
 Q45485716	Lmul	"NN"
 #   Q45485716: set the nb label
 Q45485716	Lnb	"mann av Pei-slekten, fra Hedong Wenxi"
@@ -1914,25 +1708,6 @@ Q45486909	Lit	"uomo del clan Chen, da Huzhou Changcheng"
 Q45486909	Lpt	"homem do clã Chen, de Huzhou Changcheng"
 #   Q45486909: set the ca label
 Q45486909	Lca	"home del clan Chen, de Huzhou Changcheng"
-#   Q45497731 (盧 of 潤州丹陽): mul label = NN
-Q45497731	Lmul	"NN"
-#   Q45497731: set the nb label
-Q45497731	Lnb	"mann av Lu-slekten, fra Runzhou Danyang"
-#   Q45497731: set the da label
-Q45497731	Lda	"mand af Lu-slægten, fra Runzhou Danyang"
-#   Q45497731: set the sv label
-Q45497731	Lsv	"man av Lu-ätten, från Runzhou Danyang"
-#   Q45497731: set the de label
-Q45497731	Lde	"Mann des Klans Lu, aus Runzhou Danyang"
-#   Q45497731: set the es label
-Q45497731	Les	"hombre del clan Lu, de Runzhou Danyang"
-#   Q45497731: set the it label
-Q45497731	Lit	"uomo del clan Lu, da Runzhou Danyang"
-#   Q45497731: set the pt label
-Q45497731	Lpt	"homem do clã Lu, de Runzhou Danyang"
-#   Q45497731: set the ca label
-Q45497731	Lca	"home del clan Lu, de Runzhou Danyang"
-#   Q45501359 (楊 of 弘農華陰): mul label = NN
 Q45501359	Lmul	"NN"
 #   Q45501359: set the nb label
 Q45501359	Lnb	"mann av Yang-slekten, fra Hongnong Huayin"
@@ -1964,25 +1739,6 @@ Q45501424	Lit	"uomo del clan Yang, da Hongnong Huayin"
 Q45501424	Lpt	"homem do clã Yang, de Hongnong Huayin"
 #   Q45501424: set the ca label
 Q45501424	Lca	"home del clan Yang, de Hongnong Huayin"
-#   Q45502571 (李 of 隴西狄道): mul label = NN
-Q45502571	Lmul	"NN"
-#   Q45502571: set the nb label
-Q45502571	Lnb	"mann av Li-slekten, fra Longxi Didao"
-#   Q45502571: set the da label
-Q45502571	Lda	"mand af Li-slægten, fra Longxi Didao"
-#   Q45502571: set the sv label
-Q45502571	Lsv	"man av Li-ätten, från Longxi Didao"
-#   Q45502571: set the de label
-Q45502571	Lde	"Mann des Klans Li, aus Longxi Didao"
-#   Q45502571: set the es label
-Q45502571	Les	"hombre del clan Li, de Longxi Didao"
-#   Q45502571: set the it label
-Q45502571	Lit	"uomo del clan Li, da Longxi Didao"
-#   Q45502571: set the pt label
-Q45502571	Lpt	"homem do clã Li, de Longxi Didao"
-#   Q45502571: set the ca label
-Q45502571	Lca	"home del clan Li, de Longxi Didao"
-#   Q45502705 (楊 of 弘農華陰): mul label = NN
 Q45502705	Lmul	"NN"
 #   Q45502705: set the nb label
 Q45502705	Lnb	"mann av Yang-slekten, fra Hongnong Huayin"
@@ -3268,25 +3024,6 @@ Q45647512	Lit	"uomo del clan Li, da Huazhou Kuangcheng"
 Q45647512	Lpt	"homem do clã Li, de Huazhou Kuangcheng"
 #   Q45647512: set the ca label
 Q45647512	Lca	"home del clan Li, de Huazhou Kuangcheng"
-#   Q45647926 (李 of 河南): mul label = NN
-Q45647926	Lmul	"NN"
-#   Q45647926: set the nb label
-Q45647926	Lnb	"mann av Li-slekten, fra Henan"
-#   Q45647926: set the da label
-Q45647926	Lda	"mand af Li-slægten, fra Henan"
-#   Q45647926: set the sv label
-Q45647926	Lsv	"man av Li-ätten, från Henan"
-#   Q45647926: set the de label
-Q45647926	Lde	"Mann des Klans Li, aus Henan"
-#   Q45647926: set the es label
-Q45647926	Les	"hombre del clan Li, de Henan"
-#   Q45647926: set the it label
-Q45647926	Lit	"uomo del clan Li, da Henan"
-#   Q45647926: set the pt label
-Q45647926	Lpt	"homem do clã Li, de Henan"
-#   Q45647926: set the ca label
-Q45647926	Lca	"home del clan Li, de Henan"
-#   Q45648222 (李 of 河南洛陽): mul label = NN
 Q45648222	Lmul	"NN"
 #   Q45648222: set the nb label
 Q45648222	Lnb	"mann av Li-slekten, fra Henan Luoyang"
@@ -5631,8 +5368,24 @@ def main():
     # put straight back** -- I read *"remove that particular section"* as this block when she
     # meant the spine P2600 one. Emma: *"What the fuck the clan block is gone? Bring it the
     # fuck back"*.
+    # **The clan block is GATED until October.** Emma, 2026-08-29: *"we block the clan name
+    # application stuff for one month. In October, once the October gate passes, then the quick
+    # statements generate with these clan names in them, but otherwise they do not, because I'm
+    # just too sceptical of the clan names."*
+    #
+    # Her reason is doubt about the labels themselves, not their volume: *"I don't know if this
+    # clan stuff is right. If this clan stuff is wrong, it looks really bad."* So this suppresses
+    # the whole block rather than trimming it, and the date is the same 2026-10-01 the universe
+    # kluge expires on.
+    #
+    # It appeared in every batch because it is hard-coded and appended unconditionally, NOT
+    # because everyone else's `ja`/`zh` was finished -- on the day she asked, 19 people in the
+    # carry-forward still had no transliteration at all.
+    clan_block = CJK_CLAN_BLOCK if datetime.date.today() >= CLAN_BLOCK_GATE else ""
+    if not clan_block:
+        print(f"CJK clan labels suppressed until {CLAN_BLOCK_GATE} (her ruling, 2026-08-29)")
     lines = _cap_label_edits(
-        lines, CJK_CLAN_BLOCK,
+        lines, clan_block,
         _label_corrections(our_items, labels, table, state) + _cjk_follows_mul(table))
 
     out = ROOT / "reports" / "wikidata-garborg-day.qs"

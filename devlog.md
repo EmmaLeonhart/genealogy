@@ -19498,3 +19498,37 @@ Verified on the regenerated files: **0 placeholder overlap, 0 family overlap**, 
 `INDI` xrefs the two files share are real people who legitimately appear in both.
 
 Tree before the fix: 1,446,572 individuals, 621,940 families, 8,428 conflicts.
+
+## 2026-08-29 — the clan block: gated to October, and 15 people removed as NOT unnamed
+
+**Two rulings, both hers, an hour apart.**
+
+**The gate.** *"we block the clan name application stuff for one month. In October, once the
+October gate passes, then the quick statements generate with these clan names in them, but
+otherwise they do not, because I'm just too sceptical of the clan names."* `CLAN_BLOCK_GATE =
+2026-10-01`; the run prints `CJK clan labels suppressed until 2026-10-01`.
+
+**Why it kept appearing, which she had misdiagnosed and was right to question.** Not because
+everyone else's `ja`/`zh` was finished. `_cap_label_edits` draws three sources against one budget
+of 15 **in priority order**: corrections, then the clan block, then everybody else. So the clan
+people were served *ahead* of ordinary ones every run. Moving label edits to the front of the file
+was cosmetic and was her request; the cap of 15 was her request; **the ordering among sources was
+neither — it was mine and unstated.**
+
+**Then her real worry, which the data confirms.** *"there might be instances where the Geni has an
+unknown name and the wikidata has a known name."* Joining each item's `P2600` to its Geni record
+gives three shapes, not one:
+
+| | n | |
+| --- | ---: | --- |
+| both say unknown | **162** | Wikidata's `Li Mou` is the marker transliterated — 李某 is "Li so-and-so" |
+| **both have a real name** | **11** | Geni carries the given name IN FRONT of the marker: `道古 某` → Li Daogu, `鎮 某` → Liu Zhen, `渠牟 某` → Wei Qumou, `杲之 某` → Cui Gaozhi |
+| **Wikidata has a name, Geni does not** | **4** | Wanshou, Guangde, Liu Yushi, Li Ru |
+
+**The 11 are a parsing bug, not a judgement call** — the pipeline read the whole `GIVN` as a marker
+when a real given name sits before the `某`. All 15 are removed from `CJK_CLAN_BLOCK`, which now
+covers **163** people. Removed from the block itself rather than filtered at the use site, so the
+block never carries a false claim.
+
+**And my earlier account was wrong.** I told her the English labels were mistranslations of the
+unknown marker. True for 162, false for 15, and I had generalised from the handful I looked at.

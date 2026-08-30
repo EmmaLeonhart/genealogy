@@ -39,7 +39,13 @@ import csv
 import sys
 from pathlib import Path
 
-VOWELS = "aeiouyæøå"
+#: **Swedish `ö` and `ä` read as Norwegian `ø` and `æ`.** This engine is a Norwegian
+#: orthography reader and had no rule for them, so every Swedish name containing one returned
+#: `(None, None)` and lost its `ja`/`zh` label entirely -- `Mörner`, `Köhler`, `Törnflycht`,
+#: `Gennäs`, `Leckö`, `Tärnö`. The readings are not invented here: the table this file replaced
+#: already carried `ö -> オ/奥` and `ä -> エ/埃`, the same values as `ø` and `æ`, which is also
+#: what the phonology gives. `ü` follows `y`, and `é` follows `e`.
+VOWELS = "aeiouyæøåöäüé"
 
 #: onset -> (kana row a,i,u,e,o) and the Chinese character for each.
 ROWS = {
@@ -75,7 +81,8 @@ ROWS = {
 }
 
 #: vowel -> column, plus the ones that carry their own length.
-VOWEL_COL = {"a": 0, "i": 1, "u": 2, "e": 3, "o": 4, "y": 1, "æ": 3, "ø": 4, "å": 4}
+VOWEL_COL = {"a": 0, "i": 1, "u": 2, "e": 3, "o": 4, "y": 1, "æ": 3, "ø": 4, "å": 4,
+             "ö": 4, "ä": 3, "ü": 1, "é": 3}
 LONG = {"å": ("ー", ""), "aa": ("ー", "")}
 
 #: a consonant with no vowel after it
