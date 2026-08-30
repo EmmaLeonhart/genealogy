@@ -19477,3 +19477,24 @@ recursively, so writing there changes every merge silently. The open question is
 a Geni `FAM` xref is a Geni id and these families have none, so the file uses `@FS1@`, `@FS2@`…
 Whether that is right -- and whether it duplicates families the corpus already holds for the same
 couples -- wants deciding before this is wired into the merge.
+
+## 2026-08-29 — the two scraped sources shared an id range, and the merge fused them
+
+The first rebuild with `exports/0-scraped/` wired in came back with **2,640 placeholder parents
+and 11,649 synthetic families** in the tree. Those are the **paths** file's counts exactly --
+`max()` of the two sources rather than the sum of 2,284 + 2,640 and 5,901 + 11,649.
+
+**Both files started their synthetic ids at the same base**, so placeholder 1 from the saved pages
+and placeholder 1 from the paths were the same xref, and the merge did what it is supposed to do
+with two records sharing an xref: fused them. Two unrelated sibling groups ended up hanging off one
+pair of parents.
+
+The tell was arithmetic, not an error message -- the merge reported success and the counts looked
+plausible until they were checked against what each file had minted. Same shape as the zipper
+separator bug `CLAUDE.md` records: **a distribution that is too clean.**
+
+Paths are now offset by 100,000 in both ranges, which is far above the ~2,600 either source mints.
+Verified on the regenerated files: **0 placeholder overlap, 0 family overlap**, and the 2,009
+`INDI` xrefs the two files share are real people who legitimately appear in both.
+
+Tree before the fix: 1,446,572 individuals, 621,940 families, 8,428 conflicts.

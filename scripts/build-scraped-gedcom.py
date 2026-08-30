@@ -56,6 +56,13 @@ OUT_DIR = "exports/0-scraped"
 #: and 1,329,329 individual xrefs in `out/merged.ged`: 20,000 ids from each base are free.
 SYNTHETIC_FAM_BASE = 9990000000000000000
 SYNTHETIC_INDI_BASE = 9995000000000000000
+
+#: **The two sources must not share a range.** They did, and both started at the base, so
+#: placeholder 1 from the pages and placeholder 1 from the paths were the SAME xref and the merge
+#: fused two unrelated sibling groups onto one pair of parents. The tell was arithmetic: the
+#: merged tree held 2,640 placeholders and 11,649 synthetic families -- `max()` of the two files,
+#: not the sum. Paths are offset by 100,000, which is far above the ~2,600 either source mints.
+
 PAGES = "geni-scraping/*.html"
 
 
@@ -81,7 +88,8 @@ class Placeholders:
     parents rather than two.
     """
 
-    def __init__(self):
+    def __init__(self, base=None):
+        self._base = SYNTHETIC_INDI_BASE if base is None else base
         self._by_group = {}
         self.people = {}
         self.sexes = {}
@@ -90,8 +98,8 @@ class Placeholders:
     def parents_for(self, members):
         key = tuple(sorted(members))
         if key not in self._by_group:
-            father = str(SYNTHETIC_INDI_BASE + self._next)
-            mother = str(SYNTHETIC_INDI_BASE + self._next + 1)
+            father = str(self._base + self._next)
+            mother = str(self._base + self._next + 1)
             self._next += 2
             self.people[father] = "NN"
             self.people[mother] = "NN"
@@ -101,8 +109,9 @@ class Placeholders:
         return self._by_group[key]
 
 
-def emit(people, families, path, note, sexes=None):
+def emit(people, families, path, note, sexes=None, fam_base=None):
     sexes = sexes or {}
+    fam_base = SYNTHETIC_FAM_BASE if fam_base is None else fam_base
     os.makedirs(OUT_DIR, exist_ok=True)
     with io.open(path, "w", encoding="utf-8", newline="\n") as fh:
         fh.write("0 HEAD\n1 SOUR genimerge-scraped\n1 CHAR UTF-8\n")
@@ -121,7 +130,7 @@ def emit(people, families, path, note, sexes=None):
             if not gid.startswith(str(SYNTHETIC_INDI_BASE)[:6]):
                 fh.write("1 RFN geni:%s" % gid + chr(10))
         for i, (husb, wife, kids) in enumerate(families, 1):
-            fh.write("0 @F%d@ FAM" % (SYNTHETIC_FAM_BASE + i) + chr(10))
+            fh.write("0 @F%d@ FAM" % (fam_base + i) + chr(10))
             if husb:
                 fh.write("1 HUSB @I%s@\n" % husb)
             if wife:
@@ -263,7 +272,7 @@ def from_paths(ph):
 
 
 def main():
-    ph = Placeholders()
+    ph = Placeholders(SYNTHETIC_INDI_BASE)
     people, fams, bad = from_pages(ph)
     people.update(ph.people)
     out = os.path.join(OUT_DIR, "scraped-pages.ged")
@@ -276,13 +285,13 @@ def main():
     print(f"  NN placeholder parents minted : {len(ph.people):,}")
     print(f"  wrote {out} ({os.path.getsize(out):,} bytes)")
 
-    ph2 = Placeholders()
+    ph2 = Placeholders(SYNTHETIC_INDI_BASE + 100000)
     ppl, pf = from_paths(ph2)
     ppl.update(ph2.people)
     out2 = os.path.join(OUT_DIR, "scraped-paths.ged")
     emit(ppl, pf, out2,
          "built by scripts/build-scraped-gedcom.py from paths/*.tsv relationship paths",
-         sexes=ph2.sexes)
+         sexes=ph2.sexes, fam_base=SYNTHETIC_FAM_BASE + 100000)
     print(f"paths: {len(glob.glob('paths/*.tsv'))} files")
     print(f"  people with a name : {len(ppl):,}")
     print(f"  families           : {len(pf):,}")
