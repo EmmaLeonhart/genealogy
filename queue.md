@@ -1885,18 +1885,6 @@ transliteration data, whatever it holds — into this repo, and add no runtime d
 state file, and no network call to it. It is not checked out beside `geni`, so the first step is
 asking her where it is.
 
-## Why did the name Tunheim get created twice?
-
-**Emma, 2026-08-29.** She raised the same thing in the crashed session: *"certain names, for example
-Tunheim, I've noticed that some of these names got merged in with an existing item. I'm extremely
-confused how this happened, and it seems to me to indicate maybe you're not actually checking the
-existence of the names correctly in our data."*
-
-Analysis only. Do not change the existence check before reporting what actually happened.
-
-Related and probably the same root cause: § *LAST — name items are being MERGED by other editors.
-Stop preferring creation over reuse*.
-
 ## The NN path drops the birth-name alias the named path emits
 
 Found while answering the `Q141205924` label question. The named branch of

@@ -19908,3 +19908,22 @@ becomes nothing rather than an alias. Queued as its own item, to be counted befo
 changed.
 
 Analysis only, per the item. No code touched, no correction emitted.
+
+## 2026-08-30 — Tunheim got created twice because the existence check asks a narrower question
+
+`Q36927172` *Tunheim* (family name) exists on Wikidata **and is in our local store**. No person
+in the store links to it with `P734`, so it is absent from `reports/name-items.csv`, so
+`reports/name-resolution.csv` reads `family,Tunheim,64,no item`, so `reports/name-item-plan.csv`
+reads `create`.
+
+`measure-name-resolution.py` says so in its own docstring: *"A name item counts only if some
+person in our own store already points at it… A Geni name Wikidata has an item for, which nobody
+in our store carries, is invisible here."* That is being read as *does Wikidata have this name*,
+and it is not that question.
+
+**Sampled exposure: 9 of 40** random Latin family-name tokens the plan would `create` already
+have a `Q101352` item — Heggeland, Helgeland, Gaustad, Chiang, Ustick, Maceda, Tudur, Zeil,
+Vilarinho. The population is **4,655**.
+
+`scripts/check-name-items-live.py` is the census that turns the sample into the list. It is
+committed unrun. Analysis only, per the item: the existence check is unchanged.
