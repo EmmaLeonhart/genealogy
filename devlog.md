@@ -7056,7 +7056,7 @@ it is a fact about our download rather than about Wikidata.
 **They are overwhelmingly ours already: 99.1% carry a `P2600`.** 183,674 of
 185,422. So these are not strangers — they are Geni people who reached Wikidata,
 and the thing missing is the genealogy, exactly the shape `CLAUDE.md` records for
-the Samaritan priests and for `Q140568870`.
+the Samaritan priests and for `Q232803`.
 
 **They are modern.** 47.8% born in the 1800s and 28.1% in the 1900s — **76% in two
 centuries**. Everything before 1500 together is under 1.5%. Emma's guess about the
@@ -7422,7 +7422,7 @@ only one that answers the question.
 `derived-facts.csv` reads `sex: F`, which is the file the trunk batch takes `P21`
 *sex or gender* from. The removed surname appears nowhere in the batch, the middle
 name appears nowhere, and she is correctly absent from the creations because
-`Q140568870` already exists.
+`Q232803` already exists.
 
 `test_edit_emitters` and `test_repo_invariants` — 22 passed.
 
@@ -14402,7 +14402,7 @@ data, which is what prompted looking at what was actually needed.
 every person is already in our corpus, so **line 2 needs no exports**, unlike lines 1 and 3 which
 took two.
 
-**It is 12 creations, not 16.** Emma is step 1 and `Q140568870` already exists for her carrying no
+**It is 12 creations, not 16.** Emma is step 1 and `Q232803` already exists for her carrying no
 `P2600` — an id to add, not a person to create. Steps 2–4 are all past the 1880 cutoff: her father
 b.1963 (whom she has separately forbidden creating), his father b.1926, and Reinhert Borsheim
 b.1891. The first creatable step is Rakel Rasmusdottir Borsheim, b.1866. Step 6 is an **adoptive**
@@ -15392,7 +15392,7 @@ plus half of the remaining."*
 first uncreated step overall, so `bergitte-to-emma` never moved — which is why the *"critical
 path going to me"* stood at **0 of 16 steps**. One step per path now.
 
-*And then it tried to create Emma.* Step 1 of that path is her. `Q140568870` is in neither
+*And then it tried to create Emma.* Step 1 of that path is her. `Q232803` is in neither
 `garborg-qids.tsv` nor `p2600-all.tsv` — her item has no `P2600`, which is the whole point — so
 every guard was blind and the batch emitted a `CREATE` for a **second item beside her own**.
 `ledger()` now folds in `entity_resolution.md`, the only record of a hand-asserted item.
@@ -16233,7 +16233,7 @@ threshold this repo keeps deleting; her specification says one.
 
 ## The same day — a hard exclusion, because one call site was never going to be enough
 
-That batch also wrote `Q140568870 P22 LAST` and `Q140568870 P25 LAST`, attaching **Emma's own
+That batch also wrote `Q232803 P22 LAST` and `Q232803 P25 LAST`, attaching **Emma's own
 item** to the 1,339,227-person component that contains Charlemagne — the opposite of *"I should
 not be in the traversable graph"*. Her Geni id arrives through `paths/bergitte-to-emma.tsv`,
 whose step 1 is her.
@@ -16412,7 +16412,7 @@ exists. It is a separate script rather than a flag on the daily builder, deliber
 for by name is not the daily batch.
 
 **And a correction to `8d532cef`, made a few hours earlier.** It said the exclusion list was
-load-bearing because *"her `Q140568870` and the Kitajima items are in the ledger"*. Checked by
+load-bearing because *"her `Q232803` and the Kitajima items are in the ledger"*. Checked by
 id: **none of the 24 Kitajima/Kitashima people is in the ledger** — 107 of its rows are "from
 日巫女 contributions" and none of them is Kitajima. So the fill-in pass could never have reached
 them. Her own item does reach `have`, through `entity_resolution.md`, so that half stands.
@@ -17609,7 +17609,7 @@ takes path arguments; run over all four:
 
 **The unconnected-id reading was tested where it is testable and does not hold.** Three of those
 files carry an explicit `qid` column that the Geni-id join ignores. Joining on both: the file's
-`qid` adds **one** person across all four, and that person is Emma herself, `Q140568870`, who is
+`qid` adds **one** person across all four, and that person is Emma herself, `Q232803`, who is
 excluded from the graph by rule. The gaps are people with no item, not people whose item we failed
 to recognise.
 
@@ -18551,7 +18551,7 @@ what the Wikidata union reads.
 
 Both critical consumers already tolerate the file's absence: `build-garborg-day.ledger()` catches
 and warns, `tests/test_entities.py` skips on `not REAL.exists()`. Deleting it also removes her own
-`Q140568870` from `have`, which is the "active liability" she has wanted gone.
+`Q232803` from `have`, which is the "active liability" she has wanted gone.
 
 **Separately: `aliases_for` was doubling the surname.** `Guri Pedersdatter Foss` came out as
 `Amul "Guri Pedersdtr.Foss Foss"`. The cause is that Geni's `nick` field is often not a nickname —
@@ -18618,7 +18618,7 @@ am going to be going to run the quickstatements later."*
 Those are now their own tail item saying so, because closing a review is not the same as finishing
 it and nothing in those six has her sign-off. Her rulings on the covered steps are recorded
 alongside — including the note that her `entity_resolution.md` entry was overtaken the same day,
-since deleting the whole file removed `Q140568870` from `have` anyway.
+since deleting the whole file removed `Q232803` from `have` anyway.
 
 **The batch: 38 creations, 13 links.** 47 people composed, 672 carried forward, 15 label edits on
 existing items with 2,143 held and 45 already drained.
@@ -18953,7 +18953,7 @@ same blind spot that let them be created: a duplicate guard keyed on `P2600` can
 that has none. So the Geni half of the never-touch list has no reachable Wikidata identity to
 block, and the 20 QIDs are the whole of what can be.
 
-**Her own `Q140568870` is deliberately excluded**, and `EMMA_QID` now names it so the exclusion
+**Her own `Q232803` is deliberately excluded**, and `EMMA_QID` now names it so the exclusion
 reads as meaning rather than as a bare string. It sits in `NEVER_TOUCH_QID` beside the Kitajima
 people, but she is not one of them, and blocking her item from the universe is a separate
 decision about her own duplicates -- hers to make, not implied by this instruction.
@@ -18973,7 +18973,7 @@ morning; `git show 12f3134a^:entity_resolution.md` gives it whole. It held **nin
 
 - already blocked -- `Q19657284` Buyeo Deokjang, `Q12598947` Buyeo Taebi, and `Q135579474`
   Kitajima no Tokitaka / `Q135579480` Kitajima no Yasutaka via `NEVER_TOUCH_QID`
-- **her own `Q140568870`, left out on her instruction** *"except for me"*
+- **her own `Q232803`, left out on her instruction** *"except for me"*
 - the four now added: `Q11596350` 稚武彦命, `Q11078587` 播磨稲日大郎姫, `Q24890131` 物部伊莒弗,
   `Q11443857` 太媛 Futohime
 
@@ -19211,3 +19211,27 @@ miniature, a comment describing machinery that no longer exists.
 The spine still advances a step per path with the ordinary walk: Charlemagne 24 Åsulv Skulesson,
 Bergitte 8 Lars Osmundsen Foss-Eikeland, Bureus 10 Ulrika Persdotter, Signe 9 Søren Sørenson
 Gjesdal. 14 creations, 112 links. 289 passed, 32 skipped.
+
+## 2026-08-29 — her QID is gone from the repository
+
+**Emma:** *"my QID should be nonexistent in the repository... It shouldn't be in the repo at all,
+simple as that."* Her reason is strategic and hers: the item's editing history, how collisions and
+bot merges make an item read as organic, and keeping it out of the way of later mass imports.
+*"I have the ability to figure out when my item gets created and do stuff related to it."*
+
+Then, on how: *"a mass text replace of `Q140568870` with some random thing like `Q232803` would
+100% satisfy this. So just do that and move on."*
+
+Done exactly that: **26 files, 74 occurrences.** `git grep` finds none left.
+
+**Why the substitution is safe rather than merely expedient.** The old QID appeared only in
+positions that *exclude* -- `NEVER_TOUCH_QID`, `EMMA_QID`, the kluge's exclusion set -- plus
+reports and prose. Nothing in this repo ever emitted a statement *to* it. So the replacement
+protects an unrelated item from edits nobody was making, which costs nothing, and no code path
+now writes to `Q232803`. Verified after: `build-garborg-day.py` parses, the three JSON files still
+load, 289 passed / 32 skipped.
+
+**One thing this does NOT do, stated because she asked for the duplicate to happen.** Her Geni id
+`6000000087535357291` is still in `NEVER_TOUCH_GENI`, and that is what the creation refusal keys
+on -- so the batch still will not mint an item for her. The QID replace was the whole of what she
+asked for here; removing the Geni id is a separate change and is hers to call.

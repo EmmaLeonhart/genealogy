@@ -176,7 +176,7 @@ when she picks it. Screenshot she was replying to:
 The nine pairs the message is about, from `entity_resolution.md`:
 `6000000001835522164`→`Q11596350` Wakatakehiko · `6000000001844033355`→`Q11078587` Harima no Inabi
 no Ōiratsume · `6000000001902786893`→`Q11443857` Futohime Mononobe ·
-`6000000002039751362`→`Q24890131` Ikofutsu Mononobe · `6000000087535357291`→`Q140568870` **Emma
+`6000000002039751362`→`Q24890131` Ikofutsu Mononobe · `6000000087535357291`→`Q232803` **Emma
 herself, the one to remove** · `6000000186285688253`→`Q19657284` Buyeo Deokjang ·
 `6000000186285688286`→`Q12598947` Taebi Buyeo · `6000000227335224861`→`Q135579480` Yasutaka
 Kitajima · `6000000227335393824`→`Q135579474` Tokitaka Kitajima
@@ -1526,7 +1526,7 @@ so filtering a ring they are not in returned nothing and read as "no work to do"
 | held by the duplicate guard | 0 |
 | **created** | **23** |
 
-23 + Emma, who has `Q140568870` and needs an id rather than a creation, is **24** — the spine
+23 + Emma, who has `Q232803` and needs an id rather than a creation, is **24** — the spine
 count in `reports/the-spine.md`, arrived at independently.
 
 **The two the guard held were false positives and Emma released them, 2026-08-26.** The unmatched
@@ -1566,7 +1566,7 @@ Ooiratsume*, `Q24890131` *Mononobe no Ikofutsu*, and the two Kitajima items. Onl
 items have one.
 
 **Three of those six are out of scope and stay so.** The two Kitajima items are in
-`NEVER_TOUCH_QID`, and her own `Q140568870` entry is the one she said she will remove herself.
+`NEVER_TOUCH_QID`, and her own `Q232803` entry is the one she said she will remove herself.
 
 **So the residue is three edits**: `P2600` on `Q11596350`, `Q11078587` and `Q24890131`. The
 Futohime label is handled — she asked for it in the clan block on 2026-08-29 and it is there.
@@ -1989,7 +1989,7 @@ approved.
 
 - The 34 unlabelled ledger rows dropped and regenerated from Wikidata.
 - Her own `entity_resolution.md` entry to go **by her hand, not mine** — since overtaken: she had
-  the whole file deleted on 2026-08-29, which removed her `Q140568870` from `have` anyway.
+  the whole file deleted on 2026-08-29, which removed her `Q232803` from `have` anyway.
 - Bureätten people eligible for **both** fill-in and seeding.
 - `MODERN_CUTOFF = 1880` *"totally undesired"* — removed, with nothing in its place.
 - Steps 4–5 are dead code under `--compose`.

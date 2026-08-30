@@ -150,7 +150,7 @@ def main() -> int:
 
     # **Anything Emma resolved by hand already exists and must not be created.**
     # `entity_resolution.md` is her scratchpad of Geni-to-Wikidata identities;
-    # `Q140568870` is her own item, which carries no `P2600` and is therefore
+    # `Q232803` is her own item, which carries no `P2600` and is therefore
     # invisible to the `qid` column of `derived-family.csv`. The first run of this
     # script proposed creating her a second item.
     try:

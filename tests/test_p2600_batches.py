@@ -555,8 +555,8 @@ def test_no_batch_names_an_excluded_id():
     """Emma's own QID and Geni id must appear in no batch, in any position.
 
     **Emma, 2026-08-27:** *"I should not be in the traversable graph and neither should any
-    kitajima people."* The batch of that date wrote `Q140568870 P22 LAST` and
-    `Q140568870 P25 LAST`, attaching her item to the 1,339,227-person component containing
+    kitajima people."* The batch of that date wrote `Q232803 P22 LAST` and
+    `Q232803 P25 LAST`, attaching her item to the 1,339,227-person component containing
     Charlemagne. Her Geni id reaches the builder through `paths/bergitte-to-emma.tsv`, whose
     step 1 is her, so no single call site owns the problem.
 
@@ -565,7 +565,7 @@ def test_no_batch_names_an_excluded_id():
     """
     import pathlib
     root = pathlib.Path(__file__).resolve().parent.parent
-    banned = {"Q140568870", "6000000087535357291"}
+    banned = {"Q232803", "6000000087535357291"}
     bad = []
     for path in sorted((root / "reports").glob("*.qs")):
         for n, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):

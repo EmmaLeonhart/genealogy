@@ -7,7 +7,7 @@ analyze them demographically."*
 **Isolated means present as an item and absent as genealogy** — `CLAUDE.md`
 § *An item with no relationships is not a missing item*. The Samaritan high
 priests are the worked example: on Geni, on Wikidata, attached to nothing. Her own
-`Q140568870` is the same shape. The earlier pass established *that* they exist;
+`Q232803` is the same shape. The earlier pass established *that* they exist;
 this asks *who they are*.
 
 **Isolated is defined on five properties**: `P22` father, `P25` mother, `P40`

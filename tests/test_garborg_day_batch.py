@@ -59,8 +59,8 @@ def known_qids():
     **The two must agree with the builder or this test measures a different thing.**
     `scripts/build-garborg-day.py`'s `ledger()` folds in the hand-asserted
     correspondences, because those are the only record of an item carrying no `P2600`
-    yet -- Emma's own `Q140568870` is the case, and without it the batch tried to create
-    her a second item. Reading only `garborg-qids.tsv` here then flagged `Q140568870`,
+    yet -- Emma's own `Q232803` is the case, and without it the batch tried to create
+    her a second item. Reading only `garborg-qids.tsv` here then flagged `Q232803`,
     `Q135579474`, `Q135579480` and three others as "do not exist yet" when they do.
 
     Widening this does not weaken the assertion: it still says every QID the batch points
@@ -653,7 +653,7 @@ def test_the_contiguous_group_matches_what_emma_says_is_outside_it():
     inside = {"Q11959067": "Arne Olaus Fjørtoft Garborg",
               "Q633094": "Johannes Bureus",
               "Q141180409": "Magdalena Andersdotter"}
-    outside = {"Q140568870": "Emma Leonhart",
+    outside = {"Q232803": "Emma Leonhart",
                "Q12598947": "Buyeo Taebi",
                "Q116150300": "Cecilie Ebbesdatter",
                "Q19657284": "Buyeo Deokjang",

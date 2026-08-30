@@ -1691,7 +1691,7 @@ are individuals without any relationships and such."* Reporting them as absent
 was the § *"Is X present?"* failure again, one section down, in a new costume —
 present as items, absent as a family tree.
 
-**Her own item is the same shape and is the worked example.** `Q140568870`
+**Her own item is the same shape and is the worked example.** `Q232803`
 exists, carries no Geni ID, and is attached to nothing. She has been explicit
 that this is ordinary rather than special: *"it's just a wiki data object. It's
 a wiki data object that should be linked in the way that any other wiki data
@@ -2032,17 +2032,17 @@ is. It's important, but just don't do stuff on it right now."*
 > myself."*
 
 **So the sequence she wants is: create the duplicates, then merge them into her existing item.**
-Richard Wade Borsheim twice, her twice, alongside `Q140568870`. The duplicates are the *input* to
+Richard Wade Borsheim twice, her twice, alongside `Q232803`. The duplicates are the *input* to
 a merge that leaves the right trail for Wikidata's review machinery. An item that simply appears,
 fully formed and linked, does not.
 
 **What this forbids.** Treating a second item for her or her parents as a duplicate to suppress.
 Adding a guard that refuses to create somebody who already has an item, *for this case*. Reading
-`Q140568870 P22 …` as a defect on its own — the objection on 2026-08-27 was that her item was
+`Q232803 P22 …` as a defect on its own — the objection on 2026-08-27 was that her item was
 being wired into the traversable graph, which is a different thing from the duplicates.
 
 **Her `entity_resolution.md` entry is what must go, and only that.** `6000000087535357291` →
-`Q140568870` is the sole reason her QID is in `have` at all; she is not in
+`Q232803` is the sole reason her QID is in `have` at all; she is not in
 `reports/garborg-qids.tsv`. Removing it stops the algorithm reasoning outward from her, which is
 what she called *"noise"*, while leaving the duplicate-creation route open. **She will remove it
 herself** — *"I can find my own ID and do this myself."*
@@ -2121,7 +2121,7 @@ who is **step 22 of `paths/charlemagne-to-arne-garborg.tsv`**. When the spine re
 **Why the exclusion list still exists — for HER, and not for the Kitajima family.** Emma:
 *"why are we even having exclusions? If you just followed the algorithm then exclusions wouldn't
 be needed."* True of **creations**: she is not in the subgraph, so she is never a seed. Not true
-of **additions**, which are ledger-wide — her `Q140568870` reaches `have` through
+of **additions**, which are ledger-wide — her `Q232803` reaches `have` through
 `entity_resolution.md`, so without the exclusion the fill-in pass would edit her item.
 
 **The Kitajima half of that was wrong and is corrected here.** Checked by id, 2026-08-28:

@@ -1,10 +1,10 @@
 [
  {
-  "id": "add_geni_id:Q140568870",
+  "id": "add_geni_id:Q232803",
   "type": "add_geni_id",
   "priority": true,
   "subject": {
-   "qid": "Q140568870",
+   "qid": "Q232803",
    "geni_id": "6000000087535357291"
   },
   "requires": [],
@@ -973,15 +973,15 @@
   ]
  },
  {
-  "id": "add_statement:Q140568870:P22",
+  "id": "add_statement:Q232803:P22",
   "type": "add_statement",
   "priority": true,
   "subject": {
-   "qid": "Q140568870",
+   "qid": "Q232803",
    "geni_id": "6000000087535357291"
   },
   "requires": [
-   "add_geni_id:Q140568870",
+   "add_geni_id:Q232803",
    "create_individual:6000000177921459056"
   ],
   "statement": {

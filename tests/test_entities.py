@@ -137,7 +137,7 @@ def test_the_real_file_parses_completely():
 CORRECTION = """\
 Emma Leonhart
 https://www.geni.com/people/Emma-Leonhart/6000000087535357291
-https://www.wikidata.org/wiki/Q140568870
+https://www.wikidata.org/wiki/Q232803
 
 the name on that one is "Emma Leonhart", Emma /Leonhart/ - already corrected on
 geni, the exports here are just old.
@@ -163,7 +163,7 @@ def test_a_name_correction_is_keyed_by_geni_id_not_qid():
 def test_the_resolution_still_parses_alongside_the_correction():
     parsed = entities.parse(CORRECTION)
     assert [(r.geni_id, r.qid) for r in parsed.resolutions] == [
-        ("6000000087535357291", "Q140568870")
+        ("6000000087535357291", "Q232803")
     ]
 
 

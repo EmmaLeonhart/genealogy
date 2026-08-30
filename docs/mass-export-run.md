@@ -83,7 +83,7 @@ remain.
 | 6000000227335224861 | `Q135579480` | Yasutaka Kitajima |
 | 6000000227335393824 | `Q135579474` | Tokitaka Kitajima |
 
-`6000000087535357291` → `Q140568870` is **Emma and is skipped**.
+`6000000087535357291` → `Q232803` is **Emma and is skipped**.
 
 ### 4. The Bureätten people — COVERAGE of 251, not an export each
 

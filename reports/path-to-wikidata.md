@@ -1,6 +1,6 @@
 # Connecting `6000000087535357291` to Wikidata's family graph
 
-**Emma Leonhart 1996** — carries Q140568870.
+**Emma Leonhart 1996** — carries Q232803.
 
 7,061 ancestors in the tree; **682 of them carry a
 Wikidata item**.

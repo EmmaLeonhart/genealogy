@@ -22,7 +22,7 @@ unverifiable from here. Nothing below has been checked against Wikidata.
 | [6000000001902786893](https://www.geni.com/people/x/6000000001902786893) | [Q11443857](https://www.wikidata.org/wiki/Q11443857) | yes |
 | [6000000186285688253](https://www.geni.com/people/x/6000000186285688253) | [Q19657284](https://www.wikidata.org/wiki/Q19657284) | yes |
 | [6000000186285688286](https://www.geni.com/people/x/6000000186285688286) | [Q12598947](https://www.wikidata.org/wiki/Q12598947) | yes |
-| [6000000087535357291](https://www.geni.com/people/x/6000000087535357291) | [Q140568870](https://www.wikidata.org/wiki/Q140568870) | yes |
+| [6000000087535357291](https://www.geni.com/people/x/6000000087535357291) | [Q232803](https://www.wikidata.org/wiki/Q232803) | yes |
 | [6000000227335393824](https://www.geni.com/people/x/6000000227335393824) | [Q135579474](https://www.wikidata.org/wiki/Q135579474) | yes |
 | [6000000227335224861](https://www.geni.com/people/x/6000000227335224861) | [Q135579480](https://www.wikidata.org/wiki/Q135579480) | yes |
 

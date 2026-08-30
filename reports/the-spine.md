@@ -74,7 +74,7 @@ our corpus, so **line 2 needs no exports at all** — unlike lines 1 and 3, whic
 
 | step | person | state |
 | ---: | --- | --- |
-| 1 | **Emma Leonhart** | `Q140568870` exists and carries **no** `P2600` — add the id, do not create |
+| 1 | **Emma Leonhart** | `Q232803` exists and carries **no** `P2600` — add the id, do not create |
 | 2 | Richard Wade Borsheim, b.1963 | **her father — explicitly not to be created**, and past the cutoff besides |
 | 3 | Randolph Paulus Borsheim, b.1926 | past the 1880 cutoff |
 | 4 | Reinhert Borsheim, b.1891 | past the 1880 cutoff |

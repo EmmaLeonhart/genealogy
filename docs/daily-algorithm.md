@@ -83,7 +83,7 @@ last run produced. It had not.
 
 **`entity_resolution.md` is folded into the ledger**, because it is the only record of an item
 that carries no `P2600` yet. Without it the spine walk hit step 1 of the Bergitte path — **Emma
-herself** — and emitted a `CREATE` that would have minted her a second item beside `Q140568870`.
+herself** — and emitted a `CREATE` that would have minted her a second item beside `Q232803`.
 
 ## Step 2 — creation of names
 

@@ -1,6 +1,6 @@
 """Fetch one Wikidata item into the local store.
 
-Emma, 2026-08-12: **"impprt Q140568870 don't just acknowledge and not do it."**
+Emma, 2026-08-12: **"impprt Q232803 don't just acknowledge and not do it."**
 
 Her item is matched to a Geni profile by hand but carries no `P2600`, so the
 family walk that built the store never had a route to it. Nothing about her can
@@ -13,7 +13,7 @@ is done because she asked for it directly and it is a single item.
 The item is written as its own shard so nothing existing is rewritten, and the
 index is updated rather than rebuilt.
 
-    py scripts/import-item.py Q140568870 [Q...]
+    py scripts/import-item.py Q232803 [Q...]
 """
 
 from __future__ import annotations
