@@ -300,7 +300,10 @@ def test_selection_is_deterministic_when_candidates_tie():
 # export to exceed the constant fails here rather than silently modelling a ball
 # smaller than a real export.
 
-_EXPORTS = sources.find_exports()
+# **`geni_exports`, not `find_exports`.** This asserts something about what a GENI export
+# is, and `exports/0-scraped/` is built by us from saved pages and paths -- it is in the
+# merge on purpose but is not something Geni returned. See `sources.DERIVED_DIR`.
+_EXPORTS = sources.geni_exports()
 
 
 @pytest.mark.skipif(not _EXPORTS, reason="no GEDCOM exports in exports/")

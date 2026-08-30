@@ -19532,3 +19532,34 @@ block never carries a false claim.
 
 **And my earlier account was wrong.** I told her the English labels were mistranslations of the
 unknown marker. True for 162, false for 15, and I had generalised from the handful I looked at.
+
+## 2026-08-29 — `exports/` holds derived files now, so the corpus checks need a narrower name
+
+**Two tests failed the moment `exports/0-scraped/` landed, and both were right:**
+
+- `test_seeds.py::test_export_cap_is_at_least_the_largest_real_export` — *an export in exports/
+  holds 14121 individuals, more than `GENI_EXPORT_CAP=5000`*. That is `scraped-paths.ged`.
+- `test_profilenames.py::test_measure_runs_over_a_real_export_with_consistent_totals` —
+  `assert 2284 > 0.5 * 12463`. Saved pages do not state sex, so only the NN placeholders have one.
+
+**The temptation was to raise the constant, and that would have been the 3836 mistake again.**
+`GENI_EXPORT_CAP` means *the largest export Geni has ever returned*; setting it to 14,121 for a
+file we generated would leave the number intact and the meaning gone. `CLAUDE.md` records that
+encoding 3836 as a cap Geni enforces is exactly this failure.
+
+**So the fix names the distinction instead.** `sources.DERIVED_DIR` and `sources.geni_exports()`,
+the same mechanism `exports/excluded/` already uses:
+
+- `find_exports()` → **596** files. The merge wants the derived ones; Emma asked for them in the
+  synoptic tree.
+- `geni_exports()` → **594**. Anything asserting what a *Geni export* is — its size, its field
+  coverage, its xref prefixes — reads this.
+
+The two tests now read `geni_exports()`. **No assertion was weakened**; only the set of files they
+are handed changed. 65 passed across `test_seeds`, `test_profilenames` and `test_sources`.
+
+Committed alongside the transliteration work that had been sitting uncommitted: `translit_no.py`
+folds accented **vowels** to their base (`á í ó ú è â ã ë`, ~51,700 occurrences in `mul` labels)
+and deliberately refuses accented **consonants** (`ñ ç ł ć š č`), where the diacritic changes the
+sound and folding would invent a reading. Table 3,262 → 4,018; people in the carry-forward with no
+`ja`/`zh` went 47 → 16.

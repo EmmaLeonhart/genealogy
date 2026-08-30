@@ -142,7 +142,10 @@ def test_the_report_states_it_proposes_nothing_and_names_the_traps():
 
 # -- smoke test against real data --------------------------------------
 
-_EXPORTS = sources.find_exports()
+# **`geni_exports`, not `find_exports`.** This asserts something about what a GENI export
+# is, and `exports/0-scraped/` is built by us from saved pages and paths -- it is in the
+# merge on purpose but is not something Geni returned. See `sources.DERIVED_DIR`.
+_EXPORTS = sources.geni_exports()
 
 
 @pytest.mark.skipif(not _EXPORTS, reason="no GEDCOM exports in exports/")

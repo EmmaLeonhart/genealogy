@@ -35,7 +35,8 @@ import hashlib
 from collections import defaultdict
 from pathlib import Path
 
-__all__ = ["EXPORTS_DIR", "EXCLUDED_DIR", "REPO_ROOT", "find_exports",
+__all__ = ["EXPORTS_DIR", "EXCLUDED_DIR", "DERIVED_DIR", "REPO_ROOT",
+           "find_exports", "geni_exports",
            "duplicate_groups", "excluded_files"]
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -73,6 +74,24 @@ EXPORTS_DIR = REPO_ROOT / "exports"
 #: The union of old and new gave that family both children and gave Abram two
 #: fathers, one of them the other's father.
 EXCLUDED_DIR = EXPORTS_DIR / "excluded"
+
+#: **`exports/0-scraped/` is corpus but is NOT a Geni export.** It is built by
+#: `scripts/build-scraped-gedcom.py` out of the saved profile pages and the relationship paths,
+#: so it belongs in the merge -- Emma asked for exactly that -- but it is not something Geni
+#: handed back and must not be measured as though it were.
+#:
+#: Two tests caught this the day it landed, and both were RIGHT:
+#:   * `test_seeds.py::test_export_cap_is_at_least_the_largest_real_export` -- 14,121 individuals
+#:     against `GENI_EXPORT_CAP = 5000`. That constant means *the largest export Geni has ever
+#:     returned*; raising it for a file we generated would destroy its meaning.
+#:   * `test_profilenames.py::test_measure_runs_over_a_real_export_with_consistent_totals` --
+#:     `sex` on 2,284 of 12,463, because saved pages do not state sex and only the NN
+#:     placeholders have one.
+#:
+#: So the fix is a name for the distinction, not a looser assertion. `find_exports` still
+#: returns these (the merge wants them); `geni_exports` excludes them (corpus-shape checks
+#: want only real ones).
+DERIVED_DIR = EXPORTS_DIR / "0-scraped"
 
 
 def _digest(path: Path) -> str:
@@ -193,6 +212,16 @@ def find_exports(root: Path | None = None) -> list[Path]:
         return []
     kept, _ = _distinct(_corpus_files(root))
     return _post_merge_last(kept, root)
+
+
+def geni_exports(root: Path | None = None) -> list[Path]:
+    """`find_exports` minus anything derived — only files Geni actually returned.
+
+    Use this for any check about what a Geni export *is*: its size, its field coverage, its
+    xref prefixes. Use `find_exports` for the merge, which wants the derived files too.
+    """
+    derived = (Path(root) if root is not None else EXPORTS_DIR) / DERIVED_DIR.name
+    return [p for p in find_exports(root) if derived not in p.parents]
 
 
 def duplicate_groups(root: Path | None = None) -> dict[str, list[Path]]:

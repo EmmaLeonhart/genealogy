@@ -105,9 +105,34 @@ def _onsets():
 ONSETS = _onsets()
 
 
+#: **Accented VOWELS fold to their base vowel. Accented CONSONANTS do not.**
+#:
+#: Measured over `reports/derived-labels.csv`: these carry ~51,700 occurrences in `mul` labels --
+#: `á` 14,206, `í` 14,138, `ó` 10,885, `ã` 4,852, `è` 3,029, `ú` 2,458, `â` 1,195, `ë` 952 -- and
+#: every name containing one returned `(None, None)`, losing its `ja`/`zh` label entirely.
+#:
+#: The acute, grave, circumflex and diaeresis on a vowel mark stress or length in these languages,
+#: and **katakana cannot represent the distinction in any case**: `ó` and `o` are both オ. So the
+#: fold loses nothing that could have been written down.
+#:
+#: **`ñ` (6,874), `ç` (4,898), `ł` (2,213), `ć` (2,050), `š` (1,385) and `č` (1,012) are
+#: deliberately NOT folded.** Those diacritics change the consonant -- `ñ` is *ny*, `ł` is *w*,
+#: `š` is *sh* -- so mapping them to the bare letter would invent a reading rather than simplify
+#: one. Those names keep returning `(None, None)` and get no `ja`/`zh`, which is the
+#: *partial is worse than absent* rule doing its job.
+BARE_VOWEL = str.maketrans({
+    "á": "a", "à": "a", "â": "a", "ã": "a",
+    "é": "e", "è": "e", "ê": "e", "ë": "e",
+    "í": "i", "ì": "i", "î": "i", "ï": "i",
+    "ó": "o", "ò": "o", "ô": "o", "õ": "o",
+    "ú": "u", "ù": "u", "û": "u",
+    "ý": "y", "ÿ": "y",
+})
+
+
 def translit(token):
     """`(katakana, chinese)` for one Norwegian name token, or `(None, None)`."""
-    s = token.casefold().replace("aa", "å")
+    s = token.casefold().translate(BARE_VOWEL).replace("aa", "å")
     if not s or any(c not in VOWELS + "bcdfghjklmnpqrstvwxz-'’." for c in s):
         return None, None
     ja, zh, i = [], [], 0
