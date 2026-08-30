@@ -174,8 +174,8 @@ LAST	P31	Q110874
 Q141178196	P5056	LAST	P144	Q141198393	S2600	"6000000003491986941"
 #   Q141216492 Marta Eriksdatter Fotland: P5056 patronym or matronym = the item just created
 Q141216492	P5056	LAST	S2600	"6000000007974940020"
-#   Q141216383 Ingeborg Eriksdatter Bjorland: P5056 patronym or matronym = the item just created
-Q141216383	P5056	LAST	S2600	"6000000014100949863"
+#   Q141216383 Ingeborg Eriksdatter Bjorland: P5056 patronym or matronym = the item just created, qualified P144 based on Q141223834 Erik Monsen Bjorland
+Q141216383	P5056	LAST	P144	Q141223834	S2600	"6000000014100949863"
 #   Q141217392 Larine Eriksdatter Heigre: P5056 patronym or matronym = the item just created, qualified P144 based on Q141198393 Erik Erikson Stangeland
 Q141217392	P5056	LAST	P144	Q141198393	S2600	"6000000201256773828"
 
@@ -215,19 +215,19 @@ Q141219062	P734	LAST	P3831	Q28418670	S2600	"6000000012888307497"
 #   Q5580892 Fredrik Carl Boije af Gennäs: P734 family name = the item just created
 Q5580892	P734	LAST	S2600	"6000000020865415341"
 
-# 230 more name items are needed and wait for a later
+# 234 more name items are needed and wait for a later
 # run -- 10 a day is her cap, not a limit of the data:
 #   Andersson (patronymic), 3 bearer(s)
 #   Erikson (patronymic), 3 bearer(s)
 #   Hansson (patronymic), 3 bearer(s)
 #   Helgesen (patronymic), 3 bearer(s)
 #   Høle (family), 3 bearer(s)
+#   Jonsen (patronymic), 3 bearer(s)
 #   Jonson (patronymic), 3 bearer(s)
 #   Jonsson (patronymic), 3 bearer(s)
 #   Kristiansen (patronymic), 3 bearer(s)
 #   Låge-Håland (family), 3 bearer(s)
 #   Olofsson (patronymic), 3 bearer(s)
 #   Osmundsdatter (patronymic), 3 bearer(s)
-#   Voster (family), 3 bearer(s)
-#   ... and 218 more
+#   ... and 222 more
 
