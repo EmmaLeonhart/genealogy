@@ -20426,3 +20426,24 @@ filed. An export that finished on Geni and whose link was never clicked would le
 this machine — the only record is the "ready" mail, and the links do not say whether they have
 been used. Ruling that out would mean opening ~50 links, which is not worth it against zero
 evidence of a gap.
+
+## 2026-08-30 — the "IN HER EXACT WORDS" section is empty and gone; its findings are in a report
+
+Every bullet in `queue.md` § *The queued tasks, IN HER EXACT WORDS* had been worked and deleted.
+What was left was a header, her framing about not paraphrasing the items, a "done so far" line,
+and **49 lines of orphaned residue** — a table fragment whose header row had gone with its item
+(`| ---: |` with nothing above it), the structural-walk verdict counts, and the clan-join result.
+
+Residue is not a step, and the queue is for steps not yet taken. But two of those numbers were
+recorded **nowhere else**, so they went to `reports/clan-join-and-structural-walk.md` first:
+
+* **The clan join agrees completely with the About Me extraction.** Tanba 179/183 (97%), the
+  sister Izumo roster 120/202, and **0 pairs the About Me pass had not already found** — two
+  independent paths reaching the same set. `Onakatomi` is 0 of 97 because that clan has no About
+  Me links written yet, which is hers to write and not a fault in the join.
+* **The structural walk's verdicts** — AGREE 89,486, MERGE 35,737, GENI ONLY 131,366, WD ONLY
+  12,512, AMBIGUOUS 237 — against `structural-correspondence.csv` 7,841 rows and
+  `wikidata-structural-placeholders.json` 35,162 entries.
+
+Her framing went with the section because it governed items that no longer exist; `git show` has
+it, and `CLAUDE.md` already carries the rule it was protecting.

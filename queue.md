@@ -40,55 +40,6 @@ ones above them: `THE EDIT ALGORITHM`, `THE DAILY ALGORITHM`, `THE TAIL ALGORITH
 
 These are supposed to be manually added to the queue and worked on, do no just paraphrase during the rebase keep this part entirely intact. We are approaching usage limit for now.
 
-## The queued tasks, IN HER EXACT WORDS — the times are ORDERING, not schedule
-
-Emma, 2026-08-27: *"just look over the chatlog and remake all of them as queue items over this
-bullshit. The queue items all need my exact words the times were meant as ordering."*
-
-**These were cron jobs. Cron text lives only in memory and three of them were destroyed by being
-re-typed from memory, on the evening she said the exact wording is the most important thing.**
-That is why they are here. **Do not paraphrase these. Do not summarise them. Do not append
-"where to look" hints** — one of the destroyed prompts was her message alone, and the replacement
-bolted on a hypothesis that would have biased the analysis before it looked at anything.
-
-Work them **in this order**. The clock times are how she expressed the order and nothing more.
-
-**Bullets, never numbers.** Emma, 2026-08-29: *"no numbering the queue isn't really what I want I
-was just repeating your pattern"* — the numbering here was mine and she was echoing it back.
-`CLAUDE.md` § *Queue items are BULLET POINTS* already said so and gives her reason: a number is a
-promise the item will still be there, so deletion feels like renumbering everything else and items
-accumulate instead of being blasted through. Order is position; nothing else is needed.
-
-**Done and deleted so far:** the `Q141198538` `nn`-first-name item — fixed in `_carries_marker`,
-pinned by `tests/test_garborg_day_batch.py::test_a_marker_beside_a_real_name_still_takes_the_nn_path`.
-
----
-
-
-
-
-
-
-
-| ---: |
-   | AGREE | 89,486 |
-   | MERGE | 35,737 |
-   | GENI ONLY | 131,366 |
-   | WD ONLY | 12,512 |
-   | AMBIGUOUS | 237 |
-
-   `structural-correspondence.csv` **7,841 rows**, `wikidata-structural-placeholders.json`
-   **35,162**. The change from the stale version is small and real: 34,943 entries identical,
-   218 gone, 219 new. It reads as a 12,321-line diff only because the JSON is pretty-printed at
-   ~28 lines an entry.
-
-**The clan-join result, stated correctly.** Tanba 179/183 (97%) and the sister Izumo
-roster 120/202 joined — and **0 pairs that the About Me extraction had not already
-found**. That is not a null result: two independent paths, the roster join and the
-corpus-wide About Me pass, agree completely. Emma: *"it probably means we did good data
-modelling early on"*. The new fact is **Onakatomi 0 of 97** — that clan has no About Me
-links written yet, so it cannot join at all. Hers to write.
-
 ## A join that matches NOTHING must fail loudly — it has cost five findings this week
 
 Every one of these produced a plausible number that was about the instrument rather than the data,
