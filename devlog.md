@@ -20594,3 +20594,19 @@ is green now, as are `tests/test_obender_hold.py`'s four.
 Also filed `exports/fleshing-out/export-Descendants-6000000227513637856.ged` (NN Voster, 5,000
 people), and the Arne↔Bureus export attempt was abandoned — Geni refused all three midpoint
 seeds. That path becomes the one new spine instead; see `queue.md`.
+
+## 2026-08-30 — the join-sanity item closed, its lesson moved to CLAUDE.md
+
+`tests/test_join_sanity.py` was built on 2026-08-26 and is 26 guards over the real files; all 26
+pass. The queue item was therefore a record of a finished thing, and records do not belong in the
+queue — `CLAUDE.md` § *How to read this file* is explicit that a section still there is a step not
+yet taken.
+
+Its content is durable though, so it moved rather than being deleted: `CLAUDE.md` § *Our side
+could never have two children* already carried two of the five failures, and now carries all five
+plus the generalisation — **an empty or narrowed join is indistinguishable from an absence of
+data**, which is what these reports exist to detect — and the rule that came out of building the
+guard: **a guard that has not been seen to FAIL is not known to guard.** Its first version passed
+both historical bugs at 58.5% and 86.3%, because single-valued cells have no separator and
+resolve either way; restricted to genuinely multi-valued cells the separation is 100.0% against
+0.0%.

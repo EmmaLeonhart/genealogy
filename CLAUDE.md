@@ -1889,6 +1889,28 @@ the second was found. A fix that changes nothing is evidence, not reassurance.
 This is the same shape as the date-parser failures recorded above: **a parser that silently narrows
 its input instead of failing**, with downstream counts that stay plausible while the data shrinks.
 
+**It has now happened five times outside dates, in one week**, and every one printed a plausible
+number that was about the instrument rather than the data:
+
+| what | what it printed | what was true |
+| --- | --- | --- |
+| `split()` unaware of ` \| ` | 615 ambiguous slots, no `2x2` | 379,251 people arrived childless |
+| `\|` split without `.strip()` | pair count moved by **exactly zero** | every token missed the index |
+| `father[child] = husb` | census read **0** multi-parent people | 1,663 of them |
+| sex rate over `zipper-pairs.tsv` | **0.0%** for all four shapes | measured the filter, not the join |
+| `chart_name` column that does not exist | all 10 pairs *"no item held"* | 196 names carry a QID |
+
+**An empty or narrowed join is indistinguishable from an absence of data**, and absence is exactly
+what these reports are built to detect. So a join that matches nothing must fail loudly.
+`tests/test_join_sanity.py` is the guard — 26 checks over the real files.
+
+**A guard that has not been seen to FAIL is not known to guard.** Its first version asserted that
+>50% of multi-value tokens in `derived-family.csv` resolve to a person, and **both historical bugs
+passed it** — 58.5% and 86.3% — because single-valued cells have no separator and resolve either
+way while being the large majority. Restricted to cells that actually hold several values the
+separation is total: **100.0% against 0.0% for both**. That is the same mistake in miniature as
+the five it was written against, and it was caught only by deliberately reintroducing the bugs.
+
 ### Merging the two trees is a walk up the relationships, not a name search
 
 **Emma, 2026-08-15, and she is clear this has not actually been done yet:**
