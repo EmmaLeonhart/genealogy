@@ -30,6 +30,7 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
 
+import namemodel  # noqa: E402
 from namemodel import (  # noqa: E402
     FAMILY_NAME, GIVEN_NAME, MIDDLE_NAME, PATRONYM, PATRONYMIC, SERIES_ORDINAL,
     USUAL_FORENAME, classify, load_plan, statements_for,
@@ -540,3 +541,80 @@ def test_the_father_name_reaches_statements_for_and_changes_the_property():
         "stem matches his given name, so still a patronymic")
     assert gundersen("Hans Gundersen") == [FAMILY_NAME], (
         "the father carries the same token, so it is an inherited surname")
+
+
+# --------------------------------------------------------------------------------------
+# Markers in the GIVEN-NAME field, and stillbirth descriptions.
+#
+# Both fixed 2026-08-31 from Emma's `Q141224141`: *"an item was created as 'En dödfödd
+# son Bielke', which is just wrong"*, and *"please stop trying to assign names to this
+# person who does not in fact have any names at all."*
+#
+# The item is the worked case for both. Our batch created it, gave it `P735` *given
+# name* `En` -- the Swedish indefinite article -- with `P7452` *usual forename*, she
+# deleted the statements at 20:57 on 08-30, and the next batch put them back at 22:32,
+# so she deleted them a second time at 22:34.
+# --------------------------------------------------------------------------------------
+
+def test_a_marker_in_givn_is_not_a_given_name():
+    """`name_shape` did not run on `GIVN` at all, so the marker set never fired there.
+
+    15,101 people in `reports/display-names.csv` carry one of these in `GIVN`, and every
+    one was a `P735` *given name* proposal.
+    """
+    for marker in ("NN", "Unknown", "okänd", "anonyma", "n.n.", "?"):
+        usages = {u for _t, u, _o in namemodel.classify_fields(givn=marker, surn="Smith")}
+        assert "given" not in usages, f"{marker!r} in GIVN still reads as a given name"
+        assert "unknown" in usages, f"{marker!r} in GIVN is not recognised as a marker"
+
+
+def test_the_surname_survives_a_marker_in_givn():
+    """Detection is not suppression — `CLAUDE.md` § *An obvious unknown-word marker*.
+
+    An `unknown Bloomfield` keeps a label and becomes `NN Bloomfield`, so the family
+    name must still come through.
+    """
+    tokens = namemodel.classify_fields(givn="NN", surn="Bloomfield")
+    assert ("Bloomfield", "family", 0) in tokens
+
+
+def test_a_stillbirth_description_yields_no_given_name():
+    """The WHOLE `GIVN` goes, not just the stillborn word.
+
+    `En` and `son` are the rest of one phrase, not names sitting next to one. 470 people.
+    """
+    for givn in ("En dödfödd son", "dødfødt", "(--stillborn--)", "dödfött barn"):
+        tokens = namemodel.classify_fields(givn=givn, surn="Bielke")
+        assert not [t for t in tokens if t[1] == "given"], f"{givn!r} produced a given name"
+        # ...and no nickname either: the bracketed form is read as a byname by `QUOTED`,
+        # so without suppressing it too it reaches Wikidata as an `Amul` alias instead.
+        assert not [t for t in tokens if t[1] == "nickname"], f"{givn!r} produced a nickname"
+        assert ("Bielke", "family", 0) in tokens, f"{givn!r} lost the surname"
+
+
+def test_an_ordinary_name_is_untouched_by_either_rule():
+    """The guard against over-reach: neither rule may eat a real name."""
+    tokens = namemodel.classify_fields(givn="Arne Olaus", surn="Garborg")
+    assert ("Arne", "given", 1) in tokens
+    assert ("Olaus", "given", 2) in tokens
+    assert ("Garborg", "family", 0) in tokens
+
+
+def test_a_nickname_still_survives_a_normal_given_field():
+    """`Stine "Stena" Eivindsdatter` — the quoted byname is not collateral damage."""
+    tokens = namemodel.classify_fields(givn='Stine "Stena" Eivindsdatter', surn="Garborg")
+    assert ("Stena", "nickname", 0) in tokens
+    assert ("Stine", "given", 1) in tokens
+
+
+def test_fersen_needs_the_father_to_stop_being_a_patronymic():
+    """`Q141223488` — `Fersen` created as `P31` `Q110874` *patronymic*, twice.
+
+    Emma's rule, 2026-08-26: *"If father has -son or -sen then it's a surname."* The
+    classifier implements it and `build-garborg-name-items.py` was calling it without a
+    father, so every `-sen` token fell through to `patronymic`.
+    """
+    assert namemodel.patronymic_or_surname("Fersen", "") == "patronymic"
+    assert namemodel.patronymic_or_surname("Fersen", "Hans Axel von Fersen") == "family"
+    # A genuine patronymic must not be reclassified by the same rule.
+    assert namemodel.patronymic_or_surname("Olsen", "Ole Hansen") == "patronymic"

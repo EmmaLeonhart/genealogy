@@ -155,10 +155,13 @@ def main():
                                           ("givn", "surn", "nick", "marnm")}
 
     labels_of, father_of, sex_of = {}, {}, {}
-    with open(ROOT / "reports" / "derived-labels.csv", encoding="utf-8") as f:
-        for row in csv.DictReader(f):
-            if row["geni_id"] in ids:
-                labels_of[row["geni_id"]] = row.get("label_en") or row.get("label_mul") or ""
+    # **The family pass runs FIRST so the father's LABEL can be loaded in the same
+    # sweep as everyone else's.** `namemodel.patronymic_or_surname` needs the father's
+    # NAME, not his QID: without it every `-sen`/`-son`/`-datter` token falls through
+    # to `"patronymic"`, which is how `Fersen` -- a Baltic-German family name -- was
+    # created twice as an item whose `P31` reads `Q110874` *patronymic*
+    # (`Q141223488`, and `Q141223718` merged into it). Emma, 2026-08-30: *"both just
+    # completely erroneous"*. `reports/audit-q141223488.md` is the audit.
     with open(ROOT / "reports" / "derived-family.csv", encoding="utf-8") as f:
         for row in csv.DictReader(f):
             if row["geni_id"] in ids:
@@ -166,10 +169,22 @@ def main():
                 first = [x.strip() for x in (row.get("father") or "").split("|") if x.strip()]
                 if first:
                     father_of[row["geni_id"]] = first[0]
+    # The fathers are wanted for their labels alone and are NOT added to `ids`, which
+    # decides who gets an item.
+    wanted_labels = ids | set(father_of.values())
+    with open(ROOT / "reports" / "derived-labels.csv", encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            if row["geni_id"] in wanted_labels:
+                labels_of[row["geni_id"]] = row.get("label_en") or row.get("label_mul") or ""
     with open(ROOT / "reports" / "derived-facts.csv", encoding="utf-8") as f:
         for row in csv.DictReader(f):
             if row["geni_id"] in ids:
                 sex_of[row["geni_id"]] = row.get("sex", "")
+
+    # `classify_fields(**person)` reads `father_name`, so it has to be in the dict.
+    for geni_id, person in fields.items():
+        dad = father_of.get(geni_id)
+        person["father_name"] = labels_of.get(dad, "") if dad else ""
 
     plan = load_plan()
     need = collections.Counter()
@@ -260,7 +275,8 @@ def main():
                 sts, _notes = statements_for(
                     labels_of.get(geni_id, ""), local, geni_id,
                     father_qid=have.get(dad) if dad else None,
-                    fields=person, sex=sex_of.get(geni_id, ""))
+                    fields=person, sex=sex_of.get(geni_id, ""),
+                    father_name=person.get("father_name", ""))
             except Exception as exc:                                   # noqa: BLE001
                 lines.append(f"#   {qid}: the name model failed -- {exc}")
                 continue

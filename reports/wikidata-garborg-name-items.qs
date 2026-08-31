@@ -49,30 +49,25 @@ Q141223431	P734	LAST	S2600	"6000000226904207910"
 #   Q141224789 Jon Olsen Trevland: P734 family name = the item just created
 Q141224789	P734	LAST	S2600	"6000000226904750852"
 
-# Jenssen -- patronymic, 4 bearer(s) in the batches
+# Erikson -- patronymic, 3 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Jenssen"
-LAST	Len	"Jenssen"
-#   set the mul label to "Jenssen"
-LAST	Lmul	"Jenssen"
+#   the item just created: set the en label to "Erikson"
+LAST	Len	"Erikson"
+#   set the mul label to "Erikson"
+LAST	Lmul	"Erikson"
 #   P31 instance of = Q110874 patronymic
 LAST	P31	Q110874
-#   Q141216639 Olufine Bergithe Ekman: P5056 patronym or matronym = the item just created, qualified P144 based on Q141223516 Hans Otto Kristian Jenssen
-Q141216639	P5056	LAST	P144	Q141223516	S2600	"6000000014196479728"
-#   Q141223517 Hilma Petrine Jenssen: P5056 patronym or matronym = the item just created, qualified P144 based on Q141223516 Hans Otto Kristian Jenssen
-Q141223517	P5056	LAST	P144	Q141223516	S2600	"6000000014196669652"
-#   Q141225138 Iver Emil Jenssen: P5056 patronym or matronym = the item just created, qualified P144 based on Q141223516 Hans Otto Kristian Jenssen
-Q141225138	P5056	LAST	P144	Q141223516	S2600	"6000000014196751178"
-#   Q141225805 Louise Helmine Jenssen: P5056 patronym or matronym = the item just created, qualified P144 based on Q141223516 Hans Otto Kristian Jenssen
-Q141225805	P5056	LAST	P144	Q141223516	S2600	"6000000014196858070"
+#   Q141198503 Tore Erikson Håland: P5056 patronym or matronym = the item just created
+Q141198503	P5056	LAST	S2600	"6000000003095166856"
+#   Q141216607 Hans Erikson Øvre Håland: P5056 patronym or matronym = the item just created
+Q141216607	P5056	LAST	S2600	"6000000009152082622"
+#   P5056 patronym or matronym = the item just created
+Q141216607	P5056	LAST	S2600	"6000000009152082622"
 
-# 269 more name items are needed and wait for a later
+# 256 more name items are needed and wait for a later
 # run -- 3 a day is her cap, not a limit of the data:
-#   Andersson (patronymic), 3 bearer(s)
-#   Erikson (patronymic), 3 bearer(s)
 #   Garfve (family), 3 bearer(s)
-#   Hansson (patronymic), 3 bearer(s)
 #   Helgesen (patronymic), 3 bearer(s)
 #   Høle (family), 3 bearer(s)
 #   Jonsen (patronymic), 3 bearer(s)
@@ -81,5 +76,8 @@ Q141225805	P5056	LAST	P144	Q141223516	S2600	"6000000014196858070"
 #   Låge-Håland (family), 3 bearer(s)
 #   Magnusson (patronymic), 3 bearer(s)
 #   Nedre (family), 3 bearer(s)
-#   ... and 257 more
+#   Olofsson (patronymic), 3 bearer(s)
+#   Osmundsdatter (patronymic), 3 bearer(s)
+#   Rasmussen (patronymic), 3 bearer(s)
+#   ... and 244 more
 

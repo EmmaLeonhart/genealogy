@@ -21110,3 +21110,83 @@ not the 10 the section quoted). Records of finished work in a queue section are 
 named on 08-30 — *"What the fuck are you not clearing the finished tasks from the queue?"* — so
 the built steps now point at the scripts, which are the authority on their own caps, and the one
 genuinely outstanding line (the synoptic half of the union does not exist) is all that remains.
+
+## 2026-08-31 — the name classifier: a marker in `GIVN`, a stillbirth description, and a father never passed
+
+Three of Emma's 08-30 complaints turn out to be two defects in one place, and both are now fixed
+with tests. `reports/audit-q141223488.md` and `reports/audit-q141224141.md` are the audits.
+
+### `Q141223488` *Fersen* — the father test never ran
+
+`Fersen` was created twice as an item whose `P31` reads `Q110874` *patronymic*
+(`Q141223718` redirects into `Q141223488`). It is the Baltic-German family name, and
+`namemodel.PATRONYMIC` — `.+(sen|son|sson|datter|sdatter|dotter)$` — cannot tell it from
+`Hansen` on morphology.
+
+The module already had the answer. `patronymic_or_surname()` implements **her own test of
+2026-08-26**, *"If father has -son or -sen then it's a surname"*, and it works:
+
+    ("Fersen", "")                      -> patronymic
+    ("Fersen", "Hans Axel von Fersen")  -> family
+    ("Olsen",  "Ole Hansen")            -> patronymic
+
+**`scripts/build-garborg-name-items.py` never gave it a father.** Its `fields` dict held
+`givn/surn/nick/marnm` only, so `father_name=""` and the function returned `patronymic` on its
+first line — for every such token in every batch. It built `father_of` and used it for the
+father's *QID* alone, and never passed `father_name=` to `statements_for` either, whose own
+comment says that argument *"is what turns a `-sen` token into the right kind of statement."*
+
+Her diagnosis was right to the word: *"the father test either did not run or did not decide."*
+It did not run.
+
+**Verified against her three named cases.** `Christian Frederik Bergersen` and
+`Georg August Bergersen`, father **Gunder Bergersen**, both flip `Bergersen` patronymic →
+**family** — the father carries the token himself, which is precisely her *"linked to the father
+who demonstrably had a different given name and had that patronymic"*. The third, `Q141223548`
+*Per Nilsson*, is **not** fixed by this and the queue item is cut back to it: our record has
+`Nilsson` in `_MARNM` and nothing in `SURN`, so it reads as `married` before and after, and the
+`P5056` came from somewhere else that is not yet identified.
+
+**In the next batch** `Jenssen` was queued as a patronymic to be attached with `P5056` to four
+people whose father is `Hans Otto Kristian Jenssen`. All four statements were wrong and are gone;
+the carry-forward fell 269 → 258 as tokens merged into family-name entries that already existed.
+
+### `Q141224141` "En dödfödd son Bielke" — we re-added what she deleted
+
+    20:51  our batch creates the item
+    20:52  our batch adds P735 -> Q69523615 "En" (P7452 usual forename) and P735 -> Q20111831
+    20:57  SHE REMOVES BOTH BY HAND
+    22:32  OUR BATCH ADDS THEM BACK
+    22:34  SHE REMOVES THEM AGAIN
+
+`Q69523615` is the given name **`En`** — the Swedish indefinite article. Geni records the child as
+`En dödfödd son /Bielke/`, *a stillborn son*.
+
+**The label half was already right** — `mul` reads `NN Bielke`, which is the NN algorithm working.
+The name-item half had two holes:
+
+- **The stillborn vocabulary was documented and never implemented.** `scripts/labels.py` carries a
+  full comment block about this exact item, quoting her and counting the corpus — and
+  `dödfödd`, `dødfødt`, `stillborn` are in **neither** `labels.WORDS_MEANING_UNKNOWN` nor
+  `namemodel.UNKNOWN_MARKERS`. A note that claims a fix is worse than no note.
+- **`name_shape` never ran on `GIVN`.** It ran on `SURN` and `_MARNM` only, so every marker already
+  in the set became a given name in the given-name field: `NN`, `Unknown`, `okänd`, `anonyma`.
+
+**Measured over `display-names.csv`: 15,101 people** carry a `GIVN` token that is now `unknown`
+and was a `P735` proposal — `nn` 7,527, `n.n.` 3,871, `unknown` 1,608, `?` 1,405 — and **470**
+have a `GIVN` that is a stillbirth description.
+
+`DESCRIPTION_MARKERS` is deliberately stronger than `UNKNOWN_MARKERS`: a marker suppresses its own
+token, a description suppresses the **whole** given-name field, because `En`, `son`, `barn` and
+`gossebarn` are the rest of one phrase. Her sentence is the authority — *"does not in fact have
+any names at all."* The surname is untouched, so `Bielke` still becomes `P734`.
+
+### Two things deliberately not done
+
+**The duplicate `P5056` on `Q141216607`** — `Hans Erikson` carries `Erikson` in both `GIVN` and
+`SURN`, so `classify_fields` returns the pair twice and the statement is emitted twice. Left
+alone: `CLAUDE.md` § *Duplication is a DOUBLE-EDGED SWORD* forbids adding a de-duplication pass,
+and QuickStatements no-ops the repeat.
+
+**The already-created wrong items** — `Q141223488` still says patronymic. That is a Wikidata edit
+and is listed in `reports/merges-to-do.md`.

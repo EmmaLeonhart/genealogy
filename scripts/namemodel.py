@@ -121,6 +121,47 @@ UNKNOWN_MARKERS = {
     "okänd", "ukjent", "ukendt", "unknown", "n.n.", "nn", "no name", "namn okänt",
 }
 
+#: **A stillborn child is DESCRIBED, not named, and the description is not a name.**
+#: Emma, 2026-08-30, on `Q141224141`: *"please stop trying to assign names to this person
+#: who does not in fact have any names at all."* Geni records him as
+#: `En dödfödd son Bielke` -- Swedish for *a stillborn son* -- and the batch emitted
+#: `P735` *given name* `En`, the indefinite article, carrying `P7452` *usual forename*.
+#:
+#: **This is stronger than `UNKNOWN_MARKERS` and that is the point.** A marker suppresses
+#: its own token; a description marker suppresses the WHOLE given-name field, because the
+#: words around it -- `En`, `son`, `barn`, `gossebarn` -- are the rest of one phrase rather
+#: than names that happen to sit nearby. Her sentence is the authority for going that far:
+#: the person has no names at all.
+#:
+#: **Measured over `reports/display-names.csv`, 2026-08-31: 475 people.** `dødfød` 212,
+#: `dødfødt` 208, `stillborn` 135, `dödfödd` 112, `dödfött` 19, `dødfødte` 1, `dödfödda` 1
+#: (a `GIVN` can hold more than one form, so these sum past 475). The surname is untouched
+#: and still becomes a `P734` *family name*, which is why `Bielke` survives.
+#:
+#: **The reading taken rather than asked** (`CLAUDE.md` § *Working the queue: GUESS*): a real
+#: given name recorded beside a stillborn word would be dropped with it. It would be
+#: falsified by a `GIVN` such as `Anna dödfödd`, and there is none -- the co-occurring tokens
+#: measured are all structural (`son` 43, `barn` 17, `gossebarn` 15, `daughter` 14).
+DESCRIPTION_MARKERS = {
+    "dødfød", "dødfødt", "dødfødte", "dødfodt",
+    "dödfödd", "dödfött", "dödfödda", "dodfodd",
+    "stillborn", "stillbirth",
+}
+
+
+def _bare_word(token: str) -> str:
+    """The token stripped of the punctuation Geni wraps these in.
+
+    `(--stillborn--)` occurs 11 times and `(dødfødt)` 6, so a plain casefold misses both.
+    """
+    return re.sub(r"[^0-9A-Za-zÀ-ÿ]+", "", token).casefold()
+
+
+def is_description(givn: str) -> bool:
+    """True when this `GIVN` field is a description of a stillbirth rather than a name."""
+    return any(_bare_word(t) in DESCRIPTION_MARKERS
+               for t in re.split(r"\s+", (givn or "").strip()) if t)
+
 
 def name_shape(token):
     """`(bare_token, usage_or_None)` -- brackets stripped, particles and markers named.
@@ -388,8 +429,20 @@ def classify_fields(givn: str, surn: str, nick: str = "",
                  for m in QUOTED.finditer(raw_givn)]
     plain = QUOTED.sub(" ", raw_givn)
 
+    # **A stillbirth description yields no given names at all.** `DESCRIPTION_MARKERS`
+    # carries the reasoning; `Bielke` still reaches `SURN` below, so the person keeps a
+    # family name and an `NN` label and loses only the words that were never names.
     ordinal = 0
-    for token in [t for t in re.split(r"\s+", plain.strip()) if t]:
+    for token in ([] if is_description(raw_givn)
+                  else [t for t in re.split(r"\s+", plain.strip()) if t]):
+        # **`name_shape` runs on `GIVN` too.** It did not until 2026-08-31, so every marker
+        # already in `UNKNOWN_MARKERS` became a `given` name when it sat in the given-name
+        # field: `NN`, `Unknown`, `okänd` and `anonyma` each produced a `P735` proposal.
+        # The set existed and the field simply never consulted it.
+        token, shape = name_shape(token)
+        if shape:
+            out.append((token, shape, 0))
+            continue
         if PATRONYMIC.match(token):
             out.append((token, patronymic_or_surname(token, father_name), 0))
         else:
@@ -415,6 +468,11 @@ def classify_fields(givn: str, surn: str, nick: str = "",
             token, shape = name_shape(raw)
             out.append((token, shape or "married", 0))
 
+    # A description yields no nickname either. `(--stillborn--)` occurs 11 times and the
+    # bracket makes `QUOTED` read it as a byname, so without this it survives the
+    # suppression above and reaches Wikidata as an `Amul` alias instead of a `P735`.
+    if is_description(raw_givn):
+        nicknames = []
     for token in nicknames + [t for t in [" ".join((nick or "").split())] if t]:
         out.append((token, "nickname", 0))
 
