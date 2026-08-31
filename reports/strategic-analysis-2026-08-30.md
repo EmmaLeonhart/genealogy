@@ -16,11 +16,15 @@ below come from Wikidata's own API, taken after the day closed.
 | `mw-manual-revert` | 14 | **edits the software identified as reverting somebody** |
 | `mw-undo` | 6 | undo button |
 
-**The reverts did register, which corrects the working assumption.** The tag does not depend on
-a source being added. `OBender12`'s removals carry `mw-manual-revert`; our re-additions carry
-`mw-reverted`; and 14 of our own edits carry `mw-manual-revert`, meaning MediaWiki recorded the
-account reverting him. On `Q141205912` that is explicit — our 22:59 `P734` was reverted by him
-at 21:26, and our 23:00 edit is tagged as a manual revert of his.
+**The reverts did register, which corrects the working assumption that they did not.** The tag
+does not depend on a source being added. `OBender12`'s removals carry `mw-manual-revert` and our
+re-additions carry `mw-reverted`.
+
+**But the direction matters and the tag alone does not show it.** 14 of our edits also carry
+`mw-manual-revert`, which looks at first like the account reverting him. Checking the preceding
+revision on every one: **all 14, and all 6 undos, reverted `日巫女`.** On `Q141205912` our 23:00
+edit reverts our own 22:59 addition — which happens to restore his version. Undoing your own
+tool's edit is tagged identically to reverting somebody else.
 
 **The mitigating fact is in the same data.** 96% of the day carries the QuickStatements OAuth
 tag, and the re-additions carry it too. A reader following the sequence sees a tool re-emitting
