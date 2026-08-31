@@ -55,6 +55,11 @@ SIBLING_CAP = 10
 SPENT_BATCHES = {
     "wikidata-garborg-day-1.qs": "the first day batch, 9 creations + 362 statements",
     "wikidata-garborg-day-2026-08-25-run.qs": "archived 2026-08-25 when the live file was rebuilt",
+    # A one-off from 2026-08-25 -- Emma: *"add the parents of Jon Samuelsen Raustad"*. Its own
+    # header records that neither parent's Geni id was on any item when it was written. Both now
+    # hold one (`Q141178381`, `Q141178380`) and both are in the ledger, so running it is what
+    # minted them: it is spent by the same evidence that would otherwise flag it.
+    "wikidata-jon-parents.qs": "the Jon Samuelsen Raustad parents, run 2026-08-25",
 }
 
 BATCHES = sorted(REPORTS.glob("*.qs"))
@@ -304,10 +309,24 @@ def test_no_two_batches_create_the_same_person():
 @pytest.mark.skipif(not P2600_SNAPSHOT.exists(),
                     reason="no local P2600 snapshot; this check is best-effort")
 def test_no_creation_is_of_a_person_wikidata_already_links():
-    """Best-effort only — read the module docstring before trusting it.
+    """No batch we are about to RUN would mint a second item for somebody.
 
-    The snapshot is not current, so this catches the ordinary case and would NOT
-    have caught the Garborg duplicate, whose items were created after the dump.
+    **The snapshot is current again as of 2026-08-30**, and that changed what this test is
+    worth. `scripts/refresh-p2600-all.py` rebuilt `out/wikidata/p2600-all.tsv` from live
+    Wikidata; before that it was a 2026-08-09 offline rebuild, and this docstring rightly said
+    the check *"would NOT have caught the Garborg duplicate, whose items were created after the
+    dump"*. It caught three on the first run against fresh data — `wikidata-garborg-day.qs` held
+    `CREATE` blocks for Jacob Knutson Skiftun, Kristina Eriksdotter Ångerman and Louise Helmine
+    Jenssen, each of whom **already had two items**, and none of whom was in the ledger, so the
+    generator could not see them. Regenerating on the refreshed ledger dropped all three.
+
+    **Spent batches are excluded, for the reason `SPENT_BATCHES` exists**, and the omission here
+    was a gap rather than a decision: the sibling test above applies it and this one did not.
+    An executed batch trips this check *by construction* — running it is what gave those people
+    items — so comparing one against a current snapshot asks whether the past happened. That is
+    not a defect to catch; it is the batch having worked. Without the exclusion the test can
+    never be green again once anything is run, which is the shape of an assertion that has to be
+    deleted rather than fixed.
     """
     known = set()
     with open(P2600_SNAPSHOT, encoding="utf-8") as f:
@@ -317,6 +336,8 @@ def test_no_creation_is_of_a_person_wikidata_already_links():
 
     offenders = []
     for path in BATCHES:
+        if path.name in SPENT_BATCHES:
+            continue
         for ids in creations(path):
             for g in ids:
                 if g in known:

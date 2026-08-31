@@ -20900,3 +20900,42 @@ clearest argument yet that the refresh was overdue.
 
 The other `.qs` files the guard flags are historical run files — she executed them, so Wikidata
 links those people now, and a batch that has already run will always trip this check afterwards.
+
+## 2026-08-31 — the daily batch rebuilt on refreshed data; the triplicate risk is gone
+
+The red test from the previous tick was not a code defect. `build-garborg-day.py` already guards
+against creating somebody Wikidata links — it reads `out/wikidata/p2600-all.tsv` — but the batch
+on disk had been generated against the **2026-08-09** copy of that file, before last night's
+refresh.
+
+**The ledger refresh settles it.** `reports/garborg-qids.tsv` went 849 → 863 rows, and all three
+of the people the guard flagged came in with their QIDs:
+
+    Jacob Knutson Skiftun          6000000177945982827  Q141225730
+    Kristina Eriksdotter Ångerman  6000000038458498753  Q141225780
+    Louise Helmine Jenssen         6000000014196858070  Q141225805
+
+So the generator can now see them and links rather than creates. `CLAUDE.md` § *The ledger
+refresh is PART OF THE RUN* is exactly this failure: a stale ledger does not look like an error,
+it looks like work to do, and the work it invents is re-creating what she has already made.
+
+**Rebuilt with `scripts/build-daily-batch.py --refresh-ledger`:**
+
+- individuals — **13 creations, 19 links**; 919 carried forward
+- names — **3 name items** (the new cap of 3; 269 carried) plus 14 statements linking existing
+  people to them in the same run
+- three of the four spines report every step already has an item; the Charlemagne spine advanced
+  to step 24, `Åsulv Skulesson`
+
+Verified after the rebuild: **0 `CREATE` blocks for a person Wikidata already links**, in either
+file, and none of the three appears as a creation any more.
+
+**Two spent batches recorded, which is what left the guard red.** The check scanned every `.qs`
+in `reports/`, including files already executed — and an executed batch trips it *by
+construction*, since running it is what gave those people items. `SPENT_BATCHES` exists for
+precisely that and its sibling test applies it; this one did not, which was a gap rather than a
+decision. Added `wikidata-jon-parents.qs`, whose own header records that neither parent had an
+item when it was written and both now hold `Q141178381` and `Q141178380`.
+
+**No assertion was loosened.** The alternative was an assertion that can never be green again
+once anything is run, which is a test to fix rather than to delete. 335 pass.
