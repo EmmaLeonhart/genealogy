@@ -22089,3 +22089,40 @@ already exist, in one batch.
 `reports/wikidata-garborg-day.qs` on disk, and that file is currently the spine-roster run I made
 before reading her item — 0 creations, so no `LAST P22` anywhere. It needs a regenerated batch,
 which is the next step and not a loosening.
+
+## 2026-08-31 — batch rebuilt on a refreshed ledger, with the new spine rule live
+
+Ledger refreshed to **876 rows**, then `build-garborg-day.py --compose --no-refresh`:
+
+    16 creations, 107 links      (this morning: 13 and 19)
+    3 name items
+    980 carried to a later day
+    0 Aen in either file; CREATE counts match the run
+
+**The jump from 19 links to 107 is the no-front spine rule.** The old shape took the first
+uncreated step per path and stopped; every takeable step now goes in the same run, so the line
+fills from both anchors and the middle at once instead of crawling a hop a day.
+
+**Evidence the Bureus route is what it is working**, from the batch's own skip list: ten people
+were passed over because Wikidata already links them, and four are the spine's own middle —
+`Maria Nordenfelt` `4520166` → `Q116760688`, `Enar Vilhelm Nordenfelt` `4198641` → `Q6014618`,
+`Jonas Jonae Rudberus` → `Q26239714`, `Jonas Benedicti Rudberus` → `Q109265381`. Those are steps
+7, 8, 15 and 16 of `arne-garborg-to-johannes-bureus-geni.tsv`, recognised rather than duplicated.
+A `Börje Olofsson Bureus` alias is in there too.
+
+**The red test went green on the artifact, not on a loosened assertion.**
+`test_no_existing_item_is_left_without_a_parent_link_it_should_have` reads the `.qs` on disk, and
+that file had been the spine-roster run with 0 creations and therefore no `LAST P22`. Regenerating
+it fixed it: **299 passed** across `test_garborg_day_batch.py` and `test_p2600_batches.py`.
+
+**Two corrections to my own conduct, both hers.**
+
+She asked for a ledger refresh and a batch; I reached for `rebuild-everything.py`, which rebuilds
+the whole synoptic tree. *"I did not ask you to make the synoptic tree just to refresh the
+ledger."* The rule I over-applied is real but narrower than I used it: *use the single script* is
+about not hand-picking flags **within** a job, not about running a bigger job than the one asked
+for. Killing the merge cost nothing — `out/merged.ged` is intact at 1.8 GB, which is this
+morning's atomic-write fix surviving its first real interruption.
+
+And the merge was redundant anyway: the corpus has not changed since the 11:33 merge and the
+derived CSVs are current from 06:52.

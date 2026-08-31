@@ -53,29 +53,6 @@ counts are not stale when she next sits down to it.
 **The merges themselves are hers now, not mine** — that is what the file is for. The Izumo
 three are cleared and the browser pass is closed.
 
-## 3. COMPREHENSIVE REBUILD FROM A FRESH LEDGER, THEN ATTACH THE QUICKSTATEMENTS
-
-**Her instruction, 2026-08-31**, as the item after the spine: rebuild everything from a new
-ledger, generate the QuickStatements, **attach them to the chat**, and move on to the next queue
-item.
-
-**One command, because discretion is what breaks this** — her ruling the same day: *"we're
-supposed to do large single script workflows that do everything all at once so you have as little
-discretion as possible since your discretion just fucks stuff over in running things."*
-
-    python scripts/rebuild-everything.py
-
-It refreshes the ledger, merges, rebuilds display-names, the three derived CSVs and the packed
-`.gz`, and ends by regenerating the batch. **Do not hand-run the steps** and do not add flags:
-the `-o` that was in this script until 2026-08-31 was redundant *and* silently stopped
-`reports/merge.md` regenerating, which is exactly the failure this rule exists against.
-
-**Then attach `reports/wikidata-garborg-day.qs` and `reports/wikidata-garborg-name-items.qs` to
-the chat**, with the run order — individuals, then names, then relationships.
-
-**Check before attaching**, every time: `0` occurrences of `Aen`, and the `CREATE` count matching
-what the run reported.
-
 ## ⛔ THE DAILY ALGORITHM — her full spec, 2026-08-26. SPECIFICATION, not a step
 
 `docs/dictation/2026-08-26-daily-algorithm.md` is her dictation verbatim;
