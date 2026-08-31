@@ -22418,3 +22418,26 @@ and fails loudly if the line count moves or a self-citation survives.
 `tests/test_p2600_batches.py::test_no_geni_id_statement_is_sourced_to_its_own_geni_id` pins both
 paths across every unspent batch. **It was red when written and stayed red until the files were
 fixed** — the second file is how it was found, not something I already knew. 300 pass.
+
+## 2026-08-31 — three items at the front, and the ledger/tree defaults written down
+
+Emma added three, to sit after the item being worked:
+
+- **The generator must produce the parent merge candidates.** Today the duplicate guard refuses
+  a creation, prints a line, and the person falls into the carry-forward; the list she actually
+  adjudicated from was assembled by a one-off script afterwards. That is why 913 blocked parents
+  sat unexamined — nothing put them in front of her. The working parts exist
+  (`list-rejected-parents.py`, the GUI); the item is moving them into the run.
+- **Report how far this run closed the Arne↔Bureus spine gap**, from the files rather than from
+  the run's own log.
+- **Run the generator** with the ledger refreshed and the tree untouched, after the other two,
+  so the candidates it emits are the first from the new shape.
+
+**And her rule, which had been implicit and cost a killed merge to learn:**
+`CLAUDE.md` § *Regenerating QuickStatements ALWAYS regenerates the ledger*. Two inputs on
+opposite defaults — the ledger every time, because she edits Wikidata by hand continuously and a
+stale one re-creates her own work; the synoptic tree almost never, because it is ~14 minutes at
+~17 GB and changes nothing unless `exports/` has moved. The check for the exception is one line:
+is any `.ged` newer than `out/merged.ged`?
+
+54 → 57 sections.

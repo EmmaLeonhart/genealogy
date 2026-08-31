@@ -53,6 +53,43 @@ counts are not stale when she next sits down to it.
 **The merges themselves are hers now, not mine** — that is what the file is for. The Izumo
 three are cleared and the browser pass is closed.
 
+## The generator must PRODUCE the parent merge candidates, not have them built by hand
+
+Her instruction, 2026-08-31, and the shape of it is that the adjudication file becomes an
+**output of the run** rather than something assembled separately when somebody notices.
+
+Today the duplicate guard refuses a creation, prints a line, and the person is lost to the
+carry-forward. The candidate list she actually answered from — `reports/rejected-parents.tsv`
+via `out/gui-data.json` — was produced by a one-off script after the fact. That is why 913
+blocked parents sat unexamined: nothing put them in front of her.
+
+- **Emit the candidates as part of the run.** Every parent the guard rejects, with the item
+  its child already names, the evidence on both sides (parents, spouses, children, and the
+  child that triggered the block), written each time the batch is built.
+- **Fold her answers back in.** `reports/emma-judgments.tsv` is already read by `ledger()`;
+  the generator should carry the whole loop, so an answered pair never reappears.
+- **Regenerate the ledger. Do NOT rebuild the synoptic tree.** See `CLAUDE.md`
+  § *Regenerating QuickStatements always regenerates the ledger*.
+
+`scripts/list-rejected-parents.py` and the GUI in `out/parent-review.template.html` are the
+working parts; this is about moving them into the run rather than rewriting them.
+
+## Report how far this run closed the spine gap
+
+`paths/arne-garborg-to-johannes-bureus-geni.tsv` was the batch's main target and the no-front
+rule was supposed to fill it from both ends and the middle at once. Measure what actually
+happened: which steps had items before this run, which have them now, which are creations in
+`reports/wikidata-garborg-day.qs`, and what is still open.
+
+Numbers from the files, not from the run's own log.
+
+## Run the generator: ledger refreshed, synoptic tree untouched
+
+    BOT_CONTACT=... PYTHONPATH=src python scripts/build-daily-batch.py --refresh-ledger
+
+Then attach both `.qs` files. Runs after the two items above, so the merge candidates it
+produces are the first ones the new shape emits.
+
 ## ⛔ THE DAILY ALGORITHM — her full spec, 2026-08-26. SPECIFICATION, not a step
 
 `docs/dictation/2026-08-26-daily-algorithm.md` is her dictation verbatim;

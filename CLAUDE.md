@@ -708,6 +708,29 @@ not be written and wrong to stop there: emptying it leaves an item with no way t
 be read at all, which is the same objection. **Neither marker is a label; neither
 person is left unlabelled.**
 
+### Regenerating QuickStatements ALWAYS regenerates the ledger. It almost never rebuilds the tree
+
+**Emma, 2026-08-31:** *"we absolutely never need to regenerate quickstatements without
+regenerating the ledger, but 90% of the time we are not gonna want to rebuild the synoptic
+tree."*
+
+Two separate inputs, and they are on opposite defaults:
+
+- **The ledger, `reports/garborg-qids.tsv` — ALWAYS.** It is built from her Wikidata
+  contributions, and she edits by hand continuously, so a batch built on a stale one re-creates
+  what she has already made. `--refresh-ledger` is not an option to weigh; it is what
+  regenerating means. § *The ledger refresh is PART OF THE RUN* is the same rule from the other
+  side — a batch at 17:33 on a ledger from hours earlier reported the Charlemagne spine stuck at
+  step 8 while she had just created the person at step 13.
+- **The synoptic tree — almost never.** `scripts/rebuild-everything.py` merges the whole corpus:
+  ~14 minutes, ~17 GB, and it has been killed mid-run more than once. It changes nothing unless
+  `exports/` has changed, and asking for a batch is not asking for it. Emma, 2026-08-31: *"I did
+  not ask you to make the synoptic tree just to refresh the ledger."*
+
+**So the default command is `build-daily-batch.py --refresh-ledger`, and the check for the other
+10% is one line:** is any `.ged` newer than `out/merged.ged`? If none is, the merge is redundant.
+If one is, say so and ask before merging rather than doing it.
+
 ### The batches are a SEQUENCE. Her algorithms are invariants, not walls
 
 **Emma, 2026-08-26, and it is a criticism of a pattern rather than of one bug:** *"in every
