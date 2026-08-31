@@ -161,6 +161,34 @@ def ledger():
     except Exception as exc:                                        # noqa: BLE001
         print(f"WARNING: entity_resolution.md not folded into the ledger ({exc}) -- "
               f"a hand-asserted item could be created a second time")
+
+    # **Emma's own identity confirmations, and they have to be READ, not appended once.**
+    #
+    # On 2026-08-31 she judged 13 blocked creations to be the same person as an existing
+    # Wikidata item, one `AskUserQuestion` each, and asked: *"these quickstatements are gonna be
+    # permanent right? Like the geni things aren't a random thing you added that will disappear
+    # next run right"*. They were exactly that — appended to `reports/wikidata-garborg-day.qs`,
+    # which this script rewrites from scratch every run. The next regeneration would have
+    # silently dropped all 13 and gone back to proposing the creations she had just ruled out.
+    #
+    # `reports/emma-judgments.tsv` is the durable record — `CLAUDE.md` § *The chain of
+    # provenance* already calls it the place her hand verdicts live, and says they are nodes in
+    # the provenance graph rather than a side note. Folding it in here makes a confirmation
+    # permanent in the only way that counts: the person is never created again, the item becomes
+    # something statements can point AT, and it anchors its neighbours.
+    try:
+        judgments = ROOT / "reports" / "emma-judgments.tsv"
+        if judgments.exists():
+            with open(judgments, encoding="utf-8") as f:
+                for row in csv.DictReader(f, delimiter="	"):
+                    if row.get("verdict") != "SAME":
+                        continue
+                    g, q = (row.get("geni_id") or "").strip(), (row.get("qid") or "").strip()
+                    if g.isdigit() and q.startswith("Q"):
+                        out.setdefault(g, q)
+    except Exception as exc:                                        # noqa: BLE001
+        print(f"WARNING: emma-judgments.tsv not folded into the ledger ({exc}) -- "
+              f"a person she has confirmed could be created a second time")
     return out
 
 
