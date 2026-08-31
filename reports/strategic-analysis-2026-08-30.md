@@ -53,10 +53,22 @@ watching us; we walked into a workflow that was already running. Our people neve
 Our *name items* did, because a name item is shared infrastructure — one item is referenced by
 many people, so anyone maintaining that vocabulary sees every duplicate immediately.
 
-**This is the concrete case for treating surname creation as high-risk.** It is not that the
-statements are wrong. It is that name items have an audience, and person items in an obscure
-Norwegian farm lineage do not. A duplicate person is invisible; a duplicate surname is a
-collision in somebody's maintenance queue the same day.
+**The cleanup itself is routine, not scrutiny.** Emma's correction, and it is her model of the
+ecosystem rather than an inference from four hours of history: a redirect gets re-pointed to the
+surviving QID automatically, and duplicate statements are removed by a bot. The duplicates would
+have been resolved without anyone forming a view about the account. A third editor,
+`Anvilaquarius`, added `P1889` *different from* to `Q141180409` on 08-29 — the same ordinary
+disambiguation traffic.
+
+So the earlier framing here — a duplicate surname landing in "somebody's maintenance queue" —
+overstated a maintenance event as attention. It is the same category as § *A duplicate parent
+value is SELF-HEALING* in `CLAUDE.md`.
+
+**What remains true about surname risk is narrower and still holds.** A name item is shared
+infrastructure: it is referenced by many people, so it is *visible* in a way an obscure person
+item is not. Visibility is not the same as suspicion, and the automation absorbs the errors —
+but it is where an account's output meets other editors' work, and that is the surface worth
+limiting.
 
 ## The proposed hold, costed
 
