@@ -2478,7 +2478,11 @@ takes, and the campaign is over the moment the absent list is empty.
 to 5000 people, so one seeded anywhere inside the network sweeps in many of them at once. Seeding
 each absent person in turn would be mostly redundant work.
 
-`scripts/bure-coverage.py` is the re-measure and **runs after every export**. It writes
+**The campaign is COMPLETE as of 2026-08-31: 251 of 251 covered**, and
+`reports/bure-to-export.tsv` is down to its header row. So the re-measure below is no longer
+a standing obligation after every export — run it only if the roster itself changes.
+
+`scripts/bure-coverage.py` is the re-measure and **ran after every export**. It writes
 `reports/bure-coverage.tsv` (all 251, with where each was found) and rewrites
 `reports/bure-to-export.tsv` to the still-absent ones, which is what the loop consumes. It reads
 `reports/derived-labels.csv` for the merged tree plus a raw scan of every `.ged` **modified more

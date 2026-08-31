@@ -21687,3 +21687,34 @@ region that was already fully expanded; a coverage measurement taken mid-walk; a
 that the walk would close the 25,000 missing parents in shards 1200-1600. Each was a short run or
 a partial state mistaken for a settled one. The root is the stopping rule, which ends on one empty
 `--scan-per-round` slice without checking the cursor reached the end of the store.
+
+## 2026-08-31 — sweep: the Swentepolk export happened, and the Bureätten campaign is over
+
+**`Did the Swentepolk export ever actually happen?` — it did, on all four of its own checks.**
+Emma wrote that item because a cron had been watching an export stuck at 8% and *"cron text lives
+only in memory and dies with the session"*. The checks it named, run today:
+
+- a `.ged` exists and is **committed** — `exports/fleshing-out/export-Forest-6000000227491932881.ged`,
+  25 MB, in `25d1842c`. Filed under `fleshing-out/` rather than the `exports/obotrite/` the item
+  anticipated, which is a filing difference and not a failure;
+- **`@I6000000007716541890@` is in it** — Swentepolk himself, which the item calls *"the success
+  condition; a file that arrived without him did not do its job"*;
+- his father `@I6000000007718311626@` is in it too, 4 occurrences. The log's own note records that
+  **0 exports held either man beforehand**;
+- the outcome line was the one gap: `reports/mass-export-log.tsv` still read `submitted`. Now
+  updated to `done` with the file path and the verification, so the row records what happened
+  rather than what was started.
+
+Worth noting *why* the export needed a seed at all, since the log explains it and the item does
+not: Swentepolk cannot be exported directly — Geni answers *"You are not allowed to export that
+profile"* for one you do not manage, and his manager is a third party. The seed was a tier-3
+placeholder per `docs/export-seed-rules.md`.
+
+**The Bureätten coverage campaign is complete: 251 of 251.** `reports/bure-to-export.tsv` is down
+to its header row and every row of `reports/bure-coverage.tsv` reads `yes`. `CLAUDE.md`
+§ *The Bureätten campaign ends on COVERAGE* said *"once everyone is covered the campaign is over"*
+and *"runs after every export"* — the first half has happened, so the second is no longer a
+standing obligation and the section now says so. Left as a note rather than deleted, because the
+re-measure is still the right thing if the sv.wikipedia roster itself changes.
+
+60 → 59 sections.
