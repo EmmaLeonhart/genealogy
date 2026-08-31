@@ -41,7 +41,7 @@ One Geni profile carrying two Wikidata items, where the ledger tracks that perso
     - merge **Q141225773** into **Q141225772** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141225773&to=Q141225772
 - **Kristina Eriksdotter Ångerman** - Geni `6000000038458498753`
     - merge **Q141225780** into **Q141225779** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141225780&to=Q141225779
-- **mother of Erik Guttormsson** - Geni `6000000040760740831`
+- **Kristine mother of Erik Guttormsson** - Geni `6000000040760740831`
     - merge **Q141225788** into **Q141225787** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141225788&to=Q141225787
 - **Laurentius Andreae Andreae Alstrinius** - Geni `6000000025011507008`
     - merge **Q141225794** into **Q141225793** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141225794&to=Q141225793
@@ -305,7 +305,22 @@ Some pairs appear under more than one spelling, which is itself a hint: `Strauss
 - **Maryanne** — given, 1 bearer(s), both described *female given name*
     - merge **Q63339460** into **Q20898971** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q63339460&to=Q20898971
 
-## 6. Name items merged away by other editors
+## 6. Created by a batch, and needing a merge afterwards
+
+**Emma flagged this one herself, 2026-08-31**, while running the batch: *"we are gonna want to merge https://www.wikidata.org/wiki/Q130665779 with our recently created thing at some point"*.
+
+- **Ulrika von Düben** — `Q130665779` (sv *svensk friherrinna*, b. 1749-01-26, d. 1777-01-13) against the item `reports/wikidata-garborg-day.qs` creates for Geni `6000000009063273551`.
+    - merge the newly created item **into `Q130665779`** — it is the older and far better populated one, carrying `P22`, `P25`, `P26`, `P27`, `P40`×2, `P569`, `P570`, `P734` and `P735`.
+    - https://www.wikidata.org/wiki/Q130665779
+
+**Why the duplicate guard did not stop it, which is the part worth knowing.** `build-garborg-day.py` blocks a creation when `out/wikidata/p2600-all.tsv` already links that Geni id — and **`Q130665779` carries no `P2600` at all**, so there was nothing to match on. The guard is a `P2600` join and is blind to an item that has never been linked to Geni.
+
+**They are the same person on STRUCTURE, not on the name.** Our `6000000009063273551` has spouse `6000000007680468910`, which the ledger holds as `Q5626148` *Carl Wilhelm von Düben*; `Q130665779` carries `P26 Q5626148` — the same husband. That is a closed-slot match of the kind `CLAUDE.md` permits, not a name similarity.
+
+**Creating then merging is not a defect here.** `CLAUDE.md` § *Her own duplicates are DELIBERATE* records that a creation followed by a merge leaves the edit trail she wants, and she raised this as something to do *at some point* rather than something to prevent.
+
+
+## 7. Name items merged away by other editors
 
 Your 2026-08-29 note: name items we created were merged into existing ones, and *"creating the name objects and having them merged by somebody else... is a thing that gets attention in a bad way"*. `Tunheim` is the one that already happened. The fix - invert the default so an existing name item is reused - is a queue item, not something for this sitting; it is here so the merges are in one place.
 

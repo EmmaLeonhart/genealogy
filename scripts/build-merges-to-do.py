@@ -223,7 +223,43 @@ def main():
         w.append("`reports/duplicate-name-items.tsv` is not built; run "
                  "`python scripts/find-duplicate-name-items.py`.\n")
 
-    w.append("\n## 6. Name items merged away by other editors\n")
+    w.append("\n## 6. Created by a batch, and needing a merge afterwards\n")
+    w.append(
+        "**Emma flagged this one herself, 2026-08-31**, while running the batch: *\"we are gonna "
+        "want to merge https://www.wikidata.org/wiki/Q130665779 with our recently created thing "
+        "at some point\"*.\n"
+    )
+    w.append(
+        "- **Ulrika von Düben** — `Q130665779` (sv *svensk friherrinna*, b. 1749-01-26, "
+        "d. 1777-01-13) against the item `reports/wikidata-garborg-day.qs` creates for Geni "
+        "`6000000009063273551`.\n"
+        "    - merge the newly created item **into `Q130665779`** — it is the older and far "
+        "better populated one, carrying `P22`, `P25`, `P26`, `P27`, `P40`×2, `P569`, `P570`, "
+        "`P734` and `P735`.\n"
+        "    - https://www.wikidata.org/wiki/Q130665779\n"
+    )
+    w.append(
+        "**Why the duplicate guard did not stop it, which is the part worth knowing.** "
+        "`build-garborg-day.py` blocks a creation when `out/wikidata/p2600-all.tsv` already "
+        "links that Geni id — and **`Q130665779` carries no `P2600` at all**, so there was "
+        "nothing to match on. The guard is a `P2600` join and is blind to an item that has "
+        "never been linked to Geni.\n"
+    )
+    w.append(
+        "**They are the same person on STRUCTURE, not on the name.** Our "
+        "`6000000009063273551` has spouse `6000000007680468910`, which the ledger holds as "
+        "`Q5626148` *Carl Wilhelm von Düben*; `Q130665779` carries `P26 Q5626148` — the same "
+        "husband. That is a closed-slot match of the kind `CLAUDE.md` permits, not a name "
+        "similarity.\n"
+    )
+    w.append(
+        "**Creating then merging is not a defect here.** `CLAUDE.md` § *Her own duplicates are "
+        "DELIBERATE* records that a creation followed by a merge leaves the edit trail she "
+        "wants, and she raised this as something to do *at some point* rather than something "
+        "to prevent.\n"
+    )
+
+    w.append("\n## 7. Name items merged away by other editors\n")
     w.append(
         "Your 2026-08-29 note: name items we created were merged into existing ones, and "
         '*"creating the name objects and having them merged by somebody else... is a thing '
