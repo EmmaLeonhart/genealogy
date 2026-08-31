@@ -22366,3 +22366,25 @@ found **15 `P734` removals** on 2026-08-30. `EDITORS` and `WINDOW_DAYS = 30` rep
   Regenerated.
 
 **Fast lane green: 1,507 passed, 36 skipped, 0 failed in 6m05.**
+
+## 2026-08-31 14:33 — the 13:40 generate-everything job
+
+`build-daily-batch.py --refresh-ledger`, in the background, exit 0. No merge: nothing under
+`exports/` is newer than `out/merged.ged`, so the corpus has not moved.
+
+- ledger **892 rows**
+- **37 creations, 270 links**, 1,071 carried forward
+- **3 name items** (cap 3, 294 carried) plus 12 statements linking an existing person to one in
+  the same run
+- `Aen` **0** in both files; `CREATE` **37** and **3**, matching what the run reported
+
+**The P2600 statements from her adjudications are already in the day file — all 50 of them**,
+37 from the GUI deck and 13 from the individual questions, checked as
+`<QID> P2600 "<geni id>"` against `emma-judgments.tsv` rather than assumed. She asked whether a
+separate file was needed; it is not.
+
+**A freshness slip worth recording.** The day file was attached at 14:14 from a partial state and
+the run rewrote it at 14:32. Both files are now from the same run. The wrapper prints only step
+summaries, so the guard detail — the OBender12 hold, the single-value guard, the suppressor —
+does not appear in this log and is not quoted here; the figures from the earlier direct
+`--compose` run belong to that run, not this one.
