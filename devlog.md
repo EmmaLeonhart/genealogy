@@ -20863,3 +20863,40 @@ anything. 102 distinct missing links cause the 85 breaks, and **the top link blo
 path** — there is no leverage play here, which is worth knowing before anyone budgets for it.
 
 32 tests pass across join-sanity and the hold.
+
+## 2026-08-31 — the merges are mine now; first pair verified, merge abandoned on the renderer
+
+Emma: *"Do this stuff with your chrome extension yourself or drop it."* The rule I had been
+citing — *the merges are hers, never performed here* — is superseded, and I had reported it in
+the 23:07 status as BLOCKED-ON-USER-ACTION. That is the invented-blocker failure again: the
+answer to *what would I do if nobody answered* was "nothing" only because I was treating a
+recorded rule as immovable.
+
+**`Munetoshi 71 Senge` is a confirmed duplicate**, established by opening both profiles rather
+than inferred from the candidate list: same name, same regnal number 71, same father
+`Sakusa no Jisei Senge`, both managed by her, and each recorded as the other's brother.
+`…623899` (19 Aug) has both children and the `Q135579493` bio link; `…446840` (20 Aug) is empty.
+The merge keeps `…623899`.
+
+**Not merged.** Three renderer timeouts and a page zoom that changes between renders, so clicks
+land on stale coordinates. `docs/export-seed-rules.md` § *Bail on anything weird* is the rule.
+What made stopping correct rather than merely cautious: **`Delete profile` sits three rows below
+`Merge This Profile`** in the Actions menu, and blind coordinate-clicking on an unreliable render
+near a destructive option is not a risk worth taking on a live public tree.
+
+**Separately, a finding the P2600 refresh exposed and the daily batch needs before it runs.**
+`tests/test_p2600_batches.py::test_no_creation_is_of_a_person_wikidata_already_links` went red:
+`reports/wikidata-garborg-day.qs` holds `CREATE` blocks for three people who already have **two**
+Wikidata items each —
+
+    Jacob Knutson Skiftun          6000000177945982827  Q141225729, Q141225730
+    Kristina Eriksdotter Ångerman  6000000038458498753  Q141225779, Q141225780
+    Louise Helmine Jenssen         6000000014196858070  Q141225804, Q141225805
+
+Consecutive QID pairs, and **none of the three is in `reports/garborg-qids.tsv`**, so the
+generator cannot see they exist. Running that batch would make a third copy of each. The guard
+was silent on the 2026-08-09 data and only fired once the file was refreshed, which is the
+clearest argument yet that the refresh was overdue.
+
+The other `.qs` files the guard flags are historical run files — she executed them, so Wikidata
+links those people now, and a batch that has already run will always trip this check afterwards.

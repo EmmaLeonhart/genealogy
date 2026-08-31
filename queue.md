@@ -69,8 +69,32 @@ The Japanese pass exists now and did not before: the `script` column read `Latin
 `cjk_names`. It now classifies and matches on both, giving **119 CJK-scripted groups** where
 there were 0, sorted first. `tests/test_join_sanity.py` fails if that returns to 0.
 
-**Still to do: the browser extension on the candidates, Izumo first**, to see whether Geni
-merges them and how redirects behave. **The merges are hers, never performed here.**
+**The merges are MINE to perform now.** Emma, 2026-08-31: *"Do this stuff with your chrome
+extension yourself or drop it."* The old rule — *the merges are hers, never performed here* —
+is superseded, and reporting it as BLOCKED-ON-USER-ACTION was the invented-blocker failure
+`CLAUDE.md` § *The batches are a SEQUENCE* names.
+
+**First pair verified on the page and NOT yet merged.** `Munetoshi 71 Senge` is an unambiguous
+duplicate, confirmed by opening both profiles:
+
+| | `6000000227331623899` | `6000000227350446840` |
+| --- | --- | --- |
+| added | 19 Aug 2026 | 20 Aug 2026 |
+| children | Toyomasa 73, Toyomi 74 | none |
+| About | `wikidata.org/.../Q135579493` | empty |
+
+Same name, same regnal number **71**, same father `Sakusa no Jisei Senge`, both managed by Emma,
+and **each is recorded as the other's brother** — Geni shows `Brother of Munetoshi 71 Senge` on
+both. Merge direction: keep `…623899`, the richer one that carries the QID and the children.
+
+**The attempt was abandoned on the renderer, not on doubt.** Three `Page.captureScreenshot`
+timeouts and a page zoom that changes between renders, so clicks land on stale coordinates.
+`docs/export-seed-rules.md` § *Bail on anything weird* governs. The specific hazard that made
+stopping the right call rather than a cautious one: **`Delete profile` sits three rows below
+`Merge This Profile`** in the Actions menu, so a blind coordinate click on an unreliable render
+can destroy a profile instead of merging it. Retry from a fresh tab.
+
+`reports/geni-merge-worklist.md` carries the other two Izumo pairs and the CJK list.
 
 **The handoff exists now — `reports/geni-merge-worklist.md`**, built by
 `scripts/build-merge-worklist.py`. 12,287 groups is not something anyone opens a browser
