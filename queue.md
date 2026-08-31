@@ -53,41 +53,6 @@ counts are not stale when she next sits down to it.
 **The merges themselves are hers now, not mine** — that is what the file is for. The Izumo
 three are cleared and the browser pass is closed.
 
-## 2. FINISH THE CHARLEMAGNE SPINE IN ONE BATCH — not one hop a day
-
-**Emma, 2026-08-31:** the spine work *"reduces my eccentricity"*, and she moved it to second in
-the queue. That is the point of it: an account whose items sit in an isolated clump reads
-differently from one wired into the Carolingian core that thousands of editors maintain.
-
-**State, measured 2026-08-31.** Three of the four spines are finished — `bergitte-to-emma`,
-`bureus-to-emma` and `arne-to-signe-no-borsheim` all report *every step already has an item*.
-`paths/charlemagne-to-arne-garborg.tsv` is **at step 24 of 34**, because the daily batch advances
-it **one hop per day**. Eleven steps remain:
-
-    24 Åsulv Skulesson · 25 Skule Torstigson · 26 Judith of Flanders
-    27 Baldwin IV of Flanders · 28 Rozala of Italy · 29 Berengar II of Ivrea
-    30 Gisela of Friuli · 31 Berengar I · 32 Giséle of Cysoing
-    33 Louis the Pious · 34 Charlemagne
-
-**Most of that end already exists on Wikidata** — `CLAUDE.md` § *THE THREE LINES* names Judith of
-Flanders `Q273181`, Baldwin IV `Q378177`, Berengar II `Q314521`, Louis the Pious `Q43974` and
-**Charlemagne `Q3044`**. So this is a handful of creations plus the links, not eleven days of work.
-
-**Do it in one batch, which already exists and is not new tooling:**
-
-    python scripts/build-garborg-day.py --roster out/roster-spine.txt         --roster-is-frontier --known reports/spine-already-on-wikidata.tsv
-
-`--roster-is-frontier` is the flag that matters. `--roster` *filters* the one-hop ring, and the
-spine's middle sits many edges from anyone holding a QID — which is the whole reason it needs
-building — so filtering a ring they are not in returns nothing and reads as *"no work to do"*.
-
-**Two constraints, both already known.** People created in one run cannot link to **each other**,
-so the new-to-new links need `scripts/build-missing-reciprocals.py` afterwards; and `P3373`
-*sibling* is capped at 10 a day regardless.
-
-**`reports/the-spine.md` is stale and must be regenerated, not trusted.** It still says Bergitte
-*"has no Wikidata item"* — she is `Q141198835`.
-
 ## 3. COMPREHENSIVE REBUILD FROM A FRESH LEDGER, THEN ATTACH THE QUICKSTATEMENTS
 
 **Her instruction, 2026-08-31**, as the item after the spine: rebuild everything from a new

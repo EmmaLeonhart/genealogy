@@ -22053,3 +22053,39 @@ read* is guarded — I tried that heuristic and it cannot distinguish the two ca
 Folded into the existing § *Systematic review for legacy code* rather than opening a 55th section,
 since that item is exactly this work. 54 sections either way; the QID-link section was cut back
 rather than deleted, because its third check is still a step.
+
+## 2026-08-31 — the spine change, wired in: one spine, no front
+
+**I queued the wrong thing first and Emma caught it.** I wrote an item to finish the Charlemagne
+spine, which she declared **legacy** on 2026-08-30: *"the spines are all clear and I'm putting an
+item at the end of the queue declaring them legacy code and removing them."* Her actual item was
+already in the queue and I had not read it. It is **Arne↔Bureus**, and its whole point is that the
+rule is different.
+
+**What was wired.**
+
+`SPINE_PATHS` was the four completed lines; it is now the one new spine,
+`paths/arne-garborg-to-johannes-bureus-geni.tsv` — Geni's own in-law route joining the two anchors
+**to each other** rather than through Emma. 18 steps, with 1, 17 and 18 already holding `Q467497`,
+`Q141180409` and `Q633094`, so it is anchored at both ends.
+
+The rule change is one `break`. The old spines advanced **one step per path per run**, and a step
+was only created once its neighbour existed — the loop took the first uncreated step and stopped.
+Emma: *"any of them is always added whenever possible from any side including the middle."* So the
+`break` is gone: every takeable step goes in the same run, and a creation is possible as soon as
+the person is in the corpus. That is the only gate. The middle and both ends now grow toward each
+other instead of a line crawling from one end at a hop a day.
+
+**Why this is the version that reduces eccentricity.** The old shape produced a thin thread
+advancing daily from one account. This one fills a named in-law route between two anchors that
+already exist, in one batch.
+
+**No export is to be attempted on it.** Steps 9, 10 and 13 were tried as `Forest` seeds on
+2026-08-30 and Geni refused all three — *"You are not allowed to export that profile."* Emma:
+*"at this point i think the key thing is just to give up."* The path is the deliverable.
+
+**One test is red and it is the artifact, not the code.**
+`test_no_existing_item_is_left_without_a_parent_link_it_should_have` reads
+`reports/wikidata-garborg-day.qs` on disk, and that file is currently the spine-roster run I made
+before reading her item — 0 creations, so no `LAST P22` anywhere. It needs a regenerated batch,
+which is the next step and not a loosening.

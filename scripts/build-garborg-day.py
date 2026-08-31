@@ -996,27 +996,27 @@ def name_lines(label, plan, geni_id, father_qid, fields=None, sex="",
 #: Emma-first and is therefore REVERSED here; it had been walking outward from her, which is
 #: why it took `Richard Wade Borsheim` every single run.
 
-SPINE_PATHS = ("paths/charlemagne-to-arne-garborg.tsv", "paths/bergitte-to-emma.tsv",
-               "paths/bureus-to-emma.tsv",
-               #: **Arne → Signe, and Emma added it herself.** 2026-08-29: *"your path gets added
-               #: starting at Arne and moving to Signe. Record this as another spine and wire it
-               #: in."* 15 steps, built by `scripts/path-between.py --avoid Borsheim` because she
-               #: asked for a route to Signe with **no Borsheim on it** — her married name is
-               #: Borsheim, so the family it names is not the family the path may travel.
-               #:
-               #: Stored **Arne-first**, which is the direction she named, so it is NOT in
-               #: `SPINE_REVERSED`: the walk takes the first uncreated step and grows outward from
-               #: Arne toward Signe. Steps 1–4 already hold items, so it starts at step 5.
-               #:
-               #: **It is two steps longer than the route on her saved page and that is deliberate.**
-               #: `paths/caroline-signe-borsheim-hoknes.tsv` reaches Signe in 13 by hopping
-               #: `his sister` and `her sister` directly; `path-between.py` walks parent, child and
-               #: spouse only, so it routes through the shared parent instead and names
-               #: `Jon Olsen Heigre` and `Søren Sørenson Gjesdal`. Those two are real people who
-               #: have to exist for the line to be continuous either way.
-               "paths/arne-to-signe-no-borsheim.tsv")
+#: **ONE spine, and it runs on a different rule.** Emma, 2026-08-30, after verifying all four
+#: old lines complete: *"the spines are all clear and I'm putting an item at the end of the queue
+#: declaring them legacy code and removing them"*, then: *"make these people the only new spine
+#: with the rule being different because any of them is always added whenever possible from any
+#: side including the middle."*
+#:
+#: The four it replaces — `charlemagne-to-arne-garborg`, `bergitte-to-emma`, `bureus-to-emma`,
+#: `arne-to-signe-no-borsheim` — all report every step already has an item. They are legacy and
+#: their files stay only as evidence of routes already walked.
+#:
+#: This is Geni's own in-law route from Arne Garborg to Johannes Bureus, joining the two anchors
+#: **to each other** rather than only through Emma. Steps 1, 17 and 18 already hold `Q467497`,
+#: `Q141180409` and `Q633094`, so it is anchored at both ends and fills inward and outward at
+#: once.
+#:
+#: **No export is needed and none should be attempted.** Steps 9, 10 and 13 were tried as
+#: `Forest` seeds on 2026-08-30 and Geni refused all three — *"You are not allowed to export that
+#: profile."* Emma: *"at this point i think the key thing is just to give up."* The path is the
+#: deliverable.
+SPINE_PATHS = ("paths/arne-garborg-to-johannes-bureus-geni.tsv",)
 
-#: Paths whose file runs Emma-first and must be walked from the far end.
 SPINE_REVERSED = ("paths/bergitte-to-emma.tsv",)
 SPINE_PATH = SPINE_PATHS[0]
 
@@ -4389,17 +4389,28 @@ def compose(our_items, fam, rng, ring_seeds=None):
     # --- 1. the spine, both directions, outside every cap ------------------------
     # One step per PATH, so the line down to her advances every run as well as the line up
     # to Charlemagne. Her words: *"The ancestral couples ... are always getting made."*
+    # **No front, no direction, no waiting for the neighbour.** The four old spines advanced one
+    # step per path per run and a step was only created once the one before it existed — hence
+    # the `break` that used to end this loop after the first take. Emma replaced that rule on
+    # 2026-08-30: *"any of them is always added whenever possible from any side including the
+    # middle."*
+    #
+    # So every takeable step goes in the same run. A creation is possible as soon as the person
+    # is in the corpus; that is the only gate. The links to anything that already holds a QID are
+    # emitted by the additions pass in the same batch, which is what makes both anchors and the
+    # middle grow toward each other instead of a line crawling from one end.
     spine_added = 0
     for rel, steps in spine_steps().items():
+        took = 0
         for label, gid, name in steps:
             if take(gid, f"spine: {label}"):
                 spine_added += 1
+                took += 1
                 why.append(f"1. spine {label}: {name}")
                 for sp in kin(gid, "spouses"):
                     if take(sp, f"spouse of spine {label}"):
                         spine_added += 1
-                break
-        else:
+        if not took:
             why.append(f"1. spine {Path(rel).stem}: every step already has an item")
 
     # --- 2 & 3. ten children, or a spouse where the marriage is childless --------
