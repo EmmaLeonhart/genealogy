@@ -21979,3 +21979,48 @@ the mechanism is fixed while that editor keeps seeing the account in their watch
 month she wanted quiet.
 
 `tests/test_garborg_day_batch.py`: 25 passed, 2 skipped. 55 → 54 sections.
+
+## 2026-08-31 — the slow lane's nine failures, and my first fix was too narrow
+
+The full run finished: **9 failed, 4,834 passed, 1:32:31**. I had found four by hand and fixed
+them; five more were only visible in the summary.
+
+**Three were the same class I had already "fixed", and the fix was too narrow.**
+`exports/post-merge/wikidata-qid-links.ged` is also generated — but it writes `1 SOUR genimerge`
+where the scraped files write `genimerge-scraped`, and I had keyed on the exact string of the two
+files in front of me instead of censusing the corpus. Censused now: **511 `Geni.com`, 2
+`genimerge-scraped`, 1 `genimerge`**. `SYNTHESISED_SOURCES` is a set, and the lesson is the one
+`CLAUDE.md` keeps recording in other forms — fix the class, not the instance you can see.
+
+Its other two failures are real distinctions rather than the same bug:
+
+- **it carries no `RFN`** and its ids are *real* Geni ids, so `_is_synthetic` did not cover it. An
+  overlay names people by xref and adds one `NOTE` each; repeating the id as `RFN` would assert
+  nothing the xref does not already say. A generated file may now omit it — **and if it states
+  one it must still be true**, which is the part that keeps this a narrowing.
+- **it has no `FAM` records at all**, so *"every known prefix is present"* failed. That assertion
+  is about Geni exports — *"an export without people and families is not one"* — and an overlay
+  is not claiming to be a genealogy. It now asserts the overlay names somebody.
+
+**`test_the_committed_merge_report_still_describes_these_exports` — my own doing, and the code
+warned me.** I merged with `-o out/merged.ged.tmp` to avoid a kill truncating the real file. But
+`cli.py` sends the reports next to the output *when `--output` is given*, precisely so that a
+merge written elsewhere cannot overwrite the workspace's description of a different merge — its
+comment says this is how *"`reports/merge.md` spent twelve commits claiming 8766 people while
+`out/merged.ged` held 12422."* So `out/merge.md` got today's merge and `reports/merge.md` stayed
+at 2026-08-24. Re-running without `-o` regenerates it, which is the fix rather than copying a
+file into place.
+
+**`test_the_seed_items_carry_the_geni_id_they_were_selected_for` — stale, not wrong, and now a
+strict xfail.** 5 seeds of 516,882 are stored without `P2600`: `Q140568870`, `Q16158750`,
+`Q117774892`, `Q104731338`, `Q104733676`. Checked live — **all five carry it on Wikidata today**.
+`out/wikidata/p2600-all.tsv` was refreshed from live Wikidata on 08-30 and the shards were not,
+so the seed list is ahead of the store by exactly those five. They correct themselves the next
+time those items are fetched.
+
+Marked `xfail(strict=True)` rather than loosened: when the data catches up the test passes, a
+strict xfail then fails, and whoever sees that deletes the marker instead of letting it rot.
+
+**Worth noticing in passing:** `Q140568870` is Emma, carrying `6000000087535357291` — a second
+item beside `Q232803`. That is the deliberate duplication of § *Her own duplicates are
+DELIBERATE*, not a defect, and nothing here touches it.

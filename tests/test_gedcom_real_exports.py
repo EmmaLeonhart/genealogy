@@ -61,12 +61,22 @@ def test_the_only_parse_warnings_are_lines_that_never_claimed_to_be_gedcom(expor
 #: Their minted people sit in ranges Geni demonstrably does not use and carry **no** `RFN` on
 #: purpose -- the builder's own words: *"claiming `RFN geni:<id>` for an id Geni does not have
 #: would be a false identity assertion on this repo's primary key."*
-SYNTHESISED_SOUR = "genimerge-scraped"
+#: **Every source that is not Geni.** `scripts/build-scraped-gedcom.py` writes
+#: `genimerge-scraped`; `scripts/build-qid-links-gedcom.py` writes plain `genimerge`. Fixing
+#: only the first was too narrow -- I checked the two files in front of me instead of censusing
+#: the corpus, and the slow lane found the third. Measured 2026-08-31 over every `.ged` under
+#: `exports/`: **511 `Geni.com`, 2 `genimerge-scraped`, 1 `genimerge`**.
+SYNTHESISED_SOURCES = {"genimerge-scraped", "genimerge"}
 SYNTHETIC_ID_PREFIXES = ("9995", "9990")
 
 
 def _is_synthetic(geni_id):
     return geni_id.startswith(SYNTHETIC_ID_PREFIXES) and len(geni_id) == 19
+
+
+def _synthesised(export):
+    """True for a file this repo generated rather than one Geni sent."""
+    return bool(export.header) and export.header.value_of("SOUR") in SYNTHESISED_SOURCES
 
 
 def test_export_has_a_geni_header(export):
@@ -80,7 +90,8 @@ def test_export_has_a_geni_header(export):
     """
     assert export.header is not None
     source = export.header.value_of("SOUR")
-    assert source in ("Geni.com", SYNTHESISED_SOUR), f"unknown export source {source!r}"
+    assert source == "Geni.com" or source in SYNTHESISED_SOURCES, (
+        f"unknown export source {source!r}")
 
 
 def test_every_individual_xref_encodes_its_geni_profile_id(export):
@@ -99,6 +110,13 @@ def test_every_individual_xref_encodes_its_geni_profile_id(export):
         if _is_synthetic(geni_id):
             assert indi.value_of("RFN") == "", (
                 f"minted placeholder {indi.xref} claims a Geni id it does not have")
+            continue
+        # **An overlay names people by xref and adds nothing else.**
+        # `exports/post-merge/wikidata-qid-links.ged` is three `INDI` records carrying one
+        # `NOTE` each; the xref is the join key and is a real Geni id, and repeating it as
+        # `RFN` would assert nothing the xref does not already say. So a generated file may
+        # omit it -- but if it states one, it must still be the truth.
+        if _synthesised(export) and indi.value_of("RFN") == "":
             continue
         assert indi.value_of("RFN") == f"geni:{geni_id}"
 
@@ -183,6 +201,13 @@ def test_every_known_prefix_is_actually_present(export):
     without them is not one.
     """
     seen = {_prefix(r.xref) for r in export.records if r.xref}
+
+    # A generated overlay is not a genealogy and is not claiming to be one: the QID-link file
+    # is `INDI` records and nothing else, by design. The property being asserted -- that a Geni
+    # export without people and families is not an export -- is about what Geni sends.
+    if _synthesised(export):
+        assert "I" in seen, "even an overlay has to name somebody"
+        return
 
     assert {"I", "F"} <= seen
 
