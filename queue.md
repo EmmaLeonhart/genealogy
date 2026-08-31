@@ -36,33 +36,6 @@ ones above them: `THE EDIT ALGORITHM`, `THE DAILY ALGORITHM`, `THE TAIL ALGORITH
 `Link reliability order`, `The chain of provenance`, `How the synoptic tree is actually made`,
 `PREREQUISITE ORDER`. They describe how a thing is done rather than asking for it to be done.
 
-## Strategic analysis of 2026-08-30, with an emphasis on reducing visibility
-
-Emma's framing, and the analysis is to be written in her terms rather than mine: *"an emphasis
-on being calm and not using emotionally provocative words to give a good strategic analysis on
-reducing visibility."*
-
-The work is to browse Wikidata directly, decide, and write it up. Her own reading is the
-starting point, not a conclusion to re-derive:
-
-- A close call, unlikely to lead to discovery. It reads as a QuickStatements error rather than
-  as combative, and probably did not flag as a revert because no source was added.
-- Three things landing at once made it worse than expected: the Helen work, the surname glitch,
-  and the edit-war glitch.
-- **The chains were converging** and that was not understood here. Three paths meeting on one
-  individual, half finished, with the most recent edits clustered closest to that individual,
-  is the conspicuous shape. It is why a large number of runs had to be pushed through quickly.
-- **Surname item creation is high-risk**, higher than she expected. Not necessarily to be
-  stopped, but to be treated as such.
-- **Her proposed control: a month-long hold.** Any item `OBender12` has touched is locked —
-  our QuickStatements may not edit it.
-- Outcome: a more cohesive Scandinavian blob around the Bure and Garborg people, loosely
-  around her, which reads as less suspicious than what preceded it.
-
-**The governing lesson, in her words:** *"this isn't a programming issue. This isn't an accuracy
-issue. This is a social issue… it was better to be inaccurate but inconspicuous, because people
-don't go after you for being inaccurate. People go after you for being conspicuous."*
-
 ## 0. Aug 28, 2026 manual adds
 
 These are supposed to be manually added to the queue and worked on, do no just paraphrase during the rebase keep this part entirely intact. We are approaching usage limit for now.

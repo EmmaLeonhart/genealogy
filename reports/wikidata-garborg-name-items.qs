@@ -92,8 +92,6 @@ LAST	P31	Q110874
 Q141198503	P5056	LAST	S2600	"6000000003095166856"
 #   Q141216607 Hans Erikson Øvre Håland: P5056 patronym or matronym = the item just created
 Q141216607	P5056	LAST	S2600	"6000000009152082622"
-#   P5056 patronym or matronym = the item just created
-Q141216607	P5056	LAST	S2600	"6000000009152082622"
 
 # Garfve -- family, 3 bearer(s) in the batches
 # create a new item

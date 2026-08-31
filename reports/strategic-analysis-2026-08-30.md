@@ -134,8 +134,25 @@ remembered, and remembered against the account rather than against the edit.
 
 ## Decisions
 
-1. **Adopt the month-long hold**, against the full 2,538-item list rather than the 37-item
-   overlap. Wire it into `build-garborg-day.py` as a hard exclusion, not a warning.
+1. **Adopt the month-long hold**, against the full list rather than the 37-item overlap.
+   Wire it into `build-garborg-day.py` as a hard exclusion, not a warning.
+
+   **Done, 2026-08-30.** `scripts/fetch-obender12-touched.py` writes
+   `reports/obender12-touched.tsv`; `held_items()` reads it and the final emission pass drops
+   any line whose subject is held. It expires by itself on **2026-09-30** — a hold that must be
+   remembered to be lifted is a hold that never lifts, and the premise of the whole control is
+   that recognition decays.
+
+   **A 30-day window, not the account's whole history.** They have **785,050 edits since 2020**;
+   holding every item behind all of those would be an exclusion of hundreds of thousands and is
+   not what a month-long hold means. The risk model settles the window: the exposure is one
+   person's watchlist and recent memory, and an item they touched in 2021 is neither. Thirty
+   days gives **2,993 items**, whose intersection with the 849-item ledger is **37** — the same
+   figure this analysis arrived at independently, which is the check that the window is the
+   right one.
+
+   **What it costs the live batch: 6 of 272 statement lines.** The older run files lose more
+   (87 of 362, 55 of 148) and are historical.
 2. **Treat name-item creation as the highest-risk operation in the pipeline** and cap it well
    below the current 10 a day, or suspend it while the hold runs. The people side has no
    comparable audience.

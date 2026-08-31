@@ -1273,6 +1273,60 @@ KLUGE_UNIVERSE_BLOCK_EXPIRES = datetime.date(2026, 10, 1)
 #: The clan labels do not go out before this date. See the gate at its use site.
 CLAN_BLOCK_GATE = datetime.date(2026, 10, 1)
 
+#: The month-long hold on every item `OBender12` has touched.
+#:
+#: **Emma's control, 2026-08-30**, and the reasoning is in
+#: `reports/strategic-analysis-2026-08-30.md` § *Decisions*: the live risk after that day is
+#: not the errors themselves -- those clear -- but **one editor holding a recent memory of the
+#: account**. Her words: *"the issue was specifically with this one editor and the fact they
+#: saw the same error many times."* Recognition decays more slowly than duplicates do, so the
+#: single variable worth controlling is how many further times that person sees us.
+#:
+#: The hold is on the FULL contributions list, not on its overlap with the ledger. Holding the
+#: overlap would re-derive the collision set on every run, which is the coupling the hold
+#: exists to break -- a batch tomorrow is not a batch today, and the ledger grows.
+#:
+#: It expires on its own. A hold that has to be remembered to be lifted is a hold that stays
+#: forever, and the whole premise here is that recognition decays.
+OBENDER_HOLD_EXPIRES = datetime.date(2026, 9, 30)
+
+#: Written by `scripts/fetch-obender12-touched.py`.
+OBENDER_TOUCHED = ROOT / "reports" / "obender12-touched.tsv"
+
+
+def held_items(today=None):
+    """Items our QuickStatements may not edit, because that editor has touched them.
+
+    **Subject only, never value.** Her control is *"our QuickStatements may not edit it"*, and
+    a QuickStatements line edits its SUBJECT. `Q1 P22 Q2` is an edit to `Q1`; `Q2` is only
+    referenced, and appears on nobody's watchlist for it. Holding values as well would drop
+    every statement pointing at a held person -- which is most of the ring, since the items
+    that editor merged are exactly the well-connected ones -- and would buy no reduction in
+    what they see.
+
+    **This is also what closes the re-emission loop for the people they edited.** A generator
+    that emits what is missing cannot tell a deletion from an absence, so it re-adds anything
+    anyone removes; see `queue.md` § *The unintentional edit war*. Holding the subject stops
+    that for exactly the items where it actually happened, which is a narrower fix than
+    suppression tracking and lands first.
+
+    Returns an empty set once the hold expires, so nothing has to remember to lift it.
+    """
+    today = today or datetime.date.today()
+    if today >= OBENDER_HOLD_EXPIRES:
+        return set()
+    if not OBENDER_TOUCHED.exists():
+        return set()
+    held = set()
+    with OBENDER_TOUCHED.open(encoding="utf-8") as fh:
+        next(fh, None)
+        for line in fh:
+            qid = line.split("\t")[0].strip()
+            if qid.startswith("Q"):
+                held.add(qid)
+    return held
+
+
 #: The relationship properties that make two Wikidata items neighbours in the subgraph.
 #: P22 father, P25 mother, P26 spouse, P40 child, P3373 sibling.
 SUBGRAPH_PROPS = ("P22", "P25", "P26", "P40", "P3373")
@@ -5649,6 +5703,74 @@ def main():
     if dropped:
         print(f"excluded ids: {dropped} statement line(s) dropped "
               f"({', '.join(sorted(excluded))}) — never emitted, in any position")
+
+    # ---- NEVER emit the same statement twice in one CREATE block ------------------------
+    #
+    # **What produced it, seen 2026-08-30 in `wikidata-garborg-name-items.qs`:** the name-item
+    # emitter writes one line per *bearer*, and a bearer is a Geni profile. Two Geni profiles
+    # resolving to the same Wikidata item therefore write the same statement twice --
+    # `Q141216607 P5056 LAST` under the `Erikson` block, whose third "bearer" had no name to
+    # put in the comment because it was the second profile of the second one.
+    #
+    # `CLAUDE.md` § *Duplication is a DOUBLE-EDGED SWORD* is not in tension with this. Her
+    # duplication is deliberate and lives on ITEMS, where it attracts a bot. This is one file
+    # saying the same thing twice, which is the unintentional repetition the same section names
+    # as the actual failure -- and it is what a reader sees, not what a bot fixes.
+    #
+    # Scoped to the block, exactly as `tests/test_p2600_batches.py` scopes it: a `LAST` line is
+    # only meaningful under the `CREATE` above it, so identical text in two different blocks is
+    # two different subjects and must survive.
+    seen_in_block, deduped, repeats = set(), [], 0
+    for ln in kept:
+        stripped = ln.strip()
+        if stripped == "CREATE":
+            seen_in_block = set()
+            deduped.append(ln)
+            continue
+        if not stripped or stripped.startswith("#"):
+            deduped.append(ln)
+            continue
+        if stripped in seen_in_block:
+            while deduped and deduped[-1].lstrip().startswith("#"):
+                deduped.pop()
+            repeats += 1
+            continue
+        seen_in_block.add(stripped)
+        deduped.append(ln)
+    if repeats:
+        print(f"repeated statements: {repeats} line(s) dropped")
+    kept = deduped
+
+    # ---- THE HOLD: nothing we emit may edit an item that editor has touched -------------
+    #
+    # `held_items()` carries the reasoning. It is applied here, at the last thing that touches
+    # the file, for the same reason the exclusion above is: whatever the rest of the algorithm
+    # decided, this holds it. It is SUBJECT-only -- a line edits the item in its first field.
+    #
+    # A `CREATE` mints a new item and so can never be held; the `LAST` lines that follow it
+    # address that new item, so they are not held either.
+    held = held_items()
+    if held:
+        kept2, held_dropped = [], 0
+        for ln in kept:
+            stripped = ln.strip()
+            if stripped == "CREATE":
+                kept2.append(ln)
+                continue
+            subject = stripped.split("\t")[0].lstrip("-")
+            if subject == "LAST":
+                kept2.append(ln)
+                continue
+            if subject in held:
+                while kept2 and kept2[-1].lstrip().startswith("#"):
+                    kept2.pop()
+                held_dropped += 1
+                continue
+            kept2.append(ln)
+        if held_dropped:
+            print(f"OBender12 hold: {held_dropped} statement line(s) dropped across "
+                  f"{len(held):,} held items — expires {OBENDER_HOLD_EXPIRES}")
+        kept = kept2
 
     # ---- NEVER give an item a SECOND father or mother -------------------------------
     #

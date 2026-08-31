@@ -20559,3 +20559,38 @@ collected genealogies. They are currently masked by the 497-item mass and were f
 before it existed, which is the structural argument for finishing rather than stopping.
 
 `reports/component-shape-2026-08-30.md` carries the full profile.
+
+## 2026-08-30 — the month-long hold, implemented
+
+`reports/strategic-analysis-2026-08-30.md` is written and its first decision is now code rather
+than a proposal. Emma's control: *any item `OBender12` has touched is locked — our
+QuickStatements may not edit it.*
+
+`scripts/fetch-obender12-touched.py` → `reports/obender12-touched.tsv`;
+`build-garborg-day.py::held_items()` reads it, and the final emission pass — the last thing that
+touches the file, so it holds whatever the rest of the algorithm decided — drops any line whose
+**subject** is held. It expires on **2026-09-30** by itself.
+
+**A 30-day window, and the number is what validates it.** That account has **785,050 edits since
+2020**, so an all-time list would be an exclusion of hundreds of thousands of items — not a
+month-long hold in any meaningful sense. The risk model picks the window: the exposure is one
+person's watchlist and recent memory. Thirty days gives **2,993 items**, intersecting the
+849-item ledger in **37** — the figure the analysis reached independently.
+
+Cost to the live batch: **6 of 272 statement lines**.
+
+**Subject-only, never value.** `Q1 P22 Q2` edits `Q1`; `Q2` is referenced and appears on nobody's
+watchlist for it. Holding values as well would drop most of the ring, since the items that editor
+merged are the well-connected ones, and would reduce nothing they actually see.
+
+**Also fixed: a statement repeated inside one `CREATE` block.**
+`wikidata-garborg-name-items.qs` carried `Q141216607 P5056 LAST` twice under `Erikson`, because
+the name-item emitter writes one line per *bearer* and two Geni profiles resolve to that one
+item — the tell was a comment with no name in it. The generator now drops an exact repeat within
+a block, and the committed batch has the line removed.
+`tests/test_p2600_batches.py::test_no_statement_is_repeated` was red on this before the fix; it
+is green now, as are `tests/test_obender_hold.py`'s four.
+
+Also filed `exports/fleshing-out/export-Descendants-6000000227513637856.ged` (NN Voster, 5,000
+people), and the Arne↔Bureus export attempt was abandoned — Geni refused all three midpoint
+seeds. That path becomes the one new spine instead; see `queue.md`.
