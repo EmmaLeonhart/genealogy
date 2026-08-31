@@ -1102,28 +1102,29 @@ domain"* is. Ask before building, per § *If you are not sure what she wants, AS
 stored the wrong way round listed in `SPINE_REVERSED` — that is the whole mechanism, and it is why
 `bergitte-to-emma` had walked outward from her for weeks without moving.
 
-## THE LAST ITEM — the QID-link GEDCOM: two checks pass, idempotence untested
+## THE LAST ITEM — the QID-link GEDCOM: its generator is broken
 
 **Emma, 2026-08-29:** *"don't test it now but make the last queue item rebuilding the synoptic
 tree to test this thing so that we can quickly move onto other work."*
 
-`exports/post-merge/wikidata-qid-links.ged` — three individuals, three `NOTE` links, 358 bytes.
-It has now been through a merge (2026-08-31), and `_post_merge_last` put it last in merge order
-as designed. Two of the three checks pass:
+**Two of the three checks pass, and the third cannot be run.** The corpus was merged twice on
+2026-08-31, which is the re-merge half of *"regenerating and re-merging changes nothing"*:
 
-- **The links arrive.** All three `https://www.wikidata.org/wiki/Q…` lines are in
-  `out/merged.ged` — `Q11596350`, `Q11078587`, `Q24890131`. `NOTE` is in
-  `merge.ALWAYS_REPEATABLE`, so they sit beside the existing About Me rather than replacing it.
-- **Nobody is invented.** Each of the three xrefs resolves to a **full** record carrying `NAME`,
-  `SEX`, `RFN`, `FAMC`, `FAMS` and `CHAN`. An invented person would hold the `NOTE` and nothing
-  else, which is exactly what the source file holds.
+- **The links arrive** — all three `wikidata.org/wiki/Q…` lines are in `out/merged.ged`
+  (`Q11596350`, `Q11078587`, `Q24890131`), still 3 after the second merge. `NOTE` is in
+  `merge.ALWAYS_REPEATABLE`, so they sit beside the existing About Me.
+- **Nobody is invented** — each xref resolves to a full record with `NAME`, `SEX`, `RFN`,
+  `FAMC`, `FAMS`, `CHAN`. An invented person would carry the `NOTE` and nothing else, which is
+  what the 358-byte source holds. Both merges report **1,451,964 `INDI`**, unchanged.
 
-**Still to do: idempotence.** *"Regenerating and re-merging changes nothing."* That needs
-`scripts/build-qid-links-gedcom.py` re-run and the corpus re-merged, then a diff. The merge is
-**837 seconds and about 17 GB** — background it, per § *A ten-minute ceiling is not a wall*, and
-note the 2026-08-31 run was killed once at peak memory. **Merge to a temp path and move it into
-place only on success**: a kill truncates `out/merged.ged` to zero bytes, which does not raise —
-every downstream count simply comes out plausibly small.
+**What blocks the last check: `scripts/build-qid-links-gedcom.py` crashes.** It reads
+`entity_resolution.md`, which was deleted in `12f3134a` — correctly, it was retired — and it does
+not guard the absence:
+
+    FileNotFoundError: entity_resolution.md
+
+So the file cannot be regenerated, and *"regenerating changes nothing"* is untestable rather than
+untested. Fix the reader first; the check itself is then a `sha256sum` either side.
 
 **Widening this beyond the three is her call and is one constant.** The machinery handles any
 number; the first version emitted 83,988 people off `reports/synoptic-correspondence.tsv` and that
@@ -1324,6 +1325,25 @@ Existing people drain first, then the 177 clan people. *"The clan people also ex
 the quick statement stuff by a lot, so this is worth leaving at the end."*
 
 ## Systematic review for legacy code — find it and delete it
+
+**Start here: 33 files still read `entity_resolution.md`, which no longer exists.** It was
+deleted in `12f3134a` and the deletion was right — `CLAUDE.md` § *LEGACY CODE IS DELETED* and the
+queue's own § *The Wikidata link goes in the bio during the SYNOPTIC TREE BUILD* both retire it.
+What was not done is the other half: the readers.
+
+Two behaviours observed rather than inferred, and the difference is the whole problem:
+
+- `scripts/build-qid-links-gedcom.py` **crashes** — `FileNotFoundError`, no guard. Found
+  2026-08-31 when it blocked the QID-link idempotence check.
+- `scripts/build-garborg-day.py` **degrades with a warning** and produced today's batch fine.
+
+The other 31 have not been triaged and a grep for `try:`/`exists()` anywhere in a file is not
+evidence that the *read* is guarded. Run each, or read the call site; do not assume.
+
+**The general lesson for this item: deleting the file is half the job.** A reader of a deleted
+file either crashes, which is loud and cheap, or silently proceeds without data it was designed
+around — and the second is the one that produces a plausible wrong number.
+
 
 **Emma, 2026-08-29, and it is the last item by her instruction:** *"That is the last item of the
 queue to do a systematic review to find this kind of legacy code thing."* `CLAUDE.md` § *LEGACY CODE

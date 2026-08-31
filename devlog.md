@@ -22024,3 +22024,32 @@ strict xfail then fails, and whoever sees that deletes the marker instead of let
 **Worth noticing in passing:** `Q140568870` is Emma, carrying `6000000087535357291` — a second
 item beside `Q232803`. That is the deliberate duplication of § *Her own duplicates are
 DELIBERATE*, not a defect, and nothing here touches it.
+
+## 2026-08-31 — sweep: the QID-link idempotence check, and a deleted file with 33 readers
+
+**Two of the three checks now pass**, because the corpus was merged twice today and that is the
+re-merge half of *"regenerating and re-merging changes nothing"*: all three
+`wikidata.org/wiki/Q…` lines survive the second merge, and both merges report **1,451,964
+`INDI`** — so the overlay adds its notes and invents nobody, twice.
+
+**The third cannot be run, and finding out why was the useful part.**
+`scripts/build-qid-links-gedcom.py` crashes with `FileNotFoundError: entity_resolution.md`. That
+file was deleted in `12f3134a`, correctly — `CLAUDE.md` § *LEGACY CODE IS DELETED* retires it and
+so does the queue's own § *The Wikidata link goes in the bio during the SYNOPTIC TREE BUILD*. What
+was not done is the other half of a deletion: **33 files still read it.**
+
+**A near-miss worth recording.** My first run printed *"regenerate identical: YES"* — because the
+script had crashed before writing anything, so the file was trivially unchanged. A hash comparison
+either side of a command that did not run compares a file with itself. I only caught it because
+the traceback was above the YES in the same output; had I redirected stderr, that would have gone
+into the queue as a passing check.
+
+**Two behaviours observed, not inferred**, and the difference is the whole problem:
+`build-qid-links-gedcom.py` **crashes**, which is loud and cheap;
+`build-garborg-day.py` **degrades with a warning** and produced today's batch fine. The other 31
+are untriaged, and grepping for `try:` or `exists()` anywhere in a file is not evidence that *the
+read* is guarded — I tried that heuristic and it cannot distinguish the two cases above.
+
+Folded into the existing § *Systematic review for legacy code* rather than opening a 55th section,
+since that item is exactly this work. 54 sections either way; the QID-link section was cut back
+rather than deleted, because its third check is still a step.
