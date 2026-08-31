@@ -1401,21 +1401,6 @@ anchored at both ends and the middle fills inward and outward at once.
 that profile."* Emma: *"at this point i think the key thing is just to give up."* The path itself
 is the deliverable; no export is needed to use it.
 
-## The unintentional edit war: analysis and fix
-
-`OBender12` removed `P734` statements after merging our duplicate name items. The next build
-re-emitted them, because the generator emits a name statement when the item does not have one,
-and a deletion is what "does not have one" looks like. Emma had to undo her own undos and make
-cosmetic edits afterwards.
-
-Not statefulness — the absence of it. Any *emit what is missing* pipeline fights any editor who
-deletes, indefinitely.
-
-`scripts/refresh-suppressed-statements.py` is written and unrun: it reads the contributions of
-editors other than the account, keeps `wbremoveclaims` edits on ledger items, and records the
-property and value so a rebuild cannot re-add them. Wire it into the generator, and decide
-whether the month-long `OBender12` hold above supersedes it or sits alongside it.
-
 ## Always last — pinned to the very end of the file
 
 **Bullets, not letters.** These were `A.` and `B.`; `CLAUDE.md` § *Queue items are BULLET POINTS*

@@ -322,6 +322,19 @@ def read_suppressed():
     editors *other than* the account and keeps their `wbremoveclaims` edits on ledger items.
     **A removal by Emma herself is not in it** — she runs the batches, and her removing
     something the batch re-adds is a conversation with her own pipeline, not an edit war.
+
+    **This sits ALONGSIDE `OBENDER_HOLD_EXPIRES`; neither supersedes the other.** The queue
+    asked which, and they answer different questions:
+
+    * the hold is **temporary, per ITEM, and one editor** — it buys time by controlling how
+      many further times that particular person sees the account, because *"recognition
+      decays but at a slower rate"* than the errors do. It expires on its own, 2026-09-30.
+    * this is **permanent, per STATEMENT, and every editor** — it fixes the mechanism that
+      caused the war rather than the exposure to one witness.
+
+    If the hold superseded this, the war would simply restart on 2026-10-01 when it lapses.
+    If this superseded the hold, the mechanism would be fixed while that editor kept seeing
+    the account in their watchlist through the month she wanted quiet. Both, therefore.
     """
     out = set()
     path = ROOT / "reports" / "suppressed-statements.tsv"

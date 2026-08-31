@@ -21952,3 +21952,30 @@ having — the old one only said a synthesised file looks unlike a Geni export, 
 construction and protects nothing.
 
 17 passed on the affected selection.
+
+## 2026-08-31 — sweep: the edit-war item, both halves now answered
+
+The section asked two things and both are done, so it goes.
+
+**"Wire it into the generator" — done**, `229236fc`. `read_suppressed()` loads
+`reports/suppressed-statements.tsv` and one guard in `add()` — the single choke point for
+statements on **existing** items — drops anything another editor removed. That is the right
+site: `name_lines()` emits against `LAST`, statements on items being created this run, which
+nobody can have deleted yet. `OBender12` stripped existing items.
+
+**"Decide whether the month-long `OBender12` hold supersedes it or sits alongside it" — decided:
+alongside, and the reasoning is now in `read_suppressed`'s docstring** rather than in a queue
+section about to be deleted. They answer different questions:
+
+- the **hold** is temporary, per ITEM, one editor. It controls how many further times that
+  particular person sees the account, because *"recognition decays but at a slower rate"* than
+  the errors do. It expires on its own, 2026-09-30.
+- the **suppressor** is permanent, per STATEMENT, every editor. It fixes the mechanism rather
+  than the exposure to one witness.
+
+Either one alone fails in a specific way, which is what settles it. If the hold superseded the
+suppressor, the war restarts on 2026-10-01 when it lapses. If the suppressor superseded the hold,
+the mechanism is fixed while that editor keeps seeing the account in their watchlist through the
+month she wanted quiet.
+
+`tests/test_garborg_day_batch.py`: 25 passed, 2 skipped. 55 → 54 sections.
