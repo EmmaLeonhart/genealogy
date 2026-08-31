@@ -321,16 +321,6 @@ As far as descriptions go, I'll say we should have a series of descriptions that
 
 ---
 
-## `reports/seeds.md`'s future — a queue item, not a cron
-
-The 22:01 cron `d62449e3` was created for this and **is no longer running**; it
-vanished without firing. Emma, 2026-08-15: put it in the queue instead, because
-*crons only fire while the session is idle and keep starving*.
-
-`CLAUDE.md` already says `reports/density.md` is where to look for the next export
-and that `seeds.md` *"ranks by doorway count and has never been validated against
-an outcome"*. The question is whether it is kept, regenerated or deleted.
-
 ## LABELS, IN HER ORDER — one step per language, every individual at once
 
 **Emma, 2026-08-17**, after being shown the 364 structural placeholders with no label:

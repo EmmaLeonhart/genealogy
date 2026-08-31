@@ -21850,3 +21850,29 @@ the original `P2600` seed region and were expanded long ago. `tests/test_wikidow
 passes, 45 tests.
 
 58 → 56 sections, 1,911 → 1,853 lines.
+
+## 2026-08-31 — sweep: `reports/seeds.md`'s future, settled as keep
+
+The item asked one question — *"whether it is kept, regenerated or deleted"* — and it is a
+decision inside an already-specified item, so § *Working the queue: GUESS. Do not ask* applies.
+
+**Kept, and kept regenerating.** Her § *LEGACY CODE IS DELETED* gives the test — *"does the
+pipeline read this?", not "might this be useful?"* — and the answer is yes on both sides:
+
+- `src/genimerge/cli.py` writes it, via the `seeds` module it imports;
+- `scripts/backtest-edge-exports.py` reads it;
+- `tests/test_cli.py` asserts it in two places — line 286 reads its text, line 530 asserts a
+  `seeds.md` key among the files written.
+
+Deleting it would take `test_cli.py` red, which settles the question on its own.
+
+**What `CLAUDE.md` actually says is narrower than the item read it as.** *"`reports/density.md`
+is where to look for the next export"* and *"`seeds.md` ranks by doorway count and has never been
+validated against an outcome"* are guidance about **which report to pick an export from**, not a
+finding that the file is dead. Being the wrong instrument for one job is not the same as being
+legacy.
+
+The cron the item replaced — `d62449e3` at 22:01 — is long gone, and its reason for existing
+stands: crons fire only while the session is idle and starve when it is busy.
+
+56 → 55 sections.
