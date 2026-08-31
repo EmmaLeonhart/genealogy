@@ -20693,3 +20693,36 @@ change. It now asserts the property — P5056 against P734 — which is what it 
 work and pre-existing — `reports/built-batches.tsv` did not list `wikidata-signe-close.qs`, built
 earlier today. `scripts/audit-built-batches.py` regenerates it, which is what the assertion
 message says to do; 7 pass. Re-verified: the affected modules are green individually as well.
+
+## 2026-08-30 — what the edge exports actually closed
+
+Emma, 2026-08-15: *"Finding these sparse areas, which we kind of did, and I did exports based off
+of them, but it feels like you kind of forgot about them."* Thirty-one edge exports were run off
+`reports/export-entry-points.csv` and filed into `exports/edges/`, and nothing ever checked what
+they bought. `scripts/backtest-edge-exports.py` → `reports/edge-export-backtest.md` is the check.
+
+**The measurement is exact.** Every one of the 2,631 entry points was in **exactly one** export
+when that file was written — the file is drawn from clusters only one export ever reached — so
+counting the same people across the corpus today gives the delta directly.
+
+**537 of 2,631 (20.4%) are now in more than one export**, and that headline is not the finding.
+Splitting by cluster rank and attributing each closure to the file that caused it:
+
+- **Clusters 1–10: 24 of 30 entry points closed (80%), and an `exports/edges/` file contains 23
+  of the 24.** The targeted exports did that work themselves.
+- **Everywhere else: 513 closed, of which edges account for 178**, and closure runs at a flat
+  15–20% whatever a cluster's rank — the signature of ordinary later exports drifting over them
+  rather than an effect of this method.
+
+**So the entry-point ranking is validated on the ten clusters it was actually used on, and
+untested below them**, because only 31 exports were ever run from it. That is a reason to run
+more, not a reason to read 20.4% as what the method delivers.
+
+**Attribution was added because correlation was not enough.** The first run reported only "now in
+more than one export", which says nothing about *which* export did it — and the 20.4% would then
+have been reported as the method's yield when two thirds of it is background. `exports/edges/`
+membership is the attribution, and it is computed in the same pass so the report regenerates
+whole rather than being hand-annotated.
+
+This is the third seed-choosing method put to a backtest here and **the first to survive one** —
+`reports/descendants-backtest-2026-08-07.md` refuted the other two.

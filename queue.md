@@ -145,23 +145,14 @@ run today is tomorrow's batch, because tomorrow those items exist.
 Each day: close the links yesterday's creations made possible, create the next ring, link
 the new people only to what already exists.
 
-**Outstanding on this item:**
+**Nothing is outstanding on this item.** Three bullets sat here reading *NOT a blocker*,
+*handled, not blocked* and *out of scope* — the name-items file (`LAST` does point at a fresh
+`CREATE`), the ambiguous tokens like `Olga` (listed in the batch's own trailer, so the batch
+runs without them), and CJK `SURN` (which belongs to the corpus-wide name work). They were
+resolved statements rather than steps, and are removed 2026-08-30.
 
-- **NOT a blocker, and never was — `reports/wikidata-garborg-name-items.qs`.** It said it
-  had to run first because *"QuickStatements cannot point at an item a `CREATE` in the same
-  batch just minted"*, which is false: that is what `LAST` does. It now creates each name
-  item and, in the same run, emits `Qperson Pprop LAST` for every bearer who already holds a
-  QID — **112 name items and 106 statements**, where it was 42 items and nothing. Emma,
-  2026-08-26: *"in the generation run add it to the existing ones too."* People this run is
-  also creating still wait for the next one, which is the sequence working, not a gate.
-- **`Olga` and the seven other ambiguous tokens are handled, not blocked.** A token the
-  plan says resolves to several items is never created — that is the `Maria` rule — and is
-  listed in the batch's own trailer for Emma. The batch runs without them, so nothing waits;
-  the NEEDS-DECISION tag this carried was wrong.
-- **CJK `SURN` is unproven and out of scope here.** `CLAUDE.md` records `SURN` holding a
-  *place* while `_MARNM` held the real clan name, so reading `surn` as a surname is right
-  for Norwegian material and not established corpus-wide. Belongs to the corpus-wide name
-  work, not this batch.
+This item is the **standing daily process**, not a step to finish: one batch a day, for as long
+as the programme runs.
 
 ## ⛔ THE TAIL ALGORITHM — Emma's method, 2026-08-18. Supersedes how the loop picks
 
@@ -271,11 +262,25 @@ one path** — importing those clears 1,454 path-slots. The cluster at the top i
 worth doing first: *"find people that are in multiple bridges and are also not in"*
 our data.
 
-**The sparse areas — she already did exports off them and I lost track.**
+**The sparse areas — CHECKED 2026-08-30, and the method holds where it was used.**
 *"Finding these sparse areas, which we kind of did, and I did exports based off of
 them, but it feels like you kind of forgot about them."* `reports/single-export-clusters.md`
-and `reports/export-entry-points.csv` are the outputs; 31 edge exports landed on
-2026-08-15 and were placed, but **nothing has checked what they closed**.
+and `reports/export-entry-points.csv` are the outputs; 31 edge exports landed on 2026-08-15.
+`scripts/backtest-edge-exports.py` → `reports/edge-export-backtest.md` is the check.
+
+Every one of the 2,631 entry points was in exactly one export when the file was written, so the
+delta is exact. **537 (20.4%) are now in more than one** — but the headline is not the finding:
+
+- **Clusters 1–10: 24 of 30 closed (80%), and an `exports/edges/` file contains 23 of the 24.**
+  The targeted exports did that themselves.
+- **Everywhere else: 513 closed, edges account for 178**, and closure runs at a flat 15–20%
+  whatever a cluster's rank — the signature of ordinary later exports drifting over them.
+
+So the entry-point ranking is **validated on the ten clusters it was actually used on and
+untested below them**, because only 31 exports were ever run from it. That is a reason to run
+more, not a reason to read 20.4% as what the method delivers. It is the third method to be put
+to a backtest here, and the first to survive one — `reports/descendants-backtest-2026-08-07.md`
+refuted the other two.
 
 **Chinese and Japanese genealogy — CLOSED, see below.** *"I believe
 Japanese and Chinese genealogies are partially there, partially overlapping with
