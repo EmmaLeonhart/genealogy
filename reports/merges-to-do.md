@@ -56,7 +56,7 @@ Same shape, but these items are not ones the ledger records you making, so some 
     - merge **Q15914619** into **Q709067** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q15914619&to=Q709067
 - **Johann Ernst II von Nassau-Siegen Prinz** - Geni `6000000007258599843`
     - merge **Q107637377** into **Q1694707** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q107637377&to=Q1694707
-- **Dmitry "Bobrok" Mikhailovich Koriat** - Geni `6000000008877466651`
+- **Dmitry Mikhailovich Koriat** - Geni `6000000008877466651`
     - merge **Q7569679** into **Q2033112** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q7569679&to=Q2033112
 - **6000000222203355825** - Geni `6000000222203355825`
     - merge **Q2424758** into **Q2150277** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q2424758&to=Q2150277
@@ -86,7 +86,7 @@ Same shape, but these items are not ones the ledger records you making, so some 
     - merge **Q135841431** into **Q18011853** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q135841431&to=Q18011853
 - **6000000028265655898** - Geni `6000000028265655898`
     - merge **Q121009606** into **Q24263178** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q121009606&to=Q24263178
-- **Lubov (Anna) Ivanovna of Moscow** - Geni `6000000033241899724`
+- **Lubov Ivanovna of Moscow** - Geni `6000000033241899724`
     - merge **Q130389513** into **Q27031142** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q130389513&to=Q27031142
 - **6000000014959053284** - Geni `6000000014959053284`
     - merge **Q27037997** into **Q27037989** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q27037997&to=Q27037989
