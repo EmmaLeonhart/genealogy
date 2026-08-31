@@ -22795,3 +22795,27 @@ guessed.
 
 `reports/merges-to-do.md` also refreshed — the ledger moved to 1,014 rows at 15:20 and the file
 was from 14:56.
+
+## 2026-08-31 — sweep: nothing dead, the patronymic item cut back to its remaining half
+
+**No section is complete**, so nothing was deleted. 57 sections before and after; 1,964 → 1,882
+lines.
+
+**Cut back: § *Patronymics resolve by NAME ITEM*.** Its measured half is done and now lives where
+measurements belong — `scripts/build-patronymic-items.py` and
+`reports/patronymic-items-to-create.tsv` (6,658 tokens, 4,340 with an unambiguous `P144` target,
+5,091 with a `P5278` partner), plus the well-developed-object profile and the `P407` reasoning in
+`devlog.md`. Keeping the derivation of those numbers in the queue made a finished measurement read
+as a step. What stays is the part nobody has done: emitting the 6,613 items, the per-person
+resolution by identity, and settling that `patronymic_or_surname` stops being a second decider.
+
+**And a stale figure corrected rather than left to be quoted.** § *Patronymic residue* cited
+`reports/patronymic-reclassified.tsv` as "the 30,171 rows it moves". That file was written by the
+**looser** `_same_name`, before it was tightened the same day to reject `Hansdatter`/`Heinrich`
+and `Andersson`/`Andrew`. The number no longer describes the code, so the item now says so and
+asks for a re-measure. This is the shape `CLAUDE.md` keeps recording — a figure that stays
+plausible after the thing it measured has changed.
+
+**Checked and not touched:** § *Patronymic residue* itself (`d`/`t` and `Nils`/`Nicolaus` are
+still open), § *Keep `reports/merges-to-do.md` current* (standing, refreshed at 15:2x), and the
+seven specification sections.

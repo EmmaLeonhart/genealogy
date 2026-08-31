@@ -53,119 +53,37 @@ counts are not stale when she next sits down to it.
 **The merges themselves are hers now, not mine** — that is what the file is for. The Izumo
 three are cleared and the browser pass is closed.
 
-## Patronymics resolve by NAME ITEM, not by comparing strings per person
+## Patronymics: emit the items, then resolve every bearer by identity
 
-**Emma's design, dictated 2026-08-31.** It replaces the string comparison I built the same day.
-Hers is stateless, exact, and generalises to any patronymic system — Nordic, Arabic, whatever —
-because nothing in it is language-specific once the name items exist.
+**Her design, dictated 2026-08-31**, and the plan for it is built —
+`scripts/build-patronymic-items.py` -> `reports/patronymic-items-to-create.tsv`, 6,658 tokens,
+4,340 with an unambiguous `P144` target, 5,091 with a `P5278` partner. `devlog.md` has the shape
+of a well-developed patronymic object, measured from the 631 that exist, and why `P407` is left
+off. What remains is emission and the per-person half.
 
-**The chain, and every link is an item identity:**
+    the patronymic resolves to a patronymic NAME ITEM
+    that item records the given names it derives from   (its own P144, multi-valued)
+    the parent carries a given name OBJECT              (P735 -> an item)
+    parent's P735 item among the P144 values?           -> emit P5056, P144 -> that parent
 
-    the person        carries a token matching the patronymic pattern
-    the patronymic    resolves to a patronymic NAME ITEM
-    that item         records what given name it derives from   (its own P144 based on)
-    the parent        carries a given name OBJECT                (P735 -> an item)
-    match?            parent's P735 item == the patronymic item's source given-name item
-    -> emit           P5056 patronym, with P144 based on pointing at THAT PARENT as a person
-
-**The conditions, as a checklist — for each, what differs in the output when it fires:**
-
-- **the population** is everyone whose name contains a patronymic-pattern substring. Not a
-  curated list.
-- **the parent is the father, or in rare cases the mother.** `P5056` is *patronym or matronym*
-  and a matronymic resolves against the mother by the same chain.
-- **the parent has no given name object -> SKIP.** Her words: *"if the father doesn't have a
-  given name object, then it just doesn't go."* Not a guess, not a fallback to the string.
-- **the patronymic item records no derivation -> SKIP.** *"if the patronymic in question does not
-  have a reference to the certain given name presence, that's also skipped."*
-- **the match is between two ITEMS**, never two strings.
-- **on a match, the `P5056` carries a reference to that parent** — the person, per
-  `name modelling.txt`.
-
-**The string comparison happens exactly ONCE, and not here.** It is what establishes a patronymic
-item's link to the given name it derives from — `Olsen` derives from `Ole` — and after that every
-person resolves by identity. Her words: *"it only uses a string comparison once."* That is the
-difference from what is in `namemodel.patronymic_or_surname` today, which compares strings once
-per person and therefore has to be right about Norwegian spelling 316,574 times.
-
-**THE PRECONDITIONS DO NOT EXIST AND CREATING THEM IS THE JOB.** Emma, 2026-08-31: *"almost
-nobody will because the point of our pipeline is we have to create preconditions that haven't
-been consistently created."* Measured the same day, so the size is known rather than assumed:
-
-| | |
-| --- | ---: |
-| distinct patronymic tokens our people carry | **7,593** (245,353 bearers) |
-| of those, having any patronymic name item at all | **51** |
-| patronymic items in the store, all languages | 631 |
-| of those, carrying `P144` *based on* | **119** (19%) |
-
-She guessed none carried `P144`; 119 do, and they are **Slavic and Icelandic** —
-`Fyodorovich` -> `Q36695874`, `Vasilyevich`, `Gunnlaugsdóttir` -> `Q16425875`, `Månsdotter` ->
-`Q19799975`. None of the Norwegian material she works in. So the convention exists and is worth
-copying rather than inventing.
-
-**`P144` IS MULTI-VALUED — her ruling, 2026-08-31.** A patronymic is attested by every given
-name the fathers actually carry, and those are different names with different items:
-
-    Olsdatter      <- Ole 3,789 · Ola 1,364 · Olav 98 · Oluf 68 · Olaf 11 · Olof 9
-    Johansdotter   <- Johan 4,305 · Johannes 459 · Juho 284 · Johann 8 · Juha 4
-    Andersson      <- Anders 4,621 · Andreas 93 · Andrew 10
-
-**1,892 of the 7,352 attested tokens have more than one source**, so this is the common case, not
-an edge. Every source goes on as its own `P144`, **coequal and unqualified** — the same shape as
-the two `P734` family names on `Weirman (Weyerman)`.
-
-**It keeps her per-person gate exact.** The test is *is the father's `P735` item among this
-patronymic item's `P144` values*, which stays an identity comparison. The alternative she rejected
-— keeping only the most-attested source — would have made the 1,364 `Olsdatter`s whose father was
-`Ola` fail the match and receive no `P5056` at all, which is worse than unlabelled: it is silently
-dropped.
-
-**WHAT A WELL-DEVELOPED PATRONYMIC OBJECT IS.** Emma, 2026-08-31: *"structurally this is a thing
-to be done but it requires well developed patronymic objects we currently lack."* Measured live
-over all 631 patronymic items that exist, so the shape is copied rather than invented:
-
-| property | share | can we supply it? |
-| --- | ---: | --- |
-| `P31` *instance of* -> `Q110874` *patronymic* | 100% | yes, always |
-| `P282` *writing system* | 92% | yes — Latin for this material |
-| `P1705` *native label* | 81% | yes — the token itself |
-| `P407` *language of work or name* | 59% | **not from the name.** Would be a guess |
-| `P460` *said to be the same as* | 25% | no |
-| `P9644` *Geneanet family name ID* | 22% | no |
-| `P144` *based on* | **19%** | **yes — the fathers' given-name items, multi-valued** |
-| `P5278` *surname for other gender* | 15% | **yes — `Olsson` <-> `Olsdotter`, same stem** |
-
-**The Nordic vocabulary is essentially absent, which is why she has never met one.** By
-`P407` *language of work or name*: Russian 90, Icelandic 73, Spanish 65, Ukrainian 60,
-Belarusian 14, **Swedish 14**, Norwegian none. So this is not filling gaps in an existing
-vocabulary — it is creating the Norwegian and Swedish patronymic vocabulary, 7,542 items.
-
-**Two properties are ours to give and both are load-bearing.** `P144` is the gate her algorithm
-runs on. `P5278` is free and nothing else supplies it: `Olsson` and `Olsdotter` share a stem and
-differ only by the gendered suffix, which our own `PATRONYMIC_PARTS` already splits.
-
-**`P407` is deliberately not supplied.** Nothing in a token says which language it is —
-`Andersson` is Swedish and `Andersen` Danish-Norwegian by convention, not by rule, and inferring
-it from the export or the region is the geography guess `CLAUDE.md` forbids everywhere else.
-
-**The `P144` target comes from THE FATHER, never from a search.** Establishing
-`Olsdatter --P144--> Ole` by looking for `Ole` among the 225,457 given-name items in the store
-returns **553 candidates** — `oala`, `oelfke`, `oilbhe`, `oilbhreis`. That is the fuzzy matching
-`CLAUDE.md` forbids, and the boundary is the same one the zipper name step runs on: a string
-comparison is safe **confirming against one fixed person** and useless as a search. So the one
-comparison happens where the father is already known: this person's father carries `P735 -> Q…`,
-this person's token is `Olsdatter`, so `Olsdatter` derives from that item — and every later bearer
-of `Olsdatter` then resolves by identity with no comparison at all.
-
-**What happens to `namemodel.patronymic_or_surname` is part of this item**, not a separate one.
-Under her design it is not the decision any more — at most it proposes which token is the
-patronymic before the item lookup runs. Do not leave both deciding.
+- **Emit the items.** 6,613 creations carrying `P31` -> `Q110874` *patronymic*, `P1705` *native
+  label*, the `P144` *based on* values and `P5278` *surname for other gender*. Nothing has been
+  written as QuickStatements yet, deliberately — she has not asked for a batch.
+- **Then the per-person resolution**, which is the point of the whole design: the parent's `P735`
+  item is compared against the patronymic item's `P144` values, and nothing is string-compared
+  again.
+- **Do not leave two things deciding.** Under her design `namemodel.patronymic_or_surname` is no
+  longer the decision — at most it proposes which token is the patronymic before the item lookup
+  runs. Settle that when the per-person half lands.
+- **546 tokens are blocked only by an ambiguous given name** — `Daniel(3)`, `Gabriel(3)`,
+  `Abraham(2)`. That is § *One name item per USAGE* and hers to rule on; it does not block the
+  other 4,340.
 
 ## Patronymic residue: `d`/`t` and `Nils`/`Nicolaus`
 
-The father test is load-bearing now and `reports/patronymic-reclassified.tsv` is the 30,171
-rows it moves. Reading a sample leaves one nameable class still wrong:
+The father test is load-bearing now. **`reports/patronymic-reclassified.tsv` is STALE** — its
+30,171 rows were produced before `_same_name` was tightened on 2026-08-31, so re-measure rather
+than quoting it. Reading a sample leaves one nameable class still wrong:
 
 - **`Pedersdatter` with father `Petter`** — `d`/`t` alternate in Scandinavian given names and the
   skeleton keeps them apart. Folding them is a bigger claim than the others: `Peder`/`Petter` are
