@@ -1452,23 +1452,6 @@ Emma, 2026-08-30. Two changes to how the QuickStatements are generated:
 - **A person created in the run gets linked to their name items in that same run.** Today the
   name statements only reach people who already held a QID, so a new person waits a day.
 
-## The patronymic application — the residue on `Q141223548` *Per Nilsson*
-
-**The root cause is fixed** (2026-08-31): `scripts/build-garborg-name-items.py` never passed
-`father_name`, so `patronymic_or_surname` returned `patronymic` on its first line for every
-`-sen`/`-son`/`-datter` token. Her two Bergersen cases verify as fixed —
-`Christian Frederik Bergersen` and `Georg August Bergersen`, father **Gunder Bergersen**, now
-classify `Bergersen` as **family** where they classified it as patronymic before, which is
-exactly her *"linked to the father who demonstrably had a different given name and had that
-patronymic"*. `reports/audit-q141223488.md`.
-
-**What is left is her third case, which is a different shape.** `Q141223548` *Per Nilsson*
-(`6000000019178738670`) carries `P735` `Q13582800` and `P5056` `Q130233015`, and her complaint
-was *"`Nilsson` on both the patronym and the surname"*. Our record has `Nilsson` in `_MARNM` and
-nothing in `SURN`, so `classify_fields` reads it as `married` — a family name — both before and
-after the fix. The `P5056` therefore did **not** come from this path, and where it did come from
-is not established. Find the emitter before changing anything.
-
 ## Always last — pinned to the very end of the file
 
 **Bullets, not letters.** These were `A.` and `B.`; `CLAUDE.md` § *Queue items are BULLET POINTS*

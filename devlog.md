@@ -22698,3 +22698,34 @@ The option she rejected is worth recording because of what it would have cost. K
 most-attested source — `Olsdatter -> Ole` — makes the 1,364 people whose father was `Ola` fail the
 item match and receive **no `P5056` at all**. Not mislabelled: silently dropped, which is the
 failure mode this repo keeps finding in its own measurements.
+
+## 2026-08-31 — sweep: the Per Nilsson residue, answered by looking at his father
+
+**Removed: § *The patronymic application — the residue on `Q141223548` Per Nilsson*.** Its whole
+instruction was *"find the emitter before changing anything"*, and the answer is that nothing
+needs changing.
+
+**Read from the record rather than reasoned about.** `reports/display-names.csv` for
+`6000000019178738670`:
+
+    givn   'Per'      surn  ''      nick  ''      marnm  'Nilsson'
+
+So `Nilsson` occurs in exactly one field, `_MARNM`, which `classify_fields` reads as a family
+name — the current pipeline emits `P734` for him and **no `P5056` at all**. The live `P5056`
+`Q130233015` is residue from a run predating the 2026-08-24 field-reading fix, when the model
+parsed the rendered label `Per Nilsson` positionally and called the last token patronymic.
+
+**And the statement it left is not wrong.** His father is `6000000019178967030`, whose name is
+literally **`Nils`** — so `Nilsson` genuinely is his patronymic, and today's father test agrees:
+`patronymic_or_surname("Nilsson", "Nils")` returns `patronymic`. Her complaint was that `Nilsson`
+sat on *both* the patronym and the surname, and § *One name item per USAGE* is her own ruling on
+exactly that shape: a token in two roles is two statements, not an ambiguity to resolve.
+
+Nothing to emit, nothing to correct, no emitter left to find.
+
+**Checked and NOT removed:** § *Create the fathers the patronymics imply* looks adjacent to
+today's work and is not closed by it. That item needs a rule that **generates** the father's given
+name from a stem (`Olsen` -> `Ole`); `_same_name` only **confirms** a stem against a father
+already in hand. Opposite directions, and the generating one is still the 42.1% problem it was.
+
+58 sections before, 57 after.
