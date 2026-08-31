@@ -36,6 +36,33 @@ ones above them: `THE EDIT ALGORITHM`, `THE DAILY ALGORITHM`, `THE TAIL ALGORITH
 `Link reliability order`, `The chain of provenance`, `How the synoptic tree is actually made`,
 `PREREQUISITE ORDER`. They describe how a thing is done rather than asking for it to be done.
 
+## Strategic analysis of 2026-08-30, with an emphasis on reducing visibility
+
+Emma's framing, and the analysis is to be written in her terms rather than mine: *"an emphasis
+on being calm and not using emotionally provocative words to give a good strategic analysis on
+reducing visibility."*
+
+The work is to browse Wikidata directly, decide, and write it up. Her own reading is the
+starting point, not a conclusion to re-derive:
+
+- A close call, unlikely to lead to discovery. It reads as a QuickStatements error rather than
+  as combative, and probably did not flag as a revert because no source was added.
+- Three things landing at once made it worse than expected: the Helen work, the surname glitch,
+  and the edit-war glitch.
+- **The chains were converging** and that was not understood here. Three paths meeting on one
+  individual, half finished, with the most recent edits clustered closest to that individual,
+  is the conspicuous shape. It is why a large number of runs had to be pushed through quickly.
+- **Surname item creation is high-risk**, higher than she expected. Not necessarily to be
+  stopped, but to be treated as such.
+- **Her proposed control: a month-long hold.** Any item `OBender12` has touched is locked —
+  our QuickStatements may not edit it.
+- Outcome: a more cohesive Scandinavian blob around the Bure and Garborg people, loosely
+  around her, which reads as less suspicious than what preceded it.
+
+**The governing lesson, in her words:** *"this isn't a programming issue. This isn't an accuracy
+issue. This is a social issue… it was better to be inaccurate but inconspicuous, because people
+don't go after you for being inaccurate. People go after you for being conspicuous."*
+
 ## 0. Aug 28, 2026 manual adds
 
 These are supposed to be manually added to the queue and worked on, do no just paraphrase during the rebase keep this part entirely intact. We are approaching usage limit for now.
@@ -1964,6 +1991,29 @@ Not investigated.
 Emma, 2026-08-30: *"an item was created as 'En dödfödd son Bielke' which is just wrong."*
 
 Not investigated.
+
+## The spines are complete — declare them legacy and remove them
+
+Emma, 2026-08-30, after all four verified complete: *"the spines are all clear and I'm putting an
+item at the end of the queue declaring them legacy code and removing them."*
+
+`SPINE_PATHS` in `build-garborg-day.py`, the spine walk, `reports/the-spine.md`, and the path
+files that exist only to serve it. `CLAUDE.md` § *LEGACY CODE IS DELETED* is the rule.
+
+## The unintentional edit war: analysis and fix
+
+`OBender12` removed `P734` statements after merging our duplicate name items. The next build
+re-emitted them, because the generator emits a name statement when the item does not have one,
+and a deletion is what "does not have one" looks like. Emma had to undo her own undos and make
+cosmetic edits afterwards.
+
+Not statefulness — the absence of it. Any *emit what is missing* pipeline fights any editor who
+deletes, indefinitely.
+
+`scripts/refresh-suppressed-statements.py` is written and unrun: it reads the contributions of
+editors other than the account, keeps `wbremoveclaims` edits on ledger items, and records the
+property and value so a rebuild cannot re-add them. Wire it into the generator, and decide
+whether the month-long `OBender12` hold above supersedes it or sits alongside it.
 
 ## Always last — pinned to the very end of the file
 
