@@ -21230,3 +21230,59 @@ case, and it is now an assert in the script rather than a comment.
 and § *THE EXPORT LOOP* sits at the tail by Emma's own call. Synthesising the edges from the path
 assertions — the way `exports/0-scraped/scraped-paths.ged` synthesised the people — is the
 alternative and is a provenance decision that is hers, not one to take while working the queue.
+
+## 2026-08-31 — 43 of the 102 "missing links" were a wrong column, not missing at all
+
+Emma chose *"Synthesise the edges from the paths"* for closing the blocked paths. Building that
+started with checking what actually needed synthesising, and the sibling half did not exist.
+
+`census-paths.load_adjacency` read the **singular** `father`/`mother` columns of
+`derived-family.csv`. That file also has **`fathers`/`mothers`, plural**, and the singular pair
+holds one id each — arbitrarily, which one differing between two people who share a family:
+
+    6000000010534596447   father  9995000000000001376
+    6000000010259352985   father  6000000013030475832
+
+    ...but both:
+    fathers = 6000000013030475832 | 9995000000000001376 | 9995000000000100104
+    mothers = 6000000013030590331 | 9995000000000001377 | 9995000000000100105
+
+Those two are `his brother` on a path. Read singular they share no parent and the step scores
+broken; read plural they share **all three**. `connected()` is *direct edge OR shared parent*,
+so the whole sibling class turned on which column was read.
+
+**Every one of the 43 sibling links was this.** Re-run with the plural columns:
+
+    before   85 of 979 paths blocked, 102 distinct missing links
+    after    45 of 979 paths blocked,  59 distinct missing links
+
+And the remaining 59 are **0 sibling, 58 former-partner, 1 unmatched** — the class is gone, not
+reduced. The tree carried all 43 the whole time.
+
+This is `CLAUDE.md` § *Our side could never have two children* for the sixth time, and the tell
+was the same: a clean, plausible distribution. *"43 of 43 have parents on both sides and share
+none"* is far too tidy for real data, and I wrote it into a report and a commit message before
+checking the column. `load_adjacency` now raises if nobody in the file has more than one parent,
+so the plural columns failing to resolve is loud rather than a number.
+
+**Note what it nearly cost.** The next step was to synthesise sibling edges into a GEDCOM — new
+assertions in the corpus, for 43 relationships the tree already held.
+
+## 2026-08-31 — the remaining 58: `ex-` was silently dropping every former partner
+
+`build-scraped-gedcom.py` takes the relation word as the last token of the phrase, so
+`her ex-husband` gives `ex-husband`, which is in neither `PATH_REL` nor the sibling test — and
+the edge was never emitted. That is **all 58**: `ex-husband` 25, `ex-wife` 19, `ex-partner` 13,
+`fiancée` 1.
+
+`FORMER` normalises the prefix onto the existing spouse handling. A former marriage is a marriage
+that ended, so the family carries `1 DIV Y` — which is how Geni exports it, `1 DIV` appearing in
+502 of them. An engagement never became a marriage and carries `1 ENGA Y` with no `DIV`; that
+overstates slightly, since `derived-family` will read the pair as spouses, and one link is not
+worth a second representation.
+
+The `FAM` writer takes an optional fourth element for the tag so the existing three-element
+appends are untouched.
+
+**The connectivity gain shows only after the next merge and derive**, since
+`reports/derived-family.csv` is built from `out/merged.ged`.

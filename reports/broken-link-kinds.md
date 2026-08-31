@@ -2,7 +2,7 @@
 
 `reports/broken-links.md` ranks the missing links and finds no leverage — the top one blocks a single path. Joining each back to its path row recovers the relation Geni stated, and the picture changes: the missing links are **two classes and nothing else**.
 
-- **43 sibling** links
+- **0 sibling** links
 - **58 former or prospective partner** links
 - **0 other**
 - 1 could not be matched back to a path row
@@ -17,11 +17,7 @@
 | --- | ---: |
 | her ex-husband | 25 |
 | his ex-wife | 19 |
-| his brother | 16 |
-| her brother | 11 |
 | her ex-partner | 9 |
-| his sister | 9 |
-| her sister | 7 |
 | his ex-partner | 4 |
 | his fiancée | 1 |
 
@@ -29,7 +25,7 @@
 
 A sibling step is **not** scored broken for lacking a sibling edge: `census-paths.connected` carries it through a shared parent, which is the rule `CLAUDE.md` records after counting all 2,126 sibling steps as broken once. So a broken one means the two do not share a recorded parent.
 
-- both people present in `derived-family.csv`: **43 of 43** have parents recorded on both sides
+- both people present in `derived-family.csv`: **0 of 0** have parents recorded on both sides
 - of those, sharing at least one parent: **0**
 
 So every one of them has full parentage on both sides and no parent in common. That is not a missing edge — it is our parentage disagreeing with Geni's, which is the staleness `CLAUDE.md` § *The question is whether OUR TREE MATCHES GENI* is about. A refresh of those people is the instrument, not a new edge.

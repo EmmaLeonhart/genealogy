@@ -103,13 +103,30 @@ def load_adjacency():
     with open(REPO / "reports" / "derived-family.csv", encoding="utf-8", newline="") as fh:
         for row in csv.DictReader(fh):
             me = row["geni_id"]
-            parents[me] = {x.strip() for col in ("father", "mother")
+            # **`fathers`/`mothers`, PLURAL.** The singular `father`/`mother` columns hold
+            # ONE id each, and which one they hold is arbitrary between two people who share
+            # a family. That is not a nuance, it is the difference between connected and not:
+            #
+            #   6000000010534596447  father  9995000000000001376
+            #   6000000010259352985  father  6000000013030475832
+            #   ...but both  fathers = 6000000013030475832 | 9995000000000001376 | 9995...104
+            #
+            # Those two are `his brother` on a path. Read singular they share no parent and
+            # the step scores broken; read plural they share all three. **All 43 sibling
+            # links this census reported as broken were this**, and the tree carried every
+            # one of them. `CLAUDE.md` § *Our side could never have two children* is the
+            # standing lesson -- a wrong column returns a clean, plausible, entirely
+            # instrument-made number.
+            parents[me] = {x.strip() for col in ("fathers", "mothers", "father", "mother")
                            for x in (row.get(col) or "").split("|") if x.strip()}
-            for col in ("father", "mother", "spouses", "children"):
+            for col in ("fathers", "mothers", "father", "mother", "spouses", "children"):
                 for other in (x.strip() for x in (row.get(col) or "").split("|")):
                     if other:
                         adj[me].add(other)
                         adj[other].add(me)
+    if not any(len(v) > 1 for v in parents.values()):
+        raise SystemExit("load_adjacency: nobody has more than one parent -- "
+                         "the plural columns did not resolve, check derived-family.csv")
     return adj, parents
 
 
