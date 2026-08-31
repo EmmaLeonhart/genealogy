@@ -662,7 +662,25 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None,
             quals = [(HAS_ROLE, BIRTH_NAME_ROLE)] if has_married else []
             lines.append((FAMILY_NAME, qid, quals))
 
-    return lines, notes
+    # **One fact, one statement.** A token can sit in two FIELDS and still be one name:
+    # `Hans Erikson` carries `Erikson` in both `GIVN` and `SURN`, so `classify_fields`
+    # rightly returns it twice and this loop would emit the identical `P5056` twice.
+    # `tests/test_p2600_batches.py::test_no_statement_is_repeated` is the invariant, and it
+    # went red the moment the father fix changed which token today's batch reached.
+    #
+    # **This is NOT the duplication `CLAUDE.md` protects.** That rule is about values on
+    # Wikidata Emma duplicates deliberately to attract bot edits, and about not adding a
+    # general de-duplication pass over the data. This drops a byte-identical repeat of one
+    # statement inside one generated batch, which asserts nothing the first did not.
+    # Leaving it in was the call made earlier today and the suite was right to refuse it.
+    deduped, seen = [], set()
+    for prop, value, quals in lines:
+        key = (prop, value, tuple(quals))
+        if key in seen:
+            continue
+        seen.add(key)
+        deduped.append((prop, value, quals))
+    return deduped, notes
 
 
 def aliases_for(fields, surn="", marnm=""):
