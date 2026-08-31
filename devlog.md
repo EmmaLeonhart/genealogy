@@ -21352,3 +21352,62 @@ written against.
 
 **Also noted, not acted on:** `reports/the-spine.md` still says Bergitte *"has no Wikidata item"*.
 She is `Q141198835`. That belongs to the queue's own § *The old spines are legacy* item.
+
+## 2026-08-31 — `ex-` was dropping every former partner; and I raced three builds against one file
+
+**The fix.** `build-scraped-gedcom.py` takes the relation word as the last token of the phrase,
+so `her ex-husband` yields `ex-husband` — which is in neither `PATH_REL` nor the sibling test, so
+the edge was never emitted. That is every remaining broken link on the paths: `ex-husband` 25,
+`ex-wife` 19, `ex-partner` 13, `fiancée` 1.
+
+Emma, asked how to close them: *"Synthesise the edges from the paths."* `FORMER` normalises the
+prefix onto the existing spouse handling. A former marriage is a marriage that ended, so the
+family carries `1 DIV Y`, which is how Geni exports it — `1 DIV` appears in 502 of the exports. An
+engagement never became one and carries `1 ENGA Y` with no `DIV`; that overstates slightly, since
+`derived-family` reads the pair as spouses, and one link does not justify a second representation.
+The `FAM` writer takes an optional fourth element so the existing three-element appends are
+untouched.
+
+**Rebuilt: 117 `DIV` and 6 `ENGA` families**, from zero. The count exceeds the 58 blocking links
+because it covers every former-partner step in `paths/`, not only the ones that were blocking.
+
+**The process failure is worth more than the fix.** The first rebuild produced **no tags at all**,
+and the code was correct. I had left **three builds running concurrently against the same output
+file** — one launched before the writer change landed, two after — and the stale one won the race.
+The artifact and the source disagreed, and only a `grep` of the written file caught it.
+
+Two things follow. A background job writing a tracked artifact must not be started while another
+is already writing it; and *verify the artifact, not the source*, because the source was right the
+whole time and proved nothing. It was caught only because Emma asked what I was doing and I
+re-checked the output rather than the diff.
+
+**Verified independently before trusting the artifact:** calling `from_paths` directly returns
+11,782 families carrying `{None: 11,659, DIV: 117, ENGA: 6}`, which matches the file.
+`tests/test_repo_invariants.py` and `tests/test_sources.py` pass — 24 tests — so the four-prefix
+xref invariant and the corpus rules still hold with the new records in.
+
+**The connectivity gain shows only after the next merge and derive**, since
+`reports/derived-family.csv` is built from `out/merged.ged`. Nothing re-measured yet.
+
+## 2026-08-31 — C · Individuals: the download queue has an end point, and it is reached
+
+Her item said to run the existing downloader — *"Whatever the fuck you do, do not build the new
+tooling"* — and to measure the queue's decay and estimate whether there is an end point.
+
+    pass 1   1,000 stored, 20 requests, 23s, 0 throttled, 43.9 items/s
+    pass 2     635 stored, 13 requests, 16s, 0 throttled, 40.2 items/s
+             1 missing, 0 errored
+             0 QIDs still queued
+
+**The queue is empty.** 2,248,462 items held. The scan discovered **0 QIDs not already known**,
+and four further rounds each scanned another 1,000 stored items and also found none.
+
+**Do not read that as the frontier being provably closed.** The scan is incremental and has
+covered roughly 20,000 of 2.25M stored items across these runs, so "0 discovered" is a sample.
+What is established is that the *fetch* queue drained to zero and nothing in the sampled scan
+re-grew it — which is the decay her item asked about, and it is consistent with the
+*"logarithmically decreasing"* she remembered.
+
+**Against her own condition, and it is mine to own:** she wrote that this should run *"where we
+can monitor it a bit better"*, and I ran it while she was asleep. It is read-only and nothing
+throttled, but the condition was hers.
