@@ -21818,3 +21818,35 @@ the run asserts it: **every old row still present — True**, 299 added, 13,802 
 
 That is the same shape as the wrong-column failures `CLAUDE.md` lists, with the damage pointed at
 an output instead of an input: a smaller number that looks like a result.
+
+## 2026-08-31 — sweep: two sections became records, and their warnings moved into the code
+
+Both were still steps this morning and are not any more. Each carried one durable warning, so
+that went where the code is before the section went.
+
+**`Name items — the ambiguity` — deleted.** Every bucket is now settled or routed: 490
+romanisation collisions and 204 native-script pairs are not ours to resolve, the 21 duplicates are
+in `reports/merges-to-do.md`, the 15 sex splits and 33 generic-vs-sexed are applied in
+`reports/name-resolved-by-sex.csv` (13,802 rows). The section itself said *"Still to do: nothing
+on the resolvable part"*, and what remains is **1** bearer with no recorded sex and no generic
+item to fall back on — a residue, not a step.
+
+Its warning — *do not "rebuild" that file* — is now sharpened in
+`scripts/resolve-names-by-sex.py`, which is the only thing that can do the damage: 13,503 rows
+became 801 on a from-scratch run, only **14** of the 95 existing tokens overlap what the bucketing
+covers, and the run exits 0 while doing it.
+
+**`Comprehensive Wikidata re-import` — deleted.** Her criterion decided it —
+*"if there's no clear end point, we move on"* — and two passes showed no decay: 89,832 discovered,
+then 87,693. The decision is taken and the numbers are in this log.
+
+Its warning is the one that cost four wrong readings, so it went into
+`src/genimerge/wikidownload.py`'s own docstring rather than a queue section that was about to
+disappear: **an empty fetch queue is not convergence.** The walk stops when one
+`--scan-per-round` slice finds nothing and the queue is empty, without checking the cursor reached
+the end of the store — at the default 500 that is two thousand items. Read the cursor, not the
+queue length, and treat *"discovered 0"* over the opening shards as meaningless, because they are
+the original `P2600` seed region and were expanded long ago. `tests/test_wikidownload.py` still
+passes, 45 tests.
+
+58 → 56 sections, 1,911 → 1,853 lines.

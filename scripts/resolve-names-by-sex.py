@@ -117,8 +117,9 @@ def main():
     # `name-resolved-by-sex.csv` were resolved by an earlier analysis whose script is gone, and
     # they come from a different population -- every still-ambiguous string, not just the ones
     # this bucketing can settle. Regenerating from scratch replaced 13,503 rows with 801, a 94%
-    # loss dressed up as a rebuild. Existing rows are kept verbatim and only genuinely new
-    # tokens are added, which is what the queue item asked for: *extend*.
+    # loss dressed up as a rebuild -- it exits 0 and reads like a clean run. Only **14** of the
+    # 95 overlap with what this bucketing covers. Existing rows are kept verbatim and only
+    # genuinely new tokens are added: *extend*, never *rebuild*.
     existing_rows, existing_tokens = [], set()
     if OUT.exists():
         with io.open(OUT, encoding="utf-8", newline="") as fh:

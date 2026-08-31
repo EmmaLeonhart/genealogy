@@ -268,64 +268,6 @@ the name** — the tree settles it, via neighbours and which exports they came f
 state** — and the 9,287 with `mul` only have no named relative at any distance out to
 two hops, so they need something other than a relative or they stay markers.
 
-## Name items — the ambiguity
-
-**Every one of the 769 still-ambiguous strings has a named cause**, and the two buckets a
-bearer's sex can settle are now applied. `scripts/classify-name-ambiguity.py` →
-`reports/name-ambiguity-buckets.tsv`, offline:
-
-    same romanisation  490  63.7%    native script  204  26.5%
-    other               35   4.6%    duplicate       21   2.7%
-    sex split           15   2.0%    language split   2   0.3%    no description  2  0.3%
-
-**70% is not ours to resolve** — a native-script pair and a romanisation collision are Wikidata
-modelling and a destroyed distinction respectively. The 21 duplicates are in
-`reports/merges-to-do.md`.
-
-**Still to do: nothing on the resolvable part.** `scripts/resolve-names-by-sex.py` extends
-`reports/name-resolved-by-sex.csv` — 13,503 → **13,802** rows, 299 new pairs over 34 tokens. What
-is left is the residue that no rule settles: **1** bearer with no recorded sex and no generic item
-to fall back to.
-
-**Do not "rebuild" that file.** Its original 95 tokens come from an earlier analysis whose script
-is gone and from a wider population than this bucketing covers. Regenerating from scratch produced
-801 rows against 13,503 — a 94% loss that looks like a clean run. The generator therefore keeps
-every existing row verbatim and adds only tokens it has not seen.
-
-## Comprehensive Wikidata re-import — measured over two passes: NO clear end point
-
-Her item: run the existing script, **do not build new tooling**, estimate the time, and — *"If it
-turns out that the amount doesn't seem like there's a clear end point, then we move on to this
-stuff."*
-
-**Two full passes, 2026-08-31, and the discovery rate did not decay:**
-
-| pass | scanned | discovered | stored |
-| --- | ---: | ---: | ---: |
-| 1 — full walk of the store | 2,255,629 | **89,832** | 29,953 |
-| 2 — the frontier those 89,832 opened | 147,523 | **87,693** | 147,523 |
-
-**Discovery per item scanned went 4.0% → 59%.** The frontier is far denser in unknown relatives
-than the settled store, which is what a frontier is — so draining it does not shrink it. The store
-went **2,248,462 → 2,425,946** (+177,484, 4.3 GB on disk) and the queue emptied twice, and neither
-emptying meant anything.
-
-**So by her own criterion this has no clear end point yet, and the decision is to move on.** The
-walk is expanding into the whole Wikidata human graph rather than converging on the Geni-linked
-neighbourhood the store was seeded for. Nothing is broken and nothing is lost: it is resumable,
-polite (0 throttled across 3,579 requests) and can be restarted whenever it is wanted.
-
-**Read no queue-length as convergence.** Three separate readings today said the frontier was
-closed and all three were artefacts — the fetch queue reporting 0 while the cursor sat at shard 21
-of 2,249; *"scanned N, discovered 0"* over the already-expanded seed region; and a coverage
-measurement taken mid-walk. The stopping rule ends on one empty `--scan-per-round` slice without
-checking the cursor reached the end of the store, so at the default 500 it announces closure two
-thousand items in. **`--scan-per-round 150000` is the flag that actually walks it.**
-
-**If it is picked up again**, the open question is not *how long* but *how far out* — a bound on
-distance from a `P2600` holder, which is what `CLAUDE.md` § *The practical goal is EMMA densely
-linked* implies and what an unbounded walk ignores.
-
 ## Create the fathers the patronymics imply — Emma's item
 
 **Emma, 2026-08-15:** *"If they are patronymics I actually think I'm going to want

@@ -20,6 +20,17 @@ iteration queue" is "the end of the last shard" for free, and scanning is a
 forward read of files already on disk — no random access into 500k items, and
 nothing to keep in sync with what is stored.
 
+**AN EMPTY FETCH QUEUE IS NOT CONVERGENCE.** The walk stops when one ``--scan-per-round``
+slice discovers nothing *and* the queue is empty — it does **not** check that the cursor
+reached the end of the store. At the default slice of 500 that is two thousand items, so a
+run announces closure a few hundred shards in and prints ``0 QIDs still queued``. On
+2026-08-31 that read as a closed frontier three separate times while the cursor sat at
+shard 21 of 2,249; a walk with ``--scan-per-round 150000`` then found **89,832** unknown
+relatives, and the pass after it another **87,693**. Discovery per item scanned went 4.0%
+to 59%, because newly-fetched people are exactly the ones whose relatives are missing.
+**Read the cursor, not the queue length**, and treat "discovered 0" over the opening shards
+as meaningless — they are the original P2600 seed region and were expanded long ago.
+
 **Shards are the truth; the index is derived.** Items are appended to gzipped
 JSONL shards of a fixed size and those are what gets committed — many ordinary
 files that push incrementally, deliberately not one big one that would need LFS.
