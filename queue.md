@@ -110,10 +110,12 @@ position. Step 0 is off by default because it is the day's one network call.
   **The particle rule reaches far beyond the brackets: 257,030 tokens** stop being `P734`
   *family name* lookups — `de` 125,425, `von` 60,959, `van` 13,836, `la` 7,481, `af` 7,189,
   `ap` 6,574. Every one of them was being proposed as a family-name item.
-- **`P1449` *nickname* is modelled and no longer emitted** — `d97e92c2` dropped it from
-  `build-garborg-day.py` (a Norwegian nickname tagged `en`), `model-vs-reality.py` still models
-  it, so the diff reports **66 `missing`** that nothing will ever emit. Decide which side is
-  right; do not silence it by filtering the column.
+- **DONE 2026-08-30 — `P1449` *nickname*.** The emitter was right and the model was stale, so
+  the drop moved into `namemodel.statements_for`, the one place that models a name. Her ruling
+  of 2026-08-29 is the later word and it is unambiguous: *"just drop the nickname functionality…
+  Just lmul vs amul."* The 66 phantom `missing` rows go with it — nothing was filtered, the
+  model simply stopped claiming a statement no batch would ever add. `CLAUDE.md` § *A nickname
+  alias carries the SURNAME* said the opposite until today and now records the supersession.
 - **The ideal state is still the Geni tree alone.** Her spec says the **union of the synoptic
   tree and the Geni tree**; the synoptic half does not exist yet, which is the § *PREREQUISITE
   ORDER* item.

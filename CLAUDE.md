@@ -608,14 +608,30 @@ String similarity to the neighbouring token did separate every ruled case, and w
 heuristic in a repo that bans them. **Her answer removed the question instead of settling it**,
 which is worth remembering the next time a rule appears to need a threshold.
 
-### A nickname alias carries the SURNAME. `P1449` carries the bare token
+### A nickname alias carries the SURNAME. `P1449` is NOT emitted
 
 **Emma, 2026-08-26**, on `Q141189102` *Sigrid "Sally" Manilva Tunheim*: *"this person was given
 an alias of 'Sally' instead of 'Sally Ekman'."*
 
-    P1449 nickname   Sally              <- the bare token. This IS the nickname.
     Amul  alias      Sally Ekman        <- nickname + the MARRIED surname
     Amul  alias      Sigrid Manilva Ekman
+
+**`P1449` was dropped on 2026-08-29 and this section said the opposite until 08-30.** Her words:
+*"the nicknames (listed in English????) are not something that's good. Just drop the nickname
+functionality because the nicknames being listed in English is unacceptable. Just lmul vs
+amul."* It is monolingual text, so it needs a language tag; the tag being emitted was `en`,
+declaring `Byre` and `Christophersdatter` to be English words. **No right tag is available
+either** — the nickname is Norwegian on a person whose label is language-neutral `mul`, and
+guessing a language per person is the inference this repo refuses everywhere else.
+
+**The nickname is not lost.** It is still recognised, still kept out of the given names, and
+still reaches Wikidata as the `Amul` alias above — which is exactly the *"just lmul vs amul"*
+she asked for.
+
+**The drop lives in `namemodel.statements_for`, the one place that models a name.** It sat in
+`build-garborg-day.py` for a day instead, so the model went on producing `P1449` while nothing
+could emit it, and `model-vs-reality.py` reported **66 people missing a nickname** no batch
+would ever add. A phantom gap is worse than a silent one, because it reads as work.
 
 The married surname is used because § *The MARRIED name is the real name* makes it the form the
 primary label takes, so the alias is the same person's name with the nickname swapped in.
@@ -1332,7 +1348,7 @@ ran.
 | P144 | based on | item — **qualifier on `P5056`, pointing at the PERSON that link names**: the father, then the grandfather for a chained patronymic. `name modelling.txt` supersedes the earlier reading of this as a name-item-to-name-item link. |
 | P5278 | surname for other gender | item — pairs `Olsson` with `Olsdotter` |
 | P1814 | name in kana | monolingual text — the Japanese reading of a name written in Han characters. **Nothing emits it yet**; queued 2026-08-29 with the `ko` label as a research task, because a kana reading is not derivable by rule from the characters. |
-| P1449 | nickname | monolingual text — **what a quoted token inside `GIVN` becomes.** Emma, 2026-08-24: `Stine "Stena" Eivindsdatter` makes *Stena* a nickname, **not** a given name and **not** a middle name |
+| P1449 | nickname | monolingual text — **modelled but NEVER EMITTED**, per Emma 2026-08-29; see § *A nickname alias carries the SURNAME*. A quoted token inside `GIVN` is still read as a nickname — `Stine "Stena" Eivindsdatter` makes *Stena* a nickname, **not** a given name and **not** a middle name — and it becomes an `Amul` alias rather than a statement |
 | Q2507958 | birth name | item — the `P3831` role on the `SURN` family name, when a married one sits beside it |
 | Q28418670 | married name | item — the `P3831` role on the `_MARNM` family name |
 | Q245025 | middle name | item — the `P3831` value for a middle given name |

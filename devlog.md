@@ -20652,3 +20652,44 @@ the first 4 KB matched the `CHAN` date of the file's first `INDI` instead of the
 
 Step 3 — the browser pass over the candidates — is unchanged and remains Emma's: the merges are
 hers, flagged and never performed here.
+
+## 2026-08-30 — `P1449` nickname: the model was stale, not the emitter
+
+The daily-algorithm item carried an open question: the emitter stopped producing `P1449`
+*nickname* on 2026-08-29, `model-vs-reality.py` still modelled it, and the diff reported **66
+people missing a nickname** that nothing would ever add. Decide which side is right, and do not
+silence it by filtering the column.
+
+**Her 2026-08-29 ruling is the later word and settles it:** *"the nicknames (listed in
+English????) are not something that's good. Just drop the nickname functionality because the
+nicknames being listed in English is unacceptable. Just lmul vs amul."* `P1449` is monolingual
+text, the tag being emitted was `en` — declaring `Byre` and `Christophersdatter` to be English —
+and there is no right tag available, since the nickname is Norwegian on a person whose label is
+language-neutral `mul`.
+
+**So the emitter was right and the model was stale**, and the fix is that the drop moves into
+`namemodel.statements_for`, the one place that models a name. Having it in `build-garborg-day.py`
+instead is exactly what produced the phantom gap: a model that claims a statement no caller can
+emit reads as work.
+
+Nothing was filtered. The 66 `missing` rows are gone; 63 `extra` remain, which is Wikidata
+holding nicknames earlier batches added, and a batch projects the `missing` column only — the
+script prints that on itself. `CLAUDE.md` § *The purpose is to ADD to Wikidata* makes an `extra`
+a note rather than a work item.
+
+**The nickname is not lost and its classification is untouched** — still recognised, still kept
+out of the given names, still reaching Wikidata as the `Amul` alias, which is the *"just lmul vs
+amul"* she asked for. `CLAUDE.md` § *A nickname alias carries the SURNAME* said the opposite
+until today and now records the supersession, as does the `P1449` row of the property table.
+
+**Two tests rewritten to the contract rather than to the state they happened to observe.**
+`test_a_nickname_needs_no_name_item` asserted the statement it now must not produce.
+`test_the_father_name_reaches_statements_for_and_changes_the_property` was **already red before
+this work**: it asserted `== []` on the premise that no item existed for the patronymic
+`Gundersen`, and the name-item generator created `Q141223748`, so it went red with no behaviour
+change. It now asserts the property — P5056 against P734 — which is what it was ever about.
+
+**Fast lane: 1,500 passed, 1 failed, 34 skipped in 5m45.** The one failure was unrelated to this
+work and pre-existing — `reports/built-batches.tsv` did not list `wikidata-signe-close.qs`, built
+earlier today. `scripts/audit-built-batches.py` regenerates it, which is what the assertion
+message says to do; 7 pass. Re-verified: the affected modules are green individually as well.

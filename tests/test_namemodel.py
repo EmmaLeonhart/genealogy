@@ -300,11 +300,27 @@ def test_a_lone_surname_carries_no_role_qualifier():
     assert [q for p, v, q in lines if p == FAMILY_NAME] == [[]]
 
 
-def test_a_nickname_needs_no_name_item():
-    """`P1449` takes text, so a missing plan entry can never block it."""
+def test_a_nickname_produces_an_alias_and_no_statement():
+    """Emma, 2026-08-29: *"Just drop the nickname functionality... Just lmul vs amul."*
+
+    This asserted `(NICKNAME, "Stena", [])` in `lines` until 2026-08-30. The property is
+    monolingual text and the tag being emitted was `en`, declaring Norwegian words to be
+    English; there is no right tag either, since the nickname sits on a person whose label is
+    language-neutral `mul` and guessing a language per person is the inference this repo refuses.
+
+    **The drop belongs in the model, which is what this pins.** It lived in
+    `build-garborg-day.py` for a day, so the model went on producing `P1449` while nothing could
+    emit it, and `model-vs-reality.py` reported 66 people as missing a nickname no batch would
+    ever add. A phantom gap reads as work.
+
+    The classification is untouched: the token is still recognised as a nickname, still kept out
+    of the given names, and still reaches Wikidata as an alias.
+    """
     lines, _notes = statements_for("", {}, "1",
                                    fields={"givn": 'Stine "Stena"', "surn": "Garborg"})
-    assert (NICKNAME, "Stena", []) in lines
+    assert not [ln for ln in lines if ln[0] == NICKNAME]
+    # Still not a given name, and still not part of the label.
+    assert "Stena" not in [v for p, v, _q in lines if p == GIVEN_NAME]
 
 
 def test_aliases_cover_the_nickname_and_the_married_full_name():
@@ -509,11 +525,18 @@ def test_the_father_name_reaches_statements_for_and_changes_the_property():
     # alone. `Anna` is `Q666578`, `Q11879590` *female given name*, and emitting it is a
     # statement we were previously missing, not a regression.
     def gundersen(father_name):
-        """Only the statements the GUNDERSEN token produces: its family item, or a patronym."""
-        return [(prop, value) for prop, value in props(father_name)
+        """Which PROPERTY the GUNDERSEN token produces: a patronym, or its family item."""
+        return [prop for prop, value in props(father_name)
                 if value == "Q656767" or prop == PATRONYM]
 
-    assert gundersen("") == [], "with no father the morphological patronymic has no item yet"
-    assert gundersen("Gunder Olsen") == [], "stem matches his given name, so still a patronymic"
-    assert gundersen("Hans Gundersen") == [(FAMILY_NAME, "Q656767")], (
+    # **Asserted on the property, not on the statement list being empty.** Two of these read
+    # `== []` until 2026-08-30, and that rested on no item existing for the patronymic
+    # `Gundersen` -- which is time-varying state this repo actively changes: the name-item
+    # generator created `Q141223748` and the test went red without any behaviour changing.
+    # What the test is actually about is that `father_name` decides P5056 against P734, and
+    # that is what it now says.
+    assert gundersen("") == [PATRONYM], "no father, so the morphological reading stands"
+    assert gundersen("Gunder Olsen") == [PATRONYM], (
+        "stem matches his given name, so still a patronymic")
+    assert gundersen("Hans Gundersen") == [FAMILY_NAME], (
         "the father carries the same token, so it is an inherited surname")

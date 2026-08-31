@@ -486,8 +486,8 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None,
     modelling.txt` points it at **the person the link names**, not at a name item.
     Omitted when the father has no item yet rather than guessed.
 
-    A `nickname` becomes `P1449`, which takes **text, not an item**, so it needs no
-    entry in the name plan and can never be blocked by a missing one.
+    A `nickname` produces an **alias only** and no statement -- see the block that handles it
+    for Emma's 2026-08-29 ruling and why the drop lives here rather than in a caller.
 
     `sex` is `"M"` or `"F"` and decides one thing only: whether a `_MARNM` family name
     carries `P3831` -> `Q28418670` *married name*. On a man it does not -- see below.
@@ -519,10 +519,28 @@ def statements_for(label, plan, geni_id, father_qid=None, fields=None,
         if usage in ("particle", "unknown"):
             continue
 
-        # A nickname is free text on the item, so it is emitted regardless of whether
-        # any name item exists for it.
+        # **A nickname produces an ALIAS and no statement. Emma, 2026-08-29:** *"the nicknames
+        # (listed in English????) are not something that's good. Just drop the nickname
+        # functionality because the nicknames being listed in English is unacceptable. Just
+        # lmul vs amul."*
+        #
+        # `P1449` is monolingual text, so it needs a language tag, and the one being emitted was
+        # `en` -- declaring `Byre` and `Christophersdatter` to be English words. There is no
+        # right tag available either: the nickname is Norwegian on a person whose label is
+        # language-neutral `mul`, and guessing a language per person is the inference this repo
+        # refuses everywhere else.
+        #
+        # **The drop belongs HERE, in the model, and not in the emitter.** It lived in
+        # `build-garborg-day.py` from 2026-08-29 until 2026-08-30, so the model went on
+        # producing `P1449` while nothing could ever emit it -- and `model-vs-reality.py`, which
+        # reads the model, reported **66 people missing a nickname** that no batch would ever
+        # add. A phantom gap is worse than a silent one: it reads as work.
+        #
+        # **The nickname is not lost and its classification is untouched.** The token is still
+        # recognised, still kept out of the given names, and still reaches Wikidata through
+        # `aliases_for` -- an `Amul` carrying the nickname form beside the `Lmul` carrying the
+        # primary name, which is exactly the *"just lmul vs amul"* she asked for.
         if usage == "nickname":
-            lines.append((NICKNAME, token, []))
             aliases.append(token)
             continue
 
