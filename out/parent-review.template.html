@@ -40,6 +40,17 @@ h1{font:600 21px/1.2 "IBM Plex Sans",sans-serif;margin:0;letter-spacing:-.01em}
 @media (max-width:720px){
   .cols{grid-template-columns:1fr}
   .col+.col{border-left:0;border-top:1px solid var(--line)}
+  body{padding:16px 14px 20px}
+  .name{font-size:21px}
+  .col{padding:14px 16px 18px}
+  .cardtop{padding:14px 16px}
+  .trigger{max-width:none}
+  .acts{padding:9px 12px}
+  .actrow{gap:7px}
+  button{padding:8px 12px;font-size:13.5px}
+  kbd{display:none}
+  .tally{width:100%;order:9;font-size:12px}
+  .spacer{display:none}
 }
 .eyebrow{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
   font-weight:600;margin-bottom:9px}
@@ -114,15 +125,28 @@ function esc(s) {
 
 // The overlap between the two sides IS the evidence, so make it visible rather than
 // something to find by reading two lists in parallel.
+// **Whole tokens only.** A substring pass marked "Grubb" inside "Grubbe" and rendered it as
+// "Grubb e" -- the highlight visibly broke the very name it was meant to point at. Tokenise,
+// compare the folded whole word, and either wrap the token or leave it alone.
+function fold(w) {
+  return w.toLowerCase()
+    .replace(/[æäå]/g, "a")
+    .replace(/[öø]/g, "o")
+    .replace(/é/g, "e")
+    .replace(/ü/g, "u")
+    .replace(/[^a-z0-9]/g, "");
+}
+
 function hl(text, words) {
-  var out = esc(text);
+  var set = {};
   for (var k = 0; k < words.length; k++) {
-    var w = words[k];
-    if (!w || w.length < 3) continue;
-    var safe = w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    out = out.replace(new RegExp("(" + safe + ")", "gi"), "<mark>$1</mark>");
+    if (words[k] && words[k].length > 2) set[words[k]] = 1;
   }
-  return out;
+  return String(text == null ? "" : text).split(/(\s+)/).map(function (tok) {
+    if (!tok || /^\s+$/.test(tok)) return tok;
+    var f = fold(tok);
+    return (f.length > 2 && set[f]) ? "<mark>" + esc(tok) + "</mark>" : esc(tok);
+  }).join("");
 }
 
 function list(items, words) {
@@ -200,6 +224,7 @@ function decide(v) {
   i++;
   persist();
   render();
+  padForBar();
 }
 
 el("by").onclick = function () { decide("SAME"); };
@@ -227,8 +252,19 @@ addEventListener("keydown", function (e) {
   else if (e.key === "ArrowLeft" && i > 0) { i--; render(); }
 });
 
+// **The action bar is fixed, so the page must be padded past its MEASURED height.**
+// A guessed padding was wrong on mobile, where the buttons wrap to two rows and the tally to a
+// third: the candidate's children sat underneath the bar with no way to scroll to them. Measure
+// it, and measure again whenever it could have rewrapped.
+function padForBar() {
+  var bar = document.querySelector(".acts");
+  if (bar) document.body.style.paddingBottom = (bar.offsetHeight + 26) + "px";
+}
+addEventListener("resize", padForBar);
+
 i = firstUndecided();
 render();
+padForBar();
 
 // Shared storage when the viewer can reach it. The page is fully usable without it:
 // localStorage already holds every decision and the export button is the path back.
