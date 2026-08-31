@@ -292,30 +292,37 @@ two hops, so they need something other than a relative or they stay markers.
 
 ## Name items — the ambiguity
 
-**`reports/name-ambiguity-causes.md` is the authority and supersedes what this section used to
-say.** It measured the 769 still-ambiguous strings and corrected the account that was here: the
-different-language case this item called the blocker is **12 strings of 769, 1.6%**, so building
-a view of which language a Geni name is *"would buy 12 strings"* and is not worth it for this.
+**Every one of the 769 still-ambiguous strings now has a named cause.**
+`scripts/classify-name-ambiguity.py` → `reports/name-ambiguity-buckets.tsv`, run entirely
+offline: all 1,380 competing items are in `wikidata/items/`, so nothing was fetched.
 
-**70% is not ours to resolve** — 271 where one item is the native-script form of the other, 210
-where different characters share a romanisation (unresolvable from a Latin string, because the
-information was destroyed before the data reached us), and 57 that look like Wikidata duplicates.
-The right action there is to record the ambiguity, not resolve it.
+    same romanisation  490  63.7%    native script  204  26.5%
+    other               35   4.6%    duplicate       21   2.7%
+    sex split           15   2.0%    language split   2   0.3%    no description  2  0.3%
 
-**Settled and in the pipeline:** the 192 resolved by usage class, and the 95 male-vs-female given
-names, which resolve **per bearer** from the person's sex — `reports/name-resolved-by-sex.csv`,
-13,501 of 13,503 bearer-token pairs.
+**The `other` bucket was the open question and it is not mixed.** All 35 are **given** names, and
+**33** are one shape: a generic item against a sexed one, or two differently-sexed ones —
+`Abba` is *male given name* against *unisex given name*, `Salmon` is *given name* against *male
+given name*. The two exceptions are `Devlet` (*Turkish given name* vs *female given name*, a
+language-and-sex split) and `McLean` (*male given name* vs *masculine given name*, which is one
+thing worded twice and so a Wikidata duplicate).
 
-**Still to do: the 231 "other" bucket has never been broken down.** Some is the sex split already
-ruled on, some is an item with no English description at all (`John` → `Q104552334`), which is a
-gap in Wikidata rather than an ambiguity. Nobody has counted which is which, and it is the only
-bucket where the answer is not already known.
+**Decision taken, not asked** — `CLAUDE.md` § *Working the queue: GUESS*. Her `Maria` ruling
+already settles this shape: *"there's a male and a female Maria… That is settled by the person's
+sex."* Extended to the generic case: where one candidate is the bare `given name` and the other
+is sexed, take the sexed item matching the **bearer's** recorded sex, and fall back to the
+generic where the bearer has no sex. That is per bearer, not per string, exactly as
+`reports/name-resolved-by-sex.csv` already does for the 95.
 
-**The 207 better-populated-than-the-other cases stay unresolved on purpose.** One item having ten
-times the label languages of another is exactly the tie-break heuristic she rejected — *"you
-jumped through a lot of hoops to try to introduce safety stuff here that I did not want."*
-`CLAUDE.md` § *Emma not replying means she is content* records that this call is mine: it is
-**taken**, and the decision is to leave them ambiguous rather than to invent a ranking.
+**Note the buckets differ from `reports/name-ambiguity-causes.md`**, which was written by hand
+with no script and could not be re-derived. Where the two disagree the script is the one that can
+be re-run; it is deliberately ordered most-specific-first and the ordering is in its docstring.
+
+**70% is still not ours to resolve** — a native-script pair and a romanisation collision are
+Wikidata modelling and a destroyed distinction respectively.
+
+**Still to do:** apply the sexed-vs-generic rule to the 33 the way the 95 were applied, extending
+`reports/name-resolved-by-sex.csv`.
 
 ## Comprehensive Wikidata re-import — the estimate she asked for
 

@@ -21592,3 +21592,40 @@ get held and their own parents become the new gap. The shard analysis was a corr
 where the unqueued work sat and a bad forecast of the outcome.
 
 Draining the 59,832 now.
+
+## 2026-08-31 — the "231 · other" name-ambiguity bucket is 35, and it is one shape
+
+`reports/name-ambiguity-causes.md` sorted the 769 still-ambiguous name strings into four buckets
+and left the largest residue as *"### 231 · other. Mixed."* That was the only bucket whose answer
+was not already known — the other three are rulings rather than questions — and it had never been
+broken down. It also had **no script**: the report was written by hand, so nothing could re-derive
+it once the store grew.
+
+`scripts/classify-name-ambiguity.py` does the whole classification, offline. All 1,380 competing
+items are in `wikidata/items/`; the shard for each comes from the download index, so no request
+was made.
+
+    same romanisation  490  63.7%    native script  204  26.5%
+    other               35   4.6%    duplicate       21   2.7%
+    sex split           15   2.0%    language split   2   0.3%    no description  2  0.3%
+
+**The residue is 35, every one a given name, and 33 are a single shape** — a generic item against
+a sexed one, or two differently-sexed ones: `Abba` *male* vs *unisex*, `Salmon* *given name* vs
+*male given name*, `Harper` *male* vs *unisex*. The two exceptions are `Devlet`
+(*Turkish given name* vs *female given name*) and `McLean` (*male* vs *masculine given name*,
+which is one thing worded twice — a duplicate rather than an ambiguity).
+
+**So "mixed" was wrong and the bucket dissolves.** Nothing in the 769 is now unexplained.
+
+**A decision taken rather than parked**, per § *Working the queue: GUESS*. Her `Maria` ruling
+covers this shape already — *"there's a male and a female Maria… That is settled by the person's
+sex"* — and it extends: where one candidate is the bare `given name` and the other is sexed, take
+the sexed item matching the **bearer's** sex and fall back to the generic where the bearer has
+none. Per bearer, not per string, which is what `reports/name-resolved-by-sex.csv` already does
+for the 95.
+
+**The counts differ from the hand-written report** (it said 271 native, 210 romanisation, 57
+duplicate, 231 other). They are different rules, not a correction of arithmetic: this orders the
+tests most-specific-first, so a pair that is both native-script and a romanisation collision lands
+in one bucket rather than being counted by eye. The script is the version that can be re-run, and
+its ordering is stated in its docstring so the choice is auditable rather than implicit.
