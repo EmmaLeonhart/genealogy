@@ -333,38 +333,35 @@ them and was applied to the wrong one once.
   held, nothing throttled. The scan found no new QIDs, though it is incremental and has
   sampled ~20,000 items, so that is decay evidence rather than proof the frontier is closed.
 
-## Comprehensive Wikidata re-import — Emma's item, in her words
+## Comprehensive Wikidata re-import — the walk, and where the remaining work is
 
-> It is clear here that the Wikidata data that we were importing over the past
-> little while is not sufficient… We were at a point where it was good, where we
-> had our existing scripts related to Wikidata, and the level of missing/queued
-> people was going down… I realized that the geni stuff lacking wiki data was
-> more of a concern than I was expecting because it was interfering with some of
-> the entity resolution, where there would be a missing wiki data link and there
-> would be a present geni link… If we'd be able to specifically look at this
-> stuff, prioritizing the ancient, I want to spend maybe 3 to 8 hours working on
-> this with the algorithm that we already had that was working great. If that
-> algorithm isn't working well, then I'd like to switch towards one that
-> prioritizes people in ancient times or people who do not have birthdates and
-> what's linked on them first, and then moves on to more recent people.
->
-> We should use the great download script and come up with some level of
-> estimation of how long it'll take to actually properly get all the Wikidata
-> stuff. If it turns out that the amount doesn't seem like there's a clear end
-> point, then we move on to this stuff.
->
-> **When you reach this queue item, do not build the new tooling. Whatever the
-> fuck you do, do not build the new tooling.** You should be setting up cron jobs
-> or something to do tests on the existing tooling that you're going to run to
-> figure out what's going on and whether it fits it. Run the tooling for several
-> hours, and then make a decision.
+Her item: use the existing download script, estimate how long it takes to get all the Wikidata
+stuff, and **do not build new tooling** — *"Whatever the fuck you do, do not build the new
+tooling."* If there is no clear end point, move on.
 
-Context measured 2026-08-15, `reports/store-parent-coverage.md`: of 1,528,454
-`P22` *father*/`P25` *mother* statements in the store, **34,104 (2.2%) point at an item we do not
-hold**, and **71% of those are children with no birth date** — which is the
-population her fallback algorithm would prioritise.
+**There is a clear end point, and the shape of it is measured.** 2026-08-31:
 
----
+- The store holds **2,248,462** items and the fetch queue is **empty**.
+- That is not coverage. **34,151** `P22`/`P25` statements point at an item we do not hold, and all
+  **32,670** distinct missing parents were **absent from the download index entirely** — never
+  queued, never fetched.
+- The reason is the walk cursor, not a defect. `meta.cursor` was at **shard 21 of 2,249**.
+- **The work is concentrated, not spread.** Of the 25,319 children naming a missing parent,
+  **25,294 sit in shards the scan had not reached** — **22,407 of them in shards 1200-1399** and
+  2,795 in 1400-1599. Shards 0-322 are the original `P2600` seed region and were already fully
+  expanded, which is why a short run reports *"discovered 0"* and looks converged.
+
+**The stopping rule is what made it look finished**, and it is worth knowing before reading any
+future run: the loop ends when one `--scan-per-round` slice discovers nothing *and* the queue is
+empty. It does not check that the cursor reached the end of the store. With the default slice of
+500 that is two thousand items, so the walk "closes" a few hundred shards in.
+
+**So: run it with a large `--scan-per-round`.** `--scan-per-round 150000` walks the store instead
+of sampling it. Nothing was rebuilt to achieve this — it is the existing tool with the right flag.
+
+**Still to do:** finish the walk past shard 1200, fetch what it discovers, then re-run
+`python scripts/measure-store-parent-coverage.py` and record whether the 34,151 falls. That, not
+the queue length, is the coverage measure.
 
 ## Create the fathers the patronymics imply — Emma's item
 
