@@ -20523,3 +20523,39 @@ tokens now resolve, and the regenerated batch proposes ten entirely different on
 
 Two things nearly undid it and are worth noting: the loader's `return {}` on a missing store
 would have discarded her creations, and its `index = {}` a few lines later wiped them.
+
+## 2026-08-30 — the component's shape: Emma is a degree-1 leaf 16 hops from the centre
+
+Her question: does the cluster read as a regional genealogy somebody built, or as a construction
+pointed at one person? Measured live by walking `P22`/`P25`/`P26`/`P40`/`P3373` from
+`Q11959067`.
+
+**It is not an island.** The walk reached **4,033 items before being cut off**, and the
+highest-degree nodes it found are Edward I, Yaroslav the Wise and Eleanor of Castile — our region
+is continuous with the global genealogy graph through the medieval end of the Charlemagne line.
+46 of our items link directly to items nobody here created.
+
+**Induced on the ledger: 849 items, 507 reached, 497 in one connected mass** plus five fragments.
+Density peaks at radius 8–12 from the centre.
+
+**The centre is nobody in particular** — `Q141198755` *Anna Ingebretsdatter Voster*, degree 4,
+and a handful of other Rogaland farm people at the same eccentricity.
+
+| | degree | hops from centre |
+| --- | ---: | ---: |
+| Arne Garborg `Q467497` | 12 | 7 |
+| Johannes Bureus `Q633094` | 8 | 11 |
+| Richard Wade Borsheim | 4 | 16 |
+| **Emma** `Q140568870` | **1** | **16** |
+
+A construction pointed at one person puts that person near its centre with density falling away.
+This has the opposite shape: Emma is a single-edge leaf at maximum eccentricity, and the two
+notable figures are twice as central and carry far more edges. `Q232803` is not in the component
+at all.
+
+**The one visible signature is the spines.** Past radius 13 the counts fall to 8, 8, 8, 8, 5 —
+threads, not families, and four of them converge. Chains that long do not occur in naturally
+collected genealogies. They are currently masked by the 497-item mass and were far more legible
+before it existed, which is the structural argument for finishing rather than stopping.
+
+`reports/component-shape-2026-08-30.md` carries the full profile.
