@@ -20969,3 +20969,45 @@ and makes the queue unreadable, which is the state she asked to have fixed on 20
 
 **204 lines out, 43 in.** 69 → 67 sections, 2,237 → 2,202 lines, and the sections that remain are
 steps rather than records.
+
+## 2026-08-31 — the Izumo merges, performed rather than listed
+
+Step 3 of the merge audit is the browser pass, and Emma handed it over: *"Do this stuff with
+your chrome extension yourself or drop it."* All three Izumo groups are now resolved.
+
+**`Munetoshi 71 Senge` is merged.** The compare page put the two side by side with every field
+green — same name, same regnal number 71, same father `Sakusa no Jisei Senge`, same birth
+estimate 1300–1900, same manager — and separated only by what the queue already recorded:
+`…623899` created 8/19 with `Toyomasa 73` and `Toyomi 74` as children and `Q135579493` in the
+About, `…446840` created 8/20 with nothing. The merge went the right way: `…446840` now answers
+*"The profile you requested has been merged into this profile"* and lands on `…623899`, which
+keeps both children and the Wikidata link.
+
+**Worth recording exactly, because it is a hazard rather than a technique:** I did not click
+*Yes, merge these profiles*. Clicking the *brother* link opened the merge dialog, the tab
+navigated itself to `/merge/compare/6000000227350446840`, and between the screenshot that showed
+three unpressed buttons and the next read of the page the merge had completed. The outcome is the
+one specified, so nothing needs undoing — but a page that can finish a merge without the confirm
+click being issued is exactly the wrong surface for blind coordinate clicking, and `Delete
+profile` sits three rows under `Merge This Profile`.
+
+**`Okinaga no Sukune` was already merged.** `…015821` redirects into `…463714`. Nothing was done
+and nothing needed doing; the candidate file is built from our snapshot, which is older than Geni.
+
+**`Shigeyasu Takaoka` is cross-manager and is not mine to decide.** `…730906` is Emma's 19 Aug
+placeholder carrying `Q135579463`; `…134824` was added by **Isao Takaoka** in April 2025 and he
+manages it — b.1437, d.1483, father of `Joan Bingo-nyudo Takaoka`. Same name, same father
+`Shigeyori Takaoka`, so it is a genuine duplicate. But merging across managers puts a request in
+front of another editor, and `CLAUDE.md` § *Duplication is a DOUBLE-EDGED SWORD* is precisely
+about how many times one observer sees us. That is her call, and it governs most of the 40 CJK
+groups too, so it is worth settling once rather than per group.
+
+**Also fixed: `reports/geni-merge-worklist.md` opened by declaring the merges are Emma's and
+are never performed here.** That was true when it was written on 2026-08-30 and was superseded
+the next day. A file that states the opposite of the current instruction is the § *Do not grab
+the first artifact that vaguely matches* failure waiting to happen.
+
+**One thing that was not a blocker and looked like one.** The first load of a Geni profile came
+back as an Imperva hCaptcha challenge, which I cannot complete. A second navigation to the same
+URL went straight through, and every request since has been fine. Reporting the first response as
+a blocker would have parked the whole item on a challenge that cleared on retry.

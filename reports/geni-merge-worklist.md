@@ -1,6 +1,6 @@
 # Geni merge worklist
 
-**The merges are Emma's and are never performed here.** This is only the order to look in, and the pages to look at. `scripts/find-geni-duplicates.py` produces the candidates; this is the top of them.
+**The merges are performed here, with the Chrome extension.** Emma, 2026-08-31: *"Do this stuff with your chrome extension yourself or drop it."* This is the order to work in, and the pages to look at. `scripts/find-geni-duplicates.py` produces the candidates; this is the top of them.
 
 `reports/geni-duplicate-candidates.tsv` holds **12,287** groups, which is not something anyone opens a browser against. That is why this exists.
 
@@ -10,13 +10,13 @@
 
 Emma, 2026-08-24: *"Izumo ones are good to explore to see how redirects potentially work."* Found by joining the candidate ids against the 210 ids named across every `reports/izumo*.tsv`; searching the candidate file for `izumo` finds none of them, because the profiles are called Senge, Kitajima and so on.
 
-- **息長宿祢王** — 2 profiles, parent of the same name, same name, child of kanime ikazuchi
+- **息長宿祢王** — MERGED already, before this pass reached it; `…015821` redirects into `…463714`
     - https://www.geni.com/people/x/6000000001846463714
     - https://www.geni.com/people/x/6000000209933015821
-- **Munetoshi 71 Senge** — 2 profiles, same parent, same name, child of Sakusa no Jisei Senge
+- **Munetoshi 71 Senge** — MERGED 2026-08-31 into `…623899`, which keeps both children and the `Q135579493` link
     - https://www.geni.com/people/x/6000000227331623899
     - https://www.geni.com/people/x/6000000227350446840
-- **Shigeyasu Takaoka** — 2 profiles, parent of the same name, same name, child of shigeyori takaoka
+- **Shigeyasu Takaoka** — cross-manager: `…134824` is **Isao Takaoka**'s, `…730906` is Emma's placeholder. Awaiting her ruling on merging across managers
     - https://www.geni.com/people/x/6000000217687134824
     - https://www.geni.com/people/x/6000000227331730906
 

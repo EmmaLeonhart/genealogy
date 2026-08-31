@@ -40,31 +40,30 @@ ones above them: `THE EDIT ALGORITHM`, `THE DAILY ALGORITHM`, `THE TAIL ALGORITH
 
 These are supposed to be manually added to the queue and worked on, do no just paraphrase during the rebase keep this part entirely intact. We are approaching usage limit for now.
 
-## ⛔ Audit of Geni merges — her method, 2026-08-24
+## ⛔ Audit of Geni merges — step 3, the browser pass
 
-Emma, 2026-08-24: *"Find profiles that look similar like shared parents, plus look over
-basically all Japanese items with higher scrutiny, and then use the browser extension to see if
-they merge. Izumo ones are good to explore to see how redirects potentially work."*
+Emma, 2026-08-31: *"Do this stuff with your chrome extension yourself or drop it."* Steps 1 and 2
+are finished; `reports/geni-merge-worklist.md` is the order to work in.
 
-**Steps 1 and 2 are done** — `scripts/find-geni-duplicates.py` → 12,287 candidate groups, recall
-fixed from 1 to 15 of the 29 known merged pairs (14 of 14 strongly-evidenced), markers no longer
-leaking, CJK classified and sorted first. `devlog.md` 2026-08-30 has the detail;
-`tests/test_join_sanity.py` pins the recall so it cannot slide back.
+**The Izumo three are cleared.** `Munetoshi 71 Senge` merged into `…623899`;
+`Okinaga no Sukune` was already merged into `…463714` before I got there.
 
-**Step 3 is the live one, and it is MINE to perform.** Emma, 2026-08-31: *"Do this stuff with
-your chrome extension yourself or drop it."* `reports/geni-merge-worklist.md` is the order to
-work in — the 3 Izumo groups first, then the 40 largest CJK groups.
+**`Shigeyasu Takaoka` is the one left, and it is cross-manager.** `…730906` is Emma's 19 Aug
+placeholder carrying `Q135579463`; `…134824` (b.1437, d.1483, father of Joan Bingo-nyudo
+Takaoka) was added by **Isao Takaoka** in April 2025 and he manages it. Same name, same father
+`Shigeyori Takaoka`. Merging it puts a request in front of another editor, which is the thing
+§ *Duplication is a DOUBLE-EDGED SWORD* is careful about — so it waits on her ruling, which is
+also the ruling for most of the 40 CJK groups.
 
-**First pair confirmed on the page, merge not yet made.** `Munetoshi 71 Senge`: `…623899`
-(19 Aug, two children, `Q135579493` in the About) against `…446840` (20 Aug, empty). Same name,
-same regnal number 71, same father `Sakusa no Jisei Senge`, each recorded as the other's
-brother. Keep `…623899`.
+**Still to do: the 40 largest CJK groups.** The `Tanba` ones are the real signal; the bare
+one-token surname groups (`杨`, `黄`, `邱`) are an artefact of the name column and are not
+evidence of duplication.
 
-**Geni serves the twin regardless of which id is requested** — navigating to `…623899` lands on
-`…446840`, URL bar included — so the profile has to be reached by clicking the *brother* link
-from the other one. Two renderer timeouts as well. `Delete profile` sits three rows under
-`Merge This Profile` in the Actions menu, so a blind coordinate click on an unreliable render is
-the one thing not to do here; use `find` refs.
+**Working notes for whoever picks this up.** Geni can serve the twin whichever id is requested,
+so a profile may have to be reached by clicking the *brother* link from its duplicate. The
+compare page at `/merge/compare/<id>` is where the merge is confirmed, and it can complete on
+its own once reached. `Delete profile` sits three rows under `Merge This Profile` in the Actions
+menu, so use `find` refs rather than blind coordinate clicks.
 
 ## ⛔ THE DAILY ALGORITHM — her full spec, 2026-08-26. Supersedes the one-hop ring
 
