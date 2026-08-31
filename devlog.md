@@ -22729,3 +22729,31 @@ name from a stem (`Olsen` -> `Ole`); `_same_name` only **confirms** a stem again
 already in hand. Opposite directions, and the generating one is still the 42.1% problem it was.
 
 58 sections before, 57 after.
+
+## 2026-08-31 — what a well-developed patronymic object is, measured from the 631 that exist
+
+**Emma:** *"structurally this is a thing to be done but it requires well developed patronymic
+objects we currently lack."* So the profile was measured rather than designed — all 631 patronymic
+items on Wikidata, live:
+
+    P31   instance of -> Q110874 patronymic   100%      P460  said to be the same as       25%
+    P282  writing system                       92%      P9644 Geneanet family name ID      22%
+    P1705 native label                         81%      P144  based on                     19%
+    P407  language of work or name             59%      P5278 surname for other gender     15%
+
+**The finding that matters: the Nordic vocabulary barely exists.** By `P407` *language of work or
+name* — Russian 90, Icelandic 73, Spanish 65, Ukrainian 60, Belarusian 14, **Swedish 14**, and no
+Norwegian at all. She has never met a patronymic carrying `P144` because the ones that do are
+Slavic and Icelandic. This is not filling gaps in a vocabulary; it is **creating the Norwegian and
+Swedish patronymic vocabulary**, 7,542 items.
+
+**Two properties are ours to give and both earn their place.** `P144` *based on* is the gate her
+algorithm runs on, multi-valued per her ruling today. `P5278` *surname for other gender* is free
+and nothing else supplies it — `Olsson` and `Olsdotter` share a stem and differ only by the
+gendered suffix, which `PATRONYMIC_PARTS` already splits; the existing items model it exactly that
+way (`Ólafsdóttir` -> `Q21446387`, `Ragnarsson` -> `Q110311007`).
+
+**`P407` is deliberately left off**, despite 59% of existing items carrying it. Nothing in a token
+says which language it is: `Andersson` reads Swedish and `Andersen` Danish-Norwegian by convention
+rather than by rule, and taking it from the export or the region is the geography inference
+`CLAUDE.md` forbids everywhere else.

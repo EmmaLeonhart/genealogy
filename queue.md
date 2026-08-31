@@ -121,6 +121,34 @@ patronymic item's `P144` values*, which stays an identity comparison. The altern
 `Ola` fail the match and receive no `P5056` at all, which is worse than unlabelled: it is silently
 dropped.
 
+**WHAT A WELL-DEVELOPED PATRONYMIC OBJECT IS.** Emma, 2026-08-31: *"structurally this is a thing
+to be done but it requires well developed patronymic objects we currently lack."* Measured live
+over all 631 patronymic items that exist, so the shape is copied rather than invented:
+
+| property | share | can we supply it? |
+| --- | ---: | --- |
+| `P31` *instance of* -> `Q110874` *patronymic* | 100% | yes, always |
+| `P282` *writing system* | 92% | yes — Latin for this material |
+| `P1705` *native label* | 81% | yes — the token itself |
+| `P407` *language of work or name* | 59% | **not from the name.** Would be a guess |
+| `P460` *said to be the same as* | 25% | no |
+| `P9644` *Geneanet family name ID* | 22% | no |
+| `P144` *based on* | **19%** | **yes — the fathers' given-name items, multi-valued** |
+| `P5278` *surname for other gender* | 15% | **yes — `Olsson` <-> `Olsdotter`, same stem** |
+
+**The Nordic vocabulary is essentially absent, which is why she has never met one.** By
+`P407` *language of work or name*: Russian 90, Icelandic 73, Spanish 65, Ukrainian 60,
+Belarusian 14, **Swedish 14**, Norwegian none. So this is not filling gaps in an existing
+vocabulary — it is creating the Norwegian and Swedish patronymic vocabulary, 7,542 items.
+
+**Two properties are ours to give and both are load-bearing.** `P144` is the gate her algorithm
+runs on. `P5278` is free and nothing else supplies it: `Olsson` and `Olsdotter` share a stem and
+differ only by the gendered suffix, which our own `PATRONYMIC_PARTS` already splits.
+
+**`P407` is deliberately not supplied.** Nothing in a token says which language it is —
+`Andersson` is Swedish and `Andersen` Danish-Norwegian by convention, not by rule, and inferring
+it from the export or the region is the geography guess `CLAUDE.md` forbids everywhere else.
+
 **The `P144` target comes from THE FATHER, never from a search.** Establishing
 `Olsdatter --P144--> Ole` by looking for `Ole` among the 225,457 given-name items in the store
 returns **553 candidates** — `oala`, `oelfke`, `oilbhe`, `oilbhreis`. That is the fuzzy matching
