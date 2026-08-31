@@ -53,54 +53,29 @@ counts are not stale when she next sits down to it.
 **The merges themselves are hers now, not mine** — that is what the file is for. The Izumo
 three are cleared and the browser pass is closed.
 
-## ⛔ THE DAILY ALGORITHM — her full spec, 2026-08-26. Supersedes the one-hop ring
+## ⛔ THE DAILY ALGORITHM — her full spec, 2026-08-26. SPECIFICATION, not a step
 
 `docs/dictation/2026-08-26-daily-algorithm.md` is her dictation verbatim;
 `docs/daily-algorithm.md` is the reading. **The order is structurally rigid and the weirdness is
 intentional** — *"the weirdness isn't something to be sanded off"*.
 
-**Steps 1, 1b, 2 and 3 are BUILT into the existing scripts**, 2026-08-26 — she said the
-existing generation should do this, not that a new script should:
+**One command**: `python scripts/build-daily-batch.py [--refresh-ledger]` runs step 0, then the
+three steps in her order, and prints the run order with each file's position. Step 0 is off by
+default because it is the day's one network call.
 
-- **Step 1, individuals** — `compose()` in `scripts/build-garborg-day.py`. 4 random parent
-  pairs + 1 ancestral pair from the spine, **shuffled together** so the ancestral one is not
-  always first; plus 4 people whose spouse and children are filled in. Run with `--compose`.
-- **Step 1b** — `RANDOM_COUPLES` 1 → **5**, each filled with their **entire** uncreated children.
-- **Step 2, names** — `NAME_ITEMS_PER_RUN = 10` in `scripts/build-garborg-name-items.py`, the
-  rest carried and listed in the file's own trailer.
-- **Step 3** — already right: `P3373` *sibling* capped at 10, every other relationship uncapped.
-- **The section order is now hers** — individuals, then relationships, concatenated at write
-  time. The file emitted relationships first until today.
+Steps 1, 1b, 2 and 3 live in `scripts/build-garborg-day.py` and
+`scripts/build-garborg-name-items.py`; the caps are in those files and are the authority on
+their own values, not this section. `devlog.md` 2026-08-26 has how they were built.
 
-**One command, 2026-08-26**: `python scripts/build-daily-batch.py [--refresh-ledger]`
-runs step 0, then the three steps in her order, and prints the run order with each file's
-position. Step 0 is off by default because it is the day's one network call.
-
-**Still to do:**
-
-- **BUILT 2026-08-26 — the parenthesised name tokens.** `scripts/namemodel.py` carries
-  `PARTICLES`, `UNKNOWN_MARKERS` and `name_shape()`; `classify_fields` strips the brackets,
-  `statements_for` skips particles and markers, `aliases_for` emits the bracketed form.
-  Rulings in `CLAUDE.md`, census in `reports/paren-tokens.md`.
-
-  **The particle rule reaches far beyond the brackets: 257,030 tokens** stop being `P734`
-  *family name* lookups — `de` 125,425, `von` 60,959, `van` 13,836, `la` 7,481, `af` 7,189,
-  `ap` 6,574. Every one of them was being proposed as a family-name item.
-- **DONE 2026-08-30 — `P1449` *nickname*.** The emitter was right and the model was stale, so
-  the drop moved into `namemodel.statements_for`, the one place that models a name. Her ruling
-  of 2026-08-29 is the later word and it is unambiguous: *"just drop the nickname functionality…
-  Just lmul vs amul."* The 66 phantom `missing` rows go with it — nothing was filtered, the
-  model simply stopped claiming a statement no batch would ever add. `CLAUDE.md` § *A nickname
-  alias carries the SURNAME* said the opposite until today and now records the supersession.
-- **The ideal state is still the Geni tree alone.** Her spec says the **union of the synoptic
-  tree and the Geni tree**; the synoptic half does not exist yet, which is the § *PREREQUISITE
-  ORDER* item.
+**The one thing still outstanding: the ideal state is the union of the synoptic tree and the
+Geni tree**, and the synoptic half does not exist yet. That is the § *PREREQUISITE ORDER* item,
+not this one.
 
 **Do not "fix" the artefacts.** Spouses unlinked to their partner's children, and parents not
 linked to each other as spouses, are intentional consequences of the order and are closed by later
 days.
 
-**Two readings taken rather than asked, both recorded where the code is:** which 10 name items —
+**Two readings taken rather than asked, both recorded where the code is:** which name items —
 most-borne first, so each earns the most links; and step 1b runs every time rather than behind a
 gate for *"once we get to a certain point"*, because she said it *"could be in the same line as
 the descendants one"* and a gate I invent that never opens is the failure mode § *The batches are
@@ -1679,14 +1654,6 @@ Emma, 2026-08-30, adding to the patronymic complaint above: *"https://www.wikida
 and the one merged into it were both just completely erroneous too"*.
 
 Two items, both wrong, one merged into the other. Not investigated.
-
-## Audit `Q6197518` — the `mul` label was "corrected" to an English-only one
-
-Emma, 2026-08-30: *"add to the end of the queue an audit of what happened here on this one
-https://www.wikidata.org/wiki/Q6197518 the multi language label was 'corrected' to one that
-was English only and I do not understand why"*.
-
-Not investigated.
 
 ## An item was created as "En dödfödd son Bielke", which is just wrong
 

@@ -21047,3 +21047,66 @@ she called erroneous on 08-30 (`Q141223488`, `Q6197518`, `En dödfödd son Bielk
 **The queue item is gone rather than rewritten.** Step 3 was *"MINE to perform"*; her answer
 moves the merges back to her, so what is left is keeping the file current when the ledger or
 `p2600-all.tsv` refreshes. That is a one-line standing item, not the browser campaign it replaced.
+
+## 2026-08-31 — `Q6197518`: the English-only `mul` label was ours
+
+Emma asked for an audit of why `Q6197518`'s multi-language label was *"corrected"* to an
+English-only one, and said she did not understand why. The revision history answers it and the
+answer is not another editor.
+
+    2026-08-28 03:03  日巫女                    mul -> Svantepolk Knutsson    (her own hand edit)
+    2026-08-30 19:47:34  日巫女 #quickstatements  Amul += Svantepolk Knutsson
+    2026-08-30 19:47:45  日巫女 #quickstatements  mul -> Svantepolk of Viby
+    2026-08-30 19:57:48  日巫女                    mul -> Svantepolk Knutsson    (her, reverting)
+
+Both 19:47 edits are one run, `#temporary_batch_1788119173098`. The line is in
+`reports/wikidata-touched-not-created.qs`.
+
+**Two defects, and the second is the general one.**
+
+The comment on the line read `(it had none)`, and the file's header promises exactly that: *"A
+mul label is only set where the item has none, so nothing she may have written by hand is
+overwritten."* She had set it two days earlier, so the batch was built on a snapshot at least
+that stale — `CLAUDE.md` § *Emma edits the tree and the items BY HAND, continuously*. The
+alias-first preservation step is the only reason the native form survived at all: *Svantepolk
+Knutsson* went in as an `Amul` one second before the label was overwritten.
+
+The value written was the **`en` label**. `mul` is the language-neutral slot and carries the
+native form. Worse, the generator had already noticed: every one of these lines carries its own
+trailing `# NOTE: this en label carries a title, not just a name`. The check fired and gated
+nothing, which is the same shape as the guards recorded elsewhere in `CLAUDE.md` — a warning that
+does not stop an emission is not a guard.
+
+**Three more of the same, and two had not run yet.** Checked live 2026-08-31:
+
+| item | `mul` now | the line would have set |
+| --- | --- | --- |
+| `Q101247444` | Ingegerd Svantepolksdotter | the `en` form with *heiress, lady of Händelöö* — a regression |
+| `Q274606` | *none* | Berengar I of Italy |
+| `Q3743799` | *none* | Canute, Duke of Estonia |
+| `Q6197518` | Svantepolk Knutsson | would clobber her fix again |
+
+All four `Lmul` lines are removed from the batch, with a comment in the file saying why. The
+four plain-name ones in the same block — `Gisela`, `Arne Garborg`, `Helena Guttormsdatter`,
+`Knut Algotsson` — are untouched.
+
+**Not fixed, deliberately.** `Q274606` and `Q3743799` still have no `mul`. Dropping the line
+leaves them as they were instead of asserting an English title; the right value is a native form
+with the title stripped and the ordinal handled as `P7338` *regnal ordinal*, which is a naming
+decision rather than a string edit. `reports/audit-q6197518.md` is the full audit.
+
+## 2026-08-31 — today's daily batch
+
+`scripts/build-daily-batch.py --refresh-ledger`, the standing daily item, run after the clock
+rolled over. **13 creations and 3 name items**, no `Aen` in either file.
+`tests/test_garborg_day_batch.py`, `tests/test_join_sanity.py` and `tests/test_p2600_batches.py`
+are green — 326 passed.
+
+## 2026-08-31 — queue hygiene: THE DAILY ALGORITHM cut back to a specification
+
+That section carried a *Still to do* list whose first two bullets were headed **BUILT** and
+**DONE**, and a caps list that had already gone stale (`NAME_ITEMS_PER_RUN` reads 3 when held,
+not the 10 the section quoted). Records of finished work in a queue section are the habit Emma
+named on 08-30 — *"What the fuck are you not clearing the finished tasks from the queue?"* — so
+the built steps now point at the scripts, which are the authority on their own caps, and the one
+genuinely outstanding line (the synoptic half of the union does not exist) is all that remains.

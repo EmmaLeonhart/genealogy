@@ -7,22 +7,26 @@
 #    Aliases are only added where our Geni label differs and is not already an alias.
 #    No Aen is ever emitted. Non-human items she edited are left alone entirely.
 
-#   Q101247444: set the mul label to "Ingegerd Svantepolksdotter of Viby, heiress, lady of Händelöö" (it had none)   # NOTE: this en label carries a title, not just a name
-Q101247444	Lmul	"Ingegerd Svantepolksdotter of Viby, heiress, lady of Händelöö"
-#   Q274606: set the mul label to "Berengar I of Italy" (it had none)   # NOTE: this en label carries a title, not just a name
-Q274606	Lmul	"Berengar I of Italy"
+# --- REMOVED 2026-08-31: four `Lmul` lines that would have written an ENGLISH label into `mul`.
+#     Q6197518 is the worked case -- see reports/audit-q6197518.md. The comment on each read
+#     "(it had none)", which was false for Q6197518: she set that mul by hand on 08-28 and this
+#     batch overwrote it on 08-30. Checked live on 08-31: Q274606 and Q3743799 still have no mul
+#     and would have received "Berengar I of Italy" and "Canute, Duke of Estonia"; Q101247444's
+#     mul is already the clean "Ingegerd Svantepolksdotter" and the line would have replaced it
+#     with the en form carrying "heiress, lady of Handeloo".
+#     Each line carried the generator's own NOTE that the en label was a title rather than a
+#     name, so the check fired and did not gate the emission.
+#     The right mul for Q274606 and Q3743799 is a native form with the title stripped, which is
+#     a naming decision and not made here.
+
 #   Q284400: set the mul label to "Gisela" (it had none)
 Q284400	Lmul	"Gisela"
-#   Q3743799: set the mul label to "Canute, Duke of Estonia" (it had none)   # NOTE: this en label carries a title, not just a name
-Q3743799	Lmul	"Canute, Duke of Estonia"
 #   Q467497: set the mul label to "Arne Garborg" (it had none)
 Q467497	Lmul	"Arne Garborg"
 #   Q4953376: set the mul label to "Helena Guttormsdatter" (it had none)
 Q4953376	Lmul	"Helena Guttormsdatter"
 #   Q5915800: set the mul label to "Knut Algotsson" (it had none)
 Q5915800	Lmul	"Knut Algotsson"
-#   Q6197518: set the mul label to "Svantepolk of Viby" (it had none)   # NOTE: this en label carries a title, not just a name
-Q6197518	Lmul	"Svantepolk of Viby"
 #   Q109266155: add a mul alias "Magdalena Johansdotter Bure" (its mul reads "Magdalena Bureus")
 Q109266155	Amul	"Magdalena Johansdotter Bure"
 #   Q116150299: add a mul alias "Jon Reinmodsen" (its mul reads "Jon Reimatsen")
