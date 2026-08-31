@@ -1160,28 +1160,28 @@ domain"* is. Ask before building, per § *If you are not sure what she wants, AS
 stored the wrong way round listed in `SPINE_REVERSED` — that is the whole mechanism, and it is why
 `bergitte-to-emma` had walked outward from her for weeks without moving.
 
-## THE LAST ITEM — rebuild the synoptic tree, which is how the QID-link GEDCOM gets tested
+## THE LAST ITEM — the QID-link GEDCOM: two checks pass, idempotence untested
 
 **Emma, 2026-08-29:** *"don't test it now but make the last queue item rebuilding the synoptic
 tree to test this thing so that we can quickly move onto other work."*
 
-`exports/post-merge/wikidata-qid-links.ged` is **three individuals, three `NOTE` links, 358
-bytes** — Wakatakehiko `Q11596350`, Harima no Inabi no Ōiratsume `Q11078587`, Mononobe no Ikofutsu
-`Q24890131`. It has never been through a merge.
+`exports/post-merge/wikidata-qid-links.ged` — three individuals, three `NOTE` links, 358 bytes.
+It has now been through a merge (2026-08-31), and `_post_merge_last` put it last in merge order
+as designed. Two of the three checks pass:
 
-**Re-merge and confirm three things:**
+- **The links arrive.** All three `https://www.wikidata.org/wiki/Q…` lines are in
+  `out/merged.ged` — `Q11596350`, `Q11078587`, `Q24890131`. `NOTE` is in
+  `merge.ALWAYS_REPEATABLE`, so they sit beside the existing About Me rather than replacing it.
+- **Nobody is invented.** Each of the three xrefs resolves to a **full** record carrying `NAME`,
+  `SEX`, `RFN`, `FAMC`, `FAMS` and `CHAN`. An invented person would hold the `NOTE` and nothing
+  else, which is exactly what the source file holds.
 
-- **The links arrive** — each of the three ends up holding
-  `1 NOTE https://www.wikidata.org/wiki/Q…` beside their existing About Me, because `NOTE` is in
-  `merge.ALWAYS_REPEATABLE` and repeatable-with-a-value matching keeps both.
-- **Nobody is invented.** All three xrefs were checked against `reports/derived-labels.csv`, so the
-  individual count must not rise. An `INDI` with an unseen xref is a *new person*.
-- **It is idempotent** — regenerating and re-merging changes nothing.
-
-`_post_merge_last` puts `exports/post-merge/` at the end of merge order, so this applies last.
-
-**The merge is 837 seconds and 16.8 GB** — background it, per § *A ten-minute ceiling is not a
-wall*. Keep the pre-merge tree.
+**Still to do: idempotence.** *"Regenerating and re-merging changes nothing."* That needs
+`scripts/build-qid-links-gedcom.py` re-run and the corpus re-merged, then a diff. The merge is
+**837 seconds and about 17 GB** — background it, per § *A ten-minute ceiling is not a wall*, and
+note the 2026-08-31 run was killed once at peak memory. **Merge to a temp path and move it into
+place only on success**: a kill truncates `out/merged.ged` to zero bytes, which does not raise —
+every downstream count simply comes out plausibly small.
 
 **Widening this beyond the three is her call and is one constant.** The machinery handles any
 number; the first version emitted 83,988 people off `reports/synoptic-correspondence.tsv` and that

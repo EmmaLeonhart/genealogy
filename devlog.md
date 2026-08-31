@@ -21759,3 +21759,27 @@ is closed; the linking is a different item.
 
 The corpus behind it: **1,451,964 INDI, 630,050 FAM, 600 sources**, and the four derived CSVs
 rebuilt and repacked.
+
+## 2026-08-31 — sweep: the QID-link GEDCOM tested, two checks of three
+
+The item existed because `exports/post-merge/wikidata-qid-links.ged` had never been through a
+merge. It has now, in today's re-merge, and `_post_merge_last` placed it last in merge order as
+designed. Its own three checks:
+
+- **The links arrive — yes.** All three `wikidata.org/wiki/Q…` lines are in `out/merged.ged`
+  (`Q11596350`, `Q11078587`, `Q24890131`). `NOTE` is in `merge.ALWAYS_REPEATABLE`, so they sit
+  beside the existing About Me instead of replacing it.
+- **Nobody is invented — confirmed, and by the right evidence.** Each xref resolves to a full
+  record with `NAME`, `SEX`, `RFN`, `FAMC`, `FAMS`, `CHAN`. That is the discriminator rather than
+  a headcount: an invented person would carry the `NOTE` **and nothing else**, which is precisely
+  what the 358-byte source file holds. A raw individual count would have needed a baseline from
+  the same corpus, which does not exist.
+- **Idempotence — untested**, and the section is cut back to it. It needs a regenerate plus a
+  second full merge and a diff.
+
+**Carried into the item, because it cost real time today:** merge to a temp path and move on
+success. The 2026-08-31 merge was killed at peak memory and left `out/merged.ged` at **0 bytes** —
+which does not raise, it just makes every downstream figure come out plausibly small.
+
+58 sections either way; the section was cut back rather than removed, since a third of it is a
+step still to take.
