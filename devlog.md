@@ -22679,3 +22679,22 @@ confirming against **one fixed father**. As a search it is worthless.
 Which resolves where her single comparison belongs: not against the store, but against the father
 already in hand. This person's father carries `P735 -> Q…`; this person's token is `Olsdatter`;
 that establishes the derivation once, and every later `Olsdatter` needs no comparison at all.
+
+## 2026-08-31 — `P144` on a patronymic item is MULTI-VALUED, her ruling
+
+Put to her as an `AskUserQuestion` because it is the § *One name item per USAGE* shape and hers to
+decide. The ambiguity is measured, not supposed: **1,892 of 7,352** attested patronymic tokens
+have more than one distinct father given name behind them.
+
+    Olsdatter      <- Ole 3,789 · Ola 1,364 · Olav 98 · Oluf 68 · Olaf 11 · Olof 9
+    Johansdotter   <- Johan 4,305 · Johannes 459 · Juho 284
+    Andersson      <- Anders 4,621 · Andreas 93 · Andrew 10
+
+**Her answer: all of them, coequal and unqualified** — the same shape as the two `P734` family
+names on `Weirman (Weyerman)`. Her per-person gate stays an exact identity test: *is the father's
+`P735` item among this item's `P144` values*.
+
+The option she rejected is worth recording because of what it would have cost. Keeping only the
+most-attested source — `Olsdatter -> Ole` — makes the 1,364 people whose father was `Ola` fail the
+item match and receive **no `P5056` at all**. Not mislabelled: silently dropped, which is the
+failure mode this repo keeps finding in its own measurements.

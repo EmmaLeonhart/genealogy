@@ -104,6 +104,23 @@ She guessed none carried `P144`; 119 do, and they are **Slavic and Icelandic** �
 `Q19799975`. None of the Norwegian material she works in. So the convention exists and is worth
 copying rather than inventing.
 
+**`P144` IS MULTI-VALUED — her ruling, 2026-08-31.** A patronymic is attested by every given
+name the fathers actually carry, and those are different names with different items:
+
+    Olsdatter      <- Ole 3,789 · Ola 1,364 · Olav 98 · Oluf 68 · Olaf 11 · Olof 9
+    Johansdotter   <- Johan 4,305 · Johannes 459 · Juho 284 · Johann 8 · Juha 4
+    Andersson      <- Anders 4,621 · Andreas 93 · Andrew 10
+
+**1,892 of the 7,352 attested tokens have more than one source**, so this is the common case, not
+an edge. Every source goes on as its own `P144`, **coequal and unqualified** — the same shape as
+the two `P734` family names on `Weirman (Weyerman)`.
+
+**It keeps her per-person gate exact.** The test is *is the father's `P735` item among this
+patronymic item's `P144` values*, which stays an identity comparison. The alternative she rejected
+— keeping only the most-attested source — would have made the 1,364 `Olsdatter`s whose father was
+`Ola` fail the match and receive no `P5056` at all, which is worse than unlabelled: it is silently
+dropped.
+
 **The `P144` target comes from THE FATHER, never from a search.** Establishing
 `Olsdatter --P144--> Ole` by looking for `Ole` among the 225,457 given-name items in the store
 returns **553 candidates** — `oala`, `oelfke`, `oilbhe`, `oilbhreis`. That is the fuzzy matching
