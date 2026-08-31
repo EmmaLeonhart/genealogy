@@ -27,9 +27,17 @@ tag, and the re-additions carry it too. A reader following the sequence sees a t
 a statement, not a person arguing. That supports the reading that this looks like a
 QuickStatements error rather than a dispute.
 
-**The countervailing fact is the 71 `wikidata-ui` edits.** A tool account that suddenly makes
-hand edits to the same items minutes after being reverted is a different signal from a tool
-running unattended. That is the part of today's footprint that reads least like an accident.
+**The 71 `wikidata-ui` edits are a strength, not a weakness. My first reading was wrong.**
+A QuickStatements user is responsible for their edits, and an *attended* account — a human
+watching the tool and correcting it by hand — is the expected state. The thing that reads badly
+is an unattended tool repeating an error with no human response.
+
+**And the reverts are self-reverts.** Of the 20 revert and undo edits from the account today,
+**all 20 reverted `日巫女`** — its own earlier edits. None reverted `OBender12`. The five
+`mw-undo` edits at 23:01 name the revision ids, and each is the account's own. The record
+therefore reads: a tool run makes a mistake, a person notices, the person undoes it manually.
+
+`OBender12` reverted us. We did not revert him.
 
 ## Why the name items drew attention and the people did not
 
@@ -94,9 +102,9 @@ remembered, and remembered against the account rather than against the edit.
 2. **Treat name-item creation as the highest-risk operation in the pipeline** and cap it well
    below the current 10 a day, or suspend it while the hold runs. The people side has no
    comparable audience.
-3. **Do not run the account through the web interface on an item a tool edit has just touched.**
-   The mixed `OAuth`/`wikidata-ui` signature on the same item within minutes is the least
-   explicable thing in today's record.
+3. **Keep correcting the tool by hand.** It is what makes the account attended, and the
+   measurement above shows every manual revert today was a self-revert. The rule is only to
+   avoid reverting *another editor* by hand, which did not happen.
 4. **No further batches for the remainder of the campaign's slack period.** The strategic goals
    are met; the marginal value of another batch is low and the marginal risk while a maintainer
    has the account in recent memory is not.
