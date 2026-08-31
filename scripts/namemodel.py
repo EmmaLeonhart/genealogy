@@ -392,11 +392,22 @@ def _same_name(stem: str, given: str) -> bool:
     Anchored on the first letter and requiring a skeleton of at least two characters, so a stem
     that reduces to almost nothing cannot match everything: `Dison` -> `d` matches no father, and
     that is the point -- it is an inherited surname.
+
+    **Equal, or equal but for a trailing `s`, and nothing looser.** The first version accepted a
+    prefix either way and over-matched badly, which the plan file made visible: `Hansdatter` took
+    `Heinrich` as a source (`hn` is a prefix of `hnrk`) and `Andersson` took `Andrew`
+    (`andr` of `andrv`). Both are different names. The genitive `s` is the only real difference
+    between a stem and its given name — `Anders` -> `Andersson`, `Petter` -> `Pettersdotter` —
+    so allowing exactly that and nothing else separates `Anders`/`Andreas`, which agree, from
+    `Anders`/`Andrew`, which do not.
+
+    Casualties, and they look right: `Olav` and `Oluf` stop attesting `Olsdatter`. Their own
+    patronymics are `Olavsen` and `Olufsen`; `Olsen` is son of `Ole` or `Ola`.
     """
     a, b = _skeleton(stem), _skeleton(given)
     if len(a) < 2 or len(b) < 2 or a[0] != b[0]:
         return False
-    return a == b or a.startswith(b) or b.startswith(a)
+    return a == b or a.rstrip("s") == b.rstrip("s")
 
 
 def patronymic_or_surname(token: str, father_name: str) -> str:
@@ -437,11 +448,14 @@ def patronymic_or_surname(token: str, father_name: str) -> str:
     m = PATRONYMIC_PARTS.match(token)
     if not m:
         return "patronymic"
-    stem = m.group(1).casefold().rstrip("s")
+    raw = m.group(1).casefold()
+    stem = raw.rstrip("s")
     givens = [t.casefold() for t in parts if not PATRONYMIC.match(t)]
     for given in givens:
         g = given.rstrip("s")
-        if g == stem or (len(stem) >= 4 and g.startswith(stem[:4])) or _same_name(stem, g):
+        # `_same_name` gets the RAW stem: the genitive `s` is the whole difference it is built to
+        # tolerate, and stripping it first is what let `Anders` match `Andrew`.
+        if g == stem or _same_name(raw, given):
             return "patronymic"
     # **The stem matched nothing in the father's name, so this is NOT a patronymic.**
     #

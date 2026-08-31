@@ -22757,3 +22757,41 @@ way (`Ólafsdóttir` -> `Q21446387`, `Ragnarsson` -> `Q110311007`).
 says which language it is: `Andersson` reads Swedish and `Andersen` Danish-Norwegian by convention
 rather than by rule, and taking it from the export or the region is the geography inference
 `CLAUDE.md` forbids everywhere else.
+
+## 2026-08-31 — the patronymic objects planned, and three defects the plan exposed
+
+`scripts/build-patronymic-items.py` -> `reports/patronymic-items-to-create.tsv`. It builds the
+objects her algorithm gates on, and writes **no QuickStatements** — the deliverable is the data,
+per § *"Analyse this" means build a CSV*, and an edit batch she has not asked for is its own rule.
+
+    6,658 patronymic tokens attested by a father in our tree
+      6,613 need an item created; 45 already have one
+      4,340 have at least one unambiguous P144 target
+        546 blocked ONLY by an ambiguous given name -- Daniel(3), Gabriel(3), Abraham(2)
+      1,772 have no given-name item for any attesting father
+      5,091 have a P5278 surname-for-other-gender partner
+
+**Writing it out is what found the bugs, which is the whole argument for building the CSV.**
+Three, all mine, none of which any test would have caught:
+
+- **`_same_name` over-matched.** `Hansdatter` took `Heinrich` as a source, because the skeleton
+  `hn` is a prefix of `hnrk`; `Andersson` took `Andrew` (`andr` of `andrv`). Both are different
+  names. The rule is now **equal, or equal but for a trailing `s`** — the genitive is the only
+  real difference between a stem and its given name, and it separates `Anders`/`Andreas`, which
+  agree, from `Anders`/`Andrew`, which do not. 20/20 on the hand-read sample, the two new cases
+  included. Casualties look right: `Olav` and `Oluf` stop attesting `Olsdatter`, their own
+  patronymics being `Olavsen` and `Olufsen`.
+- **`P5278` swapped suffixes on the whole token** and produced `olssen` and `oldatter`, neither a
+  word. `PATRONYMIC_PARTS` puts the genitive `s` on the stem for `olsdatter` and off it for
+  `olsen`, so the stem differs between the two directions; both spellings are now built and the
+  corpus decides.
+- **Then it picked alphabetically** and still chose `oldatter` over `olsdatter`, because a few
+  people really are recorded that way and `o-l-d` sorts first. Most-borne wins now.
+
+**`P407` *language of work or name* is deliberately omitted** though 59% of existing patronymic
+items carry it: nothing in a token says which language it is, and taking it from the export or the
+region is the geography inference `CLAUDE.md` forbids. Named as a decision for her rather than
+guessed.
+
+`reports/merges-to-do.md` also refreshed — the ledger moved to 1,014 rows at 15:20 and the file
+was from 14:56.
