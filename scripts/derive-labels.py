@@ -43,6 +43,9 @@ import sys
 from collections import Counter, defaultdict
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from namemodel import without_nickname  # noqa: E402
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT / "src"))
 
@@ -211,6 +214,32 @@ def main() -> int:
         # names nothing here could reconstruct, and § *Emma edits the tree BY HAND* makes
         # those decisions rather than drift -- so a corrected name stays primary and the
         # married form, if any, stays an alias beside it.
+        # **Strip the nickname from the LABEL here, at the source.** `CLAUDE.md`
+        # § *A nickname alias carries the SURNAME*: *"quotes never go in a label"*.
+        # `without_nickname` used to live in `build-garborg-day.py` and was applied at the
+        # point of emission, so this file kept `Ingvold (Pinkie) Remmie` and **all 48 readers
+        # of `label_en`/`label_mul` saw the bracketed form** -- 21,550 of them. Fixing it at
+        # source is what the married-name flip did, for the same reason.
+        #
+        # It reads the `GIVN` field, never the rendered label, so a parenthesised *surname*
+        # is untouched: `Katarina Magnusdotter (Aspenäs)` keeps its brackets because they are
+        # in `SURN`, and `Jean d'O Seigneur d'O` keeps its apostrophes.
+        # **Every record's `GIVN`, not the first.** A person can carry several `NAME`
+        # records and some hold no fields at all -- `1554340` has one record that is a bare
+        # display string with an empty `givn` and a second that carries
+        # `Wilhelmina (Mina) Eva Christina`. Reading only `records[0]` left 8,214 labels
+        # bracketed, including that one, because the nickname lived in the record the label
+        # did not come from.
+        givns = [r["givn"] for r in records if (r["givn"] or "").strip()]
+
+        def strip_nick(text):
+            for givn in givns:
+                text = without_nickname(text, {"givn": givn})
+            return text
+
+        latin = [strip_nick(x) for x in latin]
+        aliases = [strip_nick(x) for x in aliases]
+
         birth = latin[0] if latin else ""
         married = aliases[0] if aliases else ""
         if correction or not married:

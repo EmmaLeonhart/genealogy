@@ -397,6 +397,38 @@ def patronymic_or_surname(token: str, father_name: str) -> str:
     return "patronymic"
 
 
+def without_nickname(label, fields):
+    """`Ingvold (Pinkie) Remmie` -> `Ingvold Remmie`. A nickname is not part of the label.
+
+    **Emma, 2026-08-27, on `Q141199868`:** *"analyze https://www.wikidata.org/wiki/Q141199868 and
+    why it came out as brackets instead of what it is supposed to be too"*. Geni records her as
+    `Ingvold (Pinkie) /Remmie/` and the brackets went straight into `mul` and `en`.
+    `CLAUDE.md` § *A nickname alias carries the SURNAME*: *"quotes never go in a label"*.
+
+    **Read off the FIELD, never off the rendered label.** Regexing the label matches the
+    apostrophe in `Jean d'O Seigneur d'O` and mangles French names -- 27,211 labels match that
+    way against **22,707** genuine nickname tokens in `GIVN` (16,742 parenthesised, 5,965
+    quoted).
+
+    **Only spans present in the label verbatim are removed**, so a married surname the `GIVN`
+    knows nothing about survives: this deletes what it can find rather than rebuilding the name.
+    That is also why a parenthesised *surname* token is safe -- `Katarina Magnusdotter
+    (Aspenäs)` has its brackets in `SURN`, which this never reads.
+
+    **Lives here because this is the module that models a name.** It sat in
+    `build-garborg-day.py` and was applied at the point of emission, so `derived-labels.csv`
+    kept the bracketed form and all 48 readers of `label_en`/`label_mul` saw it -- the same
+    shape as the `P1449` drop, which `CLAUDE.md` records had to move here for the same reason.
+    """
+    if not label or not fields:
+        return label
+    out = label
+    for m in QUOTED.finditer(fields.get("givn") or ""):
+        if m.group(0) in out:
+            out = out.replace(m.group(0), " ")
+    return " ".join(out.split())
+
+
 def classify_fields(givn: str, surn: str, nick: str = "",
                     marnm: str = "", father_name: str = "") -> list[tuple[str, str, int]]:
     """`(token, usage, ordinal)` from the GEDCOM name FIELDS.

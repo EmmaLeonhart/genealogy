@@ -21432,3 +21432,62 @@ not a `P2600` written from here. A section whose content is a completed analysis
 remainder is routed elsewhere is a record, and records live here.
 
 62 sections, 1,997 lines.
+
+## 2026-08-31 — the nickname strip moved to source: 21,550 bracketed labels → 8,033
+
+`without_nickname` lived in `build-garborg-day.py` and was applied at the point of emission, so
+`reports/derived-labels.csv` kept `Ingvold (Pinkie) Remmie` and **all 48 readers of
+`label_en`/`label_mul` saw the bracketed form**. It now lives in `scripts/namemodel.py`, the
+module that models a name — the same move the `P1449` drop had to make, for the same reason — and
+`derive-labels.py` applies it at source. `build-garborg-day.py` re-exports it, so its callers are
+unchanged.
+
+**21,550 → 8,033 bracketed `label_mul` values**, and the remainder is correct rather than residue:
+
+    SURN/_MARNM only   5,957   a parenthesised SURNAME, which CLAUDE.md says stays
+    both                 287
+    GIVN only            137
+
+The 5,957 are § *A parenthesised token in `SURN`/`_MARNM` is THREE different things* — a house or
+a spelling variant keeps its bracketed form in the label. `Katarina Magnusdotter (Aspenäs)` is the
+shape, and it survives precisely because `without_nickname` reads the `GIVN` **field** and never
+the rendered label.
+
+**The 137 are a known limit and are deliberately not chased.** Only spans present in the label
+verbatim are removed, so where punctuation was normalised between field and label the match
+fails: `Scheyen (M/F?)` renders as `Scheyen (M F?)`, `(Toqta Khan - Tuzlu Gol )` loses its hyphen.
+Loosening to a fuzzy match is what mangled `Jean d'O Seigneur d'O` before, and 137 people is not
+worth reopening that.
+
+**One bug found and fixed mid-way.** The first pass used `records[0]["givn"]` and only reached
+21,550 → 8,214. A person can have several `NAME` records and some carry no fields: `1554340` has a
+bare display string with an empty `givn` and a second record holding
+`Wilhelmina (Mina) Eva Christina`. Reading every record's `givn` fixed it.
+
+`tests/test_namemodel.py`, `test_derived_packing.py` and `test_join_sanity.py` pass — 80 tests.
+Derived CSVs repacked.
+
+## 2026-08-31 — CORRECTION: the download queue reaching zero does NOT mean coverage
+
+Earlier today I reported the fetch queue drained to 0 and called it decay evidence for an end
+point. That reading was too generous and the store says so.
+
+`scripts/measure-store-parent-coverage.py`, re-run against the current store:
+
+    2026-08-15   1,423,032 items   34,104 parent statements point at an item we do not hold
+    2026-08-31   2,248,462 items   34,151
+
+**The store grew by 825,430 items and the missing-parent count did not move.** Checked what the
+downloader thinks of those parents: all **32,670** distinct missing parents are **not in the
+download index at all** — not queued, not fetched, not marked missing. The scan has never seen
+them.
+
+**The reason is the cursor.** `meta.cursor` reads `items-00021.jsonl.gz|999` against **2,249**
+shards, so the walk that discovers relatives has covered **under 1% of the store**. The fetch
+queue is empty because the scan has produced no new work, not because there is none — and the
+"scanned N items, discovered 0" lines I quoted were re-walking the same opening shards.
+
+**So her question is still open**, and the honest form of it: the scan must run over the
+remaining 99%, each pass queueing items whose own relatives then extend it. Whether that
+converges is exactly what she asked and it is not yet answered. Her item budgets 3-8 hours and
+says to run the existing tooling and then decide, which is now the next step.

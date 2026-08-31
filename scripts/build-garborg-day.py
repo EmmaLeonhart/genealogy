@@ -626,47 +626,11 @@ def expand_abbreviations(label, geni_id):
     return " ".join(out.split())
 
 
-def without_nickname(label, fields):
-    """`Ingvold (Pinkie) Remmie` → `Ingvold Remmie`. The nickname is a statement, not a label.
-
-    **Emma, 2026-08-27, on `Q141199868`:** *"analyze https://www.wikidata.org/wiki/Q141199868 and
-    why it came out as brackets instead of what it is supposed to be too"*. Geni records her as
-    `Ingvold (Pinkie) /Remmie/` and the brackets went straight into `mul` and `en`.
-
-    `CLAUDE.md` § *A nickname alias carries the SURNAME* is the rule and it is hers: a quoted token
-    inside `GIVN` is `P1449` *nickname*, **not** a given name and not part of the label, and
-    *"quotes never go in a label"*. `namemodel.QUOTED` already recognised both the quoted and the
-    parenthesised form — but it is applied to the `GIVN` **field**, and the label is rendered
-    separately, so the name statements were right while the label was wrong.
-
-    **Read off the FIELD, never off the rendered label**, which is the trap `namemodel` records
-    Emma catching once already: *"I thought we were resolving name objects but now we're determining
-    which name field to use as a source of the label?"* Regexing the label directly matches the
-    apostrophe in `Jean d'O Seigneur d'O` and would mangle French names — 27,211 labels match that
-    way against **22,707** genuine nickname tokens in `GIVN` (16,742 parenthesised, 5,965 quoted).
-
-    **Only spans that are in the label verbatim are removed.** The label may carry a married
-    surname the `GIVN` field knows nothing about, so this deletes what it can find and leaves
-    everything else alone rather than rebuilding the name.
-
-    **The apostrophe guard here is gone, because `QUOTED` itself was fixed.** It used to accept
-    any `'` as a delimiter, so `Jean d'O Seigneur d'O & de Maillebois` matched `'O Seigneur d'`
-    and this returned `Jean d O & de Maillebois` — a French name destroyed to strip a nickname
-    that was never there. The workaround was to ignore apostrophe matches in the label path only.
-    That was wrong in the other direction: measured over `display-names.csv`, **963** apostrophe
-    spans exist and most are real bynames — `Illugi svarte i Gilsbakki 'svarti'`,
-    `Ivan II Ivanovich 'the Fair'` — so ignoring them stripped nothing that should have been
-    stripped. `QUOTED` now distinguishes a delimiter from an elision, per Emma: *"d' can be an
-    escaped substring lol"*, and every branch of it is trustworthy here.
-    """
-    if not label or not fields:
-        return label
-    from namemodel import QUOTED
-    out = label
-    for m in QUOTED.finditer(fields.get("givn") or ""):
-        if m.group(0) in out:
-            out = out.replace(m.group(0), " ")
-    return " ".join(out.split())
+#: **`without_nickname` now lives in `scripts/namemodel.py`**, the module that models a name,
+#: because applying it only at emission left `reports/derived-labels.csv` holding the bracketed
+#: form for all 48 readers of `label_en`/`label_mul`. `derive-labels.py` applies it at source.
+#: Re-exported here so this file's own callers are unchanged.
+from namemodel import without_nickname  # noqa: E402,F401
 
 
 def nn_form(raw):
