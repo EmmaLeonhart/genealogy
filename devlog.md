@@ -22638,3 +22638,44 @@ per § *"Analyse this" means build a CSV* — and no new test, per § *NO NEW TE
 **A residue is queued rather than folded away:** `Pedersdatter`/`Petter` needs `d`/`t`, and
 `Nilsson`/`Nicolaus` needs a form table. Folding `d`→`t` would also merge `Anders`/`Antti`, which
 are cognates and not one name, so it is measured first.
+
+## 2026-08-31 — her patronymic design, recorded; and the preconditions do not exist
+
+**Emma dictated a different algorithm** and it supersedes the string comparison built earlier the
+same day. It is stateless, resolves by **item identity**, and generalises to any patronymic system
+because nothing in it is language-specific once the name items exist:
+
+    the patronymic resolves to a patronymic NAME ITEM
+    that item records the given name it derives from      (its own P144 based on)
+    the parent carries a given name OBJECT                (P735 -> an item)
+    parent's P735 item == the patronymic item's source?   -> emit P5056, P144 -> that parent
+
+Both gates are hard skips, in her words: *"if the father doesn't have a given name object, then
+it just doesn't go"*, and *"if the patronymic in question does not have a reference to the certain
+given name presence, that's also skipped."* And the crucial property: **the string comparison
+happens exactly once**, establishing the name item's derivation — after which 245,353 bearers
+resolve by identity instead of by being right about Norwegian spelling a quarter of a million
+times.
+
+**Her framing of why the measurement looks empty:** *"almost nobody will because the point of our
+pipeline is we have to create preconditions that haven't been consistently created."* Measured:
+
+- **7,593** distinct patronymic tokens on our people, 245,353 bearers
+- **51** of those tokens have a patronymic name item at all — so **7,542 must be created**
+- 631 patronymic items exist in the store across all languages; **119 carry `P144`**
+
+**One factual correction to her, offered because it is useful rather than to score a point.** She
+said *"I don't think any patronymics have the based on property on them."* 119 do —
+`Fyodorovich`, `Vasilyevich`, `Gunnlaugsdóttir`, `Månsdotter`. Every one is Slavic or Icelandic,
+none Norwegian, which is exactly why she has not met one. The convention exists and can be copied
+rather than invented.
+
+**And a real error in my own measurement, which is the more useful finding.** I sized the work by
+searching the store's 225,457 given-name items for each patronymic stem. `Olsdatter` returned
+**553 candidates** — `oala`, `oelfke`, `oilbhe`. That is the fuzzy matching `CLAUDE.md` forbids,
+and the `_same_name` skeleton I wrote hours earlier is safe only in the position it was built for:
+confirming against **one fixed father**. As a search it is worthless.
+
+Which resolves where her single comparison belongs: not against the store, but against the father
+already in hand. This person's father carries `P735 -> Q…`; this person's token is `Olsdatter`;
+that establishes the derivation once, and every later `Olsdatter` needs no comparison at all.

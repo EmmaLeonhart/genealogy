@@ -53,6 +53,70 @@ counts are not stale when she next sits down to it.
 **The merges themselves are hers now, not mine** — that is what the file is for. The Izumo
 three are cleared and the browser pass is closed.
 
+## Patronymics resolve by NAME ITEM, not by comparing strings per person
+
+**Emma's design, dictated 2026-08-31.** It replaces the string comparison I built the same day.
+Hers is stateless, exact, and generalises to any patronymic system — Nordic, Arabic, whatever —
+because nothing in it is language-specific once the name items exist.
+
+**The chain, and every link is an item identity:**
+
+    the person        carries a token matching the patronymic pattern
+    the patronymic    resolves to a patronymic NAME ITEM
+    that item         records what given name it derives from   (its own P144 based on)
+    the parent        carries a given name OBJECT                (P735 -> an item)
+    match?            parent's P735 item == the patronymic item's source given-name item
+    -> emit           P5056 patronym, with P144 based on pointing at THAT PARENT as a person
+
+**The conditions, as a checklist — for each, what differs in the output when it fires:**
+
+- **the population** is everyone whose name contains a patronymic-pattern substring. Not a
+  curated list.
+- **the parent is the father, or in rare cases the mother.** `P5056` is *patronym or matronym*
+  and a matronymic resolves against the mother by the same chain.
+- **the parent has no given name object -> SKIP.** Her words: *"if the father doesn't have a
+  given name object, then it just doesn't go."* Not a guess, not a fallback to the string.
+- **the patronymic item records no derivation -> SKIP.** *"if the patronymic in question does not
+  have a reference to the certain given name presence, that's also skipped."*
+- **the match is between two ITEMS**, never two strings.
+- **on a match, the `P5056` carries a reference to that parent** — the person, per
+  `name modelling.txt`.
+
+**The string comparison happens exactly ONCE, and not here.** It is what establishes a patronymic
+item's link to the given name it derives from — `Olsen` derives from `Ole` — and after that every
+person resolves by identity. Her words: *"it only uses a string comparison once."* That is the
+difference from what is in `namemodel.patronymic_or_surname` today, which compares strings once
+per person and therefore has to be right about Norwegian spelling 316,574 times.
+
+**THE PRECONDITIONS DO NOT EXIST AND CREATING THEM IS THE JOB.** Emma, 2026-08-31: *"almost
+nobody will because the point of our pipeline is we have to create preconditions that haven't
+been consistently created."* Measured the same day, so the size is known rather than assumed:
+
+| | |
+| --- | ---: |
+| distinct patronymic tokens our people carry | **7,593** (245,353 bearers) |
+| of those, having any patronymic name item at all | **51** |
+| patronymic items in the store, all languages | 631 |
+| of those, carrying `P144` *based on* | **119** (19%) |
+
+She guessed none carried `P144`; 119 do, and they are **Slavic and Icelandic** —
+`Fyodorovich` -> `Q36695874`, `Vasilyevich`, `Gunnlaugsdóttir` -> `Q16425875`, `Månsdotter` ->
+`Q19799975`. None of the Norwegian material she works in. So the convention exists and is worth
+copying rather than inventing.
+
+**The `P144` target comes from THE FATHER, never from a search.** Establishing
+`Olsdatter --P144--> Ole` by looking for `Ole` among the 225,457 given-name items in the store
+returns **553 candidates** — `oala`, `oelfke`, `oilbhe`, `oilbhreis`. That is the fuzzy matching
+`CLAUDE.md` forbids, and the boundary is the same one the zipper name step runs on: a string
+comparison is safe **confirming against one fixed person** and useless as a search. So the one
+comparison happens where the father is already known: this person's father carries `P735 -> Q…`,
+this person's token is `Olsdatter`, so `Olsdatter` derives from that item — and every later bearer
+of `Olsdatter` then resolves by identity with no comparison at all.
+
+**What happens to `namemodel.patronymic_or_surname` is part of this item**, not a separate one.
+Under her design it is not the decision any more — at most it proposes which token is the
+patronymic before the item lookup runs. Do not leave both deciding.
+
 ## Patronymic residue: `d`/`t` and `Nils`/`Nicolaus`
 
 The father test is load-bearing now and `reports/patronymic-reclassified.tsv` is the 30,171
