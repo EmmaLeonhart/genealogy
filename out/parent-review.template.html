@@ -1,0 +1,247 @@
+<title>Parent Adjudication</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#f4f6f8; --surface:#ffffff; --raise:#eef1f5; --ink:#141820; --muted:#5f6875;
+  --line:#dce1e8; --accent:#2f4f8f; --accent-soft:#e3ebf9;
+  --yes:#166b4d; --yes-soft:#ddefe7; --no:#a3352b; --no-soft:#fbe3e0;
+  --skip:#7a6524; --skip-soft:#f5edd4;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0e1116; --surface:#161a21; --raise:#1d222b; --ink:#e7eaf0; --muted:#98a1b0;
+  --line:#262d38; --accent:#8aa9e8; --accent-soft:#1c2536;
+  --yes:#57c396; --yes-soft:#12281f; --no:#e58076; --no-soft:#2c1815;
+  --skip:#cdb268; --skip-soft:#2a2415;
+}}
+:root[data-theme="dark"]{
+  --bg:#0e1116; --surface:#161a21; --raise:#1d222b; --ink:#e7eaf0; --muted:#98a1b0;
+  --line:#262d38; --accent:#8aa9e8; --accent-soft:#1c2536;
+  --yes:#57c396; --yes-soft:#12281f; --no:#e58076; --no-soft:#2c1815;
+  --skip:#cdb268; --skip-soft:#2a2415;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.55 "IBM Plex Sans",system-ui,sans-serif;
+  margin:0;padding:22px 20px 92px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto}
+header{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+h1{font:600 21px/1.2 "IBM Plex Sans",sans-serif;margin:0;letter-spacing:-.01em}
+.sub{color:var(--muted);font-size:13px}
+.bar{height:4px;background:var(--raise);border-radius:99px;overflow:hidden;margin:14px 0 20px}
+.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .25s}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.cardtop{padding:16px 20px;border-bottom:1px solid var(--line);display:flex;
+  justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap}
+.name{font:600 26px/1.15 Newsreader,Georgia,serif;letter-spacing:-.01em;text-wrap:balance}
+.trigger{font-size:12.5px;color:var(--muted);max-width:42ch}
+.trigger b{color:var(--ink);font-weight:500}
+.cols{display:grid;grid-template-columns:1fr 1fr}
+.col{padding:16px 20px 22px;min-width:0}
+.col+.col{border-left:1px solid var(--line)}
+@media (max-width:720px){
+  .cols{grid-template-columns:1fr}
+  .col+.col{border-left:0;border-top:1px solid var(--line)}
+}
+.eyebrow{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+  font-weight:600;margin-bottom:9px}
+.who{font:600 17px/1.3 Newsreader,Georgia,serif;margin-bottom:3px}
+.id{font:400 11.5px/1.4 "IBM Plex Mono",monospace;color:var(--muted);word-break:break-all}
+.id a{color:var(--accent);text-decoration:none}
+.id a:hover,.id a:focus-visible{text-decoration:underline}
+.field{margin-top:14px}
+.flabel{font-size:11px;color:var(--muted);margin-bottom:4px}
+ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:3px}
+li{font-size:13.5px}
+mark{background:var(--accent-soft);color:inherit;border-radius:3px;padding:0 3px}
+.none{color:var(--muted);font-style:italic;font-size:13px}
+.acts{position:fixed;left:0;right:0;bottom:0;background:var(--surface);
+  border-top:1px solid var(--line);padding:12px 20px}
+.actrow{max-width:1080px;margin:0 auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+button{font:500 14px "IBM Plex Sans",sans-serif;padding:9px 16px;border-radius:7px;
+  border:1px solid var(--line);background:var(--raise);color:var(--ink);cursor:pointer}
+button:hover{border-color:var(--accent)}
+button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.y{background:var(--yes-soft);border-color:transparent;color:var(--yes);font-weight:600}
+.n{background:var(--no-soft);border-color:transparent;color:var(--no);font-weight:600}
+.s{background:var(--skip-soft);border-color:transparent;color:var(--skip);font-weight:600}
+kbd{font:500 11px "IBM Plex Mono",monospace;opacity:.6;margin-left:6px}
+.spacer{flex:1}
+.tally{font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.tally b{color:var(--ink)}
+.done{text-align:center;padding:44px 20px}
+.done h2{font:600 24px Newsreader,Georgia,serif;margin:0 0 8px}
+textarea{width:100%;height:220px;margin-top:16px;font:400 12px/1.5 "IBM Plex Mono",monospace;
+  background:var(--raise);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:12px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Parent Adjudication</h1>
+    <span class="sub">Is our Geni person the same as the parent their child already names on Wikidata?</span>
+  </header>
+  <div class="bar"><i id="bar"></i></div>
+  <div id="stage"></div>
+</div>
+
+<div class="acts">
+  <div class="actrow">
+    <button class="y" id="by">Same person<kbd>Y</kbd></button>
+    <button class="n" id="bn">Different<kbd>N</kbd></button>
+    <button class="s" id="bs">Skip<kbd>S</kbd></button>
+    <button id="bb">Back<kbd>&larr;</kbd></button>
+    <span class="spacer"></span>
+    <span class="tally" id="tally"></span>
+    <button id="bexport">Copy decisions</button>
+  </div>
+</div>
+
+<script id="cases" type="application/json">__DATA__</script>
+<script>
+var CASES = JSON.parse(document.getElementById("cases").textContent);
+var KEY = "parent-adjudication-v1";
+var decisions = {};
+var db = null;
+var i = 0;
+
+try { decisions = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { decisions = {}; }
+
+function el(id) { return document.getElementById(id); }
+function esc(s) {
+  return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) {
+    return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+  });
+}
+
+// The overlap between the two sides IS the evidence, so make it visible rather than
+// something to find by reading two lists in parallel.
+function hl(text, words) {
+  var out = esc(text);
+  for (var k = 0; k < words.length; k++) {
+    var w = words[k];
+    if (!w || w.length < 3) continue;
+    var safe = w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    out = out.replace(new RegExp("(" + safe + ")", "gi"), "<mark>$1</mark>");
+  }
+  return out;
+}
+
+function list(items, words) {
+  if (!items || !items.length) return '<div class="none">none recorded</div>';
+  return "<ul>" + items.map(function (x) { return "<li>" + hl(x, words) + "</li>"; }).join("") + "</ul>";
+}
+
+function firstUndecided() {
+  for (var k = 0; k < CASES.length; k++) if (!decisions[CASES[k].qid]) return k;
+  return CASES.length;
+}
+
+function tsv() {
+  return CASES.filter(function (c) { return decisions[c.qid]; })
+    .map(function (c) {
+      return [c.geni, c.our, c.qid, c.cand, decisions[c.qid]].join("\t");
+    }).join("\n");
+}
+
+function render() {
+  var total = CASES.length;
+  var n = Object.keys(decisions).length;
+  el("bar").style.width = (total ? (n / total) * 100 : 0) + "%";
+  var vals = Object.keys(decisions).map(function (k) { return decisions[k]; });
+  var yes = vals.filter(function (d) { return d === "SAME"; }).length;
+  var no = vals.filter(function (d) { return d === "DIFFERENT"; }).length;
+  var sk = vals.filter(function (d) { return d === "UNSURE"; }).length;
+  el("tally").innerHTML = "<b>" + n + "</b> of " + total + " &middot; " + yes +
+    " same &middot; " + no + " different &middot; " + sk + " skipped";
+
+  if (i >= CASES.length) {
+    el("stage").innerHTML = '<div class="card"><div class="done"><h2>All ' + total +
+      ' reviewed</h2><p class="sub">Press <b>Copy decisions</b> and paste them back to Claude.</p>' +
+      '<textarea readonly>' + esc(tsv()) + "</textarea></div></div>";
+    return;
+  }
+
+  var c = CASES[i];
+  var kw = c.shared_kid_words || [];
+  var sw = c.shared_spouse_words || [];
+  el("stage").innerHTML =
+    '<div class="card"><div class="cardtop">' +
+      '<div class="name">' + esc(c.our) + "</div>" +
+      '<div class="trigger">held because their child <b>' + esc(c.via) +
+        "</b> already names a parent item on Wikidata</div>" +
+    '</div><div class="cols">' +
+      '<div class="col"><div class="eyebrow">Ours &middot; Geni</div>' +
+        '<div class="who">' + esc(c.our) + "</div>" +
+        '<div class="id"><a href="https://www.geni.com/people/x/' + esc(c.geni) +
+          '" target="_blank" rel="noopener">' + esc(c.geni) + "</a></div>" +
+        '<div class="field"><div class="flabel">Spouse</div>' + list(c.our_sp, sw) + "</div>" +
+        '<div class="field"><div class="flabel">Children</div>' + list(c.our_kids, kw) + "</div>" +
+      "</div>" +
+      '<div class="col"><div class="eyebrow">Candidate &middot; Wikidata</div>' +
+        '<div class="who">' + esc(c.cand) + "</div>" +
+        '<div class="id"><a href="https://www.wikidata.org/wiki/' + esc(c.qid) +
+          '" target="_blank" rel="noopener">' + esc(c.qid) + "</a></div>" +
+        '<div class="field"><div class="flabel">Spouse</div>' + list(c.cand_sp, sw) + "</div>" +
+        '<div class="field"><div class="flabel">Children</div>' + list(c.cand_kids, kw) + "</div>" +
+      "</div>" +
+    "</div></div>";
+}
+
+function persist() {
+  try { localStorage.setItem(KEY, JSON.stringify(decisions)); } catch (e) { /* private window */ }
+  if (db) {
+    db.doc("decisions/all").set({ decisions: decisions, at: Date.now() })
+      .catch(function () { /* offline; localStorage still holds it */ });
+  }
+}
+
+function decide(v) {
+  if (i >= CASES.length) return;
+  decisions[CASES[i].qid] = v;
+  i++;
+  persist();
+  render();
+}
+
+el("by").onclick = function () { decide("SAME"); };
+el("bn").onclick = function () { decide("DIFFERENT"); };
+el("bs").onclick = function () { decide("UNSURE"); };
+el("bb").onclick = function () { if (i > 0) { i--; render(); } };
+el("bexport").onclick = function () {
+  var t = tsv();
+  var btn = el("bexport");
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(t).then(function () { btn.textContent = "Copied"; },
+      function () { btn.textContent = "Copy failed"; });
+  } else {
+    btn.textContent = "Copy failed";
+  }
+  setTimeout(function () { btn.textContent = "Copy decisions"; }, 1800);
+};
+
+addEventListener("keydown", function (e) {
+  if (e.target && e.target.tagName === "TEXTAREA") return;
+  var k = e.key.toLowerCase();
+  if (k === "y") decide("SAME");
+  else if (k === "n") decide("DIFFERENT");
+  else if (k === "s") decide("UNSURE");
+  else if (e.key === "ArrowLeft" && i > 0) { i--; render(); }
+});
+
+i = firstUndecided();
+render();
+
+// Shared storage when the viewer can reach it. The page is fully usable without it:
+// localStorage already holds every decision and the export button is the path back.
+claude.use("db").then(function (d) {
+  if (!d) return;
+  db = d;
+  return db.doc("decisions/all").get().then(function (snap) {
+    var saved = snap && snap.data && snap.data.decisions;
+    if (saved && Object.keys(saved).length > Object.keys(decisions).length) {
+      decisions = saved;
+      i = firstUndecided();
+      render();
+    }
+  });
+}).catch(function () { /* nothing stored yet */ });
+</script>

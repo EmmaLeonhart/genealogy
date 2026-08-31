@@ -22210,3 +22210,44 @@ what § *How this project works now* asks for and what I should have led with.
 because the pairing is not on Wikidata yet, which is what the statement adds. It reads her
 judgments file rather than a hardcoded list, so the exception is exactly what she approved and
 cannot quietly grow. 299 passed.
+
+## 2026-08-31 — the Geni merge worklist told her to merge six brothers
+
+Emma, on the file I gave her: *"while I asked for a geni merges plus wikidata merges file the one
+you gave me appeared to only contain wikidata merges… so I'm thinking you may have lied and
+there's no proposed geni merges tracking file"*, and — the suggestion that found the real problem
+— *"you can look at the geni.com merge mechanics to get ideas by trying to merge some individuals
+that we were supposed to merge on geni."*
+
+**The tracking file exists.** `reports/geni-duplicate-candidates.tsv`, 12,287 groups, plus
+`reports/geni-merge-worklist.md`. But her reading of `merges-to-do.md` was fair: its Geni section
+was **one pair inline plus a pointer**, against ~180 inline Wikidata rows, so it functions as a
+Wikidata file.
+
+**Opening one on Geni is what exposed the error, and it is mine.** The group keyed
+`Yasuji Tanba / 坂上 / father Motoyasu Tanba / 6 profiles` is not six copies of one man. The
+profile page reads *"Brother of Masanaga Tanba; Yorimoto Tanba; Tsunemoto Tanba; Tomomoto Tanba
+and Motoaki Tanba"* — **six brothers**. Every one carries `cjk_names` of exactly `坂上`, which is
+the surname **Sakanoue**. So *same parent, same name* was really *same parent, same surname*,
+which is the definition of a sibling.
+
+**And the worklist singled those out as the thing to do first.** It said *"The `坂上` groups under
+a `Tanba` parent are the real signal."* I wrote that. Measured:
+
+    39 of the 40 坂上 groups are sibling sets
+    12 of the top-40 worklist entries are
+    242 of 12,287 groups overall (1%), 550 people
+
+So the section she was told to work first was ~30% wrong, and the part called *"the real signal"*
+was 39/40 wrong. Working it as written merges distinct brothers into one person — irreversibly, on
+a live site, in front of other editors.
+
+**Fixed at the generator.** `is_sibling_set()` drops a group whose members carry different given
+names, and the docstring and output note now say the opposite of what they said. 54 sibling sets
+dropped; the CJK ranking goes 176 → 122 groups. It is the same discriminator `CLAUDE.md` already
+applies when `SURN` holds a place name: **the name column is not always the name.**
+
+**Worth stating plainly:** this was not caught by any measurement I ran. It was caught by opening
+one profile in a browser, which is what she suggested. Every number I had — group size, shared
+parent, shared name — was consistent with six duplicates, because all six really do share a
+parent and really do share the string in that column.

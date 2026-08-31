@@ -1,6 +1,6 @@
 # Geni merge worklist
 
-**The merges are performed here, with the Chrome extension.** Emma, 2026-08-31: *"Do this stuff with your chrome extension yourself or drop it."* This is the order to work in, and the pages to look at. `scripts/find-geni-duplicates.py` produces the candidates; this is the top of them.
+**The merges are Emma's and are never performed here.** This is only the order to look in, and the pages to look at. `scripts/find-geni-duplicates.py` produces the candidates; this is the top of them.
 
 `reports/geni-duplicate-candidates.tsv` holds **12,287** groups, which is not something anyone opens a browser against. That is why this exists.
 
@@ -10,19 +10,19 @@
 
 Emma, 2026-08-24: *"Izumo ones are good to explore to see how redirects potentially work."* Found by joining the candidate ids against the 210 ids named across every `reports/izumo*.tsv`; searching the candidate file for `izumo` finds none of them, because the profiles are called Senge, Kitajima and so on.
 
-- **息長宿祢王** — MERGED already, before this pass reached it; `…015821` redirects into `…463714`
+- **息長宿祢王** — 2 profiles, parent of the same name, same name, child of kanime ikazuchi
     - https://www.geni.com/people/x/6000000001846463714
     - https://www.geni.com/people/x/6000000209933015821
-- **Munetoshi 71 Senge** — MERGED 2026-08-31 into `…623899`, which keeps both children and the `Q135579493` link
+- **Munetoshi 71 Senge** — 2 profiles, same parent, same name, child of Sakusa no Jisei Senge
     - https://www.geni.com/people/x/6000000227331623899
     - https://www.geni.com/people/x/6000000227350446840
-- **Shigeyasu Takaoka** — cross-manager: `…134824` is **Isao Takaoka**'s, `…730906` is Emma's placeholder. Awaiting her ruling on merging across managers
+- **Shigeyasu Takaoka** — 2 profiles, parent of the same name, same name, child of shigeyori takaoka
     - https://www.geni.com/people/x/6000000217687134824
     - https://www.geni.com/people/x/6000000227331730906
 
-## Japanese and Chinese — top 40 of 176
+## Japanese and Chinese — top 40 of 122
 
-Her *"higher scrutiny"* pass, biggest groups first. The `Tanba` groups are the real signal. A residue of bare one-token surnames (`杨`, `黄`, `邱`) survives because those people have a given name recorded somewhere while their `cjk_names` carries only the surname — those are an artefact of the name column, not evidence of duplication.
+Her *"higher scrutiny"* pass, biggest groups first. **Sibling sets are excluded** -- a group whose members carry different given names is not duplicates, and `坂上` under a `Tanba` parent is the worked case: 39 of those 40 groups are brothers sharing the surname Sakanoue. A residue of bare one-token surnames (`杨`, `黄`, `邱`) survives because those people have a given name recorded somewhere while their `cjk_names` carries only the surname — those are an artefact of the name column, not evidence of duplication.
 
 - **杨** — 30 profiles, parent of the same name, same name, child of 杨
     - https://www.geni.com/people/x/6000000223421469235
@@ -94,13 +94,6 @@ Her *"higher scrutiny"* pass, biggest groups first. The `Tanba` groups are the r
     - https://www.geni.com/people/x/6000000117479651840
     - https://www.geni.com/people/x/6000000117479782828
     - https://www.geni.com/people/x/6000000117480864821
-- **坂上** — 6 profiles, same parent, same name, child of Motoyasu Tanba
-    - https://www.geni.com/people/x/6000000227350450833
-    - https://www.geni.com/people/x/6000000227350468920
-    - https://www.geni.com/people/x/6000000227350508962
-    - https://www.geni.com/people/x/6000000227350557852
-    - https://www.geni.com/people/x/6000000227350595891
-    - https://www.geni.com/people/x/6000000227350639842
 - **邱** — 5 profiles, parent of the same name, same name, child of 邱
     - https://www.geni.com/people/x/6000000059162385064
     - https://www.geni.com/people/x/6000000059162802929
@@ -123,21 +116,6 @@ Her *"higher scrutiny"* pass, biggest groups first. The `Tanba` groups are the r
     - https://www.geni.com/people/x/6000000020516172420
     - https://www.geni.com/people/x/6000000020520230048
     - https://www.geni.com/people/x/6000000020520383022
-- **翁** — 4 profiles, same parent, same name
-    - https://www.geni.com/people/x/6000000134618107838
-    - https://www.geni.com/people/x/6000000134618194822
-    - https://www.geni.com/people/x/6000000134618204827
-    - https://www.geni.com/people/x/6000000134618224855
-- **坂上** — 4 profiles, same parent, same name, child of Nagamoto Tanba
-    - https://www.geni.com/people/x/6000000227350487098
-    - https://www.geni.com/people/x/6000000227350700930
-    - https://www.geni.com/people/x/6000000227350790824
-    - https://www.geni.com/people/x/6000000227350802824
-- **坂上** — 4 profiles, same parent, same name, child of Shigeyasu Tanba
-    - https://www.geni.com/people/x/6000000227350466844
-    - https://www.geni.com/people/x/6000000227350527916
-    - https://www.geni.com/people/x/6000000227350573875
-    - https://www.geni.com/people/x/6000000227350605869
 - **失傳 陳** — 3 profiles, same parent, same name, child of 達公 陳
     - https://www.geni.com/people/x/6000000021193960379
     - https://www.geni.com/people/x/6000000021194069199
@@ -174,38 +152,6 @@ Her *"higher scrutiny"* pass, biggest groups first. The `Tanba` groups are the r
     - https://www.geni.com/people/x/6000000210457344846
     - https://www.geni.com/people/x/6000000210457489833
     - https://www.geni.com/people/x/6000000210473748821
-- **黄** — 3 profiles, same parent, same name, child of Peng Soon WONG
-    - https://www.geni.com/people/x/6000000028841321482
-    - https://www.geni.com/people/x/6000000028843303282
-    - https://www.geni.com/people/x/6000000028843747039
-- **坂上** — 3 profiles, same parent, same name, child of Yasuyori Tanba
-    - https://www.geni.com/people/x/6000000227350480005
-    - https://www.geni.com/people/x/6000000227350512947
-    - https://www.geni.com/people/x/6000000227350539869
-- **坂上** — 3 profiles, same parent, same name, child of Yasunaga Tanba
-    - https://www.geni.com/people/x/6000000227350705920
-    - https://www.geni.com/people/x/6000000227350708868
-    - https://www.geni.com/people/x/6000000227350739858
-- **薛** — 3 profiles, same parent, same name, child of Ewe Boon SEE
-    - https://www.geni.com/people/x/6000000085826717041
-    - https://www.geni.com/people/x/6000000086014791183
-    - https://www.geni.com/people/x/6000000086015652973
-- **薛** — 3 profiles, same parent, same name, child of See Hoo Ki
-    - https://www.geni.com/people/x/6000000188976953881
-    - https://www.geni.com/people/x/6000000188977386849
-    - https://www.geni.com/people/x/6000000188977580823
-- **坂上** — 3 profiles, same parent, same name, child of Suehiro Tanba
-    - https://www.geni.com/people/x/6000000227350800846
-    - https://www.geni.com/people/x/6000000227350814835
-    - https://www.geni.com/people/x/6000000227351379821
-- **坂上** — 3 profiles, same parent, same name, child of Yorimoto Tanba
-    - https://www.geni.com/people/x/6000000227350530885
-    - https://www.geni.com/people/x/6000000227350828902
-    - https://www.geni.com/people/x/6000000227350858841
-- **坂上** — 3 profiles, same parent, same name, child of Yorimoto Tanba
-    - https://www.geni.com/people/x/6000000227350483988
-    - https://www.geni.com/people/x/6000000227350716880
-    - https://www.geni.com/people/x/6000000227350815823
 - **氏 殤 滎陽開封** — 3 profiles, same parent, same name, child of 虔 趨庭 鄭
     - https://www.geni.com/people/x/6000000144371083821
     - https://www.geni.com/people/x/6000000144372405821
@@ -241,4 +187,40 @@ Her *"higher scrutiny"* pass, biggest groups first. The `Tanba` groups are the r
 - **陳授, 95, 87, 54, 7世** — 2 profiles, same parent, same name
     - https://www.geni.com/people/x/6000000021440303683
     - https://www.geni.com/people/x/6000000021440575703
+- **宗之 川口** — 2 profiles, same parent, same name, child of 宗勝 川口
+    - https://www.geni.com/people/x/6000000006902530264
+    - https://www.geni.com/people/x/6000000006902530275
+- **攣鞮** — 2 profiles, same parent, same name, child of Chedi Chanyu of Xiongnu
+    - https://www.geni.com/people/x/6000000020516065491
+    - https://www.geni.com/people/x/6000000020520230048
+- **显 李** — 2 profiles, same parent, same name, child of 硕宗 李
+    - https://www.geni.com/people/x/6000000007513858514
+    - https://www.geni.com/people/x/6000000031587078851
+- **紀子 正田** — 2 profiles, same parent, same name, child of 順四郎 正田
+    - https://www.geni.com/people/x/6000000010699939758
+    - https://www.geni.com/people/x/6000000011997813087
+- **晋一郎 正田** — 2 profiles, same parent, same name, child of 篤五郎 正田
+    - https://www.geni.com/people/x/6000000010701570366
+    - https://www.geni.com/people/x/6000000011998122714
+- **教家 九条** — 2 profiles, same parent, same name, child of 良経 九条
+    - https://www.geni.com/people/x/6000000010702306018
+    - https://www.geni.com/people/x/6000000012055315437
+- **聞盟 曾** — 2 profiles, same parent, same name, child of 弘楨 曾
+    - https://www.geni.com/people/x/6000000013867784508
+    - https://www.geni.com/people/x/6000000013867784527
+- **攣鞮** — 2 profiles, same parent, same name, child of Chedi Chanyu of Xiongnu
+    - https://www.geni.com/people/x/6000000020516172420
+    - https://www.geni.com/people/x/6000000020520383022
+- **泰興 陳** — 2 profiles, same parent, same name, child of 植公 陳
+    - https://www.geni.com/people/x/6000000021651480707
+    - https://www.geni.com/people/x/6000000021651484737
+- **廣東景佑莊 陳** — 2 profiles, same parent, same name, child of 宗仁 陳
+    - https://www.geni.com/people/x/6000000033228004934
+    - https://www.geni.com/people/x/6000000033243070225
+- **廣東三角莊 陳** — 2 profiles, same parent, same name, child of 彦琉 陳
+    - https://www.geni.com/people/x/6000000034395386803
+    - https://www.geni.com/people/x/6000000034396763652
+- **江西星子莊 陳** — 2 profiles, same parent, same name, child of 承悅 陳
+    - https://www.geni.com/people/x/6000000034395523551
+    - https://www.geni.com/people/x/6000000034395853967
 

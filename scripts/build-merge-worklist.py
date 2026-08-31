@@ -22,11 +22,16 @@ that the id is the key on both sides and that a name search is at best a way to 
 for a join — the same session that grepped for `Shalma|Tabia|Abta` missed 35 priests and matched
 an Assyrian king.
 
-**Then the CJK groups**, because that is the higher scrutiny she asked for, ranked by group size.
-`CLAUDE.md` records what sits at the top of that section and it is repeated in the output: the
-`Tanba` groups are the real signal, and a residue of bare one-token surnames (`杨`, `黄`, `邱`)
-survives because those people have a given name recorded somewhere while their `cjk_names`
-carries only the surname.
+**Then the CJK groups**, because that is the higher scrutiny she asked for, ranked by group size —
+with **sibling sets removed**, which is the correction of 2026-08-31. A group whose members carry
+different given names is not a set of duplicates; `坂上` under a `Tanba` parent is the worked
+case, where six profiles turned out to be six brothers all carrying the surname Sakanoue in
+`cjk_names`. This file used to call those *"the real signal"* and **39 of those 40 groups are
+siblings**. See `is_sibling_set`.
+
+The residue of bare one-token surnames (`杨`, `黄`, `邱`) is the same fault in a milder form:
+those people have a given name recorded somewhere while their `cjk_names` carries only the
+surname.
 
 Writes `reports/geni-merge-worklist.md`.
 """
@@ -127,6 +132,46 @@ def render(fh, rows, heading, note=""):
     fh.write("\n")
 
 
+def read_labels():
+    """`geni_id -> label` from the merged tree, for the sibling test."""
+    out = {}
+    path = ROOT / "reports" / "derived-labels.csv"
+    if not path.exists():
+        return out
+    with path.open(encoding="utf-8", newline="") as fh:
+        for row in csv.DictReader(fh):
+            name = (row.get("label_en") or row.get("label_mul") or "").strip()
+            if name:
+                out[row["geni_id"]] = name
+    return out
+
+
+def _distinct_names(row, labels):
+    """The given names of a group's members, where we know them."""
+    return {labels.get(i, "") for i in row["geni_ids"].split(";") if labels.get(i)}
+
+
+def is_sibling_set(row, labels):
+    """True when a 'duplicate' group is really a set of SIBLINGS.
+
+    **The error this closes, found 2026-08-31 by opening one on Geni.** The group keyed
+    `Yasuji Tanba / 坂上 / father Motoyasu Tanba / 6 profiles` is not six copies of one man. It
+    is six brothers -- Yasuji, Motoaki, Masanaga, Yorimoto, Tsunemoto, Tomomoto -- and every one
+    of them carries `cjk_names` of exactly `坂上`, which is the **surname** Sakanoue and not a
+    given name. So `same parent, same name` was really *same parent, same surname*, which is the
+    definition of a sibling.
+
+    This file previously told Emma the `坂上`-under-`Tanba` groups were *"the real signal"*.
+    **39 of those 40 groups are sibling sets**, and 12 of the top 40 overall. Working that list
+    as written would have merged distinct brothers into one person.
+
+    The test is the members' own names: a real duplicate group has ONE name across its
+    profiles, a sibling set has several. It is the same discriminator `CLAUDE.md` already
+    applies to `SURN` holding a place name -- the name column is not always the name.
+    """
+    return len(_distinct_names(row, labels)) > 1
+
+
 def main():
     rows = list(csv.DictReader(CANDIDATES.open(encoding="utf-8"), delimiter="\t"))
     print(f"{len(rows):,} candidate groups")
@@ -137,6 +182,15 @@ def main():
     izumo = [r for r in rows if roster & set(r["geni_ids"].split(";"))]
     rest = [r for r in rows if r not in izumo]
     cjk = [r for r in rest if r["script"] in ("Han", "Kana", "mixed")]
+    # **Sibling sets are not duplicates.** See `is_sibling_set`: matching on `cjk_names` groups
+    # by SURNAME when only the surname is recorded, so six brothers read as six copies of one
+    # man. Dropped here rather than flagged, because this file is a worklist -- something in it
+    # is something to go and merge.
+    labels = read_labels()
+    before = len(cjk)
+    cjk = [r for r in cjk if not is_sibling_set(r, labels)]
+    print(f"{before - len(cjk):,} sibling sets dropped from the CJK ranking "
+          f"(members carry different given names)")
     cjk.sort(key=lambda r: (-int(r["count"]), r["name"]))
 
     with OUT.open("w", encoding="utf-8") as fh:
@@ -161,8 +215,10 @@ def main():
 
         render(fh, cjk[:CJK_LIMIT],
                f"Japanese and Chinese — top {min(CJK_LIMIT, len(cjk))} of {len(cjk)}",
-               "Her *\"higher scrutiny\"* pass, biggest groups first. The `Tanba` groups are "
-               "the real signal. A residue of bare one-token surnames (`杨`, `黄`, `邱`) "
+               "Her *\"higher scrutiny\"* pass, biggest groups first. **Sibling sets are excluded** "
+               "-- a group whose members carry different given names is not duplicates, and "
+               "`坂上` under a `Tanba` parent is the worked case: 39 of those 40 groups are "
+               "brothers sharing the surname Sakanoue. A residue of bare one-token surnames (`杨`, `黄`, `邱`) "
                "survives because those people have a given name recorded somewhere while "
                "their `cjk_names` carries only the surname — those are an artefact of the "
                "name column, not evidence of duplication.")
