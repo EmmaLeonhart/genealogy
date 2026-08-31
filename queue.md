@@ -40,30 +40,18 @@ ones above them: `THE EDIT ALGORITHM`, `THE DAILY ALGORITHM`, `THE TAIL ALGORITH
 
 These are supposed to be manually added to the queue and worked on, do no just paraphrase during the rebase keep this part entirely intact. We are approaching usage limit for now.
 
-## ⛔ Audit of Geni merges — step 3, the browser pass
+## Keep `reports/merges-to-do.md` current
 
-Emma, 2026-08-31: *"Do this stuff with your chrome extension yourself or drop it."* Steps 1 and 2
-are finished; `reports/geni-merge-worklist.md` is the order to work in.
+Emma, 2026-08-31: *"Just make a 'merges to do' file that records these merges and the wikidata
+duplicates and all the other things we went over that's a file I'll use tomorrow to do merges
+manually on my own with the quickstatements session."*
 
-**The Izumo three are cleared.** `Munetoshi 71 Senge` merged into `…623899`;
-`Okinaga no Sukune` was already merged into `…463714` before I got there.
+`python scripts/build-merges-to-do.py` rebuilds it. Regenerate it when
+`out/wikidata/p2600-all.tsv` or `reports/garborg-qids.tsv` is refreshed, so the duplicate
+counts are not stale when she next sits down to it.
 
-**`Shigeyasu Takaoka` is the one left, and it is cross-manager.** `…730906` is Emma's 19 Aug
-placeholder carrying `Q135579463`; `…134824` (b.1437, d.1483, father of Joan Bingo-nyudo
-Takaoka) was added by **Isao Takaoka** in April 2025 and he manages it. Same name, same father
-`Shigeyori Takaoka`. Merging it puts a request in front of another editor, which is the thing
-§ *Duplication is a DOUBLE-EDGED SWORD* is careful about — so it waits on her ruling, which is
-also the ruling for most of the 40 CJK groups.
-
-**Still to do: the 40 largest CJK groups.** The `Tanba` ones are the real signal; the bare
-one-token surname groups (`杨`, `黄`, `邱`) are an artefact of the name column and are not
-evidence of duplication.
-
-**Working notes for whoever picks this up.** Geni can serve the twin whichever id is requested,
-so a profile may have to be reached by clicking the *brother* link from its duplicate. The
-compare page at `/merge/compare/<id>` is where the merge is confirmed, and it can complete on
-its own once reached. `Delete profile` sits three rows under `Merge This Profile` in the Actions
-menu, so use `find` refs rather than blind coordinate clicks.
+**The merges themselves are hers now, not mine** — that is what the file is for. The Izumo
+three are cleared and the browser pass is closed.
 
 ## ⛔ THE DAILY ALGORITHM — her full spec, 2026-08-26. Supersedes the one-hop ring
 

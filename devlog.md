@@ -21011,3 +21011,39 @@ the first artifact that vaguely matches* failure waiting to happen.
 back as an Imperva hCaptcha challenge, which I cannot complete. A second navigation to the same
 URL went straight through, and every request since has been fine. Reporting the first response as
 a blocker would have parked the whole item on a challenge that cleared on retry.
+
+## 2026-08-31 — `reports/merges-to-do.md`, and the merges going back to her
+
+Asked how to handle merges that cross a manager, Emma took none of the four options and gave a
+fifth: *"Just make a 'merges to do' file that records these merges and the wikidata duplicates
+and all the other things we went over that's a file I'll use tomorrow to do merges manually on
+my own with the quickstatements session."*
+
+`scripts/build-merges-to-do.py` builds it. Five sections, and they are deliberately not one list
+because they are not one kind of work.
+
+**16 Wikidata duplicates in her ledger — one Geni id carried by two items.** This is the mirror
+image of the case `CLAUDE.md` § *A second Geni ID on one Wikidata item is NOT a conflict* tells
+us to leave alone: two ids on one item is Geni's structure showing through, one id on two items
+is our own double-creation. 15 of the 16 are near-consecutive Q numbers in the `Q1412257xx` run,
+so one pass created each person twice. The sixteenth, `Guillaume I de Garlande`, is a different
+shape — `Q3120330` *William I of Garlande* is a long-standing item with 20 claims and
+`Q75933086` has 7.
+
+**Spot-checked live before writing it down.** 12 of the 16 fetched in one `wbgetentities` call:
+none is already a redirect and every pair carries the same `P2600`, so these are live duplicates
+rather than an artefact of a download. § *CHECK before you alarm her* is the rule — a list of 83
+duplicates handed over unverified is exactly the unchecked scary claim it forbids.
+
+**67 more sit outside the ledger** and are listed separately, because some of those will be
+somebody else's duplicates rather than ours and want a look at the item first.
+
+**Sections 3 to 5 are the "everything else we went over"**: the `Shigeyasu Takaoka` cross-manager
+pair with both profile links, a pointer to the 40 CJK groups with the eight `坂上`-under-`Tanba`
+ones named as the real signal and the bare-surname groups named as an artefact, the three items
+she called erroneous on 08-30 (`Q141223488`, `Q6197518`, `En dödfödd son Bielke`), and the
+`Tunheim` name-item merge.
+
+**The queue item is gone rather than rewritten.** Step 3 was *"MINE to perform"*; her answer
+moves the merges back to her, so what is left is keeping the file current when the ledger or
+`p2600-all.tsv` refreshes. That is a one-line standing item, not the browser campaign it replaced.
