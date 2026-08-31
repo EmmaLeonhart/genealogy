@@ -300,8 +300,17 @@ it.
 
 **Not deleted when it completes: it is a procedure, not a step.** Run it before
 executing the rest of the queue, because otherwise the rest is not trustworthy.
-**Last run 2026-08-15** → `reports/audit-transcripts-2026-08-15.md` (24
-transcripts, 311 user turns).
+**Last run 2026-08-30** → `reports/user-turns.tsv` and `reports/unrecorded-instructions.tsv`
+(38 transcripts, **3,679 turns since 2026-08-15**, 1,577 distinct, **243 directive and written
+down nowhere**). Steps 1 and 3 are scripts now — `scripts/extract-user-turns.py` extracts
+verbatim, `scripts/audit-turns-recorded.py` screens for directive shape and then for whether any
+six-word run of the turn appears in `CLAUDE.md`, `queue.md`, `devlog.md`, `name modelling.txt`
+or `docs/`. The screen was checked against rulings known to be recorded and flagged none of
+them. A miss is a **candidate to read**, never a finding — she repeats herself, and much of what
+she says is answered in the moment and needs no record.
+
+The previous run was 2026-08-15 → `reports/audit-transcripts-2026-08-15.md` (24 transcripts,
+311 user turns).
 
 Transcripts are the authority — they hold what Emma actually said, in order,
 including the corrections:

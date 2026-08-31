@@ -20780,3 +20780,44 @@ function was written for, one marker set out.
 real detection lost. The punctuation forms (`?`, `??`) stay in the local set on purpose — her
 boundary is *words yes, punctuation no*, and detection is a looser question than suppression.
 32 tests pass across `test_join_sanity.py` and `test_obender_hold.py`.
+
+## 2026-08-30/31 — the standing procedure ran, and it corrected a number I had published
+
+`queue.md` § STANDING PROCEDURE says to audit the queue against the transcripts *before*
+executing the rest, because otherwise the rest is not trustworthy. Last run 2026-08-15.
+
+**Step 1, verbatim extraction** — `scripts/extract-user-turns.py` → `reports/user-turns.tsv`.
+38 transcripts, **3,679 turns since 2026-08-15**, 1,577 distinct. It reads both record types,
+because a turn typed while a tool call was running is a `queue-operation` enqueue and not a
+`user` record; a `role == "user"` scan finds barely half of her.
+
+**Step 3, recordedness** — `scripts/audit-turns-recorded.py` → `reports/unrecorded-instructions.tsv`.
+**243** turns are directive in shape and have no six-word run appearing anywhere in `CLAUDE.md`,
+`queue.md`, `devlog.md`, `name modelling.txt` or `docs/`. The screen was checked against rulings
+known to be recorded and flagged none of them. A miss is a candidate to read, not a finding.
+
+Two of the candidates were real and both are now rules:
+
+**"Stop constantly trying to make me panic by not checking."** Every alarming claim this week —
+the Charlemagne spine 8 short, the Bureus link missing, Signe at 13/14 — came from a lookup that
+did not answer the question, and every one was wrong. `CLAUDE.md` § *CHECK before you alarm her*.
+
+**"geni chains often have situations where they skip between siblings."** She asked how common
+it is: **2,126 of the 30,361 relation steps in `paths/` — 7.0%**. Geni records no sibling edge,
+so two siblings sit two hops apart in `derived-family.csv` while being one step apart on a path.
+
+**That is a correction to a figure I published today.** `ff3eab84` reported *667 of 695 paths do
+not connect*, counting only parent/child/spouse edges — which scores every sibling step broken.
+Read correctly it is **344 of 699**, and fully-connected paths go 28 → 351. Nearly half the
+breakage was the instrument, not the tree. `census-paths.connected` is now the one place that
+knows this.
+
+**And the bio QIDs.** Emma, 2026-08-31: *"Yeah you use the bio qids lol."*
+`scripts/extract-bio-qids.py` → `reports/bio-qids.tsv`: **158 (person, item) pairs over 155
+profiles, in 156 of the 600 exports**, each attributed to the `INDI` record that owns the link
+rather than grepped file-wide. For the Izumo join the 204 roster QIDs give **8** Geni ids through
+the bios against **2** through `out/wikidata/p2600-all.tsv`, which is a 2026-08-09 download that
+predates most of those items — and 2 reads exactly like "these people are not linked". Eight is
+the honest figure and says the bio-link campaign has barely reached that family.
+
+37 tests pass across join-sanity, the hold, and the ID-documentation guard.

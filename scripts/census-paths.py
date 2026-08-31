@@ -55,15 +55,41 @@ def load_adjacency():
     two children* is what splitting on the wrong thing costs here.
     """
     adj = collections.defaultdict(set)
+    parents = {}
     with open(REPO / "reports" / "derived-family.csv", encoding="utf-8", newline="") as fh:
         for row in csv.DictReader(fh):
             me = row["geni_id"]
+            parents[me] = {x.strip() for col in ("father", "mother")
+                           for x in (row.get(col) or "").split("|") if x.strip()}
             for col in ("father", "mother", "spouses", "children"):
                 for other in (x.strip() for x in (row.get(col) or "").split("|")):
                     if other:
                         adj[me].add(other)
                         adj[other].add(me)
-    return adj
+    return adj, parents
+
+
+def connected(a, b, adj, parents):
+    """Is a path's step from `a` to `b` carried by the tree?
+
+    **A SIBLING step is connected and is not a direct edge.** Emma raised it, 2026-08-30:
+    *"geni chains often have situations where they skip between siblings. How are the parents
+    represented and how common is this situation?"* -- and it is common: **2,126 of the 30,361
+    relation steps in `paths/`, 7.0%**, read `his brother`, `her sister` and so on.
+
+    Geni records no sibling edge. Two siblings are joined through a shared parent, so they are
+    two hops apart in `derived-family.csv` while being one step apart on the path. Counting only
+    parent/child/spouse edges therefore scores every sibling step as broken.
+
+    **It cost a published number.** The first run of this census reported *667 of 695 paths do
+    not connect*; with sibling steps read correctly it is **344 of 699**. Nearly half the
+    breakage was the instrument. `CLAUDE.md` § *Our side could never have two children* is the
+    standing lesson and this is another instance of it -- a plausible figure measured with a
+    definition that quietly excluded a whole relationship type.
+    """
+    if b in adj.get(a, ()):
+        return True
+    return bool(parents.get(a, ()) & parents.get(b, ()))
 
 
 def main() -> int:
@@ -73,7 +99,7 @@ def main() -> int:
         present.update(m.group(1).decode()
                        for m in INDI_XREF.finditer(path.read_bytes()))
 
-    adjacency = load_adjacency()
+    adjacency, parents = load_adjacency()
     rows = []
     for path in sorted((REPO / "paths").glob("*.tsv")):
         ids = []
@@ -92,16 +118,17 @@ def main() -> int:
         # (10,179) were ingested and those files are built FROM these paths. Every path
         # member is present by construction.
         #
-        # **They are present WITHOUT THEIR LINKS.** In a 120-path sample, 115 paths held at
-        # least one consecutive pair that is not adjacent in the merged tree -- 429 broken
-        # pairs in all. So a path can be 100% present and still not connect anybody, which is
-        # the whole deliverable: `CLAUDE.md` records that the point is *"the chain being
-        # connected"*, not that the people exist as records.
+        # **They are present WITHOUT THEIR LINKS.** A path can be 100% present and still not
+        # connect anybody, which is the whole deliverable: `CLAUDE.md` records that the point
+        # is *"the chain being connected"*, not that the people exist as records. Measured
+        # with sibling steps read correctly (see `connected`): **344 of 699 paths** hold a
+        # step the tree does not carry.
         #
         # `broken` is that measure: consecutive steps with no father/mother/spouse/child edge
         # between them in `derived-family.csv`. A path is complete when `broken` is 0, and
         # that is what the routing in `queue.md` § *THE TAIL ALGORITHM* must be applied to.
-        broken = sum(1 for a, b in zip(ids, ids[1:]) if b not in adjacency.get(a, ()))
+        broken = sum(1 for a, b in zip(ids, ids[1:])
+                     if not connected(a, b, adjacency, parents))
         rows.append({
             "path": path.name,
             "steps": len(ids),

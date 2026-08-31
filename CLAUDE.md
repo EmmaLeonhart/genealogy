@@ -1395,6 +1395,51 @@ So position alone does not make a middle name — the second given token is a mi
 name **only** if it is not patronymic. `Q245025` and `Q110874` are decided by what
 the token *is*, and `P1545` numbers them either way.
 
+### CHECK before you alarm her. An unchecked scary claim is worse than silence
+
+**Emma, 2026-08-30:** *"Stop constantly trying to make me panic by not checking."*
+
+The pattern it names: reporting something alarming — a spine incomplete, a link missing, a batch
+stale — from a lookup that did not actually answer the question. Every one of those cost her a
+jolt and then a turn to correct, and **every one was wrong**: the Charlemagne spine reported 8
+people short when the lookup meant *not in her ledger*; the Bureus link reported missing when
+the two are siblings joined through parents; Signe reported 13/14 from a measurement she had
+already superseded.
+
+**So before a claim that would worry her: run the check that would falsify it.** Absence is the
+hardest thing to establish and the easiest to assert — `CLAUDE.md` § *A SUMMARY of a Wikidata
+item is not the item* is the same rule for a different channel, and § *Our side could never have
+two children* is what an unchecked join does to a number.
+
+**A sibling step is the worked example, and it is 7% of the data.** Emma, 2026-08-30: *"geni
+chains often have situations where they skip between siblings. How are the parents represented
+and how common is this situation?"* — **2,126 of the 30,361 relation steps in `paths/`**. Geni
+records **no sibling edge**: two siblings are joined through a shared parent, so they are two
+hops apart in `derived-family.csv` while being one step apart on a path. Counting only
+parent/child/spouse edges scores every one of them broken, and it published a wrong figure —
+*667 of 695 paths do not connect* became **344 of 699** once siblings were read correctly.
+`census-paths.connected` is the single place that knows this; do not re-derive adjacency
+anywhere else.
+
+### The Geni BIO carries her own QID claims. Read them before any download
+
+**Emma, 2026-08-31:** *"Yeah you use the bio qids lol."*
+
+She writes `wikidata.org/wiki/Q…` into a Geni profile's *About Me*, so the link comes back inside
+the export as text on that person's record. `scripts/extract-bio-qids.py` → `reports/bio-qids.tsv`
+attributes each link to the `INDI` that owns it: **158 pairs over 155 profiles, in 156 of the 600
+exports**. That is her own statement of identity, captured whenever an export next ran — fresher
+than anything downloaded.
+
+**Why it matters that this is read first.** `out/wikidata/p2600-all.tsv` is a **2026-08-09**
+download. Joining the 204 Izumo roster QIDs through it returns **2** Geni ids, because nearly
+every one of those items got its `P2600` after that date — and 2 reads exactly like *"these
+people are not linked"*. Through the bio links it is **8**, and the honest reading of 8 is that
+the bio-link campaign has barely reached that family, which is a fact rather than an artefact.
+
+**A profile may name more than one item** (3 do), and that is § *A second Geni ID on one Wikidata
+item is NOT a conflict* seen from the other side. Emit both.
+
 ### She answers `AskUserQuestion`. A question in prose usually gets no reply
 
 **Emma, 2026-08-29:** *"Again I'll only regularly answer if you use AskUserQuestion add that to

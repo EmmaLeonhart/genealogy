@@ -32,6 +32,7 @@ Writes `reports/geni-merge-worklist.md`.
 """
 from __future__ import annotations
 
+import collections
 import csv
 import re
 import sys
@@ -72,7 +73,36 @@ def izumo_ids():
     ids = set()
     for path in sorted((ROOT / "reports").glob("izumo*.tsv")):
         ids |= set(GENI_ID.findall(path.read_text(encoding="utf-8")))
-    return ids
+
+    # **The BIO links are the stated correspondence and are consulted first.** Emma,
+    # 2026-08-31: *"Yeah you use the bio qids lol."* She writes `wikidata.org/wiki/Q…` into a
+    # Geni profile's About Me, so `reports/bio-qids.tsv` is her own identity claim, captured by
+    # whichever export ran after she made it -- fresher than any download.
+    #
+    # **For Izumo they are thin, and saying so is the point.** The 204 roster QIDs resolve to
+    # **8** Geni ids through the bio links, all 8 already inside the 210 above. That is not a
+    # failure of the source; it is the measurement that the bio-link campaign has barely reached
+    # this family. The stale alternative is worse and hides it: `out/wikidata/p2600-all.tsv` is
+    # a 2026-08-09 download and yields **2**, which reads exactly like "these people are not
+    # linked" when in fact the file predates the items.
+    bio = collections.defaultdict(set)
+    bio_path = ROOT / "reports" / "bio-qids.tsv"
+    if bio_path.exists():
+        with bio_path.open(encoding="utf-8", newline="") as fh:
+            for row in csv.DictReader(fh, delimiter="\t"):
+                bio[row["qid"]].add(row["geni_id"])
+    roster_qids = set()
+    for name in ("izumo-roster.tsv", "izumo-coverage.tsv"):
+        path = ROOT / "reports" / name
+        if not path.exists():
+            continue
+        with path.open(encoding="utf-8", newline="") as fh:
+            for row in csv.DictReader(fh, delimiter="\t"):
+                if (row.get("qid") or "").strip():
+                    roster_qids.add(row["qid"].strip())
+    from_bio = {g for q in roster_qids for g in bio.get(q, ())}
+    print(f"   bio links contribute {len(from_bio)} of the {len(ids | from_bio)} Izumo ids")
+    return ids | from_bio
 
 
 def render(fh, rows, heading, note=""):
