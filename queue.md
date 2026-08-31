@@ -1992,13 +1992,38 @@ Emma, 2026-08-30: *"an item was created as 'En dödfödd son Bielke' which is ju
 
 Not investigated.
 
-## The spines are complete — declare them legacy and remove them
+## The old spines are legacy — remove them, and make Arne↔Bureus the ONE new spine
 
 Emma, 2026-08-30, after all four verified complete: *"the spines are all clear and I'm putting an
 item at the end of the queue declaring them legacy code and removing them."*
 
-`SPINE_PATHS` in `build-garborg-day.py`, the spine walk, `reports/the-spine.md`, and the path
-files that exist only to serve it. `CLAUDE.md` § *LEGACY CODE IS DELETED* is the rule.
+**Remove:** `SPINE_PATHS` in `build-garborg-day.py` as it stands, the spine walk,
+`reports/the-spine.md`, and the path files that exist only to serve the four completed lines.
+`CLAUDE.md` § *LEGACY CODE IS DELETED* is the rule.
+
+**Replace with exactly one spine, and it runs on a DIFFERENT rule.** Emma, 2026-08-30, closing
+the Arne↔Bureus export attempt: *"we have all these people, edit the spine removal queue item to
+say to make these people the only new spine with the rule being different because any of them is
+always added whenever possible from any side including the middle."*
+
+The people are the 18 steps of `paths/arne-garborg-to-johannes-bureus-geni.tsv` — Geni's own
+in-law route from Arne Garborg to Johannes Bureus, joining the two anchors to each other rather
+than only through Emma.
+
+**The rule that makes it different from the four it replaces.** The old spines advanced from one
+end, one hop a day, and a step was only created once its neighbour existed. This one has no
+direction and no front: **any person on it is created the moment it is possible to create them,
+from either end or from the middle, and every link to anything that already has a QID goes in the
+same batch.** There is no waiting for the step before. A creation is possible as soon as the
+person is in the corpus — that is the only gate.
+
+Steps 1, 17 and 18 already hold items (`Q467497`, `Q141180409`, `Q633094`), so the chain is
+anchored at both ends and the middle fills inward and outward at once.
+
+**Why the export route was abandoned, so nobody retries it.** Steps 9, 10 and 13 were tried as
+`Forest` export seeds on 2026-08-30 and Geni refused all three — *"You are not allowed to export
+that profile."* Emma: *"at this point i think the key thing is just to give up."* The path itself
+is the deliverable; no export is needed to use it.
 
 ## The unintentional edit war: analysis and fix
 

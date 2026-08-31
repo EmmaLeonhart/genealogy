@@ -1,0 +1,35 @@
+# Geni relationship path: Arne Garborg -> Johannes Bureus, as GENI states it.
+#
+# Emma, 2026-08-30, asking for the two anchors to be joined to each other rather than only
+# through her: "going from Burius to Gar to Arnie... get the path between the two of them
+# so you can get this on Geni using the browser".
+#
+# Taken from https://www.geni.com/path/index?from=6000000003492005116&to=6000000004334763223
+# with the collapsed "show 14 relatives" expanded, and read from the anchors' hrefs rather
+# than the rendered names -- CLAUDE.md: the hrefs are where the profile IDs are.
+#
+# Geni's own summary: "Johannes Bureus is Arne Garborg's great niece's husband's 7th great
+# aunt's husband's father's wife's father!" -- so this is the IN-LAW route, not blood. The
+# marriage links are Ragnhild -> Gunnar (her husband) and Magdalena -> Johannes (his wife).
+#
+# 18 steps. Distinct from paths/arne-to-bureus-q633094.tsv, which is a 21-step walk over our
+# OWN tree and reaches him via the Blix and Schancke families instead.
+step	name	relation	note	qid
+1	Arne Garborg		geni:6000000003492005116	Q467497
+2	Jon Eivindson Garborg	his brother	geni:6000000003492005126
+3	Aagot Garborg	his daughter	geni:6000000021079935250
+4	Ragnhild Sahlin Wendt	her daughter	geni:6000000003002538177
+5	Gunnar Sahlin	her husband	geni:6000000003002364630
+6	Kristofer Sahlin	his father	geni:6000000003002231602
+7	Maria Nordenfelt	his mother	geni:4520166
+8	Enar Vilhelm Nordenfelt	her father	geni:4198641
+9	Friherrinna Anna Wilhelmina Posse af Säby	his mother	geni:6000000001994951163
+10	Beata Christina Hierta	her mother	geni:6000000008507926141
+11	Fredrika Ulrika Eleonora von Braunjohan	her mother	geni:6000000008508010957
+12	Carl Rutger von Braunjohan	her father	geni:6000000004352726281
+13	Sara Carlberg	his mother	geni:6000000006435949669
+14	Maria Carlberg	her sister	geni:6000000003133670452
+15	Jonas Jonae Rudberus	her husband	geni:6000000006828366697
+16	Jonas Benedicti Rudberus	his father	geni:6000000006828534420
+17	Magdalena Johansdotter Bure	his wife	geni:6000000006828701331	Q141180409
+18	Johannes Bureus	her father	geni:6000000004334763223	Q633094
