@@ -22569,3 +22569,22 @@ Now only a decided verdict retires a pair. All three `UNSURE` cases are back in 
 one-question-per-person rule doing its job rather than a miss. 9,060 → 9,061 open.
 
 Fast lane after the spine-path deletions: **1,508 passed, 36 skipped, 0 failed, 6m28.**
+
+## 2026-08-31 — no new tests until CI/CD runs public; verification moves to measurement
+
+**Emma:** *"all the tests of this repo are kinda bullshit, so no more tests until we got the
+ci/cd with github actions as a public repo running."*
+
+The suite proves her point. `tests/test_namemodel.py:620` asserts
+`patronymic_or_surname("Olsen", "Ole Hansen") == "patronymic"` — and it passes just as happily
+with the discriminator deleted, because the fallthrough returns `"patronymic"` too. The one test
+that looks like it pins the father-name check has never seen it do anything, and 62,637 tokens
+went out mis-modelled underneath a green suite.
+
+Recorded as `CLAUDE.md` § *NO NEW TESTS until CI/CD runs on a public repo*. The existing suite
+stays and is not weakened — that rule is untouched — but its pass count stops being offered as
+evidence that a change is right. What replaces it is her own standard, § *"Analyse this" means
+build a CSV*: how many rows change, which, and named people to eyeball.
+
+The dependency runs to the queue's CI/CD item, which sits at the tail by her placement. Noted,
+not promoted.

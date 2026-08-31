@@ -1769,6 +1769,31 @@ limit. It is covered by the existing `out/` line, so **no `.ged` pattern exists
 and none should be added**; the rule about the corpus under `exports/` is
 untouched. Emma's call, 2026-08-07: ignore it by necessity.
 
+### NO NEW TESTS until CI/CD runs on a public repo. Verify by MEASUREMENT instead
+
+**Emma, 2026-08-31:** *"all the tests of this repo are kinda bullshit, so no more tests until we
+got the ci/cd with github actions as a public repo running."*
+
+**She is right and the proof is in the suite.** `tests/test_namemodel.py:620` asserts
+`patronymic_or_surname("Olsen", "Ole Hansen") == "patronymic"`. It passes. It also passes with
+the discriminator **deleted**, because the fallthrough returns `"patronymic"` too -- so the test
+that appears to pin the father-name check has never observed it doing anything, and 62,637 tokens
+went out mis-modelled underneath it. A test asserting only the positive case of a function whose
+default IS that case asserts nothing.
+
+**So: write no new tests.** Not for a fix, not for a guard, not "just this one". The existing
+suite stays and is not weakened or deleted -- that rule is untouched -- but it stops being the
+thing that makes a change trustworthy, and its pass count stops being quoted as evidence that
+anything is correct.
+
+**What replaces it is what she has asked for all along:** § *"Analyse this" means build a CSV*.
+Verification is a **measurement over the real corpus** -- how many rows change, which ones, and a
+sample of named people to eyeball. `Bertrand Olav Olsen Vigdel`, father `John Jonassen Hegre`,
+settles the patronymic question in one line; no assertion in the suite did.
+
+**The gate is the queue's own CI/CD item**, which is at the tail by her placement. Do not promote
+it on the strength of this rule -- note the dependency and leave the order as she set it.
+
 ### Cost: this repo is private, so CI is manual-only
 
 **Never add a `push:` or `pull_request:` trigger to `.github/workflows/`.**
