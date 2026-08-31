@@ -21,6 +21,7 @@ in memory as one object graph unless a caller asks for that.
 
 from __future__ import annotations
 
+import os
 import re
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -306,8 +307,36 @@ def serialize(doc: Gedcom) -> str:
 
 
 def write_file(doc: Gedcom, path: str | Path) -> None:
-    with open(path, "w", encoding="utf-8", newline="\n") as handle:
-        handle.write(serialize(doc))
+    """Serialise `doc` to `path`, atomically.
+
+    **Write beside, then rename.** `open(path, "w")` truncates the moment it is called, so an
+    interrupted write does not leave a partial file — it leaves a **zero-byte** one, and a
+    zero-byte GEDCOM does not raise anywhere. It parses as an empty tree, and every count
+    derived from it comes out plausibly small: `derive-family.py`, `derive-facts.py`,
+    `derive-labels.py` and `build-display-names.py` all read `out/merged.ged` and would each
+    quietly produce an empty answer.
+
+    That is not hypothetical. On 2026-08-31 the corpus merge was killed at peak memory twice and
+    left `out/merged.ged` at 0 bytes both times, destroying a 1.8 GB tree that costs ~14 minutes
+    and ~17 GB to rebuild.
+
+    **The fix belongs here rather than in the caller.** The workaround was
+    `-o out/merged.ged.tmp` and a manual move, which worked and silently broke something else:
+    `cli.py` redirects the merge reports next to the output whenever `--output` is given, so
+    `reports/merge.md` stopped being regenerated and a slow-lane test went red. Making the safe
+    thing the default is what stops the next person reaching for a flag and getting that flag's
+    other effect along with it.
+    """
+    path = Path(path)
+    temporary = path.with_name(path.name + ".partial")
+    try:
+        with open(temporary, "w", encoding="utf-8", newline="\n") as handle:
+            handle.write(serialize(doc))
+        os.replace(temporary, path)
+    except BaseException:
+        # A kill arrives here too. Leave the previous file intact and take the fragment away.
+        temporary.unlink(missing_ok=True)
+        raise
 
 
 def stream_file(path: str | Path, encoding: str = "utf-8-sig") -> Iterator[Node]:

@@ -5,6 +5,8 @@ using them here would turn a unit test into an integration test that fails for
 reasons unrelated to the parser.
 """
 
+import pytest
+
 from genimerge import gedcom
 from genimerge.gedcom import Node, parse, serialize
 
@@ -184,3 +186,39 @@ def test_walk_yields_self_then_descendants_in_file_order():
     tags = [n.tag for n in parse(SAMPLE).records[0].walk()]
 
     assert tags == ["INDI", "NAME", "GIVN", "SURN", "SEX", "BIRT", "DATE", "PLAC", "FAMC", "RFN"]
+
+
+def test_a_failed_write_leaves_the_previous_file_intact(tmp_path):
+    """A killed merge must not destroy the tree it was replacing.
+
+    `open(path, "w")` truncates on the call, so an interrupted write leaves a **zero-byte**
+    file rather than a partial one — and a zero-byte GEDCOM raises nowhere. It parses as an
+    empty tree and every derived count comes out plausibly small. On 2026-08-31 the corpus
+    merge was killed at peak memory twice and left `out/merged.ged` at 0 bytes both times,
+    losing a 1.8 GB tree that costs ~14 minutes and ~17 GB to rebuild.
+    """
+    target = tmp_path / "merged.ged"
+    good = gedcom.Gedcom(header=gedcom.Node(tag="HEAD"), records=[gedcom.Node(tag="TRLR")])
+    gedcom.write_file(good, target)
+    before = target.read_text(encoding="utf-8")
+    assert before
+
+    class Exploding(gedcom.Gedcom):
+        pass
+
+    boom = Exploding(header=gedcom.Node(tag="HEAD"), records=[gedcom.Node(tag="TRLR")])
+    original = gedcom.serialize
+
+    def fail(_doc):
+        raise KeyboardInterrupt("killed mid-write, as the merge was")
+
+    gedcom.serialize = fail
+    try:
+        with pytest.raises(KeyboardInterrupt):
+            gedcom.write_file(boom, target)
+    finally:
+        gedcom.serialize = original
+
+    # The point of the whole exercise: the old tree survived, and no fragment was left behind.
+    assert target.read_text(encoding="utf-8") == before
+    assert not (tmp_path / "merged.ged.partial").exists()
