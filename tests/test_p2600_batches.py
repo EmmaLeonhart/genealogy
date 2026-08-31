@@ -598,3 +598,29 @@ def test_no_batch_names_an_excluded_id():
     assert not bad, (
         "a batch names an excluded id — she must not be in the traversable graph:\n  "
         + "\n  ".join(bad[:10]))
+
+
+def test_no_geni_id_statement_is_sourced_to_its_own_geni_id():
+    """`P2600` carries no reference. An identifier is not evidence for itself.
+
+    **Emma, 2026-08-31:** *"geni ids do not get sources"*, on seeing
+    `Q6014618 P2600 "4198641" S2600 "4198641"` in the day batch — the Geni id statement cited
+    to the Geni id. `S2600` belongs on every statement *derived* from a Geni profile, where the
+    profile is external evidence for a claim about the person. On `P2600` the profile IS the
+    claim, so the reference restates the value and nothing else.
+
+    The two emitters disagreed rather than the rule being new: the `CREATE` path already wrote
+    `LAST P2600 "…" P1810 "…"` with no reference, and only `add()` on an existing item appended
+    one. This pins both.
+    """
+    offenders = []
+    for path in sorted(REPORTS.glob("*.qs")):
+        if path.name in SPENT_BATCHES:
+            continue
+        for n, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+            parts = line.split("	")
+            if len(parts) > 2 and parts[1] == "P2600" and "S2600" in line:
+                offenders.append(f"{path.name}:{n}  {line[:90]}")
+    assert not offenders, (
+        "P2600 statements sourced to their own Geni id -- an identifier is not evidence for "
+        f"itself: {offenders[:5]}")

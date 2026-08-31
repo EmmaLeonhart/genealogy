@@ -5270,7 +5270,16 @@ def main():
             suppressed_hits.add((q, prop, value.strip('"')))
             return
         seen.add((q, prop, value))
-        lines.append(f"{q}\t{prop}\t{value}{qual}{ref(g)}")
+        # **An identifier is not sourced to itself.** Emma, 2026-08-31: *"geni ids do not get
+        # sources"*. `Q6014618 P2600 "4198641" S2600 "4198641"` cites the Geni id statement to
+        # the Geni id -- circular, and it says nothing a reader did not already have in the
+        # value. `S2600` is right on every *derived* statement, because there the Geni profile
+        # is external evidence for a claim; on `P2600` it IS the claim.
+        #
+        # The CREATE path already had this right -- it emits `LAST P2600 "..." P1810 "..."`
+        # with no reference -- so this is the two paths disagreeing, not a new rule.
+        reference = "" if prop == "P2600" else ref(g)
+        lines.append(f"{q}\t{prop}\t{value}{qual}{reference}")
 
     def absent(q, prop):
         """True when the item demonstrably lacks `prop`, or our own batch made it.

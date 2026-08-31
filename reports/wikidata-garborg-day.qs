@@ -1152,21 +1152,21 @@ LAST	P735	Q20726370
 #   Q6014618 Enar Vilhelm Nordenfelt: P40 child = Q116760688 Maria Nordenfelt
 Q6014618	P40	Q116760688	S2600	"4198641"
 #   P2600 Geni.com profile ID = 4198641 Enar Vilhelm Nordenfelt, qualified P1810 subject named as Enar Vilhelm Nordenfelt
-Q6014618	P2600	"4198641"	P1810	"Enar Vilhelm Nordenfelt"	S2600	"4198641"
+Q6014618	P2600	"4198641"	P1810	"Enar Vilhelm Nordenfelt"
 #   Q48562235 Prost Olaus Troilius: P40 child = Q1168365 Ärkebiskop Samuelis Olai Troilius
 Q48562235	P40	Q1168365	S2600	"4377269"
 #   P2600 Geni.com profile ID = 4377269 Prost Olaus Troilius, qualified P1810 subject named as Prost Olaus Troilius
-Q48562235	P2600	"4377269"	P1810	"Prost Olaus Troilius"	S2600	"4377269"
+Q48562235	P2600	"4377269"	P1810	"Prost Olaus Troilius"
 #   Q273181 Judith of Flanders: P40 child = Q6180419 Skule Torstigson
 Q273181	P40	Q6180419	S2600	"4927821238910067084"
 #   P2600 Geni.com profile ID = 4927821238910067084 Judith of Flanders, qualified P1810 subject named as Judith of Flanders
-Q273181	P2600	"4927821238910067084"	P1810	"Judith of Flanders"	S2600	"4927821238910067084"
+Q273181	P2600	"4927821238910067084"	P1810	"Judith of Flanders"
 #   Q112969835 Helena Maria Söderhielm: P40 child = Q5975022 Lars August Mannerheim
 Q112969835	P40	Q5975022	S2600	"6000000000047260007"
 #   P40 child = Q1814297 Carl Erik Mannerheim
 Q112969835	P40	Q1814297	S2600	"6000000000047260007"
 #   P2600 Geni.com profile ID = 6000000000047260007 Helena Maria Söderhielm, qualified P1810 subject named as Helena Maria Söderhielm
-Q112969835	P2600	"6000000000047260007"	P1810	"Helena Maria Söderhielm"	S2600	"6000000000047260007"
+Q112969835	P2600	"6000000000047260007"	P1810	"Helena Maria Söderhielm"
 #   P735 given name = Q1035239 Helena, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
 Q112969835	P735	Q1035239	P1545	"1"	P7452	Q3409033
 #   P735 given name = Q325872 Maria, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
@@ -1176,7 +1176,7 @@ Q116775360	P40	Q6184934	S2600	"6000000000572198595"
 #   P40 child = Q6184896 Grev Carl Georg Georg Sparre af Söfdeborg
 Q116775360	P40	Q6184896	S2600	"6000000000572198595"
 #   P2600 Geni.com profile ID = 6000000000572198595 Helena Mariana Sparre af Söfdeborg, qualified P1810 subject named as Helena Mariana Ehrenkrona
-Q116775360	P2600	"6000000000572198595"	P1810	"Helena Mariana Ehrenkrona"	S2600	"6000000000572198595"
+Q116775360	P2600	"6000000000572198595"	P1810	"Helena Mariana Ehrenkrona"
 #   Q110457044 Anna Magdalena Pauli: P40 child = Q2624238 Wilhelm Mauritz Klingspor
 Q110457044	P40	Q2624238	S2600	"6000000000581186204"
 #   P40 child = Q5914181 Otto Reinhold Klingspor
@@ -1184,21 +1184,21 @@ Q110457044	P40	Q5914181	S2600	"6000000000581186204"
 #   P40 child = Q5914160 Fredrik Filip Klingspor
 Q110457044	P40	Q5914160	S2600	"6000000000581186204"
 #   P2600 Geni.com profile ID = 6000000000581186204 Anna Magdalena Pauli, qualified P1810 subject named as Anna Magdalena Pauli
-Q110457044	P2600	"6000000000581186204"	P1810	"Anna Magdalena Pauli"	S2600	"6000000000581186204"
+Q110457044	P2600	"6000000000581186204"	P1810	"Anna Magdalena Pauli"
 #   Q43974 Louis I, The Pious: P40 child = Q284400 Giséle of Cysoing
 Q43974	P40	Q284400	S2600	"6000000001266578142"
 #   P2600 Geni.com profile ID = 6000000001266578142 Louis I, The Pious, qualified P1810 subject named as Louis I, The Pious
-Q43974	P2600	"6000000001266578142"	P1810	"Louis I, The Pious"	S2600	"6000000001266578142"
+Q43974	P2600	"6000000001266578142"	P1810	"Louis I, The Pious"
 #   Q110313452 Carl Hising: P40 child = Q5807131 Mikael Hising
 Q110313452	P40	Q5807131	S2600	"6000000001334601101"
 #   P26 spouse = Q127270462 Barbro Petré
 Q110313452	P26	Q127270462	S2600	"6000000001334601101"
 #   P2600 Geni.com profile ID = 6000000001334601101 Carl Hising, qualified P1810 subject named as Carl Hising
-Q110313452	P2600	"6000000001334601101"	P1810	"Carl Hising"	S2600	"6000000001334601101"
+Q110313452	P2600	"6000000001334601101"	P1810	"Carl Hising"
 #   Q378177 Baldwin IV the Bearded, count of Flanders: P40 child = Q273181 Judith of Flanders
 Q378177	P40	Q273181	S2600	"6000000001412935350"
 #   P2600 Geni.com profile ID = 6000000001412935350 Baldwin IV the Bearded, count of Flanders, qualified P1810 subject named as Baldwin IV the Bearded, count of Flanders
-Q378177	P2600	"6000000001412935350"	P1810	"Baldwin IV the Bearded, count of Flanders"	S2600	"6000000001412935350"
+Q378177	P2600	"6000000001412935350"	P1810	"Baldwin IV the Bearded, count of Flanders"
 #   Q2066886 Hedvig Catharina Charlotta De la Gardie: P40 child = Q469962 Eva Sophia Sofia von Fersen
 Q2066886	P40	Q469962	S2600	"6000000001515228463"
 #   P40 child = Q455071 Hans Axel von Fersen
@@ -1208,17 +1208,17 @@ Q2066886	P40	Q3129338	S2600	"6000000001515228463"
 #   P40 child = Q19312912 Fabian Reinhold von Fersen
 Q2066886	P40	Q19312912	S2600	"6000000001515228463"
 #   P2600 Geni.com profile ID = 6000000001515228463 Hedvig Catharina Charlotta De la Gardie, qualified P1810 subject named as Hedvig Catharina Charlotta De la Gardie
-Q2066886	P2600	"6000000001515228463"	P1810	"Hedvig Catharina Charlotta De la Gardie"	S2600	"6000000001515228463"
+Q2066886	P2600	"6000000001515228463"	P1810	"Hedvig Catharina Charlotta De la Gardie"
 #   Q75291928 Åsulv Skulesson: P40 child = Q19061035 Guttorm Àsulfsson à Rein
 Q75291928	P40	Q19061035	S2600	"6000000001827562649"
 #   P2600 Geni.com profile ID = 6000000001827562649 Åsulv Skulesson, qualified P1810 subject named as Åsulv Skulesson
-Q75291928	P2600	"6000000001827562649"	P1810	"Åsulv Skulesson"	S2600	"6000000001827562649"
+Q75291928	P2600	"6000000001827562649"	P1810	"Åsulv Skulesson"
 #   Q110386164 Ulrika Christina Mörner af Morlanda: P40 child = Q4973002 Christina Charlotta Piper
 Q110386164	P40	Q4973002	S2600	"6000000001882580286"
 #   P26 spouse = Q6161733 Carl Fredrik Piper till Krageholm
 Q110386164	P26	Q6161733	S2600	"6000000001882580286"
 #   P2600 Geni.com profile ID = 6000000001882580286 Ulrika Christina Mörner af Morlanda, qualified P1810 subject named as Ulrika Christina Mörner af Morlanda
-Q110386164	P2600	"6000000001882580286"	P1810	"Ulrika Christina Mörner af Morlanda"	S2600	"6000000001882580286"
+Q110386164	P2600	"6000000001882580286"	P1810	"Ulrika Christina Mörner af Morlanda"
 #   P735 given name = Q18924998 Ulrika, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
 Q110386164	P735	Q18924998	P1545	"1"	P7452	Q3409033
 #   P735 given name = Q1083457 Christina, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
@@ -1228,45 +1228,45 @@ Q110386164	P734	Q141223484
 #   Q16649267 Elias Pedersson Gavelius: P40 child = Q5605668 Petrus Eliae Cederschiöld till Lidboholm
 Q16649267	P40	Q5605668	S2600	"6000000002063115439"
 #   P2600 Geni.com profile ID = 6000000002063115439 Elias Pedersson Gavelius, qualified P1810 subject named as Elias Pedersson Gavelius
-Q16649267	P2600	"6000000002063115439"	P1810	"Elias Pedersson Gavelius"	S2600	"6000000002063115439"
+Q16649267	P2600	"6000000002063115439"	P1810	"Elias Pedersson Gavelius"
 #   Q3044 Charlemagne: P40 child = Q43974 Louis I, The Pious
 Q3044	P40	Q43974	S2600	"6000000002457013227"
 #   P2600 Geni.com profile ID = 6000000002457013227 Charlemagne, qualified P1810 subject named as Charlemagne
-Q3044	P2600	"6000000002457013227"	P1810	"Charlemagne"	S2600	"6000000002457013227"
+Q3044	P2600	"6000000002457013227"	P1810	"Charlemagne"
 #   Q5725186 Michael Fant: P40 child = Q5725105 Eric Michael Fant
 Q5725186	P40	Q5725105	S2600	"6000000002734683252"
 #   P2600 Geni.com profile ID = 6000000002734683252 Michael Fant, qualified P1810 subject named as Michael Fant
-Q5725186	P2600	"6000000002734683252"	P1810	"Michael Fant"	S2600	"6000000002734683252"
+Q5725186	P2600	"6000000002734683252"	P1810	"Michael Fant"
 #   Q141223432 Osmund Larsson Nese: P25 mother = Q141219202 Elen Kristoffersdotter Nese
 Q141223432	P25	Q141219202	S2600	"6000000002744891329"
 #   Q5597349 Thure Stensson Bielke: P40 child = Q362485 Sten Carl Turesson Bielke
 Q5597349	P40	Q362485	S2600	"6000000002960482301"
 #   P2600 Geni.com profile ID = 6000000002960482301 Thure Stensson Bielke, qualified P1810 subject named as Thure Stensson Bielke
-Q5597349	P2600	"6000000002960482301"	P1810	"Thure Stensson Bielke"	S2600	"6000000002960482301"
+Q5597349	P2600	"6000000002960482301"	P1810	"Thure Stensson Bielke"
 #   Q6082455 Thure Gustaf Rudbeck: P40 child = Q108937197 Catharina Charlotta Rudbeck
 Q6082455	P40	Q108937197	S2600	"6000000003580303855"
 #   Q6180419 Skule Torstigson: P40 child = Q75291928 Åsulv Skulesson
 Q6180419	P40	Q75291928	S2600	"6000000003645683608"
 #   P2600 Geni.com profile ID = 6000000003645683608 Skule Torstigson, qualified P1810 subject named as Skule Torstigson
-Q6180419	P2600	"6000000003645683608"	P1810	"Skule Torstigson"	S2600	"6000000003645683608"
+Q6180419	P2600	"6000000003645683608"	P1810	"Skule Torstigson"
 #   Q141225066 NN: P25 mother = Q141198375 Astri Torchelsdatter Øvre Time
 Q141225066	P25	Q141198375	S2600	"6000000003732714453"
 #   Q5783620 Laurentius Jonæ Hallenius: P40 child = Q5783613 Engelbert Hallenius Biskop i Skara
 Q5783620	P40	Q5783613	S2600	"6000000003770421312"
 #   P2600 Geni.com profile ID = 6000000003770421312 Laurentius Jonæ Hallenius, qualified P1810 subject named as Laurentius Jonæ Hallenius
-Q5783620	P2600	"6000000003770421312"	P1810	"Laurentius Jonæ Hallenius"	S2600	"6000000003770421312"
+Q5783620	P2600	"6000000003770421312"	P1810	"Laurentius Jonæ Hallenius"
 #   Q103771971 Anna Maria Törnstjerna, Törne: P40 child = Q6082455 Thure Gustaf Rudbeck
 Q103771971	P40	Q6082455	S2600	"6000000003883345592"
 #   P26 spouse = Q103771956 Olof Rudbeck
 Q103771971	P26	Q103771956	S2600	"6000000003883345592"
 #   P2600 Geni.com profile ID = 6000000003883345592 Anna Maria Törnstjerna, Törne, qualified P1810 subject named as Anna Maria Törnstjerna, Törne
-Q103771971	P2600	"6000000003883345592"	P1810	"Anna Maria Törnstjerna, Törne"	S2600	"6000000003883345592"
+Q103771971	P2600	"6000000003883345592"	P1810	"Anna Maria Törnstjerna, Törne"
 #   Q103771956 Olof Rudbeck: P40 child = Q6082455 Thure Gustaf Rudbeck
 Q103771956	P40	Q6082455	S2600	"6000000003883549023"
 #   P26 spouse = Q103771971 Anna Maria Törnstjerna, Törne
 Q103771956	P26	Q103771971	S2600	"6000000003883549023"
 #   P2600 Geni.com profile ID = 6000000003883549023 Olof Rudbeck, qualified P1810 subject named as Olof Rudbeck
-Q103771956	P2600	"6000000003883549023"	P1810	"Olof Rudbeck"	S2600	"6000000003883549023"
+Q103771956	P2600	"6000000003883549023"	P1810	"Olof Rudbeck"
 #   Q141242569 Åsa Gunnbjørnsdotter Stordrange: P25 mother = Q141199862 Helga Bjørnsdatter Tengs
 Q141242569	P25	Q141199862	S2600	"6000000004559874338"
 #   Q141242383 Bjørn Gunnbjørnsson Kvåvig: P25 mother = Q141199862 Helga Bjørnsdatter Tengs
@@ -1278,7 +1278,7 @@ Q141199862	P40	Q141242383	S2600	"6000000004697849241"
 #   Q6003542 Henrik Johan Nauckhoff: P40 child = Q16649958 Johan Otto Nauckhoff
 Q6003542	P40	Q16649958	S2600	"6000000005393641057"
 #   P2600 Geni.com profile ID = 6000000005393641057 Henrik Johan Nauckhoff, qualified P1810 subject named as Henrik Johan Nauckhoff
-Q6003542	P2600	"6000000005393641057"	P1810	"Henrik Johan Nauckhoff"	S2600	"6000000005393641057"
+Q6003542	P2600	"6000000005393641057"	P1810	"Henrik Johan Nauckhoff"
 #   Q141223436 Tore Underberge III: P25 mother = Q141205937 Ragnhild Eyvindsdotter Eyvindsdotter
 Q141223436	P25	Q141205937	S2600	"6000000005607672589"
 #   Q141242542 Kristoffer Olson Tjåland: P26 spouse = Q141242500 Gunnhild Pedersdatter Skårland
@@ -1288,17 +1288,17 @@ Q141242500	P26	Q141242542	S2600	"6000000005609534687"
 #   Q314521 Berengar II of Ivrea, king of Italy: P40 child = Q466257 Rozala of Italy
 Q314521	P40	Q466257	S2600	"6000000005936551695"
 #   P2600 Geni.com profile ID = 6000000005936551695 Berengar II of Ivrea, king of Italy, qualified P1810 subject named as Berengar II of Ivrea, king of Italy
-Q314521	P2600	"6000000005936551695"	P1810	"Berengar II of Ivrea, king of Italy"	S2600	"6000000005936551695"
+Q314521	P2600	"6000000005936551695"	P1810	"Berengar II of Ivrea, king of Italy"
 #   Q6184934 Erik Samuel Sparre af Söfdeborg: P25 mother = Q116775360 Helena Mariana Sparre af Söfdeborg
 Q6184934	P25	Q116775360	S2600	"6000000006127346098"
 #   Q130755124 Johan Gustav Boije af Gennäs: P40 child = Q5580881 Carl Gustaf Boije af Gennäs
 Q130755124	P40	Q5580881	S2600	"6000000006127355736"
 #   P2600 Geni.com profile ID = 6000000006127355736 Johan Gustav Boije af Gennäs, qualified P1810 subject named as Johan Gustav Boije af Gennäs
-Q130755124	P2600	"6000000006127355736"	P1810	"Johan Gustav Boije af Gennäs"	S2600	"6000000006127355736"
+Q130755124	P2600	"6000000006127355736"	P1810	"Johan Gustav Boije af Gennäs"
 #   Q131726951 Catharina Elisabet Arosell Adlerheim: P40 child = Q1036858 Carl August Ehrensvärd
 Q131726951	P40	Q1036858	S2600	"6000000006127409064"
 #   P2600 Geni.com profile ID = 6000000006127409064 Catharina Elisabet Arosell Adlerheim, qualified P1810 subject named as Catharina Elisabet Arosell Adlerheim
-Q131726951	P2600	"6000000006127409064"	P1810	"Catharina Elisabet Arosell Adlerheim"	S2600	"6000000006127409064"
+Q131726951	P2600	"6000000006127409064"	P1810	"Catharina Elisabet Arosell Adlerheim"
 #   P735 given name = Q17317997 Catharina, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
 Q131726951	P735	Q17317997	P1545	"1"	P7452	Q3409033
 #   P735 given name = Q16423275 Elisabet, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
@@ -1306,13 +1306,13 @@ Q131726951	P735	Q16423275	P1545	"2"	P3831	Q245025
 #   Q109296398 Fredrika Eleonora Arvidsdotter Horn af Ekebyholm: P40 child = Q6188777 Arvid Nils Gustafsson Stenbock
 Q109296398	P40	Q6188777	S2600	"6000000006127496847"
 #   P2600 Geni.com profile ID = 6000000006127496847 Fredrika Eleonora Arvidsdotter Horn af Ekebyholm, qualified P1810 subject named as Fredrika Eleonora Arvidsdotter Horn af Ekebyholm
-Q109296398	P2600	"6000000006127496847"	P1810	"Fredrika Eleonora Arvidsdotter Horn af Ekebyholm"	S2600	"6000000006127496847"
+Q109296398	P2600	"6000000006127496847"	P1810	"Fredrika Eleonora Arvidsdotter Horn af Ekebyholm"
 #   Q109296043 Ulrika Catharina Koskull: P40 child = Q5584506 Magnus Brahe
 Q109296043	P40	Q5584506	S2600	"6000000006127576609"
 #   P26 spouse = Q352296 Magnus Fredrik Brahe till Skokloster
 Q109296043	P26	Q352296	S2600	"6000000006127576609"
 #   P2600 Geni.com profile ID = 6000000006127576609 Ulrika Catharina Koskull, qualified P1810 subject named as Ulrika Catharina Koskull
-Q109296043	P2600	"6000000006127576609"	P1810	"Ulrika Catharina Koskull"	S2600	"6000000006127576609"
+Q109296043	P2600	"6000000006127576609"	P1810	"Ulrika Catharina Koskull"
 #   P735 given name = Q18924998 Ulrika, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
 Q109296043	P735	Q18924998	P1545	"1"	P7452	Q3409033
 #   P735 given name = Q17317997 Catharina, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
@@ -1322,13 +1322,13 @@ Q130684265	P40	Q27863581	S2600	"6000000006127651336"
 #   P26 spouse = Q130684369 Agneta Johansdotter Ållongren
 Q130684265	P26	Q130684369	S2600	"6000000006127651336"
 #   P2600 Geni.com profile ID = 6000000006127651336 Carl Philip Strömfelt, qualified P1810 subject named as Carl Philip Strömfelt
-Q130684265	P2600	"6000000006127651336"	P1810	"Carl Philip Strömfelt"	S2600	"6000000006127651336"
+Q130684265	P2600	"6000000006127651336"	P1810	"Carl Philip Strömfelt"
 #   Q130684369 Agneta Johansdotter Ållongren: P40 child = Q27863581 Johan Carl Strömfelt
 Q130684369	P40	Q27863581	S2600	"6000000006127651347"
 #   P26 spouse = Q130684265 Carl Philip Strömfelt
 Q130684369	P26	Q130684265	S2600	"6000000006127651347"
 #   P2600 Geni.com profile ID = 6000000006127651347 Agneta Johansdotter Ållongren, qualified P1810 subject named as Agneta Johansdotter Ållongren
-Q130684369	P2600	"6000000006127651347"	P1810	"Agneta Johansdotter Ållongren"	S2600	"6000000006127651347"
+Q130684369	P2600	"6000000006127651347"	P1810	"Agneta Johansdotter Ållongren"
 #   Q109829800 Eva Helena Adelswärd: P40 child = Q19975889 Fredrik August August Adelswärd
 Q109829800	P40	Q19975889	S2600	"6000000006127732211"
 #   P40 child = Q5542632 Eric Reinhold Adelswärd
@@ -1336,7 +1336,7 @@ Q109829800	P40	Q5542632	S2600	"6000000006127732211"
 #   P26 spouse = Q5542628 Erik Göran Adelswärd
 Q109829800	P26	Q5542628	S2600	"6000000006127732211"
 #   P2600 Geni.com profile ID = 6000000006127732211 Eva Helena Adelswärd, qualified P1810 subject named as Eva Helena von Fersen
-Q109829800	P2600	"6000000006127732211"	P1810	"Eva Helena von Fersen"	S2600	"6000000006127732211"
+Q109829800	P2600	"6000000006127732211"	P1810	"Eva Helena von Fersen"
 #   Q1340357 Jakob Benzelius: P25 mother = Q115631647 Margareta Odhelia
 Q1340357	P25	Q115631647	S2600	"6000000006645210002"
 #   Q5570928 Lars Benzelstierna: P25 mother = Q115631647 Margareta Odhelia
@@ -1346,11 +1346,11 @@ Q109265381	P40	Q26239714	S2600	"6000000006828534420"
 #   P26 spouse = Q109266155 Magdalena Johansdotter Bure
 Q109265381	P26	Q109266155	S2600	"6000000006828534420"
 #   P2600 Geni.com profile ID = 6000000006828534420 Jonas Benedicti Rudberus, qualified P1810 subject named as Jonas Benedicti Rudberus
-Q109265381	P2600	"6000000006828534420"	P1810	"Jonas Benedicti Rudberus"	S2600	"6000000006828534420"
+Q109265381	P2600	"6000000006828534420"	P1810	"Jonas Benedicti Rudberus"
 #   Q139996297 Anders Törnebladh: P40 child = Q6218068 Carl Peter Peter Törnebladh
 Q139996297	P40	Q6218068	S2600	"6000000006911473220"
 #   P2600 Geni.com profile ID = 6000000006911473220 Anders Törnebladh, qualified P1810 subject named as Anders Törnebladh
-Q139996297	P2600	"6000000006911473220"	P1810	"Anders Törnebladh"	S2600	"6000000006911473220"
+Q139996297	P2600	"6000000006911473220"	P1810	"Anders Törnebladh"
 #   Q5570926 Gustaf Benzelstierna: P25 mother = Q115631647 Margareta Odhelia
 Q5570926	P25	Q115631647	S2600	"6000000007247592424"
 #   Q692994 Henrik Benzelius: P25 mother = Q115631647 Margareta Odhelia
@@ -1358,29 +1358,29 @@ Q692994	P25	Q115631647	S2600	"6000000007247681864"
 #   Q19678400 Eva Horn af Ekebyholm: P40 child = Q4989142 Eva Helena Löwen
 Q19678400	P40	Q4989142	S2600	"6000000007286110282"
 #   P2600 Geni.com profile ID = 6000000007286110282 Eva Horn af Ekebyholm, qualified P1810 subject named as Eva Horn af Ekebyholm
-Q19678400	P2600	"6000000007286110282"	P1810	"Eva Horn af Ekebyholm"	S2600	"6000000007286110282"
+Q19678400	P2600	"6000000007286110282"	P1810	"Eva Horn af Ekebyholm"
 #   Q110621422 Anna Andersdotter Björnram: P40 child = Q5773252 Lars Grubbe
 Q110621422	P40	Q5773252	S2600	"6000000007289863298"
 #   P2600 Geni.com profile ID = 6000000007289863298 Anna Andersdotter Björnram, qualified P1810 subject named as Anna Andersdotter Björnram
-Q110621422	P2600	"6000000007289863298"	P1810	"Anna Andersdotter Björnram"	S2600	"6000000007289863298"
+Q110621422	P2600	"6000000007289863298"	P1810	"Anna Andersdotter Björnram"
 #   Q110231041 Anna Tersera: P40 child = Q6330080 Elof Steuch till Duveke
 Q110231041	P40	Q6330080	S2600	"6000000007311831371"
 #   P26 spouse = Q456456 Matthias Petri Steuchius
 Q110231041	P26	Q456456	S2600	"6000000007311831371"
 #   P2600 Geni.com profile ID = 6000000007311831371 Anna Tersera, qualified P1810 subject named as Anna Tersera
-Q110231041	P2600	"6000000007311831371"	P1810	"Anna Tersera"	S2600	"6000000007311831371"
+Q110231041	P2600	"6000000007311831371"	P1810	"Anna Tersera"
 #   Q25451348 Jon Mickelsson Behm: P40 child = Q5568857 Daniel Jonsson Behmer
 Q25451348	P40	Q5568857	S2600	"6000000007314101475"
 #   P2600 Geni.com profile ID = 6000000007314101475 Jon Mickelsson Behm, qualified P1810 subject named as Jon Mickelsson Behm
-Q25451348	P2600	"6000000007314101475"	P1810	"Jon Mickelsson Behm"	S2600	"6000000007314101475"
+Q25451348	P2600	"6000000007314101475"	P1810	"Jon Mickelsson Behm"
 #   Q124608453 Petrus Ugla: P40 child = Q3946660 Samuel af Ugglas
 Q124608453	P40	Q3946660	S2600	"6000000007473614567"
 #   P2600 Geni.com profile ID = 6000000007473614567 Petrus Ugla, qualified P1810 subject named as Petrus Ugla
-Q124608453	P2600	"6000000007473614567"	P1810	"Petrus Ugla"	S2600	"6000000007473614567"
+Q124608453	P2600	"6000000007473614567"	P1810	"Petrus Ugla"
 #   Q136028287 Anna Brita Carré: P40 child = Q6175942 David Wilhelm Silfverstolpe
 Q136028287	P40	Q6175942	S2600	"6000000007509570928"
 #   P2600 Geni.com profile ID = 6000000007509570928 Anna Brita Carré, qualified P1810 subject named as Anna Brita Carré
-Q136028287	P2600	"6000000007509570928"	P1810	"Anna Brita Carré"	S2600	"6000000007509570928"
+Q136028287	P2600	"6000000007509570928"	P1810	"Anna Brita Carré"
 #   P735 given name = Q666578 Anna, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
 Q136028287	P735	Q666578	P1545	"1"	P7452	Q3409033
 #   P735 given name = Q918013, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
@@ -1388,19 +1388,19 @@ Q136028287	P735	Q918013	P1545	"2"	P3831	Q245025
 #   Q16649517 Gerhard Jonæ: P40 child = Q2490612 Johan Graan till Ånsta
 Q16649517	P40	Q2490612	S2600	"6000000007548056402"
 #   P2600 Geni.com profile ID = 6000000007548056402 Gerhard Jonæ, qualified P1810 subject named as Gerhard Jonæ
-Q16649517	P2600	"6000000007548056402"	P1810	"Gerhard Jonæ"	S2600	"6000000007548056402"
+Q16649517	P2600	"6000000007548056402"	P1810	"Gerhard Jonæ"
 #   Q121362501 Hans Georg Strömfelt: P40 child = Q19860752 Carl Harald Strömfelt
 Q121362501	P40	Q19860752	S2600	"6000000007598076234"
 #   P26 spouse = Q133825293 Christina Ebba Leijonhufvud
 Q121362501	P26	Q133825293	S2600	"6000000007598076234"
 #   P2600 Geni.com profile ID = 6000000007598076234 Hans Georg Strömfelt, qualified P1810 subject named as Hans Georg Strömfelt
-Q121362501	P2600	"6000000007598076234"	P1810	"Hans Georg Strömfelt"	S2600	"6000000007598076234"
+Q121362501	P2600	"6000000007598076234"	P1810	"Hans Georg Strömfelt"
 #   Q110457049 Christina Elisabet Taube af Karlö: P40 child = Q2040261 Otto Reinhold Strömfelt
 Q110457049	P40	Q2040261	S2600	"6000000007602850104"
 #   P26 spouse = Q12363134 Gustaf Adolf Strömfelt till Strömhult
 Q110457049	P26	Q12363134	S2600	"6000000007602850104"
 #   P2600 Geni.com profile ID = 6000000007602850104 Christina Elisabet Taube af Karlö, qualified P1810 subject named as Christina Elisabet Taube af Karlö
-Q110457049	P2600	"6000000007602850104"	P1810	"Christina Elisabet Taube af Karlö"	S2600	"6000000007602850104"
+Q110457049	P2600	"6000000007602850104"	P1810	"Christina Elisabet Taube af Karlö"
 #   P735 given name = Q1083457 Christina, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
 Q110457049	P735	Q1083457	P1545	"1"	P7452	Q3409033
 #   P735 given name = Q16423275 Elisabet, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
@@ -1412,19 +1412,19 @@ Q12363134	P40	Q2040261	S2600	"6000000007602857711"
 #   P26 spouse = Q110457049 Christina Elisabet Taube af Karlö
 Q12363134	P26	Q110457049	S2600	"6000000007602857711"
 #   P2600 Geni.com profile ID = 6000000007602857711 Gustaf Adolf Strömfelt till Strömhult, qualified P1810 subject named as Gustaf Adolf Strömfelt till Strömhult
-Q12363134	P2600	"6000000007602857711"	P1810	"Gustaf Adolf Strömfelt till Strömhult"	S2600	"6000000007602857711"
+Q12363134	P2600	"6000000007602857711"	P1810	"Gustaf Adolf Strömfelt till Strömhult"
 #   Q108615809 Margareta Jacobsdotter Jernstedt: P40 child = Q5589950 Jakob Bunge
 Q108615809	P40	Q5589950	S2600	"6000000007755407668"
 #   P26 spouse = Q108615842 Mårten Bunge
 Q108615809	P26	Q108615842	S2600	"6000000007755407668"
 #   P2600 Geni.com profile ID = 6000000007755407668 Margareta Jacobsdotter Jernstedt, qualified P1810 subject named as Margareta Jacobsdotter Jernstedt
-Q108615809	P2600	"6000000007755407668"	P1810	"Margareta Jacobsdotter Jernstedt"	S2600	"6000000007755407668"
+Q108615809	P2600	"6000000007755407668"	P1810	"Margareta Jacobsdotter Jernstedt"
 #   Q104550167 Karin Mattsdotter Björnram: P40 child = Q5735890 Arvid Ernaldsson Forbus till Kumo
 Q104550167	P40	Q5735890	S2600	"6000000007787563524"
 #   P26 spouse = Q104550158 Ernald Mattsson Forbes of Corsindae
 Q104550167	P26	Q104550158	S2600	"6000000007787563524"
 #   P2600 Geni.com profile ID = 6000000007787563524 Karin Mattsdotter Björnram, qualified P1810 subject named as Karin Mattsdotter Björnram
-Q104550167	P2600	"6000000007787563524"	P1810	"Karin Mattsdotter Björnram"	S2600	"6000000007787563524"
+Q104550167	P2600	"6000000007787563524"	P1810	"Karin Mattsdotter Björnram"
 #   P735 given name = Q1814118 Karin
 Q104550167	P735	Q1814118
 #   Q110395711 Charlotta Eleonora Hedvig von Krassow: P40 child = Q10511031 Gustaf Adolf Fredrik Wilhelm von Essen
@@ -1432,7 +1432,7 @@ Q110395711	P40	Q10511031	S2600	"6000000007948266424"
 #   P26 spouse = Q657814 Hans Henrik von Essen
 Q110395711	P26	Q657814	S2600	"6000000007948266424"
 #   P2600 Geni.com profile ID = 6000000007948266424 Charlotta Eleonora Hedvig von Krassow, qualified P1810 subject named as Charlotta Eleonora Hedvig von Krassow
-Q110395711	P2600	"6000000007948266424"	P1810	"Charlotta Eleonora Hedvig von Krassow"	S2600	"6000000007948266424"
+Q110395711	P2600	"6000000007948266424"	P1810	"Charlotta Eleonora Hedvig von Krassow"
 #   P735 given name = Q1067071 Charlotta, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
 Q110395711	P735	Q1067071	P1545	"1"	P7452	Q3409033
 #   P735 given name = Q18759077 Eleonora, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
@@ -1442,19 +1442,19 @@ Q110395711	P735	Q13648620	P1545	"3"	P3831	Q245025
 #   Q73763454 Sigfrid Porthan: P40 child = Q333651 Henrik Gabriel Porthan
 Q73763454	P40	Q333651	S2600	"6000000008047204297"
 #   P2600 Geni.com profile ID = 6000000008047204297 Sigfrid Porthan, qualified P1810 subject named as Sigfrid Porthanus
-Q73763454	P2600	"6000000008047204297"	P1810	"Sigfrid Porthanus"	S2600	"6000000008047204297"
+Q73763454	P2600	"6000000008047204297"	P1810	"Sigfrid Porthanus"
 #   Q5589959 Sven Bunge till Beateberg: P40 child = Q16945169 Mårten Bunge till Beateberg
 Q5589959	P40	Q16945169	S2600	"6000000008151349039"
 #   P26 spouse = Q3359192 Elsa Beata Wrede af Elimä
 Q5589959	P26	Q3359192	S2600	"6000000008151349039"
 #   P2600 Geni.com profile ID = 6000000008151349039 Sven Bunge till Beateberg, qualified P1810 subject named as Sven Bunge till Beateberg
-Q5589959	P2600	"6000000008151349039"	P1810	"Sven Bunge till Beateberg"	S2600	"6000000008151349039"
+Q5589959	P2600	"6000000008151349039"	P1810	"Sven Bunge till Beateberg"
 #   Q133825293 Christina Ebba Leijonhufvud: P40 child = Q19860752 Carl Harald Strömfelt
 Q133825293	P40	Q19860752	S2600	"6000000008467554009"
 #   P26 spouse = Q121362501 Hans Georg Strömfelt
 Q133825293	P26	Q121362501	S2600	"6000000008467554009"
 #   P2600 Geni.com profile ID = 6000000008467554009 Christina Ebba Leijonhufvud, qualified P1810 subject named as Christina Ebba Bielkenstierna
-Q133825293	P2600	"6000000008467554009"	P1810	"Christina Ebba Bielkenstierna"	S2600	"6000000008467554009"
+Q133825293	P2600	"6000000008467554009"	P1810	"Christina Ebba Bielkenstierna"
 #   P735 given name = Q1083457 Christina, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
 Q133825293	P735	Q1083457	P1545	"1"	P7452	Q3409033
 #   P735 given name = Q2242896 Ebba, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
@@ -1470,25 +1470,25 @@ Q115631647	P40	Q5570926	S2600	"6000000008496913568"
 #   P40 child = Q692994 Henrik Benzelius
 Q115631647	P40	Q692994	S2600	"6000000008496913568"
 #   P2600 Geni.com profile ID = 6000000008496913568 Margareta Odhelia, qualified P1810 subject named as Margareta Eriksdotter
-Q115631647	P2600	"6000000008496913568"	P1810	"Margareta Eriksdotter"	S2600	"6000000008496913568"
+Q115631647	P2600	"6000000008496913568"	P1810	"Margareta Eriksdotter"
 #   P735 given name = Q8274988 Margareta
 Q115631647	P735	Q8274988
 #   Q3769073 Gisela of Friuli: P40 child = Q314521 Berengar II of Ivrea, king of Italy
 Q3769073	P40	Q314521	S2600	"6000000008592343633"
 #   P2600 Geni.com profile ID = 6000000008592343633 Gisela of Friuli, qualified P1810 subject named as Gisela of Friuli
-Q3769073	P2600	"6000000008592343633"	P1810	"Gisela of Friuli"	S2600	"6000000008592343633"
+Q3769073	P2600	"6000000008592343633"	P1810	"Gisela of Friuli"
 #   Q109835397 Carl Gustaf Lagerfelt: P40 child = Q5931081 Gustaf Adolf Lagerfelt
 Q109835397	P40	Q5931081	S2600	"6000000008840975651"
 #   P26 spouse = Q109835398 Maria Elisabet von der Osten
 Q109835397	P26	Q109835398	S2600	"6000000008840975651"
 #   P2600 Geni.com profile ID = 6000000008840975651 Carl Gustaf Lagerfelt, qualified P1810 subject named as Carl Gustaf Lagerfelt
-Q109835397	P2600	"6000000008840975651"	P1810	"Carl Gustaf Lagerfelt"	S2600	"6000000008840975651"
+Q109835397	P2600	"6000000008840975651"	P1810	"Carl Gustaf Lagerfelt"
 #   Q109835398 Maria Elisabet von der Osten: P40 child = Q5931081 Gustaf Adolf Lagerfelt
 Q109835398	P40	Q5931081	S2600	"6000000008841179321"
 #   P26 spouse = Q109835397 Carl Gustaf Lagerfelt
 Q109835398	P26	Q109835397	S2600	"6000000008841179321"
 #   P2600 Geni.com profile ID = 6000000008841179321 Maria Elisabet von der Osten, qualified P1810 subject named as Maria Elisabet von der Osten
-Q109835398	P2600	"6000000008841179321"	P1810	"Maria Elisabet von der Osten"	S2600	"6000000008841179321"
+Q109835398	P2600	"6000000008841179321"	P1810	"Maria Elisabet von der Osten"
 #   P735 given name = Q325872 Maria, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
 Q109835398	P735	Q325872	P1545	"1"	P7452	Q3409033
 #   P735 given name = Q16423275 Elisabet, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
@@ -1500,27 +1500,27 @@ Q109835400	P40	Q19976679	S2600	"6000000008889872098"
 #   P26 spouse = Q5931081 Gustaf Adolf Lagerfelt
 Q109835400	P26	Q5931081	S2600	"6000000008889872098"
 #   P2600 Geni.com profile ID = 6000000008889872098 Magdalena Christina Appelbom, qualified P1810 subject named as Magdalena Christina Appelbom
-Q109835400	P2600	"6000000008889872098"	P1810	"Magdalena Christina Appelbom"	S2600	"6000000008889872098"
+Q109835400	P2600	"6000000008889872098"	P1810	"Magdalena Christina Appelbom"
 #   Q110547941 Altea Silfverström: P40 child = Q5542622 Johan Adelswärd
 Q110547941	P40	Q5542622	S2600	"6000000008935291612"
 #   P26 spouse = Q110547936 Johan Hultman Adelswärd
 Q110547941	P26	Q110547936	S2600	"6000000008935291612"
 #   P2600 Geni.com profile ID = 6000000008935291612 Altea Silfverström, qualified P1810 subject named as Altea Silfverström
-Q110547941	P2600	"6000000008935291612"	P1810	"Altea Silfverström"	S2600	"6000000008935291612"
+Q110547941	P2600	"6000000008935291612"	P1810	"Altea Silfverström"
 #   Q26239902 Abraham Falkengréen: P40 child = Q5724521 Christopher Falkengréen
 Q26239902	P40	Q5724521	S2600	"6000000008979112162"
 #   P2600 Geni.com profile ID = 6000000008979112162 Abraham Falkengréen, qualified P1810 subject named as Abraham Falkengren
-Q26239902	P2600	"6000000008979112162"	P1810	"Abraham Falkengren"	S2600	"6000000008979112162"
+Q26239902	P2600	"6000000008979112162"	P1810	"Abraham Falkengren"
 #   Q124694235 Måns Palmstierna till Grimstorp: P40 child = Q6034157 Carl Otto Palmstierna
 Q124694235	P40	Q6034157	S2600	"6000000008988775900"
 #   P2600 Geni.com profile ID = 6000000008988775900 Måns Palmstierna till Grimstorp, qualified P1810 subject named as Måns Palmstierna till Grimstorp
-Q124694235	P2600	"6000000008988775900"	P1810	"Måns Palmstierna till Grimstorp"	S2600	"6000000008988775900"
+Q124694235	P2600	"6000000008988775900"	P1810	"Måns Palmstierna till Grimstorp"
 #   Q20250108 Anders Andersson Pryss: P40 child = Q6057321 Olof Andersson Pryss
 Q20250108	P40	Q6057321	S2600	"6000000009014627733"
 #   P40 child = Q16650163 Samuel Andersson Pryss
 Q20250108	P40	Q16650163	S2600	"6000000009014627733"
 #   P2600 Geni.com profile ID = 6000000009014627733 Anders Andersson Pryss, qualified P1810 subject named as Anders Andersson Pryss
-Q20250108	P2600	"6000000009014627733"	P1810	"Anders Andersson Pryss"	S2600	"6000000009014627733"
+Q20250108	P2600	"6000000009014627733"	P1810	"Anders Andersson Pryss"
 #   Q108937197 Catharina Charlotta Rudbeck: P22 father = Q6082455 Thure Gustaf Rudbeck
 Q108937197	P22	Q6082455	S2600	"6000000009217450213"
 #   P25 mother = Q141217393 Magdalena von Mentzer
@@ -1528,7 +1528,7 @@ Q108937197	P25	Q141217393	S2600	"6000000009217450213"
 #   P40 child = Q546949 Sofia Magdalena Silfverstolpe
 Q108937197	P40	Q546949	S2600	"6000000009217450213"
 #   P2600 Geni.com profile ID = 6000000009217450213 Catharina Charlotta Rudbeck, qualified P1810 subject named as Catharina Charlotta Rudbeck
-Q108937197	P2600	"6000000009217450213"	P1810	"Catharina Charlotta Rudbeck"	S2600	"6000000009217450213"
+Q108937197	P2600	"6000000009217450213"	P1810	"Catharina Charlotta Rudbeck"
 #   Q110547956 Catharina Funck: P40 child = Q5542628 Erik Göran Adelswärd
 Q110547956	P40	Q5542628	S2600	"6000000009401513008"
 #   P40 child = Q141223897 Adolf Adelswärd
@@ -1536,13 +1536,13 @@ Q110547956	P40	Q141223897	S2600	"6000000009401513008"
 #   P26 spouse = Q5542622 Johan Adelswärd
 Q110547956	P26	Q5542622	S2600	"6000000009401513008"
 #   P2600 Geni.com profile ID = 6000000009401513008 Catharina Funck, qualified P1810 subject named as Catharina Funck
-Q110547956	P2600	"6000000009401513008"	P1810	"Catharina Funck"	S2600	"6000000009401513008"
+Q110547956	P2600	"6000000009401513008"	P1810	"Catharina Funck"
 #   Q110547936 Johan Hultman Adelswärd: P40 child = Q5542622 Johan Adelswärd
 Q110547936	P40	Q5542622	S2600	"6000000009401706934"
 #   P26 spouse = Q110547941 Altea Silfverström
 Q110547936	P26	Q110547941	S2600	"6000000009401706934"
 #   P2600 Geni.com profile ID = 6000000009401706934 Johan Hultman Adelswärd, qualified P1810 subject named as Johan Hultman Hultman
-Q110547936	P2600	"6000000009401706934"	P1810	"Johan Hultman Hultman"	S2600	"6000000009401706934"
+Q110547936	P2600	"6000000009401706934"	P1810	"Johan Hultman Hultman"
 #   Q141223553 Ragnhild Kristine Øystensdatter Nese: P40 child = Q141242551 Lars Osmundsen Nese
 Q141223553	P40	Q141242551	S2600	"6000000010479856178"
 #   P40 child = Q141242389 Christian Osmundsen Nese
@@ -1552,17 +1552,17 @@ Q141242551	P25	Q141223553	S2600	"6000000010480210324"
 #   Q122980318 Samuel Fredrik Åkerhielm af Margretelund: P40 child = Q6255155 Gustaf Fredrik Åkerhielm af Margretelund
 Q122980318	P40	Q6255155	S2600	"6000000010573777066"
 #   P2600 Geni.com profile ID = 6000000010573777066 Samuel Fredrik Åkerhielm af Margretelund, qualified P1810 subject named as Samuel Fredrik Åkerhielm af Margretelund
-Q122980318	P2600	"6000000010573777066"	P1810	"Samuel Fredrik Åkerhielm af Margretelund"	S2600	"6000000010573777066"
+Q122980318	P2600	"6000000010573777066"	P1810	"Samuel Fredrik Åkerhielm af Margretelund"
 #   Q98180381 Kristina Elisabeth Nordenadler: P40 child = Q6045829 Johan Teodor Petré
 Q98180381	P40	Q6045829	S2600	"6000000010934387089"
 #   P2600 Geni.com profile ID = 6000000010934387089 Kristina Elisabeth Nordenadler, qualified P1810 subject named as Kristina Elisabeth Nordenadler
-Q98180381	P2600	"6000000010934387089"	P1810	"Kristina Elisabeth Nordenadler"	S2600	"6000000010934387089"
+Q98180381	P2600	"6000000010934387089"	P1810	"Kristina Elisabeth Nordenadler"
 #   Q141223903 Elen Margrethe Stangeland: P25 mother = Q141217372 Berta Larsdatter Stangeland
 Q141223903	P25	Q141217372	S2600	"6000000011039570406"
 #   Q2424918 Tomas Ihre: P40 child = Q719983 Johan Ihre
 Q2424918	P40	Q719983	S2600	"6000000011115929762"
 #   P2600 Geni.com profile ID = 6000000011115929762 Tomas Ihre, qualified P1810 subject named as Tomas Ihre
-Q2424918	P2600	"6000000011115929762"	P1810	"Tomas Ihre"	S2600	"6000000011115929762"
+Q2424918	P2600	"6000000011115929762"	P1810	"Tomas Ihre"
 #   Q141242389 Christian Osmundsen Nese: P25 mother = Q141223553 Ragnhild Kristine Øystensdatter Nese
 Q141242389	P25	Q141223553	S2600	"6000000011329696852"
 #   Q127270462 Barbro Petré: P40 child = Q5807131 Mikael Hising
@@ -1570,7 +1570,7 @@ Q127270462	P40	Q5807131	S2600	"6000000011533077050"
 #   P26 spouse = Q110313452 Carl Hising
 Q127270462	P26	Q110313452	S2600	"6000000011533077050"
 #   P2600 Geni.com profile ID = 6000000011533077050 Barbro Petré, qualified P1810 subject named as Barbro Petré
-Q127270462	P2600	"6000000011533077050"	P1810	"Barbro Petré"	S2600	"6000000011533077050"
+Q127270462	P2600	"6000000011533077050"	P1810	"Barbro Petré"
 #   P735 given name = Q807877 Barbro
 Q127270462	P735	Q807877
 #   Q111989591 Margareta Frodbom: P40 child = Q5807136 Vilhelm Hising
@@ -1580,7 +1580,7 @@ Q111989591	P40	Q3450190	S2600	"6000000011533226330"
 #   P26 spouse = Q5807131 Mikael Hising
 Q111989591	P26	Q5807131	S2600	"6000000011533226330"
 #   P2600 Geni.com profile ID = 6000000011533226330 Margareta Frodbom, qualified P1810 subject named as Margareta Frodbom
-Q111989591	P2600	"6000000011533226330"	P1810	"Margareta Frodbom"	S2600	"6000000011533226330"
+Q111989591	P2600	"6000000011533226330"	P1810	"Margareta Frodbom"
 #   P735 given name = Q8274988 Margareta
 Q111989591	P735	Q8274988
 #   Q3450190 Johan Hisinger till Fagervik: P25 mother = Q111989591 Margareta Frodbom
@@ -1594,13 +1594,13 @@ Q4951688	P40	Q19678400	S2600	"6000000011637291315"
 #   P26 spouse = Q717179 Arvid Bernhard Horn af Ekebyholm
 Q4951688	P26	Q717179	S2600	"6000000011637291315"
 #   P2600 Geni.com profile ID = 6000000011637291315 Margareta Gyllenstierna af Fogelvik, qualified P1810 subject named as Margareta Gyllenstierna af Fogelvik
-Q4951688	P2600	"6000000011637291315"	P1810	"Margareta Gyllenstierna af Fogelvik"	S2600	"6000000011637291315"
+Q4951688	P2600	"6000000011637291315"	P1810	"Margareta Gyllenstierna af Fogelvik"
 #   Q141242507 Hedvig Augusta af Söderling: P40 child = Q109829893 Ulrika Elisabet Hermelin
 Q141242507	P40	Q109829893	S2600	"6000000011713042906"
 #   Q109829893 Ulrika Elisabet Hermelin: P40 child = Q6092404 Samuel August Sandels
 Q109829893	P40	Q6092404	S2600	"6000000011714588237"
 #   P2600 Geni.com profile ID = 6000000011714588237 Ulrika Elisabet Hermelin, qualified P1810 subject named as Ulrika Elisabet Hermelin
-Q109829893	P2600	"6000000011714588237"	P1810	"Ulrika Elisabet Hermelin"	S2600	"6000000011714588237"
+Q109829893	P2600	"6000000011714588237"	P1810	"Ulrika Elisabet Hermelin"
 #   P735 given name = Q18924998 Ulrika, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
 Q109829893	P735	Q18924998	P1545	"1"	P7452	Q3409033
 #   P735 given name = Q16423275 Elisabet, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
@@ -1610,29 +1610,29 @@ Q141217393	P40	Q108937197	S2600	"6000000012617083513"
 #   Q6015299 Friherre Johan Magnus af Nordin: P40 child = Q6015181 Carl Johan af Nordin
 Q6015299	P40	Q6015181	S2600	"6000000012734285538"
 #   P2600 Geni.com profile ID = 6000000012734285538 Friherre Johan Magnus af Nordin, qualified P1810 subject named as Friherre Johan Magnus af Nordin
-Q6015299	P2600	"6000000012734285538"	P1810	"Friherre Johan Magnus af Nordin"	S2600	"6000000012734285538"
+Q6015299	P2600	"6000000012734285538"	P1810	"Friherre Johan Magnus af Nordin"
 #   Q99373530 Carl Magnus Nordin: P40 child = Q6015299 Friherre Johan Magnus af Nordin
 Q99373530	P40	Q6015299	S2600	"6000000012736619268"
 #   P40 child = Q4993033 Carl Gustaf Nordin
 Q99373530	P40	Q4993033	S2600	"6000000012736619268"
 #   P2600 Geni.com profile ID = 6000000012736619268 Carl Magnus Nordin, qualified P1810 subject named as Carl Magnus Nordin
-Q99373530	P2600	"6000000012736619268"	P1810	"Carl Magnus Nordin"	S2600	"6000000012736619268"
+Q99373530	P2600	"6000000012736619268"	P1810	"Carl Magnus Nordin"
 #   Q104550158 Ernald Mattsson Forbes of Corsindae: P40 child = Q5735890 Arvid Ernaldsson Forbus till Kumo
 Q104550158	P40	Q5735890	S2600	"6000000013007809177"
 #   P26 spouse = Q104550167 Karin Mattsdotter Björnram
 Q104550158	P26	Q104550167	S2600	"6000000013007809177"
 #   P2600 Geni.com profile ID = 6000000013007809177 Ernald Mattsson Forbes of Corsindae, qualified P1810 subject named as Ernald Mattsson Forbes of Corsindae
-Q104550158	P2600	"6000000013007809177"	P1810	"Ernald Mattsson Forbes of Corsindae"	S2600	"6000000013007809177"
+Q104550158	P2600	"6000000013007809177"	P1810	"Ernald Mattsson Forbes of Corsindae"
 #   Q124606874 Hans Didrik Mörner af Morlanda: P40 child = Q6001555 Carl Claes Mörner af Morlanda
 Q124606874	P40	Q6001555	S2600	"6000000013257070935"
 #   P2600 Geni.com profile ID = 6000000013257070935 Hans Didrik Mörner af Morlanda, qualified P1810 subject named as Hans Didrik Mörner af Morlanda
-Q124606874	P2600	"6000000013257070935"	P1810	"Hans Didrik Mörner af Morlanda"	S2600	"6000000013257070935"
+Q124606874	P2600	"6000000013257070935"	P1810	"Hans Didrik Mörner af Morlanda"
 #   Q113007770 Maria Sofia Stierncrona: P40 child = Q5587236 Carl Johan Gyllenborg
 Q113007770	P40	Q5587236	S2600	"6000000013296788468"
 #   P26 spouse = Q763053 Henning Adolf Gyllenborg
 Q113007770	P26	Q763053	S2600	"6000000013296788468"
 #   P2600 Geni.com profile ID = 6000000013296788468 Maria Sofia Stierncrona, qualified P1810 subject named as Maria Sofia Welt
-Q113007770	P2600	"6000000013296788468"	P1810	"Maria Sofia Welt"	S2600	"6000000013296788468"
+Q113007770	P2600	"6000000013296788468"	P1810	"Maria Sofia Welt"
 #   Q141224751 Berta Serina Rasmusdatter Borsheim: P40 child = Q141242522 Jørgine Bergitte Paulsdatter Orre
 Q141224751	P40	Q141242522	S2600	"6000000014522158621"
 #   Q66711908 Anna Christina Bruncrona: P40 child = Q16945159 Nils Abraham Bruncrona
@@ -1642,33 +1642,33 @@ Q66711908	P40	Q6060350	S2600	"6000000017425559123"
 #   P26 spouse = Q6060365 Olof Ingelsson Rabenius
 Q66711908	P26	Q6060365	S2600	"6000000017425559123"
 #   P2600 Geni.com profile ID = 6000000017425559123 Anna Christina Bruncrona, qualified P1810 subject named as Anna Christina Bruncrona
-Q66711908	P2600	"6000000017425559123"	P1810	"Anna Christina Bruncrona"	S2600	"6000000017425559123"
+Q66711908	P2600	"6000000017425559123"	P1810	"Anna Christina Bruncrona"
 #   Q141216401 Mariet Danielsdotter: P40 child = Q141242565 Per Andersson
 Q141216401	P40	Q141242565	S2600	"6000000017535961052"
 #   Q5745634 Elias Frondin: P40 child = Q5745627 Berge / Birger Frondin
 Q5745634	P40	Q5745627	S2600	"6000000018625238474"
 #   P2600 Geni.com profile ID = 6000000018625238474 Elias Frondin, qualified P1810 subject named as Elias Frondin
-Q5745634	P2600	"6000000018625238474"	P1810	"Elias Frondin"	S2600	"6000000018625238474"
+Q5745634	P2600	"6000000018625238474"	P1810	"Elias Frondin"
 #   Q19976772 Simon Melander: P40 child = Q5983613 Daniel Melanderhielm
 Q19976772	P40	Q5983613	S2600	"6000000018625507007"
 #   P2600 Geni.com profile ID = 6000000018625507007 Simon Melander, qualified P1810 subject named as Simon Melander
-Q19976772	P2600	"6000000018625507007"	P1810	"Simon Melander"	S2600	"6000000018625507007"
+Q19976772	P2600	"6000000018625507007"	P1810	"Simon Melander"
 #   Q16649961 Olof Olofsson Nauclérus: P40 child = Q16649960 Olof Nauclér
 Q16649961	P40	Q16649960	S2600	"6000000018985534304"
 #   P2600 Geni.com profile ID = 6000000018985534304 Olof Olofsson Nauclérus, qualified P1810 subject named as Olof Olofsson Nauclérus
-Q16649961	P2600	"6000000018985534304"	P1810	"Olof Olofsson Nauclérus"	S2600	"6000000018985534304"
+Q16649961	P2600	"6000000018985534304"	P1810	"Olof Olofsson Nauclérus"
 #   Q141242565 Per Andersson: P25 mother = Q141216401 Mariet Danielsdotter
 Q141242565	P25	Q141216401	S2600	"6000000019176344694"
 #   Q116439449 Abraham Grafström: P40 child = Q490686 Anders Abraham Grafström
 Q116439449	P40	Q490686	S2600	"6000000019583224446"
 #   P2600 Geni.com profile ID = 6000000019583224446 Abraham Grafström, qualified P1810 subject named as Abraham Grafström
-Q116439449	P2600	"6000000019583224446"	P1810	"Abraham Grafström"	S2600	"6000000019583224446"
+Q116439449	P2600	"6000000019583224446"	P1810	"Abraham Grafström"
 #   P735 given name = Q4055996 Abraham
 Q116439449	P735	Q4055996
 #   Q5916183 Karl Johan Andersson Knös: P40 child = Q5916153 Anders Erik Knös
 Q5916183	P40	Q5916153	S2600	"6000000019933609341"
 #   P2600 Geni.com profile ID = 6000000019933609341 Karl Johan Andersson Knös, qualified P1810 subject named as Karl Johan Andersson Knös
-Q5916183	P2600	"6000000019933609341"	P1810	"Karl Johan Andersson Knös"	S2600	"6000000019933609341"
+Q5916183	P2600	"6000000019933609341"	P1810	"Karl Johan Andersson Knös"
 #   Q141225080 Annie Stangeland: P25 mother = Q141223853 Rakel Rasmusdottir Borsheim
 Q141225080	P25	Q141223853	S2600	"6000000020344692199"
 #   Q141223853 Rakel Rasmusdottir Borsheim: P25 mother = Q141223503 Anne Berta Osmundsdatter Nese
@@ -1682,7 +1682,7 @@ Q4988935	P40	Q5916189	S2600	"6000000020393995501"
 #   P26 spouse = Q5916162 Anders Olofsson Knös
 Q4988935	P26	Q5916162	S2600	"6000000020393995501"
 #   P2600 Geni.com profile ID = 6000000020393995501 Brita Hedvig Wijnbladh, qualified P1810 subject named as Brita Hedvig Wijnbladh
-Q4988935	P2600	"6000000020393995501"	P1810	"Brita Hedvig Wijnbladh"	S2600	"6000000020393995501"
+Q4988935	P2600	"6000000020393995501"	P1810	"Brita Hedvig Wijnbladh"
 #   Q5916162 Anders Olofsson Knös: P40 child = Q5916183 Karl Johan Andersson Knös
 Q5916162	P40	Q5916183	S2600	"6000000020394079179"
 #   P40 child = Q4225027 Olof Andersson Knös
@@ -1692,23 +1692,23 @@ Q5916162	P40	Q5916189	S2600	"6000000020394079179"
 #   P26 spouse = Q4988935 Brita Hedvig Wijnbladh
 Q5916162	P26	Q4988935	S2600	"6000000020394079179"
 #   P2600 Geni.com profile ID = 6000000020394079179 Anders Olofsson Knös, qualified P1810 subject named as Anders Olofsson Knös
-Q5916162	P2600	"6000000020394079179"	P1810	"Anders Olofsson Knös"	S2600	"6000000020394079179"
+Q5916162	P2600	"6000000020394079179"	P1810	"Anders Olofsson Knös"
 #   Q127270437 Kristina Samuelsdotter: P40 child = Q5773287 Samuel Andreæ Grubb
 Q127270437	P40	Q5773287	S2600	"6000000023140541858"
 #   P2600 Geni.com profile ID = 6000000023140541858 Kristina Samuelsdotter, qualified P1810 subject named as Kristina Samuelsdotter
-Q127270437	P2600	"6000000023140541858"	P1810	"Kristina Samuelsdotter"	S2600	"6000000023140541858"
+Q127270437	P2600	"6000000023140541858"	P1810	"Kristina Samuelsdotter"
 #   Q66316940 Anna Sofia Bäck: P40 child = Q2694124 Albrecht Elof Ihre d.y.
 Q66316940	P40	Q2694124	S2600	"6000000024161876529"
 #   P26 spouse = Q5822415 Albrecht Ihre
 Q66316940	P26	Q5822415	S2600	"6000000024161876529"
 #   P2600 Geni.com profile ID = 6000000024161876529 Anna Sofia Bäck, qualified P1810 subject named as Anna Sofia Bäck
-Q66316940	P2600	"6000000024161876529"	P1810	"Anna Sofia Bäck"	S2600	"6000000024161876529"
+Q66316940	P2600	"6000000024161876529"	P1810	"Anna Sofia Bäck"
 #   Q141225793 Laurentius Andreae Andreae Alstrinius: P26 spouse = Q141225779 Kristina Eriksdotter Ångerman
 Q141225793	P26	Q141225779	S2600	"6000000025011507008"
 #   Q16650170 Ingeldus Laurentii Rabenius: P40 child = Q6060365 Olof Ingelsson Rabenius
 Q16650170	P40	Q6060365	S2600	"6000000028475780607"
 #   P2600 Geni.com profile ID = 6000000028475780607 Ingeldus Laurentii Rabenius, qualified P1810 subject named as Ingeldus Laurentii Rabenius
-Q16650170	P2600	"6000000028475780607"	P1810	"Ingeldus Laurentii Rabenius"	S2600	"6000000028475780607"
+Q16650170	P2600	"6000000028475780607"	P1810	"Ingeldus Laurentii Rabenius"
 #   Q141225175 Malene Larsdtr. Alvseike: P25 mother = Q141217369 Anna Osmundsd Stokka
 Q141225175	P25	Q141217369	S2600	"6000000030085852982"
 #   Q141224339 Reinhert Borsheim: P25 mother = Q141223853 Rakel Rasmusdottir Borsheim
@@ -1732,7 +1732,7 @@ Q3359192	P40	Q16945169	S2600	"6000000138755587213"
 #   P26 spouse = Q5589959 Sven Bunge till Beateberg
 Q3359192	P26	Q5589959	S2600	"6000000138755587213"
 #   P2600 Geni.com profile ID = 6000000138755587213 Elsa Beata Wrede af Elimä, qualified P1810 subject named as Elsa Beata Wrede
-Q3359192	P2600	"6000000138755587213"	P1810	"Elsa Beata Wrede"	S2600	"6000000138755587213"
+Q3359192	P2600	"6000000138755587213"	P1810	"Elsa Beata Wrede"
 #   Q141223923 Helen Frisk: P25 mother = Q141223907 Elly Olivia Frisk
 Q141223923	P25	Q141223907	S2600	"6000000177921459052"
 #   Q141223972 Ådne Olsson Lima Kyllingstad. Lima: P25 mother = Q141223999 Anna Ådnesdatter Lima
