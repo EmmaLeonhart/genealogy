@@ -20726,3 +20726,27 @@ whole rather than being hand-annotated.
 
 This is the third seed-choosing method put to a backtest here and **the first to survive one** —
 `reports/descendants-backtest-2026-08-07.md` refuted the other two.
+
+## 2026-08-30 — name-item cap cut to 3, path work moved to the tail
+
+Two answers from Emma, both acted on rather than recorded.
+
+**Name items: 10 a day → 3, and it restores itself.** Asked what name-item creation should do
+while the `OBender12` hold runs, she said *"Cut it to 2-3 a day."* The reasoning is in
+`reports/strategic-analysis-2026-08-30.md`: name-item creation is the highest-risk operation in
+the pipeline, because the duplicates that editor merged were name items and the people side has
+no comparable audience. `NAME_ITEMS_PER_RUN` is now derived from the date and lifts on
+**2026-09-30**, the same day as the hold — a limit that must be remembered to be lifted is a
+limit that never lifts, which is the same reasoning `held_items()` carries.
+`tests/test_obender_hold.py` pins the two dates together, so they cannot drift; 5 pass.
+
+**The path and export-routing work goes to the tail, not away.** Her words: *"put these at the
+end of the queue instead of dropping them and start on the first queue item."* So
+`THE TAIL ALGORITHM`, `The midpoint export campaign` and `THE EXPORT LOOP` moved bodily to the
+end, behind a note recording why and what changed underneath them while they sat at the top —
+the gap-size routing they specify is written against a missing-person count that now reads 0 on
+every path, and has to be applied to the broken-link count instead.
+
+`THE EXPORT LOOP`'s heading claimed *"it is the top of this file"*, which is exactly the
+self-declared-front problem § *How to read this file* was written to end. Corrected to say where
+it actually sits.

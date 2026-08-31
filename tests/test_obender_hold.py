@@ -71,3 +71,31 @@ def test_the_hold_is_on_the_subject_and_never_on_the_value(touched):
     value_line = 'Q99999\tP22\tQ141180409'
     assert subject_line.split("\t")[0] in held
     assert value_line.split("\t")[0] not in held
+
+
+def test_the_name_item_cap_lifts_on_the_same_day_as_the_hold():
+    """Emma, 2026-08-30, asked what name-item creation should do while the hold runs:
+    *"Cut it to 2-3 a day."*
+
+    Name-item creation is the highest-risk operation in the pipeline — the duplicates another
+    editor merged were name items, and the people side has no comparable audience. Three keeps
+    the vocabulary growing while staying well under the rate that produced them.
+
+    **The two dates are pinned together because the reduction is only justified while the hold
+    runs.** If they drift, the cap either lifts early — resuming the risky rate while the hold
+    is still on — or never lifts at all, which is the failure `held_items()` is written
+    against: a limit that must be remembered to be lifted is a limit that never lifts.
+    """
+    import importlib.util as _il
+
+    spec = _il.spec_from_file_location(
+        "build_garborg_name_items", ROOT / "scripts" / "build-garborg-name-items.py")
+    names = _il.module_from_spec(spec)
+    spec.loader.exec_module(names)
+
+    assert names.NAME_ITEM_HOLD_EXPIRES == bgd.OBENDER_HOLD_EXPIRES
+    assert names.NAME_ITEMS_PER_RUN_HELD == 3
+    assert names.NAME_ITEMS_PER_RUN_NORMAL == 10
+    # While the hold runs, the effective cap is the reduced one.
+    assert names.NAME_ITEMS_PER_RUN == (
+        3 if datetime.date.today() < names.NAME_ITEM_HOLD_EXPIRES else 10)

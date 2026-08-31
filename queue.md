@@ -154,78 +154,6 @@ resolved statements rather than steps, and are removed 2026-08-30.
 This item is the **standing daily process**, not a step to finish: one batch a day, for as long
 as the programme runs.
 
-## ⛔ THE TAIL ALGORITHM — Emma's method, 2026-08-18. Supersedes how the loop picks
-
-Her framing: *"I think we can get through this really really quickly if we change our
-approach here… I think a big part of it is the fact that our tail exports were just not
-working nearly as well as we [expected]."* And her estimate of what it buys: *"you'll be
-able to get through the tail maybe even just by the end of today."*
-
-**What the loop was doing wrong.** It seeded a placeholder near a *missing* person and
-exported from there. She wants the export **centred on the destination person** — the
-isolate at the end of the chain — and the small gaps handled by a different mechanism
-entirely.
-
-### Work order: LONGEST paths first, then rebuild
-
-Emma, 2026-08-18: *"you should be trying to target it by going from the longest paths to
-the smallest paths… we can very easily run it with the top five longest paths having their
-exports done and then we rebuild and so on and so on."*
-
-**Her reasoning, and she has explicitly forbidden checking it.** *"the small paths are
-likely ones where there are significant diminishing returns on nearby exports whereas the
-large paths are likely ones that haven't had many exports and may be in very sparse
-areas… I'm gonna bet that the longer paths will tend to be in more sparse areas where
-there's more likelihood for it to just get the entire thing. Now I'm making this bet. I do
-not want you to actually check whether this is true."* Running the method **is** the test.
-
-**And it explains why the two-slot campaign underdelivered.** *"This was actually the
-entire reason why it is that we were trying to hit the people who were in multiple paths.
-The issue with the people in multiple paths was basically that… they were in multiple
-paths but they were oftentimes in dense enough areas that they didn't really give the
-extension that I was expecting."*
-
-### Route by the size of the gap on that path
-
-**Gap of 1–2 people — and 3 is safe too — DO NOT EXPORT.** Her words: *"a gap with one
-person or two people is actually basically useless as a deliverable… It is not worth six
-minutes to fill in something on the flat tail that is just covering one or two
-individuals."* Instead: **open the person's page, click open the relatives section and
-whatever else needs expanding, and save the page** into `geni-scraping/` — *not*
-`geni_pages/`. The profiles get built from those saved pages later. *"We later on build up
-the profiles from this separate thing, which won't really be a fallback thing. It'll be
-another thing."*
-
-**Gap of 4 or more — export, but from the RIGHT person.**
-
-1. **Export centred on the destination person.** Go to the Wikidata-target/isolate at the
-   end of the chain, walk their ancestors, export from there. *"I believe most of the time
-   this is just going to fix it and it's going to get that person connected."*
-2. **If the destination is already present and already exported from, go to the midpoint**
-   of the remaining chain and attempt there.
-3. **Recurse.** Her worked example, verbatim in substance: a seven-person chain → export
-   from the Wikidata target → it clears two → a five-chain remains → attempt at the
-   midpoint → that gets the middle three → what is left is two chains of two → and those
-   are finished by the page-saving method, not by more exports.
-
-**The point is not a complete family tree.** *"it doesn't matter that the entire family
-tree is all consistently there."* The deliverable is the chain being connected.
-
-### Also instructed, same message
-
-- **Retry every person previously bailed on.** *"A locked profile almost never means that
-  every single individual in the tree is locked. The stuff is self-healing here but you
-  still have to actually attempt them again. I am instructing you to attempt these
-  people."* Four remain: Anna von Mecklenburg-Schwerin, Anna Charlotta Stenius, Ola R
-  Sande (retry in flight), Artur Lidman.
-- The page-saving mechanism needs the **immediate relatives** of the person being
-  connected to Wikidata, which is why the relatives section must be expanded before the
-  save.
-
-**Current shape of the problem**, so the routing can be applied: 545 paths, median 8
-missing each, max 33. **24 paths need 1 person, 37 need 2** — those go to page-saving.
-The 4+ paths are where exports go, seeded on the destination.
-
 ## RUN ORDER — Emma's call, 2026-08-15
 
 **Imports first, labels last.** She asked why the seven-language labels were in
@@ -779,146 +707,11 @@ being called Latin: `º` says nothing about what script a name is in. Then
 `build-display-names.py` → `derive-labels.py` → every label emitter, which is the whole
 cache chain `CLAUDE.md` warns about.
 
-## The midpoint export campaign — her batch of 2026-08-17
-
-**Open the family-tree index page, never the profile page.** Emma, 2026-08-17:
-*"rather definitively this kind of thing
-https://www.geni.com/family-tree/index/6000000085113755501 is a better page to open up
-for them rather than the pages you opened."* Recorded in `CLAUDE.md`; the first 50 were
-opened as `/people/x/<id>` and should have been `/family-tree/index/<id>`.
-
-**Four exports integrated**, `exports/midpoints/`, all `Forest`, all exactly 5000
-people, seeded on placeholders she made at the midpoints of path gaps:
-`6000000227288930948` `Wilchen /Tybekken/` · `…289663852` `Øystein /father of Berta/` ·
-`…289604840` `Michel /Jude/` · `…289792822` `Björn /father of Prinsessan/`.
-
-**Done for this batch:** re-merged to 472,999 people; measured — the four exports closed
-**199 chain people**, held 3,337 → 3,536 and steps held 66.5% → **67.7%**; the next 50
-midpoints picked off the regenerated ranking and opened as family-tree pages.
-
-**No already-opened filter, and no accumulating handoff.** The regenerated ranking drops
-a closed person by itself — eight of the first batch's fifty are gone from it — so the
-filter I added excluded 42 people who are still gaps and pushed her down to weaker
-candidates. Both corrections are in `CLAUDE.md`.
-
-**The loop does NOT re-merge, and the ranking is slots.** Both her corrections of
-2026-08-17. `scripts/find-chain-gaps.py` answers *do we hold this person* straight off
-the export files — 18 seconds against five minutes and 4.5 GB, and it cannot go stale.
-Ranking is by **path slots filled**, her call: *"the midpoints for path segments were
-making some assumptions: an assumption of relative equality of presence in slots, but I
-don't think this is true anymore."* Slot counts run 10 down to 1, so they are not equal.
-
-**The loop, per new export:** place it in `exports/midpoints/`, run
-`find-chain-gaps.py --open 10`, open the ten. Nothing else. Currently **held 3,655, gap
-6,632, 7,174 unfilled slots** over 251 exports. Her framing: *"I think I can get those
-paths cleared soon."*
-
 ## Pointers
 
 - Abstract backlog: `todo.md` · Completed work: `devlog.md` · History: `git log`
 - Open questions for Emma: `questions.md`
 - The pre-wipe queue, 1,396 lines: `git show 4127170:queue.md`
-
-## THE EXPORT LOOP — 2026-08-17, and it is the top of this file
-
-**Emma, 2026-08-17:** *"this thing here is currently essentially the absolute top
-importance task to do. This full sequence and all this other stuff that we're
-doing, we should be operating on sequentially through the queue, with this stuff
-being the very first thing."*
-
-**The job changed shape.** *"From now on it's your job to create the individual and
-then do other stuff."* Creating the export seed on Geni was her manual labour; it
-is now mine. `docs/export-seed-rules.md` is the method — five tiers, patronymics
-first — and it is not repeated here.
-
-**A master profile is a skip, not a problem.** *"Sometimes you'll just run into a
-situation where it looks like you should be able to add an individual but you
-can't. If you run into anything like that then just don't bother that much and
-skip through it."* Move to the next slot; do not investigate, do not report it.
-
-### Phase 1 — the seven seeds she created herself
-
-`export_individuals_to_do_on_your_own.txt`. **Forest, 5000, one at a time**, each
-zip on disk before the next export is queued.
-
-- `6000000227258546877` Anders father of Anna
-- `6000000227291195824` NN Hersleb
-- `6000000227289933834` Sunes Sterenius
-- `6000000227291086839` Rasmus Friis
-- `6000000227291028845` Håvard Øye-in-Heskestad
-- `6000000227290969847` Karl father of Carl
-- `6000000227289886830` Lewis father of Hugh
-
-Precedent, same morning: the `NN` mother created at `6000000227291886826` (mother
-of Rodrigo de las Varillas) was created, exported and downloaded end to end under
-Chrome automation. That is the whole manual workflow running without her.
-
-### Phase 1b — the Ettinger bridge, and it jumps the queue ahead of the top ten
-
-**Emma, 2026-08-17, mid-run:** *"You run this one first before you do the top 10…
-If you get started with the top 10 because you didn't get the message until you
-started it, then immediately after the last one of them you run this one."*
-
-The tree is `https://www.geni.com/family-tree/index/6000000002764956522`,
-**Mordechai Zeev Ettinger, A.B.D. Lwow (1804–1863)**. She thinks one Forest export
-seeded here may be enough to merge the isolated 344 into the world tree on its
-own: *"we'll see if it just connects to the world tree just based off of this
-export alone. If it does then that'll be great. We'll have a synoptically
-integrated tree."*
-
-Done: seed created at `6000000227293218831` — `NN`, mother of
-`Sarah Landau (Ziskind)`, tier 3, three generations up the Ettinger line. Forest
-export run from her.
-
-**If it does not connect**, she is adding a second person to the paths who will
-also sort it out. Do not start improvising a fix — wait for that.
-
-The 344 are the Ettingers, all of them in
-`exports/edges/export-Forest-6000000227256597825.ged`
-(`scripts/which-export-holds-component.py`).
-
-### Phase 2 — the top-ten loop, and it repeats until the paths are flat
-
-**Only once every Phase 1 zip is down.** Then, on repeat:
-
-- Find the **ten people who appear most often across the relationship paths**
-  (`scripts/find-chain-gaps.py`, ranked by slots).
-- For each of the ten, **sequentially**: create the export individual per
-  `docs/export-seed-rules.md`, run the Forest export, download the zip.
-- Finish all ten, **then** integrate that batch of ten into `exports/`.
-- Re-run the check, take the new top ten, go again.
-
-**The stopping condition is flatness, not exhaustion.** Emma: *"until eventually
-we end up in a situation where every individual in these paths only shows up
-once… every individual in the path is there an equal amount, which would in this
-case be each one of them shows up exactly once."*
-
-### Phase 3 — midpoints, when and only when the paths are flat
-
-Once no person outranks another by slot count, rank by the **midpoint of each path
-sequence** instead. Her reasoning: a person created at a midpoint is where the
-Forest walk reaches and then spreads out from.
-
-**She expects this phase mostly not to fire.** *"I don't think it's going to be
-that common because the midpoint people are more rare."* So do not build machinery
-for it ahead of time.
-
-### Phase 4 — the sparse regions, after every bridge is cleared
-
-*"The second thing in the queue, after we've cleared all of the bridges in these
-files."* From the sparseness analysis (`reports/density.md`), take the regions
-**exported from exactly once**, and within those go for the ones **deepest down**.
-Create an individual there and run the same create → Forest → download loop.
-
-Her reason: *"these are the places that are likely going to have more people that
-we might not have encountered before."* Sampled once means the neighbourhood was
-touched and never returned to, which is exactly what the doorway column in
-`density` is measuring.
-
-Two of the three objectives set today come out of this loop running to completion,
-and it runs unattended.
-
----
 
 ## Fix the surnames of the tier-2 placeholders before the synoptic tree is built
 
@@ -2235,3 +2028,228 @@ derived CSV is from **24 Aug 18:28**, while the Bure campaign landed **28 Aug**.
   relatives are not in the derived tree.
 
 **Run it alone.** Step 1 peaks near 17 GB and has been killed twice when something else was running.
+## THE PATH AND EXPORT-ROUTING WORK — moved to the tail by Emma, 2026-08-30
+
+Asked where the next hours should go, given 667 of 695 relationship paths hold every person and
+still do not connect, her answer was: *"put these at the end of the queue instead of dropping
+them and start on the first queue item."*
+
+So the three sections below are **not dropped and not closed** — they are simply behind
+everything else now. They are the path-routing and export-seeding machinery: `THE TAIL
+ALGORITHM`, `The midpoint export campaign`, and `THE EXPORT LOOP`.
+
+**What changed under them while they sat at the top**, so whoever picks them up is not misled:
+`reports/path-census.md` used to route on *how many people a path is missing*, and that measure
+now reads **0 on every path**, because `exports/0-scraped/scraped-paths.ged` (11,481 people) and
+`scraped-pages.ged` (10,179) were built from these paths and then ingested. The people are
+present without their links — **28 of 695 paths connect end to end, 667 do not**. The census
+counts broken consecutive pairs now, and the gap-size routing in `THE TAIL ALGORITHM` has to be
+applied to that number rather than to the missing-person count it was written against.
+
+## ⛔ THE TAIL ALGORITHM — Emma's method, 2026-08-18. Supersedes how the loop picks
+
+Her framing: *"I think we can get through this really really quickly if we change our
+approach here… I think a big part of it is the fact that our tail exports were just not
+working nearly as well as we [expected]."* And her estimate of what it buys: *"you'll be
+able to get through the tail maybe even just by the end of today."*
+
+**What the loop was doing wrong.** It seeded a placeholder near a *missing* person and
+exported from there. She wants the export **centred on the destination person** — the
+isolate at the end of the chain — and the small gaps handled by a different mechanism
+entirely.
+
+### Work order: LONGEST paths first, then rebuild
+
+Emma, 2026-08-18: *"you should be trying to target it by going from the longest paths to
+the smallest paths… we can very easily run it with the top five longest paths having their
+exports done and then we rebuild and so on and so on."*
+
+**Her reasoning, and she has explicitly forbidden checking it.** *"the small paths are
+likely ones where there are significant diminishing returns on nearby exports whereas the
+large paths are likely ones that haven't had many exports and may be in very sparse
+areas… I'm gonna bet that the longer paths will tend to be in more sparse areas where
+there's more likelihood for it to just get the entire thing. Now I'm making this bet. I do
+not want you to actually check whether this is true."* Running the method **is** the test.
+
+**And it explains why the two-slot campaign underdelivered.** *"This was actually the
+entire reason why it is that we were trying to hit the people who were in multiple paths.
+The issue with the people in multiple paths was basically that… they were in multiple
+paths but they were oftentimes in dense enough areas that they didn't really give the
+extension that I was expecting."*
+
+### Route by the size of the gap on that path
+
+**Gap of 1–2 people — and 3 is safe too — DO NOT EXPORT.** Her words: *"a gap with one
+person or two people is actually basically useless as a deliverable… It is not worth six
+minutes to fill in something on the flat tail that is just covering one or two
+individuals."* Instead: **open the person's page, click open the relatives section and
+whatever else needs expanding, and save the page** into `geni-scraping/` — *not*
+`geni_pages/`. The profiles get built from those saved pages later. *"We later on build up
+the profiles from this separate thing, which won't really be a fallback thing. It'll be
+another thing."*
+
+**Gap of 4 or more — export, but from the RIGHT person.**
+
+1. **Export centred on the destination person.** Go to the Wikidata-target/isolate at the
+   end of the chain, walk their ancestors, export from there. *"I believe most of the time
+   this is just going to fix it and it's going to get that person connected."*
+2. **If the destination is already present and already exported from, go to the midpoint**
+   of the remaining chain and attempt there.
+3. **Recurse.** Her worked example, verbatim in substance: a seven-person chain → export
+   from the Wikidata target → it clears two → a five-chain remains → attempt at the
+   midpoint → that gets the middle three → what is left is two chains of two → and those
+   are finished by the page-saving method, not by more exports.
+
+**The point is not a complete family tree.** *"it doesn't matter that the entire family
+tree is all consistently there."* The deliverable is the chain being connected.
+
+### Also instructed, same message
+
+- **Retry every person previously bailed on.** *"A locked profile almost never means that
+  every single individual in the tree is locked. The stuff is self-healing here but you
+  still have to actually attempt them again. I am instructing you to attempt these
+  people."* Four remain: Anna von Mecklenburg-Schwerin, Anna Charlotta Stenius, Ola R
+  Sande (retry in flight), Artur Lidman.
+- The page-saving mechanism needs the **immediate relatives** of the person being
+  connected to Wikidata, which is why the relatives section must be expanded before the
+  save.
+
+**Current shape of the problem**, so the routing can be applied: 545 paths, median 8
+missing each, max 33. **24 paths need 1 person, 37 need 2** — those go to page-saving.
+The 4+ paths are where exports go, seeded on the destination.
+
+## The midpoint export campaign — her batch of 2026-08-17
+
+**Open the family-tree index page, never the profile page.** Emma, 2026-08-17:
+*"rather definitively this kind of thing
+https://www.geni.com/family-tree/index/6000000085113755501 is a better page to open up
+for them rather than the pages you opened."* Recorded in `CLAUDE.md`; the first 50 were
+opened as `/people/x/<id>` and should have been `/family-tree/index/<id>`.
+
+**Four exports integrated**, `exports/midpoints/`, all `Forest`, all exactly 5000
+people, seeded on placeholders she made at the midpoints of path gaps:
+`6000000227288930948` `Wilchen /Tybekken/` · `…289663852` `Øystein /father of Berta/` ·
+`…289604840` `Michel /Jude/` · `…289792822` `Björn /father of Prinsessan/`.
+
+**Done for this batch:** re-merged to 472,999 people; measured — the four exports closed
+**199 chain people**, held 3,337 → 3,536 and steps held 66.5% → **67.7%**; the next 50
+midpoints picked off the regenerated ranking and opened as family-tree pages.
+
+**No already-opened filter, and no accumulating handoff.** The regenerated ranking drops
+a closed person by itself — eight of the first batch's fifty are gone from it — so the
+filter I added excluded 42 people who are still gaps and pushed her down to weaker
+candidates. Both corrections are in `CLAUDE.md`.
+
+**The loop does NOT re-merge, and the ranking is slots.** Both her corrections of
+2026-08-17. `scripts/find-chain-gaps.py` answers *do we hold this person* straight off
+the export files — 18 seconds against five minutes and 4.5 GB, and it cannot go stale.
+Ranking is by **path slots filled**, her call: *"the midpoints for path segments were
+making some assumptions: an assumption of relative equality of presence in slots, but I
+don't think this is true anymore."* Slot counts run 10 down to 1, so they are not equal.
+
+**The loop, per new export:** place it in `exports/midpoints/`, run
+`find-chain-gaps.py --open 10`, open the ten. Nothing else. Currently **held 3,655, gap
+6,632, 7,174 unfilled slots** over 251 exports. Her framing: *"I think I can get those
+paths cleared soon."*
+
+## THE EXPORT LOOP — 2026-08-17. At the TAIL since 2026-08-30, her call
+
+**Emma, 2026-08-17:** *"this thing here is currently essentially the absolute top
+importance task to do. This full sequence and all this other stuff that we're
+doing, we should be operating on sequentially through the queue, with this stuff
+being the very first thing."*
+
+**The job changed shape.** *"From now on it's your job to create the individual and
+then do other stuff."* Creating the export seed on Geni was her manual labour; it
+is now mine. `docs/export-seed-rules.md` is the method — five tiers, patronymics
+first — and it is not repeated here.
+
+**A master profile is a skip, not a problem.** *"Sometimes you'll just run into a
+situation where it looks like you should be able to add an individual but you
+can't. If you run into anything like that then just don't bother that much and
+skip through it."* Move to the next slot; do not investigate, do not report it.
+
+### Phase 1 — the seven seeds she created herself
+
+`export_individuals_to_do_on_your_own.txt`. **Forest, 5000, one at a time**, each
+zip on disk before the next export is queued.
+
+- `6000000227258546877` Anders father of Anna
+- `6000000227291195824` NN Hersleb
+- `6000000227289933834` Sunes Sterenius
+- `6000000227291086839` Rasmus Friis
+- `6000000227291028845` Håvard Øye-in-Heskestad
+- `6000000227290969847` Karl father of Carl
+- `6000000227289886830` Lewis father of Hugh
+
+Precedent, same morning: the `NN` mother created at `6000000227291886826` (mother
+of Rodrigo de las Varillas) was created, exported and downloaded end to end under
+Chrome automation. That is the whole manual workflow running without her.
+
+### Phase 1b — the Ettinger bridge, and it jumps the queue ahead of the top ten
+
+**Emma, 2026-08-17, mid-run:** *"You run this one first before you do the top 10…
+If you get started with the top 10 because you didn't get the message until you
+started it, then immediately after the last one of them you run this one."*
+
+The tree is `https://www.geni.com/family-tree/index/6000000002764956522`,
+**Mordechai Zeev Ettinger, A.B.D. Lwow (1804–1863)**. She thinks one Forest export
+seeded here may be enough to merge the isolated 344 into the world tree on its
+own: *"we'll see if it just connects to the world tree just based off of this
+export alone. If it does then that'll be great. We'll have a synoptically
+integrated tree."*
+
+Done: seed created at `6000000227293218831` — `NN`, mother of
+`Sarah Landau (Ziskind)`, tier 3, three generations up the Ettinger line. Forest
+export run from her.
+
+**If it does not connect**, she is adding a second person to the paths who will
+also sort it out. Do not start improvising a fix — wait for that.
+
+The 344 are the Ettingers, all of them in
+`exports/edges/export-Forest-6000000227256597825.ged`
+(`scripts/which-export-holds-component.py`).
+
+### Phase 2 — the top-ten loop, and it repeats until the paths are flat
+
+**Only once every Phase 1 zip is down.** Then, on repeat:
+
+- Find the **ten people who appear most often across the relationship paths**
+  (`scripts/find-chain-gaps.py`, ranked by slots).
+- For each of the ten, **sequentially**: create the export individual per
+  `docs/export-seed-rules.md`, run the Forest export, download the zip.
+- Finish all ten, **then** integrate that batch of ten into `exports/`.
+- Re-run the check, take the new top ten, go again.
+
+**The stopping condition is flatness, not exhaustion.** Emma: *"until eventually
+we end up in a situation where every individual in these paths only shows up
+once… every individual in the path is there an equal amount, which would in this
+case be each one of them shows up exactly once."*
+
+### Phase 3 — midpoints, when and only when the paths are flat
+
+Once no person outranks another by slot count, rank by the **midpoint of each path
+sequence** instead. Her reasoning: a person created at a midpoint is where the
+Forest walk reaches and then spreads out from.
+
+**She expects this phase mostly not to fire.** *"I don't think it's going to be
+that common because the midpoint people are more rare."* So do not build machinery
+for it ahead of time.
+
+### Phase 4 — the sparse regions, after every bridge is cleared
+
+*"The second thing in the queue, after we've cleared all of the bridges in these
+files."* From the sparseness analysis (`reports/density.md`), take the regions
+**exported from exactly once**, and within those go for the ones **deepest down**.
+Create an individual there and run the same create → Forest → download loop.
+
+Her reason: *"these are the places that are likely going to have more people that
+we might not have encountered before."* Sampled once means the neighbourhood was
+touched and never returned to, which is exactly what the doorway column in
+`density` is measuring.
+
+Two of the three objectives set today come out of this loop running to completion,
+and it runs unattended.
+
+---
+

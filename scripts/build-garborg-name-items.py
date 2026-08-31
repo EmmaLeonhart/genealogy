@@ -49,6 +49,7 @@ import collections
 import csv
 import re
 import sys
+import datetime
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -66,13 +67,35 @@ INSTANCE_OF = "P31"
 FAMILY_NAME_CLASS = "Q101352"     # family name
 GIVEN_NAME_CLASS = "Q202444"      # given name
 
-#: **10 name items a run.** Emma, 2026-08-26: *"generating 10 name items based upon the
-#: missing name items from the ideal state, with the links as a thing that specifically is
-#: made."* The cap is hers; WHICH ten is not specified, so the most-borne tokens go first --
-#: that maximises the links each created item earns in the same run. Rejected: taking them at
-#: random, which would leave a nine-bearer surname waiting behind a one-bearer one for no
-#: reason. Falsified if she says the choice should be random, as the parent pairs are.
-NAME_ITEMS_PER_RUN = 10
+#: **3 name items a run while the hold is on; 10 after it lifts.**
+#:
+#: The original cap is Emma's, 2026-08-26: *"generating 10 name items based upon the missing
+#: name items from the ideal state, with the links as a thing that specifically is made."*
+#: WHICH ones is not specified, so the most-borne tokens go first -- that maximises the links
+#: each created item earns in the same run. Rejected: taking them at random, which would leave
+#: a nine-bearer surname waiting behind a one-bearer one for no reason. Falsified if she says
+#: the choice should be random, as the parent pairs are.
+#:
+#: **The reduction is hers too, 2026-08-30**, asked directly and answered *"Cut it to 2-3 a
+#: day"*. `reports/strategic-analysis-2026-08-30.md` is the reasoning: name-item creation is
+#: the highest-risk operation in the pipeline, because the duplicates another editor merged
+#: were name items and the people side has no comparable audience. Three keeps the vocabulary
+#: growing while staying well under the rate that produced them.
+#:
+#: **It restores itself.** The reduction is tied to the `OBender12` hold, so it lifts on the
+#: same date rather than needing to be remembered -- the same reasoning as `held_items()` in
+#: `build-garborg-day.py`, and for the same reason: a limit that must be remembered to be
+#: lifted is a limit that never lifts.
+NAME_ITEMS_PER_RUN_HELD = 3
+NAME_ITEMS_PER_RUN_NORMAL = 10
+
+#: Kept in step with `build-garborg-day.OBENDER_HOLD_EXPIRES`; `tests/test_obender_hold.py`
+#: fails if the two dates drift apart.
+NAME_ITEM_HOLD_EXPIRES = datetime.date(2026, 9, 30)
+
+NAME_ITEMS_PER_RUN = (NAME_ITEMS_PER_RUN_HELD
+                      if datetime.date.today() < NAME_ITEM_HOLD_EXPIRES
+                      else NAME_ITEMS_PER_RUN_NORMAL)
 
 CLASS_FOR = {
     "patronymic": PATRONYMIC_CLASS,
