@@ -395,22 +395,6 @@ words. So the batches are `en` for everybody, then `mul` for everybody, then `ja
   on it twice; these sets decide what a **marker** is. Widening detection is not
   widening suppression.
 
-- **ANSWERED 2026-08-17 — words yes, punctuation no.** Asked whether `unknown` / `?` /
-  `ukjent` / `*` are markers the way `NN` and `Private` are, Emma chose *"Words yes,
-  punctuation no"*: a word meaning *I don't know* makes the same statement `NN` makes,
-  and bare punctuation is typography we would be guessing at. So `unknown Bloomfield`
-  normalises and `Nechama (?) Heller` and `Toeloes .` are left exactly as they are —
-  3,102 `?`-at-tail rows an earlier pass would have rewritten. Punctuation still means
-  *absent* when it is the **whole** label, which is what `derive-labels.ABSENT` has
-  always said.
-
-  **Done 2026-08-17.** The fold landed in `scripts/labels.py`, and re-running the
-  batches it feeds moved the placeholder count 39,299 → **39,375** and readable `en`
-  labels 30,015 → **30,090** — 76 more people recognised as placeholder-named by the
-  nine languages the measurement added. Seven labels in the structural batch turned out
-  to be markers sitting in `en`: `Ukendt`, `Okänd fru`, `Ukendt hustru Unknown`,
-  `N. N.`, `Okänd Michaelson? svensk major`.
-
 - **`en` for every individual, as one step.** Includes the transcription she names:
   a Han-only or Cyrillic-only or Hebrew-only person gets an `en` made for them.
   **CJK → English is agentic, never programmatic** — *"from CJK to English do not
@@ -1644,17 +1628,6 @@ the script that regenerates the quickstatements. This script is called as the la
 That is the whole item. It runs merge → display-names → derived family → derived facts → derived
 labels → pack → `--compose`, stops at the first failure rather than continuing on stale inputs, and
 ends with the batch. Then attach `reports/wikidata-garborg-day.qs`.
-
-**Why it matters right now.** `out/merged.ged` is **0 bytes** (two rebuilds were killed) and every
-derived CSV is from **24 Aug 18:28**, while the Bure campaign landed **28 Aug**. So:
-
-- **Israel Hwasser** `Q5818420` is in `exports/bure-campaign/export-Forest-6000000227475095829.ged`
-  with a full record and has **0 rows** in `derived-family.csv`. The whole campaign is invisible to
-  the batch generator.
-- `Q141219067` carries `P1810 "Private"` where Geni shows `<private> Dokken`, because three older
-  exports say `Private` and only the 28 Aug one says `<private> /Dokken/`.
-- The compliance audit's 15 relationship-less roster people cannot be acted on, because their
-  relatives are not in the derived tree.
 
 **Run it alone.** Step 1 peaks near 17 GB and has been killed twice when something else was running.
 ## ⛔ THE TAIL ALGORITHM — at the TAIL since 2026-08-30, her call

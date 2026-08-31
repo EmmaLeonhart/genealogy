@@ -22251,3 +22251,42 @@ applies when `SURN` holds a place name: **the name column is not always the name
 one profile in a browser, which is what she suggested. Every number I had — group size, shared
 parent, shared name — was consistent with six duplicates, because all six really do share a
 parent and really do share the string in that column.
+
+## 2026-08-31 — sweep: nothing dead, two sections cut back to what is not done
+
+Walked all 54 sections. **No section is dead** — every one is a step, a specification, or a
+standing process — so nothing was deleted. Two carried blocks that describe finished work, and
+those are cut.
+
+**`LAST ITEM — run scripts/rebuild-everything.py`** — the step is pinned at the tail and stays.
+What went is its *"Why it matters right now"* block, every claim of which is now false: it said
+`out/merged.ged` is **0 bytes** and the derived CSVs are from **24 Aug 18:28**, with the Bure
+campaign therefore invisible. Measured today: `merged.ged` is **1.8 GB, 11:33**, the four CSVs are
+**06:52**, `Israel Hwasser` has **10 rows** in `derived-family.csv` where the block says 0, and
+`reports/wikidata-garborg-day.qs` was regenerated at 13:12 and attached. The rationale was for one
+particular morning; keeping it makes a done thing read as outstanding.
+
+**`LABELS, IN HER ORDER`** — the `ANSWERED 2026-08-17 / Done 2026-08-17` bullet. Her ruling
+(*words yes, punctuation no*) lives in `CLAUDE.md` § *An obvious unknown-word marker goes straight
+in*, and the fold landed: `scripts/labels.PLACEHOLDER_FORMS` holds **51** forms including `ukendt`,
+`okänd`, `n. n.`, `unknown` and `ukjent`, imported by `build-relationship-label-preview.py` and
+`walk-structural-merge.py` rather than copied. The rest of that section — `en`, `mul`, `ja`, `zh`
+and the four remaining languages — is untouched and still to do.
+
+**Verified rather than assumed, and four candidates survived the check:**
+
+- `build-qid-links-gedcom.py` still raises `FileNotFoundError: entity_resolution.md`, so both the
+  legacy-code sweep and the QID-link idempotence item stay open.
+- `reports/wikidata-reciprocals.qs` is still the **2026-08-25** file, so the new-to-new links item
+  has not been rebuilt.
+- No `P7338` *regnal ordinal* appears in any of the three Samaritan batches, so that item is still
+  emission-pending.
+- `gh repo view` reports **PRIVATE**, so the anonymise-then-public item stands.
+
+54 sections before, 54 after; 1,870 → 1,843 lines.
+
+Also recorded **12 more `SAME` verdicts** from the adjudication GUI into
+`reports/emma-judgments.tsv` — Anna Brita Carré, Gerhard Jonæ, Hans Georg Strömfelt, Christina
+Elisabet Taube, Gustaf Adolf Strömfelt, Karin Björnram, Sigfrid Porthan, Sven Bunge, Christina
+Ebba Leijonhufvud, Margareta Odhelia, Carl Gustaf Lagerfelt, Maria Elisabet von der Osten. The
+deck is **40 → 28**.
