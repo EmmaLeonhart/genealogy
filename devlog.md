@@ -21783,3 +21783,38 @@ which does not raise, it just makes every downstream figure come out plausibly s
 
 58 sections either way; the section was cut back rather than removed, since a third of it is a
 step still to take.
+
+## 2026-08-31 — the sexed-vs-generic name rule applied: 299 new resolutions
+
+Her `Maria` ruling settles a competing given-name item **per bearer** rather than per string —
+*"there's a male and a female Maria… That is settled by the person's sex."* Yesterday's bucketing
+found 33 more of that shape hiding in what `reports/name-ambiguity-causes.md` had called
+*"231 · other. Mixed."*, so the rule is now extended to them.
+
+`scripts/resolve-names-by-sex.py` is the generator, and writing one was half the point:
+**`reports/name-resolved-by-sex.csv` had none.** 13,503 rows and nothing in the repo could
+re-derive them — the § *LEGACY CODE IS DELETED* problem in its other form, a data file whose
+provenance is gone.
+
+    13,503 existing rows over 95 tokens kept; 34 new tokens added
+    299 new bearer-token pairs
+    242  resolved by sex
+     44  resolved by sex (unisex; no item for that sex)
+     12  no recorded sex; generic given-name item
+      1  no recorded sex; unisex item
+
+**The decision extended, recorded rather than asked** (§ *Working the queue: GUESS*): take the
+sexed item matching the bearer's sex; where the bearer has none, take the **generic** item if one
+exists. A bare `given name` item is never wrong for a person whose sex we do not know, which is
+what makes it a fallback rather than a guess. A unisex item is used for a known sex only when no
+item for that sex exists.
+
+**It nearly ate the file, and that is the part worth keeping.** The first version regenerated from
+scratch and produced **801 rows against 13,503** — a 94% loss that exits 0 and reads like a clean
+run. The cause: the existing 95 tokens come from an earlier analysis over a wider population than
+this bucketing covers, so "rebuild" and "extend" are not the same operation here. Only 14 of the
+95 overlap. The generator now keeps every existing row verbatim and adds only unseen tokens, and
+the run asserts it: **every old row still present — True**, 299 added, 13,802 total.
+
+That is the same shape as the wrong-column failures `CLAUDE.md` lists, with the damage pointed at
+an output instead of an input: a smaller number that looks like a result.

@@ -270,37 +270,27 @@ two hops, so they need something other than a relative or they stay markers.
 
 ## Name items — the ambiguity
 
-**Every one of the 769 still-ambiguous strings now has a named cause.**
-`scripts/classify-name-ambiguity.py` → `reports/name-ambiguity-buckets.tsv`, run entirely
-offline: all 1,380 competing items are in `wikidata/items/`, so nothing was fetched.
+**Every one of the 769 still-ambiguous strings has a named cause**, and the two buckets a
+bearer's sex can settle are now applied. `scripts/classify-name-ambiguity.py` →
+`reports/name-ambiguity-buckets.tsv`, offline:
 
     same romanisation  490  63.7%    native script  204  26.5%
     other               35   4.6%    duplicate       21   2.7%
     sex split           15   2.0%    language split   2   0.3%    no description  2  0.3%
 
-**The `other` bucket was the open question and it is not mixed.** All 35 are **given** names, and
-**33** are one shape: a generic item against a sexed one, or two differently-sexed ones —
-`Abba` is *male given name* against *unisex given name*, `Salmon` is *given name* against *male
-given name*. The two exceptions are `Devlet` (*Turkish given name* vs *female given name*, a
-language-and-sex split) and `McLean` (*male given name* vs *masculine given name*, which is one
-thing worded twice and so a Wikidata duplicate).
+**70% is not ours to resolve** — a native-script pair and a romanisation collision are Wikidata
+modelling and a destroyed distinction respectively. The 21 duplicates are in
+`reports/merges-to-do.md`.
 
-**Decision taken, not asked** — `CLAUDE.md` § *Working the queue: GUESS*. Her `Maria` ruling
-already settles this shape: *"there's a male and a female Maria… That is settled by the person's
-sex."* Extended to the generic case: where one candidate is the bare `given name` and the other
-is sexed, take the sexed item matching the **bearer's** recorded sex, and fall back to the
-generic where the bearer has no sex. That is per bearer, not per string, exactly as
-`reports/name-resolved-by-sex.csv` already does for the 95.
+**Still to do: nothing on the resolvable part.** `scripts/resolve-names-by-sex.py` extends
+`reports/name-resolved-by-sex.csv` — 13,503 → **13,802** rows, 299 new pairs over 34 tokens. What
+is left is the residue that no rule settles: **1** bearer with no recorded sex and no generic item
+to fall back to.
 
-**Note the buckets differ from `reports/name-ambiguity-causes.md`**, which was written by hand
-with no script and could not be re-derived. Where the two disagree the script is the one that can
-be re-run; it is deliberately ordered most-specific-first and the ordering is in its docstring.
-
-**70% is still not ours to resolve** — a native-script pair and a romanisation collision are
-Wikidata modelling and a destroyed distinction respectively.
-
-**Still to do:** apply the sexed-vs-generic rule to the 33 the way the 95 were applied, extending
-`reports/name-resolved-by-sex.csv`.
+**Do not "rebuild" that file.** Its original 95 tokens come from an earlier analysis whose script
+is gone and from a wider population than this bucketing covers. Regenerating from scratch produced
+801 rows against 13,503 — a 94% loss that looks like a clean run. The generator therefore keeps
+every existing row verbatim and adds only tokens it has not seen.
 
 ## Comprehensive Wikidata re-import — measured over two passes: NO clear end point
 
