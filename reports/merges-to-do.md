@@ -210,7 +210,102 @@ Not duplicates - three you called erroneous on 2026-08-30. None has been investi
 - **"En dödfödd son Bielke"** - created as a label, which is a description of a stillborn child rather than a name.
 
 
-## 5. Name items merged away by other editors
+## 5. Name items that look like Wikidata duplicates
+
+**43 distinct item pairs**, across 59 name strings. Two items for one name with **identical English descriptions** and nothing else to tell them apart — `Schloss` is `Q105540652` *family name* and `Q37300956` *family name*.
+
+`reports/name-ambiguity-causes.md` found this bucket and its verdict was *"worth reporting upstream rather than choosing between"*. **An identical description is evidence, not proof** — the description may simply be too thin to distinguish two real names — so these are candidates to look at, not merges to run blind. They do not feed the name plan and nothing here depends on them.
+
+Some pairs appear under more than one spelling, which is itself a hint: `Strauss` and `Strauß` resolve to the same two items, as do `FitzGerald` and `Fitzgerald`.
+
+- **Schloss, Schloß** — family, 118 bearer(s), both described *family name*
+    - merge **Q105540652** into **Q37300956** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q105540652&to=Q37300956
+- **STRAUSS, Strauss, Strauß** — family, 116 bearer(s), both described *family name*
+    - merge **Q15731389** into **Q10450274** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q15731389&to=Q10450274
+- **Joanna** — given, 97 bearer(s), both described *female given name*
+    - merge **Q106481439** into **Q4248351** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q106481439&to=Q4248351
+- **De Sousa, de Sousa** — family, 70 bearer(s), both described *family name*
+    - merge **Q99908123** into **Q55739047** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q99908123&to=Q55739047
+- **FitzGerald, Fitzgerald, fitzGerald, fitzgerald** — family, 45 bearer(s), both described *family name*
+    - merge **Q55550590** into **Q16466739** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q55550590&to=Q16466739
+- **LeRoy, Leroy** — given, 35 bearer(s), both described *male given name*
+    - merge **Q19839124** into **Q19839067** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q19839124&to=Q19839067
+- **Rodríguez** — family, 33 bearer(s), both described *family name*
+    - merge **Q63315319** into **Q1654058** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q63315319&to=Q1654058
+- **Reiss, Reiß** — family, 28 bearer(s), both described *family name*
+    - merge **Q60170844** into **Q15725918** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q60170844&to=Q15725918
+- **Hess, Heß** — family, 25 bearer(s), both described *family name*
+    - merge **Q57661293** into **Q21482735** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q57661293&to=Q21482735
+- **FitzRoy, Fitzroy, fitzRoy** — family, 21 bearer(s), both described *family name*
+    - merge **Q92288868** into **Q21233885** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q92288868&to=Q21233885
+- **Da Costa, da Costa** — family, 16 bearer(s), both described *family name*
+    - merge **Q63677459** into **Q23038711** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q63677459&to=Q23038711
+- **Demetrios** — given, 11 bearer(s), both described *male given name*
+    - merge **Q30127367** into **Q19803788** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q30127367&to=Q19803788
+- **de Mesquita** — family, 10 bearer(s), both described *family name*
+    - merge **Q130724081** into **Q101038014** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q130724081&to=Q101038014
+- **Gross** — family, 8 bearer(s), both described *family name*
+    - merge **Q57645534** into **Q14290163** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q57645534&to=Q14290163
+- **Angress** — family, 7 bearer(s), both described *family name*
+    - merge **Q107527023** into **Q105975011** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q107527023&to=Q105975011
+- **Haussmann, Haußmann** — family, 7 bearer(s), both described *family name*
+    - merge **Q74081542** into **Q1591313** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q74081542&to=Q1591313
+- **MacDonald, Macdonald** — family, 7 bearer(s), both described *family name*
+    - merge **Q52984204** into **Q2778569** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q52984204&to=Q2778569
+- **de Zúñiga** — family, 5 bearer(s), both described *family name*
+    - merge **Q133254410** into **Q99981154** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q133254410&to=Q99981154
+- **Mackay** — family, 4 bearer(s), both described *family name*
+    - merge **Q63978307** into **Q21506751** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q63978307&to=Q21506751
+- **Evaristo** — given, 4 bearer(s), both described *male given name*
+    - merge **Q21156914** into **Q18402192** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q21156914&to=Q18402192
+- **Máximo** — given, 4 bearer(s), both described *male given name*
+    - merge **Q20000642** into **Q4475314** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q20000642&to=Q4475314
+- **Pruss** — family, 3 bearer(s), both described *family name*
+    - merge **Q83495364** into **Q37491734** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q83495364&to=Q37491734
+- **MacWilliam** — family, 3 bearer(s), both described *family name*
+    - merge **Q105623240** into **Q36873851** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q105623240&to=Q36873851
+- **de Witt** — family, 3 bearer(s), both described *family name*
+    - merge **Q106352426** into **Q16869461** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q106352426&to=Q16869461
+- **de Vries** — family, 3 bearer(s), both described *family name*
+    - merge **Q83345792** into **Q1180481** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q83345792&to=Q1180481
+- **MacKenzie** — family, 3 bearer(s), both described *family name*
+    - merge **Q59196750** into **Q13553907** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q59196750&to=Q13553907
+- **Macdonald** — given, 3 bearer(s), both described *male given name*
+    - merge **Q55747656** into **Q21513094** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q55747656&to=Q21513094
+- **Nussbaum, Nußbaum** — family, 3 bearer(s), both described *family name*
+    - merge **Q83500875** into **Q30106376** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q83500875&to=Q30106376
+- **van Cleef** — family, 2 bearer(s), both described *family name*
+    - merge **Q136230075** into **Q21492169** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q136230075&to=Q21492169
+- **du Parc** — family, 2 bearer(s), both described *family name*
+    - merge **Q104594425** into **Q62705779** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q104594425&to=Q62705779
+- **de Guevara** — family, 2 bearer(s), both described *family name*
+    - merge **Q111669728** into **Q99981096** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q111669728&to=Q99981096
+- **Dubois** — family, 2 bearer(s), both described *family name*
+    - merge **Q57905938** into **Q16798403** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q57905938&to=Q16798403
+- **Yael** — given, 2 bearer(s), both described *female given name*
+    - merge **Q104409736** into **Q8046631** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q104409736&to=Q8046631
+- **MacDowall** — family, 1 bearer(s), both described *family name*
+    - merge **Q99910038** into **Q6723006** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q99910038&to=Q6723006
+- **Sass** — family, 1 bearer(s), both described *family name*
+    - merge **Q111605746** into **Q21484988** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q111605746&to=Q21484988
+- **Glass** — family, 1 bearer(s), both described *family name*
+    - merge **Q57249851** into **Q16870200** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q57249851&to=Q16870200
+- **Clauss** — family, 1 bearer(s), both described *family name*
+    - merge **Q83500996** into **Q21482988** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q83500996&to=Q21482988
+- **MacMillan** — family, 1 bearer(s), both described *family name*
+    - merge **Q77024917** into **Q26709983** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q77024917&to=Q26709983
+- **Maclean** — given, 1 bearer(s), both described *male given name*
+    - merge **Q64349020** into **Q29960616** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q64349020&to=Q29960616
+- **Fitzroy** — given, 1 bearer(s), both described *male given name*
+    - merge **Q92240617** into **Q21079620** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q92240617&to=Q21079620
+- **Marsden** — given, 1 bearer(s), both described *given name*
+    - merge **Q104265037** into **Q52186513** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q104265037&to=Q52186513
+- **Mackenzie** — given, 1 bearer(s), both described *unisex given name*
+    - merge **Q84323319** into **Q14667660** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q84323319&to=Q14667660
+- **Maryanne** — given, 1 bearer(s), both described *female given name*
+    - merge **Q63339460** into **Q20898971** — https://www.wikidata.org/wiki/Special:MergeItems?from=Q63339460&to=Q20898971
+
+## 6. Name items merged away by other editors
 
 Your 2026-08-29 note: name items we created were merged into existing ones, and *"creating the name objects and having them merged by somebody else... is a thing that gets attention in a bad way"*. `Tunheim` is the one that already happened. The fix - invert the default so an existing name item is reused - is a queue item, not something for this sitting; it is here so the merges are in one place.
 

@@ -129,7 +129,12 @@ def emit(people, families, path, note, sexes=None, fam_base=None):
             # assertion on this repo's primary key.
             if not gid.startswith(str(SYNTHETIC_INDI_BASE)[:6]):
                 fh.write("1 RFN geni:%s" % gid + chr(10))
-        for i, (husb, wife, kids) in enumerate(families, 1):
+        for i, family in enumerate(families, 1):
+            # A family is `(husb, wife, kids)` and may carry a fourth element naming what
+            # kind of union it was: `"DIV"` for one Geni records as ended, `"ENGA"` for an
+            # engagement. Unpacked this way so the three-element appends stay as they are.
+            husb, wife, kids = family[0], family[1], family[2]
+            tag = family[3] if len(family) > 3 else None
             fh.write("0 @F%d@ FAM" % (fam_base + i) + chr(10))
             if husb:
                 fh.write("1 HUSB @I%s@\n" % husb)
@@ -137,6 +142,8 @@ def emit(people, families, path, note, sexes=None, fam_base=None):
                 fh.write("1 WIFE @I%s@\n" % wife)
             for k in sorted(kids):
                 fh.write("1 CHIL @I%s@\n" % k)
+            if tag:
+                fh.write("1 %s Y\n" % tag)
         fh.write("0 TRLR\n")
 
 
@@ -211,6 +218,20 @@ PATH_REL = {
     "husband": "spouse", "wife": "spouse", "partner": "spouse",
 }
 
+#: **A FORMER partner is still a partner, and the `ex-` prefix was silently dropping them.**
+#: The relation word is the last token of the phrase, so `her ex-husband` yields `ex-husband`,
+#: which is not in `PATH_REL` and is not `brother`/`sister` -- so the edge was never emitted.
+#: That accounted for **every remaining broken link on the paths**: 58 of the 59, being
+#: `ex-husband` 25, `ex-wife` 19, `ex-partner` 13 and `fiancée` 1.
+#:
+#: Emma, 2026-08-31, asked how to close them: *"Synthesise the edges from the paths."*
+#:
+#: A former marriage is a marriage that ended, so the pair goes into a `FAM` and the family
+#: carries `1 DIV Y` -- Geni exports the same way, `1 DIV` appearing in 502 of them. An
+#: engagement never became one, so it carries `1 ENGA Y` and no `DIV`.
+FORMER = re.compile(r"^ex-(husband|wife|partner)$", re.I)
+ENGAGED = {"fiancée", "fiancee", "fiancé", "fiance"}
+
 
 def from_paths(ph):
     """Family edges from consecutive rows of every `paths/*.tsv`.
@@ -239,6 +260,14 @@ def from_paths(ph):
             if not pid or not prev_id:
                 continue
             word = rel.split()[-1] if rel else ""
+            # Normalise a former or prospective partner onto the spouse handling below, and
+            # remember which it was so the family can say so.
+            ended, engaged = False, False
+            m_former = FORMER.match(word)
+            if m_former:
+                word, ended = m_former.group(1).lower(), True
+            elif word in ENGAGED:
+                word, engaged = "partner", True
             kind = PATH_REL.get(word)
             if kind == "parent":
                 key = ("C", pid, prev_id)
@@ -267,7 +296,8 @@ def from_paths(ph):
                     continue
                 seen.add(("S", pair))
                 fams.append((pid if word == "husband" else prev_id,
-                             prev_id if word == "husband" else pid, set()))
+                             prev_id if word == "husband" else pid, set(),
+                             "DIV" if ended else "ENGA" if engaged else None))
     return {g: n for g, n in people.items() if n}, fams
 
 

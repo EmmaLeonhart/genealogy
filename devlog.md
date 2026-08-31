@@ -21306,3 +21306,23 @@ other. The decision is to **leave them ambiguous**. Ranking two items by how man
 they carry is the tie-break heuristic she rejected in as many words — *"you jumped through a lot
 of hoops to try to introduce safety stuff here that I did not want"* — and an ambiguity recorded
 is cheaper than a wrong link created.
+
+## 2026-08-31 — the 57 duplicate name items, recomputed in full and added to her file
+
+`reports/name-ambiguity-causes.md` found a bucket of name strings whose two candidate items
+carry **identical English descriptions** — `Schloss` is `Q105540652` *family name* and
+`Q37300956` *family name*, with nothing between them — and concluded they were *"worth
+reporting upstream rather than choosing between"*. It named four examples and no list.
+
+`scripts/find-duplicate-name-items.py` recomputes the bucket: **59 name strings over 43 distinct
+item pairs**, fetched in 31 batched `wbgetentities` calls rather than one per item. They are now
+section 5 of `reports/merges-to-do.md`, with each merge prefilled.
+
+**Two design points worth keeping.** A pair with **no** description on either side is excluded —
+two empty strings are trivially equal and would have made the largest and emptiest bucket. And
+the file says plainly that an identical description is *evidence, not proof*: `family name` may
+simply be too thin to separate two real names, so these are candidates to look at rather than
+merges to run blind. Nothing in the pipeline consumes them.
+
+**A pair appearing under several spellings is itself a signal**: `Strauss`, `Strauß` and
+`STRAUSS` all resolve to the same two items, as do the four spellings of `Fitzgerald`.

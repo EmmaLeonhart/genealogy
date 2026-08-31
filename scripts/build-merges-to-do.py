@@ -182,7 +182,48 @@ def main():
         "of a stillborn child rather than a name.\n"
     )
 
-    w.append("\n## 5. Name items merged away by other editors\n")
+    w.append("\n## 5. Name items that look like Wikidata duplicates\n")
+    dupe_names = ROOT / "reports" / "duplicate-name-items.tsv"
+    if dupe_names.exists():
+        by_pair = {}
+        with io.open(dupe_names, encoding="utf-8", newline="") as fh:
+            for row in csv.DictReader(fh, delimiter="\t"):
+                by_pair.setdefault(row["qids"], []).append(row)
+        w.append(
+            f"**{len(by_pair)} distinct item pairs**, across "
+            f"{sum(len(v) for v in by_pair.values())} name strings. Two items for one name "
+            "with **identical English descriptions** and nothing else to tell them apart — "
+            "`Schloss` is `Q105540652` *family name* and `Q37300956` *family name*.\n"
+        )
+        w.append(
+            "`reports/name-ambiguity-causes.md` found this bucket and its verdict was *\"worth "
+            "reporting upstream rather than choosing between\"*. **An identical description is "
+            "evidence, not proof** — the description may simply be too thin to distinguish two "
+            "real names — so these are candidates to look at, not merges to run blind. They do "
+            "not feed the name plan and nothing here depends on them.\n"
+        )
+        w.append(
+            "Some pairs appear under more than one spelling, which is itself a hint: `Strauss` "
+            "and `Strauß` resolve to the same two items, as do `FitzGerald` and `Fitzgerald`.\n"
+        )
+        for qids, rows in sorted(by_pair.items(),
+                                 key=lambda kv: -sum(int(r["occurrences"] or 0)
+                                                     for r in kv[1])):
+            names = ", ".join(sorted({r["name"] for r in rows}))
+            bearers = sum(int(r["occurrences"] or 0) for r in rows)
+            parts = [q.strip() for q in qids.split("|")]
+            keep = sorted(parts, key=qnum)[0]
+            others = [q for q in sorted(parts, key=qnum)[1:]]
+            w.append(f"- **{names}** — {rows[0]['kind']}, {bearers} bearer(s), both described "
+                     f"*{rows[0]['description']}*")
+            for extra in others:
+                w.append(f"    - merge **{extra}** into **{keep}** — "
+                         + MERGE_URL.format(frm=extra, to=keep))
+    else:
+        w.append("`reports/duplicate-name-items.tsv` is not built; run "
+                 "`python scripts/find-duplicate-name-items.py`.\n")
+
+    w.append("\n## 6. Name items merged away by other editors\n")
     w.append(
         "Your 2026-08-29 note: name items we created were merged into existing ones, and "
         '*"creating the name objects and having them merged by somebody else... is a thing '
