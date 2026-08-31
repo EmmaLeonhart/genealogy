@@ -53,34 +53,6 @@ counts are not stale when she next sits down to it.
 **The merges themselves are hers now, not mine** — that is what the file is for. The Izumo
 three are cleared and the browser pass is closed.
 
-## The generator must PRODUCE the parent merge candidates, not have them built by hand
-
-Her instruction, 2026-08-31, and the shape of it is that the adjudication file becomes an
-**output of the run** rather than something assembled separately when somebody notices.
-
-Today the duplicate guard refuses a creation, prints a line, and the person is lost to the
-carry-forward. The candidate list she actually answered from — `reports/rejected-parents.tsv`
-via `out/gui-data.json` — was produced by a one-off script after the fact. That is why 913
-blocked parents sat unexamined: nothing put them in front of her.
-
-- **Emit the candidates as part of the run.** Every parent the guard rejects, with the item
-  its child already names, the evidence on both sides (parents, spouses, children, and the
-  child that triggered the block), written each time the batch is built.
-- **Fold her answers back in.** `reports/emma-judgments.tsv` is already read by `ledger()`;
-  the generator should carry the whole loop, so an answered pair never reappears.
-- **Regenerate the ledger. Do NOT rebuild the synoptic tree.** See `CLAUDE.md`
-  § *Regenerating QuickStatements always regenerates the ledger*.
-
-`scripts/list-rejected-parents.py` and the GUI in `out/parent-review.template.html` are the
-working parts; this is about moving them into the run rather than rewriting them.
-
-## Run the generator: ledger refreshed, synoptic tree untouched
-
-    BOT_CONTACT=... PYTHONPATH=src python scripts/build-daily-batch.py --refresh-ledger
-
-Then attach both `.qs` files. Runs after the two items above, so the merge candidates it
-produces are the first ones the new shape emits.
-
 ## ⛔ THE DAILY ALGORITHM — her full spec, 2026-08-26. SPECIFICATION, not a step
 
 `docs/dictation/2026-08-26-daily-algorithm.md` is her dictation verbatim;
@@ -1400,31 +1372,6 @@ nothing in `SURN`, so `classify_fields` reads it as `married` — a family name 
 after the fix. The `P5056` therefore did **not** come from this path, and where it did come from
 is not established. Find the emitter before changing anything.
 
-## The four legacy spine PATH FILES — decide whether they are deleted
-
-**Everything else in the legacy-spine item is done** (2026-08-31): `SPINE_PATHS` is the single
-Arne↔Bureus route, the one-hop-a-day `break` is gone, `SPINE_REVERSED` is empty,
-`check-spine-bonds.py` points at the live spine, and `reports/the-spine.md` is deleted.
-
-**What is left is the one part with a consequence.** Her item said to remove *"the path files
-that exist only to serve the four completed lines"* — `charlemagne-to-arne-garborg.tsv`,
-`bergitte-to-emma.tsv`, `bureus-to-emma.tsv`, `arne-to-signe-no-borsheim.tsv`.
-
-**They are not only spine files.** `paths/*.tsv` is the corpus that
-`scripts/census-paths.py`, `rank-broken-links.py` and `classify-broken-links.py` all read, and
-that census is currently **979 paths, 0 with a break**. Deleting four of them silently changes
-that headline, and the *"every path connects end to end"* result would then be measured over a
-different population than the one it was established on.
-
-**Two of the four are also different in kind.** `charlemagne-to-arne-garborg.tsv` came from a
-Geni page Emma saved — it is outside-the-corpus evidence of the sort `CLAUDE.md` calls the only
-material that names people whether or not an export reached them. The other three were generated
-by `scripts/path-between.py` from our own tree and can be regenerated.
-
-So: delete the three generated ones and keep the saved-page one, or keep all four as evidence of
-routes already walked. Either is defensible; doing it silently is not, because the path count is
-a published number.
-
 ## Always last — pinned to the very end of the file
 
 **Bullets, not letters.** These were `A.` and `B.`; `CLAUDE.md` § *Queue items are BULLET POINTS*
@@ -1869,3 +1816,39 @@ and it runs unattended.
 
 ---
 
+
+## One pipeline, one output file — a stale name file is dangerous
+
+**Emma, 2026-08-31:** the name generation must always be the same run as the day file. Two files
+built by two scripts means one can be from an earlier run, and nothing on the file says so — it
+happened today, when the day file was 14:32 and the name file 12:16 and only the mtimes gave it
+away.
+
+- **One output**, produced by one pipeline, with the names **at the end of it**.
+- The run order it encodes is unchanged: individuals, then names, then relationships. Her order
+  is structurally rigid.
+
+**Note the placement disagrees with § *One batch file, names first, and a created person is linked
+to their names***, which says names come first. This item is the later statement and wins; the
+older section is cross-referenced here so the two are not solved twice.
+
+## A unified CI/CD pipeline that builds it
+
+Once the file above is one artefact, one workflow should produce it, on the public repo, on
+GitHub Actions.
+
+**`AskUserQuestion` on how to save space** — that is the gate, and it is hers to answer.
+Actions minutes are free on a public repo, but the runner is 16 GB against a merge that peaks at
+16.8 GB, and the working tree is 12.2 GB with 1.9 GB of `.css` and `.download` page furniture
+under `geni-scraping/`. Put the options to her rather than picking one.
+
+**Never add a `push:` or `pull_request:` trigger** — `CLAUDE.md` § *Cost*. `schedule:` plus
+`workflow_dispatch:`.
+
+## Clear the personal information out, so the repo is safe to make public
+
+Runs after the pipeline item. ~96,000 rows concern people Geni treats as private.
+
+**The constraint the design starts from:** the Geni profile ID is both the identifier and this
+repo's primary key, so it cannot be hashed or dropped without breaking every join, every `P2600`
+statement and the spines. Redacting content while keeping structure is the likely shape.

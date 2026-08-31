@@ -22473,3 +22473,43 @@ for.
 `reports/garborg-qids.tsv` — she created him, and `p2600-all` was last refreshed 08-30. Three
 oracles are needed and the builder already uses all three: Wikidata's own `P2600`, the ledger,
 and `SPINE_ANCHORS`. Using one is how § *CHECK before you alarm her* gets broken.
+
+## 2026-08-31 — "why does it appear absent": it never was. 22 merges, 0 disagreements
+
+Her question about the ledger warnings, answered by resolving them rather than reasoning about
+them. All nine pairs I had flagged, and thirteen more, resolve the same way live:
+
+    6000000014196858070   ledger Q141225804 live | live Q141225805 -> Q141225804
+    6000000087535357291   ledger Q140568870 live | live Q141224005 -> Q140568870
+
+**The ledger was right every time, and the "live" value is a redirect to it.** She merged the
+duplicates; her contributions still name the item she *created*, and that item is now a redirect
+to the survivor. `refresh-garborg-ledger.py` compared the two strings and called it a
+disagreement — which reads as *these people are absent*, which is what she asked about.
+
+Now it resolves before comparing, in one request per 50 candidates: a scraped qid redirecting to
+what the ledger holds is **agreement**. **22 resolved as merges, 0 real disagreements**, 1,014
+rows. `Q141242568 -> Q130665779` is among them — the merge she flagged at 13:40 this morning,
+done.
+
+**Her spine-path decision, taken by `AskUserQuestion`:** delete the three generated, keep the
+saved page. `bergitte-to-emma.tsv`, `bureus-to-emma.tsv` and `arne-to-signe-no-borsheim.tsv` were
+built by `path-between.py` from our own tree and regenerate on demand;
+`charlemagne-to-arne-garborg.tsv` came from a Geni page she saved and nothing here reproduces it.
+**699 -> 696 path files**, and `census-paths.py` still reports *every path is connected end to
+end* — stated rather than left silent, because that count is published.
+
+**Three sections cleared, all verified:**
+
+- *The generator must PRODUCE the parent merge candidates* — `build-parent-candidates.py` runs
+  inside `build-daily-batch.py`; today's run printed `9,060 open candidates` and `60 in the deck`
+  from within the batch, not from a separate invocation.
+- *Run the generator* — ledger 978 -> 1013 -> 1014, 27 creations, both files attached.
+- *The four legacy spine PATH FILES* — answered and executed above.
+
+**And three she added at the tail:** one pipeline producing one output file with the names at the
+end (a stale name file is dangerous, and today's was 12:16 against a 14:32 day file); a unified
+CI/CD pipeline to build it, gated on an `AskUserQuestion` about saving space for a 16 GB runner;
+then clearing personal information so the repo is safe to make public. The first is noted as
+disagreeing on placement with the older § *One batch file, names first* — the later statement
+wins and the older section is cross-referenced so they are not solved twice.

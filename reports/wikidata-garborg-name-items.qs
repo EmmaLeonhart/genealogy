@@ -26,6 +26,10 @@ Q141242562	P734	LAST	S2600	"6000000007980605161"
 Q141198755	P734	LAST	S2600	"6000000007980728952"
 #   Q141223551 Ragnhild Ingebretsdatter Voster: P734 family name = the item just created
 Q141223551	P734	LAST	S2600	"6000000007980728958"
+#   Q141244126 Valborg Ingebretsdatter Voster: P734 family name = the item just created
+Q141244126	P734	LAST	S2600	"6000000007980728964"
+#   Q141244116 N.N. Voster: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
+Q141244116	P734	LAST	P3831	Q28418670	S2600	"6000000015302207141"
 
 # Jonsson -- patronymic, 5 bearer(s) in the batches
 # create a new item
@@ -36,8 +40,8 @@ LAST	Len	"Jonsson"
 LAST	Lmul	"Jonsson"
 #   P31 instance of = Q110874 patronymic
 LAST	P31	Q110874
-#   Q5568857 Daniel Jonsson Behmer: P5056 patronym or matronym = the item just created
-Q5568857	P5056	LAST	S2600	"6000000006776755330"
+#   Q5568857 Daniel Jonsson Behmer: P5056 patronym or matronym = the item just created, qualified P144 based on Q25451348 Jon Mickelsson Behm
+Q5568857	P5056	LAST	P144	Q25451348	S2600	"6000000006776755330"
 #   Q141224872 Petrus Jonae Jonæ Linnerius: P5056 patronym or matronym = the item just created
 Q141224872	P5056	LAST	S2600	"6000000006782697953"
 #   Q141216476 Jon Jonsson Vatne: P5056 patronym or matronym = the item just created, qualified P144 based on Q141216388 Jon Hansson St. Vatne
@@ -62,8 +66,12 @@ Q141223844	P5056	LAST	P144	Q141205932	S2600	"6000000004334886671"
 Q5613434	P5056	LAST	S2600	"6000000007026278130"
 #   Q6218220 Olof Olofsson Törnflycht: P5056 patronym or matronym = the item just created
 Q6218220	P5056	LAST	S2600	"6000000012056738350"
+#   Q16649961 Olof Olofsson Nauclérus: P5056 patronym or matronym = the item just created
+Q16649961	P5056	LAST	S2600	"6000000018985534304"
+#   Q5916162 Anders Olofsson Knös: P5056 patronym or matronym = the item just created
+Q5916162	P5056	LAST	S2600	"6000000020394079179"
 
-# 294 more name items are needed and wait for a later
+# 299 more name items are needed and wait for a later
 # run -- 3 a day is her cap, not a limit of the data:
 #   Trevland (family), 5 bearer(s)
 #   Ekebyholm (family), 4 bearer(s)
@@ -77,5 +85,5 @@ Q6218220	P5056	LAST	S2600	"6000000012056738350"
 #   Helgesen (patronymic), 3 bearer(s)
 #   Høle (family), 3 bearer(s)
 #   Ingebretsdatter (patronymic), 3 bearer(s)
-#   ... and 282 more
+#   ... and 287 more
 

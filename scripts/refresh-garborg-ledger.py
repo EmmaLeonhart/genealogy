@@ -192,6 +192,36 @@ def main():
     print(f"\n{len(added)} added to the ledger:")
     for g, qid, label in added:
         print(f"   {g}  {qid}  {label}")
+    # **A "disagreement" is usually a MERGE she has already done.** Emma merged nine duplicate
+    # items on 2026-08-31 and this went on reporting all nine, because her contributions still
+    # name the item she created and that item is now a REDIRECT to the survivor the ledger
+    # holds. Resolved live, every one of the nine pointed at the ledger's own value: the ledger
+    # was right and the warning was noise -- noise that reads as "these people are absent",
+    # which is exactly what she asked about.
+    #
+    # So resolve before comparing. A scraped qid that redirects to what the ledger holds is
+    # AGREEMENT. One request per 50 candidates, never one per item.
+    if changed:
+        redirects = {}
+        try:
+            ids = sorted({b for _, _, b in changed})
+            for k in range(0, len(ids), 50):
+                data = get({"action": "wbgetentities", "format": "json", "props": "info",
+                            "ids": "|".join(ids[k:k + 50])}, ua)
+                for q, v in data.get("entities", {}).items():
+                    target = (v.get("redirects") or {}).get("to")
+                    if target:
+                        redirects[q] = target
+        except Exception as exc:                                    # noqa: BLE001
+            print("WARNING: could not resolve redirects (%s) -- a disagreement below may "
+                  "simply be a merge she has already made" % exc)
+        merged = [(g, a, b) for g, a, b in changed if redirects.get(b) == a]
+        changed = [(g, a, b) for g, a, b in changed if redirects.get(b) != a]
+        if merged:
+            print("\n%d resolved as MERGES she has already made -- the live item redirects "
+                  "to what the ledger holds, so the ledger is right:" % len(merged))
+            for g, a, b in merged:
+                print(f"   {g}  {b} -> {a}")
     if changed:
         print(f"\n{len(changed)} DISAGREE with what the ledger held - not overwritten:")
         for g, a, b in changed:
