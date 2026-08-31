@@ -24,9 +24,12 @@ spouses and children of **both** sides plus the child whose item triggered the b
 words between the two sides are computed here and highlighted there; they are an aid to reading
 and never a decision -- `CLAUDE.md` no-name-similarity still governs, and this proposes nothing.
 
-**Answered pairs never come back.** `reports/emma-judgments.tsv` is the record, `ledger()` already
-folds its `SAME` rows, and every verdict in it -- `SAME`, `UNSURE`, anything -- retires the case
-here. An `UNSURE` is a decision she made once and should not be asked twice.
+**A DECIDED pair never comes back. An UNSURE one does.** `reports/emma-judgments.tsv` is the
+record and `ledger()` already folds its `SAME` rows. A `SAME` or a `DIFFERENT` is an answer and
+retires the case. **An `UNSURE` is not an answer** -- it is *I cannot tell from this*, and
+retiring it was something I invented and she did not ask for. Those come back, so a later run
+that has more evidence (a new export, a relative who has since gained an item) can put a better
+version of the same question in front of her.
 """
 
 import csv
@@ -121,13 +124,18 @@ def main():
             labels[row["geni_id"]] = row.get("label_en") or row.get("label_mul") or ""
 
     # ---- already answered, in either direction --------------------------------------
-    answered = set()
+    answered, unsure = set(), 0
     if JUDGMENTS.exists():
         with io.open(JUDGMENTS, encoding="utf-8", newline="") as fh:
             for row in csv.DictReader(fh, delimiter="\t"):
-                if row.get("geni_id") and row.get("qid"):
-                    answered.add((row["geni_id"].strip(), row["qid"].strip()))
-    sys.stderr.write("%s pairs already judged\n" % format(len(answered), ","))
+                if not (row.get("geni_id") and row.get("qid")):
+                    continue
+                if (row.get("verdict") or "").strip().upper() == "UNSURE":
+                    unsure += 1
+                    continue
+                answered.add((row["geni_id"].strip(), row["qid"].strip()))
+    sys.stderr.write("%s pairs decided; %d UNSURE, which stay in the deck\n"
+                     % (format(len(answered), ","), unsure))
 
     # ---- the guard's second arm, over every candidate --------------------------------
     rows = []

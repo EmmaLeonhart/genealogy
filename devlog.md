@@ -22513,3 +22513,59 @@ CI/CD pipeline to build it, gated on an `AskUserQuestion` about saving space for
 then clearing personal information so the repo is safe to make public. The first is noted as
 disagreeing on placement with the older § *One batch file, names first* — the later statement
 wins and the older section is cross-referenced so they are not solved twice.
+
+## 2026-08-31 — the patronymic test is DEAD CODE, and an editor just deleted the proof
+
+**Emma:** *"patronymics aren't a middle name they are a specific thing our pipeline should
+generate based on the given name property on the father matching a substring. Idk how our
+pipeline works but I'm guessing it's way more primitive."* She is right, and it is worse than
+primitive.
+
+**`namemodel.patronymic_or_surname` computes her substring test and throws the answer away.**
+Both branches return the same thing:
+
+    for given in givens:
+        if g == stem or (len(stem) >= 4 and g.startswith(stem[:4])):
+            return "patronymic"
+    return "patronymic"
+
+Verified by running it, not by reading it: `Kristiansen` with father `Kristian Olsen` and
+`Kristiansen` with father `Bartholomew Smith` both return `patronymic`. The only working
+discriminator is *father carries the same token*. The docstring credits the stem test with
+deciding 75% of cases; it decides none.
+
+**Measured over the corpus — 316,574 patronymic-shaped tokens on people with a named father:**
+
+| | tokens | share |
+| --- | ---: | ---: |
+| stem matches the father's given name — attested | 212,887 | 67.2% |
+| **stem matches nothing — emitted as a patronymic anyway** | **62,637** | **19.8%** |
+| father carries the same token — family | 41,050 | 13.0% |
+
+**And the 19.8% is not theoretical. `Epìdosis` deleted one today**, which is the link she pointed
+at. `Q141205900` *Bertrand Olav Olsen Vigdel*, ours, created 2026-08-25. His father in our own
+tree is **John Jonassen Hegre**. `Olsen` cannot be John's patronymic — the father's own
+patronymic is `Jonassen`, son of Jonas — so `Olsen` is a surname and our `P5056` pointing at
+`Q141223701` *Olsen* asserted something false. Epìdosis removed the `P5056`, removed our `en`
+label, and merged the item away.
+
+**The duplicate is a second, separate cause.** `Q138687615` was created 2026-03-16 by `Ajarmund`
+from *Våre falne* and carried **no `P2600`**, so `claimed` could not see it and the guard had
+nothing to catch. That is the same blind spot the parent-candidate deck exists for, one position
+over: an item that is plainly the same person and carries no Geni id.
+
+Both go to the queue rather than being fixed in the same breath — the patronymic change moves
+62,637 tokens and she should see the flip sample first.
+
+## 2026-08-31 — UNSURE is not an answer, and retiring it was mine
+
+**Emma, shown my own report line:** *"I don't think I actually asked for this either."* Correct.
+`build-parent-candidates.py` treated every verdict as final, so an `UNSURE` — which means *I
+cannot tell from this* — retired the case forever. She never asked for that; I wrote it into the
+docstring as though she had.
+
+Now only a decided verdict retires a pair. All three `UNSURE` cases are back in the pool, and
+`Christina Margareta af Palén` came back paired with a **different** candidate QID, which is the
+one-question-per-person rule doing its job rather than a miss. 9,060 → 9,061 open.
+
+Fast lane after the spine-path deletions: **1,508 passed, 36 skipped, 0 failed, 6m28.**
