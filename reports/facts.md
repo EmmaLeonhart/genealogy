@@ -4,21 +4,21 @@ Plan items 3 and 4. Emma, 2026-08-12: *"Occupation can be done with string
 stuff"* and *"Birthplace birth date death date death place burial date burial
 place all can be done with string."*
 
-One row per person in `reports/derived-facts.csv` — **1,449,096 people**, 
-of whom 42,645 carry a Wikidata item.
+One row per person in `reports/derived-facts.csv` — **1,451,964 people**, 
+of whom 43,680 carry a Wikidata item.
 
 ## What is actually present
 
 | field | people | share |
 | --- | ---: | ---: |
-| sex | 1,442,099 | 99.5% |
-| occupation | 185,286 | 12.8% |
-| birth date | 1,008,403 | 69.6% |
-| birth place | 376,785 | 26.0% |
-| death date | 807,251 | 55.7% |
-| death place | 263,797 | 18.2% |
-| burial date | 103,765 | 7.2% |
-| burial place | 99,103 | 6.8% |
+| sex | 1,444,974 | 99.5% |
+| occupation | 185,464 | 12.8% |
+| birth date | 1,011,055 | 69.6% |
+| birth place | 378,013 | 26.0% |
+| death date | 809,089 | 55.7% |
+| death place | 264,362 | 18.2% |
+| burial date | 103,991 | 7.2% |
+| burial place | 99,329 | 6.8% |
 
 ## Addresses, kept as text
 
@@ -29,14 +29,14 @@ rule of 2026-08-11**, which was chosen before its cost was known.
 
 | | events |
 | --- | ---: |
-| birth address | 603,801 |
-| death address | 451,950 |
-| burial address | 119,487 |
-| birth address, **no `PLAC` at all** | 409,488 |
-| death address, **no `PLAC` at all** | 318,164 |
-| burial address, **no `PLAC` at all** | 58,645 |
+| birth address | 605,378 |
+| death address | 452,978 |
+| burial address | 119,739 |
+| birth address, **no `PLAC` at all** | 410,256 |
+| death address, **no `PLAC` at all** | 318,875 |
+| burial address, **no `PLAC` at all** | 58,766 |
 
-**792,386 events would have had no location under the old rule** and now keep one.
+**793,992 events would have had no location under the old rule** and now keep one.
 
 **One thing to flag rather than decide.** `P6375` is documented as a *street*
 address — building number, locality, post code, and explicitly not country.

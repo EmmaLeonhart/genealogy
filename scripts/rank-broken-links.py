@@ -102,8 +102,15 @@ def main():
         })
     rows.sort(key=lambda r: (-r["paths_blocked"], r["from_geni"]))
 
+    # **Zero broken links is a RESULT, not an error.** `list(rows[0])` raised `IndexError` the
+    # first time every path connected -- after the `ex-` fix put the former-partner families into
+    # `exports/0-scraped/scraped-paths.ged` -- and it raised *inside* the open-for-write, so it
+    # truncated `broken-links.tsv` on the way out and destroyed the list it was replacing. A
+    # script that crashes on success and takes its own previous output with it is worse than one
+    # that reports nothing.
+    FIELDS = ["paths_blocked", "from_geni", "from_name", "to_geni", "to_name", "example_path"]
     with OUT_TSV.open("w", encoding="utf-8", newline="") as fh:
-        w = csv.DictWriter(fh, fieldnames=list(rows[0]), delimiter="\t", lineterminator="\n")
+        w = csv.DictWriter(fh, fieldnames=FIELDS, delimiter="\t", lineterminator="\n")
         w.writeheader()
         w.writerows(rows)
 
@@ -136,7 +143,8 @@ def main():
             fh.write(f"| {r['paths_blocked']} | {r['from_name'] or r['from_geni']} "
                      f"| {r['to_name'] or r['to_geni']} |\n")
 
-    print(f"top link blocks {rows[0]['paths_blocked']} paths")
+    print(f"top link blocks {rows[0]['paths_blocked']} paths" if rows
+          else "no broken links -- every step of every path is carried by the tree")
     print(f"wrote {OUT_TSV.relative_to(ROOT)} and {OUT_MD.relative_to(ROOT)}")
 
 

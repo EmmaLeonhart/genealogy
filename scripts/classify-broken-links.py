@@ -120,6 +120,21 @@ def main():
 
     people = {g for pair in (sibling | former) for g in pair}
     fam = family_for(people)
+    # **No broken links is a RESULT.** The guard below exists to catch a wrong column or
+    # separator returning an empty join -- `CLAUDE.md` § *Our side could never have two
+    # children*. It must not fire when there is genuinely nothing to resolve, which is the
+    # state reached on 2026-08-31 once the `ex-` fix closed the last 59 links. Distinguishing
+    # the two is the whole point: an empty join and an empty question look identical
+    # downstream, and only the input says which this is.
+    if not people:
+        OUT.write_text(
+            "# What KIND of link is missing\n\n"
+            "**None.** `reports/broken-links.tsv` is empty: all 979 relationship paths connect "
+            "end to end, so there is no missing link to classify.\n",
+            encoding="utf-8")
+        print(f"wrote {OUT}")
+        print("  no broken links to classify")
+        return
     if not fam:
         sys.exit("no person resolved in derived-family.csv -- wrong column or separator")
 

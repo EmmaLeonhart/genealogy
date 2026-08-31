@@ -128,28 +128,6 @@ Items 3, 5 and 6 are independent of this chain and can run at any point.
 
 ---
 
-## THE AGENDA — Emma 2026-08-15. Everything else is secondary
-
-Two of her three things are closed. What is left is the bridge work: connect her to the
-researchers on Wikidata.
-
-**The blocking links are measured and the fix is in.** `reports/broken-link-kinds.md`. What was
-reported as *"102 small repairs"* was 43 sibling links that were never broken — a wrong column in
-`census-paths.load_adjacency` — plus 58 former partners the GEDCOM builder was dropping on the
-`ex-` prefix. Both are fixed: **45 of 979 paths, 59 links** after the column fix, and
-`exports/0-scraped/scraped-paths.ged` now carries **117 `DIV` and 6 `ENGA`** families where it
-carried none.
-
-**The one step left: re-merge and re-derive, then re-measure.** `reports/derived-family.csv` is
-built from `out/merged.ged`, so nothing about connectivity has moved yet — the new families are on
-disk and have not been merged. Run the merge, rebuild the derived CSVs, then
-`python scripts/rank-broken-links.py` and `python scripts/classify-broken-links.py`. Expect the
-former-partner class to close; anything left after that is a genuinely new finding.
-
-**The lettering was mine, not hers.** She listed three things; calling them Task A/B/C was
-invented structure: *"I don't know why you think that you should be using these made-up task
-names."*
-
 ## THE EDIT ALGORITHM — her specification, recorded verbatim in substance
 
 **She raised this because she was worried it had been altered:** *"I don't think I

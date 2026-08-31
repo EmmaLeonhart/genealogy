@@ -21718,3 +21718,44 @@ standing obligation and the section now says so. Left as a note rather than dele
 re-measure is still the right thing if the sv.wikipedia roster itself changes.
 
 60 → 59 sections.
+
+## 2026-08-31 — every relationship path now connects end to end
+
+`THE AGENDA`'s remaining work was the bridge work, measured as paths blocked by a missing link.
+After the re-merge:
+
+    699 files -> 979 paths, 0 with at least one break
+    0 distinct missing links
+    "every path is connected end to end."   -- scripts/census-paths.py, independently
+
+**Verified pair by pair, not inferred from an empty output.** All **59** links on the previous
+list resolve as connected against the new `derived-family.csv`; 0 remain. That check mattered
+because the result matched a prediction I had written down in advance, which is exactly when an
+empty join is most dangerous — `CLAUDE.md` § *Our side could never have two children*. The
+adjacency loads 1,451,534 people with a relationship and 994,402 with more than one parent, so
+the join is populated rather than silently empty.
+
+**The arc of this item, since three of its four states were wrong:** it read *"85 of 979 paths,
+102 small repairs"*. 43 of those links were never broken — `census-paths.load_adjacency` read the
+singular `father`/`mother` columns where the file also has `fathers`/`mothers`. That left 59, all
+former partners, dropped by `build-scraped-gedcom.py` because the relation word is the last token
+of the phrase and `her ex-husband` yields `ex-husband`, which is in neither `PATH_REL` nor the
+sibling test. Emma's instruction was *"Synthesise the edges from the paths"*, so `FORMER`
+normalises the prefix onto the existing spouse handling — `1 DIV Y` for a marriage that ended,
+which is how Geni exports it, `1 ENGA Y` for the one engagement. 117 and 6 families.
+
+**Two scripts crashed on success and both are fixed.** `rank-broken-links.py` did
+`list(rows[0])` **inside** its open-for-write, so on the first fully-connected run it raised
+`IndexError` and truncated `broken-links.tsv` on the way out — destroying the very list it was
+replacing. Recovered from git. `classify-broken-links.py` hit its own emptiness guard, which was
+written to catch a wrong column and could not tell that from a genuinely empty question. Both now
+treat zero as a result: a script that dies when the work succeeds, taking its previous output
+with it, is worse than one that reports nothing.
+
+**What this does not claim.** The paths connecting is our tree carrying every step Geni states.
+It is not the same as Emma being densely linked *on Wikidata*, which is the goal
+`CLAUDE.md` § *The practical goal is EMMA densely linked* actually names. The bridge measurement
+is closed; the linking is a different item.
+
+The corpus behind it: **1,451,964 INDI, 630,050 FAM, 600 sources**, and the four derived CSVs
+rebuilt and repacked.
