@@ -20939,3 +20939,33 @@ item when it was written and both now hold `Q141178381` and `Q141178380`.
 
 **No assertion was loosened.** The alternative was an assertion that can never be green again
 once anything is run, which is a test to fix rather than to delete. 335 pass.
+
+## 2026-08-31 — clearing finished items out of the queue, which I had not been doing
+
+Emma: *"What the fuck are you not clearing the finished tasks from the queue?"* She is right and
+the evidence is the count: the queue went **68 → 69 headings today while several items were
+closed**, because I had been *rewriting* finished sections with their results instead of deleting
+them. `queue.md` § *How to read this file* is explicit — **an item is deleted when it is done**,
+and a section still there is a step not yet taken. Annotating one with "DONE" keeps it as a step
+and makes the queue unreadable, which is the state she asked to have fixed on 2026-08-27.
+
+**Deleted outright:**
+
+- *The three spine lines from Charlemagne to Emma* — she declared all four complete on
+  2026-08-30 (*"the spines are all clear"*), and *The old spines are legacy* is the live
+  successor.
+- *THE PATH AND EXPORT-ROUTING WORK* — a note I wrote when moving three sections to the tail.
+  An explanation is not a queue item; it belongs with the sections it explains, and it now is.
+
+**Cut back to only what is not done:**
+
+- *THE AGENDA* — two of its three tasks are closed. The sparse-area exports were backtested
+  (80% closure on the ten clusters they targeted, 23 of 24 caused by the exports themselves) and
+  the CJK question was settled by measurement. What remains is the bridge work, and its live
+  form is `reports/broken-links.md`: 85 of 979 paths, 102 missing edges, no leverage play.
+- *Audit of Geni merges* — steps 1 and 2 are finished and their story is in `devlog.md`, not
+  here. What stays is step 3, the browser pass, which is now mine, plus what the first attempt
+  established.
+
+**204 lines out, 43 in.** 69 → 67 sections, 2,237 → 2,202 lines, and the sections that remain are
+steps rather than records.

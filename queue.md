@@ -42,85 +42,29 @@ These are supposed to be manually added to the queue and worked on, do no just p
 
 ## ⛔ Audit of Geni merges — her method, 2026-08-24
 
-*"Find profiles that look similar like shared parents, plus look over basically all
-Japanese items with higher scrutiny, and then use the browser extension to see if they
-merge. Izumo ones are good to explore to see how redirects potentially work."*
+Emma, 2026-08-24: *"Find profiles that look similar like shared parents, plus look over
+basically all Japanese items with higher scrutiny, and then use the browser extension to see if
+they merge. Izumo ones are good to explore to see how redirects potentially work."*
 
-Three steps, in her order:
+**Steps 1 and 2 are done** — `scripts/find-geni-duplicates.py` → 12,287 candidate groups, recall
+fixed from 1 to 15 of the 29 known merged pairs (14 of 14 strongly-evidenced), markers no longer
+leaking, CJK classified and sorted first. `devlog.md` 2026-08-30 has the detail;
+`tests/test_join_sanity.py` pins the recall so it cannot slide back.
 
-**Steps 1 and 2 are built** — `scripts/find-geni-duplicates.py` →
-`reports/geni-duplicate-candidates.tsv`. Nothing merged, nothing rewritten.
+**Step 3 is the live one, and it is MINE to perform.** Emma, 2026-08-31: *"Do this stuff with
+your chrome extension yourself or drop it."* `reports/geni-merge-worklist.md` is the order to
+work in — the 3 Izumo groups first, then the 40 largest CJK groups.
 
-**Checked against ground truth 2026-08-30, and it was finding almost none of them.**
-`reports/geni-stale-duplicates.tsv` holds 29 pairs Geni has *actually* merged. The report
-contained **1** of them; 25 appeared in it not at all — while showing a plausible 10,111 groups.
-The key was `(father_id, mother_id)`, and a Geni duplicate is almost never one lone profile:
-somebody re-creates a stretch of line, so child and parent are both duplicated and the two
-children hang off different parent ids. Every `strong` ground-truth row is that shape.
+**First pair confirmed on the page, merge not yet made.** `Munetoshi 71 Senge`: `…623899`
+(19 Aug, two children, `Q135579493` in the About) against `…446840` (20 Aug, empty). Same name,
+same regnal number 71, same father `Sakusa no Jisei Senge`, each recorded as the other's
+brother. Keep `…623899`.
 
-A third pass brackets on the parent's **name** instead, one parent at a time, with dated members
-required to agree within `YEAR_TOLERANCE` — without that check 77.6% of its groups held members
-born decades apart, because Nordic naming reuses a name every generation.
-**Recall 1 → 15 of 29, and 14 of 14 on the strongly-evidenced ones**, for 10,111 → 12,318 groups.
-`tests/test_join_sanity.py` now pins the recall, so it cannot slide back.
-
-The Japanese pass exists now and did not before: the `script` column read `Latin` for all
-1,329,328 people because the finder matched the romanised `label_en`, while the kanji sit in
-`cjk_names`. It now classifies and matches on both, giving **119 CJK-scripted groups** where
-there were 0, sorted first. `tests/test_join_sanity.py` fails if that returns to 0.
-
-**The merges are MINE to perform now.** Emma, 2026-08-31: *"Do this stuff with your chrome
-extension yourself or drop it."* The old rule — *the merges are hers, never performed here* —
-is superseded, and reporting it as BLOCKED-ON-USER-ACTION was the invented-blocker failure
-`CLAUDE.md` § *The batches are a SEQUENCE* names.
-
-**First pair verified on the page and NOT yet merged.** `Munetoshi 71 Senge` is an unambiguous
-duplicate, confirmed by opening both profiles:
-
-| | `6000000227331623899` | `6000000227350446840` |
-| --- | --- | --- |
-| added | 19 Aug 2026 | 20 Aug 2026 |
-| children | Toyomasa 73, Toyomi 74 | none |
-| About | `wikidata.org/.../Q135579493` | empty |
-
-Same name, same regnal number **71**, same father `Sakusa no Jisei Senge`, both managed by Emma,
-and **each is recorded as the other's brother** — Geni shows `Brother of Munetoshi 71 Senge` on
-both. Merge direction: keep `…623899`, the richer one that carries the QID and the children.
-
-**The attempt was abandoned on the renderer, not on doubt.** Three `Page.captureScreenshot`
-timeouts and a page zoom that changes between renders, so clicks land on stale coordinates.
-`docs/export-seed-rules.md` § *Bail on anything weird* governs. The specific hazard that made
-stopping the right call rather than a cautious one: **`Delete profile` sits three rows below
-`Merge This Profile`** in the Actions menu, so a blind coordinate click on an unreliable render
-can destroy a profile instead of merging it. Retry from a fresh tab.
-
-`reports/geni-merge-worklist.md` carries the other two Izumo pairs and the CJK list.
-
-**The handoff exists now — `reports/geni-merge-worklist.md`**, built by
-`scripts/build-merge-worklist.py`. 12,287 groups is not something anyone opens a browser
-against, which is why the step had no practical starting point. The worklist is the top of
-them as clickable pages: **the 3 Izumo groups first**, then the 40 largest CJK groups.
-
-The Izumo three are `息長宿祢王` (which is also one of the ground-truth pairs the recall fix
-recovered), `Munetoshi 71 Senge`, and `Shigeyasu Takaoka`.
-
-**They had to be found by id, and one file was not enough.** `izumo-coverage.tsv` looks like the
-roster and **202 of its 214 rows read `NO GENI ID`**, so joining against it finds 2 ids and 0
-groups — indistinguishable from "there are no Izumo duplicates". The ids are joined from every
-`reports/izumo*.tsv`, giving 210. `CLAUDE.md` § *Do not grab the first artifact that vaguely
-matches* is the rule that caught it.
-
-Read the top of the CJK section knowing what it holds: `Yasuji Tanba ×6` and the other Tanba
-groups are the real signal; a residue of bare one-token surnames (`杨`, `黄`, `邱`) survives
-because those people have a given name recorded somewhere but their `cjk_names` carries only
-the surname.
-
-**The marker leak is closed, 2026-08-30.** `is_placeholder` knew only its own local set and
-never consulted `scripts/labels.WORDS_MEANING_UNKNOWN` — every marker Emma has ruled on leaked
-into the candidates. It cost **25 groups over 107 profiles, including BOTH of the two largest**:
-the biggest was 33 profiles called `某 李`, where Chinese `某` means *a certain (unnamed) one*
-and was already in her set. 12,318 → 12,287 groups, **recall unchanged at 15 of 29 and 14 of 14
-strong** — noise removed, no real detection lost.
+**Geni serves the twin regardless of which id is requested** — navigating to `…623899` lands on
+`…446840`, URL bar included — so the profile has to be reached by clicking the *brother* link
+from the other one. Two renderer timeouts as well. `Delete profile` sits three rows under
+`Merge This Profile` in the Actions menu, so a blind coordinate click on an unreliable render is
+the one thing not to do here; use `find` refs.
 
 ## ⛔ THE DAILY ALGORITHM — her full spec, 2026-08-26. Supersedes the one-hop ring
 
@@ -222,59 +166,27 @@ Items 3, 5 and 6 are independent of this chain and can run at any point.
 
 ---
 
-## THE AGENDA — three tasks, Emma 2026-08-15. Everything else is secondary
+## THE AGENDA — Emma 2026-08-15. Everything else is secondary
 
-*"As far as actually getting any information from now, I only have three things
-that I'm trying to do. You should probably write this down because this is an
-important agenda thing."*
+*"As far as actually getting any information from now, I only have three things that I'm trying
+to do."* **Two of the three are closed and are deleted from here rather than annotated** — the
+sparse-area exports were backtested on 2026-08-30 (`reports/edge-export-backtest.md`: 80% closure
+on the ten clusters they targeted, and the exports themselves caused 23 of the 24), and the CJK
+genealogy question was settled by measurement (the Japanese material is connected, not isolated,
+so the isolate method was the wrong instrument).
 
-**Connect herself to the researchers on Wikidata.** The bridge work. Her framing of what makes
-a bridge person worth doing first: *"find people that are in multiple bridges and are also not
-in"* our data.
+**What is left is the bridge work: connect her to the researchers on Wikidata.** Her rule for
+what to do first: *"find people that are in multiple bridges and are also not in"* our data.
 
-**RE-MEASURED 2026-08-30, and the question has changed under it.** The 2026-08-15 figures — 560
-paths, 8,650 bridge people, 511 missing and on more than one path — described missing PEOPLE, and
-there are none: `exports/0-scraped/scraped-paths.ged` and `scraped-pages.ged` were built from
-these paths and ingested, so every member is present by construction.
+That question changed shape under it and the current answer is in `reports/broken-links.md`.
+Nobody on a path is missing any more — the scraped-page GEDCOMs were ingested — so what blocks a
+path is a **missing edge**, not a missing person: **85 of 979 paths (9%)**, caused by **102
+distinct links**. There is no leverage play: the top link blocks one path, and the top fifty
+unblock forty-six between them. It is 102 small repairs.
 
-What is missing is **edges**. `scripts/rank-broken-links.py` →
-`reports/broken-links.md`: **85 of 979 paths (9%) hold a step the tree does not carry**, caused by
-**102 distinct missing links**.
-
-**There is no leverage play here and that is the finding.** The top link blocks **one** path; the
-top fifty unblock forty-six between them. Unlike the old connectors ranking, where a cluster
-blocked many paths at once, these are ~one repair per path. Working the list is 102 small fixes,
-not a handful of high-value ones — worth knowing before anyone budgets for it.
-
-**The sparse areas — CHECKED 2026-08-30, and the method holds where it was used.**
-*"Finding these sparse areas, which we kind of did, and I did exports based off of
-them, but it feels like you kind of forgot about them."* `reports/single-export-clusters.md`
-and `reports/export-entry-points.csv` are the outputs; 31 edge exports landed on 2026-08-15.
-`scripts/backtest-edge-exports.py` → `reports/edge-export-backtest.md` is the check.
-
-Every one of the 2,631 entry points was in exactly one export when the file was written, so the
-delta is exact. **537 (20.4%) are now in more than one** — but the headline is not the finding:
-
-- **Clusters 1–10: 24 of 30 closed (80%), and an `exports/edges/` file contains 23 of the 24.**
-  The targeted exports did that themselves.
-- **Everywhere else: 513 closed, edges account for 178**, and closure runs at a flat 15–20%
-  whatever a cluster's rank — the signature of ordinary later exports drifting over them.
-
-So the entry-point ranking is **validated on the ten clusters it was actually used on and
-untested below them**, because only 31 exports were ever run from it. That is a reason to run
-more, not a reason to read 20.4% as what the method delivers. It is the third method to be put
-to a backtest here, and the first to survive one — `reports/descendants-backtest-2026-08-07.md`
-refuted the other two.
-
-**Chinese and Japanese genealogy — CLOSED, see below.** *"I believe
-Japanese and Chinese genealogies are partially there, partially overlapping with
-data."* Measured: **only 30 Japanese isolates exist** because the Japanese material
-in this corpus is *connected*, not isolated. The isolate method is the wrong
-instrument here; density and export seeding are.
-
-**The lettering above was mine, not hers.** She listed three things; labelling them A/B/C and then calling them "Task C" back at her was invented structure. Her words on that: *"I don't know why you think that you should be using these made-up task names."*
-
----
+**The lettering was mine, not hers.** She listed three things; calling them Task A/B/C was
+invented structure: *"I don't know why you think that you should be using these made-up task
+names."*
 
 ## THE EDIT ALGORITHM — her specification, recorded verbatim in substance
 
@@ -989,22 +901,6 @@ scanned, 19,023 carrying an ordinal — 8,093 unambiguous Roman, 5,892 single-le
   `Private` are preserved in `mul` and given descriptive labels elsewhere, per
   `CLAUDE.md`.
 - Build all the JSONs. They are committed, not held in `out/`.
-
-## The three spine lines from Charlemagne to Emma
-
-- **This is built BEFORE the CI/CD wiring**, because it queues its own special JSONs
-  and the pipeline has to have them to fire.
-- Three lines, hers:
-  - **Charlemagne → Emma through her paternal grandfather**
-  - **Charlemagne → Emma through her maternal grandmother**
-  - **the `Burekenship` line on her mother's side** — spelling is as dictated and is
-    not confirmed; check it against `paths/` and the corpus before building on it, and
-    do not silently correct it to a similar surname.
-- The lines are **spines, not the deliverable**: *"trying to kind of more or less go
-  through these lines as the spines but hit a sufficiently large amount of nearby
-  people who have Wikidata so that it practically connects up a lot of people."*
-- From 2026-09-01 there must be **at least one item that tries to connect these
-  people**.
 
 ## Wire up CI/CD so the committed JSONs fire from 2026-09-01
 
@@ -2093,25 +1989,11 @@ derived CSV is from **24 Aug 18:28**, while the Bure campaign landed **28 Aug**.
   relatives are not in the derived tree.
 
 **Run it alone.** Step 1 peaks near 17 GB and has been killed twice when something else was running.
-## THE PATH AND EXPORT-ROUTING WORK — moved to the tail by Emma, 2026-08-30
+## ⛔ THE TAIL ALGORITHM — at the TAIL since 2026-08-30, her call
 
-Asked where the next hours should go, given 667 of 695 relationship paths hold every person and
-still do not connect, her answer was: *"put these at the end of the queue instead of dropping
-them and start on the first queue item."*
+*"put these at the end of the queue instead of dropping them and start on the first queue item."* **The gap-size routing below is written against a MISSING-PERSON count that now reads 0 on every path** — the scraped-page GEDCOMs were ingested, so every path member is present. Apply it to the broken-link count in `reports/broken-links.md` instead: 85 of 979 paths, 102 links.
 
-So the three sections below are **not dropped and not closed** — they are simply behind
-everything else now. They are the path-routing and export-seeding machinery: `THE TAIL
-ALGORITHM`, `The midpoint export campaign`, and `THE EXPORT LOOP`.
-
-**What changed under them while they sat at the top**, so whoever picks them up is not misled:
-`reports/path-census.md` used to route on *how many people a path is missing*, and that measure
-now reads **0 on every path**, because `exports/0-scraped/scraped-paths.ged` (11,481 people) and
-`scraped-pages.ged` (10,179) were built from these paths and then ingested. The people are
-present without their links — **28 of 695 paths connect end to end, 667 do not**. The census
-counts broken consecutive pairs now, and the gap-size routing in `THE TAIL ALGORITHM` has to be
-applied to that number rather than to the missing-person count it was written against.
-
-## ⛔ THE TAIL ALGORITHM — Emma's method, 2026-08-18. Supersedes how the loop picks
+### The original method — Emma, 2026-08-18. Supersedes how the loop picks
 
 Her framing: *"I think we can get through this really really quickly if we change our
 approach here… I think a big part of it is the fact that our tail exports were just not
