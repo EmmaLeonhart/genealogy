@@ -21911,3 +21911,44 @@ reference-position query 504s. Guessing a QID is what `CLAUDE.md` forbids outrig
 **What would unblock it:** a stem→name rule validated against those 272,617 known fathers, with
 the hit rate reported before anything is emitted. The queue item now says that instead of saying
 the sourcing is unknown.
+
+## 2026-08-31 — the slow lane found something real: 4 failures on the synthesised GEDCOMs
+
+The slow lane had not run all session, which is why I started it. It went red, and the failures
+are genuine rather than flaky:
+
+    test_export_has_a_geni_header                  scraped-pages.ged, scraped-paths.ged
+    test_every_individual_xref_encodes_its_geni_id  assert '' == 'geni:9995000000000100000'
+
+**Two correct decisions in collision, not a defect on either side.** `exports/` is the corpus and
+is read recursively, so `scripts/build-scraped-gedcom.py` writing into `exports/0-scraped/` puts
+its output under a test that asserts *Geni export* properties. But those files are deliberately
+not Geni exports: they say `1 SOUR genimerge-scraped`, and their minted parents carry **no** `RFN`
+on purpose — the builder's own reasoning, that *"claiming `RFN geni:<id>` for an id Geni does not
+have would be a false identity assertion on this repo's primary key"*.
+
+**What I checked before touching a test**, because a synthetic xref parses as a Geni id and
+nothing downstream can tell it apart by shape:
+
+- **4,928** minted people are in the merged tree and the derived CSVs;
+- **zero** have ever reached a QuickStatements batch, checked with an anchored pattern over every
+  `reports/*.qs`;
+- **zero** appear in `out/wikidata/p2600-all.tsv`, so none is on Wikidata.
+
+The risk is latent, not realised. That mattered: `CLAUDE.md` records what the same class of
+mistake cost once already, when `GENI_ID_RE` accepted any letters and `@NI04461@` parsed as Geni
+id `04461` — *"a URL to a stranger's profile"*. Here the id is nobody's, and a `P2600` carrying
+one would assert a profile that does not exist.
+
+**The fix is per RECORD, not per file, and it is a narrowing rather than a loosening.**
+`scraped-paths.ged` holds real Geni people *and* minted parents, so excluding the file would have
+dropped the real ones from the check. A minted id must now assert `RFN == ""` — claiming one is a
+*failure* — and any header source other than `Geni.com` or `genimerge-scraped` still fails.
+
+**And the invariant did not go away, it moved to where the danger is.**
+`test_a_minted_id_never_reaches_a_quickstatements_batch` is new coverage: it scans every emitted
+statement in `reports/*.qs` for the minted ranges, ignoring comments. That is the assertion worth
+having — the old one only said a synthesised file looks unlike a Geni export, which is true by
+construction and protects nothing.
+
+17 passed on the affected selection.

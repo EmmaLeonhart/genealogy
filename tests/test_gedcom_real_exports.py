@@ -15,6 +15,7 @@ import pytest
 from genimerge import gedcom, sources
 
 EXPORTS = sources.find_exports()
+REPO = Path(__file__).resolve().parent.parent
 
 #: **Also marked `slow`**: this module reparses every export and takes minutes.
 #: Not skipped by default — `-m "not slow"` is a deliberate opt-out.
@@ -52,9 +53,34 @@ def test_the_only_parse_warnings_are_lines_that_never_claimed_to_be_gedcom(expor
     assert structural == [], f"parser skipped or mangled real GEDCOM structure: {structural[:3]}"
 
 
+#: **The two files under `exports/0-scraped/` are NOT Geni exports** and are not meant to be.
+#: `scripts/build-scraped-gedcom.py` synthesises them from saved pages and relationship paths and
+#: writes `1 SOUR genimerge-scraped`; `CLAUDE.md` § *`exports/` is the corpus* makes every `.ged`
+#: beneath it corpus, so they are parametrised here like everything else.
+#:
+#: Their minted people sit in ranges Geni demonstrably does not use and carry **no** `RFN` on
+#: purpose -- the builder's own words: *"claiming `RFN geni:<id>` for an id Geni does not have
+#: would be a false identity assertion on this repo's primary key."*
+SYNTHESISED_SOUR = "genimerge-scraped"
+SYNTHETIC_ID_PREFIXES = ("9995", "9990")
+
+
+def _is_synthetic(geni_id):
+    return geni_id.startswith(SYNTHETIC_ID_PREFIXES) and len(geni_id) == 19
+
+
 def test_export_has_a_geni_header(export):
+    """Every export is Geni's, or is one we synthesised and says so in its own header.
+
+    This asserted `SOUR == "Geni.com"` outright and went red on 2026-08-31, the first slow-lane
+    run since `exports/0-scraped/` was added. That is the test being right about the wrong
+    *scope* rather than a defect on either side: a synthesised file must not **claim** to be a
+    Geni export, and asserting that it is one makes the corpus rule and this invariant
+    contradict each other. An unrecognised source still fails.
+    """
     assert export.header is not None
-    assert export.header.value_of("SOUR") == "Geni.com"
+    source = export.header.value_of("SOUR")
+    assert source in ("Geni.com", SYNTHESISED_SOUR), f"unknown export source {source!r}"
 
 
 def test_every_individual_xref_encodes_its_geni_profile_id(export):
@@ -67,6 +93,13 @@ def test_every_individual_xref_encodes_its_geni_profile_id(export):
         assert indi.xref and indi.xref.startswith("@I") and indi.xref.endswith("@")
         geni_id = indi.xref[2:-1]
         assert geni_id.isdigit()
+        # **A minted placeholder carries no `RFN`, and that is the point.** The rule is per
+        # RECORD, not per file: `scraped-paths.ged` holds real Geni people *and* minted
+        # parents, so skipping the whole file would drop the real ones from this check.
+        if _is_synthetic(geni_id):
+            assert indi.value_of("RFN") == "", (
+                f"minted placeholder {indi.xref} claims a Geni id it does not have")
+            continue
         assert indi.value_of("RFN") == f"geni:{geni_id}"
 
 
@@ -200,3 +233,32 @@ def test_the_binding_check_fires_when_a_prefix_lands_on_two_record_types():
 
     assert seen["I"] == {"INDI", "FAM"}
     assert seen["I"] != {XREF_PREFIXES["I"]}
+
+
+def test_a_minted_id_never_reaches_a_quickstatements_batch():
+    """A synthetic xref parses as a Geni id. It must never be emitted as one.
+
+    `@I9995000000000100000@` satisfies `genimerge.identity`'s pattern exactly as a real xref
+    does — four known prefixes, all digits — so nothing downstream can tell it apart by shape.
+    `CLAUDE.md` records the cost of that class of mistake: when `GENI_ID_RE` accepted any
+    letters, `@NI04461@` parsed as Geni id `04461` and *"would have produced a URL to a
+    stranger's profile"*. Here the id is not a stranger's, it is nobody's, and a `P2600`
+    carrying one would assert a Geni profile that does not exist.
+
+    **Measured 2026-08-31: 4,928 minted people are in the merged tree and the derived CSVs, and
+    zero have ever reached a batch.** This is the guard that keeps it that way. It is the check
+    that makes narrowing the two assertions above safe -- the invariant did not go away, it
+    moved to where the danger actually is.
+    """
+    minted = re.compile(r"\b999[05]0000000000\d{6}\b")
+    offenders = []
+    for batch in sorted((REPO / "reports").glob("*.qs")):
+        for number, line in enumerate(
+                batch.read_text(encoding="utf-8", errors="replace").splitlines(), 1):
+            if line.lstrip().startswith("#"):
+                continue          # a comment is not an emitted statement
+            found = minted.search(line)
+            if found:
+                offenders.append(f"{batch.name}:{number} {found.group(0)}")
+    assert offenders == [], (
+        "a minted placeholder id reached a QuickStatements batch: " + "; ".join(offenders[:5]))
