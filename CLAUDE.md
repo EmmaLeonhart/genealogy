@@ -2101,8 +2101,23 @@ So a spine batch needs a second file only for the links **between two people it 
 `scripts/build-missing-reciprocals.py` is that second half, and it is much smaller than it was:
 `scripts/build-garborg-day.py` now emits `Q… P… LAST` for every relationship to an existing item.
 
-`reports/the-spine.md` carries the person-by-person state. The closing item of `queue.md` is to
-build the batch builder that does all of this at once rather than a hop a day.
+**All four of these lines are COMPLETE, and they are legacy.** Emma, 2026-08-30, after verifying
+them: *"the spines are all clear and I'm putting an item at the end of the queue declaring them
+legacy code and removing them."* `reports/the-spine.md`, which carried the person-by-person state,
+is deleted; the section above is kept as the record of what the three lines were and why Bergitte
+is the hinge.
+
+**One spine is live and it runs on a different rule** — `paths/arne-garborg-to-johannes-bureus-geni.tsv`,
+Geni's own in-law route joining Arne Garborg and Johannes Bureus **to each other** rather than
+through Emma. Her rule, 2026-08-30: *"any of them is always added whenever possible from any side
+including the middle."* So there is no front and no hop-a-day: every step that can be created is
+created in the same run, and the only gate is being in the corpus. `SPINE_PATHS` in
+`scripts/build-garborg-day.py` holds it, and `SPINE_REVERSED` is empty because that path is stored
+Arne-first and grows from no particular end.
+
+**No export is to be attempted on it.** Steps 9, 10 and 13 were tried as `Forest` seeds on
+2026-08-30 and Geni refused all three — *"You are not allowed to export that profile."* The path
+is the deliverable.
 
 ### LEGACY CODE IS DELETED. Not kept, not ignored — deleted
 

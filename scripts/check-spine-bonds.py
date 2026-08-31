@@ -34,8 +34,10 @@ from genimerge.wikidata import WikidataClient  # noqa: E402
 sys.stdout.reconfigure(encoding="utf-8")
 
 #: Default to the two spine paths; any path file may be named on the command line instead.
-PATHS = tuple(sys.argv[1:]) or ("paths/charlemagne-to-arne-garborg.tsv",
-                                "paths/bergitte-to-emma.tsv")
+#: **The one live spine.** These defaulted to `charlemagne-to-arne-garborg` and
+#: `bergitte-to-emma`, two of the four lines Emma declared legacy on 2026-08-30 after verifying
+#: them complete. Checking bonds on a finished line reports nothing and reads as a clean run.
+PATHS = tuple(sys.argv[1:]) or ("paths/arne-garborg-to-johannes-bureus-geni.tsv",)
 #: The five that join two people. `P3373` sibling is here because a spine step can be a
 #: sibling hop -- the path's `relation_to_previous` column says which, and we do not assume.
 BONDS = ("P22", "P25", "P40", "P26", "P3373")

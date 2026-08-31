@@ -1017,7 +1017,13 @@ def name_lines(label, plan, geni_id, father_qid, fields=None, sex="",
 #: deliverable.
 SPINE_PATHS = ("paths/arne-garborg-to-johannes-bureus-geni.tsv",)
 
-SPINE_REVERSED = ("paths/bergitte-to-emma.tsv",)
+#: **Empty since 2026-08-31.** It held `bergitte-to-emma.tsv`, which is stored Emma-first and
+#: so had to be walked from the far end. That path is one of the four legacy spines and is no
+#: longer in `SPINE_PATHS`. The one live spine, Arne→Bureus, is stored Arne-first and grows
+#: from **no** particular end — see the rule at `SPINE_PATHS` — so nothing needs reversing.
+#: Kept as an empty tuple rather than deleted because `spine_steps()` still consults it, and
+#: a future spine stored backwards would need it again.
+SPINE_REVERSED = ()
 SPINE_PATH = SPINE_PATHS[0]
 
 #: **Her revised caps, 2026-08-26**, after stopping a run of 50 creations partway:
