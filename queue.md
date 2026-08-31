@@ -204,12 +204,23 @@ Items 3, 5 and 6 are independent of this chain and can run at any point.
 that I'm trying to do. You should probably write this down because this is an
 important agenda thing."*
 
-**Connect herself to the researchers on Wikidata.** The bridge work. 560 saved
-paths, 8,650 bridge people, **511 of them missing from our corpus AND on more than
-one path** — importing those clears 1,454 path-slots. The cluster at the top is
-**Hård af Segerstad** and **Sandelin**. Her framing of what makes a bridge person
-worth doing first: *"find people that are in multiple bridges and are also not in"*
-our data.
+**Connect herself to the researchers on Wikidata.** The bridge work. Her framing of what makes
+a bridge person worth doing first: *"find people that are in multiple bridges and are also not
+in"* our data.
+
+**RE-MEASURED 2026-08-30, and the question has changed under it.** The 2026-08-15 figures — 560
+paths, 8,650 bridge people, 511 missing and on more than one path — described missing PEOPLE, and
+there are none: `exports/0-scraped/scraped-paths.ged` and `scraped-pages.ged` were built from
+these paths and ingested, so every member is present by construction.
+
+What is missing is **edges**. `scripts/rank-broken-links.py` →
+`reports/broken-links.md`: **85 of 979 paths (9%) hold a step the tree does not carry**, caused by
+**102 distinct missing links**.
+
+**There is no leverage play here and that is the finding.** The top link blocks **one** path; the
+top fifty unblock forty-six between them. Unlike the old connectors ranking, where a cluster
+blocked many paths at once, these are ~one repair per path. Working the list is 102 small fixes,
+not a handful of high-value ones — worth knowing before anyone budgets for it.
 
 **The sparse areas — CHECKED 2026-08-30, and the method holds where it was used.**
 *"Finding these sparse areas, which we kind of did, and I did exports based off of

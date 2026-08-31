@@ -1431,11 +1431,22 @@ attributes each link to the `INDI` that owns it: **158 pairs over 155 profiles, 
 exports**. That is her own statement of identity, captured whenever an export next ran — fresher
 than anything downloaded.
 
-**Why it matters that this is read first.** `out/wikidata/p2600-all.tsv` is a **2026-08-09**
-download. Joining the 204 Izumo roster QIDs through it returns **2** Geni ids, because nearly
-every one of those items got its `P2600` after that date — and 2 reads exactly like *"these
-people are not linked"*. Through the bio links it is **8**, and the honest reading of 8 is that
-the bio-link campaign has barely reached that family, which is a fact rather than an artefact.
+**Why it matters that this is read first.** Through the bio links the 204 Izumo roster QIDs
+give **8** Geni ids; through `out/wikidata/p2600-all.tsv` they give **2**. The honest reading of
+8 is that the bio-link campaign has barely reached that family.
+
+**And the 2 is NOT staleness — that was assumed and then refuted.** The file was refreshed from
+live Wikidata on 2026-08-30 and the Izumo answer did not move: only **2 of those 204 items carry
+a `P2600` at all**. The stale-file reasoning was written down here and in the script before
+anyone ran the refresh that would have tested it. § *CHECK before you alarm her* is the rule it
+broke; a cause is not established by being plausible.
+
+**The refresh was worth doing for a different reason, and that one is measured.**
+`reports/garborg-qids.tsv` went from **258 of 849** items resolving to **849 of 849** — 591 of
+her own items were invisible to the forty scripts that read this file. The row count moved only
++1,124 (517,851 → 518,975), which is why the staleness never announced itself.
+`scripts/refresh-p2600-all.py` does the fetch in sixteen partitions without the corpus merge
+that `genimerge overlap` drags along, and refuses to write a short fetch.
 
 **A profile may name more than one item** (3 do), and that is § *A second Geni ID on one Wikidata
 item is NOT a conflict* seen from the other side. Emit both.

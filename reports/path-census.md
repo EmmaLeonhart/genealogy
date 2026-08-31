@@ -2,11 +2,11 @@
 
 Measured over **600 exports** holding **1,451,960** distinct Geni profile IDs.
 
-## Paths overall --- 695 files
+## Paths overall --- 699 files
 
 ```
-fully covered     351   (51%)
-still incomplete  344   (49%)
+fully covered     614   (88%)
+still incomplete   85   (12%)
 ```
 
 ## Incomplete paths
@@ -14,18 +14,18 @@ still incomplete  344   (49%)
 **Every figure here is over the incomplete paths only.** Averaging over all of them mixes the completed paths in as zeros and answers a question nobody asked.
 
 ```
-average full length     48.1 steps   (median 46)
+average full length     31.9 steps   (median 25)
 average missing          0.0         (median 0)
-average already held    48.1
+average already held    31.9
 -> the average incomplete path is 100% complete
-longest path              99 steps   shortest 14
+longest path              82 steps   shortest 14
 most missing               0         fewest 0
 ```
 
 ## Missing-count distribution
 
 ```
-  0 missing :  344 paths   <= 3 -> save pages
+  0 missing :   85 paths   <= 3 -> save pages
 ```
 
 ## Histogram of path lengths
@@ -34,8 +34,8 @@ Length is fixed by the saved page --- an export never changes it. Only the missi
 
 ```
    1-9 steps :    0 paths  
- 10-19 steps :   65 paths  #############
- 20-29 steps :  201 paths  ########################################
+ 10-19 steps :   67 paths  #############
+ 20-29 steps :  203 paths  ########################################
  30-39 steps :   95 paths  ###################
  40-49 steps :  111 paths  ######################
  50-59 steps :   84 paths  #################

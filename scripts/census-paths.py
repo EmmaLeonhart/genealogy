@@ -48,6 +48,50 @@ OUT = REPO / "reports" / "path-census.md"
 INDI_XREF = re.compile(rb"^0 @I(\d+)@ INDI", re.M)
 
 
+#: The account owner. Every Geni relationship path is measured from her profile, so a second
+#: appearance of it inside one file is a second path rather than a step.
+ACCOUNT_OWNER = "6000000087535357291"
+
+
+def path_segments(rows):
+    """Split one path FILE into the paths it actually holds.
+
+    **278 of 699 files hold two relationship paths end to end**, and nothing was splitting them.
+    `CLAUDE.md` records the shape for `paths/nn-basse.tsv` -- *"holds two relationship paths end
+    to end, so its second chain re-walks steps 1-9"* -- but the general case was never handled,
+    and the step numbers do NOT reset (they run 1..78 straight through), so the obvious detector
+    finds nothing.
+
+    **What it cost, and it is the third instrument error in this area in one day.** The seam
+    joins the end of one path to the start of the next, which is always the account owner, and
+    that pair is not a relationship. Counting it as a step scored 277 false breaks:
+
+        667 of 695 files disconnected   -- sibling steps also miscounted
+        344 of 699 files disconnected   -- siblings fixed, seams still counted
+         87 of 977 PATHS disconnected   -- both fixed
+
+    Nine per cent, not ninety-six. Each error was a definition that quietly excluded or invented
+    a case, with a plausible number surviving at every stage -- `CLAUDE.md` § *Our side could
+    never have two children*.
+
+    **Two boundary signals, unioned, because neither is complete.** A start row carries `-` in
+    the relation column, and a start row is the account owner; they agree on 684 of the 699
+    files, and the disagreements are files missing one signal or the other. `rows` is a list of
+    `(relation, geni_id)`.
+    """
+    out, cur = [], []
+    for i, (relation, gid) in enumerate(rows):
+        starts = i > 0 and ((relation or "").strip() == "-" or gid == ACCOUNT_OWNER)
+        if starts and cur:
+            out.append(cur)
+            cur = [gid]
+        else:
+            cur.append(gid)
+    if cur:
+        out.append(cur)
+    return [seg for seg in out if len(seg) > 1]
+
+
 def load_adjacency():
     """Every father/mother/spouse/child edge in the merged tree, both directions.
 
@@ -102,15 +146,22 @@ def main() -> int:
     adjacency, parents = load_adjacency()
     rows = []
     for path in sorted((REPO / "paths").glob("*.tsv")):
-        ids = []
+        rows_in = []
         for line in path.read_text(encoding="utf-8").splitlines():
             if not line or line.startswith("#") or line.startswith("step"):
                 continue
-            for tok in line.split("\t")[-1].split():
-                if tok.startswith("geni:"):
-                    ids.append(tok[5:])
-        if not ids:
+            cells = line.split("\t")
+            gid = ""
+            for cell in cells:
+                for tok in cell.split():
+                    if tok.startswith("geni:"):
+                        gid = tok[5:]
+            if gid:
+                rows_in.append((cells[2] if len(cells) > 2 else "", gid))
+        if not rows_in:
             continue
+        ids = [g for _r, g in rows_in]
+        segs = path_segments(rows_in)
         missing = [g for g in ids if g not in present]
         # **Presence is no longer the binding measure and must not be read as one.**
         # Measured 2026-08-30: all 699 paths report 0 missing people, because
@@ -127,11 +178,13 @@ def main() -> int:
         # `broken` is that measure: consecutive steps with no father/mother/spouse/child edge
         # between them in `derived-family.csv`. A path is complete when `broken` is 0, and
         # that is what the routing in `queue.md` § *THE TAIL ALGORITHM* must be applied to.
-        broken = sum(1 for a, b in zip(ids, ids[1:])
+        # Scored per SEGMENT, so the seam between two concatenated paths is never a step.
+        broken = sum(1 for seg in segs for a, b in zip(seg, seg[1:])
                      if not connected(a, b, adjacency, parents))
         rows.append({
             "path": path.name,
             "steps": len(ids),
+            "paths_in_file": len(segs),
             "missing": len(missing),
             "held": len(ids) - len(missing),
             "broken": broken,

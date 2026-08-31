@@ -82,9 +82,13 @@ def izumo_ids():
     # **For Izumo they are thin, and saying so is the point.** The 204 roster QIDs resolve to
     # **8** Geni ids through the bio links, all 8 already inside the 210 above. That is not a
     # failure of the source; it is the measurement that the bio-link campaign has barely reached
-    # this family. The stale alternative is worse and hides it: `out/wikidata/p2600-all.tsv` is
-    # a 2026-08-09 download and yields **2**, which reads exactly like "these people are not
-    # linked" when in fact the file predates the items.
+    # this family.
+    #
+    # `out/wikidata/p2600-all.tsv` gives **2**, and that is not staleness -- the file was
+    # refreshed from live Wikidata on 2026-08-30 and the answer did not move. Only 2 of those
+    # 204 items carry a `P2600` at all. The staleness reading was assumed here before the
+    # refresh that refuted it, which is the failure `CLAUDE.md` § *CHECK before you alarm her*
+    # names.
     bio = collections.defaultdict(set)
     bio_path = ROOT / "reports" / "bio-qids.tsv"
     if bio_path.exists():

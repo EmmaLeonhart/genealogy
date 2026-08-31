@@ -20821,3 +20821,45 @@ predates most of those items — and 2 reads exactly like "these people are not 
 the honest figure and says the bio-link campaign has barely reached that family.
 
 37 tests pass across join-sanity, the hold, and the ID-documentation guard.
+
+## 2026-08-30 — p2600-all.tsv refreshed; three instrument errors corrected in the path measure
+
+**`out/wikidata/p2600-all.tsv` refreshed from live Wikidata**, on Emma's instruction.
+`scripts/refresh-p2600-all.py` does the sixteen partitioned queries and writes the file, without
+the whole-corpus merge `genimerge overlap` drags along for a report nobody asked for. It refuses
+to write a fetch below 90% of what the endpoint reports, so a failed partition cannot silently
+overwrite a good file.
+
+**517,851 → 518,975 rows, +1,124 — and that number is why the staleness never announced itself.**
+The real effect is elsewhere: `reports/garborg-qids.tsv` went from **258 of 849** items resolving
+to **849 of 849**. **591 of her own items were invisible** to the forty scripts and three modules
+that read this file, because the committed copy was a 2026-08-09 offline rebuild made while
+querying Wikidata was banned — a ban she lifted on 2026-08-29.
+
+**A claim of mine was refuted by the refresh and is corrected in both places it was written.**
+I said the Izumo roster resolving to 2 Geni ids was staleness. It is not: after the refresh it is
+still 2, because only **2 of those 204 items carry a `P2600` at all**. I asserted a cause without
+running the test that would settle it, three commits after writing § *CHECK before you alarm her*
+into `CLAUDE.md` for exactly that.
+
+**And the path-connection figure moved twice more, both times because the instrument was wrong.**
+
+| reported | what was wrong |
+| --- | --- |
+| 667 of 695 files disconnected | sibling steps scored broken — Geni records no sibling edge |
+| 344 of 699 files disconnected | siblings fixed; the seam between two concatenated paths still counted |
+| **85 of 979 paths (9%)** | both fixed |
+
+**278 of 699 path files hold two relationship paths end to end**, and the step numbers do *not*
+reset — they run 1..78 straight through — so the obvious detector finds nothing. The seam joins
+the end of one path to the start of the next, which is always the account owner, so it produced
+277 false breaks, which is why nearly every "missing link" read as *someone → Emma*.
+`census-paths.path_segments` splits on the union of two signals (a `-` in the relation column, or
+the account owner mid-file); they agree on 684 of 699 files and neither alone is complete.
+
+**`scripts/rank-broken-links.py` → `reports/broken-links.md`** replaces the bridge-people
+ranking in § THE AGENDA, whose 2026-08-15 numbers counted missing people and no longer describe
+anything. 102 distinct missing links cause the 85 breaks, and **the top link blocks exactly one
+path** — there is no leverage play here, which is worth knowing before anyone budgets for it.
+
+32 tests pass across join-sanity and the hold.
