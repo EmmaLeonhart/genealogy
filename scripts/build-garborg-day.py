@@ -300,6 +300,42 @@ def read_live_values():
     return out
 
 
+def read_suppressed():
+    """`{(qid, property, value)}` -- statements ANOTHER editor removed. Never re-emit them.
+
+    **The edit war, 2026-08-30.** `OBender12` merged our duplicate name items and stripped the
+    `P734` links pointing at the losers. The next build put them straight back, because the
+    generator emits a name statement when the item does not have one — and his deletion is
+    exactly what "does not have one" looks like. Emma had to undo her own undos and then make
+    cosmetic edits to cover the trail.
+
+    **It is not statefulness, it is the absence of it.** Nothing recorded that a human had
+    decided about that statement, so every rebuild saw a fresh gap and filled it. Any *emit
+    what is missing* pipeline fights any editor who deletes, indefinitely, and gets more
+    confident each round.
+
+    **This is the opposite safe direction from `read_live_values`, and deliberately so.** There
+    a missing file costs a redundant statement, which QuickStatements merges away. Here a
+    missing file costs an edit war with a stranger, so it warns loudly rather than shrugging.
+
+    Built by `scripts/refresh-suppressed-statements.py`, which reads the contributions of
+    editors *other than* the account and keeps their `wbremoveclaims` edits on ledger items.
+    **A removal by Emma herself is not in it** — she runs the batches, and her removing
+    something the batch re-adds is a conversation with her own pipeline, not an edit war.
+    """
+    out = set()
+    path = ROOT / "reports" / "suppressed-statements.tsv"
+    if not path.exists():
+        print("WARNING: reports/suppressed-statements.tsv missing - the batch may re-add "
+              "statements another editor deleted. Run "
+              "scripts/refresh-suppressed-statements.py")
+        return out
+    with open(path, encoding="utf-8") as f:
+        for row in csv.DictReader(f, delimiter="	"):
+            out.add((row["qid"], row["property"], row["value"]))
+    return out
+
+
 def read_live_labels():
     """`{(qid, lang): label}` -- what each ledger item's label actually SAYS, live.
 
@@ -5022,6 +5058,8 @@ def main():
     # edited by hand. Eivind is the case: he carries P735/P734/P5056 she added herself.
     state.update(live_state())
     live_values = read_live_values()
+    suppressed = read_suppressed()
+    suppressed_hits = set()
     # **The order of the two sections is her spec and it is structurally rigid.** Emma,
     # 2026-08-26: *"Creation of individuals comes first, then creation of names, then the
     # relationships between the individuals... The order itself is structurally rigid because
@@ -5091,6 +5129,13 @@ def main():
         # sibling link went out on every run. QuickStatements merges a duplicate rather than
         # failing, which is why nothing ever broke.
         if (q, prop, value.strip('"')) in live_values:
+            return
+        # **Never re-add what another editor removed.** `read_suppressed` carries the why.
+        # This sits after the live-values check on purpose: a statement the item still holds
+        # is a no-op, but one a stranger deleted is the start of an edit war, so it is the
+        # last word before a line is written.
+        if (q, prop, value.strip('"')) in suppressed:
+            suppressed_hits.add((q, prop, value.strip('"')))
             return
         seen.add((q, prop, value))
         lines.append(f"{q}\t{prop}\t{value}{qual}{ref(g)}")
@@ -5579,6 +5624,15 @@ def main():
             kept.append(line)
         lines = kept
         print(f"{dropped} statements dropped: the item already holds them")
+
+    # **Say what the suppressor stopped, every run.** A guard nobody can see is a guard
+    # nobody trusts, and this one exists precisely because a silent re-emission started an
+    # edit war. If this number is ever large, that is worth reading rather than ignoring.
+    if suppressed_hits:
+        print(f"suppressed: {len(suppressed_hits)} statement(s) another editor removed and "
+              f"this batch would have re-added")
+        for q, prop, value in sorted(suppressed_hits)[:10]:
+            print(f"   {q} {prop} -> {value}")
 
     # **A comment above every line.** Her format, 2026-08-26. `name_of` resolves either a
     # QID or a Geni id to a person, so the comments read as sentences rather than as pairs
