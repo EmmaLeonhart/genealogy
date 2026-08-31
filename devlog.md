@@ -21657,3 +21657,33 @@ the `lang` column. Restricted to `label` it is **2**. Same shape as the wrong-co
 
 60 sections either way — the section was cut back rather than deleted, because a third of it is
 still a step.
+
+## 2026-08-31 — the re-import measured over two passes: no decay, so no clear end point
+
+The second pass finished and gives the decay rate a single pass could not:
+
+    pass 1  full walk of the store   scanned 2,255,629   discovered 89,832
+    pass 2  the frontier it opened   scanned   147,523   discovered 87,693
+
+**Discovery per item scanned went 4.0% to 59%.** That is not a contradiction, it is what a
+frontier is: newly-fetched people are exactly the ones whose relatives we do not hold, so draining
+the queue does not shrink it. The store went **2,248,462 → 2,425,946** (+177,484, now 4.3 GB) and
+the fetch queue emptied **twice**, and neither emptying meant anything at all.
+
+**Her criterion decides this, so it is decided rather than asked** — *"If it turns out that the
+amount doesn't seem like there's a clear end point, then we move on to this stuff."* Two passes,
+no decay, and an expansion that is heading into the whole Wikidata human graph rather than
+converging on the Geni-linked neighbourhood the store was seeded from. **Moving on.** Nothing is
+lost: the walk is resumable, and 0 of 3,579 requests were throttled.
+
+**What I would want before restarting it** — and this is a note, not a plan: the useful bound is
+not time but **distance from a `P2600` holder**. `CLAUDE.md` § *The practical goal is EMMA densely
+linked* says proximity beats volume, and an unbounded relative-walk optimises exactly the thing
+she said not to.
+
+**Four wrong readings today, all the same error**, and they are why this took as long as it did:
+the queue reading 0 while the cursor sat at shard 21 of 2,249; *"discovered 0"* over the seed
+region that was already fully expanded; a coverage measurement taken mid-walk; and a prediction
+that the walk would close the 25,000 missing parents in shards 1200-1600. Each was a short run or
+a partial state mistaken for a settled one. The root is the stopping rule, which ends on one empty
+`--scan-per-round` slice without checking the cursor reached the end of the store.

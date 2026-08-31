@@ -324,42 +324,39 @@ Wikidata modelling and a destroyed distinction respectively.
 **Still to do:** apply the sexed-vs-generic rule to the 33 the way the 95 were applied, extending
 `reports/name-resolved-by-sex.csv`.
 
-## Comprehensive Wikidata re-import — the estimate she asked for
+## Comprehensive Wikidata re-import — measured over two passes: NO clear end point
 
-Her item: use the existing download script, estimate how long a full import takes, and **do not
-build new tooling**. *"If it turns out that the amount doesn't seem like there's a clear end
-point, then we move on to this stuff."*
+Her item: run the existing script, **do not build new tooling**, estimate the time, and — *"If it
+turns out that the amount doesn't seem like there's a clear end point, then we move on to this
+stuff."*
 
-**One complete walk of the store, 2026-08-31:**
+**Two full passes, 2026-08-31, and the discovery rate did not decay:**
 
-    scanned 2,255,629 stored items for relatives
-    discovered 89,832 QIDs not already known
-    29,953 stored in 606 requests over 1,083s, 0 throttled, 27.6 items/s
-    59,832 still queued
-    projected: 46,766 requests, 23.5 hours, 14.7 GB -- a floor, not an estimate
+| pass | scanned | discovered | stored |
+| --- | ---: | ---: | ---: |
+| 1 — full walk of the store | 2,255,629 | **89,832** | 29,953 |
+| 2 — the frontier those 89,832 opened | 147,523 | **87,693** | 147,523 |
 
-**There is an end point and it is roughly a day of fetching**, against her budget of 3-8 hours.
-It is resumable, polite and unattended, so the shape is "leave it draining", not "sit and watch
-it".
+**Discovery per item scanned went 4.0% → 59%.** The frontier is far denser in unknown relatives
+than the settled store, which is what a frontier is — so draining it does not shrink it. The store
+went **2,248,462 → 2,425,946** (+177,484, 4.3 GB on disk) and the queue emptied twice, and neither
+emptying meant anything.
 
-**Read no short run as convergence.** Three separate readings today said the frontier was closed
-and all three were artefacts:
+**So by her own criterion this has no clear end point yet, and the decision is to move on.** The
+walk is expanding into the whole Wikidata human graph rather than converging on the Geni-linked
+neighbourhood the store was seeded for. Nothing is broken and nothing is lost: it is resumable,
+polite (0 throttled across 3,579 requests) and can be restarted whenever it is wanted.
 
-- the fetch queue reporting **0** — the walk cursor was at shard 21 of 2,249;
-- *"scanned N, discovered 0"* — shards 0-322 are the original `P2600` seed region and were
-  already fully expanded;
-- missing parents falling only 34,151 → 32,957 — that was measured **mid-walk**.
+**Read no queue-length as convergence.** Three separate readings today said the frontier was
+closed and all three were artefacts — the fetch queue reporting 0 while the cursor sat at shard 21
+of 2,249; *"scanned N, discovered 0"* over the already-expanded seed region; and a coverage
+measurement taken mid-walk. The stopping rule ends on one empty `--scan-per-round` slice without
+checking the cursor reached the end of the store, so at the default 500 it announces closure two
+thousand items in. **`--scan-per-round 150000` is the flag that actually walks it.**
 
-The stopping rule is why: the loop ends when one `--scan-per-round` slice discovers nothing and
-the queue is empty, without checking the cursor reached the end of the store. At the default
-slice of 500 that is two thousand items.
-
-**So the command is `--scan-per-round 150000`**, which walks the store rather than sampling it.
-Nothing was rebuilt.
-
-**Still to do:** drain the 59,832, re-run the walk (fetched items name relatives of their own, so
-one pass does not settle it), and re-run `scripts/measure-store-parent-coverage.py`. The pair of
-deltas is the decay rate; a single pass is not.
+**If it is picked up again**, the open question is not *how long* but *how far out* — a bound on
+distance from a `P2600` holder, which is what `CLAUDE.md` § *The practical goal is EMMA densely
+linked* implies and what an unbounded walk ignores.
 
 ## Create the fathers the patronymics imply — Emma's item
 
