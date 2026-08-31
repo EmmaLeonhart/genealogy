@@ -40,12 +40,9 @@ OUT = ROOT / "reports" / "spine-already-on-wikidata.tsv"
 #: The same four files `build-garborg-day.SPINE_PATHS` names. Kept here as paths rather than
 #: imported, because that module is a 5,000-line script with a heavy import cost and this needs
 #: four filenames.
-SPINE_PATHS = (
-    "paths/charlemagne-to-arne-garborg.tsv",
-    "paths/bergitte-to-emma.tsv",
-    "paths/bureus-to-emma.tsv",
-    "paths/arne-to-signe-no-borsheim.tsv",
-)
+#: The one live spine, matching `build-garborg-day.SPINE_PATHS`. The four it replaced are legacy
+#: as of 2026-08-30.
+SPINE_PATHS = ("paths/arne-garborg-to-johannes-bureus-geni.tsv",)
 
 FIELDS = ["step", "geni_name", "geni_id", "candidate_qid", "candidate_label",
           "evidence", "confidence", "independent_anchors", "anchoring"]

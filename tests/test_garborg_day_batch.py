@@ -77,6 +77,26 @@ def known_qids():
                 entities.read_file(REPO / "entity_resolution.md").resolutions if r.qid}
     except Exception:                                               # noqa: BLE001
         pass
+
+    # **The hardcoded spine anchors, for the same reason as `entity_resolution.md` above.**
+    # `build-garborg-day.SPINE_ANCHORS` folds four items into `our_items` that carry a `P2600`
+    # on Wikidata but appear in no ledger file — steps 7, 8, 15 and 16 of the Arne↔Bureus
+    # spine. Emma, 2026-08-31: *"Add all of Q116760688, Q6014618, Q26239714, Q109265381 as both
+    # ledger points and entry points hardcoded in."*
+    #
+    # Read from the builder rather than copied, because this docstring's own rule is that the
+    # two must agree, and a second hand-maintained copy is how they stop agreeing. This does
+    # not weaken the assertion: it still says every QID the batch points at must already exist,
+    # and these four demonstrably do.
+    import importlib.util as _il
+    try:
+        _spec = _il.spec_from_file_location(
+            "_bgd", REPO / "scripts" / "build-garborg-day.py")
+        _mod = _il.module_from_spec(_spec)
+        _spec.loader.exec_module(_mod)
+        out |= set(_mod.SPINE_ANCHORS.values())
+    except Exception:                                               # noqa: BLE001
+        pass
     return out
 
 
@@ -183,6 +203,32 @@ def _cjk_block_qids():
     return {ln.strip() for ln in path.read_text(encoding="utf-8").splitlines() if ln.strip()}
 
 
+def _emma_confirmed_qids():
+    """Items Emma has judged to BE one of our people, one AskUserQuestion each.
+
+    **The same carve-out as `SPINE_BLOCK_QIDS`, for the same reason.** These are outside the
+    ledger only because the `P2600` pairing is not on Wikidata *yet* — and adding it is exactly
+    what the statement does. Once she runs the batch they enter the ledger by the ordinary route
+    and this set stops mattering.
+
+    Read from `reports/emma-judgments.tsv` rather than hardcoded, so the exception is exactly
+    the set she approved and cannot quietly grow. A row counts only with `verdict == SAME` and
+    the `blocked-creations` batch label. 2026-08-31: thirteen, each put to her individually —
+    the duplicate guard was holding a creation because the person's parent already named a child
+    item nothing accounted for, and she confirmed that child item is our person.
+    """
+    path = REPO / "reports" / "emma-judgments.tsv"
+    if not path.exists():
+        return set()
+    out = set()
+    with open(path, encoding="utf-8") as fh:
+        for row in csv.DictReader(fh, delimiter="	"):
+            if row.get("verdict") == "SAME" and row.get("batch") == "blocked-creations":
+                if (row.get("qid") or "").startswith("Q"):
+                    out.add(row["qid"])
+    return out
+
+
 def test_every_explicit_subject_already_exists():
     """A statement on `Q…` edits an existing item; on `LAST` it edits the new one.
 
@@ -193,7 +239,7 @@ def test_every_explicit_subject_already_exists():
     thing the block fixes. When the block is deleted this set goes with it, and if it is ever
     emptied the assertion tightens back to what it always was.
     """
-    known = known_qids() | SPINE_BLOCK_QIDS | _cjk_block_qids()
+    known = known_qids() | SPINE_BLOCK_QIDS | _cjk_block_qids() | _emma_confirmed_qids()
     unknown = sorted({m.group(1) for ln in lines()
                       if (m := QID_SUBJECT.match(ln)) and m.group(1) not in known})
     assert not unknown, f"editing items not in the ledger: {unknown[:5]}"

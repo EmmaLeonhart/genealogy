@@ -1017,6 +1017,27 @@ def name_lines(label, plan, geni_id, father_qid, fields=None, sex="",
 #: deliverable.
 SPINE_PATHS = ("paths/arne-garborg-to-johannes-bureus-geni.tsv",)
 
+#: **The spine's own anchors, hardcoded — Emma, 2026-08-31:** *"Add all of Q116760688, Q6014618,
+#: Q26239714, Q109265381 as both ledger points and entry points hardcoded in."*
+#:
+#: These four are steps 7, 8, 15 and 16 of the Arne↔Bureus spine. They carry a `P2600` on
+#: Wikidata but were in **neither** `reports/garborg-qids.tsv` nor anything else `our_items` reads,
+#: so the batch could not see them — and a chain of otherwise-unknown people can only grow from a
+#: neighbour that already has a QID. The whole Bureus end therefore had no foothold: the run of
+#: 2026-08-31 12:15 created **one** spine step, from the Arne end alone, when it should have moved
+#: at both. Folding these in took it to **four** (steps 5, 8, 14, 16), filling inward from each end.
+#:
+#: **Hardcoded rather than derived on purpose.** `scripts/refresh-spine-known.py` derives the same
+#: pairs from `out/wikidata/p2600-all.tsv`, but that file is a snapshot and the anchors are the one
+#: thing the spine cannot afford to lose to a stale download — losing an anchor does not fail, it
+#: silently halves the rate of progress, which is exactly how this went unnoticed.
+SPINE_ANCHORS = {
+    "4520166": "Q116760688",              # step 7  Maria Nordenfelt
+    "4198641": "Q6014618",                # step 8  Enar Vilhelm Nordenfelt
+    "6000000006828366697": "Q26239714",   # step 15 Jonas Jonae Rudberus
+    "6000000006828534420": "Q109265381",  # step 16 Jonas Benedicti Rudberus
+}
+
 #: **Empty since 2026-08-31.** It held `bergitte-to-emma.tsv`, which is stored Emma-first and
 #: so had to be walked from the far end. That path is one of the four legacy spines and is no
 #: longer in `SPINE_PATHS`. The one live spine, Arne→Bureus, is stored Arne-first and grows
@@ -4605,6 +4626,11 @@ def main():
               "live values refreshed")
 
     our_items = ledger()
+    # **The spine anchors go in before anything reads `our_items`.** They are both ledger points
+    # (so a relationship may point at them) and entry points (so a neighbour of theirs can be
+    # created). `setdefault` so the ledger always wins if it has since learned a different QID.
+    for _anchor_geni, _anchor_qid in SPINE_ANCHORS.items():
+        our_items.setdefault(_anchor_geni, _anchor_qid)
 
     # **`linked` is every Geni id Wikidata already carries a `P2600` for. `have` is not.**
     #
@@ -4884,13 +4910,32 @@ def main():
     children = collections.defaultdict(set)
     spouses = collections.defaultdict(set)
     siblings = collections.defaultdict(set)
+    # **A person can sit in several parent families, and this used to keep whichever came
+    # last.** `(father if sex == "M" else mother)[k] = p` is a plain dict write, so for anyone
+    # with more than one recorded parent-family the last one processed silently won — and the
+    # synthetic placeholders minted by `build-scraped-gedcom.py` (`9995…`, which carry no QID
+    # and never will) compete on equal terms with the real parent.
+    #
+    # Found 2026-08-31 on `Kristofer Sahlin`, step 6 of the Arne↔Bureus spine. His mothers are
+    # `4520166 | 9995000000000000647 | 9995000000000102355`; the real one is Maria Nordenfelt,
+    # a hardcoded anchor holding `Q116760688`. With a placeholder winning, he had no relative
+    # with a QID, so his creation was dropped as *"no relationship could be emitted"* and the
+    # spine stalled a step short at that end.
+    #
+    # **Collect every candidate, then choose.** A parent we can actually point at beats one we
+    # cannot; a real Geni id beats a minted placeholder; otherwise keep the first, which is at
+    # least stable between runs rather than dependent on dict ordering. This is the same shape
+    # as the `fathers`/`mothers` plural-column bug: multi-valued data flattened to one
+    # arbitrary value, producing a clean number that is about the flattening.
+    father_all = collections.defaultdict(list)
+    mother_all = collections.defaultdict(list)
     for fam, parents in fam_p.items():
         kids = fam_c.get(fam, [])
         for p in parents:
             for k in kids:
                 children[p].add(k)
                 sex = (facts.get(p, {}).get("sex") or "")
-                (father if sex == "M" else mother)[k] = p
+                (father_all if sex == "M" else mother_all)[k].append(p)
         for a in parents:
             for b in parents:
                 if a != b:
@@ -4899,6 +4944,21 @@ def main():
             for b in kids:
                 if a != b:
                     siblings[a].add(b)
+
+    def _best_parent(candidates):
+        """The parent worth pointing at: one with a QID, else a real profile, else the first."""
+        for c in candidates:
+            if c in our_items:
+                return c
+        for c in candidates:
+            if not c.startswith(("9995", "9990")):
+                return c
+        return candidates[0]
+
+    for _k, _v in father_all.items():
+        father[_k] = _best_parent(_v)
+    for _k, _v in mother_all.items():
+        mother[_k] = _best_parent(_v)
 
     lines = []
     # ---- THE DUPLICATE GUARD -------------------------------------------------------
@@ -4981,7 +5041,21 @@ def main():
     else:
         print("WARNING: out/wikidata/relations.tsv missing - duplicate guard is OFF")
 
-    claimed = set(our_items.values())
+    # **A QID that already carries a `P2600` is SPOKEN FOR, whoever holds it.** `claimed` was
+    # built from the ledger alone, so a child item Wikidata has already tied to some other Geni
+    # profile counted as "unmatched" and blocked a creation that could not possibly duplicate it.
+    #
+    # Found 2026-08-31 on `Kristofer Sahlin`, step 6 of the Arne↔Bureus spine. His mother
+    # `Q116760688` has two children on Wikidata, `Q6088529` and `Q6088489` — and both already
+    # state `P2600` for *other* people (Mauritz Sahlin `6000000004565255638` and Enar Sahlin
+    # `6000000023073624991`). Kristofer is `6000000003002231602`, neither of them. The guard
+    # nevertheless held him, because neither QID was in the ledger.
+    #
+    # This is the same blind spot as `SPINE_ANCHORS`: knowledge that lives in
+    # `out/wikidata/p2600-all.tsv` and never reached the logic that needed it. Widening
+    # `claimed` does not weaken the guard — it still refuses when a parent has a child item
+    # nothing accounts for. It stops it refusing when Wikidata plainly accounts for it.
+    claimed = set(our_items.values()) | set(any_wikidata_item.values())
     blocked = {}
     for g in list(to_create):
         if g in RELEASED_FROM_DUPLICATE_GUARD:
