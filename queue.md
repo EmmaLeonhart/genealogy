@@ -130,31 +130,21 @@ Items 3, 5 and 6 are independent of this chain and can run at any point.
 
 ## THE AGENDA — Emma 2026-08-15. Everything else is secondary
 
-*"As far as actually getting any information from now, I only have three things that I'm trying
-to do."* Two of the three are closed. **What is left is the bridge work: connect her to the
-researchers on Wikidata.**
+Two of her three things are closed. What is left is the bridge work: connect her to the
+researchers on Wikidata.
 
-**The shape of what blocks the paths is now measured** — `reports/broken-link-kinds.md`,
-2026-08-31. 85 of 979 paths are blocked by 102 missing links, and this section used to say
-*"there is no leverage play: it is 102 small repairs"*. That is true per path and false per
-kind: the 102 are **two classes and nothing else**, with **no parent or child link missing
-anywhere**.
+**The blocking links are measured and the fix is in.** `reports/broken-link-kinds.md`. What was
+reported as *"102 small repairs"* was 43 sibling links that were never broken — a wrong column in
+`census-paths.load_adjacency` — plus 58 former partners the GEDCOM builder was dropping on the
+`ex-` prefix. Both are fixed: **45 of 979 paths, 59 links** after the column fix, and
+`exports/0-scraped/scraped-paths.ged` now carries **117 `DIV` and 6 `ENGA`** families where it
+carried none.
 
-- **43 sibling links** — and a sibling step is only scored broken when the two do **not** share
-  a recorded parent. All 43 have both people present with full parentage on both sides and no
-  parent in common, so this is our snapshot **contradicting** Geni rather than lacking an edge.
-  The instrument is a refresh of those people, per § *The question is whether OUR TREE MATCHES
-  GENI*.
-- **58 former or prospective partner links** — `ex-husband` 25, `ex-wife` 19, `ex-partner` 13,
-  `fiancée` 1. None is linked as a spouse in our tree and for 43 of them neither person has any
-  spouse at all. `1 DIV` occurs in 502 exports, so the format is not the limit and this is
-  export coverage.
-
-**The step not yet taken: decide how to close them.** Refreshing the sibling 43 and covering
-the partner 58 both mean exports, and § *THE EXPORT LOOP* is at the tail by her own call — so
-this needs her routing before it consumes export slots. The alternative is synthesising the
-edges from the path assertions the way `exports/0-scraped/scraped-paths.ged` synthesised the
-people, which is a provenance decision and is **not** to be taken here.
+**The one step left: re-merge and re-derive, then re-measure.** `reports/derived-family.csv` is
+built from `out/merged.ged`, so nothing about connectivity has moved yet — the new families are on
+disk and have not been merged. Run the merge, rebuild the derived CSVs, then
+`python scripts/rank-broken-links.py` and `python scripts/classify-broken-links.py`. Expect the
+former-partner class to close; anything left after that is a genuinely new finding.
 
 **The lettering was mine, not hers.** She listed three things; calling them Task A/B/C was
 invented structure: *"I don't know why you think that you should be using these made-up task
@@ -339,30 +329,9 @@ them and was applied to the wrong one once.
   `genimerge wikidata-download --scan-per-round 0`. `reports/name-ambiguity-causes.md` is built on
   them. **Not** the 3-8 hour budget: *"It's about the Wikidata individuals. It's not about the
   names."*
-- **C · Individuals** — the live one, below. This is where the 3-8 hours belongs.
-
-### C · Individuals — LATER, and this is where the 3-8 hours belongs
-
-The relatives in the Wikidata world tree that are not downloaded. Her words:
-
-> This situation could theoretically last almost forever because we have an
-> existing downloading thing that manages the queue that we were running a lot
-> last week... It started off with the seed of all the geni-linked ones. It then
-> expanded and queued up all the linked individuals that were not specifically
-> present... When I stopped it, I stopped it because it was difficult to do. The
-> queue amount initially dramatically increased, but then it started gradually
-> decreasing. I think it's at a relatively low level, but I think it was
-> logarithmically decreasing... I stopped it for reasons mostly related to the
-> way I was moving around, which do not really apply as much anymore.
-
-**Order: after B.** *"The individuals thing, since it's a bit of a longer-running,
-more difficult task, should be occurring after we're finished with this other
-stuff, where we can monitor it a bit better and where the relatively
-easy-to-resolve name stuff is resolved."*
-
-**And when it runs: do not build new tooling.** *"Whatever the fuck you do, do not
-build the new tooling."* The existing downloader manages its own queue. Run it,
-measure the queue's decay, and estimate whether there is an end point.
+- **C · Individuals** — done 2026-08-31: the fetch queue drained to **0**, 2,248,462 items
+  held, nothing throttled. The scan found no new QIDs, though it is incremental and has
+  sampled ~20,000 items, so that is decay evidence rather than proof the frontier is closed.
 
 ## Comprehensive Wikidata re-import — Emma's item, in her words
 
