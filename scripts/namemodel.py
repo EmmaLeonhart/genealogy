@@ -350,6 +350,55 @@ QUOTED = re.compile(
 PATRONYMIC_PARTS = re.compile(r"^(.+?)(sen|son|sson|datter|sdatter|dotter)$", re.I)
 
 
+#: Spelling pairs that are the SAME Scandinavian name, applied before the skeleton is taken.
+#: Each is a real variant seen in the corpus, not a general phonetic theory: `Mathias`/`Matts`,
+#: `Niclas`/`Niklas`, `Christen`/`Kristen`, `Qvist`/`Kvist`, `Wilhelm`/`Vilhelm`.
+_SPELLING = (("th", "t"), ("ph", "f"), ("ch", "k"), ("ck", "k"), ("qu", "kv"),
+             ("c", "k"), ("w", "v"), ("z", "s"), ("j", "i"))
+
+
+def _skeleton(word: str) -> str:
+    """First letter plus the consonants, with the usual Scandinavian spellings folded.
+
+    **Why a skeleton and not the letters.** A patronymic is built from the father's given name,
+    and the two are spelled apart far more often than they are spelled alike: `Nielsdatter` from
+    `Nils`, `Pettersdotter` from `Peter`, `Mattsdotter` from `Mathias`, `Olsdatter` from `Ole`.
+    Comparing letters calls every one of those a surname. Dropping the vowels and folding `c/k`,
+    `th/t` and doubled consonants makes them agree, and leaves `Jackson` against `Badgley` as far
+    apart as it was.
+
+    **This is NOT the fuzzy matching `CLAUDE.md` forbids, and the boundary is the candidate set.**
+    That rule is about *searching* for a name across a population. Here the father is already
+    fixed by the tree -- exactly one person -- and the comparison only asks whether this token was
+    built from that one man's name. The same boundary the zipper's name step runs on: position has
+    chosen, the letters only confirm.
+    """
+    w = word.casefold()
+    for a, b in _SPELLING:
+        w = w.replace(a, b)
+    out = [w[0]] if w else []
+    out += [c for c in w[1:] if c not in "aeiouyáàâäåæéèêëíìîïóòôöøúùûü"]
+    # collapse doubles: `petter` -> `ptr`, not `pttr`
+    folded = []
+    for c in out:
+        if not folded or folded[-1] != c:
+            folded.append(c)
+    return "".join(folded)
+
+
+def _same_name(stem: str, given: str) -> bool:
+    """Whether a patronymic stem and a father's given name are the same name.
+
+    Anchored on the first letter and requiring a skeleton of at least two characters, so a stem
+    that reduces to almost nothing cannot match everything: `Dison` -> `d` matches no father, and
+    that is the point -- it is an inherited surname.
+    """
+    a, b = _skeleton(stem), _skeleton(given)
+    if len(a) < 2 or len(b) < 2 or a[0] != b[0]:
+        return False
+    return a == b or a.startswith(b) or b.startswith(a)
+
+
 def patronymic_or_surname(token: str, father_name: str) -> str:
     """`"patronymic"` or `"family"` for a `-sen`/`-son` token, using the FATHER.
 
@@ -392,9 +441,27 @@ def patronymic_or_surname(token: str, father_name: str) -> str:
     givens = [t.casefold() for t in parts if not PATRONYMIC.match(t)]
     for given in givens:
         g = given.rstrip("s")
-        if g == stem or (len(stem) >= 4 and g.startswith(stem[:4])):
+        if g == stem or (len(stem) >= 4 and g.startswith(stem[:4])) or _same_name(stem, g):
             return "patronymic"
-    return "patronymic"
+    # **The stem matched nothing in the father's name, so this is NOT a patronymic.**
+    #
+    # Emma, 2026-08-31: *"patronymics aren't a middle name they are a specific thing our
+    # pipeline should generate based on the given name property on the father matching a
+    # substring."* Until then this line returned `"patronymic"` -- the same value as the branch
+    # above it -- so the whole loop was decorative and had been since the function was written.
+    # `Kristiansen` with father `Kristian Olsen` and `Kristiansen` with father `Bartholomew
+    # Smith` classified identically.
+    #
+    # **The case that proves it, and it cost a real edit.** `Q141205900` *Bertrand Olav Olsen
+    # Vigdel*, father `John Jonassen Hegre`. `Olsen` is not John's patronymic -- John's own
+    # patronymic is `Jonassen`, son of Jonas -- so the `P5056` we emitted asserted something
+    # false. `Epìdosis` removed it on 2026-08-31 and merged the item away.
+    #
+    # **A morphological suffix is not attestation.** `-sen` on a token whose stem appears
+    # nowhere in the father's name is an inherited surname that happens to end like a
+    # patronymic, which is exactly the `Slawson` case one branch up seen without the father
+    # carrying the token himself.
+    return "family"
 
 
 def without_nickname(label, fields):

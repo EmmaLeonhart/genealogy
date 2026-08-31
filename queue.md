@@ -53,6 +53,22 @@ counts are not stale when she next sits down to it.
 **The merges themselves are hers now, not mine** — that is what the file is for. The Izumo
 three are cleared and the browser pass is closed.
 
+## Patronymic residue: `d`/`t` and `Nils`/`Nicolaus`
+
+The father test is load-bearing now and `reports/patronymic-reclassified.tsv` is the 30,171
+rows it moves. Reading a sample leaves one nameable class still wrong:
+
+- **`Pedersdatter` with father `Petter`** — `d`/`t` alternate in Scandinavian given names and the
+  skeleton keeps them apart. Folding them is a bigger claim than the others: `Peder`/`Petter` are
+  the same man's name, but `Anders`/`Antti` are cognates rather than one name, and folding
+  `d`→`t` merges both.
+- **`Nilsson` with father `Nicolaus`** — `Nils` is a form of `Nicolaus`, which no letter rule
+  reaches. A short table of Scandinavian given-name forms would, and that is what to build if the
+  residue is worth closing.
+
+Measure before folding: how many of the 30,171 are `d`/`t` pairs, how many are dictionary forms,
+and how many are genuinely inherited surnames.
+
 ## ⛔ THE DAILY ALGORITHM — her full spec, 2026-08-26. SPECIFICATION, not a step
 
 `docs/dictation/2026-08-26-daily-algorithm.md` is her dictation verbatim;

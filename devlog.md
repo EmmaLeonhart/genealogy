@@ -22588,3 +22588,53 @@ build a CSV*: how many rows change, which, and named people to eyeball.
 
 The dependency runs to the queue's CI/CD item, which sits at the tail by her placement. Noted,
 not promoted.
+
+## 2026-08-31 — the patronymic father test made load-bearing, and the matcher rebuilt to suit
+
+**Her diagnosis, and it was better than mine:** *"there's a consistent pattern where I give
+complex instructions with many logical conditionals such as the patronymic one and you just kinda
+implement it halfway."* Not a testing problem. The half I drop is always the half that does not
+decide whether the thing **runs** — the batch still generates, the classifier still returns a
+string, so a fragment satisfies "it works".
+
+**The condition checklist, which is the countermeasure and took ten seconds:** for each condition
+she stated, what differs in the output when it fires?
+
+| her condition | wired | what differs |
+| --- | --- | --- |
+| patronymic is `P5056`, its own property | yes | `namemodel.py:670` |
+| `P144` *based on* -> the father as a person | yes | `namemodel.py:669` |
+| the token may sit in `GIVN` or `SURN`, check both | yes | lines 479 and 493 |
+| father carries the SAME token -> family | yes | returns `family` |
+| **father's given name matches the stem -> patronymic** | **no** | **nothing — same value as the fallthrough** |
+| a middle name is a given token that is NOT a patronymic | no | follows from the row above |
+
+**The naive fix was WRONG and the sample caught it before it shipped.** Making the fallthrough
+return `family` flipped **62,637** tokens, and reading fourteen of them showed most were genuine
+patronymics the matcher could not see: `Olsdatter` from `Ole` (stem `ol` is two characters and the
+prefix branch required four), `Nielsdatter` from `Nils`, `Mattsdotter` from `Mathias`,
+`Pettersdotter` from `Peter`, `Matsson` from `Mattis`. Shipping that would have been worse than
+the bug.
+
+**So the matcher is the work, not the rule.** `_skeleton` takes the first letter plus the
+consonants with `th/t`, `ph/f`, `ch/k`, `ck/k`, `qu/kv`, `c/k`, `w/v`, `z/s`, `j/i` folded and
+doubles collapsed; `_same_name` anchors on the first letter, requires two characters so a stem
+that reduces to nothing cannot match everything (`Dison` -> `d`), and accepts a prefix either way.
+**16/16 on the hand-read sample**, including `Olsen` with father `John Jonassen Hegre` -> family,
+which is the statement Epìdosis deleted.
+
+**This is not the fuzzy matching `CLAUDE.md` forbids**, and the boundary is the candidate set: the
+father is fixed by the tree, exactly one person, and the letters only confirm a position the
+structure already chose. Same boundary as the zipper's name step.
+
+    316,574 patronymic-shaped tokens on people with a named father
+      patronymic, attested by the father    245,353   77.5%
+      family, father carries the same token  41,050   13.0%   unchanged
+      family, NEWLY -- the flip              30,171    9.5%
+
+`reports/patronymic-reclassified.tsv` is every one of the 30,171 with the person and the father,
+per § *"Analyse this" means build a CSV* — and no new test, per § *NO NEW TESTS until CI/CD*.
+
+**A residue is queued rather than folded away:** `Pedersdatter`/`Petter` needs `d`/`t`, and
+`Nilsson`/`Nicolaus` needs a form table. Folding `d`→`t` would also merge `Anders`/`Antti`, which
+are cognates and not one name, so it is measured first.
