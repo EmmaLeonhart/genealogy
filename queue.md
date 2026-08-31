@@ -910,35 +910,6 @@ against.
 
 ---
 
-## What is actually left in `entity_resolution.md` — measured live 2026-08-29
-
-Emma, shown a claim that the file was not to be acted on: *"Uhh I don't know if there's any useful
-info in this lol."* Checked rather than guessed — one batched `full_entities` request over all
-eight items the file names. **There is, and it is small.**
-
-**One of her three label edits never landed:**
-
-| item | she wrote | live 2026-08-29 |
-| --- | --- | --- |
-| `Q19657284` | `en` *Buyeo Deokjang* | done — `mul` *Buyeo Deokjang* |
-| `Q12598947` | `en` *Buyeo Taebi* | done — `mul` *Buyeo Taebi* |
-| `Q11443857` | *"change her name to Mononobe no Futohime"* | was **not** done; now in `CJK_CLAN_BLOCK`, so every batch carries it until it lands |
-
-**Six of the eight items carry no `P2600` at all**, so the Geni pairings the file records exist
-nowhere Wikidata can see: `Q11596350` *Prince Wakatakehiko*, `Q11078587` *Harima no Inabi no
-Ooiratsume*, `Q24890131` *Mononobe no Ikofutsu*, and the two Kitajima items. Only the two Buyeo
-items have one.
-
-**Three of those six are out of scope and stay so.** The two Kitajima items are in
-`NEVER_TOUCH_QID`, and her own `Q232803` entry is the one she said she will remove herself.
-
-**So the residue is three edits**: `P2600` on `Q11596350`, `Q11078587` and `Q24890131`. The
-Futohime label is handled — she asked for it in the clan block on 2026-08-29 and it is there.
-
-The three `P2600` statements were **not** written, and that is deliberate rather than pending: the
-nine pairs belong to her dictated item 11, whose method is to put the Wikidata link in each Geni
-bio and then run a `Forest` export per person, not to write `P2600` from here.
-
 ## The eight Asian identities — bios get their QID links AT SYNOPTIC-MERGE TIME, not now
 
 **Emma, 2026-08-29, correcting a recovered plan that a later discussion had already replaced:**
@@ -1157,31 +1128,6 @@ there's an additional hop', is something that would conceivably make it lighter.
 100% sure, because that might make it explode quite fast too."* So: do not build daily-hop
 statefulness on the strength of this note. It could bound the growth or accelerate it, and which
 one is an empirical question.
-
-## LAST — ingest the saved pages and paths into the tree
-
-**Emma, 2026-08-28, and she guessed it before it was checked:** *"you never actually
-bothered with any of the actual ingestion logic of the paths... The saved pages had their
-names, plus all their immediate relatives, siblings, spouses, children, and those people's
-names and display names, and Geni links."*
-
-**Confirmed.** `genimerge.sources.find_exports()` globs `*.ged` and nothing else, so the
-merged tree is built from GEDCOM exports alone. Everything below is read only by reports
-and seed-picking scripts, never by the merge:
-
-| source | count | holds |
-| --- | ---: | --- |
-| `geni-scraping/` | 1,556 pages | name, Geni id, immediate relatives with their names and ids |
-| `paths/` | 697 TSVs | relationship chains, one person per step, with ids |
-| `geni_pages/` | 28 saved pages | the same, plus the relationship panel |
-
-**Why it matters:** these are the only evidence in the repo that comes from *outside* the
-exports — they name people whether or not any export reached them. `CLAUDE.md` already
-says so of relationship paths. Ingesting them would add people and edges the GEDCOMs do
-not have.
-
-**Not urgent, per her:** *"while it is important, it is not worth messing with stuff right
-now."* Hence the tail of the queue.
 
 ## THE LAST ITEM — fix the pipeline so dates carry their proper qualifiers
 

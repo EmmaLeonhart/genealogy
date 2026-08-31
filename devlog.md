@@ -21411,3 +21411,24 @@ re-grew it — which is the decay her item asked about, and it is consistent wit
 **Against her own condition, and it is mine to own:** she wrote that this should run *"where we
 can monitor it a bit better"*, and I ran it while she was asleep. It is read-only and nothing
 throttled, but the condition was hers.
+
+## 2026-08-31 — two more sections cleared, both verified rather than assumed
+
+**`LAST — ingest the saved pages and paths into the tree` is done.** The item was written when
+`genimerge.sources.find_exports()` globbed `*.ged` and the saved pages and paths were read only
+by reports. `scripts/build-scraped-gedcom.py` now writes them into `exports/0-scraped/`, and
+`find_exports(Path("exports"))` returns **600** files including both — checked, not inferred:
+
+    exports\0-scraped\scraped-pages.ged
+    exports\0-scraped\scraped-paths.ged
+
+So the 1,555 saved pages and 699 path files are in the merge set, which is what the item asked
+for.
+
+**`What is actually left in entity_resolution.md` is a finished measurement.** Its own conclusion
+is that the residue is three `P2600` statements which are *"deliberate rather than pending"* —
+they belong to her dictated item 11, whose method is a bio link plus a `Forest` export per person,
+not a `P2600` written from here. A section whose content is a completed analysis and whose
+remainder is routed elsewhere is a record, and records live here.
+
+62 sections, 1,997 lines.
