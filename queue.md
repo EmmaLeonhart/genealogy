@@ -300,49 +300,32 @@ the name** — the tree settles it, via neighbours and which exports they came f
 state** — and the 9,287 with `mul` only have no named relative at any distance out to
 two hops, so they need something other than a relative or they stay markers.
 
-## Name items — the ambiguity, measured now the download is in
+## Name items — the ambiguity
 
-**Emma's diagnosis was right about the causes and wrong about the size.** She said
-the ambiguity was *"diacritics and… you not differentiating patronymics versus
-surnames versus given names."* With all 824,358 name items downloaded and the store
-index rebuilt, **1,633 of the 1,731 competing items are readable** and the split is:
+**`reports/name-ambiguity-causes.md` is the authority and supersedes what this section used to
+say.** It measured the 769 still-ambiguous strings and corrected the account that was here: the
+different-language case this item called the blocker is **12 strings of 769, 1.6%**, so building
+a view of which language a Geni name is *"would buy 12 strings"* and is not worth it for this.
 
-| | strings |
-| --- | ---: |
-| **resolved by usage class** (`P31` *instance of* separates given from family) | **192** |
-| still ambiguous *within* one class | 769 |
-| no item of the right class at all | 14 |
+**70% is not ours to resolve** — 271 where one item is the native-script form of the other, 210
+where different characters share a romanisation (unresolvable from a Latin string, because the
+information was destroyed before the data reached us), and 57 that look like Wikidata duplicates.
+The right action there is to record the ambiguity, not resolve it.
 
-**So the usage split resolves 192, not the bulk.** Most ambiguity is genuinely two
-items of the same kind sharing a label.
+**Settled and in the pipeline:** the 192 resolved by usage class, and the 95 male-vs-female given
+names, which resolve **per bearer** from the person's sex — `reports/name-resolved-by-sex.csv`,
+13,501 of 13,503 bearer-token pairs.
 
-Of the 769:
+**Still to do: the 231 "other" bucket has never been broken down.** Some is the sex split already
+ruled on, some is an item with no English description at all (`John` → `Q104552334`), which is a
+gap in Wikidata rather than an ambiguity. Nobody has counted which is which, and it is the only
+bucket where the answer is not already known.
 
-| cause | strings | |
-| --- | ---: | --- |
-| **male vs female given name** | **95** | **resolved — her rule** |
-| one item far better populated than the other | 207 | not acted on |
-| neither | 467 | open |
-
-**The 95 are settled per BEARER, not per name string** — her ruling on `Maria`:
-*"there's a male and a female Maria… That is settled by the person's sex."* So the
-same token resolves to different items depending on who carries it, which is the
-*one item per usage* principle applied to a person rather than to a string.
-`reports/name-resolved-by-sex.csv`: **13,503 bearer-token pairs, 13,501 resolved**,
-2 left because the bearer has no recorded sex.
-
-**The 207 are deliberately NOT acted on.** One item having ten times the label
-languages of the other is a plausible tie-break and she has rejected exactly that
-shape of reasoning before — *"you jumped through a lot of hoops to try to introduce
-safety stuff here that I did not want."* Recorded as an observation; DECIDED rather than asked — her
-before it becomes a rule.
-
-**A real cause visible in the 467, also not acted on:** several are the same
-spelling in different languages, which Wikidata models as separate items — `Juan`
-is `Q110700065` *Chinese given name* and `Q475210` *Spanish*; `Marie` is
-`Q106674406` *Japanese* and `Q632104` *French*. Resolving those needs a view on
-which language a Geni name is, which is the CJK-culture problem from the labels
-item and is not solved.
+**The 207 better-populated-than-the-other cases stay unresolved on purpose.** One item having ten
+times the label languages of another is exactly the tie-break heuristic she rejected — *"you
+jumped through a lot of hoops to try to introduce safety stuff here that I did not want."*
+`CLAUDE.md` § *Emma not replying means she is content* records that this call is mine: it is
+**taken**, and the decision is to leave them ambiguous rather than to invent a ranking.
 
 ## THREE SEPARATE WIKIDATA OPERATIONS — Emma, 2026-08-15, correcting a conflation
 

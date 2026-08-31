@@ -21286,3 +21286,23 @@ appends are untouched.
 
 **The connectivity gain shows only after the next merge and derive**, since
 `reports/derived-family.csv` is built from `out/merged.ged`.
+
+## 2026-08-31 — the name-ambiguity queue item was carrying a claim its own report refuted
+
+`queue.md` § *Name items — the ambiguity* said the open cases were blocked on knowing which
+language a Geni name is — *"`Juan` is Chinese and Spanish; `Marie` is Japanese and French…
+that is the CJK-culture problem and is not solved."* `reports/name-ambiguity-causes.md`
+measured it and the different-language case is **12 strings of 769, 1.6%**. The report's own
+conclusion: building that view *"would buy 12 strings"*.
+
+The section is rewritten to what the measurement says. **538 of 769 — 70% — are not ours to
+resolve**: 271 native-script pairs, 210 romanisation collisions that cannot be recovered from a
+Latin string, 57 apparent Wikidata duplicates. The one genuinely open thing is the **231 "other"
+bucket, which has never been broken down** — and that is now what the item asks for.
+
+**The 207 decision is taken rather than parked.** `CLAUDE.md` § *Emma not replying means she is
+content* names it as mine: the strings where one candidate item is far better populated than the
+other. The decision is to **leave them ambiguous**. Ranking two items by how many label languages
+they carry is the tie-break heuristic she rejected in as many words — *"you jumped through a lot
+of hoops to try to introduce safety stuff here that I did not want"* — and an ambiguity recorded
+is cheaper than a wrong link created.
