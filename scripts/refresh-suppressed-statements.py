@@ -27,6 +27,25 @@ removes something and the batch re-adds it, that is a conversation she is having
 pipeline, not an edit war with a stranger.
 
 Writes `reports/suppressed-statements.tsv`: `qid`, `property`, `value`, `removed_by`, `when`.
+
+## RUN THIS ONCE. It is not a watcher, and it should not have been written as one
+
+**Emma, 2026-08-31:** *"It is extremely stupid that you wrote it as something that actively
+watches the editor's edits… I don't want this to be an ongoing thing! I want to watch their
+edits once and then leave it."*
+
+She is right. As written it re-crawls `editors_touching` over 200 ledger items and then every
+editor's full contribution history on **every invocation**, re-deriving from scratch a fact that
+only needed capturing once. That is hundreds of sequential requests, it takes tens of minutes,
+and it is a standing surveillance of other people's edit histories that nobody asked for.
+
+**What is already right, and why this is not being rebuilt now** (her call, same message: *"I
+don't want you to over-engineer the thing by deciding to fucking stop the generation right now
+and make it again"*): the output is a **static file**, and `build-garborg-day.read_suppressed`
+only ever *reads* it. The generator never calls this script. So the pipeline is already
+snapshot-shaped — the fix, when it happens, is to this script alone.
+
+**Do not schedule it, do not put it in a cron, do not run it as part of the daily batch.**
 """
 from __future__ import annotations
 

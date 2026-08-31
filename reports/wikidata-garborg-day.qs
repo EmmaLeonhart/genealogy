@@ -4,38 +4,38 @@
 #   batch and be limited to a count of 15 labels added per batch". A label set
 #   at CREATION time is neither counted nor capped -- "a label added during item
 #   creation is good".
-#   830 more are held for a later run; a repeat is a no-op, so nothing is lost.
+#   821 more are held for a later run; a repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
-#   Q1340404 Eric Benzelius d.y.: set the mul label to "Erik Benzelius the Younger"
-Q1340404	Lmul	"Erik Benzelius the Younger"
-#   add a mul alias "Eric Benzelius d.y."
-Q1340404	Amul	"Eric Benzelius d.y."
-#   Q1393227 Eva De la Gardie: add a mul alias "Eva De la Gardie"
-Q1393227	Amul	"Eva De la Gardie"
-#   set the ja label to "エヴァ・エケブラド"
-Q1393227	Lja	"エヴァ・エケブラド"
-#   set the zh label to "伊娃·埃凯布拉德"
-Q1393227	Lzh	"伊娃·埃凯布拉德"
-#   Q5568857 Daniel Jonsson Behmer: set the mul label to "Daniel Behmer"
-Q5568857	Lmul	"Daniel Behmer"
-#   add a mul alias "Daniel Jonsson Behmer"
-Q5568857	Amul	"Daniel Jonsson Behmer"
-#   set the ja label to "ダニエル・ベメル"
-Q5568857	Lja	"ダニエル・ベメル"
-#   set the zh label to "丹尼尔·贝梅尔"
-Q5568857	Lzh	"丹尼尔·贝梅尔"
-#   Q141223425 Hedvig Swedenborg: add a mul alias "Hedvig Behm"
-Q141223425	Amul	"Hedvig Behm"
-#   Q141224872 Petrus Jonae Jonæ Linnerius: add a mul alias "Petrus Jonae Jonsson"
-Q141224872	Amul	"Petrus Jonae Jonsson"
-#   Q5570928 Lars Benzelstierna: set the mul label to "Lars Benzelstierna"
-Q5570928	Lmul	"Lars Benzelstierna"
-#   set the ja label to "ラース・ベンゼルスティエルナ"
-Q5570928	Lja	"ラース・ベンゼルスティエルナ"
-#   set the zh label to "拉尔斯·本泽尔斯蒂埃尔纳"
-Q5570928	Lzh	"拉尔斯·本泽尔斯蒂埃尔纳"
-#   Q6158199 Erik Odelstierna: set the mul label to "Erik Odelstierna"
-Q6158199	Lmul	"Erik Odelstierna"
+#   Q633094: set the mul label to 'Johannes Thomæ Agrivillensis Bureus'
+Q633094	Lmul	"Johannes Thomæ Agrivillensis Bureus"
+#   Q633094: set the en label to 'Johannes Thomæ Agrivillensis Bureus'
+Q633094	Len	"Johannes Thomæ Agrivillensis Bureus"
+#   Q633094: set the ja label
+Q633094	Lja	"ヨハネス・トメ・アグリヴィレンシス・ブレウス"
+#   Q633094: set the zh label
+Q633094	Lzh	"约翰内斯·托梅·阿格里维伦西斯·布雷乌斯"
+#   add a mul alias "Erik Odhelius"
+Q6158199	Amul	"Erik Odhelius"
+#   set the ja label to "エリック・オデルスティエルナ"
+Q6158199	Lja	"エリック・オデルスティエルナ"
+#   set the zh label to "埃里克·奥德尔斯蒂埃尔纳"
+Q6158199	Lzh	"埃里克·奥德尔斯蒂埃尔纳"
+#   Q19631563 Erik Carlsson Odelström: set the mul label to "Erik Odelström"
+Q19631563	Lmul	"Erik Odelström"
+#   add a mul alias "Erik Carlsson Odelström"
+Q19631563	Amul	"Erik Carlsson Odelström"
+#   set the ja label to "エリック・オデルストロム"
+Q19631563	Lja	"エリック・オデルストロム"
+#   set the zh label to "埃里克·奥德尔斯特罗姆"
+Q19631563	Lzh	"埃里克·奥德尔斯特罗姆"
+#   Q141205926 NN: add a mul alias "NN"
+Q141205926	Amul	"NN"
+#   set the mul label to "mother of Andreas Olofsson"
+Q141205926	Lmul	"mother of Andreas Olofsson"
+#   Q109266155 Magdalena Johansdotter Bure: add a mul alias "Magdalena Johansdotter Bure"
+Q109266155	Amul	"Magdalena Johansdotter Bure"
+#   set the ja label to "マグダレーナ・ブレウス"
+Q109266155	Lja	"マグダレーナ・ブレウス"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
