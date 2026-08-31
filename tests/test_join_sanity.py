@@ -683,3 +683,49 @@ def test_a_territorial_designation_is_not_transliterated_as_a_name():
     assert drop("Abisha III ben Phinhas") == "Abisha III ben Phinhas"
     # A trailing preposition with nothing after it is a name token, not a designation.
     assert drop("Ole Olsen i") == "Ole Olsen i"
+
+
+def test_the_duplicate_finder_finds_the_duplicates_geni_actually_merged():
+    """Recall against the only ground truth in the repo, not a count of what it produced.
+
+    **Measured 2026-08-30, and it is the reason this test exists.** `find-geni-duplicates.py`
+    reported **10,111 candidate groups**, a plausible number nobody had reason to doubt. Checked
+    against `reports/geni-stale-duplicates.tsv` -- 29 pairs Geni has actually merged -- it
+    contained **one** of them, and 25 of the 29 appeared in it not at all.
+
+    The cause was structural rather than a coding slip: the group key was `(father_id,
+    mother_id)`, and a Geni duplicate is almost never one lone profile. Somebody re-creates a
+    stretch of line, so the child *and* the parent are duplicated, the two children hang off two
+    different parent ids, and that key can never bring them together. Every `strong` row in the
+    ground truth is that shape -- its own `father_name_matches` column reads `yes` while the
+    father ids differ.
+
+    So the assertion is on **recall over known answers**, which is the only thing that would
+    have caught it. `CLAUDE.md` § *Our side could never have two children* is the general
+    lesson, and its closing rule -- *a guard that has not been seen to FAIL is not known to
+    guard* -- is why this is pinned at the level the fix achieved rather than at something
+    comfortably below it.
+    """
+    import csv as _csv
+
+    known = list(_csv.DictReader(
+        (ROOT / "reports" / "geni-stale-duplicates.tsv").open(encoding="utf-8"),
+        delimiter="\t"))
+    assert known, "the ground truth file is empty; this guard measures nothing"
+
+    groups = [set(r["geni_ids"].split(";")) for r in _csv.DictReader(
+        (ROOT / "reports" / "geni-duplicate-candidates.tsv").open(encoding="utf-8"),
+        delimiter="\t")]
+
+    def paired(row):
+        return any(row["stale_twin"] in g and row["merged_survivor"] in g for g in groups)
+
+    strong = [r for r in known if r["evidence"] == "strong"]
+    missed = [r["name"] for r in strong if not paired(r)]
+    assert not missed, (
+        f"{len(missed)} of {len(strong)} strongly-evidenced merged pairs are not grouped "
+        f"together as candidates: {missed[:3]}")
+
+    # The weak and medium rows are weaker evidence of a merge, so they are not required --
+    # but the overall figure must not slide back towards the single hit it started at.
+    assert sum(paired(r) for r in known) >= 15

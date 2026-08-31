@@ -20610,3 +20610,45 @@ guard: **a guard that has not been seen to FAIL is not known to guard.** Its fir
 both historical bugs at 58.5% and 86.3%, because single-valued cells have no separator and
 resolve either way; restricted to genuinely multi-valued cells the separation is 100.0% against
 0.0%.
+
+## 2026-08-30 — the duplicate finder was finding 1 of 29 known duplicates
+
+Working the Geni-merges audit item. Steps 1 and 2 were marked built, so the thing to check was
+whether they work — and `reports/geni-stale-duplicates.tsv` is the only ground truth in the repo:
+29 pairs Geni has actually merged.
+
+**`reports/geni-duplicate-candidates.tsv` contained 1 of the 29.** Twenty-five appeared in it not
+at all, while the report showed a plausible 10,111 groups. This is precisely the failure written
+into `CLAUDE.md` an hour earlier — a plausible number measured over the wrong population — and it
+was found by the check that section prescribes: run the instrument against cases whose answer is
+already known.
+
+**The cause is structural, not a coding slip.** The group key was `(father_id, mother_id)`. A Geni
+duplicate is almost never one lone profile: somebody re-creates a stretch of line, so the child
+*and* the parent are duplicated, the two children hang off two different parent ids, and that key
+can never bring them together. Every `strong` row in the ground truth is that shape — its own
+`father_name_matches` column reads `yes` while the father ids differ.
+
+**The fix is a third pass bracketing on the parent's NAME**, one parent at a time. Both details
+were paid for by a measurement:
+
+- *One parent at a time.* Keying on the joined names of every recorded parent missed `Iwai` and
+  `Okinaga no Sukune`, because in each the survivor has a mother recorded and the stale twin does
+  not — one side of a duplicate being less complete is the normal shape of a duplicate.
+- *Dated members must agree within `YEAR_TOLERANCE`.* Without it, **77.6%** of the new groups held
+  members born decades apart: `Anna Brita Persdotter, child of Per Andersson` legitimately names
+  four women born 1775, 1789, 1809 and 1826. Undated members never block a group — every strong
+  ground-truth pair is undated. The check cut the pass 9,142 → 2,278 with no recall loss.
+
+**Recall 1 → 15 of 29, and 14 of 14 on the strongly-evidenced pairs.** Groups 10,111 → 12,318.
+`tests/test_join_sanity.py` pins it at what the fix achieved, not comfortably below it.
+
+**One instrument built and deleted the same hour.** A corpus-timeline detector — an id that stops
+appearing in later exports while its group-mate keeps appearing is what a merge looks like — found
+0 of the 29 and was removed rather than kept. `CLAUDE.md` § *LEGACY CODE IS DELETED*. Its own bug
+is worth recording because it is the same family again: the header regex read `2 DATE`, which over
+the first 4 KB matched the `CHAN` date of the file's first `INDI` instead of the export's own
+`HEAD` date, and produced a perfectly plausible ordering.
+
+Step 3 — the browser pass over the candidates — is unchanged and remains Emma's: the merges are
+hers, flagged and never performed here.

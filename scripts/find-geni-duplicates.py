@@ -55,6 +55,9 @@ sys.stdout.reconfigure(encoding="utf-8")
 csv.field_size_limit(1 << 30)
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / "src"))
+
+from genimerge.matching import YEAR_TOLERANCE  # noqa: E402
 
 #: Placeholder names. Two children called `NN` are not evidence of anything — a parent
 #: with several unnamed children is ordinary, and treating them as duplicates would
@@ -155,12 +158,14 @@ def main():
     # -- the strong signal: same parent, same name --------------------------
     children = collections.defaultdict(list)
     parentless = []
+    parents_of = {}
     with open(ROOT / "reports" / "derived-family.csv", encoding="utf-8") as f:
         for row in csv.DictReader(f):
             father = (row.get("father") or "").strip()
             mother = (row.get("mother") or "").strip()
             if father or mother:
                 children[(father, mother)].append(row["geni_id"])
+                parents_of[row["geni_id"]] = [x for x in (father, mother) if x]
             else:
                 parentless.append(row["geni_id"])
     print(f"{len(children):,} distinct parent pairs; {len(parentless):,} with no parent")
@@ -211,6 +216,93 @@ def main():
                                                 if years.get(g)})),
             })
 
+    # -- the signal that was MISSING: same name, parent of the SAME NAME ----
+    #
+    # **Measured 2026-08-30 against the only ground truth in the repo.** Of the 29 pairs in
+    # `reports/geni-stale-duplicates.tsv` -- pairs Geni has actually merged -- the parent-id
+    # pass above grouped **1**. Twenty-five of the 29 appeared in the report not at all.
+    #
+    # **Why, and it is structural rather than a bug in the key.** A Geni duplicate is very
+    # rarely one lone profile: somebody re-creates a stretch of line, so the child AND the
+    # parent are both duplicated. The two children then hang off two different parent ids, and
+    # a key of `(father_id, mother_id)` can never bring them together. Every one of the fourteen
+    # `strong` rows in the ground truth is that shape -- `father_name_matches` reads `yes` while
+    # the father ids differ, which is precisely the case the column exists to record.
+    #
+    # So the bracket becomes the parent's NAME rather than the parent's identity. That is looser
+    # and is still a bracket: it cannot fire across the corpus the way a bare name match would,
+    # because the child's name and the parent's name must agree together.
+    #
+    # `CLAUDE.md` § *Our side could never have two children* is why this was looked for at all:
+    # 10,111 groups is a plausible number, and a plausible number measured over the wrong
+    # population is this repo's most expensive recurring failure. The check that found it is the
+    # one that section prescribes -- run the instrument against cases whose answer is known.
+    # **One parent at a time, never both concatenated.** Keying on the joined names of every
+    # recorded parent missed `Iwai` and `Okinaga no Sukune` -- two of the fourteen `strong`
+    # ground-truth pairs -- because in each the survivor has a mother recorded and the stale
+    # twin does not, so the joined string differed while the fathers agreed exactly. A shared
+    # parent name is already the bracket; requiring the whole parent set to agree adds nothing
+    # and silently costs the cases where one side of a duplicate is less complete, which is the
+    # normal shape of a duplicate.
+    #
+    # A placeholder parent is not a bracket: two people whose mother is recorded as `NN` share
+    # nothing identifying, and `NN` is common enough to group strangers.
+    by_parent_name = collections.defaultdict(list)
+    for gid, parents in parents_of.items():
+        raw = labels.get(gid, "") or cjk_of.get(gid, "")
+        key = normalise(raw)
+        if not key or is_placeholder(raw):
+            continue
+        for parent in parents:
+            praw = labels.get(parent, "") or cjk_of.get(parent, "")
+            pname = normalise(praw)
+            if pname and not is_placeholder(praw):
+                by_parent_name[(pname, key)].append(gid)
+
+    # **Dated members must be compatible, and this pass alone needs the check.** The parent-id
+    # bracket pins a group to one couple, so two same-named children of it are duplicates
+    # whatever their dates say. The parent-NAME bracket does not: Nordic naming reuses a name
+    # every generation, so `Anna Brita Persdotter, child of Per Andersson` legitimately names
+    # four different women born 1775, 1789, 1809 and 1826. Without the check **77.6%** of this
+    # pass's groups held members with different recorded years, which is not a duplicate list.
+    #
+    # Undated members never block a group. Absence of a date is the normal state here -- every
+    # one of the fourteen `strong` ground-truth pairs is undated -- and treating it as a
+    # mismatch would discard exactly the population this pass was added for.
+    for (pname, _key), members in by_parent_name.items():
+        group = sorted(set(members))
+        if len(group) < 2 or not all(g in named for g in group):
+            continue
+        dated = sorted({int(years[g]) for g in group
+                        if years.get(g, "").lstrip("-").isdigit()})
+        if dated and dated[-1] - dated[0] > YEAR_TOLERANCE:
+            continue
+        ids = ";".join(sorted(group))
+        if ids in found:
+            # The parent-id pass already has it, and its bracket is the tighter one.
+            continue
+        name = labels.get(group[0], "")
+        cjk = next((cjk_of[g] for g in group if cjk_of.get(g)), "")
+        # A handful of people carry Han characters in the label itself while `cjk_names` is
+        # empty -- a Chinese genealogy title, in the one case this fires on. The label IS the
+        # kanji there, so record it as such rather than emitting a Han-scripted row with an
+        # empty kanji column, which `tests/test_join_sanity.py` rightly refuses.
+        if not cjk and script_of(name) in ("Han", "Kana", "mixed"):
+            cjk = name
+        rows.append({
+            "signal": "parent of the same name, same name",
+            "matched_on": "parent-name",
+            "script": script_of(cjk or name),
+            "name": name,
+            "cjk_name": cjk,
+            "geni_ids": ids,
+            "count": len(group),
+            "shared_father": "", "shared_mother": "",
+            "father_name": pname, "mother_name": "",
+            "birth_years": ";".join(sorted({years.get(g, "") for g in group
+                                            if years.get(g)})),
+        })
+
     # -- the weak signal: no parent, same name AND same birth year ----------
     unparented = collections.defaultdict(list)
     for gid in parentless:
@@ -236,10 +328,14 @@ def main():
             "birth_years": year,
         })
 
-    # Japanese first, then the biggest groups. Her instruction was higher scrutiny on
-    # the Japanese ones, so they sort to the top rather than being filtered out.
+    # Japanese first -- her instruction was higher scrutiny on those, so they sort to the top
+    # rather than being filtered out -- then by how tight the structural bracket is: a shared
+    # parent id beats a shared parent name, which beats no parent at all.
+    tightness = {"same parent, same name": 0,
+                 "parent of the same name, same name": 1,
+                 "no parent, same name and birth year": 2}
     rows.sort(key=lambda r: (r["script"] not in ("Han", "Kana", "mixed"),
-                             r["signal"] != "same parent, same name",
+                             tightness[r["signal"]],
                              -r["count"], r["name"]))
 
     dest = ROOT / "reports" / "geni-duplicate-candidates.tsv"

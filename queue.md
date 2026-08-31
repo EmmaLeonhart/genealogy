@@ -49,8 +49,20 @@ merge. Izumo ones are good to explore to see how redirects potentially work."*
 Three steps, in her order:
 
 **Steps 1 and 2 are built** — `scripts/find-geni-duplicates.py` →
-`reports/geni-duplicate-candidates.tsv`, **9,744 same-parent-same-name groups** over 20,191
-profiles, plus 367 unparented same-name-same-year ones. Nothing merged, nothing rewritten.
+`reports/geni-duplicate-candidates.tsv`. Nothing merged, nothing rewritten.
+
+**Checked against ground truth 2026-08-30, and it was finding almost none of them.**
+`reports/geni-stale-duplicates.tsv` holds 29 pairs Geni has *actually* merged. The report
+contained **1** of them; 25 appeared in it not at all — while showing a plausible 10,111 groups.
+The key was `(father_id, mother_id)`, and a Geni duplicate is almost never one lone profile:
+somebody re-creates a stretch of line, so child and parent are both duplicated and the two
+children hang off different parent ids. Every `strong` ground-truth row is that shape.
+
+A third pass brackets on the parent's **name** instead, one parent at a time, with dated members
+required to agree within `YEAR_TOLERANCE` — without that check 77.6% of its groups held members
+born decades apart, because Nordic naming reuses a name every generation.
+**Recall 1 → 15 of 29, and 14 of 14 on the strongly-evidenced ones**, for 10,111 → 12,318 groups.
+`tests/test_join_sanity.py` now pins the recall, so it cannot slide back.
 
 The Japanese pass exists now and did not before: the `script` column read `Latin` for all
 1,329,328 people because the finder matched the romanised `label_en`, while the kanji sit in
