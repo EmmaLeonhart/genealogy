@@ -329,38 +329,17 @@ jumped through a lot of hoops to try to introduce safety stuff here that I did n
 
 ## THREE SEPARATE WIKIDATA OPERATIONS — Emma, 2026-08-15, correcting a conflation
 
-*"These are three completely different operations that you conflated with each
-other."* She is right; I had merged all three and then applied her budget to the
-wrong one. They are listed together **only** so the distinction cannot be lost
-again.
+*"These are three completely different operations that you conflated with each other."* They stay
+named together **only** so the distinction cannot be lost again — her budget belongs to one of
+them and was applied to the wrong one once.
 
-### A · Labels fetch — DONE, and it was never the core data
-
-`scripts/fetch-referenced-labels.py`, run 2026-08-12: English labels for every
-property and item the store references but does not hold.
-`reports/wikidata-labels.tsv`, 876,840 items + 5,637 properties.
-
-Emma: *"The labels fetch thing was always intended... but it wasn't really the
-core data. It was more of a metadata thing for helping us make decisions."* And
-her warning about what it cannot do: *"It wouldn't be giving something that would
-be comprehensible for the names at all because most of the name objects will not
-be linked."* Correct — it only ever covered items somebody in our store points at.
-
-### B · Name items — RUNNING NOW. *"should be done right now"*
-
-Every instance of the six name classes on Wikidata, not just the ones our people
-reference. `scripts/collect-name-item-qids.py` enumerates the QIDs by aggregate
-page query, writing `reports/name-item-qids.tsv`; then
-`genimerge wikidata-download --seeds reports/name-item-qids.tsv --scan-per-round 0`.
-
-**824,358 items**: 693,049 family name, 59,275 male given, 37,736 female given,
-30,894 given, 4,141 unisex given, 631 patronymic. `--scan-per-round 0` is
-required — the scan expands along `P22/P25/P26/P40/P3373` and would otherwise
-wander back into the 1.4M people.
-
-**This is NOT the 3-8 hour budget.** Emma: *"The three to eight hour budget thing
-is about a completely different thing. It's about the Wikidata individuals. It's
-not about the names."*
+- **A · Labels fetch** — done 2026-08-12, `reports/wikidata-labels.tsv`, 876,840 items and 5,637
+  properties. Her framing: *"it wasn't really the core data. It was more of a metadata thing."*
+- **B · Name items** — done, **824,358 items** via `scripts/collect-name-item-qids.py` then
+  `genimerge wikidata-download --scan-per-round 0`. `reports/name-ambiguity-causes.md` is built on
+  them. **Not** the 3-8 hour budget: *"It's about the Wikidata individuals. It's not about the
+  names."*
+- **C · Individuals** — the live one, below. This is where the 3-8 hours belongs.
 
 ### C · Individuals — LATER, and this is where the 3-8 hours belongs
 
@@ -940,54 +919,25 @@ Wikidata."* A slot with nothing on their side is a **creation opportunity**, whi
 
 ---
 
-# THE LAST ITEM — BUILT 2026-08-26. `reports/wikidata-garborg-day.qs`
+# THE LAST ITEM — the new-to-new links the spine batch cannot emit
 
-**There is exactly ONE live batch file and that is deliberate.** A second copy under a spine-y
-name was made and immediately deleted: `tests/test_p2600_batches.py` failed on it, correctly,
-because two files creating the same people is precisely how somebody runs both and duplicates
-everybody. `reports/wikidata-garborg-day.qs` is the batch; what it contains depends on the flags
-it was built with.
+**The batch itself is built and run.** `scripts/build-garborg-day.py --roster out/roster-spine.txt
+--roster-is-frontier --known reports/spine-already-on-wikidata.tsv` produced the whole spine in one
+file, 23 creations, and Emma declared the spines clear on 2026-08-30. `devlog.md` 2026-08-26 has
+the guard-by-guard account and `RELEASED_FROM_DUPLICATE_GUARD` carries the two she released.
 
-**Emma, 2026-08-25:** *"make it 100% clear in our queue at the end and no other crap no excuses
-queue says to build the thing that makes a lot of them."*
+**There is exactly ONE live batch file and that is deliberate** — `reports/wikidata-garborg-day.qs`.
+A second copy under a spine-y name was made and deleted the same day;
+`tests/test_p2600_batches.py` failed on it correctly, because two files creating the same people is
+how somebody runs both and duplicates everybody.
 
-**It exists.** `scripts/build-garborg-day.py --roster out/roster-spine.txt --roster-is-frontier
---known reports/spine-already-on-wikidata.tsv` → **21 creations, 148 links**, the whole spine in
-one file instead of a hop a day.
-
-`--roster-is-frontier` is what was missing. `--roster` *filters* the one-edge ring, and the spine's
-middle sits many edges from anybody holding a QID — which is the entire reason it needs building —
-so filtering a ring they are not in returned nothing and read as "no work to do".
-
-**Every guard still applies**, and each one bit:
-
-| | |
-| --- | ---: |
-| people across all three lines | 49 |
-| already in the ledger | 5 |
-| already judged to have an item (`--known`) | 8 |
-| born 1880 or later | 4 |
-| already carry a `P2600` elsewhere | 9 |
-| held by the duplicate guard | 0 |
-| **created** | **23** |
-
-23 + Emma, who has `Q232803` and needs an id rather than a creation, is **24** — the spine
-count in `reports/the-spine.md`, arrived at independently.
-
-**The two the guard held were false positives and Emma released them, 2026-08-26.** The unmatched
-item is a *named other person* in both cases, which the guard cannot see because it compares QIDs
-and not labels: Ramborg Knutsdotter Lejon's parent `Q5915800` has `Q4955715` *Ingegerd
-Knutsdotter* and `Q16595443` *Katarina Knutsdotter* — her sisters — and Algot Bryniolfsson's
-`Q101247444` has `Q101247439` *NN Brynolvsdotter*, a **-dotter** where Algot is a **-son**.
-`RELEASED_FROM_DUPLICATE_GUARD` in `scripts/build-garborg-day.py` carries both with their reason.
-Releasing Ramborg pulled her married surname *Lejon* into `wikidata-garborg-name-items.qs`, which
-went 41 → 42 creations; `tests/test_garborg_day_batch.py` caught that before the run did.
-
-**Still needed, and it is not optional:** the 23 cannot link to *each other* in one run, because
-`LAST` names only the most recent item. Everything joining them to an item that already exists is
-emitted both ways in this file; the new-to-new links wait for
-`scripts/build-missing-reciprocals.py` once the QIDs exist. That is the one place the two-file
-shape genuinely applies.
+**What is left:** people created in one run cannot link to *each other* in it, because `LAST` names
+only the most recent item. Links to items that already existed are emitted both ways in the batch;
+the **new-to-new** links wait for `scripts/build-missing-reciprocals.py` once the QIDs exist. They
+exist now, and `reports/wikidata-reciprocals.qs` has not been rebuilt since 2026-08-25 — so rebuild
+it and check it against the ledger before it is offered to her. Mind the `P3373` *sibling* cap of
+10 a day; that file was 257 statements, 160 of them siblings, which is what the cap was written
+against.
 
 ---
 

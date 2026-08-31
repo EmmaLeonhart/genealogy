@@ -21326,3 +21326,29 @@ merges to run blind. Nothing in the pipeline consumes them.
 
 **A pair appearing under several spellings is itself a signal**: `Strauss`, `Strauß` and
 `STRAUSS` all resolve to the same two items, as do the four spellings of `Fitzgerald`.
+
+## 2026-08-31 — dead-item sweep: two sections cut back to what is not done
+
+Neither was deletable whole, so both were cut rather than removed — the rule is to keep only the
+part still to do.
+
+**`THREE SEPARATE WIKIDATA OPERATIONS`** kept its framing, because its whole purpose is that the
+three do not get conflated again and her 3-8 hour budget stops being applied to the wrong one. Its
+detail went: **A · labels fetch** finished 2026-08-12 (876,840 items, 5,637 properties) and
+**B · name items** finished at **824,358 items** — `reports/name-ambiguity-causes.md` is built on
+them, which is the evidence B is done, not just claimed. Each is now one line. **C · individuals**
+is the live one.
+
+**`THE LAST ITEM`** was headed *BUILT 2026-08-26* and was mostly a record: the spine batch exists,
+ran, and Emma declared the spines clear on 08-30. What survives is the one step that is genuinely
+outstanding — people created in a single run cannot link to **each other**, because `LAST` names
+only the most recent item, so the new-to-new links need `scripts/build-missing-reciprocals.py`
+after the fact. Those QIDs exist now and `reports/wikidata-reciprocals.qs` has not been rebuilt
+since 2026-08-25, so the item says to rebuild it and check it against the ledger — and warns about
+the `P3373` cap, since that file was 257 statements with 160 siblings, which is what the cap was
+written against.
+
+2,164 → 2,082 lines, 64 sections either way.
+
+**Also noted, not acted on:** `reports/the-spine.md` still says Bergitte *"has no Wikidata item"*.
+She is `Q141198835`. That belongs to the queue's own § *The old spines are legacy* item.
