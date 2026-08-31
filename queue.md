@@ -980,17 +980,29 @@ What to build:
 **Bureätten the export campaign stays closed** — 7 resolved, 76 dropped, 0 exports. This is a
 different thing: linking people already on both sides, not finding new ones.
 
-## LAST — incidental findings from the review, to look at when it is over
+## LAST — two live items carry a marker the old `strip_markers` mangled
 
-- **Two tests fail after the ledger regeneration** (2026-08-27, 1,415 passed / 2 failed):
-  `test_garborg_day_batch.py::test_the_ledger_and_the_batch_do_not_both_claim_a_person` and
-  `test_generated_inventories.py::test_the_batch_inventory_names_exactly_the_batches_on_disk`.
-  The ledger went 164 -> 130 -> 209 rows, so the batch and the ledger now overlap where they did
-  not before, and a new `.qs` exists that the inventory does not list. Neither is urgent.
-- **`labels.strip_markers()` was rewritten twice on 2026-08-27** — first to delete markers, then
-  to preserve and normalise them to `NN`. The deleting version shipped and touched a batch. Check
-  nothing carries a label it produced.
-- **Uncommitted at the time of writing:** the `strip_markers` rewrite and the regenerated ledger.
+`scripts/labels.strip_markers` was rewritten twice on 2026-08-27 — first to **delete** an
+unknown-name marker, then to **preserve and normalise** it to `NN`. The preserving version is
+what shipped and is what the code says today: *"Normalise an unknown-name marker to `NN`.
+**Never delete it.**"* The batches on disk are clean — **0** `Lmul`/`Len` lines across every
+`reports/*.qs` start with a marker that is not already `NN`.
+
+**Two items created before the fix still carry the old form**, from
+`reports/garborg-live-labels.tsv`:
+
+| item | `mul` |
+| --- | --- |
+| `Q141198538` | `nn Gunnarsdatter Frafjord` — her own case, confirmed live 2026-08-31 |
+| `Q141216494` | `N.N. Jacobsdtr. Koll` |
+
+Both need the marker normalised to `NN`; neither is a deletion, since `CLAUDE.md` § *`NN` is
+PRESERVED in `mul`* keeps the marker and the surname. Fold them into the next label-correction
+batch rather than emitting one for two rows.
+
+**Beware the obvious false positive when re-checking this**: `nn` is also the language code for
+Norwegian Nynorsk. Scanning that file's columns indiscriminately reports **104** hits; scanning
+the `label` column reports **2**.
 
 ## LAST — name items are being MERGED by other editors. Stop preferring creation over reuse
 

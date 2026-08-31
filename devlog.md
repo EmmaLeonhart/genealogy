@@ -21629,3 +21629,31 @@ duplicate, 231 other). They are different rules, not a correction of arithmetic:
 tests most-specific-first, so a pair that is both native-script and a romanisation collision lands
 in one bucket rather than being counted by eye. The script is the version that can be re-run, and
 its ordering is stated in its docstring so the choice is auditable rather than implicit.
+
+## 2026-08-31 — sweep: the incidental-findings section, cut to what is actually left
+
+The section carried three bullets from 2026-08-27. Two are resolved and one is not.
+
+**"Two tests fail after the ledger regeneration" — resolved.** Both named tests now pass:
+`test_garborg_day_batch.py::test_the_ledger_and_the_batch_do_not_both_claim_a_person` and
+`test_generated_inventories.py`, 8 passed. The full fast lane is 1,506 passed with no failures.
+
+**"Uncommitted at the time of writing" — resolved.** The `strip_markers` rewrite and the
+regenerated ledger were committed on 08-27; the working tree carries neither.
+
+**"Check nothing carries a label the deleting version produced" — real, and now measured.** The
+batches are clean: **0** `Lmul`/`Len` lines across every `reports/*.qs` begin with a marker that
+is not already `NN`. But two live items created before the fix still do —
+`Q141198538` `nn Gunnarsdatter Frafjord` (her own case, confirmed live today) and `Q141216494`
+`N.N. Jacobsdtr. Koll`. Both want the marker normalised rather than removed, per § *`NN` is
+PRESERVED in `mul`*, and they are small enough to fold into the next label-correction batch
+rather than justify one of their own.
+
+**A false positive worth writing down, because the next person to check will hit it.** Scanning
+`reports/garborg-live-labels.tsv` across all columns reports **104** labels starting with a
+marker. They are not labels: `nn` is the language code for Norwegian Nynorsk and the match was on
+the `lang` column. Restricted to `label` it is **2**. Same shape as the wrong-column failures
+`CLAUDE.md` lists, caught this time before it was written down as a finding.
+
+60 sections either way — the section was cut back rather than deleted, because a third of it is
+still a step.
