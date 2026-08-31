@@ -198,6 +198,22 @@ def main():
             if line.startswith("wrote") or line.lstrip()[:2] in ("1.", "2.", "3.", "4."):
                 print(f"        {line.strip()}")
 
+    # ---- a by-product of the run, NOT a fourth step of her order ---------------------
+    #
+    # **Emma, 2026-08-31:** the generator should *"actively create merge candidates like
+    # our ones that are files for potential geni identifications related to parents"*. The
+    # duplicate guard already finds them and then loses them to the carry-forward; nothing
+    # was putting the question in front of her, which is how thousands accumulated
+    # unanswered.
+    #
+    # It is printed apart from steps 1-3 and emits no QuickStatements. Her three-step order
+    # is structurally rigid and this must never look like a fourth member of it.
+    print("")
+    print("ALSO  parent merge candidates  (build-parent-candidates.py)")
+    for line in run("build-parent-candidates.py", []).splitlines():
+        if line.strip():
+            print("        " + line.strip())
+
     print("\nRUN THEM IN THIS ORDER. It is the spec, not a convenience:")
     for pos, what, _s, _a, output in STEPS:
         note = " (second section of the same file)" if pos == 3 else ""

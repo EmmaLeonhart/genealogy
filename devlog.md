@@ -22441,3 +22441,35 @@ stale one re-creates her own work; the synoptic tree almost never, because it is
 is any `.ged` newer than `out/merged.ged`?
 
 54 → 57 sections.
+
+## 2026-08-31 — the spine gap: 14 of 18, and the last 4 are one consecutive run
+
+**Measured from the files, per her item, not from the run's own log** — and the log was wrong in
+a way worth recording. Step 1 printed **seven** spine steps; only **three** are creations in
+`reports/wikidata-garborg-day.qs`. The other four were picked by the no-front rule and then
+blocked downstream, so a reader of the log would think the spine advanced twice as far as it did.
+
+`paths/arne-garborg-to-johannes-bureus-geni.tsv`, 18 steps:
+
+| | |
+| --- | ---: |
+| already held before this run | **11** |
+| created by this run | **3** — step 6 Kristofer Sahlin, step 9 Anna Wilhelmina Posse af Säby, step 14 Maria Carlberg |
+| still open | **4** — steps 10, 11, 12, 13 |
+
+**14 of 18, and the four that are left are consecutive.** Every one carries the same
+carry-forward reason: *no relationship could be emitted: every relative either has no QID or is
+being created in this same batch*. That is the one real `LAST` limit — two items minted in one
+run cannot point at each other — and steps 10–13 are a four-person chain whose only neighbours
+are each other and step 9/14, both minted today.
+
+**So this is exactly the shape § *The batches are a SEQUENCE* describes, and it resolves itself.**
+Once she runs today's file, steps 9 and 14 exist; tomorrow steps 10 and 13 can each anchor to one
+of them, and the day after closes 11 and 12. Nothing is blocked; the sequence is doing what it is
+for.
+
+**A measurement error of mine, corrected before it was reported.** The first pass used
+`out/wikidata/p2600-all.tsv` alone and called step 5 *Gunnar Sahlin* open. He is in
+`reports/garborg-qids.tsv` — she created him, and `p2600-all` was last refreshed 08-30. Three
+oracles are needed and the builder already uses all three: Wikidata's own `P2600`, the ledger,
+and `SPINE_ANCHORS`. Using one is how § *CHECK before you alarm her* gets broken.

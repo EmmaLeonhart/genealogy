@@ -74,15 +74,6 @@ blocked parents sat unexamined: nothing put them in front of her.
 `scripts/list-rejected-parents.py` and the GUI in `out/parent-review.template.html` are the
 working parts; this is about moving them into the run rather than rewriting them.
 
-## Report how far this run closed the spine gap
-
-`paths/arne-garborg-to-johannes-bureus-geni.tsv` was the batch's main target and the no-front
-rule was supposed to fill it from both ends and the middle at once. Measure what actually
-happened: which steps had items before this run, which have them now, which are creations in
-`reports/wikidata-garborg-day.qs`, and what is still open.
-
-Numbers from the files, not from the run's own log.
-
 ## Run the generator: ledger refreshed, synoptic tree untouched
 
     BOT_CONTACT=... PYTHONPATH=src python scripts/build-daily-batch.py --refresh-ledger
