@@ -22290,3 +22290,35 @@ Also recorded **12 more `SAME` verdicts** from the adjudication GUI into
 Elisabet Taube, Gustaf Adolf Strömfelt, Karin Björnram, Sigfrid Porthan, Sven Bunge, Christina
 Ebba Leijonhufvud, Margareta Odhelia, Carl Gustaf Lagerfelt, Maria Elisabet von der Osten. The
 deck is **40 → 28**.
+
+## 2026-08-31 — the adjudication deck is empty: 40 verdicts, 37 items that will never be duplicated
+
+Emma answered the remaining 28 in the GUI, closing the deck she started this afternoon.
+`reports/emma-judgments.tsv` now holds **40 rows from `parent-adjudication-gui`** — **37 `SAME`**
+and **3 `UNSURE`** (`Birgitta Steuch`/`Q109555189`, `Hedvig Ulrika Benzelstierna`/`Q130525305`,
+`Christina Margareta af Palén`/`Q115871131`). `ledger()` folds only `SAME`, so the three unsure
+ones are recorded and inert — they neither create nor link.
+
+**What the 37 bought, measured against the rebuilt batch rather than argued:**
+
+- **0** of them appear as a `CREATE`. Before her verdicts each was a person the duplicate guard
+  refused to create *and could not identify*; now each is a known item.
+- **37** get `<QID> P2600 "<geni id>"` — the Geni id emitted onto the item that already existed,
+  which is § *An item with no relationships is not a missing item* in her own order: the `P2600`
+  first, then everything derived from it.
+- **0** appear as a statement *value*, and that is correct rather than a shortfall. They were
+  blocked precisely because the child's Wikidata item already names them: `Q5542622` *Johan
+  Adelswärd* carries `Q110547936` and `Q110547941` as parents, and our
+  `6000000008935291612 Altea Silfverström` **is** `Q110547941`. The edge was never missing — the
+  identity was. Adding the id accounts for the parent and stops every future run proposing a
+  duplicate of her.
+
+**Batch rebuilt on the enlarged ledger:** 37 creations, 270 links, 1,071 carried forward. The
+duplicate guard now holds **12** people, down from 18.
+
+**One warning left standing, deliberately.** `reports/suppressed-statements.tsv` does not exist —
+`scripts/refresh-suppressed-statements.py` has never been run, and it is marked RUN ONCE because
+it costs hundreds of sequential requests against other editors' contribution histories. Not run
+unasked: the known case is already covered by the blanket `OBender12` hold, which dropped **76**
+statement lines across 2,993 held items in this build and expires 2026-09-30. The fine-grained
+file is worth having, but it is not what stands between this batch and an edit war.
