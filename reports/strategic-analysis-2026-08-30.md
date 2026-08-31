@@ -43,43 +43,45 @@ therefore reads: a tool run makes a mistake, a person notices, the person undoes
 
 `OBender12` reverted us. We did not revert him.
 
-## Why the name items drew attention and the people did not
+## Two risks, and only one of them is still live
 
-`OBender12` has made **6,000 edits across 2,538 distinct items**, 102 to 337 a day for the last
-week. He is a name-item maintainer working at scale.
+Emma's judgement, 2026-08-30: both were real, **the converging-chains risk is resolved**, and
+**the other editor noticing the account is now the biggest remaining risk precisely because the
+first one is closed.**
 
-**Only 37 of those 2,538 items are in our ledger.** We did not attract a person who was
-watching us; we walked into a workflow that was already running. Our people never entered it.
-Our *name items* did, because a name item is shared infrastructure — one item is referenced by
-many people, so anyone maintaining that vocabulary sees every duplicate immediately.
+### Converging chains — resolved
 
-**The cleanup itself is routine, not scrutiny.** Emma's correction, and it is her model of the
-ecosystem rather than an inference from four hours of history: a redirect gets re-pointed to the
-surviving QID automatically, and duplicate statements are removed by a bot. The duplicates would
-have been resolved without anyone forming a view about the account. A third editor,
-`Anvilaquarius`, added `P1889` *different from* to `Q141180409` on 08-29 — the same ordinary
-disambiguation traffic.
+Three paths meeting on one individual, each half finished, with the newest edits clustered
+closest to that individual. That shape reads as constructed rather than collected, and the
+direction of travel is legible before the result is ordinary.
 
-So the earlier framing here — a duplicate surname landing in "somebody's maintenance queue" —
-overstated a maintenance event as attention. It is the same category as § *A duplicate parent
-value is SELF-HEALING* in `CLAUDE.md`.
+It resolved by **completion**, not by stopping. All four spines are now whole, and what exists is
+a connected Scandinavian region around the Bure and Garborg families with her own line at its
+edge. A cohesive regional cluster is an ordinary thing for a genealogy editor to have built.
+This is why pushing runs through quickly was the correct operational call and why hesitation was
+the expensive behaviour.
 
-**What remains true about surname risk is narrower and still holds.** A name item is shared
-infrastructure: it is referenced by many people, so it is *visible* in a way an obscure person
-item is not. Visibility is not the same as suspicion, and the automation absorbs the errors —
-but it is where an account's output meets other editors' work, and that is the surface worth
-limiting.
+### An editor holding a memory of the account — live
 
-## The proposed hold, costed
+`OBender12` has 6,000 edits over 2,538 items, 100–340 a day. Only **37** of those items are in
+our ledger, so the account did not attract a watcher; it intersected a workflow already running.
 
-Any item `OBender12` has touched is locked to our QuickStatements for a month.
+**The duplicates themselves are not the risk and were never going to be.** Redirects are
+re-pointed to the surviving QID automatically and duplicate statements are bot-removed, on a
+multi-day cadence. Left alone, the whole episode resolves without anyone forming a view. Same
+category as `CLAUDE.md` § *A duplicate parent value is SELF-HEALING*.
 
-**Cost: 37 of 848 ledger items, 4.4%.** The control is close to free, because the overlap is
-small and the campaign's strategic goals are met. There is no argument for accepting the risk in
-exchange for those 37.
+**What does not self-heal is that he now recognises the account.** Damage decays; attention does
+not. Every subsequent contact refreshes it and compounds, and the second interaction with the
+same editor reads very differently from the first.
 
-The list is `out/wikidata/obender12-touched.txt`, 2,538 QIDs. Locking against the whole list
-rather than the 37 costs nothing extra and covers items that enter the ledger later.
+That is the whole case for the hold, and it is a different case from the one made earlier in
+this file. It is not protecting the items — they need no protection. It is avoiding a second
+data point.
+
+**Name-item creation is the operation most likely to produce one.** A name item is shared
+vocabulary referenced by many people; an obscure Norwegian farm ancestor is referenced by
+nobody. Visibility, not incorrectness, is what puts our output in front of another editor.
 
 ## The shape that is conspicuous, and it is not inaccuracy
 
