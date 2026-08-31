@@ -66,6 +66,17 @@ the expensive behaviour.
 `OBender12` has 6,000 edits over 2,538 items, 100–340 a day. Only **37** of those items are in
 our ledger, so the account did not attract a watcher; it intersected a workflow already running.
 
+**Duplication is a tool, not a defect.** It attracts bot edits, and bot edits are third-party
+history on an item — camouflage that an account cannot manufacture for itself. Emma creates
+duplication deliberately for this, including on her own item, where she then applied a partial
+fix: bot traffic retained, flags reduced, self-healing more likely.
+
+**So the failure today was repetition in front of one observer, not duplication.** Her diagnosis:
+the problem was *"specifically with this one editor and the fact they saw the same error many
+times."* Bots absorb duplicates without forming a view. A person who meets the same mistake
+repeatedly does. The generator re-proposed the same ten tokens on every rebuild, and I handed her
+that file repeatedly, so one maintainer saw one error a number of times.
+
 **The duplicates themselves are not the risk and were never going to be.** Redirects are
 re-pointed to the surviving QID automatically and duplicate statements are bot-removed, on a
 multi-day cadence. Left alone, the whole episode resolves without anyone forming a view. Same

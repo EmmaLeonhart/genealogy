@@ -801,6 +801,40 @@ BLOCKED-ON-EXTERNAL, BLOCKED-ON-USER-ACTION, or anything else from the not-done
 taxonomy — it is not a not-done item, and calling it one made a plan of hers look
 like something outside anyone's control.
 
+### Duplication is a DOUBLE-EDGED SWORD she uses on purpose. Never "fix" it by default
+
+**Emma, 2026-08-30:** *"Duplication as I think I said many times to you is a double edged sword.
+It's good on items because it makes bots edit them, but it's also a risk if it's egregious and
+highly visible."*
+
+**The benefit is bot traffic.** A duplicated value attracts automated cleanup, and a bot edit is
+third-party edit history on the item. An item touched only by one account reads differently from
+one that several parties have maintained. She creates duplication deliberately to obtain this —
+including on her own item.
+
+**The risk is not duplication. It is REPETITION IN FRONT OF ONE PERSON.** Her diagnosis of what
+went wrong on 2026-08-30: *"the issue was specifically with this one editor and the fact they saw
+the same error many times."* Bots absorb duplicates silently. A human who encounters the same
+mistake repeatedly forms a view of the account, and that is what does not decay.
+
+So the variable to control is **how many times one observer sees the same thing**, not how many
+duplicates exist.
+
+**What this forbids here.** Reporting a duplicate as a defect. Adding a general
+de-duplication pass. Undoing a duplication she made — on 2026-08-30 that behaviour was
+*"actively fighting against me while I was trying to get this thing done."*
+
+**What the 2026-08-30 name-item fix actually is, and why it is still right.** It stops the
+generator proposing *the same ten tokens on every rebuild*, which is unintentional repetition in
+front of whoever is watching that vocabulary — the exact failure above. It is not a rule against
+duplication and must not be widened into one.
+
+**She may partially fix her own deliberate duplication.** Same day, on her own item: *"I
+intentionally did some duplication on my own item to make this happen but I panicked and did a
+partial fix that gives a bot edit but less flags and higher likelihood of being self healing."*
+A partial fix is a considered position — bot traffic retained, flags reduced — not an
+inconsistency to point out.
+
 ### A duplicate parent value is SELF-HEALING. Do not report it, do not fix it
 
 **Emma, 2026-08-30:** *"duplicate parent pairs are self healing. A bot does it and that was an
