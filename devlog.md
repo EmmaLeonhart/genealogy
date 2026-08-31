@@ -21876,3 +21876,38 @@ The cron the item replaced — `d62449e3` at 22:01 — is long gone, and its rea
 stands: crons fire only while the session is idle and starve when it is busy.
 
 56 → 55 sections.
+
+## 2026-08-31 — the implied-father item: the stem is not the name, 42.1% of the time
+
+The item's stated blocker was what an inferred statement is sourced to. That turns out to be the
+easy half. The real blocker is that **you cannot get the father's name out of the patronymic**.
+
+**Measured, not argued.** Over **272,617** patronymic bearers whose father *is* recorded, stripping
+`-sen`/`-son`/`-datter` produces the father's actual given name **42.1%** of the time. Three
+separate failure modes, all in one sample of eight:
+
+    Olsen        -> Ol      father is Ole      the stem is not a name
+    Jakobsdotter -> Jakobs  father is Jakob    the genitive s is kept
+    Jonsen       -> Jon     father is John     spelling variance
+    Slawson      -> Slaw    father is JAMES    not a patronymic at all
+
+The last one is its own warning: `Slawson` is an English family name that ends in `-son`, and
+`namemodel.PATRONYMIC` calls it a patronymic. That is the `Fersen` problem in a new place — and
+here the father test cannot save it, because the whole point of this population is that there is
+no father recorded.
+
+**The population is 75,903** people with a patronymic and no father, over 3,993 distinct implied
+names. Emitting from the naive stem would mint on the order of **44,000 wrong items**, including
+**4,349** for a man called *Ol*. The top six implied father-names — `Ol`, `Ander`, `Han`, `Lar`,
+`Nil`, `Jen` — are **not one of them a name**.
+
+**Sourcing is settled and is no longer the open question.** The evidence is the child's
+patronymic, recorded on the child's Geni profile, so the reference is `S2600` on the **child's**
+id — the father has none, which is the whole point of the item. `P887` *based on heuristic* is the
+property for marking a value as inferred. **Its value item is deliberately not chosen**: `pq:P887`
+is used single-digit times across all of Wikidata, so there is no convention to copy, and the
+reference-position query 504s. Guessing a QID is what `CLAUDE.md` forbids outright.
+
+**What would unblock it:** a stem→name rule validated against those 272,617 known fathers, with
+the hit rate reported before anything is emitted. The queue item now says that instead of saying
+the sourcing is unknown.

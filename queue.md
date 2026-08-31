@@ -268,22 +268,42 @@ the name** — the tree settles it, via neighbours and which exports they came f
 state** — and the 9,287 with `mul` only have no named relative at any distance out to
 two hops, so they need something other than a relative or they stay markers.
 
-## Create the fathers the patronymics imply — Emma's item
+## Create the fathers the patronymics imply — BLOCKED on deriving the father's NAME
 
-**Emma, 2026-08-15:** *"If they are patronymics I actually think I'm going to want
-to add items for the hypothetical fathers that are implied to exist from the
-patronymics. These ones would be wiki data items that do not have geni items.
-They're going to be created because they are inferred from the existence of the
-patronymic."*
+**Emma, 2026-08-15:** *"If they are patronymics I actually think I'm going to want to add items
+for the hypothetical fathers that are implied to exist from the patronymics… They're going to be
+created because they are inferred from the existence of the patronymic."*
 
-A person called `Pedersdatter` with no recorded father implies a father called
-`Peder`. That father is a **Wikidata item with no Geni ID** — created because the
-patronymic attests him, not because any profile exists.
+**The population, measured 2026-08-31:** **75,903** people carry a patronymic and have no recorded
+father, over 3,993 distinct implied father-names.
 
-**Note what is new here:** every creation so far has been a Geni profile getting
-an item. These have no `P2600` *Geni.com profile ID* at all, so `CLAUDE.md` § *the Geni ID is added
-first* does not apply and the citation cannot be a Geni profile. What the
-statement is sourced to is the open question to settle before emitting anything.
+**The blocker is not sourcing. It is that the stem is not the name.** Stripping
+`-sen`/`-son`/`-datter` gives a string that matches the father's actual given name **42.1% of the
+time** — measured against **272,617** bearers whose father *is* recorded, so this is checked
+against reality rather than argued. Three distinct failure modes, all in the sample:
+
+| patronymic | naive stem | the father actually is | why |
+| --- | --- | --- | --- |
+| `Olsen` | `Ol` | `Ole` | the stem is not a name at all — 4,349 of them |
+| `Jakobsdotter` | `Jakobs` | `Jakob` | the genitive `s` is kept |
+| `Jonsen` | `Jon` | `John` | spelling variance |
+| `Slawson` | `Slaw` | **`James`** | not a patronymic — an English surname ending in `-son` |
+
+Creating from the naive stem would mint on the order of **44,000 wrong items**, including 4,349
+for a man called *Ol* who never existed. `Ol`, `Ander`, `Han`, `Lar`, `Nil`, `Jen` are the top six
+implied names and **not one is a name**.
+
+**What would make this safe, in order:** a rule that recovers `Ole` from `Olsen` and `Jakob` from
+`Jakobs`, validated the same way — against the 272,617 known fathers, reporting the hit rate
+before anything is emitted. `namemodel.patronymic_or_surname` already uses the father to decide
+*whether* a token is patronymic; this needs the inverse and does not have it.
+
+**Sourcing, settled so it is not the open question any more.** The child's patronymic is the
+evidence and it is recorded on the child's Geni profile, so the reference is `S2600` on the
+**child's** id — not the father's, who has none. `P887` *based on heuristic* is the property that
+marks the value as inferred rather than recorded; **its value item is not chosen** and must not be
+guessed. `pq:P887` is used only single-digit times across Wikidata, so there is no convention to
+follow and the reference-position query times out; pick the item deliberately when this is built.
 
 ## Wikidata person descriptions
 
