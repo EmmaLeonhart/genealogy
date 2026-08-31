@@ -21491,3 +21491,39 @@ queue is empty because the scan has produced no new work, not because there is n
 remaining 99%, each pass queueing items whose own relatives then extend it. Whether that
 converges is exactly what she asked and it is not yet answered. Her item budgets 3-8 hours and
 says to run the existing tooling and then decide, which is now the next step.
+
+## 2026-08-31 — sweep: two dead sections removed
+
+**`THREE SEPARATE WIKIDATA OPERATIONS`.** All three are finished — A the labels fetch
+(876,840 items, 2026-08-12), B the name items (824,358, and `reports/name-ambiguity-causes.md`
+is built on them), C the individuals walk. It was kept earlier today for its framing, so that
+her 3-8 hour budget could not be applied to the wrong one again. That reason has expired: A and
+B are done and C now has its own live section.
+
+**And it had become actively wrong.** Its C bullet still read *"the fetch queue drained to 0…
+decay evidence"*, which the section immediately below it — `Comprehensive Wikidata re-import` —
+contradicts in detail. Two answers to one question, three lines apart, is the § *Do not grab the
+first artifact that vaguely matches* hazard, and the stale one was first in the file.
+
+**`The nickname strip belongs in derive-labels.py, not only in the daily batch`.** Done today:
+`without_nickname` moved to `scripts/namemodel.py` and `derive-labels.py` applies it at source,
+taking bracketed `label_mul` values from **21,550 to 8,033**. The item's second half — that
+`namemodel.QUOTED` treats an ASCII apostrophe as a delimiter and mangles
+`Jean d'O Seigneur d'O` — was **already fixed** before today; `without_nickname`'s own docstring
+records `QUOTED` being taught to tell a delimiter from an elision, and the French name is
+verified intact. Nothing in the section was still outstanding.
+
+62 → 60 sections, 1,997 → 1,951 lines.
+
+## 2026-08-31 — the individuals walk finished, and the store grew by 5,625
+
+Run with `--scan-per-round 150000`, which walks the store rather than sampling it. The cursor
+went from **shard 21** to the end of **2,249**, and the store went **2,248,462 → 2,254,087**.
+
+So the walk that had been reporting itself closed since this morning had **5,625 items** left to
+find, and they were where the shard analysis said they would be. Nothing was rebuilt to get
+there — it is the existing downloader with a bigger scan slice, which her item requires:
+*"Whatever the fuck you do, do not build the new tooling."*
+
+Re-measuring `scripts/measure-store-parent-coverage.py` now; the 34,151 figure is the test of
+whether this closed the gap, and the queue item says so rather than assuming it.

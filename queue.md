@@ -317,22 +317,6 @@ jumped through a lot of hoops to try to introduce safety stuff here that I did n
 `CLAUDE.md` § *Emma not replying means she is content* records that this call is mine: it is
 **taken**, and the decision is to leave them ambiguous rather than to invent a ranking.
 
-## THREE SEPARATE WIKIDATA OPERATIONS — Emma, 2026-08-15, correcting a conflation
-
-*"These are three completely different operations that you conflated with each other."* They stay
-named together **only** so the distinction cannot be lost again — her budget belongs to one of
-them and was applied to the wrong one once.
-
-- **A · Labels fetch** — done 2026-08-12, `reports/wikidata-labels.tsv`, 876,840 items and 5,637
-  properties. Her framing: *"it wasn't really the core data. It was more of a metadata thing."*
-- **B · Name items** — done, **824,358 items** via `scripts/collect-name-item-qids.py` then
-  `genimerge wikidata-download --scan-per-round 0`. `reports/name-ambiguity-causes.md` is built on
-  them. **Not** the 3-8 hour budget: *"It's about the Wikidata individuals. It's not about the
-  names."*
-- **C · Individuals** — done 2026-08-31: the fetch queue drained to **0**, 2,248,462 items
-  held, nothing throttled. The scan found no new QIDs, though it is incremental and has
-  sampled ~20,000 items, so that is decay evidence rather than proof the frontier is closed.
-
 ## Comprehensive Wikidata re-import — the walk, and where the remaining work is
 
 Her item: use the existing download script, estimate how long it takes to get all the Wikidata
@@ -937,33 +921,6 @@ thing.**
 **Her own entry leaving `entity_resolution.md` still stands and is still hers.** After it goes,
 confirm `paths/bergitte-to-emma.tsv` step 1 does not become a `CREATE` — by running `--compose` and
 reading the output, not by reasoning about `NEVER_TOUCH_*`.
-
-## The nickname strip belongs in `derive-labels.py`, not only in the daily batch
-
-`without_nickname` in `build-garborg-day.py` fixes the label the batch emits — Emma's
-`Q141199868` case, `Ingvold (Pinkie) Remmie` → `Ingvold Remmie`. It is applied at the point of
-emission, so `reports/derived-labels.csv` still holds the bracketed form and **every other reader
-of that file still sees it**. 57 scripts read it; 48 read `label_en`/`label_mul`.
-
-**The population is 22,707 nickname tokens inside `GIVN`** — 16,742 parenthesised, 5,965 quoted —
-so this is the same shape as the married-name flip, which was fixed at source precisely because
-fixing it there reached all 48 readers in one change.
-
-**And `namemodel.QUOTED` treats an ASCII apostrophe as a quote delimiter.** On
-`Jean d'O Seigneur d'O & de Maillebois` it matches `'O Seigneur d'`, so that name yields a
-`P1449` *nickname* of `O Seigneur d`. `without_nickname` skips apostrophe matches for the label;
-the name statements are **not** fixed. Narrowing `QUOTED` moves every `P1449` in the repo, so
-measure the affected population before changing it.
-
----
-
-# THE TAIL, PART TWO — the sections that each called themselves "last"
-
-Her own dictated tail block is above, from `# THE TAIL OF THE QUEUE — Emma, 2026-08-18`. This
-second block is the ten-odd sections that had each independently titled themselves `LAST`,
-`THE LAST ITEM` or `THE VERY LAST ITEM` and were scattered through the file. They are collected
-here so the word means something. Nothing was reworded; only moved.
-
 
 ## Bure kinship as random-walk start points — LAST. Postponed by Emma 2026-08-25
 
