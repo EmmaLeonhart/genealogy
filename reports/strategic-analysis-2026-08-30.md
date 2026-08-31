@@ -82,9 +82,17 @@ re-pointed to the surviving QID automatically and duplicate statements are bot-r
 multi-day cadence. Left alone, the whole episode resolves without anyone forming a view. Same
 category as `CLAUDE.md` § *A duplicate parent value is SELF-HEALING*.
 
-**What does not self-heal is that he now recognises the account.** Damage decays; attention does
-not. Every subsequent contact refreshes it and compounds, and the second interaction with the
-same editor reads very differently from the first.
+**What persists longer is that he now recognises the account.** Emma's refinement,
+2026-08-30: recognition decays too, *“but at a slower rate”* than the damage does. The
+difference in the two rates is the whole mechanism:
+
+* the duplicates resolve on a bot's schedule, in days;
+* the memory of the account fades on a person's schedule, and contact resets it.
+
+**That is why the control is a duration rather than a rule.** If recognition never decayed,
+staying away would buy nothing. Because it decays slowly, time away is the instrument, and
+every further interaction restarts the clock at full strength — a second encounter with the
+same editor also reads very differently from a first.
 
 That is the whole case for the hold, and it is a different case from the one made earlier in
 this file. It is not protecting the items — they need no protection. It is avoiding a second

@@ -812,6 +812,11 @@ third-party edit history on the item. An item touched only by one account reads 
 one that several parties have maintained. She creates duplication deliberately to obtain this —
 including on her own item.
 
+**Recognition decays, but slowly.** Emma, 2026-08-30: *“their recognition decays but at a
+slower rate”* than the damage. Duplicates clear on a bot's schedule; an editor's memory of the
+account clears on a person's, and contact resets it. That difference in rate is what makes a
+timed hold worth anything — if recognition were permanent, staying away would buy nothing.
+
 **The risk is not duplication. It is REPETITION IN FRONT OF ONE PERSON.** Her diagnosis of what
 went wrong on 2026-08-30: *"the issue was specifically with this one editor and the fact they saw
 the same error many times."* Bots absorb duplicates silently. A human who encounters the same
