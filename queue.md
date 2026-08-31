@@ -131,20 +131,30 @@ Items 3, 5 and 6 are independent of this chain and can run at any point.
 ## THE AGENDA — Emma 2026-08-15. Everything else is secondary
 
 *"As far as actually getting any information from now, I only have three things that I'm trying
-to do."* **Two of the three are closed and are deleted from here rather than annotated** — the
-sparse-area exports were backtested on 2026-08-30 (`reports/edge-export-backtest.md`: 80% closure
-on the ten clusters they targeted, and the exports themselves caused 23 of the 24), and the CJK
-genealogy question was settled by measurement (the Japanese material is connected, not isolated,
-so the isolate method was the wrong instrument).
+to do."* Two of the three are closed. **What is left is the bridge work: connect her to the
+researchers on Wikidata.**
 
-**What is left is the bridge work: connect her to the researchers on Wikidata.** Her rule for
-what to do first: *"find people that are in multiple bridges and are also not in"* our data.
+**The shape of what blocks the paths is now measured** — `reports/broken-link-kinds.md`,
+2026-08-31. 85 of 979 paths are blocked by 102 missing links, and this section used to say
+*"there is no leverage play: it is 102 small repairs"*. That is true per path and false per
+kind: the 102 are **two classes and nothing else**, with **no parent or child link missing
+anywhere**.
 
-That question changed shape under it and the current answer is in `reports/broken-links.md`.
-Nobody on a path is missing any more — the scraped-page GEDCOMs were ingested — so what blocks a
-path is a **missing edge**, not a missing person: **85 of 979 paths (9%)**, caused by **102
-distinct links**. There is no leverage play: the top link blocks one path, and the top fifty
-unblock forty-six between them. It is 102 small repairs.
+- **43 sibling links** — and a sibling step is only scored broken when the two do **not** share
+  a recorded parent. All 43 have both people present with full parentage on both sides and no
+  parent in common, so this is our snapshot **contradicting** Geni rather than lacking an edge.
+  The instrument is a refresh of those people, per § *The question is whether OUR TREE MATCHES
+  GENI*.
+- **58 former or prospective partner links** — `ex-husband` 25, `ex-wife` 19, `ex-partner` 13,
+  `fiancée` 1. None is linked as a spouse in our tree and for 43 of them neither person has any
+  spouse at all. `1 DIV` occurs in 502 exports, so the format is not the limit and this is
+  export coverage.
+
+**The step not yet taken: decide how to close them.** Refreshing the sibling 43 and covering
+the partner 58 both mean exports, and § *THE EXPORT LOOP* is at the tail by her own call — so
+this needs her routing before it consumes export slots. The alternative is synthesising the
+edges from the path assertions the way `exports/0-scraped/scraped-paths.ged` synthesised the
+people, which is a provenance decision and is **not** to be taken here.
 
 **The lettering was mine, not hers.** She listed three things; calling them Task A/B/C was
 invented structure: *"I don't know why you think that you should be using these made-up task

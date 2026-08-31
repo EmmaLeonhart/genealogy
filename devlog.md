@@ -21190,3 +21190,43 @@ and QuickStatements no-ops the repeat.
 
 **The already-created wrong items** — `Q141223488` still says patronymic. That is a Wikidata edit
 and is listed in `reports/merges-to-do.md`.
+
+## 2026-08-31 — THE AGENDA: the 102 missing links are two classes, not 102 repairs
+
+`queue.md` § THE AGENDA said of the links blocking the paths: *"There is no leverage play: the
+top link blocks one path, and the top fifty unblock forty-six between them. It is 102 small
+repairs."* Ranked by path that is correct. Ranked by **kind** it is wrong, and the kind is what
+decides the instrument.
+
+Joining each missing link back to the path row it came from recovers the relation Geni stated.
+`scripts/classify-broken-links.py` → `reports/broken-link-kinds.md`:
+
+    her ex-husband 25 · his ex-wife 19 · his brother 16 · her brother 11 · her ex-partner 9
+    his sister 9 · her sister 7 · his ex-partner 4 · his fiancée 1
+
+**43 siblings, 58 former or prospective partners, nothing else, and 1 unmatched.** No parent
+link and no child link is missing anywhere — the vertical structure of these paths is complete
+and only the lateral edges break.
+
+**The two classes fail for different reasons, and both were measured rather than assumed.**
+
+A sibling step is not scored broken for lacking a sibling edge; `census-paths.connected` carries
+it through a shared parent. So a broken one means no shared parent — and all **43 of 43** have
+both people present, both with parents recorded, sharing **none**. That is our snapshot
+contradicting Geni about a parent, not an edge we failed to write, which puts it under § *The
+question is whether OUR TREE MATCHES GENI* and makes a refresh the instrument.
+
+For the partners, `1 DIV` appears in **502** exports, so Geni exports former marriages and the
+format is not the limit. **0** of the 58 are linked as spouses here and for **43** neither person
+has any spouse at all — export coverage rather than a modelling gap.
+
+**A wrong column name nearly published the opposite answer.** The first spouse check read
+`row.get("spouse")` where `derived-family.csv` has `spouses`, and reported all 58 pairs as having
+no spouse recorded — a clean, plausible number that was entirely about the instrument. It is the
+same failure as the `chart_name` column `CLAUDE.md` lists, three lines below the `|` separator
+case, and it is now an assert in the script rather than a comment.
+
+**What is not done, and why it is not deferred-by-default:** closing either class means exports,
+and § *THE EXPORT LOOP* sits at the tail by Emma's own call. Synthesising the edges from the path
+assertions — the way `exports/0-scraped/scraped-paths.ged` synthesised the people — is the
+alternative and is a provenance decision that is hers, not one to take while working the queue.
