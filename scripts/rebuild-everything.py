@@ -38,8 +38,19 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 #: `(label, argv)`, in dependency order. Anything added here must be added in the right place:
 #: the ordering is the point of the script.
 STEPS = [
-    ("merge the corpus", [sys.executable, "-m", "genimerge", "merge",
-                          "-o", os.path.join("out", "merged.ged")]),
+    # **NO `-o`, and that is load-bearing.** `cli.py` sends the merge reports next to the
+    # output file *whenever `--output` is given* -- deliberately, so a merge written elsewhere
+    # cannot overwrite the workspace's description of a different merge. Its comment records
+    # the cost: *"reports/merge.md spent twelve commits claiming 8766 people while
+    # out/merged.ged held 12422."*
+    #
+    # The `-o out/merged.ged` here was redundant AND harmful: `Workspace.merged` already
+    # resolves to exactly that path, so the flag changed nothing about where the GEDCOM went
+    # and everything about where the reports went. Every run of this script left
+    # `reports/merge.md` stale, which is what
+    # `test_merge_real_exports.py::test_the_committed_merge_report_still_describes_these_exports`
+    # was failing on in the 2026-08-31 slow lane.
+    ("merge the corpus", [sys.executable, "-m", "genimerge", "merge"]),
     ("display names", [sys.executable, os.path.join("scripts", "build-display-names.py")]),
     ("derived family", [sys.executable, os.path.join("scripts", "derive-family.py")]),
     ("derived facts", [sys.executable, os.path.join("scripts", "derive-facts.py")]),
