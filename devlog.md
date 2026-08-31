@@ -22322,3 +22322,47 @@ it costs hundreds of sequential requests against other editors' contribution his
 unasked: the known case is already covered by the blanket `OBender12` hold, which dropped **76**
 statement lines across 2,993 held items in this build and expires 2026-09-30. The fine-grained
 file is worth having, but it is not what stands between this batch and an edit war.
+
+## 2026-08-31 — the suppressor, bounded to 30 days and actually run; and 4 red tests
+
+**Emma:** *"you're supposed to run that on the last 30 days of his activity and then have it as a
+static file… Like that's literally all I want. A cludge to not step on the toes of one guy."*
+
+**Two files, and only one of them was missing — worth stating plainly because I conflated them
+and made a done thing look undone.**
+
+- `reports/obender12-touched.tsv` **exists and always did** — 2,993 QIDs, 30-day window, fetched
+  2026-08-30, committed in `4f4a67c7`. That is literally the fixed CSV she describes, and it is
+  live: this build dropped **76** statement lines across those items.
+- `reports/suppressed-statements.tsv` — the finer-grained *which statements he removed* file — had
+  **never been run and never been committed**. That one was genuinely absent.
+
+**Why it never ran, and it is my defect not the task's.** The script spent its whole budget
+*discovering* which editors to look at: 200 sequential revision fetches over ledger items, before
+touching a single contribution list. That made it hundreds of requests and tens of minutes — and I
+then quoted that cost back at her as a reason to skip it. The editor was never unknown. Naming
+`OBender12` directly and bounding with `ucend` turns it into **14 requests in 10 seconds**, and it
+found **15 `P734` removals** on 2026-08-30. `EDITORS` and `WINDOW_DAYS = 30` replace the crawl.
+
+**Four fast-lane failures, all real, none loosened.**
+
+- **`known_qids()` did not know her verdicts.** Its own docstring says *the two must agree with the
+  builder or this test measures a different thing* — and `ledger()` folds every `SAME` row of
+  `emma-judgments.tsv` while the test folded none of the GUI ones. `_emma_confirmed_qids()`
+  already existed but filtered on `batch == "blocked-creations"`, so the forty from
+  `parent-adjudication-gui` were invisible and 37 items she had just confirmed were reported as
+  nonexistent. Widened to both labels; `UNSURE` still excluded.
+- **Existence needed a second oracle.** Sixteen values were called *"do not exist yet"* —
+  `Q273181` *Judith of Flanders*, `Q43974` *Louis the Pious* among them. **All sixteen are in
+  `out/wikidata/relations.tsv`.** The no-front spine rule took the batch from 19 links to 270 and
+  it now reaches the Carolingian end; the builder resolves those through `any_wikidata_item`,
+  built from that same store. `_store_qids()` is the test catching up, not a new permission.
+- **One-way link `P40 → Q6001555`** — and it is the hold working. The hold is SUBJECT-only by
+  design, so `LAST P40 Q6001555` (which edits the new item, not his) goes out while the reciprocal
+  `Q6001555 P22 LAST` is held. Suppressing the forward half too would forfeit a real statement and
+  buy nothing, since his item is untouched either way. Exempted from the file the builder reads,
+  gated on the hold being live, so it empties itself on 2026-09-30.
+- **`repo-freshness.csv` named `reports/the-spine.md`**, deleted in today's spine sweep.
+  Regenerated.
+
+**Fast lane green: 1,507 passed, 36 skipped, 0 failed in 6m05.**

@@ -29,6 +29,7 @@ made here.
 from __future__ import annotations
 
 import csv
+import functools
 import re
 from pathlib import Path
 
@@ -51,6 +52,38 @@ QID_SUBJECT = re.compile(r'^(Q[1-9][0-9]*)\t')
 def lines():
     return [ln.rstrip("\r") for ln in BATCH.read_text(encoding="utf-8").split("\n")
             if ln.strip() and not ln.lstrip().startswith("#")]
+
+
+@functools.lru_cache(maxsize=1)
+def _store_qids():
+    """Every item our Wikidata store holds — i.e. every item that demonstrably EXISTS.
+
+    **Why existence needs a second oracle, 2026-08-31.** `known_qids()` answers *which items may
+    this batch point at* out of the ledger and a few named carve-outs. That was the same question
+    while the batch only reached people we had created. It stopped being the same question when
+    the no-front spine rule landed and the batch went from 19 links to 270, reaching the
+    Carolingian end of the tree: `Q273181` *Judith of Flanders*, `Q43974` *Louis the Pious*,
+    `Q6180419`, `Q5783620`. Sixteen values were reported as "do not exist yet". **All sixteen are
+    in `out/wikidata/relations.tsv`** — they are ordinary Wikidata items, some of them famous.
+
+    The builder resolves them through `any_wikidata_item`, which is built from that same store, so
+    this is the test catching up with the builder rather than a new permission.
+
+    **This does not weaken the assertion.** It still says every QID the batch points at must
+    already exist; being in the store IS existing, and it is stronger evidence than ledger
+    membership, which only says *we made it*. What it cannot catch is an item deleted from
+    Wikidata since the store was downloaded — a real but far smaller risk than failing the run
+    over `Q3044` Charlemagne.
+    """
+    out = set()
+    rel = REPO / "out" / "wikidata" / "relations.tsv"
+    if not rel.exists():
+        return out
+    with open(rel, encoding="utf-8") as fh:
+        next(fh, None)
+        for line in fh:
+            out.add(line.split("	", 1)[0])
+    return out
 
 
 def known_qids():
@@ -88,6 +121,19 @@ def known_qids():
     # two must agree, and a second hand-maintained copy is how they stop agreeing. This does
     # not weaken the assertion: it still says every QID the batch points at must already exist,
     # and these four demonstrably do.
+    # **Her own hand verdicts, via the one helper that already reads them.** `ledger()` folds
+    # every `SAME` row of `reports/emma-judgments.tsv`, so an item she has personally identified
+    # is one the batch may point at. This function did not, and the moment she answered the
+    # parent-adjudication deck it reported 37 items she had just confirmed as "do not exist
+    # yet" — `Q5916183` Carl Johan Knös, `Q124694235` Måns Palmstierna, `Q127270437` Kristina
+    # Samuelsdotter among them. Every one exists on Wikidata; what did not exist was this
+    # function's knowledge of them. That is this docstring's own warning coming true.
+    #
+    # The assertion is untouched — every QID the batch points at must already exist. The set of
+    # known-existing items is corrected, not the bar.
+    out |= _emma_confirmed_qids()
+    out |= _store_qids()
+
     import importlib.util as _il
     try:
         _spec = _il.spec_from_file_location(
@@ -213,9 +259,15 @@ def _emma_confirmed_qids():
 
     Read from `reports/emma-judgments.tsv` rather than hardcoded, so the exception is exactly
     the set she approved and cannot quietly grow. A row counts only with `verdict == SAME` and
-    the `blocked-creations` batch label. 2026-08-31: thirteen, each put to her individually —
-    the duplicate guard was holding a creation because the person's parent already named a child
-    item nothing accounted for, and she confirmed that child item is our person.
+    one of the adjudication batch labels.
+
+    **Two labels, one population.** `blocked-creations` is the thirteen put to her individually
+    by `AskUserQuestion` on 2026-08-31; `parent-adjudication-gui` is the forty she answered the
+    same day in `out/parent-review.html`, after asking for *"some sort of a GUI for me to do the
+    selections with"*. The delivery mechanism differs and the verdict does not, so filtering on
+    the first label alone silently excluded the larger set — which is how this test came to call
+    37 items she had just confirmed nonexistent. `UNSURE` rows are excluded by the `SAME` test
+    and must stay excluded: three of the forty are unsure.
     """
     path = REPO / "reports" / "emma-judgments.tsv"
     if not path.exists():
@@ -223,7 +275,8 @@ def _emma_confirmed_qids():
     out = set()
     with open(path, encoding="utf-8") as fh:
         for row in csv.DictReader(fh, delimiter="	"):
-            if row.get("verdict") == "SAME" and row.get("batch") == "blocked-creations":
+            if (row.get("verdict") == "SAME"
+                    and row.get("batch") in ("blocked-creations", "parent-adjudication-gui")):
                 if (row.get("qid") or "").startswith("Q"):
                     out.add(row["qid"])
     return out
@@ -706,6 +759,26 @@ def test_every_link_to_an_existing_item_is_emitted_in_BOTH_directions():
         import csv as _csv
         for row in _csv.DictReader(drops.open(encoding="utf-8"), delimiter="\t"):
             exempt.add(row["subject"])
+
+    # **The second exemption: the `OBender12` hold, and it is the hold working as intended.**
+    # Emma's control of 2026-08-30 is *do not edit an item that editor has touched*, and it is
+    # SUBJECT-only by design — `LAST P40 Q6001555` edits the new item, not his. So the forward
+    # half of the link is emitted and the reciprocal `Q6001555 P22 LAST` is held, which is
+    # exactly a one-way link, and exactly what she asked for: *"a cludge to not step on the toes
+    # of one guy"*. Suppressing the forward half too would forfeit a real statement and buy
+    # nothing, since his item is not edited either way.
+    #
+    # Read from the same file the builder reads, and only while the hold is live — when it
+    # expires on 2026-09-30 this exemption empties itself and the assertion tightens back with
+    # no code change.
+    import datetime as _dt
+    touched = REPO / "reports" / "obender12-touched.tsv"
+    if touched.exists() and _dt.date.today() < _dt.date(2026, 9, 30):
+        import csv as _csv2
+        with touched.open(encoding="utf-8") as fh:
+            for row in _csv2.DictReader(fh, delimiter="	"):
+                if row.get("qid"):
+                    exempt.add(row["qid"])
 
     missing = []
     for block in text.split("CREATE")[1:]:
