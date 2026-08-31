@@ -20750,3 +20750,33 @@ every path, and has to be applied to the broken-link count instead.
 `THE EXPORT LOOP`'s heading claimed *"it is the top of this file"*, which is exactly the
 self-declared-front problem § *How to read this file* was written to end. Corrected to say where
 it actually sits.
+
+## 2026-08-30 — the merge audit's step 3 has a starting point, and a marker leak is closed
+
+Working the first queue item, `Audit of Geni merges`. Its remaining step is the browser pass,
+which is Emma's — the merges are hers and are never performed here. What was missing was any way
+to start it: the candidate report is **12,287 groups**, and nobody opens a browser against that.
+
+**`reports/geni-merge-worklist.md`** (`scripts/build-merge-worklist.py`) is the handoff — the top
+of the list as clickable pages, the 3 Izumo groups first, then the 40 largest CJK groups.
+
+**Finding the Izumo ones needed the id, and one file was not enough.** She named them as the
+place to start; searching the candidate file for `izumo` finds nothing, because the profiles are
+called Senge, Kitajima and so on. `izumo-coverage.tsv` looks like the roster and **202 of its 214
+rows read `NO GENI ID`** — joining against it returns 2 ids and 0 groups, which is
+indistinguishable from there being no Izumo duplicates. Joined across every `reports/izumo*.tsv`
+it is 210 ids and **3 groups**: `息長宿祢王` (also one of the ground-truth pairs the recall fix
+recovered), `Munetoshi 71 Senge`, and `Shigeyasu Takaoka`. `CLAUDE.md` § *Do not grab the first
+artifact that vaguely matches* is exactly the failure that nearly happened.
+
+**And the finder was leaking her own markers.** `is_placeholder` consulted only a local
+`NOT_A_NAME` and never `scripts/labels.WORDS_MEANING_UNKNOWN`, so every marker she has already
+ruled on reached the candidate list. It cost **25 groups over 107 profiles, including BOTH of the
+two largest** — the biggest being 33 profiles called `某 李`, where `某` is Chinese for *a certain
+(unnamed) one* and was already in her set. That is the `<private> SOERIANAGARA` failure the
+function was written for, one marker set out.
+
+12,318 → 12,287 groups, **recall unchanged at 15 of 29 and 14 of 14 strong**: noise removed, no
+real detection lost. The punctuation forms (`?`, `??`) stay in the local set on purpose — her
+boundary is *words yes, punctuation no*, and detection is a looser question than suppression.
+32 tests pass across `test_join_sanity.py` and `test_obender_hold.py`.

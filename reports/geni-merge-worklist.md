@@ -1,0 +1,244 @@
+# Geni merge worklist
+
+**The merges are Emma's and are never performed here.** This is only the order to look in, and the pages to look at. `scripts/find-geni-duplicates.py` produces the candidates; this is the top of them.
+
+`reports/geni-duplicate-candidates.tsv` holds **12,287** groups, which is not something anyone opens a browser against. That is why this exists.
+
+**A candidate is a candidate, not a duplicate.** `CLAUDE.md` § *The question is whether OUR TREE MATCHES GENI* governs: the only question a pair raises is whether our snapshot still matches Geni today. Whether the two people should be one is not ours to adjudicate.
+
+## Izumo — 3 groups
+
+Emma, 2026-08-24: *"Izumo ones are good to explore to see how redirects potentially work."* Found by joining the candidate ids against the 210 ids named across every `reports/izumo*.tsv`; searching the candidate file for `izumo` finds none of them, because the profiles are called Senge, Kitajima and so on.
+
+- **息長宿祢王** — 2 profiles, parent of the same name, same name, child of kanime ikazuchi
+    - https://www.geni.com/people/x/6000000001846463714
+    - https://www.geni.com/people/x/6000000209933015821
+- **Munetoshi 71 Senge** — 2 profiles, same parent, same name, child of Sakusa no Jisei Senge
+    - https://www.geni.com/people/x/6000000227331623899
+    - https://www.geni.com/people/x/6000000227350446840
+- **Shigeyasu Takaoka** — 2 profiles, parent of the same name, same name, child of shigeyori takaoka
+    - https://www.geni.com/people/x/6000000217687134824
+    - https://www.geni.com/people/x/6000000227331730906
+
+## Japanese and Chinese — top 40 of 176
+
+Her *"higher scrutiny"* pass, biggest groups first. The `Tanba` groups are the real signal. A residue of bare one-token surnames (`杨`, `黄`, `邱`) survives because those people have a given name recorded somewhere while their `cjk_names` carries only the surname — those are an artefact of the name column, not evidence of duplication.
+
+- **杨** — 30 profiles, parent of the same name, same name, child of 杨
+    - https://www.geni.com/people/x/6000000223421469235
+    - https://www.geni.com/people/x/6000000223421682034
+    - https://www.geni.com/people/x/6000000223421966857
+    - https://www.geni.com/people/x/6000000223421988898
+    - https://www.geni.com/people/x/6000000223422013845
+    - https://www.geni.com/people/x/6000000223422013941
+    - https://www.geni.com/people/x/6000000223422034896
+    - https://www.geni.com/people/x/6000000223422042836
+    - https://www.geni.com/people/x/6000000223422046971
+    - https://www.geni.com/people/x/6000000223422063889
+    - https://www.geni.com/people/x/6000000223422071894
+    - https://www.geni.com/people/x/6000000223422077827
+    - https://www.geni.com/people/x/6000000223422085822
+    - https://www.geni.com/people/x/6000000223422092908
+    - https://www.geni.com/people/x/6000000223422096838
+    - https://www.geni.com/people/x/6000000223422141841
+    - https://www.geni.com/people/x/6000000223422152825
+    - https://www.geni.com/people/x/6000000223422157940
+    - https://www.geni.com/people/x/6000000223422159900
+    - https://www.geni.com/people/x/6000000223422159926
+    - https://www.geni.com/people/x/6000000223422164873
+    - https://www.geni.com/people/x/6000000223422169883
+    - https://www.geni.com/people/x/6000000223422172822
+    - https://www.geni.com/people/x/6000000223422190866
+    - https://www.geni.com/people/x/6000000223422192833
+    - https://www.geni.com/people/x/6000000223422207831
+    - https://www.geni.com/people/x/6000000223422251836
+    - https://www.geni.com/people/x/6000000223422293854
+    - https://www.geni.com/people/x/6000000223422308821
+    - https://www.geni.com/people/x/6000000223422345829
+- **黄** — 19 profiles, parent of the same name, same name, child of 黄
+    - https://www.geni.com/people/x/6000000092679565082
+    - https://www.geni.com/people/x/6000000092680204136
+    - https://www.geni.com/people/x/6000000092680212990
+    - https://www.geni.com/people/x/6000000092680237013
+    - https://www.geni.com/people/x/6000000092680596837
+    - https://www.geni.com/people/x/6000000092680757869
+    - https://www.geni.com/people/x/6000000092681038873
+    - https://www.geni.com/people/x/6000000092681545345
+    - https://www.geni.com/people/x/6000000092683019894
+    - https://www.geni.com/people/x/6000000092683216884
+    - https://www.geni.com/people/x/6000000093081898823
+    - https://www.geni.com/people/x/6000000093084395837
+    - https://www.geni.com/people/x/6000000093086851845
+    - https://www.geni.com/people/x/6000000093088624845
+    - https://www.geni.com/people/x/6000000093090656821
+    - https://www.geni.com/people/x/6000000093091977828
+    - https://www.geni.com/people/x/6000000093157890821
+    - https://www.geni.com/people/x/6000000093159999823
+    - https://www.geni.com/people/x/6000000093161563821
+- **‏‏‎ ‎ 姬姓** — 11 profiles, parent of the same name, same name, child of ‏‏‎ ‎ ‏‏‎ ‎
+    - https://www.geni.com/people/x/6000000012935817795
+    - https://www.geni.com/people/x/6000000012935823849
+    - https://www.geni.com/people/x/6000000012935908115
+    - https://www.geni.com/people/x/6000000012935917019
+    - https://www.geni.com/people/x/6000000012936095660
+    - https://www.geni.com/people/x/6000000012936109939
+    - https://www.geni.com/people/x/6000000012936286334
+    - https://www.geni.com/people/x/6000000012936293282
+    - https://www.geni.com/people/x/6000000016909342072
+    - https://www.geni.com/people/x/6000000032230274494
+    - https://www.geni.com/people/x/6000000032231161243
+- **譚** — 6 profiles, same parent, same name
+    - https://www.geni.com/people/x/6000000117478243883
+    - https://www.geni.com/people/x/6000000117478951845
+    - https://www.geni.com/people/x/6000000117479108835
+    - https://www.geni.com/people/x/6000000117479651840
+    - https://www.geni.com/people/x/6000000117479782828
+    - https://www.geni.com/people/x/6000000117480864821
+- **坂上** — 6 profiles, same parent, same name, child of Motoyasu Tanba
+    - https://www.geni.com/people/x/6000000227350450833
+    - https://www.geni.com/people/x/6000000227350468920
+    - https://www.geni.com/people/x/6000000227350508962
+    - https://www.geni.com/people/x/6000000227350557852
+    - https://www.geni.com/people/x/6000000227350595891
+    - https://www.geni.com/people/x/6000000227350639842
+- **邱** — 5 profiles, parent of the same name, same name, child of 邱
+    - https://www.geni.com/people/x/6000000059162385064
+    - https://www.geni.com/people/x/6000000059162802929
+    - https://www.geni.com/people/x/6000000059163062952
+    - https://www.geni.com/people/x/6000000059163118841
+    - https://www.geni.com/people/x/6000000059163140836
+- **: Soo Pang (屿房)(5)颗馒等公家谱(槟城) 邱** — 5 profiles, parent of the same name, same name, child of : soo pang (屿房)(5)颗馒等公家谱(槟城) 邱
+    - https://www.geni.com/people/x/6000000200056082908
+    - https://www.geni.com/people/x/6000000200056559846
+    - https://www.geni.com/people/x/6000000200056579848
+    - https://www.geni.com/people/x/6000000200056684821
+    - https://www.geni.com/people/x/6000000200056805825
+- **杨** — 4 profiles, same parent, same name, child of 杨
+    - https://www.geni.com/people/x/6000000223421682034
+    - https://www.geni.com/people/x/6000000223422034896
+    - https://www.geni.com/people/x/6000000223422063889
+    - https://www.geni.com/people/x/6000000223422172822
+- **攣鞮** — 4 profiles, parent of the same name, same name, child of chedi chanyu of xiongnu
+    - https://www.geni.com/people/x/6000000020516065491
+    - https://www.geni.com/people/x/6000000020516172420
+    - https://www.geni.com/people/x/6000000020520230048
+    - https://www.geni.com/people/x/6000000020520383022
+- **翁** — 4 profiles, same parent, same name
+    - https://www.geni.com/people/x/6000000134618107838
+    - https://www.geni.com/people/x/6000000134618194822
+    - https://www.geni.com/people/x/6000000134618204827
+    - https://www.geni.com/people/x/6000000134618224855
+- **坂上** — 4 profiles, same parent, same name, child of Nagamoto Tanba
+    - https://www.geni.com/people/x/6000000227350487098
+    - https://www.geni.com/people/x/6000000227350700930
+    - https://www.geni.com/people/x/6000000227350790824
+    - https://www.geni.com/people/x/6000000227350802824
+- **坂上** — 4 profiles, same parent, same name, child of Shigeyasu Tanba
+    - https://www.geni.com/people/x/6000000227350466844
+    - https://www.geni.com/people/x/6000000227350527916
+    - https://www.geni.com/people/x/6000000227350573875
+    - https://www.geni.com/people/x/6000000227350605869
+- **失傳 陳** — 3 profiles, same parent, same name, child of 達公 陳
+    - https://www.geni.com/people/x/6000000021193960379
+    - https://www.geni.com/people/x/6000000021194069199
+    - https://www.geni.com/people/x/6000000021194094069
+- **緣臻 陳** — 3 profiles, same parent, same name, child of 綠佐 陳
+    - https://www.geni.com/people/x/6000000023390236716
+    - https://www.geni.com/people/x/6000000023390620611
+    - https://www.geni.com/people/x/6000000023390820355
+- **邱** — 3 profiles, same parent, same name
+    - https://www.geni.com/people/x/6000000059162485103
+    - https://www.geni.com/people/x/6000000059162922017
+    - https://www.geni.com/people/x/6000000059164423840
+- **邱** — 3 profiles, same parent, same name, child of 邱
+    - https://www.geni.com/people/x/6000000059162802929
+    - https://www.geni.com/people/x/6000000059163118841
+    - https://www.geni.com/people/x/6000000059163140836
+- **黄** — 3 profiles, same parent, same name, child of 隐龙 字:慈庇 黄 116,110,6,1世
+    - https://www.geni.com/people/x/6000000083137105507
+    - https://www.geni.com/people/x/6000000083138386898
+    - https://www.geni.com/people/x/6000000083138422833
+- **黄** — 3 profiles, same parent, same name, child of 黄
+    - https://www.geni.com/people/x/6000000092681545345
+    - https://www.geni.com/people/x/6000000092683019894
+    - https://www.geni.com/people/x/6000000092683216884
+- **杨** — 3 profiles, same parent, same name, child of 杨
+    - https://www.geni.com/people/x/6000000223421966857
+    - https://www.geni.com/people/x/6000000223422077827
+    - https://www.geni.com/people/x/6000000223422096838
+- **御楯 藤原** — 3 profiles, parent of the same name, same name, child of muro no ookimi
+    - https://www.geni.com/people/x/6000000002839700356
+    - https://www.geni.com/people/x/6000000010702792016
+    - https://www.geni.com/people/x/6000000012052282033
+- **橘** — 3 profiles, parent of the same name, same name, child of 橘
+    - https://www.geni.com/people/x/6000000210457344846
+    - https://www.geni.com/people/x/6000000210457489833
+    - https://www.geni.com/people/x/6000000210473748821
+- **黄** — 3 profiles, same parent, same name, child of Peng Soon WONG
+    - https://www.geni.com/people/x/6000000028841321482
+    - https://www.geni.com/people/x/6000000028843303282
+    - https://www.geni.com/people/x/6000000028843747039
+- **坂上** — 3 profiles, same parent, same name, child of Yasuyori Tanba
+    - https://www.geni.com/people/x/6000000227350480005
+    - https://www.geni.com/people/x/6000000227350512947
+    - https://www.geni.com/people/x/6000000227350539869
+- **坂上** — 3 profiles, same parent, same name, child of Yasunaga Tanba
+    - https://www.geni.com/people/x/6000000227350705920
+    - https://www.geni.com/people/x/6000000227350708868
+    - https://www.geni.com/people/x/6000000227350739858
+- **薛** — 3 profiles, same parent, same name, child of Ewe Boon SEE
+    - https://www.geni.com/people/x/6000000085826717041
+    - https://www.geni.com/people/x/6000000086014791183
+    - https://www.geni.com/people/x/6000000086015652973
+- **薛** — 3 profiles, same parent, same name, child of See Hoo Ki
+    - https://www.geni.com/people/x/6000000188976953881
+    - https://www.geni.com/people/x/6000000188977386849
+    - https://www.geni.com/people/x/6000000188977580823
+- **坂上** — 3 profiles, same parent, same name, child of Suehiro Tanba
+    - https://www.geni.com/people/x/6000000227350800846
+    - https://www.geni.com/people/x/6000000227350814835
+    - https://www.geni.com/people/x/6000000227351379821
+- **坂上** — 3 profiles, same parent, same name, child of Yorimoto Tanba
+    - https://www.geni.com/people/x/6000000227350530885
+    - https://www.geni.com/people/x/6000000227350828902
+    - https://www.geni.com/people/x/6000000227350858841
+- **坂上** — 3 profiles, same parent, same name, child of Yorimoto Tanba
+    - https://www.geni.com/people/x/6000000227350483988
+    - https://www.geni.com/people/x/6000000227350716880
+    - https://www.geni.com/people/x/6000000227350815823
+- **氏 殤 滎陽開封** — 3 profiles, same parent, same name, child of 虔 趨庭 鄭
+    - https://www.geni.com/people/x/6000000144371083821
+    - https://www.geni.com/people/x/6000000144372405821
+    - https://www.geni.com/people/x/6000000144372520821
+- **南蘭陵** — 3 profiles, same parent, same name, child of 瑀 時文 蕭
+    - https://www.geni.com/people/x/6000000074732782077
+    - https://www.geni.com/people/x/6000000074732791140
+    - https://www.geni.com/people/x/6000000138373224882
+- **光隆室 源** — 2 profiles, same parent, same name, child of Tameyoshi Minamoto (Mutsu Shiro)
+    - https://www.geni.com/people/x/6000000001902240226
+    - https://www.geni.com/people/x/6000000001906889050
+- **天穂日命** — 2 profiles, same parent, same name, child of Uknown father of Oshihomimi (Possibly Susanoo)
+    - https://www.geni.com/people/x/6000000001831487883
+    - https://www.geni.com/people/x/6000000012788527451
+- **永手 藤原** — 2 profiles, same parent, same name, child of Fujiwara no Fusasaki
+    - https://www.geni.com/people/x/6000000010702660493
+    - https://www.geni.com/people/x/6000000012053046486
+- **御楯 藤原** — 2 profiles, same parent, same name, child of Fujiwara no Fusasaki
+    - https://www.geni.com/people/x/6000000010702792016
+    - https://www.geni.com/people/x/6000000012052282033
+- **道平 二条** — 2 profiles, same parent, same name, child of Kanemoto Nijo
+    - https://www.geni.com/people/x/6000000001914072191
+    - https://www.geni.com/people/x/6000000012050542725
+- **邦治 後二条天皇** — 2 profiles, same parent, same name, child of Yohito Go-Uda-tenno
+    - https://www.geni.com/people/x/6000000002189252829
+    - https://www.geni.com/people/x/6000000011627264219
+- **祐心** — 2 profiles, same parent, same name, child of 蓮如
+    - https://www.geni.com/people/x/6000000002470688810
+    - https://www.geni.com/people/x/6000000002471140431
+- **保忠 藤原** — 2 profiles, same parent, same name, child of 時平 藤原
+    - https://www.geni.com/people/x/6000000010702765665
+    - https://www.geni.com/people/x/6000000012053060814
+- **陳授, 95, 87, 54, 7世** — 2 profiles, same parent, same name
+    - https://www.geni.com/people/x/6000000021440303683
+    - https://www.geni.com/people/x/6000000021440575703
+

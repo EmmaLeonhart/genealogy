@@ -72,10 +72,31 @@ there were 0, sorted first. `tests/test_join_sanity.py` fails if that returns to
 **Still to do: the browser extension on the candidates, Izumo first**, to see whether Geni
 merges them and how redirects behave. **The merges are hers, never performed here.**
 
+**The handoff exists now — `reports/geni-merge-worklist.md`**, built by
+`scripts/build-merge-worklist.py`. 12,287 groups is not something anyone opens a browser
+against, which is why the step had no practical starting point. The worklist is the top of
+them as clickable pages: **the 3 Izumo groups first**, then the 40 largest CJK groups.
+
+The Izumo three are `息長宿祢王` (which is also one of the ground-truth pairs the recall fix
+recovered), `Munetoshi 71 Senge`, and `Shigeyasu Takaoka`.
+
+**They had to be found by id, and one file was not enough.** `izumo-coverage.tsv` looks like the
+roster and **202 of its 214 rows read `NO GENI ID`**, so joining against it finds 2 ids and 0
+groups — indistinguishable from "there are no Izumo duplicates". The ids are joined from every
+`reports/izumo*.tsv`, giving 210. `CLAUDE.md` § *Do not grab the first artifact that vaguely
+matches* is the rule that caught it.
+
 Read the top of the CJK section knowing what it holds: `Yasuji Tanba ×6` and the other Tanba
 groups are the real signal; a residue of bare one-token surnames (`杨`, `黄`, `邱`) survives
 because those people have a given name recorded somewhere but their `cjk_names` carries only
 the surname.
+
+**The marker leak is closed, 2026-08-30.** `is_placeholder` knew only its own local set and
+never consulted `scripts/labels.WORDS_MEANING_UNKNOWN` — every marker Emma has ruled on leaked
+into the candidates. It cost **25 groups over 107 profiles, including BOTH of the two largest**:
+the biggest was 33 profiles called `某 李`, where Chinese `某` means *a certain (unnamed) one*
+and was already in her set. 12,318 → 12,287 groups, **recall unchanged at 15 of 29 and 14 of 14
+strong** — noise removed, no real detection lost.
 
 ## ⛔ THE DAILY ALGORITHM — her full spec, 2026-08-26. Supersedes the one-hop ring
 

@@ -56,13 +56,21 @@ csv.field_size_limit(1 << 30)
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "src"))
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from genimerge.matching import YEAR_TOLERANCE  # noqa: E402
+
+# The marker vocabulary is Emma's and lives in ONE place. See `is_placeholder`.
+from labels import WORDS_MEANING_UNKNOWN  # noqa: E402
 
 #: Placeholder names. Two children called `NN` are not evidence of anything — a parent
 #: with several unnamed children is ordinary, and treating them as duplicates would
 #: bury the real cases. `CLAUDE.md`: NN is *nomen nescio*, a real statement that the
 #: name is unknown.
+#: **The punctuation forms live here and nowhere else, deliberately.** Emma's boundary,
+#: 2026-08-17, is *words yes, punctuation no*: `scripts/labels.WORDS_MEANING_UNKNOWN` holds only
+#: words, because emptying a label is a different decision from spotting a placeholder. Detection
+#: is the looser question, so `?` and `???` belong in this set and not in that one.
 NOT_A_NAME = {"", "nn", "n n", "n.n.", "private", "unknown", "?", "??", "???",
               "ukjent", "okänd", "ukendt"}
 
@@ -87,9 +95,23 @@ def is_placeholder(name):
     # not one child recorded eight times -- the same error as `<private> SOERIANAGARA`,
     # one layer in. `FNU` is "first name unknown" and `Infant` names a died-in-infancy
     # child, which is a statement about the person rather than a name.
+    # **`WORDS_MEANING_UNKNOWN` is consulted, and was not until 2026-08-30.** That set is
+    # Emma's -- every entry is a word she has ruled means *the name is unknown*, carried in
+    # `scripts/labels.py` with its corpus count. This module knew only `NOT_A_NAME`, which is
+    # `{"private", ""}`, so every other marker she had already ruled on leaked straight into
+    # the candidate list.
+    #
+    # It cost the top of the report: **25 groups covering 107 profiles**, including BOTH of the
+    # two largest. The biggest was 33 profiles called `某 李` -- Chinese `某` is *a certain
+    # (unnamed) one*, already in the set -- offered as thirty-three duplicates of one person
+    # when they are thirty-three people whose names Geni does not record. Exactly the
+    # `<private> SOERIANAGARA` failure this function was written for, one marker set out.
+    markers = NOT_A_NAME | WORDS_MEANING_UNKNOWN | {
+        "fnu", "lnu", "infant", "baby", "stillborn", "twin", "son", "daughter", "child"}
+    if low in markers:
+        return True
     first = low.split()[0] if low.split() else ""
-    return first in NOT_A_NAME | {"fnu", "lnu", "infant", "baby", "stillborn",
-                                  "twin", "son", "daughter", "child"}
+    return first in markers
 
 
 def normalise(name):
