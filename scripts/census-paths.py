@@ -32,6 +32,7 @@ five a merge costs.
 from __future__ import annotations
 
 import collections
+import csv
 import io
 import re
 import statistics
@@ -47,6 +48,24 @@ OUT = REPO / "reports" / "path-census.md"
 INDI_XREF = re.compile(rb"^0 @I(\d+)@ INDI", re.M)
 
 
+def load_adjacency():
+    """Every father/mother/spouse/child edge in the merged tree, both directions.
+
+    Cells are separated by ` | `, spaces included -- `CLAUDE.md` § *Our side could never have
+    two children* is what splitting on the wrong thing costs here.
+    """
+    adj = collections.defaultdict(set)
+    with open(REPO / "reports" / "derived-family.csv", encoding="utf-8", newline="") as fh:
+        for row in csv.DictReader(fh):
+            me = row["geni_id"]
+            for col in ("father", "mother", "spouses", "children"):
+                for other in (x.strip() for x in (row.get(col) or "").split("|")):
+                    if other:
+                        adj[me].add(other)
+                        adj[other].add(me)
+    return adj
+
+
 def main() -> int:
     files = sources.find_exports(REPO / "exports")
     present: set[str] = set()
@@ -54,6 +73,7 @@ def main() -> int:
         present.update(m.group(1).decode()
                        for m in INDI_XREF.finditer(path.read_bytes()))
 
+    adjacency = load_adjacency()
     rows = []
     for path in sorted((REPO / "paths").glob("*.tsv")):
         ids = []
@@ -66,18 +86,42 @@ def main() -> int:
         if not ids:
             continue
         missing = [g for g in ids if g not in present]
+        # **Presence is no longer the binding measure and must not be read as one.**
+        # Measured 2026-08-30: all 699 paths report 0 missing people, because
+        # `exports/0-scraped/scraped-paths.ged` (11,481 people) and `scraped-pages.ged`
+        # (10,179) were ingested and those files are built FROM these paths. Every path
+        # member is present by construction.
+        #
+        # **They are present WITHOUT THEIR LINKS.** In a 120-path sample, 115 paths held at
+        # least one consecutive pair that is not adjacent in the merged tree -- 429 broken
+        # pairs in all. So a path can be 100% present and still not connect anybody, which is
+        # the whole deliverable: `CLAUDE.md` records that the point is *"the chain being
+        # connected"*, not that the people exist as records.
+        #
+        # `broken` is that measure: consecutive steps with no father/mother/spouse/child edge
+        # between them in `derived-family.csv`. A path is complete when `broken` is 0, and
+        # that is what the routing in `queue.md` § *THE TAIL ALGORITHM* must be applied to.
+        broken = sum(1 for a, b in zip(ids, ids[1:]) if b not in adjacency.get(a, ()))
         rows.append({
             "path": path.name,
             "steps": len(ids),
             "missing": len(missing),
             "held": len(ids) - len(missing),
+            "broken": broken,
             "destination_missing": ids[-1] not in present,
             "isolate": path.name.startswith("isolate-geni-"),
         })
 
     total = len(rows)
-    covered = [r for r in rows if r["missing"] == 0]
-    inc = [r for r in rows if r["missing"] > 0]
+    # Complete means CONNECTED, not merely populated. See the note where `broken` is built.
+    covered = [r for r in rows if r["broken"] == 0]
+    inc = [r for r in rows if r["broken"] > 0]
+    present_but_broken = [r for r in rows if r["missing"] == 0 and r["broken"] > 0]
+    if not inc:
+        print("every path is connected end to end.")
+        return 0
+    print(f"{len(present_but_broken)} paths hold every person and still do not connect --"
+          f" presence saturated, links did not")
 
     # Every figure below is over `inc`, the INCOMPLETE paths. See the module note.
     avg_len = statistics.fmean(r["steps"] for r in inc)
