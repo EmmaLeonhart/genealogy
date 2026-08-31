@@ -9,11 +9,11 @@ Every missing parent is a row in `reports/store-parent-coverage.csv`.
 
 ## The answer
 
-- **2,248,462** items in the store
-- **1,529,832** parent statements (`P22` + `P25`) across them
-- **34,151** point at an item the store does not hold (**2.2%**)
-- **32,670** distinct people are named as a parent and not held
-- **25,319** of **911,453** items with any recorded parent are missing at least one (**2.8%**)
+- **2,255,560** items in the store
+- **1,536,797** parent statements (`P22` + `P25`) across them
+- **32,957** point at an item the store does not hold (**2.1%**)
+- **31,538** distinct people are named as a parent and not held
+- **24,388** of **916,017** items with any recorded parent are missing at least one (**2.7%**)
 
 ## By the CHILD's century
 
@@ -24,29 +24,29 @@ case, a missing parent of somebody born 1200 is not. No date is inferred.
 
 | child's century | parent statements | missing | missing rate |
 | --- | ---: | ---: | ---: |
-| BCE | 3,457 | 56 | 1.6% |
+| BCE | 3,461 | 57 | 1.6% |
 | 1s | 521 | 4 | 0.8% |
-| 101s | 426 | 4 | 0.9% |
-| 201s | 544 | 8 | 1.5% |
-| 301s | 617 | 7 | 1.1% |
-| 401s | 1,128 | 7 | 0.6% |
-| 501s | 1,421 | 9 | 0.6% |
-| 601s | 1,539 | 20 | 1.3% |
-| 701s | 1,906 | 26 | 1.4% |
-| 801s | 2,123 | 28 | 1.3% |
-| 901s | 3,360 | 27 | 0.8% |
-| 1001s | 6,081 | 71 | 1.2% |
-| 1101s | 9,225 | 172 | 1.9% |
-| 1201s | 12,174 | 312 | 2.6% |
-| 1301s | 14,236 | 578 | 4.1% |
-| 1401s | 21,009 | 659 | 3.1% |
-| 1501s | 38,587 | 721 | 1.9% |
-| 1601s | 81,854 | 1,470 | 1.8% |
-| 1701s | 158,460 | 1,552 | 1.0% |
-| 1801s | 346,473 | 2,146 | 0.6% |
-| 1901s | 334,319 | 1,880 | 0.6% |
-| 2001s | 17,824 | 93 | 0.5% |
-| no birth date | 472,548 | 24,301 | 5.1% |
+| 101s | 430 | 5 | 1.2% |
+| 201s | 546 | 3 | 0.5% |
+| 301s | 619 | 7 | 1.1% |
+| 401s | 1,130 | 6 | 0.5% |
+| 501s | 1,425 | 9 | 0.6% |
+| 601s | 1,550 | 20 | 1.3% |
+| 701s | 1,936 | 32 | 1.7% |
+| 801s | 2,154 | 32 | 1.5% |
+| 901s | 3,385 | 24 | 0.7% |
+| 1001s | 6,110 | 59 | 1.0% |
+| 1101s | 9,313 | 128 | 1.4% |
+| 1201s | 12,339 | 293 | 2.4% |
+| 1301s | 14,355 | 568 | 4.0% |
+| 1401s | 21,115 | 641 | 3.0% |
+| 1501s | 38,727 | 681 | 1.8% |
+| 1601s | 82,019 | 1,400 | 1.7% |
+| 1701s | 158,725 | 1,447 | 0.9% |
+| 1801s | 347,055 | 2,032 | 0.6% |
+| 1901s | 335,472 | 1,760 | 0.5% |
+| 2001s | 18,002 | 86 | 0.5% |
+| no birth date | 476,408 | 23,663 | 5.0% |
 
 Undated children are their own row and are never distributed across the
 dated ones — they are a large share, and folding them in would manufacture

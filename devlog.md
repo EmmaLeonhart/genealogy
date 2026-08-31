@@ -21527,3 +21527,28 @@ there — it is the existing downloader with a bigger scan slice, which her item
 
 Re-measuring `scripts/measure-store-parent-coverage.py` now; the 34,151 figure is the test of
 whether this closed the gap, and the queue item says so rather than assuming it.
+
+## 2026-08-31 — the walk closed 3.5% of the gap, and that is the real answer shape
+
+Re-measured after the full walk:
+
+    2026-08-15   1,423,032 items   34,104 statements point at a parent we lack   32,628 distinct
+    2026-08-31   2,248,462 items   34,151                                        32,670   (pre-walk)
+    2026-08-31   2,255,560 items   32,957                                        31,538   (post-walk)
+
+**7,098 items fetched; 1,132 distinct missing parents closed.** Not the ~25,000 the shard
+analysis suggested were waiting in shards 1200-1600, and the reason is the thing that makes this
+question interesting rather than arithmetic: **a fetched item names parents of its own.** Closing
+a gap opens new ones, so the population is a moving target, not a fixed backlog being drained.
+
+**Which is exactly her question** — *"come up with some level of estimation of how long it'll
+take… If it turns out that the amount doesn't seem like there's a clear end point, then we move
+on"* — and it cannot be answered from one pass. One pass gives a net delta; two give a decay
+rate. A second full walk is running, and the number that matters is whether the second delta is
+smaller than the first.
+
+**Correcting myself again, in the same place.** I predicted the walk would close the ~25,000
+concentrated in shards 1200-1600. It closed 1,132. The shard analysis was right about *where the
+unqueued parents were* and wrong as a prediction of *how many would end up held*, because it
+counted the frontier as it stood and not as fetching moves it. Recording it because the
+prediction was stated confidently one entry above.
