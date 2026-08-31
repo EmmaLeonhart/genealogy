@@ -317,35 +317,42 @@ jumped through a lot of hoops to try to introduce safety stuff here that I did n
 `CLAUDE.md` § *Emma not replying means she is content* records that this call is mine: it is
 **taken**, and the decision is to leave them ambiguous rather than to invent a ranking.
 
-## Comprehensive Wikidata re-import — the walk, and where the remaining work is
+## Comprehensive Wikidata re-import — the estimate she asked for
 
-Her item: use the existing download script, estimate how long it takes to get all the Wikidata
-stuff, and **do not build new tooling** — *"Whatever the fuck you do, do not build the new
-tooling."* If there is no clear end point, move on.
+Her item: use the existing download script, estimate how long a full import takes, and **do not
+build new tooling**. *"If it turns out that the amount doesn't seem like there's a clear end
+point, then we move on to this stuff."*
 
-**There is a clear end point, and the shape of it is measured.** 2026-08-31:
+**One complete walk of the store, 2026-08-31:**
 
-- The store holds **2,248,462** items and the fetch queue is **empty**.
-- That is not coverage. **34,151** `P22`/`P25` statements point at an item we do not hold, and all
-  **32,670** distinct missing parents were **absent from the download index entirely** — never
-  queued, never fetched.
-- The reason is the walk cursor, not a defect. `meta.cursor` was at **shard 21 of 2,249**.
-- **The work is concentrated, not spread.** Of the 25,319 children naming a missing parent,
-  **25,294 sit in shards the scan had not reached** — **22,407 of them in shards 1200-1399** and
-  2,795 in 1400-1599. Shards 0-322 are the original `P2600` seed region and were already fully
-  expanded, which is why a short run reports *"discovered 0"* and looks converged.
+    scanned 2,255,629 stored items for relatives
+    discovered 89,832 QIDs not already known
+    29,953 stored in 606 requests over 1,083s, 0 throttled, 27.6 items/s
+    59,832 still queued
+    projected: 46,766 requests, 23.5 hours, 14.7 GB -- a floor, not an estimate
 
-**The stopping rule is what made it look finished**, and it is worth knowing before reading any
-future run: the loop ends when one `--scan-per-round` slice discovers nothing *and* the queue is
-empty. It does not check that the cursor reached the end of the store. With the default slice of
-500 that is two thousand items, so the walk "closes" a few hundred shards in.
+**There is an end point and it is roughly a day of fetching**, against her budget of 3-8 hours.
+It is resumable, polite and unattended, so the shape is "leave it draining", not "sit and watch
+it".
 
-**So: run it with a large `--scan-per-round`.** `--scan-per-round 150000` walks the store instead
-of sampling it. Nothing was rebuilt to achieve this — it is the existing tool with the right flag.
+**Read no short run as convergence.** Three separate readings today said the frontier was closed
+and all three were artefacts:
 
-**Still to do:** finish the walk past shard 1200, fetch what it discovers, then re-run
-`python scripts/measure-store-parent-coverage.py` and record whether the 34,151 falls. That, not
-the queue length, is the coverage measure.
+- the fetch queue reporting **0** — the walk cursor was at shard 21 of 2,249;
+- *"scanned N, discovered 0"* — shards 0-322 are the original `P2600` seed region and were
+  already fully expanded;
+- missing parents falling only 34,151 → 32,957 — that was measured **mid-walk**.
+
+The stopping rule is why: the loop ends when one `--scan-per-round` slice discovers nothing and
+the queue is empty, without checking the cursor reached the end of the store. At the default
+slice of 500 that is two thousand items.
+
+**So the command is `--scan-per-round 150000`**, which walks the store rather than sampling it.
+Nothing was rebuilt.
+
+**Still to do:** drain the 59,832, re-run the walk (fetched items name relatives of their own, so
+one pass does not settle it), and re-run `scripts/measure-store-parent-coverage.py`. The pair of
+deltas is the decay rate; a single pass is not.
 
 ## Create the fathers the patronymics imply — Emma's item
 

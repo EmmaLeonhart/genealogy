@@ -21552,3 +21552,43 @@ concentrated in shards 1200-1600. It closed 1,132. The shard analysis was right 
 unqueued parents were* and wrong as a prediction of *how many would end up held*, because it
 counted the frontier as it stood and not as fetching moves it. Recording it because the
 prediction was stated confidently one entry above.
+
+## 2026-08-31 — the actual estimate: ~90,000 people missing, about a day of fetching
+
+The complete walk finished and it supersedes everything I said about this today:
+
+    scanned 2,255,629 stored items for relatives
+    discovered 89,832 QIDs not already known
+    29,953 stored in 606 requests over 1,083s, 0 throttled, 27.6 items/s
+    59,832 still queued
+    projected 46,766 requests, 23.5 hours, 14.7 GB -- a floor, not an estimate
+
+**The frontier was never closed.** A full walk of the store finds ~90,000 people Wikidata has and
+we do not — 4% of the store.
+
+**Her question is answered: there is a clear end point, and it is roughly a day of fetching**,
+against a stated budget of 3-8 hours. It is resumable, unattended and polite (nothing throttled
+across 606 requests), so the sensible shape is to leave it draining rather than to sit with it.
+One pass will not settle it — fetched items name relatives of their own — so the decay rate needs
+a second walk after this queue drains.
+
+**Three wrong readings today, all mine, all the same mistake.** Each time a short run looked like
+convergence and I reported it as such:
+
+1. *"the fetch queue drained to 0"* — the cursor was at shard 21 of 2,249.
+2. *"scanned N, discovered 0"* — shards 0-322 are the original `P2600` seed region and were
+   already fully expanded, so of course they yield nothing.
+3. *"the walk closed 3.5% of the gap"* — measured **mid-walk**, while the run was still fetching.
+
+The common root is the stopping rule: the loop ends when one `--scan-per-round` slice discovers
+nothing *and* the queue is empty, without checking the cursor reached the end of the store. At the
+default slice of 500 that is two thousand items, so it announces closure a few hundred shards in.
+Anyone reading a future run should treat "0 discovered" as meaningless unless the cursor is at the
+end.
+
+**And a fourth, worth separating:** I predicted the walk would close the ~25,000 missing parents
+concentrated in shards 1200-1600. It has not, because fetching moves the frontier — those parents
+get held and their own parents become the new gap. The shard analysis was a correct description of
+where the unqueued work sat and a bad forecast of the outcome.
+
+Draining the 59,832 now.
