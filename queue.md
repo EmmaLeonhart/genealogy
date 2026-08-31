@@ -1421,11 +1421,21 @@ whether the month-long `OBender12` hold above supersedes it or sits alongside it
 **Bullets, not letters.** These were `A.` and `B.`; `CLAUDE.md` § *Queue items are BULLET POINTS*
 covers lettering for the same reason it covers numbering, and she said so again on 2026-08-29.
 
-- **Ensure the three crons are running** — work-loop `3 * * * *`, auto-flush `15 * * * *`,
-  status-report `42 * * * *`. They are **session-only**: they die when the session ends and must be
+- **Ensure the FOUR crons are running** — work-loop `3 * * * *`, auto-flush `15 * * * *`,
+  status-report `42 * * * *`, and the **dead-queue-item sweep `45 * * * *`**, which Emma added on
+  2026-08-31: *"Set up an hourly cron at :45 that says to remove dead queue items… Like items that
+  are simply completed."* They are **session-only**: they die when the session ends and must be
   recreated at the start of the next one. This is not theoretical — every cron died in the
   2026-08-28 crash and none was recreated, which is why nothing ran between 00:03 and 06:00 on
-  2026-08-29. Confirmed live this session as `82923e5b`, `0d208cfd`, `31df9ff8`.
+  2026-08-29. Live in the 2026-08-31 session as `76ec2c05`, `f4332b23`, `cedb7fc4`, `21245a1a`
+  — the ids recorded before (`82923e5b`, `0d208cfd`, `31df9ff8`) were a dead session's and are
+  the reason to check `CronList` rather than trust this line.
+
+  **The status-report cron carries no `AskUserQuestion`.** She barred it for eight hours from
+  ~01:00 on 2026-08-31 — *"just move through the work and select the option that is consistent
+  with what I've said earlier"* — so the two-hourly blocker question in `CLAUDE.md` was taken out
+  of the cron text rather than left to fire while she slept. Restore it deliberately, not by
+  default.
 
 - **The three crons, as durable queue items.** Her instruction, 2026-08-27: *"For all of the cron
   jobs that I set up in the session. They are good and continue on with them, but also add them
