@@ -23049,3 +23049,31 @@ The discriminator is still worth having and needs no keyword list: the harness r
 **median of 1,775 words** against **42** for everything else. `MAX_WORDS = 400` drops them,
 376 → 371. `CLAUDE.md` already said to skip cron prompts and `<task-notification>` for exactly
 this reason; skill bodies arrive on the same channel and are the same class.
+
+## 2026-08-31 — triage round two: three sections deleted, one to the tail
+
+Her instruction is to put every queued item to her before doing it, so each of these was a
+question with the case for and against, not a proposal.
+
+**Deleted:**
+
+- § *Wikidata person descriptions* — superseded by her own later ruling. On 2026-08-30 she made
+  descriptions categorically forbidden (*"the easiest ways to get caught we categorically never
+  use them"*), so a section specifying the order in which to add them describes something that
+  never happens. The uniqueness trap it warned about survives in `CLAUDE.md` and in
+  `scripts/check-label-collisions.py`, which is the pre-flight.
+- § *Connect Emma and Arne Garborg to Bergitte Aukland, and Bergitte to Charlemagne* — she
+  declared all four spine lines complete on 2026-08-30. The derived sections went then; this was
+  the hand-written original, which survived only because it sits inside her *Aug 28 manual adds*
+  block. Put to her rather than pruned, because that block says keep intact and I should not be
+  deciding what comes out of it.
+- § *Mass export from every profile Emma has added to Geni* — the export era is over. The tree is
+  1.45M people, the Bureätten campaign closed at 251/251, nothing under `exports/` is newer than
+  `out/merged.ged`, and the bottleneck is emission rather than coverage.
+  `docs/export-seed-rules.md` keeps the method if it is ever wanted again.
+
+**Moved to the tail:** § *LABELS, IN HER ORDER*, the ~140-line mass label pass. It is a whole-
+population operation while the live work is hyperlocal, so it was being read and skipped every
+tick. Nothing about it changed except its position.
+
+**55 → 52 sections.** Running total for the day: 25 deleted, 10 added.

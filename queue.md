@@ -245,328 +245,11 @@ the name** — the tree settles it, via neighbours and which exports they came f
 state** — and the 9,287 with `mul` only have no named relative at any distance out to
 two hops, so they need something other than a relative or they stay markers.
 
-## Wikidata person descriptions
-
-For descriptions of people, which would include applying to people without descriptions who are currently on Wikidata and other things, descriptions are a bit of a difficult task. Obviously, my opinion on this is that a person always gets labeled before they have a description added to them. This is a quite hard rule. 
-
-This is a quite hard rule here: a person always gets labeled before they have a description added to them. This includes generation. We don't generate when we're looking at individuals or when we create an individual. We create the individual with their multi-language label, their English language label, their Japanese language label, their Chinese language label, their Korean language label, their Russian language label, and their Hindi language label. We do all of those things to start, but no descriptions are added to any of the people, any short descriptions on any other people.
-
-The reason why this is extremely critical is because blank descriptions are not deduplicated, but descriptions are deduplicated. Basically, the idea here would be, for example 
-
-
-We have two individuals with the label "John".
-
-We add a description to one of them as "Son of Jack"
-
-This means if we attempt to add the same description to the other "John" then it will give an error
-
-But there are worse things
-
-If there is an unlabelled individual then attempting to give them the label and description "John", "Son of Jack" then it will just refuse to give the label
-
-But there is worse
-
-If there is an unlabelled individual with the description "Son of Jack" and you try to add the label "John" then it just straight up refuses it. 
-
-This is by far the worst trap to accidentally fall into because there are many unlabeled individuals, and them having generic descriptions often makes it effectively impossible to add labels to them. 
-
-But also, this will cause it so that if we're trying to create an individual, it throws an error. 
-
-Our rule here is basically:
-1. Top priority: add labels to items that already have descriptions.
-2. Add labels to ones without descriptions.
-3. Add descriptions only to ones with it.
-
-As far as descriptions go, I'll say we should have a series of descriptions that we could decrease from. As far as this goes, we should have a series of descriptions that we apply from top priority to least priority. Top priority would be some sort of thing related to the person's top priority, which would be whatever's on Wikidata at the moment. We can always use the geni IDs of a person as deduplicators, except for in the couple events that we've been covering of potentially adding our own individuals that are not on geni, but this is a different topic related to patronyms. 
-
----
-
-## LABELS, IN HER ORDER — one step per language, every individual at once
-
-**Emma, 2026-08-17**, after being shown the 364 structural placeholders with no label:
-*"Put an item at the end of the queue that finds these kinds of ones where the label
-has this stuff already in it, and normalizes them into proper things based on our
-rules, and then tasks at the end that in order: makes en labels for every individual
-(so Japanese gets transcribed), and then mul gets made for every individual (almost
-always derived from en), and then the Japanese gets made for all languages, and then
-the Chinese gets made for all languages, and then after we continue with the other
-universal languages. Note that these are all distinct items for the language so all of
-the en labels are done at the same time as one step, and then mul, then ja, then zh,
-then others."*
-
-**This fixes the ordering `emission-spec.md` had.** That file says `mul` comes from the
-Latin name and `en` comes from `mul`. Her order is the other way round and it is the
-one that works for a person with no Latin name at all: **`en` is made first, by
-transcribing**, and `mul` is then *"almost always derived from en"*. That is what gives
-the 806 Han-only people a `mul` — there was no route to one before.
-
-**Each language is one step over the whole population, not a per-person loop.** Her
-words. So the batches are `en` for everybody, then `mul` for everybody, then `ja`, then
-`zh`, then the rest — never a person walked once and labelled in seven languages.
-
-- **Normalise the labels that already carry a marker inside them.** The census is
-  built — `scripts/build-marker-label-census.py` → `reports/marker-labels.csv`, both
-  stores — and it splits the job into three populations that need different handling.
-  What is left is the *normalisation*, which is emitting from that CSV:
-
-  - **A marker leading a real surname — keep the surname, marker to `mul`.**
-    `unknown Bloomfield` → `mul: NN Bloomfield`, and a description in the local
-    languages. This is the bulk of it and the Wikidata side dominates: 18,280
-    `unknown`, 3,362 `nn`, 480 `n`, 260 `?`, 60 `n.n.`, 35 `private`.
-  - **A real name with a marker wedged inside it — strip the marker, keep the rest.**
-    `Catherine unknown` → `Catherine`, `Nechama (?) Heller` → `Nechama Heller`,
-    `Hadaburg N.N. Gräfin im Saalgau` → `Hadaburg Gräfin im Saalgau`. Mechanical, no
-    judgement, ~1,950 labels. `is_placeholder_label` reads only the head token, so
-    every one of these currently ships as a name.
-  - **A description already sitting in the name slot** — 1,222 Geni people and 1,508
-    Wikidata items in English, plus **~5,400 in CJK** and 249 behind an honorific.
-    `wife of` 871, `daughter of` 605, `son of` 241, `mother of` 234, `nieto de` 58;
-    `室` 2,565, `氏` 1,613, `娘` 617, `某` 311, `妻` 210, `母` 100; `Mrs.` 249,
-    `Miss` 30. **`mul` gets `NN`** — Emma, 2026-08-17: *"And NN for mul there"* — plus
-    the real surname where the description leaves one standing (`謝氏` → `NN 謝`,
-    `信秀正室 織田` → `NN 織田`). The description itself is kept as the local-language
-    label, which is where it already belonged; it is written, just in the wrong slot.
-
-  **The three vocabularies are now one** — `scripts/labels.PLACEHOLDER_FORMS`, imported
-  by the preview, the structural walk and the census instead of each carrying a copy.
-  Strictly additive: all 27 forms the copies held are in it, plus 19 found by
-  measurement, so nobody previously screened stops being screened. `NOT_A_NAME` is
-  deliberately untouched — that decides what `label_for()` **empties** and she has ruled
-  on it twice; these sets decide what a **marker** is. Widening detection is not
-  widening suppression.
-
-- **`en` for every individual, as one step.** Includes the transcription she names:
-  a Han-only or Cyrillic-only or Hebrew-only person gets an `en` made for them.
-  **CJK → English is agentic, never programmatic** — *"from CJK to English do not
-  remotely try to do any kind of programmatic transliteration because they all suck.
-  But AI almost always knows Japanese to Romaji."* The culture question comes first:
-  陳 is *Chen*, *Chin* or *Jin*, and *"the tree settles it, via neighbours and which
-  exports they came from"*, never the name. 806 Han-only among the structural
-  placeholders alone; the corpus figure is larger and is what this step must count.
-
-- **`mul` for every individual, derived from `en`.** *"Almost always derived from en"* —
-  so the exceptions are the thing to find and report, not to guess at.
-
-- **`ja` for every individual — and the native construction is the template.**
-  **Emma, 2026-08-17:** *"That relationship description should be the template for how
-  we generate Chinese and Japanese nn suppleting labels."*
-
-  This unblocks the thing `ja`/`zh` were deferred for. The recorded objection was that
-  a generated Japanese description *"would come out `Gerard Spencerの娘` with the name
-  untransliterated"*. The corpus already contains ~5,400 CJK relationship descriptions
-  written the native way, with no `の` and no borrowed grammar, and those are the model:
-
-      織田敏信娘        daughter of Oda Toshinobu   <name>娘
-      信秀正室 織田      principal wife of Nobuhide  <name>正室
-      古河某妻          wife of a certain Kogawa    <name>某妻
-      謝氏             the Xie-clan woman          <surname>氏
-      母 陳            mother, of the Chen         母 <surname>
-
-  So an unnamed person whose relative is recorded in Han characters gets
-  `ja` = `<relative's name><suffix>`, taking the suffix from the table the records
-  themselves use. **It only works where the relative's name is already CJK** — which is
-  exactly the population that has no `en` and is otherwise unreachable, so the two
-  problems solve each other. Where the relative is Latin-only the `ja` label still
-  waits on the transcription step.
-
-  Han-only people already have a `ja` label, as the kanji written: *"If the name is
-  solely in kanji, then the Chinese and Japanese labels are both the same for it."*
-  The work is everybody else.
-
-  **`室`/`正室`/`側室` are not interchangeable and must not be normalised to one.**
-  Principal wife, concubine and consort are different statements about a person. Pick
-  the suffix the source used; do not choose one when generating from scratch — for a
-  generated label the plain relationship word is the safe form and the specific rank is
-  something only the source can supply.
-
-  **STEP 3 PART-BUILT — `ja` where it needs no invention.**
-  `scripts/build-ja-label-batch.py` → `reports/wikidata-ja-labels.json`, **41,952 edits**:
-  37,405 from the name as written (Japanese uses a Han name unchanged) and 4,547 from
-  Wikidata's own `ja` label.
-
-  **TO DO — the hard half, 406,713 people:** English→katakana, plus 5,293 hangul-only names
-  deliberately skipped (a `ja` label must not be the hangul). Emma's method is a hand-built
-  table — *"hand-built tables, except CJK → English"* — and turning `Brodsky` into
-  `ブロツキー` has real failure modes: syllabification, long vowels, and the fact that
-  established Japanese spellings of European names are conventional rather than derivable.
-  Sized, not guessed at.
-
-  **Then `zh`, then the rest.** Middle initials follow
-  `reports/middle-initial-wikidata-practice.md`.
-
-- **`zh` for every individual.** Same string as `ja` for a Han name; the 291 people
-  whose name carries **kana** are the ones needing a real Chinese form.
-
-- **Then the other universal languages** — `hi` · `ar` · `ru` · `el` from her earlier
-  list, each its own step over the whole population.
-
-### First, the bug underneath all of it — 646 labels deleted by an ordinal sign
-
-Found 2026-08-17 while answering *"what the FUCK are these 364 placeholders"*.
-
-`scripts_of` in `scripts/build-display-names.py` classifies each character by the first
-word of its Unicode name. `º` is `MASCULINE ORDINAL INDICATOR` and `'º'.isalpha()` is
-**True** in Python, so it becomes a script called `Masculine`. `derive-labels.py` then
-reads `scripts = Latin+Masculine`, calls the name **mixed-script**, and refuses it as
-an `en` or `mul` label.
-
-**646 people lose their Latin label to this**, every one an Iberian noble whose title
-carries an ordinal: `Afonso de Bragança 1º conde de Faro e 2º de Odemira`,
-`Maria da Cunha 3ª senhora de Basto`, `Mª Manuela Fernández de Córdoba`,
-`João Soares de Sousa 3.º Capitão donatário da ilha de Santa Maria`. The same fault
-hits `Feminine` (86 records), `Modifier` (105), `Superscript`, `Micro` and `Unnamed`
-(12) — **943 NAME records** carry one of these pseudo-scripts.
-
-**A character that is not a writing system must contribute no script**, rather than
-being called Latin: `º` says nothing about what script a name is in. Then
-`1º senhor de Baião` is Latin and the label survives. Fixing this means re-running
-`build-display-names.py` → `derive-labels.py` → every label emitter, which is the whole
-cache chain `CLAUDE.md` warns about.
-
 ## Pointers
 
 - Abstract backlog: `todo.md` · Completed work: `devlog.md` · History: `git log`
 - Open questions for Emma: `questions.md`
 - The pre-wipe queue, 1,396 lines: `git show 4127170:queue.md`
-
-## Connect Emma and Arne Garborg to Bergitte Aukland, and Bergitte to Charlemagne
-
-Uhh the AI generated explanations are kinda bad and do not fully explain what is supposed to be going on. So this is an explanation of some of the specifically queued up edits that will be done manually as a part of the ci/cd bot stuff. We have the paths going to these people. 
-
-Initial edits clear out the paths from Arne Garborg to Charlemagne 
-
-Each day add an additional hop to Arne's relatives for up to 4 people
-
-Then once that expansion is finished we drop it and are more adding people in the gradual way.
-
-the first common ancestor of us is https://www.geni.com/people/Rasmus-Ingebretsen-Grude/6000000003492045766?through=6000000003492005116 and Bergitte is the bigger target one.
-
-The idea is we establish the quick marriage link of 
-
-Arne Garborg is your great grandfather's wife's first cousin once removed.
-You → Richard Wade Borsheim (your father) → Randolph Paulus Borsheim (his father) → Reinhert Borsheim (his father) → Selma Pedersdtr. Borsheim (his wife) → Peder Tollakson Raugstad (her father) → Marta Kristine Jonsdatter Raustad (his mother) → Ane Oline Jonsdatter Raugstad (her sister) → Arne Garborg (her son)
-
-first
-
-and are working towards the earliest blood link of
-
-Arne Garborg is your fourth cousin five times removed.
-You → Richard Wade Borsheim (your father) → Randolph Paulus Borsheim (his father) → Reinhert Borsheim (his father) → Rakel Rasmusdottir Borsheim (his mother) → Rasmus Wibye Andersson Lea (her father) → Ragnhild Jonsdatter Lea (his mother) → Jon Larsson Sveinsvoll (her father) → Lars Jonson Sveinsvoll (his father) → Lisbeth Rasmusdatter Sveinsvoll (his mother) → Rasmus Ingebretsen Grude (her father) → Jon Rasmusson Grude (his son) → Per Jonson Øksnevad (his son) → Stine Persdatter Øksnevad (his daughter) → Eivind Aadnesson Garborg (her son) → Arne Garborg (his son)
-
-and the common lineage of Bergitte is there too
-
-Now to be clear with this: the path goes from Arne so getting added in the order
-
-Arne Garborg
-Ane Oline Jonsdatter Raugstad
-Marta Kristine Jonsdatter RAustad
-Peder Tollakson Raugstad
-Selma Pedersdtr Borsheim
-Reinhert Borsheim
-
-And then the common ancestry of Reinhert Borsheim going up and also adding his descendants
-
-Descendants can go in any order roughly. He has only 38
-
-Ancestor order to optimize getting to Charlemagne and the other person fastest
-
-Rakel Rasmusdottir Borsheim
-
-Add both of her parents at once
-
-And kinda go up the ancestry of Rakel and Arne on the general sides until you get the blood lins at both of the two people
-
-### Bure Kinship
-
-I want a thing that similarly does this and adds links with the Bure Kinship and builds the linking down to my mother.
-
-This is a thing that is more chaotic and honestly requires a task of geni export for the Bure kinship in the same way as with the Norwegian group and should be occurring somewhat gradually too. The Bure Kinship has a fuckton of people who have so many fucking people with sweidsh wikipedia articles and wikidata items but no linked tree
-
-### AI explanation of this task
-
-**Emma, 2026-08-18. Do this BEFORE the synoptic tree is built. Not an investigation
-task — the finding is hers and it is already made.**
-
-She saved the ancestry from **Charlemagne to Arne Garborg** and identified
-**Bergitte Aukland** — `6000000002481819312`,
-<https://www.geni.com/people/Bergitte-Aukland/6000000002481819312?through=6000000002457013227>.
-
-**What Bergitte Aukland is, precisely, in her words:** *"they are not the person
-who is the nearest common ancestor of me and Arne, but they are the common
-ancestor in the two lines between me and Arne who is a descendant of
-Charlemagne."*
-
-So she is **not** the MRCA of Emma and Arne. She is the person who is (a) on both
-of the two lines that run between Emma and Arne, and (b) herself descended from
-Charlemagne. That second property is the whole point — she is the junction where
-the Emma↔Arne link meets the Charlemagne descent.
-
-The `?through=6000000002457013227` on the URL names the profile the relationship
-was traced through and is part of the evidence; keep it.
-
-**The work, in two halves:**
-
-- Connect **Emma → Bergitte Aukland** and **Arne Garborg → Bergitte Aukland**.
-- Connect **Bergitte Aukland → Charlemagne**.
-
-**Why Arne Garborg specifically, in her words:** *"Arne is the person we were
-looking for, as he is significant enough that really anyone being connected in the
-tree is gonna be seen as legitimate."* That is an argument about how the Wikidata
-edits will be received, not about genealogy: a link to a major documented
-Norwegian writer carries its own justification, so people hanging off that link
-inherit the legitimacy. It is the same instinct as CLAUDE.md § *The practical goal
-is EMMA densely linked* — proximity to a well-attested anchor beats volume.
-
-Both paths to Arne are already complete in the corpus (25 steps, 0 absent —
-`paths/isolate-geni-aadne-eivindson-garborg-1851-1924.tsv`), and all 20 people on
-them are held in at least 4 exports with parents recorded
-(`reports/garborg-coverage.txt`). So the Emma↔Arne half is evidenced; what is
-outstanding is Bergitte→Charlemagne and the modelling of all of it.
-
-**Her saved Charlemagne→Arne page goes into the repo as soon as it lands** — run
-`python -m genimerge path-from-html` on it into `paths/` the moment it appears,
-the same handling as every other saved page.
-
-
-# THE TAIL OF THE QUEUE — Emma, 2026-08-18, dictated in one go
-
-**This is the end of the queue and the order inside it is hers.** Every item below
-happens *after* the current chain-gap work loop finishes and *after* the sparse-region
-exports (Phase 4 above). She was explicit that "final part of the queue" means "by
-definition after all this stuff is complete", so nothing here jumps ahead of the loop
-that is running now.
-
-Her framing of why it is written like this: *"as long as the agent just continues to
-action, as long as the agent properly constructs, as long as the agent properly writes
-out all the cue stuff that I gave back then and also continues to follow the cue over
-time and does not decide to start ignoring it."* The tail is meant to be walkable
-without her — she wants the loop to be able to carry itself all the way to the CI/CD
-step. **No `AskUserQuestion` until 2026-08-18 ~12:40 PST at the earliest — she is
-asleep.**
-
-## Mass export from every profile Emma has added to Geni
-
-- Enumerate **every individual Emma has personally added to Geni**, and that
-  **includes every placeholder created on her account by this loop** — the chain seeds,
-  the midpoint seeds, all of them. Her words: *"every single individual that I have
-  added personally and this includes, of course, the ones that you added."*
-- Run a **`Descendants`** export from each. She calls this step *"the mass exporting
-  of the descendants"* and says the results *"would be in the descendants of people I
-  added section"*, so they are filed together rather than scattered.
-- **Expect them to be fast and small.** *"I expect a lot of these exports are going to
-  be relatively quick by contrast to the descendants one."* That is the signature of
-  seeding on a placeholder: a person created as somebody's missing parent has exactly
-  one line below them, so the ball closes quickly instead of running to 5000.
-- **One phrase in the dictation is ambiguous and is recorded rather than resolved:**
-  *"does a similar export to the one except it doesn't export the descendants."* Read
-  against the rest of the paragraph — which twice names this the descendants job and
-  contrasts its *speed* with the descendants campaign — this reads as *these seeds have
-  barely any descendants to export*, not as *use a different walk*. **Go with
-  `Descendants`.** If the first handful come back empty rather than merely small, that
-  reading is wrong and the alternative is a `Forest` walk; say so and switch, do not
-  grind through a thousand empty exports. Raise it with her when she is awake.
-- The export mechanics are unchanged: `docs/export-seed-rules.md` § *Running the
-  export*, strictly one at a time, zips filed into `exports/` in bulk at the end.
 
 ## Regnal ordinals on the Samaritan high priests — Emma, 2026-08-18
 
@@ -1850,3 +1533,147 @@ Measure first and sample the rescues by hand. That is what showed `d`/`t` was sa
 inner `h` was safe, and is the only reason either shipped.
 
 **At the tail with the rest of the patronymic modelling.** Emma, 2026-08-31: *"all pstronymic modelling is at the end now"* — she is working down the queue and three consecutive items landing on patronymics was a placement mistake of mine, not her priority.
+
+## LABELS, IN HER ORDER — one step per language, every individual at once
+
+**Emma, 2026-08-17**, after being shown the 364 structural placeholders with no label:
+*"Put an item at the end of the queue that finds these kinds of ones where the label
+has this stuff already in it, and normalizes them into proper things based on our
+rules, and then tasks at the end that in order: makes en labels for every individual
+(so Japanese gets transcribed), and then mul gets made for every individual (almost
+always derived from en), and then the Japanese gets made for all languages, and then
+the Chinese gets made for all languages, and then after we continue with the other
+universal languages. Note that these are all distinct items for the language so all of
+the en labels are done at the same time as one step, and then mul, then ja, then zh,
+then others."*
+
+**This fixes the ordering `emission-spec.md` had.** That file says `mul` comes from the
+Latin name and `en` comes from `mul`. Her order is the other way round and it is the
+one that works for a person with no Latin name at all: **`en` is made first, by
+transcribing**, and `mul` is then *"almost always derived from en"*. That is what gives
+the 806 Han-only people a `mul` — there was no route to one before.
+
+**Each language is one step over the whole population, not a per-person loop.** Her
+words. So the batches are `en` for everybody, then `mul` for everybody, then `ja`, then
+`zh`, then the rest — never a person walked once and labelled in seven languages.
+
+- **Normalise the labels that already carry a marker inside them.** The census is
+  built — `scripts/build-marker-label-census.py` → `reports/marker-labels.csv`, both
+  stores — and it splits the job into three populations that need different handling.
+  What is left is the *normalisation*, which is emitting from that CSV:
+
+  - **A marker leading a real surname — keep the surname, marker to `mul`.**
+    `unknown Bloomfield` → `mul: NN Bloomfield`, and a description in the local
+    languages. This is the bulk of it and the Wikidata side dominates: 18,280
+    `unknown`, 3,362 `nn`, 480 `n`, 260 `?`, 60 `n.n.`, 35 `private`.
+  - **A real name with a marker wedged inside it — strip the marker, keep the rest.**
+    `Catherine unknown` → `Catherine`, `Nechama (?) Heller` → `Nechama Heller`,
+    `Hadaburg N.N. Gräfin im Saalgau` → `Hadaburg Gräfin im Saalgau`. Mechanical, no
+    judgement, ~1,950 labels. `is_placeholder_label` reads only the head token, so
+    every one of these currently ships as a name.
+  - **A description already sitting in the name slot** — 1,222 Geni people and 1,508
+    Wikidata items in English, plus **~5,400 in CJK** and 249 behind an honorific.
+    `wife of` 871, `daughter of` 605, `son of` 241, `mother of` 234, `nieto de` 58;
+    `室` 2,565, `氏` 1,613, `娘` 617, `某` 311, `妻` 210, `母` 100; `Mrs.` 249,
+    `Miss` 30. **`mul` gets `NN`** — Emma, 2026-08-17: *"And NN for mul there"* — plus
+    the real surname where the description leaves one standing (`謝氏` → `NN 謝`,
+    `信秀正室 織田` → `NN 織田`). The description itself is kept as the local-language
+    label, which is where it already belonged; it is written, just in the wrong slot.
+
+  **The three vocabularies are now one** — `scripts/labels.PLACEHOLDER_FORMS`, imported
+  by the preview, the structural walk and the census instead of each carrying a copy.
+  Strictly additive: all 27 forms the copies held are in it, plus 19 found by
+  measurement, so nobody previously screened stops being screened. `NOT_A_NAME` is
+  deliberately untouched — that decides what `label_for()` **empties** and she has ruled
+  on it twice; these sets decide what a **marker** is. Widening detection is not
+  widening suppression.
+
+- **`en` for every individual, as one step.** Includes the transcription she names:
+  a Han-only or Cyrillic-only or Hebrew-only person gets an `en` made for them.
+  **CJK → English is agentic, never programmatic** — *"from CJK to English do not
+  remotely try to do any kind of programmatic transliteration because they all suck.
+  But AI almost always knows Japanese to Romaji."* The culture question comes first:
+  陳 is *Chen*, *Chin* or *Jin*, and *"the tree settles it, via neighbours and which
+  exports they came from"*, never the name. 806 Han-only among the structural
+  placeholders alone; the corpus figure is larger and is what this step must count.
+
+- **`mul` for every individual, derived from `en`.** *"Almost always derived from en"* —
+  so the exceptions are the thing to find and report, not to guess at.
+
+- **`ja` for every individual — and the native construction is the template.**
+  **Emma, 2026-08-17:** *"That relationship description should be the template for how
+  we generate Chinese and Japanese nn suppleting labels."*
+
+  This unblocks the thing `ja`/`zh` were deferred for. The recorded objection was that
+  a generated Japanese description *"would come out `Gerard Spencerの娘` with the name
+  untransliterated"*. The corpus already contains ~5,400 CJK relationship descriptions
+  written the native way, with no `の` and no borrowed grammar, and those are the model:
+
+      織田敏信娘        daughter of Oda Toshinobu   <name>娘
+      信秀正室 織田      principal wife of Nobuhide  <name>正室
+      古河某妻          wife of a certain Kogawa    <name>某妻
+      謝氏             the Xie-clan woman          <surname>氏
+      母 陳            mother, of the Chen         母 <surname>
+
+  So an unnamed person whose relative is recorded in Han characters gets
+  `ja` = `<relative's name><suffix>`, taking the suffix from the table the records
+  themselves use. **It only works where the relative's name is already CJK** — which is
+  exactly the population that has no `en` and is otherwise unreachable, so the two
+  problems solve each other. Where the relative is Latin-only the `ja` label still
+  waits on the transcription step.
+
+  Han-only people already have a `ja` label, as the kanji written: *"If the name is
+  solely in kanji, then the Chinese and Japanese labels are both the same for it."*
+  The work is everybody else.
+
+  **`室`/`正室`/`側室` are not interchangeable and must not be normalised to one.**
+  Principal wife, concubine and consort are different statements about a person. Pick
+  the suffix the source used; do not choose one when generating from scratch — for a
+  generated label the plain relationship word is the safe form and the specific rank is
+  something only the source can supply.
+
+  **STEP 3 PART-BUILT — `ja` where it needs no invention.**
+  `scripts/build-ja-label-batch.py` → `reports/wikidata-ja-labels.json`, **41,952 edits**:
+  37,405 from the name as written (Japanese uses a Han name unchanged) and 4,547 from
+  Wikidata's own `ja` label.
+
+  **TO DO — the hard half, 406,713 people:** English→katakana, plus 5,293 hangul-only names
+  deliberately skipped (a `ja` label must not be the hangul). Emma's method is a hand-built
+  table — *"hand-built tables, except CJK → English"* — and turning `Brodsky` into
+  `ブロツキー` has real failure modes: syllabification, long vowels, and the fact that
+  established Japanese spellings of European names are conventional rather than derivable.
+  Sized, not guessed at.
+
+  **Then `zh`, then the rest.** Middle initials follow
+  `reports/middle-initial-wikidata-practice.md`.
+
+- **`zh` for every individual.** Same string as `ja` for a Han name; the 291 people
+  whose name carries **kana** are the ones needing a real Chinese form.
+
+- **Then the other universal languages** — `hi` · `ar` · `ru` · `el` from her earlier
+  list, each its own step over the whole population.
+
+### First, the bug underneath all of it — 646 labels deleted by an ordinal sign
+
+Found 2026-08-17 while answering *"what the FUCK are these 364 placeholders"*.
+
+`scripts_of` in `scripts/build-display-names.py` classifies each character by the first
+word of its Unicode name. `º` is `MASCULINE ORDINAL INDICATOR` and `'º'.isalpha()` is
+**True** in Python, so it becomes a script called `Masculine`. `derive-labels.py` then
+reads `scripts = Latin+Masculine`, calls the name **mixed-script**, and refuses it as
+an `en` or `mul` label.
+
+**646 people lose their Latin label to this**, every one an Iberian noble whose title
+carries an ordinal: `Afonso de Bragança 1º conde de Faro e 2º de Odemira`,
+`Maria da Cunha 3ª senhora de Basto`, `Mª Manuela Fernández de Córdoba`,
+`João Soares de Sousa 3.º Capitão donatário da ilha de Santa Maria`. The same fault
+hits `Feminine` (86 records), `Modifier` (105), `Superscript`, `Micro` and `Unnamed`
+(12) — **943 NAME records** carry one of these pseudo-scripts.
+
+**A character that is not a writing system must contribute no script**, rather than
+being called Latin: `º` says nothing about what script a name is in. Then
+`1º senhor de Baião` is Latin and the label survives. Fixing this means re-running
+`build-display-names.py` → `derive-labels.py` → every label emitter, which is the whole
+cache chain `CLAUDE.md` warns about.
+
+**At the tail, her call 2026-08-31.** It is a mass operation over the whole population and the live work is hyperlocal, so it was being read and skipped every tick. Nothing about it changed except its position.
