@@ -45,7 +45,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from namemodel import without_nickname  # noqa: E402
-from labels import label_for, normalise_marker_spelling  # noqa: E402
+from labels import (  # noqa: E402
+    drop_marker_surname, label_for, normalise_marker_spelling)
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT / "src"))
@@ -269,8 +270,8 @@ def main() -> int:
         # this population and already keeps the surname. `normalise_marker_spelling` is left
         # alone: whether a redaction marker BECOMES `NN` is a decision she has corrected twice
         # and it stays hers.
-        latin = [x for x in latin if label_for(x)]
-        aliases = [x for x in aliases if label_for(x)]
+        latin = [drop_marker_surname(x) for x in latin if label_for(x)]
+        aliases = [drop_marker_surname(x) for x in aliases if label_for(x)]
 
         birth = latin[0] if latin else ""
         married = aliases[0] if aliases else ""

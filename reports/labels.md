@@ -56,7 +56,7 @@ them.
 ## Against Wikidata, where both exist
 
 40,898 people have both a derived Latin label and a Wikidata English
-label. **11,151 match exactly (27.3%).**
+label. **11,155 match exactly (27.3%).**
 
 `reports/display-names.md` has the breakdown of the rest: the failures
 concentrate in royalty, where Geni holds the native birth name and Wikidata the
