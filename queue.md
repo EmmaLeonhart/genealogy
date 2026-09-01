@@ -251,41 +251,42 @@ two hops, so they need something other than a relative or they stay markers.
 - Open questions for Emma: `questions.md`
 - The pre-wipe queue, 1,396 lines: `git show 4127170:queue.md`
 
-## Regnal ordinals ON THE NAME — `P7338`, the Samaritan shape
+## Succession and regnal numbers: fill in the Geni ids by hand
 
-**Split from the succession item below, her call 2026-08-31:** *"there's actually two related
-things: succession and the number attached to the name. Split this into two."* She is right and
-the census shows they are different populations, not two views of one.
+`scripts/build-succession-roster.py` -> `reports/succession-and-ordinals.csv`, her columns:
+family, name, geni id, qid, regnal number, number in office. **151 rows.**
 
-This half is the number **inside the personal name** — `Elazar XX ben Tsedaka ben Yitzhaq`,
-`Yoseph II`, `Levi VI`. It is a `P7338` *regnal ordinal* qualifier on the `P735` *given name*
-statement, per `name modelling.txt`, and **nothing else**. Emma, 2026-08-18: *"regnal ordinals
-fucking cannot behave like a middle name."*
+| family | rows | qid | geni | regnal | in office |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Izumo | 53 | 51 | 4 | 0 | 53 |
+| Senge | 22 | 22 | 2 | 0 | 22 |
+| Kitajima | 14 | 14 | 1 | 0 | 14 |
+| Samaritan | 62 | 21 | 62 | 58 | 18 |
 
-- **The census exists**: `reports/regnal-ordinals.csv`, 19,450 rows corpus-wide — 8,341 Roman,
-  6,031 single-letter, 5,078 Arabic. **158 are Samaritan-shaped**, and the file needs screening
-  before emission: `Wife 2 /ben Nathan, Mar Huna IV/` and `Preben 1. /Bille-Brahe/` are in it,
-  and neither is a regnal ordinal.
-- **`P7338` appears in none of the three Samaritan batches**, checked 2026-08-31.
-- Scope is hers: the Samaritans plus any other family where the ordinal is genuinely part of the
-  name. It is emission from an existing census, not new analysis.
+**The one thing left is the `geni_id` column on the Japanese side, and it is an AGENTIC pass, not
+a matcher.** Emma, 2026-08-31: *"All of them are on geni lol the wikidata just doesn't have p2600
+the geni links to wikidata on all of them."* So a blank means our matching failed, never that the
+person is absent.
 
-## Succession and position held — the Izumo / Senge / Kitajima shape
+**Do not reach for a name search.** The existing automated run found 32 of 214 and several are
+wrong on their face — `Izumo no Yoshitada` matched *Minamoto* no Yoshitada, `Izumo no Takatoki`
+matched *Fujiwara* no Takatoki, different men with coincidentally similar names — while others
+came back as 18-way ambiguity blobs. Only single unambiguous matches are carried; `geni_status`
+says which case each row is.
 
-The other half. Here the number is **not in the name**: it counts the person among the holders of
-an office — the Nth head of the house — and is `P39` *position held* with `P1545` *series
-ordinal*, which is a different statement about a different thing.
+**Then emission, and the two properties are different statements:**
 
-**Measured 2026-08-31, and this is why the split was needed:** of the 19,450 ordinal-bearing rows,
-**zero** are Izumo, Senge, Kitajima or Kitashima. Their ordinals are not in the Latin name form at
-all, so the name-side census cannot see them and a single item would have silently covered one
-family and missed the other. `reports/izumo-chart-roster.tsv` is 298 people.
+- `P7338` *regnal ordinal* on the `P735` *given name*, for the 58 Samaritans who have one.
+  `name modelling.txt` is the model, and it must never look like a middle name.
+- `P39` *position held* with `P1545` *series ordinal* for the number in office.
+  `reports/wikidata-samaritan-succession.json` already does this for 18 priests, so the Japanese
+  houses extend a built shape rather than inventing one.
 
-- `reports/wikidata-samaritan-succession.json` already models the office this way for the
-  Samaritan priests — `P39` on all 21, `P1545` on 18 — so the shape is built and this is
-  extending it, not inventing it.
-- First step is finding where the Izumo succession numbers actually live: the chart, the roster,
-  or the Geni bios. Do not assume the name.
+**Two facts worth keeping:** the Izumo house splits at **55** — `Senge no Takamune` and
+`Kitajima no Sadataka` are both the 55th and the branches number onward in parallel — and a bare
+`I`/`V`/`X` in a `ben`-patronymic name is a regnal ordinal, which the census files as
+`single-letter` because elsewhere it could be an initial. Taking `kind == "roman"` alone dropped
+19 of 63, `Yitzhaq I` among them.
 
 ## EMAIL me the daily QuickStatements file, every day — from 2026-09-01
 

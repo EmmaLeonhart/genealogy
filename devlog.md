@@ -23181,3 +23181,40 @@ reads it first wins.
 This is the third stale statement the sweep has caught today, after `patronymic-reclassified.tsv`'s
 30,171 and the 546/4,340 figures. All three were mine and all three stayed plausible after the
 thing they described had changed.
+
+## 2026-08-31 — the succession and regnal roster, to her spec
+
+Her spec: *"just agentically write the stuff into csv files with the geni id, qid if applicable,
+regnal number if applicable, and number in office, and whether they are Izumo, Senge, Kitajima, or
+Samaritan."* `scripts/build-succession-roster.py` → `reports/succession-and-ordinals.csv`, 151
+rows: Izumo 53, Senge 22, Kitajima 14, Samaritan 62.
+
+**Two corrections she made while it was being built, both to my reading of the data.**
+
+**"All of them are on geni lol the wikidata just doesn't have p2600."** I had reported the Geni
+column as nearly empty and written a docstring explaining that these are ancient office-holders
+absent from our corpus. Wrong: they are in the corpus, and what is missing is the `P2600` linking
+Wikidata to them. So an empty cell means our matching failed, and the queue item now says that
+rather than the opposite.
+
+**And "Uhhh what"** — she was reading the output, where `Tsedaka II` had a regnal number and
+`Yitzhaq I` did not. My screen took `kind == "roman"` from the census, which files a bare `I`,
+`V` or `X` as `single-letter` because elsewhere it could be a middle initial. Inside a
+`ben`-patronymic name there are no middle initials, so the guard was costing real values: **19 of
+63 rows**, including `Yitzhaq I ben Tsedaka` and `Phinehas X ben Matzliach`. Regnal numbers went
+41 → 58.
+
+**The source file changed too.** I built first from `izumo-chart-roster.tsv` and should have used
+`izumo-geni-candidates.tsv`, which carries the same people plus `lineage` — the real
+Senge/Kitajima/Izumo split — and the `geni_id` column. Parsing the family out of the name worked
+by luck; the lineage column is what the data says.
+
+**What is left is deliberately not automated.** The existing matcher found 32 of 214 and several
+are wrong on their face — `Izumo no Yoshitada` matched *Minamoto* no Yoshitada, `Izumo no
+Takatoki` matched *Fujiwara* no Takatoki — while others are 18-way ambiguity blobs. Only single
+unambiguous ids are carried and `geni_status` records which case each row is. Filling the rest is
+the agentic pass she asked for, and reaching for a name search is what produced the Minamoto and
+Fujiwara matches in the first place.
+
+The two queue items merge back into one, since the split has done its work: it is now a single
+roster with two emission halves.
