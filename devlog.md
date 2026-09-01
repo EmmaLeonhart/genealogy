@@ -23819,3 +23819,24 @@ spelling and leave `Private`/`<private>` alone until she rules.
 
 Not fixed in this tick: the safe 6,515 and the 94,231 come out of the same call, so wiring
 `strip_markers` into `derive-labels.py` without a screen would make her decision for her.
+
+## 2026-08-31 — sweep: nothing dead, and a queue table describing deleted files
+
+**51 sections before and after.** No section is complete, so nothing was deleted.
+
+**Cut back: § *THE LAST ITEM — the chains should be a SYSTEM*.** Its table was measured on
+2026-08-29 and had gone wrong in three ways since:
+
+- it lists `paths/bergitte-to-emma.tsv` and `paths/bureus-to-emma.tsv`, both **deleted on
+  2026-08-31** at her instruction after the `AskUserQuestion` about the legacy spine files;
+- it marks three files as *in `SPINE_PATHS`* when `SPINE_PATHS` has held exactly one since the
+  no-front rewrite — `arne-garborg-to-johannes-bureus-geni.tsv`;
+- it omits that one entirely, along with `caroline-signe-borsheim-hoknes.tsv`.
+
+Re-measured against the directory and the constant. The requirement itself is untouched and still
+undone: she wants the chains to be a **system** rather than files that happen to exist.
+
+**Checked and still genuinely open** — `scripts/build-qid-links-gedcom.py` still raises
+`FileNotFoundError: entity_resolution.md`, so both § *the QID-link GEDCOM* and § *Systematic
+review for legacy code* stay. That deletion was correct and its readers were never triaged;
+this is the fourth sweep in a row it has survived, which is itself worth noticing.

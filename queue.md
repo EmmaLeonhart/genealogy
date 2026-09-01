@@ -593,17 +593,21 @@ you should make it exist."* Filed at the tail by her own instruction — *"put a
 at the end of the queue, and then move on... it's not worth messing with the workflow and making
 it so that you get long-term distracted and don't do the queue work."*
 
-**What exists today, and in which direction.** Measured 2026-08-29; pairs bonded is from
-`reports/spine-bonds.tsv`.
+**What exists today.** Re-measured 2026-08-31; the 2026-08-29 table this replaces named two files
+that no longer exist and marked three as being in `SPINE_PATHS` when only one is.
 
-| file | runs | steps | pairs bonded | in `SPINE_PATHS`? |
-| --- | --- | ---: | ---: | --- |
-| `paths/charlemagne-to-arne-garborg.tsv` | Arne → Charlemagne | 34 | 29 of 33 | yes |
-| `paths/bergitte-to-emma.tsv` | Emma → Bergitte, walked reversed | 16 | 3 of 15 | yes |
-| `paths/bureus-to-emma.tsv` | Bureus → Emma | 16 | 3 of 15 | yes |
-| `paths/arne-to-bureus.tsv` | Arne → Johannes Jacobi Bureus | 19 | 5 of 18 | no |
-| `paths/arne-to-bureus-q633094.tsv` | Arne → **Johannes Tomasson** | 21 | 4 of 20 | no |
-| `paths/emma-to-bureus.tsv` | Emma → Bureus | 21 | 4 of 20 | no |
+| file | runs | in `SPINE_PATHS`? |
+| --- | --- | --- |
+| `paths/arne-garborg-to-johannes-bureus-geni.tsv` | Arne → Bureus, Geni's own in-law route | **yes, the only one** |
+| `paths/charlemagne-to-arne-garborg.tsv` | Arne → Charlemagne | no — legacy, kept as saved-page evidence |
+| `paths/arne-to-bureus.tsv` | Arne → Johannes Jacobi Bureus | no |
+| `paths/arne-to-bureus-q633094.tsv` | Arne → **Johannes Tomasson**, not Bureus | no |
+| `paths/emma-to-bureus.tsv` | Emma → Bureus | no |
+| `paths/caroline-signe-borsheim-hoknes.tsv` | | no |
+
+`paths/bergitte-to-emma.tsv` and `paths/bureus-to-emma.tsv` were **deleted on 2026-08-31** at her
+instruction, with `charlemagne-to-arne-garborg.tsv` kept because it came from a Geni page she
+saved and nothing here reproduces it. `SPINE_REVERSED` is empty.
 
 **The directions she named, which the files do not currently match:**
 
