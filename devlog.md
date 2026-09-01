@@ -24890,3 +24890,36 @@ seven-languages section has nothing open.
 CJK name; the number that matters is how many carry one **themselves**, and Han alone is 2,173 name
 rows. Both numbers describe the same people and neither was labelled, so the queue carried a
 measurement of the wrong thing for a fortnight.
+
+## 2026-09-01 — dead-queue sweep, sixth pass: § *Labels in seven languages* deleted
+
+**25 sections before, 24 after.**
+
+**Deleted: § *Labels in seven languages — the gate on all Wikidata editing*.** Every step in it is
+done and the evidence is on disk, not in memory:
+
+- `hi`, `ar`, `ru`, `el` — `scripts/build-four-script-labels.py`, **151,320 labels** over the
+  37,830 people carrying a QID. The section says so itself.
+- The `en` shortfall — the in-law half closed 2026-09-01; the 35,565 `surname`-only and 10,495
+  `bare` people **correctly get no `en`**, because a description needs a named relative.
+- Its last open row, the **1,539** — traced today and refiled into § *LABELS, IN HER ORDER*, where
+  the transcription step lives. They are not an `en` gap; they carry real names in Han (2,173 rows),
+  Cyrillic (359), Han+Latin (344), Hebrew (140) and six more scripts.
+
+**Nothing governing was lost, which is the only reason deleting is safe.** Two of her quotes lived
+*only* in that section, so they are now in `CLAUDE.md` as § *The label gate, and the order she set
+for it*: the gate itself — *"WE ARE NOT DOING THIS SHIT UNTIL WE HAVE JA and ZH LABELS ON
+EVERYTHING"* — and her ordering, *"create the relatives first, then label"*, with the reason it is
+not the obvious order. The culture problem, the three directions, and the name-items-first argument
+went with them.
+
+**And it was hiding a dangling pointer.** The section said the funnel's remainder was *"at the tail
+as § the tokens the transliteration funnel cannot read"* — **that section does not exist**, so the
+work was referenced and invisible. It is **8 tokens of 627**, now stated plainly in
+§ *LABELS, IN HER ORDER*: six are tokenisation debris (`""Inge""`, `"Ingebret`, `Garborg"`, `I,`,
+`Talgje,`, `Törnstjerna,`), one is a title (`Queen`), one is Cyrillic (`Карлов`). The fix is in the
+tokeniser rather than the engine.
+
+**Kept and checked:** § *The placeholder batch emits no `ko`* still greps **0**; the specifications
+stay by the rule; § *Keep merges-to-do current* moved to the tail on her instruction rather than
+being deleted, since it is a standing regeneration.

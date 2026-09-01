@@ -502,6 +502,30 @@ while she had already ruled on 2026-08-18 and both were sitting in `labels.py` w
 the comment. Asking again cost her a turn to answer something already implemented — the same
 shape as § *Emma not replying means she is content*, which is what that rule is for.
 
+### The label gate, and the order she set for it
+
+**Emma, in her own words:** *"WE ARE NOT DOING THIS SHIT UNTIL WE HAVE JA and ZH LABELS ON
+EVERYTHING THIS IS RIGHT BEFORE WIKIDATA EDITING."* Read with § *CJK INCLUDES KOREAN* below, the
+gate is **`ja` + `zh` + `ko`**.
+
+**Her order, and it is not the obvious one:** *"create the relatives first, then label."* So the
+structural placeholders are created, then the other creations, and only then the `set_labels`
+edits — each carrying the full set. Labelling first would mean labelling people whose relatives do
+not exist yet, and the NN descriptive labels are built *from* those relatives.
+
+**The three directions the labels are MADE in**, never copied: CJK → English (romanisation),
+English → CJK, and English → the four remaining scripts (`hi`, `ar`, `ru`, `el` —
+`scripts/build-four-script-labels.py`, 151,320 labels).
+
+**Name items first is what makes it tractable.** Transliterate a token once in its name item and
+every bearer inherits it: 140,764 distinct tokens across 396,377 people, of which the CJK part is
+30,876 Han, 1,552 Hangul, 92 kana.
+
+**And the one hard problem stays hard: which culture a CJK name is.** Han characters do not say
+whether a name is Chinese, Japanese or Korean — 陳 is *Chen*, *Chin* or *Jin*. Kana and Hangul are
+decisive; bare Han is not. **Do not guess from the name**; the tree settles it, via neighbours and
+which exports they came from.
+
 ### CJK INCLUDES KOREAN. `ko` ranks with `zh`, not with the leftovers
 
 **Emma, 2026-09-01:** *"korean is extremely important on par with Chinese and you really should

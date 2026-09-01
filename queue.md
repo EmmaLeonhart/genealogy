@@ -261,85 +261,6 @@ are the harness talking, not her. Found 2026-08-17.
 
 ---
 
-## Labels in seven languages — the gate on all Wikidata editing
-
-**Emma:** *"WE ARE NOT DOING THIS SHIT UNTIL WE HAVE JA and ZH LABELS ON
-EVERYTHING THIS IS RIGHT BEFORE WIKIDATA EDITING."*
-
-`en` · **`ja`** · **`zh`** · `hi` · `ar` · `ru` · `el` · plus `mul`. Japanese
-first, then Chinese, then the rest — Devanagari, Arabic, Cyrillic and Greek chosen
-for script coverage.
-
-**The labels are MADE, not copied.** Three directions: CJK → English
-(romanisation), English → CJK (katakana for anything not already Japanese), and
-English → the four remaining scripts.
-
-**Method — hand-built tables, except CJK → English.** Emma: *"from CJK to English
-do not remotely try to do any kind of programmatic transliteration because they
-all suck. But AI almost always knows Japanese to Romaji."* So romanising a kanji
-name is done **agentically, name by name**, and written into the repo as data.
-
-**Name items first, and that is what makes it tractable.** Transliterate a token
-once in its name item and every bearer inherits it. 140,764 distinct tokens across
-396,377 people; the CJK part is 30,876 Han, 1,552 Hangul, 92 kana.
-
-**The one hard problem: which culture a CJK name is.** Han characters do not say
-whether a name is Chinese, Japanese or Korean, and 陳 is *Chen*, *Chin* or *Jin*
-accordingly. Kana and Hangul are decisive; bare Han is not. **Do not guess from
-the name** — the tree settles it, via neighbours and which exports they came from.
-
-**Order, and why:** Emma — *"create the relatives first, then label."*
-
-1. Create the **11,001 structural placeholders**, each with the full label set.
-2. Then the other creations — the Samaritan line, the order.life tiers.
-3. Then the `set_labels` edits, every one carrying all seven + `mul`.
-
-**The placeholder half, rebuilt 2026-09-01 and four times the size it was.**
-`reports/wikidata-placeholder-labels.json` is **158,618** edits — `mul` on all, `en` on
-**137,528**, `ja`/`zh` on **44,130** — built as `<relative's name>の娘` once the token funnel was
-pointed at that population. What is left of it is at the tail as § *the tokens the
-transliteration funnel cannot read*.
-
-**`reports/label-gap.csv` is the census of who is left**, from `scripts/census-label-gap.py`,
-re-run 2026-09-01 **after** the redaction fix. Every one of the 156,738 people with no label, with
-what each can actually receive:
-
-| | count | |
-| --- | ---: | --- |
-| no surname, but a NAMED relative within two hops | **108,876** | 69.5% |
-| a surname surviving redaction → `NN Larsson` | **37,226** | 23.8% |
-| **neither — stays a bare `NN`** | **10,636** | **6.8%** |
-
-**93% is reachable.** 85,906 at one hop and **38,545 only at two**, which is Emma's *"it can work
-off of those long-range things"* paying for itself; 15,575 of the surname rows also have a named
-relative and take both halves.
-
-**The population grew 62,522 → 156,738 and that is the redaction fix, not a regression.** Those
-94,216 were previously "labelled" `<private> Garborg` and so counted as done. They now reach the
-NN algorithm, which is why the `en` batch went 25,930 → 104,856 edits in the same change.
-
-**What is left in her order.** `hi`, `ar`, `ru` and `el` are **done** —
-`scripts/build-four-script-labels.py`, 151,320 labels over the 37,830 people who carry a QID.
-
-**The `en` shortfall was 57,179 and the in-law half of it is CLOSED, 2026-09-01.** I framed it
-as arithmetic; measuring showed it needed relation words the table did not have; she ruled *add
-the in-law wording*; it is added. What remains:
-
-| | people | |
-| --- | ---: | --- |
-| census says **surname only** — no relative to describe them by | 35,565 | correctly get no `en` |
-| census says **bare** — neither | 10,495 | correctly get no `en` |
-| census finds a relative, batch emits nothing | **closed** | the preview now walks the spouse's parents and siblings |
-| not in the placeholder population at all (935 CJK-named) | 1,539 | a different job |
-
-**No `en` for the 35,565 is CORRECT and not a gap.** Her model puts the marker in `mul` and a
-*description* in the local languages; a description needs a named relative and these people have
-none. `NN Larsson` in `mul` with no `en` is the algorithm working, not failing.
-
-**Nothing is open here.** The 1,539 that sat in this row were traced on 2026-09-01 and they are
-not an `en` shortfall at all — they are non-Latin-named people who belong to the transcription
-step. They have moved to § *LABELS, IN HER ORDER*, where that step lives.
-
 ## The placeholder batch emits `ja` and `zh` and NO `ko`
 
 **It is the largest label producer in the repo** — `build-placeholder-label-batch.py`, 158,618
@@ -861,6 +782,15 @@ words. So the batches are `en` for everybody, then `mul` for everybody, then `ja
   陳 is *Chen*, *Chin* or *Jin*, and *"the tree settles it, via neighbours and which
   exports they came from"*, never the name. 806 Han-only among the structural
   placeholders alone; the corpus figure is larger and is what this step must count.
+
+- **8 tokens the transliteration funnel still cannot read**, of 627 needed. The section that
+  used to point at this said *"at the tail as § the tokens the transliteration funnel cannot
+  read"* — a section that does not exist, so the pointer dangled and the work was invisible.
+  Stated here instead. From the last full run they are `""Inge""`, `"Ingebret`, `Garborg"`, `I,`,
+  `Talgje,`, `Törnstjerna,`, `Queen`, `Карлов` — six are **tokenisation debris** (a stray quote or
+  a trailing comma carried into the token), one is a **title** rather than a name, and one is
+  Cyrillic. So the fix is mostly in the tokeniser, not the engine, and a token it cannot read is
+  correctly left out rather than guessed at.
 
 - **The 1,539 with no label and a named relative are HERE, not in the placeholder work.**
   Traced 2026-09-01. They are in `reports/label-gap.csv` with outcome `relative`, they are in
