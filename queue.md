@@ -1852,3 +1852,24 @@ evidence and it is recorded on the child's Geni profile, so the reference is `S2
 marks the value as inferred rather than recorded; **its value item is not chosen** and must not be
 guessed. `pq:P887` is used only single-digit times across Wikidata, so there is no convention to
 follow and the reference-position query times out; pick the item deliberately when this is built.
+
+## LAST — `AskUserQuestion` on the two patronymic decisions that are hers
+
+Her instruction, 2026-08-31: the standing NEEDS-DECISION pair goes to her as an
+`AskUserQuestion`, **as the last item in the queue**. Not before then — everything else runs
+without it, which is why it sits here rather than at the front.
+
+Two questions, one tool call each, with real options:
+
+- **The 179 patronymic tokens still genuinely ambiguous.** Down from 546 once sex and writing
+  system were applied; what is left is several items that are all male, all Latin, and all
+  plausibly the same name. This is § *One name item per USAGE* and hers. Default in force
+  meanwhile: skip them, emit the other 4,747.
+- **`P407` *language of work or name* on the patronymic items we create.** 59% of the 631
+  existing ones carry it, and nothing in a token supplies it — `Andersson` reads Swedish and
+  `Andersen` Danish-Norwegian by convention, not by rule. Default in force meanwhile: omit it,
+  because taking it from the export or the region is the geography inference `CLAUDE.md` forbids.
+
+**Both defaults are already live and neither blocks anything**, so this is a question about
+whether to do *more*, never a stall. Show her the actual candidate items, not a summary — the
+`Carl`/`Johan`/`Olof` lookup is what made the last one answerable in one line.

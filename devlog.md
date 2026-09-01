@@ -22917,3 +22917,20 @@ patronymic the skeleton misses because `h` survives as a consonant — `prs` aga
 `h` away wholesale is not safe (`Hans`, `Halvor`, `Haakon`), so it would have to be *`h` after
 another consonant*, and that gets the same measure-then-sample treatment. `Nils`/`Nicolaus` still
 needs a form table and no letter rule will reach it.
+
+## 2026-08-31 — the two patronymic decisions queued as an `AskUserQuestion`, at the tail
+
+Her instruction: the standing NEEDS-DECISION pair from the status report *"should be an
+AskUserQuestion but the last item in the queue."* So it is written down and **not asked** — §
+*"Add it to the end of the queue" means WRITE IT DOWN AND STOP*.
+
+The two are the 179 tokens still genuinely ambiguous after the sex/script filter, and whether
+`P407` *language of work or name* goes on the items we create. Both defaults are live and neither
+blocks anything: skip the 179 and emit the other 4,747; omit `P407` rather than infer a language
+from a token. So the question is whether to do more, never a stall — which is why the tail is the
+right place for it and the front would have been wrong.
+
+Noted in the item: show her the candidate items themselves. Looking up what actually separated
+`Carl`, `Johan` and `Olof` — sex and writing system — answered the previous version of this
+question in one line, where my summary of it had produced a four-option `AskUserQuestion` she
+rightly rejected.
