@@ -74,6 +74,10 @@ _CONS = {
     "b": "b", "c": "k", "d": "d", "f": "p", "g": "g", "h": "h", "j": "j",
     "k": "k", "l": "l", "m": "m", "n": "n", "p": "p", "q": "k", "r": "r_",
     "s": "s", "t": "t", "v": "b", "w": "w", "x": "ks", "y": "y", "z": "j",
+    "ç": "s", "ć": "ch", "č": "ch", "ď": "d", "ğ": "g", "ł": "l", "ń": "n",
+    "ñ": "n", "ň": "n", "ř": "l", "ś": "s", "š": "s", "ş": "s", "ť": "t",
+    "ż": "j", "ź": "j", "ž": "j", "ķ": "k", "ļ": "l", "ņ": "n", "ģ": "g",
+    "þ": "t", "ð": "d", "ß": "s",
     # Digraphs, longest first when matching.
     "ch": "ch", "sh": "s", "th": "t", "ph": "p", "kh": "k", "gh": "g",
     "ck": "k", "ng": "ng", "qu": "kw", "ts": "ch", "sch": "s", "sz": "s",
@@ -92,6 +96,13 @@ _VOW = {
     "í": "i", "ì": "i", "î": "i", "ï": "i",
     "ó": "o", "ò": "o", "ô": "o", "ö": "oe", "ø": "oe", "õ": "o",
     "ú": "u", "ù": "u", "û": "u", "ü": "wi", "ý": "i",
+    # Letters the first pass missed, found by reading the tokens that rendered as nothing.
+    "ã": "a", "ą": "a", "ā": "a", "ă": "a", "ǎ": "a",
+    "ē": "e", "ě": "e", "ę": "e", "ė": "e",
+    "ī": "i", "į": "i", "ı": "i",
+    "ō": "o", "ǫ": "o", "ő": "o", "œ": "oe",
+    "ū": "u", "ų": "u", "ů": "u", "ű": "wi",
+    "ÿ": "i", "ỳ": "i",
     # Digraphs.
     "ae": "ae", "oe": "oe", "ei": "ei", "ai": "ai", "au": "au", "ou": "u", "eo": "eo", "ea": "ea", "ie": "ie", "oa": "oa",
     "ee": "i", "oo": "u", "eu": "yu", "iu": "yu", "ua": "wa", "ue": "we", "ui": "wi", "uo": "wo",
@@ -115,7 +126,12 @@ _SPLIT_VOWEL = {"ei": ("e", "i"), "ai": ("a", "i"), "au": ("a", "u"),
 #: consonant closes the syllable -- `Karl` is 칼 -- while an `r` there opens its own
 #: with 으, per 외래어 표기법: `Arne` is 아르네, not 알네. Treating both as "l" gave the
 #: wrong one for every R in the corpus, which is most Norwegian surnames.
-_INITIAL_ALIAS = {"l": "r", "r_": "r"}
+_INITIAL_ALIAS = {"l": "r", "r_": "r",
+                  # `ng` can only CLOSE a Korean syllable, never open one -- the initial
+                  # slot for that letter is silent. Without this, a word whose `ng`
+                  # had no preceding vowel to attach to (`-Kalingga`) rendered as
+                  # nothing at all.
+                  "ng": ""}
 
 
 def _compose(initial, vowel, final=""):
@@ -149,9 +165,13 @@ def render_word(word):
     # Strip combining marks the tables do not name, but keep the precomposed Nordic letters,
     # which ARE named -- `CLAUDE.md`: a diacritic makes a different name and is not folded away.
     word = "".join(c for c in word if not unicodedata.combining(c))
-    if not all(c.isalpha() or c in "'-" for c in word):
+    # **Punctuation is dropped, not refused.** 716 of the 18,536 tokens in the shared table had
+    # no Korean reading and every one was Latin: `.Peder`, `A.B.D.`, `'Sans-Peur'`, `-Kalingga`.
+    # `ja` and `zh` render all of them, because their engine strips punctuation and this one
+    # rejected the whole token on it -- so the gap was never about Korean at all.
+    word = "".join(c for c in word if c.isalpha())
+    if not word:
         return ""
-    word = word.replace("'", "").replace("-", "")
     # **`chr` is a hard k followed by an r, not the `ch` digraph.** Mapping the cluster
     # to a single consonant swallowed the r and gave `Christina` -> 키스티나; rewriting it
     # to `kr` before tokenising gives 크리스티나. `Christian`, `Christoffer` and `Christen`
