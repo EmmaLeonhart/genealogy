@@ -4,38 +4,38 @@
 #   batch and be limited to a count of 15 labels added per batch". A label set
 #   at CREATION time is neither counted nor capped -- "a label added during item
 #   creation is good".
-#   902 more are held for a later run; a repeat is a no-op, so nothing is lost.
+#   1168 more are held for a later run; a repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
-#   set the ja label to "ニルス・ギルデンストルペ"
-Q5779125	Lja	"ニルス・ギルデンストルペ"
-#   set the zh label to "尼尔斯·吉尔登斯托尔佩"
-Q5779125	Lzh	"尼尔斯·吉尔登斯托尔佩"
-#   Q136028287 Anna Brita Carré: set the mul label to "Anna Brita Carré"
-Q136028287	Lmul	"Anna Brita Carré"
-#   Q16649517 Gerhard Jonæ: set the mul label to "Gerhardus Jonæ"
-Q16649517	Lmul	"Gerhardus Jonæ"
-#   add a mul alias "Gerhard Jonæ"
-Q16649517	Amul	"Gerhard Jonæ"
-#   Q110457049 Christina Elisabet Taube af Karlö: set the mul label to "baroness Kirsti Elisabet Taube, heiress of Luunja manor"
-Q110457049	Lmul	"baroness Kirsti Elisabet Taube, heiress of Luunja manor"
-#   add a mul alias "Christina Elisabet Taube af Karlö"
-Q110457049	Amul	"Christina Elisabet Taube af Karlö"
-#   Q12363134 Gustaf Adolf Strömfelt till Strömhult: set the mul label to "Gustav Adolf Strömfelt"
-Q12363134	Lmul	"Gustav Adolf Strömfelt"
-#   add a mul alias "Gustaf Adolf Strömfelt till Strömhult"
-Q12363134	Amul	"Gustaf Adolf Strömfelt till Strömhult"
-#   Q141200074 Rasmus Olsen Bø: add a mul alias "Rasmus Olsen Grøtheim"
-Q141200074	Amul	"Rasmus Olsen Grøtheim"
-#   set the ja label to "ラスムス・オルセン・ベー"
-Q141200074	Lja	"ラスムス・オルセン・ベー"
-#   set the zh label to "拉斯穆斯·奥尔森·鲍伊"
-Q141200074	Lzh	"拉斯穆斯·奥尔森·鲍伊"
-#   Q141189088 Ola Knutsen Grøtheim: add a mul alias "Ola Knutsen Garborg"
-Q141189088	Amul	"Ola Knutsen Garborg"
-#   set the ja label to "オーラ・クヌートセン・グレートヘイム"
-Q141189088	Lja	"オーラ・クヌートセン・グレートヘイム"
-#   set the zh label to "奥拉·克努特森·格勒特海姆"
-Q141189088	Lzh	"奥拉·克努特森·格勒特海姆"
+#   set the ja label to "エナル・ノルデンフェルト"
+Q6014618	Lja	"エナル・ノルデンフェルト"
+#   set the zh label to "埃纳尔·诺尔登费尔特"
+Q6014618	Lzh	"埃纳尔·诺尔登费尔特"
+#   set the ja label to "ロザラ・オフ・イタリ"
+Q466257	Lja	"ロザラ・オフ・イタリ"
+#   set the zh label to "罗扎拉·奥夫·伊塔利"
+Q466257	Lzh	"罗扎拉·奥夫·伊塔利"
+#   set the ja label to "ジュディス・オフ・フランダース・コウンテス・オフ・ノルトムブリア"
+Q273181	Lja	"ジュディス・オフ・フランダース・コウンテス・オフ・ノルトムブリア"
+#   set the zh label to "朱迪斯·奥夫·夫兰德尔斯·科温特斯·奥夫·诺尔图姆布里阿"
+Q273181	Lzh	"朱迪斯·奥夫·夫兰德尔斯·科温特斯·奥夫·诺尔图姆布里阿"
+#   set the ja label to "ベネディクタ・エッベスドッテル・オフ・ヴィーデ"
+Q2183430	Lja	"ベネディクタ・エッベスドッテル・オフ・ヴィーデ"
+#   set the zh label to "贝内迪克塔·埃贝斯多特·奥夫·维德"
+Q2183430	Lzh	"贝内迪克塔·埃贝斯多特·奥夫·维德"
+#   Q141224907 Segrid NN: set the ja label to "モテル・オフ・マリン・オロフスドッテル"
+Q141224907	Lja	"モテル・オフ・マリン・オロフスドッテル"
+#   set the zh label to "莫特尔·奥夫·马林·奥洛夫斯多特"
+Q141224907	Lzh	"莫特尔·奥夫·马林·奥洛夫斯多特"
+#   Q141223426 Isak Reinhold Sahlberg: set the ja label to "イサク・ラインホルト・サルベルグ"
+Q141223426	Lja	"イサク・ラインホルト・サルベルグ"
+#   set the zh label to "伊萨克·赖因霍尔德·萨尔贝尔格"
+Q141223426	Lzh	"伊萨克·赖因霍尔德·萨尔贝尔格"
+#   Q2361145 Carl Reinhold Sahlberg: set the ja label to "カール・ラインホルト・サルベルグ"
+Q2361145	Lja	"カール・ラインホルト・サルベルグ"
+#   set the zh label to "卡尔·赖因霍尔德·萨尔贝尔格"
+Q2361145	Lzh	"卡尔·赖因霍尔德·萨尔贝尔格"
+#   set the ja label to "カール・ルズヴィ・ヘデンベルグ"
+Q141244087	Lja	"カール・ルズヴィ・ヘデンベルグ"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
@@ -288,6 +288,37 @@ LAST	P40	Q5725105	S2600	"6000000002734687344"
 Q5725186	P26	LAST	S2600	"6000000002734687344"
 #   Q5725105 Eric Michael Fant: P25 mother = the item just created
 Q5725105	P25	LAST	S2600	"6000000002734687344"
+#   the item just created: P735 given name = Q1083457 Christina
+LAST	P735	Q1083457
+
+# create a new item
+CREATE
+#   set the en label to "Christina Juslenius"
+LAST	Len	"Christina Juslenius"
+#   set the mul label to "Christina Juslenius"
+LAST	Lmul	"Christina Juslenius"
+#   set the ja label to "クリスティーナ・ユスレニウス"
+LAST	Lja	"クリスティーナ・ユスレニウス"
+#   set the zh label to "克里斯蒂娜·尤斯莱尼乌斯"
+LAST	Lzh	"克里斯蒂娜·尤斯莱尼乌斯"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581072 female
+LAST	P21	Q6581072
+#   P2600 Geni.com profile ID = 6000000002254696782 Christina Juslenius, qualified P1810 subject named as Christina Juslenius
+LAST	P2600	"6000000002254696782"	P1810	"Christina Juslenius"
+#   P569 date of birth = +1713-00-00T00:00:00Z/9, qualified P1480 sourcing circumstances Q5727902 circa
+LAST	P569	+1713-00-00T00:00:00Z/9	P1480	Q5727902	S2600	"6000000002254696782"
+#   P570 date of death = +1787-01-22T00:00:00Z/11
+LAST	P570	+1787-01-22T00:00:00Z/11	S2600	"6000000002254696782"
+#   P26 spouse = Q73763454 Sigfrid Porthan
+LAST	P26	Q73763454	S2600	"6000000002254696782"
+#   P40 child = Q333651 Henrik Gabriel Porthan
+LAST	P40	Q333651	S2600	"6000000002254696782"
+#   Q73763454 Sigfrid Porthan: P26 spouse = the item just created
+Q73763454	P26	LAST	S2600	"6000000002254696782"
+#   Q333651 Henrik Gabriel Porthan: P25 mother = the item just created
+Q333651	P25	LAST	S2600	"6000000002254696782"
 #   the item just created: P735 given name = Q1083457 Christina
 LAST	P735	Q1083457
 

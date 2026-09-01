@@ -900,6 +900,33 @@ def _has_given_name(fields):
     return any(t for t in givn.split() if t.casefold().strip(".,") not in markers)
 
 
+#: Tokens this run rendered on the fly, flushed to the shared table at the end. See the funnel
+#: note in `label_in`.
+MINTED_TOKENS = {}
+
+
+def _render_token(token):
+    """`(ja, zh)` for a token nothing has read yet, or `(None, None)`.
+
+    Her standard is what makes an on-the-fly rendering acceptable: *"Incorrect romanization or
+    incorrect representations in katakana are totally acceptable. An incorrect name is not,
+    because half these words, nobody knows how they're pronounced anyway."* A rendering that a
+    native reader would spell differently is fine; dropping the label entirely is what the funnel
+    exists to stop.
+
+    `translit_no` is the engine, the same one `extend-transliterations.py` uses, so a token
+    rendered here and a token rendered by the batch step come out identical.
+    """
+    if not token or not any(c.isalpha() for c in token):
+        return None, None
+    try:
+        from translit_no import translit
+        ja, zh = translit(token)
+    except Exception:                                               # noqa: BLE001
+        return None, None
+    return (ja, zh) if ja and zh else (None, None)
+
+
 def label_in(label, table):
     """(ja, zh) for a whole name, or (None, None) if any token is unknown.
 
@@ -935,9 +962,29 @@ def label_in(label, table):
     # carries punctuation still reads as it does.
     ja, zh = [], []
     for token, _usage, _o in classify(label):
-        a, b = transliterate_token(token.strip(",;:"), table)
+        clean = token.strip(",;:")
+        a, b = transliterate_token(clean, table)
         if a is None:
-            return None, None
+            # **THE FUNNEL, at the call rather than only in the pipeline.** Emma, 2026-08-29:
+            # *"If anything even remotely wants to generate without having katakana or Chinese
+            # characters, it goes through this thing and then adds the token to the library, and
+            # then continues on."*
+            #
+            # It was wired as STEP 0d of `build-daily-batch.py`, which fills the table before
+            # anything composes -- and that covers the pipeline and **not the builder**. Running
+            # `build-garborg-day.py --compose` directly, which happens constantly, skipped it
+            # entirely, so the guarantee held only when somebody used the wrapper. That is the
+            # same *"the pieces existed and nothing called them"* shape the funnel was written
+            # against, one layer up.
+            #
+            # A rendered token is cached in `table` for the rest of the run and collected in
+            # `MINTED_TOKENS`, which `main` appends to the shared file at the end. Writing
+            # per-token would interleave writes into a file other scripts read.
+            a, b = _render_token(clean)
+            if a is None:
+                return None, None
+            table[clean] = (a, b)
+            MINTED_TOKENS[clean] = (a, b)
         ja.append(a)
         zh.append(b)
     return "・".join(ja), "·".join(zh)
@@ -6062,6 +6109,25 @@ def main():
         w.writerow(["geni_id", "label", "why"])
         w.writerows(carried)
     print(f"wrote {cf.relative_to(ROOT)}: {len(carried)} carried to a later day")
+
+    # **Flush what the funnel rendered on the fly.** A token minted inside `label_in` must
+    # reach the shared table, or the next run re-derives it and a hand correction to it is
+    # silently overwritten by the rule. Appended once, at the end, because writing per-token
+    # would interleave into a file other scripts read while they read it.
+    if MINTED_TOKENS:
+        tpath = ROOT / "reports" / "garborg-name-transliterations.tsv"
+        known = set()
+        if tpath.exists():
+            with open(tpath, encoding="utf-8") as fh:
+                known = {r["token"] for r in csv.DictReader(fh, delimiter="\t")}
+        fresh = {t: v for t, v in MINTED_TOKENS.items() if t not in known}
+        if fresh:
+            with open(tpath, "a", encoding="utf-8", newline="") as fh:
+                w = csv.writer(fh, delimiter="\t", lineterminator="\n")
+                for t, (ja, zh) in sorted(fresh.items()):
+                    w.writerow([t, ja, zh, "by rule, minted during the run"])
+        print(f"funnel: {len(MINTED_TOKENS)} tokens rendered on the fly, "
+              f"{len(fresh)} new to the table")
     for g, label, why in carried[:10]:
         print(f"  {g}  {label[:40]:<40} {why}")
 

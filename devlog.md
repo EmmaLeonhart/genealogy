@@ -23998,3 +23998,37 @@ it does not have.
 
 The shipped form asserts less than it knows rather than more, which is the safe direction and a
 strict improvement on the bare value it replaced.
+
+## 2026-09-01 — the CJK funnel fires from `label_in`, not just from the wrapper
+
+Her design, 2026-08-29: *"If anything even remotely wants to generate without having katakana or
+Chinese characters, it goes through this thing and then adds the token to the library, and then
+continues on."*
+
+**It was wired as STEP 0d of `build-daily-batch.py`, which covers the pipeline and not the
+builder.** Running `build-garborg-day.py --compose` directly — which happens constantly, including
+a dozen times today — skipped the funnel entirely, so the guarantee held only when somebody used
+the wrapper. That is the *"the pieces existed and nothing called them"* shape the funnel was
+written against, one layer up.
+
+`label_in` now renders an unknown token on the spot through `translit_no` — the same engine
+`extend-transliterations.py` uses, so a token minted here and one minted by the batch step come
+out identical — caches it for the rest of the run, and `main` appends the new ones to
+`reports/garborg-name-transliterations.tsv` once at the end. Per-token writing would interleave
+into a file other scripts read while they read it.
+
+**First run: 123 tokens rendered on the fly**, table **18,410 → 18,533**, and creations **24 →
+25** — one more person clears the `ja`/`zh` gate. All 25 `CREATE` blocks carry both labels;
+300 pass on the two batch modules.
+
+    Alenius   アレニウス      阿莱尼乌斯        Bjelbo    ブイェルボ    布耶尔博
+    Alstrin   アルストリン    阿尔斯特林        Boström   ボストロム    博斯特罗姆
+
+Her standard is what makes on-the-fly rendering acceptable at all: *"incorrect romanization or
+incorrect representations in katakana are totally acceptable. An incorrect name is not."*
+
+**Two mistakes of mine while doing it, both from heredoc escaping**, and one damaged an unrelated
+function 5,470 lines away — a `csv.writer` line lost its `\t` and `\n` and took an `if fresh:`
+guard with it. Caught by parsing the file rather than by running it, and repaired against `HEAD`.
+The lesson is the one `CLAUDE.md` already records for Windows: use the editing tools for anything
+with an escape in it.
