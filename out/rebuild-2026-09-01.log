@@ -1,2 +1,166 @@
 
 === [1/11] merge the corpus ===
+wrote C:\Users\Emma\Documents\GitHub\geni\out\merged.ged: 630050 FAM, 1451964 INDI, 59744 NOTE, 51106 SUBM
+4718 conflicts -> C:\Users\Emma\Documents\GitHub\geni\out\merge-report.md
+78 separate trees, not one: 1451887, 1, 1, 1, 1, and 73 more people. Nothing is wrong with the merge — components do not conflict, they just never meet. Each one needs its own export seed to grow.
+--- merge the corpus: 1264s
+
+=== [2/11] display names ===
+reading the merged GEDCOM
+1,451,964 people, 1,856,150 NAME records
+518,806 unambiguous Geni->Wikidata links
+43,680 of our people carry an item; reading their labels
+42,722 items found in the store
+wrote C:\Users\Emma\Documents\GitHub\geni\reports\display-names.csv — 1,856,150 rows, 201.3 MB
+--- display names: 247s
+
+=== [3/11] derived labels ===
+1,451,964 people
+wrote C:\Users\Emma\Documents\GitHub\geni\reports\derived-labels.csv (1,451,964 rows)
+wrote C:\Users\Emma\Documents\GitHub\geni\reports\labels.md
+
+  1,371,108  Latin only
+    44,029  CJK only — needs translation for en
+    22,640  no usable name at all
+     7,927  mixed-script only — no clean Latin label
+     3,837  other script only — needs translation for en
+     2,423  Latin and CJK
+
+  270,786 people gain an alias from a married name
+  11,155 of 40,898 derived labels match Wikidata's exactly
+--- derived labels: 46s
+
+=== [4/11] derived family ===
+reading C:\Users\Emma\Documents\GitHub\geni\out\merged.ged
+1,451,964 people, 630,050 families
+wrote C:\Users\Emma\Documents\GitHub\geni\reports\derived-family.csv (1,451,964 rows)
+wrote C:\Users\Emma\Documents\GitHub\geni\reports\invented-parents.csv (1,688 rows, 844 families)
+
+  father recorded  1,117,734
+  mother recorded  1,039,191
+  spouse recorded   662,735
+  children          608,472
+
+family shapes:
+   282,757  children, both parents
+   154,220  one spouse alone
+    84,603  couple, no children
+    71,952  children, father only
+    18,126  one child, no parent recorded
+    17,548  children, mother only
+       844  children, no parent recorded
+--- derived family: 38s
+
+=== [5/11] derived facts ===
+518,806 unambiguous Geni->Wikidata links
+reading C:\Users\Emma\Documents\GitHub\geni\out\merged.ged
+wrote C:\Users\Emma\Documents\GitHub\geni\reports\derived-facts.csv (1,451,964 rows)
+wrote C:\Users\Emma\Documents\GitHub\geni\reports\facts.md
+
+  sex 1,444,974   occupation 185,464
+  birth    date 1,011,055   place 378,013
+  death    date 809,089   place 264,362
+  burial   date 103,991   place  99,329
+  793,992 events have an ADDR block and no PLAC
+  30 unreadable date values
+--- derived facts: 64s
+
+=== [6/11] relationship label preview ===
+names trimmed of brackets, dates and leading numbers: 12,437
+Wikidata's own English label used for 231 linked people
+romanised Han names used as a name for 5,646 people with no label
+158,618 placeholder people
+  bare NN:      151,303, label generable for 131,561
+  NN + surname: 7,315, label generable for 5,969
+wrote C:\Users\Emma\Documents\GitHub\geni\reports\relationship-label-preview.csv and C:\Users\Emma\Documents\GitHub\geni\reports\relationship-label-preview.md
+--- relationship label preview: 35s
+
+=== [7/11] placeholder labels ===
+18,536 tokens in the transliteration table
+158,618 people carry a placeholder given name
+wrote C:\Users\Emma\Documents\GitHub\geni\reports\wikidata-placeholder-labels.json (158,618 set_labels edits)
+
+  151,303  bare NN
+  137,530  with an en label
+   44,221  ja and zh built from the relative's name
+   21,088  mul only
+    7,315  NN + surname
+
+  114,397  still need a ja label - queue item 9
+  114,397  still need a zh label - queue item 9
+--- placeholder labels: 2s
+
+=== [8/11] en labels ===
+individuals with no English label: 156738 (29761 of them written in CJK)
+  en now available for 104856; still short 51882
+    relationship label               98979
+    romanised from zh                5459
+    wikidata's own English label     231
+    romanised from ja                187
+--- en labels: 4s
+
+=== [9/11] mul labels ===
+step 1 edits: 104856
+  mul mirrored: 5877; left alone: 98979
+    left alone: relationship label           98979
+--- mul labels: 0s
+
+=== [10/11] pack the big CSVs ===
+packing:
+  reports/display-names.csv: 201.3 MiB -> 44.3 MiB  (4.5x)
+  reports/derived-facts.csv: 194.3 MiB -> 48.0 MiB  (4.0x)
+  reports/derived-family.csv: 182.8 MiB -> 33.2 MiB  (5.5x)
+  reports/derived-labels.csv: 117.1 MiB -> 28.2 MiB  (4.2x)
+  reports/wikidata-placeholder-labels.json: 72.8 MiB -> 5.4 MiB  (13.4x)
+  reports/wikidata-four-script-labels.json: 60.7 MiB -> 4.5 MiB  (13.5x)
+--- pack the big CSVs: 28s
+
+=== [11/11] the QuickStatements batch ===
+1041 rows in reports\garborg-qids.tsv
+9,032 labels over 1041 items -> reports\garborg-live-labels.tsv
+518,855 Geni ids already carry a P2600 somewhere on Wikidata
+1041 people already carry a QID; 18536 tokens transliterated
+4505 people one edge away and not yet on Wikidata
+contiguous group from Arne Q11959067 and Bureus Q633094, through her own items: 1028 items; 1028 of 1041 ledger people seed
+
+composition, per docs/batch-rules.md:
+   1. spine arne-garborg-to-johannes-bureus-geni step 11: Fredrika Ulrika Eleonora von Braunjohan
+   1. spine arne-garborg-to-johannes-bureus-geni step 12: Carl Rutger von Braunjohan
+   1. spine arne-garborg-to-johannes-bureus-geni step 13: Sara Carlberg
+   2. 9/10 children, one per person
+   3. 1 spouses instead, where the marriage had no child left to add
+   4. 10/10 parents, one per person
+   5. 52 free parents of 95 eligible (10 free + half the remaining = 52), outside the cap
+composed batch: 81 people to create (the unrestricted ring would have been 4505)
+38 dropped: Wikidata already carries a P2600 for them
+735,609 items with a P40 child list, for the duplicate guard
+910,282 items with a P22/P25 parent, for the rival-parent guard (893,134 with a father, 630,514 with a mother, for the single-value guard)
+duplicate guard held 7 people (0 whose parent has an unmatched child item, 7 whose child already names a parent item)
+20 statements added to existing items
+871 statements dropped: the item already holds them
+excluded ids: 18 statement line(s) dropped (6000000019459854230, 6000000087535357291, 6000000227335008051, 6000000227335094894, 6000000227335131944, 6000000227335155963, 6000000227335224861, 6000000227335233864, 6000000227335299879, 6000000227335301867, 6000000227335324856, 6000000227335337887, 6000000227335339873, 6000000227335344839, 6000000227335360837, 6000000227335365856, 6000000227335365861, 6000000227335366839, 6000000227335376843, 6000000227335378827, 6000000227335393824, 6000000227335397826, 6000000227335402830, 6000000227335430822, 6000000227335430827, Q10940685, Q11078587, Q11443857, Q11596350, Q12598947, Q135579416, Q135579421, Q135579425, Q135579447, Q135579457, Q135579466, Q135579475, Q135579485, Q135579488, Q135579492, Q135579497, Q135579502, Q135579503, Q135579506, Q135579509, Q135579512, Q135579513, Q135579514, Q135579516, Q135579517, Q140568870, Q141198548, Q19657284, Q232803, Q24890131) — never emitted, in any position
+OBender12 hold: 114 statement line(s) dropped across 2,993 held items — expires 2026-09-30
+single-value guard: 3 P22/P25 line(s) dropped -- the item already has one, and a second trips the constraint
+   Q141219057 P25 -> Q141199706; already has Q141199819
+   Q5542632 P25 -> Q109829800; already has Q5542628
+   Q4953277 P25 -> Q141223439; already has Q5797554
+   recorded in reports\single-value-drops.tsv
+CJK clan labels suppressed until 2026-10-01 (her ruling, 2026-08-29)
+label edits on existing items: 15 emitted, 2085 held for a later batch (cap 15); 1,290 already done in earlier batches
+prepended 25 name-item lines
+wrote reports\wikidata-garborg-day.qs: 28 creations, 20 links
+wrote reports\garborg-carry-forward.tsv: 1088 carried to a later day
+  6000000006127699393                                           Wikidata already links this profile as Q111189926 (out/wikidata/p2600-all.tsv) - creating it would duplicate
+  4198655                                           Wikidata already links this profile as Q6014635 (out/wikidata/p2600-all.tsv) - creating it would duplicate
+  6000000001994770966                                           Wikidata already links this profile as Q116760927 (out/wikidata/p2600-all.tsv) - creating it would duplicate
+  6000000019853536785                                           Wikidata already links this profile as Q5488598 (out/wikidata/p2600-all.tsv) - creating it would duplicate
+  6000000008457153431                                           Wikidata already links this profile as Q110151671 (out/wikidata/p2600-all.tsv) - creating it would duplicate
+  6000000006590181779                                           Wikidata already links this profile as Q98180296 (out/wikidata/p2600-all.tsv) - creating it would duplicate
+  6000000000047166315                                           Wikidata already links this profile as Q109942711 (out/wikidata/p2600-all.tsv) - creating it would duplicate
+  6000000006127529341                                           Wikidata already links this profile as Q110304547 (out/wikidata/p2600-all.tsv) - creating it would duplicate
+  6000000012898629870                                           Wikidata already links this profile as Q792450 (out/wikidata/p2600-all.tsv) - creating it would duplicate
+  6000000008649471741                                           Wikidata already links this profile as Q5584485 (out/wikidata/p2600-all.tsv) - creating it would duplicate
+--- the QuickStatements batch: 360s
+
+all 11 steps done in 34.8 min
+batch is at reports/wikidata-garborg-day.qs
