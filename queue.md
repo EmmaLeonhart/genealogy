@@ -109,7 +109,7 @@ fathers patronymics imply — *"postpone for a month lol"***.
 | name items | **invert the default now** — *"I thought we reused name objects by default lol. The only hard situation is patronymics"* |
 | `Sara /NN/` and the `Garborg` override | do both; the override of her hand-edit is the serious one |
 | how many Geni labels need changing | run the census |
-| CJK | **`ko` is CJK and ranks with `zh`** — *"on par with Chinese... prioritize getting korean labels all the time"*. `ko` by rule, `P1814` kana agentically |
+| CJK | `ko` **DONE**. `P1814` kana has an **empty population** — no correctly-identified Japanese person has an item; see `reports/culture-classifier-check.md` |
 | NN birth-name alias | fix it |
 | unreadable transliteration tokens | read them agentically |
 | the 218 scripts | **sweep and delete** |
@@ -162,6 +162,28 @@ So three things, and none of them touches a person's data:
 
 **The repo is public as of 2026-09-01** — *"The repo is public now lol"* — so Actions minutes are
 free and `CLAUDE.md` § *Cost* no longer binds.
+
+## The CJK culture classifier leaks across marriages — a veto is available
+
+`reports/culture-classifier-check.md`, 2026-09-01.
+
+**Both `ja`-classified people who have a Wikidata item are misclassified** — `Q77895` is Aisin
+Gioro, the Manchu Qing house, and `Q10511648` is the Xiao of Lanling. Both reached by
+`graph traversal, 2 hop(s)`. The traversal is the right method (`CLAUDE.md`: do not guess culture
+from the name, the tree settles it) but it runs to **eight hops**, and two is enough to cross a
+marriage into another culture.
+
+**The `zh` side is 93%** — 109 of 117 checkable romanisations appear in the person's own Wikidata
+`en` label — and its errors are the same leak in reverse: `榮` romanised *Ei*, the Japanese
+reading, for a person the classifier itself calls Chinese.
+
+**The fix that needs no threshold:** three of the eight `zh` mismatches carry a Chinese clan seat
+**on the person** — `鄭州榮澤`, `扶風平陵`, `京兆長安`. That is recorded data and is stronger than a
+two-hop walk. Letting the seat veto a Japanese classification costs nothing and invents nothing.
+Shortening the hop count is the other option and is worse, because a long chain inside one
+genuinely Japanese family is exactly what the traversal is for.
+
+**Her call**, because it changes 13,636 romanisations and the `ja`/`zh` split feeds the CJK labels.
 
 ## FOR 2026-09-02 — the two removals, and one question I would not answer alone
 
