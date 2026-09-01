@@ -58,6 +58,7 @@ sys.stdout.reconfigure(encoding="utf-8")
 
 from namemodel import (  # noqa: E402
     PATRONYMIC_CLASS, classify_fields, load_plan, statements_for, store_name_item)
+from live_name_items import existing_item as live_existing_item  # noqa: E402
 from qscomment import annotate  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -190,6 +191,7 @@ def main():
     need = collections.Counter()
     ambiguous = collections.Counter()
     linked = collections.Counter()
+    live_rescues = []
     for person in fields.values():
         for token, usage, _ordinal in classify_fields(**person):
             # A nickname is monolingual text on the person's own item, so it needs no
@@ -216,6 +218,24 @@ def main():
                 qid = store_name_item(token, usage)
                 if qid:
                     action = "link (already on Wikidata)"
+            # **Then ask Wikidata LIVE, because both offline sources are snapshots.** Emma,
+            # 2026-09-01: *"I thought we reused name objects by default lol... Fuck you for
+            # defaulting to the dangerous one lol."*
+            #
+            # `store_name_item` reads the offline download plus the 18-row
+            # `created-name-items.tsv`. An item created since the download is invisible to
+            # both, and `CREATE` never checks -- it mints a new one every time. Measured live
+            # on 2026-09-01 against the three tokens this batch was about to create: `Voster`
+            # was already `Q141244184`, `Olofsson` already `Q23645132`, and `Jonsson` already
+            # existed THREE times. The batch would have made a fourth.
+            #
+            # Only an exact label match with the right `P31`, and SEVERAL qualifying items
+            # means no answer -- that ambiguity is § *One name item per USAGE* and is hers.
+            if not qid:
+                qid = live_existing_item(token, usage)
+                if qid:
+                    action = "link (found live on Wikidata)"
+                    live_rescues.append((token, usage, qid))
             if qid:
                 linked[(token, usage)] += 1
             elif "AMBIG" in action.upper():
@@ -225,6 +245,11 @@ def main():
 
     print(f"{len(linked)} tokens already have an item and are linked, not created")
     print(f"{len(need)} need creating, {len(ambiguous)} are ambiguous and are not")
+    if live_rescues:
+        print(f"{len(live_rescues)} token(s) RESCUED by the live check -- these would "
+              f"have been created a second time:")
+        for token, usage, qid in live_rescues:
+            print(f"   {token:<20} {usage:<12} already {qid}")
 
     lines = [
         "# Name items the Garborg batches need, AND the statements that use them.",
