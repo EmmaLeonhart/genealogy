@@ -22934,3 +22934,31 @@ Noted in the item: show her the candidate items themselves. Looking up what actu
 `Carl`, `Johan` and `Olof` — sex and writing system — answered the previous version of this
 question in one line, where my summary of it had produced a four-option `AskUserQuestion` she
 rightly rejected.
+
+## 2026-08-31 — the inner `h` folded, measured and sampled first
+
+Second half of the residue item. `h` now counts only in first position, so `Pehr` and `Per` are
+one name — and `Hans`, `Halvor`, `Haakon` keep theirs, because there it is a real consonant and
+dropping it would collide every H-name with its vowel-initial neighbours.
+
+**Measured before applying, not after: 1,705 tokens rescued, and 14 of 14 sampled are genuine.**
+
+    Persson        father Pehr Johansson Lillkåla     Pehr / Per
+    Pehrsdotter    father Per Hansson Frans           the same pair, written the other way
+    Joannesdatter  father Johannes Pedersen Øygrei    Joannes / Johannes
+    Tholsson       father Tohl Bengtsson              Tohl / Thol
+    Brynhildsen    father Brynild Larson Gjøsten      Brynhild / Brynild
+    Jensen         father Johannes Erlandsen Galen    Jens is the Danish form of Johannes
+
+The guards hold: `Hansdatter` with father `Heinrich` is still family (`hns` against `hnrk`), and
+`Andersson` with `Antti` still family. **24/24 on the hand-read sample**, which now carries four
+`h` cases and two guards it did not have this morning.
+
+**Effect:** unambiguous `P144` targets **4,747 → 4,782**, people whose father has an item
+**8,345 → 8,380**, resolving **5,289 → 5,316**, still-ambiguous tokens **179 → 175**.
+
+**What is left is not a spelling problem and the item now says so.** `Nils` is a *form* of
+`Nicolaus`, not a spelling — `nls` against `nkls`, and no fold that joins those leaves anything
+else apart. `Lars`/`Laurentius` and `Ola`/`Olaus` are the same shape. That needs a short table of
+Scandinavian given-name forms, built by reading Latinate fathers against vernacular patronymics in
+our own corpus rather than invented.

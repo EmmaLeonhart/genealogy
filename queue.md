@@ -53,20 +53,22 @@ counts are not stale when she next sits down to it.
 **The merges themselves are hers now, not mine** — that is what the file is for. The Izumo
 three are cleared and the browser pass is closed.
 
-## Patronymic residue: the silent `h`, and `Nils`/`Nicolaus`
+## Patronymic residue: `Nils`/`Nicolaus` needs a form table, not a letter rule
 
-`d`/`t` is folded and measured (2026-08-31). What is left is smaller and named:
+The letter-level folds are done and measured — `d`/`t` and the inner `h`, each sampled by hand
+before it shipped. What is left cannot be reached by any spelling rule:
 
-- **A silent `h` inside a name.** `Persdotter` with father `Pehr Eriksson` is a genuine patronymic
-  the skeleton misses, because `h` survives as a consonant: `prs` against `phr`. `Pehr`/`Per`,
-  `Thore`/`Tore` and the like are one name. Folding `h` away is not obviously safe — it is a real
-  consonant in `Hans`, `Halvor`, `Haakon` — so the fold would have to be **`h` after another
-  consonant**, and that needs the same measure-then-apply treatment `d`/`t` got.
-- **`Nilsson` with father `Nicolaus`.** `Nils` is a form of `Nicolaus`, which no letter rule
-  reaches. A short table of Scandinavian given-name forms would; nothing else will.
+- **`Nilsson` with father `Nicolaus`.** `Nils` is a *form* of `Nicolaus`, not a spelling of it;
+  the skeletons are `nls` and `nkls` and no fold that joins them leaves anything else apart.
+  Same shape: `Lars`/`Laurentius`, `Ola`/`Olaus`, `Jon`/`Johannes` where the vowel run differs
+  too much.
+- **What would work is a short table** of Scandinavian given-name forms — the Latin church form
+  against the vernacular. It is data, not an algorithm, and it should be built from the corpus:
+  take fathers whose given name is Latinate and whose children carry a vernacular patronymic, and
+  read off the pairs rather than inventing them.
 
-Measure before folding, and sample the rescues by hand — that is what caught `d`/`t` being safe
-and would have caught it being unsafe.
+Measure first and sample the rescues by hand. That is what showed `d`/`t` was safe, showed the
+inner `h` was safe, and is the only reason either shipped.
 
 ## ⛔ THE DAILY ALGORITHM — her full spec, 2026-08-26. SPECIFICATION, not a step
 
