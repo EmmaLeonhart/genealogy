@@ -23433,3 +23433,31 @@ and `geni-about-me` (405) is the only one that names people no inference reaches
 justified 3 rose 3.9% → 27.1% and was a **coverage artefact** — the share of pairs with a birth
 year on both sides falls 65% → 20% with depth, so the curve tracked the instrument. Measured on
 `P21` *sex or gender*, 86–100% coverage throughout, the real rise is 2.8% → 4.8%.
+
+## 2026-08-31 — sweep: the CJK funnel cut back to the half that is not done
+
+**47 sections before and after.** Nothing was fully dead; one section cut back.
+
+**§ *LAST — a comprehensive CJK fallback*.** Most of it is done: `extend-transliterations.py` runs
+as STEP 0d of `build-daily-batch.py`, the table is 4,054 tokens, and the `ja`/`zh` gate refuses
+**0** where it refused 7 before the wiring.
+
+**What is not done is precise and worth keeping.** All four `label_in()` callers are in
+`build-garborg-day.py`, and running that directly — `--compose`, which has happened many times
+today — skips STEP 0d. So the guarantee holds for the pipeline and not for the builder. Her
+wording is about the *call*: *"If anything even remotely wants to generate without having katakana
+... it goes through this thing and then adds the token to the library, and then continues on."*
+A pre-step is not that, and the difference is exactly the *"the pieces existed and nothing called
+them"* failure the funnel was written against.
+
+**Also recorded: `pykakasi` is installed.** She sanctioned an external dependency for this
+specifically — *"probably using external libraries for doing katakana, so that it is very
+consistent"* — and it is sitting unused while `translit_no` does the work by hand. Worth comparing
+before choosing.
+
+**One thing to flag about this sweep's own brief.** It lists *How the synoptic tree is actually
+made* among the specification sections that stay, and I deleted it in the previous commit. I
+believe that was right — the section's own text is an instruction (*"Put into the queue also an
+analysis of how the synoptic tree is actually made"*), not a specification of how work is done,
+and the analysis now exists as `docs/synoptic-correspondence.md` with nothing lost. Recording the
+disagreement rather than letting it pass unnoticed.

@@ -466,25 +466,30 @@ Two things, in order:
   usage differs. § *One name item per USAGE* still holds: a given name and a family name spelled
   alike are genuinely two items; two spellings of one family name are not.
 
-## LAST — a comprehensive CJK fallback so nothing is ever emitted untransliterated
+## LAST — make the CJK funnel fire from `label_in`, not only from the wrapper
 
-**Recovered from the crashed session; she put it at the very end.** Emma, 2026-08-29: *"setting up
-a comprehensive fallback... probably using external libraries for doing katakana, so that it is
-very consistent. If anything even remotely wants to generate without having katakana or Chinese
-characters, it goes through this thing and then adds the token to the library, and then continues
-on."*
+**The funnel exists and works, as of 2026-08-31.** `extend-transliterations.py` runs as
+**STEP 0d** of `scripts/build-daily-batch.py`, before anything composes, so the table is complete
+by the time labels are made: 4,054 tokens, and the `ja`/`zh` creation gate now refuses **nobody**
+where it refused 7 before it was wired.
 
-So the shape is a **funnel, not a table lookup**: an unknown token is transliterated on the spot,
-written into `reports/garborg-name-transliterations.tsv`, and the caller carries on — rather than
-`label_in()` returning `(None, None)` and the whole label being dropped.
+**What is left is that it only fires from the wrapper.** All four `label_in()` callers live in
+`build-garborg-day.py`, and running that directly — `--compose`, which happens constantly — skips
+STEP 0d entirely. So the guarantee holds for the daily pipeline and not for the builder, which is
+the same *"the pieces existed and nothing called them"* shape the funnel was written against.
 
-**Her standard, and it should not be softened:** *"Incorrect romanization or incorrect
-representations in katakana are totally acceptable. An incorrect name is not, because half these
-words, nobody knows how they're pronounced anyway."* That relaxes *partial is worse than absent*
-for the **rendering** of a token and for nothing else — a wrong *name* stays forbidden.
+Her wording is about the call, not the pipeline: *"If anything even remotely wants to generate
+without having katakana or Chinese characters, it goes through this thing and then adds the token
+to the library, and then continues on"* — so `label_in()` should transliterate on the spot and
+carry on, rather than returning `(None, None)`.
 
-**This is the one place an external dependency is sanctioned.** `CLAUDE.md` § *Stdlib only* allows
-one where the stdlib genuinely cannot do the job, and she has named this as such a case.
+**Her standard, unsoftened:** *"Incorrect romanization or incorrect representations in katakana
+are totally acceptable. An incorrect name is not."* That relaxes *partial is worse than absent*
+for the **rendering** of a token and nothing else.
+
+**`pykakasi` is installed**, so the external dependency she sanctioned for this — *"probably using
+external libraries for doing katakana, so that it is very consistent"* — is available and unused;
+`translit_no` is a hand-rolled letter walk. Worth comparing the two before deciding which renders.
 
 ## THE VERY LAST ITEM — review the algorithm once we are connected to the World Tree
 
