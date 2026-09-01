@@ -1647,3 +1647,34 @@ positions, Izumo 53, Senge 22, Kitajima 14. This item is turning it into Wikidat
 Geni id was established — succession number confirmed, sole match, her bio link — and the 38
 Samaritan positions absent from the corpus are a near-contiguous run (1, 2, 3, 31, 59, then 81
 onward), which is one unexported neighbourhood rather than 38 misses.
+
+## THE LAST ITEM — test `pykakasi` before trusting it, and look for something better
+
+**Emma, 2026-08-31**, on finding it installed: *"I can say for a fact that that library sucks for
+converting Kanji to Hiragana. So with that being said, I'm skeptical of it... I'm gonna guess it's
+probably easier for it to do European words than Kanji to Hiragana... but I am going to want to do
+a bit of due diligence on it to make sure that it's getting stuff right."*
+
+**The two directions are different jobs, and the one she knows it fails at is not the one we
+need.** Kanji → hiragana is a *reading* problem: the same characters take different readings per
+person, which is why `P1814` *name in kana* exists as a property rather than being computed.
+European → katakana is a *transcription* problem, and her guess is that it is the easier of the
+two. That guess is plausible and is not evidence.
+
+**So: measure it before anything depends on it.**
+
+- Compare `pykakasi` against `scripts/translit_no.py` and against the **317 hand-written rows** of
+  `reports/garborg-name-transliterations.tsv` that the engine did not itself write. That file is
+  the only ground truth in the repo, and `translit_no` scores **46% (ja) / 41% (zh)** on it — so
+  there is a number to beat rather than an impression to form.
+- The known gap in `translit_no` is **gemination and vowel length** — `Anna` → `アナ` where the
+  hand form is `アンナ`, `Aagot` → `オーゴト` against `オーゴット`. Whether `pykakasi` gets those
+  right is the specific question worth answering first.
+- **Do not test it on kanji.** She has already settled that direction and it is not what this
+  would be used for.
+
+**And look for something better.** Her words: *"I think that there might be some sort of better
+system than that library. Not one hundred percent sure."*
+
+**Nothing depends on this today.** `translit_no` is what runs, the funnel is wired, and the ja/zh
+gate refuses nobody. This decides whether to swap the engine, not whether labels get made.

@@ -23461,3 +23461,27 @@ believe that was right — the section's own text is an instruction (*"Put into 
 analysis of how the synoptic tree is actually made"*), not a specification of how work is done,
 and the analysis now exists as `docs/synoptic-correspondence.md` with nothing lost. Recording the
 disagreement rather than letting it pass unnoticed.
+
+## 2026-08-31 — `pykakasi` testing queued at the tail, her call
+
+She saw it was installed and gave a qualified reaction rather than a yes: *"I can say for a fact
+that that library sucks for converting Kanji to Hiragana... I'm gonna guess it's probably easier
+for it to do European words than Kanji to Hiragana, but I am going to want to do a bit of due
+diligence."* Queued at the end, per § *"Add it to the end of the queue" means WRITE IT DOWN AND
+STOP* — no testing done now.
+
+**The item records the distinction that makes her scepticism separable from our use.** Kanji →
+hiragana is a *reading* problem, where the same characters take different readings per person —
+which is exactly why `P1814` *name in kana* exists as a property rather than being computed. That
+is the direction she knows it fails at, and it is **not** the direction the funnel needs.
+European → katakana is transcription. Her guess that it is easier is plausible and is not
+evidence, which is the whole reason she wants it tested.
+
+**There is a number to beat rather than an impression to form.** `reports/garborg-name-
+transliterations.tsv` holds 317 hand-written rows the engine did not itself write, and
+`translit_no` scores **46% (ja) / 41% (zh)** against them. The known gap is gemination and vowel
+length — `Anna` → `アナ` where the hand form is `アンナ` — so whether `pykakasi` gets those is the
+first question.
+
+Nothing depends on it: `translit_no` runs, the funnel is wired, the gate refuses nobody. This
+decides whether to swap the engine, not whether labels get made.
