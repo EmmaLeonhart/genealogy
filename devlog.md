@@ -24598,3 +24598,23 @@ table instead of deriving them from it, twice in one day.
 
 Sampled by eye: `Marguerite Blosset` → `マルグリット・ブロセト` / `玛格丽特·布洛塞特`,
 `Roland Martin` → `罗兰·马丁`. 316 pass.
+
+## 2026-09-01 — sweep: nothing dead, and the drift refresh missed its own targets
+
+**Nothing was complete.** Checked every section; the only candidate was § *Re-run the offline
+joins*, promoted from `todo.md` § 6 this afternoon, and it is **not** done.
+
+`refresh-drift.py --max-age-hours 72` ran three rounds and 34 scripts and never touched
+`zipper-join` or `build-synoptic-correspondence` — zero occurrences in either log.
+`reports/zipper-pairs.tsv` is still dated **08-26**, six days stale and unmoved, which is precisely
+the file the item exists for.
+
+**The threshold excluded what it was aimed at.** `--max-age-hours 72` selects scripts whose drift
+is *at most* 72 hours; the log says so in its own header. A six-day-old output does not qualify. I
+chose 72 to keep the run bounded and that choice dropped the staleset target.
+
+The section now records this rather than claiming progress, and names the fix: run the two scripts
+directly, since the item names them and there are only two. `refresh-drift` keeps its job — the
+recently-stale layer — which it did.
+
+**Nothing was deleted, so nothing was annotated DONE.** 23 sections before and after.

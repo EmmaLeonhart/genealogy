@@ -137,32 +137,33 @@ So tomorrow: `SPINE_PATHS`, `SPINE_REVERSED`, the spine blocks in `build-garborg
 `build-missing-reciprocals.py` and anything else that special-cases a spine, all come out. Check it
 is actually complete first — if it is not, say so rather than deleting a live mechanism.
 
-## Re-run the offline joins now that edits have started — promoted from `todo.md` § 6
+## Re-run the offline joins — the drift refresh MISSED them, and here is why
 
 **`todo.md` § *Backfill existing Wikidata items* says what is left of it:** *"re-running the joins
-after a batch is accepted, since each new `P2600` makes the exact join reach further… It simply
-has nothing new to consume until edits land, and editing starts 2026-09-01."*
+after a batch is accepted, since each new `P2600` makes the exact join reach further… editing
+starts 2026-09-01."* That date is today and her ledger refreshed at 11:30 with all rows resolving.
 
-**That date is today and the edits have landed** — `reports/garborg-qids.tsv` was refreshed from
-her contributions at 03:47 and every one of its 849 rows resolves. The joins downstream of it did
-not move with it:
+**`refresh-drift.py --max-age-hours 72` ran three rounds and never touched either target.**
+`zipper-join` and `build-synoptic-correspondence` appear **zero times** in the log, and the files
+have not moved:
 
-    reports/garborg-qids.tsv          09-01 03:47
-    reports/synoptic-correspondence.tsv  08-31 20:47   7 hours behind
-    reports/zipper-provenance.tsv        08-31 21:04   7 hours behind
-    reports/zipper-pairs.tsv             08-26 03:10   SIX DAYS behind
+    reports/garborg-qids.tsv           09-01 11:30
+    reports/synoptic-correspondence.tsv   08-31 20:47
+    reports/zipper-pairs.tsv              08-26 03:10    six days, unchanged
 
-**`scripts/refresh-drift.py` is the instrument and not a hand-listed chain**, deliberately: on
-2026-08-27 thirteen scripts were picked by eye and the drift count went 95 → 80 rather than 95 →
-82, because refreshing a stage re-stales everything below it. This walks the
-`generator → input` graph that `build-repo-freshness` already knows.
+**The threshold excluded exactly what it was pointed at.** `--max-age-hours 72` selects scripts
+whose drift is **≤ 72 hours** — the log says so in its own header, *"21 scripts to run (<= 72h
+drift)"* — so a file six days behind is *too stale to qualify*. Choosing 72 hours to keep the run
+bounded is what dropped the six-day-old join, which is the one that most needed running.
 
-**Round 1 is 21 scripts and it cascades**, so it runs in the background rather than being handed
-over. Four are skipped by design because they name a Wikidata client — `ledger-history`,
-`audit-ledger-names`, `resolve-patronymics`, `refresh-live-values`.
+**So the instrument was wrong for this job, not broken.** Two ways forward and the first is
+plainly better: **run the two scripts directly**, since the item names them and there are two;
+or raise the threshold and accept a much larger cascade. `refresh-drift` stays useful for keeping
+the recently-stale layer honest — that is what it did, 34 scripts across three rounds.
 
-**This is not "reconciliation".** `genimerge reconcile` was deleted on 2026-08-15 and name
-matching does not come back; what re-runs is the exact `P2600` join and the zipper above it.
+**Nothing here is blocked.** The next work tick runs
+`scripts/build-synoptic-correspondence.py` and `scripts/zipper-join.py` and reports what the fresh
+`P2600`s bought.
 
 ## Keep `reports/merges-to-do.md` current
 
