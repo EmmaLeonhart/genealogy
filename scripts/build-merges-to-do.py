@@ -73,6 +73,46 @@ def tree_labels(wanted):
     return found
 
 
+CORRESPONDENCE = ROOT / "reports" / "synoptic-correspondence.tsv"
+
+
+def ledger_against_correspondence():
+    """`[(geni_id, ours, {rival qid: sources})]` — an item we created beside an older one.
+
+    **The shape section 1 cannot see.** That section needs BOTH items to carry a `P2600`, so it
+    finds double-creations by our own batches and nothing else. The duplicates Emma actually hit
+    on 2026-09-01 were the opposite: the **pre-existing item carries no Geni id at all**, so no
+    `P2600` join reaches it and a `P2600` search afterwards returns only the one we made.
+    `Q550343` *Welf I, Duke of Bavaria*, 27 sitelinks, was created again as `Q141249742` for
+    exactly that reason, along with three others she merged by hand the same afternoon.
+
+    `reports/synoptic-correspondence.tsv` does see them, through the zipper and the structural
+    walk. Where the ledger says a Geni profile is one item and the correspondence says it is also
+    an older one, that is a probable double-creation and a merge for her.
+
+    **40 of them on 2026-09-01**, five spot-checked live that day: every one matched on sex, and
+    on both dates wherever both sides carried them — `Johanna Catharina Burman` 1710–1778 against
+    `Q100354376`, `Magdalena von Mentzer` 1726–1809 against `Q103771980`, plus `Maria Carlberg`,
+    `Margareta Lejon` and `Ingrid Ekenbom` on sex and name.
+    """
+    tab = chr(9)
+    led = collections.defaultdict(set)
+    with io.open(LEDGER, encoding="utf-8") as fh:
+        for r in csv.DictReader(fh, delimiter=tab):
+            g, q = (r.get("geni_id") or "").strip(), (r.get("qid") or "").strip()
+            if g and q:
+                led[g].add(q)
+    if not CORRESPONDENCE.exists():
+        return []
+    rival = collections.defaultdict(dict)
+    with io.open(CORRESPONDENCE, encoding="utf-8") as fh:
+        for r in csv.DictReader(fh, delimiter=tab):
+            g, q = r.get("geni_id", ""), r.get("qid", "")
+            if g in led and q and q not in led[g]:
+                rival[g][q] = r.get("sources", "?")
+    return [(g, sorted(led[g]), rival[g]) for g in sorted(rival)]
+
+
 def pair_lines(geni_id, qids, label):
     """One bullet per duplicate, with the merge prefilled the way Help:Merge wants it."""
     keep = qids[0]  # lowest Q number survives
@@ -259,6 +299,35 @@ def main():
         "to prevent.\n"
     )
 
+    rivals = ledger_against_correspondence()
+    rival_names = tree_labels({g for g, _, _ in rivals})
+    w.append("\n## 8. An item you created beside an older one nobody joined by Geni id - {}\n"
+             .format(len(rivals)))
+    w.append(
+        "**The shape section 1 cannot see.** That section needs BOTH items to carry a `P2600`. "
+        "These are the opposite: the older item carries **no Geni id at all**, so no `P2600` join "
+        "reaches it and a `P2600` search afterwards returns only the one we made. `Q550343` "
+        "*Welf I, Duke of Bavaria* - 27 sitelinks - was created again as `Q141249742` for exactly "
+        "this reason on 2026-09-01, along with three others you merged by hand.\n"
+    )
+    w.append(
+        "`reports/synoptic-correspondence.tsv` does see them, through the zipper and the "
+        "structural walk. **Five were spot-checked live on 2026-09-01** and every one matched on "
+        "sex and on both dates where both sides carried them. The bracketed `sources` says what "
+        "found each pair: a `zipper`-only row is the weakest, carrying a measured 2.8-4.8% error, "
+        "so read both items before merging that one.\n"
+    )
+    # `older` rather than `theirs`: `theirs` is section 2's dict and shadowing it here made the
+    # closing summary print `1 other` while the file itself correctly said 67. A summary line that
+    # disagrees with the file it summarises is the exact failure this repo keeps recording.
+    for g, ours, older in rivals:
+        label = rival_names.get(g) or g
+        w.append("- **{}** - Geni `{}` - you created {}".format(label, g, ", ".join(ours)))
+        for q, src in sorted(older.items(), key=lambda kv: qnum(kv[0])):
+            both = sorted(ours + [q], key=qnum)
+            w.append("    - also **{}** _({})_ - merge **{}** into **{}** - {}".format(
+                q, src, both[-1], both[0], MERGE_URL.format(frm=both[-1], to=both[0])))
+
     w.append("\n## 7. Name items merged away by other editors\n")
     w.append(
         "Your 2026-08-29 note: name items we created were merged into existing ones, and "
@@ -271,6 +340,7 @@ def main():
     OUT.write_text("\n".join(w) + "\n", encoding="utf-8")
     print("wrote {}".format(OUT))
     print("  wikidata duplicates: {} yours, {} other".format(len(hers), len(theirs)))
+    print("  created beside an older item: {}".format(len(rivals)))
 
 
 if __name__ == "__main__":

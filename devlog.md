@@ -24833,3 +24833,34 @@ as her true last item, so one removal is elsewhere and the other never was one. 
 is — whether those lists come out entirely and her item becomes editable like any other, or stay as
 the mechanism keeping her out of the traversable graph. A heading that promises two things the
 section does not contain is the same readability failure as annotating a finished item.
+
+## 2026-09-01 — merges-to-do refreshed, and it was blind to the duplicates she actually hit
+
+**Queue item worked: § *Keep `reports/merges-to-do.md` current*.** It is a standing regeneration
+rather than a one-off, so the section stays; the file was 09:20 against a ledger refreshed at
+14:19 and is now current.
+
+**Regenerating it exposed a hole.** Section 1 finds a duplicate by looking for **one Geni id
+carried by two Wikidata items** — which requires both items to have a `P2600`. Every duplicate she
+hit today was the opposite shape: `Q550343` *Welf I, Duke of Bavaria*, 27 sitelinks, carries **no
+Geni id at all**, so no `P2600` join can reach it and a `P2600` search afterwards returns only the
+new item. None of the four she merged by hand appeared in the file built to collect exactly that
+work.
+
+**New § 8, from the correspondence rather than from `P2600`: 40 pairs.** Where the ledger says a
+Geni profile is one item and `reports/synoptic-correspondence.tsv` says it is also an older one,
+that is a probable double-creation. Each bullet carries both QIDs, the evidence sources, and a
+prefilled `Special:MergeItems` link in the direction `Help:Merge` wants.
+
+**Five spot-checked live before publishing them as merges**, because a `zipper`-only row carries a
+measured 2.8–4.8% error and a wrong merge is worse than a missing one. All five matched on sex and
+on both dates wherever both sides carried them — `Johanna Catharina Burman` 1710–1778 against
+`Q100354376` 1710–1778, `Magdalena von Mentzer` 1726–1809 against `Q103771980` 1726–1809, plus
+`Maria Carlberg`, `Margareta Lejon` and `Ingrid Ekenbom`. The `sources` column is printed on every
+row so a `zipper`-only pair can be read before acting on it.
+
+**And the new section shadowed a variable, which printed a false summary.** The loop was
+`for g, ours, theirs in rivals`, and `theirs` is section 2's dict, so the closing line reported
+`1 other` while the file itself correctly said **67**. Caught by checking the summary against the
+file rather than trusting it — the same class as every other number-about-the-instrument bug here.
+The loop variable is `older` now.

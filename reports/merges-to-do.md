@@ -320,6 +320,94 @@ Some pairs appear under more than one spelling, which is itself a hint: `Strauss
 **Creating then merging is not a defect here.** `CLAUDE.md` § *Her own duplicates are DELIBERATE* records that a creation followed by a merge leaves the edit trail she wants, and she raised this as something to do *at some point* rather than something to prevent.
 
 
+## 8. An item you created beside an older one nobody joined by Geni id - 40
+
+**The shape section 1 cannot see.** That section needs BOTH items to carry a `P2600`. These are the opposite: the older item carries **no Geni id at all**, so no `P2600` join reaches it and a `P2600` search afterwards returns only the one we made. `Q550343` *Welf I, Duke of Bavaria* - 27 sitelinks - was created again as `Q141249742` for exactly this reason on 2026-09-01, along with three others you merged by hand.
+
+`reports/synoptic-correspondence.tsv` does see them, through the zipper and the structural walk. **Five were spot-checked live on 2026-09-01** and every one matched on sex and on both dates where both sides carried them. The bracketed `sources` says what found each pair: a `zipper`-only row is the weakest, carrying a measured 2.8-4.8% error, so read both items before merging that one.
+
+- **Johan Falkenberg af Trystorp** - Geni `388325917570007375` - you created Q141224780
+    - also **Q5984640** _(zipper)_ - merge **Q141224780** into **Q5984640** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141224780&to=Q5984640
+- **Ingrid Charlotta Carlsdotter Ekenbom** - Geni `6000000000410527402` - you created Q141249609
+    - also **Q110303131** _(structural;zipper)_ - merge **Q141249609** into **Q110303131** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141249609&to=Q110303131
+- **Hans Olofsson Törne** - Geni `6000000000410600770` - you created Q141249606
+    - also **Q6025581** _(structural;zipper)_ - merge **Q141249606** into **Q6025581** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141249606&to=Q6025581
+- **Jakob Chydenius** - Geni `6000000000583631058` - you created Q141225740
+    - also **Q109852817** _(zipper)_ - merge **Q141225740** into **Q109852817** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141225740&to=Q109852817
+    - also **Q141225741** _(wikidata-p2600)_ - merge **Q141225741** into **Q141225740** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141225741&to=Q141225740
+- **Anna Elisabet Charlotta Andersdotter Rehbinder** - Geni `6000000000909142439` - you created Q141244082
+    - also **Q124477457** _(zipper)_ - merge **Q141244082** into **Q124477457** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141244082&to=Q124477457
+- **6000000001744821812** - Geni `6000000001744821812` - you created Q75933086
+    - also **Q3120330** _(wikidata-p2600)_ - merge **Q75933086** into **Q3120330** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q75933086&to=Q3120330
+- **Jon Pedersen Trevland** - Geni `6000000001770193504` - you created Q141225749
+    - also **Q141225750** _(wikidata-p2600)_ - merge **Q141225750** into **Q141225749** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141225750&to=Q141225749
+- **Magdalena Elisabet Tersmeden** - Geni `6000000002811030244` - you created Q141223429
+    - also **Q98689756** _(zipper)_ - merge **Q141223429** into **Q98689756** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141223429&to=Q98689756
+- **Ingeborg Simonsdatter Ytre Lima** - Geni `6000000002836363103` - you created Q141225713
+    - also **Q141225714** _(wikidata-p2600)_ - merge **Q141225714** into **Q141225713** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141225714&to=Q141225713
+- **Maria Carlberg** - Geni `6000000003133670452` - you created Q141244109
+    - also **Q109265048** _(emma-verdicts;structural;zipper)_ - merge **Q141244109** into **Q109265048** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141244109&to=Q109265048
+- **Gustav Petersson Lejon** - Geni `6000000003414711727` - you created Q141223837
+    - also **Q110548729** _(zipper)_ - merge **Q141223837** into **Q110548729** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141223837&to=Q110548729
+- **Hafrid Sigtryggsdotter Boberg** - Geni `6000000003559734445` - you created Q141223838
+    - also **Q4988633** _(zipper)_ - merge **Q141223838** into **Q4988633** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141223838&to=Q4988633
+- **Margareta Lejon** - Geni `6000000003827763101` - you created Q141216491
+    - also **Q101247856** _(zipper)_ - merge **Q141216491** into **Q101247856** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141216491&to=Q101247856
+- **Torsten Håkansson Rudén** - Geni `6000000004548321013` - you created Q141224371
+    - also **Q6082642** _(emma-verdicts;zipper)_ - merge **Q141224371** into **Q6082642** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141224371&to=Q6082642
+- **Anders Rasmusson Lea** - Geni `6000000005607296161` - you created Q141225676
+    - also **Q141225673** _(wikidata-p2600)_ - merge **Q141225676** into **Q141225673** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141225676&to=Q141225673
+- **Erik Knudsen til Skarsholm** - Geni `6000000005619727117` - you created Q28467896
+    - also **Q130334556** _(emma-verdicts;structural;zipper)_ - merge **Q130334556** into **Q28467896** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q130334556&to=Q28467896
+- **Bengt Hafridsson Lejon** - Geni `6000000005795638104` - you created Q141198381
+    - also **Q5569976** _(zipper)_ - merge **Q141198381** into **Q5569976** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141198381&to=Q5569976
+- **Brita Ulfsparre af Broxvik** - Geni `6000000006127621094` - you created Q141224002
+    - also **Q126373437** _(zipper)_ - merge **Q141224002** into **Q126373437** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141224002&to=Q126373437
+- **Bertrand Olav Olsen Vigdel** - Geni `6000000006146870818` - you created Q138687615
+    - also **Q141205900** _(wikidata-p2600)_ - merge **Q141205900** into **Q138687615** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141205900&to=Q138687615
+- **Hedvig Swedenborg** - Geni `6000000006782610675` - you created Q141223425
+    - also **Q140191768** _(zipper)_ - merge **Q141223425** into **Q140191768** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141223425&to=Q140191768
+- **Johan Börgesson Carlberg** - Geni `6000000006897169084` - you created Q141249728
+    - also **Q5602483** _(structural;zipper)_ - merge **Q141249728** into **Q5602483** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141249728&to=Q5602483
+- **Kristina Olofsdotter Spaak** - Geni `6000000006897337018` - you created Q141249729
+    - also **Q98697623** _(structural;zipper)_ - merge **Q141249729** into **Q98697623** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141249729&to=Q98697623
+- **Erik Guttormsson** - Geni `6000000007328872457` - you created Q141225702
+    - also **Q141225703** _(wikidata-p2600)_ - merge **Q141225703** into **Q141225702** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141225703&to=Q141225702
+- **Katarina Johansdotter Ståhlbom** - Geni `6000000007367019257` - you created Q141225772
+    - also **Q141225773** _(wikidata-p2600)_ - merge **Q141225773** into **Q141225772** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141225773&to=Q141225772
+- **Magdalena Sofia Falkenberg af Bålby** - Geni `6000000008889736689` - you created Q141223430
+    - also **Q109835411** _(zipper)_ - merge **Q141223430** into **Q109835411** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141223430&to=Q109835411
+- **Karolina Andrietta Ström** - Geni `6000000009494606557` - you created Q141225764
+    - also **Q141225765** _(wikidata-p2600)_ - merge **Q141225765** into **Q141225764** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141225765&to=Q141225764
+- **Anna Margareta von Walcker** - Geni `6000000009813973540` - you created Q141225681
+    - also **Q141225679** _(wikidata-p2600)_ - merge **Q141225681** into **Q141225679** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141225681&to=Q141225679
+- **Eva Carolina Leijonhufvud** - Geni `6000000011399293802` - you created Q141223419
+    - also **Q99301833** _(zipper)_ - merge **Q141223419** into **Q99301833** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141223419&to=Q99301833
+- **Hedvig Augusta af Söderling** - Geni `6000000011713042906` - you created Q141242507
+    - also **Q135480138** _(emma-verdicts;zipper)_ - merge **Q141242507** into **Q135480138** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141242507&to=Q135480138
+- **Magdalena von Mentzer** - Geni `6000000012617083513` - you created Q141217393
+    - also **Q103771980** _(zipper)_ - merge **Q141217393** into **Q103771980** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141217393&to=Q103771980
+- **Catharina Charlotta Falkenberg af Trystorp** - Geni `6000000012641210385` - you created Q141224102
+    - also **Q103771998** _(zipper)_ - merge **Q141224102** into **Q103771998** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141224102&to=Q103771998
+- **Johanna Catharina Burman** - Geni `6000000012974032371` - you created Q141224234
+    - also **Q100354376** _(zipper)_ - merge **Q141224234** into **Q100354376** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141224234&to=Q100354376
+- **Charlotta Johanna Gerner** - Geni `6000000013081666315` - you created Q141217383
+    - also **Q64711801** _(zipper)_ - merge **Q141217383** into **Q64711801** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141217383&to=Q64711801
+- **Louise Helmine Jenssen** - Geni `6000000014196858070` - you created Q141225804
+    - also **Q141225805** _(wikidata-p2600)_ - merge **Q141225805** into **Q141225804** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141225805&to=Q141225804
+- **Laurentius Andreae Andreae Alstrinius** - Geni `6000000025011507008` - you created Q141225793
+    - also **Q141225794** _(wikidata-p2600)_ - merge **Q141225794** into **Q141225793** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141225794&to=Q141225793
+- **Kristina Eriksdotter Ångerman** - Geni `6000000038458498753` - you created Q141225779
+    - also **Q141225780** _(wikidata-p2600)_ - merge **Q141225780** into **Q141225779** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141225780&to=Q141225779
+- **Kristine** - Geni `6000000040760740831` - you created Q141225787
+    - also **Q141225788** _(wikidata-p2600)_ - merge **Q141225788** into **Q141225787** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141225788&to=Q141225787
+- **Fru Tore** - Geni `6000000150599235831` - you created Q141225708
+    - also **Q141225709** _(wikidata-p2600)_ - merge **Q141225709** into **Q141225708** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141225709&to=Q141225708
+- **Jacob Knutson Skiftun** - Geni `6000000177945982827` - you created Q141225729
+    - also **Q141225730** _(wikidata-p2600)_ - merge **Q141225730** into **Q141225729** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141225730&to=Q141225729
+- **Carl Andersson** - Geni `6000000178279141871` - you created Q141225693
+    - also **Q141225694** _(wikidata-p2600)_ - merge **Q141225694** into **Q141225693** - https://www.wikidata.org/wiki/Special:MergeItems?from=Q141225694&to=Q141225693
+
 ## 7. Name items merged away by other editors
 
 Your 2026-08-29 note: name items we created were merged into existing ones, and *"creating the name objects and having them merged by somebody else... is a thing that gets attention in a bad way"*. `Tunheim` is the one that already happened. The fix - invert the default so an existing name item is reused - is a queue item, not something for this sitting; it is here so the merges are in one place.
