@@ -1,0 +1,201 @@
+name: Pipeline when she has been editing
+
+# **Her design, 2026-09-01:** *"Every six hours it checks the time of my last contribution. If it
+# is under six hours old then it does the full pipeline. Ledger refresh plus quickstatement
+# rebuild. So basically it is intended as facilitating potentially quite intensive work like
+# this."*
+#
+# **The gate is what makes it affordable.** The pipeline checks out several GB and rebuilds the
+# batch; run unconditionally that is four expensive runs a day whether or not anything changed.
+# Her contributions are the right signal because the ledger is BUILT from them --
+# `refresh-garborg-ledger.py` reads the same `list=usercontribs` for the same account, so "she has
+# edited" and "the ledger will differ" are the same fact.
+#
+# **It does NOT rebuild the synoptic tree.** That is `genimerge merge`: ~14 minutes and a 17 GB
+# peak against a 16 GB runner, so it cannot run here — and it does not need to. `--compose` reads
+# the derived CSVs, and `CLAUDE.md` says 90% of the time the tree should not be rebuilt anyway.
+#
+# **Memory is instrumented rather than assumed.** Two slow test modules were killed four times on
+# this same runner size before anyone measured; `/usr/bin/time -v` and a 30-second sampler are
+# here so that if compose is also too big for 16 GB the log says so, instead of the job dying
+# with `The runner has received a shutdown signal` and nobody knowing why.
+
+on:
+  schedule:
+    # Every six hours, off the hour: :23 rather than :00, where every scheduled workflow on
+    # GitHub fires at once and the queue is worst.
+    - cron: "23 1,7,13,19 * * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Run even if the last contribution is older than six hours"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  issues: write
+
+# Never two pipelines at once, and never cancel one that is mid-push.
+concurrency:
+  group: pipeline
+  cancel-in-progress: false
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      run: ${{ steps.check.outputs.run }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: /.github
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - id: check
+        run: |
+          if [ "${{ inputs.force }}" = "true" ]; then
+            echo "forced by hand"
+            echo "run=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          if python .github/scripts/last_contribution.py --max 6; then
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  pipeline:
+    needs: gate
+    if: needs.gate.outputs.run == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      # `out/` is needed for the name-item store the live reuse check reads, `reports/` for the
+      # derived CSVs compose reads. `exports/` is NOT needed: nothing here touches the corpus,
+      # which is what makes this affordable where a tree rebuild is not.
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout: |
+            /*
+            !/wikidata
+            !/paths_for_wikidata_isolates
+            !/exports
+            !/geni-scraping
+            !/orderlife
+            !/geni_pages
+            !/chats
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Before
+        run: free -m; df -h / | tail -1
+
+      - name: Unpack the derived CSVs
+        run: python scripts/pack-derived.py --unpack
+
+      # `--compose` refreshes the ledger itself — `CLAUDE.md`: regenerating the QuickStatements
+      # ALWAYS regenerates the ledger — so there is no separate refresh step to forget.
+      - name: Ledger refresh and QuickStatements rebuild
+        env:
+          BOT_CONTACT: emma@topazcomputing.com
+          PYTHONPATH: src
+        run: |
+          ( while true; do
+              echo "MEM $(date -u +%H:%M:%S) $(free -m | awk '/^Mem:/{print "used="$3"MB avail="$7"MB"}')"
+              sleep 30
+            done ) &
+          SAMPLER=$!
+          set +e
+          /usr/bin/time -v python scripts/build-garborg-day.py --compose
+          STATUS=$?
+          set -e
+          kill $SAMPLER 2>/dev/null || true
+          exit $STATUS
+
+      - name: What changed
+        id: batch
+        run: |
+          FILE=reports/wikidata-garborg-day.qs
+          echo "creates=$(grep -c '^CREATE' "$FILE" || true)" >> "$GITHUB_OUTPUT"
+          echo "lines=$(grep -cve '^[[:space:]]*#' -e '^[[:space:]]*$' "$FILE" || true)" >> "$GITHUB_OUTPUT"
+          echo "bytes=$(wc -c < "$FILE")" >> "$GITHUB_OUTPUT"
+          echo "carried=$(( $(wc -l < reports/garborg-carry-forward.tsv) - 1 ))" >> "$GITHUB_OUTPUT"
+          git status --short | head -20
+
+      # Repack before committing: the plain CSVs are gitignored and the `.gz` are what is tracked.
+      - name: Commit the rebuilt batch
+        run: |
+          python scripts/pack-derived.py
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "nothing changed; not committing"
+            exit 0
+          fi
+          printf '%s\n' \
+            'rebuild the batch: she edited within the last six hours' \
+            '' \
+            'Scheduled pipeline. The gate found a contribution newer than six hours, so' \
+            'the ledger was refreshed from her contributions and build-garborg-day.py' \
+            '--compose was re-run.' \
+            '' \
+            'The synoptic tree was NOT rebuilt: that needs 17 GB and this runner has 16,' \
+            'and CLAUDE.md says 90% of the time it should not be rebuilt anyway.' \
+            > /tmp/msg.txt
+          git commit -F /tmp/msg.txt
+          git pull --rebase origin main
+          git push origin HEAD:main
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wikidata-garborg-day
+          path: reports/wikidata-garborg-day.qs
+          retention-days: 30
+
+      - name: Open the issue
+        uses: actions/github-script@v7
+        env:
+          CREATES: ${{ steps.batch.outputs.creates }}
+          LINES: ${{ steps.batch.outputs.lines }}
+          CARRIED: ${{ steps.batch.outputs.carried }}
+          BYTES: ${{ steps.batch.outputs.bytes }}
+        with:
+          script: |
+            const fs = require('fs');
+            const LIMIT = 65536;
+            const batch = fs.readFileSync('reports/wikidata-garborg-day.qs', 'utf8');
+            const when = new Date().toISOString().slice(0, 16).replace('T', ' ');
+            const run = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}` +
+                        `/actions/runs/${context.runId}`;
+            const head = [
+              `**${process.env.CREATES} creations - ${process.env.LINES} statement lines - ` +
+              `${process.env.CARRIED} carried forward**`,
+              '',
+              'Rebuilt because you edited Wikidata in the last six hours. The ledger was',
+              'refreshed; the synoptic tree was not.',
+              '',
+            ].join('\n');
+            const wrapped = head + '```\n' + batch + '\n```\n';
+            const body = wrapped.length <= LIMIT
+              ? wrapped
+              : head + `The batch is ${process.env.BYTES} bytes, past the ${LIMIT}-byte ` +
+                       `issue-body limit, so it is on [the run](${run}) as an artifact instead.\n`;
+            const issue = await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Garborg batch ${when} UTC - ${process.env.CREATES} creations`,
+              body,
+              assignees: [context.repo.owner],
+            });
+            core.info(`opened #${issue.data.number}: ${issue.data.html_url}`);

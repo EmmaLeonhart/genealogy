@@ -24618,3 +24618,31 @@ directly, since the item names them and there are only two. `refresh-drift` keep
 recently-stale layer — which it did.
 
 **Nothing was deleted, so nothing was annotated DONE.** 23 sections before and after.
+
+## 2026-09-01 — a pipeline that runs only when she has been editing
+
+**Her design:** *"Every six hours it checks the time of my last contribution. If it is under six
+hours old then it does the full pipeline. Ledger refresh plus quickstatement rebuild. So basically
+it is intended as facilitating potentially quite intensive work like this."*
+
+`.github/workflows/pipeline.yml`, two jobs. The **gate** is one unauthenticated `usercontribs`
+request for `日巫女`; the **pipeline** only runs if it answers under six hours.
+
+**The gate is the right signal because the ledger is built from the same data.**
+`refresh-garborg-ledger.py` reads that same list for that same account, so *"she has edited"* and
+*"the ledger will differ"* are one fact rather than a proxy for each other.
+
+**It fails OPEN.** If Wikidata is unreachable the age is unknown and it runs anyway: a wasted run
+costs minutes of free Actions time, a skipped run means she wakes to a stale batch.
+
+**It does not rebuild the tree**, and that is what makes it affordable. `genimerge merge` peaks at
+17 GB against a 16 GB runner; `--compose` reads the derived CSVs, so `exports/` is not even
+checked out. `--compose` also refreshes the ledger itself, so there is no separate step to forget.
+
+**Memory is instrumented, because of today.** Two test modules were killed four times on this
+runner size before anyone measured, and the log said only *"the runner has received a shutdown
+signal"*. `/usr/bin/time -v` plus a 30-second sampler are in the compose step so that if it is
+also too big for 16 GB, the log says which and when.
+
+**It commits and pushes the rebuilt batch**, repacking the gzipped CSVs first, and rebases before
+pushing so a concurrent commit is not clobbered. Then it opens the issue, assigned to her.
