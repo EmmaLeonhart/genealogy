@@ -53,23 +53,6 @@ counts are not stale when she next sits down to it.
 **The merges themselves are hers now, not mine** — that is what the file is for. The Izumo
 three are cleared and the browser pass is closed.
 
-## Patronymic residue: `Nils`/`Nicolaus` needs a form table, not a letter rule
-
-The letter-level folds are done and measured — `d`/`t` and the inner `h`, each sampled by hand
-before it shipped. What is left cannot be reached by any spelling rule:
-
-- **`Nilsson` with father `Nicolaus`.** `Nils` is a *form* of `Nicolaus`, not a spelling of it;
-  the skeletons are `nls` and `nkls` and no fold that joins them leaves anything else apart.
-  Same shape: `Lars`/`Laurentius`, `Ola`/`Olaus`, `Jon`/`Johannes` where the vowel run differs
-  too much.
-- **What would work is a short table** of Scandinavian given-name forms — the Latin church form
-  against the vernacular. It is data, not an algorithm, and it should be built from the corpus:
-  take fathers whose given name is Latinate and whose children carry a vernacular patronymic, and
-  read off the pairs rather than inventing them.
-
-Measure first and sample the rescues by hand. That is what showed `d`/`t` was safe, showed the
-inner `h` was safe, and is the only reason either shipped.
-
 ## ⛔ THE DAILY ALGORITHM — her full spec, 2026-08-26. SPECIFICATION, not a step
 
 `docs/dictation/2026-08-26-daily-algorithm.md` is her dictation verbatim;
@@ -1875,3 +1858,22 @@ Two questions, one tool call each, with real options:
 **Both defaults are already live and neither blocks anything**, so this is a question about
 whether to do *more*, never a stall. Show her the actual candidate items, not a summary — the
 `Carl`/`Johan`/`Olof` lookup is what made the last one answerable in one line.
+
+## Patronymic residue: `Nils`/`Nicolaus` needs a form table, not a letter rule
+
+The letter-level folds are done and measured — `d`/`t` and the inner `h`, each sampled by hand
+before it shipped. What is left cannot be reached by any spelling rule:
+
+- **`Nilsson` with father `Nicolaus`.** `Nils` is a *form* of `Nicolaus`, not a spelling of it;
+  the skeletons are `nls` and `nkls` and no fold that joins them leaves anything else apart.
+  Same shape: `Lars`/`Laurentius`, `Ola`/`Olaus`, `Jon`/`Johannes` where the vowel run differs
+  too much.
+- **What would work is a short table** of Scandinavian given-name forms — the Latin church form
+  against the vernacular. It is data, not an algorithm, and it should be built from the corpus:
+  take fathers whose given name is Latinate and whose children carry a vernacular patronymic, and
+  read off the pairs rather than inventing them.
+
+Measure first and sample the rescues by hand. That is what showed `d`/`t` was safe, showed the
+inner `h` was safe, and is the only reason either shipped.
+
+**At the tail with the rest of the patronymic modelling.** Emma, 2026-08-31: *"all pstronymic modelling is at the end now"* — she is working down the queue and three consecutive items landing on patronymics was a placement mistake of mine, not her priority.

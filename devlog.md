@@ -22962,3 +22962,25 @@ The guards hold: `Hansdatter` with father `Heinrich` is still family (`hns` agai
 else apart. `Lars`/`Laurentius` and `Ola`/`Olaus` are the same shape. That needs a short table of
 Scandinavian given-name forms, built by reading Latinate fathers against vernacular patronymics in
 our own corpus rather than invented.
+
+## 2026-08-31 — all patronymic modelling to the tail, her call
+
+Emma: *"just skip it please I'm trying to get through the queue, all pstronymic modelling is at
+the end now."*
+
+All three patronymic sections now sit at the tail together — the `Nils`/`Nicolaus` form table, the
+implied fathers, and the `AskUserQuestion` on the 175 ambiguous tokens and `P407`.
+
+**The placement was my mistake and it is worth naming.** She put patronymic modelling at the
+**front** herself this morning — *"patronymics as first queue item complete it and move on"* — and
+closed it when it was done. But I had created the residue item hours earlier at position 4, right
+behind it, so *"move on to the next one"* landed on patronymics twice more. What she had sent to
+the tail was only the *implied fathers*; I should have put anything I split off there too.
+
+**The queue is being cleared, which was her other question.** Measured over today's commits:
+**20 sections deleted, 10 added**, so the count sits flat at 57 — and the additions are mostly
+hers (three at the front, three at the tail) plus items split out of larger ones. Flat is not
+stalled.
+
+The top of the queue is now § *Keep `reports/merges-to-do.md` current*, then the DAILY ALGORITHM
+specification, then § *The daily Garborg batch*.
