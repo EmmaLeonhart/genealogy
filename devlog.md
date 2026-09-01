@@ -24326,3 +24326,24 @@ it.
 The file is restored by re-running the grader, and the queue section now carries the grading
 rather than my reading. Emma had already ruled on the outcome on 2026-08-29: leave them, keep
 running the measurement, decide later.
+
+## 2026-09-01 — dead-queue sweep, third pass
+
+**Deleted: § *The midpoint export campaign — her batch of 2026-08-17*.** Its purpose was closing
+chain gaps, and its own instrument now says there are none. `scripts/find-chain-gaps.py`, the tool
+the section names and which answers the question straight off the export files without a merge:
+
+    600 corpus exports, 1,451,964 distinct Geni IDs
+    chain people 11,466   held 11,466   gap 0
+    unfilled slots 0
+
+The section recorded **held 3,655, gap 6,632, 7,174 unfilled slots over 251 exports**. It is now
+600 exports and zero of each. `scripts/census-paths.py` agrees from the other direction — *every
+path is connected end to end* across 699 files.
+
+**Its two rules are not lost**, which is why deleting is safe: *open the family-tree index page,
+never the profile page* and *no already-opened filter* are both in `CLAUDE.md`, twice each.
+
+**Kept, and they are not dead:** § *Always last* is a standing check that the four crons are
+running, not a one-off; § *`exports/post-merge/` — MOVED TO THE TAIL* is her live ruling to leave
+the 408 in place and keep running the measurement.

@@ -866,40 +866,6 @@ tree is all consistently there."* The deliverable is the chain being connected.
 missing each, max 33. **24 paths need 1 person, 37 need 2** — those go to page-saving.
 The 4+ paths are where exports go, seeded on the destination.
 
-## The midpoint export campaign — her batch of 2026-08-17
-
-**Open the family-tree index page, never the profile page.** Emma, 2026-08-17:
-*"rather definitively this kind of thing
-https://www.geni.com/family-tree/index/6000000085113755501 is a better page to open up
-for them rather than the pages you opened."* Recorded in `CLAUDE.md`; the first 50 were
-opened as `/people/x/<id>` and should have been `/family-tree/index/<id>`.
-
-**Four exports integrated**, `exports/midpoints/`, all `Forest`, all exactly 5000
-people, seeded on placeholders she made at the midpoints of path gaps:
-`6000000227288930948` `Wilchen /Tybekken/` · `…289663852` `Øystein /father of Berta/` ·
-`…289604840` `Michel /Jude/` · `…289792822` `Björn /father of Prinsessan/`.
-
-**Done for this batch:** re-merged to 472,999 people; measured — the four exports closed
-**199 chain people**, held 3,337 → 3,536 and steps held 66.5% → **67.7%**; the next 50
-midpoints picked off the regenerated ranking and opened as family-tree pages.
-
-**No already-opened filter, and no accumulating handoff.** The regenerated ranking drops
-a closed person by itself — eight of the first batch's fifty are gone from it — so the
-filter I added excluded 42 people who are still gaps and pushed her down to weaker
-candidates. Both corrections are in `CLAUDE.md`.
-
-**The loop does NOT re-merge, and the ranking is slots.** Both her corrections of
-2026-08-17. `scripts/find-chain-gaps.py` answers *do we hold this person* straight off
-the export files — 18 seconds against five minutes and 4.5 GB, and it cannot go stale.
-Ranking is by **path slots filled**, her call: *"the midpoints for path segments were
-making some assumptions: an assumption of relative equality of presence in slots, but I
-don't think this is true anymore."* Slot counts run 10 down to 1, so they are not equal.
-
-**The loop, per new export:** place it in `exports/midpoints/`, run
-`find-chain-gaps.py --open 10`, open the ten. Nothing else. Currently **held 3,655, gap
-6,632, 7,174 unfilled slots** over 251 exports. Her framing: *"I think I can get those
-paths cleared soon."*
-
 ## LABELS, IN HER ORDER — one step per language, every individual at once
 
 **Emma, 2026-08-17**, after being shown the 364 structural placeholders with no label:
