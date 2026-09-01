@@ -1,41 +1,136 @@
+# ========================================================================
+# NAME ITEMS FIRST. One file, her instruction of 2026-08-30 -- there is no
+# longer a second batch to remember to run.
+# ========================================================================
+# Name items the Garborg batches need, AND the statements that use them.
+#
+# Each CREATE is followed by `Qperson  Pprop  LAST` for every bearer who
+# ALREADY holds a QID -- LAST is exactly how you point at what was just
+# created. A person this run is also CREATING cannot be linked here, because
+# LAST would then name the person; they wait for the next run.
+#
+# A patronymic is its own item even where the spelling exists as a given
+# name: CLAUDE.md, one name item per USAGE. Emma's Q141152710 Aadnesson is
+# the pattern -- labels, P31, nothing else.
+
+# Voster -- family, 6 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Voster"
+LAST	Len	"Voster"
+#   set the mul label to "Voster"
+LAST	Lmul	"Voster"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   Q141205913 Ingebret Pederson Voster: P734 family name = the item just created
+Q141205913	P734	LAST	S2600	"6000000007980389582"
+#   Q141242562 Peder Jonsen Voster: P734 family name = the item just created
+Q141242562	P734	LAST	S2600	"6000000007980605161"
+#   Q141198755 Anna Ingebretsdatter Voster: P734 family name = the item just created
+Q141198755	P734	LAST	S2600	"6000000007980728952"
+#   Q141223551 Ragnhild Ingebretsdatter Voster: P734 family name = the item just created
+Q141223551	P734	LAST	S2600	"6000000007980728958"
+#   Q141244126 Valborg Ingebretsdatter Voster: P734 family name = the item just created
+Q141244126	P734	LAST	S2600	"6000000007980728964"
+#   Q141244116 NN Voster: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
+Q141244116	P734	LAST	P3831	Q28418670	S2600	"6000000015302207141"
+
+# Jonsson -- patronymic, 5 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Jonsson"
+LAST	Len	"Jonsson"
+#   set the mul label to "Jonsson"
+LAST	Lmul	"Jonsson"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   Q5568857 Daniel Jonsson Behmer: P5056 patronym or matronym = the item just created, qualified P144 based on Q25451348 Jon Mickelsson Behm
+Q5568857	P5056	LAST	P144	Q25451348	S2600	"6000000006776755330"
+#   Q141224872 Petrus Jonae Jonæ Linnerius: P5056 patronym or matronym = the item just created
+Q141224872	P5056	LAST	S2600	"6000000006782697953"
+#   Q141216476 Jon Jonsson Vatne: P5056 patronym or matronym = the item just created, qualified P144 based on Q141216388 Jon Hansson St. Vatne
+Q141216476	P5056	LAST	P144	Q141216388	S2600	"6000000014516017872"
+#   Q141219070 Tørres Jonsson Vatne: P5056 patronym or matronym = the item just created, qualified P144 based on Q141216388 Jon Hansson St. Vatne
+Q141219070	P5056	LAST	P144	Q141216388	S2600	"6000000014516687339"
+#   Q141225218 Olof Jonsson: P5056 patronym or matronym = the item just created
+Q141225218	P5056	LAST	S2600	"6000000015844614533"
+
+# Olofsson -- patronymic, 5 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Olofsson"
+LAST	Len	"Olofsson"
+#   set the mul label to "Olofsson"
+LAST	Lmul	"Olofsson"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   Q141223844 Laurentius Olai: P5056 patronym or matronym = the item just created, qualified P144 based on Q141205932 Olof Timmerman
+Q141223844	P5056	LAST	P144	Q141205932	S2600	"6000000004334886671"
+#   Q5613434 Börje Cronberg: P5056 patronym or matronym = the item just created
+Q5613434	P5056	LAST	S2600	"6000000007026278130"
+#   Q6218220 Olof Olofsson Törnflycht: P5056 patronym or matronym = the item just created
+Q6218220	P5056	LAST	S2600	"6000000012056738350"
+#   Q5916162 Anders Olofsson Knös: P5056 patronym or matronym = the item just created
+Q5916162	P5056	LAST	S2600	"6000000020394079179"
+
+# 302 more name items are needed and wait for a later
+# run -- 3 a day is her cap, not a limit of the data:
+#   Trevland (family), 5 bearer(s)
+#   Ekebyholm (family), 4 bearer(s)
+#   Jonsen (patronymic), 4 bearer(s)
+#   Jonson (patronymic), 4 bearer(s)
+#   Rasmussen (patronymic), 4 bearer(s)
+#   Asbjørnsdatter (patronymic), 3 bearer(s)
+#   Erikson (patronymic), 3 bearer(s)
+#   Frondin (family), 3 bearer(s)
+#   Garfve (family), 3 bearer(s)
+#   Hansson (patronymic), 3 bearer(s)
+#   Helgesen (patronymic), 3 bearer(s)
+#   Høle (family), 3 bearer(s)
+#   ... and 290 more
+
+# ========================================================================
+# THE DAY'S PEOPLE
+# ========================================================================
+
 # ------------------------------------------------------------------------
 # LABEL EDITS ON EXISTING ITEMS -- at the head of the batch and capped at 15, both
 #   her instruction: "any label changes should occur at the beginning of the
 #   batch and be limited to a count of 15 labels added per batch". A label set
 #   at CREATION time is neither counted nor capped -- "a label added during item
 #   creation is good".
-#   2115 more are held for a later run; a repeat is a no-op, so nothing is lost.
+#   2100 more are held for a later run; a repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
-#   set the ko label to "마리아 아마리아 노르덴펠트"
-Q116760688	Lko	"마리아 아마리아 노르덴펠트"
-#   set the ko label to "주디트 오프 프란데르스 쿤테스 오프 노르툼브리아"
-Q273181	Lko	"주디트 오프 프란데르스 쿤테스 오프 노르툼브리아"
-#   set the ko label to "베네디크타 에베스도테르 오프 흐비데"
-Q2183430	Lko	"베네디크타 에베스도테르 오프 흐비데"
-#   set the ko label to "마린 오로프스도테르"
-Q141216398	Lko	"마린 오로프스도테르"
-#   set the ko label to "모테르 오프 마린 오로프스도테르"
-Q141224907	Lko	"모테르 오프 마린 오로프스도테르"
-#   set the ko label to "토레 페트레"
-Q6045829	Lko	"토레 페트레"
-#   set the ko label to "존 레이마첸"
-Q116150299	Lko	"존 레이마첸"
-#   set the ko label to "사뭴 안드레애 그룹"
-Q5773287	Lko	"사뭴 안드레애 그룹"
-#   set the ko label to "이사크 레인홀드 사흐르베르그"
-Q141223426	Lko	"이사크 레인홀드 사흐르베르그"
-#   set the ko label to "로비사 카타리나 폴비안데르"
-Q141223428	Lko	"로비사 카타리나 폴비안데르"
-#   set the ko label to "카르르 레인홀드 사흐르베르그"
-Q2361145	Lko	"카르르 레인홀드 사흐르베르그"
-#   set the ko label to "카르르 구스타프 만네르헤임"
-Q2415388	Lko	"카르르 구스타프 만네르헤임"
-#   set the ko label to "라르스 아우구스틴 만네르헤임"
-Q5975022	Lko	"라르스 아우구스틴 만네르헤임"
-#   Q141219324 Sofia Maria Mannerheim: set the ko label to "소피아 마리아 만네르헤임"
-Q141219324	Lko	"소피아 마리아 만네르헤임"
-#   Q141223412 Augusta Ulrika Mannerheim: set the ko label to "아우구스타 울리카 만네르헤임"
-Q141223412	Lko	"아우구스타 울리카 만네르헤임"
+#   set the ko label to "소피아 와덴스티에르나"
+Q141219332	Lko	"소피아 와덴스티에르나"
+#   set the ko label to "헤레나 마리아 쇠데르헬므"
+Q112969835	Lko	"헤레나 마리아 쇠데르헬므"
+#   set the ko label to "카르르 에리크 만네르헤임"
+Q1814297	Lko	"카르르 에리크 만네르헤임"
+#   set the ko label to "카르르 아우구스트 에흐렌스베르드"
+Q1036858	Lko	"카르르 아우구스트 에흐렌스베르드"
+#   set the ko label to "마린 안데르스도테르"
+Q141216397	Lko	"마린 안데르스도테르"
+#   Q141224376 Zacharias Fransson Franzén: set the ko label to "자차리아스 프란손 프란젠"
+Q141224376	Lko	"자차리아스 프란손 프란젠"
+#   Q141224767 Helena Mikontytär Schulin: set the ko label to "헤레나 미콘티테르 수린"
+Q141224767	Lko	"헤레나 미콘티테르 수린"
+#   set the ko label to "츠리스티나 피페르"
+Q4972997	Lko	"츠리스티나 피페르"
+#   set the ko label to "기세라"
+Q284400	Lko	"기세라"
+#   Q141219316 Reiar Einarsen Kydland: set the ko label to "레이아르 에이나르센 키드란드"
+Q141219316	Lko	"레이아르 에이나르센 키드란드"
+#   set the ko label to "바로네스 마리아나 헤레나 에흐렌크로나"
+Q116775360	Lko	"바로네스 마리아나 헤레나 에흐렌크로나"
+#   set the ko label to "안나 막다레나 파우리"
+Q110457044	Lko	"안나 막다레나 파우리"
+#   Q141225740 Jakob Chydenius: set the ko label to "자콥 치데뉴스"
+Q141225740	Lko	"자콥 치데뉴스"
+#   Q141224209 Jacob Chydenius: set the ko label to "자콥 치데뉴스"
+Q141224209	Lko	"자콥 치데뉴스"
+#   Q141216349 Ingrid Guttormsdotter: set the ko label to "잉리드 구토르므스도테르"
+Q141216349	Lko	"잉리드 구토르므스도테르"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have

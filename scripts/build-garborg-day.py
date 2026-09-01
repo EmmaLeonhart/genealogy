@@ -66,6 +66,7 @@ def _load_gaps():
 
 existing_state = _load_gaps()
 
+NEWLINE = chr(10)
 ROOT = Path(__file__).resolve().parent.parent
 
 #: **Emma, 2026-08-25:** *"sibling relationships are too numerous to send at once.
@@ -6149,7 +6150,42 @@ def main():
         _label_corrections(our_items, labels, table, state) + _cjk_follows_mul(table))
 
     out = ROOT / "reports" / "wikidata-garborg-day.qs"
-    out.write_text("\n".join(lines) + "\n", encoding="utf-8", newline="\n")
+    # **ONE file, names first.** Emma, 2026-08-30: *"One file, not two. Names first, then
+    # everything else. Today it is `wikidata-garborg-day.qs` plus
+    # `wikidata-garborg-name-items.qs` and a run order to remember."*
+    #
+    # The two files are the same shape they always were; what changes is that the name items are
+    # regenerated in this run and land at the TOP of the day file, so there is no order left to
+    # remember and no way to run half of it. `CLAUDE.md` § *Code that is WRITTEN but never
+    # CALLED* is the reason this matters more than tidiness: her own diagnosis of why no name
+    # item was ever created is *"name creations were always segregated into a different Quick
+    # Statements generation pipeline that was never run."*
+    #
+    # The name items go first because a person's `P735` may point at one. That only works for
+    # items that ALREADY exist -- `LAST` names the most recent creation and nothing else, so a
+    # person created here cannot reference a name item created here. The ordering is therefore
+    # correct rather than load-bearing, and the day after, the link lands.
+    name_file = ROOT / "reports" / "wikidata-garborg-name-items.qs"
+    head = []
+    try:
+        subprocess.run([sys.executable, str(ROOT / "scripts" / "build-garborg-name-items.py")],
+                       check=True, cwd=str(ROOT), capture_output=True)
+    except Exception as exc:                                        # noqa: BLE001
+        print(f"WARNING: could not regenerate the name items ({exc}); using the file on disk")
+    if name_file.exists():
+        body = name_file.read_text(encoding="utf-8").strip()
+        if body:
+            head = ["# " + "=" * 72,
+                    "# NAME ITEMS FIRST. One file, her instruction of 2026-08-30 -- there is no",
+                    "# longer a second batch to remember to run.",
+                    "# " + "=" * 72,
+                    body, "",
+                    "# " + "=" * 72,
+                    "# THE DAY'S PEOPLE",
+                    "# " + "=" * 72, ""]
+            print(f"prepended {sum(1 for l in body.splitlines() if l.strip() and not l.startswith('#'))}"
+                  f" name-item lines")
+    out.write_text(NEWLINE.join(head + lines) + NEWLINE, encoding="utf-8", newline=NEWLINE)
     print(f"wrote {out.relative_to(ROOT)}: {created} creations, {len(seen)} links")
 
     cf = ROOT / "reports" / "garborg-carry-forward.tsv"
