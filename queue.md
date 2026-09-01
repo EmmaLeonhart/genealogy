@@ -378,23 +378,31 @@ have no label at all. It was not a pipeline step, so nothing re-ran it. It is on
 the three batches below it, and `derive-family.py` was moved after `derive-labels.py`, which it
 reads. Emma, 2026-09-01: *"Just that it was so stale lol."*
 
-**`reports/label-gap.csv` is the census of who is left**, from `scripts/census-label-gap.py` —
-every one of the 62,522, with what each can actually receive:
+**`reports/label-gap.csv` is the census of who is left**, from `scripts/census-label-gap.py`,
+re-run 2026-09-01 **after** the redaction fix. Every one of the 156,738 people with no label, with
+what each can actually receive:
 
 | | count | |
 | --- | ---: | --- |
-| a surname surviving redaction → `NN Larsson` | **37,205** | 59.5% |
-| no surname, but a NAMED relative within two hops | **23,466** | 37.5% |
-| **neither — stays a bare `NN`** | **1,851** | **3.0%** |
+| no surname, but a NAMED relative within two hops | **108,876** | 69.5% |
+| a surname surviving redaction → `NN Larsson` | **37,226** | 23.8% |
+| **neither — stays a bare `NN`** | **10,636** | **6.8%** |
 
-So **97% is reachable**, and the second hop is not decoration: 29,707 are reached at one hop and
-**9,569 only at two**, which is Emma's *"it can work off of those long-range things"* paying for
-itself. 15,810 of the surname rows also have a named relative and get both halves.
+**93% is reachable.** 85,906 at one hop and **38,545 only at two**, which is Emma's *"it can work
+off of those long-range things"* paying for itself; 15,575 of the surname rows also have a named
+relative and take both halves.
 
-**What stays here is everything else in her order**: `hi`, `ar`, `ru`, `el` have not been started
-(the wiring is at the tail), and **36,592 people still have no `en` label** after the rebuild —
-down from 35,083 measured against the stale preview, which was a smaller number of a smaller
-population. That is the large outstanding job.
+**The population grew 62,522 → 156,738 and that is the redaction fix, not a regression.** Those
+94,216 were previously "labelled" `<private> Garborg` and so counted as done. They now reach the
+NN algorithm, which is why the `en` batch went 25,930 → 104,856 edits in the same change.
+
+**What is left in her order.** `hi`, `ar`, `ru` and `el` are **done** —
+`scripts/build-four-script-labels.py`, 151,320 labels over the 37,830 people who carry a QID. So
+the outstanding job is one number: **51,882 people still have no `en` label** after the rebuild.
+The `label-gap` census says 93% of them are reachable from a relative or a surviving surname, and
+`build-placeholder-label-batch.py` already generates for 137,528 — so the gap is between what the
+census says is reachable and what the placeholder batch actually emits, and closing it is the next
+concrete step rather than a new method.
 
 ## Pointers
 

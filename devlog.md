@@ -24347,3 +24347,26 @@ never the profile page* and *no already-opened filter* are both in `CLAUDE.md`, 
 **Kept, and they are not dead:** § *Always last* is a standing check that the four crons are
 running, not a one-off; § *`exports/post-merge/` — MOVED TO THE TAIL* is her live ruling to leave
 the 408 in place and keep running the measurement.
+
+## 2026-09-01 — the label-gap census, re-run after the redaction fix
+
+`scripts/census-label-gap.py` re-run against the rebuilt derived layer. The unlabelled population
+is **156,738**, not the 62,522 the queue recorded — and the growth is the redaction fix rather
+than a regression: 94,216 people were previously "labelled" `<private> Garborg` and so counted as
+done. They now reach the NN algorithm, which is the same change that took the `en` batch from
+25,930 to 104,856 edits.
+
+    relative within two hops   108,876   69.5%
+    surname surviving redaction 37,226   23.8%
+    neither, stays a bare NN    10,636    6.8%
+
+**93% reachable**, 85,906 at one hop and 38,545 only at two.
+
+The seven-languages item is cut back accordingly: `hi`, `ar`, `ru` and `el` are done (151,320
+labels), so the outstanding job is a single number — **51,882 people with no `en` label** — and
+the next step is closing the gap between what the census says is reachable and what
+`build-placeholder-label-batch.py` actually emits, which is arithmetic rather than a new method.
+
+`reports/merges-to-do.md` was regenerated the same tick, per its standing item: the ledger was
+newer than the file. It came out byte-identical, so the file was already current and only its
+mtime was stale.
