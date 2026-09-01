@@ -142,6 +142,33 @@ def main() -> None:
             out[lang] = f"{who} {', '.join(parts)}" if parts else ""
         rows.append(out)
 
+    # **A person whose Wikidata label is a REAL NAME is held, not relabelled.**
+    #
+    # Emma, 2026-08-29: *"I think that our clan things are much worse than you think, which is
+    # why I never actually ran them adn I think I am seein at least some evidence."* She was
+    # right, and it is measurable: checked live on 2026-09-01, **all 177 of these items already
+    # carry an English label**, and **15 of them are real names** rather than markers --
+    # `Q10864996` is 万寿公主, Princess Wanshou, and this batch would have relabelled her
+    # *"woman of the Li clan, from Longxi Didao"*. Also `Liu Zhen`, `Li Daogu`, `Cui Lin`,
+    # `Wei Wu`.
+    #
+    # The discriminator is the marker itself, not a similarity guess: 某 is Chinese for *a
+    # certain one* and is the whole reason these people are in this batch. A `zh` label
+    # containing 某, or an `en` label that is or ends in `Mou`, is a placeholder and ours
+    # improves it. Anything else is somebody's name and this batch has nothing better to say.
+    #
+    # `reports/cjk-clan-label-safety.tsv` carries the live reading, one row per person.
+    safety = ROOT / "reports" / "cjk-clan-label-safety.tsv"
+    if safety.exists():
+        hold = {r["qid"] for r in csv.DictReader(open(safety, encoding="utf-8"), delimiter="	")
+                if r["verdict"].startswith("REAL NAME")}
+        kept = [r for r in rows if r["qid"] not in hold]
+        print(f"held {len(rows) - len(kept)} whose Wikidata label is a real name, not a marker")
+        rows = kept
+    else:
+        print("WARNING: no cjk-clan-label-safety.tsv -- every row is emitted, including any "
+              "whose Wikidata label is a real name. Refresh it before running this batch.")
+
     fields = (["qid", "geni_id", "clan_han", "place_han", "clan", "place", "sex", "mul"]
               + list(PHRASES))
     with open(OUT, "w", encoding="utf-8", newline="") as fh:
