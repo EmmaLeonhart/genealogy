@@ -122,6 +122,20 @@ jobs:
           kill $SAMPLER 2>/dev/null || true
           exit $STATUS
 
+      # **The adjudication deck, regenerated every run.** Emma, 2026-09-01: *"I told you to
+      # regenerate the html every time with the pipeline."* Until now it refreshed only when
+      # somebody ran `refresh-drift.py` by hand, so it rendered 0 cards while 709 candidates
+      # waited and she worked off the raw TSV instead. It makes ~15 batched Wikidata requests.
+      #
+      # `continue-on-error` because the deck is a convenience and the batch is the deliverable:
+      # a Wikidata hiccup here must not fail a run that has already produced the QuickStatements.
+      - name: Rebuild the adjudication deck
+        continue-on-error: true
+        env:
+          BOT_CONTACT: emma@topazcomputing.com
+          PYTHONPATH: src
+        run: python scripts/build-parent-candidates.py
+
       - name: What changed
         id: batch
         run: |
@@ -160,7 +174,9 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: wikidata-garborg-day
-          path: reports/wikidata-garborg-day.qs
+          path: |
+            reports/wikidata-garborg-day.qs
+            out/parent-review.html
           retention-days: 30
 
       - name: Open the issue
@@ -184,6 +200,9 @@ jobs:
               '',
               'Rebuilt because you edited Wikidata in the last six hours. The ledger was',
               'refreshed; the synoptic tree was not.',
+              '',
+              `The adjudication deck is in the artifact on [the run](${run}), as ` +
+              `parent-review.html — download it and open it in a browser.`,
               '',
             ].join('\n');
             const wrapped = head + '```\n' + batch + '\n```\n';

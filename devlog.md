@@ -24757,3 +24757,24 @@ the pages item and this one gave a thing that downloads a local archive of the w
 the ledger in a ci/cd run."* So the tail is now Pages → ledger archive → the dispatch, and the
 dispatch produces all three: *"the archive (committed) and the pages and the quickstatements for
 me to run later."*
+
+## 2026-09-01 — the adjudication deck is a pipeline step now, in both pipelines
+
+**Queue item cleared: § *Wire the adjudication deck onto the pipeline*.** Her instruction was
+*"I told you to regenerate the html every time with the pipeline"*, and asked directly where it
+should run she chose **both**, with **no cap**.
+
+- `scripts/rebuild-everything.py` — a step after the batch, so a deck rendered there describes the
+  same state the batch was built from.
+- `.github/workflows/pipeline.yml` — a step after `--compose`, `continue-on-error: true` because
+  the batch is the deliverable and a Wikidata hiccup must not fail a run that already produced it.
+  `out/parent-review.html` joins the uploaded artifact and the issue body says where it is.
+
+**It was reachable only by chance before.** Nothing but `refresh-drift.py` happening to pick it up
+ran `build-parent-candidates.py`, which is why `out/parent-review.html` rendered **0 cards** on
+2026-09-01 while 709 candidates sat in `reports/parent-candidates.tsv` — and she answered 207 of
+them off the raw TSV instead of the page built for it. Same family as the CJK funnel wired into
+one entry point and not the other.
+
+**No cap, her call.** The 60-card limit was the other half of the same failure: she did 207 in a
+sitting, `localStorage` keeps her place, and a cap silently hides work.

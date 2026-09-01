@@ -108,6 +108,20 @@ STEPS = [
     ("pack the big CSVs", [sys.executable, os.path.join("scripts", "pack-derived.py")]),
     ("the QuickStatements batch",
      [sys.executable, os.path.join("scripts", "build-garborg-day.py"), "--compose"]),
+    # **The adjudication deck, AFTER the batch.** Emma, 2026-09-01: *"I told you to regenerate the
+    # html every time with the pipeline."* It reads the derived CSVs plus
+    # `reports/emma-judgments.tsv`, so it must follow the derived layer; it goes after the batch
+    # so a deck rendered here describes the same state the batch was built from.
+    #
+    # It was reachable only through `refresh-drift.py` picking it up by chance, which is why
+    # `out/parent-review.html` rendered **0 cards** on 2026-09-01 while 709 candidates sat in
+    # `reports/parent-candidates.tsv` -- and she answered 207 of them off the raw TSV instead.
+    #
+    # It makes ~15 batched Wikidata requests for the candidates' sex and dates. Her call, asked
+    # directly: run it in both this and the scheduled pipeline, and carry the whole deck with no
+    # cap -- a cap is what hid the work the first time.
+    ("the adjudication deck",
+     [sys.executable, os.path.join("scripts", "build-parent-candidates.py")]),
 ]
 
 
