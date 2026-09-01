@@ -24241,3 +24241,29 @@ was applied.
 - **ITEM 1 Korean** → now just the one decision that remains, which is not Korean's alone: whether
   a rule-based transcription of a Latin name is a label we will publish. `ja` and `ko` withhold
   1,278,536 people for the same reason, so the answer moves both or neither.
+
+## 2026-09-01 — dead-queue sweep, second pass
+
+**Deleted: § *THE VERY LAST ITEM — the sequence that ends with the daily email*.** Four steps,
+strictly ordered, each the precondition for the next. All four verified rather than assumed:
+
+1. **Shrink what CI checks out** — `filter: blob:none` plus a non-cone sparse checkout in
+   `ci.yml`, five patterns, measured at 13.3 GB tracked against ~14 GB of runner disk.
+2. **Anonymise** — done to *her* definition of 2026-09-01, which replaced the
+   96,000-private-rows reading: cut the strategy content and the code that treats her item as
+   special. A repo-wide grep for that vocabulary across every `.md`, `.py` and `.yml` returns
+   **nothing**.
+3. **Make the repo public** — `gh repo view` reports `PUBLIC`.
+4. **The two things that were waiting on it** — `daily-batch-email.yml` and
+   `send_batch_email.py` exist and have run green twice; and the tests moratorium ends, below.
+
+**The no-new-tests moratorium is over, and it ended on its own terms.** Her condition was *"no
+more tests until we got the ci/cd with github actions as a public repo running"*. That is now
+literally true, so `CLAUDE.md` records it as ended rather than leaving a rule in force whose
+trigger has fired. What does not come back is the habit it was against — a test that asserts only
+the case its function already defaults to, of which `tests/test_namemodel.py:620` remains the
+worked example, and measurement over the real corpus stays the primary evidence.
+
+**Retitled, not deleted:** the email section was headed *"BUILT, needs three secrets from her"*,
+which is an annotation of done-ness in a queue that is supposed to hold only outstanding work. It
+is now *"Add three SMTP secrets so the daily batch email can send"* — the action, which is hers.

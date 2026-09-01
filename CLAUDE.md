@@ -1774,7 +1774,31 @@ limit. It is covered by the existing `out/` line, so **no `.ged` pattern exists
 and none should be added**; the rule about the corpus under `exports/` is
 untouched. Emma's call, 2026-08-07: ignore it by necessity.
 
-### NO NEW TESTS until CI/CD runs on a public repo. Verify by MEASUREMENT instead
+### The NO-NEW-TESTS moratorium ENDED on 2026-09-01, on its own terms
+
+**Her condition, 2026-08-31:** *"all the tests of this repo are kinda bullshit, so no more tests
+until we got the ci/cd with github actions as a public repo running."* That condition is now met
+and was met by the thing itself rather than by anyone deciding it had been: the repo went public
+on 2026-09-01, `.github/workflows/ci.yml` runs on a schedule and on demand, and the fast lane is
+**green on 3.10 and 3.13**.
+
+**So new tests are allowed again.** What does not come back is the habit the moratorium was
+against — a test that asserts only the case its function already defaults to.
+`tests/test_namemodel.py:620` is the worked example and it still stands as the warning: it passes
+with the discriminator *deleted*, so it never observed the thing it appears to pin, and 62,637
+tokens went out mis-modelled underneath it.
+
+**And measurement stays the primary evidence.** Every real defect found on 2026-08-31 and
+2026-09-01 came from reading output over the real corpus, not from the suite: `Bjørn` → `бйёрн`,
+`strip_markers` not being idempotent, `<private> Garborg` emitted as a label for 14,449 people,
+ㄹ named two different things in two slots, and a `csv.writer` path normaliser replacing two
+backslashes where a path has one. The suite caught same-hour regressions, which is what a suite
+is for and is a different job from establishing that new work is right.
+
+**What CI actually changed** is that a defect can now be caught on a platform this machine is
+not. The Windows-path bug was found by the first CI run and by nothing else.
+
+### Historical: NO NEW TESTS until CI/CD runs on a public repo
 
 **Emma, 2026-08-31:** *"all the tests of this repo are kinda bullshit, so no more tests until we
 got the ci/cd with github actions as a public repo running."*

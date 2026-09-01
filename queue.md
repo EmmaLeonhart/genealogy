@@ -445,7 +445,7 @@ population. That is the large outstanding job.
 - Open questions for Emma: `questions.md`
 - The pre-wipe queue, 1,396 lines: `git show 4127170:queue.md`
 
-## EMAIL me the daily QuickStatements file — BUILT, needs three secrets from her
+## Add three SMTP secrets so the daily batch email can send
 
 **Her ruling, 2026-08-31:** *"not wikidata editing but instead emailing me the daily
 quickstatements file to me every day so I can run it."* It was gated on the repo going public;
@@ -1092,49 +1092,6 @@ being called Latin: `º` says nothing about what script a name is in. Then
 cache chain `CLAUDE.md` warns about.
 
 **At the tail, her call 2026-08-31.** It is a mass operation over the whole population and the live work is hyperlocal, so it was being read and skipped every tick. Nothing about it changed except its position.
-
-## THE VERY LAST ITEM — the sequence that ends with the daily email
-
-**Emma, 2026-08-31**, shown the chain and confirming it: *"yep that's correct so put that
-sophisticated sequence as the last queue item."* Four steps, strictly in order, each one the
-precondition for the next. It absorbs the two sections that used to state pieces of it
-separately.
-
-### 1. Shrink what CI checks out
-
-The working tree is **12.2 GB**, of which **1.9 GB** is `.css` and `.download` page furniture
-under `geni-scraping/` that no build step reads. The merge peaks at **16.8 GB against a 16 GB
-runner**, so the synoptic tree cannot be rebuilt in Actions at all — but it does not need to be:
-the compose step reads only the derived CSVs, so the runner never needs the tree. Establish what
-a run actually opens, and check out that and nothing else.
-
-### 2. Anonymise
-
-The gate on going public. **~96,000 rows concern people Geni treats as private.**
-
-**The constraint the design starts from:** the Geni profile id is both the identifier and this
-repo's primary key, so it **cannot be hashed or dropped** — every join, every `P2600` statement
-and every spine runs through it. Redacting content while keeping structure is the likely shape,
-and § *Redacted people go in* is the precedent: what is informative is the structure, and none of
-that is redacted.
-
-### 3. Make the repo public
-
-Her decision, 2026-08-31: *"the repo will be public lol."* Actions minutes become free, which is
-what steps 1 and 2 exist to earn.
-
-### 4. Then the two things that were waiting on it
-
-- **The daily email.** `reports/wikidata-garborg-day.qs` reaches her inbox every day and she runs
-  it by hand — *"not wikidata editing but instead emailing me the daily quickstatements file."*
-  `schedule:` plus `workflow_dispatch:` only; `CLAUDE.md` § *Cost* forbids `push:` triggers.
-- **New tests resume.** `CLAUDE.md` § *NO NEW TESTS* is scoped to exactly this — *"no more tests
-  until we got the ci/cd with github actions as a public repo running"* — so the moratorium ends
-  here rather than by anyone deciding it has.
-
-**Nothing in this chain is blocked and none of it is urgent.** `2026-09-01` passing changes
-nothing on its own: the edit path stays unused, its `START_DATE` constants stay as the rail, and
-the batch keeps reaching her in chat exactly as it has been.
 
 ## THE VERY LAST ITEM — a GitHub Pages site documenting the repo
 
