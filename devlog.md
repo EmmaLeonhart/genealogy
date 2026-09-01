@@ -23707,3 +23707,28 @@ case where the letter-by-letter walk produced something that is not a word:
 Her tolerance for imperfect rendering is what makes these four shippable at all, and it is not
 a licence for output that has stopped being the name. That distinction is the whole reason the
 sample was read by eye before anything was wired to it.
+
+## 2026-08-31 — the new-to-new reciprocals rebuilt, and a refuted claim in their own header
+
+`reports/wikidata-reciprocals.qs` had not been rebuilt since 2026-08-25 and the QIDs it was
+waiting on now exist. **4,325 statements over 1,468 people**: 1,007 `P22` with 1,007 `P40` back,
+775 `P25` with 775 `P40`, 751 `P26`, and **10** `P3373` with **1,810 siblings held** over her
+10-a-day cap — the cap doing exactly what it was written for, since that file was 257 statements
+and 62% siblings when she set it.
+
+**Checked before offering, which the item asked for.** 1,584 subjects and 1,635 values, **0
+unknown to any source**, no `LAST` in a value position, no `Aen`. 595 subjects and 653 values sit
+outside `garborg-qids.tsv` but are known through `synoptic-correspondence.tsv` — the same widening
+that emptied the parent deck an hour ago.
+
+**And the file's own header carried the claim it exists because of.** It read *"LAST is only valid
+as a subject, never as a value, so a new person's reciprocal can never be written in the batch that
+creates them."* `CLAUDE.md` § *The batches are a SEQUENCE* records that as false, and as having
+cost her weeks of one-way links repaired by hand: `Q141178381 P22 LAST` is ordinary
+QuickStatements. The real limit is narrower and is precisely what this file is for — two people
+minted in the **same** run cannot reference each other.
+
+So the script generating the fix was printing the misconception at the top of it. Corrected.
+
+**Not attached.** It is 4,325 statements and she has not asked for it; § *Do not invent a runnable
+edit batch she has not asked for* holds until she does.

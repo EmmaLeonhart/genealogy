@@ -162,8 +162,15 @@ def main():
         out.write("# Relationships our tree records that the live Wikidata items do not hold.\n")
         out.write("# Both directions are checked separately: a parent item can hold P40 while\n")
         out.write("# the child holds no P22, which is exactly what a CREATE block leaves behind\n")
-        out.write("# -- LAST is only valid as a subject, never as a value, so a new person's\n")
-        out.write("# reciprocal can never be written in the batch that creates them.\n")
+        # **The old wording here was the refuted claim, in the header of the very file that
+        # exists because of it.** It read *"LAST is only valid as a subject, never as a value"*,
+        # which `CLAUDE.md` § *The batches are a SEQUENCE* records as false and as having cost
+        # her weeks of one-way links repaired by hand: `Q141178381 P22 LAST` is ordinary
+        # QuickStatements. The real limit is narrower and is what this file is for -- `LAST`
+        # names only the most recent item, so two people minted in the SAME run cannot
+        # reference each other, and their mutual links wait for a later batch.
+        out.write("# -- two people created in the SAME run cannot point at each other, since\n")
+        out.write("# LAST names only the most recent. Their mutual links land here instead.\n")
         out.write("#\n")
         out.write("# Nothing checked live: QuickStatements ignores a statement already held.\n")
         out.write("# Additions only. Nothing is created and nothing is removed.\n\n")
