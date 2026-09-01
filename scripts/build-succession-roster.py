@@ -266,6 +266,57 @@ def main():
             v["name"] = label.get(v["geni_id"], "")
         rows.append(v)
 
+    # ---- the office number, from the English Wikipedia succession -------------------
+    #
+    # **Emma named this source, 2026-08-31**, after three guesses of mine missed it. It carries
+    # all 132 positions where `P39` on Wikidata enumerates 7.
+    #
+    # **The key is GIVEN NAME + REGNAL ORDINAL, not the whole string.** The patronymic chains
+    # spell apart between the two sources -- `Matzliach`/`Matsliah`, `Aaharon`/`Aharon` -- so a
+    # full-string match found 19 of 82. `Bakhi II` against `Bakhi II` finds **80 of 82**, because
+    # the ordinal makes the short key unique: 110 of the 132 list rows carry one.
+    #
+    # **And it is checkable, which is why it can be trusted.** Of the 18 office numbers already
+    # held from `wikidata-samaritan-succession.json`, every single matchable one **agrees** --
+    # zero conflicts. The apparent 18th, `Saloum Cohen` at 130, is the list's
+    # `Shalom II ben Amram ben Yitzhaq` at 130: the same man under a romanisation the fold does
+    # not bridge, so it agrees too.
+    succ_list = ROOT / "reports" / "samaritan-succession-list.tsv"
+    if succ_list.exists():
+        import collections
+        roman = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII",
+                 "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX", "XXI", "XXII"}
+
+        def fold(w):
+            w = w.lower()
+            for a, b in (("tz", "s"), ("ts", "s"), ("kh", "h"), ("ch", "h"), ("aa", "a"),
+                         ("ee", "e"), ("oo", "o"), ("th", "t"), ("y", "i"), ("j", "i"),
+                         ("q", "k"), ("c", "k"), ("ph", "f"), ("w", "v")):
+                w = w.replace(a, b)
+            return re.sub(r"(.)+", r"", re.sub(r"[^a-z]", "", w))
+
+        def key(name):
+            t = [x for x in name.split() if x]
+            return (fold(t[0]), next((x for x in t[1:3] if x in roman), "")) if t else None
+
+        bykey = collections.defaultdict(list)
+        with io.open(succ_list, encoding="utf-8", newline="") as fh:
+            for r in csv.DictReader(fh, delimiter="	"):
+                k = key(r["name"])
+                if k and k[0]:
+                    bykey[k].append(r)
+        filled = 0
+        for r in rows:
+            if r["family"] != "Samaritan" or r["number_in_office"]:
+                continue
+            hits = bykey.get(key(r["name"]) or (), [])
+            if len(hits) == 1:
+                r["number_in_office"] = hits[0]["number"]
+                r["geni_status"] = (r.get("geni_status", "")
+                                    + "; office from the Wikipedia list").strip("; ")
+                filled += 1
+        print("%d Samaritan office numbers filled from the Wikipedia succession" % filled)
+
     order = {"Izumo": 0, "Senge": 1, "Kitajima": 2, "Samaritan": 3}
     rows.sort(key=lambda r: (order.get(r["family"], 9),
                              int(r["number_in_office"]) if r["number_in_office"].isdigit()

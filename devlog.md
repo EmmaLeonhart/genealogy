@@ -23300,3 +23300,37 @@ sentence and by the Wikipedia list independently.
 the 82 Samaritan roster rows match the list on an exact normalised name; the rest differ by
 spelling — `Matzliach`/`Matsliah`, `Aaharon`/`Aharon`. The numbers exist for all 132 positions, so
 this is matching rather than research.
+
+## 2026-08-31 — the Samaritan office numbers: 18 → 81 of 82, with zero conflicts
+
+The name reconciliation, done. **`number_in_office` for the Samaritans goes 18 → 81 of 82.**
+
+**The key is GIVEN NAME + REGNAL ORDINAL, not the whole string**, and that is the whole trick. The
+patronymic chains spell apart between our corpus and the list — `Matzliach`/`Matsliah`,
+`Aaharon`/`Aharon` — so matching the full name found **19 of 82**. `Bakhi II` against `Bakhi II`
+finds **80 of 82**, because the ordinal makes a two-token key unique: 110 of the 132 list rows
+carry one, and 77 of our 82 rows do.
+
+**And it is checkable, which is why it can be trusted at all.** Against the 18 office numbers
+already held from `wikidata-samaritan-succession.json`: **every matchable one agrees, zero
+conflicts.** The apparent eighteenth is not a conflict either — `Saloum Cohen` at 130 is the
+list's `Shalom II ben Amram ben Yitzhaq` at 130, the same man under a romanisation the fold does
+not bridge. So the two sources agree on every position they share.
+
+That is three independent agreements now on the same arithmetic: the JSON, the saved page's own
+prose (*"the 132nd High Priest since Aaron... for 112 generations... till 1624 CE"*), and the
+Wikipedia list.
+
+**Two rows are left without an office number**, and both are name-form gaps rather than missing
+data: `Saloum Cohen` (the list calls him Shalom II) and `Amram I. Samaritan High Priest`, whose
+label carries the office as part of the name.
+
+| family | rows | qid | geni | regnal | in office |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Izumo | 53 | 51 | 37 | 0 | 53 |
+| Senge | 22 | 22 | 20 | 0 | 22 |
+| Kitajima | 14 | 14 | 14 | 0 | 14 |
+| Samaritan | 82 | 21 | 82 | 77 | **81** |
+
+The remaining Samaritan gap is QIDs — 21 of 82 — and the Wikipedia list cannot close it: only 14
+of its 132 rows have an article at all, the rest being red links.
