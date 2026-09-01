@@ -24864,3 +24864,29 @@ row so a `zipper`-only pair can be read before acting on it.
 `1 other` while the file itself correctly said **67**. Caught by checking the summary against the
 file rather than trusting it — the same class as every other number-about-the-instrument bug here.
 The loop variable is `older` now.
+
+## 2026-09-01 — the 1,539 traced: not an `en` shortfall, a transcription population
+
+**Queue item worked: § *Labels in seven languages*, its last open row.** It read *"the 1,539
+outside the placeholder population, 935 of them CJK-named"* and had sat there as the section's
+only remainder.
+
+**Traced rather than guessed at, and the filing was wrong.** They are in `reports/label-gap.csv`
+with outcome `relative`, they are all 1,539 in `reports/derived-family.csv`, and **not one of them
+reaches `reports/relationship-label-preview.csv`** — which is correct, because `is_placeholder()`
+returns False for them. They are not unnamed people the NN algorithm is failing to serve.
+
+**They have real names, in scripts nothing here transcribes.** Over their `NAME` records: Han
+**2,173**, Cyrillic **359**, Han+Latin **344**, Hebrew **140**, Latin 92 (parenthesised
+descriptions like `(Molher de Bernat Gòt)`), then Tibetan, Hangul, Arabic, Hiragana and Greek.
+`蟜牛`, `Иоанн Всеволодович`, `Jew Law Ying 趙羅英`, `זלדה`.
+
+So the work is the transcription step § *LABELS, IN HER ORDER* already specifies — *"a Han-only or
+Cyrillic-only or Hebrew-only person gets an `en` made for them"* — and for the CJK majority it is
+**agentic, never programmatic**, culture settled by the tree first. The row is moved there and the
+seven-languages section has nothing open.
+
+**The "935 CJK-named" figure was wrong and worth naming.** 107 is how many have a *relative* with a
+CJK name; the number that matters is how many carry one **themselves**, and Han alone is 2,173 name
+rows. Both numbers describe the same people and neither was labelled, so the queue carried a
+measurement of the wrong thing for a fortnight.

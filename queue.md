@@ -107,19 +107,6 @@ exclusion list and not as a discussion of her item. Behaviour is byte-identical 
 **What she needs to decide:** whether the lists come out entirely (and her item becomes editable
 like any other), or stay as the mechanism keeping her out of the graph.
 
-## Keep `reports/merges-to-do.md` current
-
-Emma, 2026-08-31: *"Just make a 'merges to do' file that records these merges and the wikidata
-duplicates and all the other things we went over that's a file I'll use tomorrow to do merges
-manually on my own with the quickstatements session."*
-
-`python scripts/build-merges-to-do.py` rebuilds it. Regenerate it when
-`out/wikidata/p2600-all.tsv` or `reports/garborg-qids.tsv` is refreshed, so the duplicate
-counts are not stale when she next sits down to it.
-
-**The merges themselves are hers now, not mine** — that is what the file is for. The Izumo
-three are cleared and the browser pass is closed.
-
 ## ⛔ THE DAILY ALGORITHM — her full spec, 2026-08-26. SPECIFICATION, not a step
 
 `docs/dictation/2026-08-26-daily-algorithm.md` is her dictation verbatim;
@@ -349,7 +336,9 @@ the in-law wording*; it is added. What remains:
 *description* in the local languages; a description needs a named relative and these people have
 none. `NN Larsson` in `mul` with no `en` is the algorithm working, not failing.
 
-**Still open here:** the 1,539 outside the placeholder population, 935 of them CJK-named.
+**Nothing is open here.** The 1,539 that sat in this row were traced on 2026-09-01 and they are
+not an `en` shortfall at all — they are non-Latin-named people who belong to the transcription
+step. They have moved to § *LABELS, IN HER ORDER*, where that step lives.
 
 ## The placeholder batch emits `ja` and `zh` and NO `ko`
 
@@ -873,6 +862,32 @@ words. So the batches are `en` for everybody, then `mul` for everybody, then `ja
   exports they came from"*, never the name. 806 Han-only among the structural
   placeholders alone; the corpus figure is larger and is what this step must count.
 
+- **The 1,539 with no label and a named relative are HERE, not in the placeholder work.**
+  Traced 2026-09-01. They are in `reports/label-gap.csv` with outcome `relative`, they are in
+  `reports/derived-family.csv`, and **none of them reaches
+  `reports/relationship-label-preview.csv`** — correctly, because `is_placeholder()` returns
+  False for them. They are not unnamed.
+
+  **They have real names, in scripts nothing here transcribes.** Measured over their `NAME`
+  records:
+
+  | script | rows | |
+  | --- | ---: | --- |
+  | Han | 2,173 | `陳母`, `句芒` |
+  | Cyrillic | 359 | `Иоанн Всеволодович` |
+  | Han+Latin | 344 | `Jew Law Ying 趙羅英`, `Wo Deng 握登` |
+  | Hebrew | 140 | `זלדה`, `חיים אהרון` |
+  | Latin | 92 | `(Molher de Bernat Gòt)` — parenthesised descriptions |
+  | Latin+Tibetan · Hangul · Arabic · Hiragana · Greek | 107 | the tail |
+
+  So the work is the transcription this section already specifies — *"a Han-only or Cyrillic-only
+  or Hebrew-only person gets an `en` made for them"* — and for the CJK majority it is **agentic,
+  never programmatic**, with the culture question settled by the tree first.
+
+  **The queue said "935 of them CJK-named" and that was wrong.** 107 is the count of those whose
+  *relative* carries a CJK name; the number that matters is how many carry one **themselves**, and
+  Han alone is 2,173 name rows. Both figures were in the file at once and neither was labelled.
+
 - **`mul` for every individual, derived from `en`.** *"Almost always derived from en"* —
   so the exceptions are the thing to find and report, not to guess at.
 
@@ -1023,6 +1038,40 @@ it: `out/family-structure.tsv.gz` was not committed, `pack-derived.py` did not l
 
 **The point is the batch, not a green tick.** A run that finishes and uploads
 `reports/wikidata-garborg-day.qs` as an artifact, with the issue opened, is the deliverable.
+
+## The merges, with an HTML page to work them from
+
+**Emma, 2026-09-01:** *"merges put them at the end of the queue with an html page for them"*.
+
+Emma, 2026-08-31: *"Just make a 'merges to do' file that records these merges and the wikidata
+duplicates and all the other things we went over that's a file I'll use tomorrow to do merges
+manually on my own with the quickstatements session."*
+
+`python scripts/build-merges-to-do.py` rebuilds it. Regenerate it when
+`out/wikidata/p2600-all.tsv` or `reports/garborg-qids.tsv` is refreshed, so the duplicate
+counts are not stale when she next sits down to it.
+
+**The merges themselves are hers now, not mine** — that is what the file is for. The Izumo
+three are cleared and the browser pass is closed.
+
+**The page is the new half.** `reports/merges-to-do.md` is 8 sections of markdown and she works
+through it by hand; the adjudication deck showed what a page buys instead — she cleared **207
+pairs in one sitting** off a page and had answered none off the equivalent TSV.
+
+- **Build it from `out/parent-review.template.html`'s design**, not from scratch. That template is
+  hers, hand-approved, and rebuilding it from scratch on 2026-09-01 was a mistake she named:
+  *"did you regenerate it from scratch instead of using the template you used yesterday lol"*.
+  Same fonts, same keyboard flow, same `localStorage`.
+- **One card per merge**, showing both items side by side with the evidence that decides it:
+  label, sex, born–died, property count, sitelink count, and which sources found the pair. The
+  deck's lesson applies exactly — *"the problem with that html is it didn't give that good
+  feedback"* — so a card without sex and dates is not worth building.
+- **The prefilled `Special:MergeItems` link is the action**, in the direction `Help:Merge` wants,
+  with a one-key way to mark a card done. It never performs a merge.
+- **Section 8 is the one that needs eyes most**: those pairs come from the zipper, which carries a
+  measured 2.8–4.8% error, and § 1's pairs are already spot-checked.
+- Regenerate it with the file, in the same pipeline step, so the page is never staler than the
+  markdown.
 
 ## THE TRUE LAST ITEM — remove the spine and every trace of it
 
