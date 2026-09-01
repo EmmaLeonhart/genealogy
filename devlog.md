@@ -23127,3 +23127,33 @@ Two other things now hang off the same gate, worth seeing together rather than r
 - **The CI checkout has to shrink too** — the working tree is 12.2 GB with 1.9 GB of `.css` and
   `.download` page furniture under `geni-scraping/`, and the merge peaks at 16.8 GB against a
   16 GB runner. The compose step only reads the derived CSVs, so the runner never needs the tree.
+
+## 2026-08-31 — the closing sequence written as the last queue item
+
+Emma, shown the dependency chain and confirming it: *"yep that's correct so put that sophisticated
+sequence as the last queue item."*
+
+§ *THE VERY LAST ITEM — the sequence that ends with the daily email* now carries all four steps in
+order, and **absorbs the two sections that used to state pieces of it separately** — § *A unified
+CI/CD pipeline that builds it* and § *Clear the personal information out*. Both are deleted; the
+chain reads better as one thing than as three that have to be assembled mentally each time.
+
+    1. shrink the CI checkout   12.2 GB tree, 1.9 GB of it page furniture nothing reads;
+                                merge peaks 16.8 GB against a 16 GB runner, and compose
+                                only ever reads the derived CSVs
+    2. anonymise                ~96,000 private-person rows; the Geni id CANNOT be hashed
+                                or dropped, being this repo's primary key
+    3. make it public           her decision; this is what steps 1 and 2 earn
+    4. then                     the daily email, and new tests resume
+
+Step 4 is where two long-standing things land at once: the QuickStatements file reaching her inbox
+daily, and the end of the no-new-tests moratorium — which `CLAUDE.md` scopes to exactly *"until we
+got the ci/cd with github actions as a public repo running"*, so it ends here rather than by
+anyone deciding it has.
+
+**Stated in the item because it is the thing most likely to be misread tomorrow:** none of this is
+blocked and none of it is urgent. `2026-09-01` passing changes nothing on its own — the edit path
+stays unused, its `START_DATE` constants stay as the rail, and the batch keeps reaching her in
+chat as it has all along.
+
+53 → 51 sections.

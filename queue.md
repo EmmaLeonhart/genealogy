@@ -325,13 +325,10 @@ along.
   Those stay as the safety rail on the *edit* path, which remains unused.
 - **`schedule:` plus `workflow_dispatch:` only.** `CLAUDE.md` § *Cost* forbids `push:` and
   `pull_request:` triggers and this needs neither.
-- **It runs on GitHub Actions, not a local task.** Emma, 2026-08-31: *"the repo will be
-  public lol"* — so Actions minutes are free and the local-scheduled-task fallback is dropped.
-- **That makes the anonymisation work a hard prerequisite**, and it sits at the tail: ~96,000
-  rows concern people Geni treats as private, and the Geni profile id cannot be hashed or
-  dropped because it is this repo's primary key. See § *Clear the personal information out*.
-  Until that lands the repo cannot go public, so this cannot run on Actions — the date passing
-  tomorrow changes nothing on its own.
+- **It runs on GitHub Actions, and it is step 4 of § *THE VERY LAST ITEM***, which carries the
+  whole chain: shrink the checkout, anonymise, go public, then this. Do not build it before
+  then — until the repo is public there are no free minutes to run it on, and the date passing
+  changes nothing on its own.
 - **Send the file, not a summary.** The batch is what she runs.
 
 ## How the synoptic tree is actually made — Emma, 2026-08-25
@@ -1431,27 +1428,6 @@ away.
 to their names***, which says names come first. This item is the later statement and wins; the
 older section is cross-referenced here so the two are not solved twice.
 
-## A unified CI/CD pipeline that builds it
-
-Once the file above is one artefact, one workflow should produce it, on the public repo, on
-GitHub Actions.
-
-**`AskUserQuestion` on how to save space** — that is the gate, and it is hers to answer.
-Actions minutes are free on a public repo, but the runner is 16 GB against a merge that peaks at
-16.8 GB, and the working tree is 12.2 GB with 1.9 GB of `.css` and `.download` page furniture
-under `geni-scraping/`. Put the options to her rather than picking one.
-
-**Never add a `push:` or `pull_request:` trigger** — `CLAUDE.md` § *Cost*. `schedule:` plus
-`workflow_dispatch:`.
-
-## Clear the personal information out, so the repo is safe to make public
-
-Runs after the pipeline item. ~96,000 rows concern people Geni treats as private.
-
-**The constraint the design starts from:** the Geni profile ID is both the identifier and this
-repo's primary key, so it cannot be hashed or dropped without breaking every join, every `P2600`
-statement and the spines. Redacting content while keeping structure is the likely shape.
-
 ## Create the fathers the patronymics imply — AFTER the name work, her call
 
 **Emma, 2026-08-15:** *"If they are patronymics I actually think I'm going to want to add items
@@ -1674,3 +1650,46 @@ being called Latin: `º` says nothing about what script a name is in. Then
 cache chain `CLAUDE.md` warns about.
 
 **At the tail, her call 2026-08-31.** It is a mass operation over the whole population and the live work is hyperlocal, so it was being read and skipped every tick. Nothing about it changed except its position.
+
+## THE VERY LAST ITEM — the sequence that ends with the daily email
+
+**Emma, 2026-08-31**, shown the chain and confirming it: *"yep that's correct so put that
+sophisticated sequence as the last queue item."* Four steps, strictly in order, each one the
+precondition for the next. It absorbs the two sections that used to state pieces of it
+separately.
+
+### 1. Shrink what CI checks out
+
+The working tree is **12.2 GB**, of which **1.9 GB** is `.css` and `.download` page furniture
+under `geni-scraping/` that no build step reads. The merge peaks at **16.8 GB against a 16 GB
+runner**, so the synoptic tree cannot be rebuilt in Actions at all — but it does not need to be:
+the compose step reads only the derived CSVs, so the runner never needs the tree. Establish what
+a run actually opens, and check out that and nothing else.
+
+### 2. Anonymise
+
+The gate on going public. **~96,000 rows concern people Geni treats as private.**
+
+**The constraint the design starts from:** the Geni profile id is both the identifier and this
+repo's primary key, so it **cannot be hashed or dropped** — every join, every `P2600` statement
+and every spine runs through it. Redacting content while keeping structure is the likely shape,
+and § *Redacted people go in* is the precedent: what is informative is the structure, and none of
+that is redacted.
+
+### 3. Make the repo public
+
+Her decision, 2026-08-31: *"the repo will be public lol."* Actions minutes become free, which is
+what steps 1 and 2 exist to earn.
+
+### 4. Then the two things that were waiting on it
+
+- **The daily email.** `reports/wikidata-garborg-day.qs` reaches her inbox every day and she runs
+  it by hand — *"not wikidata editing but instead emailing me the daily quickstatements file."*
+  `schedule:` plus `workflow_dispatch:` only; `CLAUDE.md` § *Cost* forbids `push:` triggers.
+- **New tests resume.** `CLAUDE.md` § *NO NEW TESTS* is scoped to exactly this — *"no more tests
+  until we got the ci/cd with github actions as a public repo running"* — so the moratorium ends
+  here rather than by anyone deciding it has.
+
+**Nothing in this chain is blocked and none of it is urgent.** `2026-09-01` passing changes
+nothing on its own: the edit path stays unused, its `START_DATE` constants stay as the rail, and
+the batch keeps reaching her in chat exactly as it has been.
