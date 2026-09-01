@@ -105,7 +105,7 @@ class Tree:
             "0 HEAD",
             "1 SOUR genimerge",
             "2 NAME genimerge samaritan-sources",
-            "2 CORP Emma Leonhart",
+            "2 CORP Empress Jingū",
             "1 GEDC", "2 VERS 5.5.1", "2 FORM LINEAGE-LINKED",
             "1 CHAR UTF-8",
             "1 NOTE Israelite Samaritan genealogy transcribed from published sources.",

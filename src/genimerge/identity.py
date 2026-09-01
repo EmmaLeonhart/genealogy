@@ -2,8 +2,8 @@
 
 Geni's GEDCOM export puts the profile ID in two places at once::
 
-    0 @I6000000087535357291@ INDI
-    1 RFN geni:6000000087535357291
+    0 @I6000000001846508982@ INDI
+    1 RFN geni:6000000001846508982
 
 The xref prefix is a type letter (``I`` individual, ``F`` family, ``S``
 submitter, ``N`` note), and the digits are the Geni ID. Everything in the
@@ -54,7 +54,7 @@ class IdentityMismatch(ValueError):
 
 
 def geni_id_from_xref(xref: str | None) -> str | None:
-    """``"@I6000000087535357291@"`` -> ``"6000000087535357291"``."""
+    """``"@I6000000001846508982@"`` -> ``"6000000001846508982"``."""
     if not xref:
         return None
     match = GENI_ID_RE.match(xref)

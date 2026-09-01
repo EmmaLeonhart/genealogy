@@ -135,11 +135,11 @@ def test_the_real_file_parses_completely():
 # --- name corrections: the Geni side is stale, not Wikidata's -------------
 
 CORRECTION = """\
-Emma Leonhart
-https://www.geni.com/people/Emma-Leonhart/6000000087535357291
+Empress Jingū
+https://www.geni.com/people/Emma-Leonhart/6000000001846508982
 https://www.wikidata.org/wiki/Q232803
 
-the name on that one is "Emma Leonhart", Emma /Leonhart/ - already corrected on
+the name on that one is "Empress Jingū", Emma /Leonhart/ - already corrected on
 geni, the exports here are just old.
 """
 
@@ -154,8 +154,8 @@ def test_a_name_correction_is_keyed_by_geni_id_not_qid():
     parsed = entities.parse(CORRECTION)
     assert len(parsed.name_corrections) == 1
     correction = parsed.name_corrections[0]
-    assert correction.geni_id == "6000000087535357291"
-    assert correction.text == "Emma Leonhart"
+    assert correction.geni_id == "6000000001846508982"
+    assert correction.text == "Empress Jingū"
     # and it is not mistaken for a Wikidata label edit
     assert parsed.labels == []
 
@@ -163,15 +163,15 @@ def test_a_name_correction_is_keyed_by_geni_id_not_qid():
 def test_the_resolution_still_parses_alongside_the_correction():
     parsed = entities.parse(CORRECTION)
     assert [(r.geni_id, r.qid) for r in parsed.resolutions] == [
-        ("6000000087535357291", "Q232803")
+        ("6000000001846508982", "Q232803")
     ]
 
 
 def test_a_correction_requires_quotes():
     """Without them it would rename somebody to the rest of the sentence."""
     parsed = entities.parse(
-        "https://www.geni.com/people/x/6000000087535357291\n"
-        "the name on that one is Emma Leonhart and she moved to Vancouver\n"
+        "https://www.geni.com/people/x/6000000001846508982\n"
+        "the name on that one is Empress Jingū and she moved to Vancouver\n"
     )
     assert parsed.name_corrections == []
 
@@ -189,36 +189,36 @@ def test_two_profiles_split_into_two_blocks_and_the_correction_stays_local():
     deleted as dead.
     """
     parsed = entities.parse(
-        "https://www.geni.com/people/x/6000000087535357291\n"
+        "https://www.geni.com/people/x/6000000001846508982\n"
         "https://www.geni.com/people/y/6000000001835522164\n"
-        'the name on that one is "Emma Leonhart"\n'
+        'the name on that one is "Empress Jingū"\n'
     )
     assert [(c.geni_id, c.text) for c in parsed.name_corrections] == [
-        ("6000000001835522164", "Emma Leonhart")
+        ("6000000001835522164", "Empress Jingū")
     ]
 
 
 @pytest.mark.parametrize(
     "line",
     [
-        'the name on that one is "Emma Leonhart"',
-        'the name is "Emma Leonhart"',
-        'real name is "Emma Leonhart"',
-        'rename to "Emma Leonhart"',
+        'the name on that one is "Empress Jingū"',
+        'the name is "Empress Jingū"',
+        'real name is "Empress Jingū"',
+        'rename to "Empress Jingū"',
     ],
 )
 def test_the_phrasings_that_are_understood(line):
     parsed = entities.parse(
-        f"https://www.geni.com/people/x/6000000087535357291\n{line}\n"
+        f"https://www.geni.com/people/x/6000000001846508982\n{line}\n"
     )
-    assert [c.text for c in parsed.name_corrections] == ["Emma Leonhart"]
+    assert [c.text for c in parsed.name_corrections] == ["Empress Jingū"]
 
 
 def test_corrected_names_lets_a_later_entry_win():
     """A second correction on one profile is a further correction, not a rival."""
     parsed = entities.parse(
-        'https://www.geni.com/people/x/6000000087535357291\nrename to "First"\n\n'
-        'https://www.geni.com/people/x/6000000087535357291\nrename to "Second"\n'
+        'https://www.geni.com/people/x/6000000001846508982\nrename to "First"\n\n'
+        'https://www.geni.com/people/x/6000000001846508982\nrename to "Second"\n'
     )
-    assert parsed.corrected_names() == {"6000000087535357291": "Second"}
+    assert parsed.corrected_names() == {"6000000001846508982": "Second"}
 

@@ -47,7 +47,7 @@ from genimerge.sources import find_exports  # noqa: E402
 
 OUT = ROOT / "reports" / "bio-qids.tsv"
 
-#: `0 @I6000000087535357291@ INDI` -- the record that owns everything until the next `0` line.
+#: `0 @I6000000001846508982@ INDI` -- the record that owns everything until the next `0` line.
 INDI = re.compile(rb"^0 @I(\d+)@ INDI", re.M)
 LEVEL0 = re.compile(rb"^0 ", re.M)
 QID = re.compile(rb"wikidata\.org/(?:wiki|entity)/(Q\d+)", re.I)

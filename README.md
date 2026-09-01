@@ -35,8 +35,8 @@ Merging is exact, not fuzzy. Geni writes the profile ID as the GEDCOM xref
 itself:
 
 ```
-0 @I6000000087535357291@ INDI
-1 RFN geni:6000000087535357291
+0 @I6000000001846508982@ INDI
+1 RFN geni:6000000001846508982
 ```
 
 so every record carries a stable primary key across exports, and the same ID is
@@ -55,7 +55,7 @@ can split it again — that is normal, not a defect. Disjoint components do not
 conflict; they just never meet.
 
 **How the two halves were joined.** `reports/path-jimmu.md` checks an 83-step
-Geni relationship path — Emma Leonhart to Emperor Jimmu — against the merged
+Geni relationship path — Empress Jingū to Emperor Jimmu — against the merged
 tree, joining on the profile ID at every step. It went **62/83 held, then 77/83,
 then 83/83**: a 21-step gap attacked from both ends, then closed by two exports
 seeded in the six people that were left. Every step of that path is now walkable

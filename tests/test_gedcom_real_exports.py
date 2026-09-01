@@ -221,7 +221,7 @@ def test_the_prefix_reader_distinguishes_the_xref_that_caused_the_bug():
     """
     assert _prefix("@NI04461@") == "NI"
     assert _prefix("@N1040@") == "N"
-    assert _prefix("@I6000000087535357291@") == "I"
+    assert _prefix("@I6000000001846508982@") == "I"
 
 
 def test_the_guard_fires_on_a_document_carrying_a_foreign_xref():

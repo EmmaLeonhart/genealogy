@@ -30,7 +30,7 @@ WATCH = {
     "6000000227145420853": "wife of Samuel Standen",
     "6000000040078764766": "Baruch Jafe",
     "6000000107265740881": "Samuell Standen",
-    "6000000087535357291": "Emma Leonhart (the main tree)",
+    "6000000001846508982": "Empress Jingū (the main tree)",
 }
 
 

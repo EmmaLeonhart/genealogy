@@ -23,8 +23,8 @@ SAVED = next((REPO / "geni_pages").glob("*Jimmu*.html"), None) if (REPO / "geni_
 PAGE = """<html><body>
 <div class="rel-path">
 <span class="segment"><span class="name"><a
-  href="https://www.geni.com/people/Eric-Borsheim/6000000087535357291"
-  data-profile-id="6000000087535357291">You</a></span><span class="subtext"><span
+  href="https://www.geni.com/people/Eric-Borsheim/6000000001846508982"
+  data-profile-id="6000000001846508982">You</a></span><span class="subtext"><span
   class="clipboard-hide">&nbsp;</span></span></span>
 <span class="arrow">&rarr;</span>
 <span class="segment"><span class="name"><a
@@ -46,7 +46,7 @@ def test_only_anchors_inside_a_segment_name_are_path_steps():
     links = genipage.parse_relationship_path(PAGE)
 
     assert [l.geni_id for l in links] == [
-        "6000000087535357291",
+        "6000000001846508982",
         "6000000177921459056",
     ]
 
@@ -80,7 +80,7 @@ def test_tsv_carries_every_id_and_marks_the_missing_relation():
     rows = [line.split("\t") for line in text.splitlines() if not line.startswith("#")]
 
     assert rows[0] == ["step", "name", "relation_to_previous", "note"]
-    assert rows[1] == ["1", "You", "-", "geni:6000000087535357291"]
+    assert rows[1] == ["1", "You", "-", "geni:6000000001846508982"]
     assert rows[2][3] == "geni:6000000177921459056"
 
 
@@ -90,6 +90,11 @@ def test_the_real_saved_page_yields_the_whole_jimmu_path():
 
     assert len(links) == 83, "83 steps, not the several hundred profile links on the page"
     assert links[0].name == "You"
+    # **This one id is deliberately NOT anonymised.** It asserts the contents of a real saved
+    # Geni page in `geni_pages/`, whose step 1 is the account owner because every relationship
+    # path Geni renders starts at the viewer. Replacing it would make the test assert
+    # something the file does not contain -- falsifying evidence rather than anonymising a
+    # docstring. The 2026-09-01 anonymisation pass changed it and this is why it changed back.
     assert links[0].geni_id == "6000000087535357291"
     assert links[-1].name == "Emperor Jimmu"
     assert links[-1].geni_id == "6000000001829589817"

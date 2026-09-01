@@ -106,7 +106,7 @@ before 1 September it is a single date comparison that exits immediately.
 
 ## The edit workflow (designed, not yet built)
 
-- **Cadence:** 10–100 edits/day. The Charlemagne → Emma Leonhart spine is about
+- **Cadence:** 10–100 edits/day. The Charlemagne → Empress Jingū spine is about
   **20 edits**, so roughly **20 days** at this rate to land that one integration.
 - **Review before execute — load-bearing.** The sequence of edits is generated
   into a **committed, reviewable batch first** (QuickStatements / JSON), and the

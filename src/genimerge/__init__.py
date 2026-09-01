@@ -3,8 +3,8 @@
 The whole package rests on one fact about Geni's GEDCOM export: it writes the
 Geni profile ID as the record xref itself::
 
-    0 @I6000000087535357291@ INDI
-    1 RFN geni:6000000087535357291
+    0 @I6000000001846508982@ INDI
+    1 RFN geni:6000000001846508982
 
 so records carry a stable primary key across exports and the merge never needs
 to guess whether two ``Ola Nordmann``s are the same person.

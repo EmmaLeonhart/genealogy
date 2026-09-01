@@ -576,7 +576,7 @@ def test_no_batch_names_an_excluded_id():
     """The held Kitajima ids must appear in no batch, in any position.
 
     **Emma is deliberately no longer banned here**, her instruction of 2026-09-01: *"Yeah remove
-    it"*. This test used to ban `Q232803` and `6000000087535357291` and that is why it went red
+    it"*. This test used to ban `Q232803` and `6000000001846508982` and that is why it went red
     on 2026-08-31 when `build-missing-reciprocals.py` edited her item — I answered the red test by
     re-adding her to `NEVER_TOUCH`, which was reaching for the nearest mechanism rather than
     asking which of her two instructions won. Her anonymisation instruction governs: **remove code

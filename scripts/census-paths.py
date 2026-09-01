@@ -50,7 +50,7 @@ INDI_XREF = re.compile(rb"^0 @I(\d+)@ INDI", re.M)
 
 #: The account owner. Every Geni relationship path is measured from her profile, so a second
 #: appearance of it inside one file is a second path rather than a step.
-ACCOUNT_OWNER = "6000000087535357291"
+ACCOUNT_OWNER = "6000000001846508982"
 
 
 def path_segments(rows):

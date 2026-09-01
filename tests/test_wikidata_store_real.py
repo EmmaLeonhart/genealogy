@@ -184,7 +184,7 @@ def test_the_store_is_not_a_thin_slice_of_wikidata(scan):
 @pytest.mark.xfail(
     strict=True,
     reason=(
-        "5 of 516,882 seeds are stale in the store, not wrong. Q140568870, Q16158750, "
+        "5 of 516,882 seeds are stale in the store, not wrong. Q232803, Q16158750, "
         "Q117774892, Q104731338 and Q104733676 all carry P2600 on Wikidata -- checked live "
         "2026-08-31 -- but our shard copies were fetched before the statement was added. "
         "reports/../out/wikidata/p2600-all.tsv was refreshed from live Wikidata on 2026-08-30 "

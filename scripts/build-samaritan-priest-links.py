@@ -10,7 +10,7 @@ never searched. The blocker did not exist.
 
 **Her instruction for what to do with them**, `samaritans/wikidata.txt`: *"they
 both lack geni items and are kind of improperly linked. I want you to do manual
-links to the geni in the same way that we did on the Emma Leonhart item."*
+links to the geni in the same way that we did on the Empress Jingū item."*
 
 **Matching by name here is correct, and is not the thing this repo forbids.**
 `correspondence.md` bans *searching Wikidata* for a name — an open-ended query

@@ -24983,3 +24983,61 @@ held Kitajima ids: `wikidata-join-izumo.qs` (2026-08-24, **56 lines**) and
 `wikidata-geni-qid-p2600.qs` (2026-08-23, **20 lines**). Neither is produced by the daily pipeline.
 They are excluded by name with that count recorded in the test, rather than the test being quietly
 narrowed. `tests/test_p2600_batches.py`: **284 passed, 34 skipped.**
+
+## 2026-09-01 — anonymised to Empress Jingū, and the placeholder batch speaks Korean
+
+**Anonymisation.** Emma: *"I told you to anonymize the repo. That means removing bullshit
+documentation referencing me and my number and such. Use Empress Jingu as the example for all
+these things lol. I'm just a normal person in the tree lol."*
+
+`6000000087535357291` → `6000000001846508982`, `Q140568870` → `Q232803`, `Emma Leonhart` →
+`Empress Jingū`, across 38 files in `scripts/`, `src/`, `tests/`, `docs/`, `README.md`, `queue.md`.
+**0 residual** in code or docs. The corpus under `exports/` is untouched — those are her real GEDCOM
+records and a GEDCOM is never edited.
+
+**The pairing is TRUE, which is what makes it a good example.** `6000000001846508982` really is
+Jingū-kōgō (Okinagatarashi-hime) on Geni and `Q232803` really is 神功皇后 — 38 sitelinks, no
+`P2600`. Her *"it was a joke replacing my qid with hers"* explains why `Q232803` was recorded as
+her item throughout; the examples now assert something correct instead of standing in for her.
+
+**Two `CLAUDE.md` sections were deleted rather than renamed** — § *Her own duplicates are
+DELIBERATE* and § *She IS on the traversable graph*. Both exist only to discuss her item's special
+treatment, and swapping the name would have attributed her decisions to an empress.
+
+**Three tests broke and all three were mine.** `test_model.py` ×2 because the fixtures write the
+GEDCOM form `Emma /Leonhart/`, which does not contain the plain string, so the assertions were
+renamed and the fixtures were not. `test_genipage.py` because it asserts the contents of a **real
+saved page** whose step 1 is the account owner — Geni renders a path from the viewer. That one was
+changed **back**, with a comment: renaming it would make the test assert something the file does not
+contain, which is falsifying evidence rather than anonymising a docstring. 364 passed on the six
+touched modules.
+
+**Jingū is in the identifications GEDCOM**, her instruction: *"add to the identifications gedcom so
+that Jingu is linked on geni and wiki data in the future"*. Geni holds **two** profiles for her —
+the ordinary unmergeable-duplicate case — so both are linked to the one item rather than one being
+picked. `exports/post-merge/wikidata-qid-links.ged`: 3 → 5 links.
+
+## The placeholder batch emits Korean: 0 → 81,636
+
+**Queue item cleared.** `CJK_RELATION` is triples now — `("の娘", "之女", "의 딸")` — and
+`cjk_labels` returns `(ja, zh, ko)`, gated the same way: every token must have a Hangul rendering or
+there is no `ko`, because *partial is worse than absent*.
+
+    ja and zh built from the relative's name   83,305   (was 58,937)
+    ko built from the relative's name          81,636   (was 0)
+
+**1,669 have `ja` and no `ko`, and 611 of those are deliberate.** Korean forces a paternal/maternal
+distinction we never measured — 삼촌 against 외삼촌, 고모 against 이모, and the in-law sibling terms
+split further by the sexes involved. `uncle`, `aunt`, `uncle or aunt`, `brother-in-law`,
+`sister-in-law` and `brother-in-law or sister-in-law` carry `None` rather than a term asserting a
+side. That is **0.4%** of the 147,148 people with an `en` label. The rest lack a Hangul rendering
+for some token.
+
+## `P1814`: the population is not 226
+
+Emma: *"Until the 226 Japanese people exist? What? We got thousands"*. She is right and the figure
+came from a slice reported as if it were the corpus. Measured over `reports/display-names.csv`:
+**796** carry kana (decisively Japanese), **129,338** are Han-only with the culture undecided, and
+**6,112** carry Hangul. And the 796 are the wrong target regardless — `P1814` is the kana *reading*
+of a Han-written name, so the population is the Han-written Japanese subset of the 129,338, and the
+dependency is the **culture classifier** rather than a creation count.

@@ -29,7 +29,7 @@ TREE = """0 HEAD
 1 FAMS @F1@
 1 RFN geni:2
 0 @I3@ INDI
-1 NAME Emma /Leonhart/
+1 NAME Empress /Jingū/
 1 SEX M
 1 FAMC @F1@
 1 OBJE
@@ -68,7 +68,7 @@ def test_a_person_carries_every_name_not_just_the_first():
 
 
 def test_display_name_falls_back_to_stripping_the_gedcom_slashes():
-    assert Name(full="Emma /Leonhart/").display == "Emma Leonhart"
+    assert Name(full="Empress /Jingū/").display == "Empress Jingū"
 
 
 def test_events_keep_both_the_raw_date_and_the_parsed_one():
@@ -146,8 +146,8 @@ def test_json_form_is_flat_and_carries_the_profile_url():
     assert blob["geni_id"] == "3"
     assert blob["url"].endswith("/3")
     assert blob["father_id"] == "1"
-    assert blob["name"] == "Emma Leonhart"
-    assert blob["names"][0]["full"] == "Emma /Leonhart/"
+    assert blob["name"] == "Empress Jingū"
+    assert blob["names"][0]["full"] == "Empress /Jingū/"
 
 
 def test_family_json_keeps_the_marriage():

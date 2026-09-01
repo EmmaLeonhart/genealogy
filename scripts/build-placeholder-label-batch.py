@@ -83,36 +83,36 @@ REQUIRED = ("en", "ja", "zh")
 #: **8,129 people whose only named relative is a spouse's father**, because their own spouse is
 #: unnamed too.
 CJK_RELATION = {
-    "son": ("の息子", "之子"),
-    "daughter": ("の娘", "之女"),
-    "child": ("の子", "之子"),
-    "father": ("の父", "之父"),
-    "mother": ("の母", "之母"),
-    "parent": ("の親", "之親"),
-    "husband": ("の夫", "之夫"),
-    "wife": ("の妻", "之妻"),
-    "spouse": ("の配偶者", "之配偶"),
-    "grandson": ("の孫", "之孫"),
-    "granddaughter": ("の孫娘", "之孫女"),
-    "grandchild": ("の孫", "之孫"),
-    "grandfather": ("の祖父", "之祖父"),
-    "grandmother": ("の祖母", "之祖母"),
-    "grandparent": ("の祖父母", "之祖父母"),
-    "brother": ("の兄弟", "之兄弟"),
-    "sister": ("の姉妹", "之姐妹"),
-    "sibling": ("の兄弟姉妹", "之同胞"),
-    "nephew": ("の甥", "之侄"),
-    "niece": ("の姪", "之侄女"),
-    "nephew or niece": ("の甥姪", "之侄"),
-    "uncle": ("の叔父", "之叔父"),
-    "aunt": ("の叔母", "之姑母"),
-    "uncle or aunt": ("の叔父叔母", "之叔伯"),
-    "son-in-law": ("の婿", "之婿"),
-    "daughter-in-law": ("の嫁", "之媳"),
-    "child-in-law": ("の子の配偶者", "之子媳"),
-    "brother-in-law": ("の義兄弟", "之姐夫"),
-    "sister-in-law": ("の義姉妹", "之嫂"),
-    "brother-in-law or sister-in-law": ("の義兄弟姉妹", "之姻親"),
+    "son": ("の息子", "之子", "의 아들"),
+    "daughter": ("の娘", "之女", "의 딸"),
+    "child": ("の子", "之子", "의 자녀"),
+    "father": ("の父", "之父", "의 아버지"),
+    "mother": ("の母", "之母", "의 어머니"),
+    "parent": ("の親", "之親", "의 부모"),
+    "husband": ("の夫", "之夫", "의 남편"),
+    "wife": ("の妻", "之妻", "의 아내"),
+    "spouse": ("の配偶者", "之配偶", "의 배우자"),
+    "grandson": ("の孫", "之孫", "의 손자"),
+    "granddaughter": ("の孫娘", "之孫女", "의 손녀"),
+    "grandchild": ("の孫", "之孫", "의 손주"),
+    "grandfather": ("の祖父", "之祖父", "의 할아버지"),
+    "grandmother": ("の祖母", "之祖母", "의 할머니"),
+    "grandparent": ("の祖父母", "之祖父母", "의 조부모"),
+    "brother": ("の兄弟", "之兄弟", "의 형제"),
+    "sister": ("の姉妹", "之姐妹", "의 자매"),
+    "sibling": ("の兄弟姉妹", "之同胞", "의 형제자매"),
+    "nephew": ("の甥", "之侄", "의 조카"),
+    "niece": ("の姪", "之侄女", "의 조카딸"),
+    "nephew or niece": ("の甥姪", "之侄", "의 조카"),
+    "uncle": ("の叔父", "之叔父", None),
+    "aunt": ("の叔母", "之姑母", None),
+    "uncle or aunt": ("の叔父叔母", "之叔伯", None),
+    "son-in-law": ("の婿", "之婿", "의 사위"),
+    "daughter-in-law": ("の嫁", "之媳", "의 며느리"),
+    "child-in-law": ("の子の配偶者", "之子媳", "의 자녀의 배우자"),
+    "brother-in-law": ("の義兄弟", "之姐夫", None),
+    "sister-in-law": ("の義姉妹", "之嫂", None),
+    "brother-in-law or sister-in-law": ("の義兄弟姉妹", "之姻親", None),
 }
 
 #: **Built from the table rather than typed beside it.** The two were separate literals and the
@@ -139,18 +139,25 @@ def cjk_labels(en_label, table):
     """
     m = RELATION_RE.match((en_label or "").strip())
     if not m:
-        return None, None
+        return None, None, None
     words = CJK_RELATION.get(m.group(1).lower())
     if not words:
-        return None, None
-    ja_parts, zh_parts = [], []
+        return None, None, None
+    ja_parts, zh_parts, ko_parts = [], [], []
     for token in m.group(2).split():
-        pair = table.get(token)
-        if not pair or not pair[0] or not pair[1]:
-            return None, None
-        ja_parts.append(pair[0])
-        zh_parts.append(pair[1])
-    return "・".join(ja_parts) + words[0], "·".join(zh_parts) + words[1]
+        trio = table.get(token)
+        if not trio or not trio[0] or not trio[1]:
+            return None, None, None
+        ja_parts.append(trio[0])
+        zh_parts.append(trio[1])
+        ko_parts.append(trio[2] if len(trio) > 2 else "")
+    ja = "・".join(ja_parts) + words[0]
+    zh = "·".join(zh_parts) + words[1]
+    # **Korean needs the relative's name in Hangul and a relation word that does not assert a
+    # side.** Either missing means no `ko` rather than a half-Hangul label -- *partial is worse
+    # than absent*, which is why `ja`/`zh` are gated on every token too.
+    ko = (" ".join(ko_parts) + words[2]) if (words[2] and all(ko_parts)) else None
+    return ja, zh, ko
 
 
 def main() -> int:
@@ -164,7 +171,7 @@ def main() -> int:
     if tpath.exists():
         with tpath.open(encoding="utf-8", newline="") as fh:
             for t in csv.DictReader(fh, delimiter="	"):
-                translit[t["token"]] = (t["ja"], t["zh"])
+                translit[t["token"]] = (t["ja"], t["zh"], t.get("ko", ""))
     print(f"{len(translit):,} tokens in the transliteration table")
 
     rows = list(csv.DictReader(PREVIEW.open(encoding="utf-8", newline="")))
@@ -176,10 +183,13 @@ def main() -> int:
         labels = {"mul": r["mul_label"]}
         if r.get("generated_en"):
             labels["en"] = r["generated_en"]
-            ja, zh = cjk_labels(r["generated_en"], translit)
+            ja, zh, ko = cjk_labels(r["generated_en"], translit)
             if ja:
                 labels["ja"], labels["zh"] = ja, zh
                 counts["ja and zh built from the relative's name"] += 1
+            if ko:
+                labels["ko"] = ko
+                counts["ko built from the relative's name"] += 1
         missing = [l for l in REQUIRED if l not in labels]
         counts["with an en label" if "en" in labels else "mul only"] += 1
         counts[r["population"]] += 1

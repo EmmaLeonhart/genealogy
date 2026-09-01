@@ -306,6 +306,6 @@ def render(name):
 if __name__ == "__main__":
     import sys
     sys.stdout.reconfigure(encoding="utf-8", errors="replace")
-    for probe in ("Arne Garborg", "Emma Leonhart", "Bjørn Olsen", "Aagot Nyvold",
+    for probe in ("Arne Garborg", "Empress Jingū", "Bjørn Olsen", "Aagot Nyvold",
                   "Johannes Bureus", "Karl Gustav", "Sigrid Tunheim", "Per Nilsson"):
         print(f"{probe:<22} -> {render(probe)!r}")

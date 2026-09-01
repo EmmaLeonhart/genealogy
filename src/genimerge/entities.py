@@ -78,7 +78,7 @@ _LABEL_PATTERNS = (
 #:
 #: An export is a snapshot: a profile renamed on Geni afterwards keeps its old
 #: name in every GEDCOM already taken, and no re-parse fixes that. Emma,
-#: 2026-08-12, on her own profile: *"the name on that one is 'Emma Leonhart' …
+#: 2026-08-12, on her own profile: *"the name on that one is 'Empress Jingū' …
 #: already corrected on geni, the exports here are just old."*
 #:
 #: Keyed by **Geni ID**, because that is what is wrong — the person may have no

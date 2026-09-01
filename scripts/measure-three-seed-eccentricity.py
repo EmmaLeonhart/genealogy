@@ -44,7 +44,7 @@ LABELS = ROOT / "reports" / "derived-labels.csv"
 SEEDS = {
     "Johannes Bureus": "6000000004334763223",
     "Arne Garborg": "6000000003492005116",
-    "Emma": "6000000087535357291",
+    "Emma": "6000000001846508982",
 }
 
 

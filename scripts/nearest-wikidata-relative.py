@@ -35,7 +35,7 @@ FACTS = REPO_ROOT / "reports" / "derived-facts.csv"
 
 csv.field_size_limit(10_000_000)
 
-EMMA = "6000000087535357291"
+EMMA = "6000000001846508982"
 
 
 def load():

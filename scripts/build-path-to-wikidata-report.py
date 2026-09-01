@@ -42,7 +42,7 @@ INDEX = REPO_ROOT / "out" / "wikidata" / "store-index.sqlite3"
 OUT_MD = REPO_ROOT / "reports" / "path-to-wikidata.md"
 
 csv.field_size_limit(10_000_000)
-EMMA = "6000000087535357291"
+EMMA = "6000000001846508982"
 RELATION_PROPS = ("P22", "P25", "P26", "P40", "P3373")
 
 

@@ -38,7 +38,7 @@ SOURCE = ("A.B. - The Samaritan News / The Samaritan Update, March-April 2012, "
 HEAD = """0 HEAD
 1 SOUR genimerge
 2 NAME genimerge samaritan-itamar-spine
-2 CORP Emma Leonhart
+2 CORP Empress Jingū
 1 GEDC
 2 VERS 5.5.1
 2 FORM LINEAGE-LINKED

@@ -29,7 +29,7 @@ def record(text: str):
 @pytest.mark.parametrize(
     "xref,expected",
     [
-        ("@I6000000087535357291@", "6000000087535357291"),
+        ("@I6000000001846508982@", "6000000001846508982"),
         ("@F4056@", "4056"),
         ("@S123@", "123"),
         ("@N9@", "9"),
@@ -109,14 +109,14 @@ def test_surrounding_whitespace_in_the_rfn_does_not_cause_a_false_mismatch():
 
 def test_an_xref_round_trips():
     assert xref_for("I", "123") == "@I123@"
-    assert geni_id_from_xref(xref_for("I", "6000000087535357291")) == "6000000087535357291"
+    assert geni_id_from_xref(xref_for("I", "6000000001846508982")) == "6000000001846508982"
 
 
 def test_the_profile_url_names_the_profile():
-    url = profile_url("6000000087535357291")
+    url = profile_url("6000000001846508982")
 
     assert url.startswith("https://www.geni.com/")
-    assert url.endswith("/6000000087535357291")
+    assert url.endswith("/6000000001846508982")
 
 
 # -- what the merge actually keys on -----------------------------------

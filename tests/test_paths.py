@@ -85,12 +85,12 @@ def test_parse_skips_comments_and_header():
     steps = paths.parse_path(
         "# a comment\n"
         "step\tname\trelation_to_previous\tnote\n"
-        "1\tYou\t-\tgeni:6000000087535357291\n"
+        "1\tYou\t-\tgeni:6000000001846508982\n"
         "2\tRichard Wade Borsheim\tyour father\n"
     )
     assert [s.step for s in steps] == [1, 2]
     assert steps[0].relation == ""  # "-" means no relation, not a relation named "-"
-    assert steps[0].geni_id == "6000000087535357291"
+    assert steps[0].geni_id == "6000000001846508982"
     assert steps[1].note == ""  # a missing trailing column is not an error
     assert steps[1].geni_id == ""
 
@@ -288,7 +288,7 @@ def jimmu():
 @_real
 def test_the_path_file_runs_from_the_account_owner_to_jimmu(jimmu):
     first, last = jimmu.results[0], jimmu.results[-1]
-    assert first.person.geni_id == "6000000087535357291", "step 1 is Emma Leonhart"
+    assert first.person.geni_id == "6000000001846508982", "step 1 is Empress Jingū"
     assert last.step.name == "Emperor Jimmu"
     assert last.person.geni_id == "6000000001829589817"
 

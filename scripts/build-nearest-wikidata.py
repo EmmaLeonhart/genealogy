@@ -40,7 +40,7 @@ FACTS = REPO / "reports" / "derived-facts.csv"
 OUT = REPO / "reports" / "nearest-wikidata.md"
 
 csv.field_size_limit(10_000_000)
-EMMA = "6000000087535357291"
+EMMA = "6000000001846508982"
 
 
 def _ids(field: str | None) -> list[str]:

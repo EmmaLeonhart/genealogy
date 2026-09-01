@@ -2,22 +2,6 @@
 
 Only work. Every specification and record moved to `CLAUDE.md` on 2026-09-01 at her instruction: *"remove all the 14 bullshit queue items"*. An item is DELETED when done, never annotated.
 
-## The `NEVER_TOUCH` lists — one question only she can answer
-
-Her anonymisation instruction includes *removing code that treats my item as special*, and
-`NEVER_TOUCH_GENI` / `NEVER_TOUCH_QID` in `scripts/build-garborg-day.py` are exactly that. **They
-were not removed**, because removing them does not make the code neutral — it makes the batches
-start editing her item, which is the opposite of *"I should not be in the traversable graph"*
-(2026-08-27). Deleting a guard overnight, on a guess, in a way that produces live edits, is not a
-call to make while she is asleep.
-
-**What was done instead:** the narrative around those lists is gone — they now read as an
-exclusion list and not as a discussion of her item. Behaviour is byte-identical and
-`tests/test_p2600_batches.py::test_no_batch_names_an_excluded_id` still guards it.
-
-**What she needs to decide:** whether the lists come out entirely (and her item becomes editable
-like any other), or stay as the mechanism keeping her out of the graph.
-
 ## The placeholder batch emits `ja` and `zh` and NO `ko`
 
 **It is the largest label producer in the repo** — `build-placeholder-label-batch.py`, 158,618
@@ -61,11 +45,24 @@ definition being settled.
 name in kana properties"*. **The Korean half is done** — `scripts/translit_ko.py`,
 `translit_ko_latin.py` and `build-ko-label-batch.py`, 33,725 labels. What is left is the kana.
 
-**Its population is currently empty, measured 2026-09-01** —
-`reports/culture-classifier-check.md`. `P1814` attaches to an item, and no correctly-identified
-Japanese person in this corpus has one: 226 are classified Japanese, 2 of those have items, and
-both of those are misclassified. So this is a sequencing fact rather than a difficulty — the
-property becomes emittable when those 226 are created.
+**The population is NOT 226 and it is not empty.** That figure came from
+`reports/culture-classifier-check.md`, a slice, and was written here as though it were the corpus.
+Emma, 2026-09-01: *"Until the 226 Japanese people exist? What? We got thousands"*. Measured over
+`reports/display-names.csv`:
+
+| | |
+| --- | ---: |
+| **kana in the name — decisively Japanese** | **796** |
+| **Han only — culture undecided** | **129,338** |
+| Hangul present — Korean | 6,112 |
+
+**And the 796 are the wrong target anyway.** `P1814` is the *kana reading of a name written in Han
+characters*; somebody already written `ロバート 郁夫 加納` needs no reading supplied. The population
+is the **Han-written Japanese** people, which is a subset of the 129,338 that the culture question
+has to split first — kana and Hangul are decisive, bare Han is not, and `CLAUDE.md` says the tree
+settles it via neighbours and which exports they came from, never the name.
+
+So the dependency is the **culture classifier**, not a creation count.
 
 **"With research" is the load-bearing half and stands.** A kana reading is not derivable by rule:
 the same characters take different readings per person, which is why `P1814` exists as a property
@@ -628,4 +625,38 @@ itself: *"a missing row means no `ja`/`zh` for that name, which is the current b
 honest; a guessed row would put a wrong name on a person in two languages at once."* This item
 removes the debris so the count reflects real gaps, and does not lower the bar for what gets a
 reading.
+
+## How to handle the saved pages and path files, which all begin with her
+
+**Her instruction, 2026-09-01:** *"put that as the last queue item to figure out how to deal with
+the paths page files"*.
+
+**The anonymisation pass could not touch these and stopped at the boundary.** Every file under
+`paths/` and `geni_pages/` starts at the account owner, because that is what Geni renders: a
+relationship path is *from the viewer to X*, so step 1 is always her and her profile id is in the
+data itself. `reports/display-names.csv`, `derived-labels.csv` and the corpus under `exports/`
+carry her the same way — as a person in the tree.
+
+**One test asserts it and must keep asserting it.**
+`tests/test_genipage.py::test_the_real_saved_page_yields_the_whole_jimmu_path` checks
+`links[0].geni_id` against the real saved page. The 2026-09-01 pass renamed it, the test went red,
+and it was changed back with a comment: renaming it would make the test assert something the file
+does not contain, which is falsifying evidence rather than anonymising a docstring.
+
+**So the question is what "anonymised" means for evidence, and it is hers to answer.** Four
+readings, none obviously right:
+
+- **Nothing to do** — these are data about a real tree, not documentation about her, and the
+  documentation is what she asked to be cut. The 599 files carrying her name are almost all
+  `exports/*.ged`, which are never edited.
+- **Regenerate the paths from a different viewer**, so step 1 is somebody else. Costs re-saving
+  every page from Geni and loses the provenance of what was saved when.
+- **Keep the files, scrub the reports** — leave `paths/` and `geni_pages/` alone and make the
+  derived layer not name her.
+- **Rewrite step 1 in `paths/*.tsv` to a placeholder**, which breaks the join back to the page it
+  came from.
+
+**Do not guess between these.** The pass that prompted this already made one wrong call by
+renaming an assertion about a real file; the cost of the same mistake across 586 path files is
+much larger.
 

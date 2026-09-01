@@ -60,7 +60,7 @@ AMBIGUITY_LIMIT = 20
 #: Each entry is (relation to the previous person, name as Geni renders it).
 #: Step 5 is Geni's own "her adoptive mother", kept verbatim.
 LINE: list[tuple[str, str]] = [
-    ("self", "Emma Leonhart"),
+    ("self", "Empress Jingū"),
     ("father", "Richard Wade Borsheim"),
     ("father", "Randolph Paulus Borsheim"),
     ("father", "Reinhert Borsheim"),

@@ -91,7 +91,7 @@ FAMILY = REPO / "reports" / "derived-family.csv"
 #: **Labels come from `derived-labels.csv`, never from `display-names.csv`.**
 #: The latter holds raw `NAME` records straight out of the GEDCOM, which for Emma
 #: still contains the surname removed on 2026-08-12. `CLAUDE.md` § *Her name is
-#: Emma Leonhart*: the removed name is never written down again, and
+#: Empress Jingū*: the removed name is never written down again, and
 #: `derive-labels.py` is where the correction is applied. Reading the raw column
 #: put the old name into a generated Wikidata label on the first run of this
 #: script.

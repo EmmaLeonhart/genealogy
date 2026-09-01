@@ -49,7 +49,7 @@ than a default.
 ## Why it merges rather than duplicating
 
 Records are keyed on the xref, which is the Geni profile id — `CLAUDE.md`'s primary key. So
-`0 @I6000000087535357291@ INDI` here is **the same record** as that person in every other export,
+`0 @I6000000001846508982@ INDI` here is **the same record** as that person in every other export,
 and its `NOTE` joins theirs. `merge.ALWAYS_REPEATABLE` holds `NOTE`, so nothing is overwritten:
 repeatable paths with a value are matched on that value, an identical line collapses, a different
 one is kept alongside. Re-generating and re-merging is therefore idempotent.
@@ -108,6 +108,16 @@ PAIRS = {
     "6000000001835522164": "Q11596350",   # 稚武彦命 Wakatakehiko
     "6000000001844033355": "Q11078587",   # 播磨稲日大郎姫 Harima no Inabi, his daughter
     "6000000002039751362": "Q24890131",   # 物部伊莒弗 Mononobe no Ikofutsu
+
+    # **Empress Jingū, added 2026-09-01 on her instruction:** *"add to the identifications
+    # gedcom so that Jingu is linked on geni and wiki data in the future"*.
+    #
+    # `Q232803` is 神功皇后 — 38 sitelinks, no `P2600`, so nothing joins her by id and the
+    # zipper cannot reach her either. **Geni holds two profiles for her**, which is the
+    # ordinary unmergeable-duplicate case `CLAUDE.md` records, so both are linked to the one
+    # item rather than one being picked.
+    "6000000001846508982": "Q232803",   # 神功皇后 Jingū-kōgō (Okinagatarashi-hime)
+    "6000000045545840003": "Q232803",   # the same person, Geni's second profile
 }
 ONLY = set(PAIRS)
 

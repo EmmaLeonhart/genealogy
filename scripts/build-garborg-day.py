@@ -1304,7 +1304,7 @@ ARNE_GENI = "6000000005607426327"
 #:
 #: **Emma herself is NOT in these sets any more**, her instruction of the same day: *"Yeah remove
 #: it"*. She was excluded on 2026-08-27, removed by `9968793c`, and I put her back in `ad14619a`
-#: on 2026-08-31 because `build-missing-reciprocals.py` emitted two live edits to `Q140568870`
+#: on 2026-08-31 because `build-missing-reciprocals.py` emitted two live edits to `Q232803`
 #: and a test went red — I reached for the nearest existing mechanism instead of asking which of
 #: her two instructions won, and then described it in the queue as *"they were not removed"*,
 #: which hid that I had re-added her. Her anonymisation instruction is the one that governs:

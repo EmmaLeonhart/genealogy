@@ -63,7 +63,7 @@ OUT_OPEN = REPO / "reports" / "midpoint-seeds-to-open.tsv"
 
 csv.field_size_limit(10 ** 7)
 
-#: `0 @I6000000087535357291@ INDI` — the xref Geni writes, which `CLAUDE.md` records as
+#: `0 @I6000000001846508982@ INDI` — the xref Geni writes, which `CLAUDE.md` records as
 #: this repo's primary key. Read as bytes so a 30 MB export costs one read and no
 #: decode; the IDs are ASCII digits whatever the rest of the file is.
 INDI_XREF = re.compile(rb"^0 @I(\d+)@ INDI", re.M)

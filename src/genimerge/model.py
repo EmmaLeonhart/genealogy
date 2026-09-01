@@ -48,7 +48,7 @@ class Name:
 
     @property
     def display(self) -> str:
-        """``"Emma Leonhart"`` — the slashes around the surname removed."""
+        """``"Empress Jingū"`` — the slashes around the surname removed."""
         if self.given or self.surname:
             return " ".join(p for p in (self.given, self.surname) if p)
         return self.full.replace("/", "").strip()

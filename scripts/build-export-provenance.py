@@ -41,7 +41,7 @@ EXPORTS = REPO / "exports"
 OUT_CSV = REPO / "reports" / "export-provenance.csv"
 OUT_MD = REPO / "reports" / "export-provenance.md"
 
-#: `0 @I6000000087535357291@ INDI` — the individual record header, and the only line
+#: `0 @I6000000001846508982@ INDI` — the individual record header, and the only line
 #: this needs. Matching just this keeps a 1.2 GB pass cheap.
 INDI = re.compile(r"^0 @I(\d+)@ INDI\s*$")
 

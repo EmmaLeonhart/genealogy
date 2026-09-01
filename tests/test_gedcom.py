@@ -16,7 +16,7 @@ SAMPLE = """0 HEAD
 1 SOUR Geni.com
 2 VERS 1.0
 1 CHAR UTF-8
-0 @I6000000087535357291@ INDI
+0 @I6000000001846508982@ INDI
 1 NAME Emma /Leonhart/
 2 GIVN Emma
 2 SURN Leonhart
@@ -25,11 +25,11 @@ SAMPLE = """0 HEAD
 2 DATE 26 FEB 1996
 2 PLAC Vancouver
 1 FAMC @F6000000177921459249@
-1 RFN geni:6000000087535357291
+1 RFN geni:6000000001846508982
 0 @F6000000177921459249@ FAM
 1 HUSB @I6000000177921459056@
 1 WIFE @I6000000177921459052@
-1 CHIL @I6000000087535357291@
+1 CHIL @I6000000001846508982@
 0 TRLR
 """
 
@@ -51,8 +51,8 @@ def test_trailer_is_not_a_record():
 def test_xref_carries_the_geni_profile_id():
     indi = parse(SAMPLE).records[0]
 
-    assert indi.xref == "@I6000000087535357291@"
-    assert indi.value_of("RFN") == "geni:6000000087535357291"
+    assert indi.xref == "@I6000000001846508982@"
+    assert indi.value_of("RFN") == "geni:6000000001846508982"
 
 
 def test_nested_values_are_reachable_by_path():
@@ -69,7 +69,7 @@ def test_pointer_values_are_recognised():
     indi, fam = doc.records
 
     assert indi.get("FAMC").pointer == "@F6000000177921459249@"
-    assert [c.pointer for c in fam.all("CHIL")] == ["@I6000000087535357291@"]
+    assert [c.pointer for c in fam.all("CHIL")] == ["@I6000000001846508982@"]
     # A plain value is not a pointer, even though it contains a colon.
     assert indi.get("RFN").pointer is None
     assert indi.get("NAME").pointer is None
@@ -178,7 +178,7 @@ def test_copy_is_deep():
 def test_by_xref_indexes_records():
     doc = parse(SAMPLE)
 
-    assert set(doc.by_xref()) == {"@I6000000087535357291@", "@F6000000177921459249@"}
+    assert set(doc.by_xref()) == {"@I6000000001846508982@", "@F6000000177921459249@"}
     assert [r.tag for r in doc.by_tag("FAM")] == ["FAM"]
 
 

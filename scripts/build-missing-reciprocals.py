@@ -147,7 +147,7 @@ def main():
         if not sq or not oq or sq == oq:
             return
         # **The exclusion list applies here too, and its absence was a real regression.**
-        # Rebuilding this file on 2026-08-31 emitted `Q140568870 P22 …` and `Q140568870 P25 …`
+        # Rebuilding this file on 2026-08-31 emitted `Q232803 P22 …` and `Q232803 P25 …`
         # -- Emma's own item, which `CLAUDE.md` § *Her own duplicates are DELIBERATE* keeps out
         # of the traversable graph on her instruction of 2026-08-27. `build-garborg-day.py` has
         # `NEVER_TOUCH_GENI`/`NEVER_TOUCH_QID` for exactly that; this script had no guard at all,

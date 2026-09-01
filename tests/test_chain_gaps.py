@@ -31,14 +31,14 @@ def test_the_xref_pattern_reads_geni_ids_and_only_those(gaps):
     inside a record's text cannot be mistaken for a person.
     """
     text = (b"0 HEAD\n"
-            b"0 @I6000000087535357291@ INDI\n"
+            b"0 @I6000000001846508982@ INDI\n"
             b"1 NAME Emma /Leonhart/\n"
             b"0 @F123@ FAM\n"
             b"1 NOTE see @I999@ INDI for details\n"
             b"0 @I42@ INDI\n"
             b"0 TRLR\n")
     found = [m.group(1).decode() for m in gaps.INDI_XREF.finditer(text)]
-    assert found == ["6000000087535357291", "42"]
+    assert found == ["6000000001846508982", "42"]
 
 
 def test_the_url_is_the_family_tree_index_not_the_profile(gaps):

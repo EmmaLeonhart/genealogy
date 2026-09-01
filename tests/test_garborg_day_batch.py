@@ -827,7 +827,7 @@ def test_the_contiguous_group_matches_what_emma_says_is_outside_it():
     inside = {"Q11959067": "Arne Olaus Fjørtoft Garborg",
               "Q633094": "Johannes Bureus",
               "Q141180409": "Magdalena Andersdotter"}
-    outside = {"Q232803": "Emma Leonhart",
+    outside = {"Q232803": "Empress Jingū",
                "Q12598947": "Buyeo Taebi",
                "Q116150300": "Cecilie Ebbesdatter",
                "Q19657284": "Buyeo Deokjang",
