@@ -24032,3 +24032,43 @@ function 5,470 lines away — a `csv.writer` line lost its `\t` and `\n` and too
 guard with it. Caught by parsing the file rather than by running it, and repaired against `HEAD`.
 The lesson is the one `CLAUDE.md` already records for Windows: use the editing tools for anything
 with an escape in it.
+
+## 2026-09-01 — the label chain was twelve days older than the tree
+
+Working the `en`/`mul` half of § *Labels in seven languages*, the first thing to establish was who
+actually lacks a label. `reports/derived-labels.csv` holds 1,451,964 people; `label_en` and
+`label_mul` are both filled on 1,389,442 and both empty on **62,522** — and the two columns agree
+row for row, because they derive from the same string. So the outstanding job is one population,
+not two.
+
+`scripts/census-label-gap.py` → `reports/label-gap.csv` is every one of those 62,522 with what
+each can receive. **97% is reachable:** 37,205 have a surname surviving redaction, 23,466 more
+have a named relative, and only **1,851 stay a bare `NN`**. The second hop earns its place —
+29,707 are reached at one hop and **9,569 only at two**.
+
+**Then the census disagreed with the pipeline, and the pipeline was wrong.**
+`reports/relationship-label-preview.csv` — the only source of `relationship label` rows in the
+`en` batch — was dated **2026-08-19** against a tree rebuilt **08-31**. Of its 39,691 people only
+**9,996** were still unlabelled, and it missed **52,526 of the 62,522**. Nothing re-ran it,
+because it was not a pipeline step. Re-running the chain:
+
+| | before | after |
+| --- | ---: | ---: |
+| placeholder people | 39,691 | **158,618** |
+| with an `en` label | 32,129 | **137,528** |
+| `ja`/`zh` built from the relative | 22,614 | **44,130** |
+
+**And a second, older defect fell out of the same look.** `rebuild-everything.py` ran
+`derive-family.py` at step 3 and `derive-labels.py` at step 4 — but `derive-family.py` *reads*
+`derived-labels.csv`, behind an `if LABELS.exists()`. So every rebuild fed it the previous
+generation's labels, and a first run fed it none, in complete silence. That is the shape
+`CLAUDE.md` keeps recording: *a guard against a malformed case, paid for with real values that
+then vanish without trace*. The step order is fixed and the fallback now warns, including when
+the file is merely older than the merge.
+
+The pipeline is 7 steps → **11**: merge, display names, **derived labels**, derived family,
+derived facts, **preview, placeholder labels, en labels, mul labels**, pack, batch.
+
+Emma picked all three options when asked which gap she meant, and named the real one: *"Just that
+it was so stale lol you pointed this out you know it better than I do, I don't know what this file
+even does lol."*
