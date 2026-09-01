@@ -24673,3 +24673,38 @@ still 08-26, `synoptic-correspondence.tsv` still 08-31 — the two scripts have 
 § *FOR 2026-09-02* (dated tomorrow) · § *The daily Garborg batch* and § *Keep merges-to-do.md
 current* (standing processes, not steps) · § *The placeholder batch emits `ja` and `zh` and NO
 `ko`* (grepped: still zero) · § *`P1814`* · § *LABELS, IN HER ORDER* · the seven specifications.
+
+## 2026-09-01 - she ruled on 207 pairs by hand, and named the rule they teach
+
+**Emma: *"Btw I did verdicts anyways lol"*** - 207 pairs pasted into chat, 206 of them new.
+`reports/emma-judgments.tsv` 115 -> 321 rows; `reports/manual-identifications.csv` 109 -> **314**
+identifications, which is what `manual_p2600_lines()` draws its ten-a-run from.
+
+**206 SAME, 1 UNSURE** (`Magnus Fredrik Otonpoika Tandefelt` / `Q108067073`). One pair was already
+held. Her `UNSURE` stays in the file and stays out of the fold, per § *The manual approvals are
+TRAINING DATA* - an `UNSURE` is a data point about where the evidence runs out.
+
+**Her finding, and it is now measured:** *"I think for 1600-1900 people years are best
+disambiguation"*, because those people *"are bilingual in terms of the records... their names are
+represented in many different ways and made from places."*
+
+**147 of her 207 pairs - 71% - spell the name differently on the two sides**, after folding case
+and diacritics. In the 1600-1900 band, 138 of 196: **70%**. Every pair she ruled on falls in
+1600-1900 (196) or pre-1600 (11); none is post-1900. So a string comparison would have thrown out
+seven of every ten identifications she made by hand, and the three mechanisms are all visible in
+her own list: language of the record (`Gustav Adolf` / `Kustaa Adolf` Järnefelt), birth against
+married name (`Herman` / `Schönherr`), and a title written into the label (`Baroness`,
+`Friherrinna`, `Gräfin`).
+
+`CLAUDE.md` § *1600-1900 is the band where NAMES LIE and YEARS decide* carries it. It confirms the
+existing `solo -> date -> name` ordering in `zipper-join.py` rather than changing it - and supplies
+the reason, which `reports/zipper-reliability.md` had already reached from the other side with
+`date` at 0.0% disagreement against `name` at 9.2%.
+
+**One row is held back and put to her: `Q5712230`.** Two of her pairs claim it -
+`6000000013227282778` Johan Mattias von Engeström and `6000000013227327610` Brita Christina
+Wallenstråle, his wife - and both rows carry the same `their_name`, *Johan Mathias von Engeström*.
+That identical third column is the tell: the deck rendered the husband's item against the wife's
+row, so her `SAME` was given on a mismatched pair rather than in error. § *A second Geni ID on one
+Wikidata item is NOT a conflict* does not cover it, because that is one person with two Geni
+profiles and this is two people with one item.

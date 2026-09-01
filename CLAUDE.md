@@ -2059,6 +2059,49 @@ their chain; 187 are poisoned.
 **Poisoned is a reading, never a deletion.** Her bar for stopping the join is high — *"we need a
 pretty damn good reason to stop it... This reasoning requires something pretty good."*
 
+### 1600-1900 is the band where NAMES LIE and YEARS decide
+
+**Emma, 2026-09-01**, after hand-ruling 207 pairs in one sitting: *"I think for 1600-1900 people
+years are best disambiguation"*, and then the reason, which is the load-bearing half:
+
+> *"a lot of the times, people in the early nineteen hundreds and in the eighteen hundreds and
+> sometimes the seventeen hundreds, like, sort of modern but not contemporary people, tend to have
+> this thing where they oftentimes are bilingual and are bilingual in terms of the records. And so
+> their names are represented in many different ways and made from places."*
+
+**Measured over her own 207 verdicts, and it is not a small effect: 147 of them - 71% - spell the
+name differently on the two sides** after folding case and diacritics. In the 1600-1900 band it is
+138 of 196, **70%**. A string comparison would have rejected seven of every ten pairs she
+confirmed by hand.
+
+**Three mechanisms, all visible in her list, and none of them is a spelling mistake:**
+
+| | our side | Wikidata |
+| --- | --- | --- |
+| **language of the record** | `Gustav Adolf Järnefelt` | `Kustaa Adolf Järnefelt` (sv/fi) |
+| | `Johan Jöransson` | `Johann Goransson` (sv/de) |
+| | `Odert Reinhold von Essen d.y.` | `Odert Reinhold von Essen nuorempi` |
+| **birth against married name** | `Lovisa Christina Herman` | `Lovisa Christina Schönherr` |
+| | `Amalia Eleonora von Lepel` | `Gräfin Amalia-Eleonore Henckel von Donnersmarck` |
+| **a title inside the label** | `Charlotta Lovisa Gyllenkrok` | `Baroness Charlotta Lovisa Gyllenkrok` |
+
+**Why this band and not others.** These people are documented in two languages at once - Swedish
+and Finnish, Swedish and German, vernacular and Latin - and the archive a given record came from
+decides which form is written down. Earlier people are recorded once, in Latin, by one authority.
+Later people are recorded in a settled national orthography. The 1600-1900 stretch is where one
+person genuinely has several names, each of them correct.
+
+**So the ordering in `zipper-join.py` - solo, then date, then name - is confirmed rather than
+merely assumed, and the reason is now known.** The date step is not just "more precise than
+names"; in this band the names are describing something other than identity. Do not promote the
+name step, do not add a similarity threshold to rescue the 71%, and do not read a name mismatch as
+evidence against a pair.
+
+**And it says where a discriminator is worth building.** Birth year is on both sides for almost
+every one of these people. `reports/zipper-reliability.md` already measures `date` at **0.0%**
+disagreement against `solo`'s 11.8% and `name`'s 9.2% - the same conclusion from the other
+direction, arrived at before anybody had the reason.
+
 ### Our side could never have two children — check the separator before believing a distribution
 
 **`reports/derived-family.csv` separates multi-valued cells with ` | `, spaces included.** Every
