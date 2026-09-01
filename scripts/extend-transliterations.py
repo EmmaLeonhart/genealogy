@@ -49,6 +49,7 @@ Writes `reports/garborg-name-transliterations.tsv` in place, appending only.
 from __future__ import annotations
 
 import csv
+import os
 import re
 import sys
 from pathlib import Path
@@ -124,7 +125,12 @@ def main():
                          "rather than just today's batch.")
     args = ap.parse_args()
 
-    rows = list(csv.DictReader(open(TABLE, encoding="utf-8"), delimiter="\t"))
+    # **Closed explicitly, because Windows will not rename over an open file.** The bare
+    # `open(...)` this replaced left a handle alive and the atomic `os.replace` below then died
+    # with `PermissionError: [WinError 5]`. On POSIX it would have worked and the bug would have
+    # shipped — the same portability class as the Windows path bug CI caught on 2026-09-01.
+    with open(TABLE, encoding="utf-8") as _fh:
+        rows = list(csv.DictReader(_fh, delimiter="\t"))
     have = {r["token"]: r for r in rows}
     print(f"{len(have)} tokens in the hand table - preserved untouched")
 
@@ -292,10 +298,31 @@ def _extend(rows, have, missing, args):
         for r in added[:15]:
             print(f"   {r['token']:<20}{r['ja']:<22}{r['zh']:<18}{r['note']}")
         return
-    with open(TABLE, "w", encoding="utf-8", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=["token", "ja", "zh", "note"], delimiter="\t")
+    # **The columns come from the FILE, never from a list written here.** This said
+    # `["token", "ja", "zh", "note"]` while the table on disk carries a `ko` column — added when
+    # Emma ruled that *"cjk includes korean"* and the funnel began minting all three. `open(TABLE,
+    # "w")` truncates before `writerows` raises, so the mismatch did not merely fail the step: it
+    # destroyed **36,902 rows of hand-built transliterations** and left an 18-byte header. It was
+    # recovered from git, which is the only reason this is a bug report rather than a disaster —
+    # and is why `CLAUDE.md` says every generated file worth keeping is committed.
+    #
+    # Taking the header from the reader, then unioning in any key the rows carry, means the next
+    # column added widens the table instead of killing the run.
+    with open(TABLE, encoding="utf-8") as _f:
+        fieldnames = (_f.readline().rstrip(chr(10)).rstrip(chr(13)).split(chr(9))
+                      or ["token", "ja", "zh", "ko", "note"])
+    for r in rows:
+        for k in r:
+            if k not in fieldnames:
+                fieldnames.append(k)
+
+    # Write beside the table and replace, so a failure mid-write can never truncate it again.
+    tmp = TABLE.with_name(TABLE.name + ".tmp")
+    with open(tmp, "w", encoding="utf-8", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=fieldnames, delimiter="\t", restval="")
         w.writeheader()
         w.writerows(rows)
+    os.replace(tmp, TABLE)
 
     print(f"\n{len(added)} added ({composed} composed off a stem), "
           f"{len(unreadable)} left out as unreadable")
