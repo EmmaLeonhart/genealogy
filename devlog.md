@@ -24733,3 +24733,27 @@ source in the repo to be present, so `manual-identifications.csv` is now a sourc
 **The negative half is still unused** and is queued rather than guessed at: `refuted` is fed by
 `date_refuted()` alone, so a pair she has ruled `DIFFERENT` can still be asserted by another
 source. The item says to measure it first, since it may well be zero.
+
+## 2026-09-01 — her negative verdicts measured out, and a pipeline fault I kept repeating
+
+**Queue item cleared: § *Her `DIFFERENT` verdicts refute nothing*.** It said to measure before
+building anything, and the measurement closes it: **1 negative verdict in 320** (one `WRONG`, from
+the 2026-08-25 `zipper-hard` batch) and **0 of them still asserted** by
+`reports/synoptic-correspondence.tsv`. There is nothing for a refutation feeder to do.
+
+The population is small by design rather than by accident: the deck retires `SAME` and `DIFFERENT`
+and returns `UNSURE`, so when she cannot tell she skips. 295 `SAME`, 17 `RIGHT`, 5 `UNSURE`,
+2 `BROWSER`, 1 `WRONG`.
+
+**Corrected: the pipeline is not broken.** I wrote *"it has never completed a run"* into the queue
+and repeated it in a status report. The 18:59 UTC failure ran commit `b7b1f5d6`, which carried
+**none** of the three pieces that answer it — `out/family-structure.tsv.gz` was not committed,
+`pack-derived.py` did not list it, and `read_tree` had no fallback. All three landed afterwards
+and nobody re-ran it. § *CHECK before you alarm her* again: the alarming claim was about a stale
+run, not about the code.
+
+**Queue tail reordered to her instruction**, 2026-09-01: *"have it after the pages item, between
+the pages item and this one gave a thing that downloads a local archive of the wikidata items in
+the ledger in a ci/cd run."* So the tail is now Pages → ledger archive → the dispatch, and the
+dispatch produces all three: *"the archive (committed) and the pages and the quickstatements for
+me to run later."*

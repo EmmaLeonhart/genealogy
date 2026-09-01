@@ -118,23 +118,6 @@ So tomorrow: `SPINE_PATHS`, `SPINE_REVERSED`, the spine blocks in `build-garborg
 `build-missing-reciprocals.py` and anything else that special-cases a spine, all come out. Check it
 is actually complete first — if it is not, say so rather than deleting a live mechanism.
 
-## Her `DIFFERENT` verdicts refute nothing
-
-Adding `manual-identifications.csv` as a source of `reports/synoptic-correspondence.tsv` on
-2026-09-01 put her affirmative verdicts into the union. **The negative ones are still unused.**
-
-`build-synoptic-correspondence.py` has a `refuted` set, and it is fed by `date_refuted()` only —
-235 structural pairs dropped for a date clash. Nothing consults `reports/emma-judgments.tsv` for
-`DIFFERENT`, so a pair she has personally ruled apart can still be proposed by the zipper or the
-structural walk and land in the union.
-
-**Measure it first, because it may be nothing.** Count how many `DIFFERENT` verdicts name a pair
-that some other source still asserts. If it is zero the item closes with a note; if it is not, the
-fix is one more feeder into `refuted`, the same shape as `date_refuted()`.
-
-**A `WRONG` verdict is the same thing under the older word**, per
-`build-manual-identifications.AFFIRMATIVE` — `RIGHT`/`SAME` affirm, `WRONG`/`DIFFERENT` deny.
-
 ## Wire the adjudication deck onto the pipeline
 
 **Her instruction, 2026-09-01:** *"I told you to regenerate the html every time with the
@@ -1036,3 +1019,55 @@ algorithms and such. This is the last item though only after all the other stuff
   and its provenance chains; the density and descendants seed rankings; the transliteration funnel.
 - Generated from what is in the repo rather than hand-written prose that will go stale — the
   `CLAUDE.md` sections and the module docstrings already carry most of it.
+
+## A CI/CD job that archives the ledger's Wikidata items locally
+
+**Emma, 2026-09-01:** *"a thing that downloads a local archive of the wikidata items in the ledger
+in a ci/cd run. So the ci/cd run will make the archive (committed) and the pages and the
+quickstatements for me to run later."*
+
+**Every QID in `reports/garborg-qids.tsv`** — 1,089 rows and growing — fetched as **full items**
+and committed. Not a summary: `CLAUDE.md` § *A SUMMARY of a Wikidata item is not the item* records
+three false findings published from a summarising channel, including reporting that
+`Q467497` *Arne Garborg* had no `P22`, `P25` or `P3373` when it has all three.
+
+**Why a fresh archive rather than the store under `wikidata/items/`.** That store is a Geni-shaped
+slice downloaded before she made most of these items, so it agrees that Arne has no parents. These
+are *her* items, edited by hand continuously, and the ledger is exactly the set where our copy
+goes stale fastest.
+
+- `genimerge.wikidata.full_entities` already fetches whole items in one batched request —
+  `wbgetentities` takes 50 ids — so ~22 requests for the whole ledger. Be polite about the rate.
+- **Fail loud on a short fetch**, the way `scripts/refresh-p2600-all.py` refuses to write one. A
+  partial archive that looks complete is the failure mode this repo keeps hitting.
+- **Commit it gzipped** if it passes 100 MiB; ~1,089 full items is likely under it, but
+  `scripts/pack-derived.py` is the existing pattern and `.gitignore` takes one explicit line per
+  path, never a `*.json` pattern.
+- It runs in the same workflow as the batch, so one dispatch produces archive, Pages and
+  QuickStatements together.
+
+## Then: make CI/CD run and generate the NEXT batch
+
+**Emma, 2026-09-01, while the current batch was running:** *"last item on the queue should be to
+get the ci/cd to run and generate the next batch of quickstatements"*.
+
+**One dispatch, three deliverables** — her framing: *"the ci/cd run will make the archive
+(committed) and the pages and the quickstatements for me to run later."* So this runs after both
+items above are built, and the run produces the ledger archive, the Pages site and the next
+QuickStatements batch together.
+
+So once the queue above is worked, trigger the pipeline and let it produce tomorrow's batch rather
+than building it here. `.github/workflows/pipeline.yml`, `workflow_dispatch` with `force: true` if
+her last contribution is outside the six-hour window — though after a QuickStatements run it will
+not be.
+
+**The one failure it has had is already fixed, and saying otherwise was my error.** The
+2026-09-01 18:59 UTC run died on `FileNotFoundError: out/merged.ged` and I repeated that as a
+standing fault. It ran commit `b7b1f5d6`, which carried **none** of the three pieces that answer
+it: `out/family-structure.tsv.gz` was not committed, `pack-derived.py` did not list it, and
+`read_tree` had no fallback. All three landed afterwards. Nothing needs wiring — it needs
+**running**, and then the log read rather than assumed.
+
+**The point is the batch, not a green tick.** A run that finishes and uploads
+`reports/wikidata-garborg-day.qs` as an artifact, with the issue opened, is the deliverable.
+
