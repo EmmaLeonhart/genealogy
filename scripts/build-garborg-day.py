@@ -177,11 +177,30 @@ def ledger():
     # permanent in the only way that counts: the person is never created again, the item becomes
     # something statements can point AT, and it anchors its neighbours.
     try:
+        # **`reports/manual-identifications.csv` is the file now, and it is a superset.**
+        # Emma, 2026-09-01: *"we need to have the two identifications I did, and all other things
+        # as being from a manual identification csv"*, and *"the right verdicts need to be
+        # actually implemented"*.
+        #
+        # This used to read `emma-judgments.tsv` and accept only `SAME`, which left **17 `RIGHT`
+        # verdicts inert** -- all from the 2026-08-25 `zipper-sample` batch, all carrying both
+        # ids, every one an affirmation she made that nothing acted on. `RIGHT` is the older word
+        # from before the deck settled on `SAME`; the fold never learned it.
+        #
+        # `build-manual-identifications.py` unions both verdicts with the pairs she gives
+        # directly in conversation, so there is one file to read and one place to append.
+        manual = ROOT / "reports" / "manual-identifications.csv"
+        if manual.exists():
+            with open(manual, encoding="utf-8") as f:
+                for row in csv.DictReader(f):
+                    g, q = (row.get("geni_id") or "").strip(), (row.get("qid") or "").strip()
+                    if g.isdigit() and q.startswith("Q"):
+                        out.setdefault(g, q)
         judgments = ROOT / "reports" / "emma-judgments.tsv"
-        if judgments.exists():
+        if judgments.exists() and not manual.exists():
             with open(judgments, encoding="utf-8") as f:
                 for row in csv.DictReader(f, delimiter="	"):
-                    if row.get("verdict") != "SAME":
+                    if row.get("verdict") not in ("SAME", "RIGHT"):
                         continue
                     g, q = (row.get("geni_id") or "").strip(), (row.get("qid") or "").strip()
                     if g.isdigit() and q.startswith("Q"):
@@ -458,6 +477,74 @@ def live_state():
 #:
 #: 630,050 families, 54 MB, 14 MB gzipped -- `pack-derived.py` carries it.
 FAMILY_STRUCTURE = ROOT / "out" / "family-structure.tsv"
+
+
+#: How many manual `P2600` statements go out per run. Her number, 2026-09-01: *"the pipeline
+#: generates 10 quickstatements adding the geni id to the individuals at the beginning of each
+#: generation. The 10 quickstatements are 10 of the ones from the csv that are found not to be
+#: present in the thing."*
+MANUAL_P2600_PER_RUN = 10
+
+
+def manual_p2600_lines():
+    """Up to ten `Q… P2600 "geni"` lines for identifications Wikidata does not yet hold.
+
+    **The candidates come from `reports/manual-identifications.csv`** -- her hand verdicts,
+    `SAME` and `RIGHT` both, plus the pairs she gives in conversation.
+
+    **"found not to be present" is checked LIVE**, in one batched request, not against
+    `out/wikidata/p2600-all.tsv`. That file was last refreshed 2026-08-30 and she adds `P2600`
+    statements by hand continuously; a stale check would keep re-proposing pairs she has already
+    made. `CLAUDE.md` § *Emma edits the tree and the items BY HAND* is explicit that a snapshot
+    goes stale in minutes.
+
+    **No reference.** Emma, 2026-08-31: *"geni ids do not get sources you retard"* -- an `S2600`
+    citing the very id being added is circular.
+
+    Returns `(lines, checked, already_held)`.
+    """
+    path = ROOT / "reports" / "manual-identifications.csv"
+    if not path.exists():
+        return [], 0, 0
+    want = []
+    with open(path, encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            q, g = (row.get("qid") or "").strip(), (row.get("geni_id") or "").strip()
+            if q.startswith("Q") and g.isdigit() and q not in NEVER_TOUCH_QID                     and g not in NEVER_TOUCH_GENI:
+                want.append((q, g, (row.get("name") or "").strip()))
+    if not want:
+        return [], 0, 0
+    held = set()
+    import json as _json
+    import urllib.parse as _up
+    import urllib.request as _ur
+    ids = [q for q, _, _ in want]
+    for i in range(0, len(ids), 50):
+        try:
+            qs = _up.urlencode({"action": "wbgetentities", "ids": "|".join(ids[i:i + 50]),
+                                "format": "json", "props": "claims"})
+            rq = _ur.Request("https://www.wikidata.org/w/api.php?" + qs,
+                             headers={"User-Agent": "genimerge manual P2600 "
+                                                    "(emma@topazcomputing.com)"})
+            data = _json.loads(_ur.urlopen(rq, timeout=90).read().decode("utf-8"))
+        except Exception as exc:                                    # noqa: BLE001
+            # **Fail CLOSED here, unlike the pipeline gate.** Unknown means "might already be
+            # there", and re-adding a statement Wikidata holds is noise on her watchlist.
+            print(f"WARNING: manual P2600 check could not reach Wikidata ({exc}); "
+                  f"emitting none this run")
+            return [], 0, 0
+        for qid, ent in (data.get("entities") or {}).items():
+            for st in (ent.get("claims") or {}).get("P2600", []):
+                v = st.get("mainsnak", {}).get("datavalue", {}).get("value")
+                if isinstance(v, str):
+                    held.add((qid, v))
+    missing = [(q, g, n) for q, g, n in want if (q, g) not in held]
+    lines = []
+    for q, g, n in missing[:MANUAL_P2600_PER_RUN]:
+        if n:
+            lines.append(f"#   {q} {n}: P2600 from her own identification")
+        lines.append(f'{q}\tP2600\t"{g}"')
+    return lines, len(want), len(want) - len(missing)
 
 
 def read_tree():
