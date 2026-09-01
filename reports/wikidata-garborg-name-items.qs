@@ -9,67 +9,66 @@
 # name: CLAUDE.md, one name item per USAGE. Emma's Q141152710 Aadnesson is
 # the pattern -- labels, P31, nothing else.
 
-# Jonsson -- patronymic, 5 bearer(s) in the batches
+# Jonson -- patronymic, 4 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Jonsson"
-LAST	Len	"Jonsson"
-#   set the mul label to "Jonsson"
-LAST	Lmul	"Jonsson"
+#   the item just created: set the en label to "Jonson"
+LAST	Len	"Jonson"
+#   set the mul label to "Jonson"
+LAST	Lmul	"Jonson"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
 #   P31 instance of = Q110874 patronymic
 LAST	P31	Q110874
-#   Q5568857 Daniel Jonsson Behmer: P5056 patronym or matronym = the item just created, qualified P144 based on Q25451348 Jon Mickelsson Behm
-Q5568857	P5056	LAST	P144	Q25451348	S2600	"6000000006776755330"
-#   Q141224872 Petrus Jonae Jonæ Linnerius: P5056 patronym or matronym = the item just created
-Q141224872	P5056	LAST	S2600	"6000000006782697953"
-#   Q141216476 Jon Jonsson Vatne: P5056 patronym or matronym = the item just created, qualified P144 based on Q141216388 Jon Hansson St. Vatne
-Q141216476	P5056	LAST	P144	Q141216388	S2600	"6000000014516017872"
-#   Q141219070 Tørres Jonsson Vatne: P5056 patronym or matronym = the item just created, qualified P144 based on Q141216388 Jon Hansson St. Vatne
-Q141219070	P5056	LAST	P144	Q141216388	S2600	"6000000014516687339"
-#   Q141225218 Olof Jonsson: P5056 patronym or matronym = the item just created
-Q141225218	P5056	LAST	S2600	"6000000015844614533"
+#   Q141205903 Enok Jonson Rønneberg: P5056 patronym or matronym = the item just created, qualified P144 based on Q141216481 Jon Tørresson Soma
+Q141205903	P5056	LAST	P144	Q141216481	S2600	"6000000001656464422"
+#   Q141249595 Asbjørn Jonson Rønneberg: P5056 patronym or matronym = the item just created, qualified P144 based on Q141244102 Jon Torson Røyneberg
+Q141249595	P5056	LAST	P144	Q141244102	S2600	"6000000003491988141"
+#   Q141219349 Tørres Jonson Grannes: P5056 patronym or matronym = the item just created
+Q141219349	P5056	LAST	S2600	"6000000005608892520"
+#   Q141216470 Govert Jonson Årsvoll: P5056 patronym or matronym = the item just created
+Q141216470	P5056	LAST	S2600	"6000000008174080446"
 
-# Ekebyholm -- family, 4 bearer(s) in the batches
+# Rasmussen -- patronymic, 4 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Ekebyholm"
-LAST	Len	"Ekebyholm"
-#   set the mul label to "Ekebyholm"
-LAST	Lmul	"Ekebyholm"
-#   P31 instance of = Q101352
-LAST	P31	Q101352
-#   Q109296398 Fredrika Eleonora Arvidsdotter Horn af Ekebyholm: P734 family name = the item just created
-Q109296398	P734	LAST	S2600	"6000000006127496847"
-#   Q5813616 Adam Horn af Ekebyholm till Ekebyholm: P734 family name = the item just created
-Q5813616	P734	LAST	S2600	"6000000007285499105"
-#   Q19678400 Eva Horn af Ekebyholm: P734 family name = the item just created
-Q19678400	P734	LAST	S2600	"6000000007286110282"
-#   Q717179 Arvid Bernhard Horn af Ekebyholm: P734 family name = the item just created
-Q717179	P734	LAST	S2600	"6000000011637024489"
-
-# Jonsen -- patronymic, 4 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Jonsen"
-LAST	Len	"Jonsen"
-#   set the mul label to "Jonsen"
-LAST	Lmul	"Jonsen"
+#   the item just created: set the en label to "Rasmussen"
+LAST	Len	"Rasmussen"
+#   set the mul label to "Rasmussen"
+LAST	Lmul	"Rasmussen"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
 #   P31 instance of = Q110874 patronymic
 LAST	P31	Q110874
-#   Q141223970 Villum Jonsen Gautun: P5056 patronym or matronym = the item just created
-Q141223970	P5056	LAST	S2600	"6000000003315775479"
-#   Q141242562 Peder Jonsen Voster: P5056 patronym or matronym = the item just created
-Q141242562	P5056	LAST	S2600	"6000000007980605161"
-#   Q141189110 Tøre Jonsen: P5056 patronym or matronym = the item just created, qualified P144 based on Q116150299 Jon Reinmodsen
-Q141189110	P5056	LAST	P144	Q116150299	S2600	"6000000180307857930"
-#   Q141198453 Lars Jonsen Kvam: P5056 patronym or matronym = the item just created
-Q141198453	P5056	LAST	S2600	"6000000194934774831"
+#   Q141216381 Hans Rasmussen Låge-Håland: P5056 patronym or matronym = the item just created
+Q141216381	P5056	LAST	S2600	"6000000009127934231"
+#   Q141223738 Ola Rasmussen Bø: P5056 patronym or matronym = the item just created, qualified P144 based on Q141200074 Rasmus Olsen Bø
+Q141223738	P5056	LAST	P144	Q141200074	S2600	"6000000196541254827"
+#   Q141242406 Hans Rasmussen Bø: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189099 Rasmus Helgesen Bø
+Q141242406	P5056	LAST	P144	Q141189099	S2600	"6000000225376735889"
+#   Q141242555 Ola Rasmussen Bø: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189099 Rasmus Helgesen Bø
+Q141242555	P5056	LAST	P144	Q141189099	S2600	"6000000225376871825"
 
-# 297 more name items are needed and wait for a later
+# Asbjørnsdatter -- patronymic, 3 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Asbjørnsdatter"
+LAST	Len	"Asbjørnsdatter"
+#   set the mul label to "Asbjørnsdatter"
+LAST	Lmul	"Asbjørnsdatter"
+#   set the en description to "patronymic"
+LAST	Den	"patronymic"
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   Q141224263 Karen Asbjørnsdatter Opstad: P5056 patronym or matronym = the item just created, qualified P144 based on Q141216458 Asbjørn Gunnarson Bø
+Q141224263	P5056	LAST	P144	Q141216458	S2600	"6000000011046282612"
+#   Q141242419 Sara Asbjørnsdatter Bø: P5056 patronym or matronym = the item just created, qualified P144 based on Q141216458 Asbjørn Gunnarson Bø
+Q141242419	P5056	LAST	P144	Q141216458	S2600	"6000000222520233004"
+#   Q141242459 Anna Asbjørnsdatter Bø: P5056 patronym or matronym = the item just created, qualified P144 based on Q141216458 Asbjørn Gunnarson Bø
+Q141242459	P5056	LAST	P144	Q141216458	S2600	"6000000222520767827"
+
+# 294 more name items are needed and wait for a later
 # run -- 3 a day is her cap, not a limit of the data:
-#   Jonson (patronymic), 4 bearer(s)
-#   Rasmussen (patronymic), 4 bearer(s)
-#   Asbjørnsdatter (patronymic), 3 bearer(s)
 #   Frondin (family), 3 bearer(s)
 #   Garfve (family), 3 bearer(s)
 #   Hansson (patronymic), 3 bearer(s)
@@ -79,5 +78,8 @@ Q141198453	P5056	LAST	S2600	"6000000194934774831"
 #   Kristiansen (patronymic), 3 bearer(s)
 #   Låge-Håland (family), 3 bearer(s)
 #   Magnusson (patronymic), 3 bearer(s)
-#   ... and 285 more
+#   Nedre (family), 3 bearer(s)
+#   Olofsdotter (patronymic), 3 bearer(s)
+#   Pedersdatter (patronymic), 3 bearer(s)
+#   ... and 282 more
 

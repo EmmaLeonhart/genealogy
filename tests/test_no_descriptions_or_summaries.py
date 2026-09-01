@@ -35,6 +35,18 @@ SUMMARY = re.compile(r"&summary=|[?&]summary|summary\s*=\s*[\"']"
 LOCAL_FILE = re.compile(r"\.csv|\.tsv|\.json|\.md|reports/|out/|add_argument")
 
 
+#: **The one exception, and it is narrow.** Emma, 2026-09-01: *"All patronymics get the
+#: description 'patronymic' so that they actually are properly deduplicated. We are still
+#: creating duplicate patronymics and it is at the point of intolerability."* Then: *"All
+#: surnames get 'family name', all matronymics (do we even have any) get 'matronymic'."*
+#:
+#: The description is what makes Wikidata itself refuse the duplicate -- a label and description
+#: must be unique together per language. So this test is NARROWED rather than weakened: exactly
+#: these three strings, only in `Den`, and nothing else anywhere.
+ALLOWED_DESCRIPTIONS = {"patronymic", "family name", "matronymic"}
+DEN = re.compile(r'^LAST	Den	"([^"]*)"$')
+
+
 def test_no_batch_carries_a_description():
     offenders = []
     for path in sorted(REPO.glob("reports/*.qs")):
@@ -42,11 +54,15 @@ def test_no_batch_carries_a_description():
             if line.lstrip().startswith("#"):
                 continue
             m = DESCRIPTION.match(line)
-            if m:
-                offenders.append(f"{path.name}:{n} sets {m.group(1)}")
+            if not m:
+                continue
+            allowed = DEN.match(line)
+            if allowed and allowed.group(1) in ALLOWED_DESCRIPTIONS:
+                continue
+            offenders.append(f"{path.name}:{n} sets {m.group(1)}  {line.strip()[:60]}")
     assert not offenders, (
-        "descriptions are categorically never emitted -- Emma, 2026-08-30: "
-        f"{offenders[:8]}")
+        "descriptions are emitted ONLY as Den on a name item, and only "
+        f"{sorted(ALLOWED_DESCRIPTIONS)} -- Emma, 2026-09-01: {offenders[:8]}")
 
 
 def test_nothing_sets_an_edit_summary():

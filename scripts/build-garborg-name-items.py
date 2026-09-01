@@ -104,6 +104,36 @@ CLASS_FOR = {
     "given": GIVEN_NAME_CLASS,
 }
 
+#: **The English description each kind of name item carries**, and it is the one exception to
+#: `CLAUDE.md` § *NO descriptions and NO edit summaries*.
+#:
+#: Emma, 2026-09-01: *"All patronymics get the description 'patronymic' so that they actually are
+#: properly deduplicated. We are still creating duplicate patronymics and it is at the point of
+#: intolerability."* Then: *"All surnames get 'family name', all matronymics (do we even have
+#: any) get 'matronymic'."*
+#:
+#: **The description is what makes WIKIDATA ITSELF refuse the duplicate.** A label and description
+#: must be unique together per language, so two undescribed `Olsdatter` items are both legal while
+#: a second `Olsdatter` + `patronymic` is refused at creation. That is the same uniqueness
+#: constraint § *NO descriptions* calls *"by far the worst trap"* -- turned round and pointed at
+#: the problem.
+#:
+#: **`matronymic` currently fires for nothing, and that answers her question.** The classifier
+#: produces three usages -- `given` 11,515, `family` 9,799, `patronymic` 1,677 -- and matronymic
+#: is not among them: a `-datter` token is classified `patronymic` whether or not it names a
+#: mother. `P5056` is *patronym or matronym*, one property for both. The entry is here so that a
+#: classifier that learns the distinction needs no second change.
+#:
+#: **`given` is deliberately absent.** She named patronymics, surnames and matronymics. A given
+#: name is not obviously one description -- Wikidata distinguishes male, female and unisex given
+#: names -- so guessing one would be inventing a description she has not asked for, which is what
+#: the rule this overrides exists to prevent.
+DESCRIPTION_FOR = {
+    "patronymic": "patronymic",
+    "family": "family name",
+    "matronymic": "matronymic",
+}
+
 #: The live day batch. The earlier `wikidata-garborg.qs` and `-hop2.qs` were retired
 #: on 2026-08-24: their creations are recorded in `reports/garborg-qids.tsv` and
 #: re-running them would mint duplicates, which
@@ -272,6 +302,22 @@ def main():
         lines.append("CREATE")
         lines.append(f'LAST\tLen\t"{token}"')
         lines.append(f'LAST\tLmul\t"{token}"')
+        # **A PATRONYMIC carries a description, and it is the one exception to the hard rule.**
+        # Emma, 2026-09-01: *"All patronymics get the description 'patronymic' so that they
+        # actually are properly deduplicated. We are still creating duplicate patronymics and
+        # it is at the point of intolerability."*
+        #
+        # `CLAUDE.md` § *NO descriptions and NO edit summaries* is categorical and this
+        # overrides it for this one case, because the description is precisely what makes
+        # WIKIDATA ITSELF refuse the duplicate. A label and description must be unique together
+        # per language, so two undescribed `Olsdatter` items are both legal, while a second
+        # `Olsdatter` + `patronymic` is REFUSED at creation.
+        #
+        # That is the same uniqueness constraint § *NO descriptions* warns can BLOCK a creation
+        # -- her *"by far the worst trap"*. Here it is turned round and pointed at the problem:
+        # the trap becomes the mechanism.
+        if usage in DESCRIPTION_FOR:
+            lines.append(f'LAST\tDen\t"{DESCRIPTION_FOR[usage]}"')
         lines.append(f"LAST\t{INSTANCE_OF}\t{CLASS_FOR[usage]}")
         # **The statements that use it, in the same run.** The name model is run with
         # this ONE token pointed at `LAST` and every other token left at its real QID,
