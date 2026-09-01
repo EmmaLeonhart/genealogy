@@ -83,12 +83,22 @@ jobs:
 
   # The slow lane is a separate job so a red fast lane is legible on its own. It re-merges the
   # whole 605-export corpus, which peaks near 17 GB -- above what a standard runner has -- so it
-  # runs the cheap slow modules only and says so rather than pretending to be the full suite.
+  # runs the three modules that only READ the corpus. **One job per module**, after the
+  # first run hit the 120-minute wall at 98% with everything in one job and no
+  # per-test timing to show for it -- CLAUDE.md's chunk-by-cost rule applied, so a
+  # module that stalls now fails alone and --durations=0 gets a chance to print.
   slow:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+    timeout-minutes: 180
     needs: test
     if: github.event_name == 'workflow_dispatch'
+    strategy:
+      fail-fast: false
+      matrix:
+        module:
+          - tests/test_gedcom_real_exports.py
+          - tests/test_density.py
+          - tests/test_paths.py
     steps:
       - uses: actions/checkout@v4
         with:
@@ -107,12 +117,8 @@ jobs:
           python-version: "3.13"
       - run: pip install pytest
       - run: python scripts/pack-derived.py --unpack
-      - name: Slow modules that do not re-merge the corpus
+      - name: ${{ matrix.module }}
         env:
           BOT_CONTACT: emma@topazcomputing.com
           PYTHONPATH: src
-        run: |
-          python -m pytest -m slow -q --durations=0 \
-            tests/test_gedcom_real_exports.py \
-            tests/test_density.py \
-            tests/test_paths.py
+        run: python -m pytest -m slow -q --durations=0 ${{ matrix.module }}
