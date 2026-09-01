@@ -23264,3 +23264,39 @@ Provenance of the 106 Geni ids now in the file:
 `Kushitsukinomikoto`. Their Geni profiles either are not in our exports or sit under a form
 neither pass reaches; two have several corpus rows carrying the same Han name and need her eye,
 not another rule.
+
+## 2026-08-31 — the Samaritan succession, from the source she named
+
+Izumo, Senge and Kitajima she called done. For the Samaritans she said there was an easy source
+and I guessed three wrong before asking her which:
+
+- **`wdt:P39 wd:Q678510` returns 7 items.** That is exactly the state her own
+  `samaritans/wikidata.txt` complains about — *"it doesn't even say who is the Samaritan high
+  priest... they're not very well documented"* — so the office property cannot enumerate the
+  office.
+- **`samaritans/wikidata.txt`** is her dictation about the work, not a list.
+- **`samaritans/The Samaritan Update.html`** covers the modern line only, 20 priests.
+
+Asking rather than guessing a fourth time was the right call and § *Do not grab the first artifact
+that vaguely matches* is the rule for it. Her answer: **the English Wikipedia list**.
+
+`scripts/fetch-samaritan-succession.py` → `reports/samaritan-succession-list.tsv`.
+`List of Samaritan High Priests` redirects to `Samaritan High Priest`, which carries **132
+numbered rows, 1 to 133** — the whole line from `Sashai ben Abishua` to `Aabed-El V ben Asher ben
+Matzliach`. **14 resolve to a QID** by enwiki sitelink, which is an exact lookup and not a name
+search; most rows are red links, which is why the other sources could not enumerate them either.
+
+**Every one of the 18 office numbers we already had is confirmed exactly** — 113 against 113, 114
+against 114, through to 122. `reports/wikidata-samaritan-succession.json` was right, and now it is
+corroborated by a source that had no part in producing it.
+
+**The saved page corroborated the arithmetic too, from a third direction.** Its prose says *"the
+132nd High Priest since Aaron... for 112 generations the high priesthood was inherited from father
+to son... till 1624 CE"*, which is the **offset of 112** between the modern table's local numbering
+and the absolute count — derived earlier from four JSON rows and now confirmed by the page's own
+sentence and by the Wikipedia list independently.
+
+**What is left is a name reconciliation, and it is the same shape as the Izumo pass.** Only 19 of
+the 82 Samaritan roster rows match the list on an exact normalised name; the rest differ by
+spelling — `Matzliach`/`Matsliah`, `Aaharon`/`Aharon`. The numbers exist for all 132 positions, so
+this is matching rather than research.
