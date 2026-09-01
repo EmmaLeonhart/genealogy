@@ -22861,3 +22861,28 @@ actually plural. It ran past 590 seconds before she said *"I'm gonna guess you'r
 simple as that"*, and killing it was right. Scoped properly it is **467 items, ten requests**.
 That is the § *Querying Wikidata is ALLOWED. Be polite about the rate* line, and I was on the
 wrong side of it.
+
+## 2026-08-31 — sweep: nothing dead; the per-person half comes out of the patronymic item
+
+**No section is complete**, so nothing was deleted. 57 sections before and after; 1,882 → 1,878
+lines.
+
+**Cut back: § *Patronymics*.** Its second bullet — *"then the per-person resolution, which is the
+point of the whole design"* — is built and run: `scripts/resolve-patronymics.py` compares the
+parent's `P735` item against the patronymic item's `P144` values with no string comparison
+anywhere, and **5,244 of the 8,277** people whose father has an item resolve today. Leaving that
+bullet in made a finished thing read as a step.
+
+**Two stale figures corrected in the same pass**, because both had already been superseded by the
+sex/script filter earlier in the hour: unambiguous `P144` targets **4,340 → 4,708**, and the
+residual ambiguity **546 → 178**. A queue item quoting a number the code no longer produces is the
+failure this sweep exists against, and it is the second time today one crept in.
+
+**What replaces the deleted bullet is not a new step but the run's own output**: 2,172 people
+whose father has an item but no `P735`, 606 whose father's `P735` is outside the patronymic's
+`P144` values, 255 whose patronymic item has no derivation. Those are what the emission grows
+into — recorded so nobody rediscovers them as blockers.
+
+**Checked and not touched:** § *Patronymic residue* (`d`/`t` and `Nils`/`Nicolaus` still open, and
+it already carries the STALE warning on `patronymic-reclassified.tsv`), § *Keep
+`reports/merges-to-do.md` current* (standing), and the seven specification sections.

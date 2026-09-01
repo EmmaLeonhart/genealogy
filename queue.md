@@ -53,31 +53,27 @@ counts are not stale when she next sits down to it.
 **The merges themselves are hers now, not mine** — that is what the file is for. The Izumo
 three are cleared and the browser pass is closed.
 
-## Patronymics: emit the items, then resolve every bearer by identity
+## Patronymics: emit the items, and stop `patronymic_or_surname` deciding
 
-**Her design, dictated 2026-08-31**, and the plan for it is built —
-`scripts/build-patronymic-items.py` -> `reports/patronymic-items-to-create.tsv`, 6,658 tokens,
-4,340 with an unambiguous `P144` target, 5,091 with a `P5278` partner. `devlog.md` has the shape
-of a well-developed patronymic object, measured from the 631 that exist, and why `P407` is left
-off. What remains is emission and the per-person half.
-
-    the patronymic resolves to a patronymic NAME ITEM
-    that item records the given names it derives from   (its own P144, multi-valued)
-    the parent carries a given name OBJECT              (P735 -> an item)
-    parent's P735 item among the P144 values?           -> emit P5056, P144 -> that parent
+**Both measured halves of her design are built.** `scripts/build-patronymic-items.py` plans the
+objects (6,658 tokens, **4,708** with an unambiguous `P144` target, 5,091 with a `P5278` partner)
+and `scripts/resolve-patronymics.py` runs the per-person identity test — **5,244 of 8,277** people
+whose father has an item resolve today, with no string comparison anywhere. `devlog.md` carries
+the object profile, the sex/script filter and why `P407` is left off.
 
 - **Emit the items.** 6,613 creations carrying `P31` -> `Q110874` *patronymic*, `P1705` *native
-  label*, the `P144` *based on* values and `P5278` *surname for other gender*. Nothing has been
-  written as QuickStatements yet, deliberately — she has not asked for a batch.
-- **Then the per-person resolution**, which is the point of the whole design: the parent's `P735`
-  item is compared against the patronymic item's `P144` values, and nothing is string-compared
-  again.
+  label*, the `P144` *based on* values and `P5278` *surname for other gender*. Nothing is written
+  as QuickStatements yet, deliberately — she has not asked for a batch, and § *no unrequested
+  `.qs`* governs until she does.
 - **Do not leave two things deciding.** Under her design `namemodel.patronymic_or_surname` is no
   longer the decision — at most it proposes which token is the patronymic before the item lookup
-  runs. Settle that when the per-person half lands.
-- **546 tokens are blocked only by an ambiguous given name** — `Daniel(3)`, `Gabriel(3)`,
-  `Abraham(2)`. That is § *One name item per USAGE* and hers to rule on; it does not block the
-  other 4,340.
+  runs. Two deciders is how the 62,637-token flip nearly shipped.
+- **The three standing gaps, from the resolution run** — these are what the emission grows into,
+  not blockers: **2,172** people whose father has an item but no `P735` *given name* object,
+  **606** whose father's `P735` is not among the patronymic's `P144` values, **255** whose
+  patronymic item has no derivation at all.
+- **178 tokens remain genuinely ambiguous** after the sex and script filter — down from 546. That
+  residue is § *One name item per USAGE* and hers; it does not block the other 4,708.
 
 ## Patronymic residue: `d`/`t` and `Nils`/`Nicolaus`
 
