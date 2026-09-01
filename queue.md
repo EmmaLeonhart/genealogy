@@ -13,24 +13,6 @@ lines as say what to do.
 audits, dead crons and superseded priorities. Recover any of it with
 `git show 6edf302b:queue.md`.
 
-## Emit `ja` and `ko` transcriptions for the 37,830 people who already have a QID
-
-**Her instruction, 2026-09-01:** *"korean is extremely important on par with Chinese... cjk
-includes korean"*, and *"put the korean stuff at the beginning of the queue"*. It was, and it is
-built — `devlog.md` 2026-09-01 has the detail. 1,033 hanja at 72% of CJK names, Latin → Hangul at
-97% of 1.29 M, a `ko` column at 18,535 of 18,536 tokens, the creation gate on all three languages,
-and `build-ko-label-batch.py` at 33,725 labels.
-
-**What remains is ONE decision and it is not Korean's alone.** 1,278,536 Latin-named people can be
-rendered into Hangul at 97%, and `build-ko-label-batch.py` withholds them for the same reason
-`build-ja-label-batch.py` does: transcription is not reading, and English → katakana is the
-direction her method reserves for a hand-built table. Emitting it under `ko` while `ja` withholds
-the identical thing would be the two batches disagreeing about what counts as honest.
-
-So the question is for `ja` and `ko` together: **does a rule-based transcription of a Latin name
-count as a label we are willing to publish?** If yes, both batches grow by over a million. If no,
-both stay as they are. NEEDS-DECISION, hers.
-
 ## How to read this file
 
 **Emma, 2026-08-27:** *"Organize the queue to make it usable again, currently it does no appear to

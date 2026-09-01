@@ -57,8 +57,12 @@ TAB = chr(9)
 TABLE = REPO / "reports" / "garborg-name-transliterations.tsv"
 ATTESTED = REPO / "reports" / "attested-name-renderings.tsv"
 
-#: Only these notes are replaceable. Anything else is a person's decision.
-BY_RULE = {"by rule", "by rule, minted during the run"}
+#: Any note beginning "by rule" is the engine talking and is replaceable. Matching exact
+#: strings meant the 18,295 tokens minted for the transcription batch -- note
+#: "by rule, minted for the transcription batch" -- were skipped wholesale on the first
+#: run, which is the same brittleness as listing relations beside a table instead of
+#: deriving them from it.
+BY_RULE_PREFIX = "by rule"
 
 #: Her own corrections, which outrank both the engine and the attestation. She looked `Stephen`
 #: up and gave `史蒂芬`; Wikidata attests `斯蒂芬` 26 times. Both are standard and hers wins,
@@ -78,7 +82,7 @@ def main() -> int:
     n = collections.Counter()
     changed = []
     for r in rows:
-        if r.get("note") not in BY_RULE:
+        if not (r.get("note") or "").startswith(BY_RULE_PREFIX):
             n["left alone -- not a by-rule row"] += 1
             continue
         a = att.get(r["token"])

@@ -24569,3 +24569,32 @@ outside the placeholder population, 935 of them CJK-named.
 **Nothing else was dead.** The drift item is mid-run, the `ko`-in-placeholder item was written an
 hour ago, and the rest are specifications, standing procedures, her tail items, or tomorrow's
 spine removal.
+
+## 2026-09-01 — transcribed CJK labels for the people who already have a QID
+
+Her third ruling of the day, asked directly: does a rule-based transcription of a Latin name count
+as a publishable label? **Yes, for the people who already have a QID.** Not for everyone — 1.29
+million people would be ~2.5 million edits nobody can apply, because most are not on Wikidata yet
+and their labels ride along with the creation.
+
+`scripts/build-cjk-transcription-labels.py` → **101,760 labels over 33,920 people**, `ja`, `zh`
+and `ko` each. Skipped: 5,908 who already have a name in a CJK script (not a transcription case at
+all), 3,545 holding a token nothing can render, and 307 with no Latin label.
+
+**`zh` is included although she said `ja` and `ko`.** `translit_no.translit` returns katakana and
+Chinese from one call — same engine, same table column — so emitting one and withholding the other
+would recreate the inconsistency her ruling removed.
+
+**The corpus-wide batches still withhold transcription and that stays right.**
+`build-ja-label-batch.py` and `build-ko-label-batch.py` run over the whole corpus, mostly people
+who are not on Wikidata, where the labels ride along with creation.
+
+**Two rounds of table work behind it.** 18,295 tokens were minted for this batch and appended to
+the shared funnel table, then `apply-attested-renderings.py` corrected **2,449** of them from
+Wikidata's own labels. Its `BY_RULE` set matched two exact strings, so the new note
+*"by rule, minted for the transcription batch"* was skipped wholesale on the first pass — it now
+matches any note beginning `by rule`, which is the same brittleness as listing relations beside a
+table instead of deriving them from it, twice in one day.
+
+Sampled by eye: `Marguerite Blosset` → `マルグリット・ブロセト` / `玛格丽特·布洛塞特`,
+`Roland Martin` → `罗兰·马丁`. 316 pass.
