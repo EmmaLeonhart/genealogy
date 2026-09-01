@@ -23540,3 +23540,21 @@ assertion and I read the "table is now 4054" line as a finding about the data ra
 branch never having been applied. It was only the token count printed on the next run — *16,872
 needed, 15,431 missing* — that made it obvious nothing had been wired. A failed edit that leaves
 the program running is the quietest kind.
+
+## 2026-08-31 — the unreadable tokens queued at the tail
+
+Emma: *"put these tokens at the end of the queue."* Written down, nothing investigated further,
+per § *"Add it to the end of the queue" means WRITE IT DOWN AND STOP*.
+
+The item separates the two remainders, because they are different problems and a single "17,077
+still need `ja`" hides that:
+
+- **7,562 have no `en` label at all** — no named relative at any distance, so there is nothing to
+  build `<name>の娘` from and no transliteration fix can reach them.
+- **~9,500 have an `en` label with one unreadable token in it**, which is what the item is for.
+
+And it records what the unreadable tokens actually look like, since that decides the approach:
+`!\`, `"`, `"AMNY"`, `"Abbahu"`, `"Abu`, `"Alexios`, `"André"` — mostly **quoting artefacts**
+where a nickname's opening quote is glued to the token, rather than names an engine failed to
+read. `Карлов` is Cyrillic, a different engine entirely, and `<private>` is a redaction marker
+that should never have reached a name field.

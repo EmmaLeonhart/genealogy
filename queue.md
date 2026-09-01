@@ -1689,3 +1689,31 @@ system than that library. Not one hundred percent sure."*
 **Nothing depends on this today.** `translit_no` is what runs, the funnel is wired, and the ja/zh
 gate refuses nobody. This decides whether `pykakasi` becomes the fallback under it — not whether
 labels get made, and not whether it may be used at all.
+
+## THE LAST ITEM — the tokens the transliteration funnel cannot read
+
+**Emma, 2026-08-31: *"put these tokens at the end of the queue."*** So they are here and nothing
+was investigated further.
+
+After the funnel ran over the placeholder population on 2026-08-31 — table **4,054 → 18,410**,
+14,356 tokens added — **1,075 tokens were left out as unreadable**, and `ja`/`zh` is still missing
+on **17,077** of the 39,691 placeholder edits.
+
+**The two remainders are different problems and should not be treated as one:**
+
+- **7,562 have no `en` label at all.** No named relative at any distance, so there is nothing to
+  build `<name>の娘` from. A transliteration fix cannot reach them; they need something other
+  than a relative or they stay bare `NN` in `mul`.
+- **~9,500 have an `en` label and one unreadable token in it.** These are the ones this item is
+  about.
+
+**Most of the unreadable ones are not names.** The reported sample is `!\`, `"`, `"AMNY"`,
+`"Abbahu"`, `"Abu`, `"Adak-Jarni"`, `"Alexios`, `"Alviðrukappi“`, `"André"`, `"Annie"` — quoting
+artefacts where a nickname's opening quote has been glued to the token. `Карлов` is Cyrillic and
+`<private>` is a redaction marker that should never have reached a name field at all.
+
+**So the first question is how many are actually tokens.** Stripping stray quotes may close most
+of it without touching the reader; a Cyrillic name is a different engine; and `<private>` is a bug
+upstream in whatever built that label.
+
+`python scripts/extend-transliterations.py --placeholders` prints the current list.
