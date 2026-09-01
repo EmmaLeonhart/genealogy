@@ -23674,3 +23674,36 @@ on. The nine verdicts are recorded, so `ledger()` folds them and those people st
 scoped to a 9,061-row corpus-wide pattern rather than the ledger; it offered the spouse rather
 than the same-slot parent; and it consulted one identification source out of eight. Every one was
 invisible from the code and obvious from a single card.
+
+## 2026-08-31 — `hi`, `ar`, `ru`, `el`: the other four scripts, started in parallel
+
+She authorised starting them alongside `ja`/`zh` rather than behind: *"start them now, in
+parallel."* `scripts/translit_scripts.py` is the four, letter-for-letter from the Latin form with
+no language inferred — the same letters give the same output whoever the person was, which is what
+`CLAUDE.md` requires.
+
+    Arne Garborg      ru арне гарборг     el αρνε γκαρμποργκ    hi अर्ने गर्बोर्ग     ar أرني غربرغ
+    Bjørn Åsulvsson   ru бьёрн осулвссон  el μπιερν οσουλβσσον  hi ब्जेर्न ओसुल्व्स्सोन  ar بجرن أسلفسسن
+    Maria Elisabet    ru мария елисабет   el μαρια ελισαμπετ    hi मरिया एलिसबेत     ar مريا ألسبت
+
+**The four are not equally safe and the module says so.** `ru` and `el` are alphabetic and close
+to lossless. `hi` is an **abugida** — a consonant already carries `a`, so a vowel becomes a matra
+and a cluster needs a virama; structural rather than lossy. `ar` is an **abjad** and genuinely
+loses short vowels: `Arne` and `Aren` collide, and that is the script rather than the code.
+
+**Four manglings caught by printing the output, not by reading the tables**, and every one was a
+case where the letter-by-letter walk produced something that is not a word:
+
+- `Bjørn` → `бйёрн`. A consonant plus `j` plus a vowel is a **soft consonant** in Russian:
+  `Бьёрн`. Thirteen pairs added.
+- `Johannes` → `Ёханнес`, which nobody writes — `ё` carries the glide only inside a word, so
+  word-initial `jo` is `йо`. It needs position, which a digraph table has no notion of.
+- `Maria` → `مرا` in Arabic. The vowel-dropping rule had eaten the name rather than its short
+  vowels, which is the line her standard actually draws: *"incorrect representations ... are
+  totally acceptable. An incorrect name is not."*
+- `Maria` → `मरिअ` in Devanagari, with a bare independent `अ` stranded after a matra. `ia` is
+  `i` plus the `ya` glide: `मारिया`.
+
+Her tolerance for imperfect rendering is what makes these four shippable at all, and it is not
+a licence for output that has stopped being the name. That distinction is the whole reason the
+sample was read by eye before anything was wired to it.
