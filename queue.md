@@ -61,11 +61,11 @@ fathers patronymics imply — *"postpone for a month lol"***.
 | --- | --- |
 | seven languages | wire `hi`/`ar`/`ru`/`el` **now**, and close the `en` shortfall |
 | **the `en` rule she gave** | *"if multiple Latin alphabet labels agree then it becomes the en label and the mul label"* |
-| labels in her order | **only the languages already wired** — `en`, `mul`, `ja`, `zh` |
+| labels in her order | **only the languages already wired** — `en`, `mul`, `ja`, `zh`, **`ko`** |
 | name items | **invert the default now** — *"I thought we reused name objects by default lol. The only hard situation is patronymics"* |
 | `Sara /NN/` and the `Garborg` override | do both; the override of her hand-edit is the serious one |
 | how many Geni labels need changing | run the census |
-| CJK | `ko` **and** `P1814` kana, kana read agentically |
+| CJK | **`ko` is CJK and ranks with `zh`** — *"on par with Chinese... prioritize getting korean labels all the time"*. `ko` by rule, `P1814` kana agentically |
 | NN birth-name alias | fix it |
 | unreadable transliteration tokens | read them agentically |
 | the 218 scripts | **sweep and delete** |

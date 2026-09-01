@@ -502,6 +502,31 @@ while she had already ruled on 2026-08-18 and both were sitting in `labels.py` w
 the comment. Asking again cost her a turn to answer something already implemented — the same
 shape as § *Emma not replying means she is content*, which is what that rule is for.
 
+### CJK INCLUDES KOREAN. `ko` ranks with `zh`, not with the leftovers
+
+**Emma, 2026-09-01:** *"korean is extremely important on par with Chinese and you really should
+prioritize getting korean labels all the time and this seems to not get that cjk includes
+korean"*.
+
+**Every place this repo says "CJK" and means Han plus kana is wrong.** The C, the J and the K are
+three languages, and `ko` has been treated throughout as one of the four *other* scripts —
+queued behind `hi`/`ar`/`ru`/`el` as a research task — when it belongs beside `ja` and `zh`.
+
+So, everywhere:
+
+- **The creation gate is `ja` + `zh` + `ko`**, not `ja` + `zh`. § *ABSOLUTE PREREQUISITE — no
+  individual is created without their CJK labels* means all three.
+- **The token funnel mints all three.** `reports/garborg-name-transliterations.tsv` carries a
+  `ja` and a `zh` column and needs a `ko` one.
+- **`ko` is derivable by rule and `P1814` kana is not**, which is why they were queued together
+  and should not have been. A Han character has a regular hanja reading; a Japanese *name*
+  reading does not follow from the characters. So `ko` is engine work like `zh`, while kana stays
+  agentic.
+
+**The 1,552 Hangul tokens are already decisive evidence of culture** — `CLAUDE.md` § *"Is X
+present?"* records that kana and Hangul settle which culture a CJK name is where bare Han does
+not. Those people were being used to disambiguate and then not labelled in their own language.
+
 ### A middle initial keeps its Latin letter in every language
 
 **Emma, 2026-08-27:** `John F. Smith` becomes **ジョン・F・スミス** and **约翰·F·史密斯**. She was
