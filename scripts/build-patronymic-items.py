@@ -37,10 +37,15 @@ Measured live over all 631 patronymic items that exist, so the shape is copied n
     and receive no `P5056` at all.
   * `P5278` *surname for other gender* -- `Olsson` <-> `Olsdotter`, same stem, gendered suffix.
 
-**`P407` *language of work or name* is deliberately absent** though 59% of existing items carry
-it. Nothing in a token says which language it is: `Andersson` reads Swedish and `Andersen`
-Danish-Norwegian by convention rather than rule, and taking it from the export or the region is
-the geography inference `CLAUDE.md` forbids everywhere else.
+**`P407` *language of work or name* is emitted from the SUFFIX**, her ruling 2026-09-01 when
+shown the choice between omitting it and this. 59% of the existing items carry it.
+
+The rule is the suffix and only the suffix -- `-sson`/`-sdotter` is `Q9027` *Swedish*,
+`-sen`/`-datter` is `Q9043` *Norwegian*, `-son`/`-dotter` unsuffixed is left alone. **This is a
+claim about the FORM, not about the person**: it says the token is a Swedish-shaped patronymic,
+not that its bearer was Swedish, and it never reads the export, the region or a place name --
+that would be the geography inference `CLAUDE.md` forbids. A token whose suffix matches neither
+gets no `P407`, which is the honest answer rather than a default.
 
 Writes `reports/patronymic-items-to-create.tsv`.
 """
@@ -131,6 +136,28 @@ def given_kinds(qids):
         KINDS_CACHE.parent.mkdir(parents=True, exist_ok=True)
         KINDS_CACHE.write_text(json.dumps(cache), encoding="utf-8")
     return {q: tuple(v) for q, v in cache.items()}
+
+
+#: `P407` *language of work or name* by SUFFIX. Her ruling, 2026-09-01: *"Add it by suffix
+#: convention"*, over omitting it entirely.
+#:
+#: `Q9027` *Swedish*, `Q9043` *Norwegian*. Danish `Q9035` is deliberately not used: `-sen` and
+#: `-datter` are shared by Danish and Norwegian and nothing in the token separates them, so the
+#: corpus's own centre of gravity decides and that is Norwegian. Longest suffix first, because
+#: `-sson` and `-son` would otherwise both match.
+LANGUAGE_BY_SUFFIX = [
+    ("sdotter", "Q9027"), ("ssdotter", "Q9027"), ("sson", "Q9027"),
+    ("sdatter", "Q9043"), ("ssen", "Q9043"), ("sen", "Q9043"),
+]
+
+
+def language_of(token):
+    """`Q9027`/`Q9043` from the token's suffix, or `''` when it matches neither."""
+    t = (token or "").casefold()
+    for suffix, qid in sorted(LANGUAGE_BY_SUFFIX, key=lambda x: -len(x[0])):
+        if t.endswith(suffix):
+            return qid
+    return ""
 
 
 def main():
@@ -245,6 +272,9 @@ def main():
             "p144_unknown": " ".join(unknown),
             "p5278_pair": pair,
             "stem": stem_raw,
+            # `P407` by suffix, her ruling 2026-09-01. A claim about the token's FORM, never
+            # about where its bearer lived.
+            "p407": language_of(tok),
         })
 
     with io.open(OUT, "w", encoding="utf-8", newline="") as fh:
@@ -256,6 +286,7 @@ def main():
     amb = sum(1 for r in rows if not r["p144_targets"] and r["p144_ambiguous"])
     unk = sum(1 for r in rows if not r["p144_targets"] and not r["p144_ambiguous"])
     pairs = sum(1 for r in rows if r["p5278_pair"])
+    langs = collections.Counter(r["p407"] for r in rows if r["p407"])
     create = sum(1 for r in rows if r["action"] == "create")
     print(f"{len(rows):,} patronymic tokens attested by a father in our tree")
     print(f"  {create:,} need an item created; {len(rows)-create:,} already have one")
@@ -263,6 +294,9 @@ def main():
     print(f"  {amb:,} blocked ONLY by an ambiguous given name (several items share the label)")
     print(f"  {unk:,} have no given-name item for any attesting father")
     print(f"  {pairs:,} have a P5278 surname-for-other-gender partner")
+    print(f"  {sum(langs.values()):,} carry a P407 language from their suffix "
+          f"({langs.get(chr(81)+chr(57)+chr(48)+chr(50)+chr(55), 0):,} Swedish, "
+          f"{langs.get('Q9043', 0):,} Norwegian)")
     print(f"wrote {OUT.relative_to(ROOT)}")
 
 
