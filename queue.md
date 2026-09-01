@@ -2,21 +2,23 @@
 
 Only work. Every specification and record moved to `CLAUDE.md` on 2026-09-01 at her instruction: *"remove all the 14 bullshit queue items"*. An item is DELETED when done, never annotated.
 
-## The placeholder batch emits `ja` and `zh` and NO `ko`
+## The Korean in-law sibling terms, which need relative AGE
 
-**It is the largest label producer in the repo** — `build-placeholder-label-batch.py`, 158,618
-`set_label` edits — and it has no `ko` at all. Grepped 2026-09-01: zero occurrences.
+**What is left of the `ko` gap after 2026-09-01.** The placeholder batch emits **81,697** Korean
+labels where it emitted none, and the paternal/maternal side is derived from the tree rather than
+guessed — 삼촌/외삼촌, 고모/이모. **1,608 edits carry `ja` and no `ko`**, and they split into two
+different problems:
 
-That contradicts her ruling of the same day, *"korean is extremely important on par with Chinese…
-cjk includes korean"*, which was applied to the creation gate, the funnel table and
-`build-ko-label-batch.py` but not here. **58,937 people now get `ja` and `zh` from a relative's
-name and none of them gets `ko`.**
+- **482 are the in-law sibling terms**, and Korean splits those by the speaker's sex **and relative
+  age**: 처남 against 매형, 시숙 against 시동생, 처형 against 처제. The side logic gives the family
+  (268 husband-side, 212 wife-side) and not the age. Birth years exist for many of these people, so
+  this is doable — it is a different derivation, not an impossible one.
+- **The rest lack a Hangul rendering for some token** of the relative's name, which is the same
+  per-token gate `ja` and `zh` already pass. That is the transliteration table, not this.
 
-`CJK_RELATION` is the table to extend — each entry becomes a triple rather than a pair — and
-`scripts/translit_ko.py` plus `translit_ko_latin.py` already render the relative's name, so the
-engine work is done. The Korean genitive is 의 and the relation words are the ones
-`build-garborg-day.py` already uses for its own NN path: 아들 · 딸 · 아버지 · 어머니 · 남편 · 아내 ·
-형제 · 자매.
+**Do not render a term whose age assumption is unmeasured.** `CLAUDE.md` § *partial is worse than
+absent* governs, and an in-law term asserting seniority we did not check is a wrong fact rather
+than an imperfect reading.
 
 ## "Synoptic tree" means two different things — resolve it usage by usage
 

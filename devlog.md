@@ -25075,3 +25075,26 @@ against 시동생 — and age is not what the side logic yields. 482 people keep
 on the entire dataset with small test sections, because the dataset is extremely heterogeneous."*
 The counts above are over the whole preview, not a slice — and no claim is made here about what the
 61 or the 482 imply for any other population.
+
+## 2026-09-01 — dead-queue sweep, seventh pass: the `ko` item cut back to its remainder
+
+**12 sections before, 12 after** — one cut back rather than deleted, which is what the rule asks
+for a partly-done item.
+
+**§ *The placeholder batch emits `ja` and `zh` and NO `ko`* is finished as written.** It said *"it
+has no `ko` at all. Grepped 2026-09-01: zero occurrences"* and *"58,937 people now get `ja` and
+`zh` from a relative's name and none of them gets `ko`."* Measured now: the batch carries **81,697**
+`ko` labels against 83,305 `ja`, and `CJK_RELATION` is triples with the paternal/maternal side
+derived from the tree. Both claims in the item are answered.
+
+**What replaces it is genuinely not done: 1,608 edits carry `ja` and no `ko`**, and they are two
+separate problems that the old item did not distinguish. **482** are the in-law sibling terms,
+which Korean splits by the speaker's sex *and relative age* — the side logic yields the family
+(268 husband-side, 212 wife-side) and not the age, and birth years exist for many of them, so this
+is a different derivation rather than an impossible one. The remainder simply lack a Hangul
+rendering for some token, which is the transliteration table's problem and already has its own item.
+
+**Checked and left alone:** § *"Synoptic tree" means two things* (needs her per-usage ruling),
+§ *`P1814`* (corrected today, still open and now correctly blocked on the culture classifier),
+§ *`exports/post-merge/`* (her standing ruling to leave and keep measuring), § *LABELS, IN HER
+ORDER*, and the seven tail items she ordered herself.
