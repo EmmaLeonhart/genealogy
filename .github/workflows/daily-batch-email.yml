@@ -1,0 +1,85 @@
+name: Daily batch email
+
+# **Emma, 2026-08-31:** *"not wikidata editing but instead emailing me the daily quickstatements
+# file to me every day so I can run it."* So nothing here edits Wikidata. The deliverable is
+# delivery: the day's batch reaches her inbox and she runs it by hand.
+#
+# It was gated on the repo going public, which happened 2026-09-01 — *"The repo is public now
+# lol"* — so Actions minutes are free and this can run.
+#
+# **It sends the file, not a summary.** The batch is what she runs.
+#
+# THE ONE THING THIS NEEDS FROM HER: three repository secrets. Until they exist the job still
+# runs, still attaches the batch as a downloadable artifact, and says plainly in the log that it
+# could not send. It never fails for a missing secret, because a red workflow every morning is
+# worse than a quiet one.
+#
+#   SMTP_SERVER    e.g. smtp.fastmail.com
+#   SMTP_USERNAME  the sending account
+#   SMTP_PASSWORD  an app password, never the account password
+#
+# Settings → Secrets and variables → Actions → New repository secret.
+
+on:
+  schedule:
+    # 06:05 UTC, a little after the CI run at 05:17 so the two do not queue against each other.
+    - cron: "5 6 * * *"
+  workflow_dispatch:
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      # Only the batch and the scripts that describe it. This workflow does not rebuild
+      # anything — the batch is committed, and rebuilding needs the corpus and 17 GB.
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout: |
+            /reports/wikidata-garborg-day.qs
+            /reports/garborg-carry-forward.tsv
+          sparse-checkout-cone-mode: false
+
+      - name: What is in today's batch
+        id: batch
+        run: |
+          FILE=reports/wikidata-garborg-day.qs
+          if [ ! -s "$FILE" ]; then
+            echo "no batch file on disk" >&2
+            exit 1
+          fi
+          CREATES=$(grep -c '^CREATE' "$FILE" || true)
+          LINES=$(grep -cve '^\s*#' -e '^\s*$' "$FILE" || true)
+          CARRIED=$(($(wc -l < reports/garborg-carry-forward.tsv) - 1))
+          echo "creates=$CREATES" >> "$GITHUB_OUTPUT"
+          echo "lines=$LINES" >> "$GITHUB_OUTPUT"
+          echo "carried=$CARRIED" >> "$GITHUB_OUTPUT"
+          echo "$CREATES creations, $LINES statement lines, $CARRIED carried forward"
+
+      # Always available, secrets or not: the batch is downloadable from the run page.
+      - uses: actions/upload-artifact@v4
+        with:
+          name: wikidata-garborg-day
+          path: reports/wikidata-garborg-day.qs
+          retention-days: 30
+
+      - name: Email it
+        if: env.SMTP_SERVER != ''
+        env:
+          SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          CREATES: ${{ steps.batch.outputs.creates }}
+          LINES: ${{ steps.batch.outputs.lines }}
+          CARRIED: ${{ steps.batch.outputs.carried }}
+        run: python .github/scripts/send_batch_email.py
+
+      - name: Say why it was not sent
+        if: env.SMTP_SERVER == ''
+        env:
+          SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
+        run: |
+          echo "SMTP_SERVER is not set, so nothing was emailed."
+          echo "The batch is attached to this run as the 'wikidata-garborg-day' artifact."
+          echo "Add SMTP_SERVER, SMTP_USERNAME and SMTP_PASSWORD to enable the email."

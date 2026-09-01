@@ -450,26 +450,32 @@ population. That is the large outstanding job.
 - Open questions for Emma: `questions.md`
 - The pre-wipe queue, 1,396 lines: `git show 4127170:queue.md`
 
-## EMAIL me the daily QuickStatements file, every day — from 2026-09-01
+## EMAIL me the daily QuickStatements file — BUILT, needs three secrets from her
 
-**Her ruling, 2026-08-31**, replacing the automated-edit reading of this item: *"not wikidata
-editing but instead emailing me the daily quickstatements file to me every day so I can run it."*
+**Her ruling, 2026-08-31:** *"not wikidata editing but instead emailing me the daily
+quickstatements file to me every day so I can run it."* It was gated on the repo going public;
+that happened 2026-09-01, so it is built.
 
-So nothing edits Wikidata. The deliverable is **delivery**: the day's
-`reports/wikidata-garborg-day.qs` (and the name-items file, until they become one file) arrives in
-her inbox each day and she runs it by hand, which is what has actually been happening in chat all
-along.
+`.github/workflows/daily-batch-email.yml` runs at **06:05 UTC daily** and on demand. It checks
+out only the batch file, counts what is in it, **always** uploads it as a downloadable artifact,
+and emails it as an attachment when the credentials exist.
+`.github/scripts/send_batch_email.py` does the sending — stdlib `smtplib`, no dependency.
 
-- **The date is tomorrow.** `scripts/wikidata_lockout.py` and `.github/workflows/wikidata-edits.yml`
-  both carry `START_DATE = 2026-09-01`, pinned together by `tests/test_wikidata_start_date.py`.
-  Those stay as the safety rail on the *edit* path, which remains unused.
-- **`schedule:` plus `workflow_dispatch:` only.** `CLAUDE.md` § *Cost* forbids `push:` and
-  `pull_request:` triggers and this needs neither.
-- **It runs on GitHub Actions, and it is step 4 of § *THE VERY LAST ITEM***, which carries the
-  whole chain: shrink the checkout, anonymise, go public, then this. Do not build it before
-  then — until the repo is public there are no free minutes to run it on, and the date passing
-  changes nothing on its own.
-- **Send the file, not a summary.** The batch is what she runs.
+**BLOCKED-ON-USER-ACTION, and this is a real one with a named action.** Three repository secrets,
+which only she can add:
+
+    SMTP_SERVER     e.g. smtp.fastmail.com
+    SMTP_USERNAME   the sending account
+    SMTP_PASSWORD   an app password, never the account password
+
+Settings → Secrets and variables → Actions → New repository secret.
+
+**Until they exist the job does not fail.** It runs, attaches the batch to the run, and says in
+the log that it could not send — a red workflow every morning is worse than a quiet one, and a
+missing secret is not an error in the pipeline.
+
+**It sends the file, not a summary.** The batch is what she runs, and a description of it is not
+something anyone can paste into QuickStatements.
 
 ## The chain of provenance — Emma, 2026-08-25
 
@@ -976,183 +982,6 @@ don't think this is true anymore."* Slot counts run 10 down to 1, so they are no
 6,632, 7,174 unfilled slots** over 251 exports. Her framing: *"I think I can get those
 paths cleared soon."*
 
-## THE EXPORT LOOP — 2026-08-17. At the TAIL since 2026-08-30, her call
-
-**Emma, 2026-08-17:** *"this thing here is currently essentially the absolute top
-importance task to do. This full sequence and all this other stuff that we're
-doing, we should be operating on sequentially through the queue, with this stuff
-being the very first thing."*
-
-**The job changed shape.** *"From now on it's your job to create the individual and
-then do other stuff."* Creating the export seed on Geni was her manual labour; it
-is now mine. `docs/export-seed-rules.md` is the method — five tiers, patronymics
-first — and it is not repeated here.
-
-**A master profile is a skip, not a problem.** *"Sometimes you'll just run into a
-situation where it looks like you should be able to add an individual but you
-can't. If you run into anything like that then just don't bother that much and
-skip through it."* Move to the next slot; do not investigate, do not report it.
-
-### Phase 1 — the seven seeds she created herself
-
-`export_individuals_to_do_on_your_own.txt`. **Forest, 5000, one at a time**, each
-zip on disk before the next export is queued.
-
-- `6000000227258546877` Anders father of Anna
-- `6000000227291195824` NN Hersleb
-- `6000000227289933834` Sunes Sterenius
-- `6000000227291086839` Rasmus Friis
-- `6000000227291028845` Håvard Øye-in-Heskestad
-- `6000000227290969847` Karl father of Carl
-- `6000000227289886830` Lewis father of Hugh
-
-Precedent, same morning: the `NN` mother created at `6000000227291886826` (mother
-of Rodrigo de las Varillas) was created, exported and downloaded end to end under
-Chrome automation. That is the whole manual workflow running without her.
-
-### Phase 1b — the Ettinger bridge, and it jumps the queue ahead of the top ten
-
-**Emma, 2026-08-17, mid-run:** *"You run this one first before you do the top 10…
-If you get started with the top 10 because you didn't get the message until you
-started it, then immediately after the last one of them you run this one."*
-
-The tree is `https://www.geni.com/family-tree/index/6000000002764956522`,
-**Mordechai Zeev Ettinger, A.B.D. Lwow (1804–1863)**. She thinks one Forest export
-seeded here may be enough to merge the isolated 344 into the world tree on its
-own: *"we'll see if it just connects to the world tree just based off of this
-export alone. If it does then that'll be great. We'll have a synoptically
-integrated tree."*
-
-Done: seed created at `6000000227293218831` — `NN`, mother of
-`Sarah Landau (Ziskind)`, tier 3, three generations up the Ettinger line. Forest
-export run from her.
-
-**If it does not connect**, she is adding a second person to the paths who will
-also sort it out. Do not start improvising a fix — wait for that.
-
-The 344 are the Ettingers, all of them in
-`exports/edges/export-Forest-6000000227256597825.ged`
-(`scripts/which-export-holds-component.py`).
-
-### Phase 2 — the top-ten loop, and it repeats until the paths are flat
-
-**Only once every Phase 1 zip is down.** Then, on repeat:
-
-- Find the **ten people who appear most often across the relationship paths**
-  (`scripts/find-chain-gaps.py`, ranked by slots).
-- For each of the ten, **sequentially**: create the export individual per
-  `docs/export-seed-rules.md`, run the Forest export, download the zip.
-- Finish all ten, **then** integrate that batch of ten into `exports/`.
-- Re-run the check, take the new top ten, go again.
-
-**The stopping condition is flatness, not exhaustion.** Emma: *"until eventually
-we end up in a situation where every individual in these paths only shows up
-once… every individual in the path is there an equal amount, which would in this
-case be each one of them shows up exactly once."*
-
-### Phase 3 — midpoints, when and only when the paths are flat
-
-Once no person outranks another by slot count, rank by the **midpoint of each path
-sequence** instead. Her reasoning: a person created at a midpoint is where the
-Forest walk reaches and then spreads out from.
-
-**She expects this phase mostly not to fire.** *"I don't think it's going to be
-that common because the midpoint people are more rare."* So do not build machinery
-for it ahead of time.
-
-### Phase 4 — the sparse regions, after every bridge is cleared
-
-*"The second thing in the queue, after we've cleared all of the bridges in these
-files."* From the sparseness analysis (`reports/density.md`), take the regions
-**exported from exactly once**, and within those go for the ones **deepest down**.
-Create an individual there and run the same create → Forest → download loop.
-
-Her reason: *"these are the places that are likely going to have more people that
-we might not have encountered before."* Sampled once means the neighbourhood was
-touched and never returned to, which is exactly what the doorway column in
-`density` is measuring.
-
-Two of the three objectives set today come out of this loop running to completion,
-and it runs unattended.
-
----
-
-
-## One pipeline, one output file — a stale name file is dangerous
-
-**Emma, 2026-08-31:** the name generation must always be the same run as the day file. Two files
-built by two scripts means one can be from an earlier run, and nothing on the file says so — it
-happened today, when the day file was 14:32 and the name file 12:16 and only the mtimes gave it
-away.
-
-- **One output**, produced by one pipeline, with the names **at the end of it**.
-- The run order it encodes is unchanged: individuals, then names, then relationships. Her order
-  is structurally rigid.
-
-**Note the placement disagrees with § *One batch file, names first, and a created person is linked
-to their names***, which says names come first. This item is the later statement and wins; the
-older section is cross-referenced here so the two are not solved twice.
-
-## Create the fathers the patronymics imply — AFTER the name work, her call
-
-**Emma, 2026-08-15:** *"If they are patronymics I actually think I'm going to want to add items
-for the hypothetical fathers that are implied to exist from the patronymics… They're going to be
-created because they are inferred from the existence of the patronymic."*
-
-**The population, measured 2026-08-31:** **75,903** people carry a patronymic and have no recorded
-father, over 3,993 distinct implied father-names.
-
-**Emma, 2026-08-31:** *"we only create the people after a lot of other stuff is resolved. I'll leave it for later."* So this sits at the tail by her placement, not by a blocker.
-
-**The obstacle is that the stem is not the name.** Stripping
-`-sen`/`-son`/`-datter` gives a string that matches the father's actual given name **42.1% of the
-time** — measured against **272,617** bearers whose father *is* recorded, so this is checked
-against reality rather than argued. Three distinct failure modes, all in the sample:
-
-| patronymic | naive stem | the father actually is | why |
-| --- | --- | --- | --- |
-| `Olsen` | `Ol` | `Ole` | the stem is not a name at all — 4,349 of them |
-| `Jakobsdotter` | `Jakobs` | `Jakob` | the genitive `s` is kept |
-| `Jonsen` | `Jon` | `John` | spelling variance |
-| `Slawson` | `Slaw` | **`James`** | not a patronymic — an English surname ending in `-son` |
-
-Creating from the naive stem would mint on the order of **44,000 wrong items**, including 4,349
-for a man called *Ol* who never existed. `Ol`, `Ander`, `Han`, `Lar`, `Nil`, `Jen` are the top six
-implied names and **not one is a name**.
-
-**What would make this safe, in order:** a rule that recovers `Ole` from `Olsen` and `Jakob` from
-`Jakobs`, validated the same way — against the 272,617 known fathers, reporting the hit rate
-before anything is emitted. `namemodel.patronymic_or_surname` already uses the father to decide
-*whether* a token is patronymic; this needs the inverse and does not have it.
-
-**Sourcing, settled so it is not the open question any more.** The child's patronymic is the
-evidence and it is recorded on the child's Geni profile, so the reference is `S2600` on the
-**child's** id — not the father's, who has none. `P887` *based on heuristic* is the property that
-marks the value as inferred rather than recorded; **its value item is not chosen** and must not be
-guessed. `pq:P887` is used only single-digit times across Wikidata, so there is no convention to
-follow and the reference-position query times out; pick the item deliberately when this is built.
-
-## LAST — `AskUserQuestion` on the two patronymic decisions that are hers
-
-Her instruction, 2026-08-31: the standing NEEDS-DECISION pair goes to her as an
-`AskUserQuestion`, **as the last item in the queue**. Not before then — everything else runs
-without it, which is why it sits here rather than at the front.
-
-Two questions, one tool call each, with real options:
-
-- **The 179 patronymic tokens still genuinely ambiguous.** Down from 546 once sex and writing
-  system were applied; what is left is several items that are all male, all Latin, and all
-  plausibly the same name. This is § *One name item per USAGE* and hers. Default in force
-  meanwhile: skip them, emit the other 4,747.
-- **`P407` *language of work or name* on the patronymic items we create.** 59% of the 631
-  existing ones carry it, and nothing in a token supplies it — `Andersson` reads Swedish and
-  `Andersen` Danish-Norwegian by convention, not by rule. Default in force meanwhile: omit it,
-  because taking it from the export or the region is the geography inference `CLAUDE.md` forbids.
-
-**Both defaults are already live and neither blocks anything**, so this is a question about
-whether to do *more*, never a stall. Show her the actual candidate items, not a summary — the
-`Carl`/`Johan`/`Olof` lookup is what made the last one answerable in one line.
-
 ## LABELS, IN HER ORDER — one step per language, every individual at once
 
 **Emma, 2026-08-17**, after being shown the 364 structural placeholders with no label:
@@ -1339,46 +1168,6 @@ what steps 1 and 2 exist to earn.
 **Nothing in this chain is blocked and none of it is urgent.** `2026-09-01` passing changes
 nothing on its own: the edit path stays unused, its `START_DATE` constants stay as the rail, and
 the batch keeps reaching her in chat exactly as it has been.
-
-## THE LAST ITEM — `BET x AND y` properly
-
-**Emma, 2026-09-01: *"I'll do between more later."*** So what ships today is the simple reading and
-this is the considered one.
-
-**What ships now.** `scripts/datequals.py` emits `P1319` *earliest date* at the value's own
-precision and `P1326` *latest date* at the end year, precision 9. **All 7,797 `between` dates in
-`reports/derived-facts.csv` carry an end year** — measured, none is missing — so the
-no-end-year fallback in that module never fires on current data and exists only against a future
-parse gap.
-
-**What is left to think about, and none of it is urgent:**
-
-- **The end is stored as a YEAR only.** `BET 5 JUL 1735 AND 5 JUL 1737` keeps the start's day
-  precision and loses the end's, because `derived-facts.csv` has `birth_date_year_end` and no
-  month or day column. `genimerge.dates` parses the full end date; the derived CSV is where it
-  narrows. Widening that is a schema change to a 200 MB file that 44 scripts read.
-- **Which date should the statement's VALUE be?** It is currently the start. For a range the
-  midpoint or the start are both defensible, and Wikidata practice varies — some items put the
-  range only in qualifiers and give the value a low precision covering both ends.
-- **A range spanning a century boundary** — `BET 1798 AND 1802` — arguably wants precision 8
-  (decade) or 7 (century) on the value rather than a year it does not have.
-
-**Nothing depends on this.** The current form asserts less than it knows rather than more, which
-is the safe direction, and it is a strict improvement on the bare value it replaced.
-
-## THE LAST ITEM — `wikidata-placeholder-labels.json` is 74 MB and just quadrupled
-
-It went **18 MB → 74 MB** on 2026-09-01 when the stale relationship-label preview was rebuilt
-(39,691 edits → 158,618). It is tracked, and GitHub refuses a file over **100 MiB**, so one more
-growth of that shape breaks a push rather than warning about it.
-
-`scripts/pack-derived.py` already solves this for the four big CSVs — gzip the file, commit the
-`.gz`, gitignore the plain one, and `--unpack` after a clean clone. Only
-`build-en-label-batch.py` reads this JSON, so unlike the CSVs there is no forty-reader problem to
-work around.
-
-**Do not act on the size alone until it is near the limit** — the point of writing it down now is
-that the next rebuild is when it would surprise her.
 
 ## THE VERY LAST ITEM — a GitHub Pages site documenting the repo
 
