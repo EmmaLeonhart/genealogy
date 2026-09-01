@@ -35,6 +35,7 @@ A guessed row is a wrong name in two languages at once.
 """
 from __future__ import annotations
 
+import unicodedata
 import csv
 import sys
 from pathlib import Path
@@ -217,6 +218,13 @@ SUFFIXES = [
 
 def translit(token):
     """`(katakana, chinese)` for one Norwegian name token, or `(None, None)`."""
+    # **NFC first, or a decomposed diacritic reads as nothing.** `Ånon` written as `A` +
+    # U+030A is five characters, not four; the walk does not know a bare combining mark and
+    # returns no reading at all. Measured 2026-09-01: **3,378 tokens** in
+    # `reports/derived-labels.csv` are not NFC -- `Adnoy`, `Hedstrom`, `Engstrom`,
+    # `Sparrskold`, `Austratt` -- and every one silently got no `ja`/`zh`.
+    token = unicodedata.normalize("NFC", token)
+
     # **A patronymic suffix is read as a unit, not spelled out.** See `SUFFIXES` above: the
     # composer already did this and the letter walk did not, so one pipeline gave two answers.
     #
