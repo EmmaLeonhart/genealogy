@@ -18,11 +18,14 @@ human should not be holding it in their head:
 4. `derive-family.py` and `derive-facts.py` — `merged.ged` → `derived-family.csv`,
    `derived-facts.csv`. **`derive-family.py` also reads `derived-labels.csv`**, which is why it
    now runs *after* step 3 rather than before it; see below.
-5. The label chain — `relationship-label-preview.py` → `build-placeholder-label-batch.py` →
+5. `build-cjk-romanisation.py` — reads the three derived CSVs, and its output feeds both the
+   preview and the `en` batch below. Added 2026-09-01 for the same reason as the chain in
+   step 6: it was not a step, so it aged against the tree.
+6. The label chain — `relationship-label-preview.py` → `build-placeholder-label-batch.py` →
    `build-en-label-batch.py` → `build-mul-label-batch.py`. These consume `derived-family.csv`
    and `derived-labels.csv`, so they are downstream of the tree and belong here.
-6. `pack-derived.py` — gzips the four CSVs that exceed GitHub's 100 MiB limit.
-7. `build-garborg-day.py --compose` — the QuickStatements batch.
+7. `pack-derived.py` — gzips the four CSVs that exceed GitHub's 100 MiB limit.
+8. `build-garborg-day.py --compose` — the QuickStatements batch.
 
 **Step 3 used to run fourth, after the two `derive-*` steps, and that was a real bug.**
 `derive-family.py` line ~75 reads `reports/derived-labels.csv` to name the people it reports —
@@ -80,6 +83,13 @@ STEPS = [
     ("derived labels", [sys.executable, os.path.join("scripts", "derive-labels.py")]),
     ("derived family", [sys.executable, os.path.join("scripts", "derive-family.py")]),
     ("derived facts", [sys.executable, os.path.join("scripts", "derive-facts.py")]),
+    # **The CJK romanisation, and it is the same trap again.** `build-cjk-romanisation.py` reads
+    # `derived-labels.csv`, `derived-facts.csv` and `derived-family.csv`, and its output is read
+    # by BOTH `build-relationship-label-preview.py` and `build-en-label-batch.py` -- two steps
+    # below. It was not a step itself, so it aged against the tree exactly as the preview did.
+    # Found 2026-09-01 while fixing the culture classifier: the same shape, the same day.
+    ("cjk romanisation",
+     [sys.executable, os.path.join("scripts", "build-cjk-romanisation.py")]),
     # The label chain. Every one of these reads a derived CSV and nothing else reruns them, which
     # is how the preview came to be twelve days older than the tree it describes.
     ("relationship label preview",

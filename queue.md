@@ -137,49 +137,6 @@ So three things, and none of them touches a person's data:
 **The repo is public as of 2026-09-01** — *"The repo is public now lol"* — so Actions minutes are
 free and `CLAUDE.md` § *Cost* no longer binds.
 
-## The CJK culture classifier leaks across marriages — a veto is available
-
-`reports/culture-classifier-check.md`, 2026-09-01.
-
-**Both `ja`-classified people who have a Wikidata item are misclassified** — `Q77895` is Aisin
-Gioro, the Manchu Qing house, and `Q10511648` is the Xiao of Lanling. Both reached by
-`graph traversal, 2 hop(s)`. The traversal is the right method (`CLAUDE.md`: do not guess culture
-from the name, the tree settles it) but it runs to **eight hops**, and two is enough to cross a
-marriage into another culture.
-
-**The `zh` side is 93%** — 109 of 117 checkable romanisations appear in the person's own Wikidata
-`en` label — and its errors are the same leak in reverse: `榮` romanised *Ei*, the Japanese
-reading, for a person the classifier itself calls Chinese.
-
-**The seat veto was TRIED on 2026-09-01 and it cannot reach these two.** Attempted and reverted,
-because the hard rails forbid shipping something that does not do what it is for.
-
-The classifier already has a veto — it refuses a `ja` walk when the last token is a surname that
-is never Japanese — and extending it to clan seats is a pure ordering of two signals it already
-computes. That much is right. What kills it is the seat SET:
-
-    隴西狄道    663 occurrences   in SEATS_EARLY
-    陳郡陽夏     59 occurrences   in SEATS_EARLY
-    東海蘭陵      2 occurrences   NOT in SEATS_EARLY
-    愛新覺羅      1 occurrence    NOT in SEATS_EARLY
-
-`SEATS_EARLY` is *four Han characters occurring 20 or more times*, and both misclassified people
-carry a tail below that floor. The veto fired for exactly **one** person out of 226 and neither
-target moved. **A seat veto is therefore not the fix**; it is a small improvement to a set that
-does not contain the cases in question.
-
-**What the real question is, now that it is sharp:** how to recognise a rare clan seat or clan
-name. `愛新覺羅` is Aisin Gioro and `東海蘭陵` is a commandery pair — both obviously not Japanese to
-a reader, and both invisible to a frequency floor. Lowering the floor is the obvious move and is
-untested; it would need the usual treatment, a sample read by hand before it ships.
-
-**Also note the measurement was confounded and would have been reported wrongly.**
-`derived-labels.csv` changed the same day, so a before/after diff of the romanisation attributes
-to the veto what the label fix did. Any retry needs the classifier rebuilt twice against one
-fixed label file.
-
-**Her call**, because it changes 13,636 romanisations and the `ja`/`zh` split feeds the CJK labels.
-
 ## FOR 2026-09-02 — the two removals, and one question I would not answer alone
 
 ### The `NEVER_TOUCH` lists — NOT removed, and here is why

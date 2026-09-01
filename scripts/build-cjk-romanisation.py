@@ -476,6 +476,34 @@ def main() -> int:
                                         "surname %s is never Japanese here"
                                         % (hop, _t[-1]))
                     break
+                # **A FOUR-CHARACTER tail vetoes a `ja` walk, and the number is the argument.**
+                # Measured over this file's own output, 2026-09-01, by last-token length against
+                # the culture the classifier assigned:
+                #
+                #     1 char   zh 4,197   ja 43
+                #     2 chars  zh 1,085   ja 165
+                #     3 chars  zh   307   ja  9
+                #     4 chars  zh 6,327   ja   3      <- 99.95%
+                #
+                # And all three of those `ja` are wrong: `愛新覺羅` is Aisin Gioro, the Manchu
+                # Qing house; `東海蘭陵` is a Chinese commandery pair, the Xiao of Lanling; and
+                # `兀都亦惕` is Ütüyid, a Mongol clan. Every one reached by a graph walk.
+                #
+                # **This replaces the clan-seat idea, which was tried on 2026-09-01 and could
+                # not work.** `SEATS_EARLY` is four Han characters occurring 20 or more times,
+                # and these tails occur twice, once and once -- below the floor by construction,
+                # so no seat set can contain them. Length has no floor.
+                #
+                # **The refusal leaves them UNSETTLED rather than making them `zh`.** Manchu and
+                # Mongol are not Chinese either, and `CLAUDE.md`'s standing rule is that a wrong
+                # label is worse than none: `Masaru` for a Manchu prince asserts something false,
+                # where no romanisation merely says we do not know.
+                if top == "ja" and _t and len(_t[-1]) == 4:
+                    unsettled_why[g] = ("walk said ja at %d hop(s), refused: %s is a "
+                                        "four-character clan name or seat, which is Japanese "
+                                        "in 3 of 6,330 cases and wrong in all three"
+                                        % (hop, _t[-1]))
+                    break
                 if n / sum(votes.values()) >= 0.7:
                     culture[g] = top
                     why[g] = f"graph traversal, {hop} hop(s)"

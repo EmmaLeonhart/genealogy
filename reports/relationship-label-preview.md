@@ -9,17 +9,17 @@ Emma asked to see both populations before deciding whether the generated label r
 | | bare `NN` | `NN` + surname |
 | --- | ---: | ---: |
 | people | 151,303 | 7,315 |
-| a label can be generated | **131,561** (86%) | **5,969** (81%) |
-| no relative with a real name | 19,742 | 1,346 |
+| a label can be generated | **131,561** (86%) | **5,970** (81%) |
+| no relative with a real name | 19,742 | 1,345 |
 
 ## Which relative ends up naming them
 
 | relation | bare `NN` | `NN` + surname |
 | --- | ---: | ---: |
-| father | 73,117 | 3,963 |
-| mother | 8,808 | 89 |
-| spouse | 16,168 | 1,386 |
-| child | 7,785 | 168 |
+| father | 73,115 | 3,963 |
+| mother | 8,810 | 89 |
+| spouse | 16,166 | 1,387 |
+| child | 7,786 | 168 |
 
 ## The rules applied here, and what they cost
 

@@ -17954,7 +17954,7 @@ geni_id,population,surname,sex,mul_label,relation_used,hops,skipped_a_relative,v
 6000000002188101206,NN + surname,京兆始平,F,NN 京兆始平,father,1,,6000000007974321632,daughter of 毅 天武 竇,yes,2,1,5
 6000000002188101235,bare NN,,M,NN,father,1,,6000000002188101257,son of Dugu Kuzhe,yes,2,3,11
 6000000002188101243,NN + surname,清河,F,NN 清河,father,1,,6000000021122131361,daughter of 彥珍 崔,yes,1,1,2
-6000000002188101251,bare NN,,F,NN,father,1,,6000000002188101235,daughter of Xin,yes,2,1,8
+6000000002188101251,bare NN,,F,NN,mother,1,,6000000002188101243,daughter of 崔,yes,2,1,8
 6000000002188101257,bare NN,,M,NN,father,1,,6000000002188101265,son of Tu-ku Ta-Sien,yes,2,1,1
 6000000002188101265,bare NN,,M,NN,father,1,,6000000002837428936,son of Chief Tsugu Viengsun of the Turks,yes,2,1,1
 6000000002188101273,bare NN,,F,NN,spouse,1,,6000000002188101265,wife of Tu-ku Ta-Sien,yes,0,1,1
@@ -37527,7 +37527,7 @@ geni_id,population,surname,sex,mul_label,relation_used,hops,skipped_a_relative,v
 6000000006838783795,bare NN,,F,NN,father,1,,6000000006839055228,daughter of Harold Rapp,yes,2,0,0
 6000000006839706459,bare NN,,F,NN,father,1,,6000000007264493459,daughter of Sigvart Efteland,yes,2,0,0
 6000000006839929520,bare NN,,F,NN,mother,1,,6000000006841299175,daughter of Audrey Goldberg,yes,2,0,0
-6000000006840005152,bare NN,,F,NN,mother,1,,6000000002510973487,daughter of Sachi,yes,2,1,1
+6000000006840005152,bare NN,,F,NN,grandparent,2,,6000000002494069423,granddaughter of Tadamoto Ogasawara,yes,2,1,1
 6000000006840136557,bare NN,,M,NN,father,1,,6000000042869723729,son of Ernest Joseph Goldberg,yes,2,1,4
 6000000006842886222,bare NN,,F,NN,father,1,,6000000001885494718,daughter of Nils Olof Samuel Werner von Troil,yes,2,0,0
 6000000006843054156,bare NN,,F,NN,father,1,,6000000001885494718,daughter of Nils Olof Samuel Werner von Troil,yes,2,0,0
@@ -43283,7 +43283,7 @@ geni_id,population,surname,sex,mul_label,relation_used,hops,skipped_a_relative,v
 6000000007970268622,bare NN,,M,NN,father,1,,6000000075328531871,son of 忠 楊,yes,2,2,8
 6000000007970272795,bare NN,,F,NN,father,1,,6000000021137800721,daughter of 巋 仁遠 蕭,yes,2,1,4
 6000000007972320348,bare NN,,,NN,child,1,placeholder,6000000011508315232,parent of Johan Salomonsson,yes,2,0,1
-6000000007974327545,bare NN,,F,NN,father,1,,6000000002188101235,daughter of Xin,yes,2,1,3
+6000000007974327545,bare NN,,F,NN,mother,1,,6000000002188101243,daughter of 崔,yes,2,1,3
 6000000007975051952,bare NN,,,NN,child,1,placeholder,6000000090231393283,parent of Brita Jonsdotter,yes,2,0,1
 6000000007975180091,NN + surname,弘農華陰,F,NN 弘農華陰,father,1,,6000000007970268622,daughter of 堅 楊,yes,2,0,0
 6000000007975838392,bare NN,,F,NN,spouse,1,,6000000013590262651,wife of 俊 楊 三,yes,0,1,2
@@ -60366,13 +60366,13 @@ geni_id,population,surname,sex,mul_label,relation_used,hops,skipped_a_relative,v
 6000000012974075911,bare NN,,M,NN,child,1,,6000000012974120615,father of Ji,yes,1,0,1
 6000000012974102304,bare NN,,M,NN,grandparent,2,,6000000012973817912,grandson of Carlo Alberto del Gallo,yes,2,0,0
 6000000012974114205,bare NN,,F,NN,father,1,,6000000012973817912,daughter of Carlo Alberto del Gallo,yes,2,0,0
-6000000012974148354,bare NN,,M,NN,child,1,,6000000012974260347,father of Fang,yes,1,0,2
+6000000012974148354,bare NN,,M,NN,father,1,,6000000012974217291,son of Kong Mou,yes,1,0,2
 6000000012974153252,bare NN,,M,NN,grandparent,2,,6000000012973817912,grandson of Carlo Alberto del Gallo,yes,2,0,0
-6000000012974199933,bare NN,,M,NN,child,1,,6000000023701142622,father of Kong,yes,1,0,1
+6000000012974199933,bare NN,,M,NN,child,1,,6000000023701142622,father of Kong Shi,yes,1,0,1
 6000000012974217291,bare NN,,M,NN,father,1,,6000000012967255967,son of Kong Fu,yes,1,0,1
-6000000012974223415,bare NN,,M,NN,father,1,,6000000012974148354,son of Shang,yes,1,0,1
+6000000012974223415,bare NN,,M,NN,father,1,,6000000012974148354,son of Kong Shang,yes,1,0,1
 6000000012974261698,bare NN,,M,NN,child,1,,6000000012974307080,father of Biao,yes,1,0,3
-6000000012974325705,bare NN,,M,NN,father,1,,6000000012974261698,son of Xian,yes,1,0,3
+6000000012974325705,bare NN,,M,NN,father,1,,6000000012974261698,son of Kong Xian,yes,1,0,3
 6000000012974515845,bare NN,,F,NN,grandchild,2,,6000000011885968920,grandmother of Amalie Velde Birkeland,yes,0,1,3
 6000000012974539142,bare NN,,M,NN,father,1,,6000000012839737327,son of Haldor Reinholt,yes,1,0,0
 6000000012974599894,bare NN,,M,NN,father,1,,6000000012974672305,son of 安國 安國 孔,yes,1,0,1
@@ -61936,10 +61936,10 @@ geni_id,population,surname,sex,mul_label,relation_used,hops,skipped_a_relative,v
 6000000013589310426,bare NN,,,NN,sibling,2,placeholder,385917474870012104,"sibling of Giovanni Orseolo, dux Dalmatiae",yes,2,0,0
 6000000013589333492,bare NN,,,NN,sibling,2,placeholder,385917474870012104,"sibling of Giovanni Orseolo, dux Dalmatiae",yes,2,0,0
 6000000013590171966,bare NN,,F,NN,spouse,1,,6000000013590298317,wife of Zang,yes,0,1,2
-6000000013590293320,bare NN,,F,NN,father,1,,6000000002188101235,daughter of Xin,yes,2,1,0
+6000000013590293320,bare NN,,F,NN,mother,1,,6000000013590414208,daughter of Ru Luo,yes,2,1,0
 6000000013590303673,bare NN,,F,NN,father,1,,6000000208847417615,daughter of Jon Jonsen Hammer,yes,2,0,0
 6000000013590326675,bare NN,,M,NN,grandparent,2,,6000000208847417615,grandson of Jon Jonsen Hammer,yes,2,0,0
-6000000013590414208,bare NN,,F,NN,spouse,1,,6000000002188101235,wife of Xin,yes,0,1,2
+6000000013590414208,bare NN,,F,NN,child,1,,6000000146446291821,mother of Luo,yes,0,1,2
 6000000013590453290,bare NN,,F,NN,father,1,,6000000075368013857,daughter of 泰 宇文,yes,2,1,5
 6000000013590459798,bare NN,,F,NN,father,1,,6000000208847417615,daughter of Jon Jonsen Hammer,yes,2,0,0
 6000000013590508322,bare NN,,M,NN,,,,,,,0,1,5
@@ -118949,7 +118949,7 @@ geni_id,population,surname,sex,mul_label,relation_used,hops,skipped_a_relative,v
 6000000145689129382,bare NN,,F,NN,father,1,,6000000145718751822,daughter of Moses Deutz,yes,1,0,0
 6000000145714063821,bare NN,,M,NN,child,1,,6000000145714449821,father of Yue,yes,2,0,1
 6000000145717023833,NN + surname,弘農華陰,F,NN 弘農華陰,father,1,,6000000074705648192,daughter of 旉 文衍 楊,yes,2,1,2
-6000000145717806821,bare NN,,F,NN,spouse,1,,6000000002188101235,wife of Xin,yes,0,1,7
+6000000145717806821,bare NN,,F,NN,child,1,,6000000013590232341,mother of Mu,yes,0,1,7
 6000000145721369821,NN + surname,Frass,F,NN Frass,mother,1,,6000000035140001184,daughter of Elle z. Frass,yes,1,0,1
 6000000145727514821,NN + surname,滎陽開封,M,NN 滎陽開封,father,1,,6000000145727630821,son of 道穎 鄭,yes,1,0,1
 6000000145752449642,bare NN,,F,NN,father,1,,6000000074704759393,daughter of 適 子立 王,yes,2,1,2
@@ -131343,7 +131343,7 @@ geni_id,population,surname,sex,mul_label,relation_used,hops,skipped_a_relative,v
 6000000186291378929,NN + surname,Чачба/Шервашидзе,F,NN Чачба/Шервашидзе,father,1,,6000000083767532831,daughter of Puto Бослакович Шервашидзе,yes,2,1,2
 6000000186292938119,bare NN,,M,NN,father,1,,6000000010709998753,son of Ole Hansen Moldeklev,yes,2,1,0
 6000000186293069355,bare NN,,F,NN,grandparent,2,,6000000028005138209,granddaughter of Erik Valdemar Osbeck,yes,1,0,0
-6000000186293174584,NN + surname,劉,F,NN 劉,,,,,,,0,1,0
+6000000186293174584,NN + surname,劉,F,NN 劉,spouse,1,,6000000186293174579,wife of Ji,yes,0,1,0
 6000000186293687216,bare NN,,F,NN,grandparent,2,,6000000028005138209,granddaughter of Erik Valdemar Osbeck,yes,1,0,0
 6000000186294204981,bare NN,,F,NN,,,,,,,0,1,0
 6000000186294926940,bare NN,,M,NN,grandparent,2,,6000000028005138209,grandson of Erik Valdemar Osbeck,yes,1,0,0

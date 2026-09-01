@@ -24267,3 +24267,39 @@ worked example, and measurement over the real corpus stays the primary evidence.
 **Retitled, not deleted:** the email section was headed *"BUILT, needs three secrets from her"*,
 which is an annotation of done-ness in a queue that is supposed to hold only outstanding work. It
 is now *"Add three SMTP secrets so the daily batch email can send"* — the action, which is hers.
+
+## 2026-09-01 — the culture classifier: a length veto, and the romanisation joins the pipeline
+
+**The clan-seat idea could not work and length can.** `SEATS_EARLY` is *four Han characters
+occurring 20 or more times*, and the misclassified tails occur twice, once and once — below the
+floor by construction, so no seat set can ever contain them. Measuring the classifier's own output
+by last-token length against the culture it assigned:
+
+    1 char   zh 4,197   ja  43
+    2 chars  zh 1,085   ja 165
+    3 chars  zh   307   ja   9
+    4 chars  zh 6,327   ja   3      99.95%
+
+**And all three of those `ja` are wrong.** `愛新覺羅` is Aisin Gioro, the Manchu Qing house;
+`東海蘭陵` is a Chinese commandery pair, the Xiao of Lanling; `兀都亦惕` is Ütüyid, a Mongol clan.
+Every one settled by a graph walk, at 2, 2 and 5 hops.
+
+So a four-character last token now vetoes a `ja` walk. **Measured against a clean baseline this
+time** — the classifier built twice with only the code changing, after the confounded run earlier
+today taught that lesson: **exactly 3 rows dropped, all three the known cases, 0 changed culture,
+0 appeared.** `zh` is 13,416 before and after.
+
+**They become UNSETTLED rather than `zh`**, which is the honest outcome: Manchu and Mongol are not
+Chinese either, and `Masaru` for a Manchu prince asserts something false where no romanisation
+merely says we do not know.
+
+### The same staleness trap, found the same day
+
+`build-cjk-romanisation.py` reads the three derived CSVs and its output is read by **both**
+`build-relationship-label-preview.py` and `build-en-label-batch.py` — two pipeline steps — while
+not being a step itself. Exactly the shape that left the preview twelve days behind the tree this
+morning. It is now step 6 of 12, between the derived layer and the label chain.
+
+Chain re-run on the corrected romanisation: `en` sources move to 5,463 romanised-from-zh and 186
+from ja, and the two people who lost a romanisation lose an `en` label with it — correct, because
+the label they would have had was a Japanese reading of a Manchu name.
