@@ -1097,6 +1097,19 @@ ARNE_GENI = "6000000005607426327"
 #: whose step 1 is her, so excluding her at one call site is not enough — this set is enforced
 #: at source *and* asserted over the finished file before it is written.
 NEVER_TOUCH_GENI = {
+    # **Emma herself.** *"I should not be in the traversable graph and neither should any
+    # kitajima people"* (2026-08-27). She was never in this set: the builder kept her out only
+    # because deleting `entity_resolution.md` removed her from `have`, which is an accident of
+    # another change rather than a guard. `scripts/build-missing-reciprocals.py` reads the
+    # ledger instead, where she legitimately appears, and so emitted `Q140568870 P22 …` and
+    # `Q140568870 P25 …` on 2026-08-31 -- caught by
+    # `tests/test_p2600_batches.py::test_no_batch_names_an_excluded_id`.
+    #
+    # `CLAUDE.md` § *Her own duplicates are DELIBERATE* is why this is an exclusion and not a
+    # bug to fix elsewhere: the duplicate items are hers on purpose, and what must not happen is
+    # her item being wired into the traversable graph by us.
+    "6000000087535357291",
+
     # The Kitajima/Kitashima family -- 22 people. Emma, 2026-08-27: *"neither should any
     # kitajima people"*.  was created anyway on 2026-08-28, because the
     # exclusion covered her and nobody else.
@@ -1126,6 +1139,12 @@ NEVER_TOUCH_GENI = {
     "6000000227335430827",
 }
 NEVER_TOUCH_QID = {
+    # Her own item, both the one `entity_resolution.md` named and the one the ledger
+    # now holds. `Q140568870` is what her Geni id resolves to today; the test bans
+    # `Q232803`, and neither should ever be a subject or a value.
+    "Q232803",
+    "Q140568870",
+
     "Q135579416",
     "Q135579421",
     "Q135579425",

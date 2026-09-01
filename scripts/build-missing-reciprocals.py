@@ -72,6 +72,19 @@ FATHER, MOTHER, CHILD, SPOUSE, SIBLING = "P22", "P25", "P40", "P26", "P3373"
 SIBLING_CAP = 10
 
 
+
+def _never_touch():
+    """`NEVER_TOUCH_GENI` and `NEVER_TOUCH_QID`, read from the builder that owns them."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location(
+        "_bgd", Path(__file__).resolve().parent / "build-garborg-day.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return set(mod.NEVER_TOUCH_GENI), set(mod.NEVER_TOUCH_QID)
+
+
+NEVER_TOUCH_GENI, NEVER_TOUCH_QID = _never_touch()
+
 def main():
     # Everyone we know to have an item: Emma's ledger plus anything Wikidata states.
     qid = {}
@@ -132,6 +145,22 @@ def main():
     def add(subj_g, prop, obj_g, why):
         sq, oq = qid.get(subj_g), qid.get(obj_g)
         if not sq or not oq or sq == oq:
+            return
+        # **The exclusion list applies here too, and its absence was a real regression.**
+        # Rebuilding this file on 2026-08-31 emitted `Q140568870 P22 …` and `Q140568870 P25 …`
+        # -- Emma's own item, which `CLAUDE.md` § *Her own duplicates are DELIBERATE* keeps out
+        # of the traversable graph on her instruction of 2026-08-27. `build-garborg-day.py` has
+        # `NEVER_TOUCH_GENI`/`NEVER_TOUCH_QID` for exactly that; this script had no guard at all,
+        # so a file untouched since 08-25 reintroduced two edits to her item the moment it ran.
+        #
+        # **Imported from the builder rather than restated**, because a second copy is how the
+        # two stop agreeing -- the same reasoning that module already gives for its own
+        # `SPINE_BLOCK_QIDS`. `tests/test_p2600_batches.py::test_no_batch_names_an_excluded_id`
+        # is what caught it, and it caught it because it reads every `.qs` on disk rather than
+        # trusting the generator.
+        if sq in NEVER_TOUCH_QID or oq in NEVER_TOUCH_QID:
+            return
+        if subj_g in NEVER_TOUCH_GENI:
             return
         key = (sq, prop, oq)
         if key in seen:

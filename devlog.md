@@ -23757,3 +23757,33 @@ the artefact.
 
 *Running the batch is not a queue item for me* — it is a thing she does, and it is waiting for her
 whenever she wants it.
+
+## 2026-08-31 — her own item was never actually excluded; the guard was an accident
+
+The red test from the last report, fixed. `test_no_batch_names_an_excluded_id` failed on the
+reciprocals file I rebuilt an hour earlier:
+
+    wikidata-reciprocals.qs:4006  Q140568870  P22  Q141224814  S2600 "6000000087535357291"
+
+**Two separate defects, and the second is the one worth keeping.**
+
+**`build-missing-reciprocals.py` had no exclusion at all.** It now imports `NEVER_TOUCH_GENI` and
+`NEVER_TOUCH_QID` from the builder that owns them rather than restating them — a second copy is
+how two lists stop agreeing, which is the reasoning that module already gives for `SPINE_BLOCK_QIDS`.
+
+**And she was never in those sets.** Checked: `"6000000087535357291" in NEVER_TOUCH_GENI` is
+**False**, and `NEVER_TOUCH_QID` held twenty Kitajima items and not her. The builder kept her out
+only because deleting `entity_resolution.md` removed her from `have` — **an accident of an
+unrelated change, not a guard**. Any script reading the ledger instead, as this one does, saw her
+straight away.
+
+Her item is also `Q140568870` now, where the test bans `Q232803`; the ledger resolves her Geni id
+to the newer one. Both are in `NEVER_TOUCH_QID`, and her Geni id in `NEVER_TOUCH_GENI`, so the
+protection is now stated rather than incidental.
+
+4,325 → 4,321 statements, her two lines gone. **300 pass** across the two batch modules.
+
+**Worth naming plainly: I reported this file as "checked, every subject and value resolves" before
+running the suite.** The check I ran asked whether the QIDs *exist*. It never asked whether they
+are ones we may touch, and § *A guard that has not been seen to FAIL is not known to guard* is
+exactly this — the protection had never been tested because nothing had ever tried to violate it.
