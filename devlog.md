@@ -24104,3 +24104,34 @@ a run per push would queue behind itself for no signal.
 
 The schedule is 05:17 daily, off the hour because :00 is when every scheduled workflow on GitHub
 fires at once.
+
+## 2026-09-01 — the NN branch kept one of two surnames, and two corrections
+
+**The redacted branch of `build-garborg-day.py` set `birth = ""` and never reached the alias
+block**, so a married NN woman kept one of her two recorded surnames. `NN /Thaulow/` who married
+a Hahn went out as a single label with her birth surname dropped. **1,636 NN or redacted people
+carry a `SURN` and a different `_MARNM`** — measured over `display-names.csv`.
+
+§ *The MARRIED name is the real name* decides which way round: married is the label, birth is the
+`Amul`. That is exactly what the named branch already did, and there is no reason redaction
+changes it — the surname is the part redaction does not take.
+
+**Today's batch does not exercise it**, and that is worth saying rather than implying otherwise:
+of 28 creations one is redacted and she has no married surname. The path is verified by the field
+map instead — `fields` is built with `("givn", "surn", "nick", "marnm", "display_name")`, so both
+lookups resolve, and `NN /Thaulow/` will emit `Lmul "NN Hahn"` and `Amul "NN Thaulow"`.
+
+### Two corrections to earlier entries today
+
+**`drop_marker_surname` already existed and I said I wrote it.** My patch asserted the function was
+absent, the assert failed, nothing was written — and the behaviour I then demonstrated was the
+existing variadic `drop_marker_surname(label, *surnames)`. What was actually missing, and what the
+commit really added, is the **call from `derive-labels.py`**: the function had one caller in the
+batch builder and none in the generator that feeds every label emitter. So the `Sara /NN/` fix is
+another instance of § *Code that is WRITTEN but never CALLED*, which is a better finding than the
+one claimed.
+
+**The heredoc escaping cost five separate repairs today** — `\1` arriving as `\x01`, `\t` as a
+real tab, `\n` as a newline inside an f-string, and a duplicated line from a half-applied patch.
+Every one was in a `<<'PY'` heredoc that is supposed to pass text through unchanged. The reliable
+route is the editing tools, or building the escape with `chr(92)`.

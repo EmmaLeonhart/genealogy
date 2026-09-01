@@ -5603,7 +5603,28 @@ def main():
             # is not what `CLAUDE.md` § *`NN` is PRESERVED in `mul`* asks for. The marker is
             # the floor: *"NN is always preserved in the multi-language label."*
             mul_value = _dms(nn_form(qs(labels.get(g, "")))) or UNNAMED_MARKER
+
+            # **A married NN woman has TWO recorded surnames and was keeping one.**
+            # This branch set `birth = ""` and never reached the alias block below, so
+            # `NN /Thaulow/` who married a Hahn went out as one label and her birth
+            # surname was dropped. **1,636 NN or redacted people carry a `SURN` and a
+            # DIFFERENT `_MARNM`** -- measured over `display-names.csv`, not supposed.
+            #
+            # `CLAUDE.md` § *The MARRIED name is the real name* decides which way round:
+            # the married form is the label and the birth form is the `Amul`. That is
+            # exactly what the named branch does, and there is no reason a redacted
+            # person should be treated differently -- the surname is the part redaction
+            # does not take.
+            _f = fields.get(g, {})
+            _surn = " ".join((_f.get("surn") or "").split())
+            _marnm = " ".join((_f.get("marnm") or "").split())
+            _nn_birth = ""
+            if _surn and _marnm and _surn.casefold() != _marnm.casefold():
+                mul_value = f"{UNNAMED_MARKER} {qs(_marnm)}"
+                _nn_birth = f"{UNNAMED_MARKER} {qs(_surn)}"
             lines.append(f'LAST\tLmul\t"{mul_value}"')
+            if _nn_birth and _nn_birth != mul_value:
+                lines.append(f'LAST\tAmul\t"{_nn_birth}"')
             described = describe_all(g, facts, father, mother, referred_to_as, table,
                                      children, spouses, siblings)
             for code, value in sorted(described.items()):

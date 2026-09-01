@@ -4,38 +4,38 @@
 #   batch and be limited to a count of 15 labels added per batch". A label set
 #   at CREATION time is neither counted nor capped -- "a label added during item
 #   creation is good".
-#   2008 more are held for a later run; a repeat is a no-op, so nothing is lost.
+#   2115 more are held for a later run; a repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
-#   Q141244117 Nils Fister: set the ko label to "닐스 피스테르"
-Q141244117	Lko	"닐스 피스테르"
-#   Q141225179 Maren Ellingsdatter Tunheim: set the ko label to "마렌 엘링스다테르 툰헤임"
-Q141225179	Lko	"마렌 엘링스다테르 툰헤임"
-#   set the ko label to "크리스티나 톨베스도테르 네스"
-Q141198447	Lko	"크리스티나 톨베스도테르 네스"
-#   set the ko label to "에로프 스튜츠"
-Q6330080	Lko	"에로프 스튜츠"
-#   set the ko label to "아그셀 구스타프 길렌크로크"
-Q4830275	Lko	"아그셀 구스타프 길렌크로크"
-#   set the ko label to "카린 오로프스도테르"
-Q141216618	Lko	"카린 오로프스도테르"
-#   Q141216403 Olof Nilsson: set the ko label to "오로프 닐손"
-Q141216403	Lko	"오로프 닐손"
-#   Q141217400 Nils Albrektsson: set the ko label to "닐스 알브레크촌"
-Q141217400	Lko	"닐스 알브레크촌"
-#   Q141244206 Albrekt: set the ko label to "알브레크트"
-Q141244206	Lko	"알브레크트"
-#   set the ko label to "안데르스 페르손"
-Q141216455	Lko	"안데르스 페르손"
-#   set the ko label to "조한 팔켄베르그 아프 트리스토르프"
-Q141224780	Lko	"조한 팔켄베르그 아프 트리스토르프"
-#   Q141219059 Gustava Maria Sofia Mannerheim: set the ko label to "구스타바 마리아 소피아 만네르헤임"
-Q141219059	Lko	"구스타바 마리아 소피아 만네르헤임"
-#   set the ko label to "에나르 노르덴펠트"
-Q6014618	Lko	"에나르 노르덴펠트"
-#   set the ko label to "로자라 오프 이타리"
-Q466257	Lko	"로자라 오프 이타리"
-#   set the ko label to "오로프 트로이류스"
-Q48562235	Lko	"오로프 트로이류스"
+#   set the ko label to "마리아 아마리아 노르덴펠트"
+Q116760688	Lko	"마리아 아마리아 노르덴펠트"
+#   set the ko label to "주디트 오프 프란데르스 쿤테스 오프 노르툼브리아"
+Q273181	Lko	"주디트 오프 프란데르스 쿤테스 오프 노르툼브리아"
+#   set the ko label to "베네디크타 에베스도테르 오프 흐비데"
+Q2183430	Lko	"베네디크타 에베스도테르 오프 흐비데"
+#   set the ko label to "마린 오로프스도테르"
+Q141216398	Lko	"마린 오로프스도테르"
+#   set the ko label to "모테르 오프 마린 오로프스도테르"
+Q141224907	Lko	"모테르 오프 마린 오로프스도테르"
+#   set the ko label to "토레 페트레"
+Q6045829	Lko	"토레 페트레"
+#   set the ko label to "존 레이마첸"
+Q116150299	Lko	"존 레이마첸"
+#   set the ko label to "사뭴 안드레애 그룹"
+Q5773287	Lko	"사뭴 안드레애 그룹"
+#   set the ko label to "이사크 레인홀드 사흐르베르그"
+Q141223426	Lko	"이사크 레인홀드 사흐르베르그"
+#   set the ko label to "로비사 카타리나 폴비안데르"
+Q141223428	Lko	"로비사 카타리나 폴비안데르"
+#   set the ko label to "카르르 레인홀드 사흐르베르그"
+Q2361145	Lko	"카르르 레인홀드 사흐르베르그"
+#   set the ko label to "카르르 구스타프 만네르헤임"
+Q2415388	Lko	"카르르 구스타프 만네르헤임"
+#   set the ko label to "라르스 아우구스틴 만네르헤임"
+Q5975022	Lko	"라르스 아우구스틴 만네르헤임"
+#   Q141219324 Sofia Maria Mannerheim: set the ko label to "소피아 마리아 만네르헤임"
+Q141219324	Lko	"소피아 마리아 만네르헤임"
+#   Q141223412 Augusta Ulrika Mannerheim: set the ko label to "아우구스타 울리카 만네르헤임"
+Q141223412	Lko	"아우구스타 울리카 만네르헤임"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
@@ -77,13 +77,13 @@ LAST	Lzh	"阿斯特丽·托尔凯尔斯达特·奥夫雷·蒂梅之子"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
 LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000003732714443 NN
+#   P2600 Geni.com profile ID = 6000000003732714443
 LAST	P2600	"6000000003732714443"
-#   P22 father = Q141198370 NN Skårland
+#   P22 father = Q141198370
 LAST	P22	Q141198370	S2600	"6000000003732714443"
 #   P25 mother = Q141198375 Astri Torchelsdatter Øvre Time
 LAST	P25	Q141198375	S2600	"6000000003732714443"
-#   Q141198370 NN Skårland: P40 child = the item just created
+#   Q141198370: P40 child = the item just created
 Q141198370	P40	LAST	S2600	"6000000003732714443"
 #   Q141198375 Astri Torchelsdatter Øvre Time: P40 child = the item just created
 Q141198375	P40	LAST	S2600	"6000000003732714443"
@@ -217,6 +217,41 @@ Q141244209	P40	LAST	S2600	"6000000003491988141"
 LAST	P735	Q721398
 #   P734 family name = Q7386722 Rønneberg
 LAST	P734	Q7386722
+
+# create a new item
+CREATE
+#   set the en label to "Beata Elisabet Unge"
+LAST	Len	"Beata Elisabet Unge"
+#   set the mul label to "Beata Elisabet Unge"
+LAST	Lmul	"Beata Elisabet Unge"
+#   set the ja label to "ベアタ・エリーザベト・ウンゲ"
+LAST	Lja	"ベアタ・エリーザベト・ウンゲ"
+#   set the zh label to "贝阿塔·伊丽莎白·温盖"
+LAST	Lzh	"贝阿塔·伊丽莎白·温盖"
+#   set the ko label to "베아타 에리사베트 우에"
+LAST	Lko	"베아타 에리사베트 우에"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581072 female
+LAST	P21	Q6581072
+#   P2600 Geni.com profile ID = 6000000006911465252 Beata Elisabet Unge, qualified P1810 subject named as Beata Elisabet Unge
+LAST	P2600	"6000000006911465252"	P1810	"Beata Elisabet Unge"
+#   P569 date of birth = +1753-00-00T00:00:00Z/9
+LAST	P569	+1753-00-00T00:00:00Z/9	S2600	"6000000006911465252"
+#   P570 date of death = +1801-00-00T00:00:00Z/9
+LAST	P570	+1801-00-00T00:00:00Z/9	S2600	"6000000006911465252"
+#   P26 spouse = Q139996297 Anders Törnebladh
+LAST	P26	Q139996297	S2600	"6000000006911465252"
+#   P40 child = Q6218068 Carl Peter Peter Törnebladh
+LAST	P40	Q6218068	S2600	"6000000006911465252"
+#   Q139996297 Anders Törnebladh: P26 spouse = the item just created
+Q139996297	P26	LAST	S2600	"6000000006911465252"
+#   Q6218068 Carl Peter Peter Törnebladh: P25 mother = the item just created
+Q6218068	P25	LAST	S2600	"6000000006911465252"
+#   the item just created: P735 given name = Q338015 Beata, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
+LAST	P735	Q338015	P1545	"1"	P7452	Q3409033
+#   P735 given name = Q16423275 Elisabet, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
+LAST	P735	Q16423275	P1545	"2"	P3831	Q245025
 
 # create a new item
 CREATE
@@ -401,6 +436,39 @@ LAST	P735	Q632842
 LAST	P734	Q65202241
 #   add a mul alias "Hans Törne"
 LAST	Amul	"Hans Törne"
+
+# create a new item
+CREATE
+#   set the en label to "Helena Gangia"
+LAST	Len	"Helena Gangia"
+#   set the mul label to "Helena Gangia"
+LAST	Lmul	"Helena Gangia"
+#   set the ja label to "ヘレナ・ガンギア"
+LAST	Lja	"ヘレナ・ガンギア"
+#   set the zh label to "海伦娜·甘吉阿"
+LAST	Lzh	"海伦娜·甘吉阿"
+#   set the ko label to "헤레나 가이아"
+LAST	Lko	"헤레나 가이아"
+#   P31 instance of = Q5 human
+LAST	P31	Q5
+#   P21 sex or gender = Q6581072 female
+LAST	P21	Q6581072
+#   P2600 Geni.com profile ID = 6000000002810895810 Helena Gangia, qualified P1810 subject named as Helena Gangia
+LAST	P2600	"6000000002810895810"	P1810	"Helena Gangia"
+#   P569 date of birth = +1677-09-05T00:00:00Z/11
+LAST	P569	+1677-09-05T00:00:00Z/11	S2600	"6000000002810895810"
+#   P570 date of death = +1760-05-16T00:00:00Z/11
+LAST	P570	+1760-05-16T00:00:00Z/11	S2600	"6000000002810895810"
+#   P26 spouse = Q48562235 Prost Olaus Troilius
+LAST	P26	Q48562235	S2600	"6000000002810895810"
+#   P40 child = Q1168365 Ärkebiskop Samuelis Olai Troilius
+LAST	P40	Q1168365	S2600	"6000000002810895810"
+#   Q48562235 Prost Olaus Troilius: P26 spouse = the item just created
+Q48562235	P26	LAST	S2600	"6000000002810895810"
+#   Q1168365 Ärkebiskop Samuelis Olai Troilius: P25 mother = the item just created
+Q1168365	P25	LAST	S2600	"6000000002810895810"
+#   the item just created: P735 given name = Q1035239 Helena
+LAST	P735	Q1035239
 
 # create a new item
 CREATE
@@ -608,7 +676,7 @@ LAST	Lko	"마레나 올스다테르 초란드"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
 LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000005609534715 Malena Olsdatter Tjåland *, qualified P1810 subject named as Malena Olsdatter Tjåland *
+#   P2600 Geni.com profile ID = 6000000005609534715 Malena Olsdatter Tjåland, qualified P1810 subject named as Malena Olsdatter Tjåland *
 LAST	P2600	"6000000005609534715"	P1810	"Malena Olsdatter Tjåland *"
 #   P40 child = Q141242542 Kristoffer Olson Tjåland
 LAST	P40	Q141242542	S2600	"6000000005609534715"
@@ -701,7 +769,7 @@ LAST	Lko	"오라 크리스토페르센 카르테볼르"
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
 LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000002801159071 Ola Kristoffersen Kartevoll *, qualified P1810 subject named as Ola Kristoffersen Kartevoll *
+#   P2600 Geni.com profile ID = 6000000002801159071 Ola Kristoffersen Kartevoll, qualified P1810 subject named as Ola Kristoffersen Kartevoll *
 LAST	P2600	"6000000002801159071"	P1810	"Ola Kristoffersen Kartevoll *"
 #   P569 date of birth = +1649-00-00T00:00:00Z/9, qualified P1480 sourcing circumstances Q5727902 circa
 LAST	P569	+1649-00-00T00:00:00Z/9	P1480	Q5727902	S2600	"6000000002801159071"
