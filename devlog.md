@@ -24072,3 +24072,35 @@ derived facts, **preview, placeholder labels, en labels, mul labels**, pack, bat
 Emma picked all three options when asked which gap she meant, and named the real one: *"Just that
 it was so stale lol you pointed this out you know it better than I do, I don't know what this file
 even does lol."*
+
+## 2026-09-01 — CI runs, and it is green
+
+**Her hard requirement for the night.** The repo went public today — *"The repo is public now
+lol"* — so Actions minutes are free and the manual-only rule that `CLAUDE.md` § *Cost* imposed
+for a private repo is retired.
+
+**The obstacle was size, not configuration.** 13.3 GB tracked against roughly 14 GB of runner
+disk: `wikidata/` 4.3 GB, `exports/` 4.3 GB, `paths_for_wikidata_isolates/` 2.7 GB, `reports/`
+1.1 GB. `filter: blob:none` with a non-cone sparse checkout drops the seven directories no test
+opens and leaves about 5.7 GB. Two of those directories had to stay in and both were learnt the
+hard way: `exports/` because `test_repo_invariants` compares `git ls-files` against `find` over
+the corpus, and `out/` because `test_garborg_day_batch` resolves name items against
+`out/wikidata/name-items-in-store.tsv.gz` — excluding either does not skip a test, it fails one,
+and the failure is about the checkout rather than about the repo.
+
+**Run 1: 1,491 passed, 3 failed.** Run 2, after the fixes: **green on 3.10 and 3.13.**
+
+**One of the three was a real portability bug and nothing local would have caught it.**
+`build-repo-freshness.py` normalised Windows paths with `.replace(chr(92)*2, '/')` — two
+backslashes where a path has one — so every `generator` column stayed `scripts\name.py` and
+resolved on no other platform. That is the first thing CI has paid for and it paid on the first
+run.
+
+The second was my own checkout scope. The third was a test asserting a private-repo premise that
+stopped being true today; its own failure message says to change `CLAUDE.md` in the same commit
+if the change is deliberate, so both moved together. `push:` is still refused, now for a reason
+that survives the visibility change: this repo commits large generated files many times a day and
+a run per push would queue behind itself for no signal.
+
+The schedule is 05:17 daily, off the hour because :00 is when every scheduled workflow on GitHub
+fires at once.
