@@ -24135,3 +24135,54 @@ one claimed.
 real tab, `\n` as a newline inside an f-string, and a duplicated line from a half-applied patch.
 Every one was in a `<<'PY'` heredoc that is supposed to pass text through unchanged. The reliable
 route is the editing tools, or building the escape with `chr(92)`.
+
+## 2026-09-01 — the night's work, against her rulings
+
+She interviewed through the whole queue before sleeping and ruled on every item. What follows is
+what those rulings turned into.
+
+**Nine items deleted outright** on her word — the eight Asian identities, the Bure random-walk,
+the World-Tree review and its `universe` note, the chains-as-a-system, the six unwalked algorithm
+steps, the four-label census, resolving names against the store, and the 46%/41% transliteration
+measurement. Three moved to the tail. The queue is doing what she said it should: getting small.
+
+### Korean, which she put at the top
+
+`ko` had been filed with `hi`/`ar`/`ru`/`el` as a research task behind `ja` and `zh`. It is CJK.
+
+- `translit_ko.py` — 1,033 hand-read hanja, three tranches, each chosen by measuring what was
+  still unread. **72%** of CJK names render completely.
+- `translit_ko_latin.py` — Latin → Hangul, which is what the creation gate actually needs because
+  the ring is Latin-named. **97%** of 1.29 M people. Four bugs, all found by reading output: ㄹ is
+  `r` in the initial slot and `l` in the final; `l` closes a syllable where `r` opens its own; the
+  final was skipped whenever the vowel split; a doubled stop collapses where a doubled liquid does
+  not.
+- The funnel table has a `ko` column at **18,535 of 18,536**, the gate is `ja`+`zh`+`ko`, and
+  `build-ko-label-batch.py` emits 33,725 labels corpus-wide.
+
+### The two label defects that were overwriting her own work
+
+**`<private> Garborg` was being emitted as a label** — for 14,449 people, twelve of whom already
+had items, several of them hers. `derive-labels.py` took `clean(display_name)` and never called
+`labels.label_for`, which `CLAUDE.md` calls the single place that decides this. Checked before
+claiming damage: no batch on disk emits one, so nothing would overwrite her item today. Fixing it
+took the `en` batch from 25,930 edits to **104,856**, because those people reach the
+relationship-label path for the first time.
+
+**The clan labels were much worse than I thought, exactly as she suspected.** All 177 already
+carry an English label and **15 are real names** — `Q10864996` is 万寿公主, Princess Wanshou, and
+the batch would have relabelled her *"woman of the Li clan, from Longxi Didao"*.
+
+### Name items: reuse by default
+
+*"Fuck you for defaulting to the dangerous one lol."* The check read two snapshots, and `CREATE`
+never checks. Live, on the three tokens that day's batch was about to create: `Voster` already
+existed, `Olofsson` already existed, and `Jonsson` already existed **three times**. The live check
+rescued **21 tokens** on the real batch.
+
+### Two things that turned out already done
+
+Both established by checking rather than by working. **The four export retries** she named are all
+in the corpus and in the merged tree, and `census-paths.py` reports **every path connected end to
+end** across 699 files — so no export ran. **`P735` on new people** was already happening: 25 of
+28 creations carry one.
