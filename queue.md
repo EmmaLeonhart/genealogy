@@ -40,6 +40,76 @@ ones above them: `THE EDIT ALGORITHM`, `THE DAILY ALGORITHM`, `THE TAIL ALGORITH
 
 These are supposed to be manually added to the queue and worked on, do no just paraphrase during the rebase keep this part entirely intact. We are approaching usage limit for now.
 
+## ⛔ HER RULINGS, 2026-09-01 — the interview. These OVERRIDE the sections below
+
+She went through every item and ruled on each. Where a section below disagrees with this table,
+this table wins; the sections are kept for their detail, not their status.
+
+**Deleted outright, already removed:** the eight Asian identities · Bure kinship random-walk ·
+the World-Tree review and its `universe` note · the chains as a SYSTEM · the six unwalked
+algorithm steps · the four-label census · resolving names against the store · the 46%/41%
+transliteration measurement (*"accept it and move on"*).
+
+**Moved to the tail:** link reliability / `P1038` — *"we have the established method of
+identifying parents and that works, siblings are just freely made and merged lol we only need a
+scalable zipper thing much later"* · the `synoptic tree` vocabulary split · **creating the
+fathers patronymics imply — *"postpone for a month lol"***.
+
+**To do, in her words:**
+
+| item | her ruling |
+| --- | --- |
+| seven languages | wire `hi`/`ar`/`ru`/`el` **now**, and close the `en` shortfall |
+| **the `en` rule she gave** | *"if multiple Latin alphabet labels agree then it becomes the en label and the mul label"* |
+| labels in her order | **only the languages already wired** — `en`, `mul`, `ja`, `zh` |
+| name items | **invert the default now** — *"I thought we reused name objects by default lol. The only hard situation is patronymics"* |
+| `Sara /NN/` and the `Garborg` override | do both; the override of her hand-edit is the serious one |
+| how many Geni labels need changing | run the census |
+| CJK | `ko` **and** `P1814` kana, kana read agentically |
+| NN birth-name alias | fix it |
+| unreadable transliteration tokens | read them agentically |
+| the 218 scripts | **sweep and delete** |
+| one batch file | **merge into one, names first** — absorbs *One pipeline, one output file* |
+| clan labels `Q45449130` | check them — *"I never actually ran them"* |
+| `exports/post-merge/` | do the stale-duplicate resolution |
+| the export loop | **run it overnight**, retrying the four bailed-on people |
+| the 179 ambiguous patronymics | **build her an HTML page for the morning** |
+| `P407` on patronymic items | **add it by suffix convention** |
+| `Nils`/`Nicolaus` | build the form table |
+| succession CSV | model it |
+| `pykakasi`, `BET x AND y`, the 74 MB file | all three |
+| final act of the night | `scripts/rebuild-everything.py`, then attach the batch |
+
+### Anonymisation is NOT redacting the tree. It is scrubbing the repo of strategy
+
+**Her definition, 2026-09-01, and it replaces the ~96,000-private-rows reading entirely:**
+
+> *"All anonymization means is cut out the likely extremely ridiculously present content
+> discussing strategies for getting my item up and linked, avoiding detection, and the other
+> stuff, and removing code that treats my item as special, only spine is the Arne to Bureus one
+> and we add a task for tomorrow sept 2 that removes that spine thing and all spine logic as it
+> presumably will be completed there"*
+
+So three things, and none of them touches a person's data:
+
+- **Cut the strategy content.** Anything in `CLAUDE.md`, `queue.md`, `devlog.md` or the scripts
+  discussing how to get her item linked, how edits are perceived, or how to avoid attention.
+- **Remove code that treats her item as special.** `NEVER_TOUCH_QID`, the exclusion entries, and
+  anything else keyed on `Q232803` / `Q140568870` / `6000000087535357291`.
+- **`SPINE_PATHS` keeps only Arne → Bureus**, which is already true.
+
+**The repo is public as of 2026-09-01** — *"The repo is public now lol"* — so Actions minutes are
+free and `CLAUDE.md` § *Cost* no longer binds.
+
+## FOR 2026-09-02 — remove the Arne→Bureus spine and ALL spine logic
+
+**Her instruction, 2026-09-01:** *"we add a task for tomorrow sept 2 that removes that spine thing
+and all spine logic as it presumably will be completed there"*.
+
+So tomorrow: `SPINE_PATHS`, `SPINE_REVERSED`, the spine blocks in `build-garborg-day.py`,
+`build-missing-reciprocals.py` and anything else that special-cases a spine, all come out. Check it
+is actually complete first — if it is not, say so rather than deleting a live mechanism.
+
 ## Keep `reports/merges-to-do.md` current
 
 Emma, 2026-08-31: *"Just make a 'merges to do' file that records these merges and the wikidata
@@ -364,81 +434,6 @@ Wikidata."* A slot with nothing on their side is a **creation opportunity**, whi
 
 ---
 
-## The eight Asian identities — bios get their QID links AT SYNOPTIC-MERGE TIME, not now
-
-**Emma, 2026-08-29, correcting a recovered plan that a later discussion had already replaced:**
-*"No fuck you you didn't get the later discussion. When the synoptic tree is merged we change all
-of their bios to links to their qids so that the next step in with the wikidata union (which isn't
-really implemented yet) they get joined with those wikidata items lol."*
-
-**So there is no standalone Geni-editing task here, and no export campaign for these eight.** The
-bio link is a *step inside the synoptic tree build*, and its purpose is to feed the **Wikidata
-union**, which is not implemented yet. Nothing about these people is actionable until that build
-runs.
-
-**The eight** (everyone in `entity_resolution.md` but her): `Q11596350` Wakatakehiko · `Q11078587`
-Harima no Inabi no Ōiratsume · `Q11443857` Futohime Mononobe · `Q24890131` Ikofutsu Mononobe ·
-`Q19657284` Buyeo Deokjang · `Q12598947` Taebi Buyeo · `Q135579480` Yasutaka Kitajima ·
-`Q135579474` Tokitaka Kitajima. Every one is an Asian identity she *"put a lot of effort into
-creating identification with"*, for this purpose. That is why their `P2600` statements are not
-loose ends to write by hand.
-
-**What was actually lost in the crash, and it is worth keeping straight from what was superseded.**
-A cron for 03:00 on 2026-08-29 held the *older* plan — edit the eight bios now, then a `Forest`
-export each, file them for the post-merge stage. Crons are session-only, the session died at 18:52
-on 08-28, and it never fired. Recovering it was right; presenting it as live work was not, because
-§ *The Wikidata link goes in the bio during the SYNOPTIC TREE BUILD* already recorded the
-replacement. **The transcript is not the authority when `CLAUDE.md` has a later ruling on the same
-thing.**
-
-**Her own entry leaving `entity_resolution.md` still stands and is still hers.** After it goes,
-confirm `paths/bergitte-to-emma.tsv` step 1 does not become a `CREATE` — by running `--compose` and
-reading the output, not by reasoning about `NEVER_TOUCH_*`.
-
-## Bure kinship as random-walk start points — LAST. Postponed by Emma 2026-08-25
-
-**She moved this to the tail herself:** *"Postpone the bure stuff to the end of the queue."* It sits
-after the spine item deliberately. Do not promote it.
-
-**Her open question, for whenever it is picked up:** *"What is the topology of them? Like of the
-bure people what percentage of the wikidata linked ones are just directly connected through geni
-even though they are absent on wikidata?"* That is the first measurement to run — take the
-Wikidata-linked Bure people, walk our Geni tree between them, and report what fraction are joined
-by a path whose intermediate people have no Wikidata item. It says how much of the cluster could be
-connected by creating the people in between.
-
-**Emma, 2026-08-25:** *"put at the end of the queue a thing that adds bure kinship people (all of
-them) as random walk add start points and points where things can come off from."*
-
-**It is not a bigger `n` on the Garborg batch and must not be built as one.** Her reason:
-*"bure is a bunch of unlinked people with entity resolutions to geni, so it isn't dense it's a
-different kind of area though which needs its own algorithm"*, and *"as so many people there have
-wikidata items already the types of quickstatements will be different and potentially more
-challenging."*
-
-**The difference that drives the algorithm.** The Garborg ball is items we are *creating*: almost
-every statement is part of a `CREATE`, and the constraint is that `LAST` cannot be a value. The
-Bure region is the opposite — the items exist and already carry `P2600` *Geni.com profile ID*,
-so nearly nothing needs creating and nearly everything needs **linking**: `P22`, `P25`, `P26`,
-`P40` between two QIDs that both already exist. Those have no `LAST` problem at all and can be
-emitted in any order, which means the one-hop-a-day pacing that exists to work around `LAST` does
-not apply for the same reason.
-
-What to build:
-
-- **Roster every Bure-kinship person**, all of them, with their QID and Geni id. Start from the
-  existing Bure work in the repo and from `P2600` holders in that region.
-- **Use them as random-walk start points**, and as points work can come off from — so the walk
-  is seeded from many places at once rather than expanding one ball from Arne.
-- **Johannes Bureus as a second anchor.** Her proposal in the same breath: the neighbourhood
-  becomes "within n steps of Arne **or** within n steps of Johannes Bureus". That is a
-  modification to the composition and belongs here, not in the Garborg batch.
-- **Different statement mix, so measure it before assuming.** Count how many of the roster
-  already have each of `P22`/`P25`/`P26`/`P40` before deciding what a day's batch looks like.
-
-**Bureätten the export campaign stays closed** — 7 resolved, 76 dropped, 0 exports. This is a
-different thing: linking people already on both sides, not finding new ones.
-
 ## LAST — name items are being MERGED by other editors. Stop preferring creation over reuse
 
 **Recovered from the same crashed session; she asked for it at the end of the queue.** Emma,
@@ -459,125 +454,6 @@ Two things, in order:
   usage differs. § *One name item per USAGE* still holds: a given name and a family name spelled
   alike are genuinely two items; two spellings of one family name are not.
 
-## THE VERY LAST ITEM — review the algorithm once we are connected to the World Tree
-
-**Emma, 2026-08-27:** *"eventually we will reach a point where we are actually connected to the
-world tree. Once we are actually connected to the World Tree on Wikidata, this raises some more
-concerns... the last queue item should be a sort of review. You should be putting it at the very
-end of the queue once we connect to the World Tree."*
-
-**Her proposal, in her words:** *"a sort of stateful feature ledger that expands by about one hop
-each day, plus all the people that we create to the eligible people. It still very much focuses
-its creation around this particular neighbourhood, but I'm not even sure whether that would be
-needed because I don't know enough about what's going to happen once the World Tree is
-connected. This might be assuming a scenario where once the World Tree is connected, the eligible
-people explode, but that might not be the case."*
-
-**Two things established 2026-08-27 that this review should start from rather than rediscover.**
-
-- **The eligible set probably does NOT explode, and the reason is `universe`.**
-  `wikidata_subgraph(universe=set(have.values()))` counts an edge only when **both ends are items
-  we hold**. Connecting Arne to Charlemagne therefore cannot pull the world tree in; the walk
-  still cannot leave the ledger. That restriction exists because without it, adding Bureus
-  `Q633094` as a root took the group from 97 items to **1,339,336** in one step.
-- **What she describes is close to what the code already does.** Creations land in her
-  contributions, the refresh pulls them into `have`, and the subgraph grows to whatever they
-  newly connect. The daily hop is the ring; the "plus all the people that we create" is the
-  refresh. What is *not* there is any explicit statefulness — no history, no record of what was
-  eligible yesterday.
-
-**The world-tree-agnostic algorithm she half-remembers was never written.** Emma: *"We did have a
-world tree-based, agnostic algorithm earlier, but that one's not the most clear about what it was
-supposed to be doing. I don't know if the spatially agnostic algorithm is one that was actually
-written."* Checked against the whole history: the only match is `a901fd59` (2026-08-12), *"Save
-the world-tree route as an ordered priority chain: 17 edits"* — a route and a priority list, not
-a selection algorithm. Nothing has ever selected people world-tree-agnostically.
-
-**Trigger:** when a person in `have` is connected on Wikidata to the 1,339,227-item component
-containing Charlemagne. That is checkable offline against `out/wikidata/relations.tsv` and should
-be measured, not waited for by eye.
-
-## NOTE from the review — what `universe` actually means, and the bridging risk it creates
-
-**Her restatement, 2026-08-27, after the `universe` restriction was explained:** *"having
-explained the universe thing to me better and how it needs to be a path between my items. As I
-understand it, a path between my items can be filled in, or one hop off of any of my items, with
-that thing in mind."*
-
-That is exactly right, and it is worth keeping in her words because it is the clearest statement
-of the design anywhere: **the subgraph is the set of paths between her own items**, and **the ring
-is one hop off any of them**.
-
-**The risk she then identified, which nothing currently checks.** *"it means that we could
-potentially start to see some of the European-to-Asian street stuff behaving weird, because in my
-items most of them are Scandinavian, but there are those Korean things and a couple more remote
-answers and some more remote people."* Her items are overwhelmingly Norwegian and Swedish with a
-few Korean, Japanese and Samaritan outliers. If a chain of edits ever connects those clusters
-through her own items, the subgraph joins them and the ring starts growing at both ends of a
-bridge nobody intended. Worth measuring before it happens: which of her items sit outside the
-Scandinavian mass, and what would have to be linked for the walk to cross.
-
-**And a caution against fixing it prematurely.** *"I don't want to over-engineer statefulness into
-the system when it's not needed. A statefulness of one person, like a statefulness of 'every day
-there's an additional hop', is something that would conceivably make it lighter. I'm also not even
-100% sure, because that might make it explode quite fast too."* So: do not build daily-hop
-statefulness on the strength of this note. It could bound the growth or accelerate it, and which
-one is an empirical question.
-
-## THE LAST ITEM — the chains should be a SYSTEM, not four files that happen to exist
-
-**Emma, 2026-08-29**, and she is explicit this is not a question about how full the chains are:
-*"Oh my God, I'm not asking if it's close to filling in. I'm asking: I thought that we have a
-system... I thought this existed, and it should exist if it doesn't exist. This is a problem, and
-you should make it exist."* Filed at the tail by her own instruction — *"put all this chain stuff
-at the end of the queue, and then move on... it's not worth messing with the workflow and making
-it so that you get long-term distracted and don't do the queue work."*
-
-**What exists today.** Re-measured 2026-08-31; the 2026-08-29 table this replaces named two files
-that no longer exist and marked three as being in `SPINE_PATHS` when only one is.
-
-| file | runs | in `SPINE_PATHS`? |
-| --- | --- | --- |
-| `paths/arne-garborg-to-johannes-bureus-geni.tsv` | Arne → Bureus, Geni's own in-law route | **yes, the only one** |
-| `paths/charlemagne-to-arne-garborg.tsv` | Arne → Charlemagne | no — legacy, kept as saved-page evidence |
-| `paths/arne-to-bureus.tsv` | Arne → Johannes Jacobi Bureus | no |
-| `paths/arne-to-bureus-q633094.tsv` | Arne → **Johannes Tomasson**, not Bureus | no |
-| `paths/emma-to-bureus.tsv` | Emma → Bureus | no |
-| `paths/caroline-signe-borsheim-hoknes.tsv` | | no |
-
-`paths/bergitte-to-emma.tsv` and `paths/bureus-to-emma.tsv` were **deleted on 2026-08-31** at her
-instruction, with `charlemagne-to-arne-garborg.tsv` kept because it came from a Geni page she
-saved and nothing here reproduces it. `SPINE_REVERSED` is empty.
-
-**The directions she named, which the files do not currently match:**
-
-- **Arne ↔ Bureus goes BOTH ways.** Two files exist and neither is in `SPINE_PATHS`, so neither
-  advances.
-- **Emma ↔ Bureus goes from Bureus to her ONLY.** `paths/emma-to-bureus.tsv` runs the other way
-  and is a duplicate of the same relationship; decide whether it is deleted or kept as evidence.
-- **Bergitte → Emma goes that way only.** Already true, via `SPINE_REVERSED`.
-
-**The "weird other version" is identified.** She said *"I do not know what that weird other
-version is"* of `arne-to-bureus-q633094.tsv`. It is named for `Q633094` — Johannes Bureus — but
-its last step is **Johannes Tomasson**, a different person. Both files were generated by
-`scripts/path-between.py` breadth-first over `reports/derived-family.csv`. Work out which endpoint
-was actually asked for and either rename the file or regenerate it.
-
-**The new chain she wants, and the part that is NOT settled.** *"a various deferral domain that
-also generates, starting at various and moving towards [garbled] and only... I don't think you
-need to do it in Chrome, because I think you can use local information. You probably only go
-towards certain specific modern people and not into mediaeval times."*
-
-So: a chain generated **downward from Bureus toward modern descendants**, from local data, never
-into the medieval end. `scripts/path-between.py` is the generator and needs no browser — every
-person on these paths is already in the corpus. **Two phrases in that sentence did not transcribe
-and must not be guessed at**: the destination (*"towards strongly and only"*) and what a *"deferral
-domain"* is. Ask before building, per § *If you are not sure what she wants, ASK*.
-
-**Once the set is settled, the ones that should advance go in `SPINE_PATHS`**, with any that are
-stored the wrong way round listed in `SPINE_REVERSED` — that is the whole mechanism, and it is why
-`bergitte-to-emma` had walked outward from her for weeks without moving.
-
 ## THE TAIL — two she moved here herself, 2026-08-29
 
 *"Just add both of these to the end of the queue."* Both were cron jobs she scheduled by clock
@@ -596,31 +472,6 @@ are kept because these are unstarted.
   have been, and she had already hand-corrected the item — so the question is also why our label
   overrode hers.
 
-
-## The algorithm review ended before six of its steps — what was never walked through
-
-**Closed 2026-08-29 at her instruction** — *"consider the review over"* — after pinning the queue
-since 2026-08-27. This records the unfinished half so closing it is not the same as pretending it
-finished.
-
-**She walked through, and ruled on:** step 1 the ledger refresh, 2 `have`, 4 the provisional ring,
-5 the 1880 cutoff, 6 the subgraph, 7 `compose`, 9 the duplicate guard, 11 the fill-in pass.
-
-**Never reached: steps 3 (`linked`), 8, 10, 12, 13, 14.** Nobody has told me what is wrong with
-them, so nothing in them has her sign-off — treat any behaviour there as unreviewed rather than
-approved.
-
-**Her rulings on the covered steps, which stand:**
-
-- The 34 unlabelled ledger rows dropped and regenerated from Wikidata.
-- Her own `entity_resolution.md` entry to go **by her hand, not mine** — since overtaken: she had
-  the whole file deleted on 2026-08-29, which removed her `Q232803` from `have` anyway.
-- Bureätten people eligible for **both** fill-in and seeding.
-- `MODERN_CUTOFF = 1880` *"totally undesired"* — removed, with nothing in its place.
-- Steps 4–5 are dead code under `--compose`.
-- Her duplicate items are **deliberate**: create the duplicates, then merge them, because that
-  leaves the trail Wikidata's review machinery expects.
-- The Wikidata link goes into bios **during the synoptic tree build**; Geni is never edited for it.
 
 ## How many Geni labels actually need changing? Count them
 
@@ -660,28 +511,6 @@ workaround makes this question obsolete"* — `exports/post-merge/wikidata-qid-l
 Wikidata links into the corpus, so they arrive in the merge either way and nothing waits on the
 definition being settled.
 
-## Census: how the four labels derive from each other, and how many people lack each
-
-**Emma, 2026-08-29, on where each label comes from:** *"Mul is transcribed lol and Japanese and
-Chinese are the characters and korean is a rendering derived from the Chinese ir Japanese and
-English is from the mul lol, add a count cebsus thing to the end of the queue."*
-
-The chain she describes:
-
-- **`mul`** — transcribed; the base everything else derives from
-- **`ja` / `zh`** — the characters themselves
-- **`ko`** — a rendering derived from the Chinese or Japanese, not from `mul` directly
-- **`en`** — from `mul`
-
-**What to count**, one row per person per language as `CLAUDE.md` § *"Analyse this" means build a
-CSV* requires: who has each label today, who could have one under this chain, and who could not and
-why. The number that matters most is the people whose Geni name is CJK-only, since the emitter
-currently gates `en` on a Latin character being present and so gives them none.
-
-**No `ko` is emitted anywhere today.** Worth stating plainly rather than discovering: this is the
-first mention of Korean in the label model, so the census should say how many people it would apply
-to before anything emits it.
-
 ## CJK label conversion — fill in Korean and `P1814` *name in kana*, with research
 
 **Emma, 2026-08-29:** *"do a cjk label conversion thing with research to fill in the korean and name
@@ -713,21 +542,6 @@ transliteration data, whatever it holds — into this repo, and add no runtime d
 state file, and no network call to it. It is not checked out beside `geni`, so the first step is
 asking her where it is.
 
-## Resolve names against the STORE'S name items, not against the ones our people already use
-
-`measure-name-resolution.py` asks *which name items do people in our store already point at*
-(132,569) and its answer is used as *which name items exist*. The store actually holds
-**823,907** name items — `out/wikidata/name-items-in-store.tsv.gz`,
-`scripts/extract-name-items.py`.
-
-**5,212 of the 14,351 tokens `reports/name-item-plan.csv` would create already have an item of
-the right kind on our own disk** — 36.3%, including `Thomas`, `Hans`, `Sarah`, `Henry`, `陳`,
-`藤原`. Every one is a duplicate waiting to be made, and `Tunheim` is the one that already was.
-
-Point the resolver at the new index, keeping `CLAUDE.md` § *One name item per USAGE* (kind is
-never collapsed) and the diacritic rule (case folds, nothing else). Then re-run the plan and
-report how `create` / `link` / ambiguous move.
-
 ## The NN path drops the birth-name alias the named path emits
 
 Found while answering the `Q141205924` label question. The named branch of
@@ -736,20 +550,6 @@ sets `birth = ""` and emits the `mul` alone. So a married NN woman keeps only on
 recorded surnames. `NN Gjøa` would be her alias under the current rule and is not emitted.
 
 Analysis first: count the NN people carrying both a `SURN` and a different `_MARNM`.
-
-## The transliteration engine agrees with human readings 46% (ja) and 41% (zh)
-
-Measured 2026-08-30 against the 317 rows of `reports/garborg-name-transliterations.tsv` the
-engine did not itself write — `python scripts/translit_no.py` prints it and now excludes its own
-output from the score. The remaining gap is **gemination and vowel length**, which the engine
-does not produce at all:
-
-    Anna    engine アナ      hand アンナ
-    Aagot   engine オーゴト   hand オーゴット
-    Abel    engine アベル     hand アーベル
-
-That is a convention decision, not a bug, and it governs 3,700 cached rows plus every future
-token. Decide the rule, then `scripts/refresh-rule-transliterations.py` re-derives.
 
 ## ABSOLUTE PREREQUISITE — no individual is created without their CJK labels
 
