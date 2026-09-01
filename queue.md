@@ -151,7 +151,25 @@ So three things, and none of them touches a person's data:
 **The repo is public as of 2026-09-01** — *"The repo is public now lol"* — so Actions minutes are
 free and `CLAUDE.md` § *Cost* no longer binds.
 
-## FOR 2026-09-02 — remove the Arne→Bureus spine and ALL spine logic
+## FOR 2026-09-02 — the two removals, and one question I would not answer alone
+
+### The `NEVER_TOUCH` lists — NOT removed, and here is why
+
+Her anonymisation instruction includes *removing code that treats my item as special*, and
+`NEVER_TOUCH_GENI` / `NEVER_TOUCH_QID` in `scripts/build-garborg-day.py` are exactly that. **They
+were not removed**, because removing them does not make the code neutral — it makes the batches
+start editing her item, which is the opposite of *"I should not be in the traversable graph"*
+(2026-08-27). Deleting a guard overnight, on a guess, in a way that produces live edits, is not a
+call to make while she is asleep.
+
+**What was done instead:** the narrative around those lists is gone — they now read as an
+exclusion list and not as a discussion of her item. Behaviour is byte-identical and
+`tests/test_p2600_batches.py::test_no_batch_names_an_excluded_id` still guards it.
+
+**What she needs to decide:** whether the lists come out entirely (and her item becomes editable
+like any other), or stay as the mechanism keeping her out of the graph.
+
+### Remove the Arne→Bureus spine and ALL spine logic
 
 **Her instruction, 2026-09-01:** *"we add a task for tomorrow sept 2 that removes that spine thing
 and all spine logic as it presumably will be completed there"*.
