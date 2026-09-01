@@ -1648,7 +1648,7 @@ Geni id was established — succession number confirmed, sole match, her bio lin
 Samaritan positions absent from the corpus are a near-contiguous run (1, 2, 3, 31, 59, then 81
 onward), which is one unexported neighbourhood rather than 38 misses.
 
-## THE LAST ITEM — test `pykakasi` before trusting it, and look for something better
+## THE LAST ITEM — `pykakasi` is fine AS A FALLBACK; verify it because she has been burned
 
 **Emma, 2026-08-31**, on finding it installed: *"I can say for a fact that that library sucks for
 converting Kanji to Hiragana. So with that being said, I'm skeptical of it... I'm gonna guess it's
@@ -1661,7 +1661,17 @@ person, which is why `P1814` *name in kana* exists as a property rather than bei
 European → katakana is a *transcription* problem, and her guess is that it is the easier of the
 two. That guess is plausible and is not evidence.
 
-**So: measure it before anything depends on it.**
+**Her position, clarified the same day: as a fallback it is fine.** *"I think probably as a
+fallback, it's fine... It's only for edge cases. It's just... I have been burned by that library
+in the past, so I wanna make this stuff clear."*
+
+So this is **not a gate**. A fallback fires on the tokens nothing else renders, which is a small
+tail by construction, and a wrong katakana rendering there is inside her standing rule that
+*"incorrect representations in katakana are totally acceptable"*. What she is asking for is that
+the scepticism be written down rather than discovered again by somebody who does not know she has
+been burned.
+
+**So: measure it, and let it run meanwhile.**
 
 - Compare `pykakasi` against `scripts/translit_no.py` and against the **317 hand-written rows** of
   `reports/garborg-name-transliterations.tsv` that the engine did not itself write. That file is
@@ -1677,4 +1687,5 @@ two. That guess is plausible and is not evidence.
 system than that library. Not one hundred percent sure."*
 
 **Nothing depends on this today.** `translit_no` is what runs, the funnel is wired, and the ja/zh
-gate refuses nobody. This decides whether to swap the engine, not whether labels get made.
+gate refuses nobody. This decides whether `pykakasi` becomes the fallback under it — not whether
+labels get made, and not whether it may be used at all.

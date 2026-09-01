@@ -23485,3 +23485,21 @@ first question.
 
 Nothing depends on it: `translit_no` runs, the funnel is wired, the gate refuses nobody. This
 decides whether to swap the engine, not whether labels get made.
+
+## 2026-08-31 — `pykakasi`: fine as a fallback, and the caution is the point
+
+She clarified within the hour: *"I think probably as a fallback, it's fine... It's only for edge
+cases. It's just... I have been burned by that library in the past, so I wanna make this stuff
+clear."*
+
+So the item is retitled and softened. It was written as *test before trusting*, which read as a
+gate; her position is that a fallback is fine and the testing is due diligence. A fallback fires
+only on tokens nothing else renders — a small tail by construction — and a wrong katakana form
+there sits inside her standing rule that *"incorrect romanization or incorrect representations in
+katakana are totally acceptable"*.
+
+**What she is actually asking for is that the scepticism be recorded**, so the next person to find
+`pykakasi` installed does not adopt it wholesale without knowing she has been burned by it. That
+is a different request from blocking its use, and writing it as a gate would have been the
+`CLAUDE.md` § *inventing a hard limit* failure in miniature — turning a caution into a
+precondition.
