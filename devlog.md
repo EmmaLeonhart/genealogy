@@ -24494,3 +24494,24 @@ environment is half the size they need.
 **The instrumentation was worth more than a fix would have been.** `continue-on-error` was
 available at any point in the last six hours, would have made the lane green, and would have
 buried this.
+
+## 2026-09-01 — the drift refresher could never refresh one of its own targets
+
+`scripts/refresh-drift.py` invoked `scripts/build-garborg-day.py` **bare**, and that script
+answers *"this script only: --compose (the daily algorithm) or --roster FILE"* and exits 1. So it
+failed in round 1, round 2 and round 3; its outputs never came un-stale; and the run ended
+*"2 scripts still have stale outputs"* as though they were merely behind.
+
+**The failure was printed three times and nothing acted on it.** That is the more useful half of
+this: `[FAIL] scripts/build-garborg-day.py exit=1` appeared in the log once per round, and the
+summary line said nothing about it. A generator that *cannot* succeed looked exactly like one that
+had not caught up yet.
+
+Two changes. `REQUIRED_ARGS` carries the flag a generator refuses to run without — `--compose` and
+not `--roster`, because `--compose` is the daily algorithm whose outputs the drift graph tracks,
+and `--no-refresh` is deliberately not passed because `CLAUDE.md` § *Regenerating QuickStatements
+ALWAYS regenerates the ledger* makes the refresh part of what running it means. And the summary
+now names every generator that failed, so a persistent failure is loud rather than arithmetic.
+
+**Not yet verified.** The confirming run is still going; this entry will be wrong if
+`build-garborg-day.py --compose` turns out to fail inside the refresher for some other reason.

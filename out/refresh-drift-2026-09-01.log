@@ -1,0 +1,133 @@
+
+=== round 1: 21 scripts to run (<= 72h drift) ===
+  scripts/build-merges-to-do.py
+      reports/merges-to-do.md
+  scripts/build-succession-roster.py
+      reports/succession-and-ordinals.csv
+  scripts/bure-coverage.py
+      reports/bure-coverage.tsv
+      reports/bure-to-export.tsv
+  scripts/census-abbreviated-patronymics.py
+      reports/abbreviated-patronymics.csv
+  scripts/check-label-collisions.py
+      reports/label-collisions.tsv
+  scripts/derive-facts.py
+      reports/facts.md
+  scripts/derive-family.py
+      reports/invented-parents.csv
+  scripts/rank-broken-links.py
+      reports/broken-links.md
+      reports/broken-links.tsv
+  scripts/refresh-suppressed-statements.py
+      reports/suppressed-statements.tsv
+  scripts/zipper-provenance.py
+      reports/zipper-provenance-chains.md
+      reports/zipper-provenance.tsv
+  scripts/build-cjk-romanisation.py
+      reports/cjk-romanisation.csv
+      reports/cjk-romanisation.md
+  scripts/build-edit-objects.py
+      reports/edit-objects.csv
+  scripts/build-garborg-day.py
+      reports/abbreviated-patronymics.csv
+      reports/garborg-live-labels.tsv
+      reports/garborg-live-values.tsv
+      reports/label-collisions.tsv
+  scripts/build-parent-candidates.py
+      reports/parent-candidates.tsv
+  scripts/build-path-to-wikidata-report.py
+      reports/path-to-wikidata.md
+  scripts/census-label-gap.py
+      reports/label-gap.csv
+  scripts/census-paths.py
+      reports/path-census.md
+  scripts/count-borrowed-spouse-names.py
+      reports/borrowed-spouse-names.csv
+  scripts/find-geni-duplicates.py
+      reports/geni-duplicate-candidates.tsv
+  scripts/list-rejected-parents.py
+      reports/rejected-parents.tsv
+  scripts/build-merge-worklist.py
+      reports/geni-merge-worklist.md
+  SKIP scripts/ledger-history.py — names a Wikidata client
+  SKIP scripts/audit-ledger-names.py — names a Wikidata client
+  SKIP scripts/resolve-patronymics.py — names a Wikidata client
+  SKIP scripts/refresh-live-values.py — names a Wikidata client
+  [ok ] scripts/build-merges-to-do.py    wikidata duplicates: 16 yours, 67 other
+  [ok ] scripts/build-succession-roster.py    Samaritan  132   qid  23   geni  94   regnal 111   in-office 132
+  [ok ] scripts/bure-coverage.py  wrote bure-coverage.tsv (all 251) and bure-to-export.tsv (0)
+  [ok ] scripts/census-abbreviated-patronymics.py  18 of them are on people who already carry a Wikidata item.
+  [ok ] scripts/check-label-collisions.py  A collision does NOT mean the person is a duplicate -- it means the CREATE would be refuse
+  [ok ] scripts/derive-facts.py    30 unreadable date values
+  [ok ] scripts/derive-family.py         844  children, no parent recorded
+  [ok ] scripts/rank-broken-links.py  wrote reports\broken-links.tsv and reports\broken-links.md
+  [ok ] scripts/refresh-suppressed-statements.py  15 statements suppressed -> reports\suppressed-statements.tsv
+  [ok ] scripts/zipper-provenance.py                   └─ Simone du Caylar `6000000007033373775` = `Q102860306` — round 1, child
+  [ok ] scripts/build-cjk-romanisation.py     3044404              鳳 陳郡陽夏         zh  Feng               鳳      carries the clan seat
+  [ok ] scripts/build-edit-objects.py  Nothing has been sent, and no executor exists.
+  [FAIL] scripts/build-garborg-day.py exit=1    this script only: --compose (the daily algorithm) or --roster FILE
+  [ok ] scripts/build-parent-candidates.py  0 in the deck -> out\gui-data.json, out\parent-review.html
+  [ok ] scripts/build-path-to-wikidata-report.py    2 of 815 have no Wikidata descendants
+  [ok ] scripts/census-label-gap.py    15,575 of the surname rows ALSO have a named relative, so they get both halves
+  [ok ] scripts/census-paths.py  every path is connected end to end.
+  [ok ] scripts/count-borrowed-spouse-names.py  NOTHING IS PROPOSED. This is a count, per the queue item.
+  [ok ] scripts/find-geni-duplicates.py    matched on the kanji only: 210   on both names: 19
+  [ok ] scripts/list-rejected-parents.py  wrote C:\Users\Emma\Documents\GitHub\geni\reports\rejected-parents.tsv
+  [ok ] scripts/build-merge-worklist.py  wrote reports\geni-merge-worklist.md
+
+=== round 2: 10 scripts to run (<= 72h drift) ===
+  scripts/build-agreeing-latin-labels.py
+      reports/agreeing-latin-labels.tsv
+      reports/wikidata-agreeing-latin-labels.json
+  scripts/build-cjk-clan-labels.py
+      reports/cjk-clan-labels.tsv
+  scripts/build-en-label-batch.py
+      reports/wikidata-en-labels.json
+      reports/wikidata-en-labels.md
+  scripts/build-garborg-day.py
+      reports/garborg-live-labels.tsv
+      reports/garborg-live-values.tsv
+  scripts/build-name-form-table.py
+      reports/name-form-pairs.tsv
+  scripts/build-patronymic-items.py
+      reports/patronymic-items-to-create.tsv
+  scripts/build-relationship-label-preview.py
+      reports/relationship-label-preview.csv
+      reports/relationship-label-preview.md
+  scripts/census-paths.py
+      reports/path-census.md
+  scripts/classify-broken-links.py
+      reports/broken-link-kinds.md
+  scripts/resolve-names-by-sex.py
+      reports/name-resolved-by-sex.csv
+  SKIP scripts/ledger-history.py — names a Wikidata client
+  SKIP scripts/resolve-patronymics.py — names a Wikidata client
+  SKIP scripts/refresh-live-values.py — names a Wikidata client
+  [ok ] scripts/build-agreeing-latin-labels.py            1 people agreed across 2 records
+  [ok ] scripts/build-cjk-clan-labels.py     Q45448943    mul=NN   en=man of the Xiao clan, from Lanling
+  [ok ] scripts/build-en-label-batch.py      romanised from ja                186
+  [FAIL] scripts/build-garborg-day.py exit=1    this script only: --compose (the daily algorithm) or --roster FILE
+  [ok ] scripts/build-name-form-table.py     carl             -> ander                28 fathers
+  [ok ] scripts/build-patronymic-items.py  wrote reports\patronymic-items-to-create.tsv
+  [ok ] scripts/build-relationship-label-preview.py  wrote C:\Users\Emma\Documents\GitHub\geni\reports\relationship-label-preview.csv and C:\Us
+  [ok ] scripts/census-paths.py  every path is connected end to end.
+  [ok ] scripts/classify-broken-links.py    no broken links to classify
+  [ok ] scripts/resolve-names-by-sex.py    13802 rows in total
+
+=== round 3: 3 scripts to run (<= 72h drift) ===
+  scripts/build-garborg-day.py
+      reports/garborg-live-labels.tsv
+      reports/garborg-live-values.tsv
+  scripts/build-mul-label-batch.py
+      reports/wikidata-mul-labels.json
+      reports/wikidata-mul-labels.md
+  scripts/census-paths.py
+      reports/path-census.md
+  SKIP scripts/ledger-history.py — names a Wikidata client
+  SKIP scripts/resolve-patronymics.py — names a Wikidata client
+  SKIP scripts/refresh-live-values.py — names a Wikidata client
+  [FAIL] scripts/build-garborg-day.py exit=1    this script only: --compose (the daily algorithm) or --roster FILE
+  [ok ] scripts/build-mul-label-batch.py      left alone: relationship label           98980
+  [ok ] scripts/census-paths.py  every path is connected end to end.
+
+after 3 rounds: 2 scripts still have stale outputs

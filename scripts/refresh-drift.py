@@ -70,6 +70,31 @@ def freshness_module():
 RUN = dict(capture_output=True, text=True, encoding="utf-8", errors="replace")
 
 
+#: Generators that REFUSE to run without a flag, and the flag they need.
+#:
+#: **Found 2026-09-01, and it had been failing silently every round.** `refresh-drift` invoked
+#: `build-garborg-day.py` bare; that script answers *"this script only: --compose (the daily
+#: algorithm) or --roster FILE"* and exits 1. So it failed in round 1, round 2 and round 3, its
+#: outputs never came un-stale, and the run ended *"2 scripts still have stale outputs"* — a
+#: refresher that could never refresh one of its own targets.
+#:
+#: The failure was visible in the log as `[FAIL] ... exit=1` and nothing acted on it, which is the
+#: real lesson: the loop printed the error three times and carried on.
+#:
+#: **`--compose` and not `--roster`**, because `--compose` is the daily algorithm and the thing
+#: whose outputs the drift graph is tracking. `--no-refresh` is deliberately NOT passed:
+#: `CLAUDE.md` § *Regenerating QuickStatements ALWAYS regenerates the ledger* makes the ledger
+#: refresh part of what running this script means.
+NEWLINE = chr(10)
+
+#: Generators that failed this run, so the summary can say why an output stayed stale.
+failures = {}
+
+REQUIRED_ARGS = {
+    "scripts/build-garborg-day.py": ["--compose"],
+}
+
+
 def build_census() -> None:
     subprocess.run([sys.executable, str(ROOT / "scripts" / "build-repo-freshness.py")],
                    cwd=ROOT, check=True, **RUN)
@@ -186,15 +211,30 @@ def main() -> None:
             return
 
         for script, _ in order:
-            r = subprocess.run([sys.executable, str(ROOT / script)], cwd=ROOT, **RUN)
+            r = subprocess.run([sys.executable, str(ROOT / script)] + REQUIRED_ARGS.get(script, []),
+                               cwd=ROOT, **RUN)
             tail = (r.stdout or r.stderr).strip().splitlines()
             print(f"  [{'ok ' if r.returncode == 0 else 'FAIL'}] {script}"
                   f"{'' if r.returncode == 0 else f' exit={r.returncode}'}"
                   f"{('  ' + tail[-1][:90]) if tail else ''}")
+            if r.returncode != 0:
+                failures[script] = (r.returncode, tail[-1][:120] if tail else '')
         build_census()
 
     order, _, _ = plan(args.max_age_hours)
     print(f"\nafter {args.rounds} rounds: {len(order)} scripts still have stale outputs")
+    # **A generator that fails every round is the reason its outputs stay stale, and saying so
+    # is the whole point.** Before 2026-09-01 the loop printed `[FAIL] ... exit=1` once per
+    # round and the summary said only "2 scripts still have stale outputs", so a script that
+    # could never succeed looked like one that was merely behind. Three identical failures went
+    # past unremarked.
+    if failures:
+        print(f"{NEWLINE}{len(failures)} generator(s) FAILED, so their outputs cannot come "
+              f"un-stale until that is fixed:")
+        for script, (code, msg) in sorted(failures.items()):
+            print(f"   exit={code}  {script}")
+            if msg:
+                print(f"            {msg}")
 
 
 if __name__ == "__main__":
