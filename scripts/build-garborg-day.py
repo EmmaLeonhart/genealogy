@@ -196,7 +196,10 @@ def translit():
     with open(ROOT / "reports" / "garborg-name-transliterations.tsv",
               encoding="utf-8") as f:
         for row in csv.DictReader(f, delimiter="\t"):
-            out[row["token"]] = (row["ja"], row["zh"])
+            # Three languages, not two. `ko` joined the table on 2026-09-01 and 96% of the
+            # 18,536 tokens carry one; a row written before that has an empty `ko` and is
+            # re-rendered by the funnel like any other gap.
+            out[row["token"]] = (row["ja"], row["zh"], row.get("ko", ""))
     return out
 
 
@@ -292,7 +295,7 @@ def describe_all(geni_id, facts, father, mother, labels, table,
                 if isinstance(joiner, dict):
                     joiner = joiner.get(group_name, joiner[""])
                 out[lang] = f"{word} {joiner} {qs(name)}"
-            ja, zh = label_in(name, table)
+            ja, zh, ko = label_in(name, table)
             if ja:
                 JA = {"child_of": {"M": "息子", "F": "娘", "": "子"},
                       "parent_of": {"M": "父", "F": "母", "": "親"},
@@ -302,8 +305,19 @@ def describe_all(geni_id, facts, father, mother, labels, table,
                       "parent_of": {"M": "父", "F": "母", "": "父母"},
                       "spouse_of": {"M": "夫", "F": "妻", "": "配偶"},
                       "sibling_of": {"M": "兄弟", "F": "姐妹", "": "同胞"}}
+                # **Korean too.** Emma, 2026-09-01: *"cjk includes korean"*. Without this the
+                # NN/relationship people were the one population still leaving Wikidata with two
+                # CJK labels out of three, which is what `queue.md` § *ABSOLUTE PREREQUISITE*
+                # exists to stop. Korean takes the genitive 의 and the relationship word after
+                # it, the same shape as the Japanese の and the Chinese 之.
+                KO = {"child_of": {"M": "아들", "F": "딸", "": "자녀"},
+                      "parent_of": {"M": "아버지", "F": "어머니", "": "부모"},
+                      "spouse_of": {"M": "남편", "F": "아내", "": "배우자"},
+                      "sibling_of": {"M": "형제", "F": "자매", "": "형제자매"}}
                 out["ja"] = f"{ja}の{JA[group_name].get(sex) or JA[group_name]['']}"
                 out["zh"] = f"{zh}之{ZH[group_name].get(sex) or ZH[group_name]['']}"
+                if ko:
+                    out["ko"] = f"{ko}의 {KO[group_name].get(sex) or KO[group_name]['']}"
             return out
     return {}
 
@@ -521,12 +535,14 @@ def _label_corrections(our_items, labels, table, state):
         out.append(f'{qid}	Lmul	"{want}"')
         out.append(f"#   {qid}: set the en label to {want!r}")
         out.append(f'{qid}	Len	"{want}"')
-        ja, zh = label_in(want, table)
+        ja, zh, ko = label_in(want, table)
         if ja:
             out.append(f"#   {qid}: set the ja label")
             out.append(f'{qid}	Lja	"{ja}"')
             out.append(f"#   {qid}: set the zh label")
             out.append(f'{qid}	Lzh	"{zh}"')
+            out.append(f"#   {qid}: set the ko label")
+            out.append(f'{qid}	Lko	"{ko}"')
     if out:
         out = ["", "# " + "-" * 72,
                "# LABEL CORRECTIONS -- existing items whose label is not what our tree now",
@@ -906,7 +922,7 @@ MINTED_TOKENS = {}
 
 
 def _render_token(token):
-    """`(ja, zh)` for a token nothing has read yet, or `(None, None)`.
+    """`(ja, zh, ko)` for a token nothing has read yet, or `(None, None, None)`.
 
     Her standard is what makes an on-the-fly rendering acceptable: *"Incorrect romanization or
     incorrect representations in katakana are totally acceptable. An incorrect name is not,
@@ -918,23 +934,33 @@ def _render_token(token):
     rendered here and a token rendered by the batch step come out identical.
     """
     if not token or not any(c.isalpha() for c in token):
-        return None, None
+        return None, None, None
     try:
         from translit_no import translit
+        from translit_ko import render as ko_han
+        from translit_ko_latin import render as ko_latin
         ja, zh = translit(token)
+        # Han first: a token already written in Han characters has a Sino-Korean reading, and
+        # routing it through the Latin renderer would be nonsense. `translit_ko.render` returns
+        # `''` for anything that is not Han, so the fallback is exact rather than a guess.
+        ko = ko_han(token) or ko_latin(token)
     except Exception:                                               # noqa: BLE001
-        return None, None
-    return (ja, zh) if ja and zh else (None, None)
+        return None, None, None
+    return (ja, zh, ko) if ja and zh and ko else (None, None, None)
 
 
 def label_in(label, table):
-    """(ja, zh) for a whole name, or (None, None) if any token is unknown.
+    """(ja, zh, ko) for a whole name, or (None, None, None) if any token is unknown.
+
+    **Korean is the third CJK language and was missing until 2026-09-01.** Emma: *"cjk includes
+    korean"*. All three are required together: a person with two of them is not a person whose
+    CJK labels are done.
 
     Partial is worse than absent: half a name in katakana and half in Latin is not a
     Japanese label, it is a broken one. **A middle initial is the one exception** —
     `labels.transliterate_token` keeps `F` as `F` in every script, per Emma 2026-08-27.
     """
-    from labels import transliterate_token
+    from labels import transliterate_token, transliterate_token_ko
 
     # **A territorial designation is not part of the name, and transliterating it is how
     # `Q6161733` got `カール・フレドリク・パイパー・ティル・クラゲホルム`.** Emma spotted it and
@@ -960,11 +986,12 @@ def label_in(label, table):
     # killed the whole label -- one stray comma costing a person both their `ja` and `zh`.
     # Stripped for the LOOKUP only; the label itself is untouched, so a name that genuinely
     # carries punctuation still reads as it does.
-    ja, zh = [], []
+    ja, zh, ko = [], [], []
     for token, _usage, _o in classify(label):
         clean = token.strip(",;:")
         a, b = transliterate_token(clean, table)
-        if a is None:
+        c = transliterate_token_ko(clean, table)
+        if a is None or c is None:
             # **THE FUNNEL, at the call rather than only in the pipeline.** Emma, 2026-08-29:
             # *"If anything even remotely wants to generate without having katakana or Chinese
             # characters, it goes through this thing and then adds the token to the library, and
@@ -980,14 +1007,18 @@ def label_in(label, table):
             # A rendered token is cached in `table` for the rest of the run and collected in
             # `MINTED_TOKENS`, which `main` appends to the shared file at the end. Writing
             # per-token would interleave writes into a file other scripts read.
-            a, b = _render_token(clean)
-            if a is None:
-                return None, None
-            table[clean] = (a, b)
-            MINTED_TOKENS[clean] = (a, b)
+            a, b, c = _render_token(clean)
+            if a is None or c is None:
+                return None, None, None
+            table[clean] = (a, b, c)
+            MINTED_TOKENS[clean] = (a, b, c)
         ja.append(a)
         zh.append(b)
-    return "・".join(ja), "·".join(zh)
+        ko.append(c)
+    # **Korean separates the words of a personal name with a SPACE**, where `ja` takes the
+    # middle dot and `zh` its own. Joining on nothing gave 안나츠리스티나프리가레 for
+    # `Anna Christina Flygare` -- one unreadable run of fourteen syllables.
+    return "・".join(ja), "·".join(zh), " ".join(ko)
 
 
 def name_lines(label, plan, geni_id, father_qid, fields=None, sex="",
@@ -5499,9 +5530,9 @@ def main():
                     and geni_name not in {v for (qq, _l), v in live_labels.items() if qq == q}):
                 lines.append(f'{q}\tAmul\t"{qs(geni_name)}"')
 
-        ja, zh = label_in(source, table)
+        ja, zh, ko = label_in(source, table)
         if ja and q not in CJK_LABELS_NOT_OURS:
-            for code, value in (("ja", ja), ("zh", zh)):
+            for code, value in (("ja", ja), ("zh", zh), ("ko", ko)):
                 live = live_labels.get((q, code))
                 if live is None and code in langs:
                     # The store says the language exists but we do not know its value, and a
@@ -5640,10 +5671,14 @@ def main():
             if birth and qs(birth) != qs(primary):
                 lines.append(f'LAST\tAmul\t"{qs(birth)}"')
 
-            ja, zh = label_in(primary, table)
+            ja, zh, ko = label_in(primary, table)
             if ja:
                 lines.append(f'LAST\tLja\t"{ja}"')
                 lines.append(f'LAST\tLzh\t"{zh}"')
+                # **Korean is CJK and a creation carries it too.** Emma, 2026-09-01:
+                # *"cjk includes korean"*. Without this the gate could require `ko`
+                # while the CREATE block never wrote one.
+                lines.append(f'LAST\tLko\t"{ko}"')
                 # **A TRANSLITERATED birth name is not a `ja`/`zh` alias.** Emma, 2026-08-30:
                 # *"The transliteration of the Geni display name does not go into Japanese or
                 # Chinese aliases"*, and asked directly: *"No ja/zh alias at all."*
@@ -5672,7 +5707,7 @@ def main():
                 # `queue.md` § *ABSOLUTE PREREQUISITE* is her earlier statement of the same rule
                 # -- *"an absolute prerequisite for the creation of any individual: that we have
                 # their CJK labels"* -- filed for later. Her ruling today moves it to now.
-                carried.append((g, label, "GATE: no ja/zh label, so not created"))
+                carried.append((g, label, "GATE: no ja/zh/ko label, so not created"))
                 del lines[block_start:]
                 continue
         lines.append(f"LAST\tP31\t{HUMAN}")
@@ -6124,8 +6159,8 @@ def main():
         if fresh:
             with open(tpath, "a", encoding="utf-8", newline="") as fh:
                 w = csv.writer(fh, delimiter="\t", lineterminator="\n")
-                for t, (ja, zh) in sorted(fresh.items()):
-                    w.writerow([t, ja, zh, "by rule, minted during the run"])
+                for t, (ja, zh, ko) in sorted(fresh.items()):
+                    w.writerow([t, ja, zh, ko, "by rule, minted during the run"])
         print(f"funnel: {len(MINTED_TOKENS)} tokens rendered on the fly, "
               f"{len(fresh)} new to the table")
     for g, label, why in carried[:10]:

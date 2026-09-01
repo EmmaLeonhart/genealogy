@@ -4,38 +4,38 @@
 #   batch and be limited to a count of 15 labels added per batch". A label set
 #   at CREATION time is neither counted nor capped -- "a label added during item
 #   creation is good".
-#   1169 more are held for a later run; a repeat is a no-op, so nothing is lost.
+#   2008 more are held for a later run; a repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
-#   add a mul alias "Justina Sofia Ziervogel"
-Q141244224	Amul	"Justina Sofia Ziervogel"
-#   Q141244230 Maria Elisabet Wærn: set the ja label to "マリア・エリーザベト・ヴェルン"
-Q141244230	Lja	"マリア・エリーザベト・ヴェルン"
-#   set the zh label to "玛丽亚·伊丽莎白·韦尔恩"
-Q141244230	Lzh	"玛丽亚·伊丽莎白·韦尔恩"
-#   set the zh label to "卡尔·卢德维格·赫登贝尔格"
-Q141244087	Lzh	"卡尔·卢德维格·赫登贝尔格"
-#   set the ja label to "ルイ・テ・ピオウス"
-Q43974	Lja	"ルイ・テ・ピオウス"
-#   set the zh label to "路易·特·皮奥乌斯"
-Q43974	Lzh	"路易·特·皮奥乌斯"
-#   set the ja label to "アクセル・ヴォン・フェルセン・テ・ヨウンゲル"
-Q455071	Lja	"アクセル・ヴォン・フェルセン・テ・ヨウンゲル"
-#   set the zh label to "阿克塞尔·翁·费尔森·特·约温盖尔"
-Q455071	Lzh	"阿克塞尔·翁·费尔森·特·约温盖尔"
-#   set the ja label to "ベレンガル・I・オフ・イタリ"
-Q274606	Lja	"ベレンガル・I・オフ・イタリ"
-#   set the zh label to "贝伦加尔·I·奥夫·伊塔利"
-Q274606	Lzh	"贝伦加尔·I·奥夫·伊塔利"
-#   Q75933086: set the ja label to "グイラウメ・I・デ・ガルランデ・セイグネウル・デ・ガルランデ"
-Q75933086	Lja	"グイラウメ・I・デ・ガルランデ・セイグネウル・デ・ガルランデ"
-#   set the zh label to "古伊拉乌梅·I·德·加尔兰德·塞伊格内乌尔·德·加尔兰德"
-Q75933086	Lzh	"古伊拉乌梅·I·德·加尔兰德·塞伊格内乌尔·德·加尔兰德"
-#   Q141223730 Constantia Fehman: set the ja label to "コンスタンティア・フェマン"
-Q141223730	Lja	"コンスタンティア・フェマン"
-#   set the zh label to "孔斯坦蒂阿·费曼"
-Q141223730	Lzh	"孔斯坦蒂阿·费曼"
-#   set the ja label to "カール・ニルソン・ポルヴィアンデル"
-Q141244225	Lja	"カール・ニルソン・ポルヴィアンデル"
+#   Q141244117 Nils Fister: set the ko label to "닐스 피스테르"
+Q141244117	Lko	"닐스 피스테르"
+#   Q141225179 Maren Ellingsdatter Tunheim: set the ko label to "마렌 엘링스다테르 툰헤임"
+Q141225179	Lko	"마렌 엘링스다테르 툰헤임"
+#   set the ko label to "크리스티나 톨베스도테르 네스"
+Q141198447	Lko	"크리스티나 톨베스도테르 네스"
+#   set the ko label to "에로프 스튜츠"
+Q6330080	Lko	"에로프 스튜츠"
+#   set the ko label to "아그셀 구스타프 길렌크로크"
+Q4830275	Lko	"아그셀 구스타프 길렌크로크"
+#   set the ko label to "카린 오로프스도테르"
+Q141216618	Lko	"카린 오로프스도테르"
+#   Q141216403 Olof Nilsson: set the ko label to "오로프 닐손"
+Q141216403	Lko	"오로프 닐손"
+#   Q141217400 Nils Albrektsson: set the ko label to "닐스 알브레크촌"
+Q141217400	Lko	"닐스 알브레크촌"
+#   Q141244206 Albrekt: set the ko label to "알브레크트"
+Q141244206	Lko	"알브레크트"
+#   set the ko label to "안데르스 페르손"
+Q141216455	Lko	"안데르스 페르손"
+#   set the ko label to "조한 팔켄베르그 아프 트리스토르프"
+Q141224780	Lko	"조한 팔켄베르그 아프 트리스토르프"
+#   Q141219059 Gustava Maria Sofia Mannerheim: set the ko label to "구스타바 마리아 소피아 만네르헤임"
+Q141219059	Lko	"구스타바 마리아 소피아 만네르헤임"
+#   set the ko label to "에나르 노르덴펠트"
+Q6014618	Lko	"에나르 노르덴펠트"
+#   set the ko label to "로자라 오프 이타리"
+Q466257	Lko	"로자라 오프 이타리"
+#   set the ko label to "오로프 트로이류스"
+Q48562235	Lko	"오로프 트로이류스"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
@@ -61,6 +61,8 @@ LAST	Lfr	"fils de Astri Torchelsdatter Øvre Time"
 LAST	Lit	"figlio di Astri Torchelsdatter Øvre Time"
 #   set the ja label to "アストリ・トルケルスダッテル・オヴレ・ティメの息子"
 LAST	Lja	"アストリ・トルケルスダッテル・オヴレ・ティメの息子"
+#   set the ko label to "아스트리 토르첼스다테르 욉레 티메의 아들"
+LAST	Lko	"아스트리 토르첼스다테르 욉레 티메의 아들"
 #   set the nb label to "sønn av Astri Torchelsdatter Øvre Time"
 LAST	Lnb	"sønn av Astri Torchelsdatter Øvre Time"
 #   set the nl label to "zoon van Astri Torchelsdatter Øvre Time"
@@ -98,6 +100,8 @@ LAST	Amul	"Anna Christina Schilling"
 LAST	Lja	"アンナ・クリスティーナ・フリガレ"
 #   set the zh label to "安娜·克里斯蒂娜·夫利加雷"
 LAST	Lzh	"安娜·克里斯蒂娜·夫利加雷"
+#   set the ko label to "안나 츠리스티나 프리가레"
+LAST	Lko	"안나 츠리스티나 프리가레"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -127,6 +131,8 @@ LAST	Lmul	"Anna Christina von Hermansson"
 LAST	Lja	"アンナ・クリスティーナ・ヴォン・ハーマンソン"
 #   set the zh label to "安娜·克里斯蒂娜·翁·赫尔曼松"
 LAST	Lzh	"安娜·克里斯蒂娜·翁·赫尔曼松"
+#   set the ko label to "안나 츠리스티나 본 헤르만손"
+LAST	Lko	"안나 츠리스티나 본 헤르만손"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -156,6 +162,8 @@ LAST	Lmul	"Anna Jonesdatter Tøtland"
 LAST	Lja	"アンナ・ヨネスダッテル・トトランド"
 #   set the zh label to "安娜·约内斯达特·托特兰德"
 LAST	Lzh	"安娜·约内斯达特·托特兰德"
+#   set the ko label to "안나 조네스다테르 퇴트란드"
+LAST	Lko	"안나 조네스다테르 퇴트란드"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -185,6 +193,8 @@ LAST	Lmul	"Asbjørn Jonson Rønneberg"
 LAST	Lja	"アスブヨルン・ヨンソン・レンネベルグ"
 #   set the zh label to "阿斯布约尔恩·永松·伦内贝格"
 LAST	Lzh	"阿斯布约尔恩·永松·伦内贝格"
+#   set the ko label to "아스브죄르느 존손 뢴네베르그"
+LAST	Lko	"아스브죄르느 존손 뢴네베르그"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
@@ -210,39 +220,6 @@ LAST	P734	Q7386722
 
 # create a new item
 CREATE
-#   set the en label to "Beata Elisabet Unge"
-LAST	Len	"Beata Elisabet Unge"
-#   set the mul label to "Beata Elisabet Unge"
-LAST	Lmul	"Beata Elisabet Unge"
-#   set the ja label to "ベアタ・エリーザベト・ウンゲ"
-LAST	Lja	"ベアタ・エリーザベト・ウンゲ"
-#   set the zh label to "贝阿塔·伊丽莎白·温盖"
-LAST	Lzh	"贝阿塔·伊丽莎白·温盖"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581072 female
-LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000006911465252 Beata Elisabet Unge, qualified P1810 subject named as Beata Elisabet Unge
-LAST	P2600	"6000000006911465252"	P1810	"Beata Elisabet Unge"
-#   P569 date of birth = +1753-00-00T00:00:00Z/9
-LAST	P569	+1753-00-00T00:00:00Z/9	S2600	"6000000006911465252"
-#   P570 date of death = +1801-00-00T00:00:00Z/9
-LAST	P570	+1801-00-00T00:00:00Z/9	S2600	"6000000006911465252"
-#   P26 spouse = Q139996297 Anders Törnebladh
-LAST	P26	Q139996297	S2600	"6000000006911465252"
-#   P40 child = Q6218068 Carl Peter Peter Törnebladh
-LAST	P40	Q6218068	S2600	"6000000006911465252"
-#   Q139996297 Anders Törnebladh: P26 spouse = the item just created
-Q139996297	P26	LAST	S2600	"6000000006911465252"
-#   Q6218068 Carl Peter Peter Törnebladh: P25 mother = the item just created
-Q6218068	P25	LAST	S2600	"6000000006911465252"
-#   the item just created: P735 given name = Q338015 Beata, qualified P1545 series ordinal 1, P7452 reason for preferred rank Q3409033 usual forename
-LAST	P735	Q338015	P1545	"1"	P7452	Q3409033
-#   P735 given name = Q16423275 Elisabet, qualified P1545 series ordinal 2, P3831 object of statement has role Q245025 middle name
-LAST	P735	Q16423275	P1545	"2"	P3831	Q245025
-
-# create a new item
-CREATE
 #   set the en label to "Carl Hierta"
 LAST	Len	"Carl Hierta"
 #   set the mul label to "Carl Hierta"
@@ -251,6 +228,8 @@ LAST	Lmul	"Carl Hierta"
 LAST	Lja	"カール・ヒエルタ"
 #   set the zh label to "卡尔·希埃尔塔"
 LAST	Lzh	"卡尔·希埃尔塔"
+#   set the ko label to "카르르 히에르타"
+LAST	Lko	"카르르 히에르타"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
@@ -278,6 +257,8 @@ LAST	Lmul	"Christina Fant"
 LAST	Lja	"クリスティーナ・ファント"
 #   set the zh label to "克里斯蒂娜·凡特"
 LAST	Lzh	"克里斯蒂娜·凡特"
+#   set the ko label to "츠리스티나 판트"
+LAST	Lko	"츠리스티나 판트"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -309,6 +290,8 @@ LAST	Lmul	"Christina Juslenius"
 LAST	Lja	"クリスティーナ・ユスレニウス"
 #   set the zh label to "克里斯蒂娜·尤斯莱尼乌斯"
 LAST	Lzh	"克里斯蒂娜·尤斯莱尼乌斯"
+#   set the ko label to "츠리스티나 주스레뉴스"
+LAST	Lko	"츠리스티나 주스레뉴스"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -340,6 +323,8 @@ LAST	Lmul	"Fredrika Ulrika Eleonora von Braunjohan"
 LAST	Lja	"フレデリカ・ウルリカ・エレオノーラ・ヴォン・ブラウンヨハン"
 #   set the zh label to "夫雷德里卡·乌尔里卡·埃莱奥诺拉·翁·布拉温约汉"
 LAST	Lzh	"夫雷德里卡·乌尔里卡·埃莱奥诺拉·翁·布拉温约汉"
+#   set the ko label to "프레드리카 울리카 에레오노라 본 브라우노한"
+LAST	Lko	"프레드리카 울리카 에레오노라 본 브라우노한"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -365,6 +350,8 @@ LAST	Lmul	"Gustaf Schilling"
 LAST	Lja	"グスタフ・シリング"
 #   set the zh label to "古斯塔夫·西林"
 LAST	Lzh	"古斯塔夫·西林"
+#   set the ko label to "구스타프 실링"
+LAST	Lko	"구스타프 실링"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
@@ -392,6 +379,8 @@ LAST	Lmul	"Hans Olofsson Törne"
 LAST	Lja	"ハンス・オロフソン・トルネ"
 #   set the zh label to "汉斯·奥洛夫松·托尔内"
 LAST	Lzh	"汉斯·奥洛夫松·托尔内"
+#   set the ko label to "한스 오로프손 퇴르네"
+LAST	Lko	"한스 오로프손 퇴르네"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
@@ -415,37 +404,6 @@ LAST	Amul	"Hans Törne"
 
 # create a new item
 CREATE
-#   set the en label to "Helena Gangia"
-LAST	Len	"Helena Gangia"
-#   set the mul label to "Helena Gangia"
-LAST	Lmul	"Helena Gangia"
-#   set the ja label to "ヘレナ・ガンギア"
-LAST	Lja	"ヘレナ・ガンギア"
-#   set the zh label to "海伦娜·甘吉阿"
-LAST	Lzh	"海伦娜·甘吉阿"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581072 female
-LAST	P21	Q6581072
-#   P2600 Geni.com profile ID = 6000000002810895810 Helena Gangia, qualified P1810 subject named as Helena Gangia
-LAST	P2600	"6000000002810895810"	P1810	"Helena Gangia"
-#   P569 date of birth = +1677-09-05T00:00:00Z/11
-LAST	P569	+1677-09-05T00:00:00Z/11	S2600	"6000000002810895810"
-#   P570 date of death = +1760-05-16T00:00:00Z/11
-LAST	P570	+1760-05-16T00:00:00Z/11	S2600	"6000000002810895810"
-#   P26 spouse = Q48562235 Prost Olaus Troilius
-LAST	P26	Q48562235	S2600	"6000000002810895810"
-#   P40 child = Q1168365 Ärkebiskop Samuelis Olai Troilius
-LAST	P40	Q1168365	S2600	"6000000002810895810"
-#   Q48562235 Prost Olaus Troilius: P26 spouse = the item just created
-Q48562235	P26	LAST	S2600	"6000000002810895810"
-#   Q1168365 Ärkebiskop Samuelis Olai Troilius: P25 mother = the item just created
-Q1168365	P25	LAST	S2600	"6000000002810895810"
-#   the item just created: P735 given name = Q1035239 Helena
-LAST	P735	Q1035239
-
-# create a new item
-CREATE
 #   set the en label to "Henriette Wilhelmine Kjelsen"
 LAST	Len	"Henriette Wilhelmine Kjelsen"
 #   set the mul label to "Henriette Wilhelmine Kjelsen"
@@ -454,6 +412,8 @@ LAST	Lmul	"Henriette Wilhelmine Kjelsen"
 LAST	Lja	"アンリエット・ヴィルヘルミーネ・ヒェルセン"
 #   set the zh label to "亨丽埃特·威廉明妮·谢尔森"
 LAST	Lzh	"亨丽埃特·威廉明妮·谢尔森"
+#   set the ko label to "헨리에테 위르헬미네 켈센"
+LAST	Lko	"헨리에테 위르헬미네 켈센"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -485,6 +445,8 @@ LAST	Amul	"Ingrid Charlotta Carlsdotter Hansson"
 LAST	Lja	"イングリッド・カルロタ・カルルスドッテル・エケンボム"
 #   set the zh label to "英格丽·卡尔洛塔·卡尔尔斯多特·埃肯博姆"
 LAST	Lzh	"英格丽·卡尔洛塔·卡尔尔斯多特·埃肯博姆"
+#   set the ko label to "잉리드 차르로타 카르르스도테르 에켄봄"
+LAST	Lko	"잉리드 차르로타 카르르스도테르 에켄봄"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -516,6 +478,8 @@ LAST	Lmul	"Ivar Toreson Tjentland"
 LAST	Lja	"イヴァル・トレソン・トイェントランド"
 #   set the zh label to "伊瓦尔·托雷松·特延特兰德"
 LAST	Lzh	"伊瓦尔·托雷松·特延特兰德"
+#   set the ko label to "이바르 토레손 첸트란드"
+LAST	Lko	"이바르 토레손 첸트란드"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
@@ -543,6 +507,8 @@ LAST	Lmul	"Justina Elisabet Schotte"
 LAST	Lja	"ジャスティナ・エリーザベト・ショテ"
 #   set the zh label to "尤斯蒂纳·伊丽莎白·肖特"
 LAST	Lzh	"尤斯蒂纳·伊丽莎白·肖特"
+#   set the ko label to "주스티나 에리사베트 소테"
+LAST	Lko	"주스티나 에리사베트 소테"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -572,6 +538,8 @@ LAST	Lmul	"Jørgen Anton Wendt"
 LAST	Lja	"ヨルゲン・アントン・ヴェント"
 #   set the zh label to "约尔根·安东·温特"
 LAST	Lzh	"约尔根·安东·温特"
+#   set the ko label to "죄르겐 안톤 웨느드트"
+LAST	Lko	"죄르겐 안톤 웨느드트"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
@@ -603,6 +571,8 @@ LAST	Amul	"Lovisa Sofia Bratt"
 LAST	Lja	"ロヴィサ・ソフィア・ベンゼルスティエルナ"
 #   set the zh label to "洛维萨·索菲娅·本泽尔斯蒂埃尔纳"
 LAST	Lzh	"洛维萨·索菲娅·本泽尔斯蒂埃尔纳"
+#   set the ko label to "로비사 소피아 벤젤스티에르나"
+LAST	Lko	"로비사 소피아 벤젤스티에르나"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -632,6 +602,8 @@ LAST	Lmul	"Malena Olsdatter Tjåland"
 LAST	Lja	"マレーナ・オルスダッテル・トヨーランド"
 #   set the zh label to "马莱纳·奥尔斯达特·特约兰德"
 LAST	Lzh	"马莱纳·奥尔斯达特·特约兰德"
+#   set the ko label to "마레나 올스다테르 초란드"
+LAST	Lko	"마레나 올스다테르 초란드"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -657,6 +629,8 @@ LAST	Lmul	"Margareta Carlsdotter Sparre"
 LAST	Lja	"マルガレータ・カルルスドッテル・シュパラー"
 #   set the zh label to "瑪格麗塔·卡尔尔斯多特·斯帕雷"
 LAST	Lzh	"瑪格麗塔·卡尔尔斯多特·斯帕雷"
+#   set the ko label to "마르가레타 카르르스도테르 스파르레"
+LAST	Lko	"마르가레타 카르르스도테르 스파르레"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -686,6 +660,8 @@ LAST	Lmul	"Maria Elisabet Lagerfelt"
 LAST	Lja	"マリア・エリーザベト・ラゲルフェルト"
 #   set the zh label to "玛丽亚·伊丽莎白·拉盖尔费尔特"
 LAST	Lzh	"玛丽亚·伊丽莎白·拉盖尔费尔特"
+#   set the ko label to "마리아 에리사베트 라게르펠트"
+LAST	Lko	"마리아 에리사베트 라게르펠트"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -719,6 +695,8 @@ LAST	Lmul	"Ola Kristoffersen Kartevoll"
 LAST	Lja	"オーラ・クリストフェルセン・カルテヴォル"
 #   set the zh label to "奥拉·克里斯托费尔森·卡尔特沃尔"
 LAST	Lzh	"奥拉·克里斯托费尔森·卡尔特沃尔"
+#   set the ko label to "오라 크리스토페르센 카르테볼르"
+LAST	Lko	"오라 크리스토페르센 카르테볼르"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
@@ -748,6 +726,8 @@ LAST	Lmul	"Ola Pederson Foss"
 LAST	Lja	"オーラ・ペデルソン・フォス"
 #   set the zh label to "奥拉·佩德尔松·福斯"
 LAST	Lzh	"奥拉·佩德尔松·福斯"
+#   set the ko label to "오라 페데르손 포스"
+LAST	Lko	"오라 페데르손 포스"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
@@ -777,6 +757,8 @@ LAST	Lmul	"Olof Bratt Benzelstierna"
 LAST	Lja	"オロフ・ブラト・ベンゼルスティエルナ"
 #   set the zh label to "奥洛夫·布拉特·本泽尔斯蒂埃尔纳"
 LAST	Lzh	"奥洛夫·布拉特·本泽尔斯蒂埃尔纳"
+#   set the ko label to "오로프 브라트 벤젤스티에르나"
+LAST	Lko	"오로프 브라트 벤젤스티에르나"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
@@ -800,6 +782,8 @@ LAST	Lmul	"Samuel Ugla"
 LAST	Lja	"サミュエル・ウグラ"
 #   set the zh label to "塞缪尔·乌格拉"
 LAST	Lzh	"塞缪尔·乌格拉"
+#   set the ko label to "사뭴 욱라"
+LAST	Lko	"사뭴 욱라"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
@@ -827,6 +811,8 @@ LAST	Lmul	"Sofia Helena Mannerheim"
 LAST	Lja	"ソフィア・ヘレナ・マンネルヘイム"
 #   set the zh label to "索菲娅·海伦娜·曼纳海姆"
 LAST	Lzh	"索菲娅·海伦娜·曼纳海姆"
+#   set the ko label to "소피아 헤레나 만네르헤임"
+LAST	Lko	"소피아 헤레나 만네르헤임"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -860,6 +846,8 @@ LAST	Lmul	"Stephen Frisk"
 LAST	Lja	"ステプヘン・フリスク"
 #   set the zh label to "斯特普亨·弗里斯克"
 LAST	Lzh	"斯特普亨·弗里斯克"
+#   set the ko label to "스테펜 프리스크"
+LAST	Lko	"스테펜 프리스크"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male

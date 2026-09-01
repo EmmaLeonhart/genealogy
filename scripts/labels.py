@@ -471,6 +471,26 @@ def label_for(gedcom_name: str) -> str:
 INITIAL_RE = re.compile(r"^(?:[A-Z]|[A-Za-z]\.)$")
 
 
+def transliterate_token_ko(token, table):
+    """The Korean reading for one name token, or `None` if it cannot be rendered.
+
+    **`ko` is CJK.** Emma, 2026-09-01: *"korean is extremely important on par with Chinese and
+    you really should prioritize getting korean labels all the time and this seems to not get
+    that cjk includes korean"*. It had been filed with `hi`/`ar`/`ru`/`el` as a research task,
+    behind `ja` and `zh`, when it belongs beside them.
+
+    Same middle-initial exception as `transliterate_token`, for the same reason: a letter is the
+    same letter in every script, and 12,805 tokens sit in that position.
+    """
+    row = table.get(token)
+    if row and len(row) > 2 and row[2]:
+        return row[2]
+    if INITIAL_RE.match(token or ""):
+        letter = token.rstrip(".")
+        return letter
+    return None
+
+
 def transliterate_token(token, table):
     """`(ja, zh)` for one name token, or `(None, None)` if it cannot be rendered.
 

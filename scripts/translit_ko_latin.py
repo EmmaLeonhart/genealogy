@@ -77,6 +77,7 @@ _CONS = {
     # Digraphs, longest first when matching.
     "ch": "ch", "sh": "s", "th": "t", "ph": "p", "kh": "k", "gh": "g",
     "ck": "k", "ng": "ng", "qu": "kw", "ts": "ch", "sch": "s", "sz": "s",
+
     "cz": "ch", "rz": "j", "zh": "j", "kj": "k", "gj": "g", "sj": "s",
     "skj": "s", "hj": "h", "lj": "l", "nj": "n", "dj": "j", "tj": "ch",
 }
@@ -151,6 +152,15 @@ def render_word(word):
     if not all(c.isalpha() or c in "'-" for c in word):
         return ""
     word = word.replace("'", "").replace("-", "")
+    # **`chr` is a hard k followed by an r, not the `ch` digraph.** Mapping the cluster
+    # to a single consonant swallowed the r and gave `Christina` -> 키스티나; rewriting it
+    # to `kr` before tokenising gives 크리스티나. `Christian`, `Christoffer` and `Christen`
+    # are a large family of names here, so this is not one word.
+    word = word.replace("chr", "kr").replace("sch", "sh")
+    # `rl` is one Korean letter twice over. `Karlsson` came out 카르르손 -- the r took its
+    # own epenthetic syllable and the l then started another. Collapsed, it is 칼손, and
+    # `Karl` stays 칼.
+    word = word.replace("rl", "l")
     # **A doubled consonant behaves two different ways and collapsing all of them was wrong.**
     # A doubled STOP or sibilant is written once -- `Svensson` is 스벤손, `Hansdotter` 한스도테르 --
     # while a doubled LIQUID or NASAL keeps both, the first closing the syllable: `Lilly` is 릴리
