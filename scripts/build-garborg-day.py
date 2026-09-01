@@ -4904,6 +4904,37 @@ def main():
     else:
         print("WARNING: out/wikidata/p2600-all.tsv missing - a person whose item nobody here "
               "made is invisible and could be created twice")
+
+    # **A P2600 is not the only way we know somebody already has an item -- and on 2026-09-01 it
+    # let a duplicate through.** Emma, on `Q550343` *Welf I, Duke of Bavaria*, an item with 27
+    # sitelinks that a batch re-created as `Q141249742`: *"this one was made as a new individual
+    # ... idk why but it was an error."*
+    #
+    # Welf carried **no `P2600` at all**, so the map above could not see him. The zipper could,
+    # and did: `4927821250240067090 -> Q550343` was in `reports/zipper-pairs.tsv` on 2026-08-26,
+    # a week before the batch, and `reports/synoptic-correspondence.tsv` recorded it as
+    # `structural;zipper` -- two independent sources.
+    #
+    # **The rule was already known and applied in the wrong script.**
+    # `scripts/build-parent-candidates.py` treats the correspondence as authoritative for "this
+    # person is spoken for", with a comment quoting her on exactly this failure:
+    # *"Most have identification already on wikidata lmao."* The script that CREATES items never
+    # learned it. That is `CLAUDE.md` § *Code that is WRITTEN but never CALLED*, one level up --
+    # the lesson landed, in one place only.
+    #
+    # **Held, not linked, matching how the `P2600` guard already behaves.** A zipper pair carries
+    # a measured 2.8-4.8% error, so some of these will be wrong -- and the two outcomes are not
+    # symmetric. Holding a creation costs a day, because tomorrow's batch runs again; creating a
+    # duplicate costs her a manual merge on Wikidata, which is what this is written against.
+    correspondence = ROOT / "reports" / "synoptic-correspondence.tsv"
+    known_pair = {}
+    if correspondence.exists():
+        with open(correspondence, encoding="utf-8") as f:
+            for row in csv.DictReader(f, delimiter="	"):
+                g, q = (row.get("geni_id") or "").strip(), (row.get("qid") or "").strip()
+                if g and q:
+                    known_pair.setdefault(g, (q, row.get("sources") or "?"))
+        print(f"{len(known_pair):,} Geni ids identified with an item in the correspondence union")
     for path in args.known:
         with open(path, encoding="utf-8") as f:
             head = f.readline()
@@ -5047,6 +5078,17 @@ def main():
                                f"(out/wikidata/p2600-all.tsv) - creating it would duplicate"))
     if dup:
         print(f"{len(dup)} dropped: Wikidata already carries a P2600 for them")
+
+    # The same rule, from the correspondence rather than the P2600 snapshot. See the note above.
+    corr_dup = [g for g in to_create if g in known_pair and g not in our_items]
+    for g in corr_dup:
+        q, src = known_pair[g]
+        to_create.pop(g, None)
+        carried.append((g, "", f"already identified as {q} via {src} "
+                               f"(reports/synoptic-correspondence.tsv) - creating it would "
+                               f"duplicate; link it instead"))
+    if corr_dup:
+        print(f"{len(corr_dup)} dropped: already identified with an item by the correspondence")
 
     already = set()
     for path in args.exclude:
