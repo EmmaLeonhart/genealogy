@@ -141,6 +141,14 @@ def main():
         # and corrected for the father/mother slots where sex can never refute), the real
         # rise is 2.8% -> 4.8% across eight rounds. `scripts/zipper-join.py` § ROUND_CAP
         # carries the full working.
+        # **Her own hand verdicts, which were not a source until 2026-09-01.** Every SAME and
+        # RIGHT she has ruled, via `scripts/build-manual-identifications.py`. Measured when it
+        # was added, only **1 of 313** was missing from the union -- the other 312 arrive because
+        # some other source happened to propose the same pair, which is exactly the wrong reason
+        # for the most authoritative source in the repo to be present. `CLAUDE.md` § *The manual
+        # approvals are TRAINING DATA* is why: these are the labelled positives, and they should
+        # be load-bearing rather than incidentally covered.
+        ("emma-verdicts", rows_from(R / "manual-identifications.csv", "qid", "geni_id")),
         ("zipper", zipper_rows(R / "zipper-pairs.tsv", 8)),
     ]
     refuted = date_refuted()

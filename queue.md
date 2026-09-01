@@ -118,33 +118,22 @@ So tomorrow: `SPINE_PATHS`, `SPINE_REVERSED`, the spine blocks in `build-garborg
 `build-missing-reciprocals.py` and anything else that special-cases a spine, all come out. Check it
 is actually complete first — if it is not, say so rather than deleting a live mechanism.
 
-## Re-run the offline joins — the drift refresh MISSED them, and here is why
+## Her `DIFFERENT` verdicts refute nothing
 
-**`todo.md` § *Backfill existing Wikidata items* says what is left of it:** *"re-running the joins
-after a batch is accepted, since each new `P2600` makes the exact join reach further… editing
-starts 2026-09-01."* That date is today and her ledger refreshed at 11:30 with all rows resolving.
+Adding `manual-identifications.csv` as a source of `reports/synoptic-correspondence.tsv` on
+2026-09-01 put her affirmative verdicts into the union. **The negative ones are still unused.**
 
-**`refresh-drift.py --max-age-hours 72` ran three rounds and never touched either target.**
-`zipper-join` and `build-synoptic-correspondence` appear **zero times** in the log, and the files
-have not moved:
+`build-synoptic-correspondence.py` has a `refuted` set, and it is fed by `date_refuted()` only —
+235 structural pairs dropped for a date clash. Nothing consults `reports/emma-judgments.tsv` for
+`DIFFERENT`, so a pair she has personally ruled apart can still be proposed by the zipper or the
+structural walk and land in the union.
 
-    reports/garborg-qids.tsv           09-01 11:30
-    reports/synoptic-correspondence.tsv   08-31 20:47
-    reports/zipper-pairs.tsv              08-26 03:10    six days, unchanged
+**Measure it first, because it may be nothing.** Count how many `DIFFERENT` verdicts name a pair
+that some other source still asserts. If it is zero the item closes with a note; if it is not, the
+fix is one more feeder into `refuted`, the same shape as `date_refuted()`.
 
-**The threshold excluded exactly what it was pointed at.** `--max-age-hours 72` selects scripts
-whose drift is **≤ 72 hours** — the log says so in its own header, *"21 scripts to run (<= 72h
-drift)"* — so a file six days behind is *too stale to qualify*. Choosing 72 hours to keep the run
-bounded is what dropped the six-day-old join, which is the one that most needed running.
-
-**So the instrument was wrong for this job, not broken.** Two ways forward and the first is
-plainly better: **run the two scripts directly**, since the item names them and there are two;
-or raise the threshold and accept a much larger cascade. `refresh-drift` stays useful for keeping
-the recently-stale layer honest — that is what it did, 34 scripts across three rounds.
-
-**Nothing here is blocked.** The next work tick runs
-`scripts/build-synoptic-correspondence.py` and `scripts/zipper-join.py` and reports what the fresh
-`P2600`s bought.
+**A `WRONG` verdict is the same thing under the older word**, per
+`build-manual-identifications.AFFIRMATIVE` — `RIGHT`/`SAME` affirm, `WRONG`/`DIFFERENT` deny.
 
 ## Wire the adjudication deck onto the pipeline
 

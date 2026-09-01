@@ -24708,3 +24708,28 @@ That identical third column is the tell: the deck rendered the husband's item ag
 row, so her `SAME` was given on a mismatched pair rather than in error. § *A second Geni ID on one
 Wikidata item is NOT a conflict* does not cover it, because that is one person with two Geni
 profiles and this is two people with one item.
+
+## 2026-09-01 — the two offline joins re-ran, six days late, and bought 3,652 pairs
+
+**Queue item cleared: § *Re-run the offline joins*.** `refresh-drift.py --max-age-hours 72`
+selects scripts whose drift is **at most** 72 hours, so the six-day-old zipper was too stale to
+qualify — the threshold excluded exactly what it was pointed at. Both were run directly, which is
+what the section said the next tick should do.
+
+    reports/zipper-pairs.tsv           45,898 -> 49,550   +3,652
+    reports/synoptic-correspondence    565,348 -> 568,955  +3,607
+
+`zipper-join.py` compared 192,039 slots over eight rounds against 42,281 anchors, and its own
+guards fired: **907 pairs refuted by `P21` sex or gender**, 21 by a recorded `P2600`, 14,989 slots
+left too ambiguous to call. Provenance splits 31,363 `solo` / 9,935 `date` / 8,252 `name`, and the
+ambiguity is where she said it would be — **13,738 of 14,989 in the `child` slot**.
+
+**And it turned up a gap worth more than the run.** The correspondence had **eight** sources and
+her own hand verdicts were not among them. Measured before assuming it mattered: **1 of 313** was
+actually missing, because the other 312 arrive via the structural walk or the zipper proposing the
+same pair. That is the right number to report and the wrong reason for the most authoritative
+source in the repo to be present, so `manual-identifications.csv` is now a source in its own right.
+
+**The negative half is still unused** and is queued rather than guessed at: `refuted` is fed by
+`date_refuted()` alone, so a pair she has ruled `DIFFERENT` can still be asserted by another
+source. The item says to measure it first, since it may well be zero.
