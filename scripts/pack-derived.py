@@ -38,6 +38,13 @@ DERIVED = [
     "reports/derived-facts.csv",
     "reports/derived-family.csv",
     "reports/derived-labels.csv",
+    # **Added 2026-09-01, after it quadrupled in one rebuild.** The placeholder label batch went
+    # 18 MB -> 74 MB when the twelve-day-stale relationship preview was regenerated (39,691 edits
+    # -> 158,618), and GitHub warned on the push at 69.92 MB. It is generated, it is regenerable
+    # by `build-placeholder-label-batch.py`, and one more growth of that shape breaks a push
+    # rather than warning about it. Unlike the CSVs there is no forty-reader problem: only
+    # `build-en-label-batch.py` opens it.
+    "reports/wikidata-placeholder-labels.json",
 ]
 
 LIMIT = 100 * 1024 * 1024
