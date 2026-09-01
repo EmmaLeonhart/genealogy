@@ -23586,3 +23586,33 @@ steps.
 `wikidata-placeholder-labels.json` having `ja`/`zh` on none; that is now 22,614 of 32,129 and the
 remainder is queued at the tail. What stays is the rest of her order — `hi`, `ar`, `ru`, `el` not
 started, and the `en`/`mul` passes over the whole corpus rather than the placeholders alone.
+
+## 2026-08-31 — the deck is the 47, and the 9,061 was a mislabel of mine
+
+**Emma: *"what the fuck there are not 9,061 open candidates lol."*** She is right, and the
+arithmetic was fine — the label was wrong. **9,061 is corpus-wide**: every person anywhere in a
+1.45M-person tree who parents somebody holding a QID whose item names an unaccounted parent. That
+is a structural pattern, not a backlog. Calling it *open candidates* made it read as work waiting
+on her.
+
+Her own bound: *"there could at the very maximum in principle be 400 people in the network right
+now, if all of them had two unique candidate parents 800, and yeah so just do all 47 in a run so
+I can do it."*
+
+**Measured: 47 of the 9,061 are in the ledger**, and the daily batch holds about 12 a run. Three
+different questions, and only the last is *what is blocked today*. The deck is now all 47 — not a
+slice — and republished. The full file keeps all 9,061 because the network grows into it.
+
+**And the reason it matters is recorded in `CLAUDE.md` § *The manual approvals are TRAINING
+DATA***, from her explanation:
+
+> *"I am doing the manual approval of everything in the corpus while the corpus is still
+> reasonable... doing it manually when the network size is still reasonable is going to give us
+> legitimate information. You are storing it so that we can actually get a serious idea of what is
+> going on with it, to the degree that we're able to just do auto-merges."*
+
+Her verdicts are a **sample being collected**, not a queue being drained, and it is only worth
+collecting while she can cover *all* of a population rather than the top of a ranking. That
+retires the auto-accept idea I had offered an hour earlier: the overwhelming cases are the
+labelled positives the sample needs most, and deciding them for her destroys the data being
+gathered.

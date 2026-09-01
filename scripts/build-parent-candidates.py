@@ -160,7 +160,22 @@ def main():
             continue
         seen.add(g)
         unique.append((g, q, child))
-    sys.stderr.write("%s open candidates\n" % format(len(unique), ","))
+    # **The deck is the LEDGER ones; 9,061 was never the question.** Emma, 2026-08-31:
+    # *"there are not 9,061 open candidates lol"*, then *"there could at the very maximum in
+    # principle be 400 people in the network right now... just do all 47 in a run."* The 9,061
+    # is corpus-wide -- every person in a 1.45M-person tree who parents somebody holding a QID
+    # whose item names an unaccounted parent. A structural pattern, not a backlog. The full
+    # file keeps them all, because the network grows into it; the deck is what is blocked now.
+    ledger = set()
+    lpath = ROOT / "reports" / "garborg-qids.tsv"
+    if lpath.exists():
+        with io.open(lpath, encoding="utf-8", newline="") as fh:
+            for r in csv.DictReader(fh, delimiter="	"):
+                if r.get("geni_id"):
+                    ledger.add(r["geni_id"].strip())
+    in_ledger = [t for t in unique if t[0] in ledger]
+    print("%s structural candidates corpus-wide; %s in the ledger -- the deck"
+          % (format(len(unique), ","), format(len(in_ledger), ",")), file=sys.stderr)
 
     # ---- labels for the Wikidata side ------------------------------------------------
     wanted = set()
@@ -212,7 +227,10 @@ def main():
     # being worked. This orders the deck; it judges nothing.
     cases.sort(key=lambda c: (len(c["shared_kid_words"]) + len(c["shared_spouse_words"]),
                               len(c["cand_kids"]) + len(c["our_kids"])), reverse=True)
-    deck = cases[:DECK]
+    # **All of the ledger ones, not a slice.** Her instruction: *"just do all 47 in a run so I
+    # can do it."* A cap is right for 9,061 and wrong for 47.
+    ledger_ids = {t[0] for t in in_ledger}
+    deck = [c for c in cases if c["geni"] in ledger_ids]
     json.dump(deck, io.open(OUT_JSON, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 
     if TEMPLATE.exists():
@@ -222,7 +240,8 @@ def main():
         io.open(OUT_HTML, "w", encoding="utf-8").write(
             html.replace("__DATA__", json.dumps(deck, ensure_ascii=False)))
 
-    print("%s open candidates -> %s" % (format(len(cases), ","), OUT_TSV.relative_to(ROOT)))
+    print("%s structural candidates -> %s"
+          % (format(len(cases), ","), OUT_TSV.relative_to(ROOT)))
     print("%d in the deck -> %s, %s" % (len(deck), OUT_JSON.relative_to(ROOT),
                                         OUT_HTML.relative_to(ROOT)))
 

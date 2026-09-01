@@ -2426,6 +2426,35 @@ are gonna be run lol the program is on it will just not run until sept 1."* They
 live and stay consistent. The rule above is about **new** batches, not about unwinding
 the programme.
 
+### The manual approvals are TRAINING DATA. That is why they happen now, at this size
+
+**Emma, 2026-08-31:** *"the entire idea behind this is that I am doing the manual approval of
+everything in the corpus while the corpus is still reasonable. I'm doing all this stuff in the
+network while the network size is still reasonable. The idea here is that doing it manually when
+the network size is still reasonable is going to give us legitimate information. You are storing
+it so that we can actually get a serious idea of what is going on with it, to the degree that
+we're able to just do auto-merges and stuff like that."*
+
+**So her verdicts are not a backlog being cleared. They are a sample being collected**, and the
+sample is only worth collecting while the network is small enough that she can cover **all** of
+it rather than a slice. Every `SAME`/`DIFFERENT` in `reports/emma-judgments.tsv` is a labelled
+example of what a correct identification looks like, and the point is to learn the rule well
+enough to auto-merge later.
+
+**Three things follow, and they change how these tools are built:**
+
+- **Scope the deck to what she can finish**, not to what exists. The parent deck was 60 slices of
+  a 9,061-row corpus-wide file; her reply was *"there are not 9,061 open candidates lol... there
+  could at the very maximum in principle be 400 people in the network... just do all 47 in a
+  run."* The 47 are the ledger ones — the population the pipeline is actually blocked on. Full
+  coverage of a small set is the deliverable; a ranked slice of a large one is not.
+- **Never auto-accept the easy cases to shrink the deck.** The obvious ones are the labelled
+  positives the sample needs most. Deciding them for her destroys exactly the data being
+  collected.
+- **Storage is the point, so the record must be complete.** `emma-judgments.tsv` keeps every
+  verdict including `UNSURE`, and `ledger()` folds only `SAME`. An `UNSURE` is a data point about
+  where the evidence runs out, which is what tells us the auto-merge threshold.
+
 ### The purpose is to ADD to Wikidata, not to correct it
 
 **2026-08-10, Emma:** *"the entire purpose of this is to add it… Correcting
