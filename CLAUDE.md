@@ -2180,6 +2180,38 @@ Arne-first and grows from no particular end.
 2026-08-30 and Geni refused all three — *"You are not allowed to export that profile."* The path
 is the deliverable.
 
+### Code that is WRITTEN but never CALLED is not done. Wire it, then measure it
+
+**Emma, 2026-08-31:** *"I've noticed this weird pattern in this repo where you always say you
+will do something and then wrote logic that never actually gets in. What's going on here?"*
+
+**She is describing a specific, repeated failure: the logic lands, the call site does not.** The
+function exists, the module imports, a test may even exercise it directly -- and nothing in the
+pipeline reaches it. The work is then reported as done, because from the inside it looks done.
+
+Four in this repo, all mine:
+
+| what was written | what never called it | what it cost |
+| --- | --- | --- |
+| name creations, as their own `.qs` pipeline | nothing ever ran that pipeline | her words, 2026-08-30: *"name creations were always segregated into a different Quick Statements generation pipeline that was never run"* -- so no new name item was created at all |
+| the CJK token funnel | wired as STEP 0d of `build-daily-batch.py` only | `build-garborg-day.py --compose`, which is what actually gets run, skipped it entirely |
+| `patronymic_or_surname`'s father-name check | the fallthrough returned the same answer | 62,637 tokens mis-modelled under a test that passed with the discriminator deleted |
+| `derive-family.py` reading `derived-labels.csv` | the pipeline built that file *afterwards* | every rebuild used the previous generation's labels, silently |
+
+**So "implemented" means a caller in the path that actually runs, and a number measured after it
+runs.** Not "the function is correct". The check is one question: *if I run the thing Emma runs,
+does this code execute?* If the honest answer is "it would if you ran the other entry point",
+it is not done.
+
+**And the measurement must come from the wired path**, because that is what distinguishes this
+from a claim. The funnel was only demonstrably fixed when
+`build-garborg-day.py --compose` printed `123 tokens rendered on the fly` -- before that, every
+statement about it was about code rather than about behaviour.
+
+This is the same family as § *Do not grab the first artifact that vaguely matches* and
+§ *LEGACY CODE IS DELETED*: all three are about the gap between what is in the repo and what the
+pipeline touches.
+
 ### LEGACY CODE IS DELETED. Not kept, not ignored — deleted
 
 **Emma, 2026-08-29, stating it as a hard rule:** *"Nothing should exist in this repo. This is a hard
