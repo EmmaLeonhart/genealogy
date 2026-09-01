@@ -123,13 +123,32 @@ fathers patronymics imply — *"postpone for a month lol"***.
 | one batch file | **merge into one, names first** — absorbs *One pipeline, one output file* |
 | clan labels `Q45449130` | check them — *"I never actually ran them"* |
 | `exports/post-merge/` | do the stale-duplicate resolution |
-| the export loop | **run it overnight**, retrying the four bailed-on people |
+| the export loop | **the four retries are DONE and every path is connected** — see below |
 | the 179 ambiguous patronymics | **DONE** — https://claude.ai/code/artifact/fb4829e3-df7b-4db3-9ed1-9649bb97a0f5 · 64 names, 2,581 people |
 | `P407` on patronymic items | **add it by suffix convention** |
 | `Nils`/`Nicolaus` | build the form table |
 | succession CSV | model it |
 | `pykakasi`, `BET x AND y`, the 74 MB file | all three |
 | final act of the night | `scripts/rebuild-everything.py`, then attach the batch |
+
+### The export loop: the four retries were already satisfied, and the chains are CLOSED
+
+**Checked 2026-09-01 before touching the browser**, which is what § *GREP THE CORPUS BEFORE
+RUNNING AN EXPORT* is for.
+
+**The four people she instructed me to reattempt are all in the corpus and all in the merged
+tree** — Anna Charlotta Stenius `6000000002400180669`, Artur Lidman `6000000082482425565`,
+Ola R Sande `6000000079231324930`, Anna von Mecklenburg-Schwerin `6000000000598850973` (who also
+carries `Q90441`). Later exports picked them up. There is nothing to retry.
+
+**And `scripts/census-paths.py` now reports `every path is connected end to end`** — 699 path
+files, and the missing-count distribution is a single row at **0 missing**. The campaign those
+exports existed to serve is finished.
+
+**So no export was run.** What is left in the export item is phase 4, the sparse regions from
+`reports/density.md`, which is exploratory rather than gap-closing — it looks for people we have
+never seen rather than closing a known hole. That is not something to run unattended on her Geni
+account while she is asleep, and nothing is waiting on it.
 
 ### Anonymisation is NOT redacting the tree. It is scrubbing the repo of strategy
 
