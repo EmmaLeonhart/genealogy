@@ -1,1 +1,10 @@
-..................
+.......................                                                  [100%]
+============================== slowest durations ==============================
+1051.08s call     tests/test_density.py::test_every_listed_region_gets_a_seed_and_it_is_inside_the_region
+1017.87s setup    tests/test_paths.py::test_the_path_file_runs_from_the_account_owner_to_jimmu
+75.04s call     tests/test_density.py::test_presence_never_exceeds_the_number_of_exports
+0.01s call     tests/test_density.py::test_presence_counts_one_file_per_person_not_one_per_mention
+0.01s setup    tests/test_density.py::test_presence_counts_one_file_per_person_not_one_per_mention
+
+(64 durations < 0.005s hidden.  Use -vv to show these durations.)
+23 passed, 19 deselected in 2144.17s (0:35:44)

@@ -24370,3 +24370,37 @@ the next step is closing the gap between what the census says is reachable and w
 `reports/merges-to-do.md` was regenerated the same tick, per its standing item: the ledger was
 newer than the file. It came out byte-identical, so the file was already current and only its
 mtime was stale.
+
+## 2026-09-01 — the `en` shortfall is a decision, not arithmetic
+
+I wrote earlier today that the 51,882-person `en` gap was "the gap between what the census says is
+reachable and what the placeholder batch actually emits… arithmetic, not a new method". Measured
+properly, that framing was wrong, and the breakdown of the 57,179 says so:
+
+    35,565  surname only, no relative     -- correctly get no en
+    10,495  bare, neither                 -- correctly get no en
+     9,580  census finds a relative, batch emits nothing
+     1,539  outside the placeholder population entirely (935 CJK-named)
+
+**The 35,565 are not a gap at all.** Her model puts the marker in `mul` and a *description* in the
+local languages; a description needs a named relative and they have none. `NN Larsson` with no
+`en` is the algorithm working, not failing.
+
+**The 9,580 are reachable only through relations her table does not name.** The slot my census
+used: **spouse's father 8,129**, spouse's mother 799, spouse's sibling 426, and a long tail.
+**9,562 of 9,580 are at two hops.** These people have a spouse, but the spouse is *also* unnamed,
+so the preview cannot say *"wife of NN"* at one hop and the nearest named person is a
+father-in-law. `build-nn-label-batch.py`'s ten-language table has son/daughter/father/mother/
+husband/wife/sibling **of** and no in-law wording at all.
+
+Emma named the long-range relations she wanted — *"grandparents or grandchildren or siblings"* —
+and did not name in-laws. Adding *"daughter-in-law of X"* across ten languages is inventing
+vocabulary she has not asked for, so it goes to her. The default in force is unchanged: `mul`, no
+`en`.
+
+**Also recorded: the CI slow-lane kills are not understood.** Four kills, two attempts, both
+modules, `runner has received a shutdown signal`. Ruled out: the 180-minute timeout (they died at
+25 to 91), concurrency from a newer run (there is none, and pushes do not trigger this workflow),
+and a test failure (both pass locally, 23 passed in 35m44). Memory is *suspected* and not
+established. The queue item says the next step is one measurement and warns against
+`continue-on-error`, which would hide the signal rather than explain it.

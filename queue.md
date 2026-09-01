@@ -397,12 +397,64 @@ relative and take both halves.
 NN algorithm, which is why the `en` batch went 25,930 → 104,856 edits in the same change.
 
 **What is left in her order.** `hi`, `ar`, `ru` and `el` are **done** —
-`scripts/build-four-script-labels.py`, 151,320 labels over the 37,830 people who carry a QID. So
-the outstanding job is one number: **51,882 people still have no `en` label** after the rebuild.
-The `label-gap` census says 93% of them are reachable from a relative or a surviving surname, and
-`build-placeholder-label-batch.py` already generates for 137,528 — so the gap is between what the
-census says is reachable and what the placeholder batch actually emits, and closing it is the next
-concrete step rather than a new method.
+`scripts/build-four-script-labels.py`, 151,320 labels over the 37,830 people who carry a QID.
+
+**The `en` shortfall is 57,179, and it is NOT arithmetic — measured 2026-09-01.** I framed it as a
+gap between what the census says is reachable and what the placeholder batch emits, and closing it
+as "the next concrete step rather than a new method". That was wrong. Broken down:
+
+| | people | |
+| --- | ---: | --- |
+| census says **surname only** — no relative to describe them by | **35,565** | correctly get no `en` |
+| census says **bare** — neither | 10,495 | correctly get no `en` |
+| census finds a relative, batch emits nothing | **9,580** | the real discrepancy |
+| not in the placeholder population at all (935 of them CJK-named) | 1,539 | a different job |
+
+**No `en` for the 35,565 is CORRECT and not a gap.** Her model puts the marker in `mul` and a
+*description* in the local languages; a description needs a named relative, and these people have
+none. `NN Larsson` in `mul` with no `en` is the algorithm working.
+
+**The 9,580 need relation words her table does not have.** The slot my census reached them by:
+
+    8,129  spouse's father          799  spouse's mother       426  spouse's sibling
+       55  child's spouse            51  sibling's spouse       36  spouse's spouse
+
+**9,562 of 9,580 are at two hops, and 8,129 of them are a father-in-law.** They have a spouse, but
+the spouse is *also* unnamed — so the preview cannot say *"wife of NN"* at one hop, and the only
+named person within reach is the spouse's father. `scripts/build-nn-label-batch.py`'s language
+table covers son/daughter/father/mother/husband/wife/sibling **of**; it has no in-law wording, in
+any of its ten languages.
+
+**So this is a decision, not an implementation.** Emma named the long-range relations she wanted —
+*"grandparents or grandchildren or siblings"* — and did not name in-laws. Adding
+*"daughter-in-law of X"* to ten languages is inventing vocabulary she has not asked for, which is
+what § *One name item per USAGE* and the edge-case rule both say goes to her. **NEEDS-DECISION.**
+The default in force meanwhile is what already happens: they get `mul` and no `en`.
+
+## CI kills two slow jobs and the cause is NOT understood
+
+**Four kills across two attempts, both modules, same message:** `The runner has received a
+shutdown signal`, exit 143. `test_density.py` died 25m32 into its pytest step on the second
+attempt; `test_paths.py` three minutes later.
+
+**What is ruled out.** Not the job timeout — that is 180 minutes and these died at 25 to 91. Not
+concurrency from a newer run — `gh run list` shows no `ci.yml` run after `33497581132`, and pushes
+do not trigger this workflow (no `push:` trigger). Not a test failure: **both modules pass
+locally, 23 passed in 35m44**, and `--durations=0` gives two hot spots —
+`test_every_listed_region_gets_a_seed_and_it_is_inside_the_region` at **1,051s** and
+`test_the_path_file_runs_from_the_account_owner_to_jimmu` at **1,018s of setup**.
+
+**What is suspected and NOT established:** memory. A runner has ~16 GB against this machine's
+31 GB, and `test_density` counts presence across all 600 exports. An OOM kill can present exactly
+like this — but 25 minutes with 17 dots printed is not proof, and `CLAUDE.md`'s rail is explicit
+that what is not understood gets a queue item rather than a change.
+
+**Nothing is blocked by it.** The slow lane is `workflow_dispatch`-only, the fast lane is green on
+both Python versions, and the modules pass locally. **Do not "fix" this by adding
+`continue-on-error`** — that hides the signal rather than explaining it.
+
+**The next step is one measurement:** print `free -m` and the peak RSS around the pytest step, or
+run one module on a larger runner, and see whether memory is actually the wall.
 
 ## Pointers
 
