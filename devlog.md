@@ -24646,3 +24646,30 @@ also too big for 16 GB, the log says which and when.
 
 **It commits and pushes the rebuilt batch**, repacking the gzipped CSVs first, and rebases before
 pushing so a concurrent commit is not clobbered. Then it opens the issue, assigned to her.
+
+## 2026-09-01 — dead-queue sweep, fourth pass
+
+**24 sections before, 24 after.** No whole section was dead; two were carrying finished work
+inside them, which § *How to read this file* says to cut back rather than annotate.
+
+**Deleted: § *HER RULINGS* → `### The export loop: the four retries were already satisfied`.**
+A completed verification with no step left in it — it ends *"There is nothing to retry"* and
+*"So no export was run."* Checked independently rather than taken from its own claim: all four
+people are in the corpus by `grep` over `exports/` —
+`6000000002400180669` 1 export, `6000000082482425565` 1, `6000000079231324930` 3,
+`6000000000598850973` 3. The third-pass entry above already records the other half, *every path
+is connected end to end* across 699 files. What the subsection called the remainder — phase 4,
+the sparse regions of `reports/density.md` — is exploratory and lives in that report, not here.
+
+**Trimmed from § *Labels in seven languages*: two paragraphs of finished-work record.** The
+staleness post-mortem (*"Those numbers were 39,691 / 32,129 / 22,614 the day before"*) and the
+outcome measurement (*"What the change bought"*, `en` 137,528 → 147,148, CJK 44,132 → 58,937).
+Both appear four times each in this file already, so nothing is lost and the section stops
+reading as a night's diary. Its gate, its method, its order and its live remainder — the 1,539
+outside the placeholder population, 935 CJK-named — all stay.
+
+**Kept, checked, and not dead:** § *Re-run the offline joins* (`reports/zipper-pairs.tsv` is
+still 08-26, `synoptic-correspondence.tsv` still 08-31 — the two scripts have not run) ·
+§ *FOR 2026-09-02* (dated tomorrow) · § *The daily Garborg batch* and § *Keep merges-to-do.md
+current* (standing processes, not steps) · § *The placeholder batch emits `ja` and `zh` and NO
+`ko`* (grepped: still zero) · § *`P1814`* · § *LABELS, IN HER ORDER* · the seven specifications.

@@ -71,25 +71,6 @@ transliteration tokens · the 218-script sweep · one batch file, names first ·
 the export loop · the 179 ambiguous patronymics · `P407` by suffix · the `Nils`/`Nicolaus` form
 table · the succession CSV · `pykakasi`, `BET x AND y` and the 74 MB file · the final rebuild.
 
-### The export loop: the four retries were already satisfied, and the chains are CLOSED
-
-**Checked 2026-09-01 before touching the browser**, which is what § *GREP THE CORPUS BEFORE
-RUNNING AN EXPORT* is for.
-
-**The four people she instructed me to reattempt are all in the corpus and all in the merged
-tree** — Anna Charlotta Stenius `6000000002400180669`, Artur Lidman `6000000082482425565`,
-Ola R Sande `6000000079231324930`, Anna von Mecklenburg-Schwerin `6000000000598850973` (who also
-carries `Q90441`). Later exports picked them up. There is nothing to retry.
-
-**And `scripts/census-paths.py` now reports `every path is connected end to end`** — 699 path
-files, and the missing-count distribution is a single row at **0 missing**. The campaign those
-exports existed to serve is finished.
-
-**So no export was run.** What is left in the export item is phase 4, the sparse regions from
-`reports/density.md`, which is exploratory rather than gap-closing — it looks for people we have
-never seen rather than closing a known hole. That is not something to run unattended on her Geni
-account while she is asleep, and nothing is waiting on it.
-
 ### Anonymisation is NOT redacting the tree. It is scrubbing the repo of strategy
 
 **Her definition, 2026-09-01, and it replaces the ~96,000-private-rows reading entirely:**
@@ -407,14 +388,6 @@ the name** — the tree settles it, via neighbours and which exports they came f
 pointed at that population. What is left of it is at the tail as § *the tokens the
 transliteration funnel cannot read*.
 
-**Those numbers were 39,691 / 32,129 / 22,614 the day before, and nothing about the method
-changed.** `reports/relationship-label-preview.csv` — the sole source of the `relationship label`
-rows — was dated **2026-08-19** against a tree rebuilt **08-31**. It held 39,691 people of whom
-only **9,996** were still unlabelled, and missed **52,526 of the 62,522** people who currently
-have no label at all. It was not a pipeline step, so nothing re-ran it. It is one now, along with
-the three batches below it, and `derive-family.py` was moved after `derive-labels.py`, which it
-reads. Emma, 2026-09-01: *"Just that it was so stale lol."*
-
 **`reports/label-gap.csv` is the census of who is left**, from `scripts/census-label-gap.py`,
 re-run 2026-09-01 **after** the redaction fix. Every one of the 156,738 people with no label, with
 what each can actually receive:
@@ -450,11 +423,6 @@ the in-law wording*; it is added. What remains:
 **No `en` for the 35,565 is CORRECT and not a gap.** Her model puts the marker in `mul` and a
 *description* in the local languages; a description needs a named relative and these people have
 none. `NN Larsson` in `mul` with no `en` is the algorithm working, not failing.
-
-**What the change bought**, measured over the rebuilt batches: `en` labels 137,528 → **147,148**,
-`ja`/`zh` from a relative 44,132 → **58,937**, `mul`-only 21,088 → **11,470**. Most of the CJK gain
-was not the in-laws but `CJK_RELATION` holding nine relations where the preview emitted seventeen —
-grandparent, sibling, uncle and nephew labels had an `en` and no CJK, and nothing had noticed.
 
 **Still open here:** the 1,539 outside the placeholder population, 935 of them CJK-named.
 
