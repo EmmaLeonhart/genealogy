@@ -23616,3 +23616,33 @@ collecting while she can cover *all* of a population rather than the top of a ra
 retires the auto-accept idea I had offered an hour earlier: the overwhelming cases are the
 labelled positives the sample needs most, and deciding them for her destroys the data being
 gathered.
+
+## 2026-08-31 — the parent deck was offering the SPOUSE. 38 of 47 were that
+
+Emma, on the first card of the deck — `Helena Mikontytär Schulin` against
+`Lars Henrik Keckman` — *"pretty sure this is the wife of the person lol."*
+
+She was right, and `Q17381568` was sitting two lines above the question, **in Helena's own spouse
+list on the same card**.
+
+**The bug is structural and it was systematic, not one bad row.** A child has two parents. The
+guard's arm found children whose Wikidata item names a parent nothing accounts for, and then
+offered our person against **any** such parent — without checking which slot our person occupies.
+So our mothers were routinely paired with their children's fathers, who are their husbands.
+
+**Both sides record the slot and neither was being read**: our tree has `fathers` and `mothers` as
+separate columns in `derived-family.csv`, and Wikidata has `P22` and `P25`. Matching them is
+structural and touches no names, which is the only kind of fix allowed here.
+
+    deck            47 -> 9        38 of 47 were the spouse — 81%
+    corpus-wide  9,061 -> 7,910
+
+**What survives looks like what the deck is for**: `Maria Carlberg` against `Maria Carlberg`,
+`Berengar I, emperor of the Romans` against `Berengar I of Italy`, `Taebi Buyeo` against
+`부여태비`, `Torsten Håkansson Rudén` against `Torsten Rudeen`.
+
+**And this is why § *The manual approvals are TRAINING DATA* matters.** Had she worked the 47
+without noticing, 38 `DIFFERENT` verdicts would have entered `emma-judgments.tsv` as labelled
+examples of a distinction that is not the one being learnt — teaching the threshold that spouses
+are not duplicates, which nobody needed, while the real signal was diluted eightfold. A deck of
+mostly-wrong questions does not merely waste her time; it poisons the sample.

@@ -84,15 +84,17 @@ def words(names):
 def main():
     # ---- Wikidata: who holds a P2600, and what each item says about its family ----------
     geni_of, kids_of, sp_of, parents_of = {}, {}, {}, {}
+    father_of, mother_of = {}, {}
     with io.open(RELATIONS, encoding="utf-8", newline="") as fh:
         for row in csv.DictReader(fh, delimiter="\t"):
             qid = row["qid"]
             if row.get("p2600"):
                 geni_of[qid] = row["p2600"].split(SEP)[0].strip()
-            ps = [x for x in (row.get("p22") or "").split(SEP) if x]
-            ps += [x for x in (row.get("p25") or "").split(SEP) if x]
-            if ps:
-                parents_of[qid] = ps
+            fa = [x for x in (row.get("p22") or "").split(SEP) if x]
+            mo = [x for x in (row.get("p25") or "").split(SEP) if x]
+            if fa or mo:
+                parents_of[qid] = fa + mo
+                father_of[qid], mother_of[qid] = fa, mo
             ks = [x for x in (row.get("p40") or "").split(SEP) if x]
             if ks:
                 kids_of[qid] = ks
@@ -105,12 +107,14 @@ def main():
 
     # ---- our side ------------------------------------------------------------------
     our_parents, our_children, our_spouses = {}, {}, {}
+    our_father, our_mother = {}, {}
     with io.open(FAMILY, encoding="utf-8", newline="") as fh:
         for row in csv.DictReader(fh):
             g = row["geni_id"]
-            ps = cell(row, "fathers") + cell(row, "mothers")
-            if ps:
-                our_parents[g] = ps
+            fa, mo = cell(row, "fathers"), cell(row, "mothers")
+            if fa or mo:
+                our_parents[g] = fa + mo
+                our_father[g], our_mother[g] = set(fa), set(mo)
             ks = cell(row, "children")
             if ks:
                 our_children[g] = ks
@@ -143,14 +147,31 @@ def main():
         cq = qid_of.get(child)
         if not cq:
             continue
-        loose = [x for x in parents_of.get(cq, []) if x not in claimed]
-        if not loose:
+        if not parents_of.get(cq):
             continue
         for g in parents:
             if g in qid_of or g.startswith(("9995", "9990")):
                 continue
-            for q in loose:
-                if (g, q) not in answered:
+            # **MATCH THE SLOT.** Emma, 2026-08-31, shown a case pairing
+            # `Helena Mikontytär Schulin` with `Lars Henrik Keckman`: *"pretty sure this is the
+            # wife of the person lol."* She was right and it was systematic, not one bad row.
+            #
+            # A child has two parents. The guard offered whichever parent item was unaccounted
+            # for, without checking which slot **our** person occupies -- so our mother was
+            # routinely paired with the child's father, who is her husband and is sitting in her
+            # own spouse list two lines above. `Q17381568` was literally the second name under
+            # *Spouse* on that card.
+            #
+            # Our tree records the slot (`fathers` / `mothers`) and so does Wikidata (`P22` /
+            # `P25`), so this is structural and touches no names.
+            if g in our_father.get(child, ()):
+                candidates_q = father_of.get(cq, [])
+            elif g in our_mother.get(child, ()):
+                candidates_q = mother_of.get(cq, [])
+            else:
+                continue
+            for q in candidates_q:
+                if q not in claimed and (g, q) not in answered:
                     rows.append((g, q, child))
 
     # One question per person: the first child that raises it.
