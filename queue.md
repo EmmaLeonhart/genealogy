@@ -165,6 +165,42 @@ the recently-stale layer honest — that is what it did, 34 scripts across three
 `scripts/build-synoptic-correspondence.py` and `scripts/zipper-join.py` and reports what the fresh
 `P2600`s bought.
 
+## Wire the adjudication deck onto the pipeline
+
+**Her instruction, 2026-09-01:** *"I told you to regenerate the html every time with the
+pipeline"*, and then *"make a task to wire it onto the pipeline"*.
+
+**The template is safe and in the repo** — `out/parent-review.template.html`, committed at
+`a8868394`, tracked, not ignored, untouched since 08-31. `build-parent-candidates.py` reads it,
+substitutes `__DATA__` and writes `out/parent-review.html`. That part works.
+
+**What is missing is where it runs.** Measured:
+
+| | regenerates the deck? |
+| --- | --- |
+| `scripts/refresh-drift.py` | **yes** — ran twice today |
+| `scripts/rebuild-everything.py` | **no** |
+| `.github/workflows/pipeline.yml` | **no** |
+
+So it only refreshes when somebody runs the drift refresher by hand. It should refresh on the
+six-hourly pipeline, which is the run that follows her editing and therefore the run after which
+new candidates exist.
+
+**Both wirings, and neither is large.** Add `build-parent-candidates.py` as a step in
+`rebuild-everything.py` (after the derived layer, since it reads `derived-family.csv` and
+`derived-facts.csv`), and as a step in `pipeline.yml` after the compose. Then attach
+`out/parent-review.html` to the run and mention it in the issue body, so she has the link without
+looking for it.
+
+**It renders zero rows today and that is correct, not broken.** The deck is scoped to ledger
+people — her instruction, *"there could at the very maximum in principle be 400 people in the
+network… just do all 47 in a run"* — and she has ruled on all of them: 110 decided, 4 `UNSURE`
+still in. 709 structural candidates exist corpus-wide and are deliberately out of scope.
+
+**Do not widen the scope to fill it.** That was done on 2026-09-01 and was wrong twice over: it
+re-widened a scope she had narrowed on purpose, and it came with a new page built from scratch
+when her template was sitting in `out/`.
+
 ## Keep `reports/merges-to-do.md` current
 
 Emma, 2026-08-31: *"Just make a 'merges to do' file that records these merges and the wikidata
