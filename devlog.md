@@ -24217,3 +24217,27 @@ label file.
 
 The queue item is sharper for it: the question is not *should the seat veto a walk* but *how to
 recognise a rare clan seat*, since a frequency floor cannot by construction.
+
+## 2026-09-01 — dead-queue sweep
+
+**Deleted: § *ABSOLUTE PREREQUISITE — no individual is created without their CJK labels*.** All
+three parts verified in the code and in today's rebuild log, not assumed:
+
+- the gate — `build-garborg-day.py` carries `GATE: no ja/zh/ko label, so not created`, and it is
+  three languages now rather than two;
+- the drain order she confirmed — `LABEL_EDIT_CAP`, and the log reads *"label edits on existing
+  items: 15 emitted, 2085 held for a later batch (cap 15)"*;
+- clan last — *"CJK clan labels suppressed until 2026-10-01"* in the same log.
+
+Her instruction was to *apply it at the end of the queue*, and the end of the queue is where it
+was applied.
+
+**Cut back rather than deleted, per § *How to read this file*, two sections that are partly done:**
+
+- **CJK label conversion** → now just the `P1814` kana half, with the measured fact that its
+  population is empty until the 226 identified Japanese people are created, and with the
+  `pykakasi` number supporting *find the readings, do not generate them* rather than merely
+  asserting it.
+- **ITEM 1 Korean** → now just the one decision that remains, which is not Korean's alone: whether
+  a rule-based transcription of a Latin name is a label we will publish. `ja` and `ko` withhold
+  1,278,536 people for the same reason, so the answer moves both or neither.

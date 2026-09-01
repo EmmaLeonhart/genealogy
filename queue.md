@@ -13,49 +13,23 @@ lines as say what to do.
 audits, dead crons and superseded priorities. Recover any of it with
 `git show 6edf302b:queue.md`.
 
-## ⛔ ITEM 1 — KOREAN. `ko` is CJK and ranks with `zh`. IN PROGRESS 2026-09-01
+## KOREAN — done, except one decision shared with `ja`
 
-**At the top of the queue by her instruction, 2026-09-01:** *"put the korean stuff at the
-beginning of the queue to make it clear that we're following the instructions properly and will
-continue on through all of the queue after"*, after *"korean is extremely important on par with
-Chinese and you really should prioritize getting korean labels all the time and this seems to not
-get that cjk includes korean"*.
+**Her instruction, 2026-09-01:** *"korean is extremely important on par with Chinese... cjk
+includes korean"*, and *"put the korean stuff at the beginning of the queue"*. It was, and it is
+built — `devlog.md` 2026-09-01 has the detail. 1,033 hanja at 72% of CJK names, Latin → Hangul at
+97% of 1.29 M, a `ko` column at 18,535 of 18,536 tokens, the creation gate on all three languages,
+and `build-ko-label-batch.py` at 33,725 labels.
 
-**Done so far.**
+**What remains is ONE decision and it is not Korean's alone.** 1,278,536 Latin-named people can be
+rendered into Hangul at 97%, and `build-ko-label-batch.py` withholds them for the same reason
+`build-ja-label-batch.py` does: transcription is not reading, and English → katakana is the
+direction her method reserves for a hand-built table. Emitting it under `ko` while `ja` withholds
+the identical thing would be the two batches disagreeing about what counts as honest.
 
-- `scripts/translit_ko.py` — a hanja-to-Hangul engine, **733 hand-read characters**: the top 400
-  by corpus frequency, then the top 300 of what that pass missed, chosen by measuring the misses.
-  Hangul passes through untouched; the initial-sound rule (두음법칙) is applied to the head of each
-  name, so 李 is **이** and not 리.
-- **61% of the 46,452 people with a CJK name get a COMPLETE Korean label**, up from 44% after the
-  first 400. A partial rendering is never emitted — one unknown character blocks the label.
-- Verified by eye: 李成桂 → 이성계 · 金正日 → 김정일 · 朴正熙 → 박정희 · 藤原道長 → 등원도장.
-
-**All four follow-ups are DONE, 2026-09-01.**
-
-- **Coverage raised 44% → 61% → 72%** over three tranches, each chosen by measuring what was still
-  unread rather than guessing. The table is **1,033 characters**. 3,960 distinct characters remain
-  over 28,703 occurrences, so the tail is long and each further tranche is worth less.
-- **`scripts/translit_ko_latin.py`** — the other half, Latin → Hangul, which is what the creation
-  gate actually needs because the Garborg ring is Latin-named. **97% of the 1.29 million
-  Latin-labelled people render.** Four bugs found by reading the output, not by testing: ㄹ is
-  named `r` in the initial slot and `l` in the final; `l` closes a syllable where `r` opens its
-  own; the final was skipped whenever the vowel split; and a doubled stop collapses where a
-  doubled liquid does not.
-- **A `ko` column in the funnel table** — 18,535 of 18,536 tokens carry a Korean reading. The one
-  that does not is `'....'`, which is punctuation.
-- **The creation gate is `ja` + `zh` + `ko`**, and all 28 creations in today's batch carry `Lko`,
-  including the NN/relationship people, who take the genitive: `아스트리 …의 아들`.
-- **`scripts/build-ko-label-batch.py`** — 33,725 labels for the whole CJK population, the same
-  scale as `ja`'s 41,952 and on the same standard.
-
-**What is left is one decision, and it is shared with `ja`:** 1,278,536 Latin-named people can be
-rendered into Hangul at 97%, and both batches withhold that population because transcription is
-not reading. Whether that line moves is a decision for `ja` and `ko` together, not for Korean
-alone.
-
-**`P1814` *name in kana* is NOT part of this and stays agentic** — a Japanese name reading does not
-follow from the characters, which is why queuing the two together was the mistake this item fixes.
+So the question is for `ja` and `ko` together: **does a rule-based transcription of a Latin name
+count as a label we are willing to publish?** If yes, both batches grow by over a million. If no,
+both stay as they are. NEEDS-DECISION, hers.
 
 ## How to read this file
 
@@ -584,57 +558,29 @@ workaround makes this question obsolete"* — `exports/post-merge/wikidata-qid-l
 Wikidata links into the corpus, so they arrive in the merge either way and nothing waits on the
 definition being settled.
 
-## CJK label conversion — fill in Korean and `P1814` *name in kana*, with research
+## `P1814` *name in kana* — the research half, and it has nothing to attach to yet
 
-**Emma, 2026-08-29:** *"do a cjk label conversion thing with research to fill in the korean and name
-in kana properties using among other things stuff from the shintowiki-scripts repo"*.
+**Emma, 2026-08-29:** *"do a cjk label conversion thing with research to fill in the korean and
+name in kana properties"*. **The Korean half is done** — `scripts/translit_ko.py`,
+`translit_ko_latin.py` and `build-ko-label-batch.py`, 33,725 labels. What is left is the kana.
 
-**Two things are missing, and they are different in kind.**
+**Its population is currently empty, measured 2026-09-01** —
+`reports/culture-classifier-check.md`. `P1814` attaches to an item, and no correctly-identified
+Japanese person in this corpus has one: 226 are classified Japanese, 2 of those have items, and
+both of those are misclassified. So this is a sequencing fact rather than a difficulty — the
+property becomes emittable when those 226 are created.
 
-- **`P1814` *name in kana*** — a real Wikidata property, confirmed offline in
-  `reports/wikidata-labels.tsv`. **Nothing in this repo emits it.** The two scripts that mention a
-  property in that family, `build-garborg-name-items.py` and `build-orderlife-identifiers.py`,
-  reference it once each and neither writes one.
-- **Korean** — the `ko` **label**, not a property. Her chain, 2026-08-29: *"korean is a rendering
-  derived from the Chinese ir Japanese"*, so it comes off `ja`/`zh` rather than off `mul`. Nothing
-  emits `ko` today either.
+**"With research" is the load-bearing half and stands.** A kana reading is not derivable by rule:
+the same characters take different readings per person, which is why `P1814` exists as a property
+rather than being computed. `scripts/build-cjk-romanisation.py`'s docstring makes the same point,
+and the `pykakasi` measurement now supports it with a number — **6 of 10** on names whose readings
+are not in doubt, and every failure was a classical `の` name of exactly the kind this corpus holds.
+So: find the readings, do not generate them.
 
-**"With research" is the load-bearing half.** Kana for a Han name is not derivable by rule — the
-same characters take different readings per person, which is why `P1814` exists as a property at
-all rather than being computed. This is the case `CLAUDE.md` § *The one hard problem: which culture
-a CJK name is* already names. So the work is: find the readings, do not generate them.
-
-**`shintowiki-scripts` is a SEPARATE repo and the coupling has burned this repo once.** `CLAUDE.md`
-§ *WIKIDATA EDITING STARTS 2026-09-01* records that a previous session invented a shared lockout
-between the two and it *"failed closed"*, blocking edits this repo was entitled to make. Emma:
-*"Shintowiki scripts and this one are not the same and not really coordinated"* and *"I think you
-hallucinated a coordination between them."*
-
-**So: take material from it, do not couple to it.** Copy or vendor what is useful — reading tables,
-transliteration data, whatever it holds — into this repo, and add no runtime dependency, no shared
-state file, and no network call to it. It is not checked out beside `geni`, so the first step is
-asking her where it is.
-
-## ABSOLUTE PREREQUISITE — no individual is created without their CJK labels
-
-**Emma, 2026-08-29:** *"There should be an absolute prerequisite that nothing is created until you
-add in the CJK labels... It should be an absolute prerequisite for the creation of any individual:
-that we have their CJK labels."*
-
-**Apply this at the END of the queue, not now** — her explicit instruction: *"Apply it at the end of
-the queue because I don't want to interrupt whatever pipeline we're running right now."*
-
-**The rule:** a `CREATE` is refused unless that person has `ja` and `zh`. Today the builder emits
-them when every token resolves and creates the person anyway when they do not; under this rule the
-person is carried forward instead. It currently bites rarely — 37 of 38 creations in the last batch
-already carry both — but rarely is not never, and she wants it absolute rather than usual.
-
-**The order she wants, and the reason:** *"All of the items that I have created, especially the ones
-that I have edited, need the CJK stuff first on them."* So the shared 15-a-batch cap stays as built,
-clan block last — she confirmed it: *"keep the shared 15 with the clan left. That is the best thing
-to do because the most important thing is to fix up the CJK labels on our existing items first."*
-Existing people drain first, then the 177 clan people. *"The clan people also extend the range of
-the quick statement stuff by a lot, so this is worth leaving at the end."*
+**`shintowiki-scripts` is a SEPARATE repo and the coupling has burned this repo once.** Take
+material from it — reading tables, transliteration data — and add no runtime dependency, no shared
+state file and no network call. It is not checked out beside `geni`, so the first step is asking
+her where it is.
 
 ## Always last — pinned to the very end of the file
 
