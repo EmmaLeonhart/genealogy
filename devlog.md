@@ -24467,3 +24467,30 @@ watching alone; assignment is.
 
 **§ *Add three SMTP secrets* is deleted from the queue.** That leaves two blockers, both
 decisions rather than actions.
+
+## 2026-09-01 — the CI kills are memory, measured
+
+**Cut back rather than deleted:** § *CI kills two slow jobs and the cause is NOT understood* →
+§ *Two slow modules exhaust a CI runner's memory — decide what to do about it*. The investigation
+half is finished; the choice is not.
+
+I was wrong about this twice before measuring it. First I called it a genuine test failure without
+reading the log — it was a runner shutdown. Then I called OOM "suspected, not established" and
+noted the 25-minute death as evidence against it. The 30-second sampler settles it:
+
+    used=15884MB  avail=105MB
+    used=15956MB  avail=33MB
+    used=15951MB  avail=38MB
+    ##[error]The runner has received a shutdown signal
+
+A hosted runner has **16 GB**. `test_density.py` held it at **15.9 GB with 33–134 MB free for ten
+minutes** and was reclaimed; `test_paths.py` likewise. That explains what looked random: four kills
+at 25, 58 and 91 minutes are not a timeout pattern, they are the moment each run happened to
+finish exhausting the box. `test_gedcom_real_exports.py` streams and passes every time.
+
+**Both modules pass here in 35m44 because this machine has 31 GB.** The tests are fine; the
+environment is half the size they need.
+
+**The instrumentation was worth more than a fix would have been.** `continue-on-error` was
+available at any point in the last six hours, would have made the lane green, and would have
+buried this.

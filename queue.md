@@ -449,30 +449,35 @@ any of its ten languages.
 what § *One name item per USAGE* and the edge-case rule both say goes to her. **NEEDS-DECISION.**
 The default in force meanwhile is what already happens: they get `mul` and no `en`.
 
-## CI kills two slow jobs and the cause is NOT understood
+## Two slow modules exhaust a CI runner's memory — decide what to do about it
 
-**Four kills across two attempts, both modules, same message:** `The runner has received a
-shutdown signal`, exit 143. `test_density.py` died 25m32 into its pytest step on the second
-attempt; `test_paths.py` three minutes later.
+**Answered 2026-09-01 by measurement, after being wrong about it twice.** The instrumented job
+sampled free memory every 30 seconds and the answer is not ambiguous:
 
-**What is ruled out.** Not the job timeout — that is 180 minutes and these died at 25 to 91. Not
-concurrency from a newer run — `gh run list` shows no `ci.yml` run after `33497581132`, and pushes
-do not trigger this workflow (no `push:` trigger). Not a test failure: **both modules pass
-locally, 23 passed in 35m44**, and `--durations=0` gives two hot spots —
-`test_every_listed_region_gets_a_seed_and_it_is_inside_the_region` at **1,051s** and
-`test_the_path_file_runs_from_the_account_owner_to_jimmu` at **1,018s of setup**.
+    MEM 16:20:42  used=15884MB  avail=105MB
+    MEM 16:24:13  used=15956MB  avail=33MB
+    MEM 16:27:13  used=15951MB  avail=38MB
+    MEM 16:28:30  ##[error]The runner has received a shutdown signal
 
-**What is suspected and NOT established:** memory. A runner has ~16 GB against this machine's
-31 GB, and `test_density` counts presence across all 600 exports. An OOM kill can present exactly
-like this — but 25 minutes with 17 dots printed is not proof, and `CLAUDE.md`'s rail is explicit
-that what is not understood gets a queue item rather than a change.
+A GitHub-hosted runner has **16 GB**. `test_density.py` pinned it at **15.9 GB used with 33–134 MB
+free for ten minutes** and was then reclaimed. `test_paths.py` the same. That is why four jobs died
+at wildly different elapsed times — 25, 58, 91 minutes — while `test_gedcom_real_exports.py`, which
+streams rather than accumulating, passes every time.
 
-**Nothing is blocked by it.** The slow lane is `workflow_dispatch`-only, the fast lane is green on
-both Python versions, and the modules pass locally. **Do not "fix" this by adding
-`continue-on-error`** — that hides the signal rather than explaining it.
+**Both modules pass on this machine, 23 in 35m44**, because it has 31 GB. Nothing is wrong with the
+tests; the environment is 2× too small for two of them.
 
-**The next step is one measurement:** print `free -m` and the peak RSS around the pytest step, or
-run one module on a larger runner, and see whether memory is actually the wall.
+**What is left is a choice, and it is not obviously mine.**
+
+- **Keep them out of CI and run them locally.** Free, and consistent with what she has said about
+  cost and about not spending attention on the suite. The fast lane keeps covering everything else.
+- **A larger runner.** GitHub's 16-core/64 GB runners are billable *even on public repos*, so this
+  spends money on a lane she has called *"kinda bullshit"*.
+- **Make `test_density` stream.** The memory is the presence structure it builds over 600 exports.
+  Real work, unbounded in size, and it is fixing a test rather than the code the test guards.
+
+**Do NOT reach for `continue-on-error`.** It turns the lane green and destroys the signal, which
+is precisely the instinct the measurement above was run instead of.
 
 ## Pointers
 
