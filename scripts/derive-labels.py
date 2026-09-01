@@ -45,7 +45,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from namemodel import without_nickname  # noqa: E402
-from labels import normalise_marker_spelling  # noqa: E402
+from labels import label_for, normalise_marker_spelling  # noqa: E402
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT / "src"))
@@ -248,6 +248,29 @@ def main() -> int:
         # changes **8,053** labels, every one a marker spelled inconsistently.
         latin = [normalise_marker_spelling(x) for x in latin]
         aliases = [normalise_marker_spelling(x) for x in aliases]
+
+        # **A redaction marker is not a label, and this file was emitting one as the primary.**
+        # Emma, 2026-08-29, asked why `geni.com/people/private/6000000021223635839` "was added
+        # as Garborg" instead of the labels she had hand-added to `Q141199845`. The answer is
+        # here: this file took `clean(display_name)` and never called `labels.label_for`, which
+        # `CLAUDE.md` § *Redacted people go in* calls **the single place that decides this** and
+        # which returns `''` for `Private` and `<private>`. So `<private> /Garborg/` came out as
+        # the literal label `<private> Garborg` -- for **14,449 people**, 12 of whom already had
+        # items, several of them hers.
+        #
+        # That is the *"logic that never gets in"* pattern in its purest form: the decider
+        # existed, was correct, was documented as authoritative, and the generator feeding every
+        # label emitter did not call it.
+        #
+        # **This drops the marker; it does not decide the `NN` question.** Emptying the label is
+        # exactly what `label_for` does and is her stated rule -- an item labelled `<private>`
+        # *"asserts something false while being impossible to find"*. Whether the person then
+        # reads `NN Garborg` is `build-placeholder-label-batch.py`'s job, which already handles
+        # this population and already keeps the surname. `normalise_marker_spelling` is left
+        # alone: whether a redaction marker BECOMES `NN` is a decision she has corrected twice
+        # and it stays hers.
+        latin = [x for x in latin if label_for(x)]
+        aliases = [x for x in aliases if label_for(x)]
 
         birth = latin[0] if latin else ""
         married = aliases[0] if aliases else ""
