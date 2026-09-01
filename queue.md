@@ -240,16 +240,37 @@ the name** — the tree settles it, via neighbours and which exports they came f
 2. Then the other creations — the Samaritan line, the order.life tiers.
 3. Then the `set_labels` edits, every one carrying all seven + `mul`.
 
-**The placeholder half is largely done, 2026-08-31.**
-`reports/wikidata-placeholder-labels.json` is 39,691 edits: `mul` on all, `en` on 32,129, and
-`ja`/`zh` on **22,614** where it was 0 — built as `<relative's name>の娘` once the token funnel
-was pointed at that population. What is left of it is at the tail as § *the tokens the
+**The placeholder half, rebuilt 2026-09-01 and four times the size it was.**
+`reports/wikidata-placeholder-labels.json` is **158,618** edits — `mul` on all, `en` on
+**137,528**, `ja`/`zh` on **44,130** — built as `<relative's name>の娘` once the token funnel was
+pointed at that population. What is left of it is at the tail as § *the tokens the
 transliteration funnel cannot read*.
 
+**Those numbers were 39,691 / 32,129 / 22,614 the day before, and nothing about the method
+changed.** `reports/relationship-label-preview.csv` — the sole source of the `relationship label`
+rows — was dated **2026-08-19** against a tree rebuilt **08-31**. It held 39,691 people of whom
+only **9,996** were still unlabelled, and missed **52,526 of the 62,522** people who currently
+have no label at all. It was not a pipeline step, so nothing re-ran it. It is one now, along with
+the three batches below it, and `derive-family.py` was moved after `derive-labels.py`, which it
+reads. Emma, 2026-09-01: *"Just that it was so stale lol."*
+
+**`reports/label-gap.csv` is the census of who is left**, from `scripts/census-label-gap.py` —
+every one of the 62,522, with what each can actually receive:
+
+| | count | |
+| --- | ---: | --- |
+| a surname surviving redaction → `NN Larsson` | **37,205** | 59.5% |
+| no surname, but a NAMED relative within two hops | **23,466** | 37.5% |
+| **neither — stays a bare `NN`** | **1,851** | **3.0%** |
+
+So **97% is reachable**, and the second hop is not decoration: 29,707 are reached at one hop and
+**9,569 only at two**, which is Emma's *"it can work off of those long-range things"* paying for
+itself. 15,810 of the surname rows also have a named relative and get both halves.
+
 **What stays here is everything else in her order**: `hi`, `ar`, `ru`, `el` have not been started
-at all, and the `en`/`mul` passes over the whole corpus — not just the placeholders — are still
-the large outstanding job. The 7,562 with `mul` only have no named relative at any distance out to
-two hops, so they need something other than a relative or they stay markers.
+(the wiring is at the tail), and **36,592 people still have no `en` label** after the rebuild —
+down from 35,083 measured against the stale preview, which was a smaller number of a smaller
+population. That is the large outstanding job.
 
 ## Pointers
 
@@ -1641,3 +1662,17 @@ parse gap.
 
 **Nothing depends on this.** The current form asserts less than it knows rather than more, which
 is the safe direction, and it is a strict improvement on the bare value it replaced.
+
+## THE LAST ITEM — `wikidata-placeholder-labels.json` is 74 MB and just quadrupled
+
+It went **18 MB → 74 MB** on 2026-09-01 when the stale relationship-label preview was rebuilt
+(39,691 edits → 158,618). It is tracked, and GitHub refuses a file over **100 MiB**, so one more
+growth of that shape breaks a push rather than warning about it.
+
+`scripts/pack-derived.py` already solves this for the four big CSVs — gzip the file, commit the
+`.gz`, gitignore the plain one, and `--unpack` after a clean clone. Only
+`build-en-label-batch.py` reads this JSON, so unlike the CSVs there is no forty-reader problem to
+work around.
+
+**Do not act on the size alone until it is near the limit** — the point of writing it down now is
+that the next rebuild is when it would surprise her.

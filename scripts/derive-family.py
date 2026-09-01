@@ -71,11 +71,24 @@ def main() -> int:
             seen.setdefault(geni_id, set()).add(qid)
         qids = {g: next(iter(q)) for g, q in seen.items() if len(q) == 1}
 
+    # **This file is an INPUT, and for a long time the pipeline built it afterwards.**
+    # `rebuild-everything.py` ran `derive-family.py` at step 3 and `derive-labels.py` at step 4,
+    # so every rebuild read the previous generation's labels and a first run read none -- silently,
+    # because the `if LABELS.exists()` below simply contributed nothing. The order is fixed there;
+    # the warning here is so that running this script by hand, out of order, says so.
     labels: dict[str, str] = {}
     if LABELS.exists():
         with open(LABELS, encoding="utf-8", newline="") as handle:
             for row in csv.DictReader(handle):
                 labels[row["geni_id"]] = row["label_en"] or row["cjk_names"].split(" | ")[0]
+        if LABELS.stat().st_mtime < MERGED.stat().st_mtime:
+            print(f"WARNING: {LABELS.name} is OLDER than {MERGED.name}. The names in "
+                  f"invented-parents.csv will be from the previous merge. Run "
+                  f"scripts/derive-labels.py first, or scripts/rebuild-everything.py.",
+                  flush=True)
+    else:
+        print(f"WARNING: {LABELS} is absent, so no person will be named in "
+              f"invented-parents.csv. Run scripts/derive-labels.py first.", flush=True)
 
     print(f"reading {MERGED}", flush=True)
     families: dict[str, dict] = {}
