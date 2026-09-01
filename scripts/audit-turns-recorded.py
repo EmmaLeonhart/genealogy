@@ -55,6 +55,16 @@ DIRECTIVE = re.compile(
 #: "do it". They are real but carry nothing to record.
 MIN_WORDS = 8
 
+#: **And a turn longer than this is the HARNESS talking, not Emma.** Cron prompts, skill bodies
+#: and pasted system text come through the same channel as her typing -- `CLAUDE.md` already says
+#: to skip cron prompts and `<task-notification>` for this reason, and skills are the same class.
+#:
+#: Measured 2026-08-31 over the 376 flagged turns: the six that are harness text have a **median
+#: of 1,775 words** against **42** for everything else, so length separates them cleanly and
+#: needs no keyword list to maintain. Only six -- the audit was far cleaner than I guessed, which
+#: is worth recording because I went looking expecting it to be mostly noise.
+MAX_WORDS = 400
+
 WORD = re.compile(r"[a-z0-9']+")
 
 
@@ -84,7 +94,8 @@ def main():
         if not key or key in seen:
             continue
         seen.add(key)
-        if len(key.split()) < MIN_WORDS or not DIRECTIVE.search(text):
+        n_words = len(key.split())
+        if n_words < MIN_WORDS or n_words > MAX_WORDS or not DIRECTIVE.search(text):
             continue
         # Recorded if ANY six-word run of the turn appears in the records.
         hit = next((p for p in phrases(text) if p in blob), "")

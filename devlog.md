@@ -23024,3 +23024,28 @@ Before the funnel it was 20 creations with 7 refused; after, 27 with none.
   downstream waiting. `reports/farmname-seed-fixes.md` stays in the repo.
 
 § *STANDING PROCEDURE* she asked to run again; the transcript extract and audit are running.
+
+## 2026-08-31 — the transcript audit re-run, and my guess about it was wrong
+
+She asked for § *STANDING PROCEDURE* to run again. `extract-user-turns.py` then
+`audit-turns-recorded.py`:
+
+    5,074 turns (1,904 typed, 3,170 enqueued while busy), 2026-08-01 .. 2026-09-01
+    2,138 distinct after de-duplication
+      371 directive and found in no record file
+
+**Today's 21 read as transient, which is the useful answer.** *"do it right now, first item of the
+queue"*, *"No of course we need to continue"*, *"add the new gedcom(s) into the repo"* — moment
+instructions, acted on at the time, carrying nothing to record. The substantive rulings of today
+— the patronymic-by-item design, `P144` multi-valued, no-new-tests, the ledger/tree defaults, the
+ja/zh gate — all matched a record, which is the screen working in the direction that matters.
+
+**One defect found and fixed, and my hypothesis about it was wrong.** Two flagged rows were skill
+text (*"Approach this as the design lead at a small studio"*, *"Base directory for this skill"*),
+so I went looking expecting the audit to be largely harness noise. Measured: **6 of 376**. It was
+far cleaner than I guessed.
+
+The discriminator is still worth having and needs no keyword list: the harness rows have a
+**median of 1,775 words** against **42** for everything else. `MAX_WORDS = 400` drops them,
+376 → 371. `CLAUDE.md` already said to skip cron prompts and `<task-notification>` for exactly
+this reason; skill bodies arrive on the same channel and are the same class.
