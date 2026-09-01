@@ -819,10 +819,34 @@ so post-merge has the final word on every **single-valued** path. The other half
 outside it is absent because the ball ended, not because Geni deleted the link. Applying the
 override literally would delete 5,125 real relationships to buy nothing.
 
-**412 drops are falsifiable** — both ends inside a post-merge ball, 362 people, 160 parent /
-160 child / 92 spouse. Those are the genuine *Geni deleted this link* candidates and the only
-population an override should ever touch. Next step is to look at a handful of them as records,
-not to write the override wholesale.
+**412 drops are falsifiable** — both ends inside a post-merge ball, 160 parent / 160 child /
+92 spouse. Those are the genuine *Geni deleted this link* candidates and the only population an
+override should ever touch.
+
+**Looked at as records, 2026-09-01** — `reports/post-merge-falsifiable.tsv`, all 412 with both
+names, and a sample read by eye:
+
+    Rivka Sirkes                    parents    Avraham Chaim Schor
+    Avraham Chaim Schor             children   Rivka Sirkes
+    Rivka Sirkes                    spouses    David HaLevi Segal "Turei Zahav"
+    Reitze Horowitz 1st wife        children   Mordechai Zvi Halevi Horowitz
+    Rachel Katzenellenbogen         spouses    Shimon Katzenellenbogen
+
+**Two things the sample shows, and neither supports writing the override.**
+
+- **They are the same few families.** Sirkes, Horowitz, Katzenellenbogen, Schor, Frankel — one
+  rabbinical lineage, not 412 scattered errors. That is her own *"merged individuals cluster
+  together"* observation holding, and it means this is one neighbourhood's worth of evidence
+  rather than a corpus-wide pattern.
+- **They read as real relationships, in reciprocal pairs.** `Rivka Sirkes → parents → Avraham
+  Chaim Schor` appears alongside `Avraham Chaim Schor → children → Rivka Sirkes`. A link Geni
+  had *deleted* would not usually survive in both directions in the older exports and vanish in
+  both in the newer one; a ball that simply ended somewhere else would look exactly like this.
+
+**So the override still looks wrong, now on the population that was supposed to justify it.**
+That is a reading and not a proof — what would settle it is opening two or three of these
+profiles on Geni and seeing whether the relationship is there today. That is hers, and it is
+cheap: five profiles, not 412.
 
 Depends on `reports/geni-stale-duplicates.tsv` (13 strong, 3 medium, 13 weak) and
 `reports/geni-merges-performed.tsv` (180 survivors from her activity feed).
