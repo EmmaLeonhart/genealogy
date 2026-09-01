@@ -10,7 +10,6 @@ reports/conflicts.tsv,2026-08-10,21,61204,,,,scripts\build-conflicts.py,out/merg
 reports/consistency-findings.csv,2026-08-11,20,1677003,,,,scripts\analyse-consistency.py;scripts\build-consistency-census.py,out/merged.ged is 470h newer
 reports/link-balance.csv,2026-08-11,20,852806,,,,scripts\build-link-census.py,out/merged.ged is 468h newer
 reports/link-findings.csv,2026-08-11,20,6788256,,,,scripts\build-link-census.py,out/merged.ged is 468h newer
-reports/charlemagne-route.md,2026-08-12,19,1890,,,,scripts\build-charlemagne-route.py,reports/derived-labels.csv is 439h newer
 reports/cjk-labels.csv,2026-08-12,19,818325,,,,scripts\measure-cjk-labels.py,reports/derived-labels.csv is 442h newer
 reports/derived-marriages.csv,2026-08-12,19,4618363,,,,scripts\derive-marriages.py,out/merged.ged is 446h newer
 reports/encoding-characters.csv,2026-08-12,19,609313,,,,scripts\build-encoding-census.py,out/merged.ged is 461h newer
@@ -60,15 +59,14 @@ reports/linked-english-labels.csv,2026-08-19,12,208291,,,,scripts\build-en-label
 reports/name-resolved-by-han.csv,2026-08-19,12,8983,,,,scripts\build-name-resolved-by-han.py,reports/derived-labels.csv is 276h newer
 reports/patronymic-fathers.csv,2026-08-19,12,768588,,,,scripts\build-patronymic-father-batch.py;scripts\build-patronymic-fathers.py,reports/derived-family.csv is 276h newer
 reports/patronymic-fathers.md,2026-08-19,12,1703,,,,scripts\build-patronymic-fathers.py,reports/derived-family.csv is 276h newer
-reports/relationship-label-preview.csv,2026-08-19,12,3992684,,,,scripts\build-placeholder-label-batch.py;scripts\build-relationship-label-preview.py;scripts\walk-structural-merge.py,reports/derived-labels.csv is 276h newer
+reports/relationship-label-preview.csv,2026-08-19,12,3992684,,,,scripts\build-placeholder-label-batch.py;scripts\build-relationship-label-preview.py;scripts\extend-transliterations.py,reports/derived-labels.csv is 276h newer
 reports/unidentified-clusters.md,2026-08-19,12,20054,,,,scripts\build-unidentified-clusters.py,reports/derived-labels.csv is 276h newer
-reports/wikidata-en-labels.json,2026-08-19,12,7399200,,,,scripts\build-en-label-batch.py;scripts\build-mul-label-batch.py,reports/derived-labels.csv is 276h newer
-reports/wikidata-en-labels.md,2026-08-19,12,893,,,,scripts\build-en-label-batch.py,reports/derived-labels.csv is 276h newer
+reports/wikidata-en-labels.json,2026-08-19,12,7399200,,,,scripts\build-en-label-batch.py;scripts\build-mul-label-batch.py,reports/wikidata-placeholder-labels.json is 290h newer
+reports/wikidata-en-labels.md,2026-08-19,12,893,,,,scripts\build-en-label-batch.py,reports/wikidata-placeholder-labels.json is 290h newer
 reports/wikidata-ja-labels.json,2026-08-19,12,15060650,,,,scripts\build-ja-label-batch.py,reports/derived-labels.csv is 208h newer
 reports/wikidata-ja-labels.md,2026-08-19,12,1129,,,,scripts\build-ja-label-batch.py,reports/derived-labels.csv is 208h newer
-reports/wikidata-placeholder-labels.json,2026-08-19,12,17150901,,,,scripts\build-en-label-batch.py;scripts\build-placeholder-label-batch.py,reports/geni-wikidata-pairs.csv is 101h newer
 reports/geni-qid-p2600-gap.tsv,2026-08-23,8,25444,,,,scripts\build-qid-link-p2600.py,out/wikidata/p2600-all.tsv is 179h newer
-reports/garborg-live-state.tsv,2026-08-24,7,2958,,,,scripts\build-garborg-day.py;scripts\garborg-modelling.py,reports/garborg-qids.tsv is 174h newer
+reports/garborg-live-state.tsv,2026-08-24,7,2958,,,,scripts\build-garborg-day.py;scripts\garborg-modelling.py,reports/emma-judgments.tsv is 181h newer
 reports/izumo-p2600-pairs.tsv,2026-08-24,7,6481,,,,scripts\build-izumo-p2600.py;scripts\build-synoptic-correspondence.py;scripts\izumo-tree-vs-chart.py,reports/izumo-roster.tsv is 126h newer
 reports/qid-identity-audit.tsv,2026-08-24,7,2626,,,,scripts\audit-qid-identities.py,reports/derived-labels.csv is 92h newer
 reports/removal-batch-vintage.tsv,2026-08-24,7,590,,,,scripts\check-removal-batch-vintage.py,out/wikidata/p2600-all.tsv is 84h newer
@@ -91,43 +89,43 @@ reports/bure-roster.md,2026-08-27,4,1271,,,,scripts\build-bure-roster.py,reports
 reports/bure-roster.tsv,2026-08-27,4,311636,,,,scripts\build-bure-roster.py;scripts\link-bure-people.py,reports/derived-labels.csv is 93h newer
 reports/bure-topology.md,2026-08-27,4,1833,,,,scripts\link-bure-people.py,reports/derived-labels.csv is 92h newer
 reports/chain-gaps.csv,2026-08-27,4,612784,,,,scripts\find-chain-gaps.py,out/wikidata/p2600-all.tsv is 78h newer
+reports/correspondence-shapes.tsv,2026-08-27,4,1254525,,,,scripts\census-correspondence-shapes.py;scripts\multi-geni-item-roster.py;scripts\resolve-multi-geni-by-parents.py,reports/synoptic-correspondence.tsv is 106h newer
 reports/creation-opportunities.tsv,2026-08-27,4,9967404,,,,scripts\census-creation-opportunities.py,reports/derived-labels.csv is 93h newer
-reports/garborg-existing-gaps.tsv,2026-08-27,4,11894,,,,scripts\garborg-existing-gaps.py,reports/garborg-qids.tsv is 100h newer
+reports/garborg-existing-gaps.tsv,2026-08-27,4,11894,,,,scripts\garborg-existing-gaps.py,reports/garborg-qids.tsv is 101h newer
 reports/geni-stale-duplicates.tsv,2026-08-27,4,3884,,,,scripts\build-stale-duplicates.py;scripts\check-post-merge-resolution.py,reports/derived-labels.csv is 92h newer
 reports/midpoint-seeds-to-open.tsv,2026-08-27,4,1022,,,,scripts\find-chain-gaps.py,out/wikidata/p2600-all.tsv is 78h newer
-reports/missing-transliterations.tsv,2026-08-27,4,3652,,,,scripts\census-missing-transliterations.py,reports/garborg-qids.tsv is 100h newer
+reports/missing-transliterations.tsv,2026-08-27,4,3652,,,,scripts\census-missing-transliterations.py,reports/garborg-name-transliterations.tsv is 106h newer
 reports/multi-geni-items.tsv,2026-08-27,4,364061,,,,scripts\multi-geni-item-roster.py,reports/derived-labels.csv is 92h newer
-reports/multi-geni-parent-verdicts.tsv,2026-08-27,4,452901,,,,scripts\resolve-multi-geni-by-parents.py,reports/derived-labels.csv is 92h newer
+reports/multi-geni-parent-verdicts.tsv,2026-08-27,4,452901,,,,scripts\resolve-multi-geni-by-parents.py,reports/synoptic-correspondence.tsv is 106h newer
 reports/multi-p2600-triage.tsv,2026-08-27,4,10756,,,,scripts\triage-multi-p2600.py,reports/display-names.csv is 93h newer
+reports/orderlife-pairs.tsv,2026-08-27,4,18158,,,,scripts\measure-orderlife-pairs.py,reports/synoptic-correspondence.tsv is 100h newer
 reports/partial-nn.csv,2026-08-27,4,1705875,,,,scripts\build-cjk-clan-labels.py;scripts\census-partial-nn.py,reports/display-names.csv is 81h newer
-reports/spine-candidate-evidence.tsv,2026-08-27,4,291,,,,scripts\verify-spine-candidates.py,reports/garborg-qids.tsv is 99h newer
-reports/spine-name-candidates.md,2026-08-27,4,12468,,,,scripts\search-spine-names.py,reports/garborg-qids.tsv is 101h newer
-reports/spine-name-candidates.tsv,2026-08-27,4,10729,,,,scripts\search-spine-names.py;scripts\verify-spine-candidates.py,reports/garborg-qids.tsv is 101h newer
+reports/spine-candidate-evidence.tsv,2026-08-27,4,291,,,,scripts\verify-spine-candidates.py,reports/synoptic-correspondence.tsv is 106h newer
+reports/spine-name-candidates.md,2026-08-27,4,12468,,,,scripts\search-spine-names.py,reports/garborg-qids.tsv is 102h newer
+reports/spine-name-candidates.tsv,2026-08-27,4,10729,,,,scripts\search-spine-names.py;scripts\verify-spine-candidates.py,reports/garborg-qids.tsv is 102h newer
 reports/structural-walk-validation.tsv,2026-08-27,4,1124862,,,,scripts\build-synoptic-correspondence.py;scripts\validate-structural-walk.py,reports/derived-facts.csv is 92h newer
-reports/synoptic-conflicts.tsv,2026-08-27,4,58262,,,,scripts\build-synoptic-correspondence.py,out/wikidata/p2600-all.tsv is 84h newer
-reports/synoptic-correspondence.tsv,2026-08-27,4,27872987,,,,scripts\build-join-batch.py;scripts\build-synoptic-correspondence.py;scripts\census-correspondence-shapes.py,out/wikidata/p2600-all.tsv is 84h newer
-reports/wikidata-remove-wrong-p2600.json,2026-08-27,4,1824,,,,scripts\check-removal-batch-vintage.py;scripts\resolve-multi-geni-by-parents.py,reports/derived-labels.csv is 92h newer
+reports/wikidata-remove-wrong-p2600.json,2026-08-27,4,1824,,,,scripts\check-removal-batch-vintage.py;scripts\resolve-multi-geni-by-parents.py,reports/synoptic-correspondence.tsv is 106h newer
 reports/wikidata-structural-placeholders.json,2026-08-27,4,24073800,,,,scripts\walk-structural-merge.py,reports/derived-labels.csv is 99h newer
 reports/zipper-evidence.tsv,2026-08-27,4,5010522,,,,scripts\census-zipper-evidence.py,reports/derived-labels.csv is 93h newer
-reports/zipper-provenance-chains.md,2026-08-27,4,46192,,,,scripts\zipper-provenance.py,reports/emma-judgments.tsv is 101h newer
-reports/zipper-provenance.tsv,2026-08-27,4,4644258,,,,scripts\zipper-provenance.py,reports/emma-judgments.tsv is 101h newer
 reports/cjk-clan-labels.tsv,2026-08-28,3,79909,,,,scripts\build-cjk-clan-labels.py,reports/derived-facts.csv is 78h newer
-reports/abbreviated-patronymics.csv,2026-08-29,2,1169564,,,,scripts\build-garborg-day.py;scripts\census-abbreviated-patronymics.py,reports/garborg-qids.tsv is 54h newer
+reports/abbreviated-patronymics.csv,2026-08-29,2,1169564,,,,scripts\build-garborg-day.py;scripts\census-abbreviated-patronymics.py,reports/emma-judgments.tsv is 61h newer
 reports/bure-to-export.tsv,2026-08-29,2,22,,,,scripts\bure-coverage.py,out/merged.ged is 25h newer
-reports/charlemagne-route.csv,2026-08-29,2,39422,,,,scripts\build-chain-page.py;scripts\build-charlemagne-route.py;scripts\build-priority-chain.py,reports/derived-labels.csv is 36h newer
 reports/cjk-romanisation.csv,2026-08-29,2,1355163,,,,scripts\build-cjk-romanisation.py;scripts\build-en-label-batch.py;scripts\build-relationship-label-preview.py,reports/derived-labels.csv is 37h newer
 reports/cjk-romanisation.md,2026-08-29,2,1259,,,,scripts\build-cjk-romanisation.py,reports/derived-labels.csv is 37h newer
 reports/edit-objects.csv,2026-08-29,2,4245546,,,,scripts\build-edit-objects.py,reports/derived-labels.csv is 36h newer
-reports/ledger-history.tsv,2026-08-29,2,129905,,,,scripts\ledger-history.py,reports/garborg-qids.tsv is 39h newer
-reports/name-audit.csv,2026-08-29,2,177224,,,,scripts\audit-ledger-names.py;scripts\build-garborg-day.py,reports/garborg-qids.tsv is 56h newer
+reports/ledger-history.tsv,2026-08-29,2,129905,,,,scripts\ledger-history.py,reports/garborg-qids.tsv is 40h newer
+reports/name-audit.csv,2026-08-29,2,177224,,,,scripts\audit-ledger-names.py;scripts\build-garborg-day.py,reports/garborg-name-transliterations.tsv is 63h newer
 reports/path-to-wikidata.md,2026-08-29,2,4677,,,,scripts\build-path-to-wikidata-report.py,reports/derived-labels.csv is 36h newer
-reports/repo-freshness.csv,2026-08-29,2,147732,,,,scripts\build-repo-freshness.py;scripts\refresh-drift.py,reports/emma-judgments.tsv is 49h newer
 reports/borrowed-spouse-names.csv,2026-08-30,1,670693,,,,scripts\count-borrowed-spouse-names.py,reports/derived-labels.csv is 22h newer
 reports/bure-coverage.tsv,2026-08-30,1,16858,,,,scripts\bure-coverage.py,out/merged.ged is 25h newer
 reports/geni-duplicate-candidates.tsv,2026-08-30,1,2213741,,,,scripts\build-merge-worklist.py;scripts\find-geni-duplicates.py,reports/derived-labels.csv is 8h newer
-reports/label-collisions.tsv,2026-08-30,1,891,,,,scripts\build-garborg-day.py;scripts\check-label-collisions.py,reports/garborg-qids.tsv is 25h newer
+reports/label-collisions.tsv,2026-08-30,1,891,,,,scripts\build-garborg-day.py;scripts\check-label-collisions.py,reports/emma-judgments.tsv is 32h newer
 reports/facts.md,2026-08-31,0,3103,,,,scripts\derive-facts.py,out/merged.ged is 5h newer
+reports/garborg-live-labels.tsv,2026-08-31,0,336669,,,,scripts\build-garborg-day.py;scripts\refresh-live-values.py,reports/emma-judgments.tsv is 6h newer
+reports/garborg-live-values.tsv,2026-08-31,0,584922,,,,scripts\audit-compliance.py;scripts\build-daily-batch.py;scripts\build-garborg-day.py,reports/emma-judgments.tsv is 6h newer
 reports/invented-parents.csv,2026-08-31,0,240611,,,,scripts\derive-family.py,out/merged.ged is 5h newer
+reports/repo-freshness.csv,2026-08-31,0,152679,,,,scripts\build-repo-freshness.py;scripts\refresh-drift.py,reports/emma-judgments.tsv is 7h newer
+reports/suppressed-statements.tsv,2026-08-31,0,755,,,,scripts\build-garborg-day.py;scripts\refresh-suppressed-statements.py,reports/emma-judgments.tsv is 7h newer
 reports/seeds.md,2026-08-15,16,16787,10,595,,src\genimerge\cli.py,
 reports/geni-wikidata-pairs.csv,2026-08-24,7,34436,19,586,,scripts\build-geni-wikidata-pairs.py;scripts\build-placeholder-label-batch.py;scripts\build-samaritan-priest-batch.py,
 reports/bure-internal-connectivity.txt,2026-08-28,3,4234,25,580,,,
@@ -145,17 +143,17 @@ reports/samaritan-component.md,2026-08-13,18,7940,192,413,,,
 reports/audit-transcripts-2026-08-15.md,2026-08-14,17,10860,203,402,yes,,
 reports/future-dates.md,2026-08-14,17,6033,203,402,,scripts\build-future-dates.py,
 todo.md,2026-08-27,4,46798,204,401,,,
-queue.md,2026-08-31,0,112543,251,354,,scripts\audit-turns-recorded.py;scripts\build-export-provenance.py,
+queue.md,2026-08-31,0,104129,251,354,,scripts\audit-turns-recorded.py;scripts\build-export-provenance.py,
 reports/density.md,2026-08-22,9,17289,526,79,,src\genimerge\cli.py,
 reports/presence-contrast.md,2026-08-22,9,4687,540,65,,,
 reports/geni-qid-links.md,2026-08-24,7,9934,545,60,,,
-reports/user-turns.tsv,2026-08-30,1,2031814,546,59,,scripts\audit-turns-recorded.py;scripts\extract-user-turns.py,
+reports/user-turns.tsv,2026-08-31,0,3136175,546,59,,scripts\audit-turns-recorded.py;scripts\extract-user-turns.py,
 reports/bureatten.md,2026-08-23,8,9534,547,58,,,
 reports/izumo.md,2026-08-23,8,18047,548,57,,,
 docs/mass-export-run.md,2026-08-29,2,10842,558,47,,,
 reports/mass-export-log.tsv,2026-08-31,0,43585,559,46,,,
-CLAUDE.md,2026-08-31,0,176250,600,5,,scripts\audit-turns-recorded.py,
-devlog.md,2026-08-31,0,1331101,604,1,,scripts\audit-turns-recorded.py,
+CLAUDE.md,2026-08-31,0,181391,600,5,,scripts\audit-turns-recorded.py,
+devlog.md,2026-08-31,0,1429276,604,1,,scripts\audit-turns-recorded.py,
 reports/audit-downloads-2026-08-06.md,2026-08-06,25,8316,,,yes,,
 reports/consistency.md,2026-08-06,25,98286,,,,src\genimerge\cli.py,
 reports/distant-pairs.md,2026-08-06,25,1574,,,,src\genimerge\cli.py,
@@ -192,6 +190,7 @@ reports/names-spec.md,2026-08-11,20,7403,,,,,
 reports/subm.md,2026-08-11,20,4785,,,,,
 edit-objects.md,2026-08-12,19,8217,,,,,
 emission-spec.md,2026-08-12,19,8310,,,,,
+reports/charlemagne-route.md,2026-08-12,19,1890,,,,,
 reports/encoding-nordic.csv,2026-08-12,19,52464,,,,,
 reports/encoding.md,2026-08-12,19,4668,,,,,
 reports/family.md,2026-08-12,19,3572,,,,,
@@ -237,7 +236,7 @@ reports/relationship-label-languages.md,2026-08-14,17,2099,,,,,
 reports/samaritan-families.md,2026-08-14,17,12597,,,,,
 reports/samaritan-marriages.csv,2026-08-14,17,84598,,,,scripts\build-samaritan-marriage-census.py;scripts\build-samaritan-priest-batch.py,
 reports/samaritan-marriages.md,2026-08-14,17,7330,,,,,
-reports/samaritan-people.csv,2026-08-14,17,55274,,,,scripts\build-samaritan-marriage-census.py;scripts\build-samaritan-priest-batch.py,
+reports/samaritan-people.csv,2026-08-14,17,55274,,,,scripts\build-samaritan-marriage-census.py;scripts\build-samaritan-priest-batch.py;scripts\build-succession-roster.py,
 reports/samaritan-priesthood.md,2026-08-14,17,8819,,,,,
 reports/samaritan-spine.html,2026-08-14,17,37917,,,,scripts\build-samaritan-spine-page.py,
 reports/samaritan-ukrainian-marriages.md,2026-08-14,17,16468,,,,,
@@ -1443,10 +1442,9 @@ reports/name-label-gaps.csv,2026-08-18,13,729480,,,,scripts\build-name-label-gap
 reports/name-label-gaps.md,2026-08-18,13,3632,,,,scripts\build-name-label-gaps.py,
 reports/orderlife-nothing-to-do.csv,2026-08-18,13,2943771,,,,scripts\build-orderlife-batch.py,
 reports/publication-search.md,2026-08-18,13,3743,,,,,
-reports/regnal-ordinals.csv,2026-08-18,13,3157042,,,,scripts\build-regnal-ordinal-census.py,
+reports/regnal-ordinals.csv,2026-08-18,13,3157042,,,,scripts\build-regnal-ordinal-census.py;scripts\build-succession-roster.py,
 reports/regnal-ordinals.md,2026-08-18,13,1704,,,,scripts\build-regnal-ordinal-census.py,
 reports/wikidata-marker-label-fixes.json,2026-08-18,13,24683237,,,,scripts\build-marker-label-fixes.py,
-reports/wikidata-nn-labels.json,2026-08-18,13,1669303,,,,scripts\build-nn-label-batch.py,
 reports/wikidata-ranking.md,2026-08-18,13,4724,,,,,
 reports/destination-targets.csv,2026-08-19,12,102501,,,,scripts\classify-export-worth.py;scripts\rank-destination-targets.py,
 reports/export-worth.csv,2026-08-19,12,87554,,,,scripts\classify-export-worth.py,
@@ -1463,14 +1461,14 @@ reports/wikidata-patronymic-fathers.json,2026-08-19,12,12860900,,,,scripts\build
 reports/wikidata-patronymic-fathers.md,2026-08-19,12,1056,,,,scripts\build-patronymic-father-batch.py,
 reports/izumo-chart-edges.md,2026-08-20,11,10616,,,,,
 reports/izumo-chart-edges.tsv,2026-08-20,11,8079,,,,scripts\check-izumo-succession-as-parentage.py;scripts\izumo-align.py;scripts\izumo-tree-vs-chart.py,
-reports/izumo-chart-roster.tsv,2026-08-20,11,11642,,,,scripts\build-izumo-succession.py;scripts\check-izumo-succession-as-parentage.py,
-reports/izumo-geni-anchors.tsv,2026-08-20,11,4143,,,,scripts\izumo-align.py,
+reports/izumo-chart-roster.tsv,2026-08-20,11,11642,,,,scripts\build-izumo-succession.py;scripts\build-succession-roster.py;scripts\check-izumo-succession-as-parentage.py,
+reports/izumo-geni-anchors.tsv,2026-08-20,11,4143,,,,scripts\build-succession-roster.py;scripts\izumo-align.py,
 reports/izumo-geni-build.md,2026-08-20,11,27475,,,,,
 reports/izumo-geni-overrides.tsv,2026-08-20,11,462,,,,,
 reports/izumo-kokuso-geni.tsv,2026-08-20,11,6046,,,,,
 reports/tanba-chart-edges.md,2026-08-20,11,2761,,,,,
 reports/tanba-chart-edges.tsv,2026-08-20,11,1688,,,,,
-reports/tanba-geni-created.tsv,2026-08-20,11,12587,,,,,
+reports/tanba-geni-created.tsv,2026-08-20,11,12587,,,,scripts\build-succession-roster.py,
 reports/tanba-qids.json,2026-08-20,11,7300,,,,,
 reports/bureatten-export-targets.tsv,2026-08-22,9,11585,,,,,
 reports/bureatten-remaining.tsv,2026-08-22,9,11042,,,,,
@@ -1485,7 +1483,7 @@ reports/bureatten-resolved.tsv,2026-08-23,8,666,,,,scripts\build-bure-roster.py;
 reports/bureatten-unlinked.tsv,2026-08-23,8,15607,,,,scripts\measure-bure-structural-anchors.py;scripts\resolve-bure-anchors.py,
 reports/geni-qid-links.tsv,2026-08-23,8,21289,,,,scripts\audit-qid-identities.py;scripts\build-clan-p2600-pairs.py;scripts\build-geni-qid-links.py,
 reports/izumo-coverage.tsv,2026-08-23,8,10395,,,,scripts\build-merge-worklist.py,
-reports/izumo-geni-candidates.tsv,2026-08-23,8,13913,,,,scripts\walk-izumo-geni.py,
+reports/izumo-geni-candidates.tsv,2026-08-23,8,13913,,,,scripts\build-succession-roster.py;scripts\walk-izumo-geni.py,
 reports/izumo-roster.tsv,2026-08-23,8,8486,,,,scripts\build-izumo-p2600.py;scripts\build-izumo-roster.py;scripts\build-merge-worklist.py,
 reports/izumo-unlinked-classified.tsv,2026-08-23,8,5772,,,,scripts\classify-izumo-unlinked.py,
 reports/izumo-unlinked.tsv,2026-08-23,8,3248,,,,scripts\build-izumo-p2600.py;scripts\classify-izumo-unlinked.py,
@@ -1493,7 +1491,7 @@ reports/wikidata-abram-father.json,2026-08-23,8,2025,,,,scripts\build-abram-fath
 reports/wikidata-bureatten-p2600.qs,2026-08-23,8,259,,,,,
 reports/wikidata-geni-qid-p2600.qs,2026-08-23,8,13697,,,,,
 reports/wikidata-izumo-beyond-chart.json,2026-08-23,8,2065,,,,scripts\build-izumo-beyond-chart.py,
-reports/wikidata-samaritan-succession.json,2026-08-23,8,20764,,,,scripts\build-samaritan-succession.py,
+reports/wikidata-samaritan-succession.json,2026-08-23,8,20764,,,,scripts\build-samaritan-succession.py;scripts\build-succession-roster.py,
 docs/structural-walk.md,2026-08-24,7,4708,,,,,
 reports/ambiguous-names-resolved.tsv,2026-08-24,7,630,,,,scripts\namemodel.py;scripts\resolve-ambiguous-names.py,
 reports/edit-graph.md,2026-08-24,7,136,,,,scripts\audit-edit-graph.py,
@@ -1524,8 +1522,6 @@ reports/multi-parents-theirs.tsv,2026-08-25,6,246595,,,,scripts\census-multiple-
 reports/wikidata-garborg-day-1.qs,2026-08-25,6,16921,,,,,
 reports/wikidata-garborg-day-2026-08-25-run.qs,2026-08-25,6,15617,,,yes,,
 reports/wikidata-jon-parents.qs,2026-08-25,6,1257,,,,,
-reports/wikidata-reciprocals-siblings-held.qs,2026-08-25,6,8912,,,,,
-reports/wikidata-reciprocals.qs,2026-08-25,6,9499,,,,,
 docs/dictation/2026-08-26-daily-algorithm.md,2026-08-26,5,4071,,,yes,,
 docs/wikidata-item-template.md,2026-08-26,5,12620,,,,,
 reports/izumo-succession-as-parentage.tsv,2026-08-26,5,1245,,,,scripts\check-izumo-succession-as-parentage.py,
@@ -1544,9 +1540,7 @@ reports/zipper-conflicts.tsv,2026-08-26,5,1693,,,,scripts\zipper-join.py,
 reports/zipper-pairs.tsv,2026-08-26,5,3953327,,,,scripts\build-bure-roster.py;scripts\build-synoptic-correspondence.py;scripts\census-creation-opportunities.py,
 reports/zipper-reliability.md,2026-08-26,5,2167,,,,scripts\measure-zipper-reliability.py,
 reports/zipper-sex-refuted.tsv,2026-08-26,5,74355,,,,scripts\census-solo-children.py;scripts\zipper-join.py,
-reports/correspondence-shapes.tsv,2026-08-27,4,1254525,,,,scripts\census-correspondence-shapes.py;scripts\multi-geni-item-roster.py;scripts\resolve-multi-geni-by-parents.py,
 reports/name-item-plan.csv,2026-08-27,4,846442,,,,scripts\build-name-item-batch.py;scripts\check-name-items-live.py;scripts\namemodel.py,
-reports/orderlife-pairs.tsv,2026-08-27,4,18158,,,,scripts\measure-orderlife-pairs.py,
 reports/path-caroline-signe-borsheim-hoknes.json,2026-08-27,4,14160,,,,,
 reports/path-caroline-signe-borsheim-hoknes.md,2026-08-27,4,4969,,,,,
 reports/path-randolph-paulus-borsheim.json,2026-08-27,4,9659,,,,,
@@ -1554,7 +1548,6 @@ reports/path-randolph-paulus-borsheim.md,2026-08-27,4,3454,,,,,
 reports/post-merge-resolution.tsv,2026-08-27,4,3961,,,,scripts\check-post-merge-resolution.py,
 reports/structural-correspondence-disagreements.csv,2026-08-27,4,47208,,,,scripts\build-structural-correspondence-batch.py,
 reports/structural-correspondence.csv,2026-08-27,4,1165866,,,,scripts\build-add-p2600-batch.py;scripts\build-structural-correspondence-batch.py;scripts\build-synoptic-correspondence.py,
-reports/wikidata-add-p2600.qs,2026-08-27,4,470882,,,,,
 reports/wikidata-bure-links.qs,2026-08-27,4,32036,,,,,
 reports/wikidata-name-items.json,2026-08-27,4,5760345,,,,scripts\build-name-item-batch.py,
 reports/wikidata-siblings-oneoff.qs,2026-08-27,4,52702,,,,,
@@ -1563,6 +1556,7 @@ reports/cjk-clan-block-qids.txt,2026-08-28,3,1947,,,,,
 reports/cjk-clan-place-transliterations.tsv,2026-08-28,3,1860,,,,scripts\build-cjk-clan-labels.py,
 reports/wikidata-lave-jonsen.qs,2026-08-28,3,2163,,,,,
 docs/daily-algorithm.md,2026-08-29,2,7104,,,,,
+reports/charlemagne-route.csv,2026-08-29,2,39422,,,,scripts\build-chain-page.py;scripts\build-priority-chain.py;scripts\find-absent-on-wikidata.py,
 reports/cjk-culture.csv,2026-08-29,2,2966149,,,,scripts\build-cjk-romanisation.py,
 reports/cjk-no-culture.csv,2026-08-29,2,87827,,,,scripts\build-cjk-romanisation.py;scripts\build-unidentified-clusters.py,
 reports/compliance-audit.tsv,2026-08-29,2,25592,,,,scripts\audit-compliance.py,
@@ -1576,29 +1570,28 @@ reports/rival-profiles.md,2026-08-29,2,2860,,,,,
 reports/rival-profiles.tsv,2026-08-29,2,74,,,,scripts\find-rival-profiles.py,
 reports/spine-bonds.tsv,2026-08-29,2,10129,,,,scripts\check-spine-bonds.py,
 reports/wikidata-charlemagne-last-bond.qs,2026-08-29,2,1802,,,,,
-reports/wikidata-components.csv,2026-08-29,2,44116792,,,,scripts\build-charlemagne-ancestry.py;scripts\build-charlemagne-route.py;scripts\build-cluster-anchors.py,
+reports/wikidata-components.csv,2026-08-29,2,44116792,,,,scripts\build-charlemagne-ancestry.py;scripts\build-cluster-anchors.py;scripts\build-priority-chain.py,
 reports/wikidata-edited-not-created.qs,2026-08-29,2,5932,,,,,
-reports/wikidata-entity-resolution.json,2026-08-29,2,4676,,,,scripts\build-entity-resolution-batch.py,
+reports/wikidata-entity-resolution.json,2026-08-29,2,4676,,,,,
 reports/wikidata-isolates.csv,2026-08-29,2,11019393,,,,scripts\measure-wikidata-isolates.py,
 reports/wikidata-merge-list.md,2026-08-29,2,1924,,,,,
 reports/wikidata-merge-list.tsv,2026-08-29,2,567,,,,,
 reports/wikidata-q141198548-nn.qs,2026-08-29,2,3008,,,,,
 reports/wikidata-q4411612-mul.qs,2026-08-29,2,4020,,,,,
 reports/attested-name-renderings.tsv,2026-08-30,1,616624,,,,scripts\apply-attested-renderings.py;scripts\build-attested-renderings.py,
-reports/bio-qids.tsv,2026-08-30,1,4985,,,,scripts\build-merge-worklist.py;scripts\extract-bio-qids.py,
+reports/bio-qids.tsv,2026-08-30,1,4985,,,,scripts\build-merge-worklist.py;scripts\build-succession-roster.py;scripts\extract-bio-qids.py,
 reports/built-batches.tsv,2026-08-30,1,2917,,,,scripts\audit-built-batches.py,
 reports/clan-join-and-structural-walk.md,2026-08-30,1,1466,,,,,
 reports/component-shape-2026-08-30.md,2026-08-30,1,4874,,,yes,,
 reports/created-name-items.tsv,2026-08-30,1,767,,,,scripts\namemodel.py;scripts\refresh-created-name-items.py,
 reports/edge-export-backtest.csv,2026-08-30,1,310659,,,,scripts\backtest-edge-exports.py,
 reports/export-provenance.md,2026-08-30,1,2802,,,,scripts\build-export-provenance.py,
-reports/garborg-name-transliterations.tsv,2026-08-30,1,231355,,,,scripts\apply-attested-renderings.py;scripts\audit-ledger-names.py;scripts\build-garborg-day.py,
 reports/obender12-touched.tsv,2026-08-30,1,160509,,,,scripts\build-garborg-day.py;scripts\fetch-obender12-touched.py,
 reports/strategic-analysis-2026-08-30.md,2026-08-30,1,10148,,,yes,,
 reports/synoptic-usages.md,2026-08-30,1,6825,,,,,
 reports/synoptic-usages.tsv,2026-08-30,1,22018,,,,scripts\census-synoptic-usages.py,
-reports/unrecorded-instructions.tsv,2026-08-30,1,80611,,,,scripts\audit-turns-recorded.py,
 reports/wikidata-signe-close.qs,2026-08-30,1,527,,,,,
+docs/synoptic-correspondence.md,2026-08-31,0,4933,,,,,
 reports/audit-q141223488.md,2026-08-31,0,3892,,,,,
 reports/audit-q141224141.md,2026-08-31,0,4651,,,,,
 reports/audit-q6197518.md,2026-08-31,0,3941,,,,,
@@ -1612,26 +1605,41 @@ reports/derived-family.csv.gz,2026-08-31,0,34795282,,,,,
 reports/derived-labels.csv.gz,2026-08-31,0,29715556,,,,,
 reports/display-names.csv.gz,2026-08-31,0,46449620,,,,,
 reports/duplicate-name-items.tsv,2026-08-31,0,3203,,,,scripts\build-merges-to-do.py;scripts\find-duplicate-name-items.py,
-reports/emma-judgments.tsv,2026-08-31,0,14838,,,,scripts\build-garborg-day.py;scripts\build-repo-freshness.py;scripts\measure-zipper-reliability.py,
-reports/garborg-carry-forward.tsv,2026-08-31,0,105390,,,,scripts\build-garborg-day.py;scripts\extend-transliterations.py,
-reports/garborg-live-labels.tsv,2026-08-31,0,294441,,,,scripts\build-garborg-day.py;scripts\refresh-live-values.py,
-reports/garborg-live-values.tsv,2026-08-31,0,514103,,,,scripts\audit-compliance.py;scripts\build-daily-batch.py;scripts\build-garborg-day.py,
-reports/garborg-qids.tsv,2026-08-31,0,88870,,,,scripts\audit-compliance.py;scripts\audit-ledger-names.py;scripts\audit-marker-surname-labels.py,
+reports/emma-judgments.tsv,2026-08-31,0,15959,,,,scripts\build-garborg-day.py;scripts\build-parent-candidates.py;scripts\build-repo-freshness.py,
+reports/garborg-carry-forward.tsv,2026-08-31,0,103899,,,,scripts\build-garborg-day.py;scripts\extend-transliterations.py,
+reports/garborg-name-transliterations.tsv,2026-08-31,0,893571,,,,scripts\apply-attested-renderings.py;scripts\audit-ledger-names.py;scripts\build-garborg-day.py,
+reports/garborg-qids.tsv,2026-08-31,0,103881,,,,scripts\audit-compliance.py;scripts\audit-ledger-names.py;scripts\audit-marker-surname-labels.py,
 reports/geni-merge-worklist.md,2026-08-31,0,14662,,,,scripts\build-merge-worklist.py,
-reports/label-edits-emitted.tsv,2026-08-31,0,64025,,,,scripts\build-garborg-day.py,
+reports/label-edits-emitted.tsv,2026-08-31,0,71730,,,,scripts\build-garborg-day.py,
 reports/labels.md,2026-08-31,0,3120,,,,scripts\derive-labels.py,
 reports/merge.md,2026-08-31,0,73480,,,,src\genimerge\cli.py,
 reports/merges-to-do.md,2026-08-31,0,30878,,,,scripts\build-merges-to-do.py,
-reports/model-vs-reality.tsv,2026-08-31,0,773359,,,,scripts\build-from-diff.py;scripts\model-vs-reality.py,
+reports/model-vs-reality.tsv,2026-08-31,0,871218,,,,scripts\build-from-diff.py;scripts\model-vs-reality.py,
 reports/name-ambiguity-buckets.tsv,2026-08-31,0,82412,,,,scripts\classify-name-ambiguity.py;scripts\resolve-names-by-sex.py,
 reports/name-resolved-by-sex.csv,2026-08-31,0,752617,,,,scripts\resolve-names-by-sex.py,
+reports/parent-candidates.tsv,2026-08-31,0,88613,,,,scripts\build-parent-candidates.py,
+reports/patronymic-items-to-create.tsv,2026-08-31,0,496080,,,,scripts\build-patronymic-items.py;scripts\resolve-patronymics.py,
+reports/patronymic-reclassified.tsv,2026-08-31,0,2296382,,,,,
+reports/patronymic-resolution.tsv,2026-08-31,0,1256045,,,,scripts\resolve-patronymics.py,
 reports/rejected-parents-network.tsv,2026-08-31,0,11146,,,,,
 reports/rejected-parents.tsv,2026-08-31,0,1124914,,,,scripts\list-rejected-parents.py,
-reports/single-value-drops.tsv,2026-08-31,0,185,,,,scripts\build-garborg-day.py,
+reports/samaritan-succession-list.tsv,2026-08-31,0,3757,,,,scripts\build-succession-roster.py;scripts\fetch-samaritan-succession.py,
+reports/single-value-drops.tsv,2026-08-31,0,148,,,,scripts\build-garborg-day.py,
 reports/spine-already-on-wikidata.tsv,2026-08-31,0,4507,,,,scripts\refresh-spine-known.py;scripts\search-spine-names.py;scripts\verify-spine-candidates.py,
 reports/store-parent-coverage.csv,2026-08-31,0,2202130,,,,scripts\measure-store-parent-coverage.py,
 reports/store-parent-coverage.md,2026-08-31,0,2100,,,,scripts\measure-store-parent-coverage.py,
-reports/wikidata-garborg-day.qs,2026-08-31,0,104263,,,,,
-reports/wikidata-garborg-name-items.qs,2026-08-31,0,3954,,,,,
+reports/succession-and-ordinals.csv,2026-08-31,0,28755,,,,scripts\build-succession-roster.py,
+reports/synoptic-conflicts.tsv,2026-08-31,0,62023,,,,scripts\build-synoptic-correspondence.py,
+reports/synoptic-correspondence.tsv,2026-08-31,0,27926995,,,,scripts\build-join-batch.py;scripts\build-parent-candidates.py;scripts\build-synoptic-correspondence.py,
+reports/unrecorded-instructions.tsv,2026-08-31,0,124896,,,,scripts\audit-turns-recorded.py,
+reports/wikidata-add-p2600.qs,2026-08-31,0,270935,,,,,
+reports/wikidata-garborg-day.qs,2026-08-31,0,42863,,,,,
+reports/wikidata-garborg-name-items.qs,2026-08-31,0,4446,,,,,
+reports/wikidata-nn-labels.json,2026-08-31,0,1739739,,,,scripts\build-nn-label-batch.py,
+reports/wikidata-placeholder-labels.json,2026-08-31,0,20119266,,,,scripts\build-en-label-batch.py;scripts\build-placeholder-label-batch.py,
+reports/wikidata-reciprocals-siblings-held.qs,2026-08-31,0,98815,,,,,
+reports/wikidata-reciprocals.qs,2026-08-31,0,226798,,,,,
 reports/wikidata-touched-not-created.qs,2026-08-31,0,3354,,,,,
+reports/zipper-provenance-chains.md,2026-08-31,0,46542,,,,scripts\zipper-provenance.py,
+reports/zipper-provenance.tsv,2026-08-31,0,4644644,,,,scripts\zipper-provenance.py,
 reports/sparse-ancient-exports-2026-08-22.md,2026-08-22,9,3055,5000,-4395,yes,,
