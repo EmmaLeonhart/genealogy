@@ -13,6 +13,57 @@ lines as say what to do.
 audits, dead crons and superseded priorities. Recover any of it with
 `git show 6edf302b:queue.md`.
 
+## ⛔ ITEM 1 — KOREAN. `ko` is CJK and ranks with `zh`. IN PROGRESS 2026-09-01
+
+**At the top of the queue by her instruction, 2026-09-01:** *"put the korean stuff at the
+beginning of the queue to make it clear that we're following the instructions properly and will
+continue on through all of the queue after"*, after *"korean is extremely important on par with
+Chinese and you really should prioritize getting korean labels all the time and this seems to not
+get that cjk includes korean"*.
+
+**Done so far.**
+
+- `scripts/translit_ko.py` — a hanja-to-Hangul engine, **733 hand-read characters**: the top 400
+  by corpus frequency, then the top 300 of what that pass missed, chosen by measuring the misses.
+  Hangul passes through untouched; the initial-sound rule (두음법칙) is applied to the head of each
+  name, so 李 is **이** and not 리.
+- **61% of the 46,452 people with a CJK name get a COMPLETE Korean label**, up from 44% after the
+  first 400. A partial rendering is never emitted — one unknown character blocks the label.
+- Verified by eye: 李成桂 → 이성계 · 金正日 → 김정일 · 朴正熙 → 박정희 · 藤原道長 → 등원도장.
+
+**Still to do, in order.**
+
+- **Raise coverage past 61%.** 4,260 distinct characters remain unread over 52,212 occurrences.
+  The next 300 by frequency are the next tranche; the tail is long and each tranche is worth less.
+- **A `ko` column in `reports/garborg-name-transliterations.tsv`**, and the funnel mints all three
+  rather than two.
+- **The creation gate becomes `ja` + `zh` + `ko`.** § *ABSOLUTE PREREQUISITE* means all three, and
+  it currently checks two.
+- **`ko` labels emitted for the whole CJK population**, not only the Garborg ring.
+
+**`P1814` *name in kana* is NOT part of this and stays agentic** — a Japanese name reading does not
+follow from the characters, which is why queuing the two together was the mistake this item fixes.
+
+## Korean through the ROMANISATION pipeline — her emphasis, 2026-09-01
+
+*"So just more emphasis with the korean stuff there and changing some of the romanization pipeline
+queued stuff"*, after *"korean is extremely important on par with Chinese... this seems to not get
+that cjk includes korean"*.
+
+The romanisation pipeline currently has **two** directions where it needs three:
+
+- `cjk_romanisation` classifies a name's culture as `ja` or `zh` and romanises accordingly. The
+  1,552 Hangul tokens settle culture decisively, and Korean romanisation (Revised Romanization)
+  is regular — so `ko` is a third branch, not an exception.
+- **The Han-to-Korean direction is the one that is missing entirely.** A Chinese or Japanese name
+  written in Han characters has a regular hanja reading, so `ko` labels are generable for the
+  whole Han population the way `zh` is — 30,876 Han tokens, not just the Hangul ones.
+- `reports/garborg-name-transliterations.tsv` gains a `ko` column and the funnel mints all three.
+- The creation gate becomes `ja` + `zh` + `ko`.
+
+**`P1814` *name in kana* stays agentic and is a different job** — a Japanese name reading does not
+follow from the characters, which is exactly why it should never have been queued alongside `ko`.
+
 ## How to read this file
 
 **Emma, 2026-08-27:** *"Organize the queue to make it usable again, currently it does no appear to
@@ -510,26 +561,6 @@ definition and applying it everywhere.
 workaround makes this question obsolete"* — `exports/post-merge/wikidata-qid-links.ged` puts the
 Wikidata links into the corpus, so they arrive in the merge either way and nothing waits on the
 definition being settled.
-
-## Korean through the ROMANISATION pipeline — her emphasis, 2026-09-01
-
-*"So just more emphasis with the korean stuff there and changing some of the romanization pipeline
-queued stuff"*, after *"korean is extremely important on par with Chinese... this seems to not get
-that cjk includes korean"*.
-
-The romanisation pipeline currently has **two** directions where it needs three:
-
-- `cjk_romanisation` classifies a name's culture as `ja` or `zh` and romanises accordingly. The
-  1,552 Hangul tokens settle culture decisively, and Korean romanisation (Revised Romanization)
-  is regular — so `ko` is a third branch, not an exception.
-- **The Han-to-Korean direction is the one that is missing entirely.** A Chinese or Japanese name
-  written in Han characters has a regular hanja reading, so `ko` labels are generable for the
-  whole Han population the way `zh` is — 30,876 Han tokens, not just the Hangul ones.
-- `reports/garborg-name-transliterations.tsv` gains a `ko` column and the funnel mints all three.
-- The creation gate becomes `ja` + `zh` + `ko`.
-
-**`P1814` *name in kana* stays agentic and is a different job** — a Japanese name reading does not
-follow from the characters, which is exactly why it should never have been queued alongside `ko`.
 
 ## CJK label conversion — fill in Korean and `P1814` *name in kana*, with research
 
