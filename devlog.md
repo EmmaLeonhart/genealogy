@@ -24404,3 +24404,20 @@ modules, `runner has received a shutdown signal`. Ruled out: the 180-minute time
 and a test failure (both pass locally, 23 passed in 35m44). Memory is *suspected* and not
 established. The queue item says the next step is one measurement and warns against
 `continue-on-error`, which would hide the signal rather than explain it.
+
+## 2026-09-01 — sweep: nothing dead, one retitle
+
+Checked every section. **Nothing is complete.** The one that looked it —
+§ *The daily Garborg batch* — carries the sweep's literal trigger phrase *"Nothing is outstanding
+on this item"*, but that sentence refers to three bullets removed on 2026-08-30, and the section
+ends *"This item is the **standing daily process**, not a step to finish: one batch a day, for as
+long as the programme runs."* It stays.
+
+**Retitled:** § *KOREAN — done, except one decision shared with `ja`* → § *Decide whether a
+transcribed Latin name is a publishable label (`ja` and `ko` together)*. The body was already cut
+back to the decision alone, but the heading advertised done-ness, which is exactly what Emma
+objected to on 2026-08-30 — *"annotating a finished section keeps it as a step and makes the queue
+unreadable."* A queue heading should name what is outstanding, and what is outstanding here is a
+decision of hers about 1,278,536 people, not the Korean work that is finished.
+
+Same treatment the SMTP section got an hour earlier, for the same reason.

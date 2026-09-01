@@ -13,7 +13,7 @@ lines as say what to do.
 audits, dead crons and superseded priorities. Recover any of it with
 `git show 6edf302b:queue.md`.
 
-## KOREAN — done, except one decision shared with `ja`
+## Decide whether a transcribed Latin name is a publishable label (`ja` and `ko` together)
 
 **Her instruction, 2026-09-01:** *"korean is extremely important on par with Chinese... cjk
 includes korean"*, and *"put the korean stuff at the beginning of the queue"*. It was, and it is
