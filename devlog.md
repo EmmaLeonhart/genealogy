@@ -22886,3 +22886,34 @@ into — recorded so nobody rediscovers them as blockers.
 **Checked and not touched:** § *Patronymic residue* (`d`/`t` and `Nils`/`Nicolaus` still open, and
 it already carries the STALE warning on `patronymic-reclassified.tsv`), § *Keep
 `reports/merges-to-do.md` current* (standing), and the seven specification sections.
+
+## 2026-08-31 — `d`/`t` folded, her objection retired by measurement
+
+She closed the patronymics item and the next one asked to measure the `d`/`t` residue before
+folding it. Measured, then folded.
+
+**Her objection was specific and it was the right thing to test:** folding `d`→`t` *"would also
+merge `Anders`/`Antti`, which are cognates and not one name."* Checked — their skeletons are
+`andrs` and `ant`, which the fold leaves apart. It does not merge them.
+
+**What it does rescue: 1,410 tokens** wrongly classified as inherited surnames, out of 38,365 the
+father does not himself carry. 8 of 8 sampled are genuine:
+
+    Pedersdatter   father Petter Jacobsen Falch      Peder / Petter
+    Madsdotter     father Mats Nilsen Odder          Mads / Mats
+    Lauridsen      father Laurits Nielsen Kras       Laurids / Laurits
+    Godskalksson   father Gotskalk Mathiason Seim    Godskalk / Gotskalk
+    Pedersson      father Petrus Olai Hoffman        Peder / Petrus
+
+The rest stay family, correctly — `Knutsen` of `Lars Amandus Johnsen`, `Atkinson` of `William
+Orlando Jones`, `Bergersen` of `Lars Halvorsen Visur`.
+
+**Effect, both halves re-run:** unambiguous `P144` targets **4,708 → 4,747**, people whose father
+has an item **8,277 → 8,345**, and people resolving **5,244 → 5,289**. 20/20 still on the
+hand-read sample, `Andersson`/`Antti` now explicitly among the cases it must reject.
+
+**The residue is smaller and better named.** `Persdotter` with father **`Pehr`** is a genuine
+patronymic the skeleton misses because `h` survives as a consonant — `prs` against `phr`. Folding
+`h` away wholesale is not safe (`Hans`, `Halvor`, `Haakon`), so it would have to be *`h` after
+another consonant*, and that gets the same measure-then-sample treatment. `Nils`/`Nicolaus` still
+needs a form table and no letter rule will reach it.

@@ -53,44 +53,20 @@ counts are not stale when she next sits down to it.
 **The merges themselves are hers now, not mine** — that is what the file is for. The Izumo
 three are cleared and the browser pass is closed.
 
-## Patronymics: emit the items, and stop `patronymic_or_surname` deciding
+## Patronymic residue: the silent `h`, and `Nils`/`Nicolaus`
 
-**Both measured halves of her design are built.** `scripts/build-patronymic-items.py` plans the
-objects (6,658 tokens, **4,708** with an unambiguous `P144` target, 5,091 with a `P5278` partner)
-and `scripts/resolve-patronymics.py` runs the per-person identity test — **5,244 of 8,277** people
-whose father has an item resolve today, with no string comparison anywhere. `devlog.md` carries
-the object profile, the sex/script filter and why `P407` is left off.
+`d`/`t` is folded and measured (2026-08-31). What is left is smaller and named:
 
-- **Emit the items.** 6,613 creations carrying `P31` -> `Q110874` *patronymic*, `P1705` *native
-  label*, the `P144` *based on* values and `P5278` *surname for other gender*. Nothing is written
-  as QuickStatements yet, deliberately — she has not asked for a batch, and § *no unrequested
-  `.qs`* governs until she does.
-- **Do not leave two things deciding.** Under her design `namemodel.patronymic_or_surname` is no
-  longer the decision — at most it proposes which token is the patronymic before the item lookup
-  runs. Two deciders is how the 62,637-token flip nearly shipped.
-- **The three standing gaps, from the resolution run** — these are what the emission grows into,
-  not blockers: **2,172** people whose father has an item but no `P735` *given name* object,
-  **606** whose father's `P735` is not among the patronymic's `P144` values, **255** whose
-  patronymic item has no derivation at all.
-- **178 tokens remain genuinely ambiguous** after the sex and script filter — down from 546. That
-  residue is § *One name item per USAGE* and hers; it does not block the other 4,708.
+- **A silent `h` inside a name.** `Persdotter` with father `Pehr Eriksson` is a genuine patronymic
+  the skeleton misses, because `h` survives as a consonant: `prs` against `phr`. `Pehr`/`Per`,
+  `Thore`/`Tore` and the like are one name. Folding `h` away is not obviously safe — it is a real
+  consonant in `Hans`, `Halvor`, `Haakon` — so the fold would have to be **`h` after another
+  consonant**, and that needs the same measure-then-apply treatment `d`/`t` got.
+- **`Nilsson` with father `Nicolaus`.** `Nils` is a form of `Nicolaus`, which no letter rule
+  reaches. A short table of Scandinavian given-name forms would; nothing else will.
 
-## Patronymic residue: `d`/`t` and `Nils`/`Nicolaus`
-
-The father test is load-bearing now. **`reports/patronymic-reclassified.tsv` is STALE** — its
-30,171 rows were produced before `_same_name` was tightened on 2026-08-31, so re-measure rather
-than quoting it. Reading a sample leaves one nameable class still wrong:
-
-- **`Pedersdatter` with father `Petter`** — `d`/`t` alternate in Scandinavian given names and the
-  skeleton keeps them apart. Folding them is a bigger claim than the others: `Peder`/`Petter` are
-  the same man's name, but `Anders`/`Antti` are cognates rather than one name, and folding
-  `d`→`t` merges both.
-- **`Nilsson` with father `Nicolaus`** — `Nils` is a form of `Nicolaus`, which no letter rule
-  reaches. A short table of Scandinavian given-name forms would, and that is what to build if the
-  residue is worth closing.
-
-Measure before folding: how many of the 30,171 are `d`/`t` pairs, how many are dictionary forms,
-and how many are genuinely inherited surnames.
+Measure before folding, and sample the rescues by hand — that is what caught `d`/`t` being safe
+and would have caught it being unsafe.
 
 ## ⛔ THE DAILY ALGORITHM — her full spec, 2026-08-26. SPECIFICATION, not a step
 

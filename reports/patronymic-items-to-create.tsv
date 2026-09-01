@@ -22,6 +22,7 @@ aanonsdatter	10		create	aanonsdatter				Aanon	aanonsen	aanon
 aanonsen	15		create	aanonsen				Aanon Aanen	aanonsdatter	aanon
 aanundsdatter	1		create	aanundsdatter	Q30074072	Aanund			aanundson	aanund
 aanundson	3		create	aanundson	Q30074072	Aanund			aanundsdatter	aanund
+aarendtsdatter	2		create	aarendtsdatter	Q15888090	Arent				aarendt
 aarsteensen	1		create	aarsteensen				Aarstein		aarsteen
 aarsteinson	2		create	aarsteinson				Aarstein Aarsteen		aarstein
 aasmundsdatter	5		create	aasmundsdatter	Q30131481	Aasmund			aasmundsson	aasmund
@@ -57,13 +58,13 @@ absalonsen	17		create	absalonsen	Q19274345	Absalon		Absalen	absalonsdatter	absal
 absalonson	4		create	absalonson	Q19274345	Absalon			absalonsdatter	absalon
 adamdotter	1		create	adamdotter	Q347181	Adam			adamsson	adam
 adamsdatter	24		create	adamsdatter	Q347181	Adam			adamsson	adam
-adamsdotter	122		create	adamsdotter	Q347181	Adam		Aadam	adamsson	adams
+adamsdotter	136		create	adamsdotter	Q347181 Q6673450	Adam Aatami		Aadam	adamsson	adams
 adamsen	14		create	adamsen	Q347181	Adam			adamsdotter	adam
-adamson	13		create	adamson	Q347181	Adam			adamsdotter	adam
-adamsson	123		create	adamsson	Q347181	Adam			adamsdotter	adam
+adamson	14		create	adamson	Q347181 Q6673450	Adam Aatami			adamsdotter	adam
+adamsson	134		create	adamsson	Q347181 Q6673450	Adam Aatami			adamsdotter	adam
 addickdotter	1		create	addickdotter				Addick	addicksson	addick
 addicksdotter	1		create	addicksdotter				Addick	addicksson	addicks
-addicksson	2		create	addicksson				Addick	addickdotter	addick
+addicksson	2		create	addicksson				Addick	addicksdotter	addick
 adensen	1		create	adensen				Adenoys		aden
 adilbertson	1		create	adilbertson	Q347243	Adalbert				adilbert
 adilsson	1		create	adilsson				Adils		adil
@@ -131,7 +132,7 @@ albrigtsdatter	2		create	albrigtsdatter				Albrigt	albrigtsen	albrigt
 albrigtsen	6		create	albrigtsen				Albrigt	albrigtsdatter	albrigt
 albriktsdatter	1		create	albriktsdatter	Q18180401	Albrecht				albrikt
 aleksandersdatter	6		create	aleksandersdatter	Q17520844	Aleksander			aleksandersen	aleksander
-aleksandersdotter	2		create	aleksandersdotter	Q17520844	Aleksander			aleksandersen	aleksanders
+aleksandersdotter	3		create	aleksandersdotter	Q17520844 Q18108548	Aleksander Aleksanteri			aleksandersen	aleksanders
 aleksandersen	12		create	aleksandersen	Q17520844	Aleksander			aleksandersdatter	aleksander
 aleksandersson	1		create	aleksandersson	Q17520844	Aleksander			aleksandersdatter	aleksander
 alexanderdotter	1		create	alexanderdotter	Q923	Alexander			alexandersson	alexander
@@ -219,6 +220,7 @@ anderssdotter	1		create	anderssdotter	Q8843357	Anders			andersson	anderss
 anderssen	96		create	anderssen	Q8843357 Q4926263 Q8843357	Anders Andreas anders			andersdotter	anders
 andersson	4720		create	andersson	Q8843357 Q4926263 Q8843357 Q21069228 Q490500	Anders Andreas ANDERS Andrae Ander	Andres(2)		andersdotter	ander
 anderssson	1		create	anderssson	Q8843357	Anders			andersdotter	anders
+andesdotter	2		create	andesdotter	Q609564	Antti				andes
 andfinnson	1		create	andfinnson				Andfinn		andfinn
 andorsdatter	1		create	andorsdatter	Q492347	Andor			andorsson	andor
 andorsdotter	4		create	andorsdotter	Q492347	Andor			andorsson	andors
@@ -314,13 +316,13 @@ anvedsdotter	7		create	anvedsdotter	Q136389252	Anved			anvedsson	anveds
 anvedson	1		create	anvedson	Q136389252	Anved			anvedsdotter	anved
 anvedsson	4		create	anvedsson	Q136389252	Anved			anvedsdotter	anved
 apelsen	1		create	apelsen	Q110402392	Apel				apel
-apolloniusdatter	1		create	apolloniusdatter	Q18200050	Apollonius			apolloniussen	apolloniu
-apolloniusdotter	1		create	apolloniusdotter	Q18200050	Apollonius			apolloniussen	apollonius
+apolloniusdatter	1		create	apolloniusdatter	Q18200050	Apollonius			apolloniusson	apolloniu
+apolloniusdotter	1		create	apolloniusdotter	Q18200050	Apollonius			apolloniusson	apollonius
 apolloniussen	2		create	apolloniussen	Q18200050	Apollonius			apolloniusdatter	apollonius
 apolloniusson	2		create	apolloniusson	Q18200050	Apollonius			apolloniusdatter	apolloniu
 arason	1		create	arason			Ari(6)			ara
 archibaldsdotter	1		create	archibaldsdotter	Q19767773	Archibald				archibalds
-arendsdotter	10		create	arendsdotter	Q16154273	Arend			arendsson	arends
+arendsdotter	12		create	arendsdotter	Q16154273 Q97770464 Q15888090	Arend Arendt Arent			arendsson	arends
 arendsson	4		create	arendsson	Q16154273	Arend			arendsdotter	arend
 arendtsdotter	16		create	arendtsdotter	Q97770464	Arendt			arendtsson	arendts
 arendtson	4		create	arendtson	Q97770464	Arendt			arendtsdotter	arendt
@@ -328,10 +330,10 @@ arendtsson	20		create	arendtsson	Q97770464 Q21400606	Arendt Arndt			arendtsdotte
 arensdatter	2		create	arensdatter	Q20829603	Aren			arensen	aren
 arensen	3		create	arensen	Q20829603	Aren			arensdatter	aren
 arentsdatter	32		create	arentsdatter	Q15888090 Q15888082	Arent Arnt			arentsen	arent
-arentsdotter	1	Q83863480	link	arentsdotter	Q15888090	Arent			arentsen	arents
+arentsdotter	6	Q83863480	link	arentsdotter	Q97770464 Q15888090	Arendt Arent			arentsen	arents
 arentsen	20		create	arentsen	Q15888090 Q15888082	Arent Arnt			arentsdatter	arent
 arentson	1		create	arentson	Q15888090	Arent			arentsdatter	arent
-arentsson	7		create	arentsson	Q15888090	Arent			arentsdatter	arent
+arentsson	9		create	arentsson	Q15888090 Q97770464	Arent Arendt			arentsdatter	arent
 arentzdatter	5		create	arentzdatter	Q15888090	Arent				arentz
 arertson	1		create	arertson	Q124528130	Aret				arert
 aresdatter	5		create	aresdatter	Q20024939	Are			aresen	are
@@ -357,7 +359,7 @@ aritsdatter	4		create	aritsdatter				Arit	aritsen	arit
 aritsen	5		create	aritsen				Arit	aritsdatter	arit
 arnbjornsdatter	1		create	arnbjornsdatter	Q16419750	Arnbjørn			arnbjornsen	arnbjorn
 arnbjornsdotter	1		create	arnbjornsdotter	Q16419750	Arnbjörn			arnbjornsen	arnbjorns
-arnbjornsen	1		create	arnbjornsen	Q16419750	Arnbjørn			arnbjornsdotter	arnbjorn
+arnbjornsen	1		create	arnbjornsen	Q16419750	Arnbjørn			arnbjornsdatter	arnbjorn
 arnbjörnsdotter	1		create	arnbjörnsdotter	Q16419750	Arnbjörn				arnbjörns
 arnbjørnsdatter	16		create	arnbjørnsdatter	Q16419750 Q16419750	Arnbjørn Arnbjörn			arnbjørnson	arnbjørn
 arnbjørnsdotter	2		create	arnbjørnsdotter	Q16419750	Arnbjørn			arnbjørnson	arnbjørns
@@ -376,8 +378,8 @@ arnestsen	3		create	arnestsen				Arnest		arnest
 arnfinndatter	1		create	arnfinndatter	Q3481835	Arnfinn			arnfinnson	arnfinn
 arnfinnsdatter	1		create	arnfinnsdatter	Q3481835	Arnfinn			arnfinnson	arnfinn
 arnfinnsdotter	1		create	arnfinnsdotter	Q3481835	Arnfinn			arnfinnson	arnfinns
-arnfinnson	10		create	arnfinnson	Q3481835	Arnfinn			arnfinnsdatter	arnfinn
-arnfinnsson	2	Q112307008	link	arnfinnsson	Q3481835	Arnfinn			arnfinnsdatter	arnfinn
+arnfinnson	10		create	arnfinnson	Q3481835	Arnfinn			arnfinndatter	arnfinn
+arnfinnsson	2	Q112307008	link	arnfinnsson	Q3481835	Arnfinn			arnfinndatter	arnfinn
 arnfinsdatter	1		create	arnfinsdatter	Q3481835	Arnfinn			arnfinsson	arnfin
 arnfinsson	1		create	arnfinsson	Q3481835	Arnfinn			arnfinsdatter	arnfin
 arngeirsson	2		create	arngeirsson	Q16419793	Arngeir				arngeir
@@ -447,10 +449,11 @@ asgautsdotter	3		create	asgautsdotter	Q16419537	Asgaut			asgautson	asgauts
 asgautsen	13		create	asgautsen	Q16419537	Asgaut			asgautsdatter	asgaut
 asgautson	23		create	asgautson	Q16419537	Asgaut			asgautsdatter	asgaut
 asgautsson	2		create	asgautsson	Q16419537	Asgaut			asgautsdatter	asgaut
-asgeirsdatter	1		create	asgeirsdatter	Q15784195	Asgeir			asgeirsson	asgeir
-asgeirsdotter	1		create	asgeirsdotter	Q15784195	Asgeir			asgeirsson	asgeirs
+asgeirsdatter	1		create	asgeirsdatter	Q15784195	Asgeir			asgeirson	asgeir
+asgeirsdotter	1		create	asgeirsdotter	Q15784195	Asgeir			asgeirson	asgeirs
 asgeirson	1		create	asgeirson	Q15784195	Asgeir			asgeirsdatter	asgeir
 asgeirsson	1		create	asgeirsson	Q15784195	Asgeir			asgeirsdatter	asgeir
+asgoudtsen	1		create	asgoudtsen	Q16419537	Asgaut				asgoudt
 askellsdatter	2		create	askellsdatter				Askel	askellson	askell
 askellson	2		create	askellson				Askel	askellsdatter	askell
 askellsson	1		create	askellsson				Askel	askellsdatter	askell
@@ -460,7 +463,7 @@ askildsen	32		create	askildsen	Q120909360	Askild			askildsdatter	askild
 askildson	7		create	askildson	Q120909360	Askild			askildsdatter	askild
 askildsson	4		create	askildsson	Q120909360	Askild			askildsdatter	askild
 askilsen	1		create	askilsen	Q120909702	Askil				askil
-askjellsdatter	1		create	askjellsdatter				Askjell	askjellson	askjell
+askjellsdatter	1		create	askjellsdatter				Askjell	askjellsson	askjell
 askjellson	1		create	askjellson				Askjell	askjellsdatter	askjell
 askjellsson	1		create	askjellsson				Askjell	askjellsdatter	askjell
 askjelson	5		create	askjelson				Askjell		askjel
@@ -648,7 +651,8 @@ bendiksson	4		create	bendiksson	Q30134715	Bendiks			bendiksdatter	bendik
 bendiktsdatter	2		create	bendiktsdatter				Bendikt		bendikt
 bendixdatter	22		create	bendixdatter	Q21285878	Bendix			bendixsen	bendix
 bendixsen	5		create	bendixsen	Q21285878	Bendix			bendixdatter	bendix
-bendtsdatter	3		create	bendtsdatter	Q100870516	Bendt				bendt
+bendtsdatter	6		create	bendtsdatter	Q818202 Q100870516	Bent Bendt			bendtsen	bendt
+bendtsen	1		create	bendtsen	Q818202	Bent			bendtsdatter	bendt
 benedictdatter	2		create	benedictdatter	Q16275020	Benedict			benedictsen	benedict
 benedictsdatter	5		create	benedictsdatter	Q16275020	Benedict			benedictsen	benedict
 benedictsdotter	1		create	benedictsdotter	Q115610338	Benediktus			benedictsen	benedicts
@@ -676,7 +680,7 @@ benonisdatter	5		create	benonisdatter	Q16420681	Benoni			benonisen	benoni
 benonisen	6		create	benonisen	Q16420681	Benoni			benonisdatter	benoni
 bentsdatter	95		create	bentsdatter	Q818202	Bent			bentsen	bent
 bentsdotter	3		create	bentsdotter	Q818202	Bent			bentsen	bents
-bentsen	82		create	bentsen	Q818202	Bent		Beint	bentsdatter	bent
+bentsen	84		create	bentsen	Q818202 Q100870516	Bent Bendt		Beint	bentsdatter	bent
 bentson	8		create	bentson	Q818202	Bent			bentsdatter	bent
 bentssen	1		create	bentssen	Q818202	Bent			bentsdatter	bents
 bentsson	7		create	bentsson	Q818202	Bent			bentsdatter	bent
@@ -687,9 +691,10 @@ berdinesson	8		create	berdinesson				Berdines	berdinesdatter	berdine
 berdorsen	3		create	berdorsen				Berdor		berdor
 berdorson	2		create	berdorson				Berdor		berdor
 berdorsson	2		create	berdorsson				Berdor		berdor
-berendsson	2		create	berendsson	Q17522398	Berend				berend
-berendtsdotter	1		create	berendtsdotter	Q131398319	Berendt			berendtsson	berendts
-berendtsson	1		create	berendtsson	Q131398319	Berendt			berendtsdotter	berendt
+berendsdotter	2		create	berendsdotter	Q131398319	Berendt			berendsson	berends
+berendsson	2		create	berendsson	Q17522398	Berend			berendsdotter	berend
+berendtsdotter	2		create	berendtsdotter	Q131398319 Q17522398	Berendt Berend			berendtsson	berendts
+berendtsson	2		create	berendtsson	Q131398319 Q17522398	Berendt Berend			berendtsdotter	berendt
 berentsdatter	13		create	berentsdatter	Q18086583 Q63341347	Bernt Berent			berentsen	berent
 berentsdotter	1		create	berentsdotter	Q63341347	Berent			berentsen	berents
 berentsen	14		create	berentsen	Q18086583 Q63341347	Bernt Berent			berentsdatter	berent
@@ -716,8 +721,8 @@ bergulfsen	3		create	bergulfsen				Bergulf		bergulf
 bergulvsdotter	1		create	bergulvsdotter				Bergulv	bergulvsson	bergulvs
 bergulvson	1		create	bergulvson				Bergulv	bergulvsdotter	bergulv
 bergulvsson	3		create	bergulvsson				Bergulv	bergulvsdotter	bergulv
-berndtsdotter	19		create	berndtsdotter	Q18086577 Q131398319	Berndt Berendt			berndtsson	berndts
-berndtsson	35		create	berndtsson	Q18086577 Q131398319	Berndt Berendt			berndtsdotter	berndt
+berndtsdotter	23		create	berndtsdotter	Q18086577 Q18086583 Q131398319	Berndt Bernt Berendt			berndtsson	berndts
+berndtsson	42		create	berndtsson	Q18086577 Q18086583 Q131398319	Berndt Bernt Berendt			berndtsdotter	berndt
 berneksen	1		create	berneksen	Q50376435	Bernike				bernek
 bernersdatter	2		create	bernersdatter	Q123508158	Berner			bernerson	berner
 bernerson	1		create	bernerson	Q123508158	Berner			bernersdatter	berner
@@ -728,13 +733,14 @@ bernhardson	1		create	bernhardson	Q221978	Bernhard			bernhardsdotter	bernhard
 bernhardsson	13		create	bernhardsson	Q221978	Bernhard			bernhardsdotter	bernhard
 bernhardusdatter	2		create	bernhardusdatter	Q21143133	Bernhardus			bernhardusen	bernhardu
 bernhardusen	3		create	bernhardusen	Q21143133	Bernhardus			bernhardusdatter	bernhardu
+bernhartsen	1		create	bernhartsen	Q221978	Bernhard				bernhart
 bernikkesdatter	1		create	bernikkesdatter	Q50376435	Bernike				bernikke
 berntdatter	6		create	berntdatter	Q18086583	Bernt			berntsen	bernt
 berntsdatter	90		create	berntsdatter	Q18086583 Q63341347	Bernt Berent			berntsen	bernt
-berntsdotter	46		create	berntsdotter	Q18086583 Q63341347	Bernt Berent			berntsen	bernts
+berntsdotter	51		create	berntsdotter	Q18086583 Q18086577 Q63341347	Bernt Berndt Berent			berntsen	bernts
 berntsen	95		create	berntsen	Q18086583 Q63341347	Bernt Berent			berntsdatter	bernt
 berntson	42		create	berntson	Q18086583 Q63341347	Bernt Berent			berntsdatter	bernt
-berntsson	41		create	berntsson	Q18086583 Q63341347	Bernt Berent			berntsdatter	bernt
+berntsson	46		create	berntsson	Q18086583 Q18086577 Q63341347	Bernt Berndt Berent			berntsdatter	bernt
 bersvendsdatter	5		create	bersvendsdatter	Q30134908	Bersvend			bersvendsen	bersvend
 bersvendsen	8		create	bersvendsen	Q30134908	Bersvend			bersvendsdatter	bersvend
 berteldatter	1		create	berteldatter	Q827600	Bertel			bertelsen	bertel
@@ -812,7 +818,7 @@ bjorsdotter	1		create	bjorsdotter				Borje	bjorsson	bjors
 bjorsson	1		create	bjorsson				Borje	bjorsdotter	bjor
 björnsdotter	1		create	björnsdotter				Björn	björnsson	björns
 björnsson	1		create	björnsson				Björn	björnsdotter	björn
-bjugsdotter	1		create	bjugsdotter				Bjug	bjugson	bjugs
+bjugsdotter	1		create	bjugsdotter				Bjug	bjugsson	bjugs
 bjugson	1		create	bjugson				Bjug	bjugsdotter	bjug
 bjugsson	1		create	bjugsson				Bjug	bjugsdotter	bjug
 björnsdatter	2		create	björnsdatter	Q18918288 Q8851571	Bjørn Björn			björnsson	björn
@@ -849,8 +855,8 @@ bolivarsen	1		create	bolivarsen			Bolivar(2)			bolivar
 bolladotter	1		create	bolladotter	Q16421550	Bolli			bollason	bolla
 bollason	4		create	bollason	Q16421550	Bolli			bolladotter	bolla
 bolleson	1		create	bolleson	Q16421550	Bolli				bolle
-bondesdatter	6		create	bondesdatter				Bonde	bondesson	bonde
-bondesdotter	12		create	bondesdotter				Bonde	bondesson	bondes
+bondesdatter	6		create	bondesdatter				Bonde	bondesen	bonde
+bondesdotter	12		create	bondesdotter				Bonde	bondesen	bondes
 bondesen	5		create	bondesen				Bonde	bondesdotter	bonde
 bondessen	1		create	bondessen				Bonde	bondesdotter	bondes
 bondesson	5		create	bondesson				Bonde	bondesdotter	bonde
@@ -876,7 +882,7 @@ botolfsdatter	6		create	botolfsdatter				Botolf	botolfsen	botolf
 botolfsdotter	15		create	botolfsdotter				Botolf	botolfsen	botolfs
 botolfsen	5		create	botolfsen				Botolf	botolfsdotter	botolf
 botolfsson	2		create	botolfsson				Botolf	botolfsdotter	botolf
-botolvsdatter	2		create	botolvsdatter	Q12713875	Botolv			botolvson	botolv
+botolvsdatter	3		create	botolvsdatter	Q12713875	Botolv		BODOLV	botolvson	botolv
 botolvsdotter	5		create	botolvsdotter	Q12713875	Botolv			botolvson	botolvs
 botolvsen	1		create	botolvsen	Q12713875	Botolv			botolvsdotter	botolv
 botolvson	7		create	botolvson	Q12713875	Botolv			botolvsdotter	botolv
@@ -885,7 +891,8 @@ bottolfsen	7		create	bottolfsen				Bottolf Botolf	bottolfsdatter	bottolf
 bottolfsson	3		create	bottolfsson				Bottolf Botolf	bottolfsdatter	bottolf
 bottolvsson	1		create	bottolvsson				Bottolv		bottolv
 botulfsdotter	1		create	botulfsdotter				Botulf		botulfs
-botulvsen	1		create	botulvsen	Q12713875	Botolv				botulv
+botulvsdatter	1		create	botulvsdatter				Bodolv	botulvsen	botulv
+botulvsen	1		create	botulvsen	Q12713875	Botolv			botulvsdatter	botulv
 botvidsdotter	6		create	botvidsdotter	Q10433936	Botvid			botvidsson	botvids
 botvidsson	5		create	botvidsson	Q10433936	Botvid			botvidsdotter	botvid
 botwedsdotter	1		create	botwedsdotter	Q10433936	Botvid				botweds
@@ -897,6 +904,7 @@ bragesdatter	1		create	bragesdatter	Q11962056	Brage			bragesson	brage
 bragesson	1		create	bragesson	Q11962056	Brage			bragesdatter	brage
 brandson	1		create	brandson	Q29551902	Brand				brand
 brandsson	3		create	brandsson	Q29551902	Brand				brand
+brandtsson	1		create	brandtsson	Q29551902	Brand				brandt
 bratson	1		create	bratson				Brat		brat
 brattson	1		create	brattson				Bratt		bratt
 bredesdatter	2		create	bredesdatter	Q16179529	Brede			bredesen	brede
@@ -956,6 +964,7 @@ budlason	2		create	budlason				Budli		budla
 budlasson	1		create	budlasson				Budli		budla
 budlidotter	1		create	budlidotter				Budli		budli
 bundesdatter	1		create	bundesdatter				Bonde		bunde
+burchardtsdotter	1		create	burchardtsdotter				Burchart		burchardts
 bursdatter	1		create	bursdatter				Buer		bur
 busksdatter	1		create	busksdatter				Busk		busk
 byrgesdatter	1		create	byrgesdatter				Byrge	byrgesen	byrge
@@ -1146,6 +1155,7 @@ constantinsdatter	2		create	constantinsdatter	Q5163687	Constantin			constantinse
 constantinsen	3		create	constantinsen	Q5163687	Constantin			constantinsdatter	constantin
 cordsdatter	1		create	cordsdatter	Q1132073	Cord				cord
 cordtsson	1		create	cordtsson	Q123336101	Cordt				cordt
+corfidsdatter	2		create	corfidsdatter				Korfits		corfid
 corfitsdatter	1		create	corfitsdatter	Q105791974	Corfitz			corfitsen	corfit
 corfitsen	3		create	corfitsen				Korfits Corfits	corfitsdatter	corfit
 corfitzdatter	13		create	corfitzdatter	Q105791974	Corfitz		Korfitz Korfits	corfitzson	corfitz
@@ -1161,7 +1171,7 @@ corneliusen	9		create	corneliusen	Q17518364 Q17518394	Cornelius Kornelius			corn
 corneliussen	24		create	corneliussen	Q17518364	Cornelius			corneliusdatter	cornelius
 corneliusson	10		create	corneliusson	Q17518364	Cornelius			corneliusdatter	corneliu
 cornelusdatter	1		create	cornelusdatter	Q17518364	Cornelius				cornelu
-cortsdatter	35		create	cortsdatter	Q21144115 Q16430664	Cort Kort			cortsen	cort
+cortsdatter	36		create	cortsdatter	Q21144115 Q16430664 Q1132073	Cort Kort Cord			cortsen	cort
 cortsen	25		create	cortsen	Q21144115 Q16430664	Cort Kort			cortsdatter	cort
 cortson	2		create	cortson	Q21144115	Cort			cortsdatter	cort
 cosmusdatter	2		create	cosmusdatter	Q19967827	Cosmus				cosmu
@@ -1172,7 +1182,7 @@ cristiansen	1		create	cristiansen	Q256744	Kirsten				cristian
 cristiansson	2		create	cristiansson	Q12794332	Kristian	Christian(3)			cristian
 cristoffersdatter	1		create	cristoffersdatter	Q1789415	Kristoffer			cristoffersson	cristoffer
 cristoffersdotter	1		create	cristoffersdotter	Q1084384	Christoffer			cristoffersson	cristoffers
-cristoffersson	1		create	cristoffersson	Q1084384	Christoffer			cristoffersdatter	cristoffer
+cristoffersson	1		create	cristoffersson	Q1084384	Christoffer			cristoffersdotter	cristoffer
 cristophersen	1		create	cristophersen	Q1084472	Christopher				cristopher
 cristophersson	1		create	cristophersson	Q1084472	Christopher				cristopher
 dagesdotter	2		create	dagesdotter				Dage	dagesson	dages
@@ -1204,10 +1214,10 @@ danckertsen	4		create	danckertsen				Danchert Danckert		danckert
 danieldatter	2		create	danieldatter	Q14516546	Daniel			danielsson	daniel
 daniellsdotter	1		create	daniellsdotter	Q14516546	Daniel				daniells
 danielsdatter	219		create	danielsdatter	Q14516546 Q48781188	Daniel Daniels			danielsson	daniel
-danielsdotter	484	Q140226461	link	danielsdotter	Q14516546	Daniel			danielsson	daniels
+danielsdotter	492	Q140226461	link	danielsdotter	Q14516546 Q11896337	Daniel Taneli			danielsson	daniels
 danielsen	213		create	danielsen	Q14516546 Q48781188	Daniel Daniels			danielsdotter	daniel
 danielson	79		create	danielson	Q14516546	Daniel			danielsdotter	daniel
-danielsson	442		create	danielsson	Q14516546	Daniel			danielsdotter	daniel
+danielsson	447		create	danielsson	Q14516546 Q11896337	Daniel Taneli			danielsdotter	daniel
 danielssson	1		create	danielssson	Q14516546	Daniel			danielsdotter	daniels
 dankertsen	1		create	dankertsen				Danchert		dankert
 danpsdatter	1		create	danpsdatter				Danp		danp
@@ -1218,10 +1228,10 @@ dansdotter	1		create	dansdotter	Q2487038	Dan			dansson	dans
 danson	1		create	danson	Q2487038	Dan			dansdotter	dan
 dansson	12		create	dansson	Q2487038	Dan			dansdotter	dan
 davidsdatter	142		create	davidsdatter	Q18057751	David			davidsen	david
-davidsdotter	96		create	davidsdotter	Q18057751 Q61957819	David Daavid			davidsen	davids
+davidsdotter	102		create	davidsdotter	Q18057751 Q19097518 Q61957819	David Taavetti Daavid			davidsen	davids
 davidsen	133		create	davidsen	Q18057751	David			davidsdatter	david
 davidson	33		create	davidson	Q18057751	David			davidsdatter	david
-davidsson	120		create	davidsson	Q18057751	David			davidsdatter	david
+davidsson	123		create	davidsson	Q18057751 Q19097518	David Taavetti			davidsdatter	david
 dederiksen	1		create	dederiksen	Q30145907	Didrich				dederik
 dethlefsdatter	2		create	dethlefsdatter	Q1201205	Detlef			dethlefsen	dethlef
 dethlefsen	2		create	dethlefsen	Q1201205	Detlef			dethlefsdatter	dethlef
@@ -1243,10 +1253,10 @@ didrichsen	8		create	didrichsen	Q15883468 Q30145907 Q21031073	Didrik Didrich Dir
 didrichsson	7		create	didrichsson	Q30145907 Q20804429 Q15883468	Didrich Diedrich Didrik			didrichsdatter	didrich
 didricsson	1		create	didricsson	Q15883468	Didrik				didric
 didriksdatter	30		create	didriksdatter	Q15883468 Q20804429 Q21145633 Q30145907 Q5274119	Didrik Diedrich Diderich Didrich Diderik		Dirich	didriksen	didrik
-didriksdotter	17		create	didriksdotter	Q15883468 Q20804429 Q30145907	Didrik Diedrich Didrich			didriksen	didriks
+didriksdotter	18		create	didriksdotter	Q15883468 Q20804429 Q30145907 Q18145860	Didrik Diedrich Didrich Dietrich			didriksen	didriks
 didriksen	36		create	didriksen	Q15883468 Q20804429 Q30145907 Q133969041	Didrik Diedrich Didrich Diedrik			didriksdatter	didrik
 didrikson	10		create	didrikson	Q15883468	Didrik			didriksdatter	didrik
-didriksson	22		create	didriksson	Q15883468 Q20804429 Q30145907	Didrik Diedrich Didrich			didriksdatter	didrik
+didriksson	23		create	didriksson	Q15883468 Q20804429 Q30145907 Q18145860	Didrik Diedrich Didrich Dietrich			didriksdatter	didrik
 diederichson	1		create	diederichson	Q21142614	Diederich				diederich
 diedrichsdotter	3		create	diedrichsdotter	Q20804429	Diedrich			diedrichsson	diedrichs
 diedrichsson	6		create	diedrichsson	Q20804429 Q15883468	Diedrich Didrik			diedrichsdotter	diedrich
@@ -1314,13 +1324,13 @@ edisen	1		create	edisen				Edies	edisdatter	edi
 edissen	1		create	edissen				Edies	edisdatter	edis
 edmundsdatter	1		create	edmundsdatter	Q401836	Edmund			edmundsson	edmund
 edmundsson	2		create	edmundsson	Q401836	Edmund			edmundsdatter	edmund
-edvardsdatter	53		create	edvardsdatter			Edvard(5)		edvardsen	edvard
+edvardsdatter	56		create	edvardsdatter			Edvard(5)	Edevart	edvardsen	edvard
 edvardsdotter	14		create	edvardsdotter			Edvard(5)		edvardsen	edvards
-edvardsen	71		create	edvardsen			Edvard(5)		edvardsdatter	edvard
+edvardsen	74		create	edvardsen			Edvard(5)	Edvart	edvardsdatter	edvard
 edvardson	5		create	edvardson			Edvard(5)		edvardsdatter	edvard
 edvardsson	12		create	edvardsson			Edvard(5)		edvardsdatter	edvard
-edvartsdatter	3		create	edvartsdatter				Edvart Edevart	edvartsen	edvart
-edvartsen	4		create	edvartsen				Edvart	edvartsdatter	edvart
+edvartsdatter	4		create	edvartsdatter			Edvard(5)	Edvart Edevart	edvartsen	edvart
+edvartsen	10		create	edvartsen			Edvard(5)	Edvart	edvartsdatter	edvart
 edvinsdotter	1		create	edvinsdotter	Q18115390	Edvin			edvinsen	edvins
 edvinsen	3		create	edvinsen	Q18115390	Edvin			edvinsdotter	edvin
 edvinsson	2		create	edvinsson	Q18115390	Edvin			edvinsdotter	edvin
@@ -1345,8 +1355,8 @@ egidusdatter	1		create	egidusdatter				Egedius		egidu
 egilson	1		create	egilson	Q11680006	Egil				egil
 egilsoson	1		create	egilsoson	Q11680006	Egil				egilso
 egilsson	12		create	egilsson	Q11680006	Egil	Egill(2) egill(2)			egil
-eielsdatter	3		create	eielsdatter				Eiel	eielsen	eiel
-eielsdotter	4		create	eielsdotter				Eiel	eielsen	eiels
+eielsdatter	3		create	eielsdatter				Eiel	eielson	eiel
+eielsdotter	4		create	eielsdotter				Eiel	eielson	eiels
 eielsen	3		create	eielsen				Eiel	eielsdotter	eiel
 eielson	3		create	eielson				Eiel	eielsdotter	eiel
 eilardsson	2		create	eilardsson				Eilard		eilard
@@ -1650,6 +1660,7 @@ estensdotter	1		create	estensdotter	Q11967978	Esten			estensen	estens
 estensen	11		create	estensen	Q11967978	Esten			estensdatter	esten
 estensson	1		create	estensson	Q11967978	Esten			estensdatter	esten
 evanson	1		create	evanson	Q4567129	Even				evan
+evardsdatter	1		create	evardsdatter	Q13580919	Evert				evard
 evendatter	1		create	evendatter	Q4567129	Even			evensen	even
 evensdatter	179		create	evensdatter	Q4567129	Even			evensen	even
 evensdotter	1		create	evensdotter	Q4567129	Even			evensen	evens
@@ -1657,7 +1668,7 @@ evensen	221		create	evensen	Q4567129	Even		Eiven	evensdatter	even
 evenson	4		create	evenson	Q4567129	Even			evensdatter	even
 evensson	1		create	evensson	Q4567129	Even			evensdatter	even
 evertsdatter	39		create	evertsdatter	Q13580919 Q95689661	Evert Ewert			evertsen	evert
-evertsdotter	12		create	evertsdotter	Q13580919	Evert			evertsen	everts
+evertsdotter	13		create	evertsdotter	Q13580919	Evert		Everdt	evertsen	everts
 evertsen	36		create	evertsen	Q13580919 Q95689661	Evert Ewert			evertsdatter	evert
 evertson	3		create	evertson	Q13580919	Evert			evertsdatter	evert
 evertsson	13		create	evertsson	Q13580919 Q95689661	Evert Ewert			evertsdatter	evert
@@ -1745,7 +1756,7 @@ filpusson	3		create	filpusson				Filpus	filpusdotter	filpu
 finbosdatter	4		create	finbosdatter				Finbo	finbosen	finbo
 finbosen	4		create	finbosen				Finbo	finbosdatter	finbo
 finchelsen	1		create	finchelsen				Finkel		finchel
-findsdatter	1		create	findsdatter	Q121890676	Find			findson	find
+findsdatter	1		create	findsdatter	Q121890676	Find			findsen	find
 findsen	1		create	findsen	Q121890676	Find			findsdatter	find
 findson	1		create	findson	Q121890676	Find			findsdatter	find
 fingarsen	1		create	fingarsen				Fingar		fingar
@@ -1792,20 +1803,20 @@ fordelsdatter	16		create	fordelsdatter				Fordel	fordelsen	fordel
 fordelsen	12		create	fordelsen				Fordel	fordelsdatter	fordel
 fordelson	2		create	fordelson				Fordel	fordelsdatter	fordel
 fornjotsson	3		create	fornjotsson				Fornjot		fornjot
-frandsdatter	17		create	frandsdatter	Q54165679	Frands			frandsen	frand
-frandsen	15		create	frandsen	Q54165679	Frands			frandsdatter	frand
+frandsdatter	26		create	frandsdatter	Q54165679 Q16275875 Q45373513	Frands Frantz Frants			frandsen	frand
+frandsen	20		create	frandsen	Q54165679 Q45373513 Q16275875	Frands Frants Frantz			frandsdatter	frand
 frandtsen	1		create	frandtsen				Frandts		frandt
 fransdatter	4		create	fransdatter	Q3480175	Frans			fransson	fran
 fransdotter	46		create	fransdotter	Q3480175 Q4925932	Frans Franz			fransson	frans
 fransen	14		create	fransen	Q3480175	Frans			fransdotter	fran
 fransson	43		create	fransson	Q3480175	Frans			fransdotter	fran
-frantsdatter	30		create	frantsdatter	Q45373513 Q16275875	Frants Frantz			frantsen	frant
+frantsdatter	32		create	frantsdatter	Q45373513 Q16275875 Q54165679	Frants Frantz Frands			frantsen	frant
 frantsdotter	1		create	frantsdotter	Q45373513	Frants			frantsen	frants
-frantsen	31		create	frantsen	Q45373513 Q16275875	Frants Frantz			frantsdatter	frant
+frantsen	32		create	frantsen	Q45373513 Q16275875 Q54165679	Frants Frantz Frands			frantsdatter	frant
 frantson	1		create	frantson	Q45373513	Frants			frantsdatter	frant
 frantsson	7		create	frantsson	Q45373513	Frants			frantsdatter	frant
-frantzdatter	16		create	frantzdatter	Q16275875 Q45373513	Frantz Frants			frantzsen	frantz
-frantzdotter	2		create	frantzdotter	Q16275875	Frantz			frantzsen	frantz
+frantzdatter	17		create	frantzdatter	Q16275875 Q45373513	Frantz Frants		Frandts	frantzson	frantz
+frantzdotter	2		create	frantzdotter	Q16275875	Frantz			frantzson	frantz
 frantzsen	1		create	frantzsen	Q16275875	Frantz			frantzdatter	frantz
 frantzson	1		create	frantzson	Q16275875	Frantz			frantzdatter	frantz
 franzdatter	2		create	franzdatter	Q4925932 Q3480175	Franz Frans			franzsson	franz
@@ -1869,9 +1880,9 @@ frodasson	8		create	frodasson				Frodi Froda		froda
 froddesdatter	1		create	froddesdatter				Frodde		frodde
 frodesdatter	1		create	frodesdatter				Frodde	frodesson	frode
 frodesdotter	1		create	frodesdotter	Q1420110	Frode			frodesson	frodes
-frodesson	3		create	frodesson	Q1420110	Frode		Frodi	frodesdatter	frode
+frodesson	3		create	frodesson	Q1420110	Frode		Frodi	frodesdotter	frode
 fromholdsdotter	3		create	fromholdsdotter	Q133256830 Q84986902	Frommhold Fromhold			fromholdsson	fromholds
-fromholdsson	3		create	fromholdsson	Q84986902	Fromhold			fromholdsdotter	fromhold
+fromholdsson	5		create	fromholdsson	Q84986902	Fromhold		Fromholt	fromholdsdotter	fromhold
 fromholdtsdotter	1		create	fromholdtsdotter				Fromholdt	fromholdtsson	fromholdts
 fromholdtsson	3		create	fromholdtsson				Fromholdt	fromholdtsdotter	fromholdt
 frostensdotter	3		create	frostensdotter				Frosten	frostensson	frostens
@@ -1879,6 +1890,7 @@ frostensson	7		create	frostensson				Frosten	frostensdotter	frosten
 frostesson	1		create	frostesson	Q16424412	Frosti				froste
 frostidotter	1		create	frostidotter	Q16424412	Frosti			frostison	frosti
 frostison	1		create	frostison	Q16424412	Frosti			frostidotter	frosti
+frothisson	1		create	frothisson				Frodi		frothi
 fryddesdatter	1		create	fryddesdatter				Frodde		frydde
 frøybjørnsson	1		create	frøybjørnsson				Frøybjørn		frøybjørn
 frøygardsson	1		create	frøygardsson				Frøygard		frøygard
@@ -1902,6 +1914,7 @@ gammelsen	1		create	gammelsen				Gammel	gammelsdatter	gammel
 gammelsson	6		create	gammelsson				Gammel	gammelsdatter	gammel
 garbrandtsdatter	2		create	garbrandtsdatter				Garbrandt	garbrandtsen	garbrandt
 garbrandtsen	2		create	garbrandtsen				Garbrandt	garbrandtsdatter	garbrandt
+garbrantsdatter	1		create	garbrantsdatter				Garbrandt		garbrant
 gardsdatter	2		create	gardsdatter	Q12717105	Gard			gardsson	gard
 gardsdotter	1		create	gardsdotter	Q12717105	Gard			gardsson	gards
 gardsen	10		create	gardsen	Q12717105	Gard			gardsdatter	gard
@@ -1918,9 +1931,9 @@ garðarsson	1		create	garðarsson	Q16424835	Garðar				garðar
 gasesdatter	1		create	gasesdatter				Gase		gase
 gautesdatter	17		create	gautesdatter	Q21451903	Gaute		Gaut	gautesen	gaute
 gautesdotter	3		create	gautesdotter	Q21451903	Gaute			gautesen	gautes
-gautesen	9		create	gautesen	Q21451903	Gaute			gautesdatter	gaute
+gautesen	11		create	gautesen	Q21451903 Q124630667	Gaute Gude			gautesdatter	gaute
 gauteson	9		create	gauteson	Q21451903	Gaute			gautesdatter	gaute
-gautesson	9		create	gautesson	Q21451903	Gaute			gautesdatter	gaute
+gautesson	10		create	gautesson	Q21451903 Q124630667	Gaute Gude			gautesdatter	gaute
 gautreksson	2		create	gautreksson				Gautrek		gautrek
 gautsson	6		create	gautsson	Q21451903 Q16424899	Gaute Gauti		Gaut		gaut
 geblesen	2		create	geblesen				Geble		geble
@@ -1942,7 +1955,9 @@ georgsdotter	31		create	georgsdotter	Q1985538 Q5548460	Georg Georgius			georgsso
 georgsen	13		create	georgsen	Q1985538	Georg			georgsdotter	georg
 georgsson	36		create	georgsson	Q1985538 Q5548460	Georg Georgius	George(2)		georgsdotter	georg
 gerbertsen	2		create	gerbertsen	Q11699693	Gerbert				gerbert
-gerdtsdotter	2		create	gerdtsdotter	Q21146848	Gerdt			gerdtsson	gerdts
+gerdsdotter	1		create	gerdsdotter	Q5553169	Gert				gerds
+gerdtsdatter	1		create	gerdtsdatter	Q5553169	Gert			gerdtsen	gerdt
+gerdtsdotter	3		create	gerdtsdotter	Q21146848 Q5553169	Gerdt Gert			gerdtsen	gerdts
 gerdtsen	1		create	gerdtsen				Gierdt	gerdtsdotter	gerdt
 gerdtsson	1		create	gerdtsson	Q21146848	Gerdt			gerdtsdotter	gerdt
 gerhardsdatter	11		create	gerhardsdatter	Q7996169	Gerhard			gerhardsen	gerhard
@@ -1960,14 +1975,15 @@ germundsson	8		create	germundsson	Q33101545	Germund			germundsdotter	germund
 gertsdatter	16		create	gertsdatter	Q5553169 Q71148594	Gert Giert			gertsen	gert
 gertsdotter	6		create	gertsdotter	Q5553169	Gert			gertsen	gerts
 gertsen	24		create	gertsen	Q5553169 Q71148594 Q19572194	Gert Giert Gjert			gertsdatter	gert
-gertsson	7		create	gertsson	Q5553169	Gert			gertsdatter	gert
+gertsson	8		create	gertsson	Q5553169 Q21146848	Gert Gerdt			gertsdatter	gert
 gestsdatter	1		create	gestsdatter	Q121766356	Gjest			gestsson	gest
 gestsson	2		create	gestsson	Q121766356	Gjest			gestsdatter	gest
 gevertsdatter	1		create	gevertsdatter	Q20896931	Gevert				gevert
 gevertsdotter	1		create	gevertsdotter	Q20896931	Gevert				geverts
+gierdsdatter	1		create	gierdsdatter	Q5553169	Gert				gierd
 gierdtsdotter	2		create	gierdtsdotter	Q21146848	Gerdt				gierdts
 gierlougsen	1		create	gierlougsen				Gjerlaug		gierloug
-giertsdatter	22		create	giertsdatter	Q71148594 Q19572194 Q5553169	Giert Gjert Gert			giertsen	giert
+giertsdatter	23		create	giertsdatter	Q71148594 Q19572194 Q5553169 Q21146848	Giert Gjert Gert Gerdt			giertsen	giert
 giertsen	18		create	giertsen	Q71148594 Q19572194 Q5553169	Giert Gjert Gert			giertsdatter	giert
 giertson	1		create	giertson	Q71148594	Giert			giertsdatter	giert
 giertsson	2		create	giertsson	Q71148594	Giert			giertsdatter	giert
@@ -2004,7 +2020,7 @@ gizurarson	1		create	gizurarson	Q838800	Gizur				gizurar
 giälarsson	1		create	giälarsson				Gälar		giälar
 giödesdatter	1		create	giödesdatter				Giøde		giöde
 giødesdatter	7		create	giødesdatter				Giøde	giødesen	giøde
-giødesen	4		create	giødesen				Giøde	giødesdatter	giøde
+giødesen	5		create	giødesen				Giøde Giøte	giødesdatter	giøde
 giøtesdatter	2		create	giøtesdatter				Giøte	giøtesen	giøte
 giøtesen	2		create	giøtesen				Giøte	giøtesdatter	giøte
 gjardarsdotter	1		create	gjardarsdotter				Gjardar	gjardarsson	gjardars
@@ -2025,10 +2041,10 @@ gjermundsdotter	8		create	gjermundsdotter	Q3441894 Q24401711	Gjermund Geirmund		
 gjermundsen	41		create	gjermundsen	Q3441894	Gjermund			gjermundsdatter	gjermund
 gjermundson	26		create	gjermundson	Q3441894 Q24401711	Gjermund Geirmund			gjermundsdatter	gjermund
 gjermundsson	4		create	gjermundsson	Q3441894	Gjermund			gjermundsdatter	gjermund
-gjertsdatter	35		create	gjertsdatter	Q19572194 Q71148594 Q5553169	Gjert Giert Gert			gjertsen	gjert
+gjertsdatter	40		create	gjertsdatter	Q19572194 Q21146848 Q71148594 Q5553169	Gjert Gerdt Giert Gert			gjertsen	gjert
 gjertsdotter	2		create	gjertsdotter	Q19572194	Gjert			gjertsen	gjerts
-gjertsen	51		create	gjertsen	Q19572194 Q71148594	Gjert Giert			gjertsdatter	gjert
-gjertson	3		create	gjertson	Q19572194 Q5553169	Gjert Gert			gjertsdatter	gjert
+gjertsen	52		create	gjertsen	Q19572194 Q71148594 Q21146848	Gjert Giert Gerdt			gjertsdatter	gjert
+gjertson	4		create	gjertson	Q19572194 Q5553169 Q21146848	Gjert Gert Gerdt			gjertsdatter	gjert
 gjeruldsdatter	9		create	gjeruldsdatter	Q30153670	Gjeruld			gjeruldsen	gjeruld
 gjeruldsen	6		create	gjeruldsen	Q30153670	Gjeruld			gjeruldsdatter	gjeruld
 gjerulvsdatter	5		create	gjerulvsdatter				Gjerulv	gjerulvsen	gjerulv
@@ -2059,18 +2075,22 @@ gløderson	2		create	gløderson				Gløder	glødersdatter	gløder
 glødersson	3		create	glødersson				Gløder	glødersdatter	gløder
 gløersdatter	2		create	gløersdatter	Q121766400	Gløer			gløersen	gløer
 gløersen	1		create	gløersen	Q121766400	Gløer			gløersdatter	gløer
-godfredsen	1		create	godfredsen	Q124096080	Godfred				godfred
-godfredsson	1		create	godfredsson	Q124096080	Godfred				godfred
+godfredsdatter	1		create	godfredsdatter	Q23497956	Gotfred			godfredsen	godfred
+godfredsen	6		create	godfredsen	Q23497956 Q124096080	Gotfred Godfred			godfredsdatter	godfred
+godfredsson	1		create	godfredsson	Q124096080	Godfred			godfredsdatter	godfred
 godgestsdatter	1		create	godgestsdatter				Godgest	godgestsson	godgest
 godgestsson	2		create	godgestsson				Godgest	godgestsdatter	godgest
 godhjaltsson	2		create	godhjaltsson				Godhjalt		godhjalt
+godscalksdatter	1		create	godscalksdatter				Godtskalk		godscalk
 godskalksdatter	4		create	godskalksdatter				Godskalk	godskalksson	godskalk
 godskalksen	3		create	godskalksen				Godskalk	godskalksdatter	godskalk
-godskalksson	4		create	godskalksson				Godskalk	godskalksdatter	godskalk
+godskalksson	5		create	godskalksson	Q30153695	Gotskalk		Godskalk	godskalksdatter	godskalk
 godskedatter	2		create	godskedatter	Q30153677	Godske			godskesen	godske
 godskesdatter	11		create	godskesdatter	Q30153677	Godske			godskesen	godske
 godskesen	15		create	godskesen	Q30153677	Godske			godskesdatter	godske
 godskeson	4		create	godskeson	Q30153677	Godske			godskesdatter	godske
+godtskalksdatter	3		create	godtskalksdatter	Q30153695	Gotskalk		Gotschalk	godtskalkson	godtskalk
+godtskalkson	2		create	godtskalkson	Q30153695	Gotskalk			godtskalksdatter	godtskalk
 goetmersen	1		create	goetmersen				Gothamar		goetmer
 gommesdatter	5		create	gommesdatter				Gomme	gommesen	gomme
 gommesen	2		create	gommesen				Gomme	gommesdatter	gomme
@@ -2080,22 +2100,22 @@ gorgsdatter	1		create	gorgsdatter	Q1985538	Georg				gorg
 gormsen	2		create	gormsen	Q1782248	Gorm				gorm
 gormsson	3		create	gormsson	Q1782248	Gorm				gorm
 gorsson	4		create	gorsson	Q11972374	Gor				gor
-gotfredsdatter	1		create	gotfredsdatter	Q16746939	Gottfried			gotfredsen	gotfred
+gotfredsdatter	2		create	gotfredsdatter	Q124096080 Q16746939	Godfred Gottfried			gotfredsen	gotfred
 gotfredsen	1		create	gotfredsen	Q23497956	Gotfred			gotfredsdatter	gotfred
-gothardsdatter	1		create	gothardsdatter	Q107190449	Gothard			gothardsen	gothard
-gothardsen	2		create	gothardsen	Q107190449	Gothard			gothardsdatter	gothard
+gothardsdatter	1		create	gothardsdatter				Gødert	gothardsen	gothard
+gothardsen	3		create	gothardsen	Q107190449	Gothard		Gødert	gothardsdatter	gothard
 gotschalksdatter	2		create	gotschalksdatter	Q30153695	Gotskalk		Gotschalk		gotschalk
 gotskalkdatter	2		create	gotskalkdatter	Q30153695	Gotskalk			gotskalksson	gotskalk
-gotskalksdatter	5		create	gotskalksdatter	Q30153695	Gotskalk			gotskalksson	gotskalk
-gotskalksdotter	5		create	gotskalksdotter	Q30153695	Gotskalk			gotskalksson	gotskalks
-gotskalksen	9		create	gotskalksen	Q30153695	Gotskalk			gotskalksdotter	gotskalk
-gotskalkson	5		create	gotskalkson	Q30153695	Gotskalk			gotskalksdotter	gotskalk
-gotskalksson	10		create	gotskalksson	Q30153695	Gotskalk			gotskalksdotter	gotskalk
+gotskalksdatter	15		create	gotskalksdatter	Q30153695	Gotskalk		Godtskalk Godskalk	gotskalksson	gotskalk
+gotskalksdotter	9		create	gotskalksdotter	Q30153695	Gotskalk		Godskalk Godtskalk	gotskalksson	gotskalks
+gotskalksen	9		create	gotskalksen	Q30153695	Gotskalk			gotskalksdatter	gotskalk
+gotskalkson	8		create	gotskalkson	Q30153695	Gotskalk		Godtskalk	gotskalksdatter	gotskalk
+gotskalksson	11		create	gotskalksson	Q30153695	Gotskalk		Godtskalk	gotskalksdatter	gotskalk
 gottfridsdotter	1		create	gottfridsdotter	Q21061257	Gottfrid			gottfridsson	gottfrids
 gottfridsson	2		create	gottfridsson	Q16746939 Q21061257	Gottfried Gottfrid			gottfridsdotter	gottfrid
-gottfriedsdatter	1		create	gottfriedsdatter	Q16746939	Gottfried			gottfriedsson	gottfried
+gottfriedsdatter	4		create	gottfriedsdatter	Q16746939	Gottfried		Godfrid	gottfriedsson	gottfried
 gottfriedsdotter	3		create	gottfriedsdotter	Q16746939	Gottfried			gottfriedsson	gottfrieds
-gottfriedsson	2		create	gottfriedsson	Q16746939	Gottfried			gottfriedsdotter	gottfried
+gottfriedsson	2		create	gottfriedsson	Q16746939	Gottfried			gottfriedsdatter	gottfried
 gottliebsdatter	1		create	gottliebsdatter	Q18020611	Gottlieb			gottliebsson	gottlieb
 gottliebsson	1		create	gottliebsson	Q18020611	Gottlieb			gottliebsdatter	gottlieb
 gottskalkson	1		create	gottskalkson	Q30153695	Gotskalk				gottskalk
@@ -2126,7 +2146,7 @@ grelsdotter	23		create	grelsdotter	Q61957903	Grels			grelsson	grels
 grelsson	18		create	grelsson	Q61957903	Grels			grelsdotter	grel
 grimkellsson	1		create	grimkellsson	Q16425638	Grimkell				grimkell
 grimkelsson	2		create	grimkelsson				Grimkel		grimkel
-grimsdatter	6		create	grimsdatter				Grim Grím	grimsen	grim
+grimsdatter	6		create	grimsdatter				Grim Grím	grimson	grim
 grimsen	4		create	grimsen				Grim	grimsdatter	grim
 grimson	4		create	grimson	Q87325772	Grimm		Grim	grimsdatter	grim
 grimsson	2		create	grimsson				Grim	grimsdatter	grim
@@ -2166,7 +2186,7 @@ gudmundsdotter	31		create	gudmundsdotter	Q1557742 Q114245737	Gudmund Gudmundus		
 gudmundsen	130		create	gudmundsen	Q1557742	Gudmund			gudmundsdatter	gudmund
 gudmundson	32		create	gudmundson	Q1557742	Gudmund			gudmundsdatter	gudmund
 gudmundsson	66		create	gudmundsson	Q1557742 Q114245737	Gudmund Gudmundus			gudmundsdatter	gudmund
-gudraudsdatter	1		create	gudraudsdatter				Gudraud	gudraudsen	gudraud
+gudraudsdatter	1		create	gudraudsdatter				Gudraud	gudraudsson	gudraud
 gudraudsen	1		create	gudraudsen				Gudraud	gudraudsdatter	gudraud
 gudraudsson	1		create	gudraudsson				Gudraud	gudraudsdatter	gudraud
 gudrodsen	1		create	gudrodsen				Gudrod		gudrod
@@ -2322,6 +2342,7 @@ guthormsen	3		create	guthormsen	Q20755782	Guttorm				guthorm
 guthormson	1		create	guthormson	Q20755782	Guttorm				guthorm
 gutormsen	4		create	gutormsen	Q20755782	Guttorm		Gutorm		gutorm
 gutormson	1		create	gutormson				Gutorm		gutorm
+gutserksdotter	1		create	gutserksdotter				Gudserk		gutserks
 guttormdatter	3		create	guttormdatter				Gutorm	guttormsen	guttorm
 guttormsdatter	169		create	guttormsdatter	Q20755782	Guttorm			guttormsen	guttorm
 guttormsdotter	14		create	guttormsdotter	Q20755782	Guttorm			guttormsen	guttorms
@@ -2373,8 +2394,9 @@ gødikedotter	1		create	gødikedotter				Gødike	gødikesen	gødike
 gødikesen	2		create	gødikesen				Gødike	gødikedotter	gødike
 gøedesdatter	1		create	gøedesdatter				Gøede	gøedesen	gøede
 gøedesen	1		create	gøedesen				Gøede	gøedesdatter	gøede
-gøtesdatter	1		create	gøtesdatter				Gøte		gøte
-gøthesdatter	2		create	gøthesdatter	Q21451903 Q47458782	Gaute Gøthe			gøthesen	gøthe
+gøtesdatter	1		create	gøtesdatter				Gøte	gøtesen	gøte
+gøtesen	2		create	gøtesen				Giøde	gøtesdatter	gøte
+gøthesdatter	3		create	gøthesdatter	Q21451903 Q47458782	Gaute Gøthe		Giøde	gøthesen	gøthe
 gøthesen	3		create	gøthesen	Q47458782	Gøthe			gøthesdatter	gøthe
 gōdwinesdatter	1		create	gōdwinesdatter				Gōdwine		gōdwine
 haagensdatter	89		create	haagensdatter	Q11973572 Q30188300	Haagen Hågen			haagensen	haagen
@@ -2410,6 +2432,7 @@ hadvardson	1		create	hadvardson				Hadvard	hadvardsdatter	hadvard
 hadvarsdatter	3		create	hadvarsdatter				Hadvar	hadvarsen	hadvar
 hadvarsen	4		create	hadvarsen				Hadvar	hadvarsdatter	hadvar
 hadvarson	1		create	hadvarson				Hadvar	hadvarsdatter	hadvar
+hafdorsdatter	1		create	hafdorsdatter				Haftor		hafdor
 hafliðason	1		create	hafliðason	Q16426526	Hafliði				hafliða
 hafthorsson	1		create	hafthorsson	Q16426577	Hafthor				hafthor
 haftoresdatter	1		create	haftoresdatter				Haftore		haftore
@@ -2419,6 +2442,7 @@ haftorsson	1		create	haftorsson	Q16426577	Hafthor			haftorsdatter	haftor
 hafurbjörnsson	1		create	hafurbjörnsson				hafurbjörn		hafurbjörn
 hafursson	1		create	hafursson				Hafur		hafur
 hagbardtsen	1		create	hagbardtsen				Hagbardt		hagbardt
+hagbartsen	1		create	hagbartsen				Hagbardt		hagbart
 hagbartson	3		create	hagbartson	Q30188568	Hagbart				hagbart
 hagensen	1		create	hagensen	Q11973572	Haagen				hagen
 hagåensdatter	1		create	hagåensdatter	Q30188300	Hågen				hagåen
@@ -2433,9 +2457,9 @@ hakonsson	5		create	hakonsson	Q15711061 Q15711055 Q15711062	Håkon Hakan Hakon		
 haktorsdatter	2		create	haktorsdatter				Haktor	haktorsen	haktor
 haktorsen	5		create	haktorsen				Haktor	haktorsdatter	haktor
 haktorson	4		create	haktorson				Haktor Hactor	haktorsdatter	haktor
-haldadatter	1		create	haldadatter				Halda	haldasson	halda
-haldadotter	4		create	haldadotter				Halda	haldasson	halda
-haldasdatter	3		create	haldasdatter				Halda	haldasson	halda
+haldadatter	1		create	haldadatter				Halda	haldason	halda
+haldadotter	4		create	haldadotter				Halda	haldason	halda
+haldasdatter	3		create	haldasdatter				Halda	haldason	halda
 haldason	2		create	haldason				Halda	haldadotter	halda
 haldasson	2		create	haldasson				Halda	haldadotter	halda
 haldoesdatter	1		create	haldoesdatter				Haldoe	haldoesen	haldoe
@@ -2448,9 +2472,9 @@ haldorsson	15		create	haldorsson	Q5641314 Q19688806	Haldor Halldor			haldorsdatt
 halduorsdatter	1		create	halduorsdatter				Halduor		halduor
 halfdansdatter	2		create	halfdansdatter	Q5585201	Halfdan			halfdansson	halfdan
 halfdansdotter	2		create	halfdansdotter	Q5585201	Halfdan			halfdansson	halfdans
-halfdansen	1		create	halfdansen	Q5585201	Halfdan			halfdansdotter	halfdan
-halfdanson	2		create	halfdanson	Q5585201	Halfdan			halfdansdotter	halfdan
-halfdansson	19		create	halfdansson	Q5585201	Halfdan			halfdansdotter	halfdan
+halfdansen	1		create	halfdansen	Q5585201	Halfdan			halfdansdatter	halfdan
+halfdanson	2		create	halfdanson	Q5585201	Halfdan			halfdansdatter	halfdan
+halfdansson	19		create	halfdansson	Q5585201	Halfdan			halfdansdatter	halfdan
 halfvardsson	1		create	halfvardsson				Halfvard		halfvard
 halgrimsdatter	6		create	halgrimsdatter				Halgrim	halgrimsen	halgrim
 halgrimsen	4		create	halgrimsen				Halgrim	halgrimsdatter	halgrim
@@ -2473,7 +2497,7 @@ hallgeirson	2		create	hallgeirson	Q16428180 Q4582492	Holgeir Hallgeir				hallgei
 hallison	1		create	hallison	Q98669284	Halli				halli
 hallkelson	2		create	hallkelson				Hallkel		hallkel
 hallkelsson	1		create	hallkelsson				Hallkel		hallkel
-hallkjellsdatter	3		create	hallkjellsdatter	Q26970862	Hallkjell			hallkjellsson	hallkjell
+hallkjellsdatter	3		create	hallkjellsdatter	Q26970862	Hallkjell			hallkjellson	hallkjell
 hallkjellson	3		create	hallkjellson	Q26970862	Hallkjell		Halkjell	hallkjellsdatter	hallkjell
 hallkjellsson	3		create	hallkjellsson	Q16426724	Hallkell		Hallkel	hallkjellsdatter	hallkjell
 hallormson	1		create	hallormson				Hallorm		hallorm
@@ -2598,8 +2622,8 @@ hedinsdatter	1		create	hedinsdatter				Hedin		hedin
 hedinsdotter	2		create	hedinsdotter				Hedin		hedins
 heidreksdatter	2		create	heidreksdatter				Heidrek	heidreksson	heidrek
 heidreksson	2		create	heidreksson				Heidrek	heidreksdatter	heidrek
-heinesdatter	4		create	heinesdatter	Q19772363	Heine			heineson	heine
-heinesdotter	2		create	heinesdotter	Q19772363	Heine			heineson	heines
+heinesdatter	4		create	heinesdatter	Q19772363	Heine			heinesen	heine
+heinesdotter	2		create	heinesdotter	Q19772363	Heine			heinesen	heines
 heinesen	6		create	heinesen	Q19772363	Heine			heinesdatter	heine
 heineson	6		create	heineson	Q19772363	Heine			heinesdatter	heine
 heinesson	3		create	heinesson	Q19772363	Heine			heinesdatter	heine
@@ -2622,7 +2646,7 @@ helgisson	3		create	helgisson	Q26271987	Helgi				helgi
 helgjesdatter	1		create	helgjesdatter				Helgje	helgjeson	helgje
 helgjeson	2		create	helgjeson				Helgje	helgjesdatter	helgje
 helgsdatter	1		create	helgsdatter	Q1602361	Helge				helg
-heljesdotter	1		create	heljesdotter	Q11974854	Helje			heljesson	heljes
+heljesdotter	1		create	heljesdotter	Q11974854	Helje			heljeson	heljes
 heljeson	1		create	heljeson	Q11974854	Helje			heljesdotter	helje
 heljesson	1		create	heljesson	Q11974854	Helje			heljesdotter	helje
 hellaugsdatter	1		create	hellaugsdatter				Hellaug	hellaugsen	hellaug
@@ -2637,7 +2661,7 @@ helmersdatter	1		create	helmersdatter	Q1158298	Hilmar			helmersen	helmer
 helmersen	4		create	helmersen	Q1603195	Helmer			helmersdatter	helmer
 helmertsdatter	1		create	helmertsdatter	Q21147916	Helmert				helmert
 helmertsdotter	1		create	helmertsdotter	Q21147916	Helmert				helmerts
-helmichsdotter	2		create	helmichsdotter	Q140265109	Helmich			helmichsson	helmichs
+helmichsdotter	2		create	helmichsdotter	Q140265109	Helmich			helmichsen	helmichs
 helmichsen	1		create	helmichsen				Helmick	helmichsdotter	helmich
 helmichsson	1		create	helmichsson	Q140265109	Helmich			helmichsdotter	helmich
 helmiksdatter	7		create	helmiksdatter				Helmik	helmikson	helmik
@@ -2655,8 +2679,8 @@ hendrichsen	8		create	hendrichsen	Q21147926	Hendrich			hendrichsdatter	hendrich
 hendrichson	1		create	hendrichson	Q21147926	Hendrich			hendrichsdatter	hendrich
 hendrichsson	2		create	hendrichsson	Q21147926	Hendrich			hendrichsdatter	hendrich
 hendricsson	1		create	hendricsson	Q21147926	Hendrich				hendric
-hendriksdatter	3		create	hendriksdatter	Q1158181	Hendrik			hendriksen	hendrik
-hendriksdotter	1		create	hendriksdotter	Q1158181	Hendrik			hendriksen	hendriks
+hendriksdatter	3		create	hendriksdatter	Q1158181	Hendrik			hendrikson	hendrik
+hendriksdotter	1		create	hendriksdotter	Q1158181	Hendrik			hendrikson	hendriks
 hendriksen	3		create	hendriksen	Q1158181	Hendrik			hendriksdatter	hendrik
 hendrikson	3		create	hendrikson	Q21143550 Q1158181 Q21031071	Hindrik Hendrik Hendrick			hendriksdatter	hendrik
 hendriksson	1		create	hendriksson	Q1158181	Hendrik			hendriksdatter	hendrik
@@ -2715,7 +2739,7 @@ herleikson	2		create	herleikson				Herleik	herleiksdatter	herleik
 herlevsen	2		create	herlevsen				Herlov		herlev
 herlofsdatter	8		create	herlofsdatter	Q30078700	Herlof			herlofsen	herlof
 herlofsen	7		create	herlofsen	Q30078700	Herlof			herlofsdatter	herlof
-herlogsdatter	3		create	herlogsdatter				Herlog	herlogsen	herlog
+herlogsdatter	3		create	herlogsdatter				Herlog	herlogson	herlog
 herlogsen	1		create	herlogsen				Herlog	herlogsdatter	herlog
 herlogson	1		create	herlogson				Herlog	herlogsdatter	herlog
 herlovsdatter	2		create	herlovsdatter				Herlov	herlovsen	herlov
@@ -2788,9 +2812,9 @@ hiskiasdotter	1		create	hiskiasdotter	Q21147982	Hiskias				hiskias
 hjallson	1		create	hjallson				Hjall		hjall
 hjalmarsdatter	2		create	hjalmarsdatter	Q18428430	Hjalmar			hjalmarsen	hjalmar
 hjalmarsdotter	2		create	hjalmarsdotter	Q18428430	Hjalmar			hjalmarsen	hjalmars
-hjalmarsen	4		create	hjalmarsen	Q18428430	Hjalmar			hjalmarsdotter	hjalmar
-hjalmarson	3		create	hjalmarson	Q18428430	Hjalmar			hjalmarsdotter	hjalmar
-hjalmarsson	3		create	hjalmarsson	Q18428430	Hjalmar			hjalmarsdotter	hjalmar
+hjalmarsen	4		create	hjalmarsen	Q18428430	Hjalmar			hjalmarsdatter	hjalmar
+hjalmarson	3		create	hjalmarson	Q18428430	Hjalmar			hjalmarsdatter	hjalmar
+hjalmarsson	3		create	hjalmarsson	Q18428430	Hjalmar			hjalmarsdatter	hjalmar
 hjalmtiersson	1		create	hjalmtiersson				Hjalmtier		hjalmtier
 hjarandsen	1		create	hjarandsen				Hjarande		hjarand
 hjarandson	1		create	hjarandson				Hjarrande		hjarand
@@ -2978,8 +3002,8 @@ ingevoldsen	1		create	ingevoldsen	Q1809274	Ingvald				ingevold
 ingimundarson	2		create	ingimundarson	Q10535484	Ingimundur				ingimundar
 ingjaldsdatter	1		create	ingjaldsdatter			Ingjald(2)		ingjaldsson	ingjald
 ingjaldsdotter	1		create	ingjaldsdotter			Ingjald(2)		ingjaldsson	ingjalds
-ingjaldson	2		create	ingjaldson			Ingjald(2)		ingjaldsdatter	ingjald
-ingjaldsson	6		create	ingjaldsson			Ingjald(2)		ingjaldsdatter	ingjald
+ingjaldson	2		create	ingjaldson			Ingjald(2)		ingjaldsdotter	ingjald
+ingjaldsson	6		create	ingjaldsson			Ingjald(2)		ingjaldsdotter	ingjald
 ingjaldursson	1		create	ingjaldursson	Q16429182	Ingjaldur				ingjaldur
 ingmundson	2		create	ingmundson	Q21505126	Ingemund				ingmund
 ingvaldsdatter	10		create	ingvaldsdatter	Q1809274	Ingvald		Ingvold	ingvaldsen	ingvald
@@ -3212,9 +3236,9 @@ johannisson	8		create	johannisson	Q2117521 Q20730411	Johannes Johannis			johanni
 johannnesson	1		create	johannnesson	Q2117521	Johannes				johannne
 johannsdatter	4		create	johannsdatter	Q2117521	Johannes			johannsen	johann
 johannsdotter	4		create	johannsdotter	Q11122389 Q10989273	Johann Johan			johannsen	johanns
-johannsen	6		create	johannsen	Q2117521 Q11122389 Q10989273	Johannes Johann Johan			johannsdatter	johann
-johannssen	2		create	johannssen	Q2117521	Johannes			johannsdatter	johanns
-johannsson	4		create	johannsson	Q2117521 Q10989273 Q11122389	Johannes Johan Johann			johannsdatter	johann
+johannsen	6		create	johannsen	Q2117521 Q11122389 Q10989273	Johannes Johann Johan			johannsdotter	johann
+johannssen	2		create	johannssen	Q2117521	Johannes			johannsdotter	johanns
+johannsson	4		create	johannsson	Q2117521 Q10989273 Q11122389	Johannes Johan Johann			johannsdotter	johann
 johansdatter	786		create	johansdatter	Q10989273 Q2117521 Q11122389 Q4925477	Johan Johannes Johann John	Johans(2)		johansson	johan
 johansdotter	4788		create	johansdotter	Q10989273 Q2117521 Q11122389 Q10989273 Q2117521 Q4120836	Johan Johannes Johann johan JOHANNES Johanna	Johanes(2)	Johannas	johansson	johans
 johansen	924		create	johansen	Q10989273 Q2117521 Q4925477 Q11122389 Q20730411	Johan Johannes John Johann Johannis			johansdotter	johan
@@ -3239,7 +3263,7 @@ jokildsen	2		create	jokildsen				Jokild		jokild
 jokobsdatter	1		create	jokobsdatter	Q16747395	Jakob				jokob
 jokobsdotter	1		create	jokobsdotter	Q16747395	Jakob				jokobs
 jokullson	1		create	jokullson				Jokull		jokull
-jokumsdatter	4		create	jokumsdatter	Q16429390 Q139769074	Jochum Jokum			jokumsen	jokum
+jokumsdatter	4		create	jokumsdatter	Q16429390 Q139769074	Jochum Jokum			jokumson	jokum
 jokumsen	2		create	jokumsen	Q16429390 Q139769074	Jochum Jokum			jokumsdatter	jokum
 jokumson	2		create	jokumson	Q139769074	Jokum			jokumsdatter	jokum
 jonadatter	1		create	jonadatter			Jon(4)		jonasson	jona
@@ -3297,7 +3321,7 @@ josiasdotter	2		create	josiasdotter	Q18181294	Josias			josiasson	josias
 josiasson	1		create	josiasson	Q18181294	Josias			josiasdotter	josia
 jostdatter	1		create	jostdatter	Q18179742	Jost			jostsson	jost
 jostdotter	4		create	jostdotter	Q18179742	Jost			jostsson	jost
-josteinsdotter	1		create	josteinsdotter	Q1781832	Jostein			josteinson	josteins
+josteinsdotter	1		create	josteinsdotter	Q1781832	Jostein			josteinsen	josteins
 josteinsen	1		create	josteinsen	Q1781832	Jostein			josteinsdotter	jostein
 josteinson	1		create	josteinson	Q1781832	Jostein			josteinsdotter	jostein
 jostsdatter	1		create	jostsdatter	Q19914462	Just			jostsson	jost
@@ -3359,7 +3383,7 @@ jörundsson	2		create	jörundsson				Jörund Jorund		jörund
 jössedotter	1		create	jössedotter				Jösse		jösse
 jødelsdatter	2		create	jødelsdatter				Jødel	jødelsen	jødel
 jødelsen	2		create	jødelsen				Jødel	jødelsdatter	jødel
-jøgersdatter	2		create	jøgersdatter				Jøger	jøgerson	jøger
+jøgersdatter	2		create	jøgersdatter				Jøger	jøgersen	jøger
 jøgersen	2		create	jøgersen				Jøger	jøgersdatter	jøger
 jøgerson	2		create	jøgerson				Jøger	jøgersdatter	jøger
 jønsdatter	1		create	jønsdatter				Jøns	jønsson	jøn
@@ -3430,6 +3454,7 @@ ketilsson	19		create	ketilsson	Q19827701 Q19827695 Q1744078	Ketill Ketil Kjetil	
 kettilmundsson	1		create	kettilmundsson				Kettilmund		kettilmund
 kettilsdotter	9		create	kettilsdotter	Q16800918	Kettil			kettilsson	kettils
 kettilsson	8		create	kettilsson	Q16800918 Q1744078	Kettil Kjetil			kettilsdotter	kettil
+kiddelsdatter	2		create	kiddelsdatter	Q1744078 Q115042157	Kjetil Kittel				kiddel
 kidelsdatter	1		create	kidelsdatter				Kidel	kidelsen	kidel
 kidelsen	1		create	kidelsen				Kidel	kidelsdatter	kidel
 kieldsdatter	4		create	kieldsdatter	Q11739584	Kjeld		Kield	kieldsen	kield
@@ -3443,8 +3468,8 @@ kirstiansdatter	2		create	kirstiansdatter	Q12794332	Kristian				kirstian
 kittelsdatter	9		create	kittelsdatter	Q115042157 Q44058926	Kittel Kittil			kittelsen	kittel
 kittelsen	10		create	kittelsen	Q115042157 Q44058926 Q1744078	Kittel Kittil Kjetil			kittelsdatter	kittel
 kittelson	1		create	kittelson	Q115042157	Kittel			kittelsdatter	kittel
-kittilsdatter	3		create	kittilsdatter	Q44058926	Kittil			kittilson	kittil
-kittilsen	2		create	kittilsen	Q44058926	Kittil			kittilsdatter	kittil
+kittilsdatter	3		create	kittilsdatter	Q44058926	Kittil			kittilsen	kittil
+kittilsen	3		create	kittilsen	Q44058926 Q30321708	Kittil Kiddel			kittilsdatter	kittil
 kittilson	2		create	kittilson	Q44058926	Kittil			kittilsdatter	kittil
 kjallakson	1		create	kjallakson				Kjallak		kjallak
 kjartansson	3		create	kjartansson	Q12716089	Kjartan				kjartan
@@ -3508,20 +3533,25 @@ klengsson	4		create	klengsson				Kleng	klengsdatter	kleng
 knattarson	1		create	knattarson				Knöttur		knattar
 knivesdatter	1		create	knivesdatter				Knive		knive
 knuddatter	1		create	knuddatter	Q18565341	Knud			knudsen	knud
-knudsdatter	303		create	knudsdatter	Q18565341	Knud			knudsen	knud
-knudsdotter	14		create	knudsdotter	Q18565341	Knud			knudsen	knuds
-knudsen	326		create	knudsen	Q18565341	Knud			knudsdatter	knud
-knudson	47		create	knudson	Q18565341	Knud			knudsdatter	knud
-knudsson	3		create	knudsson	Q18565341	Knud			knudsdatter	knud
-knudtsdatter	1		create	knudtsdatter				Knudt	knudtsen	knudt
-knudtsen	1		create	knudtsen				Knudt	knudtsdatter	knudt
+knudsadatter	1		create	knudsadatter	Q943881	Knut				knudsa
+knudsdatter	427		create	knudsdatter	Q18565341 Q943881 Q28798237	Knud Knut Canute		Canuti Canutus	knudsen	knud
+knudsdotter	40		create	knudsdotter	Q943881 Q18565341	Knut Knud			knudsen	knuds
+knudsen	505		create	knudsen	Q18565341 Q943881	Knud Knut		Knudt	knudsdatter	knud
+knudson	79		create	knudson	Q18565341 Q943881	Knud Knut			knudsdatter	knud
+knudssen	2		create	knudssen	Q943881	Knut			knudsdatter	knuds
+knudsson	13		create	knudsson	Q943881 Q18565341	Knut Knud			knudsdatter	knud
+knudtsdatter	2		create	knudtsdatter	Q943881	Knut		Knudt	knudtsen	knudt
+knudtsen	4		create	knudtsen	Q943881	Knut		Knudt	knudtsdatter	knudt
+knudtson	2		create	knudtson	Q943881	Knut			knudtsdatter	knudt
 knutdatter	1		create	knutdatter	Q943881	Knut			knutson	knut
-knutesdatter	1		create	knutesdatter	Q943881	Knut				knute
-knutsdatter	516		create	knutsdatter	Q943881	Knut		Cnut	knutson	knut
-knutsdotter	311		create	knutsdotter	Q943881 Q943881 Q28798237	Knut knut Canute		Canutus Canuti Knuutti Cnut	knutson	knuts
-knutsen	377		create	knutsen	Q943881	Knut		Canuti	knutsdatter	knut
-knutson	377		create	knutson	Q943881 Q943881	Knut KNUT			knutsdatter	knut
-knutsson	323		create	knutsson	Q943881 Q28798237 Q943881 Q98669211	Knut Canute knut KNUTE		Cnut	knutsdatter	knut
+knutdsdatter	1		create	knutdsdatter	Q943881	Knut				knutd
+knutedatter	1		create	knutedatter	Q18565341	Knud				knute
+knutesdatter	2		create	knutesdatter	Q943881 Q18565341	Knut Knud				knute
+knutsdatter	596		create	knutsdatter	Q943881 Q18565341	Knut Knud		Cnut	knutson	knut
+knutsdotter	331		create	knutsdotter	Q943881 Q18565341 Q943881 Q28798237	Knut Knud knut Canute		Canutus Canuti Knuutti Cnut	knutson	knuts
+knutsen	426		create	knutsen	Q943881 Q18565341	Knut Knud		Knudt Canuti	knutsdatter	knut
+knutson	442		create	knutson	Q943881 Q18565341 Q943881	Knut Knud KNUT			knutsdatter	knut
+knutsson	346		create	knutsson	Q943881 Q18565341 Q28798237 Q943881 Q98669211	Knut Knud Canute knut KNUTE		Knudt Cnut	knutsdatter	knut
 knuttsdatter	1		create	knuttsdatter	Q943881	Knut				knutt
 knútsson	1		create	knútsson				Cnut		knút
 kolbeinnson	1		create	kolbeinnson	Q11981428	Kolbein				kolbeinn
@@ -3608,7 +3638,7 @@ kristofferssen	2		create	kristofferssen	Q1789415 Q1084472	Kristoffer Christopher
 kristoffersson	85		create	kristoffersson	Q1789415 Q1084472 Q1084384	Kristoffer Christopher Christoffer			kristoffersdatter	kristoffer
 kristophersdatter	1		create	kristophersdatter	Q29169618	Kristopher			kristophersen	kristopher
 kristophersdotter	1		create	kristophersdotter	Q1789415	Kristoffer			kristophersen	kristophers
-kristophersen	3		create	kristophersen	Q29169618	Kristopher			kristophersdotter	kristopher
+kristophersen	3		create	kristophersen	Q29169618	Kristopher			kristophersdatter	kristopher
 kvistson	1		create	kvistson				Kvist		kvist
 kystolfsdatter	2		create	kystolfsdatter				Kjystolf	kystolfsen	kystolf
 kystolfsen	1		create	kystolfsen				Kjystolf	kystolfsdatter	kystolf
@@ -3617,8 +3647,8 @@ källbjörnsson	2		create	källbjörnsson				Kjällbjörn	källbjörnsdotter	kä
 kättilsson	1		create	kättilsson	Q16800918	Kettil				kättil
 kåresdatter	1		create	kåresdatter	Q20200846	Kaare			kåresson	kåre
 kåresdotter	1		create	kåresdotter	Q20200846	Kaare			kåresson	kåres
-kåreson	2		create	kåreson	Q240255	Kåre			kåresdotter	kåre
-kåresson	5		create	kåresson	Q20200846 Q240255	Kaare Kåre			kåresdotter	kåre
+kåreson	2		create	kåreson	Q240255	Kåre			kåresdatter	kåre
+kåresson	5		create	kåresson	Q20200846 Q240255	Kaare Kåre			kåresdatter	kåre
 könicksdotter	1		create	könicksdotter				Kenicius		könicks
 königsdotter	19		create	königsdotter				König	königsson	königs
 königsson	13		create	königsson				König	königsdotter	könig
@@ -3670,22 +3700,24 @@ laurensdotter	12		create	laurensdotter	Q2227957	Laurens			laurensson	laurens
 laurensen	3		create	laurensen	Q2227957	Laurens			laurensdotter	lauren
 laurensson	10		create	laurensson	Q2227957	Laurens			laurensdotter	lauren
 laurentzson	1		create	laurentzson	Q30504426	Laurentz				laurentz
-lauridsdatter	111		create	lauridsdatter	Q107723833	Laurids			lauridsen	laurid
-lauridsen	112		create	lauridsen	Q107723833	Laurids			lauridsdatter	laurid
+lauridsdatter	157		create	lauridsdatter	Q107723833 Q21061253 Q13695998	Laurids Laurits Lauritz			lauridsen	laurid
+lauridsen	147		create	lauridsen	Q107723833 Q21061253 Q13695998	Laurids Laurits Lauritz			lauridsdatter	laurid
 lauridssen	1		create	lauridssen	Q107723833	Laurids			lauridsdatter	laurids
 lauridsson	1		create	lauridsson	Q107723833	Laurids			lauridsdatter	laurid
-lauritsdatter	139		create	lauritsdatter	Q21061253 Q13695998	Laurits Lauritz			lauritsen	laurit
+lauridzdatter	1		create	lauridzdatter	Q13695998	Lauritz				lauridz
+lauritsdatter	157		create	lauritsdatter	Q21061253 Q13695998 Q107723833	Laurits Lauritz Laurids			lauritsen	laurit
 lauritsdotter	8		create	lauritsdotter	Q21061253 Q13695998	Laurits Lauritz			lauritsen	laurits
-lauritsen	127		create	lauritsen	Q21061253 Q13695998	Laurits Lauritz			lauritsdatter	laurit
+lauritsen	156		create	lauritsen	Q21061253 Q13695998 Q107723833	Laurits Lauritz Laurids			lauritsdatter	laurit
 lauritson	10		create	lauritson	Q21061253 Q13695998	Laurits Lauritz			lauritsdatter	laurit
 lauritssen	4		create	lauritssen	Q21061253	Laurits			lauritsdatter	laurits
-lauritsson	31		create	lauritsson	Q21061253 Q13695998	Laurits Lauritz			lauritsdatter	laurit
+lauritsson	32		create	lauritsson	Q21061253 Q13695998 Q107723833	Laurits Lauritz Laurids			lauritsdatter	laurit
 lauritzdatter	55		create	lauritzdatter	Q13695998 Q21061253	Lauritz Laurits			lauritzson	lauritz
 lauritzdotter	1		create	lauritzdotter	Q13695998	Lauritz			lauritzson	lauritz
 lauritzsen	6		create	lauritzsen	Q13695998 Q21061253	Lauritz Laurits			lauritzdatter	lauritz
 lauritzson	9		create	lauritzson	Q13695998 Q21061253	Lauritz Laurits			lauritzdatter	lauritz
 laursdatter	19		create	laursdatter	Q116659539 Q15635262	Laurs Lars			laursen	laur
 laursen	31		create	laursen	Q116659539 Q15635262	Laurs Lars			laursdatter	laur
+laurtisen	2		create	laurtisen	Q107723833	Laurids				laurti
 lavesdatter	6		create	lavesdatter	Q134450528	Lave			lavesen	lave
 lavesen	5		create	lavesen	Q134450528	Lave			lavesdatter	lave
 lawrenceson	1		create	lawrenceson	Q15635788	Lawrence				lawrence
@@ -3704,12 +3736,13 @@ leinfnisson	2		create	leinfnisson				Lienfni		leinfni
 leivsdatter	2		create	leivsdatter	Q30504527	Leiv			leivson	leiv
 leivson	1		create	leivson	Q30504527	Leiv			leivsdatter	leiv
 lenartsson	1		create	lenartsson	Q19760064	Lennart				lenart
+lennartsdatter	1		create	lennartsdatter	Q948418	Leonard			lennartsson	lennart
 lennartsdotter	15		create	lennartsdotter	Q19760064	Lennart			lennartsson	lennarts
 lennartson	1		create	lennartson	Q19760064	Lennart			lennartsdotter	lennart
-lennartsson	36		create	lennartsson	Q19760064	Lennart			lennartsdotter	lennart
+lennartsson	41		create	lennartsson	Q19760064 Q948418	Lennart Leonard			lennartsdotter	lennart
 leonardsdotter	5		create	leonardsdotter	Q948418	Leonard			leonardsson	leonards
 leonardsen	1		create	leonardsen	Q948418	Leonard			leonardsdotter	leonard
-leonardsson	10		create	leonardsson	Q948418	Leonard			leonardsdotter	leonard
+leonardsson	11		create	leonardsson	Q948418 Q19760064	Leonard Lennart			leonardsdotter	leonard
 leonhardsdotter	6		create	leonhardsdotter	Q18226374	Leonhard			leonhardsson	leonhards
 leonhardsen	1		create	leonhardsen	Q18226374	Leonhard			leonhardsdotter	leonhard
 leonhardsson	8		create	leonhardsson	Q18226374 Q139824127	Leonhard Leonhardus			leonhardsdotter	leonhard
@@ -3747,8 +3780,8 @@ ljotsson	3		create	ljotsson				Ljot	ljotsdatter	ljot
 ljødesdatter	16		create	ljødesdatter				Ljøde	ljødesen	ljøde
 ljødesen	8		create	ljødesen				Ljøde	ljødesdatter	ljøde
 ljødeson	6		create	ljødeson				Ljøde	ljødesdatter	ljøde
-lodinsdatter	4		create	lodinsdatter	Q56404754	Lodin			lodinson	lodin
-lodinsdotter	2		create	lodinsdotter	Q56404754	Lodin			lodinson	lodins
+lodinsdatter	4		create	lodinsdatter	Q56404754	Lodin			lodinsson	lodin
+lodinsdotter	2		create	lodinsdotter	Q56404754	Lodin			lodinsson	lodins
 lodinson	3		create	lodinson	Q56404754	Lodin			lodinsdatter	lodin
 lodinsson	3		create	lodinsson	Q56404754	Lodin			lodinsdatter	lodin
 lofdasson	2		create	lofdasson				Lofdi		lofda
@@ -3769,7 +3802,7 @@ lorentzson	20		create	lorentzson	Q21061236	Lorentz			lorentzdatter	lorentz
 lorentzsson	11		create	lorentzsson	Q21061236	Lorentz			lorentzdatter	lorentz
 lorenzdatter	1		create	lorenzdatter	Q15635254	Lorenz			lorenzsson	lorenz
 lorenzdotter	1		create	lorenzdotter	Q15635254	Lorenz			lorenzsson	lorenz
-lorenzsson	1		create	lorenzsson	Q15635254	Lorenz			lorenzdatter	lorenz
+lorenzsson	1		create	lorenzsson	Q15635254	Lorenz			lorenzdotter	lorenz
 lorntsdatter	2		create	lorntsdatter	Q6680483	Lorents			lorntsen	lornt
 lorntsen	2		create	lorntsen				Lornts	lorntsdatter	lornt
 lotharson	1		create	lotharson	Q16278542	Lothar				lothar
@@ -3782,7 +3815,7 @@ lucasdotter	4		create	lucasdotter	Q12325000 Q19768432	Lucas Luukas			lucassen	lu
 lucasen	4		create	lucasen	Q12325000	Lucas			lucasdatter	luca
 lucassen	11		create	lucassen	Q12325000	Lucas	Lukas(2)		lucasdatter	lucas
 lucasson	5		create	lucasson	Q12325000	Lucas	Lukas(2)		lucasdatter	luca
-ludolfsdotter	2		create	ludolfsdotter	Q507605	Ludolf			ludolfsen	ludolfs
+ludolfsdotter	2		create	ludolfsdotter	Q507605	Ludolf			ludolfsson	ludolfs
 ludolfsen	1		create	ludolfsen	Q507605	Ludolf			ludolfsdotter	ludolf
 ludolfson	1		create	ludolfson	Q507605	Ludolf			ludolfsdotter	ludolf
 ludolfsson	1		create	ludolfsson	Q507605	Ludolf			ludolfsdotter	ludolf
@@ -3797,7 +3830,7 @@ ludvigssen	2		create	ludvigssen			Ludvig(2)		ludvigsdatter	ludvigs
 ludvigsson	7		create	ludvigsson			Ludvig(2)		ludvigsdatter	ludvig
 ludviksdatter	3		create	ludviksdatter	Q21555107	Ludvik			ludviksen	ludvik
 ludviksen	1		create	ludviksen	Q21555107	Ludvik			ludviksdatter	ludvik
-ludwigsdatter	3		create	ludwigsdatter			Ludvig(2)		ludwigsson	ludwig
+ludwigsdatter	3		create	ludwigsdatter			Ludvig(2)		ludwigson	ludwig
 ludwigson	1		create	ludwigson	Q14159020	Ludwig			ludwigsdatter	ludwig
 ludwigsson	1		create	ludwigsson	Q14159020	Ludwig			ludwigsdatter	ludwig
 lukasdatter	3		create	lukasdatter	Q12325000	Lucas	Lukas(2)		lukasson	luka
@@ -3831,14 +3864,15 @@ léonsdatter	1		create	léonsdatter	Q17781870	Léon				léon
 lüttringhausen	1		create	lüttringhausen				Luettringhaus		lüttringhau
 maardsson	1		create	maardsson				Mård		maard
 madison	1		create	madison	Q16278672	Mads				madi
-madsdatter	242		create	madsdatter	Q16278672 Q116366912	Mads Mada		Madz	madsen	mad
-madsdotter	18		create	madsdotter	Q16278672	Mads			madsen	mads
-madsen	311		create	madsen	Q16278672	Mads		Madz	madsdatter	mad
+madsdatter	263		create	madsdatter	Q16278672 Q61745602 Q12370008 Q1818817 Q116366912	Mads Matz Mats Mathias Mada		Madtz Madz	madsen	mad
+madsdotter	25		create	madsdotter	Q16278672 Q12370008	Mads Mats			madsen	mads
+madsen	332		create	madsen	Q16278672 Q1818817 Q12370008 Q1208363 Q61745602 Q20000585	Mads Mathias Mats Mattis Matz Matthis		Madtz Madz	madsdatter	mad
 madson	8		create	madson	Q16278672	Mads			madsdatter	mad
 madssen	2		create	madssen	Q16278672	Mads			madsdatter	mads
-madsson	24		create	madsson	Q16278672	Mads			madsdatter	mad
+madsson	25		create	madsson	Q16278672 Q12370008	Mads Mats			madsdatter	mad
 madtzdatter	2		create	madtzdatter				Madtz		madtz
-madzdatter	3		create	madzdatter	Q16278672	Mads				madz
+madzdatter	3		create	madzdatter	Q16278672	Mads			madzson	madz
+madzson	1		create	madzson	Q1474085	Matti			madzdatter	madz
 magnesdatter	27		create	magnesdatter	Q11987768	Magne			magneson	magne
 magnesdotter	3		create	magnesdotter	Q11987768 Q18109457	Magne Magnus			magneson	magnes
 magnesen	20		create	magnesen	Q11987768	Magne			magnesdatter	magne
@@ -3945,12 +3979,12 @@ matiassen	5		create	matiassen	Q1818817 Q16279186	Mathias Mattias			matiasdatter	
 matiasson	13		create	matiasson	Q1818817 Q4927273 Q1474085 Q1208363	Mathias Matthias Matti Mattis	Matias(2)		matiasdatter	matia
 matisdatter	7		create	matisdatter	Q1818817 Q17483952	Mathias Mathis			matisen	mati
 matisen	3		create	matisen	Q1818817	Mathias			matisdatter	mati
-matsdatter	4		create	matsdatter	Q12370008 Q61745602	Mats Matz			matsson	mat
+matsdatter	8		create	matsdatter	Q16278672 Q12370008 Q61745602	Mads Mats Matz			matsson	mat
 matsdotter	160		create	matsdotter	Q12370008 Q17485349 Q4927273 Q16279186 Q1474085 Q1818817 Q61745602 Q1208363	Mats Matts Matthias Mattias Matti Mathias Matz Mattis	Matias(2)		matsson	mats
-matsen	7		create	matsen	Q12370008	Mats			matsdotter	mat
+matsen	9		create	matsen	Q12370008 Q16278672	Mats Mads			matsdotter	mat
 matson	7		create	matson	Q12370008 Q1818817 Q12370008	Mats Mathias mats			matsdotter	mat
 matssdotter	1		create	matssdotter	Q17485349	Matts			matsson	matss
-matsson	190		create	matsson	Q12370008 Q17485349 Q1474085 Q1818817 Q1208363 Q16279186 Q4927273 Q61745602	Mats Matts Matti Mathias Mattis Mattias Matthias Matz	Matias(2)		matsdotter	mat
+matsson	194		create	matsson	Q12370008 Q17485349 Q1474085 Q1818817 Q1208363 Q16279186 Q16278672 Q4927273 Q61745602	Mats Matts Matti Mathias Mattis Mattias Mads Matthias Matz	Matias(2)		matsdotter	mat
 matteisen	1		create	matteisen	Q1818817	Mathias				mattei
 mattesdotter	2		create	mattesdotter	Q16279186 Q1208363	Mattias Mattis			mattesson	mattes
 mattesson	1		create	mattesson	Q1208363	Mattis			mattesdotter	matte
@@ -3958,7 +3992,7 @@ matthiasdatter	8		create	matthiasdatter	Q1818817 Q4927273 Q17483952	Mathias Matt
 matthiasdotter	8		create	matthiasdotter	Q4927273 Q16279186 Q1818817	Matthias Mattias Mathias	Matias(2)		matthiasson	matthias
 matthiassen	1		create	matthiassen	Q17483952	Mathis			matthiasdatter	matthias
 matthiasson	11		create	matthiasson	Q4927273 Q17485349 Q16279186 Q1818817	Matthias Matts Mattias Mathias	Matias(2)		matthiasdatter	matthia
-matthiesen	4		create	matthiesen	Q1818817 Q4927273 Q103041259	Mathias Matthias Matthies				matthie
+matthiesen	5		create	matthiesen	Q1818817 Q16278672 Q4927273 Q103041259	Mathias Mads Matthias Matthies				matthie
 matthisdatter	2		create	matthisdatter	Q20000585 Q1818817	Matthis Mathias			matthisen	matthi
 matthisdotter	2		create	matthisdotter	Q20000585 Q1208363	Matthis Mattis			matthisen	matthis
 matthisen	2		create	matthisen	Q20000585 Q4927273	Matthis Matthias			matthisdotter	matthi
@@ -3976,12 +4010,13 @@ mattison	1		create	mattison	Q1208363	Mattis			mattisdotter	matti
 mattissen	4		create	mattissen	Q1818817 Q1208363	Mathias Mattis			mattisdotter	mattis
 mattisson	33		create	mattisson	Q1208363 Q12370008 Q20000585 Q16279186 Q1818817	Mattis Mats Matthis Mattias Mathias			mattisdotter	matti
 mattsdotter	1478		create	mattsdotter	Q17485349 Q1474085 Q12370008 Q4927273 Q1818817 Q16279186 Q96099739 Q1208363 Q61745602 Q106090553	Matts Matti Mats Matthias Mathias Mattias Maths Mattis Matz Matths	Matias(2)		mattsson	matts
-mattson	67		create	mattson	Q17485349 Q12370008 Q1474085 Q16279186 Q1818817 Q61745602 Q4927273	Matts Mats Matti Mattias Mathias Matz Matthias	Matias(2)		mattsdotter	matt
+mattson	68		create	mattson	Q17485349 Q12370008 Q1474085 Q16279186 Q1818817 Q16278672 Q61745602 Q4927273	Matts Mats Matti Mattias Mathias Mads Matz Matthias	Matias(2)		mattsdotter	matt
 mattssdotter	6		create	mattssdotter	Q17485349	Matts			mattsson	mattss
-mattsson	1360		create	mattsson	Q17485349 Q1474085 Q12370008 Q16279186 Q1818817 Q4927273 Q61745602 Q1208363 Q96099739 Q18667327 Q1158973	Matts Matti Mats Mattias Mathias Matthias Matz Mattis Maths Mattheus Matt	Matias(2)		mattsdotter	matt
+mattsson	1363		create	mattsson	Q17485349 Q1474085 Q12370008 Q16279186 Q1818817 Q4927273 Q16278672 Q61745602 Q1208363 Q96099739 Q18667327 Q1158973	Matts Matti Mats Mattias Mathias Matthias Mads Matz Mattis Maths Mattheus Matt	Matias(2)		mattsdotter	matt
 mattzson	4		create	mattzson	Q17485349	Matts				mattz
 matveidotter	1		create	matveidotter	Q55267185	Matvei				matvei
-matzdatter	2		create	matzdatter	Q61745602	Matz				matz
+matzdatter	4		create	matzdatter	Q16278672 Q61745602	Mads Matz			matzsen	matz
+matzsen	1		create	matzsen	Q16278672	Mads			matzdatter	matz
 mauridsdatter	5		create	mauridsdatter				Maurids	mauridsen	maurid
 mauridsen	2		create	mauridsen				Maurids	mauridsdatter	maurid
 mauritsdatter	53		create	mauritsdatter	Q8315038	Maurits			mauritsen	maurit
@@ -4009,8 +4044,8 @@ melciorsdatter	1		create	melciorsdatter	Q18177348	Melchior				melcior
 meldunsson	1		create	meldunsson				Meldun		meldun
 melkersdatter	1		create	melkersdatter				Melkior	melkersson	melker
 melkersdotter	1		create	melkersdotter	Q19595410	Melker			melkersson	melkers
-melkersen	2		create	melkersen	Q122741148	Melcher			melkersdatter	melker
-melkersson	3		create	melkersson	Q19595410	Melker			melkersdatter	melker
+melkersen	2		create	melkersen	Q122741148	Melcher			melkersdotter	melker
+melkersson	3		create	melkersson	Q19595410	Melker			melkersdotter	melker
 melkiorsdatter	1		create	melkiorsdatter	Q18177348	Melchior			melkiorsen	melkior
 melkiorsen	2		create	melkiorsen	Q18177348	Melchior			melkiorsdatter	melkior
 mentsdatter	2		create	mentsdatter				Ments	mentsen	ment
@@ -4053,7 +4088,7 @@ mikalson	31		create	mikalson	Q21467686 Q15620350 Q14626626	Mikal Mikael Michel		
 mikalssen	1		create	mikalssen	Q21467686	Mikal			mikalsdatter	mikals
 mikalsson	3		create	mikalsson	Q15620350	Mikael			mikalsdatter	mikal
 mikealsdotter	1		create	mikealsdotter	Q4927524	Michael				mikeals
-mikelsdotter	1		create	mikelsdotter	Q15620350	Mikael			mikelsson	mikels
+mikelsdotter	1		create	mikelsdotter	Q15620350	Mikael			mikelson	mikels
 mikelson	1		create	mikelson	Q4927524	Michael			mikelsdotter	mikel
 mikelsson	1		create	mikelsson	Q15620350	Mikael			mikelsdotter	mikel
 mikjellsdatter	1		create	mikjellsdatter				Mikjell	mikjellson	mikjell
@@ -4091,10 +4126,11 @@ monson	27		create	monson	Q19799953	Mons			monsdatter	mon
 monssen	12		create	monssen	Q19799953	Mons			monsdatter	mons
 monsson	147		create	monsson	Q19799953	Mons			monsdatter	mon
 moridisson	1		create	moridisson				Mourids		moridi
-moritsdatter	1		create	moritsdatter	Q16422573	Moritz			moritsen	morit
+moritsdatter	2		create	moritsdatter	Q16422573	Moritz		Mourids	moritsen	morit
 moritsen	3		create	moritsen	Q16422573	Moritz			moritsdatter	morit
 moritzdatter	2		create	moritzdatter	Q16422573	Moritz			moritzson	moritz
 moritzdotter	4		create	moritzdotter	Q16422573	Moritz			moritzson	moritz
+moritzsdotter	1		create	moritzsdotter				Mourids	moritzson	moritzs
 moritzson	1		create	moritzson	Q16422573	Moritz			moritzdotter	moritz
 moritzsson	1		create	moritzsson	Q16422573	Moritz			moritzdotter	moritz
 mortensdatter	201		create	mortensdatter	Q1586063 Q18964343 Q17520926 Q28174114	Morten Mårten Martinus Martinius			mortensen	morten
@@ -4112,11 +4148,11 @@ mosesson	48		create	mosesson	Q13554012	Moses			mosesdotter	mose
 mosisdotter	2		create	mosisdotter	Q13554012	Moses				mosis
 mostsdatter	2		create	mostsdatter				Most		most
 mottulson	1		create	mottulson				Mottul		mottul
-mouridsdatter	9		create	mouridsdatter				Mourids	mouridsen	mourid
-mouridsen	7		create	mouridsen				Mourids	mouridsdatter	mourid
+mouridsdatter	14		create	mouridsdatter	Q109264289	Mourits		Mourids	mouridsen	mourid
+mouridsen	11		create	mouridsen	Q109264289 Q109264288	Mourits Mouritz		Mourids	mouridsdatter	mourid
 mouritsdatter	9		create	mouritsdatter	Q109264289 Q109264288	Mourits Mouritz			mouritsen	mourit
-mouritsen	6		create	mouritsen	Q109264288 Q109264289	Mouritz Mourits			mouritsdatter	mourit
-mouritzdatter	6		create	mouritzdatter	Q109264288 Q109264289	Mouritz Mourits				mouritz
+mouritsen	7		create	mouritsen	Q109264288 Q109264289	Mouritz Mourits		Mourids	mouritsdatter	mourit
+mouritzdatter	7		create	mouritzdatter	Q109264288 Q109264289	Mouritz Mourits		Mourids		mouritz
 moustsen	1		create	moustsen				Moust		moust
 mstislavsdatter	2		create	mstislavsdatter	Q18978395	Mstislav				mstislav
 munanson	2		create	munanson				Munan		munan
@@ -4139,7 +4175,7 @@ napoleonsdotter	1		create	napoleonsdotter	Q17522194	Napoleon			napoleonson	napol
 napoleonson	2		create	napoleonson	Q17522194	Napoleon			napoleonsdotter	napoleon
 narfason	7		create	narfason	Q107244773	Narfi				narfa
 narfison	1		create	narfison	Q107244773	Narfi				narfi
-narvesdatter	5		create	narvesdatter	Q20111754	Narve			narvesson	narve
+narvesdatter	5		create	narvesdatter	Q20111754	Narve			narveson	narve
 narveson	2		create	narveson	Q20111754	Narve			narvesdatter	narve
 narvesson	2		create	narvesson	Q20111754	Narve			narvesdatter	narve
 natanaelsdotter	21		create	natanaelsdotter	Q1966292 Q19968240 Q106886038	Natanael Nathanael Nathanaël			natanaelsson	natanaels
@@ -4156,9 +4192,9 @@ nathanielsen	7		create	nathanielsen	Q18978396 Q19968240	Nathaniel Nathanael			na
 nathansdatter	2		create	nathansdatter	Q11167678	Nathan				nathan
 navarsdatter	2		create	navarsdatter				Navar	navarsen	navar
 navarsdotter	2		create	navarsdotter				Navar	navarsen	navars
-navarsen	7		create	navarsen				Navar	navarsdotter	navar
-navarson	2		create	navarson				Navar	navarsdotter	navar
-navarsson	1		create	navarsson				Navar	navarsdotter	navar
+navarsen	7		create	navarsen				Navar	navarsdatter	navar
+navarson	2		create	navarson				Navar	navarsdatter	navar
+navarsson	1		create	navarsson				Navar	navarsdatter	navar
 naversen	3		create	naversen				Navar		naver
 navesdotter	5		create	navesdotter				Nave	naveson	naves
 naveson	2		create	naveson				Nave	navesdotter	nave
@@ -4260,8 +4296,8 @@ nilsdotter	2379		create	nilsdotter	Q16423038 Q2001572 Q16280122 Q16423038 Q16423
 nilsen	1247		create	nilsen	Q16423038 Q2001572 Q16423038	Nils Niels NIls		Njell	nilsdotter	nil
 nilsmundsdatter	2		create	nilsmundsdatter				Nilsmund	nilsmundsen	nilsmund
 nilsmundsdotter	2		create	nilsmundsdotter				Nilsmund	nilsmundsen	nilsmunds
-nilsmundsen	1		create	nilsmundsen				Nilsmund	nilsmundsdotter	nilsmund
-nilsmundsson	1		create	nilsmundsson				Nilsmund	nilsmundsdotter	nilsmund
+nilsmundsen	1		create	nilsmundsen				Nilsmund	nilsmundsdatter	nilsmund
+nilsmundsson	1		create	nilsmundsson				Nilsmund	nilsmundsdatter	nilsmund
 nilson	100		create	nilson	Q16423038 Q2001572	Nils Niels			nilsdotter	nil
 nilssen	74		create	nilssen	Q16423038 Q2001572	Nils Niels			nilsdotter	nils
 nilsson	2825	Q130233015	link	nilsson	Q16423038 Q2001572 Q16280122 Q16423038 Q16423038	Nils Niels Niilo NILS NIls			nilsdotter	nil
@@ -4359,7 +4395,7 @@ olesson	8		create	olesson	Q2097883	Ole	Ola(5)		olesdatter	ole
 oliversdatter	5		create	oliversdatter	Q2110096	Oliver			oliversen	oliver
 oliversen	2		create	oliversen	Q2110096	Oliver			oliversdatter	oliver
 ollesdatter	1		create	ollesdatter	Q2097883	Ole				olle
-olluffsdatter	2		create	olluffsdatter				Olluff	olluffson	olluff
+olluffsdatter	2		create	olluffsdatter				Olluff	olluffsson	olluff
 olluffson	1		create	olluffson				Olluf	olluffsdatter	olluff
 olluffsson	1		create	olluffsson	Q18089653	Olof			olluffsdatter	olluff
 olmodsdatter	1		create	olmodsdatter				Olmod		olmod
@@ -4432,7 +4468,7 @@ osslichsen	1		create	osslichsen				Osslich		osslich
 ossmundson	1		create	ossmundson	Q7107242	Osmund				ossmund
 ossursdatter	1		create	ossursdatter				Ossur	ossurson	ossur
 ossursdotter	1		create	ossursdotter				Ozur	ossurson	ossurs
-ossurson	2		create	ossurson				Ossur	ossursdatter	ossur
+ossurson	2		create	ossurson				Ossur	ossursdotter	ossur
 ostenson	1		create	ostenson				Osten		osten
 osvaldsen	2		create	osvaldsen	Q8568757	Osvald				osvald
 osvaldson	1		create	osvaldson	Q8568757	Osvald				osvald
@@ -4455,7 +4491,7 @@ ottersdotter	1		create	ottersdotter			Otter(2)		ottersen	otters
 ottersen	22		create	ottersen	Q30586269	Ottar	Otter(2)		ottersdatter	otter
 ottesdatter	113		create	ottesdatter	Q21144023 Q18029644 Q2037285	Otte Otto Otta			ottesen	otte
 ottesdotter	3		create	ottesdotter	Q18029644 Q21144023	Otto Otte			ottesen	ottes
-ottesen	115		create	ottesen	Q21144023 Q18029644 Q2037285	Otte Otto Otta		Otthe	ottesdatter	otte
+ottesen	116		create	ottesen	Q21144023 Q18029644 Q2037285 Q1757370	Otte Otto Otta Odd		Otthe	ottesdatter	otte
 otteson	3		create	otteson	Q21144023	Otte			ottesdatter	otte
 ottesson	5		create	ottesson	Q21144023 Q18029644	Otte Otto			ottesdatter	otte
 ottodotter	1		create	ottodotter	Q18029644	Otto			ottosson	otto
@@ -4510,15 +4546,15 @@ paulusdotter	8		create	paulusdotter	Q15732803 Q4391614	Pål Paulus			paulusen	pa
 paulusen	1		create	paulusen	Q4391614	Paulus			paulusdotter	paulu
 pavelsdatter	1		create	pavelsdatter	Q99705764	Pavels				pavel
 pavelsdotter	1		create	pavelsdotter				Påvel		pavels
-pederdatter	8		create	pederdatter	Q10622039	Peder			pedersen	peder
+pederdatter	9		create	pederdatter	Q10622039	Peder	Peter(2)		pedersen	peder
 pederdotter	3		create	pederdotter	Q10622039	Peder			pedersen	peder
 pedersadatter	2		create	pedersadatter	Q10622039	Peder				pedersa
-pedersdatter	3222		create	pedersdatter	Q10622039 Q10622039	Peder peder			pedersen	peder
-pedersdotter	324		create	pedersdotter	Q10622039	Peder			pedersen	peders
-pedersen	2978	Q130233025	link	pedersen	Q10622039 Q10622039	Peder peder			pedersdatter	peder
-pederson	629		create	pederson	Q10622039 Q10622039	Peder peder			pedersdatter	peder
+pedersdatter	3308		create	pedersdatter	Q10622039 Q15897204 Q10622039 Q21148379	Peder Petter peder Peiter	Peter(2)		pedersen	peder
+pedersdotter	351		create	pedersdotter	Q10622039 Q15897708	Peder Petrus	Peter(2)		pedersen	peders
+pedersen	3075	Q130233025	link	pedersen	Q10622039 Q15897204 Q21148379 Q10622039 Q15897708	Peder Petter Peiter peder Petrus	Peter(2)	Petræus	pedersdatter	peder
+pederson	632		create	pederson	Q10622039 Q10622039 Q15897204	Peder peder Petter	Peter(2)		pedersdatter	peder
 pederssen	7		create	pederssen	Q10622039	Peder			pedersdatter	peders
-pedersson	279	Q130232998	link	pedersson	Q10622039	Peder			pedersdatter	peder
+pedersson	302	Q130232998	link	pedersson	Q10622039 Q15897708 Q15897204	Peder Petrus Petter	Peter(2)		pedersdatter	peder
 peersen	1		create	peersen	Q15897150	Peer				peer
 pehrsdatter	1		create	pehrsdatter	Q18606368	Pehr			pehrsson	pehr
 pehrsdotter	219		create	pehrsdotter	Q18606368 Q18606368	Pehr pehr		Pehrs	pehrsson	pehrs
@@ -4534,13 +4570,13 @@ persdotter	2105		create	persdotter	Q13582800 Q19869349 Q15897150	Per Pär Peer		
 persen	53		create	persen	Q13582800	Per			persdotter	per
 person	139		create	person	Q13582800 Q13582800 Q15897150	Per per Peer			persdotter	per
 persson	1832		create	persson	Q13582800 Q19869349	Per Pär		Pers	persdotter	per
-peterdatter	3		create	peterdatter			Peter(2)		petersen	peter
-peterdotter	1		create	peterdotter	Q15897204	Petter			petersen	peter
-petersdatter	152		create	petersdatter	Q15897204 Q21148379 Q1237447	Petter Peiter Pieter	Peter(2)		petersen	peter
-petersdotter	157		create	petersdotter	Q15897204 Q15897708 Q15897788	Petter Petrus Pietari	Peter(2)		petersen	peters
-petersen	186		create	petersen	Q15897204 Q21148379 Q10625184 Q65824536	Petter Peiter Petri Pieters	Peter(2)		petersdotter	peter
-peterson	34		create	peterson	Q15897204	Petter	Peter(2)		petersdotter	peter
-petersson	158		create	petersson	Q15897204 Q15897708	Petter Petrus	Peter(2)		petersdotter	peter
+peterdatter	4		create	peterdatter	Q10622039	Peder	Peter(2)		petersen	peter
+peterdotter	2		create	peterdotter	Q10622039 Q15897204	Peder Petter			petersen	peter
+petersdatter	175		create	petersdatter	Q15897204 Q10622039 Q21148379 Q1237447	Petter Peder Peiter Pieter	Peter(2)		petersen	peter
+petersdotter	159		create	petersdotter	Q15897204 Q15897708 Q10622039 Q15897788	Petter Petrus Peder Pietari	Peter(2)		petersen	peters
+petersen	223		create	petersen	Q10622039 Q15897204 Q21148379 Q10625184 Q65824536	Peder Petter Peiter Petri Pieters	Peter(2)		petersdatter	peter
+peterson	47		create	peterson	Q10622039 Q15897204	Peder Petter	Peter(2)		petersdatter	peter
+petersson	163		create	petersson	Q15897204 Q10622039 Q15897708	Petter Peder Petrus	Peter(2)		petersdatter	peter
 petridotter	3		create	petridotter	Q15897708	Petrus			petrison	petri
 petrison	2		create	petrison	Q15897708	Petrus			petridotter	petri
 petrusdatter	1		create	petrusdatter	Q15897708	Petrus			petrusson	petru
@@ -4549,14 +4585,14 @@ petrussen	1		create	petrussen	Q15897708	Petrus			petrusdotter	petrus
 petrusson	8		create	petrusson	Q15897708 Q15897204	Petrus Petter	Peter(2)		petrusdotter	petru
 petterdatter	1		create	petterdatter	Q15897204	Petter			pettersson	petter
 petterdotter	4		create	petterdotter	Q15897204 Q15897708	Petter Petrus			pettersson	petter
-pettersdatter	82		create	pettersdatter	Q15897204	Petter	Peter(2)		pettersson	petter
+pettersdatter	84		create	pettersdatter	Q15897204 Q10622039	Petter Peder	Peter(2)		pettersson	petter
 pettersdotter	296		create	pettersdotter	Q15897204 Q15897708 Q15897756 Q15897788	Petter Petrus Petteri Pietari	Peter(2)		pettersson	petters
-pettersen	176		create	pettersen	Q15897204 Q65824536	Petter Pieters	Peter(2)		pettersdotter	petter
+pettersen	186		create	pettersen	Q15897204 Q10622039 Q65824536	Petter Peder Pieters	Peter(2)		pettersdotter	petter
 petterson	33		create	petterson	Q15897204 Q15897708	Petter Petrus	Peter(2)		pettersdotter	petter
-pettersson	330		create	pettersson	Q15897204 Q15897708 Q15897788 Q15897756 Q18386470	Petter Petrus Pietari Petteri Petre	Peter(2)		pettersdotter	petter
+pettersson	331		create	pettersson	Q15897204 Q15897708 Q15897788 Q15897756 Q18386470 Q10622039	Petter Petrus Pietari Petteri Petre Peder	Peter(2)		pettersdotter	petter
 phanuelsen	1		create	phanuelsen	Q18198435	Phanuel				phanuel
 philippsdatter	1		create	philippsdatter			Philip(4)			philipp
-philippusdatter	1		create	philippusdatter	Q19970429	Philippus			philippussen	philippu
+philippusdatter	1		create	philippusdatter	Q19970429	Philippus			philippusson	philippu
 philippussen	1		create	philippussen	Q19970429	Philippus			philippusdatter	philippus
 philippusson	1		create	philippusson			Filip(6)		philippusdatter	philippu
 philipsdatter	8		create	philipsdatter	Q19816553 Q19970429	Phillip Philippus	Philip(4) Filip(6)		philipsson	philip
@@ -4628,9 +4664,9 @@ ragnarsson	13	Q21448180	link	ragnarsson	Q2127308	Ragnar			ragnarsdatter	ragnar
 ragnfrødsdatter	1		create	ragnfrødsdatter				Ragnfred		ragnfrød
 ragnvaldsdatter	4		create	ragnvaldsdatter	Q3417518	Ragnvald			ragnvaldsson	ragnvald
 ragnvaldsdotter	4		create	ragnvaldsdotter	Q3417518	Ragnvald		Ragnwald	ragnvaldsson	ragnvalds
-ragnvaldsen	2		create	ragnvaldsen	Q3417518	Ragnvald			ragnvaldsdatter	ragnvald
-ragnvaldson	5		create	ragnvaldson	Q3417518	Ragnvald			ragnvaldsdatter	ragnvald
-ragnvaldsson	17		create	ragnvaldsson	Q3417518	Ragnvald		Ragnwald	ragnvaldsdatter	ragnvald
+ragnvaldsen	2		create	ragnvaldsen	Q3417518	Ragnvald			ragnvaldsdotter	ragnvald
+ragnvaldson	5		create	ragnvaldson	Q3417518	Ragnvald			ragnvaldsdotter	ragnvald
+ragnvaldsson	17		create	ragnvaldsson	Q3417518	Ragnvald		Ragnwald	ragnvaldsdotter	ragnvald
 ragvaldsdotter	19		create	ragvaldsdotter	Q85286373	Ragvald			ragvaldsson	ragvalds
 ragvaldsson	19		create	ragvaldsson	Q85286373	Ragvald			ragvaldsdotter	ragvald
 ramundsdotter	1		create	ramundsdotter				Ramund		ramunds
@@ -4682,14 +4718,18 @@ reinertsdatter	20		create	reinertsdatter	Q4563024	Reinert			reinertsen	reinert
 reinertsen	22		create	reinertsen	Q4563024	Reinert			reinertsdatter	reinert
 reinertson	21		create	reinertson	Q4563024	Reinert			reinertsdatter	reinert
 reinertsson	3		create	reinertsson	Q4563024	Reinert			reinertsdatter	reinert
+reinhardsdatter	1		create	reinhardsdatter	Q19987572	Reinhardt			reinhardsen	reinhard
+reinhardsen	1		create	reinhardsen	Q19987572	Reinhardt			reinhardsdatter	reinhard
 reinhardtsen	3		create	reinhardtsen	Q19987572	Reinhardt				reinhardt
-reinholdsdotter	20		create	reinholdsdotter	Q18091397	Reinhold		Reinholdus	reinholdsson	reinholds
+reinholdsdatter	1		create	reinholdsdatter	Q110382621	Reinholdt			reinholdsson	reinhold
+reinholdsdotter	21		create	reinholdsdotter	Q18091397 Q110382621	Reinhold Reinholdt		Reinholdus	reinholdsson	reinholds
 reinholdsen	1		create	reinholdsen	Q18091397	Reinhold			reinholdsdotter	reinhold
 reinholdsson	30		create	reinholdsson	Q18091397	Reinhold			reinholdsdotter	reinhold
 reinholdssson	1		create	reinholdssson	Q18091397	Reinhold			reinholdsdotter	reinholds
 reinholdtsdatter	2		create	reinholdtsdatter	Q110382621	Reinholdt			reinholdtsson	reinholdt
 reinholdtsen	1		create	reinholdtsen	Q110382621	Reinholdt			reinholdtsdatter	reinholdt
 reinholdtsson	1		create	reinholdtsson	Q110382621	Reinholdt			reinholdtsdatter	reinholdt
+reinholtsdatter	2		create	reinholtsdatter	Q110382621 Q18091397	Reinholdt Reinhold				reinholt
 reinmodsen	1		create	reinmodsen	Q29551363	Reinmod				reinmod
 reinmodson	1		create	reinmodson	Q29551363	Reinmod				reinmod
 reiulfsen	1		create	reiulfsen	Q30873202	Reiulf				reiulf
@@ -4700,12 +4740,13 @@ reymarsdatter	1		create	reymarsdatter				Reymar		reymar
 rheinholdsson	1		create	rheinholdsson				Rheinhold		rheinhold
 richardsdatter	5		create	richardsdatter	Q1249148	Richard			richardsen	richard
 richardsdotter	2		create	richardsdotter	Q1249148	Richard			richardsen	richards
-richardsen	11		create	richardsen	Q1249148 Q2604027	Richard Rikard			richardsdatter	richard
+richardsen	13		create	richardsen	Q1249148 Q2604027	Richard Rikard		Rickert	richardsdatter	richard
 richardson	5		create	richardson	Q1249148	Richard			richardsdatter	richard
 richardssen	1		create	richardssen	Q1249148	Richard			richardsdatter	richards
 richardsson	6		create	richardsson	Q1249148	Richard			richardsdatter	richard
 richartsdatter	1		create	richartsdatter	Q129900287	Richart				richart
-richertsdatter	1		create	richertsdatter	Q45322949	Richert				richert
+richertsdatter	1		create	richertsdatter	Q45322949	Richert			richertsen	richert
+richertsen	1		create	richertsen	Q1249148	Richard			richertsdatter	richert
 rickardsson	1		create	rickardsson	Q1249148	Richard				rickard
 rickartsen	1		create	rickartsen				Rickert		rickart
 rickertsen	3		create	rickertsen				Rickert		rickert
@@ -4713,13 +4754,16 @@ riggelsdatter	1		create	riggelsdatter				Riggel	riggelsen	riggel
 riggelsen	1		create	riggelsen				Riggel	riggelsdatter	riggel
 riggertsdotter	1		create	riggertsdotter				Riggert	riggertsson	riggerts
 riggertsson	1		create	riggertsson				Riggert	riggertsdotter	riggert
-rigsdotter	1		create	rigsdotter				Rig	rigson	rigs
+rigsdotter	1		create	rigsdotter				Rig	rigsson	rigs
 rigson	1		create	rigson				Rig	rigsdotter	rig
 rigsson	1		create	rigsson				Rig	rigsdotter	rig
 rikardsdatter	5		create	rikardsdatter	Q2604027	Rikard			rikardsen	rikard
 rikardsdotter	1		create	rikardsdotter	Q2604027	Rikard			rikardsen	rikards
 rikardsen	6		create	rikardsen	Q2604027	Rikard			rikardsdatter	rikard
 rikardsson	5		create	rikardsson	Q2604027	Rikard			rikardsdatter	rikard
+rimboldsen	1		create	rimboldsen				Rimboldt		rimbold
+rimboltsdatter	1		create	rimboltsdatter				Rimboldt	rimboltsen	rimbolt
+rimboltsen	1		create	rimboltsen				Rimboldt	rimboltsdatter	rimbolt
 ringsdatter	2		create	ringsdatter	Q104531201	Ring			ringsson	ring
 ringsdotter	1		create	ringsdotter	Q104531201	Ring			ringsson	rings
 ringsson	4		create	ringsson	Q104531201	Ring			ringsdatter	ring
@@ -4786,6 +4830,7 @@ rulvsdatter	1		create	rulvsdatter	Q33120696	Rolv				rulv
 ruriksson	3		create	ruriksson	Q18010304	Rurik				rurik
 rutgersdotter	8		create	rutgersdotter	Q2177560	Rutger			rutgersson	rutgers
 rutgersson	8		create	rutgersson	Q2177560	Rutger			rutgersdotter	rutger
+rádbardsson	1		create	rádbardsson				Radbart		rádbard
 råmundsdatter	1		create	råmundsdatter				Råmund	råmundson	råmund
 råmundson	1		create	råmundson				Ramund	råmundsdatter	råmund
 rögnvaldsson	3		create	rögnvaldsson	Q3417518	Ragnvald				rögnvald
@@ -4959,13 +5004,14 @@ sigvaldsdatter	13		create	sigvaldsdatter	Q7513345	Sigvald			sigvaldsen	sigvald
 sigvaldsen	7		create	sigvaldsen	Q7513345	Sigvald			sigvaldsdatter	sigvald
 sigvaldson	1		create	sigvaldson	Q7513345	Sigvald			sigvaldsdatter	sigvald
 sigvaldsson	1		create	sigvaldsson	Q7513345	Sigvald			sigvaldsdatter	sigvald
-sigvarddatter	1		create	sigvarddatter	Q7513347	Sigvard			sigvardson	sigvard
-sigvardsdatter	6		create	sigvardsdatter	Q7513347	Sigvard		Sigward	sigvardson	sigvard
-sigvardsdotter	2		create	sigvardsdotter	Q7513347	Sigvard			sigvardson	sigvards
-sigvardsen	5		create	sigvardsen	Q7513347	Sigvard			sigvardsdatter	sigvard
+sigvarddatter	1		create	sigvarddatter	Q7513347	Sigvard			sigvardsen	sigvard
+sigvardsdatter	7		create	sigvardsdatter	Q7513347 Q30087900	Sigvard Sigvardt		Sigward	sigvardsen	sigvard
+sigvardsdotter	2		create	sigvardsdotter	Q7513347	Sigvard			sigvardsen	sigvards
+sigvardsen	7		create	sigvardsen	Q7513347 Q20664284 Q30087900	Sigvard Sigvart Sigvardt			sigvardsdatter	sigvard
 sigvardson	6		create	sigvardson	Q7513347	Sigvard			sigvardsdatter	sigvard
 sigvardsson	1		create	sigvardsson	Q7513347	Sigvard			sigvardsdatter	sigvard
-sigvartsdatter	5		create	sigvartsdatter	Q20664284	Sigvart			sigvartsen	sigvart
+sigvarthsen	1		create	sigvarthsen	Q7513347	Sigvard				sigvarth
+sigvartsdatter	6		create	sigvartsdatter	Q20664284	Sigvart		Sigward	sigvartsen	sigvart
 sigvartsen	4		create	sigvartsen	Q20664284	Sigvart			sigvartsdatter	sigvart
 sigvartson	1		create	sigvartson	Q20664284	Sigvart			sigvartsdatter	sigvart
 sigvesdatter	9		create	sigvesdatter	Q4573088	Sigve			sigvesen	sigve
@@ -5002,7 +5048,7 @@ siursdatter	2		create	siursdatter	Q12000735	Sjur			siursen	siur
 siursdotter	1		create	siursdotter	Q12000735	Sjur			siursen	siurs
 siursen	2		create	siursen	Q12000735	Sjur			siursdatter	siur
 sivartsdatter	1		create	sivartsdatter	Q19869345	Sivert				sivart
-siversdatter	8		create	siversdatter	Q19391532 Q30087923	Syver Siver			siversen	siver
+siversdatter	8		create	siversdatter	Q19391532 Q30087923	Syver Siver			siverson	siver
 siversen	2		create	siversen	Q19391532 Q30087923	Syver Siver			siversdatter	siver
 siverson	2		create	siverson	Q30087923 Q19391532	Siver Syver			siversdatter	siver
 sivertsdatter	166		create	sivertsdatter	Q19869345 Q30643295	Sivert Syvert			sivertsen	sivert
@@ -5258,7 +5304,7 @@ styggesen	7		create	styggesen				Stygge	styggesdatter	stygge
 styrbjörnsson	1		create	styrbjörnsson	Q10682783	Styrbjörn				styrbjörn
 styrkarson	3		create	styrkarson				Styrkår Styrkar		styrkar
 styrkarsson	1		create	styrkarsson				Styrkår		styrkar
-styrksdotter	2		create	styrksdotter	Q124985810	Styrk			styrksen	styrks
+styrksdotter	2		create	styrksdotter	Q124985810	Styrk			styrkson	styrks
 styrksen	1		create	styrksen	Q57305524	Stork			styrksdotter	styrk
 styrkson	1		create	styrkson	Q124985810	Styrk			styrksdotter	styrk
 styrksson	1		create	styrksson	Q124985810	Styrk			styrksdotter	styrk
@@ -5498,7 +5544,7 @@ terkildsdatter	3		create	terkildsdatter	Q123676137	Therkild			terkildsen	terkild
 terkildsen	2		create	terkildsen	Q123676137	Therkild			terkildsdatter	terkild
 terningsdatter	1		create	terningsdatter				Terning	terningsson	terning
 terningsdotter	1		create	terningsdotter				Terning	terningsson	ternings
-terningsson	1		create	terningsson				Terning	terningsdatter	terning
+terningsson	1		create	terningsson				Terning	terningsdotter	terning
 tetzdatter	2		create	tetzdatter				Tetz		tetz
 tetzedotter	1		create	tetzedotter				Tetz	tetzesen	tetze
 tetzesen	1		create	tetzesen				Tetz	tetzedotter	tetze
@@ -5618,7 +5664,7 @@ thormodsson	1		create	thormodsson	Q30088066	Thormod			thormodsdatter	thormod
 thornsdatter	4		create	thornsdatter	Q113128358	Thorn			thornson	thorn
 thornsen	1		create	thornsen	Q113128358	Thorn			thornsdatter	thorn
 thornson	8		create	thornson	Q113128358	Thorn		Tårn	thornsdatter	thorn
-thorolfdotter	1		create	thorolfdotter	Q187603	Thorolf			thorolfsson	thorolf
+thorolfdotter	1		create	thorolfdotter	Q187603	Thorolf			thorolfson	thorolf
 thorolfson	1		create	thorolfson	Q187603	Thorolf			thorolfdotter	thorolf
 thorolfsson	1		create	thorolfsson	Q187603	Thorolf			thorolfdotter	thorolf
 thorormson	1		create	thorormson				Thororm		thororm
@@ -5628,10 +5674,10 @@ thorsdatter	84		create	thorsdatter	Q2428812 Q23047611 Q1548096 Q19818192	Thor Th
 thorsdotter	7		create	thorsdotter	Q19818192 Q23047611	Tor Thore			thorsen	thors
 thorsen	115		create	thorsen	Q23047611 Q1548096 Q2428812 Q19818192 Q12008164	Thore Tore Thor Tor Tørres		Torer	thorsdatter	thor
 thorson	14		create	thorson	Q23047611 Q1548096 Q2428812 Q19818192	Thore Tore Thor Tor			thorsdatter	thor
-thorsson	6		create	thorsson	Q1548096 Q19818192 Q23047611	Tore Tor THORE			thorsdatter	thor
+thorsson	8		create	thorsson	Q1548096 Q1165126 Q19818192 Q23047611	Tore Theodor Tor THORE			thorsdatter	thor
 thorsteensdotter	3		create	thorsteensdotter				Thorsteen	thorsteensen	thorsteens
 thorsteensen	2		create	thorsteensen				Thorsteen	thorsteensdotter	thorsteen
-thorsteinsdatter	3		create	thorsteinsdatter	Q10993987	Torstein			thorsteinson	thorstein
+thorsteinsdatter	3		create	thorsteinsdatter	Q10993987	Torstein			thorsteinsen	thorstein
 thorsteinsen	6		create	thorsteinsen	Q10993987 Q20681922	Torstein Thorstein			thorsteinsdatter	thorstein
 thorsteinson	6		create	thorsteinson	Q20681922 Q10993987	Thorstein Torstein			thorsteinsdatter	thorstein
 thorsteinsson	4		create	thorsteinsson	Q10993987 Q69526584 Q20681922	Torstein Thorsteinn Thorstein			thorsteinsdatter	thorstein
@@ -5666,20 +5712,23 @@ thygeson	2		create	thygeson	Q63474218	Thyge			thygesdatter	thyge
 thyrisson	1		create	thyrisson				Töres		thyri
 thøgersdatter	30		create	thøgersdatter	Q91872358 Q67860599	Thøger Tøger			thøgersen	thøger
 thøgersen	23		create	thøgersen	Q91872358 Q67860599	Thøger Tøger			thøgersdatter	thøger
+tidemandsen	1		create	tidemandsen				Timand		tidemand
 tidemannsson	1		create	tidemannsson	Q30584102	Tidemann				tidemann
-tidemansdatter	1		create	tidemansdatter	Q30584102	Tidemann			tidemansson	tideman
-tidemansdotter	3		create	tidemansdotter				Tideman	tidemansson	tidemans
+tidemansdatter	1		create	tidemansdatter	Q30584102	Tidemann			tidemansen	tideman
+tidemansdotter	3		create	tidemansdotter				Tideman	tidemansen	tidemans
 tidemansen	2		create	tidemansen	Q30584102	Tidemann			tidemansdotter	tideman
 tidemansson	2		create	tidemansson	Q30584102	Tidemann		Tideman	tidemansdotter	tideman
-tideson	1		create	tideson				Tide		tide
 tidichsdotter	1		create	tidichsdotter				Tidich	tidichsson	tidichs
 tidichsson	1		create	tidichsson				Tidich	tidichsdotter	tidich
 tiesenhausen	5		create	tiesenhausen				Tyzenhaus		tiesenhau
 tillufsen	1		create	tillufsen				Tilluf		tilluf
 timandsen	1		create	timandsen				Timand		timand
+timannsdatter	4		create	timannsdatter	Q30584102	Tidemann			timannson	timann
+timannson	4		create	timannson	Q30584102	Tidemann			timannsdatter	timann
+timansdatter	2		create	timansdatter	Q30584102	Tidemann				timan
 timmesdatter	9		create	timmesdatter				Timme	timmesen	timme
 timmesen	13		create	timmesen				Timme	timmesdatter	timme
-timonsson	1		create	timonsson	Q240702	Timon				timon
+timonsson	1		create	timonsson				Tideman		timon
 timoteusdotter	1		create	timoteusdotter	Q15887853	Timoteus				timoteus
 timsdatter	1		create	timsdatter	Q1369663	Tim			timsen	tim
 timsen	3		create	timsen	Q1369663	Tim			timsdatter	tim
@@ -5701,6 +5750,8 @@ tjærandsdatter	23		create	tjærandsdatter	Q12006492	Tjerand		Tjærand	tjærands
 tjærandsdotter	1		create	tjærandsdotter				Tjærand	tjærandsen	tjærands
 tjærandsen	13		create	tjærandsen				Tjærand	tjærandsdatter	tjærand
 tjærandson	10		create	tjærandson				Tjærand	tjærandsdatter	tjærand
+tjødgesdatter	2		create	tjødgesdatter				Tjøge	tjødgesen	tjødge
+tjødgesen	1		create	tjødgesen				Tjøge	tjødgesdatter	tjødge
 tjøgesdatter	2		create	tjøgesdatter	Q18941424	Tyge				tjøge
 tjølsdatter	39		create	tjølsdatter				Tjøl	tjølsen	tjøl
 tjølsdotter	3		create	tjølsdotter				Tjøl	tjølsen	tjøls
@@ -5721,7 +5772,6 @@ tobiason	4		create	tobiason	Q4928115	Tobias			tobiasdatter	tobia
 tobiassen	70		create	tobiassen	Q4928115	Tobias			tobiasdatter	tobias
 tobiasson	58		create	tobiasson	Q4928115 Q21146296	Tobias Thobias			tobiasdatter	tobia
 tobiedotter	1		create	tobiedotter	Q4928115	Tobias				tobie
-todsen	1		create	todsen				Tode		tod
 tofuesson	1		create	tofuesson				Tofue		tofue
 togersdatter	2		create	togersdatter	Q67860599	Tøger			togersen	toger
 togersdotter	1		create	togersdotter	Q67860599	Tøger			togersen	togers
@@ -5797,6 +5847,7 @@ torbergsdatter	3		create	torbergsdatter	Q35028031 Q16428916	Torberg Thorberg			t
 torbergsdotter	1		create	torbergsdotter	Q35028031	Torberg			torbergsson	torbergs
 torbergson	1		create	torbergson	Q35028031	Torberg			torbergsdatter	torberg
 torbergsson	6		create	torbergsson	Q35028031	Torberg			torbergsdatter	torberg
+torberndtsson	1		create	torberndtsson				Torbernt		torberndt
 torbernsdatter	5		create	torbernsdatter	Q35029462	Torbern			torbernsen	torbern
 torbernsdotter	1		create	torbernsdotter	Q35029462	Torbern			torbernsen	torberns
 torbernsen	3		create	torbernsen	Q35029462 Q35029763 Q19828989	Torbern Thorbern Torbjørn			torbernsdatter	torbern
@@ -5824,7 +5875,7 @@ torchelson	2		create	torchelson	Q9360168	Torkil			torchelsdatter	torchel
 torchildsdatter	2		create	torchildsdatter				Thorchild	torchildsen	torchild
 torchildsen	2		create	torchildsen				Thorchild Torchild	torchildsdatter	torchild
 tordsdatter	18		create	tordsdatter	Q1750352 Q20730759	Tord Thord			tordsson	tord
-tordsdotter	17		create	tordsdotter	Q1750352	Tord			tordsson	tords
+tordsdotter	18		create	tordsdotter	Q1750352	Tord		Trotte	tordsson	tords
 tordsen	9		create	tordsen	Q1750352	Tord			tordsdatter	tord
 tordson	10		create	tordson	Q1750352	Tord			tordsdatter	tord
 tordsson	35		create	tordsson	Q1750352 Q20730759	Tord Thord			tordsdatter	tord
@@ -5840,7 +5891,7 @@ toressen	1		create	toressen	Q1548096	Tore			toresdatter	tores
 toresson	69		create	toresson	Q1548096 Q23047611 Q19818192	Tore Thore Tor			toresdatter	tore
 torfastdotter	1		create	torfastdotter				Torfast	torfastsson	torfast
 torfastsdotter	1		create	torfastsdotter				Torfast	torfastsson	torfasts
-torfastsson	4		create	torfastsson				Torfast	torfastsdotter	torfast
+torfastsson	4		create	torfastsson				Torfast	torfastdotter	torfast
 torfinnsdatter	8		create	torfinnsdatter	Q21458430	Torfinn			torfinnsen	torfinn
 torfinnsdotter	1		create	torfinnsdotter	Q21458430	Torfinn			torfinnsen	torfinns
 torfinnsen	4		create	torfinnsen	Q21458430	Torfinn			torfinnsdatter	torfinn
@@ -5901,7 +5952,7 @@ torildsdotter	2		create	torildsdotter	Q30582796	Torild			torildsson	torilds
 torildsson	1		create	torildsson	Q30582796	Torild			torildsdotter	torild
 torisdatter	1		create	torisdatter	Q96650879	Toris			torisen	tori
 torisdotter	1		create	torisdotter	Q1548096	Tore			torisen	toris
-torisen	4		create	torisen	Q96650879	Toris			torisdatter	tori
+torisen	4		create	torisen	Q96650879	Toris			torisdotter	tori
 torjeisdatter	45		create	torjeisdatter	Q14438011	Torje		Torjei	torjeison	torjei
 torjeisdotter	5		create	torjeisdotter				Torjei	torjeison	torjeis
 torjeisen	19		create	torjeisen	Q2394333	Tarjei		Torjei	torjeisdatter	torjei
@@ -5950,8 +6001,8 @@ torlasdotter	1		create	torlasdotter				Torla	torlasson	torlas
 torlasson	4		create	torlasson				Torla	torlasdotter	torla
 torlefsdatter	2		create	torlefsdatter				Torlef	torlefsen	torlef
 torlefsen	2		create	torlefsen				Torlef	torlefsdatter	torlef
-torleifsdatter	2		create	torleifsdatter	Q2758825 Q20800272	Thorleif Torleif			torleifsson	torleif
-torleifsdotter	1		create	torleifsdotter	Q20800272	Torleif			torleifsson	torleifs
+torleifsdatter	2		create	torleifsdatter	Q2758825 Q20800272	Thorleif Torleif			torleifson	torleif
+torleifsdotter	1		create	torleifsdotter	Q20800272	Torleif			torleifson	torleifs
 torleifson	1		create	torleifson	Q20800272	Torleif			torleifsdatter	torleif
 torleifsson	1		create	torleifsson	Q2758825	Thorleif			torleifsdatter	torleif
 torleiksson	1		create	torleiksson				Torleik		torleik
@@ -5980,10 +6031,10 @@ torrisen	3		create	torrisen	Q30580222	Tørris				torri
 torrisson	1		create	torrisson	Q30580222	Tørris				torri
 torrjusson	1		create	torrjusson	Q12007064	Torjus				torrju
 torsdatter	80		create	torsdatter	Q1548096 Q19818192 Q23047611 Q2428812	Tore Tor Thore Thor		Torer	torsen	tor
-torsdotter	17		create	torsdotter	Q1548096 Q19818192 Q2428812	Tore Tor Thor			torsen	tors
+torsdotter	19		create	torsdotter	Q1548096 Q19818192 Q2428812 Q15885228	Tore Tor Thor Theodorus			torsen	tors
 torsen	63		create	torsen	Q1548096 Q23047611 Q19818192 Q2428812	Tore Thore Tor Thor		Torer	torsdatter	tor
 torson	51		create	torson	Q1548096 Q19818192 Q2428812 Q23047611	Tore Tor Thor Thore			torsdatter	tor
-torsson	29		create	torsson	Q19818192 Q1548096 Q2428812 Q23047611	Tor Tore Thor Thore			torsdatter	tor
+torsson	31		create	torsson	Q19818192 Q1548096 Q2428812 Q15885228 Q23047611	Tor Tore Thor Theodorus Thore			torsdatter	tor
 torsteindatter	1		create	torsteindatter	Q10993987	Torstein			torsteinson	torstein
 torsteinnson	1		create	torsteinnson	Q10993987	Torstein				torsteinn
 torsteinsdatter	112		create	torsteinsdatter	Q10993987 Q19688780 Q20681922 Q19688775	Torstein Torsten Thorstein Thorsten			torsteinson	torstein
@@ -6050,6 +6101,7 @@ truedsen	2		create	truedsen	Q134304867	Trued			truedsdotter	trued
 truelsdatter	6		create	truelsdatter	Q117321326 Q30573500	Truels Troels		Trüls	truelsen	truel
 truelsen	4		create	truelsen	Q2761338 Q117321326	Truls Truels		Trüls	truelsdatter	truel
 truesen	1		create	truesen	Q61558530	True				true
+truetsson	1		create	truetsson				Truid		truet
 trugelsen	1		create	trugelsen				Trugels		trugel
 truidsdatter	5		create	truidsdatter				Truid	truidsen	truid
 truidsen	10		create	truidsen				Truid	truidsdatter	truid
@@ -6097,8 +6149,8 @@ tygesson	3		create	tygesson	Q18941424	Tyge			tygesdatter	tyge
 tyggesdotter	6		create	tyggesdotter				Tygge	tyggesson	tygges
 tyggesson	4		create	tyggesson				Tygge	tyggesdotter	tygge
 tygoson	1		create	tygoson	Q4001125	Tygo				tygo
-tykesdatter	4		create	tykesdatter	Q10706999	Tyke			tykesen	tyke
-tykesdotter	1		create	tykesdotter	Q10706999	Tyke			tykesen	tykes
+tykesdatter	4		create	tykesdatter	Q10706999	Tyke			tykesson	tyke
+tykesdotter	1		create	tykesdotter	Q10706999	Tyke			tykesson	tykes
 tykesen	4		create	tykesen	Q10706999	Tyke			tykesdatter	tyke
 tykesson	4		create	tykesson	Q10706999	Tyke			tykesdatter	tyke
 tymmesen	1		create	tymmesen				Tymme		tymme
@@ -6219,7 +6271,7 @@ valdemarsen	13		create	valdemarsen	Q19966563	Valdemar			valdemarsdatter	valdemar
 valdemarson	1		create	valdemarson	Q19966563	Valdemar			valdemarsdatter	valdemar
 valdemarsson	4		create	valdemarsson	Q19966563	Valdemar			valdemarsdatter	valdemar
 valentinsdatter	21		create	valentinsdatter	Q852779	Valentin			valentinsen	valentin
-valentinsdotter	6		create	valentinsdotter	Q852779	Valentin			valentinsson	valentins
+valentinsdotter	6		create	valentinsdotter	Q852779	Valentin			valentinsen	valentins
 valentinsen	20		create	valentinsen	Q852779	Valentin			valentinsdatter	valentin
 valentinson	5		create	valentinson	Q852779	Valentin			valentinsdatter	valentin
 valentinsson	20		create	valentinsson	Q852779	Valentin			valentinsdatter	valentin
@@ -6285,12 +6337,12 @@ vetlesdatter	5		create	vetlesdatter	Q7923751	Vetle			vetlesen	vetle
 vetlesdotter	2		create	vetlesdotter	Q7923751	Vetle			vetlesen	vetles
 vetlesen	13		create	vetlesen	Q7923751	Vetle			vetlesdatter	vetle
 vickesson	2		create	vickesson	Q112688935	Vicke				vicke
-victorsdotter	3		create	victorsdotter	Q16430022 Q539581	Viktor Victor			victorson	victors
+victorsdotter	3		create	victorsdotter	Q16430022 Q539581	Viktor Victor			victorsson	victors
 victorson	1		create	victorson	Q16430022	Viktor			victorsdotter	victor
 victorsson	1		create	victorsson	Q539581	Victor			victorsdotter	victor
 vidkunson	2		create	vidkunson	Q12009701	Vidkun				vidkun
 vidkunsson	3		create	vidkunsson	Q12009701	Vidkun				vidkun
-viersdatter	1		create	viersdatter				Vier	viersson	vier
+viersdatter	1		create	viersdatter				Vier	vierson	vier
 vierson	2		create	vierson				Vier	viersdatter	vier
 viersson	2		create	viersson				Vier	viersdatter	vier
 viffertsen	2		create	viffertsen				Viffert		viffert
@@ -6345,7 +6397,7 @@ villassen	2		create	villassen	Q123498787	Villas			villasdatter	villas
 villasson	2		create	villasson	Q123498787	Villas			villasdatter	villa
 villiensdatter	1		create	villiensdatter				Viljen	villienson	villien
 villiensdotter	1		create	villiensdotter				Villien	villienson	villiens
-villienson	1		create	villienson				Villien	villiensdatter	villien
+villienson	1		create	villienson				Villien	villiensdotter	villien
 villlaksdatter	1		create	villlaksdatter				Villak		villlak
 villumsdatter	33		create	villumsdatter	Q22703948 Q16430433	Villum Willum			villumsen	villum
 villumsdotter	7		create	villumsdotter	Q22703948	Villum			villumsen	villums
@@ -6370,7 +6422,7 @@ visburrson	1		create	visburrson				Visbur		visburr
 visbursson	2		create	visbursson				Visbur		visbur
 vistidatter	6		create	vistidatter				Visti	vistisen	visti
 vistisdatter	6		create	vistisdatter				Visti	vistisen	visti
-vistisen	7		create	vistisen				Visti	vistisdatter	visti
+vistisen	7		create	vistisen				Visti	vistidatter	visti
 vittusen	1		create	vittusen	Q132319924	Wittus				vittu
 vitusdatter	5		create	vitusdatter	Q17142334	Vitus			vitusen	vitu
 vitusen	1		create	vitusen	Q17142334	Vitus			vitusdatter	vitu
@@ -6384,6 +6436,7 @@ volkmandsdatter	1		create	volkmandsdatter				Volkmand		volkmand
 volmersdatter	1		create	volmersdatter	Q29168077	Volmer			volmersen	volmer
 volmersen	1		create	volmersen	Q29168077	Volmer			volmersdatter	volmer
 volodarsdatter	2		create	volodarsdatter				Volodar		volodar
+volquardsdatter	2		create	volquardsdatter	Q70840641	Volquart				volquard
 volquartsdatter	1		create	volquartsdatter	Q70840641	Volquart			volquartsen	volquart
 volquartsen	1		create	volquartsen	Q70840641	Volquart			volquartsdatter	volquart
 volradsdotter	1		create	volradsdotter	Q133569517	Volrad				volrads
@@ -6437,12 +6490,14 @@ wilkensen	1		create	wilkensen	Q13189009	Wilken			wilkensdatter	wilken
 wilkenson	3		create	wilkenson	Q13189009	Wilken			wilkensdatter	wilken
 wilkensson	1		create	wilkensson	Q19398118	Vilken			wilkensdatter	wilken
 wilkinson	2		create	wilkinson	Q13189009	Wilken				wilkin
+willadsen	1		create	willadsen				Willatz		willad
+willadtzdatter	1		create	willadtzdatter				Willatz		willadtz
 willasen	1		create	willasen	Q123498823	Willas				willa
 willatzdatter	1		create	willatzdatter				Willatz	willatzsen	willatz
 willatzsen	1		create	willatzsen				Willatz	willatzdatter	willatz
 willemsdatter	1		create	willemsdatter	Q15282375	Willem			willemsen	willem
 willemsdotter	1		create	willemsdotter	Q15282375	Willem			willemsen	willems
-willemsen	1		create	willemsen	Q15282375	Willem			willemsdotter	willem
+willemsen	1		create	willemsen	Q15282375	Willem			willemsdatter	willem
 willhelmsson	1		create	willhelmsson	Q11027623	Wilhelm				willhelm
 williamdatter	1		create	williamdatter	Q12344159	William			williamson	william
 williamsdatter	2		create	williamsdatter	Q12344159	William			williamson	william
@@ -6451,7 +6506,7 @@ williamsen	3		create	williamsen	Q12344159	William			williamsdotter	william
 williamson	12		create	williamson	Q12344159 Q50841956	William Williams			williamsdotter	william
 williamsson	6		create	williamsson	Q12344159	William			williamsdotter	william
 williksen	1		create	williksen				Willich		willik
-willomsdotter	3		create	willomsdotter				Willom	willomsson	willoms
+willomsdotter	3		create	willomsdotter				Willom	willomsen	willoms
 willomsen	1		create	willomsen				Willom	willomsdotter	willom
 willomsson	1		create	willomsson				Willom	willomsdotter	willom
 willumasen	1		create	willumasen	Q16430433	Willum				willuma
@@ -6484,8 +6539,8 @@ ysteinsson	3		create	ysteinsson				Ystein		ystein
 zacariasdotter	1		create	zacariasdotter	Q20174193	Zacharias			zacariasson	zacarias
 zacariasson	1		create	zacariasson	Q20174193	Zacharias			zacariasdotter	zacaria
 zachaeusson	1		create	zachaeusson				Zachaeus		zachaeu
-zachariasdatter	46		create	zachariasdatter	Q20174193 Q4927814	Zacharias Sakarias			zachariassen	zacharia
-zachariasdotter	33		create	zachariasdotter	Q20174193 Q61957868 Q19868629 Q4927814	Zacharias Zachris Sakari Sakarias		Zackaris Zackris	zachariassen	zacharias
+zachariasdatter	46		create	zachariasdatter	Q20174193 Q4927814	Zacharias Sakarias			zachariasson	zacharia
+zachariasdotter	33		create	zachariasdotter	Q20174193 Q61957868 Q19868629 Q4927814	Zacharias Zachris Sakari Sakarias		Zackaris Zackris	zachariasson	zacharias
 zachariasen	17		create	zachariasen	Q20174193 Q4927814	Zacharias Sakarias			zachariasdatter	zacharia
 zachariassen	40		create	zachariassen	Q20174193 Q4927814 Q108491635	Zacharias Sakarias Zackarias			zachariasdatter	zacharias
 zachariasson	40		create	zachariasson	Q20174193 Q61957868 Q4927814 Q19868629 Q108491635 Q41796451	Zacharias Zachris Sakarias Sakari Zackarias Zakarias		Zackaris	zachariasdatter	zacharia
@@ -6545,7 +6600,7 @@ zephaniusen	1		create	zephaniusen				Sephanias		zephaniu
 ånundsdotter	2		create	ånundsdotter	Q30074069	Ånund			ånundsen	ånunds
 ånundsen	2		create	ånundsen	Q30074069	Ånund			ånundsdatter	ånund
 ånundsson	1		create	ånundsson	Q30074069	Ånund			ånundsdatter	ånund
-årsteinsdatter	3		create	årsteinsdatter	Q12011616	Årstein			årsteinson	årstein
+årsteinsdatter	3		create	årsteinsdatter	Q12011616	Årstein			årsteinsen	årstein
 årsteinsen	1		create	årsteinsen	Q12011616	Årstein			årsteinsdatter	årstein
 årsteinson	1		create	årsteinson	Q12011616	Årstein			årsteinsdatter	årstein
 åsmundsdatter	13		create	åsmundsdatter	Q2056274	Åsmund			åsmundsen	åsmund
@@ -6632,7 +6687,7 @@ zephaniusen	1		create	zephaniusen				Sephanias		zephaniu
 øysteinsen	12		create	øysteinsen	Q317315 Q30826758	Øystein Østen			øysteinsdatter	øystein
 øysteinson	23		create	øysteinson	Q317315 Q30826758	Øystein Østen			øysteinsdatter	øystein
 øysteinsson	15		create	øysteinsson	Q317315	Øystein			øysteinsdatter	øystein
-øystensdatter	1		create	øystensdatter	Q317315	Øystein			øystensson	øysten
+øystensdatter	1		create	øystensdatter	Q317315	Øystein			øystensen	øysten
 øystensen	1		create	øystensen	Q317315	Øystein			øystensdatter	øysten
 øystensson	1		create	øystensson	Q317315	Øystein			øystensdatter	øysten
 øyvindsdatter	4		create	øyvindsdatter	Q8079337	Øyvind			øyvindsen	øyvind

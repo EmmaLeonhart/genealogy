@@ -353,8 +353,16 @@ PATRONYMIC_PARTS = re.compile(r"^(.+?)(sen|son|sson|datter|sdatter|dotter)$", re
 #: Spelling pairs that are the SAME Scandinavian name, applied before the skeleton is taken.
 #: Each is a real variant seen in the corpus, not a general phonetic theory: `Mathias`/`Matts`,
 #: `Niclas`/`Niklas`, `Christen`/`Kristen`, `Qvist`/`Kvist`, `Wilhelm`/`Vilhelm`.
+#:
+#: **`d`/`t` was added 2026-08-31 after measuring, not before.** It is the commonest remaining
+#: alternation -- `Peder`/`Petter`, `Mads`/`Mats`, `Laurids`/`Laurits`, `Godskalk`/`Gotskalk` --
+#: and it rescues **1,410** tokens wrongly classified as inherited surnames. Emma's objection was
+#: that folding it would also merge `Anders` with `Antti`, which are cognates and not one name.
+#: Checked: it does not. Their skeletons are `andrs` and `ant`, which the fold leaves apart, and
+#: 8 of 8 sampled rescues are genuine (`Pedersdatter` of `Petter Jacobsen Falch`, `Madsdotter` of
+#: `Mats Nilsen Odder`). The worry was real and the measurement retired it.
 _SPELLING = (("th", "t"), ("ph", "f"), ("ch", "k"), ("ck", "k"), ("qu", "kv"),
-             ("c", "k"), ("w", "v"), ("z", "s"), ("j", "i"))
+             ("c", "k"), ("w", "v"), ("z", "s"), ("j", "i"), ("d", "t"))
 
 
 def _skeleton(word: str) -> str:
