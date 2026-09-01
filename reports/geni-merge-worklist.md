@@ -2,7 +2,7 @@
 
 **The merges are Emma's and are never performed here.** This is only the order to look in, and the pages to look at. `scripts/find-geni-duplicates.py` produces the candidates; this is the top of them.
 
-`reports/geni-duplicate-candidates.tsv` holds **12,287** groups, which is not something anyone opens a browser against. That is why this exists.
+`reports/geni-duplicate-candidates.tsv` holds **12,542** groups, which is not something anyone opens a browser against. That is why this exists.
 
 **A candidate is a candidate, not a duplicate.** `CLAUDE.md` § *The question is whether OUR TREE MATCHES GENI* governs: the only question a pair raises is whether our snapshot still matches Geni today. Whether the two people should be one is not ours to adjudicate.
 
@@ -100,7 +100,7 @@ Her *"higher scrutiny"* pass, biggest groups first. **Sibling sets are excluded*
     - https://www.geni.com/people/x/6000000059163062952
     - https://www.geni.com/people/x/6000000059163118841
     - https://www.geni.com/people/x/6000000059163140836
-- **: Soo Pang (屿房)(5)颗馒等公家谱(槟城) 邱** — 5 profiles, parent of the same name, same name, child of : soo pang (屿房)(5)颗馒等公家谱(槟城) 邱
+- **: Soo Pang 颗馒等公家谱 邱** — 5 profiles, parent of the same name, same name, child of : soo pang 颗馒等公家谱 邱
     - https://www.geni.com/people/x/6000000200056082908
     - https://www.geni.com/people/x/6000000200056559846
     - https://www.geni.com/people/x/6000000200056579848
@@ -163,7 +163,7 @@ Her *"higher scrutiny"* pass, biggest groups first. **Sibling sets are excluded*
 - **光隆室 源** — 2 profiles, same parent, same name, child of Tameyoshi Minamoto (Mutsu Shiro)
     - https://www.geni.com/people/x/6000000001902240226
     - https://www.geni.com/people/x/6000000001906889050
-- **天穂日命** — 2 profiles, same parent, same name, child of Uknown father of Oshihomimi (Possibly Susanoo)
+- **天穂日命** — 2 profiles, same parent, same name, child of Uknown father of Oshihomimi
     - https://www.geni.com/people/x/6000000001831487883
     - https://www.geni.com/people/x/6000000012788527451
 - **永手 藤原** — 2 profiles, same parent, same name, child of Fujiwara no Fusasaki

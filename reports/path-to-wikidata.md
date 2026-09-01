@@ -1,8 +1,8 @@
 # Connecting `6000000087535357291` to Wikidata's family graph
 
-**Emma Leonhart 1996** — carries Q232803.
+**Emma Himiko Leonhart 1996** — carries Q140568870.
 
-7,061 ancestors in the tree; **682 of them carry a
+7,176 ancestors in the tree; **815 of them carry a
 Wikidata item**.
 
 ## The nearest ones, and whether they are attached to anything
@@ -13,31 +13,31 @@ best target.
 
 | gens up | born | qid | name | links on Wikidata |
 | ---: | ---: | --- | --- | --- |
-| 14 | 1535 | Q11979685 | Jørgen Erikssøn | **isolate** |
-| 15 | 1495 | Q11956948 | Adrian Rockertson van Valckenier | P40:Q140645329 |
-| 15 | 1495 | Q7845461 | Trond Thorleivsson Benkestok III | P22:Q7825898, P40:Q6271694 |
-| 15 | 1509 | Q11978440 | Jens Pedersen Schielderup | P40:Q14942564 |
-| 15 | 1495 | Q110302808 | Erik Ormson Ormson | P22:Q3335038, P25:Q110302810, P40:Q110302807 |
-| 16 | 1453 | Q7825898 | Torleiv Trondssøn Benkestok | P40:Q7845461 |
-| 18 | 1400 | Q3390712 | Hans (Johannes) Jannikusson Kruckow | **isolate** |
-| 18 | 1385 | Q110302995 | Gyrid Torbergsdatter Stora Brandvik | P40:Q110302814, P40:Q135527736 |
-| 18 | 1385 | Q110302987 | Baard Sigurdsson | P22:Q110302989, P25:Q110302993, P40:Q110302814 |
-| 18 | 1426 | Q135527736 | Herborg Baardsdatter Bárðardóttir | P22:Q110302987, P25:Q110302995, P40:Q135527732 |
-| 19 | 1370 | Q7651616 | Svale Jonson Smor | P22:Q6270833, P40:Q6271657 |
-| 19 | 1500 | Q135527730 | Herborg Pedersdatter Torsnes | P22:Q135527732, P40:Q110302794 |
-| 20 | 1350 | Q6270833 | Jon Halvardsson Smør | P22:Q5643219, P40:Q7651616 |
-| 20 | 1450 | Q135527732 | Peter Tokheim | P25:Q135527736, P40:Q135527730 |
-| 21 | 1310 | Q5643219 | Halvard Jonsson Smør | P40:Q6270833 |
-| 21 | 1225 | Q117477378 | Sigurd Brynjulfsson Brynjulfson Aga | **isolate** |
-| 22 | 1310 | Q103781693 | Eirik Sigurdsson Galtung | P22:Q103781702, P40:Q103781680 |
-| 22 | 1312 | Q5890072 | Jon Hafthorsson Hafthorssen Sorum | P22:Q5781805, P25:Q46666, P26:Q101248597 |
-| 22 | ? | Q101248597 | Birgitta Knutsdotter | P22:Q101248598, P25:Q101248600, P26:Q5890072 |
-| 23 | 1270 | Q103781702 | Sigurd Gautsson Torsnes I | P22:Q103783277, P40:Q103781693 |
-| 23 | 1292 | Q947838 | Erling Vidkunsson Bjarkøy | P22:Q174598, P25:Q101247947, P40:Q101247946 |
-| 23 | 1290 | Q101247948 | Elin Toresdatter Bjarkøy | P22:Q15851234, P25:Q101247950, P40:Q101247946 |
-| 23 | 1275 | Q5781805 | Hafthor Jonsson Jonsen af Sudreim | P22:Q101247943, P25:Q101247944, P26:Q46666 |
-| 23 | 1292 | Q46666 | Agnes Hákonardóttir | P22:Q313153, P25:Q101247945, P26:Q5781805 |
-| 24 | 1270 | Q313153 | Håkon V Magnússon | P22:Q334673, P25:Q287511, P26:Q287581 |
+| 1 | ? | Q141223923 | Helen Frisk | **isolate** |
+| 1 | 1963 | Q141224814 | Richard Wade Borsheim | **isolate** |
+| 2 | 1930 | Q141223733 | Hans Bertil Frisk | **isolate** |
+| 2 | 1932 | Q141224812 | Caroline Signe Borsheim | **isolate** |
+| 2 | 1926 | Q141224882 | Randolph Paulus Borsheim | **isolate** |
+| 2 | 1931 | Q141223907 | Elly Olivia Frisk | **isolate** |
+| 3 | 1891 | Q141224339 | Reinhert Borsheim | **isolate** |
+| 3 | 1895 | Q141224910 | Theoline Henrika Borsheim | **isolate** |
+| 3 | 1902 | Q141223736 | Karl Emil Frisk | **isolate** |
+| 3 | 1906 | Q141223506 | Beda Elvira Wedberg | **isolate** |
+| 3 | 1912 | Q141224807 | Sophia Borgit Hoknes | **isolate** |
+| 4 | ? | Q141225200 | Olaf Gunderson | **isolate** |
+| 4 | 1866 | Q141223853 | Rakel Rasmusdottir Borsheim | **isolate** |
+| 4 | 1857 | Q141223944 | Rasmus Borsheim | **isolate** |
+| 4 | 1855 | Q141223523 | Johan Fredrik Wedberg | **isolate** |
+| 4 | 1866 | Q141223427 | Johanna Matilda Carlsdotter | **isolate** |
+| 4 | 1880 | Q141224204 | Inger Serine Lerma Gunderson | **isolate** |
+| 5 | 1813 | Q141223744 | Rasmus Wibye Andersson Lea | **isolate** |
+| 5 | 1828 | Q141223503 | Anne Berta Osmundsdatter Nese | **isolate** |
+| 5 | 1825 | Q141224751 | Berta Serina Rasmusdatter Borsheim | **isolate** |
+| 5 | 1814 | Q141224861 | Paul Pederson Borsheim | **isolate** |
+| 5 | 1833 | Q141223507 | Carl, Johan Ersson | **isolate** |
+| 5 | 1837 | Q141219160 | Christina, Sofia Carlsdotter | **isolate** |
+| 5 | ? | Q141224136 | Dorte Sofie Nilsdatter Kyllingstad | **isolate** |
+| 5 | 1829 | Q141223972 | Ådne Olsson Lima Kyllingstad. Lima | **isolate** |
 
 ## Which ancestors are hubs
 
@@ -47,28 +47,28 @@ Wikidata descendants is a dead end however close it is.
 
 | descendants with items | descendants | gens up | born | ancestor |
 | ---: | ---: | ---: | ---: | --- |
-| 4,328 | 68,918 | 43 | 592 | Itta De Nivelles [Q259551] |
-| 4,328 | 68,918 | 43 | 575 | Pepin de Landen, Mayor of the Palace of Austrasia [Q313373] |
-| 4,325 | 68,936 | 43 | 582 | Arnoul Bishop of Metz [Q337189] |
-| 4,324 | 68,910 | 42 | 613 | Begga de Landen abbesse d'Andenne [Q266765] |
-| 4,324 | 68,910 | 42 | 610 | Ansegisel de Metz [Q453739] |
-| 4,323 | 68,908 | 41 | 640 | Pepin [Q91392] |
-| 4,322 | 68,879 | 40 | 686 | Charles "Martel" Mayor of the Palace [Q3301] |
-| 4,321 | 68,793 | 41 | 670 | Bertrade de Prüm [Q266215] |
-| 4,320 | 68,790 | 40 | 696 | Charibert comte de Laon [Q984685] |
-| 4,319 | 68,789 | 39 | 720 | Bertrada "au Grand Pied" de Laon [Q266751] |
-| 4,319 | 68,789 | 39 | 715 | Pépin [Q81212] |
-| 4,300 | 68,251 | 40 | 710 | Hnabi Nebi Duke of Alamannia [Q735704] |
-| 4,298 | 68,139 | 38 | 747 | Carolus 'Magnus' Rex Francorum & Imperator Romanorum [Q3044] |
-| 4,297 | 68,129 | 38 | 758 | Hildegard [Q234410] |
-| 4,228 | 64,880 | 37 | 778 | Louis I [Q43974] |
-| 4,202 | 64,635 | 38 | 776 | Welf I von Altdorf Graf in Schwaben [Q536899] |
-| 4,197 | 66,273 | 39 | 773 | Carloman Pépin [Q299645] |
-| 4,062 | 62,015 | 37 | ? | Adélaïs Aélis de Tours [Q354934] |
-| 4,059 | 61,953 | 36 | 825 | Conrad II "the Younger" de Bourgogne Duke of Upper Burgundy [Q1782094] |
-| 4,056 | 61,457 | 36 | 841 | Boson d'Autun Comte de Vienne, Dux de Provence [Q73806] |
+| 16,259 | 385,370 | 42 | 592 | Itta De Nivelles [Q259551] |
+| 16,259 | 385,370 | 42 | 575 | Pepin de Landen, Mayor of the Palace of Austrasia [Q313373] |
+| 16,256 | 385,388 | 42 | 582 | Arnoul Bishop of Metz [Q337189] |
+| 16,255 | 385,362 | 41 | 613 | Бегга Арнульфинг [Q266765] |
+| 16,255 | 385,362 | 41 | 610 | Ansegisel de Metz [Q453739] |
+| 16,254 | 385,360 | 40 | 640 | Pépin ll d'Héristal Mayor of the Palace of Austrasia [Q91392] |
+| 16,253 | 385,335 | 39 | 686 | Charles Mayor of the Palace [Q3301] |
+| 16,252 | 385,249 | 40 | 670 | Bertrade de Prüm [Q266215] |
+| 16,251 | 385,246 | 39 | 696 | Charibert comte de Laon [Q984685] |
+| 16,250 | 385,245 | 38 | 720 | Bertrade Carolingien [Q266751] |
+| 16,250 | 385,245 | 38 | 715 | Pépin [Q81212] |
+| 16,230 | 384,648 | 39 | 710 | Hnabi Nebi, Duke of Alamannia [Q735704] |
+| 16,228 | 384,536 | 37 | 747 | Charlemagne [Q3044] |
+| 16,227 | 384,526 | 37 | 758 | Hildegard [Q234410] |
+| 16,142 | 380,839 | 36 | 778 | Louis I, The Pious [Q43974] |
+| 16,123 | 380,424 | 37 | 776 | Welf I Of Swabia Graf in Schwaben [Q536899] |
+| 16,117 | 382,108 | 38 | 773 | Carloman Pépin [Q299645] |
+| 15,889 | 375,922 | 36 | ? | Adélaïs Aélis de Tours [Q354934] |
+| 15,886 | 375,812 | 35 | 825 | Conrad II de Bourgogne Duke of Upper Burgundy [Q1782094] |
+| 15,881 | 375,321 | 35 | 841 | Boson d'Autun Comte de Vienne, Dux de Provence [Q73806] |
 
-**2 of the 682 carry no Wikidata descendants at all.**
+**2 of the 815 carry no Wikidata descendants at all.**
 
 ## What this changes
 
