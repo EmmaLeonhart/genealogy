@@ -45,6 +45,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from namemodel import without_nickname  # noqa: E402
+from labels import normalise_marker_spelling  # noqa: E402
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT / "src"))
@@ -232,6 +233,21 @@ def main() -> int:
 
         latin = [strip_nick(x) for x in latin]
         aliases = [strip_nick(x) for x in aliases]
+
+        # **Normalise the unknown-name marker HERE, at the source, for the same reason the
+        # nickname strip moved here.** `scripts/labels.strip_markers` has produced `NN` from
+        # `nn`, `N.N.`, `unknown`, `ukjent`, `某` and `dødfødt` since 2026-08-27, and nothing in
+        # this file ever called it -- so `derived-labels.csv` carried `nn Gunnarsdatter Frafjord`
+        # and every reader downstream saw it. The label-correction pass could not fix those two
+        # live items either, because it fires when our label differs from Wikidata's and ours
+        # *was* the mangled form.
+        #
+        # **`normalise_marker_spelling`, not `strip_markers`, and the difference is 94,231
+        # people.** The unscreened call also turns `Private` and `<private>` into `NN`, which is
+        # a redaction decision Emma has twice corrected an attempt to settle. The screened one
+        # changes **8,053** labels, every one a marker spelled inconsistently.
+        latin = [normalise_marker_spelling(x) for x in latin]
+        aliases = [normalise_marker_spelling(x) for x in aliases]
 
         birth = latin[0] if latin else ""
         married = aliases[0] if aliases else ""

@@ -497,6 +497,39 @@ def transliterate_token(token, table):
     return None, None
 
 
+#: The two forms Geni uses to say *this name is withheld*, as opposed to *this name is unknown*.
+#: `CLAUDE.md` § *Redacted people go in* counts them: `Private` **99,645** and
+#: `<private> /Surname/` **19,945** across the corpus.
+REDACTION_MARKERS = {"private", "<private>"}
+
+
+def normalise_marker_spelling(label: str) -> str:
+    """`strip_markers`, but **never touching a redaction marker**.
+
+    **The screen exists because one call decides two different questions.** Applying
+    `strip_markers` to every `mul` label would change **102,284** of them, measured 2026-08-31 --
+    and **94,231** are `Private` or `<private>` becoming `NN`, which is a decision about
+    redaction rather than about spelling. Two sections of `CLAUDE.md` can be read against each
+    other on it: § *Redacted people go in* has `label_for()` empty `Private` and `<private>`
+    **and nothing else**, while § *`NN` is PRESERVED in `mul`* has `Private` and `NN` as one
+    population getting the same treatment. Emma has corrected an attempt to settle that twice,
+    once sharply -- *"I didn't tell you to do that. I didn't tell you to avoid the NN people."*
+    So it stays hers.
+
+    What is left is uncontroversial and is what the queue item actually wanted: **6,515** labels
+    where the marker is written inconsistently -- `nn`, `N.N.`, `unknown`, `ukjent`, `某`,
+    `dødfødt` -- and `NN` is the form `CLAUDE.md` already says the marker takes.
+
+    A label whose FIRST token is a redaction marker is returned untouched, so
+    `Private Paulson` stays exactly as Geni wrote it and `nn Gunnarsdatter Frafjord` becomes
+    `NN Gunnarsdatter Frafjord`.
+    """
+    first = (label or "").split()
+    if first and first[0].casefold().strip(".,") in REDACTION_MARKERS:
+        return label
+    return strip_markers(label)
+
+
 def strip_markers(label: str) -> str:
     """Normalise an unknown-name marker to `NN`. **Never delete it.**
 
@@ -551,8 +584,17 @@ def strip_markers(label: str) -> str:
     out, seen_marker = [], False
     for tok in tokens:
         if tok.casefold().strip(".,") in markers:
-            # Collapse a run of markers to one, so `NN NN Garborg` is not a thing.
-            if not seen_marker or out:
+            # **Collapse a run of markers to one, so `NN NN Garborg` is not a thing.**
+            #
+            # The condition was `if not seen_marker or out`, which appends whenever `out` is
+            # non-empty -- almost always -- so a run of two DIFFERENT markers survived as two.
+            # `nn N.N. Countess of Worms` came out `NN NN Countess of Worms`, and the function
+            # was not idempotent: running it twice gave a different answer from running it once.
+            # **24 people carried a doubled marker**, found by asserting the fixpoint over
+            # `derived-labels.csv` rather than by reading the loop.
+            #
+            # Looking at the previous EMITTED token is what the comment always described.
+            if not out or out[-1] != UNNAMED_MARKER:
                 out.append(UNNAMED_MARKER)
             seen_marker = True
         else:

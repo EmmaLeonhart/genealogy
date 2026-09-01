@@ -23889,3 +23889,34 @@ says **report the list before deleting in bulk**, for that reason.
 24 creations where the last run gave 27: her nine new `SAME` verdicts landed, and **0 of the 46
 people she has confirmed are being created** — which is the ledger fold doing its job, not a
 regression from this cleanup.
+
+## 2026-08-31 — the marker normalisation, screened; and `strip_markers` was not idempotent
+
+The blocker I tagged NEEDS-DECISION last tick was only half a decision, and the load-bearing
+default applies: the safe half needed a **screen**, which is work, not a wait.
+
+**`labels.normalise_marker_spelling` is that screen.** It is `strip_markers` except that a label
+whose first token is `Private` or `<private>` is returned untouched. The difference is **94,231
+people**: the unscreened call turns those into `NN`, which is a redaction decision Emma has twice
+corrected an attempt to settle, while what is left is spelling — **8,053** labels where the marker
+is written inconsistently.
+
+    3,709  N.N. -> NN      1,184  Unknown -> NN      566  nn -> NN      399  unknown -> NN
+      269  某 -> NN          226  Nn -> NN           148  Ukjent -> NN  146  Dødfødt -> NN
+
+**Wired into `derive-labels.py` at source**, the same place and for the same reason the nickname
+strip moved there: 48 readers take `label_mul`, so fixing it at the point of emission fixes one
+and fixing it here fixes all of them. `Q141198538` now derives as `NN Gunnarsdatter Frafjord` and
+`Q141216494` as `NN Jacobsdtr. Koll`, which is what the two-item queue entry wanted all along —
+via the cause rather than the symptom.
+
+**And asserting the fixpoint found a second bug.** After the wiring, **24 labels still differed
+from their own normalisation**: `nn N.N. Countess of Worms` came out `NN NN Countess of Worms`.
+The collapse condition was `if not seen_marker or out`, which appends whenever `out` is non-empty
+— almost always — so a run of two *different* markers survived as two, and the function was **not
+idempotent**: running it twice gave a different answer from running it once. Looking at the
+previous *emitted* token is what its own comment always described.
+
+Found by asserting `f(x) == x` over 1,389,442 labels rather than by reading the loop. **0 differ
+now.** 82 pass across the marker and label modules, 53 across `namemodel`; the derived CSVs are
+repacked.
