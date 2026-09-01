@@ -90,6 +90,49 @@ def name_items():
     return given, pat
 
 
+#: `Q11879590` *female given name*, `Q8229` *Latin script*.
+FEMALE_GIVEN = "Q11879590"
+LATIN = "Q8229"
+KINDS_CACHE = ROOT / "out" / "wikidata" / "cache" / "given-name-kinds.json"
+
+
+def given_kinds(qids):
+    """`{qid: (P31 class, P282 writing system)}`, fetched ONLY for the plural labels.
+
+    **Scope this or it crawls the whole index.** The first version was handed every qid in
+    `given` -- 225,457 items, thousands of requests -- when the question only concerns the 207
+    labels that are actually plural. Emma killed it: *"I cannot even imagine a case where this
+    is a real issue."* She is right twice over: the fetch was unbounded, and the ambiguity is
+    not one. A father is a man and these tokens are Latin, so the male Latin item is the answer.
+    """
+    import json
+    from genimerge.wikidata import _http_fetch, require_agent
+    cache = json.loads(KINDS_CACHE.read_text(encoding="utf-8")) if KINDS_CACHE.exists() else {}
+    todo = sorted(q for q in qids if q not in cache)
+    if todo:
+        ua = {"User-Agent": require_agent()}
+        for k in range(0, len(todo), 50):
+            url = ("https://www.wikidata.org/w/api.php?action=wbgetentities&format=json"
+                   "&props=claims&ids=" + "|".join(todo[k:k + 50]))
+            for q, v in json.loads(_http_fetch(url, headers=ua)).get("entities", {}).items():
+                cl = v.get("claims", {}) or {}
+                got = []
+                for prop in ("P31", "P282"):
+                    val = ""
+                    for st in cl.get(prop, []):
+                        dv = st["mainsnak"].get("datavalue", {}).get("value", {})
+                        if isinstance(dv, dict) and dv.get("id"):
+                            val = dv["id"]
+                            break
+                    got.append(val)
+                cache[q] = got
+            for q in todo[k:k + 50]:
+                cache.setdefault(q, ["", ""])
+        KINDS_CACHE.parent.mkdir(parents=True, exist_ok=True)
+        KINDS_CACHE.write_text(json.dumps(cache), encoding="utf-8")
+    return {q: tuple(v) for q, v in cache.items()}
+
+
 def main():
     label, father = {}, {}
     with io.open(LABELS, encoding="utf-8", newline="") as fh:
@@ -129,6 +172,10 @@ def main():
                     break
 
     given, pat_items = name_items()
+    plural = {q for tok, srcs in sources.items() for n in srcs
+              for q in given.get(n.casefold(), ()) if len(given.get(n.casefold(), ())) > 1}
+    kinds_of = given_kinds(plural)
+    print("%s items behind a plural given-name label" % format(len(plural), ","), file=sys.stderr)
     sys.stderr.write(f"{len(sources):,} attested patronymic tokens; "
                      f"{len(given):,} given-name labels with an item\n")
 
@@ -141,10 +188,23 @@ def main():
             qids = given.get(name.casefold())
             if not qids:
                 unknown.append(name)
-            elif len(qids) == 1:
+                continue
+            if len(qids) > 1:
+                # **It was never really ambiguous.** The pairs are separated by SEX and by
+                # SCRIPT, both of which we hold: `Carl` is male Q2529610 against female
+                # Q140305809, `Johan` is Latin Q10989273 against Korean Q16256879 in Hangul,
+                # `Olof` is male Swedish against female Icelandic. A father is a man and these
+                # tokens are Latin. `CLAUDE.md` says the same of `Maria`: settled by the
+                # person's sex, not by the string.
+                kept = {q for q in qids
+                        if kinds_of.get(q, ("", ""))[0] != FEMALE_GIVEN
+                        and kinds_of.get(q, ("", ""))[1] in ("", LATIN)}
+                if len(kept) == 1:
+                    qids = kept
+            if len(qids) == 1:
                 targets.append((name, next(iter(qids))))
             else:
-                ambiguous.append(f"{name}({len(qids)})")
+                ambiguous.append("%s(%d)" % (name, len(qids)))
 
         # `P5278` surname for other gender: same stem, the opposite gendered suffix.
         # **Pair off the STEM, not by swapping suffixes on the whole token.** Swapping produced

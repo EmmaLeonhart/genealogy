@@ -22819,3 +22819,45 @@ plausible after the thing it measured has changed.
 **Checked and not touched:** § *Patronymic residue* itself (`d`/`t` and `Nils`/`Nicolaus` are
 still open), § *Keep `reports/merges-to-do.md` current* (standing, refreshed at 15:2x), and the
 seven specification sections.
+
+## 2026-08-31 — the per-person half, run; and an unbounded fetch she caught
+
+`scripts/resolve-patronymics.py` runs the half of her design that follows the name items: the
+parent's `P735` item against the patronymic item's `P144` values, no string comparison anywhere.
+It writes no QuickStatements.
+
+    8,277 people whose father has a Wikidata item -- gate one
+      5,244  RESOLVES
+      2,172  father has no P735 given name object
+        606  P735 not among the patronymic's P144 values
+        255  patronymic item has no P144 derivation
+
+Of 235,113 people carrying an attested patronymic, only 8,277 have a linked father at all, so
+gate one is where almost everyone stops -- not a failure of the design, just the reach of the
+pipeline so far.
+
+**Two mistakes of mine, both hers to catch.**
+
+**The "ambiguity" was not one.** I found that `Johansson` listed `Johannes`/`Johann` but not
+`Johan`, `Carlsson` not `Carl`, `Olofsdotter` not `Olof` -- the commonest source missing every
+time, because two items share the label -- and put it to her as an `AskUserQuestion`. Her reply:
+*"What? What's the language of work we're even using lol"*, then *"I cannot even imagine a case
+where this is a real issue."* Looked up rather than assumed, the pairs are separated by **sex** and
+**script**:
+
+    carl   Q2529610  MALE            vs Q140305809 FEMALE
+    johan  Q10989273 MALE, Latin     vs Q16256879  Korean, P282 Hangul
+    olof   Q18089653 MALE, Swedish   vs Q55499624  FEMALE, Icelandic
+    jonas  Q16646115 MALE            vs Q140290934 UNISEX
+
+A father is a man and these tokens are Latin. `CLAUDE.md` says exactly this about `Maria` --
+*settled by the person's sex, not by the string* -- so the question should never have been asked.
+Filtering on sex and writing system: ambiguous tokens **546 -> 178**, unambiguous `P144` targets
+**4,340 -> 4,708**, and people resolving **4,168 -> 5,244**.
+
+**And the first attempt crawled the whole index.** `given_kinds` was handed every qid in `given`
+-- **225,457** items, thousands of requests -- when the question concerns only the labels that are
+actually plural. It ran past 590 seconds before she said *"I'm gonna guess you're spewing bullshit
+simple as that"*, and killing it was right. Scoped properly it is **467 items, ten requests**.
+That is the § *Querying Wikidata is ALLOWED. Be polite about the rate* line, and I was on the
+wrong side of it.
