@@ -23840,3 +23840,26 @@ undone: she wants the chains to be a **system** rather than files that happen to
 `FileNotFoundError: entity_resolution.md`, so both § *the QID-link GEDCOM* and § *Systematic
 review for legacy code* stay. That deletion was correct and its readers were never triaged;
 this is the fourth sweep in a row it has survived, which is itself worth noticing.
+
+## 2026-08-31 — the QID-link generator fixed; all three checks now pass
+
+Its crash survived four dead-item sweeps, each time correctly reported as still open, and it was
+one constant away from working.
+
+**`entity_resolution.md` was deleted in `12f3134a` and this script kept reading it**, with no
+guard, so it raised `FileNotFoundError` on every run. `CLAUDE.md` § *LEGACY CODE IS DELETED* is
+right that the file had to go; § *Systematic review for legacy code* is the other half — *"deleting
+the file is half the job"* — and this was a reader nobody triaged.
+
+**The correspondence is not a substitute, checked rather than assumed: 0 of the 3 pairs are in
+`reports/synoptic-correspondence.tsv`.** They are hers by hand, from identities she *"put a lot of
+effort into creating identification with"*, and no automated source reaches them — which is
+precisely why they lived in a hand-written file. So they are a constant in the script now, which
+is what `queue.md` already said: *"widening this beyond the three is her call and is one
+constant."*
+
+**The item's third check passes.** It wanted *"regenerating and re-merging changes nothing"*, and
+the first two halves passed on 2026-08-31 while this one could not run at all. Regenerated and
+diffed: **identical, byte for byte**, 358 bytes, 3 `NOTE` links over 3 individuals.
+
+Section deleted.

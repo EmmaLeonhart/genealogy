@@ -81,12 +81,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
-from genimerge.entities import read_file  # noqa: E402
 
 sys.stdout.reconfigure(encoding="utf-8")
 csv.field_size_limit(1 << 30)
 
-ENTITIES = ROOT / "entity_resolution.md"
 IN_TREE = ROOT / "reports" / "derived-labels.csv"
 OUT = ROOT / "exports" / "post-merge" / "wikidata-qid-links.ged"
 
@@ -94,11 +92,24 @@ OUT = ROOT / "exports" / "post-merge" / "wikidata-qid-links.ged"
 #: item carries no `P2600`, and that is a live fact about Wikidata which will stop being true the
 #: moment these links are acted on -- so a rule that recomputed it would empty this file and look
 #: like success. An explicit list says what was decided and when.
-ONLY = {
-    "6000000001835522164",   # Q11596350  稚武彦命 Wakatakehiko
-    "6000000001844033355",   # Q11078587  播磨稲日大郎姫 Harima no Inabi no Ooiratsume, his daughter
-    "6000000002039751362",   # Q24890131  物部伊莒弗 Mononobe no Ikofutsu
+#: **The pairs themselves, since `entity_resolution.md` is gone.** It was deleted in `12f3134a`
+#: and the deletion was right -- `CLAUDE.md` § *LEGACY CODE IS DELETED* -- but this script kept
+#: reading it and had no guard, so it crashed with `FileNotFoundError` and stayed crashed through
+#: four dead-item sweeps.
+#:
+#: **The correspondence is not a substitute: 0 of these 3 are in
+#: `reports/synoptic-correspondence.tsv`.** Checked rather than assumed. They are hers by hand,
+#: from identities she *"put a lot of effort into creating identification with"*, and no
+#: automated source reaches them -- which is exactly why they were in a hand-written file.
+#:
+#: So they live here as a constant, which is what `queue.md` already says: *"widening this beyond
+#: the three is her call and is one constant."*
+PAIRS = {
+    "6000000001835522164": "Q11596350",   # 稚武彦命 Wakatakehiko
+    "6000000001844033355": "Q11078587",   # 播磨稲日大郎姫 Harima no Inabi, his daughter
+    "6000000002039751362": "Q24890131",   # 物部伊莒弗 Mononobe no Ikofutsu
 }
+ONLY = set(PAIRS)
 
 LINK = "https://www.wikidata.org/wiki/{qid}"
 
@@ -112,10 +123,9 @@ def main():
     print(f"{len(in_tree):,} people in the merged tree")
 
     pairs = collections.defaultdict(set)
-    for res in read_file(ENTITIES).resolutions:
-        if res.geni_id in ONLY and res.qid:
-            pairs[res.geni_id].add(res.qid)
-    print(f"{len(pairs)} of the {len(ONLY)} named people found in {ENTITIES.name}")
+    for geni_id, qid in PAIRS.items():
+        pairs[geni_id].add(qid)
+    print(f"{len(pairs)} pairs, from the constant in this file")
 
     absent = sorted(g for g in pairs if g not in in_tree)
     if absent:
