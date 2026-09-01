@@ -124,7 +124,7 @@ fathers patronymics imply — *"postpone for a month lol"***.
 | clan labels `Q45449130` | check them — *"I never actually ran them"* |
 | `exports/post-merge/` | do the stale-duplicate resolution |
 | the export loop | **run it overnight**, retrying the four bailed-on people |
-| the 179 ambiguous patronymics | **build her an HTML page for the morning** |
+| the 179 ambiguous patronymics | **DONE** — https://claude.ai/code/artifact/fb4829e3-df7b-4db3-9ed1-9649bb97a0f5 · 64 names, 2,581 people |
 | `P407` on patronymic items | **add it by suffix convention** |
 | `Nils`/`Nicolaus` | build the form table |
 | succession CSV | model it |

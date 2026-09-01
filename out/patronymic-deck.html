@@ -1,0 +1,238 @@
+<title>Ambiguous Patronymic Fathers</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --paper:#F6F7F7; --card:#FFFFFF; --ink:#14181B; --muted:#5C6B70;
+    --rule:#DDE3E4; --rule-soft:#EBEFF0;
+    --accent:#0B6E64; --accent-soft:#E3F1EF; --accent-ink:#064F48;
+    --warn:#9A5B12; --warn-soft:#FBF0DF;
+    --shadow:0 1px 2px rgba(20,24,27,.06), 0 1px 8px rgba(20,24,27,.04);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0F1315; --card:#161B1E; --ink:#E6EBEC; --muted:#93A3A8;
+      --rule:#283135; --rule-soft:#1E2528;
+      --accent:#4FD1C2; --accent-soft:#12312E; --accent-ink:#8BE3D8;
+      --warn:#E0A552; --warn-soft:#2E2415;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 1px 10px rgba(0,0,0,.25);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0F1315; --card:#161B1E; --ink:#E6EBEC; --muted:#93A3A8;
+    --rule:#283135; --rule-soft:#1E2528;
+    --accent:#4FD1C2; --accent-soft:#12312E; --accent-ink:#8BE3D8;
+    --warn:#E0A552; --warn-soft:#2E2415;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 1px 10px rgba(0,0,0,.25);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    background:var(--paper); color:var(--ink);
+    font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:15px; line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .mono{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+        font-variant-numeric:tabular-nums}
+
+  /* ---- toolbar ---- */
+  header{
+    position:sticky; top:0; z-index:20;
+    background:var(--paper); border-bottom:1px solid var(--rule);
+  }
+  .bar{
+    max-width:62rem; margin:0 auto; padding:.7rem 1.25rem;
+    display:flex; align-items:center; gap:.9rem; flex-wrap:wrap;
+  }
+  .bar h1{
+    font-size:.95rem; font-weight:600; margin:0; letter-spacing:-.01em;
+    white-space:nowrap;
+  }
+  .count{font-size:.8rem; color:var(--muted)}
+  .grow{flex:1 1 3rem}
+  button{
+    font:inherit; font-size:.8rem; font-weight:500;
+    background:var(--card); color:var(--ink);
+    border:1px solid var(--rule); border-radius:.4rem;
+    padding:.36rem .7rem; cursor:pointer;
+  }
+  button:hover{border-color:var(--muted)}
+  button:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+  button.on{background:var(--accent-soft); border-color:var(--accent); color:var(--accent-ink)}
+  .track{height:3px; background:var(--rule-soft)}
+  .fill{height:3px; background:var(--accent); width:0; transition:width .2s}
+
+  /* ---- intro ---- */
+  main{max-width:62rem; margin:0 auto; padding:1.5rem 1.25rem 5rem}
+  .lede{
+    border-left:2px solid var(--accent); padding:.1rem 0 .1rem .9rem;
+    margin:0 0 1.75rem; max-width:42rem;
+  }
+  .lede p{margin:.45rem 0; font-size:.92rem; color:var(--muted)}
+  .lede p strong{color:var(--ink); font-weight:600}
+
+  /* ---- a name block ---- */
+  .name{
+    background:var(--card); border:1px solid var(--rule); border-radius:.6rem;
+    margin:0 0 .85rem; box-shadow:var(--shadow); overflow:hidden;
+  }
+  .name[data-done="1"]{border-color:var(--accent)}
+  .head{
+    display:flex; align-items:baseline; gap:.75rem; flex-wrap:wrap;
+    padding:.8rem 1rem .55rem;
+  }
+  .head .n{font-size:1.15rem; font-weight:600; letter-spacing:-.01em}
+  .head .meta{font-size:.78rem; color:var(--muted)}
+  .toks{
+    padding:0 1rem .7rem; display:flex; gap:.3rem; flex-wrap:wrap;
+  }
+  .tok{
+    font-size:.72rem; padding:.1rem .38rem; border-radius:.25rem;
+    background:var(--rule-soft); color:var(--muted);
+  }
+  .opts{border-top:1px solid var(--rule-soft)}
+  .opt{
+    display:block; width:100%; text-align:left; border:0; border-radius:0;
+    border-bottom:1px solid var(--rule-soft); background:transparent;
+    padding:.6rem 1rem; cursor:pointer;
+  }
+  .opt:last-child{border-bottom:0}
+  .opt:hover{background:var(--rule-soft)}
+  .opt.sel{background:var(--accent-soft)}
+  .opt.sel .qid{color:var(--accent-ink); font-weight:500}
+  .opt.skip.sel{background:var(--warn-soft)}
+  .opt.skip.sel .qid{color:var(--warn)}
+  .row1{display:flex; align-items:baseline; gap:.6rem; flex-wrap:wrap}
+  .qid{font-size:.85rem}
+  .kind{font-size:.74rem; color:var(--muted)}
+  .labels{font-size:.78rem; color:var(--muted); margin-top:.12rem;
+          overflow-wrap:anywhere}
+  .hidden{display:none}
+  footer{max-width:62rem; margin:0 auto; padding:0 1.25rem 4rem;
+         font-size:.8rem; color:var(--muted)}
+  #out{
+    width:100%; min-height:9rem; margin-top:.6rem; padding:.6rem;
+    border:1px solid var(--rule); border-radius:.4rem;
+    background:var(--card); color:var(--ink); font-size:.78rem;
+  }
+</style>
+
+<header>
+  <div class="bar">
+    <h1>Ambiguous patronymic fathers</h1>
+    <span class="count mono" id="prog">0 / 64</span>
+    <span class="grow"></span>
+    <button id="only">Undecided only</button>
+    <button id="copy">Copy answers</button>
+  </div>
+  <div class="track"><div class="fill" id="fill"></div></div>
+</header>
+
+<main>
+  <div class="lede">
+    <p><strong>64 given names, 2,581 people.</strong> Each one is a father's given name that
+      several Wikidata items claim. Until one is chosen, the patronymic item built from it
+      cannot carry <span class="mono">P144</span> <em>based on</em>, so 175 patronymic tokens
+      are held back.</p>
+    <p>Sex and writing system already resolved 4,782 of these automatically — a father is a
+      man and these tokens are Latin. What is left is genuinely several items for one name.</p>
+    <p>Pick one per name, or <em>leave it</em> to keep the current behaviour, which is to skip
+      the token. Choices save in this browser; <strong>Copy answers</strong> puts them on the
+      clipboard as TSV to paste back.</p>
+  </div>
+  <div id="list"></div>
+</main>
+
+<footer>
+  <div>Built from <span class="mono">reports/patronymic-items-to-create.tsv</span> and the
+    offline name-item store. Ordered by people affected.</div>
+  <textarea id="out" class="mono hidden" readonly></textarea>
+</footer>
+
+<script>
+const DECK = [{"name": "Simon", "n_items": 4, "bearers": 666, "tokens": ["simenson", "simeonsen", "simonsdotter", "simonson", "simonsson"], "candidates": [{"qid": "Q4117588", "p31": "Q12308941", "labels": ["Simon", "Σάιμον", "Сайман", "Саймон", "Саймон / Симон / Шимон", "Симон", "Сямён", "Шимон"]}, {"qid": "Q18175382", "p31": "Q12308941", "labels": ["Simon", "Simón", "Симон", "Сымон", "سيمون", "シモン", "西蒙", "賽門"]}, {"qid": "Q25711755", "p31": "Q12308941", "labels": ["Simon", "Szímon", "Σίμων", "Симон", "സൈമൺ", "シモン"]}, {"qid": "Q136550672", "p31": "Q202444", "labels": ["Simon"]}]}, {"name": "Axel", "n_items": 2, "bearers": 523, "tokens": ["axeldatter", "axelsdatter", "axelsdotter", "axelsen", "axelson", "axelssdotter", "axelssen", "axelsson"], "candidates": [{"qid": "Q5407300", "p31": "Q12308941", "labels": ["Aksel", "Axel", "Αξέλ", "Аксел", "Аксель", "Аксэль", "أكسل", "アクセル"]}, {"qid": "Q56391336", "p31": "Q202444", "labels": ["Axel"]}]}, {"name": "Salomon", "n_items": 2, "bearers": 279, "tokens": ["salamonsdotter", "salamonson", "salamonsson", "salemonsen", "salmonsdotter", "salmonsson", "salomonsdotter", "salomonson", "salomonsson", "solomonsdotter"], "candidates": [{"qid": "Q18421743", "p31": "Q12308941", "labels": ["Salomon", "Σαλομόν", "Саламон", "Саломон", "סולומון", "زالومون", "シャラモン", "索羅門"]}, {"qid": "Q112762419", "p31": "Q12308941", "labels": ["Salomon"]}]}, {"name": "Edvard", "n_items": 5, "bearers": 175, "tokens": ["edvardsdatter", "edvardsdotter", "edvardsen", "edvardson", "edvardsson", "edvartsdatter", "edvartsen"], "candidates": [{"qid": "Q278835", "p31": "Q12308941", "labels": ["Edvard", "Edward", "Έντουαρντ", "Едвард", "Эдвард", "Էդուարդ", "אדוארד", "עדווארד"]}, {"qid": "Q16721684", "p31": "Q12308941", "labels": ["Edvard", "Едвард", "Эдвард"]}, {"qid": "Q18130926", "p31": "Q12308941", "labels": ["Edvard", "Едвард", "Эдвард", "ედვარდი", "エドヴァルド", "愛華德", "爱德华"]}, {"qid": "Q59392198", "p31": "Q12308941", "labels": ["Edoeard", "Eduard", "Eduardas", "Eduards", "Edvard", "Едуард", "Эдуард", "אדוארד"]}, {"qid": "Q123357803", "p31": "Q12308941|Q104868059", "labels": ["Edvard", "Edward", "Едвард"]}]}, {"name": "Axell", "n_items": 2, "bearers": 146, "tokens": ["axelsdotter"], "candidates": [{"qid": "Q65177099", "p31": "Q202444", "labels": ["Axell"]}, {"qid": "Q111072504", "p31": "Q202444", "labels": ["Axell"]}]}, {"name": "Benjamin", "n_items": 2, "bearers": 135, "tokens": ["benjaminsdatter", "benjaminsdotter", "benjaminsen", "benjaminson", "benjaminsson"], "candidates": [{"qid": "Q2424149", "p31": "Q12308941", "labels": ["Bendžamins (angļu) / Benžamēns (franču)", "Benjamin", "Μπενζαμέν", "Бенджамин / Бенжамин / Бенжамен / Бенхамин / Беньямин", "Бенджамін", "Бенјамин", "Бенҷамин/Бенҳамин", "Бењамин"]}, {"qid": "Q139917671", "p31": "Q12308941", "labels": ["Benjamin"]}]}, {"name": "Christiern", "n_items": 2, "bearers": 79, "tokens": ["christernsdotter", "christiernsdatter", "christiernsdotter", "christiernsen", "christiernsson", "kristiernsdotter", "kristiernsson"], "candidates": [{"qid": "Q125989484", "p31": "Q12308941", "labels": ["Christiern"]}, {"qid": "Q133514727", "p31": "Q12308941", "labels": ["Christiern"]}]}, {"name": "Enevold", "n_items": 2, "bearers": 77, "tokens": ["enevoldsdatter", "enevoldsen", "enewoldsdatter", "enewoldsen", "envoldsdatter", "envoldsen"], "candidates": [{"qid": "Q30150843", "p31": "Q12308941", "labels": ["Enevold"]}, {"qid": "Q96477042", "p31": "Q12308941", "labels": ["Enevold"]}]}, {"name": "Aksel", "n_items": 2, "bearers": 75, "tokens": ["akselsdatter", "akselsdotter", "akselsen", "akselson", "akselsson"], "candidates": [{"qid": "Q783041", "p31": "Q12308941", "labels": ["Aksel", "Аксель", "אקסל", "أكسل", "アクセル", "阿克塞尔", "阿克塞爾"]}, {"qid": "Q5407300", "p31": "Q12308941", "labels": ["Aksel", "Axel", "Αξέλ", "Аксел", "Аксель", "Аксэль", "أكسل", "アクセル"]}]}, {"name": "Ebbe", "n_items": 2, "bearers": 62, "tokens": ["ebbesdatter", "ebbesdotter", "ebbesen", "ebbesson"], "candidates": [{"qid": "Q10478964", "p31": "Q12308941", "labels": ["Ebbe", "Эббе", "Эбэ", "ايبي", "エッベ", "埃伯", "艾伯"]}, {"qid": "Q65256636", "p31": "Q202444", "labels": ["Ebbe"]}]}, {"name": "Ludvig", "n_items": 2, "bearers": 34, "tokens": ["ludvigadatter", "ludvigsdotter", "ludvigson", "ludvigssen", "ludvigsson", "ludwigsdatter"], "candidates": [{"qid": "Q12233911", "p31": "Q12308941", "labels": ["Ludvig", "Λούντβιγκ", "Лудвиг", "Людвиг", "Людвіг", "لودفيغ", "ルドヴィク", "卢德维格"]}, {"qid": "Q14159020", "p31": "Q12308941", "labels": ["Ljudvig", "Ludvig", "Ludwig", "Luutvik", "Lyudvig", "Lüdviq", "Lýudwig", "Λούντβιχ"]}]}, {"name": "Tage", "n_items": 2, "bearers": 30, "tokens": ["tagesdatter", "tagesen", "tagesson"], "candidates": [{"qid": "Q2387848", "p31": "Q12308941", "labels": ["Tage", "Таґе", "ターゲ", "泰格"]}, {"qid": "Q96675823", "p31": "Q12308941", "labels": ["Tage"]}]}, {"name": "Holm", "n_items": 2, "bearers": 21, "tokens": ["holmsdatter", "holmsen"], "candidates": [{"qid": "Q10525262", "p31": "Q101352|Q202444", "labels": ["Holm", "Гольм", "Хольм", "הולם", "هولم", "ホルム", "賀姆", "霍尔姆"]}, {"qid": "Q15815817", "p31": "Q12308941", "labels": ["Holm", "הולם", "هولم"]}]}, {"name": "Philip", "n_items": 4, "bearers": 18, "tokens": ["filipsdatter", "filipsen", "filipson", "philippsdatter", "philpsson"], "candidates": [{"qid": "Q827311", "p31": "Q12308941", "labels": ["Filip", "Philip", "Φίλιπ", "Филип", "Филипп", "Філіп", "Ֆիլիպ", "פֿיליפ"]}, {"qid": "Q18145728", "p31": "Q12308941", "labels": ["Filip", "Filipp", "Philip", "Philipp", "Φίλιπ", "Φίλιππος", "Филип", "Филипп"]}, {"qid": "Q19413497", "p31": "Q12308941|Q19689753", "labels": ["Philip", "Pilip", "Пилип", "Піліп", "Филипп", "ഫിലിപ്പ്", "菲利普"]}, {"qid": "Q69508686", "p31": "Q12308941", "labels": ["Philip", "ഫിലിപ്പ്", "ピリプ", "필립"]}]}, {"name": "Gyrd", "n_items": 2, "bearers": 18, "tokens": ["gyrdsdatter", "gyrdsdotter", "gyrdsen", "gyrdson", "gyrdsson"], "candidates": [{"qid": "Q16426252", "p31": "Q12308941", "labels": ["Gyrd", "Gyrðir"]}, {"qid": "Q138159880", "p31": "Q12308941", "labels": ["Gyrd"]}]}, {"name": "Filip", "n_items": 6, "bearers": 17, "tokens": ["filipsdatter", "filipsen", "filipson", "philippusson"], "candidates": [{"qid": "Q827311", "p31": "Q12308941", "labels": ["Filip", "Philip", "Φίλιπ", "Филип", "Филипп", "Філіп", "Ֆիլիպ", "פֿיליפ"]}, {"qid": "Q998338", "p31": "Q12308941", "labels": ["Filip", "Филип", "Філіп", "פיליפ", "فيليب", "فِلپ", "フィリップ", "菲利普"]}, {"qid": "Q18145728", "p31": "Q12308941", "labels": ["Filip", "Filipp", "Philip", "Philipp", "Φίλιπ", "Φίλιππος", "Филип", "Филипп"]}, {"qid": "Q59904649", "p31": "Q12308941", "labels": ["Filip", "Filipp", "Филипп", "Філіпп", "フィリップ", "菲利普"]}, {"qid": "Q59916845", "p31": "Q12308941", "labels": ["Filip", "Филип", "فيليب", "菲利普"]}, {"qid": "Q59919487", "p31": "Q12308941", "labels": ["Filip", "Филип", "Філіп"]}]}, {"name": "Jon", "n_items": 4, "bearers": 17, "tokens": ["joansson", "joenson", "jonadatter", "jondatter", "jondotter", "jonssen"], "candidates": [{"qid": "Q13501137", "p31": "Q12308941", "labels": ["Jon", "Џон", "Джон", "Джон (Jon)", "Джон / Йон / Юн", "Юн / Йон / Джон", "Җон / Йон", "ג'ון (ללא H)"]}, {"qid": "Q17152342", "p31": "Q202444|Q69680123", "labels": ["Jon", "Yeon", "ヨン", "연"]}, {"qid": "Q69509676", "p31": "Q202444|Q69680123", "labels": ["Jon", "존"]}, {"qid": "Q104861414", "p31": "Q202444", "labels": ["Jon"]}]}, {"name": "Sæbjørn", "n_items": 2, "bearers": 17, "tokens": ["sebjørnsdotter", "sebjørnsen", "sebjørnsson", "sæbjørnsdotter", "sæbjørnsen", "sæbjørnson"], "candidates": [{"qid": "Q16428295", "p31": "Q12308941", "labels": ["Sæbjörn", "Sæbjørn"]}, {"qid": "Q125281009", "p31": "Q12308941", "labels": ["Sæbjørn"]}]}, {"name": "Svenning", "n_items": 2, "bearers": 16, "tokens": ["sveningsdatter", "sveningsen", "svenningsdotter", "svennungsdatter"], "candidates": [{"qid": "Q30652301", "p31": "Q12308941", "labels": ["Svenning"]}, {"qid": "Q65198010", "p31": "Q12308941", "labels": ["Svenning"]}]}, {"name": "Conrad", "n_items": 4, "bearers": 14, "tokens": ["conradsdotter", "conradson"], "candidates": [{"qid": "Q17436400", "p31": "Q12308941|Q202444", "labels": ["Conrad", "Κόνραντ (Conrad)", "Конрад", "קונרד", "قنراد", "কনরাড", "コンラッド", "康拉德"]}, {"qid": "Q18156186", "p31": "Q12308941", "labels": ["Conrad", "Konrad", "Κόνραντ", "Конрад", "كونراد", "コンラッド", "康拉德 (名字)", "科拉德"]}, {"qid": "Q89698068", "p31": "Q12308941", "labels": ["Conrad", "Konrad", "Конрад"]}, {"qid": "Q89698243", "p31": "Q12308941", "labels": ["Conrad", "კონრად"]}]}, {"name": "Govert", "n_items": 2, "bearers": 13, "tokens": ["govertsdatter", "govertsen"], "candidates": [{"qid": "Q20725207", "p31": "Q12308941", "labels": ["Govert", "霍弗特", "霍弗特/戈弗特"]}, {"qid": "Q30315450", "p31": "Q202444", "labels": ["Govert"]}]}, {"name": "Ingjald", "n_items": 2, "bearers": 10, "tokens": ["ingjaldsdatter", "ingjaldsdotter", "ingjaldson", "ingjaldsson"], "candidates": [{"qid": "Q45024364", "p31": "Q12308941", "labels": ["Ingjald"]}, {"qid": "Q138380744", "p31": "Q12308941", "labels": ["Ingjald"]}]}, {"name": "Jonas", "n_items": 2, "bearers": 10, "tokens": ["jonaedotter", "jonaeson", "jonaesson", "jonansdotter", "jonason", "jonædatter", "joonasdotter"], "candidates": [{"qid": "Q16646115", "p31": "Q12308941", "labels": ["Jonas", "Jons (lietuviešu), Jūnass (zviedru), Džonass (angļu)", "Ёнас", "Јонас", "Йонас / Джонас / Жонаш / Жонас / Юнас", "Йонас / Юнас", "יונאס", "جوناس"]}, {"qid": "Q140290934", "p31": "Q3409032", "labels": ["Jonas"]}]}, {"name": "Brun", "n_items": 2, "bearers": 8, "tokens": ["brunsdotter", "brunsson"], "candidates": [{"qid": "Q29550724", "p31": "Q12308941", "labels": ["Brun", "ברון", "برون"]}, {"qid": "Q114713983", "p31": "Q12308941", "labels": ["Brun"]}]}, {"name": "Tomas", "n_items": 3, "bearers": 8, "tokens": ["thommessen", "tomassson", "tomesen", "tommasen", "tommasson"], "candidates": [{"qid": "Q16428906", "p31": "Q12308941", "labels": ["Tama", "Thomas", "Tomas", "Θωμάς", "Томас", "Томас / Тома", "Թովմաս", "Թովմաս (անձնանուն)"]}, {"qid": "Q1546318", "p31": "Q12308941", "labels": ["Tomas", "Томас", "طوماس", "トーマス", "托马斯", "湯瑪士"]}, {"qid": "Q96675919", "p31": "Q12308941", "labels": ["Tomas"]}]}, {"name": "Joan", "n_items": 4, "bearers": 7, "tokens": ["joansdatter", "joansson"], "candidates": [{"qid": "Q16652258", "p31": "Q12308941", "labels": ["Joan", "Жаан", "Жоан", "Жоан / Джоан / Хоан", "ג'ואן", "جوان", "ジョアン", "주안"]}, {"qid": "Q1484457", "p31": "Q3409032|Q11879590|Q12308941", "labels": ["Joan", "Джаан", "Джоан / Жоан / Йоан", "Жуан", "Йоан", "ജോവൻ", "ジョーン", "瓊"]}, {"qid": "Q18219684", "p31": "Q11879590", "labels": ["Coan", "Joan", "Джо̄н", "Джоан", "Джоан / Джоанна", "ג'ואן", "جوان", "ジョーン"]}, {"qid": "Q116692886", "p31": "Q12308941|Q104868059", "labels": ["Joan", "Yoan", "Йоан"]}]}, {"name": "Arian", "n_items": 2, "bearers": 6, "tokens": ["ariansdatter", "ariansen"], "candidates": [{"qid": "Q777290", "p31": "Q12308941", "labels": ["Arian", "Arián"]}, {"qid": "Q26220628", "p31": "Q12308941", "labels": ["Arian", "אריאן"]}]}, {"name": "Arp", "n_items": 3, "bearers": 6, "tokens": ["arpsdatter", "arpsen", "arpssen"], "candidates": [{"qid": "Q12269656", "p31": "Q202444", "labels": ["Arp"]}, {"qid": "Q98880746", "p31": "Q202444", "labels": ["Arp"]}, {"qid": "Q131605059", "p31": "Q12308941", "labels": ["Arp"]}]}, {"name": "Clemens", "n_items": 2, "bearers": 6, "tokens": ["clemensson"], "candidates": [{"qid": "Q18180166", "p31": "Q12308941|Q3409032", "labels": ["Clemens", "Клеменс", "Клемэнс", "קלמנס", "كليمنس", "ক্মিমেন্স", "クレメンス", "克莱门斯"]}, {"qid": "Q140847970", "p31": "Q12308941", "labels": ["Clemens", "Клеменс"]}]}, {"name": "Eyvindur", "n_items": 2, "bearers": 6, "tokens": ["eyvindarson", "eyvindursson"], "candidates": [{"qid": "Q19827676", "p31": "Q12308941", "labels": ["Eyvindur"]}, {"qid": "Q113504517", "p31": "Q12308941", "labels": ["Eyvindur"]}]}, {"name": "Kol", "n_items": 2, "bearers": 6, "tokens": ["kollsson", "kolsson"], "candidates": [{"qid": "Q115627917", "p31": "Q12308941", "labels": ["Kol"]}, {"qid": "Q122207407", "p31": "Q202444", "labels": ["Kol"]}]}, {"name": "Lorens", "n_items": 3, "bearers": 6, "tokens": ["lorensdatter", "lorensen", "lorensson"], "candidates": [{"qid": "Q15635254", "p31": "Q12308941", "labels": ["Lorens", "Lorenz", "Лоренц", "Лорэнц", "לורנץ", "لورينز", "ローレンツ", "勞倫茲"]}, {"qid": "Q16421350", "p31": "Q12308941", "labels": ["Lorens", "Lórens"]}, {"qid": "Q58406413", "p31": "Q12308941", "labels": ["Lorens", "ローレンツ"]}]}, {"name": "Ola", "n_items": 5, "bearers": 6, "tokens": ["olasson"], "candidates": [{"qid": "Q1782345", "p31": "Q3409032", "labels": ["Ola", "Ола", "أولا", "オラ", "奥拉", "歐拉"]}, {"qid": "Q16420376", "p31": "Q11879590", "labels": ["Ola", "Óla"]}, {"qid": "Q96675523", "p31": "Q12308941", "labels": ["Ola"]}, {"qid": "Q100596312", "p31": "Q11879590", "labels": ["Ola", "علا"]}, {"qid": "Q140765675", "p31": "Q11879590|Q1130279", "labels": ["Ola"]}]}, {"name": "Ari", "n_items": 6, "bearers": 5, "tokens": ["arason", "aresson", "arisson"], "candidates": [{"qid": "Q1986394", "p31": "Q12308941", "labels": ["Ari", "ari", "Ари", "ארי", "أري", "アーリ", "阿里"]}, {"qid": "Q61361913", "p31": "Q202444", "labels": ["Ari"]}, {"qid": "Q96651619", "p31": "Q12308941", "labels": ["Ari", "阿里"]}, {"qid": "Q96652678", "p31": "Q11879590", "labels": ["Ari"]}, {"qid": "Q96656028", "p31": "Q11879590", "labels": ["Ari"]}, {"qid": "Q110960764", "p31": "Q11879590|Q88865478", "labels": ["Ari", "あり"]}]}, {"name": "Bodvar", "n_items": 2, "bearers": 5, "tokens": ["bodvarsson"], "candidates": [{"qid": "Q16422277", "p31": "Q12308941", "labels": ["Bodvar", "Böðvar"]}, {"qid": "Q133266910", "p31": "Q12308941", "labels": ["Bodvar"]}]}, {"name": "Christian", "n_items": 3, "bearers": 4, "tokens": ["christansdotter", "christiandotter", "christianssen", "christjansson"], "candidates": [{"qid": "Q18001597", "p31": "Q12308941", "labels": ["Christian", "Kristjan", "Κρίστιαν", "Кристиан", "Кристијан", "Крыстыян", "Крысціян", "Крістіан"]}, {"qid": "Q21401494", "p31": "Q12308941", "labels": ["Christian", "Cristhian"]}, {"qid": "Q135287113", "p31": "Q202444|Q11879590", "labels": ["Christian"]}]}, {"name": "Salmon", "n_items": 3, "bearers": 4, "tokens": ["salmonsdotter"], "candidates": [{"qid": "Q101212580", "p31": "Q202444", "labels": ["Salmon", "サーモン"]}, {"qid": "Q112678335", "p31": "Q12308941", "labels": ["Salmon"]}, {"qid": "Q113134057", "p31": "Q12308941", "labels": ["Salmon"]}]}, {"name": "Andres", "n_items": 2, "bearers": 3, "tokens": ["andressen"], "candidates": [{"qid": "Q51394", "p31": "Q12308941", "labels": ["Andres", "Andrés", "Αντρές", "Андрес", "Андрэс", "אנדרס", "أندريس", "আন্দ্রেস"]}, {"qid": "Q18091406", "p31": "Q12308941", "labels": ["Andres", "Андрес", "Андрэс", "Անդրես", "أندريس", "アンドレス", "安德烈斯", "安德瑞斯"]}]}, {"name": "George", "n_items": 2, "bearers": 3, "tokens": ["georgesdatter", "gregson"], "candidates": [{"qid": "Q15921732", "p31": "Q12308941", "labels": ["Corc", "George", "Γεώργιος", "Τζορτζ", "Џорџ", "Джордж", "Джордж / Жорж", "Җорҗ"]}, {"qid": "Q19826490", "p31": "Q12308941", "labels": ["George", "Gheorghe", "Георге", "Ґеорґе", "جورجي", "घोरघे", "ঘেওর্জ", "ゲオルゲ"]}]}, {"name": "Henry", "n_items": 2, "bearers": 3, "tokens": ["henrysdatter", "henryson"], "candidates": [{"qid": "Q1158477", "p31": "Q12308941", "labels": ["Henri", "Henry", "Χένρι", "Генри / Хенри / Анри / Энри", "Генры", "Генрі", "Гэнры", "Хенри"]}, {"qid": "Q16427578", "p31": "Q12308941", "labels": ["Henry", "Henrý"]}]}, {"name": "Lukas", "n_items": 2, "bearers": 3, "tokens": ["lukasdotter", "lukassen"], "candidates": [{"qid": "Q20790", "p31": "Q12308941", "labels": ["Lukas", "Лукас", "לוקאס", "لوكاس", "লুকাস", "ルーカス", "卢卡斯", "盧卡斯"]}, {"qid": "Q12325000", "p31": "Q12308941", "labels": ["Lucas", "Lukas", "Λουκάς", "Лукас", "לוקאס", "لوكاس", "লুকাস", "ਲੁਕਾਸ"]}]}, {"name": "Ruben", "n_items": 2, "bearers": 3, "tokens": ["rubenson", "rubensson"], "candidates": [{"qid": "Q18114894", "p31": "Q12308941", "labels": ["Ruben", "Рубен", "Рубэн", "Ռուբեն", "Ռուբէն", "רובן", "روبن", "რუბენი"]}, {"qid": "Q18325892", "p31": "Q202444|Q101352", "labels": ["Ruben", "Рубэн", "Рувим (значения)", "רובן", "ルーベン"]}]}, {"name": "Wollert", "n_items": 3, "bearers": 3, "tokens": ["wollertsdatter", "wollertsen"], "candidates": [{"qid": "Q30129161", "p31": "Q12308941", "labels": ["Wollert"]}, {"qid": "Q96479232", "p31": "Q202444", "labels": ["Wollert"]}, {"qid": "Q140836631", "p31": "Q4116295|Q12308941", "labels": ["Wollert"]}]}, {"name": "Ficke", "n_items": 2, "bearers": 2, "tokens": ["fickesdotter"], "candidates": [{"qid": "Q13188281", "p31": "Q202444", "labels": ["Ficke"]}, {"qid": "Q112689434", "p31": "Q12308941", "labels": ["Ficke"]}]}, {"name": "Frederik", "n_items": 3, "bearers": 2, "tokens": ["frederiksdotter"], "candidates": [{"qid": "Q3273004", "p31": "Q12308941", "labels": ["Frederick", "Frederik", "Φρέντερικ", "Фредерик", "Фрэдэрык", "פרדריק", "فردرك", "فریڈرک"]}, {"qid": "Q17539077", "p31": "Q12308941", "labels": ["Frederik", "Φρειδερίκος", "Фредерик", "Фрэдэрык", "فريدريك", "フレデリック", "弗雷德里克 (名字)"]}, {"qid": "Q56391102", "p31": "Q202444", "labels": ["Frederik"]}]}, {"name": "Frits", "n_items": 2, "bearers": 2, "tokens": ["fritsen"], "candidates": [{"qid": "Q13638114", "p31": "Q12308941", "labels": ["Frits", "Фриц", "フリッツ"]}, {"qid": "Q109037989", "p31": "Q202444", "labels": ["Frits"]}]}, {"name": "Henrich", "n_items": 2, "bearers": 2, "tokens": ["henrichdatter", "henrichson"], "candidates": [{"qid": "Q13402305", "p31": "Q12308941", "labels": ["Henrich", "Henrix", "Хенрих", "亨里奇"]}, {"qid": "Q19623792", "p31": "Q12308941", "labels": ["Henrich", "Henrikh", "Հենրիխ"]}]}, {"name": "Joris", "n_items": 2, "bearers": 2, "tokens": ["jorisdatter", "jorisdotter"], "candidates": [{"qid": "Q168563", "p31": "Q12308941", "labels": ["Jiří", "Joris", "Іржы", "Їржі", "Јиржи", "Иржи", "Иржи/Ирҷи", "Йиржи"]}, {"qid": "Q14508321", "p31": "Q12308941", "labels": ["Joris", "Ёрыс", "Јорис", "Йорис", "იორისი", "ヨーリシュ", "約里斯", "约里斯"]}]}, {"name": "Matias", "n_items": 2, "bearers": 2, "tokens": ["matiasdotter"], "candidates": [{"qid": "Q4927273", "p31": "Q12308941", "labels": ["Matias", "Matijas", "Matthias", "Ματθίας", "Матиас", "Матијас", "Маттиас", "Маттыяс"]}, {"qid": "Q19688705", "p31": "Q12308941", "labels": ["Matias", "Матиас", "מתיאס", "馬提亞斯 (名字)", "马蒂亚斯 (名字)"]}]}, {"name": "Rani", "n_items": 3, "bearers": 2, "tokens": ["ranisdatter", "ranisen"], "candidates": [{"qid": "Q2394844", "p31": "Q11879590", "labels": ["Rani", "Рани", "רני", "راني", "رانی", "রাণী", "இராணி", "റാണി"]}, {"qid": "Q47531492", "p31": "Q11879590", "labels": ["Rani", "रानी", "റാണി"]}, {"qid": "Q116365159", "p31": "Q12308941", "labels": ["Rani"]}]}, {"name": "Artur", "n_items": 3, "bearers": 1, "tokens": ["artursson"], "candidates": [{"qid": "Q1778168", "p31": "Q12308941", "labels": ["Arthur", "Artur", "Άρθουρ", "Артур", "Артур / Артюр", "Արթուր", "ארתור", "آرتور"]}, {"qid": "Q4801582", "p31": "Q12308941", "labels": ["Artur", "Αρτούρ", "Артур", "Արթուր", "أرتور", "アルトゥール", "阿图尔", "阿圖爾"]}, {"qid": "Q40204814", "p31": "Q12308941", "labels": ["Artur", "Arturs", "Артур", "أرتور", "アーサフ"]}]}, {"name": "Baltazar", "n_items": 2, "bearers": 1, "tokens": ["baltzarsdatter"], "candidates": [{"qid": "Q20681797", "p31": "Q12308941", "labels": ["Baltazar", "Baltazár"]}, {"qid": "Q138172127", "p31": "Q12308941", "labels": ["Baltazar"]}]}, {"name": "Bolivar", "n_items": 2, "bearers": 1, "tokens": ["bolivarsen"], "candidates": [{"qid": "Q834072", "p31": "Q12308941", "labels": ["Bolivar", "Bolivár"]}, {"qid": "Q43374753", "p31": "Q12308941", "labels": ["Bolivar", "Bolívar", "Боливар", "ボリヴァー"]}]}, {"name": "Christ", "n_items": 2, "bearers": 1, "tokens": ["christdatter"], "candidates": [{"qid": "Q66906168", "p31": "Q12308941", "labels": ["Christ", "Крист / Крис", "كريست"]}, {"qid": "Q139549181", "p31": "Q202444", "labels": ["Christ"]}]}, {"name": "Dominikus", "n_items": 2, "bearers": 1, "tokens": ["dominikusson"], "candidates": [{"qid": "Q19967852", "p31": "Q12308941", "labels": ["Dominikus", "Доминикус", "ドミニクス", "多米尼克斯", "多米尼庫斯"]}, {"qid": "Q107649248", "p31": "Q101352|Q202444", "labels": ["Dominikus", "Dominikus (Name)"]}]}, {"name": "Elis", "n_items": 3, "bearers": 1, "tokens": ["elisson"], "candidates": [{"qid": "Q12788312", "p31": "Q3409032", "labels": ["Elis", "אליס"]}, {"qid": "Q16423271", "p31": "Q12308941", "labels": ["Elis", "Elís"]}, {"qid": "Q107583664", "p31": "Q202444", "labels": ["Elis"]}]}, {"name": "Gul", "n_items": 4, "bearers": 1, "tokens": ["gulsen"], "candidates": [{"qid": "Q55941886", "p31": "Q11879590", "labels": ["Gul"]}, {"qid": "Q68841678", "p31": "Q11879590", "labels": ["Gul", "Gül"]}, {"qid": "Q69523691", "p31": "Q202444|Q69680123", "labels": ["Gul", "グル", "굴"]}, {"qid": "Q111439802", "p31": "Q12308941", "labels": ["Gul"]}]}, {"name": "Kari", "n_items": 2, "bearers": 1, "tokens": ["karasson"], "candidates": [{"qid": "Q1333594", "p31": "Q3409032", "labels": ["Kari", "Кари", "Кары", "كاري", "カリ", "卡蕊", "卡里"]}, {"qid": "Q19376950", "p31": "Q12308941", "labels": ["Kari", "Kari (mannsnavn)", "カリ"]}]}, {"name": "Kristofer", "n_items": 2, "bearers": 1, "tokens": ["kristoferdatter"], "candidates": [{"qid": "Q1084472", "p31": "Q12308941", "labels": ["Christopher", "Kitope", "Kristofer", "Κρίστοφερ", "Кристофер", "Крыстафер", "Крыстафэр", "Крістофер"]}, {"qid": "Q20003567", "p31": "Q12308941", "labels": ["Kristofer", "Кристофер", "كريستوفر", "克里斯多福", "克里斯托弗"]}]}, {"name": "Malachias", "n_items": 2, "bearers": 1, "tokens": ["malakiasdotter"], "candidates": [{"qid": "Q241658", "p31": "Q12308941", "labels": ["Malachia", "Malachias"]}, {"qid": "Q124646851", "p31": "Q202444", "labels": ["Malachias", "Malachias (Vorname)"]}]}, {"name": "Otter", "n_items": 2, "bearers": 1, "tokens": ["ottersdotter"], "candidates": [{"qid": "Q110943486", "p31": "Q202444", "labels": ["Otter", "Отэр"]}, {"qid": "Q112155701", "p31": "Q12308941", "labels": ["Otter", "Отэр"]}]}, {"name": "Peter", "n_items": 2, "bearers": 1, "tokens": ["pietersen"], "candidates": [{"qid": "Q2793400", "p31": "Q12308941", "labels": ["Peter", "Peter (hō-miâ)", "Piter", "Πίτερ", "Петер", "Петер / Пітер", "Петерне", "Петър"]}, {"qid": "Q19018108", "p31": "Q12308941", "labels": ["Peter", "Péter", "Петер", "פטר", "بيتر", "ペーテル", "彼得", "彼得(人名)"]}]}, {"name": "Ranveig", "n_items": 2, "bearers": 1, "tokens": ["rannveigson"], "candidates": [{"qid": "Q30836047", "p31": "Q11879590", "labels": ["Ranveig"]}, {"qid": "Q96478507", "p31": "Q11879590", "labels": ["Ranveig"]}]}, {"name": "Stephanus", "n_items": 2, "bearers": 1, "tokens": ["stefanssson"], "candidates": [{"qid": "Q4927100", "p31": "Q12308941", "labels": ["Istifanus", "Stefan", "Stephanus", "Stephen", "Stīvens", "Στίβεν", "Стевен", "Стефан"]}, {"qid": "Q17496752", "p31": "Q12308941", "labels": ["Stephanus", "Стефанус", "أسطفانوس", "ステファヌス"]}]}];
+const KEY = "patronymic-deck-v1";
+let picks = {};
+try { picks = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { picks = {}; }
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(picks)); } catch (e) {} }
+
+const list = document.getElementById("list");
+const prog = document.getElementById("prog");
+const fill = document.getElementById("fill");
+const only = document.getElementById("only");
+const copy = document.getElementById("copy");
+const out  = document.getElementById("out");
+let filtering = false;
+
+function esc(s){ return String(s).replace(/[&<>"]/g, c =>
+  ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+
+function draw(){
+  list.textContent = "";
+  DECK.forEach((d, i) => {
+    const done = picks[d.name] !== undefined;
+    if (filtering && done) return;
+    const box = document.createElement("div");
+    box.className = "name";
+    box.dataset.done = done ? "1" : "0";
+    const toks = d.tokens.map(t => `<span class="tok mono">${esc(t)}</span>`).join("");
+    let html = `<div class="head"><span class="n">${esc(d.name)}</span>`
+      + `<span class="meta mono">${d.bearers} people</span>`
+      + `<span class="meta">${d.candidates.length} items · ${d.tokens.length} tokens</span></div>`
+      + `<div class="toks">${toks}</div><div class="opts">`;
+    d.candidates.forEach(c => {
+      const sel = picks[d.name] === c.qid ? " sel" : "";
+      const others = c.labels.filter(l => l.toLowerCase() !== d.name.toLowerCase());
+      html += `<button class="opt${sel}" data-name="${esc(d.name)}" data-qid="${esc(c.qid)}">`
+        + `<span class="row1"><span class="qid mono">${esc(c.qid)}</span>`
+        + `<span class="kind mono">${esc(c.p31)}</span></span>`
+        + (others.length ? `<div class="labels">also: ${esc(others.join(" · "))}</div>` : "")
+        + `</button>`;
+    });
+    const skipSel = picks[d.name] === "SKIP" ? " sel" : "";
+    html += `<button class="opt skip${skipSel}" data-name="${esc(d.name)}" data-qid="SKIP">`
+      + `<span class="row1"><span class="qid mono">leave it</span>`
+      + `<span class="kind">keep skipping these tokens</span></span></button></div>`;
+    box.innerHTML = html;
+    list.appendChild(box);
+  });
+  const n = Object.keys(picks).length;
+  prog.textContent = n + " / " + DECK.length;
+  fill.style.width = (100 * n / DECK.length) + "%";
+}
+
+list.addEventListener("click", e => {
+  const b = e.target.closest(".opt");
+  if (!b) return;
+  const name = b.dataset.name, qid = b.dataset.qid;
+  if (picks[name] === qid) delete picks[name]; else picks[name] = qid;
+  save(); draw();
+});
+
+only.addEventListener("click", () => {
+  filtering = !filtering;
+  only.classList.toggle("on", filtering);
+  draw();
+});
+
+copy.addEventListener("click", async () => {
+  const rows = ["given_name\tchosen_qid\tbearers\ttokens"];
+  DECK.forEach(d => {
+    if (picks[d.name] === undefined) return;
+    rows.push([d.name, picks[d.name], d.bearers, d.tokens.join(" ")].join("\t"));
+  });
+  const text = rows.join("\n");
+  out.value = text;
+  out.classList.remove("hidden");
+  try {
+    await navigator.clipboard.writeText(text);
+    copy.textContent = "Copied " + (rows.length - 1);
+    setTimeout(() => { copy.textContent = "Copy answers"; }, 1800);
+  } catch (e) {
+    copy.textContent = "Select below";
+    out.focus(); out.select();
+  }
+});
+
+draw();
+</script>
