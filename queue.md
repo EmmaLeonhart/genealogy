@@ -57,26 +57,6 @@ alone.
 **`P1814` *name in kana* is NOT part of this and stays agentic** — a Japanese name reading does not
 follow from the characters, which is why queuing the two together was the mistake this item fixes.
 
-## Korean through the ROMANISATION pipeline — her emphasis, 2026-09-01
-
-*"So just more emphasis with the korean stuff there and changing some of the romanization pipeline
-queued stuff"*, after *"korean is extremely important on par with Chinese... this seems to not get
-that cjk includes korean"*.
-
-The romanisation pipeline currently has **two** directions where it needs three:
-
-- `cjk_romanisation` classifies a name's culture as `ja` or `zh` and romanises accordingly. The
-  1,552 Hangul tokens settle culture decisively, and Korean romanisation (Revised Romanization)
-  is regular — so `ko` is a third branch, not an exception.
-- **The Han-to-Korean direction is the one that is missing entirely.** A Chinese or Japanese name
-  written in Han characters has a regular hanja reading, so `ko` labels are generable for the
-  whole Han population the way `zh` is — 30,876 Han tokens, not just the Hangul ones.
-- `reports/garborg-name-transliterations.tsv` gains a `ko` column and the funnel mints all three.
-- The creation gate becomes `ja` + `zh` + `ko`.
-
-**`P1814` *name in kana* stays agentic and is a different job** — a Japanese name reading does not
-follow from the characters, which is exactly why it should never have been queued alongside `ko`.
-
 ## How to read this file
 
 **Emma, 2026-08-27:** *"Organize the queue to make it usable again, currently it does no appear to
@@ -534,62 +514,6 @@ Wikidata."* A slot with nothing on their side is a **creation opportunity**, whi
 
 ---
 
-## LAST — name items are being MERGED by other editors. Stop preferring creation over reuse
-
-**Recovered from the same crashed session; she asked for it at the end of the queue.** Emma,
-2026-08-29: *"I've noticed that certain names, for example Tunheim, I've noticed that some of these
-names got merged in with an existing item. I'm extremely confused how this happened, and it seems
-to me to indicate maybe you're not actually checking the existence of the names correctly in our
-data. Having a strong preference for creating new name objects versus using the existing ones is a
-very wrong move here. Creating the name objects and having them merged by somebody else (and this
-is important) is a thing that gets attention in a bad way."*
-
-Two things, in order:
-
-- **Find out how the existence check missed them.** Start from the name items the batches have
-  created, find which have since been merged away by another editor, and work back to what the
-  lookup did at the time. A diacritic is *not* the first explanation to reach for — `CLAUDE.md`
-  records that folding them invents ambiguity — so measure before theorising.
-- **Then invert the default.** Reuse an existing name item unless there is positive evidence the
-  usage differs. § *One name item per USAGE* still holds: a given name and a family name spelled
-  alike are genuinely two items; two spellings of one family name are not.
-
-## THE TAIL — two she moved here herself, 2026-08-29
-
-*"Just add both of these to the end of the queue."* Both were cron jobs she scheduled by clock
-time on 2026-08-27; every cron died in the 08-28 crash, so neither will fire on its own. Her words
-are kept because these are unstarted.
-
-- **`Sara /NN/`** — the case she set aside at the time: *"Ignore the fucking NN thing. 'Sara /NN/'
-  can wait until a cron job at 9pm fires to analyze this problem then."* The name is
-  `Sara` with `NN` in the surname slot, which is the inverse of the shape
-  `_carries_marker` was fixed for — there the marker was the *given* token and the surname real.
-
-- **Why a redacted profile came out labelled `Garborg`** — *"do a cron job at 10pm to analyze why
-  https://www.geni.com/people/private/6000000021223635839 was added as "Garborg" instead of the
-  current labels on wikidata that I manually added https://www.wikidata.org/wiki/Q141199845"*.
-  Note this is a `<private>` profile, so § *The NN/Private label algorithm* governs what it should
-  have been, and she had already hand-corrected the item — so the question is also why our label
-  overrode hers.
-
-
-## How many Geni labels actually need changing? Count them
-
-**Emma, 2026-08-29:** *"Put at the end of the queue: a specific thing, doing an analysis on the
-amount of people whose Geni labels are made to be changed and stuff like that."*
-
-**The number she wants first:** *"I don't know the degree of people that we have that only have CJK
-labels, because that is an important thing for analysing with this."* So: how many people in the
-corpus carry a name **only** in Han, kana or hangul, with no Latin form anywhere on the record?
-Those are the ones who would need an English name written onto Geni.
-
-`reports/derived-labels.csv` has `cjk_names`, `other_script_names` and `further_latin_names`, and
-`display-names.csv` has the raw fields and a `scripts` column, so this is offline and cheap.
-
-**Report the count before proposing any edit.** The campaign's value is whatever our pipeline puts
-in `mul`, so the second number worth having is how many of those people our pipeline can currently
-produce a `mul` for at all — a person we cannot label is not a person we can fix.
-
 ## "Synoptic tree" means two different things — resolve it usage by usage
 
 **Emma, 2026-08-29, asked what it concretely is:** *"it is consistently conflated between the union
@@ -642,15 +566,6 @@ transliteration data, whatever it holds — into this repo, and add no runtime d
 state file, and no network call to it. It is not checked out beside `geni`, so the first step is
 asking her where it is.
 
-## The NN path drops the birth-name alias the named path emits
-
-Found while answering the `Q141205924` label question. The named branch of
-`build-garborg-day.py` emits `Lmul <married>` **and** `Amul <birth>`; the redacted/NN branch
-sets `birth = ""` and emits the `mul` alone. So a married NN woman keeps only one of her two
-recorded surnames. `NN Gjøa` would be her alias under the current rule and is not emitted.
-
-Analysis first: count the NN people carrying both a `SURN` and a different `_MARNM`.
-
 ## ABSOLUTE PREREQUISITE — no individual is created without their CJK labels
 
 **Emma, 2026-08-29:** *"There should be an absolute prerequisite that nothing is created until you
@@ -671,39 +586,6 @@ clan block last — she confirmed it: *"keep the shared 15 with the clan left. T
 to do because the most important thing is to fix up the CJK labels on our existing items first."*
 Existing people drain first, then the 177 clan people. *"The clan people also extend the range of
 the quick statement stuff by a lot, so this is worth leaving at the end."*
-
-## Systematic review for legacy code — the 218 scripts, now the readers are done
-
-**The `entity_resolution.md` readers are cleared, 2026-08-31.** Emma: *"no files should read it
-lol."* **0 code readers remain**, down from 22 files:
-
-- **2 deleted outright** — `build-entity-resolution-batch.py`, whose entire purpose was that file,
-  and `build-charlemagne-route.py`, for the spine she declared legacy.
-- **7 had the read removed** — `build-garborg-day.py`, `derive-labels.py`,
-  `refresh-live-values.py`, `path-between.py`, `build-trunk-batch.py`, `build-edit-objects.py`,
-  `build-path-to-wikidata-report.py`. Each folded that file's pairs into a lookup and had been
-  contributing nothing since 2026-08-29.
-- **`genimerge.cli`'s `entity-resolution` command keeps working but has no default source.**
-  `genimerge.entities` parses her free-form format and she may hand it another file; what went is
-  the assumption that the retired one is still there.
-
-**`build-edit-objects.py` was deleted and then restored**, because `tests/test_edit_object_labels.py`
-loads it. Deleting a script a test imports is breaking a test to tidy up, which the rails forbid;
-only the read came out.
-
-**What remains is the wider sweep.** 218 scripts in `scripts/`, and the test is *does the pipeline
-read this*, not *might this be useful*. A defensible pass: every script not referenced by another
-script, by a test, by `CLAUDE.md`, or by a queue item, and whose outputs nothing reads. **Report
-the list before deleting in bulk** — the `build-edit-objects.py` near-miss is why.
-
-## One batch file, names first, and a created person is linked to their names
-
-Emma, 2026-08-30. Two changes to how the QuickStatements are generated:
-
-- **One file, not two.** Names first, then everything else. Today it is
-  `wikidata-garborg-day.qs` plus `wikidata-garborg-name-items.qs` and a run order to remember.
-- **A person created in the run gets linked to their name items in that same run.** Today the
-  name statements only reach people who already held a QID, so a new person waits a day.
 
 ## Always last — pinned to the very end of the file
 
@@ -1249,25 +1131,6 @@ Two questions, one tool call each, with real options:
 whether to do *more*, never a stall. Show her the actual candidate items, not a summary — the
 `Carl`/`Johan`/`Olof` lookup is what made the last one answerable in one line.
 
-## Patronymic residue: `Nils`/`Nicolaus` needs a form table, not a letter rule
-
-The letter-level folds are done and measured — `d`/`t` and the inner `h`, each sampled by hand
-before it shipped. What is left cannot be reached by any spelling rule:
-
-- **`Nilsson` with father `Nicolaus`.** `Nils` is a *form* of `Nicolaus`, not a spelling of it;
-  the skeletons are `nls` and `nkls` and no fold that joins them leaves anything else apart.
-  Same shape: `Lars`/`Laurentius`, `Ola`/`Olaus`, `Jon`/`Johannes` where the vowel run differs
-  too much.
-- **What would work is a short table** of Scandinavian given-name forms — the Latin church form
-  against the vernacular. It is data, not an algorithm, and it should be built from the corpus:
-  take fathers whose given name is Latinate and whose children carry a vernacular patronymic, and
-  read off the pairs rather than inventing them.
-
-Measure first and sample the rescues by hand. That is what showed `d`/`t` was safe, showed the
-inner `h` was safe, and is the only reason either shipped.
-
-**At the tail with the rest of the patronymic modelling.** Emma, 2026-08-31: *"all pstronymic modelling is at the end now"* — she is working down the queue and three consecutive items landing on patronymics was a placement mistake of mine, not her priority.
-
 ## LABELS, IN HER ORDER — one step per language, every individual at once
 
 **Emma, 2026-08-17**, after being shown the 364 structural placeholders with no label:
@@ -1454,138 +1317,6 @@ what steps 1 and 2 exist to earn.
 **Nothing in this chain is blocked and none of it is urgent.** `2026-09-01` passing changes
 nothing on its own: the edit path stays unused, its `START_DATE` constants stay as the rail, and
 the batch keeps reaching her in chat exactly as it has been.
-
-## Model the succession CSV into statements
-
-`reports/succession-and-ordinals.csv` is built and comprehensive — 221 rows: Samaritan all 132
-positions, Izumo 53, Senge 22, Kitajima 14. This item is turning it into Wikidata statements.
-
-- **`P7338` *regnal ordinal*** — a qualifier on the `P735` *given name* statement, per
-  `name modelling.txt`, for the 111 rows carrying one. Never as a middle name.
-- **`P39` *position held* with `P1545` *series ordinal*** — the number in office, for all 221.
-  `reports/wikidata-samaritan-succession.json` already models it this way for 18 priests, so the
-  Japanese houses and the rest of the Samaritan line extend a built shape.
-- **The office items differ per family** and only the Samaritan one is known: `Q678510`
-  *Samaritan High Priest*. Izumo Kokusō, Senge and Kitajima need theirs identified or created.
-- **A row with no `qid` cannot carry a statement yet** — 23 of 132 Samaritans have one, and the
-  Japanese side is better at 51/22/14. That is the ordinary both-ends-need-a-QID rule, not a
-  blocker: what cannot run today is a later day's batch.
-
-**Two things the CSV records that must not be lost in emission:** `geni_status` says how each
-Geni id was established — succession number confirmed, sole match, her bio link — and the 38
-Samaritan positions absent from the corpus are a near-contiguous run (1, 2, 3, 31, 59, then 81
-onward), which is one unexported neighbourhood rather than 38 misses.
-
-## THE LAST ITEM — `pykakasi` is fine AS A FALLBACK; verify it because she has been burned
-
-**Emma, 2026-08-31**, on finding it installed: *"I can say for a fact that that library sucks for
-converting Kanji to Hiragana. So with that being said, I'm skeptical of it... I'm gonna guess it's
-probably easier for it to do European words than Kanji to Hiragana... but I am going to want to do
-a bit of due diligence on it to make sure that it's getting stuff right."*
-
-**The two directions are different jobs, and the one she knows it fails at is not the one we
-need.** Kanji → hiragana is a *reading* problem: the same characters take different readings per
-person, which is why `P1814` *name in kana* exists as a property rather than being computed.
-European → katakana is a *transcription* problem, and her guess is that it is the easier of the
-two. That guess is plausible and is not evidence.
-
-**Her position, clarified the same day: as a fallback it is fine.** *"I think probably as a
-fallback, it's fine... It's only for edge cases. It's just... I have been burned by that library
-in the past, so I wanna make this stuff clear."*
-
-So this is **not a gate**. A fallback fires on the tokens nothing else renders, which is a small
-tail by construction, and a wrong katakana rendering there is inside her standing rule that
-*"incorrect representations in katakana are totally acceptable"*. What she is asking for is that
-the scepticism be written down rather than discovered again by somebody who does not know she has
-been burned.
-
-**MEASURED, 2026-09-01. Her scepticism is correct and the number is 6 of 10.**
-
-Ten Japanese names whose readings are not in doubt, kanji → hiragana:
-
-| name | pykakasi | the reading |
-| --- | --- | --- |
-| 藤原道長 | ふじわらどうちょう | ふじわらのみちなが |
-| 菅原道真 | すがわらどうしん | すがわらのみちざね |
-| 源義経 | みなもとよしつね | みなもとのよしつね |
-| 小野妹子 | おのいもこ | おののいもこ |
-
-**All four failures are the same failure, and it is ours.** The classical `の` between clan and
-given name is dropped, and where the given name has a Sino-Japanese and a native reading it takes
-the wrong one — 道長 as *dōchō* rather than *Michinaga*. That is precisely the population this
-corpus is full of: Fujiwara, Sugawara, Minamoto, Taira. The six it got right are Sengoku and Edo
-names with regular readings.
-
-**So it is worse than 60% for us, not better.** She said *"I can say for a fact that that library
-sucks for converting Kanji to Hiragana"*, and on the names we actually hold it does.
-
-**Nothing depends on it.** `pykakasi` is installed on the machine and is referenced in exactly one
-place — a docstring in `scripts/build-cjk-romanisation.py` saying it is *not* used, because the
-romanisations are read out of Wikidata's own name items instead. So this measurement changes no
-behaviour; it records the scepticism so nobody reaches for the library without knowing.
-
-**`P1814` *name in kana* therefore stays agentic**, which is what `CLAUDE.md` already says and
-what this measurement now supports rather than merely asserts.
-
-- Compare `pykakasi` against `scripts/translit_no.py` and against the **317 hand-written rows** of
-  `reports/garborg-name-transliterations.tsv` that the engine did not itself write. That file is
-  the only ground truth in the repo, and `translit_no` scores **46% (ja) / 41% (zh)** on it — so
-  there is a number to beat rather than an impression to form.
-- The known gap in `translit_no` is **gemination and vowel length** — `Anna` → `アナ` where the
-  hand form is `アンナ`, `Aagot` → `オーゴト` against `オーゴット`. Whether `pykakasi` gets those
-  right is the specific question worth answering first.
-- **Do not test it on kanji.** She has already settled that direction and it is not what this
-  would be used for.
-
-**And look for something better.** Her words: *"I think that there might be some sort of better
-system than that library. Not one hundred percent sure."*
-
-**Nothing depends on this today.** `translit_no` is what runs, the funnel is wired, and the ja/zh
-gate refuses nobody. This decides whether `pykakasi` becomes the fallback under it — not whether
-labels get made, and not whether it may be used at all.
-
-## THE LAST ITEM — the tokens the transliteration funnel cannot read
-
-**Emma, 2026-08-31: *"put these tokens at the end of the queue."*** So they are here and nothing
-was investigated further.
-
-After the funnel ran over the placeholder population on 2026-08-31 — table **4,054 → 18,410**,
-14,356 tokens added — **1,075 tokens were left out as unreadable**, and `ja`/`zh` is still missing
-on **17,077** of the 39,691 placeholder edits.
-
-**The two remainders are different problems and should not be treated as one:**
-
-- **7,562 have no `en` label at all.** No named relative at any distance, so there is nothing to
-  build `<name>の娘` from. A transliteration fix cannot reach them; they need something other
-  than a relative or they stay bare `NN` in `mul`.
-- **~9,500 have an `en` label and one unreadable token in it.** These are the ones this item is
-  about.
-
-**Most of the unreadable ones are not names.** The reported sample is `!\`, `"`, `"AMNY"`,
-`"Abbahu"`, `"Abu`, `"Adak-Jarni"`, `"Alexios`, `"Alviðrukappi“`, `"André"`, `"Annie"` — quoting
-artefacts where a nickname's opening quote has been glued to the token. `Карлов` is Cyrillic and
-`<private>` is a redaction marker that should never have reached a name field at all.
-
-**So the first question is how many are actually tokens.** Stripping stray quotes may close most
-of it without touching the reader; a Cyrillic name is a different engine; and `<private>` is a bug
-upstream in whatever built that label.
-
-`python scripts/extend-transliterations.py --placeholders` prints the current list.
-
-## THE LAST ITEM — wire `hi`, `ar`, `ru`, `el` into the label batches
-
-`scripts/translit_scripts.py` renders all four and **nothing emits them yet**. Her call,
-2026-08-31: at the tail.
-
-- The four join `ja`/`zh` in the emitters that already build CJK labels —
-  `build-garborg-day.py`, `build-placeholder-label-batch.py`, `build-nn-label-batch.py`.
-- **Read a sample by eye before wiring, every time.** Four manglings were caught that way when
-  the module was written — `Bjørn` → `бйёрн`, `Johannes` → `Ёханнес`, `Maria` → `مرا` and
-  `मरिअ` — and none was visible in the tables.
-- **`ar` is an abjad and loses short vowels.** `Arne` and `Aren` collide. Decide deliberately
-  whether an Arabic label is worth having on that basis; the module does not decide it.
-- Her standard governs what is acceptable: *"incorrect romanization or incorrect representations
-  in katakana are totally acceptable. An incorrect name is not."*
 
 ## THE LAST ITEM — `BET x AND y` properly
 
