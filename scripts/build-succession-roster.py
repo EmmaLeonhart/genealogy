@@ -56,6 +56,7 @@ ORDINALS = ROOT / "reports" / "regnal-ordinals.csv"
 P2600 = ROOT / "out" / "wikidata" / "p2600-all.tsv"
 LABELS = ROOT / "reports" / "derived-labels.csv"
 TANBA = ROOT / "reports" / "tanba-geni-created.tsv"
+SUCC_LIST = ROOT / "reports" / "samaritan-succession-list.tsv"
 OUT = ROOT / "reports" / "succession-and-ordinals.csv"
 
 csv.field_size_limit(1 << 30)
@@ -68,6 +69,35 @@ SPLIT_AT = 55
 #: A Roman ordinal standing alone as a name token -- `Elazar XX`, `Yoseph II`. Bounded to the
 #: forms that actually occur so `I` as an initial and `MD` as a title do not match.
 ROMAN = re.compile(r"^(?:X{0,3})(?:IX|IV|V?I{0,3})$")
+
+
+ROMAN_ORD = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII",
+             "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX", "XXI", "XXII"}
+
+
+def _fold_sam(w):
+    w = w.lower()
+    for a, b in (("tz", "s"), ("ts", "s"), ("kh", "h"), ("ch", "h"), ("aa", "a"),
+                 ("ee", "e"), ("oo", "o"), ("th", "t"), ("y", "i"), ("j", "i"),
+                 ("q", "k"), ("c", "k"), ("ph", "f"), ("w", "v")):
+        w = w.replace(a, b)
+    return re.sub(r"(.)+", r"", re.sub(r"[^a-z]", "", w))
+
+
+def sam_key(name):
+    """`(folded given name, regnal ordinal)` -- the key that reconciled 80 of 82 with 0 conflicts.
+
+    The patronymic chains spell apart between our corpus and the list -- `Matzliach`/`Matsliah`,
+    `Aaharon`/`Aharon` -- so a full-string match finds 19 of 82. Two tokens find 80, because the
+    ordinal makes the short key unique.
+
+    **Punctuation is stripped from the ordinal**: our corpus writes `Amram I.` with a full stop,
+    and testing the raw token dropped him and several others as absent when they are present.
+    """
+    toks = [t.strip(".,()") for t in str(name).replace("/", " ").split() if t.strip(".,()")]
+    if not toks or not _fold_sam(toks[0]):
+        return None
+    return (_fold_sam(toks[0]), next((t for t in toks[1:3] if t in ROMAN_ORD), ""))
 
 
 def geni_by_qid():
@@ -192,26 +222,11 @@ def main():
                 "source": "reports/izumo-geni-candidates.tsv",
             })
 
-    # ---- Samaritan: the office, from the succession model ----------------------------
-    seen_sam = {}
-    if SAMARITAN.exists():
-        for edit in json.loads(SAMARITAN.read_text(encoding="utf-8")):
-            subj = edit.get("subject", {})
-            qid, geni = subj.get("qid", ""), subj.get("geni_id", "")
-            ordinal = ""
-            for add in edit.get("add", []):
-                if add.get("property") == "P39":
-                    for q in add.get("qualifiers", []):
-                        if q.get("property") == "P1545":
-                            ordinal = str(q.get("value", ""))
-            seen_sam[geni or qid] = {
-                "family": "Samaritan", "name": "", "native_name": "",
-                "geni_id": geni, "qid": qid, "regnal_number": "",
-                "number_in_office": ordinal,
-                "source": "reports/wikidata-samaritan-succession.json",
-            }
-
-    # The authoritative Samaritan population, rather than anything read off a name.
+    # the labels and the Samaritan population, both needed by the block below
+    label = {}
+    with io.open(LABELS, encoding="utf-8", newline="") as fh:
+        for r in csv.DictReader(fh):
+            label[r["geni_id"]] = r.get("label_en") or r.get("label_mul") or ""
     samaritans = set()
     sam_people = ROOT / "reports" / "samaritan-people.csv"
     if sam_people.exists():
@@ -220,102 +235,61 @@ def main():
                 if r.get("geni_id"):
                     samaritans.add(r["geni_id"].strip())
 
-    # ---- the regnal number IN THE NAME, for the Samaritans ---------------------------
-    label = {}
-    with io.open(LABELS, encoding="utf-8", newline="") as fh:
-        for r in csv.DictReader(fh):
-            label[r["geni_id"]] = r.get("label_en") or r.get("label_mul") or ""
+    # ---- Samaritan: driven by the SUCCESSION LIST, so the file is comprehensive ------
+    #
+    # **Emma, 2026-08-31: *"we have the csv as a comprehensive data source now?"*** Only if the
+    # Samaritan half is driven by the succession rather than by whoever happens to carry a Roman
+    # ordinal in their Geni label. So every one of the 132 positions gets a row, present in our
+    # corpus or not — the absences are the point.
+    #
+    # **And *"you look on geni for those Samaritan high priests not wikidata."*** Right: the list
+    # has an article for only 14 of 132, so Wikidata cannot enumerate them, while our corpus holds
+    # **94**. The match is given name + regnal ordinal, the same key that reconciled the office
+    # numbers with zero conflicts.
+    sam_by_key = {}
+    for g in samaritans:
+        k = sam_key(label.get(g, ""))
+        if k:
+            sam_by_key.setdefault(k, []).append(g)
 
+    ord_by_geni = {}
     with io.open(ORDINALS, encoding="utf-8", newline="") as fh:
         for r in csv.DictReader(fh):
-            g = r["geni_id"]
             tok = (r.get("ordinal_token") or "").strip()
-            # **`"ben " in name` was a substring test and it let in strangers.** Reading the
-            # output is what caught it: `Agatha von Schwaben Daughter of Ernst II` and
-            # `Bagben III Siounides Prince of Siounie` matched on the letters inside `Schwaben`
-            # and `Bagben`, and `David ben Hizkiya II 39th Exilarch` and `Avraham II ben Ezra
-            # HaLevi` are Jewish rather than Samaritan -- a `ben` patronymic is not a Samaritan
-            # marker, it is a Hebrew one.
-            #
-            # `reports/samaritan-people.csv` is the actual population, 412 people taken from the
-            # Samaritan exports, so membership is a lookup and not a guess about a name.
-            if g not in samaritans:
-                continue
-            # **A bare `I`, `V` or `X` is a regnal ordinal here, and the census files it as
-            # `single-letter` because elsewhere it could be a middle initial.** Taking only
-            # `kind == "roman"` dropped 19 of the 63 Samaritan rows -- `Yitzhaq I ben Tsedaka`
-            # and `Phinehas X ben Matzliach` among them, which are plainly the first and the
-            # tenth. There are no middle initials in a `ben`-patronymic name, so inside this
-            # screen the ambiguity the census is guarding against does not exist.
-            if not tok or r.get("kind") not in ("roman", "single-letter"):
-                continue
-            if not ROMAN.match(tok):
-                continue
-            if g in seen_sam:
-                seen_sam[g]["regnal_number"] = tok
-                seen_sam[g]["name"] = label.get(g, "") or seen_sam[g]["name"]
+            if r["geni_id"] in samaritans and tok and ROMAN.match(tok)                     and r.get("kind") in ("roman", "single-letter"):
+                ord_by_geni.setdefault(r["geni_id"], tok)
+
+    office_qid = {}
+    if SAMARITAN.exists():
+        for edit in json.loads(SAMARITAN.read_text(encoding="utf-8")):
+            subj = edit.get("subject", {})
+            if subj.get("geni_id"):
+                office_qid[subj["geni_id"]] = subj.get("qid", "")
+
+    with io.open(SUCC_LIST, encoding="utf-8", newline="") as fh:
+        for r in csv.DictReader(fh, delimiter="	"):
+            k = sam_key(r["name"])
+            hits = sam_by_key.get(k, []) if k else []
+            geni = hits[0] if len(hits) == 1 else ""
+            if len(hits) > 1:
+                status = "AMBIGUOUS (%d corpus people)" % len(hits)
+            elif geni:
+                status = "in the corpus, by given name + ordinal"
             else:
-                seen_sam[g] = {
-                    "family": "Samaritan", "name": label.get(g, ""), "native_name": "",
-                    "geni_id": g, "qid": "", "regnal_number": tok, "number_in_office": "",
-                    "geni_status": "from the corpus",
-                    "source": "reports/regnal-ordinals.csv",
-                }
-    for v in seen_sam.values():
-        if not v["name"] and v["geni_id"]:
-            v["name"] = label.get(v["geni_id"], "")
-        rows.append(v)
-
-    # ---- the office number, from the English Wikipedia succession -------------------
-    #
-    # **Emma named this source, 2026-08-31**, after three guesses of mine missed it. It carries
-    # all 132 positions where `P39` on Wikidata enumerates 7.
-    #
-    # **The key is GIVEN NAME + REGNAL ORDINAL, not the whole string.** The patronymic chains
-    # spell apart between the two sources -- `Matzliach`/`Matsliah`, `Aaharon`/`Aharon` -- so a
-    # full-string match found 19 of 82. `Bakhi II` against `Bakhi II` finds **80 of 82**, because
-    # the ordinal makes the short key unique: 110 of the 132 list rows carry one.
-    #
-    # **And it is checkable, which is why it can be trusted.** Of the 18 office numbers already
-    # held from `wikidata-samaritan-succession.json`, every single matchable one **agrees** --
-    # zero conflicts. The apparent 18th, `Saloum Cohen` at 130, is the list's
-    # `Shalom II ben Amram ben Yitzhaq` at 130: the same man under a romanisation the fold does
-    # not bridge, so it agrees too.
-    succ_list = ROOT / "reports" / "samaritan-succession-list.tsv"
-    if succ_list.exists():
-        import collections
-        roman = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII",
-                 "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX", "XXI", "XXII"}
-
-        def fold(w):
-            w = w.lower()
-            for a, b in (("tz", "s"), ("ts", "s"), ("kh", "h"), ("ch", "h"), ("aa", "a"),
-                         ("ee", "e"), ("oo", "o"), ("th", "t"), ("y", "i"), ("j", "i"),
-                         ("q", "k"), ("c", "k"), ("ph", "f"), ("w", "v")):
-                w = w.replace(a, b)
-            return re.sub(r"(.)+", r"", re.sub(r"[^a-z]", "", w))
-
-        def key(name):
-            t = [x for x in name.split() if x]
-            return (fold(t[0]), next((x for x in t[1:3] if x in roman), "")) if t else None
-
-        bykey = collections.defaultdict(list)
-        with io.open(succ_list, encoding="utf-8", newline="") as fh:
-            for r in csv.DictReader(fh, delimiter="	"):
-                k = key(r["name"])
-                if k and k[0]:
-                    bykey[k].append(r)
-        filled = 0
-        for r in rows:
-            if r["family"] != "Samaritan" or r["number_in_office"]:
-                continue
-            hits = bykey.get(key(r["name"]) or (), [])
-            if len(hits) == 1:
-                r["number_in_office"] = hits[0]["number"]
-                r["geni_status"] = (r.get("geni_status", "")
-                                    + "; office from the Wikipedia list").strip("; ")
-                filled += 1
-        print("%d Samaritan office numbers filled from the Wikipedia succession" % filled)
+                status = "NOT IN THE CORPUS"
+            toks = [x.strip(".,()") for x in r["name"].split()]
+            rows.append({
+                "family": "Samaritan",
+                "name": label.get(geni, "") or r["name"],
+                "native_name": "",
+                "geni_id": geni,
+                "qid": r["qid"] or office_qid.get(geni, ""),
+                "regnal_number": ord_by_geni.get(geni, "")
+                or next((t for t in toks[1:3] if ROMAN.match(t) and t), ""),
+                "number_in_office": r["number"],
+                "geni_status": status,
+                "source": "reports/samaritan-succession-list.tsv",
+            })
 
     order = {"Izumo": 0, "Senge": 1, "Kitajima": 2, "Samaritan": 3}
     rows.sort(key=lambda r: (order.get(r["family"], 9),

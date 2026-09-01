@@ -23334,3 +23334,35 @@ label carries the office as part of the name.
 
 The remaining Samaritan gap is QIDs — 21 of 82 — and the Wikipedia list cannot close it: only 14
 of its 132 rows have an article at all, the rest being red links.
+
+## 2026-08-31 — the CSV made comprehensive, and the Samaritan absences are the finding
+
+Emma: *"we have the csv as a comprehensive data source now?"* — not until the Samaritan half was
+driven by the **succession** rather than by whoever happened to carry a Roman ordinal in their
+Geni label. Now every one of the 132 positions gets a row, present in our corpus or not.
+
+And *"you look on geni for those Samaritan high priests not wikidata"* — right, and the numbers
+say why. The Wikipedia list has an article for **14 of 132**, so Wikidata cannot enumerate them.
+Our Geni corpus holds **94**.
+
+| family | rows | qid | geni | regnal | in office |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Izumo | 53 | 51 | 37 | 0 | 53 |
+| Senge | 22 | 22 | 20 | 0 | 22 |
+| Kitajima | 14 | 14 | 14 | 0 | 14 |
+| Samaritan | **132** | 23 | 94 | 111 | **132** |
+
+**38 of the 132 are absent from the corpus, and they are not scattered** — positions 1, 2, 3, 31,
+59, then a long unbroken run from **81 to 98 and beyond**. A consecutive stretch of a hereditary
+line is a neighbourhood nobody has exported, not 38 separate misses, which makes it one piece of
+work rather than thirty-eight.
+
+**One bug caught by reading the list of absences.** `Amram I` came out absent; our corpus writes
+him `Amram I. /Samaritan High Priest/`, with a full stop, and the ordinal test rejected `I.`
+because it is not `I`. Stripping punctuation from the ordinal token recovered him and moved the
+count 93 → 94. The same shape as every other stale-guard finding today: a screen that silently
+narrows its input and returns a plausible number.
+
+`sam_key` is now one shared helper — given name plus regnal ordinal, punctuation stripped — used
+for both the office reconciliation and the corpus match, rather than the two copies that had
+started to drift.
