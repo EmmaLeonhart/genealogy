@@ -24186,3 +24186,34 @@ Both established by checking rather than by working. **The four export retries**
 in the corpus and in the merged tree, and `census-paths.py` reports **every path connected end to
 end** across 699 files — so no export ran. **`P735` on new people** was already happening: 25 of
 28 creations carry one.
+
+## 2026-09-01 — the clan-seat veto was tried and reverted
+
+The top actionable queue item was the CJK culture classifier, which calls two people Japanese who
+are plainly not: `Q77895` carries `愛新覺羅`, the Manchu Qing house, and `Q10511648` carries
+`東海蘭陵`, the Xiao of Lanling. Both were settled by `graph traversal, 2 hop(s)`.
+
+**The proposed fix was sound in shape.** The classifier already refuses a `ja` walk when the last
+token is a surname that is never Japanese, so extending that veto to clan seats is an *ordering*
+of two signals it already computes — not a new heuristic and not a threshold. The file's own
+comment says **"A 郡望 is Chinese, full stop."**
+
+**It does not reach these two, and the reason is exact.** `SEATS_EARLY` is *four Han characters
+occurring 20 or more times*:
+
+    隴西狄道  663    in the set
+    陳郡陽夏   59    in the set
+    東海蘭陵    2    below the floor
+    愛新覺羅    1    below the floor
+
+The veto fired for **one** person out of 226 and neither target moved. So it was reverted: a
+change that does not do the thing it was written for does not ship, however defensible it looks.
+
+**And the measurement was confounded**, which is worth recording because it would have been
+reported as a result. `derived-labels.csv` changed earlier the same day, so the before/after diff
+of the romanisation credits the veto with whatever the label fix did — 8 rows dropped and 13
+appeared, none of it attributable. A retry needs the classifier built twice against one fixed
+label file.
+
+The queue item is sharper for it: the question is not *should the seat veto a walk* but *how to
+recognise a rare clan seat*, since a frequency floor cannot by construction.

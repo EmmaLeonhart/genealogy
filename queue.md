@@ -177,11 +177,32 @@ marriage into another culture.
 `en` label — and its errors are the same leak in reverse: `榮` romanised *Ei*, the Japanese
 reading, for a person the classifier itself calls Chinese.
 
-**The fix that needs no threshold:** three of the eight `zh` mismatches carry a Chinese clan seat
-**on the person** — `鄭州榮澤`, `扶風平陵`, `京兆長安`. That is recorded data and is stronger than a
-two-hop walk. Letting the seat veto a Japanese classification costs nothing and invents nothing.
-Shortening the hop count is the other option and is worse, because a long chain inside one
-genuinely Japanese family is exactly what the traversal is for.
+**The seat veto was TRIED on 2026-09-01 and it cannot reach these two.** Attempted and reverted,
+because the hard rails forbid shipping something that does not do what it is for.
+
+The classifier already has a veto — it refuses a `ja` walk when the last token is a surname that
+is never Japanese — and extending it to clan seats is a pure ordering of two signals it already
+computes. That much is right. What kills it is the seat SET:
+
+    隴西狄道    663 occurrences   in SEATS_EARLY
+    陳郡陽夏     59 occurrences   in SEATS_EARLY
+    東海蘭陵      2 occurrences   NOT in SEATS_EARLY
+    愛新覺羅      1 occurrence    NOT in SEATS_EARLY
+
+`SEATS_EARLY` is *four Han characters occurring 20 or more times*, and both misclassified people
+carry a tail below that floor. The veto fired for exactly **one** person out of 226 and neither
+target moved. **A seat veto is therefore not the fix**; it is a small improvement to a set that
+does not contain the cases in question.
+
+**What the real question is, now that it is sharp:** how to recognise a rare clan seat or clan
+name. `愛新覺羅` is Aisin Gioro and `東海蘭陵` is a commandery pair — both obviously not Japanese to
+a reader, and both invisible to a frequency floor. Lowering the floor is the obvious move and is
+untested; it would need the usual treatment, a sample read by hand before it ships.
+
+**Also note the measurement was confounded and would have been reported wrongly.**
+`derived-labels.csv` changed the same day, so a before/after diff of the romanisation attributes
+to the veto what the label fix did. Any retry needs the classifier rebuilt twice against one
+fixed label file.
 
 **Her call**, because it changes 13,636 romanisations and the `ja`/`zh` split feeds the CJK labels.
 
