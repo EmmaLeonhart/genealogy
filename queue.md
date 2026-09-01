@@ -251,43 +251,6 @@ two hops, so they need something other than a relative or they stay markers.
 - Open questions for Emma: `questions.md`
 - The pre-wipe queue, 1,396 lines: `git show 4127170:queue.md`
 
-## Succession and regnal numbers: fill in the Geni ids by hand
-
-`scripts/build-succession-roster.py` -> `reports/succession-and-ordinals.csv`, her columns:
-family, name, geni id, qid, regnal number, number in office. **151 rows.**
-
-| family | rows | qid | geni | regnal | in office |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| Izumo | 53 | 51 | 4 | 0 | 53 |
-| Senge | 22 | 22 | 2 | 0 | 22 |
-| Kitajima | 14 | 14 | 1 | 0 | 14 |
-| Samaritan | 62 | 21 | 62 | 58 | 18 |
-
-**The one thing left is the `geni_id` column on the Japanese side, and it is an AGENTIC pass, not
-a matcher.** Emma, 2026-08-31: *"All of them are on geni lol the wikidata just doesn't have p2600
-the geni links to wikidata on all of them."* So a blank means our matching failed, never that the
-person is absent.
-
-**Do not reach for a name search.** The existing automated run found 32 of 214 and several are
-wrong on their face — `Izumo no Yoshitada` matched *Minamoto* no Yoshitada, `Izumo no Takatoki`
-matched *Fujiwara* no Takatoki, different men with coincidentally similar names — while others
-came back as 18-way ambiguity blobs. Only single unambiguous matches are carried; `geni_status`
-says which case each row is.
-
-**Then emission, and the two properties are different statements:**
-
-- `P7338` *regnal ordinal* on the `P735` *given name*, for the 58 Samaritans who have one.
-  `name modelling.txt` is the model, and it must never look like a middle name.
-- `P39` *position held* with `P1545` *series ordinal* for the number in office.
-  `reports/wikidata-samaritan-succession.json` already does this for 18 priests, so the Japanese
-  houses extend a built shape rather than inventing one.
-
-**Two facts worth keeping:** the Izumo house splits at **55** — `Senge no Takamune` and
-`Kitajima no Sadataka` are both the 55th and the branches number onward in parallel — and a bare
-`I`/`V`/`X` in a `ben`-patronymic name is a regnal ordinal, which the census files as
-`single-letter` because elsewhere it could be an initial. Taking `kind == "roman"` alone dropped
-19 of 63, `Yitzhaq I` among them.
-
 ## EMAIL me the daily QuickStatements file, every day — from 2026-09-01
 
 **Her ruling, 2026-08-31**, replacing the automated-edit reading of this item: *"not wikidata
@@ -308,19 +271,6 @@ along.
   then — until the repo is public there are no free minutes to run it on, and the date passing
   changes nothing on its own.
 - **Send the file, not a summary.** The batch is what she runs.
-
-## How the synoptic tree is actually made — Emma, 2026-08-25
-
-**Her words:** *"Put into the queue also an analysis of how the synoptic tree is actually made."*
-And the framing that makes this a survey rather than a blocker: *"I feel like we may not have gone
-over the synoptic tree stuff sufficiently, but I'm going to treat it as though it's all good. I'm
-going to treat the synoptic tree as though it is perfect, and we are going to address whether the
-synoptic tree is well functioning later."*
-
-So **nothing waits on this.** Write down what `scripts/build-synoptic-correspondence.py` actually
-does: the eight sources it unions, what each one's evidence is worth, the `date_refuted` filter,
-the `ROUND_CAP = 3` cut on the zipper, which multiplicities it tolerates and which it calls
-conflicts. Then say where it is doing something nobody chose.
 
 ## The chain of provenance — Emma, 2026-08-25
 

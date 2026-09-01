@@ -23395,3 +23395,41 @@ names are the commonest thing in this corpus: `fille d'Øystein`, `fille d'Æsa`
 
 **`h` is deliberately left unelided.** French distinguishes aspirate from mute `h` and nothing in
 a Geni name says which, so `de Henri` stands rather than being guessed at.
+
+## 2026-08-31 — two items closed: the succession roster, and how the synoptic tree is made
+
+**§ *Succession and regnal numbers* closed.** The roster is built and comprehensive — 221 rows,
+all 132 Samaritan positions, Izumo 53, Senge 22, Kitajima 14 — and the Geni ids are filled as far
+as verification allows: Kitajima 14/14, Senge 20/22, Izumo 37/53, Samaritan 94/132. The emission
+half is queued at the tail as § *Model the succession CSV into statements*, so keeping this open
+would duplicate it.
+
+**§ *How the synoptic tree is actually made* closed** → `docs/synoptic-correspondence.md`, written
+by running the thing rather than reading it. Her framing was explicit that nothing waits on this:
+*"I'm going to treat the synoptic tree as though it is perfect."*
+
+    565,348 distinct (qid, geni) pairs · 561,999 QIDs · 564,931 Geni profiles
+      3,225 QIDs with more than one Geni id  — ordinary, P2600 is multi-valued
+        410 Geni profiles with more than one QID — contradictions, hers
+
+**Two of the eight sources are 99.9% of the volume and they are different in kind**: `P2600`
+518,941 pairs, which is Wikidata asserting the identifier, against `zipper` 45,898, which is our
+own positional inference. Anything that reads this file without reading the `sources` column
+treats an inference as an identifier.
+
+**The long tail is not noise** — 944 pairs across five hand-built sources, most from her own work,
+and `geni-about-me` (405) is the only one that names people no inference reaches.
+
+**Four things it does that nobody chose**, which is what the item asked for:
+
+- `Onakatomi` is excluded, correctly — 0 of its 97 QIDs has an About Me link — but the reason
+  lives only in a source-list comment, so it will stay excluded silently after those links exist.
+- The multi-valued cell split is **per-source**: three rosters read `geni_ids` and the rest read
+  `geni_id`, so four places must agree about a separator. That is the shape of the ` | ` bug.
+- The 410 conflicts are recorded and nothing downstream is required to read them.
+- No source is weighted; a round-8 zipper pair and a `P2600` pair are the same row.
+
+**And `ROUND_CAP = 8` is worth knowing about**, because it was 3. The date-based error curve that
+justified 3 rose 3.9% → 27.1% and was a **coverage artefact** — the share of pairs with a birth
+year on both sides falls 65% → 20% with depth, so the curve tracked the instrument. Measured on
+`P21` *sex or gender*, 86–100% coverage throughout, the real rise is 2.8% → 4.8%.
