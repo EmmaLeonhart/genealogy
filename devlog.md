@@ -24810,3 +24810,26 @@ differs (`Årsvoll` against `Tormodsdatter`), because the two builders pick unde
 Running both files creates those two name items twice. The day file is self-contained by her rule,
 and `CLAUDE.md` already records that the separate name-item pipeline *"was never run"* — so the day
 file is the one to run, and the names file is the legacy half.
+
+## 2026-09-01 — dead-queue sweep, fifth pass: nothing dead
+
+**25 sections before, 25 after.** Every candidate was checked against the code or the clock and
+every one is genuinely open:
+
+- § *The placeholder batch emits `ja` and `zh` and NO `ko`* — grepped again: **0** occurrences of
+  `ko` in `build-placeholder-label-batch.py` and none in its output. Still the largest label
+  producer in the repo and still emitting no Korean.
+- § *Labels in seven languages* — its live remainder, *"the 1,539 outside the placeholder
+  population, 935 of them CJK-named"*, is untouched. Nothing in `devlog.md` closes it.
+- § *Keep `reports/merges-to-do.md` current* — **due, not done**: the file is 09:20 and the ledger
+  it reads is 14:19. A standing regeneration whose input has moved is a step, not a finished item.
+- The specifications stay by the rule: THE DAILY ALGORITHM, THE EDIT ALGORITHM, THE TAIL ALGORITHM,
+  Link reliability order, The chain of provenance, STANDING PROCEDURE, Pointers, Always last.
+
+**One heading cut back rather than deleted.** § *FOR 2026-09-02 — the two removals, and one
+question I would not answer alone* no longer describes itself: the spine removal moved to the tail
+as her true last item, so one removal is elsewhere and the other never was one. It is now
+§ *The `NEVER_TOUCH` lists — one question only she can answer*, which is what the surviving content
+is — whether those lists come out entirely and her item becomes editable like any other, or stay as
+the mechanism keeping her out of the traversable graph. A heading that promises two things the
+section does not contain is the same readability failure as annotating a finished item.

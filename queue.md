@@ -91,9 +91,7 @@ So three things, and none of them touches a person's data:
 **The repo is public as of 2026-09-01** — *"The repo is public now lol"* — so Actions minutes are
 free and `CLAUDE.md` § *Cost* no longer binds.
 
-## FOR 2026-09-02 — the two removals, and one question I would not answer alone
-
-### The `NEVER_TOUCH` lists — NOT removed, and here is why
+## The `NEVER_TOUCH` lists — one question only she can answer
 
 Her anonymisation instruction includes *removing code that treats my item as special*, and
 `NEVER_TOUCH_GENI` / `NEVER_TOUCH_QID` in `scripts/build-garborg-day.py` are exactly that. **They
