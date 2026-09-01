@@ -24778,3 +24778,35 @@ one entry point and not the other.
 
 **No cap, her call.** The 60-card limit was the other half of the same failure: she did 207 in a
 sitting, `localStorage` keeps her place, and a cap silently hides work.
+
+## 2026-09-01 — the 13:40 generation, second attempt, and the spine is CLOSED
+
+**First attempt died at step 0d** and took the transliteration table with it — see the commit
+`36bcbcc7` and § *SORTING MUST BE DETERMINISTIC* for the whole story. Nothing was attached from
+that run.
+
+**Second attempt, clean.** Ledger refreshed from her contributions: **1,096 → 1,158 rows**.
+Order as specified — 0a ledger, 0b live values, 0c model-vs-reality, 0d token funnel, then
+**individuals → names → relationships**, relationships being the second section of the day file
+because two items created in the same run cannot point at each other.
+
+    reports/wikidata-garborg-day.qs         21 creations, 25 links
+    reports/wikidata-garborg-name-items.qs   3 name items (cap 3, 327 carried)
+    reports/garborg-carry-forward.tsv       1,176 carried to a later day
+
+**`spine arne-garborg-to-johannes-bureus-geni: every step already has an item.`** The batch she
+ran this afternoon created Sara Carlberg, the last of the 18. The spine is complete, which is the
+precondition the 2026-09-02 removal item asks to check before deleting the spine machinery.
+
+**Checks before attaching, and one failed.** `grep -c Aen` is **0** in both files. The `CREATE`
+count did **not** match: 24 in the day file against 21 reported. It is not a fault — the day file
+carries 21 people plus the **3 name items prepended** under her 2026-08-30 rule *one batch file,
+names first*. But comparing a whole-file `CREATE` count to a people-only figure will "fail" every
+run, so the check as written is measuring two different things.
+
+**What the mismatch did surface is real: the two files OVERLAP.** `Gunnarson` and `Låge-Håland`
+are created in *both* `wikidata-garborg-day.qs` and `wikidata-garborg-name-items.qs`; the third
+differs (`Årsvoll` against `Tormodsdatter`), because the two builders pick under separate caps.
+Running both files creates those two name items twice. The day file is self-contained by her rule,
+and `CLAUDE.md` already records that the separate name-item pipeline *"was never run"* — so the day
+file is the one to run, and the names file is the legacy half.
