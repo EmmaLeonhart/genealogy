@@ -105,29 +105,6 @@ resolved statements rather than steps, and are removed 2026-08-30.
 This item is the **standing daily process**, not a step to finish: one batch a day, for as long
 as the programme runs.
 
-## RUN ORDER — Emma's call, 2026-08-15
-
-**Imports first, labels last.** She asked why the seven-language labels were in
-progress, and the numbers back her: the target moved **7,851 → 11,001 placeholders
-and 26,281 → 35,011 label edits in one day**, from four exports plus a merge
-correction. Item 7 exists to find *more* exports to take, so labelling now means
-hand-romanising a set that grows by a third each time.
-
-Her `ja`/`zh` rule is a **gate on editing** — nothing reaches Wikidata unlabelled —
-not a claim that labels come first in build order. That ordering was mine.
-
-    7 · sparse Geni clusters   →  the tree grows
-    8 · Wikidata re-import     →  the store fills, and name items arrive
-    ---- tree and store settle ----
-    2 · name items             →  needs item 8: the competing QIDs are not held
-    1 · seven-language labels  →  built once, over a stable set
-    ---- the gate opens ----
-        Wikidata editing
-
-Items 3, 5 and 6 are independent of this chain and can run at any point.
-
----
-
 ## THE EDIT ALGORITHM — her specification, recorded verbatim in substance
 
 **She raised this because she was worried it had been altered:** *"I don't think I
@@ -451,10 +428,6 @@ cache chain `CLAUDE.md` warns about.
 - Abstract backlog: `todo.md` · Completed work: `devlog.md` · History: `git log`
 - Open questions for Emma: `questions.md`
 - The pre-wipe queue, 1,396 lines: `git show 4127170:queue.md`
-
-## Fix the surnames of the tier-2 placeholders before the synoptic tree is built
-
-- Emma does the Geni edits herself; do not touch the profiles. `reports/farmname-seed-fixes.md` is the worklist -- 11 placeholders carrying `father of X` whose child has a real surname. Farm names are surnames (2026-08-18), so those were mis-tiered.
 
 ## Connect Emma and Arne Garborg to Bergitte Aukland, and Bergitte to Charlemagne
 

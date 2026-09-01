@@ -22984,3 +22984,43 @@ stalled.
 
 The top of the queue is now § *Keep `reports/merges-to-do.md` current*, then the DAILY ALGORITHM
 specification, then § *The daily Garborg batch*.
+
+## 2026-08-31 — the ja/zh gate enforced, and the token funnel finally wired
+
+**Her ruling, put to her item by item as she asked:** the seven-language rule is *"still a gate,
+and the daily batch is violating it."* It was, and in a way that made the carry-forward lie: the
+builder recorded *"no transliteration for every token"* against a person **and emitted their
+`CREATE` anyway**. So the debt was logged and the person was created without CJK labels
+regardless. Abandoning the block with `del lines[block_start:]` is what the carry always claimed
+to be doing. That is `queue.md` § *ABSOLUTE PREREQUISITE*, moved from "later" to now by her
+ruling.
+
+Enforced, the gate refused **7 of 27** creations. Then she named the actual cause:
+
+> *"we have all the data to do everything properly cjk represented but just don't do it because
+> somehow the tokenization thing was still never taken seriously despite me keeping telling you
+> to do it."*
+
+**She is right and the ten tokens prove it.** Every person the gate refused was refused over one
+of `Bratterud`, `Carlberg`, `Djurberg`, `Makeléer`, `Norrström`, `Polviander`, `Posse`, `Säby`,
+`Westerling`, `Wærn` — and `translit_no.translit` renders **all ten** on demand
+(`ブラテルド`, `ノルストロム`, `ポセ`, `セビ`, `ヴェルン`). The engine has been there since
+2026-08-25 and `extend-transliterations.py` after it; nothing in the pipeline ever called them, so
+the table grew only when somebody remembered.
+
+**So the funnel is now a step of the run**, `STEP 0d`, before anything composes — which is her
+2026-08-29 design read literally: *"If anything even remotely wants to generate without having
+katakana or Chinese characters, it goes through this thing and then adds the token to the library,
+and then continues on."* Table 4,022 → 4,054 tokens.
+
+**Result: the gate holds and refuses nobody.** 27 creations, **0 lacking `ja` or `zh`**, 0 `Aen`.
+Before the funnel it was 20 creations with 7 refused; after, 27 with none.
+
+**Two sections deleted on her instruction**, both put to her as questions first:
+
+- § *RUN ORDER* — superseded. Its premise was the tree growing by a third per batch of exports,
+  and the daily Garborg batch is what actually runs now without consulting it.
+- § *Fix the surnames of the tier-2 placeholders* — 11 profiles, needs her hands on Geni, nothing
+  downstream waiting. `reports/farmname-seed-fixes.md` stays in the repo.
+
+§ *STANDING PROCEDURE* she asked to run again; the transcript extract and audit are running.

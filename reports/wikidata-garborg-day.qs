@@ -4,38 +4,38 @@
 #   batch and be limited to a count of 15 labels added per batch". A label set
 #   at CREATION time is neither counted nor capped -- "a label added during item
 #   creation is good".
-#   882 more are held for a later run; a repeat is a no-op, so nothing is lost.
+#   914 more are held for a later run; a repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
-#   Q116775360 Helena Mariana Sparre af Söfdeborg: set the mul label to "Baroness Mariana Helena Ehrenkrona"
-Q116775360	Lmul	"Baroness Mariana Helena Ehrenkrona"
-#   add a mul alias "Helena Mariana Ehrenkrona"
-Q116775360	Amul	"Helena Mariana Ehrenkrona"
-#   add a mul alias "Anna Elisabet Charlotta Andersdotter Hedenberg"
-Q141244082	Amul	"Anna Elisabet Charlotta Andersdotter Hedenberg"
-#   Q43974 Louis I, The Pious: set the mul label to "Louis the Pious"
-Q43974	Lmul	"Louis the Pious"
-#   add a mul alias "Louis I, The Pious"
-Q43974	Amul	"Louis I, The Pious"
-#   Q110313452 Carl Hising: add a mul alias "Carl Hising"
-Q110313452	Amul	"Carl Hising"
-#   Q378177 Baldwin IV the Bearded, count of Flanders: set the mul label to "Baldwin IV"
-Q378177	Lmul	"Baldwin IV"
-#   add a mul alias "Baldwin IV the Bearded, count of Flanders"
-Q378177	Amul	"Baldwin IV the Bearded, count of Flanders"
-#   set the ja label to "ボールドウィン・イヴ"
-Q378177	Lja	"ボールドウィン・イヴ"
-#   set the zh label to "鲍德温·伊夫"
-Q378177	Lzh	"鲍德温·伊夫"
-#   Q2066886 Hedvig Catharina Charlotta De la Gardie: set the mul label to "Hedvig Catharina von Fersen"
-Q2066886	Lmul	"Hedvig Catharina von Fersen"
-#   add a mul alias "Hedvig Catharina Charlotta De la Gardie"
-Q2066886	Amul	"Hedvig Catharina Charlotta De la Gardie"
-#   set the ja label to "ヘドヴィグ・カタリーナ・ヴォン・フェルセン"
-Q2066886	Lja	"ヘドヴィグ・カタリーナ・ヴォン・フェルセン"
-#   set the zh label to "海德维格·卡塔里娜·翁·费尔森"
-Q2066886	Lzh	"海德维格·卡塔里娜·翁·费尔森"
-#   Q75291928 Åsulv Skulesson: set the mul label to "Asulf Skulesson"
-Q75291928	Lmul	"Asulf Skulesson"
+#   Q109829800: set the zh label
+Q109829800	Lzh	"伊娃·海伦娜·阿德尔斯韦尔德"
+#   Q141223428 Lovisa Catharina Polviander: set the ja label to "ロヴィサ・カタリーナ・ポルヴィアンデル"
+Q141223428	Lja	"ロヴィサ・カタリーナ・ポルヴィアンデル"
+#   set the zh label to "洛维萨·卡塔里娜·波尔维安德尔"
+Q141223428	Lzh	"洛维萨·卡塔里娜·波尔维安德尔"
+#   Q141244109 Maria Carlberg: set the ja label to "マリア・カルルベルグ"
+Q141244109	Lja	"マリア・カルルベルグ"
+#   set the zh label to "玛丽亚·卡尔尔贝尔格"
+Q141244109	Lzh	"玛丽亚·卡尔尔贝尔格"
+#   set the ja label to "ヘンリク・ヨハン・ナウクホフ"
+Q6003542	Lja	"ヘンリク・ヨハン・ナウクホフ"
+#   set the zh label to "亨里克·约翰·纳乌克霍夫"
+Q6003542	Lzh	"亨里克·约翰·纳乌克霍夫"
+#   set the ja label to "ニルス・ロセンブラド"
+Q6079648	Lja	"ニルス・ロセンブラド"
+#   set the zh label to "尼尔斯·罗森布拉德"
+Q6079648	Lzh	"尼尔斯·罗森布拉德"
+#   set the ja label to "ヨハン・ヴォン・ハーマンソン"
+Q5802518	Lja	"ヨハン・ヴォン・ハーマンソン"
+#   set the zh label to "约翰·翁·赫尔曼松"
+Q5802518	Lzh	"约翰·翁·赫尔曼松"
+#   set the ja label to "ウルリカ・カタリーナ・コスクル"
+Q109296043	Lja	"ウルリカ・カタリーナ・コスクル"
+#   set the zh label to "乌尔里卡·卡塔里娜·科斯库尔"
+Q109296043	Lzh	"乌尔里卡·卡塔里娜·科斯库尔"
+#   set the ja label to "フレドリク・アウグスト・アデルスヴェルド"
+Q19975889	Lja	"フレドリク・アウグスト・アデルスヴェルド"
+#   set the zh label to "弗雷德里克·奥古斯特·阿德尔斯韦尔德"
+Q19975889	Lzh	"弗雷德里克·奥古斯特·阿德尔斯韦尔德"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
@@ -241,6 +241,10 @@ CREATE
 LAST	Len	"Carl Åke Posse af Säby"
 #   set the mul label to "Carl Åke Posse af Säby"
 LAST	Lmul	"Carl Åke Posse af Säby"
+#   set the ja label to "カール・オーケ・ポセ・アフ・セビ"
+LAST	Lja	"カール・オーケ・ポセ・アフ・セビ"
+#   set the zh label to "卡尔·奥克·波塞·阿夫·塞比"
+LAST	Lzh	"卡尔·奥克·波塞·阿夫·塞比"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
@@ -293,6 +297,10 @@ LAST	Len	"Dordi Marie Bratterud"
 LAST	Lmul	"Dordi Marie Bratterud"
 #   add a mul alias "Dordi Marie Tverdahl"
 LAST	Amul	"Dordi Marie Tverdahl"
+#   set the ja label to "ドルディ・マリー・ブラテルド"
+LAST	Lja	"ドルディ・マリー・ブラテルド"
+#   set the zh label to "多尔迪·玛丽·布拉特鲁德"
+LAST	Lzh	"多尔迪·玛丽·布拉特鲁德"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -417,6 +425,10 @@ CREATE
 LAST	Len	"Helena Norrström"
 #   set the mul label to "Helena Norrström"
 LAST	Lmul	"Helena Norrström"
+#   set the ja label to "ヘレナ・ノルストロム"
+LAST	Lja	"ヘレナ・ノルストロム"
+#   set the zh label to "海伦娜·诺尔斯特罗姆"
+LAST	Lzh	"海伦娜·诺尔斯特罗姆"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -475,6 +487,10 @@ CREATE
 LAST	Len	"Justina Margareta Djurberg"
 #   set the mul label to "Justina Margareta Djurberg"
 LAST	Lmul	"Justina Margareta Djurberg"
+#   set the ja label to "ジャスティナ・マルガレータ・ドユルベルグ"
+LAST	Lja	"ジャスティナ・マルガレータ・ドユルベルグ"
+#   set the zh label to "尤斯蒂纳·瑪格麗塔·德尤尔贝尔格"
+LAST	Lzh	"尤斯蒂纳·瑪格麗塔·德尤尔贝尔格"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -537,6 +553,10 @@ CREATE
 LAST	Len	"Karl Nilsson Polviander"
 #   set the mul label to "Karl Nilsson Polviander"
 LAST	Lmul	"Karl Nilsson Polviander"
+#   set the ja label to "カール・ニルソン・ポルヴィアンデル"
+LAST	Lja	"カール・ニルソン・ポルヴィアンデル"
+#   set the zh label to "卡尔·尼尔松·波尔维安德尔"
+LAST	Lzh	"卡尔·尼尔松·波尔维安德尔"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581097 male
@@ -622,6 +642,10 @@ LAST	Len	"Margareta Katarina Polviander"
 LAST	Lmul	"Margareta Katarina Polviander"
 #   add a mul alias "Margareta Katarina Alanus"
 LAST	Amul	"Margareta Katarina Alanus"
+#   set the ja label to "マルガレータ・カタリーナ・ポルヴィアンデル"
+LAST	Lja	"マルガレータ・カタリーナ・ポルヴィアンデル"
+#   set the zh label to "瑪格麗塔·卡塔里纳·波尔维安德尔"
+LAST	Lzh	"瑪格麗塔·卡塔里纳·波尔维安德尔"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female
@@ -647,6 +671,10 @@ CREATE
 LAST	Len	"Maria Elisabet Wærn"
 #   set the mul label to "Maria Elisabet Wærn"
 LAST	Lmul	"Maria Elisabet Wærn"
+#   set the ja label to "マリア・エリーザベト・ヴェルン"
+LAST	Lja	"マリア・エリーザベト・ヴェルン"
+#   set the zh label to "玛丽亚·伊丽莎白·韦尔恩"
+LAST	Lzh	"玛丽亚·伊丽莎白·韦尔恩"
 #   P31 instance of = Q5 human
 LAST	P31	Q5
 #   P21 sex or gender = Q6581072 female

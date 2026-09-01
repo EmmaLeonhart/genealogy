@@ -5595,7 +5595,21 @@ def main():
                     lines.append(f'LAST\tAja\t"{qs(birth)}"')
                     lines.append(f'LAST\tAzh\t"{qs(birth)}"')
             else:
-                carried.append((g, label, "no transliteration for every token"))
+                # **THE GATE: no `ja`/`zh`, no creation.** Emma, 2026-08-31, asked whether the
+                # seven-language rule is still real given the daily batch creates people every
+                # day: *"Still a gate, and the daily batch is violating it."*
+                #
+                # It was. This carried the person forward AND emitted the `CREATE` anyway, so
+                # the carry-forward recorded a debt that was never owed while the person was
+                # made without their CJK labels regardless. Abandoning the block is what the
+                # carry always claimed to be doing.
+                #
+                # `queue.md` § *ABSOLUTE PREREQUISITE* is her earlier statement of the same rule
+                # -- *"an absolute prerequisite for the creation of any individual: that we have
+                # their CJK labels"* -- filed for later. Her ruling today moves it to now.
+                carried.append((g, label, "GATE: no ja/zh label, so not created"))
+                del lines[block_start:]
+                continue
         lines.append(f"LAST\tP31\t{HUMAN}")
         if f["sex"] in SEX:
             lines.append(f"LAST\tP21\t{SEX[f['sex']]}")

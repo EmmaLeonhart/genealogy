@@ -182,6 +182,29 @@ def main():
     print(diff_summary(run("model-vs-reality.py",
                            ["--refetch"] if args.refresh_ledger else [])))
 
+    # ---- THE TOKEN FUNNEL, before anything is composed ---------------------------------
+    #
+    # **Emma, 2026-08-31:** *"we have all the data to do everything properly cjk represented
+    # but just don't do it because somehow the tokenization thing was still never taken
+    # seriously despite me keeping telling you to do it."* Today's ja/zh gate is what made it
+    # undeniable: 10 people refused creation over ten tokens -- Bratterud, Carlberg,
+    # Norrstroem, Posse, Saeby, Waern -- every one of which translit_no.translit renders on
+    # demand.
+    #
+    # Her design, 2026-08-29: *"If anything even remotely wants to generate without having
+    # katakana or Chinese characters, it goes through this thing and then adds the token to
+    # the library, and then continues on."* The pieces existed and nothing called them --
+    # translit_no.py since 08-25, extend-transliterations.py after it -- so the table grew only
+    # when somebody remembered. Running it here is what makes it a funnel.
+    #
+    # Her standard for what it may emit: *"Incorrect romanization or incorrect representations
+    # in katakana are totally acceptable. An incorrect name is not."*
+    print("")
+    print("STEP 0d token funnel  (extend-transliterations.py)")
+    for line in run("extend-transliterations.py", []).splitlines():
+        if line.strip().startswith(("wrote", "added", "table")):
+            print("        " + line.strip())
+
     for pos, what, script, extra, output in STEPS:
         if script is None:
             print(f"\nSTEP {pos}  {what}: written by step 1 into {output}, as its second "
