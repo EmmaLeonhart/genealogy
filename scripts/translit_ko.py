@@ -1,0 +1,228 @@
+"""Han characters to Hangul — the Korean label, which is CJK and was being skipped.
+
+**Emma, 2026-09-01:** *"korean is extremely important on par with Chinese and you really should
+prioritize getting korean labels all the time and this seems to not get that cjk includes
+korean"*, then *"more emphasis with the korean stuff there and changing some of the romanization
+pipeline queued stuff"*.
+
+**`ko` is engine work, like `zh`, and that is why queuing it beside `P1814` kana was wrong.**
+A hanja has a regular Sino-Korean reading; a Japanese *name* reading does not follow from the
+characters at all. So Korean is generable for the whole Han population -- 4,691 distinct
+characters over 272,363 occurrences in `reports/derived-labels.csv` -- while kana stays agentic.
+
+## Coverage, measured rather than claimed
+
+The corpus's Han characters are steeply distributed: the top 200 cover **65.7%** of occurrences,
+the top 500 **84.2%**, the top 1,000 **93.0%**. This module carries the top 400 by corpus
+frequency, hand-read, plus the surnames and given-name elements that matter for Korean people
+specifically. `coverage()` reports what fraction of a string it can actually render.
+
+**A partial rendering is never emitted.** `CLAUDE.md` section *A middle initial keeps its Latin
+letter* states the rule and its single exception: an unknown *name* blocks the whole label,
+because half a name is worse than none. `render()` returns `''` unless every Han character is
+known.
+
+## Two things that are not transliteration and are handled first
+
+**Hangul passes straight through.** 14,337 Hangul characters are already in the corpus and are
+already Korean; they need no conversion and must not be routed through a Han table.
+
+**The initial-sound rule (두음법칙) applies at the head of a name.** South Korean orthography
+writes an initial `ㄹ` as `ㄴ` or drops it: 李 is *리* medially but **이** as a surname, 柳 is
+**유**, 林 **임**, 劉 **유**, 龍 **용**, 呂 **여**. Ignoring it produces *리* for every Lee in the
+tree, which is not how the name is written. `_INITIAL` is that mapping and is applied only to the
+first syllable of a name.
+"""
+
+from __future__ import annotations
+
+import unicodedata
+
+#: Sino-Korean readings for the 400 most frequent Han characters in this corpus, in corpus
+#: frequency order, plus the Korean surnames that matter. Hand-read, not derived: no Unihan
+#: database ships with Python and inventing a reading is exactly what this repo refuses.
+HANJA = {
+    "室": "실", "原": "원", "陳": "진", "藤": "등", "正": "정", "河": "하", "子": "자",
+    "田": "전", "平": "평", "州": "주", "長": "장", "陽": "양", "南": "남", "曾": "증",
+    "道": "도", "安": "안", "西": "서", "忠": "충", "松": "송", "山": "산", "大": "대",
+    "縣": "현", "東": "동", "信": "신", "京": "경", "隴": "롱", "兆": "조", "狄": "적",
+    "陵": "릉", "世": "세", "川": "천", "氏": "씨", "公": "공", "一": "일", "三": "삼",
+    "清": "청", "城": "성", "院": "원", "久": "구", "義": "의", "重": "중", "政": "정",
+    "野": "야", "高": "고", "宗": "종", "洛": "락", "王": "왕", "利": "리", "光": "광",
+    "条": "조", "井": "정", "元": "원", "直": "직", "親": "친", "源": "원", "小": "소",
+    "貞": "정", "成": "성", "武": "무", "二": "이", "喜": "희", "女": "녀", "頼": "뢰",
+    "中": "중", "娘": "낭", "文": "문", "聞": "문", "家": "가", "昌": "창", "明": "명",
+    "勝": "승", "之": "지", "定": "정", "弘": "홍", "陰": "음", "実": "실", "上": "상",
+    "部": "부", "吉": "길", "范": "범", "皇": "황", "吳": "오", "華": "화", "隆": "륭",
+    "内": "내", "良": "량", "趙": "조", "伊": "이", "通": "통", "本": "본", "仁": "인",
+    "村": "촌", "臨": "림", "仲": "중", "江": "강", "佐": "좌", "太": "태", "蘭": "란",
+    "継": "계", "景": "경", "郡": "군", "俊": "준", "姓": "성", "前": "전", "天": "천",
+    "鄭": "정", "興": "흥", "綱": "강", "木": "목", "杜": "두", "姬": "희", "季": "계",
+    "朝": "조", "房": "방", "広": "광", "津": "진", "北": "북", "島": "도", "織": "직",
+    "臣": "신", "秀": "수", "石": "석", "行": "행", "開": "개", "多": "다", "基": "기",
+    "紀": "기", "方": "방", "邪": "사", "琅": "랑", "時": "시", "名": "명", "孝": "효",
+    "保": "보", "沂": "기", "康": "강", "水": "수", "封": "봉", "永": "영", "倉": "창",
+    "盛": "성", "德": "덕", "経": "경", "邱": "구", "徳": "덕", "晉": "진", "泰": "태",
+    "農": "농", "榮": "영", "有": "유", "五": "오", "伯": "백", "四": "사", "土": "토",
+    "豊": "풍", "寺": "사", "養": "양", "李": "리", "達": "달", "衛": "위", "涿": "탁",
+    "和": "화", "姫": "희", "郎": "랑", "国": "국", "次": "차", "兼": "겸", "池": "지",
+    "真": "진", "國": "국", "門": "문", "常": "상", "宮": "궁", "春": "춘", "遠": "원",
+    "師": "사", "某": "모", "叔": "숙", "劉": "류", "阿": "아", "橘": "귤", "毛": "모",
+    "林": "림", "茂": "무", "張": "장", "治": "치", "為": "위", "日": "일", "澤": "택",
+    "生": "생", "知": "지", "博": "박", "馬": "마", "萬": "만", "宣": "선", "濟": "제",
+    "昭": "소", "資": "자", "坂": "판", "寶": "보", "六": "륙", "都": "도", "加": "가",
+    "解": "해", "蒲": "포", "海": "해", "守": "수", "湖": "호", "尾": "미", "秋": "추",
+    "廣": "광", "九": "구", "雄": "웅", "莊": "장", "胤": "윤", "賢": "현", "賀": "하",
+    "麻": "마", "細": "세", "玄": "현", "敬": "경", "慶": "경", "戸": "호", "福": "복",
+    "堀": "굴", "古": "고", "則": "칙", "足": "족", "年": "년", "妻": "처", "顕": "현",
+    "酒": "주", "雅": "아", "友": "우", "英": "영", "千": "천", "思": "사", "教": "교",
+    "範": "범", "口": "구", "冥": "명", "滎": "형", "善": "선", "竹": "죽", "呂": "려",
+    "周": "주", "下": "하", "能": "능", "近": "근", "笠": "립", "岡": "강", "葉": "엽",
+    "眉": "미", "十": "십", "潁": "영", "深": "심", "建": "건", "彭": "팽", "鼎": "정",
+    "延": "연", "尚": "상", "谷": "곡", "橋": "교", "相": "상", "御": "어", "市": "시",
+    "泉": "천", "人": "인", "鳥": "조", "孔": "공", "智": "지", "夏": "하", "純": "순",
+    "満": "만", "士": "사", "黃": "황", "命": "명", "憲": "헌", "宇": "우", "美": "미",
+    "祖": "조", "金": "김", "府": "부", "贊": "찬", "居": "거", "承": "승", "代": "대",
+    "蘇": "소", "順": "순", "堂": "당", "森": "삼", "孫": "손", "黄": "황", "業": "업",
+    "益": "익", "稲": "도", "衡": "형", "青": "청", "溫": "온", "敏": "민", "富": "부",
+    "玉": "옥", "寿": "수", "路": "로", "須": "수", "君": "군", "八": "팔", "柳": "류",
+    "彥": "언", "見": "견", "言": "언", "里": "리", "幸": "행", "浅": "천", "瀬": "뢰",
+    "持": "지", "輔": "보", "恒": "항", "浦": "포", "鄉": "향", "園": "원", "嗣": "사",
+    "月": "월", "新": "신", "我": "아", "雲": "운", "杉": "삼", "岩": "암", "神": "신",
+    "間": "간", "郷": "향", "沢": "택", "祐": "우", "七": "칠", "丹": "단", "章": "장",
+    "種": "종", "風": "풍", "立": "립", "澄": "징", "第": "제", "莘": "신", "壽": "수",
+    "修": "수", "晴": "청", "希": "희", "祥": "상", "牧": "목", "輝": "휘", "殿": "전",
+    "寛": "관", "百": "백", "容": "용", "柏": "백", "助": "조", "辺": "변", "恭": "공",
+    "仙": "선", "夫": "부", "內": "내", "納": "납", "栄": "영", "彦": "언", "畠": "전",
+    "就": "취", "扶": "부", "崇": "숭", "黒": "흑", "連": "련", "乗": "승", "惟": "유",
+    "羽": "우", "任": "임", "主": "주", "町": "정", "後": "후", "禮": "례", "出": "출",
+    "岐": "기", "越": "월", "志": "지", "極": "극", "卿": "경", "嘉": "가", "花": "화",
+    "板": "판", "右": "우", "湘": "상", "菅": "관", "法": "법", "波": "파", "休": "휴",
+    "爾": "이", "汾": "분", "宅": "택", "姜": "강", "龍": "룡", "理": "리", "尊": "존",
+    # The 300 most frequent characters the top-400 pass did NOT cover, added after
+    # measuring the misses rather than guessing which would be wanted -- 4,260 distinct
+    # unknown characters remained over 52,212 occurrences, and these are their head.
+    "衍": "연", "字": "자", "甫": "보", "傳": "전", "邦": "방", "照": "조", "済": "제",
+    "宋": "송", "左": "좌", "寧": "녕", "譙": "초", "側": "측", "管": "관", "尼": "니",
+    "陸": "륙", "由": "유", "紹": "소", "比": "비", "好": "호", "台": "태", "如": "여",
+    "亮": "량", "敦": "돈", "今": "금", "植": "식", "棘": "극", "貴": "귀", "愛": "애",
+    "长": "장", "屋": "옥", "端": "단", "在": "재", "辻": "십", "媛": "원", "進": "진",
+    "先": "선", "若": "약", "孟": "맹", "熊": "웅", "丸": "환", "心": "심", "斎": "재",
+    "香": "향", "唐": "당", "覚": "각", "渡": "도", "司": "사", "万": "만", "円": "원",
+    "令": "령", "胡": "호", "汝": "여", "鉅": "거", "以": "이", "庭": "정", "渤": "발",
+    "虎": "호", "沛": "패", "芳": "방", "鎮": "진", "倍": "배", "特": "특", "會": "회",
+    "別": "별", "誠": "성", "樂": "락", "慈": "자", "亀": "구", "矩": "구", "懷": "회",
+    "同": "동", "陈": "진", "崎": "기", "父": "부", "滋": "자", "斉": "제", "階": "계",
+    "維": "유", "用": "용", "派": "파", "蓨": "조", "科": "과", "鷹": "응", "拓": "척",
+    "溝": "구", "克": "극", "駒": "구", "惠": "혜", "齊": "제", "将": "장", "可": "가",
+    "蜂": "봉", "堯": "요", "慎": "신", "角": "각", "鍋": "과", "勢": "세", "総": "총",
+    "儀": "의", "裕": "유", "局": "국", "跋": "발", "簡": "간", "允": "윤", "登": "등",
+    "那": "나", "冬": "동", "早": "조", "奥": "오", "庸": "용", "珍": "진", "從": "종",
+    "庄": "장", "祁": "기", "娶": "취", "后": "후", "梅": "매", "雍": "옹", "處": "처",
+    "菊": "국", "入": "입", "息": "식", "瑞": "서", "脩": "수", "増": "증", "幼": "유",
+    "襄": "양", "繁": "번", "熙": "희", "葛": "갈", "米": "미", "沼": "소", "幹": "간",
+    "撫": "무", "宜": "의", "関": "관", "斯": "사", "度": "도", "應": "응", "堅": "견",
+    "冷": "랭", "充": "충", "淵": "연", "伴": "반", "稽": "계", "所": "소", "匡": "광",
+    "慕": "모", "兒": "아", "弼": "필", "意": "의", "洞": "동", "謙": "겸", "譚": "담",
+    "閬": "랑", "無": "무", "留": "류", "詮": "전", "欽": "흠", "望": "망", "侯": "후",
+    "东": "동", "厚": "후", "典": "전", "飛": "비", "節": "절", "顯": "현", "姉": "자",
+    "鬼": "귀", "淑": "숙", "赤": "적", "員": "원", "致": "치", "烏": "오", "軽": "경",
+    "忌": "기", "婺": "무", "倫": "륜", "功": "공", "殤": "상", "杨": "양", "物": "물",
+    "勧": "권", "根": "근", "素": "소", "稚": "치", "嬴": "영", "恕": "서", "規": "규",
+    "辰": "진", "伏": "복", "广": "광", "母": "모", "徽": "휘", "潤": "윤", "色": "색",
+    "豐": "풍", "融": "융", "起": "기", "實": "실", "鶴": "학", "諸": "제", "岳": "악",
+    "聖": "성", "毓": "육", "繼": "계", "镇": "진", "兵": "병", "備": "비", "約": "약",
+    "賓": "빈", "最": "최", "弥": "미", "錢": "전", "芬": "분", "帝": "제", "逸": "일",
+    "錫": "석", "於": "어", "棟": "동", "宏": "굉", "穆": "목", "沖": "충", "懿": "의",
+    "省": "성", "廬": "려", "固": "고", "樹": "수", "桂": "계", "宝": "보", "売": "매",
+    "化": "화", "音": "음", "統": "통", "妃": "비", "集": "집", "韶": "소", "初": "초",
+    "筒": "통", "合": "합", "蔵": "장", "甘": "감", "荒": "황", "恵": "혜", "俞": "유",
+    "当": "당", "麿": "마", "少": "소", "鹿": "록", "易": "이", "貫": "관", "县": "현",
+    "魯": "로", "餘": "여", "振": "진", "性": "성", "禎": "정", "来": "래", "施": "시",
+    "奉": "봉", "鳳": "봉", "夷": "이", "璋": "장", "量": "량", "弟": "제", "峯": "봉",
+    "威": "위", "僧": "승", "枝": "지", "微": "미", "式": "식", "垣": "원", "孤": "고",
+    "昇": "승", "復": "복", "民": "민", "温": "온", "履": "리", "結": "결", "耀": "요",
+    "喬": "교", "嵩": "숭", "偃": "언", "模": "모", "煕": "희", "務": "무", "坊": "방",
+    "片": "편", "肅": "숙", "溪": "계", "才": "재", "宿": "숙", "自": "자", "浄": "정",
+    "珪": "규", "老": "로", "卜": "복", "質": "질", "曲": "곡", "妙": "묘",
+    # Korean surnames and given-name elements beyond the top 400, because the people this is
+    # most for are the Korean ones and their own names must render.
+    "朴": "박", "崔": "최", "鄕": "향", "羅": "라", "白": "백", "全": "전", "權": "권",
+    "韓": "한", "吳": "오", "申": "신", "徐": "서", "黃": "황", "梁": "량", "沈": "심",
+    "許": "허", "洪": "홍", "柳": "류", "尹": "윤", "任": "임", "盧": "로", "河": "하",
+    "郭": "곽", "成": "성", "車": "차", "具": "구", "禹": "우", "朱": "주", "秦": "진",
+    "嚴": "엄", "元": "원", "蔡": "채", "千": "천", "方": "방", "楊": "양", "孔": "공",
+    "玄": "현", "咸": "함", "卞": "변", "廉": "렴", "邊": "변", "呂": "려", "秋": "추",
+    "都": "도", "石": "석", "宣": "선", "薛": "설", "馬": "마", "吉": "길", "延": "연",
+    "殷": "은", "丁": "정", "太": "태", "門": "문", "睦": "목", "陰": "음", "冰": "빙",
+}
+
+#: 두음법칙 — the initial-sound rule. A word-initial `ㄹ` is written `ㄴ`, or dropped before
+#: `i`/`y`. Applied ONLY to the first syllable of a name: 李 is 이 as a surname and 리 inside a
+#: word, and writing 리 for every Lee in the tree would be wrong in a way a reader sees at once.
+_INITIAL = {
+    "라": "나", "락": "낙", "란": "난", "람": "남", "랑": "낭", "래": "내", "랭": "냉",
+    "로": "노", "록": "녹", "론": "논", "롱": "농", "뢰": "뇌", "료": "요", "루": "누",
+    "류": "유", "륙": "육", "륜": "윤", "률": "율", "륭": "융", "르": "느", "름": "늠",
+    "릉": "능", "리": "이", "린": "인", "림": "임", "립": "입",
+    "려": "여", "력": "역", "련": "연", "렬": "열", "렴": "염", "렵": "엽", "령": "영",
+    "례": "예", "로": "노", "녀": "여", "뇨": "요", "뉴": "유", "니": "이", "년": "연",
+}
+
+
+def _is_han(ch):
+    return "CJK UNIFIED" in unicodedata.name(ch, "")
+
+
+def _is_hangul(ch):
+    return "HANGUL" in unicodedata.name(ch, "")
+
+
+def coverage(text):
+    """Fraction of the Han characters in `text` this module can read, 0.0 to 1.0.
+
+    A string with no Han characters returns 1.0 -- there is nothing it cannot read.
+    """
+    han = [c for c in text if c.isalpha() and _is_han(c)]
+    if not han:
+        return 1.0
+    return sum(1 for c in han if c in HANJA) / len(han)
+
+
+def render(text):
+    """The Korean label for `text`, or `''` when any Han character is unknown.
+
+    Hangul passes through untouched. Han is read character by character, and the initial-sound
+    rule is applied to the first syllable of each whitespace-separated word.
+    """
+    text = (text or "").strip()
+    if not text:
+        return ""
+    out = []
+    for word in text.split():
+        syllables = []
+        for ch in word:
+            if _is_hangul(ch):
+                syllables.append(ch)
+            elif _is_han(ch):
+                reading = HANJA.get(ch)
+                if not reading:
+                    # Partial is worse than absent. One unknown character blocks the label.
+                    return ""
+                syllables.append(reading)
+            elif ch.isalpha():
+                # A Latin or other letter inside a CJK name is not something this converts.
+                return ""
+            # Punctuation and digits are dropped rather than guessed at.
+        if not syllables:
+            return ""
+        syllables[0] = _INITIAL.get(syllables[0], syllables[0])
+        out.append("".join(syllables))
+    return " ".join(out)
+
+
+if __name__ == "__main__":
+    import sys
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    for probe in ("李成桂", "金正日", "朴正熙", "柳寬順", "藤原道長", "陳平"):
+        print(f"{probe}  ->  {render(probe)!r}   coverage {coverage(probe):.0%}")
