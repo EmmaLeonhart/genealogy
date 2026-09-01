@@ -24421,3 +24421,27 @@ unreadable."* A queue heading should name what is outstanding, and what is outst
 decision of hers about 1,278,536 people, not the Korean work that is finished.
 
 Same treatment the SMTP section got an hour earlier, for the same reason.
+
+## 2026-09-01 — sweep: the rulings table trimmed to what is not done
+
+**No section deleted; one cut back.** § *HER RULINGS, 2026-09-01* carried a 20-row *"To do, in her
+words"* table, and **18 of the 20 are finished**. Left whole it reads as twenty outstanding jobs,
+which is exactly what Emma objected to on 2026-08-30 — a queue that keeps completed work as steps
+becomes unreadable. Her rulings themselves are untouched: the definitional ones (what
+anonymisation means, the deleted and moved lists, the export-loop finding) stay in full.
+
+**Each removed row was verified by artifact, not by memory** — `name-form-pairs.tsv`,
+`wikidata-regnal-ordinals.qs`, `script-sweep.md`, `cjk-clan-label-safety.tsv`,
+`label-change-census.md`, `live_name_items.py`, `agreeing-latin-labels.tsv`,
+`wikidata-placeholder-labels.json.gz` all present; `language_of` in the patronymic builder,
+`_nn_birth` in the day builder, `drop_marker_surname` wired into `derive-labels.py`; and the day
+batch is one file of 31 `CREATE` blocks with the name items first.
+
+**The two rows kept** are the ones still live: the `en` shortfall, which turned out to need in-law
+relation words she has never sanctioned and is therefore a decision rather than arithmetic; and
+`exports/post-merge/`, where the grading says 408 of 412 are real deletions and her standing
+ruling is to leave them and keep measuring.
+
+**Nothing else was dead.** The CI slow-lane item is mid-measurement — run `33524955243` has the
+instrumented job in flight — and the rest are specifications, standing procedures, her tail
+placements, or the three things waiting on her.

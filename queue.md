@@ -73,30 +73,21 @@ identifying parents and that works, siblings are just freely made and merged lol
 scalable zipper thing much later"* · the `synoptic tree` vocabulary split · **creating the
 fathers patronymics imply — *"postpone for a month lol"***.
 
-**To do, in her words:**
+**To do, in her words — the table was 20 rows and 18 are finished.** Each one's evidence is in
+`devlog.md` for 2026-09-01 and its artifact is on disk; they are removed here so the queue reads
+as outstanding work rather than as a record of a night. What is left of it:
 
-| item | her ruling |
-| --- | --- |
-| seven languages | wire `hi`/`ar`/`ru`/`el` **now**, and close the `en` shortfall |
-| **the `en` rule she gave** | *"if multiple Latin alphabet labels agree then it becomes the en label and the mul label"* |
-| labels in her order | **only the languages already wired** — `en`, `mul`, `ja`, `zh`, **`ko`** |
-| name items | **invert the default now** — *"I thought we reused name objects by default lol. The only hard situation is patronymics"* |
-| `Sara /NN/` and the `Garborg` override | do both; the override of her hand-edit is the serious one |
-| how many Geni labels need changing | run the census |
-| CJK | `ko` **DONE**. `P1814` kana has an **empty population** — no correctly-identified Japanese person has an item; see `reports/culture-classifier-check.md` |
-| NN birth-name alias | fix it |
-| unreadable transliteration tokens | read them agentically |
-| the 218 scripts | **sweep and delete** |
-| one batch file | **merge into one, names first** — absorbs *One pipeline, one output file* |
-| clan labels `Q45449130` | check them — *"I never actually ran them"* |
-| `exports/post-merge/` | do the stale-duplicate resolution |
-| the export loop | **the four retries are DONE and every path is connected** — see below |
-| the 179 ambiguous patronymics | **DONE** — https://claude.ai/code/artifact/fb4829e3-df7b-4db3-9ed1-9649bb97a0f5 · 64 names, 2,581 people |
-| `P407` on patronymic items | **add it by suffix convention** |
-| `Nils`/`Nicolaus` | build the form table |
-| succession CSV | model it |
-| `pykakasi`, `BET x AND y`, the 74 MB file | all three |
-| final act of the night | `scripts/rebuild-everything.py`, then attach the batch |
+| item | her ruling | where it stands |
+| --- | --- | --- |
+| seven languages | wire `hi`/`ar`/`ru`/`el` **now**, and close the `en` shortfall | `hi`/`ar`/`ru`/`el` **done**, 151,320 labels. The `en` shortfall turned out to need in-law relation words she has not sanctioned — a decision, not arithmetic |
+| `exports/post-merge/` | do the stale-duplicate resolution | graded: **408 of 412 are real deletions**. Her standing ruling of 2026-08-29 is to leave them and keep measuring |
+
+**Removed as done**, all verified by artifact rather than by memory: the `en` agreement rule ·
+labels in her order (`en`/`mul`/`ja`/`zh`/`ko`) · name items reused by default · `Sara /NN/` and
+the `Garborg` override · the label-change census · `ko` · the NN birth-name alias · the unreadable
+transliteration tokens · the 218-script sweep · one batch file, names first · the clan labels ·
+the export loop · the 179 ambiguous patronymics · `P407` by suffix · the `Nils`/`Nicolaus` form
+table · the succession CSV · `pykakasi`, `BET x AND y` and the 74 MB file · the final rebuild.
 
 ### The export loop: the four retries were already satisfied, and the chains are CLOSED
 
