@@ -117,8 +117,31 @@ jobs:
           python-version: "3.13"
       - run: pip install pytest
       - run: python scripts/pack-derived.py --unpack
+      # **A measurement, not a fix.** Four kills across two attempts, both modules, always
+      # `The runner has received a shutdown signal` with exit 143 -- at 25 to 91 minutes, well
+      # inside the 180-minute timeout, with no newer run to cancel them and no `push:` trigger,
+      # and both modules passing locally (23 in 35m44). Memory is SUSPECTED and not established,
+      # and `CLAUDE.md` says what is not understood gets measured rather than worked around.
+      #
+      # `/usr/bin/time -v` reports Maximum resident set size for the pytest process, and the
+      # sampler prints free memory every 30s so a climb toward the wall is visible even if the
+      # runner dies before `time` can report. If memory is not the wall, this shows that too.
+      - name: Memory before
+        run: free -m; df -h / | tail -1; nproc
+
       - name: ${{ matrix.module }}
         env:
           BOT_CONTACT: emma@topazcomputing.com
           PYTHONPATH: src
-        run: python -m pytest -m slow -q --durations=0 ${{ matrix.module }}
+        run: |
+          ( while true; do
+              echo "MEM $(date -u +%H:%M:%S) $(free -m | awk '/^Mem:/{print "used="$3"MB avail="$7"MB"}')"
+              sleep 30
+            done ) &
+          SAMPLER=$!
+          set +e
+          /usr/bin/time -v python -m pytest -m slow -q --durations=0 ${{ matrix.module }}
+          STATUS=$?
+          set -e
+          kill $SAMPLER 2>/dev/null || true
+          exit $STATUS
