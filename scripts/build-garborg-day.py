@@ -6289,7 +6289,20 @@ def main():
     # person created here cannot reference a name item created here. The ordering is therefore
     # correct rather than load-bearing, and the day after, the link lands.
     name_file = ROOT / "reports" / "wikidata-garborg-name-items.qs"
+    # **Her identifications go FIRST, before the name items.** Emma, 2026-09-01: *"the
+    # pipeline generates 10 quickstatements adding the geni id to the individuals at the
+    # beginning of each generation."* A `P2600` on an existing item needs nothing created, so
+    # it can lead; and putting it first means the ledger is truest at the moment the rest runs.
     head = []
+    man_lines, man_total, man_held = manual_p2600_lines()
+    if man_lines:
+        head += ["# " + "=" * 72,
+                 "# HER OWN IDENTIFICATIONS -- P2600 on items that do not carry it yet.",
+                 f"# {man_total} in reports/manual-identifications.csv, {man_held} already on "
+                 f"Wikidata, {MANUAL_P2600_PER_RUN} a run.",
+                 "# " + "=" * 72] + man_lines + [""]
+    print(f"manual identifications: {man_total} in the file, {man_held} already held, "
+          f"{len([l for l in man_lines if not l.startswith('#')])} emitted")
     try:
         subprocess.run([sys.executable, str(ROOT / "scripts" / "build-garborg-name-items.py")],
                        check=True, cwd=str(ROOT), capture_output=True)
