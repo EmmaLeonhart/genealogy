@@ -23787,3 +23787,35 @@ protection is now stated rather than incidental.
 running the suite.** The check I ran asked whether the QIDs *exist*. It never asked whether they
 are ones we may touch, and § *A guard that has not been seen to FAIL is not known to guard* is
 exactly this — the protection had never been tested because nothing had ever tried to violate it.
+
+## 2026-08-31 — the two mangled labels are a symptom; `derive-labels.py` never normalises
+
+The queue item asked to fold `Q141198538` (`nn Gunnarsdatter Frafjord`) and `Q141216494`
+(`N.N. Jacobsdtr. Koll`) into a label-correction batch. **The correction path cannot reach them**,
+and the reason is upstream: `_label_corrections` fires when our derived label differs from the
+live one, and our derived label **is** the mangled form. `reports/derived-labels.csv` holds
+exactly what Wikidata holds, so `want == have` and nothing is emitted. `strip_markers` produces
+the right answer — `nn Gunnarsdatter Frafjord` -> `NN Gunnarsdatter Frafjord` — and
+`derive-labels.py` never calls it.
+
+**Measured before proposing anything, because applying it is not a two-row fix.** Of 1,389,442
+people with a `mul` label, **102,284** would change:
+
+     94,231  redaction marker: Private -> NN, <private> -> NN
+      4,924  case or punctuation on NN itself
+      1,591  unknown -> NN
+        269  某 · 205 ukjent · 190 dødfødt · 114 stillborn · 85 dödfödd
+
+**The split is the finding.** The 4,924 are what the item wanted and are uncontroversial: `nn` and
+`N.N.` are the same marker spelled differently, and `CLAUDE.md` already says the marker is
+preserved and normalised. The **94,231** are a redaction decision, and two sections of `CLAUDE.md`
+can be read against each other on it — § *Redacted people go in* has `label_for()` empty `Private`
+and `<private>` and nothing else; § *`NN` is PRESERVED in `mul`* has `Private` and `NN` as one
+population getting the same treatment.
+
+She has corrected an attempt to settle that twice, once sharply: *"I didn't tell you to do that. I
+didn't tell you to avoid the NN people."* So the item now says to normalise the marker's own
+spelling and leave `Private`/`<private>` alone until she rules.
+
+Not fixed in this tick: the safe 6,515 and the 94,231 come out of the same call, so wiring
+`strip_markers` into `derive-labels.py` without a screen would make her decision for her.

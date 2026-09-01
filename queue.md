@@ -418,29 +418,35 @@ What to build:
 **Bureätten the export campaign stays closed** — 7 resolved, 76 dropped, 0 exports. This is a
 different thing: linking people already on both sides, not finding new ones.
 
-## LAST — two live items carry a marker the old `strip_markers` mangled
+## `derive-labels.py` does not apply `strip_markers`, and that is why the two items are stuck
 
-`scripts/labels.strip_markers` was rewritten twice on 2026-08-27 — first to **delete** an
-unknown-name marker, then to **preserve and normalise** it to `NN`. The preserving version is
-what shipped and is what the code says today: *"Normalise an unknown-name marker to `NN`.
-**Never delete it.**"* The batches on disk are clean — **0** `Lmul`/`Len` lines across every
-`reports/*.qs` start with a marker that is not already `NN`.
+**The item this replaces asked to fold `Q141198538` and `Q141216494` into a label-correction
+batch.** Traced 2026-08-31 and the correction path cannot reach them: `_label_corrections` fires
+when our derived label differs from the live one, and **our derived label is the mangled form**.
+`reports/derived-labels.csv` holds `nn Gunnarsdatter Frafjord` and `N.N. Jacobsdtr. Koll`, which
+is exactly what Wikidata holds, so there is nothing to correct. The two items are downstream
+symptoms of `derive-labels.py` never calling `strip_markers`.
 
-**Two items created before the fix still carry the old form**, from
-`reports/garborg-live-labels.tsv`:
+**Applying it is not a small fix — 102,284 labels change, and 94,231 of them are a REDACTION
+decision she has already corrected me on twice:**
 
-| item | `mul` |
-| --- | --- |
-| `Q141198538` | `nn Gunnarsdatter Frafjord` — her own case, confirmed live 2026-08-31 |
-| `Q141216494` | `N.N. Jacobsdtr. Koll` |
+    94,231  redaction marker: Private -> NN, <private> -> NN
+     4,924  case or punctuation on NN itself: nn, N.N., N.N -> NN
+     1,591  unknown -> NN
+       269  某 · 205 ukjent · 190 dødfødt · 114 stillborn · 85 dödfödd
 
-Both need the marker normalised to `NN`; neither is a deletion, since `CLAUDE.md` § *`NN` is
-PRESERVED in `mul`* keeps the marker and the surname. Fold them into the next label-correction
-batch rather than emitting one for two rows.
+**The 4,924 are uncontroversial and are what the original item wanted.** `nn` and `N.N.` are the
+same marker written differently, and `CLAUDE.md` § *`NN` is PRESERVED in `mul`* already says the
+marker stays and is normalised.
 
-**Beware the obvious false positive when re-checking this**: `nn` is also the language code for
-Norwegian Nynorsk. Scanning that file's columns indiscriminately reports **104** hits; scanning
-the `label` column reports **2**.
+**The 94,231 are hers.** § *Redacted people go in* says `label_for()` empties `Private` and
+`<private>` **and nothing else**; § *`NN` is PRESERVED* says `Private` and `NN` are one population
+that gets the same treatment. Those two readings disagree about what a redacted person's `mul`
+should say, and she has twice corrected an attempt to settle it — *"I didn't tell you to do that.
+I didn't tell you to avoid the NN people."*
+
+So: **normalise the marker's own spelling and leave the redaction question to her.** Do the 4,924
+and the 1,591; do not touch `Private` or `<private>` without asking.
 
 ## LAST — name items are being MERGED by other editors. Stop preferring creation over reuse
 
