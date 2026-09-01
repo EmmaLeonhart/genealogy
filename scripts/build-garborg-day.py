@@ -1644,7 +1644,11 @@ def wikidata_subgraph(roots=SUBGRAPH_ROOTS, universe=None):
                 if q not in universe:
                     continue
                 for col in ("p22", "p25", "p40", "p26"):
-                    for v in (row.get(col) or "").split("|"):
+                    # relations.tsv is semicolon-separated -- see build-parent-candidates.
+                    # Splitting on "|" here meant an item with two parents or two children
+                    # contributed one glued token that linked to nothing real, so the
+                    # subgraph this gates every creation on was missing those edges.
+                    for v in (row.get(col) or "").split(";"):
                         v = v.strip()
                         if v.startswith("Q"):
                             link(q, v)

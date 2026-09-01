@@ -58,6 +58,16 @@ h1{font:600 21px/1.2 "IBM Plex Sans",sans-serif;margin:0;letter-spacing:-.01em}
 .id{font:400 11.5px/1.4 "IBM Plex Mono",monospace;color:var(--muted);word-break:break-all}
 .id a{color:var(--accent);text-decoration:none}
 .id a:hover,.id a:focus-visible{text-decoration:underline}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:7px 0 2px}
+.chip{font:500 11.5px/1 "IBM Plex Mono",monospace;padding:4px 8px;border-radius:99px;
+  background:var(--raise);color:var(--muted);border:1px solid var(--line);white-space:nowrap}
+.chip b{color:var(--ink);font-weight:600}
+.chip.bad{background:var(--no-soft);border-color:transparent;color:var(--no)}
+.chip.bad b{color:var(--no)}
+.warn{padding:10px 20px;background:var(--no-soft);color:var(--no);font-size:13px;
+  border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:3px}
+.warn b{font-weight:600}
+@media (max-width:720px){.warn{padding:10px 16px}}
 .field{margin-top:14px}
 .flabel{font-size:11px;color:var(--muted);margin-bottom:4px}
 ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:3px}
@@ -154,6 +164,62 @@ function list(items, words) {
   return "<ul>" + items.map(function (x) { return "<li>" + hl(x, words) + "</li>"; }).join("") + "</ul>";
 }
 
+// Sex and life years, the two things that discriminate people whose names legitimately
+// differ. `chips` renders them; `warnings` says when the two sides disagree.
+//
+// **A coarse date never argues.** The builder hands back "17c" or "1720s" for a century- or
+// decade-precision P569, and only a plain year is compared -- reading +1650-00-00 as the year
+// 1650 is how a clean pair gets flagged.
+var SEXWORD = { M: "male", F: "female" };
+function lifespan(pair) {
+  if (!pair) return "";
+  var b = pair[0] || "", d = pair[1] || "";
+  if (!b && !d) return "";
+  return (b || "?") + "–" + (d || "?");
+}
+function plainYear(v) {
+  return /^-?[0-9]+$/.test(String(v || "")) ? parseInt(v, 10) : null;
+}
+function chips(sex, life, otherSex, otherLife) {
+  var out = [];
+  if (sex) {
+    var clash = otherSex && otherSex !== sex;
+    out.push('<span class="chip' + (clash ? " bad" : "") + '">' +
+             (clash ? "&#9888; " : "") + "<b>" + esc(SEXWORD[sex] || sex) + "</b></span>");
+  }
+  var ls = lifespan(life);
+  if (ls) {
+    var a = plainYear(life[0]), b = otherLife && plainYear(otherLife[0]);
+    var far = a !== null && b !== null && Math.abs(a - b) > 15;
+    out.push('<span class="chip' + (far ? " bad" : "") + '">born&ndash;died <b>' +
+             esc(ls) + "</b></span>");
+  }
+  if (!out.length) out.push('<span class="chip">no sex or dates recorded</span>');
+  return '<div class="chips">' + out.join("") + "</div>";
+}
+function warnings(c) {
+  var w = [];
+  if (c.gone) {
+    w.push("<b>This item no longer exists on Wikidata.</b> It was deleted, or merged with no " +
+           "redirect left behind — there is nothing here to say Same or Different to. Skip it.");
+  }
+  if (c.our_sex && c.cand_sex && c.our_sex !== c.cand_sex) {
+    w.push("<b>Different sex.</b> Ours is " + esc(SEXWORD[c.our_sex] || c.our_sex) +
+           ", the item is " + esc(SEXWORD[c.cand_sex] || c.cand_sex) +
+           " — on the Engeström card this meant the item was the spouse, not the person.");
+  }
+  var a = c.our_life && plainYear(c.our_life[0]);
+  var b = c.cand_life && plainYear(c.cand_life[0]);
+  if (a !== null && b !== null && Math.abs(a - b) > 15) {
+    w.push("<b>Born " + Math.abs(a - b) + " years apart.</b> " + a + " against " + b + ".");
+  }
+  if (c.also_offered) {
+    w.push("<b>This item is also offered</b> against " + esc(c.also_offered) +
+           " — only one of you can be it.");
+  }
+  return w.length ? '<div class="warn">' + w.join("") + "</div>" : "";
+}
+
 function firstUndecided() {
   for (var k = 0; k < CASES.length; k++) if (!decisions[CASES[k].qid]) return k;
   return CASES.length;
@@ -192,11 +258,12 @@ function render() {
       '<div class="name">' + esc(c.our) + "</div>" +
       '<div class="trigger">held because their child <b>' + esc(c.via) +
         "</b> already names a parent item on Wikidata</div>" +
-    '</div><div class="cols">' +
+    "</div>" + warnings(c) + '<div class="cols">' +
       '<div class="col"><div class="eyebrow">Ours &middot; Geni</div>' +
         '<div class="who">' + esc(c.our) + "</div>" +
         '<div class="id"><a href="https://www.geni.com/people/x/' + esc(c.geni) +
           '" target="_blank" rel="noopener">' + esc(c.geni) + "</a></div>" +
+        chips(c.our_sex, c.our_life, c.cand_sex, c.cand_life) +
         '<div class="field"><div class="flabel">Spouse</div>' + list(c.our_sp, sw) + "</div>" +
         '<div class="field"><div class="flabel">Children</div>' + list(c.our_kids, kw) + "</div>" +
       "</div>" +
@@ -204,6 +271,7 @@ function render() {
         '<div class="who">' + esc(c.cand) + "</div>" +
         '<div class="id"><a href="https://www.wikidata.org/wiki/' + esc(c.qid) +
           '" target="_blank" rel="noopener">' + esc(c.qid) + "</a></div>" +
+        chips(c.cand_sex, c.cand_life, c.our_sex, c.our_life) +
         '<div class="field"><div class="flabel">Spouse</div>' + list(c.cand_sp, sw) + "</div>" +
         '<div class="field"><div class="flabel">Children</div>' + list(c.cand_kids, kw) + "</div>" +
       "</div>" +

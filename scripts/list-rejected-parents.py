@@ -41,7 +41,17 @@ LABELS = ROOT / "reports" / "derived-labels.csv"
 OUT = ROOT / "reports" / "rejected-parents.tsv"
 
 csv.field_size_limit(1 << 30)
-SEP = "|"
+#: **The separator in `out/wikidata/relations.tsv` is a SEMICOLON.**
+#: `extract-wikidata-relations.py` writes `";".join(v)`, and this said `"|"` -- a
+#: character that appears in **zero** rows of that file, so no multi-valued cell has ever
+#: been split. An item with two fathers yielded the single token `Q45412871;Q45424860`,
+#: which starts with `Q`, passes every guard, and reaches the deck as a candidate that
+#: does not exist -- 11 of 501 cards. Worse silently: `p2600` with two Geni ids stored the
+#: glued pair as the id, so every one of the 2,861 items carrying more than one Geni
+#: profile read as UNCLAIMED. Same shape as the ` | ` bug in `derived-family.csv`:
+#: single-valued cells split fine on any separator, so the failure is invisible until
+#: something multi-valued is looked at.
+SEP = ";"
 
 
 def cell(row, column):
