@@ -24923,3 +24923,32 @@ tokeniser rather than the engine.
 **Kept and checked:** § *The placeholder batch emits no `ko`* still greps **0**; the specifications
 stay by the rule; § *Keep merges-to-do current* moved to the tail on her instruction rather than
 being deleted, since it is a standing regeneration.
+
+## 2026-09-01 — the queue is work only; every specification and record moved to `CLAUDE.md`
+
+**Emma:** *"remove all the 14 bullshit queue items"*, then *"Move them to the claude.md"*.
+
+**13 sections out of `queue.md`, all 13 into `CLAUDE.md`** — verbatim, nothing rewritten in the
+move, and verified afterwards: a distinctive line from every removed section is present in
+`CLAUDE.md`, **0 missing**.
+
+The specifications and standing processes — THE DAILY ALGORITHM, THE EDIT ALGORITHM, THE TAIL
+ALGORITHM, the chain of provenance, link reliability order, STANDING PROCEDURE, the daily Garborg
+batch. The records and meta — *How to read this file*, the Aug 28 manual adds, HER RULINGS,
+Pointers, the `exports/post-merge` tail note. And *Always last*, which carries the cron set: the
+`autonomous-loop` skill documents those too, but it was ported rather than trusted to a second
+copy.
+
+**The split is now clean and is the one that was always implied:** `CLAUDE.md` is the authority —
+her rules, her algorithms, the records of what was decided. `queue.md` is work that can be finished
+and deleted. A specification cannot be finished, so it was never a queue item.
+
+**`queue.md` goes 1,006 lines and 24 sections → 631 lines and 12 items.**
+
+**And one item was added at the end on her instruction**, § *The 8 tokens the transliteration
+funnel cannot read*: *"Also add this to the end"*. Six of the eight are tokenisation debris — a
+stray quote or trailing comma carried into the token, so the engine is handed punctuation and
+correctly refuses it, and the fix belongs in the tokeniser rather than in `translit_no.py`. The
+other two are different and must not be swept in with them: `Queen` is a **title** and belongs in
+`SKIP` beside `NN` and `of`, and `Карлов` is **Cyrillic**, which the Norwegian reader cannot read
+by design.

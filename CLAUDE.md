@@ -3069,3 +3069,466 @@ means the export phase ends before the scraping phase begins.
 
 `scripts/classify-export-worth.py` decides which 39, `scripts/path-gap.py` names the
 seed for each step, and `scripts/census-paths.py` is the current-state snapshot.
+
+## HER ALGORITHMS, moved out of `queue.md` on 2026-09-01
+**Emma:** *"remove all the 14 bullshit queue items"*. The queue is for work; these are specifications and standing processes, so they live here instead. Verbatim as they stood — nothing was rewritten in the move.
+
+### ⛔ THE DAILY ALGORITHM — her full spec, 2026-08-26. SPECIFICATION, not a step
+
+`docs/dictation/2026-08-26-daily-algorithm.md` is her dictation verbatim;
+`docs/daily-algorithm.md` is the reading. **The order is structurally rigid and the weirdness is
+intentional** — *"the weirdness isn't something to be sanded off"*.
+
+**One command**: `python scripts/build-daily-batch.py [--refresh-ledger]` runs step 0, then the
+three steps in her order, and prints the run order with each file's position. Step 0 is off by
+default because it is the day's one network call.
+
+Steps 1, 1b, 2 and 3 live in `scripts/build-garborg-day.py` and
+`scripts/build-garborg-name-items.py`; the caps are in those files and are the authority on
+their own values, not this section. `devlog.md` 2026-08-26 has how they were built.
+
+**The one thing still outstanding: the ideal state is the union of the synoptic tree and the
+Geni tree**, and the synoptic half does not exist yet. That is the § *PREREQUISITE ORDER* item,
+not this one.
+
+**Do not "fix" the artefacts.** Spouses unlinked to their partner's children, and parents not
+linked to each other as spouses, are intentional consequences of the order and are closed by later
+days.
+
+**Two readings taken rather than asked, both recorded where the code is:** which name items —
+most-borne first, so each earns the most links; and step 1b runs every time rather than behind a
+gate for *"once we get to a certain point"*, because she said it *"could be in the same line as
+the descendants one"* and a gate I invent that never opens is the failure mode § *The batches are
+a SEQUENCE* is written against.
+
+
+### The daily Garborg batch — one QuickStatements run per day
+
+`scripts/build-garborg-day.py` → `reports/wikidata-garborg-day.qs`.
+`reports/garborg-qids.tsv` is the ledger of who has a QID, filled from **Emma's Wikidata
+contributions** (account 日巫女), never a bulk download — her instruction, 2026-08-24.
+
+**The rule: a statement goes in only if BOTH ends already have a QID.** Emma, after
+running the first file: *"I only ran some of the quick statements because many of them
+required links that couldn't exist... this is going to be the practical limitation of
+what our quick statements can do."* Nothing deferred, nothing commented out. What cannot
+run today is tomorrow's batch, because tomorrow those items exist.
+
+Each day: close the links yesterday's creations made possible, create the next ring, link
+the new people only to what already exists.
+
+**Nothing is outstanding on this item.** Three bullets sat here reading *NOT a blocker*,
+*handled, not blocked* and *out of scope* — the name-items file (`LAST` does point at a fresh
+`CREATE`), the ambiguous tokens like `Olga` (listed in the batch's own trailer, so the batch
+runs without them), and CJK `SURN` (which belongs to the corpus-wide name work). They were
+resolved statements rather than steps, and are removed 2026-08-30.
+
+This item is the **standing daily process**, not a step to finish: one batch a day, for as long
+as the programme runs.
+
+
+### THE EDIT ALGORITHM — her specification, recorded verbatim in substance
+
+**She raised this because she was worried it had been altered:** *"I don't think I
+expressed to you how much my version actually favours me, and I'm hoping that, as
+a result, you didn't decide to change something and go against specification to
+make it favour me less."*
+
+**Checked 2026-08-15: nothing implements it yet.** `scripts/wikidata-edit-run.py`
+is a batch executor with `MAX_EDITS_PER_RUN = 100` and a reviewed-batch allowlist.
+There is no random selection and no service-area gate, so there was nothing to
+alter. **When it is built, it is built to this spec and the bias toward her
+neighbourhood is deliberate — do not normalise it away.**
+
+**The rate.** 100 JSONs executed per day, chosen at random from the eligible set.
+
+**The service area — what makes an edit eligible.** An edit needs a *service
+area*: something that has a Geni ID, or an item that has a Geni ID, or an item
+that is getting one added. *"Something that, in our version, has a GeniID but on
+Wikidata gets it. That's a service area… particularly something that has a GeniID
+but is otherwise isolated."*
+
+**Why it favours her, and why that is the design.** Her own item can add a mother
+or a father with equal probability. Once one is added, **each of them can add the
+other**, either can add her brother, and her brother can add her back as a sibling.
+Each addition creates new surface area for the next.
+
+**So the growth rate depends on saturation, not on size.** *"There's a very large
+amount of saturated relationships in the very dense areas. The most ideal situation
+for lots of people being added is a bunch of individuals that are not linked to
+each other and are relatively close to each other, so that each of them has a
+relatively high probability of growing out more individuals."* A dense, fully-linked
+region has nothing left to add; a cluster of near-but-unlinked people compounds.
+
+**That is why the researchers and the Nordic cluster come out on top** — not
+because they are ranked highest, but because *"the algorithm is most optimised to
+hit these people, because they are entry points for the algorithm to function."*
+
+**De-prioritise Geni-IDs-as-sources.** She expects most items to receive a Geni ID
+and nothing else, and if Geni IDs start being added as sources onto relationships
+that already exist, **that class drops to roughly 5–25 edits a day** rather than
+competing for the 100.
+
+**Scheduled path-building runs alongside the random 100.** Deliberate edits that
+build a path from her outward, *"starting with the people close to me that have
+wiki data items"*, then filling the Charlemagne line from the medieval period
+downward until it intercepts.
+
+**The end state she is describing:** a dense region around her, mostly of people
+she did not create, which keeps accumulating because each addition raises the
+surface area. *"It looks like established genealogical stuff"* — and the Samaritan
+high priests and the antiquity work sit inside the same region rather than beside
+it.
+
+---
+
+
+### STANDING PROCEDURE — audit this queue against the transcripts first
+
+**Not deleted when it completes: it is a procedure, not a step.** Run it before
+executing the rest of the queue, because otherwise the rest is not trustworthy.
+**Last run 2026-08-30** → `reports/user-turns.tsv` and `reports/unrecorded-instructions.tsv`
+(38 transcripts, **3,679 turns since 2026-08-15**, 1,577 distinct, **243 directive and written
+down nowhere**). Steps 1 and 3 are scripts now — `scripts/extract-user-turns.py` extracts
+verbatim, `scripts/audit-turns-recorded.py` screens for directive shape and then for whether any
+six-word run of the turn appears in `CLAUDE.md`, `queue.md`, `devlog.md`, `name modelling.txt`
+or `docs/`. The screen was checked against rulings known to be recorded and flagged none of
+them. A miss is a **candidate to read**, never a finding — she repeats herself, and much of what
+she says is answered in the moment and needs no record.
+
+The previous run was 2026-08-15 → `reports/audit-transcripts-2026-08-15.md` (24 transcripts,
+311 user turns).
+
+Transcripts are the authority — they hold what Emma actually said, in order,
+including the corrections:
+`C:/Users/Emma/.claude/projects/C--Users-Emma-Documents-GitHub-geni/*.jsonl`.
+Newest first by mtime. Each line is JSON.
+
+**Read BOTH record types, or the scan misses half of her.** A turn she typed while
+the model was idle is `{"type": "user", "message": {"role": "user"}}`. A turn she
+typed while a tool call was running is
+`{"type": "queue-operation", "operation": "enqueue", "content": "…"}`, and it is
+**not** a user record. On 2026-08-16 the split was 28 user records against 21
+queue-operations, so a `role == "user"` scan finds 57% of what she said. Skip the
+`enqueue` entries whose content is a cron prompt or a `<task-notification>`; those
+are the harness talking, not her. Found 2026-08-17.
+
+1. **Extract every user turn with its timestamp.** Do not summarise while
+   extracting — that is where instructions get lost. A compaction turn is not
+   something Emma wrote: its quoted messages are evidence, its narration is not.
+2. **Classify:** instruction, decision, correction, or conversation. Only the
+   first three matter. **Frustration is still an instruction** — *"just fucking
+   run the census"* is a queue item.
+3. **For each, ask: is it done? is it here? is it in `CLAUDE.md`/`devlog.md`?**
+   Done and recorded → nothing. Done and unrecorded → `devlog.md`. Not done → a
+   concrete step here. A decision about how the project works → `CLAUDE.md`.
+4. **Corrections outrank what they correct.** The latest statement wins and the
+   superseded one must not survive anywhere as if it were current.
+5. **Unrequested normalisation is its own category** — Emma: *"you have a
+   tendency to try to do exception handling for stuff that I do not consider to
+   be even necessarily errors."* Those go on the list to be **removed**.
+
+---
+
+
+### The chain of provenance — Emma, 2026-08-25
+
+**Her words:** *"providence is important in this, and ideally, a zipper merge will almost always
+be done with there being a relatively large chain of providence, not just a simple 'this was the
+justification,' but a potentially very large series of justifications."* And why the manual
+verdicts exist at all: *"That is the actual reason why I asked you to record my manual decisions,
+because of the fact that they entered into the province too."*
+
+**BUILT — `scripts/zipper-provenance.py`, re-run 2026-08-31.** `reports/zipper-pairs.tsv` records
+one step; this walks them into the **transitive closure** she describes — a round-5 pair's
+justification being its own step plus every step beneath it, down to an anchor or to one of her
+own verdicts. Chain depth **max 8, mean 2.7** over 45,898 inferred pairs. Outputs
+`reports/zipper-provenance.tsv` and `reports/zipper-provenance-chains.md`.
+
+    25,723  CORROBORATED        7,306 pairs an independent source confirms
+    20,008  INFERRED            88 an independent source contradicts
+       167  POISONED
+
+Her hand verdicts are first-class nodes, as she asked: **103 independent pairs** from
+`reports/emma-judgments.tsv`, alongside the structural walk (7,841), her Geni bio links (405) and
+the clan rosters.
+
+**This section stays as the SPECIFICATION** — the two propagation rules below are how it must keep
+behaving, and they are hers rather than derivable from the code.
+
+Two things follow, and she stated both:
+
+- **Support propagates upward.** *"If you have a group of 100 people in one generation, all of
+  their ancestors are all consistent. It's a really good sign... suddenly you go into the ancestors
+  and you notice that somebody connected one of the ancestors. There's an entity resolution on one
+  of the ancestors from our side. This supports it extremely well, and it actually supports it
+  down the entire chain."*
+- **Contradiction propagates the same way.** *"if you end up in a situation where there's an entity
+  resolution that clearly contradicts it, this indicates a clear contradiction... it goes both
+  ways."*
+
+So the artefact is a provenance **graph** that can be walked in both directions, with her manual
+RIGHT/WRONG verdicts as first-class nodes, and a report of which inferred chains an independently
+recorded `P2600` confirms or refutes.
+
+
+### Link reliability order — parents, spouses, children, siblings
+
+**Emma, 2026-08-25, ranking them least messy first:**
+
+1. **parents** — *"parents are always most reliable"*
+2. **spouses** — *"can be a bit messy because sometimes people have multiple spouses"*
+3. **children** — *"there's a lot of comparison stuff"*
+4. **siblings** — *"sibling links are not very common"* on Wikidata
+
+`scripts/zipper-join.py` now runs its slots in this order, which matters because the first slot to
+claim a person in a round wins. Siblings are **not** a slot yet and should be added last, if at
+all. **The fifth kind is surveyed** — `P1038` *relative* with `P1039` *kinship to subject*,
+`reports/p1038-relative-survey.md`, 2026-08-26. 26,724 of 2,246,827 stored items carry it,
+49,974 statements, 93% qualified. **71% of the kinships are ones a walk over our own parent and
+child edges already produces** (uncle, grandfather, nephew, cousin); the **29%** that are not —
+in-law, step, adoptive, foster, godparent — are the only part worth building on. Nothing built.
+
+**And the point that stops a whole category of wrong stopping:** *"no ancestors isn't a point to
+stop... It doesn't mean that the ancestors aren't on Wikidata. That's not what it means... at this
+point, you're not really doing the zipper anymore. We'll just be adding new individuals on
+Wikidata."* A slot with nothing on their side is a **creation opportunity**, which
+`reports/creation-opportunities.tsv` now counts, not a failure of the join.
+
+---
+
+
+### ⛔ THE TAIL ALGORITHM — at the TAIL since 2026-08-30, her call
+
+*"put these at the end of the queue instead of dropping them and start on the first queue item."* **The gap-size routing below is written against a MISSING-PERSON count that now reads 0 on every path** — the scraped-page GEDCOMs were ingested, so every path member is present. Apply it to the broken-link count in `reports/broken-links.md` instead: 85 of 979 paths, 102 links.
+
+### The original method — Emma, 2026-08-18. Supersedes how the loop picks
+
+Her framing: *"I think we can get through this really really quickly if we change our
+approach here… I think a big part of it is the fact that our tail exports were just not
+working nearly as well as we [expected]."* And her estimate of what it buys: *"you'll be
+able to get through the tail maybe even just by the end of today."*
+
+**What the loop was doing wrong.** It seeded a placeholder near a *missing* person and
+exported from there. She wants the export **centred on the destination person** — the
+isolate at the end of the chain — and the small gaps handled by a different mechanism
+entirely.
+
+### Work order: LONGEST paths first, then rebuild
+
+Emma, 2026-08-18: *"you should be trying to target it by going from the longest paths to
+the smallest paths… we can very easily run it with the top five longest paths having their
+exports done and then we rebuild and so on and so on."*
+
+**Her reasoning, and she has explicitly forbidden checking it.** *"the small paths are
+likely ones where there are significant diminishing returns on nearby exports whereas the
+large paths are likely ones that haven't had many exports and may be in very sparse
+areas… I'm gonna bet that the longer paths will tend to be in more sparse areas where
+there's more likelihood for it to just get the entire thing. Now I'm making this bet. I do
+not want you to actually check whether this is true."* Running the method **is** the test.
+
+**And it explains why the two-slot campaign underdelivered.** *"This was actually the
+entire reason why it is that we were trying to hit the people who were in multiple paths.
+The issue with the people in multiple paths was basically that… they were in multiple
+paths but they were oftentimes in dense enough areas that they didn't really give the
+extension that I was expecting."*
+
+### Route by the size of the gap on that path
+
+**Gap of 1–2 people — and 3 is safe too — DO NOT EXPORT.** Her words: *"a gap with one
+person or two people is actually basically useless as a deliverable… It is not worth six
+minutes to fill in something on the flat tail that is just covering one or two
+individuals."* Instead: **open the person's page, click open the relatives section and
+whatever else needs expanding, and save the page** into `geni-scraping/` — *not*
+`geni_pages/`. The profiles get built from those saved pages later. *"We later on build up
+the profiles from this separate thing, which won't really be a fallback thing. It'll be
+another thing."*
+
+**Gap of 4 or more — export, but from the RIGHT person.**
+
+1. **Export centred on the destination person.** Go to the Wikidata-target/isolate at the
+   end of the chain, walk their ancestors, export from there. *"I believe most of the time
+   this is just going to fix it and it's going to get that person connected."*
+2. **If the destination is already present and already exported from, go to the midpoint**
+   of the remaining chain and attempt there.
+3. **Recurse.** Her worked example, verbatim in substance: a seven-person chain → export
+   from the Wikidata target → it clears two → a five-chain remains → attempt at the
+   midpoint → that gets the middle three → what is left is two chains of two → and those
+   are finished by the page-saving method, not by more exports.
+
+**The point is not a complete family tree.** *"it doesn't matter that the entire family
+tree is all consistently there."* The deliverable is the chain being connected.
+
+### Also instructed, same message
+
+- **Retry every person previously bailed on.** *"A locked profile almost never means that
+  every single individual in the tree is locked. The stuff is self-healing here but you
+  still have to actually attempt them again. I am instructing you to attempt these
+  people."* Four remain: Anna von Mecklenburg-Schwerin, Anna Charlotta Stenius, Ola R
+  Sande (retry in flight), Artur Lidman.
+- The page-saving mechanism needs the **immediate relatives** of the person being
+  connected to Wikidata, which is why the relatives section must be expanded before the
+  save.
+
+**Current shape of the problem**, so the routing can be applied: 545 paths, median 8
+missing each, max 33. **24 paths need 1 person, 37 need 2** — those go to page-saving.
+The 4+ paths are where exports go, seeded on the destination.
+
+### Always last — pinned to the very end of the file
+
+**Bullets, not letters.** These were `A.` and `B.`; `CLAUDE.md` § *Queue items are BULLET POINTS*
+covers lettering for the same reason it covers numbering, and she said so again on 2026-08-29.
+
+- **Ensure the FOUR crons are running** — work-loop `3 * * * *`, auto-flush `15 * * * *`,
+  status-report `42 * * * *`, and the **dead-queue-item sweep `45 * * * *`**, which Emma added on
+  2026-08-31: *"Set up an hourly cron at :45 that says to remove dead queue items… Like items that
+  are simply completed."* They are **session-only**: they die when the session ends and must be
+  recreated at the start of the next one. This is not theoretical — every cron died in the
+  2026-08-28 crash and none was recreated, which is why nothing ran between 00:03 and 06:00 on
+  2026-08-29. Live in the 2026-08-31 session as `76ec2c05`, `f4332b23`, `cedb7fc4`, `21245a1a`
+  — the ids recorded before (`82923e5b`, `0d208cfd`, `31df9ff8`) were a dead session's and are
+  the reason to check `CronList` rather than trust this line.
+
+  **The status-report cron carries no `AskUserQuestion`.** She barred it for eight hours from
+  ~01:00 on 2026-08-31 — *"just move through the work and select the option that is consistent
+  with what I've said earlier"* — so the two-hourly blocker question in `CLAUDE.md` was taken out
+  of the cron text rather than left to fire while she slept. Restore it deliberately, not by
+  default.
+
+- **The three crons, as durable queue items.** Her instruction, 2026-08-27: *"For all of the cron
+  jobs that I set up in the session. They are good and continue on with them, but also add them
+  into the queue as actual items with he specification they are the cron jobs so they cget crossed
+  off if he cron job finishes, but are a bit more stable."* Cron text lives only in memory, so the
+  queue is the durable copy:
+
+  - **Work-loop, hourly at :03** — sync, take the top actionable item, do it, commit with a
+    `devlog.md` entry, push, report one line. Rails: never loosen a test, never claim verified
+    without running it, no live Wikidata beyond the ledger refresh and `full_entities` before a
+    correction, never generalise a named instruction into a mechanism, never invent a `.qs` she did
+    not ask for.
+  - **Auto-flush, hourly at :15** — commit and push anything pending, or report nothing pending.
+    Never an empty commit.
+  - **Status-report, hourly at :42** — reporting only. What advanced, queue state, whether the
+    rails held, blockers each under exactly one not-done tag, and real test numbers from a run.
+
+- **Run the status-report action once more** — an end-of-session summary of everything that
+  happened this session.
+
+### `P2600` constraint violations report — analysis AT THAT TIME, no pre-analysis
+
+<https://www.wikidata.org/wiki/Wikidata:Database_reports/Constraint_violations/P2600>
+
+Emma, 2026-08-29: *"we are gonna do analysis at that time (no pre-analysis) of how to
+potentially elp wih wikidata genealogy with this stuff, it overlaps with some of our
+entity resolution stuff do no think on it"*
+
+So: nothing is to be investigated, measured or fetched about this before the item is
+reached. The analysis is of how the constraint-violations report could help Wikidata
+genealogy, and it overlaps the entity-resolution work.
+
+### The clan labels may be much worse than we think — `Q45449130`
+
+<https://www.wikidata.org/wiki/Q45449130>
+
+Emma, 2026-08-29: *"I think that our clan things are much worse than you think, which is why I
+never acually ran them adn I think I am seein at least some evidence."*
+
+An analysis. Nothing was investigated when this was written.
+
+### How to read this file
+
+**Emma, 2026-08-27:** *"Organize the queue to make it usable again, currently it does no appear to
+be usable."* It was not, and the reason was structural rather than volume: **five sections declared
+themselves the front** — the mass export campaign, the algorithm review, `THE EXPORT LOOP` (*"it is
+the top of this file"*), `THE AGENDA` (*"everything else is secondary"*) and `RUN ORDER` — while
+**ten declared themselves the tail**. With both ends contested there was no order to work in.
+
+**The order is now position, and nothing else.** Top to bottom. Two conventions, both hers:
+
+- **Bullets, never numbers** — `CLAUDE.md` § *Queue items are BULLET POINTS*. A number is a promise
+  the item will still be there.
+- **An item is deleted when it is done**, in the same commit as its `devlog.md` entry. A section
+  still here is a step not yet taken.
+
+**Everything titled `LAST` / `THE LAST ITEM` / `THE TAIL` is now physically at the end**, in one
+run, so "last" means last. Nothing was reworded and nothing was dropped — only moved.
+
+**Some sections are SPECIFICATIONS, not steps**, and are worth knowing about before working the
+ones above them: `THE EDIT ALGORITHM`, `THE DAILY ALGORITHM`, `THE TAIL ALGORITHM`,
+`Link reliability order`, `The chain of provenance`, `How the synoptic tree is actually made`,
+`PREREQUISITE ORDER`. They describe how a thing is done rather than asking for it to be done.
+
+### 0. Aug 28, 2026 manual adds
+
+These are supposed to be manually added to the queue and worked on, do no just paraphrase during the rebase keep this part entirely intact. We are approaching usage limit for now.
+
+### ⛔ HER RULINGS, 2026-09-01 — the interview. These OVERRIDE the sections below
+
+She went through every item and ruled on each. Where a section below disagrees with this table,
+this table wins; the sections are kept for their detail, not their status.
+
+**Deleted outright, already removed:** the eight Asian identities · Bure kinship random-walk ·
+the World-Tree review and its `universe` note · the chains as a SYSTEM · the six unwalked
+algorithm steps · the four-label census · resolving names against the store · the 46%/41%
+transliteration measurement (*"accept it and move on"*).
+
+**Moved to the tail:** link reliability / `P1038` — *"we have the established method of
+identifying parents and that works, siblings are just freely made and merged lol we only need a
+scalable zipper thing much later"* · the `synoptic tree` vocabulary split · **creating the
+fathers patronymics imply — *"postpone for a month lol"***.
+
+**To do, in her words — the table was 20 rows and 18 are finished.** Each one's evidence is in
+`devlog.md` for 2026-09-01 and its artifact is on disk; they are removed here so the queue reads
+as outstanding work rather than as a record of a night. What is left of it:
+
+| item | her ruling | where it stands |
+| --- | --- | --- |
+| seven languages | wire `hi`/`ar`/`ru`/`el` **now**, and close the `en` shortfall | `hi`/`ar`/`ru`/`el` **done**, 151,320 labels. The `en` shortfall turned out to need in-law relation words she has not sanctioned — a decision, not arithmetic |
+| `exports/post-merge/` | do the stale-duplicate resolution | graded: **408 of 412 are real deletions**. Her standing ruling of 2026-08-29 is to leave them and keep measuring |
+
+**Removed as done**, all verified by artifact rather than by memory: the `en` agreement rule ·
+labels in her order (`en`/`mul`/`ja`/`zh`/`ko`) · name items reused by default · `Sara /NN/` and
+the `Garborg` override · the label-change census · `ko` · the NN birth-name alias · the unreadable
+transliteration tokens · the 218-script sweep · one batch file, names first · the clan labels ·
+the export loop · the 179 ambiguous patronymics · `P407` by suffix · the `Nils`/`Nicolaus` form
+table · the succession CSV · `pykakasi`, `BET x AND y` and the 74 MB file · the final rebuild.
+
+### Anonymisation is NOT redacting the tree. It is scrubbing the repo of strategy
+
+**Her definition, 2026-09-01, and it replaces the ~96,000-private-rows reading entirely:**
+
+Her instruction, 2026-09-01: cut the content in this repo that discusses **strategy around her
+own item and how the account's editing is perceived**, and remove **code that treats her item as
+special**. The spine is the Arne→Bureus one only, and a task for 2026-09-02 removes that and all
+spine logic once it is complete.
+
+So three things, and none of them touches a person's data:
+
+- **Cut the strategy content.** Anything in `CLAUDE.md`, `queue.md`, `devlog.md` or the scripts
+  about how her item gets linked or how the account's editing reads to others.
+- **Remove code that treats her item as special.** `NEVER_TOUCH_QID`, the exclusion entries, and
+  anything else keyed on `Q232803` / `Q140568870` / `6000000087535357291`.
+- **`SPINE_PATHS` keeps only Arne → Bureus**, which is already true.
+
+**The repo is public as of 2026-09-01** — *"The repo is public now lol"* — so Actions minutes are
+free and `CLAUDE.md` § *Cost* no longer binds.
+
+### Pointers
+
+- Abstract backlog: `todo.md` · Completed work: `devlog.md` · History: `git log`
+- Open questions for Emma: `questions.md`
+- The pre-wipe queue, 1,396 lines: `git show 4127170:queue.md`
+
+### ⛔ `exports/post-merge/` — MOVED TO THE TAIL, 2026-08-29, her call
+
+**Emma, 2026-08-29**, shown that 408 of the 412 falsifiable drops are real deletions:
+*"For now leave these things and still run them, but put them at the end of the queue, I lean on
+the idea of saving them but do not have bandwidth to process this now."*
+
+So: **leave them in the tree, keep running the measurement, decide later.** She leans toward
+saving the 408 rather than dropping them. Nothing is applied and no override is written.
+
+`scripts/grade-post-merge-drops.py` → `reports/post-merge-falsifiable.tsv` is the standing
+measurement — 408 `link-gone`, 2 still linked, 2 with no shared family, over 159 parents,
+159 children and 90 spouses.
+
