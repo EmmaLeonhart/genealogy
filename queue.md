@@ -109,15 +109,6 @@ exclusion list and not as a discussion of her item. Behaviour is byte-identical 
 **What she needs to decide:** whether the lists come out entirely (and her item becomes editable
 like any other), or stay as the mechanism keeping her out of the graph.
 
-### Remove the Arne→Bureus spine and ALL spine logic
-
-**Her instruction, 2026-09-01:** *"we add a task for tomorrow sept 2 that removes that spine thing
-and all spine logic as it presumably will be completed there"*.
-
-So tomorrow: `SPINE_PATHS`, `SPINE_REVERSED`, the spine blocks in `build-garborg-day.py`,
-`build-missing-reciprocals.py` and anything else that special-cases a spine, all come out. Check it
-is actually complete first — if it is not, say so rather than deleting a live mechanism.
-
 ## Keep `reports/merges-to-do.md` current
 
 Emma, 2026-08-31: *"Just make a 'merges to do' file that records these merges and the wikidata
@@ -1035,3 +1026,65 @@ it: `out/family-structure.tsv.gz` was not committed, `pack-derived.py` did not l
 **The point is the batch, not a green tick.** A run that finishes and uploads
 `reports/wikidata-garborg-day.qs` as an artifact, with the issue opened, is the deliverable.
 
+## THE TRUE LAST ITEM — remove the spine and every trace of it
+
+**Emma, 2026-09-01:** *"put the removal of the spine [stuff] and all traces of it as the true last
+item"* — after the Pages site, after the ledger archive, after the CI/CD dispatch. It was on
+2026-09-02 and it is now the end of the queue instead.
+
+**Its precondition is met and was checked rather than assumed.** The 2026-09-01 generation reports
+`spine arne-garborg-to-johannes-bureus-geni: every step already has an item`. All 18 steps hold a
+QID; the batch she ran that afternoon created **Sara Carlberg**, step 13, the last one missing, and
+her `CREATE` carried the link in both directions plus the `P22` to the father Maria Carlberg
+already shares. Re-check it at the time anyway — if a step has regressed, say so rather than
+deleting a live mechanism.
+
+**Every trace, which is more than two constants:**
+
+- `SPINE_PATHS` and `SPINE_REVERSED` in `scripts/build-garborg-day.py`, and every block that reads
+  them.
+- The spine handling in `scripts/build-missing-reciprocals.py`.
+- `scripts/check-spine-bonds.py`, and `reports/spine-already-on-wikidata.tsv` if nothing else reads
+  it — `build-garborg-day.py --known` names that file explicitly, so check the flag's other callers
+  before removing it.
+- Anything else matching `spine`. Measured 2026-09-01, 14 files carry the word — grep again at
+  the time rather than trusting this list:
+    - `scripts/build-daily-batch.py`
+    - `scripts/build-from-diff.py`
+    - `scripts/build-garborg-day.py`
+    - `scripts/build-missing-reciprocals.py`
+    - `scripts/build-samaritan-spine-gedcom.py`
+    - `scripts/build-samaritan-spine-page.py`
+    - `scripts/check-spine-bonds.py`
+    - `scripts/compare-samaritan-sources.py`
+    - `scripts/measure-three-seed-eccentricity.py`
+    - `scripts/refresh-garborg-ledger.py`
+    - `scripts/refresh-spine-known.py`
+    - `scripts/samaritan_spine.py`
+    - `scripts/search-spine-names.py`
+    - `scripts/verify-spine-candidates.py`
+- The `CLAUDE.md` paragraphs describing the spine as live work. `§ THE THREE LINES` already records
+  the first three as **legacy**; this makes the fourth legacy too, and the section becomes history
+  rather than instruction.
+
+**⛔ "spine" NAMES TWO DIFFERENT THINGS AND ONLY ONE OF THEM GOES.** Of the 14 files matching
+the word, five are the **Samaritan high-priest succession** — `samaritan_spine.py`,
+`build-samaritan-spine-gedcom.py`, `build-samaritan-spine-page.py`, `compare-samaritan-sources.py`,
+`search-spine-names.py` — which has nothing to do with Arne→Bureus. Deleting those would destroy
+work Emma built by hand and has ruled finished (`CLAUDE.md` § *The Samaritan family relationships
+are DONE*).
+
+This is precisely § *Do not grab the first artifact that vaguely matches*: a name that resembles the
+thing being removed is not the thing being removed. **Read what each file's spine IS before
+touching it.**
+
+**`paths/arne-garborg-to-johannes-bureus-geni.tsv` STAYS.** It is a saved Geni relationship path —
+evidence from outside our own data, in the class `CLAUDE.md` § *Relationship paths: save the page*
+protects. The machinery that walked it goes; the record of what Geni said does not.
+
+**And no export is ever attempted on it.** Steps 9, 10 and 13 were refused by Geni on 2026-08-30 —
+*"You are not allowed to export that profile."* That stays true after the code is gone.
+
+**`CLAUDE.md` § *LEGACY CODE IS DELETED* is the standard here:** the test is *does the pipeline read
+this*, not *might this be useful*. Everything is in git, so a deletion is recoverable and a stale
+special case is not recoverable from the confusion it causes.
