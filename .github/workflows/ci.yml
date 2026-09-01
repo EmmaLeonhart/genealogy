@@ -83,7 +83,17 @@ jobs:
 
   # The slow lane is a separate job so a red fast lane is legible on its own. It re-merges the
   # whole 605-export corpus, which peaks near 17 GB -- above what a standard runner has -- so it
-  # runs the three modules that only READ the corpus. **One job per module**, after the
+  # runs the ONE slow module a hosted runner can hold. **test_density.py and
+  # test_paths.py were removed 2026-09-01, her call, and the number is why:
+  # a hosted runner has 16 GB and test_density pins it at 15.9 GB with 33 MB
+  # free for ten minutes before the runner is reclaimed. Four jobs died that
+  # way. Both modules PASS on Emma's machine in 35m44 because it has 31 GB --
+  # the tests are fine and the environment is half the size they need.
+  #
+  # A 64 GB runner is billable even on a public repo, and rewriting
+  # test_density to stream would be rewriting a test rather than the code it
+  # guards. So they run locally: `pytest -m slow tests/test_density.py
+  # tests/test_paths.py`, 23 passed in 35m44 on 2026-09-01.
   # first run hit the 120-minute wall at 98% with everything in one job and no
   # per-test timing to show for it -- CLAUDE.md's chunk-by-cost rule applied, so a
   # module that stalls now fails alone and --durations=0 gets a chance to print.
@@ -97,8 +107,6 @@ jobs:
       matrix:
         module:
           - tests/test_gedcom_real_exports.py
-          - tests/test_density.py
-          - tests/test_paths.py
     steps:
       - uses: actions/checkout@v4
         with:

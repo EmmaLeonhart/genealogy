@@ -73,6 +73,15 @@ REQUIRED = ("en", "ja", "zh")
 #:
 #: There is no `の`-for-`of` borrowing here beyond what Japanese itself uses: `<name>の息子` IS
 #: the Japanese construction, and `<name>之子` the Chinese one.
+#: **Every relation the preview can generate, not just the nine it started with.**
+#: `build-relationship-label-preview.py` has emitted grandparent, grandchild, sibling, nibling
+#: and pibling labels for a long time and this table covered none of them, so those people got an
+#: `en` label and no CJK at all -- the pattern `CLAUDE.md` keeps recording, where two halves of
+#: one job drift apart because nothing forces them to agree.
+#:
+#: The in-law pair is new on 2026-09-01, her ruling. It is the largest single population:
+#: **8,129 people whose only named relative is a spouse's father**, because their own spouse is
+#: unnamed too.
 CJK_RELATION = {
     "son": ("の息子", "之子"),
     "daughter": ("の娘", "之女"),
@@ -83,10 +92,35 @@ CJK_RELATION = {
     "husband": ("の夫", "之夫"),
     "wife": ("の妻", "之妻"),
     "spouse": ("の配偶者", "之配偶"),
+    "grandson": ("の孫", "之孫"),
+    "granddaughter": ("の孫娘", "之孫女"),
+    "grandchild": ("の孫", "之孫"),
+    "grandfather": ("の祖父", "之祖父"),
+    "grandmother": ("の祖母", "之祖母"),
+    "grandparent": ("の祖父母", "之祖父母"),
+    "brother": ("の兄弟", "之兄弟"),
+    "sister": ("の姉妹", "之姐妹"),
+    "sibling": ("の兄弟姉妹", "之同胞"),
+    "nephew": ("の甥", "之侄"),
+    "niece": ("の姪", "之侄女"),
+    "nephew or niece": ("の甥姪", "之侄"),
+    "uncle": ("の叔父", "之叔父"),
+    "aunt": ("の叔母", "之姑母"),
+    "uncle or aunt": ("の叔父叔母", "之叔伯"),
+    "son-in-law": ("の婿", "之婿"),
+    "daughter-in-law": ("の嫁", "之媳"),
+    "child-in-law": ("の子の配偶者", "之子媳"),
+    "brother-in-law": ("の義兄弟", "之姐夫"),
+    "sister-in-law": ("の義姉妹", "之嫂"),
+    "brother-in-law or sister-in-law": ("の義兄弟姉妹", "之姻親"),
 }
 
-RELATION_RE = re.compile(r"^(son|daughter|child|father|mother|parent|husband|wife|spouse) of "
-                         r"(.+)$", re.I)
+#: **Built from the table rather than typed beside it.** The two were separate literals and the
+#: regex listed nine relations while the preview emitted seventeen; deriving it means a relation
+#: added above cannot be missing here. Longest first, so `son-in-law` is not eaten by `son`.
+RELATION_RE = re.compile(
+    r"^(" + "|".join(re.escape(k) for k in
+                     sorted(CJK_RELATION, key=len, reverse=True)) + r") of (.+)$", re.I)
 
 
 def cjk_labels(en_label, table):

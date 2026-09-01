@@ -432,7 +432,7 @@ as "the next concrete step rather than a new method". That was wrong. Broken dow
 *description* in the local languages; a description needs a named relative, and these people have
 none. `NN Larsson` in `mul` with no `en` is the algorithm working.
 
-**The 9,580 need relation words her table does not have.** The slot my census reached them by:
+**DONE 2026-09-01, her ruling: add the in-law wording.** The slot my census reached them by:
 
     8,129  spouse's father          799  spouse's mother       426  spouse's sibling
        55  child's spouse            51  sibling's spouse       36  spouse's spouse
@@ -448,6 +448,22 @@ any of its ten languages.
 *"daughter-in-law of X"* to ten languages is inventing vocabulary she has not asked for, which is
 what § *One name item per USAGE* and the edge-case rule both say goes to her. **NEEDS-DECISION.**
 The default in force meanwhile is what already happens: they get `mul` and no `en`.
+
+## The placeholder batch emits `ja` and `zh` and NO `ko`
+
+**It is the largest label producer in the repo** — `build-placeholder-label-batch.py`, 158,618
+`set_label` edits — and it has no `ko` at all. Grepped 2026-09-01: zero occurrences.
+
+That contradicts her ruling of the same day, *"korean is extremely important on par with Chinese…
+cjk includes korean"*, which was applied to the creation gate, the funnel table and
+`build-ko-label-batch.py` but not here. **58,937 people now get `ja` and `zh` from a relative's
+name and none of them gets `ko`.**
+
+`CJK_RELATION` is the table to extend — each entry becomes a triple rather than a pair — and
+`scripts/translit_ko.py` plus `translit_ko_latin.py` already render the relative's name, so the
+engine work is done. The Korean genitive is 의 and the relation words are the ones
+`build-garborg-day.py` already uses for its own NN path: 아들 · 딸 · 아버지 · 어머니 · 남편 · 아내 ·
+형제 · 자매.
 
 ## Two slow modules exhaust a CI runner's memory — decide what to do about it
 

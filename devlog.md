@@ -24515,3 +24515,36 @@ now names every generator that failed, so a persistent failure is loud rather th
 
 **Not yet verified.** The confirming run is still going; this entry will be wrong if
 `build-garborg-day.py --compose` turns out to fail inside the refresher for some other reason.
+
+## 2026-09-01 — her three rulings, executed
+
+**CI.** `test_density.py` and `test_paths.py` are out of the workflow, her call. A hosted runner
+has 16 GB and `test_density` pins it at 15.9 GB with 33 MB free for ten minutes before being
+reclaimed; both pass here in 35m44 because this machine has 31 GB. The comment in `ci.yml` carries
+the numbers and the local command.
+
+**In-law relation words — added, and they were the largest missing population.**
+`build-relationship-label-preview.py` computed father, mother, spouse, child, grandparent,
+grandchild, sibling, pibling and nibling, and **not** the spouse's parents or the spouse's
+siblings. That is where 8,928 of the 9,580 unreachable people were: they have a spouse, the spouse
+is *also* unnamed, so no one-hop *"wife of X"* exists and the nearest named person is a
+parent-in-law. Label generable went **131,561 → 141,053**.
+
+**And the CJK table was worse than the in-law gap.** `CJK_RELATION` held nine relations while the
+preview emitted seventeen — so every grandparent, sibling, uncle and nephew label had an `en` and
+no CJK, and nobody had noticed. It now holds thirty, and `RELATION_RE` is **derived from the
+table** rather than typed beside it, so a relation added to one cannot be missing from the other.
+That was the actual bug: two halves of one job with nothing forcing them to agree.
+
+| | before | after |
+| --- | ---: | ---: |
+| placeholder people with an `en` label | 137,528 | **147,148** |
+| `ja` and `zh` from a relative's name | 44,132 | **58,937** |
+| `mul` only, no other language | 21,088 | **11,470** |
+| `en` batch total | 104,860 | **114,341** |
+
+**Transcription for QID-holders** is her third ruling and is the next item, not this commit.
+
+**One thing found and queued rather than fixed:** the placeholder batch emits `ja` and `zh` and
+**no `ko`** — zero occurrences. It is the largest label producer in the repo, so 58,937 people get
+two of the three CJK languages, which contradicts her ruling of the same day.

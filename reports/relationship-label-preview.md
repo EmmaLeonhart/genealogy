@@ -9,8 +9,8 @@ Emma asked to see both populations before deciding whether the generated label r
 | | bare `NN` | `NN` + surname |
 | --- | ---: | ---: |
 | people | 151,303 | 7,315 |
-| a label can be generated | **131,561** (86%) | **5,970** (81%) |
-| no relative with a real name | 19,742 | 1,345 |
+| a label can be generated | **141,053** (93%) | **6,095** (83%) |
+| no relative with a real name | 10,250 | 1,220 |
 
 ## Which relative ends up naming them
 
@@ -25,10 +25,10 @@ Emma asked to see both populations before deciding whether the generated label r
 
 Emma ruled on both of these on 2026-08-15 after seeing the first version of this preview.
 
-1. **A redacted or placeholder relative is skipped**, and the precedence falls through to the next one — *"skip, fall through to the next relative"*. The first version put the marker into somebody else's label: *"husband of `<private>` Gaya Pereira"*, 2,730 times. Now **5** do. 7,113 people had a relative skipped and **6,954 of them (97%) still get a label** from a later relative. That is a minority: for the rest the skipped relative was the only one with a real name, so the skip costs the label outright. Every spouse and child is tried rather than only the first, which is what recovers the share that is recovered.
+1. **A redacted or placeholder relative is skipped**, and the precedence falls through to the next one — *"skip, fall through to the next relative"*. The first version put the marker into somebody else's label: *"husband of `<private>` Gaya Pereira"*, 2,730 times. Now **5** do. 7,127 people had a relative skipped and **7,054 of them (98%) still get a label** from a later relative. That is a minority: for the rest the skipped relative was the only one with a real name, so the skip costs the label outright. Every spouse and child is tried rather than only the first, which is what recovers the share that is recovered.
 2. **A surname that is itself placeholder vocabulary collapses to bare `NN`** — `NN ???`, `NN NN`, `NN N.N.`, `NN Unknown`. 351 people moved from the surname population to the bare one, which is why the two totals here differ from the first version.
 
-5,778 of the generable labels have **no recorded sex** and take the neutral form (`child of`, `spouse of`). Inventing a gender to make the label read better is not done here.
+5,796 of the generable labels have **no recorded sex** and take the neutral form (`child of`, `spouse of`). Inventing a gender to make the label read better is not done here.
 
 
 ## Bare `NN` — what it would say

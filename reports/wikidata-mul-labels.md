@@ -4,11 +4,11 @@ Built by `scripts/build-mul-label-batch.py`. **Emits nothing to Wikidata.**
 
 Emma, 2026-08-17: *"then mul gets made for every individual (almost always derived from en)"*.
 
-- step 1 `en` edits: **104860**
+- step 1 `en` edits: **114341**
 - `mul` mirrored from them: **5880**
-- deliberately not mirrored: **98980**
+- deliberately not mirrored: **108461**
 
-## Why 98980 are left alone
+## Why 108461 are left alone
 
 *"Almost always"* is doing the work in her sentence. A relationship label — `husband of Lakech Gashawbeza` — is **not a name**; copying it into `mul` would assert across every language that this is what the person is called. She ruled on this shape on 2026-08-17: *"And NN for mul there"*, and those people already get `mul: NN` from `build-placeholder-label-batch.py`. Overwriting a correct marker with a description would be a regression.
 

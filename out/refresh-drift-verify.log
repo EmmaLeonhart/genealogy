@@ -1,0 +1,28 @@
+
+=== round 1: 2 scripts to run (<= 72h drift) ===
+  scripts/build-garborg-day.py
+      reports/garborg-live-labels.tsv
+      reports/garborg-live-values.tsv
+  scripts/census-paths.py
+      reports/path-census.md
+  SKIP scripts/ledger-history.py — names a Wikidata client
+  SKIP scripts/resolve-patronymics.py — names a Wikidata client
+  SKIP scripts/refresh-live-values.py — names a Wikidata client
+  [ok ] scripts/build-garborg-day.py    6000000008649471741                                           Wikidata already links thi
+  [ok ] scripts/census-paths.py  every path is connected end to end.
+
+=== round 2: 1 scripts to run (<= 72h drift) ===
+  scripts/census-paths.py
+      reports/path-census.md
+  SKIP scripts/ledger-history.py — names a Wikidata client
+  SKIP scripts/resolve-patronymics.py — names a Wikidata client
+  [ok ] scripts/census-paths.py  every path is connected end to end.
+
+=== round 3: 1 scripts to run (<= 72h drift) ===
+  scripts/census-paths.py
+      reports/path-census.md
+  SKIP scripts/ledger-history.py — names a Wikidata client
+  SKIP scripts/resolve-patronymics.py — names a Wikidata client
+  [ok ] scripts/census-paths.py  every path is connected end to end.
+
+after 3 rounds: 1 scripts still have stale outputs

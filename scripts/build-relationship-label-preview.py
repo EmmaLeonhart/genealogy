@@ -93,6 +93,18 @@ SIBLING_WORD = {"M": "brother", "F": "sister", "": "sibling"}
 NIBLING_WORD = {"M": "nephew", "F": "niece", "": "nephew or niece"}
 PIBLING_WORD = {"M": "uncle", "F": "aunt", "": "uncle or aunt"}
 
+#: **The in-law pair, added 2026-09-01 on her ruling.** They are not decoration: of the
+#: 9,580 unlabelled people the census reaches by a relative and this preview reached by
+#: nobody, **8,129 are a spouse's father** and 799 a spouse's mother. The shape is always
+#: the same -- the person has a spouse, but the spouse is ALSO unnamed, so no one-hop
+#: *"wife of X"* is available and the nearest named person is a parent-in-law.
+#:
+#: Emma named grandparents, grandchildren and siblings when she asked for long-range
+#: relations and did not name in-laws; asked directly on 2026-09-01 she chose to add them.
+CHILD_IN_LAW_WORD = {"M": "son-in-law", "F": "daughter-in-law", "": "child-in-law"}
+SIBLING_IN_LAW_WORD = {"M": "brother-in-law", "F": "sister-in-law",
+                       "": "brother-in-law or sister-in-law"}
+
 
 def is_placeholder(given: str) -> bool:
     return given.strip().lower() in PLACEHOLDER_GIVEN
@@ -264,6 +276,11 @@ def main() -> int:
         niblings = [n for s in sibs for n in kids(s)]
         piblings = [u for parent in (father, mother) if parent
                     for u in siblings(parent)]
+        # A spouse's parents and a spouse's siblings. Last in precedence, so they only fire
+        # when every nearer relative is absent or unusable -- which for these 8,928 people is
+        # exactly what happens, because their own spouse is unnamed too.
+        spouse_parents = [p for sp in spouses for p in parents(sp)]
+        spouse_sibs = [x for sp in spouses for x in siblings(sp)]
 
         candidates = ([("father", father), ("mother", mother)]
                       + [("spouse", s) for s in spouses]
@@ -272,7 +289,9 @@ def main() -> int:
                       + [("grandchild", g) for g in grandchildren]
                       + [("sibling", s) for s in sibs]
                       + [("pibling", u) for u in piblings]
-                      + [("nibling", n) for n in niblings])
+                      + [("nibling", n) for n in niblings]
+                      + [("spouse_parent", p) for p in spouse_parents]
+                      + [("spouse_sibling", x) for x in spouse_sibs])
 
         relation = via = generated = skipped = ""
         for kind, candidate in candidates:
@@ -301,6 +320,11 @@ def main() -> int:
                 generated = f"{SIBLING_WORD.get(sex, 'sibling')} of {other}"
             elif kind == "pibling":
                 generated = f"{NIBLING_WORD.get(sex, 'nephew or niece')} of {other}"
+            elif kind == "spouse_parent":
+                generated = (f"{CHILD_IN_LAW_WORD.get(sex, 'child-in-law')} of {other}")
+            elif kind == "spouse_sibling":
+                generated = (f"{SIBLING_IN_LAW_WORD.get(sex, 'brother-in-law or sister-in-law')}"
+                             f" of {other}")
             else:
                 generated = f"{PIBLING_WORD.get(sex, 'uncle or aunt')} of {other}"
             break

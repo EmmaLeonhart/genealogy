@@ -61,7 +61,7 @@ reports/unidentified-clusters.md,2026-08-19,13,20054,,,,scripts/build-unidentifi
 reports/wikidata-ja-labels.json,2026-08-19,13,15060650,,,,scripts/build-ja-label-batch.py,reports/derived-family.csv is 235h newer
 reports/wikidata-ja-labels.md,2026-08-19,13,1129,,,,scripts/build-ja-label-batch.py,reports/derived-family.csv is 235h newer
 reports/geni-qid-p2600-gap.tsv,2026-08-23,9,25444,,,,scripts/build-qid-link-p2600.py,out/wikidata/p2600-all.tsv is 179h newer
-reports/garborg-live-state.tsv,2026-08-24,8,2958,,,,scripts/build-garborg-day.py;scripts/garborg-modelling.py,reports/derived-family.csv is 193h newer
+reports/garborg-live-state.tsv,2026-08-24,8,2958,,,,scripts/build-garborg-day.py;scripts/garborg-modelling.py,reports/garborg-qids.tsv is 194h newer
 reports/izumo-p2600-pairs.tsv,2026-08-24,8,6481,,,,scripts/build-izumo-p2600.py;scripts/build-synoptic-correspondence.py;scripts/izumo-tree-vs-chart.py,reports/izumo-roster.tsv is 126h newer
 reports/qid-identity-audit.tsv,2026-08-24,8,2626,,,,scripts/audit-qid-identities.py,reports/derived-family.csv is 119h newer
 reports/removal-batch-vintage.tsv,2026-08-24,8,590,,,,scripts/check-removal-batch-vintage.py,out/wikidata/p2600-all.tsv is 84h newer
@@ -85,26 +85,24 @@ reports/bure-roster.tsv,2026-08-27,5,311636,,,,scripts/build-bure-roster.py;scri
 reports/bure-topology.md,2026-08-27,5,1833,,,,scripts/link-bure-people.py,reports/derived-family.csv is 119h newer
 reports/correspondence-shapes.tsv,2026-08-27,5,1254525,,,,scripts/census-correspondence-shapes.py;scripts/multi-geni-item-roster.py;scripts/resolve-multi-geni-by-parents.py,reports/synoptic-correspondence.tsv is 106h newer
 reports/creation-opportunities.tsv,2026-08-27,5,9967404,,,,scripts/census-creation-opportunities.py,reports/derived-family.csv is 120h newer
-reports/garborg-existing-gaps.tsv,2026-08-27,5,11894,,,,scripts/garborg-existing-gaps.py,reports/derived-facts.csv is 119h newer
+reports/garborg-existing-gaps.tsv,2026-08-27,5,11894,,,,scripts/garborg-existing-gaps.py,reports/garborg-qids.tsv is 120h newer
 reports/geni-stale-duplicates.tsv,2026-08-27,5,3884,,,,scripts/build-stale-duplicates.py;scripts/check-post-merge-resolution.py,reports/derived-family.csv is 119h newer
-reports/missing-transliterations.tsv,2026-08-27,5,3652,,,,scripts/census-missing-transliterations.py,reports/garborg-name-transliterations.tsv is 119h newer
+reports/missing-transliterations.tsv,2026-08-27,5,3652,,,,scripts/census-missing-transliterations.py,reports/garborg-qids.tsv is 120h newer
 reports/multi-geni-items.tsv,2026-08-27,5,364061,,,,scripts/multi-geni-item-roster.py,reports/derived-family.csv is 119h newer
 reports/multi-geni-parent-verdicts.tsv,2026-08-27,5,452901,,,,scripts/resolve-multi-geni-by-parents.py,reports/derived-family.csv is 119h newer
 reports/multi-p2600-triage.tsv,2026-08-27,5,10756,,,,scripts/triage-multi-p2600.py,reports/display-names.csv is 114h newer
 reports/orderlife-pairs.tsv,2026-08-27,5,18158,,,,scripts/measure-orderlife-pairs.py,reports/synoptic-correspondence.tsv is 100h newer
 reports/partial-nn.csv,2026-08-27,5,1705875,,,,scripts/build-cjk-clan-labels.py;scripts/census-partial-nn.py,reports/display-names.csv is 102h newer
-reports/spine-candidate-evidence.tsv,2026-08-27,5,291,,,,scripts/verify-spine-candidates.py,reports/derived-family.csv is 119h newer
-reports/spine-name-candidates.md,2026-08-27,5,12468,,,,scripts/search-spine-names.py,reports/derived-facts.csv is 120h newer
-reports/spine-name-candidates.tsv,2026-08-27,5,10729,,,,scripts/search-spine-names.py;scripts/verify-spine-candidates.py,reports/derived-facts.csv is 120h newer
+reports/spine-candidate-evidence.tsv,2026-08-27,5,291,,,,scripts/verify-spine-candidates.py,reports/garborg-qids.tsv is 120h newer
+reports/spine-name-candidates.md,2026-08-27,5,12468,,,,scripts/search-spine-names.py,reports/garborg-qids.tsv is 121h newer
+reports/spine-name-candidates.tsv,2026-08-27,5,10729,,,,scripts/search-spine-names.py;scripts/verify-spine-candidates.py,reports/garborg-qids.tsv is 121h newer
 reports/structural-walk-validation.tsv,2026-08-27,5,1124862,,,,scripts/build-synoptic-correspondence.py;scripts/validate-structural-walk.py,reports/derived-facts.csv is 119h newer
 reports/wikidata-remove-wrong-p2600.json,2026-08-27,5,1824,,,,scripts/check-removal-batch-vintage.py;scripts/resolve-multi-geni-by-parents.py,reports/derived-family.csv is 119h newer
 reports/wikidata-structural-placeholders.json,2026-08-27,5,24073800,,,,scripts/walk-structural-merge.py,reports/relationship-label-preview.csv is 126h newer
 reports/zipper-evidence.tsv,2026-08-27,5,5010522,,,,scripts/census-zipper-evidence.py,reports/derived-family.csv is 120h newer
-reports/ledger-history.tsv,2026-08-29,3,129905,,,,scripts/ledger-history.py,reports/garborg-qids.tsv is 52h newer
-reports/name-audit.csv,2026-08-29,3,177224,,,,scripts/audit-ledger-names.py;scripts/build-garborg-day.py,reports/garborg-name-transliterations.tsv is 75h newer
-reports/patronymic-resolution.tsv,2026-08-31,1,1256045,,,,scripts/resolve-patronymics.py,reports/patronymic-items-to-create.tsv is 15h newer
-reports/garborg-live-labels.tsv,2026-09-01,0,342972,,,,scripts/build-garborg-day.py;scripts/refresh-live-values.py,reports/derived-family.csv is 6h newer
-reports/garborg-live-values.tsv,2026-09-01,0,593616,,,,scripts/audit-compliance.py;scripts/build-daily-batch.py;scripts/build-garborg-day.py,reports/derived-family.csv is 6h newer
+reports/ledger-history.tsv,2026-08-29,3,129905,,,,scripts/ledger-history.py,reports/garborg-qids.tsv is 59h newer
+reports/name-audit.csv,2026-08-29,3,177224,,,,scripts/audit-ledger-names.py;scripts/build-garborg-day.py,reports/garborg-qids.tsv is 76h newer
+reports/patronymic-resolution.tsv,2026-08-31,1,1256045,,,,scripts/resolve-patronymics.py,reports/garborg-qids.tsv is 16h newer
 reports/seeds.md,2026-08-15,17,16787,10,595,,src/genimerge/cli.py,
 reports/geni-wikidata-pairs.csv,2026-08-24,8,34436,19,586,,scripts/build-geni-wikidata-pairs.py;scripts/build-placeholder-label-batch.py;scripts/build-samaritan-priest-batch.py,
 reports/bure-internal-connectivity.txt,2026-08-28,4,4234,25,580,,,
@@ -133,7 +131,7 @@ docs/mass-export-run.md,2026-08-29,3,10842,558,47,,,
 reports/mass-export-log.tsv,2026-08-31,1,43585,559,46,,,
 CLAUDE.md,2026-09-01,0,187237,600,5,,scripts/audit-turns-recorded.py,
 queue.md,2026-09-01,0,66765,600,5,,scripts/audit-turns-recorded.py;scripts/build-export-provenance.py,
-devlog.md,2026-09-01,0,1466418,604,1,,scripts/audit-turns-recorded.py,
+devlog.md,2026-09-01,0,1467841,604,1,,scripts/audit-turns-recorded.py,
 reports/audit-downloads-2026-08-06.md,2026-08-06,26,8316,,,yes,,
 reports/consistency.md,2026-08-06,26,98286,,,,src/genimerge/cli.py,
 reports/distant-pairs.md,2026-08-06,26,1574,,,,src/genimerge/cli.py,
@@ -1618,6 +1616,8 @@ reports/derived-labels.csv.gz,2026-09-01,0,29535324,,,,,
 reports/display-names.csv.gz,2026-09-01,0,46449620,,,,,
 reports/edit-objects.csv,2026-09-01,0,15940709,,,,scripts/build-edit-objects.py,
 reports/garborg-carry-forward.tsv,2026-09-01,0,106353,,,,scripts/build-garborg-day.py;scripts/extend-transliterations.py,
+reports/garborg-live-labels.tsv,2026-09-01,0,342972,,,,scripts/build-garborg-day.py;scripts/refresh-live-values.py,
+reports/garborg-live-values.tsv,2026-09-01,0,593616,,,,scripts/audit-compliance.py;scripts/build-daily-batch.py;scripts/build-garborg-day.py,
 reports/garborg-name-transliterations.tsv,2026-09-01,0,1193722,,,,scripts/apply-attested-renderings.py;scripts/audit-ledger-names.py;scripts/build-garborg-day.py,
 reports/garborg-qids.tsv,2026-09-01,0,106758,,,,scripts/audit-compliance.py;scripts/audit-ledger-names.py;scripts/audit-marker-surname-labels.py,
 reports/geni-duplicate-candidates.tsv,2026-09-01,0,2252342,,,,scripts/build-merge-worklist.py;scripts/find-geni-duplicates.py,
@@ -1625,7 +1625,7 @@ reports/geni-merge-worklist.md,2026-09-01,0,14605,,,,scripts/build-merge-worklis
 reports/invented-parents.csv,2026-09-01,0,241369,,,,scripts/derive-family.py,
 reports/label-change-census.md,2026-09-01,0,1599,,,,,
 reports/label-collisions.tsv,2026-09-01,0,978,,,,scripts/build-garborg-day.py;scripts/check-label-collisions.py,
-reports/label-edits-emitted.tsv,2026-09-01,0,79950,,,,scripts/build-garborg-day.py,
+reports/label-edits-emitted.tsv,2026-09-01,0,80878,,,,scripts/build-garborg-day.py,
 reports/label-gap.csv,2026-09-01,0,11856729,,,,scripts/census-label-gap.py,
 reports/labels.md,2026-09-01,0,3120,,,,scripts/derive-labels.py,
 reports/midpoint-seeds-to-open.tsv,2026-09-01,0,29,,,,scripts/find-chain-gaps.py,
@@ -1636,7 +1636,7 @@ reports/patronymic-items-to-create.tsv,2026-09-01,0,530261,,,,scripts/build-patr
 reports/post-merge-falsifiable.tsv,2026-09-01,0,33736,,,,scripts/grade-post-merge-drops.py,
 reports/rejected-parents.tsv,2026-09-01,0,1124370,,,,scripts/list-rejected-parents.py,
 reports/relationship-label-preview.csv,2026-09-01,0,16181767,,,,scripts/build-placeholder-label-batch.py;scripts/build-relationship-label-preview.py;scripts/extend-transliterations.py,
-reports/repo-freshness.csv,2026-09-01,0,153935,,,,scripts/build-repo-freshness.py;scripts/refresh-drift.py,
+reports/repo-freshness.csv,2026-09-01,0,153718,,,,scripts/build-repo-freshness.py;scripts/refresh-drift.py,
 reports/script-sweep.md,2026-09-01,0,2611,,,,,
 reports/unrecorded-instructions.tsv,2026-09-01,0,126585,,,,scripts/audit-turns-recorded.py,
 reports/wikidata-agreeing-latin-labels.json,2026-09-01,0,797,,,,scripts/build-agreeing-latin-labels.py,
@@ -1644,7 +1644,7 @@ reports/wikidata-en-labels.json,2026-09-01,0,37770493,,,,scripts/build-en-label-
 reports/wikidata-en-labels.md,2026-09-01,0,913,,,,scripts/build-en-label-batch.py,
 reports/wikidata-four-script-labels.json.gz,2026-09-01,0,4697686,,,,,
 reports/wikidata-four-script-labels.md,2026-09-01,0,1419,,,,scripts/build-four-script-labels.py,
-reports/wikidata-garborg-day.qs,2026-09-01,0,52625,,,,,
+reports/wikidata-garborg-day.qs,2026-09-01,0,52793,,,,,
 reports/wikidata-garborg-name-items.qs,2026-09-01,0,4012,,,,,
 reports/wikidata-ko-labels.json,2026-09-01,0,11973947,,,,scripts/build-ko-label-batch.py,
 reports/wikidata-ko-labels.md,2026-09-01,0,1111,,,,scripts/build-ko-label-batch.py,
