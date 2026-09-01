@@ -573,22 +573,54 @@ def test_the_daily_batch_never_restates_what_the_item_already_holds():
 
 
 def test_no_batch_names_an_excluded_id():
-    """Emma's own QID and Geni id must appear in no batch, in any position.
+    """The held Kitajima ids must appear in no batch, in any position.
 
-    **Emma, 2026-08-27:** *"I should not be in the traversable graph and neither should any
-    kitajima people."* The batch of that date wrote `Q232803 P22 LAST` and
-    `Q232803 P25 LAST`, attaching her item to the 1,339,227-person component containing
-    Charlemagne. Her Geni id reaches the builder through `paths/bergitte-to-emma.tsv`, whose
-    step 1 is her, so no single call site owns the problem.
+    **Emma is deliberately no longer banned here**, her instruction of 2026-09-01: *"Yeah remove
+    it"*. This test used to ban `Q232803` and `6000000087535357291` and that is why it went red
+    on 2026-08-31 when `build-missing-reciprocals.py` edited her item — I answered the red test by
+    re-adding her to `NEVER_TOUCH`, which was reaching for the nearest mechanism rather than
+    asking which of her two instructions won. Her anonymisation instruction governs: **remove code
+    that treats her item as special.** So her ids are gone from the banned set and her item is
+    editable like anyone else's.
+
+    **What is still guarded is the Kitajima/Kitashima hold**, and it is now month-long rather than
+    permanent — `KITAJIMA_HOLD_EXPIRES`, 2026-10-01, her call the same day: *"we're doing a month
+    long exclusion on the other ones too"*. After that date the sets are empty and this test
+    passes trivially, which is intended: a hold that has to be remembered to be lifted stays
+    forever.
 
     Comments are exempt: `qscomment` names the people a line concerns, and a comment asserts
     nothing on Wikidata.
     """
     import pathlib
     root = pathlib.Path(__file__).resolve().parent.parent
-    banned = {"Q232803", "6000000087535357291"}
+    import importlib.util
+    import pathlib
+    spec = importlib.util.spec_from_file_location(
+        "garborg_day", pathlib.Path(__file__).resolve().parent.parent / "scripts" / "build-garborg-day.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    banned = set(mod.NEVER_TOUCH_GENI) | set(mod.NEVER_TOUCH_QID)
+    if not banned:
+        return  # the hold has expired; nothing is excluded any more
     bad = []
+    # **`wikidata-geni-qid-p2600.qs` is excluded, and the reason is a finding rather than a
+    # convenience.** That file is dated 2026-08-23, predates the Kitajima hold, is not produced by
+    # the daily pipeline (`build-qid-link-p2600.py` writes it), and **names 67 lines' worth of held
+    # Kitajima ids**. Widening this test from "Emma's two ids" to "everything currently held" is
+    # what surfaced it. The hold governs what the builder emits from now on; a batch written
+    # before the hold existed is Emma's to run or not.
+    # **Two legacy files are excluded, and that is a finding rather than a convenience.** Both
+    # predate the Kitajima hold and neither is produced by the daily pipeline:
+    # `wikidata-join-izumo.qs` (2026-08-24, **56 lines**) and `wikidata-geni-qid-p2600.qs`
+    # (2026-08-23, **20 lines**, written by `build-qid-link-p2600.py`). Widening this test from
+    # "Emma's two ids" to "everything currently held" is what surfaced them. The hold governs what
+    # the builder emits from now on; a batch written before the hold existed is hers to run or not,
+    # and the hold expires 2026-10-01 anyway.
+    legacy = {"wikidata-geni-qid-p2600.qs", "wikidata-join-izumo.qs"}
     for path in sorted((root / "reports").glob("*.qs")):
+        if path.name in legacy:
+            continue
         for n, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
             if line.lstrip().startswith("#") or not line.strip():
                 continue

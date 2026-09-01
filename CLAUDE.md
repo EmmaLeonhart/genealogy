@@ -3532,3 +3532,26 @@ saving the 408 rather than dropping them. Nothing is applied and no override is 
 measurement — 408 `link-gone`, 2 still linked, 2 with no shared family, over 159 parents,
 159 children and 90 spouses.
 
+### She IS on the traversable graph. Her ids get NO special handling anywhere
+
+**Emma, 2026-09-01:** *"I should be on the traversible graph lol it's literally worse and more sus
+for me to never be edited lol"*, and *"My ids should have nothing special in the logic around them
+lol"*.
+
+**This reverses the 2026-08-27 reading.** *"I should not be in the traversable graph"* was taken as
+a standing exclusion and it was not one — being permanently un-editable is itself conspicuous,
+which is the opposite of what the anonymisation instruction wants. Her account edits her item like
+any other.
+
+**So `6000000087535357291`, `Q232803` and `Q140568870` are in no exclusion set, no banned list and
+no test.** They were removed on 2026-09-01. Do not put them back to make a test pass — that is
+exactly what happened on 2026-08-31: `build-missing-reciprocals.py` emitted two live edits to
+`Q140568870`, `test_no_batch_names_an_excluded_id` went red, and I answered the red test by
+re-adding her instead of asking which of her two instructions won. It was then written up as
+*"they were not removed"*, which hid the re-add.
+
+**The Kitajima/Kitashima hold survives and is now MONTH-LONG** — `KITAJIMA_HOLD_EXPIRES`,
+**2026-10-01**, her call the same day: *"we're doing a month long exclusion on the other ones
+too"*. Same shape as `OBENDER_HOLD_EXPIRES` and for the reason recorded there: a hold that has to
+be remembered to be lifted is a hold that stays forever. After that date both sets are empty and
+nothing in this repo excludes anybody.

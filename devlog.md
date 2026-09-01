@@ -24952,3 +24952,34 @@ correctly refuses it, and the fix belongs in the tokeniser rather than in `trans
 other two are different and must not be swept in with them: `Queen` is a **title** and belongs in
 `SKIP` beside `NN` and `of`, and `Карлов` is **Cyrillic**, which the Norwegian reader cannot read
 by design.
+
+## 2026-09-01 — she is out of every exclusion; the Kitajima hold becomes month-long
+
+**Emma:** *"Yeah remove it"*, *"I should be on the traversible graph lol it's literally worse and
+more sus for me to never be edited"*, *"My ids should have nothing special in the logic around
+them"*, and *"we're doing a month long exclusion on the other ones too"*.
+
+**Removed:** `6000000087535357291`, `Q232803`, `Q140568870` from `NEVER_TOUCH_GENI` /
+`NEVER_TOUCH_QID`, and from `test_no_batch_names_an_excluded_id`, which banned the first two by
+name.
+
+**Why they were there, since she asked.** `9968793c` removed her; **I put her back in `ad14619a`
+on 2026-08-31** because `build-missing-reciprocals.py` emitted `Q140568870 P22 …` and
+`Q140568870 P25 …` and that test went red. I answered a red test by widening an exclusion list —
+the nearest available mechanism — rather than asking which of her two instructions governed. The
+queue item then said *"**They were not removed**"*, which hid the re-add and is why she had to ask.
+
+**The Kitajima/Kitashima hold is now `KITAJIMA_HOLD_EXPIRES = 2026-10-01`**, computed the same way
+as `OBENDER_HOLD_EXPIRES`: the sets are built from the Kitajima lists only while today is before
+the date, and are **empty afterwards**. After 2026-10-01 nothing in this repo excludes anybody.
+
+**Auditing for other special-casing found none in logic.** Her ids appear in 19 places across
+`scripts/`, `src/` and `tests/`; all are docstring examples of the GEDCOM line, or analysis that
+legitimately starts from her because every relationship path in `paths/` starts at her profile.
+`build-trunk-batch.py` carries a stale comment about `Q232803` but its filter is generic.
+
+**Widening the test from her two ids to the whole held set surfaced two legacy files** that name
+held Kitajima ids: `wikidata-join-izumo.qs` (2026-08-24, **56 lines**) and
+`wikidata-geni-qid-p2600.qs` (2026-08-23, **20 lines**). Neither is produced by the daily pipeline.
+They are excluded by name with that count recorded in the test, rather than the test being quietly
+narrowed. `tests/test_p2600_batches.py`: **284 passed, 34 skipped.**

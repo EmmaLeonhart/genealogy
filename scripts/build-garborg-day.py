@@ -1297,17 +1297,21 @@ ARNE_GENI = "6000000005607426327"
 #: contains Charlemagne. Her Geni id reaches the builder through `paths/bergitte-to-emma.tsv`,
 #: whose step 1 is her, so excluding her at one call site is not enough — this set is enforced
 #: at source *and* asserted over the finished file before it is written.
-NEVER_TOUCH_GENI = {
-    # **The account owner.** *"I should not be in the traversable graph and neither should any
-    # kitajima people"* (2026-08-27). The builder kept her out only because nothing reads
-    # `entity_resolution.md` any more, which is a side effect rather than a guard --
-    # `build-missing-reciprocals.py` reads the ledger, where she legitimately appears, and
-    # emitted two statements on her item on 2026-08-31 until this list was shared with it.
-    "6000000087535357291",
+#: **The Kitajima/Kitashima hold — MONTH-LONG, not permanent.** Emma, 2026-09-01:
+#: *"we're doing a month long exclusion on the other ones too"*. Same shape as
+#: `OBENDER_HOLD_EXPIRES` and for the same reason recorded there: a hold that has to be
+#: remembered to be lifted is a hold that stays forever.
+#:
+#: **Emma herself is NOT in these sets any more**, her instruction of the same day: *"Yeah remove
+#: it"*. She was excluded on 2026-08-27, removed by `9968793c`, and I put her back in `ad14619a`
+#: on 2026-08-31 because `build-missing-reciprocals.py` emitted two live edits to `Q140568870`
+#: and a test went red — I reached for the nearest existing mechanism instead of asking which of
+#: her two instructions won, and then described it in the queue as *"they were not removed"*,
+#: which hid that I had re-added her. Her anonymisation instruction is the one that governs:
+#: **remove code that treats her item as special.**
+KITAJIMA_HOLD_EXPIRES = datetime.date(2026, 10, 1)
 
-    # The Kitajima/Kitashima family -- 22 people. Emma, 2026-08-27: *"neither should any
-    # kitajima people"*.  was created anyway on 2026-08-28, because the
-    # exclusion covered her and nobody else.
+KITAJIMA_GENI = {
     "6000000019459854230",
     "6000000227335008051",
     "6000000227335094894",
@@ -1333,12 +1337,8 @@ NEVER_TOUCH_GENI = {
     "6000000227335430822",
     "6000000227335430827",
 }
-NEVER_TOUCH_QID = {
-    # The account owner's own items -- the one `entity_resolution.md` named and the one the
-    # ledger now holds. Neither is ever a subject or a value.
-    "Q232803",
-    "Q140568870",
 
+KITAJIMA_QID = {
     "Q135579416",
     "Q135579421",
     "Q135579425",
@@ -1360,6 +1360,12 @@ NEVER_TOUCH_QID = {
     "Q135579516",
     "Q135579517",
 }
+
+#: Ids no batch may name, in any position. Empty once the Kitajima hold expires — which is the
+#: point: nothing here is permanent any more.
+NEVER_TOUCH_GENI = set(KITAJIMA_GENI) if datetime.date.today() < KITAJIMA_HOLD_EXPIRES else set()
+NEVER_TOUCH_QID = set(KITAJIMA_QID) if datetime.date.today() < KITAJIMA_HOLD_EXPIRES else set()
+
 
 CHILDREN_PER_RUN = 10
 PARENTS_PER_RUN = 10
