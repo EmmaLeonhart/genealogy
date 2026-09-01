@@ -1443,7 +1443,33 @@ tail by construction, and a wrong katakana rendering there is inside her standin
 the scepticism be written down rather than discovered again by somebody who does not know she has
 been burned.
 
-**So: measure it, and let it run meanwhile.**
+**MEASURED, 2026-09-01. Her scepticism is correct and the number is 6 of 10.**
+
+Ten Japanese names whose readings are not in doubt, kanji → hiragana:
+
+| name | pykakasi | the reading |
+| --- | --- | --- |
+| 藤原道長 | ふじわらどうちょう | ふじわらのみちなが |
+| 菅原道真 | すがわらどうしん | すがわらのみちざね |
+| 源義経 | みなもとよしつね | みなもとのよしつね |
+| 小野妹子 | おのいもこ | おののいもこ |
+
+**All four failures are the same failure, and it is ours.** The classical `の` between clan and
+given name is dropped, and where the given name has a Sino-Japanese and a native reading it takes
+the wrong one — 道長 as *dōchō* rather than *Michinaga*. That is precisely the population this
+corpus is full of: Fujiwara, Sugawara, Minamoto, Taira. The six it got right are Sengoku and Edo
+names with regular readings.
+
+**So it is worse than 60% for us, not better.** She said *"I can say for a fact that that library
+sucks for converting Kanji to Hiragana"*, and on the names we actually hold it does.
+
+**Nothing depends on it.** `pykakasi` is installed on the machine and is referenced in exactly one
+place — a docstring in `scripts/build-cjk-romanisation.py` saying it is *not* used, because the
+romanisations are read out of Wikidata's own name items instead. So this measurement changes no
+behaviour; it records the scepticism so nobody reaches for the library without knowing.
+
+**`P1814` *name in kana* therefore stays agentic**, which is what `CLAUDE.md` already says and
+what this measurement now supports rather than merely asserts.
 
 - Compare `pykakasi` against `scripts/translit_no.py` and against the **317 hand-written rows** of
   `reports/garborg-name-transliterations.tsv` that the engine did not itself write. That file is
