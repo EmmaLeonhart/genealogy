@@ -1496,3 +1496,22 @@ work around.
 
 **Do not act on the size alone until it is near the limit** — the point of writing it down now is
 that the next rebuild is when it would surprise her.
+
+## THE VERY LAST ITEM — a GitHub Pages site documenting the repo
+
+**Emma, 2026-09-01:** *"an item at the end of the queue: a github pages site built with actions
+that documents generally what the repo is doing with different things, its data modeling and
+algorithms and such. This is the last item though only after all the other stuff."*
+
+**After everything else. Not before.**
+
+- Built by a workflow, published to Pages — the repo went public 2026-09-01 so Pages is free.
+- **What the repo is doing**: merge Geni exports into one tree, reconcile against Wikidata,
+  generate the edits that create the missing people.
+- **The data modelling**: how a name becomes `P735`/`P734`/`P5056` with `P1545`, `P7338`, `P3831`;
+  how a GEDCOM date modifier becomes `P1480`/`P1319`/`P1326`; the `mul`-is-the-real-label rule and
+  the married-name ordering; the NN/redaction algorithm.
+- **The algorithms**: the daily ring one hop off the Wikidata subgraph from Arne; the zipper join
+  and its provenance chains; the density and descendants seed rankings; the transliteration funnel.
+- Generated from what is in the repo rather than hand-written prose that will go stale — the
+  `CLAUDE.md` sections and the module docstrings already carry most of it.
