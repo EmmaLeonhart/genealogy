@@ -95,7 +95,6 @@ STORE = REPO_ROOT / "wikidata" / "items"
 INDEX = REPO_ROOT / "out" / "wikidata" / "store-index.sqlite3"
 OUT_JSON = REPO_ROOT / "out" / "wikidata" / "edits.json"
 OUT_CSV = REPO_ROOT / "reports" / "edit-objects.csv"
-RESOLUTIONS = REPO_ROOT / "entity_resolution.md"
 
 csv.field_size_limit(10_000_000)
 
@@ -159,12 +158,9 @@ def main() -> int:
     # path: add_geni_id first, because the Geni ID must exist before any claim
     # can be cited to it or any relationship added.
     hand: dict[str, str] = {}
-    if RESOLUTIONS.exists():
-        parsed = entities.parse(RESOLUTIONS.read_text(encoding="utf-8"))
-        for resolution in parsed.resolutions:
-            if resolution.geni_id in labels and resolution.geni_id not in linked:
-                hand[resolution.geni_id] = resolution.qid
-        linked.update(hand)
+    # **`entity_resolution.md` is gone and nothing may read it.** Emma, 2026-08-31: *"no
+    # files should read it lol."* Deleted in `12f3134a`; the readers were not, and each
+    # either crashed or degraded silently.
     print(f"{len(linked):,} people carry an item "
           f"({len(hand):,} matched but not yet stating the Geni ID)", flush=True)
 

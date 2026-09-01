@@ -53,7 +53,6 @@ SOURCE = REPO_ROOT / "reports" / "display-names.csv"
 OUT_CSV = REPO_ROOT / "reports" / "derived-labels.csv"
 OUT_MD = REPO_ROOT / "reports" / "labels.md"
 #: Emma's scratchpad. Holds identities and corrections no query here can produce.
-RESOLUTIONS = REPO_ROOT / "entity_resolution.md"
 
 csv.field_size_limit(10_000_000)
 
@@ -109,16 +108,10 @@ def main() -> int:
     # only a correction recorded by hand can. Applying it here, at derivation,
     # leaves the exports untouched as the record of what Geni actually said.
     corrected: dict[str, str] = {}
-    if RESOLUTIONS.exists():
-        from genimerge import entities
-
-        parsed = entities.parse(RESOLUTIONS.read_text(encoding="utf-8"))
-        corrected = parsed.corrected_names()
-        print(f"{len(corrected):,} name corrections from {RESOLUTIONS.name}", flush=True)
-        if parsed.unparsed:
-            print(f"  WARNING: {len(parsed.unparsed)} unparsed entries in that file",
-                  flush=True)
-
+    # **`entity_resolution.md` is gone and nothing may read it.** Emma, 2026-08-31: *"no
+    # files should read it lol."* It was deleted in `12f3134a` and the readers were not;
+    # every one of them either crashed or degraded silently, which `CLAUDE.md` § *Systematic
+    # review for legacy code* names as the worse of the two.
     by_person: dict[str, list[dict]] = defaultdict(list)
     with open(SOURCE, encoding="utf-8", newline="") as handle:
         for row in csv.DictReader(handle):

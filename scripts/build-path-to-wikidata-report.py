@@ -53,8 +53,9 @@ def main() -> int:
     fac = {r["geni_id"]: r for r in csv.DictReader(open(FACTS, encoding="utf-8"))}
 
     qid = {g: r["qid"] for g, r in lab.items() if r["qid"]}
-    parsed = entities.parse((REPO_ROOT / "entity_resolution.md").read_text(encoding="utf-8"))
-    qid.update({r.geni_id: r.qid for r in parsed.resolutions if r.geni_id not in qid})
+    # **`entity_resolution.md` is gone and nothing may read it.** Emma, 2026-08-31: *"no
+    # files should read it lol."* Deleted in `12f3134a`; the readers were not, and each
+    # either crashed or degraded silently.
 
     kids: dict[str, list[str]] = {}
     for geni_id, row in fam.items():

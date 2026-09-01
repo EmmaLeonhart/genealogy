@@ -694,7 +694,17 @@ def _cmd_descendants(args: argparse.Namespace) -> int:
 
 def _cmd_entity_resolution(args: argparse.Namespace) -> int:
     ws = Workspace.from_args(args)
-    source = args.file or (REPO_ROOT / "entity_resolution.md")
+    # **No default source any more.** `entity_resolution.md` was deleted in `12f3134a`
+    # and Emma, 2026-08-31: *"no files should read it lol."* The command survives because
+    # `genimerge.entities` parses her free-form format and she may hand it another file;
+    # what goes is the assumption that the retired one is still there. Without `--file`
+    # it now says so rather than reporting the file as missing, which read as an error
+    # in the tool rather than a retired mechanism.
+    if not args.file:
+        print("entity_resolution.md is retired -- pass --file to parse another",
+              file=sys.stderr)
+        return 1
+    source = args.file
     if not source.exists():
         print(f"no such file: {source}", file=sys.stderr)
         return 1

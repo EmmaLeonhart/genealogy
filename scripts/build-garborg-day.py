@@ -152,15 +152,13 @@ def ledger():
     with open(ROOT / "reports" / "garborg-qids.tsv", encoding="utf-8") as f:
         for row in csv.DictReader(f, delimiter="\t"):
             out[row["geni_id"]] = row["qid"]
-    try:
-        sys.path.insert(0, str(ROOT / "src"))
-        from genimerge import entities
-        for r in entities.read_file(ROOT / "entity_resolution.md").resolutions:
-            if r.geni_id and r.qid:
-                out.setdefault(r.geni_id, r.qid)
-    except Exception as exc:                                        # noqa: BLE001
-        print(f"WARNING: entity_resolution.md not folded into the ledger ({exc}) -- "
-              f"a hand-asserted item could be created a second time")
+    # **`entity_resolution.md` was deleted in `12f3134a` and its readers were not.**
+    # Emma, 2026-08-31: *"no files should read it lol."* The block that stood here
+    # folded that file's hand-asserted pairs into this lookup; the file has been gone
+    # since 2026-08-29, so the block contributed nothing and only reported its own
+    # absence. `CLAUDE.md` § *LEGACY CODE IS DELETED* is the rule and § *Systematic
+    # review for legacy code* is the other half of it -- deleting the file is half the
+    # job, and a reader that degrades quietly is the worse half.
 
     # **Emma's own identity confirmations, and they have to be READ, not appended once.**
     #

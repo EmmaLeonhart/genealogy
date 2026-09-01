@@ -153,20 +153,10 @@ def main() -> int:
     # `Q232803` is her own item, which carries no `P2600` and is therefore
     # invisible to the `qid` column of `derived-family.csv`. The first run of this
     # script proposed creating her a second item.
-    try:
-        from genimerge import entities
-        resolved = entities.parse(
-            (REPO / "entity_resolution.md").read_text(encoding="utf-8"))
-        for r in resolved.resolutions:
-            g = (getattr(r, "geni_id", "") or "").strip()
-            q = (getattr(r, "qid", "") or "").strip()
-            if g and q:
-                qid_of.setdefault(g, q)
-        print(f"  {len(resolved.resolutions)} hand-resolved identities read"
-              f"{f', {len(resolved.unparsed)} entries unparsed' if resolved.unparsed else ''}")
-    except Exception as exc:                       # noqa: BLE001 - reported, not swallowed
-        print(f"  entity_resolution NOT parsed ({exc}); "
-              "hand-resolved identities are not excluded", file=sys.stderr)
+    # **`entity_resolution.md` is gone and nothing may read it.** Emma, 2026-08-31: *"no
+    # files should read it lol."* It was deleted in `12f3134a` and the readers were not;
+    # every one of them either crashed or degraded silently, which `CLAUDE.md` § *Systematic
+    # review for legacy code* names as the worse of the two.
     trunk = {g: n for g, n in trunk.items() if g not in qid_of}
     print(f"{len(trunk)} after removing people who already have an item")
 

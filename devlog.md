@@ -23863,3 +23863,29 @@ the first two halves passed on 2026-08-31 while this one could not run at all. R
 diffed: **identical, byte for byte**, 358 bytes, 3 `NOTE` links over 3 individuals.
 
 Section deleted.
+
+## 2026-08-31 — every reader of the deleted `entity_resolution.md` is gone
+
+Emma: *"no files should read it lol, fix that."* **22 files mentioned it; 0 code readers remain.**
+
+- **Deleted:** `build-entity-resolution-batch.py`, whose entire purpose was that file, and
+  `build-charlemagne-route.py`, for the spine she declared legacy on 2026-08-30.
+- **Read removed, script kept:** `build-garborg-day.py`, `derive-labels.py`,
+  `refresh-live-values.py`, `path-between.py`, `build-trunk-batch.py`, `build-edit-objects.py`,
+  `build-path-to-wikidata-report.py`. Every one folded that file's hand-asserted pairs into a
+  lookup and had contributed **nothing** since 2026-08-29 — most of them silently, which
+  `CLAUDE.md` § *Systematic review for legacy code* names as the worse half: *"deleting the file
+  is half the job."*
+- **`genimerge.cli`'s command keeps working with no default source.** `genimerge.entities` still
+  parses her free-form format and she may hand it another file; the assumption that the retired
+  one is there is what went.
+
+**One near-miss worth recording: I deleted `build-edit-objects.py` and had to restore it**, because
+`tests/test_edit_object_labels.py` imports it. Deleting a script a test loads is breaking a test to
+tidy up, and the rails forbid exactly that. Only the read came out. The wider 218-script sweep now
+says **report the list before deleting in bulk**, for that reason.
+
+**The builder still works and its output moved for a reason I checked rather than waved through.**
+24 creations where the last run gave 27: her nine new `SAME` verdicts landed, and **0 of the 46
+people she has confirmed are being created** — which is the ledger fold doing its job, not a
+regression from this cleanup.

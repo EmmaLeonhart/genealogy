@@ -832,43 +832,29 @@ to do because the most important thing is to fix up the CJK labels on our existi
 Existing people drain first, then the 177 clan people. *"The clan people also extend the range of
 the quick statement stuff by a lot, so this is worth leaving at the end."*
 
-## Systematic review for legacy code — find it and delete it
+## Systematic review for legacy code — the 218 scripts, now the readers are done
 
-**Start here: 33 files still read `entity_resolution.md`, which no longer exists.** It was
-deleted in `12f3134a` and the deletion was right — `CLAUDE.md` § *LEGACY CODE IS DELETED* and the
-queue's own § *The Wikidata link goes in the bio during the SYNOPTIC TREE BUILD* both retire it.
-What was not done is the other half: the readers.
+**The `entity_resolution.md` readers are cleared, 2026-08-31.** Emma: *"no files should read it
+lol."* **0 code readers remain**, down from 22 files:
 
-Two behaviours observed rather than inferred, and the difference is the whole problem:
+- **2 deleted outright** — `build-entity-resolution-batch.py`, whose entire purpose was that file,
+  and `build-charlemagne-route.py`, for the spine she declared legacy.
+- **7 had the read removed** — `build-garborg-day.py`, `derive-labels.py`,
+  `refresh-live-values.py`, `path-between.py`, `build-trunk-batch.py`, `build-edit-objects.py`,
+  `build-path-to-wikidata-report.py`. Each folded that file's pairs into a lookup and had been
+  contributing nothing since 2026-08-29.
+- **`genimerge.cli`'s `entity-resolution` command keeps working but has no default source.**
+  `genimerge.entities` parses her free-form format and she may hand it another file; what went is
+  the assumption that the retired one is still there.
 
-- `scripts/build-qid-links-gedcom.py` **crashes** — `FileNotFoundError`, no guard. Found
-  2026-08-31 when it blocked the QID-link idempotence check.
-- `scripts/build-garborg-day.py` **degrades with a warning** and produced today's batch fine.
+**`build-edit-objects.py` was deleted and then restored**, because `tests/test_edit_object_labels.py`
+loads it. Deleting a script a test imports is breaking a test to tidy up, which the rails forbid;
+only the read came out.
 
-The other 31 have not been triaged and a grep for `try:`/`exists()` anywhere in a file is not
-evidence that the *read* is guarded. Run each, or read the call site; do not assume.
-
-**The general lesson for this item: deleting the file is half the job.** A reader of a deleted
-file either crashes, which is loud and cheap, or silently proceeds without data it was designed
-around — and the second is the one that produces a plausible wrong number.
-
-
-**Emma, 2026-08-29, and it is the last item by her instruction:** *"That is the last item of the
-queue to do a systematic review to find this kind of legacy code thing."* `CLAUDE.md` § *LEGACY CODE
-IS DELETED* is the rule; this is the sweep.
-
-**Three scripts are orphaned as of `12f3134a` and are the obvious start** — all three read
-`entity_resolution.md`, which no longer exists:
-
-- `scripts/build-entity-resolution-batch.py` — its entire purpose was that file
-- `scripts/build-charlemagne-route.py`
-- `scripts/build-edit-objects.py`
-
-**218 scripts are in `scripts/`.** The test is *does the pipeline read this*, not *might it be
-useful*. A defensible sweep: every script not referenced by another script, by a test, by
-`CLAUDE.md`, or by a queue item, and whose outputs nothing reads. Report the list before deleting
-in bulk — but do not preserve something merely because deleting feels irreversible, since git has
-it and a stale file in the tree is the thing that actually costs.
+**What remains is the wider sweep.** 218 scripts in `scripts/`, and the test is *does the pipeline
+read this*, not *might this be useful*. A defensible pass: every script not referenced by another
+script, by a test, by `CLAUDE.md`, or by a queue item, and whose outputs nothing reads. **Report
+the list before deleting in bulk** — the `build-edit-objects.py` near-miss is why.
 
 ## One batch file, names first, and a created person is linked to their names
 
