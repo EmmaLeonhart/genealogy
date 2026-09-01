@@ -273,14 +273,45 @@ def main() -> int:
                         for g in parents(parent)]
         grandchildren = [g for child in children for g in kids(child)]
         sibs = siblings(gid)
-        niblings = [n for s in sibs for n in kids(s)]
-        piblings = [u for parent in (father, mother) if parent
-                    for u in siblings(parent)]
+        # **The side is known here and was being thrown away.** Emma, 2026-09-01: *"you realize we
+        # can do logic for the NN stuff right? It's easy lol."* She is right — a pibling is reached
+        # through a NAMED parent and a nibling through a NAMED sibling, so whether the link runs
+        # through the father or the mother is not an inference, it is which list the candidate came
+        # out of. Korean needs exactly that (삼촌 against 외삼촌, 고모 against 이모) and the batch
+        # was emitting no `ko` for 129 people because `generated_en` collapsed it away.
+        nibling_side = {}
+        niblings = []
+        for sib in sibs:
+            for n in kids(sib):
+                niblings.append(n)
+                # `sib` is this nibling's parent; which one decides the side for the nibling's
+                # label, so read it off the nibling's own record rather than guessing from sex.
+                nrow = family.get(n) or {}
+                nibling_side.setdefault(
+                    n, "paternal" if nrow.get("father") == sib
+                    else "maternal" if nrow.get("mother") == sib else "")
+        pibling_side = {}
+        piblings = []
+        for parent, which in ((father, "paternal"), (mother, "maternal")):
+            if not parent:
+                continue
+            for u in siblings(parent):
+                piblings.append(u)
+                pibling_side.setdefault(u, which)
         # A spouse's parents and a spouse's siblings. Last in precedence, so they only fire
         # when every nearer relative is absent or unusable -- which for these 8,928 people is
         # exactly what happens, because their own spouse is unnamed too.
         spouse_parents = [p for sp in spouses for p in parents(sp)]
-        spouse_sibs = [x for sp in spouses for x in siblings(sp)]
+        spouse_sibs = []
+        spouse_sib_side = {}
+        for sp in spouses:
+            for x in siblings(sp):
+                spouse_sibs.append(x)
+                # `sex` is the unnamed person's. Their spouse's sibling is on the wife's side if
+                # the unnamed person is male, the husband's side if female — Korean splits
+                # 처남/처제 from 시숙/시누이 on exactly that.
+                spouse_sib_side.setdefault(
+                    x, "wife" if sex == "M" else "husband" if sex == "F" else "")
 
         candidates = ([("father", father), ("mother", mother)]
                       + [("spouse", s) for s in spouses]
@@ -342,6 +373,12 @@ def main() -> int:
             "sex": sex,
             "mul_label": f"NN {surname}".strip() if surname else "NN",
             "relation_used": relation,
+            # paternal/maternal for uncle-aunt-nephew-niece, husband/wife for an in-law sibling,
+            # empty where the relation does not have a side. Korean needs it; English does not.
+            "relation_side": (nibling_side.get(via, "") if relation == "nibling"
+                              else pibling_side.get(via, "") if relation == "pibling"
+                              else spouse_sib_side.get(via, "") if relation == "spouse_sibling"
+                              else ""),
             "hops": ("" if not relation else
                      "1" if relation in ("father", "mother", "spouse", "child")
                      else "2"),

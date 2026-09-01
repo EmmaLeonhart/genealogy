@@ -104,12 +104,19 @@ CJK_RELATION = {
     "nephew": ("の甥", "之侄", "의 조카"),
     "niece": ("の姪", "之侄女", "의 조카딸"),
     "nephew or niece": ("の甥姪", "之侄", "의 조카"),
+    # **Side-dependent: the Korean comes from `KO_BY_SIDE`, not from here.** Emma, 2026-09-01:
+    # *"you realize we can do logic for the NN stuff right? It's easy lol."* A nibling is reached
+    # through a NAMED sibling who is that nibling's father or mother, so paternal against maternal
+    # is which list the candidate came out of rather than an inference. 삼촌/외삼촌, 고모/이모.
     "uncle": ("の叔父", "之叔父", None),
     "aunt": ("の叔母", "之姑母", None),
     "uncle or aunt": ("の叔父叔母", "之叔伯", None),
     "son-in-law": ("の婿", "之婿", "의 사위"),
     "daughter-in-law": ("の嫁", "之媳", "의 며느리"),
     "child-in-law": ("の子の配偶者", "之子媳", "의 자녀의 배우자"),
+    # **These stay unrendered and the reason is different from uncle/aunt.** Korean in-law sibling
+    # terms split by the speaker's sex AND relative age -- 처남 against 매형, 시숙 against 시동생 --
+    # and age is not what the side logic gives us. 482 people; they keep `ja` and `zh`.
     "brother-in-law": ("の義兄弟", "之姐夫", None),
     "sister-in-law": ("の義姉妹", "之嫂", None),
     "brother-in-law or sister-in-law": ("の義兄弟姉妹", "之姻親", None),
@@ -123,7 +130,17 @@ RELATION_RE = re.compile(
                      sorted(CJK_RELATION, key=len, reverse=True)) + r") of (.+)$", re.I)
 
 
-def cjk_labels(en_label, table):
+#: The Korean the side decides. `nibling` means the unnamed person IS the uncle or aunt of the
+#: named one, so the term describes them from the nephew's side of the family.
+KO_BY_SIDE = {
+    ("uncle", "paternal"): "의 삼촌",
+    ("uncle", "maternal"): "의 외삼촌",
+    ("aunt", "paternal"): "의 고모",
+    ("aunt", "maternal"): "의 이모",
+}
+
+
+def cjk_labels(en_label, table, side=""):
     """`(ja, zh)` for a generated `X of Y` label, or `(None, None)`.
 
     **This was deferred, and the reason it was deferred is now gone.** `CLAUDE.md` records that
@@ -140,9 +157,11 @@ def cjk_labels(en_label, table):
     m = RELATION_RE.match((en_label or "").strip())
     if not m:
         return None, None, None
-    words = CJK_RELATION.get(m.group(1).lower())
+    kind = m.group(1).lower()
+    words = CJK_RELATION.get(kind)
     if not words:
         return None, None, None
+    ko_word = words[2] or KO_BY_SIDE.get((kind, side))
     ja_parts, zh_parts, ko_parts = [], [], []
     for token in m.group(2).split():
         trio = table.get(token)
@@ -156,7 +175,7 @@ def cjk_labels(en_label, table):
     # **Korean needs the relative's name in Hangul and a relation word that does not assert a
     # side.** Either missing means no `ko` rather than a half-Hangul label -- *partial is worse
     # than absent*, which is why `ja`/`zh` are gated on every token too.
-    ko = (" ".join(ko_parts) + words[2]) if (words[2] and all(ko_parts)) else None
+    ko = (" ".join(ko_parts) + ko_word) if (ko_word and all(ko_parts)) else None
     return ja, zh, ko
 
 
@@ -183,7 +202,8 @@ def main() -> int:
         labels = {"mul": r["mul_label"]}
         if r.get("generated_en"):
             labels["en"] = r["generated_en"]
-            ja, zh, ko = cjk_labels(r["generated_en"], translit)
+            ja, zh, ko = cjk_labels(r["generated_en"], translit,
+                                    (r.get("relation_side") or ""))
             if ja:
                 labels["ja"], labels["zh"] = ja, zh
                 counts["ja and zh built from the relative's name"] += 1

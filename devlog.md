@@ -25041,3 +25041,37 @@ came from a slice reported as if it were the corpus. Measured over `reports/disp
 **6,112** carry Hangul. And the 796 are the wrong target regardless — `P1814` is the kana *reading*
 of a Han-written name, so the population is the Han-written Japanese subset of the 129,338, and the
 dependency is the **culture classifier** rather than a creation count.
+
+## 2026-09-01 — the paternal/maternal side was in the tree all along
+
+**Emma:** *"you realize we can do logic for the NN stuff right? It's easy lol."* She is right and
+the claim I had written — that Korean forces a distinction *"we never measured"* — was wrong about
+our own data rather than about Korean.
+
+**The side is not an inference. It is which list the candidate came out of.**
+`build-relationship-label-preview.py` builds `piblings` per **named parent** and `niblings` per
+**named sibling**, so paternal against maternal is already determined at the moment the candidate
+is chosen. `generated_en` collapsed it to *"uncle of X"* before the batch ever saw it.
+
+A new `relation_side` column carries it: **nibling 74 paternal, 45 maternal, 10 undetermined**;
+pibling 756/724; spouse_sibling 268 husband-side, 212 wife-side. For a nibling the side is read off
+the **nibling's own record** — is the linking sibling their father or their mother — rather than
+guessed from that sibling's sex.
+
+`KO_BY_SIDE` in the batch turns it into the right word: **삼촌** paternal uncle, **외삼촌** maternal
+uncle, **고모** paternal aunt, **이모** maternal aunt. Emitted and read by eye:
+`카르르 츠리스티안 닐센의 고모`, `니코리네 아우구스타 헨리크센의 외삼촌`, `수시로 브하라타의 이모`.
+
+**ko 81,636 → 81,697.** Of the 129 uncle/aunt people, **61** now get a Korean label; the rest lack
+a Hangul rendering for some token of the relative's name, which is the same per-token gate `ja`
+and `zh` pass through.
+
+**The in-law sibling terms stay unrendered, and for a different reason that is worth keeping
+straight.** Korean splits those by the speaker's sex **and relative age** — 처남 against 매형, 시숙
+against 시동생 — and age is not what the side logic yields. 482 people keep `ja` and `zh` and no
+`ko`. That is a real gap rather than a claim that it cannot be done.
+
+**Her other correction, applied to how this was written up:** *"please don't make generalizations
+on the entire dataset with small test sections, because the dataset is extremely heterogeneous."*
+The counts above are over the whole preview, not a slice — and no claim is made here about what the
+61 or the 482 imply for any other population.
