@@ -23646,3 +23646,31 @@ without noticing, 38 `DIFFERENT` verdicts would have entered `emma-judgments.tsv
 examples of a distinction that is not the one being learnt — teaching the threshold that spouses
 are not duplicates, which nobody needed, while the real signal was diluted eightfold. A deck of
 mostly-wrong questions does not merely waste her time; it poisons the sample.
+
+## 2026-08-31 — the deck was stale, and treating the correspondence as identification empties it
+
+Emma answered all nine `SAME` and then said the thing that mattered: *"I think literally all these
+people were identified earlier and some are very stale. Most have identification already on
+wikidata lmao."*
+
+**Checked: 7 of the 9 were already in `reports/synoptic-correspondence.tsv`.** Known through the
+structural walk, the zipper, her own Geni bio links or her earlier verdicts — **none of which puts
+a `P2600` on Wikidata**, and `P2600` was the only thing the deck's `claimed` set consulted. So it
+was asking her to re-identify people the repo had already identified.
+
+**Fixed by using the union rather than one source.** `synoptic-correspondence.tsv` is that union,
+565,348 pairs across eight sources; `docs/synoptic-correspondence.md`, written earlier today, is
+what each is worth. An item claimed by any of them is spoken for, and a Geni profile already
+identified is not a candidate for identification.
+
+    corpus-wide   9,061 -> 709
+    the deck         47 -> 9 (slot fix) -> 0
+
+**Zero is the answer, not a failure.** There is nothing left in the network for her to adjudicate:
+every parent the guard was refusing is either already identified somewhere or has now been ruled
+on. The nine verdicts are recorded, so `ledger()` folds them and those people stop being refused.
+
+**Three bugs in one tool in one evening, each found by her reading the output**: the deck was
+scoped to a 9,061-row corpus-wide pattern rather than the ledger; it offered the spouse rather
+than the same-slot parent; and it consulted one identification source out of eight. Every one was
+invisible from the code and obvious from a single card.

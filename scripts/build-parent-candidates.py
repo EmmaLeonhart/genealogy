@@ -103,6 +103,28 @@ def main():
                 sp_of[qid] = ss
     qid_of = {g: q for q, g in geni_of.items()}
     claimed = set(geni_of)
+
+    # **`P2600` is not the only thing that identifies somebody, and using it alone made the deck
+    # stale.** Emma, 2026-08-31, on the nine cases that survived the slot fix: *"I think literally
+    # all these people were identified earlier and some are very stale. Most have identification
+    # already on wikidata lmao."* She answered `SAME` to all nine, and **7 of the 9 were already
+    # in `reports/synoptic-correspondence.tsv`** -- known through the structural walk, the zipper,
+    # her own bio links or her earlier verdicts, none of which put a `P2600` on Wikidata.
+    #
+    # So an item is spoken for if ANY source in the synoptic correspondence claims it, and a Geni
+    # profile we have already identified is not a candidate for identification. That file is the
+    # union of all eight sources; `docs/synoptic-correspondence.md` is what each is worth.
+    known_geni, known_qid = set(), set()
+    synoptic = ROOT / "reports" / "synoptic-correspondence.tsv"
+    if synoptic.exists():
+        with io.open(synoptic, encoding="utf-8", newline="") as fh:
+            for r in csv.DictReader(fh, delimiter="	"):
+                if r.get("qid") and r.get("geni_id"):
+                    known_qid.add(r["qid"])
+                    known_geni.add(r["geni_id"])
+        claimed |= known_qid
+        print("%s items and %s profiles already identified somewhere"
+              % (format(len(known_qid), ","), format(len(known_geni), ",")), file=sys.stderr)
     sys.stderr.write("%s items carry a P2600\n" % format(len(geni_of), ","))
 
     # ---- our side ------------------------------------------------------------------
@@ -150,7 +172,7 @@ def main():
         if not parents_of.get(cq):
             continue
         for g in parents:
-            if g in qid_of or g.startswith(("9995", "9990")):
+            if g in qid_of or g in known_geni or g.startswith(("9995", "9990")):
                 continue
             # **MATCH THE SLOT.** Emma, 2026-08-31, shown a case pairing
             # `Helena Mikontytär Schulin` with `Lars Henrik Keckman`: *"pretty sure this is the
