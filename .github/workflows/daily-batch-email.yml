@@ -30,6 +30,16 @@ jobs:
   send:
     runs-on: ubuntu-latest
     timeout-minutes: 15
+    # **Job-level, not step-level, and that distinction is a real bug rather than style.** A
+    # step's `if:` is evaluated BEFORE that step's own `env:` is applied, so
+    # `if: env.SMTP_SERVER != ''` on a step that sets `SMTP_SERVER` in its own `env:` is always
+    # false. The first run looked right -- the email step skipped and the explanation step ran --
+    # but it would have skipped just the same AFTER she added the secrets, which is the failure
+    # that would never have announced itself.
+    env:
+      SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
+      SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+      SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
     steps:
       # Only the batch and the scripts that describe it. This workflow does not rebuild
       # anything — the batch is committed, and rebuilding needs the corpus and 17 GB.
@@ -67,9 +77,6 @@ jobs:
       - name: Email it
         if: env.SMTP_SERVER != ''
         env:
-          SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
-          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
-          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
           CREATES: ${{ steps.batch.outputs.creates }}
           LINES: ${{ steps.batch.outputs.lines }}
           CARRIED: ${{ steps.batch.outputs.carried }}
@@ -77,8 +84,6 @@ jobs:
 
       - name: Say why it was not sent
         if: env.SMTP_SERVER == ''
-        env:
-          SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
         run: |
           echo "SMTP_SERVER is not set, so nothing was emailed."
           echo "The batch is attached to this run as the 'wikidata-garborg-day' artifact."
