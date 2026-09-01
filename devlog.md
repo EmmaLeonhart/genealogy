@@ -23366,3 +23366,32 @@ narrows its input and returns a plausible number.
 `sam_key` is now one shared helper — given name plus regnal ordinal, punctuation stripped — used
 for both the office reconciliation and the corpus match, rather than the two copies that had
 started to drift.
+
+## 2026-08-31 — French added to the NN labels, and a range that was not a range
+
+Emma: *"weirdest thing I noticed was that we didn't the NN stuff in French."* It was missing
+rather than excluded. `CLAUDE.md` records why Slavic and Welsh are out — they inflect the name
+after the relationship word — and French does not: `fille de Arne Garborg` leaves the name exactly
+as it stands, the same as Spanish, Italian and Catalan, all of which were already there.
+
+`scripts/build-nn-label-batch.WORDS` now has **11 languages**. The batch is 3,525 edits: 1,310
+moving `NN` into `mul` and 2,215 descriptive labels.
+
+**French needed one thing the other ten do not: elision.** `de` becomes `d'` before a vowel, so
+`fils de Arne` is wrong and `fils d'Arne` is right. That cannot live in the `WORDS` table beside
+`de`, because it depends on the **name** rather than on the relationship, so it moved into a
+`_join` helper that every language passes through and only French changes.
+
+**And I got the vowel test wrong first, in a way worth recording.** The first version was
+`other[:1] in "AEIOUaeiouÀ-ÅÈ-ËÒ-Ö"` — a plain string, where `À-Å` is three literal characters and
+not a range. `É` therefore failed while `A` worked, and `fille de Éivind` came out unelided next
+to a correct `fils d'Arne`. Caught by printing the actual output rather than trusting the
+expression. It now strips the accent with NFD and tests the base letter, which has no range in it
+to get wrong.
+
+**Then `Ø` and `Æ` still failed**, because they do not decompose — they are letters in their own
+right rather than accented forms, so NFD leaves them alone. Named explicitly, since Norwegian
+names are the commonest thing in this corpus: `fille d'Øystein`, `fille d'Æsa`.
+
+**`h` is deliberately left unelided.** French distinguishes aspirate from mute `h` and nothing in
+a Geni name says which, so `de Henri` stands rather than being guessed at.

@@ -187,6 +187,23 @@ WORDS: dict[str, dict[str, object]] = {
            "grandchild_of": {"M": "barnebarn", "F": "barnebarn", "": "barnebarn"},
            "grandparent_of": {"M": "bestefar", "F": "bestemor",
                               "": "besteforelder"}},
+    # **French, added 2026-08-31.** Emma: *"weirdest thing I noticed was that we didn't the NN
+    # stuff in French."* It was simply missing rather than excluded: the reason Slavic and Welsh
+    # are out is that they inflect the name after the relationship word, and French does not --
+    # `fille de Arne Garborg` leaves the name exactly as it stands, the same as Spanish and
+    # Italian, which are both here.
+    #
+    # `de` elides before a vowel (`fils d'Arne`), which `_of` below handles rather than the
+    # table, because the elision depends on the NAME and not on the relationship.
+    "fr": {"of": "de",
+           "child_of": {"M": "fils", "F": "fille", "": "enfant"},
+           "spouse_of": {"M": "époux", "F": "épouse", "": "conjoint"},
+           "parent_of": {"M": "père", "F": "mère", "": "parent"},
+           "sibling_of": {"M": "frère", "F": "sœur", "": "frère ou sœur"},
+           "grandchild_of": {"M": "petit-fils", "F": "petite-fille",
+                             "": "petit-enfant"},
+           "grandparent_of": {"M": "grand-père", "F": "grand-mère",
+                              "": "grand-parent"}},
     "es": {"of": "de",
            "child_of": {"M": "hijo", "F": "hija", "": "hijo o hija"},
            "spouse_of": {"M": "esposo", "F": "esposa", "": "cónyuge"},
@@ -225,6 +242,39 @@ WORDS: dict[str, dict[str, object]] = {
 #: in `mul` cannot be found. Other languages are touched only where they carry the
 #: marker already.
 ALWAYS = ("en",)
+
+
+
+def _starts_with_vowel(name):
+    """True when the first letter is a vowel, accents and all.
+
+    **Written after getting it wrong once.** The first version tested
+    `other[:1] in "AEIOUaeiouÀ-ÅÈ-ËÒ-Ö"`, which is a plain string: `À-Å` is three literal
+    characters, not a range, so `É` failed and `fille de Éivind` came out unelided while
+    `fils d'Arne` worked. Stripping the accent and testing the base letter has no ranges in it
+    to get wrong.
+    """
+    import unicodedata
+    if not name:
+        return False
+    base = unicodedata.normalize("NFD", name[0])[0]
+    # **`Ø` and `Æ` do not decompose** -- they are letters in their own right rather
+    # than accented forms, so NFD leaves them untouched and `de Øystein` came out unelided.
+    # They are vowels, and Norwegian names are common in this corpus.
+    return base in "AEIOUaeiou" or base in "ØøÆæ"
+
+def _join(word, joiner, other):
+    """`"fille de Arne"` -- but `"fils d'Arne"`, because French elides `de` before a vowel.
+
+    **Added with French, 2026-08-31.** The elision depends on the NAME rather than on the
+    relationship, so it cannot live in the `WORDS` table beside `de`; every other language here
+    joins with a plain space and is untouched. `h` is deliberately NOT treated as a vowel: French
+    distinguishes aspirate from mute `h` and nothing in a Geni name says which, so `de Henri`
+    stands rather than being guessed at.
+    """
+    if joiner == "de" and _starts_with_vowel(other):
+        return f"{word} d'{other}"
+    return f"{word} {joiner} {other}"
 
 
 def main() -> int:
@@ -379,7 +429,7 @@ def main() -> int:
                     "subject": {"qid": qid, "geni_id": row.get("geni_id") or None},
                     "requires": depends,
                     "label": {"language": lang,
-                              "value": f"{word} {joiner} {other}"},
+                              "value": _join(word, joiner, other)},
                     "replaces": current,
                     "kind": "change" if current else "add",
                     "via": {"qid": via, "relation": relation},

@@ -1671,3 +1671,24 @@ what steps 1 and 2 exist to earn.
 **Nothing in this chain is blocked and none of it is urgent.** `2026-09-01` passing changes
 nothing on its own: the edit path stays unused, its `START_DATE` constants stay as the rail, and
 the batch keeps reaching her in chat exactly as it has been.
+
+## Model the succession CSV into statements
+
+`reports/succession-and-ordinals.csv` is built and comprehensive — 221 rows: Samaritan all 132
+positions, Izumo 53, Senge 22, Kitajima 14. This item is turning it into Wikidata statements.
+
+- **`P7338` *regnal ordinal*** — a qualifier on the `P735` *given name* statement, per
+  `name modelling.txt`, for the 111 rows carrying one. Never as a middle name.
+- **`P39` *position held* with `P1545` *series ordinal*** — the number in office, for all 221.
+  `reports/wikidata-samaritan-succession.json` already models it this way for 18 priests, so the
+  Japanese houses and the rest of the Samaritan line extend a built shape.
+- **The office items differ per family** and only the Samaritan one is known: `Q678510`
+  *Samaritan High Priest*. Izumo Kokusō, Senge and Kitajima need theirs identified or created.
+- **A row with no `qid` cannot carry a statement yet** — 23 of 132 Samaritans have one, and the
+  Japanese side is better at 51/22/14. That is the ordinary both-ends-need-a-QID rule, not a
+  blocker: what cannot run today is a later day's batch.
+
+**Two things the CSV records that must not be lost in emission:** `geni_status` says how each
+Geni id was established — succession number confirmed, sole match, her bio link — and the 38
+Samaritan positions absent from the corpus are a near-contiguous run (1, 2, 3, 31, 59, then 81
+onward), which is one unexported neighbourhood rather than 38 misses.
