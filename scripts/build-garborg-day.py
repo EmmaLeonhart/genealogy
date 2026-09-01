@@ -441,13 +441,49 @@ def live_state():
     return out
 
 
+#: The four family maps, extracted once during a tree rebuild so this script can run without
+#: the 409 MB `out/merged.ged`.
+#:
+#: **Why it exists: the scheduled pipeline could not run without it.** `--compose` was believed
+#: to read only the derived CSVs -- that is what `rebuild-everything.py`'s docstring says and what
+#: the CI checkout was scoped for -- and on 2026-09-01 the first pipeline run died in two seconds
+#: with `FileNotFoundError: out/merged.ged`. The GEDCOM is gitignored because GitHub refuses a
+#: 409 MB file, so no runner can ever have it.
+#:
+#: **It is the same data, not a reinterpretation.** `reports/derived-family.csv` holds parents and
+#: children per PERSON and would need siblings re-derived by indexing the whole file; the two
+#: call sites below ask *who shares a family with this person*, which is a question about
+#: FAMILIES. So the family grouping is written out verbatim rather than reconstructed, and
+#: `read_tree` returns byte-identical maps from either source.
+#:
+#: 630,050 families, 54 MB, 14 MB gzipped -- `pack-derived.py` carries it.
+FAMILY_STRUCTURE = ROOT / "out" / "family-structure.tsv"
+
+
 def read_tree():
     fam_p = collections.defaultdict(list)
     fam_c = collections.defaultdict(list)
     fams = collections.defaultdict(list)
     famc = collections.defaultdict(list)
+    merged = ROOT / "out" / "merged.ged"
+    if not merged.exists() and FAMILY_STRUCTURE.exists():
+        # **All four maps are stored, not two of them inverted.** Deriving `fams`/`famc` by
+        # inverting `fam_p`/`fam_c` looked equivalent and is not: those come from the PERSON's
+        # `FAMS`/`FAMC` pointers while the others come from the FAMILY's `HUSB`/`WIFE`/`CHIL`,
+        # and the two disagree wherever one side of the pair is missing -- 842,548 against
+        # 833,632, and 1,182,519 against 1,177,873. Measured before shipping, not after.
+        into = {"fam_p": fam_p, "fam_c": fam_c, "fams": fams, "famc": famc}
+        with open(FAMILY_STRUCTURE, encoding="utf-8") as f:
+            next(f, None)
+            for line in f:
+                name, _, rest = line.rstrip(chr(10)).partition(chr(9))
+                key, _, values = rest.partition(chr(9))
+                target = into.get(name)
+                if target is not None and key:
+                    target[key].extend(values.split())
+        return fam_p, fam_c, fams, famc
     cur = kind = None
-    with open(ROOT / "out" / "merged.ged", encoding="utf-8", errors="replace") as f:
+    with open(merged, encoding="utf-8", errors="replace") as f:
         for line in f:
             if line.startswith("0 @"):
                 p = line.split()

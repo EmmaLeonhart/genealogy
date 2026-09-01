@@ -55,6 +55,10 @@ DERIVED = [
     # the cost of the plain file being ignored is a rebuild and never data -- the same
     # bargain `CLAUDE.md` describes for `out/merged.ged` and `labels.tsv`.
     "out/wikidata/edits.json",
+    # **155 MB, and the scheduled pipeline cannot run without it.** `read_tree` needs the
+    # four family maps; they live in `out/merged.ged`, which is 409 MB and gitignored, so
+    # no runner can ever have it. This is the same data written out once per rebuild.
+    "out/family-structure.tsv",
 ]
 
 LIMIT = 100 * 1024 * 1024

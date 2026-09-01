@@ -76,6 +76,13 @@ STEPS = [
     # `test_merge_real_exports.py::test_the_committed_merge_report_still_describes_these_exports`
     # was failing on in the 2026-08-31 slow lane.
     ("merge the corpus", [sys.executable, "-m", "genimerge", "merge"]),
+    # **The four family maps, so the scheduled pipeline can run without the GEDCOM.**
+    # `build-garborg-day.read_tree` needs them and `out/merged.ged` is 409 MB and
+    # gitignored, so a runner can never have it. Written once here, gzipped by
+    # `pack-derived.py`, read as a fallback when the merge is absent -- and verified
+    # byte-identical to reading the GEDCOM on 2026-09-01.
+    ("family structure",
+     [sys.executable, os.path.join("scripts", "build-family-structure.py")]),
     ("display names", [sys.executable, os.path.join("scripts", "build-display-names.py")]),
     # **Before `derive-family.py`, not after.** That script reads `derived-labels.csv` behind an
     # `if LABELS.exists()`, so running it first is silent and merely wrong: the names it reports
