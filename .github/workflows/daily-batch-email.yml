@@ -49,6 +49,10 @@ jobs:
           sparse-checkout: |
             /reports/wikidata-garborg-day.qs
             /reports/garborg-carry-forward.tsv
+            # The sender itself. Without this the email step runs `python
+            # .github/scripts/send_batch_email.py` against a file the checkout never fetched --
+            # which only shows up once the secrets exist and the step stops being skipped.
+            /.github
           sparse-checkout-cone-mode: false
 
       - name: What is in today's batch
