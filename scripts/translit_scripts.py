@@ -233,10 +233,37 @@ def to_hi(token):
 SCRIPTS = {"ru": to_ru, "el": to_el, "hi": to_hi, "ar": to_ar}
 
 
+#: Scripts that HAVE upper case and use it for proper names. Devanagari and Arabic have
+#: no case at all, so nothing is done to them.
+_CASED = {"ru", "el"}
+
+
+#: Latin clusters the per-letter tables read wrongly. `chr` is a hard k followed by an r,
+#: not the `ch` digraph -- `Christina` came out `чристина` in Cyrillic where it is
+#: `Кристина`, and `χριστινα` in Greek. The same fix was needed in `translit_ko_latin`,
+#: which is what made it worth looking for here.
+_CLUSTERS = (("chr", "kr"), ("sch", "sh"))
+
+
 def render(name, code):
-    """A whole name, token by token, joined with ordinary spaces."""
+    """A whole name, token by token, joined with ordinary spaces.
+
+    **Proper names are capitalised in Cyrillic and Greek.** The per-letter tables work in
+    lower case, so without this every Russian and Greek label came out `арне гарборг`
+    rather than `Арне Гарборг` -- which is not how a name is written in either language
+    and reads as an error to anybody who has one.
+    """
     fn = SCRIPTS[code]
-    return " ".join(fn(t) for t in str(name).split() if fn(t))
+    out = []
+    for token in str(name).split():
+        low = token.lower()
+        for a, b in _CLUSTERS:
+            low = low.replace(a, b)
+        got = fn(low)
+        if not got:
+            continue
+        out.append(got[0].upper() + got[1:] if code in _CASED else got)
+    return " ".join(out)
 
 
 if __name__ == "__main__":

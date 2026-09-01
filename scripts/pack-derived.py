@@ -45,6 +45,10 @@ DERIVED = [
     # rather than warning about it. Unlike the CSVs there is no forty-reader problem: only
     # `build-en-label-batch.py` opens it.
     "reports/wikidata-placeholder-labels.json",
+    # 61 MB on its first build (151,320 labels over 37,830 people, four languages each)
+    # and it grows with the number of people carrying a QID. Same reasoning as the line
+    # above: generated, regenerable, and past the 50 MB mark GitHub warns at.
+    "reports/wikidata-four-script-labels.json",
 ]
 
 LIMIT = 100 * 1024 * 1024
