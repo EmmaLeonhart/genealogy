@@ -80,7 +80,7 @@ def source_index() -> dict[str, str]:
                 # rather than writes it is settled in `stale_against_inputs`, which skips a
                 # generator whose own inputs include the file. One mechanism, not two.
                 index.setdefault(Path(m.group(1)).name, []).append(
-                    str(p.relative_to(REPO)).replace(chr(92)*2, '/'))
+                    str(p.relative_to(REPO)).replace(chr(92), '/'))   # ONE backslash, not two
     return {k: ";".join(sorted(set(v))[:3]) for k, v in index.items()}
 
 

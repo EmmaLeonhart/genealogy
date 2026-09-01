@@ -1832,7 +1832,34 @@ settles the patronymic question in one line; no assertion in the suite did.
 **The gate is the queue's own CI/CD item**, which is at the tail by her placement. Do not promote
 it on the strength of this rule -- note the dependency and leave the order as she set it.
 
-### Cost: this repo is private, so CI is manual-only
+### The repo is PUBLIC as of 2026-09-01. CI runs, and `push:` is still wrong
+
+**Emma, 2026-09-01:** *"The repo is public now lol"*, after *"I want to make this a public repo so
+we don't need to waste your attention on the tests shit"*. Actions minutes are free on public
+repos, so the cost argument that made CI manual-only is gone and `.github/workflows/ci.yml` now
+carries `schedule:` (05:17 daily, off the hour) and `pull_request:` alongside `workflow_dispatch:`.
+
+**`push:` stays out for a different reason, and that reason survives the visibility change.** This
+repo commits large generated files many times a day — the 2026-09-01 label rebuild alone rewrote
+three million lines — so a run per push queues behind itself and tells nobody anything.
+`tests/test_repo_invariants.py::test_no_workflow_runs_automatically` now guards exactly that,
+`push` and `pull_request_target` only.
+
+**The checkout has to be sparse or it does not fit.** Measured 2026-09-01: **13.3 GB tracked** —
+`wikidata/` 4.3 GB, `exports/` 4.3 GB, `paths_for_wikidata_isolates/` 2.7 GB, `reports/` 1.1 GB —
+against roughly 14 GB of runner disk. `filter: blob:none` plus a non-cone sparse checkout drops
+what no test opens. **`exports/` and `out/` both stay in**: `test_repo_invariants` compares
+`git ls-files` against `find` over the corpus, and `test_garborg_day_batch` resolves name items
+against `out/wikidata/name-items-in-store.tsv.gz` — excluding either does not skip a test, it
+fails one, and the failure is about the checkout rather than the repo.
+
+**First run, 2026-09-01: 1,491 passed, 3 failed**, and one of the three was a real portability bug
+nothing local would ever have caught — `build-repo-freshness.py` normalised Windows paths with
+`.replace(chr(92)*2, '/')`, which replaces *two* backslashes where a path has one, so every
+`generator` column stayed `scripts
+ame.py` and resolved nowhere but Windows.
+
+### Historical: this repo was private, and CI was manual-only
 
 **Never add a `push:` or `pull_request:` trigger to `.github/workflows/`.**
 Actions minutes are free on public repos but billable on private ones once the

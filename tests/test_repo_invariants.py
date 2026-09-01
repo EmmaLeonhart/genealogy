@@ -44,7 +44,16 @@ PACKAGE = REPO_ROOT / "src" / "genimerge"
 
 #: Triggers that make GitHub run a workflow without anybody asking, which on a
 #: private repository means billable minutes per event.
-AUTOMATIC_TRIGGERS = {"push", "pull_request", "pull_request_target", "schedule"}
+#: **The repo went PUBLIC on 2026-09-01**, so Actions minutes are free and the cost
+#: argument this set encoded no longer applies. Emma: *"The repo is public now lol"*, and
+#: earlier that day *"I want to make this a public repo so we don't need to waste your
+#: attention on the tests shit"*. `pull_request` and `schedule` are now wanted.
+#:
+#: **`push` stays out, for a different reason that survives the visibility change.** This
+#: repo takes large generated files many times a day -- the 2026-09-01 label rebuild alone
+#: rewrote three million lines -- so a run per push would queue behind itself and tell
+#: nobody anything. That is a signal argument, not a billing one.
+AUTOMATIC_TRIGGERS = {"push", "pull_request_target"}
 
 
 def _triggers(text: str) -> set[str]:
@@ -110,10 +119,11 @@ def test_no_workflow_runs_automatically():
             offenders[workflow.name] = sorted(automatic)
 
     assert not offenders, (
-        f"workflows now run without being asked: {offenders}. This repository is "
-        "private, where Actions minutes are billable once the free allowance is "
-        "gone. That is a cost decision, not a config detail — if it is being made "
-        "on purpose, change CLAUDE.md in the same commit."
+        f"workflows now run on every push: {offenders}. The repo is public so this "
+        "is no longer a billing question, but this repo commits large generated "
+        "files many times a day and a run per push queues behind itself for no "
+        "signal. Use schedule: or workflow_dispatch:. If it is being changed on "
+        "purpose, change CLAUDE.md in the same commit."
     )
 
 
