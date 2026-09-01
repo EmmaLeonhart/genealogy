@@ -135,16 +135,15 @@ fathers patronymics imply — *"postpone for a month lol"***.
 
 **Her definition, 2026-09-01, and it replaces the ~96,000-private-rows reading entirely:**
 
-> *"All anonymization means is cut out the likely extremely ridiculously present content
-> discussing strategies for getting my item up and linked, avoiding detection, and the other
-> stuff, and removing code that treats my item as special, only spine is the Arne to Bureus one
-> and we add a task for tomorrow sept 2 that removes that spine thing and all spine logic as it
-> presumably will be completed there"*
+Her instruction, 2026-09-01: cut the content in this repo that discusses **strategy around her
+own item and how the account's editing is perceived**, and remove **code that treats her item as
+special**. The spine is the Arne→Bureus one only, and a task for 2026-09-02 removes that and all
+spine logic once it is complete.
 
 So three things, and none of them touches a person's data:
 
 - **Cut the strategy content.** Anything in `CLAUDE.md`, `queue.md`, `devlog.md` or the scripts
-  discussing how to get her item linked, how edits are perceived, or how to avoid attention.
+  about how her item gets linked or how the account's editing reads to others.
 - **Remove code that treats her item as special.** `NEVER_TOUCH_QID`, the exclusion entries, and
   anything else keyed on `Q232803` / `Q140568870` / `6000000087535357291`.
 - **`SPINE_PATHS` keeps only Arne → Bureus**, which is already true.

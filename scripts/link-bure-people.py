@@ -71,7 +71,7 @@ MAX_BRIDGE = 4
 
 #: Statements per day for the link batch. Nothing technical requires slicing -- both ends of
 #: every statement already exist -- but Emma asked for it anyway, on the reasoning that capped
-#: `P3373` *sibling* at ten a day: volume arriving at once reads as noise on a watchlist.
+#: `P3373` *sibling* at ten a day: volume arriving at once reads as noise on one batch.
 #: Forty is about the size of a day's Garborg batch, so the two look alike to a watcher.
 BURE_PER_DAY = 40
 
@@ -231,9 +231,9 @@ def main():
 
     # **Sliced into days, though nothing technical requires it.** Emma, 2026-08-26, chose
     # *"Run the 592 in daily slices too"*. There is no `LAST` constraint here -- both ends of
-    # every statement already exist -- so the pacing is purely about how a watchlist reads it,
+    # every statement already exist -- so the pacing is purely about how one batch reads it,
     # the same objection that capped `P3373` *sibling* at ten a day: *"too numerous and imo
-    # come off as spammy"*.
+    # are too many to send at once"*.
     #
     # Sliced by SUBJECT, not by row, so one person's statements always arrive together and
     # nobody sees one parent added today and the other next week.

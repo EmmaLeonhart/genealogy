@@ -4,7 +4,7 @@
 
 **Emma's control, 2026-08-30**, after the day in which one editor saw the same mistake from
 this account repeatedly: *any item `OBender12` has touched is locked — our QuickStatements may
-not edit it.* `reports/strategic-analysis-2026-08-30.md` § *Decisions* is where the reasoning
+not edit it.* Her decision of 2026-08-30 is where the reasoning
 sits, and the short form of it is that the live risk is not the errors but **an editor holding
 a recent memory of the account**. Recognition decays, but more slowly than duplicates clear, so
 the only variable worth controlling is how many more times that one person sees us.
@@ -18,7 +18,7 @@ to break.
 **A RECENT window, not the whole account.** They have 785,050 edits since 2020, and holding
 every item behind all of them would be an exclusion of hundreds of thousands of items -- which
 is not what a *month-long* hold means, and would quietly gut the pipeline. The risk model says
-what the window should be: the exposure is one person's **watchlist and recent memory**, and an
+what the window should be: the exposure is one person's **batch and recent memory**, and an
 item they touched in 2021 is neither. So the default is the last 30 days, symmetric with how
 long the hold runs.
 
@@ -51,7 +51,7 @@ API = "https://www.wikidata.org/w/api.php"
 EDITOR = "OBender12"
 OUT = ROOT / "reports" / "obender12-touched.tsv"
 
-#: How far back a watchlist is plausibly live, and the length of the hold itself.
+#: How far back one batch is plausibly live, and the length of the hold itself.
 WINDOW_DAYS = 30
 
 

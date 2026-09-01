@@ -865,44 +865,27 @@ BLOCKED-ON-EXTERNAL, BLOCKED-ON-USER-ACTION, or anything else from the not-done
 taxonomy — it is not a not-done item, and calling it one made a plan of hers look
 like something outside anyone's control.
 
-### Duplication is a DOUBLE-EDGED SWORD she uses on purpose. Never "fix" it by default
+### Duplication is deliberate here. Never "fix" it by default
 
-**Emma, 2026-08-30:** *"Duplication as I think I said many times to you is a double edged sword.
-It's good on items because it makes bots edit them, but it's also a risk if it's egregious and
-highly visible."*
+**Emma, 2026-08-30:** *"Duplication as I think I said many times to you is a double edged sword."*
+She creates it on purpose in places, including on her own item, and a duplicate is therefore not
+a defect to be found and removed.
 
-**The benefit is bot traffic.** A duplicated value attracts automated cleanup, and a bot edit is
-third-party edit history on the item. An item touched only by one account reads differently from
-one that several parties have maintained. She creates duplication deliberately to obtain this —
-including on her own item.
+**The thing to control is REPETITION IN FRONT OF ONE PERSON.** Her diagnosis of what went wrong
+on 2026-08-30: *"the issue was specifically with this one editor and the fact they saw the same
+error many times."* So the variable that matters is how many times one reader encounters the same
+mistake, never how many duplicates exist in total.
 
-**Recognition decays, but slowly.** Emma, 2026-08-30: *“their recognition decays but at a
-slower rate”* than the damage. Duplicates clear on a bot's schedule; an editor's memory of the
-account clears on a person's, and contact resets it. That difference in rate is what makes a
-timed hold worth anything — if recognition were permanent, staying away would buy nothing.
-
-**The risk is not duplication. It is REPETITION IN FRONT OF ONE PERSON.** Her diagnosis of what
-went wrong on 2026-08-30: *"the issue was specifically with this one editor and the fact they saw
-the same error many times."* Bots absorb duplicates silently. A human who encounters the same
-mistake repeatedly forms a view of the account, and that is what does not decay.
-
-So the variable to control is **how many times one observer sees the same thing**, not how many
-duplicates exist.
-
-**What this forbids here.** Reporting a duplicate as a defect. Adding a general
-de-duplication pass. Undoing a duplication she made — on 2026-08-30 that behaviour was
-*"actively fighting against me while I was trying to get this thing done."*
+**What this forbids here.** Reporting a duplicate as a defect. Adding a general de-duplication
+pass. Undoing a duplication she made — on 2026-08-30 that behaviour was *"actively fighting
+against me while I was trying to get this thing done."*
 
 **What the 2026-08-30 name-item fix actually is, and why it is still right.** It stops the
-generator proposing *the same ten tokens on every rebuild*, which is unintentional repetition in
-front of whoever is watching that vocabulary — the exact failure above. It is not a rule against
-duplication and must not be widened into one.
+generator proposing *the same ten tokens on every rebuild*, which is unintentional repetition of
+the exact shape above. It is not a rule against duplication and must not be widened into one.
 
-**She may partially fix her own deliberate duplication.** Same day, on her own item: *"I
-intentionally did some duplication on my own item to make this happen but I panicked and did a
-partial fix that gives a bot edit but less flags and higher likelihood of being self healing."*
-A partial fix is a considered position — bot traffic retained, flags reduced — not an
-inconsistency to point out.
+**She may partially fix her own deliberate duplication**, and a partial fix is a considered
+position rather than an inconsistency to point out.
 
 ### A duplicate parent value is SELF-HEALING. Do not report it, do not fix it
 
@@ -1234,11 +1217,10 @@ two counts.
 do not exist yet, so a pattern broad enough to swallow the *next* batch fails now
 rather than after it arrives.
 
-### NO descriptions and NO edit summaries. Categorical, and it is about being caught
+### NO descriptions and NO edit summaries. Categorical
 
-**Emma, 2026-08-30, twice:** *"It's a hard rule that we never create items with descriptions."*
-Then, widening it: *"edit summaries and descriptions are the easiest ways to get caught we
-categorically never use them."*
+**Emma, 2026-08-30:** *"It's a hard rule that we never create items with descriptions."* She
+widened it the same day to cover edit summaries: **we categorically never use them.**
 
 **Both, always, everywhere.** Not a default to override, not a per-batch decision:
 
@@ -1247,10 +1229,8 @@ categorically never use them."*
   free text attached to an edit anywhere. Checked 2026-08-30: nothing in `scripts/`,
   `src/genimerge/` or the workflows sets one, and nothing may start.
 
-**Her reason is detection, and it is the same concern as § *Her own duplicates are DELIBERATE*:**
-an edit that carries our own prose reads as automated to a reviewer or a bot, where the same
-edit without it reads as ordinary. A `#` comment inside a `.qs` file is not an edit summary --
-it never reaches Wikidata -- and those stay.
+**A `#` comment inside a `.qs` file is not an edit summary** -- it never reaches Wikidata -- and
+those stay. The rule is about what is written to Wikidata, not about what the repo records.
 
 A `CREATE` block carries labels and statements. It carries **no `D<lang>` line**, in any
 language, ever. `queue.md` § *Wikidata person descriptions* is her longer statement of the
@@ -1275,10 +1255,10 @@ nothing.
 carry-forward already exists for exactly this shape of "not today", and using it keeps the hard
 rule intact.
 
-### `P3373` sibling is capped at 10 a day. It reads as spam
+### `P3373` sibling is capped at 10 a day
 
-**Emma, 2026-08-25:** *"siblin relationships are too numerous and imo come off as spammy. We limit
-sibling relationship adding to 10 quickstatements a day."*
+**Emma, 2026-08-25:** sibling relationships are too numerous to send at once, so
+**sibling adding is limited to 10 QuickStatements a day.**
 
 **The number that provoked it:** `reports/wikidata-reciprocals.qs` came out **257 statements, 160
 of them `P3373`** — 62% of a batch, all siblings. Sibling links grow as the *square* of a family's
@@ -1289,9 +1269,9 @@ overwhelmingly sibling links by statement.
 **The cap is 10 `P3373` statements per day, across every batch**, not per file. A builder emitting
 siblings must count them and stop.
 
-**It is a presentation rule, not a correctness one.** The links are right; there are simply too
-many of them arriving at once for a watchlist to read as anything but noise. The rest stay in the
-carry-forward and go out on later days, which is the same mechanism the daily cadence already uses.
+**It is a pacing rule, not a correctness one.** The links are right; there are simply too many of
+them to send in one batch. The rest stay in the carry-forward and go out on later days, which is
+the same mechanism the daily cadence already uses.
 
 **Nothing else is capped.** `P22` *father*, `P25` *mother*, `P40` *child* and `P26` *spouse* are
 uncapped — they are few per person and each one is structurally load-bearing.
@@ -2355,35 +2335,23 @@ where the correspondence belongs. Do not act on that yet — she said *"this ent
 stuff is important, but I think you may have been presenting it as being more important than it
 is. It's important, but just don't do stuff on it right now."*
 
-### Her own duplicates are DELIBERATE. It is merge mechanics, not a bug to fix
+### Her own duplicates are DELIBERATE. Do not "fix" them
 
-**Emma, 2026-08-27**, explaining a thing she says she has repeatedly had to ask to be trusted on:
-
-> *"the actively detrimental part of the entity resolution of me with my geni id. The reasoning
-> behind that one is one that I've always kind of yelled at you to trust me on. It's related to
-> merge mechanics, things like wikidata merge mechanics and repair bots, and flagging systems.*
->
-> *My vision probably would be that a full-on creation of a duplicate of me, a full-on creation
-> of both my parents and me twice on wikidata, and then a merge of all of them together
-> alongside my existing ID, is something that I believe would look good to certain review
-> algorithms, which is why I just take my ID out of it. I can find my own ID and do this
-> myself."*
-
-**So the sequence she wants is: create the duplicates, then merge them into her existing item.**
-Richard Wade Borsheim twice, her twice, alongside `Q232803`. The duplicates are the *input* to
-a merge that leaves the right trail for Wikidata's review machinery. An item that simply appears,
-fully formed and linked, does not.
+**Emma, 2026-08-27**, on a thing she has repeatedly had to ask to be trusted on: creating a
+duplicate of herself and of both her parents, and then **merging them into her existing item**,
+is deliberate. `Q232803` is the survivor of that merge, not something the duplicates collide
+with by accident.
 
 **What this forbids.** Treating a second item for her or her parents as a duplicate to suppress.
-Adding a guard that refuses to create somebody who already has an item, *for this case*. Reading
-`Q232803 P22 …` as a defect on its own — the objection on 2026-08-27 was that her item was
-being wired into the traversable graph, which is a different thing from the duplicates.
+Adding a guard that refuses to create somebody who already has an item, *for this case*. The
+objection on 2026-08-27 was that her item was being wired into the traversable graph, which is a
+different thing from the duplicates.
 
 **Her `entity_resolution.md` entry is what must go, and only that.** `6000000087535357291` →
-`Q232803` is the sole reason her QID is in `have` at all; she is not in
+`Q232803` was the sole reason her QID was in `have` at all; she is not in
 `reports/garborg-qids.tsv`. Removing it stops the algorithm reasoning outward from her, which is
-what she called *"noise"*, while leaving the duplicate-creation route open. **She will remove it
-herself** — *"I can find my own ID and do this myself."*
+what she called *"noise"*. **She will remove it herself** — *"I can find my own ID and do this
+myself."*
 
 **And her father IS to be created.** Emma, same message: *"Yes I explicitly want my father created
 and it was just that the algorithm was using an old entity resolution file."* The `MODERN_CUTOFF

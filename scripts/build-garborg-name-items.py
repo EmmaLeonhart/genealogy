@@ -77,7 +77,7 @@ GIVEN_NAME_CLASS = "Q202444"      # given name
 #: the choice should be random, as the parent pairs are.
 #:
 #: **The reduction is hers too, 2026-08-30**, asked directly and answered *"Cut it to 2-3 a
-#: day"*. `reports/strategic-analysis-2026-08-30.md` is the reasoning: name-item creation is
+#: day"*. Her decision of 2026-08-30: name-item creation is
 #: the highest-risk operation in the pipeline, because the duplicates another editor merged
 #: were name items and the people side has no comparable audience. Three keeps the vocabulary
 #: growing while staying well under the rate that produced them.

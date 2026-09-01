@@ -1,8 +1,8 @@
 """No batch carries a description, and nothing anywhere sets an edit summary.
 
 **Emma, 2026-08-30:** *"It's a hard rule that we never create items with descriptions."* Then,
-widening it: *"edit summaries and descriptions are the easiest ways to get caught we
-categorically never use them."*
+widening it the same day to cover edit summaries: we categorically
+never use them.
 
 `CLAUDE.md` § *NO descriptions and NO edit summaries* is the rule. This is the guard, because
 the rule is categorical and a single slip is the kind that is only noticed by somebody else.
@@ -62,5 +62,5 @@ def test_nothing_sets_an_edit_summary():
                 if SUMMARY.search(line) and not LOCAL_FILE.search(line):
                     offenders.append(f"{path.relative_to(REPO)}:{n}  {line.strip()[:80]}")
     assert not offenders, (
-        "an edit summary is never set -- *\"edit summaries and descriptions are the easiest "
-        f"ways to get caught we categorically never use them\"*: {offenders[:8]}")
+        "an edit summary is never set. Emma, 2026-08-30, categorically. "
+        f"{offenders[:8]}")

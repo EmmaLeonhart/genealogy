@@ -1,6 +1,6 @@
 """The month-long hold on items `OBender12` has touched.
 
-Emma's control, 2026-08-30, recorded in `reports/strategic-analysis-2026-08-30.md`
+Emma's control, 2026-08-30
 § *Decisions*: *any item `OBender12` has touched is locked — our QuickStatements may not edit
 it.* The hold is on the full contributions list rather than its overlap with the ledger, and it
 expires on its own so that nothing has to remember to lift it.
@@ -61,7 +61,7 @@ def test_a_missing_file_holds_nothing_rather_than_failing(tmp_path, monkeypatch)
 
 
 def test_the_hold_is_on_the_subject_and_never_on_the_value(touched):
-    """`Q1 P22 Q2` is an edit to `Q1`. `Q2` is referenced, and appears on nobody's watchlist.
+    """`Q1 P22 Q2` is an edit to `Q1`. `Q2` is referenced, and appears on nobody's batch.
 
     Holding values too would drop most of the ring -- the items that editor merged are the
     well-connected ones -- and would reduce nothing that they actually see.

@@ -10,7 +10,7 @@ edited, where both ends of every pair already carry a QID.
 **This deliberately ignores `SIBLING_CAP`**, and that is the whole point of it existing as a
 separate script rather than a flag on the daily builder. `CLAUDE.md` § *`P3373` sibling is capped
 at 10 a day* is a **presentation** rule — *"siblin relationships are too numerous and imo come
-off as spammy"* — not a correctness one. The cap stays exactly as it is for the daily batch; a
+off as too numerous"* — not a correctness one. The cap stays exactly as it is for the daily batch; a
 one-off she has asked for by name is not the daily batch.
 
 ## Why the population matters so much

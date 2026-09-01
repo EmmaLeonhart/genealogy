@@ -439,7 +439,7 @@ def test_the_sibling_cap_holds_across_every_live_batch():
     `CLAUDE.md` § *`P3373` sibling is capped at 10 a day*: *"The cap is 10 `P3373` statements
     per day, across every batch, not per file. A builder emitting siblings must count them and
     stop."* Emma's reason is presentation, not correctness — *"siblin relationships are too
-    numerous and imo come off as spammy"* — and sibling links grow as the SQUARE of a family,
+    numerous and imo are too many to send at once"* — and sibling links grow as the SQUARE of a family,
     so one family of nine children is 72 statements on its own.
 
     **`build-garborg-day.py` had two emission sites and only one counted.** The additions pass

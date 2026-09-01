@@ -64,7 +64,7 @@ os.environ.setdefault("BOT_CONTACT", "emma@topazcomputing.com")
 
 FATHER, MOTHER, CHILD, SPOUSE, SIBLING = "P22", "P25", "P40", "P26", "P3373"
 
-#: **Emma, 2026-08-25:** *"siblin relationships are too numerous and imo come off as spammy.
+#: **Emma, 2026-08-25:** *"sibling relationships are too numerous to send at once.
 #: We limit sibling relationship adding to 10 quickstatements a day."* This file came out at
 #: 257 statements of which **160 were `P3373`** -- 62% siblings -- which is what provoked it.
 #: Sibling links grow as the SQUARE of a family: nine children is 72 statements on its own,
@@ -212,7 +212,7 @@ def main():
         (ROOT / "reports" / "wikidata-reciprocals-siblings-held.qs").write_text(
             "# P3373 sibling statements over the 10-a-day cap.\n"
             "# Emma, 2026-08-25: \"siblin relationships are too numerous and imo come off as\n"
-            "# spammy. We limit sibling relationship adding to 10 quickstatements a day.\"\n"
+            "# too numerous. We limit sibling relationship adding to 10 quickstatements a day.\"\n"
             "# These are correct and merely too many at once. Run ten a day.\n\n"
             + "\n".join(held) + "\n", encoding="utf-8", newline="\n")
 

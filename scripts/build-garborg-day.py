@@ -68,7 +68,7 @@ existing_state = _load_gaps()
 
 ROOT = Path(__file__).resolve().parent.parent
 
-#: **Emma, 2026-08-25:** *"siblin relationships are too numerous and imo come off as spammy.
+#: **Emma, 2026-08-25:** *"sibling relationships are too numerous to send at once.
 #: We limit sibling relationship adding to 10 quickstatements a day."* This builder was
 #: emitting **162** `P3373` in one file. Siblings grow as the SQUARE of a family -- nine
 #: children is 72 statements by itself -- while parents grow linearly, so a batch that looks
@@ -375,7 +375,7 @@ def read_suppressed():
 
     If the hold superseded this, the war would simply restart on 2026-10-01 when it lapses.
     If this superseded the hold, the mechanism would be fixed while that editor kept seeing
-    the account in their watchlist through the month she wanted quiet. Both, therefore.
+    the account in their batch through the month she wanted quiet. Both, therefore.
     """
     out = set()
     path = ROOT / "reports" / "suppressed-statements.tsv"
@@ -1429,7 +1429,7 @@ CLAN_BLOCK_GATE = datetime.date(2026, 10, 1)
 #: The month-long hold on every item `OBender12` has touched.
 #:
 #: **Emma's control, 2026-08-30**, and the reasoning is in
-#: `reports/strategic-analysis-2026-08-30.md` § *Decisions*: the live risk after that day is
+#: Emma's decision of 2026-08-30, and the live constraint after that day is
 #: not the errors themselves -- those clear -- but **one editor holding a recent memory of the
 #: account**. Her words: *"the issue was specifically with this one editor and the fact they
 #: saw the same error many times."* Recognition decays more slowly than duplicates do, so the
@@ -1452,7 +1452,7 @@ def held_items(today=None):
 
     **Subject only, never value.** Her control is *"our QuickStatements may not edit it"*, and
     a QuickStatements line edits its SUBJECT. `Q1 P22 Q2` is an edit to `Q1`; `Q2` is only
-    referenced, and appears on nobody's watchlist for it. Holding values as well would drop
+    referenced, and appears on nobody's batch for it. Holding values as well would drop
     every statement pointing at a held person -- which is most of the ring, since the items
     that editor merged are exactly the well-connected ones -- and would buy no reduction in
     what they see.
@@ -5776,7 +5776,7 @@ def main():
         # siblings must count them and stop."* The additions pass counted; this one, on the
         # people being CREATED, did not -- so a run came out with 10 capped statements and
         # **28 uncapped**, 38 in a file whose whole reason for the cap is that Emma finds
-        # sibling links spammy on a watchlist. `_siblings_emitted` is shared module state
+        # sibling links too numerous on one batch. `_siblings_emitted` is shared module state
         # precisely so both sites draw on one budget.
         for sib in sorted(siblings.get(g, ())):
             if sib in our_items:

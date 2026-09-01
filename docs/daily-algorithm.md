@@ -105,8 +105,8 @@ existing items… Because siblings is really massive, these ones are not."*
 
 Siblings grow as the **square** of a family's size — one family of nine children is 72 `P3373`
 statements — which is why they alone are capped. `CLAUDE.md` § *`P3373` sibling is capped at 10 a
-day* is the same rule, and it is a presentation rule: the links are correct, there are simply too
-many arriving at once for a watchlist to read as anything but noise.
+day* is the same rule, and it is a pacing rule: the links are correct, there are simply too many
+of them to send in one batch.
 
 ## What this supersedes
 
