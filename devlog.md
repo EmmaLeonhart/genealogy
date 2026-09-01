@@ -23077,3 +23077,33 @@ population operation while the live work is hyperlocal, so it was being read and
 tick. Nothing about it changed except its position.
 
 **55 → 52 sections.** Running total for the day: 25 deleted, 10 added.
+
+## 2026-08-31 — triage round three: the regnal item splits, and CI/CD becomes an email
+
+**§ *Build the synoptic tree* deleted.** Her call: *"the merge is a command, not a project."*
+`genimerge merge` is one command and `rebuild-everything.py` wraps the whole chain; a queue
+section for running something already automated is a section that gets read and skipped.
+
+**§ *Regnal ordinals* split in two, and the measurement says she was right to ask.** Her reading:
+*"there's actually two related things: succession and the number attached to the name. Split this
+into two."*
+
+- **On the name** — `Elazar XX`, `Yoseph II`. `P7338` *regnal ordinal* qualifying `P735`.
+  `reports/regnal-ordinals.csv` has 19,450 rows corpus-wide, **158 Samaritan-shaped**, and it
+  needs screening: `Wife 2 /ben Nathan, Mar Huna IV/` and `Preben 1. /Bille-Brahe/` are in there
+  and neither is a regnal ordinal.
+- **Succession** — the Nth head of a house, `P39` *position held* with `P1545` *series ordinal*.
+
+**The split was not cosmetic. Of those 19,450 ordinal rows, ZERO are Izumo, Senge, Kitajima or
+Kitashima** — their numbers are not in the Latin name form at all, so the name-side census cannot
+see them. One item would have covered the Samaritans and silently missed the family she named in
+the same breath. `reports/izumo-chart-roster.tsv` is 298 people, and the first step there is
+finding where those numbers actually live rather than assuming the name.
+
+**§ *Wire up CI/CD* rewritten as a delivery job**, per her ruling: *"not wikidata editing but
+instead emailing me the daily quickstatements file to me every day so I can run it."* Nothing
+edits Wikidata; the batch arrives in her inbox and she runs it by hand, which is what has been
+happening in chat all along. The `START_DATE = 2026-09-01` constants stay as the rail on the
+*edit* path, which remains unused. Noted in the item: while the repo is private, Actions minutes
+are the constraint, so this either waits on the public-repo work at the tail or runs from a local
+scheduled task — which needs no repo change and could start tomorrow.

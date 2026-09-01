@@ -251,51 +251,41 @@ two hops, so they need something other than a relative or they stay markers.
 - Open questions for Emma: `questions.md`
 - The pre-wipe queue, 1,396 lines: `git show 4127170:queue.md`
 
-## Regnal ordinals on the Samaritan high priests — Emma, 2026-08-18
+## Regnal ordinals ON THE NAME — `P7338`, the Samaritan shape
 
-**Runs immediately before the mass merge, and not before then.** Her placement:
-*"place them at the point before the mass merging… Queue it right before the mass merge
-thing so that we can deal with more important stuff."* Read as the synoptic-tree build
-below, which is the point the trees are merged; nothing about it needs doing earlier.
+**Split from the succession item below, her call 2026-08-31:** *"there's actually two related
+things: succession and the number attached to the name. Split this into two."* She is right and
+the census shows they are different populations, not two views of one.
 
-**What is missing.** `reports/wikidata-samaritan-succession.json` models the office and
-its succession — `P39` *position held* on all 21, with `P1545` *series ordinal* carrying
-the priest's number in the office on 18 of them — but **`P7338` *regnal ordinal* appears
-in none of the three Samaritan batches**. Geni carries the ordinals: `Yoseph II`,
-`Levi VI`, `Elazar XX`, `Aharon IV`, `Aabed-El V`.
+This half is the number **inside the personal name** — `Elazar XX ben Tsedaka ben Yitzhaq`,
+`Yoseph II`, `Levi VI`. It is a `P7338` *regnal ordinal* qualifier on the `P735` *given name*
+statement, per `name modelling.txt`, and **nothing else**. Emma, 2026-08-18: *"regnal ordinals
+fucking cannot behave like a middle name."*
 
-`P1545` on the office and `P7338` on the name are different statements about different
-things: one numbers the man among the holders of the post, the other numbers him among
-the men of that name. Having the first is not having the second.
+- **The census exists**: `reports/regnal-ordinals.csv`, 19,450 rows corpus-wide — 8,341 Roman,
+  6,031 single-letter, 5,078 Arabic. **158 are Samaritan-shaped**, and the file needs screening
+  before emission: `Wife 2 /ben Nathan, Mar Huna IV/` and `Preben 1. /Bille-Brahe/` are in it,
+  and neither is a regnal ordinal.
+- **`P7338` appears in none of the three Samaritan batches**, checked 2026-08-31.
+- Scope is hers: the Samaritans plus any other family where the ordinal is genuinely part of the
+  name. It is emission from an existing census, not new analysis.
 
-**Do not model regnal ordinals as anything resembling a middle name.** Emma, 2026-08-18:
-*"regnal ordinals fucking cannot behave like a middle name."* `P7338` is a qualifier on
-the `P735` *given name* statement, per `name modelling.txt`, and that is all it is.
+## Succession and position held — the Izumo / Senge / Kitajima shape
 
-**The measurement is already done, so this item is emission only.**
-`scripts/build-regnal-ordinal-census.py` → `reports/regnal-ordinals.csv`: 848,381 people
-scanned, 19,023 carrying an ordinal — 8,093 unambiguous Roman, 5,892 single-letter,
-5,038 Arabic. The Samaritan subset is the part this item needs.
+The other half. Here the number is **not in the name**: it counts the person among the holders of
+an office — the Nth head of the house — and is `P39` *position held* with `P1545` *series
+ordinal*, which is a different statement about a different thing.
 
-## Build the synoptic tree
+**Measured 2026-08-31, and this is why the split was needed:** of the 19,450 ordinal-bearing rows,
+**zero** are Izumo, Senge, Kitajima or Kitashima. Their ordinals are not in the Latin name form at
+all, so the name-side census cannot see them and a single item would have silently covered one
+family and missed the other. `reports/izumo-chart-roster.tsv` is 298 people.
 
-- Re-merge the whole corpus into `out/merged.ged` once the exports above are all in.
-  This is the first point in the programme where a fresh merge is actually *needed*
-  rather than convenient — presence questions are answered from `exports/` directly
-  (`scripts/find-chain-gaps.py`), but the structural walk below needs parents.
-- **Keep the pre-merge tree.** `reports/descendants-backtest-2026-08-07.md` exists only
-  because `out/merged-134.ged` was kept before a batch landed.
-
-- **Regenerate and commit `reports/merge.md` in the same step.**
-  `tests/test_merge_real_exports.py::test_the_committed_merge_report_still_describes_these_exports`
-  asserts that file byte-equals a fresh merge of `exports/`, and it is **red right now**:
-  the chain-seed campaign adds five exports roughly every forty minutes, so the committed
-  report goes stale within one round of any regeneration. Measured 2026-08-18 on the full
-  suite — **1 failed, 3611 passed in 77 minutes**, and that one failure is this. The test
-  is correct and is not to be weakened, skipped or marked xfail; it is doing exactly its
-  job, which is to say the committed artifact no longer describes the corpus. Re-running
-  the merge now would turn it green until the next round and cost a 5-minute, 4.5 GB pass
-  each time. It goes green and stays green here, once the corpus stops moving.
+- `reports/wikidata-samaritan-succession.json` already models the office this way for the
+  Samaritan priests — `P39` on all 21, `P1545` on 18 — so the shape is built and this is
+  extending it, not inventing it.
+- First step is finding where the Izumo succession numbers actually live: the chart, the roster,
+  or the Geni bios. Do not assume the name.
 
 ## Identify Geni profiles with Wikidata items, structurally
 
@@ -320,22 +310,25 @@ scanned, 19,023 carrying an ordinal — 8,093 unambiguous Roman, 5,892 single-le
   `CLAUDE.md`.
 - Build all the JSONs. They are committed, not held in `out/`.
 
-## Wire up CI/CD so the committed JSONs fire from 2026-09-01
+## EMAIL me the daily QuickStatements file, every day — from 2026-09-01
 
-- The JSONs are already in git; the pipeline reads them and starts executing edits on
-  Wikidata on **1 September 2026**.
-- **Never add a `push:` or `pull_request:` trigger** — `CLAUDE.md` § *Cost* forbids it
-  and this does not need one. A `schedule:` cron plus `workflow_dispatch:` is what this
-  wants, and it leaves that rule intact.
-- She expects it to be **stateful about the repo**: *"something that would do some
-  degree of stateful editing of the repo through GitHub Actions, including something
-  that would take out this part of the repo once it's done."* So the workflow commits
-  back — marking a batch executed, and removing the spine-line queue once it has run.
-- The edit algorithm it executes is already specified above in § *THE EDIT ALGORITHM*:
-  100 edits a day chosen at random from the eligible set, service-area gate,
-  Geni-IDs-as-sources de-prioritised to 5–25 a day. **Do not normalise away the bias
-  toward her neighbourhood** — it is deliberate.
----
+**Her ruling, 2026-08-31**, replacing the automated-edit reading of this item: *"not wikidata
+editing but instead emailing me the daily quickstatements file to me every day so I can run it."*
+
+So nothing edits Wikidata. The deliverable is **delivery**: the day's
+`reports/wikidata-garborg-day.qs` (and the name-items file, until they become one file) arrives in
+her inbox each day and she runs it by hand, which is what has actually been happening in chat all
+along.
+
+- **The date is tomorrow.** `scripts/wikidata_lockout.py` and `.github/workflows/wikidata-edits.yml`
+  both carry `START_DATE = 2026-09-01`, pinned together by `tests/test_wikidata_start_date.py`.
+  Those stay as the safety rail on the *edit* path, which remains unused.
+- **`schedule:` plus `workflow_dispatch:` only.** `CLAUDE.md` § *Cost* forbids `push:` and
+  `pull_request:` triggers and this needs neither.
+- **Actions minutes are the constraint while the repo is private**, so this either waits on the
+  public-repo work queued at the tail, or runs from a local scheduled task in the meantime. Say
+  which; a local task needs no repo change and could start tomorrow.
+- **Send the file, not a summary.** The batch is what she runs.
 
 ## How the synoptic tree is actually made — Emma, 2026-08-25
 
