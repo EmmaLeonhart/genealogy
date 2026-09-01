@@ -24445,3 +24445,25 @@ ruling is to leave them and keep measuring.
 **Nothing else was dead.** The CI slow-lane item is mid-measurement — run `33524955243` has the
 instrumented job in flight — and the rest are specifications, standing procedures, her tail
 placements, or the three things waiting on her.
+
+## 2026-09-01 — the daily batch delivers by ISSUE, and needs no secrets at all
+
+**Emma, 2026-09-01:** *"Uhh I don't think I need this? Can't github actions just send me an email
+lol."* She is right, and it retires the only genuine BLOCKED-ON-USER-ACTION of the night.
+
+GitHub already emails about issues. So the three secrets — `SMTP_SERVER`, `SMTP_USERNAME`,
+`SMTP_PASSWORD` — were being bought for something the platform does for free, and an app password
+is a credential that then has to live somewhere. `.github/scripts/send_batch_email.py` is deleted
+and `daily-batch-email.yml` opens an issue instead, with `permissions: issues: write` and the
+repo's own `GITHUB_TOKEN`.
+
+**The batch goes in the issue BODY.** QuickStatements is pasted into a textarea, so the text *is*
+the deliverable and an email carrying it is a complete hand-off. It was **54,184 bytes** on
+2026-09-01 against a 65,536 issue-body limit — 17% of headroom — so the fallback to the run
+artifact is written and is not theoretical.
+
+**The issue is assigned to her**, because a notification on issue creation is not guaranteed by
+watching alone; assignment is.
+
+**§ *Add three SMTP secrets* is deleted from the queue.** That leaves two blockers, both
+decisions rather than actions.

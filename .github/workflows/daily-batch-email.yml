@@ -1,100 +1,98 @@
-name: Daily batch email
+name: Daily batch
 
 # **Emma, 2026-08-31:** *"not wikidata editing but instead emailing me the daily quickstatements
-# file to me every day so I can run it."* So nothing here edits Wikidata. The deliverable is
-# delivery: the day's batch reaches her inbox and she runs it by hand.
+# file to me every day so I can run it."* Nothing here edits Wikidata. The deliverable is delivery.
 #
-# It was gated on the repo going public, which happened 2026-09-01 — *"The repo is public now
-# lol"* — so Actions minutes are free and this can run.
+# **It opens an ISSUE rather than sending mail, and that is her idea, 2026-09-01:** *"Uhh I don't
+# think I need this? Can't github actions just send me an email lol."* She is right. GitHub
+# already emails about issues, so an SMTP server, a sending account and an app password were three
+# secrets bought for something the platform does for free. `send_batch_email.py` and the `SMTP_*`
+# secrets are deleted.
 #
-# **It sends the file, not a summary.** The batch is what she runs.
+# **The batch goes in the issue BODY, not just as a link.** QuickStatements is pasted into a
+# textarea, so the text IS the deliverable and an email carrying it is a complete hand-off. The
+# run artifact stays for anything that wants the file.
 #
-# THE ONE THING THIS NEEDS FROM HER: three repository secrets. Until they exist the job still
-# runs, still attaches the batch as a downloadable artifact, and says plainly in the log that it
-# could not send. It never fails for a missing secret, because a red workflow every morning is
-# worse than a quiet one.
-#
-#   SMTP_SERVER    e.g. smtp.fastmail.com
-#   SMTP_USERNAME  the sending account
-#   SMTP_PASSWORD  an app password, never the account password
-#
-# Settings → Secrets and variables → Actions → New repository secret.
+# **It is assigned to her**, because a notification on issue creation is not guaranteed by
+# watching alone -- assignment is.
 
 on:
   schedule:
-    # 06:05 UTC, a little after the CI run at 05:17 so the two do not queue against each other.
+    # 06:05 UTC, after the CI run at 05:17 so the two do not queue against each other.
     - cron: "5 6 * * *"
   workflow_dispatch:
 
+permissions:
+  contents: read
+  issues: write
+
 jobs:
-  send:
+  deliver:
     runs-on: ubuntu-latest
     timeout-minutes: 15
-    # **Job-level, not step-level, and that distinction is a real bug rather than style.** A
-    # step's `if:` is evaluated BEFORE that step's own `env:` is applied, so
-    # `if: env.SMTP_SERVER != ''` on a step that sets `SMTP_SERVER` in its own `env:` is always
-    # false. The first run looked right -- the email step skipped and the explanation step ran --
-    # but it would have skipped just the same AFTER she added the secrets, which is the failure
-    # that would never have announced itself.
-    env:
-      SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
-      SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
-      SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
     steps:
-      # Only the batch, the carry-forward, and `.github` — which holds the sender. This
-      # workflow does not rebuild anything: the batch is committed, and rebuilding needs the
-      # corpus and 17 GB.
-      #
-      # `.github` is easy to forget and expensive to forget. Without it the email step runs
-      # `python .github/scripts/send_batch_email.py` against a file the checkout never fetched,
-      # and that only surfaces once the secrets exist and the step stops being skipped — so it
-      # would have failed on the first morning it mattered, like the `if:` bug above it.
-      #
-      # The comment lives here rather than inside the pattern block: git reads `#` there as a
-      # comment, but the patterns are clearer without prose mixed in.
+      # Only the batch and the carry-forward. This workflow rebuilds nothing: the batch is
+      # committed, and rebuilding needs the corpus and 17 GB.
       - uses: actions/checkout@v4
         with:
           filter: blob:none
           sparse-checkout: |
             /reports/wikidata-garborg-day.qs
             /reports/garborg-carry-forward.tsv
-            /.github
           sparse-checkout-cone-mode: false
 
       - name: What is in today's batch
         id: batch
         run: |
           FILE=reports/wikidata-garborg-day.qs
-          if [ ! -s "$FILE" ]; then
-            echo "no batch file on disk" >&2
-            exit 1
-          fi
-          CREATES=$(grep -c '^CREATE' "$FILE" || true)
-          LINES=$(grep -cve '^\s*#' -e '^\s*$' "$FILE" || true)
-          CARRIED=$(($(wc -l < reports/garborg-carry-forward.tsv) - 1))
-          echo "creates=$CREATES" >> "$GITHUB_OUTPUT"
-          echo "lines=$LINES" >> "$GITHUB_OUTPUT"
-          echo "carried=$CARRIED" >> "$GITHUB_OUTPUT"
-          echo "$CREATES creations, $LINES statement lines, $CARRIED carried forward"
+          if [ ! -s "$FILE" ]; then echo "no batch file on disk" >&2; exit 1; fi
+          echo "creates=$(grep -c '^CREATE' "$FILE" || true)" >> "$GITHUB_OUTPUT"
+          echo "lines=$(grep -cve '^[[:space:]]*#' -e '^[[:space:]]*$' "$FILE" || true)" >> "$GITHUB_OUTPUT"
+          echo "bytes=$(wc -c < "$FILE")" >> "$GITHUB_OUTPUT"
+          echo "carried=$(( $(wc -l < reports/garborg-carry-forward.tsv) - 1 ))" >> "$GITHUB_OUTPUT"
 
-      # Always available, secrets or not: the batch is downloadable from the run page.
+      # The file, for anything that wants a file rather than text.
       - uses: actions/upload-artifact@v4
         with:
           name: wikidata-garborg-day
           path: reports/wikidata-garborg-day.qs
           retention-days: 30
 
-      - name: Email it
-        if: env.SMTP_SERVER != ''
+      - name: Open the issue
+        uses: actions/github-script@v7
         env:
           CREATES: ${{ steps.batch.outputs.creates }}
           LINES: ${{ steps.batch.outputs.lines }}
           CARRIED: ${{ steps.batch.outputs.carried }}
-        run: python .github/scripts/send_batch_email.py
-
-      - name: Say why it was not sent
-        if: env.SMTP_SERVER == ''
-        run: |
-          echo "SMTP_SERVER is not set, so nothing was emailed."
-          echo "The batch is attached to this run as the 'wikidata-garborg-day' artifact."
-          echo "Add SMTP_SERVER, SMTP_USERNAME and SMTP_PASSWORD to enable the email."
+          BYTES: ${{ steps.batch.outputs.bytes }}
+        with:
+          script: |
+            const fs = require('fs');
+            const LIMIT = 65536;
+            const batch = fs.readFileSync('reports/wikidata-garborg-day.qs', 'utf8');
+            const today = new Date().toISOString().slice(0, 10);
+            const run = `${context.serverUrl}/${context.repo.owner}/${context.repo.repo}` +
+                        `/actions/runs/${context.runId}`;
+            const head = [
+              `**${process.env.CREATES} creations - ${process.env.LINES} statement lines - ` +
+              `${process.env.CARRIED} carried forward**`,
+              '',
+              "Name items come first, then the day's people, so it runs top to bottom as one paste.",
+              '',
+            ].join('\n');
+            // The body carries the batch when it fits. It was 54,184 bytes on 2026-09-01 against
+            // a 65,536 limit -- 17% headroom -- so the fallback is not theoretical.
+            const wrapped = head + '```\n' + batch + '\n```\n';
+            const body = wrapped.length <= LIMIT
+              ? wrapped
+              : head + `The batch is ${process.env.BYTES} bytes, past the ${LIMIT}-byte issue-body ` +
+                       `limit, so it is on [the run](${run}) as the \`wikidata-garborg-day\` ` +
+                       `artifact instead.\n`;
+            const issue = await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: `Garborg batch ${today} - ${process.env.CREATES} creations`,
+              body,
+              assignees: [context.repo.owner],
+            });
+            core.info(`opened #${issue.data.number}: ${issue.data.html_url}`);

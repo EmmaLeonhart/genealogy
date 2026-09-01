@@ -453,33 +453,6 @@ run one module on a larger runner, and see whether memory is actually the wall.
 - Open questions for Emma: `questions.md`
 - The pre-wipe queue, 1,396 lines: `git show 4127170:queue.md`
 
-## Add three SMTP secrets so the daily batch email can send
-
-**Her ruling, 2026-08-31:** *"not wikidata editing but instead emailing me the daily
-quickstatements file to me every day so I can run it."* It was gated on the repo going public;
-that happened 2026-09-01, so it is built.
-
-`.github/workflows/daily-batch-email.yml` runs at **06:05 UTC daily** and on demand. It checks
-out only the batch file, counts what is in it, **always** uploads it as a downloadable artifact,
-and emails it as an attachment when the credentials exist.
-`.github/scripts/send_batch_email.py` does the sending — stdlib `smtplib`, no dependency.
-
-**BLOCKED-ON-USER-ACTION, and this is a real one with a named action.** Three repository secrets,
-which only she can add:
-
-    SMTP_SERVER     e.g. smtp.fastmail.com
-    SMTP_USERNAME   the sending account
-    SMTP_PASSWORD   an app password, never the account password
-
-Settings → Secrets and variables → Actions → New repository secret.
-
-**Until they exist the job does not fail.** It runs, attaches the batch to the run, and says in
-the log that it could not send — a red workflow every morning is worse than a quiet one, and a
-missing secret is not an error in the pipeline.
-
-**It sends the file, not a summary.** The batch is what she runs, and a description of it is not
-something anyone can paste into QuickStatements.
-
 ## The chain of provenance — Emma, 2026-08-25
 
 **Her words:** *"providence is important in this, and ideally, a zipper merge will almost always
