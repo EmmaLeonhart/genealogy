@@ -31,15 +31,28 @@ get that cjk includes korean"*.
   first 400. A partial rendering is never emitted — one unknown character blocks the label.
 - Verified by eye: 李成桂 → 이성계 · 金正日 → 김정일 · 朴正熙 → 박정희 · 藤原道長 → 등원도장.
 
-**Still to do, in order.**
+**All four follow-ups are DONE, 2026-09-01.**
 
-- **Raise coverage past 61%.** 4,260 distinct characters remain unread over 52,212 occurrences.
-  The next 300 by frequency are the next tranche; the tail is long and each tranche is worth less.
-- **A `ko` column in `reports/garborg-name-transliterations.tsv`**, and the funnel mints all three
-  rather than two.
-- **The creation gate becomes `ja` + `zh` + `ko`.** § *ABSOLUTE PREREQUISITE* means all three, and
-  it currently checks two.
-- **`ko` labels emitted for the whole CJK population**, not only the Garborg ring.
+- **Coverage raised 44% → 61% → 72%** over three tranches, each chosen by measuring what was still
+  unread rather than guessing. The table is **1,033 characters**. 3,960 distinct characters remain
+  over 28,703 occurrences, so the tail is long and each further tranche is worth less.
+- **`scripts/translit_ko_latin.py`** — the other half, Latin → Hangul, which is what the creation
+  gate actually needs because the Garborg ring is Latin-named. **97% of the 1.29 million
+  Latin-labelled people render.** Four bugs found by reading the output, not by testing: ㄹ is
+  named `r` in the initial slot and `l` in the final; `l` closes a syllable where `r` opens its
+  own; the final was skipped whenever the vowel split; and a doubled stop collapses where a
+  doubled liquid does not.
+- **A `ko` column in the funnel table** — 18,535 of 18,536 tokens carry a Korean reading. The one
+  that does not is `'....'`, which is punctuation.
+- **The creation gate is `ja` + `zh` + `ko`**, and all 28 creations in today's batch carry `Lko`,
+  including the NN/relationship people, who take the genitive: `아스트리 …의 아들`.
+- **`scripts/build-ko-label-batch.py`** — 33,725 labels for the whole CJK population, the same
+  scale as `ja`'s 41,952 and on the same standard.
+
+**What is left is one decision, and it is shared with `ja`:** 1,278,536 Latin-named people can be
+rendered into Hangul at 97%, and both batches withhold that population because transcription is
+not reading. Whether that line moves is a decision for `ja` and `ko` together, not for Korean
+alone.
 
 **`P1814` *name in kana* is NOT part of this and stays agentic** — a Japanese name reading does not
 follow from the characters, which is why queuing the two together was the mistake this item fixes.
