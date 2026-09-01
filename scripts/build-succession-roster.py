@@ -211,6 +211,15 @@ def main():
                 "source": "reports/wikidata-samaritan-succession.json",
             }
 
+    # The authoritative Samaritan population, rather than anything read off a name.
+    samaritans = set()
+    sam_people = ROOT / "reports" / "samaritan-people.csv"
+    if sam_people.exists():
+        with io.open(sam_people, encoding="utf-8", newline="") as fh:
+            for r in csv.DictReader(fh):
+                if r.get("geni_id"):
+                    samaritans.add(r["geni_id"].strip())
+
     # ---- the regnal number IN THE NAME, for the Samaritans ---------------------------
     label = {}
     with io.open(LABELS, encoding="utf-8", newline="") as fh:
@@ -221,8 +230,16 @@ def main():
         for r in csv.DictReader(fh):
             g = r["geni_id"]
             tok = (r.get("ordinal_token") or "").strip()
-            # Samaritan shape only: a `ben` patronymic chain, and a genuine Roman ordinal.
-            if "ben " not in (r.get("raw_name") or ""):
+            # **`"ben " in name` was a substring test and it let in strangers.** Reading the
+            # output is what caught it: `Agatha von Schwaben Daughter of Ernst II` and
+            # `Bagben III Siounides Prince of Siounie` matched on the letters inside `Schwaben`
+            # and `Bagben`, and `David ben Hizkiya II 39th Exilarch` and `Avraham II ben Ezra
+            # HaLevi` are Jewish rather than Samaritan -- a `ben` patronymic is not a Samaritan
+            # marker, it is a Hebrew one.
+            #
+            # `reports/samaritan-people.csv` is the actual population, 412 people taken from the
+            # Samaritan exports, so membership is a lookup and not a guess about a name.
+            if g not in samaritans:
                 continue
             # **A bare `I`, `V` or `X` is a regnal ordinal here, and the census files it as
             # `single-letter` because elsewhere it could be a middle initial.** Taking only
