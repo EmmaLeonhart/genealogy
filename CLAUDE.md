@@ -1748,6 +1748,46 @@ request would do, and do not hammer to finish faster.
 Wikidata nothing, and a question answerable there needs no request at all. Reach for the network
 when the store cannot answer, not before.
 
+### SORTING MUST BE DETERMINISTIC. A generated file is byte-identical or the diff is a lie
+
+**Emma, 2026-09-01:** *"sorting needs to be deterministic put that in claude.md to ensure that we
+don't have this issue"*.
+
+**The issue, measured.** `reports/garborg-name-transliterations.tsv` was rewritten with **zero**
+content change — 36,901 tokens, 0 lost, 0 gained, 0 altered — and `git diff` reported **36,901
+changed lines**. Three scripts write that table (`extend-transliterations.py`,
+`apply-attested-renderings.py`, `refresh-rule-transliterations.py`) and only one of them sorted;
+the other two wrote in input order. So each hand-off reshuffled the rows and the next sort
+inherited a different arrangement.
+
+**`casefold` is not a total order and that is the trap.** 738 tokens in that table collide under
+it — `A`/`a`, `Aarne`/`AARNE`, `'Le'`/`'le'`. Python's sort is **stable**, so tied rows keep the
+order they arrived in, which is the order the *previous writer* happened to leave. A stable sort on
+a non-total key is not deterministic; it is a function of history.
+
+**The rule: every generated file this repo writes must be a pure function of its inputs.** Same
+inputs, byte-identical output, whatever wrote it last and whatever order that writer used.
+
+- **Sort on a TOTAL key.** Append something unique as the final tiebreaker — the raw token, the
+  Geni id, the QID. `translit_no.table_sort_key` is `(token.casefold(), token)` and is the worked
+  example; import it rather than re-deriving one.
+- **Never let dict or set iteration decide output order.** It is insertion order, which is upstream
+  order, which is the thing being made deterministic.
+- **One sort, in one place, for one file.** Every writer of a shared file uses the same key. Two
+  writers with two orders is the bug above, not a stylistic difference.
+
+**Why this is worth a rule and not a tidy-up: a noisy diff hides the real change.** The whole
+verification method here is *measure what changed and read a sample* — `CLAUDE.md` § *"Analyse
+this" means build a CSV* — and a 36,901-line diff over a no-op makes that impossible. It is the
+same family as § *check the separator before believing a distribution*: the instrument produced a
+number about itself rather than about the data.
+
+**Write to a temp file and `os.replace`, and close the reader first.** Not ordering, but the same
+incident: `open(path, "w")` truncates *before* a `DictWriter` raises, so a fieldnames mismatch
+destroyed 36,902 hand-built rows and left an 18-byte header. An atomic replace makes a failed write
+a no-op. On Windows the rename fails if the reader is still open, so read inside a `with` — on
+POSIX the leak passes silently and ships.
+
 ### The four big derived CSVs are committed GZIPPED
 
 **Emma, 2026-08-24:** *"Imo gzip because this is long term and we aren't adding any more

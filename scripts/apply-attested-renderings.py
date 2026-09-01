@@ -44,6 +44,7 @@ Rewrites `reports/garborg-name-transliterations.tsv` in place.
 
 from __future__ import annotations
 
+import os
 import collections
 import csv
 import io
@@ -54,6 +55,9 @@ REPO = Path(__file__).resolve().parent.parent
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
 TAB = chr(9)
+sys.path.insert(0, str(REPO / "scripts"))
+from translit_no import table_sort_key  # noqa: E402
+
 TABLE = REPO / "reports" / "garborg-name-transliterations.tsv"
 ATTESTED = REPO / "reports" / "attested-name-renderings.tsv"
 
@@ -74,9 +78,12 @@ HERS = {
 
 
 def main() -> int:
-    att = {r["token"]: r for r in csv.DictReader(
-        io.open(ATTESTED, encoding="utf-8"), delimiter=TAB)}
-    rows = list(csv.DictReader(io.open(TABLE, encoding="utf-8"), delimiter=TAB))
+    # Both readers are closed before the atomic replace below: Windows refuses to rename over
+    # a file it still has open, which is how os.replace first died with WinError 5.
+    with io.open(ATTESTED, encoding="utf-8") as fh:
+        att = {r["token"]: r for r in csv.DictReader(fh, delimiter=TAB)}
+    with io.open(TABLE, encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh, delimiter=TAB))
     fields = ["token", "ja", "zh", "ko", "note"]
 
     n = collections.Counter()
@@ -108,11 +115,19 @@ def main() -> int:
         if len(changed) < 15:
             changed.append((r["token"], before, (r["ja"], r["zh"]), src))
 
-    w = csv.DictWriter(io.open(TABLE, "w", encoding="utf-8", newline=""),
-                       delimiter=TAB, fieldnames=fields)
-    w.writeheader()
-    for r in rows:
-        w.writerow({k: r.get(k, "") for k in fields})
+    # **Deterministic order, and an atomic replace.** Emma, 2026-09-01: *"sorting needs to be
+    # deterministic"*. This wrote in input order while `extend-transliterations.py` sorted, so
+    # every hand-off between the two reshuffled the 738 tokens that tie under `casefold` — and a
+    # rewrite that changed nothing at all came out as 36,901 changed lines in `git diff`. A diff
+    # that noisy hides the change you actually need to see.
+    rows.sort(key=table_sort_key)
+    tmp = TABLE.with_name(TABLE.name + ".tmp")
+    with io.open(tmp, "w", encoding="utf-8", newline="") as fh:
+        w = csv.DictWriter(fh, delimiter=TAB, fieldnames=fields)
+        w.writeheader()
+        for r in rows:
+            w.writerow({k: r.get(k, "") for k in fields})
+    os.replace(tmp, TABLE)
 
     for k, v in n.most_common():
         print(f"  {v:>7,}  {k}")

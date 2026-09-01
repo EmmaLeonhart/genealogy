@@ -84,7 +84,7 @@ LETTERS = {
 #: **The suffix table lives in `translit_no.py` now**, because it is a reading rule and this
 #: module and that one disagreed on 99 rows while both were in one pipeline. Imported, not
 #: restated -- one fact, one place.
-from translit_no import SUFFIXES  # noqa: E402
+from translit_no import SUFFIXES, table_sort_key  # noqa: E402
 
 
 def by_rule(token):
@@ -292,7 +292,9 @@ def _extend(rows, have, missing, args):
         added.append({"token": token, "ja": ja, "zh": zh, "note": note})
 
     rows.extend(added)
-    rows.sort(key=lambda r: r["token"].casefold())
+    # Total ordering, not just casefold -- 738 tokens tie under casefold and a stable sort
+    # then inherits whatever order the previous writer left. See translit_no.table_sort_key.
+    rows.sort(key=table_sort_key)
     if args.dry_run:
         print(f"\n--dry-run: {len(added)} rows would be added, table untouched")
         for r in added[:15]:

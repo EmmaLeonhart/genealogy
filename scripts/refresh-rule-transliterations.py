@@ -38,6 +38,7 @@ rule change moved.
 """
 from __future__ import annotations
 
+import os
 import argparse
 import csv
 import sys
@@ -93,9 +94,11 @@ def main():
                     help="print what would change and write nothing.")
     args = ap.parse_args()
 
-    from translit_no import translit
+    from translit_no import translit, table_sort_key
 
-    rows = list(csv.DictReader(TABLE.open(encoding="utf-8"), delimiter="\t"))
+    # Closed before the atomic replace below: Windows will not rename over an open file.
+    with TABLE.open(encoding="utf-8") as _fh:
+        rows = list(csv.DictReader(_fh, delimiter="\t"))
     hand = {r["token"]: r for r in rows}
     changed, unreadable, kept = [], [], 0
     for row in rows:
@@ -129,10 +132,29 @@ def main():
     if not changed:
         print("\nnothing to write")
         return
-    with TABLE.open("w", encoding="utf-8", newline="") as fh:
-        w = csv.DictWriter(fh, fieldnames=["token", "ja", "zh", "note"], delimiter="\t")
+    # **Columns from the file, a total sort, and an atomic replace.** This carried the same
+    # `["token", "ja", "zh", "note"]` literal that truncated the table to an 18-byte header on
+    # 2026-09-01, destroying 36,902 hand-built rows: the table has had a `ko` column since Emma
+    # ruled that *"cjk includes korean"*, and `open(..., "w")` truncates before `writerows`
+    # raises. A second copy of a landmine is still a landmine.
+    #
+    # The sort is `translit_no.table_sort_key` because **sorting has to be deterministic** — her
+    # instruction, 2026-09-01. 738 tokens tie under `casefold` alone, and three scripts write this
+    # file, so an unsorted hand-off reshuffles the ties and a content-identical rewrite shows up
+    # as 36,901 changed lines.
+    with TABLE.open(encoding="utf-8") as fh:
+        fieldnames = fh.readline().rstrip(chr(10)).rstrip(chr(13)).split(chr(9))
+    for r in rows:
+        for k in r:
+            if k not in fieldnames:
+                fieldnames.append(k)
+    rows.sort(key=table_sort_key)
+    tmp = TABLE.with_name(TABLE.name + ".tmp")
+    with tmp.open("w", encoding="utf-8", newline="") as fh:
+        w = csv.DictWriter(fh, fieldnames=fieldnames, delimiter="\t", restval="")
         w.writeheader()
         w.writerows(rows)
+    os.replace(tmp, TABLE)
     print(f"\nwrote {TABLE.relative_to(ROOT)}")
 
 

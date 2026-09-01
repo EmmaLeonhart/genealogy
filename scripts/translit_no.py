@@ -373,3 +373,20 @@ def check():
 
 if __name__ == "__main__":
     check()
+
+
+def table_sort_key(row):
+    """Total ordering for a row of `reports/garborg-name-transliterations.tsv`.
+
+    **Emma, 2026-09-01:** *"sorting needs to be deterministic"*.
+
+    `sorted(key=str.casefold)` is NOT total on this table: **738 tokens collide under
+    casefold** -- `A`/`a`, `Aarne`/`AARNE`, `'Le'`/`'le'`. Python's sort is stable, so a tie
+    keeps the order it arrived in, which is whatever the previous writer left. Three scripts
+    write this file and two of them do not sort at all, so every hand-off reshuffled the ties
+    and a content-identical rewrite came out as **36,901 changed lines** in `git diff`.
+
+    Appending the raw token breaks every tie, because the token is unique per row.
+    """
+    token = row["token"] if isinstance(row, dict) else row
+    return (token.casefold(), token)
