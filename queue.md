@@ -1735,3 +1735,18 @@ of it without touching the reader; a Cyrillic name is a different engine; and `<
 upstream in whatever built that label.
 
 `python scripts/extend-transliterations.py --placeholders` prints the current list.
+
+## THE LAST ITEM — wire `hi`, `ar`, `ru`, `el` into the label batches
+
+`scripts/translit_scripts.py` renders all four and **nothing emits them yet**. Her call,
+2026-08-31: at the tail.
+
+- The four join `ja`/`zh` in the emitters that already build CJK labels —
+  `build-garborg-day.py`, `build-placeholder-label-batch.py`, `build-nn-label-batch.py`.
+- **Read a sample by eye before wiring, every time.** Four manglings were caught that way when
+  the module was written — `Bjørn` → `бйёрн`, `Johannes` → `Ёханнес`, `Maria` → `مرا` and
+  `मरिअ` — and none was visible in the tables.
+- **`ar` is an abjad and loses short vowels.** `Arne` and `Aren` collide. Decide deliberately
+  whether an Arabic label is worth having on that basis; the module does not decide it.
+- Her standard governs what is acceptable: *"incorrect romanization or incorrect representations
+  in katakana are totally acceptable. An incorrect name is not."*
