@@ -23107,3 +23107,23 @@ happening in chat all along. The `START_DATE = 2026-09-01` constants stay as the
 *edit* path, which remains unused. Noted in the item: while the repo is private, Actions minutes
 are the constraint, so this either waits on the public-repo work at the tail or runs from a local
 scheduled task — which needs no repo change and could start tomorrow.
+
+## 2026-08-31 — the repo is going public, so the daily email runs on Actions
+
+Emma, asked whether the daily QuickStatements email should run on GitHub Actions or from a local
+scheduled task: *"the repo will be public lol."* So Actions, and the local fallback is dropped.
+
+**That makes the anonymisation a hard prerequisite rather than a parallel task**, and it is worth
+being explicit because the date passes tomorrow: ~96,000 rows concern people Geni treats as
+private, and the Geni profile id cannot be hashed or dropped because it is this repo's primary key
+— every join, every `P2600` and every spine runs through it. Redacting content while keeping
+structure is the shape. Until that lands the repo cannot go public, so the email cannot run on
+Actions, and **2026-09-01 arriving changes nothing by itself**.
+
+Two other things now hang off the same gate, worth seeing together rather than rediscovering:
+
+- **Tests resume when it lands.** `CLAUDE.md` § *NO NEW TESTS* is scoped exactly to *"until we got
+  the ci/cd with github actions as a public repo running"*, which is this.
+- **The CI checkout has to shrink too** — the working tree is 12.2 GB with 1.9 GB of `.css` and
+  `.download` page furniture under `geni-scraping/`, and the merge peaks at 16.8 GB against a
+  16 GB runner. The compose step only reads the derived CSVs, so the runner never needs the tree.

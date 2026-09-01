@@ -325,9 +325,13 @@ along.
   Those stay as the safety rail on the *edit* path, which remains unused.
 - **`schedule:` plus `workflow_dispatch:` only.** `CLAUDE.md` § *Cost* forbids `push:` and
   `pull_request:` triggers and this needs neither.
-- **Actions minutes are the constraint while the repo is private**, so this either waits on the
-  public-repo work queued at the tail, or runs from a local scheduled task in the meantime. Say
-  which; a local task needs no repo change and could start tomorrow.
+- **It runs on GitHub Actions, not a local task.** Emma, 2026-08-31: *"the repo will be
+  public lol"* — so Actions minutes are free and the local-scheduled-task fallback is dropped.
+- **That makes the anonymisation work a hard prerequisite**, and it sits at the tail: ~96,000
+  rows concern people Geni treats as private, and the Geni profile id cannot be hashed or
+  dropped because it is this repo's primary key. See § *Clear the personal information out*.
+  Until that lands the repo cannot go public, so this cannot run on Actions — the date passing
+  tomorrow changes nothing on its own.
 - **Send the file, not a summary.** The batch is what she runs.
 
 ## How the synoptic tree is actually made — Emma, 2026-08-25
