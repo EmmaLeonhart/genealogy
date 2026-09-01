@@ -46,6 +46,7 @@ from __future__ import annotations
 
 import csv
 import json
+import re
 import sys
 from collections import Counter
 from pathlib import Path
@@ -63,11 +64,74 @@ csv.field_size_limit(10 ** 7)
 REQUIRED = ("en", "ja", "zh")
 
 
+
+#: **The relationship word in Japanese and Chinese**, built the native way rather than by
+#: borrowing English grammar. `CLAUDE.md` § *The NN/Private label algorithm* gives the shape:
+#:
+#:     ja   アルネ・オーラウス・フョルトフト・ガルボルグの息子
+#:     zh   阿尔内·奥劳斯·夫约托夫特·加尔博格之子
+#:
+#: There is no `の`-for-`of` borrowing here beyond what Japanese itself uses: `<name>の息子` IS
+#: the Japanese construction, and `<name>之子` the Chinese one.
+CJK_RELATION = {
+    "son": ("の息子", "之子"),
+    "daughter": ("の娘", "之女"),
+    "child": ("の子", "之子"),
+    "father": ("の父", "之父"),
+    "mother": ("の母", "之母"),
+    "parent": ("の親", "之親"),
+    "husband": ("の夫", "之夫"),
+    "wife": ("の妻", "之妻"),
+    "spouse": ("の配偶者", "之配偶"),
+}
+
+RELATION_RE = re.compile(r"^(son|daughter|child|father|mother|parent|husband|wife|spouse) of "
+                         r"(.+)$", re.I)
+
+
+def cjk_labels(en_label, table):
+    """`(ja, zh)` for a generated `X of Y` label, or `(None, None)`.
+
+    **This was deferred, and the reason it was deferred is now gone.** `CLAUDE.md` records that
+    `ja`/`zh` were excluded *"only because the relative's name is usually not transliterated --
+    where it is, as in the Garborg family, they are emitted."* The token funnel wired into
+    `build-daily-batch.py` on 2026-08-31 fills the table on every run, so the relative's name is
+    transliterable far more often than it was.
+
+    **Partial is still worse than absent.** If any token of the relative's name is unknown, both
+    labels are withheld -- half a name in katakana and half in Latin is not a Japanese label. The
+    middle-initial exception in `labels.transliterate_token` is the only one and it applies here
+    through the same table.
+    """
+    m = RELATION_RE.match((en_label or "").strip())
+    if not m:
+        return None, None
+    words = CJK_RELATION.get(m.group(1).lower())
+    if not words:
+        return None, None
+    ja_parts, zh_parts = [], []
+    for token in m.group(2).split():
+        pair = table.get(token)
+        if not pair or not pair[0] or not pair[1]:
+            return None, None
+        ja_parts.append(pair[0])
+        zh_parts.append(pair[1])
+    return "・".join(ja_parts) + words[0], "·".join(zh_parts) + words[1]
+
+
 def main() -> int:
     if not PREVIEW.exists():
         print(f"no {PREVIEW}; run scripts/build-relationship-label-preview.py first",
               file=sys.stderr)
         return 1
+
+    translit = {}
+    tpath = REPO / "reports" / "garborg-name-transliterations.tsv"
+    if tpath.exists():
+        with tpath.open(encoding="utf-8", newline="") as fh:
+            for t in csv.DictReader(fh, delimiter="	"):
+                translit[t["token"]] = (t["ja"], t["zh"])
+    print(f"{len(translit):,} tokens in the transliteration table")
 
     rows = list(csv.DictReader(PREVIEW.open(encoding="utf-8", newline="")))
     print(f"{len(rows):,} people carry a placeholder given name")
@@ -78,6 +142,10 @@ def main() -> int:
         labels = {"mul": r["mul_label"]}
         if r.get("generated_en"):
             labels["en"] = r["generated_en"]
+            ja, zh = cjk_labels(r["generated_en"], translit)
+            if ja:
+                labels["ja"], labels["zh"] = ja, zh
+                counts["ja and zh built from the relative's name"] += 1
         missing = [l for l in REQUIRED if l not in labels]
         counts["with an en label" if "en" in labels else "mul only"] += 1
         counts[r["population"]] += 1

@@ -116,6 +116,9 @@ def main():
     ap = argparse.ArgumentParser(description="extend the transliteration table by rule")
     ap.add_argument("--dry-run", action="store_true",
                     help="print what would be added and write nothing.")
+    ap.add_argument("--placeholders", action="store_true",
+                    help="scope: every relative name the placeholder labels are built from, "
+                         "which is the population the ja/zh gate stalls on.")
     ap.add_argument("--two-hops", action="store_true",
                     help="scope: every ledger person plus everyone within two hops of them, "
                          "rather than just today's batch.")
@@ -140,7 +143,13 @@ def main():
     #
     # `--two-hops` is the scope she named: every person in the ledger, plus everyone within
     # two parent/child/spouse/sibling hops of them in our own tree, either direction.
-    if args.two_hops:
+    # `--placeholders` is the third scope, added 2026-08-31: the relative names the
+    # placeholder labels are built from. That is the population the `ja`/`zh` creation gate
+    # actually stalls on -- 32,129 placeholders carry a generated `en` label and only 1,916
+    # could be rendered, every other one blocked by a token nobody has read.
+    if args.placeholders:
+        need = _placeholder_tokens()
+    elif args.two_hops:
         need = _two_hop_tokens()
     else:
         need = _batch_tokens()
@@ -162,6 +171,34 @@ def _batch_tokens():
             need |= set(m.group(1).split())
         for m in re.finditer(r"^\d+\t([^\t]+)\t", text, re.M):
             need |= set(m.group(1).split())
+    return need
+
+
+def _placeholder_tokens():
+    """Every relative name the placeholder labels are built from.
+
+    **The population the `ja`/`zh` gate actually stalls on.** `build-placeholder-label-batch.py`
+    constructs `daughter of Angel Pereira Galdo` and then needs the relative's name in katakana to
+    build `アンヘル・ペレイラ・ガルド の娘`. 32,129 of the 39,691 placeholders have such a label and
+    only **1,916** could be rendered on the first run -- every one of the other 30,213 blocked by
+    at least one token nobody has read.
+
+    That is the funnel's whole purpose, so the tokens belong in its scope. `_batch_tokens` covers
+    today's batch and `_two_hop_tokens` her neighbourhood; neither reaches here.
+    """
+    need = set()
+    path = ROOT / "reports" / "relationship-label-preview.csv"
+    if not path.exists():
+        return need
+    import csv as _csv
+    _csv.field_size_limit(10 ** 7)
+    with path.open(encoding="utf-8", newline="") as fh:
+        for r in _csv.DictReader(fh):
+            en = (r.get("generated_en") or "").strip()
+            m = re.match(r"^(?:son|daughter|child|father|mother|parent|husband|wife|spouse)"
+                         r" of (.+)$", en, re.I)
+            if m:
+                need |= set(m.group(1).split())
     return need
 
 

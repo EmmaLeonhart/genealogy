@@ -23503,3 +23503,40 @@ katakana are totally acceptable"*.
 is a different request from blocking its use, and writing it as a gate would have been the
 `CLAUDE.md` § *inventing a hard limit* failure in miniature — turning a caution into a
 precondition.
+
+## 2026-08-31 — the ja/zh gate on the placeholders: 1,916 → 22,614 of 32,129
+
+The next queue item, § *Labels in seven languages*, whose concrete blocker was
+`reports/wikidata-placeholder-labels.json` carrying **`ja` and `zh` on none** of its 39,691 edits
+and saying it must not run in that state.
+
+**Two things were missing and neither was hard once the funnel existed.**
+
+`build-placeholder-label-batch.py` never constructed a CJK label at all — its own docstring says
+so, deferring to *"queue item 9, not an oversight"*, because *"`ja` and `zh` have to be
+constructed, since Japanese is not in Wikidata's top 18 languages and cannot be copied from a
+relative."* `CLAUDE.md` § *The NN/Private label algorithm* has the construction —
+`<relative's name>の息子`, `<relative's name>之子` — and records that it was excluded *"only
+because the relative's name is usually not transliterated."*
+
+So `cjk_labels()` builds it, natively rather than by borrowing English grammar: `<name>の娘` IS
+the Japanese construction and `<name>之女` the Chinese one. Partial stays worse than absent — one
+unreadable token withholds both labels.
+
+**First run: 1,916 of 32,129.** Every other one blocked by a token nobody had read.
+
+**Then the funnel, pointed at the right population.** `extend-transliterations.py` had two scopes
+— today's batch, and everyone within two hops of the ledger — and neither reaches the
+placeholders, so the tokens the gate actually stalls on were outside the funnel's sight the whole
+time. `--placeholders` is the third scope: **16,872 tokens needed, 15,431 missing, 14,356 added**,
+table **4,054 → 18,410**.
+
+**Result: 22,614 of the 32,129 now carry `ja` and `zh`** — 70%, from 6%. 17,077 edits still need
+them, and 1,075 tokens were left unreadable, most of them quoting artefacts (`"Abbahu"`,
+`"Alexios`, `!\`) rather than names.
+
+**One slip worth recording.** My first attempt to add the `--placeholders` branch failed its
+assertion and I read the "table is now 4054" line as a finding about the data rather than as the
+branch never having been applied. It was only the token count printed on the next run — *16,872
+needed, 15,431 missing* — that made it obvious nothing had been wired. A failed edit that leaves
+the program running is the quietest kind.
