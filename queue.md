@@ -1640,3 +1640,29 @@ upstream in whatever built that label.
   whether an Arabic label is worth having on that basis; the module does not decide it.
 - Her standard governs what is acceptable: *"incorrect romanization or incorrect representations
   in katakana are totally acceptable. An incorrect name is not."*
+
+## THE LAST ITEM — `BET x AND y` properly
+
+**Emma, 2026-09-01: *"I'll do between more later."*** So what ships today is the simple reading and
+this is the considered one.
+
+**What ships now.** `scripts/datequals.py` emits `P1319` *earliest date* at the value's own
+precision and `P1326` *latest date* at the end year, precision 9. **All 7,797 `between` dates in
+`reports/derived-facts.csv` carry an end year** — measured, none is missing — so the
+no-end-year fallback in that module never fires on current data and exists only against a future
+parse gap.
+
+**What is left to think about, and none of it is urgent:**
+
+- **The end is stored as a YEAR only.** `BET 5 JUL 1735 AND 5 JUL 1737` keeps the start's day
+  precision and loses the end's, because `derived-facts.csv` has `birth_date_year_end` and no
+  month or day column. `genimerge.dates` parses the full end date; the derived CSV is where it
+  narrows. Widening that is a schema change to a 200 MB file that 44 scripts read.
+- **Which date should the statement's VALUE be?** It is currently the start. For a range the
+  midpoint or the start are both defensible, and Wikidata practice varies — some items put the
+  range only in qualifiers and give the value a low precision covering both ends.
+- **A range spanning a century boundary** — `BET 1798 AND 1802` — arguably wants precision 8
+  (decade) or 7 (century) on the value rather than a year it does not have.
+
+**Nothing depends on this.** The current form asserts less than it knows rather than more, which
+is the safe direction, and it is a strict improvement on the bare value it replaced.

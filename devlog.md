@@ -23980,3 +23980,21 @@ ring is mostly people with exact dates, which is the right proportion rather tha
 
 `reports/wikidata-spine-completion.qs`, which the item also named as flattening deliberately, no
 longer exists.
+
+## 2026-09-01 — `BET` queued for her considered version
+
+Emma: *"I'll do between more later. Add implementing it as the last queue item."* Written down at
+the tail, nothing further investigated beyond one measurement that makes the item honest:
+**all 7,797 `between` dates carry an end year**, so the no-end-year fallback in `datequals.py`
+never fires on current data and guards a future parse gap rather than a present one.
+
+The item names the three things a considered version has to settle, none of them urgent: the end
+is stored as a **year only** because `derived-facts.csv` has `birth_date_year_end` and no month or
+day column — `genimerge.dates` parses the full end date and the derived CSV is where it narrows,
+so widening it is a schema change to a 200 MB file 44 scripts read; which date the statement's
+**value** should be, since start and midpoint are both defensible and Wikidata practice varies;
+and whether a range crossing a century boundary wants a lower precision on the value than a year
+it does not have.
+
+The shipped form asserts less than it knows rather than more, which is the safe direction and a
+strict improvement on the bare value it replaced.
