@@ -24548,3 +24548,24 @@ That was the actual bug: two halves of one job with nothing forcing them to agre
 **One thing found and queued rather than fixed:** the placeholder batch emits `ja` and `zh` and
 **no `ko`** — zero occurrences. It is the largest label producer in the repo, so 58,937 people get
 two of the three CJK languages, which contradicts her ruling of the same day.
+
+## 2026-09-01 — dead-queue sweep, fourth pass
+
+**Deleted: § *Two slow modules exhaust a CI runner's memory — decide what to do about it*.** The
+decision was hers and she made it — *keep them local, out of CI* — and it is executed: the matrix
+in `.github/workflows/ci.yml` now names `tests/test_gedcom_real_exports.py` and nothing else, with
+the measurement and the local command in the comment above it. Both halves of the item, the
+investigation and the choice, are finished.
+
+**Retitled:** § *Decide whether a transcribed Latin name is a publishable label* → § *Emit `ja` and
+`ko` transcriptions for the 37,830 people who already have a QID*. She has decided; what is left is
+the build, and a heading that still says *Decide* misreports what the item is waiting for.
+
+**Cut back:** the `en`-shortfall block inside § *Labels in seven languages*. The 9,580-person row
+is closed — the preview walks the spouse's parents and siblings now — so the block records what
+the change bought (`en` 137,528 → 147,148, CJK 44,132 → 58,937) and keeps only the 1,539 still
+outside the placeholder population, 935 of them CJK-named.
+
+**Nothing else was dead.** The drift item is mid-run, the `ko`-in-placeholder item was written an
+hour ago, and the rest are specifications, standing procedures, her tail items, or tomorrow's
+spine removal.

@@ -13,7 +13,7 @@ lines as say what to do.
 audits, dead crons and superseded priorities. Recover any of it with
 `git show 6edf302b:queue.md`.
 
-## Decide whether a transcribed Latin name is a publishable label (`ja` and `ko` together)
+## Emit `ja` and `ko` transcriptions for the 37,830 people who already have a QID
 
 **Her instruction, 2026-09-01:** *"korean is extremely important on par with Chinese... cjk
 includes korean"*, and *"put the korean stuff at the beginning of the queue"*. It was, and it is
@@ -417,37 +417,27 @@ NN algorithm, which is why the `en` batch went 25,930 → 104,856 edits in the s
 **What is left in her order.** `hi`, `ar`, `ru` and `el` are **done** —
 `scripts/build-four-script-labels.py`, 151,320 labels over the 37,830 people who carry a QID.
 
-**The `en` shortfall is 57,179, and it is NOT arithmetic — measured 2026-09-01.** I framed it as a
-gap between what the census says is reachable and what the placeholder batch emits, and closing it
-as "the next concrete step rather than a new method". That was wrong. Broken down:
+**The `en` shortfall was 57,179 and the in-law half of it is CLOSED, 2026-09-01.** I framed it
+as arithmetic; measuring showed it needed relation words the table did not have; she ruled *add
+the in-law wording*; it is added. What remains:
 
 | | people | |
 | --- | ---: | --- |
-| census says **surname only** — no relative to describe them by | **35,565** | correctly get no `en` |
+| census says **surname only** — no relative to describe them by | 35,565 | correctly get no `en` |
 | census says **bare** — neither | 10,495 | correctly get no `en` |
-| census finds a relative, batch emits nothing | **9,580** | the real discrepancy |
-| not in the placeholder population at all (935 of them CJK-named) | 1,539 | a different job |
+| census finds a relative, batch emits nothing | **closed** | the preview now walks the spouse's parents and siblings |
+| not in the placeholder population at all (935 CJK-named) | 1,539 | a different job |
 
 **No `en` for the 35,565 is CORRECT and not a gap.** Her model puts the marker in `mul` and a
-*description* in the local languages; a description needs a named relative, and these people have
-none. `NN Larsson` in `mul` with no `en` is the algorithm working.
+*description* in the local languages; a description needs a named relative and these people have
+none. `NN Larsson` in `mul` with no `en` is the algorithm working, not failing.
 
-**DONE 2026-09-01, her ruling: add the in-law wording.** The slot my census reached them by:
+**What the change bought**, measured over the rebuilt batches: `en` labels 137,528 → **147,148**,
+`ja`/`zh` from a relative 44,132 → **58,937**, `mul`-only 21,088 → **11,470**. Most of the CJK gain
+was not the in-laws but `CJK_RELATION` holding nine relations where the preview emitted seventeen —
+grandparent, sibling, uncle and nephew labels had an `en` and no CJK, and nothing had noticed.
 
-    8,129  spouse's father          799  spouse's mother       426  spouse's sibling
-       55  child's spouse            51  sibling's spouse       36  spouse's spouse
-
-**9,562 of 9,580 are at two hops, and 8,129 of them are a father-in-law.** They have a spouse, but
-the spouse is *also* unnamed — so the preview cannot say *"wife of NN"* at one hop, and the only
-named person within reach is the spouse's father. `scripts/build-nn-label-batch.py`'s language
-table covers son/daughter/father/mother/husband/wife/sibling **of**; it has no in-law wording, in
-any of its ten languages.
-
-**So this is a decision, not an implementation.** Emma named the long-range relations she wanted —
-*"grandparents or grandchildren or siblings"* — and did not name in-laws. Adding
-*"daughter-in-law of X"* to ten languages is inventing vocabulary she has not asked for, which is
-what § *One name item per USAGE* and the edge-case rule both say goes to her. **NEEDS-DECISION.**
-The default in force meanwhile is what already happens: they get `mul` and no `en`.
+**Still open here:** the 1,539 outside the placeholder population, 935 of them CJK-named.
 
 ## The placeholder batch emits `ja` and `zh` and NO `ko`
 
@@ -464,36 +454,6 @@ name and none of them gets `ko`.**
 engine work is done. The Korean genitive is 의 and the relation words are the ones
 `build-garborg-day.py` already uses for its own NN path: 아들 · 딸 · 아버지 · 어머니 · 남편 · 아내 ·
 형제 · 자매.
-
-## Two slow modules exhaust a CI runner's memory — decide what to do about it
-
-**Answered 2026-09-01 by measurement, after being wrong about it twice.** The instrumented job
-sampled free memory every 30 seconds and the answer is not ambiguous:
-
-    MEM 16:20:42  used=15884MB  avail=105MB
-    MEM 16:24:13  used=15956MB  avail=33MB
-    MEM 16:27:13  used=15951MB  avail=38MB
-    MEM 16:28:30  ##[error]The runner has received a shutdown signal
-
-A GitHub-hosted runner has **16 GB**. `test_density.py` pinned it at **15.9 GB used with 33–134 MB
-free for ten minutes** and was then reclaimed. `test_paths.py` the same. That is why four jobs died
-at wildly different elapsed times — 25, 58, 91 minutes — while `test_gedcom_real_exports.py`, which
-streams rather than accumulating, passes every time.
-
-**Both modules pass on this machine, 23 in 35m44**, because it has 31 GB. Nothing is wrong with the
-tests; the environment is 2× too small for two of them.
-
-**What is left is a choice, and it is not obviously mine.**
-
-- **Keep them out of CI and run them locally.** Free, and consistent with what she has said about
-  cost and about not spending attention on the suite. The fast lane keeps covering everything else.
-- **A larger runner.** GitHub's 16-core/64 GB runners are billable *even on public repos*, so this
-  spends money on a lane she has called *"kinda bullshit"*.
-- **Make `test_density` stream.** The memory is the presence structure it builds over 600 exports.
-  Real work, unbounded in size, and it is fixing a test rather than the code the test guards.
-
-**Do NOT reach for `continue-on-error`.** It turns the lane green and destroys the signal, which
-is precisely the instinct the measurement above was run instead of.
 
 ## Pointers
 
