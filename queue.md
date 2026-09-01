@@ -287,29 +287,6 @@ family and missed the other. `reports/izumo-chart-roster.tsv` is 298 people.
 - First step is finding where the Izumo succession numbers actually live: the chart, the roster,
   or the Geni bios. Do not assume the name.
 
-## Identify Geni profiles with Wikidata items, structurally
-
-- Walk the relationships, not the names. Start from anybody holding **both** a Geni ID
-  and a QID, walk `P22` *father* / `P25` *mother* / `P40` *child* / `P26` *spouse*
-  against our own edges, and where both sides have a person in the same position, that
-  is a merge.
-- **Name similarity is a check on a pair the structure already proposed, never a way to
-  find one.** Emma, 2026-08-18: *"This is only the case, obviously, for individuals who
-  are actually linked so we're merging on the tree. We're not going to do any kind of
-  text-related similarity or any of that bullshit."* The deleted `reconcile` matcher
-  stays deleted.
-- Output is our own QID ↔ Geni ID correspondence, built from the merges, plus a
-  placeholder for everyone on Geni and not on Wikidata.
-
-## Labels, in this order, once the correspondence is large
-
-- **`mul` first — everything gets one.** Then **`en` on everything**, then **`ja`**,
-  then **`zh`**, then the remaining languages.
-- `scripts/labels.py` is the single place that decides what a label may say; `NN` and
-  `Private` are preserved in `mul` and given descriptive labels elsewhere, per
-  `CLAUDE.md`.
-- Build all the JSONs. They are committed, not held in `out/`.
-
 ## EMAIL me the daily QuickStatements file, every day — from 2026-09-01
 
 **Her ruling, 2026-08-31**, replacing the automated-edit reading of this item: *"not wikidata

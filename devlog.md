@@ -23157,3 +23157,27 @@ stays unused, its `START_DATE` constants stay as the rail, and the batch keeps r
 chat as it has all along.
 
 53 → 51 sections.
+
+## 2026-08-31 — sweep: the structural walk is built, and a stub carried a superseded ordering
+
+**51 → 49 sections.**
+
+**Deleted: § *Identify Geni profiles with Wikidata items, structurally*.** Its output is named in
+its own last bullet — *"our own QID ↔ Geni ID correspondence, built from the merges, plus a
+placeholder for everyone on Geni and not on Wikidata"* — and both files exist:
+`reports/structural-correspondence.csv` with **7,841 rows** and
+`reports/wikidata-structural-placeholders.json`, written 2026-08-27 by
+`scripts/walk-structural-merge.py`. The method it specifies is what the walk does: structure
+proposes the pair, names only check it, and the deleted `reconcile` matcher stays deleted.
+
+**Deleted: § *Labels, in this order, once the correspondence is large*** — a seven-line stub that
+was not merely redundant but **carried the ordering she corrected**. It says *"`mul` first —
+everything gets one. Then `en` on everything"*. Her order, in § *LABELS, IN HER ORDER* and in
+`CLAUDE.md`, is the other way round: **`en` is made first, by transcribing, and `mul` is then
+"almost always derived from en"** — which is the only route that gives the 806 Han-only people a
+`mul` at all. A stub restating a superseded rule is worse than a redundant one, because whoever
+reads it first wins.
+
+This is the third stale statement the sweep has caught today, after `patronymic-reclassified.tsv`'s
+30,171 and the 546/4,340 figures. All three were mine and all three stayed plausible after the
+thing they described had changed.
