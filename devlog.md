@@ -23941,3 +23941,42 @@ So: run a specific module when a change plausibly touches it; let CI run the lan
 screened normalisation is wired at source, 8,053 labels changed, the two live items derive
 correctly, and asserting the fixpoint over 1,389,442 rows returns **0** differing.
 `reports/merges-to-do.md` refreshed on the rebuilt labels.
+
+## 2026-09-01 — dates carry their GEDCOM modifier at last
+
+Emma, 2026-08-29: *"we very much need to have those qualifiers, and I don't know why it is that
+you don't. That was almost a prerequisite for putting any Geni information on Wikidata."*
+
+**Every hedged date in the corpus was being asserted flatly.** `reports/derived-facts.csv` carries
+**70,665 `about`, 5,923 `after`, 5,907 `before`, 3,004 `between`**, and the batch emitted the bare
+value for all of them — `ABT 1530` going out as *born 1530*, which is a claim Geni does not make.
+
+**The parse was never the missing part**, which is why this took a helper and not a rewrite.
+`derived-facts.csv` has carried `birth_date_modifier` and `birth_date_year_end` all along and
+`genimerge.dates` owns the grammar; `CLAUDE.md` § *GEDCOM dates have a specification* forbids
+re-parsing one by hand and nothing here does. `scripts/datequals.py` turns an already-parsed
+modifier into qualifier text, per § *Date qualifiers*:
+
+    ABT / EST / CAL   P1480 sourcing circumstances = Q5727902 circa
+    BEF               P1326 latest date
+    AFT               P1319 earliest date
+    BET x AND y       P1319 earliest date + P1326 latest date
+
+**Two decisions inside it, both written down rather than left implicit.**
+
+`BEF` and `AFT` bound the value they carry, so the value *is* the bound — `BEF 1850` is a `P569`
+of 1850 qualified `P1326` 1850. It reads oddly beside the value until you notice the alternative
+is asserting 1850 flatly.
+
+And **a `BET` end year is a YEAR even when the start is a full date**: `BET 5 JUL 1735 AND 5 JUL
+1737` emits `P1319` at precision 11 and `P1326` at precision **9**. Claiming day precision on a
+year nobody recorded is the exact error the whole change exists against. Where the end year is
+missing the date goes out **unqualified rather than mis-qualified** — a lone `P1319` would say
+*after*, which is a different claim from *between*.
+
+Live batch: **41 date statements, 6 qualified** — 10 `P1480`, 2 `P1319`. Small because today's
+ring is mostly people with exact dates, which is the right proportion rather than a shortfall.
+300 pass across the two batch modules.
+
+`reports/wikidata-spine-completion.qs`, which the item also named as flattening deliberately, no
+longer exists.

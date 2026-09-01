@@ -528,32 +528,6 @@ there's an additional hop', is something that would conceivably make it lighter.
 statefulness on the strength of this note. It could bound the growth or accelerate it, and which
 one is an empirical question.
 
-## THE LAST ITEM — fix the pipeline so dates carry their proper qualifiers
-
-**Emma, 2026-08-29:** *"Yes, we very much need to have those qualifiers, and I don't know why it
-is that you don't. That was almost a prerequisite for putting any Geni information on
-Wikidata."*
-
-**Nothing in the pipeline emits one.** `reports/wikidata-garborg-day.qs` contains no `P1480`, no
-`P1319` and no `P1326` — every `ABT`, `BEF`, `AFT` and `BET x AND y` in the corpus is being
-flattened to a bare year at precision 9, which asserts a date Geni does not claim.
-`reports/wikidata-spine-completion.qs` does the same, and did it deliberately to match the
-pipeline; that was the wrong call and it is part of this fix.
-
-The mapping is already in `CLAUDE.md` § *Date qualifiers* and needs no re-deriving:
-
-| GEDCOM | Wikidata |
-| --- | --- |
-| `ABT` / `EST` / `CAL` | `P1480` *sourcing circumstances* = `Q5727902` *circa* |
-| `BEF` | `P1326` *latest date* |
-| `AFT` | `P1319` *earliest date* |
-| `BET x AND y` | `P1319` *earliest date* + `P1326` *latest date* |
-
-`reports/derived-facts.csv` already carries the modifier — `birth_date_modifier`,
-`death_date_modifier`, values `about` / `before` / `after` — so the parse is done and only the
-emission is missing. `genimerge.dates` is the authority on the grammar; do not re-parse the raw
-string.
-
 ## THE LAST ITEM — the chains should be a SYSTEM, not four files that happen to exist
 
 **Emma, 2026-08-29**, and she is explicit this is not a question about how full the chains are:

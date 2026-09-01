@@ -4,38 +4,38 @@
 #   batch and be limited to a count of 15 labels added per batch". A label set
 #   at CREATION time is neither counted nor capped -- "a label added during item
 #   creation is good".
-#   917 more are held for a later run; a repeat is a no-op, so nothing is lost.
+#   902 more are held for a later run; a repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
-#   set the zh label to "埃马努埃尔·斯韦登博尔格"
-Q185832	Lzh	"埃马努埃尔·斯韦登博尔格"
-#   set the ja label to "ヘドヴィグ・スヴェデンボルグ"
-Q141223425	Lja	"ヘドヴィグ・スヴェデンボルグ"
-#   set the zh label to "海德维格·斯韦登博尔格"
-Q141223425	Lzh	"海德维格·斯韦登博尔格"
-#   Q26239714 Jonas Jonae Rudberus: set the mul label to "Jonas Rudberrus"
-Q26239714	Lmul	"Jonas Rudberrus"
-#   add a mul alias "Jonas Jonae Rudberus"
-Q26239714	Amul	"Jonas Jonae Rudberus"
-#   Q109265381 Jonas Benedicti Rudberus: add a mul alias "Jonas Benedicti Rudberus"
-Q109265381	Amul	"Jonas Benedicti Rudberus"
-#   add a mul alias "Haquinus Thorstani Håkan Torstensson"
-Q141244101	Amul	"Haquinus Thorstani Håkan Torstensson"
-#   set the ja label to "マティアス・アスプ"
-Q5561270	Lja	"マティアス・アスプ"
-#   set the zh label to "马蒂阿斯·阿斯普"
-Q5561270	Lzh	"马蒂阿斯·阿斯普"
-#   Q19678400 Eva Horn af Ekebyholm: add a mul alias "Eva Horn"
-Q19678400	Amul	"Eva Horn"
-#   set the mul label to "Eva Horn af Ekebyholm"
-Q19678400	Lmul	"Eva Horn af Ekebyholm"
-#   Q110621422 Anna Andersdotter Björnram: set the mul label to "Anna Andersdotter av Bure och Grubbe"
-Q110621422	Lmul	"Anna Andersdotter av Bure och Grubbe"
-#   Q110231041 Anna Tersera: add a mul alias "Anna Tersera"
-Q110231041	Amul	"Anna Tersera"
-#   Q25451348 Jon Mickelsson Behm: set the mul label to "Jonas Mikaelsson Behm"
-Q25451348	Lmul	"Jonas Mikaelsson Behm"
-#   add a mul alias "Jon Mickelsson Behm"
-Q25451348	Amul	"Jon Mickelsson Behm"
+#   set the ja label to "ニルス・ギルデンストルペ"
+Q5779125	Lja	"ニルス・ギルデンストルペ"
+#   set the zh label to "尼尔斯·吉尔登斯托尔佩"
+Q5779125	Lzh	"尼尔斯·吉尔登斯托尔佩"
+#   Q136028287 Anna Brita Carré: set the mul label to "Anna Brita Carré"
+Q136028287	Lmul	"Anna Brita Carré"
+#   Q16649517 Gerhard Jonæ: set the mul label to "Gerhardus Jonæ"
+Q16649517	Lmul	"Gerhardus Jonæ"
+#   add a mul alias "Gerhard Jonæ"
+Q16649517	Amul	"Gerhard Jonæ"
+#   Q110457049 Christina Elisabet Taube af Karlö: set the mul label to "baroness Kirsti Elisabet Taube, heiress of Luunja manor"
+Q110457049	Lmul	"baroness Kirsti Elisabet Taube, heiress of Luunja manor"
+#   add a mul alias "Christina Elisabet Taube af Karlö"
+Q110457049	Amul	"Christina Elisabet Taube af Karlö"
+#   Q12363134 Gustaf Adolf Strömfelt till Strömhult: set the mul label to "Gustav Adolf Strömfelt"
+Q12363134	Lmul	"Gustav Adolf Strömfelt"
+#   add a mul alias "Gustaf Adolf Strömfelt till Strömhult"
+Q12363134	Amul	"Gustaf Adolf Strömfelt till Strömhult"
+#   Q141200074 Rasmus Olsen Bø: add a mul alias "Rasmus Olsen Grøtheim"
+Q141200074	Amul	"Rasmus Olsen Grøtheim"
+#   set the ja label to "ラスムス・オルセン・ベー"
+Q141200074	Lja	"ラスムス・オルセン・ベー"
+#   set the zh label to "拉斯穆斯·奥尔森·鲍伊"
+Q141200074	Lzh	"拉斯穆斯·奥尔森·鲍伊"
+#   Q141189088 Ola Knutsen Grøtheim: add a mul alias "Ola Knutsen Garborg"
+Q141189088	Amul	"Ola Knutsen Garborg"
+#   set the ja label to "オーラ・クヌートセン・グレートヘイム"
+Q141189088	Lja	"オーラ・クヌートセン・グレートヘイム"
+#   set the zh label to "奥拉·克努特森·格勒特海姆"
+Q141189088	Lzh	"奥拉·克努特森·格勒特海姆"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
@@ -86,8 +86,8 @@ LAST	P31	Q5
 LAST	P21	Q6581072
 #   P2600 Geni.com profile ID = 6000000008507926141 Beata Christina Hierta, qualified P1810 subject named as Beata Christina Hierta
 LAST	P2600	"6000000008507926141"	P1810	"Beata Christina Hierta"
-#   P569 date of birth = +1742-04-07T00:00:00Z/11
-LAST	P569	+1742-04-07T00:00:00Z/11	S2600	"6000000008507926141"
+#   P569 date of birth = +1742-04-07T00:00:00Z/11, qualified P1480 sourcing circumstances Q5727902 circa
+LAST	P569	+1742-04-07T00:00:00Z/11	P1480	Q5727902	S2600	"6000000008507926141"
 #   P570 date of death = +1792-07-13T00:00:00Z/11
 LAST	P570	+1792-07-13T00:00:00Z/11	S2600	"6000000008507926141"
 #   P40 child = Q141244084 Anna Wilhelmina Nordenfeldt
@@ -150,10 +150,10 @@ LAST	P31	Q5
 LAST	P21	Q6581097
 #   P2600 Geni.com profile ID = 6000000002330809317 Bjørn Lauritsen Bjørheim, qualified P1810 subject named as Bjørn Lauritsen Bjørheim
 LAST	P2600	"6000000002330809317"	P1810	"Bjørn Lauritsen Bjørheim"
-#   P569 date of birth = +1530-00-00T00:00:00Z/9
-LAST	P569	+1530-00-00T00:00:00Z/9	S2600	"6000000002330809317"
-#   P570 date of death = +1596-00-00T00:00:00Z/9
-LAST	P570	+1596-00-00T00:00:00Z/9	S2600	"6000000002330809317"
+#   P569 date of birth = +1530-00-00T00:00:00Z/9, qualified P1480 sourcing circumstances Q5727902 circa
+LAST	P569	+1530-00-00T00:00:00Z/9	P1480	Q5727902	S2600	"6000000002330809317"
+#   P570 date of death = +1596-00-00T00:00:00Z/9, qualified P1480 sourcing circumstances Q5727902 circa
+LAST	P570	+1596-00-00T00:00:00Z/9	P1480	Q5727902	S2600	"6000000002330809317"
 #   P22 father = Q141216489 Laurits Leivson Bjørheim
 LAST	P22	Q141216489	S2600	"6000000002330809317"
 #   P25 mother = Q141216460 Bjørnsdatter Tau
@@ -598,10 +598,10 @@ LAST	P31	Q5
 LAST	P21	Q6581097
 #   P2600 Geni.com profile ID = 6000000002277957043 Knut Bjørnson Bjørheim, qualified P1810 subject named as Knut Bjørnson Bjørheim
 LAST	P2600	"6000000002277957043"	P1810	"Knut Bjørnson Bjørheim"
-#   P569 date of birth = +1563-00-00T00:00:00Z/9
-LAST	P569	+1563-00-00T00:00:00Z/9	S2600	"6000000002277957043"
-#   P570 date of death = +1659-00-00T00:00:00Z/9
-LAST	P570	+1659-00-00T00:00:00Z/9	S2600	"6000000002277957043"
+#   P569 date of birth = +1563-00-00T00:00:00Z/9, qualified P1480 sourcing circumstances Q5727902 circa
+LAST	P569	+1563-00-00T00:00:00Z/9	P1480	Q5727902	S2600	"6000000002277957043"
+#   P570 date of death = +1659-00-00T00:00:00Z/9, qualified P1480 sourcing circumstances Q5727902 circa
+LAST	P570	+1659-00-00T00:00:00Z/9	P1480	Q5727902	S2600	"6000000002277957043"
 #   P25 mother = Q141217434 Sissel Sæbjørnsdatter Talgje
 LAST	P25	Q141217434	S2600	"6000000002277957043"
 #   Q141217434 Sissel Sæbjørnsdatter Talgje: P40 child = the item just created
@@ -685,8 +685,8 @@ LAST	P21	Q6581072
 LAST	P2600	"6000000003414518688"	P1810	"Ramfrid Gustavsdotter Lejon"
 #   P569 date of birth = +1255-00-00T00:00:00Z/9
 LAST	P569	+1255-00-00T00:00:00Z/9	S2600	"6000000003414518688"
-#   P570 date of death = +1307-00-00T00:00:00Z/9
-LAST	P570	+1307-00-00T00:00:00Z/9	S2600	"6000000003414518688"
+#   P570 date of death = +1307-00-00T00:00:00Z/9, qualified P1319 earliest date +1307-00-00T00:00:00Z/9
+LAST	P570	+1307-00-00T00:00:00Z/9	P1319	+1307-00-00T00:00:00Z/9	S2600	"6000000003414518688"
 #   P22 father = Q141223837 Gustav Petersson Lejon
 LAST	P22	Q141223837	S2600	"6000000003414518688"
 #   P25 mother = Q141223838 Hafrid Sigtryggsdotter Boberg

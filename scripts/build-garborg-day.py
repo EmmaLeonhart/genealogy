@@ -48,6 +48,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 csv.field_size_limit(1 << 30)
 sys.stdout.reconfigure(encoding="utf-8")
 
+from datequals import date_quals  # noqa: E402
 from namemodel import (  # noqa: E402
     aliases_for, classify, classify_fields, load_plan,
     statements_for)
@@ -5642,10 +5643,25 @@ def main():
         # married form we chose on 2026-08-29. They differ for exactly the people it matters
         # for.
         lines.append(f'LAST\tP2600\t"{g}"{named_as(g)}')
-        for prop, iso, prec in (("P569", f["birth_date_iso"], f["birth_date_precision"]),
-                                ("P570", f["death_date_iso"], f["death_date_precision"])):
+        # **A date carries its GEDCOM modifier as a qualifier, or it asserts something Geni
+        # does not.** Emma, 2026-08-29: *"we very much need to have those qualifiers, and I
+        # don't know why it is that you don't. That was almost a prerequisite for putting any
+        # Geni information on Wikidata."*
+        #
+        # Every `ABT`, `BEF`, `AFT` and `BET x AND y` was being flattened to a bare value --
+        # **70,665 `about`, 5,923 `after`, 5,907 `before`, 3,004 `between`** in
+        # `derived-facts.csv` -- which states a date the source explicitly hedges. The parse
+        # was never the missing part: that file has carried `birth_date_modifier` and
+        # `birth_date_year_end` all along, and `genimerge.dates` is the authority on the
+        # grammar. Only the emission was absent.
+        for prop, iso, prec, mod, end in (
+                ("P569", f["birth_date_iso"], f["birth_date_precision"],
+                 f.get("birth_date_modifier", ""), f.get("birth_date_year_end", "")),
+                ("P570", f["death_date_iso"], f["death_date_precision"],
+                 f.get("death_date_modifier", ""), f.get("death_date_year_end", ""))):
             if iso and prec:
-                lines.append(f"LAST\t{prop}\t{iso}/{prec}{ref(g)}")
+                lines.append(f"LAST\t{prop}\t{iso}/{prec}"
+                             f"{date_quals(mod, iso, prec, end)}{ref(g)}")
         # **`LAST` IS valid as a VALUE, and this batch never used it.**
         #
         # Emma, 2026-08-25: *"you never actually did the 2-way relationship addin qith the
