@@ -418,36 +418,6 @@ What to build:
 **Bureätten the export campaign stays closed** — 7 resolved, 76 dropped, 0 exports. This is a
 different thing: linking people already on both sides, not finding new ones.
 
-## `derive-labels.py` does not apply `strip_markers`, and that is why the two items are stuck
-
-**The item this replaces asked to fold `Q141198538` and `Q141216494` into a label-correction
-batch.** Traced 2026-08-31 and the correction path cannot reach them: `_label_corrections` fires
-when our derived label differs from the live one, and **our derived label is the mangled form**.
-`reports/derived-labels.csv` holds `nn Gunnarsdatter Frafjord` and `N.N. Jacobsdtr. Koll`, which
-is exactly what Wikidata holds, so there is nothing to correct. The two items are downstream
-symptoms of `derive-labels.py` never calling `strip_markers`.
-
-**Applying it is not a small fix — 102,284 labels change, and 94,231 of them are a REDACTION
-decision she has already corrected me on twice:**
-
-    94,231  redaction marker: Private -> NN, <private> -> NN
-     4,924  case or punctuation on NN itself: nn, N.N., N.N -> NN
-     1,591  unknown -> NN
-       269  某 · 205 ukjent · 190 dødfødt · 114 stillborn · 85 dödfödd
-
-**The 4,924 are uncontroversial and are what the original item wanted.** `nn` and `N.N.` are the
-same marker written differently, and `CLAUDE.md` § *`NN` is PRESERVED in `mul`* already says the
-marker stays and is normalised.
-
-**The 94,231 are hers.** § *Redacted people go in* says `label_for()` empties `Private` and
-`<private>` **and nothing else**; § *`NN` is PRESERVED* says `Private` and `NN` are one population
-that gets the same treatment. Those two readings disagree about what a redacted person's `mul`
-should say, and she has twice corrected an attempt to settle it — *"I didn't tell you to do that.
-I didn't tell you to avoid the NN people."*
-
-So: **normalise the marker's own spelling and leave the redaction question to her.** Do the 4,924
-and the 1,591; do not touch `Private` or `<private>` without asking.
-
 ## LAST — name items are being MERGED by other editors. Stop preferring creation over reuse
 
 **Recovered from the same crashed session; she asked for it at the end of the queue.** Emma,

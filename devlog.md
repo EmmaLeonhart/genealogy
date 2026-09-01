@@ -23920,3 +23920,24 @@ previous *emitted* token is what its own comment always described.
 Found by asserting `f(x) == x` over 1,389,442 labels rather than by reading the loop. **0 differ
 now.** 82 pass across the marker and label modules, 53 across `namemodel`; the derived CSVs are
 repacked.
+
+## 2026-08-31 — stop running the suite too; and the marker item deleted
+
+Emma: *"please don't waste time with the tests lol. They are paused until ci/cd."* Recorded in
+`CLAUDE.md` § *NO NEW TESTS*, which already banned writing them and now says not to run the lane
+routinely either. The fast lane is ~7 minutes and I ran it **six times this evening** — 40 minutes
+of her session on a signal she has said she does not trust.
+
+**What replaces it is not nothing**, and the day's evidence is unambiguous. Every real defect
+found today came from measurement and reading output, not from the suite: the parent deck offering
+the **spouse**, `Bjørn` -> `бйёрн`, `Maria` -> `مرا`, `strip_markers` not being idempotent, the
+`ben ` substring admitting `von Schwaben`. The two the suite *did* catch — her own item in the
+reciprocals, and the stale freshness report — were both **my own regressions from the same hour**,
+which is what a suite is for and a different job from establishing that new work is right.
+
+So: run a specific module when a change plausibly touches it; let CI run the lane once it exists.
+
+**Deleted: § *`derive-labels.py` does not apply `strip_markers`*.** Done in `947d62f7` — the
+screened normalisation is wired at source, 8,053 labels changed, the two live items derive
+correctly, and asserting the fixpoint over 1,389,442 rows returns **0** differing.
+`reports/merges-to-do.md` refreshed on the rebuilt labels.

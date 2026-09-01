@@ -1781,6 +1781,19 @@ that appears to pin the father-name check has never observed it doing anything, 
 went out mis-modelled underneath it. A test asserting only the positive case of a function whose
 default IS that case asserts nothing.
 
+**And do not RUN the suite routinely either.** Emma, 2026-08-31: *"please don't waste time with
+the tests lol. They are paused until ci/cd."* The fast lane is ~7 minutes and it was run six times
+in one evening; that is 40 minutes of her session spent on a signal she has already said she does
+not trust. Run a specific module when a change plausibly touches it, and let CI run the lane once
+it exists.
+
+**What replaces it is not nothing.** The rails still forbid claiming *works* or *verified* without
+having measured — so measure the thing itself: how many rows change, which ones, a sample read by
+eye. Every real defect found on 2026-08-31 came from that, not from the suite: the spouse in the
+parent deck, `Bjørn` -> `бйёрн`, `Maria` -> `مرا`, `strip_markers` not being idempotent. The two
+the suite did catch were both *my own regressions from the same hour*, which is what a suite is
+for and is a different job from establishing that new work is right.
+
 **So: write no new tests.** Not for a fix, not for a guard, not "just this one". The existing
 suite stays and is not weakened or deleted -- that rule is untouched -- but it stops being the
 thing that makes a change trustworthy, and its pass count stops being quoted as evidence that
