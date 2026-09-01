@@ -41,17 +41,23 @@ jobs:
       SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
       SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
     steps:
-      # Only the batch and the scripts that describe it. This workflow does not rebuild
-      # anything — the batch is committed, and rebuilding needs the corpus and 17 GB.
+      # Only the batch, the carry-forward, and `.github` — which holds the sender. This
+      # workflow does not rebuild anything: the batch is committed, and rebuilding needs the
+      # corpus and 17 GB.
+      #
+      # `.github` is easy to forget and expensive to forget. Without it the email step runs
+      # `python .github/scripts/send_batch_email.py` against a file the checkout never fetched,
+      # and that only surfaces once the secrets exist and the step stops being skipped — so it
+      # would have failed on the first morning it mattered, like the `if:` bug above it.
+      #
+      # The comment lives here rather than inside the pattern block: git reads `#` there as a
+      # comment, but the patterns are clearer without prose mixed in.
       - uses: actions/checkout@v4
         with:
           filter: blob:none
           sparse-checkout: |
             /reports/wikidata-garborg-day.qs
             /reports/garborg-carry-forward.tsv
-            # The sender itself. Without this the email step runs `python
-            # .github/scripts/send_batch_email.py` against a file the checkout never fetched --
-            # which only shows up once the secrets exist and the step stops being skipped.
             /.github
           sparse-checkout-cone-mode: false
 
