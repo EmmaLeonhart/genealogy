@@ -657,30 +657,24 @@ override literally would delete 5,125 real relationships to buy nothing.
 92 spouse. Those are the genuine *Geni deleted this link* candidates and the only population an
 override should ever touch.
 
-**Looked at as records, 2026-09-01** — `reports/post-merge-falsifiable.tsv`, all 412 with both
-names, and a sample read by eye:
+**GRADED, and the grading is `scripts/grade-post-merge-drops.py`** — which already existed and
+which I failed to notice before writing a weaker analysis over the top of its output. A drop is
+`link-gone` when both people are present in some `exports/post-merge/*.ged`, `out/merged.ged`
+gives them a family in common, and **no post-merge record does**:
 
-    Rivka Sirkes                    parents    Avraham Chaim Schor
-    Avraham Chaim Schor             children   Rivka Sirkes
-    Rivka Sirkes                    spouses    David HaLevi Segal "Turei Zahav"
-    Reitze Horowitz 1st wife        children   Mordechai Zvi Halevi Horowitz
-    Rachel Katzenellenbogen         spouses    Shimon Katzenellenbogen
+    link-gone                        408      parents 159 · children 159 · spouses 90
+    link still present                 2
+    no shared family in merged.ged     2
 
-**Two things the sample shows, and neither supports writing the override.**
+**So 408 of the 412 are real deletions**, and Emma has already ruled on what to do about it,
+2026-08-29: *"For now leave these things and still run them, but put them at the end of the
+queue, I lean on the idea of saving them but do not have bandwidth to process this now."*
 
-- **They are the same few families.** Sirkes, Horowitz, Katzenellenbogen, Schor, Frankel — one
-  rabbinical lineage, not 412 scattered errors. That is her own *"merged individuals cluster
-  together"* observation holding, and it means this is one neighbourhood's worth of evidence
-  rather than a corpus-wide pattern.
-- **They read as real relationships, in reciprocal pairs.** `Rivka Sirkes → parents → Avraham
-  Chaim Schor` appears alongside `Avraham Chaim Schor → children → Rivka Sirkes`. A link Geni
-  had *deleted* would not usually survive in both directions in the older exports and vanish in
-  both in the newer one; a ball that simply ended somewhere else would look exactly like this.
-
-**So the override still looks wrong, now on the population that was supposed to justify it.**
-That is a reading and not a proof — what would settle it is opening two or three of these
-profiles on Geni and seeing whether the relationship is there today. That is hers, and it is
-cheap: five profiles, not 412.
+**A reading-by-eye of the names contradicted this and was wrong.** On 2026-09-01 I read the 412
+as *"real relationships, in reciprocal pairs"* and concluded the override still looked wrong. The
+reciprocity is not evidence: the OLD exports carry both directions, and the question is whether
+the POST-MERGE ones record a family at all. They do not, which is exactly what `link-gone` means
+and what the structural grader measures rather than infers.
 
 Depends on `reports/geni-stale-duplicates.tsv` (13 strong, 3 medium, 13 weak) and
 `reports/geni-merges-performed.tsv` (180 survivors from her activity feed).

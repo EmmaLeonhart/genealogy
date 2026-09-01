@@ -24303,3 +24303,26 @@ morning. It is now step 6 of 12, between the derived layer and the label chain.
 Chain re-run on the corrected romanisation: `en` sources move to 5,463 romanised-from-zh and 186
 from ja, and the two people who lost a romanisation lose an `en` label with it — correct, because
 the label they would have had was a Japanese reading of a Manchu name.
+
+## 2026-09-01 — I overwrote a graded artifact, and my reading of it was wrong
+
+**`reports/post-merge-falsifiable.tsv` was already graded**, by `scripts/grade-post-merge-drops.py`
+in `36f527e0`, with a `verdict` column: **408 `link-gone`, 2 still linked, 2 with no shared
+family**. My commit `ece32a94` wrote a names-only file to the same path and destroyed that column,
+then drew a conclusion the grading already answered.
+
+**Both halves are the same mistake** — § *Do not grab the first artifact that vaguely matches*.
+The queue item said *"the next step is to look at a handful of them as records"*, and I built that
+without checking whether the step had already been taken. It had.
+
+**And the reading was wrong on its own terms.** I argued the 412 look like real relationships
+because they appear as reciprocal pairs — `Rivka Sirkes → parents → Avraham Chaim Schor` beside
+`Avraham Chaim Schor → children → Rivka Sirkes`. That is not evidence of anything: the *old*
+exports carry both directions, and the question is whether the *post-merge* exports record a
+family at all. The grader answers that structurally — both people present in a post-merge ball,
+a shared family in `out/merged.ged`, and none in any post-merge record — and 408 of 412 satisfy
+it.
+
+The file is restored by re-running the grader, and the queue section now carries the grading
+rather than my reading. Emma had already ruled on the outcome on 2026-08-29: leave them, keep
+running the measurement, decide later.
