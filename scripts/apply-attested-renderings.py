@@ -1,93 +1,122 @@
-"""Put the ATTESTED rendering into the transliteration table, above the rule engine.
+"""Let what Wikidata's own editors wrote beat what our rule engine guessed.
 
-    python scripts/apply-attested-renderings.py [--dry-run]
+    py scripts/apply-attested-renderings.py
 
-**Emma, 2026-08-30:** *"This is a solved problem. You understand that, right? There isn't really
-an excuse."*
+**Emma, 2026-09-01, on `Stephen`:** *"斯特普亨·弗里斯克 — this is a terrible rendering of Stephen
+Frisk lol"*, and then *"This is what I've found for stephen 史蒂芬"*.
 
-`reports/attested-name-renderings.tsv` is what Wikidata actually calls each token, counted over
-323,684 items that carry both a Latin label and a Japanese or Chinese one. This puts it into
-`reports/garborg-name-transliterations.tsv`, which is what every emitter reads.
+She is right and the cause is not the engine. `reports/attested-name-renderings.tsv` already holds
+**Stephen → スティーヴン (85 uses) / 斯蒂芬 (26 uses)**, harvested from real Wikidata labels — and
+`reports/garborg-name-transliterations.tsv` carried the by-rule `ステプヘン` / `斯特普亨` anyway.
+**The attested file was built and never applied.** That is the *"logic that never gets in"* shape
+`CLAUDE.md` records, in the data layer rather than the code.
 
-## The precedence, and it is the whole point
+## What it does
 
-1. **Emma's own corrections.** Her note stays, her value stays. `Minnie` and `Mørck` are hers
-   and nothing outranks them — and the corpus independently agrees with both, which is a check
-   on the corpus rather than on her.
-2. **The attested rendering**, where the corpus has one at `MIN_COUNT` or more. This is evidence
-   about how the name is written, and it beats a rule that reconstructs it.
-3. **The rule engine**, for the ~64% of our vocabulary the corpus has never written.
+For every token whose `note` says **`by rule`**, if the attested file has a non-empty rendering,
+that rendering replaces ours and the count is recorded. **2,035 tokens have a `ja` attestation
+that differs from ours**, and reading them the attested one is plainly better nearly every time:
 
-**Hand rows that are not hers are overruled by the corpus.** They were written by this project,
-from the same guessing the engine does, and 226 items calling somebody `アレクサンダー` is worth
-more than one of ours calling them `アレクスアンデル`. The row keeps a note saying where its
-value came from and how many items attest it, so nothing is silently replaced.
+    Aaron      オーロン  ->  アーロン        61 uses
+    Abdullah   アブドラ  ->  アブドゥッラー    12 uses      阿布杜拉 -> 阿卜杜拉
+    Aarne      オールネ  ->  アールネ         5 uses      奥尔内   -> 阿尔内
 
-**A row is only replaced when the corpus disagrees**, so the diff is exactly what changes.
+**A middle initial is among them and it is the sharpest case.** `A` renders by rule as `ア`; the
+attested value is `A`, 146 uses — which is exactly what `CLAUDE.md` § *A middle initial keeps its
+Latin letter in every language* already requires, arrived at independently by Wikidata's editors.
+
+## What it does NOT do
+
+**It never touches a row that is not `by rule`.** A hand entry, a patronymic construction, or a
+value Emma has corrected stays exactly as it is — attestation is evidence, not authority over her.
+
+**It does not overwrite with an empty value.** Many tokens are attested in `ja` and not in `zh`;
+those keep the by-rule `zh` rather than losing it.
+
+**No threshold.** A rendering used even twice was written by a person looking at that name, where
+ours was assembled letter by letter with no idea what the name is. Her standing rule is that an
+imperfect katakana reading is acceptable and an incorrect *name* is not — and `斯特普亨` for
+Stephen is closer to a wrong name than to an imperfect reading. The use count is written into the
+`note` so any row can be argued with.
+
+Rewrites `reports/garborg-name-transliterations.tsv` in place.
 """
+
 from __future__ import annotations
 
-import argparse
+import collections
 import csv
+import io
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
-sys.stdout.reconfigure(encoding="utf-8")
+REPO = Path(__file__).resolve().parent.parent
+sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
-TABLE = ROOT / "reports" / "garborg-name-transliterations.tsv"
-ATTESTED = ROOT / "reports" / "attested-name-renderings.tsv"
+TAB = chr(9)
+TABLE = REPO / "reports" / "garborg-name-transliterations.tsv"
+ATTESTED = REPO / "reports" / "attested-name-renderings.tsv"
 
-#: Notes that mark a row as Emma's own decision. Nothing overrules these.
-HERS = ("Emma's correction",)
+#: Only these notes are replaceable. Anything else is a person's decision.
+BY_RULE = {"by rule", "by rule, minted during the run"}
+
+#: Her own corrections, which outrank both the engine and the attestation. She looked `Stephen`
+#: up and gave `史蒂芬`; Wikidata attests `斯蒂芬` 26 times. Both are standard and hers wins,
+#: because `CLAUDE.md` § *Emma edits the tree and the items BY HAND* makes a value she has
+#: supplied a decision rather than drift.
+HERS = {
+    "Stephen": {"zh": "史蒂芬"},
+}
 
 
-def main():
-    ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
-    ap.add_argument("--dry-run", action="store_true")
-    args = ap.parse_args()
+def main() -> int:
+    att = {r["token"]: r for r in csv.DictReader(
+        io.open(ATTESTED, encoding="utf-8"), delimiter=TAB)}
+    rows = list(csv.DictReader(io.open(TABLE, encoding="utf-8"), delimiter=TAB))
+    fields = ["token", "ja", "zh", "ko", "note"]
 
-    attested = {r["token"]: r for r in
-                csv.DictReader(ATTESTED.open(encoding="utf-8"), delimiter="\t")}
-    rows = list(csv.DictReader(TABLE.open(encoding="utf-8"), delimiter="\t"))
-
-    changed, hers_kept, agreed, untouched = [], 0, 0, 0
-    for row in rows:
-        note = row.get("note") or ""
-        if any(h in note for h in HERS):
-            hers_kept += 1
+    n = collections.Counter()
+    changed = []
+    for r in rows:
+        if r.get("note") not in BY_RULE:
+            n["left alone -- not a by-rule row"] += 1
             continue
-        a = attested.get(row["token"])
-        if not a:
-            untouched += 1
+        a = att.get(r["token"])
+        mine = HERS.get(r["token"], {})
+        if not a and not mine:
+            n["left alone -- no attestation"] += 1
             continue
-        ja, zh = a["ja"] or row["ja"], a["zh"] or row["zh"]
-        if (ja, zh) == (row["ja"], row["zh"]):
-            agreed += 1
+        before = (r["ja"], r["zh"])
+        used = []
+        for lang in ("ja", "zh"):
+            new = mine.get(lang) or (a or {}).get(lang, "")
+            if new and new != r[lang]:
+                r[lang] = new
+                used.append(lang)
+        if not used:
+            n["attested but identical to ours"] += 1
             continue
-        changed.append((row["token"], row["ja"], ja, row["zh"], zh))
-        counts = f"ja {a['ja_count']}x, zh {a['zh_count']}x" if a["ja"] and a["zh"] else (
-            f"ja {a['ja_count']}x" if a["ja"] else f"zh {a['zh_count']}x")
-        row["ja"], row["zh"] = ja, zh
-        row["note"] = f"attested on Wikidata ({counts})"
+        src = ("Emma" if mine else
+               f"attested on Wikidata (ja {(a or {}).get('ja_count', '?')}x, "
+               f"zh {(a or {}).get('zh_count', '?')}x)")
+        r["note"] = src
+        n[f"replaced: {'+'.join(used)}"] += 1
+        if len(changed) < 15:
+            changed.append((r["token"], before, (r["ja"], r["zh"]), src))
 
-    print(f"{len(rows):,} rows: {hers_kept} are Emma's and untouched, "
-          f"{agreed:,} already agreed with the corpus, {len(changed):,} corrected, "
-          f"{untouched:,} not attested and left to the rule engine")
-    for token, oja, ja, ozh, zh in changed[:25]:
-        print(f"   {token:<18}{oja:<20}-> {ja:<20}{ozh:<16}-> {zh}")
-    if len(changed) > 25:
-        print(f"   ... and {len(changed) - 25:,} more")
+    w = csv.DictWriter(io.open(TABLE, "w", encoding="utf-8", newline=""),
+                       delimiter=TAB, fieldnames=fields)
+    w.writeheader()
+    for r in rows:
+        w.writerow({k: r.get(k, "") for k in fields})
 
-    if args.dry_run:
-        print("\n--dry-run: table untouched")
-        return
-    with TABLE.open("w", encoding="utf-8", newline="") as fh:
-        w = csv.DictWriter(fh, fieldnames=["token", "ja", "zh", "note"], delimiter="\t")
-        w.writeheader()
-        w.writerows(rows)
-    print(f"\nwrote {TABLE.relative_to(ROOT)}")
+    for k, v in n.most_common():
+        print(f"  {v:>7,}  {k}")
+    print("\na sample of what changed:")
+    for tok, b, a_, src in changed:
+        print(f"   {tok:<14} {b[0]:<14} -> {a_[0]:<14}   {b[1]:<12} -> {a_[1]:<12}  {src[:34]}")
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

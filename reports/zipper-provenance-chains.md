@@ -71,11 +71,11 @@ via 6000000037090742919: structural-walk says Q11053517
             └─ 沈 `6000000037090742919` = `Q5163358` — round 2, mother by solo (position), from `6000000010801237168`
               └─ 适 李 `6000000010801237168` = `Q9755` — round 1, father by solo (position), from `6000000074750676843`
 
-### N.N. Lennox `6000000002187962641`
+### NN Lennox `6000000002187962641`
 
 via 6000000002188056957: structural-walk says Q1801768
 
-N.N. Lennox `6000000002187962641` = `Q76141741` — round 7, mother by solo (position), from `6000000002116140810`
+NN Lennox `6000000002187962641` = `Q76141741` — round 7, mother by solo (position), from `6000000002116140810`
   └─ Robert mac Donnachadh de Atholl of Glenerochie `6000000002116140810` = `Q76141742` — round 6, father by solo (position), from `6000000002116140804`
     └─ Duncanus de Atholia 3rd Laird of Strowan `6000000002116140804` = `Q76141879` — round 5, father by solo (position), from `6000000002188056977`
       └─ Robert de Atholia `6000000002188056977` = `Q76141881` — round 4, father by solo (position), from `6000000002188056957`
@@ -358,11 +358,11 @@ James Douglas of Dalkeith `6000000003646008699` = `Q75388508` — round 4, fathe
     └─ Joan Stewart `5202009888810053546` = `Q4770176` — round 2, child by date (born 1428 vs 1428), from `6000000000743955206`
       └─ Joan Beaufort Queen of Scots `6000000000743955206` = `Q241923` — round 1, child by date (born 1404 vs 1404), from `6000000001139931822`
 
-### Unknown Mistress Palaiologus vanhempi `6000000003696318556`
+### NN Mistress Palaiologus vanhempi `6000000003696318556`
 
 via 4363165195640021509: structural-walk says Q55236875
 
-Unknown Mistress Palaiologus vanhempi `6000000003696318556` = `Q96241086` — round 4, mother by solo (position), from `6000000003696396391`
+NN Mistress Palaiologus vanhempi `6000000003696318556` = `Q96241086` — round 4, mother by solo (position), from `6000000003696396391`
   └─ pss Maria Palaiologos `6000000003696396391` = `Q20156061` — round 3, mother by solo (position), from `6000000008589035885`
     └─ Maria d. of khan Toqta Narimantienė `6000000008589035885` = `Q96241075` — round 2, mother by solo (position), from `4363165195640021509`
       └─ Patrikas Наримунтович of Starodub & Zwenihorod Prince of Zvenigorod `4363165195640021509` = `Q2041044` — round 1, father by solo (position), from `6000000013290186278`
@@ -505,7 +505,7 @@ James Douglas 4th Lord of Dalkeith, 1st Earl of Morton `5190884585660088175` = `
 via 6000000000177347291: structural-walk says Q3352994
 
 Gyrid Olafsdotter `6000000000177347291` = `Q1781558` — round 3, child by solo (position), from `6000000003206352927`
-  └─ Olaf NN `6000000003206352927` = `Q240258` — round 2, father by solo (position), from `6000000001053442747`
+  └─ Olaf `6000000003206352927` = `Q240258` — round 2, father by solo (position), from `6000000001053442747`
     └─ Styrbjörn «Starke» Óláfsson `6000000001053442747` = `Q489529` — round 1, spouse by name (shared: styrbjörn), from `6000000000350890514`
 
 ### Rudolf, Abbot Of St. Riquier `6000000000437351701`

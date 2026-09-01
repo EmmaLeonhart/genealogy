@@ -95,38 +95,38 @@ Q141198453	P5056	LAST	S2600	"6000000194934774831"
 #   batch and be limited to a count of 15 labels added per batch". A label set
 #   at CREATION time is neither counted nor capped -- "a label added during item
 #   creation is good".
-#   2085 more are held for a later run; a repeat is a no-op, so nothing is lost.
+#   2068 more are held for a later run; a repeat is a no-op, so nothing is lost.
 # ------------------------------------------------------------------------
-#   set the ko label to "에밀 스체르느발르와르린"
-Q6190771	Lko	"에밀 스체르느발르와르린"
-#   Q141224867 Pauline Gasser: set the ko label to "파우리네 가세르"
-Q141224867	Lko	"파우리네 가세르"
-#   set the ko label to "카르르 루드빅 헤덴베르그"
-Q141244087	Lko	"카르르 루드빅 헤덴베르그"
-#   set the ko label to "안나 에리사베트 차르로타 안데르스도테르 레흐빈데르"
-Q141244082	Lko	"안나 에리사베트 차르로타 안데르스도테르 레흐빈데르"
-#   set the ko label to "로베르트 헨리크 레흐빈데르"
-Q2575818	Lko	"로베르트 헨리크 레흐빈데르"
-#   set the ko label to "프란스 미챌 프란젠"
-Q333297	Lko	"프란스 미챌 프란젠"
-#   set the ko label to "안데르스 자콥손"
-Q141216357	Lko	"안데르스 자콥손"
-#   set the ko label to "다니엘 오로프손"
-Q141205902	Lko	"다니엘 오로프손"
-#   set the ko label to "존 빌룸손 라우네스"
-Q141216611	Lko	"존 빌룸손 라우네스"
-#   set the ko label to "할르보르드 란다"
-Q141205910	Lko	"할르보르드 란다"
-#   set the ko label to "구드룬 샙죄르느스다테르 탈게"
-Q141205909	Lko	"구드룬 샙죄르느스다테르 탈게"
-#   set the ko label to "구토르므 오술브손"
-Q19061035	Lko	"구토르므 오술브손"
-#   set the ko label to "엘드리드 존스다테르"
-Q141216467	Lko	"엘드리드 존스다테르"
-#   set the ko label to "오로프 프리스"
-Q6057321	Lko	"오로프 프리스"
-#   Q141244088 Catharina Charlotta Samuelsdotter Wallenstierna: set the ko label to "카타리나 차르로타 사뭴스도테르 와르렌스티에르나"
-Q141244088	Lko	"카타리나 차르로타 사뭴스도테르 와르렌스티에르나"
+#   set the ko label to "오로프 부레"
+Q26405863	Lko	"오로프 부레"
+#   set the ko label to "루이스 테 피우스"
+Q43974	Lko	"루이스 테 피우스"
+#   set the ko label to "카르르 히싱흐"
+Q110313452	Lko	"카르르 히싱흐"
+#   set the ko label to "발드위느 입"
+Q378177	Lko	"발드위느 입"
+#   set the ko label to "그레고리 아미노프 스르"
+Q5548897	Lko	"그레고리 아미노프 스르"
+#   set the ko label to "헤드빅 카타리나 본 페르센"
+Q2066886	Lko	"헤드빅 카타리나 본 페르센"
+#   set the ko label to "아그셀 본 페르센 테 요우에르"
+Q455071	Lko	"아그셀 본 페르센 테 요우에르"
+#   set the ko label to "오토 헨리크 노르덴스키욀드"
+Q6014779	Lko	"오토 헨리크 노르덴스키욀드"
+#   set the ko label to "에노크 존손 뢴네베르그"
+Q141205903	Lko	"에노크 존손 뢴네베르그"
+#   set the ko label to "베레아르 이 오프 이타리"
+Q274606	Lko	"베레아르 이 오프 이타리"
+#   set the ko label to "사뭴 프리스"
+Q16650163	Lko	"사뭴 프리스"
+#   set the ko label to "귈라우메 이 데 가르란데 세익뉴르 데 가르란데"
+Q75933086	Lko	"귈라우메 이 데 가르란데 세익뉴르 데 가르란데"
+#   Q141216496 Nils Larsen Raunes: set the ko label to "닐스 라르센 라우네스"
+Q141216496	Lko	"닐스 라르센 라우네스"
+#   Q141225749 Jon Pedersen Trevland: set the ko label to "존 페데르센 트레브란드"
+Q141225749	Lko	"존 페데르센 트레브란드"
+#   set the ko label to "닐스 아담 비엘케"
+Q5575607	Lko	"닐스 아담 비엘케"
 
 # INDIVIDUALS. Each is linked only to items that already exist; links
 #    between two people created here wait for tomorrow, when they have
@@ -474,8 +474,8 @@ LAST	Len	"Gustaf Schilling"
 LAST	Lmul	"Gustaf Schilling"
 #   set the ja label to "グスタフ・シリング"
 LAST	Lja	"グスタフ・シリング"
-#   set the zh label to "古斯塔夫·西林"
-LAST	Lzh	"古斯塔夫·西林"
+#   set the zh label to "古斯塔夫·席林"
+LAST	Lzh	"古斯塔夫·席林"
 #   set the ko label to "구스타프 실링"
 LAST	Lko	"구스타프 실링"
 #   P31 instance of = Q5 human
@@ -494,39 +494,6 @@ LAST	P26	Q141244107	S2600	"6000000180950236868"
 Q141244107	P26	LAST	S2600	"6000000180950236868"
 #   the item just created: P735 given name = Q15646212 Gustaf
 LAST	P735	Q15646212
-
-# create a new item
-CREATE
-#   set the en label to "Hans Olofsson Törne"
-LAST	Len	"Hans Olofsson Törne"
-#   set the mul label to "Hans Olofsson Törne"
-LAST	Lmul	"Hans Olofsson Törne"
-#   set the ja label to "ハンス・オロフソン・トルネ"
-LAST	Lja	"ハンス・オロフソン・トルネ"
-#   set the zh label to "汉斯·奥洛夫松·托尔内"
-LAST	Lzh	"汉斯·奥洛夫松·托尔内"
-#   set the ko label to "한스 오로프손 퇴르네"
-LAST	Lko	"한스 오로프손 퇴르네"
-#   P31 instance of = Q5 human
-LAST	P31	Q5
-#   P21 sex or gender = Q6581097 male
-LAST	P21	Q6581097
-#   P2600 Geni.com profile ID = 6000000000410600770 Hans Olofsson Törne, qualified P1810 subject named as Hans Olofsson Törne
-LAST	P2600	"6000000000410600770"	P1810	"Hans Olofsson Törne"
-#   P569 date of birth = +1612-08-00T00:00:00Z/10
-LAST	P569	+1612-08-00T00:00:00Z/10	S2600	"6000000000410600770"
-#   P570 date of death = +1671-03-09T00:00:00Z/11
-LAST	P570	+1671-03-09T00:00:00Z/11	S2600	"6000000000410600770"
-#   P40 child = Q141223930 Magdalena Törne
-LAST	P40	Q141223930	S2600	"6000000000410600770"
-#   Q141223930 Magdalena Törne: P22 father = the item just created
-Q141223930	P22	LAST	S2600	"6000000000410600770"
-#   the item just created: P735 given name = Q632842
-LAST	P735	Q632842
-#   P734 family name = Q65202241 Törne
-LAST	P734	Q65202241
-#   add a mul alias "Hans Törne"
-LAST	Amul	"Hans Törne"
 
 # create a new item
 CREATE
@@ -1001,10 +968,10 @@ CREATE
 LAST	Len	"Stephen Frisk"
 #   set the mul label to "Stephen Frisk"
 LAST	Lmul	"Stephen Frisk"
-#   set the ja label to "ステプヘン・フリスク"
-LAST	Lja	"ステプヘン・フリスク"
-#   set the zh label to "斯特普亨·弗里斯克"
-LAST	Lzh	"斯特普亨·弗里斯克"
+#   set the ja label to "スティーヴン・フリスク"
+LAST	Lja	"スティーヴン・フリスク"
+#   set the zh label to "史蒂芬·弗里斯克"
+LAST	Lzh	"史蒂芬·弗里斯克"
 #   set the ko label to "스테펜 프리스크"
 LAST	Lko	"스테펜 프리스크"
 #   P31 instance of = Q5 human
