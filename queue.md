@@ -511,6 +511,26 @@ workaround makes this question obsolete"* — `exports/post-merge/wikidata-qid-l
 Wikidata links into the corpus, so they arrive in the merge either way and nothing waits on the
 definition being settled.
 
+## Korean through the ROMANISATION pipeline — her emphasis, 2026-09-01
+
+*"So just more emphasis with the korean stuff there and changing some of the romanization pipeline
+queued stuff"*, after *"korean is extremely important on par with Chinese... this seems to not get
+that cjk includes korean"*.
+
+The romanisation pipeline currently has **two** directions where it needs three:
+
+- `cjk_romanisation` classifies a name's culture as `ja` or `zh` and romanises accordingly. The
+  1,552 Hangul tokens settle culture decisively, and Korean romanisation (Revised Romanization)
+  is regular — so `ko` is a third branch, not an exception.
+- **The Han-to-Korean direction is the one that is missing entirely.** A Chinese or Japanese name
+  written in Han characters has a regular hanja reading, so `ko` labels are generable for the
+  whole Han population the way `zh` is — 30,876 Han tokens, not just the Hangul ones.
+- `reports/garborg-name-transliterations.tsv` gains a `ko` column and the funnel mints all three.
+- The creation gate becomes `ja` + `zh` + `ko`.
+
+**`P1814` *name in kana* stays agentic and is a different job** — a Japanese name reading does not
+follow from the characters, which is exactly why it should never have been queued alongside `ko`.
+
 ## CJK label conversion — fill in Korean and `P1814` *name in kana*, with research
 
 **Emma, 2026-08-29:** *"do a cjk label conversion thing with research to fill in the korean and name

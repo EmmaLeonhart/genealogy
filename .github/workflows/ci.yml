@@ -1,44 +1,120 @@
 name: CI
 
-# MANUAL ONLY, ON PURPOSE.
+# The repo went PUBLIC on 2026-09-01 -- Emma: "The repo is public now lol" -- so Actions minutes
+# are free and the old manual-only rule is retired. `CLAUDE.md` section *Cost* was written for a
+# private repo and no longer binds.
 #
-# This is a private repo, and Actions minutes on private repos are billable
-# once the monthly free allowance runs out — unlike public repos, where they
-# are free. Nothing here is worth a surprise bill, so there is no `push` or
-# `pull_request` trigger: this workflow runs only when somebody asks for it.
-#
-# The tests are fast and have no dependencies beyond pytest, so the normal way
-# to run them is locally:
-#
-#     python -m pytest
-#
-# To run this on GitHub anyway (Actions > CI > Run workflow, or):
-#
-#     gh workflow run CI --repo <owner>/geni
-#
-# Re-adding a `push:` trigger means opting back into per-push billing. Don't do
-# it without deciding that on purpose.
+# Still no `push:` on every commit: this repo receives large generated files many times a day
+# (the 2026-09-01 label rebuild alone rewrote 3 million lines), and a run per push would queue
+# behind itself for no signal. A daily schedule plus manual dispatch is the useful cadence.
 on:
   workflow_dispatch:
+  schedule:
+    # 05:17 UTC daily. Off the hour on purpose: :00 is when every scheduled workflow on GitHub
+    # fires at once and the queue is worst.
+    - cron: "17 5 * * *"
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     strategy:
       fail-fast: false
       matrix:
         python-version: ["3.10", "3.13"]
 
     steps:
+      # **A plain checkout does not fit the runner.** Measured 2026-09-01: 13.3 GB tracked --
+      # wikidata/ 4.3 GB, exports/ 4.3 GB, paths_for_wikidata_isolates/ 2.7 GB, reports/ 1.1 GB
+      # -- against roughly 14 GB of free disk. `filter=blob:none` fetches only the blobs the
+      # working tree actually needs and `sparse-checkout` narrows that to the directories a test
+      # run opens.
+      #
+      # `exports/` IS included and is the bulk of what remains: it is the corpus, and
+      # `tests/test_repo_invariants.py` compares `git ls-files 'exports/**/*.ged'` against
+      # `find exports -name '*.ged'`. Excluding it would not skip that test, it would FAIL it --
+      # and the failure would be an artefact of the checkout rather than of the repo.
       - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout: |
+            /*
+            !/wikidata
+            !/paths_for_wikidata_isolates
+            !/out
+            !/geni-scraping
+            !/orderlife
+            !/geni_pages
+            !/chats
+          sparse-checkout-cone-mode: false
+
+      - name: What did we actually check out
+        run: |
+          du -sh . 2>/dev/null | tail -1
+          df -h / | tail -1
+          echo "GEDCOMs on disk: $(find exports -name '*.ged' 2>/dev/null | wc -l)"
+          echo "GEDCOMs in git:  $(git ls-files 'exports/**/*.ged' | wc -l)"
 
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
 
-      # The package itself is stdlib-only; pytest is the only thing to install.
+      # The package is stdlib-only; pytest is the only dependency.
       - run: pip install pytest
 
-      # data_lake/*.ged is committed, so the integration tests that read the
-      # real exports run here too rather than skipping.
-      - run: python -m pytest -q
+      # The four big derived CSVs are committed gzipped and every reader opens the plain file.
+      # `CLAUDE.md` section *The four big derived CSVs are committed GZIPPED* -- a clean clone
+      # runs this once, and CI is a clean clone every time.
+      - name: Unpack the derived CSVs
+        run: python scripts/pack-derived.py --unpack
+
+      # `genimerge.wikidata.require_agent` refuses an empty User-Agent by design, because
+      # Wikimedia answers one with a bare 403. One test builds a client and fails without this.
+      # It is a contact address, not a secret -- it is in CLAUDE.md.
+      - name: Fast lane
+        env:
+          BOT_CONTACT: emma@topazcomputing.com
+          PYTHONPATH: src
+        run: python -m pytest -m "not slow" -q --durations=15
+
+  # The slow lane is a separate job so a red fast lane is legible on its own. It re-merges the
+  # whole 605-export corpus, which peaks near 17 GB -- above what a standard runner has -- so it
+  # runs the cheap slow modules only and says so rather than pretending to be the full suite.
+  slow:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    needs: test
+    if: github.event_name == 'workflow_dispatch'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout: |
+            /*
+            !/wikidata
+            !/paths_for_wikidata_isolates
+            !/out
+            !/geni-scraping
+            !/orderlife
+            !/geni_pages
+            !/chats
+          sparse-checkout-cone-mode: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: pip install pytest
+      - run: python scripts/pack-derived.py --unpack
+      - name: Slow modules that do not re-merge the corpus
+        env:
+          BOT_CONTACT: emma@topazcomputing.com
+          PYTHONPATH: src
+        run: |
+          python -m pytest -m slow -q --durations=0 \
+            tests/test_gedcom_real_exports.py \
+            tests/test_density.py \
+            tests/test_paths.py
