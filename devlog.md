@@ -23218,3 +23218,49 @@ Fujiwara matches in the first place.
 
 The two queue items merge back into one, since the split has done its work: it is now a single
 roster with two emission halves.
+
+## 2026-08-31 — the agentic pass: 71 of 89 Japanese heads matched, by check not by guess
+
+Emma: *"the agentic pass is what you should be doing right now lol."* Done, and it worked because
+of one observation rather than any similarity measure.
+
+**The two sides write the name differently.** The chart says `Senge no Takakuni`; Geni says
+`Takakuni Senge`. Reversing `X no Y` to `Y X` finds **63 of 73**, where the old matcher found 32
+and several of those were wrong.
+
+**And the match is VERIFIED, not guessed, because the Geni label carries the succession number** —
+`Funin 18 Izumo`, `Yukitaka 57 Kitajima`, `Takakatsu 62 Senge`. A candidate is accepted only when
+the number in its label equals the number in the chart. That is the difference from the run that
+paired `Izumo no Yoshitada` with **Minamoto** no Yoshitada and `Izumo no Takatoki` with
+**Fujiwara** no Takatoki: those had nothing to check against.
+
+Provenance of the 106 Geni ids now in the file:
+
+    57  succession number confirms it
+    41  Samaritan, from the corpus
+     7  the earlier matcher, where it was unambiguous
+     5  sole match with no number in the label
+     2  her QID link in the Geni bio
+
+| family | rows | qid | geni | regnal | in office |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Izumo | 53 | 51 | 37 | 0 | 53 |
+| Senge | 22 | 22 | 20 | 0 | 22 |
+| Kitajima | 14 | 14 | **14** | 0 | 14 |
+| Samaritan | 62 | 21 | 62 | 58 | 18 |
+
+**Three corrections from her during the pass, all of them things I had not looked at.**
+
+- *"most of the geni profiles have qids in their bios"* — and my rewrite had dropped the bio
+  route entirely: `by_qid` was loaded and then never consulted in the new branch. Restored as the
+  fallback after the name check.
+- *"Izumo and Tanba rosters"* — I had never opened `reports/tanba-*`. It turns out
+  `tanba-geni-created.tsv` carries **both** a Geni id and a QID for 193 people, needing no
+  matching at all. Added, then removed again on her *"Tanba doesn't matter to be clear."*
+- The native-name pass, for the `-mikoto` figures at the head of the line whose profiles carry
+  the Han name rather than a romanisation.
+
+**18 remain, and they are the mythological end** — `Ame no Hohi`, `Takehi-Nateru`,
+`Kushitsukinomikoto`. Their Geni profiles either are not in our exports or sit under a form
+neither pass reaches; two have several corpus rows carrying the same Han name and need her eye,
+not another rule.

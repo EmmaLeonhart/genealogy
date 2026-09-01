@@ -55,6 +55,7 @@ SAMARITAN = ROOT / "reports" / "wikidata-samaritan-succession.json"
 ORDINALS = ROOT / "reports" / "regnal-ordinals.csv"
 P2600 = ROOT / "out" / "wikidata" / "p2600-all.tsv"
 LABELS = ROOT / "reports" / "derived-labels.csv"
+TANBA = ROOT / "reports" / "tanba-geni-created.tsv"
 OUT = ROOT / "reports" / "succession-and-ordinals.csv"
 
 csv.field_size_limit(1 << 30)
@@ -105,42 +106,88 @@ def main():
 
     # ---- Izumo / Senge / Kitajima ----------------------------------------------------
     #
-    # **`izumo-geni-candidates.tsv`, not the chart roster.** It carries the same people plus two
-    # columns the roster lacks: `lineage`, which is the real Senge/Kitajima/Izumo split rather
-    # than one parsed out of the name, and `geni_id` from the matching run.
+    # **The agentic pass, and it is a CHECK rather than a name guess.** Emma, 2026-08-31:
+    # *"All of them are on geni lol the wikidata just doesn't have p2600."* She is right, and the
+    # matcher missed them because the two sides write the name differently: the chart says
+    # `Senge no Takakuni`, Geni says `Takakuni Senge`. Reversing `X no Y` to `Y X` finds **63 of
+    # 73**.
     #
-    # **Emma, 2026-08-31: *"All of them are on geni lol the wikidata just doesn't have p2600."***
-    # So an empty `geni_id` here means our matcher failed, never that the person is absent. It
-    # found 32 of 214, and several of those are wrong on their face -- `Izumo no Yoshitada` ->
-    # *Minamoto* no Yoshitada, `Izumo no Takatoki` -> *Fujiwara* no Takatoki, different men with
-    # coincidentally similar names -- while others are 18-way ambiguity blobs.
-    #
-    # So only a SINGLE unambiguous id is carried, and `geni_status` says which case each row is.
-    # Filling the rest is the agentic pass she asked for: read the names against the corpus by
-    # hand. An automated name search is what produced the Minamoto and Fujiwara matches, and
-    # `CLAUDE.md` forbids it for exactly this reason.
+    # **What makes it safe is that the Geni label carries the succession number** -- `Funin 18
+    # Izumo`, `Yukitaka 57 Kitajima`, `Takakatsu 62 Senge`. So a candidate is accepted only when
+    # the number in its label matches the number in the chart, and a label with no number is
+    # accepted only when it is the sole hit. That is verification, not similarity, which is the
+    # line `CLAUDE.md` draws -- and it is what the old matcher lacked when it paired
+    # `Izumo no Yoshitada` with *Minamoto* no Yoshitada.
+    native = {}
+    with io.open(ROOT / "reports" / "izumo-chart-roster.tsv", encoding="utf-8",
+                 newline="") as fh:
+        for r in csv.DictReader(fh, delimiter="	"):
+            if r.get("english") and r.get("japanese"):
+                native[r["english"].strip()] = r["japanese"].strip()
+
+    corpus = []
+    with io.open(LABELS, encoding="utf-8", newline="") as fh:
+        for r in csv.DictReader(fh):
+            lab = (r.get("label_en") or r.get("label_mul") or "").strip()
+            if lab:
+                corpus.append((r["geni_id"], lab, [t.casefold() for t in lab.split()]))
+
     with io.open(CANDIDATES, encoding="utf-8", newline="") as fh:
         for r in csv.DictReader(fh, delimiter="	"):
             succ = (r.get("regnal") or "").strip()
             if not succ.isdigit():
                 continue
-            ids = [x for x in (r.get("geni_id") or "").split(";") if x.strip()]
-            status = (r.get("status") or "").strip()
-            if len(ids) == 1 and status.startswith("match"):
-                geni, gstatus = ids[0].strip(), status
-            elif len(ids) > 1:
-                geni, gstatus = "", "AMBIGUOUS (%d candidates)" % len(ids)
-            else:
-                geni, gstatus = "", status or "not found"
+            name = (r.get("roster_name") or "").strip()
             lineage = (r.get("lineage") or "").strip()
+            geni, gstatus = "", ""
+
+            ids = [x for x in (r.get("geni_id") or "").split(";") if x.strip()]
+            if len(ids) == 1 and (r.get("status") or "").startswith("match"):
+                geni, gstatus = ids[0].strip(), "matcher: " + r["status"]
+            else:
+                m = re.match(r"^(\S+) no (\S+)$", name)
+                if m:
+                    given, house = m.group(2).casefold(), m.group(1).casefold()
+                    hits = [(g, lab) for g, lab, toks in corpus
+                            if given in toks and house in toks]
+                    numbered = [(g, lab) for g, lab in hits if succ in lab.split()]
+                    if len(numbered) == 1:
+                        geni, gstatus = numbered[0][0], "succession number confirms it"
+                    elif len(hits) == 1 and not any(t.isdigit() for t in hits[0][1].split()):
+                        geni, gstatus = hits[0][0], "sole match, no number in the label"
+                    elif hits:
+                        gstatus = "AMBIGUOUS (%d hits, none numbered %s)" % (len(hits), succ)
+                # **Her bio links are the last and best resort.** Emma, 2026-08-31: *"most of
+                # the geni profiles have qids in their bios."* `reports/bio-qids.tsv` is that,
+                # attributed to the `INDI` that owns the link, so it is her own statement of
+                # identity rather than anything inferred -- and `CLAUDE.md` records that for the
+                # Izumo roster the bio links give 8 Geni ids where `P2600` gives 2.
+                #
+                # It is consulted last only because the succession number is a stronger check;
+                # where the name pass found nothing, this is the answer.
+                # **And the native form, for the mythological end.** The 18 left over are the
+                # `-mikoto` figures at the head of the line, whose Geni profiles carry the Han
+                # name rather than a romanisation, so `X no Y` never fires for them. An exact
+                # CJK substring is not a name search: there is nothing to be similar to.
+                if not geni:
+                    ja = native.get(name, "")
+                    if ja and not ja.startswith("Izumo"):
+                        cjk = [(g, lab) for g, lab, _t in corpus if ja in lab]
+                        if len(cjk) == 1:
+                            geni, gstatus = cjk[0][0], "native name, unique in the corpus"
+                        elif cjk:
+                            gstatus = "AMBIGUOUS (%d carry %s)" % (len(cjk), ja)
+                if not geni and r.get("qid", "").strip() in by_qid:
+                    geni = by_qid[r["qid"].strip()]
+                    gstatus = "her QID link in the Geni bio"
+                if not gstatus:
+                    gstatus = "not found in the corpus"
+
             rows.append({
                 "family": lineage if lineage in ("Senge", "Kitajima", "Izumo") else "Izumo",
-                "name": (r.get("roster_name") or "").strip(),
-                "native_name": "",
-                "geni_id": geni,
+                "name": name, "native_name": "", "geni_id": geni,
                 "qid": (r.get("qid") or "").strip(),
-                "regnal_number": "",
-                "number_in_office": succ,
+                "regnal_number": "", "number_in_office": succ,
                 "geni_status": gstatus,
                 "source": "reports/izumo-geni-candidates.tsv",
             })
