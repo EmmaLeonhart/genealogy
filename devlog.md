@@ -23558,3 +23558,31 @@ And it records what the unreadable tokens actually look like, since that decides
 where a nickname's opening quote is glued to the token, rather than names an engine failed to
 read. `Карлов` is Cyrillic, a different engine entirely, and `<private>` is a redaction marker
 that should never have reached a name field.
+
+## 2026-08-31 — the provenance chain is built; the item cut to its specification
+
+Continuing down the queue. § *The chain of provenance* asks for a provenance **graph** — the
+transitive closure of the zipper steps, her hand verdicts as first-class nodes, and propagation in
+both directions. `scripts/zipper-provenance.py` is that, and re-running it today:
+
+    45,898 inferred pairs · chain depth max 8, mean 2.7
+     7,306 an independent source corroborates · 88 it contradicts
+    25,723 CORROBORATED · 20,008 INFERRED · 167 POISONED
+
+Her verdicts are in it as she asked — **103 independent pairs** from `emma-judgments.tsv`,
+alongside the structural walk (7,841), her Geni bio links (405) and the clan rosters.
+
+**Cut to the specification rather than deleted**, because the sweep brief names this section as
+one that stays and the two propagation rules in it are hers rather than derivable from the code:
+support propagates upward, contradiction propagates the same way, *"it goes both ways."* What went
+is the "here is what to build" framing, which made a built thing read as outstanding.
+
+The deepest chain is worth seeing once, because it is what a *"potentially very large series of
+justifications"* actually looks like — eight steps from `Simone du Caylar` at round 1 through the
+d'Uzès line to `Burgondion de Marseille` at round 8, alternating solo-position and shared-name
+steps.
+
+**Also cut back: § *Labels in seven languages*.** Its stated blocker was
+`wikidata-placeholder-labels.json` having `ja`/`zh` on none; that is now 22,614 of 32,129 and the
+remainder is queued at the tail. What stays is the rest of her order — `hi`, `ar`, `ru`, `el` not
+started, and the `en`/`mul` passes over the whole corpus rather than the placeholders alone.

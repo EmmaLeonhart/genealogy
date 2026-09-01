@@ -240,9 +240,15 @@ the name** — the tree settles it, via neighbours and which exports they came f
 2. Then the other creations — the Samaritan line, the order.life tiers.
 3. Then the `set_labels` edits, every one carrying all seven + `mul`.
 
-`reports/wikidata-placeholder-labels.json` is **39,299 edits** as of 2026-08-17:
-`mul` on all, `en` on **30,012**, `ja` and `zh` on none. **It must not run in that
-state** — and the 9,287 with `mul` only have no named relative at any distance out to
+**The placeholder half is largely done, 2026-08-31.**
+`reports/wikidata-placeholder-labels.json` is 39,691 edits: `mul` on all, `en` on 32,129, and
+`ja`/`zh` on **22,614** where it was 0 — built as `<relative's name>の娘` once the token funnel
+was pointed at that population. What is left of it is at the tail as § *the tokens the
+transliteration funnel cannot read*.
+
+**What stays here is everything else in her order**: `hi`, `ar`, `ru`, `el` have not been started
+at all, and the `en`/`mul` passes over the whole corpus — not just the placeholders — are still
+the large outstanding job. The 7,562 with `mul` only have no named relative at any distance out to
 two hops, so they need something other than a relative or they stay markers.
 
 ## Pointers
@@ -280,10 +286,22 @@ justification,' but a potentially very large series of justifications."* And why
 verdicts exist at all: *"That is the actual reason why I asked you to record my manual decisions,
 because of the fact that they entered into the province too."*
 
-`reports/zipper-pairs.tsv` now records one step — slot, method, the pair it came from, and the
-evidence. That is a link, not a chain. What she is describing is the **transitive closure**: a
-round-5 pair's justification is its own step *plus* every step beneath it, down to an anchor or to
-one of her own verdicts in `reports/emma-judgments.tsv`.
+**BUILT — `scripts/zipper-provenance.py`, re-run 2026-08-31.** `reports/zipper-pairs.tsv` records
+one step; this walks them into the **transitive closure** she describes — a round-5 pair's
+justification being its own step plus every step beneath it, down to an anchor or to one of her
+own verdicts. Chain depth **max 8, mean 2.7** over 45,898 inferred pairs. Outputs
+`reports/zipper-provenance.tsv` and `reports/zipper-provenance-chains.md`.
+
+    25,723  CORROBORATED        7,306 pairs an independent source confirms
+    20,008  INFERRED            88 an independent source contradicts
+       167  POISONED
+
+Her hand verdicts are first-class nodes, as she asked: **103 independent pairs** from
+`reports/emma-judgments.tsv`, alongside the structural walk (7,841), her Geni bio links (405) and
+the clan rosters.
+
+**This section stays as the SPECIFICATION** — the two propagation rules below are how it must keep
+behaving, and they are hers rather than derivable from the code.
 
 Two things follow, and she stated both:
 
