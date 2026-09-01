@@ -23732,3 +23732,28 @@ So the script generating the fix was printing the misconception at the top of it
 
 **Not attached.** It is 4,325 statements and she has not asked for it; § *Do not invent a runnable
 edit batch she has not asked for* holds until she does.
+
+## 2026-08-31 — sweep: the new-to-new reciprocals item removed
+
+**50 → 49 sections.**
+
+**Removed: § *THE LAST ITEM — the new-to-new links the spine batch cannot emit*.** Every step in
+it is done and the only thing left is hers:
+
+- *"The batch itself is built and run"* — its own words, and she declared the spines clear on
+  2026-08-30.
+- *"Rebuild it and check it against the ledger"* — done in the previous commit.
+  `reports/wikidata-reciprocals.qs` is 4,325 statements over 1,468 people, rebuilt today, and the
+  check passed: 1,584 subjects, 1,635 values, **0 unknown to any source**, no `LAST` in a value
+  position, no `Aen`.
+- *"Mind the `P3373` sibling cap of 10 a day"* — 10 emitted, 1,810 held in
+  `reports/wikidata-reciprocals-siblings-held.qs`.
+
+**And I annotated it in place last tick rather than deleting it**, which is precisely what
+`queue.md` § *How to read this file* forbids and what she objected to on 2026-08-30. The
+"REBUILT 2026-08-31 and checked" paragraph I added made a finished item read as a live step for
+one whole tick. The numbers it carried are in `devlog.md` where results belong; the file itself is
+the artefact.
+
+*Running the batch is not a queue item for me* — it is a thing she does, and it is waiting for her
+whenever she wants it.

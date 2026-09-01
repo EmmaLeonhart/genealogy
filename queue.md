@@ -343,33 +343,6 @@ Wikidata."* A slot with nothing on their side is a **creation opportunity**, whi
 
 ---
 
-# THE LAST ITEM — the new-to-new links the spine batch cannot emit
-
-**The batch itself is built and run.** `scripts/build-garborg-day.py --roster out/roster-spine.txt
---roster-is-frontier --known reports/spine-already-on-wikidata.tsv` produced the whole spine in one
-file, 23 creations, and Emma declared the spines clear on 2026-08-30. `devlog.md` 2026-08-26 has
-the guard-by-guard account and `RELEASED_FROM_DUPLICATE_GUARD` carries the two she released.
-
-**There is exactly ONE live batch file and that is deliberate** — `reports/wikidata-garborg-day.qs`.
-A second copy under a spine-y name was made and deleted the same day;
-`tests/test_p2600_batches.py` failed on it correctly, because two files creating the same people is
-how somebody runs both and duplicates everybody.
-
-**REBUILT 2026-08-31 and checked — `reports/wikidata-reciprocals.qs`, 4,325 statements** over
-1,468 people: 1,007 `P22` and 1,007 `P40` back, 775 `P25` and 775 `P40`, 751 `P26`, and **10**
-`P3373` with **1,810 siblings held** over her 10-a-day cap in
-`reports/wikidata-reciprocals-siblings-held.qs`.
-
-Checked before offering, as this item asked: **every subject and every value resolves** — 1,584
-subjects, 1,635 values, **0 unknown to any source**; no `LAST`, no `Aen`. 595 subjects and 653
-values are outside `garborg-qids.tsv` but known through `synoptic-correspondence.tsv`, which is
-the union of all eight sources.
-
-**What is left is her running it.** It is a large batch and she has not asked for it, so it is not
-attached; § *Do not invent a runnable edit batch she has not asked for* governs until she does.
-
----
-
 ## The eight Asian identities — bios get their QID links AT SYNOPTIC-MERGE TIME, not now
 
 **Emma, 2026-08-29, correcting a recovered plan that a later discussion had already replaced:**
