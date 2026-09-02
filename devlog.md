@@ -25590,3 +25590,28 @@ The unknowns are 23,360 with no Latin form anywhere, 1,284 with no culture verdi
 because a Mandarin reading would be a wrong name. Nothing is blocked on them.
 
 Next in her order is `mul`, *"almost always derived from en"*.
+
+## 2026-09-02 — dead-queue sweep: two completed sections removed (17 → 15)
+
+- **`Anonymise, shrink the CI checkout, then go public`** — all three pieces done, and its
+  premise superseded. CI checks out with `filter: blob:none` and a non-cone `sparse-checkout`
+  (`.github/workflows/ci.yml` lines 44–53, 113–122); the repo went public 2026-09-01; and
+  `CLAUDE.md` § *Anonymisation is NOT redacting the tree* records her redefinition, which
+  *"replaces the ~96,000-private-rows reading entirely"* — the section still described that
+  superseded reading as the gate. The one remaining hold is the Kitajima one, which expires
+  2026-10-01 by its own constant.
+
+- **`First, the bug underneath all of it — 646 labels deleted by an ordinal sign`** — fixed and
+  the cache chain re-run. `scripts_of` in `build-display-names.py` now carries `NOT_A_SCRIPT` and
+  its docstring cites the section's own example (`1º senhor de Baião` is Latin). Measured over
+  `reports/display-names.csv`: `Masculine`, `Feminine`, `Modifier`, `Superscript` and `Micro` are
+  **all gone**, and the named Iberian nobles carry labels again.
+
+  **Residue kept out of the queue because it is a different thing:** 15 rows still read
+  `Unnamed`, and they are **Tangut** — U+17ADA and U+179AC, a real writing system Python's
+  `unicodedata.name()` does not name in the installed Unicode version, not the ordinal fault.
+  5 people, 4 of whom already carry a label.
+
+Kept deliberately: `LAST ITEM — run scripts/rebuild-everything.py` reads as a standing
+end-of-queue action rather than a one-off, and `rebuild-everything.py` needs re-running whenever
+`exports/` changes, so deleting it would lose a recurring instruction.

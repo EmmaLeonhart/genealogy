@@ -160,27 +160,6 @@ that did not happen.
 **NOT NOW.** Emma, same message: *"This is an edit to the cube item. Do not do any fucking
 calculations right now!"*
 
-### Anonymise, shrink the CI checkout, then go public
-
-**Emma, 2026-08-29**, on `reports/public-repo-analysis.md`: *"we will optimize the cicd revisions to
-be small and do other things to optimize filesizes for the runners but can 100% do all this stuff if
-we anonymize it properly"*
-
-Three pieces, in her order:
-
-- **Shrink what CI checks out.** A run does not need the 12.2 GB working tree — `.css` and
-  `.download` under `geni-scraping/` are 1.9 GB of page furniture, and the compose step reads only
-  the derived CSVs.
-- **Anonymise.** The gate on going public. ~96,000 rows concern people Geni treats as private.
-- **Then public**, which makes Actions minutes free and lets the daily emailed batch run.
-
-**The constraint the design must start from:** the Geni profile ID is both the identifier and this
-repo's primary key, so it cannot be hashed or dropped without breaking every join, the `P2600`
-statements and the spines. Redacting content while keeping structure is the likely shape.
-
-**The memory ceiling is untouched by any of this** — the merge peaks at 16.8 GB against a 16 GB
-runner, so the synoptic tree still cannot be rebuilt in Actions without a larger runner.
-
 ### LAST ITEM — run `scripts/rebuild-everything.py`, then attach the batch
 
 **Emma, 2026-08-29:** *"end of the queue is a rebuild of the tree and then after it is to build the
@@ -300,31 +279,6 @@ words. So the batches are `en` for everybody, then `mul` for everybody, then `ja
 
 - **Then the other universal languages** — `hi` · `ar` · `ru` · `el` from her earlier
   list, each its own step over the whole population.
-
-### First, the bug underneath all of it — 646 labels deleted by an ordinal sign
-
-Found 2026-08-17 while answering *"what the FUCK are these 364 placeholders"*.
-
-`scripts_of` in `scripts/build-display-names.py` classifies each character by the first
-word of its Unicode name. `º` is `MASCULINE ORDINAL INDICATOR` and `'º'.isalpha()` is
-**True** in Python, so it becomes a script called `Masculine`. `derive-labels.py` then
-reads `scripts = Latin+Masculine`, calls the name **mixed-script**, and refuses it as
-an `en` or `mul` label.
-
-**646 people lose their Latin label to this**, every one an Iberian noble whose title
-carries an ordinal: `Afonso de Bragança 1º conde de Faro e 2º de Odemira`,
-`Maria da Cunha 3ª senhora de Basto`, `Mª Manuela Fernández de Córdoba`,
-`João Soares de Sousa 3.º Capitão donatário da ilha de Santa Maria`. The same fault
-hits `Feminine` (86 records), `Modifier` (105), `Superscript`, `Micro` and `Unnamed`
-(12) — **943 NAME records** carry one of these pseudo-scripts.
-
-**A character that is not a writing system must contribute no script**, rather than
-being called Latin: `º` says nothing about what script a name is in. Then
-`1º senhor de Baião` is Latin and the label survives. Fixing this means re-running
-`build-display-names.py` → `derive-labels.py` → every label emitter, which is the whole
-cache chain `CLAUDE.md` warns about.
-
-**At the tail, her call 2026-08-31.** It is a mass operation over the whole population and the live work is hyperlocal, so it was being read and skipped every tick. Nothing about it changed except its position.
 
 ## THE VERY LAST ITEM — a GitHub Pages site documenting the repo
 
