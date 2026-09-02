@@ -25233,3 +25233,35 @@ carrying `P1814` when 45 do. Two runs of the same script disagreed, which is wha
 line — a bare quoted string with **no** language prefix. `tests/test_wikidata_ids_documented.py`
 passes; that test only checks an ID is *documented*, never that it is correct, which is exactly the
 gap this fell into and the reason `wbgetentities` remains the only thing that catches it.
+
+## 2026-09-02 — 356 kana readings FOUND, and two sources that looked right and were not
+
+**`scripts/fetch-kana-readings.py` → `reports/kana-readings.tsv`.** Of the 397 `P1814` candidates
+with a `jawiki` article: **356 readings, 35 variants, 6 refused.** Every one is the parenthesised
+yomi in the article's own lead. Nothing is generated — `CLAUDE.md` is explicit that a kana reading
+is not derivable by rule, and this finds them.
+
+**`DEFAULTSORT` looked like the answer and is a trap.** It is a *sort key*, and jawiki convention
+**strips dakuten**: 藤原薬子 sorts as `ふしわら の くすこ` when the reading is `ふじわら の くすこ`;
+榊原 as `さかきはら` for `さかきばら`; 平滋子 as `たいら の しけこ`. It is structured, machine-readable
+and wrong on every voiced name — which is exactly what makes it tempting. Measured on six names
+before use, rejected.
+
+**The first extractor had a fall-through and it produced a wrong name.** Matching *any*
+parenthetical holding kana and taking the first that matched gave 平滋子 →
+`けんしゅんもんいん`, her posthumous title 建春門院, because the real reading
+`たいら の じし／しげこ` contains `／` and failed the kana class. One in eight. **Only the first
+parenthetical is ever considered now**, and a row that does not parse is reported as needing a human
+rather than searched further: a fall-through search is a machine for finding plausible wrong
+answers.
+
+### The readings turned out to falsify correspondence pairs
+
+`国儔 畠山` came back as `さんじょうにし すえとも` — Sanjōnishi Suetomo. The extraction was right and
+the **pair** was wrong: `6000000004100737740` → `Q11355852`, source `zipper` only.
+
+**37 of 396 readings have a `jawiki` title sharing no Han character with our Geni name, and 35 of
+those are `zipper`-only.** That is a lead rather than a verdict — a woman recorded as `見星院 阿知和`
+and as `於久の方` is one person under a Buddhist name and shares nothing by design. But it is a cheap
+falsification test on a join the zipper already made, which is what `CLAUDE.md` permits: *labels
+confirm a position; they never choose one.* They belong in her deck.

@@ -2,36 +2,44 @@
 
 Only work. Every specification and record moved to `CLAUDE.md` on 2026-09-01 at her instruction: *"remove all the 14 bullshit queue items"*. An item is DELETED when done, never annotated.
 
-## `P1814` *name in kana* — 413 readings are findable, 381 are already done
+## `P1814` *name in kana* — 356 readings found; what is left is her verdicts
 
-**`reports/p1814-worklist.tsv` is the worklist**, built 2026-09-02 over the 1,036 people the
-classifier calls Japanese *and* the correspondence gives an item. Every row carries the state, the
-reading or where to find it, and how strong the Japanese verdict is.
+**`scripts/fetch-kana-readings.py` → `reports/kana-readings.tsv`**, 2026-09-02. Of the 397 people
+with a `jawiki` article: **356 readings found**, **35 with variants**, **6 needing a human**.
+Nothing is generated — every reading is the parenthesised yomi in the article's own lead.
 
-| state | people | |
-| --- | ---: | --- |
-| **already has `P1814`** | **381** | nothing to do — 37% of the population |
-| **a `jawiki` article** | **397** | the reading is in its lead sentence |
-| kana already on the item | 16 | an alias or the `ja` label is kana |
-| no source yet | 242 | needs research beyond Wikidata |
+**What is left, in order:**
 
-**Do the 16 first, then the 397.** The 16 need no fetch at all. The 397 need one lead sentence
-each from `ja.wikipedia.org`, which is *finding* the reading rather than generating it — the
-distinction `CLAUDE.md` draws, and the reason `pykakasi` is not the answer (**6 of 10** on names
-whose readings are not in doubt, failing on exactly the classical `の` names this corpus holds).
+- **35 variant readings need her pick.** The lead offers two — `どたごぜん／つちだごぜん`,
+  `すうげんいん ／ そうげんいん`, `たいら の じし／しげこ`. Nothing here chooses between two
+  readings a Japanese editor thought worth recording.
+- **6 rows the extractor refused**, mostly nested parentheses in the lead. Recoverable by eye; the
+  refusal message carries what it saw.
+- **16 rows whose kana is already on the item** as an alias or `ja` label — no fetch needed, and
+  they were never part of the 397.
+- **242 rows with no source yet** — not on `jawiki`, no kana on the item.
+- **381 already carry `P1814`** and need nothing.
 
-**Order by `evidence_strength` within that.** `name form` means the name itself settles the
-Japaneseness — ends in 子, 郎, 助, 丸, or carries a Japanese-only character. The rest come from the
-graph walk, whose per-hop error rate is still unmeasured.
+**Then the statements.** `P1814` is a **string**: `Q635214⇥P1814⇥"おいちのかた"`, no language
+prefix. Do not emit until she has ruled on the variants; a wrong reading is a wrong name.
 
-**`P1814` is a STRING, not monolingual text** — corrected in `CLAUDE.md` on 2026-09-02 after a
-survey read 0 items carrying it when 381 do. A QuickStatements line is
-`Q635214⇥P1814⇥"おいちのかた"`, with **no language prefix**.
+### The readings also falsify correspondence pairs, and that is worth its own look
+
+**37 of 396 readings come from a `jawiki` title sharing NO Han character with our Geni name**, and
+**35 of those 37 are `zipper`-only** correspondences.
+
+**That is a lead, not a verdict, and the distinction matters.** Many are legitimate: a woman
+recorded on Geni as `見星院 阿知和` and on Wikidata as `於久の方` is the same person under a Buddhist
+name, and they share nothing by design. But `6000000004100737740` 畠山国儔 → `Q11355852` 三条西季知
+is plainly wrong, and it is `zipper`-only.
+
+So this is a **cheap falsification test on the join**, not a name matcher: the position was already
+chosen by the zipper, and the reading only says whether the result is absurd. `CLAUDE.md` —
+*labels confirm a position; they never choose one*. The 37 belong in her adjudication deck.
 
 **`shintowiki-scripts` is a SEPARATE repo and the coupling has burned this repo once.** Take
-material from it — reading tables, transliteration data — and add no runtime dependency, no shared
-state file and no network call. It is not checked out beside `geni`, so the first step is asking
-her where it is.
+material from it and add no runtime dependency, no shared state file and no network call. It is not
+checked out beside `geni`, so the first step is asking her where it is.
 
 ## ⛔ `exports/post-merge/` — resolving stale duplicates without throwing exports away
 
