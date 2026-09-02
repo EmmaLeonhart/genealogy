@@ -132,6 +132,20 @@ RELATION_RE = re.compile(
 
 #: The Korean the side decides. `nibling` means the unnamed person IS the uncle or aunt of the
 #: named one, so the term describes them from the nephew's side of the family.
+KO_BY_INLAW = {
+    # Korean names a sibling-in-law by both sexes and, in three of the four cases, by whether the
+    # linking sibling is senior. The speaker is the NAMED relative -- the label reads
+    # `<relative>의 <term>` -- and the seniority compared is that relative against their sibling,
+    # who is the unnamed person's spouse. `build-relationship-label-preview._inlaw_key` derives it.
+    "F-F": "의 올케",              # her brother's wife; no date needed, and 112 of the 121
+    "F-M-older": "의 형수",        # his older brother's wife
+    "F-M-younger": "의 제수",      # his younger brother's wife
+    "M-F-older": "의 형부",        # her older sister's husband
+    "M-F-younger": "의 제부",      # her younger sister's husband
+    "M-M-older": "의 매형",        # his older sister's husband
+    "M-M-younger": "의 매제",      # his younger sister's husband
+}
+
 KO_BY_SIDE = {
     ("uncle", "paternal"): "의 삼촌",
     ("uncle", "maternal"): "의 외삼촌",
@@ -140,7 +154,7 @@ KO_BY_SIDE = {
 }
 
 
-def cjk_labels(en_label, table, side=""):
+def cjk_labels(en_label, table, side="", inlaw=""):
     """`(ja, zh)` for a generated `X of Y` label, or `(None, None)`.
 
     **This was deferred, and the reason it was deferred is now gone.** `CLAUDE.md` records that
@@ -161,7 +175,7 @@ def cjk_labels(en_label, table, side=""):
     words = CJK_RELATION.get(kind)
     if not words:
         return None, None, None
-    ko_word = words[2] or KO_BY_SIDE.get((kind, side))
+    ko_word = words[2] or KO_BY_INLAW.get(inlaw) or KO_BY_SIDE.get((kind, side))
     ja_parts, zh_parts, ko_parts = [], [], []
     for token in m.group(2).split():
         trio = table.get(token)
@@ -203,7 +217,8 @@ def main() -> int:
         if r.get("generated_en"):
             labels["en"] = r["generated_en"]
             ja, zh, ko = cjk_labels(r["generated_en"], translit,
-                                    (r.get("relation_side") or ""))
+                                    (r.get("relation_side") or ""),
+                                    (r.get("inlaw_key") or ""))
             if ja:
                 labels["ja"], labels["zh"] = ja, zh
                 counts["ja and zh built from the relative's name"] += 1

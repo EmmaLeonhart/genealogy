@@ -25098,3 +25098,34 @@ rendering for some token, which is the transliteration table's problem and alrea
 § *`P1814`* (corrected today, still open and now correctly blocked on the culture classifier),
 § *`exports/post-merge/`* (her standing ruling to leave and keep measuring), § *LABELS, IN HER
 ORDER*, and the seven tail items she ordered herself.
+
+## 2026-09-01 — the Korean in-law terms are derived; what is left is missing dates, not missing logic
+
+**Queue item cleared: § *The Korean in-law sibling terms, which need relative AGE*.** The
+derivation exists now and the residual is corpus data rather than a step.
+
+**Korean has no single word for *sibling-in-law*.** It is chosen by both sexes and, in three of
+the four combinations, by whether the linking sibling is senior. The speaker is the **named**
+relative, because the label reads `<relative>의 <term>`, and the seniority compared is that
+relative against their sibling — who is the unnamed person's spouse.
+
+| unnamed / named | relationship | term |
+| --- | --- | --- |
+| F / F | her brother's wife | **올케** — no date needed |
+| F / M | his brother's wife | 형수 older · 제수 younger |
+| M / F | her sister's husband | 형부 older · 제부 younger |
+| M / M | his sister's husband | 매형 older · 매제 younger |
+
+`_inlaw_key` in the preview derives it from `sex_of` and the birth years in `derived-facts.csv`;
+`KO_BY_INLAW` in the batch turns the key into the word.
+
+**121 of 482 are determinable, and 112 of those need no date at all** — the `F/F` case. Only 9
+come from the age comparison, because the linking spouse or the relative usually has no recorded
+birth year. **44 labels were emitted**; the other 77 lack a Hangul rendering for some token of the
+relative's name, which is the same per-token gate `ja` and `zh` pass. `ko` 81,697 → **81,741**.
+Read by eye: `스반힐드 하욱발드스타드의 올케`, `마리안느 호드네프젤르의 올케`.
+
+**The remaining 361 are not a task.** They are missing a sex or a birth year in the corpus, and
+the honest response is to emit nothing rather than assert a seniority we never measured. They will
+resolve as exports fill in, with no code change. 207 passed on the label, placeholder, preview and
+join tests.

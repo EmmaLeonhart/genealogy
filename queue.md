@@ -2,24 +2,6 @@
 
 Only work. Every specification and record moved to `CLAUDE.md` on 2026-09-01 at her instruction: *"remove all the 14 bullshit queue items"*. An item is DELETED when done, never annotated.
 
-## The Korean in-law sibling terms, which need relative AGE
-
-**What is left of the `ko` gap after 2026-09-01.** The placeholder batch emits **81,697** Korean
-labels where it emitted none, and the paternal/maternal side is derived from the tree rather than
-guessed — 삼촌/외삼촌, 고모/이모. **1,608 edits carry `ja` and no `ko`**, and they split into two
-different problems:
-
-- **482 are the in-law sibling terms**, and Korean splits those by the speaker's sex **and relative
-  age**: 처남 against 매형, 시숙 against 시동생, 처형 against 처제. The side logic gives the family
-  (268 husband-side, 212 wife-side) and not the age. Birth years exist for many of these people, so
-  this is doable — it is a different derivation, not an impossible one.
-- **The rest lack a Hangul rendering for some token** of the relative's name, which is the same
-  per-token gate `ja` and `zh` already pass. That is the transliteration table, not this.
-
-**Do not render a term whose age assumption is unmeasured.** `CLAUDE.md` § *partial is worse than
-absent* governs, and an in-law term asserting seniority we did not check is a wrong fact rather
-than an imperfect reading.
-
 ## "Synoptic tree" means two different things — resolve it usage by usage
 
 **Emma, 2026-08-29, asked what it concretely is:** *"it is consistently conflated between the union

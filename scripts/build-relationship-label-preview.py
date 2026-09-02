@@ -156,6 +156,44 @@ def trim_name(s: str) -> str:
     return t or s
 
 
+def _inlaw_key(relation, via, spouse_sib_via, sex_of, born, own_sex):
+    """A key naming the Korean sibling-in-law term, or `""`.
+
+    Korean has no single word for *sibling-in-law*. It is chosen by the sexes of both people and,
+    for three of the four combinations, by whether the linking sibling is senior:
+
+    ======================  ===========================================  =============
+    unnamed person / named  relationship                                 term
+    ======================  ===========================================  =============
+    F / F                   the named woman's brother's wife             올케
+    F / M                   the named man's brother's wife               형수 / 제수
+    M / F                   the named woman's sister's husband           형부 / 제부
+    M / M                   the named man's sister's husband             매형 / 매제
+    ======================  ===========================================  =============
+
+    The speaker is the NAMED relative, because the label reads `<relative>의 <term>`, and the
+    seniority compared is between that relative and their sibling -- the unnamed person's spouse.
+    `F/F` needs no date at all, which is why it is the majority of what can be rendered.
+
+    Returns `"F-F"`, or `"F-M-older"` and friends. Empty when a sex or a date is missing: an
+    in-law term asserting seniority we did not measure is a wrong fact, not an imperfect reading.
+    """
+    if relation != "spouse_sibling" or not via:
+        return ""
+    rel_sex = sex_of.get(via, "")
+    if own_sex not in ("M", "F") or rel_sex not in ("M", "F"):
+        return ""
+    if own_sex == "F" and rel_sex == "F":
+        return "F-F"
+    sp = spouse_sib_via.get(via)
+    if not sp:
+        return ""
+    a, b = born.get(sp), born.get(via)
+    if a is None or b is None or a == b:
+        return ""
+    return "%s-%s-%s" % (own_sex, rel_sex, "older" if a < b else "younger")
+
+
 def main() -> int:
     for path in (FAMILY, LABELS, NAMES, FACTS):
         if not path.exists():
@@ -214,8 +252,16 @@ def main() -> int:
         print(f"romanised Han names used as a name for {added:,} people with no label")
 
     sex_of: dict[str, str] = {}
+    # **Birth years, for the Korean in-law terms.** Korean names a sibling-in-law by the SPEAKER's
+    # sex and by whether the linking sibling is older or younger -- 형수 against 제수, 매형 against
+    # 매제, 형부 against 제부. The comparison is between the named relative and their sibling (the
+    # unnamed person's spouse), both of whom are ordinary people in the tree with recorded dates.
+    born: dict[str, int] = {}
     for row in csv.DictReader(FACTS.open(encoding="utf-8", newline="")):
         sex_of[row["geni_id"]] = (row.get("sex") or "").strip()
+        y = (row.get("birth_date_year") or "").strip()
+        if y.lstrip("-").isdigit():
+            born[row["geni_id"]] = int(y)
 
     # The family rows are needed twice - once to walk two hops, once to emit -
     # so they are read into memory rather than streamed.
@@ -304,9 +350,13 @@ def main() -> int:
         spouse_parents = [p for sp in spouses for p in parents(sp)]
         spouse_sibs = []
         spouse_sib_side = {}
+        spouse_sib_via = {}
         for sp in spouses:
             for x in siblings(sp):
                 spouse_sibs.append(x)
+                # `sp` is the named relative's sibling and the unnamed person's spouse. Korean
+                # compares THEM, not the unnamed person, so the link has to be remembered.
+                spouse_sib_via.setdefault(x, sp)
                 # `sex` is the unnamed person's. Their spouse's sibling is on the wife's side if
                 # the unnamed person is male, the husband's side if female — Korean splits
                 # 처남/처제 from 시숙/시누이 on exactly that.
@@ -375,6 +425,11 @@ def main() -> int:
             "relation_used": relation,
             # paternal/maternal for uncle-aunt-nephew-niece, husband/wife for an in-law sibling,
             # empty where the relation does not have a side. Korean needs it; English does not.
+            # For an in-law sibling: the named relative's sex, then whether their sibling (this
+            # person's spouse) is older or younger. Empty where either date is missing -- an
+            # in-law term that asserts seniority we did not measure is a wrong fact, not an
+            # imperfect reading.
+            "inlaw_key": _inlaw_key(relation, via, spouse_sib_via, sex_of, born, sex),
             "relation_side": (nibling_side.get(via, "") if relation == "nibling"
                               else pibling_side.get(via, "") if relation == "pibling"
                               else spouse_sib_side.get(via, "") if relation == "spouse_sibling"
