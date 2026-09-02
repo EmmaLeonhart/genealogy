@@ -26143,3 +26143,26 @@ and stays.
 **Also cut back, § *Then: one dispatch*.** Its stated remaining dependency was the Pages site;
 that was built today and **ran green on `f9ffac09`**. What is left is only the thing the item is
 named for — one dispatch producing all three, where today they are three separate workflows.
+
+## 2026-09-02 — one dispatch produces all three, verified; and a GitHub link I should not have written
+
+**§ *Then: one dispatch* — DELETED, verified by a run rather than by reading the YAML.**
+Dispatch `33666389729` on `cab893f8` finished with all four jobs green:
+
+    gate          success
+    pipeline      success      <- the QuickStatements, and the archive inside --compose
+    site / build  success      <- the Pages site
+    site / deploy success
+
+That is her *"the ci/cd run"*, singular, doing what she asked: *"the ci/cd run will make the
+archive (committed) and the pages and the quickstatements for me to run later."*
+
+**And CI caught a rule of hers I broke in the Pages site.** The spine fix worked — that failure is
+gone — but `test_no_source_file_links_a_repository` then failed on
+`build-pages-site.py links github.com`. My footer hard-coded a "Source on GitHub" link. Emma,
+2026-08-18: *"no fucking github links in it either"* — a URL in a source file names her
+repositories to anyone reading the code. Removed; no source file links a repository now.
+
+**Two CI failures in a row, both mine, both from the same commit-and-move-on pattern** — the
+spine removal left dead generators, and the Pages site shipped a link her rules forbid. Neither
+was findable here, which is the argument for the CI-only rule rather than against it.
