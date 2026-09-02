@@ -9,67 +9,62 @@
 # name: CLAUDE.md, one name item per USAGE. Emma's Q141152710 Aadnesson is
 # the pattern -- labels, P31, nothing else.
 
-# Gunnarson -- patronymic, 4 bearer(s) in the batches
+# Garfve -- family, 3 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Gunnarson"
-LAST	Len	"Gunnarson"
-#   set the mul label to "Gunnarson"
-LAST	Lmul	"Gunnarson"
-#   set the en description to "patronymic"
-LAST	Den	"patronymic"
-#   P31 instance of = Q110874 patronymic
-LAST	P31	Q110874
-#   Q141250216 Bjørn Gunnarson Mele: P5056 patronym or matronym = the item just created
-Q141250216	P5056	LAST	S2600	"4462693"
-#   Q141244234 Torstein Gunnarson Frafjord: P5056 patronym or matronym = the item just created
-Q141244234	P5056	LAST	S2600	"6000000005607365222"
-#   Q141216458 Asbjørn Gunnarson Bø: P5056 patronym or matronym = the item just created
-Q141216458	P5056	LAST	S2600	"6000000042211257078"
-
-# Låge-Håland -- family, 4 bearer(s) in the batches
-# create a new item
-CREATE
-#   the item just created: set the en label to "Låge-Håland"
-LAST	Len	"Låge-Håland"
-#   set the mul label to "Låge-Håland"
-LAST	Lmul	"Låge-Håland"
+#   the item just created: set the en label to "Garfve"
+LAST	Len	"Garfve"
+#   set the mul label to "Garfve"
+LAST	Lmul	"Garfve"
 #   set the en description to "family name"
 LAST	Den	"family name"
 #   P31 instance of = Q101352
 LAST	P31	Q101352
-#   Q141216634 Marit Hansdatter Stavnheim: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
-Q141216634	P734	LAST	P3831	Q2507958	S2600	"6000000009127909254"
-#   Q141216381 Hans Rasmussen Låge-Håland: P734 family name = the item just created
-Q141216381	P734	LAST	S2600	"6000000009127934231"
-#   Q141250244 Rasmus Hansen Nord-Varhaug: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
-Q141250244	P734	LAST	P3831	Q2507958	S2600	"6000000087451690855"
-#   Q141199918 Kirsten Hansdatter Grøtheim: P734 family name = the item just created, qualified P3831 object of statement has role Q2507958 birth name
-Q141199918	P734	LAST	P3831	Q2507958	S2600	"6000000087451897836"
+#   Q141224010 Harlan Roger Garfve: P734 family name = the item just created
+Q141224010	P734	LAST	S2600	"6000000019472886300"
+#   Q141189056 Bella Jeanette Garfve: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
+Q141189056	P734	LAST	P3831	Q28418670	S2600	"6000000039507887815"
+#   Q141224188 Hjalmer Morris Garfve: P734 family name = the item just created
+Q141224188	P734	LAST	S2600	"6000000039508406904"
 
-# Pedersdatter -- patronymic, 4 bearer(s) in the batches
+# Hakunge -- family, 3 bearer(s) in the batches
 # create a new item
 CREATE
-#   the item just created: set the en label to "Pedersdatter"
-LAST	Len	"Pedersdatter"
-#   set the mul label to "Pedersdatter"
-LAST	Lmul	"Pedersdatter"
+#   the item just created: set the en label to "Hakunge"
+LAST	Len	"Hakunge"
+#   set the mul label to "Hakunge"
+LAST	Lmul	"Hakunge"
+#   set the en description to "family name"
+LAST	Den	"family name"
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   Q141219054 Carl Emil Cronhielm af Hakunge: P734 family name = the item just created
+Q141219054	P734	LAST	S2600	"6000000008178453589"
+#   Q110304582 Gustava Magdalena Cronhielm af Hakunge: P734 family name = the item just created
+Q110304582	P734	LAST	S2600	"6000000012959992080"
+#   Q4938400 Christina Charlotta Cronhielm af Hakunge: P734 family name = the item just created
+Q4938400	P734	LAST	S2600	"6000000020584191181"
+
+# Hansen -- patronymic, 3 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to "Hansen"
+LAST	Len	"Hansen"
+#   set the mul label to "Hansen"
+LAST	Lmul	"Hansen"
 #   set the en description to "patronymic"
 LAST	Den	"patronymic"
 #   P31 instance of = Q110874 patronymic
 LAST	P31	Q110874
-#   Q141242500 Gunnhild Pedersdatter Skårland: P5056 patronym or matronym = the item just created, qualified P144 based on Q141249719
-Q141242500	P5056	LAST	P144	Q141249719	S2600	"6000000005609534687"
-#   Q141223947 Sissel Tomine Pedersdatter Nyvold: P5056 patronym or matronym = the item just created
-Q141223947	P5056	LAST	S2600	"6000000021198413026"
-#   Q141206058 Bertha Bakke: P5056 patronym or matronym = the item just created
-Q141206058	P5056	LAST	S2600	"6000000053155539975"
+#   Q141223961 Syvert Kristian Hansen Nyvold: P5056 patronym or matronym = the item just created
+Q141223961	P5056	LAST	S2600	"6000000021198171670"
+#   Q141250244 Rasmus Hansen Nord-Varhaug: P5056 patronym or matronym = the item just created, qualified P144 based on Q141216381 Hans Rasmussen Låge-Håland
+Q141250244	P5056	LAST	P144	Q141216381	S2600	"6000000087451690855"
+#   Q141200127 Ådne Hansen Grøtheim: P5056 patronym or matronym = the item just created, qualified P144 based on Q141216607 Hans Erikson Øvre Håland
+Q141200127	P5056	LAST	P144	Q141216607	S2600	"6000000225229617898"
 
-# 330 more name items are needed and wait for a later
+# 326 more name items are needed and wait for a later
 # run -- 3 a day is her cap, not a limit of the data:
-#   Garfve (family), 3 bearer(s)
-#   Hakunge (family), 3 bearer(s)
-#   Hansen (patronymic), 3 bearer(s)
 #   Hansson (patronymic), 3 bearer(s)
 #   Helgesen (patronymic), 3 bearer(s)
 #   Høle (family), 3 bearer(s)
@@ -79,5 +74,8 @@ Q141206058	P5056	LAST	S2600	"6000000053155539975"
 #   Kristiansen (patronymic), 3 bearer(s)
 #   Magnusson (patronymic), 3 bearer(s)
 #   Røyneberg (family), 3 bearer(s)
-#   ... and 318 more
+#   Söfdeborg (family), 3 bearer(s)
+#   Tollefson (patronymic), 3 bearer(s)
+#   Ugla (family), 3 bearer(s)
+#   ... and 314 more
 
