@@ -26002,3 +26002,25 @@ in the queue lol, after the items before it and before the items after it. Queue
 sacred."* So the Pages site is worked now because it is at the top, not because it is easy, and
 her three tail items — follow-a-redirect, patronymics need `P144`, descriptions on name items —
 are all authorised (*"All three now"*) but wait their turn behind it.
+
+## 2026-09-02 — follow a redirect: 26 ledger entries were pointing at dead items
+
+Emma: *"All you do is on each item I have edited check if it is a redirect and if it is then add
+the target to the ledger that's simple"*. It is, and it found real staleness immediately.
+
+`scripts/refresh-garborg-ledger.py` now checks every QID **the ledger itself holds**, 50 at a
+time, and where one is a redirect it rewrites the row to the survivor and records the move in the
+`note` column. **26 of 1,179 rows were stale** — `Q141225740` → `Q109852817` *Jaakko Chydenius*,
+`Q141225714` → `Q141225713`, `Q141216475` → `Q10511224`, and 23 more.
+
+**The direction is the whole point, and the file already had the other one.** The existing
+resolution asks whether a *scraped* QID redirects to what the ledger holds, so a merge she has
+already made stops reading as a disagreement — there the ledger is right. This asks whether the
+QID **the ledger holds** is now a redirect, which means the ledger is *stale*. Confusing the two
+is easy and I nearly reported the item as already done because of it.
+
+**What it was costing:** every algorithm keyed on the ledger pointed at a dead id — the subgraph
+walk cannot reach the person, the duplicate guard cannot see their statements, and the daily batch
+would create them again.
+
+The row is rewritten rather than dropped, so nothing is lost and the move is auditable.

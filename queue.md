@@ -21,21 +21,6 @@ algorithms and such. This is the last item though only after all the other stuff
 - Generated from what is in the repo rather than hand-written prose that will go stale — the
   `CLAUDE.md` sections and the module docstrings already carry most of it.
 
-## Follow a redirect: an item she edited that later gets merged away
-
-**Emma, 2026-09-02:** *"in the future an item that I edit that later gets redirected the algorithm
-needs to follow the redirect and put the new one s as a possible one to run on too."*
-
-So when a QID in her ledger has since been **merged into another item**, the algorithm must follow
-the redirect and add the **target** item as a candidate to run on as well — not drop the person,
-and not keep pointing only at the dead id.
-
-Placed at the tail on her instruction. Nothing investigated; this is the item, not its answer.
-
-**Related, so it is not solved twice:** `reports/geni-merged-away.tsv` and
-`scripts/post-merge-coverage.py` do the same thing one layer down for **Geni** profiles Geni has
-merged away, added 2026-09-02. This item is the **Wikidata** side of the same shape.
-
 ## Patronymics are not getting the name they come FROM
 
 **Emma, 2026-09-02:** *"Patronymics are not getting the names they come from in the logic lol

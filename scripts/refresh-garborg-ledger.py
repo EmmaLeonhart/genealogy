@@ -180,6 +180,53 @@ def main():
         for g in dropped[:20]:
             print(f"   {previous[g]['qid']:<12} {g:<21} {previous[g].get('label', '')[:34]}")
 
+    # **A ledger QID that has since been MERGED AWAY is followed to its survivor.**
+    #
+    # Emma, 2026-09-02: *"an item that I edit that later gets redirected the algorithm needs to
+    # follow the redirect and put the new one s as a possible one to run on too."*
+    #
+    # This is the OPPOSITE direction from the resolution further down, and the two are easy to
+    # confuse. That one asks whether a SCRAPED qid redirects to what the ledger already holds,
+    # so a merge she has made stops reading as a disagreement -- there the ledger is right. This
+    # asks whether the qid THE LEDGER ITSELF HOLDS is now a redirect, which means the ledger is
+    # STALE: the person still exists, under the survivor's id.
+    #
+    # Left unfollowed, every algorithm keyed on the ledger points at a dead id -- the subgraph
+    # walk cannot reach the person, the duplicate guard cannot see their statements, and the
+    # daily batch would create them again.
+    #
+    # The row is REWRITTEN to the survivor rather than dropped, and the note records the move,
+    # so nothing is lost and it is auditable. Batched 50 at a time.
+    followed = []
+    ledger_ids = sorted({(r.get("qid") or "").strip() for r in rows.values()
+                         if (r.get("qid") or "").strip().startswith("Q")})
+    try:
+        moved = {}
+        for k in range(0, len(ledger_ids), 50):
+            data = get({"action": "wbgetentities", "format": "json", "props": "info",
+                        "ids": "|".join(ledger_ids[k:k + 50])}, ua)
+            for q, v in data.get("entities", {}).items():
+                target = (v.get("redirects") or {}).get("to")
+                if target and target != q:
+                    moved[q] = target
+        for g, r in rows.items():
+            q = (r.get("qid") or "").strip()
+            if q in moved:
+                r["qid"] = moved[q]
+                note = (r.get("note") or "").strip()
+                r["note"] = (note + "; " if note else "") + "followed redirect %s -> %s" % (q, moved[q])
+                followed.append((g, q, moved[q]))
+    except Exception as exc:                                        # noqa: BLE001
+        print("WARNING: could not check the ledger for merged-away items (%s) -- a stale qid "
+              "may still be in it" % exc)
+
+    if followed:
+        print("")
+        print("%d ledger qid(s) had been MERGED AWAY and were followed to the survivor:"
+              % len(followed))
+        for g, was, now in followed[:20]:
+            print("   %-21s %s -> %s" % (g, was, now))
+
     with open(LEDGER, "w", encoding="utf-8", newline="") as f:
         w = csv.DictWriter(f, fieldnames=["geni_id", "qid", "label", "created", "note"],
                            delimiter="\t")
