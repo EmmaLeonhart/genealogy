@@ -54,9 +54,6 @@ words. So the batches are `en` for everybody, then `mul` for everybody, then `ja
   `solovjev` and `muhàmmad` all read `アニェッリ`; and `Jakob Forsberg` → `ヤコブ・ホシュベリ`
   is Wikidata's own data on `Q21492950`, not a mis-join, so it stands.
 
-- **Then the other universal languages** — `hi` · `ar` · `ru` · `el` from her earlier
-  list, each its own step over the whole population.
-
 ## THE VERY LAST ITEM — a GitHub Pages site documenting the repo
 
 **Emma, 2026-09-01:** *"an item at the end of the queue: a github pages site built with actions
@@ -89,13 +86,15 @@ deck, and issue **#9** opened assigned to her. 9m21s, both jobs green. That was 
 deliverable — *"a run that finishes and uploads `reports/wikidata-garborg-day.qs` as an artifact,
 with the issue opened"* — and it is met.
 
-**So what is left is only the other two deliverables**, and each waits on its own item above:
+**So what is left is ONE deliverable: the Pages site**, § *THE VERY LAST ITEM*.
 
-- **the ledger archive** — § *A CI/CD job that archives the ledger's Wikidata items locally*
-- **the Pages site** — § *THE VERY LAST ITEM*
+**The ledger archive is already done and was never a job to build.** Emma, 2026-09-02: *"Lmao you
+cunt it fetches every time the ledger from pages I edited"* — `build-daily-batch.py` STEP 0b runs
+`full_entities` over the ledger, and the pipeline refreshes it from her contributions on every
+run. Its queue section is deleted.
 
-Once both jobs exist, dispatch once and check that a single run produces all three. Not three runs
-— her words are *"the ci/cd run"*, singular.
+Once the Pages job exists, dispatch once and check that a single run produces all three. Not three
+runs — her words are *"the ci/cd run"*, singular.
 
 **Two failures got it here, and both are worth not repeating.** The 18:59 run died on
 `FileNotFoundError: out/merged.ged` and was fixed by committing `family-structure.tsv.gz`, listing

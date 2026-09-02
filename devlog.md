@@ -25897,3 +25897,24 @@ the queue item required — the page can never be staler than the file it is bui
 **Honest coverage note:** 128 of the 171 pairs carry a Geni id (section 5 is 43 *name* items,
 which have none by nature), and 53 of those resolve to sex and dates in our tree. The rest are
 people the corpus does not hold — section 2 is explicitly duplicates *outside* the ledger.
+
+## 2026-09-02 — dead-queue sweep: the four-script labels and the ledger-archive dependency
+
+Sections 6 → 6; both cuts were **inside** sections.
+
+- **§ LABELS — *"Then the other universal languages — `hi` · `ar` · `ru` · `el`"*.** Built.
+  `reports/wikidata-four-script-labels.json` holds **151,320 `set_label` edits**, each carrying
+  `"source": "step 6 of Emma's label order -- hi/ar/ru"`, and
+  `scripts/build-four-script-labels.py` is the generator. `CLAUDE.md` records it done. Checked by
+  opening the file and reading an edit, not by trusting the note.
+
+- **§ *Then: one dispatch* — the ledger-archive half of its dependency.** It waited on a section
+  that has since been deleted as already-implemented: Emma, 2026-09-02, *"Lmao you cunt it fetches
+  every time the ledger from pages I edited"*. `build-daily-batch.py` STEP 0b runs
+  `full_entities` over the ledger and the pipeline refreshes it from her contributions every run.
+  The section now waits on the Pages site alone, which is the one job genuinely still missing.
+
+**Checked and NOT dead:** the katakana fetch (862,329 partials still waiting on it); the Pages
+site (no workflow exists); *Promote one reading to `mul`* — she ruled *"Emit the aliases now"* and
+they are not emitted yet; `P1814`, where the 35 variant readings were printed for her but she has
+not ruled; and the correspondence-falsification lead, untouched.
