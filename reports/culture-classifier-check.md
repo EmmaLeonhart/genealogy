@@ -117,3 +117,27 @@ records**.
 **Nothing is changed in the classifier on this evidence.** A hop cap needs a measured error rate by
 hop distance, which needs more than two checkable people; that is the experiment to run, not a
 threshold to pick.
+
+## Second correction, 2026-09-02 — every number above came from the wrong file
+
+**`reports/cjk-romanisation.csv` is not the classifier's output. `reports/cjk-culture.csv` is.**
+Both are written by the same run of `scripts/build-cjk-romanisation.py`: the culture file holds
+every record the classifier judged, and the romanisation file holds only those whose romanisation
+succeeded.
+
+| | rows | `ja` |
+| --- | ---: | ---: |
+| `cjk-romanisation.csv` — the subset | 13,638 | 222 |
+| **`cjk-culture.csv` — the real output** | **38,458** | **16,139** |
+
+So *"the classifier covers 13,638 people"*, *"222 ja"*, and *"33,197 Han-named people the
+classifier never sees"* are all artefacts of reading the subset. The script's own comment beside
+the culture write said as much — *"The script knows the culture of all 36,625 records and was
+throwing most of it away"* — and it went unread through three separate conclusions on 2026-09-01.
+
+**What survives from those corrections:** the hop distribution is still measured over the whole
+walk, a two-hop cap would still unsettle the majority of it, and `MAX_HOPS` is still 14 rather than
+the 8 this report first claimed. Those were measured over `cjk-romanisation.csv`'s traversal
+evidence, so they describe the subset's walk rather than all 38,458 — the shape of the finding
+holds and the exact counts should be re-measured against the culture file before anyone acts on
+them.

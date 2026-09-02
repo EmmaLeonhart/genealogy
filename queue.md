@@ -2,62 +2,37 @@
 
 Only work. Every specification and record moved to `CLAUDE.md` on 2026-09-01 at her instruction: *"remove all the 14 bullshit queue items"*. An item is DELETED when done, never annotated.
 
-## `P1814` *name in kana* — the research half, and it has nothing to attach to yet
+## `P1814` *name in kana* — 1,036 people are ready for it TODAY
 
 **Emma, 2026-08-29:** *"do a cjk label conversion thing with research to fill in the korean and
-name in kana properties"*. **The Korean half is done** — `scripts/translit_ko.py`,
-`translit_ko_latin.py` and `build-ko-label-batch.py`, 33,725 labels. What is left is the kana.
+name in kana properties"*. The Korean half is done — `translit_ko.py`, `translit_ko_latin.py`,
+`build-ko-label-batch.py`, plus 81,741 in the placeholder batch. What is left is the kana.
 
-**The population is NOT 226 and it is not empty.** That figure came from
-`reports/culture-classifier-check.md`, a slice, and was written here as though it were the corpus.
-Emma, 2026-09-01: *"Until the 226 Japanese people exist? What? We got thousands"*. Measured over
-`reports/display-names.csv`:
+**Its population was reported as empty and that was reading the wrong file.**
+`reports/cjk-romanisation.csv` holds only the people whose romanisation succeeded — 13,638, of
+whom 222 are Japanese. **`reports/cjk-culture.csv` is the classifier's real output: 38,458 rows,
+of which 16,139 are `ja`.** Both are written by the same run of
+`scripts/build-cjk-romanisation.py`; the culture file is the full population and the romanisation
+file is a subset. Three separate conclusions were drawn from the subset on 2026-09-01 before
+anyone opened the other file.
 
-| | |
-| --- | ---: |
-| **kana in the name — decisively Japanese** | **796** |
-| **Han only — culture undecided** | **129,338** |
-| Hangul present — Korean | 6,112 |
+**`P1814` attaches to an item, so the population is the Japanese people who have one: 1,036**,
+per `reports/synoptic-correspondence.tsv` (50 of them by `P2600` alone). Not "empty until the 226
+are created".
 
-**And the 796 are the wrong target anyway.** `P1814` is the *kana reading of a name written in Han
-characters*; somebody already written `ロバート 郁夫 加納` needs no reading supplied. The population
-is the **Han-written Japanese** people, which is a subset of the 129,338 that the culture question
-has to split first — kana and Hangul are decisive, bare Han is not, and `CLAUDE.md` says the tree
-settles it via neighbours and which exports they came from, never the name.
+**Take them in evidence order, because the walk is the open question:**
 
-So the dependency is the **culture classifier**, not a creation count.
+| evidence | people | |
+| --- | ---: | --- |
+| **name form or kokuji** — ends in 子, 郎, 助, 丸, or carries a Japanese-only character | **151** | strongest; the name itself settles it |
+| graph walk, 1–2 hops | 626 | |
+| graph walk, 3+ hops | 259 | weakest; `MAX_HOPS` is 14 |
 
-**And the classifier's problem is SCOPE, measured 2026-09-01. Nothing about the classification
-is hard** — her question, and she is right. The algorithm works; it is aimed at the population that
-needs **romanising**, which `build-cjk-romanisation.py` defines from the **label**: a CJK label with
-no Latin one. Correct for romanisation, wrong for `P1814`.
-
-| | |
-| --- | ---: |
-| Han in **any** name record | **47,296** |
-| Han in their derived **label** | 14,111 |
-| covered by the classifier | **13,638** |
-| **Han name record, Latin primary label** | **33,197** |
-
-Those 33,197 read as `Robert Kanō` in Latin and carry `加納 郁夫` in a second `NAME` record, so their
-Han name is never put to the classifier at all. **The step is to run the same algorithm over
-everyone with a Han name record**, writing a culture verdict without touching the romanisation
-scope — the label batches consume `cjk-romanisation.csv` and must not start receiving people who
-already have a Latin form.
-
-**Do not cap the walk on the evidence currently in `reports/culture-classifier-check.md`.** That
-report inferred the walk was unsafe past two hops from **two** misclassified people. Measured over
-the whole output: the walk settles only 22% at one hop and 37% by two, so a two-hop cap would
-unsettle **63%** of the 7,150 it settles. `MAX_HOPS` is 14, not the 8 the report says. A cap needs
-a measured error rate by hop distance, which needs more than two checkable people — that is the
-experiment, not a threshold to pick.
-
-**"With research" is the load-bearing half and stands.** A kana reading is not derivable by rule:
-the same characters take different readings per person, which is why `P1814` exists as a property
-rather than being computed. `scripts/build-cjk-romanisation.py`'s docstring makes the same point,
-and the `pykakasi` measurement now supports it with a number — **6 of 10** on names whose readings
-are not in doubt, and every failure was a classical `の` name of exactly the kind this corpus holds.
-So: find the readings, do not generate them.
+**A kana reading is not derivable by rule** — the same characters take different readings per
+person, which is why `P1814` exists as a property rather than being computed. `pykakasi` scored
+**6 of 10** on names whose readings are not in doubt, and every failure was a classical `の` name
+of exactly the kind this corpus holds. So: **find the readings, do not generate them**, and start
+with the 151 whose Japaneseness the name itself establishes.
 
 **`shintowiki-scripts` is a SEPARATE repo and the coupling has burned this repo once.** Take
 material from it — reading tables, transliteration data — and add no runtime dependency, no shared
