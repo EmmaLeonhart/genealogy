@@ -20,22 +20,28 @@ twice, and *"we can't just throw out the earlier exports that contain stale indi
 - **Export until every first-degree relative of every merged individual is present** in
   that directory. That is the stopping rule, not a count of exports.
 
-**MEASURED 2026-09-02, and the campaign is two people from done.**
-`scripts/post-merge-coverage.py` → `reports/post-merge-coverage.tsv` applies her stopping rule
-directly: **25 of 27 survivors are covered**, and `exports/post-merge/` now carries **23,374
-distinct people** from six `Forest` balls. Her clustering economy is exactly what happened.
+**ONE export left, and it must be SEEDED ON A PLACEHOLDER.**
+`scripts/post-merge-coverage.py` → `reports/post-merge-coverage.tsv`. **25 of 27 survivors
+covered**; `exports/post-merge/` carries **24,330 distinct people** from seven `Forest` balls.
 
-**The two that remain are each missing ONE first-degree relative**, and both survivors are already
-in the directory:
+| survivor | missing | |
+| --- | --- | --- |
+| `6000000001893120054` Obito Haji-no-muraji (**strong**) | `6000000001893090174` 土師兎 | a real profile — needs an export |
+| `6000000001846508982` Jingū-kōgō (weak) | `6000000179131744821` | **merged away on Geni — no export can ever contain it** |
 
-| survivor | missing |
-| --- | --- |
-| `6000000001893120054` Obito Haji-no-muraji (**strong**) | `6000000001893090174` 土師兎 |
-| `6000000001846508982` Jingū-kōgō (weak) | `6000000179131744821` Ōjin Tennō |
+**Do NOT seed on the missing person or the survivor.** Measured 2026-09-02: Ōjin Tennō,
+Jingū-kōgō and 土師兎 all answer *"You are not allowed to export that profile."* Exports
+themselves are fine — an ordinary profile's form loads normally — so this is a per-profile wall,
+the same one the Bureus spine hit. **`docs/export-seed-rules.md` is the method**: take the highest
+tier the tree page offers, create the placeholder, export `Forest`/5000 from it. That is how the
+Ōjin one was closed — tier 3, `NN` `6000000227558482822`, 5,000 people in about six minutes.
 
-So this needs **one or two exports**, seeded on those two relatives or on somebody who reaches
-them — not an open-ended campaign. Re-run the script after each; it is the same shape as
-`bure-coverage.py`, which ended that campaign at 251 of 251.
+**Jingū is a MEASUREMENT bug, not an export.** Her one missing relative is a second Ōjin profile
+Geni has merged into `6000000001829492981`; visiting it redirects, and Geni offers a pending
+merge-conflict page for the pair. The survivor is now in `exports/post-merge/`. So the stopping
+rule needs to resolve a merged-away relative to its survivor — **`reports/geni-stale-duplicates.tsv`
+does not carry this pair**, so the mapping has to be observed rather than looked up. Until then
+this row can never clear, however many exports run.
 
 **The economy of it is hers and it is the important part:** *"merged individuals cluster
 together so we will not need to run an export on every one of them"* — one ball covers

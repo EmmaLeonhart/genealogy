@@ -25753,3 +25753,28 @@ a real profile, needing its own placeholder-seeded export.
 
 **Left untouched deliberately:** the pending merge-conflict page on Ōjin asks which values to keep
 (Created On, Manager, First/Last Name, Birth Date). That is Emma's decision, not this loop's.
+
+## 2026-09-02 — dead-queue sweep: the finished half of the post-merge item
+
+Sections 15 → 15; the cut was **inside** § `exports/post-merge/`, whose status block had gone
+stale within the hour and was describing finished work as a step.
+
+**Removed as done:** *"the campaign is two people from done… this needs one or two exports,
+seeded on those two relatives"*. Both halves of that are now false. The Ōjin export **ran**
+(`50897214`, `export-Forest-6000000227558482822.ged`, 5,000 people, seventh ball, 23,374 → 24,330
+people), and *"seeded on those two relatives"* was never possible — Ōjin Tennō, Jingū-kōgō and
+土師兎 all answer *"You are not allowed to export that profile."*
+
+**Replaced with what is actually outstanding**, which is less than the old text claimed and of a
+different kind:
+
+- **One export**, for Obito Haji-no-muraji, missing 土師兎 — a real profile. It must be seeded on
+  a **placeholder** per `docs/export-seed-rules.md`, not on the person, because of the wall above.
+- **Jingū is a measurement bug, not an export.** Her missing relative `6000000179131744821` is a
+  second Ōjin profile Geni has merged away; no export can ever contain it. The row cannot clear
+  until the stopping rule resolves a merged-away relative to its survivor.
+
+Nothing else in the file is dead. Re-checked the six I checked last sweep and they are unchanged:
+the ledger-archive job (artifact still 14 items from 2026-08-24, no workflow builds it), the Pages
+site, the merges HTML page, the spine removal (`SPINE_PATHS` still present), and § LABELS, whose
+`zh` bullet is open — `scripts/build-zh-labels.py` is committed but **has never been run**.
