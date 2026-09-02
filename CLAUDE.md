@@ -3544,7 +3544,24 @@ table · the succession CSV · `pykakasi`, `BET x AND y` and the 74 MB file · t
 
 ### Anonymisation is NOT redacting the tree. It is scrubbing the repo of strategy
 
-**Her definition, 2026-09-01, and it replaces the ~96,000-private-rows reading entirely:**
+**The criterion, in her words, 2026-09-02:** *"because we don't show any more info than geni we
+consider it anonymized."*
+
+**So the tree is ALREADY anonymised, and it always was.** This repo republishes what Geni
+publishes and nothing beyond it — no field is derived that Geni does not itself display, and no
+profile is enriched from elsewhere. That is the whole test, and it is met by construction.
+
+**NOBODY IS EXCLUDED. No row is dropped, redacted or held back**, and a summary that leaves this
+ambiguous is wrong: on 2026-09-02 the sweep report said "your redefinition of anonymising" and she
+read it as implying the private people had been cut. They have not been. Checked the same day:
+`reports/derived-labels.csv` carries **20,928 rows with a redaction marker** out of 1,451,964, and
+the corpus keeps all **94,071 `Private`** and **17,548 `<private>`** markers. § *Redacted people
+go in* is the governing rule and is untouched — the person is created, the marker never becomes a
+label.
+
+**This replaces the ~96,000-private-rows reading entirely**, and that reading was wrong in
+substance rather than merely superseded: it treated the private profiles as a *gate* to be cleared
+before going public, when they were never an obstacle at all.
 
 Her instruction, 2026-09-01: cut the content in this repo that discusses **strategy around her
 own item and how the account's editing is perceived**, and remove **code that treats her item as

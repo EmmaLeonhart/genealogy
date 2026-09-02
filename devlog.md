@@ -25615,3 +25615,19 @@ Next in her order is `mul`, *"almost always derived from en"*.
 Kept deliberately: `LAST ITEM — run scripts/rebuild-everything.py` reads as a standing
 end-of-queue action rather than a one-off, and `rebuild-everything.py` needs re-running whenever
 `exports/` changes, so deleting it would lose a recurring instruction.
+
+## 2026-09-02 — correcting what "anonymised" means here
+
+Emma, on the sweep report: *"to be clear because we don't show any more info than geni we consider
+it anonymized. Sorry you're vague there and implied you may have excluded them"*.
+
+The report said the section was removed because CLAUDE.md carries "your redefinition of
+anonymising", which reads as though private people had been cut. **They have not been, and nothing
+in this repo ever excluded them.** The criterion is that we publish no more than Geni publishes,
+which this repo meets by construction.
+
+Verified rather than asserted: `reports/derived-labels.csv` holds 20,928 rows carrying a redaction
+marker out of 1,451,964, and the corpus keeps all 94,071 `Private` and 17,548 `<private>` markers.
+
+`CLAUDE.md` § *Anonymisation* now leads with her criterion and states outright that nobody is
+excluded, so the next summary cannot repeat the ambiguity.
