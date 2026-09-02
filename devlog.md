@@ -25166,3 +25166,24 @@ files now say that.
 makes this question obsolete"* — and she was right about the mechanism: `wikidata-qid-links.ged`
 puts the QIDs in the corpus so they arrive in the merge either way. Nothing waited on the
 definition; what the definition fixes is prose that could not be read.
+
+## 2026-09-01 — dead-queue sweep, eighth pass: the token item cut 8 → 7
+
+**10 sections before, 10 after.** Nothing was complete; one was cut back.
+
+**§ *The 8 tokens the transliteration funnel cannot read* is now seven.** Re-running
+`extend-transliterations.py` after today's NFC fix: *"1 added, 7 left out as unreadable"*, and
+`Ånon` is gone from the list. It was listed in that item as **tokenisation debris** and it never
+was — it transliterates perfectly, and the corpus token carried `A` + a combining ring rather than
+the precomposed `Å`. The item now says so, because the general lesson is worth more than the token:
+one `normalize("NFC", …)` fixed it **and 3,377 others** that were failing identically without ever
+reaching this list.
+
+The remaining seven are unchanged in kind — five debris (`""Inge""`, `"Ingebret`, `Garborg"`,
+`Talgje,`, `Törnstjerna,`), one title (`Queen`, which belongs in `SKIP`), one Cyrillic (`Карлов`,
+which needs `translit_scripts`).
+
+**Checked and left alone:** § *`P1814`* (corrected today, blocked on the culture classifier),
+§ *`exports/post-merge/`* — a live export campaign with a real stopping rule, *"export until every
+first-degree relative of every merged individual is present"*, not a standing measurement —
+§ *LABELS, IN HER ORDER*, and the six tail items she ordered herself.

@@ -562,17 +562,22 @@ protects. The machinery that walked it goes; the record of what Geni said does n
 this*, not *might this be useful*. Everything is in git, so a deletion is recoverable and a stale
 special case is not recoverable from the confusion it causes.
 
-## The 8 tokens the transliteration funnel cannot read
+## The 7 tokens the transliteration funnel cannot read
 
 **Her instruction, 2026-09-01**, on being shown this: *"Also add this to the end"*.
 
-**8 of 627 needed tokens have no reading**, and the reason it went unnoticed for so long is that
-§ *Labels in seven languages* pointed at *"the tail as § the tokens the transliteration funnel
-cannot read"* — **a section that never existed**. The work was referenced and invisible.
+**7 of 627 needed tokens have no reading.** It was 8 until 2026-09-01, and the one that left is
+the reason to look at a list like this rather than trust it: **`Ånon` was never debris.** It
+transliterates perfectly — `オーノン` — and the corpus token was `A` + a combining ring rather than
+the precomposed `Å`. One `unicodedata.normalize("NFC", …)` fixed it and **3,377 other tokens** that
+were failing the same way without ever appearing here.
 
-    ""Inge""   "Ingebret   Garborg"   I,   Talgje,   Törnstjerna,   Queen   Карлов
+The item went unnoticed for so long because § *Labels in seven languages* pointed at *"the tail as
+§ the tokens the transliteration funnel cannot read"* — **a section that never existed**.
 
-**Six are tokenisation debris, not names.** A stray quote or a trailing comma has been carried into
+    ""Inge""   "Ingebret   Garborg"   Talgje,   Törnstjerna,   Queen   Карлов
+
+**Five are tokenisation debris, not names.** A stray quote or a trailing comma has been carried into
 the token: `Garborg"` is `Garborg`, `Talgje,` is `Talgje`, `""Inge""` is `Inge`. The engine is
 being handed punctuation and correctly refuses it — **so the fix is in the tokeniser, not in
 `translit_no.py`**, and fixing it there would be widening a reading rule to swallow junk.
