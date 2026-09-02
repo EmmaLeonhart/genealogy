@@ -21,37 +21,6 @@ algorithms and such. This is the last item though only after all the other stuff
 - Generated from what is in the repo rather than hand-written prose that will go stale — the
   `CLAUDE.md` sections and the module docstrings already carry most of it.
 
-## Then: one dispatch that produces the archive and the Pages site too
-
-**Her framing, 2026-09-01:** *"the ci/cd run will make the archive (committed) and the pages and
-the quickstatements for me to run later."* **The QuickStatements third is done and proven; the
-other two are not, because the jobs that would make them do not exist yet.**
-
-**What already works, run `33582811064` on 2026-09-02:** the gate found a contribution inside six
-hours, the ledger refreshed to 1,158 rows, `--compose` built **23 creations**, the bot committed
-them as `45f8eaf6`, the `wikidata-garborg-day` artifact carried the `.qs` and the adjudication
-deck, and issue **#9** opened assigned to her. 9m21s, both jobs green. That was the item's stated
-deliverable — *"a run that finishes and uploads `reports/wikidata-garborg-day.qs` as an artifact,
-with the issue opened"* — and it is met.
-
-**So what is left is ONE deliverable: the Pages site**, § *THE VERY LAST ITEM*.
-
-**The ledger archive is already done and was never a job to build.** Emma, 2026-09-02: *"Lmao you
-cunt it fetches every time the ledger from pages I edited"* — `build-daily-batch.py` STEP 0b runs
-`full_entities` over the ledger, and the pipeline refreshes it from her contributions on every
-run. Its queue section is deleted.
-
-Once the Pages job exists, dispatch once and check that a single run produces all three. Not three
-runs — her words are *"the ci/cd run"*, singular.
-
-**Two failures got it here, and both are worth not repeating.** The 18:59 run died on
-`FileNotFoundError: out/merged.ged` and was fixed by committing `family-structure.tsv.gz`, listing
-it in `pack-derived.py` and giving `read_tree` a fallback. The 21:50 run then died on
-`sqlite3.OperationalError: no such table: items`, because `out/wikidata/store-index.sqlite3` is
-gitignored and `sqlite3.connect` **creates an empty database** rather than raising. Both are the
-same shape: **a file the runner cannot have, reached by code that assumed it could.** Anything else
-added to this workflow should be checked against `.gitignore` first.
-
 ## Follow a redirect: an item she edited that later gets merged away
 
 **Emma, 2026-09-02:** *"in the future an item that I edit that later gets redirected the algorithm
@@ -106,6 +75,37 @@ same description reaching name items the batch is **not** creating.
 **And the boundary that caused a scare on 2026-09-02:** descriptions on **name items** are the
 mechanism and stay. Descriptions on **people** are the categorical ban, § *NO descriptions and NO
 edit summaries*. The one she saw on a person was another editor's, on `Q136376387`.
+
+## Then: one dispatch that produces the archive and the Pages site too
+
+**Her framing, 2026-09-01:** *"the ci/cd run will make the archive (committed) and the pages and
+the quickstatements for me to run later."* **The QuickStatements third is done and proven; the
+other two are not, because the jobs that would make them do not exist yet.**
+
+**What already works, run `33582811064` on 2026-09-02:** the gate found a contribution inside six
+hours, the ledger refreshed to 1,158 rows, `--compose` built **23 creations**, the bot committed
+them as `45f8eaf6`, the `wikidata-garborg-day` artifact carried the `.qs` and the adjudication
+deck, and issue **#9** opened assigned to her. 9m21s, both jobs green. That was the item's stated
+deliverable — *"a run that finishes and uploads `reports/wikidata-garborg-day.qs` as an artifact,
+with the issue opened"* — and it is met.
+
+**So what is left is ONE deliverable: the Pages site**, § *THE VERY LAST ITEM*.
+
+**The ledger archive is already done and was never a job to build.** Emma, 2026-09-02: *"Lmao you
+cunt it fetches every time the ledger from pages I edited"* — `build-daily-batch.py` STEP 0b runs
+`full_entities` over the ledger, and the pipeline refreshes it from her contributions on every
+run. Its queue section is deleted.
+
+Once the Pages job exists, dispatch once and check that a single run produces all three. Not three
+runs — her words are *"the ci/cd run"*, singular.
+
+**Two failures got it here, and both are worth not repeating.** The 18:59 run died on
+`FileNotFoundError: out/merged.ged` and was fixed by committing `family-structure.tsv.gz`, listing
+it in `pack-derived.py` and giving `read_tree` a fallback. The 21:50 run then died on
+`sqlite3.OperationalError: no such table: items`, because `out/wikidata/store-index.sqlite3` is
+gitignored and `sqlite3.connect` **creates an empty database** rather than raising. Both are the
+same shape: **a file the runner cannot have, reached by code that assumed it could.** Anything else
+added to this workflow should be checked against `.gitignore` first.
 
 ## ⛔ THE VERY LAST ITEM, 2026-09-02 ONLY — shut the computer down
 
