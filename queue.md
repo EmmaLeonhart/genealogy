@@ -236,14 +236,20 @@ words. So the batches are `en` for everybody, then `mul` for everybody, then `ja
   exports they came from"*, never the name. 806 Han-only among the structural
   placeholders alone; the corpus figure is larger and is what this step must count.
 
-- **8 tokens the transliteration funnel still cannot read**, of 627 needed. The section that
-  used to point at this said *"at the tail as § the tokens the transliteration funnel cannot
-  read"* — a section that does not exist, so the pointer dangled and the work was invisible.
-  Stated here instead. From the last full run they are `""Inge""`, `"Ingebret`, `Garborg"`, `I,`,
-  `Talgje,`, `Törnstjerna,`, `Queen`, `Карлов` — six are **tokenisation debris** (a stray quote or
-  a trailing comma carried into the token), one is a **title** rather than a name, and one is
-  Cyrillic. So the fix is mostly in the tokeniser, not the engine, and a token it cannot read is
-  correctly left out rather than guessed at.
+- **1 token the funnel cannot read: `Карлов`**, of 626 needed. It was 8, and six of those were
+  never unreadable names — they were names wearing punctuation. `""Inge""`, `"Ingebret`,
+  `Garborg"`, `Talgje,`, `Törnstjerna,` reached the engine with quote marks and commas attached,
+  and it correctly refused them; the fault was in the tokeniser and had been filed as a fault in
+  the reader. `clean_token` strips leading and trailing punctuation at every producer — and only
+  leading and trailing, because `Låge-Håland` and `O'Brien` are single tokens whose hyphen and
+  apostrophe are part of the name. `Queen` was the seventh and is a **title**, now in `TITLES`
+  beside `SKIP`: a katakana rendering of the English word *Queen* is the exact failure that list
+  exists to prevent.
+
+  **`Карлов` stays refused and that is correct.** It is Cyrillic, in
+  `Carl Emil Knut Карлов Stjernvall-Walleen`, and `translit_no` is a Norwegian orthography reader.
+  `translit_scripts` transliterates *into* `ru`/`el`/`hi`/`ar` rather than out of them, so it does
+  not help either. One token, honestly absent, is what `CLAUDE.md` asks for.
 
 - **The 1,539 with no label and a named relative are HERE, not in the placeholder work.**
   Traced 2026-09-01. They are in `reports/label-gap.csv` with outcome `relative`, they are in
@@ -522,38 +528,6 @@ protects. The machinery that walked it goes; the record of what Geni said does n
 **`CLAUDE.md` § *LEGACY CODE IS DELETED* is the standard here:** the test is *does the pipeline read
 this*, not *might this be useful*. Everything is in git, so a deletion is recoverable and a stale
 special case is not recoverable from the confusion it causes.
-
-## The 7 tokens the transliteration funnel cannot read
-
-**Her instruction, 2026-09-01**, on being shown this: *"Also add this to the end"*.
-
-**7 of 627 needed tokens have no reading.** It was 8 until 2026-09-01, and the one that left is
-the reason to look at a list like this rather than trust it: **`Ånon` was never debris.** It
-transliterates perfectly — `オーノン` — and the corpus token was `A` + a combining ring rather than
-the precomposed `Å`. One `unicodedata.normalize("NFC", …)` fixed it and **3,377 other tokens** that
-were failing the same way without ever appearing here.
-
-The item went unnoticed for so long because § *Labels in seven languages* pointed at *"the tail as
-§ the tokens the transliteration funnel cannot read"* — **a section that never existed**.
-
-    ""Inge""   "Ingebret   Garborg"   Talgje,   Törnstjerna,   Queen   Карлов
-
-**Five are tokenisation debris, not names.** A stray quote or a trailing comma has been carried into
-the token: `Garborg"` is `Garborg`, `Talgje,` is `Talgje`, `""Inge""` is `Inge`. The engine is
-being handed punctuation and correctly refuses it — **so the fix is in the tokeniser, not in
-`translit_no.py`**, and fixing it there would be widening a reading rule to swallow junk.
-
-**The other two are not that and must not be swept in with them.** `Queen` is a **title**, which
-belongs with `NN`, `of`, `son` in `SKIP` rather than being transliterated — a katakana rendering of
-the English word *Queen* is the exact failure that list exists to prevent. `Карлов` is **Cyrillic**,
-which the Norwegian orthography reader cannot read by design; it needs `translit_scripts`, not this
-engine.
-
-**A token it cannot read is left out and reported, and that stays true.** The module says so
-itself: *"a missing row means no `ja`/`zh` for that name, which is the current behaviour and is
-honest; a guessed row would put a wrong name on a person in two languages at once."* This item
-removes the debris so the count reflects real gaps, and does not lower the bar for what gets a
-reading.
 
 ## How to handle the saved pages and path files, which all begin with her
 

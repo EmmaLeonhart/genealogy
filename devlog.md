@@ -25428,3 +25428,29 @@ Checked against real names before wiring: `Anna Karlsdotter`, `Jens Skeel`, `織
 231 passed on the label, marker, derive, join and placeholder tests. The whole *Normalise the
 labels that already carry a marker* bullet is deleted from the queue — all three populations are
 finished and wired.
+
+## 2026-09-02 — the funnel's unreadable tokens: 8 → 1, and six were never unreadable
+
+**Six of the eight were names wearing punctuation.** `""Inge""`, `"Ingebret`, `Garborg"`,
+`Talgje,`, `Törnstjerna,` reached `translit_no` with quote marks and commas still attached, and it
+correctly refused them. **The fault was in the tokeniser and had been filed in the queue as a fault
+in the reader** — for long enough that a section pointed at it which never existed.
+
+`clean_token` strips leading and trailing punctuation at every one of the four token producers.
+Only leading and trailing: `Låge-Håland` and `O'Brien` are single tokens whose hyphen and
+apostrophe are part of the name, and stripping inside would break them.
+
+**`Queen` was the seventh and is a title**, now in `TITLES` beside `SKIP` — a katakana rendering of
+the English word *Queen* is precisely the failure `SKIP` exists to prevent, and it reached the
+unreadable list only because no title was ever in that set. The list covers the obvious ranks:
+king, prince, duchess, emperor, consort and the rest.
+
+**`Карлов` is the one left, and it stays refused.** Cyrillic, from
+`Carl Emil Knut Карлов Stjernvall-Walleen`. `translit_no` is a Norwegian orthography reader and
+`translit_scripts` transliterates *into* `ru`/`el`/`hi`/`ar` rather than out of them, so neither
+applies. One token honestly absent beats widening a Norwegian reader to a script it does not know —
+`CLAUDE.md` § *a token it cannot read is left out and reported*.
+
+626 tokens needed, 3 missing, 2 added, 1 unreadable. 213 passed on the translit, label, marker and
+join tests. The standalone tail item is deleted; what remains lives in the `en` step where it
+belongs.

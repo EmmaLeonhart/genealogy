@@ -61,6 +61,7 @@ TABLE = ROOT / "reports" / "garborg-name-transliterations.tsv"
 
 #: Not names. The NN descriptive labels carry their own `ja`/`zh` from a template.
 SKIP = {"nn", "of", "son", "daughter", "the", "and", "n.n.", "private", "unknown"}
+#: Titles join the skip set below, once `TITLES` is defined.
 
 #: Norwegian orthography, longest match first. Katakana, then the standard Chinese
 #: transcription character for the same syllable.
@@ -85,6 +86,29 @@ LETTERS = {
 #: module and that one disagreed on 99 rows while both were in one pipeline. Imported, not
 #: restated -- one fact, one place.
 from translit_no import SUFFIXES, table_sort_key  # noqa: E402
+
+
+#: Titles, not names. A katakana rendering of the English word *Queen* is exactly the failure
+#: `SKIP` exists to prevent, and `Queen` reached the unreadable list because it was never in it.
+#: These come from labels like `Ulrika Eleonora Vasa of Sweden Queen and Queen Consort`.
+TITLES = {"queen", "king", "prince", "princess", "duke", "duchess", "earl", "count",
+          "countess", "baron", "baroness", "lord", "lady", "sir", "dame", "emperor",
+          "empress", "consort", "regent", "archduke", "archduchess"}
+
+
+def clean_token(token):
+    """One name token with the punctuation a label drags in stripped off.
+
+    **Six of the seven tokens the funnel could not read were not names at all**, they were names
+    wearing punctuation: `""Inge""`, `"Ingebret`, `Garborg"`, `Talgje,`, `Törnstjerna,`. The engine
+    was handed a quote mark and correctly refused it, and the refusals were then filed in the queue
+    as *"tokens the funnel cannot read"* — a fault in the tokeniser recorded as a fault in the
+    reader.
+
+    Only leading and trailing punctuation goes. Anything inside is left, because `Låge-Håland` and
+    `O'Brien` are single tokens and the hyphen and apostrophe are part of the name.
+    """
+    return (token or "").strip("\"'“”«»‘’()[]{}<>,;:.!?·•")
 
 
 def by_rule(token):
@@ -159,7 +183,12 @@ def main():
         need = _two_hop_tokens()
     else:
         need = _batch_tokens()
-    need = {t for t in need if t.casefold() not in SKIP and not t.isdigit()}
+    # Titles join the skip: a katakana rendering of the English word *Queen* is the
+    # failure SKIP exists for. Empty strings come from tokens that were pure
+    # punctuation before `clean_token` stripped them.
+    need = {t for t in need
+            if t and t.casefold() not in SKIP and t.casefold() not in TITLES
+            and not t.isdigit()}
     missing = sorted(t for t in need if t not in have)
     print(f"{len(need)} tokens needed, {len(missing)} missing")
     return _extend(rows, have, missing, args)
@@ -174,9 +203,9 @@ def _batch_tokens():
             continue
         text = path.read_text(encoding="utf-8")
         for m in re.finditer(r'\tL(?:en|mul)\t"([^"]+)"', text):
-            need |= set(m.group(1).split())
+            need |= {clean_token(t) for t in m.group(1).split()}
         for m in re.finditer(r"^\d+\t([^\t]+)\t", text, re.M):
-            need |= set(m.group(1).split())
+            need |= {clean_token(t) for t in m.group(1).split()}
     return need
 
 
@@ -204,7 +233,7 @@ def _placeholder_tokens():
             m = re.match(r"^(?:son|daughter|child|father|mother|parent|husband|wife|spouse)"
                          r" of (.+)$", en, re.I)
             if m:
-                need |= set(m.group(1).split())
+                need |= {clean_token(t) for t in m.group(1).split()}
     return need
 
 
@@ -258,7 +287,7 @@ def _two_hop_tokens():
             n += 1
             for col in ("label_mul", "label_en", "alias_names"):
                 for name in (row.get(col) or "").split(" | "):
-                    need |= set(name.split())
+                    need |= {clean_token(t) for t in name.split()}
     print(f"  {n:,} of them have a label; {len(need):,} distinct tokens")
     return need
 
