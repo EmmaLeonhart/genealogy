@@ -227,78 +227,23 @@ words. So the batches are `en` for everybody, then `mul` for everybody, then `ja
   on it twice; these sets decide what a **marker** is. Widening detection is not
   widening suppression.
 
-- **`en` for every individual, as one step.** Includes the transcription she names:
-  a Han-only or Cyrillic-only or Hebrew-only person gets an `en` made for them.
-  **CJK → English is agentic, never programmatic** — *"from CJK to English do not
-  remotely try to do any kind of programmatic transliteration because they all suck.
-  But AI almost always knows Japanese to Romaji."* The culture question comes first:
-  陳 is *Chen*, *Chin* or *Jin*, and *"the tree settles it, via neighbours and which
-  exports they came from"*, never the name. 806 Han-only among the structural
-  placeholders alone; the corpus figure is larger and is what this step must count.
+- **`en` for every individual — DONE 2026-09-02.** `scripts/build-en-labels.py` →
+  `reports/label-en.tsv`, all 41,154 CJK-named people in one pass:
 
-- **The surname is composed in now — but the `en` step still cannot consume the column, for a
-  different reason.** Fixed 2026-09-02: the romaniser dropped the trailing token as a courtesy
-  name (字) while the *classifier in the same file* keyed `SURNAME_CULTURE` on that very token as
-  the surname. Two contradictory readings, 350 lines apart. **4,655 rows now carry the surname**
-  — `經 謝` → `Xie Jing`, `恕 陳` → `Chen Shu`, surname first as every Wikidata label for these
-  people has it. 731 still lose it, where the surname has no reading in the name-item table.
+  | | |
+  | --- | ---: |
+  | romanised from Wikidata name items | 13,171 |
+  | already had an English label | 2,675 |
+  | **unknown, rostered** | **25,308** |
 
-  The clan-seat case is untouched and correct: **6,705** rows drop a 3+ character tail like
-  `陳郡陽夏`, which is a *place* in the surname field.
+  **3,829 of the labelled ones already have a Wikidata item.** Emma, 2026-09-02: *"just finish
+  I'm not asking for categorization lol just list these as unknowns if they are unclear lol"* —
+  so nothing here adjudicates. The unknowns split 23,360 with no Latin form anywhere, 1,284 with
+  no culture verdict, and 664 held because a Mandarin reading would be a wrong name. That is a
+  deck for later, not a blocker, and it shrinks as cultures get confirmed.
 
-  **MEASURED 2026-09-02 — the rate is low and the hold list is 664 people, not a rewrite.**
-  `scripts/measure-japanese-in-zh.py` → `reports/japanese-in-zh.tsv`. The walk is right on the
-  Japanese houses almost everywhere: **1,303 of 1,303 Fujiwara, 280/280 Oda, 104/104 Tokugawa,
-  130/133 Sakai, 34/37 Aoyama**. The two people who prompted the alarm are real misfiles and are
-  six people, not a population.
-
-  The discriminator asks `pykakasi` whether its **surname dictionary** holds the token, and
-  compares the answer against Unihan's on'yomi: a match means it fell back per character (no
-  evidence), a difference means a real dictionary hit. It is one-directional — a miss is evidence
-  for nothing — so **3.2% (664 of 20,995) is a FLOOR**. Reading the output shows most of even
-  that residue is Chinese places below the seat threshold (趙州, 博陵, 渤海) and Xiongnu clans
-  (攣鞮, 赫連), so the genuine Japanese part is smaller again.
-
-  **So `en` is not blocked at the population level; hold the 664.** And under her 2026-09-02
-  redesign it gates much less than it did: the romanisation is one alias among several, and only
-  the `mul` promotion depends on the culture being right.
-
-  **Two false readings were produced and caught before publication, both by reading the sample.**
-  First `kJapaneseOn` is romaji (`CHIN`, `KOU`) and was compared as katakana, so nothing ever
-  matched and every row scored a hit — 陳, 曾, 劉 and 王 came out as Japanese surnames at
-  **45.9%**. Then a lone character gets its *word* reading (李 `sumomo` the plum, 孔 `ana` a
-  hole), and the clan seats dominated the top nine until they were filtered. Each number looked
-  plausible on its own; only the named surnames gave it away.
-
-  Two smaller residues visible in the same pass: `大唐帝國 謝氏` → `Da Tang Di Guo` is not a name at
-  all, and `母 陳` → `Chen Mu` romanises 母 *(mother)* as a given name, so `CJK_MARKERS` is missing
-  entries.
-
-- **The 1,539 with no label and a named relative are HERE, not in the placeholder work.**
-  Traced 2026-09-01. They are in `reports/label-gap.csv` with outcome `relative`, they are in
-  `reports/derived-family.csv`, and **none of them reaches
-  `reports/relationship-label-preview.csv`** — correctly, because `is_placeholder()` returns
-  False for them. They are not unnamed.
-
-  **They have real names, in scripts nothing here transcribes.** Measured over their `NAME`
-  records:
-
-  | script | rows | |
-  | --- | ---: | --- |
-  | Han | 2,173 | `陳母`, `句芒` |
-  | Cyrillic | 359 | `Иоанн Всеволодович` |
-  | Han+Latin | 344 | `Jew Law Ying 趙羅英`, `Wo Deng 握登` |
-  | Hebrew | 140 | `זלדה`, `חיים אהרון` |
-  | Latin | 92 | `(Molher de Bernat Gòt)` — parenthesised descriptions |
-  | Latin+Tibetan · Hangul · Arabic · Hiragana · Greek | 107 | the tail |
-
-  So the work is the transcription this section already specifies — *"a Han-only or Cyrillic-only
-  or Hebrew-only person gets an `en` made for them"* — and for the CJK majority it is **agentic,
-  never programmatic**, with the culture question settled by the tree first.
-
-  **The queue said "935 of them CJK-named" and that was wrong.** 107 is the count of those whose
-  *relative* carries a CJK name; the number that matters is how many carry one **themselves**, and
-  Han alone is 2,173 name rows. Both figures were in the file at once and neither was labelled.
+  **Romanisations come only from Wikidata name items**, never from transliteration — her rule.
+  `pykakasi` and the Unihan pinyin feed aliases and measurement, never an English label.
 
 - **`mul` for every individual, derived from `en`.** *"Almost always derived from en"* —
   so the exceptions are the thing to find and report, not to guess at.

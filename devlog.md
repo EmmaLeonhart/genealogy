@@ -25578,3 +25578,15 @@ nine until the clan-seat filter went in. Each number was plausible; only the nam
 Also this tick: Geni's GEDCOM export service is DOWN — the resubmitted Ōjin Tennō export failed
 at 08:09 with *"We were unable to export your GEDCOM... We are aware of the issue"*. That is what
 blocks the two remaining `exports/post-merge/` survivors, and it is Geni-side.
+
+## 2026-09-02 — the `en` step is done, unknowns rostered rather than adjudicated
+
+Emma: *"just finish I'm not asking for categorization lol just list these as unknowns if they are
+unclear lol"*. `scripts/build-en-labels.py` → `reports/label-en.tsv`, one pass over all 41,154
+CJK-named people: 13,171 romanised from Wikidata name items, 2,675 already had an English label,
+**25,308 unknown and rostered**. 3,829 of the labelled ones already have a Wikidata item.
+
+The unknowns are 23,360 with no Latin form anywhere, 1,284 with no culture verdict, and 664 held
+because a Mandarin reading would be a wrong name. Nothing is blocked on them.
+
+Next in her order is `mul`, *"almost always derived from en"*.
