@@ -399,6 +399,64 @@ def main():
     # *"Every line has a comment the line above it saying what change is happening."*
     # `name_of` turns a QID back into the person it belongs to, so a link reads as a
     # sentence rather than as two numbers.
+    # ---- descriptions on name items that ALREADY exist -----------------------------
+    #
+    # **Emma, 2026-09-02:** *"add an item at the end of the queue to make the generated
+    # quickstatements add these descriptions to the patronymics and family names"*.
+    #
+    # The block above puts a description on every name item it CREATES, because label plus
+    # description must be unique per language and that is what makes Wikidata refuse a second
+    # `Olsdatter`. Items created before that rule went in have no description, so the guard does
+    # not protect them -- and they are the ones most likely to be duplicated, being the ones
+    # already in use.
+    #
+    # **A description is only ADDED, never replaced.** If the item already says something, that
+    # is somebody's editorial choice and `CLAUDE.md` § *The purpose is to ADD to Wikidata, not
+    # to correct it* governs.
+    #
+    # **This is name items only.** Descriptions on PEOPLE are the categorical ban, and confusing
+    # the two cost a scare on 2026-09-02 when I deleted this mechanism over a description another
+    # editor had put on a person.
+    described = []
+    want = {}
+    for (token, usage), (existing, _action) in plan.items():
+        q = (existing or "").strip()
+        if q.startswith("Q") and usage in DESCRIPTION_FOR:
+            want.setdefault(q, (token, usage))
+    if want:
+        ids = sorted(want)
+        print("")
+        print(f"checking {len(ids):,} existing name items for a missing description")
+        missing = 0
+        for k in range(0, len(ids), 50):
+            chunk = ids[k:k + 50]
+            try:
+                data = get({"action": "wbgetentities", "format": "json",
+                            "props": "descriptions", "languages": "en",
+                            "ids": "|".join(chunk)}, ua)
+            except Exception as exc:                                   # noqa: BLE001
+                print(f"   chunk at {k} failed ({exc}); those items are left alone")
+                continue
+            for q, ent in (data.get("entities") or {}).items():
+                if "missing" in ent or q not in want:
+                    continue
+                if (ent.get("descriptions") or {}).get("en"):
+                    continue
+                token, usage = want[q]
+                missing += 1
+                described.append(f'{q}	Den	"{DESCRIPTION_FOR[usage]}"')
+        if described:
+            lines.append("")
+            lines.append("# " + "=" * 70)
+            lines.append("# DESCRIPTIONS on name items that already exist and have none.")
+            lines.append("# Label + description must be unique per language, so this is what")
+            lines.append("# makes Wikidata refuse a duplicate of a name item already in use.")
+            lines.append("# Name items only -- never people.")
+            lines.append("# " + "=" * 70)
+            lines.extend(described)
+        print(f"   {missing:,} of them have no English description; "
+              f"{len(ids) - missing:,} already do")
+
     qid_to_geni = {q: g for g, q in have.items()}
     lines = annotate(lines, lambda t: labels_of.get(qid_to_geni.get(t, t), ""))
 

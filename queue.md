@@ -2,27 +2,6 @@
 
 Only work. Every specification and record moved to `CLAUDE.md` on 2026-09-01 at her instruction: *"remove all the 14 bullshit queue items"*. An item is DELETED when done, never annotated.
 
-## Add the descriptions to patronymics and family names in the generated QuickStatements
-
-**Emma, 2026-09-02:** *"add an item at the end of the queue to make the generated quickstatements
-add these descriptions to the patronymics and family names"*.
-
-So the batch should emit the `D<lang>` description on **patronymic** and **family name** items —
-not only on the ones it creates in that run, but as an addition to name items that already exist
-without one.
-
-Written at the tail on her instruction; nothing investigated.
-
-**The one cross-reference, so it is not built twice:** `scripts/build-garborg-name-items.py`
-already emits `LAST<TAB>Den<TAB>"<description>"` from `DESCRIPTION_FOR` on a **fresh** `CREATE`,
-and that is the anti-duplicate mechanism — label plus description must be unique per language, so
-a second described `Olsdatter` is refused where a second undescribed one is not. This item is the
-same description reaching name items the batch is **not** creating.
-
-**And the boundary that caused a scare on 2026-09-02:** descriptions on **name items** are the
-mechanism and stay. Descriptions on **people** are the categorical ban, § *NO descriptions and NO
-edit summaries*. The one she saw on a person was another editor's, on `Q136376387`.
-
 ## Then: one dispatch that produces the archive and the Pages site too
 
 **Her framing, 2026-09-01:** *"the ci/cd run will make the archive (committed) and the pages and

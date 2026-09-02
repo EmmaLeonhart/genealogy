@@ -26093,3 +26093,26 @@ patronymic derives from THAT man, a false claim about a named person.
 **The remaining gap is real, not a miss.** `Q141224345` *Signy Tormodsdatter Rossavik* has a
 father in the tree, `6000000005606886646`, who carries no `P2600` anywhere — so there is nothing
 to point at and the absent qualifier is correct.
+
+## 2026-09-02 — descriptions on existing name items: wired, and a no-op today
+
+Emma: *"add an item at the end of the queue to make the generated quickstatements add these
+descriptions to the patronymics and family names"*.
+
+`build-garborg-name-items.py` now checks every **existing** patronymic and family-name item the
+plan points at — 6,772 of them — and emits `Q… Den "patronymic"` / `"family name"` for any that
+lacks an English description.
+
+**It found none. All 6,772 already have one**, and that is Wikidata's own data rather than a bug
+in the check: spot-fetched, `Q51885688` *Olsdatter* reads *"female Scandinavian patronym"*,
+`Q130233025` *Pedersen* *"patronymic"*, `Q5576697` *González* *"family name"*. Name items on
+Wikidata are largely bot-created and described.
+
+So the mechanism is in place and fires the day one is missing, which is the point — the
+description is what makes label+description unique per language and so what makes Wikidata refuse
+a duplicate of a name item already in use. Items created before that rule went in were the
+unprotected ones; it turns out they are protected by whoever described them.
+
+**A description is only ADDED, never replaced** — an item that already says something is
+somebody's editorial choice, and § *The purpose is to ADD to Wikidata, not to correct it* governs.
+**Name items only.** Descriptions on people remain the categorical ban.
