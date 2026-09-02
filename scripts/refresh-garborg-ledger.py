@@ -185,11 +185,20 @@ def main():
     # Emma, 2026-09-02: *"an item that I edit that later gets redirected the algorithm needs to
     # follow the redirect and put the new one s as a possible one to run on too."*
     #
-    # This is the OPPOSITE direction from the resolution further down, and the two are easy to
-    # confuse. That one asks whether a SCRAPED qid redirects to what the ledger already holds,
-    # so a merge she has made stops reading as a disagreement -- there the ledger is right. This
-    # asks whether the qid THE LEDGER ITSELF HOLDS is now a redirect, which means the ledger is
-    # STALE: the person still exists, under the survivor's id.
+    # **This is the COMMON case, not the mirror of the check further down.** Emma, 2026-09-02:
+    # *"it is almost 100% ubiquitous that my item i created or edited is gonna be the one
+    # redirected elsewhere lol merge redirect targeting occurs by age."*
+    #
+    # She is right and it is measurable. `Help:Merge` keeps the LOWER Q number, and every item
+    # in this ledger she made herself is new -- so hers is the one merged AWAY, essentially
+    # always. Of the 26 stale rows the first run found, **26 of 26** went high Q to low Q:
+    # Q141225740 -> Q109852817, Q141216475 -> Q10511224, Q141242568 -> Q130665779. None went
+    # the other way.
+    #
+    # So this is the direction that matters, and the resolution further down -- which asks
+    # whether a SCRAPED qid redirects to what the ledger holds -- covers the rare shape rather
+    # than the symmetric other half. Describing the two as opposite directions of one problem
+    # understated how routine this one is: it is what happens every time she merges.
     #
     # Left unfollowed, every algorithm keyed on the ledger points at a dead id -- the subgraph
     # walk cannot reach the person, the duplicate guard cannot see their statements, and the

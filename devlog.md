@@ -26024,3 +26024,18 @@ walk cannot reach the person, the duplicate guard cannot see their statements, a
 would create them again.
 
 The row is rewritten rather than dropped, so nothing is lost and the move is auditable.
+
+## 2026-09-02 — correcting the redirect framing: her item is ALWAYS the one merged away
+
+Emma, on my describing the two redirect checks as opposite directions of one problem:
+*"it is almost 100% ubiquitous that my item i created or edited is gonna be the one redirected
+elsewhere lol merge redirect targeting occurs by age."*
+
+**Measured over the 26 stale rows the first run found: 26 of 26 went high Q to low Q.** None the
+other way. `Help:Merge` keeps the lower number and every item she made herself is new, so hers is
+the one merged away, essentially always.
+
+That makes the check added today the **common** case rather than the mirror of the older one —
+the scraped-qid resolution covers the rare shape. My framing implied a symmetry that does not
+exist and made a routine event sound like an edge case; the docstring now says so with the
+numbers.

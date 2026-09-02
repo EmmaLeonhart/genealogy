@@ -63,7 +63,7 @@ Q141250244	P5056	LAST	P144	Q141216381	S2600	"6000000087451690855"
 #   Q141200127 Ådne Hansen Grøtheim: P5056 patronym or matronym = the item just created, qualified P144 based on Q141216607 Hans Erikson Øvre Håland
 Q141200127	P5056	LAST	P144	Q141216607	S2600	"6000000225229617898"
 
-# 326 more name items are needed and wait for a later
+# 327 more name items are needed and wait for a later
 # run -- 3 a day is her cap, not a limit of the data:
 #   Hansson (patronymic), 3 bearer(s)
 #   Helgesen (patronymic), 3 bearer(s)
@@ -77,5 +77,5 @@ Q141200127	P5056	LAST	P144	Q141216607	S2600	"6000000225229617898"
 #   Söfdeborg (family), 3 bearer(s)
 #   Tollefson (patronymic), 3 bearer(s)
 #   Ugla (family), 3 bearer(s)
-#   ... and 314 more
+#   ... and 315 more
 
