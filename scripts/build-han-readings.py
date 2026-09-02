@@ -18,10 +18,11 @@ it is reusable by every emitter, and it is the thing a per-person table is a joi
 
 ## The three columns are NOT of equal standing, and the file says so per row
 
-* **`ko` is mechanical and right.** A Han character has a regular Sino-Korean reading;
-  `CLAUDE.md` § *CJK INCLUDES KOREAN* already records this as the reason `ko` is engine work
-  while kana is research. Spot-checked against names whose romanisation is independently known:
-  金庾信 → 금유신, 陳恕 → 진서, 黃 → 황.
+* **`ko` is mechanical**, and a character may legitimately have MORE THAN ONE reading — the
+  column is space-separated, most usual first. `CLAUDE.md` § *CJK INCLUDES KOREAN* records why
+  `ko` is engine work while kana is research. Spot-checked against names whose romanisation is
+  independently known: 陳恕 → 진서, 黃 → 황, and 金庾信 → 김유신 **only once both readings of
+  金 are kept** — see the two-source section below, which is where that name was got wrong.
 * **`ja` is a CANDIDATE and is never emitted unreviewed.** Measured on 2026-09-02, `pykakasi`
   resolves *surnames* out of its dictionary correctly — 青山 → あおやま, 酒井 → さかい,
   藤原 → ふじわら — and falls back to on'yomi on *given* names, where Japanese personal readings
@@ -29,9 +30,27 @@ it is reusable by every emitter, and it is the thing a per-person table is a joi
   `CLAUDE.md` § *`P1814`* says a kana reading is not derivable by rule, and this measurement is
   what that sentence looks like in the data. `scripts/fetch-kana-readings.py` is the sourced
   answer; this column exists to be checked against it, never instead of it.
-* **`zh` has no offline source yet** and is written blank rather than guessed. `pypinyin` is not
-  installed and `CLAUDE.md` § *Stdlib only* means that is a decision rather than an oversight.
-  The column exists so the shape is right the day a source lands.
+* **`zh` is mechanical**, from Unihan's `kMandarin`, once `scripts/import-unihan.py` has run.
+  4,682 of the 4,688 characters carry one. Emma authorised the download on 2026-09-02, choosing
+  a data file over a `pypinyin` dependency, so § *Stdlib only* is intact.
+
+## `ko` merges TWO sources, and neither alone is right
+
+Measured 2026-09-02 over all 4,688 characters:
+
+* `hanja` covers 4,686 and Unihan's `kHangul` covers 3,645, so **each has ~1,000 the other
+  lacks**. The union is complete.
+* Where both speak they agree 3,543 times and differ 100. **Almost every difference is
+  두음법칙**, the initial-sound rule: `hanja` returns the word-initial form (隴 농, 頼 뇌,
+  礼 예) and Unihan the base reading (롱, 뢰, 례). Neither is wrong; they describe different
+  positions in a word.
+* **`hanja` alone misses the surname readings**, which is the one that produces wrong names:
+  金 is `금 김` and `hanja` gives only 금, so 金庾信 came out 금유신 when the man is 김유신,
+  Kim Yu-sin. 沈 is `심 침` and the surname is 심.
+
+So every reading from either source is kept, and the caller emits the alternates as **aliases**
+rather than choosing between them — `CLAUDE.md` § *One name item per USAGE*, where a token in
+two roles is not an ambiguity to resolve.
 
 **A blank is a blank, never a fallback to another language's reading.** That is the whole of
 § *partial is worse than absent* applied here: a Mandarin column quietly filled with Sino-Korean
@@ -56,6 +75,7 @@ csv.field_size_limit(1 << 30)
 TAB = chr(9)
 LABELS = ROOT / "reports" / "derived-labels.csv"
 OUT = ROOT / "reports" / "han-readings.tsv"
+UNIHAN = ROOT / "reports" / "unihan-corpus-readings.tsv"
 
 #: CJK Unified Ideographs, Extension A, and the Compatibility block. Kana and Hangul are
 #: deliberately excluded: they are already readings.
@@ -110,19 +130,44 @@ def main() -> int:
     print("%s distinct Han characters over %s people"
           % (format(len(count), ","), format(people, ",")))
 
-    rows, blank_ko = [], 0
+    # Unihan, if `scripts/import-unihan.py` has been run. Absent, `zh` stays blank and `ko`
+    # falls back to `hanja` alone -- which is the state this file shipped in, and is degraded
+    # rather than broken.
+    unihan = {}
+    if UNIHAN.exists():
+        with io.open(UNIHAN, encoding="utf-8", newline="") as fh:
+            for r in csv.DictReader(fh, delimiter=TAB):
+                unihan[r["han"]] = (r["ko_readings"].split(), r["zh_pinyin"].split())
+        print("%s characters from Unihan" % format(len(unihan), ","))
+    else:
+        print("no %s -- run scripts/import-unihan.py; zh will be blank"
+              % UNIHAN.relative_to(ROOT), file=sys.stderr)
+
+    rows, tally = [], collections.Counter()
     for ch, n in count.most_common():
-        ko = ""
+        uni_ko, uni_zh = unihan.get(ch, ([], []))
+        readings = list(uni_ko)
         if ko_of:
             try:
                 got = ko_of(ch)
                 # `hanja` returns the character unchanged when it has no reading for it.
                 # Passing that through would put a Han character in a Hangul column.
-                ko = got if got and got != ch else ""
+                # It is put FIRST because it applies 두음법칙 for word-initial position,
+                # which is the form a Korean label most often takes.
+                if got and got != ch and got not in readings:
+                    readings.insert(0, got)
+                elif got in readings:
+                    readings.remove(got)
+                    readings.insert(0, got)
             except Exception:                                          # noqa: BLE001
-                ko = ""
-        if not ko:
-            blank_ko += 1
+                pass
+        if readings:
+            tally["ko"] += 1
+        if len(readings) > 1:
+            tally["ko has alternates"] += 1
+        zh = " ".join(uni_zh)
+        if zh:
+            tally["zh"] += 1
         kana = romaji = ""
         if ja_of:
             try:
@@ -131,7 +176,7 @@ def main() -> int:
                     kana = romaji = ""
             except Exception:                                          # noqa: BLE001
                 kana = romaji = ""
-        rows.append([ch, n, ko, kana, romaji, ""])
+        rows.append([ch, n, " ".join(readings), kana, romaji, zh])
 
     with io.open(OUT, "w", encoding="utf-8", newline="") as fh:
         w = csv.writer(fh, delimiter=TAB, lineterminator="\n")
@@ -140,8 +185,8 @@ def main() -> int:
         w.writerows(rows)
 
     print("wrote %s - %s rows" % (OUT.relative_to(ROOT), format(len(rows), ",")))
-    print("   ko  filled %s, blank %s" % (format(len(rows) - blank_ko, ","), format(blank_ko, ",")))
-    print("   zh  blank on every row: no offline pinyin source (see the docstring)")
+    for k, v in tally.most_common():
+        print("   %-24s %s" % (k, format(v, ",")))
     print("\nthe twelve most common characters:")
     for r in rows[:12]:
         print("   %s  %-7s ko=%-3s ja=%s" % (r[0], format(r[1], ","), r[2], r[3]))

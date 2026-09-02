@@ -25,11 +25,15 @@ instead of taking.
 
 ## What is emitted and what is withheld
 
-* **`ko`** — emitted for everyone. Mechanical, from `reports/han-readings.tsv`.
+* **`ko`** — emitted for everyone, plus `ko_variants` where the SURNAME has a second reading.
+  金 is 금 *and* 김, so 金庾信 yields 금유신 and **김유신**, Kim Yu-sin — and the second is the
+  one a reader would search. Varying only the surname is deliberate: that is where the
+  alternation changes a name (金 Kim, 沈 Sim, 李 Lee), and varying every position on a
+  four-character name would yield sixteen aliases nobody looks for.
 * **`ja`** — withheld unless SOURCED. `pykakasi` gets surnames right and given names wrong, so a
   row carries a kana reading only where one came from `reports/kana-readings.tsv`.
   `CLAUDE.md`: a kana reading is not derivable by rule.
-* **`zh`** — no offline source; nothing is emitted and nothing is guessed.
+* **`zh`** — mechanical, from Unihan's `kMandarin` via `reports/han-readings.tsv`.
 
 **A person is skipped whole if any character is unreadable.** Half a name in Hangul and half in
 Han is not an alias anybody can search, and § *partial is worse than absent* is the standing rule.
@@ -103,12 +107,15 @@ def main() -> int:
             print("no %s" % p.relative_to(ROOT), file=sys.stderr)
             return 1
 
-    ko_of = {}
+    ko_of, zh_of = {}, {}
     with io.open(READINGS, encoding="utf-8", newline="") as fh:
         for r in csv.DictReader(fh, delimiter=TAB):
             if r["ko"]:
-                ko_of[r["han"]] = r["ko"]
-    print("%s characters carry a Korean reading" % format(len(ko_of), ","))
+                ko_of[r["han"]] = r["ko"].split()
+            if r.get("zh_pinyin"):
+                zh_of[r["han"]] = r["zh_pinyin"].split()
+    print("%s characters carry a Korean reading, %s a Mandarin one"
+          % (format(len(ko_of), ","), format(len(zh_of), ",")))
 
     # Sourced kana, per person. Never pykakasi: see the docstring.
     kana_of = {}
@@ -156,26 +163,50 @@ def main() -> int:
             if missing:
                 tally["a character has no Korean reading, skipped whole"] += 1
                 continue
-            ko = " ".join("".join(ko_of[c] for c in t) for t in han_tokens)
+            ko = " ".join("".join(ko_of[c][0] for c in t) for t in han_tokens)
             if not HANGUL.match(ko.replace(" ", "")):
                 tally["Korean form is not all Hangul, refused"] += 1
                 continue
             tally["ko emitted"] += 1
+
+            # **Alternates are varied on the SURNAME TOKEN ONLY**, and Geni writes given names
+            # first, so that is the last token. Two reasons to stop there rather than take the
+            # cartesian product: the alternation that changes a name is overwhelmingly the
+            # surname one (金 김 Kim, 沈 심 Sim, 李 이 Lee), and varying every position on a
+            # four-character name yields sixteen aliases nobody searches for.
+            variants = []
+            if len(han_tokens) >= 1:
+                surname = han_tokens[-1]
+                head = ["".join(ko_of[c][0] for c in t) for t in han_tokens[:-1]]
+                for alt in range(1, max(len(ko_of[c]) for c in surname) if surname else 1):
+                    form = "".join(ko_of[c][min(alt, len(ko_of[c]) - 1)] for c in surname)
+                    cand = " ".join(head + [form])
+                    if cand != ko and cand not in variants and HANGUL.match(cand.replace(" ", "")):
+                        variants.append(cand)
+            if variants:
+                tally["ko surname alternate emitted"] += 1
+
             ja = kana_of.get(geni, "")
             if ja:
                 tally["ja emitted (sourced)"] += 1
-            rows.append([geni, row.get("qid", ""), raw, " ".join(han_tokens), ko, ja, ""])
+            zh_ok = all(c in zh_of for t in han_tokens for c in t)
+            zh = (" ".join("".join(zh_of[c][0] for c in t) for t in han_tokens)
+                  if zh_ok else "")
+            if zh:
+                tally["zh emitted"] += 1
+            rows.append([geni, row.get("qid", ""), raw, " ".join(han_tokens), ko,
+                         " | ".join(variants), ja, zh])
 
     with io.open(OUT, "w", encoding="utf-8", newline="") as fh:
         w = csv.writer(fh, delimiter=TAB, lineterminator="\n")
-        w.writerow(["geni_id", "qid", "cjk_names", "han_tokens", "ko", "ja_sourced", "zh"])
+        w.writerow(["geni_id", "qid", "cjk_names", "han_tokens", "ko", "ko_variants",
+                    "ja_sourced", "zh"])
         w.writerows(rows)
 
     print("\nwrote %s - %s people" % (OUT.relative_to(ROOT), format(len(rows), ",")))
     for k, v in tally.most_common():
         print("   %-46s %6s" % (k, format(v, ",")))
-    print("   %-46s %6s" % ("zh emitted", 0))
-    with_qid = sum(1 for r in rows if r[1])
+        with_qid = sum(1 for r in rows if r[1])
     print("\n%s of them already have a Wikidata item, so the alias is addable today"
           % format(with_qid, ","))
     print("\na sample:")
