@@ -465,30 +465,34 @@ goes stale fastest.
 - It runs in the same workflow as the batch, so one dispatch produces archive, Pages and
   QuickStatements together.
 
-## Then: make CI/CD run and generate the NEXT batch
+## Then: one dispatch that produces the archive and the Pages site too
 
-**Emma, 2026-09-01, while the current batch was running:** *"last item on the queue should be to
-get the ci/cd to run and generate the next batch of quickstatements"*.
+**Her framing, 2026-09-01:** *"the ci/cd run will make the archive (committed) and the pages and
+the quickstatements for me to run later."* **The QuickStatements third is done and proven; the
+other two are not, because the jobs that would make them do not exist yet.**
 
-**One dispatch, three deliverables** — her framing: *"the ci/cd run will make the archive
-(committed) and the pages and the quickstatements for me to run later."* So this runs after both
-items above are built, and the run produces the ledger archive, the Pages site and the next
-QuickStatements batch together.
+**What already works, run `33582811064` on 2026-09-02:** the gate found a contribution inside six
+hours, the ledger refreshed to 1,158 rows, `--compose` built **23 creations**, the bot committed
+them as `45f8eaf6`, the `wikidata-garborg-day` artifact carried the `.qs` and the adjudication
+deck, and issue **#9** opened assigned to her. 9m21s, both jobs green. That was the item's stated
+deliverable — *"a run that finishes and uploads `reports/wikidata-garborg-day.qs` as an artifact,
+with the issue opened"* — and it is met.
 
-So once the queue above is worked, trigger the pipeline and let it produce tomorrow's batch rather
-than building it here. `.github/workflows/pipeline.yml`, `workflow_dispatch` with `force: true` if
-her last contribution is outside the six-hour window — though after a QuickStatements run it will
-not be.
+**So what is left is only the other two deliverables**, and each waits on its own item above:
 
-**The one failure it has had is already fixed, and saying otherwise was my error.** The
-2026-09-01 18:59 UTC run died on `FileNotFoundError: out/merged.ged` and I repeated that as a
-standing fault. It ran commit `b7b1f5d6`, which carried **none** of the three pieces that answer
-it: `out/family-structure.tsv.gz` was not committed, `pack-derived.py` did not list it, and
-`read_tree` had no fallback. All three landed afterwards. Nothing needs wiring — it needs
-**running**, and then the log read rather than assumed.
+- **the ledger archive** — § *A CI/CD job that archives the ledger's Wikidata items locally*
+- **the Pages site** — § *THE VERY LAST ITEM*
 
-**The point is the batch, not a green tick.** A run that finishes and uploads
-`reports/wikidata-garborg-day.qs` as an artifact, with the issue opened, is the deliverable.
+Once both jobs exist, dispatch once and check that a single run produces all three. Not three runs
+— her words are *"the ci/cd run"*, singular.
+
+**Two failures got it here, and both are worth not repeating.** The 18:59 run died on
+`FileNotFoundError: out/merged.ged` and was fixed by committing `family-structure.tsv.gz`, listing
+it in `pack-derived.py` and giving `read_tree` a fallback. The 21:50 run then died on
+`sqlite3.OperationalError: no such table: items`, because `out/wikidata/store-index.sqlite3` is
+gitignored and `sqlite3.connect` **creates an empty database** rather than raising. Both are the
+same shape: **a file the runner cannot have, reached by code that assumed it could.** Anything else
+added to this workflow should be checked against `.gitignore` first.
 
 ## The merges, with an HTML page to work them from
 

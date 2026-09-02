@@ -25187,3 +25187,28 @@ which needs `translit_scripts`).
 § *`exports/post-merge/`* — a live export campaign with a real stopping rule, *"export until every
 first-degree relative of every merged individual is present"*, not a standing measurement —
 § *LABELS, IN HER ORDER*, and the six tail items she ordered herself.
+
+## 2026-09-02 — the pipeline completed end to end for the first time
+
+**Run `33582811064`, 9m21s, both jobs green.** Dispatched to verify the store-index fix and it did
+the whole job unattended: the gate found a contribution inside six hours, the ledger refreshed to
+**1,158 rows**, `build-garborg-day.py --compose` produced **23 creations**, the bot committed them
+as `45f8eaf6`, the `wikidata-garborg-day` artifact carried the `.qs` and `out/parent-review.html`,
+and issue **#9** opened assigned to her.
+
+**It also regenerated `reports/parent-candidates.tsv`** and the placeholder and four-script label
+batches, which is the deck-on-the-pipeline wiring from earlier in the day working as intended
+rather than being asserted.
+
+**§ *Then: make CI/CD run and generate the NEXT batch* is cut back, not deleted.** Its stated
+deliverable — *"a run that finishes and uploads `reports/wikidata-garborg-day.qs` as an artifact,
+with the issue opened"* — is met and proven. What survives is the other two thirds of her sentence,
+*"the archive (committed) and the pages"*, each of which waits on its own item above; when those
+jobs exist the check is that **one** dispatch produces all three, since her words are singular.
+
+**Two failures got it here and they are the same shape.** 18:59 died on
+`FileNotFoundError: out/merged.ged`; 21:50 died on `sqlite3.OperationalError: no such table:
+items` because `out/wikidata/store-index.sqlite3` is gitignored and `sqlite3.connect` creates an
+empty database rather than raising. Both are **a file the runner cannot have, reached by code that
+assumed it could** — so anything added to this workflow gets checked against `.gitignore` first.
+That warning is now in the item.
