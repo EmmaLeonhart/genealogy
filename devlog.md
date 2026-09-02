@@ -25631,3 +25631,26 @@ marker out of 1,451,964, and the corpus keeps all 94,071 `Private` and 17,548 `<
 
 `CLAUDE.md` § *Anonymisation* now leads with her criterion and states outright that nobody is
 excluded, so the next summary cannot repeat the ambiguity.
+
+## 2026-09-02 — the `mul` step, and two kinds of unreadable label
+
+`scripts/build-mul-labels.py` → `reports/label-mul.tsv`, all 1,451,964 people. Her *"almost always
+derived from en"* is now measured: 1,292,894 already had `mul` identical to `en`, so the step is
+carrying `en` across and naming the exceptions. **5,901 gain a `mul` they did not have**, 131 of
+them already holding a Wikidata item.
+
+- **504 unnamed people were getting punctuation as a label** — `?` (223), `/???/` (134), `? /?/`
+  (68), `*` (29), `.`, `--`. Her line is *words yes, punctuation no*, so those become `NN`, while
+  the 44 word-markers (`未知` 23, `Без име` 18, `未詳`, `某`, `Неизвестна`) are preserved.
+- **34 labels already in `derived-labels.csv` had no word character at all.** 27 were invisible —
+  U+200F/U+200E bidi marks with spaces — and were hiding a real surname: `‏‏‎ ‎ /姬姓/` becomes
+  `NN 姬姓`. The other 7 were `???` from `(incognita) /???/` and `(Unknown) /???/`. None carried a
+  QID, so nothing wrong was live on Wikidata.
+
+**A bug caught in my own first pass:** `name_records` in `derived-labels.csv` is a **count**, not
+the records, so `is_redacted("1")` was the question being asked and the first categorisation of
+the 156,738 unlabelled people meant nothing. The raw GEDCOM name lives in `display-names.csv`.
+
+Still unknown and rostered: 33,982 with a name nothing derived a label from, overwhelmingly CJK
+and Hangul outside the `en` step's reach; 22,010 with no `NAME` record; 94,845 redacted and
+correctly empty. Next in her order is `ja`.

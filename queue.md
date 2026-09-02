@@ -224,8 +224,34 @@ words. So the batches are `en` for everybody, then `mul` for everybody, then `ja
   **Romanisations come only from Wikidata name items**, never from transliteration — her rule.
   `pykakasi` and the Unihan pinyin feed aliases and measurement, never an English label.
 
-- **`mul` for every individual, derived from `en`.** *"Almost always derived from en"* —
-  so the exceptions are the thing to find and report, not to guess at.
+- **`mul` for every individual — DONE 2026-09-02.** `scripts/build-mul-labels.py` →
+  `reports/label-mul.tsv`, all 1,451,964 people. *"Almost always derived from en"* is measured
+  rather than assumed: **1,292,894 already had `mul` identical to `en`**, so the step is carrying
+  `en` across and naming the exceptions.
+
+  | | |
+  | --- | ---: |
+  | kept, `mul` already equals `en` | 1,292,894 |
+  | none: redacted, correctly empty | 94,845 |
+  | **unknown: has a name, nothing derived a label** | **33,982** |
+  | none: no `NAME` record at all | 22,010 |
+  | NEW from the `en` step | 5,353 |
+  | kept, `mul` differs on purpose (a marker) | 2,298 |
+  | NEW: unnamed | 548 |
+  | FIXED: unreadable label | 34 |
+
+  **5,901 people gain a `mul` they did not have**, 131 of them already holding a Wikidata item.
+
+  **Two defects fixed, both labels nobody could read.** 504 unnamed people were getting `?`,
+  `???`, `*`, `.` or `--` as their `mul` — her line is *words yes, punctuation no*, so those
+  become the `NN` marker while the 44 word-markers (`未知`, `Без име`, `某`) are preserved as
+  § *`NN` is PRESERVED in `mul`* requires. And 34 labels already in `derived-labels.csv` had **no
+  word character at all** — 27 of them invisible bidi marks (U+200E/U+200F) hiding a real surname,
+  `‏‏‎ ‎ /姬姓/`. Those become `NN 姬姓`, keeping the surname. None of the 34 carried a QID, so
+  nothing wrong was ever live.
+
+  The 33,982 unknowns are overwhelmingly CJK and Hangul outside the `en` step's reach
+  (`光安正室 /斎藤/`, `씨 /이/`). Listed, not adjudicated.
 
 - **`ja` for every individual — and the native construction is the template.**
   **Emma, 2026-08-17:** *"That relationship description should be the template for how
