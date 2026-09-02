@@ -25690,3 +25690,27 @@ Also: `label-ja.tsv` (114 MB) and `label-mul.tsv` (160 MB) join the gzip list, a
 `pack-derived.py` now writes `mtime=0` — gzip stores the source mtime, so a repack of unchanged
 content was producing a diff on every `.gz`. The eight rewritten here were verified
 content-identical by decompressed sha256 before being committed.
+
+## 2026-09-02 — dead-queue sweep: the finished label steps cut out of LABELS
+
+Sections 15 → 15; the cut was **inside** § LABELS, which had three bullets annotated
+`DONE 2026-09-02` — exactly what queue.md's own rule forbids, since an annotated bullet still
+reads as a step. 3,350 characters removed.
+
+- **`en` for every individual** — done, `reports/label-en.tsv`, 15,846 labelled / 25,308
+  rostered. Recorded in devlog under *the `en` step is done* and in `2b76c567`.
+- **`mul` for every individual** — done, `reports/label-mul.tsv`, 5,901 gained. Recorded under
+  *the `mul` step, and two kinds of unreadable label* and in `730b6e52`.
+- **`ja` for every individual** — done, `reports/label-ja.tsv`, 190,206 labelled. Recorded under
+  *the `ja` step; katakana was the answer all along* and in `e61612dd`.
+
+**Cut back rather than deleted:** the `ja` bullet's follow-up is real work and survives as its own
+item — fetching the missing katakana, which is what 862,329 partials are waiting on. It keeps the
+two findings that should not be re-litigated (key a name item by its first Latin label only;
+`ヤコブ・ホシュベリ` is Wikidata's own data).
+
+**Checked and NOT dead:** the ledger-archive job (its artifact `out/garborg-full-items.json` is
+14 items from 2026-08-24, against the 1,089-row ledger the item asks for, and no workflow builds
+it); the Pages site (no workflow); the merges HTML page (no such file); the spine removal
+(`SPINE_PATHS` still in `build-garborg-day.py`); `exports/post-merge/` (blocked on Geni's export
+outage, not finished).

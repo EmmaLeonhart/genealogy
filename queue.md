@@ -206,90 +206,26 @@ words. So the batches are `en` for everybody, then `mul` for everybody, then `ja
   on it twice; these sets decide what a **marker** is. Widening detection is not
   widening suppression.
 
-- **`en` for every individual — DONE 2026-09-02.** `scripts/build-en-labels.py` →
-  `reports/label-en.tsv`, all 41,154 CJK-named people in one pass:
+- **Fetch the missing katakana — the highest-yield thing left in this programme.**
+  The `ja` step renders a name only when **every** token has a sourced katakana form, so
+  **862,329 people fail on a partial**. That is a store-coverage gap, not a language problem:
+  the commonest unrendered tokens are particles (`von` 44,703, `of`, `y`, `af`) and then
+  ordinary given names — `Carl` 14,141, `Anders` 13,916, `John` 10,916, `Margareta` 9,638,
+  `Johanna` 9,252, `Andersson` 8,227 — which **have** katakana on Wikidata but no name item
+  inside this Geni-shaped slice of it.
 
-  | | |
-  | --- | ---: |
-  | romanised from Wikidata name items | 13,171 |
-  | already had an English label | 2,675 |
-  | **unknown, rostered** | **25,308** |
+  Fetch them through `wbgetentities`, 50 ids a call, politely: § *Querying Wikidata is ALLOWED*.
+  Rank the tokens by how many people each unblocks, since one token can flip thousands of
+  people from partial to complete.
 
-  **3,829 of the labelled ones already have a Wikidata item.** Emma, 2026-09-02: *"just finish
-  I'm not asking for categorization lol just list these as unknowns if they are unclear lol"* —
-  so nothing here adjudicates. The unknowns split 23,360 with no Latin form anywhere, 1,284 with
-  no culture verdict, and 664 held because a Mandarin reading would be a wrong name. That is a
-  deck for later, not a blocker, and it shrinks as cultures get confirmed.
+  **The particles are a separate question and must not be guessed.** `von`, `af`, `de` and `y`
+  are not names and have conventional Japanese forms; they need her ruling or a source, not a
+  transliteration.
 
-  **Romanisations come only from Wikidata name items**, never from transliteration — her rule.
-  `pykakasi` and the Unihan pinyin feed aliases and measurement, never an English label.
-
-- **`mul` for every individual — DONE 2026-09-02.** `scripts/build-mul-labels.py` →
-  `reports/label-mul.tsv`, all 1,451,964 people. *"Almost always derived from en"* is measured
-  rather than assumed: **1,292,894 already had `mul` identical to `en`**, so the step is carrying
-  `en` across and naming the exceptions.
-
-  | | |
-  | --- | ---: |
-  | kept, `mul` already equals `en` | 1,292,894 |
-  | none: redacted, correctly empty | 94,845 |
-  | **unknown: has a name, nothing derived a label** | **33,982** |
-  | none: no `NAME` record at all | 22,010 |
-  | NEW from the `en` step | 5,353 |
-  | kept, `mul` differs on purpose (a marker) | 2,298 |
-  | NEW: unnamed | 548 |
-  | FIXED: unreadable label | 34 |
-
-  **5,901 people gain a `mul` they did not have**, 131 of them already holding a Wikidata item.
-
-  **Two defects fixed, both labels nobody could read.** 504 unnamed people were getting `?`,
-  `???`, `*`, `.` or `--` as their `mul` — her line is *words yes, punctuation no*, so those
-  become the `NN` marker while the 44 word-markers (`未知`, `Без име`, `某`) are preserved as
-  § *`NN` is PRESERVED in `mul`* requires. And 34 labels already in `derived-labels.csv` had **no
-  word character at all** — 27 of them invisible bidi marks (U+200E/U+200F) hiding a real surname,
-  `‏‏‎ ‎ /姬姓/`. Those become `NN 姬姓`, keeping the surname. None of the 34 carried a QID, so
-  nothing wrong was ever live.
-
-  The 33,982 unknowns are overwhelmingly CJK and Hangul outside the `en` step's reach
-  (`光安正室 /斎藤/`, `씨 /이/`). Listed, not adjudicated.
-
-- **`ja` for every individual — DONE 2026-09-02.** `scripts/build-ja-labels.py` →
-  `reports/label-ja.tsv`, all 1,451,964 people. **190,206 carry a `ja` label**, 9,746 of them
-  already holding a Wikidata item.
-
-  **Emma, 2026-09-02, removing the objection that had held this back:** *"Wtf lol that's why we
-  have katakana facepalm"*. The step was blocked on `Gerard Spencerの娘` mixing scripts;
-  katakana is the answer and always was.
-
-  | | |
-  | --- | ---: |
-  | rendered in katakana | 149,052 |
-  | from the Han name, as written | 41,154 |
-  | unknown: only SOME tokens render | 862,329 |
-  | unknown: no token has a katakana form | 222,719 |
-  | unknown: no English label to render | 131,489 |
-  | unknown: the label is not plain Latin | 45,221 |
-
-  **Nothing is transliterated.** The katakana comes from Wikidata's own name items — the same
-  source the romanisation reads in the other direction — 33,390 Latin tokens with a sourced
-  Japanese form. A partly-rendered name is not emitted; the sole exception is a middle initial,
-  which keeps its Latin letter per her 2026-08-27 ruling.
-
-  **TO DO — the 862,329 partials are a STORE-COVERAGE gap, not a language problem.** The
-  commonest unrendered tokens are particles (`von` 44,703, `of`, `y`, `af`) and then ordinary
-  given names (`Carl` 14,141, `Anders` 13,916, `John` 10,916) which have katakana on Wikidata
-  but no name item inside this Geni-shaped slice. **Fetching the top few thousand from live
-  Wikidata is the single highest-yield follow-up in the label programme** — batched through
-  `wbgetentities`, which takes 50 ids a call.
-
-  **Two things measurement settled, recorded so they are not re-litigated:**
-
-  - **Key the name item by its FIRST Latin label only.** Keying every Latin label raises the
-    token count 32,845 → 41,187 and is garbage: `sayaka`, `solovjev` and `muhàmmad` all come
-    out `アニェッリ` (*Agnelli*). An obvious-looking coverage win, refuted by reading it.
-  - **`Jakob Forsberg` → `ヤコブ・ホシュベリ` is Wikidata's own data, not a mis-join.**
-    `Q21492950` *Forsberg* carries `ホシュベリ` (Forsberg is ordinarily フォルスベリ). § *The
-    purpose is to ADD to Wikidata, not to correct it* governs: it is sourced and it stands.
+  **Two findings not to re-litigate**, both measured 2026-09-02: key a name item by its **first**
+  Latin label only — keying every one lifts the table 32,845 → 41,187 and makes `sayaka`,
+  `solovjev` and `muhàmmad` all read `アニェッリ`; and `Jakob Forsberg` → `ヤコブ・ホシュベリ`
+  is Wikidata's own data on `Q21492950`, not a mis-join, so it stands.
 
 - **`zh` for every individual.** Same string as `ja` for a Han name; the 291 people
   whose name carries **kana** are the ones needing a real Chinese form.
