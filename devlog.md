@@ -26166,3 +26166,21 @@ repositories to anyone reading the code. Removed; no source file links a reposit
 **Two CI failures in a row, both mine, both from the same commit-and-move-on pattern** — the
 spine removal left dead generators, and the Pages site shipped a link her rules forbid. Neither
 was findable here, which is the argument for the CI-only rule rather than against it.
+
+## 2026-09-02 — the QuickStatements go ON the Pages site, not into a zip
+
+Emma: *"idk what a github artifact is but a non-attached zip file in the email is way worse than
+having the quickstatements just on a page on github pages lol, that's kinda why I made github
+pages."*
+
+She is right and it is the point of the site. `build-pages-site.py` now writes a page per batch —
+`wikidata-garborg-day.html` (148 KB, the full batch) and `wikidata-garborg-name-items.html` — each
+carrying the statements as selectable text with a **Copy all** button and a link to
+QuickStatements, and the index links both at the top under *The QuickStatements to run*.
+
+**The ordering built earlier is what makes this correct rather than stale.** `pipeline.yml` calls
+the Pages workflow *after* `--compose`, so the page carries the batch that run just produced —
+not whatever the 06:23 schedule last saw.
+
+The artifact and the issue body stay as they are; this adds a delivery she can actually use rather
+than removing one.

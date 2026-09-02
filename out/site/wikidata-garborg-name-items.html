@@ -1,0 +1,139 @@
+
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Name items — QuickStatements</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+:root{--bg:#f4f6f8;--surface:#fff;--ink:#141820;--muted:#5f6875;--line:#dce1e8;--accent:#2f4f8f}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0e1116;--surface:#161a21;--ink:#e7eaf0;--muted:#98a1b0;--line:#262d38;--accent:#8aa9e8}}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);margin:0;padding:24px 20px 60px;
+  font:15px/1.6 "IBM Plex Sans",system-ui,sans-serif}
+.wrap{max-width:1000px;margin:0 auto}
+h1{font:600 22px/1.2 "IBM Plex Sans",sans-serif;margin:0 0 4px}
+.sub{color:var(--muted);font-size:13.5px;margin-bottom:16px}
+.bar{display:flex;gap:9px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
+button,a.btn{background:var(--accent);color:#fff;border:0;border-radius:8px;padding:9px 15px;
+  font:500 13.5px "IBM Plex Sans",sans-serif;cursor:pointer;text-decoration:none}
+pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px;
+  overflow:auto;max-height:74vh;font:400 12.5px/1.5 "IBM Plex Mono",monospace;
+  white-space:pre;tab-size:8}
+a{color:var(--accent)}
+</style></head><body><div class="wrap">
+<h1>Name items</h1>
+<p class="sub">30 statement lines · generated 2026-09-02 · paste into
+<a href="https://quickstatements.toolforge.org/#/batch" target="_blank" rel="noopener">QuickStatements</a>
+(version 1 syntax, tab-separated)</p>
+<div class="bar">
+  <button id="copy">Copy all</button>
+  <a class="btn" href="./">Back to the site</a>
+  <span class="sub" id="said"></span>
+</div>
+<pre id="qs"># Name items the Garborg batches need, AND the statements that use them.
+#
+# Each CREATE is followed by `Qperson  Pprop  LAST` for every bearer who
+# ALREADY holds a QID -- LAST is exactly how you point at what was just
+# created. A person this run is also CREATING cannot be linked here, because
+# LAST would then name the person; they wait for the next run.
+#
+# A patronymic is its own item even where the spelling exists as a given
+# name: CLAUDE.md, one name item per USAGE. Emma&#x27;s Q141152710 Aadnesson is
+# the pattern -- labels, P31, nothing else.
+
+# Voster -- family, 6 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to &quot;Voster&quot;
+LAST	Len	&quot;Voster&quot;
+#   set the mul label to &quot;Voster&quot;
+LAST	Lmul	&quot;Voster&quot;
+#   set the en description to &quot;family name&quot;
+LAST	Den	&quot;family name&quot;
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   Q141205913 Ingebret Pederson Voster: P734 family name = the item just created
+Q141205913	P734	LAST	S2600	&quot;6000000007980389582&quot;
+#   Q141242562 Peder Jonsen Voster: P734 family name = the item just created
+Q141242562	P734	LAST	S2600	&quot;6000000007980605161&quot;
+#   Q141198755 Anna Ingebretsdatter Voster: P734 family name = the item just created
+Q141198755	P734	LAST	S2600	&quot;6000000007980728952&quot;
+#   Q141223551 Ragnhild Ingebretsdatter Voster: P734 family name = the item just created
+Q141223551	P734	LAST	S2600	&quot;6000000007980728958&quot;
+#   Q141244126 Valborg Ingebretsdatter Voster: P734 family name = the item just created
+Q141244126	P734	LAST	S2600	&quot;6000000007980728964&quot;
+#   Q141244116 NN Voster: P734 family name = the item just created, qualified P3831 object of statement has role Q28418670 married name
+Q141244116	P734	LAST	P3831	Q28418670	S2600	&quot;6000000015302207141&quot;
+
+# Rasmussen -- patronymic, 5 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to &quot;Rasmussen&quot;
+LAST	Len	&quot;Rasmussen&quot;
+#   set the mul label to &quot;Rasmussen&quot;
+LAST	Lmul	&quot;Rasmussen&quot;
+#   set the en description to &quot;patronymic&quot;
+LAST	Den	&quot;patronymic&quot;
+#   P31 instance of = Q110874 patronymic
+LAST	P31	Q110874
+#   Q141216381 Hans Rasmussen Låge-Håland: P5056 patronym or matronym = the item just created
+Q141216381	P5056	LAST	S2600	&quot;6000000009127934231&quot;
+#   Q141257264 Lydik Rasmussen Amdal: P5056 patronym or matronym = the item just created, qualified P144 based on Q141257299 Rasmus Lydikson Amdal
+Q141257264	P5056	LAST	P144	Q141257299	S2600	&quot;6000000023605569477&quot;
+#   Q141223738 Ola Rasmussen Bø: P5056 patronym or matronym = the item just created, qualified P144 based on Q141200074 Rasmus Olsen Bø
+Q141223738	P5056	LAST	P144	Q141200074	S2600	&quot;6000000196541254827&quot;
+#   Q141242406 Hans Rasmussen Bø: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189099 Rasmus Helgesen Bø
+Q141242406	P5056	LAST	P144	Q141189099	S2600	&quot;6000000225376735889&quot;
+#   Q141242555 Ola Rasmussen Bø: P5056 patronym or matronym = the item just created, qualified P144 based on Q141189099 Rasmus Helgesen Bø
+Q141242555	P5056	LAST	P144	Q141189099	S2600	&quot;6000000225376871825&quot;
+
+# Ekebyholm -- family, 4 bearer(s) in the batches
+# create a new item
+CREATE
+#   the item just created: set the en label to &quot;Ekebyholm&quot;
+LAST	Len	&quot;Ekebyholm&quot;
+#   set the mul label to &quot;Ekebyholm&quot;
+LAST	Lmul	&quot;Ekebyholm&quot;
+#   set the en description to &quot;family name&quot;
+LAST	Den	&quot;family name&quot;
+#   P31 instance of = Q101352
+LAST	P31	Q101352
+#   Q109296398 Fredrika Eleonora Arvidsdotter Horn af Ekebyholm: P734 family name = the item just created
+Q109296398	P734	LAST	S2600	&quot;6000000006127496847&quot;
+#   Q5813616 Adam Horn af Ekebyholm till Ekebyholm: P734 family name = the item just created
+Q5813616	P734	LAST	S2600	&quot;6000000007285499105&quot;
+#   Q19678400 Eva Horn af Ekebyholm: P734 family name = the item just created
+Q19678400	P734	LAST	S2600	&quot;6000000007286110282&quot;
+#   Q717179 Arvid Bernhard Horn af Ekebyholm: P734 family name = the item just created
+Q717179	P734	LAST	S2600	&quot;6000000011637024489&quot;
+
+# 344 more name items are needed and wait for a later
+# run -- 3 a day is her cap, not a limit of the data:
+#   Kristiansen (patronymic), 4 bearer(s)
+#   Låge-Håland (family), 4 bearer(s)
+#   Tormodsdatter (patronymic), 4 bearer(s)
+#   Asbjørnsdatter (patronymic), 3 bearer(s)
+#   Frondin (family), 3 bearer(s)
+#   Garfve (family), 3 bearer(s)
+#   Hakunge (family), 3 bearer(s)
+#   Hansen (patronymic), 3 bearer(s)
+#   Hansson (patronymic), 3 bearer(s)
+#   Helgesen (patronymic), 3 bearer(s)
+#   Høle (family), 3 bearer(s)
+#   Ingebretsdatter (patronymic), 3 bearer(s)
+#   ... and 332 more
+
+</pre>
+<script>
+document.getElementById("copy").addEventListener("click", function () {
+  var t = document.getElementById("qs").textContent;
+  navigator.clipboard.writeText(t).then(function () {
+    document.getElementById("said").textContent = "copied " + t.split("
+").length + " lines";
+  }, function () {
+    document.getElementById("said").textContent = "could not copy - select the text instead";
+  });
+});
+</script>
+</div></body></html>

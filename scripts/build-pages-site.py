@@ -19,6 +19,7 @@ Writes `out/site/index.html`. The workflow in `.github/workflows/pages.yml` publ
 from __future__ import annotations
 
 import csv
+import datetime
 import gzip
 import html
 import io
@@ -33,6 +34,18 @@ csv.field_size_limit(1 << 30)
 TAB = chr(9)
 OUT = ROOT / "out" / "site" / "index.html"
 CLAUDE = ROOT / "CLAUDE.md"
+
+#: The batches she actually runs. Emma, 2026-09-02: *"idk what a github artifact is but a
+#: non-attached zip file in the email is way worse than having the quickstatements just on a
+#: page on github pages lol, that's kinda why I made github pages."* So the QuickStatements go
+#: ON the site as text she can select and copy, not into a zip she has to find in a run.
+#:
+#: `pipeline.yml` calls the Pages workflow AFTER `--compose`, so the page carries the batch
+#: that run just built rather than whatever the last schedule happened to see.
+BATCHES = [
+    ("The daily batch", "reports/wikidata-garborg-day.qs"),
+    ("Name items", "reports/wikidata-garborg-name-items.qs"),
+]
 
 
 def esc(s):
@@ -154,9 +167,85 @@ MODELLING = [
 ]
 
 
+BATCH_PAGE = """
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>%s — QuickStatements</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+:root{--bg:#f4f6f8;--surface:#fff;--ink:#141820;--muted:#5f6875;--line:#dce1e8;--accent:#2f4f8f}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0e1116;--surface:#161a21;--ink:#e7eaf0;--muted:#98a1b0;--line:#262d38;--accent:#8aa9e8}}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);margin:0;padding:24px 20px 60px;
+  font:15px/1.6 "IBM Plex Sans",system-ui,sans-serif}
+.wrap{max-width:1000px;margin:0 auto}
+h1{font:600 22px/1.2 "IBM Plex Sans",sans-serif;margin:0 0 4px}
+.sub{color:var(--muted);font-size:13.5px;margin-bottom:16px}
+.bar{display:flex;gap:9px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
+button,a.btn{background:var(--accent);color:#fff;border:0;border-radius:8px;padding:9px 15px;
+  font:500 13.5px "IBM Plex Sans",sans-serif;cursor:pointer;text-decoration:none}
+pre{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px;
+  overflow:auto;max-height:74vh;font:400 12.5px/1.5 "IBM Plex Mono",monospace;
+  white-space:pre;tab-size:8}
+a{color:var(--accent)}
+</style></head><body><div class="wrap">
+<h1>%s</h1>
+<p class="sub">%s statement lines · generated %s · paste into
+<a href="https://quickstatements.toolforge.org/#/batch" target="_blank" rel="noopener">QuickStatements</a>
+(version 1 syntax, tab-separated)</p>
+<div class="bar">
+  <button id="copy">Copy all</button>
+  <a class="btn" href="./">Back to the site</a>
+  <span class="sub" id="said"></span>
+</div>
+<pre id="qs">%s</pre>
+<script>
+document.getElementById("copy").addEventListener("click", function () {
+  var t = document.getElementById("qs").textContent;
+  navigator.clipboard.writeText(t).then(function () {
+    document.getElementById("said").textContent = "copied " + t.split("
+").length + " lines";
+  }, function () {
+    document.getElementById("said").textContent = "could not copy - select the text instead";
+  });
+});
+</script>
+</div></body></html>
+"""
+
+
+def batch_pages():
+    """`[(title, rel, statements, html filename)]`, one page per QuickStatements batch."""
+    made = []
+    for title, rel in BATCHES:
+        p = ROOT / rel
+        if not p.exists():
+            continue
+        text = p.read_text(encoding="utf-8", errors="replace")
+        stmts = sum(1 for l in text.splitlines()
+                    if l.strip() and not l.lstrip().startswith("#"))
+        name = Path(rel).stem + ".html"
+        page = BATCH_PAGE % (esc(title), esc(title), n(stmts),
+                             datetime.date.today().isoformat(), esc(text))
+        (OUT.parent / name).parent.mkdir(parents=True, exist_ok=True)
+        io.open(OUT.parent / name, "w", encoding="utf-8", newline="").write(page)
+        made.append((title, rel, stmts, name))
+    return made
+
+
 def main() -> int:
     f = facts()
+    batches = batch_pages()
     secs = claude_sections()
+    batch_html = "".join(
+        '<article><h3><a href="%s">%s</a></h3><p>%s statement lines, ready to paste '
+        'into QuickStatements &mdash; on the page, not in a zip.</p>'
+        '<p class="src"><code>%s</code></p></article>'
+        % (esc(name), esc(title), n(stmts), esc(rel))
+        for title, rel, stmts, name in batches) or (
+        '<article><p>No batch has been generated yet.</p></article>')
     print("%d rule sections read from CLAUDE.md" % len(secs))
 
     rows = "".join(
@@ -238,6 +327,9 @@ Wikidata, and generate the edits that create the people Wikidata is missing. The
 ID is the primary key throughout, so joining is exact rather than fuzzy name matching.</p>
 </header>
 
+<h2>The QuickStatements to run</h2>
+%s
+
 <h2>The corpus, counted at build time</h2>
 <div class="stats">%s</div>
 
@@ -257,7 +349,7 @@ the decisions this project runs on and why each was made.</p>
 <footer>Generated by <code>scripts/build-pages-site.py</code> from the repository itself —
 every figure above is counted at build time rather than written down.</footer>
 </div></body></html>
-""" % (rows, model, algos, rules)
+""" % (batch_html, rows, model, algos, rules)
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     io.open(OUT, "w", encoding="utf-8", newline="").write(page)
