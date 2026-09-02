@@ -1,4 +1,5 @@
-"""Rebuild the synoptic tree and everything derived from it, ending with the batch.
+"""Rebuild the synoptic tree — the GENI UNION, every `.ged` under `exports/` merged — and
+everything derived from it, ending with the batch.
 
     python scripts/rebuild-everything.py
 

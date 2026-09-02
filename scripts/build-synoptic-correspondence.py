@@ -52,7 +52,7 @@ def date_refuted():
     **Emma, 2026-08-24, on the walk's date conflicts:** *"All these ones look easy."*
     They are: `Eufemia von Hirscher` 1166-1229 paired with `Margaret of Nuremberg`
     1359-1390 is not a judgement call, it is a pairing that cannot be right. So they are
-    dropped here rather than carried into the synoptic tree and left for a human to
+    dropped here rather than carried into the full union and left for a human to
     re-notice.
 
     **Only `structural` pairs are dropped.** A `wikidata-p2600` pair whose dates disagree

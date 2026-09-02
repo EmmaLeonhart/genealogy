@@ -29,7 +29,10 @@ add a pass that "fixes" them mid-run, and do not treat one as a bug report.
    the items BY HAND, continuously*, and git records what a batch *offered*, not what exists.
 2. **Take those out**, and check the actual state of what remains against **the ideal state**.
 
-**The ideal state is the union of the synoptic tree and the Geni tree.** Not the Geni tree alone
+**The ideal state is what Wikidata already holds plus what Geni supports** — her ruling,
+2026-09-01. It used to read *"the union of the synoptic tree and the Geni tree"*, which is a
+tautology if *synoptic* means the Geni union and a redundancy if it means the full union; neither
+was what she meant. Not the Geni tree alone
 and not Wikidata's current contents: the model says what each item *should* hold, and the diff
 against reality says what is emittable. `scripts/model-vs-reality.py` is the existing half of
 this; its `missing` column is the emittable set and its `CONFLICT` column goes out beside what is

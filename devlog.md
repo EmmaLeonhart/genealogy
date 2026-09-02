@@ -25129,3 +25129,40 @@ Read by eye: `스반힐드 하욱발드스타드의 올케`, `마리안느 호�
 the honest response is to emit nothing rather than assert a seniority we never measured. They will
 resolve as exports fill in, with no code change. 207 passed on the label, placeholder, preview and
 join tests.
+
+## 2026-09-01 — "synoptic tree" is defined once, and one sentence meant neither thing
+
+**Queue item cleared: § *"Synoptic tree" means two different things*.** Her 2026-08-29 diagnosis:
+*"it is consistently conflated between the union of all the geni gedcoms and the union of that tree
+with all data sources."*
+
+**Measured before deciding anything.** `scripts/census-synoptic-usages.py` →
+`reports/synoptic-usages.tsv`: **975 usages across 61 files**, of which **81 are live prose** —
+the rest are `devlog.md` history, saved transcripts, or the census counting its own output.
+
+**Her instruction was `AskUserQuestion` on every usage; 81 is not answerable one at a time**, so
+they were grouped by what the sentence is *doing* and she was asked about the kinds. Her ruling:
+apply the ones the code settles, because those are facts rather than preferences.
+
+- *"rebuild the synoptic tree"* (8) — `rebuild-everything.py` merges `exports/`: **the Geni union**.
+- *"merged into the synoptic tree"* (10) — a new source: **the Geni union**.
+- *"building up this synoptic tree"* via the structural walk (7) — joins Geni to Wikidata:
+  **the full union**.
+
+**Most of those 23 are inside her own quoted sentences and were left verbatim.** A quote that has
+been tidied is no longer evidence of what she said, so the gloss goes in the prose around it. Three
+of my own docstrings were disambiguated — `rebuild-everything.py`, `build-synoptic-correspondence.py`,
+`scraped_pages.py` — and the definition now lives once in `CLAUDE.md` § *"SYNOPTIC TREE" — the two
+things it means*.
+
+**And the census caught a sentence that meant NEITHER.** *"The ideal state is the union of the
+synoptic tree and the Geni tree"*, in `docs/daily-algorithm.md` and `CLAUDE.md`, with `CLAUDE.md`
+adding *"the synoptic half does not exist yet"*. That is a tautology if *synoptic* is the Geni union
+and a redundancy if it is the full union — which is how it was spotted. Her ruling: it means
+**Wikidata's state ∪ Geni's state**, what the item already holds plus what Geni supports. Both
+files now say that.
+
+**She had also called the question moot** — *"I'm pretty sure the gedcom we added as a workaround
+makes this question obsolete"* — and she was right about the mechanism: `wikidata-qid-links.ged`
+puts the QIDs in the corpus so they arrive in the merge either way. Nothing waited on the
+definition; what the definition fixes is prose that could not be read.

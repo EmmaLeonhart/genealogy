@@ -2,27 +2,6 @@
 
 Only work. Every specification and record moved to `CLAUDE.md` on 2026-09-01 at her instruction: *"remove all the 14 bullshit queue items"*. An item is DELETED when done, never annotated.
 
-## "Synoptic tree" means two different things — resolve it usage by usage
-
-**Emma, 2026-08-29, asked what it concretely is:** *"it is consistently conflated between the union
-of all the geni gedcoms and the union of that tree with all data sources."*
-
-So the term carries two meanings and the repo does not distinguish them:
-
-- **the Geni union** — every `.ged` under `exports/` merged, i.e. `out/merged.ged`
-- **the full union** — that tree joined to every other source, Wikidata above all
-
-**Her instruction: `AskUserQuestion` on every specific usage** — *"Add to the end of the queue a
-task to run AskUserQuestion on every specific usage as the full version geni union idk or custom"*.
-So go through every place the phrase appears in `CLAUDE.md`, `queue.md`, `docs/` and the scripts,
-and put each one to her as *Geni union / full union / something else*, rather than picking a
-definition and applying it everywhere.
-
-**She also considers the immediate question moot:** *"I'm pretty sure the gedcom we added as a
-workaround makes this question obsolete"* — `exports/post-merge/wikidata-qid-links.ged` puts the
-Wikidata links into the corpus, so they arrive in the merge either way and nothing waits on the
-definition being settled.
-
 ## `P1814` *name in kana* — the research half, and it has nothing to attach to yet
 
 **Emma, 2026-08-29:** *"do a cjk label conversion thing with research to fill in the korean and

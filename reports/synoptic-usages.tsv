@@ -1,13 +1,20 @@
 file	line	verdict	text
-CLAUDE.md	1800	unclear	**The method is structural.** *"For the synoptic tree, we're supposed to be
-CLAUDE.md	1803	unclear	relationships. That is a critical part of building up this synoptic tree."* Start
-CLAUDE.md	1968	full	### The Wikidata link goes in the bio during the SYNOPTIC TREE BUILD. Geni is not edited
-CLAUDE.md	1974	full	> the Synoptic tree, we put the Wikidata links into bios during the build process of the Synoptic
-CLAUDE.md	1976	unclear	> the IDs to ensure that they haven't been merged or anything... Forcing them into this Synoptic
-CLAUDE.md	1977	unclear	> tree like this makes it so that the Synoptic tree, when it starts being used as an input, does
-CLAUDE.md	1981	full	re-exports for this purpose. The QID is written into the person's bio field in the synoptic tree
-CLAUDE.md	1988	unclear	**What the bio link is FOR, in her words, 2026-08-29:** *"When the synoptic tree is merged we
-CLAUDE.md	2277	unclear	the people as we add more since we want all these bureatten people in the geni synoptic tree and
+CLAUDE.md	763	unclear	regenerating the ledger, but 90% of the time we are not gonna want to rebuild the synoptic
+CLAUDE.md	774	geni	- **The synoptic tree — almost never.** `scripts/rebuild-everything.py` merges the whole corpus:
+CLAUDE.md	777	unclear	not ask you to make the synoptic tree just to refresh the ledger."*
+CLAUDE.md	2215	unclear	**The method is structural.** *"For the synoptic tree, we're supposed to be
+CLAUDE.md	2218	unclear	relationships. That is a critical part of building up this synoptic tree."* Start
+CLAUDE.md	2430	full	### The Wikidata link goes in the bio during the SYNOPTIC TREE BUILD. Geni is not edited
+CLAUDE.md	2436	full	> the Synoptic tree, we put the Wikidata links into bios during the build process of the Synoptic
+CLAUDE.md	2438	unclear	> the IDs to ensure that they haven't been merged or anything... Forcing them into this Synoptic
+CLAUDE.md	2439	unclear	> tree like this makes it so that the Synoptic tree, when it starts being used as an input, does
+CLAUDE.md	2443	full	re-exports for this purpose. The QID is written into the person's bio field in the synoptic tree
+CLAUDE.md	2450	unclear	**What the bio link is FOR, in her words, 2026-08-29:** *"When the synoptic tree is merged we
+CLAUDE.md	2726	unclear	the people as we add more since we want all these bureatten people in the geni synoptic tree and
+CLAUDE.md	3059	unclear	**The one thing still outstanding: the ideal state is the union of the synoptic tree and the
+CLAUDE.md	3060	unclear	Geni tree**, and the synoptic half does not exist yet. That is the § *PREREQUISITE ORDER* item,
+CLAUDE.md	3427	unclear	`Link reliability order`, `The chain of provenance`, `How the synoptic tree is actually made`,
+CLAUDE.md	3446	full	scalable zipper thing much later"* · the `synoptic tree` vocabulary split · **creating the
 devlog.md	1254	unclear	The user stated the project's purpose plainly this tick: one growing **synoptic**
 devlog.md	1255	geni	tree. What makes it synoptic is that the graph is connected, and the merge step
 devlog.md	2916	geni	The synoptic GEDCOM is `out/merged.ged`, 262 MB, gitignored, rebuilt with
@@ -73,41 +80,59 @@ devlog.md	19734	unclear	on https://www.geni.com/profile/index/600000022746455688
 devlog.md	19735	unclear	tree and then rebuild the synoptic tree, and then generate the quickstaements with the algorithm"*
 devlog.md	19788	full	**`CLAUDE.md` § *The Wikidata link goes in the bio during the SYNOPTIC TREE BUILD. Geni is not
 devlog.md	19791	full	complicated than it actually should be. In the Synoptic tree, we put the Wikidata links into bios
+devlog.md	21112	unclear	genuinely outstanding line (the synoptic half of the union does not exist) is all that remains.
+devlog.md	22038	full	so does the queue's own § *The Wikidata link goes in the bio during the SYNOPTIC TREE BUILD*. What
+devlog.md	22121	unclear	the whole synoptic tree. *"I did not ask you to make the synoptic tree just to refresh the
+devlog.md	22439	unclear	stale one re-creates her own work; the synoptic tree almost never, because it is ~14 minutes at
+devlog.md	23083	geni	**§ *Build the synoptic tree* deleted.** Her call: *"the merge is a command, not a project."*
+devlog.md	23399	unclear	## 2026-08-31 — two items closed: the succession roster, and how the synoptic tree is made
+devlog.md	23407	unclear	**§ *How the synoptic tree is actually made* closed** → `docs/synoptic-correspondence.md`, written
+devlog.md	23409	unclear	*"I'm going to treat the synoptic tree as though it is perfect."*
+devlog.md	23458	unclear	**One thing to flag about this sweep's own brief.** It lists *How the synoptic tree is actually
+devlog.md	23461	unclear	analysis of how the synoptic tree is actually made"*), not a specification of how work is done,
+devlog.md	23462	unclear	and the analysis now exists as `docs/synoptic-correspondence.md` with nothing lost. Recording the
+devlog.md	23656	unclear	**Checked: 7 of the 9 were already in `reports/synoptic-correspondence.tsv`.** Known through the
+devlog.md	23661	unclear	**Fixed by using the union rather than one source.** `synoptic-correspondence.tsv` is that union,
+devlog.md	23662	unclear	565,348 pairs across eight sources; `docs/synoptic-correspondence.md`, written earlier today, is
+devlog.md	23721	full	outside `garborg-qids.tsv` but are known through `synoptic-correspondence.tsv` — the same widening
+devlog.md	23855	unclear	`reports/synoptic-correspondence.tsv`.** They are hers by hand, from identities she *"put a lot of
+devlog.md	24608	full	`zipper-join` or `build-synoptic-correspondence` — zero occurrences in either log.
+devlog.md	24672	unclear	still 08-26, `synoptic-correspondence.tsv` still 08-31 — the two scripts have not run) ·
+devlog.md	24720	unclear	reports/synoptic-correspondence 565,348 -> 568,955 +3,607
+devlog.md	24742	unclear	`reports/synoptic-correspondence.tsv`. There is nothing for a refutation feeder to do.
+devlog.md	24851	unclear	Geni profile is one item and `reports/synoptic-correspondence.tsv` says it is also an older one,
+devlog.md	25097	unclear	**Checked and left alone:** § *"Synoptic tree" means two things* (needs her per-usage ruling),
 docs/daily-algorithm.md	32	unclear	**The ideal state is the union of the synoptic tree and the Geni tree.** Not the Geni tree alone
 docs/dictation/2026-08-26-daily-algorithm.md	18	unclear	the synoptic tree and the janny tree. In the arnie area, it's really clear. It finds, within this
 docs/mass-export-run.md	36	unclear	https://www.geni.com/profile/index/6000000227464556886 and incorporate them into the synoptic
 docs/mass-export-run.md	37	unclear	tree and then rebuild the synoptic tree, and then generate the quickstatements with the
 docs/mass-export-run.md	172	unclear	injection into the synoptic tree build. Both the novelty and the purpose are gone.
+docs/synoptic-correspondence.md	1	unclear	# How the synoptic correspondence is actually made
+docs/synoptic-correspondence.md	3	unclear	**Emma, 2026-08-25:** *"Put into the queue also an analysis of how the synoptic tree is actually
+docs/synoptic-correspondence.md	5	unclear	synoptic tree as though it is perfect, and we are going to address whether the synoptic tree is
+docs/synoptic-correspondence.md	7	unclear	`scripts/build-synoptic-correspondence.py` does, and a list of the places it is doing something
+docs/synoptic-correspondence.md	19	unclear	`reports/synoptic-correspondence.tsv` is the union; `reports/synoptic-conflicts.tsv` is the 410.
+docs/synoptic-correspondence.md	82	unclear	`synoptic-conflicts.tsv`, so a consumer of the correspondence gets both pairs silently.
 edit-objects.md	23	full	We hold a synoptic tree — Wikidata items with their whole JSON, Geni people with
 orderlife/analysis/cycle_policy.md	13	unclear	device for linking people across time and space, and it is building a **synoptic
 orderlife/analysis/shadow_audit.md	36	unclear	right is a per-record judgement, and this dump is a synoptic mythology where
-queue.md	36	unclear	`Link reliability order`, `The chain of provenance`, `How the synoptic tree is actually made`,
-queue.md	189	unclear	- **The ideal state is still the Geni tree alone.** Her spec says the **union of the synoptic
-queue.md	190	unclear	tree and the Geni tree**; the synoptic half does not exist yet, which is the § *PREREQUISITE
-queue.md	931	unclear	export alone. If it does then that'll be great. We'll have a synoptically
-queue.md	988	unclear	## Fix the surnames of the tier-2 placeholders before the synoptic tree is built
-queue.md	1047	unclear	**Emma, 2026-08-18. Do this BEFORE the synoptic tree is built. Not an investigation
-queue.md	1135	unclear	thing so that we can deal with more important stuff."* Read as the synoptic-tree build
-queue.md	1157	unclear	## Build the synoptic tree
-queue.md	1233	unclear	## How the synoptic tree is actually made — Emma, 2026-08-25
-queue.md	1235	unclear	**Her words:** *"Put into the queue also an analysis of how the synoptic tree is actually made."*
-queue.md	1237	unclear	over the synoptic tree stuff sufficiently, but I'm going to treat it as though it's all good. I'm
-queue.md	1238	unclear	going to treat the synoptic tree as though it is perfect, and we are going to address whether the
-queue.md	1239	unclear	synoptic tree is well functioning later."*
-queue.md	1241	unclear	So **nothing waits on this.** Write down what `scripts/build-synoptic-correspondence.py` actually
-queue.md	1379	full	## The eight Asian identities — bios get their QID links AT SYNOPTIC-MERGE TIME, not now
-queue.md	1382	unclear	*"No fuck you you didn't get the later discussion. When the synoptic tree is merged we change all
-queue.md	1387	full	bio link is a *step inside the synoptic tree build*, and its purpose is to feed the **Wikidata
-queue.md	1402	full	§ *The Wikidata link goes in the bio during the SYNOPTIC TREE BUILD* already recorded the
-queue.md	1699	both named	## THE LAST ITEM — rebuild the synoptic tree, which is how the QID-link GEDCOM gets tested
-queue.md	1701	unclear	**Emma, 2026-08-29:** *"don't test it now but make the last queue item rebuilding the synoptic
-queue.md	1723	unclear	number; the first version emitted 83,988 people off `reports/synoptic-correspondence.tsv` and that
-queue.md	1799	full	- The Wikidata link goes into bios **during the synoptic tree build**; Geni is never edited for it.
-queue.md	1818	unclear	## "Synoptic tree" means two different things — resolve it usage by usage
-queue.md	2047	unclear	Geni record in there overwrites the same Geni ID from any other export** in the synoptic
-queue.md	2176	unclear	runner, so the synoptic tree still cannot be rebuilt in Actions without a larger runner.
+queue.md	5	unclear	## "Synoptic tree" means two different things — resolve it usage by usage
+queue.md	76	unclear	Geni record in there overwrites the same Geni ID from any other export** in the synoptic
+queue.md	223	unclear	runner, so the synoptic tree still cannot be rebuilt in Actions without a larger runner.
 reports/audit-transcripts-2026-08-15.md	60	full	| J | **Descent-from-antiquity people with neither a Geni nor a Wikidata link** — *"I want to include everything here in the synoptic tree… flagging whether an individual is a [DFA] individual"* | 08-
 reports/farmname-seed-fixes.md	3	unclear	Emma, 2026-08-18: *"uhh farm names are surnames here lol"* --- and *"add a task in the queue to fix the surnames of these people before the synoptic tree is built. I will do the editing on geni for th
+reports/garborg-carry-forward.tsv	43	full	6000000012007377976 already identified as Q135480174 via zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
+reports/garborg-carry-forward.tsv	44	full	6000000012959021518 already identified as Q56752288 via zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
+reports/garborg-carry-forward.tsv	45	full	6000000000186469135 already identified as Q347426 via structural;zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
+reports/garborg-carry-forward.tsv	46	full	6000000003051245269 already identified as Q3173713 via structural;zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
+reports/garborg-carry-forward.tsv	47	full	6000000002325842230 already identified as Q345420 via structural (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
+reports/garborg-carry-forward.tsv	48	full	6000000011116043585 already identified as Q109555189 via zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
+reports/garborg-carry-forward.tsv	49	full	5106195884670114511 already identified as Q16649300 via structural;zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
+reports/garborg-carry-forward.tsv	50	full	6000000012956793199 already identified as Q116775787 via zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
+reports/garborg-carry-forward.tsv	51	full	6000000007306087396 already identified as Q109655586 via zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
+reports/garborg-carry-forward.tsv	52	full	6000000007858471180 already identified as Q123254472 via zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
+reports/garborg-carry-forward.tsv	53	full	6000000005936931116 already identified as Q72067 via structural;zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
+reports/garborg-carry-forward.tsv	54	full	6000000020389536815 already identified as Q115871131 via zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
 reports/geni-qid-links.md	153	unclear	## The synoptic correspondence: five sources, now one file
 reports/geni-qid-links.md	157	unclear	represented in our synoptic tree."*
 reports/geni-qid-links.md	160	unclear	artefact `CLAUDE.md` says the synoptic tree is for. `scripts/build-synoptic-correspondence.py`
@@ -115,11 +140,752 @@ reports/geni-qid-links.md	161	unclear	now writes `reports/synoptic-correspondenc
 reports/geni-qid-links.md	181	full	cannot be two Wikidata items. `reports/synoptic-conflicts.tsv` lists them with the
 reports/ingest-2026-08-05.md	8	geni	synoptic GEDCOM is regenerated with plain:
 reports/mass-export-log.tsv	42	both named	6000000227474866003 Forest exported exports/bure-campaign/export-Forest-6000000227474866003.ged 5000 SUBMITTED Forest/5000, task_id 6000000227475765830. Emma flagged this one as the important export o
+reports/merges-to-do.md	327	full	`reports/synoptic-correspondence.tsv` does see them, through the zipper and the structural walk. **Five were spot-checked live on 2026-09-01** and every one matched on sex and on both dates where both
 reports/public-repo-analysis.md	8	unclear	part of the algorithm. Biggest barrier imo is the synoptic tree file stuff."*
 reports/public-repo-analysis.md	34	unclear	## The barrier she named: the synoptic tree cannot be built in Actions
 reports/synoptic-conflicts.md	4	unclear	`reports/synoptic-conflicts-labelled.tsv` — every row with **names on both sides**, since
 reports/synoptic-conflicts.md	48	unclear	- `reports/synoptic-conflicts-labelled.tsv` — all 257 with names on both sides.
 reports/synoptic-conflicts.md	49	unclear	- `reports/synoptic-conflicts.tsv` — the raw pairs.
+reports/synoptic-usages.md	1	unclear	# Every use of "synoptic tree", and which of the two things it means
+reports/synoptic-usages.md	5	unclear	`scripts/census-synoptic-usages.py`; the raw rows are `reports/synoptic-usages.tsv`.
+reports/synoptic-usages.md	27	unclear	* `CLAUDE.md:1800` — **The method is structural.** *"For the synoptic tree, we're supposed to be
+reports/synoptic-usages.md	28	unclear	* `CLAUDE.md:1976` — > the IDs to ensure that they haven't been merged or anything... Forcing them into this Synoptic
+reports/synoptic-usages.md	29	unclear	* `CLAUDE.md:1977` — > tree like this makes it so that the Synoptic tree, when it starts being used as an input, does
+reports/synoptic-usages.md	30	unclear	* `CLAUDE.md:1988` — **What the bio link is FOR, in her words, 2026-08-29:** *"When the synoptic tree is merged we
+reports/synoptic-usages.md	31	unclear	* `queue.md:1235` — **Her words:** *"Put into the queue also an analysis of how the synoptic tree is actually made."*
+reports/synoptic-usages.md	32	unclear	* `queue.md:1382` — *"No fuck you you didn't get the later discussion. When the synoptic tree is merged we change all
+reports/synoptic-usages.md	33	unclear	* `queue.md:1701` — **Emma, 2026-08-29:** *"don't test it now but make the last queue item rebuilding the synoptic
+reports/synoptic-usages.md	34	full	* `scripts/build-clan-p2600-pairs.py:5` — **Emma, 2026-08-24:** *"the tanba onakatomi izumo stuff is a prerequisite for the synoptic
+reports/synoptic-usages.md	39	full	`synoptic-correspondence.tsv` and the scripts that write or read it — a Geni-to-Wikidata correspondence, so this reads as the FULL union.
+reports/synoptic-usages.md	41	unclear	* `queue.md:1241` — So **nothing waits on this.** Write down what `scripts/build-synoptic-correspondence.py` actually
+reports/synoptic-usages.md	42	unclear	* `queue.md:1723` — number; the first version emitted 83,988 people off `reports/synoptic-correspondence.tsv` and that
+reports/synoptic-usages.md	43	full	* `scripts/build-clan-p2600-pairs.py:6` — rebuild"* — these joins are **inputs** to `reports/synoptic-correspondence.tsv`, so
+reports/synoptic-usages.md	44	unclear	* `scripts/build-join-batch.py:1` — "The thing that consumes the synoptic correspondence: Geni facts onto joined items.
+reports/synoptic-usages.md	46	both named	* `scripts/build-qid-links-gedcom.py:22` — this script emitted every pairing in `reports/synoptic-correspondence.tsv` that landed on somebody
+reports/synoptic-usages.md	47	both named	* `scripts/build-qid-links-gedcom.py:59` — Reading `reports/synoptic-correspondence.tsv` and filtering it to the three returned **0 of 3** —
+reports/synoptic-usages.md	48	unclear	* `scripts/build-synoptic-correspondence.py:3` — python scripts/build-synoptic-correspondence.py
+reports/synoptic-usages.md	49	unclear	* `scripts/build-synoptic-correspondence.py:34` — Writes `reports/synoptic-correspondence.tsv` and `reports/synoptic-conflicts.tsv`.
+reports/synoptic-usages.md	54	geni	`rebuild-everything.py` and the things that say 'rebuild the synoptic tree'. What that script actually produces is `out/merged.ged`, the GENI union.
+reports/synoptic-usages.md	56	unclear	* `CLAUDE.md:1988` — **What the bio link is FOR, in her words, 2026-08-29:** *"When the synoptic tree is merged we
+reports/synoptic-usages.md	57	unclear	* `docs/mass-export-run.md:37` — tree and then rebuild the synoptic tree, and then generate the quickstatements with the
+reports/synoptic-usages.md	58	unclear	* `queue.md:988` — ## Fix the surnames of the tier-2 placeholders before the synoptic tree is built
+reports/synoptic-usages.md	59	unclear	* `queue.md:1047` — **Emma, 2026-08-18. Do this BEFORE the synoptic tree is built. Not an investigation
+reports/synoptic-usages.md	60	unclear	* `queue.md:1382` — *"No fuck you you didn't get the later discussion. When the synoptic tree is merged we change all
+reports/synoptic-usages.md	61	unclear	* `queue.md:1701` — **Emma, 2026-08-29:** *"don't test it now but make the last queue item rebuilding the synoptic
+reports/synoptic-usages.md	62	unclear	* `scripts/audit-farmname-seeds.py:5` — the synoptic tree is built. I will do the editing on geni for this."*
+reports/synoptic-usages.md	63	full	* `scripts/build-clan-p2600-pairs.py:6` — rebuild"* — these joins are **inputs** to `reports/synoptic-correspondence.tsv`, so
+reports/synoptic-usages.md	68	unclear	* `CLAUDE.md:1803` — relationships. That is a critical part of building up this synoptic tree."* Start
+reports/synoptic-usages.md	69	unclear	* `CLAUDE.md:2277` — the people as we add more since we want all these bureatten people in the geni synoptic tree and
+reports/synoptic-usages.md	70	unclear	* `docs/daily-algorithm.md:32` — **The ideal state is the union of the synoptic tree and the Geni tree.** Not the Geni tree alone
+reports/synoptic-usages.md	71	unclear	* `docs/dictation/2026-08-26-daily-algorithm.md:18` — the synoptic tree and the janny tree. In the arnie area, it's really clear. It finds, within this
+reports/synoptic-usages.md	72	unclear	* `docs/mass-export-run.md:36` — https://www.geni.com/profile/index/6000000227464556886 and incorporate them into the synoptic
+reports/synoptic-usages.md	73	unclear	* `docs/mass-export-run.md:172` — injection into the synoptic tree build. Both the novelty and the purpose are gone.
+reports/synoptic-usages.md	74	unclear	* `queue.md:36` — `Link reliability order`, `The chain of provenance`, `How the synoptic tree is actually made`,
+reports/synoptic-usages.md	75	unclear	* `queue.md:189` — - **The ideal state is still the Geni tree alone.** Her spec says the **union of the synoptic
+reports/synoptic-usages.md	76	unclear	* `queue.md:190` — tree and the Geni tree**; the synoptic half does not exist yet, which is the § *PREREQUISITE
+reports/synoptic-usages.md	77	unclear	* `queue.md:931` — export alone. If it does then that'll be great. We'll have a synoptically
+reports/synoptic-usages.md	78	unclear	* `queue.md:1135` — thing so that we can deal with more important stuff."* Read as the synoptic-tree build
+reports/synoptic-usages.md	79	unclear	* `queue.md:1157` — ## Build the synoptic tree
+reports/synoptic-usages.md	80	unclear	* `queue.md:1233` — ## How the synoptic tree is actually made — Emma, 2026-08-25
+reports/synoptic-usages.md	81	unclear	* `queue.md:1237` — over the synoptic tree stuff sufficiently, but I'm going to treat it as though it's all good. I'm
+reports/synoptic-usages.md	82	unclear	* `queue.md:1238` — going to treat the synoptic tree as though it is perfect, and we are going to address whether the
+reports/synoptic-usages.md	83	unclear	* `queue.md:1239` — synoptic tree is well functioning later."*
+reports/synoptic-usages.md	84	unclear	* `queue.md:1818` — ## "Synoptic tree" means two different things — resolve it usage by usage
+reports/synoptic-usages.md	85	unclear	* `queue.md:2047` — Geni record in there overwrites the same Geni ID from any other export** in the synoptic
+reports/synoptic-usages.md	86	unclear	* `queue.md:2176` — runner, so the synoptic tree still cannot be rebuilt in Actions without a larger runner.
+reports/synoptic-usages.md	87	unclear	* `scripts/audit-farmname-seeds.py:90` — task in the queue to fix the surnames of these people before the synoptic tree
+reports/synoptic-usages.tsv	2	unclear	CLAUDE.md 763 unclear regenerating the ledger, but 90% of the time we are not gonna want to rebuild the synoptic
+reports/synoptic-usages.tsv	3	geni	CLAUDE.md 774 geni - **The synoptic tree — almost never.** `scripts/rebuild-everything.py` merges the whole corpus:
+reports/synoptic-usages.tsv	4	unclear	CLAUDE.md 777 unclear not ask you to make the synoptic tree just to refresh the ledger."*
+reports/synoptic-usages.tsv	5	unclear	CLAUDE.md 2215 unclear **The method is structural.** *"For the synoptic tree, we're supposed to be
+reports/synoptic-usages.tsv	6	unclear	CLAUDE.md 2218 unclear relationships. That is a critical part of building up this synoptic tree."* Start
+reports/synoptic-usages.tsv	7	full	CLAUDE.md 2430 full ### The Wikidata link goes in the bio during the SYNOPTIC TREE BUILD. Geni is not edited
+reports/synoptic-usages.tsv	8	full	CLAUDE.md 2436 full > the Synoptic tree, we put the Wikidata links into bios during the build process of the Synoptic
+reports/synoptic-usages.tsv	9	unclear	CLAUDE.md 2438 unclear > the IDs to ensure that they haven't been merged or anything... Forcing them into this Synoptic
+reports/synoptic-usages.tsv	10	unclear	CLAUDE.md 2439 unclear > tree like this makes it so that the Synoptic tree, when it starts being used as an input, does
+reports/synoptic-usages.tsv	11	full	CLAUDE.md 2443 full re-exports for this purpose. The QID is written into the person's bio field in the synoptic tree
+reports/synoptic-usages.tsv	12	unclear	CLAUDE.md 2450 unclear **What the bio link is FOR, in her words, 2026-08-29:** *"When the synoptic tree is merged we
+reports/synoptic-usages.tsv	13	unclear	CLAUDE.md 2726 unclear the people as we add more since we want all these bureatten people in the geni synoptic tree and
+reports/synoptic-usages.tsv	14	unclear	CLAUDE.md 3059 unclear **The one thing still outstanding: the ideal state is the union of the synoptic tree and the
+reports/synoptic-usages.tsv	15	unclear	CLAUDE.md 3060 unclear Geni tree**, and the synoptic half does not exist yet. That is the § *PREREQUISITE ORDER* item,
+reports/synoptic-usages.tsv	16	unclear	CLAUDE.md 3427 unclear `Link reliability order`, `The chain of provenance`, `How the synoptic tree is actually made`,
+reports/synoptic-usages.tsv	17	full	CLAUDE.md 3446 full scalable zipper thing much later"* · the `synoptic tree` vocabulary split · **creating the
+reports/synoptic-usages.tsv	18	unclear	devlog.md 1254 unclear The user stated the project's purpose plainly this tick: one growing **synoptic**
+reports/synoptic-usages.tsv	19	geni	devlog.md 1255 geni tree. What makes it synoptic is that the graph is connected, and the merge step
+reports/synoptic-usages.tsv	20	geni	devlog.md 2916 geni The synoptic GEDCOM is `out/merged.ged`, 262 MB, gitignored, rebuilt with
+reports/synoptic-usages.tsv	21	unclear	devlog.md 3701 unclear and it was still wrong: this repo exists to build one synoptic tree, and a
+reports/synoptic-usages.tsv	22	unclear	devlog.md 4287 unclear ## 2026-08-09 — the branch lands, and the synoptic tree at 145
+reports/synoptic-usages.tsv	23	unclear	devlog.md 4493 unclear It is **synoptic — a duplicated tree, not a fused one** — and *"intended to be
+reports/synoptic-usages.tsv	24	unclear	devlog.md 4502 unclear synoptic. Then I turned the 4,491 Geni-ID-less parents into a NEEDS-DECISION
+reports/synoptic-usages.tsv	25	unclear	devlog.md 7395 unclear exports in, measure what they cleared, gaps analysis, then a full synoptic
+reports/synoptic-usages.tsv	26	unclear	devlog.md 7781 unclear stuff, and not the Synoptic Tree."* I had measured long-range reach against the
+reports/synoptic-usages.tsv	27	unclear	devlog.md 7789 unclear this set — it is not a reason to skip the synoptic check next time, which is the
+reports/synoptic-usages.tsv	28	unclear	devlog.md 8513 unclear synoptic tree. You just did that on your own… rebuilding the synoptic tree right now is
+reports/synoptic-usages.tsv	29	unclear	devlog.md 9065 unclear ## 2026-08-18 — the synoptic tree, rebuilt on the name-development branch
+reports/synoptic-usages.tsv	30	unclear	devlog.md 11390 unclear `LABELS, IN HER ORDER`, the export loop and tail algorithm, the synoptic tree, the
+reports/synoptic-usages.tsv	31	unclear	devlog.md 11660 unclear is that represented in our data?… I'm afraid it isn't properly represented in our synoptic
+reports/synoptic-usages.tsv	32	unclear	devlog.md 11662 unclear which is exactly the artefact `CLAUDE.md` says the synoptic tree is for.
+reports/synoptic-usages.tsv	33	unclear	devlog.md 11664 unclear `scripts/build-synoptic-correspondence.py` → `reports/synoptic-correspondence.tsv`:
+reports/synoptic-usages.tsv	34	full	devlog.md 11675 full against Wikidata's own `P2600`**. Listed in `reports/synoptic-conflicts.tsv` and **not
+reports/synoptic-usages.tsv	35	geni	devlog.md 11679 geni 566,198 families, and `out/merged-pre-synoptic-2026-08-23.ged` kept per the backtest rule.
+reports/synoptic-usages.tsv	36	full	devlog.md 12244 full **No.** `reports/synoptic-correspondence.tsv` holds 522,086 Geni ID ↔ QID pairs from five
+reports/synoptic-usages.tsv	37	full	devlog.md 12246 full `P2600` on the Wikidata side. It is written by `build-synoptic-correspondence.py` and
+reports/synoptic-usages.tsv	38	unclear	devlog.md 12282 unclear done jointly in the synoptic tree building."* Checked — it is joint already:
+reports/synoptic-usages.tsv	39	unclear	devlog.md 12293 unclear **Cron `a9ffdec7`, daily at 14:07** — rebuild the synoptic tree **no earlier than 2pm**,
+reports/synoptic-usages.tsv	40	full	devlog.md 12314 full the answer was no: 522,086 Geni ID ↔ QID pairs sat in `reports/synoptic-correspondence.tsv`
+reports/synoptic-usages.tsv	41	unclear	devlog.md 12549 unclear resolved geni conflicts in the synoptic tree earlier either"*. Established, and the answer
+reports/synoptic-usages.tsv	42	unclear	devlog.md 12844 unclear ## 2026-08-24 — the synoptic tree is built
+reports/synoptic-usages.tsv	43	unclear	devlog.md 12878 unclear ### The synoptic correspondence
+reports/synoptic-usages.tsv	44	unclear	devlog.md 12893 unclear `reports/synoptic-conflicts.tsv`.
+reports/synoptic-usages.tsv	45	unclear	devlog.md 12901 unclear It mostly did not, and the report was why. `synoptic-conflicts.tsv` wrote one row per Geni
+reports/synoptic-usages.tsv	46	unclear	devlog.md 12933 unclear `tests/test_synoptic_conflicts.py` pins it: one row per candidate, sources not shared
+reports/synoptic-usages.tsv	47	unclear	devlog.md 12941 unclear talking about the opposite problem."* She is right. `synoptic-conflicts.tsv` is defined as
+reports/synoptic-usages.tsv	48	unclear	devlog.md 13025 unclear `build-synoptic-correspondence.py` now drops the **235** structural pairs that dates
+reports/synoptic-usages.tsv	49	unclear	devlog.md 13878 unclear **Also: the 2:07pm synoptic rebuild is rescheduled to 16:01** (`9c96578d`) at her request. Step 1
+reports/synoptic-usages.tsv	50	full	devlog.md 13989 full ### 2026-08-25 — zipper capped at round 3 and wired into the synoptic join
+reports/synoptic-usages.tsv	51	unclear	devlog.md 13997 unclear `build-synoptic-correspondence.py`, so the number can be changed without re-running the walk.
+reports/synoptic-usages.tsv	52	full	devlog.md 13999 full **The synoptic correspondence with the zipper in:**
+reports/synoptic-usages.tsv	53	unclear	devlog.md 14069 unclear both corpora, how the synoptic tree is actually made, the provenance-chain design, and the
+reports/synoptic-usages.tsv	54	full	devlog.md 14250 full **only by identifier** — `P2600`, the chain's own known QIDs, or the synoptic correspondence. The
+reports/synoptic-usages.tsv	55	full	devlog.md 14475 full queued up analysis on synoptic tree vs wikidata solo children situations like this."*
+reports/synoptic-usages.tsv	56	unclear	devlog.md 15209 unclear conflicts in the synoptic tree earlier either"*. So it was measured before being written.
+reports/synoptic-usages.tsv	57	unclear	devlog.md 15499 unclear *"The ideal thing was supposed to be that we do a census of all languages in the synoptic tree…
+reports/synoptic-usages.tsv	58	unclear	devlog.md 15956 unclear ## 2026-08-27 — the synoptic correspondence, re-run against the current walk
+reports/synoptic-usages.tsv	59	unclear	devlog.md 15958 unclear `reports/synoptic-correspondence.tsv` was 29h behind `reports/structural-correspondence.csv`,
+reports/synoptic-usages.tsv	60	unclear	devlog.md 16049 unclear `build-synoptic-correspondence.py`, a whole-corpus job, for a file it only reads.
+reports/synoptic-usages.tsv	61	full	devlog.md 16525 full during the synoptic tree build, not onto Geni, so the zipper merge sees the correspondence as
+reports/synoptic-usages.tsv	62	full	devlog.md 17302 full Wikidata, so it is material for the synoptic tree even though it is not coverage.
+reports/synoptic-usages.tsv	63	full	devlog.md 17791 full § *The Wikidata link goes in the bio during the SYNOPTIC TREE BUILD. Geni is not edited*. I went to
+reports/synoptic-usages.tsv	64	unclear	devlog.md 17795 unclear **What is actually true, in her words:** *"When the synoptic tree is merged we change all of their
+reports/synoptic-usages.tsv	65	full	devlog.md 17798 full synoptic build, feeding a **Wikidata union that does not exist yet**. There is no standalone Geni
+reports/synoptic-usages.tsv	66	full	devlog.md 17811 full ## 2026-08-29 — the synoptic tree always carries the QID links, because they are corpus
+reports/synoptic-usages.tsv	67	unclear	devlog.md 17815 unclear do the synoptic tree always gets these things."*
+reports/synoptic-usages.tsv	68	unclear	devlog.md 17849 unclear rebuilding the synoptic tree to test this thing so that we can quickly move onto other work."* It
+reports/synoptic-usages.tsv	69	unclear	devlog.md 17857 unclear **The instruction was specific and I generalised it.** She said the synoptic tree should carry
+reports/synoptic-usages.tsv	70	unclear	devlog.md 17860 unclear `reports/synoptic-correspondence.tsv` that landed on somebody in our tree: **83,988 individuals,
+reports/synoptic-usages.tsv	71	unclear	devlog.md 17869 unclear `reports/synoptic-correspondence.tsv` to the three returned **0 of 3**. That report joins five
+reports/synoptic-usages.tsv	72	unclear	devlog.md 17891 unclear **What the docstring used to claim.** That the file existed so the synoptic tree *"ALWAYS"*
+reports/synoptic-usages.tsv	73	unclear	devlog.md 17893 unclear people**. Both were generalisations of one instruction, *"When the synoptic tree is merged we
+reports/synoptic-usages.tsv	74	unclear	devlog.md 18470 unclear synoptic tree. If it fails, if it's still not done, then do another one for 1:30 and 2:30... Now
+reports/synoptic-usages.tsv	75	unclear	devlog.md 18678 unclear **"Synoptic tree" means two things and the repo never says which.** *"it is consistently conflated
+reports/synoptic-usages.tsv	76	unclear	devlog.md 19554 unclear synoptic tree.
+reports/synoptic-usages.tsv	77	unclear	devlog.md 19623 unclear correctly — *"the synoptic tree file stuff"* — and it is worse than a file-size problem.**
+reports/synoptic-usages.tsv	78	unclear	devlog.md 19657 unclear 16 GB `ubuntu-latest` runner. That is the reason a daily job cannot rebuild the synoptic tree, and
+reports/synoptic-usages.tsv	79	unclear	devlog.md 19734 unclear on https://www.geni.com/profile/index/6000000227464556886 and incorporate them into the synoptic
+reports/synoptic-usages.tsv	80	unclear	devlog.md 19735 unclear tree and then rebuild the synoptic tree, and then generate the quickstaements with the algorithm"*
+reports/synoptic-usages.tsv	81	full	devlog.md 19788 full **`CLAUDE.md` § *The Wikidata link goes in the bio during the SYNOPTIC TREE BUILD. Geni is not
+reports/synoptic-usages.tsv	82	full	devlog.md 19791 full complicated than it actually should be. In the Synoptic tree, we put the Wikidata links into bios
+reports/synoptic-usages.tsv	83	unclear	devlog.md 21112 unclear genuinely outstanding line (the synoptic half of the union does not exist) is all that remains.
+reports/synoptic-usages.tsv	84	full	devlog.md 22038 full so does the queue's own § *The Wikidata link goes in the bio during the SYNOPTIC TREE BUILD*. What
+reports/synoptic-usages.tsv	85	unclear	devlog.md 22121 unclear the whole synoptic tree. *"I did not ask you to make the synoptic tree just to refresh the
+reports/synoptic-usages.tsv	86	unclear	devlog.md 22439 unclear stale one re-creates her own work; the synoptic tree almost never, because it is ~14 minutes at
+reports/synoptic-usages.tsv	87	geni	devlog.md 23083 geni **§ *Build the synoptic tree* deleted.** Her call: *"the merge is a command, not a project."*
+reports/synoptic-usages.tsv	88	unclear	devlog.md 23399 unclear ## 2026-08-31 — two items closed: the succession roster, and how the synoptic tree is made
+reports/synoptic-usages.tsv	89	unclear	devlog.md 23407 unclear **§ *How the synoptic tree is actually made* closed** → `docs/synoptic-correspondence.md`, written
+reports/synoptic-usages.tsv	90	unclear	devlog.md 23409 unclear *"I'm going to treat the synoptic tree as though it is perfect."*
+reports/synoptic-usages.tsv	91	unclear	devlog.md 23458 unclear **One thing to flag about this sweep's own brief.** It lists *How the synoptic tree is actually
+reports/synoptic-usages.tsv	92	unclear	devlog.md 23461 unclear analysis of how the synoptic tree is actually made"*), not a specification of how work is done,
+reports/synoptic-usages.tsv	93	unclear	devlog.md 23462 unclear and the analysis now exists as `docs/synoptic-correspondence.md` with nothing lost. Recording the
+reports/synoptic-usages.tsv	94	unclear	devlog.md 23656 unclear **Checked: 7 of the 9 were already in `reports/synoptic-correspondence.tsv`.** Known through the
+reports/synoptic-usages.tsv	95	unclear	devlog.md 23661 unclear **Fixed by using the union rather than one source.** `synoptic-correspondence.tsv` is that union,
+reports/synoptic-usages.tsv	96	unclear	devlog.md 23662 unclear 565,348 pairs across eight sources; `docs/synoptic-correspondence.md`, written earlier today, is
+reports/synoptic-usages.tsv	97	full	devlog.md 23721 full outside `garborg-qids.tsv` but are known through `synoptic-correspondence.tsv` — the same widening
+reports/synoptic-usages.tsv	98	unclear	devlog.md 23855 unclear `reports/synoptic-correspondence.tsv`.** They are hers by hand, from identities she *"put a lot of
+reports/synoptic-usages.tsv	99	full	devlog.md 24608 full `zipper-join` or `build-synoptic-correspondence` — zero occurrences in either log.
+reports/synoptic-usages.tsv	100	unclear	devlog.md 24672 unclear still 08-26, `synoptic-correspondence.tsv` still 08-31 — the two scripts have not run) ·
+reports/synoptic-usages.tsv	101	unclear	devlog.md 24720 unclear reports/synoptic-correspondence 565,348 -> 568,955 +3,607
+reports/synoptic-usages.tsv	102	unclear	devlog.md 24742 unclear `reports/synoptic-correspondence.tsv`. There is nothing for a refutation feeder to do.
+reports/synoptic-usages.tsv	103	unclear	devlog.md 24851 unclear Geni profile is one item and `reports/synoptic-correspondence.tsv` says it is also an older one,
+reports/synoptic-usages.tsv	104	unclear	devlog.md 25097 unclear **Checked and left alone:** § *"Synoptic tree" means two things* (needs her per-usage ruling),
+reports/synoptic-usages.tsv	105	unclear	docs/daily-algorithm.md 32 unclear **The ideal state is the union of the synoptic tree and the Geni tree.** Not the Geni tree alone
+reports/synoptic-usages.tsv	106	unclear	docs/dictation/2026-08-26-daily-algorithm.md 18 unclear the synoptic tree and the janny tree. In the arnie area, it's really clear. It finds, within this
+reports/synoptic-usages.tsv	107	unclear	docs/mass-export-run.md 36 unclear https://www.geni.com/profile/index/6000000227464556886 and incorporate them into the synoptic
+reports/synoptic-usages.tsv	108	unclear	docs/mass-export-run.md 37 unclear tree and then rebuild the synoptic tree, and then generate the quickstatements with the
+reports/synoptic-usages.tsv	109	unclear	docs/mass-export-run.md 172 unclear injection into the synoptic tree build. Both the novelty and the purpose are gone.
+reports/synoptic-usages.tsv	110	unclear	docs/synoptic-correspondence.md 1 unclear # How the synoptic correspondence is actually made
+reports/synoptic-usages.tsv	111	unclear	docs/synoptic-correspondence.md 3 unclear **Emma, 2026-08-25:** *"Put into the queue also an analysis of how the synoptic tree is actually
+reports/synoptic-usages.tsv	112	unclear	docs/synoptic-correspondence.md 5 unclear synoptic tree as though it is perfect, and we are going to address whether the synoptic tree is
+reports/synoptic-usages.tsv	113	unclear	docs/synoptic-correspondence.md 7 unclear `scripts/build-synoptic-correspondence.py` does, and a list of the places it is doing something
+reports/synoptic-usages.tsv	114	unclear	docs/synoptic-correspondence.md 19 unclear `reports/synoptic-correspondence.tsv` is the union; `reports/synoptic-conflicts.tsv` is the 410.
+reports/synoptic-usages.tsv	115	unclear	docs/synoptic-correspondence.md 82 unclear `synoptic-conflicts.tsv`, so a consumer of the correspondence gets both pairs silently.
+reports/synoptic-usages.tsv	116	full	edit-objects.md 23 full We hold a synoptic tree — Wikidata items with their whole JSON, Geni people with
+reports/synoptic-usages.tsv	117	unclear	orderlife/analysis/cycle_policy.md 13 unclear device for linking people across time and space, and it is building a **synoptic
+reports/synoptic-usages.tsv	118	unclear	orderlife/analysis/shadow_audit.md 36 unclear right is a per-record judgement, and this dump is a synoptic mythology where
+reports/synoptic-usages.tsv	119	unclear	queue.md 5 unclear ## "Synoptic tree" means two different things — resolve it usage by usage
+reports/synoptic-usages.tsv	120	unclear	queue.md 76 unclear Geni record in there overwrites the same Geni ID from any other export** in the synoptic
+reports/synoptic-usages.tsv	121	unclear	queue.md 223 unclear runner, so the synoptic tree still cannot be rebuilt in Actions without a larger runner.
+reports/synoptic-usages.tsv	122	full	reports/audit-transcripts-2026-08-15.md 60 full | J | **Descent-from-antiquity people with neither a Geni nor a Wikidata link** — *"I want to include everything here in the synoptic tree… flagging whe
+reports/synoptic-usages.tsv	123	unclear	reports/farmname-seed-fixes.md 3 unclear Emma, 2026-08-18: *"uhh farm names are surnames here lol"* --- and *"add a task in the queue to fix the surnames of these people before the synoptic tree is bu
+reports/synoptic-usages.tsv	124	full	reports/garborg-carry-forward.tsv 43 full 6000000012007377976 already identified as Q135480174 via zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
+reports/synoptic-usages.tsv	125	full	reports/garborg-carry-forward.tsv 44 full 6000000012959021518 already identified as Q56752288 via zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
+reports/synoptic-usages.tsv	126	full	reports/garborg-carry-forward.tsv 45 full 6000000000186469135 already identified as Q347426 via structural;zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
+reports/synoptic-usages.tsv	127	full	reports/garborg-carry-forward.tsv 46 full 6000000003051245269 already identified as Q3173713 via structural;zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
+reports/synoptic-usages.tsv	128	full	reports/garborg-carry-forward.tsv 47 full 6000000002325842230 already identified as Q345420 via structural (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
+reports/synoptic-usages.tsv	129	full	reports/garborg-carry-forward.tsv 48 full 6000000011116043585 already identified as Q109555189 via zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
+reports/synoptic-usages.tsv	130	full	reports/garborg-carry-forward.tsv 49 full 5106195884670114511 already identified as Q16649300 via structural;zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
+reports/synoptic-usages.tsv	131	full	reports/garborg-carry-forward.tsv 50 full 6000000012956793199 already identified as Q116775787 via zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
+reports/synoptic-usages.tsv	132	full	reports/garborg-carry-forward.tsv 51 full 6000000007306087396 already identified as Q109655586 via zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
+reports/synoptic-usages.tsv	133	full	reports/garborg-carry-forward.tsv 52 full 6000000007858471180 already identified as Q123254472 via zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
+reports/synoptic-usages.tsv	134	full	reports/garborg-carry-forward.tsv 53 full 6000000005936931116 already identified as Q72067 via structural;zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
+reports/synoptic-usages.tsv	135	full	reports/garborg-carry-forward.tsv 54 full 6000000020389536815 already identified as Q115871131 via zipper (reports/synoptic-correspondence.tsv) - creating it would duplicate; link it instead
+reports/synoptic-usages.tsv	136	full	reports/geni-qid-links.md 153 unclear ## The synoptic correspondence: five sources, now one file
+reports/synoptic-usages.tsv	137	full	reports/geni-qid-links.md 157 unclear represented in our synoptic tree."*
+reports/synoptic-usages.tsv	138	full	reports/geni-qid-links.md 160 unclear artefact `CLAUDE.md` says the synoptic tree is for. `scripts/build-synoptic-correspondence.py`
+reports/synoptic-usages.tsv	139	full	reports/geni-qid-links.md 161 unclear now writes `reports/synoptic-correspondence.tsv`, every pair carrying its provenance.
+reports/synoptic-usages.tsv	140	full	reports/geni-qid-links.md 181 full cannot be two Wikidata items. `reports/synoptic-conflicts.tsv` lists them with the
+reports/synoptic-usages.tsv	141	geni	reports/ingest-2026-08-05.md 8 geni synoptic GEDCOM is regenerated with plain:
+reports/synoptic-usages.tsv	143	full	reports/merges-to-do.md 327 full `reports/synoptic-correspondence.tsv` does see them, through the zipper and the structural walk. **Five were spot-checked live on 2026-09-01** and every one matched on
+reports/synoptic-usages.tsv	144	unclear	reports/public-repo-analysis.md 8 unclear part of the algorithm. Biggest barrier imo is the synoptic tree file stuff."*
+reports/synoptic-usages.tsv	145	unclear	reports/public-repo-analysis.md 34 unclear ## The barrier she named: the synoptic tree cannot be built in Actions
+reports/synoptic-usages.tsv	146	unclear	reports/synoptic-conflicts.md 4 unclear `reports/synoptic-conflicts-labelled.tsv` — every row with **names on both sides**, since
+reports/synoptic-usages.tsv	147	unclear	reports/synoptic-conflicts.md 48 unclear - `reports/synoptic-conflicts-labelled.tsv` — all 257 with names on both sides.
+reports/synoptic-usages.tsv	148	unclear	reports/synoptic-conflicts.md 49 unclear - `reports/synoptic-conflicts.tsv` — the raw pairs.
+reports/synoptic-usages.tsv	149	unclear	reports/synoptic-usages.md 1 unclear # Every use of "synoptic tree", and which of the two things it means
+reports/synoptic-usages.tsv	150	unclear	reports/synoptic-usages.md 5 unclear `scripts/census-synoptic-usages.py`; the raw rows are `reports/synoptic-usages.tsv`.
+reports/synoptic-usages.tsv	151	unclear	reports/synoptic-usages.md 27 unclear * `CLAUDE.md:1800` — **The method is structural.** *"For the synoptic tree, we're supposed to be
+reports/synoptic-usages.tsv	152	unclear	reports/synoptic-usages.md 28 unclear * `CLAUDE.md:1976` — > the IDs to ensure that they haven't been merged or anything... Forcing them into this Synoptic
+reports/synoptic-usages.tsv	153	unclear	reports/synoptic-usages.md 29 unclear * `CLAUDE.md:1977` — > tree like this makes it so that the Synoptic tree, when it starts being used as an input, does
+reports/synoptic-usages.tsv	154	unclear	reports/synoptic-usages.md 30 unclear * `CLAUDE.md:1988` — **What the bio link is FOR, in her words, 2026-08-29:** *"When the synoptic tree is merged we
+reports/synoptic-usages.tsv	155	unclear	reports/synoptic-usages.md 31 unclear * `queue.md:1235` — **Her words:** *"Put into the queue also an analysis of how the synoptic tree is actually made."*
+reports/synoptic-usages.tsv	156	unclear	reports/synoptic-usages.md 32 unclear * `queue.md:1382` — *"No fuck you you didn't get the later discussion. When the synoptic tree is merged we change all
+reports/synoptic-usages.tsv	157	unclear	reports/synoptic-usages.md 33 unclear * `queue.md:1701` — **Emma, 2026-08-29:** *"don't test it now but make the last queue item rebuilding the synoptic
+reports/synoptic-usages.tsv	158	full	reports/synoptic-usages.md 34 full * `scripts/build-clan-p2600-pairs.py:5` — **Emma, 2026-08-24:** *"the tanba onakatomi izumo stuff is a prerequisite for the synoptic
+reports/synoptic-usages.tsv	159	full	reports/synoptic-usages.md 39 full `synoptic-correspondence.tsv` and the scripts that write or read it — a Geni-to-Wikidata correspondence, so this reads as the FULL union.
+reports/synoptic-usages.tsv	160	unclear	reports/synoptic-usages.md 41 unclear * `queue.md:1241` — So **nothing waits on this.** Write down what `scripts/build-synoptic-correspondence.py` actually
+reports/synoptic-usages.tsv	161	unclear	reports/synoptic-usages.md 42 unclear * `queue.md:1723` — number; the first version emitted 83,988 people off `reports/synoptic-correspondence.tsv` and that
+reports/synoptic-usages.tsv	162	full	reports/synoptic-usages.md 43 full * `scripts/build-clan-p2600-pairs.py:6` — rebuild"* — these joins are **inputs** to `reports/synoptic-correspondence.tsv`, so
+reports/synoptic-usages.tsv	163	unclear	reports/synoptic-usages.md 44 unclear * `scripts/build-join-batch.py:1` — "The thing that consumes the synoptic correspondence: Geni facts onto joined items.
+reports/synoptic-usages.tsv	164	both named	reports/synoptic-usages.md 46 both named * `scripts/build-qid-links-gedcom.py:22` — this script emitted every pairing in `reports/synoptic-correspondence.tsv` that landed on somebody
+reports/synoptic-usages.tsv	165	both named	reports/synoptic-usages.md 47 both named * `scripts/build-qid-links-gedcom.py:59` — Reading `reports/synoptic-correspondence.tsv` and filtering it to the three returned **0 of 3** —
+reports/synoptic-usages.tsv	166	unclear	reports/synoptic-usages.md 48 unclear * `scripts/build-synoptic-correspondence.py:3` — python scripts/build-synoptic-correspondence.py
+reports/synoptic-usages.tsv	167	unclear	reports/synoptic-usages.md 49 unclear * `scripts/build-synoptic-correspondence.py:34` — Writes `reports/synoptic-correspondence.tsv` and `reports/synoptic-conflicts.tsv`.
+reports/synoptic-usages.tsv	168	geni	reports/synoptic-usages.md 54 geni `rebuild-everything.py` and the things that say 'rebuild the synoptic tree'. What that script actually produces is `out/merged.ged`, the GENI union.
+reports/synoptic-usages.tsv	169	unclear	reports/synoptic-usages.md 56 unclear * `CLAUDE.md:1988` — **What the bio link is FOR, in her words, 2026-08-29:** *"When the synoptic tree is merged we
+reports/synoptic-usages.tsv	170	unclear	reports/synoptic-usages.md 57 unclear * `docs/mass-export-run.md:37` — tree and then rebuild the synoptic tree, and then generate the quickstatements with the
+reports/synoptic-usages.tsv	171	unclear	reports/synoptic-usages.md 58 unclear * `queue.md:988` — ## Fix the surnames of the tier-2 placeholders before the synoptic tree is built
+reports/synoptic-usages.tsv	172	unclear	reports/synoptic-usages.md 59 unclear * `queue.md:1047` — **Emma, 2026-08-18. Do this BEFORE the synoptic tree is built. Not an investigation
+reports/synoptic-usages.tsv	173	unclear	reports/synoptic-usages.md 60 unclear * `queue.md:1382` — *"No fuck you you didn't get the later discussion. When the synoptic tree is merged we change all
+reports/synoptic-usages.tsv	174	unclear	reports/synoptic-usages.md 61 unclear * `queue.md:1701` — **Emma, 2026-08-29:** *"don't test it now but make the last queue item rebuilding the synoptic
+reports/synoptic-usages.tsv	175	unclear	reports/synoptic-usages.md 62 unclear * `scripts/audit-farmname-seeds.py:5` — the synoptic tree is built. I will do the editing on geni for this."*
+reports/synoptic-usages.tsv	176	full	reports/synoptic-usages.md 63 full * `scripts/build-clan-p2600-pairs.py:6` — rebuild"* — these joins are **inputs** to `reports/synoptic-correspondence.tsv`, so
+reports/synoptic-usages.tsv	177	unclear	reports/synoptic-usages.md 68 unclear * `CLAUDE.md:1803` — relationships. That is a critical part of building up this synoptic tree."* Start
+reports/synoptic-usages.tsv	178	unclear	reports/synoptic-usages.md 69 unclear * `CLAUDE.md:2277` — the people as we add more since we want all these bureatten people in the geni synoptic tree and
+reports/synoptic-usages.tsv	179	unclear	reports/synoptic-usages.md 70 unclear * `docs/daily-algorithm.md:32` — **The ideal state is the union of the synoptic tree and the Geni tree.** Not the Geni tree alone
+reports/synoptic-usages.tsv	180	unclear	reports/synoptic-usages.md 71 unclear * `docs/dictation/2026-08-26-daily-algorithm.md:18` — the synoptic tree and the janny tree. In the arnie area, it's really clear. It finds, within this
+reports/synoptic-usages.tsv	181	unclear	reports/synoptic-usages.md 72 unclear * `docs/mass-export-run.md:36` — https://www.geni.com/profile/index/6000000227464556886 and incorporate them into the synoptic
+reports/synoptic-usages.tsv	182	unclear	reports/synoptic-usages.md 73 unclear * `docs/mass-export-run.md:172` — injection into the synoptic tree build. Both the novelty and the purpose are gone.
+reports/synoptic-usages.tsv	183	unclear	reports/synoptic-usages.md 74 unclear * `queue.md:36` — `Link reliability order`, `The chain of provenance`, `How the synoptic tree is actually made`,
+reports/synoptic-usages.tsv	184	unclear	reports/synoptic-usages.md 75 unclear * `queue.md:189` — - **The ideal state is still the Geni tree alone.** Her spec says the **union of the synoptic
+reports/synoptic-usages.tsv	185	unclear	reports/synoptic-usages.md 76 unclear * `queue.md:190` — tree and the Geni tree**; the synoptic half does not exist yet, which is the § *PREREQUISITE
+reports/synoptic-usages.tsv	186	unclear	reports/synoptic-usages.md 77 unclear * `queue.md:931` — export alone. If it does then that'll be great. We'll have a synoptically
+reports/synoptic-usages.tsv	187	unclear	reports/synoptic-usages.md 78 unclear * `queue.md:1135` — thing so that we can deal with more important stuff."* Read as the synoptic-tree build
+reports/synoptic-usages.tsv	188	unclear	reports/synoptic-usages.md 79 unclear * `queue.md:1157` — ## Build the synoptic tree
+reports/synoptic-usages.tsv	189	unclear	reports/synoptic-usages.md 80 unclear * `queue.md:1233` — ## How the synoptic tree is actually made — Emma, 2026-08-25
+reports/synoptic-usages.tsv	190	unclear	reports/synoptic-usages.md 81 unclear * `queue.md:1237` — over the synoptic tree stuff sufficiently, but I'm going to treat it as though it's all good. I'm
+reports/synoptic-usages.tsv	191	unclear	reports/synoptic-usages.md 82 unclear * `queue.md:1238` — going to treat the synoptic tree as though it is perfect, and we are going to address whether the
+reports/synoptic-usages.tsv	192	unclear	reports/synoptic-usages.md 83 unclear * `queue.md:1239` — synoptic tree is well functioning later."*
+reports/synoptic-usages.tsv	193	unclear	reports/synoptic-usages.md 84 unclear * `queue.md:1818` — ## "Synoptic tree" means two different things — resolve it usage by usage
+reports/synoptic-usages.tsv	194	unclear	reports/synoptic-usages.md 85 unclear * `queue.md:2047` — Geni record in there overwrites the same Geni ID from any other export** in the synoptic
+reports/synoptic-usages.tsv	195	unclear	reports/synoptic-usages.md 86 unclear * `queue.md:2176` — runner, so the synoptic tree still cannot be rebuilt in Actions without a larger runner.
+reports/synoptic-usages.tsv	196	unclear	reports/synoptic-usages.md 87 unclear * `scripts/audit-farmname-seeds.py:90` — task in the queue to fix the surnames of these people before the synoptic tree
+reports/synoptic-usages.tsv	197	unclear	reports/synoptic-usages.tsv 2 unclear CLAUDE.md 1800 unclear **The method is structural.** *"For the synoptic tree, we're supposed to be
+reports/synoptic-usages.tsv	198	unclear	reports/synoptic-usages.tsv 3 unclear CLAUDE.md 1803 unclear relationships. That is a critical part of building up this synoptic tree."* Start
+reports/synoptic-usages.tsv	199	full	reports/synoptic-usages.tsv 4 full CLAUDE.md 1968 full ### The Wikidata link goes in the bio during the SYNOPTIC TREE BUILD. Geni is not edited
+reports/synoptic-usages.tsv	200	full	reports/synoptic-usages.tsv 5 full CLAUDE.md 1974 full > the Synoptic tree, we put the Wikidata links into bios during the build process of the Synoptic
+reports/synoptic-usages.tsv	201	unclear	reports/synoptic-usages.tsv 6 unclear CLAUDE.md 1976 unclear > the IDs to ensure that they haven't been merged or anything... Forcing them into this Synoptic
+reports/synoptic-usages.tsv	202	unclear	reports/synoptic-usages.tsv 7 unclear CLAUDE.md 1977 unclear > tree like this makes it so that the Synoptic tree, when it starts being used as an input, does
+reports/synoptic-usages.tsv	203	full	reports/synoptic-usages.tsv 8 full CLAUDE.md 1981 full re-exports for this purpose. The QID is written into the person's bio field in the synoptic tree
+reports/synoptic-usages.tsv	204	unclear	reports/synoptic-usages.tsv 9 unclear CLAUDE.md 1988 unclear **What the bio link is FOR, in her words, 2026-08-29:** *"When the synoptic tree is merged we
+reports/synoptic-usages.tsv	205	unclear	reports/synoptic-usages.tsv 10 unclear CLAUDE.md 2277 unclear the people as we add more since we want all these bureatten people in the geni synoptic tree and
+reports/synoptic-usages.tsv	206	unclear	reports/synoptic-usages.tsv 11 unclear devlog.md 1254 unclear The user stated the project's purpose plainly this tick: one growing **synoptic**
+reports/synoptic-usages.tsv	207	geni	reports/synoptic-usages.tsv 12 geni devlog.md 1255 geni tree. What makes it synoptic is that the graph is connected, and the merge step
+reports/synoptic-usages.tsv	208	geni	reports/synoptic-usages.tsv 13 geni devlog.md 2916 geni The synoptic GEDCOM is `out/merged.ged`, 262 MB, gitignored, rebuilt with
+reports/synoptic-usages.tsv	209	unclear	reports/synoptic-usages.tsv 14 unclear devlog.md 3701 unclear and it was still wrong: this repo exists to build one synoptic tree, and a
+reports/synoptic-usages.tsv	210	unclear	reports/synoptic-usages.tsv 15 unclear devlog.md 4287 unclear ## 2026-08-09 — the branch lands, and the synoptic tree at 145
+reports/synoptic-usages.tsv	211	unclear	reports/synoptic-usages.tsv 16 unclear devlog.md 4493 unclear It is **synoptic — a duplicated tree, not a fused one** — and *"intended to be
+reports/synoptic-usages.tsv	212	unclear	reports/synoptic-usages.tsv 17 unclear devlog.md 4502 unclear synoptic. Then I turned the 4,491 Geni-ID-less parents into a NEEDS-DECISION
+reports/synoptic-usages.tsv	213	unclear	reports/synoptic-usages.tsv 18 unclear devlog.md 7395 unclear exports in, measure what they cleared, gaps analysis, then a full synoptic
+reports/synoptic-usages.tsv	214	unclear	reports/synoptic-usages.tsv 19 unclear devlog.md 7781 unclear stuff, and not the Synoptic Tree."* I had measured long-range reach against the
+reports/synoptic-usages.tsv	215	unclear	reports/synoptic-usages.tsv 20 unclear devlog.md 7789 unclear this set — it is not a reason to skip the synoptic check next time, which is the
+reports/synoptic-usages.tsv	216	unclear	reports/synoptic-usages.tsv 21 unclear devlog.md 8513 unclear synoptic tree. You just did that on your own… rebuilding the synoptic tree right now is
+reports/synoptic-usages.tsv	217	unclear	reports/synoptic-usages.tsv 22 unclear devlog.md 9065 unclear ## 2026-08-18 — the synoptic tree, rebuilt on the name-development branch
+reports/synoptic-usages.tsv	218	unclear	reports/synoptic-usages.tsv 23 unclear devlog.md 11390 unclear `LABELS, IN HER ORDER`, the export loop and tail algorithm, the synoptic tree, the
+reports/synoptic-usages.tsv	219	unclear	reports/synoptic-usages.tsv 24 unclear devlog.md 11660 unclear is that represented in our data?… I'm afraid it isn't properly represented in our synoptic
+reports/synoptic-usages.tsv	220	unclear	reports/synoptic-usages.tsv 25 unclear devlog.md 11662 unclear which is exactly the artefact `CLAUDE.md` says the synoptic tree is for.
+reports/synoptic-usages.tsv	221	unclear	reports/synoptic-usages.tsv 26 unclear devlog.md 11664 unclear `scripts/build-synoptic-correspondence.py` → `reports/synoptic-correspondence.tsv`:
+reports/synoptic-usages.tsv	222	full	reports/synoptic-usages.tsv 27 full devlog.md 11675 full against Wikidata's own `P2600`**. Listed in `reports/synoptic-conflicts.tsv` and **not
+reports/synoptic-usages.tsv	223	geni	reports/synoptic-usages.tsv 28 geni devlog.md 11679 geni 566,198 families, and `out/merged-pre-synoptic-2026-08-23.ged` kept per the backtest rule.
+reports/synoptic-usages.tsv	224	full	reports/synoptic-usages.tsv 29 full devlog.md 12244 full **No.** `reports/synoptic-correspondence.tsv` holds 522,086 Geni ID ↔ QID pairs from five
+reports/synoptic-usages.tsv	225	full	reports/synoptic-usages.tsv 30 full devlog.md 12246 full `P2600` on the Wikidata side. It is written by `build-synoptic-correspondence.py` and
+reports/synoptic-usages.tsv	226	unclear	reports/synoptic-usages.tsv 31 unclear devlog.md 12282 unclear done jointly in the synoptic tree building."* Checked — it is joint already:
+reports/synoptic-usages.tsv	227	unclear	reports/synoptic-usages.tsv 32 unclear devlog.md 12293 unclear **Cron `a9ffdec7`, daily at 14:07** — rebuild the synoptic tree **no earlier than 2pm**,
+reports/synoptic-usages.tsv	228	full	reports/synoptic-usages.tsv 33 full devlog.md 12314 full the answer was no: 522,086 Geni ID ↔ QID pairs sat in `reports/synoptic-correspondence.tsv`
+reports/synoptic-usages.tsv	229	unclear	reports/synoptic-usages.tsv 34 unclear devlog.md 12549 unclear resolved geni conflicts in the synoptic tree earlier either"*. Established, and the answer
+reports/synoptic-usages.tsv	230	unclear	reports/synoptic-usages.tsv 35 unclear devlog.md 12844 unclear ## 2026-08-24 — the synoptic tree is built
+reports/synoptic-usages.tsv	231	unclear	reports/synoptic-usages.tsv 36 unclear devlog.md 12878 unclear ### The synoptic correspondence
+reports/synoptic-usages.tsv	232	unclear	reports/synoptic-usages.tsv 37 unclear devlog.md 12893 unclear `reports/synoptic-conflicts.tsv`.
+reports/synoptic-usages.tsv	233	unclear	reports/synoptic-usages.tsv 38 unclear devlog.md 12901 unclear It mostly did not, and the report was why. `synoptic-conflicts.tsv` wrote one row per Geni
+reports/synoptic-usages.tsv	234	unclear	reports/synoptic-usages.tsv 39 unclear devlog.md 12933 unclear `tests/test_synoptic_conflicts.py` pins it: one row per candidate, sources not shared
+reports/synoptic-usages.tsv	235	unclear	reports/synoptic-usages.tsv 40 unclear devlog.md 12941 unclear talking about the opposite problem."* She is right. `synoptic-conflicts.tsv` is defined as
+reports/synoptic-usages.tsv	236	unclear	reports/synoptic-usages.tsv 41 unclear devlog.md 13025 unclear `build-synoptic-correspondence.py` now drops the **235** structural pairs that dates
+reports/synoptic-usages.tsv	237	unclear	reports/synoptic-usages.tsv 42 unclear devlog.md 13878 unclear **Also: the 2:07pm synoptic rebuild is rescheduled to 16:01** (`9c96578d`) at her request. Step 1
+reports/synoptic-usages.tsv	238	full	reports/synoptic-usages.tsv 43 full devlog.md 13989 full ### 2026-08-25 — zipper capped at round 3 and wired into the synoptic join
+reports/synoptic-usages.tsv	239	unclear	reports/synoptic-usages.tsv 44 unclear devlog.md 13997 unclear `build-synoptic-correspondence.py`, so the number can be changed without re-running the walk.
+reports/synoptic-usages.tsv	240	full	reports/synoptic-usages.tsv 45 full devlog.md 13999 full **The synoptic correspondence with the zipper in:**
+reports/synoptic-usages.tsv	241	unclear	reports/synoptic-usages.tsv 46 unclear devlog.md 14069 unclear both corpora, how the synoptic tree is actually made, the provenance-chain design, and the
+reports/synoptic-usages.tsv	242	full	reports/synoptic-usages.tsv 47 full devlog.md 14250 full **only by identifier** — `P2600`, the chain's own known QIDs, or the synoptic correspondence. The
+reports/synoptic-usages.tsv	243	full	reports/synoptic-usages.tsv 48 full devlog.md 14475 full queued up analysis on synoptic tree vs wikidata solo children situations like this."*
+reports/synoptic-usages.tsv	244	unclear	reports/synoptic-usages.tsv 49 unclear devlog.md 15209 unclear conflicts in the synoptic tree earlier either"*. So it was measured before being written.
+reports/synoptic-usages.tsv	245	unclear	reports/synoptic-usages.tsv 50 unclear devlog.md 15499 unclear *"The ideal thing was supposed to be that we do a census of all languages in the synoptic tree…
+reports/synoptic-usages.tsv	246	unclear	reports/synoptic-usages.tsv 51 unclear devlog.md 15956 unclear ## 2026-08-27 — the synoptic correspondence, re-run against the current walk
+reports/synoptic-usages.tsv	247	unclear	reports/synoptic-usages.tsv 52 unclear devlog.md 15958 unclear `reports/synoptic-correspondence.tsv` was 29h behind `reports/structural-correspondence.csv`,
+reports/synoptic-usages.tsv	248	unclear	reports/synoptic-usages.tsv 53 unclear devlog.md 16049 unclear `build-synoptic-correspondence.py`, a whole-corpus job, for a file it only reads.
+reports/synoptic-usages.tsv	249	full	reports/synoptic-usages.tsv 54 full devlog.md 16525 full during the synoptic tree build, not onto Geni, so the zipper merge sees the correspondence as
+reports/synoptic-usages.tsv	250	full	reports/synoptic-usages.tsv 55 full devlog.md 17302 full Wikidata, so it is material for the synoptic tree even though it is not coverage.
+reports/synoptic-usages.tsv	251	full	reports/synoptic-usages.tsv 56 full devlog.md 17791 full § *The Wikidata link goes in the bio during the SYNOPTIC TREE BUILD. Geni is not edited*. I went to
+reports/synoptic-usages.tsv	252	unclear	reports/synoptic-usages.tsv 57 unclear devlog.md 17795 unclear **What is actually true, in her words:** *"When the synoptic tree is merged we change all of their
+reports/synoptic-usages.tsv	253	full	reports/synoptic-usages.tsv 58 full devlog.md 17798 full synoptic build, feeding a **Wikidata union that does not exist yet**. There is no standalone Geni
+reports/synoptic-usages.tsv	254	full	reports/synoptic-usages.tsv 59 full devlog.md 17811 full ## 2026-08-29 — the synoptic tree always carries the QID links, because they are corpus
+reports/synoptic-usages.tsv	255	unclear	reports/synoptic-usages.tsv 60 unclear devlog.md 17815 unclear do the synoptic tree always gets these things."*
+reports/synoptic-usages.tsv	256	unclear	reports/synoptic-usages.tsv 61 unclear devlog.md 17849 unclear rebuilding the synoptic tree to test this thing so that we can quickly move onto other work."* It
+reports/synoptic-usages.tsv	257	unclear	reports/synoptic-usages.tsv 62 unclear devlog.md 17857 unclear **The instruction was specific and I generalised it.** She said the synoptic tree should carry
+reports/synoptic-usages.tsv	258	unclear	reports/synoptic-usages.tsv 63 unclear devlog.md 17860 unclear `reports/synoptic-correspondence.tsv` that landed on somebody in our tree: **83,988 individuals,
+reports/synoptic-usages.tsv	259	unclear	reports/synoptic-usages.tsv 64 unclear devlog.md 17869 unclear `reports/synoptic-correspondence.tsv` to the three returned **0 of 3**. That report joins five
+reports/synoptic-usages.tsv	260	unclear	reports/synoptic-usages.tsv 65 unclear devlog.md 17891 unclear **What the docstring used to claim.** That the file existed so the synoptic tree *"ALWAYS"*
+reports/synoptic-usages.tsv	261	unclear	reports/synoptic-usages.tsv 66 unclear devlog.md 17893 unclear people**. Both were generalisations of one instruction, *"When the synoptic tree is merged we
+reports/synoptic-usages.tsv	262	unclear	reports/synoptic-usages.tsv 67 unclear devlog.md 18470 unclear synoptic tree. If it fails, if it's still not done, then do another one for 1:30 and 2:30... Now
+reports/synoptic-usages.tsv	263	unclear	reports/synoptic-usages.tsv 68 unclear devlog.md 18678 unclear **"Synoptic tree" means two things and the repo never says which.** *"it is consistently conflated
+reports/synoptic-usages.tsv	264	unclear	reports/synoptic-usages.tsv 69 unclear devlog.md 19554 unclear synoptic tree.
+reports/synoptic-usages.tsv	265	unclear	reports/synoptic-usages.tsv 70 unclear devlog.md 19623 unclear correctly — *"the synoptic tree file stuff"* — and it is worse than a file-size problem.**
+reports/synoptic-usages.tsv	266	unclear	reports/synoptic-usages.tsv 71 unclear devlog.md 19657 unclear 16 GB `ubuntu-latest` runner. That is the reason a daily job cannot rebuild the synoptic tree, and
+reports/synoptic-usages.tsv	267	unclear	reports/synoptic-usages.tsv 72 unclear devlog.md 19734 unclear on https://www.geni.com/profile/index/6000000227464556886 and incorporate them into the synoptic
+reports/synoptic-usages.tsv	268	unclear	reports/synoptic-usages.tsv 73 unclear devlog.md 19735 unclear tree and then rebuild the synoptic tree, and then generate the quickstaements with the algorithm"*
+reports/synoptic-usages.tsv	269	full	reports/synoptic-usages.tsv 74 full devlog.md 19788 full **`CLAUDE.md` § *The Wikidata link goes in the bio during the SYNOPTIC TREE BUILD. Geni is not
+reports/synoptic-usages.tsv	270	full	reports/synoptic-usages.tsv 75 full devlog.md 19791 full complicated than it actually should be. In the Synoptic tree, we put the Wikidata links into bios
+reports/synoptic-usages.tsv	271	unclear	reports/synoptic-usages.tsv 76 unclear docs/daily-algorithm.md 32 unclear **The ideal state is the union of the synoptic tree and the Geni tree.** Not the Geni tree alone
+reports/synoptic-usages.tsv	272	unclear	reports/synoptic-usages.tsv 77 unclear docs/dictation/2026-08-26-daily-algorithm.md 18 unclear the synoptic tree and the janny tree. In the arnie area, it's really clear. It finds, within this
+reports/synoptic-usages.tsv	273	unclear	reports/synoptic-usages.tsv 78 unclear docs/mass-export-run.md 36 unclear https://www.geni.com/profile/index/6000000227464556886 and incorporate them into the synoptic
+reports/synoptic-usages.tsv	274	unclear	reports/synoptic-usages.tsv 79 unclear docs/mass-export-run.md 37 unclear tree and then rebuild the synoptic tree, and then generate the quickstatements with the
+reports/synoptic-usages.tsv	275	unclear	reports/synoptic-usages.tsv 80 unclear docs/mass-export-run.md 172 unclear injection into the synoptic tree build. Both the novelty and the purpose are gone.
+reports/synoptic-usages.tsv	276	full	reports/synoptic-usages.tsv 81 full edit-objects.md 23 full We hold a synoptic tree — Wikidata items with their whole JSON, Geni people with
+reports/synoptic-usages.tsv	277	unclear	reports/synoptic-usages.tsv 82 unclear orderlife/analysis/cycle_policy.md 13 unclear device for linking people across time and space, and it is building a **synoptic
+reports/synoptic-usages.tsv	278	unclear	reports/synoptic-usages.tsv 83 unclear orderlife/analysis/shadow_audit.md 36 unclear right is a per-record judgement, and this dump is a synoptic mythology where
+reports/synoptic-usages.tsv	279	unclear	reports/synoptic-usages.tsv 84 unclear queue.md 36 unclear `Link reliability order`, `The chain of provenance`, `How the synoptic tree is actually made`,
+reports/synoptic-usages.tsv	280	unclear	reports/synoptic-usages.tsv 85 unclear queue.md 189 unclear - **The ideal state is still the Geni tree alone.** Her spec says the **union of the synoptic
+reports/synoptic-usages.tsv	281	unclear	reports/synoptic-usages.tsv 86 unclear queue.md 190 unclear tree and the Geni tree**; the synoptic half does not exist yet, which is the § *PREREQUISITE
+reports/synoptic-usages.tsv	282	unclear	reports/synoptic-usages.tsv 87 unclear queue.md 931 unclear export alone. If it does then that'll be great. We'll have a synoptically
+reports/synoptic-usages.tsv	283	unclear	reports/synoptic-usages.tsv 88 unclear queue.md 988 unclear ## Fix the surnames of the tier-2 placeholders before the synoptic tree is built
+reports/synoptic-usages.tsv	284	unclear	reports/synoptic-usages.tsv 89 unclear queue.md 1047 unclear **Emma, 2026-08-18. Do this BEFORE the synoptic tree is built. Not an investigation
+reports/synoptic-usages.tsv	285	unclear	reports/synoptic-usages.tsv 90 unclear queue.md 1135 unclear thing so that we can deal with more important stuff."* Read as the synoptic-tree build
+reports/synoptic-usages.tsv	286	unclear	reports/synoptic-usages.tsv 91 unclear queue.md 1157 unclear ## Build the synoptic tree
+reports/synoptic-usages.tsv	287	unclear	reports/synoptic-usages.tsv 92 unclear queue.md 1233 unclear ## How the synoptic tree is actually made — Emma, 2026-08-25
+reports/synoptic-usages.tsv	288	unclear	reports/synoptic-usages.tsv 93 unclear queue.md 1235 unclear **Her words:** *"Put into the queue also an analysis of how the synoptic tree is actually made."*
+reports/synoptic-usages.tsv	289	unclear	reports/synoptic-usages.tsv 94 unclear queue.md 1237 unclear over the synoptic tree stuff sufficiently, but I'm going to treat it as though it's all good. I'm
+reports/synoptic-usages.tsv	290	unclear	reports/synoptic-usages.tsv 95 unclear queue.md 1238 unclear going to treat the synoptic tree as though it is perfect, and we are going to address whether the
+reports/synoptic-usages.tsv	291	unclear	reports/synoptic-usages.tsv 96 unclear queue.md 1239 unclear synoptic tree is well functioning later."*
+reports/synoptic-usages.tsv	292	unclear	reports/synoptic-usages.tsv 97 unclear queue.md 1241 unclear So **nothing waits on this.** Write down what `scripts/build-synoptic-correspondence.py` actually
+reports/synoptic-usages.tsv	293	full	reports/synoptic-usages.tsv 98 full queue.md 1379 full ## The eight Asian identities — bios get their QID links AT SYNOPTIC-MERGE TIME, not now
+reports/synoptic-usages.tsv	294	unclear	reports/synoptic-usages.tsv 99 unclear queue.md 1382 unclear *"No fuck you you didn't get the later discussion. When the synoptic tree is merged we change all
+reports/synoptic-usages.tsv	295	full	reports/synoptic-usages.tsv 100 full queue.md 1387 full bio link is a *step inside the synoptic tree build*, and its purpose is to feed the **Wikidata
+reports/synoptic-usages.tsv	296	full	reports/synoptic-usages.tsv 101 full queue.md 1402 full § *The Wikidata link goes in the bio during the SYNOPTIC TREE BUILD* already recorded the
+reports/synoptic-usages.tsv	297	both named	reports/synoptic-usages.tsv 102 both named queue.md 1699 both named ## THE LAST ITEM — rebuild the synoptic tree, which is how the QID-link GEDCOM gets tested
+reports/synoptic-usages.tsv	298	unclear	reports/synoptic-usages.tsv 103 unclear queue.md 1701 unclear **Emma, 2026-08-29:** *"don't test it now but make the last queue item rebuilding the synoptic
+reports/synoptic-usages.tsv	299	unclear	reports/synoptic-usages.tsv 104 unclear queue.md 1723 unclear number; the first version emitted 83,988 people off `reports/synoptic-correspondence.tsv` and that
+reports/synoptic-usages.tsv	300	full	reports/synoptic-usages.tsv 105 full queue.md 1799 full - The Wikidata link goes into bios **during the synoptic tree build**; Geni is never edited for it.
+reports/synoptic-usages.tsv	301	unclear	reports/synoptic-usages.tsv 106 unclear queue.md 1818 unclear ## "Synoptic tree" means two different things — resolve it usage by usage
+reports/synoptic-usages.tsv	302	unclear	reports/synoptic-usages.tsv 107 unclear queue.md 2047 unclear Geni record in there overwrites the same Geni ID from any other export** in the synoptic
+reports/synoptic-usages.tsv	303	unclear	reports/synoptic-usages.tsv 108 unclear queue.md 2176 unclear runner, so the synoptic tree still cannot be rebuilt in Actions without a larger runner.
+reports/synoptic-usages.tsv	304	full	reports/synoptic-usages.tsv 109 full reports/audit-transcripts-2026-08-15.md 60 full | J | **Descent-from-antiquity people with neither a Geni nor a Wikidata link** — *"I want to include everything he
+reports/synoptic-usages.tsv	305	unclear	reports/synoptic-usages.tsv 110 unclear reports/farmname-seed-fixes.md 3 unclear Emma, 2026-08-18: *"uhh farm names are surnames here lol"* --- and *"add a task in the queue to fix the surnames of the
+reports/synoptic-usages.tsv	306	full	reports/synoptic-usages.tsv 111 full reports/geni-qid-links.md 153 unclear ## The synoptic correspondence: five sources, now one file
+reports/synoptic-usages.tsv	307	full	reports/synoptic-usages.tsv 112 full reports/geni-qid-links.md 157 unclear represented in our synoptic tree."*
+reports/synoptic-usages.tsv	308	full	reports/synoptic-usages.tsv 113 full reports/geni-qid-links.md 160 unclear artefact `CLAUDE.md` says the synoptic tree is for. `scripts/build-synoptic-correspondence.py`
+reports/synoptic-usages.tsv	309	full	reports/synoptic-usages.tsv 114 full reports/geni-qid-links.md 161 unclear now writes `reports/synoptic-correspondence.tsv`, every pair carrying its provenance.
+reports/synoptic-usages.tsv	310	full	reports/synoptic-usages.tsv 115 full reports/geni-qid-links.md 181 full cannot be two Wikidata items. `reports/synoptic-conflicts.tsv` lists them with the
+reports/synoptic-usages.tsv	311	geni	reports/synoptic-usages.tsv 116 geni reports/ingest-2026-08-05.md 8 geni synoptic GEDCOM is regenerated with plain:
+reports/synoptic-usages.tsv	312	unclear	reports/synoptic-usages.tsv 118 unclear reports/public-repo-analysis.md 8 unclear part of the algorithm. Biggest barrier imo is the synoptic tree file stuff."*
+reports/synoptic-usages.tsv	313	unclear	reports/synoptic-usages.tsv 119 unclear reports/public-repo-analysis.md 34 unclear ## The barrier she named: the synoptic tree cannot be built in Actions
+reports/synoptic-usages.tsv	314	unclear	reports/synoptic-usages.tsv 120 unclear reports/synoptic-conflicts.md 4 unclear `reports/synoptic-conflicts-labelled.tsv` — every row with **names on both sides**, since
+reports/synoptic-usages.tsv	315	unclear	reports/synoptic-usages.tsv 121 unclear reports/synoptic-conflicts.md 48 unclear - `reports/synoptic-conflicts-labelled.tsv` — all 257 with names on both sides.
+reports/synoptic-usages.tsv	316	unclear	reports/synoptic-usages.tsv 122 unclear reports/synoptic-conflicts.md 49 unclear - `reports/synoptic-conflicts.tsv` — the raw pairs.
+reports/synoptic-usages.tsv	317	full	reports/synoptic-usages.tsv 123 full reports/wikidata-labels.tsv 51777 full Q106046 synoptic gospels
+reports/synoptic-usages.tsv	318	full	reports/synoptic-usages.tsv 124 full reports/wikidata-labels.tsv 613770 full Q51515725 Our native ferns and their allies; with synoptical descriptions of the American Pteridophyta north of Mexico
+reports/synoptic-usages.tsv	319	full	reports/synoptic-usages.tsv 125 full reports/wikidata-labels.tsv 613771 full Q51515726 Our native ferns and their allies; with synoptical descriptions of the American Pteridophyta north of Mexico
+reports/synoptic-usages.tsv	320	unclear	reports/synoptic-usages.tsv 126 unclear scripts/audit-farmname-seeds.py 5 unclear the synoptic tree is built. I will do the editing on geni for this."*
+reports/synoptic-usages.tsv	321	unclear	reports/synoptic-usages.tsv 127 unclear scripts/audit-farmname-seeds.py 90 unclear "task in the queue to fix the surnames of these people before the synoptic tree "
+reports/synoptic-usages.tsv	322	full	reports/synoptic-usages.tsv 128 full scripts/build-clan-p2600-pairs.py 5 unclear **Emma, 2026-08-24:** *"the tanba onakatomi izumo stuff is a prerequisite for the synoptic
+reports/synoptic-usages.tsv	323	full	reports/synoptic-usages.tsv 129 full scripts/build-clan-p2600-pairs.py 6 unclear rebuild"* — these joins are **inputs** to `reports/synoptic-correspondence.tsv`, so
+reports/synoptic-usages.tsv	324	full	reports/synoptic-usages.tsv 130 full scripts/build-clan-p2600-pairs.py 10 unclear rosters but no join, so their people were invisible to the synoptic tree even though they
+reports/synoptic-usages.tsv	325	unclear	reports/synoptic-usages.tsv 131 unclear scripts/build-join-batch.py 1 unclear """The thing that consumes the synoptic correspondence: Geni facts onto joined items.
+reports/synoptic-usages.tsv	326	full	reports/synoptic-usages.tsv 132 full scripts/build-join-batch.py 6 full `reports/synoptic-correspondence.tsv` holds 522,086 Geni ID ↔ QID pairs from five
+reports/synoptic-usages.tsv	327	full	reports/synoptic-usages.tsv 133 full scripts/build-join-batch.py 11 full wikidata qid is also important and needs to be done jointly in the synoptic tree
+reports/synoptic-usages.tsv	328	unclear	reports/synoptic-usages.tsv 134 unclear scripts/build-join-batch.py 91 unclear with open(ROOT / "reports" / "synoptic-correspondence.tsv", encoding="utf-8") as f:
+reports/synoptic-usages.tsv	329	unclear	reports/synoptic-usages.tsv 135 unclear scripts/build-name-classes.py 4 unclear *"running an analysis of this [synoptic] tree, all the different names inside…
+reports/synoptic-usages.tsv	330	unclear	reports/synoptic-usages.tsv 136 unclear scripts/build-nn-label-batch.py 41 unclear **And the reach was measured on the synoptic tree, not on one store.** Emma named
+reports/synoptic-usages.tsv	331	unclear	reports/synoptic-usages.tsv 137 unclear scripts/build-nn-label-batch.py 43 unclear Jenny stuff, and not the Synoptic Tree… I'm pretty sure that long-range
+reports/synoptic-usages.tsv	332	unclear	reports/synoptic-usages.tsv 138 unclear scripts/build-nn-label-batch.py 57 unclear skip the synoptic check next time.
+reports/synoptic-usages.tsv	333	unclear	reports/synoptic-usages.tsv 139 unclear scripts/build-orderlife-batch.py 1 unclear """Turn `order.life` into the third source of the synoptic tree, as edit objects.
+reports/synoptic-usages.tsv	334	full	reports/synoptic-usages.tsv 140 full scripts/build-orderlife-batch.py 4 full without a Wikidata ID can still be merged into the synoptic tree because we have
+reports/synoptic-usages.tsv	335	unclear	reports/synoptic-usages.tsv 141 unclear scripts/build-orderlife-diff.py 3 unclear **Not a merge, and not a synoptic tree.** Emma, 2026-08-14: the synoptic tree is
+reports/synoptic-usages.tsv	336	both named	reports/synoptic-usages.tsv 142 both named scripts/build-qid-links-gedcom.py 14 full docstring said the file existed so the synoptic tree *"ALWAYS"* carried QID links, which is the
+reports/synoptic-usages.tsv	337	both named	reports/synoptic-usages.tsv 143 both named scripts/build-qid-links-gedcom.py 16 unclear generalisations of *"When the synoptic tree is merged we change all of their bios to links to
+reports/synoptic-usages.tsv	338	both named	reports/synoptic-usages.tsv 144 both named scripts/build-qid-links-gedcom.py 22 unclear this script emitted every pairing in `reports/synoptic-correspondence.tsv` that landed on somebody
+reports/synoptic-usages.tsv	339	both named	reports/synoptic-usages.tsv 145 both named scripts/build-qid-links-gedcom.py 40 unclear asked for a directory whose records *"overwrite earlier ones from other repos in the synoptic
+reports/synoptic-usages.tsv	340	both named	reports/synoptic-usages.tsv 146 both named scripts/build-qid-links-gedcom.py 59 unclear Reading `reports/synoptic-correspondence.tsv` and filtering it to the three returned **0 of 3** —
+reports/synoptic-usages.tsv	341	geni	reports/synoptic-usages.tsv 147 geni scripts/build-scraped-gedcom.py 6 geni turns them into things that are usable and would be merged into the synoptic tree as GEDCOM
+reports/synoptic-usages.tsv	342	unclear	reports/synoptic-usages.tsv 148 unclear scripts/build-synoptic-correspondence.py 3 unclear python scripts/build-synoptic-correspondence.py
+reports/synoptic-usages.tsv	343	unclear	reports/synoptic-usages.tsv 149 unclear scripts/build-synoptic-correspondence.py 7 unclear synoptic tree."*
+reports/synoptic-usages.tsv	344	unclear	reports/synoptic-usages.tsv 150 unclear scripts/build-synoptic-correspondence.py 10 unclear them**, which is precisely the artefact `CLAUDE.md` says the synoptic tree is for:
+reports/synoptic-usages.tsv	345	unclear	reports/synoptic-usages.tsv 151 unclear scripts/build-synoptic-correspondence.py 34 unclear Writes `reports/synoptic-correspondence.tsv` and `reports/synoptic-conflicts.tsv`.
+reports/synoptic-usages.tsv	346	unclear	reports/synoptic-usages.tsv 152 unclear scripts/build-synoptic-correspondence.py 55 unclear dropped here rather than carried into the synoptic tree and left for a human to
+reports/synoptic-usages.tsv	347	unclear	reports/synoptic-usages.tsv 153 unclear scripts/build-synoptic-correspondence.py 129 unclear # synoptic rebuild"*. Tanba and the sister repo's fuller Izumo roster had joins
+reports/synoptic-usages.tsv	348	unclear	reports/synoptic-usages.tsv 154 unclear scripts/build-synoptic-correspondence.py 176 unclear out = R / "synoptic-correspondence.tsv"
+reports/synoptic-usages.tsv	349	unclear	reports/synoptic-usages.tsv 155 unclear scripts/build-synoptic-correspondence.py 200 unclear conf = R / "synoptic-conflicts.tsv"
+reports/synoptic-usages.tsv	350	unclear	reports/synoptic-usages.tsv 156 unclear scripts/bure-coverage.py 19 unclear people in the geni synoptic tree and once everyone is covered the campaign is over. Because
+reports/synoptic-usages.tsv	351	unclear	reports/synoptic-usages.tsv 157 unclear scripts/census-correspondence-shapes.py 35 unclear Reads `reports/synoptic-correspondence.tsv`. Offline.
+reports/synoptic-usages.tsv	352	unclear	reports/synoptic-usages.tsv 158 unclear scripts/census-correspondence-shapes.py 56 unclear src = ROOT / "reports" / "synoptic-correspondence.tsv"
+reports/synoptic-usages.tsv	353	unclear	reports/synoptic-usages.tsv 159 unclear scripts/census-name-scripts.py 6 unclear all languages in the synoptic tree (our geni stuff) and we add labels in all of them. And I don't
+reports/synoptic-usages.tsv	354	full	reports/synoptic-usages.tsv 160 full scripts/census-solo-children.py 6 full queued up analysis on synoptic tree vs wikidata solo children situations like this."* And, before
+reports/synoptic-usages.tsv	355	unclear	reports/synoptic-usages.tsv 161 unclear scripts/census-synoptic-usages.py 1 unclear """Every place the repo says "synoptic tree", and which of the two things it means.
+reports/synoptic-usages.tsv	356	unclear	reports/synoptic-usages.tsv 162 unclear scripts/census-synoptic-usages.py 3 unclear python scripts/census-synoptic-usages.py
+reports/synoptic-usages.tsv	357	unclear	reports/synoptic-usages.tsv 163 unclear scripts/census-synoptic-usages.py 27 unclear Writes `reports/synoptic-usages.tsv` — file, line, verdict, the line itself.
+reports/synoptic-usages.tsv	358	unclear	reports/synoptic-usages.tsv 164 unclear scripts/census-synoptic-usages.py 37 unclear OUT = ROOT / "reports" / "synoptic-usages.tsv"
+reports/synoptic-usages.tsv	359	unclear	reports/synoptic-usages.tsv 165 unclear scripts/census-synoptic-usages.py 62 unclear if "synoptic" not in text.lower():
+reports/synoptic-usages.tsv	360	unclear	reports/synoptic-usages.tsv 166 unclear scripts/census-synoptic-usages.py 65 unclear if "synoptic" not in line.lower():
+reports/synoptic-usages.tsv	361	unclear	reports/synoptic-usages.tsv 167 unclear scripts/census-synoptic-usages.py 81 unclear print(f"{len(rows)} usages of 'synoptic' across "
+reports/synoptic-usages.tsv	362	unclear	reports/synoptic-usages.tsv 168 unclear scripts/find-chain-gaps.py 4 unclear *"I didn't request that you rebuild the synoptic tree. You just did that on your own,
+reports/synoptic-usages.tsv	363	unclear	reports/synoptic-usages.tsv 169 unclear scripts/find-chain-gaps.py 5 unclear and I think that's kind of stupid… rebuilding the synoptic tree right now is just going
+reports/synoptic-usages.tsv	364	unclear	reports/synoptic-usages.tsv 170 unclear scripts/measure-orderlife-pairs.py 14 unclear column — so it answers exactly the question `reports/synoptic-correspondence.tsv` answers, from
+reports/synoptic-usages.tsv	365	unclear	reports/synoptic-usages.tsv 171 unclear scripts/measure-orderlife-pairs.py 45 unclear OURS = ROOT / "reports" / "synoptic-correspondence.tsv"
+reports/synoptic-usages.tsv	366	unclear	reports/synoptic-usages.tsv 172 unclear scripts/measure-post-merge-override.py 19 unclear synoptic tree earlier either"* — with the queue noting that later-wins is not post-merge-wins
+reports/synoptic-usages.tsv	367	unclear	reports/synoptic-usages.tsv 173 unclear scripts/multi-geni-item-roster.py 17 unclear really removing the merged profile from the synoptic tree... We're just linking everything
+reports/synoptic-usages.tsv	368	geni	reports/synoptic-usages.tsv 174 geni scripts/rebuild-everything.py 1 unclear """Rebuild the synoptic tree and everything derived from it, ending with the batch.
+reports/synoptic-usages.tsv	369	unclear	reports/synoptic-usages.tsv 175 unclear scripts/refresh-drift.py 108 unclear # `build-synoptic-correspondence.py` reads `structural-walk-validation.tsv` and is a
+reports/synoptic-usages.tsv	370	unclear	reports/synoptic-usages.tsv 176 unclear scripts/resolve-multi-geni-by-parents.py 143 unclear with open(ROOT / "reports" / "synoptic-correspondence.tsv", encoding="utf-8") as f:
+reports/synoptic-usages.tsv	371	unclear	reports/synoptic-usages.tsv 177 unclear scripts/scraped_pages.py 6 unclear are different. It turns them into things that are usable and would be merged into the synoptic
+reports/synoptic-usages.tsv	372	unclear	reports/synoptic-usages.tsv 178 unclear scripts/verify-spine-candidates.py 24 unclear * the relative appears in `reports/synoptic-correspondence.tsv` against our relative.
+reports/synoptic-usages.tsv	373	unclear	reports/synoptic-usages.tsv 179 unclear scripts/verify-spine-candidates.py 85 unclear syn = R / "synoptic-correspondence.tsv"
+reports/synoptic-usages.tsv	374	unclear	reports/synoptic-usages.tsv 180 unclear scripts/walk-structural-merge.py 3 unclear Emma, 2026-08-15: *"For the synoptic tree, we're supposed to be specifically
+reports/synoptic-usages.tsv	375	unclear	reports/synoptic-usages.tsv 181 unclear scripts/walk-structural-merge.py 6 unclear That is a critical part of building up this synoptic tree."*
+reports/synoptic-usages.tsv	376	full	reports/synoptic-usages.tsv 182 full scripts/zipper-join.py 15 unclear *"For the synoptic tree, we're supposed to be specifically going up the parental lines and stuff
+reports/synoptic-usages.tsv	377	full	reports/synoptic-usages.tsv 183 full scripts/zipper-join.py 62 unclear * **It emits no edit.** The output is a correspondence for the synoptic tree.
+reports/synoptic-usages.tsv	378	unclear	reports/synoptic-usages.tsv 184 unclear src/genimerge/frontier.py 116 unclear synoptic tree, and what makes it synoptic is that the graph is connected —
+reports/synoptic-usages.tsv	379	geni	reports/synoptic-usages.tsv 185 geni src/genimerge/sources.py 163 geni the synoptic tree"*. The merge already gives a conflict to the later source — but
+reports/synoptic-usages.tsv	380	geni	reports/synoptic-usages.tsv 186 geni tests/test_chain_gaps.py 3 geni Emma, 2026-08-17, on the merge I ran unasked: *"rebuilding the synoptic tree right now
+reports/synoptic-usages.tsv	381	unclear	reports/synoptic-usages.tsv 187 unclear tests/test_join_batch.py 1 unclear """`scripts/build-join-batch.py` — the thing that consumes the synoptic correspondence.
+reports/synoptic-usages.tsv	382	unclear	reports/synoptic-usages.tsv 188 unclear tests/test_sources.py 128 unclear synoptic tree"*.
+reports/synoptic-usages.tsv	383	full	reports/synoptic-usages.tsv 189 full tests/test_synoptic_conflicts.py 1 full """`reports/synoptic-conflicts.tsv` must attribute each candidate QID separately.
+reports/synoptic-usages.tsv	384	unclear	reports/synoptic-usages.tsv 190 unclear tests/test_synoptic_conflicts.py 23 unclear CONFLICTS = REPO / "reports" / "synoptic-conflicts.tsv"
+reports/synoptic-usages.tsv	385	unclear	reports/synoptic-usages.tsv 191 unclear todo.md 101 unclear **Phase 3 — synoptic density, then targeted breadth (after phase 2).** With ~50
+reports/synoptic-usages.tsv	386	unclear	reports/synoptic-usages.tsv 192 unclear todo.md 311 unclear re-runs is the offline chain: `scripts/build-synoptic-correspondence.py` and the
+reports/synoptic-usages.tsv	387	unclear	reports/synoptic-usages.tsv 193 unclear todo.md 646 unclear antiquity material she wants to **include in the synoptic tree**, and she asked
+reports/synoptic-usages.tsv	388	unclear	reports/unrecorded-instructions.tsv 39 unclear 2026-08-30 17:11 409c566f typed 17 Did you just give up and stop working? Also is the synoptictree built and the quickstatements generated
+reports/synoptic-usages.tsv	392	unclear	reports/unrecorded-instructions.tsv 203 unclear 2026-08-16 11:54 c33ce219 typed 27 Oh my god you’ve got them downloaded right? You should as all of these items are in the synoptic tree, look over thei
+reports/synoptic-usages.tsv	395	unclear	reports/unrecorded-instructions.tsv 351 unclear 2026-08-07 05:43 16972e3a typed 18 sorry what the fuck why did you scan the zips instead of integrating them into our synoptic tree
+reports/synoptic-usages.tsv	396	geni	reports/unrecorded-instructions.tsv 367 geni 2026-08-05 22:40 80f89e2d typed 20 Uhh I mean I want a synoptic gedcom But we can do analysis on how it changed from these imports
+reports/synoptic-usages.tsv	397	geni	reports/unrecorded-instructions.tsv 377 geni 2026-08-02 02:42 288b8ab6 typed 31 How was the merge? To be clear right now the idea of the project is we are building a larger and larger synoptic tree fi
+reports/synoptic-usages.tsv	427	unclear	reports/user-turns.tsv 300 unclear 2026-08-31T19:13:51.951Z 14fbf9e3 enqueued I did no ask you to make the synoptic tree just to refresh the ledger
+reports/synoptic-usages.tsv	448	unclear	reports/user-turns.tsv 695 unclear 2026-08-30T17:11:34.578Z 409c566f typed Did you just give up and stop working? Also is the synoptictree built and the quickstatements generated
+reports/synoptic-usages.tsv	449	unclear	reports/user-turns.tsv 696 unclear 2026-08-30T17:11:34.556Z 409c566f enqueued Did you just give up and stop working? Also is the synoptictree built and the quickstatements generated
+reports/synoptic-usages.tsv	460	unclear	reports/user-turns.tsv 855 unclear 2026-08-30T02:58:51.031Z 0abbc71f typed I want you to run the quickstatements generator first and attach the file, and then wire it in and rebuild the synoptic tree.
+reports/synoptic-usages.tsv	461	unclear	reports/user-turns.tsv 856 unclear 2026-08-30T02:58:51.012Z 0abbc71f enqueued I want you to run the quickstatements generator first and attach the file, and then wire it in and rebuild the synoptic tr
+reports/synoptic-usages.tsv	464	unclear	reports/user-turns.tsv 863 geni 2026-08-30T02:38:36.047Z 0abbc71f typed Yes, this one is correct. This one also is relatively significant in terms of building the actual Synoptic tree rather than the 
+reports/synoptic-usages.tsv	465	unclear	reports/user-turns.tsv 864 geni 2026-08-30T02:38:36.015Z 0abbc71f enqueued Yes, this one is correct. This one also is relatively significant in terms of building the actual Synoptic tree rather than t
+reports/synoptic-usages.tsv	484	unclear	reports/user-turns.tsv 1232 unclear 2026-08-29T04:48:34.636Z 0abbc71f enqueued Yeah and don’t test it now but make the last queue item rebuilding the synoptic tree to test this thing so that we can qu
+reports/synoptic-usages.tsv	486	full	reports/user-turns.tsv 1239 full 2026-08-29T04:04:29.696Z 0abbc71f typed No fuck you you didn’t get the later discussion ⏎ ⏎ When the synoptic tree is merged we change all of their bios to links to th
+reports/synoptic-usages.tsv	487	full	reports/user-turns.tsv 1240 full 2026-08-29T04:04:29.680Z 0abbc71f enqueued No fuck you you didn’t get the later discussion ⏎ ⏎ When the synoptic tree is merged we change all of their bios to links to
+reports/synoptic-usages.tsv	488	unclear	reports/user-turns.tsv 1286 unclear 2026-08-28T21:48:37.193Z 9ecc4b2b enqueued Cause right now I want you to rebuild the synoptic tree and then build the quick statements. Because I'm going to be runn
+reports/synoptic-usages.tsv	490	unclear	reports/user-turns.tsv 1341 unclear 2026-08-28T09:12:05.329Z dbec586f enqueued Yeah basically we can search through all of the people as we add more since we want all these bureatten people in the gen
+reports/synoptic-usages.tsv	500	unclear	reports/user-turns.tsv 1743 unclear 2026-08-27T06:02:08.037Z dbec586f enqueued Did you do a script census on the synoptic tree lol
+reports/synoptic-usages.tsv	506	full	reports/user-turns.tsv 2057 full 2026-08-25T22:15:43.261Z e71a0de8 typed Oh my god just fucking run the goddamn zipper cron at 4pm I didn’t ask for the synoptic rebuild at 4pm cancel it
+reports/synoptic-usages.tsv	507	full	reports/user-turns.tsv 2058 full 2026-08-25T22:15:43.226Z e71a0de8 enqueued Oh my god just fucking run the goddamn zipper cron at 4pm I didn’t ask for the synoptic rebuild at 4pm cancel it
+reports/synoptic-usages.tsv	508	full	reports/user-turns.tsv 2083 both named 2026-08-25T21:37:00.748Z e71a0de8 typed "SYNOPTIC REBUILD — no earlier than 2pm, by Emma's instruction, because she runs QuickStatements on Wikidata first and th
+reports/synoptic-usages.tsv	509	full	reports/user-turns.tsv 2084 both named 2026-08-25T21:37:00.564Z e71a0de8 enqueued "SYNOPTIC REBUILD — no earlier than 2pm, by Emma's instruction, because she runs QuickStatements on Wikidata first and
+reports/synoptic-usages.tsv	512	unclear	reports/user-turns.tsv 2402 geni 2026-08-24T22:59:13.376Z e71a0de8 typed okay whatever the strong ones are merged, and we have a good synoptic tree right? Yes fucking run the last three exports lol, a
+reports/synoptic-usages.tsv	513	unclear	reports/user-turns.tsv 2406 unclear 2026-08-24T22:50:17.438Z e71a0de8 typed uhh what the fuck does this mean? lmao can we get a synoptic tree?
+reports/synoptic-usages.tsv	514	full	reports/user-turns.tsv 2416 both named 2026-08-24T21:37:01.039Z e71a0de8 typed "SYNOPTIC REBUILD — no earlier than 2pm, by Emma's instruction, because she runs QuickStatements on Wikidata first and th
+reports/synoptic-usages.tsv	515	full	reports/user-turns.tsv 2417 both named 2026-08-24T21:37:00.863Z e71a0de8 enqueued "SYNOPTIC REBUILD — no earlier than 2pm, by Emma's instruction, because she runs QuickStatements on Wikidata first and
+reports/synoptic-usages.tsv	516	unclear	reports/user-turns.tsv 2425 unclear 2026-08-24T20:47:08.650Z e71a0de8 enqueued Wait what no? lol you forgot about the geni merge stuff which is an even more important prerequisite to the synoptic rebu
+reports/synoptic-usages.tsv	517	unclear	reports/user-turns.tsv 2426 unclear 2026-08-24T20:42:52.454Z e71a0de8 typed I mean the tanba onakatomi izumo stuff is a prerequisite for the synoptic rebuild lol
+reports/synoptic-usages.tsv	518	unclear	reports/user-turns.tsv 2427 unclear 2026-08-24T20:42:52.433Z e71a0de8 enqueued I mean the tanba onakatomi izumo stuff is a prerequisite for the synoptic rebuild lol
+reports/synoptic-usages.tsv	520	full	reports/user-turns.tsv 2488 full 2026-08-24T17:52:11.652Z e71a0de8 enqueued Keep in mind geni description qid to wikidata qid is also important and needs to be done jointly in the synoptic tree buildi
+reports/synoptic-usages.tsv	529	unclear	reports/user-turns.tsv 3778 unclear 2026-08-16T11:54:39.675Z c33ce219 typed Oh my god you’ve got them downloaded right? You should as all of these items are in the synoptic tree, look over their prope
+reports/synoptic-usages.tsv	530	unclear	reports/user-turns.tsv 3779 unclear 2026-08-16T11:54:39.652Z c33ce219 enqueued Oh my god you’ve got them downloaded right? You should as all of these items are in the synoptic tree, look over their pr
+reports/synoptic-usages.tsv	540	unclear	reports/user-turns.tsv 4109 full 2026-08-15T00:14:11.897Z 4c8b906c typed But I guess yeah, we have a synoptic tree of all three of them now that produces the geni order.life stuff, which gives the mos
+reports/synoptic-usages.tsv	545	unclear	reports/user-turns.tsv 4194 unclear 2026-08-14T04:00:39.210Z 35a0744d enqueued Also a bunch of zips have been downloaded nad should be incorporate into the project repo and synoptic tree
+reports/synoptic-usages.tsv	547	unclear	reports/user-turns.tsv 4343 unclear 2026-08-13T07:08:04.558Z 100895e2 enqueued Uhh wait what is that line not in our synoptic tree?
+reports/synoptic-usages.tsv	550	unclear	reports/user-turns.tsv 4447 unclear 2026-08-13T02:16:26.475Z 100895e2 typed I am extremely fucking confused did you intentionally omit https://www.geni.com/people/Emma-Bishop/6000000087535357291 from 
+reports/synoptic-usages.tsv	553	both named	reports/user-turns.tsv 4928 both named 2026-08-07T14:26:53.942Z e175cc1d enqueued I think we should ignore the synoptic gedcom by necessity because it exceeds the maximum size. I do not want the Wikid
+reports/synoptic-usages.tsv	554	unclear	reports/user-turns.tsv 4936 unclear 2026-08-07T05:44:54.915Z 16972e3a enqueued Like the entire fucking point of all of this is building a synoptic tree so if you are just not doing it then fuck you
+reports/synoptic-usages.tsv	555	geni	reports/user-turns.tsv 4937 geni 2026-08-07T05:43:54.557Z 16972e3a enqueued Like were all of these just not put into the synoptic tree were you not integrating new gedcoms for a significant time perio
+reports/synoptic-usages.tsv	556	unclear	reports/user-turns.tsv 4938 unclear 2026-08-07T05:43:17.628Z 16972e3a typed sorry what the fuck why did you scan the zips instead of integrating them into our synoptic tree
+reports/synoptic-usages.tsv	557	geni	reports/user-turns.tsv 5020 geni 2026-08-05T22:40:53.842Z 80f89e2d typed Uhh I mean I want a synoptic gedcom ⏎ ⏎ But we can do analysis on how it changed from these imports
+reports/synoptic-usages.tsv	558	geni	reports/user-turns.tsv 5021 geni 2026-08-05T22:40:53.778Z 80f89e2d enqueued Uhh I mean I want a synoptic gedcom ⏎ ⏎ But we can do analysis on how it changed from these imports
+reports/synoptic-usages.tsv	561	geni	reports/user-turns.tsv 5073 geni 2026-08-02T02:42:08.370Z 288b8ab6 typed How was the merge? To be clear right now the idea of the project is we are building a larger and larger synoptic tree finding i
+reports/synoptic-usages.tsv	562	geni	reports/user-turns.tsv 5074 geni 2026-08-02T02:42:08.332Z 288b8ab6 enqueued How was the merge? To be clear right now the idea of the project is we are building a larger and larger synoptic tree findin
+reports/synoptic-usages.tsv	563	full	reports/wikidata-labels.tsv 51777 full Q106046 synoptic gospels
+reports/synoptic-usages.tsv	564	full	reports/wikidata-labels.tsv 613770 full Q51515725 Our native ferns and their allies; with synoptical descriptions of the American Pteridophyta north of Mexico
+reports/synoptic-usages.tsv	565	full	reports/wikidata-labels.tsv 613771 full Q51515726 Our native ferns and their allies; with synoptical descriptions of the American Pteridophyta north of Mexico
+reports/synoptic-usages.tsv	566	unclear	scripts/audit-farmname-seeds.py 5 unclear the synoptic tree is built. I will do the editing on geni for this."*
+reports/synoptic-usages.tsv	567	unclear	scripts/audit-farmname-seeds.py 90 unclear "task in the queue to fix the surnames of these people before the synoptic tree "
+reports/synoptic-usages.tsv	568	full	scripts/build-clan-p2600-pairs.py 5 unclear **Emma, 2026-08-24:** *"the tanba onakatomi izumo stuff is a prerequisite for the synoptic
+reports/synoptic-usages.tsv	569	full	scripts/build-clan-p2600-pairs.py 6 unclear rebuild"* — these joins are **inputs** to `reports/synoptic-correspondence.tsv`, so
+reports/synoptic-usages.tsv	570	full	scripts/build-clan-p2600-pairs.py 10 unclear rosters but no join, so their people were invisible to the synoptic tree even though they
+reports/synoptic-usages.tsv	571	unclear	scripts/build-garborg-day.py 4921 unclear # a week before the batch, and `reports/synoptic-correspondence.tsv` recorded it as
+reports/synoptic-usages.tsv	572	unclear	scripts/build-garborg-day.py 4935 unclear correspondence = ROOT / "reports" / "synoptic-correspondence.tsv"
+reports/synoptic-usages.tsv	573	unclear	scripts/build-garborg-day.py 5094 unclear f"(reports/synoptic-correspondence.tsv) - creating it would "
+reports/synoptic-usages.tsv	574	unclear	scripts/build-join-batch.py 1 unclear """The thing that consumes the synoptic correspondence: Geni facts onto joined items.
+reports/synoptic-usages.tsv	575	full	scripts/build-join-batch.py 6 full `reports/synoptic-correspondence.tsv` holds 522,086 Geni ID ↔ QID pairs from five
+reports/synoptic-usages.tsv	576	full	scripts/build-join-batch.py 11 full wikidata qid is also important and needs to be done jointly in the synoptic tree
+reports/synoptic-usages.tsv	577	unclear	scripts/build-join-batch.py 91 unclear with open(ROOT / "reports" / "synoptic-correspondence.tsv", encoding="utf-8") as f:
+reports/synoptic-usages.tsv	578	unclear	scripts/build-merges-to-do.py 76 unclear CORRESPONDENCE = ROOT / "reports" / "synoptic-correspondence.tsv"
+reports/synoptic-usages.tsv	579	full	scripts/build-merges-to-do.py 89 full `reports/synoptic-correspondence.tsv` does see them, through the zipper and the structural
+reports/synoptic-usages.tsv	580	full	scripts/build-merges-to-do.py 314 full "`reports/synoptic-correspondence.tsv` does see them, through the zipper and the "
+reports/synoptic-usages.tsv	581	unclear	scripts/build-name-classes.py 4 unclear *"running an analysis of this [synoptic] tree, all the different names inside…
+reports/synoptic-usages.tsv	582	unclear	scripts/build-nn-label-batch.py 41 unclear **And the reach was measured on the synoptic tree, not on one store.** Emma named
+reports/synoptic-usages.tsv	583	unclear	scripts/build-nn-label-batch.py 43 unclear Jenny stuff, and not the Synoptic Tree… I'm pretty sure that long-range
+reports/synoptic-usages.tsv	584	unclear	scripts/build-nn-label-batch.py 57 unclear skip the synoptic check next time.
+reports/synoptic-usages.tsv	585	unclear	scripts/build-orderlife-batch.py 1 unclear """Turn `order.life` into the third source of the synoptic tree, as edit objects.
+reports/synoptic-usages.tsv	586	full	scripts/build-orderlife-batch.py 4 full without a Wikidata ID can still be merged into the synoptic tree because we have
+reports/synoptic-usages.tsv	587	unclear	scripts/build-orderlife-diff.py 3 unclear **Not a merge, and not a synoptic tree.** Emma, 2026-08-14: the synoptic tree is
+reports/synoptic-usages.tsv	588	full	scripts/build-parent-candidates.py 189 full # in `reports/synoptic-correspondence.tsv`** -- known through the structural walk, the zipper,
+reports/synoptic-usages.tsv	589	unclear	scripts/build-parent-candidates.py 192 unclear # So an item is spoken for if ANY source in the synoptic correspondence claims it, and a Geni
+reports/synoptic-usages.tsv	590	unclear	scripts/build-parent-candidates.py 194 unclear # union of all eight sources; `docs/synoptic-correspondence.md` is what each is worth.
+reports/synoptic-usages.tsv	591	unclear	scripts/build-parent-candidates.py 196 unclear synoptic = ROOT / "reports" / "synoptic-correspondence.tsv"
+reports/synoptic-usages.tsv	592	unclear	scripts/build-parent-candidates.py 197 unclear if synoptic.exists():
+reports/synoptic-usages.tsv	593	unclear	scripts/build-parent-candidates.py 198 unclear with io.open(synoptic, encoding="utf-8", newline="") as fh:
+reports/synoptic-usages.tsv	594	both named	scripts/build-qid-links-gedcom.py 14 full docstring said the file existed so the synoptic tree *"ALWAYS"* carried QID links, which is the
+reports/synoptic-usages.tsv	595	both named	scripts/build-qid-links-gedcom.py 16 unclear generalisations of *"When the synoptic tree is merged we change all of their bios to links to
+reports/synoptic-usages.tsv	596	both named	scripts/build-qid-links-gedcom.py 22 unclear this script emitted every pairing in `reports/synoptic-correspondence.tsv` that landed on somebody
+reports/synoptic-usages.tsv	597	both named	scripts/build-qid-links-gedcom.py 40 unclear asked for a directory whose records *"overwrite earlier ones from other repos in the synoptic
+reports/synoptic-usages.tsv	598	both named	scripts/build-qid-links-gedcom.py 59 unclear Reading `reports/synoptic-correspondence.tsv` and filtering it to the three returned **0 of 3** —
+reports/synoptic-usages.tsv	599	both named	scripts/build-qid-links-gedcom.py 101 unclear #: `reports/synoptic-correspondence.tsv`.** Checked rather than assumed. They are hers by hand,
+reports/synoptic-usages.tsv	600	geni	scripts/build-scraped-gedcom.py 6 geni turns them into things that are usable and would be merged into the synoptic tree as GEDCOM
+reports/synoptic-usages.tsv	601	unclear	scripts/build-synoptic-correspondence.py 3 unclear python scripts/build-synoptic-correspondence.py
+reports/synoptic-usages.tsv	602	unclear	scripts/build-synoptic-correspondence.py 7 unclear synoptic tree."*
+reports/synoptic-usages.tsv	603	unclear	scripts/build-synoptic-correspondence.py 10 unclear them**, which is precisely the artefact `CLAUDE.md` says the synoptic tree is for:
+reports/synoptic-usages.tsv	604	unclear	scripts/build-synoptic-correspondence.py 34 unclear Writes `reports/synoptic-correspondence.tsv` and `reports/synoptic-conflicts.tsv`.
+reports/synoptic-usages.tsv	605	unclear	scripts/build-synoptic-correspondence.py 55 unclear dropped here rather than carried into the synoptic tree and left for a human to
+reports/synoptic-usages.tsv	606	unclear	scripts/build-synoptic-correspondence.py 129 unclear # synoptic rebuild"*. Tanba and the sister repo's fuller Izumo roster had joins
+reports/synoptic-usages.tsv	607	unclear	scripts/build-synoptic-correspondence.py 184 unclear out = R / "synoptic-correspondence.tsv"
+reports/synoptic-usages.tsv	608	unclear	scripts/build-synoptic-correspondence.py 208 unclear conf = R / "synoptic-conflicts.tsv"
+reports/synoptic-usages.tsv	609	unclear	scripts/bure-coverage.py 19 unclear people in the geni synoptic tree and once everyone is covered the campaign is over. Because
+reports/synoptic-usages.tsv	610	unclear	scripts/census-correspondence-shapes.py 35 unclear Reads `reports/synoptic-correspondence.tsv`. Offline.
+reports/synoptic-usages.tsv	611	unclear	scripts/census-correspondence-shapes.py 56 unclear src = ROOT / "reports" / "synoptic-correspondence.tsv"
+reports/synoptic-usages.tsv	612	unclear	scripts/census-name-scripts.py 6 unclear all languages in the synoptic tree (our geni stuff) and we add labels in all of them. And I don't
+reports/synoptic-usages.tsv	613	full	scripts/census-solo-children.py 6 full queued up analysis on synoptic tree vs wikidata solo children situations like this."* And, before
+reports/synoptic-usages.tsv	614	unclear	scripts/census-synoptic-usages.py 1 unclear """Every place the repo says "synoptic tree", and which of the two things it means.
+reports/synoptic-usages.tsv	615	unclear	scripts/census-synoptic-usages.py 3 unclear python scripts/census-synoptic-usages.py
+reports/synoptic-usages.tsv	616	unclear	scripts/census-synoptic-usages.py 27 unclear Writes `reports/synoptic-usages.tsv` — file, line, verdict, the line itself.
+reports/synoptic-usages.tsv	617	unclear	scripts/census-synoptic-usages.py 37 unclear OUT = ROOT / "reports" / "synoptic-usages.tsv"
+reports/synoptic-usages.tsv	618	unclear	scripts/census-synoptic-usages.py 62 unclear if "synoptic" not in text.lower():
+reports/synoptic-usages.tsv	619	unclear	scripts/census-synoptic-usages.py 65 unclear if "synoptic" not in line.lower():
+reports/synoptic-usages.tsv	620	unclear	scripts/census-synoptic-usages.py 81 unclear print(f"{len(rows)} usages of 'synoptic' across "
+reports/synoptic-usages.tsv	621	unclear	scripts/find-chain-gaps.py 4 unclear *"I didn't request that you rebuild the synoptic tree. You just did that on your own,
+reports/synoptic-usages.tsv	622	unclear	scripts/find-chain-gaps.py 5 unclear and I think that's kind of stupid… rebuilding the synoptic tree right now is just going
+reports/synoptic-usages.tsv	623	unclear	scripts/measure-orderlife-pairs.py 14 unclear column — so it answers exactly the question `reports/synoptic-correspondence.tsv` answers, from
+reports/synoptic-usages.tsv	624	unclear	scripts/measure-orderlife-pairs.py 45 unclear OURS = ROOT / "reports" / "synoptic-correspondence.tsv"
+reports/synoptic-usages.tsv	625	unclear	scripts/measure-post-merge-override.py 19 unclear synoptic tree earlier either"* — with the queue noting that later-wins is not post-merge-wins
+reports/synoptic-usages.tsv	626	unclear	scripts/measure-three-seed-eccentricity.py 1 unclear """Is Emma eccentric on the SYNOPTIC TREE, once all three seeds are taken together?
+reports/synoptic-usages.tsv	627	unclear	scripts/measure-three-seed-eccentricity.py 7 unclear being *incomplete*, and that on the synoptic tree — where the family structure is dense rather
+reports/synoptic-usages.tsv	628	unclear	scripts/measure-three-seed-eccentricity.py 11 unclear our synoptic tree."* So the synoptic tree is the better predictor of the eventual shape, and the
+reports/synoptic-usages.tsv	629	unclear	scripts/measure-three-seed-eccentricity.py 86 unclear print("loading the synoptic tree ...", flush=True)
+reports/synoptic-usages.tsv	630	unclear	scripts/multi-geni-item-roster.py 17 unclear really removing the merged profile from the synoptic tree... We're just linking everything
+reports/synoptic-usages.tsv	631	geni	scripts/rebuild-everything.py 1 unclear """Rebuild the synoptic tree and everything derived from it, ending with the batch.
+reports/synoptic-usages.tsv	632	unclear	scripts/refresh-drift.py 133 unclear # `build-synoptic-correspondence.py` reads `structural-walk-validation.tsv` and is a
+reports/synoptic-usages.tsv	633	unclear	scripts/resolve-multi-geni-by-parents.py 143 unclear with open(ROOT / "reports" / "synoptic-correspondence.tsv", encoding="utf-8") as f:
+reports/synoptic-usages.tsv	634	unclear	scripts/scraped_pages.py 6 unclear are different. It turns them into things that are usable and would be merged into the synoptic
+reports/synoptic-usages.tsv	635	unclear	scripts/verify-spine-candidates.py 24 unclear * the relative appears in `reports/synoptic-correspondence.tsv` against our relative.
+reports/synoptic-usages.tsv	636	unclear	scripts/verify-spine-candidates.py 85 unclear syn = R / "synoptic-correspondence.tsv"
+reports/synoptic-usages.tsv	637	unclear	scripts/walk-structural-merge.py 3 unclear Emma, 2026-08-15: *"For the synoptic tree, we're supposed to be specifically
+reports/synoptic-usages.tsv	638	unclear	scripts/walk-structural-merge.py 6 unclear That is a critical part of building up this synoptic tree."*
+reports/synoptic-usages.tsv	639	full	scripts/zipper-join.py 15 unclear *"For the synoptic tree, we're supposed to be specifically going up the parental lines and stuff
+reports/synoptic-usages.tsv	640	full	scripts/zipper-join.py 62 unclear * **It emits no edit.** The output is a correspondence for the synoptic tree.
+reports/synoptic-usages.tsv	641	unclear	src/genimerge/frontier.py 116 unclear synoptic tree, and what makes it synoptic is that the graph is connected —
+reports/synoptic-usages.tsv	642	geni	src/genimerge/sources.py 163 geni the synoptic tree"*. The merge already gives a conflict to the later source — but
+reports/synoptic-usages.tsv	643	geni	tests/test_chain_gaps.py 3 geni Emma, 2026-08-17, on the merge I ran unasked: *"rebuilding the synoptic tree right now
+reports/synoptic-usages.tsv	644	unclear	tests/test_join_batch.py 1 unclear """`scripts/build-join-batch.py` — the thing that consumes the synoptic correspondence.
+reports/synoptic-usages.tsv	645	unclear	tests/test_sources.py 128 unclear synoptic tree"*.
+reports/synoptic-usages.tsv	646	full	tests/test_synoptic_conflicts.py 1 full """`reports/synoptic-conflicts.tsv` must attribute each candidate QID separately.
+reports/synoptic-usages.tsv	647	unclear	tests/test_synoptic_conflicts.py 23 unclear CONFLICTS = REPO / "reports" / "synoptic-conflicts.tsv"
+reports/synoptic-usages.tsv	648	unclear	todo.md 101 unclear **Phase 3 — synoptic density, then targeted breadth (after phase 2).** With ~50
+reports/synoptic-usages.tsv	649	unclear	todo.md 311 unclear re-runs is the offline chain: `scripts/build-synoptic-correspondence.py` and the
+reports/synoptic-usages.tsv	650	unclear	todo.md 646 unclear antiquity material she wants to **include in the synoptic tree**, and she asked
+reports/unrecorded-instructions.tsv	39	unclear	2026-08-30 17:11 409c566f typed 17 Did you just give up and stop working? Also is the synoptictree built and the quickstatements generated
+reports/unrecorded-instructions.tsv	71	unclear	2026-08-28 04:58 dbec586f typed 169 Okay, I do want to keep something in mind: those people do exist on Jenny, right? Of course, they exist on Jenny. Don't we have the ability to actively add a Jenny 
+reports/unrecorded-instructions.tsv	93	unclear	2026-08-24 06:22 e71a0de8 enqueued 41 Please do actual AskUserQuestion for this please. Do not just wait and pray. Also important thin here: We are actually doin the queue right and no just kinda doin
+reports/unrecorded-instructions.tsv	165	unclear	2026-08-19 01:54 cac49571 enqueued 50 do not fuck with the stuff there but please force open the individuals in my browser so I can change them and add a task in the queue to fix the surnames of these
+reports/unrecorded-instructions.tsv	203	unclear	2026-08-16 11:54 c33ce219 typed 27 Oh my god you’ve got them downloaded right? You should as all of these items are in the synoptic tree, look over their properties you cunt
+reports/unrecorded-instructions.tsv	246	both named	2026-08-15 07:38 c33ce219 enqueued 126 "You should've fucking found it. What the fuck is item 2 blocked on QIDs? What the fuck is this? I don't even know what item 2 is, but I literally gave you a lis
+reports/unrecorded-instructions.tsv	265	full	2026-08-14 23:39 4c8b906c enqueued 138 But yeah, you figured it out earlier. You figured it out earlier so just ignore Q2. I'm in it but I'm not really that relevant there. The Wikidata + geni link is
+reports/unrecorded-instructions.tsv	351	unclear	2026-08-07 05:43 16972e3a typed 18 sorry what the fuck why did you scan the zips instead of integrating them into our synoptic tree
+reports/unrecorded-instructions.tsv	367	geni	2026-08-05 22:40 80f89e2d typed 20 Uhh I mean I want a synoptic gedcom But we can do analysis on how it changed from these imports
+reports/unrecorded-instructions.tsv	377	geni	2026-08-02 02:42 288b8ab6 typed 31 How was the merge? To be clear right now the idea of the project is we are building a larger and larger synoptic tree finding individuals like that one we did.
+reports/user-turns.tsv	7	unclear	2026-09-01T07:51:53.605Z 14fbf9e3 enqueued "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections
+reports/user-turns.tsv	25	unclear	2026-09-01T06:48:53.533Z 14fbf9e3 typed "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections ou
+reports/user-turns.tsv	26	unclear	2026-09-01T06:48:53.408Z 14fbf9e3 enqueued "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections
+reports/user-turns.tsv	40	unclear	2026-09-01T05:49:02.304Z 14fbf9e3 typed "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections ou
+reports/user-turns.tsv	41	unclear	2026-09-01T05:49:02.139Z 14fbf9e3 enqueued "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections
+reports/user-turns.tsv	50	unclear	2026-09-01T04:48:54.055Z 14fbf9e3 typed "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections ou
+reports/user-turns.tsv	51	unclear	2026-09-01T04:48:53.913Z 14fbf9e3 enqueued "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections
+reports/user-turns.tsv	88	unclear	2026-09-01T03:48:53.880Z 14fbf9e3 typed "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections ou
+reports/user-turns.tsv	89	unclear	2026-09-01T03:48:53.803Z 14fbf9e3 enqueued "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections
+reports/user-turns.tsv	117	unclear	2026-09-01T02:48:53.334Z 14fbf9e3 typed "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections ou
+reports/user-turns.tsv	118	unclear	2026-09-01T02:48:53.267Z 14fbf9e3 enqueued "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections
+reports/user-turns.tsv	138	unclear	2026-09-01T01:48:53.901Z 14fbf9e3 typed "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections ou
+reports/user-turns.tsv	139	unclear	2026-09-01T01:48:53.838Z 14fbf9e3 enqueued "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections
+reports/user-turns.tsv	150	unclear	2026-09-01T00:48:53.583Z 14fbf9e3 typed "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections ou
+reports/user-turns.tsv	151	unclear	2026-09-01T00:48:53.520Z 14fbf9e3 enqueued "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections
+reports/user-turns.tsv	161	unclear	2026-08-31T23:48:53.622Z 14fbf9e3 typed "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections ou
+reports/user-turns.tsv	162	unclear	2026-08-31T23:48:53.559Z 14fbf9e3 enqueued "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections
+reports/user-turns.tsv	173	unclear	2026-08-31T22:49:41.353Z 14fbf9e3 typed "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections ou
+reports/user-turns.tsv	174	unclear	2026-08-31T22:49:41.280Z 14fbf9e3 enqueued "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections
+reports/user-turns.tsv	202	unclear	2026-08-31T21:52:15.086Z 14fbf9e3 typed okay this is good. So I want you to add three items at the beginning of the quue after the current item: ⏎ ⏎ 1. Rewrite the quickstatements generator (which inc
+reports/user-turns.tsv	203	unclear	2026-08-31T21:52:15.060Z 14fbf9e3 enqueued okay this is good. So I want you to add three items at the beginning of the quue after the current item: ⏎ ⏎ 1. Rewrite the quickstatements generator (which 
+reports/user-turns.tsv	204	unclear	2026-08-31T21:48:53.761Z 14fbf9e3 typed "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections ou
+reports/user-turns.tsv	205	unclear	2026-08-31T21:48:53.692Z 14fbf9e3 enqueued "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections
+reports/user-turns.tsv	234	both named	2026-08-31T21:28:40.148Z 14fbf9e3 typed "GENERATE EVERYTHING (geni) — Emma's specific 13:40 job, 2026-08-31. ⏎ ⏎ Run the full batch generation with a ledger refresh, then ATTACH the QuickStatements to
+reports/user-turns.tsv	236	both named	2026-08-31T21:28:40.019Z 14fbf9e3 enqueued "GENERATE EVERYTHING (geni) — Emma's specific 13:40 job, 2026-08-31. ⏎ ⏎ Run the full batch generation with a ledger refresh, then ATTACH the QuickStatements
+reports/user-turns.tsv	248	unclear	2026-08-31T20:52:00.962Z 14fbf9e3 typed "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections ou
+reports/user-turns.tsv	249	unclear	2026-08-31T20:52:00.907Z 14fbf9e3 enqueued "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections
+reports/user-turns.tsv	288	unclear	2026-08-31T19:48:53.889Z 14fbf9e3 typed "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections ou
+reports/user-turns.tsv	289	unclear	2026-08-31T19:48:53.833Z 14fbf9e3 enqueued "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections
+reports/user-turns.tsv	300	unclear	2026-08-31T19:13:51.951Z 14fbf9e3 enqueued I did no ask you to make the synoptic tree just to refresh the ledger
+reports/user-turns.tsv	335	unclear	2026-08-31T18:48:53.616Z 14fbf9e3 typed "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections ou
+reports/user-turns.tsv	336	unclear	2026-08-31T18:48:53.577Z 14fbf9e3 enqueued "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections
+reports/user-turns.tsv	349	unclear	2026-08-31T17:48:53.768Z 14fbf9e3 typed "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections ou
+reports/user-turns.tsv	350	unclear	2026-08-31T17:48:53.732Z 14fbf9e3 enqueued "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections
+reports/user-turns.tsv	363	unclear	2026-08-31T16:48:53.659Z 14fbf9e3 typed "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections ou
+reports/user-turns.tsv	364	unclear	2026-08-31T16:48:53.626Z 14fbf9e3 enqueued "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections
+reports/user-turns.tsv	371	unclear	2026-08-31T15:48:53.623Z 14fbf9e3 typed "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections ou
+reports/user-turns.tsv	372	unclear	2026-08-31T15:48:53.594Z 14fbf9e3 enqueued "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections
+reports/user-turns.tsv	379	unclear	2026-08-31T14:48:54.049Z 14fbf9e3 typed "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections ou
+reports/user-turns.tsv	380	unclear	2026-08-31T14:48:54.018Z 14fbf9e3 enqueued "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections
+reports/user-turns.tsv	387	unclear	2026-08-31T13:48:53.579Z 14fbf9e3 typed "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections ou
+reports/user-turns.tsv	388	unclear	2026-08-31T13:48:53.552Z 14fbf9e3 enqueued "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections
+reports/user-turns.tsv	395	unclear	2026-08-31T12:48:53.565Z 14fbf9e3 typed "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections ou
+reports/user-turns.tsv	396	unclear	2026-08-31T12:48:53.537Z 14fbf9e3 enqueued "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections
+reports/user-turns.tsv	403	unclear	2026-08-31T11:48:54.050Z 14fbf9e3 typed "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections ou
+reports/user-turns.tsv	404	unclear	2026-08-31T11:48:54.015Z 14fbf9e3 enqueued "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections
+reports/user-turns.tsv	411	unclear	2026-08-31T11:17:53.064Z 14fbf9e3 typed "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections ou
+reports/user-turns.tsv	414	unclear	2026-08-31T11:17:53.023Z 14fbf9e3 enqueued "DEAD-QUEUE-ITEM SWEEP (geni). Read queue.md and find items that are simply COMPLETED — the work described has already been done — then DELETE those sections
+reports/user-turns.tsv	454	full	2026-08-31T01:20:35.129Z 409c566f typed Okay, I think this makes sense. I think I get what it is. There are two different big clusters: ⏎ - the cluster coming from R and E ⏎ - the Boo-ray cluster ⏎ ⏎ 
+reports/user-turns.tsv	455	full	2026-08-31T01:20:35.095Z 409c566f enqueued Okay, I think this makes sense. I think I get what it is. There are two different big clusters: ⏎ - the cluster coming from R and E ⏎ - the Boo-ray cluster ⏎
+reports/user-turns.tsv	695	unclear	2026-08-30T17:11:34.578Z 409c566f typed Did you just give up and stop working? Also is the synoptictree built and the quickstatements generated
+reports/user-turns.tsv	696	unclear	2026-08-30T17:11:34.556Z 409c566f enqueued Did you just give up and stop working? Also is the synoptictree built and the quickstatements generated
+reports/user-turns.tsv	740	both named	2026-08-30T07:48:30.826Z 0abbc71f typed "EXPORT-CHECK TICK (geni). The Swentepolk export. Do this, then stop. ⏎ ⏎ CONTEXT — a Forest/5000 export was submitted 2026-08-29 late morning Pacific and was s
+reports/user-turns.tsv	742	both named	2026-08-30T07:48:30.672Z 0abbc71f enqueued "EXPORT-CHECK TICK (geni). The Swentepolk export. Do this, then stop. ⏎ ⏎ CONTEXT — a Forest/5000 export was submitted 2026-08-29 late morning Pacific and wa
+reports/user-turns.tsv	752	both named	2026-08-30T06:47:25.339Z 0abbc71f typed "EXPORT-CHECK TICK (geni). The Swentepolk export. Do this, then stop. ⏎ ⏎ CONTEXT — a Forest/5000 export was submitted 2026-08-29 late morning Pacific and was s
+reports/user-turns.tsv	753	both named	2026-08-30T06:47:25.225Z 0abbc71f enqueued "EXPORT-CHECK TICK (geni). The Swentepolk export. Do this, then stop. ⏎ ⏎ CONTEXT — a Forest/5000 export was submitted 2026-08-29 late morning Pacific and wa
+reports/user-turns.tsv	783	both named	2026-08-30T05:47:25.141Z 0abbc71f typed "EXPORT-CHECK TICK (geni). The Swentepolk export. Do this, then stop. ⏎ ⏎ CONTEXT — a Forest/5000 export was submitted 2026-08-29 late morning Pacific and was s
+reports/user-turns.tsv	784	both named	2026-08-30T05:47:24.979Z 0abbc71f enqueued "EXPORT-CHECK TICK (geni). The Swentepolk export. Do this, then stop. ⏎ ⏎ CONTEXT — a Forest/5000 export was submitted 2026-08-29 late morning Pacific and wa
+reports/user-turns.tsv	808	both named	2026-08-30T04:47:25.122Z 0abbc71f typed "EXPORT-CHECK TICK (geni). The Swentepolk export. Do this, then stop. ⏎ ⏎ CONTEXT — a Forest/5000 export was submitted 2026-08-29 late morning Pacific and was s
+reports/user-turns.tsv	809	both named	2026-08-30T04:47:25.017Z 0abbc71f enqueued "EXPORT-CHECK TICK (geni). The Swentepolk export. Do this, then stop. ⏎ ⏎ CONTEXT — a Forest/5000 export was submitted 2026-08-29 late morning Pacific and wa
+reports/user-turns.tsv	844	both named	2026-08-30T03:47:25.956Z 0abbc71f typed "EXPORT-CHECK TICK (geni). The Swentepolk export. Do this, then stop. ⏎ ⏎ CONTEXT — a Forest/5000 export was submitted 2026-08-29 late morning Pacific and was s
+reports/user-turns.tsv	845	both named	2026-08-30T03:47:25.820Z 0abbc71f enqueued "EXPORT-CHECK TICK (geni). The Swentepolk export. Do this, then stop. ⏎ ⏎ CONTEXT — a Forest/5000 export was submitted 2026-08-29 late morning Pacific and wa
+reports/user-turns.tsv	855	unclear	2026-08-30T02:58:51.031Z 0abbc71f typed I want you to run the quickstatements generator first and attach the file, and then wire it in and rebuild the synoptic tree.
+reports/user-turns.tsv	856	unclear	2026-08-30T02:58:51.012Z 0abbc71f enqueued I want you to run the quickstatements generator first and attach the file, and then wire it in and rebuild the synoptic tree.
+reports/user-turns.tsv	859	both named	2026-08-30T02:50:59.740Z 0abbc71f typed "EXPORT-CHECK TICK (geni). The Swentepolk export. Do this, then stop. ⏎ ⏎ CONTEXT — a Forest/5000 export was submitted 2026-08-29 late morning Pacific and was s
+reports/user-turns.tsv	862	both named	2026-08-30T02:50:59.618Z 0abbc71f enqueued "EXPORT-CHECK TICK (geni). The Swentepolk export. Do this, then stop. ⏎ ⏎ CONTEXT — a Forest/5000 export was submitted 2026-08-29 late morning Pacific and wa
+reports/user-turns.tsv	863	geni	2026-08-30T02:38:36.047Z 0abbc71f typed Yes, this one is correct. This one also is relatively significant in terms of building the actual Synoptic tree rather than the weird Jenny thing. We have a cou
+reports/user-turns.tsv	864	geni	2026-08-30T02:38:36.015Z 0abbc71f enqueued Yes, this one is correct. This one also is relatively significant in terms of building the actual Synoptic tree rather than the weird Jenny thing. We have a 
+reports/user-turns.tsv	900	both named	2026-08-30T01:47:25.566Z 0abbc71f typed "EXPORT-CHECK TICK (geni). The Swentepolk export. Do this, then stop. ⏎ ⏎ CONTEXT — a Forest/5000 export was submitted 2026-08-29 late morning Pacific and was s
+reports/user-turns.tsv	901	both named	2026-08-30T01:47:25.439Z 0abbc71f enqueued "EXPORT-CHECK TICK (geni). The Swentepolk export. Do this, then stop. ⏎ ⏎ CONTEXT — a Forest/5000 export was submitted 2026-08-29 late morning Pacific and wa
+reports/user-turns.tsv	929	both named	2026-08-30T00:47:25.881Z 0abbc71f typed "EXPORT-CHECK TICK (geni). The Swentepolk export. Do this, then stop. ⏎ ⏎ CONTEXT — a Forest/5000 export was submitted 2026-08-29 late morning Pacific and was s
+reports/user-turns.tsv	930	both named	2026-08-30T00:47:25.765Z 0abbc71f enqueued "EXPORT-CHECK TICK (geni). The Swentepolk export. Do this, then stop. ⏎ ⏎ CONTEXT — a Forest/5000 export was submitted 2026-08-29 late morning Pacific and wa
+reports/user-turns.tsv	951	both named	2026-08-29T23:47:25.374Z 0abbc71f typed "EXPORT-CHECK TICK (geni). The Swentepolk export. Do this, then stop. ⏎ ⏎ CONTEXT — a Forest/5000 export was submitted 2026-08-29 late morning Pacific and was s
+reports/user-turns.tsv	952	both named	2026-08-29T23:47:25.295Z 0abbc71f enqueued "EXPORT-CHECK TICK (geni). The Swentepolk export. Do this, then stop. ⏎ ⏎ CONTEXT — a Forest/5000 export was submitted 2026-08-29 late morning Pacific and wa
+reports/user-turns.tsv	971	both named	2026-08-29T22:48:03.112Z 0abbc71f typed "EXPORT-CHECK TICK (geni). The Swentepolk export. Do this, then stop. ⏎ ⏎ CONTEXT — a Forest/5000 export was submitted 2026-08-29 late morning Pacific and was s
+reports/user-turns.tsv	973	both named	2026-08-29T22:48:03.011Z 0abbc71f enqueued "EXPORT-CHECK TICK (geni). The Swentepolk export. Do this, then stop. ⏎ ⏎ CONTEXT — a Forest/5000 export was submitted 2026-08-29 late morning Pacific and wa
+reports/user-turns.tsv	998	both named	2026-08-29T21:47:25.170Z 0abbc71f typed "EXPORT-CHECK TICK (geni). The Swentepolk export. Do this, then stop. ⏎ ⏎ CONTEXT — a Forest/5000 export was submitted 2026-08-29 late morning Pacific and was s
+reports/user-turns.tsv	999	both named	2026-08-29T21:47:25.107Z 0abbc71f enqueued "EXPORT-CHECK TICK (geni). The Swentepolk export. Do this, then stop. ⏎ ⏎ CONTEXT — a Forest/5000 export was submitted 2026-08-29 late morning Pacific and wa
+reports/user-turns.tsv	1016	both named	2026-08-29T20:47:25.797Z 0abbc71f typed "EXPORT-CHECK TICK (geni). The Swentepolk export. Do this, then stop. ⏎ ⏎ CONTEXT — a Forest/5000 export was submitted 2026-08-29 late morning Pacific and was s
+reports/user-turns.tsv	1017	both named	2026-08-29T20:47:25.737Z 0abbc71f enqueued "EXPORT-CHECK TICK (geni). The Swentepolk export. Do this, then stop. ⏎ ⏎ CONTEXT — a Forest/5000 export was submitted 2026-08-29 late morning Pacific and wa
+reports/user-turns.tsv	1064	both named	2026-08-29T19:49:16.188Z 0abbc71f typed "EXPORT-CHECK TICK (geni). The Swentepolk export. Do this, then stop. ⏎ ⏎ CONTEXT — a Forest/5000 export was submitted 2026-08-29 late morning Pacific and was s
+reports/user-turns.tsv	1066	both named	2026-08-29T19:49:16.101Z 0abbc71f enqueued "EXPORT-CHECK TICK (geni). The Swentepolk export. Do this, then stop. ⏎ ⏎ CONTEXT — a Forest/5000 export was submitted 2026-08-29 late morning Pacific and wa
+reports/user-turns.tsv	1068	full	2026-08-29T19:44:00.638Z 0abbc71f typed "REVIEW-OVER TICK (geni). Emma, 2026-08-29 at 12:12 PST: ""set up a cron job that in 30 min says to consider the review over and then generate the quickstatemen
+reports/user-turns.tsv	1069	full	2026-08-29T19:44:00.577Z 0abbc71f enqueued "REVIEW-OVER TICK (geni). Emma, 2026-08-29 at 12:12 PST: ""set up a cron job that in 30 min says to consider the review over and then generate the quickstate
+reports/user-turns.tsv	1091	unclear	2026-08-29T18:36:48.584Z 0abbc71f typed okay, I'm going to take this export as being something that is blocked for some reason. Because it's blocked, what I'm going to say is: set up a cron job that w
+reports/user-turns.tsv	1092	unclear	2026-08-29T18:36:48.558Z 0abbc71f enqueued okay, I'm going to take this export as being something that is blocked for some reason. Because it's blocked, what I'm going to say is: set up a cron job tha
+reports/user-turns.tsv	1232	unclear	2026-08-29T04:48:34.636Z 0abbc71f enqueued Yeah and don’t test it now but make the last queue item rebuilding the synoptic tree to test this thing so that we can quickly move onto other work
+reports/user-turns.tsv	1233	geni	2026-08-29T04:47:14.478Z 0abbc71f enqueued Overwrite the bio in every one of the gedcoms or make a gedcom that’s just a thing that gives gedcom notes with the links like this ⏎ ⏎ Wherever you do just 
+reports/user-turns.tsv	1239	full	2026-08-29T04:04:29.696Z 0abbc71f typed No fuck you you didn’t get the later discussion ⏎ ⏎ When the synoptic tree is merged we change all of their bios to links to their qids so that the next step in
+reports/user-turns.tsv	1240	full	2026-08-29T04:04:29.680Z 0abbc71f enqueued No fuck you you didn’t get the later discussion ⏎ ⏎ When the synoptic tree is merged we change all of their bios to links to their qids so that the next step
+reports/user-turns.tsv	1286	unclear	2026-08-28T21:48:37.193Z 9ecc4b2b enqueued Cause right now I want you to rebuild the synoptic tree and then build the quick statements. Because I'm going to be running the quick statements pretty soon
+reports/user-turns.tsv	1308	unclear	2026-08-28T18:47:45.268Z 9ecc4b2b enqueued There is, in my eyes, a bit more concern with the Bourrée people. For the Bourrée people in particular, there is a very famous family group in Swedish histor
+reports/user-turns.tsv	1341	unclear	2026-08-28T09:12:05.329Z dbec586f enqueued Yeah basically we can search through all of the people as we add more since we want all these bureatten people in the geni synoptic tree and once everyone is
+reports/user-turns.tsv	1404	unclear	2026-08-28T04:58:07.863Z dbec586f typed "Okay, I do want to keep something in mind: those people do exist on Jenny, right? Of course, they exist on Jenny. Don't we have the ability to actively add a J
+reports/user-turns.tsv	1405	unclear	2026-08-28T04:58:07.839Z dbec586f enqueued "Okay, I do want to keep something in mind: those people do exist on Jenny, right? Of course, they exist on Jenny. Don't we have the ability to actively add 
+reports/user-turns.tsv	1421	full	2026-08-28T04:33:22.637Z dbec586f enqueued Yes, I don't want you to jump into stuff right now because we're still doing an algorithm review. You need to have the queue be something that very clearly s
+reports/user-turns.tsv	1425	full	2026-08-28T04:24:49.672Z dbec586f enqueued Sorry, no, I am specifically telling you: are you just ignoring the thing I told you about the manual entity resolution thing? Did you delete that thing befo
+reports/user-turns.tsv	1464	both named	2026-08-28T03:32:26.906Z dbec586f typed Okay, I think I actually understand what's going on with these hand-asserted pairs. I think I remember what's going on with them, but the interesting thing I'm 
+reports/user-turns.tsv	1474	unclear	2026-08-28T02:57:22.065Z dbec586f typed without analysis do a cron job that will at 1am do a forest export and ancestor export on https://www.geni.com/profile/index/6000000227464556886 and incorporate
+reports/user-turns.tsv	1475	unclear	2026-08-28T02:57:22.033Z dbec586f enqueued without analysis do a cron job that will at 1am do a forest export and ancestor export on https://www.geni.com/profile/index/6000000227464556886 and incorpor
+reports/user-turns.tsv	1494	unclear	2026-08-28T02:12:22.646Z dbec586f typed Do not think please, I genuinely do no like creatin cron jobs thsi way and want to create them with a gui so I can avoid even giving you the context of them, be
+reports/user-turns.tsv	1495	unclear	2026-08-28T02:12:22.621Z dbec586f enqueued Do not think please, I genuinely do no like creatin cron jobs thsi way and want to create them with a gui so I can avoid even giving you the context of them,
+reports/user-turns.tsv	1743	unclear	2026-08-27T06:02:08.037Z dbec586f enqueued Did you do a script census on the synoptic tree lol
+reports/user-turns.tsv	1768	unclear	2026-08-27T03:39:21.080Z dbec586f enqueued Okay so a few things ⏎ ⏎ ⏎ I’m confused why the created individuals are not getting their names across different languages. Chinese and Japanese should be ma
+reports/user-turns.tsv	1832	full	2026-08-26T20:35:51.725Z dbec586f enqueued The current preferences that I have haven't really been met. The idea is that, in our model, the algorithm for creating quick statements should: ⏎ - Check my
+reports/user-turns.tsv	2027	full	2026-08-26T00:00:26.187Z e71a0de8 enqueued Yeah, I think the problem is that the zipper merge is extremely intuitive to me because I strictly think in terms of graphs. I think graph operations like th
+reports/user-turns.tsv	2041	full	2026-08-25T23:01:53.843Z e71a0de8 typed "ZIPPER CRON — 4pm, Emma's instruction, rescheduled from the 3pm slot. ⏎ ⏎ WHERE THINGS STAND. `scripts/zipper-join.py` has been written and RUN once already (c
+reports/user-turns.tsv	2042	full	2026-08-25T23:01:53.590Z e71a0de8 enqueued "ZIPPER CRON — 4pm, Emma's instruction, rescheduled from the 3pm slot. ⏎ ⏎ WHERE THINGS STAND. `scripts/zipper-join.py` has been written and RUN once already
+reports/user-turns.tsv	2057	full	2026-08-25T22:15:43.261Z e71a0de8 typed Oh my god just fucking run the goddamn zipper cron at 4pm I didn’t ask for the synoptic rebuild at 4pm cancel it
+reports/user-turns.tsv	2058	full	2026-08-25T22:15:43.226Z e71a0de8 enqueued Oh my god just fucking run the goddamn zipper cron at 4pm I didn’t ask for the synoptic rebuild at 4pm cancel it
+reports/user-turns.tsv	2083	both named	2026-08-25T21:37:00.748Z e71a0de8 typed "SYNOPTIC REBUILD — no earlier than 2pm, by Emma's instruction, because she runs QuickStatements on Wikidata first and the rebuild must see her edits. ⏎ ⏎ Do, i
+reports/user-turns.tsv	2084	both named	2026-08-25T21:37:00.564Z e71a0de8 enqueued "SYNOPTIC REBUILD — no earlier than 2pm, by Emma's instruction, because she runs QuickStatements on Wikidata first and the rebuild must see her edits. ⏎ ⏎ Do
+reports/user-turns.tsv	2393	unclear	2026-08-24T23:43:58.737Z e71a0de8 typed Okay, I guess I'm gonna ask you here: if you paired the wrong profiles, what does that even mean here, with both of them live? Also, keep in mind that you liter
+reports/user-turns.tsv	2394	unclear	2026-08-24T23:43:58.699Z e71a0de8 enqueued Okay, I guess I'm gonna ask you here: if you paired the wrong profiles, what does that even mean here, with both of them live? Also, keep in mind that you li
+reports/user-turns.tsv	2402	geni	2026-08-24T22:59:13.376Z e71a0de8 typed okay whatever the strong ones are merged, and we have a good synoptic tree right? Yes fucking run the last three exports lol, and the corpus remerge thing shoul
+reports/user-turns.tsv	2406	unclear	2026-08-24T22:50:17.438Z e71a0de8 typed uhh what the fuck does this mean? lmao can we get a synoptic tree?
+reports/user-turns.tsv	2416	both named	2026-08-24T21:37:01.039Z e71a0de8 typed "SYNOPTIC REBUILD — no earlier than 2pm, by Emma's instruction, because she runs QuickStatements on Wikidata first and the rebuild must see her edits. ⏎ ⏎ Do, i
+reports/user-turns.tsv	2417	both named	2026-08-24T21:37:00.863Z e71a0de8 enqueued "SYNOPTIC REBUILD — no earlier than 2pm, by Emma's instruction, because she runs QuickStatements on Wikidata first and the rebuild must see her edits. ⏎ ⏎ Do
+reports/user-turns.tsv	2425	unclear	2026-08-24T20:47:08.650Z e71a0de8 enqueued Wait what no? lol you forgot about the geni merge stuff which is an even more important prerequisite to the synoptic rebuild ⏎ ⏎ Keep in mind Izumo successio
+reports/user-turns.tsv	2426	unclear	2026-08-24T20:42:52.454Z e71a0de8 typed I mean the tanba onakatomi izumo stuff is a prerequisite for the synoptic rebuild lol
+reports/user-turns.tsv	2427	unclear	2026-08-24T20:42:52.433Z e71a0de8 enqueued I mean the tanba onakatomi izumo stuff is a prerequisite for the synoptic rebuild lol
+reports/user-turns.tsv	2454	geni	2026-08-24T19:13:41.238Z e71a0de8 enqueued Hmm. I mean I would like that. But there’s still the ultimate problem of how we will run the duplicate resolution. We can’t just throw out the earlier export
+reports/user-turns.tsv	2488	full	2026-08-24T17:52:11.652Z e71a0de8 enqueued Keep in mind geni description qid to wikidata qid is also important and needs to be done jointly in the synoptic tree building
+reports/user-turns.tsv	2585	unclear	2026-08-24T06:22:20.815Z e71a0de8 enqueued Please do actual AskUserQuestion for this please. Do not just wait and pray. Also important thin here: We are actually doin the queue right and no just kinda
+reports/user-turns.tsv	3509	unclear	2026-08-19T02:17:17.869Z cac49571 enqueued okay. So I saved the ancestry from Charlemagne to Arne, and I found this person https://www.geni.com/people/Bergitte-Aukland/6000000002481819312?through=6000
+reports/user-turns.tsv	3512	unclear	2026-08-19T01:54:26.747Z cac49571 enqueued do not fuck with the stuff there but please force open the individuals in my browser so I can change them and add a task in the queue to fix the surnames of 
+reports/user-turns.tsv	3601	full	2026-08-18T07:38:27.561Z cac49571 enqueued I want to add the end as the final thing of the queue, something that goes through every single one of my individuals that I have added to Geni and does a si
+reports/user-turns.tsv	3668	unclear	2026-08-17T19:25:28.636Z 7b3101f9 enqueued okay this is great. So here is a profile https://www.geni.com/family-tree/index/6000000002764956522 I think I managed to figure out how to merge two existing
+reports/user-turns.tsv	3691	unclear	2026-08-17T17:50:35.112Z db9f357e typed Okay, as I understand it, you just kind of randomly decided to start doing this thing while I was doing another task. We're incorporating all these get comms in
+reports/user-turns.tsv	3692	unclear	2026-08-17T17:50:35.094Z db9f357e enqueued Okay, as I understand it, you just kind of randomly decided to start doing this thing while I was doing another task. We're incorporating all these get comms
+reports/user-turns.tsv	3762	full	2026-08-16T17:21:50.916Z c33ce219 enqueued I am extremely confused about this. I think part of the issue is that I've noticed whenever you say things that seem utterly bizarre, there's a simple reason
+reports/user-turns.tsv	3778	unclear	2026-08-16T11:54:39.675Z c33ce219 typed Oh my god you’ve got them downloaded right? You should as all of these items are in the synoptic tree, look over their properties you cunt
+reports/user-turns.tsv	3779	unclear	2026-08-16T11:54:39.652Z c33ce219 enqueued Oh my god you’ve got them downloaded right? You should as all of these items are in the synoptic tree, look over their properties you cunt
+reports/user-turns.tsv	3784	full	2026-08-16T07:16:40.989Z c33ce219 typed "The structural Geni-to-Wikidata merge, which Emma queued for midnight on 2026-08-15: ""it is an idea of a thing that we still haven't really done yet. I think 
+reports/user-turns.tsv	3785	full	2026-08-16T07:16:40.867Z c33ce219 enqueued "The structural Geni-to-Wikidata merge, which Emma queued for midnight on 2026-08-15: ""it is an idea of a thing that we still haven't really done yet. I thi
+reports/user-turns.tsv	3831	both named	2026-08-16T02:43:51.792Z c33ce219 typed "Re-merge the corpus. Emma scheduled this for ""tonight"" on 2026-08-15 and it is set BEFORE the 21:00 bloat review, the 23:00 entity-resolution job and the MID
+reports/user-turns.tsv	3832	both named	2026-08-16T02:43:51.452Z c33ce219 enqueued "Re-merge the corpus. Emma scheduled this for ""tonight"" on 2026-08-15 and it is set BEFORE the 21:00 bloat review, the 23:00 entity-resolution job and the 
+reports/user-turns.tsv	3970	both named	2026-08-15T07:38:23.632Z c33ce219 enqueued "You should've fucking found it. What the fuck is item 2 blocked on QIDs? What the fuck is this? I don't even know what item 2 is, but I literally gave you a
+reports/user-turns.tsv	4010	full	2026-08-15T07:24:59.825Z c33ce219 typed "The structural Geni-to-Wikidata merge, which Emma queued for midnight on 2026-08-15: ""it is an idea of a thing that we still haven't really done yet. I think 
+reports/user-turns.tsv	4011	full	2026-08-15T07:24:59.702Z c33ce219 enqueued "The structural Geni-to-Wikidata merge, which Emma queued for midnight on 2026-08-15: ""it is an idea of a thing that we still haven't really done yet. I thi
+reports/user-turns.tsv	4073	both named	2026-08-15T02:13:43.733Z c33ce219 enqueued The basic idea here is that I don't consider it because it is an idea of a thing that we still haven't really done yet. I think we may have tried at some poi
+reports/user-turns.tsv	4074	unclear	2026-08-15T02:11:13.623Z c33ce219 enqueued Wait, sorry, that last one is a bit confusing because the Samaritan priests are all on Jenny, and they're all on Wiki Data. When I gave you the Samaritan pri
+reports/user-turns.tsv	4109	full	2026-08-15T00:14:11.897Z 4c8b906c typed But I guess yeah, we have a synoptic tree of all three of them now that produces the geni order.life stuff, which gives the most obvious stuff if we just basica
+reports/user-turns.tsv	4115	full	2026-08-14T23:39:16.730Z 4c8b906c enqueued But yeah, you figured it out earlier. You figured it out earlier so just ignore Q2. I'm in it but I'm not really that relevant there. ⏎ ⏎ The Wikidata + geni
+reports/user-turns.tsv	4116	unclear	2026-08-14T23:37:05.079Z 4c8b906c typed Yeah the descent from antiquity stuff: I'm gonna even say that stuff without geni links and without wiki data links can potentially still be worthy of being inc
+reports/user-turns.tsv	4117	unclear	2026-08-14T23:32:21.928Z 4c8b906c enqueued The order.life, I guess I'd say I want the order.life stuff mostly in but not all of it should necessarily be in. My thought here would first of all be: I do
+reports/user-turns.tsv	4119	unclear	2026-08-14T23:29:39.053Z 4c8b906c typed Okay I don't know why it is that you've been committing and pushing and stuff. Yes there are, in fact, two Aaron profiles on Jenny. The problem with the Jenny p
+reports/user-turns.tsv	4194	unclear	2026-08-14T04:00:39.210Z 35a0744d enqueued Also a bunch of zips have been downloaded nad should be incorporate into the project repo and synoptic tree
+reports/user-turns.tsv	4247	both named	2026-08-14T02:02:03.367Z 35a0744d typed You bastard you basrard you bastard you basrad you fucking cunt you fucking cunt you fucking cint do you even know what the fucking thing was supposed to be ⏎ ⏎
+reports/user-turns.tsv	4343	unclear	2026-08-13T07:08:04.558Z 100895e2 enqueued Uhh wait what is that line not in our synoptic tree?
+reports/user-turns.tsv	4374	both named	2026-08-13T05:56:47.183Z 100895e2 typed Well, okay, what I'm going to say is: simply put, the reason why it is that the correspondence of my own wiki data ID to my Jenny ID is so weird is because of t
+reports/user-turns.tsv	4375	both named	2026-08-13T05:56:47.157Z 100895e2 enqueued Well, okay, what I'm going to say is: simply put, the reason why it is that the correspondence of my own wiki data ID to my Jenny ID is so weird is because o
+reports/user-turns.tsv	4447	unclear	2026-08-13T02:16:26.475Z 100895e2 typed I am extremely fucking confused did you intentionally omit https://www.geni.com/people/Emma-Bishop/6000000087535357291 from the synoptic tree lol?
+reports/user-turns.tsv	4716	full	2026-08-10T16:42:43.580Z 01c235a5 typed Okay, this is interesting. He has four different name records, two of which are in English and two of which are in Spanish. Is there any kind of indication of t
+reports/user-turns.tsv	4717	full	2026-08-10T16:42:43.556Z 01c235a5 enqueued Okay, this is interesting. He has four different name records, two of which are in English and two of which are in Spanish. Is there any kind of indication o
+reports/user-turns.tsv	4928	both named	2026-08-07T14:26:53.942Z e175cc1d enqueued I think we should ignore the synoptic gedcom by necessity because it exceeds the maximum size. I do not want the Wikidata to be all in one file that would ne
+reports/user-turns.tsv	4936	unclear	2026-08-07T05:44:54.915Z 16972e3a enqueued Like the entire fucking point of all of this is building a synoptic tree so if you are just not doing it then fuck you
+reports/user-turns.tsv	4937	geni	2026-08-07T05:43:54.557Z 16972e3a enqueued Like were all of these just not put into the synoptic tree were you not integrating new gedcoms for a significant time period?
+reports/user-turns.tsv	4938	unclear	2026-08-07T05:43:17.628Z 16972e3a typed sorry what the fuck why did you scan the zips instead of integrating them into our synoptic tree
+reports/user-turns.tsv	5020	geni	2026-08-05T22:40:53.842Z 80f89e2d typed Uhh I mean I want a synoptic gedcom ⏎ ⏎ But we can do analysis on how it changed from these imports
+reports/user-turns.tsv	5021	geni	2026-08-05T22:40:53.778Z 80f89e2d enqueued Uhh I mean I want a synoptic gedcom ⏎ ⏎ But we can do analysis on how it changed from these imports
+reports/user-turns.tsv	5040	geni	2026-08-05T01:42:27.271Z d8501361 typed this is good. So looking at things: I added a text file with the individuals who I can easily export from an you put thi on the record and establish whether all
+reports/user-turns.tsv	5046	unclear	2026-08-05T00:36:10.184Z d8501361 typed Okay I'm extremely confused but whatever. descendant trees are not meant to connect people. They are meant to expand the breadth of people more. As in get a lar
+reports/user-turns.tsv	5073	geni	2026-08-02T02:42:08.370Z 288b8ab6 typed How was the merge? To be clear right now the idea of the project is we are building a larger and larger synoptic tree finding individuals like that one we did.
+reports/user-turns.tsv	5074	geni	2026-08-02T02:42:08.332Z 288b8ab6 enqueued How was the merge? To be clear right now the idea of the project is we are building a larger and larger synoptic tree finding individuals like that one we di
 reports/wikidata-labels.tsv	51777	full	Q106046 synoptic gospels
 reports/wikidata-labels.tsv	613770	full	Q51515725 Our native ferns and their allies; with synoptical descriptions of the American Pteridophyta north of Mexico
 reports/wikidata-labels.tsv	613771	full	Q51515726 Our native ferns and their allies; with synoptical descriptions of the American Pteridophyta north of Mexico
@@ -128,10 +894,16 @@ scripts/audit-farmname-seeds.py	90	unclear	"task in the queue to fix the surname
 scripts/build-clan-p2600-pairs.py	5	unclear	**Emma, 2026-08-24:** *"the tanba onakatomi izumo stuff is a prerequisite for the synoptic
 scripts/build-clan-p2600-pairs.py	6	unclear	rebuild"* — these joins are **inputs** to `reports/synoptic-correspondence.tsv`, so
 scripts/build-clan-p2600-pairs.py	10	unclear	rosters but no join, so their people were invisible to the synoptic tree even though they
+scripts/build-garborg-day.py	4921	unclear	# a week before the batch, and `reports/synoptic-correspondence.tsv` recorded it as
+scripts/build-garborg-day.py	4935	unclear	correspondence = ROOT / "reports" / "synoptic-correspondence.tsv"
+scripts/build-garborg-day.py	5094	unclear	f"(reports/synoptic-correspondence.tsv) - creating it would "
 scripts/build-join-batch.py	1	unclear	"""The thing that consumes the synoptic correspondence: Geni facts onto joined items.
 scripts/build-join-batch.py	6	full	`reports/synoptic-correspondence.tsv` holds 522,086 Geni ID ↔ QID pairs from five
 scripts/build-join-batch.py	11	full	wikidata qid is also important and needs to be done jointly in the synoptic tree
 scripts/build-join-batch.py	91	unclear	with open(ROOT / "reports" / "synoptic-correspondence.tsv", encoding="utf-8") as f:
+scripts/build-merges-to-do.py	76	unclear	CORRESPONDENCE = ROOT / "reports" / "synoptic-correspondence.tsv"
+scripts/build-merges-to-do.py	89	full	`reports/synoptic-correspondence.tsv` does see them, through the zipper and the structural
+scripts/build-merges-to-do.py	314	full	"`reports/synoptic-correspondence.tsv` does see them, through the zipper and the "
 scripts/build-name-classes.py	4	unclear	*"running an analysis of this [synoptic] tree, all the different names inside…
 scripts/build-nn-label-batch.py	41	unclear	**And the reach was measured on the synoptic tree, not on one store.** Emma named
 scripts/build-nn-label-batch.py	43	unclear	Jenny stuff, and not the Synoptic Tree… I'm pretty sure that long-range
@@ -139,11 +911,18 @@ scripts/build-nn-label-batch.py	57	unclear	skip the synoptic check next time.
 scripts/build-orderlife-batch.py	1	unclear	"""Turn `order.life` into the third source of the synoptic tree, as edit objects.
 scripts/build-orderlife-batch.py	4	full	without a Wikidata ID can still be merged into the synoptic tree because we have
 scripts/build-orderlife-diff.py	3	unclear	**Not a merge, and not a synoptic tree.** Emma, 2026-08-14: the synoptic tree is
+scripts/build-parent-candidates.py	189	full	# in `reports/synoptic-correspondence.tsv`** -- known through the structural walk, the zipper,
+scripts/build-parent-candidates.py	192	unclear	# So an item is spoken for if ANY source in the synoptic correspondence claims it, and a Geni
+scripts/build-parent-candidates.py	194	unclear	# union of all eight sources; `docs/synoptic-correspondence.md` is what each is worth.
+scripts/build-parent-candidates.py	196	unclear	synoptic = ROOT / "reports" / "synoptic-correspondence.tsv"
+scripts/build-parent-candidates.py	197	unclear	if synoptic.exists():
+scripts/build-parent-candidates.py	198	unclear	with io.open(synoptic, encoding="utf-8", newline="") as fh:
 scripts/build-qid-links-gedcom.py	14	full	docstring said the file existed so the synoptic tree *"ALWAYS"* carried QID links, which is the
 scripts/build-qid-links-gedcom.py	16	unclear	generalisations of *"When the synoptic tree is merged we change all of their bios to links to
 scripts/build-qid-links-gedcom.py	22	unclear	this script emitted every pairing in `reports/synoptic-correspondence.tsv` that landed on somebody
 scripts/build-qid-links-gedcom.py	40	unclear	asked for a directory whose records *"overwrite earlier ones from other repos in the synoptic
 scripts/build-qid-links-gedcom.py	59	unclear	Reading `reports/synoptic-correspondence.tsv` and filtering it to the three returned **0 of 3** —
+scripts/build-qid-links-gedcom.py	101	unclear	#: `reports/synoptic-correspondence.tsv`.** Checked rather than assumed. They are hers by hand,
 scripts/build-scraped-gedcom.py	6	geni	turns them into things that are usable and would be merged into the synoptic tree as GEDCOM
 scripts/build-synoptic-correspondence.py	3	unclear	python scripts/build-synoptic-correspondence.py
 scripts/build-synoptic-correspondence.py	7	unclear	synoptic tree."*
@@ -151,8 +930,8 @@ scripts/build-synoptic-correspondence.py	10	unclear	them**, which is precisely t
 scripts/build-synoptic-correspondence.py	34	unclear	Writes `reports/synoptic-correspondence.tsv` and `reports/synoptic-conflicts.tsv`.
 scripts/build-synoptic-correspondence.py	55	unclear	dropped here rather than carried into the synoptic tree and left for a human to
 scripts/build-synoptic-correspondence.py	129	unclear	# synoptic rebuild"*. Tanba and the sister repo's fuller Izumo roster had joins
-scripts/build-synoptic-correspondence.py	176	unclear	out = R / "synoptic-correspondence.tsv"
-scripts/build-synoptic-correspondence.py	200	unclear	conf = R / "synoptic-conflicts.tsv"
+scripts/build-synoptic-correspondence.py	184	unclear	out = R / "synoptic-correspondence.tsv"
+scripts/build-synoptic-correspondence.py	208	unclear	conf = R / "synoptic-conflicts.tsv"
 scripts/bure-coverage.py	19	unclear	people in the geni synoptic tree and once everyone is covered the campaign is over. Because
 scripts/census-correspondence-shapes.py	35	unclear	Reads `reports/synoptic-correspondence.tsv`. Offline.
 scripts/census-correspondence-shapes.py	56	unclear	src = ROOT / "reports" / "synoptic-correspondence.tsv"
@@ -170,9 +949,13 @@ scripts/find-chain-gaps.py	5	unclear	and I think that's kind of stupid… rebuil
 scripts/measure-orderlife-pairs.py	14	unclear	column — so it answers exactly the question `reports/synoptic-correspondence.tsv` answers, from
 scripts/measure-orderlife-pairs.py	45	unclear	OURS = ROOT / "reports" / "synoptic-correspondence.tsv"
 scripts/measure-post-merge-override.py	19	unclear	synoptic tree earlier either"* — with the queue noting that later-wins is not post-merge-wins
+scripts/measure-three-seed-eccentricity.py	1	unclear	"""Is Emma eccentric on the SYNOPTIC TREE, once all three seeds are taken together?
+scripts/measure-three-seed-eccentricity.py	7	unclear	being *incomplete*, and that on the synoptic tree — where the family structure is dense rather
+scripts/measure-three-seed-eccentricity.py	11	unclear	our synoptic tree."* So the synoptic tree is the better predictor of the eventual shape, and the
+scripts/measure-three-seed-eccentricity.py	86	unclear	print("loading the synoptic tree ...", flush=True)
 scripts/multi-geni-item-roster.py	17	unclear	really removing the merged profile from the synoptic tree... We're just linking everything
 scripts/rebuild-everything.py	1	unclear	"""Rebuild the synoptic tree and everything derived from it, ending with the batch.
-scripts/refresh-drift.py	108	unclear	# `build-synoptic-correspondence.py` reads `structural-walk-validation.tsv` and is a
+scripts/refresh-drift.py	133	unclear	# `build-synoptic-correspondence.py` reads `structural-walk-validation.tsv` and is a
 scripts/resolve-multi-geni-by-parents.py	143	unclear	with open(ROOT / "reports" / "synoptic-correspondence.tsv", encoding="utf-8") as f:
 scripts/scraped_pages.py	6	unclear	are different. It turns them into things that are usable and would be merged into the synoptic
 scripts/verify-spine-candidates.py	24	unclear	* the relative appears in `reports/synoptic-correspondence.tsv` against our relative.

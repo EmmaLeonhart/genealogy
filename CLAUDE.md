@@ -1812,6 +1812,32 @@ destroyed 36,902 hand-built rows and left an 18-byte header. An atomic replace m
 a no-op. On Windows the rename fails if the reader is still open, so read inside a `with` — on
 POSIX the leak passes silently and ships.
 
+### "SYNOPTIC TREE" — the two things it means, and which one each usage is
+
+**Emma, 2026-08-29:** *"it is consistently conflated between the union of all the geni gedcoms and
+the union of that tree with all data sources."* Both meanings are in use and both are legitimate;
+what is not legitimate is a sentence where the reader cannot tell which.
+
+- **the Geni union** — every `.ged` under `exports/` merged, i.e. `out/merged.ged`. This is what
+  `scripts/rebuild-everything.py` builds, what a new export is *merged into*, and what
+  *"rebuild the synoptic tree"* always means.
+- **the full union** — that tree joined to every other source, Wikidata above all. This is what
+  the structural walk *builds up*, what `reports/synoptic-correspondence.tsv` is a correspondence
+  **for**, and what the zipper join feeds.
+
+**Measured 2026-09-01: 975 usages across 61 files**, of which 81 are live prose rather than
+transcript or devlog history. `scripts/census-synoptic-usages.py` → `reports/synoptic-usages.tsv`
+is the census and re-runs.
+
+**Her quoted words are never rewritten.** Most of the ambiguous usages are inside her own
+sentences, and a quote that has been tidied is no longer evidence of what she said. Where the
+meaning matters, the gloss goes in the prose *around* the quote.
+
+**And the phrase *"the union of the synoptic tree and the Geni tree"* meant neither.** Her ruling,
+2026-09-01: it is **Wikidata's state ∪ Geni's state** — what the item already holds plus what Geni
+supports. Under either definition above the sentence was a tautology or a redundancy, which is how
+it was spotted. `docs/daily-algorithm.md` and this file now say the thing she meant.
+
 ### The four big derived CSVs are committed GZIPPED
 
 **Emma, 2026-08-24:** *"Imo gzip because this is long term and we aren't adding any more
@@ -3056,8 +3082,9 @@ Steps 1, 1b, 2 and 3 live in `scripts/build-garborg-day.py` and
 `scripts/build-garborg-name-items.py`; the caps are in those files and are the authority on
 their own values, not this section. `devlog.md` 2026-08-26 has how they were built.
 
-**The one thing still outstanding: the ideal state is the union of the synoptic tree and the
-Geni tree**, and the synoptic half does not exist yet. That is the § *PREREQUISITE ORDER* item,
+**The one thing still outstanding: the ideal state is what the item already holds on Wikidata
+plus what Geni supports** — her ruling, 2026-09-01, on a sentence that used to read *"the union of
+the synoptic tree and the Geni tree"* and was a tautology under either meaning of the term. That is the § *PREREQUISITE ORDER* item,
 not this one.
 
 **Do not "fix" the artefacts.** Spouses unlinked to their partner's children, and parents not

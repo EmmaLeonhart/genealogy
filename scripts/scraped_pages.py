@@ -3,7 +3,7 @@
 **Emma, 2026-08-29**, on the 1,555 pages in `geni-scraping/` and the 698 files in `paths/`:
 *"My suggestion would be for us to convert these things into GEDCOM files that would go into a
 special GEDCOM directory... so that it will save both the paths and the saved pages because they
-are different. It turns them into things that are usable and would be merged into the synoptic
+are different. It turns them into things that are usable and would be merged into the Geni union — the synoptic
 tree as GEDCOM stuff."*
 
 **What a saved page actually carries.** Not a structured family list -- prose with links:
