@@ -2,64 +2,6 @@
 
 Only work. Every specification and record moved to `CLAUDE.md` on 2026-09-01 at her instruction: *"remove all the 14 bullshit queue items"*. An item is DELETED when done, never annotated.
 
-## LABELS, IN HER ORDER — one step per language, every individual at once
-
-**Emma, 2026-08-17**, after being shown the 364 structural placeholders with no label:
-*"Put an item at the end of the queue that finds these kinds of ones where the label
-has this stuff already in it, and normalizes them into proper things based on our
-rules, and then tasks at the end that in order: makes en labels for every individual
-(so Japanese gets transcribed), and then mul gets made for every individual (almost
-always derived from en), and then the Japanese gets made for all languages, and then
-the Chinese gets made for all languages, and then after we continue with the other
-universal languages. Note that these are all distinct items for the language so all of
-the en labels are done at the same time as one step, and then mul, then ja, then zh,
-then others."*
-
-**This fixes the ordering `emission-spec.md` had.** That file says `mul` comes from the
-Latin name and `en` comes from `mul`. Her order is the other way round and it is the
-one that works for a person with no Latin name at all: **`en` is made first, by
-transcribing**, and `mul` is then *"almost always derived from en"*. That is what gives
-the 806 Han-only people a `mul` — there was no route to one before.
-
-**Each language is one step over the whole population, not a per-person loop.** Her
-words. So the batches are `en` for everybody, then `mul` for everybody, then `ja`, then
-`zh`, then the rest — never a person walked once and labelled in seven languages.
-
-**The three vocabularies are now one** — `scripts/labels.PLACEHOLDER_FORMS`, imported
-  by the preview, the structural walk and the census instead of each carrying a copy.
-  Strictly additive: all 27 forms the copies held are in it, plus 19 found by
-  measurement, so nobody previously screened stops being screened. `NOT_A_NAME` is
-  deliberately untouched — that decides what `label_for()` **empties** and she has ruled
-  on it twice; these sets decide what a **marker** is. Widening detection is not
-  widening suppression.
-
-- **The katakana that remains needs a RULING, not a fetch.** The fetch is done and its limit
-  is measured: `scripts/fetch-katakana-name-items.py` asked Wikidata for the 3,000 tokens
-  blocking the most people, **456 resolved**, and `ja` labels went **190,206 → 267,976**.
-
-  **871,623 people still fail on a partial, and the blockers are now three kinds — none of them
-  fetchable.** Checked by SPARQL rather than assumed:
-
-  | | blocks | why a fetch cannot help |
-  | --- | ---: | --- |
-  | **particles** — `von` 40,491, `of` 11,608, `y` 11,060, `af` 6,858, `la`, `der`, `til` | 88,826 | not names, so no name item exists to hold a reading |
-  | **Nordic patronymics** — `Johansdotter`, `Andersdotter`, `Olsdatter`, `Pedersen`, `Eriksson`, `Hansson`, `Larsdatter` … | ~50,000 | **the items EXIST and carry no `ja` label** — `Q42223005`, `Q51885688`, `Q122837357`, `Q130232913`. Wikidata simply has no katakana for them |
-  | **regnal numerals and the marker** — `II` 4,880, `III` 2,690, `NN` 3,005 | ~10,500 | not names either; `II` is the `P7338` ordinal and `NN` is the unknown-name marker |
-
-  **So the next move is hers, and it is one decision per class**, not per token:
-
-  - the particles — `von` is `フォン`, `af`/`av` `アフ`, `de` `ド`, and those are conventional
-    Japanese forms rather than derivable ones, so they need a source or her word;
-  - the patronymic suffix — `-sdotter`/`-datter`/`-son` is a fixed element, so `Johansdotter`
-    would be the katakana of `Johan` plus one suffix; that is compositional, but it is still
-    inventing a reading nobody has written down;
-  - `II`/`III` — the middle-initial precedent says a letter that is the same in every script
-    stays Latin, and Japanese also writes `2世`; and `NN` is a marker, which § *`NN` is
-    PRESERVED in `mul`* says is never translated.
-
-  **Do not guess any of the three.** `CLAUDE.md`: established Japanese spellings are conventional,
-  not derivable, and a wrong reading of a real name is the one thing forbidden outright.
-
 ## THE VERY LAST ITEM — a GitHub Pages site documenting the repo
 
 **Emma, 2026-09-01:** *"an item at the end of the queue: a github pages site built with actions
@@ -109,34 +51,6 @@ it in `pack-derived.py` and giving `read_tree` a fallback. The 21:50 run then di
 gitignored and `sqlite3.connect` **creates an empty database** rather than raising. Both are the
 same shape: **a file the runner cannot have, reached by code that assumed it could.** Anything else
 added to this workflow should be checked against `.gitignore` first.
-
-## Promote one reading to `mul`, and roster the rest
-
-**The readings themselves are DONE** — `reports/cjk-reading-aliases.tsv`, 40,125 people: `ko`
-40,125, `zh` 40,109, `ko_variants` 6,654, sourced `ja` 391. All of them are `Amul` aliases, so
-nothing here is blocked on a culture verdict.
-
-**What is left is the promotion**, which is Emma's *"just a matter of which one is chosen at the
-top"*:
-
-- **Emit the aliases.** 5,621 of the 40,125 already have a Wikidata item, so those are addable
-  with no creation at all. `Amul` per reading, no `Aen` ever — § *The MARRIED name is the real
-  name* — and no descriptions.
-- **Promote per culture** where the classifier is confident: `ko` for Korean people, `zh` for
-  Chinese, sourced `ja` for Japanese. A wrong promotion is a reordering, not a wrong name.
-- **Roster the unsure**, gated the way unsure parents are. **1,274 of 38,469** carry no verdict,
-  893 of them because there was no evidence within 14 hops. That is the manual/agentic deck, and
-  it shrinks on its own as confirmations propagate by network proximity.
-- **`build-cjk-romanisation.py`'s docstring is stale** — it says no `hanja` and no `pykakasi` is
-  installed. Both are, and both are now used.
-
-**Do not reopen the classifier to improve it.** Emma, 2026-09-02: *"this isn't something to waste
-forty eight hours on... a very ill scoped problem that got a massive scope creep."*
-
-**One free discriminator was found and is NOT to be chased now**, only recorded: `pykakasi`
-resolving a surname to a kun'yomi reading (青山 → あおやま) means its dictionary knows the token as
-Japanese, where a Chinese surname falls back to on'yomi (謝 → しゃ). That would settle the
-Japanese-in-`zh` misclassification cheaply. It is a promotion-order fix, not a gate.
 
 ## Follow a redirect: an item she edited that later gets merged away
 

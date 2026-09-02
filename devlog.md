@@ -25985,3 +25985,20 @@ genuine lead about the zipper join rather than about kana — 37 of 396 readings
 title sharing no Han character with our Geni name, 35 of them `zipper`-only, and
 `6000000004100737740` → `Q11355852` is plainly wrong. It is recorded here rather than kept in the
 queue, because it was nested under the kana item and depended on its output.
+
+## 2026-09-02 — two sections closed by her ruling; queue order is sacred
+
+Put every remaining item to her as an `AskUserQuestion` so the rest can be worked without her.
+
+- **§ LABELS — deleted.** On the three unfetchable katakana classes she chose *skip all three,
+  move on*: particles (88,826 blocks), Nordic patronymics (~50,000, where Wikidata itself carries
+  no `ja` label) and `II`/`III`/`NN`. **267,976 `ja` labels stand as the deliverable** and the rest
+  is flagged rather than invented, which is what she has asked for on kana throughout.
+- **§ Promote one reading to `mul` — deleted**, her words: *"Remove this from the queue"*. The
+  aliases in `reports/cjk-reading-aliases.tsv` stay on disk; nothing emits them.
+
+**And the rule that governs the rest of the session, in her words:** *"Build it in the order it is
+in the queue lol, after the items before it and before the items after it. Queue order is
+sacred."* So the Pages site is worked now because it is at the top, not because it is easy, and
+her three tail items — follow-a-redirect, patronymics need `P144`, descriptions on name items —
+are all authorised (*"All three now"*) but wait their turn behind it.
