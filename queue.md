@@ -228,11 +228,13 @@ words. So the batches are `en` for everybody, then `mul` for everybody, then `ja
     `unknown Bloomfield` → `mul: NN Bloomfield`, and a description in the local
     languages. This is the bulk of it and the Wikidata side dominates: 18,280
     `unknown`, 3,362 `nn`, 480 `n`, 260 `?`, 60 `n.n.`, 35 `private`.
-  - **A real name with a marker wedged inside it — strip the marker, keep the rest.**
-    `Catherine unknown` → `Catherine`, `Nechama (?) Heller` → `Nechama Heller`,
-    `Hadaburg N.N. Gräfin im Saalgau` → `Hadaburg Gräfin im Saalgau`. Mechanical, no
-    judgement, ~1,950 labels. `is_placeholder_label` reads only the head token, so
-    every one of these currently ships as a name.
+  - ~~A real name with a marker wedged inside it~~ — **DONE 2026-09-02**, and the only part of
+    this bullet that is. `scripts/build-marker-normalisation.py` →
+    `reports/marker-label-normalisation.tsv`, **1,568 normalisations** (867 Wikidata-side, 701
+    Geni-side): `Hadaburg NN Gräfin im Saalgau` → `Hadaburg Gräfin im Saalgau`, `Viki (Unknown)`
+    → `Viki`. **What remains of it is wiring** — nothing reads that file yet, and
+    `is_placeholder_label` still reads only the head token, so these still ship as names until an
+    emitter consumes it.
   - **A description already sitting in the name slot** — 1,222 Geni people and 1,508
     Wikidata items in English, plus **~5,400 in CJK** and 249 behind an honorific.
     `wife of` 871, `daughter of` 605, `son of` 241, `mother of` 234, `nieto de` 58;

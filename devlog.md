@@ -25328,3 +25328,23 @@ in the directory: Obito Haji-no-muraji (strong) wants `6000000001893090174` 土�
 **The script grades but does not filter.** `CLAUDE.md` § *The question is whether OUR TREE MATCHES
 GENI* — the `evidence` column orders the work and never decides whether a pair deserves an export,
 because a post-merge export is worth running even when the pair turns out not to be a duplicate.
+
+## 2026-09-02 — dead-queue sweep: one sub-bullet of LABELS cut back, nothing else dead
+
+**10 sections before, 10 after.** No whole item finished; one bullet inside § *LABELS, IN HER
+ORDER* did.
+
+**Cut back: the second of the three marker populations.** *"A real name with a marker wedged
+inside it — strip the marker, keep the rest… mechanical, no judgement, ~1,950 labels."* Done as of
+`f64fe8c5`/`3e85242c`: **1,568 normalisations** in `reports/marker-label-normalisation.tsv`, with
+0 markers surviving as a token and 0 unbalanced brackets.
+
+**The bullet is not deleted, because the wiring is not done.** Nothing reads that file yet, and
+`is_placeholder_label` still reads only the head token — so those labels still ship as names. The
+bullet now says exactly that, which is the difference between a finished measurement and a finished
+job. `CLAUDE.md` § *Code that is WRITTEN but never CALLED is not done* is the rule it would
+otherwise break.
+
+**The other two populations stay untouched and both need her**: a marker *leading* a real surname
+(`unknown Bloomfield` → `mul: NN Bloomfield`) and a *description* in the name slot. Both decide
+what a person is called.
