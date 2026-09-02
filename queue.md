@@ -27,6 +27,17 @@ settles it via neighbours and which exports they came from, never the name.
 
 So the dependency is the **culture classifier**, not a creation count.
 
+**And the classifier's problem is SCOPE, measured 2026-09-01.** It covers **13,638** people —
+13,416 `zh`, 222 `ja` — while **47,296** distinct people carry Han in a name. **33,658 Han-named
+people are never classified at all**, so the `P1814` population is unknown rather than small.
+
+**Do not cap the walk on the evidence currently in `reports/culture-classifier-check.md`.** That
+report inferred the walk was unsafe past two hops from **two** misclassified people. Measured over
+the whole output: the walk settles only 22% at one hop and 37% by two, so a two-hop cap would
+unsettle **63%** of the 7,150 it settles. `MAX_HOPS` is 14, not the 8 the report says. A cap needs
+a measured error rate by hop distance, which needs more than two checkable people — that is the
+experiment, not a threshold to pick.
+
 **"With research" is the load-bearing half and stands.** A kana reading is not derivable by rule:
 the same characters take different readings per person, which is why `P1814` exists as a property
 rather than being computed. `scripts/build-cjk-romanisation.py`'s docstring makes the same point,

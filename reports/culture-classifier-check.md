@@ -59,3 +59,44 @@ traversal is for. **What is measurable is that the clan seat already contradicts
 the eight carry `鄭州榮澤`, `扶風平陵`, `京兆長安` — Chinese commanderies, recorded on the person,
 and stronger evidence than a two-hop walk. Using the seat to *veto* a Japanese classification
 costs nothing and needs no threshold.
+
+## Correction, 2026-09-01 — the propagation conclusion rested on n=2
+
+**What this report concluded** was that the walk *"runs to eight hops, and two is already enough to
+cross from a Japanese neighbourhood into a Manchu or Chinese one through a marriage"* — inferred
+from the **two** classified-Japanese people who have a Wikidata item, both misclassified.
+
+**Two is not a basis for a claim about the walk.** Emma, 2026-09-01: *"please don't make
+generalizations on the entire dataset with small test sections, because the dataset is extremely
+heterogeneous."* Measured over the whole output of `reports/cjk-romanisation.csv` instead:
+
+| | |
+| --- | ---: |
+| people the classifier covers | **13,638** — 13,416 `zh`, 222 `ja` |
+| settled by graph traversal | **7,150** |
+| settled by a clan seat, a place, a name form or a derived surname | 6,488 |
+
+**Where the walk actually settles, and it is not near:**
+
+| hops | settled | cumulative |
+| ---: | ---: | ---: |
+| 1 | 1,574 | 22.0% |
+| 2 | 1,089 | 37.2% |
+| 3 | 855 | 49.2% |
+| 5 | 482 | 64.9% |
+| 8 | 263 | 78.4% |
+| 14 | 218 | 100.0% |
+
+**So capping the walk at two hops would unsettle 63% of everyone it settles** — 4,487 people — to
+answer a defect seen twice. `MAX_HOPS` is **14**, not the eight this report said, and a comment
+beside it still says "six-hop"; both were stale.
+
+**The real finding is scope, not hops.** The classifier covers **13,638** people while **47,296**
+distinct people carry Han in a name — so **33,658 Han-named people are never classified at all**.
+For `P1814` that matters more than the misclassification rate: the property's population is not
+"the 226 once they are created", it is however many of those 47,296 turn out Japanese, and most of
+them have never been put to the classifier.
+
+**Nothing is changed in the classifier on this evidence.** A hop cap needs a measured error rate by
+hop distance, which needs more than two checkable people; that is the experiment to run, not a
+threshold to pick.
