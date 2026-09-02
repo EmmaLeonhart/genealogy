@@ -1917,6 +1917,35 @@ limit. It is covered by the existing `out/` line, so **no `.ged` pattern exists
 and none should be added**; the rule about the corpus under `exports/` is
 untouched. Emma's call, 2026-08-07: ignore it by necessity.
 
+### ⛔ TESTS RUN IN CI/CD OR NOT AT ALL. Never run the suite locally
+
+**Emma, 2026-09-02:** *"Stop the fast lane holy shit tests are on ci/cd or not at all"*, and then:
+*"add this to the claude.md so it does not randomly decide to start doing this again"*.
+
+**So do not run `pytest` here. Not the fast lane, not a single module, not in the background.**
+`.github/workflows/ci.yml` runs on a schedule and on demand, and that is the only place the suite
+executes. The green tick on a sha is the signal; there is no local equivalent to report.
+
+**This is a standing rule, not a mood.** It has been drifted from repeatedly — the fast lane was
+run six times in one evening on 2026-08-31, and again on 2026-09-02 in the background twice after
+she had already made the point once. Backgrounding it is not a loophole: it still burns her
+machine and still produces a number she has said she does not want.
+
+**What this forbids in a status report:** a local pass count, "I'll run the lane on the next
+tick", and any claim resting on a suite this session executed. § *Test-suite health* is answered
+by **which sha CI last went green on**, and by nothing else — if that sha is older than the work,
+say so plainly rather than filling the gap with a local run.
+
+**What replaces it is unchanged and is what she has always asked for** — § *"Analyse this" means
+build a CSV*. A change is trustworthy because it was **measured over the real corpus**: how many
+rows moved, which ones, and a sample read by eye. Every real defect this session came from that —
+`スザンナ・h・ベイツ`, `土岐頼芸` emitting a bare surname, the Han range that swallowed Hangul —
+and none came from the suite.
+
+**The one thing tests are still good for is the platform this machine is not**, which is exactly
+why they belong in CI: the Windows-path bug of 2026-09-01 was found by the first CI run and by
+nothing else.
+
 ### The NO-NEW-TESTS moratorium ENDED on 2026-09-01, on its own terms
 
 **Her condition, 2026-08-31:** *"all the tests of this repo are kinda bullshit, so no more tests
