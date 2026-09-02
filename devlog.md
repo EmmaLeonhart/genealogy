@@ -25918,3 +25918,29 @@ Sections 6 → 6; both cuts were **inside** sections.
 site (no workflow exists); *Promote one reading to `mul`* — she ruled *"Emit the aliases now"* and
 they are not emitted yet; `P1814`, where the 35 variant readings were printed for her but she has
 not ruled; and the correspondence-falsification lead, untouched.
+
+## 2026-09-02 — the katakana fetch is finished, and what remains is not fetchable
+
+`ja` labels **190,206 → 267,976**. `scripts/fetch-katakana-name-items.py` asked Wikidata for the
+3,000 tokens blocking the most people; 456 resolved to a single katakana form.
+
+**Then measured where the remaining 871,623 partials actually stop**, because the queue bullet
+called this "the highest-yield thing left" and that is no longer true:
+
+| | blocks |
+| --- | ---: |
+| particles — `von` 40,491, `of` 11,608, `y` 11,060, `af` 6,858 | 88,826 |
+| Nordic patronymics — `Johansdotter`, `Olsdatter`, `Pedersen`, `Eriksson` … | ~50,000 |
+| regnal numerals `II`/`III` and the `NN` marker | ~10,500 |
+
+**None of the three can be fetched, and the patronymics are the finding.** A SPARQL check shows
+their name items **exist and carry no `ja` label at all** — `Q42223005` *Andersdotter*,
+`Q51885688` *Olsdatter*, `Q122837357` *Larsdatter*, `Q130232913` *Eriksson*. So Wikidata has no
+katakana for them and there is nothing to look up; supplying one would be inventing a reading.
+
+The bullet is cut back to a ruling — one decision per class, not per token — rather than deleted,
+since the work is real and only its shape changed.
+
+**A counter-intuitive number worth recording:** partials went *up*, 862,329 → 871,623, because
+rendering more tokens moves people out of "no token renders at all" and into "only some render".
+The figure that measures progress is people fully rendered, +77,770.

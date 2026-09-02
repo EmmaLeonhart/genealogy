@@ -33,26 +33,32 @@ words. So the batches are `en` for everybody, then `mul` for everybody, then `ja
   on it twice; these sets decide what a **marker** is. Widening detection is not
   widening suppression.
 
-- **Fetch the missing katakana — the highest-yield thing left in this programme.**
-  The `ja` step renders a name only when **every** token has a sourced katakana form, so
-  **862,329 people fail on a partial**. That is a store-coverage gap, not a language problem:
-  the commonest unrendered tokens are particles (`von` 44,703, `of`, `y`, `af`) and then
-  ordinary given names — `Carl` 14,141, `Anders` 13,916, `John` 10,916, `Margareta` 9,638,
-  `Johanna` 9,252, `Andersson` 8,227 — which **have** katakana on Wikidata but no name item
-  inside this Geni-shaped slice of it.
+- **The katakana that remains needs a RULING, not a fetch.** The fetch is done and its limit
+  is measured: `scripts/fetch-katakana-name-items.py` asked Wikidata for the 3,000 tokens
+  blocking the most people, **456 resolved**, and `ja` labels went **190,206 → 267,976**.
 
-  Fetch them through `wbgetentities`, 50 ids a call, politely: § *Querying Wikidata is ALLOWED*.
-  Rank the tokens by how many people each unblocks, since one token can flip thousands of
-  people from partial to complete.
+  **871,623 people still fail on a partial, and the blockers are now three kinds — none of them
+  fetchable.** Checked by SPARQL rather than assumed:
 
-  **The particles are a separate question and must not be guessed.** `von`, `af`, `de` and `y`
-  are not names and have conventional Japanese forms; they need her ruling or a source, not a
-  transliteration.
+  | | blocks | why a fetch cannot help |
+  | --- | ---: | --- |
+  | **particles** — `von` 40,491, `of` 11,608, `y` 11,060, `af` 6,858, `la`, `der`, `til` | 88,826 | not names, so no name item exists to hold a reading |
+  | **Nordic patronymics** — `Johansdotter`, `Andersdotter`, `Olsdatter`, `Pedersen`, `Eriksson`, `Hansson`, `Larsdatter` … | ~50,000 | **the items EXIST and carry no `ja` label** — `Q42223005`, `Q51885688`, `Q122837357`, `Q130232913`. Wikidata simply has no katakana for them |
+  | **regnal numerals and the marker** — `II` 4,880, `III` 2,690, `NN` 3,005 | ~10,500 | not names either; `II` is the `P7338` ordinal and `NN` is the unknown-name marker |
 
-  **Two findings not to re-litigate**, both measured 2026-09-02: key a name item by its **first**
-  Latin label only — keying every one lifts the table 32,845 → 41,187 and makes `sayaka`,
-  `solovjev` and `muhàmmad` all read `アニェッリ`; and `Jakob Forsberg` → `ヤコブ・ホシュベリ`
-  is Wikidata's own data on `Q21492950`, not a mis-join, so it stands.
+  **So the next move is hers, and it is one decision per class**, not per token:
+
+  - the particles — `von` is `フォン`, `af`/`av` `アフ`, `de` `ド`, and those are conventional
+    Japanese forms rather than derivable ones, so they need a source or her word;
+  - the patronymic suffix — `-sdotter`/`-datter`/`-son` is a fixed element, so `Johansdotter`
+    would be the katakana of `Johan` plus one suffix; that is compositional, but it is still
+    inventing a reading nobody has written down;
+  - `II`/`III` — the middle-initial precedent says a letter that is the same in every script
+    stays Latin, and Japanese also writes `2世`; and `NN` is a marker, which § *`NN` is
+    PRESERVED in `mul`* says is never translated.
+
+  **Do not guess any of the three.** `CLAUDE.md`: established Japanese spellings are conventional,
+  not derivable, and a wrong reading of a real name is the one thing forbidden outright.
 
 ## THE VERY LAST ITEM — a GitHub Pages site documenting the repo
 
