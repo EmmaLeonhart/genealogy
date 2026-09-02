@@ -5,8 +5,8 @@ Only work. Every specification and record moved to `CLAUDE.md` on 2026-09-01 at 
 ## `P1814` *name in kana* — 356 readings found; what is left is her verdicts
 
 **`scripts/fetch-kana-readings.py` → `reports/kana-readings.tsv`**, 2026-09-02. Of the 397 people
-with a `jawiki` article: **355 readings**, 1 taken from a title that is already kana, **35 with
-variants**, **6 needing a human**.
+with a `jawiki` article: **356 readings**, 1 taken from a title that is already kana, **35 with
+variants**, **5 needing a human**.
 Nothing is generated — every reading is the parenthesised yomi in the article's own lead.
 
 **What is left, in order:**
@@ -14,12 +14,17 @@ Nothing is generated — every reading is the parenthesised yomi in the article'
 - **35 variant readings need her pick.** The lead offers two — `どたごぜん／つちだごぜん`,
   `すうげんいん ／ そうげんいん`, `たいら の じし／しげこ`. Nothing here chooses between two
   readings a Japanese editor thought worth recording.
-- **6 rows the extractor refused, and it refuses on purpose.** Four carry a nested parenthesis,
+- **5 rows the extractor refused, and it refuses on purpose.** Three carry a nested parenthesis,
   whose form is ambiguous: `あがた（の）いぬかい` is an *optional infix* — あがたのいぬかい — while
   `きし（ひろこ）じょおう` is two *whole* readings, きしじょおう and ひろこじょおう. Flattening them
   produced `あがたいぬかい の おおとも／の` and `きしじょおう／ひろこ`, names nobody has. One is a
   kyūjitai restatement (`眞龍院、しんりゅういん` against the title 真竜院) and one lead has no
   parenthetical at all. Each refusal message carries what it saw.
+
+  **A nested parenthesis is only ambiguous when its contents are themselves kana.**
+  `おのどの（不詳 -天正元年（1573年））` nests *dates*, which cannot be a reading, so they are
+  dropped and `おのどの` stands. That distinction is what took the refusals from 6 to 5 without
+  guessing at any of them.
 - **16 rows whose kana is already on the item** as an alias or `ja` label — no fetch needed, and
   they were never part of the 397.
 - **242 rows with no source yet** — not on `jawiki`, no kana on the item.

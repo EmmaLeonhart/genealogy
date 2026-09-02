@@ -25291,3 +25291,16 @@ them were safe to handle:
 one of these two* and both were wrong. Four refusals beat two mangled rows presented as answerable.
 The `／` case still works and is still `variants`: 平滋子 gives `たいら の じし／しげこ`, which is what
 the article actually offers.
+
+## 2026-09-02 — a nested paren is only ambiguous when it holds kana
+
+**356 readings, 35 variants, 5 refused**, up one reading from the last run and down one refusal.
+
+Refusing *every* nested parenthesis was too broad. The ambiguity is real only when the nested
+content could itself be a reading: `きし（ひろこ）じょおう` might be an optional infix or two whole
+readings, but `おのどの（不詳 -天正元年（1573年））` nests **dates**, which cannot be a reading at
+all. Dropping non-kana nesting recovers `おのどの` without guessing.
+
+The three genuinely ambiguous rows still refuse — `あがた（の）いぬかい`, `きし（ひろこ）じょおう`,
+`ふじわら の げんし（もとこ）` — along with the kyūjitai restatement (`眞龍院` against the title
+真竜院) and one lead carrying no parenthetical. Five refusals, each with what the extractor saw.

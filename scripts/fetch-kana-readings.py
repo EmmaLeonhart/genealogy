@@ -148,7 +148,12 @@ def reading_of(extract, title=""):
         # きしじょおう and ひろこじょおう. Flattening gave `あがたいぬかい の おおとも／の` and
         # `きしじょおう／ひろこ`, both of which are names nobody has. Three rows refused beats two
         # rows mangled, and a mangled reading marked `variants` looks answerable when it is not.
-        if any(x.strip() for x in inside):
+        # Only a nested paren whose contents are THEMSELVES kana is ambiguous. `おのどの（不詳 -
+        # 天正元年（1573年））` nests dates, which cannot be a reading and are simply dropped;
+        # `きし（ひろこ）じょおう` nests kana and could be either shape.
+        kana_inside = [x.strip() for x in inside
+                       if x.strip() and re.fullmatch(KANA + "+", x.strip())]
+        if kana_inside:
             return "", ("needs a human: nested parenthesis, %r — optional infix or two whole "
                         "readings?" % element[:40])
         if "／" in outside or "/" in outside:
