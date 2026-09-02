@@ -138,58 +138,6 @@ resolving a surname to a kun'yomi reading (青山 → あおやま) means its di
 Japanese, where a Chinese surname falls back to on'yomi (謝 → しゃ). That would settle the
 Japanese-in-`zh` misclassification cheaply. It is a promotion-order fix, not a gate.
 
-## `P1814` *name in kana* — AT THE END, her call 2026-09-02
-
-**Emma:** *"Put this culture identification thing at the end and work on everything else."* Four ticks went into it and it emitted **zero statements**; the readings are found and waiting, so it costs nothing to leave here.
-
-**`scripts/fetch-kana-readings.py` → `reports/kana-readings.tsv`**, 2026-09-02. Of the 397 people
-with a `jawiki` article: **356 readings**, 1 taken from a title that is already kana, **35 with
-variants**, **5 needing a human**.
-Nothing is generated — every reading is the parenthesised yomi in the article's own lead.
-
-**What is left, in order:**
-
-- **35 variant readings need her pick.** The lead offers two — `どたごぜん／つちだごぜん`,
-  `すうげんいん ／ そうげんいん`, `たいら の じし／しげこ`. Nothing here chooses between two
-  readings a Japanese editor thought worth recording.
-- **5 rows the extractor refused, and it refuses on purpose.** Three carry a nested parenthesis,
-  whose form is ambiguous: `あがた（の）いぬかい` is an *optional infix* — あがたのいぬかい — while
-  `きし（ひろこ）じょおう` is two *whole* readings, きしじょおう and ひろこじょおう. Flattening them
-  produced `あがたいぬかい の おおとも／の` and `きしじょおう／ひろこ`, names nobody has. One is a
-  kyūjitai restatement (`眞龍院、しんりゅういん` against the title 真竜院) and one lead has no
-  parenthetical at all. Each refusal message carries what it saw.
-
-  **A nested parenthesis is only ambiguous when its contents are themselves kana.**
-  `おのどの（不詳 -天正元年（1573年））` nests *dates*, which cannot be a reading, so they are
-  dropped and `おのどの` stands. That distinction is what took the refusals from 6 to 5 without
-  guessing at any of them.
-- **16 rows whose kana is already on the item** as an alias or `ja` label — no fetch needed, and
-  they were never part of the 397.
-- **242 rows with no source yet** — not on `jawiki`, no kana on the item.
-- **381 already carry `P1814`** and need nothing.
-
-**Then the statements.** `P1814` is a **string**: `Q635214⇥P1814⇥"おいちのかた"`, no language
-prefix. Do not emit until she has ruled on the variants; a wrong reading is a wrong name.
-
-### The readings also falsify correspondence pairs, and that is worth its own look
-
-**37 of 396 readings come from a `jawiki` title sharing NO Han character with our Geni name**, and
-**35 of those 37 are `zipper`-only** correspondences.
-
-**That is a lead, not a verdict, and the distinction matters.** Many are legitimate: a woman
-recorded on Geni as `見星院 阿知和` and on Wikidata as `於久の方` is the same person under a Buddhist
-name, and they share nothing by design. But `6000000004100737740` 畠山国儔 → `Q11355852` 三条西季知
-is plainly wrong, and it is `zipper`-only.
-
-So this is a **cheap falsification test on the join**, not a name matcher: the position was already
-chosen by the zipper, and the reading only says whether the result is absurd. `CLAUDE.md` —
-*labels confirm a position; they never choose one*. The 37 belong in her adjudication deck.
-
-**`shintowiki-scripts` is a SEPARATE repo and the coupling has burned this repo once.** Take
-material from it and add no runtime dependency, no shared state file and no network call. It is not
-checked out beside `geni`, so the first step is asking her where it is.
-
-
 ## Follow a redirect: an item she edited that later gets merged away
 
 **Emma, 2026-09-02:** *"in the future an item that I edit that later gets redirected the algorithm
