@@ -25348,3 +25348,30 @@ otherwise break.
 **The other two populations stay untouched and both need her**: a marker *leading* a real surname
 (`unknown Bloomfield` → `mul: NN Bloomfield`) and a *description* in the name slot. Both decide
 what a person is called.
+
+## 2026-09-02 — the marker strip is WIRED, not just written
+
+**The last commit left a file nothing read**, which is the exact shape `CLAUDE.md` § *Code that is
+WRITTEN but never CALLED is not done* names. `labels.strip_wedged_marker` now runs inside
+`derive-labels.py`, immediately after `normalise_marker_spelling` — order matters, because the
+spelling pass turns `n.n.` into `NN` first, so this one can look for whole tokens.
+
+**243 labels changed on the re-derive**, measured against a copy taken before: `Anna NN Duchess of
+Pomerania` → `Anna Duchess of Pomerania`, `Jens NN Skeel` → `Jens Skeel`, `Inger NN til Holmstrup`
+→ `Inger til Holmstrup`. Far fewer than the 1,568 rows in the report, and that is right — 867 of
+those are Wikidata-side labels this file does not touch, and the rest collapse by person.
+
+**Two things the function refuses, both on her rules:**
+
+* **A HEAD marker is never touched.** `nn Gunnarsdatter Frafjord` is population one — the marker
+  leads a real surname and becomes `mul: NN Gunnarsdatter` — which decides what the person is
+  called and is hers.
+* **`Nechama (?) Heller` is left exactly as it is, and the queue item's example was wrong.**
+  `CLAUDE.md`: *"words yes, punctuation no — `Nechama (?) Heller` is a name with a bracketed hole,
+  not a marker."* The authority file beats the example in the queue, so the item now says so.
+
+**And the vocabulary had to match its sibling.** Using `WORDS_MEANING_UNKNOWN` alone missed
+`Hadaburg NN Gräfin im Saalgau` — the item's own worked example — because `nn` lives in
+`NARROW_MARKERS`. `strip_markers` unions both and so does this.
+
+223 passed on the label, marker, derive and join tests.

@@ -550,6 +550,70 @@ def normalise_marker_spelling(label: str) -> str:
     return strip_markers(label)
 
 
+def strip_wedged_marker(label: str) -> str:
+    """Remove an unknown-name marker that sits INSIDE an otherwise real name.
+
+    **Her instruction**, `queue.md` § *LABELS, IN HER ORDER*, the second of three marker
+    populations: *"A real name with a marker wedged inside it — strip the marker, keep the rest.
+    `Catherine unknown` → `Catherine`, `Nechama (?) Heller` → `Nechama Heller`, `Hadaburg N.N.
+    Gräfin im Saalgau` → `Hadaburg Gräfin im Saalgau`. Mechanical, no judgement."*
+
+    **It is the only one of the three that is mechanical**, because it decides nothing about what
+    the person is called: the name is already there and a word saying it is unknown is being taken
+    out of the middle of it. The other two — a marker LEADING a surname, and a description in the
+    name slot — decide the label itself and are hers.
+
+    **So the head token is never touched.** `nn Gunnarsdatter Frafjord` is population one and
+    belongs to `normalise_marker_spelling`, which spells it `NN` and keeps it.
+
+    **A bracketed phrase carrying the marker goes whole.** Removing only the word left dangling
+    brackets on 41 of 1,594 labels — `Dr. Aaron (surname Unknown)` became `Dr. Aaron (surname`,
+    `Hans Magnus (Ukendt tvilling)` became `Hans Magnus tvilling)`. The phrase is a comment about
+    the name being unknown, not part of it, so it is dropped entire.
+
+    **And the result is refused if the strip did not work.** If the marker survives as a whole
+    token, or the brackets do not balance, the original is returned untouched — a normalisation
+    that normalised nothing is worse than no normalisation. `[59] NN (Bhre Jagaraga bin NN (Bhre
+    Wengker)` arrives already malformed and comes back unchanged.
+    """
+    text = (label or "").strip()
+    if not text:
+        return label
+    tokens = text.split()
+    # The same vocabulary `strip_markers` uses, so `NN` mid-name is caught. `WORDS_MEANING_UNKNOWN`
+    # alone missed `Hadaburg NN Gräfin im Saalgau`, which is the queue item's own example.
+    #
+    # **Punctuation is deliberately NOT in it.** `CLAUDE.md` § *An obvious unknown-word marker*:
+    # *"words yes, punctuation no — `Nechama (?) Heller` is a name with a bracketed hole, not a
+    # marker."* The queue item lists that as an example of this population and `CLAUDE.md` wins,
+    # so `(?)` is left exactly where it is.
+    vocabulary = NARROW_MARKERS | WORDS_MEANING_UNKNOWN
+    head = tokens[0].casefold().strip(".,")
+    if head in REDACTION_MARKERS or head in vocabulary:
+        return label                      # population one, and hers
+    markers = [t for t in tokens[1:] if t.casefold().strip(".,()[]（）") in vocabulary]
+    if not markers:
+        return label
+    out = text
+    for marker in markers:
+        word = re.escape(marker.strip("()[]（）"))
+        phrase = re.sub(r"[（(\[][^）)\]]*" + word + r"[^）)\]]*[）)\]]", " ", out, flags=re.I)
+        out = phrase if phrase != out else re.sub(
+            r"(?<![^\W\d_])" + word + r"(?![^\W\d_])", " ", out, flags=re.I)
+    out = re.sub(r"[（(\[]\s*[）)\]]", " ", out)
+    out = re.sub(r"\s+", " ", out).strip(" ,-–—")
+    if not out or not re.search(r"[^\W\d_]", out):
+        return label
+    for a, b in (("(", ")"), ("[", "]"), ("（", "）")):
+        if out.count(a) != out.count(b):
+            return label
+    for marker in markers:
+        word = re.escape(marker.strip("()[]（）"))
+        if re.search(r"(?<![^\W\d_])" + word + r"(?![^\W\d_])", out, flags=re.I):
+            return label
+    return out
+
+
 def strip_markers(label: str) -> str:
     """Normalise an unknown-name marker to `NN`. **Never delete it.**
 

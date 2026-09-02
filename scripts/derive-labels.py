@@ -46,7 +46,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from namemodel import without_nickname  # noqa: E402
 from labels import (  # noqa: E402
-    drop_marker_surname, label_for, normalise_marker_spelling)
+    drop_marker_surname, label_for, normalise_marker_spelling, strip_wedged_marker)
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO_ROOT / "src"))
@@ -249,6 +249,20 @@ def main() -> int:
         # changes **8,053** labels, every one a marker spelled inconsistently.
         latin = [normalise_marker_spelling(x) for x in latin]
         aliases = [normalise_marker_spelling(x) for x in aliases]
+
+        # **Then remove a marker wedged INSIDE a name**, which is the second of the three marker
+        # populations and the only mechanical one — her words: *"strip the marker, keep the rest…
+        # mechanical, no judgement."* `Hadaburg NN Gräfin im Saalgau` → `Hadaburg Gräfin im
+        # Saalgau`, `Viki (Unknown)` → `Viki`.
+        #
+        # **Order matters and this must come second.** `normalise_marker_spelling` regularises the
+        # spelling first, so `n.n.` and `N.N.` are already `NN` when this looks for whole tokens.
+        #
+        # It never touches a HEAD marker — that is population one, `unknown Bloomfield` →
+        # `mul: NN Bloomfield`, which decides what the person is called and is Emma's ruling to
+        # make. `reports/marker-label-normalisation.tsv` is the report of what this does.
+        latin = [strip_wedged_marker(x) for x in latin]
+        aliases = [strip_wedged_marker(x) for x in aliases]
 
         # **A redaction marker is not a label, and this file was emitting one as the primary.**
         # Emma, 2026-08-29, asked why `geni.com/people/private/6000000021223635839` "was added

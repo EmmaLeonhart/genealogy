@@ -232,9 +232,15 @@ words. So the batches are `en` for everybody, then `mul` for everybody, then `ja
     this bullet that is. `scripts/build-marker-normalisation.py` →
     `reports/marker-label-normalisation.tsv`, **1,568 normalisations** (867 Wikidata-side, 701
     Geni-side): `Hadaburg NN Gräfin im Saalgau` → `Hadaburg Gräfin im Saalgau`, `Viki (Unknown)`
-    → `Viki`. **What remains of it is wiring** — nothing reads that file yet, and
-    `is_placeholder_label` still reads only the head token, so these still ship as names until an
-    emitter consumes it.
+    → `Viki`. **Wired 2026-09-02** — `labels.strip_wedged_marker` runs in `derive-labels.py` straight after
+    `normalise_marker_spelling`, so it is in the pipeline rather than in a file nobody reads.
+    **243 labels changed** on the re-derive: `Anna NN Duchess of Pomerania` → `Anna Duchess of
+    Pomerania`, `Jens NN Skeel` → `Jens Skeel`.
+
+    **`Nechama (?) Heller` is NOT in this population**, and the example above is wrong.
+    `CLAUDE.md` § *An obvious unknown-word marker* rules: *"words yes, punctuation no —
+    `Nechama (?) Heller` is a name with a bracketed hole, not a marker."* The authority file wins
+    over the example; `(?)` is left where it is.
   - **A description already sitting in the name slot** — 1,222 Geni people and 1,508
     Wikidata items in English, plus **~5,400 in CJK** and 249 behind an honorific.
     `wife of` 871, `daughter of` 605, `son of` 241, `mother of` 234, `nieto de` 58;
