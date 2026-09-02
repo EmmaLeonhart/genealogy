@@ -25654,3 +25654,39 @@ the 156,738 unlabelled people meant nothing. The raw GEDCOM name lives in `displ
 Still unknown and rostered: 33,982 with a name nothing derived a label from, overwhelmingly CJK
 and Hangul outside the `en` step's reach; 22,010 with no `NAME` record; 94,845 redacted and
 correctly empty. Next in her order is `ja`.
+
+## 2026-09-02 — the `ja` step; katakana was the answer all along
+
+Emma, on finding `ja` still held back: *"Wtf lol that's why we have katakana facepalm"*. The step
+had been blocked because a generated Japanese label would read `Gerard Spencerの娘`, mixing
+scripts — and the `NN` batch excludes `ja`/`zh` for exactly that reason. Katakana removes the
+objection entirely.
+
+`scripts/build-ja-labels.py` → `reports/label-ja.tsv`, all 1,451,964 people. **190,206 carry a
+`ja` label**, 9,746 of them already holding a Wikidata item: 149,052 rendered in katakana and
+41,154 from a Han name written as it stands (her rule — a name solely in kanji IS the Japanese
+label).
+
+**Nothing is transliterated.** The katakana is read from Wikidata's own name items, the same
+source the romanisation reads in the other direction — 33,390 Latin tokens with a sourced
+Japanese form. A partly-rendered name is not emitted; the only exception is a middle initial,
+which keeps its Latin letter.
+
+**Two things measurement settled:**
+
+- **Key each name item by its FIRST Latin label only.** Keying every Latin label lifts the token
+  count 32,845 → 41,187 and is garbage — `sayaka`, `solovjev` and `muhàmmad` all resolve to
+  `アニェッリ` (*Agnelli*). An obvious-looking coverage win, refuted by reading it.
+- **`Jakob Forsberg` → `ヤコブ・ホシュベリ` is Wikidata's data, not a mis-join.** `Q21492950`
+  *Forsberg* carries `ホシュベリ` where the ordinary form is フォルスベリ. § *The purpose is to
+  ADD to Wikidata, not to correct it* governs: it is sourced and it stands.
+
+**The 862,329 partials are a store-coverage gap, not a language problem** — the commonest
+unrendered tokens are particles (`von` 44,703) and ordinary given names (`Carl`, `Anders`,
+`John`) that have katakana on Wikidata but no name item in this Geni-shaped slice. Fetching the
+top few thousand through `wbgetentities` is the highest-yield follow-up in the label programme.
+
+Also: `label-ja.tsv` (114 MB) and `label-mul.tsv` (160 MB) join the gzip list, and
+`pack-derived.py` now writes `mtime=0` — gzip stores the source mtime, so a repack of unchanged
+content was producing a diff on every `.gz`. The eight rewritten here were verified
+content-identical by decompressed sha256 before being committed.

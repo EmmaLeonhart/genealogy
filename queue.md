@@ -253,52 +253,43 @@ words. So the batches are `en` for everybody, then `mul` for everybody, then `ja
   The 33,982 unknowns are overwhelmingly CJK and Hangul outside the `en` step's reach
   (`光安正室 /斎藤/`, `씨 /이/`). Listed, not adjudicated.
 
-- **`ja` for every individual — and the native construction is the template.**
-  **Emma, 2026-08-17:** *"That relationship description should be the template for how
-  we generate Chinese and Japanese nn suppleting labels."*
+- **`ja` for every individual — DONE 2026-09-02.** `scripts/build-ja-labels.py` →
+  `reports/label-ja.tsv`, all 1,451,964 people. **190,206 carry a `ja` label**, 9,746 of them
+  already holding a Wikidata item.
 
-  This unblocks the thing `ja`/`zh` were deferred for. The recorded objection was that
-  a generated Japanese description *"would come out `Gerard Spencerの娘` with the name
-  untransliterated"*. The corpus already contains ~5,400 CJK relationship descriptions
-  written the native way, with no `の` and no borrowed grammar, and those are the model:
+  **Emma, 2026-09-02, removing the objection that had held this back:** *"Wtf lol that's why we
+  have katakana facepalm"*. The step was blocked on `Gerard Spencerの娘` mixing scripts;
+  katakana is the answer and always was.
 
-      織田敏信娘        daughter of Oda Toshinobu   <name>娘
-      信秀正室 織田      principal wife of Nobuhide  <name>正室
-      古河某妻          wife of a certain Kogawa    <name>某妻
-      謝氏             the Xie-clan woman          <surname>氏
-      母 陳            mother, of the Chen         母 <surname>
+  | | |
+  | --- | ---: |
+  | rendered in katakana | 149,052 |
+  | from the Han name, as written | 41,154 |
+  | unknown: only SOME tokens render | 862,329 |
+  | unknown: no token has a katakana form | 222,719 |
+  | unknown: no English label to render | 131,489 |
+  | unknown: the label is not plain Latin | 45,221 |
 
-  So an unnamed person whose relative is recorded in Han characters gets
-  `ja` = `<relative's name><suffix>`, taking the suffix from the table the records
-  themselves use. **It only works where the relative's name is already CJK** — which is
-  exactly the population that has no `en` and is otherwise unreachable, so the two
-  problems solve each other. Where the relative is Latin-only the `ja` label still
-  waits on the transcription step.
+  **Nothing is transliterated.** The katakana comes from Wikidata's own name items — the same
+  source the romanisation reads in the other direction — 33,390 Latin tokens with a sourced
+  Japanese form. A partly-rendered name is not emitted; the sole exception is a middle initial,
+  which keeps its Latin letter per her 2026-08-27 ruling.
 
-  Han-only people already have a `ja` label, as the kanji written: *"If the name is
-  solely in kanji, then the Chinese and Japanese labels are both the same for it."*
-  The work is everybody else.
+  **TO DO — the 862,329 partials are a STORE-COVERAGE gap, not a language problem.** The
+  commonest unrendered tokens are particles (`von` 44,703, `of`, `y`, `af`) and then ordinary
+  given names (`Carl` 14,141, `Anders` 13,916, `John` 10,916) which have katakana on Wikidata
+  but no name item inside this Geni-shaped slice. **Fetching the top few thousand from live
+  Wikidata is the single highest-yield follow-up in the label programme** — batched through
+  `wbgetentities`, which takes 50 ids a call.
 
-  **`室`/`正室`/`側室` are not interchangeable and must not be normalised to one.**
-  Principal wife, concubine and consort are different statements about a person. Pick
-  the suffix the source used; do not choose one when generating from scratch — for a
-  generated label the plain relationship word is the safe form and the specific rank is
-  something only the source can supply.
+  **Two things measurement settled, recorded so they are not re-litigated:**
 
-  **STEP 3 PART-BUILT — `ja` where it needs no invention.**
-  `scripts/build-ja-label-batch.py` → `reports/wikidata-ja-labels.json`, **41,952 edits**:
-  37,405 from the name as written (Japanese uses a Han name unchanged) and 4,547 from
-  Wikidata's own `ja` label.
-
-  **TO DO — the hard half, 406,713 people:** English→katakana, plus 5,293 hangul-only names
-  deliberately skipped (a `ja` label must not be the hangul). Emma's method is a hand-built
-  table — *"hand-built tables, except CJK → English"* — and turning `Brodsky` into
-  `ブロツキー` has real failure modes: syllabification, long vowels, and the fact that
-  established Japanese spellings of European names are conventional rather than derivable.
-  Sized, not guessed at.
-
-  **Then `zh`, then the rest.** Middle initials follow
-  `reports/middle-initial-wikidata-practice.md`.
+  - **Key the name item by its FIRST Latin label only.** Keying every Latin label raises the
+    token count 32,845 → 41,187 and is garbage: `sayaka`, `solovjev` and `muhàmmad` all come
+    out `アニェッリ` (*Agnelli*). An obvious-looking coverage win, refuted by reading it.
+  - **`Jakob Forsberg` → `ヤコブ・ホシュベリ` is Wikidata's own data, not a mis-join.**
+    `Q21492950` *Forsberg* carries `ホシュベリ` (Forsberg is ordinarily フォルスベリ). § *The
+    purpose is to ADD to Wikidata, not to correct it* governs: it is sourced and it stands.
 
 - **`zh` for every individual.** Same string as `ja` for a Han name; the 291 people
   whose name carries **kana** are the ones needing a real Chinese form.
