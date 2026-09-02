@@ -236,6 +236,30 @@ words. So the batches are `en` for everybody, then `mul` for everybody, then `ja
   exports they came from"*, never the name. 806 Han-only among the structural
   placeholders alone; the corpus figure is larger and is what this step must count.
 
+- **The romanisations exist and CANNOT be used as `en` yet — 2,431 of them lose the surname.**
+  Measured 2026-09-02, and this is the blocker on the `en` step rather than the transcription
+  being unwritten. `reports/cjk-romanisation.csv` holds **13,638** romanisations, and **7,892**
+  belong to people whose `label_en` still has no Latin in it at all — so the obvious move is to
+  wire the column straight into `label_en`. **Do not.**
+
+  Of 12,276 multi-token names, **6,348 romanise fewer tokens than the source has**, and the split
+  is clean once measured:
+
+  | dropped trailing token | count | verdict |
+  | --- | ---: | --- |
+  | **3+ characters** — `陳郡陽夏` | 3,917 | **correct.** A clan seat is a *place*, and `CLAUDE.md` § *`SURN` is not reliably a surname* names this exact one |
+  | **1–2 characters** — `謝` | **2,431** | **wrong.** That is the surname. `經 謝` → `Jing` loses Xie |
+
+  So wiring it would give 2,431 people a given name and no surname — *"an incorrect name is not
+  acceptable"*. **The fix is composition, not another engine**: romanise the surname too and emit
+  it in the right order, `謝經` → `Xie Jing`, since Geni stores the tokens as `<given> <surname>`
+  and Chinese reads surname-first. The romaniser already knows both characters; nothing new has to
+  be learnt, the output just has to stop discarding half of it.
+
+  **And a caution for whoever does it:** `11 謝` → `Xie` shows the script does not always drop the
+  tail — where the given name is junk it romanises the surname instead. So the composition has to
+  read what was romanised, not assume which token it was.
+
 - **The 1,539 with no label and a named relative are HERE, not in the placeholder work.**
   Traced 2026-09-01. They are in `reports/label-gap.csv` with outcome `relative`, they are in
   `reports/derived-family.csv`, and **none of them reaches

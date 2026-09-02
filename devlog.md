@@ -25471,3 +25471,33 @@ see an open bullet and re-open a question that has an answer.
 **Everything else verified open, not assumed:** 0 Pages workflows, 0 workflows calling
 `full_entities`, no `out/merges*.html`, `SPINE_PATHS` at 5 references, 0 batches emitting `P1814`,
 and 2 survivors still short of the `exports/post-merge/` stopping rule.
+
+## 2026-09-02 — the `en` step's blocker found: 2,431 romanisations lose the surname
+
+**The obvious next move would have mislabelled 2,431 people**, and measuring stopped it.
+`reports/cjk-romanisation.csv` holds 13,638 romanisations and **7,892 belong to people whose
+`label_en` has no Latin character in it** — so wiring that column into `label_en` looks like the
+whole `en` step, done in one line.
+
+**It is not.** Of 12,276 multi-token names, **6,348 romanise fewer tokens than the source has**,
+and reading a random sample is what showed why: `田 曾` → `Tian`, `雍 李` → `Yong`,
+`行基 楊` → `Xing Ji`. Those dropped characters are 曾 (Zeng), 李 (Li), 楊 (Yang) — **surnames**.
+
+Split by the length of the dropped tail, the picture is clean:
+
+* **3,917 drop a 3+ character tail** — `陳郡陽夏` is Chen commandery, Yangxia, a **place** sitting
+  in the surname field, and `CLAUDE.md` § *`SURN` is not reliably a surname* names that exact
+  string. Correctly dropped.
+* **2,431 drop a 1–2 character tail** — that is the surname, and dropping it leaves a given name
+  alone. `經 謝` → `Jing`.
+
+**The fix is composition, not a new engine.** The romaniser already reads both characters; it just
+discards one. `謝經` → `Xie Jing`, surname first, since Geni stores `<given> <surname>` and Chinese
+reads the other way round.
+
+**One trap for whoever does it:** `11 謝` → `Xie`. Where the given name is junk the script
+romanises the *surname* instead, so the composition must read which token was romanised rather than
+assume it was the first.
+
+Nothing was wired. A label that names somebody by their given name alone is the *"an incorrect name
+is not acceptable"* case, and 2,431 of them would have gone out in one commit.
