@@ -25304,3 +25304,27 @@ all. Dropping non-kana nesting recovers `おのどの` without guessing.
 The three genuinely ambiguous rows still refuse — `あがた（の）いぬかい`, `きし（ひろこ）じょおう`,
 `ふじわら の げんし（もとこ）` — along with the kyūjitai restatement (`眞龍院` against the title
 真竜院) and one lead carrying no parenthetical. Five refusals, each with what the extractor saw.
+
+## 2026-09-02 — the post-merge campaign is 25 of 27, and two relatives from finished
+
+**Her instruction:** *"Put this culture identification thing at the end and work on everything
+else."* `P1814` moved to the tail — four ticks and zero statements, and the readings are found and
+waiting, so it costs nothing to leave there.
+
+**The new top item had a stopping rule nobody had ever measured.** Emma, 2026-08-24: *"Export until
+every first-degree relative of every merged individual is present"* in `exports/post-merge/` —
+*"that is the stopping rule, not a count of exports."* Without a measurement the campaign could
+only end by somebody deciding it felt done.
+
+`scripts/post-merge-coverage.py` → `reports/post-merge-coverage.tsv`: **25 of 27 survivors
+covered**, from six `Forest` balls carrying **23,374 distinct people**. That is her own economy
+paying off — *"merged individuals cluster together so we will not need to run an export on every
+one of them"* — measured rather than hoped for.
+
+**The two left are each missing exactly one first-degree relative**, and both survivors are already
+in the directory: Obito Haji-no-muraji (strong) wants `6000000001893090174` 土師兎, and Jingū-kōgō
+(weak) wants `6000000179131744821` Ōjin Tennō. One or two exports finishes it.
+
+**The script grades but does not filter.** `CLAUDE.md` § *The question is whether OUR TREE MATCHES
+GENI* — the `evidence` column orders the work and never decides whether a pair deserves an export,
+because a post-merge export is worth running even when the pair turns out not to be a duplicate.
