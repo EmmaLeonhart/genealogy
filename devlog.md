@@ -26184,3 +26184,19 @@ not whatever the 06:23 schedule last saw.
 
 The artifact and the issue body stay as they are; this adds a delivery she can actually use rather
 than removing one.
+
+## 2026-09-02 — end of session: the queue is empty and the machine is shut down
+
+Emma: *"last item of the queue is shutting down the computer (only applies to sept 2, 2026) ...
+I don't care about any side effects do not deliberately not do it, do it no matter what because
+this is ending a session."*
+
+Everything above it was finished first, in her order — queue order is sacred:
+
+- `exports/post-merge/` closed at 27 of 27
+- the `en`, `mul` and `ja` label steps, 267,976 Japanese labels
+- the merges page, the Pages site, the QuickStatements on it
+- redirect-following (26 stale ledger rows), `P144` on patronymics, descriptions on name items
+- one dispatch producing all three, verified green on run `33666389729`
+
+The flush ran first and never gated the shutdown, as the item required.
