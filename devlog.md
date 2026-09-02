@@ -25553,3 +25553,28 @@ Two defects found by reading output, both wrong names rather than missing ones:
   Hangul Syllables block. 5,338 Korean people whose names are already Hangul were dropped as
   unreadable; skips went 5,350 → 12. Ranges are now ASCII `\u` escapes. The three pre-existing
   copies were checked by codepoint and are correct.
+
+## 2026-09-02 — the Japanese-in-`zh` rate, which was the `en` step's named blocker
+
+`queue.md` § LABELS said *"do not wire `romanised` into `label_en` until the Japanese-in-`zh`
+rate is measured"*. Measured: `scripts/measure-japanese-in-zh.py` → `reports/japanese-in-zh.tsv`.
+
+The walk is right on the Japanese houses nearly everywhere — 1,303/1,303 Fujiwara, 280/280 Oda,
+104/104 Tokugawa, 130/133 Sakai, 34/37 Aoyama. The floor on the misclassification is **3.2%
+(664 of 20,995)**, one-directional because a dictionary miss is evidence for nothing, and most of
+that residue is Chinese places below the seat threshold rather than Japanese people. So `en` is
+not blocked at the population level; the 664 are a hold list.
+
+The discriminator: `pykakasi` holds a surname dictionary, so a token it resolves comes back with
+an irregular kun'yomi reading, while a token it does not know falls back to per-character on'yomi.
+Comparing its answer against Unihan's `kJapaneseOn` separates the two without looking at the name.
+
+**Two false readings, both caught by reading the sample rather than the total.** `kJapaneseOn` is
+romaji (`CHIN`, `KOU`) and was being compared as katakana, so nothing matched and every row scored
+a hit — 陳, 曾, 劉 and 王 as Japanese surnames, rate 45.9%. Then a lone character gets its word
+reading (李 `sumomo`, 孔 `ana`), and Chinese commanderies (南蘭陵, 太原, 清河) dominated the top
+nine until the clan-seat filter went in. Each number was plausible; only the named surnames were not.
+
+Also this tick: Geni's GEDCOM export service is DOWN — the resubmitted Ōjin Tennō export failed
+at 08:09 with *"We were unable to export your GEDCOM... We are aware of the issue"*. That is what
+blocks the two remaining `exports/post-merge/` survivors, and it is Geni-side.

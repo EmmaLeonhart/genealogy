@@ -246,12 +246,29 @@ words. So the batches are `en` for everybody, then `mul` for everybody, then `ja
   The clan-seat case is untouched and correct: **6,705** rows drop a 3+ character tail like
   `陳郡陽夏`, which is a *place* in the surname field.
 
-  **What still blocks the `en` step is the CULTURE, not the composition.** `幸豊 青山` comes out
-  `Qing Shan Heng Li` and `忠貫 酒井` `Jiu Jing Zhong Guan` — those are Aoyama and Sakai, Japanese
-  samurai houses, being read in Mandarin because the walk put them in `zh`. Composition made them
-  longer, not wronger; they were already wrong. **Do not wire `romanised` into `label_en` until the
-  Japanese-in-`zh` rate is measured** — a wrong reading of a real name is the one thing her rules
-  forbid outright.
+  **MEASURED 2026-09-02 — the rate is low and the hold list is 664 people, not a rewrite.**
+  `scripts/measure-japanese-in-zh.py` → `reports/japanese-in-zh.tsv`. The walk is right on the
+  Japanese houses almost everywhere: **1,303 of 1,303 Fujiwara, 280/280 Oda, 104/104 Tokugawa,
+  130/133 Sakai, 34/37 Aoyama**. The two people who prompted the alarm are real misfiles and are
+  six people, not a population.
+
+  The discriminator asks `pykakasi` whether its **surname dictionary** holds the token, and
+  compares the answer against Unihan's on'yomi: a match means it fell back per character (no
+  evidence), a difference means a real dictionary hit. It is one-directional — a miss is evidence
+  for nothing — so **3.2% (664 of 20,995) is a FLOOR**. Reading the output shows most of even
+  that residue is Chinese places below the seat threshold (趙州, 博陵, 渤海) and Xiongnu clans
+  (攣鞮, 赫連), so the genuine Japanese part is smaller again.
+
+  **So `en` is not blocked at the population level; hold the 664.** And under her 2026-09-02
+  redesign it gates much less than it did: the romanisation is one alias among several, and only
+  the `mul` promotion depends on the culture being right.
+
+  **Two false readings were produced and caught before publication, both by reading the sample.**
+  First `kJapaneseOn` is romaji (`CHIN`, `KOU`) and was compared as katakana, so nothing ever
+  matched and every row scored a hit — 陳, 曾, 劉 and 王 came out as Japanese surnames at
+  **45.9%**. Then a lone character gets its *word* reading (李 `sumomo` the plum, 孔 `ana` a
+  hole), and the clan seats dominated the top nine until they were filtered. Each number looked
+  plausible on its own; only the named surnames gave it away.
 
   Two smaller residues visible in the same pass: `大唐帝國 謝氏` → `Da Tang Di Guo` is not a name at
   all, and `母 陳` → `Chen Mu` romanises 母 *(mother)* as a given name, so `CJK_MARKERS` is missing
