@@ -26039,3 +26039,33 @@ That makes the check added today the **common** case rather than the mirror of t
 the scraped-qid resolution covers the rare shape. My framing implied a symmetry that does not
 exist and made a routine event sound like an edge case; the docstring now says so with the
 numbers.
+
+## 2026-09-02 — the GitHub Pages site
+
+`scripts/build-pages-site.py` → `out/site/index.html`, published by `.github/workflows/pages.yml`.
+Emma, 2026-09-01: *"a github pages site built with actions that documents generally what the repo
+is doing with different things, its data modeling and algorithms and such."*
+
+**Generated from the repo, which the queue item asked for and which is the only thing that keeps
+it true.** Nothing on the page is prose written once:
+
+- **the figures are counted at build time** — 607 exports, 1,451,964 people, 1,451,534 with
+  recorded kin, 696 relationship paths, 518,974 Geni ids on Wikidata, 1,179 ledger items, 4,688
+  Han characters read, 267,976 Japanese labels, 277 generator scripts;
+- **the algorithms are the docstrings** of the eight files that implement them, so a description
+  cannot drift from its code;
+- **the standing rules are lifted from `CLAUDE.md`** — 100 sections read, 40 shown.
+
+Only the data-modelling section is hand-written, because it is a statement of the model rather
+than a measurement of it.
+
+**A false stat caught before publishing:** `families` read 1,451,964 — identical to the people
+count, which is what gave it away. `derived-family.csv` is one row *per person* carrying their
+kin, not one per family. Relabelled to *people with recorded kin*, 1,451,534.
+
+**No `push:` trigger**, same reasoning as `ci.yml`: this repo commits large generated files many
+times a day. `workflow_dispatch` and a 06:23 schedule, off the hour.
+`test_no_workflow_runs_automatically` globs every workflow, so it covers this one too.
+
+The build step fails if the page is empty or missing its own headings — a site that deploys to
+nothing looks like a working deploy, which is a failure mode this repo has hit elsewhere.

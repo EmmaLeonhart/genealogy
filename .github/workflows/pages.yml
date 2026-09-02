@@ -1,0 +1,86 @@
+# Publish the documentation site to GitHub Pages.
+#
+# Emma, 2026-09-01: "a github pages site built with actions that documents generally what the
+# repo is doing with different things, its data modeling and algorithms and such."
+#
+# **No `push:` trigger**, for the same reason `ci.yml` has none: this repo commits large
+# generated files many times a day, so a run per push queues behind itself and tells nobody
+# anything. `tests/test_repo_invariants.py::test_no_workflow_runs_automatically` enforces that,
+# and it checks every workflow rather than just CI.
+#
+# **The checkout must be sparse or it does not fit.** The tracked tree is ~13 GB against roughly
+# 14 GB of runner disk. This job reads only CLAUDE.md, the scripts, and a handful of reports, so
+# it takes far less than CI does -- but it still needs `exports/` because the page COUNTS the
+# GEDCOMs, and `blob:none` keeps that cheap by fetching no blob it does not open.
+name: Pages
+
+on:
+  workflow_dispatch:
+  schedule:
+    # 06:23 UTC daily. Off the hour on purpose: :00 is when every scheduled workflow on GitHub
+    # fires at once and the queue is worst.
+    - cron: "23 6 * * *"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One publish at a time. A second run started while the first is deploying would race it, and
+# `cancel-in-progress: false` means the newer one waits rather than the older one dying half way.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout: |
+            /CLAUDE.md
+            /scripts
+            /src
+            /reports
+            /out/wikidata
+            /paths
+            /exports
+          sparse-checkout-cone-mode: false
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      # The four big derived CSVs are committed gzipped -- GitHub refuses them at their real
+      # size. `--unpack` restores the plain files the generator reads. It is not fatal if this
+      # fails: `count_lines` falls back to reading the `.gz` directly, and the page then shows
+      # the same numbers.
+      - name: Unpack the derived tables
+        run: python scripts/pack-derived.py --unpack || echo "unpack skipped; the .gz fallback covers it"
+
+      - name: Build the site
+        run: PYTHONPATH=src python scripts/build-pages-site.py
+
+      # Fail loudly rather than publishing an empty page. A site that builds to nothing looks
+      # like a working deploy, which is the failure mode this repo keeps hitting in other places.
+      - name: Check the page is not empty
+        run: |
+          test -s out/site/index.html
+          grep -q "GEDCOM exports" out/site/index.html
+          wc -c out/site/index.html
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: out/site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
