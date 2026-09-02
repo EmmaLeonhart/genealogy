@@ -59,7 +59,13 @@ OUT = ROOT / "reports" / "han-readings.tsv"
 
 #: CJK Unified Ideographs, Extension A, and the Compatibility block. Kana and Hangul are
 #: deliberately excluded: they are already readings.
-HAN = re.compile(r"[㐀-䶿一-鿿豈-﫿]")
+#: **Never write these boundaries as literal characters.** U+F900 CJK COMPATIBILITY
+#: IDEOGRAPH and U+8C48 render identically, and NFC normalisation maps the first to the
+#: second -- so a literal range silently becomes U+8C48-U+FAFF, which swallows the whole
+#: Hangul Syllables block. Measured 2026-09-02: 358 Hangul characters counted as Han and
+#: 5,350 Korean people dropped as unreadable when their names needed no conversion at all.
+#: The escapes cannot be normalised; the literal form did not survive one edit round-trip.
+HAN = re.compile(r"[\u3400-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF]")
 
 
 def readers():
