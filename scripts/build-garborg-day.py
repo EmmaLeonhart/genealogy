@@ -1213,68 +1213,6 @@ def name_lines(label, plan, geni_id, father_qid, fields=None, sex="",
 # *"Has an item and no SPOUSE or CHILD specifically"* -- and it explicitly counts the
 # people our own earlier runs created, since a fresh `CREATE` starts with neither.
 
-#: The two saved relationship paths that make up the spine, walked in order. Emma,
-#: 2026-08-26: *"The ancestral couples between Bergitte, going from Arne to Bergitte to
-#: Charlemagne, are always getting made."* Line 2 -- Bergitte down to her -- exists as a
-#: saved path and holds **16 steps, none of which had a QID** when this was written, which
-#: is the *"critical path going to me"* she doubted the last run produced. It did not.
-#: **Three lines, and each is stored ANCESTOR-FIRST.** Emma, 2026-08-28: *"You understand that
-#: we are supposed to be building a path from Bergitte to me, not from me to Bergitte? That is
-#: a pretty significant difference."* The spine takes the first uncreated step of each path per
-#: run, so the stored order decides which end it grows from. `bergitte-to-emma.tsv` is stored
-#: Emma-first and is therefore REVERSED here; it had been walking outward from her, which is
-#: why it took `Richard Wade Borsheim` every single run.
-
-#: **ONE spine, and it runs on a different rule.** Emma, 2026-08-30, after verifying all four
-#: old lines complete: *"the spines are all clear and I'm putting an item at the end of the queue
-#: declaring them legacy code and removing them"*, then: *"make these people the only new spine
-#: with the rule being different because any of them is always added whenever possible from any
-#: side including the middle."*
-#:
-#: The four it replaces — `charlemagne-to-arne-garborg`, `bergitte-to-emma`, `bureus-to-emma`,
-#: `arne-to-signe-no-borsheim` — all report every step already has an item. They are legacy and
-#: their files stay only as evidence of routes already walked.
-#:
-#: This is Geni's own in-law route from Arne Garborg to Johannes Bureus, joining the two anchors
-#: **to each other** rather than only through Emma. Steps 1, 17 and 18 already hold `Q467497`,
-#: `Q141180409` and `Q633094`, so it is anchored at both ends and fills inward and outward at
-#: once.
-#:
-#: **No export is needed and none should be attempted.** Steps 9, 10 and 13 were tried as
-#: `Forest` seeds on 2026-08-30 and Geni refused all three — *"You are not allowed to export that
-#: profile."* Emma: *"at this point i think the key thing is just to give up."* The path is the
-#: deliverable.
-SPINE_PATHS = ("paths/arne-garborg-to-johannes-bureus-geni.tsv",)
-
-#: **The spine's own anchors, hardcoded — Emma, 2026-08-31:** *"Add all of Q116760688, Q6014618,
-#: Q26239714, Q109265381 as both ledger points and entry points hardcoded in."*
-#:
-#: These four are steps 7, 8, 15 and 16 of the Arne↔Bureus spine. They carry a `P2600` on
-#: Wikidata but were in **neither** `reports/garborg-qids.tsv` nor anything else `our_items` reads,
-#: so the batch could not see them — and a chain of otherwise-unknown people can only grow from a
-#: neighbour that already has a QID. The whole Bureus end therefore had no foothold: the run of
-#: 2026-08-31 12:15 created **one** spine step, from the Arne end alone, when it should have moved
-#: at both. Folding these in took it to **four** (steps 5, 8, 14, 16), filling inward from each end.
-#:
-#: **Hardcoded rather than derived on purpose.** `scripts/refresh-spine-known.py` derives the same
-#: pairs from `out/wikidata/p2600-all.tsv`, but that file is a snapshot and the anchors are the one
-#: thing the spine cannot afford to lose to a stale download — losing an anchor does not fail, it
-#: silently halves the rate of progress, which is exactly how this went unnoticed.
-SPINE_ANCHORS = {
-    "4520166": "Q116760688",              # step 7  Maria Nordenfelt
-    "4198641": "Q6014618",                # step 8  Enar Vilhelm Nordenfelt
-    "6000000006828366697": "Q26239714",   # step 15 Jonas Jonae Rudberus
-    "6000000006828534420": "Q109265381",  # step 16 Jonas Benedicti Rudberus
-}
-
-#: **Empty since 2026-08-31.** It held `bergitte-to-emma.tsv`, which is stored Emma-first and
-#: so had to be walked from the far end. That path is one of the four legacy spines and is no
-#: longer in `SPINE_PATHS`. The one live spine, Arne→Bureus, is stored Arne-first and grows
-#: from **no** particular end — see the rule at `SPINE_PATHS` — so nothing needs reversing.
-#: Kept as an empty tuple rather than deleted because `spine_steps()` still consults it, and
-#: a future spine stored backwards would need it again.
-SPINE_REVERSED = ()
-SPINE_PATH = SPINE_PATHS[0]
 
 #: **Her revised caps, 2026-08-26**, after stopping a run of 50 creations partway:
 #: *"creating individuals with all of their children is just crazy talk... we essentially do
@@ -1396,36 +1334,12 @@ def free_parent_budget(eligible):
         FREE_PARENTS_FREE + (eligible - FREE_PARENTS_FREE) // 2)
 
 
-def spine_chain():
-    """`[(step, geni_id, name)]` up the saved Geni relationship path, Arne first.
+#: The two roots of the Wikidata subgraph the ring grows from. These are NOT spine
+#: machinery -- they survived the 2026-09-02 spine removal because `subgraph_roots()`
+#: needs them: `CLAUDE.md` § *The seed set is the WIKIDATA SUBGRAPH from Arne*.
+ARNE_QID = "Q11959067"      # Arne Olaus Fjortoft Garborg
+BUREUS_QID = "Q633094"      # Johannes Bureus
 
-    `paths/charlemagne-to-arne-garborg.tsv` is the authority -- `CLAUDE.md` is explicit
-    that `reports/charlemagne-route.csv` is a *different* descent that does not contain
-    Bergitte, and that treating the two as one produced a wrong junction.
-    """
-    rows = [l.rstrip("\n").split("\t") for l in
-            open(ROOT / SPINE_PATH, encoding="utf-8")
-            if not l.startswith("#") and l.strip()]
-    header, out = rows[0], []
-    for r in rows[1:]:
-        d = dict(zip(header, r))
-        gid = re.sub(r"\D", "", d.get("note", ""))
-        if gid:
-            out.append((int(d["step"]), gid, d["name"]))
-    return out
-
-
-from qscomment import annotate  # noqa: E402
-
-
-#: Arne Olaus Fjørtoft Garborg. The subgraph is measured from here.
-ARNE_QID = "Q11959067"
-
-#: **Johannes Bureus — the second root.** Emma, 2026-08-28: *"it is supposed to do this from
-#: Johannes Bureus and Arne Garborg, subgraphs coming from both of them."* Her line to Bureus
-#: runs through her mother's side and is captured in `paths/bureus-to-emma.tsv`; her line to
-#: Arne runs through her father's. Two roots, one subgraph — the union of what each reaches.
-BUREUS_QID = "Q633094"
 
 def subgraph_roots():
     """**Arne, Bureus, and EVERY Bureätten person. 252 entry points, not 2.**
@@ -1718,60 +1632,10 @@ def _strip_markers(label):
 #:
 #: **European only.** She ruled the Asian identifications out: *"for the Asian people I'm going
 #: to say no... the Asian people are long-term and there are potential concerns."*
-SPINE_P2600_BLOCK = """
-# ---------------------------------------------------------------------------
-# MANUAL ZIPPER MERGES -- hard-coded, appended to every batch, on purpose.
-#
-# Each line asserts that an existing Wikidata item IS a particular Geni person.
-#
-# Eight are on the Arne -> Charlemagne chain. Their items exist and are
-# well documented, but carry no P2600 Geni.com profile ID, so nothing outside
-# this repo records the correspondence and the chain cannot be followed on
-# Wikidata. The daily algorithm depends on these pairings.
-#
-# They repeat every run by design. The first run that reaches an item adds the
-# statement; every later run adds a duplicate, which QuickStatements merges away.
-# That is the whole mechanism -- no state, no checking, no cleverness. When all
-# eight are on Wikidata, delete this block.
-#
-# Evidence for each is in reports/wikidata-spine-add-p2600.qs: every one is
-# anchored on a DIFFERENT relative that already carries a recorded P2600, never
-# on a name match. Two were accepted by Emma on 2026-08-26.
-# ---------------------------------------------------------------------------
-#   Q5915800 Knut Algotsson: P2600 Geni.com profile ID
-Q5915800\tP2600\t"6000000002572699392"
-#   Q101247444 Ingegerd Svantepolksdotter: P2600 Geni.com profile ID
-Q101247444\tP2600\t"6000000011239201122"
-#   Q6197518 Svantepolk Knutsson Viby: P2600 Geni.com profile ID
-Q6197518\tP2600\t"6000000003418900347"
-#   Q3743799 Knut Valdemarsson, Duke of Estland: P2600 Geni.com profile ID
-Q3743799\tP2600\t"6000000003076221220"
-#   Q4953376 Helena Guttormsdatter: P2600 Geni.com profile ID
-Q4953376\tP2600\t"6000000034013672054"
-#   Q466257 Rozala of Italy: P2600 Geni.com profile ID
-Q466257\tP2600\t"4258970970100070152"
-#   Q274606 Berengar I, emperor of the Romans: P2600 Geni.com profile ID
-Q274606\tP2600\t"6000000001669654269"
-#   Q284400 Gisele of Cysoing: P2600 Geni.com profile ID
-Q284400\tP2600\t"6000000000424624719"
-#
-#   Q10411463 Andreas Olai: P2600 Geni.com profile ID.  Emma, 2026-08-28:
-#   "we add this qid geni id add thing to the quickstatements block that
-#   always gets added in".  Identified during the mass export campaign by
-#   STRUCTURE, never by name: the Geni profile reads "Son of Olof, Brother of
-#   Kerstin Olofsdotter and Benedictus Olai", and the item carries P3373
-#   sibling -> Q4355463 Benedictus Olai.  Its About text gives 1521-1560,
-#   matching the item's P569 date of birth and P570 date of death exactly.
-#   The structured Birth field is the trap -- it says "estimated between 1450
-#   and 1570", which is why the pairing looked unmakeable.  Emma put P1889
-#   different from on the item to separate him from the better-known
-#   Andreas Olai, so the name alone could never have settled this.
-Q10411463\tP2600\t"6000000040951562251"
-"""
 
 
 #: **The CJK clan labels, hard-coded and appended to every batch, exactly like
-#: `SPINE_P2600_BLOCK`.** Emma, 2026-08-28: *"Fucking wire it in"*, after the formula was
+#: the spine `P2600` block (since removed).** Emma, 2026-08-28: *"Fucking wire it in"*, after the formula was
 #: worked out on `Q10864996` and measured across the population.
 #:
 #: 177 people, 1,947 statement lines. Larger than the `P2600` block by two orders of
@@ -4571,53 +4435,6 @@ Q11443857	Len	"Mononobe no Futohime"
 """
 
 
-def spine_created():
-    """Every Geni id that sits on a spine path — these never seed a ring of their own.
-
-    **The defect this closes.** Emma's spine rule is right and stays: the ancestral couples
-    from Arne through Bergitte to Charlemagne are made every run, outside the caps. But each
-    one then entered the ledger, and the next run drew on it like any other seed and grew a
-    ring around it. After several days the ball had lobes at the far end of a 34-step medieval
-    path, and a batch of 36 held a 7th-century Baekje royal, Carolingian Friuli and
-    20th-century Iowa alongside Rogaland farmers. Emma: *"there are tons of completely random
-    people that were created."*
-
-    They stay in `have`, so nothing re-creates them. They are simply not somewhere the ring
-    grows from. The spine advances along the path, one step per path per run, which is what she
-    asked for and all she asked for.
-    """
-    ids = set()
-    for steps in spine_steps().values():
-        ids.update(gid for _label, gid, _name in steps)
-    return ids
-
-
-def spine_steps():
-    """`{path: [(label, geni_id, name)]}` -- BOTH spine paths, kept apart.
-
-    **Kept apart deliberately.** Concatenating them and taking the first uncreated step
-    advances only whichever path is listed first, so `bergitte-to-emma` never moved and the
-    *"critical path going to me"* stayed at zero of sixteen. One step per path per run.
-    """
-    out = {}
-    for rel in SPINE_PATHS:
-        path = ROOT / rel
-        if not path.exists():
-            continue
-        rows = [l.rstrip(chr(10)).split(chr(9)) for l in
-                open(path, encoding="utf-8") if not l.startswith("#") and l.strip()]
-        header = rows[0]
-        steps = []
-        for r in rows[1:]:
-            d = dict(zip(header, r))
-            gid = re.sub(r"\D", "", d.get("note", "") or "")
-            if gid:
-                steps.append((f"{Path(rel).stem} step {d.get('step')}", gid,
-                              d.get("name", "")))
-        out[rel] = list(reversed(steps)) if rel in SPINE_REVERSED else steps
-    return out
-
-
 def compose(our_items, fam, rng, ring_seeds=None):
     """`{geni_id: why}` -- the people this run creates, per `docs/daily-algorithm.md`.
 
@@ -4663,33 +4480,6 @@ def compose(our_items, fam, rng, ring_seeds=None):
             picked[gid] = reason
             return True
         return False
-
-    # --- 1. the spine, both directions, outside every cap ------------------------
-    # One step per PATH, so the line down to her advances every run as well as the line up
-    # to Charlemagne. Her words: *"The ancestral couples ... are always getting made."*
-    # **No front, no direction, no waiting for the neighbour.** The four old spines advanced one
-    # step per path per run and a step was only created once the one before it existed — hence
-    # the `break` that used to end this loop after the first take. Emma replaced that rule on
-    # 2026-08-30: *"any of them is always added whenever possible from any side including the
-    # middle."*
-    #
-    # So every takeable step goes in the same run. A creation is possible as soon as the person
-    # is in the corpus; that is the only gate. The links to anything that already holds a QID are
-    # emitted by the additions pass in the same batch, which is what makes both anchors and the
-    # middle grow toward each other instead of a line crawling from one end.
-    spine_added = 0
-    for rel, steps in spine_steps().items():
-        took = 0
-        for label, gid, name in steps:
-            if take(gid, f"spine: {label}"):
-                spine_added += 1
-                took += 1
-                why.append(f"1. spine {label}: {name}")
-                for sp in kin(gid, "spouses"):
-                    if take(sp, f"spouse of spine {label}"):
-                        spine_added += 1
-        if not took:
-            why.append(f"1. spine {Path(rel).stem}: every step already has an item")
 
     # --- 2 & 3. ten children, or a spouse where the marriage is childless --------
     # The seed pool, not the whole ledger: spine steps are excluded upstream.
@@ -4877,12 +4667,6 @@ def main():
               "live values refreshed")
 
     our_items = ledger()
-    # **The spine anchors go in before anything reads `our_items`.** They are both ledger points
-    # (so a relationship may point at them) and entry points (so a neighbour of theirs can be
-    # created). `setdefault` so the ledger always wins if it has since learned a different QID.
-    for _anchor_geni, _anchor_qid in SPINE_ANCHORS.items():
-        our_items.setdefault(_anchor_geni, _anchor_qid)
-
     # **`linked` is every Geni id Wikidata already carries a `P2600` for. `have` is not.**
     #
     # These are two different questions and conflating them cost a run: `have` seeds the
@@ -5344,7 +5128,7 @@ def main():
     # `6000000023073624991`). Kristofer is `6000000003002231602`, neither of them. The guard
     # nevertheless held him, because neither QID was in the ledger.
     #
-    # This is the same blind spot as `SPINE_ANCHORS`: knowledge that lives in
+    # This is the same blind spot the spine anchors had (since removed): knowledge that lives in
     # `out/wikidata/p2600-all.tsv` and never reached the logic that needed it. Widening
     # `claimed` does not weaken the guard — it still refuses when a parent has a child item
     # nothing accounts for. It stops it refusing when Wikidata plainly accounts for it.
@@ -6293,12 +6077,6 @@ def main():
             print(f"   {subject} {prop} -> {value}; already has {';'.join(held)}")
         print(f"   recorded in {drops.relative_to(ROOT)}")
     lines = kept
-
-    # **The SPINE P2600 block is NOT emitted.** Emma, 2026-08-29: *"I wanted the spine entity
-    # resolution geni id adding statements gone"*. `SPINE_P2600_BLOCK` stays defined -- it is
-    # the record of nine pairings anchored on structure rather than on names, and
-    # `reports/wikidata-spine-add-p2600.qs` carries the evidence -- but it no longer rides
-    # along with every daily batch.
 
     # The CJK clan labels, same mechanism. See `CJK_CLAN_BLOCK`. **Removed on 2026-08-29 and
     # put straight back** -- I read *"remove that particular section"* as this block when she

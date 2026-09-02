@@ -25814,3 +25814,40 @@ both were **observed** rather than looked up.
 
 **Left untouched deliberately:** the pending merge-conflict page on Ōjin asks which values to keep
 (Created On, Manager, First/Last Name, Birth Date). That is Emma's decision.
+
+## 2026-09-02 — four rulings worked: spine removed, three sections deleted (10 → 7)
+
+Emma put every queue item to herself via `AskUserQuestion` and ruled on each.
+
+**Spine REMOVED**, her condition met. She said *"check if Arne -> Bureus is there, I'm pretty sure
+it is, at which point remove this"* — and it is: **17 of 18 steps resolve to a QID** in the live
+ledger. The one apparent gap was my matcher, not a missing person: step 9
+`Friherrinna Anna Wilhelmina Posse af Säby` is `Q141244084` *Anna Wilhelmina Nordenfeldt* — birth
+name against married name, exactly § *1600-1900 is the band where NAMES LIE*. The only real
+ambiguity is steps 15/16, two Rudberus men (Jonas Jonae and his father Jonas Benedicti) against
+one ledger entry `Q109265381 Jonas Rudberus`.
+
+Cut from `build-garborg-day.py`: the `compose()` spine block, `spine_created()`, `spine_steps()`,
+`spine_chain()`, `SPINE_PATHS`, `SPINE_ANCHORS`, `SPINE_REVERSED`, `SPINE_PATH` and
+`SPINE_P2600_BLOCK` — 321,809 → 308,917 bytes. `scripts/check-spine-bonds.py` and
+`scripts/refresh-spine-known.py` deleted.
+
+**`ARNE_QID` and `BUREUS_QID` were rescued from that cut** — they sit in the same region but are
+NOT spine machinery; `subgraph_roots()` needs them, and § *The seed set is the WIKIDATA SUBGRAPH
+from Arne* is why. Removing them broke the script at import, which is how it was caught.
+
+Verified: `--help` runs, and `test_garborg_day_batch` + `test_p2600_batches` are **310 passed,
+35 skipped**.
+
+**Deleted, each on her ruling:**
+
+- **The ledger-archive CI job** — *"Lmao you cunt it fetches every time the ledger from pages I
+  edited"*. She is right and the item's premise was false: `build-daily-batch.py` STEP 0b already
+  runs `full_entities` over the ledger, and the pipeline refreshes it from her contributions every
+  run.
+- **The saved pages and path files** — *"Leave it entirely"*.
+- **The `zh` step** — *"Give up"*. `scripts/build-zh-labels.py` deleted; it had never been run.
+
+**Still to do from the same rulings:** build the Pages site *"now, generated from the repo"*,
+build the merges HTML page from `out/parent-review.template.html`, and emit the CJK aliases for
+the 5,621 people who already have items. The 35 `P1814` variant readings were printed for her.
