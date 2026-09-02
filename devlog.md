@@ -26116,3 +26116,30 @@ unprotected ones; it turns out they are protected by whoever described them.
 **A description is only ADDED, never replaced** — an item that already says something is
 somebody's editorial choice, and § *The purpose is to ADD to Wikidata, not to correct it* governs.
 **Name items only.** Descriptions on people remain the categorical ban.
+
+## 2026-09-02 — CI caught a regression from my own spine removal
+
+**CI failed on `d28aabb0`**, both 3.10 and 3.13, at
+`test_the_freshness_report_names_every_generator_that_still_exists`:
+
+    reports/repo-freshness.csv names generators that no longer exist:
+      reports/spine-bonds.tsv              <- scripts/check-spine-bonds.py
+      reports/spine-already-on-wikidata.tsv <- scripts/refresh-spine-known.py
+
+Both scripts were deleted with the spine earlier today and the freshness report still named them.
+**This is exactly what CI is for under the new rule** — I could not have caught it, because I no
+longer run the suite here.
+
+Fixed by finishing the removal rather than by patching the report: `search-spine-names.py` and
+`verify-spine-candidates.py` were two more spine-only scripts I had missed, and
+`reports/spine-bonds.tsv`, `reports/spine-already-on-wikidata.tsv` and `out/roster-spine.txt` are
+their orphaned outputs. All deleted, the spine-variant paragraph taken out of
+`build-daily-batch.py`'s docstring, and `repo-freshness.csv` regenerated — the two dead generators
+are gone from it.
+
+The remaining `spine` hits in `scripts/` are the **Samaritan** spine, which is a different thing
+and stays.
+
+**Also cut back, § *Then: one dispatch*.** Its stated remaining dependency was the Pages site;
+that was built today and **ran green on `f9ffac09`**. What is left is only the thing the item is
+named for — one dispatch producing all three, where today they are three separate workflows.

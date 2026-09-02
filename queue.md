@@ -15,15 +15,15 @@ deck, and issue **#9** opened assigned to her. 9m21s, both jobs green. That was 
 deliverable — *"a run that finishes and uploads `reports/wikidata-garborg-day.qs` as an artifact,
 with the issue opened"* — and it is met.
 
-**So what is left is ONE deliverable: the Pages site**, § *THE VERY LAST ITEM*.
+**Both other deliverables now exist.** The ledger archive was never a job to build — Emma,
+2026-09-02: *"Lmao you cunt it fetches every time the ledger from pages I edited"*;
+`build-daily-batch.py` STEP 0b runs `full_entities` over the ledger every run. And the Pages job
+was built on 2026-09-02 and **ran green** on `f9ffac09`.
 
-**The ledger archive is already done and was never a job to build.** Emma, 2026-09-02: *"Lmao you
-cunt it fetches every time the ledger from pages I edited"* — `build-daily-batch.py` STEP 0b runs
-`full_entities` over the ledger, and the pipeline refreshes it from her contributions on every
-run. Its queue section is deleted.
-
-Once the Pages job exists, dispatch once and check that a single run produces all three. Not three
-runs — her words are *"the ci/cd run"*, singular.
+**So what is left is exactly the thing the item is named for: ONE dispatch producing all three.**
+They are three workflows today — `pipeline.yml` for the QuickStatements, `pages.yml` for the site,
+and the archive inside the daily batch — and her words are *"the ci/cd run"*, singular. Wire them
+into one dispatch, run it once, and check a single run yields all three.
 
 **Two failures got it here, and both are worth not repeating.** The 18:59 run died on
 `FileNotFoundError: out/merged.ged` and was fixed by committing `family-structure.tsv.gz`, listing

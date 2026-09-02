@@ -58,20 +58,6 @@ cached `out/model-vs-reality-items.json` is used, and a snapshot older than the 
 its own gap as `ITEM NOT FETCHED` — 587 of 657 people on 2026-08-30, because the ledger grew
 from 71 items while the snapshot sat still. A diff over 71 people is not a diff over the day.
 
-## One file, and the spine variant is one flag away
-
-`--compose` is the daily algorithm and it **overwrites** `reports/wikidata-garborg-day.qs`,
-which is also where the one-off *whole spine in one batch* lands. That is not a collision to fix
-by adding a second file: `queue.md` records that *"there is exactly ONE live batch file and that
-is deliberate"*, because two files creating the same people is how somebody runs both and
-duplicates everybody. Measured rather than assumed — the two share **2 of their creations**, so
-they genuinely cannot coexist.
-
-The spine variant is:
-
-    python scripts/build-garborg-day.py --roster out/roster-spine.txt \n        --roster-is-frontier --known reports/spine-already-on-wikidata.tsv
-
-Writes nothing itself. Emits no batch of its own.
 """
 from __future__ import annotations
 
